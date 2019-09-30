@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Sep 21 08:34:39 UTC 2019 - kukuk@suse.de
+
+- Build pie binary
+- Update to version 1.2.0+git20190920.dceba24:
+  * Bump Go to 1.13
+  * Automatically inject version from tag in CI
+  * Bump github.com/urfave/cli from 1.21.0 to 1.22.1
+  * Allow to override default file inputs and outputs
+  * Bump github.com/urfave/cli from 1.20.0 to 1.21.0
+  * avoid using global variables
+
+-------------------------------------------------------------------
 Fri Apr 26 12:31:22 UTC 2019 - Richard Brown <rbrown@suse.com>
 
 - Correct factual inaccuracies and excess technical details from description 

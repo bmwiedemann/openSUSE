@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Sep 27 08:47:08 UTC 2019 - Malte Kraus <malte.kraus@suse.com>
+
+- python scripts are now searched for in /lib64/security just like
+  regular PAM modules on 64bit platforms
+
+-------------------------------------------------------------------
+Tue Sep 24 09:37:44 UTC 2019 - alexander_naumov@opensuse.org
+
+- Update to version 1.0.7:
+  * Bugfix: local root exploit (CVE-2019-16729)
+
+- Adding 'python2.7' as a dependency
+- Adding 'gcc' as a build dependency
+- Remove not_null_argument_for_strcmp.patch
+
+-------------------------------------------------------------------
 Fri Jul 27 12:43:21 UTC 2018 - alexander_naumov@opensuse.org
 
 - Adding werror.patch

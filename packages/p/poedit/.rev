@@ -409,4 +409,22 @@ installing all /icons/hicolor/*/*/*   might have been only some png and a single
     <comment></comment>
     <requestid>704299</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>5088733146ca3daf7af019908854c449</srcmd5>
+    <version>2.2.4</version>
+    <time>1569852033</time>
+    <user>dimstar_suse</user>
+    <comment>- Poedit 2.2.4:
+  * XLIFF improvements: handling of initial states,
+    non-translatable items and better visual representation of
+    placeholders.
+  * Upgraded bundled GNU gettext version to 0.20.1; in particular,
+    this adds support for ES6 template literals to the JavaScript
+    extractor.
+  * If a file has warnings or errors, show them immediately upon
+    opening instead of waiting for the user to explicitly validate
+    the file.
+  * Misc. small fixes and visual improvements.</comment>
+    <requestid>733929</requestid>
+  </revision>
 </revisionlist>

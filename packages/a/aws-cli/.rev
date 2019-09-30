@@ -284,4 +284,12 @@
     <comment></comment>
     <requestid>725326</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>f04f8ce130f0ff8c5d60e0b79b05aea0</srcmd5>
+    <version>1.16.223</version>
+    <time>1569851946</time>
+    <user>dimstar_suse</user>
+    <comment>- Add groff as a dependency (boo# 1152258)</comment>
+    <requestid>733741</requestid>
+  </revision>
 </revisionlist>

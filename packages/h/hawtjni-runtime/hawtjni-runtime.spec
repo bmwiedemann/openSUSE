@@ -71,7 +71,12 @@ JNI code which powers the eclipse platform.
 %pom_remove_plugin -r :maven-shade-plugin
 %pom_remove_plugin -r :maven-eclipse-plugin
 
-%pom_remove_parent .
+for mod in runtime generator; do
+  %pom_remove_parent hawtjni-${mod}
+  %pom_xpath_inject pom:project "
+    <groupId>org.fusesource.hawtjni</groupId>
+    <version>%{version}</version>" hawtjni-${mod}
+done
 
 %build
 mkdir -p hawtjni-runtime/build/classes
@@ -100,10 +105,8 @@ install -m 0644 hawtjni-generator.jar %{buildroot}%{_javadir}/hawtjni/
 
 # poms
 install -dm 755 %{buildroot}%{_mavenpomdir}/hawtjni
-install -m 0644 pom.xml %{buildroot}%{_mavenpomdir}/hawtjni/hawtjni-project.pom
 install -m 0644 hawtjni-runtime/pom.xml %{buildroot}%{_mavenpomdir}/hawtjni/hawtjni-runtime.pom
 install -m 0644 hawtjni-generator/pom.xml %{buildroot}%{_mavenpomdir}/hawtjni/hawtjni-generator.pom
-%add_maven_depmap hawtjni/hawtjni-project.pom
 %add_maven_depmap hawtjni/hawtjni-generator.pom hawtjni/hawtjni-generator.jar -f generator
 %add_maven_depmap hawtjni/hawtjni-runtime.pom hawtjni/hawtjni-runtime.jar
 

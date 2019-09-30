@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 
 Name:           python-web.py
-Version:        0.39
+Version:        0.40
 Release:        0
 Url:            http://webpy.org/
 Summary:        web.py: makes web apps
@@ -26,12 +27,10 @@ Group:          Development/Languages/Python
 Source:         https://pypi.io/packages/source/w/web.py/web.py-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  python-devel
-BuildRequires:  python-setuptools
-%if 0%{?suse_version} && 0%{?suse_version} <= 1110
-%{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
-%else
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildArch:      noarch
-%endif
+%python_subpackages
 
 %description
 Think about the ideal way to write a web app. Write the code to make it happen.
@@ -40,12 +39,13 @@ Think about the ideal way to write a web app. Write the code to make it happen.
 %setup -q -n web.py-%{version}
 
 %build
-python setup.py build
+%python_build
 
 %install
-python setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%files
+%files %{python_files}
 %defattr(-,root,root,-)
 %{python_sitelib}/*
 

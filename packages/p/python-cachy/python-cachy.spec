@@ -20,7 +20,7 @@
 Name:           python-cachy
 Version:        0.3.0
 Release:        0
-Summary:        Cachy provides a simple yet effective caching library
+Summary:        A caching library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/sdispater/cachy
@@ -42,7 +42,7 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-Cachy provides a simple yet effective caching library.
+Cachy provides a caching library.
 
 %prep
 %setup -q -n cachy-%{version}

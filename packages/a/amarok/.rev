@@ -993,4 +993,12 @@ https://git.reviewboard.kde.org/r/104878/ (forwarded request 116659 from StefanB
     <comment>Use a Qt5 snapshot for amarok (New try)</comment>
     <requestid>725141</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>6570cbf28468a2978ae66c516d7fb046</srcmd5>
+    <version>2.9.70git.20190920T110913~b986f52d1d</version>
+    <time>1569851559</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>732143</requestid>
+  </revision>
 </revisionlist>

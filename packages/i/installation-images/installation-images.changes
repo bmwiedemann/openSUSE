@@ -1,4 +1,26 @@
 --------------------------------------------------------------------
+Fri Sep 27 08:44:51 UTC 2019 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#335
+- add /etc/zkey to initrd to ensure it is writable (jsc#SLE-7376)
+- default udev rules are in /usr/lib
+- 14.438
+
+--------------------------------------------------------------------
+Wed Sep 25 09:01:15 UTC 2019 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#334
+- do not stop haveged process in inst_setup (bsc#1140171)
+- 14.437
+
+--------------------------------------------------------------------
+Mon Sep 23 12:37:43 UTC 2019 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#332
+- move setsid and mount to initrd
+- 14.436
+
+--------------------------------------------------------------------
 Fri Sep 6 08:40:01 UTC 2019 - wfeldt@opensuse.org
 
 - fix sshd location so that it works with fips enabled (bsc#1140169)

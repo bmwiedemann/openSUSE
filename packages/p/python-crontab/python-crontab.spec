@@ -20,7 +20,7 @@
 Name:           python-crontab
 Version:        0.22.6
 Release:        0
-Summary:        Parse and use crontab schedules in Python
+Summary:        Python module for parsing and using crontab schedules
 License:        LGPL-2.1-only
 Group:          Development/Languages/Python
 URL:            https://github.com/josiahcarlson/parse-crontab
@@ -37,7 +37,10 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-Parse and use crontab schedules in Python.
+This package offers a method of parsing crontab schedule entries and
+determining when an item should next be run. More specifically, it
+calculates a delay in seconds from when the .next() method is called
+to when the item should next be executed.
 
 %prep
 %setup -q -n parse-crontab-%{version}

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Sep 27 10:39:28 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Restrict the tornado dep from tom to 5 or older release as the
+  6.x changed the API
+
+-------------------------------------------------------------------
+Fri Sep 20 12:14:13 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.25.5:
+  * Add mitigation for BPO-37428 affecting Python <3.7.4 and OpenSSL 1.1.1+ which caused certificate verification to be enabled when using cert_reqs=CERT_NONE. (Issue #1682)
+  * Propagate Retry-After header settings to subsequent retries. (Pull #1607)
+  * Fix edge case where Retry-After header was still respected even when explicitly opted out of. (Pull #1607)
+  * Remove dependency on rfc3986 for URL parsing.
+  * Fix issue where URLs containing invalid characters within Url.auth would raise an exception instead of percent-encoding those characters.
+  * Add support for HTTPResponse.auto_close = False which makes HTTP responses work well with BufferedReaders and other io module features. (Pull #1652)
+  * Percent-encode invalid characters in URL for HTTPConnectionPool.request() (Pull #1673)
+- Drop patch urllib3-ssl-default-context.patch
+- Drop patch python-urllib3-recent-date.patch the date is recent
+  enough on its own
+
+-------------------------------------------------------------------
 Sat Sep 14 02:58:42 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Use have/skip_python2/3 macros to allow building only one flavour

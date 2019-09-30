@@ -619,4 +619,12 @@ Currently, causes unresolvable builds in Leap 15.0 stagings. (forwarded request 
     <comment>submitted by snwint via jenkins</comment>
     <requestid>728789</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>f8fb0a1757820233ad182a1e9ad46e38</srcmd5>
+    <version>14.438</version>
+    <time>1569851625</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>733636</requestid>
+  </revision>
 </revisionlist>

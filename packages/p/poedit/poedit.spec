@@ -20,7 +20,7 @@
 %bcond_without crowdin_integration
 %bcond_with bundled_deps
 Name:           poedit
-Version:        2.2.3
+Version:        2.2.4
 Release:        0
 Summary:        Gettext Catalog Editing Tool
 License:        MIT

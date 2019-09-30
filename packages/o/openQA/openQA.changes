@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Sep 18 11:58:58 UTC 2019 - coolo@suse.com
+
+- Update to version 4.6.1568795030.c377d780b:
+  * Fix test failures on Leap 15.1
+  * Fix warning in 24-worker-overall.t
+  * Test scheduler code for assigning multiple jobs to a worker
+  * Sort directly chained children within same parent by test name
+  * Adapt existing tests to adjustments for directly chained dependencies
+  * Assign cluster of directly chained jobs to worker
+  * Show assigned jobs as such under 'All tests'
+  * Enforce consistent WORKER_CLASS when creating directly chained dependencies
+  * Add compution of directly chained job hierarchy
+  * Verify that inserting dependency cycles is prevented
+  * Improve string formatting in scheduler code
+  * Add circleci
+  * Fix formatting of developer mode documentation
+  * Update dep graph desc for START_DIRECTLY_AFTER_TEST
+  * Update documentation for START_DIRECTLY_AFTER_TEST
+  * Ignore SQL deprecate warning when querying job modules that are running
+
+-------------------------------------------------------------------
 Tue Sep 17 11:09:08 UTC 2019 - coolo@suse.com
 
 - Update to version 4.6.1568387059.db88ff48d:

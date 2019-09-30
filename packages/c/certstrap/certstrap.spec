@@ -17,17 +17,15 @@
 
 
 Name:           certstrap
-Version:        1.1.1+git20190303.350df15
+Version:        1.2.0+git20190920.dceba24
 Release:        0
 Summary:        Tool for bootstrapping CAs, certificate requests, and signed certificates
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/square/certstrap
 Source:         %{name}-%{version}.tar.xz
-BuildRequires:  golang-packaging
 BuildRequires:  golang(API) >= 1.12
 ExcludeArch:    s390
-%{go_nostrip}
 
 %description
 Certstrap is a certificate manager for bootstrapping one's own
@@ -40,7 +38,7 @@ its myriad of options or config files.
 
 %build
 export GOPATH=$HOME/go
-go build -i -v -mod vendor
+go build -v -buildmode=pie -mod vendor
 
 %install
 install -d -p %{buildroot}%{_bindir}

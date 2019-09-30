@@ -23,25 +23,25 @@ Release:        0
 Summary:        Python binding to the Networking and Cryptography (NaCl) library
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/pyca/pynacl/
+URL:            https://github.com/pyca/pynacl/
 Source:         https://pypi.org/packages/source/P/PyNaCl/PyNaCl-%{version}.tar.gz
 # https://github.com/pyca/pynacl/commit/a8c08b18f3a2e8f2140c531afaf42715fcab68e7
 Patch0:         python-PyNaCl-hypothesis-remove-average_size.patch
 Patch1:         fix_tests.patch
-BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pycparser}
 BuildRequires:  %{python_module setuptools}
-# SECTION test requirements
-BuildRequires:  %{python_module hypothesis >= 3.27.0}
-BuildRequires:  %{python_module pytest >= 3.2.1}
-# /SECTION
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libsodium)
+Requires:       python-cffi
 Requires:       python-six
+# SECTION test requirements
+BuildRequires:  %{python_module hypothesis >= 3.27.0}
+BuildRequires:  %{python_module pytest >= 3.2.1}
+# /SECTION
 %python_subpackages
 
 %description
@@ -63,7 +63,7 @@ export SODIUM_INSTALL="system"
 %python_expand %fdupes %{buildroot}/%{$python_sitearch}
 
 %check
-%pytest_arch -v
+%pytest_arch
 
 %files %{python_files}
 %license LICENSE

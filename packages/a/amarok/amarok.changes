@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 20 10:23:20 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to version 2.9.70git.20190920T110913~b986f52d1d:
+  * Don't delete whole folder when deleting a track (kde#411760)
+  * [TagDialog] Really enable "Open in filemanager" button for local files
+  * Fix a crash when running 'amarok -l /path/to/file' (kde#410870)
+- Drop 0001-Fix-a-crash-when-running-amarok-l-path-to-file.patch,
+  merged upstream
+
+-------------------------------------------------------------------
 Wed Aug 21 19:30:40 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add 0001-Fix-a-crash-when-running-amarok-l-path-to-file.patch (kde#410870)

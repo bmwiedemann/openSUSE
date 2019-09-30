@@ -1,0 +1,15 @@
+--- build.xml	2013-09-25 16:31:19.058162819 +0200
++++ build.xml-gil	2013-09-25 16:51:15.985892622 +0200
+@@ -324,6 +324,12 @@
+                <fileset dir="${dir.lib}/jaxrs">
+                     <include name="*.jar" />
+                </fileset>
++               <fileset dir="${dir.lib}/ext">
++                    <include name="*.jar" />
++               </fileset>
++               <fileset dir="${dir.lib}/ext/asm">
++                    <include name="*.jar" />
++               </fileset>
+             </classpath>
+ 
+             <packageset dir="${dir.src.java.core}" defaultexcludes="yes">

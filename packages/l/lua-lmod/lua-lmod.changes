@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Thu Aug 22 15:54:01 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
 
-- Update to version 8.1.14:
+- Update to version 8.1.14: (jsc#SLE-8512)
     * Extended Default feature added: module load intel/17 will find 
       the "best" intel/17.* etc.
     * All hidden files are NOT written to the softwarePage output.

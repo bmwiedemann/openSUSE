@@ -1,7 +1,7 @@
 #
 # spec file for package bamf
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Name:           bamf
 Version:        0.5.3
 Release:        0
 Summary:        Window matching library
-License:        GPL-3.0 and LGPL-3.0
+License:        GPL-3.0-only AND LGPL-3.0-only
 Group:          Development/Libraries/C and C++
 Url:            https://launchpad.net/bamf
 Source:         https://launchpad.net/bamf/%{_version}/%{version}/+download/bamf-%{version}.tar.gz
@@ -32,7 +32,7 @@ Source3:        %{name}.keyring
 BuildRequires:  gnome-common
 BuildRequires:  libxslt-python
 BuildRequires:  pkgconfig
-BuildRequires:  python-libxml2
+BuildRequires:  python2-libxml2
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gio-2.0) >= 2.30.0
 BuildRequires:  pkgconfig(gio-unix-2.0)

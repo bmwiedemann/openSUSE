@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 16 17:27:49 UTC 2019 - Lee Duncan <lduncan@suse.com>
+
+- Updated to latest upstream version 1.1.26. There were not very
+  many changes:
+  * Version number no longer contains "fb" to designate "free
+    branch", e.g. old was 1.1.fb25, new is 1.1.26
+  * Add urwid to setup.py dependencies
+  * Fix failing to parse params with additional chars
+  * export __version__ variable
+  resulting in replacing configshell-fb-1.1.25.tar.gz with
+  configshell-fb-1.1.26.tar.gz, and corresponding SPEC-file
+  updates.
+
+-------------------------------------------------------------------
 Fri Mar  8 14:41:00 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Using now new proper upstream release 1.1.25:

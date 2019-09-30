@@ -19,19 +19,19 @@ Fixes #810
  werkzeug/serving.py | 21 ++++++++++++++++++++-
  1 file changed, 20 insertions(+), 1 deletion(-)
 
-Index: Werkzeug-0.15.4/src/werkzeug/serving.py
+Index: Werkzeug-0.16.0/src/werkzeug/serving.py
 ===================================================================
---- Werkzeug-0.15.4.orig/src/werkzeug/serving.py
-+++ Werkzeug-0.15.4/src/werkzeug/serving.py
-@@ -41,6 +41,7 @@ import signal
+--- Werkzeug-0.16.0.orig/src/werkzeug/serving.py
++++ Werkzeug-0.16.0/src/werkzeug/serving.py
+@@ -40,6 +40,7 @@ import os
+ import signal
  import socket
  import sys
- 
 +import threading
- import werkzeug
+ 
  from ._compat import PY2
  from ._compat import reraise
-@@ -775,6 +776,7 @@ class ForkingWSGIServer(ForkingMixIn, Ba
+@@ -776,6 +777,7 @@ class ForkingWSGIServer(ForkingMixIn, Ba
          passthrough_errors=False,
          ssl_context=None,
          fd=None,
@@ -39,7 +39,7 @@ Index: Werkzeug-0.15.4/src/werkzeug/serving.py
      ):
          if not can_fork:
              raise ValueError("Your platform does not support forking.")
-@@ -783,6 +785,23 @@ class ForkingWSGIServer(ForkingMixIn, Ba
+@@ -784,6 +786,23 @@ class ForkingWSGIServer(ForkingMixIn, Ba
          )
          self.max_children = processes
  

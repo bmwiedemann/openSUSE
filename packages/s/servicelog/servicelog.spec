@@ -1,7 +1,7 @@
 #
 # spec file for package servicelog
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,15 +12,15 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           servicelog
-Version:        1.1.14
+Version:        1.1.15
 Release:        0
 Summary:        Servicelog Tools
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/Management
 BuildRequires:  librtas-devel
 BuildRequires:  libservicelog-devel

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dateparser
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        Date parsing library designed to parse dates from HTML pages
 License:        BSD-3-Clause
@@ -74,6 +74,11 @@ rm dateparser/calendars/hijri*
 %files %{python_files}
 %doc AUTHORS.rst README.rst
 %license LICENSE
-%{python_sitelib}/*
+%dir %{python_sitelib}/dateparser
+%{python_sitelib}/dateparser/*
+%dir %{python_sitelib}/dateparser_data
+%{python_sitelib}/dateparser_data/*
+%dir %{python_sitelib}/dateparser-%{version}-py*.egg-info
+%{python_sitelib}/dateparser-%{version}-py*.egg-info
 
 %changelog

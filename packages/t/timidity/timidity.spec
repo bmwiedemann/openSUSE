@@ -1,7 +1,7 @@
 #
 # spec file for package timidity
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@
 
 Name:           timidity
 Summary:        Software Synthesizer and MIDI Player
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Midi
 Version:        2.14.0
 Release:        0
@@ -82,6 +82,8 @@ for f in ./utils/bitset.c ./utils/bitset.h ./utils/nkflib.c; do
 done
 
 %build
+# disable LTO for avoiding segfaults with ALSA backend (boo#1149461)
+%define _lto_cflags %{nil}
 echo >> autoconf/arts.m4
 autoreconf --force --install
 %configure \

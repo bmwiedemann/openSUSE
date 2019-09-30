@@ -23,4 +23,18 @@
     <comment></comment>
     <requestid>625832</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>69826ba17af7be849d9442e59bb6a957</srcmd5>
+    <version>1.0.7</version>
+    <time>1569851885</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.7:
+  * Bugfix: local root exploit (CVE-2019-16729)
+- python scripts are now searched for in /lib64/security just like regular PAM modules on 64bit platforms
+- Adding 'python2.7' as a dependency
+- Adding 'gcc' as a build dependency
+- Remove not_null_argument_for_strcmp.patch (included in upstream version)
+</comment>
+    <requestid>733647</requestid>
+  </revision>
 </revisionlist>

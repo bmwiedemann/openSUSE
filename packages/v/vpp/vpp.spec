@@ -42,8 +42,8 @@ BuildRequires:  chrpath
 BuildRequires:  cmake
 BuildRequires:  distribution-release
 BuildRequires:  dpdk-devel => 18.11
-BuildRequires:  gcc7
-BuildRequires:  gcc7-c++
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
 BuildRequires:  git
 BuildRequires:  glibc-devel
 BuildRequires:  glibc-devel-static
@@ -159,7 +159,7 @@ export VPP_BUILD_HOST=SUSE
 
 cd build 
 cmake ../src
-make CC=gcc-7 CXX=g++-7 PLATFORM=vpp TAG=vpp MAKE_PARALLEL_JOBS="%{?_smp_mflags}" 
+make PLATFORM=vpp TAG=vpp MAKE_PARALLEL_JOBS="%{?_smp_mflags}" 
 
 cd - 
 cd ./src/vpp-api/python && %{py2_build}

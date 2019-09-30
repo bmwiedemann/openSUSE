@@ -15,4 +15,19 @@
     <comment></comment>
     <requestid>698221</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ddf3752c12564982bf6533259a0c1885</srcmd5>
+    <version>1.2.0+git20190920.dceba24</version>
+    <time>1569851566</time>
+    <user>dimstar_suse</user>
+    <comment>- Build pie binary
+- Update to version 1.2.0+git20190920.dceba24:
+  * Bump Go to 1.13
+  * Automatically inject version from tag in CI
+  * Bump github.com/urfave/cli from 1.21.0 to 1.22.1
+  * Allow to override default file inputs and outputs
+  * Bump github.com/urfave/cli from 1.20.0 to 1.21.0
+  * avoid using global variables</comment>
+    <requestid>732316</requestid>
+  </revision>
 </revisionlist>

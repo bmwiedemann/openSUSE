@@ -104,4 +104,18 @@
   * Added i3ipc requirement</comment>
     <requestid>731146</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>afca1f6f838af5b1aacce60b539d05eb</srcmd5>
+    <version>2.1.1</version>
+    <time>1569852185</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.1:
+  * Fixed: #39 Crashes when switching tags on dwm
+  * Handle null NET_WM_STATE when detecting fullscreen
+- Changes from 2.1.0:
+  * Added: flash-fullscreen/no-flash-fullscreen config options
+  * Fixed: Exit without traceback for non-supported wayland WMs
+  * Fixed: Cleaned up flakey tests</comment>
+    <requestid>734029</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,13 @@
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="url">https://github.com/codehaus/jackson.git</param>
+    <param name="scm">git</param>
+    <param name="versionformat">1.9.13</param>
+    <param name="revision">3225405abf68a318b6f21e9ccf7d5c00e80e4df4</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>

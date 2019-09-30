@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Sep 28 13:48:17 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.5
+   see /usr/share/doc/packages/perl-Text-Capitalize/Changes
+
+  
+  1.4  Changed uc calls to ucfirst (hypothetically better
+       for title-casing with unicode strings)
+  
+  
+  1.5  Removed PerlIO::locale dependency from tests, 
+       got rid of the Andy Lester tests of pod and such.
+
+-------------------------------------------------------------------
 Wed Apr 15 07:32:30 UTC 2015 - coolo@suse.com
 
 - initial package $version

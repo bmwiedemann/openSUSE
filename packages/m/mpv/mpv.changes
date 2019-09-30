@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 29 15:08:46 UTC 2019 - idonmez@suse.com
+
+- Update to version 0.30.0+git.1569760020.c833c095d7:
+  * See https://github.com/mpv-player/mpv/compare/b6def652a4...c833c095d7
+  for the complete changelog.
+- Refresh mpv-make-ffmpeg-version-check-non-fatal.patch
+- Remove --enable-zsh-comp option, zsh completion is now always enabled
+
+-------------------------------------------------------------------
 Mon Sep 23 11:24:25 UTC 2019 - idonmez@suse.com
 
 - Update to version 0.30.0+git.1569184750.b6def652a4:

@@ -7,4 +7,14 @@
     <comment>This is needed (at least) by server:messaging/jabberd and server:proxy/simple-obfs, so it is probably better to have it in Factory.</comment>
     <requestid>528085</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>22bff45765f8492627db5c4af78f78ce</srcmd5>
+    <version>0.4</version>
+    <time>1569852191</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix initialization problem in dns_add_srch()
+  * Fix-dns_add_srch-initialization-problem.patch
+- Cleanup spec file</comment>
+    <requestid>734035</requestid>
+  </revision>
 </revisionlist>

@@ -114,6 +114,8 @@ Patch6:         sendmail-8.15.2-openssl-1.1.0-fix.patch
 Patch7:         sendmail-8.15.2-openssl-1.1.0-ecdhe-fix.patch
 # PATCH-FIX-OPENSUSE: make build result reproducible
 Patch8:         sendmail-8.15.2-reproducible.patch
+# PATCH-FIX-OPENSUSE: The former deprecated macro RES_USE_INET6 is gone with glibc 2.30
+Patch9:         sendmail-8.15.2-glibc-2.30.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %global         _sysconfdir	%{_sysconfdir}
 %global         _mailcnfdir	%{_sysconfdir}/mail
@@ -214,6 +216,7 @@ if pkg-config --atleast-version=1.1.0 openssl; then
 fi
 %patch0 -p0 -b .p0
 %patch8 -p1 -b .reproducible
+%patch9 -p0 -b .use_inet6
     tar --strip-components=1 -xf %{S:1} 
     set -f
     cat <<-EOF > file-list

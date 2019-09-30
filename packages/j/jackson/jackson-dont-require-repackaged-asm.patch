@@ -1,0 +1,32 @@
+From d05e128aa7c5ef7b2699b044fa33a799375f1acc Mon Sep 17 00:00:00 2001
+From: Juan Hernandez <juan.hernandez@redhat.com>
+Date: Tue, 14 Feb 2012 18:28:20 +0100
+Subject: [PATCH 2/2] Don't require repackaged asm
+
+To avoid bringing in additional dependencies to do the repackaging.
+
+The repackaging is done in order to avoid version problems, but we should have
+solved that already in Fedora.
+---
+ .../org/codehaus/jackson/mrbean/BeanBuilder.java   |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/mrbean/java/org/codehaus/jackson/mrbean/BeanBuilder.java b/src/mrbean/java/org/codehaus/jackson/mrbean/BeanBuilder.java
+index b03ca0a..cbbc92d 100644
+--- a/src/mrbean/java/org/codehaus/jackson/mrbean/BeanBuilder.java
++++ b/src/mrbean/java/org/codehaus/jackson/mrbean/BeanBuilder.java
+@@ -3,9 +3,9 @@ package org.codehaus.jackson.mrbean;
+ import java.lang.reflect.Method;
+ import java.util.*;
+ 
+-import org.codehaus.jackson.org.objectweb.asm.*;
++import org.objectweb.asm.*;
+ 
+-import static org.codehaus.jackson.org.objectweb.asm.Opcodes.*;
++import static org.objectweb.asm.Opcodes.*;
+ 
+ import org.codehaus.jackson.type.JavaType;
+ import org.codehaus.jackson.map.DeserializationConfig;
+-- 
+1.7.9
+

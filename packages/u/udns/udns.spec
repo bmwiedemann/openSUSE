@@ -1,7 +1,7 @@
 #
 # spec file for package udns
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,11 +20,12 @@ Name:           udns
 Version:        0.4
 Release:        0
 Summary:        DNS resolver tools
-License:        LGPL-2.1
+License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/DNS/Utilities
-Url:            http://www.corpit.ru/mjt/udns.html
+URL:            http://www.corpit.ru/mjt/udns.html
 Source:         http://www.corpit.ru/mjt/udns/udns-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+# PATCH-FIX-UPSTREAM -- http://www.corpit.ru/pipermail/udns/2018q2/000186.html
+Patch0:         Fix-dns_add_srch-initialization-problem.patch
 
 %description
 UDNS is a stub DNS resolver library with ability to perform both
@@ -52,8 +53,10 @@ or compiling programs that use UDNS.
 
 %prep
 %setup -q
+%patch0
 
 %build
+# not an autotools configure
 ./configure --enable-ipv6
 make %{?_smp_mflags} shared
 
@@ -69,22 +72,20 @@ for f in *.[13]; do install -m644 $f %{buildroot}%{_mandir}/man${f#*.}; done
 %postun -n libudns0 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
-%doc COPYING.LGPL NEWS NOTES TODO
+%doc NEWS NOTES TODO
+%license COPYING.LGPL
 %{_bindir}/dnsget
 %{_bindir}/rblcheck
 %{_bindir}/ex-rdns
-%{_mandir}/man1/dnsget.1%{ext_man}
-%{_mandir}/man1/rblcheck.1%{ext_man}
+%{_mandir}/man1/dnsget.1%{?ext_man}
+%{_mandir}/man1/rblcheck.1%{?ext_man}
 
 %files -n libudns0
-%defattr(-,root,root,-)
 %{_libdir}/libudns.so.0
 
 %files devel
-%defattr(-,root,root,-)
 %{_libdir}/libudns.so
 %{_includedir}/udns.h
-%{_mandir}/man3/udns.3%{ext_man}
+%{_mandir}/man3/udns.3%{?ext_man}
 
 %changelog

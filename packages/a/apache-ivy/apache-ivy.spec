@@ -30,8 +30,9 @@ Source1:        ivy.1
 Source2:        http://repo1.maven.org/maven2/org/apache/ivy/ivy/%{version}/ivy-%{version}.pom
 Patch0:         apache-ivy-2.4.0-jdk9.patch
 Patch1:         apache-ivy-global-settings.patch
+Patch2:         port-to-bc-1.52.patch
 BuildRequires:  ant
-BuildRequires:  bouncycastle
+BuildRequires:  bouncycastle-pg
 BuildRequires:  commons-httpclient
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
@@ -69,13 +70,11 @@ JavaDoc documentation for %{name}
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 cp %{SOURCE2} pom.xml
 
 %pom_remove_parent .
-
-#TODO: return back when bouncycastle-pgp will be available
-rm -fr src/java/org/apache/ivy/plugins/signer/bouncycastle
 
 # Remove prebuilt documentation
 rm -rf doc build/doc
@@ -99,8 +98,8 @@ rm src/java/org/apache/ivy/plugins/resolver/*{Ssh,SFTP}*.java
 %build
 # Craft class path
 mkdir -p lib
-build-jar-repository lib ant ant/ant-nodeps oro jsch commons-httpclient
-export CLASSPATH=$(build-classpath ant ant/ant-nodeps oro jsch commons-httpclient)
+build-jar-repository lib ant ant/ant-nodeps oro jsch commons-httpclient bcprov bcpg
+export CLASSPATH=$(build-classpath ant ant/ant-nodeps oro jsch commons-httpclient bcprov bcpg)
 %if %{with vfs}
 build-jar-repository lib commons-vfs2
 export CLASSPATH=${CLASSPATH}:$(build-classpath commons-vfs2)

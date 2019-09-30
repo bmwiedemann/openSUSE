@@ -1,6 +1,9 @@
 -------------------------------------------------------------------
 Thu Sep 12 14:53:16 UTC 2019 - Aleksa Sarai <asarai@suse.com>
 
+- Add backport of https://github.com/lxc/lxc/pull/3102 to fix build failures on
+  openSUSE Leap.
+  + 0001-tree-wide-initialize-all-auto-cleanup-variables.patch
 - Update to lxc 3.2.1. The changelog can be found at
   https://discuss.linuxcontainers.org/t/lxc-3-2-1-has-been-released/5322
   + seccomp: support syscall forwarding to userspace

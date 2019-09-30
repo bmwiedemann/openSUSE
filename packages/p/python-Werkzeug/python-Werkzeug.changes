@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 24 10:15:31 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.16.0:
+  * Deprecate most top-level attributes provided by the werkzeug
+    module in favor of direct imports. The deprecated imports will
+    be removed in version 1.0.
+- Rebase patch 0001_create_a_thread_to_reap_death_process.patch
+
+-------------------------------------------------------------------
 Fri Sep 13 13:06:32 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.15.6:

@@ -46,6 +46,8 @@ Source2:        %{name}.keyring
 Source3:        lxc-createconfig.in
 Source90:       openSUSE-apparmor.conf
 Source91:       missing_setuid.txt.in
+# FIX-UPSTREAM: Backport of https://github.com/lxc/lxc/pull/3102.
+Patch1:         0001-tree-wide-initialize-all-auto-cleanup-variables.patch
 BuildRequires:  gcc
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -127,6 +129,8 @@ Bash command line completion support for %{name}.
 
 %prep
 %setup
+# Fix -Werror=maybe-uninitialized build errors.
+%patch1 -p1
 
 %build
 ./autogen.sh

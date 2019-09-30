@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 27 21:18:31 UTC 2019 - dmulder@suse.com
+
+- Create a stub smb.conf for s3_lp if no smb.conf exists.
+- Fix broken gpo creation by reusing samba code; (bsc#1152357);
+- Use samba-tool code to delete links/gpos.
+- 1.5.0
+
+-------------------------------------------------------------------
 Mon Sep 23 20:35:24 UTC 2019 - dmulder@suse.com
 
 - Fix copy/paste typo in fix for bug 1151733; (bsc#1151738);

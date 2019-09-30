@@ -1,7 +1,7 @@
 #
 # spec file for package screen-message
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           screen-message
-Version:        0.23
+Version:        0.25
 Release:        0
 Summary:        Displays a short text fullscreen
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/X11/Utilities
-Url:            http://darcs.nomeata.de/screen-message.debian
-Source:         %{name}-%{version}.tar.gz
+URL:            https://www.joachim-breitner.de/en/projects#screen-message
+Source:         https://www.joachim-breitner.de/archive/screen-message/%{name}-%{version}.tar.gz
 Patch0:         inst-dir.patch
+# PATCH-FIX-UPSTREAM my_gdk_rgba_parse_void.patch -- fix return value of function
+Patch1:         my_gdk_rgba_parse_void.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gtk3-devel
 BuildRequires:  pango-devel
 BuildRequires:  update-desktop-files
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Screen Message is a small program to display a text as large as possible on your screen. You can edit the text while Screen Message is running. To blank the text, press Esc. To quit Screen Message, press Ctrl-Q or press Esc twice.
@@ -38,12 +39,12 @@ Screen Message is a small program to display a text as large as possible on your
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 autoreconf --install
 %configure --bindir=%{_bindir}
 mv README.Win32 README
-mv debian/changelog ChangeLog
 make %{?_smp_mflags}
 
 %install
@@ -59,11 +60,10 @@ make %{?_smp_mflags}
 %icon_theme_cache_postun
 
 %files
-%defattr(-,root,root)
-%doc README ChangeLog
+%doc README
 %{_bindir}/sm
 %{_datadir}/applications/sm.desktop
 %{_datadir}/icons/hicolor/48x48/apps/sm.png
-%{_mandir}/man6/sm.6%{ext_man}
+%{_mandir}/man6/sm.6%{?ext_man}
 
 %changelog

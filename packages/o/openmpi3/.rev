@@ -126,4 +126,12 @@
     <comment>- Fix bad INCLUDE path in module (bsc#1132949)</comment>
     <requestid>696991</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>ca43e21a312657e07aabf10676385379</srcmd5>
+    <version>3.1.4</version>
+    <time>1569851892</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>733665</requestid>
+  </revision>
 </revisionlist>

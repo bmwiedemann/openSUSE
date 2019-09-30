@@ -20,7 +20,7 @@
 Name:           python-fastremap
 Version:        1.6.2
 Release:        0
-Summary:        Remap, mask, renumber, and in-place transpose numpy arrays
+Summary:        Module to Remap, mask, renumber, and in-place transpose numpy arrays
 License:        LGPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/seung-lab/fastremap/
@@ -37,7 +37,7 @@ Requires:       python-numpy >= 1.16.0
 %python_subpackages
 
 %description
-Remap, mask, renumber, and in-place transpose numpy arrays.
+A module to remap, mask, renumber, and in-place transpose numpy arrays.
 
 %prep
 %setup -q -n fastremap-%{version}

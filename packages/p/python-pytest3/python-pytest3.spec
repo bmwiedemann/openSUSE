@@ -41,6 +41,8 @@ Patch1:         new-pluggy.patch
 Patch2:         sphinx2.0.patch
 # PATCH-FIX-UPSTREAM from master
 Patch3:         importlib-metadata.patch
+# PATCH-FIX-UPSTREAM from master
+Patch4:         importlib-py38.patch
 BuildRequires:  %{python_module setuptools >= 40.0}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  fdupes

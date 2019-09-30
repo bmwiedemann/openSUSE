@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 20 20:12:25 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Ensure that pdftoepdf-poppler-0.75.0.cc is used for any version
+  of poppler >= 0.79.0. Fixes the build with 0.80.0.
+- Update source-poppler0.79.0.patch, since we now patch before
+  copying.
+
+-------------------------------------------------------------------
 Thu Aug  8 10:27:36 UTC 2019 - Jiri Slaby <jslaby@suse.com>
 
 - source-poppler0.79.0.patch: fix build with poppler 0.79

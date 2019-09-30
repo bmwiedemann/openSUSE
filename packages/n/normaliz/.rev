@@ -79,4 +79,12 @@ systems
     <comment>- Update to release 3.8.0</comment>
     <requestid>729716</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b340f9cbaf6938fdf7d6fd014547659b</srcmd5>
+    <version>3.8.1</version>
+    <time>1569852026</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.8.1</comment>
+    <requestid>733922</requestid>
+  </revision>
 </revisionlist>

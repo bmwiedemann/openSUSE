@@ -16,4 +16,15 @@
   on python 3.8+</comment>
     <requestid>730108</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>27db29e6049a88e315a29727db1f6b1b</srcmd5>
+    <version>3.10.1</version>
+    <time>1569851608</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert the importlib-metadata.patch change from last
+  change and split it to separate patch adding more content:
+  * importlib-py38.patch
+  * importlib-metadata.patch</comment>
+    <requestid>733116</requestid>
+  </revision>
 </revisionlist>

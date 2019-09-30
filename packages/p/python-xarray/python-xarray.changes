@@ -1,4 +1,151 @@
 -------------------------------------------------------------------
+Sat Sep 21 19:53:35 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.13.0:
+  * Breaking changes
+    + This release increases the minimum required Python version from
+      3.5.0 to 3.5.3 (GH3089). By Guido Imperiale.
+    + The isel_points and sel_points methods are removed, having been
+      deprecated since v0.10.0. These are redundant with the isel /
+      sel methods. See Vectorized Indexing for the details By
+      Maximilian Roos
+    + The inplace kwarg for public methods now raises an error, having
+      been deprecated since v0.11.0. By Maximilian Roos
+    + concat() now requires the dim argument. Its indexers, mode and
+      concat_over kwargs have now been removed. By Deepak Cherian
+    + Passing a list of colors in cmap will now raise an error, having
+      been deprecated since v0.6.1.
+    + Most xarray objects now define __slots__. This reduces overall
+      RAM usage by ~22% (not counting the underlying numpy buffers);
+      on CPython 3.7/x64, a trivial DataArray has gone down from 1.9kB
+      to 1.5kB.
+      Caveats:
+      o Pickle streams produced by older versions of xarray can’t be
+        loaded using this release, and vice versa.
+      o Any user code that was accessing the __dict__ attribute of
+        xarray objects will break. The best practice to attach custom
+        metadata to xarray objects is to use the attrs dictionary.
+      o Any user code that defines custom subclasses of xarray classes
+        must now explicitly define __slots__ itself. Subclasses that
+        don’t add any attributes must state so by defining __slots__ =
+        () right after the class header. Omitting __slots__ will now
+        cause a FutureWarning to be logged, and will raise an error in a
+        later release.
+      (GH3250) by Guido Imperiale.
+    + The default dimension for Dataset.groupby(), Dataset.resample(),
+      DataArray.groupby() and DataArray.resample() reductions is now
+      the grouping or resampling dimension.
+    + DataArray.to_dataset() requires name to be passed as a kwarg
+      (previously ambiguous positional arguments were deprecated)
+    + Reindexing with variables of a different dimension now raise an
+      error (previously deprecated)
+    + broadcast_array() is removed (previously deprecated in favor of
+      broadcast())
+    + Variable.expand_dims() is removed (previously deprecated in
+      favor of Variable.set_dims())
+  * New functions/methods
+    + xarray can now wrap around any NEP18 compliant numpy-like
+      library (important: read notes about
+      NUMPY_EXPERIMENTAL_ARRAY_FUNCTION in the above link). Added
+      explicit test coverage for sparse. (GH3117, GH3202). This
+      requires sparse>=0.8.0. By Nezar Abdennur and Guido Imperiale.
+    + from_dataframe() and from_series() now support sparse=True for
+      converting pandas objects into xarray objects wrapping sparse
+      arrays. This is particularly useful with sparsely populated
+      hierarchical indexes. (GH3206) By Stephan Hoyer.
+    + The xarray package is now discoverable by mypy (although typing
+      hints coverage is not complete yet). mypy type checking is now
+      enforced by CI. Libraries that depend on xarray and use mypy can
+      now remove from their setup.cfg the lines:
+         [mypy-xarray]
+         ignore_missing_imports = True
+      (GH2877, GH3088, GH3090, GH3112, GH3117, GH3207) By Guido
+      Imperiale and Maximilian Roos.
+    + Added DataArray.broadcast_like() and
+      Dataset.broadcast_like(). By Deepak Cherian and David Mertz.
+    + Dataset plotting API for visualizing dependencies between two
+      DataArrays! Currently only Dataset.plot.scatter() is
+      implemented. By Yohai Bar Sinai and Deepak Cherian
+    + Added DataArray.head(), DataArray.tail() and DataArray.thin();
+      as well as Dataset.head(), Dataset.tail() and Dataset.thin()
+      methods. (GH319) By Gerardo Rivera.
+  * Enhancements
+    + Multiple enhancements to concat() and open_mfdataset(). By
+      Deepak Cherian
+    + Added compat='override'. When merging, this option picks the
+      variable from the first dataset and skips all comparisons.
+    + Added join='override'. When aligning, this only checks that
+      index sizes are equal among objects and skips checking indexes
+      for equality.
+    + concat() and open_mfdataset() now support the join kwarg. It is
+      passed down to align().
+    + concat() now calls merge() on variables that are not
+      concatenated (i.e. variables without concat_dim when data_vars
+      or coords are "minimal"). concat() passes its new compat kwarg
+      down to merge(). (GH2064)
+    + Users can avoid a common bottleneck when using open_mfdataset()
+      on a large number of files with variables that are known to be
+      aligned and some of which need not be concatenated. Slow
+      equality comparisons can now be avoided, for e.g.:
+        data = xr.open_mfdataset(files, concat_dim='time',
+                data_vars='minimal',
+                coords='minimal', compat='override', join='override')
+    + In to_zarr(), passing mode is not mandatory if append_dim is
+      set, as it will automatically be set to 'a' internally. By David
+      Brochart.
+    + Added the ability to initialize an empty or full DataArray with
+      a single value. (GH277) By Gerardo Rivera.
+    + to_netcdf() now supports the invalid_netcdf kwarg when used with
+      engine="h5netcdf". It is passed to h5netcdf.File(). By Ulrich
+      Herter.
+    + drop() now supports keyword arguments; dropping index labels by
+      using both dim and labels or using a DataArrayCoordinates object
+      are deprecated (GH2910). By Gregory Gundersen.
+    + Added examples of Dataset.set_index() and DataArray.set_index(),
+      as well are more specific error messages when the user passes
+      invalid arguments (GH3176). By Gregory Gundersen.
+    + filter_by_attrs() now filters the coordinates as well as the
+      variables. By Spencer Jones.
+  * Bug fixes
+    + Improve “missing dimensions” error message for apply_ufunc()
+      (GH2078). By Rick Russotto.
+    + assign_coords() now supports dictionary arguments (GH3231). By
+      Gregory Gundersen.
+    + Fix regression introduced in v0.12.2 where copy(deep=True) would
+      convert unicode indices to dtype=object (GH3094). By Guido
+      Imperiale.
+    + Improved error handling and documentation for .expand_dims()
+      read-only view.
+    + Fix tests for big-endian systems (GH3125). By Graham Inggs.
+    + XFAIL several tests which are expected to fail on ARM systems
+      due to a datetime issue in NumPy (GH2334). By Graham Inggs.
+    + Fix KeyError that arises when using .sel method with float
+      values different from coords float type (GH3137). By Hasan
+      Ahmad.
+    + Fixed bug in combine_by_coords() causing a ValueError if the
+      input had an unused dimension with coordinates which were not
+      monotonic (GH3150). By Tom Nicholas.
+    + Fixed crash when applying distributed.Client.compute() to a
+      DataArray (GH3171). By Guido Imperiale.
+    + Better error message when using groupby on an empty DataArray
+      (GH3037). By Hasan Ahmad.
+    + Fix error that arises when using open_mfdataset on a series of
+      netcdf files having differing values for a variable attribute of
+      type list. (GH3034) By Hasan Ahmad.
+    + Prevent argmax() and argmin() from calling dask compute
+      (GH3237). By Ulrich Herter.
+    + Plots in 2 dimensions (pcolormesh, contour) now allow to specify
+      levels as numpy array (GH3284). By Mathias Hauser.
+    + Fixed bug in DataArray.quantile() failing to keep attributes
+      when keep_attrs was True (GH3304). By David Huard
+      https://github.com/huard.
+  * Documentation
+    + Created a PR checklist as a quick reference for tasks before
+      creating a new PR or pushing new commits. By Gregory Gundersen.
+    + Fixed documentation to clean up unwanted files created in
+      ipython examples (GH3227). By Gregory Gundersen.
+
+-------------------------------------------------------------------
 Mon Jul 29 21:32:02 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Disable non-functional dask tests

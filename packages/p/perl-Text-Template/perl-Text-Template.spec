@@ -17,7 +17,7 @@
 
 
 Name:           perl-Text-Template
-Version:        1.57
+Version:        1.58
 Release:        0
 %define cpan_name Text-Template
 Summary:        Expand template text with embedded Perl

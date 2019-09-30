@@ -49,4 +49,12 @@
     <comment>- Update to upstream release 4.1.1</comment>
     <requestid>726002</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f250e18cbfcebce0a3256ca35c0afe66</srcmd5>
+    <version>4.1.2</version>
+    <time>1569851998</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 4.1.2</comment>
+    <requestid>733905</requestid>
+  </revision>
 </revisionlist>

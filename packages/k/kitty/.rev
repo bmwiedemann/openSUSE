@@ -68,4 +68,30 @@
     when passing buffer as ANSI (#1924)</comment>
     <requestid>727720</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1b8bbf1728d76beb772feddf20273777</srcmd5>
+    <version>0.14.6</version>
+    <time>1569852180</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.6:
+  * Fix a regression in the previous release that caused kitty to
+    not always respond to DPI changes (#1999)
+- Changes from 0.14.5:
+  * Implement a hack to (mostly) preserve tabs when cat-ting a
+    file with them and then copying the text or passing screen
+    contents to another program (#1829)
+  * When all visible windows have the same background color, use
+    that as the color for the global padding, instead of the
+    configured background color (#1957)
+  * When resetting the terminal, also reset parser state, this
+    allows easy recovery from incomplete escape codes (#1961)
+  * Allow mapping keys commonly found on European keyboards (#1928)
+  * Fix incorrect rendering of some symbols when followed by a
+    space while using the PowerLine font which does not have a
+    space glyph (#1225)
+  * Linux: Allow using fonts with spacing=90 in addition to
+    fonts with spacing=100 (#1968)
+  * Use selection foreground color for underlines as well (#1982)</comment>
+    <requestid>734028</requestid>
+  </revision>
 </revisionlist>

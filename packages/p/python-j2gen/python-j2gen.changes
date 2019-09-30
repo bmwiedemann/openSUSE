@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 30 08:26:37 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 0.1.0:
+* Error out when template variables are not defined
+
+-------------------------------------------------------------------
+Fri Sep 27 07:48:59 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Format with spec-cleaner
+- Do not pull in devel python module as it is not needed
+
+-------------------------------------------------------------------
 Fri Sep 27 03:41:03 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
 
 - Initial packaging (version 0.0.1)

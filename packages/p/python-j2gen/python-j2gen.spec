@@ -19,17 +19,20 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-j2gen
-Version:        0.0.1
+Version:        0.1.0
 Release:        0
 Summary:        Jinja2 template renderer with yaml input files
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/toabctl/j2gen
+URL:            https://github.com/toabctl/j2gen
 Source:         https://files.pythonhosted.org/packages/source/j/j2gen/j2gen-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Jinja2
+Requires:       python-PyYAML
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyYAML}
@@ -37,11 +40,6 @@ BuildRequires:  %{python_module ddt}
 BuildRequires:  %{python_module flake8}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-Jinja2
-Requires:       python-PyYAML
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -56,6 +54,7 @@ Jinja2 template renderer with yaml input files
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
 %check
 %python_exec setup.py test
 

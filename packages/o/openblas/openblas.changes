@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Aug 12 06:22:47 UTC 2019 - Martin Liška <mliska@suse.cz>
 
-- Update to version 0.3.7
+- Update to version 0.3.7 (jsc#SLE-8492)
   common:
     * having the gmake special variables TARGET_ARCH or TARGET_MACH
       defined no longer causes build failures in ctest or utest

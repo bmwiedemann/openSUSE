@@ -17,7 +17,7 @@
 
 
 Name:           amarok
-Version:        2.9.70git.20190820T023444~600806141d
+Version:        2.9.70git.20190920T110913~b986f52d1d
 Release:        0
 Summary:        Media Player
 License:        GPL-2.0-or-later
@@ -33,8 +33,6 @@ Patch1:         flac_mimetype_bnc671581.diff
 Patch2:         disable-web-plugins-by-default.patch
 # PATCH-FIX-OPENSUSE
 Patch3:         0001-Work-around-QTBUG-75797-for-openQA.patch
-# PATCH-FIX-UPSTREAM
-Patch4:         0001-Fix-a-crash-when-running-amarok-l-path-to-file.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  fftw-devel

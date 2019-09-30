@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 26 07:03:34 UTC 2019 - Josef Möllers <josef.moellers@suse.com>
+
+- version update to 1.1.15
+  - Code cleanup, minor bug fixes
+  [jsc#SLE-8266]
+
+-------------------------------------------------------------------
 Tue Mar 22 16:26:13 UTC 2016 - jloeser@suse.com
 
 - version update to 1.1.14 (fate#319555, fate#322224)

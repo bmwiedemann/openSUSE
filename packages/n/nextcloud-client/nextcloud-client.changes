@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Sep 27 20:42:15 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- Update to 2.6.0
+  * desktop#1222 Reinstate Debian build in the new Drone config
+  * desktop#1225 Typo
+  * desktop#1256 Marking unused strings as unstranslatable
+  * desktop#1275 Fixes #607
+  * desktop#1278 Fixes issue #878
+  * desktop#1342 Fixes issue #1187
+  * desktop#1347 Displays FileIgnored activities with an info icon
+  * desktop#1354 Minor text change in the link to help in the tab 'General'.
+  * desktop#1359 Update Qt 5.5 compatibility patch for Xenial
+  * desktop#1360 Remove Ubuntu Cosmic and add Eoan package
+  * desktop#1366 Add proper CA to client side certificate connection
+  * desktop#1372 Remove dependency on libgnome-keyring0 on Eoan
+  * desktop#1374 Read .sync_exclude.lst in each subdirectory
+  * desktop#1376 Updates ChangeLog.
+  * desktop#1384 Login flow v2
+  * desktop#1389 Adds SSL client cert storage to webflow + Login Flow v2
+  * desktop#1394 Windows: Workaround for CredWriteW used by QtKeychain
+  * desktop#1399 Integrated registry check on windows when hasDarkSystray is called.
+  * desktop#1401 Logo update
+  * desktop#1402 Updated .gitignore to integrate unwanted files when working with VSC …
+  * desktop#1405 Full-Scaled new logo in Windows 10 start menu tile
+  * desktop#1408 Qt5.5 compatiblity patch for login flow V2 + UI improvement (Use newer digest algorithms in TLS error dialog)
+  * desktop#1427 Fix for #1382 "linux client crashes for no discernable reason"
+  * desktop#1434 UI improvement: Message box: Delete / Keep all files
+  * desktop#1443 Improve wording of the context menu in the file manager extension.
+  * desktop#1447 Changes wording in the share context menu.
+  * Fix White Window issue on Windows by upgrading to Qt 5.12.5
+
+
+-------------------------------------------------------------------
 Wed Jul 24 11:46:28 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
 
 - Update to 2.5.3

@@ -77,4 +77,14 @@ Add remove-unittest2.patch fixing the code.</comment>
     <comment></comment>
     <requestid>726226</requestid>
   </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>b5baf72622add3a99338b00fd6922edf</srcmd5>
+    <version>6.10.0</version>
+    <time>1569851764</time>
+    <user>dimstar_suse</user>
+    <comment>- Undo tornado version change causing package to break
+- Re-enable test suite
+- Remove unnecessary build dependencies on dev tools</comment>
+    <requestid>732924</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 29 07:45:15 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.1.2
+  * Do not corrupt usermodes on module unload/reload.
+
+-------------------------------------------------------------------
 Mon Aug 26 04:44:49 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to upstream release 4.1.1

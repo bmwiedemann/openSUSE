@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-CairoSVG
-Version:        2.4.1
+Version:        2.4.2
 Release:        0
 Summary:        A Python SVG converter based on Cairo
 License:        LGPL-3.0-or-later
@@ -68,7 +68,7 @@ sed -i setup.cfg \
 %python_clone -a %{buildroot}/%{_bindir}/cairosvg
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix}
+%pytest
 
 %post
 %python_install_alternative cairosvg

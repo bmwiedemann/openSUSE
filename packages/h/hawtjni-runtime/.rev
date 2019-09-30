@@ -17,4 +17,12 @@
 </comment>
     <requestid>693095</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9ce76d8fdba5d258c3144fa689fd2b7a</srcmd5>
+    <version>1.16</version>
+    <time>1569852110</time>
+    <user>dimstar_suse</user>
+    <comment>Remove references to parent</comment>
+    <requestid>734010</requestid>
+  </revision>
 </revisionlist>

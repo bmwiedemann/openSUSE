@@ -21,7 +21,7 @@
 
 %define _waf_ver 2.0.9
 %define _mbc_ver 3.3.17
-%define _mpv_ver 0.30.0+git.1569184750.b6def652a4
+%define _mpv_ver 0.30.0+git.1569760020.c833c095d7
 %define lname   libmpv1
 Name:           mpv
 Version:        %{_mpv_ver}
@@ -227,7 +227,6 @@ python3 ./waf configure \
   --enable-dvdnav                    \
   --enable-libsmbclient              \
   --enable-libmpv-shared             \
-  --enable-zsh-comp                  \
   --enable-manpage-build             \
   --enable-libarchive                \
   --enable-dvbin                     \

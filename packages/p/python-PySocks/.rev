@@ -48,4 +48,13 @@
     <comment></comment>
     <requestid>710312</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9608b98437036b60cb006bcd95388fbc</srcmd5>
+    <version>1.7.1</version>
+    <time>1569851711</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.1:
+  * no changelog provided</comment>
+    <requestid>732897</requestid>
+  </revision>
 </revisionlist>

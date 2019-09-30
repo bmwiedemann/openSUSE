@@ -19,7 +19,7 @@
 %define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Werkzeug
-Version:        0.15.6
+Version:        0.16.0
 Release:        0
 Summary:        The Swiss Army knife of Python web development
 License:        BSD-3-Clause

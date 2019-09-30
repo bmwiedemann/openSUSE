@@ -1,4 +1,4 @@
-% metamath.tex - Version of 7-Apr-2019
+% metamath.tex - Version of 2-Jun-2019
 % If you change the date above, also change the "Printed date" below.
 % SPDX-License-Identifier: CC0-1.0
 %
@@ -22,7 +22,12 @@
 % Norman Megill - email: nm(at)alum(dot)mit(dot)edu
 %
 % David A. Wheeler also donates his improvements to this file to the
-% public domain.
+% public domain per the CC0.  He works at the Institute for Defense Analyses
+% (IDA), but IDA has agreed that this Metamath work is outside its "lane"
+% and is not a work by IDA.  This was specifically confirmed by
+% Margaret E. Myers (Division Director of the Information Technology
+% and Systems Division) on 2019-05-24 and by Ben Lindorf (General Counsel)
+% on 2019-05-22.
 
 % This file, 'metamath.tex', is self-contained with everything needed to
 % generate the the PDF file 'metamath.pdf' (the _Metamath_ book) on
@@ -831,16 +836,16 @@
 \begin{center}
 {\LARGE\bf Metamath} \\
 \vspace{1ex}
-{\large A Computer Language for Pure Mathematics} \\
+{\large A Computer Language for Mathematical Proofs} \\
 \vspace{7ex}
 {\large Norman Megill} \\
 \vspace{7ex}
-with improvements by \\
+with extensive revisions by \\
 \vspace{1ex}
 {\large David A. Wheeler} \\
 \vspace{7ex}
 % Printed date. If changing the date below, also fix the date at the beginning.
-2019-04-07
+2019-06-02
 \end{center}
 
 \vfill
@@ -909,7 +914,8 @@ Any trademarks used in this book are the property of their owners.
 
 \vspace{7ex}
 % ISBN: 1-4116-3724-0 \\
-ISBN: 978-1-4116-3724-5 \\
+% ISBN: 978-1-4116-3724-5 \\
+ISBN: 978-0-359-70223-7 \\
 {\ } \\
 Lulu Press \\
 Morrisville, North Carolina\\
@@ -966,7 +972,7 @@ Metamath with certain special sequences (axioms) that tell it what rules
 of inference are allowed.  Metamath is not limited to any specific field of
 mathematics.  The Metamath language is simple and robust, with an
 almost total absence of hard-wired syntax, and
-I\footnote{Unless otherwise noted, the words
+we\footnote{Unless otherwise noted, the words
 ``I,'' ``me,'' and ``my'' refer to Norman Megill\index{Megill, Norman}, while
 ``we,'' ``us,'' and ``our'' refer to Norman Megill and
 David A. Wheeler\index{Wheeler, David A.}.}
@@ -1109,7 +1115,7 @@ Mario Carneiro has developed an algorithm for converting proofs from
 the OpenTheory interchange format, which can be translated to and from
 any of the HOL family of proof languages (HOL4, HOL Light, ProofPower,
 and Isabelle), into the
-Metamath language.\cite{DBLP:journals/corr/Carneiro14}\index{Carneiro, Mario}.
+Metamath language \cite{DBLP:journals/corr/Carneiro14}\index{Carneiro, Mario}.
 Daniel Whalen has developed Holophrasm, which can automatically
 prove many Metamath proofs using
 machine learning\index{machine learning}\index{artificial intelligence}
@@ -1295,7 +1301,7 @@ those sets which lie in a transitive set of cardinality less than
 $\kappa$.  Instead of the ``category of all groups,'' one works relative
 to a universe [considering the category of groups of cardinality less
 than $\kappa$].  Now the category whose objects are all categories
-``relative'' to the universe $U(\kappa)$'' will be a category not
+``relative to the universe $U(\kappa)$'' will be a category not
 relative to this universe but to the next universe.
 
      All of the things category theorists like to do can be done in this
@@ -1359,7 +1365,7 @@ the one slight deviation in axiom ax-6 is explained and justified.
 The real and complex number axioms were modified to be consistent with
 \texttt{set.mm}\index{set theory database (\texttt{set.mm})}%
 \index{Metamath Proof Explorer}.
-Long-awaited specification changes ``1-8'' were made,
+Long-awaited specification changes ``1--8'' were made,
 which clarified previously ambiguous points.
 Some errors in the text involving \texttt{\$f} and
 \texttt{\$d} statements were corrected (the spec was correct, but
@@ -1377,7 +1383,7 @@ Many minor corrections (too numerous to list here) were also made.
 
 This added a description of the Matamath language syntax in
 Extended Backus--Naur Form (EBNF)\index{Extended Backus--Naur Form}\index{EBNF}
-in appendix \ref{BNF}, added a brief explanation about typecodes,
+in Appendix \ref{BNF}, added a brief explanation about typecodes,
 inserted more examples in the deduction section,
 and added a variety of smaller improvements.
 
@@ -1391,6 +1397,14 @@ from \texttt{set} to \texttt{setvar} to be consistent with the current
 version of \texttt{set.mm}, added more documentation about comment markup
 (e.g., documented how to create headings), and clarified the
 differences between various assertion forms (in particular deduction form).
+
+\subsubsection{Note Added June 2, 2019}\label{note201905}
+
+This version fixes a large number of small issues reported by
+Beno\^{i}t Jubin\index{Jubin, Beno\^{i}t}, such as editorial issues
+and the need to document \texttt{verify markup} (thank you!).
+This version also includes specific examples
+of forms (deduction form, inference form, and closed form).
 
 \chapter{Introduction}
 \pagenumbering{arabic}
@@ -1414,7 +1428,7 @@ to decide in the same way, you decide I don't have any aptitude.
     \footnote{\cite{Davis}, p.~40.}\\
 \end{quotation}
 
-In the past century, brilliant mathematicians have discovered almost
+Brilliant mathematicians have discovered almost
 unimaginably profound results that rank among the crowning intellectual
 achievements of mankind.  However, there is a sense in which modern abstract
 mathematics is behind the times, stuck in an era before computers existed.
@@ -1753,8 +1767,8 @@ theorems with amazing speed, they can't actually prove a single one of them.
 
 After some puzzlement, you revisit some popular books on what mathematics is
 all about.  Somewhere you read that all of mathematics is actually derived
-from something called ``set theory.''  This is a little confusing, because no
-where in the book that presented the axioms of arithmetic was there any
+from something called ``set theory.''  This is a little confusing, because
+nowhere in the book that presented the axioms of arithmetic was there any
 mention of set theory, or if there was, it seemed to be just a tool that helps
 you describe things better---the set of even numbers, that sort of thing.  If
 set theory is the basis for all mathematics, then why are additional axioms
@@ -1974,10 +1988,6 @@ in number theory.} The bugs\index{computer program bugs} that have cropped up
 so far have already made you start to lose faith in the rigor you seem to have
 achieved, and you know it's just going to get worse as your program gets larger.
 
-\begin{center}
-***
-\end{center}
-
 \subsection{Mathematics and the Non-Specialist}
 
 \begin{quote}
@@ -2086,13 +2096,13 @@ p.~40.}\\
 
 \begin{quote}
   {\em The {\em Principia Mathematica} was the crowning achievement of the
-  formalists.  It was also the deathblow of the formalist view.\ldots\\
+  formalists.  It was also the deathblow of the formalist view.\ldots
   {[Rus\-sell]} failed, in three enormous volumes, to get beyond the elementary
   facts of arithmetic.  He showed what can be done in principle and what
   cannot be done in practice.  If the mathematical process were really
   one of strict, logical progression, we would still be counting our
-  fingers.\ldots\\
-  One theoretician estimates, for instance, that a demonstration of one of
+  fingers.\ldots
+  One theoretician estimates\ldots that a demonstration of one of
   Ramanujan's conjectures assuming set theory and elementary analysis would
   take about two thousand pages; the length of a deduction from first principles
   is nearly in\-con\-ceiv\-a\-ble\ldots The probabilists argue that\ldots any
@@ -2117,7 +2127,8 @@ theorems rather than proving them over and over.
 Just as important, definitions\index{definition} can be introduced along
 the way, allowing very complex formulas to be represented with few
 symbols.  Not doing this can lead to absurdly long formulas.  For
-example, G\"{o}del's incompleteness theorem\index{G\"{o}del's
+example, the mere statement of
+G\"{o}del's incompleteness theorem\index{G\"{o}del's
 incompleteness theorem}, which can be expressed with a small number of
 defined symbols, would require about 20,000 primitive symbols to express
 it.\index{Boolos, George S.}\footnote{George S.\ Boolos, lecture at
@@ -2145,6 +2156,7 @@ created for us.}
    \flushright\sc  David Hilbert\footnote{As quoted in \cite{Moore}, p.~131.}\\
 \end{quote}\index{Hilbert, David}
 
+\needspace{3\baselineskip}
 \begin{quote}
   {\em Mathematics possesses not only truth, but some supreme beauty ---a
   beauty cold and austere, like that of a sculpture.}
@@ -2184,6 +2196,7 @@ considered more elegant.  In the set theory database
 \index{Metamath Proof Explorer}
 provided with Metamath, one goal was to make all proofs as short as possible.
 
+\needspace{4\baselineskip}
 \subsection{Simplicity}
 
 \begin{quote}
@@ -2192,12 +2205,14 @@ provided with Metamath, one goal was to make all proofs as short as possible.
     \flushright\sc Eccles. 7:29\footnote{Jerusalem Bible.}\\
 \end{quote}\index{Bible}
 
+\needspace{3\baselineskip}
 \begin{quote}
   {\em God made integers, all else is the work of man.}
     \flushright\sc Leopold Kronecker\footnote{{\em Jahresbericht
 	der Deutschen Mathematiker-Vereinigung }, vol. 2, p. 19.}\\
 \end{quote}\index{Kronecker, Leopold}
 
+\needspace{3\baselineskip}
 \begin{quote}
   {\em For what is clear and easily comprehended attracts; the
   complicated repels.}
@@ -2450,6 +2465,7 @@ waste their time on such a boring, unrewarding chore.
 
 
 
+\needspace{4\baselineskip}
 \subsection{Trusting the Computer}
 
 \begin{quote}
@@ -2472,8 +2488,8 @@ required 1200 hours of computer time. There has been considerable debate about
 whether such a proof can be trusted and whether such a proof is ``real''
 mathematics \cite{Swart}\index{Swart, E. R.}.\index{trusting computers}
 
-However, under normal circumstances even a skeptical mathematician would a have
-a great deal of confidence in the result of multiplying two numbers on a pocket
+However, under normal circumstances even a skeptical mathematician would have a
+great deal of confidence in the result of multiplying two numbers on a pocket
 calculator, even though the precise details of what goes on are hidden from its
 user.  Even the verification on a supercomputer that a huge number is prime is
 trusted, especially if there is independent verification; no one bothers to
@@ -2644,7 +2660,7 @@ it will respond with \texttt{\{\{n-\char`\>-2\}, \{n-\char`\>-1\},
 the time this version of Mathematica was released this fact was unknown.)  If
 you ask Maple\index{Maple} to \texttt{solve(x\^{ }2 = 2\^{ }x)} then
 \texttt{simplify(\{"\})}, it returns the solution set \texttt{\{2, 4\}}, apparently
-unaware that 0.7666647\ldots is also a solution.} While of course extremely
+unaware that $-0.7666647$\ldots is also a solution.} While of course extremely
 valuable in applied mathematics, computer algebra systems tend to be of little
 interest to the theoretical mathematician except as aids for exploring certain
 specific problems.
@@ -2739,7 +2755,7 @@ computer found the proof in 1996.  For more information on
 the Robbins algebra problem see \cite{Wos}.}
 
 How does Metamath\index{Metamath} relate to automated theorem provers?  A
-theorem prover is primary concerned with one theorem at a time (perhaps
+theorem prover is primarily concerned with one theorem at a time (perhaps
 tapping into a small database of known theorems) whereas Metamath is more like
 a theorem archiving system, storing both the theorem and its proof in a
 database for access and verification.  Metamath is one answer to ``what do you
@@ -2811,7 +2827,7 @@ steps that work... but the sequence is not considered part of the proof.
 
 A good overview of
 higher-level proof verification languages (such as {\sc lcf}\index{lcf@{\sc
-lcf}} and {\sc hol};\index{hol@{\sc hol}})
+lcf}} and {\sc hol}\index{hol@{\sc hol}})
 is given in \cite{Harrison}.  All of these languages are fundamentally
 different from Metamath in that much of the mathematical foundational
 knowledge is embedded in the underlying proof-verification program, rather
@@ -2871,9 +2887,9 @@ Metamath community.
 That said, the Metamath and Ghilbert communities overlap, and fruitful
 conversations between them have occurred many times over the years.
 
-\subsection{Creating a database of formalized mathematics}\label{mathdatabase}
+\subsection{Creating a Database of Formalized Mathematics}\label{mathdatabase}
 
-Besides Metamath, there are several other on-going projects with the goal of
+Besides Metamath, there are several other ongoing projects with the goal of
 formalizing mathematics into computer-verifiable databases.
 Understanding some history will help.
 
@@ -2946,7 +2962,7 @@ formally proven with Metamath:
 \item 54. The Konigsberg Bridge Problem
   (\texttt{konigsberg}, by Mario Carneiro, 2015-04-16)
 \item 83. The Friendship Theorem
-  (\texttt{friendship}, by Alexander van der Vekens, 2018-10-09)
+  (\texttt{friendship}, by Alexander W. van der Vekens, 2018-10-09)
 \end{itemize}
 \end{flushleft}
 
@@ -3004,7 +3020,7 @@ that are more compelling, depending on what you value.
 In any case, we hope this helps you understand Metamath
 within a wider context.
 
-\subsection{In summary}\label{computers-summary}
+\subsection{In Summary}\label{computers-summary}
 
 To summarize our discussions of computers and mathematics, computer algebra
 systems can be viewed as theorem generators focusing on a narrow realm of
@@ -3015,7 +3031,7 @@ provers require human guidance, proof verifiers verify proofs but
 historically they have been
 restricted to first-order logic.
 Metamath, in contrast,
-is a proof verifier and documentor whose realm is essentially unlimited.
+is a proof verifier and documenter whose realm is essentially unlimited.
 
 \section{Mathematics and Metamath}
 
@@ -3264,12 +3280,12 @@ arrive at this result.  First we would prove ``$\exists x \, x = x $,'' then
 we would separately prove ``$\exists x \, x = y $, where $x$ and $y$ are
 distinct variables.''  We would then combine these two special cases ``outside
 of the system'' (i.e.\ in our heads) to be able to claim, ``$\exists x \, x =
-y $, regardless of whether $x$ and $y$ are distinct.''  In other words, in the
+y $, regardless of whether $x$ and $y$ are distinct.''  In other words, the
 combination of the two special cases is a
 metatheorem.  In the system of logic
 used in Metamath's set theory\index{set theory database (\texttt{set.mm})}
 database, the axioms of logic are broken down into small pieces that allow
-them to reassembled in such a way that theorems such as these can be proved
+them to be reassembled in such a way that theorems such as these can be proved
 directly.
 
 Breaking down the axioms in this way makes them look peculiar and not very
@@ -3768,14 +3784,13 @@ alternate ways of invoking the Metamath program.)
 When you first enter Metamath\index{Metamath}, it will be at the CLI, waiting
 for your input. You will see something like the following on your screen:
 \begin{verbatim}
-Metamath - Version 0.172 25-Jan-2019
+Metamath - Version 0.177 27-Apr-2019
 Type HELP for help, EXIT to exit.
 MM>
 \end{verbatim}
 The \texttt{MM>} prompt means that Metamath is waiting for a command.
-(The help message line suggests that commands should be typed in upper
-case, but actually command keywords\index{command keyword} are not case
-sensitive.  We will use lower case in our examples.)
+Command keywords\index{command keyword} are not case sensitive;
+we will use lower-case commands in our examples.
 The version number and its release date will probably be different on your
 system from the one we show above.
 
@@ -3821,7 +3836,7 @@ is arbitrary. To close the log file, type
 MM> close log
 \end{verbatim}
 
-Several commands let you examine what's inside of your database.
+Several commands let you examine what's inside your database.
 Section~\ref{exploring} has an overview of some useful ones.  The
 \texttt{show labels} command lets you see what statement
 labels\index{label} exist.  A \texttt{*} matches any combination of
@@ -3866,7 +3881,7 @@ The mandatory hypotheses\index{mandatory hypothesis} and their
 order\index{RPN order} are
 useful to know when you are trying to understand or debug a proof.
 
-Now you are ready to look at what's really inside of our proof.  First, here is
+Now you are ready to look at what's really inside our proof.  First, here is
 how to look at every step in the proof---not just the ones corresponding to an
 ordinary formal proof\index{formal proof}, but also the ones that build up the
 formulas that appear in each ordinary formal proof step.\index{\texttt{show
@@ -3933,7 +3948,7 @@ The last step, 34, contains the statement that is being proved.
 Looking at a small piece of the proof, notice that steps 3 and 4 have
 established that
 \texttt{( t + 0 )} and \texttt{t} are \texttt{term}\,s, and step 5 makes use of steps 3 and
-4 to establish that \texttt{( t + 0 ) = t} is a \texttt{wff}.  Let us let Metamath
+4 to establish that \texttt{( t + 0 ) = t} is a \texttt{wff}.  Let Metamath
 itself tell us in detail what is happening in step 5.  Note that the
 ``target hypothesis'' refers to where step 5 is eventually used, i.e., in step
 34.
@@ -3966,7 +3981,7 @@ the ``essential'' or logical steps of a proof, i.e.\ those steps
 that correspond to an
 ordinary formal proof\index{formal proof}.  If you type
 \begin{verbatim}
-MM> show proof th1 /essential /lemmon /renumber
+MM> show proof th1 /lemmon /renumber
 \end{verbatim}
 you will see\label{demoproof}
 \begin{verbatim}
@@ -3978,12 +3993,20 @@ you will see\label{demoproof}
 5 1,4 mp         $a |- t = t
 \end{verbatim}
 Compare this to the formal proof on p.~\pageref{zeroproof} and
-notice the resemblance.  The \texttt{/essential} qualifier in the \texttt{show
-proof} command tells Metamath to discard all \texttt{\$f}\index{\texttt{\$f}
+notice the resemblance.
+By default Metamath
+does not show \texttt{\$f}\index{\texttt{\$f}
 statement} hypotheses and everything branching off of them in the proof tree
 when the proof is displayed; this makes the proof look more like an ordinary
 mathematical proof, which does not normally incorporate the explicit
-construction of expressions.  The \texttt{/renumber} qualifier means to renumber
+construction of expressions.
+This is called the ``essential'' view
+(at one time you had to add the
+\texttt{/essential} qualifier in the \texttt{show proof}
+command to get this view, but this is now the default).
+You can could use the \texttt{/all} qualifier in the \texttt{show
+proof} command to also show the explicit construction of expressions.
+The \texttt{/renumber} qualifier means to renumber
 the steps to correspond only to what is displayed.\index{\texttt{show proof}
 command}
 
@@ -4038,7 +4061,7 @@ MM> show s
 STATEMENT, or SOURCE.
 \end{verbatim}
 
-If you don't what know argument to use as part of a command, type a
+If you don't know what argument to use as part of a command, type a
 \texttt{?}\index{\texttt{]}@\texttt{?}\ in command lines}\ at the
 argument position.  Metamath will tell you what it expected there.
 
@@ -4094,9 +4117,9 @@ identified as not proved.
 
 When I first started creating Metamath proofs, I would write down
 on a piece of paper the complete
-formal proof\index{formal proof} as it would appear with the \texttt{/essential}
-qualifier in a \texttt{show proof} command\index{\texttt{show proof} command}; see
-the display of \texttt{show proof th1 /essential /lemmon /re\-num\-ber} above as an
+formal proof\index{formal proof} as it would appear
+in a \texttt{show proof} command\index{\texttt{show proof} command}; see
+the display of \texttt{show proof th1 /lemmon /re\-num\-ber} above as an
 example.  After you get used to using the Proof Assistant\index{Proof
 Assistant} you may get to a point where you can ``see'' the proof in your mind
 and let the Proof Assistant guide you in filling in the details, at least for
@@ -4142,7 +4165,7 @@ Note:  The proof you are starting with is already complete.
 MM-PA>
 \end{verbatim}
 
-The \verb/MM-PA>/ prompt means we are inside of the Proof
+The \verb/MM-PA>/ prompt means we are inside the Proof
 Assistant.\index{Proof Assistant} Most of the regular Metamath commands
 (\texttt{show statement}, etc.) are still available if you need them.
 
@@ -4205,7 +4228,7 @@ here on we will display only the ``essential'' hypotheses, i.e.\ those
 steps that correspond to traditional formal proofs\index{formal proof}.
 
 \begin{verbatim}
-MM-PA> show new_proof/lemmon/essential
+MM-PA> show new_proof/lemmon
 3 ?              $? |- $2
 4 ?              $? |- ( $2 -> t = t )
 5 3,4 mp         $a |- t = t
@@ -4881,7 +4904,7 @@ $x=y\rightarrow (\varphi(x,x)\rightarrow\varphi(x,y))$ where ``$\varphi(x,y)$
    arises from $\varphi(x,x)$ by replacing some, but not necessarily all,
    free\index{free variable}
    occurrences of $x$ by $y$,\\ provided that $y$ is free for $x$
-   in $\phi(x,x)$.'' \end{center}
+   in $\varphi(x,x)$.'' \end{center}
 % (Mendelson p. 95)
 The first equality axiom is simple, but again,
 the condition on the second one is
@@ -4947,7 +4970,7 @@ than the traditional textbook formalization,
 but it is \textit{exactly equivalent} to the textbook formalization,
 and it is \textit{much} easier to work with.
 This is reproduced as system S3 in Section 6 of
-Megill's formalization\cite{Megill}\index{Megill, Norman}.
+Megill's formalization \cite{Megill}\index{Megill, Norman}.
 
 There is one exception, Tarski's axiom of existence,
 which we label as axiom ax-6.
@@ -4975,7 +4998,7 @@ Tarski's system to eliminate this difficulty. The additional
 ``auxilliary'' axiom
 schemes (as we will call them in this section; see below) endow Tarski's
 system with a nice property we call
-metalogical completeness\cite[Remark 9.6]{Megill}\index{Megill, Norman}.
+metalogical completeness \cite[Remark 9.6]{Megill}\index{Megill, Norman}.
 As a result, we can prove any theorem scheme
 expressable in the ``simple metalogic'' of Tarski's system by using
 only Metamath's direct substitution rule applied to the axiom system
@@ -5057,7 +5080,7 @@ The axioms are very general and apply to almost any conceivable mathematical
 object, and this level of abstraction can be overwhelming at first.  To gain an
 intuitive feel, it can be helpful to draw a picture illustrating the concept;
 for example, a circle containing dots could represent a collection of sets,
-and a smaller circle drawn inside of the circle could represent a subset.
+and a smaller circle drawn inside the circle could represent a subset.
 Overlapping circles can illustrate intersection and union.  Circles that
 illustrate the concepts of set theory are frequently used in elementary
 textbooks and are called Venn diagrams\index{Venn diagram}.\index{axioms of
@@ -5144,7 +5167,7 @@ being considered axioms.
 This is in keeping with our general goal of minimizing the number of
 axioms we must depend on.
 
-\subsection{Other axioms}
+\subsection{Other Axioms}
 
 Above we qualified the phrase "all of mathematics" with "essentially."
 The main important missing piece is the ability to do category theory,
@@ -5235,7 +5258,7 @@ typeset them.
 \vskip 1ex
 }
 
-\needspace{4\baselineskip}
+\needspace{5\baselineskip}
 \subsection{Propositional Calculus}\label{propcalc}\index{axioms of
 propositional calculus}
 
@@ -5274,16 +5297,16 @@ Axiom of Simplification.\label{ax1}
 \needspace{4\baselineskip}
 \noindent Rule of Modus Ponens.\label{axmp}\index{modus ponens}
 
-\setbox\startprefix=\hbox{\tt \ \ maj\ \$e\ }
-\setbox\contprefix=\hbox{\tt \ \ \ \ \ \ \ \ \ }
-\startm
-\m{\vdash}\m{(}\m{\varphi}\m{\rightarrow}\m{\psi}\m{)}
-\endm
-
 \setbox\startprefix=\hbox{\tt \ \ min\ \$e\ }
 \setbox\contprefix=\hbox{\tt \ \ \ \ \ \ \ \ \ }
 \startm
 \m{\vdash}\m{\varphi}
+\endm
+
+\setbox\startprefix=\hbox{\tt \ \ maj\ \$e\ }
+\setbox\contprefix=\hbox{\tt \ \ \ \ \ \ \ \ \ }
+\startm
+\m{\vdash}\m{(}\m{\varphi}\m{\rightarrow}\m{\psi}\m{)}
 \endm
 
 \setbox\startprefix=\hbox{\tt \ \ ax-mp\ \$a\ }
@@ -5294,7 +5317,7 @@ Axiom of Simplification.\label{ax1}
 
 
 \needspace{7\baselineskip}
-\subsection{Axioms of Predicate Calculus with equality - Tarski's S2}\index{axioms of predicate calculus}
+\subsection{Axioms of Predicate Calculus with Equality---Tarski's S2}\index{axioms of predicate calculus}
 
 \needspace{3\baselineskip}
 \noindent Rule of Generalization.\index{rule of generalization}
@@ -5374,7 +5397,7 @@ Axiom of Simplification.\label{ax1}
 
 
 \needspace{4\baselineskip}
-\subsection{Axioms of Predicate Calculus with Equality - Auxiliary}\index{axioms of predicate calculus - auxiliary}
+\subsection{Axioms of Predicate Calculus with Equality---Auxiliary}\index{axioms of predicate calculus - auxiliary}
 
 \needspace{2\baselineskip}
 \noindent Axiom of Quantified Negation.
@@ -5621,8 +5644,8 @@ the definition should not be {\em creative}\index{creative
 definition}\index{definition!creative}, that
 is it should not allow an expression that previously qualified as a wff but
 was not provable, to become provable.   Second, the definition should be {\em
-eliminable}\index{definition!eliminability}, that is there should exist an
-algorithmic method for proving any expression using the definition into
+eliminable}\index{definition!eliminability}, that is, there should exist an
+algorithmic method for converting any expression using the definition into
 a logically equivalent expression that previously qualified as a wff.
 
 In almost all cases below, definitions connect two expressions with either
@@ -5651,7 +5674,8 @@ meets the restrictions on the dummy variable imposed by \texttt{\$d} and
 (inverted tee, meaning logical ``false'') as $( \varphi \wedge \lnot \varphi
 )$, i.e.\ ``phi and not phi.''  Here $\varphi$ is effectively bound because the
 definition remains logically equivalent when we replace $\varphi$ with any
-other wff.  (We do not define $\perp$ in \texttt{set.mm}.)
+other wff.  (It is actually \texttt{df-fal}
+in \texttt{set.mm}, which defines $\perp$.)
 
 There are two cases where eliminating definitions is a little more
 complex.  These cases are the definitions \texttt{df-bi} and
@@ -5687,11 +5711,12 @@ a few simplifications such as discarding occurrences of $\lnot\lnot$ (double
 negation).
 
 In the definitions below, we have placed the {\sc ascii} Metamath source
-below each of the formulas to help you to become familiar with the
+below each of the formulas to help you become familiar with the
 notation in the database.  For simplicity, the necessary \texttt{\$f}
 and \texttt{\$d} statements are not shown.  If you are in doubt, use the
 \texttt{show statement}\index{\texttt{show statement} command} command
 in the Metamath program to see the full statement.
+A selection of this notation is summarized in Appendix~\ref{ASCII}.
 
 To understand the motivation for these definitions, you should consult the
 references indicated:  Takeuti and Zaring \cite{Takeuti}\index{Takeuti, Gaisi},
@@ -5700,7 +5725,8 @@ Quine \cite{Quine}\index{Quine, Willard Van Orman}, Bell and Machover
 Herbert B.}.  Our list of definitions is provided more for reference than as a
 learning aid.  However, by looking at a few of them you can gain a feel for
 how the hierarchy is built up.  The definitions are a representative sample of
-the 130 or so in \texttt{set.mm}, but they are complete with respect to the
+the many definitions
+in \texttt{set.mm}, but they are complete with respect to the
 theorem examples we will present in Section~\ref{sometheorems}.  Also, some are
 slightly different from, but logically equivalent to, the ones in \texttt{set.mm}
 (some of which have been revised over time to shorten them, for example).
@@ -5833,7 +5859,9 @@ explicitly
 mentioned.
 
 \vskip 2ex
-\noindent Define existential quantification.\index{existential quantifier
+\noindent Define existential quantification.
+The expression $\exists x \varphi$ means
+``there exists an $x$ where $\varphi$ is true.''\index{existential quantifier
 ($\exists$)}\label{df-ex}
 
 \vskip 0.5ex
@@ -5849,17 +5877,23 @@ mentioned.
 
 \noindent Define proper substitution.\index{proper
 substitution}\index{substitution!proper}\label{df-sb}
-For our notation, we use $[ y / x ] \varphi$ to mean ``the wff that
-results when $y$ is properly substituted for $x$ in the wff $\varphi$''
-(that is, $y$ properly replaces $x$).
+In our notation, we use $[ y / x ] \varphi$ to mean ``the wff that
+results when $y$ is properly substituted for $x$ in the wff
+$\varphi$.''\footnote{
+This can also be described
+as substituting $x$ with $y$, $y$ properly replaces $x$, or
+$x$ is properly replaced by $y$.}
 % This is elsb4, though it currently says: ( [ x / y ] z e. y <-> z e. x )
 For example,
 $[ y / x ] z \in x$ is the same as $z \in y$.
+One way to remember this notation is to notice that it looks like division
+and recall that $( y / x ) \cdot x $ is $y$ (when $x \neq 0$).
 The notation is different from the notation $\varphi ( x | y )$
 that is sometimes used, because the latter notation is ambiguous for us:
 for example, we don't know whether $\lnot \varphi ( x | y )$ is to be
-interpreted as $\lnot ( \varphi x | y )$ or $( \lnot \varphi x | y
-)$.\footnote{Because of the way we initially defined wffs, this is the case
+interpreted as $\lnot ( \varphi ( x | y ) )$ or
+$( \lnot \varphi ) ( x | y )$.\footnote{Because of the way
+we initially defined wffs, this is the case
 with any postfix connective\index{postfix connective} (one occurring after the
 symbols being connected) or infix connective\index{infix connective} (one
 occurring between the symbols being connected).  Metamath does not have a
@@ -6092,16 +6126,16 @@ quantifier ($\exists$)!restricted}  Enderton, p.~22.
 \end{mmraw}
 
 \noindent Define the universal class\index{universal class ($V$)}.  Definition
-5.20, p.~21, of Takeuti and Zaring.
+5.20, p.~21, of Takeuti and Zaring.\label{df-v}
 
 \vskip 0.5ex
 \setbox\startprefix=\hbox{\tt \ \ df-v\ \$a\ }
 \setbox\contprefix=\hbox{\tt \ \ \ \ \ \ \ \ \ \ }
 \startm
-\m{\vdash}\m{V}\m{=}\m{\{}\m{x}\m{|}\m{x}\m{=}\m{x}\m{\}}
+\m{\vdash}\m{{\rm V}}\m{=}\m{\{}\m{x}\m{|}\m{x}\m{=}\m{x}\m{\}}
 \endm
 \begin{mmraw}%
-|- V = \{ x | x = x \} \$.
+|- {\char`\_}V = \{ x | x = x \} \$.
 \end{mmraw}
 
 \noindent Define the subclass\index{subclass}\index{subset} relationship
@@ -6171,16 +6205,16 @@ Compare  Definition 5.14 of Takeuti and Zaring, p.~20.\label{df-nul}
 \setbox\startprefix=\hbox{\tt \ \ df-nul\ \$a\ }
 \setbox\contprefix=\hbox{\tt \ \ \ \ \ \ \ \ \ \ }
 \startm
-\m{\vdash}\m{\varnothing}\m{=}\m{(}\m{V}\m{\setminus}\m{V}\m{)}
+\m{\vdash}\m{\varnothing}\m{=}\m{(}\m{{\rm V}}\m{\setminus}\m{{\rm V}}\m{)}
 \endm
 \begin{mmraw}%
-|- (/) = ( V \SLASH V ) \$.
+|- (/) = ( {\char`\_}V \SLASH {\char`\_}V ) \$.
 \end{mmraw}
 
 \noindent Define power class\index{power set}\index{power class}.  Definition 5.10 of
 Takeuti and Zaring, p.~17, but we also let it apply to proper classes.  (Note
-that \verb$P~$ is the symbol for calligraphic P, the tilde
-suggesting ``curly;'' see Appendix~\ref{ASCII}.)
+that \verb$~P$ is the symbol for calligraphic P, the tilde
+suggesting ``curly;'' see Appendix~\ref{ASCII}.)\label{df-pw}
 
 \vskip 0.5ex
 \setbox\startprefix=\hbox{\tt \ \ df-pw\ \$a\ }
@@ -6190,7 +6224,7 @@ suggesting ``curly;'' see Appendix~\ref{ASCII}.)
 \endm
 % Special incantation required to put ~ into the text
 \begin{mmraw}%
-|- P\char`\~~A = \{ x | x C\_ A \} \$.
+|- \char`\~P~A = \{ x | x C\_ A \} \$.
 \end{mmraw}
 
 \noindent Define the singleton of a class\index{singleton}.  Definition 7.1 of
@@ -6300,7 +6334,7 @@ concept.  Definition from p.~71 of Enderton, extended to classes.
 relation}.  Definition 6.18, p.~29, of Takeuti and Zaring, generalized to
 arbitrary classes.  This definition is well-defined, although not very
 meaningful, when classes $A$ and/or $B$ are proper.\label{dfbr}  The lack of
-parentheses (or any other connective) is not ambiguous since we are defining
+parentheses (or any other connective) creates no ambiguity since we are defining
 an atomic wff.
 
 \vskip 0.5ex
@@ -6316,8 +6350,10 @@ an atomic wff.
 
 \noindent Define an abstraction class of ordered pairs\index{abstraction
 class!of ordered
-pairs}.  A special case of Definition 4.16, p.~14, of Takeuti and Zaring.  Note
-that $x$, $y$, and $z$ must be distinct but that $x$ and $y$ may occur in $\varphi$.
+pairs}.  A special case of Definition 4.16, p.~14, of Takeuti and Zaring.
+Note that $ z $ must be distinct from $ x $ and $ y $,
+and $ z $ must not occur in $\varphi$, but $ x $ and $ y $ may be
+identical and may appear in $\varphi$.
 
 \vskip 0.5ex
 \setbox\startprefix=\hbox{\tt \ \ df-opab\ \$a\ }
@@ -6340,7 +6376,7 @@ that $x$, $y$, and $z$ must be distinct but that $x$ and $y$ may occur in $\varp
 \setbox\startprefix=\hbox{\tt \ \ df-eprel\ \$a\ }
 \setbox\contprefix=\hbox{\tt \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
 \startm
-\m{\vdash}\m{E}\m{=}\m{\{}\m{\langle}\m{x}\m{,}\m{y}\m{\rangle}\m{|}\m{x}\m{
+\m{\vdash}\m{{\rm E}}\m{=}\m{\{}\m{\langle}\m{x}\m{,}\m{y}\m{\rangle}\m{|}\m{x}\m{
 \in}\m{y}\m{\}}
 \endm
 \begin{mmraw}%
@@ -6400,7 +6436,7 @@ definition on p.~468, Bell and Machover.
 |- ( Ord A <-> ( Tr A \TAND E We A ) ) \$.
 \end{mmraw}
 
-\noindent Define class of all ordinal numbers\index{ordinal number}.  An ordinal number is
+\noindent Define the class of all ordinal numbers\index{ordinal number}.  An ordinal number is
 a set that satisfies the ordinal predicate.  Definition 7.11 of Takeuti and
 Zaring, p.~38.
 
@@ -6462,8 +6498,9 @@ is meaningless when classes are proper.
 |- om = \{ x | ( Ord x \TAND A. y ( Lim y -> x e. y ) ) \} \$.
 \end{mmraw}
 
-\noindent Define the cross product\index{cross product} of two classes.  Definition 9.11
-of Quine, p.~64.
+\noindent Define the Cartesian product (also called the
+cross product)\index{Cartesian product}\index{cross product}
+of two classes.  Definition 9.11 of Quine, p.~64.
 
 \vskip 0.5ex
 \setbox\startprefix=\hbox{\tt \ \ df-xp\ \$a\ }
@@ -6474,6 +6511,20 @@ of Quine, p.~64.
 \endm
 \begin{mmraw}%
 |- ( A X. B ) = \{ <. x , y >. | ( x e. A \TAND y e. B) \} \$.
+\end{mmraw}
+
+\noindent Define a relation\index{relation}.  Definition 6.4(1) of Takeuti and
+Zaring, p.~23.
+
+\vskip 0.5ex
+\setbox\startprefix=\hbox{\tt \ \ df-rel\ \$a\ }
+\setbox\contprefix=\hbox{\tt \ \ \ \ \ \ \ \ \ \ \ \ }
+\startm
+\m{\vdash}\m{(}\m{\mbox{\rm Rel}}\m{\,A}\m{\leftrightarrow}\m{A}\m{\subseteq}
+\m{(}\m{{\rm V}}\m{\times}\m{{\rm V}}\m{)}\m{)}
+\endm
+\begin{mmraw}%
+|- ( Rel A <-> A C\_ ( {\char`\_}V X. {\char`\_}V ) ) \$.
 \end{mmraw}
 
 \noindent Define the domain\index{domain} of a class.  Definition 6.5(1) of
@@ -6512,10 +6563,10 @@ Takeuti and Zaring, p.~24.
 \setbox\contprefix=\hbox{\tt \ \ \ \ \ \ \ \ \ \ \ \ }
 \startm
 \m{\vdash}\m{(}\m{A}\m{\restriction}\m{B}\m{)}\m{=}\m{(}\m{A}\m{\cap}\m{(}\m{B}
-\m{\times}\m{V}\m{)}\m{)}
+\m{\times}\m{{\rm V}}\m{)}\m{)}
 \endm
 \begin{mmraw}%
-|- ( A |` B ) = ( A i\^{}i ( B X. V ) ) \$.
+|- ( A |` B ) = ( A i\^{}i ( B X. {\char`\_}V ) ) \$.
 \end{mmraw}
 
 \noindent Define the image\index{image} of a class.  Definition 6.6(2) of
@@ -6546,20 +6597,6 @@ Takeuti and Zaring, p.~24.
 \begin{mmraw}%
 |- ( A o. B ) = \{ <. x , y >. | E. z ( <. x , z
 >. e. B \TAND <. z , y >. e. A ) \} \$.
-\end{mmraw}
-
-\noindent Define a relation\index{relation}.  Definition 6.4(1) of Takeuti and
-Zaring, p.~23.
-
-\vskip 0.5ex
-\setbox\startprefix=\hbox{\tt \ \ df-rel\ \$a\ }
-\setbox\contprefix=\hbox{\tt \ \ \ \ \ \ \ \ \ \ \ \ }
-\startm
-\m{\vdash}\m{(}\m{\mbox{\rm Rel}}\m{\,A}\m{\leftrightarrow}\m{A}\m{\subseteq}
-\m{(}\m{V}\m{\times}\m{V}\m{)}\m{)}
-\endm
-\begin{mmraw}%
-|- ( Rel A <-> A C\_ ( V X. V ) ) \$.
 \end{mmraw}
 
 \noindent Define a function\index{function}.  Definition 6.4(4) of Takeuti and
@@ -6857,7 +6894,7 @@ The hypothesis
 \setbox\startprefix=\hbox{\tt \ \ \ \ \ \ \ \ \ \$e\ }
 \setbox\contprefix=\hbox{\tt \ \ \ \ \ \ \ \ \ \ }
 \startm
-\m{\vdash}\m{A}\m{\in}\m{V}
+\m{\vdash}\m{A}\m{\in}\m{{\rm V}}
 \endm
 \vskip 1ex
 
@@ -6908,10 +6945,13 @@ Whitehead and Russell call this ``the principle of the
 syllogism... because... the syllogism in Barbara is derived from them''
 \cite[quote after Theorem *2.06 p.~101]{PM}.
 Some authors call this law a ``hypothetical syllogism.''
-At the time of this writing it is the most commonly referenced assertion in the
-\texttt{set.mm} database.\footnote{
+As of 2019 \texttt{syl} is the most commonly referenced proven
+assertion in the \texttt{set.mm} database.\footnote{
 The Metamath program command \texttt{show usage}
 shows the number of references.
+On 2019-04-29 (commit 71cbbbdb387e) \texttt{syl} was directly referenced
+10,819 times. The second most commonly referenced proven assertion
+was \texttt{eqid}, which was directly referenced 7,738 times.
 }
 
 \vskip 2ex
@@ -6949,7 +6989,7 @@ Theorem 6.9 of Quine, p. 43.
 \setbox\startprefix=\hbox{\tt \ \ isset\ \$p\ }
 \setbox\contprefix=\hbox{\tt \ \ \ \ \ \ \ \ \ \ \ }
 \startm
-\m{\vdash}\m{(}\m{A}\m{\in}\m{V}\m{\leftrightarrow}\m{\exists}\m{x}\m{\,x}\m{=}
+\m{\vdash}\m{(}\m{A}\m{\in}\m{{\rm V}}\m{\leftrightarrow}\m{\exists}\m{x}\m{\,x}\m{=}
 \m{A}\m{)}
 \endm
 \vskip 1ex
@@ -6967,12 +7007,12 @@ theory.  Compare Exercise 4 of Takeuti and Zaring, p.~22.
 \setbox\startprefix=\hbox{\tt \ \ inex1.1\ \$e\ }
 \setbox\contprefix=\hbox{\tt \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
 \startm
-\m{\vdash}\m{A}\m{\in}\m{V}
+\m{\vdash}\m{A}\m{\in}\m{{\rm V}}
 \endm
 \setbox\startprefix=\hbox{\tt \ \ inex\ \$p\ }
 \setbox\contprefix=\hbox{\tt \ \ \ \ \ \ \ \ \ \ \ \ \ }
 \startm
-\m{\vdash}\m{(}\m{A}\m{\cap}\m{B}\m{)}\m{\in}\m{V}
+\m{\vdash}\m{(}\m{A}\m{\cap}\m{B}\m{)}\m{\in}\m{{\rm V}}
 \endm
 \vskip 1ex
 
@@ -6983,7 +7023,7 @@ other axioms of ZF set theory. Corollary 5.16 of Takeuti and Zaring, p.~20.
 \setbox\startprefix=\hbox{\tt \ \ 0ex\ \$p\ }
 \setbox\contprefix=\hbox{\tt \ \ \ \ \ \ \ \ \ \ \ \ }
 \startm
-\m{\vdash}\m{\varnothing}\m{\in}\m{V}
+\m{\vdash}\m{\varnothing}\m{\in}\m{{\rm V}}
 \endm
 \vskip 1ex
 
@@ -6993,7 +7033,7 @@ axioms of ZF set theory.  Theorem 7.13 of Quine, p.~51.
 \setbox\startprefix=\hbox{\tt \ \ prex\ \$p\ }
 \setbox\contprefix=\hbox{\tt \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
 \startm
-\m{\vdash}\m{\{}\m{A}\m{,}\m{B}\m{\}}\m{\in}\m{V}
+\m{\vdash}\m{\{}\m{A}\m{,}\m{B}\m{\}}\m{\in}\m{{\rm V}}
 \endm
 \vskip 2ex
 
@@ -7023,7 +7063,7 @@ its power set.  Compare Theorem 6B(b) of Enderton, p.~132.
 \setbox\startprefix=\hbox{\tt \ \ canth.1\ \$e\ }
 \setbox\contprefix=\hbox{\tt \ \ \ \ \ \ \ \ \ \ \ \ \ }
 \startm
-\m{\vdash}\m{A}\m{\in}\m{V}
+\m{\vdash}\m{A}\m{\in}\m{{\rm V}}
 \endm
 \setbox\startprefix=\hbox{\tt \ \ canth\ \$p\ }
 \setbox\contprefix=\hbox{\tt \ \ \ \ \ \ \ \ \ \ \ }
@@ -7042,7 +7082,7 @@ not two.)
 \setbox\startprefix=\hbox{\tt \ \ onprc\ \$p\ }
 \setbox\contprefix=\hbox{\tt \ \ \ \ \ \ \ \ \ \ \ \ }
 \startm
-\m{\vdash}\m{\lnot}\m{\mbox{\rm On}}\m{\in}\m{V}
+\m{\vdash}\m{\lnot}\m{\mbox{\rm On}}\m{\in}\m{{\rm V}}
 \endm
 \vskip 1ex
 
@@ -7214,7 +7254,7 @@ Axiom of Infinity.)
 \ omex\ \$p\ }
 \setbox\contprefix=\hbox{\tt \ \ \ \ \ \ \ \ \ \ }
 \startm
-\m{\vdash}\m{\omega}\m{\in}\m{V}
+\m{\vdash}\m{\omega}\m{\in}\m{{\rm V}}
 \endm
 %\vskip 2ex
 
@@ -7222,7 +7262,8 @@ Axiom of Infinity.)
 \section{Axioms for Real and Complex Numbers}\label{real}
 \index{real and complex numbers!axioms for}
 
-This section presents the axioms for real and complex numbers.  Analysis
+This section presents the axioms for real and complex numbers, along
+with some commentary about them.  Analysis
 textbooks implicitly or explicitly use these axioms or their equivalents
 as their starting point.  In the database \texttt{set.mm}, we define real
 and complex numbers as (rather complicated) specific sets and derive these
@@ -7243,6 +7284,9 @@ think of them as otherwise unspecified sets that happen to satisfy the axioms.
 The derivation is not easy, but the fact that it works is quite remarkable
 and lends support to the idea that ZFC set theory is all we need to
 provide a foundation for essentially all of mathematics.
+
+\needspace{3\baselineskip}
+\subsection{The Axioms for Real and Complex Numbers Themselves}\label{realactual}
 
 For the axioms we are given (or postulate) 8 classes:  $\mathbb{C}$ (the
 set of complex numbers), $\mathbb{R}$ (the set of real numbers, a subset
@@ -7539,7 +7583,7 @@ automatically applies to integers.  The natural numbers $\mathbb{N}$
 are different from the set $\omega$ we defined earlier, but both satisfy
 Peano's postulates.
 
-\subsubsection{Complex Number Axioms in Analysis Texts}
+\subsection{Complex Number Axioms in Analysis Texts}
 
 Most analysis texts construct complex numbers as ordered pairs of reals,
 leading to construction-dependent properties that satisfy these axioms
@@ -7553,12 +7597,12 @@ None of these axioms is unique individually, but this carefully worked out
 collection of axioms is the result of years of work
 by the Metamath community.
 
-\subsubsection{Eliminating Unnecessary Complex Number Axioms}
+\subsection{Eliminating Unnecessary Complex Number Axioms}
 
 We once had more axioms for real and complex numbers, but over years of time
 we (the Metamath community)
 have found ways to eliminate them (by proving them from other axioms)
-or weakened them (by making weaker claims without reducing what
+or weaken them (by making weaker claims without reducing what
 can be proved).
 In particular, here are statements that used to be complex number
 axioms but have since been formally proven (with Metamath) to be redundant:
@@ -7566,25 +7610,34 @@ axioms but have since been formally proven (with Metamath) to be redundant:
 \begin{itemize}
 \item
   $\mathbb{C} \in V$.
-  Proven redundant by Mario Carneiro\index{Carneiro, Mario} on 18-Feb-2014.
+  At one time this was listed as a ``complex number axiom.''
+  However, this is not properly speaking a complex number axiom,
+  and in any case its proof uses axioms of set theory.
+  Proven redundant by Mario Carneiro\index{Carneiro, Mario} on
+  17-Nov-2014 (see \texttt{axcnex}).
 \item
   $((A \in \mathbb{C} \land B \in \mathbb{C}$) $\rightarrow$
   $(A + B) = (B + A))$.
   Proved redundant by Eric Schmidt\index{Schmidt, Eric} on 19-Jun-2012,
-  and formalized by Scott Fenton\index{Fenton, Scott} on 4-Jan-2013.
+  and formalized by Scott Fenton\index{Fenton, Scott} on 3-Jan-2013
+  (see \texttt{addcom}).
 \item
   $(A \in \mathbb{C} \rightarrow (A + 0) = A)$.
   Proved redundant by Eric Schmidt on 19-Jun-2012,
-  and formalized by Scott Fenton on 4-Jan-2013.
+  and formalized by Scott Fenton on 3-Jan-2013
+  (see \texttt{addid1}).
 \item
   $(A \in \mathbb{C} \rightarrow \exists x \in \mathbb{C} (A + x) = 0)$.
-Proved redundant by Eric Schmidt, 21-May-2007.
+  Proved redundant by Eric Schmidt and formalized on 21-May-2007
+  (see \texttt{cnegex}).
 \item
   $((A \in \mathbb{C} \land A \ne 0) \rightarrow \exists x \in \mathbb{C} (A \cdot x) = 1)$.
-  Proved redundant by Eric Schmidt on 21-May-2007.
+  Proved redundant by Eric Schmidt and formalized on 22-May-2007
+  (see \texttt{recex}).
 \item
   $0 \in \mathbb{R}$.
-  Proved redundant by Eric Schmidt on 19-Feb-2005.
+  Proved redundant by Eric Schmidt on 19-Feb-2005 and formalized 21-May-2007
+  (see \texttt{0re}).
 \end{itemize}
 
 We could eliminate 0 as an axiomatic object by defining it as
@@ -7606,7 +7659,7 @@ This is a useful demonstration of what a Metamath proof can look like.
 This proof may have more steps than you're used to, but each step is rigorously
 proven all the way back to the axioms of logic and set theory.
 This display was originally generated by the Metamath program
-as an HTML file.
+as an {\sc HTML} file.
 
 In the table showing the proof ``Step'' is the sequential step number,
 while its associated ``Expression'' is an expression that we have proved.
@@ -7663,7 +7716,7 @@ So once you master substitution, you can master every Metamath proof,
 no exceptions.
 
 Each step is clear and can be immediately checked.
-In the HTML display you can even click on each reference to see why it is
+In the {\sc HTML} display you can even click on each reference to see why it is
 justified, making it easy to see why the proof works.
 
 \section{Deduction}\label{deduction}
@@ -7758,11 +7811,12 @@ the Standard Deduction Theorem to the language and proof verifier,
 that would greatly complicate both and largely defeat Metamath's goal
 of simplicity. In principle, we could show direct proofs by expanding
 out the proof steps generated by the algorithm of the Standard Deduction
-Theorem, but it is not feasible in practice because the number of proof
-steps quickly becomes huge, even astronomical. Since the algorithm is
-driven by proof of the deduction, we would have to go through that proof
-all over again—starting from axioms—in order to obtain the theorem
-form. In terms of proof length, there would be no savings over just
+Theorem, but that is not feasible in practice because the number of proof
+steps quickly becomes huge, even astronomical.
+Since the algorithm of the Standard Deduction Theorem is driven by the proof,
+we would have to go through that proof
+all over again---starting from axioms---in order to obtain the theorem form.
+In terms of proof length, there would be no savings over just
 proving the theorem directly instead of first proving the deduction form.
 
 \subsection{Weak Deduction Theorem}\label{weakdeductiontheorem}
@@ -7796,7 +7850,7 @@ eliminates a hypothesis $\varphi$, making it become an antecedent.
 It does this by proving an expression
 $ \varphi \rightarrow \psi $ given two hypotheses:
 (1)
-$ ( A = if ( \varphi , A , B ) \rightarrow ( \varphi \leftrightarrow \chi ) ) $
+$ ( A = {\rm if} ( \varphi , A , B ) \rightarrow ( \varphi \leftrightarrow \chi ) ) $
 and
 (2) $\chi$.
 Note that it requires that a proof exists for $\varphi$ when the class variable
@@ -7869,16 +7923,17 @@ For example, we used $1 \in \mathbb{R}$ in step 3 of \texttt{renegcl}.
 
 We used to use the weak deduction theorem
 extensively within \texttt{set.mm}.
-However, we now recommend applying something called ``deduction style''
+However, we now recommend applying ``deduction style''
 instead in most cases, as deduction style is
 often an easier and clearer approach.
+Therefore, we will now describe deduction style.
 
-\subsection{Deduction style}\label{deductionstyle}
+\subsection{Deduction Style}\label{deductionstyle}
 
-Today there is a preference for writing assertions in
-something called``deduction form''
+We now prefer to write assertions in ``deduction form''
 instead of writing a proof that would require use of the standard or
-weak deduction theorem. Applying this approach is called
+weak deduction theorem.
+We call this appraoch
 ``deduction style.''\index{deduction style}
 
 It will be easier to explain this by first defining some terms:
@@ -7990,7 +8045,7 @@ discuss natural deduction.
 
 Natural deduction\index{natural deduction}
 (ND) systems, as such, were originally introduced in
-1934 by two logicians working independently: Jaśkowski and Gentzen. ND
+1934 by two logicians working independently: Ja\'skowski and Gentzen. ND
 systems are supposed to reconstruct, in a formally proper way, traditional
 ways of mathematical reasoning (such as conditional proof, indirect proof,
 and proof by cases). As reconstructions they were naturally influenced
@@ -7998,7 +8053,7 @@ by previous work, and many specific ND systems and notations have been
 developed since their original work.
 
 There are many ND variants, but
-Indrzejczak\cite[p.~31-32]{Indrzejczak}\index{Indrzejczak, Andrzej}
+Indrzejczak \cite[p.~31-32]{Indrzejczak}\index{Indrzejczak, Andrzej}
 suggests that any natural deductive system must satisfy at
 least these three criteria:
 
@@ -8007,7 +8062,7 @@ least these three criteria:
 also for eliminating them. Usually it requires some bookkeeping devices
 for indicating the scope of an assumption, and showing that a part of
 a proof depending on eliminated assumption is discharged.
-\item There are no (or, at least, very limited set of) axioms, because
+\item There are no (or, at least, a very limited set of) axioms, because
 their role is taken over by the set of primitive rules for introduction
 and elimination of logical constants which means that elementary
 inferences instead of formulae are taken as primitive.
@@ -8022,7 +8077,7 @@ That is, MPE is based on a larger number of axioms (compared
 to natural deduction systems), a very small set of rules of inference
 (modus ponens), and the context is not changed by the rules of inference
 in the middle of a proof. That said, MPE proofs can be developed using
-the natural deduction (ND) approach as originally developed by Jaśkowski
+the natural deduction (ND) approach as originally developed by Ja\'skowski
 and Gentzen.
 
 The most common and recommended approach for applying ND in MPE is to use
@@ -8035,7 +8090,7 @@ We maintain a list of equivalences that you may consult.
 This approach for applying an ND approach within MPE relies on Metamath's
 wff metavariables in an essential way, and is described in more detail
 in the presentation ``Natural Deductions in the Metamath Proof Language''
-by Mario Carneiro\cite{CarneiroND}\index{Carneiro, Mario}.
+by Mario Carneiro \cite{CarneiroND}\index{Carneiro, Mario}.
 
 In this style many steps are an implication, whose antecedent mimics
 the context ($\Gamma$) of most ND systems. To add an assumption, simply add
@@ -8191,7 +8246,7 @@ a rigorous proof that uses only the axiom system. Unlike the standard
 Deduction Theorem, there is no implicit external justification that we
 have to trust in order to use it.
 
-Mario's natural deduction\index{natural deduction}
+Mario Carneiro's natural deduction\index{natural deduction}
 method also does not require any new metalogical
 notions. It avoids the Deduction Theorem's metalogic by prefixing the
 hypotheses and conclusion of every would-be inference with a universal
@@ -8208,6 +8263,9 @@ metavariables.
 \begin{sloppy}
 \section{Exploring the Set The\-o\-ry Data\-base}\label{exploring}
 \end{sloppy}
+% NOTE: All examples performed in this section are
+% recorded wtih "set width 61" % on set.mm as of 2019-05-28
+% commit c1e7849557661260f77cfdf0f97ac4354fbb4f4d.
 
 At this point you may wish to study the \texttt{set.mm}\index{set theory
 database (\texttt{set.mm})} file in more detail.  Pay particular
@@ -8239,8 +8297,7 @@ the commands.  Note that we have included the full spelling of all commands to
 prevent ambiguity with future commands.  In practice you may type just the
 characters needed to specify each command keyword\index{command keyword}
 unambiguously, often just one or two characters per keyword, and you don't
-need to type them in upper
-case.
+need to type them in upper case.
 
 First run the Metamath program as described earlier.  You should see the
 \verb/MM>/ prompt.  Read in the \texttt{set.mm} file:\index{\texttt{read}
@@ -8248,12 +8305,16 @@ command}
 
 \begin{verbatim}
 MM> read set.mm
-Reading source file "set.mm"...
-73689 lines (3543983 characters) were read from "set.mm".
-The source has 21443 statements; 417 are $a and 5989 are $p.
+Reading source file "set.mm"... 34554442 bytes
+34554442 bytes were read into the source buffer.
+The source has 155711 statements; 2254 are $a and 32250 are $p.
 No errors were found.  However, proofs were not checked.
 Type VERIFY PROOF * if you want to check them.
 \end{verbatim}
+
+As with most examples in this book, what you will see
+will be slightly different because we are continuously
+improving our databases (including \texttt{set.mm}).
 
 Let's check the database integrity.  This may take a minute or two to run if
 your computer is slow.
@@ -8283,11 +8344,10 @@ command}
 
 \begin{verbatim}
 MM> search * "enderton" / comments
-3332 df-ral $a "...niversal quantification. Enderton, p. 22."
-3333 df-rex $a "...stential quantification. Enderton, p. 22."
-4828 df-tp $a "...of classes. Definition of Enderton, p. 19."
-5200 ssuniss $p "...nd union. Exercise 5 of Enderton, p. 26."
-5217 opeluu $p "...air belongs. Lemma 3D of Enderton, p. 41."
+12067 unineq $p "... Exercise 20 of [Enderton] p. 32 and ..."
+12459 undif2 $p "...Corollary 6K of [Enderton] p. 144. (C..."
+12953 df-tp $a "...s. Definition of [Enderton] p. 19. (Co..."
+13689 unissb $p ".... Exercise 5 of [Enderton] p. 26 and ..."
 \end{verbatim}
 \begin{center}
 (etc.)
@@ -8300,12 +8360,11 @@ command}
 
 \begin{verbatim}
 MM> search * conjunction / comments
-634 wa $a "...wff definition to include conjunction ('and')."
-636 df-an $a "Define conjunction ('and')."
-654 iman $p "Express implication in terms of conjunction."
-655 annim $p "Express conjunction in terms of implication."
-687 pm3.2 $p "... antecedents with conjunction. Theorem *..."
-751 anor $p "Conjunction in terms of disjunction (de Morg..."
+120 a1d $p "...be replaced with a conjunction ( ~ df-an )..."
+662 df-bi $a "...viated form after conjunction is introdu..."
+1319 wa $a "...ff definition to include conjunction ('and')."
+1321 df-an $a "Define conjunction (logical 'and'). Defini..."
+1420 imnan $p "...tion in terms of conjunction. (Contribu..."
 \end{verbatim}
 \begin{center}
 (etc.)
@@ -8313,12 +8372,12 @@ MM> search * conjunction / comments
 
 
 Now we will start to look at some details.  Let's look at the first
-axiom of propositional calculus.\index{\texttt{show statement}
-command}
+axiom of propositional calculus
+(we could use \texttt{sh st} to abbreviate
+\texttt{show statement}).\index{\texttt{show statement} command}
 
 \begin{verbatim}
 MM> show statement ax-1/full
-MM> sh st ax-1/full
 Statement 19 is located on line 881 of the file "set.mm".
 "Axiom _Simp_.  Axiom A1 of [Margaris] p. 49.  One of the 3
 axioms of propositional calculus.  The 3 axioms are also
@@ -8329,6 +8388,21 @@ Its mandatory hypotheses in RPN order are:
   wps $f wff ps $.
 The statement and its hypotheses require the variables:  ph
       ps
+The variables it contains are:  ph ps
+
+
+Statement 49 is located on line 11182 of the file "set.mm".
+Its statement number for HTML pages is 6.
+"Axiom _Simp_.  Axiom A1 of [Margaris] p. 49.  One of the 3
+axioms of propositional calculus.  The 3 axioms are also
+given as Definition 2.1 of [Hamilton] p. 28.
+...
+49 ax-1 $a |- ( ph -> ( ps -> ph ) ) $.
+Its mandatory hypotheses in RPN order are:
+  wph $f wff ph $.
+  wps $f wff ps $.
+The statement and its hypotheses require the variables:
+  ph ps
 The variables it contains are:  ph ps
 \end{verbatim}
 
@@ -8348,17 +8422,20 @@ command}
 
 \begin{verbatim}
 MM> show statement id1/full
-Statement 36 is located on line 968 of the file "set.mm".
-"Principle of identity.  Theorem *2.08 of Whitehead and
-Russell.  This version is proved directly from the axioms
-for demonstration purposes."
-  id1 $p |- ( ph -> ph ) $= ... $.
+Statement 116 is located on line 11371 of the file "set.mm".
+Its statement number for HTML pages is 22.
+"Principle of identity.  Theorem *2.08 of [WhiteheadRussell]
+p. 101.  This version is proved directly from the axioms for
+demonstration purposes.
+...
+116 id1 $p |- ( ph -> ph ) $= ... $.
 Its mandatory hypotheses in RPN order are:
   wph $f wff ph $.
-Its optional hypotheses are:  wps wch wth wet
+Its optional hypotheses are:  wps wch wth wta wet
+      wze wsi wrh wmu wla wka
 The statement and its hypotheses require the variables:  ph
-These additional variables are allowed in its proof:  ps ch
-      th et
+These additional variables are allowed in its proof:
+      ps ch th ta et ze si rh mu la ka
 The variables it contains are:  ph
 \end{verbatim}
 
@@ -8374,20 +8451,24 @@ hypotheses or variables.  This becomes important after quantifiers are
 introduced, where ``dummy'' variables\index{dummy variable} are often needed
 in the middle of a proof.
 
-Let's look at the proof of statement \texttt{id1}.  We'll suppress the
+Let's look at the proof of statement \texttt{id1}.  We'll use the
+\texttt{show proof} command, which by default suppresses the
 ``non-essential'' steps that construct the wffs.\index{\texttt{show proof}
 command}
+We will display the proof in ``lemmon' format (a non-indented format
+with explicit previous step number references) and renumber the
+displayed steps:
 
 \begin{verbatim}
-MM> show proof id1/essential/lemmon/renumber
-1 ax-2           $a |- ( ( ph -> ( ( ph -> ph ) -> ph ) ) ->
+MM> show proof id1 /lemmon/renumber
+1 ax-1           $a |- ( ph -> ( ph -> ph ) )
+2 ax-1           $a |- ( ph -> ( ( ph -> ph ) -> ph ) )
+3 ax-2           $a |- ( ( ph -> ( ( ph -> ph ) -> ph ) ) ->
                      ( ( ph -> ( ph -> ph ) ) -> ( ph -> ph )
                                                           ) )
-2 ax-1           $a |- ( ph -> ( ( ph -> ph ) -> ph ) )
-3 1,2 ax-mp      $a |- ( ( ph -> ( ph -> ph ) ) -> ( ph -> ph
+4 2,3 ax-mp      $a |- ( ( ph -> ( ph -> ph ) ) -> ( ph -> ph
                                                           ) )
-4 ax-1           $a |- ( ph -> ( ph -> ph ) )
-5 3,4 ax-mp      $a |- ( ph -> ph )
+5 1,4 ax-mp      $a |- ( ph -> ph )
 \end{verbatim}
 
 If you have read Section~\ref{trialrun}, you'll know how to interpret this
@@ -8403,27 +8484,27 @@ the \texttt{renumber} qualifier.\index{\texttt{show proof}
 command}
 
 \begin{verbatim}
-MM> show proof id1/lemmon/essential
-18 ax-2          $a |- ( ( ph -> ( ( ph -> ph ) -> ph ) ) ->
+MM> show proof id1 /lemmon
+ 9 ax-1          $a |- ( ph -> ( ph -> ph ) )
+20 ax-1          $a |- ( ph -> ( ( ph -> ph ) -> ph ) )
+24 ax-2          $a |- ( ( ph -> ( ( ph -> ph ) -> ph ) ) ->
                      ( ( ph -> ( ph -> ph ) ) -> ( ph -> ph )
                                                           ) )
-21 ax-1          $a |- ( ph -> ( ( ph -> ph ) -> ph ) )
-22 18,21 ax-mp   $a |- ( ( ph -> ( ph -> ph ) ) -> ( ph -> ph
+25 20,24 ax-mp   $a |- ( ( ph -> ( ph -> ph ) ) -> ( ph -> ph
                                                           ) )
-25 ax-1          $a |- ( ph -> ( ph -> ph ) )
-26 22,25 ax-mp   $a |- ( ph -> ph )
+26 9,25 ax-mp    $a |- ( ph -> ph )
 \end{verbatim}
 
-The ``real'' step number is 21.  Let's look at its details.
+The ``real'' step number is 20.  Let's look at its details.
 
 \begin{verbatim}
-MM> show proof id1 /detailed_step 21
-Proof step 21:  min=ax-1 $a |- ( ph -> ( ( ph -> ph ) -> ph )
+MM> show proof id1 /detailed_step 20
+Proof step 20:  min=ax-1 $a |- ( ph -> ( ( ph -> ph ) -> ph )
   )
 This step assigns source "ax-1" ($a) to target "min" ($e).
 The source assertion requires the hypotheses "wph" ($f, step
-19) and "wps" ($f, step 20).  The parent assertion of the
-target hypothesis is "ax-mp" ($a, step 22).
+18) and "wps" ($f, step 19).  The parent assertion of the
+target hypothesis is "ax-mp" ($a, step 25).
 The source assertion before substitution was:
     ax-1 $a |- ( ph -> ( ps -> ph ) )
 The following substitutions were made to the source
@@ -8440,8 +8521,8 @@ The following substitution was made to the target hypothesis:
 
 This shows the substitutions\index{substitution!variable}\index{variable
 substitution} made to the variables in \texttt{ax-1}.  References are made to
-steps 19 and 20 which are not shown in our proof display.  To see these steps,
-you can display the proof without the \texttt{essential} qualifier.
+steps 18 and 19 which are not shown in our proof display.  To see these steps,
+you can display the proof with the \texttt{all} qualifier.
 
 Let's look at a slightly more advanced proof of propositional calculus.  Note
 that \verb+/\+ is the symbol for $\wedge$ (logical {\sc and}, also
@@ -8450,35 +8531,35 @@ called conjunction).\index{conjunction ($\wedge$)}
 
 \begin{verbatim}
 MM> show statement prth/full
-Statement 1521 is located on line 4730 of the file "set.mm".
-"Theorem *3.47 of Whitehead and Russell, called 'praeclarum
-theorema' by Leibniz."
-  prth $p |- ( ( ( ph -> ps ) /\ ( ch -> th ) ) -> ( ( ph /\
-      ch ) -> ( ps /\ th ) ) ) $= ... $.
+Statement 1791 is located on line 15503 of the file "set.mm".
+Its statement number for HTML pages is 559.
+"Conjoin antecedents and consequents of two premises.  This
+is the closed theorem form of ~ anim12d .  Theorem *3.47 of
+[WhiteheadRussell] p. 113.  It was proved by Leibniz,
+and it evidently pleased him enough to call it
+_praeclarum theorema_ (splendid theorem).
+...
+1791 prth $p |- ( ( ( ph -> ps ) /\ ( ch -> th ) ) -> ( ( ph
+      /\ ch ) -> ( ps /\ th ) ) ) $= ... $.
 Its mandatory hypotheses in RPN order are:
   wph $f wff ph $.
   wps $f wff ps $.
   wch $f wff ch $.
   wth $f wff th $.
-Its optional hypotheses are:  wet
+Its optional hypotheses are:  wta wet wze wsi wrh wmu wla wka
 The statement and its hypotheses require the variables:  ph
       ps ch th
-These additional variables are allowed in its proof:  et
+These additional variables are allowed in its proof:  ta et
+      ze si rh mu la ka
 The variables it contains are:  ph ps ch th
 
-MM> show proof prth/essential/lemmon/renumber
-1 pm3.2          $p |- ( ps -> ( th -> ( ps /\ th ) ) )
-2 1 syl3dt       $p |- ( ps -> ( ( ch -> th ) -> ( ch -> ( ps
-                                                /\ th ) ) ) )
-3 2 syl3         $p |- ( ( ph -> ps ) -> ( ph -> ( ( ch -> th
-                            ) -> ( ch -> ( ps /\ th ) ) ) ) )
-4 3 com23        $p |- ( ( ph -> ps ) -> ( ( ch -> th ) -> (
-                           ph -> ( ch -> ( ps /\ th ) ) ) ) )
-5 4 impa         $p |- ( ( ( ph -> ps ) /\ ( ch -> th ) ) ->
-                           ( ph -> ( ch -> ( ps /\ th ) ) ) )
-6 impexp         $p |- ( ( ( ph /\ ch ) -> ( ps /\ th ) ) <->
-                           ( ph -> ( ch -> ( ps /\ th ) ) ) )
-7 5,6 sylibr     $p |- ( ( ( ph -> ps ) /\ ( ch -> th ) ) ->
+
+MM> show proof prth /lemmon/renumber
+1 simpl          $p |- ( ( ( ph -> ps ) /\ ( ch -> th ) ) ->
+                                               ( ph -> ps ) )
+2 simpr          $p |- ( ( ( ph -> ps ) /\ ( ch -> th ) ) ->
+                                               ( ch -> th ) )
+3 1,2 anim12d    $p |- ( ( ( ph -> ps ) /\ ( ch -> th ) ) ->
                            ( ( ph /\ ch ) -> ( ps /\ th ) ) )
 \end{verbatim}
 
@@ -8486,20 +8567,29 @@ There are references to a lot of unfamiliar statements.  To see what they are,
 you may type the following:
 
 \begin{verbatim}
-MM> show proof prth/statement_summary/essential
+MM> show proof prth /statement_summary
 Summary of statements used in the proof of "prth":
 
-Statement "syl3" is located on line 355 of the file "set.mm".
-"Inference adding common antecedents in an implication."
-  syl3.1 $e |- ( ph -> ps ) $.
-  syl3 $p |- ( ( ch -> ph ) -> ( ch -> ps ) ) $= ... $.
-
-Statement "syl3dt" is located on line 438 of the file
+Statement simpl is located on line 14748 of the file
 "set.mm".
-"Deduction adding nested antecedents."
-  syl3dt.1 $e |- ( ph -> ( ps -> ch ) ) $.
-  syl3dt $p |- ( ph -> ( ( th -> ps ) -> ( th -> ch ) ) ) $=
-      ... $.
+"Elimination of a conjunct.  Theorem *3.26 (Simp) of
+[WhiteheadRussell] p. 112. ..."
+  simpl $p |- ( ( ph /\ ps ) -> ph ) $= ... $.
+
+Statement simpr is located on line 14777 of the file
+"set.mm".
+"Elimination of a conjunct.  Theorem *3.27 (Simp) of
+[WhiteheadRussell] ..."
+  simpr $p |- ( ( ph /\ ps ) -> ps ) $= ... $.
+
+Statement anim12d is located on line 15445 of the file
+"set.mm".
+"Conjoin antecedents and consequents in a deduction.
+..."
+  anim12d.1 $e |- ( ph -> ( ps -> ch ) ) $.
+  anim12d.2 $e |- ( ph -> ( th -> ta ) ) $.
+  anim12d $p |- ( ph -> ( ( ps /\ th ) -> ( ch /\ ta ) ) )
+      $= ... $.
 \end{verbatim}
 \begin{center}
 (etc.)
@@ -8516,18 +8606,23 @@ statements containing \verb@ph -> ps@ followed by \verb@ch -> th@.  The
 \texttt{SEARCH} is also a wildcard that in this case means ``match any label.''
 \index{\texttt{search} command}
 
+% I'm omitting this one, since readers are unlikely to see it:
+% 1096 bisymOLD $p |- ( ( ( ph -> ps ) -> ( ch -> th ) ) -> ( (
+%   ( ps -> ph ) -> ( th -> ch ) ) -> ( ( ph <-> ps ) -> ( ch
+%    <-> th ) ) ) )
 \begin{verbatim}
-MM> SEARCH * "ph -> ps $* ch -> th"
-1521 prth $p |- ( ( ( ph -> ps ) /\ ( ch -> th ) ) -> ( ( ph
+MM> search * "ph -> ps $* ch -> th"
+1791 prth $p |- ( ( ( ph -> ps ) /\ ( ch -> th ) ) -> ( ( ph
     /\ ch ) -> ( ps /\ th ) ) )
-1522 pm3.48 $p |- ( ( ( ph -> ps ) /\ ( ch -> th ) ) -> ( (
+2455 pm3.48 $p |- ( ( ( ph -> ps ) /\ ( ch -> th ) ) -> ( (
     ph \/ ch ) -> ( ps \/ th ) ) )
-1739 elimant $p |- ( ( ( ph -> ps ) /\ ( ( ps -> ch ) -> ( ph
-    -> th ) ) ) -> ( ph -> ( ch -> th ) ) )
+117859 pm11.71 $p |- ( ( E. x ph /\ E. y ch ) -> ( ( A. x (
+    ph -> ps ) /\ A. y ( ch -> th ) ) <-> A. x A. y ( ( ph /\
+    ch ) -> ( ps /\ th ) ) ) )
 \end{verbatim}
 
 Three statements, \texttt{prth}, \texttt{pm3.48},
- and \texttt{elimant}, were found to match.
+ and \texttt{pm11.71}, were found to match.
 
 To see what axioms\index{axiom} and definitions\index{definition}
 \texttt{prth} ultimately depends on for its proof, you can have the
@@ -8560,48 +8655,61 @@ has\index{proof length} if we were to follow it all the way back to
 
 \begin{verbatim}
 MM> show trace_back prth /essential/count_steps
-The statement's actual proof has 5 steps.  Backtracking, a
-total of 55 different subtheorems are used.  The statement
-and subtheorems have a total of 196 actual steps.  If
+The statement's actual proof has 3 steps.  Backtracking, a
+total of 79 different subtheorems are used.  The statement
+and subtheorems have a total of 274 actual steps.  If
 subtheorems used only once were eliminated, there would be a
-total of 25 subtheorems, and the statement and subtheorems
-would have a total of 143 steps.  The maximum path length is
-20.  A longest path is:  prth <- imp4b <- imp4a <- impexp <-
-imbi1i <- impbi <- bi3 <- expi <- expt <- pm3.2im <- con2d <-
-con2 <- nega <- pm2.18 <- pm2.43i <- pm2.43 <- pm2.27 <-
-com12 <- syl <- a1i <- a1i.1 .
+total of 38 subtheorems, and the statement and subtheorems
+would have a total of 185 steps.  The proof would have 28349
+steps if fully expanded back to axiom references.  The
+maximum path length is 38.  A longest path is:  prth <-
+anim12d <- syl2and <- sylan2d <- ancomsd <- ancom <- pm3.22
+<- pm3.21 <- pm3.2 <- ex <- sylbir <- biimpri <- bicomi <-
+bicom1 <- bi2 <- dfbi1 <- impbii <- bi3 <- simprim <- impi <-
+con1i <- nsyl2 <- mt3d <- con1d <- notnot1 <- con2i <- nsyl3
+<- mt2d <- con2d <- notnot2 <- pm2.18d <- pm2.18 <- pm2.21 <-
+pm2.21d <- a1d <- syl <- mpd <- a2i <- a2i.1 .
 \end{verbatim}
 
-This tells us that we would have to inspect 196 steps if we want to
+This tells us that we would have to inspect 274 steps if we want to
 verify the proof completely starting from the axioms.  A few more
 statistics are also shown.  There are one or more paths back to axioms
 that are the longest; this command ferrets out one of them and shows it
 to you.  There may be a sense in which the longest path length is
 related to how ``deep'' the theorem is.
 
-Finally, we might be curious about what proofs depend on the theorem
+We might also be curious about what proofs depend on the theorem
 \texttt{prth}.  If it is never used later on, we could eliminate it as
 redundant if it has no intrinsic interest by itself.\index{\texttt{show
 usage} command}
 
+% I decided to show the OLD values here.
 \begin{verbatim}
 MM> show usage prth
-Statement "prth" is directly referenced in the proofs of 4
+Statement "prth" is directly referenced in the proofs of 18
 statements:
-  anim12d mo 2mo ssxp tfrlem5 climunii climadd
+  mo3 moOLD 2mo 2moOLD euind reuind reuss2 reusv3i opelopabt
+  wemaplem2 rexanre rlimcn2 o1of2 o1rlimmul 2sqlem6 spanuni
+  heicant pm11.71
 \end{verbatim}
 
-Thus \texttt{prth} is used by 7 proofs, and indirectly by many more that
-make use of {\em those} proofs, and so on.  (The \texttt{/recursive}
-qualifier gives you all of them.)
+Thus \texttt{prth} is directly used by 18 proofs.
+We can use the \texttt{/recursive} qualifier to include indirect use:
 
-\subsection{A Note on ``Compact'' Proof Format}
+\begin{verbatim}
+MM> show usage prth /recursive
+Statement "prth" directly or indirectly affects the proofs of
+24214 statements:
+  mo3 mo mo3OLD eu2 moOLD eu2OLD eu3OLD mo4f mo4 eu4 mopick
+...
+\end{verbatim}
 
-The present version of Metamath\index{Metamath!limitations of
-version 0.07.30} will display proofs in a ``compact''\index{compact proof}
+\subsection{A Note on the ``Compact'' Proof Format}
+
+The Metamath program will display proofs in a ``compact''\index{compact proof}
 format whenever the proof is stored in compressed format in the database.  It
-may be be slightly confusing unless you know how to interpret it.  (A
-future version may eliminate this format from displays.)  For example,
+may be be slightly confusing unless you know how to interpret it.
+For example,
 if you display the complete proof of theorem \texttt{id1} it will start
 off as follows:
 
@@ -8610,22 +8718,21 @@ MM> show proof id1 /lemmon/all
  1 wph           $f wff ph
  2 wph           $f wff ph
  3 wph           $f wff ph
- 4 2,3 wi    @1: $a wff ( ph -> ph )
- 5 1,4 wi    @2: $a wff ( ph -> ( ph -> ph ) )
- 6 @1            $a wff ( ph -> ph )
+ 4 2,3 wi    @4: $a wff ( ph -> ph )
+ 5 1,4 wi    @5: $a wff ( ph -> ( ph -> ph ) )
+ 6 @4            $a wff ( ph -> ph )
 \end{verbatim}
 
 \begin{center}
 {etc.}
 \end{center}
 
-Step 4 has a ``local label,''\index{local label} \texttt{@1}, assigned to it.
+Step 4 has a ``local label,''\index{local label} \texttt{@4}, assigned to it.
 Later on, at step 6, the label \texttt{@1} is referenced instead of
 displaying the explicit proof for that step.  This technique takes advantage
 of the fact that steps in a proof often repeat, especially during the
 construction of wffs.  The compact format reduces the number of steps in the
-proof display and may actually be preferred by some people, which is one
-reason that it is still displayed by the program.
+proof display and may be preferred by some people.
 
 If you want to see the normal format with the ``true'' step numbers, you can
 use the following workaround:\index{\texttt{save proof} command}
@@ -8715,21 +8822,23 @@ them as simply as one knows how.}
 
 \subsection{Preliminaries}\label{spec1}
 
+% Space is technically a printable character, so we'll word things
+% carefully so it's unambiguous.
 A Metamath {\bf database}\index{database} is built up from a top-level source
 file together with any source files that are brought in through file inclusion
 commands (see below).  The only characters that are allowed to appear in a
-Metamath source file are the 94 printable {\sc
+Metamath source file are the 94 non-whitespace printable {\sc
 ascii}\index{ascii@{\sc ascii}} characters, which are digits, upper and lower
-case letters, and the following 32 special characters\index{special characters}
-\label{spec1chars}
+case letters, and the following 32 special
+characters\index{special characters}:\label{spec1chars}
 
 \begin{verbatim}
-` ~ ! @ # $ % ^ & * ( ) - _ = +
-[ ] { } ; : ' " , . < > / ? \ |
+! " # $ % & ' ( ) * + , - . / :
+; < = > ? @ [ \ ] ^ _ ` { | } ~
 \end{verbatim}
-plus the following non-printable characters which are
-defined as ``white space'' characters: space, tab,
-carriage return, line feed, and form feed.\label{whitespace}
+plus the following characters which are the ``white space'' characters:
+space (a printable character),
+tab, carriage return, line feed, and form feed.\label{whitespace}
 We will use \texttt{typewriter}
 font to display the printable characters.
 
@@ -8745,15 +8854,19 @@ keyword} or preprocessing keywords.  A {\bf label}\index{label} token
 consists of any combination of letters, digits, and the characters
 hyphen, underscore, and period.  A {\bf math symbol}\index{math symbol}
 token may consist of any combination of the 93 printable standard {\sc
-ascii} characters other than \texttt{\$}~. All tokens are
+ascii} characters other than space or \texttt{\$}~. All tokens are
 case-sensitive.
 
 \subsection{Preprocessing}
 
-\texttt{\$(} begins a {\bf comment} and \texttt{\$)} ends a comment.\index{\texttt{\$(}
-and \texttt{\$)} auxiliary keywords}\index{comment}  Comments may contain any of
-the 94 printable characters and white space, except they may not contain the
-2-character sequences \texttt{\$(} or \texttt{\$)} (comments do not nest).  Comments are ignored (treated
+The token \texttt{\$(} begins a {\bf comment} and
+\texttt{\$)} ends a comment.\index{\texttt{\$(}
+and \texttt{\$)} auxiliary keywords}\index{comment}
+Comments may contain any of
+the 94 non-whitespace printable characters and white space,
+except they may not contain the
+2-character sequences \texttt{\$(} or \texttt{\$)} (comments do not nest).
+Comments are ignored (treated
 like white space) for the purpose of parsing, e.g.,
 \texttt{\$( \$[ \$)} is a comment.
 See p.~\pageref{mathcomments} for comment typesetting conventions; these
@@ -8764,7 +8877,7 @@ followed by \texttt{\$]}.\index{\texttt{\$[} and \texttt{\$]} auxiliary
 keywords}\index{included file}\index{file inclusion}
 It is only allowed in the outermost scope (i.e., not between
 \texttt{\$\char`\{} and \texttt{\$\char`\}})
-and must not be inside of a statement (e.g., it may not occur
+and must not be inside a statement (e.g., it may not occur
 between the label of a \texttt{\$a} statement and its \texttt{\$.}).
 The file name may not
 contain a \texttt{\$} or white space.  The file must exist.
@@ -8777,7 +8890,8 @@ references to the same file (whether in the top-level file or in included
 files) cause the inclusion command to be ignored (treated like white space).
 A verifier may assume that file names with different strings
 refer to different files for the purpose of ignoring later references.
-A file self-reference is ignored, as is any reference to the top-level file.
+A file self-reference is ignored, as is any reference to the top-level file
+(to avoid loops).
 Included files may not include a \texttt{\$(} without a matching \texttt{\$)},
 may not include a \texttt{\$[} without a matching \texttt{\$]}, and may
 not include incomplete statements (e.g., a \texttt{\$a} without a matching
@@ -8799,9 +8913,12 @@ These are the scoping statements \texttt{\$\char`\{} and
 statements.
 
 A {\bf scoping statement}\index{scoping statement} consists only of its
-keyword, \texttt{\$\char`\{} or \texttt{\$\char`\}}. \texttt{\$\char`\{} begins a {\bf
-block}\index{block} and a matching \texttt{\$\char`\}} ends the block. Every \texttt{\$\char`\{}
-must have a matching \texttt{\$\char`\}}. Defining it recursively, we say a block
+keyword, \texttt{\$\char`\{} or \texttt{\$\char`\}}.
+A \texttt{\$\char`\{} begins a {\bf
+block}\index{block} and a matching \texttt{\$\char`\}} ends the block.
+Every \texttt{\$\char`\{}
+must have a matching \texttt{\$\char`\}}.
+Defining it recursively, we say a block
 contains a sequence of zero or more tokens other
 than \texttt{\$\char`\{} and \texttt{\$\char`\}} and
 possibly other blocks.  There is an {\bf outermost
@@ -8814,7 +8931,7 @@ A {\bf \$v} or {\bf \$c statement}\index{\texttt{\$v} statement}\index{\texttt{\
 statement} consists of the keyword token \texttt{\$v} or \texttt{\$c} respectively,
 followed by one or more math symbols,
 % The word "token" is used to distinguish "$." from the sentence-ending period.
-followed by the \texttt{\$.} token.
+followed by the \texttt{\$.}\ token.
 These
 statements {\bf declare}\index{declaration} the math symbols to be {\bf
 variables}\index{variable!Metamath} or {\bf constants}\index{constant}
@@ -8831,18 +8948,16 @@ and stays active until the end of the block in which it is declared.  A
 variable may not be declared a second time while it is active, but it
 may be declared again (as a variable, but not as a constant) after it
 becomes inactive.  A constant must be declared in the outermost block and may
-not be declared a second time.\footnote{The rules for redeclaration may
-become more general in the future;
-see p.~\pageref{redeclarationf}.}\index{redeclaration of symbols}
+not be declared a second time.\index{redeclaration of symbols}
 
 A {\bf \$f statement}\index{\texttt{\$f} statement} consists of a label,
 followed by \texttt{\$f}, followed by its typecode (an active constant),
 followed by an
-active variable, followed by the \texttt{\$.} token.  A {\bf \$e
+active variable, followed by the \texttt{\$.}\ token.  A {\bf \$e
 statement}\index{\texttt{\$e} statement} consists of a label, followed
 by \texttt{\$e}, followed by its typecode (an active constant),
 followed by zero or more
-active math symbols, followed by the \texttt{\$.} token.  A {\bf
+active math symbols, followed by the \texttt{\$.}\ token.  A {\bf
 hypothesis}\index{hypothesis} is a \texttt{\$f} or \texttt{\$e}
 statement.
 The type declared by a \texttt{\$f} statement for a given label
@@ -8852,10 +8967,10 @@ nd \texttt{class P} in another).
 
 A {\bf simple \$d statement}\index{\texttt{\$d} statement!simple}
 consists of \texttt{\$d}, followed by two different active variables,
-followed by the \texttt{\$.} token.  A {\bf compound \$d
+followed by the \texttt{\$.}\ token.  A {\bf compound \$d
 statement}\index{\texttt{\$d} statement!compound} consists of
 \texttt{\$d}, followed by three or more variables (all different),
-followed by the \texttt{\$.} token.  The order of the variables in a
+followed by the \texttt{\$.}\ token.  The order of the variables in a
 \texttt{\$d} statement is unimportant.  A compound \texttt{\$d}
 statement is equivalent to a set of simple \texttt{\$d} statements, one
 for each possible pair of variables occurring in the compound
@@ -8867,12 +8982,12 @@ restriction}.\index{disjoint-variable restriction}
 A {\bf \$a statement}\index{\texttt{\$a} statement} consists of a label,
 followed by \texttt{\$a}, followed by its typecode (an active constant),
 followed by
-zero or more active math symbols, followed by the \texttt{\$.} token.  A {\bf
+zero or more active math symbols, followed by the \texttt{\$.}\ token.  A {\bf
 \$p statement}\index{\texttt{\$p} statement} consists of a label,
 followed by \texttt{\$p}, followed by its typecode (an active constant),
 followed by
 zero or more active math symbols, followed by \texttt{\$=}, followed by
-a sequence of labels, followed by the \texttt{\$.} token.  An {\bf
+a sequence of labels, followed by the \texttt{\$.}\ token.  An {\bf
 assertion}\index{assertion} is a \texttt{\$a} or \texttt{\$p} statement.
 
 A \texttt{\$f}, \texttt{\$e}, or \texttt{\$d} statement is {\bf active}\index{active
@@ -8998,10 +9113,11 @@ one or more {\bf source files}\index{source file} which contain characters
 expressed in the standard {\sc ascii} (American Standard Code for Information
 Interchange)\index{ascii@{\sc ascii}} code for computers.  A source file
 consists of a series of {\bf tokens}\index{token}, which are strings of
+non-whitespace
 printable characters (from the set of 94 shown on p.~\pageref{spec1chars})
 separated by {\bf white space}\index{white space} (spaces, tabs, carriage
 returns, line feeds, and form feeds). Any string consisting only of these
-characters is treated the same as a single space.  The printable
+characters is treated the same as a single space.  The non-whitespace printable
 characters\index{printable character} that Metamath recognizes are the 94
 characters on standard {\sc ascii} keyboards.
 
@@ -9145,7 +9261,7 @@ as rich as possible.
 
 Math symbols\index{math symbol} are tokens used to represent the symbols
 that appear in ordinary mathematical formulas.  They may consist of any
-combination of the 93 printable {\sc ascii} characters other than
+combination of the 93 non-whitespace printable {\sc ascii} characters other than
 \texttt{\$}~. Some examples are \texttt{x}, \texttt{+}, \texttt{(},
 \texttt{|-}, \verb$!%@?&$, and \texttt{bounded}.  For readability, it is
 best to try to make these look as similar to actual mathematical symbols
@@ -9185,7 +9301,7 @@ Metamath command \texttt{open tex} {\em filename}\index{\texttt{open tex} comman
 produces output that can be read by \LaTeX.\index{latex@{\LaTeX}}
 The correspondence
 between tokens and the actual symbols is made by \texttt{latexdef}
-statements inside of a special database comment tagged
+statements inside a special database comment tagged
 with \texttt{\$t}.\index{\texttt{\$t} comment}\index{typesetting comment}
   You can edit
 this comment to change the definitions or add new ones.
@@ -9547,7 +9663,7 @@ This statement has the obvious requirement that $z$ must be
 distinct\index{distinct variables} from $x$ in theorem \texttt{ax17eq} that
 states $x=y \rightarrow \forall z \, x=y$ (well, obvious if you're a logician,
 for otherwise we could conclude  $x=y \rightarrow \forall x \, x=y$, which is
-false when free variables $x$ and $y$ are equal.).
+false when the free variables $x$ and $y$ are equal).
 
 Let's look at what happens if we edit the database to comment out this
 requirement.
@@ -9614,8 +9730,8 @@ Statement 3033 is located on line 9338 of the file "set.mm".
   ax-c16 $a |- ( A. x x = y -> ( ph -> A. x ph ) ) $.
 Its mandatory hypotheses in RPN order are:
   wph $f wff ph $.
-  vx $f set x $.
-  vy $f set y $.
+  vx $f setvar x $.
+  vy $f setvar y $.
 Its mandatory disjoint variable pairs are:  <x,y>
 The statement and its hypotheses require the variables:  x y
       ph
@@ -9625,7 +9741,7 @@ The variables it contains are:  x y ph
 Since Metamath will always detect when \texttt{\$d}\index{\texttt{\$d} statement}
 statements are needed for a proof, you don't have to worry too much about
 forgetting to put one in; it can always be added if you see the error message
-above.  If you put in unnecessary \texttt{\$d} statements, the worst that will
+above.  If you put in unnecessary \texttt{\$d} statements, the worst that could
 happen is that your theorem might not be as general as it could be, and this
 may limit its use later on.
 
@@ -9636,8 +9752,11 @@ whether your axioms are correct.  For example, Metamath would have no idea
 that \texttt{ax-c16}, which we are telling it is an axiom of logic, would lead to
 contradictions if we omitted its associated \texttt{\$d} statement.
 
-{\footnotesize\begin{quotation}\label{nodd}
-{\em Comment.} You may wonder if it is possible to develop standard
+% This was previously a comment in footnote-sized type, but it can be
+% hard to read this much text in a small size.
+% As a result, it's been changed to normally-sized text.
+\label{nodd}
+You may wonder if it is possible to develop standard
 mathematics in the Metamath language without the \texttt{\$d}\index{\texttt{\$d}
 statement} statement, since it seems like a nuisance that complicates proof
 verification. The \texttt{\$d} statement is not needed in certain subsets of
@@ -9658,12 +9777,15 @@ requires no \texttt{\$d} statements but is logically complete in the sense
 described in \cite{Megill}.  This means it can prove any theorem of
 first-order logic as long as we add to the theorem an antecedent that embeds
 dummy and any other variables that must be distinct.  In a similar fashion,
-axioms for set theory can be devised that do not require distinct variables
-(contact me if interested).  Together, these in principle allow all of
+axioms for set theory can be devised that
+do not require distinct variable
+provisos\index{Set theory without distinct variable provisos},
+as explained at
+\url{http://us.metamath.org/mpeuni/mmzfcnd.html}.
+Together, these in principle allow all of
 mathematics to be developed under Metamath without a \texttt{\$d} statement,
 although the length of the resulting theorems will grow as more and
 more dummy variables become required in their proofs.
-\end{quotation}}
 
 \subsection{The \texttt{\$f}
 and \texttt{\$e} Statements}\label{dollaref}
@@ -9735,7 +9857,7 @@ statement).
 Some examples of hypotheses you might encounter in logic and set theory are
 \begin{center}
   \texttt{stmt1 \$f wff P \$.}\\
-  \texttt{stmt2 \$f set x \$.}\\
+  \texttt{stmt2 \$f setvar x \$.}\\
   \texttt{stmt3 \$e |- ( P -> Q ) \$.}
 \end{center}
 \index{\texttt{\$e} statement}
@@ -9948,9 +10070,8 @@ must occur before a \texttt{\$e} statement in which its variable occurs.
 The first property determines the set of variables occurring in a frame.
 These are the {\bf mandatory
 variables}\index{mandatory variable} of the frame.  The second property
-tells us there must be only one type specified for a variable.  The
-third property determines which \texttt{\$d} statements belong to the
-frame.  The last property is not a theoretical requirement but it
+tells us there must be only one type specified for a variable.
+The last property is not a theoretical requirement but it
 makes parsing of the database easier.
 
 For our examples, we assume our database has the following declarations:
@@ -10037,7 +10158,7 @@ mandatory variables of the frame.  Any new variables referenced are called the
 optional hypothesis}\index{optional hypothesis}, and if one or both of the
 variables in a \texttt{\$d} statement are optional variables it is called an {\bf
 optional disjoint-variable restriction}\index{optional disjoint-variable
-restriction}.  Properties 2, 3, and 4 for a frame also apply to an extended
+restriction}.  Properties 2 and 3 for a frame also apply to an extended
 frame.
 
 The concept of optional variables is not meaningful for frames with \texttt{\$a}
@@ -10053,7 +10174,7 @@ Variable \texttt{R} may be used in its proof if desired (although this would
 probably have no advantage in propositional calculus).  Note that the sequence
 of mandatory hypotheses in RPN order is still \texttt{wp}, \texttt{wq}, \texttt{maj},
 \texttt{min} (i.e.\ \texttt{wr} is omitted), and this sequence is still assumed
-whenever assertion \texttt{mp} is referenced in a subsequent proof.
+whenever the assertion \texttt{mp} is referenced in a subsequent proof.
 
 \begin{verbatim}
 wp  $f wff P $.
@@ -10075,7 +10196,7 @@ The conceptually simplest way of organizing a Metamath database is as a
 sequence of extended frames.  The scoping statements
 \texttt{\$\char`\{}\index{\texttt{\$\char`\{} and \texttt{\$\char`\}}
 keywords} and \texttt{\$\char`\}} can be used to delimit the start and
-end of a frame, leading to the following possible structure for a
+end of an extended frame, leading to the following possible structure for a
 database.  \label{framelist}
 
 \vskip 2ex
@@ -10175,7 +10296,7 @@ Each \texttt{\$\char`\{} statement in this example is said to be {\bf
 matched} with the \texttt{\$\char`\}} statement that has the same
 subscript.  Each pair of matched scoping statements defines a region of
 the database called a {\bf block}.\index{block} Blocks can be {\bf
-nested}\index{nested block} inside of other blocks; in the example, the
+nested}\index{nested block} inside other blocks; in the example, the
 block defined by $\mbox{\tt \$\char`\{}_4$ and $\mbox{\tt \$\char`\}}_4$
 is nested inside the block defined by $\mbox{\tt \$\char`\{}_3$ and
 $\mbox{\tt \$\char`\}}_3$ as well as inside the block defined by
@@ -10296,17 +10417,11 @@ irrelevant when the assertion is referenced in a proof, and it doesn't matter
 if that token is not available outside of the referenced assertion's frame.
 Constants, however, must be globally fixed.
 
-In the present version of the Metamath language, there is no theoretical
+There is no theoretical
 benefit for the feature allowing variables to be active for limited scopes
 rather than global. It is just a convenience that allows them, for example, to
 be locally grouped together with their corresponding \texttt{\$f} variable-type
-declarations.\footnote{A future version\label{redeclarationf} of the Metamath
-language may extend the language to include true local variables as well as
-local constants.  I have not decided upon the best way to do this or even if
-it should be done at all; the main issue is whether the benefits offset
-greater confusion in learning the language.  In any case, the rules for
-the present language were chosen to let existing databases be compatible with
-any future language extensions.}
+declarations.
 
 %c%If you declare a math symbol more than once, internally Metamath considers it a
 %c%new distinct symbol, even though it has the same name.  If you are unaware of
@@ -10433,7 +10548,7 @@ any future language extensions.}
 % statement}, \texttt{\$a}\index{\texttt{\$a} statement}, and
 % \texttt{\$p}\index{\texttt{\$p}
 % statement} statement types require labels, which allow them to be
-% referenced later inside of proofs.  A label is considered {\bf
+% referenced later inside proofs.  A label is considered {\bf
 % active}\index{active label} when the statement it is associated with is
 % active.  The token\index{token} for a label may be reused
 % (redeclared)\index{redeclaration of labels} provided that it is not being used
@@ -10525,14 +10640,17 @@ mandatory\index{mandatory hypothesis} and the optional hypotheses of the
 
 The label sequence in a proof specifies a construction in {\bf reverse Polish
 notation}\index{reverse Polish notation (RPN)} (RPN).  You may be familiar
-with RPN if you have used Hewlett--Packard or similar hand-held calculators.
+with RPN if you have used older
+Hewlett--Packard or similar hand-held calculators.
 In the calculator analogy, a hypothesis label\index{hypothesis label} is like
-a number and an assertion label\index{assertion label} is like an operation.
+a number and an assertion label\index{assertion label} is like an operation
+(more precisely, an $n$-ary operation when the
+assertion has $n$ \texttt{\$e}-hypotheses).
 On an RPN calculator, an operation takes one or more previous numbers in an
 input sequence, performs a calculation on them, and replaces those numbers and
 itself with the result of the calculation.  For example, the input sequence
-$2,2,+$ on an RPN calculator results in $4$, and the input sequence
-$1,2,2,+,+$ results in $1,4,+$ which results in $5$.
+$2,3,+$ on an RPN calculator results in $5$, and the input sequence
+$2,3,5,{\times},+$ results in $2,15,+$ which results in $17$.
 
 Understanding how RPN is processed involves the concept of a {\bf
 stack}\index{stack}\index{RPN stack}, which can be thought of as a set of
@@ -10651,9 +10769,11 @@ locations 1 and 2, then places the result into stack location~1:
 \end{tabular}\end{center}
 
 After Metamath finishes processing the proof, it checks to see that the
-contents of stack location 1 is the same as the math symbol sequence in the
+stack contains exactly one element and that this element is
+the same as the math symbol sequence in the
 \texttt{\$p}\index{\texttt{\$p} statement} statement.  This is the case for our
-proof of \texttt{wnew}, so we have proved \texttt{wnew} successfully.  If the result
+proof of \texttt{wnew},
+so we have proved \texttt{wnew} successfully.  If the result
 differs, Metamath will notify you with an error message.  An error message
 will also result if the stack contains more than one entry at the end of the
 proof, or if the stack did not contain enough entries at any point in the
@@ -10698,15 +10818,18 @@ stack (the most recent stack entry) as it exists after that proof step is
 processed.  With a little practice, you should have no trouble reading proofs
 displayed in this format.
 
-Our simple example shows the syntax construction of a formula that might be
-used as part of the construction of a ``real'' proof step that deduces
-theorems from other theorems.  In standard mathematics, this kind of
+Metamath proofs include the syntax construction of a formula.
+In standard mathematics, this kind of
 construction is not considered a proper part of the proof at all, and it
-certainly becomes rather boring after a while.  To filter out syntax
-constructions in the proof display, the \texttt{show proof}\index{\texttt{show proof}
-command} command has the qualifier \texttt{/essential} which you will probably
-use quite often in order to see just the ``real'' steps of
-the proof.
+certainly becomes rather boring after a while.
+Therefore,
+by default the \texttt{show proof}\index{\texttt{show proof}
+command} command does not show the syntax construction.
+Historically \texttt{show proof} command
+\textit{did} show the syntax construction, and you needed to add the
+\texttt{/essential} option to hide, them, but today
+\texttt{/essential} is the default and you need to use
+\texttt{/all} to see the syntax constructions.
 
 When verifying a proof, Metamath will check that no mandatory
 \texttt{\$d}\index{\texttt{\$d} statement}\index{mandatory \texttt{\$d}
@@ -10772,7 +10895,8 @@ additional white space\index{white
 space} between tokens
 when a database is parsed.
 
-A comment may be placed between any two tokens\index{token} in a source file.
+A comment may be placed at the beginning, end, or
+between any two tokens\index{token} in a source file.
 
 Comments have the following syntax:
 \begin{center}
@@ -10785,8 +10909,8 @@ that the character strings \texttt{\$(} and \texttt{\$)} may not appear
 in {\em text}.  Thus nested comments are not
 permitted:\footnote{Computer languages have differing standards for
 nested comments, and rather than picking one it was felt simplest not to
-allow them at all, at least in the current version of
-Metamath\index{Metamath!limitations of version 0.07.30}.} Metamath will
+allow them at all, at least in the current version (0.177) of
+Metamath\index{Metamath!limitations of version 0.177}.} Metamath will
 complain if you give it
 \begin{center}
  \texttt{\$( This is a \$( nested \$) comment.\ \$)}
@@ -10915,7 +11039,7 @@ use two tildes in a row to represent it.
 When generating a \LaTeX\ output file,
 the following token will be formatted in \texttt{typewriter}
 font, and the tilde removed, to make it stand out from the rest of the text.
-This formatting will be applied from all characters after the
+This formatting will be applied to all characters after the
 tilde up to the first white space\index{white space}.
 Whether
 or not the token is an actual statement label is not checked, and the
@@ -10945,7 +11069,8 @@ See also Sections~\ref{tcomment} and \ref{wrbib}.
 
 The \texttt{[}{\em author}\texttt{]} notation will also create an entry in
 the bibliography cross-reference file generated by \texttt{write
-bibliography} (Section~\ref{wrbib}) for HTML.  For this to work properly, the
+bibliography} (Section~\ref{wrbib}) for {\sc HTML}.
+For this to work properly, the
 surrounding comment must be formatted as follows:
 \begin{quote}
     {\em keyword} {\em label} {\em noise-word}
@@ -11026,14 +11151,15 @@ beyond math mode and label mode:
  \item[]
          \texttt{<HTML>}...\texttt{</HTML>} - do not convert
          ``\texttt{<}'' and ``\texttt{>}''
-         in the enclosed text when generating HTML,
+         in the enclosed text when generating {\sc HTML},
          otherwise process markup normally. This allows direct insertion
          of {\sc html} commands.
  \item[]
-	 ``\texttt{\&}ref\texttt{;}'' - insert an HTML character reference.
+       ``\texttt{\&}ref\texttt{;}'' - insert an {\sc HTML}
+         character reference.
          This is how to insert arbitrary Unicode characters
          (such as accented characters).  Currently only directly supported
-         when generating {\sc html}.
+         when generating {\sc HTML}.
 \end{itemize}
 
 It is recommended that spaces surround any \texttt{\char`\~} and
@@ -11102,7 +11228,7 @@ or more white space characters
 The typesetting comment continues until the comment end token \texttt{\$)}
 (which must be preceded by one or more white space characters).
 
-In version 0.07.30\index{Metamath!limitations of version 0.07.30} of the
+In version 0.177\index{Metamath!limitations of version 0.177} of the
 Metamath program, there may be only one \texttt{\$t} comment in a
 database.  This restriction may be lifted in the future to allow
 many \texttt{\$t} comments in a database.
@@ -11122,7 +11248,7 @@ Every definition ends in an unquoted semicolon;
 white space is not required before the terminating semicolon of a definition.
 Each definition should start on a new line.\footnote{This
 restriction of the current version of Metamath
-(0.07.30)\index{Metamath!limitations of version 0.07.30} may be removed
+(0.177)\index{Metamath!limitations of version 0.177} may be removed
 in a future version, but you should do it anyway for readability.}
 
 For example, this typesetting definition:
@@ -11238,8 +11364,8 @@ These include:
     \texttt{htmlhome "}{\em {\sc html}-code}\texttt{";}%
 \index{\texttt{htmlhome} statement}
 
-    \texttt{htmlvarcolors "}{\em {\sc html}-code}\texttt{";}%
-\index{\texttt{htmlvarcolors} statement}
+    \texttt{htmlvarcolor "}{\em {\sc html}-code}\texttt{";}%
+\index{\texttt{htmlvarcolor} statement}
 
     \texttt{htmlbibliography "}{\em filename}\texttt{";}%
 \index{\texttt{htmlbibliography} statement}
@@ -11248,7 +11374,7 @@ These include:
 
 \noindent The \texttt{htmltitle} is the {\sc html} code for a common
 title, such as ``Metamath Proof Explorer.''  The \texttt{htmlhome} is
-code for a link back to the home page.  The \texttt{htmlvarcolors} is
+code for a link back to the home page.  The \texttt{htmlvarcolor} is
 code for a color key that appears at the bottom of each proof.  The file
 specified by {\em filename} is an {\sc html} file that is assumed to
 have a \texttt{<A NAME=}\ldots\texttt{>} tag for each bibiographic
@@ -11400,7 +11526,8 @@ including a file is as follows:
 \end{center}
 
 The {\em file-name} should be a single token\index{token} with the same syntax
-as a math symbol (i.e., all 93 printable characters other than \texttt{\$} are
+as a math symbol (i.e., all 93 non-whitespace
+printable characters other than \texttt{\$} are
 allowed, subject to the file-naming limitations of your operating system).
 Comments may appear between the \texttt{\$[} and \texttt{\$]} keywords.  Included
 files may include other files, which may in turn include other files, and so
@@ -11440,7 +11567,7 @@ third file, only the {\em first} reference to this common file will be read
 in.  This allows you to include two or more files that build on a common
 starting file without having to worry about label and symbol conflicts that
 would occur if the common file were read in more than once.  (In fact, if a
-file includes itself, the self reference will be ignored, although of course
+file includes itself, the self-reference will be ignored, although of course
 it would not make any sense to do that.)  This feature also means, however,
 that if you try to include a common file in several inner blocks, the result
 might not be what you expect, since only the first reference will be replaced
@@ -11476,9 +11603,9 @@ The overall structure of the compressed format is as follows:
 The first \texttt{(} serves as a flag to Metamath that a compressed proof
 follows.  The {\em label-list} includes all statements referred to by the
 proof except the mandatory hypotheses\index{mandatory hypothesis}.  The {\em
-compressed-proof} is a compact encoding of the proof, using upper case
+compressed-proof} is a compact encoding of the proof, using upper-case
 letters, and can be thought of as a large integer in base 26.  White
-space\index{white space} inside of {\em compressed-proof} is
+space\index{white space} inside a {\em compressed-proof} is
 optional and is ignored.
 
 It is important to note that the order of the mandatory hypotheses of
@@ -11664,16 +11791,30 @@ fragments to classical logic just by adding axioms are given in
 \subsection{The Approach to Definitions in \texttt{set.mm}}
 
 In set theory, recursive definitions define a newly introduced symbol in
-terms of itself.  The justification of recursive definitions, using
+terms of itself.
+The justification of recursive definitions, using
 several ``recursion theorems,'' is usually one of the first
 sophisticated proofs a student encounters when learning set theory, and
 there is a significant amount of implicit metalogic behind a recursive
 definition even though the definition itself is typically simple to
-state.  It is, however, possible to substitute one kind of complexity
+state.
+
+Metamath itself has no built-in technical limitation that prevents
+multiple-part recursive definitions in the traditional textbook style.
+However, because the recursive definition requires advanced metalogic
+to justify, eliminating a recursive definition is very difficult and
+often not even shown in textbooks.
+
+\subsubsection{Direct definitions instead of recursive definitions}
+
+It is, however, possible to substitute one kind of complexity
 for another.  We can eliminate the need for metalogical justification by
 defining the operation directly with an explicit (but complicated)
 expression, then deriving the recursive definition directly as a
-theorem, using a recursion theorem ``in reverse.''  We do this in
+theorem, using a recursion theorem ``in reverse.''
+The elimination
+of a direct definition is a matter of simple mechanical substitution.
+We do this in
 \texttt{set.mm}, as follows.
 
 In \texttt{set.mm} our goal was to introduce almost all definitions in
@@ -11683,10 +11824,16 @@ side.  Quine calls this form ``a genuine or direct definition'' \cite[p.
 174]{Quine}\index{Quine, Willard Van Orman}, which makes the definitions
 very easy to eliminate and the metalogic\index{metalogic} needed to
 justify them as simple as possible.
+Put another way, we had a goal of being able to
+eliminate all definitions with direct mechanical substitution and to
+verify easily the soundness of the definitions.
+
+\subsubsection{Example of direct definitions}
 
 We achieved this goal in almost all cases in \texttt{set.mm}.
 Sometimes this makes the definitions more complex and less
-intuitive.  For example, the traditional way to define addition of
+intuitive.
+For example, the traditional way to define addition of
 natural numbers is to define an operation called {\em
 successor}\index{successor} (which means ``plus one'' and is denoted by
 ``${\rm suc}$''), then define addition recursively\index{recursive
@@ -11700,10 +11847,12 @@ set-theoretical expression that $m + n$ represents, that will work for
 any $m$ and $n$ and that does not have a $+$ sign on its right-hand
 side.  For a recursive definition like this not to be circular
 (creative), there are some hidden, underlying assumptions we must make,
-for example that the natural numbers have a certain kind of order.  In
-\texttt{set.mm} we chose to start with the direct (though complex and
+for example that the natural numbers have a certain kind of order.
+
+In \texttt{set.mm} we chose to start with the direct (though complex and
 nonintuitive) definition then derive from it the standard recursive
-definition.\footnote{The closed-form definition used in \texttt{set.mm}
+definition.
+For example, the closed-form definition used in \texttt{set.mm}
 for the addition operation on ordinals\index{ordinal
 addition}\index{addition!of ordinals} (of which natural numbers are a
 subset) is
@@ -11711,45 +11860,100 @@ subset) is
 \setbox\startprefix=\hbox{\tt \ \ df-oadd\ \$a\ }
 \setbox\contprefix=\hbox{\tt \ \ \ \ \ \ \ \ \ \ \ \ \ }
 \startm
-\m{\vdash}\m{+_o}\m{=}\m{\{}\m{\langle}\m{\langle}\m{x}\m{,}\m{y}\m{\rangle}%
-\m{,}\m{z}\m{\rangle}\m{|}\m{(}\m{(}\m{x}\m{\in}\m{{\rm On}}\m{\wedge}\m{y}\m{%
-\in}\m{{\rm On}}\m{)}\m{\wedge}\m{z}\m{=}\m{(}\m{{\rm rec}}\m{(}\m{\{}\m{%
-\langle}\m{w}\m{,}\m{v}\m{\rangle}\m{|}\m{v}\m{=}\m{{\rm suc}}\m{w}\m{\}}\m{,}%
-\m{x}\m{)}\m{`}\m{y}\m{)}\m{)}\m{\}}
+\m{\vdash}\m{+_o}\m{=}\m{(}\m{x}\m{\in}\m{{\rm On}}\m{,}\m{y}\m{\in}\m{{\rm
+On}}\m{\mapsto}\m{(}\m{{\rm rec}}\m{(}\m{(}\m{z}\m{\in}\m{{\rm
+V}}\m{\mapsto}\m{{\rm suc}}\m{z}\m{)}\m{,}\m{x}\m{)}\m{`}\m{y}\m{)}\m{)}
 \endm
+\noindent which depends on ${\rm rec}$.
 
-\noindent Here, the abstraction class of nested ordered pairs\index{abstraction
-class!of nested ordered pairs} is defined by \texttt{df-oprab} in \texttt{set.mm},
-and ${\rm rec}$ is a ``recursion operator''\index{recursion operator} with
-the definition
+\subsubsection{Recursion operators}
 
-\setbox\startprefix=\hbox{\tt \ \ df-rfg\ \$a\ }
+The above definition of \texttt{df-oadd} depends on the definition of
+${\rm rec}$, a ``recursion operator''\index{recursion operator} with
+the definition \texttt{df-rdg}:
+
+\setbox\startprefix=\hbox{\tt \ \ df-rdg\ \$a\ }
 \setbox\contprefix=\hbox{\tt \ \ \ \ \ \ \ \ \ \ \ \ }
 \startm
-\m{\vdash}\m{{\rm rec}}\m{(}\m{F}\m{,}\m{A}\m{)}\m{=}\m{\bigcup}\m{\{}\m{f}%
-\m{|}\m{\exists}\m{x}\m{(}\m{x}\m{\in}\m{{\rm On}}\m{\wedge}\m{(}\m{f}\m{{%
-\rm Fn}}\m{x}\m{\wedge}\m{\forall}\m{y}\m{(}\m{y}\m{\in}\m{x}\m{\rightarrow}%
-\m{(}\m{f}\m{`}\m{y}\m{)}\m{=}\m{(}\m{\{}\m{\langle}\m{g}\m{,}\m{z}\m{\rangle}%
-\m{|}\m{(}\m{(}\m{g}\m{=}\m{\varnothing}\m{\wedge}\m{z}\m{=}\m{A}\m{)}\m{\vee}%
-\m{(}\m{\lnot}\m{(}\m{g}\m{=}\m{\varnothing}\m{\vee}\m{{\rm Lim}}\m{{\rm dom}}%
-\m{g}\m{)}\m{\wedge}\m{z}\m{=}\m{(}\m{F}\m{`}\m{(}\m{g}\m{`}\m{\bigcup}\m{{%
-\rm dom}}\m{g}\m{)}\m{)}\m{)}\m{\vee}\m{(}\m{{\rm Lim}}\m{{\rm dom}}\m{g}\m{%
-\wedge}\m{z}\m{=}\m{\bigcup}\m{{\rm ran}}\m{g}\m{)}\m{)}\m{\}}\m{`}\m{(}\m{f}%
-\m{\restriction}\m{y}\m{)}\m{)}\m{)}\m{)}\m{)}\m{\}}
+\m{\vdash}\m{{\rm
+rec}}\m{(}\m{F}\m{,}\m{I}\m{)}\m{=}\m{\mathrm{recs}}\m{(}\m{(}\m{g}\m{\in}\m{{\rm
+V}}\m{\mapsto}\m{{\rm if}}\m{(}\m{g}\m{=}\m{\varnothing}\m{,}\m{I}\m{,}\m{{\rm
+if}}\m{(}\m{{\rm Lim}}\m{{\rm dom}}\m{g}\m{,}\m{\bigcup}\m{{\rm
+ran}}\m{g}\m{,}\m{(}\m{F}\m{`}\m{(}\m{g}\m{`}\m{\bigcup}\m{{\rm
+dom}}\m{g}\m{)}\m{)}\m{)}\m{)}\m{)}\m{)}
 \endm
 
 \noindent which can be further broken down with definitions shown in
-Section~\ref{setdefinitions}.  You may be surprised at the complexity of what
-seems like such a simple notion.  From these definitions the simpler, more
-intuitive recursive definition is derived as a set of theorems.}\index{natural
+Section~\ref{setdefinitions}.
+
+This definition of ${\rm rec}$
+defines a recursive definition generator on ${\rm On}$ (the class of ordinal
+numbers) with characteristic function $F$ and initial value $I$.
+This operation allows us to define, with
+compact direct definitions, functions that are usually defined in
+textbooks with recursive definitions.
+The price paid with our approach
+is the complexity of our ${\rm rec}$ operation
+(especially when {\tt df-recs} that it is built on is also eliminated).
+But once we get past this hurdle, definitions that would otherwise be
+recursive become relatively simple, as in for example {\tt oav}, from
+which we prove the recursive textbook definition as theorems {\tt oa0}, {\tt
+oasuc}, and {\tt oalim} (with the help of theorems {\tt rdg0}, {\tt rdgsuc},
+and {\tt rdglim2a}).  We can also restrict the ${\rm rec}$ operation to
+define otherwise recursive functions on the natural numbers $\omega$; see {\tt
+fr0g} and {\tt frsuc}.  Our ${\rm rec}$ operation apparently does not appear
+in published literature, although closely related is Definition 25.2 of
+[Quine] p. 177, which he uses to ``turn...a recursion into a genuine or
+direct definition" (p. 174).  Note that the ${\rm if}$ operations (see
+{\tt df-if}) select cases based on whether the domain of $g$ is zero, a
+successor, or a limit ordinal.
+
+An important use of this definition ${\rm rec}$ is in the recursive sequence
+generator {\tt df-seq} on the natural numbers (as a subset of the
+complex infinite sequences such as the factorial function {\tt df-fac} and
+integer powers {\tt df-exp}).
+
+The definition of ${\rm rec}$ depends on ${\rm recs}$.
+New direct usage of the more powerful (and more primitive) ${\rm recs}$
+construct is discouraged, but it is available when needed.
+This
+defines a function $\mathrm{recs} ( F )$ on ${\rm On}$, the class of ordinal
+numbers, by transfinite recursion given a rule $F$ which sets the next
+value given all values so far.
+Unlike {\tt df-rdg} which restricts the
+update rule to use only the previous value, this version allows the
+update rule to use all previous values, which is why it is described
+as ``strong,'' although it is actually more primitive.  See {\tt
+recsfnon} and {\tt recsval} for the primary contract of this definition.
+It is defined as:
+
+\setbox\startprefix=\hbox{\tt \ \ df-recs\ \$a\ }
+\setbox\contprefix=\hbox{\tt \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\startm
+\m{\vdash}\m{\mathrm{recs}}\m{(}\m{F}\m{)}\m{=}\m{\bigcup}\m{\{}\m{f}\m{|}\m{\exists}\m{x}\m{\in}\m{{\rm
+On}}\m{(}\m{f}\m{{\rm
+Fn}}\m{x}\m{\wedge}\m{\forall}\m{y}\m{\in}\m{x}\m{(}\m{f}\m{`}\m{y}\m{)}\m{=}\m{(}\m{F}\m{`}\m{(}\m{f}\m{\restriction}\m{y}\m{)}\m{)}\m{)}\m{\}}
+\endm
+
+\subsubsection{Closing comments on direct definitions}
+
+From these direct definitions the simpler, more
+intuitive recursive definition is derived as a set of theorems.\index{natural
 number}\index{addition}\index{recursive definition}\index{ordinal addition}
 The end result is the same, but we completely eliminate the rather complex
-metalogic that justifies the recursive definition.  (For a mathematician,
-recursive definitions are more efficient and intuitive than
+metalogic that justifies the recursive definition.
+
+Recursive definitions are often considered more efficient and intuitive than
 direct ones once the metalogic has been learned or possibly just accepted as
 correct.  However, it was felt that direct definition in \texttt{set.mm}
 maximizes rigor by minimizing metalogic.  It can be eliminated effortlessly,
-something difficult to do with a recursive definition.)
+something that is difficult to do with a recursive definition.
+
+Again, Metamath itself has no built-in technical limitation that prevents
+multiple-part recursive definitions in the traditional textbook style.
+Instead, our goal is to eliminate all definitions with
+direct mechanical substitution and to verify easily the soundness of
+definitions.
 
 \subsection{Adding Constraints on Definitions}
 
@@ -11811,7 +12015,7 @@ This prevents some errors such as definitions with imbalanced parentheses.
 Second, we run a definition soundness check specific to
 \texttt{set.mm} or databases similar to it.
 (through the \texttt{definitionCheck} macro).
-Some \$a statements (including all ax-* statemnets)
+Some \texttt{\$a} statements (including all ax-* statemnets)
 are excluded from these checks, as they will
 always fail this simple check,
 but they are appropriate for most definitions.
@@ -11821,7 +12025,7 @@ This check imposes a set of additional rules:
 
 \item New definitions must be introduced using $=$ or $\leftrightarrow$.
 
-\item No \$a statement introduced before this one is allowed to use the
+\item No \texttt{\$a} statement introduced before this one is allowed to use the
 symbol being defined in this definition, and the definition is not
 allowed to use itself (except once, in the definiendum).
 
@@ -11851,7 +12055,7 @@ metatheorems to establish that they are not creative.
 
 Instead of building such complications into the Metamath language itself,
 the basic Metmath language and program simply treat traditional
-axioms and definitions as the same kind of \$a statement.
+axioms and definitions as the same kind of \texttt{\$a} statement.
 We have then built various tools to enable people to
 verify additional conditions as their creators believe is appropriate
 for those specific databases, without complicating the Metamath foundations.
@@ -11875,6 +12079,7 @@ using the \texttt{gcc} {\sc c} compiler available on those systems.
 In the command syntax descriptions below, fields enclosed in square
 brackets [\ ] are optional.  File names may be optionally enclosed in
 single or double quotes.  This is useful if the file name contains
+spaces or
 slashes (\texttt{/}), such as in Unix path names, \index{Unix file
 names}\index{file names!Unix} that might be confused with Metamath
 command qualifiers.\index{Unix file names}\index{file names!Unix}
@@ -11959,7 +12164,8 @@ value of the argument.
 Some commands have one or more optional qualifiers which modify the
 behavior of the command.  Qualifiers are preceded by a slash
 (\texttt{/}), such as in \texttt{read set.mm / verify}.  Spaces are
-optional around the \texttt{/}.  If you need to use a slash in a command
+optional around the \texttt{/}.  If you need to use a space or
+slash in a command
 argument, as in a Unix file name, put single or double quotes around the
 command argument.
 
@@ -12041,8 +12247,14 @@ of the screen output is continuous, so you may want to open a log file
 After the lines in the file are exhausted, Metamath returns to its
 normal user interface mode.
 
-Currently, the \texttt{submit} command is not recursive.  In other words,
-\texttt{submit} commands are not allowed inside of a command file.
+The \texttt{submit} command can be called recursively (i.e. from inside
+of a \texttt{submit} command file).
+
+
+Optional command qualifier:
+
+    \texttt{/silent} - suppresses the screen output but still
+        records the output in a log file if one is open.
 
 
 \subsection{\texttt{erase} Command}\index{\texttt{erase} command}
@@ -12208,7 +12420,9 @@ See also \texttt{erase}.
 Syntax:  \texttt{write source} {\em filename}
 [\texttt{/rewrap}]
 [\texttt{/split}]
-[\texttt{/keep\_includes}]
+% TeX doesn't handle this long line with tt text very well,
+% so force a line break here.
+[\texttt{/keep\_includes}] {\\}
 [\texttt{/no\_versioning}]
 
 This command will write the contents of a Metamath\index{database}
@@ -12220,7 +12434,8 @@ Optional command qualifiers:
 Reformats statements and comments according to the
 convention used in the set.mm database.
 It unwraps the
-lines in the comment before each \$a and \$p statement, then it
+lines in the comment before each \texttt{\$a} and \texttt{\$p} statement,
+then it
 rewraps the line.  You should compare the output to the original
 to make sure that the desired effect results; if not, go back to
 the original source.  The wrapped line length honors the
@@ -12230,13 +12445,17 @@ enclosed in \texttt{<HTML>}...\texttt{</HTML>} tags is not modified by the
 \texttt{/rewrap} qualifier.
 Proofs themselves are not reformatted;
 use \texttt{save proof * / compressed} to do that.
+An isolated tilde (\~{}) is always kept on the same line as the following
+symbol, so you can find all comment references to a symbol by
+searching for \~{} followed by a space and that symbol
+(this is useful for finding cross-references).
 Incidentally, \texttt{save proof} also honors the \texttt{set width}
 parameter currently in effect.
 
-\texttt{/split} - Files included in the source with
+\texttt{/split} - Files included in the source using the expression
 \$[ \textit{inclfile} \$] will be
-written out separately instead of included in a single output
-file.  The name of each separately written included file will be
+written into separate files instead of being included in a single output
+file.  The name of each separately written included file will be the
 \textit{inclfile} argument of its inclusion command.
 
 \texttt{/keep\_includes} - If a source file has includes but is written as a
@@ -12275,7 +12494,7 @@ statements that match {\em label-match}.  A \verb$*$ in {label-match}
 matches zero or more characters.  For example, \verb$*abc*def$ will match all
 labels containing \verb$abc$ and ending with \verb$def$.
 
-Optional command qualifier:
+Optional command qualifiers:
 
    \texttt{/all} - Include matches for \texttt{\$e} and \texttt{\$f}
    statement labels.
@@ -12287,14 +12506,14 @@ Optional command qualifier:
 
 
 \subsection{\texttt{show statement} Command}\index{\texttt{show statement} command}
-Syntax:  \texttt{show statement} {\em label} [{\em qualifiers} (see below)]
+Syntax:  \texttt{show statement} {\em label-match} [{\em qualifiers} (see below)]
 
 This command provides information about a statement.  Only statements
 that have labels (\texttt{\$f}\index{\texttt{\$f} statement},
 \texttt{\$e}\index{\texttt{\$e} statement},
 \texttt{\$a}\index{\texttt{\$a} statement}, and
 \texttt{\$p}\index{\texttt{\$p} statement}) may be specified.
-If {\em label}
+If {\em label-match}
 contains wildcard (\verb$*$) characters, all matching statements will be
 displayed in the order they occur in the database.
 
@@ -12328,7 +12547,8 @@ Optional qualifiers (only one qualifier at a time is allowed):
 
 \subsection{\texttt{search} Command}\index{\texttt{search} command}
 Syntax:  search {\em label-match}
-\texttt{"}{\em symbol-match}{\tt}" [\texttt{/ all}] [\texttt{/ comments}]
+\texttt{"}{\em symbol-match}{\tt}" [\texttt{/all}] [\texttt{/comments}]
+[\texttt{/join}]
 
 This command searches all \texttt{\$a} and \texttt{\$p} statements
 matching {\em label-match} for occurrences of {\em symbol-match}.  A
@@ -12345,25 +12565,28 @@ to match individual characters in labels and symbols respectively; see
 
 Optional command qualifiers:
 
-    \texttt{/ all} - Also search \texttt{\$e} and \texttt{\$f} statements.
+    \texttt{/all} - Also search \texttt{\$e} and \texttt{\$f} statements.
 
-    \texttt{/ comments} - Search the comment that immediately precedes each
+    \texttt{/comments} - Search the comment that immediately precedes each
         label-matched statement for {\em symbol-match}.  In this case
         {\em symbol-match} is an arbitrary, non-case-sensitive character
         string.  Quotes around {\em symbol-match} are optional if there
         is no ambiguity.
 
-
+    \texttt{/join} - In the case of a \texttt{\$a} or \texttt{\$p} statement,
+	prepend its \texttt{\$e}
+	hypotheses for searching. The
+	\texttt{/join} qualifier has no effect in \texttt{/comments} mode.
 
 \section{Displaying and Verifying Proofs}
 
 
 \subsection{\texttt{show proof} Command}\index{\texttt{show proof} command}
-Syntax:  \texttt{show proof} {\em label} [{\em qualifiers} (see below)]
+Syntax:  \texttt{show proof} {\em label-match} [{\em qualifiers} (see below)]
 
 This command displays the proof of the specified
 \texttt{\$p}\index{\texttt{\$p} statement} statement in various formats.
-The {\em label} may contain wildcard (\verb@$*@) characters to match
+The {\em label-match} may contain wildcard (\verb@$*@) characters to match
 multiple statements.  Without any qualifiers, only the logical steps
 will be shown (i.e.\ syntax construction steps will be omitted), in an
 indented format.
@@ -12410,6 +12633,7 @@ Optional command qualifiers:
         If this qualifier is omitted, steps are indented in a tree format.
 
     \texttt{/start{\char`\_}column} {\em number} - Overrides the default column
+        (16)
         at which the formula display starts in a Lemmon-style display.  May be
         used only in conjunction with \texttt{/lemmon}.
 
@@ -12434,7 +12658,7 @@ Optional command qualifiers:
 
 
 \subsection{\texttt{show usage} Command}\index{\texttt{show usage} command}
-Syntax:  \texttt{show usage} {\em label} [\texttt{/recursive}]
+Syntax:  \texttt{show usage} {\em label-match} [\texttt{/recursive}]
 
 This command lists the statements whose proofs make direct reference to
 the statement specified.
@@ -12448,11 +12672,11 @@ Optional command qualifier:
 
 \subsection{\texttt{show trace\_back} Command}\index{\texttt{show
        trace{\char`\_}back} command}
-Syntax:  \texttt{show trace{\char`\_}back} [\texttt{/essential}] [\texttt{/axioms}]
+Syntax:  \texttt{show trace{\char`\_}back} {\em label-match} [\texttt{/essential}] [\texttt{/axioms}]
     [\texttt{/tree}] [\texttt{/depth} {\em number}]
 
-This command lists all statements that the proof of the specified
-\texttt{\$p}\index{\texttt{\$p} statement} statement depends on.
+This command lists all statements that the proof of the \texttt{\$p}
+statement(s) specified by {\em label-match} depends on.
 
 Optional command qualifiers:
 
@@ -12466,7 +12690,7 @@ Optional command qualifiers:
     \texttt{/depth} {\em number} - Restrict the \texttt{/tree} trace-back to the
         specified indentation depth.
 
-    \texttt{/count{\char`\_}steps} - Counts the number of steps the proof has
+    \texttt{/count{\char`\_}steps} - Count the number of steps the proof has
        all the way back to axioms.  If \texttt{/essential} is specified,
        expansions of variable-type hypotheses (syntax constructions) are not counted.
 
@@ -12476,8 +12700,8 @@ Syntax:  \texttt{verify proof} {\em label-match} [\texttt{/syntax{\char`\_}only}
 This command verifies the proofs of the specified statements.  {\em
 label-match} may contain wild card characters (\texttt{*}) to verify
 more than one proof; for example \verb/*abc*def/ will match all labels
-containing \texttt{abc} and ending with \texttt{def}.  \texttt{verify
-proof *} will verify all proofs in the database.
+containing \texttt{abc} and ending with \texttt{def}.
+The command \texttt{verify proof *} will verify all proofs in the database.
 
 Optional command qualifier:
 
@@ -12491,11 +12715,57 @@ Optional command qualifier:
 {\em Note:} \texttt{read}, followed by \texttt{verify proof *}, will ensure
  the database is free
 from errors in the Metamath language but will not check the markup notation
-in comments; for that
-see Section~\ref{htmlout}.
+in comments.
+You can also check the markup notation by running \texttt{verify markup *}
+as discussed in Section~\ref{verifymarkup}; see also the discussion
+on generating {\sc HTML} in Section~\ref{htmlout}.
+
+\subsection{\texttt{verify markup} Command}\index{\texttt{verify markup} command}\label{verifymarkup}
+Syntax:  \texttt{verify markup} {\em label-match}
+[\texttt{/date{\char`\_}skip}]
+[\texttt{/top{\char`\_}date{\char`\_}skip}] {\\}
+[\texttt{/file{\char`\_}skip}]
+[\texttt{/verbose}]
+
+This command checks comment markup and other informal conventions we have
+adopted.  It error-checks the latexdef, htmldef, and althtmldef statements
+in the \texttt{\$t} statement of a Metamath source file.\index{error checking}
+It error-checks any \texttt{`}...\texttt{`},
+\texttt{\char`\~}~\textit{label},
+and bibliographic markups in statement descriptions.
+It checks that
+\texttt{\$p} and \texttt{\$a} statements
+have the same content when their labels start with
+``ax'' and ``ax-'' respectively but are otherwise identical, for example
+ax4 and ax-4.
+It also verifies the date consistency of ``(Contributed by...),''
+``(Revised by...),'' and ``(Proof shortened by...)'' tags in the comment
+above each \texttt{\$a} and \texttt{\$p} statement.
+
+Optional command qualifiers:
+
+    \texttt{/date{\char`\_}skip} - This qualifier will
+        skip date consistency checking,
+        which is usually not required for databases other than
+	\texttt{set.mm}.
+
+    \texttt{/top{\char`\_}date{\char`\_}skip} - This qualifier will check date consistency except
+        that the version date at the top of the database file will not
+        be checked.  Only one of
+        \texttt{/date{\char`\_}skip} and
+        \texttt{/top{\char`\_}date{\char`\_}skip} may be
+        specified.
+
+    \texttt{/file{\char`\_}skip} - This qualifier will skip checks that require
+        external files to be present, such as checking GIF existence and
+        bibliographic links to mmset.html or equivalent.  It is useful
+        for doing a quick check from a directory without these files.
+
+    \texttt{/verbose} - Provides more information.  Currently it provides a list
+        of axXXX vs. ax-XXX matches.
 
 \subsection{\texttt{save proof} Command}\index{\texttt{save proof} command}
-Syntax:  \texttt{save proof} {\em label} [\texttt{/normal}]
+Syntax:  \texttt{save proof} {\em label-match} [\texttt{/normal}]
    [\texttt{/compressed}]
 
 The \texttt{save proof} command will reformat a proof in one of two formats and
@@ -12694,8 +12964,8 @@ This command will enter the Proof Assistant\index{Proof Assistant}, which will
 allow you to create or edit the proof of the specified statement.
 The command-line prompt will change from \texttt{MM>} to \texttt{MM-PA>}.
 
-Note:  In the present version of
-Metamath\index{Metamath!limitations of version 0.07.30}, the Proof
+Note:  In the present version (0.177) of
+Metamath\index{Metamath!limitations of version 0.177}, the Proof
 Assistant does not verify that \texttt{\$d}\index{\texttt{\$d}
 statement} restrictions are met as a proof is being built.  After you
 have completed a proof, you should type \texttt{save new{\char`\_}proof}
@@ -12739,20 +13009,26 @@ with empty symbol sequences\index{empty substitution}.  However, in many
 formal systems\index{formal system} this will never happen in a valid
 proof.  Allowing for this possibility increases the likelihood of
 ambiguous unifications\index{ambiguous
-unification}\index{unification!ambiguous} during proof creation, and you
-may want to \texttt{set empty{\char`\_}substitution off} to help make
-the process more efficient.  With this mode set, you may not be able to
-create some proofs in formal systems that allow empty substitutions.
-(An example would be a system that implements a Deduction Rule and in
+unification}\index{unification!ambiguous} during proof creation.
+The default is that
+empty substitutions are not allowed; for formal systems requiring them,
+you must \texttt{set empty{\char`\_}substitution on}.
+(An example where this must be \texttt{on}
+would be a system that implements a Deduction Rule and in
 which deductions from empty assumption lists would be permissible.  The
 MIU-system\index{MIU-system} described in Appendix~\ref{MIU} is another
 example.)
+Note that empty substitutions are
+always permissible in proof verification (VERIFY PROOF...) outside the
+Proof Assistant.  (See the MIU system in the Metamath book for an example
+of a system needing empty substitutions; another example would be a
+system that implements a Deduction Rule and in which deductions from
+empty assumption lists would be permissible.)
 
+It is better to leave this \texttt{off} when working with \texttt{set.mm}.
 Note that this command does not affect the way proofs are verified with
 the \texttt{verify proof} command.  Outside of the Proof Assistant,
 substitution of empty sequences for math symbols is always allowed.
-
-
 
 \subsection{\texttt{set search\_limit} Command}\index{\texttt{set
 search{\char`\_}limit} command} Syntax:  \texttt{set search{\char`\_}limit} {\em
@@ -12800,7 +13076,7 @@ See also:  \texttt{show proof}
 
 
 \subsection{\texttt{assign} Command}\index{\texttt{assign} command}
-Syntax:   \texttt{assign} {\em step} {\em label}
+Syntax:   \texttt{assign} {\em step} {\em label} [\texttt{/no{\char`\_}unify}]
 
    and:   \texttt{assign first} {\em label}
 
@@ -12849,15 +13125,16 @@ Syntax:  \texttt{match step} {\em step} [\texttt{/max{\char`\_}essential{\char`\
 This command, available in the Proof Assistant only, shows what
 statements can be unified with the specified step(s).  {\em Note:} In
 its current form, this command is not very useful because of the large
-number of matches it reports.  I rarely use it.
-It may be enhanced in the future.
+number of matches it reports.
+It may be enhanced in the future.  In the meantime, the \texttt{search}
+command can often provide finer control over locating theorems of interest.
 
 Optional command qualifiers:
 
     \texttt{/max{\char`\_}essential{\char`\_}hyp} {\em number} - filters out
         of the list any statements
         with more than the specified number of
-        \texttt{\$e}\index{\texttt{\$e} statement} hypotheses
+        \texttt{\$e}\index{\texttt{\$e} statement} hypotheses.
 
     \texttt{/essential{\char`\_}only} - in the \texttt{match all} statement, only
         the steps that
@@ -12909,7 +13186,7 @@ If {\em step} is positive, \texttt{let step} may be used to assign known
 \texttt{assign}) as well as unknown steps.
 
 Either single or double quotes can surround the {\em symbol-sequence} as
-long as they are different from any quotes inside of {\em
+long as they are different from any quotes inside a {\em
 symbol-sequence}.  If {\em symbol-sequence} contains both kinds of
 quotes, see the instructions at the end of \texttt{help let} in the
 Metamath program.
@@ -13050,6 +13327,7 @@ Optional command qualifier:
         then \texttt{2}, then \texttt{3}, etc.
         in sequence because of possible exponential blowups.  Save your
         work before trying \texttt{/depth} greater than \texttt{1}!
+
     \texttt{/no{\char`\_}distinct} - Skip trial statements that have
         \texttt{\$d}\index{\texttt{\$d} statement} requirements.
         This qualifier will prevent assignments that might violate \texttt{\$d}
@@ -13108,9 +13386,9 @@ sequence of Metamath commands:
 read set.mm
 open tex example.tex
 show statement a1i /tex
-show proof a1i /lemmon/renumber/tex
+show proof a1i /all/lemmon/renumber/tex
 show statement uneq2 /tex
-show proof uneq2 /lemmon/renumber/tex
+show proof uneq2 /all/lemmon/renumber/tex
 close tex
 \end{verbatim}
 
@@ -13154,7 +13432,7 @@ that was opened with \texttt{open tex} (unless
 the \LaTeX\ file.
 
 
-\section{Creating HTML Output}\label{htmlout}
+\section{Creating {\sc HTML} Output}\label{htmlout}
 
 You can generate {\sc html} web pages given the
 information in a database.
@@ -13163,19 +13441,20 @@ The database must already include the necessary typesetting information
 The ability to produce {\sc html} web pages was added in Metamath version
 0.07.30.
 
-To create an {\sc html} output file for a \texttt{\$a} or \texttt{\$p}
-statement, use
+To create an {\sc html} output file(s) for \texttt{\$a} or \texttt{\$p}
+statement(s), use
 \begin{quote}
-    \texttt{show statement} {\em label} \texttt{/html}
+    \texttt{show statement} {\em label-match} \texttt{/html}
 \end{quote}
-The output file will be named {\em label}\texttt{.html}.  When {\em
-label} has wildcard (\texttt{*}) characters, all statements with
+The output file will be named {\em label-match}\texttt{.html}
+for each match.  When {\em
+label-match} has wildcard (\texttt{*}) characters, all statements with
 matching labels will have {\sc html} files produced for them.  Also,
-when {\em label} has a wildcard (\texttt{*}) character, two additional
+when {\em label-match} has a wildcard (\texttt{*}) character, two additional
 files, \texttt{mmdefinitions.html} and \texttt{mmascii.html} will be
 produced.  To produce {\em only} these two additional files, you can use
 \texttt{?*}, which will not match any statement label, in place of {\em
-label}.
+label-match}.
 
 There are three other qualifiers for \texttt{show statement} that also
 generate {\sc HTML} code.  These are \texttt{/alt{\char`\_}html},
@@ -13185,9 +13464,9 @@ next section.
 
 The command
 \begin{quote}
-    \texttt{show statement} {\em label} \texttt{/alt{\char`\_}html}
+    \texttt{show statement} {\em label-match} \texttt{/alt{\char`\_}html}
 \end{quote}
-does the same as \texttt{show statement} {\em label} \texttt{/html},
+does the same as \texttt{show statement} {\em label-match} \texttt{/html},
 except that the {\sc html} code for the symbols is taken from
 \texttt{althtmldef} statements instead of \texttt{htmldef} statements in
 the \texttt{\$t} comment.
@@ -13211,14 +13490,13 @@ symbol representation.
 
 A statement's comment can include a special notation that provides a
 certain amount of control over the {\sc HTML} version of the comment.  See
-Section~\ref{mathcomments} (p.~\pageref{htmlmkup}) for the comment
+Section~\ref{mathcomments} (p.~\pageref{mathcomments}) for the comment
 markup features.
 
 The \texttt{write theorem{\char`\_}list} and \texttt{write bibliography}
 commands, which are described below, provide as a side effect complete
-error checking for all of the features described in this section.
-(Currently there is no separate command to check for these
-errors.)\index{error checking}
+error checking for all of the features described in this
+section.\index{error checking}
 
 \subsection{\texttt{write theorem\_list}
 Command}\index{\texttt{write theorem{\char`\_}list} command}
@@ -13237,13 +13515,13 @@ Optional command qualifier:
  This qualifier specifies the number of statements to
         write per web page.  The default is 100.
 
-{\em Note:} In version 0.07.30\index{Metamath!limitations of version
-0.07.30} of Metamath, the ``Related Theorems'' links on the individual
+{\em Note:} In version 0.177\index{Metamath!limitations of version
+0.177} of Metamath, the ``Nearby theorems'' links on the individual
 web pages presuppose 100 theorems per page when linking to the theorem
 list pages.  Therefore the \texttt{/theorems{\char`\_}per{\char`\_}page}
 qualifier, if it specifies a number other than 100, will cause the
 individual web pages to be out of sync and should not be used to
-generate the main theorem list for the web site.  This is expected to be
+generate the main theorem list for the web site.  This may be
 fixed in a future version.
 
 
@@ -13262,7 +13540,7 @@ filename}\texttt{{\char`\~}1}.
 A bibliographic reference is indicated with the reference name
 in brackets, such as  \texttt{Theorem 3.1 of
 [Monk] p.\ 22}.
-See Section~\ref{htmlmkup} (p.~\pageref{htmlmkup}) for
+See Section~\ref{htmlout} (p.~\pageref{htmlout}) for
 syntax details.
 
 
@@ -13339,9 +13617,9 @@ prompt for each argument.
   \texttt{swap} - Swap the two halves of each line in a file.
 
 \vskip 1ex
-\noindent Other file processing commands:
+\noindent Other file-processing commands:
 
-  \texttt{break} - Break up (parse) a file into a list of tokens (one per
+  \texttt{break} - Break up (tokenize) a file into a list of tokens (one per
         line).
 
   \texttt{build} - Build a file with multiple tokens per line from a list.
@@ -13461,7 +13739,7 @@ A complete list is available at \url{http://metamath.org}.
 
 These {\sc ASCII} representations, along
 with information on how to display them,
-are defined in the \texttt{set.mm} database file inside of
+are defined in the \texttt{set.mm} database file inside
 a special comment called a \texttt{\$t} {\em
 comment}\index{\texttt{\$t} comment} or {\em typesetting
 comment.}\index{typesetting comment}
@@ -13552,6 +13830,9 @@ if that is necessary for clarity.
 \texttt{e.} & $ \in $ &
   \hyperref[df-clel]{\texttt{df-clel}} &
   Class membership; $A \in B$ if $A$ is a member of $B$. \\
+\texttt{{\char`\_}V} & {\rm V} &
+  \hyperref[df-v]{\texttt{df-v}} &
+  Class of all sets (not itself a set). \\
 \texttt{C\_} & $ \subseteq $ &
   \hyperref[df-ss]{\texttt{df-ss}} &
   Subclass (subset); $A \subseteq B$ is true iff
@@ -13569,6 +13850,9 @@ if that is necessary for clarity.
 \texttt{(/)} & $ \varnothing $ &
   \hyperref[df-nul]{\texttt{df-nul}} &
   $ \varnothing $ is the empty set (aka null set). \\
+\texttt{\char`\~P} & $ \cal P $ &
+  \hyperref[df-pw]{\texttt{df-pw}} &
+  Power class. \\
 \texttt{<.\ A , B >.} & $\langle A , B \rangle$ &
   \hyperref[df-op]{\texttt{df-op}} &
   The ordered pair $\langle A , B \rangle$. \\
@@ -13601,7 +13885,7 @@ RPN proof format described in Section~\ref{proof} (with \texttt{save proof}
 {\em label} \texttt{/normal}).  However for sake of completeness we describe the
 format here and show how it maps to the normal RPN proof format.
 
-A compressed proof, located between \texttt{\$=} and \texttt{\$.} keywords, consists
+A compressed proof, located between \texttt{\$=} and \texttt{\$.}\ keywords, consists
 of a left parenthesis, a sequence of statement labels, a right parenthesis,
 and a sequence of upper-case letters \texttt{A} through \texttt{Z} (with optional
 white space between them).  White space must surround the parentheses
@@ -13638,8 +13922,8 @@ represent zero or more most-significant digits in base 5, where the
 digits start counting at 1 instead of the usual 0. With this scheme, we
 don't need white space between these ``numbers.''
 
-(In the design of the compressed proof format, only upper case letters,
-as opposed to say all printable {\sc ascii} characters other than
+(In the design of the compressed proof format, only upper-case letters,
+as opposed to say all non-whitespace printable {\sc ascii} characters other than
 %\texttt{\$}, was chosen to make the compressed proof a little less
 %displeasing to the eye, at the expense of a typical 20\% compression
 \texttt{\$}, were chosen so as not to collide with most text editor
@@ -14186,7 +14470,7 @@ specified as distinct in the original statement.
 {\em Relationship to Metamath.} Axiomatic statements
  and provable statements in a formal
 system correspond to the frames for \texttt{\$a} and \texttt{\$p} statements
-respectively in a Metamath database.  The set of axiomatic statements are a
+respectively in a Metamath database.  The set of axiomatic statements is a
 subset of the set of provable statements in a formal system, although in a
 Metamath database a \texttt{\$a} statement is distinguished by not having a
 proof.  A Metamath language proof for a \texttt{\$p} statement tells the computer
@@ -14711,7 +14995,7 @@ not known whether they are independent (i.e.\ none is
 redundant) in the metalogical sense; specifically, whether any axiom (possibly
 with additional non-mandatory distinct-variable restrictions, for use with any
 dummy variables in its proof) is provable from the others.  Note that
-metalogical independence is a stronger requirement than independence in the
+metalogical independence is a weaker requirement than independence in the
 usual logical sense.  Not all of the above axioms are logically independent:
 for example, C9$'$ can be proved as a metatheorem from the others, outside the
 formal system, by combining the possible cases of distinct variables.
@@ -14780,7 +15064,8 @@ theory with Choice.  For convenience we make use of the
 definitions in Example~4.
 
 In the $\mbox{\em CN}$ of Example~4 (which extends Example~3), we replace the symbol $R$
-with the symbol $\in$.  We remove from $\Gamma$ of Example~4 the three
+with the symbol $\in$.
+More explicitly, we remove from $\Gamma$ of Example~4 the three
 axiomatic statements containing $R$ and replace them with the
 reducts of the following:
 \begin{list}{}{\itemsep 0.0pt}
@@ -15127,7 +15412,7 @@ $)
       wI wI wI we wI wI we wI ax II II I_ III II IV $.
 \end{verbatim}\index{well-formed formula (wff)}
 
-The \texttt{show proof /essential/lemmon/renumber} command
+The \texttt{show proof /lemmon/renumber} command
 yields the following display.  It is very similar
 to the one in \cite[pp.~35--36]{Hofstadter}.\index{Hofstadter, Douglas R.}
 
@@ -15165,7 +15450,7 @@ notation from W3C\index{W3C}
 The \texttt{database}
 rule is processed until the end of the file (\texttt{EOF}).
 The rules eventually require reading whitespace-separated tokens.
-A token has an uppercase definition (see below)
+A token has an upper-case definition (see below)
 or is a string constant in a non-token (such as \texttt{'\$a'}).
 We intend for this to be correct, but if there is a conflict the
 rules of section \ref{spec} govern. That section also discusses
@@ -15177,9 +15462,10 @@ must be unique).
 \begin{verbatim}
 database ::= outermost-scope-stmt*
 
-outermost-scope-stmt ::= include-stmt | constant-stmt | stmt
+outermost-scope-stmt ::=
+  include-stmt | constant-stmt | stmt
 
-/* File inclusion command.  The file is processed as a database.
+/* File inclusion command; process file as a database.
    Databases should NOT have a comment in the filename. */
 include-stmt ::= '$[' filename '$]'
 
@@ -15196,7 +15482,7 @@ block ::= '${' stmt* '$}'
 /* Variable symbols declaration. */
 variable-stmt ::= '$v' variable+ '$.'
 
-/* Disjoint variables. Simple disjoint statements only have
+/* Disjoint variables. Simple disjoint statements have
    2 variables, i.e., "variable*" is empty for them. */
 disjoint-stmt ::= '$d' variable variable variable* '$.'
 
@@ -15217,29 +15503,30 @@ axiom-stmt ::= LABEL '$a' typecode MATH-SYMBOL* '$.'
 provable-stmt ::= LABEL '$p' typecode MATH-SYMBOL*
   '$=' proof '$.'
 
-/* A proof. Note that proofs may be interspersed by comments.
-   If '?' is anywhere in a proof then it is an "incomplete" proof. */
+/* A proof. Proofs may be interspersed by comments.
+   If '?' is in a proof it's an "incomplete" proof. */
 proof ::= uncompressed-proof | compressed-proof
 uncompressed-proof ::= (LABEL | '?')+
 compressed-proof ::= '(' LABEL* ')' COMPRESSED-PROOF-BLOCK+
 
 typecode ::= constant
 
-filename ::= MATH-SYMBOL /* Cannot include whitespace or '$' */
+filename ::= MATH-SYMBOL /* No whitespace or '$' */
 constant ::= MATH-SYMBOL
 variable ::= MATH-SYMBOL
 \end{verbatim}
 
 \needspace{2\baselineskip}
-Given these definitions, a \texttt{frame} is a sequence of 0 or more
-\texttt{disjoint-stmt} and \texttt{hypotheses-stmt} statements
+A \texttt{frame} is a sequence of 0 or more
+\texttt{disjoint-{\allowbreak}stmt} and
+\texttt{hypotheses-{\allowbreak}stmt} statements
 (possibly interleaved with other non-\texttt{assert-stmt} statements)
 followed by one \texttt{assert-stmt}.
 
 \needspace{3\baselineskip}
 Here are the rules for lexical processing (tokenization) beyond
 the constant tokens shown above.
-By convention these tokenization rules have names in upper case.
+By convention these tokenization rules have upper-case names.
 Every token is read for the longest possible length.
 Whitespace-separated tokens are read sequentially;
 note that the separating whitespace and \texttt{\$(} ... \texttt{\$)}
@@ -15270,7 +15557,8 @@ PRINTABLE-SEQUENCE ::= _PRINTABLE-CHARACTER+
 
 MATH-SYMBOL ::= (_PRINTABLE-CHARACTER - '$')+
 
-_PRINTABLE-CHARACTER ::= [#x21-#x7e] /* ASCII printable characters */
+/* ASCII non-whitespace printable characters */
+_PRINTABLE-CHARACTER ::= [#x21-#x7e]
 
 LABEL ::= ( _LETTER-OR-DIGIT | '.' | '-' | '_' )+
 
@@ -15278,15 +15566,16 @@ _LETTER-OR-DIGIT ::= [A-Za-z0-9]
 
 COMPRESSED-PROOF-BLOCK ::= ([A-Z] | '?')+
 
-/* Define whitespace between tokens. The -> SKIP means that when
-   whitespace is seen, it is skipped and we simply read again. */
+/* Define whitespace between tokens. The -> SKIP
+   means that when whitespace is seen, it is
+   skipped and we simply read again. */
 WHITESPACE ::= (_WHITECHAR+ | _COMMENT) -> SKIP
 
-/* Comments, which have the form $( ... $) and do not nest. */
+/* Comments. $( ... $) and do not nest. */
 _COMMENT ::= '$(' (_WHITECHAR+ (PRINTABLE-SEQUENCE - '$)')*
   _WHITECHAR+ '$)' _WHITECHAR
 
-/* Whitespace character: (' ' | '\t' | '\r' | '\n' | '\f') */
+/* Whitespace: (' ' | '\t' | '\r' | '\n' | '\f') */
 _WHITECHAR ::= [#x20#x09#x0d#x0a#x0c]
 \end{verbatim}
 % This EBNF was developed as a collaboration between

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Sep 21 19:13:08 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.36.1:
+  * fix CLI entrypoint
+
+- changes from version 4.36.0:
+  * expose more custom format params
+  * potential thread safety fix (#548)
+  * update submodule architecture (#198 -> #800)
+    + backward-compatibility
+    + expose utils
+    + rename main -> cli
+    + add/fix tests
+    + fix minor cached var optimisation
+    + gui partial upgrade (#790)
+    + notebook upgrade (#790)
+         support {bar} in bar_format (#594)
+         inherit methods including set_*(refresh) (#740 -> #741)
+    + ready for contrib releases (#252)
+  * support custom bar_format with unknown total
+  * fix tqdm_notebook red block on explicit file=None (#791)
+  * update notebook to fully support custom bar_format (#594, #649)
+  * misc tidy
+    + warnings
+    + linting
+    + update submodule contribution guide (#252)
+    + parallel (py)make test
+    + fix Zenodo metadata
+  * update documentation
+    + pandas, notebook, gui (#245)
+    + indentation
+    + update multiprocessing and multithreading examples (#796)
+
+-------------------------------------------------------------------
 Sun Aug 25 17:53:16 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - update to version 4.35.0:

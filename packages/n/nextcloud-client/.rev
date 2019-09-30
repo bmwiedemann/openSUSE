@@ -144,4 +144,12 @@
     <comment>- Update to version 2.5.3.</comment>
     <requestid>723166</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c2b1728a812ce2db4496245690704ba3</srcmd5>
+    <version>2.6.0</version>
+    <time>1569851950</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>733760</requestid>
+  </revision>
 </revisionlist>

@@ -27,6 +27,7 @@ URL:            https://github.com/getsentry/raven-python
 Source:         https://files.pythonhosted.org/packages/source/r/raven/raven-%{version}.tar.gz
 # https://github.com/getsentry/raven-python/issues/1284
 Patch0:         remove-unittest2.patch
+BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module Flask >= 0.8}
 BuildRequires:  %{python_module Flask-Login >= 0.2.0}
 BuildRequires:  %{python_module Logbook}
@@ -39,22 +40,16 @@ BuildRequires:  %{python_module blinker >= 1.1}
 BuildRequires:  %{python_module bottle}
 BuildRequires:  %{python_module celery >= 2.5}
 BuildRequires:  %{python_module exam >= 0.5.2}
-BuildRequires:  %{python_module flake8 >= 2.6}
 BuildRequires:  %{python_module kombu}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
-BuildRequires:  %{python_module pycodestyle}
-BuildRequires:  %{python_module pytest >= 3.0.0}
-BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module pytest-flake8}
+BuildRequires:  %{python_module pytest < 4}
+BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest-pythonpath}
 BuildRequires:  %{python_module pytest-timeout >= 0.4}
-BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tornado >= 4.1}
-BuildConflicts: %{python_module tornado >= 5}
 BuildRequires:  %{python_module vine}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -72,6 +67,7 @@ support for any WSGI-compatible web application.
 %prep
 %setup -q -n raven-%{version}
 %autopatch -p1
+rm -f setup.cfg tox.ini pytest.ini
 
 %build
 %python_build
@@ -81,11 +77,9 @@ support for any WSGI-compatible web application.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_expand rm -rf %{buildroot}/%{$python_sitelib}/raven/data/cacert.pem
 
-# Tests are completely broken https://github.com/getsentry/raven-python/issues/1283
-# %%check
-# %%{python_expand export PYTHONPATH=%{buildroot}%%{$python_sitelib}
-# py.test-%%{$python_bin_suffix} -k 'not (TornadoAsyncClientTestCase or TornadoTransportTests)'
-# }
+%check
+export DJANGO_SETTINGS_MODULE=tests.contrib.django.settings
+%pytest -k 'not (TornadoAsyncClientTestCase or TornadoTransportTests)'
 
 %files %{python_files}
 %license LICENSE

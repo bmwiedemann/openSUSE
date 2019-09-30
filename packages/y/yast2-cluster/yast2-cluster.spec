@@ -19,7 +19,7 @@
 %define _fwdefdir %{_libexecdir}/firewalld/services
 
 Name:           yast2-cluster
-Version:        4.2.3
+Version:        4.2.4
 Release:        0
 Summary:        Configuration of cluster
 License:        GPL-2.0-only
@@ -34,6 +34,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake)
 
+Requires:       yast2 >= 4.0.39
 Requires:       yast2 >= 4.1.3
 Requires:       yast2-ruby-bindings >= 1.0.0
 

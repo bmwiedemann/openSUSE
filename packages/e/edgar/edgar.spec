@@ -17,7 +17,7 @@
 
 
 Name:           edgar
-Version:        1.31
+Version:        1.32
 Release:        0
 Summary:        2D platform game with a persistent world
 License:        GPL-2.0-or-later

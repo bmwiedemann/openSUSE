@@ -200,4 +200,12 @@ view</comment>
     <comment></comment>
     <requestid>635816</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>b070b74c8d055d591e7d87f359ebd363</srcmd5>
+    <version>1.60</version>
+    <time>1569851577</time>
+    <user>dimstar_suse</user>
+    <comment>package also other jars</comment>
+    <requestid>733042</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Sep 30 08:43:41 UTC 2019 - mvetter@suse.com
+
+- Update to 0.14.6:
+  * Fix a regression in the previous release that caused kitty to
+    not always respond to DPI changes (#1999)
+- Changes from 0.14.5:
+  * Implement a hack to (mostly) preserve tabs when cat-ting a
+    file with them and then copying the text or passing screen
+    contents to another program (#1829)
+  * When all visible windows have the same background color, use
+    that as the color for the global padding, instead of the
+    configured background color (#1957)
+  * When resetting the terminal, also reset parser state, this
+    allows easy recovery from incomplete escape codes (#1961)
+  * Allow mapping keys commonly found on European keyboards (#1928)
+  * Fix incorrect rendering of some symbols when followed by a
+    space while using the PowerLine font which does not have a
+    space glyph (#1225)
+  * Linux: Allow using fonts with spacing=90 in addition to
+    fonts with spacing=100 (#1968)
+  * Use selection foreground color for underlines as well (#1982)
+
+-------------------------------------------------------------------
 Mon Sep  2 09:42:28 UTC 2019 - mvetter@suse.com
 
 - Update to 0.14.4:

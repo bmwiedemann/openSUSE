@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 25 20:34:17 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 0.178.
+- Update book to version 20190602.
+- Remove Windows executable from sources before building.
+
+-------------------------------------------------------------------
 Wed May  1 19:59:45 UTC 2019 - aaronpuchert@alice-dsl.net
 
 - Update to version 0.177.

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Text-Capitalize
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-Text-Capitalize
-Version:        1.3
+Version:        1.5
 Release:        0
 %define cpan_name Text-Capitalize
-Summary:        capitalize strings ("to WORK AS titles" becomes "To Work as Titles")
-License:        Artistic-1.0 or GPL-1.0+
+Summary:        Capitalize strings ("to WORK AS titles" becomes "To Work as Titles")
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Text-Capitalize/
-Source:         http://www.cpan.org/authors/id/D/DO/DOOM/%{cpan_name}-%{version}.tar.gz
+Url:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/D/DO/DOOM/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Module::Build) >= 0.35
-BuildRequires:  perl(PerlIO::locale)
+BuildRequires:  perl(Module::Build) >= 0.420000
 %{perl_requires}
 
 %description
@@ -71,10 +71,9 @@ transformation:
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Build.PL installdirs=vendor
+perl Build.PL installdirs=vendor
 ./Build build flags=%{?_smp_mflags}
 
 %check

@@ -39,4 +39,17 @@
   * missing API method doc added on NameServer.count()</comment>
     <requestid>682266</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3a60a4b6ce21ca6fbdb1334b5c8e828d</srcmd5>
+    <version>4.76</version>
+    <time>1569851717</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.76:
+  * corrected bogus space in worker thread name
+  * thread server can now be cleanly stopped with SIGINT / Ctrl-C on Windows
+  * the behavior of the NATPORT config item has been corrected to be in line with the API behavior of the Daemon
+  * certs are now included in sdist archive so the ssl unit tests also run as intended
+  * now correctly checks for write access to the correct logfile location, instead of assuming the current directory</comment>
+    <requestid>732901</requestid>
+  </revision>
 </revisionlist>

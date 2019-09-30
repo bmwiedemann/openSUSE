@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 30 10:44:01 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 8.25
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  8.25  2019-09-29
+    - Added curfile function to Mojo::File. (Grinnz)
+
+-------------------------------------------------------------------
 Thu Sep 12 08:00:02 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 8.24

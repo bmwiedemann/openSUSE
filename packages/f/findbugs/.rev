@@ -243,4 +243,12 @@
     <comment></comment>
     <requestid>660487</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>f13cc42eac0659b5401d2a06da52b556</srcmd5>
+    <version>3.0.1</version>
+    <time>1569852049</time>
+    <user>dimstar_suse</user>
+    <comment>remove reference to parent pom</comment>
+    <requestid>733942</requestid>
+  </revision>
 </revisionlist>

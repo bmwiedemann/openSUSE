@@ -20,7 +20,7 @@
 Name:           python-devpi-server
 Version:        5.1.0
 Release:        0
-Summary:        Reliable private and PyPI caching server
+Summary:        Private PyPI caching server
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://doc.devpi.net
@@ -69,8 +69,7 @@ BuildRequires:  %{python_module waitress >= 1.0.1}
 %python_subpackages
 
 %description
-Reliable private and PyPI caching server,
-providing user or team based indexes which can
+A private PyPI caching server, providing user or team based indices which can
 inherit packages from each other or from the pypi.org site.
 
 %prep

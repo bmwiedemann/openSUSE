@@ -111,4 +111,15 @@
     <comment></comment>
     <requestid>718787</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2d86e0d437346e278d5716ce67efe83f</srcmd5>
+    <version>1.2.2</version>
+    <time>1569851791</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.2:
+  * Revert the change introduced in (issue #276) attempting to pickle functions annotations for Python 3.4 to 3.6. It is not possible to pickle complex typing constructs for those versions (see issue #193)
+  * Fix a bug affecting bound classmethod saving on Python 2. (issue #288)
+  * Add support for pickling &quot;getset&quot; descriptors (issue #290)</comment>
+    <requestid>733396</requestid>
+  </revision>
 </revisionlist>

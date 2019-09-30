@@ -20,7 +20,7 @@
 %define sover   15
 %define libname lib%{name}%{sover}
 Name:           proj
-Version:        6.1.0
+Version:        6.2.0
 Release:        0
 Summary:        Cartographic projection software
 License:        MIT
@@ -32,11 +32,9 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  sqlite3
 BuildRequires:  unzip
+BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(sqlite3) >= 3.7
 Provides:       libproj = %{version}
-%if 0%{?suse_version} > 1500
-BuildRequires:  pkgconfig(gtest)
-%endif
 
 %description
 This package offers the commandline tools for performing respective
@@ -69,11 +67,9 @@ unzip -o %{SOURCE1}
 
 %build
 %configure \
-%if 0%{?suse_version} > 1500
   --with-external-gtest \
-%endif
-	--disable-static
-make %{?_smp_mflags}
+  --disable-static
+%make_build
 
 %install
 %make_install
@@ -115,6 +111,7 @@ make %{?_smp_mflags} check
 %files devel
 %{_includedir}/*.h
 %{_includedir}/proj
+%{_includedir}/proj_json_streaming_writer.hpp
 %{_libdir}/libproj.so
 %{_libdir}/pkgconfig/proj.pc
 %{_mandir}/man3/geodesic.3%{?ext_man}

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 27 08:43:15 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 3.15
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+  3.15 2019-09-27T09:28:32+0900
+   - Add JSON::Validator::Error->details() #133
+   - Reversed the checksum and nice name for generated definitions #173
+
+-------------------------------------------------------------------
 Sat Aug 10 05:12:29 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 3.14

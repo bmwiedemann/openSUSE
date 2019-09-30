@@ -174,4 +174,18 @@
   * :pr:`1769`: Reduce log level for non-error events in win32.py</comment>
     <requestid>717078</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c94327dbdea5ece57b029d52f2c89998</srcmd5>
+    <version>18.2.0</version>
+    <time>1569851657</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 18.2.0:
+  * File-based sessions no longer attempt to remove the lock files
+    when releasing locks, instead deferring to the default behavior
+    of zc.lockfile. Fixes :issue:`1391` and :issue:`1779`.
+  * Add native support for 308 Permanent Redirect usable via raise
+    cherrypy.HTTPRedirect('/new_uri', 308).
+- Drop merged patch pytest5.patch</comment>
+    <requestid>732878</requestid>
+  </revision>
 </revisionlist>

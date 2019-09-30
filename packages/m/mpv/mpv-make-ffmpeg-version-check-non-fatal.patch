@@ -1,30 +1,13 @@
-player: make ffmpeg/libav version check non-fatal
-
-We already enforce mpv rebuilds when ffmpeg/libav SONAME changes.
-
-Index: mpv-0.29.0/player/main.c
+Index: mpv/player/main.c
 ===================================================================
---- mpv-0.29.0.orig/player/main.c
-+++ mpv-0.29.0/player/main.c
-@@ -381,21 +381,6 @@ int mp_initialize(struct MPContext *mpct
+--- mpv.orig/player/main.c
++++ mpv/player/main.c
+@@ -382,7 +382,7 @@ int mp_initialize(struct MPContext *mpct
      if (handle_help_options(mpctx))
          return 1; // help
  
 -    if (!print_libav_versions(mp_null_log, 0)) {
--        // Using mismatched libraries can be legitimate, but even then it's
--        // a bad idea. We don't acknowledge its usefulness and stability.
--        // Distro maintainers who patch this out should be aware that mpv
--        // intentionally ignores ABI in some places where it's not possible to
--        // get by without violating it.
--        print_libav_versions(mpctx->log, MSGL_FATAL);
--        MP_FATAL(mpctx, "\nmpv was compiled against a different version of "
--                 "FFmpeg/Libav than the shared\nlibrary it is linked against. "
--                 "This is most likely a broken build and could\nresult in "
--                 "misbehavior and crashes.\n\nmpv does not support this "
--                 "configuration and will not run - rebuild mpv instead.\n");
--        return -1;
--    }
--
-     if (!mpctx->playlist->first && !opts->player_idle_mode) {
-         // nothing to play
-         mp_print_version(mpctx->log, true);
++    if (0 && !print_libav_versions(mp_null_log, 0)) {
+         // Using mismatched libraries can be legitimate, but even then it's
+         // a bad idea. We don't acknowledge its usefulness and stability.
+         // Distro maintainers who patch this out should be aware that mpv

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 30 04:24:52 UTC 2019 - Marguerite Su <i@marguerite.su>
+
+- drop cinnamon-session-qt-5.7-styleoverride.patch
+  * Cinnamon in openSUSE uses Menta/Adwaita by default, which
+    perfectly support gtk3. I think there's no need to stay on
+    gtk2 theming, and it is really weird for a gtk3 based desktop
+    to hard depend on an almostly unmaintained Qt5 library.
+  * Users who perfer gtk2 or accidentally install a gtk2 theme
+    can set "QT_STYLE_OVERRIDE=gtk2" and "QT_QPA_PLATFORMTHEME=gtk2"
+    in /etc/environment (note these global environment variables
+    affect all desktops and all users), then install
+    libqt5-qtstyleplugins-platformtheme-gtk2
+
+-------------------------------------------------------------------
 Fri Sep 13 17:20:37 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace pkgconfig(pangox) with pkgconfig(pango) and

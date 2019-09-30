@@ -27,4 +27,15 @@
 - singlespec auto-conversion</comment>
     <requestid>611220</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>09b002e2d8bd5a3c2152d122ddac592f</srcmd5>
+    <version>0.6.0</version>
+    <time>1569851744</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.0:
+  * Various minor fixes and metadata updates
+  * Add nullcontext
+  * Add AbstractContextManager</comment>
+    <requestid>732920</requestid>
+  </revision>
 </revisionlist>

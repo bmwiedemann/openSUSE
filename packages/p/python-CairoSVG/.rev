@@ -69,4 +69,14 @@
   * Fix the tree root detection</comment>
     <requestid>729372</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a4417c42b79ef2139780221726774180</srcmd5>
+    <version>2.4.2</version>
+    <time>1569851645</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.2:
+  * Fix race condition in tests
+  * Fix scale for images with no viewBox</comment>
+    <requestid>732870</requestid>
+  </revision>
 </revisionlist>

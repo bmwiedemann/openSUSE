@@ -25,6 +25,7 @@ Group:          System/Management
 Url:            https://github.com/aws/aws-cli
 Source0:        %{name}-%{version}.tar.gz
 Patch0:         hide_py_pckgmgmt.patch
+Requires:       groff
 BuildRequires:  fdupes
 %if 0%{?suse_version} && 0%{?suse_version} > 1315
 Requires:       python3

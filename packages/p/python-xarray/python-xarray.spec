@@ -19,12 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-xarray
-Version:        0.12.3
+Version:        0.13.0
 Release:        0
 Summary:        N-D labeled arrays and datasets in Python
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            http://github.com/pydata/xarray
+URL:            https://github.com/pydata/xarray
 Source:         https://files.pythonhosted.org/packages/source/x/xarray/xarray-%{version}.tar.gz
 BuildRequires:  %{python_module numpy-devel >= 1.12}
 BuildRequires:  %{python_module pandas >= 0.19.2}

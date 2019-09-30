@@ -144,4 +144,12 @@
     <comment>add ssh and vfs integration</comment>
     <requestid>713014</requestid>
   </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>54db5a40c8e13d90575d754a4bee7c86</srcmd5>
+    <version>2.4.0</version>
+    <time>1569851571</time>
+    <user>dimstar_suse</user>
+    <comment>Build the bouncycastle signer plugin</comment>
+    <requestid>732999</requestid>
+  </revision>
 </revisionlist>

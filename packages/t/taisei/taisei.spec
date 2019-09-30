@@ -16,36 +16,47 @@
 #
 
 
+%if 0%{suse_version} >= 1550
+%define shader_translation 1
+%else
+%define shader_translation 0
+%endif
+
 Name:           taisei
-Version:        1.3
+Version:        1.3.1
 Release:        0
 Summary:        Clone of the Touhou Project series of shoot ’em up games
 License:        MIT
 Group:          Amusements/Games/Action/Arcade
 URL:            https://taisei-project.org
-Source0:        https://github.com/taisei-project/taisei/releases/download/v%{version}/%{name}-v%{version}.tar.xz
-Source1:        https://github.com/taisei-project/taisei/releases/download/v%{version}/%{name}-v%{version}.tar.xz.sig
+Source0:        https://akari.alienslab.net/taisei/taisei-v1.3.1.tar.xz
+Source1:        https://akari.alienslab.net/taisei/taisei-v1.3.1.tar.xz.sig
 Source2:        gpg.keyring
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  meson >= 0.46.0
+BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(SDL2_mixer)
+BuildRequires:  python3-Pygments
+BuildRequires:  python3-docutils
+BuildRequires:  pkgconfig(SDL2_mixer) >= 2.0.4
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libwebpdecoder) > 0.4
 BuildRequires:  pkgconfig(libzip)
+BuildRequires:  pkgconfig(opusfile)
 BuildRequires:  pkgconfig(sdl2) >= 2.0.5
 BuildRequires:  pkgconfig(zlib)
+%if %{shader_translation}
+BuildRequires:  pkgconfig(shaderc)
+BuildRequires:  pkgconfig(spirv-cross-c-shared)
+%endif
 Requires:       %{name}-data
 Requires(post): desktop-file-utils
 Requires(post): shared-mime-info
 Requires(postun): desktop-file-utils
 Requires(postun): shared-mime-info
-BuildRequires:  python3-Pygments
-BuildRequires:  python3-docutils
 
 %description
 Taisei is an open clone of the Touhou Project series. Touhou is a one-man project
@@ -67,7 +78,14 @@ Japanese folklore.
 
 %build
 _v=%{version}
-%meson -Dstrip=false -Dversion_fallback=${_v//.g/-g}
+%meson \
+    -Dstrip=false \
+    -Db_pch=false \
+    -Dversion_fallback=${_v//.g/-g} \
+%if %{shader_translation}
+    -Dshader_transpiler=true \
+    -Dr_gles30=true \
+%endif
 %meson_build
 
 %install

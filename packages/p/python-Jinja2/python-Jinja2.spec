@@ -26,6 +26,7 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            http://jinja.pocoo.org/
 Source:         https://files.pythonhosted.org/packages/source/J/Jinja2/Jinja2-%{version}.tar.gz
+Patch0:         python38.patch
 BuildRequires:  %{python_module MarkupSafe >= 0.23}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -81,18 +82,17 @@ Emacs syntax highlighting scheme for Jinja2 templates.
 
 %prep
 %setup -q -n Jinja2-%{version}
+%patch0 -p1
+sed -i 's/\r$//' LICENSE # Fix wrong EOL encoding
 
 %build
 %python_build
-sed -i 's/\r$//' LICENSE # Fix wrong EOL encoding
 
 %install
 %python_install
 install -Dm644 ext/Vim/jinja.vim %{buildroot}%{_datadir}/vim/site/syntax/jinja.vim # Install VIM syntax file
 install -Dm644 ext/jinja.el %{buildroot}%{_datadir}/emacs/site-lisp/jinja.el # Install Emacs syntax file
-%if 0%{?suse_version}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%endif
 
 %check
 %pytest

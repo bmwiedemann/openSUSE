@@ -1,5 +1,7 @@
-# Specification for package metamath
 #
+# spec file for package metamath
+#
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2016-2019 by Aaron Puchert
 #
 # All modifications and additions to the file contributed by third parties
@@ -11,6 +13,10 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
 # Do not build LaTeX docs on SLES.
 %if 0%{?is_opensuse}
 %bcond_without  latex_doc
@@ -18,11 +24,11 @@
 %bcond_with     latex_doc
 %endif
 
-%define book_version 20190407
+%define book_version 20190602
 
 # Global definitions
 Name:           metamath
-Version:        0.177
+Version:        0.178
 Release:        0
 Summary:        Formal proof verifier and proof assistant
 License:        GPL-2.0-or-later
@@ -61,9 +67,10 @@ website.
 
 %package book
 Summary:        The Metamath book
-Version:        %{book_version}
 License:        CC0-1.0
 Group:          Productivity/Scientific/Math
+Version:        %{book_version}
+Release:        0
 Requires:       %{name} = %{VERSION}-%{release}
 BuildArch:      noarch
 
@@ -95,6 +102,7 @@ This package contains Metamath data base files for several formal theories.
 
 %prep
 %setup -q -n %{name}
+rm metamath.exe
 
 %build
 autoreconf -fi

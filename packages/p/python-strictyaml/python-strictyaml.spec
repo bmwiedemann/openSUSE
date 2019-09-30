@@ -39,7 +39,17 @@ BuildRequires:  %{python_module ruamel.yaml >= 0.14.2}
 %python_subpackages
 
 %description
-Strict, typed YAML parser.
+StrictYAML is a type-safe YAML parser that parses and validates a
+restricted subset of the YAML specification.
+
+Priorities:
+
+ * No parsing of hard to read and insecure features of YAML like the
+   Norway problem.
+ * Strict validation of markup and straightforward type casting.
+ * Acting as a near-drop in replacement for pyyaml, ruamel.yaml or poyo.
+ * Comment preservation across a read-write cycle
+ * Speed is not a key concern
 
 %prep
 %setup -q -n strictyaml-%{version}

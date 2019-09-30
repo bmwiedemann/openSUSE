@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-Paste
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        Tools for using a Web Server Gateway Interface stack
 License:        MIT
@@ -33,12 +33,12 @@ BuildRequires:  %{python_module six > 1.4.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six > 1.4.0
-BuildArch:      noarch
 Suggests:       python-flup
+BuildArch:      noarch
 %ifpython2
+Suggests:       python-python-openid
 Provides:       %{oldpython}-paste = %{version}
 Obsoletes:      %{oldpython}-paste < %{version}
-Suggests:       python-python-openid
 %endif
 %ifpython3
 Suggests:       python3-python3-openid
@@ -66,7 +66,7 @@ rm tests/test_proxy.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -v
+%pytest
 
 %files %{python_files}
 %license docs/license.txt

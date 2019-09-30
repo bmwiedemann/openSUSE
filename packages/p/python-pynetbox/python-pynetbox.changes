@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 27 22:21:50 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.0.8
+  * Returns ContentError when 2XX response but not JSON.
+
+-------------------------------------------------------------------
 Mon Sep 16 21:49:19 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.0.7

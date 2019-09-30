@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep 27 14:09:17 UTC 2019 - dakechi@suse.com
+
+- Update to version 4.1.0+git.1569593219.e357a9b9:
+  * Fix: ui_cluster: refactor function list_cluster_nodes and handle the None situation(bsc#1145520)
+  
+-------------------------------------------------------------------
+Fri Sep 27 14:04:51 UTC 2019 - dakechi@suse.com
+
+- Update to version 4.1.0+git.1569593061.35f57072:
+  * High: cibconfig: Correctly sanitize the original CIB as patch base (bsc#1127716, bsc#1138405)
+  * Revert "high: cibconfig: Use correct CIB as patch base (bsc#1127716)"
+  * Partially revert "medium: cibconfig: Sanitize CIB for patching (bsc#1127716)"
+
+-------------------------------------------------------------------
 Tue Sep 03 15:39:31 UTC 2019 - kgronlund@suse.com
 
 - Update to version 4.1.0+git.1567524903.fff07b88:

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 24 16:08:31 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Build the bouncycastle signer plugin since bcpg is now present
+- Added patch:
+  * port-to-bc-1.52.patch
+    + Allow building the signer plugin against bouncycastle >= 1.52
+
+-------------------------------------------------------------------
 Tue Jul  2 09:22:21 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Add possibility to build with ssh and vfs integration, since

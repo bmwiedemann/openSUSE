@@ -7,4 +7,16 @@
     <comment></comment>
     <requestid>733535</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5e28ddc3fd7e5659288901944ce6bbfe</srcmd5>
+    <version>0.1.0</version>
+    <time>1569852113</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.1.0:
+* Error out when template variables are not defined
+
+- Format with spec-cleaner
+- Do not pull in devel python module as it is not needed</comment>
+    <requestid>734019</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 27 09:29:43 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace gcc7 and gcc7-c++ with plain gcc and gcc-c++
+  BuildRequires. Current version builds just fine with gcc9. Also
+  remove the explicit CC=gcc-7 CXX=g++-7 from make call.
+
+-------------------------------------------------------------------
 Mon May 20 12:34:07 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Explicitly require zlib for building vpp.

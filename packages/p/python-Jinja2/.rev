@@ -349,4 +349,13 @@
 - Update to 2.9.5 (bsc#1132174, CVE-2016-10745)</comment>
     <requestid>699516</requestid>
   </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>56655368612b77b6894cd501d35ea5ed</srcmd5>
+    <version>2.10.1</version>
+    <time>1569851731</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to work with python 3.8:
+  * python38.patch</comment>
+    <requestid>732915</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Pyro4
-Version:        4.75
+Version:        4.76
 Release:        0
 Summary:        Distributed object middleware for Python (RPC)
 License:        MIT

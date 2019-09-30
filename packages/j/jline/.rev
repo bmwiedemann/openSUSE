@@ -170,4 +170,12 @@
 </comment>
     <requestid>712781</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>5ca41436f88afe67f3d2e221e8890e46</srcmd5>
+    <version>2.14.6</version>
+    <time>1569851927</time>
+    <user>dimstar_suse</user>
+    <comment>Restore compatibility with Java 8</comment>
+    <requestid>733686</requestid>
+  </revision>
 </revisionlist>

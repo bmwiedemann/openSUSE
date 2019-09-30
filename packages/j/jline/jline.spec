@@ -25,6 +25,7 @@ Group:          Development/Libraries/Java
 URL:            https://github.com/jline/jline2
 Source0:        https://github.com/jline/jline2/archive/jline-%{version}.tar.gz
 Source1:        %{name}-build.xml
+Patch0:         jline-java8compat.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  hawtjni-runtime
@@ -50,6 +51,7 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q -n jline2-jline-%{version}
+%patch0 -p1
 %pom_change_dep org.fusesource.jansi:jansi org.fusesource.jansi:jansi:1.12
 cp %{SOURCE1} build.xml
 mkdir -p lib

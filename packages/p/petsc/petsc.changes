@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Wed Aug 21 08:20:23 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
 
-- Update to version 3.11.3
+- Update to version 3.11.3 (jsc#SLE-8505)
   - https://www.mcs.anl.gov/petsc/documentation/changes/311.html
   - Binaries have changed path from bin/ to lib/petsc/bin/
 - Patches removed, merged by upstream

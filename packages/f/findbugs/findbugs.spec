@@ -1,7 +1,7 @@
 #
 # spec file for package findbugs
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -207,7 +207,9 @@ rm -f build/doc/manual*.xml build/doc/manual*.xsl
 # Install poms
 mkdir -p %{buildroot}%{_mavenpomdir}
 sed -i 's/3\.0\.0/3\.0\.1/g' %{SOURCE4} %{SOURCE6}
-cp %{SOURCE3} %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
+cp %{SOURCE3} JPP-%{name}.pom
+%pom_remove_parent JPP-%{name}.pom
+cp JPP-%{name}.pom %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
 cp %{SOURCE4} %{buildroot}%{_mavenpomdir}/JPP-%{name}-annotations.pom
 cp %{SOURCE6} %{buildroot}%{_mavenpomdir}/JPP.ant-ant-%{name}.pom
 

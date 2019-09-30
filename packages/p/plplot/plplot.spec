@@ -52,6 +52,8 @@ URL:            http://plplot.sourceforge.net/
 Source0:        http://download.sf.net/plplot/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM plplot-5.9.9-ada-pic.patch idoenmez@suse.de -- Compile Ada code with -fPIC
 Patch1:         plplot-5.9.9-ada-pic.patch
+# List based on build_ada in gcc.spec
+ExclusiveArch:  %ix86 x86_64 ppc ppc64 ppc64le s390 s390x ia64 aarch64 riscv64
 BuildRequires:  cmake >= 3.13.2
 BuildRequires:  fdupes
 BuildRequires:  freefont

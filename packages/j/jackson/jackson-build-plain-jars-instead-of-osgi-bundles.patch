@@ -1,0 +1,98 @@
+From 8cfd6868e1d8c5eb4816682f32d137b551dcab05 Mon Sep 17 00:00:00 2001
+From: Juan Hernandez <juan.hernandez@redhat.com>
+Date: Tue, 14 Feb 2012 18:27:09 +0100
+Subject: [PATCH 1/2] Build plain jar files instead of OSGi bundles
+
+In order to avoid dependending on BND.
+---
+ ant/build-jars.xml |   64 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ build.xml          |    2 +-
+ 2 files changed, 65 insertions(+), 1 deletions(-)
+ create mode 100644 ant/build-jars.xml
+
+diff --git a/ant/build-jars.xml b/ant/build-jars.xml
+new file mode 100644
+index 0000000..1267948
+--- /dev/null
++++ b/ant/build-jars.xml
+@@ -0,0 +1,64 @@
++<?xml version="1.0" standalone='yes'?>
++
++<project name="Plain jar files for Jackson" basedir=".">
++
++  <target name="jars.asl" depends="jar.core.asl, jar.mapper.asl"/>
++  <target name="jars.lgpl" depends=""/>
++  <target name="jars.other" depends="jar.jaxrs, jar.xc, jar.smile, jar.mrbean"/>
++  <target name="jars.tools" depends="jar.tool.smile"/>
++
++  <target name="jar.core.asl" depends="compile.core">
++    <jar destfile="${dir.build}/jackson-core-asl-${IMPL_VERSION}.jar">
++      <fileset dir="${dir.build.classes.core}"/>
++    </jar> 
++  </target> 
++
++  <target name="jar.mapper.asl" depends="compile.mapper">
++    <jar destfile="${dir.build}/jackson-mapper-asl-${IMPL_VERSION}.jar">
++      <fileset dir="${dir.build.classes.mapper}"/>
++    </jar>
++  </target> 
++
++  <target name="jar.jaxrs" depends="compile.jaxrs">
++    <jar destfile="${dir.build}/jackson-jaxrs-${IMPL_VERSION}.jar">
++      <fileset dir="${dir.build.classes.jaxrs}"/>
++    </jar>
++  </target>
++
++  <target name="jar.mrbean" depends="compile.mrbean">
++    <jar destfile="${dir.build}/jackson-mrbean-${IMPL_VERSION}.jar">
++      <fileset dir="${dir.build.classes.mrbean}"/>
++    </jar> 
++  </target> 
++
++  <target name="jar.xc" depends="compile.xc">
++    <jar destfile="${dir.build}/jackson-xc-${IMPL_VERSION}.jar">
++      <fileset dir="${dir.build.classes.xc}"/>
++    </jar>
++  </target> 
++
++  <target name="jar.smile" depends="compile.smile">
++    <jar destfile="${dir.build}/jackson-smile-${IMPL_VERSION}.jar">
++      <fileset dir="${dir.build.classes.smile}"/>
++    </jar>
++  </target> 
++
++  <target name="jar.tool.smile" depends="compile.smile, jar.core.asl, jar.smile">
++    <jar destfile="${dir.build}/smile-tool-${IMPL_VERSION}.jar">
++      <manifest>
++        <attribute name="Built-By" value="${user.name}"/>
++        <attribute name="Implementation-Title" value="Smile Tool"/>
++        <attribute name="Implementation-Version" value="${IMPL_VERSION}"/>
++        <attribute name="Implementation-Vendor" value="${IMPL_VENDOR}"/>
++        <attribute name="Main-Class" value="org.codehaus.jackson.smile.Tool"/>
++      </manifest>
++      <fileset dir="${dir.build.classes.core}">
++        <include name="org/codehaus/jackson/**/*.class" />
++      </fileset>
++      <fileset dir="${dir.build.classes.smile}">
++        <include name="org/codehaus/jackson/**/*.class" />
++      </fileset>
++    </jar>
++  </target> 
++
++</project>
+diff --git a/build.xml b/build.xml
+index 4f1432d..4613994 100644
+--- a/build.xml
++++ b/build.xml
+@@ -74,7 +74,7 @@
+     </patternset>
+ 
+     <!-- some build tasks are refactored out of the main task -->
+-    <import file="ant/build-osgi.xml" />
++    <import file="ant/build-jars.xml" />
+     <import file="ant/build-maven-deploy.xml" />
+     <import file="ant/build-coverage.xml" />
+     <import file="ant/build-test.xml" />
+-- 
+1.7.9
+

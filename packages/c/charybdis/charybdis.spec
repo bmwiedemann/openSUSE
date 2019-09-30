@@ -17,7 +17,7 @@
 
 
 Name:           charybdis
-Version:        4.1.1
+Version:        4.1.2
 Release:        0
 Summary:        Scalable IRCv3.2 compliant chat daemon
 License:        GPL-2.0-or-later

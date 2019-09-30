@@ -60,7 +60,7 @@
 %define devel_requires %build_requires %test_requires rsync curl postgresql-devel qemu qemu-kvm tar postgresql-server xorg-x11-fonts sudo perl(Devel::Cover) perl(Devel::Cover::Report::Codecov) perl(Perl::Tidy)
 
 Name:           openQA
-Version:        4.6.1568387059.db88ff48d
+Version:        4.6.1568795030.c377d780b
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 24 09:56:04 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.76:
+  * corrected bogus space in worker thread name
+  * thread server can now be cleanly stopped with SIGINT / Ctrl-C on Windows
+  * the behavior of the NATPORT config item has been corrected to be in line with the API behavior of the Daemon
+  * certs are now included in sdist archive so the ssl unit tests also run as intended
+  * now correctly checks for write access to the correct logfile location, instead of assuming the current directory
+
+-------------------------------------------------------------------
 Wed Mar  6 09:29:20 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 4.75:

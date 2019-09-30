@@ -1008,4 +1008,12 @@
     <comment></comment>
     <requestid>730324</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>f4e4c8877789344ca0dc736cad95cd84</srcmd5>
+    <version>2019.09.28</version>
+    <time>1569851976</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2019.09.28</comment>
+    <requestid>733833</requestid>
+  </revision>
 </revisionlist>

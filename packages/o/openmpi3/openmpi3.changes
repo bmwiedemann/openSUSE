@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  6 11:14:12 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Use FAT LTO objects in order to provide proper static library.
+- Mark LICENSE with %license
+
+-------------------------------------------------------------------
 Tue Apr 23 07:42:08 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Fix bad INCLUDE path in module (bsc#1132949)

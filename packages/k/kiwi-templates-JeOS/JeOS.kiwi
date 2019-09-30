@@ -357,6 +357,7 @@
         <!-- For WiFi: -->
         <package name="jeos-firstboot-rpiwifi"/>
         <package name="bcm43xx-firmware"/>
+        <package name="kernel-firmware"/><!-- Fix choice between kernel-firmware and kernel-firmware-all -->
     </packages>
 
 <!-- TW does not have those release packages

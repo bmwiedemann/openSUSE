@@ -1,0 +1,29 @@
+From c1ecd81ad5971c901663749650b65a30ed398661 Mon Sep 17 00:00:00 2001
+From: Juan Hernandez <juan.hernandez@redhat.com>
+Date: Tue, 24 Jul 2012 11:55:39 +0200
+Subject: [PATCH] Don't bundle asm classes
+
+---
+ build.xml |    6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/build.xml b/build.xml
+index 4613994..447f095 100644
+--- a/build.xml
++++ b/build.xml
+@@ -272,12 +272,6 @@ compile.smile, compile.mrbean" />
+         	<!-- 1.6, [JACKSON-278]: need to copy VERSION info along (so unit tests see it) -->
+         </javac>
+         <copy file="${dir.build}/VERSION.txt" toDir="${dir.build.classes.mrbean}/org/codehaus/jackson/mrbean" />
+-        <!-- also, unpack classes from repackaged asm jar, for OSGi bundle -->
+-        <unjar dest="${dir.build.classes.mrbean}">
+-          <fileset dir="${dir.lib}/repackaged">
+-            <include name="jackson-asm*.jar" />
+-          </fileset>
+-        </unjar>
+     </target>
+ 
+     <target name="compile.extra" depends="compile.main">
+-- 
+1.7.10.4
+

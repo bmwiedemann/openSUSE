@@ -7,4 +7,12 @@
     <comment>Rename of openSUSE-Tumbleweed-JeOS, with a .spec added.</comment>
     <requestid>733380</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b9106979f0bcd4913abe75b6eb6b6edc</srcmd5>
+    <version>84.87</version>
+    <time>1569852172</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>734022</requestid>
+  </revision>
 </revisionlist>

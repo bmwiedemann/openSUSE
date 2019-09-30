@@ -25,8 +25,6 @@ Group:          System/GUI/Other
 URL:            https://github.com/linuxmint/cinnamon-session
 Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}-logind.gschema.override
-# PATCH-FIX-OPENSUSE cinnamon-session-qt-5.7-styleoverride.patch sor.alexei@meowr.ru -- On Qt 5.7+ use Gtk2 Platform Theme.
-Patch0:         cinnamon-session-qt-5.7-styleoverride.patch
 BuildRequires:  docbook
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
@@ -54,17 +52,12 @@ Requires:       dbus-1-x11
 Requires:       upower >= 0.9.0
 Recommends:     %{name}-lang
 %glib2_gsettings_schema_requires
-%if 0%{?suse_version} >= 1500
-# Make native styling in Qt5 happen.
-Requires:       libqt5-qtstyleplugins-platformtheme-gtk2
-%endif
 
 %description
 This packages contains the session manager for the Cinnamon Desktop.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %meson \

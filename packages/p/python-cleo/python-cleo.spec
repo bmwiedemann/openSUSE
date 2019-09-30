@@ -20,7 +20,7 @@
 Name:           python-cleo
 Version:        0.7.5
 Release:        0
-Summary:        Cleo allows you to create beautiful and testable command-line interfaces
+Summary:        Python module for creating testable command-line interfaces
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/sdispater/cleo
@@ -43,7 +43,7 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-Cleo allows you to create beautiful and testable command-line interfaces.
+Cleo allows creating testable command-line interfaces.
 
 %prep
 %setup -q -n cleo-%{version}

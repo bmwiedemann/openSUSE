@@ -461,6 +461,7 @@
         <package name="dracut-kiwi-oem-repart"/>
         <package name="kernel-default"/>
         <package name="bcm43xx-firmware"/>
+        <package name="kernel-firmware"/><!-- Fix choice between kernel-firmware and kernel-firmware-all -->
         <package name="wireless-tools"/>
         <package name="wpa_supplicant"/>
     </packages>

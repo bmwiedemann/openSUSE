@@ -390,6 +390,7 @@ sed -i -e 's/^greek=.*$/greek=%{git_ver}/' -e 's/^repo_rev=.*$/repo_rev=%{versio
 #############################################################################
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %{?with_hpc:%hpc_debug}
 ./autogen.pl --force
 %if %{with hpc}
@@ -585,7 +586,8 @@ fi
 
 %files
 %defattr(-, root, root)
-%doc NEWS README LICENSE
+%doc NEWS README
+%license LICENSE
 %dir %{mpi_prefix}
 %dir %{mpi_bindir}
 %dir %{mpi_libdir}

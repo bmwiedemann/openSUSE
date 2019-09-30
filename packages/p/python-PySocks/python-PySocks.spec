@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-PySocks
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
 Summary:        A Python SOCKS client module
 License:        BSD-3-Clause

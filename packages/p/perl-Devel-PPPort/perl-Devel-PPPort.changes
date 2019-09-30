@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Sep 28 13:45:02 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 3.54
+   see /usr/share/doc/packages/perl-Devel-PPPort/Changes
+
+   3.54 - 2019-09-27
+  
+    * Fix Unix-format path in Devel::PPPort's Makefile.PL
+    * Fix utf8_to_uvchr_buf for 5.7.0
+    * Add hint for utf8_to_uvchr()
+    * Fix hints for is_ascii_string
+    * Use numeric comparisons with $]
+    * Fix 'for loops' to work on early perls
+    * Can't use GCC brace groups before 5.4
+    * Add script to regenerate ppport.fnc
+    * Suppress useless warning
+    * Fix mktests.PL for Perl 5.8.0
+    * Implement sv_len_utf8_nomg() and sv_len_utf8()
+    * Fix eval_pv for Perl versions prior to 5.31.2
+    * Consolidate UTF-8 functions/macros into new file
+    * Implement sv_mortalcopy_flags()
+    * Implement newSVsv_flags()
+    * Enable Perl compile-time warnings at all place
+    * Improve Makefile.PL
+    * Add tests for IVdf, UVuf, IV_MAX and UV_MAX
+  
+   3.53 - 2019-09-27
+  
+    * Rename PPPort_xs.PL to RealPPPort_xs.PL
+    * Fix compilation issues with version older than 5.010
+    * Fix compilation issues with version older than 5.010
+
+-------------------------------------------------------------------
 Wed May 15 05:05:57 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 3.52

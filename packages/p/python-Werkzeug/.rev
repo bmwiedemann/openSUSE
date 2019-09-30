@@ -286,4 +286,16 @@
   * ProxyFix trusts the X-Forwarded-Proto header by default. :issue:`1630`</comment>
     <requestid>730725</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d166fe727392f50f4aaef98d7da5ff2f</srcmd5>
+    <version>0.16.0</version>
+    <time>1569851723</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.0:
+  * Deprecate most top-level attributes provided by the werkzeug
+    module in favor of direct imports. The deprecated imports will
+    be removed in version 1.0.
+- Rebase patch 0001_create_a_thread_to_reap_death_process.patch</comment>
+    <requestid>732906</requestid>
+  </revision>
 </revisionlist>

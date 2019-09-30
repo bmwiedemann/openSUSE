@@ -1,7 +1,7 @@
 #
 # spec file for package pam-python
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           pam-python
-Version:        1.0.6
+Version:        1.0.7
 Release:        0
 Summary:        PAM module that allows PAM modules to be written in Python
-License:        AGPL-3.0
+License:        AGPL-3.0-only
 Group:          Productivity/Security
 Url:            http://pam-python.sourceforge.net/
 Source:         pam-python-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  gcc
 BuildRequires:  pam-devel
 BuildRequires:  python-devel
 BuildRequires:  python-sphinx
-Patch0:         not_null_argument_for_strcmp.patch
+Requires:       python = 2.7
 Patch1:         werror.patch
 
 %description
@@ -37,15 +38,16 @@ allows PAM modules to be written in Python.
 
 %prep
 %setup
-%patch0 -p1
 %patch1 -p1
 
 %build
+# XX: the build system overrides CFLAGS, but flags for the preprocessor are passed to the C compiler
+export CPPFLAGS='-DDEFAULT_SECURITY_DIR=\"/%{_lib}/security\" %{optflags}'
 make
 
 %install
-mkdir -p $RPM_BUILD_ROOT/%{_lib}/security
-install --mode=755 --strip src/pam_python.so $RPM_BUILD_ROOT/%{_lib}/security
+export LIBDIR=$RPM_BUILD_ROOT/%{_lib}/security
+make install-lib
 
 %files
 %defattr(-,root,root)

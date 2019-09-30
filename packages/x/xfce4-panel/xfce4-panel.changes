@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Sep 26 09:13:11 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 4.14.1
+  * Draw panel border based on position and length
+  * windowlist: Make layout consistent with xfdesktop
+  * windowmenu: Replace deprecated gtk_widget_modify_font
+  * tasklist: Resize when windows get removed (bxo#14394)
+  * systray: Fix icons without compositing (bxo#14577)
+  * pager: Fix scrolling in pager-buttons (bxo#15614)
+  * launcher: Fix visual state of arrow-button (bxo#15818)
+  * launcher: Avoid excessive left padding on popup menu (bxo#15819)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Aug 16 12:54:59 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fixed sources in spec file

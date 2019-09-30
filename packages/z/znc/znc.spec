@@ -17,7 +17,7 @@
 
 
 Name:           znc
-Version:        1.7.4
+Version:        1.7.5
 Release:        0
 Summary:        Advanced IRC Bouncer
 License:        Apache-2.0

@@ -40,6 +40,7 @@ Recommends:     git-core
 Recommends:     python-Sphinx
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module check-manifest >= 0.28}
 BuildRequires:  %{python_module devpi-common >= 3.4.0}
 BuildRequires:  %{python_module devpi-server}
@@ -47,7 +48,6 @@ BuildRequires:  %{python_module pkginfo >= 1.4.2}
 BuildRequires:  %{python_module pluggy >= 0.6.0}
 BuildRequires:  %{python_module py >= 1.4.31}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module tox >= 3.1.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  git-core
@@ -55,7 +55,9 @@ BuildRequires:  git-core
 %python_subpackages
 
 %description
-devpi upload/install/... workflow commands for Python developers.
+devpi-client is a command line tool with sub commands for creating users, using
+indexes, uploading to and installing from indexes, as well as a "test" command
+for invoking tox.
 
 %prep
 %setup -q -n devpi-client-%{version}

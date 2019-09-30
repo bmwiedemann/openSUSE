@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep 29 06:47:48 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- Update to 1.7.5:
+  * modpython: Add support for Python 3.8
+  * modtcl: install .tcl files when building with CMake
+  * nickserv: report success of Clear commands
+  * Update translations, add Italian, Bulgarian, fix name of Dutch
+  * Update error messages to be clearer
+  * Add a deprecation warning to ./configure to use CMake instead in addition to an already existing warning in README
+
+-------------------------------------------------------------------
 Sat Jul 13 04:20:29 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Use swig to build bindings

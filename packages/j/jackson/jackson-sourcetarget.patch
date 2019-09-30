@@ -1,0 +1,96 @@
+--- jackson-src-1.9.11/ant/build-mini.xml	2012-11-06 17:24:49.000000000 +0100
++++ jackson-src-1.9.11/ant/build-mini.xml	2018-12-18 13:22:53.406616086 +0100
+@@ -8,7 +8,7 @@
+     <target name="compile.mini" depends="prepare">
+         <mkdir dir="${dir.build.classes.mini}" />
+         <javac srcdir="${dir.src.java.core}" destdir="${dir.build.classes.mini}"
+-            source="1.5" target="1.5"
++            source="1.6" target="1.6"
+             debug="false" includeantruntime="false"
+         >
+             <compilerarg value="-Xlint:unchecked" />
+--- jackson-src-1.9.11/ant/build-test.xml	2012-11-06 17:24:49.000000000 +0100
++++ jackson-src-1.9.11/ant/build-test.xml	2018-12-18 13:22:41.566554979 +0100
+@@ -51,7 +51,7 @@
+     <target name="test.compile" depends="test.prepare, compile.mapper,
+ compile.xc, compile.jaxrs, compile.smile, compile.mrbean">  
+         <javac srcdir="${dir.src.test}" destdir="${dir.test.classes}"
+-            source="1.5" target="1.5"
++            source="1.6" target="1.6"
+             debug="true" includeantruntime="false"
+         >
+             <exclude name="org/codehaus/jackson/map/ext/*.java" />
+@@ -71,7 +71,7 @@
+             </classpath>
+         </javac>
+         <javac srcdir="${dir.src.test}" destdir="${dir.test.classes}"
+-            source="1.5" target="1.5"
++            source="1.6" target="1.6"
+             debug="true" includeantruntime="false"
+         >
+             <include name="org/codehaus/jackson/map/ext/*.java" />
+--- jackson-src-1.9.11/build.xml	2012-11-06 17:24:49.000000000 +0100
++++ jackson-src-1.9.11/build.xml	2018-12-18 13:22:06.686374987 +0100
+@@ -158,7 +158,7 @@
+ 
+     <target name="compile.core" depends="prepare">
+         <javac srcdir="${dir.src.java.core}" destdir="${dir.build.classes.core}"
+-            source="1.5" target="1.5"
++            source="1.6" target="1.6"
+             debug="true" includeantruntime="false"
+         >
+             <compilerarg value="-Xlint:unchecked" />
+@@ -171,7 +171,7 @@
+ 
+     <target name="compile.mapper" depends="compile.core">
+         <javac srcdir="${dir.src.java.mapper}" destdir="${dir.build.classes.mapper}"
+-            source="1.5" target="1.5"
++            source="1.6" target="1.6"
+             debug="true" includeantruntime="false"
+         >
+             <compilerarg value="-Xlint:unchecked" />
+@@ -192,7 +192,7 @@
+ 
+     <target name="compile.xc" depends="compile.mapper">
+         <javac srcdir="${dir.src.java.xc}" destdir="${dir.build.classes.xc}"
+-            source="1.5" target="1.5"
++            source="1.6" target="1.6"
+             debug="true" includeantruntime="false"
+         >
+             <compilerarg value="-Xlint:unchecked" />
+@@ -215,7 +215,7 @@
+ 
+     <target name="compile.jaxrs" depends="compile.mapper,compile.xc">
+         <javac srcdir="${dir.src.java.jaxrs}" destdir="${dir.build.classes.jaxrs}"
+-            source="1.5" target="1.5"
++            source="1.6" target="1.6"
+             debug="true" includeantruntime="false"
+         >
+             <compilerarg value="-Xlint:unchecked" />
+@@ -238,7 +238,7 @@
+ 
+     <target name="compile.smile" depends="compile.core">
+         <javac srcdir="${dir.src.java.smile}" destdir="${dir.build.classes.smile}"
+-            source="1.5" target="1.5"
++            source="1.6" target="1.6"
+             debug="true" includeantruntime="false"
+         >
+             <compilerarg value="-Xlint:unchecked" />
+@@ -255,7 +255,7 @@
+ 
+     <target name="compile.mrbean" depends="compile.core">
+         <javac srcdir="${dir.src.java.mrbean}" destdir="${dir.build.classes.mrbean}"
+-            source="1.5" target="1.5"
++            source="1.6" target="1.6"
+             debug="true" includeantruntime="false"
+         >
+             <compilerarg value="-Xlint:unchecked" />
+@@ -282,7 +282,7 @@
+ 
+     <target name="compile.extra" depends="compile.main">
+         <javac destdir="${dir.build.classes.extra}"
+-            source="1.5" target="1.5"
++            source="1.6" target="1.6"
+             debug="true" includeantruntime="false"
+         >
+             <compilerarg value="-Xlint:unchecked" />

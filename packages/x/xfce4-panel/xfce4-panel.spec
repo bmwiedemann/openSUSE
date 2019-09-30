@@ -21,13 +21,13 @@
 %define libname_gtk3 libxfce4panel-2_0-4
 
 Name:           xfce4-panel
-Version:        4.14.0
+Version:        4.14.1
 Release:        0
 Summary:        Panel for the Xfce Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/xfce/xfce4-panel/start
-Source0:         https://archive.xfce.org/src/xfce/xfce4-panel/4.14/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/xfce/%{name}/4.14/%{name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
 Source2:        %{name}-restore-defaults
 Source3:        %{name}-restore-defaults.desktop
@@ -49,17 +49,17 @@ BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gmodule-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libwnck-3.0)
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.13.0
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.13.0
 BuildRequires:  pkgconfig(libxfconf-0) >= 4.13.2
 BuildRequires:  pkgconfig(pango)
+BuildRequires:  pkgconfig(vapigen)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
-BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(vapigen)
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
 %endif

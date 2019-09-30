@@ -1,0 +1,33 @@
+--- jackson-src-1.9.11/src/mapper/java/org/codehaus/jackson/map/module/SimpleModule.java	2012-11-06 17:24:51.000000000 +0100
++++ jackson-src-1.9.11/src/mapper/java/org/codehaus/jackson/map/module/SimpleModule.java	2018-12-18 13:24:58.899263613 +0100
+@@ -14,7 +14,7 @@
+  * 
+  * @since 1.7
+  */
+-public class SimpleModule extends Module
++public class SimpleModule extends org.codehaus.jackson.map.Module
+ {
+     protected final String _name;
+     protected final Version _version;
+--- jackson-src-1.9.11/src/test/org/codehaus/jackson/jaxb/TestDeserializerCaching.java	2012-11-06 17:24:51.000000000 +0100
++++ jackson-src-1.9.11/src/test/org/codehaus/jackson/jaxb/TestDeserializerCaching.java	2018-12-18 13:27:40.968097378 +0100
+@@ -18,7 +18,7 @@
+     /**********************************************************
+      */
+ 
+-    static class MyBeanModule extends Module {
++    static class MyBeanModule extends org.codehaus.jackson.map.Module {
+         @Override public String getModuleName() {
+             return "MyBeanModule";
+         }
+--- jackson-src-1.9.11/src/test/org/codehaus/jackson/map/deser/TestCreatorNullValue.java	2012-11-06 17:24:51.000000000 +0100
++++ jackson-src-1.9.11/src/test/org/codehaus/jackson/map/deser/TestCreatorNullValue.java	2018-12-18 13:26:17.927670262 +0100
+@@ -50,7 +50,7 @@
+         }
+     }
+ 
+-    private static class TestModule extends Module {
++    private static class TestModule extends org.codehaus.jackson.map.Module {
+         @Override
+         public String getModuleName() {
+             return "ContainedModule";

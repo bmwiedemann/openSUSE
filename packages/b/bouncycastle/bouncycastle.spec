@@ -1,7 +1,7 @@
 #
 # spec file for package bouncycastle
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,106 +12,136 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define ver  1.60
-%define shortver 160
-%define archivever jdk15on-%{shortver}
-%define classname org.bouncycastle.jce.provider.BouncyCastleProvider
+%global ver  1.60
+%global shortver 160
+%global gittag r1v60
+%global archivever jdk15on-%{shortver}
+%global classname org.bouncycastle.jce.provider.BouncyCastleProvider
 Name:           bouncycastle
 Version:        %{ver}
 Release:        0
-Summary:        Bouncy Castle Crypto Package for Java
-License:        MIT
+Summary:        Bouncy Castle Cryptography APIs for Java
+License:        MIT AND Apache-2.0
 Group:          Development/Libraries/Java
-Url:            http://www.bouncycastle.org/
-Source0:        http://www.bouncycastle.org/download/bcprov-%{archivever}.tar.gz
-Source1:        http://repo1.maven.org/maven2/org/bouncycastle/bcprov-jdk15on/%{ver}/bcprov-jdk15on-%{ver}.pom
-BuildRequires:  java-devel >= 1.8
+URL:            http://www.bouncycastle.org
+Source0:        https://github.com/bcgit/bc-java/archive/%{gittag}.tar.gz
+# POMs from Maven Central
+Source1:        http://repo1.maven.org/maven2/org/bouncycastle/bcprov-jdk15on/%{version}/bcprov-jdk15on-%{version}.pom
+Source2:        http://repo1.maven.org/maven2/org/bouncycastle/bcpkix-jdk15on/%{version}/bcpkix-jdk15on-%{version}.pom
+Source3:        http://repo1.maven.org/maven2/org/bouncycastle/bcpg-jdk15on/%{version}/bcpg-jdk15on-%{version}.pom
+Source4:        http://repo1.maven.org/maven2/org/bouncycastle/bcmail-jdk15on/%{version}/bcmail-jdk15on-%{version}.pom
+Source5:        http://repo1.maven.org/maven2/org/bouncycastle/bctls-jdk15on/%{version}/bctls-jdk15on-%{version}.pom
+Patch0:         bouncycastle-javadoc.patch
+BuildRequires:  ant
+BuildRequires:  ant-junit
+BuildRequires:  fdupes
+BuildRequires:  javamail
 BuildRequires:  javapackages-local
-BuildRequires:  javapackages-tools
-BuildRequires:  junit
-#FIXME: this is needed for initialize of NSS crypto backend, will be required (not required(post) by openjdk)
-BuildRequires:  mozilla-nss
-BuildRequires:  unzip
-Requires:       java
+Requires(post): javapackages-tools
+Requires(postun): javapackages-tools
 Provides:       bcprov = %{version}-%{release}
 BuildArch:      noarch
 
 %description
 The Bouncy Castle Crypto package is a Java implementation of cryptographic
-algorithms. The package is organised so that it contains a light-weight API
-suitable for use in any environment (including the newly released J2ME) with
-the additional infrastructure to conform the algorithms to the JCE framework.
+algorithms. This jar contains JCE provider and lightweight API for the
+Bouncy Castle Cryptography APIs for JDK 1.5 to JDK 1.8.
+
+%package pkix
+Summary:        Bouncy Castle PKIX, CMS, EAC, TSP, PKCS, OCSP, CMP, and CRMF APIs
+License:        MIT
+Group:          Development/Libraries/Java
+Requires:       %{name} = %{version}
+
+%description pkix
+The Bouncy Castle Java APIs for CMS, PKCS, EAC, TSP, CMP, CRMF, OCSP, and
+certificate generation. This jar contains APIs for JDK 1.5 to JDK 1.8. The
+APIs can be used in conjunction with a JCE/JCA provider such as the one
+provided with the Bouncy Castle Cryptography APIs.
+
+%package pg
+Summary:        Bouncy Castle OpenPGP API
+License:        MIT AND Apache-2.0
+Group:          Development/Libraries/Java
+Requires:       %{name} = %{version}
+
+%description pg
+The Bouncy Castle Java API for handling the OpenPGP protocol. This jar
+contains the OpenPGP API for JDK 1.5 to JDK 1.8. The APIs can be used in
+conjunction with a JCE/JCA provider such as the one provided with the
+Bouncy Castle Cryptography APIs.
+
+%package mail
+Summary:        Bouncy Castle S/MIME API
+License:        MIT
+Group:          Development/Libraries/Java
+Requires:       %{name} = %{version}
+Requires:       %{name}-pkix = %{version}
+
+%description mail
+The Bouncy Castle Java S/MIME APIs for handling S/MIME protocols. This jar
+contains S/MIME APIs for JDK 1.5 to JDK 1.8. The APIs can be used in
+conjunction with a JCE/JCA provider such as the one provided with the Bouncy
+Castle Cryptography APIs. The JavaMail API and the Java activation framework
+will also be needed.
+
+%package tls
+Summary:        Bouncy Castle JSSE provider and TLS/DTLS API
+License:        MIT
+Group:          Development/Libraries/Java
+Requires:       %{name} = %{version}
+
+%description tls
+The Bouncy Castle Java APIs for TLS and DTLS, including a provider for the
+JSSE.
 
 %package javadoc
 Summary:        Javadoc for %{name}
+License:        MIT
 Group:          Development/Libraries/Java
-Requires:       %{name} = %{version}-%{release}
-BuildArch:      noarch
 
 %description javadoc
-API documentation for the %{name} package.
+API documentation for the Bouncy Castle Cryptography APIs.
 
 %prep
-%setup -q -n bcprov-%{archivever}
+%setup -q -n bc-java-%{gittag}
+%patch0 -p1
 
 # Remove provided binaries
 find . -type f -name "*.class" -exec rm -f {} \;
 find . -type f -name "*.jar" -exec rm -f {} \;
 
-mkdir src
-unzip -qq src.zip -d src/
-
 %build
-pushd src
-  export CLASSPATH=$(build-classpath junit)
-  %javac -g -source 8 -target 8 -encoding UTF-8 $(find . -type f -name "*.java")
-  jarfile="../bcprov-%{version}.jar"
-  # Exclude all */test/* files except org.bouncycastle.util.test, cf. upstream
-  files="$(find . -type f \( -name '*.class' -o -name '*.properties' \) -not -path '*/test/*')"
-  files="$files $(find . -type f -path '*/org/bouncycastle/util/test/*.class')"
-  files="$files $(find . -type f -path '*/org/bouncycastle/jce/provider/test/*.class')"
-  files="$files $(find . -type f -path '*/org/bouncycastle/ocsp/test/*.class')"
-  test ! -d classes && mf="" \
-    || mf="`find classes/ -type f -name "*.mf" 2>/dev/null`"
-  test -n "$mf" && jar cvfm $jarfile $mf $files \
-    || %jar cvf $jarfile $files
-popd
+ant -f ant/jdk15+.xml \
+  -Dbc.javac.source=6 -Dbc.javac.target=6 \
+  -Djunit.jar.home=$(build-classpath junit) \
+  -Dmail.jar.home=$(build-classpath javax.mail) \
+  -Dactivation.jar.home= \
+  -Drelease.debug=true \
+  clean build-provider build
+
+# Not shipping the "lcrypto" jar, so don't ship the javadoc for it
+rm -rf build/artifacts/jdk1.5/javadoc/lcrypto
 
 %install
 install -dm 755 %{buildroot}%{_sysconfdir}/java/security/security.d
 touch %{buildroot}%{_sysconfdir}/java/security/security.d/2000-%{classname}
 
-# install bouncy castle provider
-install -dm 755 %{buildroot}%{_javadir}
-install -pm 644 bcprov-%{version}.jar \
-  %{buildroot}%{_javadir}/bcprov-%{version}.jar
-pushd %{buildroot}%{_javadir}
-  ln -sf bcprov-%{version}.jar bcprov.jar
-popd
+install -dm 0755 %{buildroot}%{_javadir}
+install -dm 0755 %{buildroot}%{_mavenpomdir}
+for bc in bcprov bcpkix bcpg bcmail bctls ; do
+  install -pm 0644 build/artifacts/jdk1.5/jars/$bc-%{archivever}.jar %{buildroot}%{_javadir}/$bc.jar
+  install -pm 0644 %{_sourcedir}/$bc-jdk15on-%{version}.pom %{buildroot}%{_mavenpomdir}/$bc.pom
+  %add_maven_depmap $bc.pom $bc.jar -a "org.bouncycastle:$bc-jdk16,org.bouncycastle:$bc-jdk15" -f $bc
+done
 
-# javadoc
-mkdir -p %{buildroot}%{_javadocdir}/%{name}
-cp -pr docs/* %{buildroot}%{_javadocdir}/%{name}
-
-# maven pom
-install -dm 755 %{buildroot}%{_mavenpomdir}
-install -pm 644 %{SOURCE1} %{buildroot}%{_mavenpomdir}/JPP-bcprov.pom
-%add_maven_depmap -a "bouncycastle:bcprov-jdk15,org.bouncycastle:bcprov-jdk16" JPP-bcprov.pom bcprov.jar
-
-%check
-# Tests hang in obs, run them localy when bumping
-#pushd src
-#  export CLASSPATH=$PWD:$(build-classpath junit)
-#  for test in $(find . -name AllTests.class) ; do
-#    test=${test#./} ; test=${test%.class} ; test=${test//\//.}
-#    # TODO: failures; get them fixed and remove || :
-#    %java org.junit.runner.JUnitCore $test || :
-#  done
-#popd
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+cp -r build/artifacts/jdk1.5/javadoc/* %{buildroot}%{_javadocdir}/%{name}/
+%fdupes -s %{buildroot}%{_javadocdir}
 
 %post
 {
@@ -161,16 +191,25 @@ if [ $1 -eq 0 ] ; then
 
 fi
 
-%files
-%doc *.html
-%{_javadir}/bcprov.jar
-%{_javadir}/bcprov-%{version}.jar
-%{_javadir}/*
+%files -f .mfiles-bcprov
+%license build/artifacts/jdk1.5/bcprov-jdk15on-*/LICENSE.html
+%doc docs/ core/docs/ *.html
 %config(noreplace) %{_sysconfdir}/java/security/security.d/2000-%{classname}
-%{_mavenpomdir}/JPP-bcprov.pom
-%{_datadir}/maven-metadata/%{name}.xml
+
+%files pkix -f .mfiles-bcpkix
+%license build/artifacts/jdk1.5/bcpkix-jdk15on-*/LICENSE.html
+
+%files pg -f .mfiles-bcpg
+%license build/artifacts/jdk1.5/bcpg-jdk15on-*/LICENSE.html
+
+%files mail -f .mfiles-bcmail
+%license build/artifacts/jdk1.5/bcmail-jdk15on-*/LICENSE.html
+
+%files tls -f .mfiles-bctls
+%license build/artifacts/jdk1.5/bctls-jdk15on-*/LICENSE.html
 
 %files javadoc
-%{_javadocdir}/%{name}/
+%{_javadocdir}/%{name}
+%license LICENSE.html
 
 %changelog

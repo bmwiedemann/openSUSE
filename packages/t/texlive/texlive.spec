@@ -3664,9 +3664,12 @@ popd
 %if %{?pkg_vcmp:%{pkg_vcmp libpoppler-devel >= 0.69.0}}%{!?pkg_vcmp:0}
 %patch57 -p1 -b .popplerdict
 %endif
-cp ./texk/web2c/pdftexdir/pdftoepdf-poppler0.75.0.cc ./texk/web2c/pdftexdir/pdftoepdf-poppler0.79.0.cc
 %if %{?pkg_vcmp:%{pkg_vcmp libpoppler-devel >= 0.73.0}}%{!?pkg_vcmp:0}
-%patch58 -p1 -b .poppler79
+%patch58 -p1 -b .poppler75
+%endif
+pver=$(pkg-config --modversion poppler)
+%if %{?pkg_vcmp:%{pkg_vcmp libpoppler-devel >= 0.79.0}}%{!?pkg_vcmp:0}
+cp ./texk/web2c/pdftexdir/pdftoepdf-poppler0.75.0.cc ./texk/web2c/pdftexdir/pdftoepdf-poppler${pver}.cc
 %endif
 
 if pkg-config --atleast-version=0.59 poppler
@@ -3685,7 +3688,6 @@ then
 	test -e "$old" && mv -fv $old $old.oldpoppler || :
 	mv -fv $cc $old
     done
-    pver=$(pkg-config --modversion poppler)
     for cc in $(find -name "*-poppler${pver}.cc")
     do
 	test -e "$cc" || continue

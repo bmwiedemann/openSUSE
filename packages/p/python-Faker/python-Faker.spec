@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-Faker
-Version:        2.0.0
+Version:        2.0.2
 Release:        0
 Summary:        Python package that generates fake data
 License:        MIT
@@ -35,7 +35,7 @@ BuildRequires:  %{python_module python-dateutil >= 2.4}
 BuildRequires:  %{python_module random2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.10}
-BuildRequires:  %{python_module text-unidecode >= 1.2}
+BuildRequires:  %{python_module text-unidecode >= 1.3}
 BuildRequires:  %{python_module validators >= 0.13.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -43,7 +43,7 @@ BuildRequires:  python2-ipaddress
 Requires:       python-python-dateutil >= 2.4
 Requires:       python-setuptools
 Requires:       python-six >= 1.10
-Requires:       python-text-unidecode >= 1.2
+Requires:       python-text-unidecode >= 1.3
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch

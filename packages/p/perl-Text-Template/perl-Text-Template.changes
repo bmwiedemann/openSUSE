@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 28 13:49:48 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.58
+   see /usr/share/doc/packages/perl-Text-Template/Changes
+
+  1.58  2019-09-27
+     - Remove hard coded (old) version number from README
+
+-------------------------------------------------------------------
 Tue Sep 10 09:28:05 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 1.57

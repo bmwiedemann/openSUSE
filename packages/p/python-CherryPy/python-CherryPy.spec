@@ -19,14 +19,13 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-CherryPy
-Version:        18.1.2
+Version:        18.2.0
 Release:        0
 Summary:        Object-Oriented HTTP framework
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            http://www.cherrypy.org
 Source:         https://files.pythonhosted.org/packages/source/C/CherryPy/CherryPy-%{version}.tar.gz
-Patch0:         pytest5.patch
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -70,7 +69,6 @@ Oh, and most importantly: CherryPy is fun to work with :-)
 
 %prep
 %setup -q -n CherryPy-%{version}
-%patch0 -p1
 # do not require cov/xdist/etc
 sed -i -e '/addopts/d' pytest.ini
 
@@ -79,12 +77,12 @@ sed -i -e '/addopts/d' pytest.ini
 
 %install
 %python_install
+%python_expand rm -r %{buildroot}%{$python_sitelib}/cherrypy/test
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/cherryd
 
 %check
-# gh#cherrypy/cherrypy#1781
-%pytest -k 'not (test_wait_publishes_periodically or test_null_bytes)'
+%pytest -k 'not test_null_bytes'
 
 %post
 %python_install_alternative cherryd

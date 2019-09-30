@@ -1,0 +1,5 @@
+<package name="kiwi-images-vagrant" project="openSUSE:Factory">
+  <title>Vagrant box for openSUSE Tumbleweed</title>
+  <description></description>
+  <devel project="Virtualization:Appliances:Images:openSUSE-Tumbleweed" package="kiwi-images-vagrant"/>
+</package>

@@ -19,13 +19,13 @@
 %define modname configshell-fb
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-%{modname}
-Version:        1.1.25
+Version:        1.1.26
 Release:        0%{?dist}
 Summary:        A Python library for building configuration shells
 License:        Apache-2.0
 Group:          Development/Libraries/Python
 Url:            http://github.com/open-iscsi/configshell-fb
-Source:         https://pypi.python.org/packages/source/c/%{modname}/%{modname}-%{version}.tar.gz
+Source:         %{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module pyparsing}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
