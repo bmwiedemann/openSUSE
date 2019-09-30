@@ -28,7 +28,7 @@
 %endif
 %bcond_without python2
 Name:           python-urllib3%{psuffix}
-Version:        1.25.3
+Version:        1.25.5
 Release:        0
 Summary:        HTTP library with thread-safe connection pooling, file post, and more
 License:        MIT
@@ -37,24 +37,16 @@ URL:            https://urllib3.readthedocs.org/
 Source:         https://files.pythonhosted.org/packages/source/u/urllib3/urllib3-%{version}.tar.gz
 # Wrapper for ssl to unbundle ssl_match_hostname
 Source1:        ssl_match_hostname_py3.py
-# PATCH-FEATURE-UPSTREAM -- use set_default_verify_paths() if no certificate path is supplied
-# should be removed in the future, see SR#437853
-Patch0:         urllib3-ssl-default-context.patch
-# PATCH-FIX-UPSTREAM python-urllib3-recent-date.patch gh#shazow/urllib3#1303, boo#1074247 dimstar@opensuse.org -- Fix test suite, use correct date
-Patch1:         python-urllib3-recent-date.patch
-BuildRequires:  %{python_module PySocks}
-BuildRequires:  %{python_module psutil}
-BuildRequires:  %{python_module rfc3986}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 #!BuildIgnore:  python-requests
 Requires:       ca-certificates-mozilla
-Requires:       python-cryptography
-Requires:       python-idna
+Requires:       python-certifi
+Requires:       python-cryptography >= 1.3.4
+Requires:       python-idna >= 2.0.0
 Requires:       python-pyOpenSSL
-Requires:       python-rfc3986
 Requires:       python-six
 BuildArch:      noarch
 # for SSL module on older distros
@@ -69,15 +61,21 @@ BuildRequires:  python-ipaddress
 Requires:       python-backports.ssl_match_hostname
 %endif
 %if %{with test}
-BuildRequires:  %{python_module brotlipy}
-BuildRequires:  %{python_module idna}
+BuildRequires:  %{python_module PySocks}
+BuildRequires:  %{python_module brotlipy >= 0.6.0}
+BuildRequires:  %{python_module certifi}
+BuildRequires:  %{python_module cryptography >= 1.3.4}
+BuildRequires:  %{python_module idna >= 2.0.0}
 BuildRequires:  %{python_module mock >= 1.3.0}
-BuildRequires:  %{python_module pytest < 4.0}
-BuildRequires:  %{python_module tornado >= 4.2.1}
+BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module tornado < 6}
 BuildRequires:  %{python_module urllib3 >= %{version}}
 %endif
 %if 0%{?suse_version} >= 1000 || 0%{?fedora_version} >= 24
-Recommends:     python-brotlipy
+Recommends:     python-PySocks >= 1.5.6
+Recommends:     python-brotlipy >= 0.6.0
 %endif
 %ifpython2
 Requires:       python-ipaddress
@@ -104,7 +102,6 @@ Highlights
 
 %prep
 %setup -q -n urllib3-%{version}
-%autopatch -p1
 find . -type f -exec chmod a-x '{}' \;
 find . -name __pycache__ -type d -exec rm -fr {} +
 
@@ -130,7 +127,6 @@ $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/ur
 # Unbundle the Python 2 build
 rm -rf %{buildroot}/%{python2_sitelib}/urllib3/packages/six.py*
 rm -rf %{buildroot}/%{python2_sitelib}/urllib3/packages/ssl_match_hostname/
-rm -rf %{buildroot}/%{python2_sitelib}/urllib3/packages/rfc3986/
 
 mkdir -p %{buildroot}/%{python2_sitelib}/urllib3/packages/
 ln -s %{python2_sitelib}/six.py %{buildroot}/%{python2_sitelib}/urllib3/packages/six.py
@@ -138,8 +134,6 @@ ln -s %{python2_sitelib}/six.pyc %{buildroot}/%{python2_sitelib}/urllib3/package
 ln -s %{python2_sitelib}/six.pyo %{buildroot}/%{python2_sitelib}/urllib3/packages/six.pyo
 ln -s %{python2_sitelib}/backports/ssl_match_hostname \
       %{buildroot}/%{python2_sitelib}/urllib3/packages/ssl_match_hostname
-ln -s %{python2_sitelib}/rfc3986/ \
-      %{buildroot}/%{python2_sitelib}/urllib3/packages/rfc3986
 %endif
 
 %if 0%{?have_python3} && ! 0%{?skip_python3}
@@ -147,7 +141,6 @@ ln -s %{python2_sitelib}/rfc3986/ \
 rm -rf %{buildroot}/%{python3_sitelib}/urllib3/packages/six.py*
 rm -rf %{buildroot}/%{python3_sitelib}/urllib3/packages/__pycache__/six*
 rm -rf %{buildroot}/%{python3_sitelib}/urllib3/packages/ssl_match_hostname/
-rm -rf %{buildroot}/%{python3_sitelib}/urllib3/packages/rfc3986/
 
 mkdir -p %{buildroot}/%{python3_sitelib}/urllib3/packages/
 cp -a %{SOURCE1} %{buildroot}/%{python3_sitelib}/urllib3/packages/ssl_match_hostname.py
@@ -156,8 +149,6 @@ ln -s %{python3_sitelib}/__pycache__/six.cpython-%{python3_version_nodots}.opt-1
       %{buildroot}/%{python3_sitelib}/urllib3/packages/__pycache__/
 ln -s %{python3_sitelib}/__pycache__/six.cpython-%{python3_version_nodots}.pyc \
       %{buildroot}/%{python3_sitelib}/urllib3/packages/__pycache__/
-ln -s %{python3_sitelib}/rfc3986/ \
-      %{buildroot}/%{python3_sitelib}/urllib3/packages/rfc3986
 %endif
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -182,17 +173,12 @@ case $(uname -m) in
 ppc*)
 skiplist="$skiplist and not test_select_timing and not test_select_multiple_interrupts_with_event and not test_interrupt_wait_for_read_with_event and not test_select_interrupt_with_event";;
 esac
-# the tls13 tests are not run in upstream travis and they fail for us
-# lets wait for upstream to sort it out first
-skiplist="$skiplist and not test_set_ssl_version_to_tls_version"
 # the certificate validation is much stricter in new openssl so skip
 # tests which would not validate it
 skiplist="$skiplist and not test_client_no_intermediate"
-# we have patch to fix source address errors in python and raise different
-# error than urllib3 expects in its tests
-skiplist="$skiplist and not test_source_address_error"
 
 export PYTHONDONTWRITEBYTECODE=1
+export LANG="en_US.UTF8"
 %pytest -k "${skiplist}"
 %endif
 
