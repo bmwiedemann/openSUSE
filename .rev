@@ -1085,4 +1085,12 @@ fixes build in packman, evergreen and all that. (forwarded request 230247 from o
     <comment></comment>
     <requestid>725533</requestid>
   </revision>
+  <revision rev="100" vrev="2">
+    <srcmd5>7d877a675f262d6535a5fe6e153d478c</srcmd5>
+    <version>3.0.8</version>
+    <time>1569851619</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>733149</requestid>
+  </revision>
 </revisionlist>

@@ -490,7 +490,7 @@ autoreconf -fiv
 ### ONLY REMOVE THIS IF YOU KNOW WHAT YOU ARE DOING!
 sed -i 's/^#define.*VLC_COMPILE_HOST.*/#define VLC_COMPILE_HOST "obs-build"/' config.h
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
