@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 30 07:43:33 UTC 2019 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- list-gnome: drop gnome-software: SW Center is a nice to have, but on the live
+  medium of limited use.
+
+-------------------------------------------------------------------
 Wed Sep 25 10:29:05 UTC 2019 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - list-gnome: ignore eog-lang and vim-data

@@ -36,6 +36,9 @@ buildignore ghostscript
 buildignore myspell-en_US
 buildignore orca
 
+# gnome-software is a nice software center, but on the live medium only of limited use
+buildignore gnome-software
+
 # Pulls in color management tools
 buildignore gnome-control-center-color
 

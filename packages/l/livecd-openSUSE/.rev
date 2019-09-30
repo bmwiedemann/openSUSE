@@ -619,4 +619,12 @@
     <user>dimstar_suse</user>
     <comment>- list-gnome: ignore eog-lang and vim-data</comment>
   </revision>
+  <revision rev="73" vrev="73">
+    <srcmd5>19df4e575a7309d12f1203ef171c73b9</srcmd5>
+    <version>unknown</version>
+    <time>1569829458</time>
+    <user>dimstar_suse</user>
+    <comment>- list-gnome: drop gnome-software: SW Center is a nice to have, but on the live
+  medium of limited use.</comment>
+  </revision>
 </revisionlist>

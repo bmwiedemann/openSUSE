@@ -469,6 +469,8 @@
     <ignore name="myspell-en_US"/>
     <package name="aaa_base" replaces="orca"/>
     <ignore name="orca"/>
+    <package name="aaa_base" replaces="gnome-software"/>
+    <ignore name="gnome-software"/>
     <package name="aaa_base" replaces="gnome-control-center-color"/>
     <ignore name="gnome-control-center-color"/>
     <package name="aaa_base" replaces="vim-data"/>
