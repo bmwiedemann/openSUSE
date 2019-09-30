@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 29 14:43:16 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.4.0
+  * The Schoenhage–Strassen FFT for both ZZ_pX and ZZX is now fully
+    "thread boosted".
+
+-------------------------------------------------------------------
 Sat Aug 24 18:55:50 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Specfile modernization.

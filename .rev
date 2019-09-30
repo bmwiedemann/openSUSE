@@ -198,4 +198,12 @@
     <comment>- Specfile modernization.</comment>
     <requestid>725863</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>41ebf5b048e002a50c0e69722c966d2c</srcmd5>
+    <version>11.4.0</version>
+    <time>1569852054</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 11.4.0</comment>
+    <requestid>733944</requestid>
+  </revision>
 </revisionlist>
