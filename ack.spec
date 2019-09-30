@@ -24,7 +24,7 @@
 %endif
 %{!?perl_make_install:  %global perl_make_install make DESTDIR=%{buildroot} install_vendor}
 Name:           ack
-Version:        3.0.3
+Version:        3.1.1
 Release:        0
 Summary:        Grep-Like Text Finder
 License:        Artistic-2.0
@@ -35,7 +35,7 @@ Patch1:         ack-ignore-osc.patch
 Patch3:         ack-add_spec.patch
 BuildRequires:  make
 BuildRequires:  perl >= 5.10.1
-BuildRequires:  perl(File::Next) >= 1.10
+BuildRequires:  perl(File::Next) >= 1.18
 Requires:       perl >= 5.10.1
 Requires:       perl-App-Ack = %{version}-%{release}
 Requires:       perl-base = %{perl_version}
@@ -55,7 +55,7 @@ ack is a grep-like tool tailored to working with large trees of source code.
 Summary:        Grep-Like Text Finder Perl Module
 Group:          Development/Libraries/Perl
 Requires:       perl-base = %{perl_version}
-Requires:       perl(File::Next) >= 1.10
+Requires:       perl(File::Next) >= 1.18
 
 %description -n perl-App-Ack
 App::Ack is a grep-like tool tailored to working with large trees of source

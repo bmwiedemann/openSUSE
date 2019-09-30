@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 26 09:33:14 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- ack 3.1.1:
+  * Improve the speed up the -l, -L and -c options
+- includes changes from 3.1.0:
+  * Added the --range-start and --range-end options to allow
+    searching only ranges of
+
+-------------------------------------------------------------------
 Wed Aug 21 13:12:17 UTC 2019 - Dan Čermák <dcermak@suse.com>
 
 - Rebase patches:
