@@ -7,4 +7,12 @@
     <comment>Change _service to localonly mode</comment>
     <requestid>455951</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5b075648a0ead2fa5775df637c092493</srcmd5>
+    <version>0.25</version>
+    <time>1569851986</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>733873</requestid>
+  </revision>
 </revisionlist>
