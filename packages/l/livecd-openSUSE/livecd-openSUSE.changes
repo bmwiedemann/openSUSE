@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 30 09:08:32 UTC 2019 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- list-x11: drop tcpdump
+
+-------------------------------------------------------------------
+Mon Sep 30 08:43:48 UTC 2019 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- list-kde: shrink a little bit, drop kate-lang (again)
+
+-------------------------------------------------------------------
 Mon Sep 30 07:43:33 UTC 2019 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - list-gnome: drop gnome-software: SW Center is a nice to have, but on the live

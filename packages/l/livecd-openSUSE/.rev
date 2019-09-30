@@ -627,4 +627,13 @@
     <comment>- list-gnome: drop gnome-software: SW Center is a nice to have, but on the live
   medium of limited use.</comment>
   </revision>
+  <revision rev="74" vrev="74">
+    <srcmd5>9f7688cfa1e8ca2c7d8b5a8f809a4493</srcmd5>
+    <version>unknown</version>
+    <time>1569834541</time>
+    <user>dimstar_suse</user>
+    <comment>- list-x11: drop tcpdump
+
+- list-kde: shrink a little bit, drop kate-lang (again)</comment>
+  </revision>
 </revisionlist>

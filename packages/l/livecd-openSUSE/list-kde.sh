@@ -52,6 +52,7 @@ buildignore libproxy1-pacrunner-webkit
 buildignore digikam
 buildignore hugin
 buildignore gimp-lang
+buildignore kate-lang
 
 install partitionmanager
 

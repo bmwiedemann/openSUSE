@@ -42,6 +42,7 @@ buildignore accountsservice
 buildignore MozillaFirefox
 buildignore gcc8
 buildignore vim-data
+buildignore tcpdump
 
 install gparted
 install midori

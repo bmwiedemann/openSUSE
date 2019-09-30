@@ -490,6 +490,8 @@
     <ignore name="gcc8"/>
     <package name="aaa_base" replaces="vim-data"/>
     <ignore name="vim-data"/>
+    <package name="aaa_base" replaces="tcpdump"/>
+    <ignore name="tcpdump"/>
     <package name="gparted"/>
     <package name="midori"/>
     <package name="aaa_base" replaces="gparted-lang"/>
