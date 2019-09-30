@@ -22,4 +22,14 @@ versioned alongside the program.
 - Use man page from upstream now.</comment>
     <requestid>711918</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>309cf3fcc3bd7e48bcb0e0e3d5de0f62</srcmd5>
+    <version>unknown</version>
+    <time>1569851881</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.178.
+- Update book to version 20190602.
+- Remove Windows executable from sources before building.</comment>
+    <requestid>733250</requestid>
+  </revision>
 </revisionlist>
