@@ -18,7 +18,7 @@
 
 %define project github.com/coredns/coredns
 Name:           coredns
-Version:        1.3.1
+Version:        1.6.3
 Release:        0
 Summary:        DNS server written in Go
 License:        Apache-2.0
@@ -26,15 +26,7 @@ Group:          Productivity/Networking/DNS/Servers
 URL:            https://coredns.io
 Provides:       dns_daemon
 Source0:        %{name}-%{version}.tar.xz
-Source1:        golang-protobuf.tar.xz
-Source2:        matttproud-golang_protobuf_extensions.tar.xz
-Source3:        mholt-caddy.tar.xz
-Source4:        miekg-dns.tar.xz
-Source5:        prometheus-client_golang.tar.xz
-Source6:        prometheus-client_model.tar.xz
-Source7:        prometheus-common.tar.xz
-Source8:        prometheus-procfs.tar.xz
-Source9:        beorn7-perks.tar.xz
+Source1:        vendor.tar.xz
 Source10:       Corefile
 Source11:       coredns.service
 BuildRequires:  fdupes
@@ -60,7 +52,7 @@ Extra components for the %{name} package, to make %{name} usable in a
 non-containerized environment (man pages, configuration, unit file).
 
 %prep
-%setup -q -b1 -b2 -b3 -b4 -b5 -b6 -b7 -b8 -b9
+%setup -q -a1
 
 %build
 
@@ -69,34 +61,11 @@ non-containerized environment (man pages, configuration, unit file).
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 rm -rf $HOME/go/src
-
-declare -A sources2Path=( \
-[%{SOURCE0}]=%{project} \
-[%{SOURCE1}]=github.com/golang/protobuf \
-[%{SOURCE2}]=github.com/matttproud/golang_protobuf_extensions \
-[%{SOURCE3}]=github.com/mholt/caddy \
-[%{SOURCE4}]=github.com/miekg/dns \
-[%{SOURCE5}]=github.com/prometheus/client_golang \
-[%{SOURCE6}]=github.com/prometheus/client_model \
-[%{SOURCE7}]=github.com/prometheus/common \
-[%{SOURCE8}]=github.com/prometheus/procfs \
-[%{SOURCE9}]=github.com/beorn7/perks \
-)
-for s in "${!sources2Path[@]}"; do
-    dest="$HOME/go/src/${sources2Path[$s]}"
-    mkdir -pv "$dest"
-    dir=$(basename "$s")
-    dir=${dir%.tar.xz}
-    cp -a "%{_builddir}/$dir"/* "$dest"
-done
-
-# code.google.com redirects to github.com/golang/protobuf, but code is still
-# referencing to the code.google.com package
-mkdir -pv $HOME/go/src/code.google.com/p
-ln -s $HOME/go/src/github.com/golang/protobuf $HOME/go/src/code.google.com/p/goprotobuf
+mkdir -pv $HOME/go/src/%{project}
+find . -mindepth 1 -maxdepth 1 -exec cp -r {} $HOME/go/src/%{project} \;
 
 cd $HOME/go/src/%{project}
-make %{?_smp_mflags} coredns CHECKS= BUILDOPTS="-v -buildmode=pie"
+go build -v -buildmode=pie -o coredns
 
 %check
 # Too many tests fail due to the restricted permissions in the build enviroment.

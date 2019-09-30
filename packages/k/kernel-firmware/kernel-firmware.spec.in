@@ -87,6 +87,7 @@ Summary:        Compatibility metapackage for kernel firmware files
 Group:          System/Kernel
 Requires(post): coreutils
 Requires(postun): coreutils
+Requires(post): dracut >= 049
 Provides:       kernel-firmware = %{version}
 Obsoletes:      kernel-firmware <= %{version}
 Conflicts:      kernel < 5.3

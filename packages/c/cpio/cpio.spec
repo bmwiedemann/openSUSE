@@ -1,7 +1,7 @@
 #
 # spec file for package cpio
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,7 +48,6 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 Requires(post): %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
-Recommends:     %{name}-lang = %{version}
 Recommends:     %{name}-mt = %{version}
 Recommends:     rmt
 

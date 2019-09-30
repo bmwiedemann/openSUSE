@@ -15,6 +15,7 @@ define_subpackage () {
     echo "Group:          System/Kernel"
     echo "Requires(post): coreutils"
     echo "Requires(postun): coreutils"
+    echo "Requires(post): dracut >= 049"
     echo "Conflicts:      kernel < 5.3"
     grep "^${topic}:" topicprovs | sed -e's/^[^ \t]*:[[:space:]]*//g'
     sh ./get_supplements.sh $topic

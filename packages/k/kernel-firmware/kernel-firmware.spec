@@ -19,10 +19,10 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define __ksyms_path ^/lib/firmware
-%define version_unconverted 20190827
+%define version_unconverted 20190909
 
 Name:           kernel-firmware
-Version:        20190827
+Version:        20190909
 Release:        0
 Summary:        Linux kernel firmware files
 License:        SUSE-Firmware AND GPL-2.0-only AND GPL-2.0-or-later AND MIT
@@ -113,6 +113,7 @@ Summary:        Compatibility metapackage for kernel firmware files
 Group:          System/Kernel
 Requires(post): coreutils
 Requires(postun): coreutils
+Requires(post): dracut >= 049
 Provides:       kernel-firmware = %{version}
 Obsoletes:      kernel-firmware <= %{version}
 Conflicts:      kernel < 5.3
@@ -157,6 +158,7 @@ Summary:        Kernel firmware files for AMDGPU graphics driver
 Group:          System/Kernel
 Requires(post): coreutils
 Requires(postun): coreutils
+Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(pci:v00001002d00001304sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00001305sv*sd*bc*sc*i*)
@@ -408,6 +410,7 @@ Summary:        Kernel firmware files for Atheros wireless drivers
 Group:          System/Kernel
 Requires(post): coreutils
 Requires(postun): coreutils
+Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Provides:       ath3k-firmware
 Obsoletes:      ath3k-firmware
@@ -605,6 +608,7 @@ Summary:        Kernel firmware files for Atheros QCA988x WiFi drivers
 Group:          System/Kernel
 Requires(post): coreutils
 Requires(postun): coreutils
+Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(of:N*T*Cqcom,ipq4019-wifi)
 Supplements:    modalias(of:N*T*Cqcom,ipq4019-wifiC*)
@@ -630,6 +634,7 @@ Summary:        Kernel firmware files for various Bluetooth drivers
 Group:          System/Kernel
 Requires(post): coreutils
 Requires(postun): coreutils
+Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(of:N*T*Cusb1286,204e)
 Supplements:    modalias(of:N*T*Cusb1286,204eC*)
@@ -679,6 +684,7 @@ Summary:        Kernel firmware files for Broadcom network drivers
 Group:          System/Kernel
 Requires(post): coreutils
 Requires(postun): coreutils
+Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(pci:v00001077d000016A1sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d000016A4sv*sd*bc*sc*i*)
@@ -725,6 +731,7 @@ Summary:        Kernel firmware files for Broadcom wireless drivers
 Group:          System/Kernel
 Requires(post): coreutils
 Requires(postun): coreutils
+Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Provides:       bcm43xx-firmware:/lib/firmware/brcm/brcmfmac43430-sdio.bin
 Supplements:    modalias(bcma:m04BFid0812rev11cl*)
@@ -787,6 +794,7 @@ Summary:        Kernel firmware files for Chelsio network drivers
 Group:          System/Kernel
 Requires(post): coreutils
 Requires(postun): coreutils
+Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Provides:       cxgb3-firmware
 Obsoletes:      cxgb3-firmware
@@ -1170,6 +1178,7 @@ Summary:        Kernel firmware files for NXP Management Complex bus driver
 Group:          System/Kernel
 Requires(post): coreutils
 Requires(postun): coreutils
+Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 
 %description dpaa2
@@ -1181,6 +1190,7 @@ Summary:        Kernel firmware files for Intel i915 graphics driver
 Group:          System/Kernel
 Requires(post): coreutils
 Requires(postun): coreutils
+Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(pci:v00008086d00000042sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00000046sv*sd*bc03sc*i*)
@@ -1454,6 +1464,7 @@ Summary:        Kernel firmware files for Intel-platform device drivers
 Group:          System/Kernel
 Requires(post): coreutils
 Requires(postun): coreutils
+Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(pci:v00008086d00000435sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00001919sv*sd*bc*sc*i*)
@@ -1495,6 +1506,7 @@ Summary:        Kernel firmware files for Intel wireless drivers
 Group:          System/Kernel
 Requires(post): coreutils
 Requires(postun): coreutils
+Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Provides:       iwl1000-ucode
 Obsoletes:      iwl1000-ucode
@@ -2383,6 +2395,7 @@ Summary:        Kernel firmware files for Cavium LiquidIO driver
 Group:          System/Kernel
 Requires(post): coreutils
 Requires(postun): coreutils
+Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(pci:v0000177Dd00000091sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v0000177Dd00000092sv*sd*bc*sc*i*)
@@ -2397,6 +2410,7 @@ Summary:        Kernel firmware files for Marvell network drivers
 Group:          System/Kernel
 Requires(post): coreutils
 Requires(postun): coreutils
+Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(pci:v000011ABd00002A0Asv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000011ABd00002A0Csv*sd*bc*sc*i*)
@@ -2434,6 +2448,7 @@ Summary:        Kernel firmware files for various Video4Linux drivers
 Group:          System/Kernel
 Requires(post): coreutils
 Requires(postun): coreutils
+Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(i2c:cx25840)
 Supplements:    modalias(of:N*T*Camlogic,gxbb-vdec)
@@ -2610,6 +2625,7 @@ Summary:        Kernel firmware files for Mediatek network drivers
 Group:          System/Kernel
 Requires(post): coreutils
 Requires(postun): coreutils
+Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Provides:       ralink-firmware
 Obsoletes:      ralink-firmware
@@ -2680,6 +2696,7 @@ Summary:        Kernel firmware files for Mellanox Spectrum switch driver
 Group:          System/Kernel
 Requires(post): coreutils
 Requires(postun): coreutils
+Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(pci:v000015B3d0000CB84sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000015B3d0000CF6Csv*sd*bc*sc*i*)
@@ -2693,6 +2710,7 @@ Summary:        Kernel firmware files for Marvell WiFi fullmac drivers
 Group:          System/Kernel
 Requires(post): coreutils
 Requires(postun): coreutils
+Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(pci:v000011ABd00002B30sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000011ABd00002B38sv*sd*bc*sc*i*)
@@ -2734,6 +2752,7 @@ Summary:        Kernel firmware files for various network drivers
 Group:          System/Kernel
 Requires(post): coreutils
 Requires(postun): coreutils
+Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(pci:v00001011d0000001Asv*sd*bc02sc00i*)
 Supplements:    modalias(pci:v0000106Bd00001645sv*sd*bc*sc*i*)
@@ -2932,6 +2951,7 @@ Summary:        Kernel firmware files for Netronome Flow Processor driver
 Group:          System/Kernel
 Requires(post): coreutils
 Requires(postun): coreutils
+Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(pci:v000019EEd00004000sv000019EEsd*bc*sc*i*)
 Supplements:    modalias(pci:v000019EEd00005000sv000019EEsd*bc*sc*i*)
@@ -2947,6 +2967,7 @@ Summary:        Kernel firmware files for Nvidia Tegra and graphics drivers
 Group:          System/Kernel
 Requires(post): coreutils
 Requires(postun): coreutils
+Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(of:N*T*Cnvidia,gk20a)
 Supplements:    modalias(of:N*T*Cnvidia,gk20aC*)
@@ -3036,6 +3057,7 @@ Summary:        Kernel firmware files for various platform drivers
 Group:          System/Kernel
 Requires(post): coreutils
 Requires(postun): coreutils
+Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(acpi*:AMDI0C00:*)
 Supplements:    modalias(eisa:sABP7401*)
@@ -3505,6 +3527,7 @@ Summary:        Kernel firmware files for QLogic network drivers
 Group:          System/Kernel
 Requires(post): coreutils
 Requires(postun): coreutils
+Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Provides:       qlogic-firmware
 Obsoletes:      qlogic-firmware
@@ -3563,6 +3586,7 @@ Summary:        Kernel firmware files for Radeon graphics driver
 Group:          System/Kernel
 Requires(post): coreutils
 Requires(postun): coreutils
+Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(pci:v00001002d00001304sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00001305sv*sd*bc*sc*i*)
@@ -4364,6 +4388,7 @@ Summary:        Kernel firmware files for Realtek wireless drivers
 Group:          System/Kernel
 Requires(post): coreutils
 Requires(postun): coreutils
+Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(pci:v00000001d00008168sv*sd00002410bc*sc*i*)
 Supplements:    modalias(pci:v000007AAd00000044sv*sd*bc*sc*i*)
@@ -5014,6 +5039,7 @@ Summary:        Kernel firmware files for various serial drivers
 Group:          System/Kernel
 Requires(post): coreutils
 Requires(postun): coreutils
+Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(pci:v000011FEd00000040sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000011FEd00000041sv*sd*bc*sc*i*)
@@ -5181,6 +5207,7 @@ Summary:        Kernel firmware files for various sound drivers
 Group:          System/Kernel
 Requires(post): coreutils
 Requires(postun): coreutils
+Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(acpi*:CSC0000:*)
 Supplements:    modalias(acpi*:CSC0004:*)
@@ -5228,6 +5255,7 @@ Summary:        Kernel firmware files for Texas Instruments wireless drivers
 Group:          System/Kernel
 Requires(post): coreutils
 Requires(postun): coreutils
+Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(platform:wl12xx)
 Supplements:    modalias(platform:wl18xx)
@@ -5241,6 +5269,7 @@ Summary:        Kernel firmware files for Eagle IV USB ADSL modem driver
 Group:          System/Kernel
 Requires(post): coreutils
 Requires(postun): coreutils
+Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(usb:v05CCp3350d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v05CCp3351d*dc*dsc*dp*ic*isc*ip*in*)
@@ -5286,6 +5315,7 @@ Summary:        Kernel firmware files for various USB WiFi / Ethernet drivers
 Group:          System/Kernel
 Requires(post): coreutils
 Requires(postun): coreutils
+Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(sdio:c*v041Bd9116*)
 Supplements:    modalias(sdio:c*v041Bd9330*)

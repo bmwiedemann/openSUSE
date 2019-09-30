@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 15 10:13:00 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add -ffat-lto-objects to avoid ppc64le build error
+
+-------------------------------------------------------------------
 Mon Jul  2 12:30:18 UTC 2018 - jloeser@suse.com
 
 - version update to 2.0.2 (fate#324947)

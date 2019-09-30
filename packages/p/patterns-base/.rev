@@ -368,4 +368,13 @@
     <comment></comment>
     <requestid>732088</requestid>
   </revision>
+  <revision rev="43" vrev="7">
+    <srcmd5>522370d71269d3b6d2f8e4bbe84ca0e5</srcmd5>
+    <version>20190612</version>
+    <time>1569851489</time>
+    <user>dimstar_suse</user>
+    <comment>- Need to explicitly have glibc-locale-base in patterns to make
+  32bit pattern have it too (boo#1142156).</comment>
+    <requestid>732891</requestid>
+  </revision>
 </revisionlist>

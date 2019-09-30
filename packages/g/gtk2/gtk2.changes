@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep 11 10:16:49 UTC 2019 - dimstar@opensuse.org
+
+- Update to version 2.24.32+62 (boo#1147106):
+  * gtk-builder-convert: Update bug report URL.
+  * gtk-builder-convert: Remove compat code for Python 2.3 and
+  * below.
+  * Make gtk-builder-convert compatible with Python 3.
+  * Fix use-after-free due to unexpected unref of context->default_style.
+  * Visual Studio builds: Fix previous commit.
+  * Visual Studio builds: "Add" Visual Studio 2019 projects.
+- Drop gtk2-converter-python3.patch: fixed upstream.
+- Replace shebang in ./gtk/gtk-builder-convert using sed (use
+  python3).
+
+-------------------------------------------------------------------
 Wed May  8 09:32:03 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Move RPM macros to %_rpmmacrodir.

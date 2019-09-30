@@ -33,6 +33,8 @@ Patch0:         sysstat-8.1.6-sa1sa2lock.diff
 # PATCH-FIX-OPENSUSE should be upstreamed
 # use getpagesize() instead of kb_shift for hugetable archs
 Patch2:         sysstat-8.0.4-pagesize.diff
+# PATCH-FIX-UPSTREAM bsc#1150114 CVE-2019-16167 sysstat-CVE-2019-16167.patch
+Patch3:         sysstat-CVE-2019-16167.patch
 BuildRequires:  findutils
 BuildRequires:  gettext-runtime
 BuildRequires:  pkgconfig
@@ -71,6 +73,7 @@ from a sysstat package.
 %setup -q
 %patch0 -p1
 %patch2 -p1
+%patch3 -p1
 cp %{SOURCE1} %{SOURCE2} %{SOURCE4} .
 # remove date and time from objects
 find ./ -name \*.c -exec sed -i -e 's: " compiled " __DATE__ " " __TIME__::g' {} \;

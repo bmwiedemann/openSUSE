@@ -18,7 +18,7 @@
 
 %define git_commit b9a54967f838723fe241172a6b94d18caf8bcdca
 Name:           helm
-Version:        3.0.0alpha.2
+Version:        3.0.0beta.3
 Release:        0
 Summary:        The Kubernetes Package Manager
 License:        Apache-2.0

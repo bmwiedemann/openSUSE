@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 23 08:05:14 UTC 2019 - pgajdos@suse.com
+
+- version update to 7.0.8.66
+  * Support compound statements in FX while() (reference
+    https://github.com/ImageMagick/ImageMagick/issues/1701).
+  * Eliminate fault when trace delegate is not available.
+  * Properly distinquish linear and non-linear gray colorspaces (reference
+    https://github.com/ImageMagick/ImageMagick/issues/1680).
+  * Support XPM symbolic (reference
+    https://github.com/ImageMagick/ImageMagick/issues/1684).
+  * DilateIntensity is channel independent (reference
+    https://imagemagick.org/discourse-server/viewtopic.php?f=3&t=36641).
+
+-------------------------------------------------------------------
 Mon Sep  2 07:45:19 UTC 2019 - pgajdos@suse.com
 
 - version update to 7.0.8.63

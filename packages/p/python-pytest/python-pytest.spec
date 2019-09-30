@@ -27,7 +27,7 @@
 %endif
 %define skip_python2 1
 Name:           python-pytest%{psuffix}
-Version:        5.1.2
+Version:        5.1.3
 Release:        0
 Summary:        Python testing tool with autodiscovery and detailed asserts
 License:        MIT
@@ -53,12 +53,23 @@ Requires(postun): update-alternatives
 Obsoletes:      python-pytest-doc
 BuildArch:      noarch
 %if %{with test}
+BuildRequires:  %{python_module Jinja2}
+BuildRequires:  %{python_module Twisted}
+BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module importlib_metadata >= 0.12}
+BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module pygments-pytest}
 BuildRequires:  %{python_module pytest >= %{version}}
+BuildRequires:  %{python_module pytest-forked}
+BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module xmlschema}
+BuildRequires:  lsof
 %endif
 %if %{python3_version_nodots} < 36
 Requires:       python-pathlib2 >= 2.2.0

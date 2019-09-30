@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Sep 23 07:05:01 UTC 2019 - tiwai@suse.com
+
+- Update to version 20190909 (git-commit 6c6918ad8ae0):
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * nvidia: Add XUSB firmware for Tegra186
+  * Add symlinks for Tegra VIC firmware binaries
+  * rtl_bt: Update RTL8723D BT FW to 0x828A_96F1
+  * rtl_nic: add firmware rtl8125a-3
+  * linux-firmware: Add firmware file for Intel Bluetooth AX201
+  * Chelsio driver loads firmware configuration file to allow firmware
+    to distribute resources before chip bring up. Chelsio NIC driver,
+    cxgb4 searches for firmware config file at /lib/firmware/cxgb4/
+    directory.
+- Add dependency on dracut >= 049 (boo#1151552) to compressed f/w
+  packages
+
+-------------------------------------------------------------------
 Wed Aug 28 06:34:35 UTC 2019 - tiwai@suse.com
 
 - Update to version 20190827 (git-commit 7307a29961ad):

@@ -1,0 +1,19 @@
+Index: libffi-3.2.1.git505/testsuite/lib/libffi.exp
+===================================================================
+--- libffi-3.2.1.git505.orig/testsuite/lib/libffi.exp
++++ libffi-3.2.1.git505/testsuite/lib/libffi.exp
+@@ -526,12 +526,8 @@ proc run-many-tests { testcases extra_fl
+ 		set has_gccbug false;
+ 		if { [string match $compiler_vendor "gnu"] \
+ 			 && [string match "*MSABI*" $abi] \
+-			 && ( ( [string match "*DGTEST=57 *" $common] \
+-				    && [string match "*call.c*" $testname] ) \
+-				  || ( [string match "*DGTEST=54 *" $common] \
+-					   && [string match "*callback*" $testname] ) \
+-				  || [string match "*DGTEST=55 *" $common] \
+-				  || [string match "*DGTEST=56 *" $common] ) } then {
++			 && [string match {*DGTEST=5[456] *} $common] \
++			 && [string match "*callback*" $testname] } then {
+ 		    set has_gccbug true;
+ 		}
+                 verbose "Testing $testname, $options" 1

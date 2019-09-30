@@ -257,16 +257,16 @@ tee %{buildroot}%{_rpmconfigdir}/macros.d/macros.%{name} <<'_EOF_'
 # checksums, which leads to file conflicts due to identical symlinks
 %if %{do_opt}
 %%ocaml_preserve_bytecode \
+	%%define _lto_cflags %%{nil} \
 	%%{nil}
 %%ocaml_native_compiler 1
 %%_find_debuginfo_dwz_opts %%{nil}
-%%_lto_cflags %%{nil}
 %else
 %%ocaml_preserve_bytecode \
 	%%undefine _build_create_debug \
 	%%define __arch_install_post export NO_BRP_STRIP_DEBUG=true \
+	%%define _lto_cflags %%{nil} \
 	%%{nil}
-%%_lto_cflags %%{nil}
 %%ocaml_native_compiler 0
 %endif
 
@@ -331,6 +331,18 @@ ocaml setup.ml -configure \\\
 	ocaml setup.ml -install
 %%ocaml_oasis_test \
 	ocaml setup.ml -test
+#
+%%ocaml_dune_setup \
+	dune installed-libraries ; \
+	dune external-lib-deps @install ; \
+	%%{nil}
+%%ocaml_dune_build \
+	dune build @install
+%%ocaml_dune_install \
+	dune install --destdir=%%{buildroot} ; \
+	rm -rfv %%{buildroot}%%{_prefix}/doc
+%%ocaml_dune_test \
+	dune runtest
 #
 #
 _EOF_

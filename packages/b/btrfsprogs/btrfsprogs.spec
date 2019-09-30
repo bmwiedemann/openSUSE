@@ -33,7 +33,7 @@
 %define _dracutmodulesdir %{_libexecdir}/dracut/modules.d
 
 Name:           btrfsprogs
-Version:        5.2.1
+Version:        5.2.2
 Release:        0
 Summary:        Utilities for the Btrfs filesystem
 License:        GPL-2.0-only

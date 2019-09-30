@@ -2296,4 +2296,21 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     https://github.com/ImageMagick/ImageMagick/issues/1673)</comment>
     <requestid>727702</requestid>
   </revision>
+  <revision rev="187" vrev="1">
+    <srcmd5>5af26642b7754e9f61e8559ba3464d6b</srcmd5>
+    <version>7.0.8.66</version>
+    <time>1569851324</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.8.66
+  * Support compound statements in FX while() (reference
+    https://github.com/ImageMagick/ImageMagick/issues/1701).
+  * Eliminate fault when trace delegate is not available.
+  * Properly distinquish linear and non-linear gray colorspaces (reference
+    https://github.com/ImageMagick/ImageMagick/issues/1680).
+  * Support XPM symbolic (reference
+    https://github.com/ImageMagick/ImageMagick/issues/1684).
+  * DilateIntensity is channel independent (reference
+    https://imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=36641).</comment>
+    <requestid>732627</requestid>
+  </revision>
 </revisionlist>

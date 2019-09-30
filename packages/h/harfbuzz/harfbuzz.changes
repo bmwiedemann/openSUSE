@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Sep 13 20:20:39 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.6.1:
+  + Fix regression with hb_font_create_sub_font scaling introduced
+    in 2.6.0.
+  + Change interpretation of font PTEM size / CoreText font size
+    handling.
+  + hb-ot-font: Prefer symbol cmap subtable if present.
+  + Apply 'dist'/'abvm'/'blwm' features to all scripts.
+  + Drop experimental DirectWrite API.
+- Changes from version 2.6.0:
+  + New OpenType metrics, baseline, and metadata table access APIs.
+  + New API to set font variations to a named-instance.
+  + New hb-gdi.h header and API for creating hb_face_t from HFONT.
+  + Amalgam: Provide a single-file harfbuzz.cc file for easier
+    alternate building.
+  + More size-reduction configurable options, enabled by HB_TINY.
+
+-------------------------------------------------------------------
 Sat Jul 13 21:26:23 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.5.3:

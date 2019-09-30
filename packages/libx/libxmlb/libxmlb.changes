@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Sep 20 12:07:24 UTC 2019 - ecsos@opensuse.org
+
+- Update to version 0.1.11:
+  + New Features:
+    - Add xb_node_query_first_full() convenience helper
+    - Rebuild the XbMachine parser to support 'and' and 'or' 
+      predicates.
+    - Verify we never break the ABI.
+  + Bugfixes:
+    - Conditionalize installation of test data.
+    - Generate a GUID of zero for no silo data.
+    - Run CI jobs in parallel.
+- Changes from version 0.1.10:
+  + Bugfixes:
+    - Do not mistake gzipped files as being application/x-zerosize
+       content type.
+    - Fix running the installed tests with no checkout directory.
+- Changes from version 0.1.9:
+  + Bugfixes: Correctly implement building a silo with _SINGLE_LANG
+    set.
+- Add python-setuptools BuildRequires: New dependency.
+
+-------------------------------------------------------------------
 Tue Apr 16 17:03:51 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.1.8:
@@ -18,4 +41,3 @@ Tue Apr 16 17:03:51 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 Thu Jan 10 09:32:08 UTC 2019 - bjorn.lie@gmail.com
 
 - Initial packaging for openSUSE, version 0.1.6.
-

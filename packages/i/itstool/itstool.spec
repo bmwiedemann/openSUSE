@@ -17,19 +17,17 @@
 
 
 Name:           itstool
-Version:        2.0.5
+Version:        2.0.6
 Release:        0
 Summary:        Tool to translate XML documents using PO files
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Other
 URL:            http://itstool.org
 Source:         http://files.itstool.org/itstool/%{name}-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM itstool-Apply-ITS-files.patch -- Apply ITS files passed with -i in --join mode
-Patch0:         itstool-Apply-ITS-files.patch
 
 BuildRequires:  python3-base
-BuildRequires:  python3-libxml2-python
-Requires:       python3-libxml2-python
+BuildRequires:  python3-libxml2
+Requires:       python3-libxml2
 BuildArch:      noarch
 
 %description
@@ -40,9 +38,6 @@ Internationalization Tag Set (ITS).
 
 %prep
 %setup -q
-# remove itstool - we patch itstool.in and want to ensure we get the right version
-rm itstool
-%patch0 -p1
 
 %build
 sed -i -e "/^echo.*import/s/python/python3/" configure

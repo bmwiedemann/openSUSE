@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 23 11:12:59 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Fix invalid utf-8 encoding in Changelogtext
+
+-------------------------------------------------------------------
 Thu Nov  8 06:11:49 UTC 2018 - Stephan Kulow <coolo@suse.com>
 
 - updated to 1.642
@@ -193,7 +198,7 @@ Thu Apr 16 16:09:22 UTC 2015 - coolo@suse.com
       Changed $sth->{TYPE} to be NUMERIC in DBD::File drivers as per the
           DBI docs. Note TYPE_NAME is now also available. [H.Merijn Brand]
       Fixed compilation error on bleadperl due DEFSV no longer being an lvalue
-          [Dagfinn Ilmari Mannsåker]
+          [Dagfinn Ilmari]
   
       Added docs for escaping placeholders using a backslash.
       Added docs for get_info(9000) indicating ability to escape placeholders.
@@ -229,7 +234,7 @@ Thu Apr 16 16:09:22 UTC 2015 - coolo@suse.com
   ensure that you understand what this change means and review your callback code.
   
       Fixed err_hash handling of integer err RT#92172 [Dagfinn Ilmari]
-      Fixed use of \Q vs  in t/70callbacks.t
+      Fixed use of \Q vs \E in t/70callbacks.t
   
       Changed the handle passed to Callbacks from being an 'inner'
           handle to being an 'outer' handle.

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 23 07:20:13 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Build the jar file as an eclipse bundle
+- Build and package the javadoc again
+- Added patch:
+  * jzlib-javadoc-fixes.patch
+    + small fixes for javadoc tags
+
+-------------------------------------------------------------------
 Sun Nov 25 17:24:33 UTC 2018 - Fridrich Strba <fstrba@suse.com>
 
 - Install as maven artifact

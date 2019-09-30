@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Sep 21 18:59:37 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- less 551:
+  * Add --mouse option
+  * Add --wheel-lines option
+  * Add --no-histdups option
+  * Add --save-marks option
+  * Support PCRE2 regular expression library
+  * Redraw screen on SIGWINCH even if screen size doesn't change
+  * Shell-escape filenames in history so they can be used again
+  * Ring bell if user enters invalid long option name
+  * Use PCRE_UTF8 flag for pcre regular expressions when in UTF-8 mode
+  * Don't count lines in initial screen if using -X with -F
+  * Fix bug in v command on empty file
+  * Fix bug in v command when filename contains shell metacharacters
+- refresh less-429-shell.patch
+
+-------------------------------------------------------------------
 Sun Apr 29 09:04:21 UTC 2018 - kstreitova@suse.com
 
 - update to version 530 [bsc#1091308]

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 24 09:29:34 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- Need to explicitly have glibc-locale-base in patterns to make
+  32bit pattern have it too (boo#1142156).
+
+-------------------------------------------------------------------
 Thu Sep 19 07:23:51 UTC 2019 - Max Lin <mlin@suse.com>
 
 - Added snapper back to base pattern as recommended package, the

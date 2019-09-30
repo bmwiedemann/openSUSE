@@ -19,7 +19,7 @@
 %define dracutlibdir %{_libexecdir}/dracut
 
 Name:           dracut
-Version:        049+git108.6c9d1156
+Version:        049+git112.fe41ccd9
 Release:        0
 Summary:        Initramfs generator using udev
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -176,6 +176,17 @@ ln -s %{dracutlibdir}/modules.d/45ifcfg/write-ifcfg-redhat.sh %{buildroot}/%{dra
 
 %post
 %service_add_post purge-kernels.service
+# check whether /var/run has been converted to a symlink
+[ -L /var/run ] || sed -i '/GRUB_CMDLINE_LINUX_DEFAULT.*/s/"$/ rd.convertfs"/' /etc/default/grub  || :
+[ -L /var/run ] || cat >>/etc/dracut.conf.d/05-convertfs.conf<<EOF
+add_dracutmodules+="convertfs"
+EOF
+#clean up after the conversion is done
+[ -L /var/run ] &&  sed -i '/GRUB_CMDLINE_LINUX_DEFAULT.*/s/rd.convertfs//' /etc/default/grub || :
+[ -L /var/run ] && sed -i '/add_dracutmodules+="convertfs"/d' /etc/dracut.conf.d/05-convertfs.conf || :
+[ -d /var/lock.lockmove~ ] && rm -rf /var/lock.lockmove~ || :
+[ -d /var/run.runmove~ ] && rm -rf /var/run.runmove~ || :
+[ -s /etc/dracut.conf.d/05-convertfs.conf ] || rm -f /etc/dracut.conf.d/05-convertfs.conf || :
 %{?regenerate_initrd_post}
 
 %post fips

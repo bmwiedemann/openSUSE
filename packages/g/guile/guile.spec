@@ -112,7 +112,8 @@ rm -r prebuilt/32-bit-big-endian
   --with-pic \
   --with-threads \
   --disable-silent-rules
-make %{?_smp_mflags}
+# do sequential build for reproducible .go files = https://issues.guix.gnu.org/issue/20272 - boo#1102408
+make
 
 %check
 LD_LIBRARY_PATH="." make %{?_smp_mflags} check

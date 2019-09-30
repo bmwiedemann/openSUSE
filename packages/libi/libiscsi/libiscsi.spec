@@ -28,6 +28,7 @@ Source:         https://github.com/sahlberg/libiscsi/archive/%{version}.tar.gz#/
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bc
+BuildRequires:  libgcrypt-devel
 BuildRequires:  librdmacm-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -84,7 +85,7 @@ autoreconf -fiv
   --enable-manpages \
   --disable-werror  \
   --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

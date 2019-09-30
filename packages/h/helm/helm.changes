@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Tue Sep 24 12:19:24 UTC 2019 - mmeister@suse.com
+
+- Update to version 3.0.0beta.3:
+  * fix(pkg/cli): do not override users xdg directories
+  * Unifity environment variable naming and use
+  * Displaying environment variables in alphanum order for env cmd
+  * Remove ability to have duplicates in environment variables
+  * fix: clear the discovery cache after CRDs are installed (#6332)
+  * ref(pkg/engine): cleanup of development `hack`
+  * Poposal: Hook to run acceptance tests (#6256)
+  * fix BusyBox sed (#6340)
+  * Distinct doc strings for repository-cache and repository-config
+  * doc(cli): restore help text for helm configuration
+  * docs: Add best practices compliance badge (#6320)
+  * Move the logic for checking env in pkg/cli and store all envs in a central place
+  * Updated to get Helm env Paths and XDG env paths only
+  * Logic for the helm env command
+  * helm-v3: Dynamic completion for "helm repo" and "helm plugin" (#6263)
+  * fix(cmd/helm): user friendly error message when repos are not configured
+  * Make the lint cmd output a bit easier to follow
+  * Revert "fix(cmd/helm): user friendly error message when repos are not configured"
+  * fix(cmd/helm): user friendly error message when repos are not configured
+  * return namespace assigned to --namespace
+  * fix(cmd/helm): Missing params for dir locations (#6300)
+  * fix(cmd/helm): Remove mention of init from help (#6298)
+  * Stop multiple error messages in lint results
+  * Fix: set config dir in repo update cmd (#6292)
+  * Applied check to actions
+  * Add IsReachable to /pkg/kube/client to see if connected to the internet
+  * chore(*): Add GPG key for Adam
+  * ref(cmd/helm): remove init command
+  * chore(registry): upgrade to oras v0.7.0 (#6285)
+  * chore(OWNERS): sync with master (#6224)
+  * feat(cmd/helm): remove need for helm init command
+  * Fix Adding Errors from Linter.Messages to result.Errors
+  * ref(*): remove dead code
+  * Test for Linting multiple charts with the same vals instance
+  * Clone the vals map for every path to avoid mutation
+  * Remove mention of 'helm update'
+  * feat: Add support for a crds/ directory
+  * chore(*): Add GPG key for Taylor
+  * fix(registry): Updates registry to handle go 1.12.8 changes
+  * fix(chartutil): remove executable bits from chartutil generated files
+  * ref(test): join all hook manifests before building
+  * style(action): fix style tests
+  * fix(action): return an error if len > 0
+  * fix(test): restore --cleanup
+  * Updating the search language and flags for consistency
+  * Breaking up the search command into multiple commands based on type
+  * Exposing Helm Hub search via the search command
+  * ref(internal/experimental/registry): pkg refactor (#6205)
+  * ref(cmd/helm): unify log functions
+  * fix(pkg/kube): only wait for events from Jobs and Pods
+  * Updated upgrade to give more verbose output
+  * Updating the httpgetter to use the new user agent function
+  * Making the monocular client search path a const
+  * Moving monocular client to internal and adding user agent to version pkg
+  * Adding a monocular client as a package
+  * ref(*): Moves packages to internal
+  * ref(cmd/helm): remove helm home command
+  * feat(hooks): add Running phase
+  * feat(getter): set default User-Agent
+  * feat(cmd): use alt dest for chart export (#6193)
+  * fix(action): return nil if no errors occurred
+  * feat(cmd): put OCI commands behind a feature gate
+  * Move KEYS from master to dev-v3
+  * fix(helmpath): fix syntax errors for windows tests
+  * fix(chartutil): Ensure nested template dir on save (#6177)
+  * refactor(hooks): replace hook execution Successful bool with HookPhase
+  * Fix make test
+  * fix(kube): Fixes nil panic with stateful set waiting
+  * chore(cmd): Updates --wait flag help
+  * docs(chart): updates APIVersionV2 comment to reflect the proper name
+  * pkg/cli/values/options_test.go: re-add MergeValues test with mergeMaps
+  * fix(plugin): add HELM_HOME back
+  * feat(cli): support XDG base directory specification
+  * ref(client): use three-way merge patch strategy
+  * Remove the chart lock file as its v1 structure
+  * Update linting and checking for apiVersion v1/v2
+  * fix(test): wait for pods and record status
+  * review: move ValueOptions to SDK
+  * cmd/*,pkg/*: move ValueOptions to cmd package and decouple from SDK
+  * doc(hooks): note helm 2 test annotation support requirement
+  * refactor(release): track test executions via Hook type
+  * feat(client): wait for Pods during hook execution
+  * feat(test): define tests as Jobs and allow arbitrary supporting resources
+  * Fix values being ignored when reusing values on upgrade
+  * fix(rollback): fix revision argument not being handled
+  * fix(pkg/action): Allow name re-use for helm template
+  * Removes clientset method from interface in favor of the configuration struct
+  * Fixed object typing for watching Jobs/hooks
+  * Fixes issues with delete
+  * ref(*): Refactors kube client to be a bit more friendly
+  * ref(kube): Renames `Result` type to `ResourceList`
+  * Allow missing trailing '/' in --repo url
+  * Enable style conformance test in circleci build
+  * Fix style conformance issue
+  * Switch to a more unique delimiter for template execution errors
+  * Fix style conformance issues
+  * Update scaffold chart to v2 apiVersion
+  * Added List mode for Role, ClusterRole and Bindings
+  * Removing the stable repository
+  * test: add test
+  * fix: use repo default client to download index
+  * Fix a parsing issue with command line arguments
+  * fix: call chartutil.ProcessDependencies in action.Install
+  * ref(action): remove ParseReferenceWithChartDefaults
+  * fix(engine): Fix eating too many colons during template execution
+  * Use chart version as default tag when saving
+  * feat(helm:create): allow absolute paths
+
+-------------------------------------------------------------------
 Wed Jul 24 14:22:50 UTC 2019 - mmeister@suse.com
 
 - Update to version 3.0.0alpha.2:

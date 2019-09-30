@@ -22,7 +22,7 @@
 # maxcriversion - version of cri-tools which is notsupported by this version of kubeadm.
 %define maxcriversion 1.16
 Name:           kubernetes
-Version:        %{baseversion}.2
+Version:        %{baseversion}.4
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -44,8 +44,6 @@ Source26:       kubernetes.tmp.conf
 Source27:       kubelet.tmp.conf
 Source28:       kubernetes-rpmlintrc
 Source29:       kubernetes.obsinfo
-# Patch to fix cgroup error in k8s 1.15.0 - should already be in 1.15.1
-Patch1:         fix-cgroup-kubeadm.patch
 # Patch to change the default registry to registry.opensuse.org/kubic
 Patch2:         kubeadm-opensuse-registry.patch
 # Patch to change the version check server to kubic.opensuse.org
@@ -54,9 +52,9 @@ BuildRequires:  bash-completion
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  go-go-md2man
-# Kubernetes 1.15.0 requires at least go 1.12.5 (see changelog)
+# Kubernetes 1.15.4 requires at least go 1.12.9 (see changelog)
 BuildRequires:  golang(API) = 1.12
-BuildRequires:  go >= 1.12.5
+BuildRequires:  go >= 1.12.9
 BuildRequires:  golang(github.com/jteeuwen/go-bindata)
 BuildRequires:  golang-packaging
 BuildRequires:  rsync
@@ -245,7 +243,6 @@ providers, demos, testsuite...
 
 %prep
 %setup -q
-%patch1 -p1
 %if 0%{?is_opensuse}
 %patch2 -p0
 %patch3 -p1

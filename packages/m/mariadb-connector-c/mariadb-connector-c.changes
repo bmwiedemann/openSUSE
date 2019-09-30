@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 24 10:59:32 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
+
+- New upstream version 3.1.4
+  * CONC-431: Use windows crypto libraries on Windows platforms
+  * Included in MariaDB 10.4.8, MariaDB 10.3.18, and MariaDB 10.2.27
+- refresh mariadb-connector-c-2.3.1_unresolved_symbols.patch and
+  private_library.patch
+
+-------------------------------------------------------------------
 Mon Aug  5 11:28:22 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
 
 - New upstream version 3.1.3

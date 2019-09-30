@@ -1,7 +1,7 @@
 #
 # spec file for package libffi
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,14 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define libffi_sover 7
 
 Name:           libffi
-Version:        3.2.1.git259
+Version:        3.2.1.git505
 Release:        0
 Summary:        Foreign Function Interface Library
 License:        MIT
@@ -27,8 +27,8 @@ Group:          Development/Languages/C and C++
 Url:            https://github.com/libffi/
 Source:         %name-%version.tar.xz
 Source99:       baselibs.conf
-Patch:          libffi-include-location.patch
-Patch2:         libffi-riscv.patch
+Patch1:         gccbug.patch
+Patch2:         stdcall.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -80,7 +80,7 @@ time.
 
 %prep
 %setup -q
-%patch -p1
+%patch1 -p1
 %patch2 -p1
 
 %build

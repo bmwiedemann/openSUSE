@@ -20,7 +20,7 @@
 %define gtk_binary_version 2.10.0
 %define _name gtk
 Name:           gtk2
-Version:        2.24.32+54
+Version:        2.24.32+62
 Release:        0
 # FIXME: when updating to next version, check whether we can remove the workaround for bgo#596977 below (removing -fomit-frame-pointer)
 Summary:        The GTK+ toolkit library (version 2)
@@ -47,8 +47,6 @@ Patch4:         gtk2-default-printer.patch
 Patch5:         gtk2-bgo625202-30-bit-drawables-remain-black.patch
 # PATCH-FIX-UPSTREAM gtk2-bgo743166-remember-printing-authentication.patch bgo#674264 joschibrauchle@gmx.de -- Credentials from gnome-keyring is not used while printing in GTK 2
 Patch6:         gtk2-bgo743166-remember-printing-authentication.patch
-# PATCH-FEATURE-OPENSUSE gtk2-converter-python3.patch dimstar@opensuse.org -- Use python3 for gtk-build-converter
-Patch7:         gtk2-converter-python3.patch
 # PATCH-FEATURE-OPENSUSE gtk2-updateiconcache_sort.patch olh@opensuse.org -- Have gtp-update-icon-cache sort the file list before producing a cache
 Patch8:         gtk2-updateiconcache_sort.patch
 BuildRequires:  atk-devel
@@ -326,8 +324,8 @@ cp -a %{SOURCE2} .
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
-%patch7 -p1
 %patch8 -p1
+sed -i "s|/usr/bin/env python|%{_bindir}/python3|" ./gtk/gtk-builder-convert
 gnome-patch-translation-update
 
 %build

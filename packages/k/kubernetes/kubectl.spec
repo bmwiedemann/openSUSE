@@ -20,7 +20,7 @@
 # baseversion - version of kubernetes for this package
 %define baseversion 1.15
 Name:           kubectl
-Version:        %{baseversion}.2
+Version:        %{baseversion}.4
 Release:        0
 Summary:        Kubectl (Kubernetes client tools)
 License:        Apache-2.0
@@ -34,9 +34,9 @@ BuildRequires:  bash-completion
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  go-go-md2man
-# Kubernetes 1.15.0 requires at least go 1.12.5 (see changelog)
+# Kubernetes 1.15.4 requires at least go 1.12.9 (see changelog)
 BuildRequires:  golang(API) = 1.12
-BuildRequires:  go >= 1.12.5
+BuildRequires:  go >= 1.12.9
 BuildRequires:  golang(github.com/jteeuwen/go-bindata)
 BuildRequires:  golang-packaging
 BuildRequires:  rsync

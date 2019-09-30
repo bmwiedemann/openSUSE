@@ -454,4 +454,26 @@ The less license is a choice of either GPL-3.0+ or BSD-2-Clause (less license). 
     <comment></comment>
     <requestid>602385</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>c9dd1e258e040e632d2db6c0aecb0061</srcmd5>
+    <version>551</version>
+    <time>1569851354</time>
+    <user>dimstar_suse</user>
+    <comment>- less 551:
+  * Add --mouse option
+  * Add --wheel-lines option
+  * Add --no-histdups option
+  * Add --save-marks option
+  * Support PCRE2 regular expression library
+  * Redraw screen on SIGWINCH even if screen size doesn't change
+  * Shell-escape filenames in history so they can be used again
+  * Ring bell if user enters invalid long option name
+  * Use PCRE_UTF8 flag for pcre regular expressions when in UTF-8 mode
+  * Don't count lines in initial screen if using -X with -F
+  * Fix bug in v command on empty file
+  * Fix bug in v command when filename contains shell metacharacters
+- refresh less-429-shell.patch
+</comment>
+    <requestid>732670</requestid>
+  </revision>
 </revisionlist>

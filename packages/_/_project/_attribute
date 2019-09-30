@@ -69,7 +69,7 @@
   gh#os-autoinst/os-autoinst-distri-opensuse#7166: '20190430'
   gh#os-autoinst/os-autoinst-distri-opensuse#7278: '20190423'
   gh#os-autoinst/os-autoinst-distri-opensuse#8348: '20190902'
-  kde#408594: '20190926'
+  kde#408594: '20190927'
   poo#33283: '20190810'
   poo#48899: '20190521'
   poo#49187: '20190612'
@@ -96,7 +96,7 @@
   poo#51650: '20190702'
   poo#51983: '20190525'
   poo#51986: '20190612'
-  poo#52418: '20190926'
+  poo#52418: '20190927'
   poo#52499: '20190604'
   poo#52580: '20190703'
   poo#52688: '20190713'
@@ -150,7 +150,7 @@ splitter-whitelist = B C D E F G H I J
 # now just for testing
 source_projects_expand = devel:languages:haskell
 
-devel-whitelist = Virtualization:WSL 
+devel-whitelist = Virtualization:WSL server:monitoring
  
 # packagelist generator related configuration
 pkglistgen-archs = i586 x86_64

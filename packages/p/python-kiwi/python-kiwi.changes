@@ -1,4 +1,125 @@
 -------------------------------------------------------------------
+Tue Sep 17 13:32:32 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.18.15 → 9.18.16
+
+-------------------------------------------------------------------
+Tue Sep 17 13:04:00 CEST 2019 - David Cassany <dcassany@suse.com>
+
+- Fix modules omission for dracut based initrds
+
+  This commit fixes a regression introduced in 07ea23a4. In OEM images
+  the dracut modules were not properly omitted as the code was evaluating
+  the wrong variable.
+
+  Fixes #1201
+
+-------------------------------------------------------------------
+Fri Sep 13 18:01:40 CEST 2019 - David Cassany <dcassany@suse.com>
+
+- Fix GPT to MBR convertion
+
+  This commit swaps the order of the command in gpt to mbr convertion
+  in partitioner.gpt.set_mbr method.
+
+  sgdisk by default converts the partition table from MBR to GPT in memory.
+  The change is never applied unless you provide the -g option forcing to
+  overwrite the partition table format. If sgdisk does the convertion in
+  memory and the user does not provide the -g flag it returns an error
+  code.
+
+  The solution applied in this commit is to just run the GPT to MBR
+  convertion as the last sgdisk command and change partition type before
+  running the convertion.
+
+-------------------------------------------------------------------
+Fri Sep 13 11:06:10 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.18.14 → 9.18.15
+
+-------------------------------------------------------------------
+Fri Sep 13 11:01:40 CEST 2019 - jpwidera <30520224+jpwidera@users.noreply.github.com>
+
+- Fixed user permission
+
+  The comand was evaluated as chmod -c -R '...' . This is not the
+  correct syntax. Removing quotation marks solved problem
+  and Fixes #1191
+
+-------------------------------------------------------------------
+Thu Sep 12 17:12:29 CEST 2019 - David Cassany <dcassany@suse.com>
+
+- Clean up openstack packages
+
+-------------------------------------------------------------------
+Thu Sep 12 16:20:44 CEST 2019 - David Cassany <dcassany@suse.com>
+
+- Fix unresolves for x86 integration tests
+
+  nfsidmap package is no longer available in TW. It's been renamed to
+  libnfsidmap1, moreover this is a package already required by nfs-client
+  and similar packages. Thus gets installed in the modified image
+  descriptions without having to list it, as it is already a dependency of
+  another required package.
+
+-------------------------------------------------------------------
+Thu Sep 12 15:32:50 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Do not require multipath in dracut-kiwi-oem-dump
+
+  Installation of multipath tools triggers storage devices
+  to be handled as multipath maps in dracut. If the deployment
+  happens in a non multipath system those devices do not exist
+  and the system later hangs in the dracut initqueue waiting
+  for mapper devices that never appears
+
+-------------------------------------------------------------------
+Thu Sep 12 12:32:12 CEST 2019 - jpwidera <jan.widera@posteo.de>
+
+- Reverting partsthat are already implemented
+
+  This problem is discussed in #1195
+
+-------------------------------------------------------------------
+Tue Sep 10 16:42:05 CEST 2019 - jpwidera <jan.widera@posteo.de>
+
+- Switched back to original root-device search
+
+-------------------------------------------------------------------
+Tue Sep 10 16:18:01 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Detect raid compound in root disk detection
+
+  Make sure raid managed storage e.g fake raid is detected
+  using the correct md device. Fixes #1181
+
+-------------------------------------------------------------------
+Tue Sep 10 09:49:43 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.18.13 → 9.18.14
+
+-------------------------------------------------------------------
+Fri Aug 30 13:29:40 CEST 2019 - Jan Widera <widera@helzel.com>
+
+- Allows to list fake-raid partitions
+
+  Solves problem in #1181
+
+-------------------------------------------------------------------
+Fri Aug 30 12:26:48 CEST 2019 - David Cassany <dcassany@suse.com>
+
+- Add the `-wildcards` flag in mksqashfs call
+
+  This commit ensures the `-wildcards` flag of mksquashfs is being used.
+
+  This is related to #1184
+
+-------------------------------------------------------------------
+Fri Aug 30 11:08:58 CEST 2019 - David Cassany <dcassany@suse.com>
+
+- Adding overlayroot integration test
+
+-------------------------------------------------------------------
 Thu Aug 29 16:38:30 CEST 2019 - Marcus Schäfer <ms@suse.de>
 
 - Bump version: 9.18.12 → 9.18.13

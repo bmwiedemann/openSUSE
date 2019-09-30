@@ -1,7 +1,7 @@
 #
 # spec file for package librtas
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Name:           librtas
 Version:        2.0.2
 Release:        0
 Summary:        Libraries to provide access to RTAS calls and RTAS events
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          System/Libraries
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  ppc ppc64 ppc64le
@@ -80,6 +80,7 @@ contents of RTAS events.
 %patch0 -p1
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 ./autogen.sh
 %configure
 make CFLAGS="%optflags -fPIC -g -I $PWD/librtasevent_src" LIB_DIR="%{_libdir}" %{?_smp_mflags}

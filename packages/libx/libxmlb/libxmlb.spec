@@ -20,7 +20,7 @@
 %define sover 1
 
 Name:           libxmlb
-Version:        0.1.8
+Version:        0.1.11
 Release:        0
 Summary:        Library for querying compressed XML metadata
 License:        LGPL-2.1-or-later
@@ -31,6 +31,7 @@ Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.xz
 BuildRequires:  meson >= 0.47.0
 # Enable when/if libstemmer becomes available in openSUSE (+ in meson call)
 #BuildRequires:  libstemmer-devel
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0) >= 2.45.8
 BuildRequires:  pkgconfig(gobject-introspection-1.0)

@@ -1110,4 +1110,18 @@ Stephan Kulow (2):
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>715678</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>a4c923fdaa403cb5d3a4d1a61882f8cf</srcmd5>
+    <version>20190923</version>
+    <time>1569851365</time>
+    <user>dimstar_suse</user>
+    <comment>- build-recipe-dsc: Move all build results, not just *.deb and *.changes
+- Mount /sys in chroot build
+- vc: Do not open the editor if content is set
+- adding leap 15.2 and SLE 15 SP2 configs
+- Fix some rpmlint warnings
+- return exit status 9 in the genbuildreqs case
+- Export SYSTEMD_OFFLINE=1 to avoid failures from systemctl</comment>
+    <requestid>732735</requestid>
+  </revision>
 </revisionlist>

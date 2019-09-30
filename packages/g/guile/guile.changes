@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 23 09:17:47 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Do sequential build for reproducible .go files (boo#1102408)
+
+-------------------------------------------------------------------
 Sat Jul  6 09:33:00 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Update to version 2.2.6

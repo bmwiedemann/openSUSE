@@ -421,6 +421,7 @@ BuildRequires:  pkgconfig(zlib)
 Requires:       liblldb%{_sonum} = %{_relver}
 Requires:       python3
 Requires:       python3-six
+Recommends:     python3-lldb%{_sonum}
 ExclusiveArch:  x86_64
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -467,7 +468,8 @@ Provides:       %{python3_sitearch}/lldb/
 Conflicts:      %{python3_sitearch}/lldb/
 
 %description -n python3-lldb%{_sonum}
-This package contains the Python bindings to clang (C language) frontend for LLVM.
+This package contains the Python bindings for LLDB. It also contains
+pretty printers for the C++ standard library.
 %endif
 
 %endif

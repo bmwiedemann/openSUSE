@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 17 10:01:18 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
+
+- Update to 5.2.2:
+  * check:
+    * fix false report of wrong byte count for orphan inodes
+    * option -E was not handled correctly
+    * new check and repair for root item generation
+  * balance: check for full-balance before background fork
+  * mkfs: check that total device size does not overflow 16EiB
+  * dump-tree: print DEV_STATS key type
+  * other:
+    * new and updated tests
+    * doc fixups and updates
+
+-------------------------------------------------------------------
 Wed Jul 31 00:00:00 CEST 2019 - dsterba@suse.cz
 
 - update to 5.2.1

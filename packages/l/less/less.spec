@@ -1,7 +1,7 @@
 #
 # spec file for package less
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           less
-Version:        530
+Version:        551
 Release:        0
 Summary:        Text File Browser and Pager Similar to more
 License:        GPL-3.0-or-later OR BSD-2-Clause
 Group:          Productivity/Text/Utilities
-Url:            http://www.greenwoodsoftware.com/less/
+URL:            http://www.greenwoodsoftware.com/less/
 Source:         http://www.greenwoodsoftware.com/less/less-%{version}.tar.gz
 Source1:        README.SUSE
 Source2:        lessopen.sh
@@ -35,8 +35,8 @@ Patch1:         less-429-save_line_position.patch
 Patch2:         less-429-more.patch
 BuildRequires:  automake
 BuildRequires:  ncurses-devel
+BuildRequires:  pkgconfig
 Requires:       file
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 less is a text file browser and pager similar to more. It allows
@@ -81,7 +81,6 @@ install -m 755 lessopen.sh lessclose.sh %{buildroot}/%{_bindir}
 chmod -x LICENSE COPYING NEWS README.SUSE
 
 %files
-%defattr(-, root, root)
 %license LICENSE COPYING
 %doc NEWS README.SUSE
 %{_mandir}/*/*

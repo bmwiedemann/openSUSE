@@ -4,24 +4,24 @@
 <param name="url">https://github.com/containers/storage.git</param>
 <param name="scm">git</param>
 <param name="filename">storage</param>
-<param name="versionformat">1.12.16</param>
-<param name="revision">v1.12.16</param>
+<param name="versionformat">1.13.2</param>
+<param name="revision">v1.13.2</param>
 </service>
 
 <service name="tar_scm" mode="disabled">
 <param name="url">https://github.com/containers/image.git</param>
 <param name="scm">git</param>
 <param name="filename">image</param>
-<param name="versionformat">3.0.0</param>
-<param name="revision">v3.0.0</param>
+<param name="versionformat">3.0.2</param>
+<param name="revision">v3.0.2</param>
 </service>
 
 <service name="tar_scm" mode="disabled">
 <param name="url">https://github.com/containers/libpod.git</param>
 <param name="scm">git</param>
 <param name="filename">libpod</param>
-<param name="versionformat">1.4.4</param>
-<param name="revision">v1.4.4</param>
+<param name="versionformat">1.5.1</param>
+<param name="revision">v1.5.1</param>
 </service>
 
 <service name="recompress" mode="disabled">

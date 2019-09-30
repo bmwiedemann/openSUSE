@@ -2,4 +2,7 @@
   <title>Python3 ipa</title>
   <description>ipa provides a command line utility to test images in the Public Cloud (AWS, Azure, GCE, etc.).</description>
   <devel project="Cloud:Tools" package="python3-ipa"/>
+  <build>
+    <disable/>
+  </build>
 </package>

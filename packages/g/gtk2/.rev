@@ -1244,4 +1244,12 @@ Ensure nobody gets confused next time we want to update the version. (forwarded 
     <comment></comment>
     <requestid>701853</requestid>
   </revision>
+  <revision rev="172" vrev="1">
+    <srcmd5>36e40f4bd6e9b04ab7217f4159781e69</srcmd5>
+    <version>2.24.32+62</version>
+    <time>1569851484</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>732880</requestid>
+  </revision>
 </revisionlist>

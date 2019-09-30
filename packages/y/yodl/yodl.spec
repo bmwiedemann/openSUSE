@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Yet One-other Document Language
 License:        GPL-3.0-only
 Group:          Development/Tools/Doc Generators
-URL:            https://fbb-git.gitlab.io/yodl/
+Url:            https://fbb-git.gitlab.io/yodl/
 Source:         https://gitlab.com/fbb-git/yodl/-/archive/%{version}/yodl-%{version}.tar.gz
 Patch0:         %{name}-doc-packages.patch
 BuildRequires:  bison
@@ -52,6 +52,10 @@ generic markup languages.
 %patch0
 
 sed -i s/"#define COPT.*"/"#define COPT \"%{optflags}\""/ ./yodl/build
+# remove clearing of display during build, since it breaks OBS builds for s390x
+%ifarch s390x
+sed -i '/.*CLS.*/d' yodl/verbinsert/icmconf
+%endif
 
 %build
 pushd yodl

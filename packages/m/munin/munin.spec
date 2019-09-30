@@ -45,6 +45,8 @@ Source11:       munin-cgi-html.service
 Source12:       nginx-munin.zip
 # https://github.com/ifad/gsa-munin/archive/master.zip
 Source13:       gsa-munin.zip
+Source14:       munin-cron.timer
+Source15:       munin-cron.service
 Patch1:         perl526.patch
 BuildRequires:  html2text
 BuildRequires:  perl-HTML-Template
@@ -55,14 +57,9 @@ BuildRequires:  perl-Net-Server
 BuildRequires:  pwdutils
 BuildRequires:  unzip
 BuildRequires:  perl(Module::Build)
-%if 0%{?suse_version} >= 1220
 %{?systemd_requires}
 BuildRequires:  htmldoc
 BuildRequires:  pkgconfig(systemd)
-%else
-BuildRequires:  sysvinit
-Requires(pre):  %insserv_prereq
-%endif
 Requires:       perl-Date-Manip
 Requires:       perl-FastCGI
 Requires:       perl-File-Copy-Recursive
@@ -74,14 +71,15 @@ Requires:       perl-Net-SSLeay
 Requires:       perl-Net-Server
 Requires:       perl-URI
 Requires:       perl-base = %{perl_version}
+Requires:       perl-rrdtool
 Requires:       pwdutils
 Requires:       rrdtool
 Requires:       spawn-fcgi
 Requires:       perl(Munin::Common::Defaults)
-%if 0%{?suse_version} > 1320
-Requires:       perl-rrdtool
+Recommends:     logrotate
+%if 0%{?suse_version} <= 1510
+Recommends:     cron
 %endif
-Recommends:     logrotate cron
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
@@ -119,15 +117,9 @@ Requires:       sysstat
 # manual requires from certain plugins using "env ..."
 Requires:       python
 Requires:       ruby
-%if 0%{?suse_version} >= 1220
 %{?systemd_requires}
-%else
-Requires(pre):  %insserv_prereq
-%endif
-%if 0%{?suse_version} >= 1330
-Requires(pre):       group(nobody)
-Requires(pre):       user(nobody)
-%endif
+Requires(pre):  group(nobody)
+Requires(pre):  user(nobody)
 Recommends:     logrotate
 BuildArch:      noarch
 
@@ -169,9 +161,6 @@ unzip %{SOURCE13}
 %__mkdir_p %{buildroot}/%{_sysconfdir}/munin/plugins
 %__mkdir_p %{buildroot}/%{_sysconfdir}/munin/munin-conf.d
 
-%__mkdir_p %{buildroot}/%{_sysconfdir}/cron.d
-%__install -m0644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/cron.d/munin
-
 %__mkdir_p %{buildroot}/etc/logrotate.d
 %__install -m0644 %{SOURCE4} %{buildroot}/%{_sysconfdir}/logrotate.d/munin
 %__install -m0644 %{SOURCE5} %{buildroot}/%{_sysconfdir}/logrotate.d/munin-node
@@ -179,17 +168,10 @@ unzip %{SOURCE13}
 %__install -m0644 %{SOURCE7} %{buildroot}/%{_sysconfdir}/munin/plugin-conf.d/munin-node
 
 %__mkdir_p %{buildroot}/sbin
-%if 0%{?suse_version} < 1220
-%__mkdir_p %{buildroot}/%{_sysconfdir}/init.d
-%__install -m0755 %{SOURCE2} %{buildroot}/%{_sysconfdir}/init.d/munin-node
-%__ln_s %{_sysconfdir}/init.d/munin-node $RPM_BUILD_ROOT/sbin/rcmunin-node
-%else
 %__ln_s /sbin/service $RPM_BUILD_ROOT/sbin/rcmunin-node
 %__ln_s /sbin/service $RPM_BUILD_ROOT/sbin/rcmunin-cgi-graph
 %__ln_s /sbin/service $RPM_BUILD_ROOT/sbin/rcmunin-cgi-html
-%endif
 
-%if 0%{?suse_version} >= 1220
 %__mkdir_p %{buildroot}/%{_prefix}/lib/tmpfiles.d
 %__install -m0644 %{SOURCE8} %{buildroot}/%{_prefix}/lib/tmpfiles.d/munin.conf
 %__install -m0644 %{SOURCE8} %{buildroot}/%{_prefix}/lib/tmpfiles.d/munin-node.conf
@@ -197,6 +179,12 @@ unzip %{SOURCE13}
 %__install -m0644 %{SOURCE9} %{buildroot}/%{_unitdir}/munin-node.service
 %__install -m0644 %{SOURCE10} %{buildroot}/%{_unitdir}/munin-cgi-graph.service
 %__install -m0644 %{SOURCE11} %{buildroot}/%{_unitdir}/munin-cgi-html.service
+%if 0%{?suse_version} > 1510
+%__install -m0644 %{SOURCE14} %{buildroot}/%{_unitdir}/
+%__install -m0644 %{SOURCE15} %{buildroot}/%{_unitdir}/
+%else
+%__mkdir_p %{buildroot}/%{_sysconfdir}/cron.d
+%__install -m0644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/cron.d/munin
 %endif
 
 %__mkdir_p %{buildroot}/%{logdir}
@@ -216,9 +204,11 @@ ln munin-gsa-master/README.md README.gsa
 %pre
 getent group munin >/dev/null || /usr/sbin/groupadd -r munin
 getent passwd munin > /dev/null || /usr/sbin/useradd -r -c "munin monitoring" -d %{dbdir} -g munin munin
-%if 0%{?suse_version} >= 1220
 %service_add_pre munin-cgi-graph.service
 %service_add_pre munin-cgi-html.service
+%if 0%{?suse_version} > 1510
+%service_add_pre munin-cron.timer
+%service_add_pre munin-cron.service
 %endif
 
 %post
@@ -228,68 +218,59 @@ chmod 755 %{dbdir}
 touch %{logdir}/munin-graph.log %{logdir}/munin-html.log %{logdir}/munin-nagios.log %{logdir}/munin-limits.log %{logdir}/munin-update.log
 chown munin:munin %{logdir}/*
 chown root:root %{logdir}/munin-node.log* >/dev/null 2>&1 || true
-%if 0%{?suse_version} >= 1220
 systemd-tmpfiles --create /usr/lib/tmpfiles.d/munin.conf
 %service_add_post munin-cgi-graph.service
 %service_add_post munin-cgi-html.service
+%if 0%{?suse_version} > 1510
+%service_add_post munin-cron.timer
+%service_add_post munin-cron.service
+# update from cron based release
+if [ -f  %{_sysconfdir}/cron.d/munin ]; then
+  systemctl enable munin-cron.timer || :
+  systemctl start munin-cron.timer || :
+fi
 %endif
 
 %preun
-%if 0%{?suse_version} >= 1220
 %service_del_preun munin-cgi-graph.service
 %service_del_preun munin-cgi-html.service
+%if 0%{?suse_version} > 1510
+%service_del_preun munin-cron.timer
+%service_del_preun munin-cron.service
 %endif
 
 %postun
-%if 0%{?suse_version} >= 1220
 %service_del_postun munin-cgi-graph.service
 %service_del_postun munin-cgi-html.service
+%if 0%{?suse_version} > 1510
+%service_del_postun munin-cron.timer
+%service_del_postun munin-cron.service
 %endif
 
 ## Node
 %pre node
 getent group munin >/dev/null || /usr/sbin/groupadd -r munin
 getent passwd munin > /dev/null || /usr/sbin/useradd -r -c "munin monitoring" -d %{dbdir} -g munin munin
-%if 0%{?suse_version} >= 1220
 %service_add_pre munin-node.service
-%endif
 
 %post node
 if [ $1 = 1 ]; then
 /usr/sbin/munin-node-configure --shell | sh
 fi
-%if 0%{?suse_version} < 1220
-%fillup_and_insserv -f -y munin-node
-%endif
 chown -R munin:munin %{dbdir}
 chmod 755 %{dbdir}
 touch %{logdir}/munin-node.log
 chown munin:munin %{logdir}/*
 chown root:root %{logdir}/munin-node.log*
 chown -R nobody:nobody %{dbdir}/plugin-state/* >/dev/null 2>&1
-%if 0%{?suse_version} >= 1220
 %tmpfiles_create /usr/lib/tmpfiles.d/munin-node.conf
 %service_add_post munin-node.service
-%else
-%if 0%{?active_by_default} > 0
-/etc/init.d/munin-node status >/dev/null 2>&1 || /etc/init.d/munin-node start
-%endif
-%endif
 
 %preun node
-%if 0%{?suse_version} >= 1220
 %service_del_preun munin-node.service
-%else
-%stop_on_removal munin-node
-%endif
 
 %postun node
-%if 0%{?suse_version} >= 1220
 %service_del_postun munin-node.service
-%else
-%restart_on_update munin-node
-%{insserv_cleanup}
-%endif
 
 %files
 %defattr(-, root, root)
@@ -309,12 +290,16 @@ chown -R nobody:nobody %{dbdir}/plugin-state/* >/dev/null 2>&1
 %{_prefix}/lib/munin/DejaVuSansMono.ttf
 %{cgidir}/munin-cgi-graph
 %{cgidir}/munin-cgi-html
-%if 0%{?suse_version} >= 1220
 %{_prefix}/lib/tmpfiles.d/munin.conf
 %{_unitdir}/munin-cgi-graph.service
 %{_unitdir}/munin-cgi-html.service
 /sbin/rcmunin-cgi-graph
 /sbin/rcmunin-cgi-html
+%if 0%{?suse_version} > 1510
+%{_unitdir}/munin-cron.*
+%else
+%dir %{_sysconfdir}/cron.d
+%config %{_sysconfdir}/cron.d/munin
 %endif
 %attr(0755, munin, munin) %dir %{htmldir}
 %attr(0444, munin, munin) %{htmldir}/.htaccess
@@ -324,8 +309,6 @@ chown -R nobody:nobody %{dbdir}/plugin-state/* >/dev/null 2>&1
 %dir %{_sysconfdir}/munin/static
 %config %{_sysconfdir}/munin/templates/*
 %config %{_sysconfdir}/munin/static/*
-%dir %{_sysconfdir}/cron.d
-%config %{_sysconfdir}/cron.d/munin
 %config(noreplace) %{_sysconfdir}/munin/munin.conf
 %config %{_sysconfdir}/logrotate.d/munin
 %dir %{perl_vendorlib}/Munin
@@ -369,9 +352,7 @@ chown -R nobody:nobody %{dbdir}/plugin-state/* >/dev/null 2>&1
 %{_mandir}/man8/munin.8.gz
 %attr(0750, munin, munin) %dir %{logdir}
 %attr(0755, munin, munin) %dir %{dbdir}
-%if 0%{?suse_version} >= 1330
 %ghost /run/munin
-%endif
 
 %files node
 %defattr(-, root, root)
@@ -379,18 +360,13 @@ chown -R nobody:nobody %{dbdir}/plugin-state/* >/dev/null 2>&1
 %{_sbindir}/munin-run
 %{_sbindir}/munin-node
 %{_sbindir}/munin-node-configure
-%if 0%{?suse_version} >= 1220
 %{_prefix}/lib/tmpfiles.d/munin-node.conf
 %{_unitdir}/munin-node.service
-%endif
 %dir %{_prefix}/lib/munin
 %{_prefix}/lib/munin/munin-async
 %{_prefix}/lib/munin/munin-asyncd
 %{_prefix}/lib/munin/plugins/
 /sbin/rcmunin-node
-%if 0%{?suse_version} < 1220
-%config %{_sysconfdir}/init.d/munin-node
-%endif
 %dir %{_sysconfdir}/munin/plugin-conf.d
 %dir %{_sysconfdir}/munin/plugins
 %config(noreplace) %{_sysconfdir}/munin/plugin-conf.d/munin-node
@@ -457,8 +433,6 @@ chown -R nobody:nobody %{dbdir}/plugin-state/* >/dev/null 2>&1
 %attr(0750, munin, munin) %dir %{logdir}
 %attr(0755, munin, munin) %dir %{dbdir}
 %attr(0775, nobody, nobody) %dir %{dbdir}/plugin-state
-%if 0%{?suse_version} >= 1330
 %ghost /run/munin
-%endif
 
 %changelog

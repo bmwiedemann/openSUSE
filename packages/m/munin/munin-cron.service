@@ -1,0 +1,7 @@
+[Unit]
+Description=Collect node data
+Documentation=man:munin-cron(8)
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/munin-cron

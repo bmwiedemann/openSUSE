@@ -19,12 +19,12 @@
 %define major   21
 %define libname libqalculate
 Name:           qalculate
-Version:        3.3.0
+Version:        3.4.0
 Release:        0
-Summary:        Multi-purpose desktop calulator application
+Summary:        Multi-purpose desktop calculator application
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            https://qalculate.github.io/
+URL:            https://qalculate.github.io/
 Source:         https://github.com/Qalculate/libqalculate/releases/download/v%{version}/%{libname}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
@@ -98,7 +98,7 @@ make %{?_smp_mflags}
 %install
 %make_install
 %find_lang libqalculate
-rm -f "%{buildroot}/%{_libdir}"/*.la
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n %{libname}%{major} -p /sbin/ldconfig
 %postun -n %{libname}%{major} -p /sbin/ldconfig
@@ -108,6 +108,7 @@ rm -f "%{buildroot}/%{_libdir}"/*.la
 %doc README ChangeLog INSTALL AUTHORS TODO
 %{_bindir}/qalc
 %{_datadir}/doc/%{libname}
+%{_mandir}/man1/qalc.1%{?ext_man}
 
 %files -n %{name}-data
 %{_datadir}/%{name}

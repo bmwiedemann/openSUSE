@@ -43,7 +43,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        9.18.13
+Version:        9.18.16
 Provides:       kiwi-schema = 7.1
 Release:        0
 Url:            https://github.com/SUSE/kiwi
@@ -271,12 +271,6 @@ BuildRequires:  dracut
 %endif
 Requires:       dracut-kiwi-lib
 Requires:       kexec-tools
-%if 0%{?suse_version} || 0%{?debian} || 0%{?ubuntu}
-Requires:       multipath-tools
-%endif
-%if 0%{?fedora} || 0%{?rhel}
-Requires:       device-mapper-multipath
-%endif
 Requires:       gawk
 License:        GPL-3.0-or-later
 Group:          %{sysgroup}

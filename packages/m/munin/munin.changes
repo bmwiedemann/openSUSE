@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 10 10:11:38 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- use systemd timer instead of cron for new distributions (boo#1115448)
+- require perl-rrdtool (boo#1149880)
+- removed old (non-systemd) conditionals from spec
+
+-------------------------------------------------------------------
 Tue Aug 20 11:53:15 CEST 2019 - kukuk@suse.de
 
 - Package /etc/cron.d as this is now part of cron which we don't

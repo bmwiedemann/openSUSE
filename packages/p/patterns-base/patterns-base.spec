@@ -140,6 +140,7 @@ Recommends:     chrony
 Recommends:     cron
 # we rely on cron for daily/hourly
 Recommends:     cronie
+Recommends:     glibc-locale-base
 Recommends:     glibc-locale
 Recommends:     systemd-sysvinit
 # workaround for boo#1151148
@@ -356,6 +357,7 @@ Recommends:     firewalld
 Recommends:     fuse
 Recommends:     gawk
 Recommends:     gettext-runtime
+Recommends:     glibc-locale-base
 Recommends:     glibc-locale
 Recommends:     gpart
 Recommends:     gpg2
@@ -765,6 +767,7 @@ Recommends:     pattern() = x11_yast
 
 # 1057377
 Requires:       glibc-locale
+Requires:       glibc-locale-base
 Requires:       xkeyboard-config
 Requires:       xorg-x11-essentials
 # make it possible to install firefox or chromium

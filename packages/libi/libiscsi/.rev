@@ -93,4 +93,12 @@
   * libiscsi-rdma.patch</comment>
     <requestid>723086</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>1b832b93686305de3ec265ef0539c198</srcmd5>
+    <version>1.19.0</version>
+    <time>1569851471</time>
+    <user>dimstar_suse</user>
+    <comment>- Update build dependencies (libgcrypt)</comment>
+    <requestid>732876</requestid>
+  </revision>
 </revisionlist>

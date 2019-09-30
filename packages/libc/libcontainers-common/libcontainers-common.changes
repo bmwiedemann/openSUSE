@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep 23 15:28:02 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Update to image 1.4.4
+  - Hard-code the kernel keyring use to be disabled for now
+- Update to libpod 1.5.1
+  - The hostname of pods is now set to the pod's name
+  - Minor bugfixes
+- Update to storage 1.12.16
+  - Ignore ro mount options in btrfs and windows drivers
+
+-------------------------------------------------------------------
+Mon Sep 23 12:01:53 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Check /var/lib/containers if possible before setting btrfs backend (bsc#1151028)
+
+-------------------------------------------------------------------
 Wed Aug  7 10:35:07 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
 
 - Add missing licenses to spec file

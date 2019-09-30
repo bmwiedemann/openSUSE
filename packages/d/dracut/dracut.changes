@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 23 11:37:53 UTC 2019 - daniel.molkentin@suse.com
+
+- Update to version 049+git112.fe41ccd9:
+  * dracut: move /var/run and /var/lock from directory to symlink (bsc#1149103, ECO#323)
+  * 35network-legacy: signalize the setup in ifup when dhcp (bsc#1146661)
+  * 35network-legacy: fix typo
+  * 35network-legacy: install hostname required by ifup.sh (bsc#1146661)
+
+-------------------------------------------------------------------
 Mon Aug 26 14:40:04 UTC 2019 - daniel.molkentin@suse.com
 
 - Update to version 049+git108.6c9d1156:

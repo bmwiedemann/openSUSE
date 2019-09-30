@@ -17,7 +17,7 @@
 
 
 Name:           yast2-ycp-ui-bindings
-Version:        4.2.1
+Version:        4.2.3
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -36,8 +36,8 @@ BuildRequires:  sgml-skel
 Requires:       yast2-core
 BuildRequires:  yast2-core-devel
 
-# YApplication::openUI/closeUI
-BuildRequires:  libyui-devel >= 3.2.0
+# YWidgetFactory::createSingleItemSelector()
+BuildRequires:  libyui-devel >= 3.8.0
 
 # libyui ImplPtr
 BuildRequires:  boost-devel

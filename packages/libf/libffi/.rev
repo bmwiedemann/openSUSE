@@ -46,4 +46,16 @@
     <comment>- libffi-riscv.patch: add support for RISC-V (forwarded request 585950 from Andreas_Schwab)</comment>
     <requestid>586039</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>577a83c06432e485ec9cb71bda655b0a</srcmd5>
+    <version>3.2.1.git505</version>
+    <time>1569851265</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to commit c2a6859
+- gccbug.patch: Update check for gccbug target flag
+- stdcall.patch: Fix FFI_STDCALL ABI
+- libffi-riscv.patch: Removed
+- libffi-include-location.patch: Removed (forwarded request 731700 from Andreas_Schwab)</comment>
+    <requestid>731707</requestid>
+  </revision>
 </revisionlist>

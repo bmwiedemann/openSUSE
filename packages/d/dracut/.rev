@@ -1548,4 +1548,16 @@ Add:  dracut_git_v034_to_head.patch</comment>
   * dracut.sh: Fix udevdir detection</comment>
     <requestid>726198</requestid>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>dbc254859300f0c79106af6bdc4e722d</srcmd5>
+    <version>049+git112.fe41ccd9</version>
+    <time>1569851417</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 049+git112.fe41ccd9:
+  * dracut: move /var/run and /var/lock from directory to symlink (bsc#1149103, ECO#323)
+  * 35network-legacy: signalize the setup in ifup when dhcp (bsc#1146661)
+  * 35network-legacy: fix typo
+  * 35network-legacy: install hostname required by ifup.sh (bsc#1146661)</comment>
+    <requestid>732746</requestid>
+  </revision>
 </revisionlist>

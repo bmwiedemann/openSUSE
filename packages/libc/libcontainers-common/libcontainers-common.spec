@@ -16,16 +16,16 @@
 #
 
 # libpodver - version from containers/libpod
-%define libpodver 1.4.4
+%define libpodver 1.5.1
 
 # storagever - version from containers/storage
-%define storagever 1.12.16
+%define storagever 1.13.2
 
 # imagever - version from containers/image
-%define imagever 3.0.0
+%define imagever 3.0.2
 
 Name:           libcontainers-common
-Version:        20190802
+Version:        20190923
 Release:        0
 Summary:        Configuration files common to github.com/containers
 License:        Apache-2.0 and GPL-3.0+
@@ -121,9 +121,11 @@ install -D -m 0644 storage-%{storagever}/docs/*.5 %{buildroot}/%{_mandir}/man5/
 install -D -m 0644 libpod-%{libpodver}/pkg/hooks/docs/oci-hooks.5 %{buildroot}/%{_mandir}/man5/
 
 %post
-# If installing, check if /var/lib is btrfs and set driver to "btrfs" if true
+# If installing, check if /var/lib/containers (or /var/lib in its defect) is btrfs and set driver
+# to "btrfs" if true
 if [ $1 -eq 1 ] ; then
-  if [ "`findmnt -o FSTYPE -l --target /var/lib|grep -v FSTYPE`" = "btrfs" ]; then
+  fstype=$((findmnt -o FSTYPE -l --target /var/lib/containers || findmnt -o FSTYPE -l --target /var/lib) | grep -v FSTYPE)
+  if [ "$fstype" = "btrfs" ]; then
     sed -i 's/driver = ""/driver = "btrfs"/g' %{_sysconfdir}/containers/storage.conf
   fi
 fi
