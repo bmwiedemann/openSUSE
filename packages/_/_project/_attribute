@@ -252,15 +252,15 @@ products:
   - opensuse-tumbleweed-image:lxc:
     - i586
     - x86_64
-  - openSUSE-Tumbleweed-JeOS:MS-HyperV:
+  - kiwi-templates-JeOS:MS-HyperV:
     - x86_64
-  - openSUSE-Tumbleweed-JeOS:OpenStack-Cloud:
+  - kiwi-templates-JeOS:OpenStack-Cloud:
     - x86_64
-  - openSUSE-Tumbleweed-JeOS:VMware:
+  - kiwi-templates-JeOS:VMware:
     - x86_64
-  - openSUSE-Tumbleweed-JeOS:XEN:
+  - kiwi-templates-JeOS:XEN:
     - x86_64
-  - openSUSE-Tumbleweed-JeOS:kvm-and-xen:
+  - kiwi-templates-JeOS:kvm-and-xen:
     - x86_64
   - openSUSE-Tumbleweed-Vagrant:libvirt:
     - x86_64
