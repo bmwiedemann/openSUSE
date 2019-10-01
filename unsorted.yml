@@ -1143,6 +1143,10 @@ unsorted:
   - bosh 
   - bouncycastle 
   - bouncycastle-javadoc 
+  - bouncycastle-mail 
+  - bouncycastle-pg 
+  - bouncycastle-pkix 
+  - bouncycastle-tls 
   - bpftool 
   - bpm-tools 
   - bpython 
@@ -5561,9 +5565,11 @@ unsorted:
   - jack-rack 
   - jackEQ 
   - jack_capture 
+  - jackson 
   - jackson-annotations 
   - jackson-annotations-javadoc 
   - jackson-bom 
+  - jackson-javadoc 
   - jackson-parent 
   - jacktrip 
   - jaero 
@@ -5904,6 +5910,7 @@ unsorted:
   - jython-manual 
   - jzlib 
   - jzlib-demo 
+  - jzlib-javadoc 
   - k3b-devel 
   - k3s 
   - k3s-hyperkube 
@@ -6305,8 +6312,6 @@ unsorted:
   - kmymoney 
   - kmymoney-devel 
   - kmymoney-lang 
-  - knemo 
-  - knemo-lang 
   - knewstuff-core-devel 
   - knewstuff-devel 
   - knewstuff-devel-32bit: [x86_64] 
@@ -8278,6 +8283,7 @@ unsorted:
   - libdlm-devel 
   - libdmapsharing-3_0-2-32bit: [x86_64] 
   - libdmapsharing-devel 
+  - libdmapsharing3-devel 
   - libdmmp-devel 
   - libdmmp0_2_0 
   - libdmr0_1 
@@ -8532,6 +8538,7 @@ unsorted:
   - libffado2-32bit: [x86_64] 
   - libffcall0 
   - libffi-devel 
+  - libffi-devel-32bit: [x86_64] 
   - libffmpegthumbnailer-devel 
   - libffmpegthumbnailer4 
   - libffms2-4 
@@ -10099,7 +10106,7 @@ unsorted:
   - libntirpc-devel: [x86_64] 
   - libntirpc1_7: [x86_64] 
   - libntk1 
-  - libntl39 
+  - libntl42 
   - libntlm-devel 
   - libnuma-devel 
   - libnuma1-32bit: [x86_64] 
@@ -14858,8 +14865,6 @@ unsorted:
   - openstack-macros 
   - openstack-suse-macros 
   - openstack-suse-sudo 
-  - openstack-tempest 
-  - openstack-tempest-doc 
   - openstack-utils 
   - opentest4j 
   - opentest4j-javadoc 
@@ -17307,7 +17312,6 @@ unsorted:
   - python-watcherclient 
   - python-watcherclient-doc 
   - python-weakrefmethod 
-  - python-web.py 
   - python-wxWidgets-3_0-devel 
   - python-xapian 
   - python-xmms2 
@@ -18854,6 +18858,7 @@ unsorted:
   - python2-pyface 
   - python2-pyfakefs 
   - python2-pyfeyn 
+  - python2-pyfg 
   - python2-pyfiglet 
   - python2-pyflakes 
   - python2-pyftpdlib 
@@ -19162,7 +19167,6 @@ unsorted:
   - python2-rpmfile 
   - python2-rpyc 
   - python2-rq 
-  - python2-rrdtool 
   - python2-rsa 
   - python2-rst.linker 
   - python2-rstcheck 
@@ -19482,6 +19486,7 @@ unsorted:
   - python2-watermark 
   - python2-wcwidth 
   - python2-weave 
+  - python2-web.py 
   - python2-webassets 
   - python2-webcolors 
   - python2-webencodings 
@@ -20663,8 +20668,6 @@ unsorted:
   - python3-invoke 
   - python3-iocapture 
   - python3-ioflo 
-  - python3-ipa 
-  - python3-ipa-tests 
   - python3-ipa_hbac 
   - python3-ipdb 
   - python3-iptables 
@@ -21171,6 +21174,7 @@ unsorted:
   - python3-pmw 
   - python3-pocketsphinx-python 
   - python3-podcastparser 
+  - python3-podman-compose 
   - python3-polib 
   - python3-policycoreutils: [i586] 
   - python3-pony 
@@ -21273,6 +21277,7 @@ unsorted:
   - python3-pyface 
   - python3-pyfakefs 
   - python3-pyfeyn 
+  - python3-pyfg 
   - python3-pyfiglet 
   - python3-pyflakes 
   - python3-pyftpdlib 
@@ -21596,6 +21601,7 @@ unsorted:
   - python3-retry 
   - python3-retry_decorator 
   - python3-retrying 
+  - python3-rfc3986 
   - python3-rfc3987 
   - python3-rjsmin 
   - python3-rnginline 
@@ -21958,6 +21964,7 @@ unsorted:
   - python3-watchdog-doc 
   - python3-watermark 
   - python3-wcwidth 
+  - python3-web.py 
   - python3-web_cache 
   - python3-webassets 
   - python3-webcolors 
