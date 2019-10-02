@@ -1071,7 +1071,7 @@ Target: armv7hl-suse-linux
 %endif
 
 %ifnarch ppc64
-Optflags: * -O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -Werror=return-type %{_lto_cflags}
+Optflags: * -O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -Werror=return-type %{?_lto_cflags}
 %else
 Optflags: * -O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -Werror=return-type
 %endif
@@ -1086,7 +1086,7 @@ Macros:
 %is_opensuse 1
 %skelcd_compat 0
 
-%build_ldflags %{_lto_cflags}
+%build_ldflags %{?_lto_cflags}
 
 %insserv_prereq insserv sed
 %fillup_prereq fillup coreutils grep diffutils
