@@ -46,6 +46,7 @@ BuildArch:      noarch
 %if 0%{?suse_version} >= 1500
 BuildRequires:  python2
 BuildRequires:  python2-gobject
+Requires:       python2-bsddb3
 Requires:       python2-cairo
 Requires:       python2-dbus-python
 Requires:       python2-feedparser

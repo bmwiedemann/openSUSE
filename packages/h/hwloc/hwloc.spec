@@ -1,7 +1,7 @@
 #
 # spec file for package hwloc
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%global lname libhwloc5
-%if ! 0%{?is_opensuse}
-%define version_prefix 2.0.0.
-%endif
-%define mainversion 1.11.8
+%global lname libhwloc15
 Name:           hwloc
-Version:        %{?version_prefix}%{?mainversion}
+Version:        2.0.4
 Release:        0
 Summary:        Portable Hardware Locality
 License:        BSD-3-Clause
 Group:          Productivity/Clustering/Computing
 Url:            http://www.open-mpi.org/projects/hwloc/
-#Source0:        %{name}-%{version}.tar.xz
-Source0:        https://github.com/open-mpi/hwloc/archive/%{name}-%{mainversion}.tar.gz
+Source0:        https://download.open-mpi.org/release/hwloc/v2.0/%{name}-%{version}.tar.bz2
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
@@ -109,7 +104,7 @@ BuildArch:      noarch
 This package contains the documentation for hwloc.
 
 %prep
-%setup -q -n %{name}-%{name}-%{mainversion}
+%setup -q -n %{name}-%{version}
 
 %build
 autoreconf -fvi
@@ -181,10 +176,13 @@ make %{?_smp_mflags} check || :
 %defattr(-, root, root, -)
 %dir %{_datadir}/hwloc
 %{_datadir}/hwloc/hwloc.dtd
+%{_datadir}/hwloc/hwloc2-diff.dtd
+%{_datadir}/hwloc/hwloc2.dtd
 %{_datadir}/hwloc/hwloc-valgrind.supp
 
 %files doc
 %defattr(-, root, root, -)
-%doc ./doc/images/*.pdf
+%doc ./doc/doxygen-doc/html/*
+%{_mandir}/man3/*
 
 %changelog

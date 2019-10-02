@@ -30,11 +30,9 @@ Patch0:         libkcapi-use-external-fipshmac.patch
 Patch1:         reproduciblesort.patch
 # PATCH-FIX-UPSTREAM https://github.com/smuellerDD/libkcapi/pull/12
 Patch2:         reproducibledate.patch
-BuildRequires:  docbook-utils
 BuildRequires:  fipscheck
 BuildRequires:  openssl
 BuildRequires:  xmlto
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 libkcapi exports APIs so that developers need not consider the low-level
@@ -117,18 +115,16 @@ make install DESTDIR=%{buildroot} %{?_smp_mflags} BINDIR=/usr/%_lib/libkcapi/
 %postun -n libkcapi0 -p /sbin/ldconfig
 
 %files -n libkcapi0
-%defattr(-,root,root)
-%doc CHANGES COPYING
+%license COPYING
+%doc CHANGES
 %{_libdir}/libkcapi.so.0.13.*
 %{_libdir}/libkcapi.so.0
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/kcapi.h
 %{_mandir}/man3/*
 
 %files tools
-%defattr(-,root,root)
 %dir %{_libdir}/libkcapi
 %{_libdir}/libkcapi/*
 %{_libdir}/libkcapi/.*hmac

@@ -894,4 +894,12 @@
     <comment>Update to Xfce 4.14</comment>
     <requestid>724107</requestid>
   </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>453200466514d5aaea7dfd648f48bcd1</srcmd5>
+    <version>4.14+20190815</version>
+    <time>1570010430</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>734399</requestid>
+  </revision>
 </revisionlist>

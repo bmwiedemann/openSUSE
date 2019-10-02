@@ -1,0 +1,43 @@
+From c03573710bfbc504f4480f3e08ece77df5d4aece Mon Sep 17 00:00:00 2001
+From: "Boris I. Bendovsky" <bibendovsky@hotmail.com>
+Date: Sat, 27 Jul 2019 17:24:58 +0300
+Subject: [PATCH] Fix SDL2W
+
+---
+ src/cmake/FindSDL2W.cmake | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/cmake/FindSDL2W.cmake b/src/cmake/FindSDL2W.cmake
+index bb6530b7..f3d70c13 100644
+--- a/src/cmake/FindSDL2W.cmake
++++ b/src/cmake/FindSDL2W.cmake
+@@ -164,17 +164,17 @@ if (SDL2_FOUND OR SDL2W_TMP_FOUND_VC_DEV)
+ 		if (EXISTS ${SDL2W_TMP_SDL_VERSION_H})
+ 			set(
+ 				SDL2W_TMP_MAJOR_REGEX
+-				"^#define[ \t]+SDL_MAJOR_VERSION[ \t]+([0-9])$"
++				"^#define[ \t]+SDL_MAJOR_VERSION[ \t]+([0-9]+)$"
+ 			)
+ 
+ 			set(
+ 				SDL2W_TMP_MINOR_REGEX
+-				"^#define[ \t]+SDL_MINOR_VERSION[ \t]+([0-9])$"
++				"^#define[ \t]+SDL_MINOR_VERSION[ \t]+([0-9]+)$"
+ 			)
+ 
+ 			set(
+ 				SDL2W_TMP_PATCH_REGEX
+-				"^#define[ \t]+SDL_PATCHLEVEL[ \t]+([0-9])$"
++				"^#define[ \t]+SDL_PATCHLEVEL[ \t]+([0-9]+)$"
+ 			)
+ 
+ 			file(
+@@ -224,7 +224,7 @@ if (SDL2_FOUND OR SDL2W_TMP_FOUND_VC_DEV)
+ 
+ 			set(
+ 				SDL2W_TMP_DIGIT_REGEX
+-				"^[0-9]$"
++				"^[0-9]+$"
+ 			)
+ 
+ 			if (SDL2W_TMP_MAJOR_VERSION MATCHES ${SDL2W_TMP_DIGIT_REGEX} AND

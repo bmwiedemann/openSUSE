@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Sep 18 10:16:05 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to v1.6.0
+  - Features:
+    - Modular architecture for UCT transports
+    - ROCm transport re-design: support for managed memory, direct copy, ROCm GDR
+    - Random scheduling policy for DC transport
+    - Optimized out-of-box settings for multi-rail
+    - Added support for OmniPath (using Verbs)
+    - Support for PCI atomics with IB transports
+    - Reduced UCP address size for homogeneous environments
+  - Bugfixes:
+    - Multiple stability and performance improvements in TCP transport
+    - Multiple stability fixed in Verbs and MLX5 transports
+    - Multiple stability fixes in UCM memory hooks
+    - Multiple stability fixes in UGNI transport
+    - RPM Spec file cleanup
+    - Fixing compilation issues with most recent clang and gcc compilers
+    - Fixing the wrong name of aliases
+    - Fix data race in UCP wireup
+    - Fix segfault when libuct.so is reloaded - issue #3558
+    - Include Java sources in distribution
+    - Handle EADDRNOTAVAIL in rdma_cm connection manager
+    - Disable ibcm on RHEL7+ by default
+    - Fix data race in UCP proxy endpoint
+    - Static checker fixes
+    - Fallback to ibv_create_cq() if ibv_create_cq_ex() returns ENOSYS
+    - Fix malloc hooks test
+    - Fix checking return status in ucp_client_server example
+    - Fix gdrcopy libdir config value
+    - Fix printing atomic capabilities in ucx_info
+    - Fix perftest warmup iterations to be non-zero
+    - Fixing default values for configure logic
+    - Fix race condition updating fired_events from multiple threads
+    - Fix madvise() hook
+- Refresh openucx-s390x-support.patch against new version
+
+-------------------------------------------------------------------
 Wed May 15 05:52:55 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Disable Werror to handle boo#1121267

@@ -591,4 +591,12 @@ fixed baselibs.conf compared to previous version</comment>
     <comment></comment>
     <requestid>729758</requestid>
   </revision>
+  <revision rev="60" vrev="3">
+    <srcmd5>b35fce9ed0b50b1bf52559f8f37f7cb9</srcmd5>
+    <version>1.10.5</version>
+    <time>1570010250</time>
+    <user>dimstar_suse</user>
+    <comment>Add Jira feature ID</comment>
+    <requestid>734021</requestid>
+  </revision>
 </revisionlist>

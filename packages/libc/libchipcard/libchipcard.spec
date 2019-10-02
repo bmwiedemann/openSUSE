@@ -116,8 +116,8 @@ rm -rf %{buildroot}
 # Own dirs to fix build.
 %dir %{_libdir}/gwenhywfar/
 %dir %{_libdir}/gwenhywfar/plugins/
-%dir %{_libdir}/gwenhywfar/plugins/60
-%{_libdir}/gwenhywfar/plugins/60/ct
+%dir %{_libdir}/gwenhywfar/plugins/*
+%{_libdir}/gwenhywfar/plugins/*/ct
 %config %{_sysconfdir}/chipcard
 
 %files -n libchipcard6

@@ -188,13 +188,14 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %if %{with java}
 pushd java
-install -D -m 0644 %{name}-java-%{version}.jar %{buildroot}%{_javadir}/%{name}-java-%{version}.jar
-ln -s %{name}-java-%{version}.jar %{buildroot}%{_javadir}/%{name}-java.jar
-ln -s %{name}-java-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
-install -D -m 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}-parent-%{version}.pom
-%add_maven_depmap %{name}-parent-%{version}.pom
-install -D -m 0644 core/pom.xml %{buildroot}%{_mavenpomdir}/%{name}-java-%{version}.pom
-%add_maven_depmap %{name}-java-%{version}.pom %{name}-java-%{version}.jar
+install -D -m 0644 %{name}-java-%{version}.jar %{buildroot}%{_javadir}/%{name}-java.jar
+ln -s %{name}-java.jar %{buildroot}%{_javadir}/%{name}.jar
+install -D -m 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}-parent.pom
+%add_maven_depmap %{name}-parent.pom
+install -D -m 0644 bom/pom.xml %{buildroot}%{_mavenpomdir}/%{name}-bom.pom
+%add_maven_depmap %{name}-bom.pom
+install -D -m 0644 core/pom.xml %{buildroot}%{_mavenpomdir}/%{name}-java.pom
+%add_maven_depmap %{name}-java.pom %{name}-java.jar
 popd
 %endif
 
@@ -252,14 +253,8 @@ find %{buildroot}%{src_install_dir} -type f -name ".gitignore" -exec rm -f "{}" 
 %{src_install_dir}
 
 %if %{with java}
-%files -n %{name}-java
-%{_javadir}/protobuf*
-%{_mavenpomdir}/protobuf*
-%if %{defined _maven_repository}
-%{_mavendepmapfragdir}/%{name}
-%else
-%{_datadir}/maven-metadata/%{name}.xml*
-%endif
+%files -n %{name}-java -f java/.mfiles
+%{_javadir}/%{name}.jar
 %endif
 
 %if %{with python2}

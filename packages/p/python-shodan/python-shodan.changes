@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct  1 15:47:16 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.19.0
+  * Ability to specify list of fields to include when converting to CSV/ Excel
+  * Filter the Shodan Firehose based on tags in the banner
+  * Fix bug that caused unicode error when printing domain information
+  * Add flag to let users get their IPv6 address shodan myip -6
+  * Add library methods for the new Notifications API
+  * New method to edit the list of IPs for an existing network alert
+
+-------------------------------------------------------------------
 Tue Sep 10 10:22:55 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.15.0:

@@ -17,7 +17,7 @@
 
 
 Name:           webcamoid
-Version:        8.6.1
+Version:        8.7.0
 Release:        0
 Summary:        Webcam applet for Plasma
 License:        GPL-3.0-or-later

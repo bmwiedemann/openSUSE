@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct  1 07:53:33 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.8.5
+  * Crop: change behavior to match older versions
+  * VideoControls: fix overlapping with panel
+  * FolderView: scrollbar is now easier to hit while in fullscreen
+  * Fix opening videos without correct mime type
+
+-------------------------------------------------------------------
 Sun Sep 22 04:49:34 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.8.4

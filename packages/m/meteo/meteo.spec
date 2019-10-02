@@ -17,7 +17,7 @@
 
 
 Name:           meteo
-Version:        0.9.7
+Version:        0.9.8
 Release:        0
 Summary:        Program to show the weather forecast of the next hours and days
 License:        GPL-3.0-or-later
@@ -83,6 +83,7 @@ popd
 %{_datadir}/glib-2.0/schemas/com.gitlab.bitseater.meteo.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/com.gitlab.bitseater.meteo.??g
 %{_datadir}/metainfo/com.gitlab.bitseater.meteo.appdata.xml
+%{_mandir}/man?/com.gitlab.bitseater.meteo.?%{ext_info}
 
 %files lang -f %{name}.lang
 

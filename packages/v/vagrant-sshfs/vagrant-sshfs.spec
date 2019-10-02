@@ -11,15 +11,19 @@
 # case the license is the MIT License). An "Open Source License" is a
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
-#
+
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
 
 %global vagrant_plugin_name vagrant-sshfs
 
 %global rb_build_versions %rb_default_ruby
 %global rb_build_abi %rb_default_build_abi
 
-Name:           %{vagrant_plugin_name}
+# don't substitute the name for %%vagrant_plugin_name, obs-service-format_spec
+# otherwise messes up the spec's header
+Name:           vagrant-sshfs
 Version:        1.3.1
 Release:        0
 %define mod_name %{vagrant_plugin_name}
@@ -40,7 +44,7 @@ BuildRequires:  %{rubygem builder:3.2 }
 BuildRequires:  %{rubygem ffi:1.11 }
 
 Summary:        SSHFS synced folder implementation for Vagrant
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Development/Languages/Ruby
 URL:            https://github.com/dustymabe/%{name}
 Source0:        %{URL}/releases/download/v%{version}/%{mod_full_name}.gem
@@ -75,8 +79,8 @@ Summary:        Testsuite for %{name}
 Group:          Development/Languages/Ruby
 BuildArch:      noarch
 
-Requires:       vagrant-sshfs = %{version}-%{release}
 Requires:       vagrant-libvirt
+Requires:       vagrant-sshfs = %{version}-%{release}
 
 %description    -n %{name}-testsuite
 This package contains the testsuite for the SSHFS provider for Vagrant. You most

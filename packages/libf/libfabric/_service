@@ -8,7 +8,7 @@
     <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@.%h</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
-    <param name="revision">0d4dd235dbc466c7545e2b7b8856432b8a3b91a7</param>
+    <param name="revision">ec571b35a216ff380d7c2496df30714c92fe70aa</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">libfabric*.tar</param>

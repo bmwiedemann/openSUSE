@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 26 11:16:46 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to mpich 3.3.1 (jsc#SLE-8574)
+  - See CHANGES for a list of changes
+- Drop 0001-Drop-GCC-check.patch as it was picked upstream
+- Add 0001-Drop-real128.patch to fix a compilation error on armv7
+
+-------------------------------------------------------------------
+Thu Sep 26 09:39:46 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Fix LTO support in archive file
+
+-------------------------------------------------------------------
 Fri May  3 09:40:25 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to mpich 3.3

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep  6 08:10:21 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to mvapich2 2.3.2 (jsc#SLE-8544)
+  - See CHANGELOG for fixes and new features
+- Drop mvapich2-make-sure-ibv_get_device_list-returned-one-before-freeing-it.patch
+  as it was fixed upstream.
+- Use FAT LTO objects in order to provide proper static library.
+- Add 0001-Drop-real128.patch to fix compilation on armv7
+
+-------------------------------------------------------------------
 Fri Aug  2 08:56:21 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Add mvapich2-make-sure-ibv_get_device_list-returned-one-before-freeing-it.patch

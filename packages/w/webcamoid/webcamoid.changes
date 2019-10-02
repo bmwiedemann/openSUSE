@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct  1 11:20:42 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 8.7.0
+  * Removed unnecessary Bin and Probe plugins.
+  * Added audio latency control.
+  * Removed OSS and QtAudio submodules.
+  * Fixed a bug that happened when changing the format, resolution
+    or FPS of the camera (commit 41448aa).
+  * Improved error messages for the virtual camera (issue #187).
+  * Fixed segfaults.
+
+-------------------------------------------------------------------
 Tue Mar 26 08:17:44 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 8.6.1

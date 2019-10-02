@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 27 16:40:49 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove docbook-utils BuildRequires, xmlto is sufficient
+- Spec file cleanup, use license macro, drop defattr, drop BuildRoot
+
+-------------------------------------------------------------------
 Wed Jul 12 14:51:26 UTC 2017 - meissner@suse.com
 
 - Change the signing to use openssl sha256/sha512 directly, to

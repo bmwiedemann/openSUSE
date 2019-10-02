@@ -25,4 +25,13 @@ Add reproducibledate.patch to not add current time to man-pages to fix build-com
   avoid fipscheck / hmaccalc.</comment>
     <requestid>509804</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>57969ee5704b3b039888999d96004809</srcmd5>
+    <version>0.13.0</version>
+    <time>1570010195</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove docbook-utils BuildRequires, xmlto is sufficient
+- Spec file cleanup, use license macro, drop defattr, drop BuildRoot (forwarded request 733711 from StefanBruens)</comment>
+    <requestid>733712</requestid>
+  </revision>
 </revisionlist>

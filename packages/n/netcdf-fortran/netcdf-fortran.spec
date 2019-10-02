@@ -21,8 +21,8 @@
 %define _do_check 1
 
 %global pname netcdf-fortran
-%global ver 4.4.5
-%global _ver 4_4_5
+%global ver 4.5.2
+%global _ver 4_5_2
 
 %if 0%{?is_opensuse} || 0%{?is_backports}
 %undefine DisOMPI3
@@ -120,16 +120,15 @@ License:        NetCDF
 Group:          Productivity/Scientific/Other
 Version:        %ver
 Release:        0
-%define sonum   6
+%define sonum   7
 URL:            https://www.unidata.ucar.edu/software/netcdf/
 Source:         https://github.com/Unidata/netcdf-fortran/archive/v%{version}.tar.gz#/%{pname}-%{version}.tar.gz
-Patch0:         netcdf4-Return-status-for-non-void-function-always.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
 BuildRequires:  %{compiler_family}-compilers-hpc
 BuildRequires:  gawk
 BuildRequires:  libcurl-devel >= 7.18.0
 BuildRequires:  lua-lmod
+BuildRequires:  m4
 BuildRequires:  pkg-config
 BuildRequires:  suse-hpc
 BuildRequires:  zlib-devel >= 1.2.5
@@ -233,7 +232,6 @@ This package contains the static libraries for
 
 %prep
 %setup -q -n %{pname}-%{version}
-%patch0 -p1
 
 # Fix spurious-executable-perm RPMLINT warning
 chmod a-x RELEASE_NOTES.md
@@ -355,18 +353,15 @@ export F77="mpif77"
 %hpc_module_delete_if_default
 
 %files
-%defattr(-,root,root,-)
 %doc COPYRIGHT README.md RELEASE_NOTES.md
 %{hpc_bindir}/
 
 %files -n %{libname}%{hpc_package_name_tail %_ver}
-%defattr(-,root,root,-)
 %{hpc_dirs}
 %{hpc_modules_files}
 %{hpc_libdir}/libnetcdff.so.*
 
 %files devel
-%defattr(-,root,root,-)
 %{hpc_includedir}/
 %dir %{hpc_pkgconfigdir}
 %{hpc_libdir}/pkgconfig/netcdf-fortran.pc
@@ -376,7 +371,6 @@ export F77="mpif77"
 %{hpc_mandir}/man3/
 
 %files devel-static
-%defattr(-,root,root,-)
 %{hpc_libdir}/libnetcdff.a
 
 %changelog

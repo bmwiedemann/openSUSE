@@ -127,4 +127,12 @@
     <comment></comment>
     <requestid>727689</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2a4d2b5ceba18af684baf3fe6697809d</srcmd5>
+    <version>12.14.1</version>
+    <time>1570010285</time>
+    <user>dimstar_suse</user>
+    <comment>Add Jira feature ID</comment>
+    <requestid>734096</requestid>
+  </revision>
 </revisionlist>

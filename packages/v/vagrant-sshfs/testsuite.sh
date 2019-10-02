@@ -4,12 +4,12 @@ set -euo pipefail
 
 function cleanup {
     pushd "${OTHER_MACHINE_DIR}"
-    vagrant destroy -f
+    vagrant destroy -f || true
     popd
 
     fusermount -uz /tmp/reverse_mount_etc || true
 
-    vagrant destroy -f
+    vagrant destroy -f || true
 
     rmdir /tmp/reverse_mount_etc
     rm -rf .vagrant "${OTHER_MACHINE_DIR}"

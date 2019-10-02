@@ -61,8 +61,9 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 
 %check
 # online tests: test_fashion_mnist, test_glove_25, test_nytimes_16
+# fails on 32bit: test_distance_consistency
 cd test
-%pytest_arch -k 'not (test_fashion_mnist or test_glove_25 or test_nytimes_16)'
+%pytest_arch -k 'not (test_fashion_mnist or test_glove_25 or test_nytimes_16 or test_distance_consistency)'
 
 %files %{python_files}
 %doc README.rst

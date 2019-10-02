@@ -19,8 +19,8 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define pname mvapich2
-%define vers  2.3.1
-%define _vers 2_3_1
+%define vers  2.3.2
+%define _vers 2_3_2
 
 %if "%{flavor}" == ""
 ExclusiveArch:  do_not_build
@@ -168,7 +168,8 @@ Patch2:         mvapich2-arm-support.patch
 # It's been merged upstream, should be removed with the next release
 Patch3:         0001-Drop-GCC-check.patch
 Patch4:         reproducible.patch
-Patch5:         mvapich2-make-sure-ibv_get_device_list-returned-one-before-freeing-it.patch
+# PATCH-FIX-UPSTREAM 0001-Drop-real128.patch (https://github.com/pmodels/mpich/issues/4005)
+Patch5:         0001-Drop-real128.patch
 Url:            http://mvapich.cse.ohio-state.edu/overview/mvapich2/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -300,10 +301,14 @@ is based on MPICH2 and MVICH. This package contains the static libraries
 %patch2
 %patch3
 %patch4 -p1
-%patch5
+# Only apply this patch on Armv7
+%ifarch armv7hl
+%patch5 -p1
+%endif
 cp /usr/share/automake*/config.* .
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 PERL_USE_UNSAFE_INC=1 ./autogen.sh
 %if %{with hpc}
 %{hpc_setup}

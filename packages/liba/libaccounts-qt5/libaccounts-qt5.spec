@@ -1,7 +1,7 @@
 #
 # spec file for package libaccounts-qt5
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define _soname 1
 %define _tarbasename libaccounts-qt
-%define _version VERSION_1.15-5b272ae218ccdf1f67f4eed92e2cdbe21c56ceb8
+%define _version VERSION_1.16-525ec684cfa8d234f797d7e49e21c476eea04d8e
 Name:           libaccounts-qt5
-Version:        1.15
+Version:        1.16
 Release:        0
 Summary:        Qt library for Single Sign On
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          System/Libraries
-Url:            https://gitlab.com/accounts-sso/libaccounts-qt
+URL:            https://gitlab.com/accounts-sso/libaccounts-qt
 Source:         https://gitlab.com/accounts-sso/%{_tarbasename}/repository/VERSION_%{version}/archive.tar.bz2#/%{_tarbasename}-%{_version}.tar.bz2
 Source99:       baselibs.conf
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  graphviz
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Xml)
@@ -89,16 +90,14 @@ rm %{buildroot}%{_bindir}/accountstest
 %fdupes %{buildroot}%{_docdir}/
 
 %post -n libaccounts-qt5-%{_soname} -p /sbin/ldconfig
-
 %postun -n libaccounts-qt5-%{_soname} -p /sbin/ldconfig
 
 %files -n libaccounts-qt5-%{_soname}
-%defattr(-,root,root)
-%doc COPYING README.md
+%license COPYING
+%doc README.md
 %{_libdir}/libaccounts-qt5.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/accounts-qt5/
 %{_libdir}/libaccounts-qt5.so
 %{_libdir}/pkgconfig/accounts-qt5.pc
@@ -106,7 +105,6 @@ rm %{buildroot}%{_bindir}/accountstest
 %{_libdir}/cmake/AccountsQt5/
 
 %files doc
-%defattr(-,root,root)
 %doc %{_docdir}/accounts-qt/
 
 %changelog

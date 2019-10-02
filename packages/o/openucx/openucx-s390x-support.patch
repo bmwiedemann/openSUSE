@@ -1,4 +1,4 @@
-commit 621654abd1ca34a407d8033991659c45d42c3a4e
+commit 7efd75794d17351fbcfdd2759fc9abf22af0d631
 Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 Date:   Thu Aug 9 07:41:24 2018 +0200
 
@@ -7,35 +7,36 @@ Date:   Thu Aug 9 07:41:24 2018 +0200
     Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 diff --git config/m4/ucm.m4 config/m4/ucm.m4
-index 541bdb1322ce..4f89f6e02860 100644
+index 9c7c820d9fff..8297fc7e6ec2 100644
 --- config/m4/ucm.m4
 +++ config/m4/ucm.m4
-@@ -86,9 +86,19 @@ AC_CHECK_DECLS([SYS_ipc],
+@@ -86,9 +86,20 @@ AC_CHECK_DECLS([SYS_ipc],
                 [ipc_hooks_happy=no],
                 [#include <sys/syscall.h>])
  
++
 +SAVE_CFLAGS=$CFLAGS
 +CFLAGS="$CLAGS -Isrc/"
 +bistro_arch_happy=yes
 +AC_CHECK_DECLS([ucm_bistro_patch],
 +               [],
-+               [ipc_hooks_happy=no],
++               [bistro_arch_happy=no],
 +               [#include <ucm/bistro/bistro.h>])
 +CFLAGS=$SAVE_CFLAGS
 +
- AS_IF([test "x$mmap_hooks_happy" == "xyes"],
-       AS_IF([test "x$ipc_hooks_happy" == "xyes" -o "x$shm_hooks_happy" == "xyes"],
+ AS_IF([test "x$mmap_hooks_happy" = "xyes"],
+       AS_IF([test "x$ipc_hooks_happy" = "xyes" -o "x$shm_hooks_happy" = "xyes"],
 -            [bistro_hooks_happy=yes]))
-+	    AS_IF([test "x$bistro_arch_happy" == "xyes"],
-+      	    [bistro_hooks_happy=yes])))
++	       AS_IF([test "x$bistro_arch_happy" == "xyes"],
++                [bistro_hooks_happy=yes])))
  
- AS_IF([test "x$bistro_hooks_happy" == "xyes"],
+ AS_IF([test "x$bistro_hooks_happy" = "xyes"],
        [AC_DEFINE([UCM_BISTRO_HOOKS], [1], [Enable BISTRO hooks])],
 diff --git src/ucm/Makefile.am src/ucm/Makefile.am
-index 74090c4f2440..e466c13395b7 100644
+index e53a30a46916..21bce848045d 100644
 --- src/ucm/Makefile.am
 +++ src/ucm/Makefile.am
-@@ -40,7 +40,8 @@ noinst_HEADERS = \
+@@ -30,7 +30,8 @@ noinst_HEADERS = \
  	bistro/bistro.h \
  	bistro/bistro_x86_64.h \
  	bistro/bistro_aarch64.h \
@@ -43,8 +44,8 @@ index 74090c4f2440..e466c13395b7 100644
 +	bistro/bistro_ppc64.h \
 +	bistro/bistro_s390x.h
  
- if HAVE_CUDA
- noinst_HEADERS += \
+ libucm_la_SOURCES = \
+ 	event/event.c \
 diff --git src/ucm/bistro/bistro.h src/ucm/bistro/bistro.h
 index 16e988700c35..b4c2762fb5b2 100644
 --- src/ucm/bistro/bistro.h
@@ -78,10 +79,10 @@ index 000000000000..334c0474e8b6
 +
 +#endif
 diff --git src/ucm/mmap/install.c src/ucm/mmap/install.c
-index ebf22aaa0415..80ed26838837 100644
+index c58afb37e029..a9cfd5865278 100644
 --- src/ucm/mmap/install.c
 +++ src/ucm/mmap/install.c
-@@ -173,7 +173,11 @@ static ucs_status_t ucs_mmap_install_reloc(int events)
+@@ -254,7 +254,11 @@ static ucs_status_t ucs_mmap_install_reloc(int events)
                  status = ucm_reloc_modify(&entry->patch);
              } else {
                  ucs_assert(ucm_mmap_hook_mode() == UCM_MMAP_HOOK_BISTRO);
@@ -94,10 +95,10 @@ index ebf22aaa0415..80ed26838837 100644
              if (status != UCS_OK) {
                  ucm_warn("failed to install %s hook for '%s'",
 diff --git src/ucs/Makefile.am src/ucs/Makefile.am
-index f82540e775a4..592d89c51109 100644
+index 7e8153a4fd07..d41842711a5e 100644
 --- src/ucs/Makefile.am
 +++ src/ucs/Makefile.am
-@@ -57,6 +57,8 @@ noinst_HEADERS = \
+@@ -56,6 +56,8 @@ noinst_HEADERS = \
  	arch/generic/cpu.h \
  	arch/ppc64/bitops.h \
  	arch/ppc64/cpu.h \
@@ -120,7 +121,7 @@ index 0caea9b1f3ba..d9afa780bbc5 100644
  #  error "Unsupported architecture"
  #endif
 diff --git src/ucs/arch/bitops.h src/ucs/arch/bitops.h
-index 2049b7c71c8a..a4eceeea52e7 100644
+index af7bb93392d4..6639045ae0b6 100644
 --- src/ucs/arch/bitops.h
 +++ src/ucs/arch/bitops.h
 @@ -14,6 +14,8 @@

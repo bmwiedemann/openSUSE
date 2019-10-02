@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct  1 07:43:23 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.73
+  * In bracketed paste mode, the terminal escape sequences that
+    should delimit the pasted data were appearing together on one
+    side of it, making it possible to misidentify pasted data as
+    manual keyboard input. [CVE-2019-17068, boo#1152753]
+  * An SSH-1 server sending a disconnection message could cause
+    an access to freed memory. [CVE-2019-17069]
+  * Tweaked terminal handling to prevent lost characters at the
+    ends of lines in gcc's colored error messages.
+  * Removed a bad interaction between the "clear scrollback"
+    operation and mouse selection that could give rise to the
+    dreaded "line==NULL" assertion box.
+
+-------------------------------------------------------------------
 Mon Aug 12 15:24:18 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 0.72 [boo#1144547, boo#1144548]

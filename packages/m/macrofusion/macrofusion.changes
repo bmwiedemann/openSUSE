@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 21 10:34:00 UTC 2019 - martin@winter-rosenheim.de
+
+- Add frombytes.patch to use Image.frombytes instead of Image.fromstring
+  see https://sourceforge.net/p/macrofusion/discussion/Bugs/thread/61e2d731/#1092
+
+-------------------------------------------------------------------
 Tue Apr 24 14:50:56 UTC 2018 - aloisio@gmx.com
 
 - Added missing runtime requirement

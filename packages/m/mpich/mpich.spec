@@ -24,8 +24,8 @@
 # % define build_static_devel 1
 
 %define pname mpich
-%define vers  3.3
-%define _vers 3_3
+%define vers  3.3.1
+%define _vers 3_3_1
 
 %if "%{flavor}" == ""
 ExclusiveArch:  do_not_build
@@ -155,9 +155,8 @@ Source1:        mpivars.sh
 Source2:        mpivars.csh
 Source3:        macros.hpc-mpich
 Source100:      _multibuild
-# PATCH-FIX-UPSTREAM 0001-Drop-GCC-check.patch (bnc#1129421)
-# It's been merged upstream, should be removed with the next release
-Patch0:         0001-Drop-GCC-check.patch
+# PATCH-FIX-UPSTREAM 0001-Drop-real128.patch (https://github.com/pmodels/mpich/issues/4005)
+Patch0:         0001-Drop-real128.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  fdupes
@@ -283,9 +282,13 @@ echo with HPC
 echo without HPC
 %endif
 %setup -q -n mpich-%{version}%{?rc_ver}
-%patch0
+# Only apply this patch on Armv7
+%ifarch armv7hl
+%patch0 -p1
+%endif
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 ./autogen.sh
 %{?with_hpc:%hpc_debug}
 %if %{with hpc}

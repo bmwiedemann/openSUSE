@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 18 08:32:55 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix the download URL
+
+-------------------------------------------------------------------
+Tue Sep 10 20:41:25 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use -ffat-lto-objects when building static libraries.
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Thu Mar 26 22:45:17 UTC 2015 - p.drouand@gmail.com
 
 - Update to version 3.0.7

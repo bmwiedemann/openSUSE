@@ -1,0 +1,78 @@
+#
+# spec file for package libconfini
+#
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
+Name:           libconfini
+Version:        1.10.1
+Release:        0
+Summary:        INI file parser libarary
+License:        GPL-3.0-or-later
+Group:          Development/Libraries/C and C++
+URL:            https://madmurphy.github.io/libconfini
+Source:         https://github.com/madmurphy/libconfini/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
+BuildRequires:  pkgconfig
+
+%description
+libconfini is a INI file parser library written in C.
+
+%package -n %{name}0
+Summary:        INI file parser library
+Group:          System/Libraries
+
+%description -n %{name}0
+libconfini is a INI file parser library written in C.
+
+%package devel
+Summary:        INI file parser library - development files
+Group:          Development/Libraries/C and C++
+Requires:       %{name}0 = %{version}
+
+%description devel
+libconfini is a INI file parser library written in C.
+This package contains files required for development.
+
+%prep
+%setup -q
+
+%build
+./autogen.sh
+%configure --disable-static --docdir=%{_docdir}/%{name}
+make %{?_smp_mflags}
+
+%install
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
+
+%post -n %{name}0 -p /sbin/ldconfig
+%postun -n %{name}0 -p /sbin/ldconfig
+
+%files -n %{name}0
+%license COPYING
+%{_libdir}/libconfini.so.*
+
+%files devel
+%license COPYING
+%doc %{_docdir}/%{name}
+%{_mandir}/man3/*.3%{?ext_man}
+%{_libdir}/libconfini.so
+%{_includedir}/*
+%{_libdir}/pkgconfig/libconfini.pc
+
+%changelog

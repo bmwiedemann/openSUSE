@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 27 16:11:52 UTC 2019 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.8.3
+  - Added mutex to prevent reconciler loops from overlapping.
+
+-------------------------------------------------------------------
+Mon Sep 16 17:24:01 UTC 2019 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.8.2
+  - Reverted breaking label selector change.
+  - Corrected version in log output
+
+-------------------------------------------------------------------
 Sun Jul 21 13:09:28 UTC 2019 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to rbac-manager 0.8.0

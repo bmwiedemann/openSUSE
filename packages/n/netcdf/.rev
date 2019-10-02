@@ -420,4 +420,12 @@ Use SPDX- proprietary prefix until this license is accepted upstream by spdx.org
     <comment></comment>
     <requestid>729408</requestid>
   </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>66111c991b3cdd90857e7b1053ffce4d</srcmd5>
+    <version>4.7.0</version>
+    <time>1570010253</time>
+    <user>dimstar_suse</user>
+    <comment>Add Jira feature ID</comment>
+    <requestid>734033</requestid>
+  </revision>
 </revisionlist>

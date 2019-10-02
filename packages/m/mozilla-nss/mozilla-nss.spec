@@ -19,28 +19,19 @@
 
 %global nss_softokn_fips_version 3.45
 %define NSPR_min_version 4.21
-
+%define nspr_ver %(rpm -q --queryformat '%%{VERSION}' mozilla-nspr)
+%define nssdbdir %{_sysconfdir}/pki/nssdb
 Name:           mozilla-nss
-BuildRequires:  gcc-c++
-BuildRequires:  mozilla-nspr-devel >= %{NSPR_min_version}
-BuildRequires:  pkg-config
-BuildRequires:  sqlite-devel
-BuildRequires:  zlib-devel
 Version:        3.45
 Release:        0
 %define underscore_version 3_45
-# bug437293
-%ifarch ppc64
-Obsoletes:      mozilla-nss-64bit
-%endif
-#
 Summary:        Network Security Services
 License:        MPL-2.0
 Group:          System/Libraries
-Url:            http://www.mozilla.org/projects/security/pki/nss/
+URL:            https://www.mozilla.org/projects/security/pki/nss/
 Source:         https://ftp.mozilla.org/pub/mozilla.org/security/nss/releases/NSS_%{underscore_version}_RTM/src/nss-%{version}.tar.gz
-# hg clone https://hg.mozilla.org/projects/nss nss-%{version}/nss ; cd nss-%{version}/nss ; hg up NSS_%{underscore_version}_RTM
-#Source:         nss-%{version}.tar.gz
+# hg clone https://hg.mozilla.org/projects/nss nss-%%{version}/nss ; cd nss-%%{version}/nss ; hg up NSS_%%{underscore_version}_RTM
+#Source:         nss-%%{version}.tar.gz
 Source1:        nss.pc.in
 Source3:        nss-config.in
 Source4:        %{name}-rpmlintrc
@@ -58,17 +49,19 @@ Patch4:         add-relro-linker-option.patch
 Patch5:         malloc.patch
 Patch6:         bmo-1400603.patch
 Patch7:         nss-sqlitename.patch
-%define nspr_ver %(rpm -q --queryformat '%%{VERSION}' mozilla-nspr)
-PreReq:         mozilla-nspr >= %nspr_ver
-PreReq:         libfreebl3 >= %{nss_softokn_fips_version}
-PreReq:         libsoftokn3 >= %{nss_softokn_fips_version}
+BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(nspr) >= %{NSPR_min_version}
+BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(zlib)
+Requires(pre):  libfreebl3 >= %{nss_softokn_fips_version}
+Requires(pre):  libsoftokn3 >= %{nss_softokn_fips_version}
+Requires(pre):  mozilla-nspr >= %{NSPR_min_version}
 %if %{_lib} == lib64
 Requires:       libnssckbi.so()(64bit)
 %else
 Requires:       libnssckbi.so
 %endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%define nssdbdir %{_sysconfdir}/pki/nssdb
 %ifnarch %sparc
 %if ! 0%{?qemu_user_space_build}
 # disabled temporarily bmo#1236340
@@ -83,18 +76,13 @@ applications. Applications built with NSS can support SSL v3,
 TLS v1.0, v1.1, v1.2, PKCS #5, PKCS #7, PKCS #11, PKCS #12, S/MIME, X.509 v3
 certificates, and other security standards.
 
-
 %package devel
 Summary:        Network (Netscape) Security Services development files
 Group:          Development/Libraries/C and C++
 Requires:       libfreebl3
 Requires:       libsoftokn3
-Requires:       mozilla-nspr-devel >= %{NSPR_min_version}
 Requires:       mozilla-nss = %{version}-%{release}
-# bug437293
-%ifarch ppc64
-Obsoletes:      mozilla-nss-devel-64bit
-%endif
+Requires:       pkgconfig(nspr) >= %{NSPR_min_version}
 
 %description devel
 Network Security Services (NSS) is a set of libraries designed to
@@ -106,12 +94,11 @@ certificates, and other security standards.
 %package tools
 Summary:        Tools for developing, debugging, and managing applications that use NSS
 Group:          System/Management
-PreReq:         mozilla-nss >= %{version}
+Requires(pre):  mozilla-nss >= %{version}
 
 %description tools
 The NSS Security Tools allow developers to test, debug, and manage
 applications that use NSS.
-
 
 %package sysinit
 Summary:        System NSS Initialization
@@ -124,7 +111,6 @@ Default Operation System module that manages applications loading
 NSS globally on the system. This module loads the system defined
 PKCS #11 modules for NSS and chains with other NSS modules to load
 any system or user configured modules.
-
 
 %package -n libfreebl3
 Summary:        Freebl library for the Network Security Services
@@ -140,7 +126,6 @@ certificates, and other security standards.
 
 This package installs the freebl library from NSS.
 
-
 %package -n libfreebl3-hmac
 Summary:        Freebl library checksums for the Network Security Services
 Group:          System/Libraries
@@ -149,7 +134,6 @@ Requires:       libfreebl3 = %{version}-%{release}
 %description -n libfreebl3-hmac
 Checksums for libraries contained in the libfreebl3 package
 used in the FIPS 140-2 mode.
-
 
 %package -n libsoftokn3
 Summary:        Network Security Services Softoken Module
@@ -166,7 +150,6 @@ certificates, and other security standards.
 
 Network Security Services Softoken Cryptographic Module
 
-
 %package -n libsoftokn3-hmac
 Summary:        Network Security Services Softoken Module checksums
 Group:          System/Libraries
@@ -176,7 +159,6 @@ Requires:       libsoftokn3 = %{version}-%{release}
 Checksums for libraries contained in the libsoftokn3 package
 used in the FIPS 140-2 mode.
 
-
 %package certs
 Summary:        CA certificates for NSS
 Group:          Productivity/Networking/Security
@@ -185,15 +167,14 @@ Group:          Productivity/Networking/Security
 This package contains the integrated CA root certificates from the
 Mozilla project.
 
-
 %prep
-%setup -n nss-%{version} -q
+%setup -q -n nss-%{version}
 cd nss
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
-%if %suse_version > 1110
+%if 0%{?suse_version} > 1110
 %patch5 -p1
 %endif
 %patch6 -p1
@@ -206,7 +187,7 @@ cd nss
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 cd nss
-modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{S:99}")"
+modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{SOURCE99}")"
 DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
 TIME="\"$(date -d "${modified}" "+%%R")\""
 find . -name '*.[ch]' -print -exec sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" {} +
@@ -224,7 +205,7 @@ export USE_64=1
 export NSS_USE_SYSTEM_SQLITE=1
 #export SQLITE_LIB_NAME=nsssqlite3
 MAKE_FLAGS="BUILD_OPT=1"
-make nss_build_all $MAKE_FLAGS
+make --jobs=1 nss_build_all $MAKE_FLAGS
 # run testsuite
 %if 0%{?run_testsuite}
 export BUILD_OPT=1
@@ -346,7 +327,7 @@ install -m 644 %{SOURCE9} %{buildroot}%{nssdbdir}
 %define __spec_install_post \
   %{?__debug_package:%{__debug_install_post}} \
   %{__arch_install_post} \
-  %{__os_install_post} \
+  %__os_install_post \
   LD_LIBRARY_PATH=%{buildroot}/%{_lib}:%{buildroot}%{_libdir} %{buildroot}%{_libexecdir}/nss/shlibsign -i %{buildroot}%{_libdir}/libsoftokn3.so \
   LD_LIBRARY_PATH=%{buildroot}/%{_lib}:%{buildroot}%{_libdir} %{buildroot}%{_libexecdir}/nss/shlibsign -i %{buildroot}%{_libdir}/libnssdbm3.so \
   LD_LIBRARY_PATH=%{buildroot}/%{_lib}:%{buildroot}%{_libdir} %{buildroot}%{_libexecdir}/nss/shlibsign -i %{buildroot}/%{_lib}/libfreebl3.so \
@@ -354,17 +335,11 @@ install -m 644 %{SOURCE9} %{buildroot}%{nssdbdir}
 %{nil}
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
-
 %post -n libfreebl3 -p /sbin/ldconfig
-
 %postun -n libfreebl3 -p /sbin/ldconfig
-
 %post -n libsoftokn3 -p /sbin/ldconfig
-
 %postun -n libsoftokn3 -p /sbin/ldconfig
-
 %post sysinit
 /sbin/ldconfig
 # make sure the current config is enabled
@@ -378,12 +353,11 @@ fi
 %postun sysinit -p /sbin/ldconfig
 
 %files
-%defattr(-, root, root)
 %{_libdir}/libnss3.so
 %{_libdir}/libnssutil3.so
 %{_libdir}/libsmime3.so
 %{_libdir}/libssl3.so
-#%{_libdir}/libnsssqlite3.so
+#%%{_libdir}/libnsssqlite3.so
 
 %files devel
 %defattr(644, root, root, 755)
@@ -393,14 +367,12 @@ fi
 %attr(755,root,root) %{_bindir}/nss-config
 
 %files tools
-%defattr(-, root, root)
 %{_bindir}/*
 %exclude %{_sbindir}/setup-nsssysinit.sh
 %{_libexecdir}/nss/
 %exclude %{_bindir}/nss-config
 
 %files sysinit
-%defattr(-, root, root)
 %dir %{_sysconfdir}/pki
 %dir %{_sysconfdir}/pki/nssdb
 %config(noreplace) %{_sysconfdir}/pki/nssdb/*
@@ -408,27 +380,22 @@ fi
 %{_sbindir}/setup-nsssysinit.sh
 
 %files -n libfreebl3
-%defattr(-, root, root)
 /%{_lib}/libfreebl3.so
 /%{_lib}/libfreeblpriv3.so
 
 %files -n libfreebl3-hmac
-%defattr(-, root, root)
 /%{_lib}/libfreebl3.chk
 /%{_lib}/libfreeblpriv3.chk
 
 %files -n libsoftokn3
-%defattr(-, root, root)
 %{_libdir}/libsoftokn3.so
 %{_libdir}/libnssdbm3.so
 
 %files -n libsoftokn3-hmac
-%defattr(-, root, root)
 %{_libdir}/libsoftokn3.chk
 %{_libdir}/libnssdbm3.chk
 
 %files certs
-%defattr(-, root, root)
 %{_libdir}/libnssckbi.so
 
 %changelog

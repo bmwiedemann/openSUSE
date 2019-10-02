@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Sep 30 21:06:47 UTC 2019 - okurz@suse.com
+
+- Update to version 1.15.0:
+  * Fix new style check Q003 about quotes
+  * Update tested python versions to 3.6 (Leap), 3.7 (Tumbleweed)
+  * Use consistent single-tick default quoting style
+  * Also skip output of "Skipped tests" when option for skipping empty is enabled
+  * Fix superfluous blank line in output after "Skipped tests"
+  * Fix deprecation warning about "log.warn"
+  * Delete superfluous blank line
+  * Use same text format for "Skipped tests" as for "issues" and "bugs"
+  * Fix all style issues introduced by PR #119 and #121
+  * Fix tests for pika 1.0
+  * Skipped tests includes links
+  * Fix output of 'type' for debugging
+  * Another try to fix ASCII encoding errors in python2
+  * Add testdata for unicode signs *everywhere*
+  * Fix sporadic ASCII encoding errors in python2 on complete report
+  * openqa-review-daily-email: Save time by skipping report-links
+  * openqa-review-daily-email: Allow to override the temporary output directory
+  * Fix style for flake 3.7.5
+
+-------------------------------------------------------------------
 Sat Dec 22 15:50:32 UTC 2018 - okurz@suse.com
 
 - Update to version 1.14.1:

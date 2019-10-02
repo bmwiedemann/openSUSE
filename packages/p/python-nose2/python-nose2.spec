@@ -27,16 +27,16 @@ URL:            https://github.com/nose-devs/nose2
 Source:         https://files.pythonhosted.org/packages/source/n/nose2/nose2-%{version}.tar.gz
 Patch0:         remove_unittest2.patch
 Patch1:         fix-mock-dep.patch
-BuildRequires:  %{python_module cov-core >= 1.12}
+BuildRequires:  %{python_module coverage >= 4.4.1}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-coverage >= 4.4.1
 Requires:       python-six >= 1.1
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Suggests:       python-cov-core >= 1.12
 BuildArch:      noarch
 %python_subpackages
 
@@ -52,6 +52,7 @@ is to be done through config files, not command-line options.
 %prep
 %setup -q -n nose2-%{version}
 %autopatch -p1
+rm -rf *.egg-info/
 
 %build
 %python_build

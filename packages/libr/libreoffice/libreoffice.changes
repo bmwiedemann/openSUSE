@@ -27,6 +27,7 @@ Mon Sep  9 08:14:37 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 - Update to 6.2.7.1:
   bsc#1149944 VUL-0: CVE-2019-9854 Unsafe URL assembly flaw
   bsc#1149943 VUL-0: CVE-2019-9855 path equivalence handling flaw
+  bsc#1152684 VUL-1: CVE-2019-9853: libreoffice: macro execution bypassed the security settings
 - Drop merged patch:
   * 0001-Fix-buidling-with-older-boost.patch
 

@@ -367,6 +367,7 @@ opensuse_microos:
   - kernel-kvmsmall-base: [locked]
   - kernel-vanilla: [locked]
   - kernel-kvmsmall: [locked]
+  - kernel-debug: [locked]
   - openSUSE-MicroOS-release
   - kernel-default
   - patterns-microos-base: [aarch64,x86_64]

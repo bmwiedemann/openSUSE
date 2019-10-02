@@ -1,7 +1,7 @@
 #
 # spec file for package babeltrace
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@ Release:        0
 Summary:        Common Trace Format Babel Tower
 License:        MIT AND GPL-2.0-only
 Group:          Development/Languages/C and C++
-URL:            https://diamon.org/babeltrace
+Url:            https://diamon.org/babeltrace
 Source:         https://efficios.com/files/babeltrace/%{name}-%{version}.tar.bz2
 Source1:        https://efficios.com/files/babeltrace/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
@@ -38,7 +38,7 @@ BuildRequires:  pkgconfig(libelf) >= 0.154
 BuildRequires:  pkgconfig(popt)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(uuid)
-ExclusiveArch:  %ix86 x86_64 aarch64 ppc64le ppc64
+ExclusiveArch:  %ix86 x86_64 aarch64 ppc64le ppc64 s390x
 
 %description
 This project provides trace read and write libraries, as well as a

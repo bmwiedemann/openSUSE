@@ -26,7 +26,6 @@ License:        MIT
 Group:          Metapackages
 Url:            https://github.com/openSUSE/patterns
 Source0:        %{name}-rpmlintrc
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  patterns-rpm-macros
 
 %description
@@ -227,7 +226,6 @@ Suggests:       xfce4-notifyd-branding-openSUSE
 Suggests:       xfce4-panel-branding-openSUSE
 Suggests:       xfce4-session-branding-openSUSE
 Suggests:       xfce4-settings-branding-openSUSE
-Suggests:       xfce4-splash-branding-openSUSE
 Suggests:       xfdesktop-branding-openSUSE
 Suggests:       xfwm4-branding-openSUSE
 Suggests:       desktop-branding

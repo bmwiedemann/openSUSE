@@ -67,4 +67,13 @@
     <comment>1</comment>
     <requestid>378345</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>c446fab96816d136767b47e2e3e4c65b</srcmd5>
+    <version>1.0.99.20140916</version>
+    <time>1570010383</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on Tumbleweed. 
+  * Disable return-type check for tumbleweed. (forwarded request 734331 from hillwood)</comment>
+    <requestid>734332</requestid>
+  </revision>
 </revisionlist>

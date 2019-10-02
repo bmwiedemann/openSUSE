@@ -41,4 +41,12 @@
     <comment></comment>
     <requestid>726715</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>af2494e79249449ccd21d89c915dd1da</srcmd5>
+    <version>2019.3</version>
+    <time>1570010259</time>
+    <user>dimstar_suse</user>
+    <comment>Add Jira feature ID</comment>
+    <requestid>734053</requestid>
+  </revision>
 </revisionlist>

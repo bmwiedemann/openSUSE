@@ -1,7 +1,7 @@
 #
 # spec file for package input-pad
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -26,7 +26,7 @@ Name:           input-pad
 Version:        1.0.99.20140916
 Release:        0
 Summary:        On-screen Input Pad to Send Characters with Mouse
-License:        LGPL-2.0+
+License:        LGPL-2.0-or-later
 Group:          System/GUI/Other
 Url:            https://github.com/fujiwarat/input-pad
 Source0:        %{name}-%{version}.tar.gz
@@ -89,6 +89,12 @@ The input-pad-eek package contains eekboard extension module
 %setup -q
 
 %build
+%if %{suse_version} > 1500
+export CFLAGS='-O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto=8'
+export CXXFLAGS='-O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto=8'
+export FFLAGS='-O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto=8 '
+export FCFLAGS='-O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto=8 '
+%endif
 %configure    --enable-pygobject2         \
               --enable-eek                \
 %if %{build_xtest}

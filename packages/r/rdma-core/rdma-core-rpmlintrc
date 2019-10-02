@@ -1,0 +1,11 @@
+# This line is mandatory to access the configuration functions
+from Config import *
+
+addFilter("libibverbs.* devel-file-in-non-devel-package")
+addFilter("libibverbs.* obsolete-not-provided")
+addFilter("libibmad.* shared-lib-calls-exit")
+addFilter("libibverbs-utils.* shlib-policy-missing-lib")
+addFilter("libibverbs.* shlib-policy-missing-lib")
+addFilter("librdmacm-utils.* shlib-policy-missing-lib")
+addFilter("libibverbs1.* shlib-fixed-dependency")
+addFilter("librdmacm1.* shlib-fixed-dependency")

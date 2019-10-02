@@ -630,4 +630,12 @@ remove obsolete _opt patterns</comment>
     <user>maxlin_factory</user>
     <comment>more explicity for grub2 branding</comment>
   </revision>
+  <revision rev="89" vrev="87">
+    <srcmd5>c31a63aac0920a2130b636a8a655dac1</srcmd5>
+    <version>unknown</version>
+    <time>1570010142</time>
+    <user>dimstar_suse</user>
+    <comment>Lock kernel-debug - boo#1134727</comment>
+    <requestid>733635</requestid>
+  </revision>
 </revisionlist>

@@ -24,7 +24,7 @@ Release:        0
 Summary:        Python data structures for data analysis, time series, and statistics
 License:        BSD-3-Clause
 Group:          Development/Libraries/Python
-URL:            http://pandas.pydata.org/
+URL:            https://pandas.pydata.org/
 Source0:        https://files.pythonhosted.org/packages/source/p/pandas/pandas-%{version}.tar.gz
 BuildRequires:  %{python_module Cython >= 0.28.2}
 BuildRequires:  %{python_module devel}
@@ -33,27 +33,13 @@ BuildRequires:  %{python_module setuptools >= 24.2.0}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
-# SECTION test requirements
-BuildRequires:  %{python_module SQLAlchemy >= 1.1.4}
-BuildRequires:  %{python_module XlsxWriter >= 0.9.8}
-BuildRequires:  %{python_module beautifulsoup4 >= 4.6.0}
-BuildRequires:  %{python_module hypothesis}
-BuildRequires:  %{python_module lxml >= 3.8.0}
-BuildRequires:  %{python_module openpyxl >= 2.4.8}
-BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module pytest >= 4.0.2}
-BuildRequires:  %{python_module python-dateutil >= 2.6.1}
-BuildRequires:  %{python_module pytz >= 2015.4}
-BuildRequires:  %{python_module xlrd >= 1.1.0}
-BuildRequires:  %{python_module xlwt >= 1.2.0}
-BuildRequires:  xvfb-run
-# /SECTION
 Requires:       python-Cython >= 0.28.2
-Requires:       python-numpy >= 1.13.3  
+Requires:       python-numpy >= 1.13.3
 Requires:       python-python-dateutil >= 2.6.1
 Requires:       python-pytz >= 2015.4
 Recommends:     python-Bottleneck >= 1.2.1
 Recommends:     python-Jinja2
+Recommends:     python-PyMySQL >= 0.7.11
 Recommends:     python-QtPy
 Recommends:     python-SQLAlchemy >= 1.1.4
 Recommends:     python-XlsxWriter >= 0.9.8
@@ -69,7 +55,6 @@ Recommends:     python-openpyxl >= 2.4.8
 Recommends:     python-pandas-gbq >= 0.8.0
 Recommends:     python-psycopg2
 Recommends:     python-pyarrow >= 0.9.0
-Recommends:     python-PyMySQL >= 0.7.11
 Recommends:     python-pyreadstat
 Recommends:     python-qt5
 Recommends:     python-scipy >= 0.19.0
@@ -77,11 +62,27 @@ Recommends:     python-tables >= 3.4.2
 Recommends:     python-xarray >= 0.8.2
 Recommends:     python-xlrd >= 1.1.0
 Recommends:     python-xlwt >= 1.2.0
+Recommends:     python-zlib
 Recommends:     xclip
 Recommends:     xsel
-Recommends:     python-zlib
 Obsoletes:      python-pandas-doc < %{version}
 Provides:       python-pandas-doc = %{version}
+# SECTION test requirements
+BuildRequires:  %{python_module SQLAlchemy >= 1.1.4}
+BuildRequires:  %{python_module XlsxWriter >= 0.9.8}
+BuildRequires:  %{python_module beautifulsoup4 >= 4.6.0}
+BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module lxml >= 3.8.0}
+BuildRequires:  %{python_module openpyxl >= 2.4.8}
+BuildRequires:  %{python_module pytest >= 4.0.2}
+BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module python-dateutil >= 2.6.1}
+BuildRequires:  %{python_module pytz >= 2015.4}
+BuildRequires:  %{python_module xlrd >= 1.1.0}
+BuildRequires:  %{python_module xlwt >= 1.2.0}
+BuildRequires:  xvfb-run
+# /SECTION
 %python_subpackages
 
 %description
@@ -114,7 +115,7 @@ export LC_ALL=en_US.UTF-8
 export PYTHONDONTWRITEBYTECODE=1
 mv pandas pandas_temp
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-xvfb-run py.test-%{$python_version} -v %{buildroot}%{$python_sitearch}/pandas/tests -k 'not test_oo_optimizable'
+xvfb-run py.test-%{$python_version} -n auto -v %{buildroot}%{$python_sitearch}/pandas/tests -k 'not test_oo_optimizable'
 }
 mv pandas_temp pandas
 

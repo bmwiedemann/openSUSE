@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 # needssslcertforbuild
 
@@ -57,23 +57,23 @@
 
 # used for %setup only
 # leave upstream tar-balls untouched for integrity checks.
-%define upstream_version 1.8.3
+%define upstream_version 1.8.4pre2
 
 Name:           openafs
 
-Version:        1.8.3
+Version:        1.8.4~pre2
 Release:        0
 Summary:        OpenAFS Distributed File System
 License:        IPL-1.0
 Group:          System/Filesystems
 Url:            http://www.openafs.org/
 
-Source0:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-src.tar.bz2
-Source1:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-doc.tar.bz2
-Source2:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-src.tar.bz2.md5
-Source3:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-doc.tar.bz2.md5
-Source4:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-src.tar.bz2.sha256
-Source5:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-doc.tar.bz2.sha256
+Source0:        http://www.openafs.org/dl/openafs/candidate/%{upstream_version}/openafs-%{upstream_version}-src.tar.bz2
+Source1:        http://www.openafs.org/dl/openafs/candidate/%{upstream_version}/openafs-%{upstream_version}-doc.tar.bz2
+Source2:        http://www.openafs.org/dl/openafs/candidate/%{upstream_version}/openafs-%{upstream_version}-src.tar.bz2.md5
+Source3:        http://www.openafs.org/dl/openafs/candidate/%{upstream_version}/openafs-%{upstream_version}-doc.tar.bz2.md5
+Source4:        http://www.openafs.org/dl/openafs/candidate/%{upstream_version}/openafs-%{upstream_version}-src.tar.bz2.sha256
+Source5:        http://www.openafs.org/dl/openafs/candidate/%{upstream_version}/openafs-%{upstream_version}-doc.tar.bz2.sha256
 Source10:       README.SUSE.openafs
 Source15:       logrotate.openafs-server
 Source16:       ld.conf.openafs

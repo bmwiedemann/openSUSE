@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 30 16:04:48 UTC 2019 - wbauer@tmo.at
+
+- Don't hardcode gwenhywfar-plugins version in the filelist, to fix
+  build with newer gwenhywfar
+
+-------------------------------------------------------------------
 Tue Jul 31 16:08:33 UTC 2018 - crrodriguez@opensuse.org
 
 - Remove insserv_prereq, not needed for package to work. 

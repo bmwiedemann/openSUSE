@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-branding-openSUSE
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -36,7 +36,7 @@ Name:           xfce4-branding-openSUSE
 Version:        4.14+20190815
 Release:        0
 Summary:        openSUSE Branding of the Xfce Desktop Environment
-License:        CC-BY-SA-3.0 and GPL-2.0+
+License:        CC-BY-SA-3.0 AND GPL-2.0-or-later
 Group:          System/GUI/XFCE
 Url:            https://github.com/openSUSE/xfce4-branding-openSUSE/tree/4.14
 Source0:        %{name}-%{version}.tar.xz
@@ -52,10 +52,10 @@ Requires:       libgio-2_0-0
 # for regenerating defaults.list
 BuildRequires:  desktop-file-utils
 BuildRequires:  elementary-xfce-icon-theme
-BuildRequires:  hack-fonts
-BuildRequires:  metatheme-greybird-geeko-common
 BuildRequires:  gtk2-metatheme-greybird-geeko
 BuildRequires:  gtk3-metatheme-greybird-geeko
+BuildRequires:  hack-fonts
+BuildRequires:  metatheme-greybird-geeko-common
 BuildRequires:  noto-coloremoji-fonts
 BuildRequires:  noto-sans-fonts
 BuildRequires:  thunar-volman
@@ -67,7 +67,6 @@ BuildRequires:  xfce4-settings
 BuildRequires:  xfdesktop
 BuildRequires:  xfwm4
 BuildRequires:  xfwm4-branding-upstream
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -75,7 +74,7 @@ This package provides the openSUSE look and feel for the Xfce desktop environmen
 
 %package -n openSUSE-xfce-icon-theme
 Summary:        openSUSE Xfce Default Icon Theme
-License:        CC-BY-SA-3.0 and GPL-2.0+
+License:        CC-BY-SA-3.0 AND GPL-2.0-or-later
 Group:          System/GUI/XFCE
 Requires:       adwaita-icon-theme
 Requires:       elementary-xfce-icon-theme
@@ -86,7 +85,7 @@ This is the openSUSE Xfce Default Icon Theme.
 %package -n xfce4-panel-branding-openSUSE
 Summary:        openSUSE Branding of xfce4-panel
 # uses xfce4-panel-plugin-mixer
-License:        CC-BY-SA-3.0 and GPL-2.0+
+License:        CC-BY-SA-3.0 AND GPL-2.0-or-later
 Group:          System/GUI/XFCE
 Recommends:     pavucontrol
 Recommends:     xfce4-panel-plugin-pulseaudio
@@ -104,15 +103,15 @@ This package provides the openSUSE look and feel for the Xfce Panel.
 %package -n xfce4-session-branding-openSUSE
 Summary:        openSUSE Branding of xfce4-session
 # owns %%{_datadir}/xfce/applications/defaults.list symlink target
-License:        CC-BY-SA-3.0 and GPL-2.0+
+License:        CC-BY-SA-3.0 AND GPL-2.0-or-later
 Group:          System/GUI/XFCE
 Requires:       libgio-2_0-0
 # for regenerating defaults.list
 Requires:       desktop-file-utils
 Requires:       elementary-xfce-icon-theme
-Requires:       metatheme-greybird-geeko-common
 Requires:       gtk2-metatheme-greybird-geeko
 Requires:       gtk3-metatheme-greybird-geeko
+Requires:       metatheme-greybird-geeko-common
 Requires:       thunar-volman
 Conflicts:      otherproviders(xfce4-session-branding)
 Provides:       xfce4-session-branding = %{xfce4_session_version}
@@ -123,21 +122,19 @@ This package provides the openSUSE look and feel for the Xfce Session Manager.
 
 %package -n xfce4-settings-branding-openSUSE
 Summary:        openSUSE Branding of xfce4-settings
-License:        CC-BY-SA-3.0 and GPL-2.0+
+License:        CC-BY-SA-3.0 AND GPL-2.0-or-later
 Group:          System/GUI/XFCE
 Requires:       desktop-data-openSUSE
 Requires:       elementary-xfce-icon-theme
 Requires:       gtk2-metatheme-adwaita
+Requires:       gtk2-metatheme-greybird-geeko
 Requires:       gtk3-metatheme-adwaita
+Requires:       gtk3-metatheme-greybird-geeko
 Requires:       hack-fonts
 Requires:       metatheme-greybird-geeko-common
-Requires:       gtk2-metatheme-greybird-geeko
-Requires:       gtk3-metatheme-greybird-geeko
 Requires:       noto-coloremoji-fonts
 Requires:       noto-sans-fonts
 Requires:       openSUSE-xfce-icon-theme
-# built from branding-openSUSE
-Requires:       xfce4-splash-branding-openSUSE
 Conflicts:      otherproviders(xfce4-settings-branding)
 Provides:       xfce4-settings-branding = %{xfce4_settings_version}
 Supplements:    packageand(xfce4-settings:branding-openSUSE)
@@ -147,7 +144,7 @@ This package provides the openSUSE look and feel for Xfce.
 
 %package -n xfdesktop-branding-openSUSE
 Summary:        openSUSE Branding of xfdesktop
-License:        CC-BY-SA-3.0 and GPL-2.0+
+License:        CC-BY-SA-3.0 AND GPL-2.0-or-later
 Group:          System/GUI/XFCE
 Requires:       desktop-data-openSUSE
 Requires:       wallpaper-branding
@@ -162,7 +159,7 @@ This package provides the openSUSE look and feel for the Xfce Desktop Manager.
 
 %package -n libgarcon-branding-openSUSE
 Summary:        openSUSE Branding of libgarcon
-License:        CC-BY-SA-3.0 and GPL-2.0
+License:        CC-BY-SA-3.0 AND GPL-2.0-only
 Group:          System/GUI/XFCE
 Requires:       desktop-data-openSUSE
 Requires:       wallpaper-branding
@@ -179,7 +176,7 @@ This package provides the openSUSE look and feel for Garcon.
 
 %package -n libxfce4ui-branding-openSUSE
 Summary:        openSUSE Branding of libxfce4ui
-License:        CC-BY-SA-3.0 and GPL-2.0+
+License:        CC-BY-SA-3.0 AND GPL-2.0-or-later
 Group:          System/GUI/XFCE
 Conflicts:      otherproviders(libxfce4ui-branding)
 Provides:       libxfce4ui-branding = %{libxfce4ui_version}
@@ -191,7 +188,7 @@ This package provides the openSUSE look and feel for the libxfce4ui library.
 
 %package -n xfce4-notifyd-branding-openSUSE
 Summary:        openSUSE Branding of xfce4-notifyd
-License:        CC-BY-SA-3.0 and GPL-2.0+
+License:        CC-BY-SA-3.0 AND GPL-2.0-or-later
 Group:          System/GUI/XFCE
 Conflicts:      otherproviders(xfce4-notifyd-branding)
 Provides:       xfce4-notifyd-branding = %{xfce4_notifyd_version}
@@ -202,7 +199,7 @@ This package provides the openSUSE look and feel for the Xfce Notification Daemo
 
 %package -n exo-branding-openSUSE
 Summary:        openSUSE Branding of exo
-License:        CC-BY-SA-3.0 and GPL-2.0+
+License:        CC-BY-SA-3.0 AND GPL-2.0-or-later
 Group:          System/GUI/XFCE
 Conflicts:      otherproviders(exo-branding)
 Conflicts:      otherproviders(%{libexo_libname}-branding)
@@ -217,7 +214,7 @@ This package provides the openSUSE look and feel for the exo library.
 
 %package -n xfwm4-branding-openSUSE
 Summary:        openSUSE Branding of xfwm4
-License:        CC-BY-SA-3.0 and GPL-2.0+
+License:        CC-BY-SA-3.0 AND GPL-2.0-or-later
 Group:          System/GUI/XFCE
 Requires:       noto-sans-fonts
 Conflicts:      otherproviders(xfwm4-branding)
@@ -229,7 +226,7 @@ This package provides the openSUSE look and feel for the xfwm4 window manager.
 
 %package -n xfce4-power-manager-branding-openSUSE
 Summary:        openSUSE Branding of xfce4-power-manager
-License:        CC-BY-SA-3.0 and GPL-2.0+
+License:        CC-BY-SA-3.0 AND GPL-2.0-or-later
 Group:          System/GUI/XFCE
 Conflicts:      otherproviders(xfce4-power-manager-branding)
 Provides:       xfce4-power-manager-branding = %{xfce4_power_manager_version}
@@ -240,7 +237,7 @@ This package provides the openSUSE look and feel for the Xfce Power Manager.
 
 %package -n thunar-volman-branding-openSUSE
 Summary:        openSUSE Branding of thunar-volman
-License:        CC-BY-SA-3.0 and GPL-2.0+
+License:        CC-BY-SA-3.0 AND GPL-2.0-or-later
 Group:          System/GUI/XFCE
 Conflicts:      otherproviders(thunar-volman-branding)
 Provides:       thunar-volman-branding = %{thunar_volman_version}
@@ -288,14 +285,12 @@ done
 %icon_theme_cache_post openSUSE-Xfce
 
 %files -n openSUSE-xfce-icon-theme
-%defattr(-,root,root)
-%doc openSUSE-xfce-icon-theme/{COPYING,LICENSES}
+%license openSUSE-xfce-icon-theme/{COPYING,LICENSES}
 %{_datadir}/icons/openSUSE-Xfce
 %ghost %{_datadir}/icons/openSUSE-Xfce/icon-theme.cache
 
 %files -n xfce4-panel-branding-openSUSE
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %dir %{_sysconfdir}/xdg/xfce4
 %dir %{_sysconfdir}/xdg/xfce4/whiskermenu
 %dir %{_sysconfdir}/xdg/xfce4/xfconf
@@ -307,8 +302,7 @@ done
 %{_datadir}/icons/hicolor/*
 
 %files -n xfce4-session-branding-openSUSE
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %dir %{_sysconfdir}/xdg/xfce4
 %dir %{_sysconfdir}/xdg/xfce4/xfconf
 %dir %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml
@@ -319,8 +313,7 @@ done
 %{_datadir}/xfce/applications/defaults.list
 
 %files -n xfce4-settings-branding-openSUSE
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %dir %{_sysconfdir}/xdg/xfce4
 %dir %{_sysconfdir}/xdg/xfce4/xfconf
 %dir %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml
@@ -329,28 +322,24 @@ done
 %config %{_sysconfdir}/xdg/menus/xfce-settings-manager.menu
 
 %files -n xfdesktop-branding-openSUSE
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %dir %{_datadir}/wallpapers/xfce
 %{_datadir}/wallpapers/xfce/default.wallpaper
 
 %files -n libgarcon-branding-openSUSE
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %dir %{_sysconfdir}/xdg/menus
 %config %{_sysconfdir}/xdg/menus/xfce-applications.menu
 
 %files -n libxfce4ui-branding-openSUSE
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %dir %{_sysconfdir}/xdg/xfce4
 %dir %{_sysconfdir}/xdg/xfce4/xfconf
 %dir %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml
 %config %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
 
 %files -n xfce4-notifyd-branding-openSUSE
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %dir %{_sysconfdir}/xdg/xfce4
 %dir %{_sysconfdir}/xdg/xfce4/xfconf
 %dir %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml
@@ -358,30 +347,26 @@ done
 %{_datadir}/themes/openSUSE-Xfce
 
 %files -n exo-branding-openSUSE
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %dir %{_sysconfdir}/xdg/xfce4
 %config %{_sysconfdir}/xdg/xfce4/helpers.rc
 
 %files -n xfwm4-branding-openSUSE
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %dir %{_sysconfdir}/xdg/xfce4
 %dir %{_sysconfdir}/xdg/xfce4/xfconf
 %dir %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml
 %config %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xfwm4.xml
 
 %files -n xfce4-power-manager-branding-openSUSE
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %dir %{_sysconfdir}/xdg/xfce4
 %dir %{_sysconfdir}/xdg/xfce4/xfconf
 %dir %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml
 %config %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-power-manager.xml
 
 %files -n thunar-volman-branding-openSUSE
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %dir %{_sysconfdir}/xdg/xfce4
 %dir %{_sysconfdir}/xdg/xfce4/xfconf
 %dir %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml

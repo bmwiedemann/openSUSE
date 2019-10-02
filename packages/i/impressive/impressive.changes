@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct  1 06:54:04 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix description typography. Drop redundant %attr.
+
+-------------------------------------------------------------------
+Mon Sep 30 14:22:18 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.12.1:
+  * fixed crash in crash reporter with recent Pillow versions
+  * fixed crash with recent PyGame versions when non-latin characters appeared
+    in slide titles
+  * fixed page rotation
+  * fixed -x/--fade mode
+  * fixed directory playback mode
+  * basic Raspberry Pi 4 compatibility (untested; requires X11)
+  * more robust PDF hyperlink parser (page boxes can now be PDF references)
+  * added option to temporarily inhibit automatic slideshows
+  * default keybinding: [A] key, actions: auto-start, auto-stop, auto-toggle
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Wed Apr 24 09:33:32 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to version 0.12.0

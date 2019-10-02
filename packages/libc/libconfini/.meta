@@ -1,0 +1,8 @@
+<package name="libconfini" project="openSUSE:Factory">
+  <title>INI file parser libarary</title>
+  <description>libconfini is a INI file parser library written in C.
+
+</description>
+  <devel project="devel:libraries:c_c++" package="libconfini"/>
+  <url>https://madmurphy.github.io/libconfini</url>
+</package>

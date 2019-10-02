@@ -435,4 +435,12 @@
   &quot;SlurmctldHost&quot;. (forwarded request 731004 from eeich)</comment>
     <requestid>731005</requestid>
   </revision>
+  <revision rev="33" vrev="6">
+    <srcmd5>88594d4f5e9da96d140dffe2a655494b</srcmd5>
+    <version>18.08.8</version>
+    <time>1570010454</time>
+    <user>dimstar_suse</user>
+    <comment>- Set %base_ver for SLE-15-SP2 to 18.08 (for now).</comment>
+    <requestid>734512</requestid>
+  </revision>
 </revisionlist>

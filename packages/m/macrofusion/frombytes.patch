@@ -1,0 +1,11 @@
+--- macrofusion.py.orig	2014-04-22 10:38:35.000000000 +0200
++++ macrofusion.py	2019-08-15 07:49:18.092358112 +0200
+@@ -618,7 +618,7 @@
+ 
+     def pixbuf2Image(self, pb):
+         width,height = pb.get_width(),pb.get_height()
+-        return Image.fromstring("RGB",(width,height),pb.get_pixels() )
++        return Image.frombytes("RGB",(width,height),pb.get_pixels() )
+ 
+     def put_files_to_the_list(self, fichiers):
+         

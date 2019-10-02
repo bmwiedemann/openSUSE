@@ -20,4 +20,17 @@
   - back to controller-runtime for namespace</comment>
     <requestid>717346</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ca9e43ee1f66308875f70e1580120f9e</srcmd5>
+    <version>0.8.3</version>
+    <time>1570010187</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.3
+  - Added mutex to prevent reconciler loops from overlapping.
+
+- Update to version 0.8.2
+  - Reverted breaking label selector change.
+  - Corrected version in log output</comment>
+    <requestid>733709</requestid>
+  </revision>
 </revisionlist>

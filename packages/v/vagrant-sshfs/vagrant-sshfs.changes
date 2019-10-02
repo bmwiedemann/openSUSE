@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 27 20:34:04 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Fix in testsuite.sh:
+  Ignore the return value of vagrant destroy -f in the cleanup function, so that
+  all cleanup tasks run even if vagrant destroy fails
+
+-------------------------------------------------------------------
 Tue Sep 17 21:34:25 UTC 2019 - Dan Čermák <dcermak@suse.com>
 
 - Add working testsuite subpackage

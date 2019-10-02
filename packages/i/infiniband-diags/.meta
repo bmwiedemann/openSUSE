@@ -2,4 +2,7 @@
   <title></title>
   <description></description>
   <devel project="science:HPC" package="infiniband-diags"/>
+  <build>
+    <disable/>
+  </build>
 </package>

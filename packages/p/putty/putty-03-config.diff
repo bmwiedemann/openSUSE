@@ -10,10 +10,10 @@
  windows/windefs.c |    2 +-
  3 files changed, 35 insertions(+), 22 deletions(-)
 
-Index: putty-0.72/settings.c
+Index: putty-0.73/settings.c
 ===================================================================
---- putty-0.72.orig/settings.c
-+++ putty-0.72/settings.c
+--- putty-0.73.orig/settings.c
++++ putty-0.73/settings.c
 @@ -17,8 +17,8 @@
  static const struct keyvalwhere ciphernames[] = {
      { "aes",        CIPHER_AES,             -1, -1 },
@@ -32,7 +32,7 @@ Index: putty-0.72/settings.c
 +    gpps(sesskey, "TerminalType", "linux", conf, CONF_termtype);
      gpps(sesskey, "TerminalSpeed", "38400,38400", conf, CONF_termspeed);
      if (gppmap(sesskey, "TerminalModes", conf, CONF_ttymodes)) {
- 	/*
+         /*
 @@ -1029,10 +1029,10 @@ void load_open_settings(settings_r *sess
      gppb(sesskey, "PassiveTelnet", false, conf, CONF_passive_telnet);
      gppb(sesskey, "BackspaceIsDelete", true, conf, CONF_bksp_is_delete);
@@ -89,12 +89,12 @@ Index: putty-0.72/settings.c
 @@ -1124,11 +1124,28 @@ void load_open_settings(settings_r *sess
  
      for (i = 0; i < 22; i++) {
- 	static const char *const defaults[] = {
--	    "187,187,187", "255,255,255", "0,0,0", "85,85,85", "0,0,0",
--	    "0,255,0", "0,0,0", "85,85,85", "187,0,0", "255,85,85",
--	    "0,187,0", "85,255,85", "187,187,0", "255,255,85", "0,0,187",
--	    "85,85,255", "187,0,187", "255,85,255", "0,187,187",
--	    "85,255,255", "187,187,187", "255,255,255"
+         static const char *const defaults[] = {
+-            "187,187,187", "255,255,255", "0,0,0", "85,85,85", "0,0,0",
+-            "0,255,0", "0,0,0", "85,85,85", "187,0,0", "255,85,85",
+-            "0,187,0", "85,255,85", "187,187,0", "255,255,85", "0,0,187",
+-            "85,85,255", "187,0,187", "255,85,255", "0,187,187",
+-            "85,255,255", "187,187,187", "255,255,255"
 +            "170,170,170", /* default foreground */
 +            "255,255,255", /* default bold foreground */
 +            "0,0,0",       /* default background */
@@ -117,9 +117,9 @@ Index: putty-0.72/settings.c
 +            "0,255,255",   /* cyan bold */
 +            "170,170,170", /* white */
 +            "255,255,255", /* white bold */
- 	};
- 	char buf[20], *buf2;
- 	int c0, c1, c2;
+         };
+         char buf[20], *buf2;
+         int c0, c1, c2;
 @@ -1186,7 +1203,7 @@ void load_open_settings(settings_r *sess
       * The empty default for LineCodePage will be converted later
       * into a plausible default for the locale.
@@ -129,10 +129,10 @@ Index: putty-0.72/settings.c
      gppb(sesskey, "CJKAmbigWide", false, conf, CONF_cjk_ambig_wide);
      gppb(sesskey, "UTF8Override", true, conf, CONF_utf8_override);
      gpps(sesskey, "Printer", "", conf, CONF_printer);
-Index: putty-0.72/unix/unix.h
+Index: putty-0.73/unix/unix.h
 ===================================================================
---- putty-0.72.orig/unix/unix.h
-+++ putty-0.72/unix/unix.h
+--- putty-0.73.orig/unix/unix.h
++++ putty-0.73/unix/unix.h
 @@ -400,11 +400,7 @@ Socket *make_fd_socket(int infd, int out
  /*
   * Default font setting, which can vary depending on NOT_X_WINDOWS.
@@ -146,10 +146,10 @@ Index: putty-0.72/unix/unix.h
  
  /*
   * uxpty.c.
-Index: putty-0.72/windows/windefs.c
+Index: putty-0.73/windows/windefs.c
 ===================================================================
---- putty-0.72.orig/windows/windefs.c
-+++ putty-0.72/windows/windefs.c
+--- putty-0.73.orig/windows/windefs.c
++++ putty-0.73/windows/windefs.c
 @@ -9,7 +9,7 @@
  FontSpec *platform_default_fontspec(const char *name)
  {

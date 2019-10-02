@@ -301,4 +301,19 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>733167</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>da39e387b391005bb891f4d44ab10fec</srcmd5>
+    <version>0.6.5</version>
+    <time>1570010319</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.5
+  + Fixed scrobbler not to send scrobbles multiple times when metadata is updated
+  + Fixed Listenbrainz scrobbler not to send &quot;various artists&quot; as album artist
+  + Fixed missing cover image in OSD pretty reposition image
+  + Fixed OSD pretty upper left positioning
+  + Fixed OSD pretty positioning on Windows on screens with negative geometry
+  + Fixed appdata file to pass full validation
+</comment>
+    <requestid>734155</requestid>
+  </revision>
 </revisionlist>

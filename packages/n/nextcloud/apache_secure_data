@@ -8,7 +8,7 @@ Alias /nextcloud "@DATAPATH@/"
     </IfModule>
 
     <IfModule mod_headers.c>
-      Header set Referrer-Policy no-referrer
+      Header always set Referrer-Policy no-referrer
       Header always set Strict-Transport-Security "max-age=15768000; includeSubDomains; preload"
     </IfModule>
 

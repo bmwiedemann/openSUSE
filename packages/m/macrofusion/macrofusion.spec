@@ -1,7 +1,7 @@
 #
 # spec file for package macrofusion
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,10 +20,11 @@ Name:           macrofusion
 Version:        0.7.4
 Release:        0
 Summary:        GUI to combine photos to get deeper DOF or HDR
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          Productivity/Graphics/Other
 Url:            http://sourceforge.net/projects/macrofusion/
 Source:         https://sourceforge.net/projects/macrofusion/files/%{name}-%{version}/%{name}_%{version}.orig.tar.gz
+Patch0:         frombytes.patch
 BuildRequires:  update-desktop-files
 Requires:       enblend-enfuse >= 4.0
 Requires:       hugin
@@ -44,6 +45,7 @@ rebranded to avoid conflict with another EnfuseGui (for MacOS).
 
 %prep
 %setup -q
+%patch0
 sed -e '/Exec/s/macrofusion/macrofusion\.py/' \
     -i %{name}.desktop
 # fixes the shebang line

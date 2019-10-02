@@ -20,7 +20,7 @@ Name:           openucx
 Summary:        Unifieid Communication X
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Url:            http://openucx.org/
 
@@ -48,8 +48,14 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  aarch64 %power64 x86_64 s390x
 
 %description
-UCX is a communication library implementing high-performance
-messaging for MPI/PGAS frameworks.
+UCX stands for Unified Communication X. UCX provides an optimized communication
+layer for Message Passing (MPI), PGAS/OpenSHMEM libraries and RPC/data-centric
+applications. UCX utilizes high-speed networks, such as RDMA (InfiniBand, RoCE,
+etc), Cray Gemini or Aries, for inter-node communication. If no such network is
+available, TCP is used instead. UCX supports efficient transfer of data in
+either main memory (RAM) or GPU memory (through CUDA and ROCm libraries).
+In addition, UCX provides efficient intra-node communication, by leveraging the
+following shared memory mechanisms: posix, sysv, cma, knem, and xpmem.
 
 %package tools
 Summary:        OpenUCX utilities
@@ -150,7 +156,11 @@ export UCX_CFLAGS="$UCX_CFLAGS -mno-sse -mno-sse2"
          --disable-numa \
 %endif
 %endif
-         --docdir="%_docdir/%name"
+         --docdir="%_docdir/%name" \
+		 --disable-debug --disable-assertions \
+		 --disable-params-check \
+		 --with-rc --with-ud --with-dc \
+		 --with-mlx5-dv --with-rdmacm 
 
 # Override BASE_CFLAGS to disable Werror (boo#1121267)
 make %{?_smp_mflags} V=1 BASE_CFLAGS="-g -Wall"
@@ -167,6 +177,7 @@ make %{?_smp_mflags} V=1 BASE_CFLAGS="-g -Wall"
 %install
 %make_install
 rm -fv "%buildroot/%_libdir"/*.la
+rm -fv "%buildroot/%_libdir"/ucx/*.la
 # Rename example dir for consistency with the package name
 mv %buildroot/%_datadir/ucx  %buildroot/%_datadir/openucx
 
@@ -207,10 +218,13 @@ mv %buildroot/%_datadir/ucx  %buildroot/%_datadir/openucx
 %files -n libuct0
 %defattr(-,root,root)
 %_libdir/libuct.so.*
+%dir %_libdir/ucx/
+%_libdir/ucx/libuct_*.so.*
 
 %files -n libuct-devel
 %defattr(-,root,root)
 %_includedir/uct/
 %_libdir/libuct.so
+%_libdir/ucx/libuct_*.so
 
 %changelog

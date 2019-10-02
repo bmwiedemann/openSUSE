@@ -1,7 +1,7 @@
 #
 # spec file for package python
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 %define         binaries openqa-review openqa-review-daily-email openqa-review-sles-ha tumblesle-release openqa-review-functional_yast_concise
 %define         oldpython python
 Name:           python-%{short_name}%{?name_ext}
-Version:        1.14.1
+Version:        1.15.0
 Release:        0
 Summary:        A review helper script for openQA
 License:        MIT

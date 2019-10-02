@@ -2567,4 +2567,12 @@ Petr</comment>
   * 0001-Fix-buidling-with-older-boost.patch</comment>
     <requestid>731894</requestid>
   </revision>
+  <revision rev="188" vrev="2">
+    <srcmd5>47a6a3a9b535de1974664c1d9ef85e69</srcmd5>
+    <version>6.3.2.2</version>
+    <time>1570010387</time>
+    <user>dimstar_suse</user>
+    <comment>  bsc#1152684 VUL-1: CVE-2019-9853: libreoffice: macro execution bypassed the security settings</comment>
+    <requestid>734335</requestid>
+  </revision>
 </revisionlist>

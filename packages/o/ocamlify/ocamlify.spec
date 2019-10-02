@@ -26,7 +26,7 @@ Group:          Development/Languages/OCaml
 
 Url:            http://forge.ocamlcore.org/projects/ocamlify/
 Source0:        %{name}-%{version}.tar.xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Patch0:         ocamlify.patch
 
 BuildRequires:  ocaml
 BuildRequires:  ocaml-ocamlbuild
@@ -40,7 +40,7 @@ a standard OCaml file. It allows embedding external resources as OCaml
 code.
 
 %prep
-%setup
+%autosetup -p1
 
 %build
 %ocaml_oasis_configure --enable-docs
@@ -51,8 +51,7 @@ code.
 %ocaml_oasis_findlib_install
 
 %files
-%defattr(-,root,root,-)
-%doc COPYING.txt
+%license COPYING.txt
 %{_bindir}/*
 
 %changelog

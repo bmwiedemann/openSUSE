@@ -12,7 +12,7 @@ Tue Sep  3 10:17:31 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
 -------------------------------------------------------------------
 Fri Aug 23 09:58:01 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
 
-- Update to version 1.10.5:
+- Update to version 1.10.5: (jsc#SLE-8501)
   * https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.5/src/hdf5-1.10.5-RELEASE.txt
 - Bump fortran library soname, sonum_F from 100 to 102.
 - Adjust library installation path, use %hpc_prefix/lib64 in x86_64 

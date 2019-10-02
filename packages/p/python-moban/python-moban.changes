@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct  1 14:25:35 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.6.3
+  * support pyFilesystem2
+  * -vv show debug trace
+  * Allow mobanfile to include data from arbitrary config files
+  * fix moban 0.4.5 test failures on openSUSE Tumbleweed
+  * '-e' to load extensions for template engines, i.e. jinja2
+  * jinja-cli parity: support command line pipe stream.
+
+-------------------------------------------------------------------
 Tue Jul 23 14:05:47 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.5.0:

@@ -5,4 +5,7 @@ currently undergoing heavy development.  As of writing, rarian can be
 installed in place of scrollkeeper and everything will work okay (as
 far as my testing indicates)</description>
   <devel project="GNOME:Factory" package="rarian"/>
+  <build>
+    <disable/>
+  </build>
 </package>

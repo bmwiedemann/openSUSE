@@ -18,7 +18,7 @@
 
 
 Name:           rbac-manager
-Version:        0.8.0
+Version:        0.8.3
 Release:        0
 Summary:        Kubernetes operator for easier RBAC management
 License:        Apache-2.0
@@ -26,8 +26,7 @@ Group:          System/Management
 URL:            https://github.com/reactiveops/rbac-manager
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.11
+BuildRequires:  golang(API) >= 1.12
 ExcludeArch:    s390
 ExcludeArch:    %{ix86}
 
@@ -44,7 +43,9 @@ This package contains the yaml file requried to download and run the
 rbac-manager in a kubernetes cluster.
 
 %prep
-%setup -qa1
+%setup -q # a1
+rm -rf vendor
+tar xf %{SOURCE1}
 
 %build
 go build -mod vendor -buildmode=pie -a -o rbac-manager ./cmd/manager/main.go

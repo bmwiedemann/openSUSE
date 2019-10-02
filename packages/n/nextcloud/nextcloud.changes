@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Oct  1 14:29:36 UTC 2019 - ecsos@opensuse.org
+
+- Update to 17.0.0
+  Nextcloud 17 introduces a series of secure collaboration features
+  including a collaborative text editor, remote wipe, updated 
+  secure view, improved two-factor-authentication and easier access
+  than ever with deeper integration of large-scale storage like S3
+  and IBM Spectrum Scale.
+
+  As this is a major release, the changelog is too long to put 
+  here. 
+  Users can look at github milestones to find what has been merged.
+
+  A quick overview of what is new:
+  - Remote Wipe allows users and administrators to forcibly clean 
+    files from remote devices, for example in case they are stolen.
+  - Nextcloud Text, our new distraction-free, collaborative rich t
+    ext editor
+  - Improvements to secure view like enforcable watermarks enable 
+    virtual data room use
+  - Setup two-factor authentication after first login, admins can 
+    create one-time login tokens in the web UI and delegate this 
+    to group admins
+  - secure mailbox in Outlook Add-in
+  - LDAP write support makes it possible to manage users from 
+    Nextcloud
+  - S3 versioning support, IBM Spectrum Scale integration and 
+    Global Scale with Collabora Online
+
+-------------------------------------------------------------------
 Wed Sep 25 19:15:59 UTC 2019 - ecsos@opensuse.org
 
 - Update to 16.0.5

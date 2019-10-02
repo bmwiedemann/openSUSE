@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Aug 27 08:36:28 UTC 2019 - Thomas Blume <thomas.blume@suse.com>
+
+- update to latest released upstream version 2.0.4 (jsc#SLE-8583)
+
+* Add support for Linux 5.3 new sysfs cpu topology files with Die information.
+* Add support for Intel v2 Extended Topology Enumeration in the x86 backend.
+* Tiles, Modules and Dies are exposed as Groups for now.
+  + HWLOC_DONT_MERGE_DIE_GROUPS=1 may be set in the environment to prevent
+    Die groups from being automatically merged with identical parent or children.
+* Ignore NUMA node information from AMD topoext in the x86 backend,
+  unless HWLOC_X86_TOPOEXT_NUMANODES=1 is set in the environment.
+* Group objects have a new "dont_merge" attribute to prevent them from
+  being automatically merged with identical parent or children.
+* Fix build on Cygwin, thanks to Marco Atzeri for the patches.
+* Fix a corner case of hwloc_topology_restrict() where children would
+  become out-of-order.
+* Fix the return length of export_xmlbuffer() functions to always
+  include the ending \0.
+* Fix lstopo --children-order argument parsing.
+* Add support for Hygon Dhyana processors in the x86 backend,
+  thanks to Pu Wen for the patch.
+* Fix symbol renaming to also rename internal components,
+  thanks to Evan Ramos for the patch.
+* Fix build on HP-UX, thanks to Richard Lloyd for reporting the issues.
+* Detect PCI link speed without being root on Linux >= 4.13.
+* Add HWLOC_VERSION* macros to the public headers,
+  thanks to Gilles Gouaillardet for the suggestion.
+* Bump the library soname to 15:0:0 to avoid conflicts with hwloc 1.11.x
+  releases. The hwloc 2.0.0 soname was buggy (12:0:0), applications will
+  have to be recompiled.
+* Serialize pciaccess discovery to fix concurrent topology loads in
+  multiple threads.
+* Fix hwloc-dump-hwdata to only process SMBIOS information that correspond
+  to the KNL and KNM configuration.
+* Add a heuristic for guessing KNL/KNM memory and cluster modes when
+  hwloc-dump-hwdata could not run as root earlier.
+* Add --no-text lstopo option to remove text from some boxes in the
+  graphical output. Mostly useful for removing Group labels.
+* Some minor fixes to memory binding.
+
+-------------------------------------------------------------------
 Tue Nov 21 12:29:26 UTC 2017 - Thomas.Blume@suse.com
 
 - update to latest released upstream version 1.11.8 (fate#324166)

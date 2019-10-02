@@ -135,4 +135,12 @@
   * New option --skip for the shodan download command to skip results</comment>
     <requestid>729778</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7145ded8ca7a8b102f30e0b668643884</srcmd5>
+    <version>1.19.0</version>
+    <time>1570010443</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>734407</requestid>
+  </revision>
 </revisionlist>

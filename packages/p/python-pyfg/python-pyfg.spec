@@ -39,11 +39,11 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-This API allows you to interact with a device runnine FortiOS in a sane way.
-With this API you can:
+This API allows interacting with a device running FortiOS.
+With this API, one can:
 
  * Connect to the device, retrieve the running config (the entire config or
-   some blocks, whatever you want) and build a model
+   some blocks) and build a model
  * Build the same model from a file
  * Do changes in the candidate configuration locally
  * Create a candidate configuration from a file
@@ -52,9 +52,7 @@ With this API you can:
    the candidate configuration
 
 %prep
-%setup -q -n pyfg-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -n pyfg-%{version} -p1
 
 %build
 %python_build

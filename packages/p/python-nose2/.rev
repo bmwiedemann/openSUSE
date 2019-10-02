@@ -42,4 +42,12 @@
     <comment></comment>
     <requestid>702904</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>759af4cb1bcc325a25886e7a6a16e500</srcmd5>
+    <version>0.9.1</version>
+    <time>1570010270</time>
+    <user>dimstar_suse</user>
+    <comment>- Add dep on coverage as it is hard requirement based on requires</comment>
+    <requestid>734078</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct  1 13:10:55 UTC 2019 - wbauer@tmo.at
+
+- Update to 0.9.3
+  * Important: plenty of fixes for margins and Fitt's Law
+  * Support android click animation even for panel empty areas
+  * Latte indicators can now support animations for panel empty
+    areas
+  * Track kwinrc changes only when needed (kde#411657)
+  * Latte plasmoid is now using the last used activity from its
+    layouts instead of the plasma current one. In that way tasks
+    animations are improved under multiple layouts environments
+  * Fix for all screens last active window tracking (kde#411670)
+  * Fix automatic icon size calculations in order to avoid constant
+    cpu usage (kde#411860)
+  * Update some qt deprecated code
+
+-------------------------------------------------------------------
 Thu Sep  5 15:18:06 UTC 2019 - wbauer@tmo.at
 
 - Update to 0.9.2

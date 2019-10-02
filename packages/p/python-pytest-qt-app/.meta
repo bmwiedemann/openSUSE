@@ -1,5 +1,0 @@
-<package name="python-pytest-qt-app" project="openSUSE:Factory">
-  <title>python-pytest-qt-app</title>
-  <description>QT app fixture for py.test</description>
-  <devel project="devel:languages:python:pytest" package="python-pytest-qt-app"/>
-</package>

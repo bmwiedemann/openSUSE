@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 30 13:20:05 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add dep on coverage as it is hard requirement based on requires
+
+-------------------------------------------------------------------
 Tue May 14 17:02:07 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to fix build with new mock versions:
