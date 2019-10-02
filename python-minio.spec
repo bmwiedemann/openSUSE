@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-minio
-Version:        4.0.21
+Version:        5.0.1
 Release:        0
 Summary:        Minio library for Amazon S3 compatible cloud storage
 License:        Apache-2.0
