@@ -1,1137 +1,1403 @@
-commit ad37d5b186c7ea62c874546472a807310acf0e75
+commit 9fa11cd961e283234ea351085cf45a24182db81f
 Author: Stephan Wiesand <stephan.wiesand@desy.de>
-Date:   Fri Apr 12 16:53:40 2019 +0200
+Date:   Fri Sep 6 16:17:39 2019 +0200
 
-    Make OpenAFS 1.8.3
+    Make OpenAFS 1.8.4pre2
     
-    Update version strings for the 1.8.3 release.
+    Update version strings for the second 1.8.4 prerelease.
     
-    Change-Id: Ie8b29765e4f45bc3ddbe1aba9e31068da0bb54cf
-    Reviewed-on: https://gerrit.openafs.org/13546
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Change-Id: I83ebb06aaae9484e0773b68f336e6d8752069824
+    Reviewed-on: https://gerrit.openafs.org/13839
     Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
     Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+    Tested-by: Stephan Wiesand <stephan.wiesand@desy.de>
 
-commit 288c218fa96abd8c9ddb66bc6f6bc60a20311645
+commit cf7ee9a76dbf16b0aa44f737aca8448870824098
 Author: Stephan Wiesand <stephan.wiesand@desy.de>
-Date:   Fri Apr 12 16:47:28 2019 +0200
+Date:   Sun Sep 8 13:16:35 2019 +0200
 
-    Update NEWS for 1.8.3
+    Update NEWS for 1.8.4pre2
     
-    Finalize the release notes for OpenAFS 1.8.3
+    Release notes for the OpenAFS 1.8.4 prerelease 2.
     
-    Change-Id: I5b5eeedde53a1135c003302719cfdeca4f67e8fd
-    Reviewed-on: https://gerrit.openafs.org/13545
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Change-Id: Iad2098f56c9e5a9025761e21f609aa3c1584b4aa
+    Reviewed-on: https://gerrit.openafs.org/13840
     Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
     Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+    Tested-by: Stephan Wiesand <stephan.wiesand@desy.de>
 
-commit dc16d6fffa69fe98e8bb338daea7b35ff59651c9
-Author: Stephan Wiesand <stephan.wiesand@desy.de>
-Date:   Fri Jan 25 16:08:34 2019 +0100
+commit 676c57f5551fb18cf8485a0e945bc15b78eb1051
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Wed Oct 17 16:35:36 2018 -0500
 
-    Make OpenAFS 1.8.3pre1
+    Remove one more automake VERSION reference
     
-    Update version strings for the first 1.8.3 prerelease.
+    The configure summary was still referencing the old automake-specific
+    VERSION var. Use the autoconf PACKAGE_VERSION var instead, so this
+    actually shows our version.
     
-    Change-Id: I62d22cfba90ec89ac6734d7e8e08ce062dedff80
-    Reviewed-on: https://gerrit.openafs.org/13444
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
-
-commit 3f902d3213ca4bc5e2072c9a729e108ec9b5a0b4
-Author: Stephan Wiesand <stephan.wiesand@desy.de>
-Date:   Fri Jan 25 18:15:00 2019 +0100
-
-    Update NEWS for 1.8.3pre1
-    
-    Release notes for the OpenAFS 1.8.3 prerelease
-    
-    Change-Id: Ie9f988d0f03f1368125d0e5894d5dd5e9ef95d88
-    Reviewed-on: https://gerrit.openafs.org/13445
+    Reviewed-on: https://gerrit.openafs.org/13360
     Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
     Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    (cherry picked from commit 0f65b40b24599d58cf30bfd47fae83ab54e1416a)
+    
+    Change-Id: I5bd9399acc6e4c6dd19b94198354b600f35bee15
+    Reviewed-on: https://gerrit.openafs.org/13790
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 4ccc332ab61cfc4d33fdc48a7d57e93cf9cecb91
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Thu Oct 11 00:18:17 2018 -0500
+
+    Remove automake autoconf vars
+    
+    Commit 4706854f (autoconf: updates and cleanup) removed our invocation
+    of AM_INIT_AUTOMAKE, which defines the output variables PACKAGE and
+    VERSION. Several files in our build system are still referencing
+    @PACKAGE@ and @VERSION@, though, leaving them un-substituted. This
+    most easily is seen as the AFSVersion version string remaining as
+    "@VERSION@" when the tree is built without git, but it also affects
+    some packaging in the tree.
+    
+    Remove references to @VERSION@ and @PACKAGE@, replacing them with
+    their autoconf equivalents @PACKAGE_VERSION@ and @PACKAGE_TARNAME@.
+    
+    Reviewed-on: https://gerrit.openafs.org/13357
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 2f2c2ce62aa17ecac3651d64c1168af926f7458b)
+    
+    Change-Id: If2b98b8930bc687170f53f852417fb9374bf6c60
+    Reviewed-on: https://gerrit.openafs.org/13789
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 4330e16a47e76ea6c1f35467a1ddbe97bded7a92
+Author: Cheyenne Wills <cwills@sinenomine.net>
+Date:   Fri Aug 9 14:25:03 2019 -0600
+
+    LINUX 5.3.0: Use send_sig instead of force_sig
+    
+    Linux 5.3.0 commit 3cf5d076fb4d48979f382bc9452765bf8b79e740 "signal
+    Remove task parameter from force_sig" (part of siginfo-linus branch)
+    changes the parameters for the Linux kernel function force_sig. See LKML
+    thread starting at https://lkml.org/lkml/2019/5/22/1351
+    
+    According to the LKML discussion and the above commit message force_sig
+    is only safe to deliver a synchronous signal to the current task. To
+    send a signal to another task, we're supposed to use send_sig instead,
+    which has been available since at least linux 2.6.12-rc12.
+    
+    Currently, rx_knet calls force_sig to kill the rxk_ListenerTask.  With
+    the Linux 5.3.0 kernel, this module fails to compile due to the above
+    noted changes.
+    
+    Replace the force_sig call with send_sig.  In order to use send_sig, the
+    rxk_listener thread must allow SIGKILL and during shutdown (umount)
+    SIGKILL must be unblocked for the rxk_listener thread.
+    
+    Note that SIGKILL is initially blocked on rxk_listener and is only
+    unblocked when shutting down the thread.  Having the signal blocked is
+    sufficient to prevent unwanted signals from reaching the rxk_listener
+    thread during normal operation.
+    
+    Reviewed-on: https://gerrit.openafs.org/13753
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    (cherry picked from commit 2b7af1243f46496c0b5973b3fa2a6396243f7613)
+    
+    Change-Id: I6eb44311fbcc63adb6ebeb85a8e076922befd645
+    Reviewed-on: https://gerrit.openafs.org/13788
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
     Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 6e8674ef07cae2f62a9dc646d9f6e7e2e6307aab
+Author: Cheyenne Wills <cwills@sinenomine.net>
+Date:   Thu Aug 8 16:53:13 2019 -0600
+
+    LINUX 5.3.0: Check for 'recurse' arg in keyring_search
+    
+    Linux 5.3.0 commit dcf49dbc8077e278ddd1bc7298abc781496e8a08 "keys: Add a
+    'recurse' flag for keyring searches" adds a new parameter to
+    Linux kernel keyring_search function.
+    
+    Update the call to keyring_search to include the recurse parameter if
+    available. Setting the parameter to true (1) maintains the current
+    search behavior.
+    
+    Change-Id: I038117d1bccdf619a42132fba7d8d61b3ce3c14b
+    Reviewed-on: https://gerrit.openafs.org/13752
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-on: https://gerrit.openafs.org/13787
     Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
     Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
 
-commit a4b3a659095cf50a4c5bb6cea69c71680817830a
-Author: Mark Vitale <mvitale@sinenomine.net>
-Date:   Mon Oct 29 16:48:14 2018 -0400
+commit 6ab27a5cf3292a20ab807b7bc4dca43f305f14de
+Author: Stephan Wiesand <stephan.wiesand@desy.de>
+Date:   Fri May 17 16:52:21 2019 +0200
 
-    afs: avoid afs_GetDownDSlot panic on afs_WriteDCache failure
+    Make OpenAFS 1.8.4pre1
     
-    If afs_GetDownDSlot() finds insuffcient free slots in the
-    afs_freeDSList, it will walk the afs_DLRU attempting to flush and free
-    eligible dcaches.  However, if an error occurs during the flush to
-    CacheItems (afs_WriteDCache()), e.g., -EINTR, afs_GetDownDSlot() will
-    assert.
+    Update version strings for the first 1.8.4 prerelease.
     
-    However, a panic in this case is overkill, since afs_GetDownDSlot() is a
-    best-effort attempt to free dslots.  The caller (afs_UFSGetDSlot()) will
-    allocate more dcaches if needed.
+    Change-Id: I9aa05d7bce308780a1dc815341856e2291579039
+    Reviewed-on: https://gerrit.openafs.org/13596
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 1bebe1155e850389ace35a3e4b3f7d77b58758bd
+Author: Michael Meffie <mmeffie@sinenomine.net>
+Date:   Fri Jun 14 09:30:14 2019 -0400
+
+    Update NEWS for 1.8.4pre1
     
-    Instead:
-    - Refactor afs_GetDownDSlot() by moving the QRemove() call to after the
-    afs_WriteDCache logic, so it accompanies the logic that puts the dcache
-    back on the freelist.  This is safe because we hold the afs_xdcache W
-    lock for the duration of the routine.
-    - If afs_WriteDCache() returns an error, return early and let the caller
-    handle any recovery.
+    Release notes for the OpenAFS 1.8.4 prerelease 1.
     
-    Reviewed-on: https://gerrit.openafs.org/13364
+    Change-Id: I3976919660ff6a0eda82b71806e116f4322fb38a
+    Reviewed-on: https://gerrit.openafs.org/13643
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit a6ee134f7f5da47022145bdb4a8bceff08414465
+Author: Cheyenne Wills <cwills@sinenomine.net>
+Date:   Fri Jul 5 08:23:10 2019 -0600
+
+    libadmin: overlap warning in strcpy with gcc9
+    
+    GCC 9 with --enable-checking produces a new warning/error in
+    afs_utilAdmin.c associated with a strcpy with the potential of an
+    overlap.  The index used is signed which triggers the new warning. The
+    source and target of the strcpy are contained within the same higher
+    level structure.
+    
+    Change the variable 'index' from signed to unsigned to resolve the
+    warning/error. Change the variable 'total' in the same structure to
+    unsigned to be consistent with it's usage with 'index'.
+    
+    Reviewed-on: https://gerrit.openafs.org/13660
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 79dffe29c8a0ec55c4231a18077efdfa7c1edf53)
+    
+    Change-Id: I19a192ecea86314851e6889274eb030c5caff8cb
+    Reviewed-on: https://gerrit.openafs.org/13724
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 033b66b0d688dd12f929475a0686149df63f8a70
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Tue Oct 30 15:41:22 2018 -0500
+
+    aklog: Avoid misleading AFSCELL message
+    
+    Currently, if the AFSCELL environment variable is set, aklog (and
+    other libauth-using utilities) print out a message when
+    afsconf_GetLocalCell is called:
+    
+        Note: Operation is performed on cell env.example.com
+    
+    However, this message is also printed (with the AFSCELL cell) when
+    aklog is given the -cell command-line argument, even though aklog
+    actually uses the cell given on the command line. For example:
+    
+        $ AFSCELL=env.example.com aklog -cell cli.example.com -d
+        Note: Operation is performed on cell env.example.com
+        Authenticating to cell cli.example.com (server srv1.example.com).
+        [...]
+    
+    libauth will normally not print the "Operation" message if we're not
+    using the default cell, but it determines this by checking if someone
+    called afsconf_GetCellInfo before calling afsconf_GetLocalCell. And
+    currently, aklog calls afsconf_GetLocalCell before
+    afsconf_GetCellInfo, so the message gets printed because libauth has
+    no way of knowing that we're actually using a different cell.
+    
+    klog gets around this by making an additional ignored call to
+    afsconf_GetCellInfo before afsconf_GetLocalCell, but we can fix this
+    in aklog by just changing the order of the calls. So, just call
+    afsconf_GetCellInfo first; if we're using the local cell, we can just
+    give a NULL cell parameter, instead of looking up the local cellname
+    first.
+    
+    Reviewed-on: https://gerrit.openafs.org/13371
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    (cherry picked from commit 877d9d79a32b9e81911cb567f844b11c693229f0)
+    
+    Change-Id: I67350be8c25fb93975442175a64098123503b40c
+    Reviewed-on: https://gerrit.openafs.org/13676
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 61e3663a18899898bef8c95e804cf6980651fbf5
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Mon Mar 25 16:33:39 2019 -0500
+
+    afs: Avoid non-dir ENOENT errors in afs_lookup
+    
+    Historically, there have been many subsystems in libafs that can
+    generate ENOENT errors for a variety of reasons. In addition to the
+    expected case where we lookup a name that doesn't exist, other
+    scenarios have caused ENOENT error codes to be generated, such as:
+    internal inconsistencies, I/O errors, or even abort codes from the
+    network.
+    
+    When one of these scenarios cause an ENOENT error code in one of those
+    situations during afs_lookup() when the target name does actually
+    exist, it can be confusing to a user, or even result in incorrect
+    application behavior. On Linux in particular, ENOENT results from a
+    lookup are cached in negative dcache entries, and so can cause future
+    lookups for the same name to yield ENOENT errors.
+    
+    Various commits have tried to avoid this abuse of the ENOENT error
+    code, such as 2aa4cb04 (afs: Stop abusing ENOENT). But we cannot
+    prevent receiving ENOENT abort codes from the network, and mistakes in
+    the future may cause more scenarios incorrectly yielding ENOENTs.
+    
+    However, in afs_lookup, we do know that legitimate ENOENT errors can
+    only occur in one situation: when we have a valid directory blob, and the
+    afs_dir_Lookup() operation itself returns an ENOENT error for the
+    target name. For all other areas of afs_lookup(), we know that an
+    ENOENT error is not legitimate, since we may not be sure if the target
+    name exists or not.
+    
+    So to proactively avoid incorrect ENOENT results, prevent afs_lookup
+    from returning ENOENT, except in the specific code path where
+    afs_dir_Lookup is called.
+    
+    Reviewed-on: https://gerrit.openafs.org/13537
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    (cherry picked from commit 5f48367f2bd5bf1c0e689c79508177b649b9113b)
+    
+    Change-Id: I2698c26d7b75146d92e1763d49dce135ad66f672
+    Reviewed-on: https://gerrit.openafs.org/13692
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit bb886044d8d2b309ed5d0bd6f3d0c7c71909d6c8
+Author: Mark Vitale <mvitale@sinenomine.net>
+Date:   Wed May 22 22:50:00 2019 -0400
+
+    auth: make PGetTokens2 work with 3-char cellnames
+    
+    PGetTokens2 accepts two different types of input:
+    - an integer 'iterator' to request the nth token set for a user
+    - a string cellname to request the user's token set for that cell
+    
+    Unfortunately, it distinguishes between these by assuming if the input
+    length is sizeof(afs_int32) (4 bytes), it must be an integer.  This
+    assumption is incorrect if the cellname is three (3) characters long
+    plus a nul terminator.
+    
+    The result is that the cellname string is interpreted as a very large
+    "n"; the subsequent search for the user's "very-large-nth-token" fails,
+    making it appear that the user has no valid token for this cell.
+    
+    Improve on this heuristic by double-checking any putative integer input.
+    If it is actually a 3-character string, then process the input as a
+    cellname instead.
+    
+    Introduced by commit 5ec5ad5dcca84e99e5f55987cc4f787cd482fdde 'New
+    GetToken pioctl'.
+    
+    While here, add doxygen comments.
+    
+    Reviewed-on: https://gerrit.openafs.org/13599
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    (cherry picked from commit b0278994826f6bd1dfebc39f26282b8fbdadf1a0)
+    
+    Change-Id: Ib64749d65f03fc564b1d987b426832442be8d5bd
+    Reviewed-on: https://gerrit.openafs.org/13679
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 5b0ca2e4ebdd7f86c52926700099e3654f826ccc
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Sat Nov 3 01:04:43 2018 -0500
+
+    ptserver: Check for -restricted in SPR_Delete
+    
+    Currently, all prdb write operations, except for SPR_Delete, will fail
+    with PRPERM if called by a non-system:administrators caller while
+    restricted mode is active.  SPR_Delete is missing this check, and so
+    is not affected by the -restricted option.
+    
+    Fix this by inserting the same check for -restricted as all other code
+    paths that check for -restricted.
+    
+    Reviewed-on: https://gerrit.openafs.org/13374
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    (cherry picked from commit 2e556c0f23ae439c804352cf51fcf30878b03c7a)
+    
+    Change-Id: I9a31cf4e6490aa13dc0c239d2660fc146553ee75
+    Reviewed-on: https://gerrit.openafs.org/13688
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
     Reviewed-by: Andrew Deason <adeason@sinenomine.net>
     Tested-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
     Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit d6f52d11c358f71b2c4357cb135e898de7c6277b)
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit d47904684afb8402b692c9f7a4bb5f32cc3da5d7
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Sat Nov 3 00:58:58 2018 -0500
+
+    ptserver: Fix AccessOK -restricted for SYSADMINID
     
-    Change-Id: I2630bf04b3e3a88a1fa00f693adf2a77290d47ef
-    Reviewed-on: https://gerrit.openafs.org/13503
+    According to the documentation, as well as other code paths that check
+    for -restricted, the -restricted option does not affect members of
+    system:administrators. Currently, though, AccessOK only bypasses the
+    -restricted check if the caller is SYSADMINID itself (i.e. localauth).
+    
+    Fix AccessOK to only do the -restricted checks if the caller is not in
+    system:administrators, to match the documentation as well as other
+    ptserver operations.
+    
+    Reviewed-on: https://gerrit.openafs.org/13373
     Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 3a8fa4ecd65d5d743fdc573c9f0f261aee2063b6)
+    
+    Change-Id: I786830efab229a50a521daf3efc624e949475030
+    Reviewed-on: https://gerrit.openafs.org/13687
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Tested-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit a33468b8d596fa45224b447bde90e3606a2fd5b9
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Tue Oct 30 14:29:24 2018 -0500
+
+    ptserver: Fix AccessOK -restricted for addToGroup
+    
+    The function AccessOK is used by all of ptserver RPC handlers that
+    need to do an authorization check, and the last two arguments are set
+    as such:
+    
+    - When adding a member to a group, 'mem' is PRP_ADD_MEM and 'any' is
+      PRP_ADD_ANY
+    
+    - When removing a member from a group, 'mem' is PRP_REMOVE_MEM and
+      'any' is 0
+    
+    - When modifying an entry (setFieldsEntry) or modifying some global
+      database fields, 'mem' and 'any' are both set to 0
+    
+    - When reading an entry and not modifying it, 'mem' and/or 'any' are
+      set to other values (depending on if we're checking membership,
+      examining the entry itself, etc)
+    
+    Commit 93ece98c (ptserver-restricted-mode-20050415) added a check to
+    AccessOK to make it return false for -restricted mode when we are
+    adding a member to a group, or when 'mem' and 'any' are both 0. This
+    didn't catch the case when we are removing a member from a group,
+    though, when 'mem' is PRP_REMOVE_MEM.
+    
+    It looks like commit a614a8d9 (ptutils-restricted-accessok-20081025)
+    tried to fix this by adding a check for PRP_REMOVE_MEM, but it also
+    required 'any' to be set to 0 for the conditional to succeed. This is
+    true when removing a member from a group, but when adding a member to
+    a group, 'any' is PRP_ADD_ANY, and so this check fails.
+    
+    This means that currently, when restricted mode is turned on,
+    non-admins can still run addToGroup and setFieldsEntry successfully.
+    
+    Fix this by checking for PRP_ADD_MEM/PRP_REMOVE_MEM separately from
+    checking if 'mem'/'any' are set to 0. Break up this conditional into
+    separate if() statements with comments to try to make the checks
+    more clear.
+    
+    Reviewed-on: https://gerrit.openafs.org/13370
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit dfc78d533ef64c8d6daf134e2a0f67c5c16f7369)
+    
+    Change-Id: I7f53570b42e2700a33dd5e72a31f6f7f8b876e79
+    Reviewed-on: https://gerrit.openafs.org/13686
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Tested-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 8733253e2f61bf33a2fea5724b7cd6a8de50a10f
+Author: Mark Vitale <mvitale@sinenomine.net>
+Date:   Wed May 22 23:03:11 2019 -0400
+
+    auth: eliminate pointless retries in ktc_ListTokensEx
+    
+    ktc_ListTokensEx is an iterator to provide the names of each cell for
+    which a user has a token set.  It does this by looking for the 1 through
+    nth token set for a given user.  However, as currently implemented,
+    it always continues searching up to the 100x safety limit even when
+    there are no more token sets for the user.
+    
+    Instead, return immediately when VIOC_GETTOK2 returns EDOM (no more
+    tokens for this user).
+    
+    Introduced by commit a86ad262d2a8be36f43ab0885a84dde37ddfc464 'auth: Add
+    the ktc_ListTokensEx function'.
+    
+    Reviewed-on: https://gerrit.openafs.org/13598
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 95ae30c30d98a3219fd021e0ed83200c1b6c266f)
+    
+    Change-Id: Ib0489b78b92861ae25b625b3054caf68f3b0a074
+    Reviewed-on: https://gerrit.openafs.org/13678
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 1e6c4502de6bd8d6201ee7042a364a8a04e577d6
+Author: Mark Vitale <mvitale@sinenomine.net>
+Date:   Thu Oct 25 10:27:41 2018 -0400
+
+    viced: correct option parsing for -vlru*, -novbc
+    
+    Commit a5effd9f1011aa319fdf432c67aec604053b8656 "viced: Use libcmd for
+    command line options" modernized the option parsing for (da)fileserver,
+    but introduced a few errors for the following options:
+    
+    -vlruthresh <nn>
+    -vlruinterval <nn>
+    -vlrumax <nn>
+    -novbc
+    
+    Correct the errors.
+    
+    Reviewed-on: https://gerrit.openafs.org/13365
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    (cherry picked from commit d058acb354cab9856303cc341a1f439e4f7f3454)
+    
+    Change-Id: I5eceb3cc77cfca5c9ec68efdbaabd069c3690c5a
+    Reviewed-on: https://gerrit.openafs.org/13680
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
     Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
     Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
     Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
 
-commit ff3ae28f14cb42b5e72adfceb1f6271a8f675e4a
+commit 5d84f2a10f61e8b68b4bff18784efeb91845eef8
 Author: Cheyenne Wills <cwills@sinenomine.net>
-Date:   Fri Jan 25 17:35:51 2019 -0700
+Date:   Tue Jun 25 10:40:53 2019 -0600
 
-    Redhat: 'clean build area' error message during dkms build/install
+    util: serverLog using memory after free
     
-    dkms invokes a make clean command before and after building the kernel
-    module. The make clean that is issued at the start of building results
-    in a nuisance error message because the Makefile doesn't yet exist
+    clang's scan-build detected a "use of memory after it is freed"
+    condition.
     
-        Building module:
-        cleaning build area...(bad exit status: 2)
+    The function OpenLogFile frees the variable ourName before creating a
+    duplicate of the name passed to it.  However there is a call that uses
+    ourName as the parameter: OpenLogFile(ourName).  This results in freeing
+    ourName then doing a strdup of the same memory location.
     
-    In the dkms.conf file, built from within the openafs.spec, change the
-    command defined in the CLEAN statement to test for the existence of the
-    Makefile prior to running the actual make clean
+    Test the passed parameter and if it's the same as ourName already skip
+    the free and strdup.
     
-    Reviewed-on: https://gerrit.openafs.org/13460
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 10f2c469f45eece0e12573388ae66e392e2dff1c)
+    This bug was introduced in commit
+        340ec2f79208ee21c3130c4b1c13995947ce426c
+        "util: allocate log filename buffers"
     
-    Change-Id: If3440b576ad62441bb6b970016fa9808b51abf70
-    Reviewed-on: https://gerrit.openafs.org/13479
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
-
-commit 232bd12b070e1fbeb173e31251e65e63a0d1f959
-Author: Andrew Deason <adeason@sinenomine.net>
-Date:   Tue Aug 7 17:27:24 2018 -0500
-
-    Avoid format truncation warnings
-    
-    With gcc 7.3, we start getting several warnings like the following:
-    
-    vutil.c: In function ‘VWalkVolumeHeaders’:
-    vutil.c:860:34: error: ‘%s’ directive output may be truncated writing up to 255 bytes into a region of size 63 [-Werror=format-truncation=]
-          snprintf(name, VMAXPATHLEN, "%s" OS_DIRSEP "%s", partpath, dentry->d_name);
-    
-    Most or all of these truncations should be okay, but increase the size
-    of the relevant buffers so we can build with warning checking turned
-    on.
-    
-    Reviewed-on: https://gerrit.openafs.org/13274
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    (cherry picked from commit 2daa413e3ec061e0653adbd1d6549f15e0659a62)
-    
-    Change-Id: I61ae1ddae4b2d84147198a1dccb280d0da100a0b
-    Reviewed-on: https://gerrit.openafs.org/13459
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
-
-commit 804fefa6b46ed75921a1560a9e6b37842eabc94a
-Author: Cheyenne Wills <cwills@sinenomine.net>
-Date:   Fri Jan 18 17:22:44 2019 -0700
-
-    Linux_5.0: replaced current_kernel_time with ktime_get_coarse_real_ts64
-    
-    In Kernel commit fb7fcc96a86cfaef0f6dcc0665516aa68611e736 the
-    current_kernel_time/current_kernel_time64 functions where renamed
-    and the calling was standardized.
-    
-    According to the Linux Documentation/core-api/timekeeping.rst
-    ktime_get_coarse_real_ts64 is the direct replacement for
-    current_kernel_time64.  Because of year 2038 issues, there is no
-    replacement for current_kernel_time.
-    
-    Updated code that used current_kernel_time to use new name and calling
-    convention.
-    
-    Updated autoconf test that sets IATTR_TAKES_64BIT_TIME as well.
-    
-    Reviewed-on: https://gerrit.openafs.org/13434
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 21ad6a0c826c150c4227ece50554101641ab4626)
-    
-    Change-Id: Idb8a2c1b74835601fb1fc699c3ebbcee75c94e3e
-    Reviewed-on: https://gerrit.openafs.org/13442
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
-
-commit e7d8dc01cc1f0592eaecea5b87990097e9e59b88
-Author: Cheyenne Wills <cwills@sinenomine.net>
-Date:   Fri Jan 18 16:53:58 2019 -0700
-
-    Linux_5.0: replace do_gettimeofday with ktime_get_real_ts64
-    
-    In Kernel commit e4b92b108c6cd6b311e4b6e85d6a87a34599a6e3 the
-    do_gettimeofday function was removed.
-    
-    According to the Linux Documentation/core-api/timekeeping.rst
-    ktime_get_real_ts64 is the direct replacement for do_gettimeofday
-    
-    Updated the macro osi_GetTime to use ktime_get_real_ts64 if it is
-    available.
-    
-    Reviewed-on: https://gerrit.openafs.org/13433
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    (cherry picked from commit b892fb127815bdf72103ae41ee70aadd87931b0c)
-    
-    Change-Id: I1a0237457e229a11d2a87a3a269cf24adc201e59
-    Reviewed-on: https://gerrit.openafs.org/13441
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
-    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
-
-commit 25829aaef319728e30fc45895e8945438e4dc719
-Author: Cheyenne Wills <cwills@sinenomine.net>
-Date:   Thu Jan 17 16:00:37 2019 -0700
-
-    Linux_5.0: Use super_block flags instead of Mount flags when filling sb
-    
-    In Kernel commit e262e32d6bde0f77fb0c95d977482fc872c51996
-    the mount flags (MS_) were moved from uapi/linux/fs.h to
-    uapi/linux/mount.h. This caused a compile failure in
-    src/afs/LINUX/osi_vfsops.c
-    
-    The Linux documentation in uapi/linux/mount.h indicates that the MS_
-    (mount) flags should only be used when calling sys_mount and filesystems
-    should use the SB_ (super_block) equivalent.
-    
-    src/afs/LINUX/osi_vfsops.c utilized the mount flag MS_NOATIME while
-    filling the super_block.  Changed to use SB_NOATIME (which has the same
-    numeric value as MS_NOATIME) if available.
-    
-    Reviewed-on: https://gerrit.openafs.org/13432
+    Reviewed-on: https://gerrit.openafs.org/13659
     Tested-by: BuildBot <buildbot@rampaginggeek.com>
     Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 3969bbca6017eb0ce6e1c3099b135f210403f661)
+    (cherry picked from commit f5f59cd8d336b153e2b762bb7afd16e6ab1b1ee2)
     
-    Change-Id: I66f7b758c0258ea2c0d93da030fa97b3db49bd6c
-    Reviewed-on: https://gerrit.openafs.org/13440
+    Change-Id: Ia1ae1144493fa682595b365324322d8d273c0cbb
+    Reviewed-on: https://gerrit.openafs.org/13675
     Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
     Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
     Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
 
-commit 8ca82f1252db2e3f17f6a9080f56d74035bdaa16
-Author: Andrew Deason <adeason@sinenomine.net>
-Date:   Thu Jan 17 00:12:06 2019 -0600
+commit 7a613798620f16998b1f8dd636f3bb3ad7a541e1
+Author: khm <khm@sciops.net>
+Date:   Tue Jun 25 12:51:21 2019 -0700
 
-    afs: Do not ignore errors in afs_CacheFetchProc
+    add dkms dependency in Red Hat unit file
     
-    afs_CacheFetchProc currently has a section of code that looks like
-    this pseudocode:
+    Currently, there is no explicit relationship between OpenAFS and dkms.
+    If dkms needs to rebuild the kernel module, OpenAFS will fail to mount
+    because modprobe will not load the module.  This change specifies that
+    OpenAFS should run after dkms if dkms is present.
     
-        if (!code) do {
-            while (length > 0) {
-                code = read_from_rx();
-                if (code) {
-                    break;
-                }
-                code = write_to_cache();
-                if (code) {
-                    break;
-                }
-            }
-            code = 0;
-        } while (moredata);
-        return code;
-    
-    When we encounter an error when reading from rx or writing to the
-    cache, we break out of the current loop to stop processing and return
-    an error. But there are _two_ loops in this section of the code, so
-    what we actually do is break out of the inner loop, set 'code' to 0,
-    and then usually return (since 'moredata' is usually never set).
-    
-    This means that when we encounter an unexpected error either from the
-    net or disk (or the memcache layer), we ignore the error and return
-    success. This means that we'll store a subset of the relevant chunk's
-    data to disk, and flag that chunk as complete and valid for the
-    relevant DV. If the error occurred before we wrote anything to disk,
-    this means we'll store an empty chunk and flag it as valid. The chunk
-    will be flagged as valid forever, serving invalid data, until the
-    cache chunk is evicted or manually kicked out. This can result in
-    files and directories appearing blank or truncated to applications
-    until the bad chunk is removed.
-    
-    Possibly the most common way to encounter this issue is when using a
-    disk cache, and the underlying disk partition is full, resulting in an
-    unexpected ENOSPC error. Theoretically this can be seen from an
-    unexpected error from Rx, but we would have to see a short read from
-    Rx without the Rx call being aborted. If the call was aborted, we'd
-    get an error from the call to rx_EndCall() later on.
-    
-    To fix this, change all of these 'break's into 'goto done's, to be
-    more explicit about where we are jumping to. Convert all of the
-    'break's in this function in the same way, to make the code flow more
-    consistent and easier to follow. Remove the 'if () do' on a single
-    line, since it makes it a little harder to see from a casual glance
-    that there are two nested loops here.
-    
-    This problem appears to have been introduced in commit 61ae8792 (Unite
-    CacheFetchProcs and add abstraction calls), included in OpenAFS
-    1.5.62.
-    
-    Reviewed-on: https://gerrit.openafs.org/13428
+    Reviewed-on: https://gerrit.openafs.org/13654
     Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Michael Laß <lass@mail.uni-paderborn.de>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
     Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
-    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
     Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit ce327b568f4ff522aa008f235d97e0d9144eb92c)
+    (cherry picked from commit fbe2a03aa69bc19768302685d902a25e4d6e157a)
     
-    Change-Id: Id4ec8ffef38b4c86beffc6272bd283bce2c74ffe
-    Reviewed-on: https://gerrit.openafs.org/13443
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Change-Id: If08df50128a29642e9cdfc311811b99a7889a158
+    Reviewed-on: https://gerrit.openafs.org/13674
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
     Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: khm <khm@sciops.net>
     Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
 
-commit 97f830605d5f251c58382c3f9febc4d98e949ee8
-Author: Andrew Deason <adeason@sinenomine.net>
-Date:   Mon Jan 14 17:12:27 2019 -0600
+commit 27a21f35a81c3671c9752edfd4fa502f5fc281e0
+Author: Mark Vitale <mvitale@sinenomine.net>
+Date:   Wed May 22 22:52:10 2019 -0400
 
-    lwp: Avoid freeing 'stackmemory' on AIX32
+    pioctl: limit fruitless token searches
     
-    Commit 55013a11 (lwp: Fix possible memory leak from scan-build) added
-    some free() calls to some otherwise-leaked memory. However, one of
-    these calls frees the 'stackmemory' pointer, which on AIX32 is not a
-    pointer from malloc/calloc, but calculated from reserveFromStack().
+    getNthCell searches the afs_users table for the nth token set belonging to a
+    given user.  However, it is impossible for a user to have more than one
+    token set per cell.  If the caller specifies a number greater than the
+    total number of cells this cache manager knows about, we know the search
+    will be fruitless.
     
-    To avoid corrupting the heap, skip this free call on AIX32. This
-    commit adds another #ifdef to avoid this, which is unfortunate, but
-    this is also how the free is avoided in the existing code for
-    Free_PCB().
+    Instead, return early in this case, avoiding both the lock and the
+    search.
     
-    Reviewed-on: https://gerrit.openafs.org/13426
+    Reviewed-on: https://gerrit.openafs.org/13597
     Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Tested-by: Mark Vitale <mvitale@sinenomine.net>
     Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
     Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit f6182922455aa0cbee19d138b0827eb87dc2b7ce)
+    (cherry picked from commit fc7e1700fe84f623fb9163466d24226df00b1a2c)
     
-    Change-Id: Id32eea373799c0cb43fb01a98210a0800899a1d6
-    Reviewed-on: https://gerrit.openafs.org/13427
+    Change-Id: Idfda263af173a7ca081fcea3eef0ec4a63e66eda
+    Reviewed-on: https://gerrit.openafs.org/13639
     Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
     Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
     Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
 
-commit 4c5daaa26fbe2fd7e24ceba475e60e5e5c765e78
+commit 22c9d9f8916cef5eacc9c930fc25c34c24de17e4
 Author: Pat Riehecky <riehecky@fnal.gov>
-Date:   Wed May 23 15:42:09 2018 -0500
+Date:   Fri Jun 1 16:33:37 2018 -0500
 
-    lwp: Fix possible memory leak from scan-build
+    Fix static expressions in conditionals
     
-    It is possible for LWP_CreateProcess to return early. When it does, it
-    should free up any memory it allocated before leaving scope.
+    The conditions in these if statements are always true (or always false).
+    Remove the check in cmdebug.c, as it is unnecessary, and fix the check
+    in vlclient.c to actually check for a valid voltype. (via cppcheck)
     
-    Reviewed-on: https://gerrit.openafs.org/13080
+    Reviewed-on: https://gerrit.openafs.org/13158
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
     Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
-    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 55013a111394052a0253c87a744d03dfabd1be75)
-    
-    Change-Id: I9112d2039c7c58a707231568e2e84e0340407bac
-    Reviewed-on: https://gerrit.openafs.org/13122
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Tested-by: PatRiehecky <jcpunk@gmail.com>
-    Reviewed-by: Joe Gorse <jhgorse@gmail.com>
     Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
-
-commit 05ceb67a574a8e263ce8f6738e0bf4495284f6fc
-Author: Andrew Deason <adeason@sinenomine.net>
-Date:   Thu Dec 13 12:25:32 2018 -0600
-
-    afs: Reword "cache is full" messages
-    
-    Currently, there are multiple different areas in the code that log a
-    message that look like this, when we encounter an ENOSPC error when
-    writing to the cache:
-    
-        *** Cache partition is FULL - Decrease cachesize!!! ***
-    
-    The message is a bit unclear, and doesn't even mention AFS at all.
-    Reword the message to try to explain a little more what's happening.
-    
-    Also, since we log the same message in several different places, move
-    them all to a common function, called afs_WarnENOSPC, so we only need
-    to change the message in one place.
-    
-    Reviewed-on: https://gerrit.openafs.org/13410
     Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    (cherry picked from commit d9d9571785dabc5c311111b1263fe0881b0ccda5)
+    (cherry picked from commit 5cd5cd9fa8754a5af346fa6a392363b046316c75)
     
-    Change-Id: I8e958f2896f5d4503d3a153b52720e8ba3025261
-    Reviewed-on: https://gerrit.openafs.org/13417
+    Change-Id: Ie3a2d6bfc99d1b5adf0524afc29dac30b655d04d
+    Reviewed-on: https://gerrit.openafs.org/13638
     Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
     Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
-
-commit 036c01d2f129b7118a77ecd6d89fbc779d91c224
-Author: Andrew Deason <adeason@sinenomine.net>
-Date:   Thu Nov 2 16:41:52 2017 -0500
-
-    rx: Convert rxinit_status to rx_IsRunning()
-    
-    Currently, all rx code examines the atomic rxinit_status to determine
-    if rx is running (that is, if rx_InitHost has been called, and
-    rx_Finalize/shutdown_rx hasn't been called). This is used in rx.c to
-    see if we're redundantly calling our setup/teardown functions, and
-    outside of rx.c in a couple of places to see if rx-related resources
-    have been initialized.
-    
-    The usage of rxinit_status is a little confusing, since setting bit 0
-    indicates that rx is not running, and clearing bit 0 indicates rx is
-    running. Since using rxinit_status requires atomic functions, this
-    makes code checking or setting rxinit_status a little verbose, and it
-    can be hard to see what it is checking for. (For example, does
-    'if (!rx_atomic_test_and_clear_bit(&rxinit_status, 0))' succeed when
-    rx running, or when rx is not running?)
-    
-    The current usage of rxinit_status in rx_InitHost also does not handle
-    initialization errors correctly. rx_InitHost clears rxinit_status near
-    the beginning of the function, but does not set rxinit_status if an
-    error is encountered. This means that any code that checks
-    rxinit_status (such as another rx_InitHost call) will think that rx
-    was initialized successfully, but various resources aren't actually
-    setup. This can cause segfaults and other errors as the code tries to
-    actually use rx.
-    
-    This can easily be seen in bosserver, if bosserver is started up while
-    the local host/port is in use by someone else. bosserver will try to
-    rx_InitHost, which will fail, and then we'll try to rx_InitHost again,
-    which will immediately succeed without doing any init. We then
-    segfault quickly afterwards as we try to use unitialized rx resources.
-    
-    To fix all of this, refactor code using rxinit_status to use a new
-    function, called rx_IsRunning(), to make it a little clearer what
-    we're checking for. We also re-introduce the LOCK_RX_INIT locks to
-    prevent functions like rx_InitHost and rx_Finalize from running in
-    parallel.
-    
-    Note that non-init/shutdown code (such as rx_upcall or rx_GetIFInfo)
-    does not need to wait for LOCK_RX_INIT to check if rx is running or
-    not. These functions only care if rx is currently setup enough to be
-    used, so we can immediately return a 'yes' or 'no' answer. That is, if
-    rx_InitHost is in the middle of running, rx_IsRunning returns 0, since
-    some resouces may not be fully initialized.
-    
-    Reviewed-on: https://gerrit.openafs.org/12761
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    (cherry picked from commit 5ced6025b9f11fadbdf2e092bf40cc87499ed277)
-    
-    Change-Id: I38ef9e3aea8a1f20e9db488a44da4535f76432d1
-    Reviewed-on: https://gerrit.openafs.org/13416
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
-
-commit a125fc5445fb4066a5845ff29b18974a0f7b5929
-Author: Mark Vitale <mvitale@sinenomine.net>
-Date:   Fri Nov 30 12:10:50 2018 -0500
-
-    vos: restore status information to 'vos status'
-    
-    Commit d3eaa39da3693bba708fa2fa951568009e929550 'rx: Make the rx_call
-    structure private' created accessors for several rx_call members.
-    However, it simply #ifdef'd out the packet counters and timestamps
-    reported by 'vos status' (AFSVol_Monitor).  This is a regression for the
-    1.8.x 'vos status' command.
-    
-    Instead, supply an accessor so 'vos status' can again be used to monitor
-    the progress of certain volume operations.
-    
-    FIXES 134856
-    
-    Reviewed-on: https://gerrit.openafs.org/13400
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
-    (cherry picked from commit 59d3a8b86da648e3c5b9774183c6c8571a36f0c4)
-    
-    Change-Id: I16c995623c40a708b06f08fb09224be1baa4de21
-    Reviewed-on: https://gerrit.openafs.org/13421
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
     Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
     Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
 
-commit 53515f40f3dc980cc2c1afd369207617b88e93d1
-Author: Cheyenne Wills <cwills@sinenomine.net>
-Date:   Wed Nov 28 15:45:20 2018 -0700
+commit 277d69d4358f94bf176268a5a98da39bf5277589
+Author: Benjamin Kaduk <kaduk@mit.edu>
+Date:   Fri Apr 19 10:38:24 2019 -0500
 
-    Redhat: correct path to kernel module in dkms.config
+    afs: add a file-level comment to afs_osidnlc.c
     
-    This fix corrects some annoying error and warning messages during
-    dkms install or uninstall.
+    This file doesn't currently do a great job of telling the reader what
+    it's used for.  Let's give them a hint, especially for the expansion
+    of "DNLC".
     
-    Install:
-    DKMS: build completed.
-    
-    	openafs:
-    	Running module version sanity check.
-    	ERROR: modinfo: could not open /lib/modules/2.6.32-754.6.3.el6.x
-    	86_64/weak-updates/openafs.ko: No such file or directory
-    	 - Original module
-    	   - No original module exists within this kernel
-    	 - Installation
-    	   - Installing to /lib/modules/2.6.32-754.6.3.el6.x86_64/extra/
-    	Adding any weak-modules
-    	WARNING: Can't read module /lib/modules/2.6.32-754.6.3.el6.x86_6
-    	4/weak-updates/openafs.ko: No such file or directory
-    	egrep: /lib/modules/2.6.32-754.6.3.el6.x86_64//weak-updates/open
-    	afs.ko: No such file or directory
-    
-    Remove
-    	Status: Before uninstall, this module version was ACTIVE on this
-    	kernel.
-    	Removing any linked weak-modules
-    	rmdir: failed to remove `.': Invalid argument
-    	WARNING: Can't read module /lib/modules/2.6.32-754.6.3.el6.x86_6
-    	4/weak-updates/openafs.ko: No such file or directory
-    	egrep: /lib/modules/2.6.32-754.6.3.el6.x86_64//weak-updates/open
-    	afs.ko: No such file or directory
-    
-    	openafs.ko:
-    	 - Uninstallation
-    	   - Deleting from:/lib/modules/2.6.32-754.6.3.el6.x86_64/extra/
-    	 - Original module
-    	   - No original module was found for this module on this kernel
-    	   - Use the dkms install command to reinstall any previous
-    	   module version.
-    
-    Background:
-    
-    Commit 1c96127e37c0ec41c7a30ea3e4aa68f3cc8a24f6 standardized the
-    location where the openafs.ko module is installed (from
-    /kernel/3rdparty to /extra/).  The RPM Spec file was not updated to
-    build the dkms.conf file with the corrected location.
-    
-    From the documentation for dkms
-    
-     DEST_MODULE_LOCATION is ignored on Fedora Core 6 and higher, Red Hat
-     Enterprise Linux 5 and higher, Novell SuSE Linux Enterprise Server 10
-     and higher, Novell SuSE Linux 10.0 and higher, and Ubuntu.  Instead,
-     the proper distribution-specific directory is used.
-    
-    However the DEST_MODULE_LOCATION is still used saving and restoring old
-    copies of the module.
-    
-    The NO_WEAK_MODULES parameter prevents dkms from creating a symlink into
-    weak-updates directory, which can lead to broken symlinks when
-    dkms-openafs is removed.  The weak modules facility was designed to
-    eliminate the need to rebuild kernel modules when kernel upgrades occur
-    and relies on the symbols within the kABI.  Openafs uses symbols that
-    are outside the kABI, and therefor is not a candidate for a weak module.
-    
-    Reviewed-on: https://gerrit.openafs.org/13404
+    Reviewed-on: https://gerrit.openafs.org/13557
     Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit a28f9d28aef18936eb0ea02491ce64c72eeb1fe9)
-    
-    Change-Id: Ia32856c85eb61e2f023e3ae970c945aa529682ce
-    Reviewed-on: https://gerrit.openafs.org/13438
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
-
-commit bf4d7ed224738b7e04b236e2d515770b6c7f8c40
-Author: Marcio Barbosa <mbarbosa@sinenomine.net>
-Date:   Mon Oct 1 17:44:22 2018 -0400
-
-    auth: check if argument of afsconf_Close* is null
-    
-    Currently, we do not check if the argument of afsconf_Close /
-    afsconf_CloseInternal is equal to null. In order to avoid a possible
-    segmentation fault, add the checks.
-    
-    Reviewed-on: https://gerrit.openafs.org/13352
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    (cherry picked from commit bd58bb85004a18bb6681ff2b0c13a04e23c4d9c4)
-    
-    Change-Id: I6a99b559ab863c8485af9ec17c940b64cf844acf
-    Reviewed-on: https://gerrit.openafs.org/13372
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
-    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
-
-commit 82f9557c43f239c22fe1cb33d970392fdd049e29
-Author: Mark Vitale <mvitale@sinenomine.net>
-Date:   Tue Sep 11 15:59:41 2018 -0400
-
-    budb: SBUDB_FindLatestDump should check result of FillDumpEntry
-    
-    FillDumpEntry may return an error, but FindLatestDump doesn't check its
-    result.  Therefore, SBUDB_FindLatestDump may return invalid results.
-    
-    Instead, check the return code from FillDumpEntry and abort the call if
-    it fails.
-    
-    Reviewed-on: https://gerrit.openafs.org/13312
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 2d8045d67686fbb80696b47b4a60e48e7e74fec9)
-    
-    Change-Id: I47328fc61c492c82ae5e0cce8ca3a292706c7413
-    Reviewed-on: https://gerrit.openafs.org/13329
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
-    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
-
-commit af0636ac6f69a6f82f4fe7ab1895f4559a55c34b
-Author: Jeffrey Altman <jaltman@auristor.com>
-Date:   Wed Jun 6 21:23:14 2018 -0400
-
-    rx: reset packet header userStatus field on reuse
-    
-    OpenAFS Rx fails to set the rx packet header userStatus field for most
-    packets sent other than type RX_PACKET_TYPE_ACK.  If the userStatus
-    field is not set, its value will be random garbage based upon the
-    prior use of the memory allocated to the rx_packet.
-    
-    This change explicitly sets the userStatus field to zero for all
-    DATA and Special packet types.
-    
-    Background
-    ----------
-    
-    OpenAFS Rx allocates a pool of rx_packet structures that are reused
-    for both incoming and outgoing Rx packets throughout the lifetime
-    of the process (or kernel module).
-    
-    The rx packet header field userStatus is set by rxi_Send() to
-    rx_call.localStatus.  rxi_Send() is called from both rxi_SendAck()
-    when sending RX_PACKET_TYPE_ACK packets and from rxi_SendSpecial()
-    when called with a non-NULL call structure (RX_PACKET_TYPE_BUSY,
-    RX_PACKET_TYPE_ACKALL, or RX_PACKET_TYPE_ABORT).  rx_call.localStatus
-    defaults to zero and can be modified by the application calling
-    rx_SetLocalStatus().
-    
-    The userStatus field is neither set nor reset when sending
-    RX_PACKET_TYPE_DATA packets and all packets sent without a call
-    structure.  When allocated packets are reused in these cases, the
-    value of the userStatus leaks from the prior packet use.  The
-    userStatus field is expected to be zero unless intentionally set by
-    the application protocol to another value.
-    
-    The AFS3 suite of rx services uses the rx_header.userStatus field
-    only in the RXAFS service and only as part of the definition
-    for RXAFS_StoreData and RXAFS_StoreData64 RPCs.  The StoreData RPCs
-    use the rx_header.userStatus field as an out-of-band communication
-    mechanism that permits the fileserver to signal to the cache manager
-    when the RXAFS_StoreData[64] has been assigned to an application
-    worker (thread) and the worker has acquired all of the required locks
-    and other resources necessary to complete the RPC.  This signal can be
-    sent before all of the application data has been received.  The cache
-    manager reads the userStatus value via rx_GetRemoteStatus().  When
-    bit-0 of the remote status value equals one and CSafeStore mode is
-    disabled, the cache manager can wakeup any threads blocked waiting for
-    the store operation to complete.
-    
-    Cache managers that perform a workload heavy in RXAFS_StoreData[64] RPCs
-    will end up with an increasing percentage of packets in which the
-    userStatus field is one instead of zero.
-    
-    Fileservers processing a workload heavy in RXAFS_StoreData[64] RPCs
-    will likewise end up with an increasing percentage of packets in which
-    the userStatus field is one instead of zero.
-    
-    Cache managers and Fileservers will therefore send DATA and call free
-    special packets with a non-zero userStatus field to peer services
-    (RXAFS, RXAFSCB, VL, PR).
-    
-    The failure to reset the userStatus field has not been a problem in
-    the past because only the OpenAFS cache manager has ever queried the
-    userStatus via rx_GetRemoteStatus() and only when issuing
-    RXAFS_StoreData[64] RPCs.
-    
-    Failure to correct this flaw interferes with future use of the userStatus
-    field in yet to be registered AFS3 RPCs and existing non-AFS3 services
-    that make use of the userStatus when sending data to a service.
-    
-    FIXES: 134554
-    Reviewed-on: https://gerrit.openafs.org/13165
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    
-    (cherry picked from commit c553170bcf3b97ba3745f21040c8e07b128ef983)
-    
-    Change-Id: I4e3c7fea876225ec401988a16b21ed3bb0760ee0
-    Reviewed-on: https://gerrit.openafs.org/13332
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
-    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
-
-commit 6b119a79a0dce1448e21cc14be8aa1db823f6513
-Author: Jeffrey Altman <jaltman@auristor.com>
-Date:   Sat Mar 24 01:22:54 2018 -0400
-
-    volser: DoVolDelete returning VNOVOL is success
-    
-    When moving, copying or releasing volumes, do not treat a failure
-    to delete a volume because the volume no longer exists as an error.
-    The volume clone has flags
-    
-      VTDeleteOnSalvage | VTOutOfService
-    
-    assigned to it which means that the fileserver won't attach the volume
-    and volume has its deleteMe field assigned the value of DESTROY_ME.
-    Such a volume will be deleted the next time the salvager scans the
-    partition.  Once the transaction is complete the volume might be
-    removed.
-    
-    Reviewed-on: https://gerrit.openafs.org/12976
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    (cherry picked from commit 328590dc5669cae3db6c509871b612b0384ea33d)
-    
-    Change-Id: Iea98049a3948b75a5e7c13c068add663c9276515
-    Reviewed-on: https://gerrit.openafs.org/13235
     Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
     Reviewed-by: Andrew Deason <adeason@sinenomine.net>
     Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    (cherry picked from commit 3a5ab19fe04058e002bfea90f8b64fab4676de67)
+    
+    Change-Id: I41c53e5a37cc2da8fa0578a9c5db476530103981
+    Reviewed-on: https://gerrit.openafs.org/13650
     Tested-by: BuildBot <buildbot@rampaginggeek.com>
-
-commit 6f41efd6c85d4d759bc2fc6d6e787fc8dbe1e1c0
-Author: Marcio Barbosa <mbarbosa@sinenomine.net>
-Date:   Sun Sep 30 17:38:53 2018 -0400
-
-    macos: packaging support for MacOS X 10.14
-    
-    This commit introduces the new set of changes / files required to
-    successfully create the dmg installer on OS X 10.14 "Mojave".
-    
-    Reviewed-on: https://gerrit.openafs.org/13349
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 2aeabf8c5bca22b400653e2bc88b6f36d47b05ca)
-    
-    Change-Id: Ia271ca69d8102a93da50c59e2d92d3c803a13b0e
-    Reviewed-on: https://gerrit.openafs.org/13413
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
-
-commit 170dd4a6a2ac7a08e4c94e82e664dcfd5816bbbf
-Author: Marcio Barbosa <mbarbosa@sinenomine.net>
-Date:   Wed Sep 26 00:18:38 2018 -0300
-
-    macos: add support for MacOS 10.14
-    
-    This commit introduces the new set of changes / files required to
-    successfully build the OpenAFS source code on OS X 10.14 "Mojave".
-    
-    Reviewed-on: https://gerrit.openafs.org/13348
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 72b2670a9e2e3937ed4e47485b9e9fa6953b5444)
-    
-    Change-Id: Ida25278d68d875a630af1d916d2d6add9b6c1f9e
-    Reviewed-on: https://gerrit.openafs.org/13412
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
-
-commit 318330ca51a3ba780471f4c05221be1f8e3897d1
-Author: Mark Vitale <mvitale@sinenomine.net>
-Date:   Fri Aug 17 18:48:08 2018 -0400
-
-    volser: ensure GCTrans transaction walk remains valid
-    
-    Commit bc56f5cc97a982ee29219e6f258b372dbfe1a020 ("volser: Delete
-    timed-out temporary volumes") introduced new logic to GCTrans().
-    Unfortunately, part of this logic temporarily drops VTRANS_LOCK in order
-    to call VPurgeVolume().  While this lock is dropped, other volser_trans
-    may be added or deleted from the allTrans list.  Therefore, GCTrans
-    should not trust the next pointer (nt = tt->next) which was obtained
-    before the lock was dropped.
-    
-    One symptom observed in the field was a segfault while examining
-    tt->volume.  Neither tt nor volume were valid any longer, since tt had
-    been set from a stale nt at the top of the loop.
-    
-    To repair, improve, and clarify this logic:
-    - Refactor so nt is assigned correctly and as late as possible.
-    - Add comments to explain the placement of the assigns to future
-    maintainers.
-    
-    Reviewed-on: https://gerrit.openafs.org/13286
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    (cherry picked from commit 930d8ee638112ca8bf27a9528c0a527cfab54c7d)
-    
-    Change-Id: I9ed2c0440b03137cb0e0ef536167be9535c90dbb
-    Reviewed-on: https://gerrit.openafs.org/13337
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
     Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
-
-commit b0920d0a07a2aec55269002960bc71a9a9b99411
-Author: Mark Vitale <mvitale@sinenomine.net>
-Date:   Thu Sep 6 14:09:26 2018 -0400
-
-    volser: combine GCTrans conditional clauses
-    
-    In preparation for a future commit, combine two conditional clauses in
-    GCTrans().
-    
-    No functional change should be incurred by this commit.
-    
-    Reviewed-on: https://gerrit.openafs.org/13303
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
     Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 95b0641ad8cfd0358576c6e1a93266fc59ecf710)
-    
-    Change-Id: If808a00cf935235cdeb20bf73f03ad235f8b2c39
-    Reviewed-on: https://gerrit.openafs.org/13336
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
-    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
     Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
 
-commit a19404d0903e1a015b71c8f23d1bb045e080c81d
+commit 7487d15ca5023f465a8bbda05bf6f68a5a6d5eb3
 Author: Mark Vitale <mvitale@sinenomine.net>
-Date:   Fri Oct 26 09:12:44 2018 -0400
+Date:   Wed Jun 12 23:44:32 2019 -0400
 
-    viced: fix typo in help for option -unsafe-nosalvage
+    afs: remove bogus comment from afs_IsTokenExpired
     
-    Reviewed-on: https://gerrit.openafs.org/13367
-    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 84b3e1c43685862c147603627a020a68650d6e1c)
-    
-    Change-Id: Ie264fbd0064a3e22b1c474cea59040ecb0804b73
-    Reviewed-on: https://gerrit.openafs.org/13411
-    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
-
-commit 0b1f77b4563a2ea5484a403d6c838ff06aeecdb0
-Author: Mark Vitale <mvitale@sinenomine.net>
-Date:   Thu Nov 15 15:41:24 2018 -0500
-
-    afs: remove dead code afs_osi_SetTime
-    
-    afs_osi_SetTime() has been dead code since -settime support was removed
-    with commit 1d9888be486198868983048eeffabdfef5afa94b 'Remove
-    -settime/RXAFS_GetTime client support'.
-    
-    Remove the dead code.
+    Remove an incorrect comment, introduced with commit
+    adf2e6e827c6caf55247c5e63b88775393156ae5 'Unix CM: Generalise token
+    storage'.
     
     No functional change is incurred by this commit.
     
-    Reviewed-on: https://gerrit.openafs.org/13393
+    Reviewed-on: https://gerrit.openafs.org/13640
     Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 16b981ec6697b511c36c09adfeb8b79eaf2345b0)
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    (cherry picked from commit 54c34d32e884a5bfb2352e7c8767d743ef3e4647)
     
-    Change-Id: I3fa92cbe1598703b4eddd78e4c7afdc04c525750
-    Reviewed-on: https://gerrit.openafs.org/13407
+    Change-Id: I00f91947f9cd64694b2021e484b33dc9074fee94
+    Reviewed-on: https://gerrit.openafs.org/13651
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 90a0796d18d99e893ec4bad8800efe1e398c5ea3
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Thu May 16 20:01:17 2019 -0500
+
+    Use the ppc64le_linuxXX sysname for ppc64le builds
+    
+    Commit 191e18eb (Open ppc64le_linux sysname space) added the
+    ppc64le_linux26 sysname, but it still must be manually specified when
+    running on ppc64le. Use the ppc64le_linux26 by default on ppc64le, so
+    we can compile without needing to specify an explicit sysname.
+    
+    Reviewed-on: https://gerrit.openafs.org/13593
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 4b6a4ff31a4197504bbcf2d4c14c24dee672d40e)
+    
+    Change-Id: Icf8f8b42c499dc42bf5d637dae5ad3e261e68512
+    Reviewed-on: https://gerrit.openafs.org/13637
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 4d7a397c03288847539fd1428d9bdfcbc1f59cbe
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Wed Jan 16 23:44:58 2019 -0600
+
+    LINUX: Propagate afs_linux_readdir BlobScan errors
+    
+    In afs_linux_readdir, if we detect an error code from BlobScan,
+    currently we 'break' out of the current while() loop. But right after
+    this loop, we reset 'code' to 0, ignoring the error we just got from
+    BlobScan, and acting like we just reached the end of the directory.
+    
+    This means that if BlobScan could not process the given directory at
+    all, we'll just fail to iterate through some of the entries in the
+    given directory, and not report an error.
+    
+    To fix this, process errors from BlobScan like we do for
+    afs_dir_GetVerifiedBlob, and return an error code and log a message
+    about the corrupted dir.
+    
+    Reviewed-on: https://gerrit.openafs.org/13430
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 63f015d05293cd853dbd44e5115e6b378644dfb6)
+    
+    Change-Id: Ia25bcfdb70cdb1dd1a7ce0efb84ef76beb78b247
+    Reviewed-on: https://gerrit.openafs.org/13591
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit b924e7827dbca97accb6a90da24264858e9a2964
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Wed Jan 16 23:46:34 2019 -0600
+
+    afs: Throw EIO in DRead on empty dir blob
+    
+    DRead currently returns ENOENT if we try to read a page beyond the end
+    of the given dir blob. We do this to indicate we've hit EOF, but we do
+    this even if the dir blob is completely empty (which is not a valid
+    dir blob).
+    
+    If a dir blob in the cache is truncated due to cache corruption
+    issues, that means we'll indicate a normal EOF condition in that
+    directory for most code paths. If someone is trying to list the
+    directory's entries, for instance, we'll just return that there are no
+    entries in the dir, even though the dir itself is just invalid.
+    
+    To avoid this for at least some cases, return an EIO error instead if
+    the dir blob is completely empty.
+    
+    Reviewed-on: https://gerrit.openafs.org/13429
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 86d04ea70fd2e99606b1d1b5b68d980d92e7a3cd)
+    
+    Change-Id: I067aae1f949051169225a3cc0bdba35ad76a4ec2
+    Reviewed-on: https://gerrit.openafs.org/13590
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 02b6ba418568f294a9088b6df3e90bbdf35c8398
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Thu May 16 16:12:47 2019 -0500
+
+    Do not define AFS_SYSCALL for ppc64le_linux26
+    
+    AFS_SYSCALL is defined to the syscall number we can use for a certain
+    platform (for pioctls and other AFS-specific kernel calls). On many
+    modern platforms, such as Linux, we don't use direct syscalls anymore,
+    instead routing our AFS-specific syscalls through an ioctl, and
+    AFS_SYSCALL is just used as a fallback for compatibility for older
+    OpenAFS releases that might still be using the syscall.
+    
+    For new platforms, we have no need for this compatibility code path,
+    since there is no existing code we might need to be compatible with.
+    We should avoid defining AFS_SYSCALL for those, so we can avoid
+    manually-issuing syscalls in more cases. The ppc64le_linux26 platform
+    is a very new platform (introduced in 191e18eb "Open ppc64le_linux
+    sysname space"), and so should not have AFS_SYSCALL defined.
+    
+    So, remove AFS_SYSCALL from ppc64le_linux26's param.h.
+    
+    Reviewed-on: https://gerrit.openafs.org/13592
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Tested-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 46563f929a851032d785634763963808d6e2bfeb)
+    
+    Change-Id: Ib161b50a9156d3790134de4e1a8e66a1356e0fb6
+    Reviewed-on: https://gerrit.openafs.org/13636
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 2f6227540f7954f58387fba4934a0f83d1f4d536
+Author: Nathaniel Filardo <nwfilardo@gmail.com>
+Date:   Wed May 1 23:01:51 2019 +0100
+
+    Open ppc64le_linux sysname space
+    
+    While here, add config/param.ppc64le_linux26.h; it's just like
+    ppc64_linux26.h, except not AFSBIG_ENDIAN.
+    
+    Reviewed-on: https://gerrit.openafs.org/13562
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Jeffrey Altman <jaltman@auristor.com>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 191e18ebcee3698a76b55912de0a41111c384128)
+    
+    Change-Id: I9852da2a376a24269ff720a4da4881dae83036cd
+    Reviewed-on: https://gerrit.openafs.org/13589
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
     Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
     Tested-by: BuildBot <buildbot@rampaginggeek.com>
     Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
 
-commit 5a77ac9a3a0ce6114b6b4b2ccd9cd8d51154530c
-Author: Mark Vitale <mvitale@sinenomine.net>
-Date:   Thu Nov 15 15:31:37 2018 -0500
+commit 72d0e5a7c92fe7f68857af5828ed7d717b2d694d
+Author: Cheyenne Wills <cwills@sinenomine.net>
+Date:   Thu Apr 18 09:55:09 2019 -0600
 
-    Linux 4.20: do_settimeofday is gone
+    redhat: RHEL8 add elfutils-devel as build dependency for kernel module
     
-    With Linux commit 976516404ff3fab2a8caa8bd6f5efc1437fed0b8 'y2038:
-    remove unused time interfaces', do_settimeofday() is gone.
+    Building the kernel modules under RHEL8 produces the following error
+    message:
+        Makefile:952: *** "Cannot generate ORC metadata for
+         CONFIG_UNWINDER_ORC=y, please install libelf-dev, libelf-devel or
+         elfutils-libelf-devel".  Stop.
     
-    However, OpenAFS only calls do_settimeofday() from afs_osi_SetTime(),
-    which has been dead code since -settime support was removed from afsd
-    with commit 1d9888be486198868983048eeffabdfef5afa94b 'Remove
-    -settime/RXAFS_GetTime client support'.
+    Add elfutils-devel to the BuildRequires in the rpm spec when building
+    rhel >= 8
     
-    Instead of fixing afs_osi_SetTime() to use a current Linux API, remove
-    it as dead code.
+    Add elfutils-devel to the BuildRequires in the rpm spec that
+    openafs-kmodtool produces
     
-    No functional change is incurred by this commit.  However, this change
-    is required in order to build OpenAFS on Linux 4.20.
+    FIXES 134900
     
-    Reviewed-on: https://gerrit.openafs.org/13392
+    Reviewed-on: https://gerrit.openafs.org/13560
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
     Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit aa80f892ec39e2984818090a6bb2047430836ee2)
+    (cherry picked from commit 13817774518ada28f5fe68e0d00ef5dd00b67b55)
     
-    Change-Id: I7f5ee9c21bc87cd261d87126bc3848d941ff5409
-    Reviewed-on: https://gerrit.openafs.org/13406
+    Change-Id: If4f453e6c459a2865626d4fd71bb47030e3deb58
+    Reviewed-on: https://gerrit.openafs.org/13563
     Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
     Tested-by: BuildBot <buildbot@rampaginggeek.com>
     Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
 
-commit 7fb6d488156e673e78b462faf93f2c5b2214fe59
-Author: Mark Vitale <mvitale@sinenomine.net>
-Date:   Tue Nov 13 11:20:09 2018 -0500
+commit c6c3a4038905169ab717e64775920147d6f34c3f
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Fri Sep 28 14:55:56 2018 -0500
 
-    Linux 4.20: current_kernel_time is gone
+    afs: Raise osidnlc NCSIZE
     
-    With Linux commit 976516404ff3fab2a8caa8bd6f5efc1437fed0b8 'y2038:
-    remove unused time interfaces' (4.20-rc1), current_kernel_time() has
-    been removed.
+    The currrent size of the osi DNLC is very small; only 300 entries.
+    Raise it to 4096 entries, to give it some chance of actually helping.
     
-    Many y2038-compliant time APIs were introduced with Linux commit
-    fb7fcc96a86cfaef0f6dcc0665516aa68611e736 'timekeeping: Standardize on
-    ktime_get_*() naming' (4.18).  According to
-    Documentation/core-api/timekeeping.rst, a suitable replacement for:
+    In the future, of course, this should be runtime configurable, and we
+    should also raise the hash table size. For now, just raise the number
+    of entries without changing anything else, to try to make sure nothing
+    breaks.
     
-      struct timespec current_kernel_time(void)
+    With the hash size of 256, this means our hash chains will be at least
+    16 items long. However, traversing even hundreds of hash items should
+    still be better than frequently hitting the disk cache to find
+    entries, and acquiring more locks, etc.
     
-    would be:
+    Reviewed-on: https://gerrit.openafs.org/13531
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 12b46b6af778625a9c360dca61a59fcf30b76fd1)
     
-      void ktime_get_coarse_real_ts64(struct timespec64 *ts))
+    Change-Id: Ib4fd8bd01e2df22617e5a549d4ac76ba1d50b2fd
+    Reviewed-on: https://gerrit.openafs.org/13559
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 934313678d2a01208a28fca669907f50a097b377
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Thu Jan 17 00:04:36 2019 -0600
+
+    dir: Honor non-ENOENT lookup errors
     
-    Add an autoconf test and equivalent logic to deal.
+    Currently, several places in src/dir/dir.c assume that any error from
+    a lower-level function (e.g. FindItem) means that the item we're
+    looking for does not exist in that directory. But if we encountered
+    some other error, that may not be the case; the directory blob may be
+    corrupt, we may have encountered some I/O error, etc.
     
-    Reviewed-on: https://gerrit.openafs.org/13391
+    To detect cases like this, return the actual error code from FindItem
+    &c, instead of always reporting ENOENT. For the code paths that are
+    actually specifically looking for if the target exists (in
+    afs_dir_Create), change our checks to specifically check for ENOENT,
+    and return any other error.
+    
+    Do the same thing for a few similar callers in viced/afsfileprocs.c,
+    as well.
+    
+    FIXES 134904
+    
+    Reviewed-on: https://gerrit.openafs.org/13431
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 0b3bd1b7cdc88ba62c8cd540e8628faa84e33cf9)
+    
+    Change-Id: Ia81ff85821c1987b97390a683f1d442ca70db41e
+    Reviewed-on: https://gerrit.openafs.org/13543
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit e586e86add4e4bf42f7af5b6d570fbe9b49fc415
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Thu Mar 21 15:24:06 2019 -0500
+
+    LINUX: Avoid lookup ENOENT on fatal signals
+    
+    Various Linux kernel operations on various Linux kernel versions can
+    fail if the current process has a pending fatal signal (i.e. SIGKILL),
+    including reads and writes to our local disk cache. Depending on what
+    and when something fails because of this, some parts of libafs throw
+    an ENOENT error, which may propagate up to callers, and be returned
+    from afs_lookup(). Notably this can happen via some functions in
+    src/dir/dir.c, and previously was possible with some code paths before
+    they were fixed by commit 2aa4cb04 (afs: Stop abusing ENOENT).
+    
+    For the most part, the exact error given to the userspace caller
+    doesn't matter, since the process will die as soon as we return to
+    userspace. However, for ENOENT errors specifically for lookups, we
+    interpret this to mean that the target filename is known to not exist,
+    and so we create a negative dentry for that name, which is cached.
+    Future lookups for that filename will then result in ENOENT before any
+    AFS functions are called.
+    
+    The lingering abuses of the ENOENT error code should be removed from
+    libafs entirely, but as an extra layer of safety, we can just avoid
+    returning ENOENT from lookups if the current process has a pending
+    fatal signal. So to do that, change all afs_lookup() callers in
+    src/afs/LINUX to translate ENOENT to EINTR if we have a pending fatal
+    signal. If fatal_signal_pending() is not available, then we don't do
+    this translation.
+    
+    FIXES 134904
+    
+    Reviewed-on: https://gerrit.openafs.org/13530
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 8b6ae2893b517bd4e008cae94acff70abe4d2227)
+    
+    Change-Id: I8bf1b24c97ed74b0b457d79f48b2f40416c1d37e
+    Reviewed-on: https://gerrit.openafs.org/13542
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit e80e9e6ea6f2cedf79b92ea33eb214931bf808be
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Sat Mar 2 15:58:00 2019 -0600
+
+    afs: Cleanup state on rxfs_*Init errors
+    
+    Currently, rxfs_storeInit and rxfs_fetchInit return early if they
+    encounter an error while starting the relevant fetch/store RPC (e.g.
+    StartRXAFS_FetchData64). In this scenario, they osi_FreeSmallSpace
+    their rock before returning, but they never go through their
+    destructor to free the contents of the rock
+    (rxfs_storeDestroy/rxfs_fetchDestroy), leaking any resources inside
+    that have already been initialized.
+    
+    The only thing that could have been initialized by this point is
+    v->call, so hitting this condition means we leak an Rx call, and means
+    we can report the wrong error code (since we never go through
+    rx_EndCall, we never look at the call's abort code). For
+    rxfs_fetchInit, most code paths call rx_EndCall explicitly, except for
+    the code path where StartRXAFS_FetchData64 itself fails.
+    
+    For both fetches and stores, it's difficult to hit this condition,
+    because this requires that the StartRXAFS_* call fails, before we have
+    sent or received any data from the wire. However, this can be hit if
+    the call is already aborted before we use it, which can happen if the
+    underlying connection has already been aborted by a connection abort.
+    
+    Before commit 0835d7c2 ("afs: make sure to call afs_Analyze after
+    afs_Conn"), this was most easily hit by trying to fetch data with a
+    bad security object (for example, with expired credentials). After the
+    first fetch failed due to a connection abort (e.g. RXKADEXPIRED),
+    afs_GetDCache would retry the fetch with the same connection, and
+    StartRXAFS_FetchData64 would fail because the connection and call were
+    already aborted. In this case, we'd leak the Rx call, and we would
+    throw an RXGEN_CC_MARSHAL error (-450), instead of the correct
+    RXKADEXPIRED error. This causes libafs to report that the target
+    server as unreachable, due to the negative error code.
+    
+    With commit 0835d7c2, this doesn't happen because we call afs_Analyze
+    before retrying the fetch, which detects the invalid credentials and
+    forces creating a new connetion object. However, this situation should
+    still be possible if a different call on the same connection triggered
+    a connection-level abort before we called StartRXAFS_FetchData64.
+    
+    To fix this and ensure that we don't leak Rx calls, explicitly call
+    rxfs_storeDestroy/rxfs_fetchDestroy in this error case, before
+    returning from rxfs_storeInit/rxfs_fetchInit.
+    
+    Thanks to yadayada@in.ibm.com for reporting a related issue and
+    providing analysis.
+    
+    Reviewed-on: https://gerrit.openafs.org/13510
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 11cc0a3c4e0d76f1650596bd1568f01367ab5be2)
+    
+    Change-Id: I3c2d66a5a6128bb8b403dfa6ea7c37e32bd2f156
+    Reviewed-on: https://gerrit.openafs.org/13517
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit f8f10315d9ebecf32b5537a82aedde4c24b28d62
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Wed Aug 9 20:06:05 2017 -0500
+
+    SOLARIS: Switch non-embedded vnodes for Solaris 11
+    
+    Newer updates to Solaris 11 have been including several changes to the
+    vnode struct. Since we embed a vnode in our struct vcache, our kernel
+    module must be recompiled for any such change in order for the openafs
+    client to work at all.
+    
+    To avoid the need for this, switch Solaris to using a non-embedded
+    vnode in our struct vcache. Follow a similar technique as is used in
+    DARWIN and XBSD, where we allocate a vnode in osi_AttachVnode, and
+    free it in afs_FlushVCache.
+    
+    Reviewed-on: https://gerrit.openafs.org/12696
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
     Tested-by: Mark Vitale <mvitale@sinenomine.net>
     Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 3c454b39d04f4886536267c211171dae30dc0344)
+    (cherry picked from commit 2aafe7df403e6a848185d15495139c07bced2758)
     
-    Change-Id: I3f00cf4bd3a1ffb7c90e3920113964d74c6df403
-    Reviewed-on: https://gerrit.openafs.org/13405
+    Change-Id: I2f5b3e2b2b908ea9815fd7735a1abed511cec9cb
+    Reviewed-on: https://gerrit.openafs.org/13528
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
     Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
     Tested-by: BuildBot <buildbot@rampaginggeek.com>
     Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
 
-commit fc9211be1b242e7026a679a41e5f53f3b4a7e818
+commit f9b4f9d63f5c62233a031a7e9d16fade235577eb
 Author: Andrew Deason <adeason@sinenomine.net>
-Date:   Tue Aug 7 17:08:26 2018 -0500
+Date:   Wed Aug 9 20:06:03 2017 -0500
 
-    afs: Return memcache allocation errors
+    SOLARIS: Fix vnode/vcache casts
     
-    During cache initialization, we can fail to allocate our dcache
-    entries for memcache. Currently when this happens, we just log a
-    message and try to disable dcache access. However, this results in at
-    least one code path that causes a panic anyway during startup, since
-    afs_CacheTruncateDaemon will try to trim the cache, and afs_GetDownD
-    will call afs_MemGetDSlot, and we cannot find the given dslot.
+    A few places were using vnodes and vcaches interchangeably. This is
+    incorrect, since they may not always be the same thing if we stop
+    embedding vnodes directly in vcaches Fix these to properly go through
+    AFSTOV/VTOAFS to convert between vcaches and vnodes.
     
-    To avoid this, change our cache initialization to return an error,
-    instead of trying to continue without a functional dcache. This causes
-    afs_dcacheInit to return an error in this case, and by extension
-    afs_CacheInit and the AFSOP_CACHEINIT syscall. Also change afsd to
-    actually detect errors from AFSOP_CACHEINIT, and to bail out when it
-    does.
-    
-    Thanks to gsgatlin@ncsu.edu for reporting the relevant panic.
-    
-    Reviewed-on: https://gerrit.openafs.org/13273
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 0da5ac4d9fb2a9b46c7415403a3cd26e711554e2)
-    
-    Change-Id: I00b0d3dac1f4d8edc46389fe3c59501fd23c18f8
-    Reviewed-on: https://gerrit.openafs.org/13307
+    Reviewed-on: https://gerrit.openafs.org/12695
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
     Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
     Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
-    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
-
-commit eca7ade855e0f9b14d0bb763be2d2d3e925dcd86
-Author: Benjamin Kaduk <kaduk@mit.edu>
-Date:   Wed May 30 19:38:57 2018 -0500
-
-    CellServDB update 14 May 2018
-    
-    Update all three copies in the tree, and the rpm specfile.
-    
-    Reviewed-on: https://gerrit.openafs.org/13134
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
     Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    (cherry picked from commit 4a2b5101afda24b2d937e7350ca35b0b3d3c4af8)
+    Tested-by: Mark Vitale <mvitale@sinenomine.net>
+    (cherry picked from commit a6499e0b086d964f3fcc65fe4be31edc33015061)
     
-    Change-Id: I47dad888b71c798132f2841375f9ebb2f6b263f7
-    Reviewed-on: https://gerrit.openafs.org/13409
+    Change-Id: Ia6889966a7c595786f0a273b4c2a5a63fe60ddd3
+    Reviewed-on: https://gerrit.openafs.org/13527
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
     Tested-by: BuildBot <buildbot@rampaginggeek.com>
     Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
 
-commit 39272929fc528a4c6af05e74b98518a3bae18462
+commit 7328cb0b000c61672ab75cda14ba0e42839adb03
 Author: Andrew Deason <adeason@sinenomine.net>
-Date:   Thu May 10 16:22:52 2018 -0500
+Date:   Wed Aug 9 20:06:00 2017 -0500
 
-    ubik: Buffer log writes with stdio
+    SOLARIS: Accept vnodes in vnode ops
     
-    Currently, when we write ubik i/o operations to the db log, we tend to
-    issue several syscalls involving small writes and fstat()s. This is
-    because each "log" operation involves at least one write, and each log
-    operation tends to be pretty small.
+    Currently, our vnode op callbacks look like this:
     
-    Each logged operation hitting disk separately is unnecessary, since
-    the db log does not need to hit the disk at all until we are ready to
-    commit the transaction. So to reduce the number of syscalls when
-    writing to the db, change our log writes to be buffered in memory
-    (using stdio calls). This also avoids needing to fstat() the
-    underlying log file, since we open the underlying file in append-only
-    mode, since we only ever append to (and truncate) the log file.
+        int gafs_fsync(struct vcache *avc, afs_ucred_t *acred);
     
-    To implement this, we introduce a new 'buffered_append' phys
-    operation, to explicitly separate our buffered and non-buffered
-    operations, to try to avoid any bugs from mixing buffered and
-    non-buffered i/o. This new operation is only used for the db log.
+    And a pointer to gafs_fsync is given directly to Solaris. This cannot
+    be correct, since 'struct vcache' is an OpenAFS type, so Solaris
+    cannot possibly give us a 'struct vcache'. The actual correct
+    signature for such a function is something like this:
     
-    Reviewed-on: https://gerrit.openafs.org/13070
+        int gafs_fsync(struct vnode *vp, afs_ucred_t *acred);
+    
+    And then the 'gafs_fsync' function is supposed to translate 'vp' into
+    a vcache.
+    
+    This works on Solaris right now because we embed the vnode as the
+    first member in our vcache, and so a pointer to a vnode is also a
+    pointer to a vcache. However, this would break if we ever change
+    Solaris vcaches to use a non-embedded vnode (like on some other
+    platforms). And even now, this causes a lot of warnings in
+    osi_vnodeops.c, since the function signatures are wrong for our vnode
+    callbacks.
+    
+    So to fix this, change all of these functions to accept a 'struct
+    vnode', and translate to/from vnodes and vcaches appropriately.
+    
+    Reviewed-on: https://gerrit.openafs.org/12694
     Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Joe Gorse <jhgorse@gmail.com>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    (cherry picked from commit 800318b43fdf461ad95cd7f3940718f3f0a609a7)
-    
-    Change-Id: Ia40d75e7bdeb6a9f6c316aaea6fd20d5c8d80625
-    Reviewed-on: https://gerrit.openafs.org/13353
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
-    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
     Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Mark Vitale <mvitale@sinenomine.net>
+    (cherry picked from commit 9a2b11747ce355d9adc8a5a646c88f8f3d9765ee)
+    
+    Change-Id: I85cee787e26886596a10c6b9a02f33f2bf28d65d
+    Reviewed-on: https://gerrit.openafs.org/13526
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
     Tested-by: BuildBot <buildbot@rampaginggeek.com>
     Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
 
-commit b71f75cad51cf58260d0593635d66dd367a2af1a
+commit 8089741c909e84020e644ac05c58d3a4bb9cc1e2
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Wed Aug 9 20:05:56 2017 -0500
+
+    SOLARIS: Reorder definitions for vnode callbacks
+    
+    Currently, many of the functions for our vnode ops are
+    forward-declared, right before they are referenced in the relevant
+    vnop template array. Move the function definitions to before the
+    references, so we can simply get rid of the forward declarations.
+    
+    These functions are also all only referenced in this file, so declare
+    them 'static'.
+    
+    Reviewed-on: https://gerrit.openafs.org/12693
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Mark Vitale <mvitale@sinenomine.net>
+    (cherry picked from commit 41a22dbf719629e0977fa963b3d19c6594d0d729)
+    
+    Change-Id: I5840fef98d2ce15525c4981636fad6e5990cbad2
+    Reviewed-on: https://gerrit.openafs.org/13525
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 599cf163d10d775a18e2b8a947ad3abd6d1a4021
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Wed Aug 9 20:05:50 2017 -0500
+
+    SOLARIS: Clean up some osi_vnodeops func defs
+    
+    Currently, the Solaris osi_vnodeops.c file forward-declares many of
+    its function definitions, but doesn't declare the arguments. For
+    example:
+    
+        int afs_nfsrdwr();
+    
+    This avoids type-checking for a few functions that are called before
+    they are defined in this file. Furthermore, many of these functions
+    are only used within this file, but are not declared 'static'.
+    
+    To fix this weirdness, remove most of the forward declarations (most
+    are not referenced until the function is defined), and fully declare
+    the rest. Declare functions 'static' that are not referenced outside
+    of this file.
+    
+    This commit only changes functions up to the 'afs_getsecattr'
+    definition. The rest of the file will be fixed in a future commit.
+    
+    Reviewed-on: https://gerrit.openafs.org/12692
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Mark Vitale <mvitale@sinenomine.net>
+    (cherry picked from commit aa46af6ae35e4f026a8ed94012c3bc18c954de23)
+    
+    Change-Id: I33f445ed253f1991896afff33e7cc14bf5e50b18
+    Reviewed-on: https://gerrit.openafs.org/13524
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit b02434f5c6cab1f317c9fb6652e31a20195c20d8
 Author: Mark Vitale <mvitale@sinenomine.net>
-Date:   Fri May 4 15:42:14 2018 -0400
+Date:   Fri Jan 18 17:05:49 2019 -0500
 
-    ubik: make ContactQuorum_* routines static
+    LINUX: correct include for ktime_get_coarse_real_ts64()
     
-    Most of the ContactQuorum_* routines are only used in ubik.c, so make
-    them all static - except for ContactQuorum_DISK_SetVersion, which is
-    called from disk.c.
+    The include for the ktime_get_coarse_real_ts64() autoconf test is
+    incorrect; ktime_get_coarse_real_ts64() has always been in linux/ktime.h
+    (via #include timekeeping.h), not linux/time.h.
     
-    Reviewed-on: https://gerrit.openafs.org/13078
+    This autoconf test still ran correctly because the OpenAFS build was
+    inadvertently picking up ktime.h via the default autoconf include path.
+    Therefore, this commit is needed only to provide documentation and
+    clarity to future maintainers.
+    
+    Introduced as a cut-n-paste error (from the current_kernel_time test)
+    with commit 3c454b39d04f4886536267c211171dae30dc0344 for Linux 4.20.
+    
+    Reviewed-on: https://gerrit.openafs.org/13437
     Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
     Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 27d7b8fe4603c39362983758fe6a749fa5ffa4e5)
+    (cherry picked from commit 10b02075a262dbe802266ea4bcac3936dff5dd23)
     
-    Change-Id: I70721aef02f5f2e203c1877428c46c49ea1cb7c9
-    Reviewed-on: https://gerrit.openafs.org/13188
+    Change-Id: Ide1adcc8536ed8829361e0961da96949099d5caf
+    Reviewed-on: https://gerrit.openafs.org/13523
     Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Joe Gorse <jhgorse@gmail.com>
     Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
     Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
     Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
     Tested-by: BuildBot <buildbot@rampaginggeek.com>
     Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
 
-commit 88db0996e3287a62e519ef4cc09f0b8516f6a9b9
-Author: Mark Vitale <mvitale@sinenomine.net>
-Date:   Wed May 9 16:50:55 2018 -0400
+commit 390bb188b956d43f569ca10909d0a968355cddb9
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Fri Sep 28 17:12:40 2018 -0500
 
-    ubik: remove unused ContactQuorum_DISK_Write
+    afs: Remove afs_xosi
     
-    This function is not used; remove it.
+    Since OpenAFS 1.0, all platforms in libafs have a lock called
+    afs_xosi, which is acquired and released around calls like VOP_GETATTR
+    on cache files. However, this lock doesn't appear to protect anything;
+    on all platforms, the code that runs while the lock is held uses only
+    calls VOP_GETATTR and accesses local variables (aside from
+    afs_osi_cred, which we use similarly in many other places). The
+    purpose of the lock has never been documented, and is not mentioned at
+    all in the afs_rwlocks text file.
     
-    No functional change is incurred by this commit.
+    The comment by the afs_xosi lock declaration suggests that the lock
+    was originally introduced to protect access to 'tvattr', which perhaps
+    was a global variable in the past. All uses of 'tvattr' are local now,
+    though, so protecting access to it doesn't make any sense.
     
-    Reviewed-on: https://gerrit.openafs.org/13077
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
+    So, remove afs_xosi, to remove the unnecessary serialization of
+    VOP_GETATTR calls.
+    
+    Reviewed-on: https://gerrit.openafs.org/13350
     Tested-by: BuildBot <buildbot@rampaginggeek.com>
     Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 8b1e730c11a6ed7dc067ef185302bd57a69f6d1e)
+    (cherry picked from commit d75bc6370f625479a67c7c0a50cce23c4d4a4ce5)
     
-    Change-Id: I548e2442684a26ab017afebb1c42bdef9bd7c7bf
-    Reviewed-on: https://gerrit.openafs.org/13187
+    Change-Id: I33dc7935872cf071c4221d46cbb458e1f77185a2
+    Reviewed-on: https://gerrit.openafs.org/13529
     Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
     Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Joe Gorse <jhgorse@gmail.com>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
     Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
     Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
-    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
     Tested-by: BuildBot <buildbot@rampaginggeek.com>
     Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
 
-commit 10157d82c3e8f7cbdec768d92119ed5be126b844
+commit 1a4e785f0d92f6e628a79bb8919085bfaa279fe6
 Author: Michael Meffie <mmeffie@sinenomine.net>
-Date:   Thu Jun 14 15:01:18 2018 -0400
+Date:   Fri Mar 16 09:25:18 2018 -0500
 
-    ubik: do not assign variables in logging argument lists
+    afs: make sure to call afs_Analyze after afs_Conn
     
-    Several logging statements in ubik contain an assignment statement
-    within the logging function call argument list, which would set a
-    variable as side effect of evaluating the function call arguments.
+    The afs_Conn function is used to pick a connection for a given RPC. The
+    RPC is normally wrapped within a do-while loop which calls afs_Analyze
+    to handle the RPC code and manage the server connection references.
+    Among other things, afs_Analyze can mark the server as down, blacklist
+    idle servers, etc.
     
-    These embedded assignments are problematic since the logging function
-    calls have been replaced by ViceLog macros, which avoid the overhead of
-    a function call depending on logging levels.
+    There are some special cases in which we break out of this do-while loop
+    early, by putting the connection reference given by afs_Conn and then
+    jumping out of the loop.
     
-    Remove the embedded assignments within the logging argument lists so the
-    variables are always set regardless of the logging level.
+    In these cases, be sure to call afs_Analyze to put the server connection
+    we got from afs_Conn, and to handle the RPC return code, possibly
+    marking the server as down or blacklisted.
     
-    Reviewed-on: https://gerrit.openafs.org/13211
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Joe Gorse <jhgorse@gmail.com>
+    Reviewed-on: https://gerrit.openafs.org/13288
     Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
     Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 472d6b1ee2f7de415e0fa0f8be0636f86956b6fc)
+    (cherry picked from commit 0835d7c2a183f896096684df06258aefd297f080)
     
-    Change-Id: I230f71022a58445c99adc67ae1b888caa4ce260e
-    Reviewed-on: https://gerrit.openafs.org/13218
+    Change-Id: Ic5648dbd250c33988d64284b906b3829a396a2cb
+    Reviewed-on: https://gerrit.openafs.org/13511
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 74054de1bc30cee1bdc9d0c350230231663bcd85
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Thu Sep 6 13:42:11 2018 -0500
+
+    Run ctfconvert/ctfmerge for all objects
+    
+    Commit 88cb536f (autoconf: detect ctf-tools and add ctf to libafs)
+    introduced running ctfconvert and ctfmerge for libafs on Solaris, but
+    didn't add any CTF data for userspace code. This commit causes the
+    same commands to be run for every binary that we build (if the ctf
+    tools are available).
+    
+    To accomplish this, also refactor how we run ctfconvert and ctfmerge.
+    The approach in commit 88cb536f would require us to modify the
+    makefile rule for every executable to run RUN_CTFCONVERT and
+    RUN_CTFMERGE, which is somewhat impractical. So instead in this
+    commit, we modify all of our *_CCRULE and *_LDRULE variables to wrap
+    the compiler invocation with the new CC_WRAPPER script. This means our
+    *RULE variables change from something like this:
+    
+        FOO_CCRULE = $(RUN_CC) $(CC) $(XXX_FLAGS) -o $@
+    
+    to something like this:
+    
+        FOO_CCRULE = $(RUN_CC) $(CC_WRAPPER) $(CC) $(XXX_FLAGS) -o $@
+    
+    CC_WRAPPER expands to the script src/config/cc-wrapper, which just
+    runs ctfconvert or ctfmerge on the relevant files after the
+    compiler/linker runs. If the CTF tools are not configured, CC_WRAPPER
+    expands to nothing, to limit our impact on other platforms.
+    
+    This commit was developed in collaboration with
+    mbarbosa@sinenomine.net.
+    
+    Reviewed-on: https://gerrit.openafs.org/13308
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit c1d39153da00d5525b2f7874b2d214a7f1b1bb86)
+    
+    Change-Id: Ic357293a946f0759aa032f7c93b4b56e74e9209a
+    Reviewed-on: https://gerrit.openafs.org/13487
     Reviewed-by: Andrew Deason <adeason@sinenomine.net>
     Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
     Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
@@ -1140,87 +1406,362 @@ Date:   Thu Jun 14 15:01:18 2018 -0400
     Tested-by: BuildBot <buildbot@rampaginggeek.com>
     Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
 
-commit b9603bfb27c3c1d5ae90ed68545a4dd9fe9da862
-Author: Mark Vitale <mvitale@sinenomine.net>
-Date:   Mon May 8 17:50:00 2017 -0400
+commit 98e07b561279bf5d9f39ccb5f43e605cd3e86d0e
+Author: Marcio Barbosa <mbarbosa@sinenomine.net>
+Date:   Thu May 31 09:46:56 2018 -0300
 
-    ubik: disambiguate "Synchonize database with server" msgs
+    autoconf: do not reference the missing script
     
-    Ubik issues the same message in two very different cases:
-    - sync server issues DISK_GetFile to obtain the latest version
-    - non-sync server receives DISK_SendFile from the sync server
+    Currently, OpenAFS does not use automake. As a result, the missing script
+    is not copied to the build-tools directory. Since this script is not
+    present in the tree, am_missing_run is not initialized. Unfortunately,
+    the current version still has a few references to this variable. In order
+    to preserve a similar behavior, this commit replaces these references by
+    AC_ERROR.
     
-    Modify the messages so they provide more information and are
-    distinguishable from each other.
+    While we are changing these, remove the AC_CHECK_PROGS calls for AR and
+    STRIP, since libtool already checks these for us.
     
-    Reviewed-on: https://gerrit.openafs.org/12615
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-on: https://gerrit.openafs.org/12982
     Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit b9fe4d4290ad19faf3b5fb5dc0c3b1ee3ee5ab69)
-    
-    Change-Id: I806c2ce5ada097b07022d8c4da81f613a3f9989c
-    Reviewed-on: https://gerrit.openafs.org/13186
-    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
     Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Joe Gorse <jhgorse@gmail.com>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 9d3ef9337fafe5dcf3865d3aced290be0f887c11)
+    
+    Change-Id: Ibb2fa93e73f303cd68e9e030f1631476f1da329c
+    Reviewed-on: https://gerrit.openafs.org/13486
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
     Reviewed-by: Andrew Deason <adeason@sinenomine.net>
     Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
     Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
     Tested-by: BuildBot <buildbot@rampaginggeek.com>
     Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
 
-commit 354fef1f0af9272cd5bf1e8a6466a3b727dcc08d
+commit 36282f9cae0dafa1f13aa54f704a4d37d92a0799
+Author: Peter Foley <pefoley2@pefoley.com>
+Date:   Mon Feb 29 16:39:14 2016 -0500
+
+    Remove obsolete retsigtype
+    
+    Only relevent for pre-c89 K&R compilers.
+    
+    [mmeffie@sinenomine.net: avoid changes to src/external]
+    
+    Reviewed-on: https://gerrit.openafs.org/12203
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit a9644daa965fbf316943a07ad985b8ead2f4f31d)
+    
+    Change-Id: I37f83e7d8a59d5ccffe8542f3c4090e667b48c16
+    Reviewed-on: https://gerrit.openafs.org/13485
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit d281eb242414f58440dc44cf82d4fe7dc7830bc8
 Author: Michael Meffie <mmeffie@sinenomine.net>
-Date:   Mon Apr 25 11:06:11 2016 -0400
+Date:   Sat May 26 19:52:27 2018 -0400
 
-    ubik: convert ubik_print to ViceLog
+    autoconf: reformat long lines
     
-    Use the server logging macros instead of the utility functions to avoid
-    function call overhead, especially at logging level 25.  The server
-    logging macros perform a logging level check in-line to avoid the
-    unnecessary ubik_dprint* calls.
+    The autoupdate tool was run to modernize the autoconf macros but
+    generates very long lines. Manually reformat the long lines to make them
+    more reasonable.
     
-    Reviewed-on: https://gerrit.openafs.org/12619
+    Reviewed-on: https://gerrit.openafs.org/13125
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 451602a5e3a503d46eaecb3738d259e46023afcd)
+    
+    Change-Id: I19f16a66fdc6b33889f08e5a095b1f3209b01a3c
+    Reviewed-on: https://gerrit.openafs.org/13484
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
     Reviewed-by: Andrew Deason <adeason@sinenomine.net>
     Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
     Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
     Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    (cherry picked from commit 343234d221ae8388f55748f5c494a42d5d69bfa0)
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit c3eaace29ea446c9369af90eed274ece063e5bb0
+Author: Peter Foley <pefoley2@pefoley.com>
+Date:   Mon Feb 29 13:28:28 2016 -0500
+
+    autoconf: autoupdate macros
     
-    Change-Id: Icdb60f75a0c6c6efc7793d545f0565c0cd587eae
-    Reviewed-on: https://gerrit.openafs.org/13153
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Run autoupdate on macros.
+    
+    [mmeffie@sinenomine.net: re-run autoupdate, no other edits]
+    
+    Reviewed-on: https://gerrit.openafs.org/12202
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
     Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 2e23fceec872795a39b915b73e48eb77a5d65afe)
+    
+    Change-Id: I27eac1f2b6e468382976d7866aa1f5e648727534
+    Reviewed-on: https://gerrit.openafs.org/13483
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
     Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
     Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
     Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
     Tested-by: BuildBot <buildbot@rampaginggeek.com>
     Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
 
-commit 3143627f9b7f91743a85cd8fd8f00f913a31f17c
-Author: Mark Vitale <mvitale@sinenomine.net>
-Date:   Tue Sep 11 16:29:59 2018 -0400
+commit 426b5f17096c712dc0c88ae8ff0f745e6426d3b2
+Author: Michael Meffie <mmeffie@sinenomine.net>
+Date:   Fri Apr 20 11:47:57 2018 -0400
 
-    butc: repair build error
+    autoconf: update curses.m4
     
-    Commit c43169fd36348783b1a5a55c5bb05317e86eef82 introduced a build error
-    by invoking TLog with an extraneous set of internal parentheses.
+    Replace the obsolete AC_TRY_COMPILE with AC_COMPILE_IFELSE/AC_LANG_PROGRAM
+    in the curses check for the getmaxyx macro.
     
-    Remove the offending parentheses.
+    This change was done manually instead of using autoupdate because the
+    program prologue argument for this particular check is an m4 macro,
+    which will not expand to code when autoupdate adds m4 quotes to the
+    AC_LANG_PROGRAM arguments.
     
-    Reviewed-on: https://gerrit.openafs.org/13311
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-on: https://gerrit.openafs.org/13021
     Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 91bab84e7a3b7de2591c475ba4912b0db8899f05)
-    
-    Change-Id: I06df561daf37330e6fdd9c9d41b55daa4d6b3886
-    Reviewed-on: https://gerrit.openafs.org/13328
     Tested-by: BuildBot <buildbot@rampaginggeek.com>
     Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    (cherry picked from commit f9c584a794c6a4c5d03fa1ee7f1b2b5e1309e7ee)
+    
+    Change-Id: Ic0a1007f5a71496fd235eab6659a73e46393d317
+    Reviewed-on: https://gerrit.openafs.org/13482
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit b3882518f65a14b4de9846c5d11814bea3d91d96
+Author: Andrew Deason <adeason@dson.org>
+Date:   Fri Sep 21 17:16:52 2018 -0500
+
+    pthread.m4: Add missing 'test' to conditional
+    
+    Commit c5def62d (autoconf: update pthread checks) accidentally omitted
+    a 'test' in one of the conditionals. This causes an ugly error message
+    during configure:
+    
+        checking for pthread_attr_init in -lpthread... yes
+        ./configure[31043]: x-lpthread: not found [No such file or directory]
+    
+    Replace the missing 'test'.
+    
+    Reviewed-on: https://gerrit.openafs.org/13342
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 38a094137f067255c586dd5c85f3040d7a7c4486)
+    
+    Change-Id: Iaa7014c6ae58bd492930dbe4f39180111bacb67e
+    Reviewed-on: https://gerrit.openafs.org/13595
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 2771714dc485ed3ca70d66e538709ddf703f8ece
+Author: Michael Meffie <mmeffie@sinenomine.net>
+Date:   Mon Apr 16 10:42:49 2018 -0400
+
+    autoconf: update pthread checks
+    
+    Replace obsolete AC_TRY_COMPILE with AC_COMPILE_IFELSE.  Replace shell
+    if/then conditionals with AS_IF macros.  Reformat indentation and
+    quoting.
+    
+    This change was done manually, since autoupdate copes poorly with the
+    old, nested AC_TRY_COMPILE macros.
+    
+    Reviewed-on: https://gerrit.openafs.org/13018
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
+    (cherry picked from commit c5def62d7be4891f534b753374acbf5b524701eb)
+    
+    Change-Id: I5cc8e5712dd742d20be92d04728eddbecf9c216c
+    Reviewed-on: https://gerrit.openafs.org/13481
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
     Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
     Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Tested-by: Andrew Deason <adeason@sinenomine.net>
     Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit bcce556cb0f71ba00a97c87a529e95ebed0cbc85
+Author: Peter Foley <pefoley2@pefoley.com>
+Date:   Mon Feb 29 13:19:01 2016 -0500
+
+    autoconf: updates and cleanup
+    
+    Update autoconf macros to their modern equivalents, according to what
+    the 'autoupdate' tool does. While we're here, remove automake references
+    that aren't being used, and remove the obsolete AC_PROG_LIBTOOL in favor
+    of AFS_LT_INIT.
+    
+    Reviewed-on: https://gerrit.openafs.org/12199
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    (cherry picked from commit 4706854f57043c8393baa922dd1974176e110a19)
+    
+    Change-Id: I9b3b8a15ac73484f60d16448abd8cce2e0334201
+    Reviewed-on: https://gerrit.openafs.org/13480
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Tested-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit e93dfb1ad90dd7e6cb85783d27b4175d74bc40a0
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Thu Jul 26 17:57:38 2018 -0500
+
+    libuafs: Stop clobbering CFLAGS
+    
+    Currently, in the libuafs MakefileProto for every platform, CFLAGS is
+    set to a bunch of flags, ignoring any CFLAGS set by the 'make'
+    command-line provided by the user. Since most of the rest of the tree
+    honors CFLAGS, it is confusing and can cause errors when src/libuafs
+    ignore the user-set CFLAGS.
+    
+    One example of this breaking the build is when building RHEL RPMs for
+    certain sub-architectures of the current machine. If you try to
+    'rpmbuild --target=i686' on 32-bit x86 RHEL 5, we will build with
+    -march=i686 in the CFLAGS, which will be used to build most objects
+    and is used in our configure tests. As a result, our configure tests
+    will say that gcc atomic intrinsics are available. But when we go to
+    build libuafs objects, we will not have -march=i686 in our CFLAGS,
+    which causes (on RHEL 5) gcc to default to building for i386, which
+    does not have gcc atomic intrinsics available. This causes build
+    errors like this:
+    
+        libuafs.a(rx.o): In function `rx_atomic_test_and_clear_bit':
+        [...]/BUILD/openafs-1.8.0/src/rx/rx_atomic.h:462: undefined reference to `__sync_fetch_and_and_4'
+    
+    To fix this, change the libuafs MakefileProtos to not set CFLAGS
+    directly; instead, set them in a new variable UAFS_CFLAGS.
+    Makefile.common then pulls those flags into MODULE_CFLAGS, which is
+    used in our *_CCRULE build rules.
+    
+    While we are here, also move the common set of CFLAGS set by each
+    platform's MakefileProto into Makefile.common. Now, each MakefileProto
+    only needs to set CFLAGS that are specific to that platform, which
+    ends up being very few (since most platforms were using the exact same
+    set of CFLAGS).
+    
+    Relevant issue identified and analyzed by mbarbosa@sinenomine.net.
+    
+    Reviewed-on: https://gerrit.openafs.org/13262
+    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit ee66819a0c1a9efa98b76a1c18af6233bda1e233)
+    
+    Change-Id: Ia38d4701aeb4f690b12a6ffdbb42b8ec8c499486
+    Reviewed-on: https://gerrit.openafs.org/13544
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
+    Tested-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 63a1ee4e238e20855aa63f31f490867c5d440f57
+Author: Marcio Barbosa <mbarbosa@sinenomine.net>
+Date:   Fri Oct 5 11:26:34 2018 -0400
+
+    DARWIN: replace macro exported by automake
+    
+    Commit 4706854f57043c8393baa922dd1974176e110a19 removed automake
+    references from the source tree. As a result, VERSION (exported by
+    AM_INIT_AUTOMAKE and obtained from Autoconf's AC_INIT macro) is not
+    available anymore. Unfortunately, a reference to this macro can be found
+    in src/afs/DARWIN/osi_module.c. Consequently, builds on OS X fail with
+    the following message:
+    
+        osi_module.c:144:32: error: use of undeclared identifier 'VERSION'
+    
+    To fix this problem, replace VERSION by PACKAGE_VERSION (defined by
+    AC_INIT).
+    
+    Reviewed-on: https://gerrit.openafs.org/13354
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 07ed94cfd817dc5a4e2d2712570087388fe7828f)
+    
+    Change-Id: I14c6c803766ea959dfc6fa4804960c067fc9f16c
+    Reviewed-on: https://gerrit.openafs.org/13584
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit eaba6c97533f6838d3c73e86d31da18aca4ac8ab
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Mon Apr 1 12:57:42 2019 -0400
+
+    doc: Remove one lingering reference to src/mcas
+    
+    Reviewed-on: https://gerrit.openafs.org/13539
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit e02ae66c7eef1bfc5df9c3e9f2acde3bc3102390)
+    
+    Change-Id: Iba79e9f6b2908977a3ad43d802562f1cb8849d66
+    Reviewed-on: https://gerrit.openafs.org/13558
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 0637d1038e4ff174dbaf0a8a09490de1f08cb4fb
+Author: Karl Behler <karl.behler@ipp.mpg.de>
+Date:   Fri Mar 22 12:22:05 2019 +0100
+
+    man-pages: create the man3 subdirectory in prep-noistall
+    
+    This should fix a build failure reported on the openafs-devel list
+    today.
+    
+    Reviewed-on: https://gerrit.openafs.org/13533
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit e7ea4781f07b29f7f0fc0b5ba17303bd68022e54)
+    
+    Change-Id: I996aec343f80031c7118e7b6b0d829751a85e228
+    Reviewed-on: https://gerrit.openafs.org/13535
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
     Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>

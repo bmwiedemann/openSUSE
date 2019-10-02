@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 26 20:56:05 UTC 2019 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
+
+- update to pre-release 1.8.4pre2
+  * fix builds for Linux-kernels 5.3
+
+-------------------------------------------------------------------
 Sun Jul 28 18:34:40 UTC 2019 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
 
 - disable compilation with LTO, does not work yet. 
