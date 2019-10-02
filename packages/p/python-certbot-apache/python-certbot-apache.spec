@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-certbot-apache
-Version:        0.38.0
+Version:        0.39.0
 Release:        0
 Summary:        Apache plugin for Certbot
 License:        Apache-2.0

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Oct 02 09:49:43 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.0+git20191001.cefb71c:
+  * Run ignition-disks earlier to avoid race condition
+  * 30ignition: update ignition-complete.target OnFailure comment
+  * 30ignition: drop OnFailure handler from ignition-diskful.target
+  * 30ignition: fix sequencing of target dependencies
+- Don't error out in ignition-setup-user-suse.sh if Ignition device
+  is not present
+
+-------------------------------------------------------------------
+Fri Sep 27 11:24:20 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.0+git20190924.aada644:
+  * dracut: Add an ignition-fetch.service
+  * Add RemainAfterExit=yes to systemd units of Type=oneshot
+  * Makefile: New file implementing `make install`
+  * 30ignition: move coreos-gpt-setup RemainAfterExit to correct section
+  * 30ignition: on live images, read config.ign from custom initrd
+  * 30ignition: make ignition-diskful a dependency of ignition-complete
+  * 30ignition: fix double slash in ignition-setup-* dest paths
+- Drop 0001-Read-user-config.patch: Migrated to systemd drop-in files now that
+  ignition-diskful is a separate target
+
+-------------------------------------------------------------------
 Tue Sep 17 16:06:44 UTC 2019 - kukuk@suse.de
 
 - Update to version 0.0+git20190916.cbac371:

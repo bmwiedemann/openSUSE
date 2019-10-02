@@ -1,8 +1,8 @@
-Index: xpra-2.5/setup.py
+Index: xpra-3.0-rc3/setup.py
 ===================================================================
---- xpra-2.5.orig/setup.py
-+++ xpra-2.5/setup.py
-@@ -1556,7 +1556,7 @@ else:
+--- xpra-3.0-rc3.orig/setup.py
++++ xpra-3.0-rc3/setup.py
+@@ -1501,7 +1501,7 @@ else:
          add_data_files("%s/man1" % man_path,  ["man/xpra.1", "man/xpra_launcher.1"])
          add_data_files("share/applications",  glob.glob("xdg/*.desktop"))
          add_data_files("share/mime/packages", ["xdg/application-x-xpraconfig.xml"])
@@ -11,7 +11,7 @@ Index: xpra-2.5/setup.py
          add_data_files("share/appdata",       ["xdg/xpra.appdata.xml"])
  
      #here, we override build and install so we can
-@@ -1629,7 +1629,7 @@ else:
+@@ -1574,7 +1574,7 @@ else:
              if pam_ENABLED:
                  copytodir("etc/pam.d/xpra", "/etc/pam.d")
  
@@ -20,7 +20,7 @@ Index: xpra-2.5/setup.py
              if service_ENABLED:
                  #Linux init service:
                  if os.path.exists("/bin/systemctl"):
-@@ -1640,7 +1640,9 @@ else:
+@@ -1585,7 +1585,9 @@ else:
                  else:
                      copytodir("service/xpra", "/etc/init.d")
                  if os.path.exists("/etc/sysconfig"):
@@ -31,8 +31,8 @@ Index: xpra-2.5/setup.py
                  elif os.path.exists("/etc/default"):
                      copytodir("etc/sysconfig/xpra", "/etc/default")
              if sd_listen_ENABLED:
-@@ -1757,7 +1759,6 @@ if scripts_ENABLED:
-     scripts += ["scripts/xpra", "scripts/xpra_launcher"]
+@@ -1703,7 +1705,6 @@ if scripts_ENABLED:
+ toggle_modules(WIN32, "xpra/scripts/win32_proxy_service")
  
  if data_ENABLED:
 -    add_data_files(share_xpra,                      ["README", "COPYING"])

@@ -14,3 +14,19 @@ add_requires() {
 }
 
 add_requires ignition-mount-initrd-fstab.service
+
+# Overwrite static /boot dependency by upstream igniton-dracut with a more
+# generic "ignition" device to fetch the user configuration; can not be put
+# into UNIT_DIR, as systemd generators are running simultaneously, so use a
+# directory with a higher priority. May still be overwritten by the admin by
+# putting the same file into /etc.
+mkdir -p "/run/systemd/system/ignition-setup-user.service.d"
+cat > "/run/systemd/system/ignition-setup-user.service.d/diskful.conf" <<EOF
+[Unit]
+Wants=dev-disk-by\x2dlabel-ignition.device
+After=dev-disk-by\x2dlabel-ignition.device
+
+[Service]
+ExecStart=
+ExecStart=/usr/sbin/ignition-setup-user-suse
+EOF

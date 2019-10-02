@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Thu Sep 26 07:45:57 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to GASNet 1.32.0
+  - Libfabric (ofi-conduit)
+    - Fix bug 3682: incorrect behavior for non-bulk puts larger than a page
+    - Compatibility fixes for libfabric version 1.6
+  - InfiniBand Verbs (ibv-conduit)
+    - GASNET_DISABLE_MUNMAP now defaults to enabled for ibv-conduit.
+    - Now use HCA's maximum supported MTU by default, resulting in nearly a 2x
+      increase in peak Get bandwidth on modern HCAs.
+    - Fix bug 3339: allow ibv-conduit to operate on Omni-Path hardware.
+      ofi-conduit and psm-conduit remain the recommended conduits for Omni-Path.
+  - Portable UDP (udp-conduit)
+    - Reduce polling cost on single-supernode runs. smp-conduit remains the
+      recommended conduit for use on single-supernode shared-memory systems.
+  - Portable MPI (mpi-conduit)
+    - Reduce polling cost on single-supernode runs. smp-conduit remains the
+      recommended conduit for use on single-supernode shared-memory systems.
+  - GASNet tools (spec v1.12)
+    - Numerous improvements to backtrace support, including fixing the
+      following bugs:
+      - Bug 3624: Improve backtrace fail-over behavior
+      - Bug 3625: call prctl(PR_SET_PTRACER,...) before backtrace on Linux
+      - Bug 3626: prioritize lldb on Mac OS X
+      - Bug 3627: unblock the unfreeze signal prior to backtrace
+      - Bug 3637: Fix EXECINFO backtrace for *BSD
+      - Enable GDB backtrace on Cray systems, when available
+      - Bug 3664: GASNETT_PREDICT_{TRUE,FALSE} result value semantics change slightly
+    - Add gasnett_unreachable()
+    - GASNETT_PLEASE_INLINE has been removed. Recommended replacement is `inline`
+    - Improve behavior when installed public headers are passed to a compiler 
+      that was not probed at configure time.
+  - General and Misc.
+    - GASNET_MAX_SEGSIZE syntax has been expanded and now defaults to 85% of physical 
+      memory, split evenly between co-located processes on a host. 
+      Configure option to control this default renamed to --with-max-segsize=
+    - GASNET_VIS_{AMPIPE,REMOTECONTIG} is now enabled by default on most conduits
+    - GASNET_VIS_MAXCHUNK default value adjusted on many conduits to improve perf
+    - New knobs GASNET_VIS_{PUT,GET}_MAXCHUNK for tuning put/get VIS chunk size
+    - Fix GASNET_NULL_ARGV_OK for mpi-conduit and mpi-spawner
+    - Additional debug checks now detect prohibited overlap in loopback RMA and AMLong.
+    - The extended-ref source directory has been re-arranged
+    - Clients using gasnet_coll_* must now explicitly #include <gasnet_coll.h>
+    - Events leading up to a crash are now more reliably reported in the trace file.
+  - Platform support/portability
+    - Support for Microsoft Windows 10 Subsystem for Linux (WSL) has graduated
+      out of BETA status
+    - Update MALLOC_OPTIONS setting for OpenBSD 6.x
+    - Add gasnetrun support for IBM Job Step Manager (jsrun)
+    - Add PLATFORM_COMPILER_C(XX)_LANGLVL to portable_platform (v5)
+    - Fix bug 3741: misidentification of IBM XL Compilers 13.1.6 and newer (v6)
+    - Fix bug 3743: verify correct KNL processor tuning on CNL
+    - Fix bug 3679: AMUDP incompatibility with PGI C++ 17+
+    - Public headers are less susceptible to malfunctions when compiled with
+      un-prefixed tokens redefined by the preprocessor. C/C++ keywords remain
+      reserved, as do tokens prepended by one or more underscores or one of the
+      reserved gasnet prefixes (see 'GASNet coding standards' in README-devel)
+  - Configure and Build
+    - Option --enable-strict-prototypes has been removed, see bug 3608.
+    - Fix bug 3613: warning on #pragma GCC diagnostic for gcc < 4.6
+    - Fix bug 3629: avoid a parallel make bug
+    - Add a git hash "watermark" to libraries
+    - Warning enable flags are removed from GASNET_C(XX)FLAGS and friends. 
+      The flags remain available in GASNET_DEVWARN_C(XX)FLAGS for opt-in.
+- Drop gasnet-s390-support.patch as it was fixed upstream
+- Enable SMP and PSM conduit.
+
+-------------------------------------------------------------------
 Mon Jan  7 08:45:39 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add gasnet-build-hostname.patch to make build reproducible (boo#1084909)

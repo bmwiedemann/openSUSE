@@ -17,7 +17,7 @@
 
 
 Name:           ignition-dracut
-Version:        0.0+git20190916.cbac371
+Version:        0.0+git20191001.cefb71c
 Release:        0
 Summary:        Dracut scripts for ignition
 License:        BSD-2-Clause
@@ -32,7 +32,7 @@ Source4:        module-setup.sh
 Source5:        01_suse_set_ignition
 Source6:        change-ignition-firstboot-path.conf
 Source7:        README.SUSE
-Patch1:         0001-Read-user-config.patch
+Source8:        ignition-setup-user-suse.sh
 Patch2:         0002-Support-different-flagfile-location.patch
 Patch3:         0003-Disable-resetting-UUID.patch
 BuildRequires:  suse-module-tools
@@ -55,12 +55,11 @@ This package contains the dracut scripts for this.
 
 %prep
 %setup -q
-%patch1 -p1
 %patch2 -p1
 %patch3 -p1
 mkdir dracut/30ignition-microos
 chmod +x %{SOURCE3} %{SOURCE4}
-cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} dracut/30ignition-microos/
+cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE8} dracut/30ignition-microos/
 cp %{SOURCE5} grub/
 cp %{SOURCE6} systemd/
 cp %{SOURCE7} .

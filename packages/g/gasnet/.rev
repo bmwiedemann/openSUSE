@@ -91,4 +91,12 @@ Requires and fixes SR#532253 and SR#532254</comment>
     <comment></comment>
     <requestid>666634</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d77e7951843ce683028129ef27b8559e</srcmd5>
+    <version>1.32.0</version>
+    <time>1570020939</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>734471</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Sep 27 11:17:00 UTC 2019 - kukuk@suse.de
+
+- Update to version 2.0.1+git20190925.641ec6a:
+  * selinux: use /run/systemd/relabel-extra.d for etc
+  * resource/url: Don't use a tmpfile in FetchToBuffer
+  * resource/url: use only needed ifaces in fetchFrom*
+  * resource/url: make FetchFrom* private
+  * Add a `fetch` stage
+  * build: Add `make install`
+  * tests: fix bb tests for size/start 0
+  * Continue on empty GPT partition label
+  * files/selinux: deglob user/group related paths
+  * stages/files: relabel masking symlinks for systemd
+  * engine: Write `/run/ignition.json` atomically
+  * vendor: Add github.com/google/renameio
+  * stages/filesystems: drop stray debug print
+  * doc/supported-platforms: mention qemu version requirements
+  * Source build file correctly
+  * resource/url: update schema version in Accept header
+  * fix check path mount
+- Drop 0001-Continue-on-empty-GPT-partition-label.patch: Added
+  upstream
+
+-------------------------------------------------------------------
 Mon Sep 02 16:34:22 UTC 2019 - iforster@suse.de
 
 - Update to version 2.0.1+git20190802.d523754:

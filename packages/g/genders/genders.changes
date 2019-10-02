@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Thu Jul 18 14:27:16 UTC 2019 - Christian Goll <cgoll@suse.com>
 
-- updated to ver 1.26 which has faster parsing
+- updated to ver 1.26 (jsc#SLE-9949) which has faster parsing
  * updated Fix-Python-package-installation-use-root.patch
  * Removed Remove-all-remains-of-EXTENSION_DESTDIR.patch
    as not relevant any more

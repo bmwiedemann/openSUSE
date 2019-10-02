@@ -9,7 +9,8 @@ Changes for openSUSE / SLE:
   To work around this limitation in addition to Ignition's own mount / umount
   stage all files systems tagged for being mounted in the initrd
   ("x-initrd.mount mount flag) will be mounted / umounted.
-* The user configuration can be stored on a device with the label "ignition"
+* ignition-setup-user-suse.sh / ignition-userconfig-timeout.conf:
+  The user configuration can be stored on a device with the label "ignition"
   (e.g. by attaching a USB flash drive with that name) instead of putting the
   file onto the root partition
 * change-ignition-firstboot-path.conf / 01_suse_set_ignition:

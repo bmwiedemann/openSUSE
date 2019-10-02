@@ -92,4 +92,13 @@
     <comment>certbot version bump</comment>
     <requestid>730172</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>96ebff44dd958737fa37294b30696db7</srcmd5>
+    <version>0.39.0</version>
+    <time>1570020994</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.39.0
+  * Support for Python 3.8 was added to Certbot and all of its components.</comment>
+    <requestid>734586</requestid>
+  </revision>
 </revisionlist>

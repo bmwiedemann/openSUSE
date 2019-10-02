@@ -1,7 +1,7 @@
 #
 # spec file for package gasnet
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define _buildshell /bin/bash
-%ifarch ppc64
-%define mpi_implem openmpi
-%else
 %define mpi_implem openmpi2
-%endif
 
 Name:           gasnet
-Version:        1.30.0
+Version:        1.32.0
 Release:        0
-%define libver	1_30_0
+%define libver	1_32_0
 Summary:        A Communication Layer for GAS Languages
 License:        PostgreSQL
 Group:          Productivity/Networking/Other
 Url:            https://gasnet.lbl.gov
-Source0:        https://gasnet.lbl.gov/GASNet-%{version}.tar.gz
+Source0:        https://gasnet.lbl.gov/download/GASNet-%{version}.tar.gz
 Patch0:         gasnet-date-time.patch
-Patch1:         gasnet-s390-support.patch
 # PATCH-FIX-OPENSUSE -- have constant BUILD_ID to fix build-compare
 Patch2:         gasnet-build-id.patch
 # PATCH-FIX-OPENSUSE https://bitbucket.org/berkeleylab/gasnet/pull-requests/253/allow-to-not-store-build-date-user-and/diff
@@ -106,7 +101,6 @@ This package contains the documentation for GASNet.
 %prep
 %setup -q -n GASNet-%{version}
 %patch0
-%patch1
 %patch2 -p1
 %patch3 -p1
 
@@ -117,9 +111,12 @@ sed -i -e "s/__DATE__/\"$FAKE_BUILDDATE\"/" -e "s/__TIME__/\"$FAKE_BUILDTIME\"/"
 
 %build
 . %{_libdir}/mpi/gcc/%{mpi_implem}/bin/mpivars.sh
-%configure --enable-udp --enable-mpi --enable-par --enable-ibv --disable-aligned-segments  --enable-segment-fast --with-segment-mmap-max=4GB --disable-debug --enable-force-posix-realtime \
+%configure --enable-udp --enable-mpi --enable-par --enable-ibv --disable-aligned-segments  --enable-segment-fast --with-segment-mmap-max=4GB --disable-debug --enable-force-posix-realtime --enable-smp \
 %ifarch x86_64 %{ix86}
     --enable-ofi \
+%endif
+%ifarch x86_64
+    --enable-psm \
 %endif
 %ifarch s390 s390x
   --enable-force-compiler-atomicops \
@@ -148,9 +145,10 @@ for l in %{buildroot}/%{_libdir}/lib{gasnet-smp-par,am*,*}.a; do \
 	linker=`which g++`
     libs= ; \
     [[ ${soname} = libgasnet-*-par* ]] && libs+=" -lpthread"; \
+    [[ ${soname} = libgasnet_*-par* ]] && libs+=" -lpthread"; \
     [[ ${soname} = libgasnet-psm-seq ]] && libs+=" -lpthread"; \
     [[ ${soname} = libamudp ]] && libs+=" -L${libdir} -lgasnet-smp-par"; \
-    [[ ${soname} = libammpi ]] && libs+=" $(mpicc --showme:link)"; \
+    [[ ${soname} = libammpi ]] && libs+=" $(mpicc --showme:link) -L${libdir} -lgasnet-smp-par"; \
     [[ ${soname} = libgasnet-udp-* ]] && libs+=" -L${libdir} -lamudp"; \
     [[ ${soname} = libgasnet-mpi-* ]] && libs+=" -L${libdir} -lammpi"; \
     [[ ${soname} = libgasnet-ibv-* ]] && libs+=" -L${libdir} -libverbs -lpthread" &&

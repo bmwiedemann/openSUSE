@@ -23,7 +23,7 @@
 %endif
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
-Version:        2.5.3
+Version:        3.0
 Release:        0
 Summary:        Remote display server for applications and desktops
 License:        GPL-2.0-or-later AND BSD-3-Clause AND LGPL-3.0-or-later AND MIT
@@ -42,9 +42,9 @@ BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python-Cython >= 0.20.0
-BuildRequires:  python-gobject-devel
-BuildRequires:  python2-devel
+BuildRequires:  python3-Cython >= 0.20.0
+BuildRequires:  python3-devel
+BuildRequires:  python3-gobject-devel
 BuildRequires:  systemd
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtk+-3.0)
@@ -53,7 +53,7 @@ BuildRequires:  pkgconfig(libavformat) >= 57
 BuildRequires:  pkgconfig(libswscale) >= 4
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libwebp) >= 0.4
-BuildRequires:  pkgconfig(pycairo)
+BuildRequires:  pkgconfig(py3cairo)
 BuildRequires:  pkgconfig(pygtk-2.0)
 %if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(vpx) >= 1.4.0
@@ -63,26 +63,27 @@ BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xkbfile)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xtst)
-Requires:       dbus-1-python
 Requires:       dbus-1-x11
 Requires:       gstreamer-plugins-base
 Requires:       gstreamer-plugins-good
 Requires:       pulseaudio
 Requires:       pulseaudio-utils
-Requires:       python2-Pillow
-Requires:       python2-gst
-Requires:       python2-lz4
-Requires:       python2-numpy
-Requires:       python2-opencv
-Requires:       python2-pycups
-Requires:       python2-rencode
+Requires:       python3-Pillow
+Requires:       python3-dbus-python
+Requires:       python3-gobject-Gdk
+Requires:       python3-gst
+Requires:       python3-lz4
+Requires:       python3-numpy
+Requires:       python3-opencv
+Requires:       python3-pycups
+Requires:       python3-rencode
 Requires:       shared-mime-info
 Requires:       xf86-video-dummy
 Requires:       xorg-x11-xauth
 Requires(post): %fillup_prereq
-Recommends:     python2-dnspython
-Recommends:     python2-opencv
-Recommends:     python2-paramiko
+Recommends:     python3-dnspython
+Recommends:     python3-opencv
+Recommends:     python3-paramiko
 %{?systemd_requires}
 
 %description
@@ -102,7 +103,7 @@ Summary:        HTML5 server and client support for xpra
 Group:          Productivity/Networking/Other
 Requires:       %{name} = %{version}
 # websockify is required to allow xpra to listen for an html5 client
-Requires:       python2-websockify
+Requires:       python3-websockify
 Provides:       bundled(js-aurora)
 Provides:       bundled(js-bencode)
 Provides:       bundled(js-broadway)
@@ -123,7 +124,7 @@ connections, and also the xpra html5 client.
 # fix shebangs
 find -name '*.py' \
      -exec sed -i '1{\@^#!/usr/bin/env python@d}' {} +
-sed -i "1 s|^#!/usr/bin/env python\b|#!%__python2|" cups/xpraforwarder
+sed -i "1 s|^#!/usr/bin/env python\b|#!%__python3|" cups/xpraforwarder
 # fix python-bytecode-inconsistent-mtime warning
 find . -name '*.py' -exec touch -mat 1707141200 {} +
 install -m0644 %{SOURCE1} -t xdg
@@ -132,10 +133,10 @@ sed -e 's|__FILLUPDIR__|%{_fillupdir}|' \
     -e 's|__UNITDIR__|%{_unitdir}|' \
     -i setup.py
 # fix shebang
-sed -i 's|^#!.*|#!%__python2|' scripts/auth_dialog scripts/xdg-open
+sed -i 's|^#!.*|#!%__python3|' scripts/auth_dialog scripts/xdg-open
 
 %build
-python2 setup.py build \
+python3 setup.py build \
     --verbose \
 %if 0%{?suse_version} > 1500
     --with-enc_ffmpeg \
@@ -158,7 +159,7 @@ python2 setup.py build \
     --with-service
 
 %install
-python2 setup.py install \
+python3 setup.py install \
     --skip-build \
     --root %{buildroot} \
     --prefix /usr \
@@ -226,8 +227,8 @@ mkdir -p %{_rundir}/%{name} || exit 1
 %{_libexecdir}/xpra/gvfs-open
 %{_libexecdir}/xpra/xdg-open
 %{_sbindir}/rc%{name}
-%{python_sitearch}/xpra
-%{python_sitearch}/%{name}-%{version}-py%{python_version}.egg-info
+%{python3_sitearch}/xpra
+%{python3_sitearch}/%{name}-%{version}-py%{python3_version}.egg-info
 %{_datadir}/appdata/xpra.appdata.xml
 %{_datadir}/applications/xpra-gui.desktop
 %{_datadir}/applications/xpra-launcher.desktop

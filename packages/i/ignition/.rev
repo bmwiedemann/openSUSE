@@ -40,4 +40,31 @@ Ignition is a minimal alternative to cloud-init, supposed to replace it for cert
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>729811</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d061f1a58a51e7dd9470e8765f099ab8</srcmd5>
+    <version>2.0.1+git20190925.641ec6a</version>
+    <time>1570020955</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.1+git20190925.641ec6a:
+  * selinux: use /run/systemd/relabel-extra.d for etc
+  * resource/url: Don't use a tmpfile in FetchToBuffer
+  * resource/url: use only needed ifaces in fetchFrom*
+  * resource/url: make FetchFrom* private
+  * Add a `fetch` stage
+  * build: Add `make install`
+  * tests: fix bb tests for size/start 0
+  * Continue on empty GPT partition label
+  * files/selinux: deglob user/group related paths
+  * stages/files: relabel masking symlinks for systemd
+  * engine: Write `/run/ignition.json` atomically
+  * vendor: Add github.com/google/renameio
+  * stages/filesystems: drop stray debug print
+  * doc/supported-platforms: mention qemu version requirements
+  * Source build file correctly
+  * resource/url: update schema version in Accept header
+  * fix check path mount
+- Drop 0001-Continue-on-empty-GPT-partition-label.patch: Added upstream
+</comment>
+    <requestid>734560</requestid>
+  </revision>
 </revisionlist>

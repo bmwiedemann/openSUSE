@@ -17,14 +17,13 @@
 
 
 Name:           ignition
-Version:        2.0.1+git20190802.d523754
+Version:        2.0.1+git20190925.641ec6a
 Release:        0
 Summary:        First boot installer and configuration tool
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/coreos/ignition
 Source:         %{name}-%{version}.tar.xz
-Patch1:         0001-Continue-on-empty-GPT-partition-label.patch
 Requires:       dracut
 BuildRequires:  dracut
 BuildRequires:  libblkid-devel
@@ -41,7 +40,6 @@ applies the configuration.
 
 %prep
 %setup -q
-%patch1 -p1
 
 %build
 sed -i -e 's|go build -ldflags|go build -buildmode=pie -ldflags|g' build

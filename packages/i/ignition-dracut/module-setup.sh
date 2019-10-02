@@ -13,6 +13,8 @@ install() {
 	"$systemdsystemunitdir/dev-disk-by\x2dlabel-ignition.device.d/ignition-userconfig-timeout.conf"
     inst_simple "$moddir/ignition-suse-generator" \
         "$systemdutildir/system-generators/ignition-suse-generator"
+    inst_script "$moddir/ignition-setup-user-suse.sh" \
+        "/usr/sbin/ignition-setup-user-suse"
 }
 
 installkernel() {

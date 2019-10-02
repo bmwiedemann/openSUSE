@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  2 10:12:45 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.39.0
+  * Support for Python 3.8 was added to Certbot and all of its components.
+
+-------------------------------------------------------------------
 Wed Sep 11 12:30:07 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 0.38.0

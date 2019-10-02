@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -110,10 +110,14 @@ Provides:       %{name}-doc = %{version}
 Obsoletes:      %{name}-doc < %{version}
 #This pulls in QWebEngine, which is not available on ppc64
 %ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
+%global qwebengine -DENABLE_QWEBENGINE:BOOL=ON
 BuildRequires:  akonadi-contact-devel
 BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
 %else
 BuildRequires:  pkgconfig(Qt5WebKitWidgets)
+%endif
+%ifarch ppc64le
+%global facesengine -DENABLE_FACESENGINE_DNN:BOOL=OFF
 %endif
 %if 0%{?suse_version} < 1320
 # It does not build with the default compiler (GCC 4.8) on Leap 42.x
@@ -183,11 +187,7 @@ sed -i "s/__TIME__/\"$FAKE_BUILDTIME\"/g" core/libs/dimg/filters/greycstoration/
 export CC=gcc-7
 export CXX=g++-7
 %endif
-%ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
-%cmake_kf5 -d build -- -DENABLE_APPSTYLES=ON -DENABLE_MEDIAPLAYER=ON -DENABLE_QWEBENGINE=ON
-%else
-%cmake_kf5 -d build -- -DENABLE_APPSTYLES=ON -DENABLE_MEDIAPLAYER=ON
-%endif
+%cmake_kf5 -d build -- -DENABLE_APPSTYLES=ON -DENABLE_MEDIAPLAYER=ON %{?qwebengine} %{?facesengine}
 %make_jobs VERBOSE=1
 
 %install
