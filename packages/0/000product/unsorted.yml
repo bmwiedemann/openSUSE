@@ -589,6 +589,7 @@ unsorted:
   - aranym 
   - arc 
   - arc-icon-theme 
+  - arcanist 
   - archivemail 
   - archivemount 
   - argon2 
@@ -2227,6 +2228,8 @@ unsorted:
   - diskimage-builder 
   - diskscan 
   - disorderfs 
+  - disruptor 
+  - disruptor-javadoc 
   - distcc 
   - distcc-gui 
   - distcc-server 
@@ -6399,7 +6402,6 @@ unsorted:
   - krandr 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
-  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -8689,7 +8691,7 @@ unsorted:
   - libgarcon-branding-upstream 
   - libgarcon-devel 
   - libgarcon-doc 
-  - libgasnet-1_30_0 
+  - libgasnet-1_32_0 
   - libgavl-devel 
   - libgbm-devel 
   - libgbm-devel-32bit: [x86_64] 
@@ -9996,10 +9998,10 @@ unsorted:
   - libnetcdf-fortran-gnu-openmpi1-hpc 
   - libnetcdf-fortran-gnu-openmpi2-hpc 
   - libnetcdf-fortran-gnu-openmpi3-hpc 
-  - libnetcdf-fortran_4_4_5-gnu-mpich-hpc 
-  - libnetcdf-fortran_4_4_5-gnu-openmpi1-hpc 
-  - libnetcdf-fortran_4_4_5-gnu-openmpi2-hpc 
-  - libnetcdf-fortran_4_4_5-gnu-openmpi3-hpc 
+  - libnetcdf-fortran_4_5_2-gnu-mpich-hpc 
+  - libnetcdf-fortran_4_5_2-gnu-openmpi1-hpc 
+  - libnetcdf-fortran_4_5_2-gnu-openmpi2-hpc 
+  - libnetcdf-fortran_4_5_2-gnu-openmpi3-hpc 
   - libnetcdf-gnu-hpc 
   - libnetcdf-gnu-mpich-hpc 
   - libnetcdf-gnu-mvapich2-hpc 
@@ -13389,14 +13391,14 @@ unsorted:
   - mpich-ofi-gnu-hpc-devel 
   - mpich-ofi-gnu-hpc-devel-static 
   - mpich-ofi-gnu-hpc-macros-devel 
-  - mpich-ofi_3_3-gnu-hpc 
-  - mpich-ofi_3_3-gnu-hpc-devel 
-  - mpich-ofi_3_3-gnu-hpc-devel-static 
-  - mpich-ofi_3_3-gnu-hpc-macros-devel 
-  - mpich_3_3-gnu-hpc 
-  - mpich_3_3-gnu-hpc-devel 
-  - mpich_3_3-gnu-hpc-devel-static 
-  - mpich_3_3-gnu-hpc-macros-devel 
+  - mpich-ofi_3_3_1-gnu-hpc 
+  - mpich-ofi_3_3_1-gnu-hpc-devel 
+  - mpich-ofi_3_3_1-gnu-hpc-devel-static 
+  - mpich-ofi_3_3_1-gnu-hpc-macros-devel 
+  - mpich_3_3_1-gnu-hpc 
+  - mpich_3_3_1-gnu-hpc-devel 
+  - mpich_3_3_1-gnu-hpc-devel-static 
+  - mpich_3_3_1-gnu-hpc-macros-devel 
   - mpitests 
   - mpitests-mpich 
   - mpitests-mpich-gnu-hpc 
@@ -13577,21 +13579,21 @@ unsorted:
   - mvapich2-psm2-gnu-hpc-devel: [x86_64] 
   - mvapich2-psm2-gnu-hpc-doc: [x86_64] 
   - mvapich2-psm2-gnu-hpc-macros-devel: [x86_64] 
-  - mvapich2-psm2_2_3_1-gnu-hpc: [x86_64] 
-  - mvapich2-psm2_2_3_1-gnu-hpc-devel: [x86_64] 
-  - mvapich2-psm2_2_3_1-gnu-hpc-devel-static: [x86_64] 
-  - mvapich2-psm2_2_3_1-gnu-hpc-doc: [x86_64] 
-  - mvapich2-psm2_2_3_1-gnu-hpc-macros-devel: [x86_64] 
-  - mvapich2-psm_2_3_1-gnu-hpc 
-  - mvapich2-psm_2_3_1-gnu-hpc-devel 
-  - mvapich2-psm_2_3_1-gnu-hpc-devel-static 
-  - mvapich2-psm_2_3_1-gnu-hpc-doc 
-  - mvapich2-psm_2_3_1-gnu-hpc-macros-devel 
-  - mvapich2_2_3_1-gnu-hpc 
-  - mvapich2_2_3_1-gnu-hpc-devel 
-  - mvapich2_2_3_1-gnu-hpc-devel-static 
-  - mvapich2_2_3_1-gnu-hpc-doc 
-  - mvapich2_2_3_1-gnu-hpc-macros-devel 
+  - mvapich2-psm2_2_3_2-gnu-hpc: [x86_64] 
+  - mvapich2-psm2_2_3_2-gnu-hpc-devel: [x86_64] 
+  - mvapich2-psm2_2_3_2-gnu-hpc-devel-static: [x86_64] 
+  - mvapich2-psm2_2_3_2-gnu-hpc-doc: [x86_64] 
+  - mvapich2-psm2_2_3_2-gnu-hpc-macros-devel: [x86_64] 
+  - mvapich2-psm_2_3_2-gnu-hpc 
+  - mvapich2-psm_2_3_2-gnu-hpc-devel 
+  - mvapich2-psm_2_3_2-gnu-hpc-devel-static 
+  - mvapich2-psm_2_3_2-gnu-hpc-doc 
+  - mvapich2-psm_2_3_2-gnu-hpc-macros-devel 
+  - mvapich2_2_3_2-gnu-hpc 
+  - mvapich2_2_3_2-gnu-hpc-devel 
+  - mvapich2_2_3_2-gnu-hpc-devel-static 
+  - mvapich2_2_3_2-gnu-hpc-doc 
+  - mvapich2_2_3_2-gnu-hpc-macros-devel 
   - mwic 
   - mx4j 
   - mxml-devel 
@@ -13859,18 +13861,18 @@ unsorted:
   - netcdf-fortran-gnu-openmpi2-hpc-devel 
   - netcdf-fortran-gnu-openmpi3-hpc 
   - netcdf-fortran-gnu-openmpi3-hpc-devel 
-  - netcdf-fortran_4_4_5-gnu-mpich-hpc 
-  - netcdf-fortran_4_4_5-gnu-mpich-hpc-devel 
-  - netcdf-fortran_4_4_5-gnu-mpich-hpc-devel-static 
-  - netcdf-fortran_4_4_5-gnu-openmpi1-hpc 
-  - netcdf-fortran_4_4_5-gnu-openmpi1-hpc-devel 
-  - netcdf-fortran_4_4_5-gnu-openmpi1-hpc-devel-static 
-  - netcdf-fortran_4_4_5-gnu-openmpi2-hpc 
-  - netcdf-fortran_4_4_5-gnu-openmpi2-hpc-devel 
-  - netcdf-fortran_4_4_5-gnu-openmpi2-hpc-devel-static 
-  - netcdf-fortran_4_4_5-gnu-openmpi3-hpc 
-  - netcdf-fortran_4_4_5-gnu-openmpi3-hpc-devel 
-  - netcdf-fortran_4_4_5-gnu-openmpi3-hpc-devel-static 
+  - netcdf-fortran_4_5_2-gnu-mpich-hpc 
+  - netcdf-fortran_4_5_2-gnu-mpich-hpc-devel 
+  - netcdf-fortran_4_5_2-gnu-mpich-hpc-devel-static 
+  - netcdf-fortran_4_5_2-gnu-openmpi1-hpc 
+  - netcdf-fortran_4_5_2-gnu-openmpi1-hpc-devel 
+  - netcdf-fortran_4_5_2-gnu-openmpi1-hpc-devel-static 
+  - netcdf-fortran_4_5_2-gnu-openmpi2-hpc 
+  - netcdf-fortran_4_5_2-gnu-openmpi2-hpc-devel 
+  - netcdf-fortran_4_5_2-gnu-openmpi2-hpc-devel-static 
+  - netcdf-fortran_4_5_2-gnu-openmpi3-hpc 
+  - netcdf-fortran_4_5_2-gnu-openmpi3-hpc-devel 
+  - netcdf-fortran_4_5_2-gnu-openmpi3-hpc-devel-static 
   - netcdf-gnu-hpc 
   - netcdf-gnu-hpc-devel 
   - netcdf-gnu-mpich-hpc 
@@ -14660,14 +14662,11 @@ unsorted:
   - openSUSE-release-usb-gnome 
   - openSUSE-release-usb-kde 
   - openSUSE-release-usb-x11 
-  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
-  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
-  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -19401,6 +19400,7 @@ unsorted:
   - python2-traittypes 
   - python2-transaction 
   - python2-transip 
+  - python2-transitions 
   - python2-translation-finder 
   - python2-translationstring 
   - python2-translitcodec 
@@ -21874,6 +21874,7 @@ unsorted:
   - python3-traittypes 
   - python3-transaction 
   - python3-transip 
+  - python3-transitions 
   - python3-translation-finder 
   - python3-translationstring 
   - python3-translitcodec 
