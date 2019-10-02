@@ -19,7 +19,7 @@
 %global __ocaml_requires_opts -i Asttypes -i Parsetree -i Pa_extend
 %global __ocaml_provides_opts -i Dynlink -i Dynlinkaux -i Pa_extend
 Name:           ocaml-camlp5
-Version:        7.07
+Version:        7.10
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Preprocessor-Pretty-Printer for Objective Caml
@@ -61,7 +61,7 @@ cp -Lavit %{buildroot}%{_libdir}/ocaml/camlp5 etc/META
 
 %files
 %license LICENSE
-%doc CHANGES DEVEL MODE README UPGRADING
+%doc CHANGES DEVEL UPGRADING
 %{_bindir}/camlp5
 %{_bindir}/camlp5o
 %{_bindir}/camlp5r
