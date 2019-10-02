@@ -5417,8 +5417,6 @@ unsorted:
   - include-what-you-use-tools 
   - ineffassign 
   - infiniband-diags 
-  - infiniband-diags-devel 
-  - infiniband-diags-devel-32bit: [x86_64] 
   - infinipath-psm-devel 
   - infinoted 
   - influxdb 
@@ -6080,7 +6078,7 @@ unsorted:
   - kemoticons-devel 
   - kemoticons-devel-32bit: [x86_64] 
   - kernel-coverage 
-  - kernel-debug: [i586] # suggested by dvd:suggested:patterns-devel-base-devel_kernel 
+  - kernel-debug 
   - kernel-debug-devel 
   - kernel-default-base: [i586] 
   - kernel-default-base-rebuild 
@@ -8092,6 +8090,8 @@ unsorted:
   - libconfig-devel 
   - libconfig11: [i586] 
   - libconfig11-32bit: [x86_64] 
+  - libconfini-devel 
+  - libconfini0 
   - libconfuse-devel 
   - libconfuse-lang 
   - libconfuse2 
@@ -9241,7 +9241,7 @@ unsorted:
   - libhugetlbfs-devel 
   - libhugetlbfs-tests 
   - libhunspell-1_7-0-32bit: [x86_64] 
-  - libhwloc5 
+  - libhwloc15 
   - libhydrogen-core-devel 
   - libhydrogen-core1 
   - libhyphen0-32bit: [x86_64] 
@@ -9254,7 +9254,6 @@ unsorted:
   - libibmad5-32bit: [x86_64] 
   - libibmtss0 
   - libibnetdisc5 
-  - libibnetdisc5-32bit: [x86_64] 
   - libibumad3 
   - libibumad3-32bit: [x86_64] 
   - libibverbs-32bit: [x86_64] 
@@ -18806,6 +18805,7 @@ unsorted:
   - python2-py3status 
   - python2-pyDOE2 
   - python2-pyFFTW 
+  - python2-pyIOSXR 
   - python2-pyLibravatar 
   - python2-pyModis 
   - python2-pyOCD 
@@ -18851,6 +18851,7 @@ unsorted:
   - python2-pydot3 
   - python2-pydotplus 
   - python2-pydub 
+  - python2-pyeapi 
   - python2-pyee 
   - python2-pyelftools 
   - python2-pyemd 
@@ -21226,6 +21227,7 @@ unsorted:
   - python3-py3status 
   - python3-pyDOE2 
   - python3-pyFFTW 
+  - python3-pyIOSXR 
   - python3-pyLibravatar 
   - python3-pyModis 
   - python3-pyOCD 
@@ -21270,6 +21272,7 @@ unsorted:
   - python3-pydot3 
   - python3-pydotplus 
   - python3-pydub 
+  - python3-pyeapi 
   - python3-pyee 
   - python3-pyelftools 
   - python3-pyemd 
@@ -22256,9 +22259,6 @@ unsorted:
   - rapid-photo-downloader-lang 
   - rapidjson-devel 
   - raptor 
-  - rarian 
-  - rarian-devel 
-  - rarian-scrollkeeper-compat 
   - rarpd 
   - rasdaemon 
   - rash 
