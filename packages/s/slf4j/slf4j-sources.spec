@@ -35,7 +35,7 @@ BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
 BuildArch:      noarch
 Requires:       mvn(commons-logging:commons-logging)
-Requires:       mvn(log4j:log4j)
+Requires:       mvn(log4j:log4j:1.2.17)
 Requires:       mvn(org.slf4j:slf4j-api) = %{version}
 
 %description

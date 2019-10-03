@@ -16,15 +16,19 @@
 #
 
 
-%define build_qt5 0
+%global flavor @BUILD_FLAVOR@%{nil}
+%global sname poppler
+%if "%{flavor}" == ""
+%else
+%global psuffix -%{flavor}
+%endif
 
-Name:           poppler
-%define _name   poppler
-Version:        0.79.0
+Name:           poppler%{?psuffix}
+Version:        0.81.0
 Release:        0
 # Actual version of poppler-data:
 %define poppler_data_version 0.4.9
-%define poppler_sover 89
+%define poppler_sover 91
 %define poppler_cpp_sover 0
 %define poppler_glib_sover 8
 %define poppler_qt5_sover 1
@@ -34,17 +38,18 @@ Summary:        PDF Rendering Library
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Libraries/C and C++
 Url:            https://poppler.freedesktop.org/
-Source:         http://poppler.freedesktop.org/%{_name}-%{version}.tar.xz
+Source:         http://poppler.freedesktop.org/%{sname}-%{version}.tar.xz
 Source99:       baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
+BuildRequires:  libboost_headers-devel >= 1.58
 BuildRequires:  libjpeg-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  openjpeg2
-%if %build_qt5
+%if "%{flavor}" == "qt5"
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Test)
@@ -165,7 +170,7 @@ developed by Derek Noonburg of Glyph and Cog, LLC.
 %setup -q -n poppler-%{version}
 
 %build
-%if %build_qt5
+%if "%{flavor}" == "qt5"
 export MOCQT5='%{_libqt5_bindir}/moc'
 export MOCQT52='%{_libqt5_bindir}/moc'
 %endif
@@ -178,22 +183,22 @@ export LD_LIBRARY_PATH=$(pwd)/build
 	-DENABLE_ZLIB=ON \
 	-DENABLE_LIBCURL=ON \
 	-DBUILD_GTK_TESTS=OFF \
-%if %build_qt5
+%if "%{flavor}" == "qt5"
 	-DENABLE_QT5=ON \
 	-DENABLE_GLIB=OFF \
 	-DENABLE_CPP=OFF \
 %endif
     %{nil}
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
-%if %build_qt5
+%if "%{flavor}" == "qt5"
 cd %{buildroot} && find . -type f -o -type l | grep -v qt | xargs rm -v
 %endif
 
 echo > %SOURCE99
-%if %build_qt5
+%if "%{flavor}" == "qt5"
 echo "libpoppler-qt5-%{poppler_qt5_sover}" >> %SOURCE99
 %else
 echo "libpoppler%{poppler_sover}" >> %SOURCE99
@@ -217,14 +222,12 @@ echo "libpoppler-cpp%{poppler_cpp_sover}" >> %SOURCE99
 
 %postun -n libpoppler-qt5-%{poppler_qt5_sover} -p /sbin/ldconfig
 
-%if %build_qt5
+%if "%{flavor}" == "qt5"
 
 %files -n libpoppler-qt5-%{poppler_qt5_sover}
-%defattr (-, root, root)
 %{_libdir}/libpoppler-qt5.so.%{poppler_qt5_sover}*
 
 %files -n libpoppler-qt5-devel
-%defattr (-, root, root)
 %dir %{_includedir}/poppler
 %{_includedir}/poppler/qt5
 %{_libdir}/libpoppler-qt5.so
@@ -233,31 +236,25 @@ echo "libpoppler-cpp%{poppler_cpp_sover}" >> %SOURCE99
 %else
 
 %files -n libpoppler%{poppler_sover}
-%defattr (-, root, root)
 %license COPYING COPYING3
 %doc AUTHORS ChangeLog NEWS README.md README-XPDF README.contributors
 %{_libdir}/libpoppler.so.%{poppler_sover}*
 
 %files -n libpoppler-glib%{poppler_glib_sover}
-%defattr (-, root, root)
 %{_libdir}/libpoppler-glib.so.%{poppler_glib_sover}*
 
 %files -n typelib-1_0-Poppler-%{poppler_apipkg}
-%defattr (-, root, root)
 %{_libdir}/girepository-1.0/Poppler-%{poppler_api}.typelib
 
 %files tools
-%defattr (-, root, root)
 %license COPYING COPYING3
 %{_bindir}/*
 %doc %{_mandir}/man1/*.*
 
 %files -n libpoppler-cpp%{poppler_cpp_sover}
-%defattr(-, root, root)
 %{_libdir}/libpoppler-cpp.so.%{poppler_cpp_sover}*
 
 %files -n libpoppler-devel
-%defattr (-, root, root)
 %{_includedir}/poppler
 %exclude %{_includedir}/poppler/glib
 %{_libdir}/libpoppler.so
@@ -268,7 +265,6 @@ echo "libpoppler-cpp%{poppler_cpp_sover}" >> %SOURCE99
 %{_libdir}/pkgconfig/poppler-splash.pc
 
 %files -n libpoppler-glib-devel
-%defattr (-, root, root)
 %{_includedir}/poppler/glib
 %{_libdir}/libpoppler-glib.so
 %{_libdir}/pkgconfig/poppler-glib.pc

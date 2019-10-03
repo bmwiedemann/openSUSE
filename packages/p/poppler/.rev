@@ -1485,4 +1485,51 @@ New upstream release</comment>
     <comment>New stable release. - New version new try  -- expect texlive to fail still......</comment>
     <requestid>720737</requestid>
   </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>f8a1e81f7cdf13ac81c322be1b735bb9</srcmd5>
+    <version>0.81.0</version>
+    <time>1570112020</time>
+    <user>dimstar_suse</user>
+    <comment>- Depends on fixed texlive available in devel repo.
+
+- Update to version 0.81.0:
+  + core:
+    - Splash: Always enable support for CMYK rasterization.
+    - CairoOutputDev: Check scaled dimensions for 0.
+    - BaseCryptStream: Fix potential uninitialized memory read.
+    - SplashBitmap: Fix wrong width condition for
+      splashModeDeviceN8.
+    - Fix crashes in malformed files.
+- Bump poppler_sover following upstream changes.
+- Convert linked package to _multibuild
+- Cleanup spec file (remove defattr)
+- Add boost_headers to BuildRequires, speedup Splash backend
+- Update to version 0.80.0:
+  + core:
+    - Annotations: Implement support for setting a different text
+      in the appearance stream than the real text.
+    - Splash: Optionally use small_vector from boost.
+    - Fix memory leaks on broken files.
+    - Fix abort on broken files.
+    - Small code simplifications.
+    - Remove USE_FIXEDPOINT support.
+  + qt5:
+    - Fix MSVC build.
+    - Add subsitute-font information.
+    - Fix since marker of some functions.
+    - Fix leak when aborting text extraction.
+    - Small code simplifications.
+  + glib:
+    - Make print scaling getter visible.
+    - Make Duplex/NumCopies/PrintPageRange preference available in
+      API.
+    - Implement Movie API.
+  + utils: pdftotext: Add -nodiag flag to remove diagonal text on
+    output.
+  + build system: Mark external lib include dirs as SYSTEM.
+- Bump poppler_sover following upstream changes.
+- Use cmake_build macro.
+</comment>
+    <requestid>733646</requestid>
+  </revision>
 </revisionlist>

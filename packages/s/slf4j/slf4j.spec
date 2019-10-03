@@ -41,7 +41,7 @@ BuildRequires:  javapackages-local
 BuildRequires:  javapackages-tools
 BuildRequires:  javassist >= 3.4
 BuildRequires:  junit >= 3.8.2
-BuildRequires:  log4j-mini
+BuildRequires:  log4j12-mini
 Requires:       cal10n
 Requires:       java
 # this is ugly hack, which creates package which requires the same,
@@ -164,7 +164,7 @@ done
 sed -i "/Import-Package/s/.$/;resolution:=optional&/" slf4j-api/src/main/resources/META-INF/MANIFEST.MF
 
 %build
-export CLASSPATH=$(build-classpath log4j \
+export CLASSPATH=$(build-classpath log4j12/log4j-12 \
                    commons-logging \
                    commons-lang3 \
                    javassist-3.14.0 \

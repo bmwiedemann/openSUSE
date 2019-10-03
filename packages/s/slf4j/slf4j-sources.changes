@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct  1 09:01:32 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Build against the compatibility log4j12-mini package
+- Depend on mvn(log4j:log4j:1.2.17) provided by the compatibility
+  packages
+
+-------------------------------------------------------------------
 Tue Mar 19 05:31:47 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Fix an unexpanded ${parsedVersion.osgiVersion} variable in the

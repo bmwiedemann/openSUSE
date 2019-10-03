@@ -155,4 +155,12 @@
     <comment>Split in several packages + sources link</comment>
     <requestid>688995</requestid>
   </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>679af124296d483654d8556a0f911475</srcmd5>
+    <version>1.7.25</version>
+    <time>1570112136</time>
+    <user>dimstar_suse</user>
+    <comment>Build against the new log4j12/log4j12-mini packages</comment>
+    <requestid>734256</requestid>
+  </revision>
 </revisionlist>
