@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Oct  2 13:35:42 UTC 2019 - David Diaz <dgonzalez@suse.com>
+
+- Partitioner: fix the type column value for Ext3/4 filesystems
+  with an external journal (bsc#1145841).
+- Do not crash when importing mount points from a multi-device
+  filesystem.
+- 4.2.45
+
+-------------------------------------------------------------------
+Wed Oct  2 08:46:10 UTC 2019 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- At the end of installation, copy the pervasive encryption keys
+  to the zkey repository of the target system (jsc#SLE-7376).
+- 4.2.44
+
+-------------------------------------------------------------------
+Tue Oct 01 11:19:20 CEST 2019 - aschnell@suse.com
+
+- implemented detection of pervasive encryption (for jsc#SLE-7376)
+- 4.2.43
+
+-------------------------------------------------------------------
+Wed Sep 25 08:09:53 UTC 2019 - José Iván López González <jlopez@suse.com>
+
+- Partitioner: allow encrypting swap with protected and secure
+  keys (part of jsc#SLE-7376).
+- Partitioner: allow importing mount points from encrypted swap
+  with protected and secure keys.
+- 4.2.42
+
+-------------------------------------------------------------------
 Mon Sep 23 11:08:38 UTC 2019 - David Diaz <dgonzalez@suse.com>
 
 - Partitioner: allows encrypting volumes using pervasive
