@@ -934,7 +934,6 @@ unsorted:
   - barbie_seahorse_adventures 
   - barcode 
   - barcode-devel 
-  - bareftp 
   - base64coder 
   - base64coder-javadoc 
   - bash-completion-devel 
@@ -1169,6 +1168,7 @@ unsorted:
   - brltty-driver-libbraille 
   - brltty-utils 
   - brotli 
+  - browserpass-native 
   - brp-check-suse 
   - brp-extract-appdata 
   - brp-extract-translations 
@@ -2330,7 +2330,6 @@ unsorted:
   - dpdk-devel: [x86_64] 
   - dpdk-doc: [x86_64] 
   - dpdk-examples: [x86_64] 
-  - dpdk-kmp-default: [x86_64] 
   - dpdk-tools: [x86_64] 
   - dpic 
   - dpic-doc 
@@ -4331,10 +4330,6 @@ unsorted:
   - gnome-devel-docs-lang 
   - gnome-directory-thumbnailer 
   - gnome-directory-thumbnailer-lang 
-  - gnome-do 
-  - gnome-do-lang 
-  - gnome-do-plugins 
-  - gnome-do-plugins-lang 
   - gnome-doc-utils 
   - gnome-doc-utils-devel 
   - gnome-doc-utils-lang 
@@ -8936,8 +8931,9 @@ unsorted:
   - libgrooveloudness4 
   - libgrooveplayer-devel 
   - libgrooveplayer4 
+  - libgrpc++1 
   - libgrpc-httpjson-transcoding0: [x86_64] 
-  - libgrpc6 
+  - libgrpc7 
   - libgrss-devel 
   - libgrss0 
   - libgsasl-devel 
@@ -10517,7 +10513,7 @@ unsorted:
   - libpoppler-glib8-32bit: [x86_64] 
   - libpoppler-qt5-1-32bit: [x86_64] 
   - libpoppler-qt5-devel 
-  - libpoppler89-32bit: [x86_64] 
+  - libpoppler91-32bit: [x86_64] 
   - libportaudio2-32bit: [x86_64] 
   - libportaudiocpp0 
   - libpostproc55-32bit: [x86_64] 
@@ -11619,8 +11615,7 @@ unsorted:
   - libuev2 
   - libuhd003 
   - libuhttpmock-0_0-0 
-  - libulfius2_5: [i586] 
-  - libulfius2_6: [x86_64] 
+  - libulfius2_6 
   - libulockmgr1 
   - libuna-devel 
   - libuna-tools 
@@ -12413,8 +12408,11 @@ unsorted:
   - log4j 
   - log4j-javadoc 
   - log4j-manual 
-  - log4j-mini 
   - log4j-over-slf4j 
+  - log4j12 
+  - log4j12-javadoc 
+  - log4j12-manual 
+  - log4j12-mini 
   - log4net 
   - logdigest 
   - logstalgia 
@@ -14798,6 +14796,7 @@ unsorted:
   - openmpi3-gnu-hpc-macros-devel 
   - openmpi3-libs 
   - openmpi3-libs-32bit: [x86_64] 
+  - openmpi3-macros-devel 
   - openmpi3-testsuite 
   - openmpi_1_10_7-gnu-hpc 
   - openmpi_1_10_7-gnu-hpc-devel 
@@ -22566,6 +22565,8 @@ unsorted:
   - ruby2.6-rubygem-arel-doc-8 
   - ruby2.6-rubygem-arel-testsuite-3_0 
   - ruby2.6-rubygem-asciidoctor-doc 
+  - ruby2.6-rubygem-ast-doc 
+  - ruby2.6-rubygem-ast-testsuite 
   - ruby2.6-rubygem-atomic-doc 
   - ruby2.6-rubygem-atomic-testsuite 
   - ruby2.6-rubygem-attr_required-doc 
@@ -24044,6 +24045,7 @@ unsorted:
   - suse-hpc 
   - suse-module-tools-legacy 
   - suse-prime 
+  - suse-prime-bbswitch 
   - suse-xsl-stylesheets 
   - suseprime-appindicator 
   - svg-schema-doc 
