@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct  2 20:34:06 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Avoid version ranges for dependencies
+
+-------------------------------------------------------------------
 Mon Apr  8 07:12:50 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of glassfish-jsp-api 2.3.3

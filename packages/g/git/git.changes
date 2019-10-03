@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct  3 08:51:28 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- These patches have been merged upstream a long time ago, no longer needed:
+  * 0001-submodule-helper-use-to-signal-end-of-clone-options.patch
+  * 0002-submodule-config-ban-submodule-urls-that-start-with-.patch
+  * 0003-submodule-config-ban-submodule-paths-that-start-with.patch
+  * git-mark-path-lookup-errors.patch
+
+-------------------------------------------------------------------
 Sun Aug 18 15:24:45 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - git 2.23.0:
@@ -213,10 +222,25 @@ Fri Nov 30 11:42:53 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
   SMTP server
 
 -------------------------------------------------------------------
+Mon Nov 26 14:14:19 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
+
+- fix CVE-2018-19486 (bsc#1117257)
+  * git-mark-path-lookup-errors.patch
+
+-------------------------------------------------------------------
 Wed Nov 21 19:59:33 UTC 2018 - astieger@suse.com
 
 - git 2.19.2:
   * various bug fixes for multiple subcommands and operations
+
+-------------------------------------------------------------------
+Mon Oct  8 16:38:04 CEST 2018 - tiwai@suse.de
+
+- Fix VUL-0: arbitrary code execution via .gitmodules
+  (CVE-2018-17456, bsc#1110949):
+  0001-submodule-helper-use-to-signal-end-of-clone-options.patch
+  0002-submodule-config-ban-submodule-urls-that-start-with-.patch
+  0003-submodule-config-ban-submodule-paths-that-start-with.patch
 
 -------------------------------------------------------------------
 Fri Oct  5 17:31:07 UTC 2018 - astieger@suse.com
@@ -311,6 +335,15 @@ Mon Jun 25 07:40:25 UTC 2018 - astieger@suse.com
   * various other workflow improvements and fixes
   * performance improvements and other developer visible fixes
 - drop git-bash-completion-egrep-color-fix.diff no longer required
+
+-------------------------------------------------------------------
+Wed May 30 16:11:19 CEST 2018 - tiwai@suse.de
+
+- Update to git 2.16.4: security fix release
+  * path sanity-checks on NTFS can read arbitrary memory
+    (CVE-2018-11233, bsc#1095218)
+  * arbitrary code execution when recursively cloning a malicious
+    repository (CVE-2018-11235, bsc#1095219)
 
 -------------------------------------------------------------------
 Tue May 29 23:11:45 UTC 2018 - avindra@opensuse.org

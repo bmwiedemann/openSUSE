@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct  3 08:15:15 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 19.09.00:
+  * acpi/boot: skip ACPI BOOT test on UEFI systems.
+  * acpi: s3: fix typo from 6b94bb6a4b13e
+  * opal: add more bounds checking and zero pstates array
+  * fwtstest: boot-0001: sync with boot table check on efi firmware
+- Changes for version 19.08.00:
+  * ACPICA: Update to version 20190816
+  * auto-packager: mkpackage.sh: remove cosmic
+  * efi_runtime: enable KBUILD_MODPOST_WARN=y to workaround build failures
+  * ACPICA: Update to version 20190816
+  * fwtstest: syntaxcheck-0001: update to keep in sync with ACPICA features
+  * README: Add package dependency notes for ARM64
+
+-------------------------------------------------------------------
 Tue Aug 13 08:07:06 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 -  Update to version 19.07.00:

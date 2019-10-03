@@ -17,7 +17,6 @@
 
 
 %define version_str 3_3_2
-%define compat_version 3.0,3.1,3.2,3.3,3.3.1,3.3.2
 Name:           asm3
 Version:        3.3.2
 Release:        0
@@ -114,22 +113,30 @@ ln -s %{name}-%{version} %{buildroot}/%{_javadocdir}/%{name}
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}/%{name}
 
-install -pm 644 output/dist/lib/asm-parent-%{version}.pom %{buildroot}%{_mavenpomdir}/%{name}/asm-parent.pom
-%add_maven_depmap %{name}/asm-parent.pom -v %{compat_version}
+rm -rf 
 
+%pom_remove_parent output/dist/lib/all/asm-all-%{version}.pom
+%pom_xpath_inject pom:project "
+	<groupId>asm</groupId>
+	<version>3.3.2</version>" output/dist/lib/all/asm-all-%{version}.pom
 install -pm 644 output/dist/lib/all/asm-all-%{version}.pom %{buildroot}%{_mavenpomdir}/%{name}-all.pom
-%add_maven_depmap %{name}-all.pom %{name}-all.jar -v %{compat_version}
+%add_maven_depmap %{name}-all.pom %{name}-all.jar
 
+%pom_remove_parent output/dist/lib/asm-%{version}.pom
+%pom_xpath_inject pom:project "
+	<groupId>asm</groupId>
+	<version>3.3.2</version>" output/dist/lib/asm-%{version}.pom
 install -pm 644 output/dist/lib/asm-%{version}.pom %{buildroot}%{_mavenpomdir}/%{name}/asm.pom
-%add_maven_depmap %{name}/asm.pom %{name}/asm.jar -v %{compat_version}
+%add_maven_depmap %{name}/asm.pom %{name}/asm.jar
 
 for i in analysis commons tree util xml; do
+	%pom_remove_parent output/dist/lib/asm-$i-%{version}.pom
+	%pom_xpath_inject pom:project "
+		<groupId>asm</groupId>
+		<version>3.3.2</version>" output/dist/lib/asm-$i-%{version}.pom
 	install -pm 644 output/dist/lib/asm-$i-%{version}.pom %{buildroot}%{_mavenpomdir}/%{name}/asm-$i.pom
-	%add_maven_depmap %{name}/asm-$i.pom %{name}/asm-$i.jar -v %{compat_version}
+	%add_maven_depmap %{name}/asm-$i.pom %{name}/asm-$i.jar
 done
-
-(cd %{buildroot}%{_javadir}/%{name} && for jar in *-%{version}.jar; do ln -s $(readlink ${jar}) ${jar/-%{version}/}; done)
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}.jar; do ln -sL $(readlink ${jar}) ${jar/-%{version}/}; done)
 
 %files -f .mfiles
 %license LICENSE.txt

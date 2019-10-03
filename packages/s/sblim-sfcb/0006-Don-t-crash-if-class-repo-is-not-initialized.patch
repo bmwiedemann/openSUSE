@@ -1,7 +1,7 @@
-From 9a75c16a1c525a6924d47403fd0b520fe9232360 Mon Sep 17 00:00:00 2001
+From 636358faaf5e4fe24f69c0fcad20d37f9d164cba Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
 Date: Thu, 8 Aug 2013 12:25:35 +0200
-Subject: [PATCH 06/25] Don't crash if class repo is not initialized
+Subject: [PATCH 06/29] Don't crash if class repo is not initialized
 
 ---
  classProviderSf.c | 2 +-
@@ -21,5 +21,5 @@ index 9b0de415eb0f..e1b83a063b3b 100644
    }
  
 -- 
-2.15.0
+2.23.0
 

@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Oct  2 22:02:30 UTC 2019 - Knut Anderssen <kanderssen@suse.com>
+
+- bsc#1152840
+  - Fix interface ipaddr and prefixlen in the cloned profile.
+- 4.2.17
+
+-------------------------------------------------------------------
+Wed Oct  2 09:05:14 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
+
+- Adapt network CLI to new data model with improved error reporting
+  (bsc#1151242)
+- 4.2.16
+
+-------------------------------------------------------------------
+Wed Oct  2 05:57:45 UTC 2019 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- boo#1152748:
+  - Fix detection of the network status during installation.
+- 4.1.15
+
+-------------------------------------------------------------------
+Tue Oct  1 14:24:42 UTC 2019 - Knut Anderssen <kanderssen@suse.com>
+
+- AY: Fix interface name check for using the fallback when not set.
+
+-------------------------------------------------------------------
+Tue Oct  1 09:24:57 UTC 2019 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- boo#1152627
+  - Fix circular dependency between DNS and Host modules
+  - Remove unneeded code related to the already dropped feature to write the hostname
+    to /etc/hosts.
+- 4.2.14
+
+-------------------------------------------------------------------
+Fri Sep 20 13:29:30 UTC 2019 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- bsc#1151491
+  - Completed the new data model (support for TUN/TAP, bridges,
+    bonding, VLANs, etc.).
+  - Switched to use the new data model.
+  - New wireless configuration workflow.
+  - Revamped support for interfaces renaming and drivers assignment, including
+    better udev rules handling.
+  - Fixed /etc/hosts handling when switching from static to DHCP based configuration.
+  - Many small fixes in different areas.
+- 4.2.13
+
+-------------------------------------------------------------------
 Tue Sep 10 07:40:04 UTC 2019 - Michal Filka <mfilka@suse.com>
 
 - bnc#1149234

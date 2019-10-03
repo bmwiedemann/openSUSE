@@ -45,4 +45,18 @@
     <comment>- Change RPM dependency &quot;php5&quot; -&gt; &quot;php&quot; (bsc#1058103)</comment>
     <requestid>530771</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>746015713e4eb4870e0014ee195d8257</srcmd5>
+    <version>1.1.0</version>
+    <time>1570104546</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to release 1.1.0
+  + Added twiping(1) utility
+  + Added &quot;-u&quot;, &quot;-p&quot;, and &quot;-P&quot; command line flags
+  + Changed default truncation length from 140 -&gt; 3200
+  + Allow sending to/from short codes (but see BUGS)
+  + Find xmlstarlet as 'xml' or 'xmlstarlet' (pull #1)
+  + Fixed bug in twimsg(1) where `-F' was ignored</comment>
+    <requestid>734676</requestid>
+  </revision>
 </revisionlist>

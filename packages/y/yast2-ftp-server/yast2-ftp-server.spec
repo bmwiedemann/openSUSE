@@ -17,7 +17,7 @@
 
 
 Name:           yast2-ftp-server
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 Summary:        YaST2 - FTP configuration
 License:        GPL-2.0-only

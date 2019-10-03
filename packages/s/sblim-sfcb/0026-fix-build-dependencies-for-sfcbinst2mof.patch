@@ -1,0 +1,24 @@
+From c3ea3eaa59d8be19e0c1d28c2ac9eb8074e41b2b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Thu, 26 Sep 2019 11:39:32 +0200
+Subject: [PATCH 26/29] fix build dependencies for sfcbinst2mof
+
+---
+ Makefile.am | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Makefile.am b/Makefile.am
+index 6d0f5f10f833..56933cf0c701 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -360,6 +360,7 @@ sfcbproc_SOURCES=sfcbproc.c
+ 
+ sfcbinst2mof_SOURCES=sfcbinst2mof.c
+ sfcbinst2mof_LDADD = -lsfcFileRepository -lsfcBrokerCore
++sfcbinst2mof_DEPENDENCIES=libsfcFileRepository.la libsfcBrokerCore.la
+ 
+ sfcbtrace_SOURCES=sfcbtrace.c
+ sfcbtrace_LDADD = -lsfcBrokerCore
+-- 
+2.23.0
+

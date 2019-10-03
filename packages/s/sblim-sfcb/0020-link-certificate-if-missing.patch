@@ -1,7 +1,7 @@
-From aa8a09947fd938060b604725eafb9d9a4185235f Mon Sep 17 00:00:00 2001
+From 33bc1de71f52880842d5410a1c08ba5778afb016 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
 Date: Tue, 28 Nov 2017 15:32:37 +0100
-Subject: [PATCH 20/25] link certificate if missing
+Subject: [PATCH 20/29] link certificate if missing
 
 On updates from older versions that did not use clist.pem, we
 need to properly link the file here or service will not start
@@ -28,5 +28,5 @@ index 9bf6320d5525..17e26256f301 100644
  
  if [ -f $TARGETDIR/client.pem ]
 -- 
-2.15.0
+2.23.0
 

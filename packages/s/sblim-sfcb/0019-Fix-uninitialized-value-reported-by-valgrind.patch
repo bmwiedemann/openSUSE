@@ -1,7 +1,7 @@
-From 82e2d743cc0a3016fb8d5371a9c92f862e0f40b1 Mon Sep 17 00:00:00 2001
+From 54cb4e371a1055834ffae32a826f530e8824685c Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
 Date: Tue, 28 Nov 2017 15:31:33 +0100
-Subject: [PATCH 19/25] Fix uninitialized value reported by valgrind
+Subject: [PATCH 19/29] Fix uninitialized value reported by valgrind
 
 Date: Tue Dec 13 17:51:55 CET 2016
 Author: Marcus Meissner
@@ -109,5 +109,5 @@ index d894e417538d..314a7cfff733 100644
    nr->sMax = nr->dMax / 400;
    nr->sNext = 0;
 -- 
-2.15.0
+2.23.0
 

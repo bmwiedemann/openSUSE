@@ -32,7 +32,7 @@ BuildRequires:  libxslt
 BuildRequires:  xhtml-dtd
 BuildRequires:  xmlcharent
 BuildRequires: 	pngcrush
-BuildRequires:	python-libxml2
+BuildRequires:	python2-libxml2
 Requires:       gimp
 Enhances:       gimp
 Provides:       gimp-help-2

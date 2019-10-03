@@ -29,8 +29,8 @@ Summary:        Clone of the Touhou Project series of shoot ’em up games
 License:        MIT
 Group:          Amusements/Games/Action/Arcade
 URL:            https://taisei-project.org
-Source0:        https://akari.alienslab.net/taisei/taisei-v1.3.1.tar.xz
-Source1:        https://akari.alienslab.net/taisei/taisei-v1.3.1.tar.xz.sig
+Source0:        https://github.com/taisei-project/taisei/releases/download/v1.3.1/taisei-v1.3.1.tar.xz
+Source1:        https://github.com/taisei-project/taisei/releases/download/v1.3.1/taisei-v1.3.1.tar.xz.sig
 Source2:        gpg.keyring
 BuildRequires:  fdupes
 BuildRequires:  gcc

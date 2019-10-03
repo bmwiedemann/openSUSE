@@ -2046,4 +2046,12 @@ git 2.12.3
     <comment></comment>
     <requestid>724398</requestid>
   </revision>
+  <revision rev="238" vrev="2">
+    <srcmd5>4be7c000c5070b15de3c44c10d8a6312</srcmd5>
+    <version>2.23.0</version>
+    <time>1570104604</time>
+    <user>dimstar_suse</user>
+    <comment>changelog merge because of SLE git update</comment>
+    <requestid>734750</requestid>
+  </revision>
 </revisionlist>

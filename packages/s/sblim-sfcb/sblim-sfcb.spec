@@ -59,7 +59,6 @@ Patch8:         0008-Properly-shut-down-if-provider-crashed.patch
 Patch9:         0009-Improvide-error-message-if-ClassProvider-for-root-in.patch
 Patch10:        0010-Enable-authentication-by-default.patch
 
-Patch11:        0011-Return-value-from-non-void-function.patch
 Patch12:        0012-Configurable-local-socket-group-permission-for-daemo.patch
 Patch13:        0013-Fix-bashisms-in-scripts.patch
 # bsc#942628 lookupProviders() null pointer dereference
@@ -77,8 +76,10 @@ Patch23:        0023-Alias-sblim-sfcb-service-to-sfcb-and-sfcbd.patch
 # SLE10's curl is too old
 Patch24:        0024-CURLOPT_POSTREDIR-might-not-be-defined.patch
 # bsc#1092281 - certificates shouldn't be generated during installation.
-Patch25:        service_init_certs.patch
-Patch26:        missing_makefile_dependencies.patch
+Patch25:        0025-Generates-certificates-during-service-start.patch
+Patch26:        0026-fix-build-dependencies-for-sfcbinst2mof.patch
+Patch27:        0027-Makefile.am-add-autoconfiscate.sh-to-dist.patch
+Patch28:        0028-allow-requests-with-Content-Type-set-to-text-xml.patch
 
 Provides:       cim-server
 Provides:       cimserver
@@ -155,7 +156,7 @@ cp %{S:7} .
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
-%patch11 -p1
+
 %patch12 -p1
 %patch13 -p1
 %patch14 -p1
@@ -171,6 +172,8 @@ cp %{S:7} .
 %patch24 -p1
 %patch25 -p1
 %patch26 -p1
+%patch27 -p1
+%patch28 -p1
 
 export PATCH_GET=0
 

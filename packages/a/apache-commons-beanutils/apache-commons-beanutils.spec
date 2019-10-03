@@ -23,8 +23,7 @@ Version:        1.9.4
 Release:        0
 Summary:        Utility methods for accessing and modifying the properties of JavaBeans
 License:        Apache-2.0
-Group:          Development/Libraries/Java
-URL:            http://commons.apache.org/beanutils
+URL:            https://commons.apache.org/beanutils
 Source0:        http://www.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
 Source1:        http://www.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz.asc
 Patch0:         jdk9.patch
@@ -52,7 +51,6 @@ of this package is very lightweight.
 
 %package javadoc
 Summary:        Javadoc for jakarta-commons-beanutils
-Group:          Development/Libraries/Java
 
 %description javadoc
 The scope of the Jakarta Commons BeanUtils Package is to create a
@@ -71,9 +69,11 @@ sed -i 's/\r//' *.txt
 # bug in ant build
 touch README.txt
 
+%{pom_remove_parent}
+
 %build
 export CLASSPATH=%(build-classpath commons-collections commons-logging)
-ant -Dbuild.sysclasspath=first dist
+%ant -Dbuild.sysclasspath=first dist
 
 %install
 # jars

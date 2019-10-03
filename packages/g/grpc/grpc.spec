@@ -16,22 +16,25 @@
 #
 
 
-%define lname libgrpc6
+%define lver 7
+%define lverp 1
 %define src_install_dir /usr/src/%name
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           grpc
-Version:        1.23
+Version:        1.23.1
 Release:        0
-%define rver	1.23.0
+%define rver	1.23.1
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
 Group:          Development/Tools/Building
 URL:            https://grpc.io/
 Source:         https://github.com/grpc/grpc/archive/v%rver.tar.gz
+Patch1:         gettid.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  cmake
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
@@ -46,11 +49,28 @@ The reference implementation of the gRPC protocol, done on top of
 HTTP/2 with support for synchronous and asynchronous calls. gRPC uses
 Protocol Buffers as the Interface Definition Language by default.
 
-%package -n %lname
+%package -n libgrpc%lver
 Summary:        HTTP/2-based Remote Procedure Call implementation
 Group:          System/Libraries
+%if "%lver" == "7"
+# prior error in packaging
+Conflicts:      libgrpc6
+%endif
 
-%description -n %lname
+%description -n libgrpc%lver
+The reference implementation of the gRPC protocol, done on top of
+HTTP/2 with support for synchronous and asynchronous calls. gRPC uses
+Protocol Buffers as the Interface Definition Language by default.
+
+%package -n libgrpc++%lverp
+Summary:        HTTP/2-based Remote Procedure Call implementation
+Group:          System/Libraries
+%if "%lverp" == "1"
+# prior error in packaging
+Conflicts:      libgrpc6
+%endif
+
+%description -n libgrpc++%lverp
 The reference implementation of the gRPC protocol, done on top of
 HTTP/2 with support for synchronous and asynchronous calls. gRPC uses
 Protocol Buffers as the Interface Definition Language by default.
@@ -58,7 +78,8 @@ Protocol Buffers as the Interface Definition Language by default.
 %package devel
 Summary:        Development files for grpc, a HTTP/2 Remote Procedure Call implementation
 Group:          Development/Tools/Building
-Requires:       %lname = %version
+Requires:       libgrpc%lver = %version
+Requires:       libgrpc++%lverp = %version
 
 %description devel
 This subpackage contains libraries and header files for developing
@@ -75,7 +96,7 @@ This subpackage contains source code of the gRPC reference implementation.
 %package -n python2-grpcio
 Summary:        Python language bindings for grpc, a HTTP/2 Remote Procedure Call implementation
 Group:          Development/Libraries/Python
-Requires:       %lname = %version-%release
+Requires:       libgrpc%lver = %version-%release
 Requires:       python = %python2_version
 
 %description -n python2-grpcio
@@ -84,14 +105,14 @@ This subpackage contains the python2 bindings.
 %package -n python3-grpcio
 Summary:        Python language bindings for grpc, a HTTP/2 Remote Procedure Call implementation
 Group:          Development/Libraries/Python
-Requires:       %lname = %version-%release
+Requires:       libgrpc%lver = %version-%release
 Requires:       python = %python3_version
 
 %description -n python3-grpcio
 This subpackage contains the python3 bindings.
 
 %prep
-%setup -qn grpc-%rver
+%autosetup -n grpc-%rver -p1
 
 %build
 %define _lto_cflags %nil
@@ -129,6 +150,7 @@ popd
 # Install sources
 mkdir -p "%buildroot/%src_install_dir"
 tar -xzf %SOURCE0 --strip-components=1 -C "%buildroot/%src_install_dir"
+find "%buildroot/%src_install_dir" -type d -name ".git*" -exec rm -Rf {} +
 # Fix env-script-interpreter rpmlint error
 find "%buildroot/%src_install_dir" -type f \
 	-exec sed -i 's|#!%_bindir/env bash|#!/bin/bash|' "{}" + \
@@ -137,17 +159,23 @@ find "%buildroot/%src_install_dir" -type f "(" -name "*.bzl" -o -name "*.py" ")"
 	-exec sed -i 's|#!%_bindir/env python2.7|#!%_bindir/python2.7|' "{}" + \
 	-exec sed -i 's|#!%_bindir/env python|#!%_bindir/python|' "{}" +
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%fdupes %buildroot/%_prefix
 
-%files -n %lname
-%defattr(-,root,root)
-%_libdir/libaddress_sorting.so.*
-%_libdir/libgpr*.so.*
-%_libdir/libgrpc*.so.*
+%post   -n libgrpc%lver -p /sbin/ldconfig
+%postun -n libgrpc%lver -p /sbin/ldconfig
+%post   -n libgrpc++%lverp -p /sbin/ldconfig
+%postun -n libgrpc++%lverp -p /sbin/ldconfig
+
+%files -n libgrpc%lver
+%_libdir/libaddress_sorting.so.%{lver}*
+%_libdir/libgpr*.so.%{lver}*
+%_libdir/libgrpc*.so.%{lver}*
+
+%files -n libgrpc++%lverp
+%_libdir/libgrpc++*.so.%{lverp}*
+%_libdir/libgrpcpp_channelz.so.%{lverp}*
 
 %files devel
-%defattr(-,root,root)
 %license LICENSE
 %_bindir/*
 %_includedir/*

@@ -1,4 +1,182 @@
 -------------------------------------------------------------------
+Wed Oct  2 15:29:37 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.7.0
+  * no changes to 0.6.14 and the patches on top of that we had
+    before ...
+- supersedes patches:
+  * 0001-Implement-and-document-PRIME-Render-Offload-and-Dyna.patch
+  * 0002-Fix-NVIDIA-PRIME-Render-Offload.patch
+  * 0003-prime-select.sh-mention-PRIME-Render-Offload-in-usag.patch
+
+-------------------------------------------------------------------
+Wed Oct  2 13:13:43 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- 0001-Implement-and-document-PRIME-Render-Offload-and-Dyna.patch
+  0002-Fix-NVIDIA-PRIME-Render-Offload.patch
+- 0003-prime-select.sh-mention-PRIME-Render-Offload-in-usag.patch 
+  * adds support for NVIDIA PRIME Render Offload of 435.xx/G05 driver
+- add new config files (modprobe.d/dracut.d/udev.d) to package;
+  regenerate initrd during installation and also during update of
+  nvidia G05 KMP
+
+-------------------------------------------------------------------
+Wed Jun 26 13:41:03 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.6.14
+  * changes since 0.6.11
+    + fix Plasma scaling for laptop panel when changing driver; 
+      see comment in function update_kdeglobals for details
+    + fixed issues when switching with Xorg started with
+      startx/xinit (multi-user.target)
+    + fixed issues when switching from console
+    + replaced usage of runlevel command by use of systemctl to
+      determine current target. runlevel did not always
+    + returns a defined runlevel and caused a bash error (on first
+      script run)
+    + made grepping for xinit process more strict
+    + fixed issue where 'prime-select user_logout_waiter'
+      execution would not exit for a while after switching
+    + Fix check for existing NVIDIA GPU
+
+-------------------------------------------------------------------
+Wed May 22 08:47:20 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- renamed package to suse-prime-beta 
+
+-------------------------------------------------------------------
+Tue Apr 23 13:02:27 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- exit successfully from pre/post/preun/postun scripts in order to
+  prevent build fails ...
+
+-------------------------------------------------------------------
+Mon Apr  8 12:39:13 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.6.11
+  * Allow to work without service
+    + work without bbswitch if prime-select.service is not installed (for
+      suse-prime package)
+    + cleaned up script usage, only displays relevant commands
+    + service, boot and next-boot commands are not available if running without
+      service
+    + handle the case when booting with nvidia config but no nvidia card is available
+      (disabled in BIOS) by forcing intel. Only works if service is running
+    + replaced shell commands using backquotes with more modern $() for consistency
+    + when appropriate, changed nvidia => NVIDIA for consistency
+    + reindented script with emacs for consistency
+    + minor updates to README
+  * Add 30s timeout to service to make sure system boots if service doesnt work. 
+
+-------------------------------------------------------------------
+Wed Apr  3 09:42:22 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.6.9
+  * Resolved issue with plymouth (it hangs during boot)
+  * Updated readme 
+
+-------------------------------------------------------------------
+Mon Apr  1 18:11:12 UTC 2019 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- Repair broken suse-prime-bbswitch package
+
+-------------------------------------------------------------------
+Mon Apr  1 14:03:36 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.6.8
+  * Big Update (changes in systemd services)
+    + prime-boot-selector service deprecated, all features are
+      now handled with one only service.
+    + used journalctl to check if system is booting or if
+      "logout-switch" is needed
+    + no more multiple service enable/disable needed during
+      switch, prime-select service is enabled everytime
+    + removed all "prime-boot-selector" references in logging
+      and help command
+    + boot_status file has now only two states (S > wait for
+      switching, N > not waiting)
+    + changed systemd call from "prime-select apply_current"
+      to "prime-select systemd_call"
+    + updated README
+
+-------------------------------------------------------------------
+Mon Apr  1 14:03:36 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.6.7
+  * Corrected DPI value in xorg-nvidia.conf (boo#1130723)
+
+-------------------------------------------------------------------
+Mon Apr  1 14:03:36 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.6.6
+  * Add logging to journal as well 
+
+-------------------------------------------------------------------
+Mon Apr  1 14:03:36 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Split power support into separate package suse-prime-bbswitch
+  which don't need manual work
+
+-------------------------------------------------------------------
+Mon Apr  1 14:03:36 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.6.5
+  * augmented README
+  * do not mention "intel" driver issue with kwin since it is obsolete
+  * improved "intel" xorg config to work properly with compositors
+
+-------------------------------------------------------------------
+Mon Apr  1 14:03:36 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.6.4
+  * added support for xdm and kdm
+  * removed useless "sudo" in journalctl calls
+
+-------------------------------------------------------------------
+Mon Apr  1 14:03:36 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.6.3
+  * Best DM support (lightdm added) 
+
+-------------------------------------------------------------------
+Mon Apr  1 14:03:36 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.6.2
+  - fixes all known issues with GDM, runlevel 3 and manually-started
+    x sessions
+    * Xorg logfile comparision no longer necessary, let's use
+      journalctl to check user logout
+    * other DM(s) than sddm/gdm will be implemented in the future
+
+-------------------------------------------------------------------
+Mon Apr  1 14:03:36 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.6.1
+  * mainly bugfixes
+- supersedes 0001-Resolved-multiple-unexistent-file-error.patch
+
+-------------------------------------------------------------------
+Mon Apr  1 14:03:36 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.6
+  * new systemd service file prime-boot-selector in addition to prime-select
+    + Service prime-select chooses with whatever driver was previously set by user.
+    + Service prime-boot-selector sets all things during boot [MUST BE ENABLED]
+  * new prime-select command options
+    + prime-select boot intel|intel2|nvidia|last
+    + prime-select next-boot intel|intel2|nvidia|abort
+    + prime-select service check|disable|restore
+- 0001-Resolved-multiple-unexistent-file-error.patch (post 0.6)
+  * Resolved multiple unexistent file errors
+  * Resolved a big issue in switch command if prime_logfile doesn't exist,
+    file check added
+  * Added non existent file handling in various parts of script (next-boot,
+    log-view, unset, current_check) Those issues manifested themselves
+    after a fresh installation, because some config files still were not
+    present
+- supersedes U_Corrected-DPI-value-in-xorg-nvidia.conf.patch
+
+-------------------------------------------------------------------
 Mon Apr  1 13:49:26 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_Corrected-DPI-value-in-xorg-nvidia.conf.patch

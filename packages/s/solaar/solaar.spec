@@ -40,6 +40,7 @@ BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
 #
 Requires:       python3-gobject
+Requires:       python3-gobject-Gdk
 Requires:       python3-pyudev
 Requires:       solaar-udev >= %{version}
 Requires:       typelib-1_0-Gtk-3_0

@@ -1,7 +1,7 @@
-From 23f2368589f229fd40a5d053b60db3168131082c Mon Sep 17 00:00:00 2001
+From 6c40b689c6544f0e29325a76b8efb6253a96d31f Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
 Date: Wed, 29 Nov 2017 11:03:16 +0100
-Subject: [PATCH 24/26] CURLOPT_POSTREDIR might not be defined
+Subject: [PATCH 24/29] CURLOPT_POSTREDIR might not be defined
 
 ---
  indCIMXMLExport.c | 2 ++
@@ -22,5 +22,5 @@ index 60a420b74d1e..36ed1d390363 100644
  
    /*
 -- 
-2.15.0
+2.23.0
 

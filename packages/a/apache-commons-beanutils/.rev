@@ -128,4 +128,12 @@
     <comment></comment>
     <requestid>725217</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>63a80523c7cd2d98c2d9e543264d6dfe</srcmd5>
+    <version>1.9.4</version>
+    <time>1570104592</time>
+    <user>dimstar_suse</user>
+    <comment>Remove reference to parent pom</comment>
+    <requestid>734746</requestid>
+  </revision>
 </revisionlist>

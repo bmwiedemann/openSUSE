@@ -1,14 +1,14 @@
-From bedf3a5a60f7eeb895c167f1eb96e9f8f76fc1f0 Mon Sep 17 00:00:00 2001
+From 28a2f89de38c1d3d3c9205950638b6aadf243487 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
 Date: Thu, 27 Nov 2014 13:07:34 +0100
-Subject: [PATCH 10/25] Enable authentication by default
+Subject: [PATCH 10/29] Enable authentication by default
 
 ---
  sfcb.cfg.pre.in | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/sfcb.cfg.pre.in b/sfcb.cfg.pre.in
-index fdcfb2e4d548..85f06674507b 100644
+index 77a2155c8d9a..012dbbc549e3 100644
 --- a/sfcb.cfg.pre.in
 +++ b/sfcb.cfg.pre.in
 @@ -93,7 +93,7 @@ sfcbCustomLib:   sfcCustomLib
@@ -21,5 +21,5 @@ index fdcfb2e4d548..85f06674507b 100644
  ## Name of of the authenticaion library. Leave off the ".so"
  ## Default is: sfcBasicAuthentication
 -- 
-2.15.0
+2.23.0
 

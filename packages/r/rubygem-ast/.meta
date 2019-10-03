@@ -1,0 +1,9 @@
+<package name="rubygem-ast" project="openSUSE:Factory">
+  <title>rubygem-ast</title>
+  <description>AST is a library for manipulating abstract syntax trees.
+
+It embraces immutability; each AST node is inherently frozen at creation, and updating a child node requires recreating that node and its every parent, recursively.
+
+This is a design choice. It does create some pressure on garbage collector, but completely eliminates all concurrency and aliasing problems.</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-ast"/>
+</package>

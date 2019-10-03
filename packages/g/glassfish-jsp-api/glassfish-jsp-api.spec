@@ -67,6 +67,10 @@ sed -i "/<bundle.symbolicName>/s/-api//" pom.xml
 %pom_remove_parent
 
 %pom_xpath_remove "pom:dependency[pom:groupId='javax.el' or pom:groupId='javax.servlet']/pom:scope"
+# xmvn-connector-gradle does not handle well the ranges of versions
+# like here [3.0.1-b06,), so change it to a fixed version.
+# Xmvn is not strict about versions.
+%pom_xpath_set "pom:dependency[pom:groupId='javax.el']/pom:version" "3.0.1-b06"
 
 %build
 mkdir -p lib

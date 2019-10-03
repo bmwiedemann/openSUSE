@@ -1,7 +1,7 @@
-From 79a7f98644c09cd4f49a0a72d12033973ee8f8b5 Mon Sep 17 00:00:00 2001
+From 72371b4c0e0c9831bf3c0bd9c2e763ea3419bee2 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
 Date: Tue, 16 Jul 2013 11:17:01 +0200
-Subject: [PATCH 05/25] Define YYPARSE_PARAM early for cimXmlOps and
+Subject: [PATCH 05/29] Define YYPARSE_PARAM early for cimXmlOps and
  cimXmlParser
 
 ---
@@ -22,5 +22,5 @@ index 3a89cd1772b2..786a2703e0ea 100644
  #   define CMPI_FLAG_ContinueOnError        16
  #   define CMPI_FLAG_ReturnQueryResultClass 32
 -- 
-2.15.0
+2.23.0
 

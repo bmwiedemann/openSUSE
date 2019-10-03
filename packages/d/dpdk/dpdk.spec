@@ -17,6 +17,20 @@
 # needssslcertforbuild
 
 
+%define flavor @BUILD_FLAVOR@%{nil}
+
+%define aarch64_machine2 armv8a
+%define exclusive_arch aarch64 x86_64 ppc64le
+%define name_tag %{nil}
+%define summary_tag %{nil}
+
+%if "%flavor" == "thunderx"
+%define name_tag -thunderx
+%define summary_tag thunderx
+%define aarch64_machine2 thunderx
+%define exclusive_arch aarch64
+%endif
+
 %define machine native
 %define machine2 default
 %ifarch x86_64
@@ -24,7 +38,7 @@
 %define target x86_64-%{machine}-linuxapp-gcc
 %endif
 %ifarch aarch64
-%define machine2 armv8a
+%define machine2 %aarch64_machine2
 %define target arm64-%{machine2}-linuxapp-gcc
 %endif
 %ifarch ppc64le
@@ -43,7 +57,7 @@
 %define min 11
 %define lname libdpdk-%{maj}_%{min}
 
-Name:           dpdk
+Name:           dpdk%{name_tag}
 Version:        18.11.2
 Release:        0
 Summary:        Set of libraries and drivers for fast packet processing
@@ -52,6 +66,7 @@ Group:          System/Libraries
 Url:            http://dpdk.org
 Source:         http://fast.dpdk.org/rel/dpdk-%{version}.tar.xz
 Source1:        preamble
+Patch:          dpdk-fix-implicit-fallthrough-warning.patch
 Patch1:         0002-fix-cpu-compatibility.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -64,7 +79,7 @@ BuildRequires:  pesign-obs-integration
 BuildRequires:  rdma-core-devel
 %endif
 BuildRequires:  zlib-devel
-ExclusiveArch:  aarch64 x86_64 ppc64le
+ExclusiveArch:  %exclusive_arch
 Provides:       dpdk-any = %{version}
 Conflicts:      otherproviders(dpdk-any)
 
@@ -73,7 +88,7 @@ The Data Plane Development Kit is a set of libraries and drivers for
 fast packet processing in the user space.
 
 %package devel
-Summary:        Data Plane Development Kit development files
+Summary:        Data Plane Development Kit development files %{summary_tag}
 Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 Provides:       dpdk-any-devel = %{version}
@@ -84,7 +99,7 @@ This package contains the headers and other files needed for developing
 applications with the Data Plane Development Kit.
 
 %package -n %{lname}
-Summary:        Data Plane Development Kit runtime libraries
+Summary:        Data Plane Development Kit runtime libraries %{summary_tag}
 Group:          Development/Libraries/C and C++
 Provides:       %{lname}-any = %{version}
 
@@ -93,7 +108,7 @@ This package contains the runtime libraries needed for 3rd party application
 to use the Data Plane Development Kit.
 
 %package doc
-Summary:        Data Plane Development Kit API documentation
+Summary:        Data Plane Development Kit API documentation %{summary_tag}
 Group:          System/Libraries
 BuildArch:      noarch
 Provides:       dpdk-any-doc = %{version}
@@ -104,7 +119,7 @@ API programming documentation for the Data Plane Development Kit.
 
 %if %{with tools}
 %package tools
-Summary:        Tools for setting up Data Plane Development Kit environment
+Summary:        Tools for setting up Data Plane Development Kit environment %{summary_tag}
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires:       findutils
@@ -120,7 +135,7 @@ This package contains tools for setting up Data Plane Development Kit environmen
 
 %if %{with examples}
 %package examples
-Summary:        Data Plane Development Kit example applications
+Summary:        Data Plane Development Kit example applications %{summary_tag}
 Group:          System/Libraries
 BuildRequires:  libvirt-devel
 Provides:       dpdk-any-examples = %{version}
@@ -132,7 +147,7 @@ as L2 and L3 forwarding.
 %endif
 
 %package kmp
-Summary:        DPDK KNI kernel module
+Summary:        DPDK KNI kernel module %{summary_tag}
 Group:          System/Kernel
 BuildRequires:  %{kernel_module_package_buildreqs}
 Conflicts:      otherproviders(dpdk-any-kmp)
@@ -149,6 +164,7 @@ The DPDK Kernel NIC Interface (KNI) allows userspace applications access to the 
 %prep
 # can't use %{name} because of dpdk-thunderx
 %setup -q -n dpdk-stable-%{version}
+%patch -p1
 %patch1 -p1 -z .init
 
 # This fixes CROSS compilation (broken) in the mk file for ThunderX

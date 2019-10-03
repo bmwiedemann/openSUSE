@@ -1,7 +1,7 @@
-From adc0033b51580d1c3db29c887a88c940a42f64be Mon Sep 17 00:00:00 2001
+From 28aa953b9e4092105415f0bc547fa683d8accb04 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
 Date: Tue, 28 Nov 2017 11:57:46 +0100
-Subject: [PATCH 15/25] Define UINT16_MAX
+Subject: [PATCH 15/29] Define UINT16_MAX
 
 ---
  interopServerProvider.c | 4 ++++
@@ -23,5 +23,5 @@ index 23ae18246393..eaa8cdd9eb4d 100644
  
  static char    *
 -- 
-2.15.0
+2.23.0
 

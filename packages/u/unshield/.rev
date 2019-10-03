@@ -196,4 +196,12 @@
     Windows.</comment>
     <requestid>725990</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>2d918aae981658530155d33d3846ba05</srcmd5>
+    <version>1.4.3</version>
+    <time>1570104522</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix typo in macro</comment>
+    <requestid>734653</requestid>
+  </revision>
 </revisionlist>

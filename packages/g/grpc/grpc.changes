@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct  2 18:39:47 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.23.1
+  * Unspecific refinements, improvements, and bug fixes.
+- Add gettid.patch
+- Split libgrpc into libgrpc++ because that has a SO version
+  group of its own.
+- Bump libgrpc6 to libgrpc7 as there is actually .so.7 files.
+  Add suitable Conflicts markers.
+
+-------------------------------------------------------------------
 Thu Aug 22 18:28:15 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Disable LTO because it's broken.

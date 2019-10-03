@@ -17,7 +17,7 @@
 
 
 Name:           fwts
-Version:        19.07.00
+Version:        19.09.00
 Release:        0
 Summary:        Firmware Test Suite
 License:        GPL-2.0-or-later
@@ -62,7 +62,7 @@ find . -name Makefile.am -exec sed -i "s|-Werror||g"  {} +
 autoreconf -fiv
 %configure \
 	--disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

@@ -73,4 +73,12 @@
   * New character art by @afensorm</comment>
     <requestid>733945</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>098f8f615deff33769ab8a38e13fedee</srcmd5>
+    <version>1.3.1</version>
+    <time>1570104552</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch back to GitHub download URLs</comment>
+    <requestid>734682</requestid>
+  </revision>
 </revisionlist>

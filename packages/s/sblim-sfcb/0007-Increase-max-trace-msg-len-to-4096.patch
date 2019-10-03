@@ -1,7 +1,7 @@
-From e4218f055881f8c3454c0b3a6507dbcb84d7771a Mon Sep 17 00:00:00 2001
+From a8e1424531e1e6109c91b2b14a9097c2f10e561a Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
 Date: Wed, 28 Aug 2013 15:20:53 +0200
-Subject: [PATCH 07/25] Increase max trace msg len to 4096
+Subject: [PATCH 07/29] Increase max trace msg len to 4096
 
 ---
  trace.h | 2 +-
@@ -21,5 +21,5 @@ index 2c6d8beb92ab..970043b977e4 100644
  #define TRACE_PROVIDERMGR       1
  #define TRACE_PROVIDERDRV       2
 -- 
-2.15.0
+2.23.0
 

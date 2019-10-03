@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Oct  2 12:15:54 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to a16470ad4 (2019-09-30)
+  * firmware: platform: Set up emmc clock earlier
+  * firmware: hdmi: Implement platform_display_power on 2711
+    See: #1224
+  * firmware: arm_loader: Pass overscan settings to the kernel
+  * firmware: arm_loader: Add option disable_fw_kms_setup to stop FKMS setup by FW
+  * firmware: hdmi: Use pixel clock multiplier to determine the core clock
+  * firmware: Fixups for composite output mode
+    See: #1223
+  * firmware: platform: Allow display_power to be queried from gencmd
+    See: #1224
+  * firmware: arm_loader: Fix no-DT and upstream handling
+    See: #1250
+  * firmware: Round up HDMI0 minimum core clock
+  * firmware: board_info: Support bcm2710- and bcm2837- Pi 2 DTBs
+    See: raspberrypi/linux#3234
+  * firmware: power: bcm2711: Rescale the GPIO pad power
+  * firmware: brfs: Add GENET driver for 2711
+  * firmware: bootloader_state: Add network state and bootmode configuration
+  * firmware: bootloader_state: Fix mask for EEPROM header magic
+  * firmware: arm_loader: Fix initial_turbo getting stuck
+    See: #1005
+  * firmware: ldconfig: Support [edid=*] to mean any HDMI monitor
+    See: #1136
+  * firmware: image_fx: Remove restriction that output stride must match input stride
+  * firmware: image_fx: Remove spamming log line
+  * firmware: platform: Switch to divide by one when arm_freq exceeds 2GHz
+  * firmware: Add EMMC support to 2711 Arasan EMMC driver
+  * firmware: arm_loader: Use /memory@0 if found
+    See: raspberrypi/linux#3244
+  * firmware: bootloader_state: Fix length for bootloader_config
+  * firmware: arasan_emmc: Fix STB_GPIOOVERRIDE for MMC1 in network boot
+  * firmware: bfs: Verify that eth FS has not been closed before using
+
+-------------------------------------------------------------------
 Mon Sep 16 06:36:37 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Do not run %preun scripts on upgrade (boo#1150408)

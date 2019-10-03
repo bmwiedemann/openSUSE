@@ -1,0 +1,25 @@
+From 1a71731aba47b3c89d6b57bff09bb4661d8c9644 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Thu, 26 Sep 2019 11:25:29 +0200
+Subject: [PATCH 28/29] allow requests with Content-Type set to text/xml
+
+---
+ httpAdapter.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/httpAdapter.c b/httpAdapter.c
+index 2719e6c492fc..81d7226af0c0 100644
+--- a/httpAdapter.c
++++ b/httpAdapter.c
+@@ -1048,7 +1048,7 @@ doHttpRequest(CommHndl conn_fd)
+ 
+   inBuf.authorization = "";
+   inBuf.protocol = "HTTP/1.1";
+-  inBuf.content_type = NULL;
++  inBuf.content_type = "application/xml";
+   inBuf.content_length = UINT_MAX;
+   inBuf.host = NULL;
+   inBuf.useragent = "";
+-- 
+2.23.0
+

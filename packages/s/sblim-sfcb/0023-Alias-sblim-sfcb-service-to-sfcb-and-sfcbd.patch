@@ -1,7 +1,7 @@
-From 1ab9fcb7361898f117057280225ac9132abfa55b Mon Sep 17 00:00:00 2001
+From 947afbe6fc6931cbe19e031e5c8984e9b7a03e62 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
 Date: Tue, 28 Nov 2017 15:40:03 +0100
-Subject: [PATCH 23/25] Alias sblim-sfcb service to sfcb and sfcbd
+Subject: [PATCH 23/29] Alias sblim-sfcb service to sfcb and sfcbd
 
 ---
  sblim-sfcb.service.pre.in | 2 ++
@@ -15,8 +15,8 @@ index 3b49da3472f1..11e77f1cd022 100644
  
  [Install]
  WantedBy=multi-user.target
-+Alias=sfcbd.service
-+Alias=sfcb.service
++Alias=sfcbd
++Alias=sfcb
 -- 
-2.15.0
+2.23.0
 

@@ -1,0 +1,5 @@
+<services>
+  <service name="go_modules" mode="disabled">
+    <param name="archive">3.0.6.tar.gz</param>
+  </service>
+</services>

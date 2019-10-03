@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Sep 26 08:28:37 UTC 2019 - Klaus Kämpf <kkaempf@suse.com>
+
+- remove 0011-Return-value-from-non-void-function.patch
+  (function _is_ actually void)
+
+
+- rename service_init_certs.patch to
+    0025-Generates-certificates-during-service-start.patch
+
+- rename missing_makefile_dependencies.patch to
+    0026-fix-build-dependencies-for-sfcbinst2mof.patch
+
+- add 0027-Makefile.am-add-autoconfiscate.sh-to-dist.patch
+
+- add 0028-allow-requests-with-Content-Type-set-to-text-xml.patch
+  (was hidden inside 0022-Fix-crash-caused-by-NULL-content_type.patch
+   before)
+
+-------------------------------------------------------------------
 Fri Feb 22 07:15:56 UTC 2019 - Franck Bui <fbui@suse.com>
 
 - Drop use of $FIRST_ARG in .spec

@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>693672</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>22d5ae80946422f0b5249c450bda12ea</srcmd5>
+    <version>2.3.3</version>
+    <time>1570104595</time>
+    <user>dimstar_suse</user>
+    <comment>Avoid version ranges in maven dependencies</comment>
+    <requestid>734748</requestid>
+  </revision>
 </revisionlist>

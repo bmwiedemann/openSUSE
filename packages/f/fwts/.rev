@@ -485,4 +485,23 @@
   * ACPICA: Update to version 20190703</comment>
     <requestid>723008</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>fb905de8a5358db78d65f79d61351813</srcmd5>
+    <version>19.09.00</version>
+    <time>1570104590</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 19.09.00:
+  * acpi/boot: skip ACPI BOOT test on UEFI systems.
+  * acpi: s3: fix typo from 6b94bb6a4b13e
+  * opal: add more bounds checking and zero pstates array
+  * fwtstest: boot-0001: sync with boot table check on efi firmware
+- Changes for version 19.08.00:
+  * ACPICA: Update to version 20190816
+  * auto-packager: mkpackage.sh: remove cosmic
+  * efi_runtime: enable KBUILD_MODPOST_WARN=y to workaround build failures
+  * ACPICA: Update to version 20190816
+  * fwtstest: syntaxcheck-0001: update to keep in sync with ACPICA features
+  * README: Add package dependency notes for ARM64</comment>
+    <requestid>734745</requestid>
+  </revision>
 </revisionlist>

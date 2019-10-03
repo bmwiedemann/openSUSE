@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sentry-sdk
-Version:        0.12.2
+Version:        0.12.3
 Release:        0
 Summary:        Python SDK for Sentry.io
 License:        BSD-2-Clause
@@ -43,16 +43,16 @@ Requires:       python-falcon >= 1.4
 Requires:       python-urllib3
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Werkzeug}
-BuildRequires:  %{python_module eventlet}
-BuildRequires:  %{python_module gevent}
-BuildRequires:  %{python_module hypothesis}
-BuildRequires:  %{python_module pyramid}
-BuildRequires:  %{python_module pytest-localserver}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module rq}
-BuildRequires:  %{python_module tornado}
-BuildRequires:  %{python_module tox}
+# BuildRequires:  %{python_module Werkzeug}
+# BuildRequires:  %{python_module eventlet}
+# BuildRequires:  %{python_module gevent}
+# BuildRequires:  %{python_module hypothesis}
+# BuildRequires:  %{python_module pyramid}
+# BuildRequires:  %{python_module pytest-localserver}
+# BuildRequires:  %{python_module pytest}
+# BuildRequires:  %{python_module rq}
+# BuildRequires:  %{python_module tornado}
+# BuildRequires:  %{python_module tox}
 # /SECTION
 %python_subpackages
 

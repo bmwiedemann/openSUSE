@@ -42,4 +42,13 @@
   * Moved redirect_uris validation to the application clean() method.</comment>
     <requestid>731217</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>6dc30258606257fc3cbfcaa7c5de63bb</srcmd5>
+    <version>1.2.0</version>
+    <time>1570104585</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip tests that return 200 instead of 400, even in upstream git
+  * recheck with the next release</comment>
+    <requestid>734739</requestid>
+  </revision>
 </revisionlist>

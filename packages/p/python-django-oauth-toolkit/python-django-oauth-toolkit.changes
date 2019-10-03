@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  3 08:19:37 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip tests that return 200 instead of 400, even in upstream git
+  * recheck with the next release
+
+-------------------------------------------------------------------
 Mon Sep 16 09:24:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.2.0:

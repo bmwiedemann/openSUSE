@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 27 11:25:30 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire python2-libxml2 instead of python-libxml2: follow
+  the package rename of libxml2.
+
+-------------------------------------------------------------------
 Wed Nov 29 17:18:23 UTC 2017 - plinnell@opensuse.org
 
 - Fix the download URL

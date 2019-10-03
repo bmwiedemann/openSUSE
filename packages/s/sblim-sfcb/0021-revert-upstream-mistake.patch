@@ -1,7 +1,7 @@
-From 35c3ef19a00564f53b29ceb325c46f6f886f8f30 Mon Sep 17 00:00:00 2001
+From 7fbc6ca68526c54abaa310edf8015dc9be64c295 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
 Date: Tue, 28 Nov 2017 15:34:49 +0100
-Subject: [PATCH 21/25] revert upstream mistake
+Subject: [PATCH 21/29] revert upstream mistake
 
 Author: Adam Majer <amajer@suse.de>
 Date: Mon Mar  6 11:35:58 CET 2017
@@ -12,7 +12,7 @@ Summary: This was done by mistake upstream
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/sfcb.cfg.pre.in b/sfcb.cfg.pre.in
-index 85f06674507b..82cb4fc30c72 100644
+index 012dbbc549e3..48dd667a4710 100644
 --- a/sfcb.cfg.pre.in
 +++ b/sfcb.cfg.pre.in
 @@ -93,7 +93,7 @@ sfcbCustomLib:   sfcCustomLib
@@ -25,5 +25,5 @@ index 85f06674507b..82cb4fc30c72 100644
  ## Name of of the authenticaion library. Leave off the ".so"
  ## Default is: sfcBasicAuthentication
 -- 
-2.15.0
+2.23.0
 

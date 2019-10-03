@@ -1,7 +1,7 @@
-From 56c2edf2a1a203b7e738bf452973276805314338 Mon Sep 17 00:00:00 2001
+From 5d4b1d20b251219fec02f5b214efde6b5aca5334 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
 Date: Tue, 7 Sep 2010 09:10:06 +0200
-Subject: [PATCH 02/25] providerMgr: add prototypes
+Subject: [PATCH 02/29] providerMgr: add prototypes
 
 ---
  providerMgr.c | 6 ++++++
@@ -25,5 +25,5 @@ index 79297242a7cc..05677b3c3e40 100644
  
  extern CMPIBroker *Broker;
 -- 
-2.15.0
+2.23.0
 

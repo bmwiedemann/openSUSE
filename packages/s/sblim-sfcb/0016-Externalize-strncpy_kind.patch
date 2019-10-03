@@ -1,14 +1,14 @@
-From 4672ade216628d602b5fe89f2378601d0724393d Mon Sep 17 00:00:00 2001
+From fdd61c62aa2a5a9b552744d1c9abba0657152da3 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
 Date: Tue, 28 Nov 2017 11:58:05 +0100
-Subject: [PATCH 16/25] Externalize strncpy_kind()
+Subject: [PATCH 16/29] Externalize strncpy_kind()
 
 ---
  control.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/control.c b/control.c
-index 95ca2463b821..d83e26895c7b 100644
+index ed0e5df8297f..03bde30115ce 100644
 --- a/control.c
 +++ b/control.c
 @@ -83,7 +83,7 @@ long            httpReqHandlerTimeout;
@@ -21,5 +21,5 @@ index 95ca2463b821..d83e26895c7b 100644
    *(to + size - 1) = '\0';
    return to;
 -- 
-2.15.0
+2.23.0
 

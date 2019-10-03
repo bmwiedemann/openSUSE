@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  2 09:11:10 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Skip test_xmlrunner_non_ascii failing with Python 3.8
+  gh#xmlrunner/unittest-xml-reporting#205
+
+-------------------------------------------------------------------
 Fri Apr 12 09:06:13 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 2.5.1

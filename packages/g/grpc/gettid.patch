@@ -1,0 +1,54 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2019-10-02 20:41:05.480291530 +0200
+
+Avoid collision with glibc's gettid.
+
+---
+ src/core/lib/gpr/log_linux.cc          |    4 ++--
+ src/core/lib/iomgr/ev_epollex_linux.cc |    4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+Index: grpc-1.23.1/src/core/lib/gpr/log_linux.cc
+===================================================================
+--- grpc-1.23.1.orig/src/core/lib/gpr/log_linux.cc
++++ grpc-1.23.1/src/core/lib/gpr/log_linux.cc
+@@ -40,7 +40,7 @@
+ #include <time.h>
+ #include <unistd.h>
+ 
+-static long gettid(void) { return syscall(__NR_gettid); }
++static long my_gettid(void) { return syscall(__NR_gettid); }
+ 
+ void gpr_log(const char* file, int line, gpr_log_severity severity,
+              const char* format, ...) {
+@@ -70,7 +70,7 @@ void gpr_default_log(gpr_log_func_args*
+   gpr_timespec now = gpr_now(GPR_CLOCK_REALTIME);
+   struct tm tm;
+   static __thread long tid = 0;
+-  if (tid == 0) tid = gettid();
++  if (tid == 0) tid = my_gettid();
+ 
+   timer = static_cast<time_t>(now.tv_sec);
+   final_slash = strrchr(args->file, '/');
+Index: grpc-1.23.1/src/core/lib/iomgr/ev_epollex_linux.cc
+===================================================================
+--- grpc-1.23.1.orig/src/core/lib/iomgr/ev_epollex_linux.cc
++++ grpc-1.23.1/src/core/lib/iomgr/ev_epollex_linux.cc
+@@ -1102,7 +1102,7 @@ static void end_worker(grpc_pollset* pol
+ }
+ 
+ #ifndef NDEBUG
+-static long gettid(void) { return syscall(__NR_gettid); }
++static long my_gettid(void) { return syscall(__NR_gettid); }
+ #endif
+ 
+ /* pollset->mu lock must be held by the caller before calling this.
+@@ -1122,7 +1122,7 @@ static grpc_error* pollset_work(grpc_pol
+ #define WORKER_PTR (&worker)
+ #endif
+ #ifndef NDEBUG
+-  WORKER_PTR->originator = gettid();
++  WORKER_PTR->originator = my_gettid();
+ #endif
+   if (GRPC_TRACE_FLAG_ENABLED(grpc_polling_trace)) {
+     gpr_log(GPR_INFO,

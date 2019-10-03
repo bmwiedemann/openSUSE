@@ -2,14 +2,14 @@ diff --git a/Makefile.am b/Makefile.am
 index 04e4a87..a1b35b7 100644
 --- a/Makefile.am
 +++ b/Makefile.am
-@@ -17,6 +17,7 @@ WIN32_BUILD_FILES = \
+@@ -15,6 +15,7 @@ WIN32_BUILD_FILES = \
  EXTRA_DIST = \
  	autogen.sh \
  	scripts/gen-api-gtkdoc.py \
-+        geany.appdata.xml.in \
++	geany.appdata.xml.in \
  	geany.desktop.in \
  	geany.pc.in \
- 	geany.spec \
+ 	ChangeLog.pre-1-22 \
 @@ -85,3 +86,9 @@ desktopdir = $(datadir)/applications
  desktop_in_files = geany.desktop
  desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)

@@ -1,7 +1,7 @@
-From efd7cd785d31072bd1ed32e93293cbba5c8aa92a Mon Sep 17 00:00:00 2001
+From 3d0c94e9df13b30ceb36538d756b372342f599d5 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
 Date: Tue, 28 Nov 2017 11:59:40 +0100
-Subject: [PATCH 18/25] Adapt to bison-3.x: replace YYPARSE_PARAM
+Subject: [PATCH 18/29] Adapt to bison-3.x: replace YYPARSE_PARAM
 
 was deprecated since bison 1.875
 Adapt yyerror parameters as well
@@ -90,5 +90,5 @@ index 59bab8c83b74..9c5c4daa8002 100644
    mlogf(M_ERROR, M_SHOW, "--- %s\n", s1);
  }
 -- 
-2.15.0
+2.23.0
 

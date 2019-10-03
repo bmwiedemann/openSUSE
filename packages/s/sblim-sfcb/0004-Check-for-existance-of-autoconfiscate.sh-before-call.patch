@@ -1,7 +1,7 @@
-From b172bc9eefc4651c1ba4c3a559dd58930561e46a Mon Sep 17 00:00:00 2001
+From e1d4b199b4d3c4aa29673f12e22d3df4d50707ce Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
 Date: Wed, 30 Mar 2011 11:36:19 +0200
-Subject: [PATCH 04/25] Check for existance of autoconfiscate.sh before calling
+Subject: [PATCH 04/29] Check for existance of autoconfiscate.sh before calling
  it in a sub-directory
 
 ---
@@ -21,5 +21,5 @@ index 828136aadaff..5c58e50bac11 100755
 +if test -f mofc/autoconfiscate.sh; then cd mofc && ./autoconfiscate.sh; fi
 +if test -f cmpi-devel/autoconfiscate.sh; then cd cmpi-devel && ./autoconfiscate.sh; fi
 -- 
-2.15.0
+2.23.0
 

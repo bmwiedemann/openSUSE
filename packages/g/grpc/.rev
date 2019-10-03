@@ -129,4 +129,16 @@
     <comment>- Update to new upstream release 1.23 [boo#1144068]</comment>
     <requestid>725393</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>35c866e6d510229b2177a1dfc3473791</srcmd5>
+    <version>1.23.1</version>
+    <time>1570104611</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.23.1
+- Split libgrpc into libgrpc++ because that has a SO version
+  group of its own.
+- Bump libgrpc6 to libgrpc7 as there is actually .so.7 files.
+  Add suitable Conflicts markers.</comment>
+    <requestid>734760</requestid>
+  </revision>
 </revisionlist>

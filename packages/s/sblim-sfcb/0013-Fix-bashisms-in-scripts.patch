@@ -1,7 +1,7 @@
-From 20b3937ac0b15647ffe3368e573db46f56384b2d Mon Sep 17 00:00:00 2001
+From 42638b4ae0922f5b765f300bdc20ca67d486272e Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
 Date: Tue, 28 Nov 2017 10:33:18 +0100
-Subject: [PATCH 13/25] Fix bashisms in scripts
+Subject: [PATCH 13/29] Fix bashisms in scripts
 
 From Wed Nov 19 23:37:00 UTC 2014 - Led <ledest@gmail.com>
 ---
@@ -167,5 +167,5 @@ index 49c47e8c0916..e316f8a34eb7 100755
     else
        _DIR=./
 -- 
-2.15.0
+2.23.0
 

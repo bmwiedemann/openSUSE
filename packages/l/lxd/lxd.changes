@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct  3 01:53:53 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 3.18. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-3-18-has-been-released/5869
+  boo#1152846
+  + New /1.0/instances endpoint
+  + Support for storing VM images
+  + Extended disk resources information
+  + Modification of image expiry date
+  + Clustering roles
+  + IPv4 configuration when in Fan mode
+
+-------------------------------------------------------------------
 Wed Sep 25 11:03:42 UTC 2019 - Aleksa Sarai <asarai@suse.com>
 
 - Clean up a few remaining specfile bits left over from the 3.17 update.

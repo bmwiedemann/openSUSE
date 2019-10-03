@@ -374,4 +374,41 @@
 </comment>
     <requestid>663168</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>a60ce722bfdb07194149925ce187bf61</srcmd5>
+    <version>1.36</version>
+    <time>1570104535</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.36:
+  + Add support for fractional font sizes.
+  + Improve matching filetype extensions.
+  + Add Apple Swift, Nim, Kotlin, Groovy and TypeScript filetypes.
+  + Update CUDA and NSIS filetypes.
+  + Update Scintilla to version 3.10.4.
+  + Fix build on recent MSYS2.
+  + Updated translations.
+- Update to version 1.35:
+  + General: Start synchronization with Universal-CTags.
+  + Bug fixes:
+    - Improve IPC socket handling.
+    - Fix loading the default open encoding option.
+    - Fix VTE path following after reset.
+  + Interface: Show variable type in a tooltip in symbol tree.
+  + Editor:
+    - Update Scintilla to version 3.10.2.
+    - Drastically speed up huge bulk replacements.
+    - Fix accessibility information reported upon deletion.
+    - Fix garbage data insertion when moving lines up or down.
+    - Don't perform line breaking in rectangular selection mode.
+  + Filetypes:
+    - Allow stripping trailing spaces from custom filetypes based
+      on the Diff lexer.
+    - Improve JavaScript symbols parsing.
+    - Improve HTML symbols parsing.
+    - Improve COBOL symbols parsing.
+    - Improve ActionScript symbols parsing.
+  + Updated translations.
+</comment>
+    <requestid>734666</requestid>
+  </revision>
 </revisionlist>

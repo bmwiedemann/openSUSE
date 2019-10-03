@@ -17,7 +17,7 @@
 
 
 Name:           yast2-update
-Version:        4.2.5
+Version:        4.2.6
 Release:        0
 Summary:        YaST2 - Update
 License:        GPL-2.0-only
@@ -39,11 +39,11 @@ BuildRequires:  libxml2-tools
 BuildRequires:  yast2-installation-control
 # Needed for tests
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
-# Encryption.save_crypttab_names
-BuildRequires:  yast2-storage-ng >= 4.1.31
+# Y2Storage::Crypttab.save_encryption_names
+BuildRequires:  yast2-storage-ng >= 4.2.42
 
-# Encryption.save_crypttab_names
-Requires:       yast2-storage-ng >= 4.1.31
+# Y2Storage::Crypttab.save_encryption_names
+Requires:       yast2-storage-ng >= 4.2.42
 # Y2Packager::ProductUpgrade.remove_obsolete_upgrades
 Requires:       yast2 >= 4.2.1
 Requires:       yast2-installation

@@ -1,7 +1,7 @@
-From f1642ce4a36d0aa86ee5c12d13e2224960025cb5 Mon Sep 17 00:00:00 2001
+From 5eb7827c83724308230d5cd1a9143672176d734f Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
 Date: Thu, 5 Aug 2010 12:23:45 +0200
-Subject: [PATCH 03/25] Enable broker.LogMessage and broker.trace
+Subject: [PATCH 03/29] Enable broker.LogMessage and broker.trace
 
 ---
  brokerEnc.c | 18 ++++++++++--------
@@ -42,5 +42,5 @@ index 9115e71d0d3d..32e7345afb64 100644
  }
  
 -- 
-2.15.0
+2.23.0
 

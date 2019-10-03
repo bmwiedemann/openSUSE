@@ -20,7 +20,7 @@
 # On next update, try enabling each of the disabled libs (in the %%else section) and check if they build with gtk3 or not. When all of them compile against gtk3, remove the macro and conditional.
 %define gtk3_ready 1
 Name:           geany-plugins
-Version:        1.34
+Version:        1.36
 Release:        0
 # FIXME: gendoc requires ctpl (http://ctpl.tuxfamily.org/)
 Summary:        A collection of different plugins for Geany
@@ -32,8 +32,6 @@ Source:         http://plugins.geany.org/geany-plugins/%{name}-%{version}.tar.bz
 # PATCH-FIX-UPSTREAM geany-plugins-lua-5_2.patch sf#3476581 dimstar@opensuse.org -- Fix build with lua 5.2.
 # FIXME: the patch breaks GeanyLua building with lua 5.1.5
 Patch0:         geany-plugins-lua-5_2.patch
-# PATCH-FIX-UPSTREAM geany-plugins-fix-compat-libgit2_0.28.patch -- Fix build with new libgit2 0.28 api
-Patch1:         geany-plugins-fix-compat-libgit2_0.28.patch
 
 BuildRequires:  devhelp-devel
 BuildRequires:  fdupes
@@ -71,7 +69,6 @@ a lightweight IDE.
 %prep
 %setup -q
 #patch0 -p1
-%patch1 -p1
 
 %build
 %configure \

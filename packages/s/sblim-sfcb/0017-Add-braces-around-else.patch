@@ -1,7 +1,7 @@
-From 56dad2372b0f106c6793c893ad17b3c874ed0a70 Mon Sep 17 00:00:00 2001
+From 42f880d42a7c0c05d1a14c526debd9677f9d3246 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
 Date: Tue, 28 Nov 2017 11:58:34 +0100
-Subject: [PATCH 17/25] Add braces around else
+Subject: [PATCH 17/29] Add braces around else
 
 ---
  interopProvider.c | 3 ++-
@@ -26,5 +26,5 @@ index 31b67f5af3d6..9088b5ebd6b7 100644
        setStatus(&st, CMPI_RC_ERR_NOT_FOUND, "Handler object not found");
      }
 -- 
-2.15.0
+2.23.0
 

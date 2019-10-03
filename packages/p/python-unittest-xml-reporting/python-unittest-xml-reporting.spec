@@ -22,11 +22,10 @@ Version:        2.5.1
 Release:        0
 Summary:        PyUnit-based test runner with JUnit like XML reporting
 License:        LGPL-3.0-or-later
-Group:          Development/Languages/Python
-URL:            http://github.com/danielfm/unittest-xml-reporting/tree/master/
+URL:            https://github.com/danielfm/unittest-xml-reporting
 Source:         https://github.com/xmlrunner/unittest-xml-reporting/archive/%{version}.tar.gz
 BuildRequires:  %{python_module lxml}
-BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.4.0}
 BuildRequires:  fdupes
@@ -34,6 +33,9 @@ BuildRequires:  python-rpm-macros
 Requires:       python-six >= 1.4.0
 Provides:       python-xmlrunner = %{version}
 BuildArch:      noarch
+%ifpython2
+BuildRequires:  python2-mock
+%endif
 %python_subpackages
 
 %description
@@ -52,7 +54,8 @@ systems, IDEs and continuous integration servers.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand $python -m unittest discover
+# gh#xmlrunner/unittest-xml-reporting#205
+%pytest -k 'not test_xmlrunner_non_ascii'
 
 %files %{python_files}
 %doc README.md

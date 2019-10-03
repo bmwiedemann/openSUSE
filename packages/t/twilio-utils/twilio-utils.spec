@@ -1,7 +1,7 @@
 #
 # spec file for package twilio-utils
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright 2013 Archie L. Cobbs <archie@dellroad.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@
 %define defaultconf %{_sysconfdir}/twilio.conf
 
 Name:           twilio-utils
-Version:        1.0.5
+Version:        1.1.0
 Release:        0
 Summary:        Command line utilities for Twilio users
 License:        Apache-2.0
@@ -53,8 +53,9 @@ The twilio-utils project contains a few UNIX command-line utilities
 that are handy when working with Twilio:
 
 * sendsms - Send an outbound SMS message via Twilio
-* smslen - Calculate SMS payload length
-* twilog - Download Twilio notifications into syslog 
+* smslen  - Calculate SMS payload length
+* twilog  - Download Twilio notifications into syslog 
+* twiping - Send a text message "ping" and wait for response
 
 %prep
 %setup -q

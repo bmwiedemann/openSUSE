@@ -15,7 +15,7 @@
 #
 
 Name:           ibus-typing-booster
-Version:        2.6.6
+Version:        2.6.7
 Release:        0 
 Summary:        An input completion utility
 License:        GPL-3.0+
@@ -28,6 +28,7 @@ BuildRequires:  python3
 BuildRequires:  python3-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  python3-gobject
+BuildRequires:  python3-gobject-Gdk
 BuildRequires:  dbus-1-x11
 BuildRequires:  fdupes
 BuildRequires:  update-desktop-files
@@ -37,6 +38,8 @@ BuildRequires:  m17n-db
 BuildRequires:  python3-pyenchant
 BuildRequires:  appstream-glib
 BuildRequires:  glib2
+BuildRequires:  gtk3
+BuildRequires:  xorg-x11-server
 %if 0%{?sle_version} >= 120200
 BuildRequires:  python3-pyxdg
 %endif
@@ -158,8 +161,13 @@ dconf write /org/freedesktop/ibus/engine/typing-booster/showstatusinfoinaux true
 dconf write /org/freedesktop/ibus/engine/typing-booster/inlinecompletion false
 dconf write /org/freedesktop/ibus/engine/typing-booster/keybindings "{'next_input_method': <['Control+Down', 'Control+KP_Down']>, 'previous_input_method': <['Control+Up', 'Control+KP_Up']>, 'lookup_related': <['Mod5+F12']>, 'enable_lookup': <['Tab', 'ISO_Left_Tab', 'KP_Divide']>, 'select_next_candidate': <['Tab', 'ISO_Left_Tab', 'Down', 'KP_Down']>, 'lookup_table_page_down': <['Page_Down', 'KP_Page_Down', 'KP_Next']>, 'toggle_emoji_prediction': <['Mod5+F6']>, 'lookup_table_page_up': <['Page_Up', 'KP_Page_Up', 'KP_Prior']>, 'toggle_off_the_record': <['Mod5+F9']>, 'cancel': <['Escape']>, 'setup': <['Mod5+F10']>, 'select_previous_candidate': <['Shift+Tab', 'Shift+ISO_Left_Tab', 'Up', 'KP_Up']>}"
 dconf dump /
+export DISPLAY=:1
+Xvfb $DISPLAY -screen 0 1024x768x16 &
 ibus-daemon -drx
-make check || cat ./tests/test-suite.log
+make -C tests run_tests
+pushd tests
+    ./run_tests
+popd
 
 %post
 [ -x %{_bindir}/ibus ] && \

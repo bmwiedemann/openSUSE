@@ -23,7 +23,6 @@ Version:        1.4.3
 Release:        0
 Summary:        A Program to Extract InstallShield Cabinet Files
 License:        MIT
-Group:          Productivity/Archiving/Compression
 URL:            https://github.com/twogood/unshield
 Source0:        https://github.com/twogood/unshield/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM armv7l-fpic.patch matwey.kornilov@gmail.com -- fix armv7l build
@@ -41,7 +40,6 @@ such files. This is the binary executable.
 
 %package -n %{libname}
 Summary:        A Program to Extract InstallShield Cabinet Files
-Group:          System/Libraries
 
 %description -n %{libname}
 Cabinet (.CAB) files are a form of archive, which is used by the
@@ -50,7 +48,6 @@ such files. This is the shared library.
 
 %package devel
 Summary:        Header files, libraries and development documentation for %{libname}
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 Provides:       lib%{name} = %{version}
 Obsoletes:      lib%{name} < %{version}
@@ -66,7 +63,7 @@ you will need to install %{name}-devel.
 
 %build
 %cmake
-cmake_build
+%cmake_build
 
 %install
 %cmake_install
@@ -75,18 +72,15 @@ cmake_build
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %files -n %{libname}
-%defattr(-,root,root)
 %{_libdir}/lib%{name}.so.%{sover}*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/lib%{name}.h
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/lib%{name}.pc
