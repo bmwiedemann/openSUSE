@@ -1,6 +1,0 @@
-<package name="log4j-mini" project="openSUSE:Factory">
-  <title>Java logging tool (internal featureless package breaking dependency loop)</title>
-  <description>Log4j is a tool to help the programmer output log statements to a
-variety of output targets.</description>
-  <devel project="openSUSE:Factory" package="log4j"/>
-</package>

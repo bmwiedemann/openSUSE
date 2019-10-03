@@ -107,7 +107,7 @@ BuildRequires:  java-devel >= 1.8.0
 BuildRequires:  javapackages-local
 BuildRequires:  javapackages-tools
 BuildRequires:  junit
-BuildRequires:  log4j
+BuildRequires:  log4j12
 BuildRequires:  sed
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  unzip
@@ -120,7 +120,7 @@ Requires:       apache-commons-dbcp
 Requires:       apache-commons-logging
 Requires:       apache-commons-pool2
 Requires:       java >= 1.8
-Requires:       log4j
+Requires:       log4j12
 Requires(post): %fillup_prereq
 Requires(pre):  %{_sbindir}/groupadd
 Requires(pre):  %{_sbindir}/useradd
@@ -444,7 +444,7 @@ pushd %{buildroot}%{libdir}
     rm -f commons-dbcp.jar
     ln -s $(build-classpath commons-dbcp2) commons-dbcp2.jar
     ln -s $(build-classpath commons-pool2) commons-pool2.jar
-    ln -s $(build-classpath log4j) log4j.jar
+    ln -s $(build-classpath log4j12/log4j-12) log4j.jar
     ln -s $(build-classpath ecj/ecj) jasper-jdt.jar
 
     # Temporary copy the juli jar here from %%{_datadir}/java/tomcat (for maven depmap)

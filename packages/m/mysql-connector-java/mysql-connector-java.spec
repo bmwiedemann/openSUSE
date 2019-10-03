@@ -1,7 +1,7 @@
 #
 # spec file for package mysql-connector-java
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,8 +21,7 @@ Version:        5.1.47
 Release:        0
 Summary:        Official JDBC Driver for MySQL
 License:        GPL-2.0-or-later
-Group:          Development/Libraries/Java
-Url:            http://dev.mysql.com/downloads/connector/j/
+URL:            https://dev.mysql.com/downloads/connector/j/
 Source0:        %{name}-%{version}-suse.tar.xz
 # Script to repack upstream tarball
 # ./generate-tarball.sh VERSION
@@ -41,11 +40,11 @@ BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  javapackages-tools
 BuildRequires:  junit
-BuildRequires:  log4j-mini
+BuildRequires:  log4j12-mini
 BuildRequires:  slf4j
 BuildRequires:  xz
 Requires:       jta >= 1.0
-Requires:       log4j
+Requires:       log4j12
 Requires:       slf4j
 Provides:       mm.mysql = %{version}
 Obsoletes:      mm.mysql < %{version}
@@ -101,8 +100,8 @@ export CLASSPATH=$(build-classpath \
     jdbc-stdext\
     jta \
     junit \
-    log4j)
-ant \
+    log4j12/log4j-12)
+%{ant} \
     -Dcom.mysql.jdbc.jdk5.javac=%javac \
     -Dcom.mysql.jdbc.jdk8.javac=%javac \
     -Dsnapshot.version= \
@@ -127,14 +126,8 @@ sed -i 's/>@.*</>%{version}</' %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
 
 %add_maven_depmap JPP-%{name}.pom %{name}.jar
 
-%files
-%doc CHANGES COPYING README.txt
-%attr(0644,root,root) %{_javadir}/%{name}.jar
-%if %{defined _maven_repository}
-%config(noreplace) %{_mavendepmapfragdir}/*
-%else
-%config(noreplace) %{_datadir}/maven-metadata/%{name}.xml*
-%endif
-%{_mavenpomdir}/*.pom
+%files -f .mfiles
+%license COPYING
+%doc CHANGES README.txt
 
 %changelog

@@ -64,7 +64,7 @@ BuildRequires:  javamail
 BuildRequires:  javapackages-local
 BuildRequires:  javapackages-tools
 BuildRequires:  junit
-BuildRequires:  log4j-mini
+BuildRequires:  log4j12-mini
 BuildRequires:  servletapi5
 BuildRequires:  unzip
 BuildRequires:  wsdl4j
@@ -76,7 +76,7 @@ Requires:       jakarta-commons-discovery
 Requires:       java
 Requires:       javamail
 Requires:       jaxp_parser_impl
-Requires:       log4j
+Requires:       log4j12
 Requires:       wsdl4j
 Obsoletes:      %{name}-javadoc
 BuildArch:      noarch
@@ -118,7 +118,7 @@ cp %{SOURCE1} %{SOURCE2} %{SOURCE3} .
 
 %build
 [ -z "$JAVA_HOME" ] && export JAVA_HOME=%{_jvmdir}/java
-CLASSPATH=$(build-classpath wsdl4j commons-discovery commons-httpclient3 commons-logging log4j activation javamail servletapi5)
+CLASSPATH=$(build-classpath wsdl4j commons-discovery commons-httpclient3 commons-logging log4j12/log4j-12 activation javamail servletapi5)
 export CLASSPATH=$CLASSPATH:$(build-classpath oro junit jdepend jimi xml-security jsse httpunit jms castor 2>/dev/null)
 export OPT_JAR_LIST="ant/ant-nodeps"
 ant -Dcompile.ime=true \
@@ -126,7 +126,7 @@ ant -Dcompile.ime=true \
     -Dcommons-discovery.jar=$(build-classpath commons-discovery) \
     -Dcommons-logging.jar=$(build-classpath commons-logging) \
     -Dcommons-httpclient.jar=$(build-classpath commons-httpclient3) \
-    -Dlog4j-core.jar=$(build-classpath log4j) \
+    -Dlog4j-core.jar=$(build-classpath log4j12/log4j-12) \
     -Dactivation.jar=$(build-classpath jaf) \
     -Dmailapi.jar=$(build-classpath javamail/mailapi) \
     -Dxerces.jar=$(build-classpath jaxp_parser_impl) \

@@ -24,7 +24,6 @@ Version:        1.2
 Release:        0
 Summary:        Apache Commons Logging
 License:        Apache-2.0
-Group:          Development/Libraries/Java
 URL:            http://commons.apache.org/%{base_name}
 Source0:        http://www.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
 Source1:        http://www.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz.asc
@@ -39,7 +38,7 @@ BuildRequires:  glassfish-servlet-api
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  junit
-BuildRequires:  log4j-mini >= 1.2
+BuildRequires:  log4j12-mini >= 1.2
 Requires:       java >= 1.8
 Provides:       jakarta-%{short_name} = %{version}-%{release}
 Obsoletes:      jakarta-%{short_name} < %{version}
@@ -81,7 +80,7 @@ export CLASSPATH=$(build-classpath \
                   ):target/classes:target/test-classes
 ant \
   -Dmaven.mode.offline=true -lib %{_javadir} \
-  -Dlog4j12.jar=%{_javadir}/log4j.jar -Dservletapi.jar=%{_javadir}/glassfish-servlet-api.jar \
+  -Dlog4j12.jar=%{_javadir}/log4j12/log4j-12.jar -Dservletapi.jar=%{_javadir}/glassfish-servlet-api.jar \
   dist
 
 %install

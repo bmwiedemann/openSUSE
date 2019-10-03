@@ -32,7 +32,7 @@ BuildRequires:  avalon-logkit
 BuildRequires:  commons-logging
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
-BuildRequires:  log4j
+BuildRequires:  log4j12
 Requires:       mvn(avalon-logkit:avalon-logkit)
 BuildArch:      noarch
 
@@ -67,7 +67,7 @@ pushd %{name}-api-%{version}
 popd
 pushd %{name}-impl-%{version}
   mkdir -p target/lib
-  build-jar-repository -s target/lib avalon-logkit log4j commons-logging
+  build-jar-repository -s target/lib avalon-logkit log4j12/log4j-12 commons-logging
   cp ../%{name}-api-%{version}/target/*.jar target/lib/
   %ant -Dant.build.javac.source=8 -Dant.build.javac.target=8 dist
 popd

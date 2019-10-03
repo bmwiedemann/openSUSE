@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct  1 08:36:58 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Rename to log4j12/log4j12-mini as a compatibility packages
+- Convert to multibuild
+- Clean up with the spec-cleaner
+- Install maven pom files even with the mini package
+
+-------------------------------------------------------------------
 Tue Jan 22 10:59:09 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Build against a generic javamail provider instead of against

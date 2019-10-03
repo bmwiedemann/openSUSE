@@ -275,7 +275,7 @@ Prefer: krb5-mini-devel:krb5-mini
 Prefer: krb5-mini krb5-mini-devel
 Prefer: libudev-mini-devel libudev-mini1 udev-debuginfo libudev1-debuginfo
 Prefer: libunbound-devel-mini
-Prefer: log4j-mini
+Prefer: log4j12-mini
 Prefer: systemd-mini-devel:systemd-mini
 Prefer: systemd-mini systemd-mini-devel libsystemd0-mini
 Prefer: udev-mini libcom_err2-mini libext2fs2-mini
@@ -493,8 +493,8 @@ Prefer: librest-0_7-0
 
 Prefer: -geronimo-jta-1_0_1B-api -geronimo-jms-1_1-api -geronimo-el-1_0-api -java-1_5_0-gcj-compat -geronimo-jta-1_1-api classpathx-mail javamail
 Prefer: rhino:xmlbeans-mini
-Prefer: mx4j:log4j-mini
-Prefer: maven-doxia-module-fo:log4j-mini
+Prefer: mx4j:log4j12-mini
+Prefer: maven-doxia-module-fo:log4j12-mini
 
 Prefer: rpcbind  eclipse-source
 Prefer: libcdio_cdda0 libcdio_paranoia0

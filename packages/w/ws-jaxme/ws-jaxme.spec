@@ -1,7 +1,7 @@
 #
 # spec file for package ws-jaxme
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,7 @@ BuildRequires:  java-devel >= 1.6
 BuildRequires:  javapackages-tools
 BuildRequires:  jaxp_transform_impl
 BuildRequires:  junit >= 3.8.1
-BuildRequires:  log4j
+BuildRequires:  log4j12
 BuildRequires:  xalan-j2
 BuildRequires:  xerces-j2
 BuildRequires:  xml-commons-apis
@@ -115,7 +115,7 @@ export CLASSPATH=$(build-classpath \
     antlr \
     apache-commons-codec \
     hsqldb \
-    log4j \
+    log4j12/log4j-12 \
     xalan-j2 \
     xalan-j2-serializer \
     xmldb-api \

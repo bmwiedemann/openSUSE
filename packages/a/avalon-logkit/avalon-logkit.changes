@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct  1 12:05:13 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Build against compatibility log4j12 package
+
+-------------------------------------------------------------------
 Mon Apr 15 13:44:10 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Depend directly on the geronimo-jms-1_1-api package instead of

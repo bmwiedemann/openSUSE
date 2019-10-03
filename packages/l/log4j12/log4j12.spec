@@ -1,5 +1,5 @@
 #
-# spec file for package log4j-mini
+# spec file for package log4j12
 #
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
@@ -16,40 +16,38 @@
 #
 
 
-##### WARNING: please do not edit this auto generated spec file. Use the log4j.spec! #####
-%define bootstrap 1
-# Needed as it is split to log4j-mini
-%define real log4j
-Name:           log4j-mini
-# This line is not a comment, please do not remove it!
-#%(sh %{_sourcedir}/jpackage-mini-prepare.sh %{_sourcedir} %{name})
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "bootstrap"
+%bcond_without bootstrap
+%else
+%bcond_with bootstrap
+%endif
+%define real log4j12
 Version:        1.2.17
 Release:        0
 Summary:        Java logging tool
 License:        Apache-2.0
-Group:          Development/Libraries/Java
-URL:            http://logging.apache.org/log4j/
+URL:            https://logging.apache.org/log4j/
 Source0:        http://www.apache.org/dist/logging/log4j/%{version}/log4j-%{version}.tar.gz
 # Converted from src/java/org/apache/log4j/lf5/viewer/images/lf5_small_icon.gif
-Source1:        %{real}-logfactor5.png
-Source2:        %{real}-logfactor5.sh
-Source3:        %{real}-logfactor5.desktop
+Source1:        log4j-logfactor5.png
+Source2:        log4j-logfactor5.sh
+Source3:        log4j-logfactor5.desktop
 # Converted from docs/images/logo.jpg
-Source4:        %{real}-chainsaw.png
-Source5:        %{real}-chainsaw.sh
-Source6:        %{real}-chainsaw.desktop
-Source7:        %{real}.catalog
+Source4:        log4j-chainsaw.png
+Source5:        log4j-chainsaw.sh
+Source6:        log4j-chainsaw.desktop
+Source7:        log4j.catalog
 Source1000:     jpackage-mini-prepare.sh
-Patch0:         %{real}-logfactor5-userdir.patch
-Patch1:         %{real}-javadoc-xlink.patch
-Patch2:         %{real}-mx4j-tools.patch
+Patch0:         log4j-logfactor5-userdir.patch
+Patch1:         log4j-javadoc-xlink.patch
+Patch2:         log4j-mx4j-tools.patch
 # PATCH-FIX-OPENSUSE -- Drop javadoc timestamp
-Patch3:         %{real}-reproducible.patch
+Patch3:         log4j-reproducible.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
-BuildRequires:  javapackages-tools
 BuildRequires:  jndi
 BuildRequires:  perl
 BuildRequires:  update-desktop-files
@@ -58,9 +56,12 @@ Requires:       jaxp_parser_impl
 Requires:       xml-apis
 Requires(pre):  coreutils
 BuildArch:      noarch
-%if %{bootstrap}
+%if %{with bootstrap}
+Name:           %{real}-mini
 Provides:       %{real} = %{version}-%{release}
+Obsoletes:      log4j-mini < 1.3
 %else
+Name:           %{real}
 BuildRequires:  geronimo-jaf-1_0_2-api
 BuildRequires:  geronimo-jms-1_1-api
 BuildRequires:  javamail
@@ -68,25 +69,25 @@ BuildRequires:  mx4j
 #!BuildIgnore:  apache-commons-discovery
 #!BuildIgnore:  apache-commons-logging
 #!BuildIgnore:  axis
-Provides:       log4j-mini
-Obsoletes:      log4j-mini
+Provides:       %{real}-mini
+Obsoletes:      %{real}-mini
+Obsoletes:      log4j < 1.3
+#!BuildRequires: %{real}-mini
 %endif
 
 %description
 Log4j is a tool to help the programmer output log statements to a
 variety of output targets.
 
-%if ! %{bootstrap}
+%if %{without bootstrap}
 %package        manual
 Summary:        Java logging tool (Manual)
-Group:          Development/Libraries/Java
 
 %description    manual
 Documentation manual for Java logging tool log4j.
 
 %package        javadoc
 Summary:        Java logging tool (Documentation)
-Group:          Development/Libraries/Java
 
 %description    javadoc
 Documentation javadoc for Java logging tool log4j.
@@ -112,7 +113,7 @@ for i in contribs/JimMoore/mail*;do
 done
 
 %build
-ant \
+%ant \
         -Djavamail.jar=$(build-classpath javamail/mailapi) \
         -Dactivation.jar=$(build-classpath jaf) \
         -Djaxp.jaxp.jar.jar=$(build-classpath jaxp_parser_impl) \
@@ -123,22 +124,21 @@ ant \
         -Djavac.source=1.6 -Djavac.target=1.6 \
         -Djdk.javadoc=%{_javadocdir}/java \
         jar \
-%if ! %{bootstrap}
+%if %{without bootstrap}
         javadoc
 %endif
 
 %install
 # jars
-mkdir -p %{buildroot}%{_javadir}
-cp -a dist/lib/log4j-%{version}.jar %{buildroot}%{_javadir}
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}*; do ln -sf ${jar} `echo $jar| sed  "s|-%{version}||g"`; done)
+mkdir -p %{buildroot}%{_javadir}/%{real}
+cp -a dist/lib/log4j-%{version}.jar %{buildroot}%{_javadir}/%{real}/log4j.jar
 
-%if ! %{bootstrap}
 #pom
-install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
-%add_maven_depmap %{name}.pom %{name}.jar
+install -d -m 755 %{buildroot}%{_mavenpomdir}/%{real}
+install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/%{real}/log4j.pom
+%add_maven_depmap %{real}/log4j.pom %{real}/log4j.jar -v "1.2.17,1.2.16,1.2.15,1.2.14,1.2.13,1.2.12,12"
 
+%if %{without bootstrap}
 # javadoc
 mkdir -p %{buildroot}%{_javadocdir}/%{name}
 cp -a docs/api/* %{buildroot}%{_javadocdir}/%{name}
@@ -201,7 +201,7 @@ if [ -x %{_bindir}/install-catalog -a -d %{_sysconfdir}/sgml ]; then
     %{_datadir}/sgml/%{name}/catalog > /dev/null || :
 fi
 
-%files
+%files -f .mfiles
 %license LICENSE
 %doc NOTICE
 %{_bindir}/*
@@ -209,14 +209,8 @@ fi
 %{_datadir}/applications/*
 %{_datadir}/pixmaps/*
 %{_datadir}/sgml/%{name}
-%if ! %{bootstrap}
-%{_mavenpomdir}/*
-%if %{defined _maven_repository}
-%{_mavendepmapfragdir}/%{name}
-%else
-%{_datadir}/maven-metadata/%{name}.xml*
-%endif
 
+%if %{without bootstrap}
 %files manual
 %doc docs/* contribs
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct  1 12:29:16 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Build against compatibility log4j12 package
+
+-------------------------------------------------------------------
 Wed Sep 25 12:18:29 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Adapt to the new ecj directory layout

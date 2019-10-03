@@ -271,4 +271,12 @@
     <comment></comment>
     <requestid>646511</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>edb417d20ea0861c517afa0bf87769a6</srcmd5>
+    <version>5.1.47</version>
+    <time>1570112141</time>
+    <user>dimstar_suse</user>
+    <comment>Build against the new compatibility packages log4j12/log4j12-mini</comment>
+    <requestid>734257</requestid>
+  </revision>
 </revisionlist>

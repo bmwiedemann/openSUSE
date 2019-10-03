@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct  1 14:23:32 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to apache-log4j-2.11.1
+- Drop the log4j vs. log4j-mini split
+  * the bootstrapping is done using the log4j12/log4j12-mini
+    compatibility packages 
+- Removed patches:
+  * log4j-javadoc-xlink.patch
+  * log4j-logfactor5-userdir.patch
+  * log4j-mx4j-tools.patch
+  * log4j-reproducible.patch
+    + unnecessary with this version
+
+-------------------------------------------------------------------
 Tue Jan 22 10:59:09 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Build against a generic javamail provider instead of against

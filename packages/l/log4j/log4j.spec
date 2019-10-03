@@ -16,212 +16,259 @@
 #
 
 
-%define bootstrap 0
-# Needed as it is split to log4j-mini
-%define real log4j
+%bcond_with extras
 Name:           log4j
-# This line is not a comment, please do not remove it!
-#%(sh %{_sourcedir}/jpackage-mini-prepare.sh %{_sourcedir} %{name})
-Version:        1.2.17
+Version:        2.11.1
 Release:        0
-Summary:        Java logging tool
+Summary:        Java logging package
 License:        Apache-2.0
-Group:          Development/Libraries/Java
-URL:            http://logging.apache.org/log4j/
-Source0:        http://www.apache.org/dist/logging/log4j/%{version}/log4j-%{version}.tar.gz
-# Converted from src/java/org/apache/log4j/lf5/viewer/images/lf5_small_icon.gif
-Source1:        %{real}-logfactor5.png
-Source2:        %{real}-logfactor5.sh
-Source3:        %{real}-logfactor5.desktop
-# Converted from docs/images/logo.jpg
-Source4:        %{real}-chainsaw.png
-Source5:        %{real}-chainsaw.sh
-Source6:        %{real}-chainsaw.desktop
-Source7:        %{real}.catalog
-Source1000:     jpackage-mini-prepare.sh
-Patch0:         %{real}-logfactor5-userdir.patch
-Patch1:         %{real}-javadoc-xlink.patch
-Patch2:         %{real}-mx4j-tools.patch
-# PATCH-FIX-OPENSUSE -- Drop javadoc timestamp
-Patch3:         %{real}-reproducible.patch
-BuildRequires:  ant
+URL:            http://logging.apache.org/%{name}
+Source0:        http://archive.apache.org/dist/logging/%{name}/%{version}/apache-%{name}-%{version}-src.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
-BuildRequires:  javapackages-tools
-BuildRequires:  jndi
-BuildRequires:  perl
-BuildRequires:  update-desktop-files
-Requires:       javapackages-tools
-Requires:       jaxp_parser_impl
-Requires:       xml-apis
-Requires(pre):  coreutils
+BuildRequires:  maven-local
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core)
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind)
+BuildRequires:  mvn(com.lmax:disruptor)
+BuildRequires:  mvn(com.sun.mail:javax.mail)
+BuildRequires:  mvn(org.apache.commons:commons-compress)
+BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
+BuildRequires:  mvn(org.apache.logging:logging-parent:pom:)
+BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
+BuildRequires:  mvn(org.fusesource.jansi:jansi)
+BuildRequires:  mvn(org.jctools:jctools-core)
+BuildRequires:  mvn(org.osgi:osgi.core)
+BuildRequires:  mvn(org.slf4j:slf4j-api)
+BuildRequires:  mvn(org.slf4j:slf4j-ext)
 BuildArch:      noarch
-%if %{bootstrap}
-Provides:       %{real} = %{version}-%{release}
-%else
-BuildRequires:  geronimo-jaf-1_0_2-api
-BuildRequires:  geronimo-jms-1_1-api
-BuildRequires:  javamail
-BuildRequires:  mx4j
-#!BuildIgnore:  apache-commons-discovery
-#!BuildIgnore:  apache-commons-logging
-#!BuildIgnore:  axis
-Provides:       log4j-mini
-Obsoletes:      log4j-mini
+%if %{with extras}
+BuildRequires:  mvn(com.datastax.cassandra:cassandra-driver-core)
+BuildRequires:  mvn(com.fasterxml.jackson.dataformat:jackson-dataformat-xml)
+BuildRequires:  mvn(com.fasterxml.jackson.dataformat:jackson-dataformat-yaml)
+BuildRequires:  mvn(com.fasterxml.woodstox:woodstox-core)
+BuildRequires:  mvn(commons-logging:commons-logging)
+BuildRequires:  mvn(javax.servlet.jsp:jsp-api)
+BuildRequires:  mvn(javax.servlet:javax.servlet-api)
+BuildRequires:  mvn(org.apache.commons:commons-csv)
+BuildRequires:  mvn(org.apache.tomcat:tomcat-catalina)
+BuildRequires:  mvn(org.eclipse.jetty:jetty-util)
+BuildRequires:  mvn(org.eclipse.persistence:javax.persistence)
+BuildRequires:  mvn(org.jboss.spec.javax.jms:jboss-jms-api_1.1_spec)
+BuildRequires:  mvn(org.lightcouch:lightcouch)
+BuildRequires:  mvn(org.zeromq:jeromq)
+BuildRequires:  mvn(sun.jdk:jconsole)
+# Explicit requires for javapackages-tools since log4j-jmx script
+# uses /usr/share/java-utils/java-functions
+Requires:       javapackages-tools
 %endif
 
 %description
 Log4j is a tool to help the programmer output log statements to a
 variety of output targets.
 
-%if ! %{bootstrap}
-%package        manual
-Summary:        Java logging tool (Manual)
-Group:          Development/Libraries/Java
+%package slf4j
+Summary:        Binding between LOG4J 2 API and SLF4J
 
-%description    manual
-Documentation manual for Java logging tool log4j.
+%description slf4j
+Binding between LOG4J 2 API and SLF4J.
+
+%package jcl
+Summary:        Apache Log4j Commons Logging Bridge
+
+%description jcl
+Apache Log4j Commons Logging Bridge.
+
+%if %{with extras}
+%package osgi
+Summary:        Apache Log4J Core OSGi Bundles
+
+%description osgi
+Apache Log4J Core OSGi Bundles.
+
+%package taglib
+Summary:        Apache Log4j Tag Library
+
+%description taglib
+Apache Log4j Tag Library for Web Applications.
+
+%package jmx-gui
+Summary:        Apache Log4j JMX GUI
+Requires:       java-devel
+
+%description jmx-gui
+Swing-based client for remotely editing the log4j configuration and remotely
+monitoring StatusLogger output. Includes a JConsole plug-in.
+
+%package web
+Summary:        Apache Log4j Web
+
+%description web
+Support for Log4j in a web servlet container.
+
+%package bom
+Summary:        Apache Log4j BOM
+
+%description bom
+Apache Log4j 2 Bill of Material
+
+%package nosql
+Summary:        Apache Log4j NoSql
+
+%description nosql
+Use NoSQL databases such as MongoDB and CouchDB to append log messages.
+
+%endif
 
 %package        javadoc
-Summary:        Java logging tool (Documentation)
-Group:          Development/Libraries/Java
+Summary:        API documentation for %{name}
+Obsoletes:      %{name}-manual < %{version}
 
 %description    javadoc
-Documentation javadoc for Java logging tool log4j.
-%endif
+%{summary}.
 
 %prep
-%setup -q -n apache-log4j-%{version}
-%patch0
-%patch1
-%patch2
-%patch3 -p1
+%setup -q -n apache-%{name}-%{version}-src
 
-sed -i 's/\r//g' LICENSE NOTICE src/site/resources/css/*.css
+%pom_remove_plugin -r :maven-site-plugin
+%pom_remove_plugin -r :maven-remote-resources-plugin
+%pom_remove_plugin -r :maven-doap-plugin
+%pom_remove_plugin -r :maven-source-plugin
+%pom_remove_plugin -r :maven-toolchains-plugin
 
 # remove all the stuff we'll build ourselves
-find . \( -name "*.jar" -o -name "*.class" \) -exec rm -f {} \;
+find -name "*.jar" -o -name "*.class" -delete
 rm -rf docs/api
 
-# fix encoding of mailbox files
-for i in contribs/JimMoore/mail*;do
-    iconv --from=ISO-8859-1 --to=UTF-8 "$i" > new
-    mv new "$i"
-done
+%pom_disable_module %{name}-samples
+%pom_disable_module %{name}-distribution
+
+# Apache Flume is not in Fedora yet
+%pom_disable_module %{name}-flume-ng
+
+# artifact for upstream testing of log4j itself, shouldn't be distributed
+%pom_disable_module %{name}-perf
+
+# needs java 9 to build
+%pom_disable_module %{name}-api-java9
+%pom_disable_module %{name}-core-java9
+%pom_remove_dep -r :%{name}-api-java9
+%pom_remove_dep -r :%{name}-core-java9
+%pom_remove_plugin -r :maven-dependency-plugin
+
+# unavailable com.conversantmedia:disruptor
+rm log4j-core/src/main/java/org/apache/logging/log4j/core/async/DisruptorBlockingQueueFactory.java
+%pom_remove_dep -r com.conversantmedia:disruptor
+
+# kafka not available
+rm -r log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/kafka
+%pom_remove_dep -r :kafka-clients
+
+# not compatible with fedora's version
+%pom_disable_module %{name}-liquibase
+
+# we don't have slf4j 1.8 yet
+%pom_disable_module %{name}-slf4j18-impl
+
+# we don't have commons-dbcp2
+%pom_disable_module %{name}-jdbc-dbcp2
+
+# We have mongodb 4
+%pom_disable_module %{name}-mongodb2
+%pom_disable_module %{name}-mongodb3
+
+# System scoped dep provided by JDK
+%pom_remove_dep :jconsole %{name}-jmx-gui
+%pom_add_dep sun.jdk:jconsole %{name}-jmx-gui
+
+# old AID is provided by felix, we want osgi-core
+%pom_change_dep -r org.osgi:org.osgi.core org.osgi:osgi.core
+
+# BOM package shouldn't require Apache RAT
+%pom_remove_plugin :apache-rat-plugin %{name}-bom
+
+# tests are disabled
+%pom_remove_plugin :maven-failsafe-plugin
+
+%if %{without extras}
+%pom_disable_module %{name}-taglib
+%pom_disable_module %{name}-jmx-gui
+%pom_disable_module %{name}-bom
+%pom_disable_module %{name}-web
+%pom_disable_module %{name}-iostreams
+%pom_disable_module %{name}-jul
+%pom_disable_module %{name}-core-its
+%pom_disable_module %{name}-jpa
+%pom_disable_module %{name}-couchdb
+%pom_disable_module %{name}-cassandra
+%pom_disable_module %{name}-appserver
+
+%pom_remove_dep -r :jackson-dataformat-yaml
+%pom_remove_dep -r :jackson-dataformat-xml
+%pom_remove_dep -r :woodstox-core
+%pom_remove_dep -r :javax.persistence
+%pom_remove_dep -r :jboss-jms-api_1.1_spec
+%pom_remove_dep -r :jeromq
+%pom_remove_dep -r :commons-csv
+
+rm -r log4j-core/src/main/java/org/apache/logging/log4j/core/{jackson,config/yaml,parser}
+rm -r log4j-core/src/main/java/org/apache/logging/log4j/core/appender/{db,mom,nosql}
+rm log4j-core/src/main/java/org/apache/logging/log4j/core/layout/*{Csv,Jackson,Xml,Yaml,Json,Gelf}*.java
+rm log4j-api/src/main/java/org/apache/logging/log4j/util/Activator.java
+%endif
+
+%{mvn_alias} :%{name}-1.2-api %{name}:%{name}
+
+# Note that packages using the compatibility layer still need to have log4j-core
+# on the classpath to run. This is there to prevent build-classpath from putting
+# whole dir on the classpath which results in loading incorrect provider
+%{mvn_file} ':{%{name}-1.2-api}' %{name}/@1 %{name}
+
+%{mvn_package} ':%{name}-slf4j-impl' slf4j
+%{mvn_package} ':%{name}-to-slf4j' slf4j
+%{mvn_package} ':%{name}-taglib' taglib
+%{mvn_package} ':%{name}-jcl' jcl
+%{mvn_package} ':%{name}-jmx-gui' jmx-gui
+%{mvn_package} ':%{name}-web' web
+%{mvn_package} ':%{name}-bom' bom
+%{mvn_package} ':%{name}-cassandra' nosql
+%{mvn_package} ':%{name}-couchdb' nosql
+
+%{mvn_package} :log4j-core-its __noinstall
 
 %build
-ant \
-        -Djavamail.jar=$(build-classpath javamail/mailapi) \
-        -Dactivation.jar=$(build-classpath jaf) \
-        -Djaxp.jaxp.jar.jar=$(build-classpath jaxp_parser_impl) \
-        -Djms.jar=$(build-classpath jms) \
-        -Djmx.jar=$(build-classpath mx4j/mx4j) \
-        -Djmx-extra.jar=$(build-classpath mx4j/mx4j-tools) \
-        -Djndi.jar=$(build-classpath jndi) \
-        -Djavac.source=1.6 -Djavac.target=1.6 \
-        -Djdk.javadoc=%{_javadocdir}/java \
-        jar \
-%if ! %{bootstrap}
-        javadoc
-%endif
+# missing test deps (mockejb)
+%{mvn_build} -f -- -Dsource=7
 
 %install
-# jars
-mkdir -p %{buildroot}%{_javadir}
-cp -a dist/lib/log4j-%{version}.jar %{buildroot}%{_javadir}
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}*; do ln -sf ${jar} `echo $jar| sed  "s|-%{version}||g"`; done)
+%mvn_install
 
-%if ! %{bootstrap}
-#pom
-install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
-%add_maven_depmap %{name}.pom %{name}.jar
-
-# javadoc
-mkdir -p %{buildroot}%{_javadocdir}/%{name}
-cp -a docs/api/* %{buildroot}%{_javadocdir}/%{name}
-%fdupes -s %{buildroot}%{_javadocdir}/%{name}
-rm -rf docs/api
-ln -s %{_javadocdir}/%{name} docs/api
-%endif
-# scripts
-mkdir -p %{buildroot}%{_bindir}
-install -p -m 755 %{SOURCE2} %{buildroot}%{_bindir}/logfactor5
-install -p -m 755 %{SOURCE5} %{buildroot}%{_bindir}/chainsaw
-# freedesktop.org menu entries and icons
-mkdir -p %{buildroot}%{_datadir}/{applications,pixmaps}
-cp -a %{SOURCE1} \
-  %{buildroot}%{_datadir}/pixmaps/logfactor5.png
-cp -a %{SOURCE3} \
-  %{buildroot}%{_datadir}/applications/jpackage-logfactor5.desktop
-cp -a %{SOURCE4} \
-  %{buildroot}%{_datadir}/pixmaps/chainsaw.png
-cp -a %{SOURCE6} \
-  %{buildroot}%{_datadir}/applications/jpackage-chainsaw.desktop
-# DTD and the SGML catalog (XML catalog handled in scriptlets)
-mkdir -p %{buildroot}%{_datadir}/sgml/%{name}
-cp -a src/main/resources/org/apache/log4j/xml/log4j.dtd \
-  %{buildroot}%{_datadir}/sgml/%{name}
-cp -a %{SOURCE7} \
-  %{buildroot}%{_datadir}/sgml/%{name}/catalog
-# fix perl location
-perl -p -i -e 's|/opt/perl5/bin/perl|perl|' \
-contribs/KitchingSimon/udpserver.pl
-%suse_update_desktop_file jpackage-chainsaw Development Debugger
-%suse_update_desktop_file jpackage-logfactor5 Development Debugger
-
-%post
-# Note that we're using versioned catalog, so this is always ok.
-if [ -x %{_bindir}/install-catalog -a -d %{_sysconfdir}/sgml ]; then
-  %{_bindir}/install-catalog --add \
-    %{_sysconfdir}/sgml/%{name}-%{version}-%{release}.cat \
-    %{_datadir}/sgml/%{name}/catalog > /dev/null || :
-fi
-if [ -x %{_bindir}/xmlcatalog -a -w %{_sysconfdir}/xml/catalog ]; then
-  %{_bindir}/xmlcatalog --noout --add system log4j.dtd \
-    file://%{_datadir}/sgml/%{name}/log4j.dtd %{_sysconfdir}/xml/catalog \
-    > /dev/null || :
-fi
-
-%preun
-if [ $1 -eq 0 ]; then
-  if [ -x %{_bindir}/xmlcatalog -a -w %{_sysconfdir}/xml/catalog ]; then
-    %{_bindir}/xmlcatalog --noout --del log4j.dtd \
-      %{_sysconfdir}/xml/catalog > /dev/null || :
-  fi
-fi
-
-%postun
-# Note that we're using versioned catalog, so this is always ok.
-if [ -x %{_bindir}/install-catalog -a -d %{_sysconfdir}/sgml ]; then
-  %{_bindir}/install-catalog --remove \
-    %{_sysconfdir}/sgml/%{name}-%{version}-%{release}.cat \
-    %{_datadir}/sgml/%{name}/catalog > /dev/null || :
-fi
-
-%files
-%license LICENSE
-%doc NOTICE
-%{_bindir}/*
-%{_javadir}/*
-%{_datadir}/applications/*
-%{_datadir}/pixmaps/*
-%{_datadir}/sgml/%{name}
-%if ! %{bootstrap}
-%{_mavenpomdir}/*
-%if %{defined _maven_repository}
-%{_mavendepmapfragdir}/%{name}
-%else
-%{_datadir}/maven-metadata/%{name}.xml*
+%if %{with extras}
+%jpackage_script org.apache.logging.log4j.jmx.gui.ClientGUI '' '' %{name}/%{name}-jmx-gui:%{name}/%{name}-core %{name}-jmx false
 %endif
 
-%files manual
-%doc docs/* contribs
+%files -f .mfiles
+%dir %{_javadir}/%{name}
+%license LICENSE.txt
+%doc NOTICE.txt
 
-%files javadoc
-%dir %{_javadocdir}/%{name}
-%{_javadocdir}/%{name}/*
+%files slf4j -f .mfiles-slf4j
+
+%files jcl -f .mfiles-jcl
+
+%if %{with extras}
+%files taglib -f .mfiles-taglib
+
+%files web -f .mfiles-web
+
+%files bom -f .mfiles-bom
+
+%files nosql -f .mfiles-nosql
+
+%files jmx-gui -f .mfiles-jmx-gui
+%{_bindir}/%{name}-jmx
 %endif
+
+%files javadoc -f .mfiles-javadoc
+%license LICENSE.txt
+%doc NOTICE.txt
 
 %changelog

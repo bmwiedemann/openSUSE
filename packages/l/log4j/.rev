@@ -198,4 +198,12 @@
     <comment>Build against generic providers</comment>
     <requestid>668996</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>e49a04377b2344a5576e404021783866</srcmd5>
+    <version>2.11.1</version>
+    <time>1570112172</time>
+    <user>dimstar_suse</user>
+    <comment>upgrade to 2.11.1 (API change) + replace in rings by log4j12/log4j12-mini</comment>
+    <requestid>734363</requestid>
+  </revision>
 </revisionlist>

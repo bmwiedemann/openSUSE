@@ -214,4 +214,12 @@
     <comment>Clean up the build requires</comment>
     <requestid>672372</requestid>
   </revision>
+  <revision rev="31" vrev="32">
+    <srcmd5>7ecae04b0156fc7837d9997f14365f8b</srcmd5>
+    <version>3.0.2</version>
+    <time>1570112117</time>
+    <user>dimstar_suse</user>
+    <comment>build against the new log4j12/log4j12-mini combo</comment>
+    <requestid>734253</requestid>
+  </revision>
 </revisionlist>

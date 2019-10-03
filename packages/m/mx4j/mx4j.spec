@@ -53,7 +53,7 @@ BuildRequires:  javamail
 BuildRequires:  javapackages-local
 BuildRequires:  junit
 BuildRequires:  libtool
-BuildRequires:  log4j-mini
+BuildRequires:  log4j12-mini
 BuildRequires:  perl
 BuildRequires:  servletapi5
 BuildRequires:  unzip
@@ -67,7 +67,7 @@ Requires:       bcel >= 5.0
 Requires:       jaf
 Requires:       javamail >= 1.2-5jpp
 Requires:       jce >= 1.2.2
-Requires:       log4j >= 1.2.7
+Requires:       log4j12 >= 1.2.7
 Requires:       xml-apis
 Requires:       xml-resolver
 Requires(post): update-alternatives
@@ -110,7 +110,7 @@ pushd lib
    ln -sf $(build-classpath xalan-j2) xalan.jar                           || :
    ln -sf $(build-classpath xalan-j2-serializer)                          || :
    ln -sf $(build-classpath commons-logging)                              || :
-   ln -sf $(build-classpath log4j)                                        || :
+   ln -sf $(build-classpath log4j12/log4j-12)                             || :
    ln -sf $(build-classpath bcel)                                         || :
    ln -sf $(build-classpath axis/axis)                                    || :
    ln -sf $(build-classpath axis/jaxrpc)                                  || :
@@ -133,7 +133,7 @@ export ANT_OPTS="-Djava.security.manager \
 export OPT_JAR_LIST="ant/ant-junit junit ant/ant-trax jaxp_transform_impl"
 export CLASSPATH=$(build-classpath glibj-tools activation javamail/mailapi javamail/smtp \
    jetty4 jython jakarta-commons-logging xml-commons-apis bcel jaas jce \
-   log4j jaxp_transform_impl axis/axis axis/jaxrpc axis/saaj \
+   log4j12/log4j-12 jaxp_transform_impl axis/axis axis/jaxrpc axis/saaj \
    xml-resolver xdoclet/xdoclet xdoclet/xdoclet-jmx-module \
    xdoclet/xdoclet-mx4j-module xalan-j2-serializer)
 export CLASSPATH=${CLASSPATH}:%{_builddir}/%{name}-%{version}/classes/core:%{_builddir}/%{name}-%{version}/build

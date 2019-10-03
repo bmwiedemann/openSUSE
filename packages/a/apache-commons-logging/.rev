@@ -174,4 +174,12 @@
     <comment>Disregard the pom parent + minor cleanup</comment>
     <requestid>689052</requestid>
   </revision>
+  <revision rev="21" vrev="8">
+    <srcmd5>d865bea7cdf86059a434d5e9bb8a3c81</srcmd5>
+    <version>1.2</version>
+    <time>1570112123</time>
+    <user>dimstar_suse</user>
+    <comment>Build against the new compatibility log4j12-mini package</comment>
+    <requestid>734254</requestid>
+  </revision>
 </revisionlist>

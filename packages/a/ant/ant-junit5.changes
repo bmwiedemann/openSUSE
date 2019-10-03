@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct  1 08:34:33 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Build against the new compatibility packages log4j12/log4j12-mini
+
+-------------------------------------------------------------------
+Mon Sep 30 08:08:49 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Remove references to parent poms from all artifacts and do not
+  distribute the ant-parent, since we don't need it
+
+-------------------------------------------------------------------
 Tue Apr  9 10:48:23 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Require directly xerces-j2 and not its virtual provide
