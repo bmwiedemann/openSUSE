@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  1 16:09:07 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
+
+- Support for the offline installation medium (jsc#SLE-7101)
+- 4.2.16
+
+-------------------------------------------------------------------
 Wed Sep 25 08:29:19 UTC 2019 - Steffen Winterfeldt <snwint@suse.com>
 
 - do not stop haveged process (bsc#1140171)

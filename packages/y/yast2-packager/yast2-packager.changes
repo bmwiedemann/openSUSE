@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Oct  1 17:13:42 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
+
+- Do not add an empty repository from the offline medium root
+  (jsc#SLE-7101)
+- 4.2.30
+
+-------------------------------------------------------------------
+Tue Oct  1 07:52:29 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
+
+- Small refactoring related to the offline medium (jsc#SLE-7101)
+- 4.2.29
+
+-------------------------------------------------------------------
+Fri Sep 27 15:21:37 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
+
+- Support for the offline installation medium (jsc#SLE-7101)
+- 4.2.28
+
+-------------------------------------------------------------------
 Wed Sep 18 11:28:23 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
 
 - Support for the online installation medium (jsc#SLE-7214)

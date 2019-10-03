@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 27 13:10:44 CEST 2019 - schubi@suse.de
+
+- AY: Settings have not been exported. "console_shutdown" entry
+  has not been evaluated (bsc#1150821).
+- 4.2.3
+
+-------------------------------------------------------------------
 Thu Sep  5 10:22:29 CEST 2019 - schubi@suse.de
 
 - AY: Supporting user defined permission files like

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  2 11:17:26 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
+
+- Add requirement for precise time (bsc#1145193)
+- 20191002
+
+-------------------------------------------------------------------
 Thu Aug 15 16:41:03 CEST 2019 - kukuk@suse.de
 
 - Add dialog to configure salt-minion where needed [bsc#1145768]

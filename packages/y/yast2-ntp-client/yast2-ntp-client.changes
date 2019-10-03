@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct  2 11:42:34 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
+
+- implement starting chrony-wait only if product require it
+  (bsc#1145193)
+- 4.2.4
+
+-------------------------------------------------------------------
 Fri Aug 30 09:42:29 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add cron BuildRequires: needed for /etc/cron.* ownership. As

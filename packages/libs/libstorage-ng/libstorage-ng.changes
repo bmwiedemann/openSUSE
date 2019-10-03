@@ -1,4 +1,33 @@
 --------------------------------------------------------------------
+Mon Sep 30 12:00:00 UTC 2019 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#673
+- parse cipher and key size in cryptsetup output
+- added cipher and key size to Encryption (for jsc#SLE-7376)
+- probe sector size for Encryption
+- extended documentation
+- added sanity check
+- coding style
+- added test case for paes cipher
+- handle cipher and key size for encryption
+- 4.2.14
+
+--------------------------------------------------------------------
+Thu Sep 26 15:30:14 UTC 2019 - jlopez@suse.com
+
+- merge gh#openSUSE/libstorage-ng#672
+- Add open_options
+- Bump version
+- Extra options to open encryption
+- 4.2.13
+
+--------------------------------------------------------------------
+Thu Sep 26 00:14:20 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Danish) (bsc#1149754)
+- 4.2.12
+
+--------------------------------------------------------------------
 Tue Sep 10 12:04:57 UTC 2019 - opensuse-packaging@opensuse.org
 
 - Translated using Weblate (Catalan) (bsc#1149754)

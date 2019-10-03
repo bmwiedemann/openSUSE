@@ -17,7 +17,7 @@
 
 
 Name:           yast2-firstboot
-Version:        4.2.2
+Version:        4.2.3
 Release:        0
 Summary:        YaST2 - Initial System Configuration
 License:        GPL-2.0-only
@@ -38,9 +38,9 @@ Requires:       yast2 >= 2.16.23
 Requires:       yast2-country >= 2.19.5
 # Rely on the YaST2-Firstboot.service for halting the system on failure
 Requires:       yast2-installation >= 4.1.2
-# network autoconfiguration
+# Updated DNS API (unneeded write_hostname= method does not exist anymore)
 Requires:       yast2-configuration-management >= 4.1.3
-Requires:       yast2-network >= 3.1.91
+Requires:       yast2-network >= 4.2.14
 Requires:       yast2-ruby-bindings >= 1.0.0
 
 BuildArch:      noarch
