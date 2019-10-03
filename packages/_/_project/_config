@@ -275,7 +275,7 @@ Prefer: krb5-mini-devel:krb5-mini
 Prefer: krb5-mini krb5-mini-devel
 Prefer: libudev-mini-devel libudev-mini1 udev-debuginfo libudev1-debuginfo
 Prefer: libunbound-devel-mini
-Prefer: log4j12-mini
+Prefer: log4j12-mini log4j-mini
 Prefer: systemd-mini-devel:systemd-mini
 Prefer: systemd-mini systemd-mini-devel libsystemd0-mini
 Prefer: udev-mini libcom_err2-mini libext2fs2-mini
