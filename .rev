@@ -7,4 +7,12 @@
     <comment>New package that will be soon needed by c3p0</comment>
     <requestid>660486</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>755b51192ad3b6e4921ec03ebc678929</srcmd5>
+    <version>0.2.11</version>
+    <time>1570180911</time>
+    <user>dimstar_suse</user>
+    <comment>Build against log4j12</comment>
+    <requestid>734296</requestid>
+  </revision>
 </revisionlist>
