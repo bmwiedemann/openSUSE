@@ -20,7 +20,7 @@
 %define llvm_version_minor 0
 %define llvm_version %{llvm_version_major}
 
-%define version_unconverted 2.0+20190507
+%define version_unconverted 2.0+20190920
 
 %ifarch %{ix86} x86_64
 %define with_uclibc 1
@@ -32,15 +32,14 @@ Name:           klee
 Summary:        LLVM Execution Engine
 License:        NCSA
 Group:          Development/Languages/Other
-Version:        2.0+20190507
+Version:        2.0+20190920
 Release:        0
 Url:            http://klee.github.io/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 Source2:        https://raw.githubusercontent.com/llvm-mirror/llvm/release_%{llvm_version_major}%{llvm_version_minor}/utils/not/not.cpp
 Source3:        https://raw.githubusercontent.com/llvm-mirror/llvm/release_%{llvm_version_major}%{llvm_version_minor}/utils/FileCheck/FileCheck.cpp
-# Unused -- let's check if this is still needed
-Source4:        disable-failing-test.patch
+Patch0:         0001-runtime-workaround-for-glibc-2.30.patch
 
 BuildRequires:  clang%{llvm_version}
 BuildRequires:  cmake

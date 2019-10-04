@@ -18,13 +18,13 @@
 
 %define llvm_version 8
 
-%define version_unconverted 1.0.0+git.20180926
+%define version_unconverted 1.0.0+git.20190816
 
 Name:           klee-uclibc
 Summary:        Libc library for Klee
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/Other
-Version:        1.0.0+git.20180926
+Version:        1.0.0+git.20190816
 Release:        0
 Url:            https://github.com/klee/klee-uclibc
 Source0:        %{name}-%{version}.tar.xz

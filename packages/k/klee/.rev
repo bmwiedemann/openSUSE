@@ -1001,4 +1001,26 @@ build with uclibc</comment>
     <comment></comment>
     <requestid>715366</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4b85dfca0c7f603586eaef8d3ac47dc5</srcmd5>
+    <version>2.0+20190920</version>
+    <time>1570198033</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0+20190920:
+  * Add saturated arithmetic intrinsics
+  * fixed bug in IntrinsicCleaner trap cleaner
+  * StatsTracker: switch from TRUNCATE to WAL journal mode
+  * Read Klee's start time correctly in klee-stats
+  * CMake: show values of optional LLVM variables
+  * Provide klee runtime build type as parameter
+  * PTree: fix dump() method
+  * ExecutionState: remove fnAliases
+  * implement FunctionAliasPass
+  * remove klee_alias_function()
+  * Implement handling of the llvm.fabs intrinsic
+  * and more fixes
+- drop unused disable-failing-test.patch
+- add 0001-runtime-workaround-for-glibc-2.30.patch</comment>
+    <requestid>734968</requestid>
+  </revision>
 </revisionlist>

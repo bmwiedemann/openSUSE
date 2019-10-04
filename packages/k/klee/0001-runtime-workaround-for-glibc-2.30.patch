@@ -1,0 +1,39 @@
+From 0a0805f3fac9c763489188d3bcc7fe1718a7a37c Mon Sep 17 00:00:00 2001
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Fri, 4 Oct 2019 12:46:17 +0200
+Subject: [PATCH] runtime: workaround for glibc 2.30
+
+glibc 2.30 moved definition of getdents64 to dirent_ext.h. It became
+visible and conflicts with our definition:
+
+runtime/POSIX/fd_64.c:112:5: error: conflicting types for 'getdents64'
+int getdents64(unsigned int fd, struct dirent *dirp, unsigned int count) {
+    ^
+/usr/include/bits/dirent_ext.h:29:18: note: previous declaration is here
+extern __ssize_t getdents64 (int __fd, void *__buffer, size_t __length)
+                 ^
+
+But according to the kernel (and manual), the parameter is unsigned.
+So we are correct, but glibc defines it wrong.
+---
+ runtime/POSIX/fd_64.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/runtime/POSIX/fd_64.c b/runtime/POSIX/fd_64.c
+index 61d9dc6f..7691538f 100644
+--- a/runtime/POSIX/fd_64.c
++++ b/runtime/POSIX/fd_64.c
+@@ -109,8 +109,8 @@ int statfs(const char *path, struct statfs *buf) {
+   return __fd_statfs(path, buf);
+ }
+ 
+-int getdents64(unsigned int fd, struct dirent *dirp, unsigned int count) {
++ssize_t getdents64(int fd, void *dirp, size_t count) {
+   return __fd_getdents(fd, (struct dirent64*) dirp, count);
+ }
+-int __getdents64(unsigned int fd, struct dirent *dirp, unsigned int count)
++ssize_t __getdents64(int fd, void *dirp, size_t count)
+      __attribute__((alias("getdents64")));
+-- 
+2.21.0
+

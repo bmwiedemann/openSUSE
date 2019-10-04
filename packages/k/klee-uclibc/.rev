@@ -95,4 +95,18 @@
     <comment>- The build requires ncurses-devel, and this will soon no longer be transitively included via llvm-devel. (forwarded request 725155 from aaronpuchert)</comment>
     <requestid>725228</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>44cb034785eb7b205ce829a84c45957e</srcmd5>
+    <version>1.0.0+git.20190816</version>
+    <time>1570198037</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.0+git.20190816:
+  * Add a message when the bitcode compiler is specified via CC,
+    to help diagnose cases in which CC does not point to a valid
+    bitcode compiler.
+  * Check if pointer size reflects architecture
+  * Use newer gcc to compile KLEE
+  * Fix compilation when __STDIO_HAS_OPENLIST is undefined</comment>
+    <requestid>734973</requestid>
+  </revision>
 </revisionlist>

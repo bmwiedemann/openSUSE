@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 28 18:38:25 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add cmake-clang-cpp.patch: fix build with LLVM 9.
+- Replace outdated llvm-clang-devel dependency by clang-devel.
+
+-------------------------------------------------------------------
 Tue Jul 16 09:19:04 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Disable lto.

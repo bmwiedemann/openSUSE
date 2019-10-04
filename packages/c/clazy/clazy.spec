@@ -24,10 +24,11 @@ License:        LGPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://www.kdab.com/clazy-video/
 Source0:        https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
+Patch0:         cmake-clang-cpp.patch
 BuildRequires:  clang
+BuildRequires:  clang-devel >= 3.9
 BuildRequires:  cmake >= 3.0
 BuildRequires:  libstdc++-devel
-BuildRequires:  llvm-clang-devel >= 3.9
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(zlib)
 
@@ -38,6 +39,7 @@ allocations to misusage of API, including fix-its for automatic refactoring.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %define _lto_cflags %{nil}
