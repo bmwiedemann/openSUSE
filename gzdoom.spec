@@ -29,6 +29,7 @@ Source:         https://github.com/coelckers/gzdoom/archive/g%version.tar.gz
 Patch1:         gzdoom-waddir.patch
 Patch2:         gzdoom-lzma.patch
 Patch3:         gzdoom-vulkan.patch
+Patch4:         gzdoom-asmjit.patch
 BuildRequires:  cmake >= 2.8.7
 BuildRequires:  gcc-c++
 BuildRequires:  glslang-devel
@@ -92,6 +93,7 @@ GZDoom is a port (a modification) of the original Doom source code, featuring:
 %patch -P 3 -p1
 rm -Rfv glslang src/rendering/vulkan/thirdparty/vulkan
 %endif
+%patch -P 4 -p1
 perl -i -pe 's{__DATE__}{""}g' src/posix/sdl/i_main.cpp
 perl -i -pe 's{<unknown version>}{%version}g' \
 	tools/updaterevision/updaterevision.c
@@ -100,6 +102,12 @@ perl -i -pe 's{<unknown version>}{%version}g' \
 %define _lto_cflags %nil
 # We must not strip - %%debug_package will take care of it
 # Deactivate -Wl,--as-needed
+
+%ifarch %ix86
+# program does a cpuid check, so it is ok to enable
+export CFLAGS="%optflags -msse -msse2"
+export CXXFLAGS="%optflags -msse -msse2"
+%endif
 %cmake -DNO_STRIP=1 \
 %if 0%{suse_version} == 1315
 	-DCMAKE_C_COMPILER=gcc-6 -DCMAKE_CXX_COMPILER=g++-6 \
