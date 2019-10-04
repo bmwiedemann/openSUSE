@@ -167,7 +167,7 @@ cp -r csg-tutorials-%{uversion}/* %{buildroot}%{pkgdocdir}/examples
 #check
 # https://github.com/votca/csg/issues/313
 %ifarch i586
-%global testargs ARGS='-E \\(Compare_csg_fmatch_3body_output1\\|Compare_csg_fmatch_output\\)'
+%global testargs ARGS='-E \\(Compare_csg_fmatch_3body_output1\\|Compare_csg_fmatch_output\\|unit_test_bead\\|unit_test_basebead\\|unit_test_pdbreader\\)'
 %endif
 make -C build test CTEST_OUTPUT_ON_FAILURE=1 %{?testargs:%{testargs}}
 

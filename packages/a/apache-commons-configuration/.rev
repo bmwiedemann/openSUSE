@@ -15,4 +15,12 @@
     <comment>Disregard the pom parent</comment>
     <requestid>689062</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>09bc07b416a89ca38d8a442379562fad</srcmd5>
+    <version>1.10</version>
+    <time>1570180899</time>
+    <user>dimstar_suse</user>
+    <comment>Bogus dependency on log4j</comment>
+    <requestid>734284</requestid>
+  </revision>
 </revisionlist>

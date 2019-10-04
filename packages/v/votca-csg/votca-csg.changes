@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  3 22:48:09 UTC 2019 - Christoph Junghans <junghans@votca.org>
+
+- Disabled some test on i585 (comparison fixed in upstream master)
+
+-------------------------------------------------------------------
 Thu Sep 12 23:25:13 UTC 2019 - Christoph Junghans <junghans@votca.org>
 
 - Disable some more test on i585

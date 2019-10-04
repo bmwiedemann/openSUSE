@@ -22,7 +22,7 @@
 %endif
 %endif
 Name:           lttng-modules
-Version:        2.10.9
+Version:        2.10.11
 Release:        0
 Summary:        Licensing information for package lttng-modules
 License:        GPL-2.0-only AND LGPL-2.1-only AND MIT

@@ -46,7 +46,6 @@ BuildRequires:  mvn(org.codehaus.modello:modello-maven-plugin)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-interpolation)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-resources)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
-#!BuildRequires: mvn(log4j:log4j)
 BuildArch:      noarch
 
 %description

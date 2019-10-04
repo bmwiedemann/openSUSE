@@ -37,7 +37,6 @@ BuildRequires:  fdupes
 BuildRequires:  isorelax
 BuildRequires:  javapackages-local
 BuildRequires:  jaxen
-BuildRequires:  log4j
 BuildRequires:  xalan-j2
 BuildRequires:  xerces-j2
 BuildRequires:  xml-apis

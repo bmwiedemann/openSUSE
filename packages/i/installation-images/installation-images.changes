@@ -1,4 +1,10 @@
 --------------------------------------------------------------------
+Wed Oct 2 11:42:53 UTC 2019 - wfeldt@opensuse.org
+
+- anticipate pam config might be in /usr/etc (bsc#1152771)
+- 14.439
+
+--------------------------------------------------------------------
 Fri Sep 27 08:44:51 UTC 2019 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#335

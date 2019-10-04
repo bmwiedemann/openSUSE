@@ -4820,4 +4820,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.3.1 &amp; 5.3</comment>
     <requestid>733079</requestid>
   </revision>
+  <revision rev="507" vrev="1">
+    <srcmd5>b887082542a4b6f328e8abbe9f6b0b9f</srcmd5>
+    <version>5.3.2</version>
+    <time>1570180856</time>
+    <user>dimstar_suse</user>
+    <comment>5-level paging enabled &amp; 5.3.2 &amp; arm config change</comment>
+    <requestid>734249</requestid>
+  </revision>
 </revisionlist>

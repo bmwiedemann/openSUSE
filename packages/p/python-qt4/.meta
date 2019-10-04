@@ -7,4 +7,7 @@ v4; and the older PyQt v3 supports Qt v3 and earlier. The bindings are
 implemented as a set of Python modules and contain over 300 classes and
 nearly 6,000 functions and methods.</description>
   <devel project="KDE:Qt" package="python-qt4"/>
+  <build>
+    <disable/>
+  </build>
 </package>

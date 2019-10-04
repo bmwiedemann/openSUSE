@@ -1,7 +1,7 @@
 #
 # spec file for package mchange-commons
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Source0:        https://github.com/swaldman/mchange-commons-java/archive/%{git_t
 BuildRequires:  fdupes
 BuildRequires:  java-devel
 BuildRequires:  javapackages-local
-BuildRequires:  log4j
+BuildRequires:  log4j12
 BuildRequires:  slf4j
 BuildRequires:  typesafe-config
 BuildArch:      noarch
@@ -53,13 +53,13 @@ find -name '*.jar' -delete
 %build
 mkdir -p target/classes
 javac -d target/classes -source 7 -target 7 \
-  -cp $(build-classpath log4j slf4j typesafe-config) \
+  -cp $(build-classpath log4j12/log4j-12 slf4j typesafe-config) \
   $(find src/main/java -name \*.java | xargs)
 jar cf target/%{git_tag}.jar -C target/classes .
 jar uf target/%{git_tag}.jar -C src/main/resources .
 mkdir -p target/api
 javadoc -d target/api -source 7 -notimestamp \
-  -classpath $(build-classpath log4j slf4j typesafe-config) \
+  -classpath $(build-classpath log4j12/log4j-12 slf4j typesafe-config) \
   $(find src/main/java -name \*.java | xargs)
 
 sed "s/@mchange-commons-java.version.maven@/%{version}/g" \

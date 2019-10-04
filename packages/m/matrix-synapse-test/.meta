@@ -1,0 +1,7 @@
+<package name="matrix-synapse-test" project="openSUSE:Factory">
+  <title>matrix-synapse</title>
+  <description>Synapse is a reference &quot;homeserver&quot; implementation of Matrix from the core development team at matrix.org, written in Python/Twisted.</description>
+  <devel project="openSUSE:Factory" package="matrix-synapse"/>
+  <url>https://github.com/matrix-org/synapse</url>
+  <bcntsynctag>matrix-synapse</bcntsynctag>
+</package>

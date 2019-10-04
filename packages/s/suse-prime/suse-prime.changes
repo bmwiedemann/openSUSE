@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct  3 12:13:08 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.7.1
+  * xorg-nvidia.conf: Added option AllowExternalGpus to allow
+    eGPUs by default
+
+-------------------------------------------------------------------
 Wed Oct  2 15:29:37 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 0.7.0

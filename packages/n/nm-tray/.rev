@@ -81,4 +81,13 @@
   * Prevent possible undefined behavior</comment>
     <requestid>721004</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>14fe4392bed2aaf78c13531b9e749f2d</srcmd5>
+    <version>0.4.3</version>
+    <time>1570180922</time>
+    <user>dimstar_suse</user>
+    <comment>- Add nm-tray-0.4.3-nmmodel-include.patch:
+  Fix build with newer Qt</comment>
+    <requestid>734810</requestid>
+  </revision>
 </revisionlist>

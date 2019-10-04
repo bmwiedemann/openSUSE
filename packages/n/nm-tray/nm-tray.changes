@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  3 14:11:23 UTC 2019 - mvetter@suse.com
+
+- Add nm-tray-0.4.3-nmmodel-include.patch:
+  Fix build with newer Qt
+
+-------------------------------------------------------------------
 Mon Aug  5 10:01:30 UTC 2019 - mvetter@suse.com
 
 - Update to 0.4.3:

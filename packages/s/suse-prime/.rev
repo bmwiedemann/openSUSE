@@ -284,4 +284,14 @@ Latest changes:
 - supersedes U_Corrected-DPI-value-in-xorg-nvidia.conf.patch</comment>
     <requestid>734774</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>85fd21275b326098eb9360f5fd5a4bda</srcmd5>
+    <version>0.7.1</version>
+    <time>1570180920</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.1
+  * xorg-nvidia.conf: Added option AllowExternalGpus to allow
+    eGPUs by default</comment>
+    <requestid>734793</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package jakarta-poi
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,7 @@ BuildRequires:  javapackages-tools
 BuildRequires:  jaxp_transform_impl
 BuildRequires:  jdepend >= 2.6
 BuildRequires:  junit >= 3.8.1
-BuildRequires:  log4j >= 1.2.8
+BuildRequires:  log4j12 >= 1.2.8
 BuildRequires:  xalan-j2 >= 2.5.2
 BuildRequires:  xerces-j2 >= 2.6.0
 BuildRequires:  xml-commons-apis
@@ -52,7 +52,7 @@ Requires:       jakarta-commons-beanutils >= 1.6.1
 Requires:       jakarta-commons-collections >= 2.1
 Requires:       jakarta-commons-lang >= 2.0
 Requires:       jakarta-commons-logging >= 1.0.3
-Requires:       log4j >= 1.2.8
+Requires:       log4j12 >= 1.2.8
 Requires:       xalan-j2 >= 2.5.2
 Requires:       xerces-j2 >= 2.6.0
 BuildArch:      noarch
@@ -131,7 +131,7 @@ commons-beanutils \
 commons-collections \
 commons-lang \
 commons-logging \
-log4j \
+log4j12/log4j-12 \
 xalan-j2 \
 xerces-j2 \
 xml-commons-apis \

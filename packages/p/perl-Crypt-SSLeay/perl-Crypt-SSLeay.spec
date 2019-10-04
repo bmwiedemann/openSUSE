@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Crypt-SSLeay
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,11 +23,12 @@ Release:        0
 Summary:        OpenSSL support for LWP
 License:        Artistic-2.0
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Crypt-SSLeay/
+Url:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/N/NA/NANIS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 Patch0:         no-dot-inc.patch
 Patch1:         Crypt-SSLeay-use_TLS_instead_of_SSL.patch
+Patch2:         perl-Crypt-SSLeay-tests.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -35,6 +36,7 @@ BuildRequires:  perl(ExtUtils::CBuilder) >= 0.280205
 BuildRequires:  perl(LWP::Protocol::https) >= 6.02
 BuildRequires:  perl(Path::Class) >= 0.26
 BuildRequires:  perl(Try::Tiny) >= 0.19
+BuildRequires:  pkgconfig(zlib)
 Requires:       perl(LWP::Protocol::https) >= 6.02
 %{perl_requires}
 # MANUAL BEGIN
@@ -57,13 +59,14 @@ necessary SSL glue.
 find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install

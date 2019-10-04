@@ -63,7 +63,7 @@ BuildRequires:  xmlgraphics-fop
 BuildRequires:  xmlunit
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
-BuildRequires:  mvn(log4j:log4j)
+BuildRequires:  mvn(log4j:log4j:1.2.12)
 BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
 BuildArch:      noarch
 

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct  4 06:42:09 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Fix build: Don't test content of returned version strings
+ * Add perl-Crypt-SSLeay-tests.patch
+
+-------------------------------------------------------------------
+Fri Oct  4 06:37:54 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Add missing zlib build dependency, which used to be pulled in
+  by libopenssl-devel. The package fails to build since the openssl
+  upgrade to 1.1.1 (bsc#1149792)
+
+-------------------------------------------------------------------
 Mon Nov 13 13:47:00 UTC 2017 - vcizek@suse.com
 
 - Disable SSLv2/3 to fix build with OpenSSL 1.1 (bsc#1067188)

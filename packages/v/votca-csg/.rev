@@ -200,4 +200,12 @@
     <comment>Fix build failure on i586.</comment>
     <requestid>730484</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>e7a83eaef8d1b116cd5e501b8260ba90</srcmd5>
+    <version>1.5</version>
+    <time>1570180940</time>
+    <user>dimstar_suse</user>
+    <comment>Fix i585 build</comment>
+    <requestid>734849</requestid>
+  </revision>
 </revisionlist>

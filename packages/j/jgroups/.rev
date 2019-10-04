@@ -145,4 +145,12 @@
     <comment>Fix build against upcoming geronimo-specs</comment>
     <requestid>694544</requestid>
   </revision>
+  <revision rev="21" vrev="31">
+    <srcmd5>b84dd0d572c5659c8131f20885310b50</srcmd5>
+    <version>2.6.10</version>
+    <time>1570180905</time>
+    <user>dimstar_suse</user>
+    <comment>Build against log4j12</comment>
+    <requestid>734291</requestid>
+  </revision>
 </revisionlist>

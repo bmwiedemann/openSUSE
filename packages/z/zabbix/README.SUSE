@@ -1,0 +1,13 @@
+zabbix-phpfrontend:
+	To enable zabbix frontend in apache
+	type in console:
+		# a2enflag ZABBIX
+	or if you want to remove it from apache configuration
+	type in console:
+		# a2enflag -d ZABBIX
+		# service apache2 restart
+	or reload if apache restart is too disrupting
+
+	Please, make sure SSL is enabled and up in Apache2 config.
+	You can get inspired by https://www.zabbix.com/documentation/4.0/manual/installation/requirements/best_practices.
+	If you have Apache 2.4.30 or newer, it is even more simple: https://httpd.apache.org/docs/trunk/mod/mod_md.html.

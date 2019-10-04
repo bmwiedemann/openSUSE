@@ -57,7 +57,7 @@ BuildRequires:  java-devel
 BuildRequires:  javapackages-tools
 BuildRequires:  jaxp_parser_impl
 BuildRequires:  junit
-BuildRequires:  log4j
+BuildRequires:  log4j12
 BuildRequires:  mx4j
 BuildRequires:  xalan-j2
 # To use JGroups one needs:
@@ -65,7 +65,7 @@ Requires:       apache-commons-logging
 Requires:       bsh2
 Requires:       geronimo-jms-1_1-api
 Requires:       jaxp_parser_impl
-Requires:       log4j
+Requires:       log4j12
 Provides:       javagroups = %{version}
 Obsoletes:      javagroups < %{version}
 BuildArch:      noarch
@@ -169,7 +169,7 @@ ln -sf $(build-classpath bsh2/bsh) .
 ln -sf $(build-classpath commons-logging) .
 ln -sf $(build-classpath geronimo-jms-1.1-api) .
 ln -sf $(build-classpath junit) .
-ln -sf $(build-classpath log4j) .
+ln -sf $(build-classpath log4j12/log4j-12) .
 ln -sf $(build-classpath mx4j/mx4j-jmx) .
 ln -sf $(build-classpath xalan-j2) .
 ln -sf $(build-classpath xalan-j2-serializer) .

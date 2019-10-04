@@ -504,4 +504,12 @@ This is needed so that the rpm hack to update config.sub works (forwarded reques
     <comment></comment>
     <requestid>727813</requestid>
   </revision>
+  <revision rev="53" vrev="3">
+    <srcmd5>cbafc423dd40ae74439572ddec52606c</srcmd5>
+    <version>4.3.4</version>
+    <time>1570180835</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>734790</requestid>
+  </revision>
 </revisionlist>

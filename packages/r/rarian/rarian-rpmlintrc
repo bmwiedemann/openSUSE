@@ -1,4 +1,0 @@
-# rarian-sk* are scrollkeeper compat links
-addFilter("no-manual-page-for-binary rarian-.*");
-# The last version scrollkeeper matches the version of sk-compat's interface
-addFilter("self-obsoletion scrollkeeper");

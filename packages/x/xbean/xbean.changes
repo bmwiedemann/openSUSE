@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct  1 11:33:05 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Build against the new log4j12 compat package
+
+-------------------------------------------------------------------
 Thu Apr  4 11:35:11 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Do not require optional dependencies

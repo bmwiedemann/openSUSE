@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct  1 11:25:47 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Remove a bogus log4j build dependency
+
+-------------------------------------------------------------------
 Thu Sep 26 18:45:50 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Fix property Provides and Obsoletes in order to make upgrade

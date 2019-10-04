@@ -24,7 +24,7 @@
 %define bootstrap 0
 %define mini %nil
 %define min_kernel_version 4.5
-%define suse_version +suse.135.g0f9271c133
+%define suse_version +suse.36.g9e41d7ec35
 
 %bcond_with     gnuefi
 %if 0%{?bootstrap}
@@ -33,6 +33,7 @@
 %bcond_with     machined
 %bcond_with     importd
 %bcond_with     networkd
+%bcond_with     portabled
 %bcond_with     resolved
 %bcond_with     journal_remote
 %else
@@ -41,6 +42,7 @@
 %bcond_without  machined
 %bcond_without  importd
 %bcond_without  networkd
+%bcond_without  portabled
 %bcond_without  resolved
 %bcond_without  journal_remote
 %ifarch %{ix86} x86_64
@@ -51,7 +53,7 @@
 
 Name:           systemd
 Url:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        242
+Version:        243
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -163,10 +165,7 @@ Source200:      scripts-udev-convert-lib-udev-path.sh
 # broken in upstream and need an urgent fix. Even in this case, the
 # patches are temporary and should be removed as soon as a fix is
 # merged by upstream.
-Patch1:         0001-resolved-create-etc-resolv.conf-symlink-at-runtime.patch
 Patch2:         0001-logind-keep-backward-compatibility-with-UserTasksMax.patch
-Patch3:         0001-Revert-insserv.conf-generator.patch
-Patch4:         0001-rc-local-generator-deprecate-halt.local-support.patch
 
 %description
 Systemd is a system and service manager, compatible with SysV and LSB
@@ -330,6 +329,26 @@ Systemd tools to spawn and manage containers and virtual machines.
 This package contains systemd-nspawn, machinectl, systemd-machined,
 and systemd-importd.
 
+%if %{with portabled}
+%package portable
+Summary:        Systemd tools for portable services
+License:        LGPL-2.1-or-later
+Group:          System/Base
+Requires:       %{name} = %{version}-%{release}
+%systemd_requires
+
+%description portable
+Systemd tools to manage portable services. The feature is still
+considered experimental so the package might change  or vanish.
+Use at own risk.
+
+More information can be found online:
+
+http://0pointer.net/blog/walkthrough-for-portable-services.html
+https://systemd.io/PORTABLE_SERVICES
+
+%endif
+
 %if ! 0%{?bootstrap}
 %package logger
 Summary:        Journal only logging
@@ -447,18 +466,19 @@ opensuse_ntp_servers=({0..3}.opensuse.pool.ntp.org)
         -Ddefault-kill-user-processes=false \
         -Dntp-servers="${opensuse_ntp_servers[*]}" \
         -Drc-local=/etc/init.d/boot.local \
-        -Dhalt-local=/etc/init.d/halt.local \
         -Ddebug-shell=/bin/bash \
-        -Dportabled=false \
         -Dseccomp=auto \
         -Dselinux=auto \
         -Dapparmor=auto \
         -Dsmack=false \
         -Dima=false \
         -Delfutils=auto \
+        -Dpstore=false \
+%if ! 0%{?bootstrap}
+        -Dman=true \
+        -Dhtml=true \
+%endif
 %if 0%{?bootstrap}
-        -Dman=false \
-        -Dhtml=false \
         -Dnss-myhostname=false \
 %endif
 %if %{without coredump}
@@ -472,6 +492,9 @@ opensuse_ntp_servers=({0..3}.opensuse.pool.ntp.org)
 %endif
 %if %{without journal_remote}
         -Dremote=false \
+%endif
+%if %{without portabled}
+        -Dportabled=false \
 %endif
 %if %{without machined}
         -Dmachined=false \
@@ -526,6 +549,8 @@ install -m0755 -D %{S:3}  %{buildroot}/%{_prefix}/lib/systemd/systemd-sysv-conve
 install -m0755 -D %{S:4}  %{buildroot}/%{_prefix}/lib/systemd/systemd-sysv-install
 %endif
 
+mkdir -p % %{buildroot}%{_sysconfdir}/systemd/nspawn
+
 # Package the scripts used to fix all packaging issues. Also drop the
 # "scripts-{systemd/udev}" prefix which is used because osc doesn't
 # allow directory structure...
@@ -565,6 +590,7 @@ rm %{buildroot}%{_unitdir}/multi-user.target.wants/systemd-ask-password-wall.pat
 # do not ship sysctl defaults in systemd package, will be part of
 # aaa_base (in procps for now)
 rm -f %{buildroot}%{_sysctldir}/50-default.conf
+rm -f %{buildroot}%{_sysctldir}/50-pid-max.conf
 
 # Make sure systemd-network polkit rules file starts with a suitable
 # number prefix so it takes precedence over our polkit-default-privs.
@@ -908,6 +934,21 @@ fi
 %service_del_postun systemd-journal-upload.service
 %endif
 
+%if %{with portabled}
+%pre portable
+%service_add_pre systemd-portabled.service
+
+%post portable
+%tmpfiles_create portables.conf
+%service_add_post systemd-portabled.service
+
+%preun portable
+%service_del_preun systemd-portabled.service
+
+%postun portable
+%service_del_postun systemd-portabled.service
+%endif
+
 %clean
 
 %files -f systemd.lang
@@ -998,6 +1039,13 @@ fi
 %exclude %{_unitdir}/systemd-importd.service
 %exclude %{_unitdir}/dbus-org.freedesktop.import1.service
 %endif
+%if %{with portabled}
+%exclude %{_prefix}/lib/systemd/systemd-portabled
+%exclude %{_prefix}/lib/systemd/portable
+%exclude %{_unitdir}/systemd-portabled.service
+%exclude %{_unitdir}/dbus-org.freedesktop.portable1.service
+%exclude %{_tmpfilesdir}/portables.conf
+%endif
 
 %{_unitdir}/*.automount
 %{_unitdir}/*.service
@@ -1029,6 +1077,7 @@ fi
 %{_systemd_system_env_generator_dir}
 %{_systemd_user_env_generator_dir}
 %dir %{_ntpunitsdir}
+%{_ntpunitsdir}/80-systemd-timesync.list
 %dir %{_prefix}/lib/systemd/system-shutdown/
 %dir %{_prefix}/lib/systemd/system-sleep/
 
@@ -1097,7 +1146,6 @@ fi
 
 %dir %{_datadir}/dbus-1
 %dir %{_datadir}/dbus-1/system.d
-%dir %{_datadir}/dbus-1/services
 %dir %{_datadir}/dbus-1/system-services
 
 %{_datadir}/dbus-1/system.d/org.freedesktop.locale1.conf
@@ -1135,8 +1183,6 @@ fi
 %exclude %{_datadir}/systemd/gatewayd
 %endif
 
-%{_datadir}/dbus-1/services/org.freedesktop.systemd1.service
-%{_datadir}/dbus-1/system-services/org.freedesktop.systemd1.service
 %{_datadir}/dbus-1/system-services/org.freedesktop.locale1.service
 %{_datadir}/dbus-1/system-services/org.freedesktop.login1.service
 %{_datadir}/dbus-1/system-services/org.freedesktop.hostname1.service
@@ -1157,6 +1203,7 @@ fi
 %{_datadir}/polkit-1/actions/org.freedesktop.timedate1.policy
 %{_datadir}/polkit-1/actions/org.freedesktop.login1.policy
 %if %{with networkd}
+%{_datadir}/polkit-1/actions/org.freedesktop.network1.policy
 %{_datadir}/polkit-1/rules.d/60-systemd-networkd.rules
 %endif
 %if %{with resolved}
@@ -1189,6 +1236,10 @@ fi
 %endif
 %if %{with importd}
 %exclude %{_mandir}/man*/systemd-importd*
+%endif
+%if %{with portabled}
+%exclude %{_mandir}/man*/portablectl*
+%exclude %{_mandir}/man*/systemd-portabled*
 %endif
 %endif
 %{_docdir}/systemd
@@ -1337,6 +1388,7 @@ fi
 
 %files container
 %defattr(-,root,root)
+%dir %{_sysconfdir}/systemd/nspawn
 %{_bindir}/systemd-nspawn
 %{_unitdir}/systemd-nspawn@.service
 %if %{with networkd}
@@ -1430,6 +1482,22 @@ fi
 %{_mandir}/man8/systemd-journal-remote.*
 %{_mandir}/man8/systemd-journal-upload.*
 %{_datadir}/systemd/gatewayd
+%endif
+
+%if %{with portabled}
+%files portable
+%defattr(-,root,root)
+%{_bindir}/portablectl
+%{_prefix}/lib/systemd/systemd-portabled
+%{_prefix}/lib/systemd/portable
+%{_unitdir}/systemd-portabled.service
+%{_unitdir}/dbus-org.freedesktop.portable1.service
+%{_datadir}/dbus-1/system.d/org.freedesktop.portable1.conf
+%{_datadir}/dbus-1/system-services/org.freedesktop.portable1.service
+%{_datadir}/polkit-1/actions/org.freedesktop.portable1.policy
+%{_tmpfilesdir}/portables.conf
+%{_mandir}/man*/portablectl*
+%{_mandir}/man*/systemd-portabled*
 %endif
 
 %changelog

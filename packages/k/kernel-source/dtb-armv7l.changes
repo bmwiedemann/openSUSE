@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Tue Oct  1 10:19:14 CEST 2019 - jslaby@suse.cz
+
+- Update config files.
+  Enable CONFIG_X86_5LEVEL (jsc#SLE-9607).
+- commit 5588b36
+
+-------------------------------------------------------------------
+Tue Oct  1 09:16:39 CEST 2019 - jslaby@suse.cz
+
+- Linux 5.3.2 (bnc#1151927).
+- objtool: Clobber user CFLAGS variable (bnc#1151927).
+- platform/x86: i2c-multi-instantiate: Derive the device name
+  from parent (bnc#1151927).
+- ALSA: hda - Apply AMD controller workaround for Raven platform
+  (bnc#1151927).
+- ALSA: hda - Add laptop imic fixup for ASUS M9V laptop
+  (bnc#1151927).
+- ALSA: dice: fix wrong packet parameter for Alesis iO26
+  (bnc#1151927).
+- ALSA: usb-audio: Add DSD support for EVGA NU Audio
+  (bnc#1151927).
+- ALSA: usb-audio: Add Hiby device family to quirks for native
+  DSD support (bnc#1151927).
+- Revert "mm/z3fold.c: fix race between migration and destruction"
+  (bnc#1151927).
+- clk: imx: imx8mm: fix audio pll setting (bnc#1151927).
+- crypto: talitos - fix missing break in switch statement
+  (bnc#1151927).
+- mtd: cfi_cmdset_0002: Use chip_good() to retry in
+  do_write_oneword() (bnc#1151927).
+- HID: Add quirk for HP X500 PIXART OEM mouse (bnc#1151927).
+- HID: hidraw: Fix invalid read in hidraw_ioctl (bnc#1151927).
+- HID: logitech-dj: Fix crash when initial
+  logi_dj_recv_query_paired_devices fails (bnc#1151927).
+- HID: logitech: Fix general protection fault caused by Logitech
+  driver (bnc#1151927).
+- HID: sony: Fix memory corruption issue on cleanup (bnc#1151927).
+- HID: prodikeys: Fix general protection fault during probe
+  (bnc#1151927).
+- powerpc/xive: Fix bogus error code returned by OPAL
+  (bnc#1151927).
+- drm/amd/display: readd -msse2 to prevent Clang from emitting
+  libcalls to undefined SW FP routines (bnc#1151927).
+- drm/amd/display: Don't replace the dc_state for fast updates
+  (bnc#1151927).
+- drm/amd/display: Skip determining update type for async updates
+  (bnc#1151927).
+- drm/amd/display: Allow cursor async updates for framebuffer
+  swaps (bnc#1151927).
+- clocksource/drivers: Do not warn on probe defer (bnc#1151927).
+- clocksource/drivers/timer-of: Do not warn on deferred probe
+  (bnc#1151927).
+- netfilter: add missing IS_ENABLED(CONFIG_NF_TABLES) check to
+  header-file (bnc#1151927).
+- commit 17d14ca
+
+-------------------------------------------------------------------
+Wed Sep 25 11:53:05 CEST 2019 - fvogt@suse.com
+
+- config: Enable dual-role modes for DWC on arm64 as well
+- CONFIG_USB_DWC2_DUAL_ROLE=y and CONFIG_USB_DWC3_DUAL_ROLE=y
+- Previously that was only enabled on armv6/armv7
+- commit 4940602
+
+-------------------------------------------------------------------
 Sat Sep 21 15:21:27 CEST 2019 - jslaby@suse.cz
 
 - Linux 5.3.1 (bnc#1012628).

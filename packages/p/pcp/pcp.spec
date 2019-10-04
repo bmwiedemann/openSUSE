@@ -2890,8 +2890,7 @@ chmod 644 "$PCP_PMNS_DIR/.NeedRebuild"
 %endif
 %endif
 
-cd $PCP_PMNS_DIR && ./Rebuild -s && rm -f .NeedRebuild
-cd
+(cd $PCP_PMNS_DIR && ./Rebuild -s && rm -f .NeedRebuild)
 
 %post -n %{lib_pkg} -p /sbin/ldconfig
 %postun -n %{lib_pkg} -p /sbin/ldconfig

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  4 08:29:23 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.0.4:
+  * Add most-recent 3.8 magic number
+  * Remove some 3.8 invalid escape warnings
+
+-------------------------------------------------------------------
 Mon Aug 19 08:46:02 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 4.0.3:

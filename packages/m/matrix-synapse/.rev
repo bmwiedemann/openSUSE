@@ -1,0 +1,14 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>419f69bc7492c836372d2d206b7f1d5d</srcmd5>
+    <version>1.4.0</version>
+    <time>1570180931</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmission of matrix-synapse -- the build failure has been fixed (txacme is
+an optional dependency, only used when synapse is set up to manage its own ACME
+certificates -- which is a very common setup, but it's better to have a
+mostly-working synapse than nothing at all) and the package has been update to
+1.4.0.</comment>
+    <requestid>734848</requestid>
+  </revision>
+</revisionlist>

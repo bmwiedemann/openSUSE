@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Oct  3 17:56:21 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.10.11 (changes since 2.10.9):
+  * Don't print ring-buffer's records count when it is not used.
+  * Do not set quiescent state on channel destroy.
+  * ring_buffer_frontend.c: Fix init read timer with uninitialised
+    flags.
+  * random: Only read from /dev/random after its pool has received
+    128 bits (v5.2).
+  * mm: move recent_rotated pages calculation to
+    shrink_inactive_list() (v5.2).
+  * mm/vmscan: Simplify trace_reclaim_flags and trace_shrink_flags
+    (v5.2).
+  * mm/vmscan: Drop may_writepage and classzone_idx from direct
+    reclaim begin template (v5.2).
+  * timer/trace: Improve timer tracing (v5.2).
+  * bitfields: Streamline use of underscores.
+  * Silence compiler "always false comparison" warning.
+  * bitfield: Shift undefined/implementation defined behaviours.
+  * bitfield.h: Move to kernel style SPDX license identifiers.
+  * timestamp_end field should include all events within sub-buffer.
+  * Remove start and number from syscall_get_arguments() args
+    (v5.1).
+  * lttng abi documentation: Clarify getter usage requirements.
+  * Don't access packet header for stream_id and
+    stream_instance_id getters.
+  * atomic_long_add_unless() returns a boolean.
+  * Revert "KVM: MMU: show mmu_valid_gen..." (v5.1).
+  * pipe: Stop using ->can_merge (v5.1).
+  * rcu: Remove wrapper definitions for obsolete RCU (v5.1).
+  * mm: Create the new vm_fault_t type (v5.1).
+  * extra-version-git.sh redirect stderr to /dev/null.
+  * Fix gcc-9.1 stack frame size warning.
+  * Do not use diagnostic pragma when GCC version is lower than
+    4.6.0.
+  * Fix a missing define when not building with gcc.
+  * lttng-tracepoint module notifier should return NOTIFY_OK.
+
+-------------------------------------------------------------------
 Sun Apr 21 19:49:13 UTC 2019 - Markus Beth <markus.beth@web.de>
 
 - Update to version 2.10.9:

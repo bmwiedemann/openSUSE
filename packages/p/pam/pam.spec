@@ -16,6 +16,11 @@
 #
 
 
+%if ! %{defined _distconfdir}
+  %define _distconfdir %{_sysconfdir}
+  %define config_noreplace 1
+%endif
+
 #
 %define enable_selinux 1
 %define libpam_so_version 0.84.2
@@ -23,7 +28,7 @@
 %define libpamc_so_version 0.82.1
 Name:           pam
 #
-Version:        1.3.1+git20190807.e31dd6c
+Version:        1.3.1+git20190923.ea78d67
 Release:        0
 Summary:        A Security Tool that Provides Authentication for Applications
 License:        GPL-2.0-or-later OR BSD-3-Clause
@@ -31,7 +36,6 @@ Group:          System/Libraries
 URL:            http://www.linux-pam.org/
 Source:         linux-pam-%{version}.tar.xz
 Source1:        Linux-PAM-1.3.1-docs.tar.xz
-Source2:        linux-pam-man-pages-1.3.1+git20190807.e31dd6c.tar.xz
 Source3:        other.pamd
 Source4:        common-auth.pamd
 Source5:        common-account.pamd
@@ -46,7 +50,6 @@ Patch0:         fix-man-links.dif
 Patch2:         pam-limit-nproc.patch
 Patch4:         pam-hostnames-in-access_conf.patch
 Patch5:         use-correct-IP-address.patch
-Patch6:         usr-etc-support.patch
 BuildRequires:  audit-devel
 # Remove with next version update:
 BuildRequires:  autoconf
@@ -64,6 +67,7 @@ Requires(post): permissions
 %if 0%{?suse_version} > 1320
 BuildRequires:  libdb-4_8-devel
 BuildRequires:  xz
+BuildRequires:  pkgconfig(libeconf)
 BuildRequires:  pkgconfig(libnsl)
 BuildRequires:  pkgconfig(libtirpc)
 %endif
@@ -109,14 +113,13 @@ This package contains header files and static libraries used for
 building both PAM-aware applications and modules for use with PAM.
 
 %prep
-%setup -q -n linux-pam-%{version} -b 1 -a 2
+%setup -q -n linux-pam-%{version} -b 1
 cp -av ../Linux-PAM-1.3.1/* .
 cp -a %{SOURCE12} .
 %patch0 -p1
 %patch2 -p1
 %patch4
 %patch5 -p1
-%patch6
 
 %build
 bash ./pam-login_defs-check.sh
@@ -130,7 +133,8 @@ export CFLAGS="%{optflags} -DNDEBUG"
 	--pdfdir=%{_docdir}/pam/pdf \
         --libdir=/%{_lib} \
 	--enable-isadir=../../%{_lib}/security \
-        --enable-securedir=/%{_lib}/security
+        --enable-securedir=/%{_lib}/security \
+	--enable-vendordir=%{_distconfdir}
 make %{?_smp_mflags}
 gcc -fwhole-program -fpie -pie -D_FILE_OFFSET_BITS=64 -D_GNU_SOURCE %{optflags} -I%{_builddir}/linux-pam-%{version}/libpam/include %{SOURCE10} -o %{_builddir}/unix2_chkpwd -L%{_builddir}/linux-pam-%{version}/libpam/.libs/ -lpam
 
@@ -139,7 +143,7 @@ make %{?_smp_mflags} check
 
 %install
 mkdir -p %{buildroot}%{_sysconfdir}/pam.d
-mkdir -p %{buildroot}%{_prefix}%{_sysconfdir}/pam.d
+mkdir -p %{buildroot}%{_distconfdir}/pam.d
 mkdir -p %{buildroot}%{_includedir}/security
 mkdir -p %{buildroot}/%{_lib}/security
 mkdir -p %{buildroot}/sbin
@@ -149,20 +153,20 @@ mkdir -p -m 755 %{buildroot}%{_libdir}
 # Install documentation
 %make_install -C doc
 # install securetty
-install -m 644 %{SOURCE8} %{buildroot}%{_sysconfdir}
+install -m 644 %{SOURCE8} %{buildroot}%{_distconfdir}
 %ifarch s390 s390x
 for i in ttyS0 ttyS1 hvc0 hvc1 hvc2 hvc3 hvc4 hvc5 hvc6 hvc7 sclp_line0 ttysclp0; do
-	echo "$i" >>%{buildroot}/%{_sysconfdir}/securetty
+	echo "$i" >>%{buildroot}/%{_distconfdir}/securetty
 done
 %endif
 # install /etc/security/namespace.d used by pam_namespace.so for namespace.conf iscript
 install -d %{buildroot}%{_sysconfdir}/security/namespace.d
 # install other.pamd and common-*.pamd
-install -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/pam.d/other
-install -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/pam.d/common-auth
-install -m 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/pam.d/common-account
-install -m 644 %{SOURCE6} %{buildroot}%{_sysconfdir}/pam.d/common-password
-install -m 644 %{SOURCE7} %{buildroot}%{_sysconfdir}/pam.d/common-session
+install -m 644 %{SOURCE3} %{buildroot}%{_distconfdir}/pam.d/other
+install -m 644 %{SOURCE4} %{buildroot}%{_distconfdir}/pam.d/common-auth
+install -m 644 %{SOURCE5} %{buildroot}%{_distconfdir}/pam.d/common-account
+install -m 644 %{SOURCE6} %{buildroot}%{_distconfdir}/pam.d/common-password
+install -m 644 %{SOURCE7} %{buildroot}%{_distconfdir}/pam.d/common-session
 rm %{buildroot}/%{_lib}/libpam.so
 ln -sf ../../%{_lib}/libpam.so.%{libpam_so_version} %{buildroot}%{_libdir}/libpam.so
 rm %{buildroot}/%{_lib}/libpamc.so
@@ -210,15 +214,32 @@ install -m 644 %{_sourcedir}/unix2_chkpwd.8 %{buildroot}/%{_mandir}/man8/
 
 %postun -p /sbin/ldconfig
 
+%pre
+for i in securetty pam.d/other pam.d/common-account pam.d/common-auth pam.d/common-password pam.d/common-session ; do
+  test -f /etc/${i}.rpmsave && mv -v /etc/${i}.rpmsave /etc/${i}.rpmsave.old ||:
+done
+
+%posttrans
+# Migration to /usr/etc.
+for i in securetty pam.d/other pam.d/common-account pam.d/common-auth pam.d/common-password pam.d/common-session ; do
+  test -f /etc/${i}.rpmsave && mv -v /etc/${i}.rpmsave /etc/${i} ||:
+done
+
 %files -f Linux-PAM.lang
 %dir %{_sysconfdir}/pam.d
-%dir %{_prefix}%{_sysconfdir}/pam.d
+%dir %{_distconfdir}/pam.d
 %dir %{_sysconfdir}/security
 %dir %{_sysconfdir}/security/limits.d
 %dir %{_defaultdocdir}/pam
+%if %{defined config_noreplace}
 %config(noreplace) %{_sysconfdir}/pam.d/other
 %config(noreplace) %{_sysconfdir}/pam.d/common-*
 %config(noreplace) %{_sysconfdir}/securetty
+%else
+%{_distconfdir}/pam.d/other
+%{_distconfdir}/pam.d/common-*
+%{_distconfdir}/securetty
+%endif
 %config(noreplace) %{_sysconfdir}/environment
 %config(noreplace) %{_sysconfdir}/security/access.conf
 %config(noreplace) %{_sysconfdir}/security/group.conf

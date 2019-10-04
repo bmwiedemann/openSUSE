@@ -2,5 +2,8 @@
   <title></title>
   <description></description>
   <devel project="openSUSE:Factory" package="gcc8"/>
+  <build>
+    <disable/>
+  </build>
   <bcntsynctag>gcc8</bcntsynctag>
 </package>

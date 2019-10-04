@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Sep 23 11:45:18 UTC 2019 - Franck Bui <fbui@suse.com>
+
+- Some files related to the portable stuff were missing some %exclude
+
+-------------------------------------------------------------------
+Wed Sep 18 12:17:37 UTC 2019 - Franck Bui <fbui@suse.com>
+
+- Import commit 9e41d7ec3572d8d5ea1e00f683e9fbf8108e85b4
+
+  fb1b9d54f9 tty-ask-pwd-agent: fix message forwarded to wall(1)
+  dd14da3bb6 core: restore initialization of u->source_mtime
+  d62f30f647 resolved: create /etc/resolv.conf symlink at runtime
+
+-------------------------------------------------------------------
+Wed Sep 18 11:33:16 UTC 2019 - Franck Bui <fbui@suse.com>
+
+- Slighly rework (mostly reorganization) the portable stuff
+
+-------------------------------------------------------------------
+Fri Sep  6 06:20:11 UTC 2019 - Franck Bui <fbui@suse.com>
+
+- Track 0001-resolved-create-etc-resolv.conf-symlink-at-runtime.patch
+  in the git repo
+
+  This patch has been in the quarantine area long enough, so let's
+  move it in the git repo.
+
+-------------------------------------------------------------------
+Tue Sep  3 15:10:10 UTC 2019 - Franck Bui <fbui@suse.com>
+
+- Upgrade to v243 (commit e0b24c4356aa0c1c56ff274ff72228f33482a5be)
+
+  See https://github.com/openSUSE/systemd/blob/SUSE/v243/NEWS for
+  details. 
+
+  Drop 0001-Revert-insserv.conf-generator.patch as it's been dropped
+  from branch SUSE/v243 while we were rebasing.
+
+  Drop 0001-rc-local-generator-deprecate-halt.local-support.patch as
+  this functionality had been deprecated during the previous release
+  and now have been dropped by upstream.
+
+-------------------------------------------------------------------
+Wed Aug 14 14:25:43 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- enable systemd-portabled
+
+-------------------------------------------------------------------
+Wed Jul 31 14:38:13 UTC 2019 - Franck Bui <fbui@suse.com>
+
+- systemd-container creates and owns /etc/systemd/nspawn now
+
+-------------------------------------------------------------------
 Mon Jul 22 15:29:51 UTC 2019 - Franck Bui <fbui@suse.com>
 
 - Import commit 0f9271c1336c5c9055e75389732a44745d796851 (changes from v242-stable)

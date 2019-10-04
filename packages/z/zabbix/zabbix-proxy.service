@@ -1,0 +1,12 @@
+[Unit]
+Description=Zabbix Proxy
+After=syslog.target network.target mysql.service postgresql.service
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/zabbix_proxy -f
+User=zabbixs
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

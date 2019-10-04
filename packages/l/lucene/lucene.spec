@@ -62,7 +62,6 @@ BuildRequires:  javacc
 BuildRequires:  javapackages-local
 BuildRequires:  jtidy
 BuildRequires:  junit
-BuildRequires:  log4j
 BuildRequires:  regexp
 BuildRequires:  zip
 

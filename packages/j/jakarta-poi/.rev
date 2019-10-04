@@ -131,4 +131,12 @@
     <comment>Build against xml-commons-apis instead of xerces-j2-xml-apis</comment>
     <requestid>656909</requestid>
   </revision>
+  <revision rev="19" vrev="29">
+    <srcmd5>6be96212116395a397728809e974fadc</srcmd5>
+    <version>2.5.1</version>
+    <time>1570180895</time>
+    <user>dimstar_suse</user>
+    <comment>Build against log4j12</comment>
+    <requestid>734277</requestid>
+  </revision>
 </revisionlist>

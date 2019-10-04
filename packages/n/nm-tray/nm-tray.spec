@@ -24,6 +24,8 @@ License:        GPL-2.0-only
 Group:          System/GUI/Other
 URL:            https://github.com/palinek/nm-tray
 Source:         https://github.com/palinek/nm-tray/archive/%{version}.tar.gz
+# https://github.com/palinek/nm-tray/issues/45
+Patch0:         nm-tray-0.4.3-nmmodel-include.patch
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5NetworkManagerQt)
@@ -42,6 +44,7 @@ nm-tray is a simple NetworkManager front end with information icon residing in s
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %cmake

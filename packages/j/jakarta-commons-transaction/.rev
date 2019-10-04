@@ -103,4 +103,12 @@
     <comment>Fix build with jdk9</comment>
     <requestid>527014</requestid>
   </revision>
+  <revision rev="16" vrev="26">
+    <srcmd5>784e44481d78778971d41646a7c757eb</srcmd5>
+    <version>1.1</version>
+    <time>1570180881</time>
+    <user>dimstar_suse</user>
+    <comment>Build against the new compatibility package log4j12</comment>
+    <requestid>734261</requestid>
+  </revision>
 </revisionlist>

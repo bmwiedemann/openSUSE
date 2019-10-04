@@ -1,7 +1,7 @@
 #
 # spec file for package netcdf
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,16 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %global pname netcdf-cxx4
-%global ver 4.3.0
-%global _ver 4_3_0
+%global ver 4.3.1
+%global _ver 4_3_1
 %define sover 1
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 
 ExcludeArch:    s390 s390x
 
@@ -267,30 +268,31 @@ make check || {
 %{?with_hpc:%hpc_module_delete_if_default}
 
 %files tools
-%defattr(-,root,root)
-%doc COPYRIGHT
+%license COPYRIGHT
+%doc README.md RELEASE_NOTES.md
 %{?with_hpc:%dir %{p_bindir}}
 %{p_bindir}/ncxx4-config
 
 %files -n %{libname -s %{sover} -l %_ver}
-%defattr(-,root,root)
-%doc COPYRIGHT
+%license COPYRIGHT
+%doc README.md RELEASE_NOTES.md
 %{?with_hpc:%hpc_dirs}
 %{?with_hpc:%hpc_modules_files}
 %{p_libdir}/libnetcdf_c++4.so.%{sover}
 %{p_libdir}/libnetcdf_c++4.so.%{sover}.*
 
 %files -n %{libname -l %_ver}-devel
-%defattr(-,root,root)
-%doc COPYRIGHT
+%license COPYRIGHT
+%doc README.md RELEASE_NOTES.md
 %{p_includedir}/
 %{?with_hpc:%dir %{hpc_pkgconfigdir}}
 %{p_libdir}/pkgconfig/netcdf-cxx4.pc
 %{p_libdir}/libnetcdf_c++4.so
+# Do not add plugins for now
+%exclude %{p_libdir}/libh5bzip2.*
 
 %if %{with hpc}
 %files -n %{libname -l %_ver}-devel-static
-%defattr(-,root,root)
 %{p_libdir}/*.a
 %endif
 

@@ -67,4 +67,13 @@ and that one is GPL3.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>732152</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>16420b18cc5818e00dcb9fc00aa66983</srcmd5>
+    <version>4.2.1</version>
+    <time>1570180947</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gzdoom-asmjit.patch.
+- Enable SSE/SSE2.</comment>
+    <requestid>734924</requestid>
+  </revision>
 </revisionlist>

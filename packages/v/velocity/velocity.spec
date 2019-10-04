@@ -38,7 +38,7 @@ BuildRequires:  hsqldb
 BuildRequires:  javapackages-local
 BuildRequires:  jdom >= 1.0-1
 BuildRequires:  junit
-BuildRequires:  log4j >= 1.1
+BuildRequires:  log4j12 >= 1.1
 BuildRequires:  oro
 BuildRequires:  plexus-classworlds
 BuildRequires:  servletapi4
@@ -48,7 +48,7 @@ Requires:       commons-collections
 Requires:       commons-lang
 Requires:       java >= 1.6.0
 Requires:       jdom >= 1.0-1
-Requires:       log4j >= 1.1
+Requires:       log4j12 >= 1.1
 Requires:       oro
 Requires:       servletapi4
 Requires:       werken-xpath
@@ -183,7 +183,7 @@ ln -sf $(build-classpath commons-collections)
 ln -sf $(build-classpath commons-lang)
 ln -sf $(build-classpath commons-logging)
 ln -sf $(build-classpath jdom)
-ln -sf $(build-classpath log4j)
+ln -sf $(build-classpath log4j12/log4j-12)
 ln -sf $(build-classpath oro)
 # Use servletapi4 instead of servletapi5 in CLASSPATH
 ln -sf $(build-classpath servletapi4)

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct  1 15:17:34 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- don't call 'cd' avoid relying on $HOME beeing set during rpm installation
+
+-------------------------------------------------------------------
 Wed Aug 28 10:17:39 UTC 2019 - David Disseldorp <ddiss@suse.com>
 
 - Fix python library dependencies broken via shared library packaging policy

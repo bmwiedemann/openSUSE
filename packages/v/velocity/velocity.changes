@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct  1 11:35:09 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Build against the compatibility package log4j12
+
+-------------------------------------------------------------------
 Mon Apr  8 11:39:35 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Do not depend on the apache-parent, since we are not building

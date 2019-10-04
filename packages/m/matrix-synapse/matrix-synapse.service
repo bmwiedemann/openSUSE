@@ -1,0 +1,22 @@
+[Unit]
+Description=Synapse Matrix homeserver
+
+[Service]
+Type=simple
+SyslogIdentifier=matrix-synapse
+Restart=on-failure
+RestartSec=3
+
+User=synapse
+Group=synapse
+WorkingDirectory=/var/lib/matrix-synapse
+
+ExecStartPre=@PYTHON_FLAVOR@ -m synapse.app.homeserver --config-path=/etc/matrix-synapse/homeserver.yaml --config-path=/etc/matrix-synapse/conf.d/ --generate-keys
+ExecStart=@PYTHON_FLAVOR@ -m synapse.app.homeserver --config-path=/etc/matrix-synapse/homeserver.yaml --config-path=/etc/matrix-synapse/conf.d/
+
+# Adjust the cache factor if necessary.
+#Environment=SYNAPSE_CACHE_FACTOR=2.0
+
+[Install]
+WantedBy=multi-user.target
+

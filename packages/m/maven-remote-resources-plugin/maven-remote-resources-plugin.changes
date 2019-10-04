@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct  1 12:23:03 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Not needed any more the hint to require mvn(log4j:log4j)
+
+-------------------------------------------------------------------
 Mon Jun  3 17:52:37 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Add missing Group: for javadoc subpackage.

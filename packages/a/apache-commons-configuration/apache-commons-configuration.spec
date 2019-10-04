@@ -41,7 +41,6 @@ BuildRequires:  fdupes
 BuildRequires:  glassfish-servlet-api
 BuildRequires:  javacc
 BuildRequires:  javapackages-local
-BuildRequires:  log4j
 BuildRequires:  xml-resolver
 Requires:       mvn(commons-lang:commons-lang)
 Requires:       mvn(commons-logging:commons-logging)
