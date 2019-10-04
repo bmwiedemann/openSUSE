@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  2 13:26:41 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix building with python 3.8:
+  * python38.patch
+
+-------------------------------------------------------------------
 Wed Jan  2 09:31:58 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.7.1:

@@ -87,14 +87,14 @@ exit 0
 %postun
 if [ "$1" -eq 0 ]; then
    # regenerate initrd without any suse-prime modprobe config files
-   test -x /sbin/mkinitrd && /sbin/mkinitrd
+   %regenerate_initrd_posttrans
 fi
 exit 0
 
 %triggerin -- nvidia-gfxG05-kmp-default
 # get rid of nvidia kernel modules in initrd
 rm -f /etc/dracut.conf.d/50-nvidia-default.conf
-test -x /sbin/mkinitrd && /sbin/mkinitrd
+%regenerate_initrd_posttrans
 exit 0
 
 %pre bbswitch

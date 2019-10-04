@@ -1,0 +1,23 @@
+Index: tuxpaint-0.9.23/Makefile
+===================================================================
+--- tuxpaint-0.9.23.orig/Makefile
++++ tuxpaint-0.9.23/Makefile
+@@ -190,8 +190,8 @@ endif
+ ICON_PREFIX:=$(DESTDIR)$(PREFIX)/share/pixmaps
+ X11_ICON_PREFIX:=$(DESTDIR)$(PREFIX)/share/pixmaps
+ 
+-KDE_PREFIX:=$(shell kde-config --install xdgdata-apps --expandvars 2> /dev/null)
+-KDE_ICON_PREFIX:=$(shell kde4-config --install icon --expandvars 2> /dev/null)
++KDE_PREFIX:=$(DESTDIR)$(PREFIX)/share/applications
++KDE_ICON_PREFIX:=$(DESTDIR)$(PREFIX)/share/icons
+ 
+ # Maemo flag
+ MAEMOFLAG:=
+@@ -786,7 +786,6 @@ install-kde:
+ 	  cp src/tuxpaint.desktop $(DESTDIR)$(KDE_PREFIX)/; \
+ 	  chmod 644 $(DESTDIR)$(KDE_PREFIX)/tuxpaint.desktop; \
+ 	fi
+-	kbuildsycoca4
+ 
+ .PHONY: install-kde-icons
+ install-kde-icons:

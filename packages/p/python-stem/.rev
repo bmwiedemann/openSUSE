@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>662393</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9191a2c2ec26abb13029507abe8ae32c</srcmd5>
+    <version>1.7.1</version>
+    <time>1570198009</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix building with python 3.8:
+  * python38.patch</comment>
+    <requestid>734614</requestid>
+  </revision>
 </revisionlist>

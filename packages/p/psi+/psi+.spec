@@ -18,11 +18,11 @@
 
 %define __builder ninja
 
-%define version_unconverted 1.4.768+0
+%define version_unconverted 1.4.885+0
 
 Name:           psi+
 Url:            https://github.com/psi-plus
-Version:        1.4.768+0
+Version:        1.4.885+0
 Release:        0
 Summary:        Jabber client using Qt
 License:        GPL-2.0-or-later AND Apache-2.0
@@ -523,8 +523,11 @@ dos2unix ChangeLog.Psi+.txt
 %doc ChangeLog.Psi+.txt README README.html TODO
 %license COPYING 3rdparty/qite/LICENSE
 %{_bindir}/psi-plus
-%{_datadir}/pixmaps/psi-plus.png
 %{_datadir}/applications/psi-plus.desktop
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
+%{_datadir}/icons/hicolor/*/apps/psi-plus.png
+%{_datadir}/pixmaps/psi-plus.png
 %dir %{_datadir}/psi-plus/
 %{_datadir}/psi-plus/certs
 %dir %{_libdir}/psi-plus

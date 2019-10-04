@@ -18,7 +18,7 @@
 
 %define         gnomedir   %(gnome-config --prefix)
 Name:           tuxpaint
-Version:        0.9.22
+Version:        0.9.23
 Release:        0
 Summary:        Drawing Program for Young Children
 License:        GPL-2.0-or-later
@@ -27,10 +27,8 @@ URL:            http://www.tuxpaint.org/
 Source:         http://sourceforge.net/projects/tuxpaint/files/tuxpaint/%{version}/%{name}-%{version}.tar.gz
 Source1:        tuxpaint-rpmlintrc
 # PATCH-FIX-OPENSUSE 0001-Prepare-the-kdelibs4-removal.patch
-Patch0:         0001-Prepare-the-kdelibs4-removal.patch
+Patch0:         kdelibs4-removal.patch
 Patch1:         tuxpaint-import-eval.patch
-# PATCH-FIX-UPSTREAM bmwiedemann boo#1047218
-Patch2:         reproducible.patch
 BuildRequires:  SDL-devel
 BuildRequires:  SDL_Pango-devel
 BuildRequires:  SDL_image-devel
@@ -47,8 +45,6 @@ BuildRequires:  zlib-devel
 %if 0%{?suse_version}
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
-# Makefile uses gnome-config to detect GNOME_PREFIX
-BuildRequires:  libgnome-devel
 BuildRequires:  librsvg-devel
 BuildRequires:  update-desktop-files
 Requires:       freefont
@@ -110,7 +106,6 @@ Header files and development documentation for tuxpaint.
 %setup -q
 %patch0 -p1
 %patch1  -b .import-eval-patch
-%patch2  -b .reproducible
 find . -name CVS   -print0 | xargs -0 rm -rf
 find docs/ -type f -print0 | xargs -0 chmod -v 644
 

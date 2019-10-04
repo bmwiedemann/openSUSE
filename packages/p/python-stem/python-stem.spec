@@ -23,9 +23,9 @@ Version:        1.7.1
 Release:        0
 Summary:        Python controller library for Tor
 License:        LGPL-3.0-only
-Group:          Productivity/Networking/Security
 URL:            https://stem.torproject.org/
 Source:         https://files.pythonhosted.org/packages/source/s/stem/stem-%{version}.tar.gz
+Patch0:         python38.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildArch:      noarch
@@ -37,6 +37,7 @@ to interact with Tor (https://www.torproject.org/).
 
 %prep
 %setup -q -n stem-%{version}
+%patch0 -p1
 
 %build
 %python_build

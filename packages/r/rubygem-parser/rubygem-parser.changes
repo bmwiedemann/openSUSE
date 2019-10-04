@@ -1,0 +1,573 @@
+-------------------------------------------------------------------
+Tue Sep 17 08:36:39 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Update to version 2.6.4.1
+  Bugs fixed:
+  * lexer.rl: fix parsing of 'm a + b do end' (#605) (Ilya Bylich)
+
+-------------------------------------------------------------------
+Tue Sep 10 12:12:59 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- update to version 2.6.4.0
+  API modifications:
+  * Added specs for heredocs with mixed encoding. (#581) (Ilya Bylich)
+
+  Features implemented:
+  * ruby27.y: Revert "pipeline operator" (#601) (Koichi ITO)
+  * ruby27.y: Fix parsing of mutiple assignment with rescue modifier (#600) (Koichi ITO)
+  * ruby27.y: hoisted out f_rest_marg. (#594) (Ilya Bylich)
+  * ruby27.y: added pipeline operator. (#592) (Ilya Bylich)
+  * ruby27.y: reject safe navigator in LHS of mass-assignment. (#586) (Ilya Bylich)
+  * lexer.rl: reject whitespaces in meta and control chars. (#585) (Ilya Bylich)
+  * lexer.rl: Reject numparams as symbol literals. (#582) (Ilya Bylich)
+  * ruby27.y: Added numbered parameters support. (#565) (Ilya Bylich)
+  * lexer.rl: Reject \n and \r in heredoc identifiers starting from 2.7. (#575) (Ilya Bylich)
+
+  Bugs fixed:
+  * ruby-parse: print empty string when --emit-json and empty input are given. (#590) (Ilya Bylich)
+  * AST_FORMAT: fixed documentation of the string with interpolation. (#589) (Ilya Bylich)
+  * builder.rb, processor.rb: Changed format of the procarg0 node. (#587) (Ilya Bylich)
+
+-------------------------------------------------------------------
+Sun May  5 09:38:58 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 2.6.3.0
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Fri Mar 29 06:10:33 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 2.6.2.0
+ see installed CHANGELOG.md
+
+  Not released (2019-03-21)
+  -------------------------
+  
+  API modifications:
+   * Bump ruby versions to 2.5.5 and 2.6.2. (#563) (Ilya Bylich)
+   * Bump Ruby version to 2.6.1. (#554) (Ilya Bylich)
+  
+  Features implemented:
+   * ruby27.y: dsym should be treated as string. (#560) (Ilya Bylich)
+   * ruby27.y: Refactored symbol rules. (#557) (Ilya Bylich)
+   * ruby27.y: Added method reference operator. (#556) (Ilya Bylich)
+   * ruby27.y: branch parser. (#546) (Ilya Bylich)
+
+-------------------------------------------------------------------
+Sat Mar  2 15:29:51 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 2.6.0.0
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Thu Nov 22 05:26:50 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 2.5.3.0
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Thu Jul 12 06:16:58 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 2.5.1.2
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Wed Jul 11 05:16:14 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 2.5.1.2
+ see installed CHANGELOG.md
+
+  Bugs fixed:
+   * lexer.rl: Partially revert 5ba072d and properly handle 'm = -> *args do end'. (Ilya Bylich)
+  
+  v2.5.1.1 (2018-07-10)
+  ---------------------
+
+-------------------------------------------------------------------
+Tue Jul 10 04:14:28 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 2.5.1.1
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Thu Apr 12 03:39:05 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 2.5.1.0
+ see installed CHANGELOG.md
+
+  Not released (2018-04-12)
+  -------------------------
+  
+  API modifications:
+   * Parser::Current: bump latest 2.2 branch to 2.2.10. (Ilya Bylich)
+  
+  Features implemented:
+   * ruby26.y: Raise a syntax error on 'else' without 'rescue'. This commit tracks upstream commit ruby/ruby@140512d. (Ilya Bylich)
+  
+  Bugs fixed:
+   * lexer.rl, Dedenter: Treat slash in heredocs as a line continuation. (Ilya Bylich)
+   * lexer.rl: Fix parsing of `a ? b + '': nil`. (Ilya Bylich)
+   * lexer.rl: Reject `m a: {} {}` and `m [] {}` since 25. (Ilya Bylich)
+   * builders/default: allow class/module/dynamic constant definition in the method body if there's a sclass between them. (bug #490) (Ilya Bylich)
+   * lexer.rl: Emit :!@ as :!, :~@ as :~. (Ilya Bylich)
+   * parse{23,24,25}.y: use only CMDARG/COND _PUSH/POP for cmdarg/cond management. (bug #481) (Ilya Bylich)
+   * lexer.rl: emit tSTRING_BEG and tSTRING_DBEG one by one to allow parser to properly manipulate cmdarg stack. (bug #480) (Ilya Bylich)
+
+-------------------------------------------------------------------
+Sun Mar 25 04:29:43 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 2.5.0.5
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Tue Mar 20 10:13:01 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 2.5.0.4
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Tue Mar  6 05:31:24 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 2.5.0.3
+ see installed CHANGELOG.md
+
+  Not released (2018-03-06)
+  -------------------------
+  
+  Bugs fixed:
+   * Accept `BEGIN` and `END` as correct method name (#463) (Masataka Pocke Kuwabara)
+   * Parser::Source::Buffer: Fixed parsing of encoding comment when the file contains only shebang. (Ilya Bylich)
+
+-------------------------------------------------------------------
+Fri Feb 23 05:31:31 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 2.5.0.2
+ see installed CHANGELOG.md
+
+  v2.5.0.2 (2018-02-22)
+  ---------------------
+  
+  Bugs fixed:
+   * ruby24.y, ruby25.y: Replicate cmdargs handling from MRI. (#453) (Ilya Bylich)
+
+-------------------------------------------------------------------
+Thu Feb 22 05:30:43 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 2.5.0.1
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Wed Feb 21 12:04:43 UTC 2018 - cbruckmayer@suse.com
+
+- updated to version 2.5.0.1
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Sat Feb 17 05:30:36 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 2.5.0.0
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Sun Dec  3 19:28:20 UTC 2017 - coolo@suse.com
+
+- updated to version 2.4.0.2
+ see installed CHANGELOG.md
+
+  Not released (2017-11-13)
+  -------------------------
+  
+  API modifications:
+   * parser/current: update for 2.3.5 release. (whitequark)
+  
+  v2.4.0.1 (2017-11-13)
+  ---------------------
+  
+  API modifications:
+   * parser/current: update for 2.3.4 release. (whitequark)
+   * parser/current: update for Ruby 2.1.10 and 2.2.7. (Koichi ITO)
+  
+  Features implemented:
+   * Allow rescue/else/ensure inside do/end blocks. [Feature #12906] (Ilya Bylich)
+   * ruby25.y: branch parser. (Ilya Bylich)
+  
+  Bugs fixed:
+   * Source::Comment::Associator: skip -*- magic comments -*-. (Denis Defreyne)
+   * lexer.rl: "- 5": allow whitespace after tUNARY_NUM. (whitequark)
+   * *ruby*.y, Builders::Default: "+5": don't lose location of the "+". (whitequark)
+   * ruby-rewrite: allow passing paths to --load. (whitequark)
+   * builders/default: "def x; else; end": don't crash. (whitequark)
+
+-------------------------------------------------------------------
+Wed Feb  8 05:51:13 UTC 2017 - coolo@suse.com
+
+- updated to version 2.4.0.0
+ see installed CHANGELOG.md
+
+  v2.4.0.0 (2017-02-07)
+  ---------------------
+  
+  API modifications:
+   * parser/current: update for the 2.4 release. (whitequark)
+   * rubymotion.y: "a&.b": implement safe navigation operator in RubyMotion. (Mark Villacampa)
+  
+  Bugs fixed:
+   * lexer.rl: "a &. b": accept &. in EXPR_ARG also. (whitequark)
+
+-------------------------------------------------------------------
+Fri Dec  9 05:41:26 UTC 2016 - coolo@suse.com
+
+- updated to version 2.3.3.1
+ see installed CHANGELOG.md
+
+  v2.3.3.1 (2016-12-02)
+  ---------------------
+  
+  API modifications:
+   * parser/current: update 2.2 warning to 2.2.6 (Jordan Moncharmont)
+  
+  v2.3.3.0 (2016-11-28)
+  ---------------------
+  
+  API modifications:
+   * parser/current: update 2.3 branch to 2.3.3. (Philip Arndt)
+  
+  Bugs fixed:
+   * ruby24.y: "a += b += raise :x": fix errors with chained op-assignments. (whitequark)
+   * ruby24.y: "p p{p(p);p p}, tap do end": preserve cmdarg stack. (whitequark)
+   * ruby24.y: "a b{c d}, :e do end": go to EXPR_ENDARG after literal. (whitequark)
+
+-------------------------------------------------------------------
+Sun Nov 20 05:35:10 UTC 2016 - coolo@suse.com
+
+- updated to version 2.3.2.0
+ see installed CHANGELOG.md
+
+  v2.3.2.0 (2016-11-20)
+  ---------------------
+  
+  API modifications:
+   * parser/current: update 2.3 branch to 2.3.2. (whitequark)
+   * Introduce (procarg0) node for a single required block argument. (Ilya Bylich)
+  
+  Bugs fixed:
+   * {macruby,ruby{19,20,21,22,23,24}}.y: "x::A += m x": treat as constant assignment. (whitequark)
+   * ruby24.y: "x += raise y rescue nil": bind rescue tighter than tOP_ASGN. (whitequark)
+   * ruby24.y: "x = raise y rescue nil": bind rescue tighter than =. (whitequark)
+   * Builders::Default: "begin; else; 1; end": fix a crash. (whitequark)
+
+-------------------------------------------------------------------
+Sat Oct  8 04:35:13 UTC 2016 - coolo@suse.com
+
+- updated to version 2.3.1.4
+ see installed CHANGELOG.md
+
+  v2.3.1.4 (2016-09-19)
+  ---------------------
+
+-------------------------------------------------------------------
+Sun Sep 18 04:43:54 UTC 2016 - coolo@suse.com
+
+- updated to version 2.3.1.3
+ see installed CHANGELOG.md
+
+  v2.3.1.3 (2016-09-17)
+  ---------------------
+  
+  API modifications:
+   * parser/current: latest 2.3 release is 2.3.2. (Chris Riddoch)
+  
+  Features implemented:
+   * ruby24.y: "f (g rescue nil)": allow stmt after tLPAREN_ARG. (whitequark)
+  
+  Bugs fixed:
+   * ruby{18,19,20,21,22,23,24}.y: parse trailing commas as mlhs for block args "a.b{ |c,| d }" (fixes #312) (John Backus)
+   * Builders::Default: "begin; 1; else; 2; end": do not drop else. (whitequark)
+   * Builders::Default: "a&.b &&= c": fix safe navigation in lhs of op-assignment. (Ilya Bylich)
+   * AST::Processor: handle "csend" as "send". (#301) (Ilya Bylich)
+   * Parser::AST::Processor: do not spuriously modify ASTs. (Ilya Bylich)
+   * lexer.rl: "%w b\": lex backslash-delimited words literals. (Masataka Kuwabara)
+
+-------------------------------------------------------------------
+Thu Jun  2 04:32:20 UTC 2016 - coolo@suse.com
+
+- updated to version 2.3.1.2
+ see installed CHANGELOG.md
+
+  v2.3.1.2 (2016-06-02)
+  ---------------------
+  
+  API modifications:
+   * parser/current: update 2.2 warning to 2.2.5 (#295) (Kohei Suzuki)
+  
+  Bugs fixed:
+   * AST_FORMAT: Fix `kwarg` example (#294) (Magnus Holm)
+  
+  v2.3.1.1 (2016-06-01)
+  ---------------------
+  
+  Bugs fixed:
+   * ruby{^18}.y: "lambda{|;a|a}": treat shadowarg as local inside block. (Ilya Bylich)
+   * Builders::Default: "foo&.bar{}": emit csend in block properly. (whitequark)
+   * runner.rb: re-add --23 (cremno)
+   * runner.rb: make --24 actually use the 2.4 parser (cremno)
+
+-------------------------------------------------------------------
+Wed Apr 27 04:36:04 UTC 2016 - coolo@suse.com
+
+- updated to version 2.3.1.0
+ see installed CHANGELOG.md
+
+  v2.3.1.0 (2016-04-27)
+  ---------------------
+  
+  Features implemented:
+   * Parser::Current: update for Ruby 2.3.1. (whitequark)
+   * Builders::Default: allow masgn in conditional context on >=Ruby 2.4. (whitequark)
+   * ruby24.y: branch parser. (whitequark)
+  
+  Bugs fixed:
+   * lexer.rl: "def x y; y A::B, ''; end": reject X:: in EXPR_ENDFN (fixes #285). (whitequark)
+
+-------------------------------------------------------------------
+Wed Apr  6 06:29:15 UTC 2016 - coolo@suse.com
+
+- updated to version 2.3.0.7
+ see installed CHANGELOG.md
+
+  v2.3.0.7 (2016-03-25)
+  ---------------------
+  
+  API modifications:
+   * Source::Diagnostic: handle ranges pointing to newlines (#273). (whitequark)
+  
+  Features implemented:
+   * Parser::Base#tokenize: allow recovery from syntax errors. (whitequark)
+   * lexer.rl: "a=1; a b: 1": allow label after command clashing with local. (whitequark)
+   * lexer.rl: "undef %s(x)": emit %s literals in expr_fname in 2.3 mode. (whitequark)
+  
+  Bugs fixed:
+   * Builders::Default: reject non-UTF-8 compatible literals. (whitequark)
+
+-------------------------------------------------------------------
+Wed Mar  2 05:34:43 UTC 2016 - coolo@suse.com
+
+- updated to version 2.3.0.6
+ see installed CHANGELOG.md
+
+  v2.3.0.6 (2016-02-14)
+  ---------------------
+  
+  Bugs fixed:
+   * lexer.rl: fix EOF location (closes #273). (whitequark)
+  
+  v2.3.0.5 (2016-02-12)
+  ---------------------
+  
+  Bugs fixed:
+   * lexer.rl: "%Q{\あ}": fix encoding of UTF-8 noop escapes. (whitequark)
+
+-------------------------------------------------------------------
+Wed Feb 10 05:32:29 UTC 2016 - coolo@suse.com
+
+- updated to version 2.3.0.4
+ see installed CHANGELOG.md
+
+  v2.3.0.4 (2016-02-09)
+  ---------------------
+
+-------------------------------------------------------------------
+Sun Feb  7 05:39:04 UTC 2016 - coolo@suse.com
+
+- updated to version 2.3.0.3
+ see installed CHANGELOG.md
+
+  v2.3.0.3 (2016-02-06)
+  ---------------------
+  
+  API modifications:
+   * lexer.rl: "a?=b": lex via tCHARACTER (closes #255). (whitequark)
+
+-------------------------------------------------------------------
+Mon Jan 25 05:52:34 UTC 2016 - coolo@suse.com
+
+- updated to version 2.3.0.2
+ see installed CHANGELOG.md
+
+  v2.3.0.2 (2016-01-24)
+  ---------------------
+  
+  Bugs fixed:
+   * Add :csend to Parser::Meta::NODE_TYPES (Markus Schirp)
+   * lexer/dedenter: "\<\<x
+  y\n  z
+x": don't dedent after escaped newline. (whitequark)
+  
+  v2.3.0.2 (2016-01-16)
+  ---------------------
+  
+  v2.3.0.1 (2016-01-14)
+  ---------------------
+  
+  Features implemented:
+   * ruby23.y: implement optional superclass (cremno)
+
+-------------------------------------------------------------------
+Fri Jan 15 05:46:05 UTC 2016 - coolo@suse.com
+
+- updated to version 2.3.0.1
+ see installed CHANGELOG.md
+
+  v2.3.0.0 (2016-01-14)
+  ---------------------
+  
+  Features implemented:
+   * parser/current: update for released 2.3. (whitequark)
+   * parse.y: "\<\<~HEREDOC": implement dedenting heredocs (fixes #228). (whitequark)
+  
+  v2.3.0.pre.6 (2015-12-20)
+  -------------------------
+  
+  API modifications:
+   * parser/current: update 2.2 warning to 2.2.4. (whitequark)
+   * ruby{22,23}.y: "1 ? p do end : 0". (whitequark)
+   * lexer.rl: "{%'a':1}": %-string cannot be a label. (whitequark)
+   * parser/current: update 2.1 warning to 2.1.8. (whitequark)
+  
+  Features implemented:
+   * ruby-parse: add --emit-ruby option. (whitequark)
+  
+  Bugs fixed:
+   * lexer.rl: "f(a ? 'a':1)": disallow quoted label at expr_value. (whitequark)
+  
+  v2.3.0.pre.5 (2015-12-16)
+  -------------------------
+  
+  API modifications:
+   * Source::Diagnostic: output ^^^^^ instead of ^~~~~ (like clang). (whitequark)
+  
+  v2.3.0.pre.4 (2015-11-26)
+  -------------------------
+  
+  Bugs fixed:
+   * ruby23.y: add generated grammar to gemspec. (whitequark)
+  
+  v2.3.0.pre.3 (2015-11-25)
+  -------------------------
+  
+  API modifications:
+   * builders/default: introduce a (lambda) node (fixes #212). (whitequark)
+   * lexer.rl: do not override argument variable. (Keiji, Yoshimi)
+   * lexer.rl: rename variable names from lit to current_literal. (Keiji, Yoshimi)
+   * lexer.rl: use Regexp to match string. (Keiji, Yoshimi)
+   * lib/parser/source/buffer: reduce respond_to?(:bsearch) (Keiji, Yoshimi)
+   * lexer.rl: reduce String literal allocations (Keiji, Yoshimi)
+   * lexer.rl: reduce respond_to?(:encode) method call on #advance (Keiji, Yoshimi)
+   * lexer.rl: reduce Stirng.length method call on #advance (Keiji, Yoshimi)
+   * lexer.rl: reduce .class method call on #advance (Keiji, Yoshimi)
+  
+  Features implemented:
+   * lexer.rl, ruby23.y: "a&.b": implement "safe navigation operator" (fixes #209). (whitequark)
+   * ruby23.y: fork grammar. (whitequark)
+  
+  Bugs fixed:
+   * lexer.rl: never let EOF token location point past EOF. (whitequark)
+
+-------------------------------------------------------------------
+Fri Oct  9 04:30:51 UTC 2015 - coolo@suse.com
+
+- updated to version 2.2.3.0
+ see installed CHANGELOG.md
+
+  v2.2.3.0 (2015-10-08)
+  ---------------------
+  
+  Bugs fixed:
+   * lexer.rl: "-> a: {}": state after -> is ENDFN, not END (fixes #203). (whitequark)
+   * ruby{21,22}.y: "p -> { :hello }, a: 1 do end": lexpop cmdarg. (whitequark)
+
+-------------------------------------------------------------------
+Wed Jul  1 04:30:55 UTC 2015 - coolo@suse.com
+
+- updated to version 2.2.2.6
+ see installed CHANGELOG.md
+
+  v2.2.2.6 (2015-06-30)
+  ---------------------
+  
+  API modifications:
+   * parser/current: link to README from syntax deviation warning. (whitequark)
+  
+  Bugs fixed:
+   * lexer.rl: "[/()\1/, ?#]": fixes #198. (whitequark)
+
+-------------------------------------------------------------------
+Thu May 28 04:31:49 UTC 2015 - coolo@suse.com
+
+- updated to version 2.2.2.5
+ see installed CHANGELOG.md
+
+  v2.2.2.5 (2015-05-25)
+  ---------------------
+  
+  API modifications:
+   * Source::Comment::Associator: rework entirely; fixes #194 (Oleg Zubchenko)
+  
+  Features implemented:
+   * Source::Map: add last_line, last_column delegation (Oleg Zubchenko)
+   * Source::Range: add last_line, last_column methods (Oleg Zubchenko)
+  
+  Bugs fixed:
+   * AST::Processor: add missing on_block_pass (fixes #196) (whitequark)
+
+-------------------------------------------------------------------
+Mon May 18 04:29:41 UTC 2015 - coolo@suse.com
+
+- updated to version 2.2.2.3
+ see installed CHANGELOG.md
+
+  v2.2.2.3 (2015-05-17)
+  ---------------------
+  
+  API modifications:
+   * lexer.rl: "a?? 1 : 0": squelch "invalid character syntax" warning. (whitequark)
+  
+  Bugs fixed:
+   * Source::Map: do not include :node in to_hash. (whitequark)
+
+-------------------------------------------------------------------
+Wed Apr 29 04:30:31 UTC 2015 - coolo@suse.com
+
+- updated to version 2.2.2.2
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Sun Apr 19 04:30:13 UTC 2015 - coolo@suse.com
+
+- updated to version 2.2.2.1
+
+-------------------------------------------------------------------
+Thu Apr 16 04:30:20 UTC 2015 - coolo@suse.com
+
+- updated to version 2.2.2.0
+
+-------------------------------------------------------------------
+Sat Feb 14 05:30:59 UTC 2015 - coolo@suse.com
+
+- updated to version 2.2.0.3
+
+-------------------------------------------------------------------
+Tue Feb 10 18:13:46 UTC 2015 - coolo@suse.com
+
+- updated to version 2.2.0.2
+
+-------------------------------------------------------------------
+Mon Oct 13 18:32:12 UTC 2014 - coolo@suse.com
+
+- adapt to new rubygem packaging
+
+-------------------------------------------------------------------
+Thu Feb  6 16:14:30 UTC 2014 - kkaempf@suse.com
+
+- Initial version 2.1.4
+

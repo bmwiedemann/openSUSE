@@ -2,7 +2,7 @@
 Thu Oct  3 22:16:13 UTC 2019 - Aleksa Sarai <asarai@suse.com>
 
 - Do not include ACME support by default (txacme is broken in openSUSE).
-- Update to 1.4.0.
+- Update to 1.4.0. boo#1153017
 
   * Significant improvements to data privacy.
   * Expansion of OpenTracing support.

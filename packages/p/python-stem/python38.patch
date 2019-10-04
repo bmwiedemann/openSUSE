@@ -1,0 +1,36 @@
+From af52d8b16f6623e3bdf0b470697b91a69b497dc2 Mon Sep 17 00:00:00 2001
+From: Damian Johnson <atagar@torproject.org>
+Date: Wed, 12 Jun 2019 13:18:20 -0700
+Subject: Tests fail to run with python 3.8
+
+Python's platform module removed its linux_distribution() method...
+
+  https://trac.torproject.org/projects/tor/ticket/30847
+  https://docs.python.org/3/library/platform.html#platform.linux_distribution
+  https://stackoverflow.com/questions/49554443/platform-linux-distribution-deprecated-what-are-the-alternatives
+
+This method was only used for display purposes to indicate the OS where the
+tests were ran. No big whoop if we simply omit the information.
+---
+ test/task.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/test/task.py b/test/task.py
+index be518ca..1c14e64 100644
+--- a/test/task.py
++++ b/test/task.py
+@@ -120,7 +120,10 @@ def _check_platform_version():
+     extra = platform.release()
+   elif platform.system() == 'Darwin':
+     extra = platform.release()
+-  elif platform.system() == 'Linux':
++  elif platform.system() == 'Linux' and hasattr(platform, 'linux_distribution'):
++    # TODO: platform.linux_distribution() was removed in python 3.8
++    # https://trac.torproject.org/projects/tor/ticket/30847
++
+     extra = ' '.join(platform.linux_distribution()[:2])
+   else:
+     extra = None
+-- 
+cgit v1.1
+

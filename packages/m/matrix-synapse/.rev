@@ -11,4 +11,12 @@ mostly-working synapse than nothing at all) and the package has been update to
 1.4.0.</comment>
     <requestid>734848</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3a4add3cfb718d58ca283534207f355a</srcmd5>
+    <version>1.4.0</version>
+    <time>1570198023</time>
+    <user>dimstar_suse</user>
+    <comment>Add entry for boo#1153017.</comment>
+    <requestid>734955</requestid>
+  </revision>
 </revisionlist>

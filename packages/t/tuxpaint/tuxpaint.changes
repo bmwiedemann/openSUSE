@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Oct  3 10:24:37 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop unneeded libgnome-devel BuildRequires: tuxpaint builds fine
+  without it.
+
+-------------------------------------------------------------------
+Tue Apr 16 09:46:37 UTC 2019 - lars@linux-schulserver.de - 0.9.23
+
+- update to 0.9.23:
+  * New tools: * Color selector
+  * New shapes: * Stars
+  * Documentation updates: * Made stamp controls (size, flip, mirror) 
+    section clearer.
+    Fixes https://sourceforge.net/p/tuxpaint/bugs/182/
+  * Cleaned up and reorganized docs subdirectory.
+  * New locales: Bengali, Bodo, Dogri, Kabyle (aka Kabylian), 
+    Kashmiri (Devanagari), Sindhi (Devanagari), Urdu
+  * Localization Updates
+  * Bug Fixes:
+    + Crash if any "mosaic" magic tool used, Xubuntu 15.10
+      If the PNG patterns used to generate the effect were compressed
+      the wrong(lossy) way, the program will crash
+      (SF.net Bug #210)
+    + "Hat" started could not be drawn on.  Mended.
+      https://sourceforge.net/p/tuxpaint/bugs/202/
+  * Other Improvements:
+    + Reformatted source code via GNU Indent tool; should
+      greatly increase code readability and formatting consistency.
+- removed reproducible.patch: fixed upstream
+- adjusted 0001-Prepare-the-kdelibs4-removal.patch (kdelibs4-removal.patch)
+
+-------------------------------------------------------------------
 Tue Mar 26 07:58:30 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Fix the previous commit. The build service picked the wrong
