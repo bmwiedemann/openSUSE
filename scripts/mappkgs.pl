@@ -9,7 +9,7 @@ our $indir=shift || "in";
 our $outdir=shift || "packages";
 our @list=();
 our $binaryre;
-our $maxaddsize = 1024*9000;
+our $maxaddsize = 1024*256;
 
 sub wanted
 {
