@@ -1954,7 +1954,7 @@
     <package name="libebook-1_2-19" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libebook-contacts-1_2-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libecal-1_2-19" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libeconf0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
+    <package name="libeconf0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libecpg6" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-devel -->
     <package name="libedata-book-1_2-25" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libedata-cal-1_2-29" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2783,7 +2783,6 @@
     <package name="libstdc++6" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libstdc++6-devel-gcc9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-C-C++-devel_C_C++ -->
     <package name="libstdc++6-gcc7-locale" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libstdc++6-gcc8-locale" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libstdc++6-locale" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libstdc++6-pp-gcc9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libstoken1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3092,6 +3091,8 @@
     <package name="lsof" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="lsscsi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ltrace" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-C-C++-devel_C_C++ -->
+    <package name="lttng-modules" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="lttng-modules-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="lua53" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="lua53-luasocket" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="luit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4592,6 +4593,7 @@
     <package name="ruby2.6-rubygem-paint" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-parallel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-parallel_tests" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.6-rubygem-parser" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-passenger" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-path_expander" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-pathutil" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5671,6 +5673,7 @@
     <package name="libcanberra-gtk0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libcanberra-gtk2-module-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libcanberra0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libcap2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libcom_err2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libcontainers-common" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libcrack2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -5684,6 +5687,7 @@
     <package name="libdcerpc-binding0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libdcerpc0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libdevmapper1_03-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libeconf0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libexpat1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libfam0-gamin-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libffi7-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->

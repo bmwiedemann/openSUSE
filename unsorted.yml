@@ -1794,7 +1794,6 @@ unsorted:
   - cpluff 
   - cpmono_v07-fonts 
   - cpp7 
-  - cpp8 
   - cppcheck-gui 
   - cppi 
   - cppi-lang 
@@ -1840,102 +1839,73 @@ unsorted:
   - cross-aarch64-binutils 
   - cross-aarch64-gcc7: [x86_64] 
   - cross-aarch64-gcc7-icecream-backend: [x86_64] 
-  - cross-aarch64-gcc8: [x86_64] 
-  - cross-aarch64-gcc8-icecream-backend: [x86_64] 
   - cross-aarch64-gcc9: [x86_64] 
   - cross-aarch64-gcc9-icecream-backend: [x86_64] 
   - cross-arm-binutils 
   - cross-arm-gcc7: [x86_64] 
-  - cross-arm-gcc8: [x86_64] 
   - cross-arm-gcc9: [x86_64] 
   - cross-arm-none-gcc7 
   - cross-arm-none-gcc7-bootstrap 
-  - cross-arm-none-gcc8 
-  - cross-arm-none-gcc8-bootstrap 
   - cross-arm-none-gcc9 
   - cross-arm-none-gcc9-bootstrap 
   - cross-arm-none-newlib-devel 
   - cross-avr-binutils 
   - cross-avr-gcc7 
   - cross-avr-gcc7-bootstrap 
-  - cross-avr-gcc8 
-  - cross-avr-gcc8-bootstrap 
   - cross-avr-gcc9 
   - cross-avr-gcc9-bootstrap 
   - cross-epiphany-binutils 
   - cross-epiphany-gcc7 
   - cross-epiphany-gcc7-bootstrap 
-  - cross-epiphany-gcc8 
-  - cross-epiphany-gcc8-bootstrap 
   - cross-epiphany-gcc9 
   - cross-epiphany-gcc9-bootstrap 
   - cross-epiphany-newlib-devel 
   - cross-hppa-binutils 
   - cross-hppa-gcc7: [x86_64] 
   - cross-hppa-gcc7-icecream-backend: [x86_64] 
-  - cross-hppa-gcc8: [x86_64] 
-  - cross-hppa-gcc8-icecream-backend: [x86_64] 
   - cross-hppa-gcc9: [x86_64] 
   - cross-hppa-gcc9-icecream-backend: [x86_64] 
   - cross-hppa64-binutils 
   - cross-i386-binutils: [x86_64] 
   - cross-i386-gcc7: [x86_64] 
   - cross-i386-gcc7-icecream-backend: [x86_64] 
-  - cross-i386-gcc8: [x86_64] 
-  - cross-i386-gcc8-icecream-backend: [x86_64] 
   - cross-i386-gcc9: [x86_64] 
   - cross-i386-gcc9-icecream-backend: [x86_64] 
   - cross-ia64-binutils 
   - cross-m68k-binutils 
   - cross-m68k-gcc7: [x86_64] 
   - cross-m68k-gcc7-icecream-backend: [x86_64] 
-  - cross-m68k-gcc8: [x86_64] 
-  - cross-m68k-gcc8-icecream-backend: [x86_64] 
   - cross-m68k-gcc9: [x86_64] 
   - cross-m68k-gcc9-icecream-backend: [x86_64] 
   - cross-mips-binutils 
   - cross-mips-gcc7: [x86_64] 
   - cross-mips-gcc7-icecream-backend: [x86_64] 
-  - cross-mips-gcc8: [x86_64] 
-  - cross-mips-gcc8-icecream-backend: [x86_64] 
   - cross-mips-gcc9: [x86_64] 
   - cross-mips-gcc9-icecream-backend: [x86_64] 
   - cross-nvptx-gcc7: [x86_64] 
-  - cross-nvptx-gcc8: [x86_64] 
   - cross-nvptx-gcc9: [x86_64] 
   - cross-nvptx-newlib7-devel: [x86_64] 
-  - cross-nvptx-newlib8-devel: [x86_64] 
   - cross-nvptx-newlib9-devel: [x86_64] 
   - cross-ppc-binutils 
   - cross-ppc64-binutils 
   - cross-ppc64-gcc7: [x86_64] 
   - cross-ppc64-gcc7-icecream-backend: [x86_64] 
-  - cross-ppc64-gcc8: [x86_64] 
-  - cross-ppc64-gcc8-icecream-backend: [x86_64] 
   - cross-ppc64-gcc9: [x86_64] 
   - cross-ppc64-gcc9-icecream-backend: [x86_64] 
   - cross-ppc64le-binutils 
   - cross-ppc64le-gcc7: [x86_64] 
   - cross-ppc64le-gcc7-icecream-backend: [x86_64] 
-  - cross-ppc64le-gcc8: [x86_64] 
-  - cross-ppc64le-gcc8-icecream-backend: [x86_64] 
   - cross-ppc64le-gcc9: [x86_64] 
   - cross-ppc64le-gcc9-icecream-backend: [x86_64] 
   - cross-riscv64-binutils 
-  - cross-riscv64-elf-gcc8 
-  - cross-riscv64-elf-gcc8-bootstrap 
   - cross-riscv64-elf-gcc9 
   - cross-riscv64-elf-gcc9-bootstrap 
-  - cross-riscv64-gcc8: [x86_64] 
-  - cross-riscv64-gcc8-icecream-backend: [x86_64] 
   - cross-riscv64-gcc9: [x86_64] 
   - cross-riscv64-gcc9-icecream-backend: [x86_64] 
   - cross-riscv64-newlib-devel 
   - cross-rx-binutils 
   - cross-rx-gcc7 
   - cross-rx-gcc7-bootstrap 
-  - cross-rx-gcc8 
-  - cross-rx-gcc8-bootstrap 
   - cross-rx-gcc9 
   - cross-rx-gcc9-bootstrap 
   - cross-rx-newlib-devel 
@@ -1943,23 +1913,17 @@ unsorted:
   - cross-s390x-binutils 
   - cross-s390x-gcc7: [x86_64] 
   - cross-s390x-gcc7-icecream-backend: [x86_64] 
-  - cross-s390x-gcc8: [x86_64] 
-  - cross-s390x-gcc8-icecream-backend: [x86_64] 
   - cross-s390x-gcc9: [x86_64] 
   - cross-s390x-gcc9-icecream-backend: [x86_64] 
   - cross-sparc-binutils 
   - cross-sparc-gcc7: [x86_64] 
-  - cross-sparc-gcc8: [x86_64] 
   - cross-sparc-gcc9: [x86_64] 
   - cross-sparc64-binutils 
   - cross-sparc64-gcc7: [x86_64] 
   - cross-sparc64-gcc7-icecream-backend: [x86_64] 
-  - cross-sparc64-gcc8: [x86_64] 
-  - cross-sparc64-gcc8-icecream-backend: [x86_64] 
   - cross-sparc64-gcc9: [x86_64] 
   - cross-sparc64-gcc9-icecream-backend: [x86_64] 
   - cross-sparcv9-gcc7-icecream-backend: [x86_64] 
-  - cross-sparcv9-gcc8-icecream-backend: [x86_64] 
   - cross-sparcv9-gcc9-icecream-backend: [x86_64] 
   - cross-spu-binutils 
   - cross-x86_64-binutils: [i586] 
@@ -3282,24 +3246,6 @@ unsorted:
   - gcc7-objc 
   - gcc7-objc-32bit: [x86_64] 
   - gcc7-testresults 
-  - gcc8 
-  - gcc8-32bit: [x86_64] 
-  - gcc8-ada 
-  - gcc8-ada-32bit: [x86_64] 
-  - gcc8-c++ 
-  - gcc8-c++-32bit: [x86_64] 
-  - gcc8-devel 
-  - gcc8-fortran 
-  - gcc8-fortran-32bit: [x86_64] 
-  - gcc8-go 
-  - gcc8-go-32bit: [x86_64] 
-  - gcc8-info 
-  - gcc8-locale 
-  - gcc8-obj-c++ 
-  - gcc8-obj-c++-32bit: [x86_64] 
-  - gcc8-objc 
-  - gcc8-objc-32bit: [x86_64] 
-  - gcc8-testresults 
   - gcc9-32bit: [x86_64] 
   - gcc9-ada 
   - gcc9-ada-32bit: [x86_64] 
@@ -7395,8 +7341,6 @@ unsorted:
   - libacr38ucontrol0 
   - libada7 
   - libada7-32bit: [x86_64] 
-  - libada8 
-  - libada8-32bit: [x86_64] 
   - libada9 
   - libada9-32bit: [x86_64] 
   - libaddrxlat-devel 
@@ -7500,8 +7444,6 @@ unsorted:
   - libasan4 
   - libasan4-32bit: [x86_64] 
   - libasan5-32bit: [x86_64] 
-  - libasan5-gcc8 
-  - libasan5-gcc8-32bit: [x86_64] 
   - libaslcommon0 
   - libasm-devel 
   - libasm1-32bit: [x86_64] 
@@ -7529,8 +7471,6 @@ unsorted:
   - libatomic1-32bit: [x86_64] 
   - libatomic1-gcc7 
   - libatomic1-gcc7-32bit: [x86_64] 
-  - libatomic1-gcc8 
-  - libatomic1-gcc8-32bit: [x86_64] 
   - libatomic_ops-devel 
   - libatomicparsley0 
   - libatrildocument3 
@@ -7918,7 +7858,6 @@ unsorted:
   - libcap-progs 
   - libcap1 
   - libcap1-32bit: [x86_64] 
-  - libcap2-32bit: [x86_64] 
   - libcapi20-2 
   - libcapi20-2-32bit: [x86_64] 
   - libcapi20-3-32bit: [x86_64] 
@@ -8374,7 +8313,6 @@ unsorted:
   - libechonest5-2_3-32bit: [x86_64] 
   - libecm1 
   - libeconf-devel 
-  - libeconf0-32bit: [x86_64] 
   - libecore1 
   - libecpg6-32bit: [x86_64] 
   - libecryptfs1 
@@ -8693,8 +8631,6 @@ unsorted:
   - libgbm1-32bit: [x86_64] 
   - libgcc_s1-gcc7 
   - libgcc_s1-gcc7-32bit: [x86_64] 
-  - libgcc_s1-gcc8 
-  - libgcc_s1-gcc8-32bit: [x86_64] 
   - libgcin-im-client1-32bit: [x86_64] 
   - libgck-1-0-32bit: [x86_64] 
   - libgck-devel 
@@ -8766,8 +8702,6 @@ unsorted:
   - libgfortran4 
   - libgfortran4-32bit: [x86_64] 
   - libgfortran5-32bit: [x86_64] 
-  - libgfortran5-gcc8 
-  - libgfortran5-gcc8-32bit: [x86_64] 
   - libggz2 
   - libggz2-devel 
   - libgiblib1 
@@ -8870,8 +8804,6 @@ unsorted:
   - libgnutlsxx28 
   - libgo11 
   - libgo11-32bit: [x86_64] 
-  - libgo13 
-  - libgo13-32bit: [x86_64] 
   - libgo14 
   - libgo14-32bit: [x86_64] 
   - libgoa-1_0-0-32bit: [x86_64] 
@@ -8879,8 +8811,6 @@ unsorted:
   - libgomp1-32bit: [x86_64] 
   - libgomp1-gcc7 
   - libgomp1-gcc7-32bit: [x86_64] 
-  - libgomp1-gcc8 
-  - libgomp1-gcc8-32bit: [x86_64] 
   - libgoocanvas-2_0-9 
   - libgoocanvas3 
   - libgoocanvas3-devel 
@@ -9359,8 +9289,6 @@ unsorted:
   - libitm1-32bit: [x86_64] 
   - libitm1-gcc7 
   - libitm1-gcc7-32bit: [x86_64] 
-  - libitm1-gcc8 
-  - libitm1-gcc8-32bit: [x86_64] 
   - libitpp8 
   - libivykis0 
   - libiw-devel 
@@ -9663,7 +9591,6 @@ unsorted:
   - liblrdf2-32bit: [x86_64] 
   - liblrs-7_0-0 
   - liblsan0-gcc7: [x86_64] 
-  - liblsan0-gcc8: [x86_64] 
   - liblscp-devel 
   - liblscp6 
   - libltc-devel 
@@ -9896,12 +9823,8 @@ unsorted:
   - libmpris-qt5-1 
   - libmpris-qt5-devel 
   - libmpv1 
-  - libmpx2 
-  - libmpx2-32bit: [x86_64] 
   - libmpx2-gcc7 
   - libmpx2-gcc7-32bit: [x86_64] 
-  - libmpxwrappers2 
-  - libmpxwrappers2-32bit: [x86_64] 
   - libmpxwrappers2-gcc7 
   - libmpxwrappers2-gcc7-32bit: [x86_64] 
   - libmraa2 
@@ -9987,9 +9910,9 @@ unsorted:
   - libnetapi-devel 
   - libnetcdf-cxx4-gnu-hpc 
   - libnetcdf-cxx4-gnu-hpc-devel 
-  - libnetcdf-cxx4_4_3_0-gnu-hpc 
-  - libnetcdf-cxx4_4_3_0-gnu-hpc-devel 
-  - libnetcdf-cxx4_4_3_0-gnu-hpc-devel-static 
+  - libnetcdf-cxx4_4_3_1-gnu-hpc 
+  - libnetcdf-cxx4_4_3_1-gnu-hpc-devel 
+  - libnetcdf-cxx4_4_3_1-gnu-hpc-devel-static 
   - libnetcdf-fortran-gnu-mpich-hpc 
   - libnetcdf-fortran-gnu-openmpi1-hpc 
   - libnetcdf-fortran-gnu-openmpi2-hpc 
@@ -10123,8 +10046,6 @@ unsorted:
   - libobjc4-32bit: [x86_64] 
   - libobjc4-gcc7 
   - libobjc4-gcc7-32bit: [x86_64] 
-  - libobjc4-gcc8 
-  - libobjc4-gcc8-32bit: [x86_64] 
   - libobjc4_6 
   - libode8 
   - libodfgen-devel 
@@ -10820,8 +10741,6 @@ unsorted:
   - libquadmath0-32bit: [x86_64] 
   - libquadmath0-gcc7 
   - libquadmath0-gcc7-32bit: [x86_64] 
-  - libquadmath0-gcc8 
-  - libquadmath0-gcc8-32bit: [x86_64] 
   - libquagga_pb0 
   - libquicktime 
   - libquicktime-devel 
@@ -11355,13 +11274,9 @@ unsorted:
   - libstdc++-devel-32bit: [x86_64] 
   - libstdc++6-devel-gcc7 
   - libstdc++6-devel-gcc7-32bit: [x86_64] 
-  - libstdc++6-devel-gcc8 
-  - libstdc++6-devel-gcc8-32bit: [x86_64] 
   - libstdc++6-devel-gcc9-32bit: [x86_64] 
   - libstdc++6-gcc7 
   - libstdc++6-gcc7-32bit: [x86_64] 
-  - libstdc++6-gcc8 
-  - libstdc++6-gcc8-32bit: [x86_64] 
   - libstfl-devel 
   - libstfl0 
   - libstilview-devel 
@@ -11547,7 +11462,6 @@ unsorted:
   - libtrilinos_12_14_1-gnu-openmpi2-hpc: [x86_64] 
   - libts0-32bit: [x86_64] 
   - libtsan0-gcc7: [x86_64] 
-  - libtsan0-gcc8: [x86_64] 
   - libtsk13 
   - libtsm-devel 
   - libtsm4 
@@ -11581,8 +11495,6 @@ unsorted:
   - libubsan0 
   - libubsan0-32bit: [x86_64] 
   - libubsan1-32bit: [x86_64] 
-  - libubsan1-gcc8 
-  - libubsan1-gcc8-32bit: [x86_64] 
   - libuchardet-devel 
   - libuchardet0 
   - libuchardet0-32bit: [x86_64] 
@@ -12462,8 +12374,6 @@ unsorted:
   - lswm 
   - lsyncd 
   - ltrace-32bit: [x86_64] 
-  - lttng-modules 
-  - lttng-modules-kmp-default 
   - lttng-modules-kmp-pae: [i586] 
   - lttng-tools 
   - lttng-tools-devel 
@@ -13847,7 +13757,7 @@ unsorted:
   - netcdf 
   - netcdf-cxx4-gnu-hpc-tools 
   - netcdf-cxx4-tools 
-  - netcdf-cxx4_4_3_0-gnu-hpc-tools 
+  - netcdf-cxx4_4_3_1-gnu-hpc-tools 
   - netcdf-devel 
   - netcdf-devel-data 
   - netcdf-devel-static 
@@ -17261,8 +17171,6 @@ unsorted:
   - python-qt3d-qt5-api 
   - python-qt3d-qt5-examples 
   - python-qt3d-qt5-sip 
-  - python-qt4-doc 
-  - python-qt4-utils 
   - python-qt5-doc 
   - python-qtcharts-qt5-api 
   - python-qtcharts-qt5-examples 
@@ -19088,8 +18996,6 @@ unsorted:
   - python2-qrcode 
   - python2-qscintilla-qt5 
   - python2-qt3d-qt5 
-  - python2-qt4 
-  - python2-qt4-devel 
   - python2-qt5 
   - python2-qt5-devel 
   - python2-qtcharts-qt5 
@@ -20902,6 +20808,7 @@ unsorted:
   - python3-matplotlib-tk 
   - python3-matplotlib-web 
   - python3-matplotlib-wx 
+  - python3-matrix-synapse 
   - python3-matrix-synapse-ldap3 
   - python3-maxminddb 
   - python3-mbstrdecoder 
@@ -21536,8 +21443,6 @@ unsorted:
   - python3-qrcode 
   - python3-qscintilla-qt5 
   - python3-qt3d-qt5 
-  - python3-qt4 
-  - python3-qt4-devel 
   - python3-qt5-devel 
   - python3-qtcharts-qt5 
   - python3-qtconsole 
@@ -22963,6 +22868,8 @@ unsorted:
   - ruby2.6-rubygem-paint-doc 
   - ruby2.6-rubygem-parallel-doc 
   - ruby2.6-rubygem-parallel_tests-doc 
+  - ruby2.6-rubygem-parser-doc 
+  - ruby2.6-rubygem-parser-testsuite 
   - ruby2.6-rubygem-passenger-doc 
   - ruby2.6-rubygem-path_expander-doc 
   - ruby2.6-rubygem-path_expander-testsuite 
@@ -24135,6 +24042,7 @@ unsorted:
   - systemd-mini-container 
   - systemd-mini-devel 
   - systemd-mini-sysvinit 
+  - systemd-portable 
   - systemd-ui 
   - systemd-zram-service 
   - systemsettings5-devel 
@@ -33264,6 +33172,16 @@ unsorted:
   - z 
   - z3 
   - z3-devel 
+  - zabbix-agent 
+  - zabbix-java-gateway 
+  - zabbix-phpfrontend 
+  - zabbix-proxy 
+  - zabbix-proxy-mysql 
+  - zabbix-proxy-postgresql 
+  - zabbix-proxy-sqlite 
+  - zabbix-server 
+  - zabbix-server-mysql 
+  - zabbix-server-postgresql 
   - zam-plugins 
   - zanshin 
   - zanshin-lang 

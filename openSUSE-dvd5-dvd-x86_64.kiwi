@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20191003" schemaversion="4.1">
+<image name="OBS__openSUSE___20191004" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20191003</productvar>
+      <productvar name="VERSION">20191004</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20191003,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20191004,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20191003/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20191004/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/suse-tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/suse-tumbleweed</productoption>
@@ -1610,6 +1610,7 @@
       <repopackage name="libcanberra0-32bit" arch="x86_64"/>
       <repopackage name="libcap-ng0"/>
       <repopackage name="libcap2"/>
+      <repopackage name="libcap2-32bit" arch="x86_64"/>
       <repopackage name="libcapi20-3"/>
       <repopackage name="libcares2"/>
       <repopackage name="libccolamd2"/>
@@ -1736,6 +1737,7 @@
       <repopackage name="libebook-contacts-1_2-2"/>
       <repopackage name="libecal-1_2-19"/>
       <repopackage name="libeconf0"/>
+      <repopackage name="libeconf0-32bit" arch="x86_64"/>
       <repopackage name="libecpg6"/>
       <repopackage name="libedata-book-1_2-25"/>
       <repopackage name="libedata-cal-1_2-29"/>
@@ -2885,7 +2887,6 @@
       <repopackage name="libstdc++6-32bit" arch="x86_64"/>
       <repopackage name="libstdc++6-devel-gcc9"/>
       <repopackage name="libstdc++6-gcc7-locale"/>
-      <repopackage name="libstdc++6-gcc8-locale"/>
       <repopackage name="libstdc++6-locale"/>
       <repopackage name="libstdc++6-pp-gcc9"/>
       <repopackage name="libstdc++6-pp-gcc9-32bit" arch="x86_64"/>
@@ -3288,6 +3289,8 @@
       <repopackage name="lsof"/>
       <repopackage name="lsscsi"/>
       <repopackage name="ltrace"/>
+      <repopackage name="lttng-modules"/>
+      <repopackage name="lttng-modules-kmp-default"/>
       <repopackage name="lua53"/>
       <repopackage name="lua53-luasocket"/>
       <repopackage name="luit"/>
@@ -4869,6 +4872,7 @@
       <repopackage name="ruby2.6-rubygem-paint"/>
       <repopackage name="ruby2.6-rubygem-parallel"/>
       <repopackage name="ruby2.6-rubygem-parallel_tests"/>
+      <repopackage name="ruby2.6-rubygem-parser"/>
       <repopackage name="ruby2.6-rubygem-passenger"/>
       <repopackage name="ruby2.6-rubygem-path_expander"/>
       <repopackage name="ruby2.6-rubygem-pathutil"/>
