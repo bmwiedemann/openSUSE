@@ -1,0 +1,47 @@
+From: Max Reitz <mreitz@redhat.com>
+Date: Mon, 2 Sep 2019 21:33:16 +0200
+Subject: vpc: Return 0 from vpc_co_create() on success
+
+Git-commit: 1a37e3124407b5a145d44478d3ecbdb89c63789f
+
+blockdev_create_run() directly uses .bdrv_co_create()'s return value as
+the job's return value.  Jobs must return 0 on success, not just any
+nonnegative value.  Therefore, using blockdev-create for VPC images may
+currently fail as the vpc driver may return a positive integer.
+
+Because there is no point in returning a positive integer anywhere in
+the block layer (all non-negative integers are generally treated as
+complete success), we probably do not want to add more such cases.
+Therefore, fix this problem by making the vpc driver always return 0 in
+case of success.
+
+Suggested-by: Kevin Wolf <kwolf@redhat.com>
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Max Reitz <mreitz@redhat.com>
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ block/vpc.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/block/vpc.c b/block/vpc.c
+index d4776ee8a5229ff43e8fb4fb6e0f..3a88e28e2be18553ff50a9b5c070 100644
+--- a/block/vpc.c
++++ b/block/vpc.c
+@@ -885,6 +885,7 @@ static int create_dynamic_disk(BlockBackend *blk, uint8_t *buf,
+         goto fail;
+     }
+ 
++    ret = 0;
+  fail:
+     return ret;
+ }
+@@ -908,7 +909,7 @@ static int create_fixed_disk(BlockBackend *blk, uint8_t *buf,
+         return ret;
+     }
+ 
+-    return ret;
++    return 0;
+ }
+ 
+ static int calculate_rounded_image_size(BlockdevCreateOptionsVpc *vpc_opts,

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-glean
-Version:        1.14.1
+Version:        1.15.0
 Release:        0
 Summary:        Program to write static config from config-drive
 License:        Apache-2.0

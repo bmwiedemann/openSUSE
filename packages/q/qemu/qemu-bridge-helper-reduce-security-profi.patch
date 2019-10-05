@@ -1,0 +1,80 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Tue, 2 Aug 2016 11:36:02 -0600
+Subject: qemu-bridge-helper: reduce security profile
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+References: boo#988279
+
+Change from using glib alloc and free routines to those
+from libc. Also perform safety measure of dropping privs
+to user if configured no-caps.
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+[AF: Rebased for v2.7.0-rc2]
+Signed-off-by: Andreas Färber <afaerber@suse.de>
+---
+ qemu-bridge-helper.c | 28 +++++++++++++++++++++++++---
+ 1 file changed, 25 insertions(+), 3 deletions(-)
+
+diff --git a/qemu-bridge-helper.c b/qemu-bridge-helper.c
+index 3d50ec094c794b9c0835628f10c5..f2291b398f8e4589f649af226dba 100644
+--- a/qemu-bridge-helper.c
++++ b/qemu-bridge-helper.c
+@@ -123,7 +123,12 @@ static int parse_acl_file(const char *filename, ACLList *acl_list)
+         }
+ 
+         if (strcmp(cmd, "deny") == 0) {
+-            acl_rule = g_malloc(sizeof(*acl_rule));
++            acl_rule = calloc(1, sizeof(*acl_rule));
++            if (!acl_rule) {
++                fclose(f);
++                errno = ENOMEM;
++                return -1;
++            }
+             if (strcmp(arg, "all") == 0) {
+                 acl_rule->type = ACL_DENY_ALL;
+             } else {
+@@ -132,7 +137,12 @@ static int parse_acl_file(const char *filename, ACLList *acl_list)
+             }
+             QSIMPLEQ_INSERT_TAIL(acl_list, acl_rule, entry);
+         } else if (strcmp(cmd, "allow") == 0) {
+-            acl_rule = g_malloc(sizeof(*acl_rule));
++            acl_rule = calloc(1, sizeof(*acl_rule));
++            if (!acl_rule) {
++                fclose(f);
++                errno = ENOMEM;
++                return -1;
++            }
+             if (strcmp(arg, "all") == 0) {
+                 acl_rule->type = ACL_ALLOW_ALL;
+             } else {
+@@ -433,6 +443,18 @@ int main(int argc, char **argv)
+         goto cleanup;
+     }
+ 
++#ifndef CONFIG_LIBCAP
++    /*
++     * avoid sending the fd as root user if running suid to not fool
++     * peer credentials to daemons that dont expect that
++     */
++    if (setuid(getuid()) < 0) {
++        fprintf(stderr, "Failed to drop privileges.\n");
++        ret = EXIT_FAILURE;
++        goto cleanup;
++    }
++#endif
++
+     /* write fd to the domain socket */
+     if (send_fd(unixfd, fd) == -1) {
+         fprintf(stderr, "failed to write fd to unix socket: %s\n",
+@@ -454,7 +476,7 @@ cleanup:
+     }
+     while ((acl_rule = QSIMPLEQ_FIRST(&acl_list)) != NULL) {
+         QSIMPLEQ_REMOVE_HEAD(&acl_list, entry);
+-        g_free(acl_rule);
++        free(acl_rule);
+     }
+ 
+     return ret;

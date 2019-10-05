@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct  4 14:09:51 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.8.0
+  * Replaced the Python compatbility routines for ``getfullargspec()`` with a
+    fully vendored version from Python 3.3.  Originally, Python was emitting
+    deprecation warnings for this function in Python 3.8 alphas.  While this
+    change was reverted, it was observed that Python 3 implementations for
+    ``getfullargspec()`` are an order of magnitude slower as of the 3.4 series
+    where it was rewritten against ``Signature``.  While Python plans to
+    improve upon this situation, SQLAlchemy projects for now are using a simple
+    replacement to avoid any future issues.
+  * Pinned minimum version of Python decorator module at 4.0.0.
+  * Fixed the :func:`.sha1_mangle_key` key mangler to coerce incoming Unicode
+    objects into bytes.
+
+-------------------------------------------------------------------
 Fri Mar  8 14:37:22 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.7.1:

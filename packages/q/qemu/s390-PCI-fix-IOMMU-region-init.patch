@@ -1,0 +1,48 @@
+From: Matthew Rosato <mjrosato@linux.ibm.com>
+Date: Thu, 26 Sep 2019 10:10:36 -0400
+Subject: s390: PCI: fix IOMMU region init
+
+Git-commit: 7df1dac5f1c85312474df9cb3a8fcae72303da62
+
+The fix in dbe9cf606c shrinks the IOMMU memory region to a size
+that seems reasonable on the surface, however is actually too
+small as it is based against a 0-mapped address space.  This
+causes breakage with small guests as they can overrun the IOMMU window.
+
+Let's go back to the prior method of initializing iommu for now.
+
+Fixes: dbe9cf606c ("s390x/pci: Set the iommu region size mpcifc request")
+Cc: qemu-stable@nongnu.org
+Reviewed-by: Pierre Morel <pmorel@linux.ibm.com>
+Reported-by: Boris Fiuczynski <fiuczy@linux.ibm.com>
+Tested-by: Boris Fiuczynski <fiuczy@linux.ibm.com>
+Reported-by: Stefan Zimmerman <stzi@linux.ibm.com>
+Signed-off-by: Matthew Rosato <mjrosato@linux.ibm.com>
+Message-Id: <1569507036-15314-1-git-send-email-mjrosato@linux.ibm.com>
+Signed-off-by: Christian Borntraeger <borntraeger@de.ibm.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/s390x/s390-pci-bus.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/hw/s390x/s390-pci-bus.c b/hw/s390x/s390-pci-bus.c
+index 2c6e084e2c2636b55980799b5837..9a935f22b5b06a67c8fbd7b6abb6 100644
+--- a/hw/s390x/s390-pci-bus.c
++++ b/hw/s390x/s390-pci-bus.c
+@@ -694,10 +694,15 @@ static const MemoryRegionOps s390_msi_ctrl_ops = {
+ 
+ void s390_pci_iommu_enable(S390PCIIOMMU *iommu)
+ {
++    /*
++     * The iommu region is initialized against a 0-mapped address space,
++     * so the smallest IOMMU region we can define runs from 0 to the end
++     * of the PCI address space.
++     */
+     char *name = g_strdup_printf("iommu-s390-%04x", iommu->pbdev->uid);
+     memory_region_init_iommu(&iommu->iommu_mr, sizeof(iommu->iommu_mr),
+                              TYPE_S390_IOMMU_MEMORY_REGION, OBJECT(&iommu->mr),
+-                             name, iommu->pal - iommu->pba + 1);
++                             name, iommu->pal + 1);
+     iommu->enabled = true;
+     memory_region_add_subregion(&iommu->mr, 0, MEMORY_REGION(&iommu->iommu_mr));
+     g_free(name);

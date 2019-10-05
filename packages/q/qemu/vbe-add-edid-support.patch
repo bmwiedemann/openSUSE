@@ -1,0 +1,87 @@
+From: Gerd Hoffmann <kraxel@redhat.com>
+Date: Tue, 19 Mar 2019 11:09:33 +0100
+Subject: vbe: add edid support.
+
+Git-commit: a307d0adc50f41787424a9453145293248a1908c
+
+VBE subfunction 0x15, read ddc data.
+
+Add VBE_edid where drivers can fill in a EDID data blob.
+If we find valid data there (checking the first two header
+bytes), then report the function as supported and hand out
+the data.
+
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ vgasrc/vbe.c     | 30 ++++++++++++++++++++++++++++++
+ vgasrc/vgautil.h |  1 +
+ 2 files changed, 31 insertions(+)
+
+diff --git a/roms/seabios/vgasrc/vbe.c b/roms/seabios/vgasrc/vbe.c
+index 724c1bad6d7a8f612e05c198223f..66afb011ada034d53b518f8de068 100644
+--- a/roms/seabios/vgasrc/vbe.c
++++ b/roms/seabios/vgasrc/vbe.c
+@@ -25,6 +25,7 @@ u32 VBE_total_memory VAR16 = 256 * 1024;
+ u32 VBE_capabilities VAR16;
+ u32 VBE_framebuffer VAR16;
+ u16 VBE_win_granularity VAR16;
++u8 VBE_edid[256] VAR16;
+ 
+ static void
+ vbe_104f00(struct bregs *regs)
+@@ -400,6 +401,34 @@ vbe_104f10(struct bregs *regs)
+     regs->ax = 0x004f;
+ }
+ 
++static void
++vbe_104f15(struct bregs *regs)
++{
++    int offset;
++
++    switch (regs->bl) {
++    case 0x00:
++        if (GET_GLOBAL(VBE_edid[0]) != 0x00 ||
++            GET_GLOBAL(VBE_edid[1]) != 0xff)
++            goto err;
++        regs->bx = 0x0103;
++        break;
++    case 0x01:
++        offset = regs->dx * 128;
++        if (offset >= sizeof(VBE_edid))
++            goto err;
++        memcpy_far(regs->es, (void*)(regs->di+0),
++                   get_global_seg(), VBE_edid + offset,
++                   128);
++        break;
++    err:
++    default:
++        regs->ax = 0x014f;
++        return;
++    }
++    regs->ax = 0x004f;
++}
++
+ static void
+ vbe_104fXX(struct bregs *regs)
+ {
+@@ -427,6 +456,7 @@ handle_104f(struct bregs *regs)
+     case 0x08: vbe_104f08(regs); break;
+     case 0x0a: vbe_104f0a(regs); break;
+     case 0x10: vbe_104f10(regs); break;
++    case 0x15: vbe_104f15(regs); break;
+     default:   vbe_104fXX(regs); break;
+     }
+ }
+diff --git a/roms/seabios/vgasrc/vgautil.h b/roms/seabios/vgasrc/vgautil.h
+index a9940402e45bf293f95b29bbdc2c..dd1aa189547a212ae45bae941f61 100644
+--- a/roms/seabios/vgasrc/vgautil.h
++++ b/roms/seabios/vgasrc/vgautil.h
+@@ -89,6 +89,7 @@ extern u32 VBE_total_memory;
+ extern u32 VBE_capabilities;
+ extern u32 VBE_framebuffer;
+ extern u16 VBE_win_granularity;
++extern u8 VBE_edid[256];
+ void handle_104f(struct bregs *regs);
+ 
+ // vgafonts.c

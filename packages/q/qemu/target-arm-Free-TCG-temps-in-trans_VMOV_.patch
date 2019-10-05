@@ -1,0 +1,38 @@
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 27 Aug 2019 13:19:31 +0100
+Subject: target/arm: Free TCG temps in trans_VMOV_64_sp()
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: 342d27581bd3ecdb995e4fc55fcd383cf3242888
+
+The function neon_store_reg32() doesn't free the TCG temp that it
+is passed, so the caller must do that. We got this right in most
+places but forgot to free the TCG temps in trans_VMOV_64_sp().
+
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-id: 20190827121931.26836-1-peter.maydell@linaro.org
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ target/arm/translate-vfp.inc.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/target/arm/translate-vfp.inc.c b/target/arm/translate-vfp.inc.c
+index 092eb5ec53d944e078f4449c10f1..ef45cecbeac18edb6dffbcad7980 100644
+--- a/target/arm/translate-vfp.inc.c
++++ b/target/arm/translate-vfp.inc.c
+@@ -881,8 +881,10 @@ static bool trans_VMOV_64_sp(DisasContext *s, arg_VMOV_64_sp *a)
+         /* gpreg to fpreg */
+         tmp = load_reg(s, a->rt);
+         neon_store_reg32(tmp, a->vm);
++        tcg_temp_free_i32(tmp);
+         tmp = load_reg(s, a->rt2);
+         neon_store_reg32(tmp, a->vm + 1);
++        tcg_temp_free_i32(tmp);
+     }
+ 
+     return true;

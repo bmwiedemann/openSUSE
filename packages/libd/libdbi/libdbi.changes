@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 23 20:23:16 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use _multibuild for documentation building, move documentation
+  out of devel subpackage.
+- Spec file cleanup, modernization.
+- Streamline texlive BuildRequires.
+
+-------------------------------------------------------------------
 Tue Dec 29 17:25:50 UTC 2015 - lars@linux-schulserver.de
 
 - disable building of documentation on old distributions
@@ -62,7 +70,7 @@ Thu Dec 15 20:54:59 UTC 2011 - jengelh@medozas.de
 -------------------------------------------------------------------
 Tue Dec 13 13:32:14 UTC 2011 - idonmez@suse.com
 
-- Optimization level 20 doesn't really exist, fix it to -O3 
+- Optimization level 20 doesn't really exist, fix it to -O3
 - Fix license to be LGPL-2.1+
 
 -------------------------------------------------------------------
@@ -80,4 +88,3 @@ Wed Dec 15 16:08:27 CET 2010 - meissner@suse.de
 
 - initial import if libdbi, a database-independent abstraction layer in C,
   similar to the DBI/DBD layer in Perl.
-

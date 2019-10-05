@@ -33,6 +33,7 @@ BuildRequires:  %{python_module httpbin}
 BuildRequires:  %{python_module incremental}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module requests >= 2.1.0}
+BuildRequires:  %{python_module service_identity}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes

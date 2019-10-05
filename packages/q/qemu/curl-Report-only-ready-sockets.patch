@@ -1,0 +1,61 @@
+From: Max Reitz <mreitz@redhat.com>
+Date: Tue, 10 Sep 2019 14:41:34 +0200
+Subject: curl: Report only ready sockets
+
+Git-commit: 9abaf9fc474c3dd53e8e119326abc774c977c331
+
+Instead of reporting all sockets to cURL, only report the one that has
+caused curl_multi_do_locked() to be called.  This lets us get rid of the
+QLIST_FOREACH_SAFE() list, which was actually wrong: SAFE foreaches are
+only safe when the current element is removed in each iteration.  If it
+possible for the list to be concurrently modified, we cannot guarantee
+that only the current element will be removed.  Therefore, we must not
+use QLIST_FOREACH_SAFE() here.
+
+Fixes: ff5ca1664af85b24a4180d595ea6873fd3deac57
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Max Reitz <mreitz@redhat.com>
+Message-id: 20190910124136.10565-6-mreitz@redhat.com
+Reviewed-by: Maxim Levitsky <mlevitsk@redhat.com>
+Reviewed-by: John Snow <jsnow@redhat.com>
+Signed-off-by: Max Reitz <mreitz@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ block/curl.c | 17 ++++++-----------
+ 1 file changed, 6 insertions(+), 11 deletions(-)
+
+diff --git a/block/curl.c b/block/curl.c
+index cf2686218dcf4bc7d2db1a7026f9..fd70f1ebc458f22f6d1a4bc01e1e 100644
+--- a/block/curl.c
++++ b/block/curl.c
+@@ -392,24 +392,19 @@ static void curl_multi_check_completion(BDRVCURLState *s)
+ }
+ 
+ /* Called with s->mutex held.  */
+-static void curl_multi_do_locked(CURLSocket *ready_socket)
++static void curl_multi_do_locked(CURLSocket *socket)
+ {
+-    CURLSocket *socket, *next_socket;
+-    CURLState *s = ready_socket->state;
++    BDRVCURLState *s = socket->state->s;
+     int running;
+     int r;
+ 
+-    if (!s->s->multi) {
++    if (!s->multi) {
+         return;
+     }
+ 
+-    /* Need to use _SAFE because curl_multi_socket_action() may trigger
+-     * curl_sock_cb() which might modify this list */
+-    QLIST_FOREACH_SAFE(socket, &s->sockets, next, next_socket) {
+-        do {
+-            r = curl_multi_socket_action(s->s->multi, socket->fd, 0, &running);
+-        } while (r == CURLM_CALL_MULTI_PERFORM);
+-    }
++    do {
++        r = curl_multi_socket_action(s->multi, socket->fd, 0, &running);
++    } while (r == CURLM_CALL_MULTI_PERFORM);
+ }
+ 
+ static void curl_multi_do(void *arg)

@@ -1,0 +1,64 @@
+From: Stewart Smith <stewart@linux.ibm.com>
+Date: Tue, 18 Jun 2019 16:06:44 +1000
+Subject: hdata/vpd: fix printing (char*)0x00
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: ba977f2e4406f9de318afcdf5d666e77585ef269
+
+GCC9 now catches this bug:
+
+In file included from hdata/vpd.c:17:
+In function ‘vpd_vini_parse’,
+    inlined from ‘vpd_data_parse’ at hdata/vpd.c:416:3:
+/home/stewart/skiboot/include/skiboot.h:93:31: error: ‘%s’ directive argument is null [-Werror=format-overflow=]
+   93 | #define prlog(l, f, ...) do { _prlog(l, pr_fmt(f), ##__VA_ARGS__); } while(0)
+      |                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+hdata/vpd.c:390:5: note: in expansion of macro ‘prlog’
+  390 |     prlog(PR_WARNING,
+      |     ^~~~~
+hdata/vpd.c: In function ‘vpd_data_parse’:
+hdata/vpd.c:391:46: note: format string is defined here
+  391 |           "VPD: CCIN desc not available for: %s\n",
+      |                                              ^~
+cc1: all warnings being treated as errors
+
+Signed-off-by: Stewart Smith <stewart@linux.ibm.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hdata/vpd.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/roms/skiboot/hdata/vpd.c b/roms/skiboot/hdata/vpd.c
+index 129b5062356a48d900c6aa5a140d..5a01bcc9f6fa2faef2a118eca938 100644
+--- a/roms/skiboot/hdata/vpd.c
++++ b/roms/skiboot/hdata/vpd.c
+@@ -328,6 +328,7 @@ static void vpd_vini_parse(struct dt_node *node,
+ 			   const void *fruvpd, unsigned int fruvpd_sz)
+ {
+ 	const void *kw;
++	const char *desc;
+ 	uint8_t sz;
+ 	const struct card_info *cinfo;
+ 
+@@ -381,15 +382,15 @@ static void vpd_vini_parse(struct dt_node *node,
+ 			dt_add_property_string(node,
+ 				       "description", cinfo->description);
+ 		} else {
+-			kw = vpd_find(fruvpd, fruvpd_sz, "VINI", "DR", &sz);
+-			if (kw) {
++			desc = vpd_find(fruvpd, fruvpd_sz, "VINI", "DR", &sz);
++			if (desc) {
+ 				dt_add_prop_sanitize_val(node,
+-						     "description", kw, sz);
++						     "description", desc, sz);
+ 			} else {
+ 				dt_add_property_string(node, "description", "Unknown");
+ 				prlog(PR_WARNING,
+ 				      "VPD: CCIN desc not available for: %s\n",
+-				      (char *)kw);
++				      (char*)kw);
+ 			}
+ 		}
+ 	}

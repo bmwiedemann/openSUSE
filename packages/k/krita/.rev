@@ -379,4 +379,41 @@
     <comment></comment>
     <requestid>729941</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>0c2320a1dd4abec19ae4ad02679927f1</srcmd5>
+    <version>4.2.7.1</version>
+    <time>1570285304</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.2.7.1:
+  * See https://krita.org/en/item/krita-4-2-7-released/
+  * Improve the layout and functionality of the color selector
+    dialog and make it perform much better (kde#381529)
+  * Do not crash when trying to merge an invisible group layer
+    (kde#411124)
+  * Make it possible to save group layers to file layers even if
+    they are empty (kde#411101)
+  * Make the initial location of the OCIO profile selector sensible
+  * Fix possible crashes when a broken file ends up in the Recent
+    Documents List (kde#411416)
+  * Use locale-based formatting of numbers in the measure tool and
+    other places
+  * Make HTML markup in the Search Field tooltips work
+  * Fix a crash when moving multiple vector shapes (kde#409872)
+  * Fix the sort order of images imported as frames if they are not
+    numbered with prefix 0's (kde#375885)
+  * Make it possible again to run the Python Scripting Debugger on
+    Linux (kde#410807)
+  * Cache ICC profiles when loading layers: this speeds up loading
+    images with thousands of layers (kde#411532)
+  * Use LittleCMS' copy alpha channel flag to speed up color
+    transformations
+  * Fix outline move mode (kde#411057)
+  * Fix a hang in the text shape if an UTF-8 Line Break character
+    is used (kde#410402)
+  * Fix a random crash if there is not enough space in the swapfile
+    location for AMD Ryzen 3500 CPU's (kde#411081)
+  * Fix another random crash when painting (kde#411280)
+  * Fix artifacts when moving control points of a path shape</comment>
+    <requestid>735352</requestid>
+  </revision>
 </revisionlist>

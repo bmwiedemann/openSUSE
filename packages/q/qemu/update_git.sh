@@ -1,45 +1,153 @@
 #!/bin/bash
+
+# update_git.sh: script to manage package maintenance using a git-based
+# workflow. Commands are as follows:
+#   git2pkg (update package spec file and patches from git)
+#   pkg2git (update git (frombundle branch) from the package "bundleofbundles")
+#   refresh (refresh spec file from spec file template and "bundlofbundles")
 #
-# Instead of a quilt workflow, we use a git tree that contains
-# all the commits on top of a qemu source tarball.
-#
-# When updating this package, just either update the git tree
-# below (use rebase!) or change the tree path and use your own
-#
-# That way we can easily rebase against the next stable release
-# when it comes.
+#   (default is git2pkg)
 
 set -e
 
-# The next few VARIABLES may be edited (or uncommented) as required:
+source ./config.sh
 
-# Here is where we manage the patchqueue on top of what comes from upstream
-GIT_LOCAL_TREE=~/git/qemu-opensuse
-# The commit upon which our patchqueue gets rebased. The special value LATEST
-# may be used to "automatically" track the upstream development tree in the
-# master branch
-GIT_UPSTREAM_COMMIT_ISH=v4.0.0
-if [ "$GIT_UPSTREAM_COMMIT_ISH" = "LATEST" ]; then
-    echo "Using LATEST upstream commit as base for tarball and patch queue"
-    GIT_BRANCH=master
+TEMP_CHECK() {
+# TEMPORARY! FOR NOW WE REQUIRE THESE LOCALLY TO DO WORK ON PACKAGE
+REQUIRED_LOCAL_REPO_MAP=(
+    ~/git/qemu-opensuse
+    ~/git/qemu-seabios
+    ~/git/qemu-ipxe
+    ~/git/qemu-sgabios
+    ~/git/qemu-skiboot
+    ~/git/qemu-keycodemapdb
+)
+
+# Validate that all the local repos that we currently have patches in are available
+# TEMPORARY REQUIREMENT!
+for entry in ${REQUIRED_LOCAL_REPO_MAP[@]}; do
+    if [[ -e $(readlink -f ${entry}) ]]; then
+	    if $(git -C $entry branch| grep -F "$GIT_BRANCH" >/dev/null); then
+                :
+            else
+		    echo "Didn't find the $GIT_BRANCH branch in repo at $entry"
+		    exit
+            fi
+    else
+        echo "ERROR! For now, you need to have these local git repos available:"
+        echo ${REQUIRED_LOCAL_REPO_MAP[@]}
+    fi
+done
+}
+
+#==============================================================================
+
+initbundle() {
+# What is needed to "start"?
+# it all begins with an upstream repo, which may have submodules, incl. recursively (each represents another repo)
+# To facilitate speedy work on this upstream repo, we want to have local clones of these repos
+# Next we have a tarball, either that we created from the repo, or that upstream provided
+# To alter the content of this tarball, lets use git to track these changes, and produce patches which can be included
+# in the package spec file
+
+SUBMODULE_COMMIT_IDS=($(git -C ${LOCAL_REPO_MAP[0]} submodule status --recursive|awk '{print $1}'))
+SUBMODULE_DIRS=($(git -C ${LOCAL_REPO_MAP[0]} submodule status --recursive|awk '{print $2}'))
+SUBMODULE_COUNT=${#SUBMODULE_COMMIT_IDS[@]}
+# TODO: do this with simply math - ie: use (( ... ))
+if [[ "$REPO_COUNT" != "$(expr $SUBMODULE_COUNT + 1)" ]]; then
+    echo "ERROR: submodule count doesn't match the REPO_COUNT variable in config.sh file!"
+    exit
 fi
-# otherwise we specify the branch to use, eg:
-# WARNING: If transitioning from using LATEST to not, MANUALLY re-set the
-# tarball present
-GIT_BRANCH=opensuse-4.0
-# This is used for the automated development branch tracking
-NEXT_RELEASE_IS_MAJOR=1
+rm -rf $BUNDLE_DIR
+mkdir -p $BUNDLE_DIR
+for (( i=0; i <$SUBMODULE_COUNT; i++ )); do
+    mkdir -p $BUNDLE_DIR/${SUBMODULE_DIRS[$i]}
+    # what should this file be? for now use an extension of id 
+    touch $BUNDLE_DIR/${SUBMODULE_DIRS[$i]}/${SUBMODULE_COMMIT_IDS[$i]}.id
+done
+# also handle the superproject (I need to make this smarter, or change something - works for tag, but not normal commit:
 
-# The shared openSUSE specific git repo, on which $GIT_LOCAL_TREE is based
-GIT_TREE=git://github.com/openSUSE/qemu.git
+GIT_UPSTREAM_COMMIT=$(git -C ${LOCAL_REPO_MAP[0]} show-ref -d $GIT_UPSTREAM_COMMIT_ISH|grep -F "^{}"|awk '{print $1}')
+touch $BUNDLE_DIR/$GIT_UPSTREAM_COMMIT.id
 
-# Temporary directories used by this script
-GIT_DIR=/dev/shm/qemu-factory-git-dir
-CMP_DIR=/dev/shm/qemu-factory-cmp-dir
+# Now go through all the submodule local repos that are present and create a bundle file for the patches found there
+rm -rf $GIT_DIR
+for (( i=0; i <$REPO_COUNT; i++ )); do
+    if [[ -e $(readlink -f ${LOCAL_REPO_MAP[$i]}) ]]; then
+	    SUBDIR=${PATCH_PATH_MAP[$i]}
+	    GITREPO_COMMIT_ISH=($BUNDLE_DIR/$SUBDIR*.id)
+            if [[ $GITREPO_COMMIT_ISH  =~ .*(.{40})[.]id ]]; then
+                GITREPO_COMMIT_ISH=${BASH_REMATCH[1]}
+            fi
+	    echo "Using $GITREPO_COMMIT_ISH"
+	    PATCH_RANGE_INDEX=$i
+            mkdir -p $GIT_DIR/$SUBDIR
+            git -C $GIT_DIR/$SUBDIR init
+            git -C $GIT_DIR/$SUBDIR remote add origin file://$(readlink -f \
+                ${LOCAL_REPO_MAP[$PATCH_RANGE_INDEX]})
+            git -C $GIT_DIR/$SUBDIR fetch origin $GIT_BRANCH
+            git -C $GIT_DIR/$SUBDIR bundle create $BUNDLE_DIR/$SUBDIR$GITREPO_COMMIT_ISH.bundle $GITREPO_COMMIT_ISH..FETCH_HEAD || true
+	    git -C $(readlink -f ${LOCAL_REPO_MAP[$PATCH_RANGE_INDEX]}) remote get-url origin >$BUNDLE_DIR/$SUBDIR/repo
+    fi
+done
+tar cJvf bundles.tar.xz -C $BUNDLE_DIR .
+rm -rf $BUNDLE_DIR
+rm -rf $GIT_DIR
+}
 
+#==============================================================================
+
+bundle2local() {
+rm -rf $BUNDLE_DIR
+mkdir -p $BUNDLE_DIR
+tar xJf bundles.tar.xz -C $BUNDLE_DIR
+BUNDLE_FILES=$(find $BUNDLE_DIR -printf "%P\n"|grep "bundle$")
+
+for entry in ${BUNDLE_FILES[@]}; do
+    if [[ $entry =~ ^(.*)[/]*([a-f0-9]{40})[.]bundle$ ]]; then
+        SUBDIR=${BASH_REMATCH[1]}
+        GITREPO_COMMIT_ISH=${BASH_REMATCH[2]}
+    else
+        echo "ERROR! BAD BUNDLE CONTENT!"
+        exit
+    fi
+    for (( i=0; i <$REPO_COUNT; i++ )); do
+        if [[ "$SUBDIR" = "${PATCH_PATH_MAP[$i]}" ]]; then
+	    PATCH_RANGE_INDEX=$i
+	    break
+        fi
+    done
+
+    LOCAL_REPO=$(readlink -f ${LOCAL_REPO_MAP[$PATCH_RANGE_INDEX]})
+    if [ -e $LOCAL_REPO ]; then
+        echo "Found local repo $LOCAL_REPO corresponding to archived git bundle"
+    else
+        echo "No local repo $LOCAL_REPO corresponding to archived git bundle"
+    fi
+    git -C $LOCAL_REPO remote remove bundlerepo || true
+# git won't let you delete this branch if it's the current branch (returns 1) HOW TO HANDLE?
+# detect this case, and ask user to switch to another branch? or do it for them - switch to master killing any "state" for this branch
+    git -C $LOCAL_REPO branch -D frombundle || true
+    git -C $LOCAL_REPO remote add bundlerepo $BUNDLE_DIR/$entry 
+    # in next, the head may be FETCH_HEAD or HEAD depending on how we created:
+    git -C $LOCAL_REPO fetch bundlerepo FETCH_HEAD
+    git -C $LOCAL_REPO branch frombundle FETCH_HEAD
+    git -C $LOCAL_REPO remote remove bundlerepo
+done
+echo "For each local repo found, a branch named frombundle is created containing the"
+echo "patches from the bundle. Use this as the starting point for making changes to"
+echo "the $GIT_BRANCH, which is used when updating the bundle stored with the package."
+rm -rf $BUNDLE_DIR
+}
+
+#==============================================================================
+
+bundle2spec() {
 rm -rf $GIT_DIR
 rm -rf $CMP_DIR
+rm -rf $BUNDLE_DIR
 rm -f checkpatch.log
+rm -f checkthese
 
 if [ "$GIT_UPSTREAM_COMMIT_ISH" = "LATEST" ]; then
     # This is just a safety valve in case the above gets edited wrong:
@@ -47,7 +155,7 @@ if [ "$GIT_UPSTREAM_COMMIT_ISH" = "LATEST" ]; then
         echo "LATEST implies master branch, please fix configuration"
         exit
     fi
-    (cd $GIT_LOCAL_TREE && git remote update upstream)
+    (cd ${LOCAL_REPO_MAP[0]} && git remote update upstream)
 fi
 
 BASE_RE="qemu-[[:digit:]]+(\.[[:digit:]]+){2}(-rc[[:digit:]])?"
@@ -76,37 +184,41 @@ if [ "$OLD_SOURCE_VERSION_AND_EXTRA" = "" ]; then
     echo "Warning: No tarball found"
 fi
 
+mkdir -p $BUNDLE_DIR
+# TODO: (repo file not yet done)
+# This tarball has git bundles stored in a directory structure which mimics the
+# submodule locations in the containing git repo. Also at that same dir level
+# is a file named repo which contains the one line git repo url (with git:// or
+# http(s) prefix). The bundles are named as follows:
+# "{path/}{git_sha}.{bundle}", where {path/} isn't present for
+# the top (qemu) bundle (ie it's for submodules).
+
+tar xJf bundles.tar.xz -C $BUNDLE_DIR
+BUNDLE_FILES=$(find $BUNDLE_DIR -printf "%P\n"|grep "bundle$")
+
 if [ "$GIT_UPSTREAM_COMMIT_ISH" = "LATEST" ]; then
     if [[ $QEMU_TARBALL =~ $BASE_RE$EXTRA_RE$SUFFIX_RE ]]; then
         OLD_COMMIT_ISH=${BASH_REMATCH[3]}
     else
         #Assume release (or release candidate) tarball with equivalent tag:
-        OLD_COMMIT_ISH=$(cd $GIT_LOCAL_TREE && git rev-list --abbrev-commit \
+        OLD_COMMIT_ISH=$(cd ${LOCAL_REPO_MAP[0]} && git rev-list --abbrev-commit \
             --abbrev=9 -1 v$OLD_SOURCE_VERSION_AND_EXTRA)
     fi
     if [ ${#QEMU_TARBALL_SIG[@]} -ne 0 ]; then
         echo "INFO: Ignoring signature file: $QEMU_TARBALL_SIG"
         QEMU_TARBALL_SIG=
     fi
-    NEW_COMMIT_ISH=$(cd $GIT_LOCAL_TREE && git rev-parse --short=9 \
+    NEW_COMMIT_ISH=$(cd ${LOCAL_REPO_MAP[0]} && git rev-parse --short=9 \
         upstream/$GIT_BRANCH)
     NOW_SECONDS=$(date +%s)
 
-    git clone -ls $GIT_LOCAL_TREE $GIT_DIR -b $GIT_BRANCH &>/dev/null
+    git clone -ls ${LOCAL_REPO_MAP[0]} $GIT_DIR -b $GIT_BRANCH --single-branch &>/dev/null
     if  [ "$OLD_COMMIT_ISH" != "$NEW_COMMIT_ISH" ]; then
         echo "Please wait..."
         (cd $GIT_DIR && git remote add upstream \
         git://git.qemu-project.org/qemu.git &>/dev/null)
         (cd $GIT_DIR && git remote update upstream &>/dev/null)
         (cd $GIT_DIR && git checkout $NEW_COMMIT_ISH &>/dev/null)
-        # TODO: starting patch number for submodules are as follows:
-        # 1100: roms/seabios
-        # 1200: roms/ipxe
-        # 1300: roms/sgabios
-        # 1400: roms/SLOF
-        # 1500: roms/skiboot
-        # 1600: ui/keycodemapdb
-        # 1700: roms/openbios
         (cd $GIT_DIR && git submodule update --init --recursive &>/dev/null)
         VERSION_EXTRA=+git.$NOW_SECONDS.$NEW_COMMIT_ISH
     fi
@@ -116,7 +228,7 @@ if [ "$GIT_UPSTREAM_COMMIT_ISH" = "LATEST" ]; then
     X=$(echo $QEMU_VERSION|awk -F. '{print $3}')
     # 0 = release, 50 = development cycle, 90..99 equate to release candidates
     if [ "$X" != "0" -a "$X" != "50" ]; then
-        if [ "$NEXT_RELEASE_IS_MAJOR" == "0" ]; then
+        if [ "$NEXT_RELEASE_IS_MAJOR" = "0" ]; then
             SOURCE_VERSION=$MAJOR_VERSION.$[$MINOR_VERSION+1].0-rc$[X-90]
         else
             SOURCE_VERSION=$[$MAJOR_VERSION+1].0.0-rc$[X-90]
@@ -125,7 +237,7 @@ if [ "$GIT_UPSTREAM_COMMIT_ISH" = "LATEST" ]; then
         SOURCE_VERSION=$MAJOR_VERSION.$MINOR_VERSION.$X
     fi
     if  [ "$OLD_COMMIT_ISH" != "$NEW_COMMIT_ISH" ]; then
-        if (cd $GIT_LOCAL_TREE && git describe --exact-match $NEW_COMMIT_ISH \
+        if (cd ${LOCAL_REPO_MAP[0]} && git describe --exact-match $NEW_COMMIT_ISH \
             &>/dev/null); then
             if [ "$X" = "50" ]; then
                 echo "Ignoring non-standard tag"
@@ -149,12 +261,12 @@ if [ "$GIT_UPSTREAM_COMMIT_ISH" = "LATEST" ]; then
             exit
         fi
         echo "WARNING: To rebase, master is being checked out"
-        if ! (cd $GIT_LOCAL_TREE && git rebase upstream/$GIT_BRANCH \
+        if ! (cd ${LOCAL_REPO_MAP[0]} && git rebase upstream/$GIT_BRANCH \
         $GIT_BRANCH); then
             echo "WARNING: Script error? rebasing master on upstream/master" \
                 "succeeded in temp"
             echo "dir but failed in local tree! Please investigate"
-            (cd $GIT_LOCAL_TREE && git rebase --abort)
+            (cd ${LOCAL_REPO_MAP[0]} && git rebase --abort)
             rm qemu-$SOURCE_VERSION$VERSION_EXTRA.tar 
             exit
         fi
@@ -176,33 +288,55 @@ else # not based on LATEST upstream master, rather any upstream commitish
             "$GIT_UPSTREAM_COMMITISH"
         exit
     fi
-    if [ -d "$GIT_LOCAL_TREE" ]; then
+    if [ -d "${LOCAL_REPO_MAP[0]}" ]; then
         echo "Processing local git tree branch: $GIT_BRANCH, using commitish:"\
             "$GIT_UPSTREAM_COMMIT_ISH"
-        if ! (cd $GIT_LOCAL_TREE && git show-branch $GIT_BRANCH &>/dev/null)
+        if ! (cd ${LOCAL_REPO_MAP[0]} && git show-branch $GIT_BRANCH &>/dev/null)
         then
             echo "Error: Branch $GIT_BRANCH not found - please create a remote"\
                 "tracking branch of origin/$GIT_BRANCH"
             exit
         fi
-# check if we should also do submodule's here as well
-        git clone -ls $GIT_LOCAL_TREE $GIT_DIR -b $GIT_BRANCH &>/dev/null
-        if ! (cd $GIT_LOCAL_TREE && git remote show upstream &>/dev/null); then
-            echo "Remote for upstream git tree not found. Next time add remote"\
-                "named upstream for git://git.qemu.org/qemu.git and update"
-            (cd $GIT_DIR && git remote add upstream \
-                git://git.qemu-project.org/qemu.git)
-            (cd $GIT_DIR && git remote update)
-        fi
+        for entry in ${BUNDLE_FILES[@]}; do
+            if [[ $entry =~ ^(.*)[/]*([a-f0-9]{40})[.]bundle$ ]]; then
+                SUBDIR=${BASH_REMATCH[1]}
+                GITREPO_COMMIT_ISH=${BASH_REMATCH[2]}
+            else
+                echo "ERROR! BAD BUNDLE CONTENT!"
+                exit
+            fi
+            for (( i=0; i <$REPO_COUNT; i++ )); do
+                if [[ "$SUBDIR" = "${PATCH_PATH_MAP[$i]}" ]]; then
+		    PATCH_RANGE_INDEX=$i
+	            break
+                fi
+            done
+
+# !!!!! REVIEW WHERE THIS mkdir SHOULD BE HAPPENING (kind of replaces the clone operation)
+            mkdir -p $GIT_DIR/$SUBDIR
+            git -C $GIT_DIR/$SUBDIR init
+            git -C $GIT_DIR/$SUBDIR remote add origin file://$(readlink -f \
+                ${LOCAL_REPO_MAP[$PATCH_RANGE_INDEX]})
+            git -C $GIT_DIR/$SUBDIR fetch origin $GIT_BRANCH
+            git -C $GIT_DIR/$SUBDIR reset --hard $GITREPO_COMMIT_ISH
+            git -C $GIT_DIR/$SUBDIR remote add bundle $BUNDLE_DIR/$entry 
+	    # depending on how created, the bundle's head is called HEAD or FETCH_HEAD
+            #git -C $GIT_DIR/$SUBDIR fetch bundle HEAD
+            git -C $GIT_DIR/$SUBDIR fetch bundle FETCH_HEAD
+            git -C $GIT_DIR/$SUBDIR format-patch -N --suffix= --no-renames -o $CMP_DIR -k --stat=72 \
+                --indent-heuristic --zero-commit --no-signature --full-index \
+		--src-prefix=a/$SUBDIR --dst-prefix=b/$SUBDIR \
+                --start-number=$(expr $PATCH_RANGE_INDEX \* $PATCH_RANGE) \
+                $GITREPO_COMMIT_ISH..FETCH_HEAD > /dev/null
+        done
+
+# ( THIS ISNT WORKING - IS OLD HISTORY:)
     else
         echo "Processing $GIT_BRANCH branch of remote git tree, using"\
             "commitish: $GIT_UPSTREAM_COMMIT_ISH"
         echo "(For fast processing, consider establishing a local git tree"\
-            "at $GIT_LOCAL_TREE)"
-        git clone $GIT_TREE $GIT_DIR -b $GIT_BRANCH
-        (cd $GIT_DIR && git remote add upstream \
-            git://git.qemu-project.org/qemu.git)
-        (cd $GIT_DIR && git remote update)
+            "at ${LOCAL_REPO_MAP[0]})"
+# NYI - should be able to combine with local case for the most part
     fi
     QEMU_VERSION=$(cat $GIT_DIR/VERSION)
     SOURCE_VERSION=$OLD_SOURCE_VERSION_AND_EXTRA
@@ -210,21 +344,8 @@ else # not based on LATEST upstream master, rather any upstream commitish
     WRITE_LOG=1
 fi
 
-(cd $GIT_DIR && git format-patch -N --suffix= --no-renames -o $CMP_DIR -k \
-    --stat=72 --indent-heuristic --zero-commit --no-signature \
-    $GIT_UPSTREAM_COMMIT_ISH >/dev/null)
-
-check_patch()
-{
-    if [ ! -e checkpatch.pl ]; then
-        tar Jxf qemu-$SOURCE_VERSION$VERSION_EXTRA.tar.xz \
-        qemu-$SOURCE_VERSION/scripts/checkpatch.pl --strip-components=2
-    fi
-    ./checkpatch.pl --no-tree --terse --no-summary --summary-file --patch $1 >>\
-        checkpatch.log || true
-}
-
 rm -rf $GIT_DIR
+rm -rf $BUNDLE_DIR
 
 (
     CHANGED_COUNT=0
@@ -235,39 +356,106 @@ rm -rf $GIT_DIR
 
     shopt -s nullglob
 
-    # limit patch base file name to 40 chars ('30' is for path length)
     for i in $CMP_DIR/*; do
-        tail -n +2 $i > $CMP_DIR/${i:30:40}.patch
+        # index line isn't consistent, so cut full index to normal line length
+        sed -E -i 's/(^index [a-f0-9]{28})[a-f0-9]{12}([.][.][a-f0-9]{28})[a-f0-9]{12}( [0-9]{6}$)/\1\2\3/' $i
+	BASENAME=$(basename $i)
+        if [ "$FIVE_DIGIT_POTENTIAL" = "1" ]; then
+            if [[ $BASENAME =~ [[:digit:]]{4}-.* ]]; then
+                BASENAME=0$BASENAME
+            fi
+	fi
+        if [[ "$NUMBERED_PATCHES" = "0" ]]; then
+	    KEEP_COUNT=40+4+$FIVE_DIGIT_POTENTIAL+1
+        else
+	    KEEP_COUNT=40
+	fi
+        tail -n +2 $i > $CMP_DIR/${BASENAME:0:$KEEP_COUNT}.patch
 	rm $i
     done
-
-    for i in 0???-*.patch; do
-        if [ -e $CMP_DIR/$i ]; then
-            if cmp -s $CMP_DIR/$i $i; then
-                rm $CMP_DIR/$i
+    if [[ "$NUMBERED_PATCHES" = "0" ]]; then
+        for i in [0-9]*.patch; do
+            osc rm --force $i
+        done
+        # we need to make sure that w/out the numbered prefixes, the patchnames are all unique
+        mkdir checkdir
+        for i in $CMP_DIR/*; do
+            BASENAME=$(basename $i)
+	    FINALNAME=${BASENAME:4+$FIVE_DIGIT_POTENTIAL+1:40+1+5}
+	    if [[ -e checkdir/$FINALNAME ]]; then
+	        echo "ERROR! Patch name $FINALNAME is not unique! Please modify patch subject to achieve uniqueness"
+	        exit 1
+            fi
+	    cp $i checkdir/$FINALNAME
+        done
+        CHECK_DIR=checkdir
+	cp $CMP_DIR/*.patch .
+    else
+        CHECK_DIR=$CMP_DIR
+    fi
+    if [ "$FIVE_DIGIT_POTENTIAL" = "0" ]; then
+        CHECK_PREFIX="0"
+    else
+        CHECK_PREFIX="00"
+    fi
+    for i in $CHECK_DIR/*; do
+        BASENAME=$(basename $i)
+        if [ -e $BASENAME ]; then
+            if cmp -s $i $BASENAME; then
+                touch --reference=$BASENAME $i
+                rm $BASENAME
                 let UNCHANGED_COUNT+=1
             else
-                mv $CMP_DIR/$i .
-                check_patch $i
+                if [ "${BASENAME:0:1+$FIVE_DIGIT_POTENTIAL}" = "$CHECK_PREFIX" ]; then
+	            echo "$BASENAME" >> checkthese
+                fi
+                rm $BASENAME
                 let CHANGED_COUNT+=1
                 let TOTAL_COUNT+=1
             fi
         else
+            echo "  $BASENAME" >> qemu.changes.added
+            if [ "${BASENAME:0:1+$FIVE_DIGIT_POTENTIAL}" = "$CHECK_PREFIX" ]; then
+	        echo "$BASENAME" >> checkthese
+            fi
+            let ADDED_COUNT+=1
+            let TOTAL_COUNT+=1
+        fi
+    done
+    if [ "$FIVE_DIGIT_POTENTIAL" = "0" ]; then
+        NUMBERED_PATCH_RE="^[[:digit:]]{4}-.*[.]patch$"
+    else
+        NUMBERED_PATCH_RE="^[[:digit:]]{5}-.*[.]patch$"
+    fi
+    for i in *.patch; do
+	if [[ $i =~ $NUMBERED_PATCH_RE ]]; then
+            if [[ "$NUMBERED_PATCHES" = "1" ]]; then
+                osc rm --force $i
+                echo "  $i" >> qemu.changes.deleted
+                let DELETED_COUNT+=1
+                let TOTAL_COUNT+=1
+	    fi
+        else
             osc rm --force $i
-            echo "  ${i##*/}" >> qemu.changes.deleted
+            echo "  $i" >> qemu.changes.deleted
             let DELETED_COUNT+=1
             let TOTAL_COUNT+=1
         fi
     done
+    mv $CHECK_DIR/* .
+    if [ -e qemu.changes.added ]; then
+        xargs osc add < qemu.changes.added
+    fi
 
-    for i in $CMP_DIR/*; do
-        mv $i .
-        osc add ${i##*/}
-        check_patch ${i##*/}
-        echo "  ${i##*/}" >> qemu.changes.added
-        let ADDED_COUNT+=1
-        let TOTAL_COUNT+=1
-    done
+    if [[ -e checkthese ]]; then
+        tar Jxf qemu-$SOURCE_VERSION$VERSION_EXTRA.tar.xz \
+        qemu-$SOURCE_VERSION/scripts/checkpatch.pl --strip-components=2
+        for i in $(cat checkthese); do
+            ./checkpatch.pl --no-tree --terse --no-summary --summary-file \
+            --patch $i >> checkpatch.log || true
+        done
+    fi
+    rm -f checkthese
     rm -f checkpatch.pl
     if [ -s checkpatch.log ]; then
         echo "WARNING: Issues reported by qemu patch checker. Please handle" \
@@ -291,17 +479,47 @@ rm -rf $GIT_DIR
     SEABIOS_VERSION=$(tar JxfO qemu-$SOURCE_VERSION$VERSION_EXTRA.tar.xz \
         qemu-$SOURCE_VERSION/roms/seabios/.version | cut -d '-' -f 2)
 
-    for package in qemu qemu-linux-user; do
+    for package in qemu; do
         while IFS= read -r line; do
             if [ "$line" = "PATCH_FILES" ]; then
-                for i in 0???-*.patch; do
+                for i in [0-9]*-*.patch; do
                     NUM=${i%%-*}
-                    echo -e "Patch$NUM:      $i"
+		    DIV=$((10#$NUM/$PATCH_RANGE))
+		    REM=$((10#$NUM%$PATCH_RANGE))
+                    if [[ "$REM" = "0" ]]; then
+                        if [[ "$DIV" = "0" ]]; then
+                            echo "# Patches applied in base project:"
+                        else
+                            echo "# Patches applied in ${PATCH_PATH_MAP[$DIV]}:"
+                        fi
+                    fi
+                    if [[ "$FIVE_DIGIT_POTENTIAL" != "0" ]]; then
+                        if [[ "$NUMBERED_PATCHES" = "0" ]]; then
+                            PATCH_NUMBER=${i%%-*}
+                            echo -e "Patch$NUM:     ${i:${#PATCH_NUMBER}+1:40+1+5}"
+		        else
+                            echo -e "Patch$NUM:     $i"
+                        fi
+		    else
+                        if [[ "$NUMBERED_PATCHES" = "0" ]]; then
+                            PATCH_NUMBER=${i%%-*}
+                            echo -e "Patch$NUM:      ${i:${#PATCH_NUMBER}+1:40+1+5}"
+		        else
+                            echo -e "Patch$NUM:      $i"
+                        fi
+                    fi
                 done
             elif [ "$line" = "PATCH_EXEC" ]; then
-                for i in 0???-*.patch; do
+                for i in [0-9]*-*.patch; do
+		    S=$(grep "^Include-If: " $i) || true
                     NUM=${i%%-*}
-                    echo "%patch$NUM -p1"
+                    if [ "$S" != "" ]; then
+			echo "${S:12}"
+                        echo "%patch$NUM -p1"
+                        echo "%endif"
+                    else
+                        echo "%patch$NUM -p1"
+                    fi
                 done
             elif [ "$line" = "QEMU_VERSION" ]; then
                 echo "%define qemuver $QEMU_VERSION$VERSION_EXTRA"
@@ -347,6 +565,9 @@ rm -rf $GIT_DIR
             fi
         fi
     done
+    if [[ "$NUMBERED_PATCHES" = "0" ]]; then
+        rm -f [0-9]*-*.patch
+    fi
     if [ -e qemu.changes.deleted ]; then
         rm -f qemu.changes.deleted
     fi
@@ -361,21 +582,64 @@ rm -rf $GIT_DIR
 )
 
 rm -rf $CMP_DIR
+rm -rf checkdir
 
-sed -e 's|^\(Name:.*qemu\)|\1-testsuite|' < qemu.spec > qemu-testsuite.spec
-sed -i 's/^# spec file for package qemu/&-testsuite/' qemu-testsuite.spec
+osc service localrun format_spec_file
+}
 
-if [ "$1" = "-f" ]; then
-    if [ "$(rpm -q --queryformat '%{VERSION}' obs-service-format_spec_file)" -lt "20180820" ]; then
-        echo "WARNING! Not running osc format-spec-file service - recent obs package needed"
-    else
-        echo "running osc service to format spec file"
-        osc service localrun format_spec_file
-    fi
-else
-    echo "note: not running osc format_spec_file service. If desired, pass -f"
+#==============================================================================
+
+usage() {
+    echo "Usage:"
+    echo "bash ./git_update.sh <command>: script to manage package maintenance"
+    echo "using a git-based workflow. Commands are as follows:"
+    echo "  git2pkg (update package spec file and patches from git. Is default)"
+    echo "  pkg2git (update git (frombundle branch) from the package "bundleofbundles")"
+    echo "  refresh (refresh spec file from spec file template and "bundlofbundles")"
+}
+
+#==============================================================================
+
+if [ "$1" = "" ]; then
+    set -- git2pkg
 fi
-
-/bin/sh pre_checkin.sh -q
-
-echo "Please remember to run pre_checkin.sh after modifying qemu.changes."
+case  $1 in
+    initbundle )
+        initbundle
+        ;;
+    git2pkg )
+        echo "Updating the package from the $GIT_BRANCH branch of the local repos."
+        echo "(If SUCCESS is not printed upon completion, see /tmp/git2pkg.log for issues)"
+        TEMP_CHECK
+        initbundle &> /tmp/git2pkg.log
+        bundle2spec &>> /tmp/git2pkg.log
+        echo "SUCCESS"
+        tail -9 /tmp/git2pkg.log
+	;;
+    pkg2git )
+        echo "Exporting the package's git bundles to the local repo's frombundle branches..." 
+        echo "(If SUCCESS is not printed upon completion, see /tmp/pkg2git.log for issues)"
+        TEMP_CHECK
+        bundle2local &> /tmp/pkg2git.log
+        echo "SUCCESS"
+        echo "To modify package patches, use the frombundle branch as the basis for updating"
+        echo "the $GIT_BRANCH branch with the new patch queue."
+        echo "Then export the changes back to the package using update_git.sh git2pkg"
+        ;;
+    refresh )
+        echo "Updating the spec file and patches from the spec file template and the bundle"
+        echo "of bundles (bundles.tar.xz)"
+        echo "(If SUCCESS is not printed upon completion, see /tmp/refresh.log for issues)"
+        TEMP_CHECK
+        bundle2spec &> /tmp/refresh.log
+        echo "SUCCESS"
+        tail -9 /tmp/refresh.log
+        ;;
+    * )
+        echo "Unknown command"
+        usage
+        ;;
+    help )
+        usage
+	;;
+esac

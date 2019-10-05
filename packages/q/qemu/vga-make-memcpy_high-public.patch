@@ -1,0 +1,39 @@
+From: Gerd Hoffmann <kraxel@redhat.com>
+Date: Fri, 8 Mar 2019 12:34:38 +0100
+Subject: vga: make memcpy_high() public
+
+Git-commit: 03f5061c0a44dcf8d73a05a6f375e3fe5005f050
+
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ vgasrc/vgafb.c | 3 +--
+ vgasrc/vgafb.h | 1 +
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/roms/seabios/vgasrc/vgafb.c b/roms/seabios/vgasrc/vgafb.c
+index 46adfb5e06143d63eeb46ddb122b..f8f35c2d2fbabb2bf816b5652e4f 100644
+--- a/roms/seabios/vgasrc/vgafb.c
++++ b/roms/seabios/vgasrc/vgafb.c
+@@ -187,8 +187,7 @@ gfx_packed(struct gfx_op *op)
+  ****************************************************************/
+ 
+ // Use int 1587 call to copy memory to/from the framebuffer.
+-static void
+-memcpy_high(void *dest, void *src, u32 len)
++void memcpy_high(void *dest, void *src, u32 len)
+ {
+     u64 gdt[6];
+     gdt[2] = GDT_DATA | GDT_LIMIT(0xfffff) | GDT_BASE((u32)src);
+diff --git a/roms/seabios/vgasrc/vgafb.h b/roms/seabios/vgasrc/vgafb.h
+index ccdc70355caf9e05327e3fb4c39c..aae6b9b3a873d3c3d42a9107ae23 100644
+--- a/roms/seabios/vgasrc/vgafb.h
++++ b/roms/seabios/vgasrc/vgafb.h
+@@ -29,6 +29,7 @@ struct carattr {
+ };
+ 
+ // vgafb.c
++void memcpy_high(void *dest, void *src, u32 len);
+ void init_gfx_op(struct gfx_op *op, struct vgamode_s *vmode_g);
+ void handle_gfx_op(struct gfx_op *op);
+ void *text_address(struct cursorpos cp);

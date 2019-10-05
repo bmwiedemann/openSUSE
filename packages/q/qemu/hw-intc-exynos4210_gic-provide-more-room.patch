@@ -1,0 +1,57 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Wed, 15 May 2019 13:32:01 -0600
+Subject: hw/intc/exynos4210_gic: provide more room when formatting alias names
+
+sprintf related parameter validation complains about the size of the
+buffer being written to in exynos4210_gic_realize(). Provide a bit more
+space to avoid the following warning:
+/home/abuild/rpmbuild/BUILD/qemu-4.0.0/hw/intc/exynos4210_gic.c: In function 'exynos4210_gic_realize':
+/home/abuild/rpmbuild/BUILD/qemu-4.0.0/hw/intc/exynos4210_gic.c:316:36: error: '%x' directive writing between 1 and 7 bytes into a region of size between 4 and 28 [-Werror=format-overflow=]
+  316 |         sprintf(cpu_alias_name, "%s%x", cpu_prefix, i);
+      |                                    ^~
+/home/abuild/rpmbuild/BUILD/qemu-4.0.0/hw/intc/exynos4210_gic.c:316:33: note: directive argument in the range [0, 29020050]
+  316 |         sprintf(cpu_alias_name, "%s%x", cpu_prefix, i);
+      |                                 ^~~~~~
+In file included from /usr/include/stdio.h:867,
+                 from /home/abuild/rpmbuild/BUILD/qemu-4.0.0/include/qemu/osdep.h:99,
+                 from /home/abuild/rpmbuild/BUILD/qemu-4.0.0/hw/intc/exynos4210_gic.c:23:
+/usr/include/bits/stdio2.h:36:10: note: '__builtin___sprintf_chk' output between 2 and 32 bytes into a destination of size 28
+   36 |   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   37 |       __bos (__s), __fmt, __va_arg_pack ());
+      |       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/abuild/rpmbuild/BUILD/qemu-4.0.0/hw/intc/exynos4210_gic.c:326:37: error: '%x' directive writing between 1 and 7 bytes into a region of size between 3 and 28 [-Werror=format-overflow=]
+  326 |         sprintf(dist_alias_name, "%s%x", dist_prefix, i);
+      |                                     ^~
+/home/abuild/rpmbuild/BUILD/qemu-4.0.0/hw/intc/exynos4210_gic.c:326:34: note: directive argument in the range [0, 29020050]
+  326 |         sprintf(dist_alias_name, "%s%x", dist_prefix, i);
+      |                                  ^~~~~~
+In file included from /usr/include/stdio.h:867,
+                 from /home/abuild/rpmbuild/BUILD/qemu-4.0.0/include/qemu/osdep.h:99,
+                 from /home/abuild/rpmbuild/BUILD/qemu-4.0.0/hw/intc/exynos4210_gic.c:23:
+/usr/include/bits/stdio2.h:36:10: note: '__builtin___sprintf_chk' output between 2 and 33 bytes into a destination of size 28
+   36 |   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   37 |       __bos (__s), __fmt, __va_arg_pack ());
+      |       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/intc/exynos4210_gic.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/hw/intc/exynos4210_gic.c b/hw/intc/exynos4210_gic.c
+index e37d457fcf3ae8f37ae3c4047161..640f146a50af42ccd03aa18786f2 100644
+--- a/hw/intc/exynos4210_gic.c
++++ b/hw/intc/exynos4210_gic.c
+@@ -288,8 +288,8 @@ static void exynos4210_gic_realize(DeviceState *dev, Error **errp)
+     SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+     const char cpu_prefix[] = "exynos4210-gic-alias_cpu";
+     const char dist_prefix[] = "exynos4210-gic-alias_dist";
+-    char cpu_alias_name[sizeof(cpu_prefix) + 3];
+-    char dist_alias_name[sizeof(cpu_prefix) + 3];
++    char cpu_alias_name[sizeof(cpu_prefix) + 7];
++    char dist_alias_name[sizeof(cpu_prefix) + 8];
+     SysBusDevice *gicbusdev;
+     uint32_t i;
+ 

@@ -26,4 +26,12 @@
   * urlparsing.patch</comment>
     <requestid>730449</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>c872280de5f5bddfe410450ecfee3e9d</srcmd5>
+    <version>18.6.0</version>
+    <time>1570285316</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>735394</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,41 @@
+From: Alistair Francis <Alistair.Francis@wdc.com>
+Date: Sat, 4 May 2019 07:58:35 -0600
+Subject: hw/usb/hcd-xhci: Fix GCC 9 build warning
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Fix this build warning with GCC 9 on Fedora 30:
+hw/usb/hcd-xhci.c:3339:66: error: %d directive output may be truncated writing between 1 and 10 bytes into a region of size 5 [-Werror=format-truncation=]
+ 3339 |             snprintf(port->name, sizeof(port->name), "usb2 port #%d", i+1);
+      |                                                                  ^~
+hw/usb/hcd-xhci.c:3339:54: note: directive argument in the range [1, 2147483647]
+ 3339 |             snprintf(port->name, sizeof(port->name), "usb2 port #%d", i+1);
+      |                                                      ^~~~~~~~~~~~~~~
+In file included from /usr/include/stdio.h:867,
+                 from /home/alistair/qemu/include/qemu/osdep.h:99,
+                 from hw/usb/hcd-xhci.c:21:
+/usr/include/bits/stdio2.h:67:10: note: __builtin___snprintf_chk output between 13 and 22 bytes into a destination of size 16
+   67 |   return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   68 |        __bos (__s), __fmt, __va_arg_pack ());
+      |        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Signed-off-by: Alistair Francis <alistair.francis@wdc.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/usb/hcd-xhci.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/hw/usb/hcd-xhci.c b/hw/usb/hcd-xhci.c
+index 5894a186633414970fe748dbd9f4..47ea8dd3a5f6a09e361f0f59c7b9 100644
+--- a/hw/usb/hcd-xhci.c
++++ b/hw/usb/hcd-xhci.c
+@@ -3324,6 +3324,7 @@ static void usb_xhci_init(XHCIState *xhci)
+     usb_bus_new(&xhci->bus, sizeof(xhci->bus), &xhci_bus_ops, dev);
+ 
+     for (i = 0; i < usbports; i++) {
++        g_assert(i < MAX(MAXPORTS_2, MAXPORTS_3));
+         speedmask = 0;
+         if (i < xhci->numports_2) {
+             if (xhci_get_flag(xhci, XHCI_FLAG_SS_FIRST)) {

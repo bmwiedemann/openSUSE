@@ -1,6 +1,6 @@
---- Makefile.am.orig	2019-06-26 11:20:02.614308504 +0200
-+++ Makefile.am	2019-06-26 11:26:00.290920802 +0200
-@@ -40,12 +40,12 @@
+--- Makefile.am.orig	2019-10-03 20:01:45.308180672 +0200
++++ Makefile.am	2019-10-03 20:04:48.506403070 +0200
+@@ -67,12 +67,12 @@
  lib_LTLIBRARIES += libags_vst.la 
  endif
  
@@ -16,7 +16,7 @@
  
  EXTRA_DIST = config.rpath \
  	COPYING.server \
-@@ -184,7 +184,7 @@
+@@ -213,7 +213,7 @@
  # pkg-config
  pkgconfigdir = $(libdir)/pkgconfig
  pkgconfig_DATA = libags.pc libags_audio.pc libags_gui.pc
@@ -25,7 +25,7 @@
  
  EXTRA_DIST += libags.pc.in libags_audio.pc.in libags_gui.pc.in libgsequencer.pc.in
  # EXTRA_DIST += libgsequencer.pc.in
-@@ -227,7 +227,7 @@
+@@ -256,7 +256,7 @@
  # include
  otherincludedir = $(includedir)/ags
  nobase_include_HEADERS = $(libags_la_HEADERS_0) $(libags_thread_la_HEADERS_0) $(libags_server_la_HEADERS_0) $(libags_audio_la_HEADERS_0) $(libags_gui_la_HEADERS_0)
@@ -34,7 +34,7 @@
  
  # doc
  # docdir = $(datadir)/doc/gsequencer
-@@ -2236,9 +2236,9 @@
+@@ -2393,9 +2393,9 @@
  	mkdir -p $(top_builddir)/html/developer-docs
  	mkdir -p $(top_builddir)/html/user-docs
  	mkdir -p $(top_builddir)/html/osc-docs
@@ -47,7 +47,7 @@
  	$(MAKE) -C $(top_srcdir)/docs/reference/libags
  	cd $(top_srcdir)
  	$(MAKE) -C $(top_srcdir)/docs/reference/libags-audio
-@@ -2285,18 +2285,18 @@
+@@ -2442,18 +2442,18 @@
  	gzip -9 -c $(top_srcdir)/ChangeLog > $(DESTDIR)/$(docdir)/changelog.gz
  
  fix-local-html: html
@@ -78,7 +78,7 @@
  
  fix-online-books-html: html
  	find $(top_srcdir)/html/ -name "*.html" -type f -exec sed -i 's/\/usr\/share\/icons\/Adwaita\/32x32\/actions/..\/images/g' {} \;
-@@ -2327,19 +2327,14 @@
+@@ -2484,19 +2484,14 @@
  	install -c -p -m 644 $(top_builddir)/html/user-docs/* $(DESTDIR)/$(docdir)/html/
  	install -c -p -m 644 $(top_builddir)/html/developer-docs/* $(DESTDIR)/$(datadir)/doc/libags-audio-doc/html/
  	install -c -p -m 644 $(top_builddir)/html/osc-docs/* $(DESTDIR)/$(datadir)/doc/libags-audio-doc/osc-server/

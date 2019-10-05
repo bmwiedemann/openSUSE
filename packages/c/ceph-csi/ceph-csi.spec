@@ -27,9 +27,13 @@ Url:            https://github.com/ceph/ceph-csi
 Source0:        %{name}-%{version}.tar.xz
 Source98:       README
 Source99:       update-tarball.sh
+
+# bsc#1152690 - Added forcecephkernelclient as startup parameter
+Patch1:         0001-Added-forcecephkernelclient-as-startup-parameter-to-.patch
+
 %if 0%{?suse_version}
 # _insert_obs_source_lines_here
-ExclusiveArch:  x86_64 aarch64 ppc64le s390x
+ExclusiveArch:  x86_64 aarch64 ppc64 ppc64le
 %endif
 
 # Go and spec requirements
@@ -51,16 +55,33 @@ See https://github.com/ceph/ceph-csi for more information.
 ################################################################################
 # The tasty, meaty build section
 ################################################################################
+
+%define _buildshell /bin/bash
+
 %{go_nostrip}
 %{go_provides}
 
 %prep
 %setup -q -n %{name}
 
+%patch1 -p1
+
 %build
 %goprep github.com/ceph/ceph-csi
 export CGO_ENABLED=0
-%gobuild cmd  # builds a binary called 'cmd'
+
+# Make sure version contains parseable symbols
+version_parsed=%{version}
+version_parsed="${version_parsed//[+]/-}"
+git_commit_parsed="$(echo $version_parsed | sed 's/.*\.g\(.*\).*/\1/')"
+linker_flags=(
+    "-X" "github.com/ceph/ceph-csi/pkg/util.GitCommit=$git_commit_parsed"
+    "-X" "github.com/ceph/ceph-csi/pkg/util.DriverVersion=$version_parsed"
+)
+build_flags=("-ldflags" "${linker_flags[*]}")
+
+# builds a binary called 'cmd'
+%gobuild "${build_flags[@]}" cmd
 
 %install
 

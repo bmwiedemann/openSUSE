@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  4 17:40:59 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Add service_identity BuildRequires so the integration tests don't fail on
+  Leap (required for boo#1153017).
+
+-------------------------------------------------------------------
 Thu Sep 12 17:21:23 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to fix build with new Twisted releases:

@@ -6,9 +6,9 @@
     <param name="versionformat">@PARENT_TAG@~git@TAG_OFFSET@.%h</param>
     <param name="scm">git</param>
     <!-- use 1.4 branch -->
-    <param name="revision">389-ds-base-1.4.1.6</param>
+    <param name="revision">389-ds-base-1.4.2.2</param>
     <!-- use 1.4.0.20 tag as base -->
-    <param name="match-tag">389-ds-base-1.4.1.6</param>
+    <param name="match-tag">389-ds-base-1.4.2.2</param>
     <!-- remove the extra prefix from the tag again it looks so funny because the service removed "-" from the string before-->
     <param name="versionrewrite-pattern">389dsbase(.*)</param>
     <param name="versionrewrite-replacement">\1</param>

@@ -1,0 +1,27 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Mon, 11 Mar 2019 22:02:37 -0600
+Subject: tests: change error message in test 162
+
+Since we have a quite restricted execution environment, as far as
+networking is concerned, we need to change the error message we expect
+in test 162. There is actually no routing set up so the error we get is
+"Network is unreachable". Change the expected output accordingly.
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ tests/qemu-iotests/162.out | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/qemu-iotests/162.out b/tests/qemu-iotests/162.out
+index 3c5be2c5699a225cc80bbdc40bec..390cca9027e918f1a0d252753ce5 100644
+--- a/tests/qemu-iotests/162.out
++++ b/tests/qemu-iotests/162.out
+@@ -1,7 +1,7 @@
+ QA output created by 162
+ 
+ === NBD ===
+-qemu-img: Could not open 'json:{"driver": "nbd", "host": 42}': Failed to connect socket: Invalid argument
++qemu-img: Could not open 'json:{"driver": "nbd", "host": 42}': Failed to connect socket: Network is unreachable
+ image: nbd://localhost:PORT
+ image: nbd+unix://?socket=42
+ 

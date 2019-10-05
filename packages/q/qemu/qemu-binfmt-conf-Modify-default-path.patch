@@ -1,0 +1,27 @@
+From: =?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
+Date: Wed, 10 Aug 2016 19:00:24 +0200
+Subject: qemu-binfmt-conf: Modify default path
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Change QEMU_PATH from /usr/local/bin to /usr/bin prefix.
+
+Signed-off-by: Andreas Färber <afaerber@suse.de>
+---
+ scripts/qemu-binfmt-conf.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/qemu-binfmt-conf.sh b/scripts/qemu-binfmt-conf.sh
+index b5a16742a149c0d2e08c6a34d08e..4f1358e2fd8c0da34cf06a763ca8 100755
+--- a/scripts/qemu-binfmt-conf.sh
++++ b/scripts/qemu-binfmt-conf.sh
+@@ -319,7 +319,7 @@ BINFMT_SET=qemu_register_interpreter
+ SYSTEMDDIR="/etc/binfmt.d"
+ DEBIANDIR="/usr/share/binfmts"
+ 
+-QEMU_PATH=/usr/local/bin
++QEMU_PATH=/usr/bin
+ CREDENTIAL=no
+ PERSISTENT=no
+ QEMU_SUFFIX=""

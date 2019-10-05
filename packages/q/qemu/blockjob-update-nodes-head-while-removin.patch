@@ -1,0 +1,59 @@
+From: Sergio Lopez <slp@redhat.com>
+Date: Wed, 11 Sep 2019 12:03:16 +0200
+Subject: blockjob: update nodes head while removing all bdrv
+
+Git-commit: d876bf676f5e7c6aa9ac64555e48cba8734ecb2f
+
+block_job_remove_all_bdrv() iterates through job->nodes, calling
+bdrv_root_unref_child() for each entry. The call to the latter may
+reach child_job_[can_]set_aio_ctx(), which will also attempt to
+traverse job->nodes, potentially finding entries that where freed
+on previous iterations.
+
+To avoid this situation, update job->nodes head on each iteration to
+ensure that already freed entries are no longer linked to the list.
+
+RHBZ: https://bugzilla.redhat.com/show_bug.cgi?id=1746631
+Signed-off-by: Sergio Lopez <slp@redhat.com>
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Max Reitz <mreitz@redhat.com>
+Message-id: 20190911100316.32282-1-mreitz@redhat.com
+Reviewed-by: Sergio Lopez <slp@redhat.com>
+Signed-off-by: Max Reitz <mreitz@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ blockjob.c | 17 +++++++++++++----
+ 1 file changed, 13 insertions(+), 4 deletions(-)
+
+diff --git a/blockjob.c b/blockjob.c
+index 20b7f557da3e491927b99b113b73..74abb97bfdf27b5a9f4f82cd55b4 100644
+--- a/blockjob.c
++++ b/blockjob.c
+@@ -186,14 +186,23 @@ static const BdrvChildRole child_job = {
+ 
+ void block_job_remove_all_bdrv(BlockJob *job)
+ {
+-    GSList *l;
+-    for (l = job->nodes; l; l = l->next) {
++    /*
++     * bdrv_root_unref_child() may reach child_job_[can_]set_aio_ctx(),
++     * which will also traverse job->nodes, so consume the list one by
++     * one to make sure that such a concurrent access does not attempt
++     * to process an already freed BdrvChild.
++     */
++    while (job->nodes) {
++        GSList *l = job->nodes;
+         BdrvChild *c = l->data;
++
++        job->nodes = l->next;
++
+         bdrv_op_unblock_all(c->bs, job->blocker);
+         bdrv_root_unref_child(c);
++
++        g_slist_free_1(l);
+     }
+-    g_slist_free(job->nodes);
+-    job->nodes = NULL;
+ }
+ 
+ bool block_job_has_bdrv(BlockJob *job, BlockDriverState *bs)

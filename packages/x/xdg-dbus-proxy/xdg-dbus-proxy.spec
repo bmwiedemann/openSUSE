@@ -18,7 +18,7 @@
 
 
 Name:           xdg-dbus-proxy
-Version:        0.1.1
+Version:        0.1.2
 Release:        0
 Summary:        Filtering proxy for D-Bus connections
 License:        LGPL-2.1-or-later
@@ -26,6 +26,8 @@ Group:          System/Daemons
 URL:            https://github.com/flatpak/xdg-dbus-proxy
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 
+BuildRequires:  docbook-xsl-stylesheets
+BuildRequires:  libxslt-tools
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
@@ -51,5 +53,6 @@ as a standalone module to facilitate using it in other contexts.
 %license COPYING
 %doc NEWS
 %{_bindir}/xdg-dbus-proxy
+%{_mandir}/man1/xdg-dbus-proxy.1%{ext_man}
 
 %changelog

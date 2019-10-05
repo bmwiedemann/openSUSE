@@ -16,4 +16,13 @@
     <comment>Remove superfluous devel dependency for noarch package</comment>
     <requestid>659449</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>986b74a2f4746b17ffff3debc8f0ba97</srcmd5>
+    <version>0.2.0</version>
+    <time>1570285275</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch off broken tests due to something wrong with arrow.
+  gh#hackebrot/jinja2-time#6</comment>
+    <requestid>735283</requestid>
+  </revision>
 </revisionlist>

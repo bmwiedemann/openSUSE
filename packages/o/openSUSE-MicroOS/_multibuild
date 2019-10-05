@@ -1,4 +1,6 @@
 <multibuild>
+	<!-- Special case: The Pi2 only gets plain MicroOS -->
+	<flavor>RaspberryPi2</flavor>
 	<!--
 		for a in kvm-and-xen VMware MS-HyperV OpenStack-Cloud Pine64 RaspberryPi Vagrant hardware; do
 			for f in "" "ContainerHost-" "Kubic-kubeadm-"; do

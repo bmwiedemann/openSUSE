@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  4 15:25:51 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Switch off broken tests due to something wrong with arrow.
+  gh#hackebrot/jinja2-time#6
+
+-------------------------------------------------------------------
 Tue Dec  4 12:49:29 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package

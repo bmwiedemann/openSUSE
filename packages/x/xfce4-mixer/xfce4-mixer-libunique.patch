@@ -1,0 +1,108 @@
+From 7a18841c988edb593127842ec5c919df537f9ce0 Mon Sep 17 00:00:00 2001
+From: Andrzej <ndrwrdck@gmail.com>
+Date: Sat, 12 Apr 2014 08:53:09 +0100
+Subject: Make Unique support optional
+
+---
+ configure.ac.in    |  4 +++-
+ xfce4-mixer/main.c | 21 +++++++++++++++++++++
+ 2 files changed, 24 insertions(+), 1 deletion(-)
+
+Index: xfce4-mixer-4.11.0/configure.ac
+===================================================================
+--- xfce4-mixer-4.11.0.orig/configure.ac
++++ xfce4-mixer-4.11.0/configure.ac
+@@ -102,7 +102,6 @@ XDT_CHECK_PACKAGE([GLIB], [glib-2.0], [2
+ XDT_CHECK_PACKAGE([GTHREAD], [gthread-2.0], [2.24.0])
+ XDT_CHECK_PACKAGE([DBUS_GLIB], [dbus-glib-1], [0.84])
+ XDT_CHECK_PACKAGE([GTK], [gtk+-2.0], [2.20.0])
+-XDT_CHECK_PACKAGE([UNIQUE], [unique-1.0], [1.1])
+ XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [4.10.0])
+ XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-1], [4.10.0])
+ XDT_CHECK_PACKAGE([LIBXFCE4PANEL], [libxfce4panel-1.0], [4.10.0])
+@@ -130,6 +129,8 @@ dnl *** Check for optional packages ***
+ dnl ***********************************
+ XDT_CHECK_OPTIONAL_PACKAGE([KEYBINDER], [keybinder], [0.2.2], [keybinder],
+                            [keybinder Support])
++XDT_CHECK_OPTIONAL_PACKAGE([UNIQUE], [unique-1.0], [1.1], [unique],
++                           [unique Support])
+ 
+ dnl ***********************************
+ dnl *** Check for debugging support ***
+@@ -172,6 +173,7 @@ dnl ***************************
+ echo
+ echo "Build Configuration:"
+ echo
++echo " * unique Support:                       ${UNIQUE_FOUND:-no}"
+ echo " * keybinder Support:                    ${KEYBINDER_FOUND:-no}"
+ echo " * Debug Support:                        $enable_debug"
+ echo
+Index: xfce4-mixer-4.11.0/xfce4-mixer/main.c
+===================================================================
+--- xfce4-mixer-4.11.0.orig/xfce4-mixer/main.c
++++ xfce4-mixer-4.11.0/xfce4-mixer/main.c
+@@ -30,7 +30,10 @@
+ #include <gst/gst.h>
+ 
+ #include <gtk/gtk.h>
++
++#ifdef HAVE_UNIQUE
+ #include <unique/unique.h>
++#endif
+ 
+ #include <libxfce4util/libxfce4util.h>
+ #include <libxfce4ui/libxfce4ui.h>
+@@ -42,6 +45,7 @@
+ 
+ 
+ 
++#ifdef HAVE_UNIQUE
+ static UniqueResponse
+ message_received (UniqueApp         *app,
+                   UniqueCommand      command,
+@@ -68,6 +72,7 @@ message_received (UniqueApp         *app
+ 
+   return response;
+ }
++#endif
+ 
+ 
+ 
+@@ -75,7 +80,9 @@ int
+ main (int    argc,
+       char **argv)
+ {
++#ifdef HAVE_UNIQUE
+   UniqueApp          *app;
++#endif
+   GtkWidget          *window;
+   GError             *error = NULL;
+   gboolean            debug_mode = FALSE;
+@@ -162,6 +169,7 @@ main (int    argc,
+   if (debug_mode)
+     xfce_mixer_dump_gst_data ();
+ 
++#ifdef HAVE_UNIQUE
+   /* Create unique application */
+   app = unique_app_new ("org.xfce.xfce4-mixer", NULL);
+   if (unique_app_is_running (app))
+@@ -192,6 +200,19 @@ main (int    argc,
+       /* Destroy the window */
+       gtk_widget_destroy (window);
+     }
++#else
++  /* Create the mixer window */
++  window = xfce_mixer_window_new ();
++
++  /* Display the mixer window */
++  gtk_widget_show (window);
++
++  /* Enter the GTK+ main loop */
++  gtk_main ();
++
++  /* Destroy the window */
++  gtk_widget_destroy (window);
++#endif
+ 
+   /* Shutdown the mixer library */
+   xfce_mixer_shutdown ();

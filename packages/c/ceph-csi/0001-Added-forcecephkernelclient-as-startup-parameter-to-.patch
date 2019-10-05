@@ -1,0 +1,78 @@
+From 3bd68641812e24891a603e0cea1f25a60435a4c9 Mon Sep 17 00:00:00 2001
+From: Stefan Haas <shaas@suse.com>
+Date: Tue, 1 Oct 2019 16:23:40 +0200
+Subject: [PATCH] Added forcecephkernelclient as startup parameter to force
+ enabling ceph kernel clients for kernels < 4.17
+
+Signed-off-by: Stefan Haas <shaas@suse.com>
+---
+ cmd/cephcsi.go              | 1 +
+ pkg/cephfs/driver.go        | 2 +-
+ pkg/cephfs/volumemounter.go | 4 ++--
+ pkg/util/util.go            | 3 ++-
+ 4 files changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/cmd/cephcsi.go b/cmd/cephcsi.go
+index 82638b74..a9458c06 100644
+--- a/cmd/cephcsi.go
++++ b/cmd/cephcsi.go
+@@ -63,6 +63,7 @@ func init() {
+ 
+ 	// cephfs related flags
+ 	flag.StringVar(&conf.MountCacheDir, "mountcachedir", "", "mount info cache save dir")
++	flag.BoolVar(&conf.ForceKernelClient, "forcecephkernelclient", false, "enable Ceph Kernel clients on kernel < 4.17 which support quotas")
+ 
+ 	// liveness/grpc metrics related flags
+ 	flag.IntVar(&conf.MetricsPort, "metricsport", 8080, "TCP port for liveness/grpc metrics requests")
+diff --git a/pkg/cephfs/driver.go b/pkg/cephfs/driver.go
+index 56396507..260c49a9 100644
+--- a/pkg/cephfs/driver.go
++++ b/pkg/cephfs/driver.go
+@@ -95,7 +95,7 @@ func (fs *Driver) Run(conf *util.Config, cachePersister util.CachePersister) {
+ 	// Configuration
+ 	PluginFolder = conf.PluginPath
+ 
+-	if err := loadAvailableMounters(); err != nil {
++	if err := loadAvailableMounters(conf); err != nil {
+ 		klog.Fatalf("cephfs: failed to load ceph mounters: %v", err)
+ 	}
+ 
+diff --git a/pkg/cephfs/volumemounter.go b/pkg/cephfs/volumemounter.go
+index a4833101..31845c20 100644
+--- a/pkg/cephfs/volumemounter.go
++++ b/pkg/cephfs/volumemounter.go
+@@ -49,7 +49,7 @@ var (
+ 
+ // Load available ceph mounters installed on system into availableMounters
+ // Called from driver.go's Run()
+-func loadAvailableMounters() error {
++func loadAvailableMounters(conf *util.Config) error {
+ 	// #nosec
+ 	fuseMounterProbe := exec.Command("ceph-fuse", "--version")
+ 	// #nosec
+@@ -70,7 +70,7 @@ func loadAvailableMounters() error {
+ 		if err != nil {
+ 			return err
+ 		}
+-		if majorVers >= 4 && minorVers >= 17 {
++		if conf.ForceKernelClient == true || majorVers >= 4 && minorVers >= 17 {
+ 			klog.Infof("loaded mounter: %s", volumeMounterKernel)
+ 			availableMounters = append(availableMounters, volumeMounterKernel)
+ 		} else {
+diff --git a/pkg/util/util.go b/pkg/util/util.go
+index 08dc6e39..c7c1c832 100644
+--- a/pkg/util/util.go
++++ b/pkg/util/util.go
+@@ -63,7 +63,8 @@ type Config struct {
+ 	PluginPath      string // location of cephcsi plugin
+ 
+ 	// cephfs related flags
+-	MountCacheDir string // mount info cache save dir
++	MountCacheDir     string // mount info cache save dir
++	ForceKernelClient bool   // force to use the ceph kernel client even if the kernel is < 4.17
+ 
+ 	// metrics related flags
+ 	MetricsPath       string        // path of prometheus endpoint where metrics will be available
+-- 
+2.23.0
+

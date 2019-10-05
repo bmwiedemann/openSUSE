@@ -1,0 +1,41 @@
+From: Olaf Hering <olaf@aepfle.de>
+Date: Tue, 8 Jan 2019 14:20:08 +0100
+Subject: xen: ignore live parameter from xen-save-devices-state
+
+References: bsc#1079730, bsc#1101982, bsc#1063993
+
+The final step of xl migrate|save for an HVM domU is saving the state of
+qemu. This also involves releasing all block devices. While releasing
+backends ought to be a separate step, such functionality is not
+implemented.
+
+Unfortunately, releasing the block devices depends on the optional
+'live' option. This breaks offline migration with 'virsh migrate domU
+dom0' because the sending side does not release the disks, as a result
+the receiving side can not properly claim write access to the disks.
+
+As a minimal fix, remove the dependency on the 'live' option. Upstream
+may fix this in a different way, like removing the newly added 'live'
+parameter entirely.
+
+Fixes: 5d6c599fe1 ("migration, xen: Fix block image lock issue on live migration")
+
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ migration/savevm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/migration/savevm.c b/migration/savevm.c
+index 79ed44d47576ff2942da04827eae..106e6e640e87c99b655aca3a5d96 100644
+--- a/migration/savevm.c
++++ b/migration/savevm.c
+@@ -2693,7 +2693,7 @@ void qmp_xen_save_devices_state(const char *filename, bool has_live, bool live,
+          * So call bdrv_inactivate_all (release locks) here to let the other
+          * side of the migration take controle of the images.
+          */
+-        if (live && !saved_vm_running) {
++        if (!saved_vm_running) {
+             ret = bdrv_inactivate_all();
+             if (ret) {
+                 error_setg(errp, "%s: bdrv_inactivate_all() failed (%d)",

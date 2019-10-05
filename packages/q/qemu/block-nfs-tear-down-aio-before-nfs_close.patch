@@ -1,0 +1,39 @@
+From: Peter Lieven <pl@kamp.de>
+Date: Tue, 10 Sep 2019 17:41:09 +0200
+Subject: block/nfs: tear down aio before nfs_close
+
+Git-commit: 601dc6559725f7a614b6f893611e17ff0908e914
+
+nfs_close is a sync call from libnfs and has its own event
+handler polling on the nfs FD. Avoid that both QEMU and libnfs
+are intefering here.
+
+CC: qemu-stable@nongnu.org
+Signed-off-by: Peter Lieven <pl@kamp.de>
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ block/nfs.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/block/nfs.c b/block/nfs.c
+index d93241b3bb84cf0a662f0ddec582..2b7a0782419af82aea80dd76e474 100644
+--- a/block/nfs.c
++++ b/block/nfs.c
+@@ -390,12 +390,14 @@ static void nfs_attach_aio_context(BlockDriverState *bs,
+ static void nfs_client_close(NFSClient *client)
+ {
+     if (client->context) {
++        qemu_mutex_lock(&client->mutex);
++        aio_set_fd_handler(client->aio_context, nfs_get_fd(client->context),
++                           false, NULL, NULL, NULL, NULL);
++        qemu_mutex_unlock(&client->mutex);
+         if (client->fh) {
+             nfs_close(client->context, client->fh);
+             client->fh = NULL;
+         }
+-        aio_set_fd_handler(client->aio_context, nfs_get_fd(client->context),
+-                           false, NULL, NULL, NULL, NULL);
+         nfs_destroy_context(client->context);
+         client->context = NULL;
+     }

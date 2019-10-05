@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct  4 08:21:40 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid double %setup.
+
+-------------------------------------------------------------------
 Mon Sep 30 14:35:37 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Initial build for browserpass-native 3.0.6

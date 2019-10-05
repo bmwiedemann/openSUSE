@@ -408,4 +408,12 @@
 - Extended the libags-audio API.</comment>
     <requestid>730048</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>faf011331102dd0e923903e45fd338a0</srcmd5>
+    <version>2.3.8</version>
+    <time>1570285272</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>734974</requestid>
+  </revision>
 </revisionlist>

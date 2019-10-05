@@ -17,7 +17,8 @@
         <profile name="MS-HyperV" description="Hyper-V for x86_64" arch="x86_64"/>
         <profile name="OpenStack-Cloud" description="OpenStack Cloud for x86_64" arch="x86_64"/>
         <profile name="Pine64" description="Pine64" arch="aarch64"/>
-        <profile name="RaspberryPi" description="RaspberryPi" arch="aarch64"/>
+        <profile name="RaspberryPi" description="RaspberryPi (3+, aarch64)" arch="aarch64"/>
+        <profile name="RaspberryPi2" description="RaspberryPi2 (armv7)" arch="armv7l"/>
         <profile name="Vagrant" description="Vagrant for x86_64" arch="x86_64"/>
         <profile name="hardware" description="physical x86_64 hardware" arch="x86_64"/>
         <!-- Images (flavor + platform) -->
@@ -99,7 +100,7 @@
             bootloader="grub2"
             bootloader_console="gfxterm"
             firmware="uefi"
-            kernelcmdline="plymouth.enable=0 console=ttyS0,115200 console=tty0 net.ifnames=0 $ignition_firstboot ignition.platform.id=qemu rd.neednet=0"
+            kernelcmdline="plymouth.enable=0 console=ttyS0,115200 console=tty0 net.ifnames=0 $ignition_firstboot ignition.platform.id=qemu"
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"
@@ -136,7 +137,7 @@
             bootloader="grub2"
             bootloader_console="gfxterm"
             firmware="uefi"
-            kernelcmdline="plymouth.enable=0 console=ttyS0,115200 console=tty0 $ignition_firstboot ignition.platform.id=vmware rd.neednet=0"
+            kernelcmdline="plymouth.enable=0 console=ttyS0,115200 console=tty0 $ignition_firstboot ignition.platform.id=vmware"
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"
@@ -174,7 +175,7 @@
             bootloader="grub2"
             bootloader_console="gfxterm"
             firmware="uefi"
-            kernelcmdline="plymouth.enable=0 console=ttyS0,115200 console=tty0 net.ifnames=0 $ignition_firstboot ignition.platform.id=openstack rd.neednet=0"
+            kernelcmdline="plymouth.enable=0 console=ttyS0,115200 console=tty0 net.ifnames=0 $ignition_firstboot ignition.platform.id=openstack"
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"
@@ -250,7 +251,7 @@
             fsmountoptions="noatime,compress=lzo"
             bootloader="grub2"
             firmware="efi"
-            kernelcmdline="loglevel=3 splash=silent plymouth.enable=0 console=ttyS0,115200n8 $ignition_firstboot ignition.platform.id=metal rd.neednet=0"
+            kernelcmdline="loglevel=3 splash=silent plymouth.enable=0 console=ttyS0,115200n8 $ignition_firstboot ignition.platform.id=metal"
             bootpartition="false"
             devicepersistency="by-uuid"
             btrfs_root_is_snapshot="true"
@@ -286,7 +287,7 @@
             bootloader="grub2"
             bootloader_console="gfxterm"
             firmware="efi"
-            kernelcmdline="plymouth.enable=0 swiotlb=512 cma=64M console=ttyS0,115200n8 console=tty $ignition_firstboot ignition.platform.id=metal rd.neednet=0"
+            kernelcmdline="plymouth.enable=0 swiotlb=512 cma=64M console=ttyS0,115200n8 console=tty $ignition_firstboot ignition.platform.id=metal"
             bootpartition="false"
             devicepersistency="by-uuid"
             btrfs_root_is_snapshot="true"
@@ -308,6 +309,42 @@
             </systemdisk>
         </type>
     </preferences>
+    <preferences profiles="RaspberryPi2">
+        <version>16.0.0</version>
+        <packagemanager>zypper</packagemanager>
+        <bootsplash-theme>openSUSE</bootsplash-theme>
+        <bootloader-theme>openSUSE</bootloader-theme>
+        <rpm-excludedocs>true</rpm-excludedocs>
+        <type
+            image="oem"
+            initrd_system="dracut"
+            filesystem="btrfs"
+            fsmountoptions="noatime,compress=lzo"
+            bootloader="grub2"
+            bootloader_console="gfxterm"
+            firmware="efi"
+            kernelcmdline="plymouth.enable=0 swiotlb=512 cma=64M console=ttyS0,115200n8 console=tty $ignition_firstboot ignition.platform.id=metal"
+            bootpartition="false"
+            devicepersistency="by-uuid"
+            btrfs_root_is_snapshot="true"
+            efipartsize="16"
+            editbootinstall="editbootinstall_rpi.sh"
+            btrfs_root_is_readonly_snapshot="true"
+            btrfs_quota_groups="false"
+        >
+            <systemdisk>
+                <volume name="home"/>
+                <volume name="root"/>
+                <volume name="tmp"/>
+                <volume name="opt"/>
+                <volume name="srv"/>
+                <volume name="boot/grub2/arm-efi" mountpoint="boot/grub2/arm-efi"/>
+                <volume name="boot/writable"/>
+                <volume name="usr/local"/>
+                <volume name="var" copy_on_write="false"/>
+            </systemdisk>
+        </type>
+    </preferences>
     <preferences profiles="Vagrant">
         <version>16.0.0</version>
         <packagemanager>zypper</packagemanager>
@@ -321,7 +358,7 @@
             bootloader="grub2"
             bootloader_console="gfxterm"
             firmware="uefi"
-            kernelcmdline="plymouth.enable=0 console=ttyS0,115200 console=tty0 net.ifnames=0 $ignition_firstboot ignition.platform.id=metal rd.neednet=0"
+            kernelcmdline="plymouth.enable=0 console=ttyS0,115200 console=tty0 net.ifnames=0 $ignition_firstboot ignition.platform.id=metal"
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"
@@ -359,7 +396,7 @@
             bootloader="grub2"
             bootloader_console="gfxterm"
             firmware="uefi"
-            kernelcmdline="plymouth.enable=0 console=ttyS0,115200 console=tty0 $ignition_firstboot ignition.platform.id=metal rd.neednet=0"
+            kernelcmdline="plymouth.enable=0 console=ttyS0,115200 console=tty0 $ignition_firstboot ignition.platform.id=metal"
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"
@@ -458,6 +495,18 @@
         <package name="raspberrypi-firmware-config" arch="aarch64"/>
         <package name="raspberrypi-firmware-dt" arch="aarch64"/>
         <package name="u-boot-rpi3" arch="aarch64"/>
+        <package name="dracut-kiwi-oem-repart"/>
+        <package name="kernel-default"/>
+        <package name="bcm43xx-firmware"/>
+        <package name="kernel-firmware"/><!-- Fix choice between kernel-firmware and kernel-firmware-all -->
+        <package name="wireless-tools"/>
+        <package name="wpa_supplicant"/>
+    </packages>
+    <packages type="image" profiles="RaspberryPi2">
+        <package name="raspberrypi-firmware" arch="armv7l"/>
+        <package name="raspberrypi-firmware-config" arch="armv7l"/>
+        <package name="raspberrypi-firmware-dt" arch="armv7l"/>
+        <package name="u-boot-rpi2" arch="armv7l"/>
         <package name="dracut-kiwi-oem-repart"/>
         <package name="kernel-default"/>
         <package name="bcm43xx-firmware"/>

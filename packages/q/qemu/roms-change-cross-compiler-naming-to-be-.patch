@@ -1,0 +1,30 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Thu, 20 Jun 2019 17:58:37 -0600
+Subject: roms: change cross compiler naming to be suse specific
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ roms/edk2-funcs.sh | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/roms/edk2-funcs.sh b/roms/edk2-funcs.sh
+index a9fae7ee891bc4cadbe1a3cb3f54..d70bed1729cf0a3ce41ab72df78e 100644
+--- a/roms/edk2-funcs.sh
++++ b/roms/edk2-funcs.sh
+@@ -113,7 +113,15 @@ qemu_edk2_get_cross_prefix()
+     # no cross-compiler needed
+     :
+   else
+-    printf '%s-linux-gnu-\n' "$gcc_arch"
++    if [ "$emulation_target" == arm ]; then
++      printf '%s-suse-linux-gnueabi-\n' "$gcc_arch"
++    else
++      if [ "$gcc_arch" == i686 ]; then
++        printf '%s-suse-linux-\n' "i586"
++      else
++        printf '%s-suse-linux-\n' "$gcc_arch"
++      fi
++    fi
+   fi
+ }
+ 

@@ -1,0 +1,56 @@
+From: Alberto Garcia <berto@igalia.com>
+Date: Fri, 16 Aug 2019 15:17:42 +0300
+Subject: qcow2: Fix the calculation of the maximum L2 cache size
+
+Git-commit: b70d08205b2e4044c529eefc21df2c8ab61b473b
+
+The size of the qcow2 L2 cache defaults to 32 MB, which can be easily
+larger than the maximum amount of L2 metadata that the image can have.
+For example: with 64 KB clusters the user would need a qcow2 image
+with a virtual size of 256 GB in order to have 32 MB of L2 metadata.
+
+Because of that, since commit b749562d9822d14ef69c9eaa5f85903010b86c30
+we forbid the L2 cache to become larger than the maximum amount of L2
+metadata for the image, calculated using this formula:
+
+    uint64_t max_l2_cache = virtual_disk_size / (s->cluster_size / 8);
+
+The problem with this formula is that the result should be rounded up
+to the cluster size because an L2 table on disk always takes one full
+cluster.
+
+For example, a 1280 MB qcow2 image with 64 KB clusters needs exactly
+160 KB of L2 metadata, but we need 192 KB on disk (3 clusters) even if
+the last 32 KB of those are not going to be used.
+
+However QEMU rounds the numbers down and only creates 2 cache tables
+(128 KB), which is not enough for the image.
+
+A quick test doing 4KB random writes on a 1280 MB image gives me
+around 500 IOPS, while with the correct cache size I get 16K IOPS.
+
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Alberto Garcia <berto@igalia.com>
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ block/qcow2.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/block/qcow2.c b/block/qcow2.c
+index 039bdc2f7e799f935f5364daed5c..865839682cd639d1b7aba0cc328f 100644
+--- a/block/qcow2.c
++++ b/block/qcow2.c
+@@ -826,7 +826,11 @@ static void read_cache_sizes(BlockDriverState *bs, QemuOpts *opts,
+     bool l2_cache_entry_size_set;
+     int min_refcount_cache = MIN_REFCOUNT_CACHE_SIZE * s->cluster_size;
+     uint64_t virtual_disk_size = bs->total_sectors * BDRV_SECTOR_SIZE;
+-    uint64_t max_l2_cache = virtual_disk_size / (s->cluster_size / 8);
++    uint64_t max_l2_entries = DIV_ROUND_UP(virtual_disk_size, s->cluster_size);
++    /* An L2 table is always one cluster in size so the max cache size
++     * should be a multiple of the cluster size. */
++    uint64_t max_l2_cache = ROUND_UP(max_l2_entries * sizeof(uint64_t),
++                                     s->cluster_size);
+ 
+     combined_cache_size_set = qemu_opt_get(opts, QCOW2_OPT_CACHE_SIZE);
+     l2_cache_size_set = qemu_opt_get(opts, QCOW2_OPT_L2_CACHE_SIZE);

@@ -8,4 +8,12 @@
 Needed for future versions of flatpak, previously a part of flatpak itself. Resub with tweaked Group tag</comment>
     <requestid>669096</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>631284a821c00da363ceae5fd149eb19</srcmd5>
+    <version>0.1.2</version>
+    <time>1570285248</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>734665</requestid>
+  </revision>
 </revisionlist>

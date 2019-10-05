@@ -1,0 +1,77 @@
+From: Max Reitz <mreitz@redhat.com>
+Date: Tue, 10 Sep 2019 14:41:33 +0200
+Subject: curl: Pass CURLSocket to curl_multi_do()
+
+Git-commit: 9dbad87d25587ff640ef878f7b6159fc368ff541
+
+curl_multi_do_locked() currently marks all sockets as ready.  That is
+not only inefficient, but in fact unsafe (the loop is).  A follow-up
+patch will change that, but to do so, curl_multi_do_locked() needs to
+know exactly which socket is ready; and that is accomplished by this
+patch here.
+
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Max Reitz <mreitz@redhat.com>
+Message-id: 20190910124136.10565-5-mreitz@redhat.com
+Reviewed-by: Maxim Levitsky <mlevitsk@redhat.com>
+Reviewed-by: John Snow <jsnow@redhat.com>
+Signed-off-by: Max Reitz <mreitz@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ block/curl.c | 20 +++++++++++---------
+ 1 file changed, 11 insertions(+), 9 deletions(-)
+
+diff --git a/block/curl.c b/block/curl.c
+index 5838afef99e070d8e7b704fa55e7..cf2686218dcf4bc7d2db1a7026f9 100644
+--- a/block/curl.c
++++ b/block/curl.c
+@@ -185,15 +185,15 @@ static int curl_sock_cb(CURL *curl, curl_socket_t fd, int action,
+     switch (action) {
+         case CURL_POLL_IN:
+             aio_set_fd_handler(s->aio_context, fd, false,
+-                               curl_multi_do, NULL, NULL, state);
++                               curl_multi_do, NULL, NULL, socket);
+             break;
+         case CURL_POLL_OUT:
+             aio_set_fd_handler(s->aio_context, fd, false,
+-                               NULL, curl_multi_do, NULL, state);
++                               NULL, curl_multi_do, NULL, socket);
+             break;
+         case CURL_POLL_INOUT:
+             aio_set_fd_handler(s->aio_context, fd, false,
+-                               curl_multi_do, curl_multi_do, NULL, state);
++                               curl_multi_do, curl_multi_do, NULL, socket);
+             break;
+         case CURL_POLL_REMOVE:
+             aio_set_fd_handler(s->aio_context, fd, false,
+@@ -392,9 +392,10 @@ static void curl_multi_check_completion(BDRVCURLState *s)
+ }
+ 
+ /* Called with s->mutex held.  */
+-static void curl_multi_do_locked(CURLState *s)
++static void curl_multi_do_locked(CURLSocket *ready_socket)
+ {
+     CURLSocket *socket, *next_socket;
++    CURLState *s = ready_socket->state;
+     int running;
+     int r;
+ 
+@@ -413,12 +414,13 @@ static void curl_multi_do_locked(CURLState *s)
+ 
+ static void curl_multi_do(void *arg)
+ {
+-    CURLState *s = (CURLState *)arg;
++    CURLSocket *socket = arg;
++    BDRVCURLState *s = socket->state->s;
+ 
+-    qemu_mutex_lock(&s->s->mutex);
+-    curl_multi_do_locked(s);
+-    curl_multi_check_completion(s->s);
+-    qemu_mutex_unlock(&s->s->mutex);
++    qemu_mutex_lock(&s->mutex);
++    curl_multi_do_locked(socket);
++    curl_multi_check_completion(s);
++    qemu_mutex_unlock(&s->mutex);
+ }
+ 
+ static void curl_multi_timeout_do(void *arg)

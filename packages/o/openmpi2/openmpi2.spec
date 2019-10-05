@@ -103,6 +103,13 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 
+# Detect whether we are the default openMPI implemantation or not
+%if "%{flavor}" == "standard" && %{suse_version} >= 1500
+%define default_openmpi 1
+%else
+%define default_openmpi 0
+%endif
+
 %if %{with hpc}
 %{!?compiler_family:%global compiler_family gnu}
 %{hpc_init -M -c %compiler_family %{?c_f_ver:-v %{c_f_ver}} -m openmpi %{?mpi_f_ver:-V %{mpi_f_ver}}}
@@ -186,6 +193,9 @@ BuildRequires:  numactl
 
 Requires:       openmpi-runtime-config
 Recommends:     openmpi%{m_f_ver}-config
+%if 0%{?default_openmpi}
+Provides:       openmpi = %{version}
+%endif
 # OpenMPI requires ssh (or rsh) to run even on a single host
 # Force ssh to make sure the install works out of the box
 Requires:       openssh
@@ -237,6 +247,9 @@ running Open MPI/OpenSHMEM jobs.
 Summary:        OpenMPI runtime libraries for OpenMPI %{?with_hpc:HPC} version %{version}
 Group:          System/Libraries
 Requires:       %{name} = %{version}
+%if 0%{?default_openmpi}
+Provides:       openmpi-libs = %{version}
+%endif
 %{?with_hpc:%hpc_requires}
 
 %description %{!?with_hpc:libs}%{?with_hpc:-n lib%{name}}
@@ -260,6 +273,9 @@ Requires:       libibumad-devel
 Requires:       libibverbs-devel
 %if %{without hpc}
 Requires:       libstdc++-devel
+%if 0%{?default_openmpi}
+Provides:       openmpi-devel = %{version}
+%endif
 %else
 %hpc_requires_devel
 %endif
@@ -300,23 +316,29 @@ one-sided communication techniques.
 
 This subpackage provides the documentation for Open MPI/OpenSHMEM.
 
-%if %{with hpc}
 %package        macros-devel
-Summary:        HPC Macros for openMPI version %{version}
+Summary:        Macros for openMPI version %{version}
 Group:          Development/Libraries/Parallel
 Requires:       %{name}-devel = %{version}
-Provides:       %{pname}-hpc-macros-devel = %{version}
-Conflicts:      otherproviders(%{pname}-hpc-macros-devel)
+# Make sure no two openmpi macro file can be installed at once
+Provides:       %{pname}-macros-provider = %{version}
+Conflicts:      otherproviders(%{pname}-macros-devel-provider)
+
+%if 0%{?default_openmpi}
+Provides:       openmpi-macros-devel = %{version}
+%endif
 
 %description macros-devel
-HPC Macros for building RPM packages for OpenMPI version %{version}.
-%endif
+Macros for building RPM packages for OpenMPI version %{version}.
 
 %if 0%{?build_static_devel}
 %package        devel-static
 Summary:        Static libraries for openMPI %{?with_hpc:HPC} version %{version}
 Group:          Development/Libraries/Parallel
 Requires:       %{name}-devel = %{version}
+%if 0%{?default_openmpi}
+Provides:       openmpi-devel-static = %{version}
+%endif
 
 %description devel-static
 OpenMPI is an implementation of the Message Passing Interface, a
@@ -508,6 +530,17 @@ prepend-path LD_LIBRARY_PATH %{mpi_libdir}
 
 EOF
 
+mkdir -p %{buildroot}%{_sysconfdir}/rpm
+cat <<EOF >%{buildroot}%{_sysconfdir}/rpm/macros.openmpi
+#
+# openmpi
+#
+%setup_openmpi  source %{mpi_bindir}/mpivars.sh
+
+%openmpi_requires Requires: %{name}-libs
+%openmpi_devel_requires Requires: %{name}-devel
+
+EOF
 %else
 %hpc_write_modules_files
 #%%Module1.0#####################################################################
@@ -586,7 +619,8 @@ fi
 
 %files
 %defattr(-, root, root)
-%doc NEWS README AUTHORS LICENSE
+%doc NEWS README AUTHORS
+%license LICENSE
 %dir %{mpi_prefix}
 %dir %{mpi_bindir}
 %dir %{mpi_libdir}
@@ -678,10 +712,12 @@ fi
 %defattr(-, root, root, -)
 %{mpi_mandir}
 
-%if %{with hpc}
 %files macros-devel
 %defattr(-,root,root,-)
+%if %{with hpc}
 %config %{_sysconfdir}/rpm/macros.hpc-openmpi
+%else
+%config %{_sysconfdir}/rpm/macros.openmpi
 %endif
 
 %if 0%{?build_static_devel}

@@ -1,0 +1,35 @@
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Mon, 5 Aug 2019 20:03:11 +0000
+Subject: Make keycode-gen output reproducible (use SOURCE_DATE_EPOCH
+ timestamp)
+
+Signed-off-by: Bruce Rogers <brogers@suse.com
+---
+ tools/keymap-gen | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/ui/keycodemapdb/tools/keymap-gen b/ui/keycodemapdb/tools/keymap-gen
+index f0269e3cabf57881bb41e2333143..a374eb255fb3c55b65b475e86461 100755
+--- a/ui/keycodemapdb/tools/keymap-gen
++++ b/ui/keycodemapdb/tools/keymap-gen
+@@ -20,6 +20,7 @@ except:
+     sys.path.append(os.path.join(os.path.dirname(__file__), "../thirdparty"))
+     import argparse
+ import hashlib
++import os
+ import time
+ import sys
+ 
+@@ -317,7 +318,11 @@ class LanguageGenerator(object):
+         raise NotImplementedError()
+ 
+     def generate_header(self, database, args):
+-        today = time.strftime("%Y-%m-%d %H:%M")
++        sde = os.getenv("SOURCE_DATE_EPOCH")
++        if sde:
++            today = time.strftime("%Y-%m-%d %H:%M", time.gmtime(int(sde)))
++        else:
++            today = time.strftime("%Y-%m-%d %H:%M")
+         self._boilerplate([
+             "This file is auto-generated from keymaps.csv on %s" % today,
+             "Database checksum sha256(%s)" % database.mapchecksum,

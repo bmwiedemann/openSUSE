@@ -1,0 +1,35 @@
+From: Gerd Hoffmann <kraxel@redhat.com>
+Date: Mon, 24 Jun 2019 12:17:28 +0200
+Subject: ati-vga: try vga ddc first
+
+Git-commit: af573dceef7b9a45d13192ec5abf29b73c78540e
+
+Try vga ddc bus before dvi ddc bus.
+Return early in case we got valid data.
+
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ vgasrc/atiext.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/roms/seabios/vgasrc/atiext.c b/roms/seabios/vgasrc/atiext.c
+index 901e82d013837f54f4db292628d1..71dfa859a22dc569ed2fd1312c6b 100644
+--- a/roms/seabios/vgasrc/atiext.c
++++ b/roms/seabios/vgasrc/atiext.c
+@@ -299,6 +299,15 @@ static void ati_i2c_edid_radeon(void)
+     SET_VGA(ati_i2c_bit_sda_out, 16);
+     SET_VGA(ati_i2c_bit_sda_in, 8);
+ 
++    dprintf(1, "ati: reading edid blob (radeon vga) ... \n");
++    SET_VGA(ati_i2c_reg, GPIO_VGA_DDC);
++    ati_i2c_edid();
++    valid = (GET_GLOBAL(VBE_edid[0]) == 0x00 &&
++             GET_GLOBAL(VBE_edid[1]) == 0xff);
++    dprintf(1, "ati: ... %s\n", valid ? "good" : "invalid");
++    if (valid)
++        return;
++
+     dprintf(1, "ati: reading edid blob (radeon dvi) ... \n");
+     SET_VGA(ati_i2c_reg, GPIO_DVI_DDC);
+     ati_i2c_edid();

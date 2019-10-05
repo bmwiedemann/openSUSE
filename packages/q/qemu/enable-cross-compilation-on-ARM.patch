@@ -1,0 +1,22 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Mon, 26 Aug 2019 13:28:57 -0600
+Subject: enable cross compilation on ARM
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/roms/seabios/Makefile b/roms/seabios/Makefile
+index bd34cfc2394a9103fec2e951bb67..7b8a5cd6b17254685df89798ed10 100644
+--- a/roms/seabios/Makefile
++++ b/roms/seabios/Makefile
+@@ -13,7 +13,7 @@ export CONFIG_SHELL       := sh
+ export KCONFIG_AUTOHEADER := autoconf.h
+ export KCONFIG_CONFIG     := $(CURDIR)/.config
+ export LC_ALL             := C
+-CROSS_PREFIX=
++CROSS_PREFIX=$(CROSS_COMPILE)
+ ifneq ($(CROSS_PREFIX),)
+ CC=$(CROSS_PREFIX)gcc
+ endif

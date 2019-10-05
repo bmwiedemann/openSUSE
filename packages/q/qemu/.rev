@@ -1554,4 +1554,12 @@ Address python compatibility issue.</comment>
     <comment></comment>
     <requestid>721319</requestid>
   </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>b348d25ec6398214867ebc788028c930</srcmd5>
+    <version>4.1.0</version>
+    <time>1570285232</time>
+    <user>dimstar_suse</user>
+    <comment>Update to v4.1.0 qemu. Also change to use multibuild. (Do I need to do anything special to handle the existing linked qemu-linux-user and qemu-testsuite packages which are done the old way?) Also switch from numbered patches to unnumbered. Add scripting changes to handle our git-based patches a different (better?) way. Disable a few block tests which randomly fail in context of build service for unknown reasons. Specify that shell for build is bash.</comment>
+    <requestid>734658</requestid>
+  </revision>
 </revisionlist>

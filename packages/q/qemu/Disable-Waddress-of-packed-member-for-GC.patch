@@ -1,0 +1,29 @@
+From: Stewart Smith <stewart@linux.ibm.com>
+Date: Tue, 18 Jun 2019 16:09:44 +1000
+Subject: Disable -Waddress-of-packed-member for GCC9
+
+Git-commit: b904cb733750de1bb0e04e5012c391a9c3094d11
+
+We throw a bunch of errors in errorlog code otherwise, which we should
+fix, but we don't *have* to yet.
+
+Signed-off-by: Stewart Smith <stewart@linux.ibm.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ Makefile.main | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/roms/skiboot/Makefile.main b/roms/skiboot/Makefile.main
+index a8e34d16c4729921901871b3f9e3..91dc73e06903e8f10c6ad09c1db9 100644
+--- a/roms/skiboot/Makefile.main
++++ b/roms/skiboot/Makefile.main
+@@ -120,7 +120,8 @@ endif
+ CFLAGS += $(call try-cflag,$(CC),-Wjump-misses-init) \
+ 	  $(call try-cflag,$(CC),-Wsuggest-attribute=const) \
+ 	  $(call try-cflag,$(CC),-Wsuggest-attribute=noreturn) \
+-	  $(call try-cflag,$(CC),-Wstack-usage=1024)
++	  $(call try-cflag,$(CC),-Wstack-usage=1024) \
++	  $(call try-cflag,$(CC),-Wno-error=address-of-packed-member)
+ 
+ CFLAGS += $(CWARNS) $(OPTS) $(DBG)
+ 

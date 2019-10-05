@@ -1,0 +1,22 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Thu, 20 Jun 2019 18:45:36 -0600
+Subject: roms/Makefile.edk2: don't invoke git, since the tarball is complete
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ roms/Makefile.edk2 | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/roms/Makefile.edk2 b/roms/Makefile.edk2
+index c2f2ff59d5b1d8b3fa394ed42c8d..98328b883c6578dd9591f069cd2d 100644
+--- a/roms/Makefile.edk2
++++ b/roms/Makefile.edk2
+@@ -47,7 +47,7 @@ all: $(foreach flashdev,$(flashdevs),../pc-bios/edk2-$(flashdev).fd.bz2) \
+ .INTERMEDIATE: $(foreach flashdev,$(flashdevs),../pc-bios/edk2-$(flashdev).fd)
+ 
+ submodules:
+-	cd edk2 && git submodule update --init --force
++	cd edk2
+ 
+ # See notes on the ".NOTPARALLEL" target and the "+" indicator in
+ # "tests/uefi-test-tools/Makefile".

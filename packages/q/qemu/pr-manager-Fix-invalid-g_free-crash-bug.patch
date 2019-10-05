@@ -1,0 +1,37 @@
+From: Markus Armbruster <armbru@redhat.com>
+Date: Thu, 22 Aug 2019 15:38:46 +0200
+Subject: pr-manager: Fix invalid g_free() crash bug
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: 6b9d62c2a9e83bbad73fb61406f0ff69b46ff6f3
+
+pr_manager_worker() passes its @opaque argument to g_free().  Wrong;
+it points to pr_manager_worker()'s automatic @data.  Broken when
+commit 2f3a7ab39be converted @data from heap- to stack-allocated.  Fix
+by deleting the g_free().
+
+Fixes: 2f3a7ab39bec4ba8022dc4d42ea641165b004e3e
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ scsi/pr-manager.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/scsi/pr-manager.c b/scsi/pr-manager.c
+index ee43663576ed32c3d27649157e83..0c866e869835930767dacd3a0b21 100644
+--- a/scsi/pr-manager.c
++++ b/scsi/pr-manager.c
+@@ -39,7 +39,6 @@ static int pr_manager_worker(void *opaque)
+     int fd = data->fd;
+     int r;
+ 
+-    g_free(data);
+     trace_pr_manager_run(fd, hdr->cmdp[0], hdr->cmdp[1]);
+ 
+     /* The reference was taken in pr_manager_execute.  */

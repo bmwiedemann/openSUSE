@@ -1,0 +1,79 @@
+From: Gerd Hoffmann <kraxel@redhat.com>
+Date: Fri, 8 Mar 2019 11:42:25 +0100
+Subject: vga: add ati bios tables
+
+Git-commit: f4c6e4c19daf3deac2d7fc3288db5294aba955ad
+
+Needed to make drivers happy which try to gather
+informations from these tables.
+
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ vgasrc/ati-tables.S | 43 +++++++++++++++++++++++++++++++++++++++++++
+ vgasrc/vgaentry.S   |  3 +++
+ 2 files changed, 46 insertions(+)
+
+diff --git a/roms/seabios/vgasrc/ati-tables.S b/roms/seabios/vgasrc/ati-tables.S
+new file mode 100644
+index 0000000000000000000000000000000000000000..cdbde2fa4aec74f62da898be8b79e4a7c16f6c11
+--- /dev/null
++++ b/roms/seabios/vgasrc/ati-tables.S
+@@ -0,0 +1,43 @@
++//
++// Fake ati bios tables.
++//
++// aty128fb and radeonfb try to gather informations from these tables,
++// so add some stuff here to make the drivers happy.  Specifically
++// radeonfb needs the pll information, otherwise it'll crash with a
++// division by zero ...
++//
++	.org 0x48
++	.word _ati_main
++
++	// main info
++	.org 0x50
++_ati_main:
++	.org 0x50 + 0x30
++	.word _ati_pll
++	.org 0x50 + 0x50
++	.word _ati_connector
++
++	// pll info
++	.org 0x100
++_ati_pll:
++	.word	0		// ??? (not used by radeonfb)
++	.word	0
++	.word	0
++	.word	0
++	.word	23000		// sclk
++	.word	23000		// mclk
++	.word	0
++	.word	2700		// ref_clk
++	.word	4		// ref_div
++	.long	12000		// ppll_min
++	.long	35000		// ppll_max
++
++	// connector info
++	.org 0x140
++_ati_connector:
++	.byte 0x10		// one chip
++	.byte 0x01		// one connector
++	.word 0x3000		// type DVI-I
++	.word 0			// end of list
++
++	.org 0x200
+diff --git a/roms/seabios/vgasrc/vgaentry.S b/roms/seabios/vgasrc/vgaentry.S
+index 53be2b38ca520c691a4fde927bd8..f9624fce2ed9c570d6283b2905f4 100644
+--- a/roms/seabios/vgasrc/vgaentry.S
++++ b/roms/seabios/vgasrc/vgaentry.S
+@@ -40,6 +40,9 @@ _rom_header_other2:
+ _rom_header_signature:
+         .asciz "IBM"
+ 
++#if CONFIG_VGA_ATI
++#include "ati-tables.S"
++#endif
+ 
+ /****************************************************************
+  * Entry points

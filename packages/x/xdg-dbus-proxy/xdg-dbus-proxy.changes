@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 30 21:34:33 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Add docbook-xsl-stylesheets and libxslt-tools to BuildRequires
+  so that the manpage gets built.
+
+-------------------------------------------------------------------
+Thu Sep 19 10:49:48 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.1.2:
+  + Some build fixes.
+  + Fix possible crash.
+
+-------------------------------------------------------------------
 Wed Jan 23 13:02:50 UTC 2019 - bjorn.lie@gmail.com
 
 - Initial packaging for openSUSE, version 0.1.1.

@@ -1,7 +1,7 @@
 #
 # spec file for package python-future
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,20 +22,23 @@ Version:        0.17.1
 Release:        0
 Summary:        Single-source support for Python 3 and 2
 # See https://github.com/PythonCharmers/python-future/issues/242 for PSF licensing
-License:        MIT and Python-2.0
-Group:          Development/Languages/Python
-Url:            https://python-future.org
+License:        MIT AND Python-2.0
+URL:            https://python-future.org
 Source0:        https://files.pythonhosted.org/packages/source/f/future/future-%{version}.tar.gz
 Source100:      python-future-rpmlintrc
-BuildRequires:  %{python_module setuptools}
+# PATCH-FIX-UPSTREAM python38-compat.patch gh#PythonCharmers/python-future#447 mcepl@suse.com
+# Python 3.8 removed urllib.request.splitattr
+Patch0:         python38-compat.patch
+# PATCH-FIX-UPSTREAM python38-pow.patch gh#PythonCharmers/python-future#474 mcepl@suse.com
+Patch1:         python38-pow.patch
 BuildRequires:  %{python_module pytest}
-BuildRequires:  python3-dbm
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-dbm
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -45,6 +48,7 @@ support both Python 2 and Python 3.
 
 %prep
 %setup -q -n future-%{version}
+%autopatch -p1
 sed -i -e '/^#!\//, 1d' src/future/backports/test/pystone.py
 
 %build

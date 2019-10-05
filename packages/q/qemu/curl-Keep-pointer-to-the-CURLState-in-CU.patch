@@ -1,0 +1,49 @@
+From: Max Reitz <mreitz@redhat.com>
+Date: Tue, 10 Sep 2019 14:41:30 +0200
+Subject: curl: Keep pointer to the CURLState in CURLSocket
+
+Git-commit: 0487861685294660b23bc146e1ebd5304aa8bbe0
+
+A follow-up patch will make curl_multi_do() and curl_multi_read() take a
+CURLSocket instead of the CURLState.  They still need the latter,
+though, so add a pointer to it to the former.
+
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Max Reitz <mreitz@redhat.com>
+Reviewed-by: John Snow <jsnow@redhat.com>
+Message-id: 20190910124136.10565-2-mreitz@redhat.com
+Reviewed-by: Maxim Levitsky <mlevitsk@redhat.com>
+Signed-off-by: Max Reitz <mreitz@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ block/curl.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/block/curl.c b/block/curl.c
+index d4c8e94f3e0fe26ee221e763356e..92dc2f630e20f4a6b138c9c82b8b 100644
+--- a/block/curl.c
++++ b/block/curl.c
+@@ -80,6 +80,7 @@ static CURLMcode __curl_multi_socket_action(CURLM *multi_handle,
+ #define CURL_BLOCK_OPT_TIMEOUT_DEFAULT 5
+ 
+ struct BDRVCURLState;
++struct CURLState;
+ 
+ static bool libcurl_initialized;
+ 
+@@ -97,6 +98,7 @@ typedef struct CURLAIOCB {
+ 
+ typedef struct CURLSocket {
+     int fd;
++    struct CURLState *state;
+     QLIST_ENTRY(CURLSocket) next;
+ } CURLSocket;
+ 
+@@ -180,6 +182,7 @@ static int curl_sock_cb(CURL *curl, curl_socket_t fd, int action,
+     if (!socket) {
+         socket = g_new0(CURLSocket, 1);
+         socket->fd = fd;
++        socket->state = state;
+         QLIST_INSERT_HEAD(&state->sockets, socket, next);
+     }
+     socket = NULL;

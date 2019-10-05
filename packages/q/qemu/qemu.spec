@@ -16,20 +16,21 @@
 #
 
 
+# !! IMPORTANT !! See README.PACKAGING before modifying package in any way
+
+%define _buildshell /bin/bash
+
 %define build_in_tree 1
 %define build_x86_firmware_from_source 0
 %define build_skiboot_from_source 0
 %define build_slof_from_source 0
+%define build_opensbi_from_source 0
 %define kvm_available 0
 %define legacy_qemu_kvm 0
 %define force_fit_virtio_pxe_rom 1
+%define provide_edk2_firmware 0
 
-%if 0%{?suse_version} > 1315
-# cross-x86_64-gcc7 is available from SLE15/Leap15.0
 %define build_rom_arch %ix86 x86_64 aarch64
-%else
-%define build_rom_arch %ix86 x86_64
-%endif
 
 %if "%{?distribution}" == ""
 %define distro private-build
@@ -39,9 +40,7 @@
 
 %ifarch %{build_rom_arch}
 # choice of building all from source or using provided binary x86 blobs
-%if 0%{?suse_version} > 1320 || ( 0%{?suse_version} == 1315 && 0%{?sle_version} > 120100 )
 %define build_x86_firmware_from_source 1
-%endif
 %endif
 
 %ifarch ppc64
@@ -50,10 +49,12 @@
 %endif
 
 %ifarch ppc64le
-%if 0%{?suse_version} > 1320 ||  0%{?suse_version} == 1315
 %define build_skiboot_from_source 1
 %define build_slof_from_source 1
 %endif
+
+%ifarch riscv64
+%define build_opensbi_from_source 1
 %endif
 
 %ifarch %ix86 x86_64 ppc ppc64 ppc64le s390x armv7hl aarch64
@@ -64,62 +65,36 @@
 %define legacy_qemu_kvm 1
 %endif
 
-%if 0%{?suse_version} >= 1315 && 0%{?is_opensuse}
+%if 0%{?is_opensuse}
 %define with_glusterfs 1
 %endif
 
-%ifarch x86_64
-%if 0%{?suse_version} > 1320 || ( 0%{?suse_version} == 1315 && ( 0%{?is_opensuse} == 0 || 0%{?sle_version} > 120100 ) )
+%ifarch x86_64 aarch64 ppc64le s390x
 %define with_rbd 1
 %endif
-%endif
 
-%ifarch aarch64
-%if 0%{?suse_version} > 1320 || ( 0%{?is_opensuse} == 0 && 0%{?sle_version} > 120100 )
-%define with_rbd 1
-%endif
-%endif
-
-%ifarch ppc64le
-%if 0%{?suse_version} > 1320 || ( 0%{?is_opensuse} == 0 && 0%{?sle_version} > 120200 )
-%define with_rbd 1
-%endif
-%endif
-
-%ifarch s390x
-%if 0%{?is_opensuse} == 0 && 0%{?sle_version} > 120200
-%define with_rbd 1
-%endif
-%endif
-
-%ifarch ppc64
-%if 0%{?is_opensuse} && 0%{?sle_version} > 120200
-%define with_rbd 1
-%endif
-%endif
-
-%if 0%{?suse_version} > 1320
-%define with_seccomp 1
-%endif
-
-%ifarch %ix86 x86_64 s390x aarch64 ppc64le
-%define with_seccomp 1
-%endif
-
-%if 0%( pkg-config --exists 'udev > 190' && echo '1' ) == 01
-%define _udevrulesdir /usr/lib/udev/rules.d
+# qemu, qemu-linux-user, and qemu-testsuite "flavors" enabled via OBS Multibuild
+%define flavor @BUILD_FLAVOR@%{nil}
+%if "%flavor" == ""
+%define name_suffix %{nil}
 %else
-%define _udevrulesdir /lib/udev/rules.d
+%define name_suffix -%flavor
+%endif
+
+%if "%flavor" == "linux-user"
+%define summary_string CPU emulator for user space
+%else
+%define summary_string Machine emulator and virtualizer
 %endif
 
 %define srcname qemu
-Name:           qemu
+Name:           qemu%{name_suffix}
 Url:            https://www.qemu.org/
-Summary:        Machine emulator and virtualizer
+Summary:        %{summary_string}
 License:        BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/Emulators/PC
-%define qemuver 4.0.0
-%define srcver  4.0.0
+%define qemuver 4.1.0
+%define srcver  4.1.0
 Version:        %qemuver
 Release:        0
 Source:         https://wiki.qemu.org/download/%{srcname}-%{srcver}.tar.xz
@@ -138,97 +113,136 @@ Source10:       supported.arm.txt
 Source11:       supported.ppc.txt
 Source12:       supported.x86.txt
 Source13:       supported.s390.txt
-# this is to make lint happy
-Source300:      qemu-rpmlintrc
-Source301:      ipxe-stub-out-the-SAN-req-s-in-int13.patch
-Source400:      update_git.sh
+Source200:      qemu-rpmlintrc
+Source300:      bundles.tar.xz
+Source301:      update_git.sh
+Source302:      config.sh
+Source303:      README.PACKAGING
 # Upstream First -- https://wiki.qemu.org/Contribute/SubmitAPatch
-# This patch queue is auto-generated from https://github.com/openSUSE/qemu
-Patch0001:      0001-XXX-dont-dump-core-on-sigabort.patch
-Patch0002:      0002-qemu-binfmt-conf-Modify-default-pat.patch
-Patch0003:      0003-qemu-cvs-gettimeofday.patch
-Patch0004:      0004-qemu-cvs-ioctl_debug.patch
-Patch0005:      0005-qemu-cvs-ioctl_nodirection.patch
-Patch0006:      0006-linux-user-add-binfmt-wrapper-for-a.patch
-Patch0007:      0007-PPC-KVM-Disable-mmu-notifier-check.patch
-Patch0008:      0008-linux-user-binfmt-support-host-bina.patch
-Patch0009:      0009-linux-user-Fake-proc-cpuinfo.patch
-Patch0010:      0010-linux-user-use-target_ulong.patch
-Patch0011:      0011-Make-char-muxer-more-robust-wrt-sma.patch
-Patch0012:      0012-linux-user-lseek-explicitly-cast-no.patch
-Patch0013:      0013-AIO-Reduce-number-of-threads-for-32.patch
-Patch0014:      0014-xen_disk-Add-suse-specific-flush-di.patch
-Patch0015:      0015-qemu-bridge-helper-reduce-security-.patch
-Patch0016:      0016-qemu-binfmt-conf-use-qemu-ARCH-binf.patch
-Patch0017:      0017-linux-user-properly-test-for-infini.patch
-Patch0018:      0018-roms-Makefile-pass-a-packaging-time.patch
-Patch0019:      0019-Raise-soft-address-space-limit-to-h.patch
-Patch0020:      0020-increase-x86_64-physical-bits-to-42.patch
-Patch0021:      0021-vga-Raise-VRAM-to-16-MiB-for-pc-0.1.patch
-Patch0022:      0022-i8254-Fix-migration-from-SLE11-SP2.patch
-Patch0023:      0023-acpi_piix4-Fix-migration-from-SLE11.patch
-Patch0024:      0024-Switch-order-of-libraries-for-mpath.patch
-Patch0025:      0025-Make-installed-scripts-explicitly-p.patch
-Patch0026:      0026-hw-smbios-handle-both-file-formats-.patch
-Patch0027:      0027-tests-test-thread-pool-is-racy-add-.patch
-Patch0028:      0028-xen-add-block-resize-support-for-xe.patch
-Patch0029:      0029-tests-qemu-iotests-Triple-timeout-o.patch
-Patch0030:      0030-tests-block-io-test-130-needs-some-.patch
-Patch0031:      0031-xen-ignore-live-parameter-from-xen-.patch
-Patch0032:      0032-tests-Fix-Makefile-handling-of-chec.patch
-Patch0033:      0033-Conditionalize-ui-bitmap-installati.patch
-Patch0034:      0034-Revert-target-i386-kvm-add-VMX-migr.patch
-Patch0035:      0035-tests-change-error-message-in-test-.patch
-Patch0036:      0036-sockets-avoid-string-truncation-war.patch
-Patch0037:      0037-hw-usb-hcd-xhci-Fix-GCC-9-build-war.patch
-Patch0038:      0038-hw-usb-dev-mtp-Fix-GCC-9-build-warn.patch
-Patch0039:      0039-linux-user-avoid-string-truncation-.patch
-Patch0040:      0040-linux-user-elfload-Fix-GCC-9-build-.patch
-Patch0041:      0041-qxl-avoid-unaligned-pointer-reads-w.patch
-Patch0042:      0042-libvhost-user-fix-Waddress-of-packe.patch
-Patch0043:      0043-target-i386-define-md-clear-bit.patch
-Patch0044:      0044-hw-intc-exynos4210_gic-provide-more.patch
-Patch0045:      0045-kbd-state-fix-autorepeat-handling.patch
-Patch0046:      0046-target-ppc-ensure-we-get-null-termi.patch
-Patch0047:      0047-configure-only-populate-roms-if-sof.patch
-Patch0048:      0048-pc-bios-s390-ccw-net-avoid-warning-.patch
-Patch0049:      0049-qxl-check-release-info-object.patch
-Patch0050:      0050-qemu-bridge-helper-restrict-interfa.patch
-Patch0051:      0051-linux-user-fix-to-handle-variably-s.patch
-# Please do not add QEMU patches manually here.
-# Run update_git.sh to regenerate this queue.
+# This patch queue is auto-generated - see README.PACKAGING for process
 
-# SeaBIOS / SeaVGABIOS - path: roms/seabios (patch range 1100-1199)
-Patch1100:      seabios-use-python2-explicitly-as-needed.patch
-Patch1101:      seabios-switch-to-python3-as-needed.patch
-Patch1102:      seabios-fix_cross_compilation.patch
+# Patches applied in base project:
+Patch00000:     mirror-Keep-mirror_top_bs-drained-after-.patch
+Patch00001:     s390x-tcg-Fix-VERIM-with-32-64-bit-eleme.patch
+Patch00002:     target-alpha-fix-tlb_fill-trap_arg2-valu.patch
+Patch00003:     target-arm-Free-TCG-temps-in-trans_VMOV_.patch
+Patch00004:     target-arm-Don-t-abort-on-M-profile-exce.patch
+Patch00005:     qcow2-Fix-the-calculation-of-the-maximum.patch
+Patch00006:     block-file-posix-Reduce-xfsctl-use.patch
+Patch00007:     pr-manager-Fix-invalid-g_free-crash-bug.patch
+Patch00008:     vpc-Return-0-from-vpc_co_create-on-succe.patch
+Patch00009:     block-nfs-tear-down-aio-before-nfs_close.patch
+Patch00010:     block-create-Do-not-abort-if-a-block-dri.patch
+Patch00011:     curl-Keep-pointer-to-the-CURLState-in-CU.patch
+Patch00012:     curl-Keep-socket-until-the-end-of-curl_s.patch
+Patch00013:     curl-Check-completion-in-curl_multi_do.patch
+Patch00014:     curl-Pass-CURLSocket-to-curl_multi_do.patch
+Patch00015:     curl-Report-only-ready-sockets.patch
+Patch00016:     curl-Handle-success-in-multi_check_compl.patch
+Patch00017:     blockjob-update-nodes-head-while-removin.patch
+Patch00018:     memory-Provide-an-equality-function-for-.patch
+Patch00019:     vhost-Fix-memory-region-section-comparis.patch
+Patch00020:     hw-arm-boot.c-Set-NSACR.-CP11-CP10-for-N.patch
+Patch00021:     s390-PCI-fix-IOMMU-region-init.patch
+Patch00022:     hw-core-loader-Fix-possible-crash-in-rom.patch
+Patch00023:     XXX-dont-dump-core-on-sigabort.patch
+Patch00024:     qemu-binfmt-conf-Modify-default-path.patch
+Patch00025:     qemu-cvs-gettimeofday.patch
+Patch00026:     qemu-cvs-ioctl_debug.patch
+Patch00027:     qemu-cvs-ioctl_nodirection.patch
+Patch00028:     linux-user-add-binfmt-wrapper-for-argv-0.patch
+Patch00029:     PPC-KVM-Disable-mmu-notifier-check.patch
+Patch00030:     linux-user-binfmt-support-host-binaries.patch
+Patch00031:     linux-user-Fake-proc-cpuinfo.patch
+Patch00032:     linux-user-use-target_ulong.patch
+Patch00033:     Make-char-muxer-more-robust-wrt-small-FI.patch
+Patch00034:     linux-user-lseek-explicitly-cast-non-set.patch
+Patch00035:     AIO-Reduce-number-of-threads-for-32bit-h.patch
+Patch00036:     xen_disk-Add-suse-specific-flush-disable.patch
+Patch00037:     qemu-bridge-helper-reduce-security-profi.patch
+Patch00038:     qemu-binfmt-conf-use-qemu-ARCH-binfmt.patch
+Patch00039:     linux-user-properly-test-for-infinite-ti.patch
+Patch00040:     roms-Makefile-pass-a-packaging-timestamp.patch
+Patch00041:     Raise-soft-address-space-limit-to-hard-l.patch
+Patch00042:     increase-x86_64-physical-bits-to-42.patch
+Patch00043:     vga-Raise-VRAM-to-16-MiB-for-pc-0.15-and.patch
+Patch00044:     i8254-Fix-migration-from-SLE11-SP2.patch
+Patch00045:     acpi_piix4-Fix-migration-from-SLE11-SP2.patch
+Patch00046:     Switch-order-of-libraries-for-mpath-supp.patch
+Patch00047:     Make-installed-scripts-explicitly-python.patch
+Patch00048:     hw-smbios-handle-both-file-formats-regar.patch
+Patch00049:     xen-add-block-resize-support-for-xen-dis.patch
+Patch00050:     tests-qemu-iotests-Triple-timeout-of-i-o.patch
+Patch00051:     tests-block-io-test-130-needs-some-delay.patch
+Patch00052:     xen-ignore-live-parameter-from-xen-save-.patch
+Patch00053:     Conditionalize-ui-bitmap-installation-be.patch
+Patch00054:     tests-change-error-message-in-test-162.patch
+Patch00055:     hw-usb-hcd-xhci-Fix-GCC-9-build-warning.patch
+Patch00056:     hw-usb-dev-mtp-Fix-GCC-9-build-warning.patch
+Patch00057:     hw-intc-exynos4210_gic-provide-more-room.patch
+Patch00058:     configure-only-populate-roms-if-softmmu.patch
+Patch00059:     pc-bios-s390-ccw-net-avoid-warning-about.patch
+Patch00060:     roms-change-cross-compiler-naming-to-be-.patch
+Patch00061:     roms-Makefile.edk2-don-t-invoke-git-sinc.patch
+Patch00062:     tests-Disable-some-block-tests-for-now.patch
+# Patches applied in roms/seabios/:
+Patch01000:     seabios-use-python2-explicitly-as-needed.patch
+Patch01001:     seabios-switch-to-python3-as-needed.patch
+Patch01002:     enable-cross-compilation-on-ARM.patch
+Patch01003:     vga-move-modelist-from-bochsvga.c-to-new.patch
+Patch01004:     vga-make-memcpy_high-public.patch
+Patch01005:     vga-add-atiext-driver.patch
+Patch01006:     vga-add-ati-bios-tables.patch
+Patch01007:     vbe-add-edid-support.patch
+Patch01008:     ati-add-edid-support.patch
+Patch01009:     ati-vga-make-less-verbose.patch
+Patch01010:     ati-vga-fix-ati_read.patch
+Patch01011:     ati-vga-make-i2c-register-and-bits-confi.patch
+Patch01012:     ati-vga-try-vga-ddc-first.patch
+Patch01013:     ati-vga-add-rage128-edid-support.patch
+# Patches applied in roms/ipxe/:
+Patch02000:     stub-out-the-SAN-req-s-in-int13.patch
+Patch02001:     ipxe-Makefile-fix-issues-of-build-reprod.patch
+Patch02002:     Fix-s-directive-argument-is-null-error.patch
+Patch02003:     Workaround-compilation-error-with-gcc-9..patch
+Patch02004:     Do-not-apply-WORKAROUND_CFLAGS-for-host-.patch
+# Patches applied in roms/sgabios/:
+Patch03000:     sgabios-Makefile-fix-issues-of-build-rep.patch
+Patch03001:     roms-sgabios-Fix-csum8-to-be-built-by-ho.patch
+# Patches applied in roms/skiboot/:
+Patch05000:     Disable-Waddress-of-packed-member-for-GC.patch
+Patch05001:     hdata-vpd-fix-printing-char-0x00.patch
+# Patches applied in ui/keycodemapdb/:
+Patch08000:     Make-keycode-gen-output-reproducible-use.patch
 
-# ipxe - path: roms/ipxe (patch range 1200-1299)
-Patch1200:      ipxe-stable-buildid.patch
-Patch1201:      ipxe-use-gcc6-for-more-compact-code.patch
-Patch1202:      ipxe-efi-Simplify-diagnostic-for-NULL-handle.patch
-Patch1203:      ipxe-build-Disable-gcc-address-of-packed-member-warning.patch
-Patch1204:      ipxe-efi-Avoid-string-op-warning-with-cross-gcc-7-compile.patch
+# Please do not add patches manually here.
 
-# sgabios - path: roms/sgabios (patch range 1300-1399)
-Patch1300:      sgabios-stable-buildid.patch
-Patch1301:      sgabios-fix-cross-build.patch
-
-# SLOF - path: roms/SLOF (patch range 1400-1499) (Currently no patches)
-
-# skiboot - path: roms/skiboot (patch range 1500-1599) (Currently no patches)
-Patch1500:      skiboot-gcc9-compat.patch
-
-# keycodemapdb - path: ui/keycodemapdb (patch range 1600-1699) (Currently no patches)
-Patch1600:      keycodemapdb-make-keycode-gen-output-reproducible.patch
-
-# openBIOS - path: roms/openbios (patch range 1700-1799) (Currently no patches)
-
-# If for any reason we have any QEMU patches which are conditionally applied,
-# "manually" include them here:
-
-ExcludeArch:    s390
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+
+# ========================================================================
+%if "%{name}" == "qemu-linux-user"
+BuildRequires:  e2fsprogs-devel
+BuildRequires:  fdupes
+BuildRequires:  gcc-c++
+BuildRequires:  glib2-devel-static
+BuildRequires:  glibc-devel-static
+BuildRequires:  makeinfo
+BuildRequires:  pcre-devel-static
+BuildRequires:  python3-base
+BuildRequires:  zlib-devel-static
+# we must not install the qemu-linux-user package when under QEMU build
+%if 0%{?qemu_user_space_build:1}
+#!BuildIgnore:  post-build-checks
+%endif
+
+%description
+QEMU provides CPU emulation along with other related capabilities. This package
+provides programs to run user space binaries and libraries meant for another
+architecture. The syscall interface is intercepted and execution below the
+syscall layer occurs on the native hardware and operating system.
+
+# ------------------------------------------------------------------------
+%else # ! qemu-linux-user
 %if %{build_x86_firmware_from_source}
 BuildRequires:  acpica
 %endif
@@ -239,24 +253,56 @@ BuildRequires:  binutils-devel
 BuildRequires:  bison
 BuildRequires:  bluez-devel
 BuildRequires:  brlapi-devel
+%ifnarch %{ix86} aarch64
+BuildRequires:  cross-aarch64-binutils
+%if 0%{?is_opensuse}
+%ifarch riscv64
+BuildRequires:  cross-aarch64-gcc8
+%else
+BuildRequires:  cross-aarch64-gcc9
+%endif
+%else
+BuildRequires:  cross-aarch64-gcc7
+%endif
+%endif
+%ifnarch %{ix86} armv7hl
+BuildRequires:  cross-arm-binutils
+%if 0%{?is_opensuse}
+%ifarch riscv64
+BuildRequires:  cross-arm-gcc8
+%else
+BuildRequires:  cross-arm-gcc9
+%endif
+%else
+BuildRequires:  cross-arm-gcc7
+%endif
+%endif
 %if %{build_x86_firmware_from_source}
 %ifnarch %{ix86} x86_64
 # We must cross-compile on non-x86*
+BuildRequires:  cross-i386-binutils
+%if 0%{?is_opensuse}
+BuildRequires:  cross-i386-gcc9
+%else
+BuildRequires:  cross-i386-gcc7
+%endif
 BuildRequires:  cross-x86_64-binutils
+%if 0%{?is_opensuse}
+BuildRequires:  cross-x86_64-gcc9
+%else
 BuildRequires:  cross-x86_64-gcc7
+%endif
 %endif
 %endif
 BuildRequires:  curl-devel
 BuildRequires:  cyrus-sasl-devel
+%if build_x86_firmware_from_source
+BuildRequires:  dos2unix
+%endif
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc-c++
-%if %{build_x86_firmware_from_source}
-%if 0%{?suse_version} <= 1320
-BuildRequires:  gcc6
-%endif
-%endif
 BuildRequires:  glib2-devel
 %if 0%{?with_glusterfs}
 BuildRequires:  glusterfs-devel
@@ -271,38 +317,18 @@ BuildRequires:  libcacard-devel
 BuildRequires:  libcap-devel
 BuildRequires:  libcap-ng-devel
 BuildRequires:  libdrm-devel
-%if 0%{?suse_version} >= 1320 || ( 0%{?suse_version} == 1315 && 0%{?sle_version} > 120100 )
 BuildRequires:  libepoxy-devel
-%endif
-%if 0%{?suse_version} > 1320 || ( 0%{?suse_version} == 1315 && 0%{?sle_version} > 120200 )
 BuildRequires:  libfdt-devel
-%else
-BuildRequires:  libfdt1-devel
-%endif
 BuildRequires:  libgbm-devel
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libgnutls-devel
-%if 0%{?suse_version} > 1320 || ( 0%{?suse_version} == 1315 && 0%{?sle_version} > 120100 )
 BuildRequires:  libiscsi-devel
-%endif
 BuildRequires:  libjpeg-devel
 %if 0%{?is_opensuse}
 BuildRequires:  libnfs-devel
 %endif
-%ifarch %ix86 x86_64
-%if 0%{?suse_version} > 1320 || 0%{?suse_version} == 1315
-BuildRequires:  libnuma-devel
-%endif
-%else
-%ifarch aarch64
-%if 0%{?suse_version} > 1320 || ( 0%{?suse_version} == 1315 && 0%{?sle_version} > 120100 )
-BuildRequires:  libnuma-devel
-%endif
-%endif
-%else
 %ifnarch %arm s390x
 BuildRequires:  libnuma-devel
-%endif
 %endif
 BuildRequires:  libpcap-devel
 BuildRequires:  libpixman-1-0-devel
@@ -312,28 +338,18 @@ BuildRequires:  libpmem-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libpulse-devel
 %if 0%{?with_rbd}
-%if 0%{?is_opensuse} || 0%{?sle_version} > 120100
 BuildRequires:  librbd-devel
-%else
-BuildRequires:  ceph-devel
 %endif
-%endif
-%if 0%{?suse_version} >= 1320 && 0%{?is_opensuse}
+%if 0%{?is_opensuse}
 BuildRequires:  libSDL2-devel
 BuildRequires:  libSDL2_image-devel
 %endif
-%if 0%{?with_seccomp}
 BuildRequires:  libseccomp-devel
-%endif
 BuildRequires:  libspice-server-devel
-BuildRequires:  libssh2-devel
+BuildRequires:  libssh-devel
 BuildRequires:  libudev-devel
 BuildRequires:  libusb-1_0-devel
-%if 0%{?suse_version} > 1320
 BuildRequires:  libvdeplug-devel
-%else
-BuildRequires:  libvdeplug3-devel
-%endif
 %if 0%{?is_opensuse}
 BuildRequires:  lzfse-devel
 %endif
@@ -341,22 +357,17 @@ BuildRequires:  Mesa-devel
 BuildRequires:  libxkbcommon-devel
 BuildRequires:  lzo-devel
 BuildRequires:  makeinfo
-%if 0%{?suse_version} > 1320
 BuildRequires:  multipath-tools-devel
+%if build_x86_firmware_from_source
+BuildRequires:  nasm
 %endif
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pwdutils
-%if 0%{?suse_version} > 1320
+BuildRequires:  python-base
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-base
-%else
-BuildRequires:  python-Sphinx
-%endif
-BuildRequires:  python-base
-%if 0%{?suse_version} >= 1315
 BuildRequires:  rdma-core-devel
-%endif
 BuildRequires:  snappy-devel
 BuildRequires:  spice-protocol-devel
 BuildRequires:  systemd
@@ -365,9 +376,7 @@ BuildRequires:  systemd
 BuildRequires:  pkgconfig(udev)
 %endif
 BuildRequires:  usbredir-devel
-%if 0%{?suse_version} >= 1320 || ( 0%{?suse_version} == 1315 && 0%{?sle_version} > 120100 )
 BuildRequires:  virglrenderer-devel >= 0.4.1
-%endif
 BuildRequires:  vte-devel
 %ifarch x86_64
 BuildRequires:  xen-devel
@@ -378,14 +387,12 @@ BuildRequires:  xz-devel
 %endif
 BuildRequires:  zlib-devel
 %if "%{name}" == "qemu-testsuite"
-%if 0%{?suse_version} > 1320
-BuildRequires:  python-base
-%endif
 BuildRequires:  bc
+BuildRequires:  python-base
 BuildRequires:  qemu-arm = %{qemuver}
 BuildRequires:  qemu-audio-alsa = %{qemuver}
 BuildRequires:  qemu-audio-pa = %{qemuver}
-%if 0%{?suse_version} >= 1320 && 0%{?is_opensuse}
+%if 0%{?is_opensuse}
 BuildRequires:  qemu-audio-sdl = %{qemuver}
 %endif
 BuildRequires:  qemu-block-curl = %{qemuver}
@@ -393,9 +400,7 @@ BuildRequires:  qemu-block-dmg = %{qemuver}
 %if 0%{?with_glusterfs}
 BuildRequires:  qemu-block-gluster = %{qemuver}
 %endif
-%if 0%{?suse_version} > 1320 || ( 0%{?suse_version} == 1315 && 0%{?sle_version} > 120100 )
 BuildRequires:  qemu-block-iscsi = %{qemuver}
-%endif
 %if 0%{?is_opensuse}
 BuildRequires:  qemu-block-nfs = %{qemuver}
 %endif
@@ -403,6 +408,9 @@ BuildRequires:  qemu-block-nfs = %{qemuver}
 BuildRequires:  qemu-block-rbd = %{qemuver}
 %endif
 BuildRequires:  qemu-block-ssh = %{qemuver}
+%if %{provide_edk2_firmware}
+BuildRequires:  qemu-edk2 = %{qemuver}
+%endif
 BuildRequires:  qemu-extra = %{qemuver}
 BuildRequires:  qemu-guest-agent = %{qemuver}
 BuildRequires:  qemu-ipxe = 1.0.0+
@@ -417,7 +425,7 @@ BuildRequires:  qemu-sgabios = 8
 BuildRequires:  qemu-tools = %{qemuver}
 BuildRequires:  qemu-ui-curses = %{qemuver}
 BuildRequires:  qemu-ui-gtk = %{qemuver}
-%if 0%{?suse_version} >= 1320 && 0%{?is_opensuse}
+%if 0%{?is_opensuse}
 BuildRequires:  qemu-ui-sdl = %{qemuver}
 %endif
 BuildRequires:  qemu-vgabios = 1.12.1
@@ -437,7 +445,7 @@ Recommends:     qemu-block-curl
 Recommends:     qemu-tools
 Recommends:     qemu-ui-curses
 Recommends:     qemu-ui-gtk
-%if 0%{?suse_version} >= 1320 && 0%{?is_opensuse}
+%if 0%{?is_opensuse}
 Recommends:     qemu-ui-sdl
 %endif
 Recommends:     qemu-x86
@@ -460,9 +468,7 @@ Suggests:       qemu-block-dmg
 %if 0%{?with_glusterfs}
 Suggests:       qemu-block-gluster
 %endif
-%if 0%{?suse_version} > 1320 || ( 0%{?suse_version} == 1315 && 0%{?sle_version} > 120100 )
 Suggests:       qemu-block-iscsi
-%endif
 %if 0%{?is_opensuse}
 Suggests:       qemu-block-nfs
 %endif
@@ -475,88 +481,19 @@ Suggests:       qemu-lang
 %if 0%{?is_opensuse}
 Recommends:     qemu-ksm = %{qemuver}
 %endif
+Suggests:       qemu-vhost-user-gpu
 Provides:       qemu-audio-oss = %{qemuver}
 Obsoletes:      qemu-audio-oss < %{qemuver}
 
-# for the record, this set of firmware files is installed, but we don't
-# build (yet): bamboo.dtb canyonlands.dtb hppa-firmware.img openbios-ppc openbios-sparc32
-# openbios-sparc64 palcode-clipper petalogix-ml605.dtb petalogix-s3adsp1800.dtb ppc_rom.bin
-# QEMU,cgthree.bin QEMU,tcx.bin qemu_vga.ndrv u-boot.e500 u-boot-sam460-20100605.bin
-
-# This first list group isn't specific to what this instance builds
-%define ppc_default_firmware {%nil}
-%define ppc_extra_firmware {skiboot.lid slof.bin}
-%define ppc64_only_default_firmware {spapr-rtas.bin}
-%define ppc64_only_extra_firmware {%nil}
-%define s390x_default_firmware {s390-ccw.img s390-netboot.img}
-%define s390x_extra_firmware {%nil}
-%define x86_default_firmware {linuxboot.bin linuxboot_dma.bin multiboot.bin \
-kvmvapic.bin pvh.bin}
-%define x86_extra_firmware {bios.bin bios-256k.bin pxe-e1000.rom pxe-eepro100.rom \
-pxe-ne2k_pci.rom pxe-pcnet.rom pxe-rtl8139.rom pxe-virtio.rom sgabios.bin \
-vgabios-bochs-display.bin vgabios.bin vgabios-cirrus.bin vgabios-qxl.bin \
-vgabios-ramfb.bin vgabios-stdvga.bin vgabios-virtio.bin vgabios-vmware.bin}
-%define x86_64_only_default_firmware {%nil}
-%define x86_64_only_extra_firmware {efi-e1000.rom efi-e1000e.rom efi-eepro100.rom \
-efi-ne2k_pci.rom efi-pcnet.rom efi-rtl8139.rom efi-virtio.rom efi-vmxnet3.rom}
-
-%define firmware { \
-%{?ppc_default_firmware} %{?ppc_extra_firmware} \
-%{?ppc64_only_default_firmware} %{?ppc64_only_extra_firmware} \
-%{?s390x_default_firmware} %{?s390x_extra_firmware} \
-%{?x86_default_firmware} %{?x86_extra_firmware} \
-%{?x86_64_only_default_firmware} %{?x86_64_only_extra_firmware} }
-
-# This second list group is specific to what this instance builds
-%define ppc_default_built_firmware %{ppc_default_firmware}
-%if %{build_skiboot_from_source} && %{build_slof_from_source}
-%define ppc_extra_built_firmware %{ppc_extra_firmware}
-%else
-%if %{build_skiboot_from_source}
-%define ppc_extra_built_firmware {skiboot.lid}
-%endif
-%if %{build_slof_from_source}
-%define ppc_extra_built_firmware {slof.bin}
-%endif
-%endif
-
-%ifarch ppc64
-%define ppc64_only_default_built_firmware %{ppc64_only_default_firmware}
-%define ppc64_only_extra_built_firmware %{ppc64_only_extra_firmware}
-%endif
-
-%ifarch s390x
-%define s390x_default_built_firmware %{s390x_default_firmware}
-%define s390x_extra_built_firmware %{s390x_extra_firmware}
-%endif
-
-%ifarch %ix86 x86_64
-%define x86_default_built_firmware %{x86_default_firmware}
-%ifarch x86_64
-%define x86_64_only_default_built_firmware %{x86_64_only_default_firmware}
-%endif
-%endif
-
-%if %{build_x86_firmware_from_source}
-%define x86_extra_built_firmware %{x86_extra_firmware}
-%ifarch x86_64
-%define x86_64_only_extra_built_firmware %{x86_64_only_extra_firmware}
-%endif
-%endif
-
-%define built_firmware { \
-%{?ppc_default_built_firmware} %{?ppc_extra_built_firmware} \
-%{?ppc64_only_default_built_firmware} %{?ppc64_only_extra_built_firmware} \
-%{?s390x_default_built_firmware} %{?s390x_extra_built_firmware} \
-%{?x86_default_built_firmware} %{?x86_extra_built_firmware} \
-%{?x86_64_only_default_built_firmware} %{?x86_64_only_extra_built_firmware} }
+# ------------------------------------------------------------------------
+%define generic_qemu_description QEMU provides full machine emulation and cross architecture usage. It closely\
+integrates with KVM and Xen virtualization, allowing for excellent performance.\
+Many options are available for defining the emulated environment, including\
+traditional devices, direct host device access, and interfaces specific to\
+virtualization.
 
 %description
-QEMU provides full machine emulation and cross architecture usage. It closely
-integrates with KVM and Xen virtualization, allowing for excellent performance.
-Many options are available for defining the emulated environment, including 
-traditional devices, direct host device access, and interfaces specific to
-virtualization.
+%{generic_qemu_description}
 
 This package acts as an umbrella package to the other QEMU sub-packages.
 
@@ -576,11 +513,7 @@ Recommends:     ovmf
 Recommends:     qemu-ovmf-x86_64
 
 %description x86
-QEMU provides full machine emulation and cross architecture usage. It closely
-integrates with KVM and Xen virtualization, allowing for excellent performance.
-Many options are available for defining the emulated environment, including 
-traditional devices, direct host device access, and interfaces specific to
-virtualization.
+%{generic_qemu_description}
 
 This package provides i386 and x86_64 emulation.
 
@@ -594,11 +527,7 @@ Recommends:     qemu-ipxe
 Recommends:     qemu-vgabios
 
 %description ppc
-QEMU provides full machine emulation and cross architecture usage. It closely
-integrates with KVM and Xen virtualization, allowing for excellent performance.
-Many options are available for defining the emulated environment, including 
-traditional devices, direct host device access, and interfaces specific to
-virtualization.
+%{generic_qemu_description}
 
 This package provides ppc and ppc64 emulation.
 
@@ -610,11 +539,7 @@ Release:        0
 Requires:       %name = %{qemuver}
 
 %description s390
-QEMU provides full machine emulation and cross architecture usage. It closely
-integrates with KVM and Xen virtualization, allowing for excellent performance.
-Many options are available for defining the emulated environment, including 
-traditional devices, direct host device access, and interfaces specific to
-virtualization.
+%{generic_qemu_description}
 
 This package provides s390x emulation.
 
@@ -630,11 +555,7 @@ Recommends:     ovmf
 Recommends:     qemu-uefi-aarch64
 
 %description arm
-QEMU provides full machine emulation and cross architecture usage. It closely
-integrates with KVM and Xen virtualization, allowing for excellent performance.
-Many options are available for defining the emulated environment, including 
-traditional devices, direct host device access, and interfaces specific to
-virtualization.
+%{generic_qemu_description}
 
 This package provides arm emulation.
 
@@ -648,11 +569,7 @@ Recommends:     qemu-ipxe
 Recommends:     qemu-vgabios
 
 %description extra
-QEMU provides full machine emulation and cross architecture usage. It closely
-integrates with KVM and Xen virtualization, allowing for excellent performance.
-Many options are available for defining the emulated environment, including 
-traditional devices, direct host device access, and interfaces specific to
-virtualization.
+%{generic_qemu_description}
 
 This package provides some lesser used emulations, including alpha, m68k,
 mips, moxie, sparc, and xtensa. (The term "extra" is juxtapositioned against
@@ -674,11 +591,7 @@ Provides:       kvm = %{qemuver}
 Obsoletes:      kvm < %{qemuver}
 
 %description kvm
-QEMU provides full machine emulation and cross architecture usage. It closely
-integrates with KVM and Xen virtualization, allowing for excellent performance.
-Many options are available for defining the emulated environment, including 
-traditional devices, direct host device access, and interfaces specific to
-virtualization.
+%{generic_qemu_description}
 
 This package simply provides a shell script wrapper for the QEMU program which
 does the actual machine emulation and virtualization for this architecture. The
@@ -744,7 +657,6 @@ This package contains a module for accessing network-based image files over a
 GlusterFS network connection from qemu-img tool and QEMU system emulation.
 %endif
 
-%if 0%{?suse_version} > 1320 || ( 0%{?suse_version} == 1315 && 0%{?sle_version} > 120100 )
 %package block-iscsi
 Summary:        iSCSI block support for QEMU
 Group:          System/Emulators/PC
@@ -755,7 +667,6 @@ Release:        0
 %description block-iscsi
 This package contains a module for accessing network-based image files over an
 iSCSI network connection from qemu-img tool and QEMU system emulation.
-%endif
 
 %if 0%{?is_opensuse}
 %package block-nfs
@@ -812,7 +723,7 @@ Release:        0
 %description ui-gtk
 This package contains a module for doing GTK based UI for QEMU.
 
-%if 0%{?suse_version} >= 1320 && 0%{?is_opensuse}
+%if 0%{?is_opensuse}
 %package ui-sdl
 Summary:        SDL based UI support for QEMU
 Group:          System/Emulators/PC
@@ -844,7 +755,7 @@ Release:        0
 %description audio-pa
 This package contains a module for Pulse Audio based audio support for QEMU.
 
-%if 0%{?suse_version} >= 1320 && 0%{?is_opensuse}
+%if 0%{?is_opensuse}
 %package audio-sdl
 Summary:        SDL based audio support for QEMU
 Group:          System/Emulators/PC
@@ -856,6 +767,16 @@ Release:        0
 This package contains a module for SDL based audio support for QEMU.
 %endif
 
+%package vhost-user-gpu
+Summary:        Vhost user mode virtio-gpu 2D/3D rendering backend for QEMU
+Group:          System/Emulators/PC
+Version:        %{qemuver}
+Release:        0
+%{qemu_module_conflicts}
+
+%description vhost-user-gpu
+This package contains a vhost user mode virtio-gpu 2D/3D rendering backend for QEMU
+
 %package tools
 Summary:        Tools for QEMU
 Group:          System/Emulators/PC
@@ -864,9 +785,7 @@ Release:        0
 Provides:       %name:%_libexecdir/qemu-bridge-helper
 Requires(pre):  permissions
 Requires(pre):  shadow
-%if 0%{?suse_version} > 1320
 Recommends:     multipath-tools
-%endif
 Recommends:     qemu-block-curl
 %if 0%{?with_rbd}
 Recommends:     qemu-block-rbd
@@ -945,6 +864,18 @@ Provides Preboot Execution Environment (PXE) ROM support for various emulated
 network adapters available with QEMU.
 %endif
 
+%if %{provide_edk2_firmware}
+%package edk2
+Summary:        EDK II based firmware
+Group:          System/Emulators/PC
+Version:        %{qemuver}
+Release:        0
+BuildArch:      noarch
+
+%description edk2
+Provides EDK II based firmware.
+%endif
+
 %if 0%{?is_opensuse}
 %package ksm
 Summary:        Kernel Samepage Merging services
@@ -961,112 +892,217 @@ merges anonymous (private) pages (not pagecache ones).
 This package provides a service file for starting and stopping KSM.
 %endif
 
-%endif # !qemu-testsuite
+%endif # ! qemu-testsuite
+%endif # ! qemu-linux-user
 
+# ========================================================================
 %prep
 %setup -q -n %{srcname}-%{expand:%%(SV=%{srcver};echo ${SV%%%%+git*})}
-%patch0001 -p1
-%patch0002 -p1
-%patch0003 -p1
-%patch0004 -p1
-%patch0005 -p1
-%patch0006 -p1
-%patch0007 -p1
-%patch0008 -p1
-%patch0009 -p1
-%patch0010 -p1
-%patch0011 -p1
-%patch0012 -p1
-%patch0013 -p1
-%patch0014 -p1
-%patch0015 -p1
-%patch0016 -p1
-%patch0017 -p1
-%patch0018 -p1
-%patch0019 -p1
-%patch0020 -p1
-%patch0021 -p1
-%patch0022 -p1
-%patch0023 -p1
-%patch0024 -p1
-%patch0025 -p1
-%patch0026 -p1
-%patch0027 -p1
-%patch0028 -p1
-%patch0029 -p1
-%patch0030 -p1
-%patch0031 -p1
-%patch0032 -p1
-%patch0033 -p1
-%patch0034 -p1
-%patch0035 -p1
-%patch0036 -p1
-%patch0037 -p1
-%patch0038 -p1
-%patch0039 -p1
-%patch0040 -p1
-%patch0041 -p1
-%patch0042 -p1
-%patch0043 -p1
-%patch0044 -p1
-%patch0045 -p1
-%patch0046 -p1
-%patch0047 -p1
-%patch0048 -p1
-%patch0049 -p1
-%patch0050 -p1
-%patch0051 -p1
-
-pushd roms/seabios
-%patch1100 -p1
-%if 0%{?suse_version} > 1320
-%patch1101 -p1
+%patch00000 -p1
+%patch00001 -p1
+%patch00002 -p1
+%patch00003 -p1
+%patch00004 -p1
+%patch00005 -p1
+%patch00006 -p1
+%patch00007 -p1
+%patch00008 -p1
+%patch00009 -p1
+%patch00010 -p1
+%patch00011 -p1
+%patch00012 -p1
+%patch00013 -p1
+%patch00014 -p1
+%patch00015 -p1
+%patch00016 -p1
+%patch00017 -p1
+%patch00018 -p1
+%patch00019 -p1
+%patch00020 -p1
+%patch00021 -p1
+%patch00022 -p1
+%patch00023 -p1
+%patch00024 -p1
+%patch00025 -p1
+%patch00026 -p1
+%patch00027 -p1
+%patch00028 -p1
+%patch00029 -p1
+%patch00030 -p1
+%patch00031 -p1
+%patch00032 -p1
+%patch00033 -p1
+%patch00034 -p1
+%patch00035 -p1
+%patch00036 -p1
+%patch00037 -p1
+%patch00038 -p1
+%patch00039 -p1
+%patch00040 -p1
+%patch00041 -p1
+%patch00042 -p1
+%patch00043 -p1
+%patch00044 -p1
+%patch00045 -p1
+%patch00046 -p1
+%patch00047 -p1
+%patch00048 -p1
+%patch00049 -p1
+%patch00050 -p1
+%patch00051 -p1
+%patch00052 -p1
+%patch00053 -p1
+%patch00054 -p1
+%patch00055 -p1
+%patch00056 -p1
+%patch00057 -p1
+%patch00058 -p1
+%patch00059 -p1
+%patch00060 -p1
+%patch00061 -p1
+%patch00062 -p1
+%patch01000 -p1
+%patch01001 -p1
+%patch01002 -p1
+%patch01003 -p1
+%patch01004 -p1
+%patch01005 -p1
+%patch01006 -p1
+%patch01007 -p1
+%patch01008 -p1
+%patch01009 -p1
+%patch01010 -p1
+%patch01011 -p1
+%patch01012 -p1
+%patch01013 -p1
+%if 0%{?patch-possibly-applied-elsewhere}
+%patch02000 -p1
 %endif
-%patch1102 -p1
-popd
-
-pushd roms/ipxe
-%patch1200 -p1
-%if 0%{?suse_version} <= 1320
-%patch1201 -p1
-%endif
-%patch1202 -p1
-%patch1203 -p1
+%patch02001 -p1
+%patch02002 -p1
+%patch02003 -p1
 %ifarch aarch64
-%patch1204 -p1
+%patch02004 -p1
 %endif
-popd
+%patch03000 -p1
+%patch03001 -p1
+%patch05000 -p1
+%patch05001 -p1
+%patch08000 -p1
 
-pushd roms/sgabios
-%patch1300 -p1
-%patch1301 -p1
-popd
+%if "%{name}" != "qemu-linux-user"
+# for the record, this set of firmware files is installed, but we don't
+# build (yet): bamboo.dtb canyonlands.dtb hppa-firmware.img openbios-ppc openbios-sparc32
+# openbios-sparc64 palcode-clipper petalogix-ml605.dtb petalogix-s3adsp1800.dtb ppc_rom.bin
+# QEMU,cgthree.bin QEMU,tcx.bin qemu_vga.ndrv u-boot.e500 u-boot-sam460-20100605.bin
+# opensbi-riscv32-virt-fw_jump.bin
 
-pushd roms/SLOF
-popd
+# This first list group isn't specific to what this instance builds
+%define ppc_default_firmware {%nil}
+%define ppc_extra_firmware {skiboot.lid slof.bin}
+%define ppc64_only_default_firmware {spapr-rtas.bin}
+%define ppc64_only_extra_firmware {%nil}
+%define riscv64_default_firmware {opensbi-riscv64-sifive_u-fw_jump.bin opensbi-riscv64-virt-fw_jump.bin}
+%define riscv64_extra_firmware {%nil}
+%define s390x_default_firmware {s390-ccw.img s390-netboot.img}
+%define s390x_extra_firmware {%nil}
+%define x86_default_firmware {linuxboot.bin linuxboot_dma.bin multiboot.bin \
+kvmvapic.bin pvh.bin}
+%define x86_extra_firmware {bios.bin bios-256k.bin pxe-e1000.rom \
+pxe-eepro100.rom pxe-ne2k_pci.rom pxe-pcnet.rom pxe-rtl8139.rom pxe-virtio.rom \
+sgabios.bin vgabios-ati.bin vgabios-bochs-display.bin vgabios.bin \
+vgabios-cirrus.bin vgabios-qxl.bin vgabios-ramfb.bin vgabios-stdvga.bin \
+vgabios-virtio.bin vgabios-vmware.bin}
+%define x86_64_only_default_firmware {%nil}
+%define x86_64_only_extra_firmware {edk2-aarch64-code.fd.bz2 \
+edk2-arm-code.fd.bz2 edk2-arm-vars.fd.bz2 edk2-i386-code.fd.bz2 \
+edk2-i386-secure-code.fd.bz2 edk2-i386-vars.fd.bz2 edk2-x86_64-code.fd.bz2 \
+edk2-x86_64-secure-code.fd.bz2 efi-e1000.rom efi-e1000e.rom efi-eepro100.rom \
+efi-ne2k_pci.rom efi-pcnet.rom efi-rtl8139.rom efi-virtio.rom efi-vmxnet3.rom}
 
-pushd roms/skiboot
-%patch1500 -p1
-popd
+%define firmware { \
+%{?ppc_default_firmware} %{?ppc_extra_firmware} \
+%{?ppc64_only_default_firmware} %{?ppc64_only_extra_firmware} \
+%{?riscv64_default_firmware} %{?riscv64_extra_firmware} \
+%{?s390x_default_firmware} %{?s390x_extra_firmware} \
+%{?x86_default_firmware} %{?x86_extra_firmware} \
+%{?x86_64_only_default_firmware} %{?x86_64_only_extra_firmware} }
 
-pushd ui/keycodemapdb
-%patch1600 -p1
-popd
+# This second list group is specific to what this instance builds
+%define ppc_default_built_firmware %{ppc_default_firmware}
+%if %{build_skiboot_from_source} && %{build_slof_from_source}
+%define ppc_extra_built_firmware %{ppc_extra_firmware}
+%else
+%if %{build_skiboot_from_source}
+%define ppc_extra_built_firmware {skiboot.lid}
+%endif
+%if %{build_slof_from_source}
+%define ppc_extra_built_firmware {slof.bin}
+%endif
+%endif
 
-pushd roms/openbios
-popd
+%ifarch ppc64
+%define ppc64_only_default_built_firmware %{ppc64_only_default_firmware}
+%define ppc64_only_extra_built_firmware %{ppc64_only_extra_firmware}
+%endif
+
+%ifarch riscv64
+%define riscv64_default_built_firmware %{riscv64_default_firmware}
+%define riscv64_extra_built_firmware %{riscv64_extra_firmware}
+%endif
+
+%ifarch s390x
+%define s390x_default_built_firmware %{s390x_default_firmware}
+%define s390x_extra_built_firmware %{s390x_extra_firmware}
+%endif
+
+%ifarch %ix86 x86_64
+%define x86_default_built_firmware %{x86_default_firmware}
+%ifarch x86_64
+%define x86_64_only_default_built_firmware %{x86_64_only_default_firmware}
+%endif
+%endif
+
+%if %{build_x86_firmware_from_source}
+%define x86_extra_built_firmware %{x86_extra_firmware}
+%ifarch x86_64
+%define x86_64_only_extra_built_firmware %{x86_64_only_extra_firmware}
+%endif
+%endif
+
+%define built_firmware { \
+%{?ppc_default_built_firmware} %{?ppc_extra_built_firmware} \
+%{?ppc64_only_default_built_firmware} %{?ppc64_only_extra_built_firmware} \
+%{?riscv64_default_built_firmware} %{?riscv64_extra_built_firmware} \
+%{?s390x_default_built_firmware} %{?s390x_extra_built_firmware} \
+%{?x86_default_built_firmware} %{?x86_extra_built_firmware} \
+%{?x86_64_only_default_built_firmware} %{?x86_64_only_extra_built_firmware} }
 
 %if "%{name}" != "qemu-testsuite"
+
 # delete the firmware files that we intend to build
 for i in %built_firmware
-%else
-# delete the firmware files that we intend to link from built packages
-for i in %firmware
-%endif
 do
   unlink pc-bios/$i
 done
 
+# ------------------------------------------------------------------------
+%else # qemu-testsuite
+
+# delete the firmware files that we intend to link from built packages
+for i in %firmware
+do
+  if [[ $i =~ .*[.]bz2 ]]; then
+    echo "Skipping %i"
+  else
+    unlink pc-bios/$i
+  fi
+done
+
+%endif # qemu-testsuite
+%endif # ! qemu-linux-user
+
+# ========================================================================
 %build
 %define _lto_cflags %{nil}
 
@@ -1086,14 +1122,11 @@ cd %mybuilddir
 	--localstatedir=%_localstatedir \
 	--docdir=%_docdir/%name \
 	--firmwarepath=%_datadir/%name \
-%if 0%{?suse_version} > 1320
         --python=%_bindir/python3 \
-%else
-        --python=%_bindir/python2 \
-%endif
 	--extra-cflags="%{optflags}" \
 	--disable-stack-protector \
 	--disable-strip \
+%if "%{name}" != "qemu-linux-user"
 	--with-pkgversion="%(echo '%{distro}' | sed 's/ (.*)//')" \
 	--with-default-devices \
 	--enable-system --disable-linux-user \
@@ -1101,7 +1134,7 @@ cd %mybuilddir
 	--enable-modules \
 	--enable-pie \
 	--enable-docs \
-%if 0%{?suse_version} >= 1320 && 0%{?is_opensuse}
+%if 0%{?is_opensuse}
 	--audio-drv-list="pa alsa sdl" \
 %else
 	--audio-drv-list="pa alsa" \
@@ -1138,11 +1171,7 @@ cd %mybuilddir
 %else
 	--disable-kvm \
 %endif
-%if 0%{?suse_version} > 1320 || ( 0%{?suse_version} == 1315 && 0%{?sle_version} > 120100 )
 	--enable-libiscsi \
-%else
-	--disable-libiscsi \
-%endif
 %if 0%{?is_opensuse}
 	--enable-libnfs \
 %else
@@ -1153,7 +1182,7 @@ cd %mybuilddir
 %else
 	--disable-libpmem \
 %endif
-	--enable-libssh2 \
+	--enable-libssh \
 	--enable-libusb \
 	--disable-libxml2 \
 	--enable-linux-aio \
@@ -1165,43 +1194,17 @@ cd %mybuilddir
 	--enable-lzo \
 	--disable-malloc-trim \
 	--enable-membarrier \
-%if 0%{?suse_version} > 1320
 	--enable-mpath \
-%else
-	--disable-mpath \
-%endif
 	--disable-netmap \
 	--disable-nettle \
-%ifarch %ix86 x86_64
-%if 0%{?suse_version} > 1320 || 0%{?suse_version} == 1315
-	--enable-numa \
-%else
-	--disable-numa \
-%endif
-%else
-%ifarch aarch64
-%if 0%{?suse_version} > 1320 || ( 0%{?suse_version} == 1315 && 0%{?sle_version} > 120100 )
-	--enable-numa \
-%endif
-%else
-	--disable-numa \
-%endif
-%else
 %ifarch %arm s390x
 	--disable-numa \
 %else
 	--enable-numa \
 %endif
-%endif
-%if 0%{?suse_version} >= 1320 || ( 0%{?suse_version} == 1315 && 0%{?sle_version} > 120100 )
 	--enable-opengl \
-%endif
 	--enable-parallels \
-%if 0%{?suse_version} >= 1315
 	--enable-pvrdma \
-%else
-	--disable-pvrdma \
-%endif
 	--enable-qcow1 \
 	--enable-qed \
 %if 0%{?with_rbd}
@@ -1209,25 +1212,17 @@ cd %mybuilddir
 %else
 	--disable-rbd \
 %endif
-%if 0%{?suse_version} >= 1315
 	--enable-rdma \
-%else
-	--disable-rdma \
-%endif
 	--enable-replication \
 	--disable-sanitizers \
-%if 0%{?suse_version} >= 1320 && 0%{?is_opensuse}
+%if 0%{?is_opensuse}
 	--enable-sdl \
 	--enable-sdl-image \
 %else
 	--disable-sdl \
 	--disable-sdl-image \
 %endif
-%if 0%{?with_seccomp}
 	--enable-seccomp \
-%else
-	--disable-seccomp \
-%endif
 	--enable-sheepdog \
 %if 0%{?is_opensuse}
 	--enable-smartcard \
@@ -1247,19 +1242,13 @@ cd %mybuilddir
 	--enable-vhost-scsi \
 	--enable-vhost-user \
 	--enable-vhost-vsock \
-%if 0%{?suse_version} >= 1320 || ( 0%{?suse_version} == 1315 && 0%{?sle_version} > 120100 )
 	--enable-virglrenderer \
-%endif
 	--enable-virtfs \
 	--enable-vnc \
 	--enable-vnc-jpeg \
 	--enable-vnc-png \
 	--enable-vnc-sasl \
-%if 0%{?suse_version} == 1320
-	--disable-vte \
-%else
 	--enable-vte \
-%endif
 	--enable-vvfat \
 	--enable-werror \
 	--disable-whpx \
@@ -1270,8 +1259,46 @@ cd %mybuilddir
 	--disable-xen \
 %endif
 	--enable-xfsctl \
+# ------------------------------------------------------------------------
+%else # qemu-linux-user
+	--without-default-devices \
+	--disable-system --enable-linux-user \
+	--disable-tools --disable-guest-agent \
+	--static \
+	--disable-modules \
+	--disable-pie \
+	--disable-docs \
+	--audio-drv-list="" \
+	--disable-blobs \
+	--disable-bochs \
+	--disable-capstone \
+	--disable-cloop \
+	--enable-coroutine-pool \
+	--disable-dmg \
+	--disable-fdt \
+	--disable-iconv \
+	--disable-kvm \
+	--disable-malloc-trim \
+	--enable-membarrier \
+	--disable-parallels \
+	--disable-qcow1 \
+	--disable-qed \
+	--disable-replication \
+	--disable-sheepdog \
+	--disable-slirp \
+	--disable-tpm \
+	--disable-vdi \
+	--disable-vhost-crypto \
+	--disable-vhost-kernel \
+	--disable-vhost-net \
+	--disable-vhost-scsi \
+	--disable-vhost-user \
+	--disable-vhost-vsock \
+	--disable-vnc \
+	--disable-vvfat \
+%endif # qemu-linux-user
 
-%if "%{name}" != "qemu-testsuite"
+%if "%{name}" == "qemu"
 
 make %{?_smp_mflags} V=1
 
@@ -1311,11 +1338,28 @@ export LD=x86_64-suse-linux-ld
 %endif
 
 make %{?_smp_mflags} -C %{_builddir}/%buildsubdir/roms bios \
+%if 0%{?is_opensuse} == 0
+  SEABIOS_EXTRAVERSION="-rebuilt.suse.com" \
+%else
+  SEABIOS_EXTRAVERSION="-rebuilt.opensuse.org" \
+%endif
 %ifnarch %ix86 x86_64
   HOSTCC=cc \
 %endif
 
+%ifnarch %ix86
+%if %{provide_edk2_firmware}
+make %{?_smp_mflags} -C %{_builddir}/%buildsubdir/roms efi \
+  EDK2_BASETOOLS_OPTFLAGS='-fPIE'
+%endif
+%endif
+
 make %{?_smp_mflags} -C %{_builddir}/%buildsubdir/roms seavgabios \
+%ifnarch %ix86 x86_64
+  HOSTCC=cc \
+%endif
+
+make %{?_smp_mflags} -C %{_builddir}/%buildsubdir/roms seavgabios-ati \
 %ifnarch %ix86 x86_64
   HOSTCC=cc \
 %endif
@@ -1331,9 +1375,7 @@ make                 -C %{_builddir}/%buildsubdir/roms sgabios \
   HOSTCC=cc
 
 %if %{force_fit_virtio_pxe_rom}
-pushd %{_builddir}/%buildsubdir/roms/ipxe
-patch -p1 < %{SOURCE301}
-popd
+patch -p1 < %_sourcedir/stub-out-the-SAN-req-s-in-int13.patch
 make %{?_smp_mflags} -C %{_builddir}/%buildsubdir/roms pxerom_variants=virtio pxerom_targets=1af41000 pxerom
 %endif
 
@@ -1377,7 +1419,14 @@ make %{?_smp_mflags} -C %{_builddir}/%buildsubdir/roms skiboot CROSS=
 make %{?_smp_mflags} -C %{_builddir}/%buildsubdir/roms slof
 %endif
 
-%else # qemu-testsuite
+%if %{build_opensbi_from_source}
+make %{?_smp_mflags} -C %{_builddir}/%buildsubdir/roms opensbi64-virt CROSS_COMPILE=
+make %{?_smp_mflags} -C %{_builddir}/%buildsubdir/roms opensbi64-sifive_u CROSS_COMPILE=
+%endif
+
+%endif # qemu
+# ------------------------------------------------------------------------
+%if "%{name}" == "qemu-testsuite"
 
 ln -s %_bindir/qemu-img qemu-img
 ln -s %_bindir/qemu-ga qemu-ga
@@ -1386,7 +1435,11 @@ ln -s %_bindir/qemu-io qemu-io
 
 for i in %firmware
 do
-  ln -s %_datadir/%name/$i pc-bios/$i
+  if [[ $i =~ .*[.]bz2 ]]; then
+    echo "Skipping $i"
+  else
+    ln -s %_datadir/qemu/$i pc-bios/$i
+  fi
 done
 
 for conf in %{_builddir}/%buildsubdir/default-configs/*-softmmu.mak; do
@@ -1400,8 +1453,40 @@ make %{?_smp_mflags} tests/qom-test %{?_smp_mflags} V=1
 # ... make comes in fresh and has lots of address space (needed for 32bit, bsc#957379)
 make %{?_smp_mflags} check-report.tap V=1
 
+%endif # qemu
+# ------------------------------------------------------------------------
+%if "%{name}" == "qemu-linux-user"
+
+make %{?_smp_mflags} V=1
+
+%ifarch %ix86
+%define qemu_arch i386
+%endif
+%ifarch x86_64
+%define qemu_arch x86_64
+%endif
+%ifarch %arm
+%define qemu_arch arm
+%endif
+%ifarch aarch64
+%define qemu_arch aarch64
+%endif
+%ifarch ppc
+%define qemu_arch ppc
+%endif
+%ifarch ppc64
+%define qemu_arch ppc64
+%endif
+%ifarch ppc64le
+%define qemu_arch ppc64le
+%endif
+%ifarch s390x
+%define qemu_arch s390x
 %endif
 
+%endif # qemu-linux-user
+
+# ========================================================================
 %check
 cd %mybuilddir
 %if "%{name}" == "qemu-testsuite"
@@ -1413,17 +1498,68 @@ export QEMU_NBD_PROG=%_bindir/qemu-nbd
 make %{?_smp_mflags} check-block V=1
 
 %endif # qemu-testsuite
+# ------------------------------------------------------------------------
+%if "%{name}" == "qemu-linux-user"
+
+%ifarch %ix86 x86_64 %arm aarch64 ppc ppc64 ppc64le s390x
+%{qemu_arch}-linux-user/qemu-%{qemu_arch} %_bindir/ls > /dev/null
+make %{?_smp_mflags} check-softfloat
+%endif
+
+%endif # qemu-linux-user
+
+# ========================================================================
 
 %install
 cd %mybuilddir
-%if "%{name}" != "qemu-testsuite"
+
+%if "%{name}" == "qemu-testsuite"
+
+install -D -m 0644 check-report.tap %{buildroot}%_datadir/qemu/check-report.tap
+
+%endif # qemu-testsuite
+# ------------------------------------------------------------------------
+%if "%{name}" == "qemu-linux-user"
+
+make %{?_smp_mflags} install DESTDIR=%{buildroot}
+rm -rf %{buildroot}%_datadir/qemu/keymaps
+unlink %{buildroot}%_datadir/qemu/trace-events-all
+install -d -m 755 %{buildroot}%_sbindir
+install -m 755 scripts/qemu-binfmt-conf.sh %{buildroot}%_sbindir
+%fdupes -s %{buildroot}
+
+%endif # qemu-linux-user
+# ------------------------------------------------------------------------
+%if "%{name}" == "qemu"
 
 make %{?_smp_mflags} install DESTDIR=%{buildroot}
 %ifnarch %{build_rom_arch}
 for f in %{x86_extra_firmware} \
          %{x86_64_only_extra_firmware}; do
-  unlink %{buildroot}%_datadir/%name/$f
+  unlink %{buildroot}%_datadir/%name/${f%.bz2}
 done
+%define do_more_edk2_unlinks 1
+%else
+%ifarch %ix86 aarch64
+unlink %{buildroot}%_datadir/%name/edk2-aarch64-code.fd
+unlink %{buildroot}%_datadir/%name/edk2-arm-code.fd
+unlink %{buildroot}%_datadir/%name/edk2-arm-vars.fd
+unlink %{buildroot}%_datadir/%name/edk2-i386-code.fd
+unlink %{buildroot}%_datadir/%name/edk2-i386-secure-code.fd
+unlink %{buildroot}%_datadir/%name/edk2-i386-vars.fd
+unlink %{buildroot}%_datadir/%name/edk2-licenses.txt || true
+unlink %{buildroot}%_datadir/%name/edk2-x86_64-code.fd
+unlink %{buildroot}%_datadir/%name/edk2-x86_64-secure-code.fd
+%endif
+%endif
+%if 0%{?do_more_edk2_unlinks} || %{provide_edk2_firmware} == 0
+unlink %{buildroot}%_datadir/%name/edk2-licenses.txt || true
+unlink %{buildroot}%_datadir/%name/firmware/50-edk2-i386-secure.json
+unlink %{buildroot}%_datadir/%name/firmware/50-edk2-x86_64-secure.json
+unlink %{buildroot}%_datadir/%name/firmware/60-edk2-aarch64.json
+unlink %{buildroot}%_datadir/%name/firmware/60-edk2-arm.json
+unlink %{buildroot}%_datadir/%name/firmware/60-edk2-i386.json
+unlink %{buildroot}%_datadir/%name/firmware/60-edk2-x86_64.json
 %endif
 %find_lang %name
 install -d -m 0755 %{buildroot}%_datadir/%name/firmware
@@ -1431,7 +1567,7 @@ install -d -m 0755 %{buildroot}%_libexecdir/supportconfig/plugins
 install -d -m 0755 %{buildroot}%_sysconfdir/%name/firmware
 install -D -m 0644 %{SOURCE4} %{buildroot}%_sysconfdir/%name/bridge.conf
 install -D -m 0755 %{SOURCE3} %{buildroot}%_datadir/%name/qemu-ifup
-install -D -p -m 0644 %{SOURCE8} %{buildroot}%{_udevrulesdir}/80-qemu-ga.rules
+install -D -p -m 0644 %{SOURCE8} %{buildroot}/usr/lib/udev/rules.d/80-qemu-ga.rules
 install -D -m 0755 scripts/analyze-migration.py  %{buildroot}%_bindir/analyze-migration.py
 install -D -m 0755 scripts/vmstate-static-checker.py  %{buildroot}%_bindir/vmstate-static-checker.py
 install -D -m 0755 %{SOURCE9} %{buildroot}%_libexecdir/supportconfig/plugins/%name
@@ -1463,7 +1599,7 @@ ln -s ../qemu-x86/supported.txt %{buildroot}%_docdir/qemu-kvm/kvm-supported.txt
 %endif
 %endif
 %if %{kvm_available}
-install -D -m 0644 %{SOURCE1} %{buildroot}%{_udevrulesdir}/80-kvm.rules
+install -D -m 0644 %{SOURCE1} %{buildroot}/usr/lib/udev/rules.d/80-kvm.rules
 %endif
 install -D -p -m 0644 %{SOURCE7} %{buildroot}%{_unitdir}/qemu-ga@.service
 %if 0%{?is_opensuse}
@@ -1474,13 +1610,8 @@ install -D -m 0644 %{SOURCE2} %{buildroot}%_libexecdir/modules-load.d/kvm.conf
 %endif
 %fdupes -s %{buildroot}
 
-%else # qemu-testsuite
-
-install -D -m 0644 check-report.tap %{buildroot}%_datadir/qemu/check-report.tap
-
-%endif
-
-%if "%{name}" != "qemu-testsuite"
+# ========================================================================
+# (qemu alone has pre* and post* sections for itself and subpackages):
 
 %pre
 %_bindir/getent group kvm >/dev/null || %_sbindir/groupadd -r kvm
@@ -1548,15 +1679,19 @@ fi
 %service_del_postun ksm.service
 %endif
 
-%endif # !qemu-testsuite
+%endif # qemu
 
+# ========================================================================
 %files
 %defattr(-, root, root)
-%if "%{name}" != "qemu-testsuite"
 %doc Changelog README VERSION
 %license COPYING COPYING.LIB LICENSE
+
+%if "%{name}" == "qemu"
 %dir %_docdir/%name/interop
 %dir %_docdir/%name/interop/_static
+%dir %_docdir/%name/specs
+%dir %_docdir/%name/specs/_static
 %_docdir/%name/interop/.buildinfo
 %_docdir/%name/interop/_static/*
 %_docdir/%name/interop/bitmaps.html
@@ -1567,6 +1702,16 @@ fi
 %_docdir/%name/interop/pr-helper.html
 %_docdir/%name/interop/search.html
 %_docdir/%name/interop/searchindex.js
+%_docdir/%name/interop/vhost-user.html
+%_docdir/%name/specs/.buildinfo
+%_docdir/%name/specs/_static/*
+%_docdir/%name/specs/genindex.html
+%_docdir/%name/specs/index.html
+%_docdir/%name/specs/objects.inv
+%_docdir/%name/specs/ppc-spapr-xive.html
+%_docdir/%name/specs/ppc-xive.html
+%_docdir/%name/specs/search.html
+%_docdir/%name/specs/searchindex.js
 %_docdir/%name/qemu-doc.txt
 %_docdir/%name/qemu-doc.html
 %_docdir/%name/qemu-qmp-ref.txt
@@ -1581,6 +1726,7 @@ fi
 %dir %_datadir/%name
 %dir %_datadir/%name/firmware
 %_datadir/%name/keymaps
+%_datadir/%name/qemu-nsis.bmp
 %_datadir/%name/trace-events-all
 %dir %_sysconfdir/%name
 %dir %_sysconfdir/%name/firmware
@@ -1589,7 +1735,7 @@ fi
 %dir %_libexecdir/supportconfig/plugins
 %_libexecdir/supportconfig/plugins/%name
 %if %{kvm_available}
-%{_udevrulesdir}/80-kvm.rules
+/usr/lib/udev/rules.d/80-kvm.rules
 %ifarch s390x
 %_libexecdir/modules-load.d/kvm.conf
 %endif
@@ -1688,6 +1834,9 @@ fi
 %_bindir/qemu-system-xtensa
 %_bindir/qemu-system-xtensaeb
 %_datadir/%name/hppa-firmware.img
+%_datadir/%name/opensbi-riscv32-virt-fw_jump.bin
+%_datadir/%name/opensbi-riscv64-sifive_u-fw_jump.bin
+%_datadir/%name/opensbi-riscv64-virt-fw_jump.bin
 %_datadir/%name/openbios-sparc32
 %_datadir/%name/openbios-sparc64
 %_datadir/%name/palcode-clipper
@@ -1727,12 +1876,10 @@ fi
 %_libdir/%name/block-gluster.so
 %endif
 
-%if 0%{?suse_version} > 1320 || ( 0%{?suse_version} == 1315 && 0%{?sle_version} > 120100 )
 %files block-iscsi
 %defattr(-, root, root)
 %dir %_libdir/%name
 %_libdir/%name/block-iscsi.so
-%endif
 
 %if 0%{?is_opensuse}
 %files block-nfs
@@ -1763,7 +1910,7 @@ fi
 %dir %_libdir/%name
 %_libdir/%name/ui-gtk.so
 
-%if 0%{?suse_version} >= 1320 && 0%{?is_opensuse}
+%if 0%{?is_opensuse}
 %files ui-sdl
 %defattr(-, root, root)
 %dir %_libdir/%name
@@ -1780,7 +1927,7 @@ fi
 %dir %_libdir/%name
 %_libdir/%name/audio-pa.so
 
-%if 0%{?suse_version} >= 1320 && 0%{?is_opensuse}
+%if 0%{?is_opensuse}
 %files audio-sdl
 %defattr(-, root, root)
 %dir %_libdir/%name
@@ -1801,13 +1948,14 @@ fi
 %defattr(-, root, root)
 %dir %_datadir/%name
 %_datadir/%name/vgabios.bin
+%_datadir/%name/vgabios-ati.bin
+%_datadir/%name/vgabios-bochs-display.bin
 %_datadir/%name/vgabios-cirrus.bin
 %_datadir/%name/vgabios-qxl.bin
+%_datadir/%name/vgabios-ramfb.bin
 %_datadir/%name/vgabios-stdvga.bin
 %_datadir/%name/vgabios-virtio.bin
 %_datadir/%name/vgabios-vmware.bin
-%_datadir/%name/vgabios-bochs-display.bin
-%_datadir/%name/vgabios-ramfb.bin
 
 %files sgabios
 %defattr(-, root, root)
@@ -1817,12 +1965,6 @@ fi
 %files ipxe
 %defattr(-, root, root)
 %dir %_datadir/%name
-%_datadir/%name/pxe-e1000.rom
-%_datadir/%name/pxe-eepro100.rom
-%_datadir/%name/pxe-ne2k_pci.rom
-%_datadir/%name/pxe-pcnet.rom
-%_datadir/%name/pxe-rtl8139.rom
-%_datadir/%name/pxe-virtio.rom
 %_datadir/%name/efi-e1000.rom
 %_datadir/%name/efi-e1000e.rom
 %_datadir/%name/efi-eepro100.rom
@@ -1831,7 +1973,42 @@ fi
 %_datadir/%name/efi-rtl8139.rom
 %_datadir/%name/efi-virtio.rom
 %_datadir/%name/efi-vmxnet3.rom
+%_datadir/%name/pxe-e1000.rom
+%_datadir/%name/pxe-eepro100.rom
+%_datadir/%name/pxe-ne2k_pci.rom
+%_datadir/%name/pxe-pcnet.rom
+%_datadir/%name/pxe-rtl8139.rom
+%_datadir/%name/pxe-virtio.rom
+
+%if %{provide_edk2_firmware}
+
+%files edk2
+%dir %_datadir/%name
+%dir %_datadir/%name/firmware
+%_datadir/%name/edk2-aarch64-code.fd
+%_datadir/%name/edk2-arm-code.fd
+%_datadir/%name/edk2-arm-vars.fd
+%_datadir/%name/edk2-i386-code.fd
+%_datadir/%name/edk2-i386-secure-code.fd
+%_datadir/%name/edk2-i386-vars.fd
+%_datadir/%name/edk2-licenses.txt
+%_datadir/%name/edk2-x86_64-code.fd
+%_datadir/%name/edk2-x86_64-secure-code.fd
+%_datadir/%name/firmware/50-edk2-i386-secure.json
+%_datadir/%name/firmware/50-edk2-x86_64-secure.json
+%_datadir/%name/firmware/60-edk2-aarch64.json
+%_datadir/%name/firmware/60-edk2-arm.json
+%_datadir/%name/firmware/60-edk2-i386.json
+%_datadir/%name/firmware/60-edk2-x86_64.json
 %endif
+%endif
+
+%files vhost-user-gpu
+%defattr(-, root, root)
+%_libexecdir/vhost-user-gpu
+%_docdir/%name/interop/vhost-user-gpu.html
+%dir %_datadir/%name/vhost-user
+%_datadir/%name/vhost-user/50-qemu-gpu.json
 
 %files tools
 %defattr(-, root, root)
@@ -1842,8 +2019,8 @@ fi
 %_bindir/ivshmem-client
 %_bindir/ivshmem-server
 %_bindir/qemu-edid
-%_bindir/qemu-io
 %_bindir/qemu-img
+%_bindir/qemu-io
 %_bindir/qemu-keymap
 %_bindir/qemu-nbd
 %_bindir/qemu-pr-helper
@@ -1859,7 +2036,7 @@ fi
 %_mandir/man8/qemu-ga.8.gz
 %attr(0755,root,kvm) %_bindir/qemu-ga
 %{_unitdir}/qemu-ga@.service
-%{_udevrulesdir}/80-qemu-ga.rules
+/usr/lib/udev/rules.d/80-qemu-ga.rules
 
 %if 0%{?is_opensuse}
 %files ksm
@@ -1867,8 +2044,54 @@ fi
 %{_unitdir}/ksm.service
 %endif
 
-%else # qemu-testsuite
+%endif # qemu
+# ------------------------------------------------------------------------
+%if "%{name}" == "qemu-linux-user"
+
+%_bindir/qemu-aarch64
+%_bindir/qemu-aarch64_be
+%_bindir/qemu-alpha
+%_bindir/qemu-arm
+%_bindir/qemu-armeb
+%_bindir/qemu-cris
+%_bindir/qemu-hppa
+%_bindir/qemu-i386
+%_bindir/qemu-m68k
+%_bindir/qemu-microblaze
+%_bindir/qemu-microblazeel
+%_bindir/qemu-mips
+%_bindir/qemu-mipsel
+%_bindir/qemu-mipsn32
+%_bindir/qemu-mipsn32el
+%_bindir/qemu-mips64
+%_bindir/qemu-mips64el
+%_bindir/qemu-nios2
+%_bindir/qemu-or1k
+%_bindir/qemu-ppc64
+%_bindir/qemu-ppc64abi32
+%_bindir/qemu-ppc64le
+%_bindir/qemu-ppc
+%_bindir/qemu-riscv32
+%_bindir/qemu-riscv64
+%_bindir/qemu-s390x
+%_bindir/qemu-sh4
+%_bindir/qemu-sh4eb
+%_bindir/qemu-sparc32plus
+%_bindir/qemu-sparc64
+%_bindir/qemu-sparc
+%_bindir/qemu-tilegx
+%_bindir/qemu-x86_64
+%_bindir/qemu-xtensa
+%_bindir/qemu-xtensaeb
+%_bindir/qemu-*-binfmt
+%_sbindir/qemu-binfmt-conf.sh
+
+%endif # qemu-linux-user
+# ------------------------------------------------------------------------
+%if "%{name}" == "qemu-testsuite"
+
 %_datadir/qemu/check-report.tap
-%endif
+
+%endif # qemu-testsuite
 
 %changelog

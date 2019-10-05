@@ -1,0 +1,43 @@
+From: Alexander Graf <agraf@suse.de>
+Date: Tue, 14 Apr 2009 16:27:36 +0200
+Subject: qemu-cvs-ioctl_nodirection
+
+the direction given in the ioctl should be correct so we can assume the
+communication is uni-directional. The alsa developers did not like this
+concept though and declared ioctls IOC_R and IOC_W even though they were
+IOC_RW.
+
+Signed-off-by: Alexander Graf <agraf@suse.de>
+Signed-off-by: Ulrich Hecht <uli@suse.de>
+[BR: minor edits to pass qemu's checkpatch script]
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ linux-user/syscall.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index 25fd641816c0a54e49a167f5e818..cf5de07a09235e6d92735332dc7f 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -5084,6 +5084,13 @@ static abi_long do_ioctl(int fd, int cmd, abi_long arg)
+         arg_type++;
+         target_size = thunk_type_size(arg_type, 0);
+         switch(ie->access) {
++        /*
++         *  FIXME: actually the direction given in the ioctl should be
++         * correct so we can assume the communication is uni-directional.
++         * The alsa developers did not like this concept though and
++         * declared ioctls IOC_R and IOC_W even though they were IOC_RW.
++         */
++/*
+         case IOC_R:
+             ret = get_errno(safe_ioctl(fd, ie->host_cmd, buf_temp));
+             if (!is_error(ret)) {
+@@ -5102,6 +5109,7 @@ static abi_long do_ioctl(int fd, int cmd, abi_long arg)
+             unlock_user(argptr, arg, 0);
+             ret = get_errno(safe_ioctl(fd, ie->host_cmd, buf_temp));
+             break;
++*/
+         default:
+         case IOC_RW:
+             argptr = lock_user(VERIFY_READ, arg, target_size, 1);

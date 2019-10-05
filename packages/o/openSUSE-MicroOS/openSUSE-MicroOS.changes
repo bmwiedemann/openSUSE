@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct  2 09:46:13 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Drop "rd.neednet=0" as dracut bug fixed now
+
+-------------------------------------------------------------------
+Wed Oct  2 08:46:00 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Add RaspberryPi2 platform, only built with plain MicroOS flavor
+
+-------------------------------------------------------------------
 Mon Sep 30 07:51:30 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add kernel-firmware for RPi

@@ -1,0 +1,146 @@
+From: Max Reitz <mreitz@redhat.com>
+Date: Tue, 10 Sep 2019 14:41:35 +0200
+Subject: curl: Handle success in multi_check_completion
+
+Git-commit: bfb23b480a49114315877aacf700b49453e0f9d9
+
+Background: As of cURL 7.59.0, it verifies that several functions are
+not called from within a callback.  Among these functions is
+curl_multi_add_handle().
+
+curl_read_cb() is a callback from cURL and not a coroutine.  Waking up
+acb->co will lead to entering it then and there, which means the current
+request will settle and the caller (if it runs in the same coroutine)
+may then issue the next request.  In such a case, we will enter
+curl_setup_preadv() effectively from within curl_read_cb().
+
+Calling curl_multi_add_handle() will then fail and the new request will
+not be processed.
+
+Fix this by not letting curl_read_cb() wake up acb->co.  Instead, leave
+the whole business of settling the AIOCB objects to
+curl_multi_check_completion() (which is called from our timer callback
+and our FD handler, so not from any cURL callbacks).
+
+Reported-by: Natalie Gavrielov <ngavrilo@redhat.com>
+Buglink: https://bugzilla.redhat.com/show_bug.cgi?id=1740193
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Max Reitz <mreitz@redhat.com>
+Message-id: 20190910124136.10565-7-mreitz@redhat.com
+Reviewed-by: John Snow <jsnow@redhat.com>
+Reviewed-by: Maxim Levitsky <mlevitsk@redhat.com>
+Signed-off-by: Max Reitz <mreitz@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ block/curl.c | 69 ++++++++++++++++++++++------------------------------
+ 1 file changed, 29 insertions(+), 40 deletions(-)
+
+diff --git a/block/curl.c b/block/curl.c
+index fd70f1ebc458f22f6d1a4bc01e1e..c343c7ed3ddad205051d7e3b0196 100644
+--- a/block/curl.c
++++ b/block/curl.c
+@@ -229,7 +229,6 @@ static size_t curl_read_cb(void *ptr, size_t size, size_t nmemb, void *opaque)
+ {
+     CURLState *s = ((CURLState*)opaque);
+     size_t realsize = size * nmemb;
+-    int i;
+ 
+     trace_curl_read_cb(realsize);
+ 
+@@ -245,32 +244,6 @@ static size_t curl_read_cb(void *ptr, size_t size, size_t nmemb, void *opaque)
+     memcpy(s->orig_buf + s->buf_off, ptr, realsize);
+     s->buf_off += realsize;
+ 
+-    for(i=0; i<CURL_NUM_ACB; i++) {
+-        CURLAIOCB *acb = s->acb[i];
+-
+-        if (!acb)
+-            continue;
+-
+-        if ((s->buf_off >= acb->end)) {
+-            size_t request_length = acb->bytes;
+-
+-            qemu_iovec_from_buf(acb->qiov, 0, s->orig_buf + acb->start,
+-                                acb->end - acb->start);
+-
+-            if (acb->end - acb->start < request_length) {
+-                size_t offset = acb->end - acb->start;
+-                qemu_iovec_memset(acb->qiov, offset, 0,
+-                                  request_length - offset);
+-            }
+-
+-            acb->ret = 0;
+-            s->acb[i] = NULL;
+-            qemu_mutex_unlock(&s->s->mutex);
+-            aio_co_wake(acb->co);
+-            qemu_mutex_lock(&s->s->mutex);
+-        }
+-    }
+-
+ read_end:
+     /* curl will error out if we do not return this value */
+     return size * nmemb;
+@@ -351,13 +324,14 @@ static void curl_multi_check_completion(BDRVCURLState *s)
+             break;
+ 
+         if (msg->msg == CURLMSG_DONE) {
++            int i;
+             CURLState *state = NULL;
++            bool error = msg->data.result != CURLE_OK;
++
+             curl_easy_getinfo(msg->easy_handle, CURLINFO_PRIVATE,
+                               (char **)&state);
+ 
+-            /* ACBs for successful messages get completed in curl_read_cb */
+-            if (msg->data.result != CURLE_OK) {
+-                int i;
++            if (error) {
+                 static int errcount = 100;
+ 
+                 /* Don't lose the original error message from curl, since
+@@ -369,20 +343,35 @@ static void curl_multi_check_completion(BDRVCURLState *s)
+                         error_report("curl: further errors suppressed");
+                     }
+                 }
++            }
+ 
+-                for (i = 0; i < CURL_NUM_ACB; i++) {
+-                    CURLAIOCB *acb = state->acb[i];
++            for (i = 0; i < CURL_NUM_ACB; i++) {
++                CURLAIOCB *acb = state->acb[i];
+ 
+-                    if (acb == NULL) {
+-                        continue;
+-                    }
++                if (acb == NULL) {
++                    continue;
++                }
++
++                if (!error) {
++                    /* Assert that we have read all data */
++                    assert(state->buf_off >= acb->end);
++
++                    qemu_iovec_from_buf(acb->qiov, 0,
++                                        state->orig_buf + acb->start,
++                                        acb->end - acb->start);
+ 
+-                    acb->ret = -EIO;
+-                    state->acb[i] = NULL;
+-                    qemu_mutex_unlock(&s->mutex);
+-                    aio_co_wake(acb->co);
+-                    qemu_mutex_lock(&s->mutex);
++                    if (acb->end - acb->start < acb->bytes) {
++                        size_t offset = acb->end - acb->start;
++                        qemu_iovec_memset(acb->qiov, offset, 0,
++                                          acb->bytes - offset);
++                    }
+                 }
++
++                acb->ret = error ? -EIO : 0;
++                state->acb[i] = NULL;
++                qemu_mutex_unlock(&s->mutex);
++                aio_co_wake(acb->co);
++                qemu_mutex_lock(&s->mutex);
+             }
+ 
+             curl_clean_state(state);

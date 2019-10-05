@@ -1,0 +1,41 @@
+From: Aurelien Jarno <aurelien@aurel32.net>
+Date: Thu, 22 Aug 2019 10:45:14 -0700
+Subject: target/alpha: fix tlb_fill trap_arg2 value for instruction fetch
+
+Git-commit: cb1de55a83eaca9ee32be9c959dca99e11f2fea8
+
+Commit e41c94529740cc26 ("target/alpha: Convert to CPUClass::tlb_fill")
+slightly changed the way the trap_arg2 value is computed in case of TLB
+fill. The type of the variable used in the ternary operator has been
+changed from an int to an enum. This causes the -1 value to not be
+sign-extended to 64-bit in case of an instruction fetch. The trap_arg2
+ends up with 0xffffffff instead of 0xffffffffffffffff. Fix that by
+changing the -1 into -1LL.
+
+This fixes the execution of user space processes in qemu-system-alpha.
+
+Fixes: e41c94529740cc26
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Aurelien Jarno <aurelien@aurel32.net>
+[rth: Test MMU_DATA_LOAD and MMU_DATA_STORE instead of implying them.]
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ target/alpha/helper.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/target/alpha/helper.c b/target/alpha/helper.c
+index 93b8e788b185f8b199b71256e5ff..d0cc6231925c932c192640632658 100644
+--- a/target/alpha/helper.c
++++ b/target/alpha/helper.c
+@@ -283,7 +283,9 @@ bool alpha_cpu_tlb_fill(CPUState *cs, vaddr addr, int size,
+         cs->exception_index = EXCP_MMFAULT;
+         env->trap_arg0 = addr;
+         env->trap_arg1 = fail;
+-        env->trap_arg2 = (access_type == MMU_INST_FETCH ? -1 : access_type);
++        env->trap_arg2 = (access_type == MMU_DATA_LOAD ? 0ull :
++                          access_type == MMU_DATA_STORE ? 1ull :
++                          /* access_type == MMU_INST_FETCH */ -1ull);
+         cpu_loop_exit_restore(cs, retaddr);
+     }
+ 

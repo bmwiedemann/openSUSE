@@ -1,0 +1,71 @@
+From: Max Reitz <mreitz@redhat.com>
+Date: Tue, 10 Sep 2019 14:41:32 +0200
+Subject: curl: Check completion in curl_multi_do()
+
+Git-commit: 948403bcb1c7e71dcbe8ab8479cf3934a0efcbb5
+
+While it is more likely that transfers complete after some file
+descriptor has data ready to read, we probably should not rely on it.
+Better be safe than sorry and call curl_multi_check_completion() in
+curl_multi_do(), too, just like it is done in curl_multi_read().
+
+With this change, curl_multi_do() and curl_multi_read() are actually the
+same, so drop curl_multi_read() and use curl_multi_do() as the sole FD
+handler.
+
+Signed-off-by: Max Reitz <mreitz@redhat.com>
+Message-id: 20190910124136.10565-4-mreitz@redhat.com
+Reviewed-by: Maxim Levitsky <mlevitsk@redhat.com>
+Reviewed-by: John Snow <jsnow@redhat.com>
+Signed-off-by: Max Reitz <mreitz@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ block/curl.c | 14 ++------------
+ 1 file changed, 2 insertions(+), 12 deletions(-)
+
+diff --git a/block/curl.c b/block/curl.c
+index 95d7b77dc0b1cf25443effdb9eb3..5838afef99e070d8e7b704fa55e7 100644
+--- a/block/curl.c
++++ b/block/curl.c
+@@ -139,7 +139,6 @@ typedef struct BDRVCURLState {
+ 
+ static void curl_clean_state(CURLState *s);
+ static void curl_multi_do(void *arg);
+-static void curl_multi_read(void *arg);
+ 
+ #ifdef NEED_CURL_TIMER_CALLBACK
+ /* Called from curl_multi_do_locked, with s->mutex held.  */
+@@ -186,7 +185,7 @@ static int curl_sock_cb(CURL *curl, curl_socket_t fd, int action,
+     switch (action) {
+         case CURL_POLL_IN:
+             aio_set_fd_handler(s->aio_context, fd, false,
+-                               curl_multi_read, NULL, NULL, state);
++                               curl_multi_do, NULL, NULL, state);
+             break;
+         case CURL_POLL_OUT:
+             aio_set_fd_handler(s->aio_context, fd, false,
+@@ -194,7 +193,7 @@ static int curl_sock_cb(CURL *curl, curl_socket_t fd, int action,
+             break;
+         case CURL_POLL_INOUT:
+             aio_set_fd_handler(s->aio_context, fd, false,
+-                               curl_multi_read, curl_multi_do, NULL, state);
++                               curl_multi_do, curl_multi_do, NULL, state);
+             break;
+         case CURL_POLL_REMOVE:
+             aio_set_fd_handler(s->aio_context, fd, false,
+@@ -416,15 +415,6 @@ static void curl_multi_do(void *arg)
+ {
+     CURLState *s = (CURLState *)arg;
+ 
+-    qemu_mutex_lock(&s->s->mutex);
+-    curl_multi_do_locked(s);
+-    qemu_mutex_unlock(&s->s->mutex);
+-}
+-
+-static void curl_multi_read(void *arg)
+-{
+-    CURLState *s = (CURLState *)arg;
+-
+     qemu_mutex_lock(&s->s->mutex);
+     curl_multi_do_locked(s);
+     curl_multi_check_completion(s->s);

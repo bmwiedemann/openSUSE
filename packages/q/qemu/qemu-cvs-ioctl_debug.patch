@@ -1,0 +1,39 @@
+From: Alexander Graf <agraf@suse.de>
+Date: Tue, 14 Apr 2009 16:26:33 +0200
+Subject: qemu-cvs-ioctl_debug
+
+Extends unsupported ioctl debug output.
+
+Signed-off-by: Alexander Graf <agraf@suse.de>
+Signed-off-by: Ulrich Hecht <uli@suse.de>
+[BR: minor edits to pass qemu's checkpatch script]
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ linux-user/syscall.c | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index 17914fadfc9f3390d4b8ab8d74a6..25fd641816c0a54e49a167f5e818 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -5043,7 +5043,19 @@ static abi_long do_ioctl(int fd, int cmd, abi_long arg)
+     ie = ioctl_entries;
+     for(;;) {
+         if (ie->target_cmd == 0) {
+-            gemu_log("Unsupported ioctl: cmd=0x%04lx\n", (long)cmd);
++            int i;
++            gemu_log("Unsupported ioctl: cmd=0x%04lx (%x)\n", (unsigned long)cmd,
++                     (unsigned int)(cmd & (TARGET_IOC_SIZEMASK << TARGET_IOC_SIZESHIFT))
++                      >> TARGET_IOC_SIZESHIFT);
++            for (i = 0; ioctl_entries[i].target_cmd; i++) {
++                if ((ioctl_entries[i].target_cmd & ~(TARGET_IOC_SIZEMASK
++                    << TARGET_IOC_SIZESHIFT)) == (cmd & ~(TARGET_IOC_SIZEMASK <<
++                    TARGET_IOC_SIZESHIFT)))
++                    gemu_log("%p\t->\t%s (%x)\n", (void *)(unsigned long)
++                             ioctl_entries[i].host_cmd, ioctl_entries[i].name,
++                             (ioctl_entries[i].target_cmd & (TARGET_IOC_SIZEMASK
++                             << TARGET_IOC_SIZESHIFT)) >> TARGET_IOC_SIZESHIFT);
++            }
+             return -TARGET_ENOSYS;
+         }
+         if (ie->target_cmd == cmd)

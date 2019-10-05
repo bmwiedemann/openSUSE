@@ -58,7 +58,7 @@ This package contains the dracut scripts for this.
 %patch2 -p1
 %patch3 -p1
 mkdir dracut/30ignition-microos
-chmod +x %{SOURCE3} %{SOURCE4}
+chmod +x %{SOURCE3} %{SOURCE4} %{SOURCE8}
 cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE8} dracut/30ignition-microos/
 cp %{SOURCE5} grub/
 cp %{SOURCE6} systemd/

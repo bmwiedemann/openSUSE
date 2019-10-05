@@ -1,0 +1,27 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Tue, 20 Nov 2018 15:46:41 -0700
+Subject: tests/qemu-iotests: Triple timeout of i/o tests due to obs
+ environment
+
+Executing tests in obs is very fickle, since you aren't guaranteed
+reliable cpu time. Triple the timeout for each test to help ensure
+we don't fail a test because the stars align against us.
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ tests/qemu-iotests/common.qemu | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/qemu-iotests/common.qemu b/tests/qemu-iotests/common.qemu
+index 8d2021a7eb0c7085802c6f4c0597..e19ea76fff5789e4bc5b925bdcb9 100644
+--- a/tests/qemu-iotests/common.qemu
++++ b/tests/qemu-iotests/common.qemu
+@@ -76,7 +76,7 @@ _timed_wait_for()
+     timeout=yes
+ 
+     QEMU_STATUS[$h]=0
+-    while IFS= read -t ${QEMU_COMM_TIMEOUT} resp <&${QEMU_OUT[$h]}
++    while IFS= read -t $((${QEMU_COMM_TIMEOUT}*3)) resp <&${QEMU_OUT[$h]}
+     do
+         if [ -z "${silent}" ] && [ -z "${mismatch_only}" ]; then
+             echo "${resp}" | _filter_testdir | _filter_qemu \

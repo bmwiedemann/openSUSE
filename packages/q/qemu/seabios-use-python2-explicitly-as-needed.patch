@@ -1,4 +1,6 @@
-seabios: use python2 explicitly as needed
+From: Bruce Rogers <brogers@suse.com>
+Date: Thu, 27 Jun 2019 10:15:24 -0600
+Subject: seabios: use python2 explicitly as needed
 
 Switch to python2 the places where "python" is explicitly referenced.
 (Ignore the uses of #!/usr/bin/env python, since that usage does the
@@ -6,13 +8,15 @@ right thing in our build environment).
 
 Signed-off-by: Bruce Rogers <brogers@suse.com>
 ---
- Makefile                           |    2 +-
- scripts/acpi_extract.py            |    2 +-
- scripts/acpi_extract_preprocess.py |    2 +-
+ Makefile                           | 2 +-
+ scripts/acpi_extract.py            | 2 +-
+ scripts/acpi_extract_preprocess.py | 2 +-
  3 files changed, 3 insertions(+), 3 deletions(-)
 
---- a/Makefile
-+++ b/Makefile
+diff --git a/roms/seabios/Makefile b/roms/seabios/Makefile
+index d2d11dbef87521d82c30a7c6f0bf..629185ed9f7153fa08ba56c121ee 100644
+--- a/roms/seabios/Makefile
++++ b/roms/seabios/Makefile
 @@ -22,7 +22,7 @@ LD=$(CROSS_PREFIX)ld
  OBJCOPY=$(CROSS_PREFIX)objcopy
  OBJDUMP=$(CROSS_PREFIX)objdump
@@ -22,16 +26,20 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  CPP=cpp
  IASL:=iasl
  LD32BIT_FLAG:=-melf_i386
---- a/scripts/acpi_extract.py
-+++ b/scripts/acpi_extract.py
+diff --git a/roms/seabios/scripts/acpi_extract.py b/roms/seabios/scripts/acpi_extract.py
+index 3ed863b6a79412a1276bb905d08f..86c6226c0f9aae4e4687cf216369 100755
+--- a/roms/seabios/scripts/acpi_extract.py
++++ b/roms/seabios/scripts/acpi_extract.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/python
 +#!/usr/bin/python2
  # Copyright (C) 2011 Red Hat, Inc., Michael S. Tsirkin <mst@redhat.com>
  #
  # This file may be distributed under the terms of the GNU GPLv3 license.
---- a/scripts/acpi_extract_preprocess.py
-+++ b/scripts/acpi_extract_preprocess.py
+diff --git a/roms/seabios/scripts/acpi_extract_preprocess.py b/roms/seabios/scripts/acpi_extract_preprocess.py
+index 2698118406d97c164783335c7fb6..b8e92a525730442815a0dce78f45 100755
+--- a/roms/seabios/scripts/acpi_extract_preprocess.py
++++ b/roms/seabios/scripts/acpi_extract_preprocess.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/python
 +#!/usr/bin/python2

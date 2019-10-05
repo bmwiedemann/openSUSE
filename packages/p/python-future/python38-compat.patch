@@ -1,0 +1,53 @@
+From 4b1ddb49e8e7d4c812c50ac38d2c11db64ac9c1e Mon Sep 17 00:00:00 2001
+From: Chih-Hsuan Yen <yan12125@gmail.com>
+Date: Fri, 28 Sep 2018 14:39:32 +0800
+Subject: [PATCH] Fix urllib.request imports for Python 3.8 compatibility
+
+Fixes https://github.com/PythonCharmers/python-future/issues/447
+---
+ src/future/moves/urllib/request.py | 23 ++++++++++++-----------
+ 1 file changed, 12 insertions(+), 11 deletions(-)
+
+diff --git a/src/future/moves/urllib/request.py b/src/future/moves/urllib/request.py
+index 60e440a..972aa4a 100644
+--- a/src/future/moves/urllib/request.py
++++ b/src/future/moves/urllib/request.py
+@@ -11,19 +11,8 @@
+                                 proxy_bypass,
+                                 quote,
+                                 request_host,
+-                                splitattr,
+-                                splithost,
+-                                splitpasswd,
+-                                splitport,
+-                                splitquery,
+-                                splittag,
+-                                splittype,
+-                                splituser,
+-                                splitvalue,
+                                 thishost,
+-                                to_bytes,
+                                 unquote,
+-                                unwrap,
+                                 url2pathname,
+                                 urlcleanup,
+                                 urljoin,
+@@ -32,6 +21,18 @@
+                                 urlretrieve,
+                                 urlsplit,
+                                 urlunparse)
++
++    from urllib.parse import (splitattr,
++                              splithost,
++                              splitpasswd,
++                              splitport,
++                              splitquery,
++                              splittag,
++                              splittype,
++                              splituser,
++                              splitvalue,
++                              to_bytes,
++                              unwrap)
+ else:
+     __future_module__ = True
+     with suspend_hooks():

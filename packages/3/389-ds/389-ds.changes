@@ -1,3 +1,71 @@
+
+-------------------------------------------------------------------
+Mon Sep 30 00:08:02 UTC 2019 - 389-ds-maintainer@suse.de
+
+- Update to version 1.4.2.2~git0.d41ef935b:
+  * Issue 50627 - Add ASAN logs to HTML report
+  * Issue 50545 - Port repl-monitor.pl to lib389 CLI
+  * Ticket 50622 - ds_selinux_enabled may crash on suse
+  * Ticket 50595 - remove syslog.target requirement
+  * Ticket 50617 - disable cargo lock
+  * Issue 50620 - Fix regressions from 50506 (slapi_enry_attr_get_ref)
+  * Issue 50615 - Log current test name to journald
+  * Ticket: 50610 memory leak in dbscan
+  * Bump version to 1.4.2.1
+  * Ticket 50581 - ns-slapd crashes during ldapi search
+  * Issue 50604 - Fix UI validation
+  * ticket 50510 - etime can contain invalid nanosecond value
+  * Ticket 50593 Investigate URP handling on standalone instance
+  * Issue 50506 - Fix regression for relication stripattrs
+  * Issue 50580 - Perl can't be disabled in configure
+  * Ticket 50584, 49212 - docker healthcheck and configuration
+  * Issue 50546 - fix more UI issues(part 2)
+  * Do not use comparision with "is" for empty value
+  * Issue 50546 - fix more UI issues
+  * Issue 50586 - lib389 - Fix DSEldif long line processing
+  * Issue 50173 - Add the validate-syntax task to the dsconf schema
+  * Issue 50546 - Fix various issues in UI
+  * Bump version to 1.4.2.0
+  * Ticket 50576 - Same proc uid/gid maps to rootdn for ldapi sasl
+  * Ticket 50567, 50568 - strict host check disable and display container version
+  * Issue 50550 - DS installer debug messages leaking to ipa-server-install
+  * Issue 50545 - Port fixup-memberuid and add the functionality to CLI and UI
+  * Issue 50572 - After running cl-dump dbdir/cldb/*ldif.done are not deleted
+  * Issue 50578 - Add SKIP_AUDIT_CI flag for Cockpit builds
+  * Ticket 50349 - filter schema validation
+  * Issue: 48055 - CI test-(Plugin configuration should throw proper error messages if not configured properly)
+  * Issue 49324 - idl_new fix assert
+  * Ticket 50564 - Fix rust libraries by default and improve docker
+  * Issue 50206 - Refactor lock, unlock and status of dsidm account/role
+  * Issue 49324 - idl_new report index name in error conditions
+  * Issue 49761 - Fix CI test suite issues
+  * Issue 50506 - Fix regression from slapi_entry_attr_get_ref refactor
+  * Issue 50499 - Audit fix - Update npm 'eslint-utils' version
+  * Issue 49624 - modrdn silently fails if DB deadlock occurs
+  * fix for 50542 crashes in filter tests
+  * Issue 49761 - Fix CI test suite issues
+  * Ticket 50542 - Entry cache contention during base search
+  * Issue 50462 - Fix CI tests
+  * Ticket 50490 objects and memory leaks
+  * Issue 50538 - Move CI test to individual file
+  * Issue 50538 - cleanAllRUV task limit is not enforced for replicated tasks
+  * Issue 50536 - Audit log heading written to log after every update
+  * Issue 50525 - nsslapd-defaultnamingcontext does not change when the assigned suffix gets deleted
+  * Issue 50534 - CLI change schema edit subcommand to replace
+  * Issue 50506 - cont Fix invalid frees from pointer reference calls
+  * Issue 50507 - Fix Cockpit UI styling for PF4
+  * Issue: 48851 - investigate and port TET matching rules filter tests(indexing final)
+  * Issue: 48851 - Add more test cases to the match test suite(mode replace)
+  * Issue 50530 - Directory Server not RFC 4511 compliant with requested attr "1.1"
+  * Issue 50529 -  LDAP server returning PWP controls in different sequence
+  * Issue 50506 - Fix invalid frees from pointer reference calls.
+  * Issue 50506 - Replace slapi_entry_attr_get_charptr() with slapi_entry_attr_get_ref()
+  * Issue 50521 - Add regressions in CI tests
+  * Ticket 50510 - etime can contain invalid nanosecond value
+  * Issue 50488 - Create a monitor for disk space usagedisk-space-mon
+  * Issue 50511 -  lib389 PosixGroups type can not handle rdn properly
+  * Issue 50508 - UI - fix local password policy form
+
 -------------------------------------------------------------------
 Fri Aug 30 14:11:58 UTC 2019 - William Brown <william.brown@suse.com>
 

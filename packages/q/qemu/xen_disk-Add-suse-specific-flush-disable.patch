@@ -1,0 +1,49 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Wed, 9 Mar 2016 15:18:11 -0700
+Subject: xen_disk: Add suse specific flush disable handling and map to QEMU
+ equiv
+
+Add code to read the suse specific suse-diskcache-disable-flush flag out
+of xenstore, and set the equivalent flag within QEMU.
+
+Patch taken from Xen's patch queue, Olaf Hering being the original author.
+[bsc#879425]
+
+[BR: minor edits to pass qemu's checkpatch script]
+[BR: With qdevification of xen-block, code has changed significantly]
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+---
+ hw/block/xen-block.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/hw/block/xen-block.c b/hw/block/xen-block.c
+index 69d73196e2a074e771f5fb771649..9bc6db52b4be8510e322e61ba5a7 100644
+--- a/hw/block/xen-block.c
++++ b/hw/block/xen-block.c
+@@ -741,6 +741,8 @@ static XenBlockDrive *xen_block_drive_create(const char *id,
+     const char *mode = qdict_get_try_str(opts, "mode");
+     const char *direct_io_safe = qdict_get_try_str(opts, "direct-io-safe");
+     const char *discard_enable = qdict_get_try_str(opts, "discard-enable");
++    const char *suse_diskcache_disable_flush = qdict_get_try_str(opts,
++                                               "suse-diskcache-disable-flush");
+     char *driver = NULL;
+     char *filename = NULL;
+     XenBlockDrive *drive = NULL;
+@@ -810,6 +812,16 @@ static XenBlockDrive *xen_block_drive_create(const char *id,
+         }
+     }
+ 
++    if (suse_diskcache_disable_flush) {
++        unsigned long value;
++        if (!qemu_strtoul(suse_diskcache_disable_flush, NULL, 2, &value) && !!value) {
++            QDict *cache_qdict = qdict_new();
++
++            qdict_put_bool(cache_qdict, "no-flush", true);
++            qdict_put_obj(file_layer, "cache", QOBJECT(cache_qdict));
++        }
++    }
++
+     /*
+      * It is necessary to turn file locking off as an emulated device
+      * may have already opened the same image file.

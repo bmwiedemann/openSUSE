@@ -1,0 +1,50 @@
+From: Kevin Wolf <kwolf@redhat.com>
+Date: Mon, 22 Jul 2019 17:44:27 +0200
+Subject: mirror: Keep mirror_top_bs drained after dropping permissions
+
+Git-commit: d2da5e288a2e71e82866c8fdefd41b5727300124
+
+mirror_top_bs is currently implicitly drained through its connection to
+the source or the target node. However, the drain section for target_bs
+ends early after moving mirror_top_bs from src to target_bs, so that
+requests can already be restarted while mirror_top_bs is still present
+in the chain, but has dropped all permissions and therefore runs into an
+assertion failure like this:
+
+    qemu-system-x86_64: block/io.c:1634: bdrv_co_write_req_prepare:
+    Assertion `child->perm & BLK_PERM_WRITE' failed.
+
+Keep mirror_top_bs drained until all graph changes have completed.
+
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+Reviewed-by: Max Reitz <mreitz@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ block/mirror.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/block/mirror.c b/block/mirror.c
+index 9f5c59ece1df391babc4461f63cb..642d6570cc97e1239b119a46c457 100644
+--- a/block/mirror.c
++++ b/block/mirror.c
+@@ -656,7 +656,10 @@ static int mirror_exit_common(Job *job)
+     s->target = NULL;
+ 
+     /* We don't access the source any more. Dropping any WRITE/RESIZE is
+-     * required before it could become a backing file of target_bs. */
++     * required before it could become a backing file of target_bs. Not having
++     * these permissions any more means that we can't allow any new requests on
++     * mirror_top_bs from now on, so keep it drained. */
++    bdrv_drained_begin(mirror_top_bs);
+     bs_opaque->stop = true;
+     bdrv_child_refresh_perms(mirror_top_bs, mirror_top_bs->backing,
+                              &error_abort);
+@@ -724,6 +727,7 @@ static int mirror_exit_common(Job *job)
+     bs_opaque->job = NULL;
+ 
+     bdrv_drained_end(src);
++    bdrv_drained_end(mirror_top_bs);
+     s->in_drain = false;
+     bdrv_unref(mirror_top_bs);
+     bdrv_unref(src);

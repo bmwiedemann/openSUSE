@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct  4 13:56:50 UTC 2019 - Ignaz Forster <iforster@suse.com>
+
+- Fix missing executable permission for ignition-setup-user-suse.sh
+
+-------------------------------------------------------------------
 Wed Oct 02 09:49:43 UTC 2019 - kukuk@suse.de
 
 - Update to version 0.0+git20191001.cefb71c:

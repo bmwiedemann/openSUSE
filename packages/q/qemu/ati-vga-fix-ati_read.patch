@@ -1,0 +1,28 @@
+From: Gerd Hoffmann <kraxel@redhat.com>
+Date: Mon, 24 Jun 2019 12:09:31 +0200
+Subject: ati-vga: fix ati_read()
+
+Git-commit: 136e2612bd48ef06562625f15259fbacf7bcf66f
+
+Cut & paste bug probably.  Had no bad effect so far because the code
+doesn't read registers larger than 0x100.
+
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ vgasrc/atiext.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/roms/seabios/vgasrc/atiext.c b/roms/seabios/vgasrc/atiext.c
+index b3975226c47852c80ec4278b9a95..a24b980638a9562daaa37fe236b4 100644
+--- a/roms/seabios/vgasrc/atiext.c
++++ b/roms/seabios/vgasrc/atiext.c
+@@ -117,7 +117,7 @@ static inline u32 ati_read(u32 reg)
+         val = inl(io_addr + reg);
+     } else {
+         outl(reg, io_addr + MM_INDEX);
+-        reg = inl(io_addr + MM_DATA);
++        val = inl(io_addr + MM_DATA);
+     }
+     return val;
+ }

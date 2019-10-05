@@ -1,0 +1,67 @@
+From: Michael Brown <mcb30@ipxe.org>
+Date: Mon, 22 Jul 2019 14:51:28 +0100
+Subject: Do not apply WORKAROUND_CFLAGS for host compiler
+
+Git-commit: a4f8c6e31f6c62522cfc633bbbffa81b22f9d6f3
+Include-If: %ifarch aarch64
+
+The WORKAROUND_CFLAGS list is constructed based on running tests on
+the target compiler, and the results may not be valid for the host
+compiler.
+
+The only relevant workaround required for the host compiler is
+-Wno-stringop-truncation, which is needed to avoid a spurious compiler
+warning for a totally correct usage of strncpy() in util/elf2efi.c.
+
+Duplicating the workaround tests for the host compiler is messy, as is
+conditionally applying __attribute__((nonstring)).  Fix instead by
+disapplying WORKAROUND_CFLAGS for the host compiler, and using
+memcpy() with an explicitly calculated length instead of strncpy() in
+util/elf2efi.c.
+
+Reported-by: Ignat Korchagin <ignat@cloudflare.com>
+Reported-by: Christopher Clark <christopher.w.clark@gmail.com>
+Signed-off-by: Michael Brown <mcb30@ipxe.org>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ src/Makefile.housekeeping | 2 +-
+ src/util/elf2efi.c        | 6 +++++-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/roms/ipxe/src/Makefile.housekeeping b/roms/ipxe/src/Makefile.housekeeping
+index e5f6927de889167d286ccfcdda92..1ddbddd247d9929d63b1654d7206 100644
+--- a/roms/ipxe/src/Makefile.housekeeping
++++ b/roms/ipxe/src/Makefile.housekeeping
+@@ -454,7 +454,7 @@ endif
+ CFLAGS		+= $(WORKAROUND_CFLAGS) $(EXTRA_CFLAGS)
+ ASFLAGS		+= $(WORKAROUND_ASFLAGS) $(EXTRA_ASFLAGS)
+ LDFLAGS		+= $(WORKAROUND_LDFLAGS) $(EXTRA_LDFLAGS)
+-HOST_CFLAGS	+= $(WORKAROUND_CFLAGS) -O2 -g
++HOST_CFLAGS	+= -O2 -g
+ 
+ # Inhibit -Werror if NO_WERROR is specified on make command line
+ #
+diff --git a/roms/ipxe/src/util/elf2efi.c b/roms/ipxe/src/util/elf2efi.c
+index 2c5b9df8aae853bfce4d5d3bae89..bcd53c9afda7880d42ec80c07f17 100644
+--- a/roms/ipxe/src/util/elf2efi.c
++++ b/roms/ipxe/src/util/elf2efi.c
+@@ -458,6 +458,7 @@ static struct pe_section * process_section ( struct elf_file *elf,
+ 					     struct pe_header *pe_header ) {
+ 	struct pe_section *new;
+ 	const char *name;
++	size_t name_len;
+ 	size_t section_memsz;
+ 	size_t section_filesz;
+ 	unsigned long code_start;
+@@ -494,7 +495,10 @@ static struct pe_section * process_section ( struct elf_file *elf,
+ 	memset ( new, 0, sizeof ( *new ) + section_filesz );
+ 
+ 	/* Fill in section header details */
+-	strncpy ( ( char * ) new->hdr.Name, name, sizeof ( new->hdr.Name ) );
++	name_len = strlen ( name );
++	if ( name_len > sizeof ( new->hdr.Name ) )
++		name_len = sizeof ( new->hdr.Name );
++	memcpy ( new->hdr.Name, name, name_len );
+ 	new->hdr.Misc.VirtualSize = section_memsz;
+ 	new->hdr.VirtualAddress = shdr->sh_addr;
+ 	new->hdr.SizeOfRawData = section_filesz;

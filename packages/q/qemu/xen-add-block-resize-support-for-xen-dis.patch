@@ -1,0 +1,30 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Wed, 16 Jan 2019 16:29:36 -0700
+Subject: xen: add block resize support for xen disks
+
+Provide monitor naming of xen disks, and plumb guest driver
+notification through xenstore of resizing instigated via the
+monitor.
+
+[BR: minor edits to pass qemu's checkpatch script]
+[BR: significant rework needed due to upstream xen disk qdevification]
+[BR: At this point, monitor_add_blk call is all we need to add!]
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/block/xen-block.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/hw/block/xen-block.c b/hw/block/xen-block.c
+index 9bc6db52b4be8510e322e61ba5a7..1f8c8ae85abde736b5a58d1f4cb9 100644
+--- a/hw/block/xen-block.c
++++ b/hw/block/xen-block.c
+@@ -273,6 +273,9 @@ static void xen_block_realize(XenDevice *xendev, Error **errp)
+ 
+     xen_block_set_size(blockdev);
+ 
++    if (!monitor_add_blk(conf->blk, blockdev->drive->id, errp)) {
++        return;
++    }
+     blockdev->dataplane =
+         xen_block_dataplane_create(xendev, blk, conf->logical_block_size,
+                                    blockdev->props.iothread);

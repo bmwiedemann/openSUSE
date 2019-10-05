@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Fri Oct  4 14:53:41 UTC 2019 - wbauer@tmo.at
+
+- Update to 4.2.7.1:
+  * See https://krita.org/en/item/krita-4-2-7-released/
+  * Improve the layout and functionality of the color selector
+    dialog and make it perform much better (kde#381529)
+  * Do not crash when trying to merge an invisible group layer
+    (kde#411124)
+  * Make it possible to save group layers to file layers even if
+    they are empty (kde#411101)
+  * Make the initial location of the OCIO profile selector sensible
+  * Fix possible crashes when a broken file ends up in the Recent
+    Documents List (kde#411416)
+  * Use locale-based formatting of numbers in the measure tool and
+    other places
+  * Make HTML markup in the Search Field tooltips work
+  * Fix a crash when moving multiple vector shapes (kde#409872)
+  * Fix the sort order of images imported as frames if they are not
+    numbered with prefix 0's (kde#375885)
+  * Make it possible again to run the Python Scripting Debugger on
+    Linux (kde#410807)
+  * Cache ICC profiles when loading layers: this speeds up loading
+    images with thousands of layers (kde#411532)
+  * Use LittleCMS' copy alpha channel flag to speed up color
+    transformations
+  * Fix outline move mode (kde#411057)
+  * Fix a hang in the text shape if an UTF-8 Line Break character
+    is used (kde#410402)
+  * Fix a random crash if there is not enough space in the swapfile
+    location for AMD Ryzen 3500 CPU's (kde#411081)
+  * Fix another random crash when painting (kde#411280)
+  * Fix artifacts when moving control points of a path shape
+    (kde#411334)
+  * Fix a crash when cropping a particular image (kde#411536)
+  * Fix move action in the bezier selection tool (kde#398294)
+  * Fix artifacts in Gaussian Blur on transparent layers
+    (kde#411719)
+  * Fix a crash when the Liquify Transform is started too quickly
+    (kde#411703)
+  * Fix a bad memory leak in the jpeg converter (kde#410864)
+  * Fix a crash when loading a JPEG image with a broken color
+    profile (kde#410864)
+  * Fix problems when zooming with a touchpad (kde#410940)
+  * Fix issues when using the calculation capabilities of the
+    specific color selector's spin boxes (kde#409818)
+  * Make sure all layers are shown in the animation timeline by
+    default
+  * Fix a crash when the colorize tool is active on closing Krita
+  * Fix a crash when converting a colorspace with OCIO enabled
+    (kde#411045)
+  * Fix the Strength parameter not being used in Rotation – Fuzzy
+    Dab (kde#376179)
+  * Fix a crash when using the mouse wheel while an image is
+    opening
+  * Re-add error messages lost when refactoring the error messages
+    for loading images
+  * Do not crash if libjpeg encounters any kind of error
+    (kde#364350)
+  * Fix presets with random offset of texture being marked dirty
+    all the time (kde#406427)
+  * Fix curves changing randomly with sensors with Use Same Curve
+    enabled (kde#383909)
+  * Add a simple progress bar when saving .kra files
+  * Ensure that the temporary folder isn't suggested as a
+    save-location as this can result in lost work
+  * Make sure toolbars don't get enabled after editing the toolbar
+    buttons (kde#402679)
+  * Do not crash when loading a tiled TIFF file with planar color
+    data (kde#407171)
+  * Fix freezes when changing some brush properties or curves
+    (kde#410158)
+  * Fix wrong borders in the Edge Detection and Height To Normal
+    Map Filters (kde#411922)
+  * Fix outline of Group Layers in Move Tool and Transform Tool
+    (kde#392717)
+  * Fix preview of shape layers in Transform Tool and Move Tool
+    (kde#392717)
+  * Raise the maximum FPS limit to 300 fps from 100 fps
+  * Do not allow clone layers from pass-through group layers
+    (kde#409949)
+  * Fix the color of a selected shape being synchronized with the
+    color selectors (kde#381784)
+  * Fix updating the current shape color when doing undo/redo
+    (kde#404975)
+  * Fix the broken TestKisSwatchGroup test (kde#410387)
+  * Make the splash render pixel-perfect on fractionally scaled
+    displays
+  * Fix a crash in Feather Selection, Wavelets, Blur and Edge
+    Detection (kde#412057)
+  * Include reference images in the screen color picker
+    (kde#411816)
+  * Clean up the SVG files used for icons and license the SVG files
+    properly
+  * Fix updating the assistants when moving the handles
+  * Fix a bad memory corruption error color handling
+
+-------------------------------------------------------------------
 Tue Sep 10 12:43:33 UTC 2019 - wbauer@tmo.at
 
 - Update to 4.2.6:

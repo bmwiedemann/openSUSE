@@ -58,4 +58,13 @@ Required to implement boo#1138725.</comment>
 </comment>
     <requestid>734555</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>776e1e9ec1d180d1b8194f0a02bbed43</srcmd5>
+    <version>0.0+git20191001.cefb71c</version>
+    <time>1570285278</time>
+    <user>dimstar_suse</user>
+    <comment>Fix missing executable permission for ignition-setup-user-suse.sh
+</comment>
+    <requestid>735290</requestid>
+  </revision>
 </revisionlist>

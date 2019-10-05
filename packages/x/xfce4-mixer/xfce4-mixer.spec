@@ -26,16 +26,15 @@ Summary:        Volume Control Application for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Mixers
 URL:            https://www.xfce.org/
-%if %{with git}
-Source0:        xfce4-mixer-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/apps/xfce4-mixer/4.11/xfce4-mixer-%{version}.tar.bz2
 Source100:      %{name}-rpmlintrc
+%if %{with git}
 Patch1:         xfce4-mixer-alsa-git.patch
 Patch2:         no-full-debug-default-for-git.patch
 %else
-Source0:        https://archive.xfce.org/src/apps/xfce4-mixer/4.11/xfce4-mixer-%{version}.tar.bz2
-Source100:      %{name}-rpmlintrc
 Patch3:         xfce4-mixer-alsa.patch
 Patch4:         xfce4-mixer-find-dbus.patch
+Patch5:         xfce4-mixer-libunique.patch
 %endif
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf
@@ -55,7 +54,6 @@ BuildRequires:  pkgconfig(libxfce4panel-1.0)
 BuildRequires:  pkgconfig(libxfce4ui-1)
 BuildRequires:  pkgconfig(libxfce4util-1.0)
 BuildRequires:  pkgconfig(libxfconf-0)
-BuildRequires:  pkgconfig(unique-1.0)
 Recommends:     %{name}-lang = %{version}
 Suggests:       xfce4-panel-plugin-mixer
 
@@ -71,7 +69,6 @@ Requires:       xfce4-panel >= %{panel_version}
 # package was renamed in 2019 after Leap 15.1
 Provides:       xfce4-panel-plugin-%{plugin} = %{version}-%{release}
 Obsoletes:      xfce4-panel-plugin-%{plugin} < %{version}-%{release}
-
 
 %description -n xfce4-%{plugin}-plugin
 This package contains the xfce4-mixer Xfce panel plugin.

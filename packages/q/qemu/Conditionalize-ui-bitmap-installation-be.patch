@@ -1,0 +1,29 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Wed, 23 Jan 2019 20:23:01 -0700
+Subject: Conditionalize ui bitmap installation better
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ Makefile | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/Makefile b/Makefile
+index 00ed716275743a161ea05e7d2a1e..ab4d8683ad8f86aa680b343310e1 100644
+--- a/Makefile
++++ b/Makefile
+@@ -887,6 +887,7 @@ ifneq ($(DESCS),)
+ 			"$(DESTDIR)$(qemu_datadir)/firmware/$$x"; \
+ 	done
+ endif
++ifneq ($(or $(CONFIG_GTK),$(CONFIG_SDL)),)
+ 	for s in $(ICON_SIZES); do \
+ 		mkdir -p "$(DESTDIR)$(qemu_icondir)/hicolor/$${s}/apps"; \
+ 		$(INSTALL_DATA) $(SRC_PATH)/ui/icons/qemu_$${s}.png \
+@@ -901,6 +902,7 @@ endif
+ 	mkdir -p "$(DESTDIR)$(qemu_desktopdir)"
+ 	$(INSTALL_DATA) $(SRC_PATH)/ui/qemu.desktop \
+ 		"$(DESTDIR)$(qemu_desktopdir)/qemu.desktop"
++endif
+ ifdef CONFIG_GTK
+ 	$(MAKE) -C po $@
+ endif

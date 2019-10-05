@@ -84,6 +84,8 @@ Patch53:        CVE-2019-9947-no-ctrl-char-http.patch
 # PATCH-FIX-UPSTREAM CVE-2018-20852-cookie-domain-check.patch bsc#1141853 mcepl@suse.com
 # http.cookiejar.DefaultPolicy.domain_return_ok does not correctly validate the domain
 Patch54:        CVE-2018-20852-cookie-domain-check.patch
+# PATCH-FIX-UPSTREAM https://github.com/python/cpython/pull/12341
+Patch55:        bpo36302-sort-module-sources.patch
 # COMMON-PATCH-END
 %define         python_version    %(echo %{tarversion} | head -c 3)
 BuildRequires:  automake
@@ -199,6 +201,7 @@ other applications.
 %patch52 -p1
 %patch53 -p1
 %patch54 -p1
+%patch55 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^version_required/dnl version_required/' configure.ac

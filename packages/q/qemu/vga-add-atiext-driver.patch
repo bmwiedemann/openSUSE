@@ -1,0 +1,381 @@
+From: Gerd Hoffmann <kraxel@redhat.com>
+Date: Mon, 25 Feb 2019 10:51:37 +0100
+Subject: vga: add atiext driver
+
+Git-commit: 34b6ecc160749a691b80fcb8638216518d971c65
+
+Supports qemu emulated ati cards.  They have been added in qemu 4.0.
+Acceleration support (in qemu) is pretty rough still.  A simple
+framebuffer works fine though.
+
+Available models:
+ * ati rage 128 pro
+ * ati rv100
+
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ Makefile         |   2 +-
+ vgasrc/Kconfig   |  11 +++
+ vgasrc/atiext.c  | 245 +++++++++++++++++++++++++++++++++++++++++++++++
+ vgasrc/vgahw.h   |   8 ++
+ vgasrc/vgautil.h |   6 ++
+ 5 files changed, 271 insertions(+), 1 deletion(-)
+
+diff --git a/roms/seabios/Makefile b/roms/seabios/Makefile
+index 79b264ef87565106987fc88eeffe..ecec084825e706cc9d5afacefc10 100644
+--- a/roms/seabios/Makefile
++++ b/roms/seabios/Makefile
+@@ -212,7 +212,7 @@ SRCVGA=src/output.c src/string.c src/hw/pci.c src/hw/serialio.c \
+     vgasrc/vgainit.c vgasrc/vgabios.c vgasrc/vgafb.c vgasrc/swcursor.c \
+     vgasrc/vgafonts.c vgasrc/vbe.c \
+     vgasrc/stdvga.c vgasrc/stdvgamodes.c vgasrc/stdvgaio.c \
+-    vgasrc/clext.c vgasrc/svgamodes.c vgasrc/bochsvga.c vgasrc/geodevga.c \
++    vgasrc/clext.c vgasrc/svgamodes.c vgasrc/atiext.c vgasrc/bochsvga.c vgasrc/geodevga.c \
+     src/fw/coreboot.c vgasrc/cbvga.c vgasrc/bochsdisplay.c vgasrc/ramfb.c
+ 
+ ifeq "$(CONFIG_VGA_FIXUP_ASM)" "y"
+diff --git a/roms/seabios/vgasrc/Kconfig b/roms/seabios/vgasrc/Kconfig
+index f6d843e0900bda3900bc268fae97..c8fac36fb92baa27e06076ec68c5 100644
+--- a/roms/seabios/vgasrc/Kconfig
++++ b/roms/seabios/vgasrc/Kconfig
+@@ -27,6 +27,15 @@ menu "VGA ROM"
+                 and Bochs emulators.  This is for emulators; it is not
+                 intended for use on real Cirrus hardware.
+ 
++        config VGA_ATI
++            depends on QEMU
++            bool "QEMU ATI SVGA"
++            select VGA_STDVGA_PORTS
++            help
++                Build support for ATI VGA emulation found on QEMU
++                and emulators.  This is for emulators; it is not
++                intended for use on real ATI hardware.
++
+         config VGA_BOCHS
+             depends on QEMU
+             bool "QEMU/Bochs VBE SVGA"
+@@ -182,6 +191,7 @@ menu "VGA ROM"
+         hex
+         prompt "PCI Vendor ID" if OVERRIDE_PCI_ID
+         default 0x1013 if VGA_CIRRUS
++        default 0x1002 if VGA_ATI
+         default 0x1234 if VGA_BOCHS_STDVGA
+         default 0x15ad if VGA_BOCHS_VMWARE
+         default 0x1b36 if VGA_BOCHS_QXL
+@@ -198,6 +208,7 @@ menu "VGA ROM"
+         hex
+         prompt "PCI Vendor ID" if OVERRIDE_PCI_ID
+         default 0x00b8 if VGA_CIRRUS
++        default 0x5159 if VGA_ATI
+         default 0x1111 if VGA_BOCHS_STDVGA
+         default 0x0405 if VGA_BOCHS_VMWARE
+         default 0x0100 if VGA_BOCHS_QXL
+diff --git a/roms/seabios/vgasrc/atiext.c b/roms/seabios/vgasrc/atiext.c
+new file mode 100644
+index 0000000000000000000000000000000000000000..0586279ce214fac7d2a7e6c87a9409a6e32eb5af
+--- /dev/null
++++ b/roms/seabios/vgasrc/atiext.c
+@@ -0,0 +1,245 @@
++//  QEMU ATI VGABIOS Extension.
++//
++// This file may be distributed under the terms of the GNU LGPLv3 license.
++
++#include "biosvar.h" // GET_GLOBAL
++#include "bregs.h" // struct bregs
++#include "hw/pci.h" // pci_config_readl
++#include "hw/pci_regs.h" // PCI_BASE_ADDRESS_0
++#include "output.h" // dprintf
++#include "stdvga.h" // VGAREG_SEQU_ADDRESS
++#include "string.h" // memset16_far
++#include "vgabios.h" // SET_VGA
++#include "vgautil.h" // VBE_total_memory
++#include "vgafb.h" // memset_high
++
++#include "svgamodes.h"
++
++#define MM_INDEX                                0x0000
++#define MM_DATA                                 0x0004
++#define CRTC_GEN_CNTL                           0x0050
++#define CRTC_EXT_CNTL                           0x0054
++#define CRTC_H_TOTAL_DISP                       0x0200
++#define CRTC_V_TOTAL_DISP                       0x0208
++#define CRTC_OFFSET                             0x0224
++#define CRTC_PITCH                              0x022c
++
++/* CRTC control values (CRTC_GEN_CNTL) */
++#define CRTC2_EXT_DISP_EN                       0x01000000
++#define CRTC2_EN                                0x02000000
++
++#define CRTC_PIX_WIDTH_MASK                     0x00000700
++#define CRTC_PIX_WIDTH_4BPP                     0x00000100
++#define CRTC_PIX_WIDTH_8BPP                     0x00000200
++#define CRTC_PIX_WIDTH_15BPP                    0x00000300
++#define CRTC_PIX_WIDTH_16BPP                    0x00000400
++#define CRTC_PIX_WIDTH_24BPP                    0x00000500
++#define CRTC_PIX_WIDTH_32BPP                    0x00000600
++
++/* CRTC_EXT_CNTL */
++#define CRT_CRTC_DISPLAY_DIS                    0x00000400
++#define CRT_CRTC_ON                             0x00008000
++
++static u32 ati_io_addr VAR16 = 0;
++
++int
++is_ati_mode(struct vgamode_s *vmode_g)
++{
++    unsigned int mcount = GET_GLOBAL(svga_mcount);
++
++    return (vmode_g >= &svga_modes[0].info &&
++            vmode_g <= &svga_modes[mcount-1].info);
++}
++
++struct vgamode_s *
++ati_find_mode(int mode)
++{
++    u32 io_addr = GET_GLOBAL(ati_io_addr);
++    struct generic_svga_mode *table_g = svga_modes;
++    unsigned int mcount = GET_GLOBAL(svga_mcount);
++
++    if (io_addr) {
++        while (table_g < &svga_modes[mcount]) {
++            if (GET_GLOBAL(table_g->mode) == mode)
++                return &table_g->info;
++            table_g++;
++        }
++    }
++
++    return stdvga_find_mode(mode);
++}
++
++void
++ati_list_modes(u16 seg, u16 *dest, u16 *last)
++{
++    u32 io_addr = GET_GLOBAL(ati_io_addr);
++    unsigned int mcount = GET_GLOBAL(svga_mcount);
++
++    dprintf(1, "%s: ati ext %s\n", __func__, io_addr ? "yes" : "no");
++    if (io_addr) {
++        int i;
++        for (i=0; i<mcount && dest<last; i++) {
++            u16 mode = GET_GLOBAL(svga_modes[i].mode);
++            if (mode == 0xffff)
++                continue;
++            SET_FARVAR(seg, *dest, mode);
++            dest++;
++        }
++    }
++
++    stdvga_list_modes(seg, dest, last);
++}
++
++/****************************************************************
++ * Mode setting
++ ****************************************************************/
++
++static inline void ati_write(u32 reg, u32 val)
++{
++    u32 io_addr = GET_GLOBAL(ati_io_addr);
++
++    if (reg < 0x100) {
++        outl(val, io_addr + reg);
++    } else {
++        outl(reg, io_addr + MM_INDEX);
++        outl(val, io_addr + MM_DATA);
++    }
++}
++
++static void ati_clear(u32 offset, u32 size)
++{
++    u8 data[64];
++    void *datap = MAKE_FLATPTR(GET_SEG(SS), data);
++    void *fb = (void*)(GET_GLOBAL(VBE_framebuffer) + offset);
++    u32 i, pos;
++
++    for (i = 0; i < sizeof(data); i++)
++        data[i] = 0;
++    for (pos = 0; pos < size; pos += sizeof(data)) {
++        memcpy_high(fb, datap, sizeof(data));
++        fb += sizeof(data);
++    }
++}
++
++static int
++ati_ext_mode(struct generic_svga_mode *table, int flags)
++{
++    u32 width  = GET_GLOBAL(table->info.width);
++    u32 height = GET_GLOBAL(table->info.height);
++    u32 depth  = GET_GLOBAL(table->info.depth);
++    u32 stride = width;
++    u32 offset = 0;
++    u32 pxmask = 0;
++    u32 bytes  = 0;
++
++    dprintf(1, "%s: 0x%x, %dx%d-%d\n", __func__,
++            GET_GLOBAL(table->mode),
++            width, height, depth);
++
++    switch (depth) {
++    case  8: pxmask = CRTC_PIX_WIDTH_8BPP;  bytes = 1; break;
++    case 15: pxmask = CRTC_PIX_WIDTH_15BPP; bytes = 2; break;
++    case 16: pxmask = CRTC_PIX_WIDTH_16BPP; bytes = 2; break;
++    case 24: pxmask = CRTC_PIX_WIDTH_24BPP; bytes = 3; break;
++    case 32: pxmask = CRTC_PIX_WIDTH_32BPP; bytes = 4; break;
++    }
++
++    /* disable display */
++    ati_write(CRTC_EXT_CNTL, CRT_CRTC_DISPLAY_DIS);
++
++    /* modeset */
++    ati_write(CRTC_GEN_CNTL, CRTC2_EXT_DISP_EN | CRTC2_EN | pxmask);
++    ati_write(CRTC_H_TOTAL_DISP, ((width / 8) - 1) << 16);
++    ati_write(CRTC_V_TOTAL_DISP, (height - 1) << 16);
++    ati_write(CRTC_OFFSET, offset);
++    ati_write(CRTC_PITCH, stride / 8);
++
++    /* clear screen */
++    if (!(flags & MF_NOCLEARMEM)) {
++        u32 size = width * height * bytes;
++        ati_clear(offset, size);
++    }
++
++    /* enable display */
++    ati_write(CRTC_EXT_CNTL, 0);
++
++    return 0;
++}
++
++int
++ati_set_mode(struct vgamode_s *vmode_g, int flags)
++{
++    struct generic_svga_mode *table_g =
++        container_of(vmode_g, struct generic_svga_mode, info);
++
++    if (is_ati_mode(vmode_g)) {
++        return ati_ext_mode(table_g, flags);
++    }
++
++    ati_write(CRTC_GEN_CNTL, 0);
++    return stdvga_set_mode(vmode_g, flags);
++}
++
++/****************************************************************
++ * init
++ ****************************************************************/
++
++int
++ati_setup(void)
++{
++    int ret = stdvga_setup();
++    if (ret)
++        return ret;
++
++    dprintf(1, "%s:%d\n", __func__, __LINE__);
++
++    if (GET_GLOBAL(HaveRunInit))
++        return 0;
++
++    int bdf = GET_GLOBAL(VgaBDF);
++    if (!CONFIG_VGA_PCI || bdf == 0)
++        return 0;
++
++    u32 bar = pci_config_readl(bdf, PCI_BASE_ADDRESS_0);
++    u32 lfb_addr = bar & PCI_BASE_ADDRESS_MEM_MASK;
++    pci_config_writel(bdf, PCI_BASE_ADDRESS_0, ~0);
++    u32 barmask = pci_config_readl(bdf, PCI_BASE_ADDRESS_0);
++    u32 totalmem = ~(barmask & PCI_BASE_ADDRESS_MEM_MASK) + 1;
++    pci_config_writel(bdf, PCI_BASE_ADDRESS_0, bar);
++
++    bar = pci_config_readl(bdf, PCI_BASE_ADDRESS_1);
++    u32 io_addr = bar & PCI_BASE_ADDRESS_IO_MASK;
++
++    bar = pci_config_readl(bdf, PCI_BASE_ADDRESS_2);
++    u32 mmio_addr = bar & PCI_BASE_ADDRESS_MEM_MASK;
++
++    dprintf(1, "ati: bdf %02x:%02x.%x, lfb 0x%x, %d MB, io 0x%x, mmio 0x%x\n",
++            pci_bdf_to_bus(bdf), pci_bdf_to_dev(bdf), pci_bdf_to_fn(bdf),
++            lfb_addr, totalmem / (1024 * 1024), io_addr, mmio_addr);
++
++    SET_VGA(VBE_framebuffer, lfb_addr);
++    SET_VGA(VBE_total_memory, totalmem);
++    SET_VGA(ati_io_addr, io_addr);
++
++    // Validate modes
++    struct generic_svga_mode *m = svga_modes;
++    unsigned int mcount = GET_GLOBAL(svga_mcount);
++    for (; m < &svga_modes[mcount]; m++) {
++        u8 memmodel = GET_GLOBAL(m->info.memmodel);
++        u16 width = GET_GLOBAL(m->info.width);
++        u16 height = GET_GLOBAL(m->info.height);
++        u32 mem = (height * DIV_ROUND_UP(width * vga_bpp(&m->info), 8)
++                   * stdvga_vram_ratio(&m->info));
++
++        if (width % 8 != 0 ||
++            width > 0x7ff * 8 ||
++            height > 0xfff ||
++            mem > totalmem ||
++            memmodel != MM_DIRECT) {
++            dprintf(1, "ati: removing mode 0x%x\n", GET_GLOBAL(m->mode));
++            SET_VGA(m->mode, 0xffff);
++        }
++    }
++
++    return 0;
++}
+diff --git a/roms/seabios/vgasrc/vgahw.h b/roms/seabios/vgasrc/vgahw.h
+index 51777458da629a759f762317e9f6..c774f4f2c6b7c8012096bac2f0ed 100644
+--- a/roms/seabios/vgasrc/vgahw.h
++++ b/roms/seabios/vgasrc/vgahw.h
+@@ -12,6 +12,8 @@
+ static inline struct vgamode_s *vgahw_find_mode(int mode) {
+     if (CONFIG_VGA_CIRRUS)
+         return clext_find_mode(mode);
++    if (CONFIG_VGA_ATI)
++        return ati_find_mode(mode);
+     if (CONFIG_VGA_BOCHS)
+         return bochsvga_find_mode(mode);
+     if (CONFIG_VGA_EMULATE_TEXT)
+@@ -22,6 +24,8 @@ static inline struct vgamode_s *vgahw_find_mode(int mode) {
+ static inline int vgahw_set_mode(struct vgamode_s *vmode_g, int flags) {
+     if (CONFIG_VGA_CIRRUS)
+         return clext_set_mode(vmode_g, flags);
++    if (CONFIG_VGA_ATI)
++        return ati_set_mode(vmode_g, flags);
+     if (CONFIG_VGA_BOCHS)
+         return bochsvga_set_mode(vmode_g, flags);
+     if (CONFIG_VGA_EMULATE_TEXT)
+@@ -32,6 +36,8 @@ static inline int vgahw_set_mode(struct vgamode_s *vmode_g, int flags) {
+ static inline void vgahw_list_modes(u16 seg, u16 *dest, u16 *last) {
+     if (CONFIG_VGA_CIRRUS)
+         clext_list_modes(seg, dest, last);
++    if (CONFIG_VGA_ATI)
++        ati_list_modes(seg, dest, last);
+     else if (CONFIG_VGA_BOCHS)
+         bochsvga_list_modes(seg, dest, last);
+     else if (CONFIG_VGA_EMULATE_TEXT)
+@@ -43,6 +49,8 @@ static inline void vgahw_list_modes(u16 seg, u16 *dest, u16 *last) {
+ static inline int vgahw_setup(void) {
+     if (CONFIG_VGA_CIRRUS)
+         return clext_setup();
++    if (CONFIG_VGA_ATI)
++        return ati_setup();
+     if (CONFIG_VGA_BOCHS)
+         return bochsvga_setup();
+     if (CONFIG_VGA_GEODEGX2 || CONFIG_VGA_GEODELX)
+diff --git a/roms/seabios/vgasrc/vgautil.h b/roms/seabios/vgasrc/vgautil.h
+index 4f37bf947c42e9f73f7148f668c8..a9940402e45bf293f95b29bbdc2c 100644
+--- a/roms/seabios/vgasrc/vgautil.h
++++ b/roms/seabios/vgasrc/vgautil.h
+@@ -42,6 +42,12 @@ struct bregs;
+ void clext_1012(struct bregs *regs);
+ int clext_setup(void);
+ 
++// atiext.c
++struct vgamode_s *ati_find_mode(int mode);
++void ati_list_modes(u16 seg, u16 *dest, u16 *last);
++int ati_set_mode(struct vgamode_s *vmode_g, int flags);
++int ati_setup(void);
++
+ // stdvgaio.c
+ u8 stdvga_pelmask_read(void);
+ void stdvga_pelmask_write(u8 val);

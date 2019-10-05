@@ -1,0 +1,61 @@
+From: =?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
+Date: Wed, 12 Jun 2013 19:26:37 +0200
+Subject: vga: Raise VRAM to 16 MiB for pc-0.15 and below
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+References: bnc#812836
+
+qemu-kvm.git commit a7fe0297840908a4fd65a1cf742481ccd45960eb
+(Extend vram size to 16MB) deviated from qemu.git since kvm-61, and only
+in commit 9e56edcf8dd1d4bc7ba2b1efb3641f36c0fad8ba (vga: raise default
+vgamem size) did qemu.git adjust the VRAM size for v1.2.
+
+Add compatibility properties so that up to and including pc-0.15 we
+maintain migration compatibility with qemu-kvm rather than QEMU and
+from pc-1.0 on with QEMU (last qemu-kvm release was 1.2).
+
+Signed-off-by: Andreas Färber <afaerber@suse.de>
+[BR: adjust comma position in list in macro for v2.5.0 compat]
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/i386/pc_piix.c | 25 +++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
+
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index c2280c72effb7e2a4dd5aec1eed4..53ee84b542496cbdfebb2eebaa1c 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -800,6 +800,31 @@ static void pc_i440fx_0_15_machine_options(MachineClass *m)
+ {
+     static GlobalProperty compat[] = {
+         PC_CPU_MODEL_IDS("0.15")
++        {
++            .driver   = "VGA",
++            .property = "vgamem_mb",
++            .value    = stringify(16),
++        },{
++            .driver   = "vmware-svga",
++            .property = "vgamem_mb",
++            .value    = stringify(16),
++        },{
++            .driver   = "qxl-vga",
++            .property = "vgamem_mb",
++            .value    = stringify(16),
++        },{
++            .driver   = "qxl",
++            .property = "vgamem_mb",
++            .value    = stringify(16),
++        },{
++            .driver   = "isa-cirrus-vga",
++            .property = "vgamem_mb",
++            .value    = stringify(16),
++        },{
++            .driver   = "cirrus-vga",
++            .property = "vgamem_mb",
++            .value    = stringify(16),
++        },
+     };
+ 
+     pc_i440fx_1_0_machine_options(m);

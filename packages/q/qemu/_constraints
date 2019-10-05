@@ -50,4 +50,15 @@
       </memory>
     </hardware>
   </overwrite>
+  <!-- To build qemu in a reasonable amount of time, aarch64 and x86_64 needs as much parallelism as we can get -->
+  <overwrite>
+    <conditions>
+      <arch>aarch64</arch>
+      <arch>x86_64</arch>
+      <package>qemu</package>
+    </conditions>
+    <hardware>
+      <processors>8</processors>
+    </hardware>
+  </overwrite>
 </constraints>

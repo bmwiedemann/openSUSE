@@ -1,0 +1,27 @@
+From: Gerd Hoffmann <kraxel@redhat.com>
+Date: Mon, 24 Jun 2019 12:09:52 +0200
+Subject: ati-vga: make less verbose
+
+Git-commit: ce52a31f612e33df66ac3553d9633732e34a277b
+
+Reduce loglevel for mode line removals from 1 to 3.
+
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ vgasrc/atiext.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/roms/seabios/vgasrc/atiext.c b/roms/seabios/vgasrc/atiext.c
+index 8c9e6966db47f083646193d7faf6..b3975226c47852c80ec4278b9a95 100644
+--- a/roms/seabios/vgasrc/atiext.c
++++ b/roms/seabios/vgasrc/atiext.c
+@@ -343,7 +343,7 @@ ati_setup(void)
+             height > 0xfff ||
+             mem > totalmem ||
+             memmodel != MM_DIRECT) {
+-            dprintf(1, "ati: removing mode 0x%x\n", GET_GLOBAL(m->mode));
++            dprintf(3, "ati: removing mode 0x%x\n", GET_GLOBAL(m->mode));
+             SET_VGA(m->mode, 0xffff);
+         }
+     }

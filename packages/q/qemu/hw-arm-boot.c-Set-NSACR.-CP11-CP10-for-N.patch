@@ -1,0 +1,45 @@
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 20 Sep 2019 18:40:39 +0100
+Subject: hw/arm/boot.c: Set NSACR.{CP11,CP10} for NS kernel boots
+
+Git-commit: ece628fcf69cbbd4b3efb6fbd203af07609467a2
+
+If we're booting a Linux kernel directly into Non-Secure
+state on a CPU which has Secure state, then make sure we
+set the NSACR CP11 and CP10 bits, so that Non-Secure is allowed
+to access the FPU. Otherwise an AArch32 kernel will UNDEF as
+soon as it tries to use the FPU.
+
+It used to not matter that we didn't do this until commit
+fc1120a7f5f2d4b6, where we implemented actually honouring
+these NSACR bits.
+
+The problem only exists for CPUs where EL3 is AArch32; the
+equivalent AArch64 trap bits are in CPTR_EL3 and are "0 to
+not trap, 1 to trap", so the reset value of the register
+permits NS access, unlike NSACR.
+
+Fixes: fc1120a7f5
+Fixes: https://bugs.launchpad.net/qemu/+bug/1844597
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-id: 20190920174039.3916-1-peter.maydell@linaro.org
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/arm/boot.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index c2b89b3bb9b6b92b0293d859712e..fc4e021a38a6bc1e5e2aa5b5876c 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -754,6 +754,8 @@ static void do_cpu_reset(void *opaque)
+                     (cs != first_cpu || !info->secure_board_setup)) {
+                     /* Linux expects non-secure state */
+                     env->cp15.scr_el3 |= SCR_NS;
++                    /* Set NSACR.{CP11,CP10} so NS can access the FPU */
++                    env->cp15.nsacr |= 3 << 10;
+                 }
+             }
+ 

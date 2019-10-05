@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-dogpile.cache
-Version:        0.7.1
+Version:        0.8.0
 Release:        0
 Summary:        A caching front-end based on the Dogpile lock
 License:        BSD-3-Clause
@@ -27,11 +27,11 @@ Group:          Development/Languages/Python
 URL:            https://github.com/sqlalchemy/dogpile.cache
 Source:         https://files.pythonhosted.org/packages/source/d/dogpile.cache/dogpile.cache-%{version}.tar.gz
 BuildRequires:  %{python_module Mako}
-BuildRequires:  %{python_module decorator}
+BuildRequires:  %{python_module decorator >= 4.0.0}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-Requires:       python-decorator
+Requires:       python-decorator >= 4.0.0
 BuildRequires:  %{python_module six}
 Requires:       python-six
 BuildRequires:  fdupes

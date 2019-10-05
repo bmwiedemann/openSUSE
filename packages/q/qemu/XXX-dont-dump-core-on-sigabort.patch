@@ -1,0 +1,33 @@
+From: Alexander Graf <agraf@suse.de>
+Date: Mon, 21 Nov 2011 23:50:36 +0100
+Subject: XXX dont dump core on sigabort
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ linux-user/signal.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/linux-user/signal.c b/linux-user/signal.c
+index 5ca6d62b15d3e4d3faee3f554fff..1d6382ce881795b057ab229e4129 100644
+--- a/linux-user/signal.c
++++ b/linux-user/signal.c
+@@ -581,6 +581,10 @@ static void QEMU_NORETURN dump_core_and_abort(int target_sig)
+     trace_user_force_sig(env, target_sig, host_sig);
+     gdb_signalled(env, target_sig);
+ 
++    if (target_sig == 6) {
++        goto no_core;
++    }
++
+     /* dump core if supported by target binary format */
+     if (core_dump_signal(target_sig) && (ts->bprm->core_dump != NULL)) {
+         stop_all_tasks();
+@@ -598,6 +602,8 @@ static void QEMU_NORETURN dump_core_and_abort(int target_sig)
+             target_sig, strsignal(host_sig), "core dumped" );
+     }
+ 
++no_core:
++
+     /* The proper exit code for dying from an uncaught signal is
+      * -<signal>.  The kernel doesn't allow exit() or _exit() to pass
+      * a negative value.  To get the proper exit code we need to

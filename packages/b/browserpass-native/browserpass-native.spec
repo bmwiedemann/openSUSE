@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           browserpass-native
 Version:        3.0.6
@@ -32,8 +33,7 @@ access to your password store. The communication is handled through Native
 Messaging API.
 
 %prep
-%setup -q
-%setup -q -T -D -a 1
+%setup -qa1
 
 %build
 export GOFLAGS="-mod=vendor"
@@ -56,4 +56,3 @@ rm -rf %{buildroot}/usr/share/{doc,licenses}
 %{_libexecdir}/browserpass
 
 %changelog
-

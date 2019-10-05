@@ -1,4 +1,258 @@
 -------------------------------------------------------------------
+Wed Oct  2 15:52:16 UTC 2019 - Bruce Rogers <brogers@suse.com>
+
+- Since our spec file has bashisms, include the following in the
+  spec file: %define _buildshell /bin/bash
+
+-------------------------------------------------------------------
+Wed Oct  2 13:36:46 UTC 2019 - Bruce Rogers <brogers@suse.com>
+
+- Disable some block tests which randomly fail. This is in context
+  of the build service build of qemu-testsuite
+  tests-Disable-some-block-tests-for-now.patch
+- Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-4.1
+
+-------------------------------------------------------------------
+Tue Oct  1 22:07:37 UTC 2019 - Bruce Rogers <brogers@suse.com>
+
+- Add some post v4.1.0 upstream stable patches
+* Patches added:
+  mirror-Keep-mirror_top_bs-drained-after-.patch
+  s390x-tcg-Fix-VERIM-with-32-64-bit-eleme.patch
+  target-alpha-fix-tlb_fill-trap_arg2-valu.patch
+  target-arm-Free-TCG-temps-in-trans_VMOV_.patch
+  target-arm-Don-t-abort-on-M-profile-exce.patch
+  qcow2-Fix-the-calculation-of-the-maximum.patch
+  block-file-posix-Reduce-xfsctl-use.patch
+  pr-manager-Fix-invalid-g_free-crash-bug.patch
+  vpc-Return-0-from-vpc_co_create-on-succe.patch
+  block-nfs-tear-down-aio-before-nfs_close.patch
+  block-create-Do-not-abort-if-a-block-dri.patch
+  curl-Keep-pointer-to-the-CURLState-in-CU.patch
+  curl-Keep-socket-until-the-end-of-curl_s.patch
+  curl-Check-completion-in-curl_multi_do.patch
+  curl-Pass-CURLSocket-to-curl_multi_do.patch
+  curl-Report-only-ready-sockets.patch
+  curl-Handle-success-in-multi_check_compl.patch
+  blockjob-update-nodes-head-while-removin.patch
+  memory-Provide-an-equality-function-for-.patch
+  vhost-Fix-memory-region-section-comparis.patch
+  hw-arm-boot.c-Set-NSACR.-CP11-CP10-for-N.patch
+  s390-PCI-fix-IOMMU-region-init.patch
+  hw-core-loader-Fix-possible-crash-in-rom.patch
+- Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-4.1
+
+-------------------------------------------------------------------
+Wed Sep 11 14:31:26 UTC 2019 - Bruce Rogers <brogers@suse.com>
+
+- Include more tweaks to our packaging workflow scripts
+- Produce qemu-linux-user and qemu-testsuite via the build service
+  multibuild capability, instead of duplicating the spec file and
+  using package link in build service
+* combine qemu-linux-user spec file into main qemu spec file. Since
+  this model uses a single changelog, here are some historicial
+  mentions from the now unused qemu-linux-user.changes (delta from
+  qemu's was quite minimal):
+  - Adjust to a v5.2 linux kernel change regarding SIOCGSTAMP
+  - Fix pwrite64/pread64 to return 0 over -1 for a
+    zero length NULL buffer in qemu (bsc#1121600)
+  * bsc#1112499
+* Since qemu-testsuite.spec and qemu-testsuite.changes were just
+  copies of the main qemu version nothing needs to be done there
+
+-------------------------------------------------------------------
+Fri Sep  6 16:10:18 UTC 2019 - Bruce Rogers <brogers@suse.com>
+
+- Build opensbi from source on riscv64
+
+-------------------------------------------------------------------
+Fri Sep  6 16:04:15 UTC 2019 - Bruce Rogers <brogers@suse.com>
+
+- Update to v4.1.0: See http://wiki.qemu.org/ChangeLog/4.1
+  Take note that ongoing feature deprecation is tracked at both
+  http://wiki.qemu-project.org/Features/LegacyRemoval and in
+  Appendix B of the qemu-doc.* files installed with the qemu package
+  Some noteworthy changes:
+* x86: CPU models are now versioned
+* x86: CPU die topology can now be configured
+* x86: New Hygon Dhyana and Intel Snowridge CPU models
+* s390: The bios now supports IPL (boot) from ECKD DASD assigned
+  to the guest via vfio-ccw
+* s390: The bios now tolerates the presence of bootmap signature
+  entries written by zipl
+* PowerPC: pseries machine now supports KVM acceleration
+  (kernel_irqchip=on) of the XIVE interrupt controller
+* PowerPC: pseries now supports hot-plug of PCI bridges and hot-plug
+  and unplug of devices under PCI bridges
+* ARM: QEMU now supports emulating an FPU for Cortex-M CPUs, and the
+  Cortex-M4 and Cortex-M33 now provide the FP
+* Python 2 support is deprecated
+* UEFI platform firmware binaries, and matching variable store
+  templates are now installed
+* Now it's possible to specify memory-less NUMA node when using
+  "-numa node,memdev" options
+* Possible to trigger self announcement on specific network interfaces
+* Default memory distribution between NUMA nodes is now deprecated
+* Fallback to normal RAM allocation if QEMU is not able to allocate
+  from the "-mem-path" provided file/filesystem is now deprecated
+* virtio-gpu 2d/3d rendering may now be offloaded to an external
+  vhost-user process, such as QEMU vhost-user-gpu
+* QEMU will automatically try to use the MAP_SYNC mmap flag for memory
+  backends configured with pmem=on,share=on
+* Additional SeaVGABIOS patches added for vga-ati compatibility
+- Drop attempt at build compatibility with SLE12
+- New sub-packages: qemu-edk2, qemu-vhost-user-gpu
+- Conditionalize building of qemu-edk2 (and leave unbuilt for now)
+- Implement new packaging workflow, includes no longer numbering
+  patches, and having the "current git repo" stored with the package
+  in the form of git bundles
+* Patches dropped (upstream unless otherwise noted):
+  0027-tests-test-thread-pool-is-racy-add-.patch
+  0032-tests-Fix-Makefile-handling-of-chec.patch
+  0034-Revert-target-i386-kvm-add-VMX-migr.patch
+  0036-sockets-avoid-string-truncation-war.patch
+  0039-linux-user-avoid-string-truncation-.patch
+  0040-linux-user-elfload-Fix-GCC-9-build-.patch
+  0041-qxl-avoid-unaligned-pointer-reads-w.patch
+  0042-libvhost-user-fix-Waddress-of-packe.patch
+  0043-target-i386-define-md-clear-bit.patch
+  0045-kbd-state-fix-autorepeat-handling.patch
+  0046-target-ppc-ensure-we-get-null-termi.patch
+  0049-qxl-check-release-info-object.patch
+  0050-qemu-bridge-helper-restrict-interfa.patch
+  0051-linux-user-fix-to-handle-variably-s.patch
+  ipxe-use-gcc6-for-more-compact-code.patch (no longer needed)
+  (the next three are replaced by the upstream equivalent)
+  ipxe-efi-Simplify-diagnostic-for-NULL-handle.patch
+  ipxe-build-Disable-gcc-address-of-packed-member-warning.patch
+  ipxe-efi-Avoid-string-op-warning-with-cross-gcc-7-compile.patch
+  slirp-fix-heap-overflow-in-ip_reass-on-big-packet-input.patch
+* Patches renamed:
+  0001-XXX-dont-dump-core-on-sigabort.patch
+  -> XXX-dont-dump-core-on-sigabort.patch 
+  0002-qemu-binfmt-conf-Modify-default-pat.patch
+  -> qemu-binfmt-conf-Modify-default-path.patch 
+  0003-qemu-cvs-gettimeofday.patch
+  -> qemu-cvs-gettimeofday.patch
+  0004-qemu-cvs-ioctl_debug.patch
+  -> qemu-cvs-ioctl_debug.patch
+  0005-qemu-cvs-ioctl_nodirection.patch
+  -> qemu-cvs-ioctl_nodirection.patch
+  0006-linux-user-add-binfmt-wrapper-for-a.patch
+  -> linux-user-add-binfmt-wrapper-for-argv-0.patch
+  0007-PPC-KVM-Disable-mmu-notifier-check.patch
+  -> PPC-KVM-Disable-mmu-notifier-check.patch
+  0008-linux-user-binfmt-support-host-bina.patch
+  -> linux-user-binfmt-support-host-binaries.patch
+  0009-linux-user-Fake-proc-cpuinfo.patch
+  -> linux-user-Fake-proc-cpuinfo.patch
+  0010-linux-user-use-target_ulong.patch
+  -> linux-user-use-target_ulong.patch
+  0011-Make-char-muxer-more-robust-wrt-sma.patch
+  -> Make-char-muxer-more-robust-wrt-small-FI.patch
+  0012-linux-user-lseek-explicitly-cast-no.patch
+  -> linux-user-lseek-explicitly-cast-non-set.patch
+  0013-AIO-Reduce-number-of-threads-for-32.patch
+  -> AIO-Reduce-number-of-threads-for-32bit-h.patch
+  0014-xen_disk-Add-suse-specific-flush-di.patch
+  -> xen_disk-Add-suse-specific-flush-disable.patch
+  0015-qemu-bridge-helper-reduce-security-.patch
+  -> qemu-bridge-helper-reduce-security-profi.patch
+  0016-qemu-binfmt-conf-use-qemu-ARCH-binf.patch
+  -> qemu-binfmt-conf-use-qemu-ARCH-binfmt.patch
+  0017-linux-user-properly-test-for-infini.patch
+  -> linux-user-properly-test-for-infinite-ti.patch
+  0018-roms-Makefile-pass-a-packaging-time.patch
+  -> roms-Makefile-pass-a-packaging-timestamp.patch
+  0019-Raise-soft-address-space-limit-to-h.patch
+  -> Raise-soft-address-space-limit-to-hard-l.patch
+  0020-increase-x86_64-physical-bits-to-42.patch
+  -> increase-x86_64-physical-bits-to-42.patch
+  0021-vga-Raise-VRAM-to-16-MiB-for-pc-0.1.patch
+  -> vga-Raise-VRAM-to-16-MiB-for-pc-0.15-and.patch
+  0022-i8254-Fix-migration-from-SLE11-SP2.patch
+  -> i8254-Fix-migration-from-SLE11-SP2.patch
+  0023-acpi_piix4-Fix-migration-from-SLE11.patch
+  -> acpi_piix4-Fix-migration-from-SLE11-SP2.patch
+  0024-Switch-order-of-libraries-for-mpath.patch
+  -> Switch-order-of-libraries-for-mpath-supp.patch
+  0025-Make-installed-scripts-explicitly-p.patch
+  -> Make-installed-scripts-explicitly-python.patch
+  0026-hw-smbios-handle-both-file-formats-.patch
+  -> hw-smbios-handle-both-file-formats-regar.patch
+  0028-xen-add-block-resize-support-for-xe.patch
+  -> xen-add-block-resize-support-for-xen-dis.patch
+  0029-tests-qemu-iotests-Triple-timeout-o.patch
+  -> tests-qemu-iotests-Triple-timeout-of-i-o.patch
+  0030-tests-block-io-test-130-needs-some-.patch
+  -> tests-block-io-test-130-needs-some-delay.patch
+  0031-xen-ignore-live-parameter-from-xen-.patch
+  -> xen-ignore-live-parameter-from-xen-save-.patch
+  0033-Conditionalize-ui-bitmap-installati.patch
+  -> Conditionalize-ui-bitmap-installation-be.patch
+  0035-tests-change-error-message-in-test-.patch
+  -> tests-change-error-message-in-test-162.patch
+  0037-hw-usb-hcd-xhci-Fix-GCC-9-build-war.patch
+  -> hw-usb-hcd-xhci-Fix-GCC-9-build-warning.patch
+  0038-hw-usb-dev-mtp-Fix-GCC-9-build-warn.patch
+  -> hw-usb-dev-mtp-Fix-GCC-9-build-warning.patch
+  0044-hw-intc-exynos4210_gic-provide-more.patch
+  -> hw-intc-exynos4210_gic-provide-more-room.patch
+  0047-configure-only-populate-roms-if-sof.patch
+  -> configure-only-populate-roms-if-softmmu.patch
+  0048-pc-bios-s390-ccw-net-avoid-warning-.patch
+  -> pc-bios-s390-ccw-net-avoid-warning-about.patch
+  keycodemapdb-make-keycode-gen-output-reproducible.patch
+  -> Make-keycode-gen-output-reproducible-use.patch
+  ipxe-stub-out-the-SAN-req-s-in-int13.patch
+  -> stub-out-the-SAN-req-s-in-int13.patch
+  sgabios-fix-cross-build.patch deleted
+  -> roms-sgabios-Fix-csum8-to-be-built-by-ho.patch
+  sgabios-stable-buildid.patch
+  -> sgabios-Makefile-fix-issues-of-build-rep.patch
+  skiboot-gcc9-compat.patch
+  -> Disable-Waddress-of-packed-member-for-GC.patch
+  ipxe-stable-buildid.patch
+  -> ipxe-Makefile-fix-issues-of-build-reprod.patch
+  seabios-fix_cross_compilation.patch
+  -> enable-cross-compilation-on-ARM.patch
+* Patches added:
+  roms-change-cross-compiler-naming-to-be-.patch
+  roms-Makefile.edk2-don-t-invoke-git-sinc.patch
+  vga-move-modelist-from-bochsvga.c-to-new.patch
+  vga-make-memcpy_high-public.patch
+  vga-add-atiext-driver.patch
+  vga-add-ati-bios-tables.patch
+  vbe-add-edid-support.patch
+  ati-add-edid-support.patch
+  ati-vga-make-less-verbose.patch
+  ati-vga-fix-ati_read.patch
+  ati-vga-make-i2c-register-and-bits-confi.patch
+  ati-vga-try-vga-ddc-first.patch
+  ati-vga-add-rage128-edid-support.patch
+  Fix-s-directive-argument-is-null-error.patch
+  Workaround-compilation-error-with-gcc-9..patch
+  Do-not-apply-WORKAROUND_CFLAGS-for-host-.patch
+  hdata-vpd-fix-printing-char-0x00.patch
+
+- Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-4.1
+
+-------------------------------------------------------------------
+Fri Aug  9 14:04:52 UTC 2019 - Bruce Rogers <brogers@suse.com>
+
+- Since we build seabios, take advantage of ability to add our own
+  identifying version info by changing SEABIOS_EXTRAVERSION from
+  "-prebuilt.qemu.org" to "-rebuilt.suse.com" (or
+  "-rebuilt.opensuse.org for openSUSE releases) 
+
+-------------------------------------------------------------------
+Wed Aug  7 02:40:53 UTC 2019 - Liang Yan <lyan@suse.com>
+
+- Security fix for heap overflow in ip_reass on big packet input
+  (CVE-2019-14378, bsc#1143794) 
+  slirp-fix-heap-overflow-in-ip_reass-on-big-packet-input.patch
+
+-------------------------------------------------------------------
 Tue Aug  6 14:45:35 UTC 2019 - Bruce Rogers <brogers@suse.com>
 
 - Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-4.0

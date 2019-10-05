@@ -64,8 +64,8 @@
 Name:           open-vm-tools
 %define subname open-vm-tools
 %define tarname open-vm-tools
-%define bldnum  12406962
-Version:        10.3.10
+%define bldnum  14549434
+Version:        11.0.0
 Release:        0
 Summary:        Open Virtual Machine Tools
 License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.1-only
@@ -161,7 +161,6 @@ Obsoletes:      open-vm-tools-deploypkg <= 10.0.5
 Supplements:    modalias(pci:v000015ADd*sv*sd*bc*sc*i*)
 ExclusiveArch:  %ix86 x86_64
 #Upstream patches
-Patch0:         gcc9-warnings.patch
 
 %systemd_requires
 
@@ -228,7 +227,6 @@ if you intend to create own plugins for vmtoolsd.
 # fix for an rpmlint warning regarding wrong line feeds
 sed -i -e "s/\r//" README
 #Upstream patches
-%patch0 -p1
 
 %build
 %if %{with_X}
@@ -400,7 +398,6 @@ rm -rf %{buildroot}
 %dir %{_libdir}/%{name}/plugins/common
 %dir %{_libdir}/%{name}/plugins/vmsvc
 %{_libdir}/%{name}/plugins/vmsvc/libdeployPkgPlugin.so
-%{_libdir}/%{name}/plugins/vmsvc/libgrabbitmqProxy.so
 %{_libdir}/%{name}/plugins/vmsvc/libguestInfo.so
 %{_libdir}/%{name}/plugins/vmsvc/libpowerOps.so
 %{_libdir}/%{name}/plugins/vmsvc/libresolutionKMS.so
@@ -410,7 +407,6 @@ rm -rf %{buildroot}
 %{_libdir}/%{name}/plugins/common/libvix.so
 %{_bindir}/vmhgfs-fuse
 %{_bindir}/vmware-checkvm
-%{_bindir}/vmware-guestproxycerttool
 %{_bindir}/vmware-hgfsclient
 %{_bindir}/vmware-namespace-cmd
 %{_bindir}/vmware-rpctool
@@ -420,7 +416,6 @@ rm -rf %{buildroot}
 %{_sbindir}/mount.vmhgfs
 /sbin/mount.vmhgfs
 %config(noreplace) %{_sysconfdir}/pam.d/vmtoolsd
-%config(noreplace) %{_sysconfdir}/vmware-tools/guestproxy-ssl.conf
 %dir %{_sysconfdir}/vmware-tools
 %dir %{_sysconfdir}/vmware-tools/scripts
 %dir %{_sysconfdir}/vmware-tools/scripts/vmware
@@ -432,6 +427,7 @@ rm -rf %{buildroot}
 %{_sysconfdir}/vmware-tools/suspend-vm-default
 %{_udevrulesdir}/99-vmware-scsi-udev.rules
 %config(noreplace) %{_sysconfdir}/vmware-tools/tools.conf
+%config(noreplace) %{_sysconfdir}/vmware-tools/tools.conf.example
 %if 0%{?suse_version} < 1315
 %dir %{_sysconfdir}/modprobe.d
 %config %{_sysconfdir}/modprobe.d/50-vmnics.conf

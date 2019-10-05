@@ -64,4 +64,15 @@
     <comment></comment>
     <requestid>701205</requestid>
   </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>c46aeb66305d130a4d67ab562e3abdb7</srcmd5>
+    <version>0.17.1</version>
+    <time>1570285227</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python38-compat.patch to fix compatibility with Python 3.8
+  gh#PythonCharmers/python-future#447
+- Add python38-pow.patch not to expect exception on new available
+  parameters for Python 3.8. gh#PythonCharmers/python-future#474</comment>
+    <requestid>734651</requestid>
+  </revision>
 </revisionlist>

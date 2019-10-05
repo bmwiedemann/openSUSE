@@ -1,0 +1,118 @@
+From: Alexander Graf <agraf@suse.de>
+Date: Thu, 1 Apr 2010 17:36:23 +0200
+Subject: Make char muxer more robust wrt small FIFOs
+
+Virtio-Console can only process one character at a time. Using it on S390
+gave me strage "lags" where I got the character I pressed before when
+pressing one. So I typed in "abc" and only received "a", then pressed "d"
+but the guest received "b" and so on.
+
+While the stdio driver calls a poll function that just processes on its
+queue in case virtio-console can't take multiple characters at once, the
+muxer does not have such callbacks, so it can't empty its queue.
+
+To work around that limitation, I introduced a new timer that only gets
+active when the guest can not receive any more characters. In that case
+it polls again after a while to check if the guest is now receiving input.
+
+This patch fixes input when using -nographic on s390 for me.
+
+[AF: Rebased for v2.7.0-rc2]
+[BR: minor edits to pass qemu's checkpatch script]
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ chardev/char-fe.c          |  1 +
+ chardev/char-mux.c         | 16 ++++++++++++++++
+ chardev/char.c             |  1 +
+ include/chardev/char-mux.h |  3 +++
+ tests/test-char.c          |  1 +
+ 5 files changed, 22 insertions(+)
+
+diff --git a/chardev/char-fe.c b/chardev/char-fe.c
+index f3530a90e6364d813097105b6113..f8aa0daf31692810efc7d5ca32eb 100644
+--- a/chardev/char-fe.c
++++ b/chardev/char-fe.c
+@@ -21,6 +21,7 @@
+  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  * THE SOFTWARE.
+  */
++#define HW_POISON_H /* avoid poison since we patch against rules it "enforces" */
+ #include "qemu/osdep.h"
+ #include "qemu/error-report.h"
+ #include "qapi/error.h"
+diff --git a/chardev/char-mux.c b/chardev/char-mux.c
+index 200c62a0d08bd779de8efdc95aad..10acb4fce1d3bda0d9f818eeb5ee 100644
+--- a/chardev/char-mux.c
++++ b/chardev/char-mux.c
+@@ -22,6 +22,7 @@
+  * THE SOFTWARE.
+  */
+ 
++#define HW_POISON_H /* avoid poison since we patch against rules it "enforces" */
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+ #include "qemu/module.h"
+@@ -191,6 +192,17 @@ static void mux_chr_accept_input(Chardev *chr)
+         be->chr_read(be->opaque,
+                      &d->buffer[m][d->cons[m]++ & MUX_BUFFER_MASK], 1);
+     }
++
++#if defined(TARGET_S390X)
++    /*
++     * We're still not able to sync producer and consumer, so let's wait a bit
++     *  and try again by then.
++     */
++    if (d->prod[m] != d->cons[m]) {
++        qemu_mod_timer(d->accept_timer, qemu_get_clock_ns(vm_clock)
++                                        + (int64_t)100000);
++    }
++#endif
+ }
+ 
+ static int mux_chr_can_read(void *opaque)
+@@ -325,6 +337,10 @@ static void qemu_chr_open_mux(Chardev *chr,
+     }
+ 
+     d->focus = -1;
++#if defined(TARGET_S390X)
++    d->accept_timer = qemu_new_timer_ns(vm_clock,
++                                     (QEMUTimerCB *)mux_chr_accept_input, chr);
++#endif
+     /* only default to opened state if we've realized the initial
+      * set of muxes
+      */
+diff --git a/chardev/char.c b/chardev/char.c
+index 7b6b2cb12300042c6adf257e188c..d2134d72f60e58f35ee9e7869db4 100644
+--- a/chardev/char.c
++++ b/chardev/char.c
+@@ -22,6 +22,7 @@
+  * THE SOFTWARE.
+  */
+ 
++#define HW_POISON_H /* avoid poison since we patch against rules it "enforces" */
+ #include "qemu/osdep.h"
+ #include "qemu/cutils.h"
+ #include "monitor/monitor.h"
+diff --git a/include/chardev/char-mux.h b/include/chardev/char-mux.h
+index 572cefd517c8fa9d605cbd10fc21..6e80785bd9c12b85e747fa9f924e 100644
+--- a/include/chardev/char-mux.h
++++ b/include/chardev/char-mux.h
+@@ -34,6 +34,9 @@ typedef struct MuxChardev {
+     Chardev parent;
+     CharBackend *backends[MAX_MUX];
+     CharBackend chr;
++#if defined(TARGET_S390X)
++    QEMUTimer *accept_timer;
++#endif
+     int focus;
+     int mux_cnt;
+     int term_got_escape;
+diff --git a/tests/test-char.c b/tests/test-char.c
+index f9440cdcfdb51f98b2f6542e6f21..d1f99632de1acb95ba8e1b4a8584 100644
+--- a/tests/test-char.c
++++ b/tests/test-char.c
+@@ -1,3 +1,4 @@
++#define HW_POISON_H /* avoid poison since we patch against rules it "enforces" */
+ #include "qemu/osdep.h"
+ #include <glib/gstdio.h>
+ 

@@ -1,0 +1,73 @@
+The qemu package, and derived packages have a special maintenance workflow in
+order to support git based patching. Please use it in order to have changes
+you make be acceptable to the package maintainers.
+
+The qemu.spec file is generated from a qemu.spec.in template, so to make changes
+to the spec file (besides patch name or order changes), you'll need to edit the
+template. The patches included are inserted into the spec file by scripts
+described below.
+
+If you are not modifying any patches or their order, but just need to update the
+spec file from a changed template, run 'bash ./update_git.sh refresh'.
+
+If the set of patches is being modified, including their order, you will want to
+first run 'bash ./update_git.sh pkg2git', in order to get the current patch
+queue made available in a local git branch named frombundle. (qemu packaging now
+includes a "bundle of git bundles" stored as a package source file, which
+contains the "git version" of the package patches.) You will create an altered
+patch queue in the $GIT_BRANCH branch (see config.sh for actual name), and use
+the frombundle branch as a starting point (eg perhaps start by doing git reset
+--hard frombundle, then cherry-pick upstream patches from there). Once you have
+the patch queue ready to go run 'bash ./update_git.sh git2pkg' to update the
+bundle of bundles (bundles.tsr.xz file) as well as the spec and patch files.
+
+Additional Notes:
+
+** SPECIAL NOTE ABOUT CURRENT STATUS ***
+The current status as of 12 Sep 2019 is that for this incarnation of qemu
+packaging, the old update_git.sh workflow is no longer supported, being
+suplanted with the workflow described above. THIS IS STILL A WORK IN PROGRESS.
+If it isn't working right, please contact Bruce Rogers <brogers@suse.com>.
+It isn't foolproof by a long shot!
+
+Also note that qemu now takes advantage of the MultiBuild feature of the Build
+Service. No longer do the qemu-linux-user and qemu-testsuite packages have build
+service links to the qemu package, but instead are generated straight from the
+main qemu spec file via the use of a _multibuild file which identifies those
+package variants.
+- Bruce Rogers
+*** END SPECIAL NOTE ***
+
+Patches which are from an upstream git repo should have the commit id recorded
+just below the Subject line (after a blank line) as follows:
+
+Git-commit: <40-char-sha-id>
+
+If a patch is anticipated to be shortly included in upstream repo, mark that
+fact by doing the above with 40 0's, which will flag it as needing to be updated
+in the near future.
+
+Bug or feature tracking identifiers should also be added to the patch similarly,
+using the abbreviations identified here:
+http://en.opensuse.org/openSUSE:Packaging_Patches_guidelines#Current_set_of_abbreviations
+using the "Reference:" tag, with multiple entries comma separated.
+
+The ability to provide a conditional inclusion of a patch (eg based on
+architecture, is provided by using the "Include-If:" tag similarly, as follows:
+
+Include-If: %ifarch aarch64
+
+This will cause the patch application in the spec file to be done as follows:
+%ifarch aarch64
+%patch0013 -p1
+%endif
+
+A trick worth noting is, if a given git tracked patch is to be applied in a way
+that can't be done in the normal patching section of the spec file, you can still
+include the patch, and use it by name with the patch program elsewhere in the
+spec file by doing something such as:
+Include-If: %if 0%{?patch-possibly-applied-elsewhere}
+(this variable will remain undefined in the spec file) And then elsewhere in spec
+file, the actual patch (eg specially-handled-change.patch) is referenced as, eg:
+
+patch -p1 < %_sourcedir/specially-handled-change.patch

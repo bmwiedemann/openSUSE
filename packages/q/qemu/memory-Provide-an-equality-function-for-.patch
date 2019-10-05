@@ -1,0 +1,44 @@
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Date: Wed, 14 Aug 2019 18:55:34 +0100
+Subject: memory: Provide an equality function for MemoryRegionSections
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: 9366cf02e4e31c2a8128904d4d8290a0fad5f888
+
+Provide a comparison function that checks all the fields are the same.
+
+Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <20190814175535.2023-3-dgilbert@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ include/exec/memory.h | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index bb0961ddb96788539e7138d4f5b3..25bc7ef1adc04d6de1ce1a41a38a 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -496,6 +496,18 @@ struct MemoryRegionSection {
+     bool nonvolatile;
+ };
+ 
++static inline bool MemoryRegionSection_eq(MemoryRegionSection *a,
++                                          MemoryRegionSection *b)
++{
++    return a->mr == b->mr &&
++           a->fv == b->fv &&
++           a->offset_within_region == b->offset_within_region &&
++           a->offset_within_address_space == b->offset_within_address_space &&
++           int128_eq(a->size, b->size) &&
++           a->readonly == b->readonly &&
++           a->nonvolatile == b->nonvolatile;
++}
++
+ /**
+  * memory_region_init: Initialize a memory region
+  *

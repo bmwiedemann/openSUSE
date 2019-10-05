@@ -17,7 +17,7 @@
 
 
 Name:           libconfini
-Version:        1.10.1
+Version:        1.10.2
 Release:        0
 Summary:        INI file parser libarary
 License:        GPL-3.0-or-later
@@ -52,7 +52,7 @@ This package contains files required for development.
 %setup -q
 
 %build
-./autogen.sh
+./autogen.sh --noconfigure
 %configure --disable-static --docdir=%{_docdir}/%{name}
 make %{?_smp_mflags}
 

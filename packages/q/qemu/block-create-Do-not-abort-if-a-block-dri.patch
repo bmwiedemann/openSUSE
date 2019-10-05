@@ -1,0 +1,93 @@
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Date: Thu, 12 Sep 2019 00:08:49 +0200
+Subject: block/create: Do not abort if a block driver is not available
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: d90d5cae2b10efc0e8d0b3cc91ff16201853d3ba
+
+The 'blockdev-create' QMP command was introduced as experimental
+feature in commit b0292b851b8, using the assert() debug call.
+It got promoted to 'stable' command in 3fb588a0f2c, but the
+assert call was not removed.
+
+Some block drivers are optional, and bdrv_find_format() might
+return a NULL value, triggering the assertion.
+
+Stable code is not expected to abort, so return an error instead.
+
+This is easily reproducible when libnfs is not installed:
+
+  ./configure
+  [...]
+  module support    no
+  Block whitelist (rw)
+  Block whitelist (ro)
+  libiscsi support  yes
+  libnfs support    no
+  [...]
+
+Start QEMU:
+
+  $ qemu-system-x86_64 -S -qmp unix:/tmp/qemu.qmp,server,nowait
+
+Send the 'blockdev-create' with the 'nfs' driver:
+
+  $ ( cat << 'EOF'
+  {'execute': 'qmp_capabilities'}
+  {'execute': 'blockdev-create', 'arguments': {'job-id': 'x', 'options': {'size': 0, 'driver': 'nfs', 'location': {'path': '/', 'server': {'host': '::1', 'type': 'inet'}}}}, 'id': 'x'}
+  EOF
+  ) | socat STDIO UNIX:/tmp/qemu.qmp
+  {"QMP": {"version": {"qemu": {"micro": 50, "minor": 1, "major": 4}, "package": "v4.1.0-733-g89ea03a7dc"}, "capabilities": ["oob"]}}
+  {"return": {}}
+
+QEMU crashes:
+
+  $ gdb qemu-system-x86_64 core
+  Program received signal SIGSEGV, Segmentation fault.
+  (gdb) bt
+  #0  0x00007ffff510957f in raise () at /lib64/libc.so.6
+  #1  0x00007ffff50f3895 in abort () at /lib64/libc.so.6
+  #2  0x00007ffff50f3769 in _nl_load_domain.cold.0 () at /lib64/libc.so.6
+  #3  0x00007ffff5101a26 in .annobin_assert.c_end () at /lib64/libc.so.6
+  #4  0x0000555555d7e1f1 in qmp_blockdev_create (job_id=0x555556baee40 "x", options=0x555557666610, errp=0x7fffffffc770) at block/create.c:69
+  #5  0x0000555555c96b52 in qmp_marshal_blockdev_create (args=0x7fffdc003830, ret=0x7fffffffc7f8, errp=0x7fffffffc7f0) at qapi/qapi-commands-block-core.c:1314
+  #6  0x0000555555deb0a0 in do_qmp_dispatch (cmds=0x55555645de70 <qmp_commands>, request=0x7fffdc005c70, allow_oob=false, errp=0x7fffffffc898) at qapi/qmp-dispatch.c:131
+  #7  0x0000555555deb2a1 in qmp_dispatch (cmds=0x55555645de70 <qmp_commands>, request=0x7fffdc005c70, allow_oob=false) at qapi/qmp-dispatch.c:174
+
+With this patch applied, QEMU returns a QMP error:
+
+  {'execute': 'blockdev-create', 'arguments': {'job-id': 'x', 'options': {'size': 0, 'driver': 'nfs', 'location': {'path': '/', 'server': {'host': '::1', 'type': 'inet'}}}}, 'id': 'x'}
+  {"id": "x", "error": {"class": "GenericError", "desc": "Block driver 'nfs' not found or not supported"}}
+
+Cc: qemu-stable@nongnu.org
+Reported-by: Xu Tian <xutian@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Eric Blake <eblake@redhat.com>
+Reviewed-by: John Snow <jsnow@redhat.com>
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ block/create.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/block/create.c b/block/create.c
+index 95341219efcd670a5151d0d3f4f5..de5e97bb186ffdf039fb39980874 100644
+--- a/block/create.c
++++ b/block/create.c
+@@ -63,9 +63,13 @@ void qmp_blockdev_create(const char *job_id, BlockdevCreateOptions *options,
+     const char *fmt = BlockdevDriver_str(options->driver);
+     BlockDriver *drv = bdrv_find_format(fmt);
+ 
++    if (!drv) {
++        error_setg(errp, "Block driver '%s' not found or not supported", fmt);
++        return;
++    }
++
+     /* If the driver is in the schema, we know that it exists. But it may not
+      * be whitelisted. */
+-    assert(drv);
+     if (bdrv_uses_whitelist() && !bdrv_is_whitelisted(drv, false)) {
+         error_setg(errp, "Driver is not whitelisted");
+         return;

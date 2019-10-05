@@ -54,4 +54,12 @@
     <comment></comment>
     <requestid>732163</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>0675a024e98cd0ecd4363de1fb558be7</srcmd5>
+    <version>1.2.0+git0.gc420ee6d</version>
+    <time>1570285208</time>
+    <user>dimstar_suse</user>
+    <comment>- Set Version when building (bsc#1152690) (forwarded request 734628 from KGronlund)</comment>
+    <requestid>734629</requestid>
+  </revision>
 </revisionlist>

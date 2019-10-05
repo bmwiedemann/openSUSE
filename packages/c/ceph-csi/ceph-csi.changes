@@ -1,3 +1,14 @@
+-------------------------------------------------------------------
+Wed Oct  2 13:38:40 UTC 2019 - Kristoffer Gronlund <kgronlund@suse.com>
+
+- Set Version when building (bsc#1152690)
+
+-------------------------------------------------------------------
+Tue Oct  1 15:24:36 UTC 2019 - Stefan Haas <stefan.haas@suse.com>
+
+- Add forcecephkernelclient as startup parameter (bsc#1152690)
+  * Add 0001-Added-forcecephkernelclient-as-startup-parameter-to-.patch
+
 --------------------------------------------------------------------------------
 Mon Sep  9 19:05:00 UTC 2019 - Blaine Gardner <blaine.gardner@suse.com>
 

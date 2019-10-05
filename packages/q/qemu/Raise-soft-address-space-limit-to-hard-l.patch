@@ -1,0 +1,54 @@
+From: =?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
+Date: Sun, 15 Jan 2012 19:53:49 +0100
+Subject: Raise soft address space limit to hard limit
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+For SLES we want users to be able to use large memory configurations
+with KVM without fiddling with ulimit -Sv.
+
+Signed-off-by: Andreas Färber <afaerber@suse.de>
+[BR: add include for sys/resource.h]
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ vl.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/vl.c b/vl.c
+index b426b3213461210565bd1db15a0c..2b864f7dbe8b60ace40fa3258a37 100644
+--- a/vl.c
++++ b/vl.c
+@@ -30,6 +30,7 @@
+ #include "qemu/cutils.h"
+ #include "qemu/help_option.h"
+ #include "qemu/uuid.h"
++#include <sys/resource.h>
+ #include "sysemu/seccomp.h"
+ #include "sysemu/tcg.h"
+ 
+@@ -2889,6 +2890,7 @@ int main(int argc, char **argv, char **envp)
+     bool list_data_dirs = false;
+     char *dir, **dirs;
+     BlockdevOptionsQueue bdo_queue = QSIMPLEQ_HEAD_INITIALIZER(bdo_queue);
++    struct rlimit rlimit_as;
+ 
+     os_set_line_buffering();
+ 
+@@ -2900,6 +2902,16 @@ int main(int argc, char **argv, char **envp)
+ 
+     qemu_mutex_lock_iothread();
+ 
++    /*
++     * Try to raise the soft address space limit.
++     * Default on SLES 11 SP2 is 80% of physical+swap memory.
++     */
++    getrlimit(RLIMIT_AS, &rlimit_as);
++    if (rlimit_as.rlim_cur < rlimit_as.rlim_max) {
++        rlimit_as.rlim_cur = rlimit_as.rlim_max;
++        setrlimit(RLIMIT_AS, &rlimit_as);
++    }
++
+     atexit(qemu_run_exit_notifiers);
+     qemu_init_exec_dir(argv[0]);
+ 

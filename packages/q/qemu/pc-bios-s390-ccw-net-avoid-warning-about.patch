@@ -1,0 +1,24 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Wed, 29 May 2019 09:59:02 -0600
+Subject: pc-bios/s390-ccw/net: avoid warning about packed structure members
+
+This is hopefully temporary. Simply disable the warning about taking
+the address of packed structure members which is new in gcc9.
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ pc-bios/s390-ccw/netboot.mak | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/pc-bios/s390-ccw/netboot.mak b/pc-bios/s390-ccw/netboot.mak
+index 5eefb7c289395ca37fcd241ce53d..ea2994722cde7e8a65796d374dc7 100644
+--- a/pc-bios/s390-ccw/netboot.mak
++++ b/pc-bios/s390-ccw/netboot.mak
+@@ -53,6 +53,7 @@ libc.a: $(LIBCOBJS)
+ LIBNETOBJS := args.o dhcp.o dns.o icmpv6.o ipv6.o tcp.o udp.o bootp.o \
+ 	      dhcpv6.o ethernet.o ipv4.o ndp.o tftp.o pxelinux.o
+ LIBNETCFLAGS := $(QEMU_CFLAGS) $(CFLAGS) -DDHCPARCH=0x1F $(LIBC_INC) $(LIBNET_INC)
++LIBNETCFLAGS +=  -Wno-address-of-packed-member
+ 
+ %.o : $(SLOF_DIR)/lib/libnet/%.c
+ 	$(call quiet-command,$(CC) $(LIBNETCFLAGS) -c -o $@ $<,"CC","$(TARGET_DIR)$@")

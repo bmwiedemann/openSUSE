@@ -195,4 +195,12 @@
 - Fix fdupes call</comment>
     <requestid>682880</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>bf4bc09e7c610423cc90eb353fd2b0c6</srcmd5>
+    <version>0.8.0</version>
+    <time>1570285281</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>735296</requestid>
+  </revision>
 </revisionlist>

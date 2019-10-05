@@ -1,0 +1,163 @@
+From: Max Reitz <mreitz@redhat.com>
+Date: Fri, 23 Aug 2019 15:03:40 +0200
+Subject: block/file-posix: Reduce xfsctl() use
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: b2c6f23f4a9f6d8f1b648705cd46d3713b78d6a2
+
+This patch removes xfs_write_zeroes() and xfs_discard().  Both functions
+have been added just before the same feature was present through
+fallocate():
+
+- fallocate() has supported PUNCH_HOLE for XFS since Linux 2.6.38 (March
+  2011); xfs_discard() was added in December 2010.
+
+- fallocate() has supported ZERO_RANGE for XFS since Linux 3.15 (June
+  2014); xfs_write_zeroes() was added in November 2013.
+
+Nowadays, all systems that qemu runs on should support both fallocate()
+features (RHEL 7's kernel does).
+
+xfsctl() is still useful for getting the request alignment for O_DIRECT,
+so this patch does not remove our dependency on it completely.
+
+Note that xfs_write_zeroes() had a bug: It calls ftruncate() when the
+file is shorter than the specified range (because ZERO_RANGE does not
+increase the file length).  ftruncate() may yield and then discard data
+that parallel write requests have written past the EOF in the meantime.
+Dropping the function altogether fixes the bug.
+
+Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
+Fixes: 50ba5b2d994853b38fed10e0841b119da0f8b8e5
+Reported-by: Lukáš Doktor <ldoktor@redhat.com>
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Max Reitz <mreitz@redhat.com>
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+Reviewed-by: John Snow <jsnow@redhat.com>
+Tested-by: Stefano Garzarella <sgarzare@redhat.com>
+Tested-by: John Snow <jsnow@redhat.com>
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ block/file-posix.c | 77 +---------------------------------------------
+ 1 file changed, 1 insertion(+), 76 deletions(-)
+
+diff --git a/block/file-posix.c b/block/file-posix.c
+index 4479cc7ab467f217cff8b3efbd1f..992eb4a798b99fe02e93103028c6 100644
+--- a/block/file-posix.c
++++ b/block/file-posix.c
+@@ -1445,59 +1445,6 @@ out:
+     }
+ }
+ 
+-#ifdef CONFIG_XFS
+-static int xfs_write_zeroes(BDRVRawState *s, int64_t offset, uint64_t bytes)
+-{
+-    int64_t len;
+-    struct xfs_flock64 fl;
+-    int err;
+-
+-    len = lseek(s->fd, 0, SEEK_END);
+-    if (len < 0) {
+-        return -errno;
+-    }
+-
+-    if (offset + bytes > len) {
+-        /* XFS_IOC_ZERO_RANGE does not increase the file length */
+-        if (ftruncate(s->fd, offset + bytes) < 0) {
+-            return -errno;
+-        }
+-    }
+-
+-    memset(&fl, 0, sizeof(fl));
+-    fl.l_whence = SEEK_SET;
+-    fl.l_start = offset;
+-    fl.l_len = bytes;
+-
+-    if (xfsctl(NULL, s->fd, XFS_IOC_ZERO_RANGE, &fl) < 0) {
+-        err = errno;
+-        trace_file_xfs_write_zeroes(strerror(errno));
+-        return -err;
+-    }
+-
+-    return 0;
+-}
+-
+-static int xfs_discard(BDRVRawState *s, int64_t offset, uint64_t bytes)
+-{
+-    struct xfs_flock64 fl;
+-    int err;
+-
+-    memset(&fl, 0, sizeof(fl));
+-    fl.l_whence = SEEK_SET;
+-    fl.l_start = offset;
+-    fl.l_len = bytes;
+-
+-    if (xfsctl(NULL, s->fd, XFS_IOC_UNRESVSP64, &fl) < 0) {
+-        err = errno;
+-        trace_file_xfs_discard(strerror(errno));
+-        return -err;
+-    }
+-
+-    return 0;
+-}
+-#endif
+-
+ static int translate_err(int err)
+ {
+     if (err == -ENODEV || err == -ENOSYS || err == -EOPNOTSUPP ||
+@@ -1553,10 +1500,8 @@ static ssize_t handle_aiocb_write_zeroes_block(RawPosixAIOData *aiocb)
+ static int handle_aiocb_write_zeroes(void *opaque)
+ {
+     RawPosixAIOData *aiocb = opaque;
+-#if defined(CONFIG_FALLOCATE) || defined(CONFIG_XFS)
+-    BDRVRawState *s = aiocb->bs->opaque;
+-#endif
+ #ifdef CONFIG_FALLOCATE
++    BDRVRawState *s = aiocb->bs->opaque;
+     int64_t len;
+ #endif
+ 
+@@ -1564,12 +1509,6 @@ static int handle_aiocb_write_zeroes(void *opaque)
+         return handle_aiocb_write_zeroes_block(aiocb);
+     }
+ 
+-#ifdef CONFIG_XFS
+-    if (s->is_xfs) {
+-        return xfs_write_zeroes(s, aiocb->aio_offset, aiocb->aio_nbytes);
+-    }
+-#endif
+-
+ #ifdef CONFIG_FALLOCATE_ZERO_RANGE
+     if (s->has_write_zeroes) {
+         int ret = do_fallocate(s->fd, FALLOC_FL_ZERO_RANGE,
+@@ -1632,14 +1571,6 @@ static int handle_aiocb_write_zeroes_unmap(void *opaque)
+     }
+ #endif
+ 
+-#ifdef CONFIG_XFS
+-    if (s->is_xfs) {
+-        /* xfs_discard() guarantees that the discarded area reads as all-zero
+-         * afterwards, so we can use it here. */
+-        return xfs_discard(s, aiocb->aio_offset, aiocb->aio_nbytes);
+-    }
+-#endif
+-
+     /* If we couldn't manage to unmap while guaranteed that the area reads as
+      * all-zero afterwards, just write zeroes without unmapping */
+     ret = handle_aiocb_write_zeroes(aiocb);
+@@ -1716,12 +1647,6 @@ static int handle_aiocb_discard(void *opaque)
+         ret = -errno;
+ #endif
+     } else {
+-#ifdef CONFIG_XFS
+-        if (s->is_xfs) {
+-            return xfs_discard(s, aiocb->aio_offset, aiocb->aio_nbytes);
+-        }
+-#endif
+-
+ #ifdef CONFIG_FALLOCATE_PUNCH_HOLE
+         ret = do_fallocate(s->fd, FALLOC_FL_PUNCH_HOLE | FALLOC_FL_KEEP_SIZE,
+                            aiocb->aio_offset, aiocb->aio_nbytes);

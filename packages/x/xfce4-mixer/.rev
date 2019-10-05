@@ -346,4 +346,12 @@
     <comment>Scripted push of project X11:xfce</comment>
     <requestid>723990</requestid>
   </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>8edab5c1c3b223b3cd651fd1ed5d9da9</srcmd5>
+    <version>4.11.0</version>
+    <time>1570285295</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>735325</requestid>
+  </revision>
 </revisionlist>
