@@ -100,7 +100,7 @@
 # main package definition
 #################################################################################
 Name:		ceph
-Version:	14.2.4.352+g2060e25d1c
+Version:	14.2.4.373+gc3e67ed133
 Release:	0%{?dist}
 %if 0%{?fedora} || 0%{?rhel}
 Epoch:		2
@@ -116,7 +116,7 @@ License:	LGPL-2.1 and CC-BY-SA-3.0 and GPL-2.0 and BSL-1.0 and BSD-3-Clause and 
 Group:		System/Filesystems
 %endif
 URL:		http://ceph.com/
-Source0:	%{?_remote_tarball_prefix}ceph-14.2.4-352-g2060e25d1c.tar.bz2
+Source0:	%{?_remote_tarball_prefix}ceph-14.2.4-373-gc3e67ed133.tar.bz2
 %if 0%{?suse_version}
 # _insert_obs_source_lines_here
 ExclusiveArch:  x86_64 aarch64 ppc64le s390x
@@ -1089,7 +1089,7 @@ standalone RPM for use in Continuous Integration and ad hoc testing.
 # common
 #################################################################################
 %prep
-%autosetup -p1 -n ceph-14.2.4-352-g2060e25d1c
+%autosetup -p1 -n ceph-14.2.4-373-gc3e67ed133
 
 %build
 # LTO can be enabled as soon as the following GCC bug is fixed:
