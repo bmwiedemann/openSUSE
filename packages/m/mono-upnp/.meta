@@ -1,7 +1,8 @@
 <package name="mono-upnp" project="openSUSE:Factory">
   <title></title>
-  <description>
-
-  </description>
+  <description></description>
   <devel project="Mono:Factory" package="mono-upnp"/>
+  <build>
+    <disable/>
+  </build>
 </package>

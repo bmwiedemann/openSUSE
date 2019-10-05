@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct  1 13:59:21 UTC 2019 - kukuk@suse.de
+
+- Enable armv7
+
+-------------------------------------------------------------------
 Wed Sep 11 10:55:01 CEST 2019 - kukuk@suse.de
 
 - Replace vim with nano (less dependency, default what others are

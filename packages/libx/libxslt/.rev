@@ -453,4 +453,17 @@
     <comment></comment>
     <requestid>713210</requestid>
   </revision>
+  <revision rev="59" vrev="4">
+    <srcmd5>2bc69c3063bb5602d741ebd55aad82ae</srcmd5>
+    <version>1.1.33</version>
+    <time>1570285062</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop out lilbxslt-python package as it is just py2 based and
+  upstream yet didn't bother to port it to python3.
+  When there is python3 compatible code it should be enabled as
+  multibuild here
+  * Drop now unused libxslt-1.1.24-linkflags.patch and
+    libxslt-do_not_build_doc_nor_xsltproc.patch</comment>
+    <requestid>734238</requestid>
+  </revision>
 </revisionlist>

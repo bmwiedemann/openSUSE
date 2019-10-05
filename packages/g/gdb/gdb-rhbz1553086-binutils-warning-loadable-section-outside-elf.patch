@@ -1,0 +1,84 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Nick Clifton <nickc@redhat.com>
+Date: Tue, 2 Jul 2019 15:58:29 +0100
+Subject: gdb-rhbz1553086-binutils-warning-loadable-section-outside-elf.patch
+
+;; Fix 'gdb: warning: Loadable section ".note.gnu.property" outside of
+;; ELF segments' (Nick Clifton, RH BZ 1553086).
+;; This is a binutils patch.
+
+Stop the BFD library from issuing a warning message when processing allocated sections in debuginfo files that lie outside of any loadable segment.
+
+	PR 24717
+	* elf.c (is_debuginfo_file): New function.
+	(assign_file_positions_for_non_load_sections): Do not warn about
+	allocated sections outside of loadable segments if they are found
+	in a debuginfo file.
+	* elf-bfd.h (is_debuginfo_file): Prototype.
+
+diff --git a/bfd/elf-bfd.h b/bfd/elf-bfd.h
+--- a/bfd/elf-bfd.h
++++ b/bfd/elf-bfd.h
+@@ -2751,6 +2751,8 @@ extern bfd_vma elf64_r_sym (bfd_vma);
+ extern bfd_vma elf32_r_info (bfd_vma, bfd_vma);
+ extern bfd_vma elf32_r_sym (bfd_vma);
+ 
++extern bfd_boolean is_debuginfo_file (bfd *);
++
+ /* Large common section.  */
+ extern asection _bfd_elf_large_com_section;
+ 
+diff --git a/bfd/elf.c b/bfd/elf.c
+--- a/bfd/elf.c
++++ b/bfd/elf.c
+@@ -5800,6 +5800,35 @@ assign_file_positions_for_load_sections (bfd *abfd,
+   return TRUE;
+ }
+ 
++/* Determine if a bfd is a debuginfo file.  Unfortunately there
++   is no defined method for detecting such files, so we have to
++   use heuristics instead.  */
++
++bfd_boolean
++is_debuginfo_file (bfd *abfd)
++{
++  if (abfd == NULL || bfd_get_flavour (abfd) != bfd_target_elf_flavour)
++    return FALSE;
++
++  Elf_Internal_Shdr **start_headers = elf_elfsections (abfd);
++  Elf_Internal_Shdr **end_headers = start_headers + elf_numsections (abfd);
++  Elf_Internal_Shdr **headerp;
++
++  for (headerp = start_headers; headerp < end_headers; headerp ++)
++    {
++      Elf_Internal_Shdr *header = * headerp;
++
++      /* Debuginfo files do not have any allocated SHT_PROGBITS sections.
++	 The only allocated sections are SHT_NOBITS or SHT_NOTES.  */
++      if ((header->sh_flags & SHF_ALLOC) == SHF_ALLOC
++	  && header->sh_type != SHT_NOBITS
++	  && header->sh_type != SHT_NOTE)
++	return FALSE;
++    }
++
++  return TRUE;
++}
++
+ /* Assign file positions for the other sections.  */
+ 
+ static bfd_boolean
+@@ -5833,7 +5862,13 @@ assign_file_positions_for_non_load_sections (bfd *abfd,
+ 	BFD_ASSERT (hdr->sh_offset == hdr->bfd_section->filepos);
+       else if ((hdr->sh_flags & SHF_ALLOC) != 0)
+ 	{
+-	  if (hdr->sh_size != 0)
++	  if (hdr->sh_size != 0
++	      /* PR 24717 - debuginfo files are known to be not strictly
++		 compliant with the ELF standard.  In particular they often
++		 have .note.gnu.property sections that are outside of any
++		 loadable segment.  This is not a problem for such files,
++		 so do not warn about them.  */
++	      && ! is_debuginfo_file (abfd))
+ 	    _bfd_error_handler
+ 	      /* xgettext:c-format */
+ 	      (_("%pB: warning: allocated section `%s' not in segment"),

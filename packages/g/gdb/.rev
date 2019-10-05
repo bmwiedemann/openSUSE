@@ -1389,4 +1389,42 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
     <comment></comment>
     <requestid>731960</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>45dfe2b39d384f51604ef98b167fa402</srcmd5>
+    <version>8.3.1</version>
+    <time>1570285085</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 8.3.1
+- Add gdb-testsuite-8.3-kfail-xfail-unsupported.patch
+
+- Drop ChangeLog part of patch:
+  * gdb-rhbz1708192-parse_macro_definition-crash.patch
+  * gdb-rhbz1704406-disable-style-log-output-1of3.patch
+  * gdb-rhbz1704406-disable-style-log-output-2of3.patch
+  * gdb-rhbz1704406-disable-style-log-output-3of3.patch
+  * gdb-rhbz1723564-gdb-crash-PYTHONMALLOC-debug.patch
+  * gdb-rhbz1553086-binutils-warning-loadable-section-outside-elf.patch
+- Update to gdb-8.3.1.
+  * Drop &quot;Testsuite: Ensure pie is disabled on some tests&quot; part of
+    gdb-testsuite-pie-no-pie.patch
+  * Drop patches included upstream:
+    - gdb-7.10-swo18929.patch
+    - gdb-handle-vfork-in-thread-with-follow-fork-mode-child.patch
+    - gdb-x86_64-i386-syscall-restart-master.patch
+    - gdb-suppress-sigttou-when-handling-errors.patch
+    - gdb-fix-breakpoints-on-file-reloads-for-pie-binaries.patch
+    - gdb-symtab-fix-symbol-loading-performance-regression.patch
+- Fix macro in comment warning
+
+- Upgrade libipt from v2.0 to v2.0.1.
+  * Use -DBUILD_SHARED_LIBS=OFF to build libipt.a, and drop part
+    of v1.5-libipt-static.patch that consequentially has become
+    unnecessary.
+
+- Sync with f30, merging 1e222a3..8bf40c6.
+  * gdb-rhbz1708192-parse_macro_definition-crash.patch
+  * gdb-rhbz1704406-disable-style-log-output-1of3.patch
+  * gdb-rhbz1704406-disable-style-log-output-2of3.patch</comment>
+    <requestid>734351</requestid>
+  </revision>
 </revisionlist>

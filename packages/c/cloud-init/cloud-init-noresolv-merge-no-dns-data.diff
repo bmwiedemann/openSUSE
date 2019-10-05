@@ -1,0 +1,68 @@
+diff --git a/cloudinit/net/sysconfig.py b/cloudinit/net/sysconfig.py
+index be5dede..1708990 100644
+--- a/cloudinit/net/sysconfig.py
++++ b/cloudinit/net/sysconfig.py
+@@ -578,6 +578,10 @@ class Renderer(renderer.Renderer):
+ 
+     @staticmethod
+     def _render_dns(network_state, existing_dns_path=None):
++        # skip writing resolv.conf if network_state doesn't include any input.
++        if not any([len(network_state.dns_nameservers),
++                    len(network_state.dns_searchdomains)]):
++            return None
+         content = resolv_conf.ResolvConf("")
+         if existing_dns_path and os.path.isfile(existing_dns_path):
+             content = resolv_conf.ResolvConf(util.load_file(existing_dns_path))
+@@ -585,8 +589,6 @@ class Renderer(renderer.Renderer):
+             content.add_nameserver(nameserver)
+         for searchdomain in network_state.dns_searchdomains:
+             content.add_search_domain(searchdomain)
+-        if not str(content):
+-            return None
+         header = _make_header(';')
+         content_str = str(content)
+         if not content_str.startswith(header):
+diff --git a/tests/unittests/test_net.py b/tests/unittests/test_net.py
+index e578992..82eb18f 100644
+--- a/tests/unittests/test_net.py
++++ b/tests/unittests/test_net.py
+@@ -2701,6 +2701,10 @@ USERCTL=no
+         ns = network_state.parse_net_config_data(CONFIG_V1_EXPLICIT_LOOPBACK)
+         render_dir = self.tmp_path("render")
+         os.makedirs(render_dir)
++        # write an etc/resolv.conf and expect it to not be modified
++        resolvconf = os.path.join(render_dir, 'etc/resolv.conf')
++        content = "# Original Content"
++        util.write_file(resolvconf, content)
+         renderer = self._get_renderer()
+         renderer.render_network_state(ns, target=render_dir)
+         found = dir2dict(render_dir)
+@@ -2718,6 +2722,8 @@ TYPE=Ethernet
+ USERCTL=no
+ """
+         self.assertEqual(expected, found[nspath + 'ifcfg-eth0'])
++        # a dhcp only config should not modify resolv.conf
++        self.assertEqual(content, found['/etc/resolv.conf'])
+ 
+     def test_bond_config(self):
+         expected_name = 'expected_sysconfig_rhel'
+@@ -3202,6 +3208,10 @@ USERCTL=no
+         ns = network_state.parse_net_config_data(CONFIG_V1_EXPLICIT_LOOPBACK)
+         render_dir = self.tmp_path("render")
+         os.makedirs(render_dir)
++        # write an etc/resolv.conf and expect it to not be modified
++        resolvconf = os.path.join(render_dir, 'etc/resolv.conf')
++        content = "# Original Content"
++        util.write_file(resolvconf, content)
+         renderer = self._get_renderer()
+         renderer.render_network_state(ns, target=render_dir)
+         found = dir2dict(render_dir)
+@@ -3219,6 +3229,8 @@ TYPE=Ethernet
+ USERCTL=no
+ """
+         self.assertEqual(expected, found[nspath + 'ifcfg-eth0'])
++        # a dhcp only config should not modify resolv.conf
++        self.assertEqual(content, found['/etc/resolv.conf'])
+ 
+     def test_bond_config(self):
+         expected_name = 'expected_sysconfig_opensuse'

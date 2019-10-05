@@ -27,7 +27,7 @@
 +            # before they are all setup. Settle if that is the case.
 +            for iface in network_state.iter_interfaces(
 +                    renderer.filter_by_physical):
-+                path = net.sys_dev_path(iface.name)
++                path = net.sys_dev_path(iface.get('name'))
 +                if not os.path.exists(path):
 +                    util.udevadm_settle(path, 5)
 +                    break

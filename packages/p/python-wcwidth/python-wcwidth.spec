@@ -27,6 +27,7 @@ URL:            https://github.com/jquast/wcwidth
 Source:         https://files.pythonhosted.org/packages/source/w/wcwidth/wcwidth-%{version}.tar.gz
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
@@ -53,13 +54,14 @@ release files, which this project aims to track.
 %install
 %python_install
 
-# This file is meant to be runnable on its own for testing,
-# so don't remove the shebang.
-%python_expand chmod a+x %{buildroot}%{$python_sitelib}/wcwidth/tests/test_*.py
+# Remove tests from runtime
+%{python_expand rm -r %{buildroot}%{$python_sitelib}/wcwidth/tests/
+%fdupes %{buildroot}%{$python_sitelib}
+}
 
 %check
 pushd wcwidth/tests
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} nosetests-%{$python_bin_suffix}
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} nosetests-%{$python_bin_suffix} test*.py
 popd
 
 %files %{python_files}

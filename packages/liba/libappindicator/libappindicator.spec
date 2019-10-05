@@ -15,44 +15,67 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%global sname libappindicator
+%if "%{flavor}" == ""
+ExclusiveArch: do-not-build
+%endif
+
+
+%if "%{flavor}" == "gtk2"
+%bcond_without mono
+%bcond_without python
+%global gtkver 2
+%endif
+%if "%{flavor}" == "gtk3"
+%bcond_with mono
+%bcond_with python
+%global psuffix 3
+%global gtkver 3
+%endif
 
 %define sover 1
 %define _version 12.10.1+17.04.20170215
-%if %{undefined with_mono}
-%bcond_without mono
-%endif
-%bcond_with mono
-Name:           libappindicator
+Name:           libappindicator%{?psuffix}
 Version:        12.10.1+bzr20170215
 Release:        0
 Summary:        Application indicators library
 License:        LGPL-2.0-only AND LGPL-3.0-only AND GPL-3.0-only
 Group:          System/Libraries
 URL:            https://launchpad.net/libappindicator
-Source:         https://launchpad.net/ubuntu/+archive/primary/+files/%{name}_%{_version}.orig.tar.gz
+Source:         https://launchpad.net/ubuntu/+archive/primary/+files/%{sname}_%{_version}.orig.tar.gz
 # PATCH-FIX-UPSTREAM 0001_Fix_mono_dir.patch hrvoje.senjan@gmail.com -- Fix location of .pc files.
 Patch0:         0001_Fix_mono_dir.patch
 # PATCH-FIX=UPSTREAM libappindicator-no-Werror.patch dimstar@opensuse.org -- Don't add -Werror on build: the code is aging and does not keep up
 Patch2:         libappindicator-no-Werror.patch
+# PATCH-FIX-OPENSUSE only_require_python_for_gtk2.patch -- Only require Python when building for GTK2
+Patch3:         only_require_python_for_gtk2.patch
+# PATCH-FIX-OPENSUSE make_gtk_doc_optional.patch -- Do not require macros from gtk-doc
+Patch4:         make_gtk_doc_optional.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  fdupes
-BuildRequires:  gnome-common
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  vala
-BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:  pkgconfig(dbusmenu-glib-0.4)
-BuildRequires:  pkgconfig(dbusmenu-gtk-0.4)
-BuildRequires:  pkgconfig(dbusmenu-gtk3-0.4)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
+%if "%{flavor}" == "gtk2"
+BuildRequires:  pkgconfig(dbusmenu-gtk-0.4)
 BuildRequires:  pkgconfig(gtk+-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(indicator-0.4)
-BuildRequires:  pkgconfig(indicator3-0.4)
+%if %{with python}
 BuildRequires:  pkgconfig(pygtk-2.0)
+%endif
 %if %{with mono}
 BuildRequires:  pkgconfig(gapi-2.0)
 BuildRequires:  pkgconfig(gtk-sharp-2.0)
 BuildRequires:  pkgconfig(mono)
 BuildRequires:  pkgconfig(mono-nunit)
+%endif
+%else
+BuildRequires:  pkgconfig(dbusmenu-gtk3-0.4)
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(indicator3-0.4)
 %endif
 
 %description
@@ -91,10 +114,10 @@ library.
 %package devel
 Summary:        Development files for libappindicator
 Group:          Development/Libraries/C and C++
-Requires:       libappindicator%{sover} = %{version}
+Requires:       libappindicator%{?psuffix:%{psuffix}-}%{sover} = %{version}
 
 %description devel
-This package contains the development files for the appindicator library.
+This package contains the development files for the appindicator%{?psuffix} library.
 
 %package -n libappindicator3-%{sover}
 Summary:        Application indicators library for GTK+3
@@ -115,14 +138,6 @@ Group:          System/Libraries
 This package contains the GObject Introspection bindings for the appindicator
 library.
 
-%package -n libappindicator3-devel
-Summary:        Development files for libappindicator3
-Group:          Development/Libraries/C and C++
-Requires:       libappindicator3-%{sover} = %{version}
-
-%description -n libappindicator3-devel
-This package contains the development files for the appindicator3 library.
-
 %package doc
 Summary:        Documentation for libappindicator and libappindicator3
 Group:          Documentation/HTML
@@ -132,7 +147,6 @@ BuildArch:      noarch
 This package contains the documentation for the appindicator and appindicator3
 libraries.
 
-%if %{with mono}
 %package -n appindicator-sharp
 Summary:        Application indicators library for C#
 Group:          System/Libraries
@@ -150,35 +164,31 @@ Requires:       appindicator-sharp = %{version}
 
 %description -n appindicator-sharp-devel
 This package contains the development files for the appindicator-sharp library.
-%endif
 
 %prep
 %setup -q -c
 %patch0 -p1
 %patch2 -p1
+%patch3 -p1
+%patch4 -p1
 
 %build
-NOCONFIGURE=1 ./autogen.sh
+# Create dummy file, to avoid dependency on gtk-doc
+echo "EXTRA_DIST = " >> gtk-doc.make
+autoreconf -vfi
 %if %{with mono}
 export CSC=%{_bindir}/gmcs
 %endif
-%global _configure ../configure
 
-for ver in 2 3; do
-    mkdir build-gtk$ver
-    pushd build-gtk$ver
-    %configure \
-      --disable-static    \
-      --disable-gtk-doc   \
-      --disable-mono-test \
-      --with-gtk=$ver
-    make -j1 V=1
-    popd
-done
+%configure \
+--disable-static    \
+--disable-gtk-doc   \
+--disable-mono-test \
+--with-gtk=%{gtkver}
+make -j1 V=1
 
 %install
-%make_install -C build-gtk2
-%make_install -C build-gtk3
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes %{buildroot}%{python_sitearch}
 
@@ -190,6 +200,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %postun -n libappindicator3-%{sover} -p /sbin/ldconfig
 
+%if %{with python}
 %files -n python2-appindicator
 %license COPYING COPYING.LGPL.2.1
 %doc README
@@ -200,7 +211,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %dir %{_datadir}/pygtk/2.0/
 %dir %{_datadir}/pygtk/2.0/defs/
 %{_datadir}/pygtk/2.0/defs/appindicator.defs
+%endif
 
+%if "%{flavor}" == "gtk2"
 %files -n libappindicator%{sover}
 %license COPYING COPYING.LGPL.2.1
 %doc README
@@ -223,6 +236,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/vala/vapi/appindicator-0.1.vapi
 %{_datadir}/vala/vapi/appindicator-0.1.deps
 
+%else
 %files -n libappindicator3-%{sover}
 %license COPYING COPYING.LGPL.2.1
 %doc README
@@ -244,6 +258,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/gir-1.0/AppIndicator3-0.1.gir
 %{_datadir}/vala/vapi/appindicator3-0.1.vapi
 %{_datadir}/vala/vapi/appindicator3-0.1.deps
+%endif
 
 %if %{with mono}
 %files -n appindicator-sharp

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  2 20:24:49 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Remove references to the hamcrest-parent pom and do not
+  distribute it
+  * useless since we don't build with maven
+  * creates problems with gradle connector
+
+-------------------------------------------------------------------
 Tue Jan 15 08:52:39 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Make jmock and easymock integration opt-in (bsc#1121956)

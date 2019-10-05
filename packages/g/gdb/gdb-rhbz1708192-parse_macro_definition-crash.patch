@@ -1,0 +1,69 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Sergio Durigan Junior <sergiodj@redhat.com>
+Date: Fri, 10 May 2019 16:57:26 -0400
+Subject: gdb-rhbz1708192-parse_macro_definition-crash.patch
+
+;; "Fix" segfault that happens on parse_macro_definition because
+;; debugedit corrupts the .debug_macro section.
+;; Sergio Durigan Junior, RH BZ 1708192.
+
+Don't crash if dwarf_decode_macro_bytes's 'body' is NULL
+
+Hi,
+
+Ref.: https://bugzilla.redhat.com/show_bug.cgi?id=1708192
+      https://bugzilla.redhat.com/show_bug.cgi?id=1708786
+
+During the Fedora RPM build process, gdb-add-index is invoked to
+extract the DWARF index from the binary, and GDB will segfault because
+dwarf2read.c:parse_definition_macro's 'body' variable is NULL.
+
+The underlying problem is that Fedora's rpm-build's "debugedit"
+program will silently corrupt .debug_macro strings when a binary is
+compiled with -g3.  This is being taken care of by Mark Wielaard,
+here:
+
+  https://bugzilla.redhat.com/show_bug.cgi?id=1708786
+
+However, I still feel it's important to make GDB more resilient
+against invalid DWARF input, so I'm proposing this rather simple patch
+to catch the situation when "body == NULL" (i.e., it's probably been
+corrupted) and issue a complaint.  This is not a real fix to the
+problem, of course, but at least GDB is able to finish without
+segfaulting.
+
+OK for master?
+
+gdb/ChangeLog:
+2019-05-15  Sergio Durigan Junior  <sergiodj@redhat.com>
+
+	Ref.: https://bugzilla.redhat.com/show_bug.cgi?id=1708192
+	* dwarf2read.c (dwarf_decode_macro_bytes): Check whether 'body' is
+	NULL, and complain if that's the case.
+
+diff --git a/gdb/dwarf2read.c b/gdb/dwarf2read.c
+--- a/gdb/dwarf2read.c
++++ b/gdb/dwarf2read.c
+@@ -24627,7 +24627,21 @@ dwarf_decode_macro_bytes (struct dwarf2_cu *cu,
+ 			 is_define ? _("definition") : _("undefinition"),
+ 			 line == 0 ? _("zero") : _("non-zero"), line, body);
+ 
+-	    if (is_define)
++	    if (body == NULL)
++	      {
++		/* Fedora's rpm-build's "debugedit" binary
++		   corrupted .debug_macro sections.
++
++		   For more info, see
++		   https://bugzilla.redhat.com/show_bug.cgi?id=1708786 */
++		complaint (_("debug info gives %s invalid macro %s "
++			     "without body (corrupted?) at line %d "
++			     "on file %s"),
++			   at_commandline ? _("command-line") : _("in-file"),
++			   is_define ? _("definition") : _("undefinition"),
++			   line, current_file->filename);
++	      }
++	    else if (is_define)
+ 	      parse_macro_definition (current_file, line, body);
+ 	    else
+ 	      {

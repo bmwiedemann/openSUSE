@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Oct  3 13:23:26 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 1.0.0
+  * BREAKING CHANGE: Removed functionality to calculate public key 
+    values from private key values. Alternatives have been added to 
+    oscrypto. (see upstream changelog)
+  * Significantly improved parsing of core.UTCTime() and core.GeneralizedTime() 
+    values that include timezones and fractional seconds
+  * core.Choice() may now be constructed by a 2-element tuple or a 1-key dict
+  * No longer try to load optional performance dependency, libcrypto, 
+    on Mac or Linux
+  * Add support for explicit RSA SSA PSS to keys.PublicKeyInfo() 
+    and keys.PrivateKeyInfo()
+  * Add/improve few algorithms (RC4, secp256k1, SHA-3, SHAKE)
+  * Added asn1crypto_tests package to PyPi
+  * Many bugfixes
+
+-------------------------------------------------------------------
 Thu Jan  3 14:14:59 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Reduce duplicities

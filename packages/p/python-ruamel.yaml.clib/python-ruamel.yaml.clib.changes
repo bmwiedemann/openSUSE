@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct  1 15:27:58 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 2.0.0
+  * Use size_t for marks in cython to handle large files.
+  * update .c to incorporate size_t change for marks
+
+-------------------------------------------------------------------
 Sat Aug 24 06:29:11 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use proper sentence structure in description.

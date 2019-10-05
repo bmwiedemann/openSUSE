@@ -17,16 +17,14 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without test
 Name:           python-asn1crypto
-Version:        0.24.0
+Version:        1.0.0
 Release:        0
 Summary:        ASN.1 parser and serializer for Python
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/wbond/asn1crypto
-Source:         https://files.pythonhosted.org/packages/source/a/asn1crypto/asn1crypto-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+Source:         https://github.com/wbond/asn1crypto/archive/%{version}.tar.gz
+BuildRequires:  %{python_module setuptools >= 38.6.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -45,6 +43,9 @@ certificates, CRL, OCSP, CMS, PKCS#3, PKCS#7, PKCS#8, PKCS#12, PKCS#5, X509 and 
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%python_exec setup.py test
 
 %files %{python_files}
 %license LICENSE

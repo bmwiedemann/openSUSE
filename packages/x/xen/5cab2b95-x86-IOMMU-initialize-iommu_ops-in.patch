@@ -1,0 +1,121 @@
+
+References: bsc#1135799
+
+# Commit 19127340a504c030901fc16d8475fc7d8cfdf8a5
+# Date 2019-04-08 13:08:05 +0200
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+x86/IOMMU: initialize iommu_ops in vendor-independent code
+
+Move this into iommu_hardware_setup() and make that function non-
+inline. Move its declaration into common code.
+
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Reviewed-by: Kevin Tian <kevin.tian@intel.com>
+Reviewed-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Acked-by: Brian Woods <brian.woods@amd.com>
+
+--- a/xen/drivers/passthrough/amd/pci_amd_iommu.c
++++ b/xen/drivers/passthrough/amd/pci_amd_iommu.c
+@@ -31,7 +31,6 @@
+ static bool_t __read_mostly init_done;
+ 
+ static const struct iommu_init_ops _iommu_init_ops;
+-static const struct iommu_ops amd_iommu_ops;
+ 
+ struct amd_iommu *find_iommu_for_device(int seg, int bdf)
+ {
+@@ -196,8 +195,6 @@ static int __init iov_detect(void)
+     if ( !iommu_enable && !iommu_intremap )
+         return 0;
+ 
+-    iommu_ops = amd_iommu_ops;
+-
+     if ( amd_iommu_init() != 0 )
+     {
+         printk("AMD-Vi: Error initialization\n");
+@@ -582,7 +579,7 @@ static void amd_dump_p2m_table(struct do
+     amd_dump_p2m_table_level(hd->arch.root_table, hd->arch.paging_mode, 0, 0);
+ }
+ 
+-static const struct iommu_ops __initconstrel amd_iommu_ops = {
++static const struct iommu_ops __initconstrel _iommu_ops = {
+     .init = amd_iommu_domain_init,
+     .hwdom_init = amd_iommu_hwdom_init,
+     .add_device = amd_iommu_add_device,
+@@ -609,5 +606,6 @@ static const struct iommu_ops __initcons
+ };
+ 
+ static const struct iommu_init_ops __initconstrel _iommu_init_ops = {
++    .ops = &_iommu_ops,
+     .setup = iov_detect,
+ };
+--- a/xen/drivers/passthrough/vtd/iommu.c
++++ b/xen/drivers/passthrough/vtd/iommu.c
+@@ -2305,8 +2305,6 @@ static int __init vtd_setup(void)
+         goto error;
+     }
+ 
+-    iommu_ops = intel_iommu_ops;
+-
+     /* We enable the following features only if they are supported by all VT-d
+      * engines: Snoop Control, DMA passthrough, Queued Invalidation, Interrupt
+      * Remapping, and Posted Interrupt
+--- a/xen/drivers/passthrough/x86/iommu.c
++++ b/xen/drivers/passthrough/x86/iommu.c
+@@ -26,6 +26,20 @@
+ const struct iommu_init_ops *__initdata iommu_init_ops;
+ struct iommu_ops __read_mostly iommu_ops;
+ 
++int __init iommu_hardware_setup(void)
++{
++    if ( !iommu_init_ops )
++        return -ENODEV;
++
++    if ( !iommu_ops.init )
++        iommu_ops = *iommu_init_ops->ops;
++    else
++        /* x2apic setup may have previously initialised the struct. */
++        ASSERT(iommu_ops.init == iommu_init_ops->ops->init);
++
++    return iommu_init_ops->setup();
++}
++
+ int iommu_enable_x2apic(void)
+ {
+     if ( system_state < SYS_STATE_active )
+--- a/xen/include/asm-arm/iommu.h
++++ b/xen/include/asm-arm/iommu.h
+@@ -26,8 +26,6 @@ struct arch_iommu
+ const struct iommu_ops *iommu_get_ops(void);
+ void iommu_set_ops(const struct iommu_ops *ops);
+ 
+-int iommu_hardware_setup(void);
+-
+ #endif /* __ARCH_ARM_IOMMU_H__ */
+ 
+ /*
+--- a/xen/include/asm-x86/iommu.h
++++ b/xen/include/asm-x86/iommu.h
+@@ -73,11 +73,6 @@ struct iommu_init_ops {
+ 
+ extern const struct iommu_init_ops *iommu_init_ops;
+ 
+-static inline int iommu_hardware_setup(void)
+-{
+-    return iommu_init_ops ? iommu_init_ops->setup() : -ENODEV;
+-}
+-
+ /* Are we using the domain P2M table as its IOMMU pagetable? */
+ #define iommu_use_hap_pt(d) \
+     (hap_enabled(d) && has_iommu_pt(d) && iommu_hap_pt_share)
+--- a/xen/include/xen/iommu.h
++++ b/xen/include/xen/iommu.h
+@@ -65,6 +65,7 @@ extern int8_t iommu_hwdom_reserved;
+ extern unsigned int iommu_dev_iotlb_timeout;
+ 
+ int iommu_setup(void);
++int iommu_hardware_setup(void);
+ 
+ int iommu_domain_init(struct domain *d);
+ void iommu_hwdom_init(struct domain *d);

@@ -1,0 +1,60 @@
+
+References: bsc#1135799
+
+# Commit 757122c0cf35281618e80cdab37f4f44e5e5ff55
+# Date 2019-06-27 12:34:24 +0200
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+AMD/IOMMU: don't "add" IOMMUs
+
+For find_iommu_for_device() to consistently (independent of ACPI tables)
+return NULL for the PCI devices corresponding to IOMMUs, make sure
+IOMMUs don't get mapped to themselves by ivrs_mappings[].
+
+While amd_iommu_add_device() won't be called for IOMMUs from
+pci_add_device(), as IOMMUs have got marked r/o,
+_setup_hwdom_pci_devices() calls there nevertheless. Avoid issuing the
+bogus debugging only "No iommu for ...; cannot be handed to ..." log
+message as well as the non-debugging "setup ... for ... failed (-19)"
+one.
+
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Acked-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Acked-by: Brian Woods <brian.woods@amd.com>
+
+--- a/xen/drivers/passthrough/amd/iommu_acpi.c
++++ b/xen/drivers/passthrough/amd/iommu_acpi.c
+@@ -81,8 +81,8 @@ static void __init add_ivrs_mapping_entr
+              ivrs_mappings[alias_id].intremap_inuse = shared_intremap_inuse;
+          }
+     }
+-    /* assgin iommu hardware */
+-    ivrs_mappings[bdf].iommu = iommu;
++    /* Assign IOMMU hardware, but don't map an IOMMU by itself. */
++    ivrs_mappings[bdf].iommu = iommu->bdf != bdf ? iommu : NULL;
+ }
+ 
+ static struct amd_iommu * __init find_iommu_from_bdf_cap(
+--- a/xen/drivers/passthrough/amd/pci_amd_iommu.c
++++ b/xen/drivers/passthrough/amd/pci_amd_iommu.c
+@@ -43,7 +43,7 @@ struct amd_iommu *find_iommu_for_device(
+     {
+         unsigned int bd0 = bdf & ~PCI_FUNC(~0);
+ 
+-        if ( ivrs_mappings[bd0].iommu )
++        if ( ivrs_mappings[bd0].iommu && ivrs_mappings[bd0].iommu->bdf != bdf )
+         {
+             struct ivrs_mappings tmp = ivrs_mappings[bd0];
+ 
+@@ -449,6 +449,11 @@ static int amd_iommu_add_device(u8 devfn
+         return -EINVAL;
+ 
+     bdf = PCI_BDF2(pdev->bus, pdev->devfn);
++
++    for_each_amd_iommu(iommu)
++        if ( pdev->seg == iommu->seg && bdf == iommu->bdf )
++            return is_hardware_domain(pdev->domain) ? 0 : -ENODEV;
++
+     iommu = find_iommu_for_device(pdev->seg, bdf);
+     if ( unlikely(!iommu) )
+     {

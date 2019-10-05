@@ -1,0 +1,59 @@
+# Commit 5f569f1ac50eff9dc95ac2e4a617de657d254b52
+# Date 2019-07-31 13:19:27 +0200
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+AMD/IOMMU: allow enabling with IRQ not yet set up
+
+Early enabling (to enter x2APIC mode) requires deferring of the IRQ
+setup. Code to actually do that setup in the x2APIC case will get added
+subsequently.
+
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Acked-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Acked-by: Brian Woods <brian.woods@amd.com>
+
+--- a/xen/drivers/passthrough/amd/iommu_init.c
++++ b/xen/drivers/passthrough/amd/iommu_init.c
+@@ -814,7 +814,6 @@ static void amd_iommu_erratum_746_workar
+ static void enable_iommu(struct amd_iommu *iommu)
+ {
+     unsigned long flags;
+-    struct irq_desc *desc;
+ 
+     spin_lock_irqsave(&iommu->lock, flags);
+ 
+@@ -834,19 +833,27 @@ static void enable_iommu(struct amd_iomm
+     if ( iommu->features.flds.ppr_sup )
+         register_iommu_ppr_log_in_mmio_space(iommu);
+ 
+-    desc = irq_to_desc(iommu->msi.irq);
+-    spin_lock(&desc->lock);
+-    set_msi_affinity(desc, NULL);
+-    spin_unlock(&desc->lock);
++    if ( iommu->msi.irq > 0 )
++    {
++        struct irq_desc *desc = irq_to_desc(iommu->msi.irq);
++
++        spin_lock(&desc->lock);
++        set_msi_affinity(desc, NULL);
++        spin_unlock(&desc->lock);
++    }
+ 
+     amd_iommu_msi_enable(iommu, IOMMU_CONTROL_ENABLED);
+ 
+     set_iommu_ht_flags(iommu);
+     set_iommu_command_buffer_control(iommu, IOMMU_CONTROL_ENABLED);
+-    set_iommu_event_log_control(iommu, IOMMU_CONTROL_ENABLED);
+ 
+-    if ( iommu->features.flds.ppr_sup )
+-        set_iommu_ppr_log_control(iommu, IOMMU_CONTROL_ENABLED);
++    if ( iommu->msi.irq > 0 )
++    {
++        set_iommu_event_log_control(iommu, IOMMU_CONTROL_ENABLED);
++
++        if ( iommu->features.flds.ppr_sup )
++            set_iommu_ppr_log_control(iommu, IOMMU_CONTROL_ENABLED);
++    }
+ 
+     if ( iommu->features.flds.gt_sup )
+         set_iommu_guest_translation_control(iommu, IOMMU_CONTROL_ENABLED);

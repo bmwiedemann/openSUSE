@@ -46,8 +46,12 @@ Patch43:        cloud-init-write-routes.patch
 Patch47:        cloud-init-trigger-udev.patch
 # FIXME (lp#1669875) patch by mvoelker@launchpad
 Patch48:        cloud-init-detect-nova.diff
-# FIXME (lp##1821102)
+# FIXME (lp#1821102)
 Patch49:        cloud-init-add-static-routes.diff
+# FIXME (lp#1843634)
+Patch50:        cloud-init-noresolv-merge-no-dns-data.diff
+# FIXME
+Patch51:        cloud-init-after-wicked.patch
 
 BuildRequires:  fdupes
 BuildRequires:  filesystem
@@ -193,6 +197,8 @@ Documentation and examples for cloud-init tools
 %patch47
 %patch48 -p1
 %patch49 -p1
+%patch50 -p1
+%patch51 -p1
 
 %build
 %if 0%{?suse_version} && 0%{?suse_version} <= 1315

@@ -24,7 +24,7 @@ License:        MIT
 Group:          Metapackages
 Url:            http://en.opensuse.org/Patterns
 Source0:        %name-rpmlintrc
-ExclusiveArch:  x86_64 aarch64 ppc64le s390x
+ExclusiveArch:  x86_64 armv7l armv7hl aarch64 ppc64le s390x
 
 %description
 This is an internal package that is used to create the patterns as part
@@ -134,6 +134,10 @@ Requires:       grub2-x86_64-efi
 %ifarch aarch64
 Requires:       grub2-arm64-efi
 %endif
+%ifarch armv7l armv7hl
+Requires:       grub2-arm-efi
+Requires:       grub2-arm-uboot
+%endif
 %ifnarch s390x
 Requires:       irqbalance
 %endif
@@ -177,7 +181,11 @@ Provides:       pattern-visible()
 #Obsolete CaaSP Patterns
 Provides:       patterns-caasp-hardware
 Obsoletes:      patterns-caasp-hardware <= 4.0
+%ifarch armv7l armv7hl
+Requires:       kernel-lpae
+%else
 Requires:       kernel-default
+%endif
 Requires:       kernel-firmware
 
 %description hardware

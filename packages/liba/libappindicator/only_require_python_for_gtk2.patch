@@ -1,0 +1,19 @@
+--- a/configure.ac	2019-09-18 20:01:29.244433451 +0200
++++ b/configure.ac	2019-09-18 20:06:01.479617139 +0200
+@@ -185,6 +185,8 @@
+ # Python
+ ###########################
+ 
++AS_IF([test "x$with_gtk" = x2],
++        [
+ PYGTK_REQUIRED=2.14.0
+ PYGOBJECT_REQUIRED=0.22
+ 
+@@ -207,6 +209,7 @@
+ PYGTK_CODEGEN="$PYTHON `$PKG_CONFIG --variable=codegendir pygtk-2.0`/codegen.py"
+ AC_SUBST(PYGTK_CODEGEN)
+ AC_MSG_RESULT($PYGTK_CODEGEN)
++])
+ 
+ #########################
+ # Check if build tests

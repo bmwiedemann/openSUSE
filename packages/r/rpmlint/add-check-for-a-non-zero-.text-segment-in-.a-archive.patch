@@ -35,7 +35,7 @@ Index: rpmlint-rpmlint-1.11/BinariesCheck.py
              lines = res[1].splitlines()
 +
 +            # For an archive, test if all .text sections are empty
-+            if is_archive and not (path.startswith('/usr/lib64/ghc') or path.startswith('/usr/lib/ghc')):
++            if is_archive and not ('/usr/lib64/ghc' in path or '/usr/lib/ghc' in path):
 +                has_text_segment = False
 +                non_zero_text_segment = False
 +

@@ -1,0 +1,204 @@
+
+References: bsc#1135799
+
+# Commit 4e5e40fbd5852b2b638e5d9cf775d52f93b3fecb
+# Date 2019-09-25 16:00:46 +0200
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+AMD/IOMMU: make phantom functions share interrupt remapping tables
+
+Rather than duplicating entries in amd_iommu_msi_msg_update_ire(), share
+the tables. This mainly requires some care while freeing them, to avoid
+freeing memory blocks twice.
+
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Acked-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Reviewed-by: Paul Durrant <paul.durrant@citrix.com>
+
+--- a/xen/drivers/passthrough/amd/iommu_init.c
++++ b/xen/drivers/passthrough/amd/iommu_init.c
+@@ -1117,7 +1117,7 @@ static void __init amd_iommu_init_cleanu
+         amd_iommu_free_intremap_table(list_first_entry(&amd_iommu_head,
+                                                        struct amd_iommu,
+                                                        list),
+-                                      NULL);
++                                      NULL, 0);
+ 
+     /* free amd iommu list */
+     list_for_each_entry_safe ( iommu, next, &amd_iommu_head, list )
+@@ -1182,7 +1182,7 @@ int iterate_ivrs_mappings(int (*handler)
+ }
+ 
+ int iterate_ivrs_entries(int (*handler)(const struct amd_iommu *,
+-                                        struct ivrs_mappings *))
++                                        struct ivrs_mappings *, uint16_t bdf))
+ {
+     u16 seg = 0;
+     int rc = 0;
+@@ -1199,7 +1199,7 @@ int iterate_ivrs_entries(int (*handler)(
+             const struct amd_iommu *iommu = map[bdf].iommu;
+ 
+             if ( iommu && map[bdf].dte_requestor_id == bdf )
+-                rc = handler(iommu, &map[bdf]);
++                rc = handler(iommu, &map[bdf], bdf);
+         }
+     } while ( !rc && ++seg );
+ 
+@@ -1292,20 +1292,29 @@ static int __init amd_iommu_setup_device
+ 
+             if ( pdev )
+             {
+-                unsigned int req_id = bdf;
+-
+-                do {
+-                    ivrs_mappings[req_id].intremap_table =
+-                        amd_iommu_alloc_intremap_table(
+-                            ivrs_mappings[bdf].iommu,
+-                            &ivrs_mappings[req_id].intremap_inuse);
+-                    if ( !ivrs_mappings[req_id].intremap_table )
+-                        return -ENOMEM;
+-
+-                    if ( !pdev->phantom_stride )
+-                        break;
+-                    req_id += pdev->phantom_stride;
+-                } while ( PCI_SLOT(req_id) == PCI_SLOT(pdev->devfn) );
++                ivrs_mappings[bdf].intremap_table =
++                    amd_iommu_alloc_intremap_table(
++                        ivrs_mappings[bdf].iommu,
++                        &ivrs_mappings[bdf].intremap_inuse);
++                if ( !ivrs_mappings[bdf].intremap_table )
++                    return -ENOMEM;
++
++                if ( pdev->phantom_stride )
++                {
++                    unsigned int req_id = bdf;
++
++                    for ( ; ; )
++                    {
++                        req_id += pdev->phantom_stride;
++                        if ( PCI_SLOT(req_id) != PCI_SLOT(pdev->devfn) )
++                            break;
++
++                        ivrs_mappings[req_id].intremap_table =
++                            ivrs_mappings[bdf].intremap_table;
++                        ivrs_mappings[req_id].intremap_inuse =
++                            ivrs_mappings[bdf].intremap_inuse;
++                    }
++                }
+             }
+ 
+             amd_iommu_set_intremap_table(
+--- a/xen/drivers/passthrough/amd/iommu_intr.c
++++ b/xen/drivers/passthrough/amd/iommu_intr.c
+@@ -711,33 +711,20 @@ int amd_iommu_msi_msg_update_ire(
+ 
+     if ( msi_desc->remap_index >= 0 && !msg )
+     {
+-        do {
+-            update_intremap_entry_from_msi_msg(iommu, bdf, nr,
+-                                               &msi_desc->remap_index,
+-                                               NULL, NULL);
+-            if ( !pdev || !pdev->phantom_stride )
+-                break;
+-            bdf += pdev->phantom_stride;
+-        } while ( PCI_SLOT(bdf) == PCI_SLOT(pdev->devfn) );
++        update_intremap_entry_from_msi_msg(iommu, bdf, nr,
++                                           &msi_desc->remap_index,
++                                           NULL, NULL);
+ 
+         for ( i = 0; i < nr; ++i )
+             msi_desc[i].remap_index = -1;
+-        if ( pdev )
+-            bdf = PCI_BDF2(pdev->bus, pdev->devfn);
+     }
+ 
+     if ( !msg )
+         return 0;
+ 
+-    do {
+-        rc = update_intremap_entry_from_msi_msg(iommu, bdf, nr,
+-                                                &msi_desc->remap_index,
+-                                                msg, &data);
+-        if ( rc || !pdev || !pdev->phantom_stride )
+-            break;
+-        bdf += pdev->phantom_stride;
+-    } while ( PCI_SLOT(bdf) == PCI_SLOT(pdev->devfn) );
+-
++    rc = update_intremap_entry_from_msi_msg(iommu, bdf, nr,
++                                            &msi_desc->remap_index,
++                                            msg, &data);
+     if ( !rc )
+     {
+         for ( i = 1; i < nr; ++i )
+@@ -790,12 +777,27 @@ void amd_iommu_read_msi_from_ire(
+ }
+ 
+ int amd_iommu_free_intremap_table(
+-    const struct amd_iommu *iommu, struct ivrs_mappings *ivrs_mapping)
++    const struct amd_iommu *iommu, struct ivrs_mappings *ivrs_mapping,
++    uint16_t bdf)
+ {
+     void **tblp;
+ 
+     if ( ivrs_mapping )
+     {
++        unsigned int i;
++
++        /*
++         * PCI device phantom functions use the same tables as their "base"
++         * function: Look ahead to zap the pointers.
++         */
++        for ( i = 1; PCI_FUNC(bdf + i) && bdf + i < ivrs_bdf_entries; ++i )
++            if ( ivrs_mapping[i].intremap_table ==
++                 ivrs_mapping->intremap_table )
++            {
++                ivrs_mapping[i].intremap_table = NULL;
++                ivrs_mapping[i].intremap_inuse = NULL;
++            }
++
+         XFREE(ivrs_mapping->intremap_inuse);
+         tblp = &ivrs_mapping->intremap_table;
+     }
+@@ -934,7 +936,8 @@ static void dump_intremap_table(const st
+ }
+ 
+ static int dump_intremap_mapping(const struct amd_iommu *iommu,
+-                                 struct ivrs_mappings *ivrs_mapping)
++                                 struct ivrs_mappings *ivrs_mapping,
++                                 uint16_t unused)
+ {
+     unsigned long flags;
+ 
+--- a/xen/drivers/passthrough/amd/pci_amd_iommu.c
++++ b/xen/drivers/passthrough/amd/pci_amd_iommu.c
+@@ -553,7 +553,7 @@ static int amd_iommu_remove_device(u8 de
+     if ( amd_iommu_perdev_intremap &&
+          ivrs_mappings[bdf].dte_requestor_id == bdf &&
+          ivrs_mappings[bdf].intremap_table )
+-        amd_iommu_free_intremap_table(iommu, &ivrs_mappings[bdf]);
++        amd_iommu_free_intremap_table(iommu, &ivrs_mappings[bdf], bdf);
+ 
+     return 0;
+ }
+--- a/xen/include/asm-x86/amd-iommu.h
++++ b/xen/include/asm-x86/amd-iommu.h
+@@ -136,7 +136,7 @@ extern u8 ivhd_type;
+ struct ivrs_mappings *get_ivrs_mappings(u16 seg);
+ int iterate_ivrs_mappings(int (*)(u16 seg, struct ivrs_mappings *));
+ int iterate_ivrs_entries(int (*)(const struct amd_iommu *,
+-                                 struct ivrs_mappings *));
++                                 struct ivrs_mappings *, uint16_t));
+ 
+ /* iommu tables in guest space */
+ struct mmio_reg {
+--- a/xen/include/asm-x86/hvm/svm/amd-iommu-proto.h
++++ b/xen/include/asm-x86/hvm/svm/amd-iommu-proto.h
+@@ -103,7 +103,7 @@ int amd_iommu_setup_ioapic_remapping(voi
+ void *amd_iommu_alloc_intremap_table(
+     const struct amd_iommu *, unsigned long **);
+ int amd_iommu_free_intremap_table(
+-    const struct amd_iommu *, struct ivrs_mappings *);
++    const struct amd_iommu *, struct ivrs_mappings *, uint16_t);
+ void amd_iommu_ioapic_update_ire(
+     unsigned int apic, unsigned int reg, unsigned int value);
+ unsigned int amd_iommu_read_ioapic_from_ire(

@@ -1,0 +1,223 @@
+
+References: bsc#1135799
+
+# Commit 6d786fdbcdd5dfa0197719d8607a1fcc039d8bda
+# Date 2019-04-08 13:06:54 +0200
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+x86/IOMMU: abstract Intel-specific iommu_{en,dis}able_x2apic_IR()
+
+Introduce respective elements in struct iommu_init_ops as well as a
+pointer to the main ops structure.
+
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Reviewed-by: Kevin Tian <kevin.tian@intel.com>
+Reviewed-by: Andrew Cooper <andrew.cooper3@citrix.com>
+
+--- a/xen/arch/x86/apic.c
++++ b/xen/arch/x86/apic.c
+@@ -510,7 +510,7 @@ static void resume_x2apic(void)
+     mask_8259A();
+     mask_IO_APIC_setup(ioapic_entries);
+ 
+-    iommu_enable_x2apic_IR();
++    iommu_enable_x2apic();
+     __enable_x2apic();
+ 
+     restore_IO_APIC_setup(ioapic_entries);
+@@ -720,7 +720,7 @@ int lapic_suspend(void)
+ 
+     local_irq_save(flags);
+     disable_local_APIC();
+-    iommu_disable_x2apic_IR();
++    iommu_disable_x2apic();
+     local_irq_restore(flags);
+     return 0;
+ }
+@@ -923,7 +923,7 @@ void __init x2apic_bsp_setup(void)
+     mask_8259A();
+     mask_IO_APIC_setup(ioapic_entries);
+ 
+-    switch ( iommu_enable_x2apic_IR() )
++    switch ( iommu_enable_x2apic() )
+     {
+     case 0:
+         break;
+--- a/xen/drivers/passthrough/vtd/extern.h
++++ b/xen/drivers/passthrough/vtd/extern.h
+@@ -35,6 +35,8 @@ void print_vtd_entries(struct iommu *iom
+ keyhandler_fn_t vtd_dump_iommu_info;
+ 
+ bool intel_iommu_supports_eim(void);
++int intel_iommu_enable_eim(void);
++void intel_iommu_disable_eim(void);
+ 
+ int enable_qinval(struct iommu *iommu);
+ void disable_qinval(struct iommu *iommu);
+--- a/xen/drivers/passthrough/vtd/intremap.c
++++ b/xen/drivers/passthrough/vtd/intremap.c
+@@ -882,23 +882,13 @@ out:
+  * This function is used to enable Interrupt remapping when
+  * enable x2apic
+  */
+-int iommu_enable_x2apic_IR(void)
++int intel_iommu_enable_eim(void)
+ {
+     struct acpi_drhd_unit *drhd;
+     struct iommu *iommu;
+ 
+-    if ( system_state < SYS_STATE_active )
+-    {
+-        if ( !intel_iommu_supports_eim() )
+-            return -EOPNOTSUPP;
+-
+-        if ( !platform_supports_x2apic() )
+-            return -ENXIO;
+-
+-        iommu_ops = intel_iommu_ops;
+-    }
+-    else if ( !x2apic_enabled )
+-        return -EOPNOTSUPP;
++    if ( system_state < SYS_STATE_active && !platform_supports_x2apic() )
++        return -ENXIO;
+ 
+     for_each_drhd_unit ( drhd )
+     {
+@@ -943,17 +933,13 @@ int iommu_enable_x2apic_IR(void)
+ }
+ 
+ /*
+- * This function is used to disable Interrutp remapping when
++ * This function is used to disable Interrupt remapping when
+  * suspend local apic
+  */
+-void iommu_disable_x2apic_IR(void)
++void intel_iommu_disable_eim(void)
+ {
+     struct acpi_drhd_unit *drhd;
+ 
+-    /* x2apic_enabled implies iommu_supports_eim(). */
+-    if ( !x2apic_enabled )
+-        return;
+-
+     for_each_drhd_unit ( drhd )
+         disable_intremap(drhd->iommu);
+ 
+--- a/xen/drivers/passthrough/vtd/iommu.c
++++ b/xen/drivers/passthrough/vtd/iommu.c
+@@ -2720,6 +2720,8 @@ const struct iommu_ops __initconstrel in
+     .free_page_table = iommu_free_page_table,
+     .reassign_device = reassign_device_ownership,
+     .get_device_group_id = intel_iommu_group_id,
++    .enable_x2apic = intel_iommu_enable_eim,
++    .disable_x2apic = intel_iommu_disable_eim,
+     .update_ire_from_apic = io_apic_write_remap_rte,
+     .update_ire_from_msi = msi_msg_write_remap_rte,
+     .read_apic_from_ire = io_apic_read_remap_rte,
+@@ -2736,6 +2738,7 @@ const struct iommu_ops __initconstrel in
+ };
+ 
+ const struct iommu_init_ops __initconstrel intel_iommu_init_ops = {
++    .ops = &intel_iommu_ops,
+     .setup = vtd_setup,
+     .supports_x2apic = intel_iommu_supports_eim,
+ };
+--- a/xen/drivers/passthrough/x86/iommu.c
++++ b/xen/drivers/passthrough/x86/iommu.c
+@@ -26,6 +26,24 @@
+ const struct iommu_init_ops *__initdata iommu_init_ops;
+ struct iommu_ops __read_mostly iommu_ops;
+ 
++int iommu_enable_x2apic(void)
++{
++    if ( system_state < SYS_STATE_active )
++    {
++        if ( !iommu_supports_x2apic() )
++            return -EOPNOTSUPP;
++
++        iommu_ops = *iommu_init_ops->ops;
++    }
++    else if ( !x2apic_enabled )
++        return -EOPNOTSUPP;
++
++    if ( !iommu_ops.enable_x2apic )
++        return -EOPNOTSUPP;
++
++    return iommu_ops.enable_x2apic();
++}
++
+ void iommu_update_ire_from_apic(
+     unsigned int apic, unsigned int reg, unsigned int value)
+ {
+--- a/xen/include/asm-x86/apic.h
++++ b/xen/include/asm-x86/apic.h
+@@ -29,7 +29,6 @@ enum apic_mode {
+ };
+ 
+ extern u8 apic_verbosity;
+-extern bool x2apic_enabled;
+ extern bool directed_eoi_enabled;
+ 
+ void check_x2apic_preenabled(void);
+--- a/xen/include/asm-x86/apicdef.h
++++ b/xen/include/asm-x86/apicdef.h
+@@ -126,4 +126,6 @@
+ 
+ #define MAX_IO_APICS 128
+ 
++extern bool x2apic_enabled;
++
+ #endif
+--- a/xen/include/asm-x86/iommu.h
++++ b/xen/include/asm-x86/iommu.h
+@@ -17,6 +17,7 @@
+ #include <xen/errno.h>
+ #include <xen/list.h>
+ #include <xen/spinlock.h>
++#include <asm/apicdef.h>
+ #include <asm/processor.h>
+ #include <asm/hvm/vmx/vmcs.h>
+ 
+@@ -65,6 +66,7 @@ static inline const struct iommu_ops *io
+ }
+ 
+ struct iommu_init_ops {
++    const struct iommu_ops *ops;
+     int (*setup)(void);
+     bool (*supports_x2apic)(void);
+ };
+@@ -96,8 +98,13 @@ static inline bool iommu_supports_x2apic
+            : false;
+ }
+ 
+-int iommu_enable_x2apic_IR(void);
+-void iommu_disable_x2apic_IR(void);
++int iommu_enable_x2apic(void);
++
++static inline void iommu_disable_x2apic(void)
++{
++    if ( x2apic_enabled && iommu_ops.disable_x2apic )
++        iommu_ops.disable_x2apic();
++}
+ 
+ extern bool untrusted_msi;
+ 
+--- a/xen/include/xen/iommu.h
++++ b/xen/include/xen/iommu.h
+@@ -216,11 +216,16 @@ struct iommu_ops {
+                                     unsigned int *flags);
+ 
+     void (*free_page_table)(struct page_info *);
++
+ #ifdef CONFIG_X86
++    int (*enable_x2apic)(void);
++    void (*disable_x2apic)(void);
++
+     void (*update_ire_from_apic)(unsigned int apic, unsigned int reg, unsigned int value);
+     unsigned int (*read_apic_from_ire)(unsigned int apic, unsigned int reg);
+     int (*setup_hpet_msi)(struct msi_desc *);
+ #endif /* CONFIG_X86 */
++
+     int __must_check (*suspend)(void);
+     void (*resume)(void);
+     void (*share_p2m)(struct domain *d);

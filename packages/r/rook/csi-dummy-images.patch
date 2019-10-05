@@ -1,13 +1,34 @@
 diff --git a/pkg/operator/ceph/csi/spec.go b/pkg/operator/ceph/csi/spec.go
-index 44f07f7e..bfdcd409 100644
+index 81491fde..327bd139 100644
 --- a/pkg/operator/ceph/csi/spec.go
 +++ b/pkg/operator/ceph/csi/spec.go
-@@ -72,7 +72,7 @@ const (
- 	provDeploymentSuppVersion = "14"
- 
+@@ -66,17 +66,23 @@ var (
+ 	ConfigKey  = "csi-cluster-config-json"
+ )
+
+-const (
+-	KubeMinMajor              = "1"
+-	KubeMinMinor              = "13"
+-	provDeploymentSuppVersion = "14"
+-
++// Specify default images as var instead of const so that they can be overridden with the Go
++// linker's -X flag. This allows users to easily build images with a different opinionated set of
++// images without having to specify them manually in charts/manifests which can make upgrades more
++// manually challenging.
++var (
  	// image names
 -	DefaultCSIPluginImage   = "quay.io/cephcsi/cephcsi:v1.2.0"
 +	DefaultCSIPluginImage   = "dummy-value-that-should-be-replaced-at-link-time"
  	DefaultRegistrarImage   = "quay.io/k8scsi/csi-node-driver-registrar:v1.1.0"
  	DefaultProvisionerImage = "quay.io/k8scsi/csi-provisioner:v1.3.0"
  	DefaultAttacherImage    = "quay.io/k8scsi/csi-attacher:v1.2.0"
+ 	DefaultSnapshotterImage = "quay.io/k8scsi/csi-snapshotter:v1.2.0"
++)
++
++const (
++	KubeMinMajor              = "1"
++	KubeMinMinor              = "13"
++	provDeploymentSuppVersion = "14"
+
+ 	// kubelet directory path
+ 	DefaultKubeletDirPath = "/var/lib/kubelet"

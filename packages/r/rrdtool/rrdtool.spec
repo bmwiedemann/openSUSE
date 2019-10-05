@@ -12,15 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define python python
+%if 0%{?suse_version} >= 1500
+ %define python python3
+%endif
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
+  %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-
 %bcond_without  lua
 %bcond_without  python
 %bcond_without  ruby
@@ -28,18 +31,14 @@
 %bcond_without  libdbi
 %bcond_without  libwrap
 %bcond_with     rados
-%define python python
-%if 0%{?suse_version} >= 1500
- %define python python3
-%endif
 Name:           rrdtool
-Version:        1.7.1
+Version:        1.7.2
 Release:        0
 Summary:        Round Robin Database Tool to store and display time-series data
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            http://oss.oetiker.ch/rrdtool/
-Source0:        http://oss.oetiker.ch/%{name}/pub/%{name}-%{version}.tar.gz
+URL:            https://oss.oetiker.ch/rrdtool/
+Source0:        https://oss.oetiker.ch/%{name}/pub/%{name}-%{version}.tar.gz
 Source2:        sysconfig.rrdcached
 Source4:        rrdcached-systemd-pre
 Source5:        rrdcached.service
@@ -48,10 +47,6 @@ Source99:       %{name}.changes
 Patch3:         rrdtool-tclsegfault.patch
 # PATCH-FIX-UPSTREAM -- bnc#793636
 Patch12:        rrdtool-zero_vs_nothing.patch
-%if 0%{?suse_version} >= 1500
-Patch13:        python3.patch
-%endif
-Patch14:        rrdtool-1.7.1-compile_fix.patch
 # Needed for tests
 BuildRequires:  bc
 BuildRequires:  cairo-devel >= 1.2
@@ -69,6 +64,9 @@ BuildRequires:  pango-devel >= 1.14
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  zlib-devel
 Requires:       dejavu
+%if 0%{?suse_version} >= 1500
+Patch13:        python3.patch
+%endif
 %if %{with python}
 BuildRequires:  %{python}-devel
 BuildRequires:  %{python}-setuptools
@@ -220,7 +218,6 @@ daemon was written to alleviate these problems.
 %if 0%{?suse_version} >= 1500
 %patch13 -p1
 %endif
-%patch14 -p1
 
 # rrd_tool/rrd_cgi: use the date of the last change
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
@@ -379,7 +376,8 @@ getent passwd %{rrdcached_user} >/dev/null || useradd -s /sbin/nologin -g %{rrdc
 
 %if %{with python}
 %files -n %{python}-%{name}
-%doc bindings/python/COPYING bindings/python/README.md
+%license bindings/python/COPYING
+%doc bindings/python/README.md
 %if 0%{?suse_version} >= 1500
 %{python3_sitearch}/*
 %else

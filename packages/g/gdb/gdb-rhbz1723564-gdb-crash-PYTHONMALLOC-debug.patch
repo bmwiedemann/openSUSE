@@ -1,0 +1,110 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Sergio Durigan Junior <sergiodj@redhat.com>
+Date: Thu, 27 Jun 2019 13:14:26 -0400
+Subject: gdb-rhbz1723564-gdb-crash-PYTHONMALLOC-debug.patch
+
+;; Fix 'gdb crash when using PYTHONMALLOC=debug on Python'
+;; RHBZ 1723564, Sergio Durigan Junior.
+
+Fix crash when using PYTHONMALLOC=debug (PR python/24742)
+
+This bug was originally reported against Fedora GDB:
+
+  https://bugzilla.redhat.com/show_bug.cgi?id=1723564
+
+The problem is that GDB will crash in the following scenario:
+
+- PYTHONMALLOC=debug or PYTHONDEVMODE=1 is set.
+
+- The Python debuginfo is installed.
+
+- GDB is used to debug Python.
+
+The crash looks like this:
+
+  $ PYTHONMALLOC=debug gdb -args python3 -c pass
+  GNU gdb (GDB) Fedora 8.3-3.fc30
+  Reading symbols from python3...
+  Reading symbols from /usr/lib/debug/usr/bin/python3.7m-3.7.3-3.fc30.x86_64.debug...
+  (gdb) run
+  Starting program: /usr/bin/python3 -c pass
+  Missing separate debuginfos, use: dnf debuginfo-install glibc-2.29-9.fc30.x86_64
+  Debug memory block at address p=0x5603977bf330: API ''
+      8098648152243306496 bytes originally requested
+      The 7 pad bytes at p-7 are not all FORBIDDENBYTE (0xfb):
+	  at p-7: 0x03 *** OUCH
+	  at p-6: 0x00 *** OUCH
+	  at p-5: 0x00 *** OUCH
+	  at p-4: 0x00 *** OUCH
+	  at p-3: 0x00 *** OUCH
+	  at p-2: 0x00 *** OUCH
+	  at p-1: 0x00 *** OUCH
+      Because memory is corrupted at the start, the count of bytes requested
+	 may be bogus, and checking the trailing pad bytes may segfault.
+      The 8 pad bytes at tail=0x706483999ad1f330 are Segmentation fault (core dumped)
+
+It's hard to determine what happens, but after doing some
+investigation and talking to Victor Stinner I found that GDB should
+not use the Python memory allocation functions before the Python
+interpreter is initialized (which makes sense).  However, we do just
+that on python/python.c:do_start_initialization:
+
+  ...
+  progsize = strlen (progname.get ());
+  progname_copy = (wchar_t *) PyMem_Malloc ((progsize + 1) * sizeof (wchar_t));
+  ...
+  /* Note that Py_SetProgramName expects the string it is passed to
+     remain alive for the duration of the program's execution, so
+     it is not freed after this call.  */
+  Py_SetProgramName (progname_copy);
+  ...
+  Py_Initialize ();
+  PyEval_InitThreads ();
+
+Upon reading the Python 3 C API documentation, I
+found (https://docs.python.org/3.5/c-api/memory.html):
+
+  To avoid memory corruption, extension writers should never try to
+  operate on Python objects with the functions exported by the C
+  library: malloc(), calloc(), realloc() and free(). This will result in
+  mixed calls between the C allocator and the Python memory manager with
+  fatal consequences, because they implement different algorithms and
+  operate on different heaps. However, one may safely allocate and
+  release memory blocks with the C library allocator for individual
+  purposes[...]
+
+And Py_SetProgramName seems like a very simple call that doesn't need
+a Python-allocated memory to work on.  So I'm proposing this patch,
+which simply replaces PyMem_Malloc by xmalloc.
+
+Testing this is more complicated.  First, the crash is completely
+non-deterministic; I was able to reproduce it 10 times in a row, and
+then I wasn't able to reproduce it anymore.  I found that if you
+completely remove your build directory and rebuild GDB from scratch,
+you can reproduce it again confidently.  And with my patch, I
+confirmed that the bug doesn't manifest even in this situation.
+
+No regressions found.
+
+OK to apply?
+
+gdb/ChangeLog:
+2019-06-28  Sergio Durigan Junior  <sergiodj@redhat.com>
+
+	PR python/24742
+	https://bugzilla.redhat.com/show_bug.cgi?id=1723564
+	* python/python.c (do_start_initialization): Use 'xmalloc'
+	instead of 'PyMem_Malloc'.
+
+diff --git a/gdb/python/python.c b/gdb/python/python.c
+--- a/gdb/python/python.c
++++ b/gdb/python/python.c
+@@ -1720,7 +1720,7 @@ do_start_initialization ()
+   std::string oldloc = setlocale (LC_ALL, NULL);
+   setlocale (LC_ALL, "");
+   progsize = strlen (progname.get ());
+-  progname_copy = (wchar_t *) PyMem_Malloc ((progsize + 1) * sizeof (wchar_t));
++  progname_copy = (wchar_t *) xmalloc ((progsize + 1) * sizeof (wchar_t));
+   if (!progname_copy)
+     {
+       fprintf (stderr, "out of memory\n");

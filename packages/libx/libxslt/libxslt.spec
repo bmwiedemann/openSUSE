@@ -45,6 +45,7 @@ BuildRequires:  libgpg-error-devel
 BuildRequires:  libtool
 BuildRequires:  libxml2-devel
 BuildRequires:  pkgconfig
+Obsoletes:      libxslt-python
 
 %description
 This C library allows you to transform XML files into other XML files

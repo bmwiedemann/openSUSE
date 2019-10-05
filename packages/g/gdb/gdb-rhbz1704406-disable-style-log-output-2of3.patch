@@ -1,0 +1,194 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Tom Tromey <tromey@adacore.com>
+Date: Tue, 30 Apr 2019 11:17:15 -0600
+Subject: gdb-rhbz1704406-disable-style-log-output-2of3.patch
+
+;; Fix 'Color control codes should not appear in logging output'
+;; Tom Tromey, RH BZ 1704406
+
+Do not emit style escape sequences to log file
+
+PR gdb/24502 requests that the "set logging" log file not contain
+style escape sequences emitted by gdb.
+
+This seemed like a reasonable request to me, so this patch implements
+filtering for the log file.
+
+This also updates a comment in ui-style.h that I noticed while writing
+the patch.
+
+Tested on x86-64 Fedora 29.
+
+gdb/ChangeLog
+2019-06-14  Tom Tromey  <tromey@adacore.com>
+
+	PR gdb/24502:
+	* ui-style.h (skip_ansi_escape): Update comment.
+	* ui-file.h (class no_terminal_escape_file): New class.
+	* ui-file.c (no_terminal_escape_file::write)
+	(no_terminal_escape_file::puts): New methods.
+	* cli/cli-logging.c (handle_redirections): Use
+	no_terminal_escape_file.
+
+gdb/testsuite/ChangeLog
+2019-06-14  Tom Tromey  <tromey@adacore.com>
+
+	PR gdb/24502:
+	* gdb.base/style-logging.exp: New file.
+
+diff --git a/gdb/cli/cli-logging.c b/gdb/cli/cli-logging.c
+--- a/gdb/cli/cli-logging.c
++++ b/gdb/cli/cli-logging.c
+@@ -117,7 +117,7 @@ handle_redirections (int from_tty)
+       return;
+     }
+ 
+-  stdio_file_up log (new stdio_file ());
++  stdio_file_up log (new no_terminal_escape_file ());
+   if (!log->open (logging_filename, logging_overwrite ? "w" : "a"))
+     perror_with_name (_("set logging"));
+ 
+diff --git a/gdb/testsuite/gdb.base/style-logging.exp b/gdb/testsuite/gdb.base/style-logging.exp
+new file mode 100644
+--- /dev/null
++++ b/gdb/testsuite/gdb.base/style-logging.exp
+@@ -0,0 +1,64 @@
++# Copyright 2019 Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++# Test that logging does not style.
++
++if {[is_remote host]} {
++    untested "does not work on remote host"
++    return 0
++}
++
++standard_testfile style.c
++
++save_vars { env(TERM) } {
++    # We need an ANSI-capable terminal to get the output.
++    setenv TERM ansi
++
++    if {[prepare_for_testing "failed to prepare" $testfile $srcfile debug]} {
++	return -1
++    }
++
++    if {![runto_main]} {
++	fail "style tests failed"
++	return
++    }
++
++    gdb_test_no_output "set style enabled on"
++
++    set log_name [standard_output_file log.txt]
++    gdb_test_no_output "set logging file $log_name"
++    gdb_test_no_output "set logging overwrite on"
++    gdb_test "set logging on" "Copying output to .*"
++
++    set main_expr [style main function]
++    set base_file_expr [style ".*style\\.c" file]
++    set file_expr "$base_file_expr:\[0-9\]"
++    set arg_expr [style "arg." variable]
++    gdb_test "frame" \
++	"$main_expr.*$arg_expr.*$arg_expr.*$file_expr.*"
++
++    gdb_test "set logging off" "Done logging to .*"
++
++    set fd [open $log_name]
++    set data [read -nonewline $fd]
++    close $fd
++
++    set testname "log is escape-free"
++    if {[regexp "\033" $data]} {
++	fail $testname
++    } else {
++	pass $testname
++    }
++}
+diff --git a/gdb/ui-file.c b/gdb/ui-file.c
+--- a/gdb/ui-file.c
++++ b/gdb/ui-file.c
+@@ -332,3 +332,33 @@ tee_file::isatty ()
+ {
+   return m_one->isatty ();
+ }
++
++void
++no_terminal_escape_file::write (const char *buf, long length_buf)
++{
++  std::string copy (buf, length_buf);
++  this->puts (copy.c_str ());
++}
++
++/* See ui-file.h.  */
++
++void
++no_terminal_escape_file::puts (const char *buf)
++{
++  while (*buf != '\0')
++    {
++      const char *esc = strchr (buf, '\033');
++      if (esc == nullptr)
++	break;
++
++      int n_read = 0;
++      if (!skip_ansi_escape (esc, &n_read))
++	++esc;
++
++      this->stdio_file::write (buf, esc - buf);
++      buf = esc + n_read;
++    }
++
++  if (*buf != '\0')
++    this->stdio_file::write (buf, strlen (buf));
++}
+diff --git a/gdb/ui-file.h b/gdb/ui-file.h
+--- a/gdb/ui-file.h
++++ b/gdb/ui-file.h
+@@ -264,4 +264,20 @@ private:
+   bool m_close_one, m_close_two;
+ };
+ 
++/* A ui_file implementation that filters out terminal escape
++   sequences.  */
++
++class no_terminal_escape_file : public stdio_file
++{
++public:
++  no_terminal_escape_file ()
++  {
++  }
++
++  /* Like the stdio_file methods, but these filter out terminal escape
++     sequences.  */
++  void write (const char *buf, long length_buf) override;
++  void puts (const char *linebuffer) override;
++};
++
+ #endif
+diff --git a/gdb/ui-style.h b/gdb/ui-style.h
+--- a/gdb/ui-style.h
++++ b/gdb/ui-style.h
+@@ -233,8 +233,8 @@ private:
+ 
+ /* Skip an ANSI escape sequence in BUF.  BUF must begin with an ESC
+    character.  Return true if an escape sequence was successfully
+-   skipped; false otherwise.  In either case, N_READ is updated to
+-   reflect the number of chars read from BUF.  */
++   skipped; false otherwise.  If an escape sequence was skipped,
++   N_READ is updated to reflect the number of chars read from BUF.  */
+ 
+ extern bool skip_ansi_escape (const char *buf, int *n_read);
+ 

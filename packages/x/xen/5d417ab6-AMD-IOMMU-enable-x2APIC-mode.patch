@@ -1,0 +1,323 @@
+
+References: bsc#1135799
+
+# Commit 0e8e0a0854a00d81267a5e9c9616a3fbd2729747
+# Date 2019-07-31 13:25:42 +0200
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+AMD/IOMMU: enable x2APIC mode when available
+
+In order for the CPUs to use x2APIC mode, the IOMMU(s) first need to be
+switched into suitable state.
+
+The post-AP-bringup IRQ affinity adjustment is done also for the non-
+x2APIC case, matching what VT-d does.
+
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Acked-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Acked-by: Brian Woods <brian.woods@amd.com>
+
+--- a/xen/drivers/passthrough/amd/iommu_init.c
++++ b/xen/drivers/passthrough/amd/iommu_init.c
+@@ -834,6 +834,30 @@ static bool_t __init set_iommu_interrupt
+     return 1;
+ }
+ 
++int iov_adjust_irq_affinities(void)
++{
++    const struct amd_iommu *iommu;
++
++    if ( !iommu_enabled )
++        return 0;
++
++    for_each_amd_iommu ( iommu )
++    {
++        struct irq_desc *desc = irq_to_desc(iommu->msi.irq);
++        unsigned long flags;
++
++        spin_lock_irqsave(&desc->lock, flags);
++        if ( iommu->ctrl.int_cap_xt_en )
++            set_x2apic_affinity(desc, NULL);
++        else
++            set_msi_affinity(desc, NULL);
++        spin_unlock_irqrestore(&desc->lock, flags);
++    }
++
++    return 0;
++}
++__initcall(iov_adjust_irq_affinities);
++
+ /*
+  * Family15h Model 10h-1fh erratum 746 (IOMMU Logging May Stall Translations)
+  * Workaround:
+@@ -1047,7 +1071,7 @@ static void * __init allocate_ppr_log(st
+                                 IOMMU_PPR_LOG_DEFAULT_ENTRIES, "PPR Log");
+ }
+ 
+-static int __init amd_iommu_init_one(struct amd_iommu *iommu)
++static int __init amd_iommu_init_one(struct amd_iommu *iommu, bool intr)
+ {
+     pci_hide_device(iommu->seg, PCI_BUS(iommu->bdf), PCI_DEVFN2(iommu->bdf));
+ 
+@@ -1060,7 +1084,7 @@ static int __init amd_iommu_init_one(str
+     if ( iommu->features.flds.ppr_sup && !allocate_ppr_log(iommu) )
+         goto error_out;
+ 
+-    if ( !set_iommu_interrupt_handler(iommu) )
++    if ( intr && !set_iommu_interrupt_handler(iommu) )
+         goto error_out;
+ 
+     /* To make sure that device_table.buffer has been successfully allocated */
+@@ -1089,8 +1113,16 @@ static void __init amd_iommu_init_cleanu
+     list_for_each_entry_safe ( iommu, next, &amd_iommu_head, list )
+     {
+         list_del(&iommu->list);
++
++        iommu->ctrl.ga_en = 0;
++        iommu->ctrl.xt_en = 0;
++        iommu->ctrl.int_cap_xt_en = 0;
++
+         if ( iommu->enabled )
+             disable_iommu(iommu);
++        else if ( iommu->mmio_base )
++            writeq(iommu->ctrl.raw,
++                   iommu->mmio_base + IOMMU_CONTROL_MMIO_OFFSET);
+ 
+         deallocate_ring_buffer(&iommu->cmd_buffer);
+         deallocate_ring_buffer(&iommu->event_log);
+@@ -1292,7 +1324,7 @@ static int __init amd_iommu_prepare_one(
+     return 0;
+ }
+ 
+-int __init amd_iommu_init(void)
++int __init amd_iommu_prepare(bool xt)
+ {
+     struct amd_iommu *iommu;
+     int rc = -ENODEV;
+@@ -1307,9 +1339,14 @@ int __init amd_iommu_init(void)
+     if ( unlikely(acpi_gbl_FADT.boot_flags & ACPI_FADT_NO_MSI) )
+         goto error_out;
+ 
++    /* Have we been here before? */
++    if ( ivhd_type )
++        return 0;
++
+     rc = amd_iommu_get_supported_ivhd_type();
+     if ( rc < 0 )
+         goto error_out;
++    BUG_ON(!rc);
+     ivhd_type = rc;
+ 
+     rc = amd_iommu_get_ivrs_dev_entries();
+@@ -1325,9 +1362,37 @@ int __init amd_iommu_init(void)
+         rc = amd_iommu_prepare_one(iommu);
+         if ( rc )
+             goto error_out;
++
++        rc = -ENODEV;
++        if ( xt && (!iommu->features.flds.ga_sup || !iommu->features.flds.xt_sup) )
++            goto error_out;
++    }
++
++    for_each_amd_iommu ( iommu )
++    {
++        /* NB: There's no need to actually write these out right here. */
++        iommu->ctrl.ga_en |= xt;
++        iommu->ctrl.xt_en = xt;
++        iommu->ctrl.int_cap_xt_en = xt;
+     }
+ 
+     rc = amd_iommu_update_ivrs_mapping_acpi();
++
++ error_out:
++    if ( rc )
++    {
++        amd_iommu_init_cleanup();
++        ivhd_type = 0;
++    }
++
++    return rc;
++}
++
++int __init amd_iommu_init(bool xt)
++{
++    struct amd_iommu *iommu;
++    int rc = amd_iommu_prepare(xt);
++
+     if ( rc )
+         goto error_out;
+ 
+@@ -1353,7 +1418,12 @@ int __init amd_iommu_init(void)
+     /* per iommu initialization  */
+     for_each_amd_iommu ( iommu )
+     {
+-        rc = amd_iommu_init_one(iommu);
++        /*
++         * Setting up of the IOMMU interrupts cannot occur yet at the (very
++         * early) time we get here when enabling x2APIC mode. Suppress it
++         * here, and do it explicitly in amd_iommu_init_interrupt().
++         */
++        rc = amd_iommu_init_one(iommu, !xt);
+         if ( rc )
+             goto error_out;
+     }
+@@ -1365,6 +1435,40 @@ error_out:
+     return rc;
+ }
+ 
++int __init amd_iommu_init_interrupt(void)
++{
++    struct amd_iommu *iommu;
++    int rc = 0;
++
++    for_each_amd_iommu ( iommu )
++    {
++        struct irq_desc *desc;
++
++        if ( !set_iommu_interrupt_handler(iommu) )
++        {
++            rc = -EIO;
++            break;
++        }
++
++        desc = irq_to_desc(iommu->msi.irq);
++
++        spin_lock(&desc->lock);
++        ASSERT(iommu->ctrl.int_cap_xt_en);
++        set_x2apic_affinity(desc, &cpu_online_map);
++        spin_unlock(&desc->lock);
++
++        set_iommu_event_log_control(iommu, IOMMU_CONTROL_ENABLED);
++
++        if ( iommu->features.flds.ppr_sup )
++            set_iommu_ppr_log_control(iommu, IOMMU_CONTROL_ENABLED);
++    }
++
++    if ( rc )
++        amd_iommu_init_cleanup();
++
++    return rc;
++}
++
+ static void invalidate_all_domain_pages(void)
+ {
+     struct domain *d;
+--- a/xen/drivers/passthrough/amd/iommu_intr.c
++++ b/xen/drivers/passthrough/amd/iommu_intr.c
+@@ -799,6 +799,35 @@ void *__init amd_iommu_alloc_intremap_ta
+     return tb;
+ }
+ 
++bool __init iov_supports_xt(void)
++{
++    unsigned int apic;
++
++    if ( !iommu_enable || !iommu_intremap )
++        return false;
++
++    if ( amd_iommu_prepare(true) )
++        return false;
++
++    for ( apic = 0; apic < nr_ioapics; apic++ )
++    {
++        unsigned int idx = ioapic_id_to_index(IO_APIC_ID(apic));
++
++        if ( idx == MAX_IO_APICS )
++            return false;
++
++        if ( !find_iommu_for_device(ioapic_sbdf[idx].seg,
++                                    ioapic_sbdf[idx].bdf) )
++        {
++            AMD_IOMMU_DEBUG("No IOMMU for IO-APIC %#x (ID %x)\n",
++                            apic, IO_APIC_ID(apic));
++            return false;
++        }
++    }
++
++    return true;
++}
++
+ int __init amd_setup_hpet_msi(struct msi_desc *msi_desc)
+ {
+     spinlock_t *lock;
+--- a/xen/drivers/passthrough/amd/pci_amd_iommu.c
++++ b/xen/drivers/passthrough/amd/pci_amd_iommu.c
+@@ -193,7 +193,8 @@ static int __init iov_detect(void)
+     if ( !iommu_enable && !iommu_intremap )
+         return 0;
+ 
+-    if ( amd_iommu_init() != 0 )
++    if ( (init_done ? amd_iommu_init_interrupt()
++                    : amd_iommu_init(false)) != 0 )
+     {
+         printk("AMD-Vi: Error initialization\n");
+         return -ENODEV;
+@@ -206,6 +207,25 @@ static int __init iov_detect(void)
+     return scan_pci_devices();
+ }
+ 
++static int iov_enable_xt(void)
++{
++    int rc;
++
++    if ( system_state >= SYS_STATE_active )
++        return 0;
++
++    if ( (rc = amd_iommu_init(true)) != 0 )
++    {
++        printk("AMD-Vi: Error %d initializing for x2APIC mode\n", rc);
++        /* -ENXIO has special meaning to the caller - convert it. */
++        return rc != -ENXIO ? rc : -ENODATA;
++    }
++
++    init_done = true;
++
++    return 0;
++}
++
+ int amd_iommu_alloc_root(struct domain_iommu *hd)
+ {
+     if ( unlikely(!hd->arch.root_table) )
+@@ -596,11 +616,13 @@ static const struct iommu_ops __initcons
+     .free_page_table = deallocate_page_table,
+     .reassign_device = reassign_device,
+     .get_device_group_id = amd_iommu_group_id,
++    .enable_x2apic = iov_enable_xt,
+     .update_ire_from_apic = amd_iommu_ioapic_update_ire,
+     .update_ire_from_msi = amd_iommu_msi_msg_update_ire,
+     .read_apic_from_ire = amd_iommu_read_ioapic_from_ire,
+     .read_msi_from_ire = amd_iommu_read_msi_from_ire,
+     .setup_hpet_msi = amd_setup_hpet_msi,
++    .adjust_irq_affinities = iov_adjust_irq_affinities,
+     .suspend = amd_iommu_suspend,
+     .resume = amd_iommu_resume,
+     .share_p2m = amd_iommu_share_p2m,
+@@ -611,4 +633,5 @@ static const struct iommu_ops __initcons
+ static const struct iommu_init_ops __initconstrel _iommu_init_ops = {
+     .ops = &_iommu_ops,
+     .setup = iov_detect,
++    .supports_x2apic = iov_supports_xt,
+ };
+--- a/xen/include/asm-x86/hvm/svm/amd-iommu-proto.h
++++ b/xen/include/asm-x86/hvm/svm/amd-iommu-proto.h
+@@ -48,8 +48,11 @@ int amd_iommu_detect_acpi(void);
+ void get_iommu_features(struct amd_iommu *iommu);
+ 
+ /* amd-iommu-init functions */
+-int amd_iommu_init(void);
++int amd_iommu_prepare(bool xt);
++int amd_iommu_init(bool xt);
++int amd_iommu_init_interrupt(void);
+ int amd_iommu_update_ivrs_mapping_acpi(void);
++int iov_adjust_irq_affinities(void);
+ 
+ /* mapping functions */
+ int __must_check amd_iommu_map_page(struct domain *d, dfn_t dfn,
+@@ -95,6 +98,7 @@ void amd_iommu_flush_all_caches(struct a
+ struct amd_iommu *find_iommu_for_device(int seg, int bdf);
+ 
+ /* interrupt remapping */
++bool iov_supports_xt(void);
+ int amd_iommu_setup_ioapic_remapping(void);
+ void *amd_iommu_alloc_intremap_table(
+     const struct amd_iommu *, unsigned long **);

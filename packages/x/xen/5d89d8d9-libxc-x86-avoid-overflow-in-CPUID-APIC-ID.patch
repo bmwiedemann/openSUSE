@@ -1,0 +1,94 @@
+
+References: bsc#1137717
+
+# Commit df29d03f1d97bdde1bc0cea8ef8538d4f524b3ec
+# Date 2019-09-24 10:50:33 +0200
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+libxc/x86: avoid certain overflows in CPUID APIC ID adjustments
+
+Recent AMD processors may report up to 128 logical processors in CPUID
+leaf 1. Doubling this value produces 0 (which OSes sincerely dislike),
+as the respective field is only 8 bits wide. Suppress doubling the value
+(and its leaf 0x80000008 counterpart) in such a case.
+
+Note that while there's a similar overflow in intel_xc_cpuid_policy(),
+that one is being left alone for now.
+
+Note further that while it was considered to suppress the multiplication
+by 2 altogether if the host topology already provides at least one bit
+of thread ID within APIC IDs, it was decided to avoid more change here
+than really needed at this point.
+
+Also zap leaf 4 (and at the same time leaf 2) EDX output for AMD, as it
+should have been from the beginning.
+
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Reviewed-by: Andrew Cooper <andrew.cooper3@citrix.com>
+
+# Commit c9c7ac508b3f65f7d5f9685893096a1b22d8b176
+# Date 2019-09-25 15:50:58 +0200
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+libxc/x86: correct overflow avoidance check in AMD CPUID handling
+
+Commit df29d03f1d ("libxc/x86: avoid certain overflows in CPUID APIC ID
+adjustments" introduced a one bit too narrow mask when checking whether
+multiplying by 1 (in particular in leaf 1) would result in overflow.
+
+Reported-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Reviewed-by: Andrew Cooper <andrew.cooper3@citrix.com>
+
+--- a/tools/libxc/xc_cpuid_x86.c
++++ b/tools/libxc/xc_cpuid_x86.c
+@@ -397,7 +397,7 @@ static void amd_xc_cpuid_policy(const st
+     {
+     case 0x00000002:
+     case 0x00000004:
+-        regs[0] = regs[1] = regs[2] = 0;
++        regs[0] = regs[1] = regs[2] = regs[3] = 0;
+         break;
+ 
+     case 0x80000000:
+@@ -407,11 +407,20 @@ static void amd_xc_cpuid_policy(const st
+ 
+     case 0x80000008:
+         /*
+-         * ECX[15:12] is ApicIdCoreSize: ECX[7:0] is NumberOfCores (minus one).
+-         * Update to reflect vLAPIC_ID = vCPU_ID * 2.
++         * ECX[15:12] is ApicIdCoreSize.
++         * ECX[7:0] is NumberOfCores (minus one).
++         * Update to reflect vLAPIC_ID = vCPU_ID * 2.  But make sure to avoid
++         * - overflow,
++         * - going out of sync with leaf 1 EBX[23:16],
++         * - incrementing ApicIdCoreSize when it's zero (which changes the
++         *   meaning of bits 7:0).
+          */
+-        regs[2] = ((regs[2] + (1u << 12)) & 0xf000u) |
+-                  ((regs[2] & 0xffu) << 1) | 1u;
++        if ( (regs[2] & 0xffu) < 0x7fu )
++        {
++            if ( (regs[2] & 0xf000u) && (regs[2] & 0xf000u) != 0xf000u )
++                regs[2] = ((regs[2] + 0x1000u) & 0xf000u) | (regs[2] & 0xffu);
++            regs[2] = (regs[2] & 0xf000u) | ((regs[2] & 0x7fu) << 1) | 1u;
++        }
+         break;
+ 
+     case 0x8000000a: {
+@@ -490,9 +499,13 @@ static void xc_cpuid_hvm_policy(const st
+     case 0x00000001:
+         /*
+          * EBX[23:16] is Maximum Logical Processors Per Package.
+-         * Update to reflect vLAPIC_ID = vCPU_ID * 2.
++         * Update to reflect vLAPIC_ID = vCPU_ID * 2, but make sure to avoid
++         * overflow.
+          */
+-        regs[1] = (regs[1] & 0x0000ffffu) | ((regs[1] & 0x007f0000u) << 1);
++        if ( !(regs[1] & 0x00800000u) )
++            regs[1] = (regs[1] & 0x0000ffffu) | ((regs[1] & 0x007f0000u) << 1);
++        else
++            regs[1] &= 0x00ffffffu;
+ 
+         regs[2] = info->featureset[featureword_of(X86_FEATURE_SSE3)];
+         regs[3] = (info->featureset[featureword_of(X86_FEATURE_FPU)] |

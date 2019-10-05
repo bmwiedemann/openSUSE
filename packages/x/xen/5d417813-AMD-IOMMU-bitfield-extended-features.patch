@@ -1,0 +1,382 @@
+
+References: bsc#1135799
+
+# Commit c69363b2ac7e5ed88908a304e6903f5842c9805e
+# Date 2019-07-31 13:14:27 +0200
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+AMD/IOMMU: use bit field for extended feature register
+
+This also takes care of several of the shift values wrongly having been
+specified as hex rather than dec.
+
+Take the opportunity and
+- replace a readl() pair by a single readq(),
+- add further fields.
+
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Acked-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Acked-by: Brian Woods <brian.woods@amd.com>
+
+--- a/xen/drivers/passthrough/amd/iommu_detect.c
++++ b/xen/drivers/passthrough/amd/iommu_detect.c
+@@ -60,49 +60,76 @@ static int __init get_iommu_capabilities
+ 
+ void __init get_iommu_features(struct amd_iommu *iommu)
+ {
+-    u32 low, high;
+-    int i = 0 ;
+     const struct amd_iommu *first;
+-    static const char *__initdata feature_str[] = {
+-        "- Prefetch Pages Command", 
+-        "- Peripheral Page Service Request", 
+-        "- X2APIC Supported", 
+-        "- NX bit Supported", 
+-        "- Guest Translation", 
+-        "- Reserved bit [5]",
+-        "- Invalidate All Command", 
+-        "- Guest APIC supported", 
+-        "- Hardware Error Registers", 
+-        "- Performance Counters", 
+-        NULL
+-    };
+-
+     ASSERT( iommu->mmio_base );
+ 
+     if ( !iommu_has_cap(iommu, PCI_CAP_EFRSUP_SHIFT) )
+     {
+-        iommu->features = 0;
++        iommu->features.raw = 0;
+         return;
+     }
+ 
+-    low = readl(iommu->mmio_base + IOMMU_EXT_FEATURE_MMIO_OFFSET);
+-    high = readl(iommu->mmio_base + IOMMU_EXT_FEATURE_MMIO_OFFSET + 4);
+-
+-    iommu->features = ((u64)high << 32) | low;
++    iommu->features.raw =
++        readq(iommu->mmio_base + IOMMU_EXT_FEATURE_MMIO_OFFSET);
+ 
+     /* Don't log the same set of features over and over. */
+     first = list_first_entry(&amd_iommu_head, struct amd_iommu, list);
+-    if ( iommu != first && iommu->features == first->features )
++    if ( iommu != first && iommu->features.raw == first->features.raw )
+         return;
+ 
+     printk("AMD-Vi: IOMMU Extended Features:\n");
+ 
+-    while ( feature_str[i] )
++#define FEAT(fld, str) do {                                    \
++    if ( --((union amd_iommu_ext_features){}).flds.fld > 1 )   \
++        printk( "- " str ": %#x\n", iommu->features.flds.fld); \
++    else if ( iommu->features.flds.fld )                       \
++        printk( "- " str "\n");                                \
++} while ( false )
++
++    FEAT(pref_sup,           "Prefetch Pages Command");
++    FEAT(ppr_sup,            "Peripheral Page Service Request");
++    FEAT(xt_sup,             "x2APIC");
++    FEAT(nx_sup,             "NX bit");
++    FEAT(gappi_sup,          "Guest APIC Physical Processor Interrupt");
++    FEAT(ia_sup,             "Invalidate All Command");
++    FEAT(ga_sup,             "Guest APIC");
++    FEAT(he_sup,             "Hardware Error Registers");
++    FEAT(pc_sup,             "Performance Counters");
++    FEAT(hats,               "Host Address Translation Size");
++
++    if ( iommu->features.flds.gt_sup )
+     {
+-        if ( amd_iommu_has_feature(iommu, i) )
+-            printk( " %s\n", feature_str[i]);
+-        i++;
++        FEAT(gats,           "Guest Address Translation Size");
++        FEAT(glx_sup,        "Guest CR3 Root Table Level");
++        FEAT(pas_max,        "Maximum PASID");
+     }
++
++    FEAT(smif_sup,           "SMI Filter Register");
++    FEAT(smif_rc,            "SMI Filter Register Count");
++    FEAT(gam_sup,            "Guest Virtual APIC Modes");
++    FEAT(dual_ppr_log_sup,   "Dual PPR Log");
++    FEAT(dual_event_log_sup, "Dual Event Log");
++    FEAT(sats_sup,           "Secure ATS");
++    FEAT(us_sup,             "User / Supervisor Page Protection");
++    FEAT(dev_tbl_seg_sup,    "Device Table Segmentation");
++    FEAT(ppr_early_of_sup,   "PPR Log Overflow Early Warning");
++    FEAT(ppr_auto_rsp_sup,   "PPR Automatic Response");
++    FEAT(marc_sup,           "Memory Access Routing and Control");
++    FEAT(blk_stop_mrk_sup,   "Block StopMark Message");
++    FEAT(perf_opt_sup ,      "Performance Optimization");
++    FEAT(msi_cap_mmio_sup,   "MSI Capability MMIO Access");
++    FEAT(gio_sup,            "Guest I/O Protection");
++    FEAT(ha_sup,             "Host Access");
++    FEAT(eph_sup,            "Enhanced PPR Handling");
++    FEAT(attr_fw_sup,        "Attribute Forward");
++    FEAT(hd_sup,             "Host Dirty");
++    FEAT(inv_iotlb_type_sup, "Invalidate IOTLB Type");
++    FEAT(viommu_sup,         "Virtualized IOMMU");
++    FEAT(vm_guard_io_sup,    "VMGuard I/O Support");
++    FEAT(vm_table_size,      "VM Table Size");
++    FEAT(ga_update_dis_sup,  "Guest Access Bit Update Disable");
++
++#undef FEAT
+ }
+ 
+ int __init amd_iommu_detect_one_acpi(
+--- a/xen/drivers/passthrough/amd/iommu_guest.c
++++ b/xen/drivers/passthrough/amd/iommu_guest.c
+@@ -667,7 +667,7 @@ static uint64_t iommu_mmio_read64(struct
+         val = reg_to_u64(iommu->reg_status);
+         break;
+     case IOMMU_EXT_FEATURE_MMIO_OFFSET:
+-        val = reg_to_u64(iommu->reg_ext_feature);
++        val = iommu->reg_ext_feature.raw;
+         break;
+ 
+     default:
+@@ -831,39 +831,26 @@ int guest_iommu_set_base(struct domain *
+ /* Initialize mmio read only bits */
+ static void guest_iommu_reg_init(struct guest_iommu *iommu)
+ {
+-    uint32_t lower, upper;
++    union amd_iommu_ext_features ef = {
++        /* Support prefetch */
++        .flds.pref_sup = 1,
++        /* Support PPR log */
++        .flds.ppr_sup = 1,
++        /* Support guest translation */
++        .flds.gt_sup = 1,
++        /* Support invalidate all command */
++        .flds.ia_sup = 1,
++        /* Host translation size has 6 levels */
++        .flds.hats = HOST_ADDRESS_SIZE_6_LEVEL,
++        /* Guest translation size has 6 levels */
++        .flds.gats = GUEST_ADDRESS_SIZE_6_LEVEL,
++        /* Single level gCR3 */
++        .flds.glx_sup = GUEST_CR3_1_LEVEL,
++        /* 9 bit PASID */
++        .flds.pas_max = PASMAX_9_bit,
++    };
+ 
+-    lower = upper = 0;
+-    /* Support prefetch */
+-    iommu_set_bit(&lower,IOMMU_EXT_FEATURE_PREFSUP_SHIFT);
+-    /* Support PPR log */
+-    iommu_set_bit(&lower,IOMMU_EXT_FEATURE_PPRSUP_SHIFT);
+-    /* Support guest translation */
+-    iommu_set_bit(&lower,IOMMU_EXT_FEATURE_GTSUP_SHIFT);
+-    /* Support invalidate all command */
+-    iommu_set_bit(&lower,IOMMU_EXT_FEATURE_IASUP_SHIFT);
+-
+-    /* Host translation size has 6 levels */
+-    set_field_in_reg_u32(HOST_ADDRESS_SIZE_6_LEVEL, lower,
+-                         IOMMU_EXT_FEATURE_HATS_MASK,
+-                         IOMMU_EXT_FEATURE_HATS_SHIFT,
+-                         &lower);
+-    /* Guest translation size has 6 levels */
+-    set_field_in_reg_u32(GUEST_ADDRESS_SIZE_6_LEVEL, lower,
+-                         IOMMU_EXT_FEATURE_GATS_MASK,
+-                         IOMMU_EXT_FEATURE_GATS_SHIFT,
+-                         &lower);
+-    /* Single level gCR3 */
+-    set_field_in_reg_u32(GUEST_CR3_1_LEVEL, lower,
+-                         IOMMU_EXT_FEATURE_GLXSUP_MASK,
+-                         IOMMU_EXT_FEATURE_GLXSUP_SHIFT, &lower);
+-    /* 9 bit PASID */
+-    set_field_in_reg_u32(PASMAX_9_bit, upper,
+-                         IOMMU_EXT_FEATURE_PASMAX_MASK,
+-                         IOMMU_EXT_FEATURE_PASMAX_SHIFT, &upper);
+-
+-    iommu->reg_ext_feature.lo = lower;
+-    iommu->reg_ext_feature.hi = upper;
++    iommu->reg_ext_feature = ef;
+ }
+ 
+ static int guest_iommu_mmio_range(struct vcpu *v, unsigned long addr)
+--- a/xen/drivers/passthrough/amd/iommu_init.c
++++ b/xen/drivers/passthrough/amd/iommu_init.c
+@@ -883,7 +883,7 @@ static void enable_iommu(struct amd_iomm
+     register_iommu_event_log_in_mmio_space(iommu);
+     register_iommu_exclusion_range(iommu);
+ 
+-    if ( amd_iommu_has_feature(iommu, IOMMU_EXT_FEATURE_PPRSUP_SHIFT) )
++    if ( iommu->features.flds.ppr_sup )
+         register_iommu_ppr_log_in_mmio_space(iommu);
+ 
+     desc = irq_to_desc(iommu->msi.irq);
+@@ -897,15 +897,15 @@ static void enable_iommu(struct amd_iomm
+     set_iommu_command_buffer_control(iommu, IOMMU_CONTROL_ENABLED);
+     set_iommu_event_log_control(iommu, IOMMU_CONTROL_ENABLED);
+ 
+-    if ( amd_iommu_has_feature(iommu, IOMMU_EXT_FEATURE_PPRSUP_SHIFT) )
++    if ( iommu->features.flds.ppr_sup )
+         set_iommu_ppr_log_control(iommu, IOMMU_CONTROL_ENABLED);
+ 
+-    if ( amd_iommu_has_feature(iommu, IOMMU_EXT_FEATURE_GTSUP_SHIFT) )
++    if ( iommu->features.flds.gt_sup )
+         set_iommu_guest_translation_control(iommu, IOMMU_CONTROL_ENABLED);
+ 
+     set_iommu_translation_control(iommu, IOMMU_CONTROL_ENABLED);
+ 
+-    if ( amd_iommu_has_feature(iommu, IOMMU_EXT_FEATURE_IASUP_SHIFT) )
++    if ( iommu->features.flds.ia_sup )
+         amd_iommu_flush_all_caches(iommu);
+ 
+     iommu->enabled = 1;
+@@ -928,10 +928,10 @@ static void disable_iommu(struct amd_iom
+     set_iommu_command_buffer_control(iommu, IOMMU_CONTROL_DISABLED);
+     set_iommu_event_log_control(iommu, IOMMU_CONTROL_DISABLED);
+ 
+-    if ( amd_iommu_has_feature(iommu, IOMMU_EXT_FEATURE_PPRSUP_SHIFT) )
++    if ( iommu->features.flds.ppr_sup )
+         set_iommu_ppr_log_control(iommu, IOMMU_CONTROL_DISABLED);
+ 
+-    if ( amd_iommu_has_feature(iommu, IOMMU_EXT_FEATURE_GTSUP_SHIFT) )
++    if ( iommu->features.flds.gt_sup )
+         set_iommu_guest_translation_control(iommu, IOMMU_CONTROL_DISABLED);
+ 
+     set_iommu_translation_control(iommu, IOMMU_CONTROL_DISABLED);
+@@ -1029,7 +1029,7 @@ static int __init amd_iommu_init_one(str
+ 
+     get_iommu_features(iommu);
+ 
+-    if ( iommu->features )
++    if ( iommu->features.raw )
+         iommuv2_enabled = 1;
+ 
+     if ( allocate_cmd_buffer(iommu) == NULL )
+@@ -1038,9 +1038,8 @@ static int __init amd_iommu_init_one(str
+     if ( allocate_event_log(iommu) == NULL )
+         goto error_out;
+ 
+-    if ( amd_iommu_has_feature(iommu, IOMMU_EXT_FEATURE_PPRSUP_SHIFT) )
+-        if ( allocate_ppr_log(iommu) == NULL )
+-            goto error_out;
++    if ( iommu->features.flds.ppr_sup && !allocate_ppr_log(iommu) )
++        goto error_out;
+ 
+     if ( !set_iommu_interrupt_handler(iommu) )
+         goto error_out;
+@@ -1396,7 +1395,7 @@ void amd_iommu_resume(void)
+     }
+ 
+     /* flush all cache entries after iommu re-enabled */
+-    if ( !amd_iommu_has_feature(iommu, IOMMU_EXT_FEATURE_IASUP_SHIFT) )
++    if ( !iommu->features.flds.ia_sup )
+     {
+         invalidate_all_devices();
+         invalidate_all_domain_pages();
+--- a/xen/include/asm-x86/amd-iommu.h
++++ b/xen/include/asm-x86/amd-iommu.h
+@@ -88,7 +88,7 @@ struct amd_iommu {
+     iommu_cap_t cap;
+ 
+     u8 ht_flags;
+-    u64 features;
++    union amd_iommu_ext_features features;
+ 
+     void *mmio_base;
+     unsigned long mmio_base_phys;
+@@ -180,7 +180,7 @@ struct guest_iommu {
+     /* MMIO regs */
+     struct mmio_reg         reg_ctrl;              /* MMIO offset 0018h */
+     struct mmio_reg         reg_status;            /* MMIO offset 2020h */
+-    struct mmio_reg         reg_ext_feature;       /* MMIO offset 0030h */
++    union amd_iommu_ext_features reg_ext_feature;  /* MMIO offset 0030h */
+ 
+     /* guest interrupt settings */
+     struct guest_iommu_msi  msi;
+--- a/xen/include/asm-x86/hvm/svm/amd-iommu-defs.h
++++ b/xen/include/asm-x86/hvm/svm/amd-iommu-defs.h
+@@ -362,26 +362,57 @@
+ #define IOMMU_EXCLUSION_LIMIT_HIGH_MASK		0xFFFFFFFF
+ #define IOMMU_EXCLUSION_LIMIT_HIGH_SHIFT	0
+ 
+-/* Extended Feature Register*/
++/* Extended Feature Register */
+ #define IOMMU_EXT_FEATURE_MMIO_OFFSET                   0x30
+-#define IOMMU_EXT_FEATURE_PREFSUP_SHIFT                 0x0
+-#define IOMMU_EXT_FEATURE_PPRSUP_SHIFT                  0x1
+-#define IOMMU_EXT_FEATURE_XTSUP_SHIFT                   0x2
+-#define IOMMU_EXT_FEATURE_NXSUP_SHIFT                   0x3
+-#define IOMMU_EXT_FEATURE_GTSUP_SHIFT                   0x4
+-#define IOMMU_EXT_FEATURE_IASUP_SHIFT                   0x6
+-#define IOMMU_EXT_FEATURE_GASUP_SHIFT                   0x7
+-#define IOMMU_EXT_FEATURE_HESUP_SHIFT                   0x8
+-#define IOMMU_EXT_FEATURE_PCSUP_SHIFT                   0x9
+-#define IOMMU_EXT_FEATURE_HATS_SHIFT                    0x10
+-#define IOMMU_EXT_FEATURE_HATS_MASK                     0x00000C00
+-#define IOMMU_EXT_FEATURE_GATS_SHIFT                    0x12
+-#define IOMMU_EXT_FEATURE_GATS_MASK                     0x00003000
+-#define IOMMU_EXT_FEATURE_GLXSUP_SHIFT                  0x14
+-#define IOMMU_EXT_FEATURE_GLXSUP_MASK                   0x0000C000
+ 
+-#define IOMMU_EXT_FEATURE_PASMAX_SHIFT                  0x0
+-#define IOMMU_EXT_FEATURE_PASMAX_MASK                   0x0000001F
++union amd_iommu_ext_features {
++    uint64_t raw;
++    struct {
++        unsigned int pref_sup:1;
++        unsigned int ppr_sup:1;
++        unsigned int xt_sup:1;
++        unsigned int nx_sup:1;
++        unsigned int gt_sup:1;
++        unsigned int gappi_sup:1;
++        unsigned int ia_sup:1;
++        unsigned int ga_sup:1;
++        unsigned int he_sup:1;
++        unsigned int pc_sup:1;
++        unsigned int hats:2;
++        unsigned int gats:2;
++        unsigned int glx_sup:2;
++        unsigned int smif_sup:2;
++        unsigned int smif_rc:3;
++        unsigned int gam_sup:3;
++        unsigned int dual_ppr_log_sup:2;
++        unsigned int :2;
++        unsigned int dual_event_log_sup:2;
++        unsigned int :1;
++        unsigned int sats_sup:1;
++        unsigned int pas_max:5;
++        unsigned int us_sup:1;
++        unsigned int dev_tbl_seg_sup:2;
++        unsigned int ppr_early_of_sup:1;
++        unsigned int ppr_auto_rsp_sup:1;
++        unsigned int marc_sup:2;
++        unsigned int blk_stop_mrk_sup:1;
++        unsigned int perf_opt_sup:1;
++        unsigned int msi_cap_mmio_sup:1;
++        unsigned int :1;
++        unsigned int gio_sup:1;
++        unsigned int ha_sup:1;
++        unsigned int eph_sup:1;
++        unsigned int attr_fw_sup:1;
++        unsigned int hd_sup:1;
++        unsigned int :1;
++        unsigned int inv_iotlb_type_sup:1;
++        unsigned int viommu_sup:1;
++        unsigned int vm_guard_io_sup:1;
++        unsigned int vm_table_size:4;
++        unsigned int ga_update_dis_sup:1;
++        unsigned int :2;
++    } flds;
++};
+ 
+ /* Status Register*/
+ #define IOMMU_STATUS_MMIO_OFFSET		0x2020
+--- a/xen/include/asm-x86/hvm/svm/amd-iommu-proto.h
++++ b/xen/include/asm-x86/hvm/svm/amd-iommu-proto.h
+@@ -220,13 +220,6 @@ static inline int iommu_has_cap(struct a
+     return !!(iommu->cap.header & (1u << bit));
+ }
+ 
+-static inline int amd_iommu_has_feature(struct amd_iommu *iommu, uint32_t bit)
+-{
+-    if ( !iommu_has_cap(iommu, PCI_CAP_EFRSUP_SHIFT) )
+-        return 0;
+-    return !!(iommu->features & (1U << bit));
+-}
+-
+ /* access tail or head pointer of ring buffer */
+ static inline uint32_t iommu_get_rb_pointer(uint32_t reg)
+ {

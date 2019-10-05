@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Sep 24 19:50:33 UTC 2019 - Robert Schweikert <rjschwei@suse.com>
+
+- Add cloud-init-after-wicked.patch
+  - Change the service order, the cloud-init service wants to run after
+    networking is started
+
+-------------------------------------------------------------------
+Tue Sep 24 18:46:00 UTC 2019 - Robert Schweikert <rjschwei@suse.com>
+
+- Add cloud-init-noresolv-merge-no-dns-data.diff
+  - Avoid writing resolv.conf if the network configuration contains no
+    dns entries.
+
+-------------------------------------------------------------------
+Mon Sep 23 13:05:03 UTC 2019 - Robert Schweikert <rjschwei@suse.com>
+
+- Follow up to update cloud-init-trigger-udev.patch (bsc#1144363)
+  - In this implementation the "name" is not yet an attribute, use
+    get() to obtain the value from a dict. Source code version confusion.
+
+-------------------------------------------------------------------
 Mon Aug 19 16:46:35 UTC 2019 - Robert Schweikert <rjschwei@suse.com>
 
 - Add cloud-init-add-static-routes.diff (bsc#1141969)

@@ -1,0 +1,79 @@
+
+References: bsc#1135799
+
+# Commit 5e5868724e35020ea5edbc10c715823a99887f3f
+# Date 2019-04-09 15:12:43 +0200
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+x86/IOMMU: abstract Intel-specific adjust_vtd_irq_affinities()
+
+This can't be folded into the resume hook, as that runs before bringing
+back up APs, but the affinity adjustment wants to happen with all CPUs
+back online. Hence a separate hook is needed such that AMD can then
+leverage it as well.
+
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Reviewed-by: Kevin Tian <kevin.tian@intel.com>
+Reviewed-by: Andrew Cooper <andrew.cooper3@citrix.com>
+
+--- a/xen/arch/x86/acpi/power.c
++++ b/xen/arch/x86/acpi/power.c
+@@ -275,7 +275,7 @@ static int enter_state(u32 state)
+     mtrr_aps_sync_begin();
+     enable_nonboot_cpus();
+     mtrr_aps_sync_end();
+-    adjust_vtd_irq_affinities();
++    iommu_adjust_irq_affinities();
+     acpi_dmar_zap();
+     thaw_domains();
+     system_state = SYS_STATE_active;
+--- a/xen/drivers/passthrough/vtd/iommu.c
++++ b/xen/drivers/passthrough/vtd/iommu.c
+@@ -2141,7 +2141,7 @@ static void adjust_irq_affinity(struct a
+     dma_msi_set_affinity(irq_to_desc(drhd->iommu->msi.irq), cpumask);
+ }
+ 
+-int adjust_vtd_irq_affinities(void)
++static int adjust_vtd_irq_affinities(void)
+ {
+     struct acpi_drhd_unit *drhd;
+ 
+@@ -2725,6 +2725,7 @@ const struct iommu_ops __initconstrel in
+     .read_apic_from_ire = io_apic_read_remap_rte,
+     .read_msi_from_ire = msi_msg_read_remap_rte,
+     .setup_hpet_msi = intel_setup_hpet_msi,
++    .adjust_irq_affinities = adjust_vtd_irq_affinities,
+     .suspend = vtd_suspend,
+     .resume = vtd_resume,
+     .share_p2m = iommu_set_pgd,
+--- a/xen/include/asm-x86/iommu.h
++++ b/xen/include/asm-x86/iommu.h
+@@ -81,8 +81,14 @@ void iommu_update_ire_from_apic(unsigned
+ unsigned int iommu_read_apic_from_ire(unsigned int apic, unsigned int reg);
+ int iommu_setup_hpet_msi(struct msi_desc *);
+ 
++static inline int iommu_adjust_irq_affinities(void)
++{
++    return iommu_ops.adjust_irq_affinities
++           ? iommu_ops.adjust_irq_affinities()
++           : 0;
++}
++
+ /* While VT-d specific, this must get declared in a generic header. */
+-int adjust_vtd_irq_affinities(void);
+ int __must_check iommu_pte_flush(struct domain *d, u64 gfn, u64 *pte,
+                                  int order, int present);
+ 
+--- a/xen/include/xen/iommu.h
++++ b/xen/include/xen/iommu.h
+@@ -224,7 +224,10 @@ struct iommu_ops {
+ 
+     void (*update_ire_from_apic)(unsigned int apic, unsigned int reg, unsigned int value);
+     unsigned int (*read_apic_from_ire)(unsigned int apic, unsigned int reg);
++
+     int (*setup_hpet_msi)(struct msi_desc *);
++
++    int (*adjust_irq_affinities)(void);
+ #endif /* CONFIG_X86 */
+ 
+     int __must_check (*suspend)(void);

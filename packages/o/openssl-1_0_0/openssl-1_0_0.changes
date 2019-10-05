@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct  3 10:17:24 UTC 2019 - Vítězslav Čížek <vcizek@suse.com>
+
+- Update to 1.0.2t
+  * For built-in EC curves, ensure an EC_GROUP built from the curve name is
+    used even when parsing explicit parameters, when loading a serialized key
+    or calling EC_GROUP_new_from_ecpkparameters()/EC_GROUP_new_from_ecparameters().
+  * Change the default RSA, DSA and DH size to 2048 bit instead of 1024.
+- drop upstreamed patches:
+  * openssl-CVE-2019-1547.patch
+  * openssl-CVE-2019-1563.patch
+
+-------------------------------------------------------------------
 Thu Sep 12 09:53:12 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - OpenSSL Security Advisory [10 September 2019]

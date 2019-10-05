@@ -1,7 +1,25 @@
+-------------------------------------------------------------------
+Wed Oct  2 09:03:08 UTC 2019 - Kristoffer Gronlund <kgronlund@suse.com>
+
+- Force use of ceph kernel client driver (bsc#1152690)
+- Add 0001-bsc-1152690-ceph-csi-Driver-will-fail-with-error.patch
+
+-------------------------------------------------------------------------------
+Tue Oct  1 16:22:32 UTC 2019 - Blaine Gardner <blaine.gardner@suse.com>
+
+- Define build shell as /bin/bash for usage of `=~` conditional (bsc#1152559)
+
+-------------------------------------------------------------------------------
+Mon Sep 30 18:36:53 UTC 2019 - Blaine Gardner <blaine.gardner@suse.com>
+
+- Fix csi-dummy-images.patch to work with Go linker's -X flag (bsc#1152559)
+  + update linker flags themselves to remove comments from flags
+  + add test to spec file to verify linker flags are working in future
+
 -------------------------------------------------------------------------------
 Thu Sep 26 22:33:02 UTC 2019 - Blaine Gardner <blaine.gardner@suse.com>
 
-- Fix 2 improper RPM spec variable references in specfile
+- Fix 2 improper RPM spec variable references in specfile (bsc#1151909)
 
 -------------------------------------------------------------------------------
 Wed Sep 25 21:27:40 UTC 2019 - Blaine Gardner <blaine.gardner@suse.com>

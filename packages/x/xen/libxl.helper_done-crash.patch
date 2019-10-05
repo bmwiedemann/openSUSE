@@ -1,0 +1,53 @@
+From fb0f946726ff8aaa15b76bc3ec3b18878851a447 Mon Sep 17 00:00:00 2001
+From: Olaf Hering <olaf@aepfle.de>
+Date: Fri, 27 Sep 2019 18:06:12 +0200
+Subject: libxl: fix crash in helper_done due to uninitialized data
+
+A crash in helper_done, called from libxl_domain_suspend, was reported,
+triggered by 'virsh migrate --live xen+ssh://host':
+
+ #1 helper_done (...) at libxl_save_callout.c:371
+  helper_failed
+  helper_stop
+  libxl__save_helper_abort
+ #2 check_all_finished (..., rc=-3) at libxl_stream_write.c:671
+  stream_done
+  stream_complete
+  write_done
+  dc->callback == write_done
+  efd->func == datacopier_writable
+ #3 afterpoll_internal (...) at libxl_event.c:1269
+
+This is triggered by a failed poll, the actual error was:
+
+libxl_aoutils.c:328:datacopier_writable: unexpected poll event 0x1c on fd 37 (should be POLLOUT) writing libxc header during copy of save v2 stream
+
+In this case revents in datacopier_writable is POLLHUP|POLLERR|POLLOUT,
+which triggers datacopier_callback. In helper_done,
+shs->completion_callback is still zero. libxl__xc_domain_save fills
+dss.sws.shs. But that function is only called after stream_header_done.
+Any error before that will leave dss partly uninitialized.
+
+Fix this crash by checking if ->completion_callback is valid.
+
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+---
+ tools/libxl/libxl_save_callout.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/tools/libxl/libxl_save_callout.c b/tools/libxl/libxl_save_callout.c
+index 6452d70036..89a2f6ecf0 100644
+--- a/tools/libxl/libxl_save_callout.c
++++ b/tools/libxl/libxl_save_callout.c
+@@ -368,8 +368,9 @@ static void helper_done(libxl__egc *egc, libxl__save_helper_state *shs)
+     assert(!libxl__save_helper_inuse(shs));
+ 
+     shs->egc = egc;
+-    shs->completion_callback(egc, shs->caller_state,
+-                             shs->rc, shs->retval, shs->errnoval);
++    if (shs->completion_callback)
++        shs->completion_callback(egc, shs->caller_state,
++                                 shs->rc, shs->retval, shs->errnoval);
+     shs->egc = 0;
+ }
+ 

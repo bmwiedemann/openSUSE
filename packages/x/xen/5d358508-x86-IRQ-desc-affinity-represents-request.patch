@@ -1,0 +1,115 @@
+
+References: bsc#1135799
+
+# Commit 4a9dfab767e2f5d1b7b919b07099f3fc87a67fb6
+# Date 2019-07-22 11:42:32 +0200
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+x86/IRQ: desc->affinity should strictly represent the requested value
+
+desc->arch.cpu_mask reflects the actual set of target CPUs. Don't ever
+fiddle with desc->affinity itself, except to store caller requested
+values. Note that assign_irq_vector() now takes a NULL incoming CPU mask
+to mean "all CPUs" now, rather than just "all currently online CPUs".
+This way no further affinity adjustment is needed after onlining further
+CPUs.
+
+This renders both set_native_irq_info() uses (which weren't using proper
+locking anyway) redundant - drop the function altogether.
+
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Reviewed-by: Roger Pau Monné <roger.pau@citrix.com>
+Acked-by: Andrew Cooper <andrew.cooper3@citrix.com>
+
+--- a/xen/arch/x86/io_apic.c
++++ b/xen/arch/x86/io_apic.c
+@@ -1041,7 +1041,6 @@ static void __init setup_IO_APIC_irqs(vo
+             SET_DEST(entry, logical, cpu_mask_to_apicid(TARGET_CPUS));
+             spin_lock_irqsave(&ioapic_lock, flags);
+             __ioapic_write_entry(apic, pin, 0, entry);
+-            set_native_irq_info(irq, TARGET_CPUS);
+             spin_unlock_irqrestore(&ioapic_lock, flags);
+         }
+     }
+@@ -2252,7 +2251,6 @@ int io_apic_set_pci_routing (int ioapic,
+ 
+     spin_lock_irqsave(&ioapic_lock, flags);
+     __ioapic_write_entry(ioapic, pin, 0, entry);
+-    set_native_irq_info(irq, TARGET_CPUS);
+     spin_unlock(&ioapic_lock);
+ 
+     spin_lock(&desc->lock);
+--- a/xen/arch/x86/irq.c
++++ b/xen/arch/x86/irq.c
+@@ -559,11 +559,16 @@ int assign_irq_vector(int irq, const cpu
+ 
+     spin_lock_irqsave(&vector_lock, flags);
+     ret = __assign_irq_vector(irq, desc, mask ?: TARGET_CPUS);
+-    if (!ret) {
++    if ( !ret )
++    {
+         ret = desc->arch.vector;
+-        cpumask_copy(desc->affinity, desc->arch.cpu_mask);
++        if ( mask )
++            cpumask_copy(desc->affinity, mask);
++        else
++            cpumask_setall(desc->affinity);
+     }
+     spin_unlock_irqrestore(&vector_lock, flags);
++
+     return ret;
+ }
+ 
+@@ -2306,9 +2311,10 @@ static void dump_irqs(unsigned char key)
+ 
+         spin_lock_irqsave(&desc->lock, flags);
+ 
+-        printk("   IRQ:%4d affinity:%*pb vec:%02x type=%-15s status=%08x ",
+-               irq, nr_cpu_ids, cpumask_bits(desc->affinity), desc->arch.vector,
+-               desc->handler->typename, desc->status);
++        printk("   IRQ:%4d vec:%02x %-15s status=%03x aff:{%*pbl}/{%*pbl} ",
++               irq, desc->arch.vector, desc->handler->typename, desc->status,
++               nr_cpu_ids, cpumask_bits(desc->affinity),
++               nr_cpu_ids, cpumask_bits(desc->arch.cpu_mask));
+ 
+         if ( ssid )
+             printk("Z=%-25s ", ssid);
+@@ -2388,19 +2394,19 @@ void fixup_irqs(const cpumask_t *mask, b
+              vector <= LAST_HIPRIORITY_VECTOR )
+             cpumask_and(desc->arch.cpu_mask, desc->arch.cpu_mask, mask);
+ 
+-        cpumask_copy(&affinity, desc->affinity);
+-        if ( !desc->action || cpumask_subset(&affinity, mask) )
++        if ( !desc->action || cpumask_subset(desc->affinity, mask) )
+         {
+             spin_unlock(&desc->lock);
+             continue;
+         }
+ 
+-        cpumask_and(&affinity, &affinity, mask);
+-        if ( cpumask_empty(&affinity) )
++        if ( !cpumask_intersects(mask, desc->affinity) )
+         {
+             break_affinity = true;
+-            cpumask_copy(&affinity, mask);
++            cpumask_setall(&affinity);
+         }
++        else
++            cpumask_copy(&affinity, desc->affinity);
+ 
+         if ( desc->handler->disable )
+             desc->handler->disable(desc);
+--- a/xen/include/xen/irq.h
++++ b/xen/include/xen/irq.h
+@@ -162,11 +162,6 @@ extern irq_desc_t *domain_spin_lock_irq_
+ extern irq_desc_t *pirq_spin_lock_irq_desc(
+     const struct pirq *, unsigned long *pflags);
+ 
+-static inline void set_native_irq_info(unsigned int irq, const cpumask_t *mask)
+-{
+-    cpumask_copy(irq_to_desc(irq)->affinity, mask);
+-}
+-
+ unsigned int set_desc_affinity(struct irq_desc *, const cpumask_t *);
+ 
+ #ifndef arch_hwdom_irqs

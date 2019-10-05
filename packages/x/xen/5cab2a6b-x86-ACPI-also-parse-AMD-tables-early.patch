@@ -1,0 +1,88 @@
+
+References: bsc#1135799
+
+# Commit 9fa94e1058543759a7d45237f06c80cde3008d41
+# Date 2019-04-08 13:03:07 +0200
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+x86/ACPI: also parse AMD IOMMU tables early
+
+In order to be able to initialize x2APIC mode we need to parse
+respective ACPI tables early. Split amd_iov_detect() into two parts for
+this purpose, and call the initial part earlier on.
+
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Reviewed-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Acked-by: Brian Woods <brian.woods@amd.com>
+
+--- a/xen/arch/x86/acpi/boot.c
++++ b/xen/arch/x86/acpi/boot.c
+@@ -733,7 +733,7 @@ int __init acpi_boot_init(void)
+ 
+ 	acpi_mmcfg_init();
+ 
+-	acpi_dmar_init();
++	acpi_iommu_init();
+ 
+ 	erst_init();
+ 
+--- a/xen/drivers/passthrough/amd/pci_amd_iommu.c
++++ b/xen/drivers/passthrough/amd/pci_amd_iommu.c
+@@ -23,6 +23,7 @@
+ #include <xen/pci_regs.h>
+ #include <xen/paging.h>
+ #include <xen/softirq.h>
++#include <asm/acpi.h>
+ #include <asm/amd-iommu.h>
+ #include <asm/hvm/svm/amd-iommu-proto.h>
+ #include "../ats.h"
+@@ -170,7 +171,7 @@ static void amd_iommu_setup_domain_devic
+     }
+ }
+ 
+-int __init amd_iov_detect(void)
++int __init acpi_ivrs_init(void)
+ {
+     INIT_LIST_HEAD(&amd_iommu_head);
+ 
+@@ -184,6 +185,14 @@ int __init amd_iov_detect(void)
+         return -ENODEV;
+     }
+ 
++    return 0;
++}
++
++int __init amd_iov_detect(void)
++{
++    if ( !iommu_enable && !iommu_intremap )
++        return 0;
++
+     iommu_ops = amd_iommu_ops;
+ 
+     if ( amd_iommu_init() != 0 )
+--- a/xen/include/asm-x86/acpi.h
++++ b/xen/include/asm-x86/acpi.h
+@@ -26,6 +26,7 @@
+ #include <acpi/pdc_intel.h>
+ #include <acpi/acconfig.h>
+ #include <acpi/actbl.h>
++#include <xen/errno.h>
+ 
+ #define COMPILER_DEPENDENT_INT64   long long
+ #define COMPILER_DEPENDENT_UINT64  unsigned long long
+@@ -145,6 +146,15 @@ extern u32 pmtmr_ioport;
+ extern unsigned int pmtmr_width;
+ 
+ int acpi_dmar_init(void);
++int acpi_ivrs_init(void);
++
++static inline int acpi_iommu_init(void)
++{
++    int ret = acpi_dmar_init();
++
++    return ret == -ENODEV ? acpi_ivrs_init() : ret;
++}
++
+ void acpi_mmcfg_init(void);
+ 
+ /* Incremented whenever we transition through S3. Value is 1 during boot. */

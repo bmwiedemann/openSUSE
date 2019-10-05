@@ -638,4 +638,12 @@ remove obsolete _opt patterns</comment>
     <comment>Lock kernel-debug - boo#1134727</comment>
     <requestid>733635</requestid>
   </revision>
+  <revision rev="90" vrev="88">
+    <srcmd5>853bc70afbcf738c08721134a38d314c</srcmd5>
+    <version>unknown</version>
+    <time>1570285149</time>
+    <user>dimstar_suse</user>
+    <comment>Provide openSUSE-MicroOS-release for %arm as well</comment>
+    <requestid>734489</requestid>
+  </revision>
 </revisionlist>

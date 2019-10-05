@@ -1,0 +1,16 @@
+--- a/configure.ac	2019-09-18 20:01:29.244433451 +0200
++++ b/configure.ac	2019-09-18 20:59:47.284282932 +0200
+@@ -33,8 +33,12 @@
+ # GTK Doc
+ ###########################
+ 
++# check for gtk-doc
++m4_ifdef([GTK_DOC_CHECK], [
+ GTK_DOC_CHECK([1.14],[--flavour no-tmpl])
+-
++],[
++AM_CONDITIONAL([ENABLE_GTK_DOC], false)
++])
+ 
+ ###########################
+ # Dependencies

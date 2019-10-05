@@ -44,6 +44,7 @@ BuildRequires:  autogen
 BuildRequires:  automake
 BuildRequires:  datefudge
 BuildRequires:  fdupes
+BuildRequires:  fipscheck
 BuildRequires:  gcc-c++
 # The test suite calls /usr/bin/ss from iproute2. It's our own duty to ensure we have it present
 BuildRequires:  iproute2
@@ -185,6 +186,21 @@ export CXXFLAGS="%{optflags} -fPIE"
 	%{nil}
 make %{?_smp_mflags}
 
+# the hmac hashes:
+#
+# this is a hack that re-defines the __os_install_post macro
+# for a simple reason: the macro strips the binaries and thereby
+# invalidates a HMAC that may have been created earlier.
+# solution: create the hashes _after_ the macro runs.
+#
+# this shows up earlier because otherwise the %expand of
+# the macro is too late.
+# remark: This is the same as running
+#   openssl dgst -sha256 -hmac 'orboDeJITITejsirpADONivirpUkvarP'
+%{expand:%%global __os_install_post {%__os_install_post
+%{_bindir}/fipshmac %{buildroot}%{_libdir}/libgnutls.so.%{gnutls_sover}
+}}
+
 %install
 %make_install
 rm -rf %{buildroot}%{_datadir}/locale/en@{,bold}quot
@@ -252,6 +268,7 @@ make %{?_smp_mflags} check || {
 
 %files -n libgnutls%{gnutls_sover}
 %{_libdir}/libgnutls.so.%{gnutls_sover}*
+%{_libdir}/.libgnutls.so.%{gnutls_sover}*.hmac
 
 %if %{with dane}
 %files -n libgnutls-dane%{gnutls_dane_sover}

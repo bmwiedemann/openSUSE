@@ -42,8 +42,8 @@
 # helpfully injects into our build environment from the changelog). If you want
 # to generate a new git_commit_epoch, use this:
 #  $ date --date="$(git show --format=fuller --date=iso $COMMIT_ID | grep -oP '(?<=^CommitDate: ).*')" '+%s'
-%define git_version 74b1e89e8ac6
-%define git_commit_epoch 1564087121
+%define git_version 6a30dfca0366
+%define git_commit_epoch 1567053734
 
 # These are the git commits required. We verify them against the source to make
 # sure we didn't miss anything important when doing upgrades.
@@ -52,7 +52,7 @@
 %define required_libnetwork fc5a7d91d54cc98f64fc28f9e288b46a0bee756c
 
 Name:           %{realname}%{name_suffix}
-Version:        19.03.1_ce
+Version:        19.03.2_ce
 Release:        0
 Summary:        The Moby-project Linux container runtime
 License:        Apache-2.0
@@ -422,8 +422,9 @@ getent passwd dockremap >/dev/null || \
 # "useradd -r" doesn't add sub[ug]ids so we manually add some. Hopefully there
 # aren't any conflicts here, because usermod doesn't provide the same "get
 # unusued range" feature that dockremap does.
-grep -q '^dockremap:' /etc/sub[ug]id || \
-	usermod -v 100000000-100065536 -w 100000000-100065536 dockremap
+touch /etc/sub{uid,gid}
+grep -q '^dockremap:' /etc/sub{uid,gid} || \
+	usermod -v 100000000-200000000 -w 100000000-200000000 dockremap
 
 %service_add_pre %{realname}.service
 

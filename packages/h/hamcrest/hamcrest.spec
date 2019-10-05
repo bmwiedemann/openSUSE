@@ -130,8 +130,14 @@ sed -i 's/@VERSION@/%{version}/g' pom/*.pom
 # jars
 install -d -m 755 %{buildroot}%{_javadir}/%{name}
 install -d -m 755 %{buildroot}%{_mavenpomdir}/%{name}
-install -m 644 pom/%{name}-parent.pom %{buildroot}%{_mavenpomdir}/%{name}/parent.pom
-%add_maven_depmap %{name}/parent.pom -f core
+
+rm -f pom/%{name}-parent.pom
+for i in pom/%{name}*.pom; do
+  %pom_remove_parent ${i}
+  %pom_xpath_inject "pom:project" "
+  <groupId>org.hamcrest</groupId>
+  <version>%{version}</version>" ${i}
+done
 
 install -m 644 build/%{name}-core-%{version}.jar %{buildroot}%{_javadir}/%{name}/core.jar
 install -m 644 pom/%{name}-core.pom %{buildroot}%{_mavenpomdir}/%{name}/core.pom
@@ -162,28 +168,13 @@ cp -pr build/temp/hamcrest-all-%{version}-javadoc.jar.contents/* %{buildroot}%{_
 install -d -m 755 %{buildroot}%{_datadir}/%{name}
 cp -pr %{name}-examples %{buildroot}%{_datadir}/%{name}/
 
-%files
+%files -f .mfiles
 %defattr(0644,root,root,0755)
 %license LICENSE.txt
-%{_javadir}/%{name}/all.jar
-%{_javadir}/%{name}/generator.jar
-%{_javadir}/%{name}/integration.jar
-%{_javadir}/%{name}/library.jar
-%{_mavenpomdir}/%{name}/all.pom
-%{_mavenpomdir}/%{name}/generator.pom
-%{_mavenpomdir}/%{name}/integration.pom
-%{_mavenpomdir}/%{name}/library.pom
-%{_datadir}/maven-metadata/%{name}.xml*
 
-%files core
+%files core -f .mfiles-core
 %defattr(0644,root,root,0755)
 %license LICENSE.txt
-%dir %{_javadir}/%{name}
-%dir %{_mavenpomdir}/%{name}
-%{_javadir}/%{name}/core.jar
-%{_mavenpomdir}/%{name}/parent.pom
-%{_mavenpomdir}/%{name}/core.pom
-%{_datadir}/maven-metadata/%{name}-core.xml*
 
 %files javadoc
 %defattr(0644,root,root,0755)

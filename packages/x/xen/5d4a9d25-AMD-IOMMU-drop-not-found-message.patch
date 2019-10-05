@@ -1,0 +1,32 @@
+
+References: bsc#1135799
+
+# Commit ef04aa69f06d38b8852d6cca02d13aaf3deaa74c
+# Date 2019-08-07 10:43:01 +0100
+# Author Andrew Cooper <andrew.cooper3@citrix.com>
+# Committer Andrew Cooper <andrew.cooper3@citrix.com>
+passthrough/amd: Drop "IOMMU not found" message
+
+Since c/s 9fa94e10585 "x86/ACPI: also parse AMD IOMMU tables early", this
+function is unconditionally called in all cases where a DMAR ACPI table
+doesn't exist.
+
+As a consequnce, "AMD-Vi: IOMMU not found!" is printed in all cases where an
+IOMMU isn't present, even on non-AMD systems.  Drop the message - it isn't
+terribly interesting anyway, and is now misleading is a number of common
+cases.
+
+Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Acked-by: Jan Beulich <jbeulich@suse.com>
+Acked-by: Brian Woods <brian.woods@amd.com>
+
+--- a/xen/drivers/passthrough/amd/pci_amd_iommu.c
++++ b/xen/drivers/passthrough/amd/pci_amd_iommu.c
+@@ -178,7 +178,6 @@ int __init acpi_ivrs_init(void)
+ 
+     if ( (amd_iommu_detect_acpi() !=0) || (iommu_found() == 0) )
+     {
+-        printk("AMD-Vi: IOMMU not found!\n");
+         iommu_intremap = 0;
+         return -ENODEV;
+     }

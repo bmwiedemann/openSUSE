@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 30 08:15:38 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+-  update add-check-for-a-non-zero-.text-segment-in-.a-archive.patch
+ * fix condition for path
+
+-------------------------------------------------------------------
 Fri Sep 20 16:04:10 UTC 2019 - Malte Kraus <malte.kraus@suse.com>
 
 - whitelist pam_envoy (bsc#1150525)

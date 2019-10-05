@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct  2 14:23:24 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 14.2.4-373-gc3e67ed133:
+  + Support iSCSI target-level CHAP authentication (bsc#1145617)
+  + Validation and render of iSCSI controls based "type" (bsc#1140491)
+  + Fix error editing iSCSI image advanced settings (bsc#1146656)
+  + Fix error during iSCSI target edit
+
+-------------------------------------------------------------------
 Wed Sep 25 13:05:13 UTC 2019 - Nathan Cutler <ncutler@suse.com>
 
 - Addendum:

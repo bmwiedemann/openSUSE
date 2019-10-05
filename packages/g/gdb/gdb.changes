@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Sep 30 10:34:54 UTC 2019 - Tom de Vries <tdevries@suse.com>
+
+- Add gdb-testsuite-8.3-kfail-xfail-unsupported.patch
+
+-------------------------------------------------------------------
+Thu Sep 26 16:51:17 UTC 2019 - Tom de Vries <tdevries@suse.com>
+
+- Drop ChangeLog part of patch:
+  * gdb-rhbz1708192-parse_macro_definition-crash.patch
+  * gdb-rhbz1704406-disable-style-log-output-1of3.patch
+  * gdb-rhbz1704406-disable-style-log-output-2of3.patch
+  * gdb-rhbz1704406-disable-style-log-output-3of3.patch
+  * gdb-rhbz1723564-gdb-crash-PYTHONMALLOC-debug.patch
+  * gdb-rhbz1553086-binutils-warning-loadable-section-outside-elf.patch
+- Update to gdb-8.3.1.
+  * Drop "Testsuite: Ensure pie is disabled on some tests" part of
+    gdb-testsuite-pie-no-pie.patch
+  * Drop patches included upstream:
+    - gdb-7.10-swo18929.patch
+    - gdb-handle-vfork-in-thread-with-follow-fork-mode-child.patch
+    - gdb-x86_64-i386-syscall-restart-master.patch
+    - gdb-suppress-sigttou-when-handling-errors.patch
+    - gdb-fix-breakpoints-on-file-reloads-for-pie-binaries.patch
+    - gdb-symtab-fix-symbol-loading-performance-regression.patch
+- Fix macro in comment warning
+
+-------------------------------------------------------------------
+Wed Sep 25 14:41:32 UTC 2019 - Tom de Vries <tdevries@suse.com>
+
+- Upgrade libipt from v2.0 to v2.0.1.
+  * Use -DBUILD_SHARED_LIBS=OFF to build libipt.a, and drop part
+    of v1.5-libipt-static.patch that consequentially has become
+    unnecessary.
+
+-------------------------------------------------------------------
+Tue Sep 24 08:31:04 UTC 2019 - Tom de Vries <tdevries@suse.com>
+
+- Sync with f30, merging 1e222a3..8bf40c6.
+  * gdb-rhbz1708192-parse_macro_definition-crash.patch
+  * gdb-rhbz1704406-disable-style-log-output-1of3.patch
+  * gdb-rhbz1704406-disable-style-log-output-2of3.patch
+  * gdb-rhbz1704406-disable-style-log-output-3of3.patch
+  * gdb-rhbz1723564-gdb-crash-PYTHONMALLOC-debug.patch
+  * gdb-rhbz1553086-binutils-warning-loadable-section-outside-elf.patch
+
+-------------------------------------------------------------------
+Sun Sep 22 05:54:09 UTC 2019 - Tom de Vries <tdevries@suse.com>
+
+- Use ldd /usr/bin/rpm instead of ls /usr/%{_lib}/ to find librpm
+
+-------------------------------------------------------------------
 Sat Sep 14 05:45:30 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints for PowerPC need more than 3.5GB disk space

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct  2 10:28:33 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- Fix LV activation issues (boo#1152378, rh#1727270)
+  + bug-1152378-md-component-detection-for-differing-PV-and-device-s.patch
+  + bug-1152378-pvscan-fix-PV-online-when-device-has-a-different-siz.patch
+
+-------------------------------------------------------------------
 Mon Sep  9 12:00:00 UTC 2019 - heming.zhao@suse.com
 
 - Update lvm2.spec: make baselibs.conf to a common source.

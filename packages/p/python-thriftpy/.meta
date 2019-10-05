@@ -2,4 +2,7 @@
   <title></title>
   <description></description>
   <devel project="devel:languages:python" package="python-thriftpy"/>
+  <build>
+    <disable/>
+  </build>
 </package>

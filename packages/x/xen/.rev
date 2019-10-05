@@ -2331,4 +2331,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>728544</requestid>
   </revision>
+  <revision rev="271" vrev="3">
+    <srcmd5>52d694dcb959fdec35780f5b6c502511</srcmd5>
+    <version>4.12.1_02</version>
+    <time>1570285128</time>
+    <user>dimstar_suse</user>
+    <comment>Bug fixes for bsc#1135799, bsc#1145240, bsc#1137717, bsc#1145774, and a few additional upstream fixes</comment>
+    <requestid>734420</requestid>
+  </revision>
 </revisionlist>

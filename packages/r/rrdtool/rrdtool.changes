@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 22 16:40:00 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- rrdtool 1.7.2:
+  * fix segfault on non-existent RRD file when using rrdcached
+  * fix bounds handling, documentation and checking on rrdtool xport
+  * Fix %s/%S unit autoscaling in gprint for json/xml
+  * Optimized PDP Calculation
+- drop rrdtool-1.7.1-compile_fix.patch, upstream
+
+-------------------------------------------------------------------
 Wed Feb 13 10:09:13 UTC 2019 - kstreitova@suse.com
 
 - Version update to 1.7.1:

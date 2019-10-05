@@ -1,0 +1,30 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Andrew Burgess <andrew.burgess@embecosm.com>
+Date: Fri, 14 Jun 2019 23:31:10 +0100
+Subject: gdb-rhbz1704406-disable-style-log-output-3of3.patch
+
+;; Fix 'Color control codes should not appear in logging output'
+;; Tom Tromey, RH BZ 1704406
+
+gdb: Remove file path from test name
+
+Having paths in test names makes comparing sum files difficult, rename
+a test to avoid paths in test names.
+
+gdb/testsuite/ChangeLog:
+
+	* gdb.base/style-logging.exp: Remove path from test name.
+
+diff --git a/gdb/testsuite/gdb.base/style-logging.exp b/gdb/testsuite/gdb.base/style-logging.exp
+--- a/gdb/testsuite/gdb.base/style-logging.exp
++++ b/gdb/testsuite/gdb.base/style-logging.exp
+@@ -38,7 +38,8 @@ save_vars { env(TERM) } {
+     gdb_test_no_output "set style enabled on"
+ 
+     set log_name [standard_output_file log.txt]
+-    gdb_test_no_output "set logging file $log_name"
++    gdb_test_no_output "set logging file $log_name" \
++	"set logging filename"
+     gdb_test_no_output "set logging overwrite on"
+     gdb_test "set logging on" "Copying output to .*"
+ 

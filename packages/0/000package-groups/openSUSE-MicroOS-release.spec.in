@@ -40,7 +40,7 @@ Obsoletes:      openSUSE-Tumbleweed-Kubic-release <= 20190324
 # The name is referenced by the control file as well
 Provides:       system-installation() = openSUSE-MicroOS
 # this package should only be available for the "basearchs" of a product
-ExclusiveArch:  %ix86 x86_64 ppc64le s390x aarch64
+ExclusiveArch:  %ix86 x86_64 ppc64le s390x aarch64 %arm
 ___PRODUCT_PROVIDES___
 ___PRODUCT_DEPENDENCIES___
 

@@ -40,6 +40,8 @@ Patch0:         csi-dummy-images.patch
 Patch1:         csi-template-paths.patch
 # Change the default FlexVolume dir path to support Kubic.
 Patch2:         flexvolume-dir.patch
+# Set option to force kernel driver usage in ceph-csi (bsc#1152690)
+Patch3:         0001-bsc-1152690-ceph-csi-Driver-will-fail-with-error.patch
 
 %if 0%{?suse_version}
 # _insert_obs_source_lines_here
@@ -54,6 +56,7 @@ BuildRequires:  xz
 # Rook requirements
 BuildRequires:  curl
 BuildRequires:  git
+BuildRequires:  grep
 
 # Ceph version is needed to set correct container tag in manifests
 BuildRequires:  ceph
@@ -124,6 +127,8 @@ argument to [-test.run]. All Ceph test suites can be run with the argument
 ################################################################################
 # The tasty, meaty build section
 ################################################################################
+%define _buildshell /bin/bash
+
 %{go_nostrip}
 %{go_provides}
 
@@ -134,6 +139,7 @@ argument to [-test.run]. All Ceph test suites can be run with the argument
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 # determine image names to use in manifests depending on the base os type
 # %CEPH_VERSION% is replaced at build time by the _service
@@ -150,14 +156,15 @@ argument to [-test.run]. All Ceph test suites can be run with the argument
 
 %build
 
-#we need to remove unsupported by Rook symbols from version
+# we need to remove unsupported by Rook symbols from version
 version_parsed=%{version}
+version_parsed="${version_parsed//[+]/-}"
 
-linker_flags=( \
-  \ # Set Rook version - absolutely required
-  "-X" "github.com/rook/rook/pkg/version.Version=${version_parsed//[+]/-}" \
-  \ # CSI images only known at build time, so use a linker flag instead of patch
-  "-X" "github.com/rook/rook/pkg/operator/ceph/csi.DefaultCSIPluginImage=%{ceph_csi_image}" \
+linker_flags=(
+    # Set Rook version - absolutely required
+    "-X" "github.com/rook/rook/pkg/version.Version=$version_parsed"
+    # CSI images only known at build time, so use a linker flag instead of patch
+    "-X" "github.com/rook/rook/pkg/operator/ceph/csi.DefaultCSIPluginImage=%{ceph_csi_image}"
 )
 build_flags=("-ldflags" "${linker_flags[*]}")
 
@@ -204,6 +211,30 @@ install --preserve-timestamps --mode=755 \
 # Install provided yaml files to download and run the Rook operator and Ceph containers
 mkdir -p %{buildroot}%{_datadir}/k8s-yaml/rook/ceph
 cp -pr cluster/examples/kubernetes/ceph/* %{buildroot}%{_datadir}/k8s-yaml/rook/ceph/
+
+################################################################################
+# Check that linker flags are applied
+################################################################################
+rook_bin="$rook_bin_location"rook
+
+# Check Rook version is set
+bin_version="$("$rook_bin" version)"
+version_parsed=%{version}
+version_parsed="${version_parsed//[+]/-}"
+if [[ ! "$bin_version" =~ "$version_parsed" ]]; then
+    echo "Rook version not set correctly!"
+    exit 1
+fi
+
+# Check Ceph CSI default image is set
+if grep --binary --text dummy-value-that-should-be-replaced-at-link-time "$rook_bin"; then
+    echo "Default CSI image was not set!"
+    exit 1
+fi
+if ! grep --binary --text "%{ceph_csi_image}" "$rook_bin"; then
+    echo "Default CSI image was set to wrong value!"
+    exit 1
+fi
 
 ################################################################################
 # Update manifests with images coming from Build Service

@@ -2,4 +2,7 @@
   <title>Mono bindings for libgnome-desktop</title>
   <description>Mono bindings for libgnome-desktop</description>
   <devel project="Mono:Factory" package="gnome-desktop-sharp2"/>
+  <build>
+    <disable/>
+  </build>
 </package>

@@ -1,0 +1,263 @@
+
+References: bsc#1135799
+
+# Commit 34a9ef62d3d29ddafbec6b3409074dd67eba7109
+# Date 2019-09-25 16:02:59 +0200
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+AMD/IOMMU: restrict interrupt remapping table sizes
+
+There's no point setting up tables with more space than a PCI device can
+use. For both MSI and MSI-X we can determine how many interrupts could
+be set up at most. Tables allocated during ACPI table parsing, however,
+will (for now at least) continue to be set up to have maximum size.
+
+Note that until we would want to use sub-page allocations here there's
+no point checking whether both MSI and MSI-X are supported by a device -
+an order-0 allocation will fit the dual case in any event, no matter
+that the MSI-X vector count may be smaller than the MSI one.
+
+On my Rome system this reduces space needed from just over 1k pages to
+about 125.
+
+Suggested-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Reviewed-by: Paul Durrant <paul.durrant@citrix.com>
+Reviewed-by: Andrew Cooper <andrew.cooper3@citrix.com>
+
+--- a/xen/drivers/passthrough/amd/iommu_acpi.c
++++ b/xen/drivers/passthrough/amd/iommu_acpi.c
+@@ -77,7 +77,7 @@ static void __init add_ivrs_mapping_entr
+         {
+             if ( !shared_intremap_table )
+                 shared_intremap_table = amd_iommu_alloc_intremap_table(
+-                    iommu, &shared_intremap_inuse);
++                    iommu, &shared_intremap_inuse, 0);
+ 
+             if ( !shared_intremap_table )
+                 panic("No memory for shared IRT\n");
+@@ -89,7 +89,7 @@ static void __init add_ivrs_mapping_entr
+         {
+             ivrs_mappings[alias_id].intremap_table =
+                 amd_iommu_alloc_intremap_table(
+-                    iommu, &ivrs_mappings[alias_id].intremap_inuse);
++                    iommu, &ivrs_mappings[alias_id].intremap_inuse, 0);
+ 
+             if ( !ivrs_mappings[alias_id].intremap_table )
+                 panic("No memory for %04x:%02x:%02x.%u's IRT\n",
+--- a/xen/drivers/passthrough/amd/iommu_init.c
++++ b/xen/drivers/passthrough/amd/iommu_init.c
+@@ -1290,12 +1290,14 @@ static int __init amd_iommu_setup_device
+                 pcidevs_unlock();
+             }
+ 
+-            if ( pdev )
++            if ( pdev && (pdev->msix || pdev->msi_maxvec) )
+             {
+                 ivrs_mappings[bdf].intremap_table =
+                     amd_iommu_alloc_intremap_table(
+                         ivrs_mappings[bdf].iommu,
+-                        &ivrs_mappings[bdf].intremap_inuse);
++                        &ivrs_mappings[bdf].intremap_inuse,
++                        pdev->msix ? pdev->msix->nr_entries
++                                   : pdev->msi_maxvec);
+                 if ( !ivrs_mappings[bdf].intremap_table )
+                     return -ENOMEM;
+ 
+@@ -1318,11 +1320,8 @@ static int __init amd_iommu_setup_device
+             }
+ 
+             amd_iommu_set_intremap_table(
+-                dte,
+-                ivrs_mappings[bdf].intremap_table
+-                ? virt_to_maddr(ivrs_mappings[bdf].intremap_table)
+-                : 0,
+-                iommu_intremap);
++                dte, ivrs_mappings[bdf].intremap_table,
++                ivrs_mappings[bdf].iommu, iommu_intremap);
+         }
+     }
+ 
+--- a/xen/drivers/passthrough/amd/iommu_intr.c
++++ b/xen/drivers/passthrough/amd/iommu_intr.c
+@@ -69,7 +69,8 @@ union irte_cptr {
+     const union irte128 *ptr128;
+ } __transparent__;
+ 
+-#define INTREMAP_MAX_ENTRIES (1 << IOMMU_INTREMAP_ORDER)
++#define INTREMAP_MAX_ORDER   0xB
++#define INTREMAP_MAX_ENTRIES (1 << INTREMAP_MAX_ORDER)
+ 
+ struct ioapic_sbdf ioapic_sbdf[MAX_IO_APICS];
+ struct hpet_sbdf hpet_sbdf;
+@@ -80,17 +81,13 @@ unsigned int nr_ioapic_sbdf;
+ 
+ static void dump_intremap_tables(unsigned char key);
+ 
+-static unsigned int __init intremap_table_order(const struct amd_iommu *iommu)
+-{
+-    return iommu->ctrl.ga_en
+-           ? get_order_from_bytes(INTREMAP_MAX_ENTRIES * sizeof(union irte128))
+-           : get_order_from_bytes(INTREMAP_MAX_ENTRIES * sizeof(union irte32));
+-}
++#define intremap_page_order(irt) PFN_ORDER(virt_to_page(irt))
+ 
+ unsigned int amd_iommu_intremap_table_order(
+     const void *irt, const struct amd_iommu *iommu)
+ {
+-    return IOMMU_INTREMAP_ORDER;
++    return intremap_page_order(irt) + PAGE_SHIFT -
++           (iommu->ctrl.ga_en ? 4 : 2);
+ }
+ 
+ static unsigned int intremap_table_entries(
+@@ -825,7 +822,10 @@ int amd_iommu_free_intremap_table(
+ 
+     if ( *tblp )
+     {
+-        __free_amd_iommu_tables(*tblp, intremap_table_order(iommu));
++        unsigned int order = intremap_page_order(*tblp);
++
++        intremap_page_order(*tblp) = 0;
++        __free_amd_iommu_tables(*tblp, order);
+         *tblp = NULL;
+     }
+ 
+@@ -833,15 +833,23 @@ int amd_iommu_free_intremap_table(
+ }
+ 
+ void *amd_iommu_alloc_intremap_table(
+-    const struct amd_iommu *iommu, unsigned long **inuse_map)
++    const struct amd_iommu *iommu, unsigned long **inuse_map, unsigned int nr)
+ {
+-    unsigned int order = intremap_table_order(iommu);
+-    void *tb = __alloc_amd_iommu_tables(order);
++    unsigned int order;
++    void *tb;
+ 
++    if ( !nr )
++        nr = INTREMAP_MAX_ENTRIES;
++
++    order = iommu->ctrl.ga_en
++            ? get_order_from_bytes(nr * sizeof(union irte128))
++            : get_order_from_bytes(nr * sizeof(union irte32));
++
++    tb = __alloc_amd_iommu_tables(order);
+     if ( tb )
+     {
+-        unsigned int nr = intremap_table_entries(tb, iommu);
+-
++        intremap_page_order(tb) = order;
++        nr = intremap_table_entries(tb, iommu);
+         *inuse_map = xzalloc_array(unsigned long, BITS_TO_LONGS(nr));
+         if ( *inuse_map )
+             memset(tb, 0, PAGE_SIZE << order);
+--- a/xen/drivers/passthrough/amd/iommu_map.c
++++ b/xen/drivers/passthrough/amd/iommu_map.c
+@@ -208,20 +208,26 @@ void iommu_dte_set_iotlb(uint32_t *dte,
+ }
+ 
+ void __init amd_iommu_set_intremap_table(
+-    uint32_t *dte, uint64_t intremap_ptr, uint8_t int_valid)
++    uint32_t *dte, const void *ptr, const struct amd_iommu *iommu,
++    bool int_valid)
+ {
+     uint32_t addr_hi, addr_lo, entry;
+ 
+-    addr_lo = intremap_ptr & DMA_32BIT_MASK;
+-    addr_hi = intremap_ptr >> 32;
++    if ( ptr )
++    {
++        addr_lo = virt_to_maddr(ptr) & DMA_32BIT_MASK;
++        addr_hi = virt_to_maddr(ptr) >> 32;
++    }
++    else
++        addr_hi = addr_lo = 0;
+ 
+     entry = dte[5];
+     set_field_in_reg_u32(addr_hi, entry,
+                          IOMMU_DEV_TABLE_INT_TABLE_PTR_HIGH_MASK,
+                          IOMMU_DEV_TABLE_INT_TABLE_PTR_HIGH_SHIFT, &entry);
+     /* Fixed and arbitrated interrupts remapepd */
+-    set_field_in_reg_u32(intremap_ptr ? IOMMU_DEV_TABLE_INT_CONTROL_TRANSLATED
+-                                      : IOMMU_DEV_TABLE_INT_CONTROL_ABORTED,
++    set_field_in_reg_u32(ptr ? IOMMU_DEV_TABLE_INT_CONTROL_TRANSLATED
++                             : IOMMU_DEV_TABLE_INT_CONTROL_ABORTED,
+                          entry,
+                          IOMMU_DEV_TABLE_INT_CONTROL_MASK,
+                          IOMMU_DEV_TABLE_INT_CONTROL_SHIFT, &entry);
+@@ -230,8 +236,8 @@ void __init amd_iommu_set_intremap_table
+     set_field_in_reg_u32(addr_lo >> 6, 0,
+                          IOMMU_DEV_TABLE_INT_TABLE_PTR_LOW_MASK,
+                          IOMMU_DEV_TABLE_INT_TABLE_PTR_LOW_SHIFT, &entry);
+-    /* 2048 entries */
+-    set_field_in_reg_u32(intremap_ptr ? IOMMU_INTREMAP_ORDER : 0, entry,
++    set_field_in_reg_u32(ptr ? amd_iommu_intremap_table_order(ptr, iommu) : 0,
++                         entry,
+                          IOMMU_DEV_TABLE_INT_TABLE_LENGTH_MASK,
+                          IOMMU_DEV_TABLE_INT_TABLE_LENGTH_SHIFT, &entry);
+ 
+--- a/xen/drivers/passthrough/amd/pci_amd_iommu.c
++++ b/xen/drivers/passthrough/amd/pci_amd_iommu.c
+@@ -504,18 +504,22 @@ static int amd_iommu_add_device(u8 devfn
+     {
+         unsigned long flags;
+ 
+-        ivrs_mappings[bdf].intremap_table =
+-            amd_iommu_alloc_intremap_table(
+-                iommu, &ivrs_mappings[bdf].intremap_inuse);
+-        if ( !ivrs_mappings[bdf].intremap_table )
+-            return -ENOMEM;
++        if ( pdev->msix || pdev->msi_maxvec )
++        {
++            ivrs_mappings[bdf].intremap_table =
++                amd_iommu_alloc_intremap_table(
++                    iommu, &ivrs_mappings[bdf].intremap_inuse,
++                    pdev->msix ? pdev->msix->nr_entries
++                               : pdev->msi_maxvec);
++            if ( !ivrs_mappings[bdf].intremap_table )
++                return -ENOMEM;
++        }
+ 
+         spin_lock_irqsave(&iommu->lock, flags);
+ 
+         amd_iommu_set_intremap_table(
+             iommu->dev_table.buffer + (bdf * IOMMU_DEV_TABLE_ENTRY_SIZE),
+-            virt_to_maddr(ivrs_mappings[bdf].intremap_table),
+-            iommu_intremap);
++            ivrs_mappings[bdf].intremap_table, iommu, iommu_intremap);
+ 
+         amd_iommu_flush_device(iommu, bdf);
+ 
+--- a/xen/include/asm-x86/hvm/svm/amd-iommu-defs.h
++++ b/xen/include/asm-x86/hvm/svm/amd-iommu-defs.h
+@@ -107,9 +107,6 @@
+ #define IOMMU_DEV_TABLE_INT_CONTROL_FORWARDED	0x1
+ #define IOMMU_DEV_TABLE_INT_CONTROL_TRANSLATED	0x2
+ 
+-/* For now, we always allocate the maximum: 2048 entries. */
+-#define IOMMU_INTREMAP_ORDER			0xB
+-
+ /* DeviceTable Entry[31:0] */
+ #define IOMMU_DEV_TABLE_VALID_MASK			0x00000001
+ #define IOMMU_DEV_TABLE_VALID_SHIFT			0
+--- a/xen/include/asm-x86/hvm/svm/amd-iommu-proto.h
++++ b/xen/include/asm-x86/hvm/svm/amd-iommu-proto.h
+@@ -76,7 +76,7 @@ void amd_iommu_share_p2m(struct domain *
+ /* device table functions */
+ int get_dma_requestor_id(u16 seg, u16 bdf);
+ void amd_iommu_set_intremap_table(
+-    u32 *dte, u64 intremap_ptr, u8 int_valid);
++    uint32_t *dte, const void *ptr, const struct amd_iommu *iommu, bool valid);
+ void amd_iommu_set_root_page_table(
+     u32 *dte, u64 root_ptr, u16 domain_id, u8 paging_mode, u8 valid);
+ void iommu_dte_set_iotlb(u32 *dte, u8 i);
+@@ -101,7 +101,7 @@ struct amd_iommu *find_iommu_for_device(
+ bool iov_supports_xt(void);
+ int amd_iommu_setup_ioapic_remapping(void);
+ void *amd_iommu_alloc_intremap_table(
+-    const struct amd_iommu *, unsigned long **);
++    const struct amd_iommu *, unsigned long **, unsigned int nr);
+ int amd_iommu_free_intremap_table(
+     const struct amd_iommu *, struct ivrs_mappings *, uint16_t);
+ unsigned int amd_iommu_intremap_table_order(

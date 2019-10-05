@@ -31,6 +31,7 @@ Source2:        %{name}.keyring
 Source3:        baselibs.conf
 # PATCH-FIX-UPSTREAM respect cflags while building
 Patch0:         nettle-respect-cflags.patch
+BuildRequires:  fipscheck
 BuildRequires:  gmp-devel
 BuildRequires:  m4
 BuildRequires:  makeinfo
@@ -105,6 +106,22 @@ make %{?_smp_mflags}
 %install
 %make_install
 
+# the hmac hashes:
+#
+# this is a hack that re-defines the __os_install_post macro
+# for a simple reason: the macro strips the binaries and thereby
+# invalidates a HMAC that may have been created earlier.
+# solution: create the hashes _after_ the macro runs.
+#
+# this shows up earlier because otherwise the %expand of
+# the macro is too late.
+# remark: This is the same as running
+#   openssl dgst -sha256 -hmac 'orboDeJITITejsirpADONivirpUkvarP'
+%{expand:%%global __os_install_post {%__os_install_post
+%{_bindir}/fipshmac %{buildroot}%{_libdir}/libnettle.so.%{soname}
+%{_bindir}/fipshmac %{buildroot}%{_libdir}/libhogweed.so.%{hogweed_soname}
+}}
+
 %post   -n libnettle%{soname} -p /sbin/ldconfig
 %postun -n libnettle%{soname} -p /sbin/ldconfig
 %post   -n libhogweed%{hogweed_soname} -p /sbin/ldconfig
@@ -123,10 +140,12 @@ make check %{?_smp_mflags}
 %doc AUTHORS ChangeLog NEWS README
 %{_libdir}/libnettle.so.%{soname}
 %{_libdir}/libnettle.so.%{soname}.*
+%{_libdir}/.libnettle.so.%{soname}.hmac
 
 %files -n libhogweed%{hogweed_soname}
 %{_libdir}/libhogweed.so.%{hogweed_soname}
 %{_libdir}/libhogweed.so.%{hogweed_soname}.*
+%{_libdir}/.libhogweed.so.%{hogweed_soname}.hmac
 
 %files -n libnettle-devel
 %{_includedir}/nettle

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  3 14:14:06 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- update to 1.9.4
+  security fix for CVE-2019-16866 (error in parsing NOTIFY queries)
+
+-------------------------------------------------------------------
 Tue Aug 27 18:33:04 UTC 2019 - Michael Ströder <michael@stroeder.com>
 
 - update to 1.9.3
