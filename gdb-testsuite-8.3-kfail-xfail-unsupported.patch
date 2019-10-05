@@ -1,0 +1,948 @@
+- [gdb/testsuite] Add -early pattern flag for gdb_test_multiple
+- [gdb/testsuite] Mark watchthreads-reorder.exp FAIL as KFAIL
+- [gdb/testsuite] Allow some tests in gdb.base/restore.exp to be unsupported
+- [gdb/testsuite] Allow some tests in gdb.base/store.exp to be unsupported
+- [gdb/testsuite] Require gnatmake 8 for gdb.ada/rename_subscript_param.exp
+- [gdb/tdep] Handle mxcsr kernel bug on Intel Skylake CPUs
+- [gdb/testsuite] Add KFAIL for missing support of reverse-debugging of vmovd
+- [gdb/testsuite] Fix incomplete regexps in step-precsave.exp
+- [gdb/testsuite] Add KFAIL for missing support of reverse-debugging xsave
+------------------------------------------------------------
+[gdb/testsuite] Add -early pattern flag for gdb_test_multiple
+
+[ https://sourceware.org/ml/gdb-patches/2019-09/msg00600.html ]
+
+Proc gdb_test_multiple builds up and executes a gdb_expect expression with
+pattern/action clauses.  The clauses are either implicit (added by
+gdb_test_multiple) or explicit (passed via the gdb_test_multiple parameter
+user_code).
+
+However, there are a few implicit clauses which are inserted before the
+explicit ones, making sure those take precedence.
+
+Add an -early pattern flag for a gdb_test_multiple user_code clause to specify
+that the clause needs to be inserted before any implicit clause.
+
+Tested on x86_64-linux.
+
+gdb/testsuite/ChangeLog:
+
+2019-09-12  Tom de Vries  <tdevries@suse.de>
+
+	* lib/gdb.exp (gdb_test_multiple): Handle -early pattern flag.
+
+------------------------------------------------------------
+[gdb/testsuite] Mark watchthreads-reorder.exp FAIL as KFAIL
+
+[ https://sourceware.org/ml/gdb-patches/2019-09/msg00221.html ]
+
+When running gdb.threads/watchthreads-reorder.exp in parallel with:
+...
+$ n=$(grep -c processor /proc/cpuinfo); n=$((($n + 1) / 2)); stress -c $n
+...
+there's a reasonable change to trigger an internal gdb error:
+...
+$ for n in $(seq 1 10); do ./test.sh; done 2>&1 \
+  | grep "expected passes" \
+  | sort \
+  | uniq -c
+      1 # of expected passes            14
+      2 # of expected passes            15
+      1 # of expected passes            16
+      6 # of expected passes            17
+...
+which look like this in gdb.sum:
+...
+FAIL: gdb.threads/watchthreads-reorder.exp: reorder1: continue to breakpoint: \
+  break-at-exit (GDB internal error)
+...
+
+This FAIL is filed as PR gdb/24995 and fixed on master by commit c29705b71a
+"Fix internal error and improve 'set debug infrun 1'/target wait kind trace".
+
+Mark this as KFAIL for the 8.3 branch.
+
+It's trivial to do this by adding a setup_kfail:
+...
++    setup_kfail gdb/24995 "*-*-*"
+     gdb_continue_to_breakpoint "break-at-exit" ".*break-at-exit.*"
+...
+but we'll get a fair amount of KPASSES:
+...
+KPASS: gdb.threads/watchthreads-reorder.exp: reorder0: \
+  continue to breakpoint: break-at-exit (PRMS gdb/24995)
+KPASS: gdb.threads/watchthreads-reorder.exp: reorder1: \
+  continue to breakpoint: break-at-exit (PRMS gdb/24995)
+...
+
+Instead, do this more precise by only KFAILing in case the internal error is
+detected.
+
+Tested on x86_64-linux.
+
+gdb/testsuite/ChangeLog:
+
+2019-09-12  Tom de Vries  <tdevries@suse.de>
+
+	* gdb.threads/watchthreads-reorder.exp: Add PR gdb/24995 KFAIL.
+
+------------------------------------------------------------
+[gdb/testsuite] Allow some tests in gdb.base/restore.exp to be unsupported
+
+[ Backport of master commit 77d036789aa. ]
+
+We currently run into:
+...
+248       n = callee1 (n + l5);
+(gdb) PASS: gdb.base/restore.exp: caller5 calls callee1; return callee now
+print l1
+$51 = <optimized out>
+(gdb) FAIL: gdb.base/restore.exp: caller5 calls callee1; return restored l1 \
+  to 32492
+...
+
+The problem is that we try to access the value of l1 in function caller5, but
+variable l1 has no DW_AT_location attribute.  Since l1 is declared using the
+register keyword, it's valid for gcc to emit no DW_AT_location at -O0.
+
+Change the FAIL into an UNSUPPORTED.
+
+Tested on x86_64-linux.
+
+gdb/testsuite/ChangeLog:
+
+2019-09-22  Tom de Vries  <tdevries@suse.de>
+
+	* gdb.base/restore.exp: Allow register variables to be optimized out at
+	-O0.
+
+------------------------------------------------------------
+[gdb/testsuite] Allow some tests in gdb.base/store.exp to be unsupported
+
+[ Backport of master commit 25e5c20918a. ]
+
+The test-case gdb.base/store.exp fails with gcc 7.4.0:
+...
+nr of unexpected failures        27
+...
+
+The first FAIL:
+...
+110       l = add_float (l, r);
+(gdb) PASS: gdb.base/store.exp: continue to wack_float
+print l
+$21 = <optimized out>
+FAIL: gdb.base/store.exp: var float l; print old l, expecting -1
+...
+relates to this bit in the test-case (compiled at -O0):
+...
+   106  float
+   107  wack_float (register float u, register float v)
+   108  {
+   109    register float l = u, r = v;
+   110    l = add_float (l, r);
+   111    return l + r;
+   112  }
+...
+and it expects to be able to read and modify variable l before executing line
+110, but it already fails to read the value, because l has no DW_AT_location
+attribute in the debug info.
+
+Variable l is declared with the register keyword, and GCC implements the
+register keyword at -O0 like so:
+...
+the compiler allocates distinct stack memory for all variables that do not
+have the register storage-class specifier; if register is specified, the
+variable may have a shorter lifespan than the code would indicate and may
+never be placed in memory.
+...
+
+The fact that l has no DW_AT_location attribute, matches with the documented
+"variable may have a shorter lifespan that code would indicate", (though it
+is the most extreme case of it) so the gcc behaviour is valid.  We can of
+course improve gcc to generate better debuginfo (filed gcc PR91611), but
+this not a wrong-debug problem.
+
+[ The test-case passes with gcc 4.2.1, but for the failing test discussed
+above, it passes simply because it doesn't store l in a register. ]
+
+With the debug info missing for l, reading and setting l is unsupported, so
+fix the FAIL by marking the test UNSUPPORTED instead.
+
+Tested on x86_64-linux.
+
+gdb/testsuite/ChangeLog:
+
+2019-09-12  Tom de Vries  <tdevries@suse.de>
+
+	* gdb.base/store.exp: Allow register variables to be optimized out at
+	-O0.
+
+------------------------------------------------------------
+[gdb/testsuite] Require gnatmake 8 for gdb.ada/rename_subscript_param.exp
+
+[ Backport of master commit d1b70248bde. ]
+
+When running gdb.ada/rename_subscript_param.exp with gnatmake 7.4.1, we get:
+...
+FAIL: gdb.ada/rename_subscript_param.exp: print rename_subscript_param_b \
+  before changing its value
+FAIL: gdb.ada/rename_subscript_param.exp: print rename_subscript_param_b \
+  after changing its value
+...
+
+The commit last touching the test-case (afcfda091e) states:
+...
+    The test still fails with old compilers that do not properly
+    generate debug info for this renaming:
+...
+
+Fix this by requiring at least gnatmake 8 for the test-case.
+
+Tested on x86_64-linux.
+
+gdb/testsuite/ChangeLog:
+
+2019-09-14  Tom de Vries  <tdevries@suse.de>
+
+	PR teststuite/24599
+	* gdb.ada/rename_subscript_param.exp: Require gnatmake 8.
+	* lib/ada.exp (gnatmake_version_at_least): New proc.
+
+------------------------------------------------------------
+[gdb/tdep] Handle mxcsr kernel bug on Intel Skylake CPUs
+
+[ Backport of master commit 3d4352200e3. ]
+
+On my openSUSE Leap 15.1 x86_64 Skylake system with the default (4.12) kernel,
+I run into:
+...
+FAIL: gdb.base/gcore.exp: corefile restored all registers
+...
+
+The problem is that there's a difference in the mxcsr register value before
+and after the gcore command:
+...
+- mxcsr          0x0                 [ ]
++ mxcsr          0x400440            [ DAZ OM ]
+...
+
+This can be traced back to amd64_linux_nat_target::fetch_registers, where
+xstateregs is partially initialized by the ptrace call:
+...
+          char xstateregs[X86_XSTATE_MAX_SIZE];
+          struct iovec iov;
+
+          amd64_collect_xsave (regcache, -1, xstateregs, 0);
+          iov.iov_base = xstateregs;
+          iov.iov_len = sizeof (xstateregs);
+          if (ptrace (PTRACE_GETREGSET, tid,
+                      (unsigned int) NT_X86_XSTATE, (long) &iov) < 0)
+            perror_with_name (_("Couldn't get extended state status"));
+
+          amd64_supply_xsave (regcache, -1, xstateregs);
+...
+after which amd64_supply_xsave is called.
+
+The amd64_supply_xsave call is supposed to only use initialized parts of
+xstateregs, but due to a kernel bug on intel skylake (fixed from 4.14 onwards
+by commit 0852b374173b "x86/fpu: Add FPU state copying quirk to handle XRSTOR
+failure on Intel Skylake CPUs") it can happen that the mxcsr part of
+xstateregs is not initialized, while amd64_supply_xsave expects it to be
+initialized, which explains the FAIL mentioned above.
+
+Fix the undetermined behaviour by initializing xstateregs before calling
+ptrace, which makes sure we get a 0x0 for mxcsr when this kernel bug occurs,
+and which also happens to fix the FAIL.
+
+Furthermore, add an xfail for this FAIL which triggers the same kernel bug:
+...
+FAIL: gdb.arch/amd64-init-x87-values.exp: check_setting_mxcsr_before_enable: \
+  check new value of MXCSR is still in place
+...
+
+Both FAILs pass when using a 5.3 kernel instead on the system mentioned above.
+
+Tested on x86_64-linux.
+
+gdb/ChangeLog:
+
+2019-09-24  Tom de Vries  <tdevries@suse.de>
+
+	PR gdb/23815
+	* amd64-linux-nat.c (amd64_linux_nat_target::fetch_registers):
+	Initialize xstateregs before ptrace PTRACE_GETREGSET call.
+
+gdb/testsuite/ChangeLog:
+
+2019-09-24  Tom de Vries  <tdevries@suse.de>
+
+	PR gdb/24598
+	* gdb.arch/amd64-init-x87-values.exp: Add xfail.
+
+------------------------------------------------------------
+[gdb/testsuite] Add KFAIL for missing support of reverse-debugging of vmovd
+
+[ Backport of master commit 68f7d34dd50. ]
+
+On my openSUSE Leap 15.1 system I run into:
+...
+(gdb) PASS: gdb.reverse/step-precsave.exp: turn on process record
+break 76^M
+Breakpoint 2 at 0x400654: file step-reverse.c, line 76.^M
+(gdb) PASS: gdb.reverse/step-precsave.exp: breakpoint at end of main
+continue^M
+Continuing.^M
+Process record does not support instruction 0xc5 at address 0x7ffff783fc70.^M
+Process record: failed to record execution log.^M
+^M
+Program stopped.^M
+0x00007ffff783fc70 in __memset_avx2_unaligned_erms () from /lib64/libc.so.6^M
+(gdb) FAIL: gdb.reverse/step-precsave.exp: run to end of main
+...
+
+The problem is that the vmovd instruction is not supported in
+reverse-debugging (PR record/23188).
+
+Add a KFAIL for this PR.
+
+Tested on x86_64-linux.
+
+gdb/testsuite/ChangeLog:
+
+2019-09-27  Tom de Vries  <tdevries@suse.de>
+
+	PR record/23188
+	* gdb.reverse/step-precsave.exp: Add kfail for PR record/23188.
+
+------------------------------------------------------------
+[gdb/testsuite] Fix incomplete regexps in step-precsave.exp
+
+[ Backport of master commit 060b3ab4eda. ]
+
+The commit 68f7d34dd50 "[gdb/testsuite] Add KFAIL for missing support of
+reverse-debugging of vmovd" rewrites a gdb_test into a gdb_test_multiple but
+forgets to add the $gdb_prompt part in the regexp.
+
+Add the missing parts of the regexps.
+
+Tested on x86_64-linux.
+
+gdb/testsuite/ChangeLog:
+
+2019-09-27  Tom de Vries  <tdevries@suse.de>
+
+	* gdb.reverse/step-precsave.exp: Add missing $gdb_prompt in regexps.
+
+------------------------------------------------------------
+[gdb/testsuite] Add KFAIL for missing support of reverse-debugging xsave
+
+[ https://sourceware.org/ml/gdb-patches/2019-09/msg00557.html ]
+
+Normally the gdb.reverse/*.exp test-cases pass on my system (apart from the
+record/23188 KFAIL for gdb.reverse/step-precsave.exp).  But when specifying
+GLIBC_TUNABLES=glibc.tune.hwcaps=-XSAVEC_Usable to force glibc to use
+_dl_runtime_resolve_xsave instead of _dl_runtime_resolve_xsavec, we run into
+1054 FAILs like this:
+...
+(gdb) PASS: gdb.reverse/sigall-reverse.exp: b gen_HUP
+continue^M
+Continuing.^M
+Process record does not support instruction 0xfae64 at address \
+  0x7ffff7ded958.^M
+Process record: failed to record execution log.^M
+^M
+Program stopped.^M
+0x00007ffff7ded958 in _dl_runtime_resolve_xsave () from \
+  /lib64/ld-linux-x86-64.so.2^M
+(gdb) FAIL: gdb.reverse/sigall-reverse.exp: get signal ABRT
+...
+
+The problem is that the xsave instruction is not supported in
+reverse-debugging (PR record/25038).
+
+Add KFAILs for this PR.
+
+Tested on x86_64-linux.
+
+gdb/testsuite/ChangeLog:
+
+2019-09-27  Tom de Vries  <tdevries@suse.de>
+
+	PR record/25038
+	* gdb.reverse/sigall-precsave.exp: Add PR record/25038 KFAIL.
+	* gdb.reverse/sigall-reverse.exp: Same.
+	* gdb.reverse/solib-precsave.exp: Same.
+	* gdb.reverse/solib-reverse.exp: Same.
+	* gdb.reverse/step-precsave.exp: Same.
+	* gdb.reverse/until-precsave.exp: Same.
+	* gdb.reverse/until-reverse.exp: Same.
+	* lib/gdb.exp (gdb_continue_to_breakpoint): Same.
+
+------------------------------------------------------------
+diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
+index 3d5f8726f7f..5f1bc4d84b7 100644
+--- a/gdb/testsuite/lib/gdb.exp
++++ b/gdb/testsuite/lib/gdb.exp
+@@ -798,37 +798,44 @@ proc gdb_test_multiple { command message user_code } {
+     set subst_code [uplevel list $subst_code]
+ 
+     set processed_code ""
++    set early_processed_code ""
++    set current_list processed_code
+     set patterns ""
+     set expecting_action 0
+     set expecting_arg 0
+     foreach item $user_code subst_item $subst_code {
+ 	if { $item == "-n" || $item == "-notransfer" || $item == "-nocase" } {
+-	    lappend processed_code $item
++	    lappend $current_list $item
+ 	    continue
+ 	}
+ 	if { $item == "-indices" || $item == "-re" || $item == "-ex" } {
+-	    lappend processed_code $item
++	    lappend $current_list $item
++	    continue
++	}
++	if { $item == "-early" } {
++	    set current_list early_processed_code
+ 	    continue
+ 	}
+ 	if { $item == "-timeout" || $item == "-i" } {
+ 	    set expecting_arg 1
+-	    lappend processed_code $item
++	    lappend $current_list $item
+ 	    continue
+ 	}
+ 	if { $expecting_arg } {
+ 	    set expecting_arg 0
+-	    lappend processed_code $subst_item
++	    lappend $current_list $subst_item
+ 	    continue
+ 	}
+ 	if { $expecting_action } {
+-	    lappend processed_code "uplevel [list $item]"
++	    lappend $current_list "uplevel [list $item]"
+ 	    set expecting_action 0
+ 	    # Cosmetic, no effect on the list.
+-	    append processed_code "\n"
++	    append $current_list "\n"
++	    set current_list processed_code
+ 	    continue
+ 	}
+ 	set expecting_action 1
+-	lappend processed_code $subst_item
++	lappend $current_list $subst_item
+ 	if {$patterns != ""} {
+ 	    append patterns "; "
+ 	}
+@@ -891,7 +898,8 @@ proc gdb_test_multiple { command message user_code } {
+ 	}
+     }
+ 
+-    set code {
++    set code $early_processed_code
++    append code {
+ 	-re ".*A problem internal to GDB has been detected" {
+ 	    fail "$message (GDB internal error)"
+ 	    gdb_internal_error_resync
+diff --git a/gdb/testsuite/gdb.threads/watchthreads-reorder.exp b/gdb/testsuite/gdb.threads/watchthreads-reorder.exp
+index 9bbbb6f2b8b..2e90870087d 100644
+--- a/gdb/testsuite/gdb.threads/watchthreads-reorder.exp
++++ b/gdb/testsuite/gdb.threads/watchthreads-reorder.exp
+@@ -90,5 +90,19 @@ foreach reorder {0 1} { with_test_prefix "reorder$reorder" {
+     # found in the DEBUG_INFRUN code path.
+     gdb_test "set debug infrun 1"
+ 
+-    gdb_continue_to_breakpoint "break-at-exit" ".*break-at-exit.*"
++    # Do:
++    #   gdb_continue_to_breakpoint "break-at-exit" ".*break-at-exit.*"
++    # with setup_kfail.
++    set msg "continue to breakpoint: break-at-exit"
++    set pass_pattern "(?:Breakpoint|Temporary breakpoint) .* (at|in) .*break-at-exit.*"
++    set kfail_pattern "internal-error: inferior\\* find_inferior_pid\\(int\\): Assertion .pid != 0. failed\\."
++    gdb_test_multiple "continue" $msg {
++	-early -re "$kfail_pattern" {
++	    setup_kfail gdb/24995 "*-*-*"
++	    exp_continue
++	}
++	-re "\[\r\n\]*(?:$pass_pattern)\[\r\n\]+$gdb_prompt $" {
++	    pass $msg
++	}
++    }
+ }}
+diff --git a/gdb/testsuite/gdb.base/restore.exp b/gdb/testsuite/gdb.base/restore.exp
+index 947fe58be47..56c2f5e3dce 100644
+--- a/gdb/testsuite/gdb.base/restore.exp
++++ b/gdb/testsuite/gdb.base/restore.exp
+@@ -73,8 +73,17 @@ proc restore_tests { } {
+ 	    # they should be.
+             for {set var 1} {$var <= $c} {incr var} {
+                 set expected [expr 0x7eeb + $var]
+-	        gdb_test "print l$var" " = $expected" \
+-		    "caller$c calls callee$e; return restored l$var to $expected"
++		set test "caller$c calls callee$e; return restored l$var to $expected"
++		set pass_pattern " = $expected"
++		set unsupported_pattern " = <optimized out>"
++	        gdb_test_multiple "print l$var" $test {
++		    -re "\[\r\n\]*(?:$pass_pattern)\[\r\n\]+$gdb_prompt $" {
++			pass $test
++		    }
++		    -re "\[\r\n\]*(?:$unsupported_pattern)\[\r\n\]+$gdb_prompt $" {
++			unsupported $test
++		    }
++		}
+             }
+         }
+     }
+diff --git a/gdb/testsuite/gdb.base/store.exp b/gdb/testsuite/gdb.base/store.exp
+index c5a7584101a..9c19ce15a7b 100644
+--- a/gdb/testsuite/gdb.base/store.exp
++++ b/gdb/testsuite/gdb.base/store.exp
+@@ -55,18 +55,29 @@ proc check_set { t l r new add } {
+ 	}
+     }
+ 
+-    gdb_test "print l" " = ${l}" \
+-	"${prefix}; print old l, expecting ${l}"
+-    gdb_test "print r" " = ${r}" \
+-	"${prefix}; print old r, expecting ${r}"
+-    gdb_test_no_output "set variable l = 4" \
+-	"${prefix}; setting l to 4"
+-    gdb_test "print l" " = ${new}" \
+-	"${prefix}; print new l, expecting ${new}"
+-    gdb_test "next" "return l \\+ r;" \
+-	"${prefix}; next over add call"
+-    gdb_test "print l" " = ${add}" \
+-	"${prefix}; print incremented l, expecting ${add}"
++    set supported 1
++    set test "${prefix}; print old l, expecting ${l}"
++    gdb_test_multiple "print l" "$test"  {
++	-re " = <optimized out>\r\n$gdb_prompt $" {
++	    unsupported $test
++	    set supported 0
++	}
++	-re " = ${l}\r\n$gdb_prompt $" {
++	    pass $test
++	}
++    }
++    if { $supported } {
++	gdb_test "print r" " = ${r}" \
++	    "${prefix}; print old r, expecting ${r}"
++	gdb_test_no_output "set variable l = 4" \
++	    "${prefix}; setting l to 4"
++	gdb_test "print l" " = ${new}" \
++	    "${prefix}; print new l, expecting ${new}"
++	gdb_test "next" "return l \\+ r;" \
++	    "${prefix}; next over add call"
++	gdb_test "print l" " = ${add}" \
++	    "${prefix}; print incremented l, expecting ${add}"
++    }
+ }
+ 
+ check_set "charest" "-1 .*" "-2 .*" "4 ..004." "2 ..002."
+@@ -81,20 +92,34 @@ check_set "doublest" "-1" "-2" "4" "2"
+ #
+ 
+ proc up_set { t l r new } {
++    global gdb_prompt
++
+     set prefix "upvar ${t} l"
+     gdb_test "tbreak add_${t}"
+     gdb_test "continue" "return u . v;" \
+ 	"continue to add_${t}"
+     gdb_test "up" "l = add_${t} .l, r.;" \
+ 	"${prefix}; up"
+-    gdb_test "print l" " = ${l}" \
+-	"${prefix}; print old l, expecting ${l}"
+-    gdb_test "print r" " = ${r}" \
+-	"${prefix}; print old r, expecting ${r}"
+-    gdb_test_no_output "set variable l = 4" \
+-	"${prefix}; set l to 4"
+-    gdb_test "print l" " = ${new}" \
+-	"${prefix}; print new l, expecting ${new}"
++
++    set supported 1
++    set test "${prefix}; print old l, expecting ${l}"
++    gdb_test_multiple "print l" "$test"  {
++	-re " = <optimized out>\r\n$gdb_prompt $" {
++	    unsupported $test
++	    set supported 0
++	}
++	-re " = ${l}\r\n$gdb_prompt $" {
++	    pass $test
++	}
++    }
++    if { $supported } {
++	gdb_test "print r" " = ${r}" \
++	    "${prefix}; print old r, expecting ${r}"
++	gdb_test_no_output "set variable l = 4" \
++	    "${prefix}; set l to 4"
++	gdb_test "print l" " = ${new}" \
++	    "${prefix}; print new l, expecting ${new}"
++    }
+ }
+ 
+ up_set "charest" "-1 .*" "-2 .*" "4 ..004."
+diff --git a/gdb/testsuite/gdb.ada/rename_subscript_param.exp b/gdb/testsuite/gdb.ada/rename_subscript_param.exp
+index ffcfa50df33..fd8208825a0 100644
+--- a/gdb/testsuite/gdb.ada/rename_subscript_param.exp
++++ b/gdb/testsuite/gdb.ada/rename_subscript_param.exp
+@@ -15,6 +15,10 @@
+ 
+ load_lib "ada.exp"
+ 
++if { ![gnatmake_version_at_least 8] } {
++    return -1
++}
++
+ standard_ada_testfile pb30_012
+ 
+ if {[gdb_compile_ada "${srcfile}" "${binfile}" executable [list debug]] != "" } {
+diff --git a/gdb/testsuite/lib/ada.exp b/gdb/testsuite/lib/ada.exp
+index ee9ade16ae5..b10558811fb 100644
+--- a/gdb/testsuite/lib/ada.exp
++++ b/gdb/testsuite/lib/ada.exp
+@@ -78,3 +78,23 @@ proc standard_ada_testfile {base_file {dir ""}} {
+     set srcfile $srcdir/$subdir/$testdir/$testfile.adb
+     set binfile [standard_output_file $testfile]
+ }
++
++# Return 1 if gnatmake is at least version $MAJOR.x.x
++
++proc gnatmake_version_at_least { major } {
++    set gnatmake [gdb_find_gnatmake]
++    set gnatmake [lindex [split $gnatmake] 0]
++    set output [exec $gnatmake --version]
++    if { [regexp {GNATMAKE ([^ .]+).([^ .]+).([^ .]+)} $output \
++	      match gnatmake_major gnatmake_minor gnatmake_micro] } {
++	if { $gnatmake_major >= $major } {
++	    return 1
++	} else {
++	    return 0
++	}
++    }
++
++    # Unknown, return 1
++    return 1
++}
++
+diff --git a/gdb/amd64-linux-nat.c b/gdb/amd64-linux-nat.c
+index 8d0e8eb35cd..b56917c2bc6 100644
+--- a/gdb/amd64-linux-nat.c
++++ b/gdb/amd64-linux-nat.c
+@@ -238,6 +238,12 @@ amd64_linux_nat_target::fetch_registers (struct regcache *regcache, int regnum)
+ 	  char xstateregs[X86_XSTATE_MAX_SIZE];
+ 	  struct iovec iov;
+ 
++	  /* Pre-4.14 kernels have a bug (fixed by commit 0852b374173b
++	     "x86/fpu: Add FPU state copying quirk to handle XRSTOR failure on
++	     Intel Skylake CPUs") that sometimes causes the mxcsr location in
++	     xstateregs not to be copied by PTRACE_GETREGSET.  Make sure that
++	     the location is at least initialized with a defined value.  */
++	  memset (xstateregs, 0, sizeof (xstateregs));
+ 	  iov.iov_base = xstateregs;
+ 	  iov.iov_len = sizeof (xstateregs);
+ 	  if (ptrace (PTRACE_GETREGSET, tid,
+diff --git a/gdb/testsuite/gdb.arch/amd64-init-x87-values.exp b/gdb/testsuite/gdb.arch/amd64-init-x87-values.exp
+index cdf92dcd377..5fd18dbb794 100644
+--- a/gdb/testsuite/gdb.arch/amd64-init-x87-values.exp
++++ b/gdb/testsuite/gdb.arch/amd64-init-x87-values.exp
+@@ -116,7 +116,7 @@ proc_with_prefix check_x87_regs_around_init {} {
+ # nop that does not enable any FP features).  Finally check that the
+ # mxcsr register still has the value we set.
+ proc_with_prefix check_setting_mxcsr_before_enable {} {
+-    global binfile
++    global binfile gdb_prompt
+ 
+     clean_restart ${binfile}
+ 
+@@ -127,7 +127,22 @@ proc_with_prefix check_setting_mxcsr_before_enable {} {
+ 
+     gdb_test_no_output "set \$mxcsr=0x9f80" "set a new value for MXCSR"
+     gdb_test "stepi" "fwait" "step forward one instruction for mxcsr test"
+-    gdb_test "p/x \$mxcsr" " = 0x9f80" "check new value of MXCSR is still in place"
++
++    set test "check new value of MXCSR is still in place"
++    set pass_pattern " = 0x9f80"
++    # Pre-4.14 kernels have a bug (fixed by commit 0852b374173b "x86/fpu:
++    # Add FPU state copying quirk to handle XRSTOR failure on Intel Skylake
++    # CPUs") that causes mxcsr not to be copied, in which case we get 0 instead of
++    # the just saved value.
++    set xfail_pattern " = 0x0"
++    gdb_test_multiple "p/x \$mxcsr" $test {
++	-re "\[\r\n\]*(?:$pass_pattern)\[\r\n\]+$gdb_prompt $" {
++	    pass $test
++	}
++	-re "\[\r\n\]*(?:$xfail_pattern)\[\r\n\]+$gdb_prompt $" {
++	    xfail $test
++	}
++    }
+ }
+ 
+ # Start the test file, all FP features will be disabled.  Set new
+diff --git a/gdb/testsuite/gdb.reverse/step-precsave.exp b/gdb/testsuite/gdb.reverse/step-precsave.exp
+index 7443995c007..f5e15510e1f 100644
+--- a/gdb/testsuite/gdb.reverse/step-precsave.exp
++++ b/gdb/testsuite/gdb.reverse/step-precsave.exp
+@@ -46,7 +46,15 @@ gdb_test "break $end_of_main" \
+ 
+ # This can take awhile.
+ with_timeout_factor 20 {
+-    gdb_test "continue" "Breakpoint .* end of main .*" "run to end of main"
++    set test "run to end of main"
++    gdb_test_multiple "continue" $test {
++	-re "Breakpoint .* end of main .*" {
++	    pass $test
++	}
++	-re "Process record does not support instruction 0xc5 at.*$gdb_prompt $" {
++	    kfail "record/23188" $test
++	}
++    }
+ }
+ 
+ # So can this, against gdbserver, for example.
+diff --git a/gdb/testsuite/gdb.reverse/step-precsave.exp b/gdb/testsuite/gdb.reverse/step-precsave.exp
+index f5e15510e1f..2073b8a1542 100644
+--- a/gdb/testsuite/gdb.reverse/step-precsave.exp
++++ b/gdb/testsuite/gdb.reverse/step-precsave.exp
+@@ -47,11 +47,13 @@ gdb_test "break $end_of_main" \
+ # This can take awhile.
+ with_timeout_factor 20 {
+     set test "run to end of main"
++    set pass_pattern "Breakpoint .* end of main .*"
++    set kfail_pattern "Process record does not support instruction 0xc5 at.*"
+     gdb_test_multiple "continue" $test {
+-	-re "Breakpoint .* end of main .*" {
++	-re "\[\r\n\]*(?:$pass_pattern)\[\r\n\]+$gdb_prompt $" {
+ 	    pass $test
+ 	}
+-	-re "Process record does not support instruction 0xc5 at.*$gdb_prompt $" {
++	-re "\[\r\n\]*(?:$kfail_pattern)\[\r\n\]+$gdb_prompt $" {
+ 	    kfail "record/23188" $test
+ 	}
+     }
+diff --git a/gdb/testsuite/gdb.reverse/sigall-precsave.exp b/gdb/testsuite/gdb.reverse/sigall-precsave.exp
+index 79a1e7282b6..ccdfde407fc 100644
+--- a/gdb/testsuite/gdb.reverse/sigall-precsave.exp
++++ b/gdb/testsuite/gdb.reverse/sigall-precsave.exp
+@@ -258,14 +258,20 @@ foreach sig $signals {
+     }
+ }
+ 
+-gdb_test_multiple "continue" "continue" {
++set kfail_pattern "Process record does not support instruction 0xfae64 at.*"
++set test "run to end of main"
++gdb_test_multiple "continue" $test {
+     -re "Breakpoint .* end of main .*$gdb_prompt $" {
+-	pass "run to end of main"
++	pass $test
+     }
+     -re "Breakpoint .* handle_.*$gdb_prompt $" {
+ 	send_gdb "continue\n"
+ 	exp_continue
+     }
++    -re "\[\r\n\]*(?:$kfail_pattern)\[\r\n\]+$gdb_prompt $" {
++	kfail "gdb/25038" $test
++	return -1
++    }
+ }
+ 
+ delete_breakpoints
+@@ -289,8 +295,12 @@ set sig_supported 1
+ set thissig "ABRT"
+ 
+ # test signal handling
++set record_instruction_kfail 0
+ foreach sig [lrange $signals 1 end] {
+     test_one_sig $sig
++    if { $record_instruction_kfail } {
++	return -1
++    }
+ }
+ 
+ # The last signal (SIGTERM) gets handled slightly differently because
+diff --git a/gdb/testsuite/gdb.reverse/sigall-reverse.exp b/gdb/testsuite/gdb.reverse/sigall-reverse.exp
+index c734fe8e17a..884a00c5dcf 100644
+--- a/gdb/testsuite/gdb.reverse/sigall-reverse.exp
++++ b/gdb/testsuite/gdb.reverse/sigall-reverse.exp
+@@ -37,6 +37,7 @@ proc test_one_sig {nextsig} {
+     global sig_supported
+     global gdb_prompt
+     global thissig
++    global record_instruction_kfail
+ 
+     set this_sig_supported $sig_supported
+     gdb_test "handle SIG$thissig stop print" \
+@@ -51,6 +52,7 @@ proc test_one_sig {nextsig} {
+ 	    setup_xfail "i*86-pc-linuxoldld-gnu" "i*86-pc-linuxaout-gnu"
+ 	}
+ 	set testmsg "get signal $thissig"
++	set kfail_pattern "Process record does not support instruction 0xfae64 at.*"
+ 	gdb_test_multiple "continue" $testmsg {
+ 	    -re "Program received signal SIG$thissig.*handle_$thissig.*$gdb_prompt $" {
+ 		fail "$testmsg (wrong location)"
+@@ -62,6 +64,11 @@ proc test_one_sig {nextsig} {
+ 		xfail $testmsg
+ 		set need_another_continue 0
+ 	    }
++	    -re "\[\r\n\]*(?:$kfail_pattern)\[\r\n\]+$gdb_prompt $" {
++		kfail "gdb/25038" "$testmsg"
++		set record_instruction_kfail 1
++		return
++	    }
+ 	}
+     }
+ 
+@@ -237,8 +244,12 @@ set sig_supported 1
+ set thissig "ABRT"
+ 
+ # test signal handling
++set record_instruction_kfail 0
+ foreach sig [lrange $signals 1 end] {
+     test_one_sig $sig
++    if { $record_instruction_kfail } {
++	return -1
++    }
+ }
+ 
+ # The last signal (SIGTERM) gets handled slightly differently because
+diff --git a/gdb/testsuite/gdb.reverse/solib-precsave.exp b/gdb/testsuite/gdb.reverse/solib-precsave.exp
+index 574d79816db..a3f874c09b7 100644
+--- a/gdb/testsuite/gdb.reverse/solib-precsave.exp
++++ b/gdb/testsuite/gdb.reverse/solib-precsave.exp
+@@ -91,7 +91,18 @@ gdb_test "break $end_of_main" \
+     "Breakpoint $decimal at .*$srcfile, line $end_of_main\." \
+     "breakpoint at end of main"
+ 
+-gdb_test "continue" "Breakpoint .* end of main .*" "run to end of main"
++set test "run to end of main"
++set pass_pattern "Breakpoint .* end of main .*"
++set kfail_pattern "Process record does not support instruction 0xfae64 at.*"
++gdb_test_multiple "continue" $test {
++    -re "\[\r\n\]*(?:$pass_pattern)\[\r\n\]+$gdb_prompt $" {
++	pass $test
++    }
++    -re "\[\r\n\]*(?:$kfail_pattern)\[\r\n\]+$gdb_prompt $" {
++	kfail "gdb/25038" $test
++	return -1
++    }
++}
+ 
+ gdb_test "record save $precsave" \
+     "Saved core file $precsave with execution log\."  \
+diff --git a/gdb/testsuite/gdb.reverse/solib-reverse.exp b/gdb/testsuite/gdb.reverse/solib-reverse.exp
+index 77c321388b4..53b35239f81 100644
+--- a/gdb/testsuite/gdb.reverse/solib-reverse.exp
++++ b/gdb/testsuite/gdb.reverse/solib-reverse.exp
+@@ -86,7 +86,18 @@ if [supports_process_record] {
+ 
+ set end_part_one [gdb_get_line_number " end part one" "$srcfile"]
+ set end_part_two [gdb_get_line_number " end part two" "$srcfile"]
+-gdb_test "until $end_part_one" " end part one.*" "run until end part one"
++set test "run until end part one"
++set pass_pattern " end part one.*"
++set kfail_pattern "Process record does not support instruction 0xfae64 at.*"
++gdb_test_multiple "until $end_part_one" $test {
++    -re "\[\r\n\]*(?:$pass_pattern)\[\r\n\]+$gdb_prompt $" {
++	pass $test
++    }
++    -re "\[\r\n\]*(?:$kfail_pattern)\[\r\n\]+$gdb_prompt $" {
++	kfail "gdb/25038" $test
++	return -1
++    }
++}
+ 
+ gdb_test "reverse-step" " shr1 three .*" "reverse-step third shr1"
+ gdb_test "reverse-step" " shr1 two .*"   "reverse-step second shr1"
+diff --git a/gdb/testsuite/gdb.reverse/step-precsave.exp b/gdb/testsuite/gdb.reverse/step-precsave.exp
+index 2073b8a1542..72ee279f806 100644
+--- a/gdb/testsuite/gdb.reverse/step-precsave.exp
++++ b/gdb/testsuite/gdb.reverse/step-precsave.exp
+@@ -49,6 +49,7 @@ with_timeout_factor 20 {
+     set test "run to end of main"
+     set pass_pattern "Breakpoint .* end of main .*"
+     set kfail_pattern "Process record does not support instruction 0xc5 at.*"
++    set kfail2_pattern "Process record does not support instruction 0xfae64 at.*"
+     gdb_test_multiple "continue" $test {
+ 	-re "\[\r\n\]*(?:$pass_pattern)\[\r\n\]+$gdb_prompt $" {
+ 	    pass $test
+@@ -56,6 +57,9 @@ with_timeout_factor 20 {
+ 	-re "\[\r\n\]*(?:$kfail_pattern)\[\r\n\]+$gdb_prompt $" {
+ 	    kfail "record/23188" $test
+ 	}
++	-re "\[\r\n\]*(?:$kfail2_pattern)\[\r\n\]+$gdb_prompt $" {
++	    kfail "record/25038" $test
++	}
+     }
+ }
+ 
+diff --git a/gdb/testsuite/gdb.reverse/until-precsave.exp b/gdb/testsuite/gdb.reverse/until-precsave.exp
+index baf21ab7ad2..1f09df193fd 100644
+--- a/gdb/testsuite/gdb.reverse/until-precsave.exp
++++ b/gdb/testsuite/gdb.reverse/until-precsave.exp
+@@ -50,7 +50,18 @@ gdb_test "break $end_of_main" \
+ 
+ # This can take awhile.
+ with_timeout_factor 20 {
+-    gdb_test "continue" "Breakpoint .* set breakpoint 10a here .*" "run to end of main"
++    set test "run to end of main"
++    set pass_pattern "Breakpoint .* set breakpoint 10a here .*"
++    set kfail_pattern "Process record does not support instruction 0xfae64 at.*"
++    gdb_test_multiple "continue" $test {
++	-re "\[\r\n\]*(?:$pass_pattern)\[\r\n\]+$gdb_prompt $" {
++	    pass $test
++	}
++	-re "\[\r\n\]*(?:$kfail_pattern)\[\r\n\]+$gdb_prompt $" {
++	    kfail "gdb/25038" $test
++	    return -1
++	}
++    }
+ }
+ 
+ # So can this, against gdbserver, for example.
+diff --git a/gdb/testsuite/gdb.reverse/until-reverse.exp b/gdb/testsuite/gdb.reverse/until-reverse.exp
+index 2e26de3ce7b..804e07f46ca 100644
+--- a/gdb/testsuite/gdb.reverse/until-reverse.exp
++++ b/gdb/testsuite/gdb.reverse/until-reverse.exp
+@@ -49,9 +49,18 @@ gdb_test "until $bp_location1" \
+ 
+ # Advance up to factorial, outer invocation
+ #
+-gdb_test "advance factorial" \
+-    "factorial .value=6..*$srcfile:$bp_location7.*" \
+-    "advance to factorial"
++set test "advance to factorial"
++set pass_pattern "factorial .value=6..*$srcfile:$bp_location7.*"
++set kfail_pattern "Process record does not support instruction 0xfae64 at.*"
++gdb_test_multiple "advance factorial" $test {
++    -re "\[\r\n\]*(?:$pass_pattern)\[\r\n\]+$gdb_prompt $" {
++	pass "$test"
++    }
++    -re "\[\r\n\]*(?:$kfail_pattern)\[\r\n\]+$gdb_prompt $" {
++	kfail "gdb/25038" $test
++	return -1
++    }
++}
+ 
+ # At this point, 'until' should continue the inferior up to when all the
+ # inner invocations of factorial() are completed and we are back at this
+diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
+index 5f1bc4d84b7..0d5447dd10c 100644
+--- a/gdb/testsuite/lib/gdb.exp
++++ b/gdb/testsuite/lib/gdb.exp
+@@ -633,10 +633,14 @@ proc gdb_continue_to_breakpoint {name {location_pattern .*}} {
+     global gdb_prompt
+     set full_name "continue to breakpoint: $name"
+ 
++    set kfail_pattern "Process record does not support instruction 0xfae64 at.*"
+     gdb_test_multiple "continue" $full_name {
+ 	-re "(?:Breakpoint|Temporary breakpoint) .* (at|in) $location_pattern\r\n$gdb_prompt $" {
+ 	    pass $full_name
+ 	}
++	-re "\[\r\n\]*(?:$kfail_pattern)\[\r\n\]+$gdb_prompt $" {
++	    kfail "gdb/25038" $full_name
++	}
+     }
+ }
+ 

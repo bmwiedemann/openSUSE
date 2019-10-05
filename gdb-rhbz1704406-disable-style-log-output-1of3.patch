@@ -1,0 +1,88 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Tom Tromey <tromey@adacore.com>
+Date: Tue, 14 May 2019 08:04:22 -0600
+Subject: gdb-rhbz1704406-disable-style-log-output-1of3.patch
+
+;; Fix 'Color control codes should not appear in logging output'
+;; Tom Tromey, RH BZ 1704406
+
+Add "style" proc to the test suite
+
+This adds a "style" helper proc to the test suite, and updates
+existing style tests to use it.  Thanks to Sergio for the idea.
+
+Tested on x86-64 Fedora 29.
+
+gdb/testsuite/ChangeLog
+2019-05-22  Tom Tromey  <tromey@adacore.com>
+
+	* gdb.base/info-shared.exp (check_info_shared): Use "style".
+	* gdb.base/style.exp: Use "style".
+	* lib/gdb-utils.exp (style): New proc.
+
+diff --git a/gdb/testsuite/gdb.base/style.exp b/gdb/testsuite/gdb.base/style.exp
+--- a/gdb/testsuite/gdb.base/style.exp
++++ b/gdb/testsuite/gdb.base/style.exp
+@@ -41,10 +41,10 @@ save_vars { env(TERM) } {
+ 
+     gdb_test_no_output "set style enabled on"
+ 
+-    set main_expr "\033\\\[33mmain\033\\\[m"
+-    set base_file_expr "\033\\\[32m.*style\\.c\033\\\[m"
++    set main_expr [style main function]
++    set base_file_expr [style ".*style\\.c" file]
+     set file_expr "$base_file_expr:\[0-9\]"
+-    set arg_expr "\033\\\[36marg.\033\\\[m"
++    set arg_expr [style "arg." variable]
+ 
+     gdb_test "frame" \
+ 	"$main_expr.*$arg_expr.*$arg_expr.*$file_expr.*"
+@@ -58,7 +58,7 @@ save_vars { env(TERM) } {
+ 
+     gdb_test "break main" "file $base_file_expr.*"
+ 
+-    gdb_test "print &main" " = .* \033\\\[34m$hex\033\\\[m <$main_expr>"
++    gdb_test "print &main" " = .* [style $hex address] <$main_expr>"
+ 
+     # Regression test for a bug where line-wrapping would occur at the
+     # wrong spot with styling.  There were different bugs at different
+@@ -86,11 +86,12 @@ save_vars { env(TERM) } {
+     gdb_exit
+     gdb_spawn
+ 
+-    gdb_test "" "\033\\\[35;1mGNU gdb.*\033\\\[m.*" \
++    set vers [style "GNU gdb.*" "35;1"]
++    gdb_test "" "${vers}.*" \
+ 	"version is styled"
+ 
+     set quoted [string_to_regexp $binfile]
+     gdb_test "file $binfile" \
+-	"Reading symbols from \033\\\[32m${quoted}\033\\\[m..." \
++	"Reading symbols from [style $quoted file]..." \
+ 	"filename is styled when loading symbol file"
+ }
+diff --git a/gdb/testsuite/lib/gdb-utils.exp b/gdb/testsuite/lib/gdb-utils.exp
+--- a/gdb/testsuite/lib/gdb-utils.exp
++++ b/gdb/testsuite/lib/gdb-utils.exp
+@@ -37,3 +37,21 @@ proc string_to_regexp {str} {
+     regsub -all {[]*+.|(){}^$\[\\]} $str {\\&} result
+     return $result
+ }
++
++# Wrap STR in an ANSI terminal escape sequences -- one to set the
++# style to STYLE, and one to reset the style to the default.  The
++# return value is suitable for use as a regular expression.
++
++# STYLE can either be the payload part of an ANSI terminal sequence,
++# or a shorthand for one of the gdb standard styles: "file",
++# "function", "variable", or "address".
++
++proc style {str style} {
++    switch -exact -- $style {
++	file { set style 32 }
++	function { set style 33 }
++	variable { set style 36 }
++	address { set style 34 }
++    }
++    return "\033\\\[${style}m${str}\033\\\[m"
++}

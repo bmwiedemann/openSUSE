@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
@@ -28,7 +28,7 @@ License:        GPL-3.0-or-later AND GPL-3.0-with-GCC-exception AND LGPL-2.1-or-
 Group:          Development/Tools/Debuggers
 Name:           gdb
 
-Version:        8.3
+Version:        8.3.1
 Release:        0
 
 # The release always contains a leading reserved number, start it at 1.
@@ -87,7 +87,7 @@ Source4:        gdbinit
 Source5:        gdbinit.without-python
 
 # libipt: Intel Processor Trace Decoder Library
-%global libipt_version 2.0
+%global libipt_version 2.0.1
 Source7:        v%{libipt_version}.tar.gz
 
 # Infrastructure to sync patches from the Fedora rpm
@@ -211,6 +211,12 @@ Patch112:       gdb-vla-intel-fix-print-char-array.patch
 Patch113:       gdb-rhbz1553104-s390x-arch12-test.patch
 Patch114:       gdb-rhbz795424-bitpos-arrayview.patch
 Patch115:       gdb-rhbz1371380-gcore-elf-headers.patch
+Patch116:       gdb-rhbz1708192-parse_macro_definition-crash.patch
+Patch117:       gdb-rhbz1704406-disable-style-log-output-1of3.patch
+Patch118:       gdb-rhbz1704406-disable-style-log-output-2of3.patch
+Patch119:       gdb-rhbz1704406-disable-style-log-output-3of3.patch
+Patch120:       gdb-rhbz1723564-gdb-crash-PYTHONMALLOC-debug.patch
+Patch121:       gdb-rhbz1553086-binutils-warning-loadable-section-outside-elf.patch
 #Fedora Packages end
 
 #Fedora patches fixup
@@ -226,30 +232,21 @@ Patch1003:      gdb-testsuite-ada-pie.patch
 
 # Patches to upstream
 
-# Fixed upstream Wed, 29 May 2019, 4330d61dfb "Fix crash in
-# cp_print_value_fields".  We should be able to drop this in 8.4.
-Patch1005:      gdb-7.10-swo18929.patch
-
 # Fixed upstream Sat, Jun 22 2019, 47e3f47487 "[gdb] Fix s390x -m31 build".
 # We should be able to drop this in 8.4.
 Patch1007:      gdb-fix-s390-build.diff
 
 # Backports from master
 
-Patch2000:      gdb-handle-vfork-in-thread-with-follow-fork-mode-child.patch
 Patch2001:      gdb-fix-riscv-tdep.patch
-Patch2002:      gdb-x86_64-i386-syscall-restart-master.patch
-Patch2003:      gdb-suppress-sigttou-when-handling-errors.patch
 Patch2004:      gdb-testsuite-add-missing-initial-prompt-read-in-multidictionary.exp.patch
 Patch2005:      gdb-testsuite-pie-no-pie.patch
-Patch2006:      gdb-fix-breakpoints-on-file-reloads-for-pie-binaries.patch
 Patch2007:      gdb-testsuite-read1-fixes.patch
 Patch2008:      gdb-testsuite-i386-pkru-exp.patch
-
-# Submitted for master
-
 Patch2500:      gdb-fix-heap-use-after-free-in-typename-concat.patch
-Patch2501:      gdb-symtab-fix-symbol-loading-performance-regression.patch
+
+# Testsuite patches
+Patch2600:      gdb-testsuite-8.3-kfail-xfail-unsupported.patch
 
 # libipt support
 Patch3000:      v1.5-libipt-static.patch
@@ -566,6 +563,12 @@ find -name "*.info*"|xargs rm -f
 %patch113 -p1
 %patch114 -p1
 %patch115 -p1
+%patch116 -p1
+%patch117 -p1
+%patch118 -p1
+%patch119 -p1
+%patch120 -p1
+%patch121 -p1
 #Fedora patching end
 
 %patch500 -p1
@@ -575,21 +578,17 @@ find -name "*.info*"|xargs rm -f
 %patch1002 -p1
 %patch1003 -p1
 
-%patch1005 -p1
 %patch1007 -p1
 
-%patch2000 -p1
 %patch2001 -p1
-%patch2002 -p1
-%patch2003 -p1
 %patch2004 -p1
 %patch2005 -p1
-%patch2006 -p1
 %patch2007 -p1
 %patch2008 -p1
 
 %patch2500 -p1
-%patch2501 -p1
+
+%patch2600 -p1
 
 #unpack libipt
 %if 0%{have_libipt}
@@ -655,6 +654,7 @@ CFLAGS="$CFLAGS -DPERF_ATTR_SIZE_VER5_BUNDLE"
  cd    processor-trace-%{libipt_version}-build
  # -DPTUNIT:BOOL=ON has no effect on ctest.
  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+        -DBUILD_SHARED_LIBS=OFF \
         -DPTUNIT:BOOL=OFF \
         -DDEVBUILD:BOOL=ON \
         ../../processor-trace-%{libipt_version}
@@ -669,12 +669,10 @@ LDFLAGS="$LDFLAGS -L$PWD/processor-trace-%{libipt_version}-root%{_libdir}"
 
 export CXXFLAGS="$CFLAGS"
 
-export LIBRPM=$(ls -1 /usr/%{_lib}/ \
-		    | grep '^librpm.so.[0-9][0-9]*$' \
-		    | sort -V -r \
-		    | head -n 1)
+export LIBRPM=$(ldd /bin/rpm \
+		    | grep librpm.so \
+		    | awk '{print $3}')
 if [ "$LIBRPM" != "" ]; then
-    export LIBRPM="/usr/%{_lib}/$LIBRPM"
     [ -f "$LIBRPM" ]
 else
     export LIBRPM=no
@@ -821,7 +819,7 @@ then
 fi
 
 # This is a build-time test, but still a test.  So, skip if we don't do tests.
-# This is relevant for %qemu_user_space_build == 1 builds, which atm is
+# This is relevant for %%qemu_user_space_build == 1 builds, which atm is
 # the case for riscv64.
 %if %{with testsuite}
 if [ "$LIBRPM" != "no" ]; then
