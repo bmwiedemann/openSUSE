@@ -21,7 +21,7 @@
     <package name="gawk" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="glibc" supportstatus="unsupported"/> <!-- reason: opensuse_microos:openSUSE-MicroOS-release -->
     <package name="grep" supportstatus="unsupported"/> <!-- reason: opensuse_microos:openSUSE-MicroOS-release -->
-    <package name="gzip" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
+    <package name="gzip" supportstatus="unsupported"/> <!-- reason: opensuse_microos:openSUSE-MicroOS-release -->
     <package name="info" supportstatus="unsupported"/> <!-- reason: opensuse_microos:openSUSE-MicroOS-release -->
     <package name="issue-generator" supportstatus="unsupported"/> <!-- reason: opensuse_microos:openSUSE-MicroOS-release -->
     <package name="kbd" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->

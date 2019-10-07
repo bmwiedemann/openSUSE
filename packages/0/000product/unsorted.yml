@@ -2843,6 +2843,7 @@ unsorted:
   - firebird-server 
   - firebird-utils 
   - firecracker: [x86_64] 
+  - firefox-esr-branding-openSUSE 
   - firefox-uget-integrator: [i586] 
   - firehol 
   - firehol-doc 
@@ -6430,6 +6431,7 @@ unsorted:
   - kubernetes-salt 
   - kubernetes-scheduler: [x86_64] 
   - kubic-dex-branding: [x86_64] 
+  - kubic-haproxycfg: [x86_64] 
   - kubic-locale-archive: [i586] 
   - kubic-pause 
   - kuiviewer 
@@ -7207,6 +7209,7 @@ unsorted:
   - libVFlib3-5 
   - libWN3 
   - libWPEBackend-fdo-1_0-1 
+  - libWPEBackend-fdo-1_0-1-32bit: [x86_64] 
   - libX11-devel-32bit: [x86_64] 
   - libX11-xcb1-32bit: [x86_64] 
   - libXRes1-32bit: [x86_64] 
@@ -8216,6 +8219,8 @@ unsorted:
   - libdjvulibre-devel 
   - libdlm-devel 
   - libdmapsharing-3_0-2-32bit: [x86_64] 
+  - libdmapsharing-4_0-3 
+  - libdmapsharing-4_0-3-32bit: [x86_64] 
   - libdmapsharing-devel 
   - libdmapsharing3-devel 
   - libdmmp-devel 
@@ -11811,6 +11816,7 @@ unsorted:
   - libwpd-devel-doc 
   - libwpd-tools 
   - libwpe-1_0-1 
+  - libwpe-1_0-1-32bit: [x86_64] 
   - libwpe-devel 
   - libwpg-devel 
   - libwpg-devel-doc 
@@ -12895,6 +12901,9 @@ unsorted:
   - maven-wagon-http-shared 
   - maven-wagon-javadoc 
   - maven-wagon-provider-api 
+  - maven-wagon-ssh 
+  - maven-wagon-ssh-common 
+  - maven-wagon-ssh-external 
   - maven-war-plugin 
   - maven-war-plugin-javadoc 
   - maven2-javadoc 
@@ -14486,7 +14495,6 @@ unsorted:
   - ogre-docs 
   - ogre-tools 
   - ohcount 
-  - ohpc 
   - oidentd 
   - okteta-devel 
   - okteta-part 
@@ -18279,6 +18287,7 @@ unsorted:
   - python2-jsonschema 
   - python2-junit-xml 
   - python2-junitxml 
+  - python2-junos-eznc 
   - python2-jupyter-contrib-nbextensions 
   - python2-jupyter-server 
   - python2-jupyter_client 
@@ -20645,6 +20654,7 @@ unsorted:
   - python3-jsonslicer 
   - python3-junit-xml 
   - python3-junitxml 
+  - python3-junos-eznc 
   - python3-jupyter-contrib-nbextensions 
   - python3-jupyter-datatables 
   - python3-jupyter-nbutils 
@@ -23442,6 +23452,7 @@ unsorted:
   - sfml2-doc 
   - sgi-bitmap-fonts 
   - sgmltool 
+  - sgmltool-latex 
   - sgmltools-lite 
   - sgpio 
   - sgrep 
@@ -31638,6 +31649,7 @@ unsorted:
   - tomoe-gtk-doc 
   - tomoe-gtk-lang 
   - tomoyo-tools 
+  - toolbox 
   - tor 
   - torbrowser-apparmor-profile 
   - torbrowser-launcher 
