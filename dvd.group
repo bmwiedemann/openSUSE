@@ -1040,6 +1040,7 @@
     <package name="indent" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_kernel -->
     <package name="indic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:indic-fonts -->
     <package name="info" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="info-std" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="initviocons" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="inkscape" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-technical_writing -->
     <package name="inkscape-extensions-extra" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-technical_writing -->
@@ -1856,7 +1857,7 @@
     <package name="libcelt0-2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libcetcd0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
     <package name="libcfg6" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libcfitsio7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libcfitsio8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libchamplain-0_12-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcheese-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcheese-gtk25" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
