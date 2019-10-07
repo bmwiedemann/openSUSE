@@ -5,7 +5,7 @@
   <attribute namespace="OSRT" name="IgnoredIssues">
     <value>last_seen:
   boo#1091353: '20190620'
-  boo#1094987: '20191004'
+  boo#1094987: '20191005'
   boo#1106840: '20190414'
   boo#1113042: '20190506'
   boo#1115946: '20190423'
@@ -189,7 +189,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20191005</value>
+    <value>20191007</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64

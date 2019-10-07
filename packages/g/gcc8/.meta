@@ -1,8 +1,0 @@
-<package name="gcc8" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="devel:gcc" package="gcc8"/>
-  <build>
-    <disable/>
-  </build>
-</package>
