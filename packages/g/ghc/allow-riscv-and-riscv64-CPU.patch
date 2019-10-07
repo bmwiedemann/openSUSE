@@ -1,0 +1,31 @@
+Description: cherry-pick of upstream commits
+ beba89a0f16681c85d39fc8a894bde4162ff492a.patch:
+ 5e63a25249f3cb07300258e115af9ff55079d2ea.patch:
+Last-Update: 2019-05-27
+
+Index: ghc-8.6.5/aclocal.m4
+===================================================================
+--- ghc-8.6.5.orig/aclocal.m4
++++ ghc-8.6.5/aclocal.m4
+@@ -217,7 +217,7 @@ AC_DEFUN([FPTOOLS_SET_HASKELL_PLATFORM_V
+         mipsel)
+             test -z "[$]2" || eval "[$]2=ArchMipsel"
+             ;;
+-        hppa|hppa1_1|ia64|m68k|nios2|rs6000|s390|s390x|sh4|vax)
++        hppa|hppa1_1|ia64|m68k|nios2|riscv32|riscv64|rs6000|s390|s390x|sh4|vax)
+             test -z "[$]2" || eval "[$]2=ArchUnknown"
+             ;;
+         *)
+@@ -1906,6 +1906,12 @@ case "$1" in
+   powerpc*)
+     $2="powerpc"
+     ;;
++  riscv64*)
++    $2="riscv64"
++    ;;
++  riscv|riscv32*)
++    $2="riscv32"
++    ;;
+   rs6000)
+     $2="rs6000"
+     ;;

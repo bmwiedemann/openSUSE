@@ -182,7 +182,7 @@ export CXX=g++-5
 export CC=gcc-7
 export CXX=g++-7
 %endif
-%cmake_kf5 -d build --  -DCMAKE_INSTALL_PREFIX=%{_prefix} -DCMAKE_BUILD_TYPE:STRING="RelWithDebInfo" -DSKIP_MODULES="plasmalnf"
+%cmake_kf5 -d build --  -DCMAKE_INSTALL_PREFIX=%{_prefix} -DCMAKE_BUILD_TYPE:STRING="RelWithDebInfo" -DSKIP_MODULES="plasmalnf" -DBoost_NO_BOOST_CMAKE=ON
 make %{?_smp_mflags}
 
 %install

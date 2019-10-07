@@ -101,6 +101,8 @@ rm -r xbean-finder/src/main/java/org/apache/xbean/finder{,/archive}/Bundle*
 sed -i "s|<Private-Package>|<!--Private-Package>|" xbean-blueprint/pom.xml
 sed -i "s|</Private-Package>|</Private-Package-->|" xbean-blueprint/pom.xml
 
+%pom_change_dep -r -f ::::: :::::
+
 %build
 for i in xbean-asm-util xbean-classpath xbean-finder xbean-naming xbean-reflect; do
   pushd $i
@@ -120,10 +122,10 @@ javadoc -d build/apidoc -source 6 -encoding utf-8 \
 # jars && poms
 install -dm 755 %{buildroot}%{_javadir}/%{name}
 install -dm 755 %{buildroot}%{_mavenpomdir}/%{name}
-install -m 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
-%add_maven_depmap %{name}/%{name}.pom
 for i in xbean-asm-util xbean-classpath xbean-finder xbean-naming xbean-reflect; do
   install -m 0644 $i/$i.jar %{buildroot}%{_javadir}/%{name}
+  %pom_remove_parent ${i}
+  %pom_xpath_inject pom:project "<groupId>org.apache.xbean</groupId><version>%{version}</version>" ${i}
   install -m 0644 $i/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/$i.pom
   %add_maven_depmap %{name}/$i.pom %{name}/$i.jar
 done

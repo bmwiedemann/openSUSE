@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_maxminddb
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -26,8 +26,11 @@ Group:          Productivity/Networking/Web/Servers
 URL:            https://maxmind.github.io/mod_maxminddb/
 Source:         https://github.com/maxmind/mod_maxminddb/releases/download/%{version}/mod_maxminddb-%{version}.tar.gz
 Source2:        %{modname}.conf
+# PATCH-FIX-OPENSUSE apache2-mod_maxminddb-build.patch -- Fix built on factory versions
+Patch1:         apache2-mod_maxminddb-build.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
+BuildRequires:  automake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libmaxminddb)
 Requires:       %{apache_mmn}
@@ -39,11 +42,13 @@ This module allows you to query MaxMind DB files from Apache 2.2+ using the libm
 
 %prep
 %setup -q -n %{modname}-%{version}
+%patch1 -p1
 # This config file is used for loading the module without
 # enabling any databases which are not available on OBS
 echo "MaxMindDBEnable On" > test-enable-module.conf
 
 %build
+autoreconf
 %configure
 make %{?_smp_mflags}
 

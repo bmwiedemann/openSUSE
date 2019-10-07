@@ -22,7 +22,6 @@ Version:        3.1.2
 Release:        0
 Summary:        A cross-platform curses-based monitoring tool
 License:        LGPL-3.0-only
-Group:          Development/Languages/Python
 URL:            https://github.com/nicolargo/glances
 Source:         https://github.com/nicolargo/glances/archive/v%{version}.tar.gz
 Patch0:         adjust-data-files.patch
@@ -30,6 +29,7 @@ Patch1:         remove-shebang.patch
 Patch2:         skip-online-tests.patch
 BuildRequires:  %{python_module bottle}
 BuildRequires:  %{python_module curses}
+BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module netifaces}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module psutil >= 5.3.0}
@@ -37,17 +37,14 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-future
 Requires:       python-bottle
 Requires:       python-curses
+Requires:       python-future
 Requires:       python-psutil >= 5.6.3
 Requires:       python-requests
 Provides:       python-glances = %{version}
 Obsoletes:      python-glances < %{version}
 BuildArch:      noarch
-%ifpython2
-Requires:       python-future
-%endif
 %ifpython3
 Provides:       glances
 %endif

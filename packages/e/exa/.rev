@@ -45,4 +45,12 @@
   * Fix Git status not working for paths containing ../ (f1a5b64)</comment>
     <requestid>715592</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>087e95c2954da7136d77584a30df60f7</srcmd5>
+    <version>0.9.0</version>
+    <time>1570448888</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>735561</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct  7 09:39:56 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Build also the ssh* providers
+
+-------------------------------------------------------------------
+Sat Oct  5 16:53:43 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Avoid unversioned dependencies
+
+-------------------------------------------------------------------
 Fri Mar 15 11:16:53 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of maven-wagon 3.2.0

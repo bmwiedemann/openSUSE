@@ -59,6 +59,7 @@ HTTP connections in a resource efficient manner.
 
 %package        javadoc
 Summary:        API documentation for %{name}
+Group:          Development/Libraries/Java
 
 %description    javadoc
 %{summary}.
@@ -108,6 +109,8 @@ for module in httpcore httpcore-nio; do
 	  <groupId>org.apache.httpcomponents</groupId>
 	  <version>%{version}</version>" $module
 	%pom_remove_parent $module
+	# adds version "any" if none is specified
+	%pom_change_dep ::::: ::::: $module
 done
 
 # install JARs to httpcomponents/ for compatibility reasons

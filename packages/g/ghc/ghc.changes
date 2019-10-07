@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 23 09:28:37 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- Enable build on riscv64
+- Add memory constraints for riscv64, restrict to 2 jobs
+- allow-riscv-and-riscv64-CPU.patch: recognize riscv64 as architecture
+- Apply Disable-unboxed-arrays.patch also on s390x
+
+-------------------------------------------------------------------
 Thu Apr 25 22:11:40 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 8.6.5

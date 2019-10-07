@@ -18,7 +18,7 @@
 
 
 Name:           osc-plugin-collab
-Version:        0.102
+Version:        0.103
 Release:        0
 Summary:        Plugin to make collaboration easier with osc
 License:        BSD-3-Clause
@@ -64,10 +64,6 @@ install -D -m0644 %{S:0} %{buildroot}%{oscplugindir}/osc-collab.py
 
 %files
 %defattr(-, root, root)
-%{oscplugindir}/osc-collab.py
-%if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version}
-%{oscplugindir}/osc-collab.pyc
-%{oscplugindir}/osc-collab.pyo
-%endif
+%{oscplugindir}/osc-collab.py*
 
 %changelog

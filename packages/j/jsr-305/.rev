@@ -136,4 +136,12 @@
     <comment>Fix a broken symlink</comment>
     <requestid>684773</requestid>
   </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>e2b95f098b55f3df670fefa0c03df3fe</srcmd5>
+    <version>0.1+20130910</version>
+    <time>1570448779</time>
+    <user>dimstar_suse</user>
+    <comment>Remove references to parent from the pom file</comment>
+    <requestid>735437</requestid>
+  </revision>
 </revisionlist>

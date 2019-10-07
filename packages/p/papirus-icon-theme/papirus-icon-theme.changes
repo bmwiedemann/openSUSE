@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct  2 03:46:11 UTC 2019 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20190919
+  - Added icons
+  - Updated icons
+  - Changes and fixes
+    * Added symlinks for apps of MX Linux #1905
+    * Fixed distribute-vertical-gaps Inkscape icon #1897
+    * Make Delete icon different from Move to Trash #1892
+    * Removed symlinks for Firefox 3, 3.5, 4, and Aurora
+
+-------------------------------------------------------------------
 Sat Aug 17 11:22:37 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 20190817

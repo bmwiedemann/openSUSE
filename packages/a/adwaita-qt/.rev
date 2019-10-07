@@ -23,4 +23,13 @@
     <comment> (forwarded request 720598 from dimstar)</comment>
     <requestid>720989</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f9520381620491d109184c74d939ae91</srcmd5>
+    <version>1.1.0</version>
+    <time>1570448910</time>
+    <user>dimstar_suse</user>
+    <comment>- Add adwaita-qt-upstream-fixes.patch: Pull in latest fixes from
+  upstream. (forwarded request 735350 from iznogood)</comment>
+    <requestid>735602</requestid>
+  </revision>
 </revisionlist>

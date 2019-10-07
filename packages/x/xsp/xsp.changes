@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 23 06:38:31 UTC 2019 - Thorsten Kukuk <kukuk@suse.com>
+
+- removal of SuSEfirewall2 files, since SuSEfirewall2 has been
+  replaced by firewalld, see [1].
+  [1]: https://lists.opensuse.org/opensuse-factory/2019-01/msg00490.html
+
+-------------------------------------------------------------------
 Sun May 12 07:52:43 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Add asp-state4-signals.patch in order to fix

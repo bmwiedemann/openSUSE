@@ -63,6 +63,10 @@ dos2unix sampleUses/pom.xml
 # do not build sampleUses module - it causes Javadoc generation to fail
 %pom_disable_module sampleUses
 
+for module in ri tcl sampleUses proposedAnnotations; do
+  %pom_remove_parent ${module}
+done
+
 %build
 export OPT_JAR_LIST=:
 export CLASSPATH=
@@ -79,8 +83,6 @@ ln -s %{name}.jar %{buildroot}%{_javadir}/jsr305.jar
 
 # poms
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
-%add_maven_depmap %{name}/%{name}.pom
 install -pm 0644 ri/pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar -a com.google.code.findbugs:jsr305
 

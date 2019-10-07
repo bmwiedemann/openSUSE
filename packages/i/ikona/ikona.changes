@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Oct  6 01:48:56 UTC 2019 - Carson Black <uhhadd@gmail.com>
+
+- Disable services so version won't get changed
+
+-------------------------------------------------------------------
+Thu Sep 19 15:19:37 UTC 2019 - uhhadd@gmail.com
+
+- Update to version v0.7.1
+
+-------------------------------------------------------------------
+Wed Sep 11 02:05:48 UTC 2019 - uhhadd@gmail.com
+
+- Update to version v0.7+git1.827b694:
+  * Remove unused templates from CMakeLists.txt
+
+-------------------------------------------------------------------
+Wed Sep 11 01:47:46 UTC 2019 - uhhadd@gmail.com
+
+- Update to version v0.7+git0.4df67cf:
+  * Update appdata & desktop metadata
+  * CMake
+  * Montages, but on the command line
+  * Montages
+  * Removed CMakeLists.txt.
+  * Use checked instead of disabled to show current view
+  * Change default homepage from HIG home to HIG icons
+  * Use QtQuick.Dialogs instead of kdialog and remove unused imports
+  * Update README.md
+  * Tidy up the repository and the program
+
+-------------------------------------------------------------------
 Sat Aug 10 00:31:04 UTC 2019 - Carson Black <uhhadd@gmail.com>
 
 - Update to 0.6.1.1, bugfix for stylesheet injection

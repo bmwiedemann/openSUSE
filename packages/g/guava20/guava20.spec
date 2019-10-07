@@ -97,7 +97,12 @@ annotations=$(
 find -name '*.java' | xargs sed -ri \
     "s/^import .*\.($annotations);//;s/@($annotations)"'\>\s*(\((("[^"]*")|([^)]*))\))?//'
 
-%pom_remove_parent .
+for mod in guava  guava-gwt  guava-testlib  guava-tests; do
+  %pom_remove_parent ${mod}
+  %pom_xpath_inject "pom:project" "
+    <groupId>com.google.guava</groupId>
+    <version>%{version}</version>" ${mod}
+done
 
 %build
 mkdir -p guava/build/classes
@@ -130,9 +135,7 @@ install -m 0644 guava-testlib/build/guava-testlib-%{version}.jar %{buildroot}%{_
 
 # poms
 install -dm 755 %{buildroot}%{_mavenpomdir}/%{name}
-install -m 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/guava-parent.pom
 install -m 0644 guava/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/guava.pom
-%add_maven_depmap %{name}/guava-parent.pom -v %{guava_compat_version}
 %add_maven_depmap %{name}/guava.pom %{name}/guava.jar -v %{guava_compat_version} -a %{guava_alias}
 
 install -m 0644 guava-testlib/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/guava-testlib.pom
@@ -146,8 +149,6 @@ cp -a build/apidoc/* %{buildroot}%{_javadocdir}/%{name}
 %files -f .mfiles
 %doc CONTRIBUTORS README*
 %license COPYING
-%dir %{_javadir}/%{name}
-%dir %{_mavenpomdir}/%{name}
 
 %files javadoc
 %license COPYING

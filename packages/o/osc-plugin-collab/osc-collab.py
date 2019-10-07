@@ -34,6 +34,8 @@
 # Authors: Vincent Untz <vuntz@opensuse.org>
 #
 
+from __future__ import print_function
+
 import difflib
 import locale
 import re
@@ -69,7 +71,7 @@ from osc import cmdln
 from osc import conf
 
 
-OSC_COLLAB_VERSION = '0.102'
+OSC_COLLAB_VERSION = '0.103'
 
 # This is a hack to have osc ignore the file we create in a package directory.
 _osc_collab_helper_prefixes = [ 'osc-collab.', 'osc-gnome.' ]
@@ -2501,6 +2503,7 @@ def _collab_update_changes(changes_file, upstream_version, email):
     old_tz = os.getenv('TZ')
     locale.setlocale(locale.LC_TIME, 'C')
     os.putenv('TZ', 'UTC')
+    time.tzset()
 
     os.write(fdout, b'-------------------------------------------------------------------\n')
     write_line = '%s - %s\n' % (time.strftime("%a %b %e %H:%M:%S %Z %Y"), email)
@@ -2516,6 +2519,7 @@ def _collab_update_changes(changes_file, upstream_version, email):
         os.putenv('TZ', old_tz)
     else:
         os.unsetenv('TZ')
+    time.tzset()
 
     fin = open(changes_file, 'r')
     while True:

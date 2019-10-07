@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct  6 17:35:09 UTC 2019 - vuntz@opensuse.org
+
+- Update to version 0.103:
+  + Call time.tzset() after changing the timezone (#53)
+  + Fix python2 compatibility (#49)
+- Fix packaging for new versions of Fedora that don't include
+  .pyc/.pyo files
+
+-------------------------------------------------------------------
 Wed Sep 11 14:17:25 UTC 2019 - vuntz@opensuse.org
 
 - Update to version 0.102:

@@ -82,6 +82,11 @@ This package contains the API documentation for %{name}.
 
 %pom_xpath_remove pom:build/pom:extensions
 
+for i in main tck; do
+  %pom_remove_parent ${i}
+  %pom_xpath_inject "pom:project" "<groupId>org.objenesis</groupId><version>%{version}</version>" ${i}
+done
+
 %build
 mkdir -p main/build/classes
 javac -d main/build/classes -source 6 -target 6 -encoding utf-8 \
@@ -131,10 +136,8 @@ install -m 0644 %{name}-tck-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{nam
 
 # poms
 install -dm 755 %{buildroot}%{_mavenpomdir}/%{name}
-install -m 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-parent.pom
 install -m 0644 main/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
 install -m 0644 tck/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-tck.pom
-%add_maven_depmap %{name}/%{name}-parent.pom
 %add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar
 %add_maven_depmap %{name}/%{name}-tck.pom %{name}/%{name}-tck.jar
 

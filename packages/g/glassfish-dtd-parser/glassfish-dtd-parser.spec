@@ -25,6 +25,7 @@ Group:          Development/Libraries/Java
 URL:            http://java.net/projects/dtd-parser
 Source0:        https://github.com/javaee/jaxb-dtd-parser/archive/%{version}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 9
 BuildRequires:  maven-local
 BuildRequires:  mvn(net.java:jvnet-parent:pom:)
 BuildArch:      noarch

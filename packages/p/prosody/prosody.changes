@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Oct  7 05:19:21 UTC 2019 - mvetter@suse.com
+
+- Update to 0.11.3:
+  * MUC: Advertise XEP-0410 support
+  * mod_muc_mam: Import cleanup mechanism from mod_mam (fixes #672: mod_muc_mam: Archive expiry)
+  * mod_bosh: Handle missing wait attribute (fixes #1288: BOSH: Traceback on missing ‘wait’ attribute)
+  * mod_storage_sql: Handle SQLite DELETE with LIMIT being optional (fixes #1359: Sqlite3 archive_store:delete error in prepared statement)
+  * mod_c2s: Fixed #1313: attempt to call a field ‘data’ (a nil value))
+  * net.server_epoll: Restore wantread flag after pause (fixes #1354: server_epoll: Race in chunked reads)
+  * util.encodings: Allow unassigned code points in ICU mode to match libidn behavior (fixes #1348: Different treatment of unassigned code points between libidn and ICU )
+  * util.ip: Add missing netmask for 192.168⁄16 range (fixes #1343)
+  * util.hashes: Use HMAC function provided by OpenSSL (fixes #1345: util.hashes: HMAC-SHA-512 implementation broken)
+  * net.dns: Close resolv.conf handle when done (fixes #1342)
+  * mod_websocket: Clone stanza before mutating (fixes #1398: mod_websocket leaks explicit xmlns attr)
+  * mod_announce: Check for admin on current virtualhost instead of global (fixes #1365: “host admins” should be able to use mod_announce as well as “global admins”) (thanks yc)
+  * mod_blocklist: Trigger resend of presence when unblocking a contact (fixes #1380: Prosody does not send presence when unblocking (XEP-0191))
+  * mod_vcard_legacy: Multiple improvements (fixes #1289: mod_vcard_legacy upgrade experience):
+    - mod_vcard_legacy: Don’t overwrite existing PEP data
+    - mod_vcard_legacy: Handle partial migration
+    - mod_vcard_legacy: Allow disabling vcard conversion
+    - mod_vcard_legacy: Adapt node defaults to number of avatars
+  * mod_muc_mam: Strip the stanza ‘to’ attribute (fixes #1259: [muc_mam] forwarded stanza has a “to” attribute while spec says it MUST NOT)
+  * util.pubsub: Validate node configuration on node creation (fixes #1328: Pubsub: Node configuration not validated on node creation)
+  * mod_pep/mod_pubsub: Simplify configuration for storage of node data (fixes #1320)
+  * MUC: Fix delay@from to be room JID (fixes #1416: MUC: Wrong delay@from on historic messages)
+  * mod_mam/mod_muc_mam: Cache last date that archive owner has messages to reduce writes (fixes #1368: Archive cleanup doubles number of storage access)
+  * mod_mam: Perform message expiry based on building an index by date (backport of 39ee70fbb009 from trunk)
+- For details see: https://blog.prosody.im/prosody-0.11.3-released/
+- Remove prosody-0.11-upstream-fixes.patch
+
+-------------------------------------------------------------------
 Tue Jul 16 08:39:17 UTC 2019 - mvetter@suse.com
 
 - bsc#1141599: Add upstream fixes on 0.11 branch since 0.11.2

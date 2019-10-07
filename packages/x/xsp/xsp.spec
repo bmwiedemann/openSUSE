@@ -57,7 +57,6 @@ Requires(post): user(wwwrun)
 Requires(post): group(www)
 %endif
 %{?systemd_ordering}
-%define _fwdefdir /etc/sysconfig/SuSEfirewall2.d/services
 %define xspConfigsLocation %{_sysconfdir}/xsp/2.0
 %define xspAvailableApps %{xspConfigsLocation}/applications-available
 %define xspEnabledApps %{xspConfigsLocation}/applications-enabled
@@ -105,7 +104,6 @@ make
 rm -rf %{buildroot}%{_prefix}/lib/xsp/unittests
 mkdir -p %{buildroot}%{_datadir}
 mv %{buildroot}%{_prefix}/lib/pkgconfig %{buildroot}%{_datadir}
-mkdir -p %{buildroot}/%{_fwdefdir}
 mkdir -p %{buildroot}/%{xspAvailableApps}
 mkdir -p %{buildroot}/%{xspEnabledApps}
 mkdir -p %{buildroot}/etc/logrotate.d/
@@ -116,7 +114,6 @@ mkdir -p %{buildroot}/usr/lib/tmpfiles.d/
 mkdir -p %{buildroot}%{_sbindir}
 install -m 644 man/mono-asp-apps.1 %{buildroot}%{_mandir}/man1/mono-asp-apps.1
 install -m 644 packaging/opensuse/sysconfig.xsp2 %{buildroot}%{_fillupdir} 
-install -m 644 packaging/opensuse/xsp2.fw %{buildroot}/%{_fwdefdir}/xsp2
 install -m 644 packaging/opensuse/xsp2.logrotate %{buildroot}/etc/logrotate.d/xsp2
 # new {
 mkdir -p %{buildroot}%{_datadir}/%{name}/scripts
@@ -174,7 +171,6 @@ install -d -m 0711 --owner=wwwrun --group=www /run/xsp2
 # %%{_datadir}/%%{name}/scripts/xsp2.init
 %{_unitdir}/xsp2.service
 # } end new
-%config %{_fwdefdir}/xsp2
 %config /etc/logrotate.d/xsp2
 %{_fillupdir}/*
 %attr(0711,wwwrun,www) /srv/xsp2

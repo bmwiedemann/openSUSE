@@ -302,4 +302,12 @@ Latest changes:
     <comment>- replace /sbin/mkinitrd with %regenerate_initrd_posttrans</comment>
     <requestid>734949</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>f91d2cc8f614c932250141f542daf040</srcmd5>
+    <version>0.7.1</version>
+    <time>1570448768</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>735308</requestid>
+  </revision>
 </revisionlist>

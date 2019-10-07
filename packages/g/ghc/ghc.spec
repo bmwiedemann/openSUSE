@@ -26,7 +26,7 @@
 %define with_libnuma 0
 %endif
 
-%global unregisterised_archs s390 s390x
+%global unregisterised_archs s390 s390x riscv64
 
 Name:           ghc
 Version:        8.6.5
@@ -35,7 +35,7 @@ Url:            http://haskell.org/ghc/dist/%{version}/%{name}-%{version}-src.ta
 Summary:        The Glorious Glasgow Haskell Compiler
 License:        BSD-3-Clause
 Group:          Development/Languages/Other
-ExclusiveArch:  aarch64 %{arm} %{ix86} x86_64 ppc64 ppc64le s390x
+ExclusiveArch:  aarch64 %{arm} %{ix86} x86_64 ppc64 ppc64le s390x riscv64
 # hard to port to PIE, some prebuilt static libraries are non-PIC ...
 #!BuildIgnore:  gcc-PIE
 BuildRequires:  binutils-devel
@@ -93,6 +93,8 @@ Patch1:         0001-Fix-check-whether-GCC-supports-__atomic_-builtins.patch
 Patch2:         D5212.patch
 # PATCH-FIX-UPSTREAM Disable-unboxed-arrays.patch ptrommler@icloud.com -- Do not use unboxed arrays on big-endian platforms. See Haskell Trac #15411.
 Patch3:         Disable-unboxed-arrays.patch
+# PATCH-FIX-UPSTREAM allow-riscv-and-riscv64-CPU.patch slyfox@gentoo.org -- aclocal.m4: allow riscv and riscv64 CPU
+Patch4:         allow-riscv-and-riscv64-CPU.patch
 # PATCH-FIX-UPSTREAM ghc-pie.patch - set linux as default PIE platform
 Patch35:        ghc-pie.patch
 # PATCH-FIX-OPENSUSE ghc-8.0.2-Cabal-dynlibdir.patch -- Fix shared library directory location.
@@ -204,9 +206,10 @@ except the ghc library, which is installed by the toplevel ghc metapackage.
 %setup -q
 %patch1 -p1
 %patch2 -p1
-%ifarch ppc64
+%ifarch ppc64 s390 s390x
 %patch3 -p1
 %endif
+%patch4 -p1
 %patch35 -p1
 %patch100 -p1
 %patch110 -p1
@@ -264,7 +267,7 @@ export CFLAGS="${CFLAGS:-%optflags}"
   --sharedstatedir=%{_sharedstatedir} --mandir=%{_mandir} \
   --with-system-libffi 
 
-%ifnarch s390 s390x
+%ifnarch s390 s390x riscv64
 %if 0%{?suse_version} >= 1500
 %limit_build -m 2000
 make %{?_smp_mflags}

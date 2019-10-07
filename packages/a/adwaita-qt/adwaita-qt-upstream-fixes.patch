@@ -1,0 +1,145 @@
+diff --git a/style/adwaita.h b/style/adwaita.h
+index b7c830a..09b970a 100644
+--- a/style/adwaita.h
++++ b/style/adwaita.h
+@@ -136,7 +136,7 @@ namespace Adwaita
+ 
+         // line editors
+         LineEdit_FrameWidth = 3,
+-        LineEdit_MarginHeight = 4,
++        LineEdit_MarginHeight = 2,
+         LineEdit_MarginWidth = 8,
+         LineEdit_MinHeight = 36,
+         LineEdit_MinWidth = 80,
+diff --git a/style/adwaitahelper.cpp b/style/adwaitahelper.cpp
+index 9c9e905..604b9e3 100644
+--- a/style/adwaitahelper.cpp
++++ b/style/adwaitahelper.cpp
+@@ -182,7 +182,7 @@ QColor Helper::buttonBackgroundColor(const QPalette &palette, bool mouseOver, bo
+             // Hovered button for normal mode is bg_color
+             return mix(buttonBackground, background, opacity);
+         }
+-    } else if(mouseOver) {
++    } else if (mouseOver) {
+         if (darkMode) {
+             // Hovered button for dark mode is darken(bg_color, 0.01)
+             return darken(background, 0.01);
+@@ -575,10 +575,10 @@ void Helper::renderMenuFrame(QPainter *painter, const QRect &rect, const QColor
+         painter->setBrush(Qt::NoBrush);
+ 
+     painter->setRenderHint(QPainter::Antialiasing, false);
+-    QRect frameRect(rect);
++    QRectF frameRect(rect);
+     if (outline.isValid()) {
+         painter->setPen(outline);
+-        frameRect.adjust(0, 0, -1, -1);
++        frameRect.adjust(0.5, 0.5, -0.5, -0.5);
+     } else
+         painter->setPen(Qt::NoPen);
+ 
+diff --git a/style/adwaitastyle.cpp b/style/adwaitastyle.cpp
+index aeeb8ae..224fa7f 100644
+--- a/style/adwaitastyle.cpp
++++ b/style/adwaitastyle.cpp
+@@ -392,7 +392,12 @@ void Style::polish(QWidget *widget)
+     } else if (widget->inherits("QTipLabel")) {
+         setTranslucentBackground(widget);
+     } else if (QLineEdit *lineEdit = qobject_cast<QLineEdit *>(widget)) {
+-        lineEdit->setTextMargins(Metrics::LineEdit_MarginWidth, Metrics::LineEdit_MarginHeight, Metrics::LineEdit_MarginWidth, Metrics::LineEdit_MarginHeight);
++        // Do not use additional margin if the QLineEdit is really small
++        const bool useMarginWidth = lineEdit->width() > lineEdit->fontMetrics().width("#####");
++        const bool useMarginHeight = lineEdit->height() > lineEdit->fontMetrics().height() + (2 * Metrics::LineEdit_MarginHeight);
++        const int marginHeight = useMarginHeight ? Metrics::LineEdit_MarginHeight : 0;
++        const int marginWidth = useMarginWidth ? Metrics::LineEdit_MarginWidth : 0;
++        lineEdit->setTextMargins(marginWidth, marginHeight, marginWidth, marginHeight);
+     } else if (QSpinBox *spinBox = qobject_cast<QSpinBox *>(widget)) {
+         if (!spinBox->isEnabled()) {
+             QPalette pal = spinBox->palette();
+@@ -1266,9 +1271,6 @@ void Style::drawControl(ControlElement element, const QStyleOption *option, QPai
+         case CE_MenuBarItem:
+             fcn = &Style::drawMenuBarItemControl;
+             break;
+-        case CE_MenuEmptyArea:
+-            fcn = &Style::drawMenuEmptyAreaControl;
+-            break;
+         case CE_MenuItem:
+             fcn = &Style::drawMenuItemControl;
+             break;
+@@ -3391,7 +3393,6 @@ bool Style::drawFrameLineEditPrimitive(const QStyleOption *option, QPainter *pai
+ 
+         // focus takes precedence over mouse over
+         _animations->inputWidgetEngine().updateState(widget, AnimationFocus, hasFocus);
+-        _animations->inputWidgetEngine().updateState(widget, AnimationHover, mouseOver && !hasFocus);
+ 
+         // retrieve animation mode and opacity
+         AnimationMode mode(_animations->inputWidgetEngine().frameAnimationMode(widget));
+@@ -4844,27 +4845,12 @@ bool Style::drawMenuBarItemControl(const QStyleOption *option, QPainter *painter
+     QRect textRect = option->fontMetrics.boundingRect(rect, textFlags, menuItemOption->text);
+ 
+     // render text
+-    const QPalette::ColorRole role = (useStrongFocus && sunken) ? QPalette::Highlight : QPalette::WindowText;
++    const QPalette::ColorRole role = (useStrongFocus && sunken) ? QPalette::Link : QPalette::WindowText;
+     drawItemText(painter, textRect, textFlags, palette, enabled, menuItemOption->text, role);
+ 
+     return true;
+ }
+ 
+-bool Style::drawMenuEmptyAreaControl(const QStyleOption *option, QPainter *painter, const QWidget *widget) const
+-{
+-    if (_isGNOME)
+-        painter->setPen(Qt::transparent);
+-    else
+-        painter->setPen(option->palette.window().color().darker(150));
+-
+-    painter->setBrush(option->palette.base().color());
+-    if (_isGNOME)
+-        painter->drawRect(option->rect);
+-    else
+-        painter->drawRect(option->rect.adjusted(0, 0, -1, -1));
+-    return true;
+-}
+-
+ //___________________________________________________________________________________
+ bool Style::drawMenuItemControl(const QStyleOption *option, QPainter *painter, const QWidget *widget) const
+ {
+@@ -4878,11 +4864,6 @@ bool Style::drawMenuItemControl(const QStyleOption *option, QPainter *painter, c
+     // copy rect and palette
+     const QRect &rect(option->rect);
+     const QPalette &palette(option->palette);
+-    const QColor &background(palette.color(QPalette::Active, QPalette::Base));
+-
+-    painter->setPen(Qt::NoPen);
+-    painter->setBrush(background);
+-    painter->drawRect(rect);
+ 
+     // deal with separators
+     if (menuItemOption->menuItemType == QStyleOptionMenuItem::Separator) {
+@@ -6273,11 +6254,13 @@ bool Style::drawComboBoxComplexControl(const QStyleOptionComplex *option, QPaint
+                 AnimationMode mode(_animations->inputWidgetEngine().buttonAnimationMode(widget));
+                 qreal opacity(_animations->inputWidgetEngine().buttonOpacity(widget));
+ 
+-                QColor shadow(palette.color(QPalette::Shadow));
++                // define colors
++                QColor shadow(_helper->shadowColor(palette));
+                 QColor outline(_helper->buttonOutlineColor(palette, mouseOver, hasFocus, opacity, mode, _dark));
+                 QColor background(_helper->buttonBackgroundColor(palette, mouseOver, hasFocus, sunken, opacity, mode, _dark));
+ 
+-                _helper->renderFlatButtonFrame(painter, subControlRect(CC_ComboBox, option, SC_ComboBoxArrow, widget), background, outline, shadow, hasFocus, sunken, mouseOver, enabled && windowActive);
++                // render
++                _helper->renderButtonFrame(painter, rect, background, outline, shadow, hasFocus, sunken, mouseOver, enabled && windowActive, _dark);
+ 
+                 QStyleOptionComplex tmpOpt(*option);
+                 tmpOpt.rect.setWidth(tmpOpt.rect.width() - subControlRect(CC_ComboBox, option, SC_ComboBoxArrow, widget).width() + 3);
+diff --git a/style/adwaitastyle.h b/style/adwaitastyle.h
+index 2809286..ae6b13e 100644
+--- a/style/adwaitastyle.h
++++ b/style/adwaitastyle.h
+@@ -312,7 +312,6 @@ protected:
+     virtual bool drawItemViewItemControl(const QStyleOption *option, QPainter *painter, const QWidget *widget) const;
+     virtual bool drawMenuBarEmptyArea(const QStyleOption *option, QPainter *painter, const QWidget *widget) const;
+     virtual bool drawMenuBarItemControl(const QStyleOption *option, QPainter *painter, const QWidget *widget) const;
+-    virtual bool drawMenuEmptyAreaControl(const QStyleOption *option, QPainter *painter, const QWidget *widget) const;
+     virtual bool drawMenuItemControl(const QStyleOption *option, QPainter *painter, const QWidget *widget) const;
+     virtual bool drawProgressBarControl(const QStyleOption *option, QPainter *painter, const QWidget *widget) const;
+     virtual bool drawProgressBarContentsControl(const QStyleOption *option, QPainter *painter, const QWidget *widget) const;
+

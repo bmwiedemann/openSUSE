@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct  6 21:27:25 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- python-future is actually required even for py3k version.
+  https://www.reddit.com/r/openSUSE/comments/de7trv/glances_fails_to_run_with_error/
+
+-------------------------------------------------------------------
 Tue Sep 24 09:09:52 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.1.2:

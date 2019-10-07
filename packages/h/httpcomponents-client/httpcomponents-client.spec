@@ -35,10 +35,10 @@ BuildRequires:  fdupes
 BuildRequires:  httpcomponents-core
 BuildRequires:  javapackages-local
 BuildRequires:  publicsuffix
+Requires:       publicsuffix
 Requires:       mvn(commons-codec:commons-codec)
 Requires:       mvn(commons-logging:commons-logging)
 Requires:       mvn(org.apache.httpcomponents:httpcore)
-Requires:       publicsuffix
 BuildArch:      noarch
 %if %{with tests}
 BuildRequires:  ant-junit
@@ -171,6 +171,8 @@ for module in fluent-hc httpclient httpclient-cache httpmime; do
 	  <groupId>org.apache.httpcomponents</groupId>
 	  <version>%{version}</version>" $module
 	%pom_remove_parent $module
+	# adds version "any" if none is specified
+	%pom_change_dep ::::: ::::: $module
 done
 
 %build

@@ -155,4 +155,41 @@
     variable.</comment>
     <requestid>717740</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fd0485bce92921895e05a7b4cf3c14ba</srcmd5>
+    <version>3.4</version>
+    <time>1570448885</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4:
+  * Add xfce4-panel plugin. Written-by: @Misko_2083
+  * Add mate-panel plugin. This contrib/ package is still in early development.
+    Written-by: @Misko_2083
+  * Add the following themes: col3 and the latest bunsenlabs_lithium
+  * Man pages have seen the following improvements:
+    - Better html support and available at https://jgmenu.github.io/
+    - A new jgmenuunicode(7) guide
+    - jgmenu(1) details on IPC variables, widgets and special pango markup
+      characters (thanks @johnraff)
+  * Support sourcing of CSV files. Suggested-by: @johnraff
+    Use the following syntax to include other files from CSV files
+    . &lt;file&gt;
+    Tilde (~) is expanded, but not environment variables.
+  * In jgmenu, improve handling of tags.
+    - Remove ^checkout() items without matching tags. This permits the
+      default prepend.csv and append.csv files to include ^checkout()
+      items which only appear if an optional package providing a sourced
+      csv file is installed. Suggested-by: @johnraff
+    - Die on duplicate tags
+    - Survive missing tags when actioning ^checkout() and ^pipe().
+      Reported-by: @johnraff
+  * Improve apps module by filtering out duplicate .desktop files. For
+    example if foo.desktop exists in ~/.local/share/applications/, then
+    ignore foo.desktopp in /usr/share/applications/
+  * Improve lx modules by ensuring tag names are unique
+  * Improve ob module by
+    - Escaping &lt; and &gt; to support pango markup
+    - Fixing pipemenu inline menu bug. Reported-by: @johnraff
+  * Add .clang-format and a wrapper to cope with foreach iterators</comment>
+    <requestid>735560</requestid>
+  </revision>
 </revisionlist>

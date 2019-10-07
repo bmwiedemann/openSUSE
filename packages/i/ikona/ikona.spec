@@ -15,16 +15,17 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define rdns_name	me.appadeia.ikona
 
 Name:           ikona
-Version:        0.6.1.1
+Version:        0.7.1
 Release:        0
 Summary:        Icon Preview designed for Plasma
 License:        GPL-2.0-or-later
 Group:          System/X11/Utilities
-URL:            https://github.com/Appadeia/ikona
-Source0:        %{name}-%{version}.tar.gz
+URL:            https://invent.kde.org/KDE/ikona
+Source0:        %{name}-v%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5Kirigami2)
@@ -42,7 +43,7 @@ Requires:       plasma-framework-components
 A utility to preview icons as they are being made.
 
 %prep
-%setup -q
+%setup -q -n %{name}-v%{version}
 
 %build
 %cmake
@@ -54,15 +55,9 @@ A utility to preview icons as they are being made.
 %files
 %license LICENSE
 %doc README.md
-%dir %{_datadir}/templates
-%dir %{_datadir}/templates/.source
 %{_bindir}/ikona
 %{_datadir}/icons/hicolor/scalable/apps/%{rdns_name}.svg
 %{_datadir}/applications/%{rdns_name}.desktop
 %{_datadir}/metainfo/%{rdns_name}.appdata.xml
-%{_datadir}/templates/.source/svg-{16,22,32}-monochrome.svg
-%{_datadir}/templates/.source/svg-{32,48,64}-color.svg
-%{_datadir}/templates/svg-{16,22,32}-monochrome.desktop
-%{_datadir}/templates/svg-{32,48,64}-color.desktop
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 07 04:54:18 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20191007.c1cb6a0c:
+  * Replace kiwi-templates-SLES15-JeOS with kiwi-templates-JeOS. Package was rename in SLE-15-SP2.
+
+-------------------------------------------------------------------
 Mon Sep 30 07:56:16 UTC 2019 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20190930.3d04dde8:

@@ -61,6 +61,7 @@ cp %{SOURCE1} .
 cp %{SOURCE100} build.xml
 
 %pom_remove_parent
+%pom_change_dep -r -f ::::: ::::: 
 
 %build
 mkdir -p lib

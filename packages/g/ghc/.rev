@@ -731,4 +731,12 @@ Please wait for SR #249835 (ghc-bootstrap).</comment>
  * A build system issue where use of GCC with -flto broke configure was fixed (forwarded request 698157 from mimi_vx)</comment>
     <requestid>698158</requestid>
   </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>36dd2e67f49c0f50a3cf9a2bdefa04d8</srcmd5>
+    <version>8.6.5</version>
+    <time>1570448764</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>734101</requestid>
+  </revision>
 </revisionlist>

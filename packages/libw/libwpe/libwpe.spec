@@ -16,17 +16,18 @@
 #
 
 
+# When updating this, do so in baselibs.conf too
 %define major_minor 1.0
 %define sover 1_0-1
 
 Name:           libwpe
-Version:        1.4.0
+Version:        1.4.0.1
 Release:        0
 Summary:        General-purpose library for the WPE-flavored port of WebKit
 License:        BSD-2-Clause
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/WebPlatformForEmbedded/libwpe
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source99:       baselibs.conf
 
 BuildRequires:  c++_compiler
 BuildRequires:  cmake

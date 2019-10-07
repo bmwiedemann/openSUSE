@@ -7,4 +7,12 @@
     <comment>The old mod_geoip module will stop working 2019 because maxmind will no longer update the old database format.</comment>
     <requestid>611225</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a954ea3dc481eaee0b41c55d950de435</srcmd5>
+    <version>1.1.0</version>
+    <time>1570449027</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>735648</requestid>
+  </revision>
 </revisionlist>

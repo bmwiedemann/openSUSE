@@ -17,7 +17,7 @@
 
 
 Name:           jgmenu
-Version:        3.3
+Version:        3.4
 Release:        0
 Summary:        Small X11 menu intended to be used with openbox and tint2
 License:        GPL-2.0-only

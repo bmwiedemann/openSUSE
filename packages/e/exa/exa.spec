@@ -41,9 +41,8 @@ With similar but not identical options.
 %prep
 %setup -q
 %setup -q -D -T -a 1
-mkdir cargo-home
-cat >cargo-home/config <<EOF
-
+mkdir .cargo
+cat >.cargo/config <<EOF
 [source.crates-io]
 registry = 'https://github.com/rust-lang/crates.io-index'
 replace-with = 'vendored-sources'
@@ -52,13 +51,11 @@ directory = './vendor'
 EOF
 
 %build
-export CARGO_HOME=`pwd`/cargo-home/
 cargo build --release %{?_smp_mflags}
 
 %install
 mkdir build
-export CARGO_HOME=`pwd`/cargo-home/
-cargo install --root=build
+cargo install --path . --root=build
 mkdir -p %{buildroot}%{_bindir}
 install -Dm0755 build/bin/exa %{buildroot}%{_bindir}/exa
 

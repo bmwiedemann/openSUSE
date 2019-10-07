@@ -29,7 +29,10 @@ Summary:        Adwaita theme for Qt-based applications
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://github.com/FedoraQt/adwaita-qt
-Source0:        https://github.com/FedoraQt/adwaita-qt/archive/%{version}.tar.gz
+Source0:        %{url}/archive/%{version}.tar.gz
+# PATCH-FIX-UPSTREAM adwaita-qt-upstream-fixes.patch -- Pull in latest fixes from upstream
+Patch0:         adwaita-qt-upstream-fixes.patch
+
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  libqt5-qtbase-devel
@@ -57,7 +60,7 @@ Supplements:    packageand(libQt5Core5:gnome-session)
 Adwaita theme variant for applications utilizing Qt5
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %if %{with qt4}

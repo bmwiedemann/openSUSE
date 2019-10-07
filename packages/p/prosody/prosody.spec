@@ -18,7 +18,7 @@
 
 %define _piddir /run
 Name:           prosody
-Version:        0.11.2
+Version:        0.11.3
 Release:        0
 Summary:        Communications server for Jabber/XMPP
 License:        MIT
@@ -34,8 +34,6 @@ Patch0:         prosody-lua51coexist.patch
 Patch1:         prosody-configure.patch
 # PATCH-FIX-OPENSUSE marguerite@opensuse.org - enable Unix features
 Patch3:         prosody-cfg.patch
-# PATCH-FIX-UPSTREAM mvetter@suse.com - upstream fixes on 0.11 branch since 0.11.2 release
-Patch100:       prosody-0.11-upstream-fixes.patch
 BuildRequires:  libidn-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  lua51-devel
@@ -66,7 +64,6 @@ data with.
 %patch0 -p1
 %patch1 -p1
 %patch3 -p1
-%patch100 -p1
 
 sed -i 's|@@INCLUDEDIR@@|%{_includedir}|g;' configure
 sed -i 's|@@INCLUDEDIR@@|%{_includedir}|g;' makefile

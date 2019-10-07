@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct  6 17:07:47 UTC 2019 - vuntz@opensuse.org
+
+- Update to version 2.4.1:
+  + Remove mono-addins dependency
+  + Improve gbrainy.appdata.xml.in metadata
+  + Remove unused code and scripts variables
+- Remove pkgconfig(mono-addins) BuildRequires: dependency is now
+  gone.
+
+-------------------------------------------------------------------
 Wed Mar 20 22:00:24 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.4.0:

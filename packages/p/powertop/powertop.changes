@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Oct  7 06:11:21 UTC 2019 - mvetter@suse.com
+
+- Update to version 2.11:
+  * This release has an important feature to support runtime pm
+    enabling for AHCI. A few bug fixes focusing to support PowerTop
+	to run in newer platforms. We have also enabled support for
+	Intel’s Ice Lake server and Ice Lake client with new Sunny Cove
+	microarchitecture, Tiger Lake mobile and Tiger Lake desktop,
+	and atom based Tremont (Elkhart Lake). 
+  * Add bash command-line completion.
+  * wakeup.h: include limits.h
+  * src/devices/ahci.cpp: fix: Remove the humanname from ahci_data array
+  * src/tuning/tuning.cpp: fix: Update the size of tuned_data array
+  * runtime_tunables: Add runtime pm enabling support for ahci
+  * src/cpu/cpu.cpp: Bug fix: Increase the char buffer size
+    in enumerate_cpus()
+  * src/parameters: fix: set the global parameter
+    "global_power_override" to 1 to get power estimate
+  * Fix vertical scrolling in powertop-2.10
+  * Add compatibility for non GNU strerror_r.
+  * Enable support for ICL/ICX platform
+  * Enable support for TGL platform.
+  * Enable support for EHL platform.
+  * po: regenerate with new POT and strings
+  * powertop.pot: Fix Project-Id-Version
+  * src/main: Add missing pthread header
+  * intel_cpus.cpp: Change open parameter to const char *
+  * Make the wakeup toggle text clearer
+- See https://01.org/powertop/downloads/powertop-v2.11-0
+
+-------------------------------------------------------------------
 Tue Jan  8 12:00:55 UTC 2019 - mvetter@suse.com
 
 - Update to version 2.10:

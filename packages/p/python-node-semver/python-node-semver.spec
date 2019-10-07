@@ -31,6 +31,8 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# See https://github.com/k-bx/python-semver/issues/67 for why conflicts is needed
+Conflicts:      python-semver
 BuildArch:      noarch
 %python_subpackages
 

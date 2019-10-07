@@ -82,30 +82,27 @@ if [ "$1" -eq 0 ]; then
    export PATH=$PATH:/usr/sbin
    %{_sbindir}/prime-select unset
 fi
-exit 0
 
 %postun
 if [ "$1" -eq 0 ]; then
-   # regenerate initrd without any suse-prime modprobe config files
-   %regenerate_initrd_posttrans
+   %{?regenerate_initrd_post}
 fi
-exit 0
+
+%posttrans
+%{?regenerate_initrd_posttrans}
 
 %triggerin -- nvidia-gfxG05-kmp-default
 # get rid of nvidia kernel modules in initrd
 rm -f /etc/dracut.conf.d/50-nvidia-default.conf
-%regenerate_initrd_posttrans
-exit 0
+%{?regenerate_initrd_post}
 
 %pre bbswitch
 %service_add_pre prime-select.service
-exit 0
 
 %post bbswitch
 %{?regenerate_initrd_post}
 %service_add_post prime-select.service
 systemctl enable prime-select.service
-exit 0
 
 %preun bbswitch
 %service_del_preun prime-select.service
@@ -119,11 +116,9 @@ exit 0
 %postun bbswitch
 %{?regenerate_initrd_post}
 %service_del_postun prime-select.service
-exit 0
 
 %posttrans bbswitch
 %{?regenerate_initrd_posttrans}
-exit 0
 
 %files
 %defattr(-,root,root)

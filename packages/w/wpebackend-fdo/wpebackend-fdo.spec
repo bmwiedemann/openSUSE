@@ -23,9 +23,9 @@ Version:        1.4.0
 Release:        0
 Summary:        A WPE backend designed for Linux desktop systems
 License:        BSD-2-Clause
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/Igalia/WPEBackend-fdo
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source99:       baselibs.conf
 
 BuildRequires:  c++_compiler
 BuildRequires:  cmake

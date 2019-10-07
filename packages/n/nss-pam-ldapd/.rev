@@ -60,4 +60,15 @@
   * create nslcd socket after dropping privileges to avoid slow start-ups</comment>
     <requestid>632824</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>13aecdb17e678be92a1545cff9501f8f</srcmd5>
+    <version>0.9.11</version>
+    <time>1570448881</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.11:
+  * add support for Python 3 in pynslcd and utilities
+  * fix crash in chsh.ldap (thanks Mizunashi Mana)
+  * test suite improvements</comment>
+    <requestid>735558</requestid>
+  </revision>
 </revisionlist>

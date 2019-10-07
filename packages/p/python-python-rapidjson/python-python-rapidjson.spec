@@ -52,7 +52,7 @@ instances) and JSON Schema validation capabilities.
 
 %install
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 export LANG=en_US.UTF-8

@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>684765</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ec40f6c042127dfbd8ba5578d8b3d465</srcmd5>
+    <version>4.5.6</version>
+    <time>1570448778</time>
+    <user>dimstar_suse</user>
+    <comment>avoid version-less dependencies that gradle does not like</comment>
+    <requestid>735436</requestid>
+  </revision>
 </revisionlist>

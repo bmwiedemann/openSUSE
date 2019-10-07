@@ -32,7 +32,11 @@ BuildRequires:  fdupes
 BuildRequires:  httpcomponents-client
 BuildRequires:  httpcomponents-core
 BuildRequires:  javapackages-local
+BuildRequires:  jsch
+BuildRequires:  jsch-agent-proxy-connector-factory
+BuildRequires:  jsch-agent-proxy-jsch
 BuildRequires:  jsoup
+BuildRequires:  plexus-interactivity-api
 BuildRequires:  plexus-metadata-generator
 BuildRequires:  plexus-utils
 BuildRequires:  slf4j
@@ -115,6 +119,40 @@ Requires:       mvn(org.codehaus.plexus:plexus-utils)
 %description http-lightweight
 The http-lightweight module for %{name}.
 
+%package ssh-common
+Summary:        The ssh-common module for %{name}
+Group:          Development/Libraries/Java
+Requires:       mvn(org.apache.maven.wagon:wagon-provider-api) = %{version}
+Requires:       mvn(org.codehaus.plexus:plexus-interactivity-api)
+Requires:       mvn(org.codehaus.plexus:plexus-utils)
+
+%description ssh-common
+The ssh-common module for %{name}
+
+%package ssh
+Summary:        The ssh module for %{name}
+Group:          Development/Libraries/Java
+Requires:       mvn(com.jcraft:jsch)
+Requires:       mvn(com.jcraft:jsch.agentproxy.connector-factory)
+Requires:       mvn(com.jcraft:jsch.agentproxy.jsch)
+Requires:       mvn(org.apache.maven.wagon:wagon-provider-api) = %{version}
+Requires:       mvn(org.apache.maven.wagon:wagon-ssh-common) = %{version}
+Requires:       mvn(org.codehaus.plexus:plexus-interactivity-api)
+Requires:       mvn(org.codehaus.plexus:plexus-utils)
+
+%description ssh
+The ssh module for %{name}
+
+%package ssh-external
+Summary:        The ssh-external module for %{name}
+Group:          Development/Libraries/Java
+Requires:       mvn(org.apache.maven.wagon:wagon-provider-api) = %{version}
+Requires:       mvn(org.apache.maven.wagon:wagon-ssh-common) = %{version}
+Requires:       mvn(org.codehaus.plexus:plexus-utils)
+
+%description ssh-external
+The ssh-external module for %{name}
+
 %package javadoc
 Summary:        Javadoc for %{name}
 Group:          Documentation/HTML
@@ -141,11 +179,7 @@ Javadoc for %{name}.
 
 %pom_disable_module wagon-scm wagon-providers
 
-%pom_disable_module wagon-ssh wagon-providers
-%pom_disable_module wagon-ssh-common wagon-providers
-%pom_disable_module wagon-ssh-external wagon-providers
-
-for i in file ftp http http-shared http-lightweight; do
+for i in file ftp http http-shared http-lightweight ssh-common ssh ssh-external; do
   %pom_remove_parent wagon-providers/wagon-${i}
   %pom_xpath_inject "pom:project" "
     <groupId>org.apache.maven.wagon</groupId>
@@ -156,12 +190,15 @@ done
   <groupId>org.apache.maven.wagon</groupId>
   <version>%{version}</version>" wagon-provider-api
 
+%pom_change_dep -r -f ::::: :::::
+
 %build
 mkdir -p lib
 build-jar-repository -s lib \
-	commons-io commons-net \
+	commons-io commons-net jsch \
+	jsch.agentproxy.core jsch.agentproxy.jsch jsch.agentproxy.connector-factory \
 	httpcomponents/httpclient httpcomponents/httpcore \
-	jsoup/jsoup plexus/utils slf4j/api
+	jsoup/jsoup plexus/utils plexus/interactivity-api slf4j/api 
 # tests are disabled because of missing dependencies
 %{ant} package javadoc
 
@@ -169,14 +206,14 @@ build-jar-repository -s lib \
 # jars
 install -dm 0755 %{buildroot}%{_javadir}/%{name}
 install -pm 0644 wagon-provider-api/target/wagon-provider-api-%{version}.jar %{buildroot}%{_javadir}/%{name}/provider-api.jar
-for i in file ftp http http-shared http-lightweight; do
+for i in file ftp http http-shared http-lightweight ssh-common ssh ssh-external; do
   install -pm 0644 wagon-providers/wagon-${i}/target/wagon-${i}-%{version}.jar %{buildroot}%{_javadir}/%{name}/${i}.jar
 done
 # poms
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
 install -pm 0644 wagon-provider-api/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/provider-api.pom
 %add_maven_depmap %{name}/provider-api.pom %{name}/provider-api.jar -f provider-api
-for i in file ftp http http-shared http-lightweight; do
+for i in file ftp http http-shared http-lightweight ssh-common ssh ssh-external; do
   install -pm 0644 wagon-providers/wagon-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
   if [ x${i} = xhttp ]; then
     # Maven requires Wagon HTTP with classifier "shaded"
@@ -188,7 +225,7 @@ done
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}/provider-api
 cp -pr wagon-provider-api/target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/provider-api
-for i in file ftp http http-shared http-lightweight; do
+for i in file ftp http http-shared http-lightweight ssh-common ssh ssh-external; do
   install -dm 0755 %{buildroot}%{_javadocdir}/%{name}/${i}
   cp -pr wagon-providers/wagon-${i}/target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/${i}/
 done
@@ -207,6 +244,12 @@ done
 %files http-shared -f .mfiles-http-shared
 
 %files http-lightweight -f .mfiles-http-lightweight
+
+%files ssh-common -f .mfiles-ssh-common
+
+%files ssh -f .mfiles-ssh
+
+%files ssh-external -f .mfiles-ssh-external
 
 %files javadoc
 %license LICENSE NOTICE

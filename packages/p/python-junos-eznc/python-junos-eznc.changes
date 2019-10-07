@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Mon Oct  7 08:24:05 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update tests and dependencies to make the package work
+
+-------------------------------------------------------------------
+Sun Sep 29 18:50:20 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Use github source URL
+- Add python-transitions to (Build)Requires
+- Update to version 2.3.0
+  Features Added
+  * TableView extended for vty/cli unstructured command
+  * Added junos SAX parser feature
+  * Added TableView Null Key support
+  * Added command tables
+  * Added reboot support for junos vmhost platform
+  * Added ElsEthernetSwitchingTable TableView
+  * Added callback functionality to ftp get
+  * Extended start shell support for Bourne shell
+  * Added at option support for sw.reboot() and sw.poweroff()
+  * Added generalized function for ssh-client
+  Bugs Fixed
+  * Updated fact collection for srx platform
+  * Supports new ssh private key format
+  * Handled exception in dev.close()
+  * Updated file transfers to use context manager to open files
+  * Fixed reboot and poweroff behavior
+
+-------------------------------------------------------------------
+Thu Mar  7 13:40:54 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Fix singlespec Requires
+
+-------------------------------------------------------------------
+Wed Mar  6 13:34:51 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Update to 2.2.0
+  No changelog provided
+
+-------------------------------------------------------------------
+Mon Aug  7 08:26:58 UTC 2017 - mardnh@gmx.de
+
+- Update to version 2.1.5
+- Convert to singlespec
+
+-------------------------------------------------------------------
+Sat Sep  3 18:04:55 UTC 2016 - mardnh@gmx.de
+
+- initial package, version 2.0.0
+

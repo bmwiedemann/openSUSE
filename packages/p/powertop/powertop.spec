@@ -17,14 +17,15 @@
 
 
 Name:           powertop
-Version:        2.10
+Version:        2.11
 Release:        0
 #Git-Clone:	git://github.com/fenrus75/powertop
 Summary:        A Linux Tool to Find out What is Using Power on a Laptop
 License:        GPL-2.0-only
 Group:          System/Monitoring
 URL:            https://01.org/powertop/
-Source0:        https://01.org/sites/default/files/downloads/%{name}-v%{version}.tar.gz
+#Source0:        https://01.org/sites/default/files/downloads/#{name}-v#{version}.tar.gz
+Source0:        https://01.org/sites/default/files/downloads/powertop-v2.11-1-g7ef7f79.tar_0.gz
 Source1:        powertop.service
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
@@ -46,7 +47,7 @@ doing in terms of power savings.
 %lang_package
 
 %prep
-%setup -q -n powertop-v%{version}
+%setup -q -n powertop-v2.11-1-g7ef7f79
 
 # Delete objects files left in tarball
 find . -name '*.o' -delete
@@ -89,6 +90,7 @@ touch %{_localstatedir}/cache/powertop/saved_results.powertop
 %{_mandir}/man8/powertop.8%{?ext_man}
 %{_unitdir}/%{name}.service
 %{_sbindir}/rc%{name}
+%{_datadir}/bash-completion/completions/powertop
 
 %files lang -f %{name}.lang
 

@@ -11,7 +11,7 @@ Index: contrib/dist/rpm/ftp.pamd
  
  # If this is enabled, anonymous logins will fail because the 'ftp' user does
  # not have a "valid" shell, as listed in /etc/shells.
-@@ -11,5 +12,8 @@ auth       required	pam_unix.so shadow n
+@@ -11,5 +12,9 @@ auth       required	pam_unix.so shadow n
  #
  #auth       required	pam_shells.so
  
@@ -22,6 +22,7 @@ Index: contrib/dist/rpm/ftp.pamd
 +account  required       pam_unix2.so
 +password required       pam_unix2.so
 +session  required       pam_unix2.so
++session  optional       pam_keyinit.so revoke
 Index: contrib/dist/rpm/proftpd.logrotate
 ===================================================================
 --- contrib/dist/rpm/proftpd.logrotate.orig

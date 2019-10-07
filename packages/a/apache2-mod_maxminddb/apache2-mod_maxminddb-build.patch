@@ -1,0 +1,12 @@
+diff -ur mod_maxminddb-1.1.0-orig/src/Makefile.am mod_maxminddb-1.1.0/src/Makefile.am
+--- mod_maxminddb-1.1.0-orig/src/Makefile.am	2014-11-18 00:00:15.000000000 +0100
++++ mod_maxminddb-1.1.0/src/Makefile.am	2019-10-07 11:29:38.515732542 +0200
+@@ -6,7 +6,7 @@
+ 
+ #   compile the DSO file
+ module: mod_maxminddb.c $(TARGET)
+-	$(APXS) -c $(LDFLAGS) $(LIBMAXMINDDB_LDFLAGS) $(LIBS) $(WC) $(APXS_LDFLAGS) mod_maxminddb.c
++	$(APXS) -c $(LIBMAXMINDDB_LDFLAGS) $(LIBS) $(WC) $(APXS_LDFLAGS) mod_maxminddb.c
+ 
+ install-exec-local: module
+ 	$(APXS) -i -a -n maxminddb .libs/mod_maxminddb.so
