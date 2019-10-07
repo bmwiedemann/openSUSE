@@ -1,5 +1,4 @@
 From: Jan Engelhardt <jengelh@inai.de>
-Date: Wed, 21 Jan 2015 22:57:10 +0100
 Subject: xfrm: support displaying transformations used for Mobile IPv6
 Patch-mainline: No
 
@@ -7,15 +6,13 @@ Patch taken from mip6d-ng c397c3b4a16bb2e31a86f6c5e344a1278d1577c5
 and included in openSUSE so as to facilitate mip6d-ng.
 ---
  ip/ipxfrm.c      | 2 +-
- ip/xfrm_policy.c | 1 +
- ip/xfrm_state.c  | 1 +
- 3 files changed, 3 insertions(+), 1 deletion(-)
+ ip/xfrm_policy.c | 3 ++-
+ ip/xfrm_state.c  | 3 ++-
+ 3 files changed, 5 insertions(+), 3 deletions(-)
 
-diff --git a/ip/ipxfrm.c b/ip/ipxfrm.c
-index d5eb22e25476..b72858d8a210 100644
 --- a/ip/ipxfrm.c
 +++ b/ip/ipxfrm.c
-@@ -114,7 +114,7 @@ struct typeent {
+@@ -103,7 +103,7 @@ struct typeent {
  static const struct typeent xfrmproto_types[] = {
  	{ "esp", IPPROTO_ESP }, { "ah", IPPROTO_AH }, { "comp", IPPROTO_COMP },
  	{ "route2", IPPROTO_ROUTING }, { "hao", IPPROTO_DSTOPTS },
@@ -24,30 +21,33 @@ index d5eb22e25476..b72858d8a210 100644
  	{ NULL, -1 }
  };
  
-diff --git a/ip/xfrm_policy.c b/ip/xfrm_policy.c
-index de689c4d86c4..6ee2ec6abeba 100644
 --- a/ip/xfrm_policy.c
 +++ b/ip/xfrm_policy.c
-@@ -93,6 +93,7 @@ static void usage(void)
- 	fprintf(stderr, "%s | ", strxf_xfrmproto(IPPROTO_ESP));
- 	fprintf(stderr, "%s | ", strxf_xfrmproto(IPPROTO_AH));
- 	fprintf(stderr, "%s | ", strxf_xfrmproto(IPPROTO_COMP));
-+	fprintf(stderr, "%s | ", strxf_xfrmproto(IPPROTO_IPV6));
- 	fprintf(stderr, "%s | ", strxf_xfrmproto(IPPROTO_ROUTING));
- 	fprintf(stderr, "%s\n", strxf_xfrmproto(IPPROTO_DSTOPTS));
- 	fprintf(stderr, "MODE := transport | tunnel | beet | ro | in_trigger\n");
-diff --git a/ip/xfrm_state.c b/ip/xfrm_state.c
-index e11c93bf1c3b..b501e6d04727 100644
+@@ -97,10 +97,11 @@ static void usage(void)
+ 		"ID := [ src ADDR ] [ dst ADDR ] [ proto XFRM-PROTO ] [ spi SPI ]\n"
+ 		"XFRM-PROTO := ");
+ 	fprintf(stderr,
+-		"%s | %s | %s | %s | %s\n",
++		"%s | %s | %s | %s | %s | %s\n",
+ 		strxf_xfrmproto(IPPROTO_ESP),
+ 		strxf_xfrmproto(IPPROTO_AH),
+ 		strxf_xfrmproto(IPPROTO_COMP),
++		strxf_xfrmproto(IPPROTO_IPV6),
+ 		strxf_xfrmproto(IPPROTO_ROUTING),
+ 		strxf_xfrmproto(IPPROTO_DSTOPTS));
+ 	fprintf(stderr,
 --- a/ip/xfrm_state.c
 +++ b/ip/xfrm_state.c
-@@ -73,6 +73,7 @@ static void usage(void)
- 	fprintf(stderr, "%s | ", strxf_xfrmproto(IPPROTO_ESP));
- 	fprintf(stderr, "%s | ", strxf_xfrmproto(IPPROTO_AH));
- 	fprintf(stderr, "%s | ", strxf_xfrmproto(IPPROTO_COMP));
-+	fprintf(stderr, "%s | ", strxf_xfrmproto(IPPROTO_IPV6));
- 	fprintf(stderr, "%s | ", strxf_xfrmproto(IPPROTO_ROUTING));
- 	fprintf(stderr, "%s\n", strxf_xfrmproto(IPPROTO_DSTOPTS));
- 	fprintf(stderr, "ALGO-LIST := [ ALGO-LIST ] ALGO\n");
--- 
-2.14.1
-
+@@ -76,10 +76,11 @@ static void usage(void)
+ 		"ID := [ src ADDR ] [ dst ADDR ] [ proto XFRM-PROTO ] [ spi SPI ]\n"
+ 		"XFRM-PROTO := ");
+ 	fprintf(stderr,
+-		"%s | %s | %s | %s | %s\n",
++		"%s | %s | %s | %s | %s | %s\n",
+ 		strxf_xfrmproto(IPPROTO_ESP),
+ 		strxf_xfrmproto(IPPROTO_AH),
+ 		strxf_xfrmproto(IPPROTO_COMP),
++		strxf_xfrmproto(IPPROTO_IPV6),
+ 		strxf_xfrmproto(IPPROTO_ROUTING),
+ 		strxf_xfrmproto(IPPROTO_DSTOPTS));
+ 	fprintf(stderr,

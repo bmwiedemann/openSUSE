@@ -17,9 +17,9 @@
 
 
 Name:           iproute2
-Version:        5.2
+Version:        5.3
 Release:        0
-%define rversion 5.2.0
+%define rversion 5.3.0
 Summary:        Linux network configuration utilities
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Routing
@@ -102,6 +102,9 @@ find . -name *.orig -delete
 # https://bugzilla.novell.com/show_bug.cgi?id=388021
 xt_libdir="$(pkg-config xtables --variable=xtlibdir)"
 xt_cflags="$(pkg-config xtables --cflags)"
+%if 0%{!?make_build:1}
+%define make_build make %{?_smp_mflags}
+%endif
 %make_build CCOPTS="-D_GNU_SOURCE %optflags -Wstrict-prototypes -Wno-error -fPIC -DXT_LIB_DIR=\\\"$xt_libdir\\\" $xt_cflags"
 
 %install
