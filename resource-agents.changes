@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 30 13:08:03 UTC 2019 - dakechi@suse.com
+
+- Update to version 4.3.0+git178.b102c209:
+  * Adapt azure-lb Resource Agent to support socat usage too (bsc#1150046)
+  * redis: consider redis-cli features to choose optimal password passing method and warning filtering workaround (#1403)
+  * fix master_is_active() erroneously reporting there is master when there is no fixes #1399
+  * nfsserver: use "--no-legend" for systemctl "list-unit-files" calls
+  * nfsserver: performance improvements for systemd enabled systems
+  * IPaddr2: IPv6 return empty string when sanitation fails
+  * Low: IPaddr2: fix to work properly with unsanitized IPv6 addresses
+  * Filesystem: improve "/" check for bind mounts
+  * IPsrcaddr: add destination and table parameters
+
+-------------------------------------------------------------------
 Mon Sep 09 13:12:47 UTC 2019 - varkoly@suse.com
 
 - Update to version 4.3.0+git161.00cb192d:
