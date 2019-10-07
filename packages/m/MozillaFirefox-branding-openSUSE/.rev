@@ -461,4 +461,41 @@
     <comment>- layout.word_select.stop_at_punctuation -&gt; true (boo#1133163)</comment>
     <requestid>729383</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>c100760130cd5c75e7ee588ee2f9f6dc</srcmd5>
+    <version>68</version>
+    <time>1570448485</time>
+    <user>dimstar_suse</user>
+    <comment>- removed extensions preferences (moved to core package)
+- use multibuild to provide branding package for
+  MozillaFirefox and firefox-esr
+
+
+- removed extensions preferences (moved to core package)
+- use multibuild to provide branding package for
+  MozillaFirefox and firefox-esr
+
+- layout.word_select.stop_at_punctuation -&gt; true (boo#1133163)
+
+- recognize Leap 15.2 via sle_version
+
+- recognize Leap 15 via sle_version (required for &gt;= 15.1)
+
+- bump version to 60 for SLE compatibility (bsc#1128316)
+
+- removed intl.locale.matchOS
+  * it's not used in recent versions and it was set in the general
+    openSUSE Firefox package since 2011
+
+- recognize Leap 15.0 (boo#1087713)
+
+- really fix boo#1036679 (recognize Leap 42.3)
+
+- recognize Leap 42.3 (boo#1036679)
+
+- Fix openSUSE bookmarks not added to default profile (boo#1014292)
+  * Move openSUSE bookmarks from toolbar to menu
+  * Use local favicon for all bookmarks (Firefox 45+)</comment>
+    <requestid>735346</requestid>
+  </revision>
 </revisionlist>

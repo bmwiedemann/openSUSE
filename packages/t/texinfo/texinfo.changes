@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Sep 27 14:29:01 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- use filetrigger instead of transfiletrigger
+
+-------------------------------------------------------------------
+Fri Sep 27 10:35:46 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Temporary disable %transfiletriggerin/%transfiletriggerun and
+  reintroduce %post/%preun with %install_info/%install_info_delete
+  as libzypp currentyl can not handle first case (boo#1041742) 
+
+-------------------------------------------------------------------
+Fri Sep 27 08:56:50 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Fix patch texinfo-zlib.patch to enable open of compressed info
+  files without using a compressor utility (boo#1152105)
+
+-------------------------------------------------------------------
+Thu Sep 26 12:41:40 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- For bug boo#1152105 split of the info pages of package info to be
+  able to preinstall gzip before/with first install-info call
+
+-------------------------------------------------------------------
+Thu Sep 26 11:53:33 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- implement file trigger for installing and removing info pages
+  (boo#1152105)
+
+-------------------------------------------------------------------
 Wed Aug 28 08:24:13 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Move texindex.awk to package texinfo as texindex(1) is part of

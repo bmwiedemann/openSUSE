@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-ocamlbuild
-Version:        0.11.0
+Version:        0.14.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Generic build tool for building OCaml library and programs
@@ -49,7 +49,7 @@ The %{name}-devel package contains libraries and signature files for
 developing applications that use %{name}.
 
 %prep
-%setup -q -n ocamlbuild-%{version}
+%autosetup -p1
 
 %build
 tee %{name}.sh <<'_EOF_'
@@ -77,19 +77,18 @@ DESTDIR=%{buildroot} %{?_smp_mflags}
 find %{buildroot} -ls
 
 %files
-%defattr(-,root,root)
-%doc Changes  LICENSE
+%doc Changes
+%license LICENSE
 %{_bindir}/*
 %dir %{_libdir}/ocaml
 %dir %{_libdir}/ocaml/*
 %{_libdir}/ocaml/*/*.cma
 %{_libdir}/ocaml/*/*.cmi
+%{_libdir}/ocaml/*/*.cmti
 %{_libdir}/ocaml/*/*.cmo
 %{_mandir}/man*/*
 
 %files devel
-%defattr(-,root,root,-)
-%doc LICENSE
 %dir %{_libdir}/ocaml
 %dir %{_libdir}/ocaml/*
 %if 0%{?ocaml_native_compiler}

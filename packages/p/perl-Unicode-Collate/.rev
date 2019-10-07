@@ -25,4 +25,12 @@ but builtin version of current perl does not fit this!</comment>
     <comment></comment>
     <requestid>598486</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fd071b704cf4866db1bc0642ca49f41f</srcmd5>
+    <version>1.27</version>
+    <time>1570448304</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>733996</requestid>
+  </revision>
 </revisionlist>

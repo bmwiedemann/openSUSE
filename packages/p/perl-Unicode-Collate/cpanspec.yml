@@ -4,8 +4,8 @@
 #sources:
 #  - source1
 #  - source2
-patches:
-  no-dot-inc.patch: -p1
+#patches:
+#  no-dot-inc.patch: -p1
 #preamble: |-
 # BuildRequires:  gcc-c++
 #post_prep: |-

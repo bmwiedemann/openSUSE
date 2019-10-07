@@ -5,6 +5,33 @@ Tue Sep 24 07:59:04 UTC 2019 - Martin Liška <mliska@suse.cz>
   boo#1149705.
 
 -------------------------------------------------------------------
+Sun Sep 22 16:45:39 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- Update to 3.4.7:
+  * Robustness: the tlsproxy(8) daemon could go into a loop, logging
+    a flood of error messages. Problem reported by Andreas Schulze
+    after enabling SMTP/TLS connection reuse.
+  * Workaround: OpenSSL changed an SSL_Shutdown() non-error result
+    value into an error result value, causing logfile noise.
+  * Configuration: the new 'TLS fast shutdown' parameter name was
+    implemented incorrectly. The documentation said
+    "tls_fast_shutdown_enable", but the code said "tls_fast_shutdown".
+    This was fixed by changing the code, because no-one is expected
+    to override the default.
+  * Performance: workaround for poor TCP loopback performance on
+    LINUX, where getsockopt(..., TCP_MAXSEG, ...) reports a bogus
+    TCP maximal segment size that is 1/2 to 1/3 of the real MSS.
+    To avoid client-side Nagle delays or server-side delayed ACKs
+    caused by multiple smaller-than-MSS writes, Postfix chooses a
+    VSTREAM buffer size that is a small multiple of the reported
+    bogus MSS. This workaround increases the multiplier from 2x to
+    4x.
+  * Robustness: the Postfix Dovecot client could segfault (null
+    pointer read) or cause an SMTP server assertion to fail when
+    talking to a fake Dovecot server. The Postfix Dovecot client
+    now logs a proper error instead.
+
+-------------------------------------------------------------------
 Thu Sep 19 06:20:48 UTC 2019 - Peter Varkoly <varkoly@suse.com>
 
 - bsc#1120757 L3: File Permissions->Paranoid can cause a system hang

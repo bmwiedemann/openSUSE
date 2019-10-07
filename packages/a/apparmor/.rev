@@ -1776,4 +1776,15 @@ libapparmor:
     for the detailed upstream changelog</comment>
     <requestid>710683</requestid>
   </revision>
+  <revision rev="130" vrev="2">
+    <srcmd5>aae1ebcc09d9cee9c9157bf070993ded</srcmd5>
+    <version>2.13.3</version>
+    <time>1570448215</time>
+    <user>dimstar_suse</user>
+    <comment>- add abstractions-ssl-certbot-paths.diff - add certbot paths to
+  abstractions/ssl_certs and abstractions/ssl_keys
+
+- add apparmor-krb5-conf-d.diff for kerberos client</comment>
+    <requestid>733858</requestid>
+  </revision>
 </revisionlist>

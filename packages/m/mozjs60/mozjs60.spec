@@ -19,7 +19,7 @@
 
 %global major   60
 Name:           mozjs%{major}
-Version:        60.4.0
+Version:        60.9.0
 Release:        0
 Summary:        MozJS, or SpiderMonkey, is Mozilla's JavaScript engine written in C and C++
 License:        MPL-2.0
@@ -33,6 +33,20 @@ Source2:        icudt60b.dat.xz
 Patch0:         mozjs60-fix-armv6-build.patch
 Patch1:         mozjs60-mozilla-s390-bigendian.patch
 Patch2:         riscv-support.patch
+Patch3:         Always-use-the-equivalent-year-to-determine-the-time-zone.patch
+# Build fixes - https://hg.mozilla.org/mozilla-central/rev/ca36a6c4f8a4a0ddaa033fdbe20836d87bbfb873
+Patch4:         emitter.patch
+Patch5:         emitter_test.patch
+Patch6:         init_patch.patch
+# s390x fixes:
+# https://salsa.debian.org/gnome-team/mozjs60/blob/debian/master/debian/patches/enddianness.patch
+Patch7:         enddianness.patch
+# https://salsa.debian.org/gnome-team/mozjs60/blob/debian/master/debian/patches/jsproperty-endian.patch
+Patch8:         jsproperty-endian.patch
+# aarch64 fixes for -O2
+Patch9:         Save-x28-before-clobbering-it-in-the-regex-compiler.patch
+Patch10:        Save-and-restore-non-volatile-x28-on-ARM64-for-generated-unboxed-object-constructor.patch
+
 BuildRequires:  autoconf213
 BuildRequires:  gcc-c++
 BuildRequires:  memory-constraints
@@ -84,19 +98,19 @@ This package contains the header file and tools to develop with JavaScript.
 %patch1 -p1
 %endif
 %patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
 
 # Remove zlib directory to make sure the use of zlib from distro:
 rm -rf modules/zlib
 
 cd js/src
-# Make mozjs these functions visible:
-# JS::UTF8CharsToNewTwoByteCharsZ and JS::LossyUTF8CharsToNewTwoByteCharsZ
-sed -i 's|^\(TwoByteCharsZ\)$|JS_PUBLIC_API\(\1\)|g' vm/CharacterEncoding.cpp
-sed -i 's|^extern\ \(TwoByteCharsZ\)$|JS_PUBLIC_API\(\1\)|g' ../public/CharacterEncoding.h
-# Also make visible js::DisableExtraThreads()
-sed -i '/^void$/{$!{N;s/^\(void\)\n\(js\:\:DisableExtraThreads()\)$/JS_PUBLIC_API\(\1\)\n\2/;ty;P;D;:y}}'  vm/Runtime.cpp
-sed -i 's|\(void\) \(DisableExtraThreads()\)|JS_PUBLIC_API\(\1\) \2|g'  vm/Runtime.h
-
 # FIX-ME: This should be removed when bmo#1322212 and bmo#1264836 are resolved:
 xz -dk %{SOURCE2}
 DATFILE=%{SOURCE2}

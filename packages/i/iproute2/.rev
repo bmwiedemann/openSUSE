@@ -829,4 +829,13 @@ require bash-completion for iproute2-bash-completion]</comment>
     <comment>- Use FAT LTO objects in order to provide proper static library. (forwarded request 722578 from marxin)</comment>
     <requestid>722593</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>0615fcfcb108aefb69455a0ca9cfe6f8</srcmd5>
+    <version>5.3</version>
+    <time>1570448176</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 5.3
+- fix SLE12 build (forwarded request 733095 from mkubecek)</comment>
+    <requestid>733769</requestid>
+  </revision>
 </revisionlist>

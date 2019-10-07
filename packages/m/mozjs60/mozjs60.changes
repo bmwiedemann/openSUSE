@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct  4 21:26:08 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 60.9.0
+- rebased riscv-support.patch
+- Remove source modifications that made some private functions
+  public. Probably not needed anymore, and was introducing a
+  build error
+- Regenerate icudt60b.dat.xz
+- Added some upstream bug fixes included in Debian and Fedora:
+  Always-use-the-equivalent-year-to-determine-the-time-zone.patch
+  emitter.patch
+  emitter_test.patch
+  init_patch.patch
+  enddianness.patch
+  jsproperty-endian.patch
+  Save-x28-before-clobbering-it-in-the-regex-compiler.patch
+  Save-and-restore-non-volatile-x28-on-ARM64-for-generated-unboxed-object-constructor.patch
+
+-------------------------------------------------------------------
 Thu Jun 20 09:20:58 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop python-wheel BuildRequires: causes a build cycle, and is not

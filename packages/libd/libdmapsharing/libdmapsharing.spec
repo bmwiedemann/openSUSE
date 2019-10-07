@@ -17,27 +17,31 @@
 #
 
 
+# NOTE: When bumping these, remember to bump in baselibs too
+%define majorver 4.0
+%define soname 4_0
+%define sover 3
+
 Name:           libdmapsharing
-Version:        2.9.38
+Version:        3.9.7
 Release:        0
 Summary:        Library implementing the Digital Media Access Protocol family
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
-Url:            http://www.flyn.org/projects/libdmapsharing/
-Source0:        http://flyn.org/projects/libdmapsharing/%{name}-%{version}.tar.gz
+URL:            https://www.flyn.org/projects/libdmapsharing/
+Source0:        %{url}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM Fix build with vala >= 0.43 https://gitlab.gnome.org/GNOME/libdmapsharing/issues/7 mlin@suse.com
-Patch0:         new_vala_build.patch
-BuildRequires:  pkg-config
+
+BuildRequires:  pkgconfig
 BuildRequires:  vala
 BuildRequires:  pkgconfig(avahi-client) >= 0.6
 BuildRequires:  pkgconfig(avahi-glib) >= 0.6
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gee-0.8)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.36
+BuildRequires:  pkgconfig(glib-2.0) >= 2.36
 BuildRequires:  pkgconfig(gstreamer-app-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
-BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.48.0
 
 %description
@@ -49,11 +53,11 @@ to an AirPlay device. The DMAP family of protocols are used by products
 such as Apple iTunes, Apple iPhoto, and the Roku SoundBridge family to
 share media such as music and photos.
 
-%package -n libdmapsharing-3_0-2
+%package -n libdmapsharing-%{soname}-%{sover}
 Summary:        Library implementing the Digital Media Access Protocol family
 Group:          System/Libraries
 
-%description -n libdmapsharing-3_0-2
+%description -n libdmapsharing-%{soname}-%{sover}
 Libdmapsharing is a library you may use to access, share and control the
 playback of media content using DMAP (DAAP, DPAP & DACP). Libdmapsharing
 also detects audio AirPlay services; coupled with the AirPlay support
@@ -65,7 +69,7 @@ share media such as music and photos.
 %package devel
 Summary:        Library implementing the DMAP family of protocols - Development Files
 Group:          Development/Languages/C and C++
-Requires:       libdmapsharing-3_0-2 = %{version}
+Requires:       libdmapsharing-%{soname}-%{sover} = %{version}
 
 %description devel
 Libdmapsharing is a library you may use to access, share and control the
@@ -79,32 +83,31 @@ share media such as music and photos.
 This package contains development files for libdmapsharing.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
-%configure
-make %{?_smp_mflags} V=1
+%configure \
+	--disable-tests \
+	%{nil}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n libdmapsharing-3_0-2 -p /sbin/ldconfig
+%post -n libdmapsharing-%{soname}-%{sover} -p /sbin/ldconfig
+%postun -n libdmapsharing-%{soname}-%{sover} -p /sbin/ldconfig
 
-%postun -n libdmapsharing-3_0-2 -p /sbin/ldconfig
-
-%files -n libdmapsharing-3_0-2
-%defattr(-, root, root)
-%doc AUTHORS ChangeLog COPYING README
-%{_libdir}/libdmapsharing-3.0.so.2*
+%files -n libdmapsharing-%{soname}-%{sover}
+%license COPYING
+%doc AUTHORS ChangeLog README
+%{_libdir}/libdmapsharing-%{majorver}.so.%{sover}*
 
 %files devel
-%defattr(-, root, root)
-%{_datadir}/gtk-doc/html/libdmapsharing-3.0/
-%{_datadir}/vala/vapi/libdmapsharing-3.0.vapi
-%{_includedir}/libdmapsharing-3.0/
-%{_libdir}/libdmapsharing-3.0.so
-%{_libdir}/pkgconfig/libdmapsharing-3.0.pc
+%{_datadir}/gtk-doc/html/libdmapsharing-%{majorver}/
+%{_datadir}/vala/vapi/libdmapsharing-%{majorver}.vapi
+%{_includedir}/libdmapsharing-%{majorver}/
+%{_libdir}/libdmapsharing-%{majorver}.so
+%{_libdir}/pkgconfig/libdmapsharing-%{majorver}.pc
 
 %changelog

@@ -17,7 +17,7 @@
 
 
 Name:           kubic-control
-Version:        0.8.2
+Version:        0.9.0
 Release:        0
 Summary:        Simple setup tool for kubernetes
 License:        Apache-2.0
@@ -53,6 +53,15 @@ Requires:       certstrap
 %description -n kubicctl
 kubicctl is a cli to using gRPC with mutualTLS to communicate with kubicd to setup and manage a kubernetes cluster on openSUSE Kubic. Authentication is done via certificates.
 
+%package -n kubic-haproxycfg
+Summary:        Tool to maipulate haproxy.cfg
+Group:          System/Management
+Requires:       haproxy
+
+%description -n kubic-haproxycfg
+haproxycfg is used by kubicd to create a haproxy.cfg for use as loadbalancer
+for a kubernetes cluster with multi-master.
+
 %prep
 %setup -q
 
@@ -62,6 +71,7 @@ make build
 %install
 install -d -p %{buildroot}%{_bindir}
 install -p -m 0755 bin/kubicctl %{buildroot}%{_bindir}
+install -p -m 0755 bin/haproxycfg %{buildroot}%{_bindir}
 install -d -p %{buildroot}%{_sbindir}
 install -p -m 0755 bin/kubicd %{buildroot}%{_sbindir}
 ln -s /sbin/service %{buildroot}%{_sbindir}/rckubicd
@@ -98,5 +108,9 @@ cp -av systemd/* %{buildroot}%{_prefix}/lib/systemd/system
 %files -n kubicctl
 %license LICENSE
 %{_bindir}/kubicctl
+
+%files -n kubic-haproxycfg
+%license LICENSE
+%{_bindir}/haproxycfg
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 22 21:59:40 UTC 2019 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to the new upstream release 1.1.123
+  * loader: Match ICDs against DXGI adapters
+
+-------------------------------------------------------------------
 Wed Aug 21 08:51:56 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 1.1.120

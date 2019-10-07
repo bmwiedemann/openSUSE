@@ -532,6 +532,9 @@ cp -a tomcat-api.pom %{buildroot}%{_mavenpomdir}/JPP.%{name}-tomcat-api.pom
 cp -a tomcat-util.pom %{buildroot}%{_mavenpomdir}/JPP.%{name}-tomcat-util.pom
 %add_maven_depmap JPP.%{name}-tomcat-util.pom %{name}/tomcat-util.jar
 
+cp -a tomcat-util-scan.pom %{buildroot}%{_mavenpomdir}/JPP.%{name}-tomcat-util-scan.pom
+%add_maven_depmap JPP.%{name}-tomcat-util-scan.pom %{name}/tomcat-util-scan.jar
+
 cp -a tomcat-websocket-api.pom %{buildroot}%{_mavenpomdir}/JPP.%{name}-websocket-api.pom
 %add_maven_depmap JPP.%{name}-websocket-api.pom %{name}/websocket-api.jar
 
@@ -546,8 +549,6 @@ cp -a tomcat-embed-el.pom %{buildroot}%{_mavenpomdir}/JPP.%{name}-tomcat-embed-e
 
 cp -a tomcat-embed-jasper.pom %{buildroot}%{_mavenpomdir}/JPP.%{name}-tomcat-embed-jasper.pom
 %add_maven_depmap JPP.%{name}-tomcat-embed-jasper.pom %{name}/tomcat-embed-jasper.jar -f embed
-
-%add_maven_depmap JPP.%{name}-websocket-api.pom %{name}/websocket-api.jar
 
 cp -a tomcat-embed-websocket.pom %{buildroot}%{_mavenpomdir}/JPP.%{name}-tomcat-embed-websocket.pom
 %add_maven_depmap JPP.%{name}-tomcat-embed-websocket.pom %{name}/tomcat-embed-websocket.jar -f embed

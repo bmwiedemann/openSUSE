@@ -163,6 +163,8 @@ done
 # # Reported upstream: http://bugzilla.slf4j.org/show_bug.cgi?id=283
 sed -i "/Import-Package/s/.$/;resolution:=optional&/" slf4j-api/src/main/resources/META-INF/MANIFEST.MF
 
+%pom_change_dep -r -f ::::: :::::
+
 %build
 export CLASSPATH=$(build-classpath log4j12/log4j-12 \
                    commons-logging \
@@ -190,14 +192,20 @@ done
 
 # poms
 install -d -m 755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/parent.pom
 for i in api ext jcl jdk14 log4j12 nop simple; do
+  %pom_remove_parent slf4j-${i}
+  %pom_xpath_inject "pom:project" "
+    <groupId>org.slf4j</groupId>
+    <version>%{version}</version>" slf4j-${i}
   install -pm 644 slf4j-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
 done
 for i in jcl-over-slf4j jul-to-slf4j log4j-over-slf4j; do
+  %pom_remove_parent ${i}
+  %pom_xpath_inject "pom:project" "
+    <groupId>org.slf4j</groupId>
+    <version>%{version}</version>" ${i}
   install -pm 644 ${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
 done
-%add_maven_depmap %{name}/parent.pom
 for i in api nop simple; do
   %add_maven_depmap %{name}/${i}.pom %{name}/${i}.jar
 done

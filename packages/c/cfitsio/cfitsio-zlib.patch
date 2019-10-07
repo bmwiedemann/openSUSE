@@ -3,11 +3,11 @@
  zlib/zcompress.c |    2 +-
  2 files changed, 4 insertions(+), 6 deletions(-)
 
-Index: cfitsio/Makefile.in
+Index: cfitsio-3.47/Makefile.in
 ===================================================================
---- cfitsio.orig/Makefile.in
-+++ cfitsio/Makefile.in
-@@ -67,9 +67,7 @@ CORE_SOURCES = 	buffers.c cfileio.c chec
+--- cfitsio-3.47.orig/Makefile.in
++++ cfitsio-3.47/Makefile.in
+@@ -68,9 +68,7 @@ CORE_SOURCES = 	buffers.c cfileio.c chec
  		pliocomp.c fits_hcompress.c fits_hdecompress.c \
  		simplerng.c @GSIFTP_SRC@
  
@@ -18,16 +18,16 @@ Index: cfitsio/Makefile.in
  
  SOURCES = ${CORE_SOURCES} ${ZLIB_SOURCES} @F77_WRAPPERS@
  
-@@ -102,7 +100,7 @@ lib${PACKAGE}.a:	${OBJECTS}
+@@ -103,7 +101,7 @@ lib${PACKAGE}.a:	${OBJECTS}
  shared: lib${PACKAGE}${SHLIB_SUFFIX}
  
  lib${PACKAGE}${SHLIB_SUFFIX}: ${OBJECTS}
--		${SHLIB_LD} ${LDFLAGS} -o ${CFITSIO_SHLIB} ${OBJECTS} -lm ${LIBS}
-+		${SHLIB_LD} ${LDFLAGS} -o ${CFITSIO_SHLIB} ${OBJECTS} -lm ${LIBS} -lz
+-		${SHLIB_LD} ${LDFLAGS} -o ${CFITSIO_SHLIB} ${OBJECTS} -lm ${LIBS_CURL} ${LIBS}
++		${SHLIB_LD} ${LDFLAGS} -o ${CFITSIO_SHLIB} ${OBJECTS} -lm ${LIBS_CURL} ${LIBS} -lz
  		@if [ "x${CFITSIO_SHLIB_SONAME}" != x ]; then \
  			ln -sf ${CFITSIO_SHLIB} ${CFITSIO_SHLIB_SONAME}; \
  			ln -sf ${CFITSIO_SHLIB_SONAME} $@; \
-@@ -142,7 +140,7 @@ smem:		smem.o lib${PACKAGE}.a ${OBJECTS}
+@@ -143,7 +141,7 @@ smem:		smem.o lib${PACKAGE}.a ${OBJECTS}
  		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ ${@}.o -L. -l${PACKAGE} -lm
  
  testprog:	testprog.o lib${PACKAGE}.a ${OBJECTS}
@@ -36,10 +36,10 @@ Index: cfitsio/Makefile.in
  
  fpack:		fpack.o fpackutil.o lib${PACKAGE}.a ${OBJECTS}
  		${CC} ${LDFLAGS_BIN} ${DEFS} -o $@ ${@}.o fpackutil.o -L. -l${PACKAGE} -lm ${LIBS}
-Index: cfitsio/zlib/zcompress.c
+Index: cfitsio-3.47/zlib/zcompress.c
 ===================================================================
---- cfitsio.orig/zlib/zcompress.c
-+++ cfitsio/zlib/zcompress.c
+--- cfitsio-3.47.orig/zlib/zcompress.c
++++ cfitsio-3.47/zlib/zcompress.c
 @@ -3,7 +3,7 @@
  #include <stdlib.h>
  #include <string.h>

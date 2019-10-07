@@ -1,7 +1,7 @@
 #
 # spec file for package cfitsio
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-%define tar_ver 3450
-%define so_ver 7
+%define tar_ver 3.47
+%define so_ver 8
 Name:           cfitsio
-Version:        3.450
+Version:        3.470
 Release:        0
 Summary:        Library for manipulating FITS data files
 License:        ISC
-Group:          Productivity/Scientific/Other
-URL:            http://heasarc.nasa.gov/fitsio/
-Source0:        ftp://heasarc.gsfc.nasa.gov/software/fitsio/c/%{name}%{tar_ver}.tar.gz
+URL:            https://heasarc.nasa.gov/fitsio/
+Source0:        https://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/%{name}-%{tar_ver}.tar.gz
 # PATCH-FIX-OPENSUSE cfitsio-zlib.patch asterios.dramis@gmail.com -- Use system zlib, link programs to shared libcfitsio (based on patches from Fedora and Debian)
 Patch0:         cfitsio-zlib.patch
 BuildRequires:  gcc-fortran
@@ -45,7 +44,6 @@ This package contains some FITS image compression and decompression utilities.
 
 %package devel
 Summary:        Headers required when building programs against cfitsio library
-Group:          Development/Libraries/Other
 Requires:       libcfitsio%{so_ver} = %{version}
 Requires:       pkgconfig
 Suggests:       cfitsio-devel-doc = %{version}
@@ -59,7 +57,6 @@ library.
 
 %package devel-doc
 Summary:        Documentation for the cfitsio library
-Group:          Documentation/Other
 # libcfitsio-doc was last used in openSUSE 12.1 (version 3.280)
 Obsoletes:      libcfitsio-doc <= 3.280
 # libcfitsio-devel-doc was last used in openSUSE 13.1 (version 3.350)
@@ -71,7 +68,6 @@ This package contains documentation for the cfitsio library.
 
 %package -n libcfitsio%{so_ver}
 Summary:        Library for manipulating FITS data files
-Group:          System/Libraries
 
 %description -n libcfitsio%{so_ver}
 CFITSIO is a library of C and Fortran subroutines for reading and writing data
@@ -82,7 +78,7 @@ provides many advanced features for manipulating and filtering the information
 in FITS files.
 
 %prep
-%setup -q -n %{name}
+%setup -q -n %{name}-%{tar_ver}
 %patch0 -p1
 
 # Remove bundled zlib

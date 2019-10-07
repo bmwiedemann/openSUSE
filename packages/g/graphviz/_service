@@ -1,16 +1,16 @@
 
- <services>
-   <service mode="disabled" name="tar_scm">
-     <param name="url">https://gitlab.com/graphviz/graphviz</param>
-     <param name="scm">git</param>
-     <param name="revision">master</param>
-     <param name="changesgenerate">disable</param>
-     <param name="filename">graphviz</param>
-     <param name="versionformat">2.40.1+git%cd.%h</param>
-   </service>
-   <service mode="disabled" name="recompress">
-     <param name="file">*.tar</param>
-     <param name="compression">gz</param>
-   </service>
-   <service mode="disabled" name="set_version"/>
- </services>
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="url">https://gitlab.com/graphviz/graphviz</param>
+    <param name="scm">git</param>
+    <param name="revision">master</param>
+    <param name="changesgenerate">disable</param>
+    <param name="filename">graphviz</param>
+    <param name="versionformat">2.40.1+git%cd.%h</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+</services>

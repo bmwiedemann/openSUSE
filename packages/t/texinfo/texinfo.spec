@@ -51,8 +51,6 @@ Requires:       texlive-makeindex
 Requires:       texlive-pdftex
 Requires:       texlive-tex
 Requires:       texlive-texinfo
-Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
 Recommends:     texi2html
 Recommends:     texi2roff
 
@@ -68,8 +66,21 @@ makeinfo tool.
 %package     -n info
 Summary:        A Stand-Alone Terminal-Based Info Browser
 Group:          Productivity/Publishing/Texinfo
+Requires:       gzip
 
 %description -n info
+Info is a terminal-based program for reading documentation of computer
+programs in the Info format. The GNU Project distributes most of its
+on-line manuals in the Info format, so you need a program called "Info
+reader" to read the manuals.
+
+%package     -n info-std
+Summary:        The info pages of the Info Browser
+Group:          Productivity/Publishing/Texinfo
+Supplements:    packageand(info:patterns-base-documentation)
+BuildArch:      noarch
+
+%description -n info-std
 Info is a terminal-based program for reading documentation of computer
 programs in the Info format. The GNU Project distributes most of its
 on-line manuals in the Info format, so you need a program called "Info
@@ -91,7 +102,7 @@ or standalone GNU Info.
 
 %prep
 %setup -q
-%patch1 -p1 -b .p1
+%patch1 -p1 -b .zio
 %patch2 -p1
 
 %build
@@ -130,17 +141,51 @@ LANG=en_GB.UTF-8
 export LANG
 make %{?_smp_mflags} check
 
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/texinfo.info%{ext_info}
+%filetriggerin -n info -p <lua> -- %{_infodir}
+-- TODO: replace with rpm.execute after rpm 4.15
+function execute(path, ...)
+  local pid = posix.fork()
+  if pid == 0 then
+     posix.exec(path, ...)
+     io.write(path, ": exec failed: ", posix.errno(), "\n")
+     os.exit(1)
+  end
+  if not pid then
+     error(path .. ": fork failed: " .. posix.errno() .. "\n")
+  end
+  posix.wait(pid)
+end
+--
+file = rpm.next_file()
+while file do
+    if string.match(file, "%%.info%%.gz$") then
+	execute("/usr/bin/install-info", "--info-dir=%{_infodir}", file)
+    end
+    file = rpm.next_file()
+end
 
-%preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/texinfo.info%{ext_info}
-
-%post -n info
-%install_info --info-dir=%{_infodir} %{_infodir}/info-stnd.info%{ext_info}
-
-%preun -n info
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/info-stnd.info%{ext_info}
+%filetriggerun -n info -p <lua> -- %{_infodir}
+-- TODO: replace with rpm.execute after rpm 4.15
+function execute(path, ...)
+  local pid = posix.fork()
+  if pid == 0 then
+     posix.exec(path, ...)
+     io.write(path, ": exec failed: ", posix.errno(), "\n")
+     os.exit(1)
+  end
+  if not pid then
+     error(path .. ": fork failed: " .. posix.errno() .. "\n")
+  end
+  posix.wait(pid)
+end
+--
+file = rpm.next_file()
+while file do
+    if string.match(file, "%%.info%%.gz$") then
+	execute("/usr/bin/install-info", "--quiet", "--delete", "--info-dir=%{_infodir}", file)
+    end
+    file = rpm.next_file()
+end
 
 %files -f %{name}_document.lang
 %defattr(-,root,root,0755)
@@ -177,9 +222,12 @@ make %{?_smp_mflags} check
 /sbin/install-info
 %{_bindir}/install-info
 %{_bindir}/info
-%{_infodir}/info-stnd.info%{?ext_info}
 %{_mandir}/man1/info.1%{?ext_man}
 %{_mandir}/man1/install-info.1%{?ext_man}
 %{_mandir}/man5/info.5%{?ext_man}
+
+%files -n info-std
+%defattr(-,root,root,0755)
+%{_infodir}/info-stnd.info%{?ext_info}
 
 %changelog

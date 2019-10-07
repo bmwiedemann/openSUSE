@@ -20,15 +20,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-pytest-mock
-Version:        1.10.4
+Version:        1.11.0
 Release:        0
 Summary:        Thin-wrapper around the mock package for easier use with pytest
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/pytest-mock
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-mock/pytest-mock-%{version}.tar.gz
-Patch0:         mock3.patch
-Patch1:         fix_tests.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 36}
 BuildRequires:  %{python_module setuptools_scm}
@@ -52,7 +50,6 @@ of a test
 
 %prep
 %setup -q -n pytest-mock-%{version}
-%autopatch -p1
 
 %build
 %python_build

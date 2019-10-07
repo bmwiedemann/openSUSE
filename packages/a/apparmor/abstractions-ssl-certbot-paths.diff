@@ -1,0 +1,38 @@
+commit b5772e29efbc3c2325b4a2ba312bb4cf0c78f181
+Author: Christian Boltz <gitlab2@cboltz.de>
+Date:   Sun Jun 30 07:14:42 2019 +0000
+
+    Merge branch 'cboltz-2.13-certbot' into 'apparmor-2.13'
+    
+    [2.10..2.13] Add for Certbot on openSUSE Leap
+    
+    See merge request apparmor/apparmor!398
+    
+    Acked-by: John Johansen <john.johansen@canonical.com> for 2.10..2.13
+    
+    (cherry picked from commit 14a11e67a5b8e06a5ba5080d9824df8010e28552)
+    
+    8b766451 Add for Certbot on openSUSE Leap
+
+diff --git a/profiles/apparmor.d/abstractions/ssl_certs b/profiles/apparmor.d/abstractions/ssl_certs
+index b5382ec9..789efc58 100644
+--- a/profiles/apparmor.d/abstractions/ssl_certs
++++ b/profiles/apparmor.d/abstractions/ssl_certs
+@@ -38,3 +38,7 @@
+   /etc/letsencrypt/archive/*/cert*.pem r,
+   /etc/letsencrypt/archive/*/chain*.pem r,
+   /etc/letsencrypt/archive/*/fullchain*.pem r,
++
++  /etc/certbot/archive/*/cert*.pem r,
++  /etc/certbot/archive/*/chain*.pem r,
++  /etc/certbot/archive/*/fullchain*.pem r,
+diff --git a/profiles/apparmor.d/abstractions/ssl_keys b/profiles/apparmor.d/abstractions/ssl_keys
+index 84f5c503..2de760b5 100644
+--- a/profiles/apparmor.d/abstractions/ssl_keys
++++ b/profiles/apparmor.d/abstractions/ssl_keys
+@@ -26,3 +26,5 @@
+ 
+   # certbot / letsencrypt
+   /etc/letsencrypt/archive/*/privkey*.pem r,
++
++  /etc/certbot/archive/*/privkey*.pem r,

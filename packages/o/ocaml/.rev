@@ -601,4 +601,12 @@ Use SPDX format (http://www.spdx.org/licenses). Where there is no suitable short
   (bsc#1151745)</comment>
     <requestid>733101</requestid>
   </revision>
+  <revision rev="71" vrev="11">
+    <srcmd5>c2be04886a32107508f9c7969d8f2a45</srcmd5>
+    <version>4.05.0</version>
+    <time>1570448433</time>
+    <user>dimstar_suse</user>
+    <comment>- moved ocaml-rpm-macros from ocaml.spec to separate pkg</comment>
+    <requestid>734127</requestid>
+  </revision>
 </revisionlist>

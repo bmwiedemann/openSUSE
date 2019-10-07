@@ -2,7 +2,7 @@
 # spec file for package MozillaFirefox-branding-openSUSE
 #
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2008-2013 Wolfgang Rosenauer
+# Copyright (c) 2008-2019 Wolfgang Rosenauer
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,28 @@
 #
 
 
-Name:           MozillaFirefox-branding-openSUSE
+%define pkgname @BUILD_FLAVOR@
+
+%if "%{pkgname}" == "MozillaFirefox-branding-openSUSE"
+%define targetpkg MozillaFirefox
+%define progdir %{_libdir}/firefox
+%define appname Firefox
+%else
+%if "%{pkgname}" == "firefox-esr-branding-openSUSE"
+%define targetpkg firefox-esr
+%define progdir %{_libdir}/firefox-esr
+%define appname Firefox ESR
+%else
+%define pkgname MozillaFirefox-branding-openSUSE
+ExclusiveArch:  do-not-build
+%endif
+%endif
+
+Name:           %{pkgname}
 BuildRequires:  bc
 BuildRequires:  unzip
 BuildRequires:  zip
-Version:        60
+Version:        68
 Release:        0
 Summary:        openSUSE branding of MozillaFirefox
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -33,16 +50,12 @@ Source2:        all-openSUSE.js
 Source3:        firefox-suse-default-prefs.js
 Source4:        firefox.schemas
 Source5:        distribution.ini.in
-Source6:        %{name}-COPYING
-Supplements:    packageand(MozillaFirefox:branding-openSUSE)
-Supplements:    packageand(firefox-esr:branding-openSUSE)
-Provides:       MozillaFirefox-branding = %{version}
-Provides:       firefox-esr-branding = %{version}
-Conflicts:      otherproviders(MozillaFirefox-branding)
-Conflicts:      otherproviders(firefox-esr-branding)
+Source6:        MozillaFirefox-branding-openSUSE-COPYING
+Supplements:    packageand(%{targetpkg}:branding-openSUSE)
+Provides:       %{targetpkg}-branding = %{version}
+Conflicts:      otherproviders(%{targetpkg}-branding)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
-%global progdir    %{_libdir}/firefox
 %global libgssapi  libgssapi_krb5.so.2
 
 %global suseversion undefined
@@ -67,7 +80,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
   %else
     %if %sle_version == 150100
       %global suseversion 15.1
-    %else 
+    %else
       %if %sle_version == 150200
         %global suseversion 15.2
       %endif
@@ -122,6 +135,7 @@ install -m 0644 %{SOURCE2} %{buildroot}%{progdir}/defaults/pref/
 # distribution.ini -- openSUSE bookmarks, homepage and Mozilla partner info
 sed -e 's,%%VERSION%%,%{suseversion},g
 s,%%HOMEPAGE%%,%{homepage},g
+s,%%FLAVOR%%,%{appname},g
 s,%%DIST%%,%{distname},g' \
     %{SOURCE5} > distribution.ini
 
@@ -146,11 +160,10 @@ cp -r susefox\@opensuse.org \
 %files
 %defattr(-,root,root)
 %if %susefox
-%doc COPYING.susefox
-%doc ../COPYING
+%license COPYING.susefox
+%license ../COPYING
 %{_datadir}/mozilla
 %endif
-
 %{progdir}
 
 %changelog

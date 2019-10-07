@@ -48,13 +48,13 @@
 %define sle12 0
 %endif
 Name:           graphviz
-Version:        2.40.1+git20190410.b0871968d
+Version:        2.42.1
 Release:        0
 Summary:        Graph Visualization Tools
 License:        EPL-1.0
 Group:          Productivity/Graphics/Visualization/Graph
 Url:            http://www.graphviz.org/
-Source:         %{mname}-%{version}.tar.gz
+Source:         https://www2.graphviz.org/Packages/stable/portable_source/graphviz-%{version}.tar.gz
 Source2:        graphviz-rpmlintrc
 #PATCH-FIX-UPSTREAM add flags to also link against libGLU and libGL
 Patch1:         graphviz-smyrna-link_against_glu.patch
@@ -66,7 +66,7 @@ Patch6:         graphviz-2.20.2-interpreter_names.patch
 #PATCH-FIX-UPSTREAM Don't warn about harmless issues with swig generated code
 Patch7:         graphviz-useless_warnings.patch
 Patch8:         graphviz-no_strict_aliasing.patch
-Patch9:         graphviz-fix-ruby-version.patch
+
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -321,7 +321,6 @@ programs that use the graphviz libraries including man3 pages.
 %patch6
 %patch7
 %patch8
-%patch9 
 
 # pkg-config returns 0 (TRUE) when guile-2.2 is present
 if pkg-config --atleast-version=2.2 guile-2.2; then

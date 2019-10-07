@@ -65,6 +65,12 @@ Patch4:         apparmor-lessopen-profile.patch
 # workaround for boo#1119937 / lp#1784499 - allow network access for reading files on NFS (proper solution needs kernel fix)
 Patch5:         apparmor-lessopen-nfs-workaround.diff
 
+# allow /etc/krb5.conf.d/ for kerberos client (submitted upstream 2019-09-28 https://gitlab.com/apparmor/apparmor/merge_requests/425)
+Patch6:         apparmor-krb5-conf-d.diff
+
+# add certbot paths to abstractions/ssl_keys and abstractions/ssl_certs (from upstream https://gitlab.com/apparmor/apparmor/merge_requests/398, merged 2019-06-30)
+Patch7:         abstractions-ssl-certbot-paths.diff
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define apparmor_bin_prefix /lib/apparmor
@@ -353,6 +359,8 @@ SubDomain.
 %patch3 -p1
 %patch4
 %patch5
+%patch6 -p1
+%patch7 -p1
 
 %build
 %define _lto_cflags %{nil}

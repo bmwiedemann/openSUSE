@@ -16,15 +16,15 @@
 #
 
 
-%define version_unconverted 1.1.120
+%define version_unconverted 1.1.123
 Name:           vulkan-headers
-Version:        1.1.120
+Version:        1.1.123
 Release:        0
 Summary:        Vulkan C and C++ API header files
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/Vulkan-Headers
-Source:         Vulkan-Headers-%version.tar.xz
+Source:         https://github.com/KhronosGroup/Vulkan-Headers/archive/v%version.tar.gz
 BuildRequires:  cmake >= 2.8.11
 BuildArch:      noarch
 Requires:       pkgconfig(wayland-client)
@@ -42,7 +42,7 @@ This package contains the development headers for packages wanting
 to make use of Vulkan.
 
 %prep
-%setup -qn Vulkan-Headers-%version
+%autosetup -n Vulkan-Headers-%version
 
 %build
 %cmake \

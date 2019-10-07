@@ -16,19 +16,18 @@
 #
 
 
-%define version_unconverted 1.4.1.g36
+%define version_unconverted 1.5.1
 
 Name:           spirv-headers
-Version:        1.4.1.g36
+Version:        1.5.1
 Release:        0
 Summary:        Machine-readable files from the SPIR-V registry
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/KhronosGroup/SPIRV-Headers
+URL:            https://github.com/KhronosGroup/SPIRV-Headers
 
-Source:         %name-%version.tar.xz
+Source:         https://github.com/KhronosGroup/SPIRV-Headers/archive/%version.tar.gz
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -42,8 +41,8 @@ registry. This includes:
   set, and for the GLSL.std.450 extended instruction set.
 * The XML registry file.
 
-%prep
-%setup -q
+%prep 
+%autosetup -n SPIRV-Headers-%version
 
 %build
 # Because Khronos does not know what DESTDIR is.
@@ -57,8 +56,7 @@ popd
 %fdupes %buildroot/%_prefix
 
 %files
-%defattr(-,root,root)
 %_includedir/spirv/
-%doc LICENSE
+%license LICENSE
 
 %changelog

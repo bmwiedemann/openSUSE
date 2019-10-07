@@ -418,4 +418,12 @@ Old 2.95 segfaults on me, with a TSI_747A+ device. (forwarded request 68916 from
     <comment></comment>
     <requestid>731653</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>ab8cea0b71c1531401fb98b46411fdbd</srcmd5>
+    <version>3.19</version>
+    <time>1570448286</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>733991</requestid>
+  </revision>
 </revisionlist>

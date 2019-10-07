@@ -12,7 +12,3 @@ pref("print.print_edge_bottom", 14); // 1/100 of an inch
 pref("accessibility.typeaheadfind.soundURL", "default");
 pref("startup.homepage_welcome_url", "");
 pref("startup.homepage_override_url", "");
-
-// do not disable system-global or app-global extensions
-pref("extensions.autoDisableScopes", 3);
-pref("extensions.shownSelectionUI", true);

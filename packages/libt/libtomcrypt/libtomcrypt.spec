@@ -28,12 +28,10 @@ Url:            http://libtom.org
 Source0:        https://github.com/libtom/libtomcrypt/releases/download/v%{version}/crypt-%{version}.tar.xz
 Source1:        https://github.com/libtom/libtomcrypt/releases/download/v%{version}/crypt-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-Source3:        %{name}.changes
 Source4:        baselibs.conf
 BuildRequires:  libtommath-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  texlive-latex
 
 %description
 LibTomCrypt is a fairly comprehensive, modular and portable cryptographic
@@ -81,10 +79,6 @@ This package contains example *.c files showing how to use TomCrypt library.
 
 %prep
 %setup -q -n %{name}-%{version}
-modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{SOURCE3}")"
-DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
-TIME="\"$(date -d "${modified}" "+%%R")\""
-find . -name '*.[ch]' -exec sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" "{}" "+"
 
 %build
 export CFLAGS="%{optflags} -DLTM_DESC -DUSE_LTM"
@@ -103,7 +97,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n %{soname}
 %{_libdir}/libtomcrypt.so.*
-%doc LICENSE README.md 
+%license LICENSE
+%doc README.md
 
 %files devel
 %attr(0644,root,root) %{_includedir}/tomcrypt*.h

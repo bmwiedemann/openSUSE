@@ -1,7 +1,7 @@
 #
 # spec file for package sgmltool
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,40 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           sgmltool
-BuildRequires:  flex
-BuildRequires:  groff
-BuildRequires:  opensp
-%if 0%{suse_version} > 1220
-BuildRequires:  texlive-kpathsea
-%endif
-Provides:       sgml-tools
-Requires:       opensp
-Requires:       perl = %perl_version
-Requires:       perl(Text::EntityMap)
-%if 0%{suse_version} > 1220
-Requires:       texlive-epsf
-Requires:       texlive-latex
-Requires:       texlive-url
-%{expand: %%global _texmfmaindir %(kpsewhich -expand-var='$TEXMFMAIN')}
-Requires(post): coreutils
-Requires(postun): coreutils
-Requires(postun): texlive
-Requires(posttrans): texlive
-%endif
-Conflicts:      linuxdoc
+Version:        1.0.9
+Release:        0
 Summary:        SGML-Tools - a Text-Formatting Package
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/SGML
-Version:        1.0.9
-Release:        0
 Source:         ftp://ftp.nllgg.nl/pub2/SGMLtools/v1.0/sgml-tools-%{version}.tar.bz2
 Source1:        lnd-1.0.tar.bz2
-Patch:          sgml-tools-1.0.9.dif
+Patch0:         sgml-tools-1.0.9.dif
 Patch1:         sgml-tools-temp-vuln-1.0.9.diff
 Patch2:         sgmltool-man-entities.diff
 Patch3:         sgmltool-1.0.9-expandsyntax.diff
@@ -55,8 +34,16 @@ Patch6:         cflags-sgml-tools-1.0.9.diff
 Patch7:         sgml-tools-1.0.9-sgmlpre.diff
 Patch8:         sgml-tools-1.0.9-strip.diff
 Patch9:         sgml-tools-1.0.9-latex.diff
-Patch10:        sgmltool-flex.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  flex
+BuildRequires:  groff
+BuildRequires:  opensp
+BuildRequires:  texlive-kpathsea
+Requires:       opensp
+Requires:       perl = %{perl_version}
+Requires:       perl(Text::EntityMap)
+Conflicts:      linuxdoc
+Provides:       sgml-tools
+%{expand: %%global _texmfmaindir %(kpsewhich -expand-var='$TEXMFMAIN')}
 
 %description
 SGML-Tools is a text-formatting package based on SGML (Standard
@@ -74,103 +61,108 @@ SGML-Tools cannot process arbitrary SGML documents. In such a case, try
 jade_dsl and write your own DSSSL scripts (take the docbk30 package as
 an example).
 
-%define INSTALL install -m755
-%define INSTALL_DIR install -d -m755
-%define INSTALL_DATA install -m644
-%define GZIP gzip --best --force
+%package latex
+Summary:        SGML-Tools - LaTeX generator
+Group:          Productivity/Publishing/SGML
+Requires:       sgmltool
+Requires:       texlive-epsf
+Requires:       texlive-latex
+Requires:       texlive-url
+Requires(post): coreutils
+Requires(posttrans): texlive-filesystem
+Requires(postun): coreutils
+Requires(postun): texlive-kpathsea
+Supplements:    (sgmltool and texlive-filesystem)
+Provides:       sgmltool:%{_bindir}/sgml2latex
+
+%description latex
+This package contains the LaTeX generator (sgml2latex) from sgmltool.
 
 %prep
 %setup -q -n sgml-tools-%{version} -a1
-%patch
-%patch1 -p 1
-%patch2 -p 1
-%patch3 -p 1
-%patch4 -p 1
+%patch0
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
 %patch5
-%patch6 -p 1
-%patch7 -p 1
+%patch6 -p1
+%patch7 -p1
 %patch8
-%if 0%{suse_version} > 1220
 %patch9
-%if 0%{suse_version} <= 1320
-%patch10 -p1
-%endif
-%endif
 
 %build
-export CFLAGS="%optflags -fno-strict-aliasing"
-%configure --prefix="%buildroot/%_prefix" \
-            --with-installed-nsgmls
+export CFLAGS="%{optflags} -fno-strict-aliasing"
+%configure \
+    --prefix="%{buildroot}/%{_prefix}" \
+    --with-installed-nsgmls
 make %{?_smp_mflags}
-make install DESTDIR="%buildroot" prefix="%_prefix"
-(cd doc; PATH="$PATH:%buildroot/%_bindir" sh Makedoc.sh)
+make %{?_smp_mflags} install DESTDIR=%{buildroot} prefix="%{_prefix}"
+(cd doc; PATH="$PATH:%buildroot/%{_bindir}" sh Makedoc.sh)
 cp -p doc/README doc/README.doc
 # the Makefiles are a bit nasty
-make clean
+make %{?_smp_mflags} clean
 %configure \
-            --with-installed-nsgmls
+    --with-installed-nsgmls
 make %{?_smp_mflags}
 
 %install
 > doc/Makedoc.sh
-make install DESTDIR="%buildroot";
-rm -fr $RPM_BUILD_ROOT/usr/doc/sgml-tools
-perlpath=`ls -1d /usr/lib/perl5/5.*/Text`
-mkdir -p $RPM_BUILD_ROOT$perlpath
-mv $RPM_BUILD_ROOT/usr/lib/perl5/Text/EntityMap.pm $RPM_BUILD_ROOT$perlpath/
+make install DESTDIR="%{buildroot}";
+rm -fr %{buildroot}%{_prefix}/doc/sgml-tools
+perlpath=`ls -1d %{_prefix}/lib/perl5/5.*/Text`
+mkdir -p %{buildroot}$perlpath
+mv %{buildroot}%{_prefix}/lib/perl5/Text/EntityMap.pm %{buildroot}$perlpath/
 
-%if 0%{suse_version} > 1220
-%post
-mkdir -p /var/run/texlive
-> /var/run/texlive/run-mktexlsr
+%post latex
+mkdir -p %{_localstatedir}/run/texlive
+> %{_localstatedir}/run/texlive/run-mktexlsr
 
-%postun
+%postun latex
 if test $1 = 0; then
     %{_bindir}/mktexlsr 2> /dev/null || :
     exit 0
 fi
-mkdir -p /var/run/texlive
-> /var/run/texlive/run-mktexlsr
+mkdir -p %{_localstatedir}/run/texlive
+> %{_localstatedir}/run/texlive/run-mktexlsr
 
-%posttrans
+%posttrans latex
 VERBOSE=false %{_texmfmaindir}/texconfig/update || :
-%endif
 
 %files
-%defattr(-,root,root)
+%license COPYING
 %doc lnd-1.0
-%doc COPYING BUGS CHANGES CONTRIBUTORS README TODO
-%doc doc/README.doc doc/example.sgml doc/guide.info doc/guide.lyx
+%doc BUGS CHANGES CONTRIBUTORS README TODO
+%doc doc/README.doc doc/example.sgml doc/html
 %doc doc/guide.ps.gz doc/guide.sgml doc/guide.txt
-%doc doc/html doc/rtf
-/usr/bin/sgmlsasp
-/usr/bin/rtf2rtf
-/usr/bin/sgmltools.v1
-/usr/bin/sgml2html
-/usr/bin/sgml2info
-/usr/bin/sgml2latex
-/usr/bin/sgml2lyx
-/usr/bin/sgml2rtf
-/usr/bin/sgml2txt
-/usr/bin/sgmlcheck
-/usr/bin/sgmlpre
-%dir /usr/lib/entity-map
-/usr/lib/entity-map/0.1.0
-/usr/lib/perl5/5.*/Text/EntityMap.pm
-%dir /usr/lib/sgml
-/usr/lib/sgml-tools
-/usr/lib/sgml/iso-entities-8879.1986
-%if 0%{suse_version} > 1220
+%{_bindir}/sgmlsasp
+%{_bindir}/rtf2rtf
+%{_bindir}/sgmltools.v1
+%{_bindir}/sgml2html
+%{_bindir}/sgml2info
+%{_bindir}/sgml2lyx
+%{_bindir}/sgml2rtf
+%{_bindir}/sgml2txt
+%{_bindir}/sgmlcheck
+%{_bindir}/sgmlpre
+%dir %{_prefix}/lib/entity-map
+%{_prefix}/lib/entity-map/0.1.0
+%{_prefix}/lib/perl5/5.*/Text/EntityMap.pm
+%dir %{_prefix}/lib/sgml
+%{_prefix}/lib/sgml-tools
+%{_prefix}/lib/sgml/iso-entities-8879.1986
+%{_mandir}/man1/sgml2html.1%{?ext_man}
+%{_mandir}/man1/sgml2info.1%{?ext_man}
+%{_mandir}/man1/sgml2lyx.1%{?ext_man}
+%{_mandir}/man1/sgml2rtf.1%{?ext_man}
+%{_mandir}/man1/sgml2txt.1%{?ext_man}
+%{_mandir}/man1/sgmlsasp.1%{?ext_man}
+%{_mandir}/man1/sgmlcheck.1%{?ext_man}
+%{_mandir}/man1/sgmltools.1%{?ext_man}
+
+%files latex
+%{_bindir}/sgml2latex
 %{_texmfmaindir}/tex/latex/sgml-tools
-%endif
-%{_mandir}/man1/sgml2html.1.gz
-%{_mandir}/man1/sgml2info.1.gz
-%{_mandir}/man1/sgml2latex.1.gz
-%{_mandir}/man1/sgml2lyx.1.gz
-%{_mandir}/man1/sgml2rtf.1.gz
-%{_mandir}/man1/sgml2txt.1.gz
-%{_mandir}/man1/sgmlsasp.1.gz
-%{_mandir}/man1/sgmlcheck.1.gz
-%{_mandir}/man1/sgmltools.1.gz
+%{_mandir}/man1/sgml2latex.1%{?ext_man}
 
 %changelog

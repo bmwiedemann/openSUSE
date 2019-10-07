@@ -79,4 +79,12 @@
     <comment>- Update to new upstream release 1.1.120</comment>
     <requestid>724984</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>36ebd73367abe44a0b3aecab93c442ca</srcmd5>
+    <version>1.1.123</version>
+    <time>1570448200</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to the new upstream release 1.1.123</comment>
+    <requestid>733820</requestid>
+  </revision>
 </revisionlist>

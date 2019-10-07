@@ -442,4 +442,12 @@
     <comment>New upstream</comment>
     <requestid>533499</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>c87f122c36fe1c82b62838b836d97880</srcmd5>
+    <version>7.4.1</version>
+    <time>1570448265</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>733915</requestid>
+  </revision>
 </revisionlist>

@@ -118,4 +118,16 @@
     robust and support master nodes</comment>
     <requestid>721975</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f5cbf15a92f27ae4dc90611010ad8d62</srcmd5>
+    <version>0.9.0</version>
+    <time>1570448556</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.0
+  - Add Yomi support
+  - Add haproxy support for multi-master loadbalancer
+  - Move config directory to /usr/etc/
+- Add kubic-haproxycfg sub-package</comment>
+    <requestid>735396</requestid>
+  </revision>
 </revisionlist>

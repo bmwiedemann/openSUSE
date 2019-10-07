@@ -3,5 +3,8 @@
   <description>Provide files which are required for compatibility with 
   the OpenHPC project</description>
   <devel project="network:cluster:ohpc" package="ohpc"/>
+  <build>
+    <disable/>
+  </build>
   <url>https://openhpc.community</url>
 </package>

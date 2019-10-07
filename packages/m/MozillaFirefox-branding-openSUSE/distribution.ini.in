@@ -1,7 +1,7 @@
 [Global]
 id=openSUSE
 version=%VERSION%
-about=Firefox for %DIST%
+about=%FLAVOR% for %DIST%
 
 [Preferences]
 app.partner.opensuse="opensuse"

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Sep 28 15:20:10 UTC 2019 - Christian Boltz <suse-beta@cboltz.de>
+
+- add abstractions-ssl-certbot-paths.diff - add certbot paths to
+  abstractions/ssl_certs and abstractions/ssl_keys
+
+-------------------------------------------------------------------
+Fri Sep 27 21:43:55 UTC 2019 - Luiz Angelo Daros de Luca <luizluca@tre-sc.jus.br>
+
+- add apparmor-krb5-conf-d.diff for kerberos client
+
+-------------------------------------------------------------------
 Tue Jun 18 20:51:07 UTC 2019 - Christian Boltz <suse-beta@cboltz.de>
 
 - update to 2.13.3

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct  5 08:04:43 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.9.0
+  - Add Yomi support
+  - Add haproxy support for multi-master loadbalancer
+  - Move config directory to /usr/etc/
+- Add kubic-haproxycfg sub-package
+
+-------------------------------------------------------------------
 Fri Aug  9 10:44:01 CEST 2019 - kukuk@suse.de
 
 - Update to version 0.8.2

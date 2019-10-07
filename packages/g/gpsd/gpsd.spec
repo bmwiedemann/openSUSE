@@ -26,13 +26,15 @@ Release:        0
 Summary:        Service daemon for mediating access to a GPS
 License:        BSD-3-Clause
 Group:          Hardware/Other
-URL:            http://www.catb.org/gpsd/
-Source0:        http://download-mirror.savannah.gnu.org/releases/gpsd/%{name}-%{version}.tar.gz
+URL:            https://gpsd.gitlab.io/gpsd/
+Source0:        https://download-mirror.savannah.gnu.org/releases/gpsd/%{name}-%{version}.tar.gz
 Source1:        rules.gpsd
 Source2:        udev.gpsd
 Source3:        sysconfig.gpsd
-Source98:       http://download-mirror.savannah.gnu.org/releases/gpsd/%{name}-%{version}.tar.gz.sig
+Source98:       https://download-mirror.savannah.gnu.org/releases/gpsd/%{name}-%{version}.tar.gz.sig
 Source99:       %{name}.keyring
+# PATCH-FIX-UPSTREAM
+Source100:      0001-Make-sure-Qgpsmm.pc-is-usable.patch
 BuildRequires:  chrpath
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -160,6 +162,12 @@ mkdir -p %{name}-%{version}/python2
 mkdir -p %{name}-%{version}/python3
 tar -xf %{SOURCE0} -C %{name}-%{version}/python2
 tar -xf %{SOURCE0} -C %{name}-%{version}/python3
+pushd %{name}-%{version}/python2/%{name}-%{version}
+patch -p1 < %{SOURCE100}
+popd
+pushd %{name}-%{version}/python3/%{name}-%{version}
+patch -p1 < %{SOURCE100}
+popd
 cd %{name}-%{version}
 
 # fix systemd path

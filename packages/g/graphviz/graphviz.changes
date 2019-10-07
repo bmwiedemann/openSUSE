@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep  4 11:56:02 UTC 2019 - Christian Vögl <christian.voegl@suse.com>
+
+- Switch from github master to new release 2.42.1
+  - Fixes CVE-2018-10196 (bsc#1132091)
+  - Fixes quite a few bugs
+
+- Removed graphviz-fix-ruby-version.patch (fixed in upstream)
+
+-------------------------------------------------------------------
 Thu May  9 19:45:23 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Tweak runtime Requires(post): graphviz to same or newer version.
@@ -18,10 +27,10 @@ Mon Apr 15 18:14:39 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
 -------------------------------------------------------------------
 Tue Apr  2 15:10:04 UTC 2019 - Christian Vögl <christian.voegl@suse.com>
 
-- Now using master branch of upstream, as there have been no releases for 
+- Now using master branch of upstream, as there have been no releases for
   over two years
   * this should fix CVE-2019-11023 (boo#1132091)
-  
+
 - Removed  graphviz-qt5.patch (now in upstream)
 - Removed reproducible.patch (now in upstream)
 - graphviz-smyrna-link_against_glu.patch changed to be applicable to current files
@@ -33,7 +42,7 @@ Tue Apr  2 15:10:04 UTC 2019 - Christian Vögl <christian.voegl@suse.com>
 -------------------------------------------------------------------
 Fri Nov 30 07:34:24 UTC 2018 - jbrielmaier@suse.de
 
-- use pkg-config with correct parameter, reported by Werner Fink 
+- use pkg-config with correct parameter, reported by Werner Fink
 
 -------------------------------------------------------------------
 Thu Nov 29 10:21:10 UTC 2018 - jbrielmaier@suse.de
@@ -174,7 +183,7 @@ Wed Aug  2 12:46:02 UTC 2017 - tchvatal@suse.com
   * Allow user to specify clustering algorithm in gvmap. (Emden Gansner)
   * Add Sierpinski graph generator to gvgen. (Emden Gansner)
   * Extensive code cleanup (Erwin Janssen)
-  * Removal of libgd source - use vanilla libgd from separate install 
+  * Removal of libgd source - use vanilla libgd from separate install
   * Windows builds (Erwin Janssen)
   * Appveyor CI for automated Windows build testing (Erwin Janssen)
   * Travis CI for Fedora/Centos builds (Erwin Janssen)
@@ -253,7 +262,7 @@ Fri May 23 14:23:57 CEST 2014 - pth@suse.de
    - The fixedsize attribute now takes the value "shape" which allows
      labels much larger than the node shape.
 
-- Remove graphviz-fix-includes.patch as the fix has been done 
+- Remove graphviz-fix-includes.patch as the fix has been done
   upstream.
 - Add graphviz-array_overflow.patch to fix an off-by-one error.
 
@@ -337,13 +346,13 @@ Wed Sep 11 18:55:22 CEST 2013 - pth@suse.de
 Mon Sep  9 13:27:19 CEST 2013 - pth@suse.de
 
 - Update to 2.34.0:
-  - Resolved bugs: 
+  - Resolved bugs:
     * graphviz will hangs if only one point and attribute given (gvz#2326)
     * Inconsistent text position in xdot with HTML-like label (gvz#2333)
     * Graphviz createsedges not asked for, with rank=same (gvz#2334)
     * Graph padding rectangle too big (gvz#2337)
     * labelloc has no effect for HTML-like labels with formatting (gvz#2338)
-    * Global search and replace operation in the documentation seems to 
+    * Global search and replace operation in the documentation seems to
       have gone awry (gvz#2340)
     * Rotated graph not quite centered (gvz#2343)
     * When arrowType is list and contains none all subsequent
@@ -437,7 +446,7 @@ Thu Mar 28 11:51:09 CET 2013 - pth@suse.de
 Sat Mar 16 22:26:37 UTC 2013 - dmueller@suse.com
 
 - add aarch64-lib64-support.diff:
-  * add aarch64 to the list of lib64 architectures 
+  * add aarch64 to the list of lib64 architectures
 
 -------------------------------------------------------------------
 Wed Jan 16 18:02:58 CET 2013 - pth@suse.de
@@ -485,12 +494,12 @@ Wed Sep 28 19:08:30 UTC 2011 - idonmez@suse.com
     - Make overlap=false denote overlap=prism
     - More efficient xdot library
     - HTML-like labels provide ID
-    - Fixed bugs: 1480 1980 2044 2087 2088 2089 2091 2093 2094 
-        2095 2101 2102 2103 2104 2112 2113 2118 2128 2129 2139 2149 
+    - Fixed bugs: 1480 1980 2044 2087 2088 2089 2091 2093 2094
+        2095 2101 2102 2103 2104 2112 2113 2118 2128 2129 2139 2149
         2157 2113 2159 2160 2161 2163
     - Add scale attribute to twopi
     - Add <B>,<I>,<U> to html strings
-    - migrated to 2005 version of cdt  
+    - migrated to 2005 version of cdt
 
 -------------------------------------------------------------------
 Fri Mar 11 12:25:36 UTC 2011 - coolo@novell.com
@@ -500,7 +509,7 @@ Fri Mar 11 12:25:36 UTC 2011 - coolo@novell.com
 -------------------------------------------------------------------
 Fri Jun 18 09:15:07 UTC 2010 - coolo@novell.com
 
-- fix typo 
+- fix typo
 
 -------------------------------------------------------------------
 Fri Jun 11 12:13:12 CEST 2010 - pth@suse.de
@@ -526,7 +535,7 @@ Mon May 17 12:22:51 UTC 2010 - coolo@novell.com
 Sun Apr  4 18:47:39 CEST 2010 - ro@suse.de
 
 - fix build of gd library with new libpng14
-  (should use system gd lib ?) 
+  (should use system gd lib ?)
 
 -------------------------------------------------------------------
 Tue Mar 16 18:52:54 CET 2010 - ro@suse.de
@@ -542,8 +551,8 @@ Tue Mar 16 18:52:54 CET 2010 - ro@suse.de
     through plugins.  Dropped some output formats for which
     plugins have not been developed: -Tdia, -Tmif
   - gvpr converted to a library; additional array handling and
-    text processing functions added; language extended to allow 
-    multiple BEG_G/N/E blocks. 
+    text processing functions added; language extended to allow
+    multiple BEG_G/N/E blocks.
   - allow background images specified via xdot
   - add new layout engine for large graphs: sfdp
   - add new layout engine for nested graphs: osage
@@ -609,7 +618,7 @@ Thu Jul 10 12:11:47 CEST 2008 - pth@suse.de
 
   2.20.0:
   - Fixed bugs (see http://www.graphviz.org/bugs/buglist.html for
-    details: 
+    details:
     - 1315: Different/error output for *.os and *.pdf
     - 1317: Graphviz fails to open more than 512 files.
     - 1324: Graphviz crashes in atexit().
@@ -661,7 +670,7 @@ Fri Mar 28 12:53:29 CET 2008 - pth@suse.de
   - add "folder" node shape
   - add "smyna" large graph view (thanks Arif) (not yet included
     in binary distros)
-  
+
   * 2.16.1
   - Improvements to PHP binding
   - Improvements to OCAML binding
@@ -670,7 +679,7 @@ Fri Mar 28 12:53:29 CET 2008 - pth@suse.de
   - Repair freetype detection on RedHat-7 (Yes, people still use it!!)
   - Fix zoom-at-mouse-location in -Txlib and -Tgtk
   - Fix some dotty regressions
-  
+
   * 2.15
   - new regression test suite
   - new cgraph library (will eventually replace graph and agraph)
@@ -680,7 +689,7 @@ Fri Mar 28 12:53:29 CET 2008 - pth@suse.de
   - add functions to access version info to avoid need for gvcint.h
   - Fix problem with irregular character spacing at 96dpi in pango/cairo
     output formats.
-  - Add gdk_pixbuf plugin providing: .bmp .ico .jpg .png .tif 
+  - Add gdk_pixbuf plugin providing: .bmp .ico .jpg .png .tif
   - Add DevIL plugin providing: .bmp .jpg .png .tif .tga
   - Extend GD plugin to provide a backend to cairo for: .gif .jpg .png .gd
     .gd2 .wbmp  <- gifs are now antialiased
@@ -698,7 +707,7 @@ Fri Mar 28 12:53:29 CET 2008 - pth@suse.de
   - New access functions for version info in GVC_t - permits
     gvcint.h to be private.
 
-  * 2.14:  
+  * 2.14:
   - Using system version of libgd if gd-2.0.34 or later.
     internal copy of gd updated to gd-2.0.35.
   - Updated GVGUI viewer for Windows
@@ -707,7 +716,7 @@ Fri Mar 28 12:53:29 CET 2008 - pth@suse.de
   - Added -Tvml support
 - Adapt the patch to allow ^LT_(CURRENT|REVISION|AGE)$ in
   configure script and reenable the use of these variables.
-  
+
 -------------------------------------------------------------------
 Thu Mar 13 18:36:18 CET 2008 - schwab@suse.de
 
@@ -729,12 +738,12 @@ Mon Aug 13 19:23:50 CEST 2007 - pth@suse.de
 Fri May 11 10:32:20 CEST 2007 - ro@suse.de
 
 - added get_release_number.sh to sync rel-number between
-  graphviz and graphviz-plugins 
+  graphviz and graphviz-plugins
 
 -------------------------------------------------------------------
 Thu May 10 01:48:27 CEST 2007 - ro@suse.de
 
-- split off plugins to separate specfile to break build cycles 
+- split off plugins to separate specfile to break build cycles
 
 -------------------------------------------------------------------
 Tue May  8 12:11:16 CEST 2007 - pth@suse.de
@@ -751,7 +760,7 @@ Tue May  8 12:11:16 CEST 2007 - pth@suse.de
   - dot - New pango+cairo renderer plugin (was in separate graphviz-cairo tree).
       -- -Tpng now uses cairo   (-Tpng:gd for old gd based renderer)
       -- -Tpdf now available
-      -- -Tps:cairo now available (-Tps is a direct ps renderer not based on 
+      -- -Tps:cairo now available (-Tps is a direct ps renderer not based on
           cairo)
       -- -Tsvg:cairo now available (-Tsvg is a direct svg renderer not based
           on cairo)
@@ -759,8 +768,8 @@ Tue May  8 12:11:16 CEST 2007 - pth@suse.de
           inotify and updates
       -- -Tgtk now available -- eventually to provide a graph editing capability
           - not fully working
-      -- -Tswf "Flash" now available using the ming library. Currently has 
-          incomplete font support and not yet in Fedora rpms because ming not 
+      -- -Tswf "Flash" now available using the ming library. Currently has
+          incomplete font support and not yet in Fedora rpms because ming not
           yet available as rpm.
   - remove hard gd dependencies from dot.  gd renderers now provided
     as optional plugin.   Deprecated, but required for -Tjpg, -Tgif and -Tvrml.
@@ -776,7 +785,7 @@ Tue May  8 12:11:16 CEST 2007 - pth@suse.de
     display on changes
   - dot - new -O switch to automatically generate output file
     names based on the input filename and the -T value.
-    e.g.  "dot -Tpng -O *.dot"   
+    e.g.  "dot -Tpng -O *.dot"
     Also works for case of multiple graphs in a single input file.
   - add support for "Brewer" color nameset
   - move reusable .so libraries to $PREFIX/lib per frequent request
@@ -806,7 +815,7 @@ Tue May  8 12:11:16 CEST 2007 - pth@suse.de
 - build php,ruby,C#,python,guile and java support in addition to tcl
 - swig >= 1.3.21 differentiates between php4 and php5, so adapt
   configure test.
-- Don't move tcl libraries to _libdir but instead add the graphviz 
+- Don't move tcl libraries to _libdir but instead add the graphviz
   sublibrary paths via /etc/ld.so.conf.d
 - Use SONAMEs to generate pkgIndex.tcl. That way tcl can actually
   load the libraries via 'package require'
@@ -872,7 +881,7 @@ Tue Aug  9 17:27:30 CEST 2005 - agruen@suse.de
 -------------------------------------------------------------------
 Tue Aug  2 01:11:47 CEST 2005 - ro@suse.de
 
-- move pkgIndex.tcl to /usr/share 
+- move pkgIndex.tcl to /usr/share
 
 -------------------------------------------------------------------
 Thu Feb 10 15:14:15 CET 2005 - agruen@suse.de
@@ -890,13 +899,13 @@ Sat Mar 27 20:13:52 CET 2004 - sndirsch@suse.de
 
 - update to graphviz-1.12
   * general
-    - rename bcc -> bcomps to avoid name conflict with 
+    - rename bcc -> bcomps to avoid name conflict with
       "Bruce's C Compiler" on Redhat distributions.
     - all build without X11 (fix problem in lefty tree)
     - remove from distribution:
       dag, fdp, geo, grid, incr, shape, tcldgr, tcldgl
   * dotneato
-    - fix "brown-bag" problem resulting in PNG and JPEG errors on 
+    - fix "brown-bag" problem resulting in PNG and JPEG errors on
       RH8 and RH9.
 - removed hunks for dag, fdp, grid, tcldgl from codecleanup patch;
   directories were dropped upstream (see 1.12 changelog above)
@@ -928,7 +937,7 @@ Wed Feb 25 15:40:49 CET 2004 - garloff@suse.de
 Fri Jan 16 10:49:32 CET 2004 - meissner@suse.de
 
 - Change freetype detection to new one, so the internal libGD is build
-  against it again.  
+  against it again.
 
 -------------------------------------------------------------------
 Sat Jan 10 11:23:19 CET 2004 - adrian@suse.de
@@ -944,7 +953,7 @@ Mon Oct  6 12:17:24 CEST 2003 - kukuk@suse.de
 -------------------------------------------------------------------
 Mon Jul 28 17:23:10 CEST 2003 - ro@suse.de
 
-- updated neededforbuild 
+- updated neededforbuild
 
 -------------------------------------------------------------------
 Tue May 13 20:02:40 CEST 2003 - pthomas@suse.de
@@ -972,13 +981,13 @@ Fri Feb  7 19:13:50 CET 2003 - pthomas@suse.de
 -------------------------------------------------------------------
 Wed Jan 29 13:47:12 CET 2003 - ro@suse.de
 
-- fix png library detection in configure 
+- fix png library detection in configure
 - removed perl-GD and blt from neededforbuild
 
 -------------------------------------------------------------------
 Thu Jan  9 00:58:22 CET 2003 - ro@suse.de
 
-- fixed configure.in 
+- fixed configure.in
 
 -------------------------------------------------------------------
 Thu Nov 14 17:05:40 CET 2002 - tcrhak@suse.cz
@@ -998,7 +1007,7 @@ Sat Aug 10 15:47:28 CEST 2002 - aj@suse.de
 -------------------------------------------------------------------
 Fri Jul  5 10:24:42 CEST 2002 - kukuk@suse.de
 
-- Use %ix86 macro 
+- Use %ix86 macro
 
 -------------------------------------------------------------------
 Tue Jul  2 14:55:10 MEST 2002 - garloff@suse.de
@@ -1064,7 +1073,7 @@ Mon Jan 28 02:14:55 MET 2002 - garloff@suse.de
 
 - Update to 1.7.16:
   * Various bug fixes
-  * Support for xfig, svgz, 
+  * Support for xfig, svgz,
   * Text output improvements
   * New twopi tool
 - Drop patches that have been included in official source ball.
@@ -1072,7 +1081,7 @@ Mon Jan 28 02:14:55 MET 2002 - garloff@suse.de
 -------------------------------------------------------------------
 Wed May 23 00:30:21 CEST 2001 - garloff@suse.de
 
-- Fix cast warnings on 64bit archs and add missing includes 
+- Fix cast warnings on 64bit archs and add missing includes
   where necessary.
 
 -------------------------------------------------------------------
@@ -1082,9 +1091,9 @@ Wed May  9 19:53:12 CEST 2001 - garloff@suse.de
 
 -------------------------------------------------------------------
 Tue May  8 21:37:33 CEST 2001 - mfabian@suse.de
- 
+
 - bzip2 sources
- 
+
 -------------------------------------------------------------------
 Mon Apr 30 17:28:11 MEST 2001 - garloff@suse.de
 
@@ -1096,14 +1105,14 @@ Mon Apr 30 17:28:11 MEST 2001 - garloff@suse.de
   * -Timap (mouse sensitive graphs for web pages) fixes
   * PNG by default does white background now instead of transp.
 - New features in 1.7.6:
-  * New graph processing tools: acyclic, ccomps, colorize, gc, 
+  * New graph processing tools: acyclic, ccomps, colorize, gc,
     gpr, nop, sccmap, tred, unflatten (See ChangeLog for details)
 - Spec file: Consistently use %{prefix}
 
 -------------------------------------------------------------------
 Thu Mar 22 16:05:02 CET 2001 - ro@suse.de
 
-- changed neededforbuild to freetype2 
+- changed neededforbuild to freetype2
 - updated to 1.7.5 for freetype2
 
 -------------------------------------------------------------------
@@ -1151,7 +1160,7 @@ Wed Nov 29 17:26:55 CET 2000 - ro@suse.de
 -------------------------------------------------------------------
 Wed Nov  8 16:32:06 CET 2000 - ro@suse.de
 
-- fixed neededforbuild gd -> perl-GD 
+- fixed neededforbuild gd -> perl-GD
 
 -------------------------------------------------------------------
 Wed Nov  1 14:55:33 CET 2000 - garloff@suse.de

@@ -1,20 +1,16 @@
-From 4e0dcb220bd77a5ddf0f8956740281efbf1ead90 Mon Sep 17 00:00:00 2001
 From: Daniel Borkmann <daniel@iogearbox.net>
-Date: Wed, 31 Oct 2018 20:25:22 +0100
-Subject: [PATCH iproute2-next 1/2] bpf: data section support poc
-To: Stephen Hemminger <stephen@networkplumber.org>
-Cc: netdev@vger.kernel.org, daniel@iogearbox.net
+Subject: bpf: data section support poc
+Patch-mainline: No, status unknown, seems to be implemented in libbpf instead
+References: none
 
 Signed-off-by: Daniel Borkmann <daniel@iogearbox.net>
 ---
  lib/bpf.c | 40 ++++++++++++++++++++++++++++++++++++++--
  1 file changed, 38 insertions(+), 2 deletions(-)
 
-diff --git a/lib/bpf.c b/lib/bpf.c
-index 45f279fa4a41..eb208275ebaa 100644
 --- a/lib/bpf.c
 +++ b/lib/bpf.c
-@@ -1142,6 +1142,7 @@ struct bpf_elf_ctx {
+@@ -1147,6 +1147,7 @@ struct bpf_elf_ctx {
  	Elf_Data		*sym_tab;
  	Elf_Data		*str_tab;
  	Elf_Data		*btf_data;
@@ -22,7 +18,7 @@ index 45f279fa4a41..eb208275ebaa 100644
  	char			obj_uid[64];
  	int			obj_fd;
  	int			btf_fd;
-@@ -1157,6 +1158,7 @@ struct bpf_elf_ctx {
+@@ -1162,6 +1163,7 @@ struct bpf_elf_ctx {
  	int			sec_maps;
  	int			sec_text;
  	int			sec_btf;
@@ -30,7 +26,7 @@ index 45f279fa4a41..eb208275ebaa 100644
  	char			license[ELF_MAX_LICENSE_LEN];
  	enum bpf_prog_type	type;
  	__u32			ifindex;
-@@ -2037,6 +2039,15 @@ static int bpf_fetch_text(struct bpf_elf_ctx *ctx, int section,
+@@ -2057,6 +2059,15 @@ static int bpf_fetch_text(struct bpf_elf_ctx *ctx, int section,
  	return 0;
  }
  
@@ -46,7 +42,7 @@ index 45f279fa4a41..eb208275ebaa 100644
  static void bpf_btf_report(int fd, struct bpf_elf_ctx *ctx)
  {
  	fprintf(stderr, "\nBTF debug data section \'.BTF\' %s%s (%d)!\n",
-@@ -2246,6 +2257,11 @@ static bool bpf_has_call_data(const struct bpf_elf_ctx *ctx)
+@@ -2270,6 +2281,11 @@ static bool bpf_has_call_data(const struct bpf_elf_ctx *ctx)
  	return ctx->sec_text;
  }
  
@@ -58,7 +54,7 @@ index 45f279fa4a41..eb208275ebaa 100644
  static int bpf_fetch_ancillary(struct bpf_elf_ctx *ctx, bool check_text_sec)
  {
  	struct bpf_elf_sec_data data;
-@@ -2267,6 +2283,9 @@ static int bpf_fetch_ancillary(struct bpf_elf_ctx *ctx, bool check_text_sec)
+@@ -2291,6 +2307,9 @@ static int bpf_fetch_ancillary(struct bpf_elf_ctx *ctx, bool check_text_sec)
  			 !strcmp(data.sec_name, ".text") &&
  			 check_text_sec)
  			ret = bpf_fetch_text(ctx, i, &data);
@@ -68,7 +64,7 @@ index 45f279fa4a41..eb208275ebaa 100644
  		else if (data.sec_hdr.sh_type == SHT_SYMTAB &&
  			 !strcmp(data.sec_name, ".symtab"))
  			ret = bpf_fetch_symtab(ctx, i, &data);
-@@ -2380,6 +2399,21 @@ static int bpf_apply_relo_map(struct bpf_elf_ctx *ctx, struct bpf_elf_prog *prog
+@@ -2404,6 +2423,21 @@ static int bpf_apply_relo_map(struct bpf_elf_ctx *ctx, struct bpf_elf_prog *prog
  	return 0;
  }
  
@@ -90,7 +86,7 @@ index 45f279fa4a41..eb208275ebaa 100644
  static int bpf_apply_relo_call(struct bpf_elf_ctx *ctx, struct bpf_elf_prog *prog,
  			       GElf_Rel *relo, GElf_Sym *sym,
  			       struct bpf_relo_props *props)
-@@ -2434,10 +2468,12 @@ static int bpf_apply_relo_data(struct bpf_elf_ctx *ctx,
+@@ -2458,10 +2492,12 @@ static int bpf_apply_relo_data(struct bpf_elf_ctx *ctx,
  
  		if (sym.st_shndx == ctx->sec_maps)
  			ret = bpf_apply_relo_map(ctx, prog, &relo, &sym, props);
@@ -104,7 +100,7 @@ index 45f279fa4a41..eb208275ebaa 100644
  				relo_ent, sym.st_shndx);
  		if (ret < 0)
  			return ret;
-@@ -2533,7 +2569,7 @@ static int bpf_fetch_prog_sec(struct bpf_elf_ctx *ctx, const char *section)
+@@ -2557,7 +2593,7 @@ static int bpf_fetch_prog_sec(struct bpf_elf_ctx *ctx, const char *section)
  			return ret;
  	}
  
@@ -113,6 +109,3 @@ index 45f279fa4a41..eb208275ebaa 100644
  		ret = bpf_fetch_prog_relo(ctx, section, &lderr, &sseen, &prog);
  	if (ret < 0 && !lderr)
  		ret = bpf_fetch_prog(ctx, section, &sseen);
--- 
-2.19.1
-

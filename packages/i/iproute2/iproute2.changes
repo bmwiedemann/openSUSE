@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Sep 25 07:07:32 UTC 2019 - Michal Kubeček <mkubecek@suse.cz>
+
+- Update to new upstream release 5.3
+  * devlink: show devlink port number
+  * devlink: introduce PCI PF and VF port flavor and attribute
+  * ip: support for nexthop objects
+  * ip: add -Numeric option
+  * ip: bond: support peer notification delay
+  * rdma: query/set netns sharing sys parameter
+  * rdma: support setting netns of rdma device
+  * rdma: support "stat qp show"
+  * rdma: support per-port counter mode
+  * rdma: support stat manual mode
+  * rdma: support default counter statistics
+  * rdma: support CQ adaptive moderation
+  * tc: support act_ctinfo action
+  * tc: skbedit: add mask parameter
+  * tc: add mpls actions
+  * tc: stricter parameter parsing
+  * tc: netem: json output
+  * tipc: support interface name when activating UDP bearer
+  * update documentation
+- refresh
+  * xfrm-support-displaying-transformations-used-for-Mob.patch
+  * bpf-data-section-support-poc.patch
+  * bpf-bss-section-poc.patch
+- use fallback definition %make_build if it is not defined
+  (fix SLE12 build)
+
+-------------------------------------------------------------------
 Mon Aug 12 07:00:32 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Use FAT LTO objects in order to provide proper static library.

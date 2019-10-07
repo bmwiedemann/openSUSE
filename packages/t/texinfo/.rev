@@ -520,4 +520,12 @@
       . use section names instead of node names in generated menus</comment>
     <requestid>726696</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>588fe1006793f11ef940792998375ddf</srcmd5>
+    <version>6.6</version>
+    <time>1570448278</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>733990</requestid>
+  </revision>
 </revisionlist>

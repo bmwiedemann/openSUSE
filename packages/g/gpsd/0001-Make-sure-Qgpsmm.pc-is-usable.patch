@@ -1,0 +1,44 @@
+From 1ab2f417451c9dcb6501952b8842ce911ce055b9 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Sat, 28 Sep 2019 13:14:14 +0200
+Subject: [PATCH] Make sure Qgpsmm.pc is usable.
+
+The library dir and Qt version used to build gpsd can be customized but the
+qgpsmm pkgconfig file had hardcoded values.
+
+The pkgconfig file now uses `LIBDIR` and the `qt_versioned` value.
+---
+ Qgpsmm.pc.in | 6 +++---
+ SConstruct   | 1 +
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/Qgpsmm.pc.in b/Qgpsmm.pc.in
+index c3006d508..b18015d51 100644
+--- a/Qgpsmm.pc.in
++++ b/Qgpsmm.pc.in
+@@ -5,9 +5,9 @@ includedir=@includedir@
+ qt_config=lex yacc warn_on uic resources qt release incremental link_prl def_files_disabled exceptions no_mocdepend stl qt_no_framework create_pc create_prl moc thread dll
+ 
+ Name: Qgpsmm
+-Description: GPS Daemon communication library - QT binding
++Description: GPS Daemon communication library - Qt binding
+ Version: @VERSION@
+ Libs: -L${libdir} -lQgpsmm
+-Libs.private: -L/usr/lib  -lQtNetwork -lQtCore -lpthread
++Libs.private: -L${libdir}  -lQt@QTVERSIONED@Network -lQt@QTVERSIONED@Core -lpthread
+ Cflags:  -I${includedir}
+-Requires: QtNetwork
++Requires: Qt@QTVERSIONED@Network
+
+diff --git a/SConstruct b/SConstruct
+index 5160481..a4b9975 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -1851,6 +1851,7 @@ def substituter(target, source, env):
+         ('@MAINPAGE@',   mainpage),
+         ('@MASTER@',     'DO NOT HAND_HACK! THIS FILE IS GENERATED'),
+         ('@prefix@',     env['prefix']),
++        ('@QTVERSIONED@', env['qt_versioned']),
+         ('@SCPUPLOAD@',  scpupload),
+         ('@SITENAME@',   sitename),
+         ('@SITESEARCH@', sitesearch),

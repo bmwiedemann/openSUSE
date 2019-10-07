@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep 26 19:09:10 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to 3.9.7:
+  + No upstream changes/changelog/NEWS provided, please see git-log
+    at https://gitlab.gnome.org/GNOME/libdmapsharing
+- Drop new_vala_build.patch: Fixed upstream.
+- Disable build of tests, via passing --disable-tests to configure
+  as they currently fails to build, and it allows us to drop
+  pkgconfig(gtk+-2.0) BuildRequires.
+- Add majorver, soname and sover defines and set them to current
+  values, ease future version updates that include so* changes.
+- Align with what configure checks for: Add  pkgconfig(glib-2.0)
+  and pkgconfig(gthread-2.0) BuildRequires, and drop
+  pkgconfig(gio-2.0) BuildRequires.
+- Run spec-cleaner, modernize spec.
+
+-------------------------------------------------------------------
 Tue Sep 10 18:48:36 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add missing pkgconfig(avahi-client) and pkgconfig(gtk+-2.0)

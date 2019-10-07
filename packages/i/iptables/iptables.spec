@@ -48,6 +48,11 @@ Requires:       netcfg >= 11.6
 Requires:       xtables-plugins = %version-%release
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+# During the update to iptables 1.8, ip6tables-restore-translate, ip6tables-translate,
+# iptables-restore-translate and iptables-translate were moved from iptables-nft subpackage
+# (now iptables-backend-nft) to the main package so we need to add a conflict here otherwise
+# we hit file conflicts error during the update
+Conflicts:      iptables-nft = 1.6.2
 
 %description
 iptables is used to set up, maintain, and inspect the rule tables of

@@ -21,15 +21,19 @@
 %define _lto_cflags %{nil}
 %define ocaml_base_version 4.05
 #
-%define do_opt 0
 # This ensures that the find_provides/find_requires calls ocamlobjinfo correctly.
 %global __ocaml_requires_opts -c -f "%{buildroot}%{_bindir}/ocamlrun %{buildroot}%{_bindir}/ocamlobjinfo.byte"
 %global __ocaml_provides_opts -f "%{buildroot}%{_bindir}/ocamlrun %{buildroot}%{_bindir}/ocamlobjinfo.byte"
+
+###
+# Changes in the block below must be mirrored to ocaml-rpm-macros
+%define do_opt 0
 # macros to be set in prjconf:
 #Macros:
 #_with_ocaml_force_enable_ocaml_opt 1
 #_with_ocaml_force_disable_ocaml_opt 1
 #_with_ocaml_make_testsuite 1
+#:Macros
 %bcond_with ocaml_force_enable_ocaml_opt
 %bcond_with ocaml_force_disable_ocaml_opt
 %bcond_with ocaml_make_testsuite
@@ -45,6 +49,8 @@
 %if %{with ocaml_force_disable_ocaml_opt}
 %define do_opt 0
 %endif
+###
+#
 Name:           ocaml
 Version:        4.05.0
 Release:        0
@@ -84,18 +90,6 @@ programming language from the ML family of languages.
 This package comprises two batch compilers (a fast bytecode compiler
 and an optimizing native-code compiler), an interactive top level
 system, Lex&Yacc tools, a replay debugger, and a comprehensive library.
-
-%package       rpm-macros
-Summary:        RPM macros for building OCaml source packages
-License:        QPL-1.0 AND SUSE-LGPL-2.0-with-linking-exception
-Group:          Development/Languages/OCaml
-
-%description       rpm-macros
-OCaml is a high-level, strongly-typed, functional and object-oriented
-programming language from the ML family of languages.
-
-This package contains a set of helper macros to unify common code used
-in ocaml spec files.
 
 %package runtime
 Summary:        OCaml runtime environment
@@ -246,107 +240,6 @@ find %{buildroot} \( \
 	-name '*.sml' \
 	\) -type f -exec chmod -v a-x "{}" \;
 
-# install OCaml macros
-mkdir -vp %{buildroot}%{_rpmconfigdir}/macros.d
-tee %{buildroot}%{_rpmconfigdir}/macros.d/macros.%{name} <<'_EOF_'
-# get rid of %{_rpmconfigdir}/find-debuginfo.sh
-# strip kills the bytecode part of ELF binaries
-#
-# provide empty _find_debuginfo_dwz_opts
-# the .dwz files contains identical contents, which leads to identical
-# checksums, which leads to file conflicts due to identical symlinks
-%if %{do_opt}
-%%ocaml_preserve_bytecode \
-	%%define _lto_cflags %%{nil} \
-	%%{nil}
-%%ocaml_native_compiler 1
-%%_find_debuginfo_dwz_opts %%{nil}
-%else
-%%ocaml_preserve_bytecode \
-	%%undefine _build_create_debug \
-	%%define __arch_install_post export NO_BRP_STRIP_DEBUG=true \
-	%%define _lto_cflags %%{nil} \
-	%%{nil}
-%%ocaml_native_compiler 0
-%endif
-
-# setup.ml comes from oasis, but this is here for libs oasis depends on
-#
-# html goes into a separate, browsable dir
-# which is also safe regarding wiping due to %%doc macro usage
-%%_oasis_docdir_base %%{_datadir}/doc/ocaml
-%%_oasis_docdir_dvi   %%{_oasis_docdir_base}/%%{name}
-%%_oasis_docdir_html  %%{_oasis_docdir_base}/%%{name}
-%%_oasis_docdir_pdf   %%{_oasis_docdir_base}/%%{name}
-%%_oasis_docdir_ps    %%{_oasis_docdir_base}/%%{name}
-%%oasis_docdir        %%{_oasis_docdir_base}/%%{name}
-#
-# For now provide a convinience macro which covers also the parent dir
-%%oasis_docdir_dvi  %%dir %%{_oasis_docdir_base} \
-%%{_oasis_docdir_dvi}
-%%oasis_docdir_html %%dir %%{_oasis_docdir_base} \
-%%{_oasis_docdir_html}
-%%oasis_docdir_pdf  %%dir %%{_oasis_docdir_base} \
-%%{_oasis_docdir_pdf}
-%%oasis_docdir_ps   %%dir %%{_oasis_docdir_base} \
-%%{_oasis_docdir_ps}
-#
-# various macros to unify setup/build/install
-%%oasis_setup \
-	oasis setup
-%%ocaml_oasis_configure \
-ocaml setup.ml -configure \\\
-	--psdir          %%{_oasis_docdir_ps} \\\
-	--pdfdir         %%{_oasis_docdir_pdf} \\\
-	--dvidir         %%{_oasis_docdir_dvi} \\\
-	--htmldir        %%{_oasis_docdir_html} \\\
-	--docdir         %%{oasis_docdir} \\\
-	--localedir      %%{_datadir}/locale \\\
-	--datadir        %%{_datadir} \\\
-	\\\
-	--bindir         %%{_bindir} \\\
-	--mandir         %%{_mandir} \\\
-	--destdir        %%{buildroot} \\\
-	--datarootdir    %%{_datadir} \\\
-	--infodir        %%{_infodir} \\\
-	--libdir         %%{_libdir} \\\
-	--libexecdir     %%{_libexecdir} \\\
-	--localstatedir  %%{_localstatedir} \\\
-	--sbindir        %%{_sbindir} \\\
-	--prefix         %%{_prefix} \\\
-	--sysconfdir     %%{_sysconfdir} \\\
-	--exec-prefix    %%{_prefix} \\\
-	--sharedstatedir %%{_sharedstatedir}
-#
-%%ocaml_oasis_build \
-	ocaml setup.ml -build
-%%ocaml_oasis_doc \
-	ocaml setup.ml -doc
-%%ocaml_oasis_install \
-	ocaml setup.ml -install
-%%ocaml_oasis_findlib_install \
-	export OCAMLFIND_DESTDIR=%%{buildroot}`ocamlc -where` ; \
-	export OCAMLFIND_LDCONF=/dev/null ; \
-	mkdir -p $OCAMLFIND_DESTDIR ; \
-	ocaml setup.ml -install
-%%ocaml_oasis_test \
-	ocaml setup.ml -test
-#
-%%ocaml_dune_setup \
-	dune installed-libraries ; \
-	dune external-lib-deps @install ; \
-	%%{nil}
-%%ocaml_dune_build \
-	dune build @install
-%%ocaml_dune_install \
-	dune install --destdir=%%{buildroot} ; \
-	rm -rfv %%{buildroot}%%{_prefix}/doc
-%%ocaml_dune_test \
-	dune runtest
-#
-#
-_EOF_
-
 tag="ocamlfind"
 mkdir -vp %{buildroot}%{_rpmconfigdir}/fileattrs
 tee %{buildroot}%{_rpmconfigdir}/fileattrs/${tag}.attr <<_EOF_
@@ -396,9 +289,6 @@ tee %{buildroot}%{_rpmconfigdir}/${tag}.sh < %{SOURCE1}
 %exclude %{_bindir}/ocamlrun
 %exclude %{_bindir}/ocamldoc*
 %exclude %{_libdir}/ocaml/ocamldoc
-
-%files rpm-macros
-%config %{_rpmconfigdir}/macros.d
 
 %files runtime
 %{_bindir}/ocamlrun

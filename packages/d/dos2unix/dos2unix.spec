@@ -1,7 +1,7 @@
 #
 # spec file for package dos2unix
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,12 @@ Name:           dos2unix
 Summary:        Text converters to and from DOS/MAC to UNIX
 License:        BSD-2-Clause
 Group:          Productivity/Text/Convertors
-Version:        7.4.0
+Version:        7.4.1
 Release:        0
-Url:            http://waterlan.home.xs4all.nl/dos2unix.html
-Source:         http://waterlan.home.xs4all.nl/dos2unix/dos2unix-%{version}.tar.gz
+Url:            https://waterlan.home.xs4all.nl/dos2unix.html
+Source:         https://waterlan.home.xs4all.nl/dos2unix/dos2unix-%{version}.tar.gz
 Provides:       unix2dos = %{version}
 Obsoletes:      unix2dos < %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Dos2unix is used to convert plain text from DOS (CR/LF) format. Mac2unix
