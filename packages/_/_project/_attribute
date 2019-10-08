@@ -53,7 +53,7 @@
   boo#1145372: '20191007'
   boo#1145461: '20190820'
   boo#1146736: '20191005'
-  boo#1148477: '20191005'
+  boo#1148477: '20191007'
   boo#1148850: '20191005'
   boo#1150977: '20190917'
   boo#1151291: '20191005'
@@ -61,7 +61,7 @@
   boo#1151951: '20190923'
   boo#1152177: '20191003'
   boo#1153159: '20191005'
-  boo#1153160: '20191005'
+  boo#1153160: '20191007'
   boo#1153162: '20191005'
   bsc#1114673: '20191005'
   bsc#1120957: '20190508'
@@ -332,7 +332,7 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20191007'
+    <value>failed: ''
 published: '20191004'
 publishing: '20191004'
 testing: '20191007'
