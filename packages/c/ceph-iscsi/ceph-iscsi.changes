@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct  8 11:05:09 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 3.3+1570532654.g93940a4:
+  + spec/checkin.sh:
+    * reinstate "BuildArch: noarch" for all distros except openSUSE (i.e.,
+      including SLE, which does not allow arch change in a maintenance update)
+    * "ExclusiveArch" on openSUSE only
+
+-------------------------------------------------------------------
 Fri Sep 27 09:17:57 UTC 2019 - Ricardo Marques <rimarques@suse.com>
 
 - Update to 3.3+1569575733.g93940a4:

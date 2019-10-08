@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Tue Oct  8 11:19:55 UTC 2019 - ecsos@opensuse.org
+
+- Update to 4.1.0
+  New features
+  - Viewer: Add an option to have a scrollbar (under Scrolling in
+    the viewer preferences)
+  - Viewer: Allow showing the 'position in book', as was displayed
+    in the top left of the viewer in calibre 3, in the header or
+    footer of the viewer.
+  - Viewer: Add options to control scrolling using the mouse in
+    paged mode.
+  - Viewer: Allow copying images by right clicking on them.
+  - Viewer: Add a preference under Miscellaneous to allow only
+    a single instance of the viewer
+  - Viewer: Add keyboard shortcuts to toggle between paged mode and
+    flow mode and to quit
+  - Content server: Make the book size useable in custom book list
+    templates.
+  - Edit metadata: Use a border rather than background color to 
+    indicate correct title and author sort values.
+     Works better with dark themes.
+  - Kobo driver: Support for new firmware
+  Bug fixes
+  - Viewer: Fix a couple of bugs in flow mode. Scrolling to anchors
+    was not working and remembering last read position was not
+    working
+  - Viewer: Fix text after comments not being rendered. Note that
+    the book has to be reloaded if already viewed for the fix 
+    to apply.
+  - Viewer: Fix loading progress screen sometimes getting stuck if
+    changing pages rapidly.
+  - Viewer: Fix failing to open books if path to cache contains
+    symbolic links.
+  - Viewer: When restoring from fullscreen go back to maximized
+    state if window was maximized when entering full screen.
+  - Viewer: Fix shortcut changes not being applied after pressing
+    OK if shortcut list is closed by pressing Esc.
+  - Fix a regression that broke reading metadata from ODT files
+    that do not have keywords.
+  - PDF Output: Fix a bug that prevented the first style property
+    in the header or footer template from being applied
+  - PDF Output: Fix error with a few embedded TTF fonts.
+  - Edit book: Font manager: Fix removing embedded font failing
+    if @font-face rule has no src.
+  - Viewer: Hide the browser provided scrollbar that flashes
+    momentarily on page load.
+  - Viewer: Fix clicking on margins causing keyboard shortcuts to
+    not work until the main text is clicked on again
+  - Comments editor: Workaround for Qt converting ids into anchors
+  - Possible workaround for some windows machines where the viewer
+    is getting access denied errors while renaming a directory
+  - Viewer: When there is empty text for an header footer section
+    render it as blank instead of moving the remaining sections to
+    the left
+  Improved news sources
+  - Fortune Magazine
+
+-------------------------------------------------------------------
+Sat Oct  5 11:15:30 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to 4.0.0
+  New Features
+  - For details on the major changes in calibre between 3.0 and
+    4.0, see https://calibre-ebook.com/new-in/thirteen
+  - A completely re-written E-book viewer with an emphasis on
+    presenting the book text, distraction free
+- Add BuildRequires on hunspell
+- Add BuildRequires and Requires on new dependency:
+  python-qtwebengine-qt5
+
+-------------------------------------------------------------------
 Fri Sep 13 07:26:08 UTC 2019 - ecsos@opensuse.org
 
 - Update to 3.48.0

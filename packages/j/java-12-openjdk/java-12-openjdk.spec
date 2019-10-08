@@ -1133,14 +1133,26 @@ then
 fi
 
 %post javadoc
-update-alternatives \
-  --install %{_javadocdir}/java javadocdir %{_javadocdir}/%{sdklnk}/api \
-  %{priority}
+# in some settings, the %{_javadocdir}/%{sdklnk}/api does not exist
+# and the update-alternatives call ends up in error. So, filter this
+# cases out.
+if [ -d %{_javadocdir}/%{sdklnk}/api ]
+then
+  update-alternatives \
+    --install %{_javadocdir}/java javadocdir %{_javadocdir}/%{sdklnk}/api \
+    %{priority}
+fi
 
 %postun javadoc
 if [ $1 -eq 0 ]
 then
-  update-alternatives --remove javadocdir %{_javadocdir}/%{sdklnk}/api
+# in some settings, the %{_javadocdir}/%{sdklnk}/api does not exist
+# and the update-alternatives call ends up in error. So, filter this
+# cases out.
+  if [ -d %{_javadocdir}/%{sdklnk}/api ]
+  then
+    update-alternatives --remove javadocdir %{_javadocdir}/%{sdklnk}/api
+  fi
 fi
 
 %files

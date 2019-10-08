@@ -171,4 +171,12 @@
     <comment>Don't require the removed xerces-j2-xml-apis</comment>
     <requestid>656911</requestid>
   </revision>
+  <revision rev="25" vrev="135">
+    <srcmd5>b3fb4d2f96bf0d7aac308ed7a9fb33f6</srcmd5>
+    <version>0.9.13</version>
+    <time>1570557578</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>736056</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           calibre
-Version:        3.48.0
+Version:        4.1.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -50,9 +50,9 @@ BuildRequires:  update-desktop-files
 # For those reasons put Requires also in the BuildRequires list below
 BuildRequires:  chmlib-devel >= 0.40
 BuildRequires:  dbus-1-python >= 1.2.0
-BuildRequires:  libQt5Core-private-headers-devel >= 5.3.2
-BuildRequires:  libQt5Gui-private-headers-devel >= 5.3.2
-BuildRequires:  libQt5PlatformSupport-private-headers-devel >= 5.3.2
+BuildRequires:  libQt5Core-private-headers-devel >= 5.13.0
+BuildRequires:  libQt5Gui-private-headers-devel >= 5.13.0
+BuildRequires:  libQt5PlatformSupport-private-headers-devel >= 5.13.0
 BuildRequires:  liberation-fonts
 BuildRequires:  libicu-devel >= 4.4.0
 BuildRequires:  libmtp-devel >= 1.1.5
@@ -65,6 +65,8 @@ BuildRequires:  podofo >= 0.8.2
 BuildRequires:  poppler-tools >= 0.20.2
 BuildRequires:  python >= 2.7.9
 BuildRequires:  python-Pillow >= 3.2.0
+BuildRequires:  pkgconfig(Qt5Core) >= 5.13.0
+BuildRequires:  pkgconfig(Qt5Gui) >= 5.13.0
 # upstream use python-Pygments 2.3.1
 BuildRequires:  python-Pygments >= 2.1.3
 # upstream use python-apsw 3.27.1
@@ -88,7 +90,7 @@ BuildRequires:  python-msgpack >= 0.5.4
 BuildRequires:  python-netifaces >= 0.10.5
 BuildRequires:  python-odfpy
 BuildRequires:  python-psutil >= 4.3.0
-BuildRequires:  python-qt5-devel >= 5.3.1
+BuildRequires:  python-qt5-devel >= 5.13.0
 # upstream use python-regex 2018.07.11
 BuildRequires:  python-regex >= 2017.05.26
 BuildRequires:  python-setuptools >= 23.1.0
@@ -100,6 +102,8 @@ BuildRequires:  python-Markdown >= 2.6.11
 # upstream use python-html2text 2018.1.9
 BuildRequires:  python-html2text >= 2016.9.19
 BuildRequires:  python-pycrypto >= 2.6.1
+# Need at buildtime too, to produce the bash completion
+BuildRequires:  python-qtwebengine-qt5 >= 5.13.0
 BuildRequires:  python-six >= 1.10.0
 BuildRequires:  python-soupsieve >= 1.8
 #BuildRequires:  python-unrardll >= 0.1.3
@@ -107,6 +111,7 @@ BuildRequires:  python-webencodings >= 0.5.1
 #
 BuildRequires:  sqlite3-devel
 BuildRequires:  xdg-utils >= 1.0.2
+BuildRequires:  pkgconfig(hunspell)
 # calibre no longer depends on ImageMagick
 # but keept BuildRequires to convert icon to serveral sizes
 BuildRequires:  pkgconfig(ImageMagick) >= 6.5.9
@@ -137,7 +142,8 @@ Requires:       python-msgpack >= 0.5.4
 Requires:       python-netifaces >= 0.10.5
 Requires:       python-odfpy
 Requires:       python-psutil >= 4.3.0
-Requires:       python-qt5 >= 5.3.1
+Requires:       python-qt5 >= 5.13.0
+Requires:       python-qtwebengine-qt5 >= 5.13.0
 Requires:       python-regex >= 2017.05.26
 Requires:       python-setuptools >= 23.1.0
 Requires:       python-sip >= 4.12.1
@@ -153,10 +159,6 @@ Requires:       python-webencodings >= 0.5.1
 #
 Requires:       sqlite3
 Requires:       xdg-utils >= 1.0.2
-%requires_eq    libQt5Core5
-%requires_eq    libQt5Gui5
-%requires_eq    python-qt5
-%requires_eq    python-sip
 Requires(pretrans): findutils
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

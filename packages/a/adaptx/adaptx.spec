@@ -1,7 +1,7 @@
 #
 # spec file for package adaptx
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,10 +30,10 @@ Patch1:         %{name}-%{version}-icedtea-build.patch
 BuildRequires:  ant >= 1.6
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
-BuildRequires:  log4j
+BuildRequires:  log4j12
 BuildRequires:  xerces-j2
 BuildRequires:  xml-apis
-Requires:       log4j
+Requires:       log4j12
 Requires:       xerces-j2
 Requires:       xml-apis
 BuildArch:      noarch
@@ -68,7 +68,7 @@ done
 
 %build
 perl -p -i -e 's|classic|modern|' src/build.xml
-export CLASSPATH=$(build-classpath xml-apis log4j xerces-j2)
+export CLASSPATH=$(build-classpath xml-apis log4j12/log4j-12 xerces-j2)
 ant -Dant.build.javac.source=8 -Dant.build.javac.target=8 -buildfile src/build.xml jar javadoc
 CLASSPATH=$CLASSPATH:dist/adaptx_%{version}.jar
 ant -Dant.build.javac.source=8 -Dant.build.javac.target=8 -buildfile src/build.xml doc

@@ -19,7 +19,7 @@
 %endif
 
 Name:           ceph-iscsi
-Version:        3.3+1569575733.g93940a4
+Version:        3.3+1570532654.g93940a4
 Release:        1%{?dist}
 Group:          System/Filesystems
 Summary:        Python modules for Ceph iSCSI gateway configuration management
@@ -33,7 +33,13 @@ Source0:        %{name}-%{version}.tar.gz
 %if 0%{?suse_version}
 Source98:       checkin.sh
 Source99:       README-checkin.txt
+%if 0%{?is_opensuse}
 ExclusiveArch:  x86_64 aarch64 ppc64le s390x
+%endif
+%endif
+
+%if ! 0%{?is_opensuse}
+BuildArch: noarch
 %endif
 
 Obsoletes:      ceph-iscsi-config

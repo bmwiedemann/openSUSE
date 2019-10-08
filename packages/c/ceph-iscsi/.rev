@@ -151,4 +151,12 @@
     <comment>upstream 3.3 (forwarded request 733643 from smithfarm)</comment>
     <requestid>733644</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0de000b87dfa019b47054b36d83e8ea9</srcmd5>
+    <version>3.3+1570532654.g93940a4</version>
+    <time>1570557588</time>
+    <user>dimstar_suse</user>
+    <comment>reinstate BuildArch: noarch for SLE (forwarded request 736069 from smithfarm)</comment>
+    <requestid>736071</requestid>
+  </revision>
 </revisionlist>
