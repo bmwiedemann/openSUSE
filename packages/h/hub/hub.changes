@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct  5 20:52:32 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.12.8
+  * hub compare: improve upstream branch detection & error messages
+  * hub compare: allow slash character in branch names
+  * hub api: fix GraphQL requests made to Enterprise hosts
+  * Docs: clarify --message, --file, and --edit flags
+
+-------------------------------------------------------------------
 Sat Sep 21 19:50:01 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.12.6

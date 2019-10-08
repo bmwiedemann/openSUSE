@@ -18,16 +18,12 @@
 
 %define         somajor 0
 Name:           aria2
-Version:        1.34.0
+Version:        1.35.0
 Release:        0
 Summary:        Parallelizing Multi-Protocol Utility for Downloading Files
 License:        SUSE-GPL-2.0-with-openssl-exception
-Group:          Productivity/Networking/Other
 URL:            https://aria2.github.io
 Source0:        https://github.com/aria2/aria2/releases/download/release-%{version}/%{name}-%{version}.tar.xz
-Source1:        %{name}.changes
-# PATCH-FIX-UPSTREAM aria2-CVE-2019-3500.patch boo#1120488
-Patch0:         aria2-CVE-2019-3500.patch
 BuildRequires:  bison
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
@@ -41,7 +37,6 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(nettle)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(zlib)
-Recommends:     %{name}-lang
 Recommends:     ca-certificates
 
 %description
@@ -57,7 +52,6 @@ aria2 currently supports HTTP, FTP, and BitTorrent.
 
 %package -n lib%{name}-%{somajor}
 Summary:        Shared library for %{name}
-Group:          System/Libraries
 
 %description -n lib%{name}-%{somajor}
 aria2 is a utility for downloading files. It has a segmented
@@ -70,7 +64,6 @@ This package contains the shared library.
 
 %package devel
 Summary:        Development files for %{name}
-Group:          Development/Libraries/C and C++
 Requires:       lib%{name}-%{somajor} = %{version}
 
 %description devel
@@ -84,13 +77,6 @@ This package contains development files for its shared library.
 
 %prep
 %setup -q
-%patch0 -p1
-# Do not use current date
-modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{SOURCE1}")"
-DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
-TIME="\"$(date -d "${modified}" "+%%R")\""
-find .  -name '*.cc' |\
-    xargs sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g"
 
 %build
 %configure \
@@ -102,7 +88,7 @@ find .  -name '*.cc' |\
 # We don't specify a ca-bundle because that makes aria2 call gnutls_certificate_set_x509_trust_file()
 # insted of gnutls_certificate_set_x509_system_trust().
 #           --with-ca-bundle=/etc/ssl/ca-bundle.pem
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

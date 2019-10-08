@@ -19,7 +19,7 @@
 %define so_ver 8
 %define gammu_docdir %{_docdir}/%{name}
 Name:           gammu
-Version:        1.40.0
+Version:        1.41.0
 Release:        0
 Summary:        Mobile phone management utility
 License:        GPL-2.0-only
@@ -29,7 +29,6 @@ Source0:        https://dl.cihar.com/gammu/releases/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE gammu-remove-gplv3-files.patch idoenmez@suse.de -- Remove GPLv3 files bnc#775397
 Patch1:         gammu-remove-gplv3-files.patch
 Patch2:         0001-Enable-fPIE-pie.patch
-Patch3:         0001-Add-postgresql-include-location-provided-by-openSUSE.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  doxygen
 BuildRequires:  gettext
@@ -186,7 +185,6 @@ This package contains the Gammu SMS daemon shared library.
 %setup -q
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 # GPL-3.0 licensed files, bnc#775397
 rm -rf contrib/sms-gammu2android

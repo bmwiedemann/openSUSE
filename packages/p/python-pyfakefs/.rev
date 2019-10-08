@@ -64,4 +64,20 @@
   * Mainly fixes a regression bug under Python 2.7.</comment>
     <requestid>687703</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0a4f53e6a95409a0793cfb9f04be9966</srcmd5>
+    <version>3.6.1</version>
+    <time>1570557513</time>
+    <user>dimstar_suse</user>
+    <comment>- Update 3.6.1:
+  * fix borked tests from 3.6
+
+- Update to 3.6:
+  * fixed incorrect argument names for some os functions
+  * fake DirEntry now implements os.PathLike in Python &gt;= 3.6 (see #483)
+  * fixed incorrect argument name for os.makedirs (see #481)
+  * avoid pytest warning under Python 2.7 (see #466)
+  * add next to FakeFileWrapper (see #485)</comment>
+    <requestid>735927</requestid>
+  </revision>
 </revisionlist>

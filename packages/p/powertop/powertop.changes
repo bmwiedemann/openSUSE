@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Oct  7 06:11:21 UTC 2019 - mvetter@suse.com
 
-- Update to version 2.11:
+- Update to version 2.11 (jira#SLE-10105):
   * This release has an important feature to support runtime pm
     enabling for AHCI. A few bug fixes focusing to support PowerTop
 	to run in newer platforms. We have also enabled support for

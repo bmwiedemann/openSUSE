@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct  4 09:41:51 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 2.21
+   see /usr/share/doc/packages/perl-Test-TCP/Changes
+
+  2.21 2019-10-03T03:15:22Z
+      - Fix race condition in check_port(UDP) #78
+
+-------------------------------------------------------------------
 Sun Aug  4 05:27:16 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 2.20

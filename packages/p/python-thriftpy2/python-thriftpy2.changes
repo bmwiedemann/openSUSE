@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  8 09:06:54 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.4.7:
+  * minor bugfixes
+
+-------------------------------------------------------------------
 Thu Sep 19 13:06:34 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip two tests that timeout in OBS build

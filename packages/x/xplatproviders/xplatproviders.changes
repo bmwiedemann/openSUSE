@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct  8 06:59:41 UTC 2019 - Klaus Kämpf <kkaempf@suse.com>
+
+- enable drop-stropts.h-include.patch on all platforms
+
+-------------------------------------------------------------------
 Mon Jul  3 06:57:16 UTC 2017 - kkaempf@suse.com
 
 - add configure-assume-host-SUSE-if-SUSE_VERSION-set.patch

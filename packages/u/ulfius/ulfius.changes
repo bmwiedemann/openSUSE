@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct  5 20:18:07 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.6.4
+  * Add precision for chunked response, got the inspiration
+    from #132.
+  * Update access token for oauth2 bearer validation callback
+    function, add precision concerning libjwt.
+  * Update callback_check_glewlwyd_access_token to the up-to-date
+    version.
+  * Various small fixes.
+
+-------------------------------------------------------------------
 Thu Aug  8 12:06:30 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Add "Requires: yder-devel" to ulfius-devel

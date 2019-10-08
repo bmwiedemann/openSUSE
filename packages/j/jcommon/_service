@@ -1,0 +1,13 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">git://github.com/jfree/jcommon.git</param>
+		<param name="revision">1ea10aa82e30e0d60f57e1c562281a3ac7dd5cdd</param>
+		<param name="versionformat">1.0.23</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

@@ -16,13 +16,13 @@
 #
 
 
+%define skip_python2 1
 Name:           python-django-extensions
-Version:        2.2.1
+Version:        2.2.3
 Release:        0
 Summary:        Extensions for Django
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
-URL:            http://github.com/django-extensions/django-extensions
+URL:            https://github.com/django-extensions/django-extensions
 Source:         https://github.com/django-extensions/django-extensions/archive/%{version}.tar.gz#/django-extensions-%{version}.tar.gz
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module Pygments}
@@ -44,11 +44,11 @@ Requires:       python-six >= 1.2
 Recommends:     python-Pygments
 Recommends:     python-Werkzeug
 Recommends:     python-django-json-widget
-Recommends:     python-python-dateutil
 Recommends:     python-djangorestframework
+Recommends:     python-python-dateutil
 Suggests:       python-pip
-Suggests:       python-shortuuid
 Suggests:       python-python-dateutil
+Suggests:       python-shortuuid
 BuildArch:      noarch
 %python_subpackages
 

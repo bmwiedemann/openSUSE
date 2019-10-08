@@ -20,7 +20,7 @@
 %define project github.com/openSUSE/helm-mirror
 
 Name:           helm-mirror
-Version:        0.2.4
+Version:        0.3.0
 Release:        0
 Summary:        Tool to mirror Helm repositories
 License:        Apache-2.0
@@ -60,7 +60,7 @@ make doc
 
 %install
 # Install the plugin.
-install -D -m 0755 ./bin/mirror "%{buildroot}/%{_bindir}/%{name}"
+install -D -m 0755 ./bin/helm-mirror "%{buildroot}/%{_bindir}/%{name}"
 
 # Install all of the docs.
 for file in doc/man/*.1; do

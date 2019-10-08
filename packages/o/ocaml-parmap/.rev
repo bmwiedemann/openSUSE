@@ -36,4 +36,20 @@ ocaml 4.03 (fate#320836)</comment>
 - Remove autodeps for pre openSUSE 12.1 releases</comment>
     <requestid>517015</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>49a3b84081f793b5b6248e2fe97e4c64</srcmd5>
+    <version>20190330.8d19c66</version>
+    <time>1570557421</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>734221</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d4abac98036e6e8e8c4c80d4e3705943</srcmd5>
+    <version>20190330.8d19c66</version>
+    <time>1570557567</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>736035</requestid>
+  </revision>
 </revisionlist>

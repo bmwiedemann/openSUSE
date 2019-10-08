@@ -53,4 +53,14 @@
 - Use have/skip_python2/3 macros to allow building only one package</comment>
     <requestid>731226</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ba29bb311de92ae8e1e27d851114d20c</srcmd5>
+    <version>2.2.3</version>
+    <time>1570557473</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.3:
+  * minor fixes
+- Disable py2 package due to unsattisfied dependencies</comment>
+    <requestid>735849</requestid>
+  </revision>
 </revisionlist>

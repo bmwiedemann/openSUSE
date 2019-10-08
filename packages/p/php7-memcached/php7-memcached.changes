@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct  7 15:38:44 UTC 2019 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to 3.1.4
+  * Test on PHP 7.4 as well as 8.0 (#440)
+  * Fix segfault for unknown memcached flags (#431)
+  * Update documented defaults for sess_lock_retries (#432)
+  * Remove stray instances of the TSRMLS_CC macro for PHP 8 compatibility (#444)
+
+-------------------------------------------------------------------
 Thu Dec 27 08:24:00 UTC 2018 - suse+build@de-korte.org
 
 - Update to 3.1.3

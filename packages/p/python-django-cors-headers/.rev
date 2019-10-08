@@ -25,4 +25,14 @@
     <comment></comment>
     <requestid>731262</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>335ea90fcca794fb89e4faefbe6c562b</srcmd5>
+    <version>3.1.1</version>
+    <time>1570557467</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.1:
+  * Support the value file:// for origins, which is accidentally
+    sent by some versions of Chrome on Android.</comment>
+    <requestid>735847</requestid>
+  </revision>
 </revisionlist>

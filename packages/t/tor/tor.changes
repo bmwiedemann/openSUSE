@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct  7 13:16:38 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update dependnecnies:
+  * python3 instead of python
+  * add libpcap and seccomp
+- Use more suitable macros for building and systemd dependencies
+
+-------------------------------------------------------------------
 Thu Sep 19 13:02:59 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - update to 0.4.1.6

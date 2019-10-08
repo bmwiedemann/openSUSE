@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  4 20:39:22 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Add patches: (needed to fix builds for Factory)
+  * 0002-CMake-Remove-library-link-checks.patch
+  * 0005-CMake-Remove-automatic-re-check-of-libraries.patch
+
+-------------------------------------------------------------------
 Mon Sep 16 20:31:35 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Udpate to version 1.8

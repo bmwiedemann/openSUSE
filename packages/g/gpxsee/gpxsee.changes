@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct  5 19:03:32 CEST 2019 - tumic@cbox.cz
+
+- Update to version 7.15
+  * Fixed broken align of zoom level 0 with tiles of a different
+    size than 256px.
+  * Increased the default tile cache size value to 256MB.
+  * IMG maps text layout tweaking and optimization.
+
+-------------------------------------------------------------------
+Sun Sep 29 15:42:25 CEST 2019 - tumic@cbox.cz
+
+- Update to version 7.14
+  * Added support for enchanced altitude and speed records in FIT
+    files.
+  * Added support for pseudo-NT IMG maps (e.g. TopoHispania).
+
+-------------------------------------------------------------------
 Sun Sep  1 18:50:26 CEST 2019 - tumic@cbox.cz
 
 - Update to version 7.13

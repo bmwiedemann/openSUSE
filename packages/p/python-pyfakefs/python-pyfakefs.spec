@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyfakefs
-Version:        3.5.8
+Version:        3.6.1
 Release:        0
 Summary:        Fake file system that mocks the Python file system modules
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            http://pyfakefs.org
+URL:            https://github.com/jmcgeheeiv/pyfakefs
 Source:         https://github.com/jmcgeheeiv/pyfakefs/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module pathlib2 >= 2.3.2}
 BuildRequires:  %{python_module pytest >= 2.8.6}

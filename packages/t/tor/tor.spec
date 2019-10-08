@@ -24,7 +24,6 @@ Version:        0.4.1.6
 Release:        0
 Summary:        Anonymizing overlay network for TCP (The onion router)
 License:        BSD-3-Clause
-Group:          Productivity/Networking/Security
 URL:            https://www.torproject.org/
 Source0:        https://www.torproject.org/dist/%{name}-%{version}.tar.gz
 Source1:        https://www.torproject.org/dist/%{name}-%{version}.tar.gz.asc
@@ -37,9 +36,11 @@ Patch1:         fix-test.patch
 BuildRequires:  openssl-devel >= 1.0.1
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  pwdutils
-BuildRequires:  python-base
+BuildRequires:  python3-base
+BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libevent) >= 2.0.10
 BuildRequires:  pkgconfig(liblzma)
+BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(systemd)
@@ -47,7 +48,7 @@ BuildRequires:  pkgconfig(zlib)
 Requires:       logrotate
 Requires(post): %fillup_prereq
 Recommends:     torsocks
-%{?systemd_requires}
+%{systemd_ordering}
 
 %description
 Tor is a connection-based low-latency anonymous communication system.
@@ -86,7 +87,7 @@ for high-stakes anonymity.
 	--enable-unittests \
 	--enable-gcc-warnings-advisory \
 	--docdir=%{_docdir}/%{name}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

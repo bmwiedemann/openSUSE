@@ -18,7 +18,7 @@
 
 %define ver %{version}
 Name:           hub
-Version:        2.12.6
+Version:        2.12.8
 Release:        0
 Summary:        Command-line wrapper for git and GitHub
 License:        MIT

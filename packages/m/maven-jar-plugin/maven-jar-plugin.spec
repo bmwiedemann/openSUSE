@@ -32,6 +32,7 @@ URL:            http://maven.apache.org/plugins/maven-jar-plugin/
 Source0:        http://repo2.maven.org/maven2/org/apache/maven/plugins/%{base_name}/%{version}/%{base_name}-%{version}-source-release.zip
 Source1:        %{base_name}-build.xml
 Patch0:         %{base_name}-bootstrap-resources.patch
+Patch1:         01-allow-replacing-artifacts.patch
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
 BuildRequires:  maven-archiver
@@ -86,6 +87,7 @@ API documentation for %{name}.
 cp %{SOURCE1} build.xml
 %patch0 -p1
 %endif
+%patch1 -p1
 
 %build
 # Test class MockArtifact doesn't override method getMetadata

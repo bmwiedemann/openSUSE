@@ -33,6 +33,8 @@ Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugins/%{base_n
 Source1:        %{base_name}-build.xml
 Patch0:         %{base_name}-bootstrap-resources.patch
 Patch1:         0001-Port-to-current-plexus-utils.patch
+# PATCH-FIX-OPENSUSE bmwiedemann -- https://issues.apache.org/jira/browse/MJAVADOC-619
+Patch2:         reproducible-footer.patch
 BuildRequires:  apache-commons-cli
 BuildRequires:  apache-commons-io
 BuildRequires:  apache-commons-lang3
@@ -121,6 +123,7 @@ cp %{SOURCE1} build.xml
 %endif
 
 %patch1 -p1
+%patch2 -p1
 
 %pom_remove_plugin :maven-enforcer-plugin
 

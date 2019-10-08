@@ -19,11 +19,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-GitPython
-Version:        3.0.2.1566444429.0765792
+Version:        3.0.3.1570041589.23b83cd
 Release:        0
 Summary:        Python Git Library
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/gitpython-developers/GitPython
 Source:         GitPython-%{version}.tar.xz
 Patch0:         test-skips.patch

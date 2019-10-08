@@ -50,4 +50,12 @@ fix bsc#1120762</comment>
     <comment></comment>
     <requestid>716005</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d6e68f3bdcfccf7205b2397f0e28aed5</srcmd5>
+    <version>0.3.0</version>
+    <time>1570557507</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>735896</requestid>
+  </revision>
 </revisionlist>

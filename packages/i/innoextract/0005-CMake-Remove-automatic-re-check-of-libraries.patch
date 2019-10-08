@@ -1,0 +1,55 @@
+From b398a3f842cb78a10a00051eaff905733dd951f1 Mon Sep 17 00:00:00 2001
+From: Daniel Scharrer <daniel@constexpr.org>
+Date: Mon, 23 Sep 2019 01:08:39 +0200
+Subject: [PATCH 5/6] CMake: Remove automatic re-check of libraries
+
+This relied on internal CMake variables and did not detected all
+compiler and flag changes which could influence library search changes.
+Users should clear the build directory when making such config changes.
+---
+ CMakeLists.txt           | 15 ---------------
+ cmake/CompileCheck.cmake |  5 -----
+ 2 files changed, 20 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8aba97c..346d28b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -135,21 +135,6 @@ if(USE_STATIC_LIBS AND NOT MSVC)
+ 	add_ldflag("-static-libgcc")
+ endif()
+ 
+-# Force re-checking libraries if the compiler or compiler flags change
+-if((NOT LAST_CMAKE_CXX_FLAGS STREQUAL CMAKE_CXX_FLAGS)
+-   OR (NOT LAST_CMAKE_CXX_COMPILER STREQUAL CMAKE_CXX_COMPILER))
+-	force_recheck_library(LZMA)
+-	force_recheck_library(Boost)
+-	force_recheck_library(ZLIB)
+-	force_recheck_library(BZip2)
+-	force_recheck_library(iconv)
+-	unset(Boost_INCLUDE_DIR CACHE)
+-	set(LAST_CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}" CACHE INTERNAL
+-	    "The last C++ compiler flags")
+-	set(LAST_CMAKE_CXX_COMPILER "${CMAKE_CXX_COMPILER}" CACHE INTERNAL
+-	    "The last C++ compiler")
+-endif()
+-
+ unset(LIBRARIES)
+ 
+ if(USE_ARC4)
+diff --git a/cmake/CompileCheck.cmake b/cmake/CompileCheck.cmake
+index 4a72d38..4c02e66 100644
+--- a/cmake/CompileCheck.cmake
++++ b/cmake/CompileCheck.cmake
+@@ -191,8 +191,3 @@ function(add_ldflag FLAG)
+ 	endif()
+ 	
+ endfunction(add_ldflag)
+-
+-function(force_recheck_library LIBRARY_NAME)
+-	unset(FIND_PACKAGE_MESSAGE_DETAILS_${ARGV1} CACHE)
+-	unset(FIND_PACKAGE_MESSAGE_DETAILS_${LIBRARY_NAME} CACHE)
+-endfunction()
+-- 
+2.23.0
+

@@ -1,4 +1,589 @@
 -------------------------------------------------------------------
+Sun Oct  6 08:32:50 CEST 2019 - jslaby@suse.cz
+
+- Linux 5.3.4 (bnc#1151927).
+- arcnet: provide a buffer big enough to actually receive packets
+  (bnc#1151927).
+- cdc_ncm: fix divide-by-zero caused by invalid wMaxPacketSize
+  (bnc#1151927).
+- ipv6: do not free rt if FIB_LOOKUP_NOREF is set on suppress rule
+  (bnc#1151927).
+- macsec: drop skb sk before calling gro_cells_receive
+  (bnc#1151927).
+- net/phy: fix DP83865 10 Mbps HDX loopback disable function
+  (bnc#1151927).
+- net: qrtr: Stop rx_worker before freeing node (bnc#1151927).
+- net/sched: act_sample: don't push mac header on ip6gre ingress
+  (bnc#1151927).
+- net_sched: add max len check for TCA_KIND (bnc#1151927).
+- net: stmmac: Fix page pool size (bnc#1151927).
+- nfp: flower: fix memory leak in nfp_flower_spawn_vnic_reprs
+  (bnc#1151927).
+- nfp: flower: prevent memory leak in nfp_flower_spawn_phy_reprs
+  (bnc#1151927).
+- openvswitch: change type of UPCALL_PID attribute to NLA_UNSPEC
+  (bnc#1151927).
+- ppp: Fix memory leak in ppp_write (bnc#1151927).
+- sch_netem: fix a divide by zero in tabledist() (bnc#1151927).
+- selftests: Update fib_tests to handle missing ping6
+  (bnc#1151927).
+- skge: fix checksum byte order (bnc#1151927).
+- tcp_bbr: fix quantization code to not raise cwnd if not probing
+  bandwidth (bnc#1151927).
+- usbnet: ignore endpoints with invalid wMaxPacketSize
+  (bnc#1151927).
+- usbnet: sanity checking of packet sizes and device mtu
+  (bnc#1151927).
+- net/rds: Check laddr_check before calling it (bnc#1151927).
+- net/mlx5e: Fix matching on tunnel addresses type (bnc#1151927).
+- ipv6: fix a typo in fib6_rule_lookup() (bnc#1151927).
+- selftests: Update fib_nexthop_multiprefix to handle missing
+  ping6 (bnc#1151927).
+- net: phy: micrel: add Asym Pause workaround for KSZ9021
+  (bnc#1151927).
+- net/sched: cbs: Fix not adding cbs instance to list
+  (bnc#1151927).
+- ipv4: Revert removal of rt_uses_gateway (bnc#1151927).
+- net_sched: add policy validation for action attributes
+  (bnc#1151927).
+- vrf: Do not attempt to create IPv6 mcast rule if IPv6 is
+  disabled (bnc#1151927).
+- net/mlx5e: Fix traffic duplication in ethtool steering
+  (bnc#1151927).
+- net: sched: fix possible crash in tcf_action_destroy()
+  (bnc#1151927).
+- tcp: better handle TCP_USER_TIMEOUT in SYN_SENT state
+  (bnc#1151927).
+- net/mlx5: Add device ID of upcoming BlueField-2 (bnc#1151927).
+- mISDN: enforce CAP_NET_RAW for raw sockets (bnc#1151927).
+- appletalk: enforce CAP_NET_RAW for raw sockets (bnc#1151927).
+- ax25: enforce CAP_NET_RAW for raw sockets (bnc#1151927).
+- ieee802154: enforce CAP_NET_RAW for raw sockets (bnc#1151927).
+- nfc: enforce CAP_NET_RAW for raw sockets (bnc#1151927).
+- ALSA: hda: Flush interrupts on disabling (bnc#1151927).
+- ASoC: SOF: Intel: hda: Make hdac_device device-managed
+  (bnc#1151927).
+- cpufreq: ap806: Add NULL check after kcalloc (bnc#1151927).
+- ALSA: hda/hdmi - Don't report spurious jack state changes
+  (bnc#1151927).
+- regulator: lm363x: Fix off-by-one n_voltages for lm3632
+  ldo_vpos/ldo_vneg (bnc#1151927).
+- regulator: lm363x: Fix n_voltages setting for lm36274
+  (bnc#1151927).
+- spi: dw-mmio: Clock should be shut when error occurs
+  (bnc#1151927).
+- ASoC: tlv320aic31xx: suppress error message for EPROBE_DEFER
+  (bnc#1151927).
+- ASoC: sgtl5000: Fix of unmute outputs on probe (bnc#1151927).
+- ASoC: sgtl5000: Fix charge pump source assignment (bnc#1151927).
+- firmware: qcom_scm: Use proper types for dma mappings
+  (bnc#1151927).
+- dmaengine: bcm2835: Print error in case setting DMA mask fails
+  (bnc#1151927).
+- leds: leds-lp5562 allow firmware files up to the maximum length
+  (bnc#1151927).
+- ASoC: SOF: reset DMA state in prepare (bnc#1151927).
+- media: dib0700: fix link error for dibx000_i2c_set_speed
+  (bnc#1151927).
+- media: mtk-cir: lower de-glitch counter for rc-mm protocol
+  (bnc#1151927).
+- ASoC: SOF: pci: mark last_busy value at runtime PM init
+  (bnc#1151927).
+- media: exynos4-is: fix leaked of_node references (bnc#1151927).
+- media: vivid:add sanity check to avoid divide error and set
+  value to 1 if 0 (bnc#1151927).
+- media: vb2: reorder checks in vb2_poll() (bnc#1151927).
+- media: vivid: work around high stack usage with clang
+  (bnc#1151927).
+- media: hdpvr: Add device num check and handling (bnc#1151927).
+- media: i2c: ov5640: Check for devm_gpiod_get_optional() error
+  (bnc#1151927).
+- time/tick-broadcast: Fix tick_broadcast_offline() lockdep
+  complaint (bnc#1151927).
+- sched/fair: Fix imbalance due to CPU affinity (bnc#1151927).
+- sched/core: Fix CPU controller for !RT_GROUP_SCHED
+  (bnc#1151927).
+- x86/apic: Make apic_pending_intr_clear() more robust
+  (bnc#1151927).
+- sched/deadline: Fix bandwidth accounting at all levels after
+  offline migration (bnc#1151927).
+- x86/reboot: Always use NMI fallback when shutdown via reboot
+  vector IPI fails (bnc#1151927).
+- rcu/tree: Call setschedule() gp ktread to SCHED_FIFO outside
+  of atomic region (bnc#1151927).
+- x86/apic: Soft disable APIC before initializing it
+  (bnc#1151927).
+- ALSA: hda - Show the fatal CORB/RIRB error more clearly
+  (bnc#1151927).
+- ALSA: i2c: ak4xxx-adda: Fix a possible null pointer dereference
+  in build_adc_controls() (bnc#1151927).
+- rcu: Add destroy_work_on_stack() to match INIT_WORK_ONSTACK()
+  (bnc#1151927).
+- EDAC/mc: Fix grain_bits calculation (bnc#1151927).
+- arm64: dts: imx8mq: Correct OPP table according to latest
+  datasheet (bnc#1151927).
+- media: iguanair: add sanity checks (bnc#1151927).
+- cpuidle: teo: Allow tick to be stopped if PM QoS is used
+  (bnc#1151927).
+- gpio: madera: Add support for Cirrus Logic CS47L15
+  (bnc#1151927).
+- gpio: madera: Add support for Cirrus Logic CS47L92
+  (bnc#1151927).
+- arm64: mm: free the initrd reserved memblock in a aligned manner
+  (bnc#1151927).
+- soc: amlogic: meson-clk-measure: protect measure with a mutex
+  (bnc#1151927).
+- base: soc: Export soc_device_register/unregister APIs
+  (bnc#1151927).
+- ALSA: usb-audio: Skip bSynchAddress endpoint check if it is
+  invalid (bnc#1151927).
+- ia64:unwind: fix double free for mod->arch.init_unw_table
+  (bnc#1151927).
+- EDAC/altera: Use the proper type for the IRQ status bits
+  (bnc#1151927).
+- ASoC: rsnd: don't call clk_get_rate() under atomic context
+  (bnc#1151927).
+- arm64/prefetch: fix a -Wtype-limits warning (bnc#1151927).
+- md/raid1: end bio when the device faulty (bnc#1151927).
+- md: don't call spare_active in md_reap_sync_thread if all
+  member devices can't work (bnc#1151927).
+- md: don't set In_sync if array is frozen (bnc#1151927).
+- media: media/platform: fsl-viu.c: fix build for MICROBLAZE
+  (bnc#1151927).
+- media: staging: tegra-vde: Fix build error (bnc#1151927).
+- RAS: Build debugfs.o only when enabled in Kconfig (bnc#1151927).
+- ASoC: hdac_hda: fix page fault issue by removing race
+  (bnc#1151927).
+- ACPI / processor: don't print errors for processorIDs == 0xff
+  (bnc#1151927).
+- loop: Add LOOP_SET_DIRECT_IO to compat ioctl (bnc#1151927).
+- perf tools: Fix paths in include statements (bnc#1151927).
+- EDAC, pnd2: Fix ioremap() size in dnv_rd_reg() (bnc#1151927).
+- efi: cper: print AER info of PCIe fatal error (bnc#1151927).
+- firmware: arm_scmi: Check if platform has released shmem before
+  using (bnc#1151927).
+- sched/fair: Use rq_lock/unlock in online_fair_sched_group
+  (bnc#1151927).
+- idle: Prevent late-arriving interrupts from disrupting offline
+  (bnc#1151927).
+- blk-mq: Fix memory leak in blk_mq_init_allocated_queue error
+  handling (bnc#1151927).
+- media: gspca: zero usb_buf on error (bnc#1151927).
+- perf config: Honour $PERF_CONFIG env var to specify alternate
+  .perfconfig (bnc#1151927).
+- perf test vfs_getname: Disable ~/.perfconfig to get default
+  output (bnc#1151927).
+- media: mtk-mdp: fix reference count on old device tree
+  (bnc#1151927).
+- media: i2c: tda1997x: prevent potential NULL pointer access
+  (bnc#1151927).
+- media: fdp1: Reduce FCP not found message level to debug
+  (bnc#1151927).
+- media: em28xx: modules workqueue not inited for 2nd device
+  (bnc#1151927).
+- arm64/efi: Move variable assignments after SECTIONS
+  (bnc#1151927).
+- perf unwind: Fix libunwind when tid != pid (bnc#1151927).
+- media: rc: imon: Allow iMON RC protocol for ffdc 7e device
+  (bnc#1151927).
+- dmaengine: iop-adma: use correct printk format strings
+  (bnc#1151927).
+- ARM: xscale: fix multi-cpu compilation (bnc#1151927).
+- perf record: Support aarch64 random socket_id assignment
+  (bnc#1151927).
+- media: vsp1: fix memory leak of dl on error return path
+  (bnc#1151927).
+- media: i2c: ov5645: Fix power sequence (bnc#1151927).
+- media: omap3isp: Don't set streaming state on random subdevs
+  (bnc#1151927).
+- media: imx: mipi csi-2: Don't fail if initial state times-out
+  (bnc#1151927).
+- kasan/arm64: fix CONFIG_KASAN_SW_TAGS && KASAN_INLINE
+  (bnc#1151927).
+- net: lpc-enet: fix printk format strings (bnc#1151927).
+- m68k: Prevent some compiler warnings in Coldfire builds
+  (bnc#1151927).
+- ARM: dts: imx7d: cl-som-imx7: make ethernet work again
+  (bnc#1151927).
+- arm64: dts: qcom: qcs404-evb: Mark WCSS clocks protected
+  (bnc#1151927).
+- ARM: dts: imx7-colibri: disable HS400 (bnc#1151927).
+- x86/platform/intel/iosf_mbi Rewrite locking (bnc#1151927).
+- media: radio/si470x: kill urb on error (bnc#1151927).
+- media: hdpvr: add terminating 0 at end of string (bnc#1151927).
+- ASoC: uniphier: Fix double reset assersion when transitioning
+  to suspend state (bnc#1151927).
+- powerpc/Makefile: Always pass --synthetic to nm if supported
+  (bnc#1151927).
+- tools headers: Fixup bitsperlong per arch includes
+  (bnc#1151927).
+- ASoC: sun4i-i2s: Don't use the oversample to calculate BCLK
+  (bnc#1151927).
+- ASoC: mchp-i2s-mcc: Wait for RX/TX RDY only if controller is
+  running (bnc#1151927).
+- led: triggers: Fix a memory leak bug (bnc#1151927).
+- ASoC: mchp-i2s-mcc: Fix unprepare of GCLK (bnc#1151927).
+- nbd: add missing config put (bnc#1151927).
+- ACPI / APEI: Release resources if gen_pool_add() fails
+  (bnc#1151927).
+- arm64: entry: Move ct_user_exit before any other exception
+  (bnc#1151927).
+- s390/kasan: provide uninstrumented __strlen (bnc#1151927).
+- media: mceusb: fix (eliminate) TX IR signal length limit
+  (bnc#1151927).
+- media: dvb-frontends: use ida for pll number (bnc#1151927).
+- posix-cpu-timers: Sanitize bogus WARNONS (bnc#1151927).
+- media: dvb-core: fix a memory leak bug (bnc#1151927).
+- EDAC/amd64: Support more than two controllers for chip selects
+  handling (bnc#1151927).
+- cpufreq: imx-cpufreq-dt: Add i.MX8MN support (bnc#1151927).
+- libperf: Fix alignment trap with xyarray contents in 'perf stat'
+  (bnc#1151927).
+- EDAC/amd64: Recognize DRAM device type ECC capability
+  (bnc#1151927).
+- EDAC/amd64: Decode syndrome before translating address
+  (bnc#1151927).
+- ARM: at91: move platform-specific asm-offset.h to
+  arch/arm/mach-at91 (bnc#1151927).
+- soc: renesas: rmobile-sysc: Set GENPD_FLAG_ALWAYS_ON for
+  always-on domain (bnc#1151927).
+- soc: renesas: Enable ARM_ERRATA_754322 for affected Cortex-A9
+  (bnc#1151927).
+- PM / devfreq: Fix kernel oops on governor module load
+  (bnc#1151927).
+- ARM: OMAP2+: move platform-specific asm-offset.h to
+  arch/arm/mach-omap2 (bnc#1151927).
+- PM / devfreq: passive: Use non-devm notifiers (bnc#1151927).
+- PM / devfreq: exynos-bus: Correct clock enable sequence
+  (bnc#1151927).
+- media: cec-notifier: clear cec_adap in cec_notifier_unregister
+  (bnc#1151927).
+- media: saa7146: add cleanup in hexium_attach() (bnc#1151927).
+- media: cpia2_usb: fix memory leaks (bnc#1151927).
+- media: saa7134: fix terminology around
+  saa7134_i2c_eeprom_md7134_gate() (bnc#1151927).
+- perf trace beauty ioctl: Fix off-by-one error in cmd->string
+  table (bnc#1151927).
+- perf report: Fix --ns time sort key output (bnc#1151927).
+- perf script: Fix memory leaks in list_scripts() (bnc#1151927).
+- media: aspeed-video: address a protential usage of an
+  unitialized var (bnc#1151927).
+- media: ov9650: add a sanity check (bnc#1151927).
+- leds: lm3532: Fixes for the driver for stability (bnc#1151927).
+- ASoC: es8316: fix headphone mixer volume table (bnc#1151927).
+- ACPI / CPPC: do not require the _PSD method (bnc#1151927).
+- sched/cpufreq: Align trace event behavior of fast switching
+  (bnc#1151927).
+- arm64: dts: meson: fix boards regulators states format
+  (bnc#1151927).
+- x86/apic/vector: Warn when vector space exhaustion breaks
+  affinity (bnc#1151927).
+- arm64: kpti: ensure patched kernel text is fetched from PoU
+  (bnc#1151927).
+- perf evlist: Use unshare(CLONE_FS) in sb threads to let
+  setns(CLONE_NEWNS) work (bnc#1151927).
+- arm64: Use correct ll/sc atomic constraints (bnc#1151927).
+- jump_label: Don't warn on __exit jump entries (bnc#1151927).
+- x86/mm/pti: Do not invoke PTI functions when PTI is disabled
+  (bnc#1151927).
+- ASoC: fsl_ssi: Fix clock control issue in master mode
+  (bnc#1151927).
+- x86/mm/pti: Handle unaligned address gracefully in
+  pti_clone_pagetable() (bnc#1151927).
+- nvmet: fix data units read and written counters in SMART log
+  (bnc#1151927).
+- nvme-multipath: fix ana log nsid lookup when nsid is not found
+  (bnc#1151927).
+- ALSA: firewire-motu: add support for MOTU 4pre (bnc#1151927).
+- iommu/amd: Silence warnings under memory pressure (bnc#1151927).
+- ASoC: Intel: Haswell: Adjust machine device private context
+  (bnc#1151927).
+- libata/ahci: Drop PCS quirk for Denverton and beyond
+  (bnc#1151927).
+- iommu/iova: Avoid false sharing on fq_timer_on (bnc#1151927).
+- libtraceevent: Change users plugin directory (bnc#1151927).
+- ASoC: dt-bindings: sun4i-spdif: Fix dma-names warning
+  (bnc#1151927).
+- ARM: dts: exynos: Mark LDO10 as always-on on Peach Pit/Pi
+  Chromebooks (bnc#1151927).
+- x86/amd_nb: Add PCI device IDs for family 17h, model 70h
+  (bnc#1151927).
+- ACPI: custom_method: fix memory leaks (bnc#1151927).
+- ACPI / PCI: fix acpi_pci_irq_enable() memory leak (bnc#1151927).
+- closures: fix a race on wakeup from closure_sync (bnc#1151927).
+- hwmon: (k10temp) Add support for AMD family 17h, model 70h CPUs
+  (bnc#1151927).
+- hwmon: (acpi_power_meter) Change log level for 'unsafe software
+  power cap' (bnc#1151927).
+- md/raid1: fail run raid1 array when active disk less than one
+  (bnc#1151927).
+- dmaengine: ti: edma: Do not reset reserved paRAM slots
+  (bnc#1151927).
+- kprobes: Prohibit probing on BUG() and WARN() address
+  (bnc#1151927).
+- x86/mm: Fix cpumask_of_node() error condition (bnc#1151927).
+- irqchip/sifive-plic: set max threshold for ignored handlers
+  (bnc#1151927).
+- s390/crypto: xts-aes-s390 fix extra run-time crypto self tests
+  finding (bnc#1151927).
+- irqchip/gic-v3-its: Fix LPI release for Multi-MSI devices
+  (bnc#1151927).
+- x86/cpu: Add Tiger Lake to Intel family (bnc#1151927).
+- platform/x86: intel_pmc_core: Do not ioremap RAM (bnc#1151927).
+- platform/x86: intel_pmc_core_pltdrv: Module removal warning fix
+  (bnc#1151927).
+- ASoC: dmaengine: Make the pcm->name equal to pcm->id if the
+  name is not set (bnc#1151927).
+- tools/power/x86/intel-speed-select: Fix memory leak
+  (bnc#1151927).
+- spi: bcm2835: Work around DONE bit erratum (bnc#1151927).
+- io_uring: fix wrong sequence setting logic (bnc#1151927).
+- block: make rq sector size accessible for block stats
+  (bnc#1151927).
+- raid5: don't set STRIPE_HANDLE to stripe which is in batch list
+  (bnc#1151927).
+- mmc: core: Clarify sdio_irq_pending flag for
+  MMC_CAP2_SDIO_IRQ_NOTHREAD (bnc#1151927).
+- sched/psi: Correct overly pessimistic size calculation
+  (bnc#1151927).
+- mmc: sdhci: Fix incorrect switch to HS mode (bnc#1151927).
+- mmc: core: Add helper function to indicate if SDIO IRQs is
+  enabled (bnc#1151927).
+- mmc: dw_mmc: Re-store SDIO IRQs mask at system resume
+  (bnc#1151927).
+- raid5: don't increment read_errors on EILSEQ return
+  (bnc#1151927).
+- mmc: mtk-sd: Re-store SDIO IRQs mask at system resume
+  (bnc#1151927).
+- libertas: Add missing sentinel at end of if_usb.c fw_table
+  (bnc#1151927).
+- e1000e: add workaround for possible stalled packet
+  (bnc#1151927).
+- ALSA: hda - Add a quirk model for fixing Huawei Matebook X
+  right speaker (bnc#1151927).
+- ALSA: hda - Drop unsol event handler for Intel HDMI codecs
+  (bnc#1151927).
+- drm/amd/powerplay/smu7: enforce minimal VBITimeout (v2)
+  (bnc#1151927).
+- media: ttusb-dec: Fix info-leak in ttusb_dec_send_command()
+  (bnc#1151927).
+- drm: fix module name in edid_firmware log message (bnc#1151927).
+- ALSA: hda/realtek - Blacklist PC beep for Lenovo ThinkCentre
+  M73/93 (bnc#1151927).
+- iommu/amd: Override wrong IVRS IOAPIC on Raven Ridge systems
+  (bnc#1151927).
+- zd1211rw: remove false assertion from zd_mac_clear()
+  (bnc#1151927).
+- btrfs: delayed-inode: Kill the BUG_ON() in
+  btrfs_delete_delayed_dir_index() (bnc#1151927).
+- btrfs: extent-tree: Make sure we only allocate extents from
+  block groups with the same type (bnc#1151927).
+- btrfs: tree-checker: Add ROOT_ITEM check (bnc#1151927).
+- btrfs: Detect unbalanced tree with empty leaf before crashing
+  btree operations (bnc#1151927).
+- kvm: Nested KVM MMUs need PAE root too (bnc#1151927).
+- media: omap3isp: Set device on omap3isp subdevs (bnc#1151927).
+- PM / devfreq: passive: fix compiler warning (bnc#1151927).
+- ARM: dts: logicpd-torpedo-baseboard: Fix missing video
+  (bnc#1151927).
+- ARM: omap2plus_defconfig: Fix missing video (bnc#1151927).
+- ALSA: firewire-tascam: handle error code when getting current
+  source of clock (bnc#1151927).
+- ALSA: firewire-tascam: check intermediate state of clock status
+  and retry (bnc#1151927).
+- scsi: scsi_dh_rdac: zero cdb in send_mode_select()
+  (bnc#1151927).
+- scsi: qla2xxx: Fix Relogin to prevent modifying scan_state flag
+  (bnc#1151927).
+- printk: Do not lose last line in kmsg buffer dump (bnc#1151927).
+- IB/mlx5: Free mpi in mp_slave mode (bnc#1151927).
+- IB/hfi1: Define variables as unsigned long to fix KASAN warning
+  (bnc#1151927).
+- IB/hfi1: Do not update hcrc for a KDETH packet during fault
+  injection (bnc#1151927).
+- RDMA: Fix double-free in srq creation error flow (bnc#1151927).
+- randstruct: Check member structs in is_pure_ops_struct()
+  (bnc#1151927).
+- ARM: dts: am3517-evm: Fix missing video (bnc#1151927).
+- rcu/tree: Fix SCHED_FIFO params (bnc#1151927).
+- ALSA: hda/realtek - PCI quirk for Medion E4254 (bnc#1151927).
+- blk-mq: add callback of .cleanup_rq (bnc#1151927).
+- scsi: implement .cleanup_rq callback (bnc#1151927).
+- powerpc/imc: Dont create debugfs files for cpu-less nodes
+  (bnc#1151927).
+- tpm_tis_core: Turn on the TPM before probing IRQ's
+  (bnc#1151927).
+- tpm_tis_core: Set TPM_CHIP_FLAG_IRQ before probing for
+  interrupts (bnc#1151927).
+- tpm: Wrap the buffer from the caller to tpm_buf in tpm_send()
+  (bnc#1151927).
+- fuse: fix deadlock with aio poll and fuse_iqueue::waitq.lock
+  (bnc#1151927).
+- fuse: fix missing unlock_page in fuse_writepage() (bnc#1151927).
+- fuse: fix beyond-end-of-page access in fuse_parse_cache()
+  (bnc#1151927).
+- parisc: Disable HP HSC-PCI Cards to prevent kernel crash
+  (bnc#1151927).
+- platform/x86: intel_int0002_vgpio: Fix wakeups not working on
+  Cherry Trail (bnc#1151927).
+- KVM: x86: always stop emulation on page fault (bnc#1151927).
+- KVM: x86: set ctxt->have_exception in x86_decode_insn()
+  (bnc#1151927).
+- KVM: x86: Manually calculate reserved bits when loading PDPTRS
+  (bnc#1151927).
+- KVM: x86: Disable posted interrupts for non-standard IRQs
+  delivery modes (bnc#1151927).
+- kvm: x86: Add "significant index" flag to a few CPUID leaves
+  (bnc#1151927).
+- KVM: x86/mmu: Use fast invalidate mechanism to zap MMIO sptes
+  (bnc#1151927).
+- media: videobuf-core.c: poll_wait needs a non-NULL buf pointer
+  (bnc#1151927).
+- media: sn9c20x: Add MSI MS-1039 laptop to flip_dmi_table
+  (bnc#1151927).
+- media: hantro: Set DMA max segment size (bnc#1151927).
+- media: don't drop front-end reference count for ->detach
+  (bnc#1151927).
+- media: vivid: fix device init when no_error_inj=1 and fb
+  disabled (bnc#1151927).
+- spi: ep93xx: Repair SPI CS lookup tables (bnc#1151927).
+- spi: spi-fsl-dspi: Exit the ISR with IRQ_NONE when it's not ours
+  (bnc#1151927).
+- binfmt_elf: Do not move brk for INTERP-less ET_EXEC
+  (bnc#1151927).
+- ASoC: Intel: NHLT: Fix debug print format (bnc#1151927).
+- ASoC: Intel: Skylake: Use correct function to access iomem space
+  (bnc#1151927).
+- ASoC: Intel: Fix use of potentially uninitialized variable
+  (bnc#1151927).
+- staging: erofs: cannot set EROFS_V_Z_INITED_BIT if
+  fill_inode_lazy fails (bnc#1151927).
+- ARM: samsung: Fix system restart on S3C6410 (bnc#1151927).
+- ARM: zynq: Use memcpy_toio instead of memcpy on smp bring-up
+  (bnc#1151927).
+- arm64: tlb: Ensure we execute an ISB following walk cache
+  invalidation (bnc#1151927).
+- arm64: dts: rockchip: limit clock rate of MMC controllers for
+  RK3328 (bnc#1151927).
+- iommu/arm-smmu-v3: Disable detection of ATS and PRI
+  (bnc#1151927).
+- alarmtimer: Use EOPNOTSUPP instead of ENOTSUPP (bnc#1151927).
+- iommu/vt-d: Fix wrong analysis whether devices share the same
+  bus (bnc#1151927).
+- regulator: Defer init completion for a while after late_initcall
+  (bnc#1151927).
+- efifb: BGRT: Improve efifb_bgrt_sanity_check (bnc#1151927).
+- gfs2: clear buf_in_tr when ending a transaction in
+  sweep_bh_for_rgrps (bnc#1151927).
+- z3fold: fix retry mechanism in page reclaim (bnc#1151927).
+- z3fold: fix memory leak in kmem cache (bnc#1151927).
+- mm/compaction.c: clear total_{migrate,free}_scanned before
+  scanning a new zone (bnc#1151927).
+- memcg, oom: don't require __GFP_FS when invoking memcg OOM
+  killer (bnc#1151927).
+- memcg, kmem: do not fail __GFP_NOFAIL charges (bnc#1151927).
+- lib/lzo/lzo1x_compress.c: fix alignment bug in lzo-rle
+  (bnc#1151927).
+- mt76: round up length on mt76_wr_copy (bnc#1151927).
+- KEYS: trusted: correctly initialize digests and fix locking
+  issue (bnc#1151927).
+- rtw88: pci: Rearrange the memory usage for skb in RX ISR
+  (bnc#1151927).
+- rtw88: pci: Use DMA sync instead of remapping in RX ISR
+  (bnc#1151927).
+- ath10k: fix channel info parsing for non tlv target
+  (bnc#1151927).
+- i40e: check __I40E_VF_DISABLE bit in i40e_sync_filters_subtask
+  (bnc#1151927).
+- block: mq-deadline: Fix queue restart handling (bnc#1151927).
+- block: fix null pointer dereference in blk_mq_rq_timed_out()
+  (bnc#1151927).
+- smb3: allow disabling requesting leases (bnc#1151927).
+- smb3: fix unmount hang in open_shroot (bnc#1151927).
+- smb3: fix leak in "open on server" perf counter (bnc#1151927).
+- ovl: Fix dereferencing possible ERR_PTR() (bnc#1151927).
+- ovl: filter of trusted xattr results in audit (bnc#1151927).
+- btrfs: fix allocation of free space cache v1 bitmap pages
+  (bnc#1151927).
+- Btrfs: fix use-after-free when using the tree modification log
+  (bnc#1151927).
+- btrfs: Relinquish CPUs in btrfs_compare_trees (bnc#1151927).
+- btrfs: adjust dirty_metadata_bytes after writeback failure of
+  extent buffer (bnc#1151927).
+- btrfs: qgroup: Fix the wrong target io_tree when freeing
+  reserved data space (bnc#1151927).
+- btrfs: qgroup: Fix reserved data space leak if we have multiple
+  reserve calls (bnc#1151927).
+- Btrfs: fix race setting up and completing qgroup rescan workers
+  (bnc#1151927).
+- btrfs: Fix a regression which we can't convert to SINGLE profile
+  (bnc#1151927).
+- SUNRPC: Dequeue the request from the receive queue while we're
+  re-encoding (bnc#1151927).
+- SUNRPC: Fix buffer handling of GSS MIC without slack
+  (bnc#1151927).
+- ACPI / LPSS: Save/restore LPSS private registers also on
+  Lynxpoint (bnc#1151927).
+- md/raid6: Set R5_ReadError when there is read failure on parity
+  disk (bnc#1151927).
+- md: don't report active array_state until after
+  revalidate_disk() completes (bnc#1151927).
+- md: only call set_in_sync() when it is expected to succeed
+  (bnc#1151927).
+- cfg80211: Purge frame registrations on iftype change
+  (bnc#1151927).
+- /dev/mem: Bail out upon SIGKILL (bnc#1151927).
+- fs: Export generic_fadvise() (bnc#1151927).
+- mm: Handle MADV_WILLNEED through vfs_fadvise() (bnc#1151927).
+- xfs: Fix stale data exposure when readahead races with hole
+  punch (bnc#1151927).
+- ipmi: move message error checking to avoid deadlock
+  (bnc#1151927).
+- mtd: rawnand: stm32_fmc2: avoid warnings when building with
+  W=1 option (bnc#1151927).
+- ext4: fix warning inside ext4_convert_unwritten_extents_endio
+  (bnc#1151927).
+- ext4: fix punch hole for inline_data file systems (bnc#1151927).
+- quota: fix wrong condition in is_quota_modification()
+  (bnc#1151927).
+- hwrng: core - don't wait on add_early_randomness()
+  (bnc#1151927).
+- i2c: riic: Clear NACK in tend isr (bnc#1151927).
+- CIFS: fix max ea value size (bnc#1151927).
+- CIFS: Fix oplock handling for SMB 2.1+ protocols (bnc#1151927).
+- drm/amd/display: Restore backlight brightness after system
+  resume (bnc#1151927).
+- drm/amd/display: dce11.x /dce12 update formula input
+  (bnc#1151927).
+- drm/amd/display: Add missing HBM support and raise Vega20's uclk
+  (bnc#1151927).
+- drm/amdgpu/display: fix 64 bit divide (bnc#1151927).
+- md/raid0: avoid RAID0 data corruption due to layout confusion
+  (bnc#1151927).
+- mt76: mt7615: always release sem in mt7615_load_patch
+  (bnc#1151927).
+- mt76: mt7615: fix mt7615 firmware path definitions
+  (bnc#1151927).
+- platform/chrome: cros_ec_rpmsg: Fix race with host command
+  when probe failed (bnc#1151927).
+- commit 6a02213
+
+-------------------------------------------------------------------
+Sun Oct  6 08:31:38 CEST 2019 - jslaby@suse.cz
+
+- Linux 5.3.3 (bnc#1151927).
+- Revert "Linux 5.3.2" (bnc#1151927).
+- Linux 5.3.2 (bnc#1151927).
+- commit 98a6219
+
+-------------------------------------------------------------------
+Wed Oct  2 07:55:00 CEST 2019 - jslaby@suse.cz
+
+- iwlwifi: fw: don't send GEO_TX_POWER_LIMIT command to FW
+  version 36 (bnc#1152036).
+- commit c2cf223
+
+-------------------------------------------------------------------
 Tue Oct  1 10:19:14 CEST 2019 - jslaby@suse.cz
 
 - Update config files.

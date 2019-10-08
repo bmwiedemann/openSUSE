@@ -17,7 +17,7 @@
 
 
 Name:           perl-Mojo-SQLite
-Version:        3.002
+Version:        3.003
 Release:        0
 %define cpan_name Mojo-SQLite
 Summary:        Tiny Mojolicious wrapper for SQLite
@@ -30,7 +30,7 @@ BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(DBD::SQLite) >= 1.54
+BuildRequires:  perl(DBD::SQLite) >= 1.64
 BuildRequires:  perl(DBI) >= 1.627
 BuildRequires:  perl(Module::Build::Tiny) >= 0.034
 BuildRequires:  perl(Module::Metadata)
@@ -40,7 +40,7 @@ BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(URI) >= 1.69
 BuildRequires:  perl(URI::db) >= 0.15
 BuildRequires:  perl(URI::file) >= 4.21
-Requires:       perl(DBD::SQLite) >= 1.54
+Requires:       perl(DBD::SQLite) >= 1.64
 Requires:       perl(DBI) >= 1.627
 Requires:       perl(Mojolicious) >= 7.32
 Requires:       perl(SQL::Abstract) >= 1.81

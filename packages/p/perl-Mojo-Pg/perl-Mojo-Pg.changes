@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct  8 08:02:30 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 4.17
+   see /usr/share/doc/packages/perl-Mojo-Pg/Changes
+
+  4.17  2019-10-07
+    - Reverted connection cache optimization from 4.14, because it caused problems
+      with some connections closed by the PostgreSQL server.
+    - Updated mojo_migrations table created by Mojo::Pg::Migrations to use a
+      primary key.
+
+-------------------------------------------------------------------
 Thu Sep  5 08:39:35 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 4.16

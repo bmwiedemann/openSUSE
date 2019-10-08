@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-flake8-docstrings
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        Extension for flake8 which uses pydocstyle to check docstrings
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://gitlab.com/pycqa/flake8-docstrings
 Source:         https://files.pythonhosted.org/packages/source/f/flake8-docstrings/flake8-docstrings-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}

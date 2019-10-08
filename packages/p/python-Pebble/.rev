@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>725780</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b1eae76be4f4b9376391dcc757402987</srcmd5>
+    <version>4.4.0</version>
+    <time>1570557503</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.4.0:
+  * Various doc and test fixes</comment>
+    <requestid>735888</requestid>
+  </revision>
 </revisionlist>

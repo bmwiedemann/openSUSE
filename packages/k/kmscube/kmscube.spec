@@ -37,6 +37,7 @@ BuildRequires:  libdrm-devel >= 2.4.71
 BuildRequires:  libgbm-devel >= 13.0
 BuildRequires:  make
 BuildRequires:  pkg-config >= 0.9.0
+BuildRequires:  pkgconfig(x11)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description

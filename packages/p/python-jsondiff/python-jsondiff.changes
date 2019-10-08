@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  4 15:22:38 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 1.2.0
+  * Deprecate the jsondiff command due to conflicts with json-patch
+
+-------------------------------------------------------------------
 Sun Jun  2 20:34:43 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase in summary.

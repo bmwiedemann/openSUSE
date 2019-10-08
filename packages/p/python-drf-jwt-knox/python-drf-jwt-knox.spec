@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-drf-jwt-knox
 Version:        0.1.1
 Release:        0
 Summary:        Django REST JWT authentication with server-side tokens
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/ssaavedra/drf-jwt-knox
 Source:         https://github.com/ssaavedra/drf-jwt-knox/archive/v%{version}.tar.gz#/drf-jwt-knox-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}

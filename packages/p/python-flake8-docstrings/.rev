@@ -49,4 +49,13 @@
   * Fix proper handling of stdin via --stdin-display-name</comment>
     <requestid>730531</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a9b557fcf907e64c893eaf2744538322</srcmd5>
+    <version>1.5.0</version>
+    <time>1570557558</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.0:
+  * Add --ignore-decorators option</comment>
+    <requestid>736030</requestid>
+  </revision>
 </revisionlist>

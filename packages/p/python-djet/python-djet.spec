@@ -12,30 +12,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-djet
 Version:        0.2.2
 Release:        0
-License:        MIT
 Summary:        Set of helpers for easy testing of Django apps
-Url:            https://github.com/sunscrapers/djet
-Group:          Development/Languages/Python
+License:        MIT
+URL:            https://github.com/sunscrapers/djet
 Source:         https://github.com/sunscrapers/djet/archive/%{version}.tar.gz#/djet-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module djangorestframework}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-Django
 Requires:       python-Pillow
 Suggests:       python-djangorestframework
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -57,10 +57,10 @@ export DJANGO_SETTINGS_MODULE=settings
 # test_make_inmemory_image_should_pass fails on s390x and ppc64
 # PIL/ImageFile.py:496: SystemError: tile cannot extend outside image
 # https://github.com/sunscrapers/djet/issues/31
-%python_exec -m pytest -k 'not test_make_inmemory_image_should_pass'
+%pytest -k 'not test_make_inmemory_image_should_pass'
 
 %files %{python_files}
-%doc LICENSE
+%license LICENSE
 %doc README.rst
 %{python_sitelib}/*
 

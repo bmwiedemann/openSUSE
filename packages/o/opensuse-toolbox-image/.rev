@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f91b3404d8e4ee23fae058fbec380971</srcmd5>
+    <version>1.0.0</version>
+    <time>1570557428</time>
+    <user>dimstar_suse</user>
+    <comment>Toolbox container to help debugging on a Container Host OS with read-only root filesystem like MicroOS and Kubic</comment>
+    <requestid>735630</requestid>
+  </revision>
+</revisionlist>

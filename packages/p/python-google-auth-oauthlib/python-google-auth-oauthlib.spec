@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-google-auth-oauthlib
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Google authentication library
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/GoogleCloudPlatform/google-auth-library-python-oauthlib
 Source:         https://files.pythonhosted.org/packages/source/g/google-auth-oauthlib/google-auth-oauthlib-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}

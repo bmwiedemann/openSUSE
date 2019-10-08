@@ -17,11 +17,10 @@
 
 
 Name:           python-flask-jwt-extended
-Version:        3.23.0
+Version:        3.24.0
 Release:        0
 Summary:        A Flask extension that provides JWT support
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/vimalloc/flask-jwt-extended
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-JWT-Extended/Flask-JWT-Extended-%{version}.tar.gz
 BuildRequires:  %{python_module Flask >= 1.0}

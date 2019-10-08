@@ -19,7 +19,7 @@
 
 %define sover 1_4
 Name:           yder
-Version:        1.4.7
+Version:        1.4.8
 Release:        0
 Summary:        Logging library written in C
 License:        LGPL-2.1-or-later

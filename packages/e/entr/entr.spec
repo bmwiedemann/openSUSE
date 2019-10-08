@@ -18,7 +18,7 @@
 
 
 Name:           entr
-Version:        4.2
+Version:        4.3
 Release:        0
 Summary:        A utility for running arbitrary commands when files change
 License:        ISC
@@ -31,8 +31,7 @@ A utility for running arbitrary commands when files change. Uses
 inotify(7) to avoid polling.
 
 %prep
-%autosetup -c
-mv eradman-%{name}-*/* .
+%setup -q
 
 %build
 export CFLAGS="%{optflags}"

@@ -17,7 +17,7 @@
 
 
 Name:           suse-prime
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        GPU (nvidia/intel) selection for NVIDIA optimus laptops
 License:        SUSE-Public-Domain
@@ -62,6 +62,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/prime
 install -m 0644 xorg-intel.conf  %{buildroot}%{_sysconfdir}/prime/
 install -m 0644 xorg-intel-intel.conf  %{buildroot}%{_sysconfdir}/prime/
 install -m 0644 xorg-nvidia.conf %{buildroot}%{_sysconfdir}/prime/
+install -m 0644 xorg-nvidia-prime-render-offload.conf %{buildroot}%{_sysconfdir}/prime/
 mkdir -p %{buildroot}%{_sysconfdir}/modprobe.d
 install -m 0644 09-nvidia-modprobe-bbswitch-G04.conf %{buildroot}%{_sysconfdir}/modprobe.d/
 install -m 0644 09-nvidia-modprobe-pm-G05.conf %{buildroot}%{_sysconfdir}/modprobe.d/
@@ -80,11 +81,12 @@ ln -snf service %{buildroot}/usr/sbin/rcprime-select
 if [ "$1" -eq 0 ]; then
    # cleanup before uninstalling the package completely
    export PATH=$PATH:/usr/sbin
-   %{_sbindir}/prime-select unset
+   %{_sbindir}/prime-select unset || true
 fi
 
 %postun
 if [ "$1" -eq 0 ]; then
+   true
    %{?regenerate_initrd_post}
 fi
 
@@ -129,6 +131,7 @@ exit 0
 %config %{_sysconfdir}/prime/xorg-intel.conf
 %config %{_sysconfdir}/prime/xorg-intel-intel.conf
 %config %{_sysconfdir}/prime/xorg-nvidia.conf
+%config %{_sysconfdir}/prime/xorg-nvidia-prime-render-offload.conf
 %config(noreplace) %{_sysconfdir}/prime/current_type
 %{_sbindir}/prime-select
 %config %{_sysconfdir}/modprobe.d/09-nvidia-modprobe-pm-G05.conf
@@ -141,6 +144,7 @@ exit 0
 %config %{_sysconfdir}/prime/xorg-intel.conf
 %config %{_sysconfdir}/prime/xorg-intel-intel.conf
 %config %{_sysconfdir}/prime/xorg-nvidia.conf
+%config %{_sysconfdir}/prime/xorg-nvidia-prime-render-offload.conf
 %config(noreplace) %{_sysconfdir}/prime/current_type
 %{_sbindir}/prime-select
 %{_sbindir}/rcprime-select

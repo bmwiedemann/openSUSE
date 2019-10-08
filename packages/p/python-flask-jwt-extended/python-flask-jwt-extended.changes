@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct  7 13:17:41 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.24.0:
+  * Adds the ability to add custom data to the JWT headers via the
+    headers kwarg
+
+-------------------------------------------------------------------
 Tue Sep 24 11:09:32 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.23.0:

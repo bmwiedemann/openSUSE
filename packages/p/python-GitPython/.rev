@@ -180,4 +180,27 @@
 - Rebase patch test-skips.patch</comment>
     <requestid>732882</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a4548c72735eb94dd88f255887ade12a</srcmd5>
+    <version>3.0.3.1570041589.23b83cd</version>
+    <time>1570557490</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.3.1570041589.23b83cd:
+  * Prepare v3.0.3
+  * git: repo: base: update clone_from env argument description
+  * remove previously added debug code from test_doc.py
+  * Revert &quot;Remove control character stripping.&quot;
+  * Try to fix tests; get more debug output
+  * Update util.py
+  * Update util.py
+  * Remove control character stripping.
+  * add type check to git.Remote.__eq__
+  * Take advantage of universal newlines.
+  * Parse rejected deletes.
+  * Remove assert that can fail erroneously.
+  * Fix test_commit_msg_hook_success.
+  * fix decoding problem
+  * Fix #889: Add DeepSource config and fix some major issues</comment>
+    <requestid>735864</requestid>
+  </revision>
 </revisionlist>

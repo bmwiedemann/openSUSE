@@ -1,0 +1,5 @@
+<package name="perl-TAP-Harness-JUnit" project="openSUSE:Factory">
+  <title>Generate JUnit compatible output from TAP results</title>
+  <description>Generate JUnit compatible output from TAP results</description>
+  <devel project="devel:languages:perl" package="perl-TAP-Harness-JUnit"/>
+</package>

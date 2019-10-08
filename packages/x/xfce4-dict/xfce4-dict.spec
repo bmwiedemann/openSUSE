@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-dict
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,15 @@
 #
 
 
-%define panel_version 4.10.0
+%define panel_version 4.12.0
 Name:           xfce4-dict
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        Xfce Dictionary Client Application
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Dictionary
-Url:            http://goodies.xfce.org/projects/applications/xfce4-dict
-Source:         http://archive.xfce.org/src/apps/xfce4-dict/0.8/%{name}-%{version}.tar.bz2
+Url:            https://goodies.xfce.org/projects/applications/xfce4-dict
+Source:         https://archive.xfce.org/src/apps/xfce4-dict/0.8/%{name}-%{version}.tar.bz2
 BuildRequires:  intltool
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gthread-2.0)
@@ -36,7 +36,6 @@ BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.10.0
 Requires:       xdg-utils
 Recommends:     %{name}-lang = %{version}
 Suggests:       xfce4-panel-plugin-dict
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 xfce4-dict allows you to search different kinds of dictionary services for
@@ -60,7 +59,7 @@ This package contains the xfce4-dict dictionary plugin for the Xfce panel.
 
 %build
 %configure
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -74,7 +73,6 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 %find_lang %{name} %{?no_lang_C}
 
 %files
-%defattr(-,root,root)
 %doc AUTHORS ChangeLog README
 %license COPYING
 %{_bindir}/xfce4-dict
@@ -83,11 +81,9 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 %{_mandir}/man1/xfce4-dict.1*
 
 %files -n xfce4-panel-plugin-dict
-%defattr(-,root,root)
 %{_libdir}/xfce4/panel/plugins/libxfce4dict.so
 %{_datadir}/xfce4/panel/plugins/*.desktop
 
 %files lang -f %{name}.lang
-%defattr(-,root,root)
 
 %changelog

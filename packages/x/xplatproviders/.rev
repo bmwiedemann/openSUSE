@@ -88,4 +88,13 @@
     <comment></comment>
     <requestid>507717</requestid>
   </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>a278177180c3dbca3a49a3af9cccdc0d</srcmd5>
+    <version>1.0.0</version>
+    <time>1570557536</time>
+    <user>dimstar_suse</user>
+    <comment>- enable drop-stropts.h-include.patch on all platforms
+</comment>
+    <requestid>736009</requestid>
+  </revision>
 </revisionlist>

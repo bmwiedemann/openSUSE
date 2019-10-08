@@ -27,7 +27,7 @@
 Name:           mhvtl
 Url:            http://sites.google.com/site/linuxvtl2/
 PreReq:         %insserv_prereq %fillup_prereq
-Version:        1.60
+Version:        1.62
 Release:        0
 Requires:       mhvtl-kmp
 Requires:       module-init-tools
@@ -47,8 +47,6 @@ License:        GPL-2.0-only
 Group:          System/Daemons
 Source:         %{name}-%{version}_release.tar.xz
 Source2:        %{name}.preamble
-Patch1:         %{name}-remove-use-of-use_clustering.patch
-Patch2:         %{name}-systemd-load-modules-cleanup.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_ordering}
 
@@ -79,11 +77,10 @@ through to user-space daemons.
 
 %prep
 %setup -qn %{name}-%{version}_release
-%patch1 -p1
-%patch2 -p1
 
 %build
-make MHVTL_HOME_PATH=%{mhvtl_home_dir} VERSION=%{version}_release
+make MHVTL_HOME_PATH=%{mhvtl_home_dir} VERSION=%{version}_release \
+	SYSTEMD_GENERATOR_DIR=%{_libexecdir}/systemd/system-generators
 %if 0%{buildkmp} == 1
 for flavor in %flavors_to_build; do
 	rm -rf obj/$flavor
@@ -96,7 +93,8 @@ done
 
 %install
 %make_install \
-	MHVTL_HOME_PATH=%{mhvtl_home_dir} VERSION=%{version}_release LIBDIR=%{_libdir}
+	MHVTL_HOME_PATH=%{mhvtl_home_dir} VERSION=%{version}_release LIBDIR=%{_libdir} \
+	SYSTEMD_GENERATOR_DIR=%{_libexecdir}/systemd/system-generators
 %if 0%{buildkmp} == 1
 export INSTALL_MOD_PATH=%{buildroot}
 export INSTALL_MOD_DIR=updates

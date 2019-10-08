@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct  5 20:34:27 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versin 1.4.8
+  * Avoid running y_init_logs without closing between
+
+-------------------------------------------------------------------
 Fri Jul 12 21:03:56 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.4.7

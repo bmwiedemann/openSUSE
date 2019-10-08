@@ -79,4 +79,14 @@
     <comment></comment>
     <requestid>704958</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>eea2e0822191561deb6a6d9822e32254</srcmd5>
+    <version>3.2.4</version>
+    <time>1570557485</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.4:
+  * Import from collections for Python 2, from collections.abc for Python 3.
+  * Fixed infinite recursion in ImportManager on importing module _bootlocale inside open().</comment>
+    <requestid>735857</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct  8 07:47:43 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.35.0
+  * Drop SSLv3.0 and TLSv1.0 and add TLSv1.3
+  * TLSv1.3 support is added for GNUTLS and OpenSSL.
+  * Platform: Fix compilation without deprecated OpenSSL APIs
+  * Remove linux getrandom and use C++ stdlib instead
+  * Don't send Accept Metalink header if Metalink is disabled
+- Drop no longer needed aria2-CVE-2019-3500.patch
+
+-------------------------------------------------------------------
 Wed Jan  9 13:47:29 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix CVE-2019-3500 boo#1120488

@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jsondiff
-Version:        1.1.2
+Version:        1.2.0
 Release:        0
 Summary:        Module to diff JSON and JSON-like structures in Python
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/ZoomerAnalytics/jsondiff
 Source:         https://files.pythonhosted.org/packages/source/j/jsondiff/jsondiff-%{version}.tar.gz
+BuildRequires:  %{python_module nose-random}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -47,13 +47,13 @@ Package to show differences between JSON and JSON-like structures in Python
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Tests do not run in py3 and upstream is not much worried about that
-#%%python_expand nosetests-%{$python_bin_suffix}
+%python_expand nosetests-%{$python_bin_suffix}
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/*
+%python3_only %{_bindir}/jdiff
 %python3_only %{_bindir}/jsondiff
 
 %changelog

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct  7 13:22:56 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.2.4:
+  * Import from collections for Python 2, from collections.abc for Python 3.
+  * Fixed infinite recursion in ImportManager on importing module _bootlocale inside open().
+
+-------------------------------------------------------------------
 Thu May 23 08:00:15 UTC 2019 - pgajdos@suse.com
 
 - version update to 3.2.3

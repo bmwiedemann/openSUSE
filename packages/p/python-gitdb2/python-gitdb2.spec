@@ -18,19 +18,18 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-gitdb2
-Version:        2.0.5
+Version:        2.0.6
 Release:        0
 Summary:        Git Object Database
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/gitpython-developers/gitdb
 Source:         https://files.pythonhosted.org/packages/source/g/gitdb2/gitdb2-%{version}.tar.gz
+BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module setuptools >= 0.8.5}
+BuildRequires:  %{python_module smmap2 >= 2.0.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-smmap2 >= 2.0.0
-BuildRequires:  %{python_module nose}
-BuildRequires:  %{python_module smmap2 >= 2.0.0}
 %python_subpackages
 
 %description

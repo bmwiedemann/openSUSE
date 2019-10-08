@@ -19,7 +19,7 @@
 
 %define sover 2_6
 Name:           ulfius
-Version:        2.6.3
+Version:        2.6.4
 Release:        0
 Summary:        Web Framework for REST Applications in C
 License:        MIT
@@ -34,7 +34,7 @@ BuildRequires:  pkgconfig(jansson) >= 2.4
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libmicrohttpd)
 BuildRequires:  pkgconfig(liborcania)
-BuildRequires:  pkgconfig(libyder) >= 1.4.6
+BuildRequires:  pkgconfig(libyder) >= 1.4.8
 
 %description
 The library is based on GNU libmicrohttpd for the backend web server, jansson

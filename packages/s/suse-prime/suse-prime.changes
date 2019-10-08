@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Tue Oct  8 11:51:23 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.7.2 with various improvements and fixes
+  * Full support to nvidia prime offloading without service or
+    with bbswitch with service disabled
+  * Distinction between "service disabled" (bbswitch package)
+    and "service not installed"
+  * Fixed bug with bbswitch and service enabled that returns i
+    "PCI BusID of NVIDIA card could not be detected"
+  * Now when NVIDIA is OFF, intel xorg config file has ai
+    commented "nvidia prime offloading" section
+  * Mention that offloading needs service disabled
+  * Corrected intentation in some sections
+- supersedes the following patches:
+  * 0001-Removed-exit-1-error-from-common-set-intel-because-d.patch
+  * 0002-Various-improvements-and-fixes.patch
+  * 0003-Merged-commit-https-github.com-openSUSE-SUSEPrime-pu.patch
+
+-------------------------------------------------------------------
+Tue Oct  8 10:23:37 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- 0001-Removed-exit-1-error-from-common-set-intel-because-d.patch,
+  * Removed "exit 1" error from "common set intel" because during
+    boot and nvidia card off by default in bbswitch (load_state=0)
+    crashes service
+- 0002-Various-improvements-and-fixes.patch
+  * Various improvements and fixes
+    + Full support to nvidia prime offloading without service or with
+      bbswitch with service disabled
+    + Distinction between "service disabled" (bbswitch package) and
+      "service not installed"
+    + Fixed bug with bbswitch and service enabled that returns
+      "PCI BusID of NVIDIA card could not be detected"
+    + Now when NVIDIA is OFF, intel xorg config file has a commented
+      "nvidia prime offloading" section
+    + Mention that offloading needs service disabled
+    + Corrected intentation in some sections
+- 0003-Merged-commit-https-github.com-openSUSE-SUSEPrime-pu.patch
+  * supersedes 0001-Fix-intel-configs-if-no-NVIDIA-kernel-module-is-avai.patch
+
+-------------------------------------------------------------------
+Mon Oct  7 19:40:15 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- fix build on distributions, where %{?regenerate_initrd_post}
+  doesn't exist yet
+- %preun: 'prime-select unset' is supposed to fail during 
+  package installation test during build, therefore don't
+  let it fail via adding "|| true" to the command
+
+-------------------------------------------------------------------
+Mon Oct  7 13:52:34 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- 0001-Fix-intel-configs-if-no-NVIDIA-kernel-module-is-avai.patch
+  * Move additional nvidia X device section needed for NVIDIA's Prime
+    Render Offload mode to an extra xorg.conf.d snippet. Add this only
+    to intel X configs, if NVIDIA's PCI BusId can be detected.
+- add xorg-nvidia-prime-render-offload.conf X snippet to /etc/prime
+
+-------------------------------------------------------------------
 Fri Oct  4 10:41:54 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use more of the posttrans rather than on-demand mkinitrd

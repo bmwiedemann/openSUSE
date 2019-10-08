@@ -16,4 +16,12 @@
     <comment> </comment>
     <requestid>705620</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9ab73e5aa0bf594bc42d92fdd30e61a5</srcmd5>
+    <version>3.6.0</version>
+    <time>1570557476</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable py2 build as it is unresolvable</comment>
+    <requestid>735851</requestid>
+  </revision>
 </revisionlist>

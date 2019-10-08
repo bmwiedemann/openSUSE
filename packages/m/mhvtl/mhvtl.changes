@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Sun Oct 06 14:42:22 UTC 2019 - lduncan@suse.com
+
+- Update to version 1.62_release:
+  * Update the 1.6.2 tarball name
+  * Update spec file for 1.6-2 release
+  * mhvtl.ko: Bump module version to reflect white-listed buffer work
+  * mhvtl.ko: Use white-listed buffer to copy data to/from kernel space
+  * Bump kernel module version
+  * mhvtl.ko: scsi_host_template changed block .ioctl
+  * mhvtl.ko: Remove useless printk("\n")
+  * Reformat KERNEL_VERSION() to make checkpatch.pl happier
+  * Bump kernel module version
+  * Fix kernel build SUBDIR going away post 5.3
+  * mhvtl.ko: Fix compile on 5.0+ kernels
+  * mhvtl.ko: Bump version number due to serial_number change
+  * mhvtl.ko: Remove dependency on scsi mid layer serial_number
+  * Remove dead code
+  * Only build symlink paths for tape devices
+  * Silence another gcc error regarding snprintf
+  * Silence another gcc error regarding snprintf
+  * Make sure target buffer is large enough
+  * Use systemd-path to query mhvtl-device-conf-generator path
+  * Change Vagrantbox for Centos to one that is  publicly available.
+  * Remove lzo from the install script and added -g to lsscsi
+  * Add Vagrant file with install script for testing
+  * Revert "Correct yet another /usr -> / path - this time for systemd etc stuff"
+  * Correct yet another /usr -> / path - this time for systemd etc stuff
+  * Correct systemd-generator default path
+  * Fix path to modprobe
+  * Ubuntu/Debian need the systemd-generators install in /lib not /usr/lib
+  * Sample script to build /dev/tape/by-path/ entries
+  * Add test for root user on install
+  * Update Change log and spec file for 1.6-1_release
+  * Add CRC check on read path
+  * Update dump_tape to understand CRC32
+  * Add CRC32 to each block write
+  * Add libcrc32c routines
+  * Add additional field to reflect if tape in drive
+  * Move true/false values into single bit field
+  * Allow to override build date with SOURCE_DATE_EPOCH
+  * dump_tape: Fix off-by-one reading argv[]
+  * Improve SCSI cdb logging format from kernel module
+  * Fix typo for mktape in make_vtl_media
+  * Simplify building of mktape
+  * Clean up white space formatting in source
+  * A very basic script to show how to setup LIO iSCSI via pscsi driver
+  * Fix a media unload race condition
+  * Force shared library and systemd refresh on install
+  * bump kernel module version string.
+  * Remove use of "use_clustering" in our kernel driver.
+  * Correct mhvtl-load-modules.service dependencies.
+
+  This results in replacing mhvtl-1.60_release.tar.xz with
+  mhvtl-1.62_release.tar.xz, and removing two patches, no
+  longer needed. Removed:
+  * mhvtl-systemd-load-modules-cleanup.patch
+  * mhvtl-remove-use-of-use_clustering.patch
+
+  Also, updated SPEC-file %build and %install make commands to pass
+  in systemd generator directory.
+
+-------------------------------------------------------------------
 Sat Mar 30 12:08:09 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Reduce dependency on systemd. Make use of %make_install.

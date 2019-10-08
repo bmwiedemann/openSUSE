@@ -245,6 +245,14 @@ cat > /etc/jeos-firstboot.conf <<-EOF
 	JEOS_PASSWORD_ALREADY_SET=1
 EOF
 
+#======================================
+# Config for nano editor (Yomi)
+#--------------------------------------
+cat > /etc/nanorc <<-EOF
+include "/usr/share/nano/*.nanorc"
+set suspend
+EOF
+
 # Not compatible with set -e
 baseCleanMount || true
 

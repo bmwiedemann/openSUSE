@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-parmap
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           ocaml-parmap
-Version:        20170223.c9b0ee7
+Version:        20190330.8d19c66
 Release:        0
 %{?ocaml_preserve_bytecode}
-Summary:        Exploit multicore architectures for OCaml programs with minimal modifications
-License:        LGPL-2.0
+Summary:        Multicore architecture exploitation for OCaml programs with minimal modifications
+License:        LGPL-2.0-only
 Group:          Development/Languages/OCaml
-Url:            http://rdicosmo.github.io/parmap/
+URL:            http://rdicosmo.github.io/parmap/
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-oasis
@@ -73,7 +73,7 @@ Name:        parmap
 Version:     0
 Synopsis:    library to exploit multicore architectures (parallel programming)
 Authors:     Marco Danelutto and Roberto Di Cosmo
-License:     %{license}
+License:     WTFPL
 LicenseFile: LICENSE
 Plugins:     META(`oasis version`)
 BuildTools:  ocamlbuild

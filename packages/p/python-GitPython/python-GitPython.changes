@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Oct 07 13:33:58 UTC 2019 - tchvatal@suse.com
+
+- Update to version 3.0.3.1570041589.23b83cd:
+  * Prepare v3.0.3
+  * git: repo: base: update clone_from env argument description
+  * remove previously added debug code from test_doc.py
+  * Revert "Remove control character stripping."
+  * Try to fix tests; get more debug output
+  * Update util.py
+  * Update util.py
+  * Remove control character stripping.
+  * add type check to git.Remote.__eq__
+  * Take advantage of universal newlines.
+  * Parse rejected deletes.
+  * Remove assert that can fail erroneously.
+  * Fix test_commit_msg_hook_success.
+  * fix decoding problem
+  * Fix #889: Add DeepSource config and fix some major issues
+
+-------------------------------------------------------------------
 Tue Sep 24 09:03:41 UTC 2019 - tchvatal@suse.com
 
 - Update to version 3.0.2.1566444429.0765792:

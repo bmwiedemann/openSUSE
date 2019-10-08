@@ -17,18 +17,18 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-drf-nested-routers
 Version:        0.91.0
 Release:        0
 Summary:        Nested resources for the Django Rest Framework
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/alanjds/drf-nested-routers
 Source:         https://github.com/alanjds/drf-nested-routers/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module djangorestframework >= 3.6.0}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-django}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

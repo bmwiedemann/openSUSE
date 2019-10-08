@@ -20,4 +20,13 @@
   * Fix links after repo move to googleapis (#41)</comment>
     <requestid>730378</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8651b999b007db64fccc10e973eeaedc</srcmd5>
+    <version>0.4.1</version>
+    <time>1570557560</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.1:
+  * Don't auto-generate code_verifier by default. (#48)</comment>
+    <requestid>736031</requestid>
+  </revision>
 </revisionlist>

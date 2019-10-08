@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- OBS-ExcludeArch: i586 s390 -->
+
+<image schemaversion="6.9" name="opensuse-toolbox-image" xmlns:suse_label_helper="com.suse.label_helper">
+  <description type="system">
+    <author>Thorsten Kukuk</author>
+    <contact>kukuk@suse.com</contact>
+    <specification>openSUSE image containing system debugging tools.</specification>
+  </description>
+  <preferences>
+    <type
+      image="docker"
+      derived_from="obsrepositories:/opensuse/tumbleweed#latest">
+      <containerconfig
+        name="opensuse/toolbox"
+        tag="latest"
+        additionaltags="%PKG_VERSION%,%PKG_VERSION%-%RELEASE%"
+        maintainer="Thorsten Kukuk &lt;kukuk@suse.com&gt;">
+	<subcommand execute="/bin/bash">
+        </subcommand>
+        <labels>
+          <suse_label_helper:add_prefix prefix="org.opensuse.toolbox">
+            <label name="org.opencontainers.image.title" value="openSUSE toolbox container"/>
+            <label name="org.opencontainers.image.description" value="Image containing system debugging utilities."/>
+            <label name="org.opencontainers.image.version" value="%PKG_VERSION%-%RELEASE%"/>
+            <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
+            <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/toolbox:%PKG_VERSION%-%RELEASE%"/>
+            <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
+          </suse_label_helper:add_prefix>
+        </labels>
+        <history author="Thorsten Kukuk &lt;kukuk@suse.com&gt;">openSUSE toolbox container</history>
+      </containerconfig>
+    </type>
+    <version>1.0.0</version>
+    <packagemanager>zypper</packagemanager>
+    <rpm-excludedocs>true</rpm-excludedocs>
+  </preferences>
+  <repository>
+    <source path="obsrepositories:/"/>
+  </repository>
+  <packages type="bootstrap">
+    <package name="gdb"/>
+    <package name="strace"/>
+    <package name="ltrace"/>
+    <package name="traceroute"/>
+    <package name="iputils"/>
+    <package name="supportutils"/>
+    <package name="tcpdump"/>
+    <package name="vim"/>
+    <package name="less"/>
+  </packages>
+</image>

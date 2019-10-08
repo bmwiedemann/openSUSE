@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-django-rest-knox
 Version:        3.6.0
 Release:        0
@@ -24,11 +25,15 @@ Release:        0
 # change that at least breaks drf-jwt-knox
 Summary:        Authentication for Django REST framework
 License:        MIT
-Group:          Development/Languages/Python
-Url:            https://github.com/James1345/django-rest-knox
+URL:            https://github.com/James1345/django-rest-knox
 Source:         https://github.com/James1345/django-rest-knox/archive/%{version}.tar.gz#/django-rest-knox-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Django
+Requires:       python-cryptography
+Requires:       python-djangorestframework
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module cryptography}
@@ -36,12 +41,6 @@ BuildRequires:  %{python_module django-nose}
 BuildRequires:  %{python_module djangorestframework}
 BuildRequires:  %{python_module freezegun}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-Django
-Requires:       python-cryptography
-Requires:       python-djangorestframework
-BuildArch:      noarch
-
 %python_subpackages
 
 %description

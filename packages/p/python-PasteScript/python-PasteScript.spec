@@ -19,11 +19,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-PasteScript
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        A pluggable command-line frontend to setup package file layouts
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/cdent/pastescript
 Source:         https://files.pythonhosted.org/packages/source/P/PasteScript/PasteScript-%{version}.tar.gz
 BuildRequires:  %{python_module Paste >= 2.0}
@@ -54,9 +53,6 @@ This is a pluggable command-line tool. It includes some built-in features:
 
 %prep
 %setup -q -n PasteScript-%{version}
-# remove with next release
-echo "[nosetests]" >> setup.cfg
-echo "tests=tests" >> setup.cfg
 
 %build
 %python_build

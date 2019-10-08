@@ -20,13 +20,14 @@
 
 %global __requires_exclude ^typelib\\(Unity\\).*$
 Name:           rapid-photo-downloader
-Version:        0.9.14
+Version:        0.9.17
 Release:        0
 Summary:        Parallel downloader for camera and smartphone photos
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Other
 Url:            https://damonlynch.net/rapid/
 Source:         https://launchpad.net/rapid/pyqt/%{version}/+download/%{name}-%{version}.tar.gz
+Source1:        https://launchpad.net/rapid/pyqt/%{version}/+download/%{name}-%{version}.tar.gz.asc
 # PATCH-FEATURE-OPENSUSE disable-version-check.patch
 Patch0:         disable-version-check.patch
 # PATCH-FIX-OPENSUSE oldsetuptools.patch use old syntax -- aloisio@gmx.com
@@ -39,26 +40,50 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
 Requires:       exiftool
-Requires:       python3-PyPrind
-Requires:       python3-arrow
+BuildRequires:  python3-PyPrind >= 2.9.4
+Requires:       python3-PyPrind >= 2.9.4
+BuildRequires:  python3-arrow >= 0.9.0
+Requires:       python3-arrow >= 0.9.0
+BuildRequires:  python3-cairo >= 1.11.1
 Requires:       python3-cairo >= 1.11.1
+BuildRequires:  python3-colorlog
 Requires:       python3-colorlog
+BuildRequires:  python3-colour
 Requires:       python3-colour
+BuildRequires:  python3-easygui
 Requires:       python3-easygui
+BuildRequires:  python3-gobject2
 Requires:       python3-gobject2
+BuildRequires:  python3-gphoto2 >= 1.4.0
 Requires:       python3-gphoto2 >= 1.4.0
+BuildRequires:  python3-psutil >= 3.4.2
 Requires:       python3-psutil >= 3.4.2
+BuildRequires:  python3-pymediainfo >= 2.2.0
 Requires:       python3-pymediainfo >= 2.2.0
+BuildRequires:  python3-python-dateutil >= 2.2
 Requires:       python3-python-dateutil >= 2.2
-Requires:       python3-pyxdg
+BuildRequires:  python3-pyxdg >= 0.25
+Requires:       python3-pyxdg >= 0.25
+BuildRequires:  python3-pyzmq >=  16.0.2
 Requires:       python3-pyzmq >=  16.0.2
+BuildRequires:  python3-qt5 >= 5.4
 Requires:       python3-qt5 >= 5.4
-Requires:       python3-rawkit
+BuildRequires:  python3-rawkit >= 0.6.0
+Requires:       python3-rawkit >= 0.6.0
+BuildRequires:  python3-requests
+Requires:       python3-requests
+BuildRequires:  python3-sortedcontainers
 Requires:       python3-sortedcontainers
+BuildRequires:  python3-tornado
 Requires:       python3-tornado
+BuildRequires:  python3-tenacity
+Requires:       python3-tenacity
+
 BuildArch:      noarch
 %if 0%{?suse_version} < 1500
+BuildRequires:  python3-scandir
 Requires:       python3-scandir
+BuildRequires:  python3-typing
 Requires:       python3-typing
 %endif
 

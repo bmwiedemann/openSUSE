@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Cheetah3
-Version:        3.2.3
+Version:        3.2.4
 Release:        0
 Summary:        Template engine and code generation tool
 License:        MIT

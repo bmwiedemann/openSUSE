@@ -16,4 +16,15 @@
     <comment></comment>
     <requestid>715637</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>24796a1db5227001c07a5d09f701ece6</srcmd5>
+    <version>0.0.0.git1562664497.a12e306</version>
+    <time>1570557525</time>
+    <user>dimstar_suse</user>
+    <comment>- back to Mesa-libGLESv3-devel 
+
+- Buildrequire libglvnd-devel &gt;= 1.2.0 instead of Mesa-libGLESv3-devel
+  (workaround for broken buildservice)</comment>
+    <requestid>735977</requestid>
+  </revision>
 </revisionlist>

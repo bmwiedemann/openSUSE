@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct  4 09:40:26 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.20191002
+   see /usr/share/doc/packages/perl-Test-MockObject/Changes
+
+  1.20191002 2019-10-02 09:32:54-07:00 America/Los_Angeles
+      - replace non-core CGI dependency with core CPAN dependency
+        (Yanick Champoux, GH PR #16)
+
+-------------------------------------------------------------------
 Sat Jul  7 06:08:29 UTC 2018 - coolo@suse.com
 
 - updated to 1.20180705

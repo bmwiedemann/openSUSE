@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct  7 09:06:51 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.8.3
+  * Allow compilation with panel 4.15
+  * Show correct colors (bxo#15946)
+  * Avoid mnemonic conflict
+  * Fix g_type_class_add_private deprecation in recent GLib
+  * Replace GtkStock buttons
+  * Fix typo of dict.cc (bxo#15571)
+  * Fix parallel build (bxo#14963)
+  * Translation Updates
+- Removed deprecated macros
+
+-------------------------------------------------------------------
 Sat Dec 01 19:05:34 UTC 2018 - sean@suspend.net
 
 - update to version 0.8.2

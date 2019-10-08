@@ -1,0 +1,161 @@
+From b47f46102bccf1d813ca159230029b0cd820ceff Mon Sep 17 00:00:00 2001
+From: Daniel Scharrer <daniel@constexpr.org>
+Date: Mon, 23 Sep 2019 00:00:52 +0200
+Subject: [PATCH 2/6] CMake: Remove library link checks
+
+This was needed with older CMake versions to work around CMake searching
+under lib with -m32 instead of under lib32 for platforms where lib
+contains 64-bit binaries. This has since been fixed in CMake and users
+of older CMake versions can add the lib32 directories to
+CMAKE_LIBRARY_PATH to work around the issue on their end.
+
+With newer CMake and Boost versions these checks fail because the
+boost-config.cmake files shipped with Boost use imported targets instead
+of library paths and try_compile does not add these imported targets to
+the generated project.
+
+See: https://gitlab.kitware.com/cmake/cmake/issues/11260
+---
+ CMakeLists.txt           |  4 --
+ cmake/CompileCheck.cmake | 88 ----------------------------------------
+ 2 files changed, 92 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b98e59d..8aba97c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -158,7 +158,6 @@ endif()
+ 
+ if(USE_LZMA)
+ 	find_package(LZMA REQUIRED)
+-	check_link_library(LZMA LZMA_LIBRARIES)
+ 	list(APPEND LIBRARIES ${LZMA_LIBRARIES})
+ 	include_directories(SYSTEM ${LZMA_INCLUDE_DIR})
+ 	add_definitions(${LZMA_DEFINITIONS})
+@@ -176,7 +175,6 @@ find_package(Boost REQUIRED COMPONENTS
+ 	system
+ 	program_options
+ )
+-check_link_library(Boost Boost_LIBRARIES)
+ list(APPEND LIBRARIES ${Boost_LIBRARIES})
+ link_directories(${Boost_LIBRARY_DIRS})
+ include_directories(SYSTEM ${Boost_INCLUDE_DIR})
+@@ -210,7 +208,6 @@ if(Boost_HAS_STATIC_LIBS)
+ 				break()
+ 			endif()
+ 		endforeach()
+-		check_link_library(${Lib} ${LIB}_LIBRARIES)
+ 		list(APPEND LIBRARIES ${${LIB}_LIBRARIES})
+ 	endforeach()
+ endif()
+@@ -227,7 +224,6 @@ elseif(NOT WITH_CONV OR WITH_CONV STREQUAL "iconv")
+ 	endif()
+ 	find_package(iconv ${ICONV_REQUIRED})
+ 	if(ICONV_FOUND)
+-		check_link_library(iconv iconv_LIBRARIES)
+ 		list(APPEND LIBRARIES ${iconv_LIBRARIES})
+ 		include_directories(SYSTEM ${iconv_INCLUDE_DIR})
+ 		add_definitions(${iconv_DEFINITIONS})
+diff --git a/cmake/CompileCheck.cmake b/cmake/CompileCheck.cmake
+index 1e88599..4a72d38 100644
+--- a/cmake/CompileCheck.cmake
++++ b/cmake/CompileCheck.cmake
+@@ -192,95 +192,7 @@ function(add_ldflag FLAG)
+ 	
+ endfunction(add_ldflag)
+ 
+-function(try_link_library LIBRARY_NAME LIBRARY_FILE ERROR_VAR)
+-	# See if we can link a simple program with the library using the configured c++ compiler
+-	set(link_test_file "${CMAKE_CURRENT_BINARY_DIR}/link_test.cpp")
+-	file(WRITE ${link_test_file} "int main(){}\n")
+-	if(CMAKE_THREAD_LIBS_INIT)
+-		list(APPEND LIBRARY_FILE "${CMAKE_THREAD_LIBS_INIT}")
+-	endif()
+-	try_compile(
+-		CHECK_${LIBRARY_NAME}_LINK "${PROJECT_BINARY_DIR}" "${link_test_file}"
+-		CMAKE_FLAGS "-DLINK_LIBRARIES=${LIBRARY_FILE}"
+-		            "-DCMAKE_CXX_FLAGS=${CMAKE_CXX_FLAGS}"
+-		            "-DCMAKE_EXE_LINKER_FLAGS=${CMAKE_EXE_LINKER_FLAGS}"
+-		            "-DCMAKE_SHARED_LINKER_FLAGS=${CMAKE_SHARED_LINKER_FLAGS}"
+-		            "-DCMAKE_MODULE_LINKER_FLAGS=${CMAKE_MODULE_LINKER_FLAGS}"
+-		OUTPUT_VARIABLE ERRORLOG
+-	)
+-	set(${ERROR_VAR} "${ERRORLOG}" PARENT_SCOPE)
+-endfunction(try_link_library)
+-
+-##############################################################################
+-# Check that a a library actually works for the current configuration
+-# This is neede because CMake prefers /usr/lib over /usr/lib32 for -m32 builds
+-# See https://public.kitware.com/Bug/view.php?id=11260
+-function(check_link_library LIBRARY_NAME LIBRARY_VARIABLE)
+-	
+-	if(MSVC)
+-		# The main point of this is to work around CMakes ignorance of lib32.
+-		# This doesn't really apply for systems that don't use a unix-like library dir layout.
+-		return()
+-	endif()
+-	
+-	set(lib_current "${${LIBRARY_VARIABLE}}")
+-	set(found_var "ARX_CLL_${LIBRARY_NAME}_FOUND")
+-	set(working_var "ARX_CLL_${LIBRARY_NAME}_WORKING")
+-	
+-	if(CHECK_${LIBRARY_NAME}_LINK)
+-		set(lib_found "${${found_var}}")
+-		set(lib_working "${${working_var}}")
+-		if((lib_current STREQUAL lib_found) OR (lib_current STREQUAL lib_working))
+-			set("${LIBRARY_VARIABLE}" "${lib_working}" PARENT_SCOPE)
+-			return()
+-		endif()
+-	endif()
+-	
+-	set("${found_var}" "${lib_current}" CACHE INTERNAL "...")
+-	
+-	if(NOT lib_current STREQUAL "")
+-		message(STATUS "Checking ${LIBRARY_NAME}: ${lib_current}")
+-	endif()
+-	
+-	# Check if we can link to the full path found by find_package
+-	try_link_library(${LIBRARY_NAME} "${lib_current}" ERRORLOG1)
+-	
+-	if(CHECK_${LIBRARY_NAME}_LINK)
+-		set("${working_var}" "${lib_current}" CACHE INTERNAL "...")
+-		return()
+-	endif()
+-	
+-	# Check if the linker is smarter than cmake and try to link with only the library name
+-	string(REGEX REPLACE "(^|;)[^;]*/lib([^;/]*)\\.so" "\\1-l\\2"
+-	       LIBRARY_FILE "${lib_current}")
+-	
+-	if(NOT LIBRARY_FILE STREQUAL lib_current)
+-		
+-		try_link_library(${LIBRARY_NAME} "${LIBRARY_FILE}" ERRORLOG2)
+-		
+-		if(CHECK_${LIBRARY_NAME}_LINK)
+-			message(STATUS " -> using ${LIBRARY_FILE} instead")
+-			set("${LIBRARY_VARIABLE}" "${LIBRARY_FILE}" PARENT_SCOPE)
+-			set("${working_var}" "${LIBRARY_FILE}" CACHE INTERNAL "...")
+-			return()
+-		endif()
+-		
+-	endif()
+-	
+-	# Force cmake to search again, as the cached library doesn't work
+-	unset(FIND_PACKAGE_MESSAGE_DETAILS_${ARGV2} CACHE)
+-	unset(FIND_PACKAGE_MESSAGE_DETAILS_${LIBRARY_NAME} CACHE)
+-	
+-	message(FATAL_ERROR "\n${ERRORLOG1}\n\n${ERRORLOG2}\n\n"
+-	        "!! No suitable version of ${LIBRARY_NAME} found.\n"
+-	        "   Maybe you don't have the right (32 vs.64 bit) architecture installed?\n\n"
+-	        "   Tried ${lib_current} and ${LIBRARY_FILE}\n"
+-	        "   Using compiler ${CMAKE_CXX_COMPILER} ${CMAKE_CXX_FLAGS}\n\n\n")
+-	
+-endfunction(check_link_library)
+-
+ function(force_recheck_library LIBRARY_NAME)
+ 	unset(FIND_PACKAGE_MESSAGE_DETAILS_${ARGV1} CACHE)
+ 	unset(FIND_PACKAGE_MESSAGE_DETAILS_${LIBRARY_NAME} CACHE)
+-	unset(CHECK_${LIBRARY_NAME}_LINK CACHE)
+ endfunction()
+-- 
+2.23.0
+
