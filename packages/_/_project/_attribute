@@ -255,8 +255,9 @@ products:
   - 000product:openSUSE-ftp-ftp-i586_x86_64
   - 000product:openSUSE-Addon-NonOss-ftp-ftp-i586_x86_64
   images:
-  - opensuse-tumbleweed-image:lxc:
-    - i586
+  - kiwi-images-vagrant:libvirt:
+    - x86_64
+  - kiwi-images-vagrant:virtualbox:
     - x86_64
   - kiwi-templates-JeOS:MS-HyperV:
     - x86_64
@@ -267,10 +268,6 @@ products:
   - kiwi-templates-JeOS:XEN:
     - x86_64
   - kiwi-templates-JeOS:kvm-and-xen:
-    - x86_64
-  - openSUSE-Tumbleweed-Vagrant:libvirt:
-    - x86_64
-  - openSUSE-Tumbleweed-Vagrant:virtualbox:
     - x86_64
   - openSUSE-MicroOS:ContainerHost-hardware:
     - x86_64
@@ -307,6 +304,9 @@ products:
   - openSUSE-MicroOS:Vagrant:
     - x86_64
   - openSUSE-MicroOS:VMware:
+    - x86_64
+  - opensuse-tumbleweed-image:lxc:
+    - i586
     - x86_64
   livecds:
   - livecd-tumbleweed-kde:
