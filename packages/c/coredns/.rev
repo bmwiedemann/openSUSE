@@ -78,4 +78,11 @@
     <comment></comment>
     <requestid>732642</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>d5236164c51b710a9e4463ab5a7a66f7</srcmd5>
+    <version>1.3.1</version>
+    <time>1570609922</time>
+    <user>dimstar_suse</user>
+    <comment>Revert to 1.3.1 - 1.6.x is only compatible with k8s 1.16</comment>
+  </revision>
 </revisionlist>
