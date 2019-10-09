@@ -1822,7 +1822,6 @@ unsorted:
   - crash-doc 
   - crash-eppic 
   - crash-gcore 
-  - crash-kmp-default: [x86_64] 
   - crawl 
   - crawl-data 
   - crawl-sdl 
@@ -2295,7 +2294,6 @@ unsorted:
   - dpdk-devel: [x86_64] 
   - dpdk-doc: [x86_64] 
   - dpdk-examples: [x86_64] 
-  - dpdk-kmp-default: [x86_64] 
   - dpdk-tools: [x86_64] 
   - dpic 
   - dpic-doc 
@@ -2311,7 +2309,6 @@ unsorted:
   - dracut-kiwi-overlay 
   - dracut-tools 
   - drbd-formula 
-  - drbd-kmp-default: [x86_64] 
   - drbd-utils: [i586] 
   - drbdmanage 
   - drc 
@@ -14575,14 +14572,11 @@ unsorted:
   - openSUSE-release-usb-gnome 
   - openSUSE-release-usb-kde 
   - openSUSE-release-usb-x11 
-  - openafs: [x86_64] 
   - openafs-authlibs 
   - openafs-authlibs-devel 
-  - openafs-client: [x86_64] 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
-  - openafs-kmp-default: [x86_64] # suggested by dvd:suggested:patterns-devel-osc-devel_osc_build 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -32357,10 +32351,7 @@ unsorted:
   - virtualbox-devel 
   - virtualbox-guest-desktop-icons 
   - virtualbox-guest-source 
-  - virtualbox-guest-tools 
-  - virtualbox-guest-x11 
   - virtualbox-host-source 
-  - virtualbox-kmp-default 
   - virtualbox-qt 
   - virtualbox-vnc 
   - virtualbox-websrv 
