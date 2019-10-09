@@ -3415,9 +3415,9 @@
       <repopackage name="open-iscsi"/>
       <repopackage name="open-vm-tools"/>
       <repopackage name="open-vm-tools-desktop"/>
-      <repopackage name="openafs" arch="i586,i686"/>
-      <repopackage name="openafs-client" arch="i586,i686"/>
-      <repopackage name="openafs-kmp-default" arch="i586,i686"/>
+      <repopackage name="openafs"/>
+      <repopackage name="openafs-client"/>
+      <repopackage name="openafs-kmp-default"/>
       <repopackage name="openal-soft-data"/>
       <repopackage name="openbox"/>
       <repopackage name="openbox-adwaita-ob-theme"/>
@@ -5208,6 +5208,9 @@
       <repopackage name="virt-install"/>
       <repopackage name="virt-manager-common"/>
       <repopackage name="virt-what"/>
+      <repopackage name="virtualbox-guest-tools"/>
+      <repopackage name="virtualbox-guest-x11"/>
+      <repopackage name="virtualbox-kmp-default"/>
       <repopackage name="vlan"/>
       <repopackage name="vlc"/>
       <repopackage name="vlc-codec-gstreamer"/>
