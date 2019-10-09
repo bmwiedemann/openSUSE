@@ -4330,6 +4330,7 @@ unsorted:
   - gnome-sharp2 
   - gnome-sharp2-complete 
   - gnome-shell-devel 
+  - gnome-shell-extension-desktop-icons 
   - gnome-shell-extension-gpaste 
   - gnome-shell-extension-hamster 
   - gnome-shell-extension-onboard 
@@ -4963,6 +4964,8 @@ unsorted:
   - hawknl-libs 
   - hawtjni 
   - hawtjni-javadoc 
+  - hawtjni-maven-plugin 
+  - hawtjni-maven-plugin-javadoc 
   - hawtjni-runtime 
   - haxe 
   - hbci4java 
@@ -5556,6 +5559,14 @@ unsorted:
   - java-12-openjdk-javadoc 
   - java-12-openjdk-jmods 
   - java-12-openjdk-src 
+  - java-13-openjdk 
+  - java-13-openjdk-accessibility 
+  - java-13-openjdk-demo 
+  - java-13-openjdk-devel 
+  - java-13-openjdk-headless 
+  - java-13-openjdk-javadoc 
+  - java-13-openjdk-jmods 
+  - java-13-openjdk-src 
   - java-1_7_0-bootstrap 
   - java-1_7_0-bootstrap-devel 
   - java-1_7_0-bootstrap-headless 
@@ -32323,6 +32334,7 @@ unsorted:
   - vim-plugin-project 
   - vim-plugin-quilt 
   - vim-plugin-rails 
+  - vim-plugin-salt 
   - vim-plugin-searchcomplete 
   - vim-plugin-showmarks 
   - vim-plugin-snipmate 
