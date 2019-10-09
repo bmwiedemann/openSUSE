@@ -35,7 +35,6 @@ BuildRequires:  automake
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(avahi-glib)
-BuildRequires:  pkgconfig(avahi-ui)
 BuildRequires:  pkgconfig(avahi-ui-gtk3)
 BuildRequires:  pkgconfig(gail-3.0)
 BuildRequires:  pkgconfig(gdk-3.0)

@@ -225,6 +225,7 @@ mv %buildroot/%_datadir/ucx  %buildroot/%_datadir/openucx
 %defattr(-,root,root)
 %_includedir/uct/
 %_libdir/libuct.so
+%dir %_libdir/ucx/
 %_libdir/ucx/libuct_*.so
 
 %changelog

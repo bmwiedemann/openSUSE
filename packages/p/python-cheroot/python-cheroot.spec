@@ -19,17 +19,17 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define pypi_name cheroot
 Name:           python-%{pypi_name}
-Version:        6.5.8
+Version:        7.0.0
 Release:        0
 Summary:        Pure-python HTTP server
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/cherrypy/%{pypi_name}
 Source:         https://files.pythonhosted.org/packages/source/c/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+BuildRequires:  %{python_module jaraco.functools}
 BuildRequires:  %{python_module more-itertools >= 2.6}
 BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module pytest >= 2.8}
-BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest-mock >= 1.10.4}
 BuildRequires:  %{python_module requests-unixsocket}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools_scm >= 1.15.0}
@@ -40,8 +40,12 @@ BuildRequires:  %{python_module trustme}
 BuildRequires:  fdupes
 BuildRequires:  python-backports.functools_lru_cache
 BuildRequires:  python-rpm-macros
+Requires:       python-jaraco.functools
 Requires:       python-more-itertools >= 2.6
 Requires:       python-six >= 1.11.0
+%ifpython2
+Requires:       python-backports.functools_lru_cache
+%endif
 # the package and distribution name is lowercase-cheroot,
 # but PyPI claims the name is capital-Cheroot
 # *smacks head against desk*

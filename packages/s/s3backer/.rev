@@ -144,4 +144,14 @@
   + Fixed bug in test mode that was causing bogus I/O errors</comment>
     <requestid>722065</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>04098e7f549668b8b538abce34087da7</srcmd5>
+    <version>1.5.4</version>
+    <time>1570627182</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to release 1.5.4
+  + Only set &quot;x-amz-server-side-encryption&quot; header with PUT requests (issue #116)
+  + Don't kill IAM thread unless actually started (issue #115).</comment>
+    <requestid>736308</requestid>
+  </revision>
 </revisionlist>

@@ -26,6 +26,9 @@ Group:          Development/Languages/Python
 URL:            https://bitbucket.org/ecollins/passlib
 Source:         https://files.pythonhosted.org/packages/source/p/passlib/passlib-%{version}.tar.gz
 Patch0:         python-passlib-1.7.1-libxcrypt-compat.patch
+# Python 3.8 compatibility patches
+Patch1:         pr_9_1.patch
+Patch2:         pr_9_2.patch
 # test requirements
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module setuptools}
@@ -44,6 +47,8 @@ applications.
 %prep
 %setup -q -n passlib-%{version}
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %build
 %python_build

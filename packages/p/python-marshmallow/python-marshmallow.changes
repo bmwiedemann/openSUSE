@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct  8 15:03:26 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 3.2.1 
+  * Fix typing for Schema.dump[s]
+  * Fix compatibility with Python < 3.5.3
+  * Fix bug that raised an uncaught error when a nested schema 
+    instance had an unpickleable object in its context
+  * Fix propagating dot-delimited only and exclude parameters to 
+    nested schema instances
+  * Few bug fixes
+
+-------------------------------------------------------------------
 Wed Sep 11 12:45:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.0.3:

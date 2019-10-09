@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct  8 14:24:58 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.2.1
+  * listen on IPv4+IPv6 socket by default
+  * enable SO_KEEPALIVE on all connections
+  * drop support for py3.3 and py3.4
+  * improve munin plugins
+
+-------------------------------------------------------------------
 Fri May 17 12:45:39 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Initial packaging (0.1.2)

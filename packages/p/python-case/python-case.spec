@@ -1,7 +1,7 @@
 #
 # spec file for package python-case
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,8 +25,8 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            http://github.com/celery/case
 Source:         https://files.pythonhosted.org/packages/source/c/case/case-%{version}.tar.gz
-Patch:          remove_unittest2.patch
-BuildRequires:  %{python_module coverage}
+Patch0:         remove_unittest2.patch
+Patch1:         remove_coverage.patch
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module setuptools}
@@ -41,7 +41,7 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-Python unittest Utilities
+Python unittest Utilities.
 
 %prep
 %setup -q -n case-%{version}

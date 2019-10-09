@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-strongswan
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           NetworkManager-strongswan
-Version:        1.4.4
+Version:        1.4.5
 Release:        0
 Summary:        NetworkManager VPN support for strongSwan
 License:        GPL-2.0-or-later
@@ -27,12 +27,14 @@ Source0:        http://download.strongswan.org/NetworkManager/%{name}-%{version}
 Source1:        http://download.strongswan.org/NetworkManager/%{name}-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
 Source99:       README
+
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0
 BuildRequires:  pkgconfig(libnm)
 BuildRequires:  pkgconfig(libnma) >= 1.1.0
 BuildRequires:  pkgconfig(libsecret-1)
+
 Requires:       %{name}-frontend
 Requires:       NetworkManager >= 1.1.0
 Requires:       strongswan-nm >= 5.6.2
@@ -56,7 +58,7 @@ strongSwan.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 cp %{SOURCE99} README.SUSE
 
 %build
@@ -65,7 +67,7 @@ cp %{SOURCE99} README.SUSE
 	--without-libnm-glib \
 	--with-charon=%{_libexecdir}/ipsec/charon-nm \
 	--disable-more-warnings
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

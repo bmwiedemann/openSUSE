@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,7 +20,7 @@
 
 %define psm_so 2
 Name:           libpsm2
-Version:        11.2.78
+Version:        11.2.86
 Release:        0
 Summary:        Intel PSM Messaging API libraries
 License:        BSD-2-Clause OR GPL-2.0-only
@@ -111,7 +111,8 @@ rm  %{buildroot}/%{_libdir}/libpsm2.a
 %defattr(-,root,root,-)
 %{_libdir}/libpsm2.so.*
 %{_udevrulesdir}/40-psm.rules
-%doc COPYING README ChangeLog
+%doc README ChangeLog
+%license COPYING
 
 %files devel
 %defattr(-,root,root,-)

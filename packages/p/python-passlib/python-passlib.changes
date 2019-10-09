@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  3 15:09:46 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add two patches to fix Python 3.8 compatibility
+  * pr_9_1.patch and pr_9_2.patch
+
+-------------------------------------------------------------------
 Mon Mar 18 10:46:39 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to fix libxcrypt compatibility:

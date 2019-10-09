@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  4 11:41:32 UTC 2019 - mt@suse.com
+
+- version 0.6.60
+- libwicked: fix versioning and packaging (bsc#1143182,bsc#1132977)
+  shipping the internal helper library inside of the wicked package.
+
+-------------------------------------------------------------------
 Thu Sep 19 16:36:26 UTC 2019 - mt@suse.com
 
 - version 0.6.57

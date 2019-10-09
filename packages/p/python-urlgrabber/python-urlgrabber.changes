@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct  9 07:16:52 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.1.0:
+  * Fix confused license header to clarify licensing
+  * Fix Python 3 compatibility with urlgrabber-ext-down
+  * Support HTTP CONNECT with reget. BZ 1585596
+  * Fix for usage of _levelNames from logging module
+  * Fix issue when URLGRABBER_DEBUG is not an integer on Python 3
+  * Revise setup.py to remove need for extra setup-time dependencies
+  * setuptools: Update Development Status to Production/Stable
+
+-------------------------------------------------------------------
 Wed Feb 27 09:39:32 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Drop patch grabber_fix.diff that was never upstreamed. Should

@@ -86,4 +86,12 @@
   * Fix incorrect super() call in SchemaMeta.__init__</comment>
     <requestid>730134</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8130dd28a373db3d0f4a9d632c3715f5</srcmd5>
+    <version>3.2.1</version>
+    <time>1570627184</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>736310</requestid>
+  </revision>
 </revisionlist>

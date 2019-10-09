@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-magic-wormhole-mailbox-server
-Version:        0.3.1
+Version:        0.4.1
 Release:        0
 Summary:        Key exchange and control message server for Magic-Wormhole
 License:        MIT

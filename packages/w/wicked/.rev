@@ -1470,4 +1470,14 @@
 - dhcp6: set the noprefixroute address option (bsc#1132280)</comment>
     <requestid>731992</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>396eeb13fe87356db686ad5c427e0780</srcmd5>
+    <version>0.6.60</version>
+    <time>1570627072</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.60
+- libwicked: fix versioning and packaging (bsc#1143182,bsc#1132977)
+  shipping the internal helper library inside of the wicked package.</comment>
+    <requestid>734983</requestid>
+  </revision>
 </revisionlist>

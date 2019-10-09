@@ -157,4 +157,12 @@ Update to 1.3.1 (forwarded request 231381 from Zaitor)</comment>
 </comment>
     <requestid>616615</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6539ec41ab31c069b8bce3c12e78c0df</srcmd5>
+    <version>1.4.5</version>
+    <time>1570627094</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>735306</requestid>
+  </revision>
 </revisionlist>

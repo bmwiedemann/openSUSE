@@ -18,7 +18,7 @@
 
 %define		release_prefix  %{?snapshot:%{snapshot}}%{!?snapshot:0}
 Name:           wicked
-Version:        0.6.57
+Version:        0.6.60
 Release:        %{release_prefix}.0.0
 Summary:        Network configuration infrastructure
 License:        GPL-2.0
@@ -39,7 +39,8 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  make
-Requires(pre):  libwicked-0-6 = %{version}
+Provides:       libwicked-0_6_60 = %{version}
+Obsoletes:      libwicked-0-6 <= %{version}
 
 %if 0%{?suse_version} >= 1500
 %bcond_without  rfc4361_cid
@@ -154,7 +155,7 @@ Summary:        Network configuration infrastructure - Development files
 Group:          Development/Libraries/C and C++
 Requires:       dbus-1-devel
 Requires:       libnl3-devel
-Requires:       libwicked-0-6 = %{version}
+Requires:       libwicked-0_6_60 = %{version}
 
 %description devel
 Wicked is a network configuration infrastructure incorporating a number
@@ -163,19 +164,6 @@ interface to network configuration.
 
 This package provides the wicked development files.
 %endif
-
-%package -n     libwicked-0-6
-Summary:        Network configuration infrastructure - Shared library
-Group:          System/Management
-Obsoletes:      libwicked0 < %{version}
-
-%description -n libwicked-0-6
-Wicked is a network configuration infrastructure incorporating a number
-of existing frameworks into a unified architecture, providing a DBUS
-interface to network configuration.
-
-This package provides the wicked shared library.
-
 
 %prep
 %setup
@@ -239,7 +227,7 @@ ln -sf %_sysconfdir/init.d/network ${RPM_BUILD_ROOT}%_sbindir/rcnetwork
 %if %{without wicked_devel}
 pushd $RPM_BUILD_ROOT
 rm -rfv \
-	.%_libdir/libwicked*.so \
+	.%_libdir/libwicked.so \
 	.%_datadir/pkgconfig/wicked.pc \
 	.%_mandir/man7/wicked.7* \
 	.%_includedir/wicked
@@ -297,19 +285,15 @@ fi
 
 %endif
 
-%post -n libwicked-0-6
-/sbin/ldconfig
-
-%postun -n libwicked-0-6
-/sbin/ldconfig
-
 %post
+/sbin/ldconfig
 %{fillup_only -dns config wicked network}
 %{fillup_only -dns dhcp wicked network}
 # reload dbus after install or upgrade to apply new policies
 /usr/bin/systemctl reload dbus.service 2>/dev/null || :
 
 %postun
+/sbin/ldconfig
 # reload dbus after uninstall, our policies are gone again
 if [ ${FIRST_ARG:-$1} -eq 0 ]; then
 	/usr/bin/systemctl reload dbus.service 2>/dev/null || :
@@ -321,6 +305,7 @@ fi
 %_sbindir/wicked
 %_sbindir/wickedd
 %_sbindir/wickedd-nanny
+%_libdir/libwicked-*.so*
 %dir %_libexecdir/%{name}
 %dir %_libexecdir/%{name}/bin
 %_libexecdir/%{name}/bin/wickedd-auto4
@@ -430,13 +415,9 @@ fi
 %defattr (-,root,root)
 %dir %_includedir/wicked
 %_includedir/wicked/*
-%_libdir/libwicked*.so
+%_libdir/libwicked.so
 %_datadir/pkgconfig/wicked.pc
 %_mandir/man7/wicked.7*
 %endif
-
-%files -n libwicked-0-6
-%defattr (-,root,root)
-%_libdir/libwicked*.so.*
 
 %changelog

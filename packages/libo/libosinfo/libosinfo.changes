@@ -271,8 +271,8 @@ Wed Mar 23 09:29:57 MDT 2016 - carnold@suse.com
   add-missing-sles-distros.patch
 - Dropped patches:
   add-opensuse-leap-42.1-support.patch
-  add-tumbleweed-support.patch with
-  add-sle12sp1-support.patch with
+  add-tumbleweed-support.patch
+  add-sle12sp1-support.patch
 
 -------------------------------------------------------------------
 Wed Mar 16 11:45:34 MDT 2016 - carnold@suse.com

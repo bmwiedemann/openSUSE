@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct  4 11:09:50 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 7.0.0
+  * Refactored “open URL” behavior in webtest to rely on retry_call.
+  * backports.functools_lru_cache is only required on Python 3.2 and earlier.
+  * Fix race condition in threadpool shrink code.
+
+-------------------------------------------------------------------
 Fri Sep 13 04:50:22 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
 
 - update to 6.5.8:

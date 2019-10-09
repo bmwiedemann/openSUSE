@@ -19,13 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname urlgrabber
 Name:           python-urlgrabber
-Version:        4.0.0
+Version:        4.1.0
 Release:        0
 Summary:        A high-level cross-protocol url-grabber
 License:        LGPL-2.1-only
-Group:          Development/Languages/Python
 URL:            https://github.com/rpm-software-management/urlgrabber
-Source:         https://github.com/rpm-software-management/%{modname}/releases/download/%{modname}-4-0-0/%{modname}-%{version}.tar.gz
+Source:         https://github.com/rpm-software-management/%{modname}/releases/download/%{modname}-4-1-0/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module pycurl}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
@@ -52,7 +51,7 @@ sed -i "13d" urlgrabber/__init__.py # Remove wrong license header, fixes bnc#781
 %install
 %python_install
 rm -rf %{buildroot}%{_datadir}/doc/urlgrabber-%{version} # Remove wrongly installed docs
-mv -v %{buildroot}%{_usr}/libexec/urlgrabber-ext-down %{buildroot}%{_usr}/lib/urlgrabber-ext-down
+mv -v %{buildroot}%{_prefix}/libexec/urlgrabber-ext-down %{buildroot}%{_prefix}/lib/urlgrabber-ext-down
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}

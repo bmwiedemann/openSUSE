@@ -1,7 +1,7 @@
 #
 # spec file for package vim-plugins
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -51,9 +51,10 @@
 %define     editorconfig_version        0.3.3
 %define     fugitive_version    2.2
 %define     neomutt_version         20180104
+%define     salt_version        0.0.1
 
 Name:           vim-plugins
-Version:        7.2.22
+Version:        7.3.0
 Release:        0
 Summary:        Plug-ins pack for Vim
 License:        MIT
@@ -94,6 +95,7 @@ Source32:       https://github.com/mileszs/ack.vim/archive/%{ack_version}.tar.gz
 Source34:       https://github.com/editorconfig/editorconfig-vim/archive/v%{editorconfig_version}.tar.gz#/vimplugin-editorconfig-%{editorconfig_version}.tar.gz
 Source35:       https://github.com/tpope/vim-fugitive/archive/v%{fugitive_version}.tar.gz#/vimplugin-fugitive-%{fugitive_version}.tar.gz
 Source36:       vimplugin-neomutt-%{neomutt_version}.tar.bz2
+Source37:       vimplugin-salt-%{salt_version}.tar.bz2
 Source100:      https://raw.githubusercontent.com/openSUSE/pack-tools/master/contrib/vim/spec.snippets
 Patch1:         locateopen-1.3-locate-support.patch
 Patch2:         showmarks-signs.patch
@@ -600,8 +602,20 @@ This plugin provides syntax for the neomutt configuration file. In addition, it
 sets the mail filetype to temporary mail files created by neomutt when writing
 or editing emails.
 
+%package -n vim-plugin-salt
+
+Version:        %salt_version
+Release:        0
+Summary:        Salt plugin for Vim
+License:        Apache-2.0
+Group:          Productivity/Text/Editors
+Url:            https://github.com/saltstack/salt-vim
+
+%description -n vim-plugin-salt
+This Vim plugin provides support for editing Saltstack .sls files.
+
 %prep
-%setup -q -c -n %{name} -a1 -a2 -a3 -a4 -a5 -a6 -a7 -a9 -a10 -a11 -a12 -a13 -a14 -a15 -a16 -a17 -a18 -a19 -a20 -a21 -a22 -a23 -a24 -a25 -a26 -a27 -a28 -a29 -a30 -a31 -a32 -a34 -a35 -a36
+%setup -q -c -n %{name} -a1 -a2 -a3 -a4 -a5 -a6 -a7 -a9 -a10 -a11 -a12 -a13 -a14 -a15 -a16 -a17 -a18 -a19 -a20 -a21 -a22 -a23 -a24 -a25 -a26 -a27 -a28 -a29 -a30 -a31 -a32 -a34 -a35 -a36 -a37
 # ------- patch locateopen ------
 pushd vimplugin-locateopen-%locateopen_version
 %patch1
@@ -616,7 +630,7 @@ popd
 for i in vimplugin-*; do
     pushd $i
     mkdir -p %buildroot/%vimplugin_dir
-    cp -a * %buildroot/%vimplugin_dir/
+    cp -av * %buildroot/%vimplugin_dir/
     popd
 done
 mkdir -p %{buildroot}%{_defaultdocdir}/vimplugin-NERDtree/
@@ -1122,5 +1136,11 @@ fi
 %vimplugin_dir/ftdetect/neomuttrc.vim
 %vimplugin_dir/ftplugin/neomuttrc.vim
 %vimplugin_dir/syntax/neomuttrc.vim
+
+%files -n vim-plugin-salt
+%defattr(-,root,root,0755)
+%vimplugin_dir/ftdetect/sls.vim
+%vimplugin_dir/ftplugin/sls.vim
+%vimplugin_dir/syntax/sls.vim
 
 %changelog

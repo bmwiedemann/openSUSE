@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Spreadsheet-ReadSXC
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,33 +12,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-
 Name:           perl-Spreadsheet-ReadSXC
-Version:        0.20
-Release:        1
-License:        GPL-1.0+ or Artistic-1.0
+Version:        0.23
+Release:        0
 %define cpan_name Spreadsheet-ReadSXC
 Summary:        Extract OpenOffice 1.x spreadsheet data
-Url:            http://search.cpan.org/dist/Spreadsheet-ReadSXC/
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-#Source:        http://www.cpan.org/authors/id/T/TE/TERHECHTE/Spreadsheet-ReadSXC-%{version}.tar.gz
-Source:         %{cpan_name}-%{version}.tar.gz
+Url:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/C/CO/CORION/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(ExtUtils::MakeMaker)
-BuildRequires:  perl(Test::More)
-#
-BuildRequires:  perl(Archive::Zip)
-BuildRequires:  perl(Compress::Zlib)
+BuildRequires:  perl(Archive::Zip) >= 1.34
+BuildRequires:  perl(PerlIO::gzip)
 BuildRequires:  perl(XML::Parser)
-Requires:       perl(Archive::Zip)
-Requires:       perl(Compress::Zlib)
+Requires:       perl(Archive::Zip) >= 1.34
+Requires:       perl(PerlIO::gzip)
 Requires:       perl(XML::Parser)
 %{perl_requires}
 
@@ -59,26 +55,83 @@ you can extract the XML string from content.xml and pass the string to the
 function read_xml_string(). Both functions also take a reference to a hash
 of options as an optional second argument.
 
+Spreadsheet::ReadSXC requires XML::Parser to parse the XML contained in
+.sxc files. Only the contents of text:p elements are returned, not the
+actual values of table:value attributes. For example, a cell might have a
+table:value-type attribute of "currency", a table:value attribute of
+"-1500.99" and a table:currency attribute of "USD". The text:p element
+would contain "-$1,500.99". This is the string which is returned by the
+read_sxc() function, not the value of -1500.99.
+
+Spreadsheet::ReadSXC was written with data import into an SQL database in
+mind. Therefore empty spreadsheet cells correspond to undef values in array
+rows. The example code above shows how to replace undef values with empty
+strings.
+
+If the .sxc file contains an empty spreadsheet its hash element will point
+to an empty array (unless you use the 'NoTruncate' option in which case it
+will point to an array of an array containing one undefined element).
+
+OpenOffice uses UTF-8 encoding. It depends on your environment how the data
+returned by the XML Parser is best handled:
+
+  use Unicode::String qw(latin1 utf8);
+  $unicode_string = utf8($$workbook_ref{"Sheet1"}[0][0])->as_string;
+
+  # this will not work for characters outside ISO-8859-1:
+
+  $latin1_string = utf8($$workbook_ref{"Sheet1"}[0][0])->latin1;
+
+Of course there are other modules than Unicode::String on CPAN that handle
+conversion between encodings. It's your choice.
+
+Table rows in .sxc files may have a "table:number-rows-repeated" attribute,
+which is often used for consecutive empty rows. When you format whole rows
+and/or columns in OpenOffice, it sets the numbers of rows in a worksheet to
+32,000 and the number of columns to 256, even if only a few lower-numbered
+rows and cells actually contain data. Spreadsheet::ReadSXC truncates such
+sheets so that there are no empty rows after the last row containing data
+and no empty columns after the last column containing data (unless you use
+the 'NoTruncate' option).
+
+Still it is perfectly legal for an .sxc file to apply the
+"table:number-rows-repeated" attribute to rows that actually contain data
+(although I have only been able to produce such files manually, not through
+OpenOffice itself). To save on memory usage in these cases,
+Spreadsheet::ReadSXC does not copy rows by value, but by reference
+(remember that multi-dimensional arrays in Perl are really arrays of
+references to arrays). Therefore, if you change a value in one row, it is
+possible that you find the corresponding value in the next row changed,
+too:
+
+  $$workbook_ref{"Sheet1"}[0][0] = 'new string';
+  print $$workbook_ref{"Sheet1"}[1][0];
+
+As of version 0.20 the references returned by read_sxc() et al. remain
+valid after subsequent calls to the same function. In earlier versions,
+calling read_sxc() with a different file as the argument would change the
+data referenced by the original return value, so you had to derefence it
+before making another call. Thanks to H. Merijn Brand for fixing this.
+
 %prep
 %setup -q -n %{cpan_name}-%{version}
+find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
 %perl_process_packlist
 %perl_gen_filelist
 
-%clean
-%{__rm} -rf %{buildroot}
-
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes README t.sxc
+%doc Changes README
+%license LICENSE
 
 %changelog

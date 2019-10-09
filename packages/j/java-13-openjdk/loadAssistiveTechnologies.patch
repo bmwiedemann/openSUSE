@@ -1,0 +1,17 @@
+--- openjdk/src/java.desktop/share/classes/java/awt/Toolkit.java
++++ openjdk/src/java.desktop/share/classes/java/awt/Toolkit.java
+@@ -594,9 +594,13 @@
+                 !(toolkit instanceof HeadlessToolkit)) {
+                 toolkit = new HeadlessToolkit(toolkit);
+             }
+             if (!GraphicsEnvironment.isHeadless()) {
+-                loadAssistiveTechnologies();
++                try {
++                    loadAssistiveTechnologies();
++                } catch (AWTError error) {
++                    // ignore silently
++                }
+             }
+         }
+         return toolkit;
+     }

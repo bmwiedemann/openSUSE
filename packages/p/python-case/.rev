@@ -16,4 +16,12 @@
 Add remove_unittest2.patch to facilitate that</comment>
     <requestid>629000</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c570866b0e6f07fd038cb44b591e95ae</srcmd5>
+    <version>1.5.3</version>
+    <time>1570627040</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>734914</requestid>
+  </revision>
 </revisionlist>

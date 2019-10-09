@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Oct 08 19:02:39 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.49.0:
+  * Release v3.49.0
+  * Improve deprecation message for push --branch
+  * Allow hash to wrap in commit list
+  * Improve help for old, deprecated variable commands
+  * A little colour in "No mounts found"
+  * Make unit tests verbose
+  * Unnecessary variable in installer
+  * Refine description of --yes and --no
+  * Deprecate 3 options in commit:get command
+  * Unused variable
+  * Fix --schema help in db:sql command
+  * Event subscriber: convert from deprecated console.exception to newer console.error
+  * Avoid namespace conflict
+  * Use log stream in waitMultiple()
+  * Make activity success/failure messages consistent
+  * Fix URL formatting in tunnel:single command
+  * Fix activities being lost in waitMultiple()
+  * Fix swapped question text in push command
+  * Fix property not found error in decode command with an empty object
+  * Increase default stream context timeout
+  * Allow the mount:list and mount:size commands to run locally on the container (#857)
+  * Wait for remaining activities in the push command
+  * Display simple table (no messages) in integration:list if the format is machine readable
+
+-------------------------------------------------------------------
+Thu Sep 26 13:43:48 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.48.2:
+  * Release v3.48.2
+  * Avoid unnecessary context message in activity:log
+  * Theoretical ActivityMonitor bugfix [skip changelog]
+  * Newline before activity log
+  * Remove extra messages (too verbose output) in backup commands
+  * Improve --activate in push command (#858)
+  * Fix combination of --activate and --branch in push command
+
+-------------------------------------------------------------------
 Wed Sep 25 16:34:21 UTC 2019 - jimmy@boombatower.com
 
 - Update to version 3.48.1:

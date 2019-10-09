@@ -17,7 +17,7 @@
 
 
 Name:           ckb-next
-Version:        0.4.1
+Version:        0.4.2
 Release:        0
 Summary:        RGB driver for Corsair keyboard and mice
 License:        GPL-2.0-only AND BSD-3-Clause

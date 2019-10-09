@@ -17,7 +17,7 @@
 
 
 Name:           quilter
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        Writing application
 License:        GPL-3.0-only
@@ -32,7 +32,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(granite) >= 0.5
+BuildRequires:  pkgconfig(granite) >= 5.2.3
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtksourceview-3.0)
 BuildRequires:  pkgconfig(gtkspell3-3.0)

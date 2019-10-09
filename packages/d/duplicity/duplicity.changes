@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Oct  8 16:08:03 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.8.05: 
+  + Merged in translation updates.
+  + Fix bug #1843995 - B2 fails on string concatenation.
+  + Fix bug #1844750 - RsyncBackend fails if used with
+    multi-backend.
+  + Fixed bug reported on maillist - Python error in Webdav backend
+  + Fixed bug #1846167 - webdavbackend.py: expected bytes-like
+    object, not str.
+  + Fixed bug #1844950 - ssh-pexpect backend syntax error.
+  + Fixed bug #1846678 - --exclude-device-files and
+    -other-filesystems crashes
+- duplicity-remove_shebang.patch: remove some context from the
+  rdiffdir diff so that the patch doesn't fail every time the date
+  is updated.
+
+-------------------------------------------------------------------
 Sun Sep  8 16:27:44 UTC 2019 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 0.8.04:

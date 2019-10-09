@@ -37,7 +37,7 @@
 %endif
 
 Name:           fio
-Version:        3.14
+Version:        3.16
 Release:        0
 Summary:        Flexible I/O tester
 License:        GPL-2.0-only
@@ -45,6 +45,7 @@ Group:          System/Benchmark
 Url:            http://git.kernel.dk/?p=fio.git;a=summary
 Source:         http://brick.kernel.dk/snaps/fio-%{version}.tar.bz2
 Patch0:         fio.python2.patch
+Patch1:         0001-Fix-compilation-error-with-gfio.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gtk2-devel
 BuildRequires:  libaio-devel
@@ -99,6 +100,7 @@ testers workstation whereas fio would be installed on the server.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 sed -i "s|%{_bindir}/bash|/bin/bash|g" tools/genfio

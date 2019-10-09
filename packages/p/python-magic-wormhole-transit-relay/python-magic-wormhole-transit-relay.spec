@@ -12,27 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-magic-wormhole-transit-relay
-Version:        0.1.2
+Version:        0.2.1
 Release:        0
-License:        MIT
 Summary:        Transit Relay server for Magic-Wormhole
-Url:            https://github.com/warner/magic-wormhole-transit-relay
-Group:          Development/Languages/Python
+License:        MIT
+URL:            https://github.com/warner/magic-wormhole-transit-relay
 Source:         https://files.pythonhosted.org/packages/source/m/magic-wormhole-transit-relay/magic-wormhole-transit-relay-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  fdupes
 BuildRequires:  %{python_module Twisted >= 17.5.0}
 BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-Twisted >= 17.5.0
 BuildArch:      noarch
-
 %python_subpackages
 
 %description

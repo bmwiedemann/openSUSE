@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct  8 00:00:00 CEST 2019 - dsterba@suse.cz
+
+- Update to version 3.16:
+  * new: NBD support
+  * new: ZBD support
+  * for the rest see http://brick.kernel.dk/snaps/fio-3.16.shortlog.txt
+- Added patches:
+  * 0001-Fix-compilation-error-with-gfio.patch
+
+-------------------------------------------------------------------
 Wed Jul  3 17:12:22 UTC 2019 - terekhov <termim@gmail.com>
 
 - Update to version 3.14:

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct  3 19:15:21 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.4.5:
+  + Enables the IPv6 tab in the connection dialog.
+- Use modern macros.
+
+-------------------------------------------------------------------
 Mon Jun 11 11:46:07 UTC 2018 - bjorn.lie@gmail.com
 
 - Fix packaging error in previous sub, README was moved from
