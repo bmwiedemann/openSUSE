@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct  4 11:07:07 UTC 2019 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- AutoYaST: do not include the uuid field in the <partition>
+  sections when cloning a system (bsc#1148477, bsc#1152535).
+- 4.2.46
+
+-------------------------------------------------------------------
+Thu Oct  3 16:58:02 UTC 2019 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- AutoYaST: do not fail if the uuid is specified for a new
+  filesystem (bsc#1148477, bsc#1152535).
+- AutoYaST: partitions and logical volumes to be reused can now be
+  found by uuid (bsc#1148477, bsc#1152535).
+
+-------------------------------------------------------------------
 Wed Oct  2 13:35:42 UTC 2019 - David Diaz <dgonzalez@suse.com>
 
 - Partitioner: fix the type column value for Ext3/4 filesystems
