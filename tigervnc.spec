@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -111,7 +111,7 @@ Summary:        An implementation of VNC
 #Source1:        https://github.com/TigerVNC/tigervnc/archive/v%{version}.tar.gz
 License:        GPL-2.0-only AND MIT
 Group:          System/X11/Servers/XF86_4
-Source1:        tigervnc-1.9.0-199-005db35.tar.gz
+Source1:        tigervnc-1.9.0-201-e71a426.tar.gz
 Source4:        10-libvnc.conf
 Source5:        vnc-server.susefirewall
 Source6:        vnc-httpd.susefirewall

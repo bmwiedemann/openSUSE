@@ -555,4 +555,12 @@
   * update to current git master in order to fix boo#1132901</comment>
     <requestid>696394</requestid>
   </revision>
+  <revision rev="60" vrev="8">
+    <srcmd5>db3934e4645662f5006b937bee36d007</srcmd5>
+    <version>1.9.0</version>
+    <time>1570627104</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>735309</requestid>
+  </revision>
 </revisionlist>

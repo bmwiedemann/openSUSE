@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  4 14:19:48 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- tigervnc-1.9.0-201-e71a426
+  * implements extended clipboard handling (now utf-8 based)
+  * fixes a couple of small glitches
+
+-------------------------------------------------------------------
 Sat Apr 20 09:54:02 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - tigervnc-1.9.0-199-005db35
