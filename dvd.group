@@ -3173,6 +3173,7 @@
     <package name="metatheme-greybird-geeko-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="metatheme-sonar-common" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="mgopen-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="mhvtl-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="milou5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="milou5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="minicom" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -3375,9 +3376,6 @@
     <package name="openSUSE-release" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="openSUSE-release-dvd" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="openSUSE-xfce-icon-theme" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="openafs" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
-    <package name="openafs-client" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
-    <package name="openafs-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
     <package name="openal-soft-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="openbox" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
     <package name="openbox-adwaita-ob-theme" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
@@ -5156,9 +5154,6 @@
     <package name="virt-install" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="virt-manager-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="virt-what" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="virtualbox-guest-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="virtualbox-guest-x11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="virtualbox-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="vlan" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="vlc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="vlc-codec-gstreamer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -5598,7 +5593,12 @@
   <conditional name="only_i586"/>
   <packagelist relationship="recommends">
     <package name="elinks" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="openafs" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
+    <package name="openafs-client" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
+    <package name="openafs-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
     <!-- patterns-media-rest_dvd uninstallable: nothing provides pattern() = apparmor_opt needed by patterns-media-rest_dvd-20170319-23.1.i586-->
+    <!-- virtualbox-guest-tools uninstallable: nothing provides kernel-uname-r = 5.3.2-1-default needed by virtualbox-kmp-default-6.0.12_k5.3.2_1-1.8.i586-->
+    <!-- virtualbox-guest-x11 uninstallable: nothing provides kernel-uname-r = 5.3.2-1-default needed by virtualbox-kmp-default-6.0.12_k5.3.2_1-1.8.i586-->
   </packagelist>
 </group>
 <group name="dvd.x86_64">
@@ -5614,11 +5614,8 @@
     <package name="apulse-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="checkpolicy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="chrome-gnome-shell" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="crash-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="dbus-1-glib-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="dpdk-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="drbd" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="drbd-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="drbd-utils" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="efibootmgr" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
     <package name="fipscheck" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_kernel -->
@@ -5804,6 +5801,7 @@
     <package name="nss_ldap-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="numactl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="numad" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
+    <!-- openafs-client uninstallable: nothing provides kernel-uname-r = 5.3.2-1-default needed by openafs-kmp-default-1.8.4~pre2_k5.3.2_1-1.3.x86_64-->
     <package name="opie-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="pam-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="pam_apparmor-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5848,6 +5846,8 @@
     <package name="uget-integrator" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
     <package name="unbound-anchor" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="virt-sandbox" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <!-- virtualbox-guest-tools uninstallable: nothing provides kernel-uname-r = 5.3.2-1-default needed by virtualbox-kmp-default-6.0.12_k5.3.2_1-1.8.x86_64-->
+    <!-- virtualbox-guest-x11 uninstallable: nothing provides kernel-uname-r = 5.3.2-1-default needed by virtualbox-kmp-default-6.0.12_k5.3.2_1-1.8.x86_64-->
     <package name="xen" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="xen-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="yast2-drbd" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->

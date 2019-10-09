@@ -1822,6 +1822,7 @@ unsorted:
   - crash-doc 
   - crash-eppic 
   - crash-gcore 
+  - crash-kmp-default: [x86_64] 
   - crawl 
   - crawl-data 
   - crawl-sdl 
@@ -2294,6 +2295,7 @@ unsorted:
   - dpdk-devel: [x86_64] 
   - dpdk-doc: [x86_64] 
   - dpdk-examples: [x86_64] 
+  - dpdk-kmp-default: [x86_64] 
   - dpdk-tools: [x86_64] 
   - dpic 
   - dpic-doc 
@@ -2309,6 +2311,7 @@ unsorted:
   - dracut-kiwi-overlay 
   - dracut-tools 
   - drbd-formula 
+  - drbd-kmp-default: [x86_64] 
   - drbd-utils: [i586] 
   - drbdmanage 
   - drc 
@@ -5615,7 +5618,6 @@ unsorted:
   - jcodings 
   - jcommon 
   - jcommon-javadoc 
-  - jcommon-test 
   - jconvolver 
   - jconvolver-examples 
   - jcuber 
@@ -13026,7 +13028,6 @@ unsorted:
   - mgp 
   - mhash-devel 
   - mhvtl 
-  - mhvtl-kmp-default 
   - mhvtl-kmp-pae: [i586] 
   - miao-fonts 
   - microos-tools: [i586] 
@@ -14574,11 +14575,14 @@ unsorted:
   - openSUSE-release-usb-gnome 
   - openSUSE-release-usb-kde 
   - openSUSE-release-usb-x11 
+  - openafs: [x86_64] 
   - openafs-authlibs 
   - openafs-authlibs-devel 
+  - openafs-client: [x86_64] 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
+  - openafs-kmp-default: [x86_64] # suggested by dvd:suggested:patterns-devel-osc-devel_osc_build 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -16045,6 +16049,7 @@ unsorted:
   - perl-Sys-SigAction 
   - perl-Sys-Virt 
   - perl-Sysadm-Install 
+  - perl-TAP-Harness-JUnit 
   - perl-Task-Kensho-Async 
   - perl-Task-Kensho-CLI 
   - perl-Task-Kensho-Config 
@@ -17930,7 +17935,6 @@ unsorted:
   - python2-django-crispy-forms 
   - python2-django-debreach 
   - python2-django-environ 
-  - python2-django-extensions 
   - python2-django-formtools 
   - python2-django-grappelli 
   - python2-django-invitations 
@@ -17950,7 +17954,6 @@ unsorted:
   - python2-django-registration 
   - python2-django-rest-framework-client 
   - python2-django-rest-framework-social-oauth2 
-  - python2-django-rest-knox 
   - python2-django-reversion 
   - python2-django-seed 
   - python2-django-sekizai 
@@ -17963,7 +17966,6 @@ unsorted:
   - python2-django-webtest 
   - python2-django_compressor 
   - python2-django_coverage_plugin 
-  - python2-djet 
   - python2-djvulibre 
   - python2-dns-lexicon 
   - python2-docformatter 
@@ -17980,8 +17982,6 @@ unsorted:
   - python2-dparse 
   - python2-dpkt 
   - python2-dragonmapper 
-  - python2-drf-jwt-knox 
-  - python2-drf-nested-routers 
   - python2-drms 
   - python2-dropbox 
   - python2-duckduckgo2 
@@ -32357,7 +32357,10 @@ unsorted:
   - virtualbox-devel 
   - virtualbox-guest-desktop-icons 
   - virtualbox-guest-source 
+  - virtualbox-guest-tools 
+  - virtualbox-guest-x11 
   - virtualbox-host-source 
+  - virtualbox-kmp-default 
   - virtualbox-qt 
   - virtualbox-vnc 
   - virtualbox-websrv 
