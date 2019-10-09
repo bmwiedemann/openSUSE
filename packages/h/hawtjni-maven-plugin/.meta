@@ -1,0 +1,10 @@
+<package name="hawtjni-maven-plugin" project="openSUSE:Factory">
+  <title>HawtJNI Runtime</title>
+  <description>This package provides API that projects using HawtJNI should build
+against.
+
+</description>
+  <devel project="openSUSE:Factory" package="hawtjni-runtime"/>
+  <url>http://hawtjni.fusesource.org/</url>
+  <bcntsynctag>hawtjni-runtime</bcntsynctag>
+</package>

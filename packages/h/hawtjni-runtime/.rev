@@ -25,4 +25,12 @@
     <comment>Remove references to parent</comment>
     <requestid>734010</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>79d3c005edbb7a23ea5271612a988d64</srcmd5>
+    <version>1.16</version>
+    <time>1570627214</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>736415</requestid>
+  </revision>
 </revisionlist>

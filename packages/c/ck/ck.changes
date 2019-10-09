@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct  9 07:35:34 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Disable tests as they fail with gcc9
+
+-------------------------------------------------------------------
 Tue Jun 18 07:41:39 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add ck-fix-j1.patch to fix build with -j1

@@ -31,4 +31,13 @@
     <comment>- Lower the ddt requirement as it is not really needed</comment>
     <requestid>693229</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f10ba3e80774881e761a5b5d76833e10</srcmd5>
+    <version>0.6.1</version>
+    <time>1570627231</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.1:
+  * no upstream changelog</comment>
+    <requestid>736423</requestid>
+  </revision>
 </revisionlist>

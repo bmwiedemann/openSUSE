@@ -1,0 +1,16 @@
+<services>
+  <service name="obs_scm" mode="disabled" >
+    <param name="url">https://gitlab.gnome.org/World/ShellExtensions/desktop-icons.git</param>
+    <param name="scm">git</param>
+    <param name="revision">19.10.1</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">suse</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled" />
+</services>

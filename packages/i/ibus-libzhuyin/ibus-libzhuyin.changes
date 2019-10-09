@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct  9 10:02:18 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.9.1
+  * fixed page up and page down shortcut key
+  * fixed special symbols
+  * fixed escape handling
+  * fixed numpad
+  * fixed special symbol
+  * add need-tone option
+
+-------------------------------------------------------------------
 Tue Oct 23 08:21:32 UTC 2018 - hillwood@opensuse.org
 
 - Update version to 1.8.92

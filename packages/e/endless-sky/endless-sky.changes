@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct 06 20:00:00 MDT 2019 - buckyballreaction@gmail.com
+
+- Update to 0.9.10
+  * Fixed a bug where cargo was loaded onto ships with 0 cargo space.
+  * Fixed a crash when mission NPCs have no system defined.
+  * Avoiding a situation where the player could get stuck in Remnant space.
+  * Depreciation now happens slower and includes a "grace period."
+  * Improved the AI logic for when escorts stop to refuel.
+
+-------------------------------------------------------------------
 Mon Dec 17 17:35:20 UTC 2018 - sparschauer@suse.de
 
 - Prevent that the game blocks the main menu buttons due to broken

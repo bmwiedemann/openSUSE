@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 09 09:29:27 UTC 2019 - kukuk@suse.de
+
+- Update to version 2.2.3+git20191008.4119bde:
+  * configure.ac: bump version to 2.2.3
+  * python-probe.c: remove python probe
+  * pstore_probe.c: add ramoops file support in pstore probe for cl telemetry
+
+-------------------------------------------------------------------
 Mon Sep 16 17:37:43 UTC 2019 - kukuk@suse.de
 
 - Rename telmctl-enable-disable.diff to telemctl-enable-disable.diff

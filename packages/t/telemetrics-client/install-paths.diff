@@ -123,19 +123,6 @@ index 8eace15..4bab2db 100644
  User=telemetry
  
  [Install]
-diff --git a/src/data/python-probe.service.in b/src/data/python-probe.service.in
-index 38be074..0f47544 100644
---- a/src/data/python-probe.service.in
-+++ b/src/data/python-probe.service.in
-@@ -6,7 +6,7 @@ ConditionPathExists=!/etc/telemetrics/opt-out
- 
- [Service]
- User=telemetry
--ExecStart=@bindir@/pythonprobe
-+ExecStart=@libexecdir@/pythonprobe
- 
- [Install]
- WantedBy=multi-user.target
 diff --git a/src/data/telempostd.service.in b/src/data/telempostd.service.in
 index b0dfb73..f63e5f6 100644
 --- a/src/data/telempostd.service.in
@@ -214,7 +201,7 @@ index 28a0518..880a4c6 100644
 -	%D%/telem-record-gen \
  	%D%/klogscanner \
  	%D%/pstoreprobe \
- 	%D%/pythonprobe \
+ 	%D%/pstoreclean \
 @@ -156,7 +157,7 @@ endif
  
  if HAVE_SYSTEMD_JOURNAL

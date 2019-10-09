@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  2 07:59:14 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Correct the URL that does not exist anymore
+- Clean the spec file with spec-cleaner
+
+-------------------------------------------------------------------
 Mon Sep 30 07:45:12 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Remove references to the parent pom from all artifacts and

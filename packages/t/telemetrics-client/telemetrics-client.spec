@@ -17,7 +17,7 @@
 
 
 Name:           telemetrics-client
-Version:        2.2.2+git20190903.a4774bd
+Version:        2.2.3+git20191008.4119bde
 Release:        0
 Summary:        Telemetrics solution
 License:        LGPL-2.1-or-later

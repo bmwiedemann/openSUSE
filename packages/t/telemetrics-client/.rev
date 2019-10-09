@@ -80,4 +80,15 @@
   * util.c: correct return value from &quot;get_header_value&quot;</comment>
     <requestid>731344</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>99b3018abb577bf30bf7a655f0540b78</srcmd5>
+    <version>2.2.3+git20191008.4119bde</version>
+    <time>1570627238</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.3+git20191008.4119bde:
+  * configure.ac: bump version to 2.2.3
+  * python-probe.c: remove python probe
+  * pstore_probe.c: add ramoops file support in pstore probe for cl telemetry</comment>
+    <requestid>736433</requestid>
+  </revision>
 </revisionlist>

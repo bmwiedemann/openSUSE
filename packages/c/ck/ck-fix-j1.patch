@@ -13,10 +13,10 @@ This fixes the test when compiling with -DCORES=1.
  regressions/ck_spinlock/ck_hclh.h | 5 +++++
  1 file changed, 5 insertions(+)
 
-diff --git a/regressions/ck_spinlock/ck_hclh.h b/regressions/ck_spinlock/ck_hclh.h
-index eb2e6eb7..b4736052 100644
---- a/regressions/ck_spinlock/ck_hclh.h
-+++ b/regressions/ck_spinlock/ck_hclh.h
+Index: ck-0.6.0/regressions/ck_spinlock/ck_hclh.h
+===================================================================
+--- ck-0.6.0.orig/regressions/ck_spinlock/ck_hclh.h
++++ ck-0.6.0/regressions/ck_spinlock/ck_hclh.h
 @@ -2,6 +2,11 @@
  #define LOCK_NAME "ck_clh"
  #define LOCK_DEFINE static ck_spinlock_hclh_t CK_CC_CACHELINE *glob_lock; \

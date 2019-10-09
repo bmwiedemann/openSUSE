@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Wed Oct  9 06:50:58 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Change License to 'GPL-3.0-or-later', matching what the source
+  files claim.
+
+-------------------------------------------------------------------
+Tue Oct 08 03:01:43 UTC 2019 - Xiaoguang Wang <xwang@suse.com>
+
+- Update to version 19.10.1:
+  * metadata.json Compatibility only with Gnome Shell 3.34
+  * metadata: Support gnome-shell 3.32 and 3.34
+  * metadata: Prettify JSON code
+  * desktopGrid: Don't emit deprecation warnings when using native
+    objects
+  * createFolderDialog: Use native GObject for new Shell 3.34
+    versions
+  * general: Pass the actor to PopupManuManager constructor in new
+    shell
+  * Update translation
+
+-------------------------------------------------------------------
+Wed Sep 18 06:46:28 UTC 2019 - Xiaoguang Wang <xwang@suse.com>
+
+- Update to version 19.01.4:
+  * fileItem.js: Create menus lazily
+  * fileItem.js: remove the menu during destruction
+  * fileItem.js: disconnect writable-by-others signal
+  * fileItem.js: fix code alignment
+  * fileItem.js: nullify _setMetadataCancellable
+  * fileItem.js: nullify _loadThumbnailDataCancellable
+  * fileItem.js: fix property name
+  * fileItem.js: avoid error after creating thumbnail
+  * fileItem.js: ensure refresh attrs. in .desktop files
+  * general: don't use specific monitor for .desktop files
+  * Update translation
+
+-------------------------------------------------------------------
+Wed Aug 28 05:04:54 UTC 2019 - Xiaoguang Wang <xwang@suse.com>
+
+- Update to version 19.01.3:
+  + Update Polish translation
+  + Update Brazilian Portuguese translation
+  + fileItem.js: Remove unneeded method call
+  + Update POTFILES.in
+  + fileItem.js: cancel file monitoring on destroy
+  + General: fix opening terminal in folder
+  + general: add new files top to bottom, left to right
+  + desktopGrid.js: Check shell version for method existence

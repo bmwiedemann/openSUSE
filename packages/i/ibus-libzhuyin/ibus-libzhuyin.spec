@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-libzhuyin
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,14 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define sover 13
 
 Name:           ibus-libzhuyin
-Version:        1.8.92
+Version:        1.9.1
 Release:        0
 Summary:        Zhuyin engine based on libzhuyin for IBus
 License:        GPL-2.0-only
@@ -36,7 +36,7 @@ BuildRequires:  libzhuyin%{sover}
 BuildRequires:  python3-devel
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(ibus-1.0) >= 1.4.99
-BuildRequires:  pkgconfig(libpinyin) >= 2.0.91
+BuildRequires:  pkgconfig(libpinyin) >= 2.2.0
 BuildRequires:  pkgconfig(opencc) >= 1.0.0
 Provides:       locale(ibus:zh_TW;zh_HK)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -62,7 +62,8 @@ rm -rf %{buildroot}%{_datadir}/doc
 
 %files -f %{name}.lang
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog README COPYING
+%doc AUTHORS ChangeLog README
+%license COPYING
 %{_libexecdir}/ibus-engine-libzhuyin
 %{_libexecdir}/ibus-setup-libzhuyin
 %{_datadir}/%{name}

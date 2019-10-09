@@ -103,4 +103,12 @@
   * fixes numpad issue (forwarded request 643899 from hillwood)</comment>
     <requestid>643900</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9bbcd91f54a0b6f475088ed916965a40</srcmd5>
+    <version>1.9.1</version>
+    <time>1570627240</time>
+    <user>dimstar_suse</user>
+    <comment>* add need-tone option (forwarded request 736449 from hillwood)</comment>
+    <requestid>736450</requestid>
+  </revision>
 </revisionlist>

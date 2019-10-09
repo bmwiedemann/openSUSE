@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-chewing
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           ibus-chewing
-Version:        1.4.14
+Version:        1.5.1
 Release:        0
 Summary:        The Chewing engine for IBus input platform
 License:        GPL-2.0-or-later
@@ -82,7 +82,8 @@ popd
 
 %files -f %{name}.lang
 %defattr(-,root,root)
-%doc AUTHORS README ChangeLog COPYING
+%doc AUTHORS README ChangeLog
+%license COPYING
 %{_libdir}/ibus/ibus-engine-chewing
 %{_libdir}/ibus/ibus-setup-chewing
 %{_datadir}/applications/ibus-setup-chewing.desktop

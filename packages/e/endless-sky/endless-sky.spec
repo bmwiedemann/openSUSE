@@ -1,7 +1,7 @@
 #
 # spec file for package endless-sky
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,15 +12,15 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           endless-sky
-Version:        0.9.6
+Version:        0.9.10
 Release:        0
 Summary:        Space exploration, trading, and combat game
-License:        GPL-3.0 and CC-BY-SA-4.0 and CC-BY-SA-3.0 and CC-BY-3.0
+License:        GPL-3.0-only AND CC-BY-SA-4.0 AND CC-BY-SA-3.0 AND CC-BY-3.0
 Group:          Amusements/Games/Action/Arcade
 Url:            http://endless-sky.github.io/
 Source0:        https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -32,6 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libjpeg8-devel
+BuildRequires:  libmad-devel
 BuildRequires:  scons
 BuildRequires:  xdg-utils
 BuildRequires:  pkgconfig(gl)

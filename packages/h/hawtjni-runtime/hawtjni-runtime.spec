@@ -25,8 +25,7 @@ Version:        1.16
 Release:        0
 Summary:        HawtJNI Runtime
 License:        Apache-2.0 AND EPL-1.0 AND BSD-3-Clause
-Group:          Development/Libraries/Java
-URL:            http://hawtjni.fusesource.org/
+URL:            https://github.com/fusesource/hawtjni
 Source0:        https://github.com/fusesource/hawtjni/archive/%{commit}/hawtjni-%{commit}.tar.gz
 BuildRequires:  apache-commons-cli
 BuildRequires:  fdupes
@@ -41,7 +40,6 @@ against.
 
 %package -n hawtjni-javadoc
 Summary:        Javadocs for hawtjni
-Group:          Documentation/HTML
 BuildArch:      noarch
 
 %description -n hawtjni-javadoc
@@ -49,7 +47,6 @@ This package contains the API documentation for hawtjni.
 
 %package -n hawtjni
 Summary:        Code generator that produces the JNI code
-Group:          Development/Libraries/Java
 Requires:       %{name} = %{version}
 Requires:       apache-commons-cli
 Requires:       javapackages-tools

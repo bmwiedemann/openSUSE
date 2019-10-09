@@ -19,11 +19,10 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-aioresponses
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        Python module for mocking out requests made by ClientSession from aiohttp
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/pnuckowski/aioresponses
 Source:         https://files.pythonhosted.org/packages/source/a/aioresponses/aioresponses-%{version}.tar.gz
 Patch0:         disable-online-test.patch
