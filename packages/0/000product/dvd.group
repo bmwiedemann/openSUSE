@@ -2931,7 +2931,6 @@
     <package name="libwebpdemux2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libwebpmux3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libwebrtc_audio_processing1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libwicked-0-6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libwinpr2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libwireshark12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
     <package name="libwiretap9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
