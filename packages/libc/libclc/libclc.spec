@@ -17,28 +17,28 @@
 
 
 Name:           libclc
-Version:        0.2.0+git.20190313
+Version:        0.2.0+git.20190805
 Release:        0
 Summary:        OpenCL C programming language library
-License:        (BSD-3-Clause or MIT) and Apache-2.0 WITH LLVM-exception
+License:        (BSD-3-Clause OR MIT) AND Apache-2.0 WITH LLVM-exception
 Group:          Development/Libraries/C and C++
-Url:            http://libclc.llvm.org/
+URL:            https://libclc.llvm.org/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 BuildRequires:  gcc
 BuildRequires:  libstdc++-devel >= 3.9
 BuildRequires:  llvm >= 4.0
 BuildRequires:  llvm-clang-devel >= 4.0
-BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python3
-BuildRequires:  zlib-devel
+BuildRequires:  python3-base
+BuildRequires:  pkgconfig(ncurses)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 Library requirements of the OpenCL C programming language.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 sed -i "s|python|python3|g" configure.py
@@ -54,13 +54,13 @@ python3 ./configure.py \
   --enable-runtime-subnormal \
   --pkgconfigdir=%{_libdir}/pkgconfig/ \
   --libexecdir=%{_libdir}/clc/
-make %{?_smp_mflags} VERBOSE=1
+%make_build
 
 %install
 %make_install
 
 %files
-%doc LICENSE.TXT
+%license LICENSE.TXT
 %{_includedir}/clc
 %{_libdir}/clc
 %{_libdir}/pkgconfig/libclc.pc

@@ -1,4 +1,175 @@
 -------------------------------------------------------------------
+Wed Sep 18 23:14:43 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 1.3.1:
+  * Allow disabling all plugins
+  * trivial: Specify the tpm2-tss-devel version in the example spec file
+  * Move to CI Fedora 30
+  * modem-manager: Fix two build warnings on Fedora 30
+  * synapticsmst: Add another name quirk for the ThinkPad USB-C Dock
+  * Re-introduce GUID support to fwupdmgr and fwupdtool
+  * uefi-recovery: Add a plugin to add a fake ESRT entry for device recovery
+  * Add a DMI quirk for the Minnowboard Turbot
+  * trivial: Make it easy to disable or enable libflashrom for distros
+  * trivial: Don't use Recommends for RHEL 7
+  * unifying: fix timeout metadata
+  * ci: arch: minor improvements
+  * unifying: fix timeout
+  * Allow disabling SSL strict mode for broken corporate proxies
+  * trivial: Allow ignoring the daemon version check by using --force
+  * Try to only show DMI product name once
+  * trivial: fu-util-common: Show unknown devices as interesting devices
+  * dell: Use TSS to query and build TPM vendor strings for GUIDs
+  * trivial: dell: show reasons for lack of updates in `UpdateError`
+  * fu-util-common: strip all trailing whitespace in XML description
+  * trivial: fu-common: match all whitespace not just ' ' in `fu_common_strstrip`
+  * fu-util: show release output in get-details again
+  * unifying: use fu_firmware_strparse_uint16 to read be 16bit values
+  * unifying: fix incomplete hex file parsing
+  * fu-util/fu-tool: Print devices, remotes, releases using a tree
+  * Add aliases for `get-upgrades` and `upgrade`
+  * trivial: UEFI skip self tests if library fails to initialize
+  * libfwupd: Add a new private function `fwupd_remote_set_remotes_dir`
+  * trivial: add libtss2-dev into debian/control (Closes: #1324)
+  * trivial: Fix up the GtkDoc Since lines for API only available in 1.3.x
+  * trivial: Post branch version bump
+  * thunderbolt: Add support for kernel safety checks (Fixes: #1312)
+  * Include the kernel release as a runtime version
+  * trivial: fu-util: Drop GUID support from get-devices
+  * synapticsmst: Partially rewrite the plugin (Fixes #1105)
+  * Remove replug flag after the device comes back from reboot
+  * trivial: Fix running the tests on devices with the TPM in v1.2 mode
+  * trivial: fu-util-common: more cleanup related to topology
+  * trivial: fu-util: cleanup fwupdmgr get-details output
+  * trivial: Don't use topology printing in --verbose mode
+  * Make get-devices and get-topology aliases for one another
+  * trivial: Adjust daemon device sorting
+  * Make get-topology more useful by showing all information
+  * trivial: Fix fu_common_string_append_kv() to align properly with idx > 0
+  * trivial: dell-dock: correct an error preventing write_size from being set
+  * trivial: Do not warn about deprecated declarations
+  * trivial: Update BRs for the example Fedora package
+  * uefi: add test for TPM 2.0 PCR read function
+  * uefi: use tpm2-tss library to read PCR values
+  * fu-common: Use environment variables for systemd managed directories
+  * Use more systemd directives for directories
+  * trivial: fu-util: fix debug output for devices
+  * Allow turning off the timestamp prefix for debugging
+  * Add a ->udev_device_changed plugin vfunc
+  * Add fu_device_rescan() and a FuDevice->rescan() vfunc
+  * Remove the duplicate files in meson.build
+  * Hash the source files when generating the daemon hash
+  * Split up source files in the build script
+  * uefi: add support for tpm2-tools 4.X
+  * trivial: plugins: clarify stance on afuefi.efi
+  * trivial: plugins/: Update README
+  * trivial: disable gtkdoc by default
+  * trivial: update references of hughsie/fwupd to fwupd/fwupd
+  * Publish docs to fwupd.github.io using CircelCI
+  * Add support to integrate into the motd (Fixes: #1270)
+  * Simplify get-devices output to not show un-useful fields
+  * fu-engine/fu-config: Reload metadata store when configuration changes
+  * trivial: If no devices support updates, show messaging (Closes: #1295)
+  * trivial: uefi: set vendor name for system firwmare from DMI data
+  * unifying: update Solaar url
+  * thunderbolt: Fix logic to work properly with ICL thunderbolt controller
+  * Add fu_udev_device_get_device_file() helper
+  * trivial: Fix regression when using fu_device_incorporate()
+  * trivial: Fix a potential crash when using FuPlugin in the self tests
+  * synapticsmst: Make FuSynapticsmstConnection an actual GObject
+  * synapticsmst: Use the same style as other plugins
+  * trivial: Add some helper functions for GByteArray
+  * Do not use FuDevice metadata for the physical and logical IDs
+  * Use fu_common_string_append_kv() in subclassed device
+  * synapticsmst: Use G_DECLARE_FINAL_TYPE to simplify the object
+  * synapticsmst: Add a SynapticsMSTBoardID for another Lenovo dock
+  * trivial: remove unnecessary CUSTOMERID_DELL define
+  * synapticsmst: Add a SynapticsMSTBoardID for a Lenovo dock
+  * synapticsmst: Display the board ID in non-hex form in the error message
+  * synapticsmst: Use a more suitable icon for the device
+  * trivial: Remove unused variable
+  * Never use memcpy() in a possibly unsafe way
+  * Add a ->to_string() vfunc to FuFirmware
+  * Use FuFirmware as a container for firmware images
+  * Allow filtering devices when using the command line tools
+  * Be more accepting when trying to recover a failed database migration
+  * trivial: Add translation for X-ThunderboltController
+  * trivial: fixup standalone installer
+  * modem-manager: add counterpart GUID for the DW5821e
+  * solokey: Release the interface and rebind the kernel driver on close
+  * fu-tool: Port ability to update a single device from fwupdmgr
+  * uefi: Actually write the new device path if different than before
+  * Allow setting custom flags when using fwupdate
+  * trivial: Do not show a critical warning if no firmware is specified
+  * trivial: Fix overzealous search-replace action in user string
+  * Verify we don't break the ABI
+  * Fix a crash when stopping the fwupd service
+  * Relax the certificate time checks in the self tests for the legacy certificate
+  * trivial: add cache directory into systemd unit rw paths
+  * Never show AppStream markup on the console
+  * Do not segfault when trying to quit the downgrade selection
+  * trivial: Update icons for Thunderbolt and MST devices
+  * Add support for the SoloKey Secure
+  * trivial: Allow a device to *clear* a firmware version
+  * trivial: debian: For signed package fill out Built-Using (Closes: #932757)
+  * Allow specifying <firmware>GUID</firmware> to check any version exists
+  * trivial: post release version bump
+  * Release fwupd 1.2.10
+  * Disable the flashrom plugin by default
+  * trivial: thunderbolt: catch failure setting up device
+  * dell-esrt: Improve the experience for the plugin (Closes: #1245)
+  * fu-util: When unlocking prompt for reboot if applicable
+  * remove those PIDs with Bluetooth interface, Wacom updater doesn't support updating from Bluetooth interface
+  * flashrom: Only show DEBUG and DEBUG2 output if using --plugin-verbose=flashrom
+  * flashrom: Only call flashrom_programmer_init() on whitelisted boards
+  * flashrom: Fix no version format set
+  * fu-util: Show devices with an UpdateError in get-devices output
+  * trivial: uefi: use UEFI-dummy for device ID instead of just uefi
+  * trivial: fix error handling for non UEFI case (#1220)
+  * Add a specific error code for the low battery case
+  * Fix Fedora docker build missing directory: dist
+  * uefi: Determine whether running in legacy mode or not (Fixes: #1220)
+  * trivial: ci: debian: Only turn on flashrom when running CI
+  * trivial: Fix typos in error messages
+  * Allow client code to construct objects from GVariant blobs
+  * Export functionality to build an array of objects
+  * flashrom: Use libflashrom
+  * trivial: Fix the version script to pick up boxed types
+  * trivial: Correctly order the map entries according to vercmp rules
+  * trivial: Fix pylint issue in the version script
+  * Add meson target to fix translations
+  * Add support for 8bitdo USB Retro Receiver
+  * Use the newer features of GRWLock rather than reinventing it
+  * Revert "Allow SuperIO updates to be done live"
+  * uefi: Try to find a duplicate using the loadopt name
+  * uefi: Provide a quirk to disable the use of the UX capsule
+  * trivial: uefi: use the path for efibootmgr that was detected
+  * synaptics-prometheus: Fix installing CONFIG firmware updates
+  * synaptics-prometheus: Set the install duration from a quirk
+  * synaptics-prometheus: Don't emit critial warning when updating config firmware
+  * synaptics-prometheus: Fix missing field in the IOTA reply struct
+  * Create SECURITY.md
+  * redfish: Never set NULL device name
+  * modem-manager: Never set NULL device name
+  * ata: Never set NULL device name
+  * trivial: Add some parameter guards to FuDevice
+  * trivial: snap: make polkit directories if they don't exist (Fixes: #1205)
+  * trivial: fu-main: clarify missing PK file error
+  * synapticsmst: fix GUID generation (Closes: #1207)
+  * Lite Mk II flag for use-shim-unique
+  * trivial: circleci: try to fix automatic snap deployment
+  * Allow SuperIO updates to be done live
+  * fu-util-common: Support empty proxy strings (Fixes: #1199)
+  * trivial: uefi: clarify error message
+  * trivial: Fix non-systemd build
+  * trivial: Sync example spec file with downstream
+  * trivial: post release version bump
+- Drop fwupd-bsc1143905-hash-the-source-files.patch: Applied upstream.
+- Add pkgconfig(tss2-esys) BuildRequires: New dependency.
+- Add gtk-doc BuildRequires and pass gtkdoc=true to meson, build
+  api docs even when using source service.
+
+-------------------------------------------------------------------
 Mon Aug 26 06:48:00 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add fwupd-bsc1143905-hash-the-source-files.patch to hash the

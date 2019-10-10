@@ -26,12 +26,11 @@ Name:           bash
 Version:        %{bversion}.%{bpatchlvl}
 Release:        0
 Summary:        The GNU Bourne-Again Shell
-License:        GPL-3.0-or-later
-Group:          System/Shells
-Recommends:     bash-lang = %version
 # The package bash-completion is a source of
 # bugs which will hit at most this package
 #Recommends:	bash-completion
+License:        GPL-3.0-or-later
+Group:          System/Shells
 Suggests:       command-not-found
 Suggests:       bash-doc = %version
 Url:            http://www.gnu.org/software/bash/bash.html
@@ -121,6 +120,7 @@ interpreter Bash.
 Summary:        Languages for package bash
 Group:          System/Localization
 Requires:       bash = %{version}
+Supplements:    bash
 
 %description lang
 Provides translations to the package bash

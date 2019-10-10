@@ -392,4 +392,12 @@ See see http://lists.opensuse.org/opensuse-factory/2015-06/msg00133.html</commen
     <comment></comment>
     <requestid>633753</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>03255feca14b8ad81a18ef739e3dfe8c</srcmd5>
+    <version>2.0+git20180626.aebd88e</version>
+    <time>1570700930</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>733470</requestid>
+  </revision>
 </revisionlist>

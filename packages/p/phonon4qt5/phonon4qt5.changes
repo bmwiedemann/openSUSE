@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 26 13:03:18 UTC 2019 - wbauer@tmo.at
+
+- Update to 4.11.1:
+  * ECMGeneratePriFile now correctly uses KDE_USE_QT_SYS_PATHS
+  * Include directory in the pri file is now using the correct path
+- Drop 0001-Remove-phonon-from-the-include-directory.patch, merged
+  upstream
+- Use %lang_package macro and provide phonon4qt5 to fulfill its
+  dependencies
+
+-------------------------------------------------------------------
 Wed Sep 11 11:34:40 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add 0001-Remove-phonon-from-the-include-directory.patch

@@ -1462,4 +1462,12 @@
   * Server-side bugfixes:</comment>
     <requestid>724598</requestid>
   </revision>
+  <revision rev="168" vrev="3">
+    <srcmd5>bffd043719a5dbc5d7bba4d0ea35ec58</srcmd5>
+    <version>1.12.2</version>
+    <time>1570700850</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>733367</requestid>
+  </revision>
 </revisionlist>

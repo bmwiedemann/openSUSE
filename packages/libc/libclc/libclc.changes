@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 26 13:20:28 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.2.0+git.20190805:
+  * Revert "Rename F_{None,Text,Append} to OF_{None,Text,Append}. NFC"
+  * Rename F_{None,Text,Append} to OF_{None,Text,Append}. NFC
+  * travis: Add LLVM-8 build
+- Small spec file updates
+
+-------------------------------------------------------------------
 Tue Mar 19 08:23:57 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update License tag to (BSD-3-Clause or MIT) and Apache-2.0 WITH

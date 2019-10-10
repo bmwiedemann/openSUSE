@@ -16,49 +16,50 @@
 #
 
 
-%define cpan_name XML-Parser
 Name:           perl-XML-Parser
-Version:        2.44
+Version:        2.46
 Release:        0
-Summary:        A perl module for parsing XML documents
+%define cpan_name XML-Parser
+Summary:        Perl module for parsing XML documents
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-URL:            https://metacpan.org/release/%{cpan_name}
-Source:         https://cpan.metacpan.org/authors/id/T/TO/TODDR/%{cpan_name}-%{version}.tar.gz
+Url:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/T/TO/TODDR/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 Patch0:         XML-Parser-2.40.diff
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-%{perl_requires}
 BuildRequires:  perl(LWP::UserAgent)
 Requires:       perl(LWP::UserAgent)
+%{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  libexpat-devel
 # MANUAL END
 
 %description
-This module provides ways to parse XML documents. It is built on top of the
-XML::Parser::Expat manpage, which is a lower level interface to James
-Clark's expat library. Each call to one of the parsing methods creates a
-new instance of XML::Parser::Expat which is then used to parse the
-document. Expat options may be provided when the XML::Parser object is
-created. These options are then passed on to the Expat object on each parse
-call. They can also be given as extra arguments to the parse methods, in
-which case they override options given at XML::Parser creation time.
+This module provides ways to parse XML documents. It is built on top of
+XML::Parser::Expat, which is a lower level interface to James Clark's expat
+library. Each call to one of the parsing methods creates a new instance of
+XML::Parser::Expat which is then used to parse the document. Expat options
+may be provided when the XML::Parser object is created. These options are
+then passed on to the Expat object on each parse call. They can also be
+given as extra arguments to the parse methods, in which case they override
+options given at XML::Parser creation time.
 
-The behavior of the parser is controlled either by 'the /STYLES manpage'
-and/or 'the /HANDLERS manpage' options, or by the /setHandlers manpage
-method. These all provide mechanisms for XML::Parser to set the handlers
-needed by XML::Parser::Expat. If neither 'Style' nor 'Handlers' are
-specified, then parsing just checks the document for being well-formed.
+The behavior of the parser is controlled either by 'STYLES' and/or
+'HANDLERS' options, or by setHandlers method. These all provide mechanisms
+for XML::Parser to set the handlers needed by XML::Parser::Expat. If
+neither 'Style' nor 'Handlers' are specified, then parsing just checks the
+document for being well-formed.
 
 When underlying handlers get called, they receive as their first parameter
 the _Expat_ object, not the Parser object.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-%patch0
 find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+%patch0 
 # MANUAL BEGIN
 chmod 644 samples/{canonical,xml*}
 # MANUAL END
@@ -68,7 +69,7 @@ perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
 make %{?_smp_mflags}
 
 %check
-make %{?_smp_mflags} test
+make test
 
 %install
 %perl_make_install
@@ -77,6 +78,6 @@ make %{?_smp_mflags} test
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes README samples/
+%doc Changes README samples
 
 %changelog

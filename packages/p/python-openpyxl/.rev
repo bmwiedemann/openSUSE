@@ -126,4 +126,19 @@ https://build.opensuse.org/request/show/308798</comment>
   * #1236 Cannot use ws.cell in read-only mode with Python 2.7</comment>
     <requestid>710331</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d2619987eea8129758cf42b9f55e43e6</srcmd5>
+    <version>2.6.4</version>
+    <time>1570700834</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.6.4:
+  * Cannot save workbooks with comments more than once.
+  * #1237 Fix 3D charts.
+  * #1290 Minimum for holeSize in Doughnut charts too high
+  * #1291 Warning for MergedCells with comments
+  * #1296 Pagebreaks duplicated
+  * #1309 Workbook has no default CellStyle
+  * #1330 Workbooks with comments cannot be saved multiple times</comment>
+    <requestid>733341</requestid>
+  </revision>
 </revisionlist>

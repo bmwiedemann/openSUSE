@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 26 08:35:08 UTC 2019 - Franz Sirl <franz.sirl-obs@lauterbach.com>
+
+- Enable build and check with swig-3:
+  * Only enable subversion-1.12.0-swig-4.patch for Tumbleweed
+  * 'make check-swig-py' doesn't pass with swig-4
+- Enable 'make check-swig-rb' everywhere again
+
+-------------------------------------------------------------------
 Fri Jul 26 10:03:14 UTC 2019 - matthias.gerstner@suse.com
 
 - removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by

@@ -83,6 +83,7 @@ This package provides the ispell and myspell backends.
 Summary:        Generic Spell Checking Library - Voikko Plugin
 Group:          Productivity/Text/Spell
 Provides:       enchant-1-backend
+Requires:       enchant-1-backends
 Provides:       locale(%{name}:fi)
 # Package was renamed from enchant-voikko to enchant-1-backend-voikke with version 1.6.1
 Obsoletes:      enchant-voikko < 1.6.1

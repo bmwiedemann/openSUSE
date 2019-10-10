@@ -250,7 +250,9 @@ parameters and keywords for the svn command and other tools.
 %patch37 -p1
 %patch39
 %patch40 -p1
+%if 0%{?suse_version} > 1500
 %patch41 -p1
+%endif
 
 %build
 # Re-boot strap, needed for patch37
@@ -411,12 +413,11 @@ export LANG=C LC_ALL=C
 make %{?_smp_mflags} check CLEANUP=true || (cat fails.log; exit 1)
 make %{?_smp_mflags} check-javahl || (cat fails.log; exit 1)
 make %{?_smp_mflags} check-swig-pl || (cat fails.log; exit 1)
-%if 0%{?suse_version} <= 1320
-# swig bindings check failing from swig 3.0.3 and later
+%if 0%{?suse_version} <= 1500
+# swig bindings check failing from swig 4.0.0 and later
 make %{?_smp_mflags} check-swig-py || (cat fails.log; exit 1)
-# same for ruby bindings
-make %{?_smp_mflags} check-swig-rb || (cat fails.log; exit 1)
 %endif
+make %{?_smp_mflags} check-swig-rb || (cat fails.log; exit 1)
 %if %{with all_regression_tests}
 make %{?_smp_mflags} svnserveautocheck CLEANUP=true FS_TYPE=fsfs || (cat fails.log; exit 1)
 make %{?_smp_mflags} svnserveautocheck CLEANUP=true FS_TYPE=bdb || (cat fails.log; exit 1)

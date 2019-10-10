@@ -1,0 +1,49 @@
+---
+ sh.c |   18 ++++++++++++------
+ 1 file changed, 12 insertions(+), 6 deletions(-)
+
+--- sh.c
++++ sh.c	2019-09-26 07:54:47.733054241 +0000
+@@ -1563,13 +1563,15 @@ srcfile(const char *f, int onlyown, int
+ 	fl.l_len = 0;
+ 
+ 	hd = xmalloc(sizeof(*hd));
+-	cleanup_push(hd, xfree);
++	if (hd) {
++	    cleanup_push(hd, xfree);
+ 
+-	*hd = fcntl(unit, F_DUPFD_CLOEXEC, FSAFE+1);
+-	cleanup_push(hd, open_cleanup);
++	    *hd = fcntl(unit, F_DUPFD_CLOEXEC, FSAFE+1);
++	    cleanup_push(hd, open_cleanup);
+ 
+-	fcntl(*hd, F_SETLKW, &fl);
+-	cleanup_push(hd, fcntl_cleanup);
++	    fcntl(*hd, F_SETLKW, &fl);
++	    cleanup_push(hd, fcntl_cleanup);
++	}
+     }
+ 
+     cleanup_push(&unit, open_cleanup);
+@@ -2229,6 +2231,7 @@ dosource_flg(Char **t, struct command *c
+     char *file;
+     int fd;
+     int newflg = 0;
++    size_t omark;
+ 
+     USE(c);
+     t++;
+@@ -2249,9 +2252,12 @@ dosource_flg(Char **t, struct command *c
+     xfree(f);
+     t = glob_all_or_error(t);
+     cleanup_push(t, blk_cleanup);
++    omark = cleanup_push_mark();
+     fd = srcfile(file, 0, (flg | newflg), t);
+-    if ((!fd) && (!newflg) && (!bequiet))
++    if ((!fd) && (!newflg) && (!bequiet)) {
++	omark = cleanup_push_mark();
+ 	stderror(ERR_SYSTEM, file, strerror(errno));
++    }
+     /* We need to preserve fd and it's cleaning routines on the top of the
+      * cleaning stack. Don't call cleanup_until() but clean it manually. */
+     cleanup_ignore(file);

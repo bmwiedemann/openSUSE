@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 26 09:42:49 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints file for ppc64/ppc64le to avoid build failure
+  on power8-06 that ran out of disk space
+
+-------------------------------------------------------------------
 Fri Sep 20 11:32:57 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.13.1. Check the ChangeLog file for the list of changes

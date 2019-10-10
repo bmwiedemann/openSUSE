@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 24 13:18:42 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.16.1:
+  + See main gstreamer package for changelog.
+- Drop upstream fixed patches:
+  + fix-Werror=return-type.patch.
+  + gst-bad-Fix-compilation-with-openh264-v2.0.patch.
+  + gst-plugins-bad-do-not-retry-downloads-during-shutdown.patch.
+- Following the above, drop libtool BuildRequires and autoreconf
+  call, no longer needed.
+
+-------------------------------------------------------------------
 Wed Sep 18 14:58:24 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use openssl for HLS crypto. openssl is required by DTLS, and hls

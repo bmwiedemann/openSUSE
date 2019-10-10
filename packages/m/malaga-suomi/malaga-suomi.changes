@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 25 09:40:47 UTC 2019 - Timo Jyrinki <tjyrinki@suse.com>
+
+- Update to new upstream version 2.3:
+  * Added special vocabulary for Statistics Finland.
+  * Added support for packaging dictionaries as Emscripten preload files for web use.
+  * Added Dockerfile to support setting up development environment.
+  * New words have been added and various bugs have been fixed.
+
+-------------------------------------------------------------------
 Wed Feb 27 08:00:38 UTC 2019 - Timo Jyrinki <tjyrinki@suse.com>
 
 - Update to version 2.2

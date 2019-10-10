@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 24 10:35:52 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Make enchant-1-backend-voikko require enchant-1-backends
+  (boo#1141993).
+
+-------------------------------------------------------------------
 Fri Jul 19 11:42:22 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
 
 - Make libenchant1 recommend enchant-1-backends instead of requiring

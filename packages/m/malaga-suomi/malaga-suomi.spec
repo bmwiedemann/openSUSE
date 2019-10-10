@@ -19,7 +19,7 @@
 %define _name voikko-fi
 %define _altname suomi-malaga
 Name:           malaga-suomi
-Version:        2.2
+Version:        2.3
 Release:        0
 Summary:        Description of Finnish morphology written for libvoikko
 License:        GPL-2.0-or-later

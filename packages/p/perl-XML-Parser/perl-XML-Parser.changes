@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 26 09:30:17 UTC 2019 - Tina Mueller <tina.mueller@suse.com>
+
+- Fix syntax for patch in cpanspec.yml
+
+-------------------------------------------------------------------
+Thu Sep 26 09:30:00 UTC 2019 - Tina Mueller <tina.mueller@suse.com>
+
+- updated to 2.46
+   see /usr/share/doc/packages/perl-XML-Parser/Changes
+
+-------------------------------------------------------------------
 Wed Aug 21 17:37:23 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Add cpanspec.yml file

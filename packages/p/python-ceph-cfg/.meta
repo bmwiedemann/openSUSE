@@ -15,4 +15,7 @@ not strictly idempotent, this is considered acceptable modules having
 dependencies on other methods operation should present clear error messages.
 </description>
   <devel project="filesystems:ceph" package="python-ceph-cfg"/>
+  <build>
+    <disable/>
+  </build>
 </package>

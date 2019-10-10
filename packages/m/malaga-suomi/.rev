@@ -190,4 +190,17 @@
 - Update description that it's no longer using malaga</comment>
     <requestid>680096</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c259d3648f7253f62ef78c53ff985705</srcmd5>
+    <version>2.3</version>
+    <time>1570700822</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream version 2.3:
+  * Added special vocabulary for Statistics Finland.
+  * Added support for packaging dictionaries as Emscripten preload files for web use.
+  * Added Dockerfile to support setting up development environment.
+  * New words have been added and various bugs have been fixed.
+</comment>
+    <requestid>733318</requestid>
+  </revision>
 </revisionlist>

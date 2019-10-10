@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Sep 24 07:29:25 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.16.1:
+  + GStreamer-vaapi: fix green frames and decoding artefacts in
+    some cases.
+  + OpenGL: fix wayland event source burning CPU in certain
+    circumstances.
+  + Memory leak fixes and memory footprint improvements.
+  + Performance improvements.
+  + Stability and security fixes.
+  + Fix enum for GST_MESSAGE_DEVICE_CHANGED which is technically an
+    API break, but this is only used internally in GStreamer and
+    duplicated another message enum.
+  + hls: Make crypto dependency optional when hls-crypto is auto.
+  + player: fix switching back and forth between forward and
+    reverse playback.
+  + decklinkaudiosink: Drop late buffers.
+  + openh264enc: Fix compilation with openh264 v2.0.
+  + wasapisrc: fix segtotal value being always 2.
+
+-------------------------------------------------------------------
 Wed Jul 10 13:16:43 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix meson script using sed: since we rename gst-plugin-helper for

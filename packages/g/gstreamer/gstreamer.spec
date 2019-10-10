@@ -24,7 +24,7 @@
 
 %define gst_branch 1.0
 Name:           gstreamer
-Version:        1.16.0
+Version:        1.16.1
 Release:        0
 Summary:        Streaming-Media Framework Runtime
 License:        LGPL-2.1-or-later
@@ -266,14 +266,9 @@ install -m755 -D %{SOURCE2} %{buildroot}%{_libexecdir}/rpm/gstreamer-provides
 %dir %{_datadir}/gdb/auto-load%{_prefix}
 %dir %{_datadir}/gdb/auto-load%{_libdir}
 %{_datadir}/gdb/auto-load%{_libdir}/lib%{name}*.py
-%if %{use_meson}
-%{_datadir}/glib-2.0/gdb/glib_gobject_helper.py
-%{_datadir}/glib-2.0/gdb/gst_gdb.py
-%else
 %dir %{_datadir}/gstreamer-%{gst_branch}/gdb
 %{_datadir}/gstreamer-%{gst_branch}/gdb/glib_gobject_helper.py
 %{_datadir}/gstreamer-%{gst_branch}/gdb/gst_gdb.py
-%endif
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc

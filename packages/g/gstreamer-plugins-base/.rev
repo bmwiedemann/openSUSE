@@ -535,4 +535,12 @@
     <comment>Drop unneeded gtk dep + tweaks</comment>
     <requestid>725940</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>13edf0e4a7c9831eecfc491c545bdcd0</srcmd5>
+    <version>1.16.1</version>
+    <time>1570700875</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>733421</requestid>
+  </revision>
 </revisionlist>

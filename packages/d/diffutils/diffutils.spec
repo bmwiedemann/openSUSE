@@ -28,7 +28,6 @@ Source1:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 Requires(pre):  %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
-Recommends:     %{name}-lang = %{version}
 Provides:       diff = %{version}
 Obsoletes:      diff < %{version}
 

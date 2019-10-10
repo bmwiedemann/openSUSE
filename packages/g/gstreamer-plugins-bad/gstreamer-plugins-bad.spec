@@ -29,7 +29,7 @@
 %define use_meson 0
 
 Name:           gstreamer-plugins-bad
-Version:        1.16.0
+Version:        1.16.1
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -38,11 +38,6 @@ Url:            http://gstreamer.freedesktop.org/
 Source:         https://gstreamer.freedesktop.org/src/gst-plugins-bad/%{_name}-%{version}.tar.xz
 Source2:        gstreamer-plugins-bad.appdata.xml
 Source99:       baselibs.conf
-
-Patch0:         fix-Werror=return-type.patch
-# PATCH-FIX-UPSTREAM gst-bad-Fix-compilation-with-openh264-v2.0.patch -- Fix build with openh264 version 2.0 and newer
-Patch1:         gst-bad-Fix-compilation-with-openh264-v2.0.patch
-Patch2:         gst-plugins-bad-do-not-retry-downloads-during-shutdown.patch
 
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  fdupes
@@ -54,9 +49,6 @@ BuildRequires:  libgme-devel
 BuildRequires:  libgsm-devel
 %if %{use_meson}
 BuildRequires:  meson >= 0.47.0
-%else
-# Needed for patch0
-BuildRequires:  libtool
 %endif
 BuildRequires:  musepack-devel
 BuildRequires:  orc >= 0.4.11
@@ -513,8 +505,6 @@ export PYTHON=%{_bindir}/python3
 	%{nil}
 %{meson_build}
 %else
-# Needed for patch1
-autoreconf -fiv
 %configure \
 %if ! 0%{?BUILD_ORIG}
 	--with-package-name='openSUSE GStreamer-plugins-bad package' \

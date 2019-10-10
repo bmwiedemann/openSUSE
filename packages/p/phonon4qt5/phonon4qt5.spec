@@ -19,7 +19,7 @@
 %define rname phonon
 %bcond_without lang
 Name:           phonon4qt5
-Version:        4.11.0
+Version:        4.11.1
 Release:        0
 Summary:        Multimedia Platform Abstraction
 License:        LGPL-2.0-or-later
@@ -27,8 +27,6 @@ Group:          System/GUI/KDE
 URL:            https://phonon.kde.org/
 Source:         https://download.kde.org/stable/%{rname}/%{version}/%{rname}-%{version}.tar.xz
 Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Remove-phonon-from-the-include-directory.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules >= 5.60.0
 BuildRequires:  fdupes
@@ -63,6 +61,7 @@ used.
 %package -n libphonon4qt5
 Summary:        Phonon Multimedia Platform Abstraction
 Group:          System/Libraries
+Provides:       %{name} = %{version}
 Recommends:     %{name}-lang
 Recommends:     phonon4qt5-backend
 Recommends:     phononsettings
@@ -73,15 +72,7 @@ which allows you to play multiple audio or video formats with the same
 quality on all platforms, no matter which underlying architecture is
 used.
 
-%package lang
-Summary:        Translations for package libphonon4qt5
-Group:          System/Localization
-Requires:       libphonon4qt5 = %{version}
-Provides:       %{name}-lang-all = %{version}
-BuildArch:      noarch
-
-%description lang
-Provides translations for the libphonon4qt5 package.
+%lang_package
 
 %package -n phononsettings
 Summary:        Settings Tool for Phonon Multimedia Platform Abstraction
@@ -99,7 +90,6 @@ used.
 
 %prep
 %setup -q -n %{rname}-%{version}
-%patch0 -p1
 
 %build
   %cmake_kf5 -d build
@@ -139,6 +129,7 @@ used.
 %endif
 
 %files -n phononsettings
+%license COPYING
 %{_kf5_bindir}/phononsettings
 
 %if %{with lang}

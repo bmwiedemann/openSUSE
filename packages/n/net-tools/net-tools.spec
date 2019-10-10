@@ -1,7 +1,7 @@
 #
 # spec file for package net-tools
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -38,7 +38,6 @@ Patch6:         0006-Allow-interface-stacking.patch
 Patch7:         0007-Introduce-T-notrim-option-in-netstat.patch
 BuildRequires:  help2man
 Requires:       hostname
-Recommends:     %{name}-lang = %{version}
 Recommends:     traceroute >= 2.0.0
 Provides:       net_tool = %{version}
 Obsoletes:      net_tool < %{version}
@@ -52,7 +51,6 @@ and have been moved to net-tools-deprecated.
 %package deprecated
 Summary:        Deprecated Networking Utilities
 Group:          Productivity/Networking/Other
-Recommends:     %{name}-lang = %{version}
 
 %description deprecated
 This package contains the deprecated network utilities arp, ifconfig, netstat and route,

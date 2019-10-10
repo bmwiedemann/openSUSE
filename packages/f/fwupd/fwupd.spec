@@ -28,17 +28,19 @@
 %global efidir sles
 %endif
 Name:           fwupd
-Version:        1.2.10
+Version:        1.3.1
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Management
 URL:            https://fwupd.org/
-Source:         https://github.com/hughsie/%{name}/archive/%{version}.tar.gz
+# Do not use upstream tarball, we are using source service!
+#Source:         https://github.com/hughsie/%%{name}/archive/%%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
+
 # PATCH-FIX-OPENSUSE fwupd-bsc1130056-shim-path.patch bsc#1130056
 Patch1:         fwupd-bsc1130056-change-shim-path.patch
-# PATCH-FIX-UPSTRAEM fwupd-bsc1143905-hash-the-source-files.patch bsc#1143905
-Patch2:         fwupd-bsc1143905-hash-the-source-files.patch
+
 BuildRequires:  dejavu-fonts
 BuildRequires:  docbook-utils-minimal
 BuildRequires:  gcab
@@ -47,6 +49,7 @@ BuildRequires:  gnutls
 BuildRequires:  gobject-introspection
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gpgme-devel
+BuildRequires:  gtk-doc
 BuildRequires:  help2man
 BuildRequires:  intltool
 BuildRequires:  libelf-devel
@@ -81,6 +84,7 @@ BuildRequires:  pkgconfig(libsoup-2.4) >= 2.51.92
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.103
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(tss2-esys)
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(valgrind)
 BuildRequires:  pkgconfig(xmlb)
@@ -143,9 +147,8 @@ the local machine.
 %lang_package
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
+
 for file in $(grep -l %{_bindir}/env . -r); do
   sed -i "s|%{_bindir}/env python3|%{_bindir}/python3|" $file
 done
@@ -165,6 +168,7 @@ done
   -Dplugin_dell=false \
   -Dplugin_synaptics=false \
 %endif
+  -Dgtkdoc=true \
   -Dtests=false
 %meson_build
 
@@ -225,10 +229,12 @@ fi
 %files
 %license COPYING
 %doc README.md
-%{_libexecdir}/systemd/system/fwupd.service
-%{_libexecdir}/systemd/system/fwupd-offline-update.service
-%%dir %{_libexecdir}/systemd/system/system-update.target.wants/
-%{_libexecdir}/systemd/system/system-update.target.wants/fwupd-offline-update.service
+%{_unitdir}/fwupd.service
+%{_unitdir}/fwupd-offline-update.service
+%dir %{_unitdir}/system-update.target.wants/
+%{_unitdir}/system-update.target.wants/fwupd-offline-update.service
+%{_unitdir}/fwupd-refresh.service
+%{_unitdir}/fwupd-refresh.timer
 %{_libexecdir}/fwupd
 %{_bindir}/fwupdmgr
 %{_sbindir}/rc%{name}
@@ -236,7 +242,19 @@ fi
 %{_sysconfdir}/dbus-1/system.d/org.freedesktop.fwupd.conf
 %{_datadir}/dbus-1/interfaces/org.freedesktop.fwupd.xml
 %{_datadir}/dbus-1/system-services/org.freedesktop.fwupd.service
-%{_datadir}/%{name}/
+%dir %{_datadir}/%{name}
+%dir %{_datadir}/%{name}/metainfo
+%dir %{_datadir}/%{name}/quirks.d
+%dir %{_datadir}/%{name}/remotes.d
+%dir %{_datadir}/%{name}/remotes.d/dell-esrt
+%dir %{_datadir}/%{name}/remotes.d/vendor
+%dir %{_datadir}/%{name}/remotes.d/vendor/firmware
+%{_datadir}/%{name}/firmware-packager
+%{_datadir}/%{name}/metainfo/org.freedesktop.fwupd.remotes.lvfs-testing.metainfo.xml
+%{_datadir}/%{name}/metainfo/org.freedesktop.fwupd.remotes.lvfs.metainfo.xml
+%{_datadir}/%{name}/quirks.d/*.quirk
+%{_datadir}/%{name}/remotes.d/dell-esrt/metadata.xml
+%{_datadir}/%{name}/remotes.d/vendor/firmware/README.md
 %{_mandir}/man1/fwupdmgr.1%{?ext_man}
 %{_datadir}/polkit-1/actions/org.freedesktop.fwupd.policy
 %config %{_sysconfdir}/%{name}/

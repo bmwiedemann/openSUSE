@@ -27,7 +27,7 @@
 # Currently disabled because plugin documentation isn't built
 %define use_meson 0
 Name:           gstreamer-plugins-ugly
-Version:        1.16.0
+Version:        1.16.1
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later

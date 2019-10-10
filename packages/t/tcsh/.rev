@@ -638,4 +638,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>727010</requestid>
   </revision>
+  <revision rev="65" vrev="3">
+    <srcmd5>fea5c4c492f76541c0b37d9c61c93d58</srcmd5>
+    <version>6.21.00</version>
+    <time>1570700845</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch tcsh-6.18.01-history-stderror-jmp.patch to restore
+  cleanup routines in case of an error (bsc#1151630)</comment>
+    <requestid>733343</requestid>
+  </revision>
 </revisionlist>

@@ -41,6 +41,8 @@ Patch10:        tcsh-6.18.03-history-merge.dif
 Patch11:        tcsh-6.19.00-history-file-locking-order.patch
 # PATCH-FIX-SUSE Aoid dot locking as patch 9 and 11 do the job better
 Patch12:        tcsh-6.20.00-avoid-dotlock-for-fcntl.patch
+# PATCH-FIX-SUSE Restore cleaning routines in case of an error (bsc#1151630)
+Patch13:        tcsh-6.18.01-history-stderror-jmp.patch
 BuildRequires:  autoconf
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
@@ -71,6 +73,7 @@ correction, a history mechanism, job control, and a C-like syntax.
 %patch10     -b .histmerg
 %patch11     -b .histlckord
 %patch12 -p0 -b .nodtlck
+%patch13 -p0 -b .histerrjmp
 %patch0      -b .0
 
 %build

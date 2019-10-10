@@ -24,7 +24,7 @@
 %define use_meson 0
 
 Name:           gstreamer-plugins-base
-Version:        1.16.0
+Version:        1.16.1
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -33,8 +33,6 @@ URL:            https://gstreamer.freedesktop.org/
 Source0:        https://gstreamer.freedesktop.org/src/gst-plugins-base/%{_name}-%{version}.tar.xz
 Source1:        gstreamer-plugins-base.appdata.xml
 Source2:        baselibs.conf
-Patch0:         gst-plugins-base-doc-build-fix.patch
-Patch1:         gstreamer-plugins-base-arm-neon-configuration.patch
 
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  cdparanoia-devel

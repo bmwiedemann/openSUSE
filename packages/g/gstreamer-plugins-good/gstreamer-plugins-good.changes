@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 24 12:56:40 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.16.1:
+  + See main gstreamer package for changelog.
+- Drop gstreamer-plugins-good-fix-glibc-incompat.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
 Sun Aug 25 08:33:33 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add gstreamer-plugins-good-fix-glibc-incompat.patch: v4l2: Fix

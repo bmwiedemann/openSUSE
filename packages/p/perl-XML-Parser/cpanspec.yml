@@ -8,7 +8,9 @@
 #  - source1
 #  - source2
 patches:
-  XML-Parser-2.40.diff
+  XML-Parser-2.40.diff:
+#  foo.patch: -p1
+#  bar.patch:
 preamble: |-
   BuildRequires:  libexpat-devel
 post_prep: |-

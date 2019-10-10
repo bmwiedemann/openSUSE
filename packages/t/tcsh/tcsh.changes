@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 26 07:39:20 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch tcsh-6.18.01-history-stderror-jmp.patch to restore
+  cleanup routines in case of an error (bsc#1151630)
+
+-------------------------------------------------------------------
 Thu Aug 22 12:27:18 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch tcsh-6.21.00-sighup-deadlock.patch from upstream list
