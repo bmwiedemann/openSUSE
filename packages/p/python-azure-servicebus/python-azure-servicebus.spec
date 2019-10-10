@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-servicebus
-Version:        0.50.0
+Version:        0.50.1
 Release:        0
 Summary:        Microsoft Azure Service Bus Runtime Client Library
 License:        Apache-2.0
@@ -26,8 +26,6 @@ Group:          Development/Languages/Python
 Url:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-servicebus/azure-servicebus-%{version}.zip
 Source1:        LICENSE.txt
-Patch1:         as_drop-compatible-releases-operator.patch
-Patch2:         as_drop-extras-require.patch
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -50,8 +48,6 @@ This package has been tested with Python 2.7, 3.3, 3.4 and 3.5.
 
 %prep
 %setup -q -n azure-servicebus-%{version}
-%patch1 -p1
-%patch2 -p1
 
 %build
 install -m 644 %{SOURCE1} %{_builddir}/azure-servicebus-%{version}

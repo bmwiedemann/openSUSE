@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-msrest
-Version:        0.6.6
+Version:        0.6.10
 Release:        0
 Summary:        AutoRest swagger generator Python client runtime
 License:        MIT
@@ -26,8 +26,6 @@ Group:          Development/Languages/Python
 Url:            https://pypi.python.org/pypi/msrest
 Source:         https://files.pythonhosted.org/packages/source/m/msrest/msrest-%{version}.tar.gz
 Source1:        LICENSE.md
-Patch0:         m_drop-compatible-releases-operator.patch
-Patch1:         m_drop-extras-require.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -53,8 +51,6 @@ Swagger is a powerful open source framework: http://swagger.io
 
 %prep
 %setup -q -n msrest-%{version}
-%patch0 -p1
-%patch1 -p1
 cp %{SOURCE1} LICENSE.md
 
 %build

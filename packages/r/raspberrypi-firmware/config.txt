@@ -45,6 +45,9 @@ sdram_freq=400
 
 [pi3]
 
+[pi4]
+arm_64bit=1
+
 [all]
 
 # Allow u-boot to set arm_control

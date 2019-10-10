@@ -25,4 +25,12 @@
   to python-azure-storage-common package</comment>
     <requestid>699396</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ec584976f9bb242f464b74b01e592894</srcmd5>
+    <version>2.1.0</version>
+    <time>1570710838</time>
+    <user>dimstar_suse</user>
+    <comment>- Resubmit with corrected changelog entry</comment>
+    <requestid>735799</requestid>
+  </revision>
 </revisionlist>

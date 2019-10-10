@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-mgmt-iothub
-Version:        0.7.0
+Version:        0.8.2
 Release:        0
 Summary:        Microsoft Azure IoTHub Management Client Library
 License:        MIT
@@ -26,8 +26,6 @@ Group:          Development/Languages/Python
 Url:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-iothub/azure-mgmt-iothub-%{version}.zip
 Source1:        LICENSE.txt
-Patch1:         ami_drop-compatible-releases-operator.patch
-Patch2:         ami_drop-extras-require.patch
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module setuptools}
@@ -57,8 +55,6 @@ This package has been tested with Python 2.7, 3.4, 3.5, 3.6 and 3.7.
 
 %prep
 %setup -q -n azure-mgmt-iothub-%{version}
-%patch1 -p1
-%patch2 -p1
 
 %build
 install -m 644 %{SOURCE1} %{_builddir}/azure-mgmt-iothub-%{version}

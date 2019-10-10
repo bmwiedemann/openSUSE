@@ -25,10 +25,16 @@ License:        MIT
 Group:          Development/Languages/Python
 Url:            https://github.com/Azure/azure-sdk-for-python
 BuildRequires:  python-rpm-macros
+Requires:       python-azure-appconfiguration < 2.0.0
+Requires:       python-azure-appconfiguration >= 1.0.0
 Requires:       python-azure-applicationinsights < 1.0.0
 Requires:       python-azure-applicationinsights >= 0.1.0
-Requires:       python-azure-batch < 7.0.0
-Requires:       python-azure-batch >= 6.0.0
+Requires:       python-azure-batch < 9.0.0
+Requires:       python-azure-batch >= 8.0.0
+Requires:       python-azure-cognitiveservices-anomalydetector < 1.0.0
+Requires:       python-azure-cognitiveservices-anomalydetector >= 0.2.0
+Requires:       python-azure-cognitiveservices-formrecognizer < 1.0.0
+Requires:       python-azure-cognitiveservices-formrecognizer >= 0.1.0
 Requires:       python-azure-cognitiveservices-knowledge-qnamaker < 1.0.0
 Requires:       python-azure-cognitiveservices-knowledge-qnamaker >= 0.1.0
 Requires:       python-azure-cognitiveservices-language-luis < 1.0.0
@@ -37,6 +43,8 @@ Requires:       python-azure-cognitiveservices-language-spellcheck < 2.0.0
 Requires:       python-azure-cognitiveservices-language-spellcheck >= 1.0.0
 Requires:       python-azure-cognitiveservices-language-textanalytics < 1.0.0
 Requires:       python-azure-cognitiveservices-language-textanalytics >= 0.1.0
+Requires:       python-azure-cognitiveservices-personalizer < 1.0.0
+Requires:       python-azure-cognitiveservices-personalizer >= 0.1.0
 Requires:       python-azure-cognitiveservices-search-autosuggest < 1.0.0
 Requires:       python-azure-cognitiveservices-search-autosuggest >= 0.1.0
 Requires:       python-azure-cognitiveservices-search-customimagesearch < 1.0.0
@@ -61,6 +69,10 @@ Requires:       python-azure-cognitiveservices-vision-contentmoderator < 2.0.0
 Requires:       python-azure-cognitiveservices-vision-contentmoderator >= 1.0.0
 Requires:       python-azure-cognitiveservices-vision-customvision < 1.0.0
 Requires:       python-azure-cognitiveservices-vision-customvision >= 0.3.0
+Requires:       python-azure-cognitiveservices-vision-face < 1.0.0
+Requires:       python-azure-cognitiveservices-vision-face >= 0.4.0
+Requires:       python-azure-cosmos < 5.0.0
+Requires:       python-azure-cosmos >= 4.0.0
 Requires:       python-azure-datalake-store < 1.0.0
 Requires:       python-azure-datalake-store >= 0.0.30
 Requires:       python-azure-eventgrid < 2.0.0
@@ -69,6 +81,12 @@ Requires:       python-azure-graphrbac < 1.0.0
 Requires:       python-azure-graphrbac >= 0.40.0
 Requires:       python-azure-keyvault < 2.0.0
 Requires:       python-azure-keyvault >= 1.1.0
+Requires:       python-azure-keyvault-certificates < 5.0.0
+Requires:       python-azure-keyvault-certificates >= 4.0.0
+Requires:       python-azure-keyvault-keys < 5.0.0
+Requires:       python-azure-keyvault-keys >= 4.0.0
+Requires:       python-azure-keyvault-secrets < 5.0.0
+Requires:       python-azure-keyvault-secrets >= 4.0.0
 Requires:       python-azure-loganalytics < 1.0.0
 Requires:       python-azure-loganalytics >= 0.1.0
 Requires:       python-azure-mgmt < 5.0.0
@@ -81,12 +99,12 @@ Requires:       python-azure-servicefabric < 7.0.0
 Requires:       python-azure-servicefabric >= 6.3.0.0
 Requires:       python-azure-servicemanagement-legacy < 1.0.0
 Requires:       python-azure-servicemanagement-legacy >= 0.20.6
-Requires:       python-azure-storage-blob < 2.0.0
-Requires:       python-azure-storage-blob >= 1.3
-Requires:       python-azure-storage-file < 2.0.0
-Requires:       python-azure-storage-file >= 1.3
-Requires:       python-azure-storage-queue < 2.0.0
-Requires:       python-azure-storage-queue >= 1.3
+Requires:       python-azure-storage-blob < 3.0.0
+Requires:       python-azure-storage-blob >= 2.0.0
+Requires:       python-azure-storage-file < 3.0.0
+Requires:       python-azure-storage-file >= 2.0.0
+Requires:       python-azure-storage-queue < 3.0.0
+Requires:       python-azure-storage-queue >= 2.0.0
 
 BuildArch:      noarch
 

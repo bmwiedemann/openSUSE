@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct  4 12:18:44 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 5.0.0
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package
+- Drop patches to support older versions of setuptools as
+  SLE-12 is now shipping with a recent enough version
+  + amn_drop-compatible-releases-operator.patch
+  + amn_drop-extras-require.patch
+- Update %description from setup.py
+
+-------------------------------------------------------------------
 Fri Apr 12 13:07:40 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

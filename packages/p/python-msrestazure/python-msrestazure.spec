@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-msrestazure
-Version:        0.6.0
+Version:        0.6.2
 Release:        0
 Summary:        AutoRest swagger generator - Azure-specific module
 License:        MIT

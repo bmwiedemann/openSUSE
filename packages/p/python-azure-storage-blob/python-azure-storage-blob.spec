@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-storage-blob
-Version:        1.5.0
+Version:        2.1.0
 Release:        0
 Summary:        Microsoft Azure Storage Blob Client Library for Python
 License:        MIT
@@ -26,8 +26,6 @@ Group:          Development/Languages/Python
 Url:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-storage-blob/azure-storage-blob-%{version}.tar.gz
 Source1:        LICENSE.txt
-Patch1:         asb_drop-compatible-releases-operator.patch
-Patch2:         asb_drop-extras-require.patch
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-storage-nspkg >= 3.0.0}
 BuildRequires:  %{python_module setuptools}
@@ -35,8 +33,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-azure-common >= 1.1.5
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-azure-storage-common < 2.0.0
-Requires:       python-azure-storage-common >= 1.4
+Requires:       python-azure-storage-common < 3.0.0
+Requires:       python-azure-storage-common >= 2.1.0
 Requires:       python-azure-storage-nspkg >= 3.0.0
 %if "%{python_flavor}" == "python2"
 Requires:       python-futures
@@ -56,8 +54,6 @@ Page.
 
 %prep
 %setup -q -n azure-storage-blob-%{version}
-%patch1 -p1
-%patch2 -p1
 
 %build
 install -m 644 %{SOURCE1} %{_builddir}/azure-storage-blob-%{version}

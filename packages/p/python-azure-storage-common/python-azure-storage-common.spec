@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-storage-common
-Version:        1.4.0
+Version:        2.1.0
 Release:        0
 Summary:        Microsoft Azure Storage Common Client Library for Python
 License:        MIT
@@ -26,7 +26,6 @@ Group:          Development/Languages/Python
 Url:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-storage-common/azure-storage-common-%{version}.tar.gz
 Source1:        LICENSE.txt
-Patch1:         asc_drop-extras-require.patch
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-storage-nspkg >= 3.0.0}
 BuildRequires:  %{python_module setuptools}
@@ -53,7 +52,6 @@ Page.
 
 %prep
 %setup -q -n azure-storage-common-%{version}
-%patch1 -p1
 
 %build
 install -m 644 %{SOURCE1} %{_builddir}/azure-storage-common-%{version}

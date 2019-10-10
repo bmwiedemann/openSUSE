@@ -13,29 +13,28 @@
 # published by the Open Source Initiative.
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-uamqp
-Version:        1.1.0
+Version:        1.2.2
 Release:        0
-License:        MIT
 Summary:        AMQP 10 Client Library for Python
-Url:            https://github.com/Azure/azure-uamqp-python
+License:        MIT
 Group:          Development/Languages/Python
+Url:            https://github.com/Azure/azure-uamqp-python
 Source:         https://files.pythonhosted.org/packages/source/u/uamqp/uamqp-%{version}.tar.gz
-Patch1:         u_drop-compatible-releases-operator.patch
-Patch2:         u_drop-extras-require.patch
-Patch3:         u_strip-werror.patch
-BuildRequires:  python-rpm-macros
+Patch1:         u_strip-werror.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module certifi >= 2017.4.17}
 BuildRequires:  %{python_module six >= 1.0}
 # /SECTION
-BuildRequires:  fdupes
 BuildRequires:  cmake
+BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  libopenssl-devel
@@ -51,8 +50,6 @@ AMQP 1.0 Client Library for Python
 %prep
 %setup -q -n uamqp-%{version}
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
 %build
 export CFLAGS="%{optflags}"

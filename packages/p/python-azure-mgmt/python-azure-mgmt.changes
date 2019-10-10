@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri Oct  4 12:13:58 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add additional packages from the Azure SDK to Requires
+  + python-azure-mgmt-alertsmanagement
+  + python-azure-mgmt-apimanagement
+  + python-azure-mgmt-appconfiguration
+  + python-azure-mgmt-attestation
+  + python-azure-mgmt-automation
+  + python-azure-mgmt-costmanagement
+  + python-azure-mgmt-databricks
+  + python-azure-mgmt-deploymentmanager
+  + python-azure-mgmt-edgegateway
+  + python-azure-mgmt-frontdoor
+  + python-azure-mgmt-healthcareapis
+  + python-azure-mgmt-labservices
+  + python-azure-mgmt-machinelearningservices
+  + python-azure-mgmt-managedservices
+  + python-azure-mgmt-mixedreality
+  + python-azure-mgmt-netapp
+  + python-azure-mgmt-peering
+  + python-azure-mgmt-privatedns
+- Update version numbers for component packages in Requires
+  + python-azure-mgmt-batch >= 7.0.0
+  + python-azure-mgmt-cognitiveservices >= 5.0.0
+  + python-azure-mgmt-compute >= 7.0.0
+  + python-azure-mgmt-consumption >= 3.0.0
+  + python-azure-mgmt-containerregistry >= 3.0.0
+  + python-azure-mgmt-containerservice >= 7.0.0
+  + python-azure-mgmt-datamigration >= 3.0.0
+  + python-azure-mgmt-dns >= 2.1.0
+  + python-azure-mgmt-eventhub >= 3.0.0
+  + python-azure-mgmt-devtestlabs >= 4.0.0
+  + python-azure-mgmt-hdinsight >= 1.2.0
+  + python-azure-mgmt-keyvault >= 2.0.0
+  + python-azure-mgmt-msi >= 1.0.0
+  + python-azure-mgmt-network >= 5.0.0
+  + python-azure-mgmt-resource >= 4.0.0
+  + python-azure-mgmt-storage >= 4.0.0
+
+-------------------------------------------------------------------
+Wed Sep 11 11:26:32 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Drop patch to support older versions of setuptools as
+  SLE-12 is now shipping with a recent enough version
+  + am_drop-compatible-releases-operator.patch
+
+-------------------------------------------------------------------
 Mon Apr 15 11:48:04 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add additional packages from the Azure SDK to Requires

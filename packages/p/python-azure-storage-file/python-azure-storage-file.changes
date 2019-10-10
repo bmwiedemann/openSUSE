@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct  4 12:21:54 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.1.0
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package
+- Drop patches to support older versions of setuptools as
+  SLE-12 is now shipping with a recent enough version
+  + asf_drop-compatible-releases-operator.patch
+  + asf_drop-extras-require.patch
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Mon Apr 15 09:57:51 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

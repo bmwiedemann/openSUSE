@@ -58,4 +58,12 @@ The final version will be released as &quot;4.0.0.0&quot;. Thanks!
 - Update Summary and %description from setup.py</comment>
     <requestid>701561</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>c9e4075c58c6d2828233fc86a7558fcc</srcmd5>
+    <version>4.0.0rc2</version>
+    <time>1570710627</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to latest version (forwarded request 735217 from glaubitz)</comment>
+    <requestid>735718</requestid>
+  </revision>
 </revisionlist>
