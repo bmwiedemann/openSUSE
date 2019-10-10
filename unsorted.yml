@@ -8974,6 +8974,8 @@ unsorted:
   - libguile1-devel 
   - libguile17 
   - libguilereadline-v-17-17 
+  - libgumbo-devel 
+  - libgumbo1 
   - libgupnp-1_2-0-32bit: [x86_64] 
   - libgupnp-av-devel 
   - libgupnp-devel 
@@ -9203,6 +9205,9 @@ unsorted:
   - libibverbs1-32bit: [x86_64] 
   - libical-devel 
   - libical-doc 
+  - libical-glib-devel 
+  - libical-glib-doc 
+  - libical-glib3 
   - libical3-32bit: [x86_64] 
   - libicecream-devel 
   - libicns-devel 
@@ -11481,15 +11486,10 @@ unsorted:
   - libtsm4 
   - libtspi1 
   - libtspi1-32bit: [x86_64] 
-  - libtss2-esys0 
   - libtss2-esys0-32bit: [x86_64] 
-  - libtss2-mu0 
   - libtss2-mu0-32bit: [x86_64] 
-  - libtss2-sys0 
   - libtss2-sys0-32bit: [x86_64] 
-  - libtss2-tcti-device0 
   - libtss2-tcti-device0-32bit: [x86_64] 
-  - libtss2-tcti-mssim0 
   - libtss2-tcti-mssim0-32bit: [x86_64] 
   - libtss2-tcti-tabrmd0 
   - libttf2 
@@ -16986,7 +16986,6 @@ unsorted:
   - python-caja-devel 
   - python-caja-lang 
   - python-castellan-doc 
-  - python-ceph-cfg 
   - python-chewing 
   - python-cinderclient-doc 
   - python-cliff-doc 
@@ -17160,6 +17159,7 @@ unsorted:
   - python-proliantutils 
   - python-pssh 
   - python-py2pack-doc 
+  - python-pybind11-devel 
   - python-pycadf-common 
   - python-pycadf-doc 
   - python-pycairo-common-devel 
@@ -17555,8 +17555,11 @@ unsorted:
   - python2-axolotl 
   - python2-axolotl-curve25519 
   - python2-ayatana-appindicator 
+  - python2-azure-appconfiguration 
   - python2-azure-applicationinsights 
   - python2-azure-batch 
+  - python2-azure-cognitiveservices-anomalydetector 
+  - python2-azure-cognitiveservices-formrecognizer 
   - python2-azure-cognitiveservices-knowledge-nspkg 
   - python2-azure-cognitiveservices-knowledge-qnamaker 
   - python2-azure-cognitiveservices-language-luis 
@@ -17564,6 +17567,7 @@ unsorted:
   - python2-azure-cognitiveservices-language-spellcheck 
   - python2-azure-cognitiveservices-language-textanalytics 
   - python2-azure-cognitiveservices-nspkg 
+  - python2-azure-cognitiveservices-personalizer 
   - python2-azure-cognitiveservices-search-autosuggest 
   - python2-azure-cognitiveservices-search-customimagesearch 
   - python2-azure-cognitiveservices-search-customsearch 
@@ -17577,17 +17581,29 @@ unsorted:
   - python2-azure-cognitiveservices-vision-computervision 
   - python2-azure-cognitiveservices-vision-contentmoderator 
   - python2-azure-cognitiveservices-vision-customvision 
+  - python2-azure-cognitiveservices-vision-face 
   - python2-azure-cognitiveservices-vision-nspkg 
   - python2-azure-common 
+  - python2-azure-core 
+  - python2-azure-cosmos 
   - python2-azure-datalake-store 
   - python2-azure-eventgrid 
   - python2-azure-graphrbac 
   - python2-azure-keyvault 
+  - python2-azure-keyvault-certificates 
+  - python2-azure-keyvault-keys 
+  - python2-azure-keyvault-nspkg 
+  - python2-azure-keyvault-secrets 
   - python2-azure-loganalytics 
   - python2-azure-mgmt 
   - python2-azure-mgmt-advisor 
+  - python2-azure-mgmt-alertsmanagement 
+  - python2-azure-mgmt-apimanagement 
+  - python2-azure-mgmt-appconfiguration 
   - python2-azure-mgmt-applicationinsights 
+  - python2-azure-mgmt-attestation 
   - python2-azure-mgmt-authorization 
+  - python2-azure-mgmt-automation 
   - python2-azure-mgmt-batch 
   - python2-azure-mgmt-batchai 
   - python2-azure-mgmt-billing 
@@ -17601,39 +17617,53 @@ unsorted:
   - python2-azure-mgmt-containerregistry 
   - python2-azure-mgmt-containerservice 
   - python2-azure-mgmt-cosmosdb 
+  - python2-azure-mgmt-costmanagement 
+  - python2-azure-mgmt-databricks 
   - python2-azure-mgmt-datafactory 
   - python2-azure-mgmt-datalake-analytics 
   - python2-azure-mgmt-datalake-nspkg 
   - python2-azure-mgmt-datalake-store 
   - python2-azure-mgmt-datamigration 
+  - python2-azure-mgmt-deploymentmanager 
   - python2-azure-mgmt-devspaces 
   - python2-azure-mgmt-devtestlabs 
   - python2-azure-mgmt-dns 
   - python2-azure-mgmt-documentdb 
+  - python2-azure-mgmt-edgegateway 
   - python2-azure-mgmt-eventgrid 
   - python2-azure-mgmt-eventhub 
+  - python2-azure-mgmt-frontdoor 
   - python2-azure-mgmt-hanaonazure 
   - python2-azure-mgmt-hdinsight 
+  - python2-azure-mgmt-healthcareapis 
+  - python2-azure-mgmt-imagebuilder 
   - python2-azure-mgmt-iotcentral 
   - python2-azure-mgmt-iothub 
   - python2-azure-mgmt-iothubprovisioningservices 
   - python2-azure-mgmt-keyvault 
   - python2-azure-mgmt-kusto 
+  - python2-azure-mgmt-labservices 
   - python2-azure-mgmt-loganalytics 
   - python2-azure-mgmt-logic 
   - python2-azure-mgmt-machinelearningcompute 
+  - python2-azure-mgmt-machinelearningservices 
+  - python2-azure-mgmt-managedservices 
   - python2-azure-mgmt-managementgroups 
   - python2-azure-mgmt-managementpartner 
   - python2-azure-mgmt-maps 
   - python2-azure-mgmt-marketplaceordering 
   - python2-azure-mgmt-media 
+  - python2-azure-mgmt-mixedreality 
   - python2-azure-mgmt-monitor 
   - python2-azure-mgmt-msi 
+  - python2-azure-mgmt-netapp 
   - python2-azure-mgmt-network 
   - python2-azure-mgmt-notificationhubs 
   - python2-azure-mgmt-nspkg 
+  - python2-azure-mgmt-peering 
   - python2-azure-mgmt-policyinsights 
   - python2-azure-mgmt-powerbiembedded 
+  - python2-azure-mgmt-privatedns 
   - python2-azure-mgmt-rdbms 
   - python2-azure-mgmt-recoveryservices 
   - python2-azure-mgmt-recoveryservicesbackup 
@@ -17641,9 +17671,11 @@ unsorted:
   - python2-azure-mgmt-relay 
   - python2-azure-mgmt-reservations 
   - python2-azure-mgmt-resource 
+  - python2-azure-mgmt-resourcegraph 
   - python2-azure-mgmt-scheduler 
   - python2-azure-mgmt-search 
   - python2-azure-mgmt-security 
+  - python2-azure-mgmt-serialconsole 
   - python2-azure-mgmt-servermanager 
   - python2-azure-mgmt-servicebus 
   - python2-azure-mgmt-servicefabric 
@@ -17651,6 +17683,8 @@ unsorted:
   - python2-azure-mgmt-sql 
   - python2-azure-mgmt-sqlvirtualmachine 
   - python2-azure-mgmt-storage 
+  - python2-azure-mgmt-storagecache 
+  - python2-azure-mgmt-storagesync 
   - python2-azure-mgmt-subscription 
   - python2-azure-mgmt-trafficmanager 
   - python2-azure-mgmt-web 
@@ -18740,7 +18774,6 @@ unsorted:
   - python2-pybars3 
   - python2-pybeam 
   - python2-pybind11 
-  - python2-pybind11-devel 
   - python2-pyblake2 
   - python2-pybluez 
   - python2-pybtex 
@@ -19831,8 +19864,11 @@ unsorted:
   - python3-aws-xray-sdk-requests 
   - python3-axolotl 
   - python3-axolotl-curve25519 
+  - python3-azure-appconfiguration 
   - python3-azure-applicationinsights 
   - python3-azure-batch 
+  - python3-azure-cognitiveservices-anomalydetector 
+  - python3-azure-cognitiveservices-formrecognizer 
   - python3-azure-cognitiveservices-knowledge-nspkg 
   - python3-azure-cognitiveservices-knowledge-qnamaker 
   - python3-azure-cognitiveservices-language-luis 
@@ -19840,6 +19876,7 @@ unsorted:
   - python3-azure-cognitiveservices-language-spellcheck 
   - python3-azure-cognitiveservices-language-textanalytics 
   - python3-azure-cognitiveservices-nspkg 
+  - python3-azure-cognitiveservices-personalizer 
   - python3-azure-cognitiveservices-search-autosuggest 
   - python3-azure-cognitiveservices-search-customimagesearch 
   - python3-azure-cognitiveservices-search-customsearch 
@@ -19853,17 +19890,29 @@ unsorted:
   - python3-azure-cognitiveservices-vision-computervision 
   - python3-azure-cognitiveservices-vision-contentmoderator 
   - python3-azure-cognitiveservices-vision-customvision 
+  - python3-azure-cognitiveservices-vision-face 
   - python3-azure-cognitiveservices-vision-nspkg 
   - python3-azure-common 
+  - python3-azure-core 
+  - python3-azure-cosmos 
   - python3-azure-datalake-store 
   - python3-azure-eventgrid 
   - python3-azure-graphrbac 
   - python3-azure-keyvault 
+  - python3-azure-keyvault-certificates 
+  - python3-azure-keyvault-keys 
+  - python3-azure-keyvault-nspkg 
+  - python3-azure-keyvault-secrets 
   - python3-azure-loganalytics 
   - python3-azure-mgmt 
   - python3-azure-mgmt-advisor 
+  - python3-azure-mgmt-alertsmanagement 
+  - python3-azure-mgmt-apimanagement 
+  - python3-azure-mgmt-appconfiguration 
   - python3-azure-mgmt-applicationinsights 
+  - python3-azure-mgmt-attestation 
   - python3-azure-mgmt-authorization 
+  - python3-azure-mgmt-automation 
   - python3-azure-mgmt-batch 
   - python3-azure-mgmt-batchai 
   - python3-azure-mgmt-billing 
@@ -19877,39 +19926,53 @@ unsorted:
   - python3-azure-mgmt-containerregistry 
   - python3-azure-mgmt-containerservice 
   - python3-azure-mgmt-cosmosdb 
+  - python3-azure-mgmt-costmanagement 
+  - python3-azure-mgmt-databricks 
   - python3-azure-mgmt-datafactory 
   - python3-azure-mgmt-datalake-analytics 
   - python3-azure-mgmt-datalake-nspkg 
   - python3-azure-mgmt-datalake-store 
   - python3-azure-mgmt-datamigration 
+  - python3-azure-mgmt-deploymentmanager 
   - python3-azure-mgmt-devspaces 
   - python3-azure-mgmt-devtestlabs 
   - python3-azure-mgmt-dns 
   - python3-azure-mgmt-documentdb 
+  - python3-azure-mgmt-edgegateway 
   - python3-azure-mgmt-eventgrid 
   - python3-azure-mgmt-eventhub 
+  - python3-azure-mgmt-frontdoor 
   - python3-azure-mgmt-hanaonazure 
   - python3-azure-mgmt-hdinsight 
+  - python3-azure-mgmt-healthcareapis 
+  - python3-azure-mgmt-imagebuilder 
   - python3-azure-mgmt-iotcentral 
   - python3-azure-mgmt-iothub 
   - python3-azure-mgmt-iothubprovisioningservices 
   - python3-azure-mgmt-keyvault 
   - python3-azure-mgmt-kusto 
+  - python3-azure-mgmt-labservices 
   - python3-azure-mgmt-loganalytics 
   - python3-azure-mgmt-logic 
   - python3-azure-mgmt-machinelearningcompute 
+  - python3-azure-mgmt-machinelearningservices 
+  - python3-azure-mgmt-managedservices 
   - python3-azure-mgmt-managementgroups 
   - python3-azure-mgmt-managementpartner 
   - python3-azure-mgmt-maps 
   - python3-azure-mgmt-marketplaceordering 
   - python3-azure-mgmt-media 
+  - python3-azure-mgmt-mixedreality 
   - python3-azure-mgmt-monitor 
   - python3-azure-mgmt-msi 
+  - python3-azure-mgmt-netapp 
   - python3-azure-mgmt-network 
   - python3-azure-mgmt-notificationhubs 
   - python3-azure-mgmt-nspkg 
+  - python3-azure-mgmt-peering 
   - python3-azure-mgmt-policyinsights 
   - python3-azure-mgmt-powerbiembedded 
+  - python3-azure-mgmt-privatedns 
   - python3-azure-mgmt-rdbms 
   - python3-azure-mgmt-recoveryservices 
   - python3-azure-mgmt-recoveryservicesbackup 
@@ -19917,9 +19980,11 @@ unsorted:
   - python3-azure-mgmt-relay 
   - python3-azure-mgmt-reservations 
   - python3-azure-mgmt-resource 
+  - python3-azure-mgmt-resourcegraph 
   - python3-azure-mgmt-scheduler 
   - python3-azure-mgmt-search 
   - python3-azure-mgmt-security 
+  - python3-azure-mgmt-serialconsole 
   - python3-azure-mgmt-servermanager 
   - python3-azure-mgmt-servicebus 
   - python3-azure-mgmt-servicefabric 
@@ -19927,6 +19992,8 @@ unsorted:
   - python3-azure-mgmt-sql 
   - python3-azure-mgmt-sqlvirtualmachine 
   - python3-azure-mgmt-storage 
+  - python3-azure-mgmt-storagecache 
+  - python3-azure-mgmt-storagesync 
   - python3-azure-mgmt-subscription 
   - python3-azure-mgmt-trafficmanager 
   - python3-azure-mgmt-web 
@@ -21162,7 +21229,6 @@ unsorted:
   - python3-pybars3 
   - python3-pybeam 
   - python3-pybind11 
-  - python3-pybind11-devel 
   - python3-pyblake2 
   - python3-pybluez 
   - python3-pybtex 
@@ -32021,6 +32087,8 @@ unsorted:
   - typelib-1_0-XreaderView-1_5 
   - typelib-1_0-Zeitgeist-2_0 
   - typelib-1_0-kkc-1_0 
+  - typelib-1_0-libical-glib3 
+  - typelib-1_0-libical3 
   - typelib-1_0-libmirage-3_2 
   - typesafe-config 
   - typesafe-config-javadoc 

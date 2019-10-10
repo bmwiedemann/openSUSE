@@ -2835,6 +2835,11 @@
     <package name="libtracker-sparql-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtre5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libts0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libtss2-esys0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libtss2-mu0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libtss2-sys0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libtss2-tcti-device0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libtss2-tcti-mssim0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtumbler-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libturbojpeg0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libtwolame0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
