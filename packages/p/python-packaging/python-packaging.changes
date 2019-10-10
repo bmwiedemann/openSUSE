@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct  8 09:22:51 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 19.2:
+  * Many buildsystem tweaks to accomodate for distribution shipping
+- Remove all the merged patches:
+  * 0001-Fix-test-failures-test_linux_platforms_manylinux-for.patch
+  * 0002-Fix-check-for-64-bit-OS.patch
+  * 0003-Add-additional-test-to-get-100-branch-coverage.patch
+  * 0004-Fix-test_macos_version_detection-failure-on-32-bit-L.patch
+  * 0005-Drop-dependency-on-attrs.patch
+
+-------------------------------------------------------------------
 Mon Aug 19 08:15:30 UTC 2019 - Dan Čermák <dcermak@suse.com>
 
 - Remove dependency on attrs

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 01 10:45:44 UTC 2019 - daniel.molkentin@suse.com
+
+- Update to version 049+git114.058e566c:
+  * 35network-legacy: only skip waiting for interfaces if netroot is set (bsc#1152006)
+  * fixup "Dracut: only login to one target at a time" (bsc#1152650)
+
+-------------------------------------------------------------------
 Mon Sep 23 11:37:53 UTC 2019 - daniel.molkentin@suse.com
 
 - Update to version 049+git112.fe41ccd9:
@@ -55,13 +62,14 @@ Thu Jul 18 09:43:11 UTC 2019 - daniel.molkentin@suse.com
 Mon Jun 17 11:41:01 UTC 2019 - ext-linus.larsson@se.fujitsu.com
 
 - Update to version 049+git94.aef7a52b:
-  * ucode: properly include early only ucode
+  * ucode: properly include early only ucode (bsc#1098915, bsc#1125393)
   * keep network device naming scheme on upgrade (bsc#1136927)
 
 -------------------------------------------------------------------
 Sat May 25 19:40:09 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
 
 - Bump to 049
+- Contains fixes for bsc#1134472, bsc#1134347 and bsc#1133819
 - Patches are now maintained in git
   * Removed 0012-40network-Fix-race-condition-when-wait-for-networks.patch
   * Removed 0013-40network-always-start-netroot-in-ifup.sh.patch

@@ -99,4 +99,19 @@
     <comment></comment>
     <requestid>724992</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d80c33a383c6ea6646c5f162a612a25d</srcmd5>
+    <version>19.2</version>
+    <time>1570701101</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 19.2:
+  * Many buildsystem tweaks to accomodate for distribution shipping
+- Remove all the merged patches:
+  * 0001-Fix-test-failures-test_linux_platforms_manylinux-for.patch
+  * 0002-Fix-check-for-64-bit-OS.patch
+  * 0003-Add-additional-test-to-get-100-branch-coverage.patch
+  * 0004-Fix-test_macos_version_detection-failure-on-32-bit-L.patch
+  * 0005-Drop-dependency-on-attrs.patch</comment>
+    <requestid>736042</requestid>
+  </revision>
 </revisionlist>

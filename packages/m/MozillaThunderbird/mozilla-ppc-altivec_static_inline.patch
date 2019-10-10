@@ -1,0 +1,20 @@
+# HG changeset patch
+# User msirringhaus@suse.de
+# Date 1558452418 -7200
+#      Tue May 21 17:26:58 2019 +0200
+# Node ID 6cd963b6c82ea6629aaf4050851789b78f310338
+# Parent  602e92722e765a3c238d3b96b26c0c8063b5eeb4
+imported patch mozilla-ppc-altivec_static_inline.patch
+
+diff -r 602e92722e76 -r 6cd963b6c82e gfx/qcms/transform-altivec.c
+--- a/gfx/qcms/transform-altivec.c	Tue May 21 17:26:48 2019 +0200
++++ b/gfx/qcms/transform-altivec.c	Tue May 21 17:26:58 2019 +0200
+@@ -30,7 +30,7 @@
+ static const ALIGN float floatScaleX4 = FLOATSCALE;
+ static const ALIGN float clampMaxValueX4 = CLAMPMAXVAL;
+ 
+-inline vector float load_aligned_float(float *dataPtr)
++static inline vector float load_aligned_float(float *dataPtr)
+ {
+ 	vector float data = vec_lde(0, dataPtr);
+ 	vector unsigned char moveToStart = vec_lvsl(0, dataPtr);

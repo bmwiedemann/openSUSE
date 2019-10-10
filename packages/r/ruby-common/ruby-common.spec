@@ -12,9 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+### seems that %{_rpmmacrodir} is not known on SLE 12 / Leap 42
+%if 0%{?suse_version} == 1315
+%define _rpmmacrodir /etc/rpm
+%endif
 
 Name:           ruby-common
 Version:        2.6

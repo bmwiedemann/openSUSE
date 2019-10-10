@@ -710,4 +710,29 @@ All packages broken by this update should be fixed now</comment>
     <comment></comment>
     <requestid>729333</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>59865a06adf495365b3a3e801a317240</srcmd5>
+    <version>1.17.2</version>
+    <time>1570700991</time>
+    <user>dimstar_suse</user>
+    <comment>- Force cythonization to ensure build under different versions of
+  python
+
+- disable tests TestF77ReturnCharacter and TestF90ReturnCharacter for s390x
+  https://github.com/numpy/numpy/issues/11831
+  to make the package build.
+  * s390x.patch
+
+- Update to 1.17.2:
+  * #14418: BUG: Fix aradixsort indirect indexing.
+  * #14420: DOC: Fix a minor typo in dispatch documentation.
+  * #14421: BUG: test, fix regression in converting to ctypes
+  * #14430: BUG: Do not show Override module in private error classes.
+  * #14432: BUG: Fixed maximum relative error reporting in assert_allclose.
+  * #14433: BUG: Fix uint-overflow if padding with linear_ramp and negative...
+  * #14436: BUG: Update 1.17.x with 1.18.0-dev pocketfft.py.
+- Add dep on pytest-xdist and use threaded tests execution
+  shaving around 400s on local build</comment>
+    <requestid>734807</requestid>
+  </revision>
 </revisionlist>

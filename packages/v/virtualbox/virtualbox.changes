@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Oct  8 16:28:12 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- added "BuildRequires: pkgconfig(xdamage)" in order to fix build
+  with upcoming changes in libglvnd/Mesa
+
+-------------------------------------------------------------------
+Mon Oct  7 14:58:25 UTC 2019 - Larry Finger <Larry.Finger@gmail.com>
+
+- Rework "fixes_for_5.4.patch" to unconditionally remove set_pages_nx() and
+  set_pages_x() as these changes are backported to Kernel:HEAD:KMP.
+
+-------------------------------------------------------------------
+Wed Oct  2 19:08:58 UTC 2019 - Larry Finger <Larry.Finger@gmail.com>
+
+- Update file "fixes_for_5.4.patch" to handle removal of DRIVER_PRIME and rework of
+  struct ttm_buffer_object.
+
+-------------------------------------------------------------------
+Thu Sep 26 14:46:23 UTC 2019 - Larry Finger <Larry.Finger@gmail.com>
+
+- Remove BuildRequires for device-mapper as workarounds for OBS bugs are not allowed.
+
+-------------------------------------------------------------------
+Wed Sep 25 17:22:31 UTC 2019 - Larry Finger <Larry.Finger@gmail.com>
+
+- Added file "set_graphics_type.patch" to set graphics adapter type to VBoxVGA boo#1151896
+
+-------------------------------------------------------------------
+Mon Sep 23 17:17:18 UTC 2019 - Larry Finger <Larry.Finger@gmail.com>
+
+- Add BuildRequires for  device-mapper
+
+- Add file "fixes_for_5.4.patch" to handle API changes in kernel 5.4
+
+-------------------------------------------------------------------
 Sat Sep  7 21:28:46 UTC 2019 - Larry Finger <Larry.Finger@gmail.com>
 
 Added file "README.build" to documentation with instructions for me and any eventual successors.

@@ -2,9 +2,18 @@
  src/daemon/systemd/user/pulseaudio.service.in |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
---- a/src/daemon/systemd/user/pulseaudio.service.in
-+++ b/src/daemon/systemd/user/pulseaudio.service.in
-@@ -24,7 +24,7 @@ NoNewPrivileges=yes
+Index: pulseaudio-13.0/src/daemon/systemd/user/pulseaudio.service.in
+===================================================================
+--- pulseaudio-13.0.orig/src/daemon/systemd/user/pulseaudio.service.in	2019-09-13 15:10:23.000000000 +0200
++++ pulseaudio-13.0/src/daemon/systemd/user/pulseaudio.service.in	2019-10-07 17:43:52.208067968 +0200
+@@ -18,13 +18,13 @@
+ 
+ [Service]
+ ExecStart=@PA_BINARY@ --daemonize=no
+-LockPersonality=yes
++#LockPersonality=yes
+ MemoryDenyWriteExecute=yes
+ NoNewPrivileges=yes
  Restart=on-failure
  RestrictNamespaces=yes
  SystemCallArchitectures=native

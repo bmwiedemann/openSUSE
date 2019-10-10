@@ -21,7 +21,7 @@
 %define libopenmpt_modplug libopenmpt_modplug1
 %bcond_without mpg123
 Name:           libopenmpt
-Version:        0.4.6
+Version:        0.4.9
 Release:        0
 Summary:        C++ and C library to decode tracker music files
 License:        BSD-3-Clause

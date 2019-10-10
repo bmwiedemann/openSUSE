@@ -24,7 +24,7 @@
 # Package-wide golang version
 %define go_version 1.10
 %define go_tool go
-%define _version 1.0.0-rc8
+%define _version 1.0.0-rc9
 %define project github.com/opencontainers/runc
 
 # enable libseccomp for sle >= sle12sp2
@@ -41,7 +41,7 @@
 %endif
 
 Name:           runc
-Version:        1.0.0~rc8
+Version:        1.0.0~rc9
 Release:        0
 Summary:        Tool for spawning and running OCI containers
 License:        Apache-2.0
@@ -50,6 +50,7 @@ Url:            https://github.com/opencontainers/runc
 Source0:        https://github.com/opencontainers/runc/releases/download/v%{_version}/runc.tar.xz#/runc-%{_version}.tar.xz
 Source1:        https://github.com/opencontainers/runc/releases/download/v%{_version}/runc.tar.xz.asc#/runc-%{_version}.tar.xz.asc
 Source2:        runc.keyring
+Source3:        runc-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  go-go-md2man
 BuildRequires:  golang(API) = %{go_version}
@@ -90,9 +91,9 @@ Test package for runc. It contains the source code and the tests.
 # some point during the build and you need to directly use go list directly it
 # will get confused by symlinks.
 export GOPATH=${HOME}/go
-mkdir -pv $HOME/go/src/%project
+mkdir -p $HOME/go/src/%project
 rm -rf $HOME/go/src/%project/*
-cp -av * $HOME/go/src/%project
+cp -a * $HOME/go/src/%project
 
 # Additionally enable seccomp.
 %if 0%{?with_libseccomp}
@@ -113,7 +114,7 @@ EOF
 source ./.runc_build_env
 
 # Build runc.
-make -C "$HOME/go/src/%project" EXTRA_FLAGS="-x $BUILDFLAGS" BUILDTAGS="$BUILDTAGS" COMMIT_NO="%{git_version}" runc
+make -C "$HOME/go/src/%project" EXTRA_FLAGS="$BUILDFLAGS" BUILDTAGS="$BUILDTAGS" COMMIT_NO="%{git_version}" runc
 mv "$HOME/go/src/%project/runc" %{name}-%{version}
 
 # Build man pages, this can only be done on arches where we can build go-md2man.

@@ -18,16 +18,16 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ldap3
-Version:        2.6
+Version:        2.6.1
 Release:        0
 Summary:        A strictly RFC 4511 conforming LDAP V3 pure Python client
 License:        LGPL-3.0-only
-Group:          Development/Languages/Python
 URL:            https://github.com/cannatag/ldap3
 Source:         https://github.com/cannatag/ldap3/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pyasn1 >= 0.1.8}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-testsuite
@@ -44,7 +44,7 @@ The name has been changed to avoid confusion with the python-ldap library.
 
 %prep
 %setup -q -n ldap3-%{version}
-sed -i 's/\r$//' COPYING.LESSER.txt COPYING.txt README.rst LICENSE.txt
+dos2unix COPYING.LESSER.txt COPYING.txt README.rst LICENSE.txt
 
 %build
 %python_build

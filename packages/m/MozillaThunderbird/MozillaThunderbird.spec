@@ -18,19 +18,28 @@
 
 
 # changed with every update
-%define major 68
-%define mainver %major.1.0
-%define version_postfix %{nil}
-%define update_channel release
-%define releasedate 20190909201201
-%define source_prefix thunderbird-%{mainver}
+# orig_version vs. mainver: To have beta-builds
+# FF70beta3 would be released as FF69.99
+# orig_version would be the upstream tar ball
+# orig_version 70.0
+# orig_suffix b3
+# major 69
+# mainver %major.99
+%define major           68
+%define mainver         %major.1.1
+%define orig_version    68.1.1
+%define orig_suffix     %{nil}
+%define update_channel  release
+%define releasedate     20190924105435
+%define source_prefix   thunderbird-%{mainver}
 
 # always build with GCC as SUSE Security Team requires that
-# TODO: Deactivate this as the next step
-%define clang_build 1
+%define clang_build 0
 
 # PIE, full relro
 %define build_hardened 1
+
+%bcond_with only_print_mozconfig
 
 %bcond_without mozilla_tb_kde4
 %bcond_with    mozilla_tb_valgrind
@@ -75,7 +84,7 @@ BuildRequires:  memory-constraints
 BuildRequires:  mozilla-nspr-devel >= 4.21
 BuildRequires:  mozilla-nss-devel >= 3.44.1
 BuildRequires:  nasm >= 2.13
-BuildRequires:  nodejs >= 8.11
+BuildRequires:  nodejs8 >= 8.11
 BuildRequires:  python-devel
 BuildRequires:  python2-xml
 BuildRequires:  python3 >= 3.5
@@ -116,9 +125,9 @@ BuildRequires:  clang4-devel
 Recommends:     libavcodec-full >= 0.10.16
 Version:        %{mainver}
 Release:        0
-Provides:       MozillaThunderbird-devel = %version
-Obsoletes:      MozillaThunderbird-devel < %version
+Provides:       MozillaThunderbird-devel = %{version}
 Provides:       thunderbird = %{version}
+Obsoletes:      MozillaThunderbird-devel < %{version}
 Provides:       appdata()
 Provides:       appdata(thunderbird.appdata.xml)
 %if %{with mozilla_tb_kde4}
@@ -131,32 +140,50 @@ Summary:        An integrated email, news feeds, chat, and newsgroups client
 License:        MPL-2.0
 Group:          Productivity/Networking/Email/Clients
 Url:            https://www.thunderbird.net/
-Source:         http://ftp.mozilla.org/pub/%{progname}/releases/%{version}%{version_postfix}/source/%{progname}-%{version}%{version_postfix}.source.tar.xz
+%if !%{with only_print_mozconfig}
+Source:         http://ftp.mozilla.org/pub/%{progname}/releases/%{orig_version}%{orig_suffix}/source/%{progname}-%{orig_version}%{orig_suffix}.source.tar.xz
 Source1:        thunderbird.desktop
-Source2:        tar_stamps
+Source2:        thunderbird-rpmlintrc
 Source3:        mozilla.sh.in
-Source4:        l10n-%{version}.tar.xz
+Source4:        tar_stamps
 Source6:        suse-default-prefs.js
-Source8:        thunderbird-rpmlintrc
+Source7:        l10n-%{version}.tar.xz
 Source9:        thunderbird.appdata.xml
-Source10:       create-tar.sh
-Source11:       compare-locales.tar.xz
-Source12:       kde.js
-Source13:       https://ftp.mozilla.org/pub/thunderbird/releases/%{version}/source/thunderbird-%{version}.source.tar.xz.asc
-Source14:       http://ftp.mozilla.org/pub/thunderbird/releases/%{version}/KEY#/%{name}.keyring
+Source10:       compare-locales.tar.xz
+Source14:       https://github.com/openSUSE/firefox-scripts/raw/master/create-tar.sh
+Source20:       https://ftp.mozilla.org/pub/%{progname}/releases/%{orig_version}%{orig_suffix}/source/%{progname}-%{orig_version}%{orig_suffix}.source.tar.xz.asc
+Source21:       https://ftp.mozilla.org/pub/%{progname}/releases/%{orig_version}/KEY#/mozilla.keyring
 # Gecko/Toolkit
 Patch1:         mozilla-nongnome-proxies.patch
 Patch2:         mozilla-kde.patch
-Patch3:         mozilla-aarch64-startup-crash.patch
-Patch4:         fix-missing-return-warning.patch
-Patch5:         thunderbird-locale-build.patch
+Patch3:         mozilla-ntlm-full-path.patch
+Patch4:         mozilla-openaes-decl.patch
+Patch5:         mozilla-aarch64-startup-crash.patch
+Patch6:         mozilla-bmo1463035.patch
+Patch7:         mozilla-cubeb-noreturn.patch
+Patch8:         mozilla-fix-aarch64-libopus.patch
+Patch9:         mozilla-disable-wasm-emulate-arm-unaligned-fp-access.patch
+Patch10:        mozilla-s390-context.patch
+Patch11:        mozilla-s390-bigendian.patch
+Patch12:        mozilla-reduce-rust-debuginfo.patch
+Patch13:        mozilla-ppc-altivec_static_inline.patch
+Patch14:        mozilla-bmo1005535.patch
+Patch15:        mozilla-bmo1568145.patch
+Patch16:        mozilla-bmo1573381.patch
+Patch17:        mozilla-bmo1504834-part1.patch
+Patch18:        mozilla-bmo1504834-part2.patch
+Patch19:        mozilla-bmo1504834-part3.patch
+Patch20:        mozilla-bmo1511604.patch
+Patch21:        mozilla-bmo1554971.patch
+Patch22:        mozilla-nestegg-big-endian.patch
+Patch23:        mozilla-bmo1512162.patch
+Patch24:        mozilla-fix-top-level-asm.patch
+Patch100:       thunderbird-broken-locales-build.patch
+%endif # only_print_mozconfig
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 PreReq:         coreutils fileutils textutils /bin/sh
 Recommends:     libcanberra0
 Recommends:     libpulse0
-# Exclude bigendian archs for now, have not built
-# since version 45.8.0
-ExcludeArch:    ppc ppc64 s390 s390x
 ### build options
 %ifarch aarch64 ppc ppc64 ppc64le s390 s390x ia64 %arm
 %define crashreporter 0
@@ -169,7 +196,8 @@ ExcludeArch:    ppc ppc64 s390 s390x
 %define __requires_exclude ^(libmoz.*|liblgpllibs.*|libxul.*|libldap.*|libldif.*|libprldap.*)$
 Requires:       mozilla-nspr >= %(rpm -q --queryformat '%%{VERSION}' mozilla-nspr)
 Requires:       mozilla-nss >= %(rpm -q --queryformat '%%{VERSION}' mozilla-nss)
-Conflicts:      thunderbird-esr
+Requires(post): desktop-file-utils
+Requires(postun): desktop-file-utils
 %define libgssapi libgssapi_krb5.so.2
 
 %description
@@ -179,7 +207,6 @@ managing email, news feeds, chat, and news groups. It is a local
 yet easy to use.
 
 %if %localize
-
 %package translations-common
 Summary:        Common translations for %{appname}
 Group:          System/Localization
@@ -194,7 +221,7 @@ of %{appname}.
 %package translations-other
 Summary:        Extra translations for %{appname}
 Group:          System/Localization
-Provides:       locale(%{name}:ast;be;bg;bn_BD;br;et;eu;fy_NL;ga_IE;gd;gl;he;hr;hy_AM;id;is;lt;nn_NO;pa_IN;rm;ro;si;sk;sl;sq;sr;ta_LK;tr;uk;vi)
+Provides:       locale(%{name}:ast;be;bg;br;cak;cy;dsb;et;eu;fy_NL;ga_IE;gd;gl;he;hr;hsb;hy_AM;id;is;ka;kab;kk;lt;ms;nn_NO;rm;ro;si;sk;sl;sq;sr;tr;uk;uz;vi)
 Requires:       %{name} = %{version}
 Obsoletes:      %{name}-translations < %{version}-%{release}
 
@@ -213,16 +240,17 @@ This subpackage contains the Breakpad created and compatible debugging
 symbols meant for upload to Mozilla's crash collector database.
 %endif
 
+%if !%{with only_print_mozconfig}
 %prep
 %if %localize
 # If generated incorrectly, the tarball will be ~270B in
 # size, so 1MB seems like good enough limit to check.
 MINSIZE=1048576
-if (( $(stat -Lc%s "%{SOURCE4}") < MINSIZE)); then
+if (( $(stat -Lc%s "%{SOURCE7}") < MINSIZE)); then
     echo "Translations tarball %{SOURCE7} not generated properly."
     exit 1
 fi
-%setup -q -n %{source_prefix} -b 4 -b 11
+%setup -q -n %{source_prefix} -b 7 -b 10
 %else
 %setup -q -n %{source_prefix}
 %endif
@@ -233,11 +261,33 @@ fi
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
+%ifarch s390x
+%patch11 -p1
+%endif
+%patch12 -p1
+%patch13 -p1
+%patch14 -p1
+%patch15 -p1
+%patch16 -p1
+%patch17 -p1
+%patch18 -p1
+%patch19 -p1
+%patch20 -p1
+%patch21 -p1
+%patch22 -p1
+%patch23 -p1
+%patch24 -p1
+# Thunderbird
+%patch100 -p1
+%endif # only_print_mozconfig
 
 %build
-#
-# Limit RAM usage to avoid OOM
-
+%if !%{with only_print_mozconfig}
 %define _lto_cflags %{nil}
 # no need to add build time to binaries
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
@@ -252,14 +302,12 @@ if test "$kdehelperversion" != %{kde_helper_version}; then
   exit 1
 fi
 %endif
+%endif # only_print_mozconfig
 
 export SUSE_ASNEEDED=0
 export MOZ_BUILD_DATE=%{releasedate}
 export MOZILLA_OFFICIAL=1
 export BUILD_OFFICIAL=1
-%if %{update_channel} == "esr"
-export MOZ_ESR=1
-%endif
 %if 0%{?suse_version} <= 1320
 export CC=gcc-7
 %else
@@ -285,10 +333,16 @@ export CXXFLAGS="$CFLAGS"
 export RUSTFLAGS="-Cdebuginfo=0"
 %endif
 export MOZCONFIG=$RPM_BUILD_DIR/mozconfig
+%if %{with only_print_mozconfig}
+echo "export CC=$CC"
+echo "export CXX=$CXX"
+echo "export CFLAGS=\"$CFLAGS\""
+echo "export LDFLAGS=\"$LDFLAGS\""
+echo "export RUSTFLAGS=\"$RUSTFLAGS\""
+echo ""
+cat << EOF
+%else
 %limit_build -m 2000
-# -g might be part of RPM_OPT_FLAGS, depending on the debuginfo setting in prj config
-# gcc lacks a an explicit -noop, so use something similar to make sure -g
-# is not forced into CFLAGS
 export MOZ_DEBUG_FLAGS="-pipe"
 cat << EOF > $MOZCONFIG
 mk_add_options MOZILLA_OFFICIAL=1
@@ -336,33 +390,58 @@ ac_add_options --enable-startup-notification
 ac_add_options --enable-official-branding
 ac_add_options --disable-necko-wifi
 ac_add_options --enable-update-channel=%{update_channel}
+ac_add_options --with-unsigned-addon-scopes=app
 %if %has_system_cairo
 ac_add_options --enable-system-cairo
 %endif
 %if ! %crashreporter
 ac_add_options --disable-crashreporter
 %endif
+%ifarch %arm
+ac_add_options --with-fpu=vfpv3-d16
+ac_add_options --with-float-abi=hard
+%ifarch armv6l armv6hl
+ac_add_options --with-arch=armv6
+%else
+ac_add_options --with-arch=armv7-a
+%endif
+%endif
 %if %{with mozilla_tb_valgrind}
 ac_add_options --disable-jemalloc
 ac_add_options --enable-valgrind
 %endif
+# mitigation/workaround for bmo#1512162
+%ifarch s390x
+ac_add_options --enable-optimize="-O1"
+%endif
+%ifarch x86_64
+# LTO needs newer toolchain stack only (at least GCC 8.2.1 (r268506)
+%if 0%{?suse_version} > 1500
+ac_add_options --enable-lto
+%endif
+%endif
 EOF
+%endif
+%if !%{with only_print_mozconfig}
+%ifarch ppc64 s390x s390
+# NOTE: Currently, system-icu is too old, so we can't build with that,
+#       but have to generate the .dat-file freshly. This seems to be a
+#       less fragile approach anyways.
+# ac_add_options --with-system-icu
+echo "Generate big endian version of config/external/icu/data/icud58l.dat"
+./mach python intl/icu_sources_data.py .
+ls -l config/external/icu/data
+rm -f config/external/icu/data/icudt*l.dat
+%endif
 ./mach build
+%endif # only_print_mozconfig
 
 %install
 cd $RPM_BUILD_DIR/obj
 make -C comm/mail/installer STRIP=/bin/true MOZ_PKG_FATAL_WARNINGS=0
 # copy tree into RPM_BUILD_ROOT
 mkdir -p %{buildroot}%{progdir}
-cp -rf $RPM_BUILD_DIR/obj/dist/thunderbird/* %{buildroot}%{progdir}
-install -m 644 %{SOURCE13} %{buildroot}%{progdir}/defaults/pref/
-%if %{with mozilla_tb_kde4}
-# install kde.js
-install -m 644 %{SOURCE12} %{buildroot}%{progdir}/defaults/pref/kde.js
-# make sure that instantApply is true by default
-# (TODO: mozilla-kde.patch needs to be improved to really not load kde.js in non-KDE envs)
-echo 'pref("browser.preferences.instantApply", true);' > %{buildroot}%{progdir}/defaults/pref/all-thunderbird.js
-%endif
+cp -rf $RPM_BUILD_DIR/obj/dist/%{progname}/* %{buildroot}%{progdir}
 # build additional locales
 %if %localize
 mkdir -p %{buildroot}%{progdir}/extensions/
@@ -390,6 +469,23 @@ sed -r '/^(ja-JP-mac|en-US|$)/d;s/ .*$//' $RPM_BUILD_DIR/%{source_prefix}/comm/m
 	echo %{progdir}/extensions/langpack-$locale@thunderbird.mozilla.org \
 	  >> %{_tmppath}/translations.$_l10ntarget
 ' -- {}
+# repack the lightning xpi with all available locales (boo#939153) (lp#545778)
+_extid="{e2fda1a4-762b-4020-b5ad-a41df1933103}"
+rm -rf _lightning
+mkdir -p _lightning
+unzip -q -d _lightning "%{buildroot}%{progdir}/distribution/extensions/${_extid}.xpi"
+_langpacks=$(cd "%{buildroot}%{progdir}/extensions/" && find langpack-* -type d -prune -print|cut -d'-' -f2-|cut -d'@' -f1)
+for _loc in $_langpacks ; do
+    _dir="%{buildroot}%{progdir}/extensions/langpack-${_loc}@thunderbird.mozilla.org"
+    _dir="${_dir}/distribution/extensions/${_extid}"
+    test -d "_lightning/chrome/calendar-${_loc}" && continue
+    test -d "_lightning/chrome/lightning-${_loc}" && continue
+    test -f "${_dir}/chrome.manifest" || continue
+    cp -rL "${_dir}"/chrome/{calendar,lightning}-"${_loc}" _lightning/chrome/
+    cat "${_dir}/chrome.manifest" >> _lightning/chrome.manifest
+done
+(cd _lightning && zip -q9r ../"${_extid}.xpi" *)
+cp -p "${_extid}.xpi" %{buildroot}%{progdir}/distribution/extensions/
 %endif
 # overwrite the mozilla start-script and link it to /usr/bin
 mkdir --parents %{buildroot}%{_bindir}/
@@ -449,10 +545,12 @@ rm -f %{buildroot}%{progdir}/nspr-config
 %fdupes %{buildroot}%{progdir}
 %fdupes %{buildroot}%{_libdir}/mozilla
 %fdupes %{buildroot}%{_datadir}
+# create breakpad debugsymbols
 %if %crashreporter
 SYMBOLS_NAME="thunderbird-%{version}-%{release}.%{_arch}-%{suse_version}-symbols"
 make buildsymbols \
   SYMBOL_INDEX_NAME="$SYMBOLS_NAME.txt" \
+  SYMBOL_FULL_ARCHIVE_BASENAME="$SYMBOLS_NAME-full" \
   SYMBOL_ARCHIVE_BASENAME="$SYMBOLS_NAME"
 if [ -e dist/*symbols.zip ]; then
   mkdir -p %{buildroot}%{_datadir}/mozilla/
@@ -467,10 +565,12 @@ rm -rf %{_tmppath}/translations.*
 %endif
 
 %post
+%desktop_database_post
 %icon_theme_cache_post
 exit 0
 
 %postun
+%desktop_database_postun
 %icon_theme_cache_postun
 exit 0
 
@@ -487,9 +587,6 @@ exit 0
 %{progdir}/gtk2/libmozgtk.so
 %{progdir}/*.so
 %{progdir}/omni.ja
-%if %crashreporter
-%{progdir}/minidump-analyzer
-%endif
 %{progdir}/pingsender
 %{progdir}/platform.ini
 %{progdir}/plugin-container
@@ -498,6 +595,7 @@ exit 0
 %if %crashreporter
 %{progdir}/crashreporter
 %{progdir}/crashreporter.ini
+%{progdir}/minidump-analyzer
 %{progdir}/Throbber-small.gif
 %endif
 %dir %{progdir}/chrome/

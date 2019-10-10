@@ -19,14 +19,14 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-pylint
-Version:        2.3.1
+Version:        2.4.2
 Release:        0
 Summary:        Syntax and style checker for Python code
 License:        GPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/pycqa/pylint
 Source:         https://files.pythonhosted.org/packages/source/p/pylint/pylint-%{version}.tar.gz
-BuildRequires:  %{python_module astroid >= 2.2.0}
+BuildRequires:  %{python_module astroid >= 2.3.0}
 BuildRequires:  %{python_module editdistance}
 BuildRequires:  %{python_module isort >= 4.2.5}
 BuildRequires:  %{python_module mccabe >= 0.6}
@@ -36,7 +36,7 @@ BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module typed-ast}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-astroid >= 2.2.0
+Requires:       python-astroid >= 2.3.0
 Requires:       python-editdistance
 Requires:       python-isort >= 4.2.5
 Requires:       python-mccabe >= 0.6
@@ -75,7 +75,6 @@ feature.
 
 %install
 %python_install
-%python_expand rm -r %{buildroot}%{$python_sitelib}/pylint/test/
 for p in pylint epylint pyreverse symilar ; do
     %python_clone -a %{buildroot}%{_bindir}/$p
 done
@@ -89,8 +88,10 @@ done
 %python_uninstall_alternative pylint
 
 %check
+# test_types_redefined gh#PyCQA/pylint#3171
+# test_by_module_statement_value - fails due to %%pytest macro way of execution
 export PYTHONDONTWRITEBYTECODE=1
-%pytest pylint/test
+%pytest -k "not (test_types_redefined or test_by_module_statement_value)"
 
 %files %{python_files}
 %license COPYING

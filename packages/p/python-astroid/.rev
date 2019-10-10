@@ -176,4 +176,22 @@ python-logilab-common is in openSUSE:Factory so this builds now.</comment>
 - Update to 2.2.4:</comment>
     <requestid>687619</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e21d3386603a47f314e2a38a4c980d75</srcmd5>
+    <version>2.3.1</version>
+    <time>1570701065</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to not use pinned dependencies and to work in our distro:
+  * unpin-deps.patch
+
+- Update to 2.3.1
+  * A transform for the builtin `dataclasses` module was added.
+  * Add a brain tip for ``subprocess.check_output``
+  * Remove NodeNG.nearest method because of lack of usage in astroid and pylint.
+  * Allow importing wheel files.
+  * Dropped support for Python 3.4.
+  * Add support for Python 3.8's `NamedExpr` nodes, which is part of assignment expressions.
+  * ...and more.</comment>
+    <requestid>734939</requestid>
+  </revision>
 </revisionlist>

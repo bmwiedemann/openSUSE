@@ -24,7 +24,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-pathlib2
-Version:        2.3.4
+Version:        2.3.5
 Release:        0
 Summary:        Object-oriented filesystem paths
 License:        MIT

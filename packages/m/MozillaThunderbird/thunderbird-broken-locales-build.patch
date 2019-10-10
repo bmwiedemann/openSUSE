@@ -1,0 +1,16 @@
+# HG changeset patch
+# Parent  b2d2d5ae8d2a00ddbf496e415fdde16d08e35884
+This has been submitted upstream: 
+https://bugzilla.mozilla.org/show_bug.cgi?id=1580701
+
+diff -r b2d2d5ae8d2a -r 91fa98f1d233 comm/mail/locales/l10n.ini
+--- a/comm/mail/locales/l10n.ini	Fri May 31 11:28:11 2019 +0200
++++ b/comm/mail/locales/l10n.ini	Wed Sep 11 15:01:55 2019 +0200
+@@ -13,5 +13,5 @@
+ # include toolkit from mozilla.
+ # Don't specify which, use l10n-central.ini and friends if you're
+ # not working on a local check-out
+-toolkit = mozilla/toolkit/locales/l10n.ini
+-devtools_client = mozilla/devtools/client/locales/l10n.ini
++toolkit = ../toolkit/locales/l10n.ini
++devtools_client = ../devtools/client/locales/l10n.ini

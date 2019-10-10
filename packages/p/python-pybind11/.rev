@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>725775</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>038ae9e2cfa4382a5315f9f03b13e809</srcmd5>
+    <version>2.4.2</version>
+    <time>1570701180</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.4.2
+ * made devel package python version independent
+ * added cmake run to install cmake include files</comment>
+    <requestid>736064</requestid>
+  </revision>
 </revisionlist>

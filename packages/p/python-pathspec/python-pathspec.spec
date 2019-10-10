@@ -17,20 +17,17 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without  test
 Name:           python-pathspec
-Version:        0.5.9
+Version:        0.6.0
 Release:        0
 Summary:        Utility library for gitignore style pattern matching of file paths
 License:        MPL-2.0
-Group:          Development/Languages/Python
-Url:            https://github.com/cpburnz/python-path-specification
+URL:            https://github.com/cpburnz/python-path-specification
 Source:         https://files.pythonhosted.org/packages/source/p/pathspec/pathspec-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -49,10 +46,8 @@ files.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with test}
 %check
 %python_exec setup.py test
-%endif
 
 %files %{python_files}
 %doc CHANGES.rst README.rst

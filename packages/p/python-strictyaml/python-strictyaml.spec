@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-strictyaml
-Version:        1.0.3
+Version:        1.0.5
 Release:        0
 Summary:        Strict, typed YAML parser
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://hitchdev.com/strictyaml
 Source:         https://github.com/crdoconnor/strictyaml/archive/%{version}.tar.gz#/strictyaml-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}

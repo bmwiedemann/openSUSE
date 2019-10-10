@@ -1,0 +1,9 @@
+Index: polkit-0.116/data/polkit-1.in
+===================================================================
+--- polkit-0.116.orig/data/polkit-1.in
++++ polkit-0.116/data/polkit-1.in
+@@ -4,3 +4,4 @@ auth       include      @PAM_FILE_INCLUD
+ account    include      @PAM_FILE_INCLUDE_ACCOUNT@
+ password   include      @PAM_FILE_INCLUDE_PASSWORD@
+ session    include      @PAM_FILE_INCLUDE_SESSION@
++session    optional     pam_keyinit.so revoke [force]

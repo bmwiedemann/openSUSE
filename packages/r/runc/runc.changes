@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct  5 11:40:13 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Upgrade to runc v1.0.0~rc9. Upstream changelog is available from
+  https://github.com/opencontainers/runc/releases/tag/v1.0.0-rc9
+- Remove upstreamed patches:
+  - CVE-2019-16884.patch
+
+-------------------------------------------------------------------
+Thu Sep 26 14:54:07 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Add backported fix for CVE-2019-16884. bsc#1152308
+  + CVE-2019-16884.patch
+- Add runc-rpmlintrc to drop runc-test rpmlint warnings.
+
+-------------------------------------------------------------------
 Mon Apr 29 11:56:21 UTC 2019 - Aleksa Sarai <asarai@suse.com>
 
 - Upgrade to runc v1.0.0~rc8. Upstream changelog is available from

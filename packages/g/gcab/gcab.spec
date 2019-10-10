@@ -1,7 +1,7 @@
 #
 # spec file for package gcab
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gcab
-Version:        1.2
+Version:        1.3
 Release:        0
 Summary:        Cabinet file library and tool
 License:        LGPL-2.1-or-later
 Group:          Productivity/Archiving/Compression
-Url:            http://ftp.gnome.org/pub/GNOME/sources/gcab
-Source0:        http://download.gnome.org/sources/gcab/1.2/%{name}-%{version}.tar.xz
+URL:            https://gitlab.gnome.org/GNOME/gcab
+Source0:        https://download.gnome.org/sources/gcab/1.3/%{name}-%{version}.tar.xz
 
 BuildRequires:  gtk-doc
 BuildRequires:  meson

@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
@@ -34,6 +34,8 @@ Patch0:         polkit-no-wheel-group.patch
 Patch1:         polkit-gettext.patch
 # PATCH-FIX-UPSTREAM pkexec.patch schwab@suse.de -- pkexec: allow --version and --help even if not setuid
 Patch2:         pkexec.patch
+# PATCH-FIX-OPENSUSE polkit-keyinit.patch meissner@ -- bsc#1144053 Please add "pam_keyinit.so" to the /etc/pam.d/polkit-1 configuration file
+Patch3:         polkit-keyinit.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  gtk-doc

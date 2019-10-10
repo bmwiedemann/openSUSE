@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct  9 17:04:14 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- Relax virtio requirement in config file
+  relax-virtio-config-requirement.patch
+  bsc#1152803
+
+-------------------------------------------------------------------
 Fri Apr 12 19:27:24 UTC 2019 - James Fehlig <jfehlig@suse.com>
 
 - Update to vhostmd 1.1

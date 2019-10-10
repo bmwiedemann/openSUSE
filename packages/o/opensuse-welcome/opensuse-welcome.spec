@@ -18,7 +18,7 @@
 %define __builder ninja
 
 Name:           opensuse-welcome
-Version:        0.1.6
+Version:        0.1.7.1
 Release:        0
 Summary:        Welcome utility for openSUSE
 License:        GPL-3.0-or-later AND MIT
@@ -44,7 +44,6 @@ A welcome utility built to welcome new users to openSUSE.
 %setup -q
 
 %build
-./i18n.sh
 %meson
 %meson_build
 

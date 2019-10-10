@@ -19,28 +19,28 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-astroid
-Version:        2.2.5
+Version:        2.3.1
 Release:        0
 Summary:        Representation of Python source as an AST for pylint
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/Python
 URL:            https://github.com/pycqa/astroid
 Source:         https://files.pythonhosted.org/packages/source/a/astroid/astroid-%{version}.tar.gz
-BuildRequires:  %{python_module lazy-object-proxy}
+Patch0:         unpin-deps.patch
+BuildRequires:  %{python_module lazy-object-proxy >= 1.4}
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
-BuildRequires:  %{python_module wrapt}
+BuildRequires:  %{python_module six >= 1.12}
+BuildRequires:  %{python_module wrapt >= 1.11}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-lazy-object-proxy
-Requires:       python-six
-Requires:       python-wrapt
+Requires:       python-lazy-object-proxy >= 1.4
+Requires:       python-six >= 1.12
+Requires:       python-wrapt >= 1.11
 BuildArch:      noarch
-%if 0%{?suse_version} < 1500
-BuildRequires:  %{python_module typing}
-Requires:       python-typing
+%if 0%{?suse_version} <= 1500
+BuildRequires:  %{python_module typed-ast}
+Requires:       python-typed-ast
 %endif
 %python_subpackages
 
@@ -59,6 +59,7 @@ objects.
 
 %prep
 %setup -q -n astroid-%{version}
+%patch0 -p1
 
 %build
 %python_build
@@ -68,7 +69,7 @@ objects.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -v
+%pytest
 
 %files %{python_files}
 %license COPYING COPYING.LESSER

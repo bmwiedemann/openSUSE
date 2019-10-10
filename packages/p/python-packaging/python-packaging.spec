@@ -26,19 +26,13 @@
 %bcond_with test
 %endif
 Name:           python-packaging%{psuffix}
-Version:        19.1
+Version:        19.2
 Release:        0
 Summary:        Core utilities for Python packages
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/pypa/packaging
 Source:         https://pypi.io/packages/source/p/packaging/packaging-%{version}.tar.gz
-# FIXME: drop these patches on the next release after 19.1
-Patch0:         0001-Fix-test-failures-test_linux_platforms_manylinux-for.patch
-Patch1:         0002-Fix-check-for-64-bit-OS.patch
-Patch2:         0003-Add-additional-test-to-get-100-branch-coverage.patch
-Patch3:         0004-Fix-test_macos_version_detection-failure-on-32-bit-L.patch
-Patch4:         0005-Drop-dependency-on-attrs.patch
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -61,16 +55,8 @@ Core utilities for Python packages
 
 %prep
 %setup -q -n packaging-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
 # sdist must provide a packaging.egg-info, used below in install phase
 test -d packaging.egg-info
-
-# FIXME: drop this on the next release after 19.1
-sed -i '/^attrs/d' packaging.egg-info/requires.txt
 
 %build
 %python_build

@@ -31,4 +31,12 @@
     <comment>Thought fixing the typo in another tab with the SR dialog open would have fixed it. Guess not. This fixes the typo in the changelog. Supersedes 725145</comment>
     <requestid>725146</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>29dc76ff968aac5aef733e938850e305</srcmd5>
+    <version>0.1.7.1</version>
+    <time>1570701060</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.1.7.1, lots more translations added</comment>
+    <requestid>734173</requestid>
+  </revision>
 </revisionlist>

@@ -25,4 +25,14 @@
   *  Fixed a bug in the :file:`hello_asyncio.py` example.</comment>
     <requestid>717803</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2f24f37ab252f818e6a20fc4fd02abd2</srcmd5>
+    <version>2.0.0</version>
+    <time>1570701213</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.0:
+  * Changed open handler to return the new FileInfo struct to allow
+    for modification of certain kernel file attributes, e.g. direct_io.</comment>
+    <requestid>736804</requestid>
+  </revision>
 </revisionlist>

@@ -220,4 +220,12 @@
     <comment></comment>
     <requestid>686174</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>eec14939749a01bd6c1695b591c3e842</srcmd5>
+    <version>1.5.0</version>
+    <time>1570701140</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 1.5.0 (bsc#1153301):</comment>
+    <requestid>736086</requestid>
+  </revision>
 </revisionlist>

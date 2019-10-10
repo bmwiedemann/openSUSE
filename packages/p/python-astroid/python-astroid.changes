@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct  4 08:24:37 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to not use pinned dependencies and to work in our distro:
+  * unpin-deps.patch
+
+-------------------------------------------------------------------
+Thu Oct  3 14:07:26 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 2.3.1
+  * A transform for the builtin `dataclasses` module was added.
+  * Add a brain tip for ``subprocess.check_output``
+  * Remove NodeNG.nearest method because of lack of usage in astroid and pylint.
+  * Allow importing wheel files.
+  * Dropped support for Python 3.4.
+  * Add support for Python 3.8's `NamedExpr` nodes, which is part of assignment expressions.
+  * ...and more.
+
+-------------------------------------------------------------------
 Mon Mar 11 09:46:52 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.2.5:

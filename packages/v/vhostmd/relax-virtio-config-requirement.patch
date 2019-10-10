@@ -1,0 +1,37 @@
+commit 83cc269f6892852be94467cea771b3ad1da8a369
+Author: Jim Fehlig <jfehlig@suse.com>
+Date:   Tue Oct 8 20:56:18 2019 -0600
+
+    Relax virtio requirement in config file
+    
+    When the virtio transport was introduced the schema was changed to
+    require a <virtio> transport in vhostmd.conf. When updating existing
+    deployments without a virtio transport specified in vhostmd.conf,
+    vhostmd fails to start
+    
+    /usr/sbin/vhostmd -d
+    /etc/vhostmd/vhostmd.conf:41: element globals: validity error : Element
+    globals content does not follow the DTD, expecting (disk , virtio ,
+    update_period , path , transport+), got (disk update_period path transport )
+    validate_config_file(): Failed to validate :/etc/vhostmd/vhostmd.conf
+    Config file: /etc/vhostmd/vhostmd.conf, fails DTD validation
+    
+    Relax the requirement for virtio transport in the schema. With the
+    introduction of multiple transports perhaps the others shoud be optional
+    as well, but requiring virtio is clearly a regression.
+    
+    Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+
+Index: vhostmd-1.1/vhostmd.dtd
+===================================================================
+--- vhostmd-1.1.orig/vhostmd.dtd
++++ vhostmd-1.1/vhostmd.dtd
+@@ -9,7 +9,7 @@ Virtual Host Metrics Daemon (vhostmd). C
+ -->
+ 
+ <!ELEMENT vhostmd (globals,metrics)>
+-<!ELEMENT globals (disk,virtio,update_period,path,transport+)>
++<!ELEMENT globals (disk,virtio*,update_period,path,transport+)>
+ 
+ <!ELEMENT disk (name,path,size)>
+ <!ELEMENT name (#PCDATA)>

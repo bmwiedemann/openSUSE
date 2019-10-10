@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct  8 08:39:47 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.6.5:
+  - Revert _lookup api and correct redis implemetnation. 
+  - Major overhaul of redis test cases by adding more full featured fakeredis module.
+  - Add more test cases to boost coverage of kombu redis transport.
+  - Refactor the producer consumer test cases to be based on original mocks and be passing
+  - Fix lingering line length issue in test.
+  - Sanitise url when include_password is false
+  - Pinned pycurl to 7.43.0.2 as it is the latest build with wheels provided
+  - Bump py-amqp to 2.5.2 
+- Rebase python38.patch
+
+-------------------------------------------------------------------
 Wed Sep 11 13:09:23 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 4.6.4:

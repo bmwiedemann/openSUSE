@@ -2916,4 +2916,12 @@ But as always there are semi-relevant changes from the Gecko 60.4 baseline. Many
 - Mozilla Thunderbird 68.0</comment>
     <requestid>730872</requestid>
   </revision>
+  <revision rev="217" vrev="1">
+    <srcmd5>f1e505f49f916ba3945c601c4f4691ed</srcmd5>
+    <version>68.1.1</version>
+    <time>1570700959</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>733855</requestid>
+  </revision>
 </revisionlist>

@@ -1560,4 +1560,12 @@ Add:  dracut_git_v034_to_head.patch</comment>
   * 35network-legacy: install hostname required by ifup.sh (bsc#1146661)</comment>
     <requestid>732746</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>ead4b4c82ea6d2ec164b846f0bbd4df1</srcmd5>
+    <version>049+git114.058e566c</version>
+    <time>1570701127</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>736070</requestid>
+  </revision>
 </revisionlist>

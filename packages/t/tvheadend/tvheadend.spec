@@ -1,7 +1,7 @@
 #
 # spec file for package tvheadend
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2016 Packman Team <packman@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -42,6 +42,8 @@ Source3:        %{name}_super
 Source4:        dvb-scan-git20190112.tar.gz
 # PATCH-FIX-OPENSUSE tvheadend-fix-service-dependency.patch -- do not wait for or require syslog
 Patch2:         %{name}-fix-service-dependency.patch
+# PATCH-FIX-UPSTREAM -- fix unsufficient configure checks when using LTO (check optimized away)
+Patch3:         fix_configure_checks_with_LTO.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -57,9 +59,7 @@ BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(liburiparser)
 BuildRequires:  pkgconfig(zlib)
-%if 0%{?suse_version} > 1320
 Requires(pre):  group(%{htsgroup})
-%endif
 %{?systemd_requires}
 
 %description
@@ -73,6 +73,7 @@ day-to-day operations, such as searching the electronic program guide
 %prep
 %setup -q
 %patch2 -p1
+%patch3 -p1
 
 sed -e "s/-u \([^ ]*\) -g \([^ ]*\)/-u %{htsuser} -g %{htsgroup}/" -i rpm/%{name}.sysconfig
 sed -e '/^TVH_ARGS/cTVH_ARGS="-C"' -i debian/%{name}.default
@@ -132,8 +133,8 @@ getent passwd %htsuser >/dev/null || %{_sbindir}/useradd -g %{htsgroup} -m -d %{
 %service_del_postun %{name}.service
 
 %files
-%defattr(-,root,root)
-%doc CONTRIBUTING.md LICENSE.md
+%doc CONTRIBUTING.md
+%license LICENSE.md
 %{_bindir}/tvheadend
 %{_datadir}/tvheadend
 %{_mandir}/man1/tvheadend.1%{?ext_man}

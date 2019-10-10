@@ -241,4 +241,17 @@ changelog entry.
     <comment></comment>
     <requestid>693805</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>9f588bc3e78f6bfc1d2672517779d3b9</srcmd5>
+    <version>1.1</version>
+    <time>1570701192</time>
+    <user>dimstar_suse</user>
+    <comment>Updated vhostmd package for Factory. This update fixes a potential
+regression introduced by the last update. See bsc#1152803 for details.
+
+- Relax virtio requirement in config file
+  relax-virtio-config-requirement.patch
+  bsc#1152803</comment>
+    <requestid>736725</requestid>
+  </revision>
 </revisionlist>

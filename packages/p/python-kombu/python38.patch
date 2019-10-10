@@ -9,11 +9,11 @@ Subject: [PATCH] Use importlib.metadata from the standard library on Python
  requirements/default.txt | 2 +-
  2 files changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/kombu/utils/compat.py b/kombu/utils/compat.py
-index c5f0bf118..a741c4350 100644
---- a/kombu/utils/compat.py
-+++ b/kombu/utils/compat.py
-@@ -7,7 +7,11 @@
+Index: kombu-4.6.5/kombu/utils/compat.py
+===================================================================
+--- kombu-4.6.5.orig/kombu/utils/compat.py
++++ kombu-4.6.5/kombu/utils/compat.py
+@@ -7,7 +7,11 @@ import sys
  from functools import wraps
  
  from contextlib import contextmanager
@@ -26,11 +26,11 @@ index c5f0bf118..a741c4350 100644
  
  from kombu.five import reraise
  
-diff --git a/requirements/default.txt b/requirements/default.txt
-index 00e57cc09..e3ec1c894 100644
---- a/requirements/default.txt
-+++ b/requirements/default.txt
+Index: kombu-4.6.5/requirements/default.txt
+===================================================================
+--- kombu-4.6.5.orig/requirements/default.txt
++++ kombu-4.6.5/requirements/default.txt
 @@ -1,2 +1,2 @@
- amqp>=2.5.1,<3.0
+ amqp==2.5.1
 -importlib-metadata>=0.18
 +importlib-metadata>=0.18; python_version<"3.8"

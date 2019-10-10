@@ -95,6 +95,8 @@ Patch9:         vbox-deprec-gsoap-service-proxies.diff
 #fix failed linking process during build - this patch is just quick workaround
 Patch10:        vbox-gsoapssl-deps.diff
 #PATCH-FIX-OPENSUSE implement messagebox (VBoxPermissionMessage app), which is displayed, when user
+# Set graphics adapter type to VBoxVGA boo#1151896
+Patch98:        set_graphics_type.patch
 #try to start VirtualBox and is not member of vboxusers group
 Patch99:        vbox-permissions_warning.diff
 #PATCH-FIX-OPENSUSE Do not include build dates on binaries, makes build-compare happier
@@ -147,6 +149,8 @@ Patch131:       fixes_for_5.3.patch
 # Fixes for Qt5.13 on 32-bit systems
 Patch132:       fixes_for_qt5.13.patch
 #endif
+# Fixes for API changes in kernel 5.4
+Patch133:       fixes_for_5.4.patch
 Patch999:       virtualbox-fix-ui-background-color.patch
 #
 BuildRequires:  LibVNCServer-devel
@@ -209,6 +213,7 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xau)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xcursor)
+BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xdmcp)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xextproto)
@@ -416,6 +421,7 @@ as an "extpack" for VirtualBox. The implementation is licensed under GPL.
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
+%patch98 -p1
 %patch99 -p1
 %patch100 -p1
 %patch101 -p1
@@ -449,6 +455,7 @@ as an "extpack" for VirtualBox. The implementation is licensed under GPL.
 %ifarch %ix86 && 0%{?qt5ver} >= 51300
 %patch132 -p1
 %endif
+%patch133 -p1
 
 # make VB UI background colors look sane again
 %patch999 -p1

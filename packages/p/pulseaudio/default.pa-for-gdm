@@ -10,3 +10,17 @@ load-module module-suspend-on-idle
 load-module module-console-kit
 load-module module-position-event-sounds
 
+### unload driver modules for Bluetooth hardware
+### this ensure Bluetooth headset are not stolen by gdm pulseaudio instance
+.nofail
+
+.ifexists module-bluetooth-policy.so
+unload-module module-bluetooth-policy
+.endif
+
+.ifexists module-bluetooth-discover.so
+unload-module module-bluetooth-discover
+.endif
+
+.fail
+

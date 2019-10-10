@@ -17,7 +17,7 @@
 
 
 Name:           sparse
-Version:        0.6.1rc1+20190404
+Version:        0.6.1rc2+20191007
 Release:        0
 Summary:        A semantic parser of source files
 License:        MIT

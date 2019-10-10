@@ -17,15 +17,10 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-
 %define _ver 1_17_1
 %define pname python-numpy
-
-%bcond_with ringdisabled
-
 %define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
-
-%if "%flavor" == ""
+%if "%{flavor}" == ""
  %bcond_with hpc
  %if 0%{?sle_version} == 120300 && !0%{?is_opensuse}
   %bcond_with openblas
@@ -37,54 +32,51 @@
   %endif
  %endif
 %endif
-
-%if "%flavor" == "gnu-hpc"
+%if "%{flavor}" == "gnu-hpc"
  %bcond_without hpc
  %bcond_without openblas
 %endif
-
-%if "%flavor" == "gnu7-hpc"
- %bcond_without hpc
- %bcond_without openblas
+%if "%{flavor}" == "gnu7-hpc"
  %define c_f_ver 7
+ %bcond_without hpc
+ %bcond_without openblas
 %endif
-
 %if 0%{?sle_version} == 120300
 %{?with_openblas:ExclusiveArch:  do_not_build}
 %endif
 %ifarch s390 s390x
 %{?with_openblas:ExclusiveArch:  do_not_build}
 %endif
-
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
+%{?with_hpc:%{hpc_requires}}
+%bcond_with ringdisabled
 %if %{without hpc}
 %define package_name %{pname}
-%define p_python_sitearch %python_sitearch
-%define p_prefix %_prefix
-%define p_bindir %_bindir
+%define p_python_sitearch %{python_sitearch}
+%define p_prefix %{_prefix}
+%define p_bindir %{_bindir}
 %else
+%{!?compiler_family:%global compiler_family gnu}
+%{hpc_init -c %{compiler_family} %{?c_f_ver:-v %{c_f_ver}} %{?mpi_ver:-V %{mpi_ver}}}
+%define package_name %{hpc_package_name %{_ver}}
+%define p_python_sitearch %{hpc_python_sitearch}
+%define p_prefix %{hpc_prefix}
+%define p_bindir %{hpc_bindir}
 # Magic for OBS Staging. Only build the flavors required by
 # other packages in the ring.
 %if %{with ringdisabled}
 ExclusiveArch:  do_not_build
 %endif
-%{!?compiler_family:%global compiler_family gnu}
-%{hpc_init -c %compiler_family %{?c_f_ver:-v %{c_f_ver}} %{?mpi_ver:-V %{mpi_ver}}}
-%define package_name %{hpc_package_name %_ver}
-%define p_python_sitearch %hpc_python_sitearch
-%define p_prefix %hpc_prefix
-%define p_bindir %hpc_bindir
 %endif
-
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
 Name:           %{package_name}
-Version:        1.17.1
+Version:        1.17.2
 Release:        0
 Summary:        NumPy array processing for numbers, strings, records and objects
 License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 Url:            http://www.numpy.org/
-Source:         https://pypi.io/packages/source/n/numpy/numpy-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/n/numpy/numpy-%{version}.zip
 Source99:       python-numpy-rpmlintrc
 # PATCH-FIX-OPENSUSE numpy-buildfix.patch -- openSUSE-specific build fixes
 Patch0:         numpy-buildfix.patch
@@ -94,6 +86,14 @@ Patch1:         numpy-1.9.0-remove-__declspec.patch
 Patch2:         riscv.patch
 # # PATCH-FIX-SLE fix-py34-tests.patch -- python 3.4 support
 Patch3:         fix-py34-tests.patch
+Patch4:         s390x.patch
+BuildRequires:  %{python_module Cython >= 0.29.13}
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
+BuildRequires:  unzip
 %if 0%{?suse_version}
 BuildRequires:  fdupes
 %endif
@@ -116,15 +116,6 @@ BuildRequires:  lua-lmod
 BuildRequires:  suse-hpc
 Requires:       libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc
 %endif
-BuildRequires:  %{python_module Cython >= 0.29.2}
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
-%{?with_hpc:%{hpc_requires}}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
 %python_subpackages
 
 %description
@@ -155,7 +146,7 @@ Requires:       lapack-devel
 %endif
 %else
 Requires:       libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel
-%hpc_requires_devel
+%{hpc_requires_devel}
 %endif
 
 %description devel
@@ -169,8 +160,14 @@ This package contains files for developing applications using numpy.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%ifarch s390x
+%patch4 -p1
+%endif
 # Fix non-executable scripts
 sed -i '1s/^#!.*$//' numpy/{compat/setup,distutils/{conv_template,cpuinfo,exec_command,from_template,setup,system_info},f2py/{__init__,auxfuncs,capi_maps,cb_rules,cfuncs,common_rules,crackfortran,diagnose,f2py2e,f90mod_rules,func2subr,rules,setup,use_rules},ma/{setup,bench},matrixlib/setup,setup,testing/{print_coercion_tables,setup}}.py
+
+# force cythonization
+rm PKG-INFO
 
 %build
 %define _lto_cflags %{nil}
@@ -191,7 +188,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python_build
 
 %install
-%{?with_hpc:%{hpc_setup}}
+%{?with_hpc:%hpc_setup}
 %{?with_hpc:module load openblas}
 
 %python_exec setup.py install --prefix=%{p_prefix} --root=%{buildroot}
@@ -239,8 +236,8 @@ if [ expr [ module-info mode load ] || [module-info mode display ] ] {
 prepend-path    PATH                %{hpc_bindir}
 prepend-path    PYTHONPATH          ${sitesearch_path}
 
-setenv          %{hpc_upcase_trans_hyph %pname}_DIR        %{hpc_prefix}
-setenv          %{hpc_upcase_trans_hyph %pname}_BIN        %{hpc_bindir}
+setenv          %{hpc_upcase_trans_hyph %{pname}}_DIR        %{hpc_prefix}
+setenv          %{hpc_upcase_trans_hyph %{pname}}_BIN        %{hpc_bindir}
 
 family "NumPy"
 EOF
@@ -249,14 +246,16 @@ EOF
 
 %check
 %if %{without hpc}
-pushd doc &> /dev/null
 export PYTHONDONTWRITEBYTECODE=1
+export PATH="%{buildroot}%{_bindir}:$PATH"
+mkdir testing
+pushd testing
 %ifarch ppc64 ppc64le
-%python_expand PYTHONPATH="%{buildroot}%{$python_sitearch}" PATH="%{buildroot}%{_bindir}:$PATH" $python -m pytest -v --pyargs numpy || echo "Warning: ignore check error for PowerPC bypass boo#1148173"
+%pytest_arch -n auto --pyargs numpy || echo "Warning: ignore check error for PowerPC bypass boo#1148173"
 %else
-%python_expand PYTHONPATH="%{buildroot}%{$python_sitearch}" PATH="%{buildroot}%{_bindir}:$PATH" $python -m pytest -v --pyargs numpy
+%pytest_arch -n auto --pyargs numpy
 %endif
-popd &> /dev/null
+popd
 %endif
 
 %files %{python_files}
@@ -287,7 +286,7 @@ popd &> /dev/null
 %define hpc_module_pname python%(a=%{hpc_python_version}; echo -n ${a/.*/})-numpy
 %{hpc_modules_files}
 %{hpc_dirs}
-%dir %hpc_bindir
+%dir %{hpc_bindir}
 %dir %{hpc_libdir}/python%{hpc_python_version}
 %dir %{p_python_sitearch}
 %endif

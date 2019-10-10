@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct  4 08:18:14 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use proper grammar in description.
+
+-------------------------------------------------------------------
+Tue Oct  1 14:48:12 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Build glib and gobject-introspection bindings separately in order
+  to avoid build cycle. 
+- Move gobject-introspection bindings into their own packages.
+- Move libical gir into libical-glib-devel.
+
+-------------------------------------------------------------------
+Thu Aug 29 04:17:25 UTC 2019 - Luke Jones <luke@ljones.dev>
+
+- Enable libical-glib, required by evolution-data-server 3.33+
+- Add rpmlintrc to filter typelib warnings
+
+-------------------------------------------------------------------
 Sun Jun  2 13:23:45 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 3.0.5

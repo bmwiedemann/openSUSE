@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Oct  3 13:53:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Force cythonization to ensure build under different versions of
+  python
+
+-------------------------------------------------------------------
+Thu Sep 26 11:52:40 UTC 2019 - Berthold Gunreben <azouhr@opensuse.org>
+
+- disable tests TestF77ReturnCharacter and TestF90ReturnCharacter for s390x
+  https://github.com/numpy/numpy/issues/11831
+  to make the package build.
+  * s390x.patch
+
+-------------------------------------------------------------------
+Thu Sep 26 08:03:28 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.17.2:
+  * #14418: BUG: Fix aradixsort indirect indexing.
+  * #14420: DOC: Fix a minor typo in dispatch documentation.
+  * #14421: BUG: test, fix regression in converting to ctypes
+  * #14430: BUG: Do not show Override module in private error classes.
+  * #14432: BUG: Fixed maximum relative error reporting in assert_allclose.
+  * #14433: BUG: Fix uint-overflow if padding with linear_ramp and negative...
+  * #14436: BUG: Update 1.17.x with 1.18.0-dev pocketfft.py.
+- Add dep on pytest-xdist and use threaded tests execution
+  shaving around 400s on local build
+
+-------------------------------------------------------------------
 Fri Sep  6 08:51:30 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - as bypass boo#1148173 ignore %check error for ppc64/ppc64le

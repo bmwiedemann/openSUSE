@@ -36,6 +36,7 @@ Patch0:         vhostmd-conf.patch
 Patch1:         manpage.patch
 Patch2:         value-newline.patch
 Patch3:         libmetrics-link.patch
+Patch4:         relax-virtio-config-requirement.patch
 BuildRequires:  libtool
 BuildRequires:  libvirt-devel
 BuildRequires:  libxml2
@@ -87,6 +88,7 @@ resource usage from within virtual machines.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 %if ! %{with_xen}

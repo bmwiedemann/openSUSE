@@ -122,4 +122,16 @@
     <comment>- Do not install tests on system</comment>
     <requestid>720100</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>03373f8307d489617e1e175bad316fee</srcmd5>
+    <version>2.4.2</version>
+    <time>1570701165</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.2:
+  * Various bugfixes and compat with newer releases of astroid
+
+- Skip pylint/test/extensions/test_redefined.py::test_types_redefined
+  (gh#PyCQA/pylint#3171)</comment>
+    <requestid>736468</requestid>
+  </revision>
 </revisionlist>

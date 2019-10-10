@@ -319,4 +319,15 @@ A    latex2html-share-dir.diff</comment>
     or dvilualatex (options -use_pdftex, -use_luatex,</comment>
     <requestid>730496</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>410ce0b75cb3d57f494887b96591f76e</srcmd5>
+    <version>2019.2</version>
+    <time>1570700985</time>
+    <user>dimstar_suse</user>
+    <comment>- texlive-preview was mistakenly added as build dependency, it 
+  should have been runtime dependency [bsc#1150208]
+
+- Drop log files to make package build reproducible (boo#1047218)</comment>
+    <requestid>734018</requestid>
+  </revision>
 </revisionlist>

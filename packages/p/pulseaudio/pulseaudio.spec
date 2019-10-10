@@ -41,6 +41,7 @@ Source6:        disable_flat_volumes.conf
 Source7:        pulseaudio.tmpfiles
 Source8:        pulseaudio-gdm-hooks.tmpfiles
 Source9:        client-system.conf
+Source98:       pulseaudio-rpmlintrc
 Source99:       baselibs.conf
 Patch0:         disabled-start.diff
 Patch1:         suppress-socket-error-msg.diff
@@ -355,6 +356,7 @@ export CFLAGS="%{optflags} -fPIE"
 %configure \
 	--disable-static \
 	--disable-rpath \
+	--disable-running-from-build-tree \
 %ifarch armv5tel armv6hl
 	--disable-neon-opt \
 %endif

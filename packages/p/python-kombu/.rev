@@ -666,4 +666,21 @@
   * python38.patch</comment>
     <requestid>730150</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>bc6207bd6b7b774760272c6dd9bb4fda</srcmd5>
+    <version>4.6.5</version>
+    <time>1570701086</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.6.5:
+  - Revert _lookup api and correct redis implemetnation. 
+  - Major overhaul of redis test cases by adding more full featured fakeredis module.
+  - Add more test cases to boost coverage of kombu redis transport.
+  - Refactor the producer consumer test cases to be based on original mocks and be passing
+  - Fix lingering line length issue in test.
+  - Sanitise url when include_password is false
+  - Pinned pycurl to 7.43.0.2 as it is the latest build with wheels provided
+  - Bump py-amqp to 2.5.2 
+- Rebase python38.patch</comment>
+    <requestid>736029</requestid>
+  </revision>
 </revisionlist>

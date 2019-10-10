@@ -1,0 +1,107 @@
+Index: VirtualBox-6.0.12/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.c
+===================================================================
+--- VirtualBox-6.0.12.orig/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.c
++++ VirtualBox-6.0.12/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.c
+@@ -924,8 +924,13 @@ static void vboxNetFltLinuxSkBufToSG(PVB
+     for (i = 0; i < skb_shinfo(pBuf)->nr_frags; i++)
+     {
+         skb_frag_t *pFrag = &skb_shinfo(pBuf)->frags[i];
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 4, 0)
++        pSG->aSegs[iSeg].cb = pFrag->bv_len;
++        pSG->aSegs[iSeg].pv = VBOX_SKB_KMAP_FRAG(pFrag) + pFrag->bv_offset;
++#else
+         pSG->aSegs[iSeg].cb = pFrag->size;
+         pSG->aSegs[iSeg].pv = VBOX_SKB_KMAP_FRAG(pFrag) + pFrag->page_offset;
++#endif
+         Log6((" %p", pSG->aSegs[iSeg].pv));
+         pSG->aSegs[iSeg++].Phys = NIL_RTHCPHYS;
+         Assert(iSeg <= pSG->cSegsAlloc);
+@@ -940,8 +945,13 @@ static void vboxNetFltLinuxSkBufToSG(PVB
+         for (i = 0; i < skb_shinfo(pFragBuf)->nr_frags; i++)
+         {
+             skb_frag_t *pFrag = &skb_shinfo(pFragBuf)->frags[i];
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 4, 0)
++            pSG->aSegs[iSeg].cb = pFrag->bv_len;
++            pSG->aSegs[iSeg].pv = VBOX_SKB_KMAP_FRAG(pFrag) + pFrag->bv_offset;
++#else
+             pSG->aSegs[iSeg].cb = pFrag->size;
+             pSG->aSegs[iSeg].pv = VBOX_SKB_KMAP_FRAG(pFrag) + pFrag->page_offset;
++#endif
+             Log6((" %p", pSG->aSegs[iSeg].pv));
+             pSG->aSegs[iSeg++].Phys = NIL_RTHCPHYS;
+             Assert(iSeg <= pSG->cSegsAlloc);
+Index: VirtualBox-6.0.12/src/VBox/Runtime/r0drv/linux/alloc-r0drv-linux.c
+===================================================================
+--- VirtualBox-6.0.12.orig/src/VBox/Runtime/r0drv/linux/alloc-r0drv-linux.c
++++ VirtualBox-6.0.12/src/VBox/Runtime/r0drv/linux/alloc-r0drv-linux.c
+@@ -443,9 +443,6 @@ RTR0DECL(void *) RTMemContAlloc(PRTCCPHY
+             }
+ 
+             SetPageReserved(&paPages[iPage]);
+-#if LINUX_VERSION_CODE > KERNEL_VERSION(2, 4, 20) /** @todo find the exact kernel where change_page_attr was introduced. */
+-            MY_SET_PAGES_EXEC(&paPages[iPage], 1);
+-#endif
+         }
+         *pPhys = page_to_phys(paPages);
+         pvRet = phys_to_virt(page_to_phys(paPages));
+@@ -491,9 +488,6 @@ RTR0DECL(void) RTMemContFree(void *pv, s
+         for (iPage = 0; iPage < cPages; iPage++)
+         {
+             ClearPageReserved(&paPages[iPage]);
+-#if LINUX_VERSION_CODE > KERNEL_VERSION(2, 4, 20) /** @todo find the exact kernel where change_page_attr was introduced. */
+-            MY_SET_PAGES_NOEXEC(&paPages[iPage], 1);
+-#endif
+         }
+         __free_pages(paPages, cOrder);
+         IPRT_LINUX_RESTORE_EFL_AC();
+Index: VirtualBox-6.0.12/src/VBox/Runtime/r0drv/linux/thread2-r0drv-linux.c
+===================================================================
+--- VirtualBox-6.0.12.orig/src/VBox/Runtime/r0drv/linux/thread2-r0drv-linux.c
++++ VirtualBox-6.0.12/src/VBox/Runtime/r0drv/linux/thread2-r0drv-linux.c
+@@ -36,6 +36,9 @@
+ #include <iprt/errcore.h>
+ #include "internal/thread.h"
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 4, 0)
++#include <uapi/linux/sched/types.h>
++#endif
+ 
+ RTDECL(RTTHREAD) RTThreadSelf(void)
+ {
+Index: VirtualBox-6.0.12/src/VBox/Additions/linux/drm/vbox_drv.c
+===================================================================
+--- VirtualBox-6.0.12.orig/src/VBox/Additions/linux/drm/vbox_drv.c
++++ VirtualBox-6.0.12/src/VBox/Additions/linux/drm/vbox_drv.c
+@@ -271,11 +271,13 @@ static void vbox_master_drop(struct drm_
+ 
+ static struct drm_driver driver = {
+ 	.driver_features =
+-	    DRIVER_MODESET | DRIVER_GEM | DRIVER_HAVE_IRQ |
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 4, 0)
++	    DRIVER_PRIME |
++#endif
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(5, 1, 0)
+ 	    DRIVER_IRQ_SHARED |
+ #endif
+-	    DRIVER_PRIME,
++	    DRIVER_MODESET | DRIVER_GEM | DRIVER_HAVE_IRQ,
+ 	.dev_priv_size = 0,
+ 
+ 	.load = vbox_driver_load,
+Index: VirtualBox-6.0.12/src/VBox/Additions/linux/drm/vbox_main.c
+===================================================================
+--- VirtualBox-6.0.12.orig/src/VBox/Additions/linux/drm/vbox_main.c
++++ VirtualBox-6.0.12/src/VBox/Additions/linux/drm/vbox_main.c
+@@ -619,8 +619,12 @@ static inline u64 vbox_bo_mmap_offset(st
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(3, 12, 0) && !defined(RHEL_70)
+ 	return bo->bo.addr_space_offset;
+ #else
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 4, 0)
++	return drm_vma_node_offset_addr(&bo->bo.base.vma_node);
++#else
+ 	return drm_vma_node_offset_addr(&bo->bo.vma_node);
+ #endif
++#endif
+ }
+ 
+ int

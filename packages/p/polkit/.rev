@@ -584,4 +584,12 @@ Fix for CVE-2013-4288 (forwarded request 199675 from sumski)</comment>
     <comment></comment>
     <requestid>709799</requestid>
   </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>3267cd3af4a2c50d07ec124657b6fc8a</srcmd5>
+    <version>0.116</version>
+    <time>1570701154</time>
+    <user>dimstar_suse</user>
+    <comment>- polkit-keyinit.patch: add pam_keyinit to the polkit configuration (bsc#1144053) (forwarded request 736147 from msmeissn)</comment>
+    <requestid>736148</requestid>
+  </revision>
 </revisionlist>

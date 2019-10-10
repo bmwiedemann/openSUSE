@@ -750,7 +750,7 @@ Wed Jan  6 05:30:17 UTC 2016 - coolo@suse.com
     * disable toc if document has no sections (#1633)
     * convert inline asciimath to MathML (using asciimath gem) in DocBook converter (#1622)
     * add attribute to control build reproducibility (@bk2204) (#1453)
-    * recognize ile:/// as a file root in Opal browser env (#1561)
+    * recognize file:/// as a file root in Opal browser env (#1561)
     * honor icon attribute on admonition block when font-based icons are enabled (@robertpanzer) (#1593)
     * resolve custom icon relative to iconsdir; add file extension if absent (#1634)
     * allow asciidoctor cli to resolve library path when invoked without leading ./

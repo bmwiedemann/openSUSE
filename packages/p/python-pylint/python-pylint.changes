@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct  9 11:27:15 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.4.2:
+  * Various bugfixes and compat with newer releases of astroid
+
+-------------------------------------------------------------------
+Tue Oct  8 03:01:10 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Skip pylint/test/extensions/test_redefined.py::test_types_redefined
+  (gh#PyCQA/pylint#3171)
+
+-------------------------------------------------------------------
 Wed Jul 31 18:44:31 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not install tests on system

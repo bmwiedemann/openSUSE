@@ -17,7 +17,7 @@
 
 
 Name:           perl-HTML-Form
-Version:        6.04
+Version:        6.05
 Release:        0
 %define cpan_name HTML-Form
 Summary:        Class that represents an HTML form element
@@ -66,7 +66,7 @@ make test
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes README
+%doc Changes
 %license LICENSE
 
 %changelog

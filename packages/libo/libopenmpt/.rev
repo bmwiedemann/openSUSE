@@ -359,4 +359,35 @@
 - Update to version 0.3.11 bsc#1143578 CVE-2018-20861:</comment>
     <requestid>723239</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ee1b1adb711021ab676f423182695f00</srcmd5>
+    <version>0.4.9</version>
+    <time>1570701074</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.9 bsc#1153102 CVE-2019-17113
+  * [Sec] libmodplug: C API: Limit the length of strings copied to
+    the output buffer of ModPlug_InstrumentName() and
+    ModPlug_SampleName() to 32 bytes (including terminating null)
+    as is done by original libmodplug. This avoids potential buffer
+    overflows in software relying on this limit instead of querying
+    the required buffer size beforehand. libopenmpt can return
+    strings longer than 32 bytes here beacuse the internal limit of
+    32 bytes applies to strings encoded in arbitrary character
+    encodings but the API returns them converted to UTF-8, which
+    can be longer. (reported by Antonio Morales Maldonado of Semmle
+    Security Research Team) (r12129)
+  * [Sec] libmodplug: C++ API: Do not return 0 in
+    CSoundFile::GetSampleName() and CSoundFile::GetInstrumentName()
+    when a null output pointer is provided. This behaviour differed
+    from libmodplug and made it impossible to determine the
+    required buffer size. (r12130)
+
+- Update to version 0.4.8:
+  * [Sec] Possible crash due to out-of-bounds read when playing an
+    OPL note with active filter in S3M or MPTM files (r12118).
+- Update to version 0.4.7:
+  * J2B: Ignore notes with non-existing instrument
+    (fixes Ending.j2b)</comment>
+    <requestid>736008</requestid>
+  </revision>
 </revisionlist>

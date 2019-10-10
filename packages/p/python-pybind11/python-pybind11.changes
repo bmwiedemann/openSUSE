@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct  8 09:11:41 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- updated to 2.4.2
+ * made devel package python version independent
+ * added cmake run to install cmake include files
+
+-------------------------------------------------------------------
 Sat Aug 24 06:26:13 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Replace description by something more substantial.

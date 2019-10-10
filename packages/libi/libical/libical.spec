@@ -16,17 +16,32 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
 %define sonum   3
-Name:           libical
+%if "%{flavor}" == "glib"
+%define name_ext -glib
+%bcond_without glib
+%else
+%define name_ext %{nil}
+%bcond_with glib
+%endif
+Name:           libical%{name_ext}
 Version:        3.0.5
 Release:        0
+%if %{without glib}
 Summary:        An Implementation of Basic iCAL Protocols
 License:        MPL-2.0 OR LGPL-2.1-only
 Group:          Development/Libraries/C and C++
+%else
+Summary:        GObject wrapper for libical library
+License:        MPL-2.0 OR LGPL-2.1-only
+Group:          Development/Libraries/C and C++
+%endif
 Url:            http://sourceforge.net/projects/freeassociation/
 #Git-Clone:     https://github.com/libical/libical
-Source:         https://github.com/libical/libical/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/libical/libical/releases/download/v%{version}/libical-%{version}.tar.gz
 Source2:        baselibs.conf
+Source3:        libical-rpmlintrc
 Patch1:         0001-vcc.y-factor-out-hexdigit-conversion.patch
 Patch2:         0002-vcc.y-fix-infinite-loop-with-lower-case-hex-digits.patch
 Patch3:         0003-vcc.y-fix-infinite-loop-with-non-hex-digits.patch
@@ -36,13 +51,28 @@ BuildRequires:  cmake >= 3.1
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(icu-i18n)
+%if %{with glib}
+BuildRequires:  gtk-doc
+BuildRequires:  vala
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gobject-2.0)
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(libxml-2.0)
+%endif
 
+%if %{without glib}
 %description
 Libical is an implementation of the IETF's iCalendar
 calendaring and scheduling protocols (RFC 2445, 2446, and 2447). It
 parses iCal components and provides a C API for manipulating the
 component properties, parameters, and subcomponents.
+%else
+%description
+This package provides a GObject wrapper for libical library with support
+for GObject Introspection.
+%endif
 
+%if %{without glib}
 %package -n %{name}%{sonum}
 Summary:        An Implementation of Basic iCAL Protocols
 Group:          System/Libraries
@@ -59,6 +89,8 @@ component properties, parameters, and subcomponents.
 Summary:        Development files for libical, an implementation of basic iCAL protocols
 Group:          Development/Libraries/C and C++
 Requires:       %{name}%{sonum} = %{version}
+# Typelib should be required, but might create a build cycle
+# Requires:      typelib-1_0-libical%{sonum} = %%{version}
 
 %description devel
 Libical is an implementation of the IETF's iCalendar
@@ -69,9 +101,7 @@ component properties, parameters, and subcomponents.
 %package doc
 Summary:        Example source code for programs to use libical
 Group:          Documentation/Other
-%if 0%{?suse_version} >= 1120
 BuildArch:      noarch
-%endif
 
 %description doc
 Libical is an implementation of the IETF's iCalendar
@@ -79,33 +109,133 @@ calendaring and scheduling protocols (RFC 2445, 2446, and 2447). It
 parses iCal components and provides a C API for manipulating the
 component properties, parameters, and subcomponents.
 
+%else
+%package -n %{name}%{sonum}
+Summary:        GObject wrapper for libical library
+Group:          System/Libraries
+Provides:       %{name} = %{version}
+Obsoletes:      %{name} < %{version}
+
+%description -n %{name}%{sonum}
+This package provides a GObject wrapper for libical library with support
+for GObject Introspection.
+
+%package devel
+Summary:        Development files for building against %{name}
+Group:          Development/Libraries/C and C++
+Requires:       %{name} = %{version}
+Requires:       libical%{sonum} = %{version}
+Requires:       typelib-1_0-%{name}%{sonum} = %{version}
+
+%description devel
+Development files for building against %{name}%{sonum}
+
+%package doc
+Summary:        Documentation files for %{name}%{sonum}
+Group:          Documentation/Other
+BuildArch:      noarch
+
+%description doc
+Documentation files for %{name}%{sonum}
+
+%package -n typelib-1_0-libical%{sonum}
+Summary:        Introspection bindings for libical
+Group:          Development/Libraries/C and C++
+
+%description -n typelib-1_0-libical%{sonum}
+This package provides the gobject-introspection bindings for libical.
+
+%package -n typelib-1_0-%{name}%{sonum}
+Summary:        Introspection bindings for the libical glib bindings.
+Group:          Development/Libraries/C and C++
+
+%description -n typelib-1_0-%{name}%{sonum}
+This package provides the gobject-introspection bindings for libical-glib.
+%endif
+
 %prep
-%autosetup -p1
+%autosetup -p1 -n libical-%{version}
 
 %build
-%cmake -DICAL_GLIB=false -DSHARED_ONLY=true
+%cmake \
+  -DICAL_ALLOW_EMPTY_PROPERTIES=true \
+%if %{with glib}
+  -DICAL_GLIB=true \
+  -DGOBJECT_INTROSPECTION=true \
+  -DICAL_GLIB_VAPI=true \
+%else
+  -DICAL_GLIB=false \
+%endif
+  -DSHARED_ONLY=true
 make -j1
 
 %install
 %cmake_install
 rm examples/CMakeLists.txt
+%if %{with glib}
+rm -r %{buildroot}%{_includedir}/libical/
+rm -r %{buildroot}%{_libdir}/cmake/LibIcal
+rm %{buildroot}%{_libdir}/libical.so*
+rm %{buildroot}%{_libdir}/libical_cxx.so*
+rm %{buildroot}%{_libdir}/libicalss.so*
+rm %{buildroot}%{_libdir}/libicalss_cxx.so*
+rm %{buildroot}%{_libdir}/libicalvcal.so*
+rm %{buildroot}%{_libdir}/pkgconfig/libical.pc
+%endif
 
+%if %{without glib}
 %post -n %{name}%{sonum} -p /sbin/ldconfig
 %postun -n %{name}%{sonum} -p /sbin/ldconfig
+%else
+%post -n %{name} -p /sbin/ldconfig
+%postun -n %{name} -p /sbin/ldconfig
+%endif
 
+%if %{without glib}
 %files -n %{name}%{sonum}
 %license COPYING
 %doc AUTHORS ReadMe.txt ReleaseNotes.txt TEST THANKS TODO
-%{_libdir}/*.so.*
+%{_libdir}/libical.so.*
+%{_libdir}/libical_cxx.so.*
+%{_libdir}/libicalss.so.*
+%{_libdir}/libicalss_cxx.so.*
+%{_libdir}/libicalvcal.so.*
 
 %files devel
-%{_libdir}/*.so
+%{_libdir}/libical.so
+%{_libdir}/libical_cxx.so
+%{_libdir}/libicalss.so
+%{_libdir}/libicalss_cxx.so
+%{_libdir}/libicalvcal.so
 %{_libdir}/pkgconfig/libical.pc
-%{_includedir}/libical/
 %{_libdir}/cmake/LibIcal/
+%{_includedir}/libical/
 
 %files doc
 %doc doc/*.txt
 %doc examples/
+%else
+%files -n %{name}%{sonum}
+%{_libdir}/libical-glib.so.*
+
+%files devel
+%{_libdir}/libical-glib.so
+%{_libdir}/pkgconfig/libical-glib.pc
+%{_includedir}/libical-glib/
+%dir %{_datadir}/vala/vapi
+%{_datadir}/vala/vapi/libical-glib.vapi
+# This should really be in libical-devel
+%{_datadir}/gir-1.0/ICal-3.0.gir
+%{_datadir}/gir-1.0/ICalGLib-3.0.gir
+
+%files doc
+%{_datadir}/gtk-doc/html/libical-glib
+
+%files -n typelib-1_0-libical%{sonum}
+%{_libdir}/girepository-1.0/ICal-3.0.typelib
+
+%files -n typelib-1_0-%{name}%{sonum}
+%{_libdir}/girepository-1.0/ICalGLib-3.0.typelib
+%endif
 
 %changelog

@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-clikit
-Version:        0.3.1
+Version:        0.3.2
 Release:        0
 Summary:        Helper to build testable command line interfaces
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/sdispater/clikit
 Source:         https://github.com/sdispater/clikit/archive/%{version}.tar.gz#/clikit-%{version}.tar.gz
 BuildRequires:  %{python_module pastel}

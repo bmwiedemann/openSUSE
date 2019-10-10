@@ -40,6 +40,9 @@ Group:          Development/Libraries/C and C++
 Url:            https://poppler.freedesktop.org/
 Source:         http://poppler.freedesktop.org/%{sname}-%{version}.tar.xz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM -- Avoid dependency on boost_headers from splash headers
+Patch0:         0001-Include-SplashMath.h-only-where-needed.patch
+Patch1:         0002-Move-the-non-trivial-part-of-the-clip-test-to-the-im.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel
@@ -71,7 +74,6 @@ BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(nss)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Poppler is a PDF rendering library, forked from the xpdf PDF viewer
@@ -168,8 +170,13 @@ developed by Derek Noonburg of Glyph and Cog, LLC.
 
 %prep
 %setup -q -n poppler-%{version}
+%patch0 -p1
+%patch1 -p1
 
 %build
+# Leap 15.0 doesn't know %%cmake_build
+%{?!cmake_build:%define cmake_build() make %{?_smp_mflags} VERBOSE=1}
+
 %if "%{flavor}" == "qt5"
 export MOCQT5='%{_libqt5_bindir}/moc'
 export MOCQT52='%{_libqt5_bindir}/moc'

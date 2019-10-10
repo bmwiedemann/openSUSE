@@ -1,0 +1,53 @@
+# HG changeset patch
+# User A. Wilcox <AWilcox@Wilcox-Tech.com>
+# Date 1543674229 0
+#      Sat Dec 01 14:23:49 2018 +0000
+# Node ID 0309ff19e46b126c527e633518d7de8570442114
+# Parent  5b5a6a164acbd4da6131808bd12e42e7b0a33c2a
+Bug 1511604 - Swizzle YCbCr->RGB data on big-endian machines
+Taken from https://bugzilla.mozilla.org/show_bug.cgi?id=1511604
+
+This is very closely related to mozilla-bmo1504834
+
+Again, input for skia is swizzled to LE, as skia only understands LE.
+
+diff -r 5b5a6a164acb gfx/ycbcr/YCbCrUtils.cpp
+--- a/gfx/ycbcr/YCbCrUtils.cpp	Mon Sep 09 17:59:29 2019 +0200
++++ b/gfx/ycbcr/YCbCrUtils.cpp	Tue Sep 10 08:22:10 2019 +0200
+@@ -3,7 +3,9 @@
+  * License, v. 2.0. If a copy of the MPL was not distributed with this
+  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+ 
++#include "mozilla/EndianUtils.h"
+ #include "gfx2DGlue.h"
++#include "mozilla/gfx/Swizzle.h"
+ 
+ #include "YCbCrUtils.h"
+ #include "yuv_convert.h"
+@@ -236,6 +238,13 @@
+                           yuvtype,
+                           srcData.mYUVColorSpace);
+   }
++#if MOZ_BIG_ENDIAN
++  // libyuv makes endian-correct result, which needs to be swapped to BGRX
++  if (aDestFormat != SurfaceFormat::R5G6B5_UINT16)
++    gfx::SwizzleData(aDestBuffer, aStride, gfx::SurfaceFormat::X8R8G8B8,
++                     aDestBuffer, aStride, gfx::SurfaceFormat::B8G8R8X8,
++                     srcData.mPicSize);
++#endif
+ }
+ 
+ void
+@@ -257,6 +266,12 @@
+                         aSrcStrideYA,
+                         aSrcStrideUV,
+                         aDstStrideARGB);
++#if MOZ_BIG_ENDIAN
++  // libyuv makes endian-correct result, which needs to be swapped to BGRA
++  gfx::SwizzleData(aDstARGB, aDstStrideARGB, gfx::SurfaceFormat::A8R8G8B8,
++                   aDstARGB, aDstStrideARGB, gfx::SurfaceFormat::B8G8R8A8,
++                   IntSize(aWidth, aHeight));
++#endif
+ }
+ 
+ } // namespace gfx
