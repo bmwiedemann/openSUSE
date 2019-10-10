@@ -7,4 +7,12 @@
     <comment>- New package part of teh Azure SDK</comment>
     <requestid>694570</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ea8d548016505c78625dc98b6acfd7db</srcmd5>
+    <version>0.1.0</version>
+    <time>1570710493</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to latest version (forwarded request 735142 from glaubitz)</comment>
+    <requestid>735663</requestid>
+  </revision>
 </revisionlist>

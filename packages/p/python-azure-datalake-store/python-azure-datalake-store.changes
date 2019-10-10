@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct  4 12:13:06 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 0.0.47
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package
+- Add python-requires to BuildRequires for Python 2.x
+- Drop patch to support older versions of setuptools as
+  SLE-12 is now shipping with a recent enough version
+  + ads_drop-extras-require.patch
+
+-------------------------------------------------------------------
 Thu Apr 11 11:48:00 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

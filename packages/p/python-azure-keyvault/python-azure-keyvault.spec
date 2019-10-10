@@ -26,7 +26,7 @@ Group:          Development/Languages/Python
 Url:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-keyvault/azure-keyvault-%{version}.zip
 Source1:        LICENSE.txt
-Patch1:         ak_drop-compatible-releases-operator.patch
+BuildRequires:  %{python_module azure-keyvault-nspkg >= 1.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -34,6 +34,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-azure-common < 2.0.0
 Requires:       python-azure-common >= 1.1
+Requires:       python-azure-keyvault-nspkg >= 1.0.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-cryptography >= 2.1.4
 Requires:       python-msrest >= 0.5.0
@@ -53,7 +54,6 @@ This package has been tested with Python 2.7, 3.4, 3.5 and 3.6.
 
 %prep
 %setup -q -n azure-keyvault-%{version}
-%patch1 -p1
 
 %build
 install -m 644 %{SOURCE1} %{_builddir}/azure-keyvault-%{version}
@@ -63,6 +63,8 @@ install -m 644 %{SOURCE1} %{_builddir}/azure-keyvault-%{version}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %{python_expand # delete common files
+rm -rf %{buildroot}%{$python_sitelib}/azure/keyvault/__init__.*
+rm -rf %{buildroot}%{$python_sitelib}/azure/keyvault/__pycache__
 rm -rf %{buildroot}%{$python_sitelib}/azure/__init__.*
 rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 }

@@ -23,4 +23,12 @@
     <comment>- Update Python Azure SDK to latest version (forwarded request 694254 from glaubitz)</comment>
     <requestid>694376</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>73b7191a60d1228e5feb2c289c52f866</srcmd5>
+    <version>1.0.0</version>
+    <time>1570710503</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to latest version (forwarded request 735147 from glaubitz)</comment>
+    <requestid>735668</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-cognitiveservices-language-textanalytics
-Version:        0.1.0
+Version:        0.2.0
 Release:        0
 Summary:        Microsoft Azure Cognitive Services Text Analytics Client Library
 License:        MIT
@@ -26,7 +26,6 @@ Group:          Development/Languages/Python
 Url:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-cognitiveservices-language-textanalytics/azure-cognitiveservices-language-textanalytics-%{version}.zip
 Source1:        LICENSE.txt
-Patch1:         aclt_drop-compatible-releases-operator.patch
 BuildRequires:  %{python_module azure-cognitiveservices-language-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-cognitiveservices-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
@@ -39,8 +38,7 @@ Requires:       python-azure-cognitiveservices-nspkg >= 3.0.0
 Requires:       python-azure-common < 2.0.0
 Requires:       python-azure-common >= 1.1
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-msrest < 2.0.0
-Requires:       python-msrest >= 0.4.24
+Requires:       python-msrest >= 0.5.0
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
@@ -50,14 +48,10 @@ BuildArch:      noarch
 %description
 This is the Microsoft Azure Cognitive Services Text Analytics Client Library.
 
-Azure Resource Manager (ARM) is the next generation of management APIs that
-replace the old Azure Service Management (ASM).
-
-This package has been tested with Python 2.7, 3.3, 3.4, 3.5 and 3.6.
+This package has been tested with Python 2.7, 3.4, 3.5, 3.6 and 3.7.
 
 %prep
 %setup -q -n azure-cognitiveservices-language-textanalytics-%{version}
-%patch1 -p1
 
 %build
 install -m 644 %{SOURCE1} %{_builddir}/azure-cognitiveservices-language-textanalytics-%{version}

@@ -26,7 +26,6 @@ Group:          Development/Languages/Python
 Url:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-cognitiveservices-search-autosuggest/azure-cognitiveservices-search-autosuggest-%{version}.zip
 Source1:        LICENSE.txt
-Patch1:         acsa_drop-compatible-releases-operator.patch
 BuildRequires:  %{python_module azure-cognitiveservices-nspkg}
 BuildRequires:  %{python_module azure-cognitiveservices-search-nspkg}
 BuildRequires:  %{python_module azure-nspkg}
@@ -54,7 +53,6 @@ This package has been tested with Python 2.7, 3.4, 3.5, 3.6 and 3.7.
 
 %prep
 %setup -q -n azure-cognitiveservices-search-autosuggest-%{version}
-%patch1 -p1
 
 %build
 install -m 644 %{SOURCE1} %{_builddir}/azure-cognitiveservices-search-autosuggest-%{version}

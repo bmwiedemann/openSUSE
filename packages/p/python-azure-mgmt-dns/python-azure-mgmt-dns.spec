@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-mgmt-dns
-Version:        2.1.0
+Version:        3.0.0
 Release:        0
 Summary:        Microsoft Azure DNS Management Client Library
 License:        MIT
@@ -26,7 +26,6 @@ Group:          Development/Languages/Python
 Url:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-dns/azure-mgmt-dns-%{version}.zip
 Source1:        LICENSE.txt
-Patch1:         amd_drop-compatible-releases-operator.patch
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module setuptools}
@@ -56,7 +55,6 @@ This package has been tested with Python 2.7, 3.4, 3.5, 3.6 and 3.7.
 
 %prep
 %setup -q -n azure-mgmt-dns-%{version}
-%patch1 -p1
 
 %build
 install -m 644 %{SOURCE1} %{_builddir}/azure-mgmt-dns-%{version}

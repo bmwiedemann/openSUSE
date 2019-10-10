@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-applicationinsights
-Version:        0.11.7
+Version:        0.11.9
 Release:        0
 Summary:        Microsoft Application Insights for Python
 License:        MIT

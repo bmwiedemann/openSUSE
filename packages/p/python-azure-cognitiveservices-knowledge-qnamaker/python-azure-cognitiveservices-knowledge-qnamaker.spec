@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-cognitiveservices-knowledge-qnamaker
 Version:        0.1.0
@@ -25,21 +26,19 @@ Group:          Development/Languages/Python
 Url:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-cognitiveservices-knowledge-qnamaker/azure-cognitiveservices-knowledge-qnamaker-%{version}.zip
 Source1:        LICENSE.txt
-Patch1:         ackq_drop-compatible-releases-operator.patch
-Patch2:         ackq_drop-extras-require.patch
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
-BuildRequires:  %{python_module azure-cognitiveservices-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-cognitiveservices-knowledge-nspkg >= 3.0.0}
+BuildRequires:  %{python_module azure-cognitiveservices-nspkg >= 3.0.0}
+BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-msrest >= 0.5.0
-Requires:       python-azure-common >= 1.1
-Requires:       python-azure-common < 2.0.0
-Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-azure-cognitiveservices-nspkg >= 3.0.0
 Requires:       python-azure-cognitiveservices-knowledge-nspkg >= 3.0.0
+Requires:       python-azure-cognitiveservices-nspkg >= 3.0.0
+Requires:       python-azure-common < 2.0.0
+Requires:       python-azure-common >= 1.1
+Requires:       python-azure-nspkg >= 3.0.0
+Requires:       python-msrest >= 0.5.0
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
@@ -53,8 +52,6 @@ This package has been tested with Python 2.7, 3.4, 3.5, 3.6 and 3.7.
 
 %prep
 %setup -q -n azure-cognitiveservices-knowledge-qnamaker-%{version}
-%patch1 -p1
-%patch2 -p1
 
 %build
 install -m 644 %{SOURCE1} %{_builddir}/azure-cognitiveservices-knowledge-qnamaker-%{version}
@@ -78,4 +75,5 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 %license LICENSE.txt
 %{python_sitelib}/azure/cognitiveservices/knowledge/qnamaker
 %{python_sitelib}/azure_cognitiveservices_knowledge_qnamaker-*.egg-info
+
 %changelog

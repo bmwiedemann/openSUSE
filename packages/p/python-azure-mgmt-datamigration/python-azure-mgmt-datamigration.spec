@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-mgmt-datamigration
-Version:        2.1.0
+Version:        3.0.0
 Release:        0
 Summary:        Microsoft Azure Data Migration Client Library
 License:        MIT
@@ -26,18 +26,16 @@ Group:          Development/Languages/Python
 Url:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-datamigration/azure-mgmt-datamigration-%{version}.zip
 Source1:        LICENSE.txt
-Patch1:         amd_drop-compatible-releases-operator.patch
-Patch2:         amd_drop-extras-require.patch
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module setuptools}
-Requires:       python-azure-mgmt-nspkg >= 3.0.0
-Requires:       python-azure-nspkg >= 3.0.0
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-azure-common < 2.0.0
 Requires:       python-azure-common >= 1.1
+Requires:       python-azure-mgmt-nspkg >= 3.0.0
+Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-msrest >= 0.5.0
 Requires:       python-msrestazure < 2.0.0
 Requires:       python-msrestazure >= 0.4.32
@@ -53,12 +51,10 @@ This is the Microsoft Azure Data Migration Client Library.
 Azure Resource Manager (ARM) is the next generation of management APIs that
 replace the old Azure Service Management (ASM).
 
-This package has been tested with Python 2.7, 3.4, 3.5, 3.6 and 3.7.
+This package has been tested with Python 2.7, 3.5, 3.6 and 3.7.
 
 %prep
 %setup -q -n azure-mgmt-datamigration-%{version}
-%patch1 -p1
-%patch2 -p1
 
 %build
 install -m 644 %{SOURCE1} %{_builddir}/azure-mgmt-datamigration-%{version}

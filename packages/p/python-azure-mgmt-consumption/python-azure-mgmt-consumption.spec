@@ -18,15 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-mgmt-consumption
-Version:        2.0.0
+Version:        3.0.0
 Release:        0
-Summary:        Microsoft Azure Consumption Management Client Library
+Summary:        Microsoft Azure Consumption Client Library
 License:        MIT
 Group:          Development/Languages/Python
 Url:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-consumption/azure-mgmt-consumption-%{version}.zip
 Source1:        LICENSE.txt
-Patch1:         amc_drop-compatible-releases-operator.patch
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module setuptools}
@@ -37,6 +36,7 @@ Requires:       python-azure-common < 2.0.0
 Requires:       python-azure-common >= 1.1
 Requires:       python-azure-mgmt-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
+Requires:       python-msrest >= 0.5.0
 Requires:       python-msrestazure < 2.0.0
 Requires:       python-msrestazure >= 0.4.20
 Conflicts:      python-azure-sdk <= 2.0.0
@@ -46,16 +46,15 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-This is the Microsoft Azure Consumption Management Client Library.
+This is the Microsoft Azure Consumption Client Library.
 
 Azure Resource Manager (ARM) is the next generation of management APIs that
 replace the old Azure Service Management (ASM).
 
-This package has been tested with Python 2.7, 3.4, 3.5 and 3.6.
+This package has been tested with Python 2.7, 3.4, 3.5, 3.6 and 3.7.
 
 %prep
 %setup -q -n azure-mgmt-consumption-%{version}
-%patch1 -p1
 
 %build
 install -m 644 %{SOURCE1} %{_builddir}/azure-mgmt-consumption-%{version}

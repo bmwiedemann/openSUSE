@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-common
-Version:        1.1.18
+Version:        1.1.23
 Release:        0
 Summary:        Microsoft Azure common code
 License:        MIT

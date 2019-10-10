@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-cognitiveservices-knowledge-nspkg
 Version:        3.0.0
@@ -25,11 +26,11 @@ Group:          Development/Languages/Python
 Url:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-cognitiveservices-knowledge-nspkg/azure-cognitiveservices-knowledge-nspkg-%{version}.zip
 Source1:        LICENSE.txt
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module azure-cognitiveservices-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-azure-cognitiveservices-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
@@ -66,4 +67,5 @@ mkdir -p %{buildroot}%{python3_sitelib}/azure/cognitiveservices/knowledge
 %python2_only %{python2_sitelib}/azure/cognitiveservices/knowledge
 %python3_only %dir %{python3_sitelib}/azure/cognitiveservices/knowledge
 %{python_sitelib}/azure_cognitiveservices_knowledge_nspkg-*.egg-info
+
 %changelog
