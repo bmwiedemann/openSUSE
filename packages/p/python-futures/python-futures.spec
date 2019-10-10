@@ -23,19 +23,19 @@ Version:        3.3.0
 Release:        0
 Summary:        Backport of the concurrent.futures package from Python 3.2
 License:        Python-2.0
-Group:          Development/Languages/Python
-Url:            https://github.com/agronholm/pythonfutures
+URL:            https://github.com/agronholm/pythonfutures
 Source:         https://files.pythonhosted.org/packages/source/f/futures/futures-%{version}.tar.gz
+Patch0:         test_idle_thread_reuse_failure.patch
 BuildRequires:  %{python_module setuptools}
 # This packages contain module test from stdlib, nothing to with
 # BuildArch field
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  python2-devel
+BuildArch:      noarch
 %if 0%{?rhel} || 0%{?fedora}
 BuildRequires:  python-test
 %endif
-BuildRequires:  python2-devel
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -47,6 +47,7 @@ See the Python documentation for a full description.
 
 %prep
 %setup -q -n futures-%{version}
+%autopatch -p1
 
 %build
 %python_build

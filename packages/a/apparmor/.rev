@@ -1787,4 +1787,13 @@ libapparmor:
 - add apparmor-krb5-conf-d.diff for kerberos client</comment>
     <requestid>733858</requestid>
   </revision>
+  <revision rev="131" vrev="3">
+    <srcmd5>9c74181d254f40f7df3e6b0e90bfaa0f</srcmd5>
+    <version>2.13.3</version>
+    <time>1570702895</time>
+    <user>dimstar_suse</user>
+    <comment>- add usr-etc-abstractions-authentification.diff to allow reading
+  /usr/etc/pam.d/* and some other authentification-related files (boo#1153162) (forwarded request 735944 from cboltz)</comment>
+    <requestid>735945</requestid>
+  </revision>
 </revisionlist>

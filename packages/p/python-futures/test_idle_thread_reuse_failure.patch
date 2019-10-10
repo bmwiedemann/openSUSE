@@ -1,0 +1,29 @@
+From bd3a5d8133e4668b4ee49d81fb6b2e20a168a376 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Wed, 18 Sep 2019 17:01:09 +0200
+Subject: [PATCH] Make test_idle_thread_reuse more reliable
+
+depending on machine load or other unknown influences
+on the Linux scheduler, this would often fail with
+
+   File "test_futures.py", line 558, in test_idle_thread_reuse
+     self.assertEqual(len(executor._threads), 1)
+ AssertionError: 2 != 1
+---
+ test_futures.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/test_futures.py b/test_futures.py
+index f51786d..089fb92 100644
+--- a/test_futures.py
++++ b/test_futures.py
+@@ -553,7 +553,9 @@ def acquire_lock(lock):
+     def test_idle_thread_reuse(self):
+         executor = self.executor_type()
+         executor.submit(mul, 21, 2).result()
++        time.sleep(0.001)
+         executor.submit(mul, 6, 7).result()
++        time.sleep(0.001)
+         executor.submit(mul, 3, 14).result()
+         self.assertEqual(len(executor._threads), 1)
+         executor.shutdown(wait=True)

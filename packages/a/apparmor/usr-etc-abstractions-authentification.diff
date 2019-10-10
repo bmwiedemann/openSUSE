@@ -1,0 +1,60 @@
+commit ee7194a7141b99225bb1d040ef2d37ad47ca838e
+Author: Christian Boltz <apparmor@cboltz.de>
+Date:   Mon Oct 7 21:47:25 2019 +0200
+
+    Allow /usr/etc/ in abstractions/authentication
+    
+    openSUSE (and hopefully some other distributions) work on moving shipped
+    config files from /etc/ to /usr/etc/ so that /etc/ only contains files
+    written by the admin of each system.
+    
+    See https://en.opensuse.org/openSUSE:Packaging_UsrEtc for details and
+    the first moved files.
+    
+    Updating abstractions/authentication is the first step, and also fixes
+    bugzilla.opensuse.org/show_bug.cgi?id=1153162
+
+diff --git a/profiles/apparmor.d/abstractions/authentication b/profiles/apparmor.d/abstractions/authentication
+index b92516f9..58efe6b9 100644
+--- a/profiles/apparmor.d/abstractions/authentication
++++ b/profiles/apparmor.d/abstractions/authentication
+@@ -2,6 +2,7 @@
+ #
+ #    Copyright (C) 2002-2009 Novell/SUSE
+ #    Copyright (C) 2009-2012 Canonical Ltd
++#    Copyright (C) 2019 Christian Boltz
+ #
+ #    This program is free software; you can redistribute it and/or
+ #    modify it under the terms of version 2 of the GNU General Public
+@@ -14,13 +15,13 @@
+   # Some services need to perform authentication of users
+   # Such authentication almost certainly needs access to the local users
+   # databases containing passwords, PAM configuration files, PAM libraries
+-  /etc/nologin                r,
+-  /etc/pam.d/*                r,
+-  /etc/securetty              r,
+-  /etc/security/*             r,
+-  /etc/shadow                 r,
+-  /etc/gshadow                r,
+-  /etc/pwdb.conf              r,
++  /{usr/,}etc/nologin                r,
++  /{usr/,}etc/pam.d/*                r,
++  /{usr/,}etc/securetty              r,
++  /{usr/,}etc/security/*             r,
++  /{usr/,}etc/shadow                 r,
++  /{usr/,}etc/gshadow                r,
++  /{usr/,}etc/pwdb.conf              r,
+ 
+   /{usr/,}lib{,32,64}/security/pam_filter/*  mr,
+   /{usr/,}lib{,32,64}/security/pam_*.so      mr,
+@@ -32,8 +33,8 @@
+   # kerberos
+   #include <abstractions/kerberosclient>
+   # SuSE's pwdutils are different:
+-  /etc/default/passwd         r,
+-  /etc/login.defs             r,
++  /{usr/,}etc/default/passwd         r,
++  /{usr/,}etc/login.defs             r,
+ 
+   # nis
+   #include <abstractions/nis>
