@@ -38,13 +38,13 @@ BuildRequires:  netpbm
 BuildRequires:  texlive-dvips
 BuildRequires:  texlive-kpathsea
 BuildRequires:  texlive-latex
-BuildRequires:  texlive-preview
 Requires:       ghostscript_any
 Requires:       latex2html-pngicons
 Requires:       netpbm
 Requires:       perl
 Requires:       texlive-dvips
 Requires:       texlive-latex
+Requires:       texlive-preview
 BuildArch:      noarch
 %define _texmfmaindir   %{_datadir}/texmf
 
@@ -92,6 +92,7 @@ chmod 755 %{buildroot}%{_datadir}/%{name}/{cweb2html/makemake.pl,cweb2html/cweb2
 
 %check
 make %{?_smp_mflags} test
+find manual tests \( -name \*.log -o -name \*.aux \) -delete
 
 %files
 %doc Changes FAQ README.md TODO dot.latex2html-init
