@@ -247,8 +247,8 @@ products:
     - x86_64
   - kubic-weave-npc-image:
     - x86_64
-  - opensuse-toolbox-image:
-    - x86_64
+#  - opensuse-toolbox-image:
+#    - x86_64
   - opensuse-tumbleweed-image:docker:
     - i586
     - x86_64
