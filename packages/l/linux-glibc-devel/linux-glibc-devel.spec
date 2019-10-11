@@ -17,7 +17,7 @@
 
 
 Name:           linux-glibc-devel
-Version:        5.2
+Version:        5.3
 Release:        0
 Summary:        Linux headers for userspace development
 License:        GPL-2.0-only
@@ -35,7 +35,31 @@ PreReq:         coreutils
 Provides:       kernel-headers
 Provides:       linux-kernel-headers = %{version}
 Obsoletes:      linux-kernel-headers < %{version}
-BuildArch:      noarch
+%global kernel_arch %target_cpu
+%ifarch x86_64 %ix86
+%global kernel_arch x86
+%endif
+%ifarch ppc ppc64 ppc64le
+%global kernel_arch powerpc
+%endif
+%ifarch %arm
+%global kernel_arch arm
+%endif
+%ifarch aarch64
+%global kernel_arch arm64
+%endif
+%ifarch riscv64
+%global kernel_arch riscv
+%endif
+%ifarch s390x
+%global kernel_arch s390
+%endif
+%ifarch hppa
+%global kernel_arch parisc
+%endif
+%ifarch sparc64
+%global kernel_arch sparc
+%endif
 
 %description
 This package provides Linux kernel headers, the kernel API description
@@ -48,6 +72,7 @@ packages, instead.
 %setup -q -n linux-glibc-devel-%{version}
 
 %build
+cd %{kernel_arch}
 cat > version.h <<\BOGUS
 #ifdef __KERNEL__
 #error "======================================================="
@@ -92,86 +117,20 @@ BOGUS
 cat version.h
 
 %install
+cd %{kernel_arch}
 cp -a usr %{buildroot}/
 cp -a version.h %{buildroot}%{_includedir}/linux/
 # resolve file conflict with glibc for now
 rm -fv   %{buildroot}/%{_includedir}/scsi/scsi.h
-# Replace the directory /usr/include/asm with a symlink.
-# libc contained a symlink /usr/include/asm into kernel-source up to 7.0 (2.1.3)
-# glibc-devel contained a symlink /usr/include/asm into kernel-source in 7.1 (2.2)
-# glibc-devel contained a directory /usr/include/asm from 7.2 (2.2.2) up to 10.1/SLES10 (2.4)
-# The directory moved from glibc-devel to linux-kernel-headers in 10.2 (2.6.18.2)
-# The directory turned into a symlink in 10.3 (2.6.22)
-# rpm will remove obsolete files after the post install scripts
-# A trigger will run after the /usr/include/asm was removed
-# Create a dummy symlink now for rpmlint happiness, we %%ghost this and create
-# a proper symlink during %%post:
-ln -sfn asm-dummy %{buildroot}%{_includedir}/asm
 %fdupes %{buildroot}%{_includedir}
 
-%postun
-if test "$1" = 0
-then
-	rm -f %{_includedir}/asm
+%pre
+if test -L %{_includedir}/asm; then
+  rm -f %{_includedir}/asm
 fi
-exit 0
-
-%post
-asm_link=
-case "$(uname -m)" in
-	alpha*)  asm_link=alpha      ;;
-	ppc*)    asm_link=powerpc    ;;
-	s390*)   asm_link=s390       ;;
-	ia64)    asm_link=ia64       ;;
-	*arm*)   asm_link=arm        ;;
-	parisc)  asm_link=parisc     ;;
-	*mips*)  asm_link=mips       ;;
-	sparc*)  asm_link=sparc      ;;
-	aarch64) asm_link=arm64      ;;
-	m68k)    asm_link=m68k       ;;
-	riscv*)  asm_link=riscv      ;;
-	*)       asm_link=x86  ;;
-esac
-if test -L %{_includedir}/asm
-then
-	case "$(readlink %{_includedir}/asm)" in
-		*../src/linux/include*)
-		echo "%{_includedir}/asm points to kernel-source, waiting for triggerpostun to symlink to arch-$asm_link/asm"
-		rm -fv %{_includedir}/asm
-		exit 0
-		;;
-	esac
-	# symlink is ok, update it below in case of an arch change
-elif test -d %{_includedir}/asm
-then
-	echo "%{_includedir}/asm is a directory, waiting for triggerpostun to symlink to arch-$asm_link/asm"
-	exit 0
-fi
-ln -sfn arch-$asm_link/asm %{_includedir}/asm
-exit 0
-
-%triggerpostun -- linux-kernel-headers, glibc-devel < 2.5, libc < 2.2
-asm_link=
-case "$(uname -m)" in
-	alpha*)  asm_link=alpha      ;;
-	ppc*)    asm_link=powerpc    ;;
-	s390*)   asm_link=s390       ;;
-	ia64)    asm_link=ia64       ;;
-	*arm*)   asm_link=arm        ;;
-	parisc)  asm_link=parisc     ;;
-	*mips*)  asm_link=mips       ;;
-	sparc*)  asm_link=sparc      ;;
-	aarch64) asm_link=arm64      ;;
-	m68k)    asm_link=m68k       ;;
-	riscv*)  asm_link=riscv      ;;
-	*)       asm_link=x86  ;;
-esac
-ln -sfn arch-$asm_link/asm %{_includedir}/asm
-exit 0
 
 %files
 %defattr(-,root,root)
 %{_includedir}/*
-%ghost %{_includedir}/asm
 
 %changelog

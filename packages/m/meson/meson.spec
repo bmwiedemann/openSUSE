@@ -28,7 +28,7 @@
 %{!?vim_data_dir:%global vim_data_dir %{_datadir}/vim}
 %bcond_with setuptools
 Name:           meson%{name_ext}
-Version:        0.51.1
+Version:        0.51.2
 Release:        0
 Summary:        Python-based build system
 License:        Apache-2.0
@@ -50,7 +50,6 @@ Patch4:         meson-fix-gcc48.patch
 # PATCH-FEATURE-OPENSUSE meson-distutils.patch tchvatal@suse.com -- build and install using distutils instead of full setuptools
 Patch5:         meson-distutils.patch
 Patch6:         gcc9-sanitizer.patch
-Patch7:         fix-missing-return-statements-that-are-seen-with-Wer.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
@@ -164,7 +163,6 @@ This package provides support for meson.build files in Vim.
 %patch5 -p1
 %endif
 %patch6 -p1
-%patch7 -p1
 
 # Remove static boost tests from "test cases/frameworks/1 boost/".
 sed -i "/static/d" test\ cases/frameworks/1\ boost/meson.build

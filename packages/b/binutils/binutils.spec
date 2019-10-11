@@ -61,7 +61,7 @@ Release:        0
 %else
 %define build_multitarget 0
 %endif
-%define target_list aarch64 alpha armv5l armv6l armv7l armv8l hppa hppa64 i686 ia64 m68k mips powerpc powerpc64 powerpc64le riscv64 s390 s390x sh4 sparc sparc64 x86_64 xtensa
+%define target_list aarch64 alpha armv5l armv6l armv7l armv8l avr epiphany hppa hppa64 i686 ia64 m68k mips powerpc powerpc64 powerpc64le riscv64 rx s390 s390x sh4 sparc sparc64 x86_64 xtensa
 #
 #
 #

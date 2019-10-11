@@ -1076,4 +1076,16 @@ Feel free to use or reject (forwarded request 397400 from dimstar)</comment>
     <comment></comment>
     <requestid>730732</requestid>
   </revision>
+  <revision rev="127" vrev="7">
+    <srcmd5>9801b44da9c30acdfb02cd929ff22d42</srcmd5>
+    <version>unknown</version>
+    <time>1570799385</time>
+    <user>dimstar_suse</user>
+    <comment>- Add || exit 0 on the scriptlet as it can actually fail in
+  rootless containers with podman. This makes sure the zypper
+  does not abort the container creation.
+  * the actual error looks like:
+    /dev/zero: chown: Operation not permitted (forwarded request 734796 from scarabeus_iv)</comment>
+    <requestid>734799</requestid>
+  </revision>
 </revisionlist>

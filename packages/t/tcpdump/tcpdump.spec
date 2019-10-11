@@ -16,31 +16,24 @@
 #
 
 
-%define min_libpcap_version 1.8.1
+%define min_libpcap_version 1.9.1
 Name:           tcpdump
-Version:        4.9.2
+Version:        4.9.3
 Release:        0
 Summary:        A Packet Sniffer
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Diagnostic
-Url:            http://www.tcpdump.org/
-Source:         http://www.tcpdump.org/release/%{name}-%{version}.tar.gz
+Url:            https://www.tcpdump.org/
+Source:         https://www.tcpdump.org/release/%{name}-%{version}.tar.gz
 Source1:        tcpdump-qeth
-Source2:        http://www.tcpdump.org/release/%{name}-%{version}.tar.gz.sig
-Source3:        http://www.tcpdump.org/tcpdump-workers.asc#/%{name}.keyring
-# PATCH-FIX-OPENSUSE tcpdump-ikev2pI2.patch - disabled failing test
-Patch0:         tcpdump-ikev2pI2.patch
+Source2:        https://www.tcpdump.org/release/%{name}-%{version}.tar.gz.sig
+Source3:        https://www.tcpdump.org/tcpdump-workers.asc#/%{name}.keyring
 # PATCH-FIX-OPENSUSE tcpdump-CVE-2018-19519.patch - Initialize buf in print-hncp.c:print_prefix
-Patch1:         tcpdump-CVE-2018-19519.patch
-# PATCH-FIX-UPSTREAM bsc#1068716 CVE-2017-16808 Heap-based buffer over-read related to aoe_print and lookup_emem
-Patch2:         tcpdump-CVE-2017-16808.patch
-# PATCH-FIX-UPSTREAM bsc#1142439 CVE-2019-1010220 Buffer Over-read in print_prefix
-Patch3:         tcpdump-CVE-2019-1010220.patch
+Patch0:         tcpdump-CVE-2018-19519.patch
 BuildRequires:  libpcap-devel >= %{min_libpcap_version}
 BuildRequires:  libsmi-devel
 BuildRequires:  openssl-devel
 Requires:       libpcap >= %{min_libpcap_version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This program can "read" all or only certain packets going over the
@@ -49,9 +42,6 @@ ethernet. It can be used to debug specific network problems.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
 %build
 export CFLAGS="%{optflags} -Wall -DGUESS_TSO -fstack-protector -fno-strict-aliasing"
@@ -70,7 +60,6 @@ rm %{buildroot}/%{_sbindir}/tcpdump.%{version}
 make check %{?_smp_mflags}
 
 %files
-%defattr(-,root,root)
 %license LICENSE
 %doc CHANGES CREDITS README* *.awk
 %{_mandir}/man?/*

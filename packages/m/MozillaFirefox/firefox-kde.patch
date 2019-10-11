@@ -327,25 +327,3 @@ new file mode 100644
 +nsUnixShellServiceConstructor(nsISupports *aOuter, REFNSIID aIID, void **aResult);
 +
 +#endif // nsunixshellservice_h____
-diff --git a/browser/installer/package-manifest.in b/browser/installer/package-manifest.in
---- a/browser/installer/package-manifest.in
-+++ b/browser/installer/package-manifest.in
-@@ -295,16 +295,18 @@
- @RESPATH@/browser/defaults/settings/main
- @RESPATH@/browser/defaults/settings/security-state
- 
- ; Warning: changing the path to channel-prefs.js can cause bugs (Bug 756325)
- ; Technically this is an app pref file, but we are keeping it in the original
- ; gre location for now.
- @RESPATH@/defaults/pref/channel-prefs.js
- 
-+@RESPATH@/defaults/pref/kde.js
-+
- ; Services (gre) prefs
- @RESPATH@/defaults/pref/services-sync.js
- 
- ; [Layout Engine Resources]
- ; Style Sheets, Graphics and other Resources used by the layout engine.
- @RESPATH@/res/EditorOverride.css
- @RESPATH@/res/contenteditable.css
- @RESPATH@/res/designmode.css

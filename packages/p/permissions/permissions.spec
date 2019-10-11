@@ -88,7 +88,7 @@ The actual permissions configuration files, /etc/permission.*.
 %post config
 %{fillup_only -n security}
 # apply all potentially changed permissions
-%{_bindir}/chkstat --system
+%{_bindir}/chkstat --system || exit 0
 
 %package -n chkstat
 Summary:        SUSE Linux Default Permissions tool

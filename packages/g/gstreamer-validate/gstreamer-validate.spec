@@ -18,7 +18,7 @@
 
 %define _name   gst-validate
 Name:           gstreamer-validate
-Version:        1.16.0
+Version:        1.16.1
 Release:        0
 Summary:        GStreamer pipeline validator
 License:        LGPL-2.1-or-later

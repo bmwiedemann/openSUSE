@@ -17,21 +17,19 @@
 
 
 Name:           libpcap
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        A Library for Network Sniffers
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            http://www.tcpdump.org/
-Source:         http://www.tcpdump.org/release/%{name}-%{version}.tar.gz
+Url:            https://www.tcpdump.org/
+Source:         https://www.tcpdump.org/release/%{name}-%{version}.tar.gz
 Source2:        baselibs.conf
-Source3:        http://www.tcpdump.org/tcpdump-workers.asc#/%{name}.keyring
-Source4:        http://www.tcpdump.org/release/%{name}-%{version}.tar.gz.sig
-# https://github.com/the-tcpdump-group/libpcap/pull/556
+Source3:        https://www.tcpdump.org/tcpdump-workers.asc#/%{name}.keyring
+Source4:        https://www.tcpdump.org/release/%{name}-%{version}.tar.gz.sig
 Patch2:         libpcap-1.0.0-ppp.patch
 Patch3:         libpcap-1.0.0-s390.patch
 Patch5:         libpcap-no-old-socket.patch
-Patch6:         Check-only-VID-in-VLAN-test-issue-461.patch
 BuildRequires:  autoconf >= 2.64
 BuildRequires:  automake
 BuildRequires:  bison
@@ -41,7 +39,6 @@ BuildRequires:  flex
 BuildRequires:  libnl3-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libusb-1.0)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 libpcap is a library used by packet sniffer programs. It provides an
@@ -90,7 +87,6 @@ libpcap static libraries
 %patch2
 %patch3 -p1
 %patch5 -p1
-%patch6 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -114,17 +110,15 @@ make DESTDIR=%{buildroot} install install-shared
 %postun -n libpcap1 -p /sbin/ldconfig
 
 %files -n libpcap1
-%defattr(-, root, root)
-%doc CHANGES CREDITS LICENSE README.md doc/README.linux.md TODO
+%license LICENSE
+%doc CHANGES CREDITS README.md doc/README.linux.md TODO
 %{_libdir}/*.so.*
 %{_mandir}/man7/*
 
 %files devel-static
-%defattr(-, root, root)
 %{_libdir}/*.*a
 
 %files devel
-%defattr(-, root, root)
 %{_mandir}/man[1-6]/*
 %{_includedir}/*
 %{_bindir}/pcap-config

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Oct  3 08:40:05 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 69.0.2
+  * Fixed a crash when editing files on Office 365 websites (bmo#1579858)
+  * Fixed a Linux-only crash when changing the playback speed while
+    watching YouTube videos (bmo#1582222)
+- updated supported locale list
+- Allow to build without profile guided optimizations (boo#1040589)
+  (contributed by Bernhard Wiedemann)
+- Make build verbose (contributed by Martin Liška)
+- remove obsolete kde.js setting (boo#1151186) and related patch
+  firefox-add-kde.js-in-order-to-survive-PGO-build.patch
+- update create-tar.sh to latest revision and adjusted tar_stamps
+- add mozilla-fix-top-level-asm.patch to fix LTO build (w/o PGO)
+- extension preferences moved from branding package to core package
+  (packaging but not branding specific)
+
+-------------------------------------------------------------------
 Thu Sep 19 13:31:16 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 69.0.1

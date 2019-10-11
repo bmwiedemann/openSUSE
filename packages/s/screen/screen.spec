@@ -22,7 +22,7 @@
 %define rundir %{_localstatedir}/run
 %endif
 Name:           screen
-Version:        4.6.2
+Version:        4.7.0
 Release:        0
 Summary:        A program to allow multiple screens on a VT100/ANSI Terminal
 License:        GPL-3.0-or-later

@@ -19,12 +19,12 @@
 
 # changed with every update
 %define major          69
-%define mainver        %major.0.1
-%define orig_version   69.0.1
+%define mainver        %major.0.2
+%define orig_version   69.0.2
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
-%define releasedate    20190917135527
+%define releasedate    20191001234643
 %define source_prefix  firefox-%{orig_version}
 
 # always build with GCC as SUSE Security Team requires that
@@ -93,7 +93,9 @@ BuildRequires:  startup-notification-devel
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-libXt-devel
+%if 0%{?do_profiling}
 BuildRequires:  xvfb-run
+%endif
 BuildRequires:  yasm
 BuildRequires:  zip
 %if 0%{?suse_version} < 1550
@@ -143,7 +145,6 @@ Source2:        MozillaFirefox-rpmlintrc
 Source3:        mozilla.sh.in
 Source4:        tar_stamps
 Source5:        source-stamp.txt
-Source6:        kde.js
 Source7:        l10n-%{orig_version}%{orig_suffix}.tar.xz
 Source8:        firefox-mimeinfo.xml
 Source9:        firefox.js
@@ -185,10 +186,10 @@ Patch20:        mozilla-bmo1511604.patch
 Patch21:        mozilla-bmo1554971.patch
 Patch22:        mozilla-nestegg-big-endian.patch
 Patch23:        mozilla-bmo1512162.patch
+Patch24:        mozilla-fix-top-level-asm.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
-Patch103:       firefox-add-kde.js-in-order-to-survive-PGO-build.patch
 %endif # only_print_mozconfig
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires(post):   coreutils shared-mime-info desktop-file-utils
@@ -239,7 +240,7 @@ of %{appname}.
 %package translations-other
 Summary:        Extra translations for %{appname}
 Group:          System/Localization
-Provides:       locale(%{name}:ach;af;an;as;ast;az;bg;bn_BD;bn_IN;br;bs;cak;cy;dsb;en_ZA;eo;es_MX;et;eu;fa;ff;fy_NL;ga_IE;gd;gl;gn;gu_IN;he;hi_IN;hr;hsb;hy_AM;id;is;ka;kab;kk;km;kn;lij;lt;lv;mai;mk;ml;mr;ms;ne-NP;nn_NO;oc;or;pa_IN;rm;ro;si;sk;sl;son;sq;sr;ta;te;th;tr;uk;uz;vi;xh)
+Provides:       locale(%{name}:ach;af;an;ast;az;be;bg;bn;br;bs;cak;cy;dsb;en_CA;eo;es_MX;et;eu;fa;ff;fy_NL;ga_IE;gd;gl;gn;gu_IN;he;hi_IN;hr;hsb;hy_AM;ia;id;is;ka;kab;kk;km;kn;lij;lt;lv;mk;mr;ms;my;ne_NP;nn_NO;oc;pa_IN;rm;ro;si;sk;sl;son;sq;sr;ta;te;th;tr;uk;ur;uz;vi;xh)
 Requires:       %{name} = %{version}
 Obsoletes:      %{name}-translations < %{version}-%{release}
 
@@ -321,10 +322,10 @@ cd $RPM_BUILD_DIR/%{source_prefix}
 %patch21 -p1
 %patch22 -p1
 %patch23 -p1
+%patch24 -p1
 # Firefox
 %patch101 -p1
 %patch102 -p1
-%patch103 -p1
 %endif # only_print_mozconfig
 
 %build
@@ -448,14 +449,16 @@ ac_add_options --with-arch=armv7-a
 ac_add_options --disable-webrtc
 %endif
 # mitigation/workaround for bmo#1512162
-%ifarch ppc64le s390x
+%ifarch s390x
 ac_add_options --enable-optimize="-O1"
 %endif
 %ifarch x86_64
 # LTO needs newer toolchain stack only (at least GCC 8.2.1 (r268506)
 %if 0%{?suse_version} > 1500
 ac_add_options --enable-lto
+%if 0%{?do_profiling}
 ac_add_options MOZ_PGO=1
+%endif
 %endif
 %endif
 EOF
@@ -470,7 +473,10 @@ echo "Generate big endian version of config/external/icu/data/icud58l.dat"
 ls -l config/external/icu/data
 rm -f config/external/icu/data/icudt*l.dat
 %endif
-xvfb-run --server-args="-screen 0 1920x1080x24" ./mach build
+%if 0%{?do_profiling}
+xvfb-run --server-args="-screen 0 1920x1080x24" \
+%endif
+./mach build -v
 %endif # only_print_mozconfig
 
 %install
@@ -493,7 +499,6 @@ mkdir -p %{buildroot}%{progdir}/browser/defaults/preferences/
 # install gre prefs
 install -m 644 %{SOURCE13} %{buildroot}%{progdir}/defaults/pref/
 # install browser prefs
-install -m 644 %{SOURCE6} %{buildroot}%{progdir}/browser/defaults/preferences/kde.js
 install -m 644 %{SOURCE9} %{buildroot}%{progdir}/browser/defaults/preferences/firefox.js
 # build additional locales
 %if %localize

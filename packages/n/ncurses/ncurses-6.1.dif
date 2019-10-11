@@ -31,7 +31,7 @@
  #include <stdio.h>
  
  #if defined(__cplusplus)
-@@ -5199,12 +5199,15 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5279,12 +5279,15 @@ cat >>$cf_edit_man <<CF_EOF
  		echo '? missing rename for '\$cf_source
  		cf_target="\$cf_source"
  	fi
@@ -49,7 +49,7 @@
  	sed	-f $cf_man_alias \\
  CF_EOF
  
-@@ -5214,7 +5217,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5294,7 +5297,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -58,7 +58,7 @@
  CF_EOF
  fi
  
-@@ -5254,7 +5257,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5334,7 +5337,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_so_strip \$TMP
  	fi
  	fi
@@ -67,7 +67,7 @@
  CF_EOF
  fi
  
-@@ -5263,23 +5266,23 @@ case "$MANPAGE_FORMAT" in
+@@ -5343,23 +5346,23 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test \$form = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -97,7 +97,7 @@
  				for cf_alias in \$aliases
  				do
  					if test \$section = 1 ; then
-@@ -5288,7 +5291,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5368,7 +5371,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f \$cf_alias\${suffix} ; then
@@ -106,7 +106,7 @@
  							then
  								continue
  							fi
-@@ -5298,18 +5301,18 @@ CF_EOF
+@@ -5378,18 +5381,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -128,7 +128,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_compress" ; then
-@@ -5329,9 +5332,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5409,9 +5412,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test \$verb = removing ; then
@@ -141,7 +141,7 @@
  		)
  		test -d \$cf_subdir\${section} &&
  		test -n "\$aliases" && (
-@@ -5351,6 +5354,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5431,6 +5434,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -278,7 +278,7 @@
  	;;
  esac
  done
-@@ -25356,6 +25360,7 @@ if test "$with_termlib" != no ; then
+@@ -25371,6 +25375,7 @@ if test "$with_termlib" != no ; then
  		TINFO_LDFLAGS="-L${LIB_DIR}"
  		SHLIB_LIST="$SHLIB_LIST -l${TINFO_LIB_SUFFIX}"
  	fi
@@ -359,24 +359,24 @@
  arrays of characters representing all or part of a CRT screen.
 --- misc/gen-pkgconfig.in
 +++ misc/gen-pkgconfig.in	2019-08-12 08:07:59.759015287 +0000
-@@ -77,7 +77,7 @@ if test "$includedir" != "/usr/include"
+@@ -78,7 +78,7 @@ if [ "$includedir" != "/usr/include" ];
  fi
  
  LDFLAGS=
--if test "$libdir" != "/usr/lib" ; then
-+if test "$libdir" != "/usr/lib" -a "$libdir" != "/usr/lib64" ; then
+-if [ "$libdir" != "/usr/lib" ]; then
++if [ "$libdir" != "/usr/lib" -a "$libdir" != "/usr/lib64" ]; then
  	LDFLAGS="$LDFLAGS -L\${libdir}"
  fi
- if test "x@EXTRA_LDFLAGS@" != "x" ; then
-@@ -100,6 +100,7 @@ do
+ if [ "x@EXTRA_LDFLAGS@" != "x" ]; then
+@@ -101,6 +101,7 @@ do
  	LIBS="-l$name"
  
  	desc="ncurses @NCURSES_MAJOR@.@NCURSES_MINOR@"
 +	deps=
  	reqs=
  
- 	if test $name = $MAIN_LIBRARY ; then
-@@ -109,9 +110,11 @@ do
+ 	if [ $name = $MAIN_LIBRARY ]; then
+@@ -110,9 +111,11 @@ do
  		desc="$desc terminal interface library"
  	elif expr $name : ".*${CXX_NAME}.*" >/dev/null ; then
  		reqs="$PANEL_LIBRARY${suffix}, $MENU_LIBRARY${suffix}, $FORM_LIBRARY${suffix}, $MAIN_LIBRARY${suffix}"
@@ -388,15 +388,15 @@
  		desc="$desc add-on library"
  	fi
  
-@@ -121,6 +124,8 @@ do
- 	   test $NEED_TINFO != yes ; then
- 		test -n "$reqs" && reqs="$reqs, "
+@@ -122,6 +125,8 @@ do
+ 	   [ $NEED_TINFO != yes ] ; then
+ 		[ -n "$reqs" ] && reqs="$reqs, "
  		reqs="${reqs}${SUB_LIBRARY}${suffix}"
-+		test -n "$deps" && deps="$deps "
++		[ -n "$deps" ] && deps="$deps "
 +		deps="${deps}-l${SUB_LIBRARY}"
  	fi
  
- 	if test $name = $MAIN_LIBRARY
+ 	if [ $name = $MAIN_LIBRARY ]
 --- misc/terminfo.src
 +++ misc/terminfo.src	2019-08-12 08:17:44.604230936 +0000
 @@ -305,7 +305,9 @@ dumb|80-column dumb tty,

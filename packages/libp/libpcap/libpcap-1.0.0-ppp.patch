@@ -2,11 +2,11 @@ Index: gencode.c
 ===================================================================
 --- gencode.c.orig
 +++ gencode.c
-@@ -7549,6 +7549,7 @@ gen_inbound(compiler_state_t *cstate, in
+@@ -8204,6 +8204,7 @@ gen_inbound(compiler_state_t *cstate, in
  	 */
  	switch (cstate->linktype) {
  	case DLT_SLIP:
-+        case DLT_PPP:
- 		b0 = gen_relation(cstate, BPF_JEQ,
- 			  gen_load(cstate, Q_LINK, gen_loadi(cstate, 0), 1),
- 			  gen_loadi(cstate, 0),
++	case DLT_PPP:
+ 		b0 = gen_relation_internal(cstate, BPF_JEQ,
+ 			  gen_load_internal(cstate, Q_LINK, gen_loadi_internal(cstate, 0), 1),
+ 			  gen_loadi_internal(cstate, 0),

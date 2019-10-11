@@ -477,4 +477,12 @@ Changelog updated and bug reported upstream here: https://savannah.gnu.org/bugs/
     <comment></comment>
     <requestid>731695</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>16bc35cff35f98ceaf5734f28bd6832d</srcmd5>
+    <version>4.7.0</version>
+    <time>1570799315</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>734482</requestid>
+  </revision>
 </revisionlist>

@@ -691,6 +691,7 @@ mv tack-* tack
 	base=${base##*/}
 	sed -ri 's@^(includedir=).*@\1%{_incdir}/ncurses5/ncurses@' "$pc"
 	sed -ri 's@^(libdir=).*@\1%{_libdir}/ncurses5@' "$pc"
+	sed -ri 's@^(Libs: )(.*)@\1-L${libdir}\2@' "$pc"
 	mv -f $pc pc/${base}5.pc
     done
     sed -ri 's@^(Requires.private: ).*@\1panel5, menu5, form5, ncurses5, tinfo5@' \

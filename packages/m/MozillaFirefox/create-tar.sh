@@ -1,9 +1,9 @@
 #!/bin/bash
 
 function print_usage_and_exit() {
-  echo "Usage: create-tar.sh tar_stamp"
+  echo "Usage: create-tar.sh tar_stamps"
   echo ""
-  echo "Where tar_stamp should look like this:"
+  echo "Where tar_stamps should look like this:"
   echo ""
   cat << EOF
 # Node ID: 64ee63facd4ff96b3e8590cff559d7e97ac6b061
@@ -11,8 +11,7 @@ PRODUCT="firefox" # "firefox" or "thunderbird"
 CHANNEL="esr60"
 VERSION="60.7.0"
 VERSION_SUFFIX="esr"
-FF_RELEASE_TAG="" # Needs only to be set if no tar-ball can be downloaded
-TB_RELEASE_TAG="" # Only relevant for Thunderbird
+RELEASE_TAG="" # Needs only to be set if no tar-ball can be downloaded
 PREV_VERSION="60.6.3" # Prev. version only needed for locales (leave empty to force l10n-generation)
 PREV_VERSION_SUFFIX="esr"
 #SKIP_LOCALES="" # Uncomment to skip l10n and compare-locales-generation
@@ -25,7 +24,7 @@ if [ $# -ne 1 ]; then
   print_usage_and_exit
 fi
 
-# Sourcing the given tar_stamp-file to have the variables available
+# Sourcing the given tar_stamps-file to have the variables available
 source "$1" || print_usage_and_exit
 
 # Internal variables
@@ -193,10 +192,19 @@ else
     echo "cloning new $BRANCH..."
     hg clone http://hg.mozilla.org/$BRANCH $PRODUCT-$VERSION
     if [ "$PRODUCT" = "thunderbird" ]; then
-      hg clone http://hg.mozilla.org/releases/comm-$CHANNEL thunderbird-$VERSION/comm
+      hg clone http://hg.mozilla.org/releases/comm-$CHANNEL $PRODUCT-$VERSION/comm
     fi
   fi
   pushd $PRODUCT-$VERSION || exit 1
+
+  # parse out the Firefox-release tag for this Thunderbird-checkout
+  if [ "$PRODUCT" = "thunderbird" ]; then
+    FF_RELEASE_TAG=$(grep ^GECKO_HEAD_REV ./comm/.gecko_rev.yml | awk -F ' ' '{print $2}') || exit 1
+    echo "Parsed Firefox base ID from .gecko_rev.yml: $FF_RELEASE_TAG"
+  else
+    FF_RELEASE_TAG="$RELEASE_TAG"
+  fi
+
   hg update --check $FF_RELEASE_TAG
   [ "$FF_RELEASE_TAG" == "default" ] || hg update -r $FF_RELEASE_TAG
   # get repo and source stamp
@@ -207,7 +215,7 @@ else
 
   if [ "$PRODUCT" = "thunderbird" ]; then
     pushd comm || exit 1
-    hg update --check $TB_RELEASE_TAG
+    hg update --check $RELEASE_TAG
     popd || exit 1
     rm -rf thunderbird-${VERSION}/{,comm/}other-licenses/7zstub
   fi
@@ -241,7 +249,7 @@ if [ $LOCALES_CHANGED -ne 0 ]; then
           else
             hg clone "http://hg.mozilla.org/l10n-central/$locale" "l10n/$locale"
           fi
-          [ "$FF_RELEASE_TAG" == "default" ] || hg -R "l10n/$locale" up -C -r "$changeset"
+          [ "$RELEASE_TAG" == "default" ] || hg -R "l10n/$locale" up -C -r "$changeset"
           ;;
       esac
     done

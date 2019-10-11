@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct  3 12:38:09 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add || exit 0 on the scriptlet as it can actually fail in
+  rootless containers with podman. This makes sure the zypper
+  does not abort the container creation.
+  * the actual error looks like:
+    /dev/zero: chown: Operation not permitted
+
+-------------------------------------------------------------------
 Fri Sep 13 11:19:42 UTC 2019 - jsegitz@suse.de
 
 - Update to version 20190913:

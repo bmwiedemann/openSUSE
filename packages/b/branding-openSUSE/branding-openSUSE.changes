@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct  4 07:57:58 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Remove symlinks for grub2
+- Update requirements for distribution-logos
+
+-------------------------------------------------------------------
+Tue Oct  1 12:52:35 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Removed fix-parallel-build.patch - was applied upstream
+- Removed xfce4-splash-branding - Splash was dropped in Xfce 4.14
+
+-------------------------------------------------------------------
 Fri Sep 13 13:19:39 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Avoid bashisms in scriptlets.

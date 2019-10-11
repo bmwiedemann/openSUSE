@@ -1,9 +1,8 @@
 PRODUCT="firefox"
 CHANNEL="release"
-VERSION="69.0.1"
+VERSION="69.0.2"
 VERSION_SUFFIX=""
-FF_RELEASE_TAG="bf6ea738ba073f1a70554799a749235136afc93a"
-TB_RELEASE_TAG=""
+RELEASE_TAG="e40b66e55c283267a74ea411b9dfeeb7ddbb879c"
 PREV_VERSION=""
 PREV_VERSION_SUFFIX=""
 #SKIP_LOCALES="" # Uncomment to skip l10n and compare-locales-generation

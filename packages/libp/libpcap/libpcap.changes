@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Wed Oct  2 13:40:23 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update to 1.9.1
+   * Five CVE-2019-15161, CVE-2019-15162, CVE-2019-15163, CVE-2019-15164, CVE-2019-15165
+   * Fixes for CVE-2018-16301, errors in pcapng reading.
+   * Mention pcap_get_required_select_timeout() in the main pcap man page
+   * Fix pcap-usb-linux.c build on systems with musl
+   * Fix assorted man page and other documentation issues
+   * Plug assorted memory leaks
+   * Documentation changes to use https:
+   * Changes to how time stamp calculations are done
+   * Lots of tweaks to make newer compilers happier and warning-free and
+         to fix instances of C undefined behavior
+   * Warn if AC_PROG_CC_C99 can't enable C99 support
+   * Rename pcap_set_protocol() to  pcap_set_protocol_linux().
+   * Align pcap_t private data on an 8-byte boundary.
+   * Fix various error messages
+   * Use 64-bit clean API in dag_findalldevs()
+   * Fix cleaning up after some errors
+   * Work around some ethtool ioctl bugs in newer Linux kernels
+   * Add backwards compatibility sections to some man pages
+   * Fix autotool configuration on AIX and macOS
+   * Don't export bpf_filter_with_aux_data() or struct bpf_aux_data;
+         they're internal-only and subject to change
+   * Fix pcapng block size checking
+   * Fix reading of capture statistics for Linux USB
+   * Fix packet size values for Linux USB packets
+   * Check only VID in VLAN test in filterss
+   * Fix pcap_list_datalinks on 802.11 devices on macOS
+   * Fix overflows with very large snapshot length in pcap file
+   * Improve parsing of rpcapd configuration file
+   * Handle systems without strlcpy() or strlcat() better
+   * Fix crashes and other errors with invalid filter expressions
+   * Fix use of uninitialized file descriptor in remote capture
+   * Fix some CMake issues
+   * Fix some divide-by-zero issues with the filter compiler
+   * Work around a GNU libc bug in pcap_nametonetaddr()
+   * Add support for DLT_LINUX_SLL2
+   * Fix handling of the packet-count argument for Myricom SNF devices
+   * Fix --disable-rdma in configure script
+   * Fix compilation of TurboCap support
+   * Constify first argument to pcap_findalldevs_ex()
+   * Fix a number of issues when running rpcapd as an inetd-style daemon
+   * Fix CMake issues with D-Bus libraries
+   * In rpcapd, clean up termination of a capture session
+   * Redo remote capture protocol negotiation
+   * In rpcapd, report the same error for "invalid user name" and
+         "invalid password", to make brute-forcing harder
+   * For remote captures, add an error code for "the server requires TLS"
+   * Fix building as part of Npcap
+   * Allow rpcapd to rebind more rapidly
+   * Fix building shared libpcap library on midipix (midipix.org)
+   * Fix hack to detect UTF-16LE adapter names on Windows not to go past
+         the end of the string
+   * Have pcap_dump_open_append() create the dump file if it doesn't exists
+   * Fix the maxmum snapshot length for DLT_USBPCAP
+   * Use -fPIC when building for 64-bit SPARC on Linux
+   * Fix CMake 64-bit library installation directory on some Linux distributions
+   * Boost the TPACKET_V3 timeout to the maximum if a timeout of 0 was specified
+   * PCAPNG reader applies some sanity checks before doing malloc().
+- Drop patch fixed upstream:
+   * Check-only-VID-in-VLAN-test-issue-461.patch
+- Rebase patch:
+   * libpcap-1.0.0-ppp.patch
+
+-------------------------------------------------------------------
 Fri Aug  2 07:06:13 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Use FAT LTO objects in order to provide proper static library.

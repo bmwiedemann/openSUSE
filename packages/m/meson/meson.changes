@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug 27 11:08:21 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.51.2:
+  + gnome: Handle overriden g-ir-scanner.
+  + cmake: fix missing -lpthread (fixes #5821)
+  + Pass optimization flags to rustc properly. Closes: #5788.
+- Drop fix-missing-return-statements-that-are-seen-with-Wer.patch:
+  Fixed upstream.
+
+-------------------------------------------------------------------
 Tue Jul 16 14:11:28 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Add fix-missing-return-statements-that-are-seen-with-Wer.patch which

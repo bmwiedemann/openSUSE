@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Oct  1 07:28:54 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20190928
+  + amend the ncurse*-config and pc-files to take into account the rpath
+    hack which differed between those files.
+  + improve -L option filtering in ncurses*-config
+  + improve recovery from error when reading command-character in
+    test/ncurses.c, showing the relevant error message and not exiting on
+    EINTR (cf: 20180922)
+- Add library path for pkgconfig of ncurses5 as well
+
+-------------------------------------------------------------------
+Mon Sep 23 06:56:28 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20190921
+  + add a note in resizeterm manpage about top-level windows which touch
+    the screen's borders.
+  + modify configure-checks for gnat to identify each of the tools path
+    and version.
+
+-------------------------------------------------------------------
+Mon Sep 16 06:24:42 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20190914
+  + build-fixes for Ada95 configure-script and corresponding test package
+
+-------------------------------------------------------------------
 Mon Sep  9 11:25:49 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20190907

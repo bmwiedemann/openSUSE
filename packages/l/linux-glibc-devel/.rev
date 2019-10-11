@@ -563,4 +563,13 @@
     <comment>- Update to kernel headers 5.2 (forwarded request 714101 from Andreas_Schwab)</comment>
     <requestid>714102</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>c878d2f12810595cec230d84462de14a</srcmd5>
+    <version>5.3</version>
+    <time>1570799307</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to kernel headers 5.3
+- Make it arch dependent due to difference in installed headers</comment>
+    <requestid>731758</requestid>
+  </revision>
 </revisionlist>

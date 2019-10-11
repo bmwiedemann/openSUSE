@@ -20,17 +20,13 @@
 # Disable for now, since plugin docs are not being built
 %define use_meson 0
 Name:           gstreamer-plugins-vaapi
-Version:        1.16.0
+Version:        1.16.1
 Release:        0
 Summary:        Gstreamer VA-API plugins
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org/
 Source0:        https://gstreamer.freedesktop.org/src/gstreamer-vaapi/gstreamer-vaapi-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM gst-vaapi-fix-garbled-screen-totem.patch -- Fix garbled video in totem
-Patch0:         gst-vaapi-fix-garbled-screen-totem.patch
-# PATCH-FIX-UPSTREAM gst-vaapi-remove-gallium-from-white-list.patch -- Remove Mesa gallium from drivers white list
-Patch1:         gst-vaapi-remove-gallium-from-white-list.patch
 
 BuildRequires:  Mesa-devel
 BuildRequires:  Mesa-libGLESv3-devel

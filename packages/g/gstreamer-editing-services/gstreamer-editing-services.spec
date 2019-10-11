@@ -21,7 +21,7 @@
 %define use_meson 0
 
 Name:           gstreamer-editing-services
-Version:        1.16.0
+Version:        1.16.1
 Release:        0
 Summary:        GStreamer Editing Services
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later

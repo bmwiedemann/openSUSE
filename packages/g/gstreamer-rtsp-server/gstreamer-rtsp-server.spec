@@ -18,7 +18,7 @@
 
 %define _name gst-rtsp-server
 Name:           gstreamer-rtsp-server
-Version:        1.16.0
+Version:        1.16.1
 Release:        0
 Summary:        GStreamer-based RTSP server library
 License:        LGPL-2.0-or-later
@@ -27,7 +27,7 @@ URL:            http://gstreamer.freedesktop.org/
 Source0:        https://gstreamer.freedesktop.org/src/gst-rtsp-server/%{_name}-%{version}.tar.xz
 Source99:       gstreamer-rtsp-server-rpmlintrc
 
-BuildRequires:  meson
+BuildRequires:  meson >= 0.47
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.31.1

@@ -20,7 +20,7 @@
 %define theme_name openSUSE
 %define theme_version tumbleweed
 %define theme_version_clean Tumbleweed
-%define date 20180403
+%define date 20191004
 
 %ifarch x86_64 %{ix86}
 %define gfxboot 1
@@ -38,9 +38,8 @@ License:        BSD-3-Clause AND CC-BY-SA-3.0 AND GPL-2.0-or-later
 Group:          System/Fhs
 URL:            https://github.com/openSUSE/branding
 Source0:        branding-%{theme_version}.zip
-# PATCH-FIX-UPSTREAM
-Patch1:         fix-parallel-build.patch
 BuildRequires:  GraphicsMagick
+BuildRequires:  distribution-logos-openSUSE-Tumbleweed
 BuildRequires:  fdupes
 BuildRequires:  fribidi
 BuildRequires:  optipng
@@ -90,6 +89,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Requires:       adobe-sourcesanspro-fonts
 Requires:       google-opensans-fonts
+Requires:       distribution-logos
 Supplements:    (libyui-qt and branding-%{theme_name})
 Conflicts:      yast2-qt-branding
 Provides:       yast2-qt-branding = %{version}
@@ -110,22 +110,11 @@ BuildArch:      noarch
 This IceWM theme is specifically tailored to the %{theme_name} installation
 process using YaST2
 
-%package -n xfce4-splash-branding-%{theme_name}
-Summary:        %{theme_name} %{theme_version_clean} branding for XFCE splash
-License:        CC-BY-SA-3.0
-Group:          System/Fhs
-Supplements:    (xfce4-session and branding-%{theme_name})
-Conflicts:      xfce4-splash-branding
-Provides:       xfce4-splash-branding = %{version}
-BuildArch:      noarch
-
-%description -n xfce4-splash-branding-%{theme_name}
-%{theme_name} %{theme_version_clean} branding for the XFCE splash
-
 %package -n systemd-icon-branding-%{theme_name}
 Summary:        %{theme_name} %{theme_version_clean} icons for systemd
 License:        CC-BY-SA-3.0
 Group:          System/Fhs
+Requires:       distribution-logos
 Supplements:    (systemd and branding-%{theme_name})
 Provides:       systemd-icon-branding = %{version}
 Conflicts:      systemd-icon-branding
@@ -178,6 +167,7 @@ License:        GPL-2.0-or-later
 Group:          System/Fhs
 BuildRequires:  plymouth-theme-bgrt
 Requires:       plymouth-theme-bgrt
+Requires:       distribution-logos
 PreReq:         plymouth-theme-bgrt
 PreReq:         plymouth-scripts
 Requires(post):     plymouth-scripts
@@ -331,10 +321,6 @@ fi
 %files -n libreoffice-branding-%{theme_name}
 %dir %{_datadir}/libreoffice
 %{_datadir}/libreoffice/program
-
-%files -n xfce4-splash-branding-%{theme_name}
-%license LICENSE
-%{_datadir}/pixmaps/xfce4-splash-openSUSE.png
 
 %files -n systemd-icon-branding-%{theme_name}
 %{_datadir}/icons/hicolor
