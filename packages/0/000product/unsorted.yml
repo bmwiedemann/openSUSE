@@ -14242,6 +14242,7 @@ unsorted:
   - ocaml-dose 
   - ocaml-dose-devel 
   - ocaml-dune 
+  - ocaml-dune-devel 
   - ocaml-easy-format 
   - ocaml-easy-format-devel 
   - ocaml-extlib 
@@ -14320,6 +14321,8 @@ unsorted:
   - ocaml-sha 
   - ocaml-sha-devel 
   - ocaml-source 
+  - ocaml-stdlib-shims 
+  - ocaml-stdlib-shims-devel 
   - ocaml-type-conv 
   - ocaml-type-conv-devel 
   - ocaml-uutf 
@@ -22526,6 +22529,7 @@ unsorted:
   - ruby2.6-rubygem-autoprefixer-rails-testsuite 
   - ruby2.6-rubygem-axiom-types-doc 
   - ruby2.6-rubygem-axiom-types-testsuite 
+  - ruby2.6-rubygem-backport-doc 
   - ruby2.6-rubygem-base32-doc 
   - ruby2.6-rubygem-base32-testsuite 
   - ruby2.6-rubygem-bcrypt-doc 
@@ -23140,6 +23144,7 @@ unsorted:
   - ruby2.6-rubygem-unf-testsuite 
   - ruby2.6-rubygem-unf_ext-doc 
   - ruby2.6-rubygem-unf_ext-testsuite 
+  - ruby2.6-rubygem-unicode-display_width-doc 
   - ruby2.6-rubygem-unicorn-doc 
   - ruby2.6-rubygem-unicorn-testsuite 
   - ruby2.6-rubygem-unicorn-worker-killer-doc 
@@ -31687,7 +31692,7 @@ unsorted:
   - tomoe-gtk-doc 
   - tomoe-gtk-lang 
   - tomoyo-tools 
-  - toolbox 
+  - toolbox: [i586] 
   - tor 
   - torbrowser-apparmor-profile 
   - torbrowser-launcher 
