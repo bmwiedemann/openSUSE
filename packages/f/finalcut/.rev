@@ -15,4 +15,28 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>679543</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>19f5c31a5de449fe3667e85397228fcc</srcmd5>
+    <version>0.5.1</version>
+    <time>1570799977</time>
+    <user>dimstar_suse</user>
+    <comment>- Release (version 0.5.1)
+- Package name adjustment
+- Use correct package names in Requires.
+- Fix summary containing just of the name. Edit RPM groups.
+- Install examples into docdir
+- Add libfinal-devel = %{version} to devel package
+- Prepare to push to devel project
+- Remove old tarball: finalcut-0.3.0.tar.gz
+- Remove old tarball: finalcut-0.4.0.tar.gz
+- Clean spec with spec-cleaner
+- Add changes file
+- Release (version 0.5.0)
+- Release (version 0.4.0)
+- Release (version 0.3.0)
+- Release (version 0.2.0)
+- Initial Release (version 0.1.1)
+</comment>
+    <requestid>737340</requestid>
+  </revision>
 </revisionlist>

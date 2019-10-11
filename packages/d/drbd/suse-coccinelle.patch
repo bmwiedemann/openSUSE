@@ -1,44 +1,44 @@
-diff -Naur drbd-9.0.19~1+git.8e93a5d9.orig/drbd/Makefile drbd-9.0.19~1+git.8e93a5d9/drbd/Makefile
---- drbd-9.0.19~1+git.8e93a5d9.orig/drbd/Makefile	2019-09-23 13:27:35.397783666 +0800
-+++ drbd-9.0.19~1+git.8e93a5d9/drbd/Makefile	2019-09-23 13:30:43.378710223 +0800
-@@ -170,6 +170,9 @@
- ifeq ($(DRBD_BUILD_FROM_GIT),yes)
-   sources := $(filter-out drbd_strings.c drbd_buildtag.c,$(wildcard *.c))
-   sources += $(wildcard drbd-headers/linux/*.h)
-+else ifeq ($(ALWAYS_WANT_SPATCH),yes)
-+  sources := $(filter-out drbd_strings.c drbd_buildtag.c,$(wildcard *.c))
-+  sources += $(wildcard drbd-headers/linux/*.h)
- else
-   sources :=
- endif
-@@ -196,9 +199,27 @@
- 	    fi \
- 	done
- 	@echo "  SPATCH   $(chksum)"
--	@spatch --sp-file $(incdir)/.compat.cocci \
--	    $(sources) \
--	    --macro-file drbd-kernel-compat/cocci_macros.h > $@.tmp 2> $(incdir)/.spatch.stderr
-+	$(eval libpath := $(shell rpm -ql coccinelle|grep standard.h|xargs dirname))
-+	@echo "  sources: $(sources)"
-+	@echo "  libpath: $(libpath)"
-+	@touch $@.tmp
-+	@if [ -e $(incdir)/.compat.cocci ]; then \
-+		echo "  GENCOCCIRULES .compat.cocci"; \
-+		cat $(incdir)/.compat.cocci; \
-+		spatch --sp-file $(incdir)/.compat.cocci \
-+		    $(sources) \
-+		    --macro-file drbd-kernel-compat/cocci_macros.h \
-+		    --macro-file-builtins $(libpath)/standard.h \
-+		    --iso-file $(libpath)/standard.iso >> $@.tmp 2> $(incdir)/.spatch.stderr; \
-+	fi
-+	@if [ -e $@.tmp ]; then \
-+		echo "  GENSPATCHFILE $@.tmp"; \
-+		cat $@.tmp; \
-+	fi
-+	@if [ -e $(incdir)/.spatch.stderr ]; then \
-+		echo "  GENSPATCHERR .spatch.stderr"; \
-+		cat $(incdir)/.spatch.stderr; \
-+	fi
- 	@if [ -e $(incdir)/.compat.patch ]; then \
- 		cat $(incdir)/.compat.patch >> $@.tmp; \
- 	fi
+diff -Naur drbd-9.0.20~0rc3+git.9c642cce.orig/drbd/drbd-kernel-compat/gen_compat_patch.sh drbd-9.0.20~0rc3+git.9c642cce/drbd/drbd-kernel-compat/gen_compat_patch.sh
+--- drbd-9.0.20~0rc3+git.9c642cce.orig/drbd/drbd-kernel-compat/gen_compat_patch.sh	2019-10-09 15:10:24.932509799 +0800
++++ drbd-9.0.20~0rc3+git.9c642cce/drbd/drbd-kernel-compat/gen_compat_patch.sh	2019-10-10 17:51:46.280918975 +0800
+@@ -41,6 +41,15 @@
+ 		< drbd-kernel-compat/cocci/debugfs_compat_template.cocci.in \
+ 		>> $incdir/.compat.cocci;
+     done;
++
++    echo "  APPLIED_COCCI_FILES   ";
++    cat $incdir/applied_cocci_files.txt;
++    coccilibpath=$(rpm -ql coccinelle|grep standard.h|xargs dirname);
++    echo "  SPATCH_SOURCES: "$*;
++    echo "  COCCI_LIBPATH: "$coccilibpath;
++    echo "  GENCOCCIRULES .compat.cocci";
++    cat $incdir/.compat.cocci;
++
+     echo "  SPATCH   $chksum  "$K;
+     # Note: $* (or $@) is NOT make magic variable now, this is a shell script
+     # make $@, the target file, was passed as $1, and is now $compat_patch
+@@ -49,7 +58,8 @@
+     # argument away this is shell $@ respectively $* now.
+     # we know we don't have white-space in the argument list
+ 
+-    command="spatch --sp-file $incdir/.compat.cocci $* --macro-file drbd-kernel-compat/cocci_macros.h --very-quiet > $compat_patch.tmp 2> $incdir/.spatch.stderr;"
++    command="spatch --sp-file $incdir/.compat.cocci $* --macro-file drbd-kernel-compat/cocci_macros.h --macro-file-builtins $coccilibpath/standard.h --iso-file $coccilibpath/standard.iso --very-quiet > $compat_patch.tmp 2> $incdir/.spatch.stderr;"
++    echo "  SPATCH COMMAND $command  ";
+ 
+     if test -t 0; then
+ 	$SHELL -c "$command"
+@@ -59,6 +69,14 @@
+ 	# They may ignore INT and TERM; if you have to, use HUP.
+ 	</dev/null &> /dev/null script --append $incdir/.spatch.tty.out --return --quiet --command "$command"
+     fi
++
++    echo "  GENSPATCHFILE $compat_patch.tmp  ";
++    cat $compat_patch.tmp;
++    if [ -e $incdir/.spatch.stderr ]; then
++        echo "  GENSPATCHERR .spatch.stderr";
++        cat $incdir/.spatch.stderr;
++    fi
++
+     if [ -e $incdir/.compat.patch ]; then
+ 	cat $incdir/.compat.patch >> $compat_patch.tmp;
+     fi;

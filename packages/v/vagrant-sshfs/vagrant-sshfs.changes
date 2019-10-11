@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct  9 10:12:50 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Fix vagrant box name in testsuite.sh
+
+-------------------------------------------------------------------
 Fri Sep 27 20:34:04 UTC 2019 - Dan Čermák <dcermak@suse.com>
 
 - Fix in testsuite.sh:

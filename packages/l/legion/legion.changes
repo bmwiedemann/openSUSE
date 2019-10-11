@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 10 10:04:10 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Disable hwloc support as legion is not compatible with hwloc >= 2.0
+- Use new openmpi-macros-devel package to fecth openmpi dependencies
+
+-------------------------------------------------------------------
 Tue Jul 17 17:53:33 UTC 2018 - junghans@votca.org
 
 - Drop reproducible.patch and replace by CMake options

@@ -1,0 +1,128 @@
+From e276a8e5c277a106b0923ace4743962e4393a040 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Fri, 11 Oct 2019 08:38:16 +0200
+Subject: [PATCH 2/2] Qt5 deprecations
+
+Qt::escape is deprecated
+QChar::fromAscii is deprecated
+QString::Null != is deprecated
+...
+---
+ src/APIHelpers.cpp        | 2 +-
+ src/DiagnosticsDialog.cpp | 2 +-
+ src/MainWindow.cpp        | 5 +++--
+ src/OscapScannerBase.cpp  | 4 ++--
+ src/TailoringWindow.cpp   | 5 +++--
+ 5 files changed, 10 insertions(+), 8 deletions(-)
+
+diff --git a/src/APIHelpers.cpp b/src/APIHelpers.cpp
+index 71548c939144..b901fad4b058 100644
+--- a/src/APIHelpers.cpp
++++ b/src/APIHelpers.cpp
+@@ -44,7 +44,7 @@ QString oscapItemGetReadableTitle(struct xccdf_item* item, struct xccdf_policy*
+     oscap_text_iterator_free(title_it);
+     if (!unresolved)
+         return "";
+-    char* resolved = xccdf_policy_substitute(Qt::escape(QString::fromUtf8(unresolved)).toUtf8().constData(), policy);
++    char* resolved = xccdf_policy_substitute(QString::fromUtf8(unresolved).toHtmlEscaped().toUtf8().constData(), policy);
+     free(unresolved);
+     const QString ret = QString::fromUtf8(resolved);
+     free(resolved);
+diff --git a/src/DiagnosticsDialog.cpp b/src/DiagnosticsDialog.cpp
+index 39d3a255e07b..7b1aa7ee2a78 100644
+--- a/src/DiagnosticsDialog.cpp
++++ b/src/DiagnosticsDialog.cpp
+@@ -142,7 +142,7 @@ void DiagnosticsDialog::pushMessage(MessageSeverity severity, const QString& ful
+     QString outputMessage = fullMessage;
+     if (format & MF_XML)
+     {
+-        outputMessage = Qt::escape(outputMessage);
++        outputMessage = outputMessage.toHtmlEscaped();
+     }
+ 
+     if (format & MF_PREFORMATTED)
+diff --git a/src/MainWindow.cpp b/src/MainWindow.cpp
+index a0d65c70957f..905c409c977a 100644
+--- a/src/MainWindow.cpp
++++ b/src/MainWindow.cpp
+@@ -43,6 +43,7 @@
+ #include <QFileSystemWatcher>
+ #include <QDesktopWidget>
+ #include <QMenu>
++#include <QScreen>
+ 
+ #include <cassert>
+ #include <set>
+@@ -258,7 +259,7 @@ MainWindow::MainWindow(QWidget* parent):
+     closeFile();
+ 
+     // start centered
+-    move(QApplication::desktop()->screen()->rect().center() - rect().center());
++    move(QGuiApplication::primaryScreen()->availableGeometry().center() - rect().center());
+ 
+     QAction* genBashRemediation = new QAction("&bash", this);
+     QObject::connect(
+@@ -909,7 +910,7 @@ void MainWindow::refreshProfiles()
+             mUI.profileComboBox->addItem(profileTitle, QVariant(it->first));
+         }
+ 
+-        if (previouslySelected != QString::Null())
++      if (!previouslySelected.isNull())
+         {
+             const int indexCandidate = mUI.profileComboBox->findData(QVariant(previouslySelected));
+             if (indexCandidate != -1)
+diff --git a/src/OscapScannerBase.cpp b/src/OscapScannerBase.cpp
+index 3d4075cf21de..7898b45e4d29 100644
+--- a/src/OscapScannerBase.cpp
++++ b/src/OscapScannerBase.cpp
+@@ -334,7 +334,7 @@ bool OscapScannerBase::tryToReadStdOutChar(QProcess& process)
+                 {
+                     // When fetching remote content, openscap will inform scap-workbench about
+                     // resources being downloaded. Keep any colon found in URL of file being downloaded.
+-                    mReadBuffer.append(QChar::fromAscii(readChar));
++                    mReadBuffer.append(QChar::fromLatin1(readChar));
+                 }
+                 break;
+ 
+@@ -406,7 +406,7 @@ bool OscapScannerBase::tryToReadStdOutChar(QProcess& process)
+     {
+         // we know for sure that buffer[0] can only contain ASCII characters
+         // (IDs and special keywords regarding rule status)
+-        mReadBuffer.append(QChar::fromAscii(readChar));
++        mReadBuffer.append(QChar::fromLatin1(readChar));
+     }
+ 
+     return true;
+diff --git a/src/TailoringWindow.cpp b/src/TailoringWindow.cpp
+index 59c628c48dac..83a4d911d8a1 100644
+--- a/src/TailoringWindow.cpp
++++ b/src/TailoringWindow.cpp
+@@ -36,6 +36,7 @@
+ #include <QTimer>
+ #include <QDateTime>
+ #include <QStack>
++#include <QScreen>
+ 
+ #include <algorithm>
+ #include <cassert>
+@@ -162,7 +163,7 @@ TailoringWindow::TailoringWindow(struct xccdf_policy* policy, struct xccdf_bench
+     createTreeItem(mBenchmarkItem, xccdf_benchmark_to_item(mBenchmark));
+     synchronizeTreeItem();
+ 
+-    mUI.itemsTree->header()->setResizeMode(0, QHeaderView::ResizeToContents);
++    mUI.itemsTree->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
+     mUI.itemsTree->header()->setStretchLastSection(false);
+ 
+     deserializeCollapsedItems();
+@@ -231,7 +232,7 @@ TailoringWindow::TailoringWindow(struct xccdf_policy* policy, struct xccdf_bench
+     );
+ 
+     // start centered
+-    move(QApplication::desktop()->screen()->rect().center() - rect().center());
++    move(QGuiApplication::primaryScreen()->availableGeometry().center() - rect().center());
+     show();
+ }
+ 
+-- 
+2.23.0
+

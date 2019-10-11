@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Oct  8 09:58:41 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Refresh spec-file via spec-cleaner and manual optimizations
+  * specified the correct license GPL-2.0-or-later
+- Update to 0.32
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/mpc/v0.32/NEWS
+  * add commands "queued", "seekthrough", "mount", "unmount"
+  * support "search" with filter expression (MPD 0.21)
+  * support "load" with range
+  * allow only tag names after "list"
+  * fix the Windows build (no strndup())
+  * make documentation build optional with -Ddocumentation={true|false|auto}
+  * build: require Meson 0.47
+  * add command "listneighbors"
+  * reduce network transfer for "search"
+  * fall back to "Composer" or "AlbumArtist" tag in the default format
+  * support abstract socket in --host option
+
+-------------------------------------------------------------------
 Thu Oct  4 08:47:40 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.30:

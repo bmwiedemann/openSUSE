@@ -140,4 +140,12 @@ Requires and fixes SR#532253, SR#532254 and SR#532255</comment>
     <comment></comment>
     <requestid>628003</requestid>
   </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>31b40a21ddd5ed7cfa14d32da2c5488a</srcmd5>
+    <version>18.05.0</version>
+    <time>1570800043</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>737378</requestid>
+  </revision>
 </revisionlist>

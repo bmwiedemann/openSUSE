@@ -376,4 +376,17 @@ Otherwise compilation fails with hard to understand error that opj_codec_set is 
     <comment></comment>
     <requestid>728682</requestid>
   </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>41e2e83a9a6c98b0010de27d6d880e91</srcmd5>
+    <version>3.0.1</version>
+    <time>1570799798</time>
+    <user>dimstar_suse</user>
+    <comment>- Spec file cleanups
+- Remove poppler boost dependnecy
+- Enable LTO and zstd
+
+- Fix build error on TW due to boo#1153146 poppler missing boost
+  devel</comment>
+    <requestid>736829</requestid>
+  </revision>
 </revisionlist>

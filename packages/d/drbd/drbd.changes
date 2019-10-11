@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Oct 11 02:32:09 UTC 2019 - nick wang <nwang@suse.com>
+
+- Update to drbd-9.0.20-1
+ * fix a case of false split brain detection if a diskless node promotes
+   multiple times, by aligning the rules for generating a new current-UUID
+   on a diskless nodes with them on a node with disk
+ * check if we still have quorum by exchanging a drbd-ping with peers
+   before creating new current UUID after loosing one peer
+ * fix after weak handling to not interfere with reconciliation resyncs
+ * retry connect when one of the relevant flags changes during UUID exchange
+ * fix reconciliation resync if one of the secondary got an current-UUID update
+ * fix resync to make progress after it was paused by an other resync operation
+ * fix false split-brains when a resync source changes current-UUID during
+   resync operation
+ * fix restore of D_OUTDATED when the resource first only attached and
+   then the peer objects are created (in contrast to the usual, new-peer,
+   attach, connect)
+ * abort creating new current-UUID when writing to meta-data fails in
+   the moment where the new-current-UUID should be written
+ * removed DRBD marking itself as read-only when secondary; this flag
+   was exposed using the BLKROGET ioctl; that should be left to user-land
+   use; recent KVM checks that flag, and does not dare auto-promote when
+   set by DRBD
+ * fix a small memory-leak when creating peer devices
+ * fix a possible information leak of kernel memory that pads net-link packets
+ * completing implications of "allow-remote-read=no"; i.e.  when not to
+   create a new-current-UUID as read-write access to the data set was lost;
+   also fail both reads and writes if reads are no longer possible
+ * new option value "rr-conflict=retry-connect"; that helps in scenarios with
+   quorum where stopping a service takes longer than a temporarily network
+   outage and DRBD's reconnect
+ * code cleanups, introduced enums for remaining magic numbers
+ * new kernel-backward-compatibility framework based on spatch/coccinelle,
+   replacing an unmaintainable moloch of C preprocessor hell; Merged the
+   complete kernel-compat submodule
+ * ships with pre-computed compat-patches for main distros' kernels; in case
+   an other kernel is found it tries to use local spatch, if that is not
+   installed the build process tries to use a LINBIT hosted web service
+   to create the compat patch ("spatch-as-a-service").
+ * compat with up to Linux-5.3-rc2
+- Modify patch suse-coccinelle.patch to adopt spaas
+
+-------------------------------------------------------------------
 Wed Sep 20 08:22:12 UTC 2019 - nick wang <nwang@suse.com>
 
 - bsc#1151579, fix collinelle default path and always trigger in obs

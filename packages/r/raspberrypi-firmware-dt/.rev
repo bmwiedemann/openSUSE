@@ -81,4 +81,12 @@ and packages them up for the RPi firmware to use.</comment>
     <comment></comment>
     <requestid>728685</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cdfe6e167f4494e5c2348e0a62846ec1</srcmd5>
+    <version>2019.09.19</version>
+    <time>1570800108</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>737403</requestid>
+  </revision>
 </revisionlist>

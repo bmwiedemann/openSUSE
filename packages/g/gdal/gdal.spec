@@ -30,8 +30,7 @@ Version:        3.0.1
 Release:        0
 Summary:        GDAL/OGR - a translator library for raster and vector geospatial data formats
 License:        MIT AND BSD-3-Clause AND SUSE-Public-Domain
-Group:          Development/Libraries/C and C++
-URL:            http://www.gdal.org/
+URL:            https://www.gdal.org/
 Source0:        http://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{version}.tar.xz
 Source1:        http://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{version}.tar.xz.md5
 Patch0:         gdal-perl.patch
@@ -54,6 +53,7 @@ BuildRequires:  giflib-devel
 BuildRequires:  hdf5-devel
 BuildRequires:  lapack-devel
 BuildRequires:  libtool
+BuildRequires:  libzstd-devel
 BuildRequires:  mysql-devel
 BuildRequires:  opencl-headers
 BuildRequires:  perl-ExtUtils-MakeMaker
@@ -66,10 +66,10 @@ BuildRequires:  python3-setuptools
 BuildRequires:  swig
 BuildRequires:  unixODBC-devel
 BuildRequires:  pkgconfig(OpenCL)
+BuildRequires:  pkgconfig(expat) >= 1.95.0
 BuildRequires:  pkgconfig(freexl)
 BuildRequires:  pkgconfig(json)
 BuildRequires:  pkgconfig(json-c)
-BuildRequires:  pkgconfig(expat) >= 1.95.0
 BuildRequires:  pkgconfig(libgeotiff) >= 1.2.1
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(liblzma)
@@ -111,7 +111,6 @@ vector data.
 
 %package devel
 Summary:        GDAL library header files
-Group:          Development/Languages/C and C++
 Requires:       lib%{name}%{soversion} = %{version}
 Requires:       pkgconfig(libopenjp2)
 Provides:       lib%{name}%{soversion}-devel = %{version}
@@ -122,7 +121,6 @@ Development Libraries for the GDAL file format library
 
 %package -n lib%{name}%{soversion}
 Summary:        GDAL static libraries
-Group:          System/Libraries
 
 %description -n lib%{name}%{soversion}
 GDAL and OGR are translator libraries for raster and vector geospatial data
@@ -131,7 +129,6 @@ application for all supported formats.
 
 %package -n perl-%{name}
 Summary:        Perl bindings for GDAL
-Group:          Development/Languages/Perl
 Requires:       %{name} = %{version}-%{release}
 %{perl_requires}
 
@@ -140,7 +137,6 @@ Perl bindings for GDAL - Geo::GDAL, Geo::OGR and Geo::OSR modules.
 
 %package -n python2-%{pypi_package_name}
 Summary:        GDAL Python module
-Group:          Development/Languages/Python
 Requires:       %{name} = %{version}-%{release}
 # Renaming to uppercase 'GDAL' during 2.4.0; previously used lowercase
 Provides:       python2-%{name} = %{version}
@@ -153,7 +149,6 @@ The GDAL python modules provide support to handle multiple GIS file formats.
 
 %package -n python3-%{pypi_package_name}
 Summary:        GDAL Python3 module
-Group:          Development/Languages/Python
 Requires:       %{name} = %{version}-%{release}
 Provides:       python3-%{name} = %{version}
 Obsoletes:      python3-%{name} < %{version}
@@ -166,7 +161,7 @@ The GDAL python modules provide support to handle multiple GIS file formats.
 %autopatch -p1
 
 # Set the right (build) libproj.so version, use the upper found version.
-PROJSOVER=$(ls -1 %_libdir/libproj.so.?? | tail -n1 | awk -F '.' '{print $3}')
+PROJSOVER=$(ls -1 %{_libdir}/libproj.so.?? | tail -n1 | awk -F '.' '{print $3}')
 sed -i "s,#  define LIBNAME \"libproj.so\",#  define LIBNAME \"libproj.so.${PROJSOVER}\",g" ogr/ogrct.cpp
 
 # Fix mandir
@@ -254,7 +249,8 @@ autoreconf -fi
         --without-hdf4          \
         --with-hdf5             \
         --with-webp             \
-        --disable-rpath
+        --disable-rpath         \
+        --enable-lto
 
 # regenerate where needed
 for M in perl python;

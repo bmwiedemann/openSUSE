@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Oct  2 14:37:59 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Update to 12.11.1:
+  * build: fixed building
+  * deps: Updated small-icu data to support "unit" style in the
+    Intl.NumberFormat API
+
+-------------------------------------------------------------------
+Thu Sep 26 15:25:35 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Update to 12.11.0:
+  * crypto: Add oaepLabel option
+  * deps: updated V8 to 7.7.299.11
+    + More efficient memory handling
+    + Stack trace serialization got faster
+    + The Intl.NumberFormat - API gained new functionality
+    +  more information: https://v8.dev/blog/v8-release-77
+  * events: Add support for EventTarget in once
+  * fs: Expose memory file mapping flag UV_FS_O_FILEMAP
+  * inspector: New API - Session.connectToMainThread
+  * process: Initial SourceMap support via env.NODE_V8_COVERAGE
+  * stream: Make _write() optional when _writev() is implemented
+  * tls: Add option to override signature algorithms
+  * util: Add encodeInto to TextEncoder
+  * worker: The worker_thread module is now stable
+
+- versioned.patch: refreshed
+
+-------------------------------------------------------------------
+Wed Sep 18 13:44:55 UTC 2019 - Vítězslav Čížek <vcizek@suse.com>
+
+- Fix build with OpenSSL 1.1.1d (bsc#1149792)
+  * https://github.com/nodejs/node/pull/29550
+  * add fix_build_with_openssl_1.1.1d.patch
+
+-------------------------------------------------------------------
 Fri Sep  6 08:44:26 UTC 2019 - Adam Majer <adam.majer@suse.de>
 
 - Update to 12.10.0:

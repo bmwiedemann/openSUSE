@@ -1,7 +1,7 @@
 #
 # spec file for package OOKiedokie
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,6 +25,7 @@ License:        MIT
 Group:          Productivity/Hamradio/Other
 Url:            https://github.com/jynik/OOKiedokie
 Source:         %{name}-%{version}.tar.xz
+Patch0:         OOKiedokie-fix-missing-return-type.patch
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(jansson)
@@ -37,6 +38,7 @@ Amplitude Shift Keying modulation.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %cmake
@@ -46,8 +48,8 @@ Amplitude Shift Keying modulation.
 %cmake_install
 
 %files
-%defattr(-,root,root)
-%doc LICENSE README.md
+%license LICENSE
+%doc README.md
 %{_bindir}/ookiedokie
 %{_datadir}/OOKiedokie/
 

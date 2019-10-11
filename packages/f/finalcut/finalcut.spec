@@ -18,7 +18,7 @@
 
 %define sover   0
 Name:           finalcut
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 Summary:        Console widget library
 License:        LGPL-3.0-or-later

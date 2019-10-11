@@ -1,9 +1,10 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="url">git://github.com/ocaml/dune.git</param>
+    <param name="url">https://github.com/ocaml/dune.git</param>
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">1.10.0</param>
+    <!-- 1.11.4 -->
+    <param name="revision">a2cef6466c66050223b6944e68f8cdefc88fcc4e</param>
     <param name="filename">ocaml-dune</param>
   </service>
   <service name="recompress" mode="disabled">

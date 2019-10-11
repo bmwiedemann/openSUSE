@@ -50,4 +50,12 @@
 - fix_ci_tests.patch: refreshed</comment>
     <requestid>728964</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>815905d0b523714e2ec84ff9abe1480f</srcmd5>
+    <version>12.11.1</version>
+    <time>1570800138</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>737438</requestid>
+  </revision>
 </revisionlist>

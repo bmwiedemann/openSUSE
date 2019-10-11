@@ -26,7 +26,7 @@
 ###########################################################
 
 Name:           nodejs12
-Version:        12.10.0
+Version:        12.11.1
 Release:        0
 
 %define node_version_number 12
@@ -121,6 +121,8 @@ Source20:       bash_output_helper.bash
 ## Patches not distribution specific
 Patch3:         fix_ci_tests.patch
 Patch7:         manual_configure.patch
+
+Patch32:        fix_build_with_openssl_1.1.1d.patch
 
 ## Patches specific to SUSE and openSUSE
 # PATCH-FIX-OPENSUSE -- set correct path for dtrace if it is built
@@ -317,6 +319,7 @@ tar Jxvf %{SOURCE11}
 %patch7 -p1
 %if 0%{with valgrind_tests}
 %endif
+%patch32 -p1
 %patch101 -p1
 %patch102 -p1
 # Add check_output to configure script (not part of Python 2.6 in SLE11).

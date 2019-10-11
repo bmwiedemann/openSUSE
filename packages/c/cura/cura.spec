@@ -17,7 +17,7 @@
 
 
 Name:           cura
-Version:        4.1.0
+Version:        4.3.0
 Release:        0
 Summary:        3D printer control software
 License:        LGPL-3.0-only

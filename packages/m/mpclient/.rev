@@ -26,4 +26,12 @@
 - Move the bash completion to /usr</comment>
     <requestid>639912</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f2b4ae607909e30209bdb0f9155a67d4</srcmd5>
+    <version>0.32</version>
+    <time>1570799780</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>736673</requestid>
+  </revision>
 </revisionlist>

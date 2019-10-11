@@ -24,7 +24,8 @@ License:        GPL-3.0-only
 Group:          Productivity/Security
 Url:            https://github.com/OpenSCAP/scap-workbench
 Source:         https://github.com/OpenSCAP/scap-workbench/releases/download/%version/scap-workbench-%version.tar.bz2
-Patch0:         0001-pkexec-avoid-potential-local-root-exploit-by-using-P.patch
+Patch1:         0001-pkexec-avoid-potential-local-root-exploit-by-using-P.patch
+Patch2:         0002-Qt5-deprecations.patch
 BuildRequires:  cmake >= 2.6
 BuildRequires:  openscap-devel
 # SLE 11 SP3: libopenscap needs libxslt without requiring it
@@ -58,7 +59,10 @@ This package provides HTML documentation for scap-workbench.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch1 -p1
+%if 0%{?suse_version} > 1510
+%patch2 -p1
+%endif
 
 %build
 %if 0%{?cmake}

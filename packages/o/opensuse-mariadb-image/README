@@ -1,0 +1,13 @@
+The command to run this container is as example for portus:
+
+podman run -d --rm --net host -v /srv/mariadb:/var/lib/mysql --name mariadb --env MYSQL_ROOT_PASSWORD=portus --env MYSQL_USER=portus --env MYSQL_PASSWORD=portus --env MYSQL_DATABASE=portus registry.opensuse.org/home/kukuk/container/container/opensuse/mariadb
+
+Supported environment variables:
+MYSQL_ROOT_PASSWORD - needs to contain the root password for the database
+MYSQL_ALLOW_EMPTY_PASSWORD - Allow empty root password
+MYSQL_RANDOM_ROOT_PASSWORD - Set a random password with pwgen generated
+MYSQL_INITDB_SKIP_TZINFO
+MYSQL_ROOT_HOST
+MYSQL_DATABASE
+MYSQL_USER
+MYSQL_PASSWORD

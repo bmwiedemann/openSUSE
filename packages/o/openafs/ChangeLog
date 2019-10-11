@@ -1,3 +1,31 @@
+commit 501dbbe4e2fbcb8e71af9f695e8e34911c44d581
+Author: Stephan Wiesand <stephan.wiesand@desy.de>
+Date:   Sun Sep 8 13:23:23 2019 +0200
+
+    Make OpenAFS 1.8.4
+    
+    Update version strings for the 1.8.4 release.
+    
+    Change-Id: I85102e0be54cf0ff28b706d35dba8e3601447cba
+    Reviewed-on: https://gerrit.openafs.org/13841
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+    Tested-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit ae39aa202ec9133e6cec6aaf4e214157fad9b1aa
+Author: Stephan Wiesand <stephan.wiesand@desy.de>
+Date:   Fri Aug 16 17:55:48 2019 +0200
+
+    Update NEWS for OpenAFS 1.8.4
+    
+    Finalize the 1.8.4 release notes.
+    
+    Change-Id: Ida85451cdec65b2fe736d66572671293f30a6508
+    Reviewed-on: https://gerrit.openafs.org/13785
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+    Tested-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
 commit 9fa11cd961e283234ea351085cf45a24182db81f
 Author: Stephan Wiesand <stephan.wiesand@desy.de>
 Date:   Fri Sep 6 16:17:39 2019 +0200

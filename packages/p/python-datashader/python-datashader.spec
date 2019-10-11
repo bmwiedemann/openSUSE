@@ -24,54 +24,58 @@
 %endif
 %define         skip_python2 1
 Name:           python-datashader
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        Data visualization toolchain based on aggregating into a grid
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
-URL:            http://github.com/bokeh/datashader
+URL:            https://github.com/bokeh/datashader
 Source0:        https://files.pythonhosted.org/packages/source/d/datashader/datashader-%{version}.tar.gz
 Source100:      python-datashader-rpmlintrc
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module param >= 1.6.0}
-BuildRequires:  %{python_module pyct}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-DataShape >= 0.5.1
+Requires:       python-Pillow
+Requires:       python-PyYAML
+Requires:       python-bokeh
+Requires:       python-colorcet >= 0.9.0
+Requires:       python-dask >= 0.18.0
+Requires:       python-dask-bag
+Requires:       python-dask-dataframe
+Requires:       python-numba >= 0.37.0
+Requires:       python-numpy >= 1.7
+Requires:       python-pandas >= 0.24.1
+Requires:       python-param >= 1.6.0
+Requires:       python-pyct
+Requires:       python-scikit-image
+Requires:       python-scipy
+Requires:       python-toolz >= 0.7.4
+Requires:       python-xarray >= 0.9.6
+BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module DataShape >= 0.5.1}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module bokeh}
-BuildRequires:  %{python_module colorcet}
+BuildRequires:  %{python_module colorcet >= 0.9.0}
+BuildRequires:  %{python_module dask >= 0.18.0}
 BuildRequires:  %{python_module dask-bag}
 BuildRequires:  %{python_module dask-dataframe}
-BuildRequires:  %{python_module dask}
-BuildRequires:  %{python_module fastparquet}
-BuildRequires:  %{python_module numba >= 0.24.0}
+BuildRequires:  %{python_module fastparquet >= 0.1.6}
+BuildRequires:  %{python_module nbsmoke >= 0.2.6}
+BuildRequires:  %{python_module numba >= 0.37.0}
 BuildRequires:  %{python_module numpy >= 1.7}
-BuildRequires:  %{python_module pandas >= 0.15.0}
-BuildRequires:  %{python_module pytest-benchmark}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module toolz}
+BuildRequires:  %{python_module pandas >= 0.24.1}
+BuildRequires:  %{python_module param >= 1.6.0}
+BuildRequires:  %{python_module pyct}
+BuildRequires:  %{python_module pytest >= 3.9.3}
+BuildRequires:  %{python_module pytest-benchmark >= 3.0.0}
+BuildRequires:  %{python_module scikit-image}
+BuildRequires:  %{python_module scipy}
+BuildRequires:  %{python_module toolz >= 0.7.4}
 BuildRequires:  %{python_module xarray >= 0.9.6}
 %endif
-Requires:       python-DataShape >= 0.5.1
-Requires:       python-Pillow
-Requires:       python-PyYAML
-Requires:       python-bokeh
-Requires:       python-colorcet
-Requires:       python-dask
-Requires:       python-dask-dataframe
-Requires:       python-fastparquet
-Requires:       python-numba >= 0.24.0
-Requires:       python-numpy >= 1.7
-Requires:       python-pandas >= 0.15.0
-Requires:       python-param >= 1.6.0
-Requires:       python-pyct
-Requires:       python-toolz
-Requires:       python-xarray >= 0.9.6
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -113,10 +117,7 @@ chmod a-x %{buildroot}%{$python_sitelib}/datashader/examples/filetimes.py
 %check
 export PYTHONPATH=examples
 # excluded tests are https://github.com/bokeh/datashader/issues/620
-%{python_expand py.test-%{$python_bin_suffix} datashader/tests \
-    --doctest-modules --doctest-ignore-import-errors
-}
-
+%pytest datashader/tests --doctest-modules --doctest-ignore-import-errors
 %endif
 
 %files %{python_files}

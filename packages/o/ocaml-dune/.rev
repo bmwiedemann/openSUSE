@@ -162,4 +162,20 @@ I will submit the packages one by one once this is accepted.</comment>
 </comment>
     <requestid>706528</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>518d5b0d3d490b6b06f4025baf3192f4</srcmd5>
+    <version>1.11.4</version>
+    <time>1570799761</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.11.4:
+  see included CHANGES.md for details
+
+- use dune macros from ocaml-rpm-macros
+
+- Update to version 1.11.3:
+  see included CHANGES.md for details
+- Require findlib for ocamlfind, which is used to find ocaml
+- Create devel package</comment>
+    <requestid>736354</requestid>
+  </revision>
 </revisionlist>

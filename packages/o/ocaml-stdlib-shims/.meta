@@ -1,0 +1,8 @@
+<package name="ocaml-stdlib-shims" project="openSUSE:Factory">
+  <title>Shim to substitute Pervasives with Stdlib before 4.08</title>
+  <description>Compiling against this library allows to replace your uses of Pervasives with Stdlib before 4.08. For example you can use Stdlib.compare instead of Pervasives.compare. It does not however provide the new functions and modules that are being added in Stdlib module.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-stdlib-shims"/>
+  <url>https://github.com/ocaml/stdlib-shims</url>
+</package>

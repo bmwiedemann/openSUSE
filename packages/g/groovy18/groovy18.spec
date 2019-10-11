@@ -24,7 +24,7 @@ Release:        0
 Summary:        Dynamic language for the Java Platform
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://groovy-lang.org
+URL:            https://groovy-lang.org
 Source0:        https://github.com/groovy/groovy-core/archive/GROOVY_%{archiver}.zip
 # thanks to Johannes Lips and Matt Spaulding
 Source1:        groovy18-script

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Oct 10 13:32:59 UTC 2019 - Markos Chandras <mchandras@suse.de>
+
+- Update to 2.28.0
+  * Add NetworkManager and dhcp-client for CentOS 8
+  * Fix networking for CentOS 8
+  * simple-init: Use wrappers to call pip for glean install
+  * simple-init: default to NetworkManager for CentOS and Fedora
+  * Add security mirror override for debian-minimal
+  * pip-and-virtualenv : deprecate source for CentOS 8, new variables
+  * yum-minimal: Don't install yum, install libcurl
+  * Use $YUM instead of direct calls in more places
+  * Add environment switch for centos8 to use dnf
+  * Update redhat-common pkg-map for centos 8
+  * Update locales for Centos 8
+  * dib-python : handle centos 8
+  * yum-minimal : update mirrors for Centos 8
+  * Remove "failovermethod=priority" for Fedora (dnf)
+  * Install Python 3 libselinux packages for Fedora
+  * Revert "Fixed use of flake8"
+  * Only install doc requirements if needed
+  * Use x86 architeture specific grub2 packages for RHEL
+  * Move doc related modules to doc/requirements.txt
+
+-------------------------------------------------------------------
 Mon Sep  9 11:33:05 UTC 2019 - Markos Chandras <mchandras@suse.de>
 
 - Update to 2.27.0

@@ -17,7 +17,7 @@
 
 
 Name:           cura-engine
-Version:        4.1.0
+Version:        4.3.0
 Release:        0
 Summary:        3D printer control software
 License:        AGPL-3.0-only
@@ -27,8 +27,6 @@ Source0:        CuraEngine-%{version}.tar.xz
 Source1:        CuraEngine.1
 # X-OPENSUSE-PATCH fix-build.patch follow openSUSE policies
 Patch1:         fix-build.patch
-# PATCH-FIX-OPENSUSE CuraEngine-gcc9.patch based on a patch from fedora, submitted upstream, but not merged yet
-Patch2:         CuraEngine-gcc9.patch
 # On TW/Factory or Leap/SLE 15 use latest gcc, gcc6 otherwise
 %if 0%{?suse_version} < 1500
 BuildRequires:  gcc6-c++
@@ -52,7 +50,6 @@ It is part of the larger project called "Cura".
 %prep
 %setup -q -n CuraEngine-%version
 %patch1 -p1
-%patch2 -p0
 # the test is hardcoding the version number
 sed -i -e 's,"master","%{version}",' tests/GCodeExportTest.cpp
 

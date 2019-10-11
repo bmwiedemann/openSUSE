@@ -1,7 +1,7 @@
 #
 # spec file for package mpclient
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,17 +18,17 @@
 
 
 Name:           mpclient
-Version:        0.30
+Version:        0.32
 Release:        0
 Summary:        A minimalist command line interface to MPD
-License:        GPL-2.0-only
-Group:          Productivity/Multimedia/Sound/Utilities
-URL:            http://www.musicpd.org/
-Source:         http://www.musicpd.org/download/mpc/0/mpc-%{version}.tar.xz
-BuildRequires:  meson
+License:        GPL-2.0-or-later
+URL:            https://www.musicpd.org
+Source0:        https://www.musicpd.org/download/mpc/0/mpc-%{version}.tar.xz
+BuildRequires:  meson >= 0.47.2
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libmpdclient) >= 2.9
+BuildRequires:  python3-Sphinx
+BuildRequires:  pkgconfig(libmpdclient)
 
 %description
 A client for MPD, the Music Player Daemon. mpc connects to a MPD
@@ -48,7 +48,7 @@ install -m 0755 contrib/mpd-pls-handler.sh %{buildroot}%{_bindir}/mpd-pls-handle
 install -m 0755 contrib/mpd-m3u-handler.sh %{buildroot}%{_bindir}/mpd-m3u-handler
 
 install -Dm 0644 contrib/mpc-completion.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
-rm -rf %{buildroot}%{_datadir}/doc
+rm -r %{buildroot}%{_datadir}/doc
 
 %check
 %meson_test
@@ -56,7 +56,8 @@ rm -rf %{buildroot}%{_datadir}/doc
 %files
 %license COPYING
 %doc NEWS README.rst
-%{_bindir}/*
 %config %{_datadir}/bash-completion/completions/%{name}
+%{_bindir}/{mpc,mpd-*}
+%{_mandir}/man1/mpc.1%{?ext_man}
 
 %changelog

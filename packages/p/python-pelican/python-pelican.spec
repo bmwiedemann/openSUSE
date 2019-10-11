@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pelican
-Version:        4.1.2
+Version:        4.1.3
 Release:        0
 Summary:        A tool to generate a static blog from reStructuredText or Markdown input files
 License:        AGPL-3.0-only

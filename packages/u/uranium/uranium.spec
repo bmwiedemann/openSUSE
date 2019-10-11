@@ -17,7 +17,7 @@
 
 
 Name:           uranium
-Version:        4.1.0
+Version:        4.3.0
 Release:        0
 Summary:        Python framework for Desktop applications
 License:        LGPL-3.0-only

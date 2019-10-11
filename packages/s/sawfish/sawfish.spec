@@ -1,7 +1,7 @@
 #
 # spec file for package sawfish
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2007 Jan Nieuwenhuizen <jnieuwenhuizen@novell.com>
 # Copyright (c) 2000 John Harper <john@dcs.warwick.ac.uk>
 #
@@ -14,15 +14,15 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           sawfish
 Version:        1.12.90
 Release:        0
-Summary:        A highly configurable window manager for X11
-License:        GPL-2.0+
+Summary:        A configurable window manager for X11
+License:        GPL-2.0-or-later
 Group:          System/GUI/Other
 %if 0%{?suse_version} > 1230
 %else
@@ -74,19 +74,18 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Sawfish is an extensible window manager using an Emacs Lisp-like
-scripting language -- all window decorations are configurable, the basic
-idea is to have as much user-interface policy as possible controlled
-through the Lisp language. This is no layer on top of twm, but a wholly
-new architecture.
+scripting language. All window decorations are configurable, the basic
+idea is to have as much user-interface policy as possible, controlled
+through the Lisp language. This is not a layer on top of twm, but a
+wholly new architecture.
 
-Despite this extensibility its policy is currently very minimal
-compared to most window managers. Its aim is simply to manage windows
-in the most flexible and attractive manner possible. As such it does
-not implement desktop backgrounds, applications docks, or other things
+Despite this extensibility, its policy is minimal compared to most
+window managers. It manages windows in a flexible manner. It does not
+implement desktop backgrounds, applications docks, or other things
 that may be achieved through separate applications.
 
 %package sounds
-Summary:        A highly configurable window manager for X11 - Sound files
+Summary:        Sound files for Sawfish, a configurable X11 window manager
 License:        Artistic-2.0
 Group:          System/GUI/Other
 %if 0%{?suse_version} > 1230
@@ -96,21 +95,19 @@ BuildArch:      noarch
 
 %description sounds
 Sawfish is an extensible window manager using an Emacs Lisp-like
-scripting language -- all window decorations are configurable, the basic
-idea is to have as much user-interface policy as possible controlled
-through the Lisp language. This is no layer on top of twm, but a wholly
-new architecture.
+scripting language. All window decorations are configurable, the basic
+idea is to have as much user-interface policy as possible, controlled
+through the Lisp language. This is not a layer on top of twm, but a
+wholly new architecture.
 
-Despite this extensibility its policy is currently very minimal
-compared to most window managers. Its aim is simply to manage windows
-in the most flexible and attractive manner possible. As such it does
-not implement desktop backgrounds, applications docks, or other things
+Despite this extensibility, its policy is minimal compared to most
+window managers. It manages windows in a flexible manner. It does not
+implement desktop backgrounds, applications docks, or other things
 that may be achieved through separate applications.
 
-
 %package devel
-Summary:        A highly configurable window manager for X11 - Development Files
-License:        GPL-2.0+
+Summary:        Header files for Sawfish, a configurable X11 window manager
+License:        GPL-2.0-or-later
 Group:          Development/Languages/Scheme
 %if 0%{?suse_version} > 1230
 %else
@@ -121,17 +118,15 @@ Requires:       rep-gtk-devel
 
 %description devel
 Sawfish is an extensible window manager using an Emacs Lisp-like
-scripting language -- all window decorations are configurable, the basic
-idea is to have as much user-interface policy as possible controlled
-through the Lisp language. This is no layer on top of twm, but a wholly
-new architecture.
+scripting language. All window decorations are configurable, the basic
+idea is to have as much user-interface policy as possible, controlled
+through the Lisp language. This is not a layer on top of twm, but a
+wholly new architecture.
 
-Despite this extensibility its policy is currently very minimal
-compared to most window managers. Its aim is simply to manage windows
-in the most flexible and attractive manner possible. As such it does
-not implement desktop backgrounds, applications docks, or other things
+Despite this extensibility, its policy is minimal compared to most
+window managers. It manages windows in a flexible manner. It does not
+implement desktop backgrounds, applications docks, or other things
 that may be achieved through separate applications.
-
 
 %prep
 %setup -q -n %{name}_%{version}

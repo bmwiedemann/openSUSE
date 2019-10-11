@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 11 07:42:16 UTC 2019 - Klaus Kämpf <kkaempf@suse.com>
+
+- fix Qt5 deprecation warnings
+  0002-Qt5-deprecations.patch
+
+-------------------------------------------------------------------
 Sat Apr 13 21:12:02 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.2.0. Changes since 1.1.5:

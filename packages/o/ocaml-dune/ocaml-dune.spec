@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-dune
-Version:        1.10.0
+Version:        1.11.4
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        A composable build system for OCaml
@@ -28,32 +28,48 @@ Conflicts:      ocaml-jbuilder
 Conflicts:      ocaml-jbuilder-debuginfo
 Conflicts:      ocaml-jbuilder-debugsource
 Source:         %{name}-%{version}.tar.xz
+Requires:       ocaml-findlib
 BuildRequires:  ocaml
+BuildRequires:  ocaml-rpm-macros >= 20191004
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 A composable build system for OCaml
 
+%package        devel
+Summary:        Development files for %{name}
+Group:          Development/Languages/OCaml
+Requires:       %{name} = %{version}
+
+%description    devel
+The %{name}-devel package contains libraries and signature files for
+developing applications that use %{name}.
+
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-make %{?_smp_mflags} PREFIX=%{_prefix}
+%make_build
 
 %install
-mkdir -p %{buildroot}%{_bindir}
-mkdir -p %{buildroot}%{_mandir}/man1
-mkdir -p %{buildroot}%{_mandir}/man5
-cp -av _boot/default/bin/main/main_dune.exe %{buildroot}%{_bindir}/dune
-ln -sfvbn dune %{buildroot}%{_bindir}/jbuilder
-cp -av _boot/default/doc/*.1 %{buildroot}%{_mandir}/man1/
-cp -av _boot/default/doc/*.5 %{buildroot}%{_mandir}/man5/
+#make_install PREFIX='%{_prefix}' LIBDIR="$(ocamlc -where)"
+./_boot/default/bin/main/main_dune.exe install \
+	--prefix '%{_prefix}' \
+	--destdir '%{buildroot}' \
+	--libdir "$(ocamlc -where)" \
+	dune --build-dir _boot
+find '%{buildroot}' -ls
+rm -rfv %{buildroot}%{_prefix}/doc
+mkdir -vp %{buildroot}%{_mandir}
+mv %{buildroot}%{_prefix}/man %{buildroot}%{_datadir}
+%ocaml_create_file_list
 
-%files
-%defattr(-,root,root)
+%files -f %{name}.files
 %doc CHANGES.md README.md
-%license LICENSE.md
 %{_bindir}/*
 %{_mandir}/*/*
+%{_datadir}/emacs
+
+%files devel -f %{name}.files.devel
 
 %changelog

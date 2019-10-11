@@ -22,26 +22,21 @@
 %endif
 
 Name:           fetchmail
-Version:        6.3.26
+Version:        6.4.1
 Release:        0
 Summary:        Full-Featured POP and IMAP Mail Retrieval Daemon
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Email/Utilities
 Url:            http://www.fetchmail.info/
-Source:         http://sourceforge.net/projects/fetchmail/files/branch_6.3/%{name}-%{version}.tar.xz
+Source:         https://sourceforge.net/projects/fetchmail/files/branch_6.4/%{name}-%{version}.tar.xz
+#Source1:        https://sourceforge.net/projects/fetchmail/files/branch_6.4/%%{name}-%%{version}.tar.xz.asc
 Source2:        %{name}.logrotate
 Source3:        sysconfig.%{name}
-Source4:        http://sourceforge.net/projects/fetchmail/files/branch_6.3/%{name}-%{version}.tar.xz.asc
 Source5:        %{name}.keyring
 Source6:        %{name}.service
 Source7:        %{name}.tmpfiles
 Source8:        %{name}.exec
 Patch0:         fetchmail-6.3.8-smtp_errors.patch
-Patch1:         fetchmail-openssl11.patch
-# PATCH-FIX-UPSTREAM bsc#1082694 Fix fetchmailconf to be able to compile with python{2,3}
-Patch2:         fetchmail-fetchmailconf-python3-1of3.patch
-Patch3:         fetchmail-fetchmailconf-python3-2of3.patch
-Patch4:         fetchmail-fetchmailconf-python3-3of3.patch
 BuildRequires:  automake
 BuildRequires:  krb5-devel
 BuildRequires:  openssl-devel
@@ -88,10 +83,6 @@ files (.fetchmailrc).
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
 cp -a %{SOURCE2} %{SOURCE3} .
 
 ACLOCAL="aclocal -I m4 -I m4-local" autoreconf -fvi
@@ -159,13 +150,17 @@ if [ $1 = 0 ]; then
     rm -rf var/lib/fetchmail
 fi
 
+%check
+make %{?_smp_mflags} check
+
 %files -f %{name}.lang
 %defattr(-, root, root)
+%license COPYING
+%doc FAQ FEATURES NEWS NOTES OLDNEWS README README.NTLM README.SSL README.SSL-SERVER TODO contrib *.html *.txt *.pdf
 %{_bindir}/fetchmail
 %dir %attr(0700, fetchmail, root) %{_localstatedir}/lib/fetchmail
 %ghost %attr(0600, fetchmail, root) %{_localstatedir}/log/fetchmail
 %{_mandir}/man1/fetchmail.1.gz
-%doc COPYING FAQ FEATURES NEWS NOTES OLDNEWS README README.NTLM README.SSL README.SSL-SERVER TODO contrib *.html *.txt *.pdf
 %ghost %config(noreplace) %attr(0600, fetchmail, root) %{_sysconfdir}/fetchmailrc
 %config(noreplace) %{_sysconfdir}/logrotate.d/fetchmail
 %{_unitdir}/%{name}.service

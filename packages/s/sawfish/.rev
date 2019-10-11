@@ -124,4 +124,12 @@ http://lists.opensuse.org/opensuse-factory/2012-10/msg00311.html</comment>
     <comment></comment>
     <requestid>711152</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>4c22a57b003b1cf0cf87dcb4887e9727</srcmd5>
+    <version>1.12.90</version>
+    <time>1570800167</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>737445</requestid>
+  </revision>
 </revisionlist>

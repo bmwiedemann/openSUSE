@@ -86,4 +86,18 @@
 </comment>
     <requestid>707280</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c47b55613ada1da587a895f6f8cf9e5d</srcmd5>
+    <version>0.8.0</version>
+    <time>1570800114</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.0:
+  * Compatibility with latest Numba, Intake, Pandas, and Xarray (#763, #768, #791)
+  * Improved datetime support (#803)
+  * Simplified docs (now built on Travis, and no longer requiring GeoViews) and examples (now on examples.pyviz.org)
+  * Skip rendering of empty tiles (#760)
+  * Improved performance for point, area, and line glyphs (#780)
+  * InteractiveImage and Pipeline are now deprecated; removed from examples (#751)</comment>
+    <requestid>737420</requestid>
+  </revision>
 </revisionlist>

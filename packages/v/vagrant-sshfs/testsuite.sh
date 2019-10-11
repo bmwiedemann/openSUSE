@@ -20,7 +20,7 @@ trap cleanup EXIT
 mkdir -p /tmp/reverse_mount_etc
 
 mkdir other_machine && pushd other_machine
-vagrant init opensuse/openSUSE-Tumbleweed-Vagrant.x86_64
+vagrant init "opensuse/Tumbleweed.$(uname -m)"
 vagrant up
 export THIRD_PARTY_HOST=$(vagrant ssh-config|grep HostName|awk '{print $2}')
 export OTHER_MACHINE_ID=$(vagrant ssh -- cat /etc/machine-id)

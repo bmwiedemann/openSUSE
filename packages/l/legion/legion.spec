@@ -1,7 +1,7 @@
 #
 # spec file for package legion
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2016-2017 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,16 +13,11 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define git_ver .0.1ebd2fdc0da1
-%ifarch ppc64
-%define mpi_implem openmpi
-%else
-%define mpi_implem openmpi2
-%endif
 
 Name:           legion
 Version:        18.05.0
@@ -36,18 +31,17 @@ Patch0:         legion-fix-potential-return-of-random-data.patch
 Patch1:         gcc-8.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
-BuildRequires:  %{mpi_implem}
-BuildRequires:  %{mpi_implem}-devel
 BuildRequires:  cmake
 BuildRequires:  gasnet-devel
 BuildRequires:  gcc-c++
-BuildRequires:  hwloc-devel
+BuildRequires:  openmpi-macros-devel
 %ifarch x86_64 %{ix86}
 BuildRequires:  libfabric-devel
 %endif
 %ifarch x86_64
 BuildRequires:  libpsm2-devel
 %endif
+%openmpi_requires
 
 %description
 Legion is a data-centric parallel programming system for writing portable
@@ -76,6 +70,7 @@ This package contains shared libraries for the legion library.
 Summary:        Development headers and libraries for the legion library
 Group:          Development/Libraries/C and C++
 Requires:       lib%{name}1 = %{version}
+%openmpi_devel_requires
 
 %description devel
 Legion is a data-centric parallel programming system for writing portable
@@ -101,8 +96,8 @@ This package contains development headers and libraries for the legion library.
 %endif
 
 %build
-. %{_libdir}/mpi/gcc/%{mpi_implem}/bin/mpivars.sh
-%{cmake} -DLegion_USE_HWLOC=ON \
+%setup_openmpi
+%{cmake} -DLegion_USE_HWLOC=OFF \
          -DLegion_USE_GASNet=ON \
          -DCOMPILER_SUPPORTS_MARCH=OFF \
          -DCOMPILER_SUPPORTS_MCPU=OFF \
@@ -110,15 +105,16 @@ This package contains development headers and libraries for the legion library.
          -DLegion_BUILD_TESTS=ON \
          -DLegion_ENABLE_TESTING=ON \
          -DGASNet_CONDUIT=mpi \
-         -DLegion_BUILD_TUTORIAL=ON
+         -DLegion_BUILD_TUTORIAL=ON \
+	 -DCMAKE_INSTALL_INCLUDEDIR:PATH=%{_includedir}/legion 
 make
 
 %install
-. %{_libdir}/mpi/gcc/%{mpi_implem}/bin/mpivars.sh
+%setup_openmpi
 make -C build install DESTDIR=%{buildroot}
 
 %check
-. %{_libdir}/mpi/gcc/%{mpi_implem}/bin/mpivars.sh
+%setup_openmpi
 LD_LIBRARY_PATH="%{buildroot}/%{_libdir}:${LD_LIBRARY_PATH}" make -C build %{?_smp_mflags} test ARGS='-V'
 
 %post -n liblegion1 -p /sbin/ldconfig

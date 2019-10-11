@@ -23,7 +23,7 @@
 %endif
 %endif
 Name:           drbd
-Version:        9.0.19~1+git.8e93a5d9
+Version:        9.0.20~1+git.7dce3c8b
 Release:        0
 Summary:        Linux driver for the "Distributed Replicated Block Device"
 License:        GPL-2.0-or-later
@@ -86,14 +86,16 @@ ln -s ../scripts obj/
 export WANT_DRBD_REPRODUCIBLE_BUILD=1
 export CONFIG_BLK_DEV_DRBD=m
 export EXTRA_CFLAGS='-DVERSION=\"%{version}\"'
-export ALWAYS_WANT_SPATCH='yes'
+# Unset SPAAS or set as 'true' will use `spatch-as-a-service` from drbd.io
+# when "coccinelle" not installed. Set SPAAS to 'false' to force an ERROR.
+export SPAAS='false'
 
 for flavor in %{flavors_to_build}; do
     rm -rf $flavor
     cp -r source $flavor
     cp %{_sourcedir}/Module.supported $flavor
     export DRBDSRC="$PWD/obj/$flavor"
-    make %{?_smp_mflags} -C %{kernel_source $flavor} modules M=$PWD/$flavor
+    make %{?_smp_mflags} -C %{kernel_source $flavor} modules M=$PWD/$flavor SPAAS=${SPAAS}
 
     #Check the compat result
     cat $PWD/$flavor/compat.h

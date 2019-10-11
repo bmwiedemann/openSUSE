@@ -7,4 +7,12 @@
     <comment>Xfce 4.14 Upgrade</comment>
     <requestid>724112</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>99d61e1410c9e5027e3e24794e62bf92</srcmd5>
+    <version>0.10.0</version>
+    <time>1570799861</time>
+    <user>dimstar_suse</user>
+    <comment>Changelog in Factory is missing the 0.10 update entry</comment>
+    <requestid>737158</requestid>
+  </revision>
 </revisionlist>
