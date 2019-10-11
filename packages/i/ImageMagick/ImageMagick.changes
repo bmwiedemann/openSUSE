@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct  7 10:17:14 UTC 2019 - pgajdos@suse.com
+
+- version update to 7.0.8.68
+  * Support animated WebP encoding/decoding (reference
+    https://github.com/ImageMagick/ImageMagick/pull/1708).
+  * Text stroke cut off (reference
+    https://imagemagick.org/discourse-server/viewtopic.php?f=1&t=36829).
+  * Adds support for lossless JPEG1 recompression (reference
+    https://imagemagick.org/discourse-server/viewtopic.php?f=2&t=36828).
+  * line endings renedered as empty boxes (reference
+    https://github.com/ImageMagick/ImageMagick/issues/1704).
+
+-------------------------------------------------------------------
 Mon Sep 23 08:05:14 UTC 2019 - pgajdos@suse.com
 
 - version update to 7.0.8.66

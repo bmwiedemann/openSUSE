@@ -30,7 +30,7 @@
 %define pp_so_ver       12
 %define wand_so_ver     2
 Name:           GraphicsMagick
-Version:        1.3.32
+Version:        1.3.33
 Release:        0
 Summary:        Viewer and Converter for Images
 License:        MIT

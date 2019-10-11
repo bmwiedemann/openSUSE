@@ -70,6 +70,7 @@ BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(pixman-1) >= 0.17.7
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.96
 # spice-protocol is bundled, but we still need the system-wide .pc file for the pkgconfig() requires magic
+BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(spice-protocol) >= 0.12.15
 Requires(pre):  permissions
 Recommends:     %{name}-lang

@@ -797,4 +797,41 @@
     <comment>- drop JPEG2000 support [bsc#1144240]</comment>
     <requestid>725043</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>4a6f59a5e967e684960a3fde2bbd8816</srcmd5>
+    <version>1.3.33</version>
+    <time>1570806864</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 1.3.33
+  * It has been discovered that the 'ICU' library (a perhaps 30MB C++
+    library) which is now often a libxml2 dependendency causes huge
+    process initialization overhead.  This is noticed as unexpected
+    slowness when GraphicsMagick utilities are used to process small to
+    medium sized files.  The time to initialize is often longer than the
+    time to read the input file, process the image, and write the output
+    file.  If the 'ICU' dependency can not be avoided, then make sure to
+    use the modules build.  Please lobby the 'ICU' library developers to
+    change their implementation to avoid long start-up times due to
+    merely linking with the library.
+  * GraphicsMagick is now participating in Google's oss-fuzz project due
+    to the contributions and assistance of Alex Gaynor. Since February 4
+    2018, 353 issues have been opened by oss-fuzz and 338 of those
+    issues have been resolved.  The issues list is available at
+    https://bugs.chromium.org/p/oss-fuzz/issues/list under search term
+    &quot;graphicsmagick&quot;.  Issues are available for anyone to view and
+    duplicate if they have been in &quot;Verified&quot; status for 30 days, or if
+    they have been in &quot;New&quot; status for 90 days.  There are too many
+    fixes to list here.  Please consult the GraphicsMagick ChangeLog
+    file, Mercurial repository commit log, and the oss-fuzz issues list
+    for details.
+  * Documentation has been added regarding security hazards due to
+    commands which support a '@filename' syntax.
+  * MontageImages(): Fix wrong length argument to strlcat() when
+    building montage directory, which could allow heap overwrite.
+  * PNG: Pass correct size value to strlcat() in module registration
+    code.  This bug is noticed to cause problems for Apple's OS X and
+    Linux Alpine with musl libc.  This fixes a regression introduced by
+    the 1.3.32 release.</comment>
+    <requestid>736253</requestid>
+  </revision>
 </revisionlist>

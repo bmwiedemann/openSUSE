@@ -256,4 +256,12 @@
     <comment>Update to the latest database version 20190905</comment>
     <requestid>731772</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>ca2da7aa420d85b0d4d0ddfd073d3856</srcmd5>
+    <version>20190920</version>
+    <time>1570806881</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>736342</requestid>
+  </revision>
 </revisionlist>

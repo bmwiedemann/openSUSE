@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Oct 11 09:04:38 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.94
+   see /usr/share/doc/packages/perl-WWW-Mechanize/Changes
+
+  1.94      2019-10-10 13:12:28Z
+      [FIXED]
+      - Issue #182: Don't autocheck for mech-dump so basic auth works (GH#285)
+        (Julien Fiegehenn)
+  
+      [DOCUMENTATION]
+      - Fix pod error reported by CPANTS. (GH#284) (Mohammad S Anwar)
+
+-------------------------------------------------------------------
+Mon Oct  7 10:43:25 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.93
+   see /usr/share/doc/packages/perl-WWW-Mechanize/Changes
+
+  1.93      2019-10-04 21:06:49Z
+      [FIXED]
+      - Allow images to not have a src attribute (GH#282) (Julien Fiegehenn)
+  
+      [DOCUMENTATION]
+      - Pod fixes. (GH#283) (Mohammad S Anwar)
+
+-------------------------------------------------------------------
 Sat Aug 24 05:39:03 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 1.92

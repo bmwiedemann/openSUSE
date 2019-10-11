@@ -17,14 +17,14 @@
 
 
 # grep -r define.VERSION (sometimes also noted down in schily-%rver/AN-%rver)
-%global box_version	2019.08.13
+%global box_version	2019.10.07
 %global cdr_version	3.02~a10
 %global sccs_version	5.09
 %global smake_version	1.3
 %global star_version	1.6.1
 %global libfind_version 1.7
 %global ved_version     1.7
-%define rver	2019-08-13
+%define rver	2019-10-07
 
 Name:           schily
 Version:        %box_version
@@ -452,7 +452,7 @@ find . "(" -type d -o -type f ")" -exec chmod u+w "{}" "+"
 cp %{SOURCE1} .
 
 %build
-%define _lto_cflags %{nil}
+%define _lto_cflags %nil
 perl -i -pe 's{\@echo}{echo}' RULES/cc-*
 # Static link libhfs, only used by mkisofs.
 rm -fv libhfs_iso/shlhfs.mk
@@ -636,7 +636,8 @@ rm -Rfv \
    $b/usr/share/man/man5/sccschangeset.5 \
    $b/usr/share/man/man5/sccsfile.5 \
    $b/usr/share/man/man5/streamarchive.5 \
-   $b/usr/share/man/man8/sformat.8
+   $b/usr/share/man/man8/sformat.8 \
+   $b/usr/share/doc/packages/dotfiles.tar.bz2
 
 # Remove documentation (will be added in %_datadir/doc/packages/*)
 #rm -Rf "$b/%_datadir/doc"/*
@@ -703,13 +704,13 @@ fi
 %postun -n libxtermcap1_0 -p /sbin/ldconfig
 
 %verifyscript -n cdrecord
-%{verify_permissions -e %_bindir/cdrecord}
+%verify_permissions -e %_bindir/cdrecord
 
 %verifyscript -n cdda2wav
-%{verify_permissions -e %_bindir/cdda2wav}
+%verify_permissions -e %_bindir/cdda2wav
 
 %verifyscript -n readcd
-%{verify_permissions -e %_bindir/readcd}
+%verify_permissions -e %_bindir/readcd
 
 %files -n bosh
 %license CDDL.Schily.txt
@@ -996,9 +997,9 @@ fi
 
 %files -n schily-rmt
 %license CDDL.Schily.txt
-%{_docdir}/schily-rmt
 %config(noreplace) %_sysconfdir/default/rmt
 %_docdir/rmt/
+%_docdir/schily-rmt
 %_bindir/srmt
 %_mandir/man1/srmt.1*
 %ghost %_sysconfdir/alternatives/rmt

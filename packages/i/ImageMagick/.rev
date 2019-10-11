@@ -2313,4 +2313,20 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     https://imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=36641).</comment>
     <requestid>732627</requestid>
   </revision>
+  <revision rev="188" vrev="1">
+    <srcmd5>eb2b9f0552316e06f65ff4b11db23791</srcmd5>
+    <version>7.0.8.68</version>
+    <time>1570806857</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.8.68
+  * Support animated WebP encoding/decoding (reference
+    https://github.com/ImageMagick/ImageMagick/pull/1708).
+  * Text stroke cut off (reference
+    https://imagemagick.org/discourse-server/viewtopic.php?f=1&amp;t=36829).
+  * Adds support for lossless JPEG1 recompression (reference
+    https://imagemagick.org/discourse-server/viewtopic.php?f=2&amp;t=36828).
+  * line endings renedered as empty boxes (reference
+    https://github.com/ImageMagick/ImageMagick/issues/1704).</comment>
+    <requestid>736250</requestid>
+  </revision>
 </revisionlist>

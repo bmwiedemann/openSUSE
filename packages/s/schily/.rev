@@ -197,4 +197,12 @@
     <comment>- Update to new upstream release 2019.08.13</comment>
     <requestid>726011</requestid>
   </revision>
+  <revision rev="18" vrev="18">
+    <srcmd5>3ed5da7c4bc18ebaba979b29cdc27d2b</srcmd5>
+    <version>unknown</version>
+    <time>1570806887</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2019.10.07</comment>
+    <requestid>736747</requestid>
+  </revision>
 </revisionlist>
