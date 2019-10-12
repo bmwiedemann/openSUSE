@@ -1,7 +1,7 @@
 #
 # spec file for package pilot-link
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -33,7 +33,7 @@ Release:        0
 Obsoletes:      plink < %{version}
 Provides:       plink = %{version}
 Summary:        Pilot-Link Based Synchronization Development Header Files
-License:        GPL-2.0 and GPL-2.0+ and LGPL-2.1+
+License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Hardware/Palm
 Source:         http://downloads.pilot-link.org/%{name}-%{version}.tar.bz2
 Source1:        10-usb-raw-pda.fdi
@@ -51,6 +51,8 @@ Patch10:        pilot-link-0.12.5-libpng-include.patch
 # PATCH-FIX-UPSTREAM pilot-link-0.12.5-perl514.patch idoenmez@suse.de -- Fix compilation with Perl 5.14
 Patch11:        pilot-link-0.12.5-perl514.patch
 Patch12:        pilot-link-0.12.5-udev-rules.patch
+# PATCH-FIX-OPENSUSE pilot-link-stop-messing-with-cflags.patch dimstar@opensuse.org -- Stop mangling Werror from cflags - it's not correcly done anyway
+Patch13:        pilot-link-stop-messing-with-cflags.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -166,6 +168,7 @@ Pilot.
 %patch10
 %patch11
 %patch12
+%patch13 -p1
 # Force updating bindings/Perl/Pilot.c
 rm -f bindings/Perl/Pilot.c
 

@@ -12,17 +12,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           lxqt-globalkeys
-Version:        0.14.1
+Version:        0.14.2
 Release:        0
 Summary:        Global keyboard shortcuts registration
 License:        LGPL-2.1-or-later
-Group:          System/GUI/LXQt
-URL:            http://www.lxqt.org
+URL:            https://www.lxqt.org
 Source:         https://github.com/lxde/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/lxde/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
@@ -33,7 +32,7 @@ BuildRequires:  lxqt-build-tools-devel >= 0.6.0
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  pkgconfig(Qt5UiTools)
-BuildRequires:  pkgconfig(lxqt) >= %{version}
+BuildRequires:  pkgconfig(lxqt) >= 0.14.1
 Requires(post): desktop-file-utils
 Requires(pre):  desktop-file-utils
 Obsoletes:      lxqt-globalkeys-qt5 < %{version}
@@ -46,7 +45,6 @@ Daemon and library for global keyboard shortcuts registration
 
 %package devel
 Summary:        Development files for lxqt-globalkeys
-Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       liblxqt-globalkeys-ui0 = %{version}
 Requires:       liblxqt-globalkeys0 = %{version}
@@ -57,14 +55,12 @@ Development files for lxqt-globalkeys including headers and libraries
 
 %package -n liblxqt-globalkeys0
 Summary:        Lxqt-globalkeys libraries
-Group:          System/Libraries
 
 %description -n liblxqt-globalkeys0
 lxqt-globalkeys main system library
 
 %package -n liblxqt-globalkeys-ui0
 Summary:        UI lxqt-globalkeys libraries
-Group:          System/Libraries
 Recommends:     %{name}-lang
 
 %description -n liblxqt-globalkeys-ui0
@@ -93,14 +89,11 @@ make %{?_smp_mflags}
 %files
 %license LICENSE
 %doc AUTHORS
-%dir %{_sysconfdir}/xdg/
-%dir %{_sysconfdir}/xdg/autostart/
-%dir %{_sysconfdir}/xdg/lxqt/
 %{_bindir}/lxqt-globalkeysd
 %{_bindir}/lxqt-config-globalkeyshortcuts
 %{_datadir}/applications/lxqt-config-globalkeyshortcuts.desktop
 %{_sysconfdir}/xdg/autostart/lxqt-globalkeyshortcuts.desktop
-%config %{_sysconfdir}/xdg/lxqt/globalkeyshortcuts.conf
+%{_datadir}/lxqt/globalkeyshortcuts.conf
 
 %files devel
 %{_includedir}/%{name}
@@ -119,7 +112,7 @@ make %{?_smp_mflags}
 %files -n liblxqt-globalkeys-ui0
 %{_libdir}/liblxqt-globalkeys-ui.so.*
 
-%files lang -f lxqt-config-globalkeyshortcuts.lang 
+%files lang -f lxqt-config-globalkeyshortcuts.lang
 %dir %{_datadir}/lxqt
 %dir %{_datadir}/lxqt/translations
 %{_datadir}/lxqt/translations/lxqt-config-globalkeyshortcuts

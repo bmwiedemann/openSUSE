@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 11 18:52:54 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update 0.9.3:
+  * PLAIN mechanism is used only when no other mechanisms are supported
+  * Legacy authentication is disabled by default, can be enabled with connection flag XMPP_CONN_FLAG_LEGACY_AUTH
+  * Session is not established if it is optional
+  * Fixed a bug causing a reused connection not to cleanup properly
+  * Improved debug logging in OpenSSL module
+  * Few memory leaks fixed
+
+-------------------------------------------------------------------
 Sat Feb 24 19:53:39 UTC 2018 - mvetter@suse.com
 
 - Update to 0.9.2:

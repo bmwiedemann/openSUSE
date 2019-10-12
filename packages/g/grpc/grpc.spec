@@ -28,7 +28,8 @@ Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
 Group:          Development/Tools/Building
 URL:            https://grpc.io/
-Source:         https://github.com/grpc/grpc/archive/v%rver.tar.gz
+Source0:        https://github.com/grpc/grpc/archive/v%rver.tar.gz
+Source1:        %{name}-rpmlintrc
 Patch1:         gettid.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
@@ -148,16 +149,11 @@ popd
 %python_install
 
 # Install sources
+make clean
+rm -f "b" "a.out"
+find . -type f "(" -name "*.so" -o -name "*.o" -o -name ".git*" ")" -exec rm -rf {} +
 mkdir -p "%buildroot/%src_install_dir"
-tar -xzf %SOURCE0 --strip-components=1 -C "%buildroot/%src_install_dir"
-find "%buildroot/%src_install_dir" -type d -name ".git*" -exec rm -Rf {} +
-# Fix env-script-interpreter rpmlint error
-find "%buildroot/%src_install_dir" -type f \
-	-exec sed -i 's|#!%_bindir/env bash|#!/bin/bash|' "{}" + \
-	-exec sed -i 's|#!%_bindir/env ruby|#!%_bindir/ruby|' "{}" +
-find "%buildroot/%src_install_dir" -type f "(" -name "*.bzl" -o -name "*.py" ")" \
-	-exec sed -i 's|#!%_bindir/env python2.7|#!%_bindir/python2.7|' "{}" + \
-	-exec sed -i 's|#!%_bindir/env python|#!%_bindir/python|' "{}" +
+cp -r * "%buildroot/%src_install_dir"
 
 %fdupes %buildroot/%_prefix
 

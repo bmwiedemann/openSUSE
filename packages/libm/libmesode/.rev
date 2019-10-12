@@ -44,4 +44,18 @@
 - Remove libmesode-0.9.1-openssl-1.1.patch: upstreamed</comment>
     <requestid>636611</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>728728f6964d9f1e972986920291aee0</srcmd5>
+    <version>0.9.3</version>
+    <time>1570912970</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.3:
+  * PLAIN mechanism is used only when no other mechanisms are supported
+  * Legacy authentication is disabled by default, can be enabled with connection flag XMPP_CONN_FLAG_LEGACY_AUTH
+  * Session is not established if it is optional
+  * Fixed a bug causing a reused connection not to cleanup properly
+  * Improved debug logging in OpenSSL module
+  * Few memory leaks fixed</comment>
+    <requestid>737576</requestid>
+  </revision>
 </revisionlist>

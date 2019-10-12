@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           qps
-Version:        1.10.20
+Version:        2.0.0
 Release:        0
 Summary:        Visual Process Manager
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -26,6 +26,8 @@ URL:            https://github.com/lxqt/qps/
 Source0:        https://github.com/lxqt/qps/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  gcc-c++
+BuildRequires:  glibc >= 2.30
+BuildRequires:  glibc-devel >= 2.30
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  lxqt-build-tools-devel >= 0.6.0
 BuildRequires:  pkgconfig

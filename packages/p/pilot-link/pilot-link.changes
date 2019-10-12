@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 12 09:14:08 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add pilot-link-stop-messing-with-cflags.patch: Do not mangle
+  CFLAGS in an attempt to remove -Werror. The configure check for
+  that is too simplistic and our CLAGS contains
+  -Werror=return-type. The simplystic configure 'hack' only drops
+  -Werror, resulting on =return-type staing back on the command
+  line. Since we don't add -Werror by default to CFLAGS we can
+  safely ignore this hack and drop it.
+
+-------------------------------------------------------------------
 Sun Jun 21 01:38:29 UTC 2015 - anixx@opensuse.org
 
 - add missing include to fix build with gcc5

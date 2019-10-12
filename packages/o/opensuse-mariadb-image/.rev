@@ -7,4 +7,12 @@
     <comment>Needs to end on registry.opensuse.org/opensuse</comment>
     <requestid>737346</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3e8467ce819584f87ccb105fb94a55b7</srcmd5>
+    <version>1.0.0</version>
+    <time>1570913054</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix org.opensuse.reference</comment>
+    <requestid>737655</requestid>
+  </revision>
 </revisionlist>

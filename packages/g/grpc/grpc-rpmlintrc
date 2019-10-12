@@ -1,0 +1,9 @@
+# Ignore the following errors in the source package.
+addFilter("grpc-source.* env-script-interpreter")
+addFilter("grpc-source.* files-duplicate")
+addFilter("grpc-source.* hidden-file-or-dir")
+addFilter("grpc-source.* non-executable-script")
+addFilter("grpc-source.* pem-certificate")
+addFilter("grpc-source.* script-without-shebang")
+addFilter("grpc-source.* suse-filelist-forbidden-fhs23")
+addFilter("grpc-source.* version-control-internal-file")

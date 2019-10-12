@@ -251,4 +251,12 @@ There are GPL-2.0 (only) licenses in the packages. Assuming aggregation as Fedor
     <comment>1</comment>
     <requestid>312945</requestid>
   </revision>
+  <revision rev="37" vrev="26">
+    <srcmd5>2a2bacb4619722088351f90f6c0c0662</srcmd5>
+    <version>0.12.5</version>
+    <time>1570913178</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>737662</requestid>
+  </revision>
 </revisionlist>

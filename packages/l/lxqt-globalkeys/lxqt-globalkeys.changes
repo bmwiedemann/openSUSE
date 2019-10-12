@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct 11 10:12:16 UTC 2019 - mvetter@suse.com
+
+- Update to 0.14.2:
+  * Better handling of default shortcuts
+  * gui: Prevent exactly the same shortcut from being repeated at startup
+  * gui: Remember config window size on exiting
+  * gui: Better column widths with single-line texts
+  * daemon: Use XDG hierarchy if no config file given
+  * daemon: move shortcuts config fom /etc/xdg/lxqt to /usr/share/lxqt
+  * daemon: Fixed loading of settings
+  * cmake: Enhances Qt minimum required versions handling
+  * cmake: Matches lxqt-globalkeys/ui required versions
+  * cmake: Updates self version handling
+  * Port towards C++ headers
+  * Port towards C++11 override
+  * Port towards C++11 nullptr
+  * Updated translations
+
+-------------------------------------------------------------------
 Mon Feb 25 10:24:52 UTC 2019 - mvetter@suse.com
 
 - Update to 0.14.1:

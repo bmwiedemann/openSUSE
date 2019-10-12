@@ -68,4 +68,18 @@
   * New functions: xmpp_ctx_set_timeout(), xmpp_sha1_digest()</comment>
     <requestid>579834</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>55fbff95db63be2f54b24dfd8d372a71</srcmd5>
+    <version>0.9.3</version>
+    <time>1570912929</time>
+    <user>dimstar_suse</user>
+    <comment>- Update 0.9.3:
+  * PLAIN mechanism is used only when no other mechanisms are supported
+  * Legacy authentication is disabled by default, can be enabled with connection flag XMPP_CONN_FLAG_LEGACY_AUTH
+  * Session is not established if it is optional
+  * Fixed a bug causing a reused connection not to cleanup properly
+  * Improved debug logging in OpenSSL module
+  * Few memory leaks fixed</comment>
+    <requestid>737573</requestid>
+  </revision>
 </revisionlist>

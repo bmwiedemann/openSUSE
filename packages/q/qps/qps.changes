@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Oct  9 07:45:27 UTC 2019 - mvetter@suse.com
+
+- Update to 2.0.0:
+  * Several code cleanups:
+    - Silenced compiler warnings about QtTableView
+    - Do not detect systray on every refresh (this also fixes memory leak under some GTK DEs)
+    - Removed the method `HeadedTable::sizeHintForColumn`
+    - htable.cpp: remove unused define
+    - qps.h: remove unused define
+    - Cleaned up the classes SearchBox, ControlBar and StatusBar
+    - Do not cast bool to integer on return
+    - Removed no strings casts definitions
+    - Removed unmanaged code
+    - Remove some comments
+    - Corrected sscanf format
+    - Removed unused variable
+    - Simplified groupName
+    - Add missing "const"
+    - Apply LXQtCompilerSettings to project
+  * Fixed memory leaks:
+    - Fixed memory leak in showing process details dialogs
+    - Prevent a file descriptor leak
+    - Fixed several memory leaks
+  * UI and other improvements:
+    - Properly save font info
+    - Sort fields list alphabetically
+    - Update sort indicator on adding columns
+    - Use float for memory column if in megabytes
+    - Support HDPI pixmaps
+    - A better filter box with clear button and place holder
+    - Don't allow an unsorted table
+    - Fixed table size and scrollbars
+    - Made column DND predictable
+    - Fixes for the header, especially for its DND
+    - Fixed painting of cells, branch lines and...
+    - Fixed settings and preferences and added signal prompt
+    - Fixed SWAP column
+    - Use a smaller pixmap cache
+    - Improved translations
+
+-------------------------------------------------------------------
 Fri Mar  1 09:49:32 UTC 2019 - mvetter@suse.com
 
 - Update to 1.10.20:
