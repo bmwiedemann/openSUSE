@@ -223,4 +223,24 @@
     <comment>1</comment>
     <requestid>352791</requestid>
   </revision>
+  <revision rev="32" vrev="267">
+    <srcmd5>937cddb774497e6666cdb97a152092b5</srcmd5>
+    <version>3.8.3</version>
+    <time>1570912470</time>
+    <user>dimstar_suse</user>
+    <comment>- Update patch id3lib-3.8.3-autoconf.patch to fix bool
+  availability
+
+- Add patch from debian to fix utf string lists:
+  * id3lib-3.8.3-fix-utf16-stringlists.patch
+- Add patch to add wrappers for field encoding:
+  * add-c-wrapper-functions.patch
+- Add patch to fix null pointer check:
+  * id3lib-missing-nullpointer-check.patch
+
+- Rename patch id3lib-3.8.3-fix-stack-overrun to
+  id3lib-3.8.3-fix-stack-overrun.patch in order to keep the name
+  sane</comment>
+    <requestid>737508</requestid>
+  </revision>
 </revisionlist>

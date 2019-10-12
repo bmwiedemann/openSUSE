@@ -17,9 +17,9 @@
 #
 
 
-%define qt5_version 5.9.0
+%define qt5_version 5.11.0
 Name:           qbs
-Version:        1.13.1
+Version:        1.14.0
 Release:        0
 Summary:        Modern build tool for software projects
 License:        (LGPL-2.1-with-Qt-Company-Qt-exception-1.1 OR LGPL-3.0-only) AND GPL-3.0-with-Qt-Company-Qt-exception-1.1
@@ -38,14 +38,6 @@ BuildRequires:  libQt5Widgets-devel >= %{qt5_version}
 BuildRequires:  libQt5Xml-devel >= %{qt5_version}
 # Qt Creator used to package qbs too
 Conflicts:      libqt5-creator <= 4.5.0
-%if 0%{?suse_version} < 1330
-# It does not build with the default compiler (GCC 4.8) on Leap 42.x
-%if 0%{?sle_version} <= 120200
-BuildRequires:  gcc6-c++
-%else
-BuildRequires:  gcc7-c++
-%endif
-%endif
 
 %description
 Qbs is a tool that helps simplify the build process for developing projects
@@ -72,14 +64,6 @@ This package is required to develop applications using %{name} as a library
 
 %build
 makeopts=""
-%if 0%{?suse_version} < 1330
-# It does not build with the default compiler (GCC 4.8) on Leap 42.x
-%if 0%{?sle_version} <= 120200
-makeopts="$makeopts CC=gcc-6 CXX=g++-6"
-%else
-makeopts="$makeopts CC=gcc-7 CXX=g++-7"
-%endif
-%endif
 
 # QBS_LIBEXEC_DESTDIR, QBS_RELATIVE_LIBEXEC_PATH need to be
 # set because the defaults are hardcoded to 'libexec'
@@ -119,8 +103,8 @@ ln -f -s qbs.1.gz %{buildroot}/%{_mandir}/man1/qbs-setup-toolchains.1.gz
 %postun -p /sbin/ldconfig
 
 %files
-%doc README
 %license LGPL_EXCEPTION.txt LICENSE.LGPLv21 LICENSE.LGPLv3
+%doc README changelogs/changes-%{version}.md
 %dir %{_datadir}/%{name}/
 %dir %{_libdir}/%{name}/
 %dir %{_libdir}/%{name}/plugins/

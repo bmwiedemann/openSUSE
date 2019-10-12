@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mojolicious-Plugin-Status
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           perl-Mojolicious-Plugin-Status
-Version:        1.0
+Version:        1.01
 Release:        0
 %define cpan_name Mojolicious-Plugin-Status
 Summary:        Mojolicious server status
 License:        Artistic-2.0
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Mojolicious-Plugin-Status/
+Url:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SR/SRI/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -42,18 +42,20 @@ Requires:       perl(Sereal)
 
 %description
 Mojolicious::Plugin::Status is a Mojolicious plugin providing a server
-status ui for Mojo::Server::Daemon and Mojo::Server::Prefork. Very useful
-for debugging.
+status ui for Mojo::Server::Daemon and Mojo::Server::Prefork. Note that
+this module is *EXPERIMENTAL* because the IPC mechanism used can be
+unreliable and slow down the whole application significantly. Therefore it
+should currently only be used for debugging purposes.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install

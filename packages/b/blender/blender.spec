@@ -53,6 +53,7 @@ Source2:        geeko.blend
 Source3:        geeko.README
 Source4:        blender-sample
 Source8:        %{name}.appdata.xml
+Patch0:         0006-add_ppc64el-s390x_support.patch
 #!BuildIgnore:  libGLwM1
 BuildRequires:  OpenColorIO-devel
 BuildRequires:  OpenEXR-devel
@@ -101,6 +102,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  xz
 BuildRequires:  xz-devel
 BuildRequires:  cmake(pugixml)
+BuildRequires:  pkgconfig(IlmBase)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glew)
@@ -210,11 +212,21 @@ rm -rf extern/libopenjpeg
 for i in `grep -rl "/usr/bin/env python3"`;do sed -i '1s@^#!.*@#!/usr/bin/python3@' ${i} ;done
 
 %build
-%limit_build -m 1500
+%limit_build -m 2500
 #The limit_build macro fails to give the same value to -flto= as it gives to -j
 #resulting in link time crashes
 echo $_threads
-%define _lto_cflags -flto=$_threads
+
+export _smp_mflags=%{_smp_mflags}
+if test "$_threads" -gt 3;
+then \
+export _lto_cflags="-flto=$_threads"
+else \
+export _lto_cflags=""
+export _smp_mflags=""
+fi
+%define  _lto_cflags $_lto_cflags
+
 echo %{optflags}
 # sse options only on supported archs
 %ifarch %{ix86} x86_64
@@ -342,124 +354,7 @@ cmake ../ \
       -DWITH_X11_XF86VMODE:BOOL=ON \
       -DWITH_DOC_MANPAGE:BOOL=ON \
       -DCYCLES_CUDA_BINARIES_ARCH="sm_30;sm_35;sm_37;sm_50;sm_52;sm_60;sm_61;sm_70;sm_75"
-
-#Build at all costs
-if ! make %{?_smp_mflags}
-then \
-%define _lto_cflags %{nil}
-cmake ../ \
-%if 0%{?debugbuild} == 1
-      -DCMAKE_BUILD_TYPE:STRING=Debug \
-      -DCMAKE_C_FLAGS_DEBUG:STRING="-fsanitize=address -ggdb" \
-      -DCMAKE_CXX_FLAGS_DEBUG:STRING="-fsanitize=address -ggdb" \
-      -DWITH_MEM_VALGRIND:BOOL=ON \
-      -DWITH_ASSERT_ABORT:BOOL=ON \
-%else
-      -DCMAKE_C_FLAGS:STRING="$CFLAGS %{optflags} -fPIC ${sseflags} -fopenmp" \
-      -DCMAKE_CXX_FLAGS:STRING="$CXXFLAGS %{optflags} -fPIC ${sseflags} -fopenmp" \
-%endif
-      -DCMAKE_VERBOSE_MAKEFILE=ON \
-      -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \
-      -DCMAKE_EXE_LINKER_FLAGS:STRING="-pie" \
-      -DBUILD_SHARED_LIBS:BOOL=OFF \
-      -DWITH_INSTALL_PORTABLE:BOOL=OFF \
-%if 0%{?is_opensuse} == 1
-      -DWITH_MEM_JEMALLOC:BOOL=ON \
-%endif
-%if %{with alembic}
-      -DWITH_ALEMBIC:BOOL=ON \
-%endif
-      -DWITH_BUILDINFO:BOOL=ON \
-      -DWITH_BULLET:BOOL=ON \
-      -DWITH_CODEC_AVI:BOOL=ON \
-      -DWITH_CODEC_FFMPEG:BOOL=ON \
-      -DWITH_CODEC_SNDFILE:BOOL=ON \
-      -DLIBSNDFILE_ROOT_DIR:FILE=%{_prefix} \
-%ifarch ppc ppc64 ppc64le
-      -DWITH_CYCLES:BOOL=OFF \
-%else
-      -DWITH_CYCLES:BOOL=ON \
-%if %{with osl}
-      -DWITH_CYCLES_OSL:BOOL=ON \
-%endif
-%if %{with embree}
-      -DWITH_CYCLES_EMBREE:BOOL=ON \
-%endif
-      -DWITH_LLVM:BOOL=ON \
-      -DLLVM_LIBRARY:FILE=%{_libdir}/libLLVM.so \
-%endif
-      -DWITH_DRACO:BOOL=ON \
-      -DWITH_FFTW3:BOOL=ON \
-      -DWITH_LIBMV:BOOL=ON \
-      -DWITH_LIBMV_SCHUR_SPECIALIZATIONS:BOOL=ON \
-      -DWITH_COMPOSITOR:BOOL=ON \
-      -DWITH_FREESTYLE:BOOL=ON \
-      -DWITH_GHOST_XDND:BOOL=ON \
-      -DWITH_IK_SOLVER:BOOL=ON \
-      -DWITH_IK_ITASC:BOOL=ON \
-      -DWITH_IMAGE_CINEON:BOOL=ON \
-      -DWITH_IMAGE_DDS:BOOL=ON \
-      -DWITH_IMAGE_HDR:BOOL=ON \
-      -DWITH_IMAGE_OPENEXR:BOOL=ON \
-      -DWITH_IMAGE_OPENJPEG:BOOL=ON \
-      -DOPENJPEG_LIBRARY:FILE=%{_libdir}/libopenjp2.so \
-      -DWITH_IMAGE_TIFF:BOOL=ON \
-      -DWITH_INPUT_NDOF:BOOL=ON \
-      -DWITH_INTERNATIONAL:BOOL=ON \
-      -DWITH_JACK:BOOL=ON \
-      -DWITH_JACK_DYNLOAD:BOOL=ON \
-      -DWITH_LZMA:BOOL=ON \
-      -DWITH_LZO:BOOL=ON \
-      -DWITH_SYSTEM_LZO:BOOL=ON \
-      -DWITH_MOD_FLUID:BOOL=ON \
-      -DWITH_MOD_REMESH:BOOL=ON \
-      -DWITH_MOD_SMOKE:BOOL=ON \
-%ifnarch x86_64
-      -DWITH_MOD_OCEANSIM:BOOL=OFF \
-%else
-      -DWITH_MOD_OCEANSIM:BOOL=ON \
-%endif
-      -DWITH_AUDASPACE:BOOL=ON \
-%if %{with system_audaspace}
-      -DWITH_SYSTEM_AUDASPACE:BOOL=ON \
-%endif
-      -DWITH_OPENAL:BOOL=ON \
-%if %{with collada}
-      -DWITH_OPENCOLLADA:BOOL=ON \
-%else
-      -DWITH_OPENCOLLADA:BOOL=OFF \
-%endif
-      -DWITH_OPENCOLORIO:BOOL=ON \
-      -DWITH_OPENIMAGEIO:BOOL=ON \
-      -DWITH_OPENMP:BOOL=ON \
-%if %{with opensubdiv}
-      -DWITH_OPENSUBDIV:BOOL=ON \
-      -DOPENSUBDIV_OSDGPU_LIBRARY:FILE=%{_libdir}/libosdGPU.so \
-%endif
-%if %{with openvdb}
-      -DWITH_OPENVDB:BOOL=ON \
-      -DWITH_OPENVDB_BLOSC:BOOL=ON \
-%endif
-      -DWITH_PYTHON:BOOL=ON \
-      -DWITH_PYTHON_INSTALL:BOOL=OFF \
-      -DPYTHON_VERSION=$psver \
-      -DPYTHON_LIBPATH=%{_libexecdir} \
-      -DPYTHON_LIBRARY=python$pver \
-      -DPYTHON_INCLUDE_DIRS=%{_includedir}/python$pver \
-      -DWITH_PYTHON_INSTALL_NUMPY=OFF \
-%ifnarch x86_64
-      -DWITH_RAYOPTIMIZATION:BOOL=OFF \
-%else
-      -DWITH_RAYOPTIMIZATION:BOOL=ON \
-%endif
-      -DWITH_SDL:BOOL=ON \
-      -DWITH_SYSTEM_GLEW:BOOL=ON \
-      -DWITH_X11_XINPUT:BOOL=ON \
-      -DWITH_X11_XF86VMODE:BOOL=ON \
-      -DWITH_DOC_MANPAGE:BOOL=ON \
-      -DCYCLES_CUDA_BINARIES_ARCH="sm_30;sm_35;sm_37;sm_50;sm_52;sm_60;sm_61;sm_70;sm_75"
-make
-fi
+make $_smp_mflags
 
 %install
 echo "release version = %{_version}"

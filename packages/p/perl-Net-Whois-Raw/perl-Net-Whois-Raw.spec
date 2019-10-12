@@ -17,7 +17,7 @@
 
 
 Name:           perl-Net-Whois-Raw
-Version:        2.99022
+Version:        2.99024
 Release:        0
 %define cpan_name Net-Whois-Raw
 Summary:        Get Whois information of domains and IP addresses
@@ -76,7 +76,7 @@ make test
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes COPYRIGHT maintain README
+%doc Changes COPYRIGHT README
 %license LICENSE
 
 %changelog

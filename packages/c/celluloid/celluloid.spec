@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define _name   io.github.celluloid_player.Celluloid
 Name:           celluloid
 Version:        0.17
@@ -24,7 +25,8 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            https://celluloid-player.github.io/
 Source:         https://github.com/celluloid-player/celluloid/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  gettext-runtime-mini >= 0.19.7
+Patch1:         6fca3f16616f4f46c1647fe4610e57c8c9ae74ff.patch
+BuildRequires:  gettext >= 0.19.7
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool >= 0.40.6
 BuildRequires:  meson >= 0.40.0
@@ -48,6 +50,7 @@ Celluloid is a simple GTK+ frontend for MPV.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 %meson

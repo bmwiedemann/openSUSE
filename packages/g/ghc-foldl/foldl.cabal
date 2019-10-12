@@ -1,6 +1,6 @@
 Name: foldl
 Version: 1.4.5
-x-revision: 3
+x-revision: 4
 Cabal-Version: >=1.8.0.2
 Build-Type: Simple
 License: BSD3
@@ -37,7 +37,7 @@ Library
         hashable                    < 1.4 ,
         contravariant               < 1.6 ,
         semigroups   >= 0.17     && < 1.20,
-        profunctors                 < 5.5 ,
+        profunctors                 < 5.6 ,
         semigroupoids >= 1.0     && < 5.4 ,
         comonad      >= 4.0      && < 6   ,
         vector-builder              < 0.4

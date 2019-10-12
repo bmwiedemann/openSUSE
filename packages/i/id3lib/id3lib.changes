@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Oct 11 13:03:11 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update patch id3lib-3.8.3-autoconf.patch to fix bool
+  availability
+
+-------------------------------------------------------------------
+Fri Oct 11 08:14:48 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch from debian to fix utf string lists:
+  * id3lib-3.8.3-fix-utf16-stringlists.patch
+- Add patch to add wrappers for field encoding:
+  * add-c-wrapper-functions.patch
+- Add patch to fix null pointer check:
+  * id3lib-missing-nullpointer-check.patch
+
+-------------------------------------------------------------------
+Fri Oct 11 08:09:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Rename patch id3lib-3.8.3-fix-stack-overrun to
+  id3lib-3.8.3-fix-stack-overrun.patch in order to keep the name
+  sane
+
+-------------------------------------------------------------------
 Sun Jan 10 12:34:11 UTC 2016 - mpluskal@suse.com
 
 - Use url for source
@@ -18,7 +41,6 @@ Sat Jan 18 05:59:01 UTC 2014 - crrodriguez@opensuse.org
  but we are paying for it anyway with bloated 
  dynamic export tables.
  If something does really require it, we want it to break anyway.
- 
 
 -------------------------------------------------------------------
 Sat Apr  6 09:45:09 UTC 2013 - davejplater@gmail.com

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 10 08:57:05 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 3.200
+   see /usr/share/doc/packages/perl-Pod-Markdown/Changes
+
+  3.200     2019-10-09T16:36:15Z
+  
+    - Allow local_module_url_prefix to be '' [rt-129865].
+    - URI Escape the module name in external pod links
+      (introduces dependency on URI::Escape).
+
+-------------------------------------------------------------------
 Sat Aug 25 05:52:01 UTC 2018 - coolo@suse.com
 
 - updated to 3.101

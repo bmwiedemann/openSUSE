@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Pod-Markdown
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-Pod-Markdown
-Version:        3.101
+Version:        3.200
 Release:        0
 %define cpan_name Pod-Markdown
 Summary:        Convert POD to Markdown
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Pod-Markdown/
+Url:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RW/RWSTAUNER/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -34,9 +34,11 @@ BuildRequires:  perl(Pod::Simple) >= 3.27
 BuildRequires:  perl(Pod::Simple::Methody)
 BuildRequires:  perl(Test::Differences)
 BuildRequires:  perl(Test::More) >= 0.88
+BuildRequires:  perl(URI::Escape)
 BuildRequires:  perl(parent)
 Requires:       perl(Pod::Simple) >= 3.27
 Requires:       perl(Pod::Simple::Methody)
+Requires:       perl(URI::Escape)
 Requires:       perl(parent)
 Recommends:     perl(HTML::Entities)
 %{perl_requires}
@@ -60,11 +62,11 @@ change which regions are accepted use the Pod::Simple API:
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -73,7 +75,7 @@ change which regions are accepted use the Pod::Simple API:
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes corpus README
+%doc Changes README
 %license LICENSE
 
 %changelog

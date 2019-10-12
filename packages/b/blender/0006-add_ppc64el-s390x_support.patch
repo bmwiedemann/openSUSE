@@ -1,0 +1,52 @@
+From: Sergey Sharybin <sergey@blender.org>
+Date: Mon, 5 Aug 2019 20:30:45 +0200
+Subject: add_ppc64el-s390x_support
+
+---
+ intern/numaapi/source/build_config.h | 26 ++++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
+
+diff --git a/intern/numaapi/source/build_config.h b/intern/numaapi/source/build_config.h
+index 444adcc..488238c 100644
+--- a/intern/numaapi/source/build_config.h
++++ b/intern/numaapi/source/build_config.h
+@@ -307,6 +307,26 @@
+ #    define ARCH_CPU_32_BITS 1
+ #    define ARCH_CPU_BIG_ENDIAN 1
+ #  endif
++#elif (defined(__PPC64__) || defined(__PPC__)) && defined(__BIG_ENDIAN__)
++#  define ARCH_CPU_PPC64_FAMILY 1
++#  define ARCH_CPU_PPC64 1
++#  define ARCH_CPU_64_BITS 1
++#  define ARCH_CPU_BIG_ENDIAN 1
++#elif defined(__PPC64__)
++#  define ARCH_CPU_PPC64_FAMILY 1
++#  define ARCH_CPU_PPC64 1
++#  define ARCH_CPU_64_BITS 1
++#  define ARCH_CPU_LITTLE_ENDIAN 1
++#elif defined(__s390x__)
++#  define ARCH_CPU_S390_FAMILY 1
++#  define ARCH_CPU_S390X 1
++#  define ARCH_CPU_64_BITS 1
++#  define ARCH_CPU_BIG_ENDIAN 1
++#elif defined(__s390__)
++#  define ARCH_CPU_S390_FAMILY 1
++#  define ARCH_CPU_S390 1
++#  define ARCH_CPU_31_BITS 1
++#  define ARCH_CPU_BIG_ENDIAN 1
+ #else
+ #  error Please add support for your architecture in build_config.h
+ #endif
+@@ -337,6 +357,12 @@
+ #if !defined(ARCH_CPU_MIPS64_FAMILY)
+ #  define ARCH_CPU_MIPS64_FAMILY 0
+ #endif
++#if !defined(ARCH_CPU_PPC64_FAMILY)
++#  define ARCH_CPU_PPC64_FAMILY 0
++#endif
++#if !defined(ARCH_CPU_S390_FAMILY)
++#  define ARCH_CPU_S390_FAMILY 0
++#endif
+ 
+ ////////////////////////////////////////////////////////////////////////////////
+ // Sizes of platform-dependent types.

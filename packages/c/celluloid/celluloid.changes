@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 11 13:39:32 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Add 6fca3f16616f4f46c1647fe4610e57c8c9ae74ff.patch from upstream
+  to fix a crash with the new libmpv.
+- Depend on gettext instead of gettext-runtime-mini to fix TW build
+
+-------------------------------------------------------------------
 Thu Aug  8 16:16:30 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.17

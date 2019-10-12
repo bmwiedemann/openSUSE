@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct  2 09:19:39 UTC 2019 - Dave Plater <davejplater@gmail.com>
+
+- Fix ppc build with 0006-add_ppc64el-s390x_support.patch.
+
+-------------------------------------------------------------------
+Sun Sep 29 09:06:55 UTC 2019 - Dave Plater <davejplater@gmail.com>
+
+- If $_threads are less than 4 undefine _lto_cflags as the value of
+  3 or less fails at link time also build with one thread.
+
+-------------------------------------------------------------------
 Wed Sep 25 09:20:52 UTC 2019 - Dave Plater <davejplater@gmail.com>
 
 - Ensure that _lto_cflags are defined as nil if multi threaded make

@@ -1,7 +1,7 @@
 #
 # spec file for package id3lib
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,8 @@ Name:           id3lib
 Version:        3.8.3
 Release:        0
 Summary:        A Library for Manipulating ID3v1 and ID3v2 tags
-License:        LGPL-2.1+
-Group:          System/Libraries
-Url:            http://id3lib.sourceforge.net/
+License:        LGPL-2.1-or-later
+URL:            http://id3lib.sourceforge.net/
 Source0:        http://sourceforge.net/projects/id3lib/files/id3lib/%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Patch1:         id3lib-%{version}-autoconf.patch
@@ -38,7 +37,10 @@ Patch9:         id3lib-%{version}-missing_c_includes.patch
 Patch10:        id3lib-%{version}-fix_m4_quoting.patch
 Patch11:        id3lib-%{version}-unsigned_argc.patch
 Patch12:        id3lib-%{version}-iomanip_h.patch
-Patch13:        id3lib-%{version}-fix-stack-overrun
+Patch13:        id3lib-%{version}-fix-stack-overrun.patch
+Patch14:        id3lib-3.8.3-fix-utf16-stringlists.patch
+Patch15:        add-c-wrapper-functions.patch
+Patch16:        id3lib-missing-nullpointer-check.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  dos2unix
@@ -48,7 +50,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  libstdc++-devel
 BuildRequires:  libtool
 BuildRequires:  zlib-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This package provides a software library for manipulating ID3v1 and
@@ -61,7 +62,6 @@ facilities.
 
 %package      devel
 Summary:        Documentation and Headers for id3lib
-Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       libstdc++-devel
 
@@ -72,7 +72,6 @@ the software library for ID3v1 and ID3v2 tag manipulation.
 
 %package      examples
 Summary:        Example Applications for the id3lib Library
-Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 
 %description	examples
@@ -94,6 +93,9 @@ id3lib, a software library for ID3v1 and ID3v2 tag manipulation.
 %patch11
 %patch12
 %patch13 -p1
+%patch14 -p1
+%patch15 -p1
+%patch16 -p1
 for i in doc/id3v2.3.0{.txt,.html}; do
   dos2unix $i
 done
@@ -107,10 +109,10 @@ autoreconf -fiv
   --with-pic \
   --enable-debug=no
 make %{?_smp_mflags}
-make docs
+make -j1 docs
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 make -C examples clean
 rm -rf examples/.deps
 chmod 644 examples/*
@@ -121,16 +123,14 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes -s doc
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-, root, root)
-%doc AUTHORS COPYING ChangeLog HISTORY NEWS README THANKS TODO
+%license COPYING
+%doc AUTHORS ChangeLog HISTORY NEWS README THANKS TODO
 %{_libdir}/*.so.*
 
 %files devel
-%defattr(-, root, root)
 %{_includedir}/id3*.h
 %{_includedir}/id3
 %{_libdir}/*.so
@@ -138,7 +138,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %doc doc/api
 
 %files examples
-%defattr(-, root, root)
 %doc examples
 %{_bindir}/id3*
 

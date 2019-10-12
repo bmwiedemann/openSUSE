@@ -1,0 +1,27 @@
+From 6fca3f16616f4f46c1647fe4610e57c8c9ae74ff Mon Sep 17 00:00:00 2001
+From: gnome-mpv <gnome-mpv@nowhere>
+Date: Fri, 20 Sep 2019 21:39:46 +0700
+Subject: [PATCH] model: Work around mpv crash when running keyup command
+ without arguments
+
+Fixes #468.
+Fixes #471.
+---
+ src/celluloid-model.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/celluloid-model.c b/src/celluloid-model.c
+index 4e0e240..52e6a7f 100644
+--- a/src/celluloid-model.c
++++ b/src/celluloid-model.c
+@@ -803,7 +803,9 @@ celluloid_model_key_press(CelluloidModel *model, const gchar* keystr)
+ void
+ celluloid_model_reset_keys(CelluloidModel *model)
+ {
+-	const gchar *cmd[] = {"keyup", NULL};
++	// As of Sep 20, 2019, mpv will crash if the command doesn't have any
++	// arguments. The empty string is there to work around the issue.
++	const gchar *cmd[] = {"keyup", "", NULL};
+ 
+ 	g_debug("Sent global key up to mpv");
+ 	celluloid_mpv_command_async(CELLULOID_MPV(model), cmd);

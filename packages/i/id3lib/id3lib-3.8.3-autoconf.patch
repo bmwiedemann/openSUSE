@@ -1,3 +1,5 @@
+Index: Makefile.am
+===================================================================
 --- Makefile.am.orig
 +++ Makefile.am
 @@ -11,6 +11,7 @@
@@ -20,6 +22,8 @@
  
  SUBDIRS =  . m4 $(zlib_subdir) doc include id3com src examples
  DIST_SUBDIRS = . m4 zlib doc include id3com src examples prj libprj
+Index: configure.in
+===================================================================
 --- configure.in.orig
 +++ configure.in
 @@ -11,14 +11,82 @@
@@ -231,10 +235,16 @@
  
  CFLAGS="$CFLAGS -Wall"
  
+Index: m4/id3_cxx.m4
+===================================================================
 --- m4/id3_cxx.m4.orig
 +++ m4/id3_cxx.m4
-@@ -84,18 +84,18 @@ AC_DEFUN(ID3_CXX_PORTABILITY,[
-   AC_TRY_RUN([main() { bool b1=true; bool b2=false; }],
+@@ -81,21 +81,21 @@ AC_DEFUN(ID3_CXX_PORTABILITY,[
+ 
+   dnl Check whether we have bool
+   AC_MSG_CHECKING(whether C++ has bool)
+-  AC_TRY_RUN([main() { bool b1=true; bool b2=false; }],
++  AC_TRY_RUN([int main() { bool b1=true; bool b2=false; return 0; }],
               [ AC_MSG_RESULT(yes) ],
               [ AC_MSG_RESULT(no)
 -               AC_DEFINE(CXX_HAS_NO_BOOL) ],
@@ -255,6 +265,8 @@
  
    dnl Done with the portability checks
    AC_LANG_RESTORE
+Index: m4/id3_debug.m4
+===================================================================
 --- m4/id3_debug.m4.orig
 +++ m4/id3_debug.m4
 @@ -3,11 +3,11 @@ AC_DEFUN([ID3_DEBUG],[
@@ -272,6 +284,8 @@
      fi
    fi
  ])
+Index: m4/id3_unicode.m4
+===================================================================
 --- m4/id3_unicode.m4.orig
 +++ m4/id3_unicode.m4
 @@ -9,10 +9,10 @@ AC_DEFUN(ID3_CHECK_ICONV_FORMAT,[
