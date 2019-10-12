@@ -1,4 +1,282 @@
 -------------------------------------------------------------------
+Tue Oct  8 08:38:40 CEST 2019 - jslaby@suse.cz
+
+- Linux 5.3.5 (bnc#1151927).
+- vfs: set fs_context::user_ns for reconfigure (bnc#1151927).
+- 9p/cache.c: Fix memory leak in v9fs_cache_session_get_cookie
+  (bnc#1151927).
+- KVM: hyperv: Fix Direct Synthetic timers assert an interrupt
+  w/o lapic_in_kernel (bnc#1151927).
+- kexec: bail out upon SIGKILL when allocating memory
+  (bnc#1151927).
+- NFC: fix attrs checks in netlink interface (bnc#1151927).
+- dm zoned: fix invalid memory access (bnc#1151927).
+- dm raid: fix updating of max_discard_sectors limit
+  (bnc#1151927).
+- smack: use GFP_NOFS while holding inode_smack::smk_lock
+  (bnc#1151927).
+- Smack: Don't ignore other bprm->unsafe flags if
+  LSM_UNSAFE_PTRACE is set (bnc#1151927).
+- net: sched: taprio: Avoid division by zero on invalid link speed
+  (bnc#1151927).
+- net: sched: cbs: Avoid division by zero when calculating the
+  port rate (bnc#1151927).
+- net: socionext: netsec: always grab descriptor lock
+  (bnc#1151927).
+- net: dsa: sja1105: Prevent leaking memory (bnc#1151927).
+- net: dsa: sja1105: Ensure PTP time for rxtstamp reconstruction
+  is not in the past (bnc#1151927).
+- ptp_qoriq: Initialize the registers' spinlock before calling
+  ptp_qoriq_settime (bnc#1151927).
+- net: dsa: sja1105: Fix sleeping while atomic in
+  .port_hwtstamp_set (bnc#1151927).
+- xen-netfront: do not use ~0U as error return value for
+  xennet_fill_frags() (bnc#1151927).
+- net: dsa: sja1105: Initialize the meta_lock (bnc#1151927).
+- net/rds: Fix error handling in rds_ib_add_one() (bnc#1151927).
+- udp: only do GSO if # of segs > 1 (bnc#1151927).
+- tcp: adjust rto_base in retransmits_timed_out() (bnc#1151927).
+- net: dsa: rtl8366: Check VLAN ID and not ports (bnc#1151927).
+- vsock: Fix a lockdep warning in __vsock_release() (bnc#1151927).
+- udp: fix gso_segs calculations (bnc#1151927).
+- tipc: fix unlimited bundling of small messages (bnc#1151927).
+- sch_dsmark: fix potential NULL deref in dsmark_init()
+  (bnc#1151927).
+- sch_cbq: validate TCA_CBQ_WRROPT to avoid crash (bnc#1151927).
+- rxrpc: Fix rxrpc_recvmsg tracepoint (bnc#1151927).
+- qmi_wwan: add support for Cinterion CLS8 devices (bnc#1151927).
+- nfc: fix memory leak in llcp_sock_bind() (bnc#1151927).
+- net: Unpublish sk from sk_reuseport_cb before call_rcu
+  (bnc#1151927).
+- net: sched: taprio: Fix potential integer overflow in
+  taprio_set_picos_per_byte (bnc#1151927).
+- net: qlogic: Fix memory leak in ql_alloc_large_buffers
+  (bnc#1151927).
+- net: ipv4: avoid mixed n_redirects and rate_tokens usage
+  (bnc#1151927).
+- ipv6: Handle missing host route in __ipv6_ifa_notify
+  (bnc#1151927).
+- ipv6: drop incoming packets having a v4mapped source address
+  (bnc#1151927).
+- hso: fix NULL-deref on tty open (bnc#1151927).
+- erspan: remove the incorrect mtu limit for erspan (bnc#1151927).
+- cxgb4:Fix out-of-bounds MSI-X info array access (bnc#1151927).
+- arm: use STACK_TOP when computing mmap base address
+  (bnc#1151927).
+- arm: properly account for stack randomization and stack guard
+  gap (bnc#1151927).
+- mips: properly account for stack randomization and stack guard
+  gap (bnc#1151927).
+- arm64: consider stack randomization for mmap base only when
+  necessary (bnc#1151927).
+- kmemleak: increase DEBUG_KMEMLEAK_EARLY_LOG_SIZE default to 16K
+  (bnc#1151927).
+- ocfs2: wait for recovering done after direct unlock request
+  (bnc#1151927).
+- kbuild: clean compressed initramfs image (bnc#1151927).
+- mm: add dummy can_do_mlock() helper (bnc#1151927).
+- crypto: hisilicon - Fix double free in sec_free_hw_sgl()
+  (bnc#1151927).
+- tools/power/x86/intel-speed-select: Fix high priority core
+  mask over count (bnc#1151927).
+- hypfs: Fix error number left in struct pointer member
+  (bnc#1151927).
+- pktcdvd: remove warning on attempting to register
+  non-passthrough dev (bnc#1151927).
+- fat: work around race with userspace's read via blockdev while
+  mounting (bnc#1151927).
+- block, bfq: push up injection only after setting service time
+  (bnc#1151927).
+- i2c: tegra: Move suspend handling to NOIRQ phase (bnc#1151927).
+- ARM: 8903/1: ensure that usable memory in bank 0 starts from
+  a PMD-aligned address (bnc#1151927).
+- ARM: 8905/1: Emit __gnu_mcount_nc when using Clang 10.0.0 or
+  newer (bnc#1151927).
+- PCI: Use static const struct, not const static struct
+  (bnc#1151927).
+- security: smack: Fix possible null-pointer dereferences in
+  smack_socket_sock_rcv_skb() (bnc#1151927).
+- PCI: exynos: Propagate errors for optional PHYs (bnc#1151927).
+- PCI: imx6: Propagate errors for optional regulators
+  (bnc#1151927).
+- PCI: histb: Propagate errors for optional regulators
+  (bnc#1151927).
+- PCI: rockchip: Propagate errors for optional regulators
+  (bnc#1151927).
+- HID: apple: Fix stuck function keys when using FN (bnc#1151927).
+- PCI: Add pci_info_ratelimited() to ratelimit PCI separately
+  (bnc#1151927).
+- selinux: fix residual uses of current_security() for the
+  SELinux blob (bnc#1151927).
+- power: supply: register HWMON devices with valid names
+  (bnc#1151927).
+- rtc: pcf85363/pcf85263: fix regmap error in set_time
+  (bnc#1151927).
+- rtc: snvs: fix possible race condition (bnc#1151927).
+- ARM: 8875/1: Kconfig: default to AEABI w/ Clang (bnc#1151927).
+- PCI: mobiveil: Fix the CPU base address setup in inbound window
+  (bnc#1151927).
+- soundwire: intel: fix channel number reported by hardware
+  (bnc#1151927).
+- ARM: 8898/1: mm: Don't treat faults reported from cache
+  maintenance as writes (bnc#1151927).
+- mips/atomic: Fix smp_mb__{before,after}_atomic() (bnc#1151927).
+- livepatch: Nullify obj->mod in klp_module_coming()'s error path
+  (bnc#1151927).
+- PCI: layerscape: Add the bar_fixed_64bit property to the
+  endpoint driver (bnc#1151927).
+- PCI: pci-hyperv: Fix build errors on non-SYSFS config
+  (bnc#1151927).
+- mips/atomic: Fix loongson_llsc_mb() wreckage (bnc#1151927).
+- rtc: bd70528: fix driver dependencies (bnc#1151927).
+- HID: wacom: Fix several minor compiler warnings (bnc#1151927).
+- PCI: tegra: Fix OF node reference leak (bnc#1151927).
+- mfd: intel-lpss: Remove D3cold delay (bnc#1151927).
+- i2c-cht-wc: Fix lockdep warning (bnc#1151927).
+- MIPS: tlbex: Explicitly cast _PAGE_NO_EXEC to a boolean
+  (bnc#1151927).
+- MIPS: Don't use bc_false uninitialized in __mm_isBranchInstr
+  (bnc#1151927).
+- MIPS: Ingenic: Disable broken BTB lookup optimization
+  (bnc#1151927).
+- ext4: fix potential use after free after remounting with
+  noblock_validity (bnc#1151927).
+- f2fs: fix to drop meta/node pages during umount (bnc#1151927).
+- dma-buf/sw_sync: Synchronize signal vs syncpt free
+  (bnc#1151927).
+- scsi: core: Reduce memory required for SCSI logging
+  (bnc#1151927).
+- clk: sprd: add missing kfree (bnc#1151927).
+- mbox: qcom: add APCS child device for QCS404 (bnc#1151927).
+- powerpc: dump kernel log before carrying out fadump or kdump
+  (bnc#1151927).
+- clk: Make clk_bulk_get_all() return a valid "id" (bnc#1151927).
+- clk: imx: clk-pll14xx: unbypass PLL by default (bnc#1151927).
+- clk: imx: pll14xx: avoid glitch when set rate (bnc#1151927).
+- clk: at91: select parent if main oscillator or bypass is enabled
+  (bnc#1151927).
+- arm64: fix unreachable code issue with cmpxchg (bnc#1151927).
+- ARM: dts: dir685: Drop spi-cpol from the display (bnc#1151927).
+- mailbox: mediatek: cmdq: clear the event in cmdq initial flow
+  (bnc#1151927).
+- pinctrl: meson-gxbb: Fix wrong pinning definition for uart_c
+  (bnc#1151927).
+- powerpc/pseries: correctly track irq state in default idle
+  (bnc#1151927).
+- clk: qcom: gcc-sdm845: Use floor ops for sdcc clks
+  (bnc#1151927).
+- powerpc/eeh: Clean up EEH PEs after recovery finishes
+  (bnc#1151927).
+- pstore: fs superblock limits (bnc#1151927).
+- powerpc/64s/exception: machine check use correct cfar for late
+  handler (bnc#1151927).
+- drm/amdgpu/si: fix ASIC tests (bnc#1151927).
+- kbuild: Do not enable -Wimplicit-fallthrough for clang for now
+  (bnc#1151927).
+- selftests/powerpc: Retry on host facility unavailable
+  (bnc#1151927).
+- drm/amd/display: fix trigger not generated for freesync
+  (bnc#1151927).
+- drm/amd/display: fix MPO HUBP underflow with Scatter Gather
+  (bnc#1151927).
+- drm/amd/powerpaly: fix navi series custom peak level value error
+  (bnc#1151927).
+- drm/amd/display: support spdif (bnc#1151927).
+- clk: renesas: cpg-mssr: Set GENPD_FLAG_ALWAYS_ON for clock
+  domain (bnc#1151927).
+- clk: renesas: mstp: Set GENPD_FLAG_ALWAYS_ON for clock domain
+  (bnc#1151927).
+- pinctrl: amd: disable spurious-firing GPIO IRQs (bnc#1151927).
+- drm/nouveau/volt: Fix for some cards having 0 maximum voltage
+  (bnc#1151927).
+- drm/nouveau/kms/tu102-: disable input lut when input is already
+  FP16 (bnc#1151927).
+- drm/amdgpu/sdma5: fix number of sdma5 trap irq types for navi1x
+  (bnc#1151927).
+- vfio_pci: Restore original state on release (bnc#1151927).
+- powerpc/eeh: Clear stale EEH_DEV_NO_HANDLER flag (bnc#1151927).
+- pinctrl: tegra: Fix write barrier placement in pmx_writel
+  (bnc#1151927).
+- powerpc/perf: fix imc allocation failure handling (bnc#1151927).
+- powerpc/pseries/mobility: use cond_resched when updating device
+  tree (bnc#1151927).
+- powerpc/64s/radix: Fix memory hotplug section page table
+  creation (bnc#1151927).
+- powerpc/futex: Fix warning: 'oldval' may be used uninitialized
+  in this function (bnc#1151927).
+- powerpc/ptdump: fix walk_pagetables() address mismatch
+  (bnc#1151927).
+- powerpc/rtas: use device model APIs and serialization during
+  LPM (bnc#1151927).
+- powerpc/xmon: Check for HV mode when dumping XIVE info from OPAL
+  (bnc#1151927).
+- clk: sunxi: Don't call clk_hw_get_name() on a hw that isn't
+  registered (bnc#1151927).
+- clk: zx296718: Don't reference clk_init_data after registration
+  (bnc#1151927).
+- clk: sprd: Don't reference clk_init_data after registration
+  (bnc#1151927).
+- clk: meson: axg-audio: Don't reference clk_init_data after
+  registration (bnc#1151927).
+- clk: sirf: Don't reference clk_init_data after registration
+  (bnc#1151927).
+- clk: actions: Don't reference clk_init_data after registration
+  (bnc#1151927).
+- powerpc/powernv/ioda2: Allocate TCE table levels on demand
+  for default DMA window (bnc#1151927).
+- drm/amd/display: Register VUPDATE_NO_LOCK interrupts for DCN2
+  (bnc#1151927).
+- drm/amd/display: reprogram VM config when system resume
+  (bnc#1151927).
+- drm/amd/display: Fix frames_to_insert math (bnc#1151927).
+- drm/amd/display: fix issue where 252-255 values are clipped
+  (bnc#1151927).
+- clk: sunxi-ng: v3s: add missing clock slices for MMC2 module
+  clocks (bnc#1151927).
+- clk: ingenic/jz4740: Fix "pll half" divider not read/written
+  properly (bnc#1151927).
+- clk: qoriq: Fix -Wunused-const-variable (bnc#1151927).
+- ipmi_si: Only schedule continuously in the thread in maintenance
+  mode (bnc#1151927).
+- pinctrl: stmfx: update pinconf settings (bnc#1151927).
+- PCI: rpaphp: Avoid a sometimes-uninitialized warning
+  (bnc#1151927).
+- clk: imx8mq: Mark AHB clock as critical (bnc#1151927).
+- gpu: drm: radeon: Fix a possible null-pointer dereference in
+  radeon_connector_set_property() (bnc#1151927).
+- drm/radeon: Fix EEH during kexec (bnc#1151927).
+- drm/amd/display: Use proper enum conversion functions
+  (bnc#1151927).
+- drm/amdgpu: Fix hard hang for S/G display BOs (bnc#1151927).
+- drm/rockchip: Check for fast link training before enabling psr
+  (bnc#1151927).
+- drm/panel: check failure cases in the probe func (bnc#1151927).
+- drm/bridge: sii902x: fix missing reference to mclk clock
+  (bnc#1151927).
+- drm/stm: attach gem fence to atomic state (bnc#1151927).
+- drm/tinydrm/Kconfig: drivers: Select BACKLIGHT_CLASS_DEVICE
+  (bnc#1151927).
+- video: ssd1307fb: Start page range at page_offset (bnc#1151927).
+- drm/amd/display: Copy GSL groups when committing a new context
+  (bnc#1151927).
+- drm/amd/display: Clear FEC_READY shadow register if DPCD write
+  fails (bnc#1151927).
+- drm/amd/display: fix not calling ppsmu to trigger PME
+  (bnc#1151927).
+- drm/amd/display: Power-gate all DSCs at driver init time
+  (bnc#1151927).
+- drm/amd/display: add monitor patch to add T7 delay
+  (bnc#1151927).
+- drm/panel: simple: fix AUO g185han01 horizontal blanking
+  (bnc#1151927).
+- drm/vkms: Avoid assigning 0 for possible_crtc (bnc#1151927).
+- drm/bridge: tc358767: Increase AUX transfer length limit
+  (bnc#1151927).
+- drm/mcde: Fix uninitialized variable (bnc#1151927).
+- drm/vkms: Fix crc worker races (bnc#1151927).
+- commit 1838763
+
+-------------------------------------------------------------------
 Sun Oct  6 08:32:50 CEST 2019 - jslaby@suse.cz
 
 - Linux 5.3.4 (bnc#1151927).
@@ -575,6 +853,14 @@ Sun Oct  6 08:31:38 CEST 2019 - jslaby@suse.cz
 - Revert "Linux 5.3.2" (bnc#1151927).
 - Linux 5.3.2 (bnc#1151927).
 - commit 98a6219
+
+-------------------------------------------------------------------
+Fri Oct  4 09:27:16 CEST 2019 - vbabka@suse.cz
+
+- config: enable DEBUG_PAGEALLOC (jsc#PM-1168, bsc#1144653)
+  Build with page allocation debugging (boot with debug_pagealloc=on to enable).
+  [js] run oldconfig
+- commit f6f1081
 
 -------------------------------------------------------------------
 Wed Oct  2 07:55:00 CEST 2019 - jslaby@suse.cz
@@ -2218,6 +2504,14 @@ Thu Aug 15 21:55:55 CEST 2019 - msuchanek@suse.de
   This reverts commit 8b84d1d46ff90146bb6ba5b760a54ddd87a1a680.
   Works for me 5.3-rc4-65-g329120423947
 - commit d8f9e6c
+
+-------------------------------------------------------------------
+Tue Aug 13 10:37:32 CEST 2019 - vbabka@suse.cz
+
+- x86/kconfig: Remove X86_DIRECT_GBPAGES dependency on
+  !DEBUG_PAGEALLOC (PM-1168, bsc#1144653, VM Debug Functionality).
+  [js] update upstream status
+- commit 1183125
 
 -------------------------------------------------------------------
 Mon Aug 12 23:29:16 CEST 2019 - msuchanek@suse.de

@@ -17,7 +17,7 @@
 
 
 %define srcversion 5.3
-%define patchversion 5.3.4
+%define patchversion 5.3.5
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -31,9 +31,9 @@ Name:           kernel-docs
 Summary:        Kernel Documentation
 License:        GPL-2.0
 Group:          Documentation/Man
-Version:        5.3.4
+Version:        5.3.5
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g6a02213
+Release:        <RELEASE>.g1838763
 %else
 Release:        0
 %endif
@@ -63,7 +63,7 @@ BuildRequires:  texlive-zapfding
 %endif
 Url:            http://www.kernel.org/
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-6a02213398e3fe738b1caa2e070a388f8f87f682
+Provides:       %name-srchash-18387638721ab285e1bfbb482dcc826ffc39f984
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz

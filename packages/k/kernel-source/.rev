@@ -4836,4 +4836,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.3.4</comment>
     <requestid>735501</requestid>
   </revision>
+  <revision rev="509" vrev="1">
+    <srcmd5>a869f3ed893a84ca1cd7bcd25fd2166a</srcmd5>
+    <version>5.3.5</version>
+    <time>1570911667</time>
+    <user>dimstar_suse</user>
+    <comment>5.3.5 &amp; allow DEBUG_PAGEALLOC</comment>
+    <requestid>736382</requestid>
+  </revision>
 </revisionlist>

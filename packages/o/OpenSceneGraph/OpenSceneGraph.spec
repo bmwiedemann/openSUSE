@@ -85,8 +85,8 @@ development of graphics applications.
 
 %package -n libOpenSceneGraph%{_osg_so_nr}
 Summary:        Shared libraries for OpenSceneGraph
-Group:          System/Libraries
 # try to cover up past mistakes
+Group:          System/Libraries
 Obsoletes:      libOpenSceneGraph100
 
 %description -n libOpenSceneGraph%{_osg_so_nr}
