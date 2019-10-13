@@ -4639,6 +4639,7 @@
     <package name="ruby2.6-rubygem-railties-5_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-railties-5_1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-railties-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.6-rubygem-rainbow" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-raindrops" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-rake-11_3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-rake-12_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4669,11 +4670,13 @@
     <package name="ruby2.6-rubygem-rspec-mocks-3_5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-rspec-support" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-rspec-support-3_5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.6-rubygem-rubocop" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-ruby-augeas" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ruby2.6-rubygem-ruby-dbus" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ruby2.6-rubygem-ruby-filemagic" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-ruby-libvirt" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-ruby-openid" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.6-rubygem-ruby-progressbar" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-ruby-shadow" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-ruby_dep" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-ruby_dep-1_3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5163,9 +5166,6 @@
     <package name="virt-install" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="virt-manager-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="virt-what" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="virtualbox-guest-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="virtualbox-guest-x11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="virtualbox-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="vlan" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="vlc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="vlc-codec-gstreamer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -5605,6 +5605,9 @@
   <packagelist relationship="recommends">
     <package name="elinks" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <!-- patterns-media-rest_dvd uninstallable: nothing provides pattern() = apparmor_opt needed by patterns-media-rest_dvd-20170319-23.1.i586-->
+    <package name="virtualbox-guest-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="virtualbox-guest-x11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="virtualbox-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
   </packagelist>
 </group>
 <group name="dvd.x86_64">
@@ -5620,11 +5623,8 @@
     <package name="apulse-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="checkpolicy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="chrome-gnome-shell" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="crash-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="dbus-1-glib-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="dpdk-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="drbd" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="drbd-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="drbd-utils" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="efibootmgr" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
     <package name="fipscheck" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_kernel -->
@@ -5854,6 +5854,8 @@
     <package name="uget-integrator" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
     <package name="unbound-anchor" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="virt-sandbox" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <!-- virtualbox-guest-tools uninstallable: nothing provides kernel-uname-r = 5.3.4-1-default needed by virtualbox-kmp-default-6.0.12_k5.3.4_1-2.1.x86_64-->
+    <!-- virtualbox-guest-x11 uninstallable: nothing provides kernel-uname-r = 5.3.4-1-default needed by virtualbox-kmp-default-6.0.12_k5.3.4_1-2.1.x86_64-->
     <package name="xen" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="xen-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="yast2-drbd" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
