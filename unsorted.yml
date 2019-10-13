@@ -1821,6 +1821,7 @@ unsorted:
   - crash-doc 
   - crash-eppic 
   - crash-gcore 
+  - crash-kmp-default: [x86_64] 
   - crawl 
   - crawl-data 
   - crawl-sdl 
@@ -2293,6 +2294,7 @@ unsorted:
   - dpdk-devel: [x86_64] 
   - dpdk-doc: [x86_64] 
   - dpdk-examples: [x86_64] 
+  - dpdk-kmp-default: [x86_64] 
   - dpdk-tools: [x86_64] 
   - dpic 
   - dpic-doc 
@@ -2308,6 +2310,7 @@ unsorted:
   - dracut-kiwi-overlay 
   - dracut-tools 
   - drbd-formula 
+  - drbd-kmp-default: [x86_64] 
   - drbd-utils: [i586] 
   - drbdmanage 
   - drc 
@@ -5263,6 +5266,9 @@ unsorted:
   - icingaweb2 
   - icingaweb2-common 
   - icingaweb2-module-director 
+  - icingaweb2-module-incubator 
+  - icingaweb2-module-ipl 
+  - icingaweb2-module-reactbundle 
   - icingaweb2-vendor-HTMLPurifier 
   - icingaweb2-vendor-JShrink 
   - icingaweb2-vendor-Parsedown 
@@ -22980,6 +22986,8 @@ unsorted:
   - ruby2.6-rubygem-railties-doc-5_0 
   - ruby2.6-rubygem-railties-doc-5_1 
   - ruby2.6-rubygem-railties-doc-6.0 
+  - ruby2.6-rubygem-rainbow-doc 
+  - ruby2.6-rubygem-rainbow-testsuite 
   - ruby2.6-rubygem-raindrops-doc 
   - ruby2.6-rubygem-raindrops-testsuite 
   - ruby2.6-rubygem-rake-compiler-doc 
@@ -23024,6 +23032,7 @@ unsorted:
   - ruby2.6-rubygem-rspec-mocks-doc-3_5 
   - ruby2.6-rubygem-rspec-support-doc 
   - ruby2.6-rubygem-rspec-support-doc-3_5 
+  - ruby2.6-rubygem-rubocop-doc 
   - ruby2.6-rubygem-ruby-augeas-doc 
   - ruby2.6-rubygem-ruby-dbus-doc 
   - ruby2.6-rubygem-ruby-dbus-testsuite 
@@ -23032,6 +23041,7 @@ unsorted:
   - ruby2.6-rubygem-ruby-libvirt-doc 
   - ruby2.6-rubygem-ruby-openid-doc 
   - ruby2.6-rubygem-ruby-openid-testsuite 
+  - ruby2.6-rubygem-ruby-progressbar-doc 
   - ruby2.6-rubygem-ruby-shadow-doc 
   - ruby2.6-rubygem-ruby_dep-doc 
   - ruby2.6-rubygem-ruby_dep-doc-1_3 
@@ -32403,7 +32413,10 @@ unsorted:
   - virtualbox-devel 
   - virtualbox-guest-desktop-icons 
   - virtualbox-guest-source 
+  - virtualbox-guest-tools: [x86_64] 
+  - virtualbox-guest-x11: [x86_64] 
   - virtualbox-host-source 
+  - virtualbox-kmp-default: [x86_64] # suggested by dvd:suggested:patterns-devel-osc-devel_osc_build 
   - virtualbox-qt 
   - virtualbox-vnc 
   - virtualbox-websrv 

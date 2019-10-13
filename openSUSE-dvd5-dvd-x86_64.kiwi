@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20191011" schemaversion="4.1">
+<image name="OBS__openSUSE___20191012" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20191011</productvar>
+      <productvar name="VERSION">20191012</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20191011,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20191012,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20191011/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20191012/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/suse-tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/suse-tumbleweed</productoption>
@@ -359,7 +359,6 @@
       <repopackage name="cpupower"/>
       <repopackage name="cracklib"/>
       <repopackage name="cracklib-dict-full"/>
-      <repopackage name="crash-kmp-default" arch="x86_64"/>
       <repopackage name="crda"/>
       <repopackage name="createrepo"/>
       <repopackage name="cron"/>
@@ -455,12 +454,10 @@
       <repopackage name="dolphin-part-lang"/>
       <repopackage name="dos2unix"/>
       <repopackage name="dosfstools"/>
-      <repopackage name="dpdk-kmp-default" arch="x86_64"/>
       <repopackage name="dracut"/>
       <repopackage name="dragonplayer"/>
       <repopackage name="dragonplayer-lang"/>
       <repopackage name="drbd" arch="x86_64"/>
-      <repopackage name="drbd-kmp-default" arch="x86_64"/>
       <repopackage name="drbd-utils" arch="x86_64"/>
       <repopackage name="drkonqi5"/>
       <repopackage name="drkonqi5-lang"/>
@@ -4918,6 +4915,7 @@
       <repopackage name="ruby2.6-rubygem-railties-5_0"/>
       <repopackage name="ruby2.6-rubygem-railties-5_1"/>
       <repopackage name="ruby2.6-rubygem-railties-6.0"/>
+      <repopackage name="ruby2.6-rubygem-rainbow"/>
       <repopackage name="ruby2.6-rubygem-raindrops"/>
       <repopackage name="ruby2.6-rubygem-rake-11_3"/>
       <repopackage name="ruby2.6-rubygem-rake-12_0"/>
@@ -4949,11 +4947,13 @@
       <repopackage name="ruby2.6-rubygem-rspec-mocks-3_5"/>
       <repopackage name="ruby2.6-rubygem-rspec-support"/>
       <repopackage name="ruby2.6-rubygem-rspec-support-3_5"/>
+      <repopackage name="ruby2.6-rubygem-rubocop"/>
       <repopackage name="ruby2.6-rubygem-ruby-augeas"/>
       <repopackage name="ruby2.6-rubygem-ruby-dbus"/>
       <repopackage name="ruby2.6-rubygem-ruby-filemagic"/>
       <repopackage name="ruby2.6-rubygem-ruby-libvirt"/>
       <repopackage name="ruby2.6-rubygem-ruby-openid"/>
+      <repopackage name="ruby2.6-rubygem-ruby-progressbar"/>
       <repopackage name="ruby2.6-rubygem-ruby-shadow"/>
       <repopackage name="ruby2.6-rubygem-ruby_dep"/>
       <repopackage name="ruby2.6-rubygem-ruby_dep-1_3"/>
@@ -5455,9 +5455,6 @@
       <repopackage name="virt-manager-common"/>
       <repopackage name="virt-sandbox" arch="x86_64"/>
       <repopackage name="virt-what"/>
-      <repopackage name="virtualbox-guest-tools"/>
-      <repopackage name="virtualbox-guest-x11"/>
-      <repopackage name="virtualbox-kmp-default"/>
       <repopackage name="vlan"/>
       <repopackage name="vlc"/>
       <repopackage name="vlc-codec-gstreamer"/>
