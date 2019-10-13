@@ -1821,7 +1821,6 @@ unsorted:
   - crash-doc 
   - crash-eppic 
   - crash-gcore 
-  - crash-kmp-default: [x86_64] 
   - crawl 
   - crawl-data 
   - crawl-sdl 
@@ -2294,7 +2293,6 @@ unsorted:
   - dpdk-devel: [x86_64] 
   - dpdk-doc: [x86_64] 
   - dpdk-examples: [x86_64] 
-  - dpdk-kmp-default: [x86_64] 
   - dpdk-tools: [x86_64] 
   - dpic 
   - dpic-doc 
@@ -2310,7 +2308,6 @@ unsorted:
   - dracut-kiwi-overlay 
   - dracut-tools 
   - drbd-formula 
-  - drbd-kmp-default: [x86_64] 
   - drbd-utils: [i586] 
   - drbdmanage 
   - drc 
@@ -32413,10 +32410,7 @@ unsorted:
   - virtualbox-devel 
   - virtualbox-guest-desktop-icons 
   - virtualbox-guest-source 
-  - virtualbox-guest-tools: [x86_64] 
-  - virtualbox-guest-x11: [x86_64] 
   - virtualbox-host-source 
-  - virtualbox-kmp-default: [x86_64] # suggested by dvd:suggested:patterns-devel-osc-devel_osc_build 
   - virtualbox-qt 
   - virtualbox-vnc 
   - virtualbox-websrv 
