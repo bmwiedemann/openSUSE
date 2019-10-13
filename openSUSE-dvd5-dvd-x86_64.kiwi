@@ -359,6 +359,7 @@
       <repopackage name="cpupower"/>
       <repopackage name="cracklib"/>
       <repopackage name="cracklib-dict-full"/>
+      <repopackage name="crash-kmp-default" arch="x86_64"/>
       <repopackage name="crda"/>
       <repopackage name="createrepo"/>
       <repopackage name="cron"/>
@@ -454,10 +455,12 @@
       <repopackage name="dolphin-part-lang"/>
       <repopackage name="dos2unix"/>
       <repopackage name="dosfstools"/>
+      <repopackage name="dpdk-kmp-default" arch="x86_64"/>
       <repopackage name="dracut"/>
       <repopackage name="dragonplayer"/>
       <repopackage name="dragonplayer-lang"/>
       <repopackage name="drbd" arch="x86_64"/>
+      <repopackage name="drbd-kmp-default" arch="x86_64"/>
       <repopackage name="drbd-utils" arch="x86_64"/>
       <repopackage name="drkonqi5"/>
       <repopackage name="drkonqi5-lang"/>
@@ -5455,6 +5458,9 @@
       <repopackage name="virt-manager-common"/>
       <repopackage name="virt-sandbox" arch="x86_64"/>
       <repopackage name="virt-what"/>
+      <repopackage name="virtualbox-guest-tools"/>
+      <repopackage name="virtualbox-guest-x11"/>
+      <repopackage name="virtualbox-kmp-default"/>
       <repopackage name="vlan"/>
       <repopackage name="vlc"/>
       <repopackage name="vlc-codec-gstreamer"/>

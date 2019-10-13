@@ -5217,9 +5217,9 @@
       <repopackage name="virt-install"/>
       <repopackage name="virt-manager-common"/>
       <repopackage name="virt-what"/>
-      <repopackage name="virtualbox-guest-tools" arch="i586,i686"/>
-      <repopackage name="virtualbox-guest-x11" arch="i586,i686"/>
-      <repopackage name="virtualbox-kmp-default" arch="i586,i686"/>
+      <repopackage name="virtualbox-guest-tools"/>
+      <repopackage name="virtualbox-guest-x11"/>
+      <repopackage name="virtualbox-kmp-default"/>
       <repopackage name="vlan"/>
       <repopackage name="vlc"/>
       <repopackage name="vlc-codec-gstreamer"/>
