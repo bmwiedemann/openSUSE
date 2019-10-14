@@ -157,7 +157,6 @@ unsorted:
   - PlayOnLinux 
   - Printrun 
   - Printrun-common 
-  - PyGreSQL 
   - PythonQt-devel 
   - QCSXCAD-devel 
   - QGnomePlatform 
@@ -981,7 +980,6 @@ unsorted:
   - bea-stax 
   - beansbinding 
   - beansbinding-javadoc 
-  - beaver 
   - beets 
   - beforelight 
   - beignet 
@@ -1408,7 +1406,6 @@ unsorted:
   - cecilia 
   - cedict 
   - cedilla 
-  - ceferino 
   - celluloid 
   - celluloid-lang 
   - celt 
@@ -2090,8 +2087,6 @@ unsorted:
   - ddccontrol-lang 
   - ddclient 
   - ddcutil 
-  - ddd 
-  - ddd-doc 
   - ddgr 
   - dds2tar 
   - deadbeef 
@@ -2186,8 +2181,7 @@ unsorted:
   - direvent 
   - dirvish 
   - discount 
-  - discover-backend-fwupd 
-  - discover-plasmoid 
+  - discover-notifier 
   - diskimage-builder 
   - diskscan 
   - disorderfs 
@@ -2211,6 +2205,7 @@ unsorted:
   - dkimproxy 
   - dkms 
   - dleyna-core-devel 
+  - dleyna-renderer-devel 
   - dleyna-server-devel 
   - dm-zoned-tools 
   - dmd 
@@ -2488,7 +2483,6 @@ unsorted:
   - entangle-plugin-photobox 
   - entangle-plugin-shooter 
   - entr 
-  - envoy 
   - envoy-proxy: [x86_64] 
   - envy24control 
   - eog-devel 
@@ -2833,7 +2827,6 @@ unsorted:
   - finger 
   - finger-server 
   - fio 
-  - fiona-fio 
   - fips 
   - fipscheck: [i586] 
   - fipscheck-devel 
@@ -4285,8 +4278,6 @@ unsorted:
   - gnome-getting-started-docs-lang 
   - gnome-gmail-notifier 
   - gnome-gmail-notifier-lang 
-  - gnome-initial-setup 
-  - gnome-initial-setup-lang 
   - gnome-internet-radio-locator 
   - gnome-internet-radio-locator-lang 
   - gnome-keyring-sharp 
@@ -4466,7 +4457,6 @@ unsorted:
   - golang-github-exercism-cli 
   - golang-github-golang-glog 
   - golang-github-jteeuwen-go-bindata 
-  - golang-github-kr-pretty 
   - golang-github-kr-pty 
   - golang-github-kr-text 
   - golang-github-lusitaniae-apache_exporter 
@@ -4477,11 +4467,9 @@ unsorted:
   - golang-github-prometheus-prometheus 
   - golang-github-prometheus-promu 
   - golang-github-rogpeppe-godef 
-  - golang-github-russross-blackfriday 
   - golang-github-shurcool-sanitized_anchor_name 
   - golang-github-wrouesnel-postgres_exporter 
   - golang-gopkgin-check 
-  - golang-org-x-crypto 
   - golang-org-x-net-context 
   - golang-org-x-net-html 
   - golang-org-x-net-websocket 
@@ -6852,7 +6840,9 @@ unsorted:
   - libKF5JS5-32bit: [x86_64] 
   - libKF5JSApi5-32bit: [x86_64] 
   - libKF5JobWidgets5-32bit: [x86_64] 
+  - libKF5JsEmbed5 
   - libKF5JsEmbed5-32bit: [x86_64] 
+  - libKF5JsEmbed5-lang 
   - libKF5KCMUtils5-32bit: [x86_64] 
   - libKF5KDELibs4Support5-32bit: [x86_64] 
   - libKF5KDGantt2-5 
@@ -6897,7 +6887,9 @@ unsorted:
   - libKF5WidgetsAddons5-32bit: [x86_64] 
   - libKF5WindowSystem5-32bit: [x86_64] 
   - libKF5XmlGui5-32bit: [x86_64] 
+  - libKF5XmlRpcClient5 
   - libKF5XmlRpcClient5-32bit: [x86_64] 
+  - libKF5XmlRpcClient5-lang 
   - libKPimGAPIBlogger5 
   - libKPimGAPIDrive5 
   - libKPimGAPILatitude5 
@@ -8138,7 +8130,7 @@ unsorted:
   - libdat2-2-32bit: [x86_64] 
   - libdataquay0 
   - libdatrie-devel 
-  - libdav1d2-32bit: [x86_64] 
+  - libdav1d3-32bit: [x86_64] 
   - libdavix0 
   - libdazzle 
   - libdazzle-devel 
@@ -10781,8 +10773,6 @@ unsorted:
   - libraw1394-devel 
   - libraw1394-devel-32bit: [x86_64] 
   - libraw1394-tools 
-  - librawstudio-2_1 
-  - librawstudio-devel 
   - libraylib2 
   - librbd-devel: [x86_64] # devel package of dvd:librados2 
   - librbio2 
@@ -10946,7 +10936,6 @@ unsorted:
   - librep-devel 
   - librep16 
   - librepair-1_2-1 
-  - librepilot 
   - libreplaygain-devel 
   - libreplaygain1 
   - librepo-devel 
@@ -12161,10 +12150,12 @@ unsorted:
   - lighttpd-mod_authn_gssapi 
   - lighttpd-mod_authn_ldap 
   - lighttpd-mod_authn_mysql 
+  - lighttpd-mod_authn_pam 
   - lighttpd-mod_authn_sasl 
   - lighttpd-mod_cml 
   - lighttpd-mod_geoip 
   - lighttpd-mod_magnet 
+  - lighttpd-mod_maxminddb 
   - lighttpd-mod_mysql_vhost 
   - lighttpd-mod_rrdtool 
   - lighttpd-mod_trigger_b4_dl 
@@ -14159,6 +14150,7 @@ unsorted:
   - ntp 
   - ntp2chrony 
   - ntpsec 
+  - ntpsec-doc 
   - ntpsec-utils 
   - nudoku 
   - nudoku-lang 
@@ -15594,7 +15586,6 @@ unsorted:
   - perl-Filesys-Statvfs 
   - perl-Finance-Quote 
   - perl-FindBin-Real 
-  - perl-Font-FreeType 
   - perl-Font-TTF 
   - perl-FreezeThaw 
   - perl-Furl 
@@ -16360,6 +16351,7 @@ unsorted:
   - php7-soap 
   - php7-sodium 
   - php7-sysvmsg 
+  - php7-test 
   - php7-uuid 
   - php7-xdebug 
   - php7-xmlrpc 
@@ -16459,6 +16451,8 @@ unsorted:
   - plasma5-applet-suse-prime 
   - plasma5-sdk 
   - plasma5-sdk-lang 
+  - plasma5-thunderbolt 
+  - plasma5-thunderbolt-lang 
   - plasma5-workspace-devel 
   - plasma5-workspace-libs-32bit: [x86_64] 
   - plasma5-workspace-wallpapers 
@@ -17249,7 +17243,6 @@ unsorted:
   - python2-Fabric 
   - python2-Fabric3 
   - python2-Faker 
-  - python2-Fiona 
   - python2-Flask 
   - python2-Flask-Admin 
   - python2-Flask-Babel 
@@ -17278,7 +17271,6 @@ unsorted:
   - python2-Flask-doc 
   - python2-FontTools 
   - python2-FormEncode 
-  - python2-Frozen-Flask 
   - python2-GDAL 
   - python2-Genshi 
   - python2-GeoIP 
@@ -17852,7 +17844,6 @@ unsorted:
   - python2-construct 
   - python2-contexter 
   - python2-contextlib2 
-  - python2-control: [x86_64] 
   - python2-convertdate 
   - python2-cookies 
   - python2-cooldict 
@@ -18391,7 +18382,6 @@ unsorted:
   - python2-llfuse 
   - python2-llvmlite 
   - python2-lmdb 
-  - python2-lmfit 
   - python2-lml 
   - python2-localzone 
   - python2-locket 
@@ -19536,7 +19526,6 @@ unsorted:
   - python3-Fabric 
   - python3-Fabric3 
   - python3-Faker 
-  - python3-Fiona 
   - python3-Flask 
   - python3-Flask-Admin 
   - python3-Flask-Babel 
@@ -19565,7 +19554,6 @@ unsorted:
   - python3-Flask-doc 
   - python3-FontTools 
   - python3-FormEncode 
-  - python3-Frozen-Flask 
   - python3-GDAL 
   - python3-Genshi 
   - python3-GeoIP 
@@ -20164,7 +20152,6 @@ unsorted:
   - python3-contexter 
   - python3-contextlib2 
   - python3-contextvars 
-  - python3-control: [x86_64] 
   - python3-convertdate 
   - python3-cookies 
   - python3-cooldict 
@@ -20823,7 +20810,6 @@ unsorted:
   - python3-llfuse 
   - python3-llvmlite 
   - python3-lmdb 
-  - python3-lmfit 
   - python3-lml 
   - python3-localzone 
   - python3-locket 
@@ -22230,8 +22216,6 @@ unsorted:
   - ratbagd 
   - ratslap 
   - raw-thumbnailer 
-  - rawstudio 
-  - rawstudio-lang 
   - raylib-devel 
   - razercfg 
   - razor-agents 
@@ -32132,7 +32116,6 @@ unsorted:
   - ulogd-sqlite3 
   - ultimatestunts 
   - ultimatestunts-data 
-  - ultrastar-deluxe 
   - umoci 
   - unbound 
   - unbound-anchor: [i586] 
@@ -33201,7 +33184,6 @@ unsorted:
   - youtube-dl-gui 
   - youtube-dl-gui-lang 
   - youtube-dl-zsh-completion 
-  - ytalk 
   - yubico-piv-tool 
   - yubikey-manager 
   - yubikey-manager-qt 
