@@ -421,11 +421,13 @@
     <package name="ding-dict-de_en" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="discover" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="discover-backend-flatpak" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="discover-backend-fwupd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="discover-backend-packagekit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="discover-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="distribution-logos-openSUSE-Tumbleweed" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="djvulibre" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="dleyna-connector-dbus" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="dleyna-renderer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="dleyna-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="dmidecode" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="dmraid" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -1520,8 +1522,6 @@
     <package name="libKF5JSApi5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5JobWidgets5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5JobWidgets5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libKF5JsEmbed5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libKF5JsEmbed5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5KCMUtils5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5KCMUtils5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5KDELibs4Support5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1595,8 +1595,6 @@
     <package name="libKF5WindowSystem5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5XmlGui5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5XmlGui5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libKF5XmlRpcClient5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libKF5XmlRpcClient5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKGantt2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKPimGAPICalendar5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKPimGAPIContacts5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1907,7 +1905,7 @@
     <package name="libdaemon0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdar5000" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libdatrie1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libdav1d2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libdav1d3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libdazzle-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdb-4_8" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libdb-4_8-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-C-C++-devel_C_C++ -->

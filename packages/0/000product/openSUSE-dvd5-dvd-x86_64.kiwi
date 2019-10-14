@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20191012" schemaversion="4.1">
+<image name="OBS__openSUSE___20191014" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20191012</productvar>
+      <productvar name="VERSION">20191014</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20191012,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20191014,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20191012/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20191014/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/suse-tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/suse-tumbleweed</productoption>
@@ -432,11 +432,13 @@
       <repopackage name="ding-dict-de_en"/>
       <repopackage name="discover"/>
       <repopackage name="discover-backend-flatpak"/>
+      <repopackage name="discover-backend-fwupd"/>
       <repopackage name="discover-backend-packagekit"/>
       <repopackage name="discover-lang"/>
       <repopackage name="distribution-logos-openSUSE-Tumbleweed"/>
       <repopackage name="djvulibre"/>
       <repopackage name="dleyna-connector-dbus"/>
+      <repopackage name="dleyna-renderer"/>
       <repopackage name="dleyna-server"/>
       <repopackage name="dmidecode"/>
       <repopackage name="dmraid"/>
@@ -1684,7 +1686,7 @@
       <repopackage name="libdar5000"/>
       <repopackage name="libdatrie1"/>
       <repopackage name="libdatrie1-32bit" arch="x86_64"/>
-      <repopackage name="libdav1d2"/>
+      <repopackage name="libdav1d3"/>
       <repopackage name="libdazzle-1_0-0"/>
       <repopackage name="libdb-4_8"/>
       <repopackage name="libdb-4_8-32bit" arch="x86_64"/>
@@ -2216,8 +2218,6 @@
       <repopackage name="libKF5JobWidgets5-lang"/>
       <repopackage name="libKF5JS5"/>
       <repopackage name="libKF5JSApi5"/>
-      <repopackage name="libKF5JsEmbed5"/>
-      <repopackage name="libKF5JsEmbed5-lang"/>
       <repopackage name="libKF5KCMUtils5"/>
       <repopackage name="libKF5KCMUtils5-lang"/>
       <repopackage name="libKF5KDcraw5"/>
@@ -2292,8 +2292,6 @@
       <repopackage name="libKF5WindowSystem5-lang"/>
       <repopackage name="libKF5XmlGui5"/>
       <repopackage name="libKF5XmlGui5-lang"/>
-      <repopackage name="libKF5XmlRpcClient5"/>
-      <repopackage name="libKF5XmlRpcClient5-lang"/>
       <repopackage name="libkgantt-lang"/>
       <repopackage name="libKGantt2"/>
       <repopackage name="libkgapi-lang"/>
