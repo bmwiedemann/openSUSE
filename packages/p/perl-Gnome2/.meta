@@ -12,5 +12,8 @@ gtk-perl-list@gnome.org at lists.gnome.org.
 Also have a look at the gtk2-perl website and sourceforge project page,
 http://gtk2-perl.sourceforge.net</description>
   <devel project="devel:languages:perl" package="perl-Gnome2"/>
+  <build>
+    <disable/>
+  </build>
   <url>http://search.cpan.org/dist/Gnome2/</url>
 </package>

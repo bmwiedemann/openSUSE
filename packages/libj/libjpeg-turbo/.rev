@@ -713,4 +713,12 @@
     <comment>- use -O0 for debugging like everywhere (better experience)</comment>
     <requestid>689002</requestid>
   </revision>
+  <revision rev="49" vrev="56">
+    <srcmd5>3a6c004ed776cbc8a50455201bd74441</srcmd5>
+    <version>unknown</version>
+    <time>1571049055</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release (forwarded request 735401 from iznogood)</comment>
+    <requestid>735600</requestid>
+  </revision>
 </revisionlist>

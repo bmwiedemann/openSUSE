@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 30 16:34:37 UTC 2019 - Jan Kara <jack@suse.cz>
+
+- Update to 1.45.4:
+  * A maliciously corrupted file systems can trigger buffer overruns in the
+    quota code used by e2fsck. (Addresses CVE-2019-5094)
+  * E2fsck now checks to make sure the casefold flag is only set on
+    directories, and only when the casefold feature is enabled
+  * E2fsck will not disable the low dtime checks when using a backup superblock
+    where the last mount time is zero
+  * Scrubbing scripts fixes
+  * Update translations
+
+-------------------------------------------------------------------
 Fri Aug  9 09:09:39 UTC 2019 - Jan Kara <jack@suse.cz>
 
 - Update to 1.45.3:

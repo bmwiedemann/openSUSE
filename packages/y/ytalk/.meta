@@ -4,4 +4,7 @@
 like the UNIX talk program and even communicates with the same talk
 daemons, but YTalk allows for multiple connections.</description>
   <devel project="network" package="ytalk"/>
+  <build>
+    <disable/>
+  </build>
 </package>

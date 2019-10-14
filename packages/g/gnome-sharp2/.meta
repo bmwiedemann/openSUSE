@@ -2,4 +2,7 @@
   <title>Mono bindings for Gnome</title>
   <description>This package contains Mono bindings for Gnome.</description>
   <devel project="Mono:Factory" package="gnome-sharp2"/>
+  <build>
+    <disable/>
+  </build>
 </package>

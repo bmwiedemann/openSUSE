@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Oct 07 08:05:46 UTC 2019 - kgronlund@suse.com
+
+- Update to version 2.0.7+git0.1909aa1e:
+  * [RELEASE] Released version 2.0.7
+  * BUG/MEDIUM: namespace: fix fd leak in master-worker mode
+  * DOC: Fix documentation about the cli command to get resolver stats
+  * BUG/MINOR: contrib/prometheus-exporter: Return the time averages in seconds
+  * MINOR: stats: Add the support of float fields in stats
+  * MINOR: spoe: Support the async mode with several threads
+  * MINOR: spoe: Improve generation of the engine-id
+  * BUG/MEDIUM: spoe: Use a different engine-id per process
+  * BUG/MINOR: mux-h1: Do h2 upgrade only on the first request
+  * BUG/MAJOR: mux_h2: Don't consume more payload than received for skipped frames
+  * BUG/MINOR: mux-h2: Use the dummy error when decoding headers for a closed stream
+  * BUG/MEDIUM: mux-h2: don't reject valid frames on closed streams
+  * BUG/MEDIUM: namespace: close open namespaces during soft shutdown
+  * BUG/MINOR: mux-h2: do not wake up blocked streams before the mux is ready
+  * BUG/MEDIUM: checks: make sure the connection is ready before trying to recv
+  * BUG/MEDIUM: stream-int: Process connection/CS errors during synchronous sends
+  * BUG/MINOR: stream-int: Process connection/CS errors first in si_cs_send()
+  * BUG/MEDIUM: check/threads: make external checks run exclusively on thread 1
+  * BUG/MAJOR: mux-h2: Handle HEADERS frames received after a RST_STREAM frame
+  * BUG/MINOR: mux-h2: Be sure to have a connection to unsubcribe
+  * BUG/MEDIUM: stick-table: Properly handle "show table" with a data type argument
+
+-------------------------------------------------------------------
 Tue Sep 17 15:41:39 UTC 2019 - kgronlund@suse.com
 
 - Update to version 2.0.6+git0.58706ab4:

@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Oct 10 14:25:46 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.0.php
+- No code changes since 5.16.90
+
+-------------------------------------------------------------------
+Thu Sep 19 12:32:34 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.90.php
+- Changes since 5.16.5:
+  * update to latest kf5 dependency
+  * It compiles fine without deprecated method
+  * It's defined in ECM
+  * Replace the PasswordEdit field by a changePassword QPushButton, remove foreach uses (kde#328664)
+  * Attach labels to their checkboxes BUG: 411142 FIXED-IN: 5.17.0 (kde#411142)
+  * use pwquality_strerror to get error strings
+  * Ignore some files
+  * Remove unused includes
+  * Do not capitalize placeholder username (kde#408478)
+  * [Avatars] Rename Konqui to Konqi
+  * [Avatar Gallery] Increase minimum width
+  * Have more contrast in circle-style user avatars
+  * Add new Konqi avatars & remove classic, bluestyle, old konqi avatars
+  * Install in new logging directory when we use kf5 5.59.0
+  * Fix forward declaration
+
+-------------------------------------------------------------------
 Tue Sep  3 12:44:11 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.16.5

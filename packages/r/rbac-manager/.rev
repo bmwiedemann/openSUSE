@@ -33,4 +33,12 @@
   - Corrected version in log output</comment>
     <requestid>733709</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>9da5224faf5e93ef68ebad71397e7ed7</srcmd5>
+    <version>0.8.3</version>
+    <time>1571049066</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>735624</requestid>
+  </revision>
 </revisionlist>

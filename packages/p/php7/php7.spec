@@ -16,6 +16,15 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
 %define debug_build       0
 %define asan_build        0
 %global apiver            20180731
@@ -40,9 +49,8 @@
 %if %{?suse_version} >= 1500
 %define build_argon2 1
 %endif
-%bcond_with make_test
-Name:           php7
-Version:        7.3.9
+Name:           php7%{psuffix}
+Version:        7.3.10
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 7
 License:        PHP-3.01
@@ -226,20 +234,6 @@ primarily for web development but also used as a general-purpose
 programming language.
 
 This package contains the C headers to build PHP extensions.
-
-%if %{with make_test}
-%package testresults
-Summary:        PHP7 testsuite results
-Group:          Development/Languages/PHP
-BuildArch:      noarch
-
-%description testresults
-PHP is a server-side HTML embedded scripting language designed
-primarily for web development but also used as a general-purpose
-programming language.
-
-This package contains results from running the PHP7 testsuite.
-%endif
 
 %package pear
 Summary:        PHP Extension and Application Repository
@@ -999,11 +993,6 @@ if test "x${vpear}" != "x%{pearver}"; then
     : Update the pearver macro and rebuild.
     exit 1
 fi
-if [ %{version} != '7.3.9' ]; then
-echo 'check whether pcre.jit=0 workaround is still needed'
-echo 'https://bugs.php.net/bug.php?id=77260'
-exit 1
-fi
 
 %build
 %define _lto_cflags %{nil}
@@ -1233,6 +1222,25 @@ Build cli \
 # ASAN needs /proc to be mounted
 exit 0
 %endif
+# Run tests, using the CLI SAPI
+%if %{with test}
+pushd build-cli
+export NO_INTERACTION=1 REPORT_EXIT_STATUS=1 LANG=POSIX LC_ALL=POSIX
+unset TZ
+# We save results for further investigation for QA
+make test | tee testresults.txt || true
+set +x
+for f in `find .. -name "*.diff" -type f -print`; do
+    echo "TEST FAILURE: $f --"
+    cat "$f"
+    echo "-- $f result ends."
+done
+set -x
+unset NO_INTERACTION REPORT_EXIT_STATUS
+popd
+exit 0
+%endif
+
 pushd build-cli
 # check if we link against system libcrypt
 if [ -z "$(ldd sapi/cli/php | grep libcrypt.so)" ]; then
@@ -1247,27 +1255,13 @@ if [ -z "$(ldd modules/gd.so | grep libgd.so)" ]; then
     exit 1
 fi
 %endif
-
-# Run tests, using the CLI SAPI
-%if %{with make_test}
-export NO_INTERACTION=1 REPORT_EXIT_STATUS=1 LANG=POSIX LC_ALL=POSIX
-unset TZ
-# We save results for further investigation for QA
-make test | tee testresults.txt || true
-set +x
-for f in `find .. -name "*.diff" -type f -print`; do
-    echo "TEST FAILURE: $f --"
-    cat "$f"
-    echo "-- $f result ends."
-done
-set -x
-unset NO_INTERACTION REPORT_EXIT_STATUS
-%endif
 popd
-# apache module tests
+
+# Apache HTTPD runnable examples tests
 %apache_rex_check -m build-apache2/libs -b build-fpm/sapi/fpm mod_php-basic mod_proxy_fcgi-php-fpm mod_proxy_fcgi-php-fpm-auth-RewriteRule mod_proxy_fcgi-php-fpm-CGIPassAuth
 
 %install
+%if !%{with test}
 export PHP_PEAR_METADATA_DIR=%{peardir}
 export PHP_PEAR_CACHE_DIR=%{_localstatedir}/cache/pear
 
@@ -1349,7 +1343,9 @@ install -m 644 -c macros.php %{buildroot}%{_sysconfdir}/rpm/macros.php
 #install fpm init script.
 install -D -m 0644 ./build-fpm/sapi/fpm/php-fpm.service %{buildroot}%{_unitdir}/php-fpm.service
 ln -s service %{buildroot}%{_sbindir}/rcphp-fpm
+%endif
 
+%if !%{with test}
 %post -n apache2-mod_php7
 #some distro versions does not have this tool.
 if [ -x %{_sbindir}/a2enmod ]; then
@@ -1393,9 +1389,10 @@ fi
 # restart apache instances which have this module after zypper or rpm transaction, if not
 # have restarted already in other posttrans
 %apache_restart_if_needed
+%endif
 
+%if !%{with test}
 %files
-%defattr(-, root, root)
 %license LICENSE
 %doc README* CODING_STANDARDS CREDITS EXTENSIONS NEWS UPGRADING
 %doc php-suse-addons/test.php5
@@ -1412,7 +1409,6 @@ fi
 %attr(0755, wwwrun, root) %dir %{_localstatedir}/lib/%{pkg_name}
 
 %files devel
-%defattr(-, root, root)
 %doc README.macros
 %{_includedir}/%{pkg_name}
 %{_bindir}/phpize
@@ -1421,14 +1417,7 @@ fi
 %{_datadir}/%{pkg_name}/build
 %config %{_sysconfdir}/rpm/macros.php
 
-%if %{with make_test}
-%files testresults
-%defattr(-, root, root)
-%doc build-cli/testresults.txt
-%endif
-
 %files pear
-%defattr(-, root, root)
 %{_bindir}/pear
 %config(noreplace) %{php_sysconf}/cli/pear.conf
 %{peardir}
@@ -1436,14 +1425,12 @@ fi
 %dir %{_localstatedir}/lib/pear
 
 %files fastcgi
-%defattr(-, root, root)
 %{_bindir}/php-cgi
 /srv/www/cgi-bin/php
 %dir %{php_sysconf}/fastcgi
 %config(noreplace) %{php_sysconf}/fastcgi/php.ini
 
 %files fpm
-%defattr(-, root, root)
 %{_sbindir}/php-fpm
 %dir %{php_sysconf}/fpm
 %config %{php_sysconf}/fpm/php-fpm.conf.default
@@ -1456,113 +1443,91 @@ fi
 %{_unitdir}/php-fpm.service
 
 %files embed
-%defattr(-, root, root)
 %{_libdir}/libphp7.so
 
 %files -n apache2-mod_php7
-%defattr(-,root,root)
 %{apache_libexecdir}/mod_php7.so
 %dir %{php_sysconf}/apache2
 %config(noreplace) %{php_sysconf}/apache2/php.ini
 %config(noreplace) %{apache_sysconfdir}/conf.d/%{pkg_name}.conf
 
 %files bcmath
-%defattr(644,root,root,755)
 %{extension_dir}/bcmath.so
 %config(noreplace) %{php_sysconf}/conf.d/bcmath.ini
 
 %files bz2
-%defattr(644,root,root,755)
 %{extension_dir}/bz2.so
 %config(noreplace) %{php_sysconf}/conf.d/bz2.ini
 
 %files calendar
-%defattr(644,root,root,755)
 %{extension_dir}/calendar.so
 %config(noreplace) %{php_sysconf}/conf.d/calendar.ini
 
 %files ctype
-%defattr(644,root,root,755)
 %{extension_dir}/ctype.so
 %config(noreplace) %{php_sysconf}/conf.d/ctype.ini
 
 %files curl
-%defattr(644,root,root,755)
 %{extension_dir}/curl.so
 %config(noreplace) %{php_sysconf}/conf.d/curl.ini
 
 %files dba
-%defattr(644,root,root,755)
 %{extension_dir}/dba.so
 %config(noreplace) %{php_sysconf}/conf.d/dba.ini
 
 %files dom
-%defattr(644,root,root,755)
 %{extension_dir}/dom.so
 %config(noreplace) %{php_sysconf}/conf.d/dom.ini
 
 %files enchant
-%defattr(644,root,root,755)
 %{extension_dir}/enchant.so
 %config(noreplace) %{php_sysconf}/conf.d/enchant.ini
 
 %files exif
-%defattr(644,root,root,755)
 %{extension_dir}/exif.so
 %config(noreplace) %{php_sysconf}/conf.d/exif.ini
 
 %files fileinfo
-%defattr(644,root,root,755)
 %{extension_dir}/fileinfo.so
 %config(noreplace) %{php_sysconf}/conf.d/fileinfo.ini
 
 %files ftp
-%defattr(644,root,root,755)
 %{extension_dir}/ftp.so
 %config(noreplace) %{php_sysconf}/conf.d/ftp.ini
 
 %files gd
-%defattr(644,root,root,755)
 %{extension_dir}/gd.so
 %config(noreplace) %{php_sysconf}/conf.d/gd.ini
 
 %files gettext
-%defattr(644,root,root,755)
 %{extension_dir}/gettext.so
 %config(noreplace) %{php_sysconf}/conf.d/gettext.ini
 
 %files gmp
-%defattr(644,root,root,755)
 %{extension_dir}/gmp.so
 %config(noreplace) %{php_sysconf}/conf.d/gmp.ini
 
 %files iconv
-%defattr(644,root,root,755)
 %{extension_dir}/iconv.so
 %config(noreplace) %{php_sysconf}/conf.d/iconv.ini
 
 %files intl
-%defattr(644,root,root,755)
 %{extension_dir}/intl.so
 %config(noreplace) %{php_sysconf}/conf.d/intl.ini
 
 %files json
-%defattr(644,root,root,755)
 %{extension_dir}/json.so
 %config(noreplace) %{php_sysconf}/conf.d/json.ini
 
 %files ldap
-%defattr(644,root,root,755)
 %{extension_dir}/ldap.so
 %config(noreplace) %{php_sysconf}/conf.d/ldap.ini
 
 %files mbstring
-%defattr(644,root,root,755)
 %{extension_dir}/mbstring.so
 %config(noreplace) %{php_sysconf}/conf.d/mbstring.ini
 
 %files mysql
-%defattr(644,root,root,755)
 %{extension_dir}/mysqli.so
 %config(noreplace) %{php_sysconf}/conf.d/mysqli.ini
 %{extension_dir}/pdo_mysql.so
@@ -1570,7 +1535,6 @@ fi
 
 %if %{build_firebird}
 %files firebird
-%defattr(644,root,root,755)
 %{extension_dir}/interbase.so
 %config(noreplace) %{php_sysconf}/conf.d/interbase.ini
 %{extension_dir}/pdo_firebird.so
@@ -1578,148 +1542,127 @@ fi
 %endif
 
 %files odbc
-%defattr(644,root,root,755)
 %{extension_dir}/odbc.so
 %config(noreplace) %{php_sysconf}/conf.d/odbc.ini
 %{extension_dir}/pdo_odbc.so
 %config(noreplace) %{php_sysconf}/conf.d/pdo_odbc.ini
 
 %files opcache
-%defattr(644,root,root,755)
 %{extension_dir}/opcache.so
 %config(noreplace) %{php_sysconf}/conf.d/opcache.ini
 
 %files openssl
-%defattr(644,root,root,755)
 %{extension_dir}/openssl.so
 %config(noreplace) %{php_sysconf}/conf.d/openssl.ini
 
 %files phar
-%defattr(644,root,root,755)
 %{extension_dir}/phar.so
 %config(noreplace) %{php_sysconf}/conf.d/phar.ini
 %{_bindir}/phar
 %{_bindir}/phar.phar
 
 %files pcntl
-%defattr(644,root,root,755)
 %{extension_dir}/pcntl.so
 %config(noreplace) %{php_sysconf}/conf.d/pcntl.ini
 
 %files pdo
-%defattr(644,root,root,755)
 %{extension_dir}/pdo.so
 %config(noreplace) %{php_sysconf}/conf.d/pdo.ini
 
 %files pgsql
-%defattr(644,root,root,755)
 %{extension_dir}/pgsql.so
 %config(noreplace) %{php_sysconf}/conf.d/pgsql.ini
 %{extension_dir}/pdo_pgsql.so
 %config(noreplace) %{php_sysconf}/conf.d/pdo_pgsql.ini
 
 %files posix
-%defattr(644,root,root,755)
 %{extension_dir}/posix.so
 %config(noreplace) %{php_sysconf}/conf.d/posix.ini
 
 %files readline
-%defattr(644,root,root,755)
 %{extension_dir}/readline.so
 %config(noreplace) %{php_sysconf}/conf.d/readline.ini
 
 %files shmop
-%defattr(644,root,root,755)
 %{extension_dir}/shmop.so
 %config(noreplace) %{php_sysconf}/conf.d/shmop.ini
 
 %files snmp
-%defattr(644,root,root,755)
 %{extension_dir}/snmp.so
 %config(noreplace) %{php_sysconf}/conf.d/snmp.ini
 
 %files soap
-%defattr(644,root,root,755)
 %{extension_dir}/soap.so
 %config(noreplace) %{php_sysconf}/conf.d/soap.ini
 
 %if %{build_sodium}
 %files sodium
-%defattr(644,root,root,755)
 %{extension_dir}/sodium.so
 %config(noreplace) %{php_sysconf}/conf.d/sodium.ini
 %endif
 
 %files sockets
-%defattr(644,root,root,755)
 %{extension_dir}/sockets.so
 %config(noreplace) %{php_sysconf}/conf.d/sockets.ini
 
 %files sqlite
-%defattr(644,root,root,755)
 %{extension_dir}/pdo_sqlite.so
 %config(noreplace) %{php_sysconf}/conf.d/pdo_sqlite.ini
 %{extension_dir}/sqlite3.so
 %config(noreplace) %{php_sysconf}/conf.d/sqlite3.ini
 
 %files sysvmsg
-%defattr(644,root,root,755)
 %{extension_dir}/sysvmsg.so
 %config(noreplace) %{php_sysconf}/conf.d/sysvmsg.ini
 
 %files sysvsem
-%defattr(644,root,root,755)
 %{extension_dir}/sysvsem.so
 %config(noreplace) %{php_sysconf}/conf.d/sysvsem.ini
 
 %files sysvshm
-%defattr(644,root,root,755)
 %{extension_dir}/sysvshm.so
 %config(noreplace) %{php_sysconf}/conf.d/sysvshm.ini
 
 %files tidy
-%defattr(644,root,root,755)
 %{extension_dir}/tidy.so
 %config(noreplace) %{php_sysconf}/conf.d/tidy.ini
 
 %files tokenizer
-%defattr(644,root,root,755)
 %{extension_dir}/tokenizer.so
 %config(noreplace) %{php_sysconf}/conf.d/tokenizer.ini
 
 %files wddx
-%defattr(644,root,root,755)
 %{extension_dir}/wddx.so
 %config(noreplace) %{php_sysconf}/conf.d/wddx.ini
 
 %files xmlrpc
-%defattr(644,root,root,755)
 %{extension_dir}/xmlrpc.so
 %config(noreplace) %{php_sysconf}/conf.d/xmlrpc.ini
 
 %files xmlreader
-%defattr(644,root,root,755)
 %{extension_dir}/xmlreader.so
 %config(noreplace) %{php_sysconf}/conf.d/xmlreader.ini
 
 %files xmlwriter
-%defattr(644,root,root,755)
 %{extension_dir}/xmlwriter.so
 %config(noreplace) %{php_sysconf}/conf.d/xmlwriter.ini
 
 %files xsl
-%defattr(644,root,root,755)
 %{extension_dir}/xsl.so
 %config(noreplace) %{php_sysconf}/conf.d/xsl.ini
 
 %files zip
-%defattr(644,root,root,755)
 %{extension_dir}/zip.so
 %config(noreplace) %{php_sysconf}/conf.d/zip.ini
 
 %files zlib
-%defattr(644,root,root,755)
 %{extension_dir}/zlib.so
 %config(noreplace) %{php_sysconf}/conf.d/zlib.ini
+%endif
+
+%if %{with test}
+%files
+%doc build-cli/testresults.txt
+%endif
 
 %changelog

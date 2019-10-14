@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Oct  5 09:08:03 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.0.3:
+  * Fixed "using JNI after critical get" errors that occurred on
+    Android platforms when passing invalid arguments to certain
+    methods in the TurboJPEG Java API.
+  * Fixed a regression in the SIMD feature detection code,
+    introduced by the AVX2 SIMD extensions (2.0 beta1), that was
+    known to cause an illegal instruction exception, in rare cases,
+    on CPUs that lack support for CPUID leaf (or on which the
+    maximum CPUID leaf has been limited by way of a BIOS setting.)
+  * The 4:4:0 (h1v2) fancy (smooth) chroma upsampling algorithm in
+    the decompressor now uses a similar bias pattern to that of the
+    4:2:2 (h2v1) fancy chroma upsampling algorithm, rounding up or
+    down the upsampled result for alternate pixels rather than
+    always rounding down. This ensures that, regardless of whether
+    a 4:2:2 JPEG image is rotated or transposed prior to
+    decompression (in the frequency domain) or after decompression
+   (in the spatial domain), the final image will be similar.
+  * Fixed an integer overflow and subsequent segfault that occurred
+    when attempting to compress or decompress images with more than
+    1 billion pixels using the TurboJPEG API.
+  * Fixed a regression introduced by 2.0 beta1[15] whereby
+    attempting to generate a progressive JPEG image on an
+    SSE2-capable CPU using a scan script containing one or more
+    scans with lengths divisible by 16 would result in an error
+    ("Missing Huffman code table entry") and an invalid JPEG image.
+  * Fixed an issue whereby `tjDecodeYUV()` and
+    `tjDecodeYUVPlanes()` would throw an error ("Invalid
+    progressive parameters") or a warning ("Inconsistent
+    progression sequence") if passed a TurboJPEG instance that was
+    previously used to decompress a progressive JPEG image.
+
+-------------------------------------------------------------------
 Wed Mar 27 06:46:43 UTC 2019 - pgajdos@suse.com
 
 - use -O0 for debugging like everywhere (better experience)

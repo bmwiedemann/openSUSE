@@ -415,4 +415,12 @@ the http-&amp;gt;https redirect. (forwarded request 452617 from dmdiss)</comment
     <comment></comment>
     <requestid>696792</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>aea78220b066f2332d55f3ed7e6a94b9</srcmd5>
+    <version>1.4.2</version>
+    <time>1571049300</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>737334</requestid>
+  </revision>
 </revisionlist>

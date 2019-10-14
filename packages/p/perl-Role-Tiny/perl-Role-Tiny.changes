@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Oct 10 08:58:45 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 2.001003
+   see /usr/share/doc/packages/perl-Role-Tiny/Changes
+
+  2.001003 - 2019-10-09
+    - releasing as stable
+  
+  2.001_002 - 2019-10-06
+    - fix methods from roles composed via create_class_with_roles being treated
+      differently from roles composed directly (RT#128470)
+    - fix constants being included in the methods provided by a role if they
+      were created before importing Role::Tiny but used after importing
+    - fix prototype handling test on cperl
+
+-------------------------------------------------------------------
+Fri Oct  4 09:34:44 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 2.001001
+   see /usr/share/doc/packages/perl-Role-Tiny/Changes
+
+  2.001001 - 2019-10-01
+    - added tests for make_role
+  
+  2.001_000 - 2019-09-19
+    - refactored method tracking to allow easier extending (such as by Moo)
+    - added make_role method to make a package into a role, but without
+      exporting any subs into it
+    - refactored sub exporting to allow extensions to do different things with
+      the subs
+  
+  2.000_009 - 2019-09-06
+    - fix composing roles into packages that have stub subs in them
+    - treat constants consistently with all other subs, no matter where they are
+      defined
+
+-------------------------------------------------------------------
 Tue Aug  6 05:28:13 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 2.000008

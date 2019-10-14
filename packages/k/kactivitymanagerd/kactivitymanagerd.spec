@@ -20,15 +20,15 @@
 
 %bcond_without lang
 Name:           kactivitymanagerd
-Version:        5.16.5
+Version:        5.17.0
 Release:        0
 Summary:        KDE Plasma Activities support
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 Url:            http://projects.kde.org/kactivitymanagerd
-Source:         https://download.kde.org/stable/plasma/%{version}/kactivitymanagerd-%{version}.tar.xz
+Source:         kactivitymanagerd-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kactivitymanagerd-%{version}.tar.xz.sig
+Source1:        kactivitymanagerd-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 %if 0%{?suse_version} > 1325
@@ -39,19 +39,19 @@ BuildRequires:  boost-devel >= 1.49.0
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  fdupes
-BuildRequires:  kcmutils-devel >= %{kf5_version}
-BuildRequires:  kconfig-devel >= %{kf5_version}
-BuildRequires:  kcoreaddons-devel >= %{kf5_version}
-BuildRequires:  kdbusaddons-devel >= %{kf5_version}
-BuildRequires:  kdeclarative-devel >= %{kf5_version}
-BuildRequires:  kcrash-devel >= %{kf5_version}
+BuildRequires:  cmake(KF5KCMUtils) >= %{kf5_version}
+BuildRequires:  cmake(KF5Config) >= %{kf5_version}
+BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
+BuildRequires:  cmake(KF5DBusAddons) >= %{kf5_version}
+BuildRequires:  cmake(KF5Declarative) >= %{kf5_version}
+BuildRequires:  cmake(KF5Crash) >= %{kf5_version}
 BuildRequires:  kf5-filesystem
-BuildRequires:  kglobalaccel-devel >= %{kf5_version}
-BuildRequires:  ki18n-devel >= %{kf5_version}
-BuildRequires:  kio-devel >= %{kf5_version}
-BuildRequires:  kservice-devel >= %{kf5_version}
-BuildRequires:  kwindowsystem-devel >= %{kf5_version}
-BuildRequires:  kxmlgui-devel >= %{kf5_version}
+BuildRequires:  cmake(KF5GlobalAccel) >= %{kf5_version}
+BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
+BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
+BuildRequires:  cmake(KF5Service) >= %{kf5_version}
+BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
+BuildRequires:  cmake(KF5XmlGui) >= %{kf5_version}
 BuildRequires:  xz
 BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
 BuildRequires:  cmake(Qt5DBus) >= %{qt5_version}

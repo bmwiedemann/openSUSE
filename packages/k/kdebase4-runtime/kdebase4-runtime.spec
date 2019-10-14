@@ -62,7 +62,6 @@ BuildRequires:  libsmbclient-devel
 BuildRequires:  libssh-devel >= 0.6.0
 BuildRequires:  libtirpc-devel
 BuildRequires:  lzma-devel
-BuildRequires:  openexr-devel
 BuildRequires:  openslp-devel
 BuildRequires:  phonon-devel >= 4.3.80
 BuildRequires:  pkgconfig
@@ -233,7 +232,6 @@ fi
 %{_kde4_modulesdir}/comicbookthumbnail.so
 %{_kde4_modulesdir}/cursorthumbnail.so
 %{_kde4_modulesdir}/djvuthumbnail.so
-%{_kde4_modulesdir}/exrthumbnail.so
 %{_kde4_modulesdir}/fixhosturifilter.so
 %{_kde4_modulesdir}/imagethumbnail.so
 %{_kde4_modulesdir}/jpegthumbnail.so
@@ -402,7 +400,6 @@ fi
 %{_kde4_servicesdir}/directorythumbnail.desktop
 %{_kde4_servicesdir}/djvuthumbnail.desktop
 %{_kde4_servicesdir}/emoticons.desktop
-%{_kde4_servicesdir}/exrthumbnail.desktop
 %{_kde4_servicesdir}/filetypes.desktop
 %{_kde4_servicesdir}/fixhosturifilter.desktop
 %{_kde4_servicesdir}/htmlthumbnail.desktop

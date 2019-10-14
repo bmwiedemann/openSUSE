@@ -4,4 +4,7 @@
 GNOME-based software. You need the libgnomeui-devel package if you want
 to develop GNOME 2.x Desktop software.</description>
   <devel project="GNOME:Factory" package="libgnomeui"/>
+  <build>
+    <disable/>
+  </build>
 </package>

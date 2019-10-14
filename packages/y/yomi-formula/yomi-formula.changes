@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Oct  7 14:27:14 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update directoy persmissions based on the new configuration from
+  salt-standalone-formulas-configuration
+
+-------------------------------------------------------------------
+Mon Oct 07 14:05:26 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1570457098.f38ad71:
+  * mount: pre-set the chroot before calling zypper (bsc#1153062)
+  * mkinitrd: force re-creation if software changes
+
+-------------------------------------------------------------------
+Fri Oct 04 08:53:27 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1570179173.75fc04c:
+  * states: simplify default values on conditions
+  * machine-id: copy machine-id from the system
+  * reboot: replace backtick quote in shell command
+  * partitions: unify kind of quote
+  * users: force password hash under quotes
+  * metadata: split form in multiple subforms
+- Generate metadata information for subforms
+
+-------------------------------------------------------------------
+Tue Oct 01 13:07:20 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1569935178.cfe975f:
+  * image: check the presence of URL for inclusion
+  * image: fix umount_image_/mnt name
+  * installer: rename entry point to init.sls
+  * mark: remove guard mark and use mount detector
+  * states: get default value for empty sections
+  * pillar: install glibc-locale with pattern:enhanced_base
+  * bootloader: fix documentation and form
+  * metadata: add the initial metadata and form data
+
+-------------------------------------------------------------------
+Mon Sep  9 08:53:36 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add metadata directory
+- Adjust states and metadata directory permissions
+
+-------------------------------------------------------------------
+Fri Sep 06 13:53:49 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1567698409.1177c34:
+  * image: add new mechanism for software installation
+  * formatted: remove useless comments
+  * docs: refactor the documentation
+
+-------------------------------------------------------------------
+Fri Sep  6 13:52:50 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add metadata information
+- Adjust salt-formula directory permissions
+
+-------------------------------------------------------------------
 Mon Aug 26 11:43:31 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Lower the priority of /usr/share/yomi/pillar 

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 03 21:50:38 UTC 2019 - James McDonough <jmcdonough@suse.com>
+
+- Update to version 2.2.0
+  + Remove pytalloc_CObject_FromTallocPtr()
+  + Remove --extra-python (a build time mode to produce Python2 and Python3
+    bindings at the same time)
+  + New minor version to allow Samba 4.10 to release a talloc if
+    required from that branch
+
+-------------------------------------------------------------------
 Tue Mar  5 17:39:21 UTC 2019 - dmulder@suse.com
 
 - Update to version 2.1.16

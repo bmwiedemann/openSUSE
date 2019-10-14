@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Oct 10 14:25:45 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.0.php
+- No code changes since 5.16.90
+
+-------------------------------------------------------------------
+Thu Sep 19 12:32:32 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.90.php
+- Changes since 5.16.5:
+  * Make renderDialGroove() area match the maximum renderDialContents() area
+  * Fix colors from KStatefulBrushes not using application colorschemes
+  * Move drawIndicatorButtonDropDownPrimitive separator when sunken
+  * Fix width and separator of ToolButtonComplexControl outline w/ dropdown menu
+  * Revert "Fix width and separator of ToolButtonComplexControl outline w/ dropdown menu"
+  * Fix width and separator of ToolButtonComplexControl outline w/ dropdown menu
+  * Removed GlobalPos from QMouseEvent constructor
+  * Remove unneeded 1 pixel margin around side panels
+  * Remove qtquickcontrols dir
+  * - fixed "missing override" warnings - removed useless "virtual" specifications - removed useless destructors - cleanup variable initializations - moved protected methods as private when possible for better encapsulation
+  * re-read color palettes when application color changes (kde#408416)
+  * Set default border value in all places
+  * Recommend window border size "None"
+  * Disable extended resize borders for maximized windows CCBUG: 407989
+
+-------------------------------------------------------------------
 Tue Sep  3 12:44:11 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.16.5

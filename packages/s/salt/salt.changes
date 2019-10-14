@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 26 10:23:39 UTC 2019 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Improve batch_async to release consumed memory (bsc#1140912)
+- Fix memory leak produced by batch async find_jobs mechanism (bsc#1140912)
+- Grant read and execute permission to others (bsc#1150447)
+
+- Added:
+  * improve-batch_async-to-release-consumed-memory-bsc-1.patch
+  * fix-memory-leak-produced-by-batch-async-find_jobs-me.patch
+
+-------------------------------------------------------------------
 Thu Sep  5 17:45:50 UTC 2019 - Jochen Breuer <jbreuer@suse.de>
 
 - Require shadow instead of old pwdutils (bsc#1130588)

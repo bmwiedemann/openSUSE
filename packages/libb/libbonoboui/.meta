@@ -3,4 +3,7 @@
   <description>This library contains the Bonobo-related part of the GNOME UI
 libraries.</description>
   <devel project="GNOME:Factory" package="libbonoboui"/>
+  <build>
+    <disable/>
+  </build>
 </package>

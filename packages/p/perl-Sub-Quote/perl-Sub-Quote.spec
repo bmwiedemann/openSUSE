@@ -17,7 +17,7 @@
 
 
 Name:           perl-Sub-Quote
-Version:        2.006003
+Version:        2.006006
 Release:        0
 %define cpan_name Sub-Quote
 Summary:        Efficient generation of subroutines via string eval

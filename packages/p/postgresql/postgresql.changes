@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct  7 08:26:39 UTC 2019 - Reinhard Max <max@suse.com>
+
+- Use the correct content for .bash_profile (boo#1153168).
+
+-------------------------------------------------------------------
+Mon Sep 23 14:03:32 UTC 2019 - Reinhard Max <max@suse.com>
+
+- Stop shipping SUSEfirewall2 config files (bsc#1151591).
+- Fix installation of bash_profile for SLE11 (pre systemd).
+
+-------------------------------------------------------------------
 Fri Feb 22 07:46:53 UTC 2019 - Franck Bui <fbui@suse.com>
 
 - Drop use of $FIRST_ARG in .spec

@@ -401,4 +401,12 @@ https://build.opensuse.org/request/show/121743 (forwarded request 121894 from va
 </comment>
     <requestid>696984</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>5419c18cdcf3a512f4dfadeeccdf7e71</srcmd5>
+    <version>1.1.3+20190413</version>
+    <time>1571049096</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>735812</requestid>
+  </revision>
 </revisionlist>

@@ -273,16 +273,18 @@ mkdir -p %buildroot/var/run/postgresql
 install -m755 -d %buildroot%{_fillupdir}
 install -m644 %{S:1} %buildroot%{_fillupdir}/sysconfig.postgresql
 
+%if 0%{?suse_version} < 1550
 install -m755 -d %buildroot%fwdir
 install -m644 %{S:2} %buildroot%fwdir/%fwname
+%endif
 
 install -m755 -d %buildroot/usr/sbin
 
 install -m755 -d %buildroot/usr/share/postgresql
-install -m640 %{S:7} %buildroot/usr/share/postgresql/bash_profile
 install -m755 %{S:7} %buildroot/usr/share/postgresql/install-alternatives
 
 %if %{with systemd}
+install -m644 %{S:5} %buildroot/usr/share/postgresql/bash_profile
 install -m755 -d %buildroot/%_tmpfilesdir
 install -m644 %{S:3} %buildroot%_tmpfilesdir/postgresql.conf
 install -m755 %{S:6} %buildroot/usr/share/postgresql
@@ -292,6 +294,7 @@ install -m444 %{S:4} %buildroot%_unitdir
 
 ln -sf service %buildroot/usr/sbin/rcpostgresql
 %else
+install -m640 %{S:5} %buildroot/var/lib/pgsql/.bash_profile
 install -m755 -d %buildroot/etc/init.d
 install -m755 %{S:0} %buildroot/etc/init.d/postgresql
 ln -sf /etc/init.d/postgresql %buildroot/usr/sbin/rcpostgresql
@@ -370,13 +373,19 @@ fi
 %defattr(-,root,root,-)
 %doc README
 %attr(750,postgres,postgres) %dir /var/lib/pgsql
+%if %{with systemd}
 %attr(644,root,root) /usr/share/postgresql/bash_profile
 %ghost %config %attr(640,postgres,postgres) /var/lib/pgsql/.bash_profile
+%else
+%config %attr(640,postgres,postgres) /var/lib/pgsql/.bash_profile
+%endif
 
+%if 0%{?suse_version} < 1550
 %if 0%{?suse_version} > 1110
 %dir %fwdir
 %endif
 %config %fwdir/%fwname
+%endif
 
 %{_fillupdir}/sysconfig.postgresql
 /usr/sbin/rcpostgresql

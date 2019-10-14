@@ -2,5 +2,8 @@
   <title>Module for reading and writing spatial data files</title>
   <description>Fiona is OGR's spatial data API for Python programmers</description>
   <devel project="Application:Geo" package="python-Fiona"/>
+  <build>
+    <disable/>
+  </build>
   <url>http://github.com/Toblerity/Fiona</url>
 </package>

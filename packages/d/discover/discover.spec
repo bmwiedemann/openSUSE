@@ -18,32 +18,23 @@
 
 %bcond_without lang
 Name:           discover
-Version:        5.16.5
+Version:        5.17.0
 Release:        0
 Summary:        Software store for the KDE Plasma desktop
 License:        GPL-2.0-only AND GPL-3.0-only AND GPL-3.0-or-later
 Group:          System/GUI/KDE
 Url:            https://quickgit.kde.org/?p=discover.git
-Source:         https://download.kde.org/stable/plasma/%{version}/discover-%{version}.tar.xz
+Source:         discover-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/discover-%{version}.tar.xz.sig
+Source1:        discover-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Warning-for-FlatHub.patch
-%if 0%{?suse_version} < 1330
-# It does not build with the default compiler (GCC 4.8) on Leap 42.x
-%if 0%{?sle_version} < 120300
-BuildRequires:  gcc6-c++
-%else
-BuildRequires:  gcc7-c++
-%endif
-%endif
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  extra-cmake-modules
 BuildRequires:  flatpak-devel
 BuildRequires:  kf5-filesystem
-BuildRequires:  kirigami2-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(AppStreamQt) >= 0.11.1
 BuildRequires:  cmake(KF5Archive)
@@ -56,6 +47,7 @@ BuildRequires:  cmake(KF5Declarative)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5ItemModels)
 BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Kirigami2)
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5Plasma)
@@ -71,9 +63,7 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  cmake(packagekitqt5) >= 1.0.1
-%if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(fwupd) >= 1.0.6
-%endif
 Requires:       kirigami2
 Requires:       libqt5-qtquickcontrols2
 Recommends:     %{name}-lang
@@ -81,8 +71,9 @@ Recommends:     %{name}-backend-packagekit
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150100
 Recommends:     %{name}-backend-flatpak
 %endif
-# Disabled for now, reported to cause crashes
-# Recommends:     %{name}-backend-fwupd
+# Conflicts with plasma5-pk-updates
+# Recommends:     %%{name}-notifier
+Recommends:     %{name}-backend-fwupd
 
 %description
 Discover is a graphical software manager for the KDE Plasma desktop. It helps users to find software they might want easily and quickly.
@@ -97,11 +88,7 @@ Requires:       %{name} = %{version}
 # it's useless without system package management
 Requires:       AppStream
 Requires:       PackageKit
-%if 0%{?suse_version} > 1320 || 0%{?sle_version} >= 120300
 Requires:       appstream-provider
-%else
-Requires:       libzypp-plugin-appdata
-%endif
 
 %description backend-packagekit
 A plugin for Discover to support management of system packages and repositories
@@ -125,33 +112,23 @@ Requires:       %{name} = %{version}
 %description backend-fwupd
 A plugin for Discover to support updates of system firmware using fwupd.
 
-%package plasmoid
-Summary:        Update notification plasmoid for KDE Software Manager
+%package notifier
+Summary:        Update notifier for KDE Software Manager
 Group:          System/GUI/KDE
 Conflicts:      plasma5-pk-updates
+Obsoletes:      %{name}-plasmoid < %{version}
 Requires:       %{name} = %{version}
 
-%description plasmoid
-This is a plasmoid to notify the user that updates are available and allows the
+%description notifier
+This is a notifier for Discover to inform the user that updates are available and allows the
 user to install them using Discover.
 
 %lang_package
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
-  %if 0%{?suse_version} < 1330
-    # It does not build with the default compiler (GCC 4.8) on Leap 42.x
-  %if 0%{?sle_version} < 120300
-    export CC=gcc-6
-    export CXX=g++-6
-  %else
-    export CC=gcc-7
-    export CXX=g++-7
-  %endif
-  %endif
   %cmake_kf5 -d build
   %make_jobs
 
@@ -164,12 +141,11 @@ user to install them using Discover.
 
 %if %{with lang}
   %find_lang libdiscover %{name}.lang
-  %find_lang plasma-discover-notifier %{name}.lang
   %find_lang plasma-discover %{name}.lang
 
-  %find_lang plasma_applet_org.kde.discovernotifier plasma.lang
+  %find_lang plasma-discover-notifier notifier.lang
 %else
-  touch plasma.lang
+  touch notifier.lang
 %endif
 
 %files
@@ -178,7 +154,6 @@ user to install them using Discover.
 %{_kf5_libdir}/plasma-discover/
 %dir %{_kf5_plugindir}/discover/
 %{_kf5_plugindir}/discover/kns-backend.so
-%{_kf5_qmldir}/
 %{_kf5_applicationsdir}/org.kde.discover.desktop
 %{_kf5_applicationsdir}/org.kde.discover.urlhandler.desktop
 %{_kf5_iconsdir}/hicolor/*/apps/plasmadiscover.*
@@ -212,19 +187,17 @@ user to install them using Discover.
 %{_kf5_iconsdir}/hicolor/*/apps/flatpak-discover.svg
 %endif
 
-%if 0%{?suse_version} >= 1500
 %files backend-fwupd
 %license COPYING*
 %{_kf5_plugindir}/discover/fwupd-backend.so
-%endif
 
-%files plasmoid -f plasma.lang
+%files notifier -f notifier.lang
 %license COPYING*
-%dir %{_kf5_sharedir}/plasma
-%dir %{_kf5_sharedir}/plasma/plasmoids
-%{_kf5_sharedir}/plasma/plasmoids/org.kde.discovernotifier/
-%{_kf5_servicesdir}/plasma-applet-org.kde.discovernotifier.desktop
-%{_kf5_plugindir}/discover-notifier/
-%{_kf5_appstreamdir}/org.kde.discovernotifier.appdata.xml
+%dir %{_kf5_plugindir}/discover-notifier
+%{_kf5_configdir}/autostart/org.kde.discover.notifier.desktop
+%{_libdir}/libexec/DiscoverNotifier
+%{_kf5_plugindir}/discover-notifier/DiscoverPackageKitNotifier.so
+%{_kf5_plugindir}/discover-notifier/FlatpakNotifier.so
+%{_kf5_applicationsdir}/org.kde.discover.notifier.desktop
 
 %changelog

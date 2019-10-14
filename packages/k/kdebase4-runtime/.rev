@@ -1847,4 +1847,13 @@
     <comment></comment>
     <requestid>658517</requestid>
   </revision>
+  <revision rev="243" vrev="7">
+    <srcmd5>d55788010148c62a710ae7311568ed33</srcmd5>
+    <version>17.08.3</version>
+    <time>1571049127</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable exr support, broken with openexr 2.4.0 and not really
+  needed anymore anyway</comment>
+    <requestid>736810</requestid>
+  </revision>
 </revisionlist>

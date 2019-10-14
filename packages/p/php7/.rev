@@ -740,4 +740,23 @@
   several bug fixes. See https://www.php.net/ChangeLog-7.php#7.3.9 (forwarded request 727436 from adkorte)</comment>
     <requestid>727709</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>504e7c7527f5f0536e2baef93ce1ac99</srcmd5>
+    <version>7.3.10</version>
+    <time>1571049114</time>
+    <user>dimstar_suse</user>
+    <comment>- provide test results via multibuild :test
+- added sources
+  + _multibuild
+
+- remove pcre.jit=0 setting default as https://bugs.php.net/bug.php?id=77260
+  is solved on pcre2 side [bsc#1124446]
+- modified patches
+  % php-ini.patch (amended)
+
+- updated to 7.3.10: This is a security release which also contains
+  several bug fixes. See https://www.php.net/ChangeLog-7.php#7.3.10
++-------------------------------------------------------------------</comment>
+    <requestid>735834</requestid>
+  </revision>
 </revisionlist>

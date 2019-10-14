@@ -5,4 +5,7 @@ platform. GNOME has no specific window manager. You are totally free in
 your choice. Many GNOME users like Sawfish, Enlightenment, or IceWM as
 a window manager for GNOME (see those packages).</description>
   <devel project="GNOME:Factory" package="libgnome"/>
+  <build>
+    <disable/>
+  </build>
 </package>

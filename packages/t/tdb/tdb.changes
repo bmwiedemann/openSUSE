@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 03 21:55:29 UTC 2019 - James McDonough <jmcdonough@suse.com>
+
+- Update to version 1.4.2
+  + Build fixes
+  + Improve the performance by inlining the tdb_oob() checks
+  + Do not propogate any errors from tdb_repack() to
+    tdb_transaction_commit();  (bso#13952)
+  + Remove Python 2.x support except to build just the bare C library
+  + Remove --extra-python (a build time mode to produce Python2 and Python3
+    bindings at the same time)
+  + New minor version to allow Samba 4.10 to release a tdb if
+    required from that branch
+
+-------------------------------------------------------------------
 Tue Mar  5 17:02:59 UTC 2019 - dmulder@suse.com
 
 - Update to 1.3.18

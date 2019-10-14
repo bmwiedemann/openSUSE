@@ -1588,4 +1588,14 @@ READ https://httpd.apache.org/docs/2.4/upgrading.html
     <comment></comment>
     <requestid>726493</requestid>
   </revision>
+  <revision rev="160" vrev="3">
+    <srcmd5>f506af21a9cee6425d68614106ecc83d</srcmd5>
+    <version>2.4.41</version>
+    <time>1571049061</time>
+    <user>dimstar_suse</user>
+    <comment>- Add custom log files to logrotate according to apache2-vhost.template
+
+In apache2-vhost.template, we recommend users to create custom logs like `/var/log/apache2/dummy-host.example.com-access_log`. But these files are not processed by logrotate and will grow fast. So I add these files to logrotate configuration. (forwarded request 735419 from guoyunhe)</comment>
+    <requestid>735601</requestid>
+  </revision>
 </revisionlist>

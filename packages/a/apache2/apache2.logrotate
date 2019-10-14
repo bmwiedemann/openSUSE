@@ -1,4 +1,4 @@
-/var/log/apache2/access_log /var/log/apache2/ssl_request_log {
+/var/log/apache2/access_log /var/log/apache2/*-access_log /var/log/apache2/ssl_request_log {
     compress
     dateext
     maxage 365
@@ -14,7 +14,7 @@
     endscript
 }
 
-/var/log/apache2/error_log /var/log/apache2/suexec.log /var/log/apache2/ssl_engine_log /var/log/apache2/deflate.log {
+/var/log/apache2/error_log /var/log/apache2/*-error_log /var/log/apache2/suexec.log /var/log/apache2/ssl_engine_log /var/log/apache2/deflate.log {
     compress
     dateext
     maxage 365

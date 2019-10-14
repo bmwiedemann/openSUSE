@@ -2,4 +2,7 @@
   <title>Read font files and render glyphs from Perl using FreeType2</title>
   <description>Read font files and render glyphs from Perl using FreeType2</description>
   <devel project="devel:languages:perl" package="perl-Font-FreeType"/>
+  <build>
+    <disable/>
+  </build>
 </package>

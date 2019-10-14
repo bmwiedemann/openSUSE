@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Oct 10 14:25:45 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.0.php
+- Changes since 5.16.90:
+  * [GTK3] Make selection-mode headerbars closer to Adwaita
+  * [GTK3] Inactive windows now show button hover decoration
+  * [GTK3] Fix menu bugs
+  * [GTK3] CSD windows show handles on .solid-csd (kde#412080)
+  * [GTK3] Improve button appearance
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Thu Sep 19 12:32:33 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.90.php
+- Changes since 5.16.5:
+  * Fix build_theme.sh invocation without arguments
+  * [GTK3] Make CSD window decorations 18px instead of 16px
+  * [GTK3] Have checkboxes and radiobuttons respect the user's color scheme.
+  * [GTK3] Recolor CSD titlebuttons according to user's color scheme
+  * [GTK3 -> Chrome/ium] Tweak tab stylings (kde#403108)
+  * GTK3 - Fix menu port to colordefs
+  * Convert colors into GTK colordefs
+  * [GTK3] Give checkboxes and radiobuttons a pressed appearance
+  * Merge gtk320 and gtk318 into gtk3
+  * kconf_update: Also migrate from BreezyGTK
+  * Border for "separator_menu_item" should be 0 (kde#404045)
+  * Remove background from scrollbars when hovering on them
+- Remove patches, now upstream:
+  * update_from_BreezeGTK.patch
+
+-------------------------------------------------------------------
 Tue Sep  3 12:44:11 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.16.5

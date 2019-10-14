@@ -18,7 +18,7 @@
 
 %{!?py3_soflags:  %global py3_soflags cpython-%{python3_version_nodots}m}
 
-%define talloc_version 2.1.15
+%define talloc_version 2.2.0
 %define build_man 0
 
 %if %{build_man}
@@ -45,7 +45,7 @@ BuildRequires:  python3-talloc-devel >= %{talloc_version}
 %define	build_make_smp_mflags %{?jobs:-j%jobs}
 %endif
 Url:            https://tevent.samba.org/
-Version:        0.9.39
+Version:        0.10.0
 Release:        0
 Summary:        An event system based on the talloc memory management library
 License:        LGPL-3.0-or-later

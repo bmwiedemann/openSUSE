@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kscreen5
-Version:        5.16.5
+Version:        5.17.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -28,9 +28,9 @@ Summary:        Screen management software by KDE
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 Url:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/kscreen-%{version}.tar.xz
+Source:         kscreen-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kscreen-%{version}.tar.xz.sig
+Source1:        kscreen-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 2.8.12
@@ -44,6 +44,7 @@ BuildRequires:  cmake(KF5Declarative)
 BuildRequires:  cmake(KF5GlobalAccel)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5Plasma)
 BuildRequires:  cmake(KF5Screen) >= %{_plasma5_version}
 BuildRequires:  cmake(KF5WidgetsAddons)
@@ -90,15 +91,16 @@ This package provides a Plasma widget to control common screen configuration opt
 
 %files
 %license COPYING*
+%dir %{_kf5_sharedir}/kpackage
+%dir %{_kf5_sharedir}/kpackage/kcms
 %{_kf5_bindir}/kscreen-console
 %{_kf5_plugindir}/
-%{_kf5_iconsdir}/hicolor/*/actions/kdocumentinfo.*
-%{_kf5_sharedir}/kcm_kscreen/
+%{_kf5_sharedir}/kpackage/kcms/kcm_kscreen/
 %dir %{_kf5_sharedir}/kded_kscreen/
 %dir %{_kf5_sharedir}/kded_kscreen/qml
 %{_kf5_sharedir}/kded_kscreen/qml/*.qml
 %{_kf5_servicesdir}/
-%{_kf5_debugdir}/
+%{_kf5_debugdir}/kscreen.categories
 %{_kf5_appstreamdir}/org.kde.kscreen.appdata.xml
 
 %files plasmoid

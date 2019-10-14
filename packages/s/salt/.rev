@@ -1094,4 +1094,17 @@ let build start it or we will get libvirt errors.
 - Move server_id deprecation warning to reduce log spamming (bsc#1135567) (bsc#1135732)</comment>
     <requestid>728977</requestid>
   </revision>
+  <revision rev="93" vrev="12">
+    <srcmd5>d7b430415e908ebff5c1ee5ca921259f</srcmd5>
+    <version>2019.2.0</version>
+    <time>1571049050</time>
+    <user>dimstar_suse</user>
+    <comment>- Improve batch_async to release consumed memory (bsc#1140912)
+- Fix memory leak produced by batch async find_jobs mechanism (bsc#1140912)
+- Grant read and execute permission to others (bsc#1150447)
+- Added:
+  * improve-batch_async-to-release-consumed-memory-bsc-1.patch
+  * fix-memory-leak-produced-by-batch-async-find_jobs-me.patch</comment>
+    <requestid>733437</requestid>
+  </revision>
 </revisionlist>

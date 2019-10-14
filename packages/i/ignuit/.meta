@@ -6,5 +6,8 @@ and supports UTF-8. It can be used for both long-term learning
 and cramming. Ignuit can import and export several file formats,
 including CSV.</description>
   <devel project="Education" package="ignuit"/>
+  <build>
+    <disable/>
+  </build>
   <url>http://homepages.ihug.co.nz/~trmusson/programs.html#ignuit</url>
 </package>

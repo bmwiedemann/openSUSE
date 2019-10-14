@@ -45,7 +45,7 @@ rbac-manager in a kubernetes cluster.
 %prep
 %setup -q # a1
 rm -rf vendor
-tar xf %{SOURCE1}
+tar -xf %{SOURCE1}
 
 %build
 go build -mod vendor -buildmode=pie -a -o rbac-manager ./cmd/manager/main.go

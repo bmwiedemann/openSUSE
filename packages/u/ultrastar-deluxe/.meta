@@ -2,4 +2,7 @@
   <title></title>
   <description></description>
   <devel project="games" package="ultrastar-deluxe"/>
+  <build>
+    <disable/>
+  </build>
 </package>

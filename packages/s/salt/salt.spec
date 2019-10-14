@@ -220,25 +220,29 @@ Patch72:       avoid-traceback-when-http.query-request-cannot-be-pe.patch
 #                     https://github.com/saltstack/salt/pull/54022
 #                     https://github.com/saltstack/salt/pull/54024
 Patch73:       accumulated-changes-required-for-yomi-165.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/177
+Patch74:       restore-default-behaviour-of-pkg-list-return.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/commit/6af07030a502c427781991fc9a2b994fa04ef32e
+Patch75:       fix-memory-leak-produced-by-batch-async-find_jobs-me.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/159
-Patch74:       move-server_id-deprecation-warning-to-reduce-log-spa.patch
+Patch76:       move-server_id-deprecation-warning-to-reduce-log-spa.patch
 # PATCH_FIX_UPSTREAM: https://github.com/saltstack/salt/pull/54077
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/166
-Patch75:       fix-aptpkg-systemd-call-bsc-1143301.patch
+Patch77:       fix-aptpkg-systemd-call-bsc-1143301.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/170
-Patch76:       strip-trailing-from-repo.uri-when-comparing-repos-in.patch
-# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/177
-Patch77:       restore-default-behaviour-of-pkg-list-return.patch
+Patch78:       strip-trailing-from-repo.uri-when-comparing-repos-in.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/172
-Patch78:       implement-network.fqdns-module-function-bsc-1134860-.patch
+Patch79:       implement-network.fqdns-module-function-bsc-1134860-.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/173
-Patch79:       2019.2.0-pr-54196-backport-173.patch
+Patch80:       2019.2.0-pr-54196-backport-173.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/174
-Patch80:       virt.volume_infos-needs-to-ignore-inactive-pools-174.patch
+Patch81:       virt.volume_infos-needs-to-ignore-inactive-pools-174.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/175
-Patch81:       virt.volume_infos-silence-libvirt-error-message-175.patch
+Patch82:       virt.volume_infos-silence-libvirt-error-message-175.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/176
-Patch82:       fix-virt.full_info-176.patch
+Patch83:       fix-virt.full_info-176.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/commit/002543df392f65d95dbc127dc058ac897f2035ed
+Patch84:       improve-batch_async-to-release-consumed-memory-bsc-1.patch
 
 # BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -799,6 +803,8 @@ cp %{S:5} ./.travis.yml
 %patch80 -p1
 %patch81 -p1
 %patch82 -p1
+%patch83 -p1
+%patch84 -p1
 
 %build
 %if 0%{?build_py2}
@@ -1519,9 +1525,9 @@ rm -f %{_localstatedir}/cache/salt/minion/thin/version
 %files standalone-formulas-configuration
 %defattr(-,root,root)
 %config(noreplace) %attr(0640, root, salt) %{_sysconfdir}/salt/master.d/standalone-formulas-configuration.conf
-%dir               %attr(0750, root, salt) %{_prefix}/share/salt-formulas/
-%dir               %attr(0750, root, salt) %{_prefix}/share/salt-formulas/states/
-%dir               %attr(0750, root, salt) %{_prefix}/share/salt-formulas/metadata/
+%dir               %attr(0755, root, salt) %{_prefix}/share/salt-formulas/
+%dir               %attr(0755, root, salt) %{_prefix}/share/salt-formulas/states/
+%dir               %attr(0755, root, salt) %{_prefix}/share/salt-formulas/metadata/
 
 %changelog
 

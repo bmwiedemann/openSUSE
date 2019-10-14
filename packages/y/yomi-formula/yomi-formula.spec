@@ -20,7 +20,7 @@
 %define fdir  %{_datadir}/salt-formulas
 
 Name:           yomi-formula
-Version:        0.0.1+git.1566569312.4133e8e
+Version:        0.0.1+git.1570457098.f38ad71
 Release:        0
 Summary:        Yomi - Yet one more installer
 License:        Apache-2.0
@@ -96,7 +96,7 @@ EOF
 
 # Eauth configuration and example user-list.txt
 cat <<EOF > %{buildroot}%{_datadir}/%{fname}/eauth.conf
-external_auth: 
+external_auth:
   file:
     ^filename: /usr/share/yomi/user-list.txt
     salt:
@@ -117,16 +117,30 @@ file_roots:
     - /srv/salt
 EOF
 
+# Metadata, forms and subform (and fake states)
+for form in metadata/form*.yml; do
+    form_name=${form#metadata/form-}
+    form_name=${form_name%.yml}
+    mkdir -p %{buildroot}%{fdir}/metadata/$form_name/
+    cp -a $form %{buildroot}%{fdir}/metadata/$form_name/form.yml
+    cp metadata/metadata.yml %{buildroot}%{fdir}/metadata/$form_name/
+    if [ ! -f %{buildroot}%{fdir}/states/$form_name/init.sls ]; then
+        mkdir -p %{buildroot}%{fdir}/states/$form_name/
+        touch %{buildroot}%{fdir}/states/$form_name/init.sls
+    fi
+done
+
 %files
-%defattr(0640,root,salt,0750)
+%defattr(-,root,root,-)
 %license LICENSE
 %doc README.md docs/*
-%dir %{fdir}/
-%dir %{fdir}/states/
-%dir %{fdir}/states/%{fname}
-%dir %{_datadir}/%{fname}
+%dir %attr(0755, root, salt) %{fdir}/
+%dir %attr(0755, root, salt) %{fdir}/states/
+%dir %attr(0755, root, salt) %{fdir}/metadata/
+%dir %attr(0755, root, salt) %{_datadir}/%{fname}
 %{fdir}/states/
+%{fdir}/metadata/
 %{_datadir}/%{fname}
-%attr(755,root,root) %{_bindir}/monitor
+%{_bindir}/monitor
 
 %changelog

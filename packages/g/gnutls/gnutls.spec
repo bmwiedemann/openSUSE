@@ -28,7 +28,7 @@
 %bcond_with tpm
 %bcond_without guile
 Name:           gnutls
-Version:        3.6.9
+Version:        3.6.10
 Release:        0
 Summary:        The GNU Transport Layer Security Library
 License:        LGPL-2.1-or-later AND GPL-3.0-or-later

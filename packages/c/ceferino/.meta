@@ -9,4 +9,7 @@ a large ball, it doesn't just vanish, but breaks apart into two smaller balls.
 Levels consist of little platforms connected by ladders, so you can go
 up and down or find cover if needed.</description>
   <devel project="games" package="ceferino"/>
+  <build>
+    <disable/>
+  </build>
 </package>

@@ -49,4 +49,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>727757</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a3590ad30582a1f0b88300414a68b475</srcmd5>
+    <version>0.0.1+git.1570457098.f38ad71</version>
+    <time>1571049121</time>
+    <user>dimstar_suse</user>
+    <comment>- Update directoy persmissions based on the new configuration from
+  salt-standalone-formulas-configuration
+
+- Update to version 0.0.1+git.1570457098.f38ad71:
+  * mount: pre-set the chroot before calling zypper (bsc#1153062)
+  * mkinitrd: force re-creation if software changes
+
+- Update to version 0.0.1+git.1570179173.75fc04c:
+  * states: simplify default values on conditions
+  * machine-id: copy machine-id from the system
+  * reboot: replace backtick quote in shell command
+  * partitions: unify kind of quote
+  * users: force password hash under quotes
+  * metadata: split form in multiple subforms
+- Generate metadata information for subforms
+
+- Update to version 0.0.1+git.1569935178.cfe975f:
+  * image: check the presence of URL for inclusion
+  * image: fix umount_image_/mnt name
+  * installer: rename entry point to init.sls
+  * mark: remove guard mark and use mount detector
+  * states: get default value for empty sections
+  * pillar: install glibc-locale with pattern:enhanced_base
+  * bootloader: fix documentation and form
+  * metadata: add the initial metadata and form data
+
+- Add metadata directory
+- Adjust states and metadata directory permissions
+
+- Update to version 0.0.1+git.1567698409.1177c34:</comment>
+    <requestid>735879</requestid>
+  </revision>
 </revisionlist>

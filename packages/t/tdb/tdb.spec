@@ -27,7 +27,7 @@ BuildRequires:  libxslt
 BuildRequires:  pkg-config
 BuildRequires:  python3-devel
 Url:            https://tdb.samba.org/
-Version:        1.3.18
+Version:        1.4.2
 Release:        0
 Summary:        Samba Trivial Database
 License:        LGPL-3.0-or-later

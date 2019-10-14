@@ -22,15 +22,15 @@
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           breeze
-Version:        5.16.5
+Version:        5.17.0
 Release:        0
 Summary:        Plasma Desktop artwork, styles and assets
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/breeze-%{version}.tar.xz
+Source:         breeze-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/breeze-%{version}.tar.xz.sig
+Source1:        breeze-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 2.8.12
@@ -115,7 +115,7 @@ Library containing support code for the Breeze Qt5 style.
 %setup -q
 
 %build
-  %cmake_kf5 -d build -- -DBUILD_po=OFF -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
+  %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
   %make_jobs
 
 %install
@@ -148,7 +148,6 @@ Library containing support code for the Breeze Qt5 style.
 %{_kf5_sharedir}/color-schemes/
 %dir %{_kf5_sharedir}/plasma
 %{_kf5_sharedir}/plasma/look-and-feel/
-%{_kf5_qmldir}/QtQuick/
 %{_kf5_libdir}/kconf_update_bin/
 %{_kf5_sharedir}/kconf_update/
 %dir %{_kf5_plugindir}
