@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           spectacle
-Version:        19.08.1
+Version:        19.08.2
 Release:        0
 Summary:        Screen Capture Program
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later
@@ -46,6 +46,7 @@ BuildRequires:  ki18n-devel
 BuildRequires:  kio-devel
 BuildRequires:  knewstuff-devel
 BuildRequires:  knotifications-devel
+BuildRequires:  kwayland-devel
 BuildRequires:  kwidgetsaddons-devel
 BuildRequires:  kwindowsystem-devel
 BuildRequires:  kxmlgui-devel

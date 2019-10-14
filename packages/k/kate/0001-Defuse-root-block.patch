@@ -12,11 +12,11 @@ That way it's only an impact on usability.
  kwrite/main.cpp | 3 +--
  2 files changed, 2 insertions(+), 4 deletions(-)
 
-Index: kate-19.03.60git.20181224T024634~7203979fc/kate/main.cpp
+Index: kate-19.03.60git.20190930T050110~1d9a68423/kate/main.cpp
 ===================================================================
---- kate-19.03.60git.20181224T024634~7203979fc.orig/kate/main.cpp	2018-12-25 09:49:15.867478873 +0100
-+++ kate-19.03.60git.20181224T024634~7203979fc/kate/main.cpp	2018-12-25 09:49:19.231424088 +0100
-@@ -61,13 +61,8 @@
+--- kate-19.03.60git.20190930T050110~1d9a68423.orig/kate/main.cpp	2019-09-30 05:01:10.000000000 +0200
++++ kate-19.03.60git.20190930T050110~1d9a68423/kate/main.cpp	2019-09-30 07:28:13.299460412 +0200
+@@ -60,13 +60,8 @@
  #ifndef Q_OS_WIN
      // Prohibit using sudo or kdesu (but allow using the root user directly)
      if (getuid() == 0) {
@@ -32,11 +32,11 @@ Index: kate-19.03.60git.20181224T024634~7203979fc/kate/main.cpp
      }
  #endif
      /**
-Index: kate-19.03.60git.20181224T024634~7203979fc/kwrite/main.cpp
+Index: kate-19.03.60git.20190930T050110~1d9a68423/kwrite/main.cpp
 ===================================================================
---- kate-19.03.60git.20181224T024634~7203979fc.orig/kwrite/main.cpp	2018-12-25 09:49:19.231424088 +0100
-+++ kate-19.03.60git.20181224T024634~7203979fc/kwrite/main.cpp	2018-12-25 09:50:32.302253532 +0100
-@@ -52,13 +52,8 @@
+--- kate-19.03.60git.20190930T050110~1d9a68423.orig/kwrite/main.cpp	2019-09-30 05:01:10.000000000 +0200
++++ kate-19.03.60git.20190930T050110~1d9a68423/kwrite/main.cpp	2019-09-30 07:28:13.299460412 +0200
+@@ -54,13 +54,8 @@
  #ifndef Q_OS_WIN
      // Prohibit using sudo or kdesu (but allow using the root user directly)
      if (getuid() == 0) {
@@ -51,4 +51,4 @@ Index: kate-19.03.60git.20181224T024634~7203979fc/kwrite/main.cpp
 +       std::cout << "SUDO_EDITOR=kwrite sudoedit <file>" << std::endl;
      }
  #endif
-     /**
+ 

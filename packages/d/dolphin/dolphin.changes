@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 11 07:42:24 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.2.php
+- Changes since 19.08.1:
+  * Fix crash when lauching dolphin with a search scheme
+  * Update searchbox on URL changes (Fix D24369)
+  * Update searchbar parameters on URL change
+  * Bring back placesitemmodeltest
+  * Fix ascending/descending choosers getting unchecked when re-selecting the same sort order (kde#411223)
+
+-------------------------------------------------------------------
 Thu Sep  5 14:00:00 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.1

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct 11 07:43:03 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.2.php
+- Changes since 19.08.1:
+  * Allow loading of pre 19.08 session files (kde#412173)
+  * Keep empty lines when "trim leading spaces" is enabled (kde#412479)
+  * enable hidpi auto scaling
+  * anti-alias line character painting, too, with the text aliasing config options
+  * fix many of the rendering artifacts for hi-dpi setups
+  * Correct split view and keyboard navigation (kde#411387)
+  * Fix split view crashes when using keyboard navigation with some themes (kde#411387)
+  * Make sure font weight value is within allowed range
+  * fix rendering artifacts introduced by calling winId (kde#411965)
+
+-------------------------------------------------------------------
 Thu Sep  5 14:00:51 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.1

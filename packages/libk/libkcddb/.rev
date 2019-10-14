@@ -279,4 +279,12 @@
     <comment>KDE Applications 19.08.1 (forwarded request 728705 from luca_b)</comment>
     <requestid>728919</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>20c1edab6c275a7207153f01d4398da8</srcmd5>
+    <version>19.08.2</version>
+    <time>1571052640</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.08.2</comment>
+    <requestid>737841</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct 11 07:42:33 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.2.php
+- Changes since 19.08.1:
+  * Reasonable sub-toolbar sizes, like normal QPushButton sizes
+  * Load terminal on demand to have some parent widget for WINDOWID computation
+  * Tab bar: use tab-close icon again
+  * Fix hi-dpi rendering of tab buttons
+  * Fix hi-dpi rendering of toolview buttons
+  * Tab bar: Fix close button in right-to-left layout
+  * Fix HiDPI support for KWrite + Kate
+  * Fix fortran symbol viewer for new highlighting names
+- Refreshed patches:
+  * 0001-Defuse-root-block.patch
+
+-------------------------------------------------------------------
 Thu Sep  5 14:00:12 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.1

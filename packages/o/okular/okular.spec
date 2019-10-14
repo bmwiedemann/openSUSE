@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           okular
-Version:        19.08.1
+Version:        19.08.2
 Release:        0
 Summary:        Document Viewer
 # GPL-3.0+ license used by a runtime plugin
