@@ -17,10 +17,10 @@
 
 
 %define lname   libKF5Solid5
-%define _tar_path 5.62
+%define _tar_path 5.63
 %bcond_without lang
 Name:           solid
-Version:        5.62.0
+Version:        5.63.0
 Release:        0
 Summary:        KDE Desktop hardware abstraction
 License:        LGPL-2.1-or-later
@@ -39,15 +39,15 @@ BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt5Concurrent) >= 5.6.0
-BuildRequires:  cmake(Qt5DBus) >= 5.6.0
-BuildRequires:  cmake(Qt5Qml) >= 5.6.0
-BuildRequires:  cmake(Qt5Test) >= 5.6.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.6.0
-BuildRequires:  cmake(Qt5Xml) >= 5.6.0
+BuildRequires:  cmake(Qt5Concurrent) >= 5.11.0
+BuildRequires:  cmake(Qt5DBus) >= 5.11.0
+BuildRequires:  cmake(Qt5Qml) >= 5.11.0
+BuildRequires:  cmake(Qt5Test) >= 5.11.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.11.0
+BuildRequires:  cmake(Qt5Xml) >= 5.11.0
 BuildRequires:  pkgconfig(libudev)
 %if %{with lang}
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.6.0
+BuildRequires:  cmake(Qt5LinguistTools) >= 5.11.0
 %endif
 
 %description
@@ -91,7 +91,7 @@ Summary:        KDE Desktop hardware abstraction: Build Environment
 Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
-Requires:       cmake(Qt5Core) >= 5.6.0
+Requires:       cmake(Qt5Core) >= 5.11.0
 
 %description devel
 Solid is a device integration framework.  It provides a way of querying and

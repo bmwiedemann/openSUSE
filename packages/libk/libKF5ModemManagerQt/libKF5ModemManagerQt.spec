@@ -17,7 +17,7 @@
 
 
 %define soversion 6
-%define _tar_path 5.62
+%define _tar_path 5.63
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           libKF5ModemManagerQt
-Version:        5.62.0
+Version:        5.63.0
 Release:        0
 Summary:        Qt wrapper for ModemManager DBus API
 License:        LGPL-2.1-only OR LGPL-3.0-only
@@ -40,9 +40,9 @@ BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt5Core) >= 5.6.0
-BuildRequires:  cmake(Qt5DBus) >= 5.6.0
-BuildRequires:  cmake(Qt5Xml) >= 5.6.0
+BuildRequires:  cmake(Qt5Core) >= 5.11.0
+BuildRequires:  cmake(Qt5DBus) >= 5.11.0
+BuildRequires:  cmake(Qt5Xml) >= 5.11.0
 BuildRequires:  pkgconfig(ModemManager) >= 1.0.0
 
 %description
@@ -52,9 +52,9 @@ Qt5 wrapper for ModemManager DBus API.
 Summary:        Development package for the libmm-qt library
 Group:          Development/Libraries/KDE
 Requires:       libKF5ModemManagerQt%{soversion} = %{version}
-Requires:       cmake(Qt5Core) >= 5.6.0
-Requires:       cmake(Qt5DBus) >= 5.6.0
-Requires:       cmake(Qt5Xml) >= 5.6.0
+Requires:       cmake(Qt5Core) >= 5.11.0
+Requires:       cmake(Qt5DBus) >= 5.11.0
+Requires:       cmake(Qt5Xml) >= 5.11.0
 Requires:       pkgconfig(ModemManager) >= 1.0.0
 
 %description devel

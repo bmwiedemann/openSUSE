@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5SyntaxHighlighting5
-%define _tar_path 5.62
+%define _tar_path 5.63
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           syntax-highlighting
-Version:        5.62.0
+Version:        5.63.0
 Release:        0
 Summary:        Syntax highlighting engine and library
 License:        LGPL-2.1-or-later AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND MIT AND BSD-3-Clause AND Artistic-1.0
@@ -40,14 +40,14 @@ BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(Qt5Core) >= 5.6.0
-BuildRequires:  cmake(Qt5Gui) >= 5.6.0
-BuildRequires:  cmake(Qt5Network) >= 5.6.0
-BuildRequires:  cmake(Qt5Test) >= 5.6.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.6.0
-BuildRequires:  cmake(Qt5XmlPatterns) >= 5.6.0
+BuildRequires:  cmake(Qt5Core) >= 5.11.0
+BuildRequires:  cmake(Qt5Gui) >= 5.11.0
+BuildRequires:  cmake(Qt5Network) >= 5.11.0
+BuildRequires:  cmake(Qt5Test) >= 5.11.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.11.0
+BuildRequires:  cmake(Qt5XmlPatterns) >= 5.11.0
 %if %{with lang}
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.6.0
+BuildRequires:  cmake(Qt5LinguistTools) >= 5.11.0
 %endif
 
 %description
@@ -71,8 +71,8 @@ Summary:        Syntax highlighting engine and library
 Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
-Requires:       cmake(Qt5Core) >= 5.6.0
-Requires:       cmake(Qt5Gui) >= 5.6.0
+Requires:       cmake(Qt5Core) >= 5.11.0
+Requires:       cmake(Qt5Gui) >= 5.11.0
 
 %description devel
 This is a tier1/functional version of the Kate syntax highlighting engine.

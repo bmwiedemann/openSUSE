@@ -16,7 +16,7 @@
 #
 
 
-%define _tar_path 5.62
+%define _tar_path 5.63
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -24,7 +24,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           kimageformats
-Version:        5.62.0
+Version:        5.63.0
 Release:        0
 Summary:        Image format plugins for Qt
 License:        LGPL-2.1-or-later
@@ -43,12 +43,12 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  openexr
 BuildRequires:  openexr-devel
 BuildRequires:  cmake(KF5Archive) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5Gui) >= 5.6.0
-BuildRequires:  cmake(Qt5PrintSupport) >= 5.6.0
-BuildRequires:  cmake(Qt5Test) >= 5.6.0
+BuildRequires:  cmake(Qt5Gui) >= 5.11.0
+BuildRequires:  cmake(Qt5PrintSupport) >= 5.11.0
+BuildRequires:  cmake(Qt5Test) >= 5.11.0
 %requires_ge    libQt5Gui5
 %requires_ge    libQt5PrintSupport5
-Recommends:     libqt5-qtimageformats >= 5.6.0
+Recommends:     libqt5-qtimageformats >= 5.11.0
 Suggests:       %{name}-eps
 
 %description
@@ -83,6 +83,7 @@ environments.
 %license COPYING*
 %dir %{_kf5_plugindir}/imageformats
 %{_kf5_plugindir}/imageformats/kimg_exr.so
+%{_kf5_plugindir}/imageformats/kimg_hdr.so
 %{_kf5_plugindir}/imageformats/kimg_kra.so
 %{_kf5_plugindir}/imageformats/kimg_ora.so
 %{_kf5_plugindir}/imageformats/kimg_pcx.so
@@ -95,6 +96,7 @@ environments.
 %dir %{_kf5_servicesdir}/qimageioplugins
 %{_kf5_servicesdir}/qimageioplugins/dds.desktop
 %{_kf5_servicesdir}/qimageioplugins/exr.desktop
+%{_kf5_servicesdir}/qimageioplugins/hdr.desktop
 %{_kf5_servicesdir}/qimageioplugins/jp2.desktop
 %{_kf5_servicesdir}/qimageioplugins/kra.desktop
 %{_kf5_servicesdir}/qimageioplugins/ora.desktop

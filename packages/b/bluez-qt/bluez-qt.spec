@@ -18,7 +18,7 @@
 
 %define sonum   6
 %define _libname KF5BluezQt
-%define _tar_path 5.62
+%define _tar_path 5.63
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -26,7 +26,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           bluez-qt
-Version:        5.62.0
+Version:        5.63.0
 Release:        0
 Summary:        Async Bluez wrapper library
 License:        LGPL-2.1-or-later
@@ -42,10 +42,12 @@ BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  udev
-BuildRequires:  cmake(Qt5Core) >= 5.6.0
-BuildRequires:  cmake(Qt5DBus) >= 5.6.0
-BuildRequires:  cmake(Qt5Network) >= 5.6.0
-BuildRequires:  cmake(Qt5Qml) >= 5.6.0
+BuildRequires:  cmake(Qt5Core) >= 5.11.0
+BuildRequires:  cmake(Qt5DBus) >= 5.11.0
+BuildRequires:  cmake(Qt5Gui) >= 5.11.0
+BuildRequires:  cmake(Qt5Network) >= 5.11.0
+BuildRequires:  cmake(Qt5Qml) >= 5.11.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.11.0
 
 %description
 Async Bluez wrapper library.
@@ -83,7 +85,7 @@ Udev rules.
 Summary:        Async Bluez wrapper library - development files
 Group:          Development/Libraries/C and C++
 Requires:       lib%{_libname}%{sonum} = %{version}
-Requires:       cmake(Qt5Core) >= 5.6.0
+Requires:       cmake(Qt5Core) >= 5.11.0
 
 %description devel
 Development files for QBluez Async Bluez wrapper library.

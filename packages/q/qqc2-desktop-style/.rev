@@ -208,4 +208,12 @@ Not installed by default yet as it's currently in beta.</comment>
     <comment>Update to 5.62</comment>
     <requestid>730971</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>74e5f1ea5c9787603acfc43b96935019</srcmd5>
+    <version>5.63.0</version>
+    <time>1571053233</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.63.0</comment>
+    <requestid>738071</requestid>
+  </revision>
 </revisionlist>

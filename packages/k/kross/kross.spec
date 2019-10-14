@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.62
+%define _tar_path 5.63
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kross
-Version:        5.62.0
+Version:        5.63.0
 Release:        0
 Summary:        Scripting bridge for programs
 License:        LGPL-2.1-or-later
@@ -47,11 +47,11 @@ BuildRequires:  cmake(KF5KIO) >= %{_tar_path}
 BuildRequires:  cmake(KF5Parts) >= %{_tar_path}
 BuildRequires:  cmake(KF5WidgetsAddons) >= %{_tar_path}
 BuildRequires:  cmake(KF5XmlGui) >= %{_tar_path}
-BuildRequires:  cmake(Qt5Core) >= 5.6.0
-BuildRequires:  cmake(Qt5Script) >= 5.6.0
-BuildRequires:  cmake(Qt5UiTools) >= 5.6.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.6.0
-BuildRequires:  cmake(Qt5Xml) >= 5.6.0
+BuildRequires:  cmake(Qt5Core) >= 5.11.0
+BuildRequires:  cmake(Qt5Script) >= 5.11.0
+BuildRequires:  cmake(Qt5UiTools) >= 5.11.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.11.0
+BuildRequires:  cmake(Qt5Xml) >= 5.11.0
 Obsoletes:      libKF5KrossCore4
 Obsoletes:      libKF5KrossUi4
 %if %{with lang}
@@ -72,10 +72,10 @@ Requires:       cmake(KF5IconThemes) >= %{_tar_path}
 Requires:       cmake(KF5KIO) >= %{_tar_path}
 Requires:       cmake(KF5Parts) >= %{_tar_path}
 Requires:       cmake(KF5WidgetsAddons) >= %{_tar_path}
-Requires:       cmake(Qt5Core) >= 5.6.0
-Requires:       cmake(Qt5Script) >= 5.6.0
-Requires:       cmake(Qt5Widgets) >= 5.6.0
-Requires:       cmake(Qt5Xml) >= 5.6.0
+Requires:       cmake(Qt5Core) >= 5.11.0
+Requires:       cmake(Qt5Script) >= 5.11.0
+Requires:       cmake(Qt5Widgets) >= 5.11.0
+Requires:       cmake(Qt5Xml) >= 5.11.0
 
 %description devel
 Kross is a scripting bridge to embed scripting functionality

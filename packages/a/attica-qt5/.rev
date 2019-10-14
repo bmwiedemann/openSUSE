@@ -581,4 +581,12 @@ This sr depends on 222654 &amp; 222655</comment>
 - Drop 0001-Fix-the-attica-pkgconfig-file.patch, merged upstream.</comment>
     <requestid>732105</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>b0b7c01e2e30bec276a38fd316739eb3</srcmd5>
+    <version>5.63.0</version>
+    <time>1571052750</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.63.0</comment>
+    <requestid>737996</requestid>
+  </revision>
 </revisionlist>

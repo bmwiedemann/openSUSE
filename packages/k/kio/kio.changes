@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Oct  6 13:26:40 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.63.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.63.0.php
+- Too many changes since 5.62.1, only listing bugfixes:
+  * Fix crash on exit in kio_file (kde#408797)
+  * [KUrlNavigatorPlacesSelector] Properly identify teardown action (kde#403454)
+  * KCoreDirLister: fix crash when creating new folders from kfilewidget (kde#401916)
+  * [Advanced Permissions] Fix icon names (kde#411915)
+
+-------------------------------------------------------------------
 Tue Sep 17 05:35:16 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.62.1

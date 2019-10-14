@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5Pty5
-%define _tar_path 5.62
+%define _tar_path 5.63
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kpty
-Version:        5.62.0
+Version:        5.63.0
 Release:        0
 Summary:        Primitives to interface with pseudo terminal devices
 License:        LGPL-2.1-or-later
@@ -43,8 +43,8 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  utempter-devel
 BuildRequires:  cmake(KF5CoreAddons) >= %{_tar_path}
 BuildRequires:  cmake(KF5I18n) >= %{_tar_path}
-BuildRequires:  cmake(Qt5Core) >= 5.6.0
-BuildRequires:  cmake(Qt5Test) >= 5.6.0
+BuildRequires:  cmake(Qt5Core) >= 5.11.0
+BuildRequires:  cmake(Qt5Test) >= 5.11.0
 
 %description
 This library provides primitives to interface with pseudo terminal devices
@@ -69,7 +69,7 @@ Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
 Requires:       cmake(KF5CoreAddons) >= %{_tar_path}
-Requires:       cmake(Qt5Core) >= 5.6.0
+Requires:       cmake(Qt5Core) >= 5.11.0
 
 %description devel
 This library provides primitives to interface with pseudo terminal devices

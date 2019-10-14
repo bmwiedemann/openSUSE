@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct  6 13:26:20 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.63.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.63.0.php
+- Changes since 5.62.0:
+  * [KComboBox] Properly disable Qt's builtin completer [regression fix]
+  * [KCompletion] Port away from deprecated methods in Qt 5.14
+  * Port from delta(); to angleDelta().y()
+
+-------------------------------------------------------------------
 Sat Sep  7 20:36:33 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.62.0

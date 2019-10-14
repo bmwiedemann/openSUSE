@@ -1,12 +1,6 @@
 -------------------------------------------------------------------
 Sat Oct 12 10:43:24 UTC 2019 - Felix Zhang <fezhang@suse.com>
 
-- Update to version 0.2.11 (jsc#9612)
-  + Fix crash on reconnect when monitors change #121 #147
-
--------------------------------------------------------------------
-Sat Oct 12 10:43:24 UTC 2019 - Felix Zhang <fezhang@suse.com>
-
 - Update to version 0.2.11 (jsc#SLE-9612)
   + Fix crash on reconnect when monitors change #121 #147
 

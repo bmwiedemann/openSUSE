@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Oct  6 13:26:11 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.63.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.63.0.php
+- Changes since 5.62.0:
+  * Make 22px squiggle more like 16px squiggle
+  * Improve KFloppy icon
+  * Add format-text-underline-squiggle actions icons
+  * Add colorful preferences-desktop-filter icon (kde#406900)
+  * Add app icon for the Kirogi Drone control app
+  * Added scripts to create a webfont out of all breeze action icons
+  * Add enablefont and disablefont icon for kfontinst KCM
+  * Remove superfluous 32px recent documents icons
+  * Fix large system-reboot icons rotating in an inconsistent direction (kde#411671)
+
+-------------------------------------------------------------------
 Sat Sep  7 21:01:57 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.62.0

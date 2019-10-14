@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5Emoticons5
-%define _tar_path 5.62
+%define _tar_path 5.63
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           kemoticons
-Version:        5.62.0
+Version:        5.63.0
 Release:        0
 Summary:        Emoticon to graphical emoticon text converter
 License:        LGPL-2.1-or-later
@@ -44,10 +44,10 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5Archive) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Service) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5DBus) >= 5.6.0
-BuildRequires:  cmake(Qt5Gui) >= 5.6.0
-BuildRequires:  cmake(Qt5Test) >= 5.6.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.6.0
+BuildRequires:  cmake(Qt5DBus) >= 5.11.0
+BuildRequires:  cmake(Qt5Gui) >= 5.11.0
+BuildRequires:  cmake(Qt5Test) >= 5.11.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.11.0
 
 %description
 KEmoticons converts emoticons from text to a graphical representation with
@@ -71,7 +71,7 @@ Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
 Requires:       cmake(KF5Archive) >= %{_kf5_bugfix_version}
 Requires:       cmake(KF5Service) >= %{_kf5_bugfix_version}
-Requires:       cmake(Qt5Gui) >= 5.6.0
+Requires:       cmake(Qt5Gui) >= 5.11.0
 
 %description devel
 KEmoticons converts emoticons from text to a graphical representation with

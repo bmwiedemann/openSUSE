@@ -620,4 +620,12 @@
     <comment>Update to 5.62</comment>
     <requestid>730955</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>b0b6499b5ed7573d104a8d5a54463d5a</srcmd5>
+    <version>5.63.0</version>
+    <time>1571053126</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.63.0</comment>
+    <requestid>738055</requestid>
+  </revision>
 </revisionlist>

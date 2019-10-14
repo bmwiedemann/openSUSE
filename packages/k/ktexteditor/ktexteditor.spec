@@ -20,10 +20,10 @@
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
-%define _tar_path 5.62
+%define _tar_path 5.63
 %bcond_without lang
 Name:           ktexteditor
-Version:        5.62.0
+Version:        5.63.0
 Release:        0
 Summary:        Embeddable text editor component
 License:        LGPL-2.1-or-later
@@ -52,12 +52,12 @@ BuildRequires:  cmake(KF5KIO) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Parts) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Sonnet) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5SyntaxHighlighting) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5Core) >= 5.6.0
-BuildRequires:  cmake(Qt5PrintSupport) >= 5.6.0
-BuildRequires:  cmake(Qt5Qml) >= 5.6.0
-BuildRequires:  cmake(Qt5Test) >= 5.6.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.6.0
-BuildRequires:  cmake(Qt5Xml) >= 5.6.0
+BuildRequires:  cmake(Qt5Core) >= 5.11.0
+BuildRequires:  cmake(Qt5PrintSupport) >= 5.11.0
+BuildRequires:  cmake(Qt5Qml) >= 5.11.0
+BuildRequires:  cmake(Qt5Test) >= 5.11.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.11.0
+BuildRequires:  cmake(Qt5Xml) >= 5.11.0
 Requires:       syntax-highlighting >= %{_kf5_bugfix_version}
 Recommends:     %{name}-lang = %{version}
 Obsoletes:      libKF5TextEditor4

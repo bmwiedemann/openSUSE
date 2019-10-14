@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5DocTools5
-%define _tar_path 5.62
+%define _tar_path 5.63
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdoctools
-Version:        5.62.0
+Version:        5.63.0
 Release:        0
 Summary:        Tools to create documentation from DocBook
 License:        LGPL-2.1-or-later AND MIT
@@ -49,7 +49,7 @@ BuildRequires:  libxslt-devel
 BuildRequires:  perl-URI
 BuildRequires:  cmake(KF5Archive) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5I18n) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5Core) >= 5.6.0
+BuildRequires:  cmake(Qt5Core) >= 5.11.0
 # The XSL templates reference files in here
 Requires:       docbook-xsl-stylesheets
 Recommends:     %{name}-lang
@@ -74,7 +74,7 @@ Requires:       %{name} = %{version}
 Requires:       docbook-xsl-stylesheets
 Requires:       extra-cmake-modules >= 1.8.0
 Requires:       libxslt-devel
-Requires:       cmake(Qt5Core) >= 5.6.0
+Requires:       cmake(Qt5Core) >= 5.11.0
 Provides:       %{name}-devel-static = %{version}
 
 %description devel

@@ -602,4 +602,12 @@ depends on sr#237875</comment>
     <comment>Update to 5.62</comment>
     <requestid>730907</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>d19ba1cadb406be2b8978a940c72aa19</srcmd5>
+    <version>5.63.0</version>
+    <time>1571052799</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.63.0</comment>
+    <requestid>738006</requestid>
+  </revision>
 </revisionlist>

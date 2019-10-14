@@ -17,14 +17,14 @@
 
 
 %define sonum   5
-%define _tar_path 5.62
+%define _tar_path 5.63
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kconfig
-Version:        5.62.0
+Version:        5.63.0
 Release:        0
 Summary:        Advanced configuration system
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -38,16 +38,16 @@ Source2:        frameworks.keyring
 Source99:       baselibs.conf
 # PATCH-FEATURE-OPENSUSE
 Patch0:         kconfig-desktop-translations.patch
-BuildRequires:  cmake >= 3.0
+BuildRequires:  cmake >= 3.5
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(Qt5Core) >= 5.6.0
-BuildRequires:  cmake(Qt5DBus) >= 5.6.0
-BuildRequires:  cmake(Qt5Gui) >= 5.6.0
-BuildRequires:  cmake(Qt5Xml) >= 5.6.0
+BuildRequires:  cmake(Qt5Core) >= 5.11.0
+BuildRequires:  cmake(Qt5DBus) >= 5.11.0
+BuildRequires:  cmake(Qt5Gui) >= 5.11.0
+BuildRequires:  cmake(Qt5Xml) >= 5.11.0
 %if %{with lang}
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.6.0
+BuildRequires:  cmake(Qt5LinguistTools) >= 5.11.0
 %endif
 
 %description
@@ -111,7 +111,7 @@ Requires:       extra-cmake-modules
 Requires:       kconf_update5 = %{version}
 Requires:       libKF5ConfigCore%{sonum} = %{version}
 Requires:       libKF5ConfigGui%{sonum} = %{version}
-Requires:       cmake(Qt5Xml) >= 5.6.0
+Requires:       cmake(Qt5Xml) >= 5.11.0
 
 %description devel
 KConfig provides an advanced configuration system. It is made of two parts:

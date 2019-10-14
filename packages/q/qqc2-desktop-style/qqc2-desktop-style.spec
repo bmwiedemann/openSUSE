@@ -16,11 +16,11 @@
 #
 
 
-%define _tar_path 5.62
+%define _tar_path 5.63
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           qqc2-desktop-style
-Version:        5.62.0
+Version:        5.63.0
 Release:        0
 Summary:        A Qt Quick Controls 2 Style for Desktop UIs
 License:        GPL-2.0-or-later

@@ -16,40 +16,39 @@
 #
 
 
-%define kf5_version 5.26.0
-%define lname libKF5Contacts5
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
+%define _tar_path 5.63
+# Full KF5 version (e.g. 5.33.0)
+%{!?_kf5_version: %global _kf5_version %{version}}
+# Last major and minor KF5 version (e.g. 5.33)
+%{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
-
 Name:           kcontacts
-Version:        19.08.1
+Version:        5.63.0
 Release:        0
 Summary:        KDE Frameworks based address book API
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
+Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-%{version}.tar.xz.sig
+Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
 BuildRequires:  extra-cmake-modules >= 1.3.0
-BuildRequires:  kcodecs-devel >= %{kf5_version}
-BuildRequires:  kconfig-devel >= %{kf5_version}
-BuildRequires:  kcoreaddons-devel >= %{kf5_version}
 BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel >= %{kf5_version}
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Gui) >= 5.3.0
-BuildRequires:  pkgconfig(Qt5Test) >= 5.3.0
+BuildRequires:  cmake(KF5Codecs) >= %{kf5_version}
+BuildRequires:  cmake(KF5Config) >= %{kf5_version}
+BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
+BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
+BuildRequires:  cmake(Qt5Gui) >= 5.3.0
+BuildRequires:  cmake(Qt5Test) >= 5.3.0
 
 %description
 kcontacts is a Qt5 based library which provides an API
 to access address book data stored in different formats.
 
-%package -n %{lname}
+%package -n libKF5Contacts5
 Summary:        KDE Frameworks based address book API
 Group:          System/Libraries
 Provides:       %{name} = %{version}
@@ -65,7 +64,7 @@ to access address book data stored in different formats.
 %package devel
 Summary:        Development files for kcontacts
 Group:          Development/Libraries/KDE
-Requires:       kcoreaddons-devel >= %{kf5_version}
+Requires:       cmake(KF5CoreAddons) >= %{kf5_version}
 Requires:       libKF5Contacts5 = %{version}
 Provides:       kcontacts5-devel = %{version}
 Obsoletes:      kcontacts5-devel < %{version}
@@ -77,7 +76,7 @@ address books.
 %lang_package
 
 %prep
-%setup -q -n kcontacts-%{version}
+%setup -q
 
 %build
   %cmake_kf5 -d build -- -DBUILD_TESTING=ON
@@ -92,7 +91,7 @@ address books.
 %post -n libKF5Contacts5 -p /sbin/ldconfig
 %postun -n libKF5Contacts5 -p /sbin/ldconfig
 
-%files -n %{lname}
+%files -n libKF5Contacts5
 %license COPYING*
 %{_kf5_libdir}/libKF5Contacts.so.*
 %{_kf5_debugdir}/*.categories

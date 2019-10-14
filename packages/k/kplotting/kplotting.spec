@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5Plotting5
-%define _tar_path 5.62
+%define _tar_path 5.63
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           kplotting
-Version:        5.62.0
+Version:        5.63.0
 Release:        0
 Summary:        KDE Data plotting library
 License:        LGPL-2.1-or-later
@@ -41,9 +41,9 @@ BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules >= %{_tar_path}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(Qt5Test) >= 5.6.0
-BuildRequires:  cmake(Qt5UiPlugin) >= 5.6.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.6.0
+BuildRequires:  cmake(Qt5Test) >= 5.11.0
+BuildRequires:  cmake(Qt5UiPlugin) >= 5.11.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.11.0
 
 %description
 KPlotWidget is a QWidget-derived class that provides a virtual base
@@ -69,7 +69,7 @@ Summary:        Build environment for the KDE data plotting library
 Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
-Requires:       cmake(Qt5Widgets) >= 5.6.0
+Requires:       cmake(Qt5Widgets) >= 5.11.0
 
 %description devel
 Development files for KPlotWidget, which is a QWidget-derived class

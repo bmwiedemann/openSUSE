@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdepim-runtime
-Version:        19.08.1
+Version:        19.08.2
 Release:        0
 Summary:        Akonadi resources for PIM applications
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -42,7 +42,7 @@ BuildRequires:  kcalcore-devel >= %{_kapp_version}
 BuildRequires:  kcalutils-devel >= %{_kapp_version}
 BuildRequires:  kcodecs-devel >= %{kf5_version}
 BuildRequires:  kconfig-devel >= %{kf5_version}
-BuildRequires:  kcontacts-devel >= %{_kapp_version}
+BuildRequires:  kcontacts-devel >= %{_kf5_version}
 BuildRequires:  kdav-devel >= %{_kapp_version}
 BuildRequires:  kdelibs4support-devel >= %{kf5_version}
 BuildRequires:  kf5-filesystem

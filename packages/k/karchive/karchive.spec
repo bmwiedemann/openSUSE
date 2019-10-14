@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5Archive5
-%define _tar_path 5.62
+%define _tar_path 5.63
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           karchive
-Version:        5.62.0
+Version:        5.63.0
 Release:        0
 Summary:        Qt 5 addon providing access to numerous types of archives
 License:        LGPL-2.1-or-later
@@ -37,12 +37,12 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
-BuildRequires:  cmake >= 3.0
+BuildRequires:  cmake >= 3.5
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt5Core) >= 5.6.0
+BuildRequires:  cmake(Qt5Core) >= 5.11.0
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(zlib)
@@ -71,7 +71,7 @@ Summary:        Qt 5 addon providing access to numerous types of archives: Build
 Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
-Requires:       cmake(Qt5Core) >= 5.6.0
+Requires:       cmake(Qt5Core) >= 5.11.0
 
 %description devel
 KArchive provides classes for easy reading, creation and manipulation of

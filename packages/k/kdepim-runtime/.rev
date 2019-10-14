@@ -454,4 +454,18 @@
     <comment>KDE Applications 19.08.1 (forwarded request 728705 from luca_b)</comment>
     <requestid>728811</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>bd362d69dbffc0e2d28743c74db7c1e5</srcmd5>
+    <version>19.08.2</version>
+    <time>1571053269</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 19.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.2.php
+- Changes since 19.08.1:
+  * Fix the dependencies on generated files differently. (kde#410474)
+  * ews: fix unnecessary reauthentication prompts</comment>
+    <requestid>738174</requestid>
+  </revision>
 </revisionlist>
