@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 12 20:17:46 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.7.0:
+  * Fixed the right-click menu under Wayland
+  * Fixed several compiling warnings
+  * Removed deprecated calls
+  * Now the Wayland version (under gnome shell) works like the
+    X11 one (is shown over all windows, and in all workspaces)
+  * Now the "guake" terminal is show always in the primary monitor
+
+-------------------------------------------------------------------
 Wed May  8 15:11:46 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 1.5.0:

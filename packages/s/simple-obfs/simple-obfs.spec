@@ -26,9 +26,10 @@ URL:            https://github.com/shadowsocks/simple-obfs
 Source0:        https://github.com/shadowsocks/simple-obfs/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/shadowsocks/libcork/archive/f02984545061c924808e4b9ea7cc6749a41f1979/libcork-f029845.tar.gz
 Patch1:         simple-obfs-asciidoc-fix.patch
+Patch2:         simple-obfs-gcc-buildfixes.patch
+
 BuildRequires:  asciidoc
-BuildRequires:  gcc8
-BuildRequires:  gcc8-c++
+BuildRequires:  c++_compiler
 BuildRequires:  libtool
 BuildRequires:  mbedtls-devel
 BuildRequires:  pkgconfig
@@ -55,12 +56,11 @@ This package provides Documents for it.
 %prep
 %setup -a1 -q
 %patch1 -p1
+%patch2 -p1
 
 %build
 rmdir libcork
 mv libcork-f02984545061c924808e4b9ea7cc6749a41f1979 libcork
-export CC=gcc-8
-export CXX=g++-8
 autoreconf -fiv
 %configure
 make %{?_smp_mflags} V=1

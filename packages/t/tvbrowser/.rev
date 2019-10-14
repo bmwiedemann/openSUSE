@@ -290,4 +290,41 @@ Date separators added for better orientation in the program lists of the plugins
     <comment>1</comment>
     <requestid>528677</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>43dcb0a58d840a7d714047d577727b11</srcmd5>
+    <version>4.2</version>
+    <time>1571049785</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.2
+  - Check if TV-Browser window is below task bar
+  - Divider position not remembered for Favorite tab
+  - use earliest reminder time for multiple reminders of program
+  - Option for alternative info display for program panels based on filter
+  - Add update function for TV-Browser JRE
+  - Smaller setting design improvements
+  - Program table not painted correctly on high resolution screens
+  - add option to duplicate filters and filter components
+  - Open TV-Browser on last used screen
+  - Allow smoother scrolling in lists with programs
+  - graphical errors while scrolling plugin installation list with touch pad
+  - make TV-Browser Java 11 based
+  - Add panning support
+  - Add compounded field for origin and production year fields
+  - Close in dual start warning not working
+  - Picture copyright is not searchable
+- Add patch fix-junit-classpath.patch
+
+- update to version 4.0.1
+  - Prevent pictures from growing in height too much
+  - Programs are not updated in frame with reminders
+  - Make start menu entries for Windows optional
+  - Autoresize reminder window
+  - Add system wide key shortcuts
+  - Date selection is not update if calendar is used
+  - Update launch4j itself and configuration
+  - TV Browser - Java 9 - Windows doesn't start.
+  - Center weekday labels in date selection table
+  - Filter edit in Favorites resets selected filter</comment>
+    <requestid>738167</requestid>
+  </revision>
 </revisionlist>

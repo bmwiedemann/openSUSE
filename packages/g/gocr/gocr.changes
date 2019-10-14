@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 12 20:33:05 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.52, check the HISTORY file for the complete list of changes
+  * Fix endianess of 16bit-pnm
+  * Improve tests
+  * Fix bad 7 as T detection, fix corner vectors for thinn fonts,
+    fix debug-option-dependence
+  * Fix NULL-pointer access
+  * Fix range check in nearest_frame_vector()
+
+-------------------------------------------------------------------
 Sun Aug  2 09:08:29 UTC 2015 - mpluskal@suse.com
 
 - Update desktop file macros

@@ -62,4 +62,15 @@
   * Support user lookup by phone number.</comment>
     <requestid>724256</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a7b2b7b12315734f0de1ee22b14ec42a</srcmd5>
+    <version>4.6.0</version>
+    <time>1571049733</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 4.6.0
+  * Added bot managment commands.
+  * Better support for federated addresses in Stellar feature.
+  * Miscellaneous bug fixes.</comment>
+    <requestid>738086</requestid>
+  </revision>
 </revisionlist>

@@ -16,7 +16,7 @@
 #
 
 
-%define rev 75f18dab23f0842713a4200a7e362efd51b12e31
+%define rev 664c5a31f9cf519af5a4c3adcb30dbbc73d037d6
 
 %bcond_without git
 
@@ -28,7 +28,7 @@
 %bcond_without qt5
 
 Name:           clementine
-Version:        1.3.1+git20190724
+Version:        1.3.1+git20191004
 Release:        0
 Summary:        A music player inspired by Amarok 1.4
 License:        GPL-3.0-or-later
@@ -47,10 +47,6 @@ Patch2:         clementine-moodbar-fpic.patch
 Patch4:         clementine-hidden-systray-icon.patch
 # PATCH-FEATURE-OPENSUSE
 Patch6:         use_system_qxtglobalshortcut.patch
-#PATCH-FIX-GIT to 02-08-2019
-Patch20:        0001-Fix-memory-leaks-in-database.patch
-Patch21:        0001-Fix-memory-leaks-6376.patch
-Patch22:        delete_the_allocated_memory_in_respective_destructors.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  freeglut-devel

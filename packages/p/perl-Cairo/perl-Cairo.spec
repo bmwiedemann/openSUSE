@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Cairo
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-Cairo
-Version:        1.106
+Version:        1.107
 Release:        0
+#Upstream: CHECK(Artistic-1.0 or GPL-1.0-or-later)
 %define cpan_name Cairo
 Summary:        Perl interface to the cairo 2d vector graphics library
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Cairo/
-Source0:        http://www.cpan.org/authors/id/X/XA/XAOC/%{cpan_name}-%{version}.tar.gz
+Url:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/X/XA/XAOC/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
@@ -45,11 +46,11 @@ Perl interface to the cairo 2d vector graphics library
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+make %{?_smp_mflags}
 
 %check
-%{__make} test || :
+make test
 
 %install
 %perl_make_install
@@ -58,6 +59,7 @@ Perl interface to the cairo 2d vector graphics library
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc cairo-perl.typemap ChangeLog.pre-git doctypes examples LICENSE NEWS perl-Cairo.doap README TODO
+%doc cairo-perl.typemap ChangeLog.pre-git doctypes examples NEWS perl-Cairo.doap README TODO
+%license LICENSE
 
 %changelog

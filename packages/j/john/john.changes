@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Oct 12 21:47:09 UTC 2019 - simmphonie@opensuse.org
+
+- Remove fdupes check (build fails with debug packages)
+
+-------------------------------------------------------------------
 Tue Sep 10 13:32:21 UTC 2019 - simmphonie@opensuse.org
 
 - Fixed build for ARM and PPC. CPU with AVX support at least is

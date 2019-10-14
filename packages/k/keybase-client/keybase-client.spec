@@ -20,7 +20,7 @@
 %{go_nostrip}
 
 Name:           keybase-client
-Version:        4.3.1
+Version:        4.6.0
 Release:        0
 Summary:        Keybase command line client
 License:        BSD-3-Clause

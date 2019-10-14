@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Oct 10 14:25:47 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.0.php
+- No code changes since 5.16.90
+
+-------------------------------------------------------------------
+Thu Sep 19 12:32:37 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.90.php
+- Changes since 5.16.5:
+  * update to latest kf5 dependency
+  * Don't create() windows that aren't native, upon receiving a palette change event.
+  * Remove unused includes
+  * [KDEPlatformSystemTrayIcon] Set KStatusNotifierItem to Active (kde#407963)
+  * Fix forward declaration
+
+-------------------------------------------------------------------
 Tue Sep  3 12:44:13 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.16.5

@@ -1,4 +1,5 @@
 etc/kopano/userscripts
+usr/lib/*/kopano/kscriptrun
 usr/lib/*/kopano/libkcserver-[a-z]*.so
 usr/lib/kopano/userscripts/
 usr/sbin/kopano-server

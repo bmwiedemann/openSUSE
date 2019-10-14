@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Oct 13 15:52:59 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.4.54 (boo#1111733):
+  * behavior change: strict URL parsing and normalization (configurable)
+  * performance enhancements
+  * bug fixes
+- includes changes from 1.4.53:
+  * TLS-ALPN-01
+  * systemd socket activation
+  * bug fixes
+- includes changes from 1.4.52:
+  * performance enhancements
+  * bug fixes
+- includes changes from 1.4.51:
+  * new module: mod_authn_pam
+  * multiple security fixes
+    + process headers after combining folded headers
+    + mod_userdir security: skip username "." and ".."
+- includes changes from 1.4.50:
+  * CVE-2018-19052: path traversal in mod_alias (boo#1115016)
+  * security: use-after-free after invalid Range request
+  * multiple bug fixes
+- Fix build with PostgreSQL 11 in Tumbleweed (boo#1153722)
+- Switch to unmodified upstream tarball, add upstream signing
+  keys and verify source signature
+
+-------------------------------------------------------------------
+Wed Jun 12 14:31:56 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut the build queues by allowing usage of systemd-mini
+
+-------------------------------------------------------------------
 Wed May  2 13:55:55 UTC 2018 - dimstar@opensuse.org
 
 - Revert that pgsql workaround for tumbleweed: pampering over

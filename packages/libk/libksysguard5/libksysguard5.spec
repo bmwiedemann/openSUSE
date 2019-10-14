@@ -18,15 +18,15 @@
 
 %bcond_without lang
 Name:           libksysguard5
-Version:        5.16.5
+Version:        5.17.0
 Release:        0
 Summary:        Task management and system monitoring library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 Url:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/libksysguard-%{version}.tar.xz
+Source:         libksysguard-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/libksysguard-%{version}.tar.xz.sig
+Source1:        libksysguard-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        baselibs.conf
@@ -126,8 +126,8 @@ for actions that require elevated privileges.
 
 %files helper
 %license COPYING*
-%{_kf5_dbuspolicydir}/org.kde.ksysguard.processlisthelper.conf
 %{_kf5_libdir}/libexec/
+%{_kf5_dbuspolicydir}/org.kde.ksysguard.processlisthelper.conf
 %{_kf5_sharedir}/dbus-1/system-services/org.kde.ksysguard.processlisthelper.service
 %{_kf5_sharedir}/polkit-1/actions/org.kde.ksysguard.processlisthelper.policy
 

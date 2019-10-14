@@ -18,19 +18,16 @@
 
 
 Name:           ntpsec
-Version:        1.1.6
+Version:        1.1.7
 Release:        0
 Summary:        Improved implementation of Network Time Protocol
 License:        BSD-2-Clause AND NTP AND BSD-3-Clause AND MIT
-Group:          System/Base
 URL:            https://www.ntpsec.org/
 Source0:        ftp://ftp.ntpsec.org/pub/releases/%{name}-%{version}.tar.gz
 Source1:        ftp://ftp.ntpsec.org/pub/releases/%{name}-%{version}.tar.gz.asc
 Source3:        %{name}.changes
 Source4:        logrotate.ntp
 Source8:        ntp.conf
-# PATCH-FIX-UPSTREAM https://gitlab.com/NTPsec/ntpsec/merge_requests/1012
-Patch0:         ntpsec-1.1.6-update-waf.patch
 BuildRequires:  asciidoc
 BuildRequires:  avahi-compat-mDNSResponder-devel
 BuildRequires:  bison
@@ -52,7 +49,7 @@ BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(python3)
 Requires:       netcfg
 Requires:       ntpsec-utils
-Requires(pre):  pwdutils
+Requires(pre):  shadow
 Recommends:     logrotate
 # For ntpleapfetch
 Recommends:     wget
@@ -65,14 +62,12 @@ Mills’s original.
 
 %package -n python3-ntp
 Summary:        Python ntpsec bindings
-Group:          Development/Languages/Python
 
 %description -n python3-ntp
 The ntpsec python bindings used by various ntp utilities.
 
 %package utils
 Summary:        Utilities and commands for ntp
-Group:          System/Base
 Requires:       %{name} = %{version}
 # For ntpmon
 Requires:       python3-curses
@@ -87,9 +82,14 @@ Conflicts:      ntp
 %description utils
 The ntpsec utilities relying on the python module of ntp
 
+%package doc
+Summary:        Documentation for %{name}
+
+%description doc
+Documentation files generated from asciidoc for %{name}.
+
 %prep
 %setup -q
-%patch0 -p1
 # Fix python shebangs
 sed -i -e 's:#!%{_bindir}/env python:#!%{_bindir}/python3:' \
     ntpclients/*
@@ -107,6 +107,7 @@ export CCFLAGS="%{optflags}"
 python3 ./waf configure \
     --build-epoch="$epoch" \
     --enable-debug \
+    --enable-doc --htmldir=%{_docdir}/ntpsec/html \
     --prefix=%{_prefix} \
     --mandir="%{_mandir}" \
     --python=%{_bindir}/python3 \
@@ -205,6 +206,10 @@ exit 0
 %{_unitdir}/ntp-wait.service
 %{_unitdir}/ntplogtemp.*
 %{_unitdir}/ntpviz-*
+
+%files doc
+%dir %{_docdir}/%{name}/html
+%doc %{_docdir}/%{name}/html/*
 
 %files
 %license LICENSE

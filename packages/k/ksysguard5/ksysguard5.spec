@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           ksysguard5
-Version:        5.16.5
+Version:        5.17.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -28,9 +28,9 @@ Summary:        KDE System Guard daemon
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
 Url:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/ksysguard-%{version}.tar.xz
+Source:         ksysguard-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/ksysguard-%{version}.tar.xz.sig
+Source1:        ksysguard-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        ksysguardd.service
@@ -56,15 +56,20 @@ BuildRequires:  cmake(KF5SysGuard) >= %{_plasma5_version}
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(Qt5Core) >= 5.12.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.12.0
+# No pkgconfig(pcap) in Leap 15.1 yet
+BuildRequires:  libpcap-devel
 Requires:       libksysguard5-helper
 Recommends:     %{name}-lang
+BuildRequires:  update-desktop-files
+# For post and verifyscript
+Requires(post): permissions
+Requires(verify): permissions
 %if 0%{?suse_version} > 1314 && "%{suse_version}" != "1320"
 Provides:       kdebase4-workspace-ksysguardd = %{version}
 Obsoletes:      kdebase4-workspace-ksysguardd < %{version}
 %else
 Conflicts:      kdebase4-workspace-ksysguardd
 %endif
-BuildRequires:  update-desktop-files
 %{?systemd_requires}
 
 %description
@@ -101,11 +106,15 @@ to enable monitoring them remotely with ksysguard.
 %post
 /sbin/ldconfig
 %service_add_post ksysguardd.service
+%set_permissions %{_kf5_libexecdir}/ksysguard/ksgrd_network_helper
 
 %postun
 /sbin/ldconfig
 %service_del_postun ksysguardd.service
 exit 0
+
+%verifyscript
+%verify_permissions -e %{_kf5_libexecdir}/ksysguard/ksgrd_network_helper
 
 %files
 %license COPYING*
@@ -123,6 +132,11 @@ exit 0
 %{_kf5_sharedir}/ksysguard/
 %{_kf5_sharedir}/kxmlgui5/
 %{_kf5_appstreamdir}/org.kde.ksysguard.appdata.xml
+%dir %{_kf5_libdir}/libexec/ksysguard/
+%{_kf5_libdir}/libexec/ksysguard/ksgrd_network_helper
+%dir %{_kf5_plugindir}/ksysguard/
+%dir %{_kf5_plugindir}/ksysguard/process
+%{_kf5_plugindir}/ksysguard/process/ksysguard_plugin_network.so
 %{_unitdir}/ksysguardd.service
 
 %if %{with lang}

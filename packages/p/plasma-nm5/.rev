@@ -769,4 +769,12 @@
     <comment>Plasma 5.16.5</comment>
     <requestid>728209</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>9481091ab5cd01c9c11be0b329a3dc53</srcmd5>
+    <version>5.17.0</version>
+    <time>1571049515</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.17.0 pre-release tars. Please publish disable before accept. (forwarded request 737387 from Vogtinator)</comment>
+    <requestid>737483</requestid>
+  </revision>
 </revisionlist>

@@ -14,7 +14,7 @@ preamble: |-
 # sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 
 #post_install: |-
 # sed on %{name}.files
-#license: SUSE-NonFree
+license: LGPL-2.1-or-later
 #skip_noarch: 1
 #custom_build: |-
 #./Build build flags=%{?_smp_mflags} --myflag

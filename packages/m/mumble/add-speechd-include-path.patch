@@ -1,12 +1,24 @@
-Index: mumble-1.2.19/src/mumble/mumble.pro
-===================================================================
---- mumble-1.2.19.orig/src/mumble/mumble.pro
-+++ mumble-1.2.19/src/mumble/mumble.pro
-@@ -224,6 +224,7 @@ unix {
+From 25d3fc9554b3d6e7bfb29dbd33b69330e9fd55eb Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Tue, 3 Sep 2019 17:46:00 +0200
+Subject: [PATCH] add-speechd-include-path.patch
+
+---
+ src/mumble/mumble.pro | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/mumble/mumble.pro b/src/mumble/mumble.pro
+index ae47e89d4ab4..8bdf9c42796a 100644
+--- a/src/mumble/mumble.pro
++++ b/src/mumble/mumble.pro
+@@ -556,6 +556,7 @@ unix {
  
      !CONFIG(no-speechd) {
        CONFIG *= speechd
 +      INCLUDEPATH *= /usr/include/speech-dispatcher
+     } else {
+       DEFINES *= USE_NO_TTS
      }
-   }
- }
+-- 
+2.22.0
+

@@ -17,7 +17,7 @@
 
 
 Name:           picard
-Version:        2.2.0
+Version:        2.2.2
 Release:        0
 Summary:        The Next Generation MusicBrainz Tagger
 License:        GPL-2.0-or-later
@@ -75,7 +75,7 @@ rm -rfv %{buildroot}%{_datadir}/locale/sco
 %endif
 
 %files
-%doc AUTHORS.txt NEWS.txt
+%doc AUTHORS.txt NEWS.md
 %license COPYING.txt
 %{_bindir}/picard
 %{_datadir}/applications/org.musicbrainz.Picard.desktop

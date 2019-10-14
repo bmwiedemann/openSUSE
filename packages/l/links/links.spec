@@ -17,7 +17,7 @@
 
 
 Name:           links
-Version:        2.20.1
+Version:        2.20.2
 Release:        0
 Summary:        Text-Based WWW Browser
 License:        GPL-2.0-or-later
@@ -38,7 +38,7 @@ BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libtiff-4)
-BuildRequires: 	pkgconfig(libzstd)
+BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(zlib)
 Provides:       web_browser

@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Oct 10 14:25:47 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.0.php
+- No code changes since 5.16.90
+
+-------------------------------------------------------------------
+Thu Sep 19 12:32:36 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.90.php
+- Changes since 5.16.5:
+  * update to latest kf5 dependency
+  * Prefer categories with the query string visible in results
+  * Don't give up if no results arrive after 500 ms, again.
+  * Make runAutomatically more resilient
+  * Fix warnings
+  * Fix running results automatically
+  * Rename to resetView() to make it clear that we're not resetting the model
+  * Fix current index behavior with mouse and keyboard
+  * Add some docs to make future me happy
+  * Emit dataChanged before inserting and only update the to be signalled range
+  * Add some docs
+  * Improve category distribution algorithm somewhat
+  * Move limit handling to distribution model now that we don't have a global limiter anymore
+  * Fix some warnings
+  * Return a boolean for isDuplicate rather than a number
+  * Find duplicate throughout the the entire list
+  * Fix requesting query string update, fixes "invoking" calculator results
+  * When resetting the model, reset the RunnerManager
+  * Introduce new ResultsModel
+  * Fix assert when pressing enter really quickly
+
+-------------------------------------------------------------------
 Tue Sep  3 12:44:12 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.16.5

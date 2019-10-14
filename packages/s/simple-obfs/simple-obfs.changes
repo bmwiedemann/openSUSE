@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct  9 19:04:04 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add simple-obfs-gcc-buildfixes.patch: Fix build with gcc9,
+  patches from upstream git. Replace gcc8 and gcc8-c++ with generic
+  c++_compiler BuildRequires.
+
+-------------------------------------------------------------------
 Tue Jul 16 03:46:18 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update libcork

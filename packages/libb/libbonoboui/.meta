@@ -1,9 +1,0 @@
-<package name="libbonoboui" project="openSUSE:Factory">
-  <title>The Bonobo Part of the GNOME User Interface Libraries</title>
-  <description>This library contains the Bonobo-related part of the GNOME UI
-libraries.</description>
-  <devel project="GNOME:Factory" package="libbonoboui"/>
-  <build>
-    <disable/>
-  </build>
-</package>

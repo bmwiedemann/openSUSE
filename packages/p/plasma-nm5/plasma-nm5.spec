@@ -19,15 +19,15 @@
 %bcond_without lang
 %define mm_support 1
 Name:           plasma-nm5
-Version:        5.16.5
+Version:        5.17.0
 Release:        0
 Summary:        Plasma applet written in QML for managing network connections
 License:        (LGPL-2.1-only OR LGPL-3.0-only) AND (GPL-2.0-only OR GPL-3.0-only)
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-nm-%{version}.tar.xz
+Source:         plasma-nm-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-nm-%{version}.tar.xz.sig
+Source1:        plasma-nm-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -72,10 +72,9 @@ BuildRequires:  pkgconfig(openconnect) >= 5.2
 Requires:       NetworkManager
 Requires:       kded
 Requires:       kwalletd5
+Requires:       prison-qt5-imports
 Recommends:     mobile-broadband-provider-info
-%if %{with lang}
 Recommends:     %{name}-lang
-%endif
 Provides:       NetworkManager-client
 Provides:       plasma-nm-kf5 = %{version}
 Obsoletes:      plasma-nm-kf5 < %{version}

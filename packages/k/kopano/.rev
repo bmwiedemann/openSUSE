@@ -154,4 +154,12 @@
     <comment>- Update to upstream snapshot 8.7.83</comment>
     <requestid>730477</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a53516bde806e79e5a4588b00219edca</srcmd5>
+    <version>8.7.84</version>
+    <time>1571049767</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>738129</requestid>
+  </revision>
 </revisionlist>

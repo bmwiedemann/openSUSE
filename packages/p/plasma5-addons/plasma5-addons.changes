@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Oct 10 14:25:47 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.0.php
+- No code changes since 5.16.90
+
+-------------------------------------------------------------------
+Thu Sep 19 12:32:37 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.90.php
+- Changes since 5.16.5:
+  * In the note applet, always paste without formatting by default. Add an action to paste preserving formatting in the contextual menu.
+  * Fix build The QMutex include in AbstractRunner was removed in https://cgit.kde.org/krunner.git/commit/?id=ac6814b1387bc0c790928ec5b62f43c1764994d6
+  * Fix Unsplash POTD not updating
+  * Fix build The QMutex include in AbstractRunner was removed in https://cgit.kde.org/krunner.git/commit/?id=ac6814b1387bc0c790928ec5b62f43c1764994d6
+  * [Converter Runner] Support fractional units (kde#409216)
+  * Attempt to support different collections of Unsplash
+  * Unsplash POTD: filter out banner image and pick random photo from latest
+  * Add Unsplash POTD Provider
+  * [quota] Use new breeze icons (kde#389311)
+  * [Notes] Fix icons being almost invisible with light backgrounds when using dark themes (kde#353819)
+  * Add gitignore
+  * Fix forward declaration
+  * can take keyboard focus in panels
+
+-------------------------------------------------------------------
 Tue Sep  3 12:44:12 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.16.5

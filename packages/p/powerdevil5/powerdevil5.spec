@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           powerdevil5
-Version:        5.16.5
+Version:        5.17.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -28,13 +28,11 @@ Summary:        KDE Power Management module
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 Url:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/powerdevil-%{version}.tar.xz
+Source:         powerdevil-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/powerdevil-%{version}.tar.xz.sig
+Source1:        powerdevil-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCHES 000-100 and above are from upstream 5.16 branch
-# PATCHES 101-200 are from upstream master/5.17 branch
 BuildRequires:  extra-cmake-modules >= 1.2.0
 BuildRequires:  kf5-filesystem
 BuildRequires:  xz
@@ -65,9 +63,7 @@ BuildRequires:  pkgconfig(xcb-randr)
 #PrepareForSleep is added to systemd 198, and with Plasma 5.2, will be unconditionaly called
 Requires:       systemd >= 198
 %requires_ge plasma5-workspace-libs
-%if %{with lang}
 Recommends:     %{name}-lang
-%endif
 Conflicts:      kdebase4-workspace < 5.3.0
 # Needed for battery / brightness detection
 Recommends:     upower
@@ -77,7 +73,6 @@ KDE Power Management module. Provides kded daemon,
 DBus helper and KCM for configuring Power settings.
 
 %lang_package
-
 %prep
 %autosetup -p1 -n powerdevil-%{version}
 

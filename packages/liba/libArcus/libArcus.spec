@@ -18,13 +18,16 @@
 
 %define sover 3
 Name:           libArcus
-Version:        4.1.0
+Version:        4.3.0
 Release:        0
 Summary:        3D printer control software
 License:        LGPL-3.0-only
 Group:          Development/Libraries/C and C++
 Url:            http://github.com/Ultimaker/%name
 Source:         %name-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Install-the-Python-extension-module-to-Python-sitear.patch
+Patch1:         0002-Fix-Python3_SITEARCH-for-old-cmake.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  protobuf-devel >= 3.0.0
@@ -53,10 +56,13 @@ tools necessary for compiling and linking programs which use %{name}.
 
 %prep
 %setup
+%patch0 -p1
+%patch1 -p1
 
 %build
 %cmake
-make %{?_smp_mflags}
+
+%cmake_build
 
 %install
 %cmake_install
@@ -74,7 +80,7 @@ make %{?_smp_mflags}
 %files -n %name%{sover}
 %license LICENSE
 %doc README.md
-%{python3_sitelib}/Arcus.so
+%{python3_sitearch}/Arcus.so
 %{_libdir}/libArcus.so.*
 
 %changelog

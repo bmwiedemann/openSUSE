@@ -8,5 +8,4 @@ preamble: |-
  BuildRequires:  pkgconfig(libdiscid) >= 0.2.2
  Requires:       perl(Carp)
  Requires:       perl(XSLoader)
-# cpanspec gets the license wrong!
-license: GPL-2.0-or-later
+#license: GPL-2.0-or-later

@@ -18,22 +18,19 @@
 
 %bcond_without lang
 Name:           systemsettings5
-Version:        5.16.5
+Version:        5.17.0
 Release:        0
 Summary:        KDE's control center
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 Url:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/systemsettings-%{version}.tar.xz
+Source:         systemsettings-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/systemsettings-%{version}.tar.xz.sig
+Source1:        systemsettings-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-OPENSUSE install_administration_category.diff -- install System Administration category, needed at least for YaST KCM
-Patch0:         install_administration_category.diff
 BuildRequires:  extra-cmake-modules >= 1.2.0
 BuildRequires:  kf5-filesystem
-BuildRequires:  kirigami2-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
 BuildRequires:  cmake(KF5Activities)
@@ -47,10 +44,11 @@ BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5ItemViews)
 BuildRequires:  cmake(KF5KCMUtils)
-BuildRequires:  cmake(KF5KHtml)
 BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Kirigami2)
 BuildRequires:  cmake(KF5Package)
 BuildRequires:  cmake(KF5Service)
+BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(LibKWorkspace)
@@ -94,6 +92,7 @@ Provides KDE's control center modules. Development files.
 
 %files
 %license COPYING*
+%{_kf5_appstreamdir}/org.kde.systemsettings.metainfo.xml
 %{_kf5_bindir}/systemsettings5
 %{_kf5_libdir}/libsystemsettingsview.so.*
 %{_kf5_plugindir}/
@@ -109,7 +108,6 @@ Provides KDE's control center modules. Development files.
 %dir %{_kf5_sharedir}/kpackage/genericqml
 %{_kf5_sharedir}/kpackage/genericqml/org.kde.systemsettings.sidebar
 %{_kf5_debugdir}/*.categories
-%{_kf5_appstreamdir}/org.kde.systemsettings.metainfo.xml
 
 %files devel
 %{_kf5_libdir}/libsystemsettingsview.so

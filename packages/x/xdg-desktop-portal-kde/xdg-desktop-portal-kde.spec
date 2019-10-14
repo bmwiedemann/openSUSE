@@ -25,15 +25,15 @@
 
 %define kf5_version 5.50.0
 Name:           xdg-desktop-portal-kde
-Version:        5.16.5
+Version:        5.17.0
 Release:        0
 Summary:        QT/KF5 backend for xdg-desktop-portal
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 Url:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/xdg-desktop-portal-kde-%{version}.tar.xz
+Source:         xdg-desktop-portal-kde-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/xdg-desktop-portal-kde-%{version}.tar.xz.sig
+Source1:        xdg-desktop-portal-kde-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
@@ -54,7 +54,6 @@ BuildRequires:  cmake(Qt5Widgets)
 %if %{with screencast}
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(gbm)
-BuildRequires:  pkgconfig(glib-2.0)
 # Don't use pkgconfig here as that would cause unresolvables on 0.1 -> 0.2 -> 0.3 bumps
 BuildRequires:  pipewire-devel
 # Without pipewire, screencasting won't work. Not a hard dep though.

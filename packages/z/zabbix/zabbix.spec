@@ -1,5 +1,5 @@
 #
-# spec file for package zabbix40
+# spec file for package zabbix
 #
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #

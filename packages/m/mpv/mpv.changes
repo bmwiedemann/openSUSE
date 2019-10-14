@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 12 08:33:35 UTC 2019 - idonmez@suse.com
+
+- Update to version 0.30.0+git.1570822084.a85fa2d2de:
+  * See https://github.com/mpv-player/mpv/compare/c833c095d7...a85fa2d2de
+    for the complete changelog.
+  * Fixes rendering glitches on Wayland
+-------------------------------------------------------------------
 Sun Oct 06 14:12:57 UTC 2019 - idonmez@suse.com
 
 - Update to version 0.30.0+git.1570361388.6d0f0546ee:
@@ -9,7 +16,7 @@ Sun Sep 29 15:08:46 UTC 2019 - idonmez@suse.com
 
 - Update to version 0.30.0+git.1569760020.c833c095d7:
   * See https://github.com/mpv-player/mpv/compare/b6def652a4...c833c095d7
-  for the complete changelog.
+    for the complete changelog.
 - Refresh mpv-make-ffmpeg-version-check-non-fatal.patch
 - Remove --enable-zsh-comp option, zsh completion is now always enabled
 
@@ -18,7 +25,7 @@ Mon Sep 23 11:24:25 UTC 2019 - idonmez@suse.com
 
 - Update to version 0.30.0+git.1569184750.b6def652a4:
   * See https://github.com/mpv-player/mpv/compare/0abe34ed21...b6def652a4
-  for the complete changelog.
+    for the complete changelog.
 
 -------------------------------------------------------------------
 Tue Sep 17 13:13:30 UTC 2019 - idonmez@suse.com

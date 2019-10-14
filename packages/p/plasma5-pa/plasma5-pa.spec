@@ -16,19 +16,19 @@
 #
 
 
-%define kf5_version 5.58.0
+%define kf5_version 5.62.0
 %define qt5_version 5.12.0
 %bcond_without lang
 Name:           plasma5-pa
-Version:        5.16.5
+Version:        5.17.0
 Release:        0
 Summary:        The Plasma5 Volume Manager
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 Url:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-pa-%{version}.tar.xz
+Source:         plasma-pa-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-pa-%{version}.tar.xz.sig
+Source1:        plasma-pa-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 0.0.14
@@ -57,6 +57,7 @@ Recommends:     pulseaudio-module-gsettings
 %else
 Recommends:     pulseaudio-module-gconf
 %endif
+Requires:       kirigami2 >= %{kf5_version}
 Requires:       pulseaudio-module-x11
 Recommends:     %{name}-lang
 

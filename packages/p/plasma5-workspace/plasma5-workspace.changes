@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Oct 10 14:25:48 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.0.php
+- Changes since 5.16.90:
+  * [Notifications] Report effective Inhibited state on DBus
+  * Fix erroneous conversion to signed int
+  * [startplasma] don't set QT_AUTO_SCREEN_SCALE_FACTOR with Qt >= 5.14
+  * [Notifications] Dodge Plasma dialogs
+  * Link explicitly to Qt5Widgets, in case KWindowSystem doesn't anymore
+  * [Notifications] Add spacing after positioning popup for bottom panel
+  * Remove some spacing on lockscreen that was causing elements to get cut off on small displays (kde#410801)
+  * [Kicker] Add guards for appletInterface
+  * Fix version for Plasma/5.17
+  * Fix the appstream qt detection in cmake (kde#412069)
+  * It depends against 5.62 now
+
+-------------------------------------------------------------------
+Fri Sep 20 13:19:35 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Adjust plasmafullwayland.desktop to upstream changes: the session
+  is started by the startplasma-wayland executable now, the
+  startplasmacompositor script doesn't exist anymore
+
+-------------------------------------------------------------------
+Thu Sep 19 12:32:38 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.90.php
+- Too many changes to list here
+- Refresh patches:
+  * 0001-Add-suffix-to-the-wayland-session-s-name.patch
+  * 0001-Set-GTK_BACKEND-x11-in-a-wayland-session.patch
+  * lazy-sddm-theme.patch
+- Replace 0001-Rename-qdbus-in-startkde.patch with 0001-Use-qdbus-qt5.patch
+
+-------------------------------------------------------------------
 Tue Sep  3 12:44:14 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.16.5

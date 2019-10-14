@@ -17,10 +17,10 @@
 #
 
 
-%define version_unconverted 8.7.83
+%define version_unconverted 8.7.84
 
 Name:           kopano
-Version:        8.7.83
+Version:        8.7.84
 Release:        0
 Summary:        Groupware server suite
 License:        AGPL-3.0-only
@@ -467,7 +467,7 @@ module, you can create Python programs which use MAPI calls to
 interact with Kopano.
 
 %prep
-%setup -qn kopanocore-%version
+%autosetup -n kopanocore-%version -p1
 
 %build
 autoreconf -fi
@@ -992,6 +992,8 @@ fi
 %defattr(-,root,root)
 %dir %_prefix/lib/kopano/
 %_prefix/lib/kopano/userscripts/
+%dir %_libexecdir/kopano/
+%_libexecdir/kopano/kscriptrun
 %_sbindir/kopano-server
 %dir %_libdir/kopano
 %_libdir/kopano/libkcserver-[a-z]*.so
@@ -1065,7 +1067,6 @@ fi
 %_mandir/man*/kopano-storeadm.*
 %dir %_libexecdir/kopano
 %_libexecdir/kopano/mapitime
-%_libexecdir/kopano/kscriptrun
 %dir %_docdir/kopano
 %dir %_docdir/kopano/example-config
 %_docdir/kopano/example-config/admin.cfg

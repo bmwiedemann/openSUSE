@@ -1,6 +1,6 @@
 [Desktop Entry]
-Exec=env GDK_BACKEND=wayland QT_QPA_PLATFORM=wayland dbus-run-session /usr/bin/startplasmacompositor
-TryExec=/usr/bin/startplasmacompositor
+Exec=env GDK_BACKEND=wayland QT_QPA_PLATFORM=wayland dbus-run-session /usr/bin/startplasma-wayland
+TryExec=/usr/bin/startplasma-wayland
 DesktopNames=KDE
 Name=Plasma (Full Wayland)
 Comment=Plasma by KDE

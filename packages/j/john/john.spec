@@ -34,7 +34,6 @@ Source7:        relbench.8
 Source8:        https://www.openwall.com/john/k/%{jumboversion}.tar.xz
 Source9:        https://www.openwall.com/john/k/%{jumboversion}.tar.xz.sign
 BuildRequires:  dos2unix
-BuildRequires:  fdupes
 BuildRequires:  gmp-devel
 BuildRequires:  libpcap-devel
 BuildRequires:  libusb-devel
@@ -114,7 +113,6 @@ install -m 644 -p %{SOURCE2} %{buildroot}%{_mandir}/man8/
 install -Dm644 %{SOURCE6} %{buildroot}%{_mandir}/man8/mailer.8
 install -Dm644 %{SOURCE7} %{buildroot}%{_mandir}/man8/relbench.8
 dos2unix %{buildroot}%{_defaultdocdir}/%{name}/README.krb5tgs-17-18-23.md
-%fdupes %{buildroot}
 
 %files
 %doc %{_defaultdocdir}/%{name}/

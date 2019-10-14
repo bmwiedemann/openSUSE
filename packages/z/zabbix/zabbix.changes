@@ -717,4 +717,5 @@ Tue Oct 16 22:49:22 UTC 2018 - Boris Manojlovic <boris@steki.net>
 Mon Oct  2 12:36:00 UTC 2018 - pieter@hollants.com
 
 - initial packaging of zabbix 4.0.0
+- inherited patch zabbix-3.0.25-new-m4-pgsql.patch
 

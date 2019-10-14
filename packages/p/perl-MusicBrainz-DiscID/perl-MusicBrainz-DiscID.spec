@@ -17,12 +17,11 @@
 
 
 Name:           perl-MusicBrainz-DiscID
-Version:        0.04
+Version:        0.06
 Release:        0
-#Upstream: GPL-1.0-or-later
 %define cpan_name MusicBrainz-DiscID
 Summary:        Perl interface for the MusicBrainz libdiscid library
-License:        GPL-2.0-or-later
+License:        MIT
 Group:          Development/Libraries/Perl
 Url:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/N/NJ/NJH/%{cpan_name}-%{version}.tar.gz
@@ -30,6 +29,7 @@ Source1:        cpanspec.yml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Test::Pod) >= 1.00
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  pkg-config
@@ -60,5 +60,6 @@ make test
 %files -f %{name}.files
 %defattr(-,root,root,755)
 %doc Changes examples README.md
+%license LICENSE.md
 
 %changelog

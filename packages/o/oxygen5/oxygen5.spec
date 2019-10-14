@@ -20,7 +20,7 @@
 %define kwin_deco 1
 
 Name:           oxygen5
-Version:        5.16.5
+Version:        5.17.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -30,9 +30,9 @@ Summary:        Oxygen style, KWin decoration, cursors and sounds
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 Url:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/oxygen-%{version}.tar.xz
+Source:         oxygen-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/oxygen-%{version}.tar.xz.sig
+Source1:        oxygen-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        baselibs.conf
@@ -110,6 +110,8 @@ License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 Obsoletes:      oxygen-style5 < %{version}
 Provides:       oxygen-style5 = %{version}
+# Color schemes were moved here
+Conflicts:      plasma5-desktop < 5.17.0
 
 %description style
 This package contains the libraries of the Oxygen style.
@@ -164,6 +166,8 @@ This package contains the libraries Oxygen's KWin decoration.
 %{_kf5_plugindir}/kstyle_oxygen_config.so
 %{_kf5_plugindir}/styles/
 %{_kf5_sharedir}/kstyle/
+%dir %{_kf5_sharedir}/color-schemes/
+%{_kf5_sharedir}/color-schemes/Oxygen*.colors
 %{_kf5_plasmadir}/
 %dir %{_kf5_servicesdir}
 %{_kf5_servicesdir}/oxygenstyleconfig.desktop

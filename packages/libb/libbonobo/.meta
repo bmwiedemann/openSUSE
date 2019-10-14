@@ -1,9 +1,0 @@
-<package name="libbonobo" project="openSUSE:Factory">
-  <title>The Bonobo Component System for the GNOME 2.x Desktop Platform</title>
-  <description>Bonobo is a component system for the GNOME platform. Libbonobo is the
-new version for the GNOME 2.x Desktop platform.</description>
-  <devel project="GNOME:Factory" package="libbonobo"/>
-  <build>
-    <disable/>
-  </build>
-</package>

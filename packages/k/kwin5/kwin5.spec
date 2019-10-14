@@ -21,7 +21,7 @@
 %global wayland (0%{?suse_version} >= 1330)
 %bcond_without lang
 Name:           kwin5
-Version:        5.16.5
+Version:        5.17.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -31,9 +31,9 @@ Summary:        KDE Window Manager
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          System/GUI/KDE
 Url:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/kwin-%{version}.tar.xz
+Source:         kwin-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kwin-%{version}.tar.xz.sig
+Source1:        kwin-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -310,8 +310,7 @@ This package provides development files.
 %{_kf5_servicesdir}/
 %{_kf5_servicetypesdir}/
 %{_kf5_sharedir}/kwin/
-%dir %{_kf5_sharedir}/kconf_update/
-%{_kf5_sharedir}/kconf_update/kwin.upd
+%{_kf5_sharedir}/kconf_update/
 %{_kf5_notifydir}/
 %doc %{_kf5_htmldir}/en/
 %dir %{_kf5_sharedir}/kpackage/

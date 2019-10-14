@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 13 10:09:48 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- links 2.20.2:
+  * If the user runs links on a framebuffer and switch to a
+    different framebuffer, links would incorrectly respond to mouse
+    clicks
+
+-------------------------------------------------------------------
 Sun Sep  8 08:27:25 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - links 2.20.1:

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct  8 11:55:05 UTC 2019 - Tina Mueller <tina.mueller@suse.com>
+
+- Add license LGPL-2.1-or-later to cpanspec.yml as it couldn't be detected
+   automatically
+
+-------------------------------------------------------------------
+Tue Oct  8 07:55:50 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.107
+   see /usr/share/doc/packages/perl-Cairo/ChangeLog.pre-git
+
+-------------------------------------------------------------------
 Thu Jun  2 08:37:41 UTC 2016 - dimstar@opensuse.org
 
 - Ignore make check failures for now (equal to other distros).

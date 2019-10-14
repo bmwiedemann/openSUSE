@@ -51,7 +51,7 @@ Standards-Version: 3.7.3
 
 Package: kopano-archiver
 Architecture: any
-Depends: python3-kopano, ${python3:Depends}, ${shlibs:Depends}, libkcarchiver0 (= ${binary:Version})
+Depends: python3-kopano (= ${binary:Version}), ${python3:Depends}, ${shlibs:Depends}, libkcarchiver0 (= ${binary:Version})
 Description: Hierarchial Storage Management for the Kopano Core platform
  The Kopano Archiver provides a Hierarchical Storage Management (HSM)
  solution for Kopano Core.
@@ -80,7 +80,7 @@ Description: Kopano MAPI provider library
 
 Package: kopano-common
 Architecture: any
-Depends: lsb-base
+Depends: lsb-base, passwd
 Replaces: libkchl0, libkcmapi0, libkcservice0, libkcsoapclient0,
  libkcsoapserver0, libkcssl0, libkcsync0,
  kopano-core-common (<< ${binary:Version})
@@ -106,9 +106,10 @@ Description: MAPI provider adding contact folders in the addressbook
 
 Package: kopano-dagent
 Architecture: any
-Depends: ${shlibs:Depends}, kopano-common,
+Depends: ${shlibs:Depends}, kopano-common (= ${binary:Version}),
  kopano-client (= ${binary:Version}), libkcpyplug0 (= ${binary:Version}),
- python3-kopano-utils (>= 8.7.80)
+ python3-kopano-utils (= ${binary:Version})
+Recommends: kopano-dagent-pytils (= ${binary:Version})
 Breaks: kopano-server (<< 8.6.0)
 Description: E-Mail Delivery Agent for Kopano Core
  Delivers incoming e-mail from your SMTP server to stores
@@ -139,7 +140,7 @@ Description: C++ Development files for Kopano Core
 
 Package: kopano-gateway
 Architecture: any
-Depends: ${shlibs:Depends}, kopano-common, kopano-client (= ${binary:Version})
+Depends: ${shlibs:Depends}, kopano-common (= ${binary:Version}), kopano-client (= ${binary:Version})
 Description: POP3 and IMAP Gateway for Kopano Core
  The gateway enables other e-mail clients to connect
  through POP3 or IMAP to the Kopano server to read their
@@ -149,7 +150,7 @@ Description: POP3 and IMAP Gateway for Kopano Core
 
 Package: kopano-ical
 Architecture: any
-Depends: ${shlibs:Depends}, kopano-common, kopano-client (= ${binary:Version})
+Depends: ${shlibs:Depends}, kopano-common (= ${binary:Version}), kopano-client (= ${binary:Version})
 Description: ICal and CalDAV Gateway for Kopano Core
  The iCal/CalDAV gateway enables users to retrieve their calendar
  using iCalendar compliant clients. The iCal/CalDAV gateway can be
@@ -180,17 +181,17 @@ Description: Utility to migrate between IMAP mailboxes
 
 Package: kopano-monitor
 Architecture: any
-Depends: ${shlibs:Depends}, kopano-common, kopano-client (= ${binary:Version})
+Depends: ${shlibs:Depends}, kopano-common (= ${binary:Version}), kopano-client (= ${binary:Version})
 Description: Quota Monitor for Kopano Core
  Regularly checks stores for total usage. If a quota limit has been
  exceeded, an e-mail will be internally sent to this account.
 
 Package: kopano-server
 Architecture: any
-Depends: ${shlibs:Depends}, kopano-common,
- kopano-utils, libtcmalloc-minimal4, libs3-4
+Depends: ${shlibs:Depends}, kopano-common (= ${binary:Version}),
+ kopano-utils (= ${binary:Version}), libtcmalloc-minimal4, libs3-4
 Breaks: kopano-common (<< 8.7.80)
-Suggests: kopano-python-utils (>= 8.7.81.165)
+Suggests: kopano-python-utils (= ${binary:Version})
 Description: Server component for Kopano Core
  This package provides the key component of Kopano Core, providing the
  server to which Kopano clients connect. The server requires a MySQL
@@ -199,16 +200,17 @@ Description: Server component for Kopano Core
 Package: kopano-server-packages
 Architecture: all
 Depends:
- kopano-backup,
- kopano-dagent,
- kopano-gateway,
- kopano-ical,
- kopano-monitor,
- kopano-python-utils,
- kopano-search,
- kopano-server,
- kopano-spooler,
- kopano-utils
+ kopano-backup (= ${binary:Version}),
+ kopano-dagent (= ${binary:Version}),
+ kopano-dagent-pytils (= ${binary:Version}),
+ kopano-gateway (= ${binary:Version}),
+ kopano-ical (= ${binary:Version}),
+ kopano-monitor (= ${binary:Version}),
+ kopano-python-utils (= ${binary:Version}),
+ kopano-search (= ${binary:Version}),
+ kopano-server (= ${binary:Version}),
+ kopano-spooler (= ${binary:Version}),
+ kopano-utils (= ${binary:Version})
 Breaks: kopano-core
 Replaces: kopano-core
 Description: Metapackage to install the entire Kopano Core stack
@@ -229,9 +231,10 @@ Description: Statistics aggregator for Kopano Core services
 
 Package: kopano-spooler
 Architecture: any
-Depends: ${shlibs:Depends}, kopano-common,
+Depends: ${shlibs:Depends}, kopano-common (= ${binary:Version}),
  kopano-client (= ${binary:Version}), libkcpyplug0 (= ${binary:Version}),
  python3-mapi (= ${binary:Version})
+Suggests: kopano-dagent-pytils (= ${binary:Version})
 Description: E-mail Spooler for Kopano Core
  The outgoing e-mail spooler. This service makes
  sure that e-mails sent by clients are converted to

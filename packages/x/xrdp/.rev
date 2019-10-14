@@ -209,4 +209,20 @@
     <comment></comment>
     <requestid>729870</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>002d8a5378e6bb895469c81128cdfaf5</srcmd5>
+    <version>0.9.11</version>
+    <time>1571049796</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>738170</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>ce3acabd3319801b87a7e53ef050d5da</srcmd5>
+    <version>0.9.11</version>
+    <time>1571049835</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>738207</requestid>
+  </revision>
 </revisionlist>

@@ -20,7 +20,7 @@
 
 %bcond_without lang
 Name:           plasma5-desktop
-Version:        5.16.5
+Version:        5.17.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.9.3)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -30,35 +30,22 @@ Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
 Url:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-desktop-%{version}.tar.xz
+Source:         plasma-desktop-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-desktop-%{version}.tar.xz.sig
+Source1:        plasma-desktop-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Use-themed-user-face-icon-in-kickoff.patch
-# PATCHES 100-200 and above are from upstream 5.16 branch
-# PATCHES 201-300 and above are from upstream master/5.17 branch
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
-%endif
 BuildRequires:  extra-cmake-modules >= 1.8.0
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel
 BuildRequires:  kf5-filesystem
+BuildRequires:  libboost_headers-devel
 BuildRequires:  libtag-devel
-BuildRequires:  phonon4qt5-devel >= 4.6.60
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
-%if 0%{?suse_version} < 1330
-# It does not build with the default compiler (GCC 4.8) on Leap 42.x
-BuildRequires:  gcc7-c++
-%endif
-%if 0%{?suse_version} > 1320 || 0%{?sle_version} >= 120200
 BuildRequires:  cmake(AppStreamQt) >= 0.10.4
-%endif
 BuildRequires:  cmake(KDED) >= %{kf5_version}
 BuildRequires:  cmake(KF5Activities) >= %{kf5_version}
 BuildRequires:  cmake(KF5ActivitiesStats) >= %{kf5_version}
@@ -92,6 +79,7 @@ BuildRequires:  cmake(KSMServerDBusInterface) >= %{_plasma5_version}
 BuildRequires:  cmake(KWinDBusInterface) >= %{_plasma5_version}
 BuildRequires:  cmake(LibKWorkspace) >= %{_plasma5_bugfix}
 BuildRequires:  cmake(LibTaskManager) >= %{_plasma5_version}
+BuildRequires:  cmake(Phonon4Qt5) >= 4.6.60
 BuildRequires:  cmake(Qt5Concurrent) >= 5.4.0
 BuildRequires:  cmake(Qt5DBus) >= 5.4.0
 BuildRequires:  cmake(Qt5Qml) >= 5.4.0
@@ -142,18 +130,15 @@ Requires:       plasma5-workspace >= %{_plasma5_bugfix}
 %requires_ge plasma-framework-private
 Requires:       kde-user-manager
 # Various KCMs use it
-Requires:       kirigami2
-%if 0%{?suse_version} > 1314 && "%{suse_version}" != "1320"
 Requires:       kinfocenter5
+Requires:       kirigami2
 Requires:       kmenuedit5
 Requires:       ksysguard5
-%endif
 # needed for the ActivityManager
 Requires:       kactivities5-imports
 Conflicts:      kactivities5 < 5.20.0
 Recommends:     plasma5-addons
 Recommends:     %{name}-lang
-%if 0%{?suse_version} > 1314 && "%{suse_version}" != "1320"
 Provides:       kdebase4-workspace = 5.3.0
 Obsoletes:      kdebase4-workspace < 5.3.0
 Provides:       kcm-touchpad = %{version}
@@ -162,10 +147,6 @@ Provides:       kdebase4-workspace-plasma-calendar = %{version}
 Obsoletes:      kdebase4-workspace-plasma-calendar < %{version}
 Provides:       kdebase4-workspace-plasma-engine-akonadi = %{version}
 Obsoletes:      kdebase4-workspace-plasma-engine-akonadi < %{version}
-%else
-Conflicts:      kdebase4-workspace
-Conflicts:      kcm-touchpad
-%endif
 Conflicts:      kio-extras5 <= 5.3.2
 Provides:       kcm-touchpad5 = %{version}
 Obsoletes:      kcm-touchpad5 < %{version}
@@ -184,7 +165,6 @@ Obsoletes:      synaptiks
 This package contains the basic packages for a Plasma workspace.
 
 %lang_package
-
 %prep
 %autosetup -p1 -n plasma-desktop-%{version}
 
@@ -192,11 +172,6 @@ This package contains the basic packages for a Plasma workspace.
 sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/package/metadata.desktop
 
 %build
-  %if 0%{?suse_version} < 1330
-    # It does not build with the default compiler (GCC 4.8) on Leap 42.x
-    export CC=gcc-7
-    export CXX=g++-7
-  %endif
   %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
   %make_jobs
 
@@ -275,7 +250,6 @@ sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/packag
 %{_kf5_iconsdir}/hicolor/*/*/*.*
 %{_kf5_configkcfgdir}/
 %{_kf5_sharedir}/kcm_componentchooser/
-%{_kf5_sharedir}/kcm_phonon/
 %{_kf5_sharedir}/kcmkeys/
 %{_kf5_sharedir}/kcmsolidactions/
 %{_kf5_sharedir}/kconf_update/
@@ -285,7 +259,6 @@ sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/packag
 %{_kf5_sharedir}/kxmlgui5/
 %{_kf5_sharedir}/kpackage/
 %{_kf5_sharedir}/kcmmouse/
-%{_kf5_sharedir}/color-schemes/
 %{_kf5_sharedir}/kcmkeyboard/
 %{_kf5_notifydir}/
 %{_kf5_sharedir}/konqsidebartng/
@@ -301,7 +274,6 @@ sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/packag
 %{_kf5_plasmadir}/services/kimpanel.operations
 %{_kf5_plasmadir}/plasmoids/org.kde.plasma.kimpanel/
 %{_kf5_plugindir}/plasma/dataengine/plasma_engine_kimpanel.so
-%{_kf5_debugdir}/*.categories
 
 %if %{with lang}
 %files lang -f %{name}.lang

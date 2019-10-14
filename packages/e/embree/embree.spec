@@ -13,11 +13,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           embree
-Version:        3.5.2
+Version:        3.6.1
 Release:        0
 Summary:        Ray Tracing Kernels
 License:        Apache-2.0
@@ -28,8 +29,8 @@ BuildRequires:  cmake >= 2.8.6
 BuildRequires:  gcc-c++
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(glfw3)
 BuildRequires:  tbb-devel
+BuildRequires:  pkgconfig(glfw3)
 # SSE2 is required: https://github.com/embree/embree/issues/186
 ExclusiveArch:  x86_64
 

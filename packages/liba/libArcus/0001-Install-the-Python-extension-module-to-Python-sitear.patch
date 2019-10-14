@@ -1,0 +1,28 @@
+From 9dc7e06fcdf0d0bf0342b63e2a27f586aa783ece Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Miro=20Hron=C4=8Dok?= <miro@hroncok.cz>
+Date: Thu, 27 Jun 2019 15:30:47 +0200
+Subject: [PATCH 1/2] Install the Python extension module to Python sitearch,
+ not sitelib
+
+The sitearch directory is used for compiled code, such as this extension module.
+
+See https://github.com/Ultimaker/libArcus/pull/94#issuecomment-505376760
+---
+ cmake/SIPMacros.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/SIPMacros.cmake b/cmake/SIPMacros.cmake
+index 00a5f9f..14544d2 100644
+--- a/cmake/SIPMacros.cmake
++++ b/cmake/SIPMacros.cmake
+@@ -124,6 +124,6 @@ MACRO(ADD_SIP_PYTHON_MODULE MODULE_NAME MODULE_SIP)
+         SET_TARGET_PROPERTIES(${_logical_name} PROPERTIES SUFFIX ".pyd" IMPORT_PREFIX "_")
+     ENDIF (WIN32)
+ 
+-    INSTALL(TARGETS ${_logical_name} DESTINATION "${Python3_SITELIB}/${_parent_module_path}")
++    INSTALL(TARGETS ${_logical_name} DESTINATION "${Python3_SITEARCH}/${_parent_module_path}")
+ 
+ ENDMACRO(ADD_SIP_PYTHON_MODULE)
+-- 
+2.23.0
+

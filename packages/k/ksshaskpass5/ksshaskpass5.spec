@@ -18,15 +18,15 @@
 
 %bcond_without lang
 Name:           ksshaskpass5
-Version:        5.16.5
+Version:        5.17.0
 Release:        0
 Summary:        Plasma 5 version of ssh-askpass
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 Url:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/ksshaskpass-%{version}.tar.xz
+Source:         ksshaskpass-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/ksshaskpass-%{version}.tar.xz.sig
+Source1:        ksshaskpass-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Patch1:         suse-tweaks.diff

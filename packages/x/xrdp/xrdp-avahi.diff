@@ -1,7 +1,7 @@
-diff --git a/configure.ac b/configure.ac
-index 47212ec..b011897 100644
---- a/configure.ac
-+++ b/configure.ac
+Index: b/configure.ac
+===================================================================
+--- a/configure.ac	2019-08-19 23:39:17.000000000 +0800
++++ b/configure.ac	2019-10-12 18:00:31.198468206 +0800
 @@ -9,6 +9,7 @@ AC_PROG_CC
  AC_C_CONST
  AC_PROG_LIBTOOL
@@ -10,10 +10,10 @@ index 47212ec..b011897 100644
  PKG_PROG_PKG_CONFIG
  if test "x$PKG_CONFIG" = "x"; then
    AC_MSG_ERROR([please install pkg-config])
-diff --git a/xrdp/Makefile.am b/xrdp/Makefile.am
-index a259ef3..2cbb762 100644
---- a/xrdp/Makefile.am
-+++ b/xrdp/Makefile.am
+Index: b/xrdp/Makefile.am
+===================================================================
+--- a/xrdp/Makefile.am	2019-03-25 10:34:16.000000000 +0800
++++ b/xrdp/Makefile.am	2019-10-12 17:56:20.380230201 +0800
 @@ -12,7 +12,9 @@ AM_CPPFLAGS = \
    -DXRDP_SOCKET_PATH=\"${socketdir}\" \
    -I$(top_builddir) \
@@ -43,20 +43,11 @@ index a259ef3..2cbb762 100644
  
  xrdpsysconfdir=$(sysconfdir)/xrdp
  
-diff --git a/xrdp/xrdp.h b/xrdp/xrdp.h
-index 82e8a57..ae70874 100644
---- a/xrdp/xrdp.h
-+++ b/xrdp/xrdp.h
-@@ -163,6 +163,8 @@ void
- xrdp_listen_main_loop(struct xrdp_listen* self);
- int
- xrdp_listen_test(void);
-+int
-+xrdp_listen_get_port(char* port, int port_bytes);
- 
- /* xrdp_region.c */
- struct xrdp_region*
-@@ -514,3 +516,8 @@ server_add_char_alpha(struct xrdp_mod* mod, int font, int character,
+Index: b/xrdp/xrdp.h
+===================================================================
+--- a/xrdp/xrdp.h	2019-08-19 23:39:17.000000000 +0800
++++ b/xrdp/xrdp.h	2019-10-12 17:56:20.380230201 +0800
+@@ -527,3 +527,10 @@ server_add_char_alpha(struct xrdp_mod* m
  int
  server_session_info(struct xrdp_mod *mod, const char *data, int data_bytes);
  
@@ -65,11 +56,13 @@ index 82e8a57..ae70874 100644
 +xrdp_avahi_init(void);
 +void
 +xrdp_avahi_fini(void);
-diff --git a/xrdp/xrdp_avahi.c b/xrdp/xrdp_avahi.c
-index e69de29..642a333 100644
---- a/xrdp/xrdp_avahi.c
-+++ b/xrdp/xrdp_avahi.c
-@@ -0,0 +1,115 @@
++void
++xrdp_avahi_get_port(char *port);
+Index: b/xrdp/xrdp_avahi.c
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ b/xrdp/xrdp_avahi.c	2019-10-12 17:56:20.380230201 +0800
+@@ -0,0 +1,173 @@
 +/*
 +   This program is free software; you can redistribute it and/or modify
 +   it under the terms of the GNU General Public License as published by
@@ -92,12 +85,10 @@ index e69de29..642a333 100644
 +
 +*/
 +
-+#include <stdio.h>
-+#include <stdlib.h>
-+#include <unistd.h>
 +#include <avahi-client/client.h>
 +#include <avahi-client/publish.h>
 +#include <avahi-common/thread-watch.h>
++#include <xrdp.h>
 +
 +static AvahiClient       *client = NULL;
 +static AvahiThreadedPoll *threaded_poll = NULL;
@@ -118,18 +109,13 @@ index e69de29..642a333 100644
 +	    char hname[512];
 +	    char name[576];
 +	    char port[8];
-+	    /* dummy parameters */
-+	    char address[256];
-+	    struct xrdp_startup_params* startup_param = {(const char[]) {""}, 0, 0, 0, 0, 0, 0, 0};
 +
 +	    if (gethostname (hname, sizeof (hname)))
 +		break;
 +
 +	    sprintf (name, _service_name, hname);
 +
-+	    xrdp_listen_get_port_address (port, sizeof (port),
-+                                          address, sizeof (address),
-+                                          startup_param);
++	    xrdp_avahi_get_port (port);
 +
 +	    avahi_entry_group_add_service (avahi_group,
 +					   AVAHI_IF_UNSPEC,
@@ -185,16 +171,101 @@ index e69de29..642a333 100644
 +    avahi_client_free (client);
 +    avahi_threaded_poll_free (threaded_poll);
 +}
-diff --git a/xrdp/xrdp_listen.c b/xrdp/xrdp_listen.c
-index 0fbe61f..ed0af63 100644
---- a/xrdp/xrdp_listen.c
-+++ b/xrdp/xrdp_listen.c
-@@ -149,7 +149,7 @@ xrdp_process_run(void *in_val)
- }
++
++void
++xrdp_avahi_get_port(char *port)
++{
++    const int port_bytes = 8;
++    int fd;
++    char cfg_file[256];
++
++    /* default to port 3389 */
++    g_strncpy(port, "3389", port_bytes - 1);
++
++    /* see if port or address is in xrdp.ini file */
++    g_snprintf(cfg_file, 255, "%s/xrdp.ini", XRDP_CFG_PATH);
++    fd = g_file_open(cfg_file);
++
++    if (fd != -1)
++    {
++        struct list *names;
++        struct list *values;
++
++        names = list_create();
++        names->auto_free = 1;
++        values = list_create();
++        values->auto_free = 1;
++
++        if (file_read_section(fd, "globals", names, values) == 0)
++        {
++            int index;
++            char *val;
++
++            for (index = 0; index < names->count; index++)
++            {
++                val = (char *)list_get_item(names, index);
++
++                if (val != 0)
++                {
++                    if (g_strcasecmp(val, "port") == 0)
++                    {
++                        val = (char *)list_get_item(values, index);
++                        if (val[0] == '/')
++                        {
++                            g_strncpy(port, val, port_bytes - 1);
++                        }
++                        else
++                        {
++                            int error;
++
++                            error = g_atoi(val);
++                            if ((error > 0) && (error < 65000))
++                            {
++                                g_strncpy(port, val, port_bytes - 1);
++                            }
++                        }
++                    }
++                }
++            }
++        }
++
++        list_delete(names);
++        list_delete(values);
++    }
++
++    if (fd != -1)
++        g_file_close(fd);
++}
+Index: b/common/arch.h
+===================================================================
+--- a/common/arch.h	2019-10-12 18:00:48.462622251 +0800
++++ b/common/arch.h	2019-10-12 18:01:11.506827870 +0800
+@@ -20,28 +20,7 @@
+ #define ARCH_H
  
- /*****************************************************************************/
--static int
-+int
- xrdp_listen_get_port_address(char *port, int port_bytes,
-                              char *address, int address_bytes,
-                              int *tcp_nodelay, int *tcp_keepalive,
+ #include <stdlib.h>
+-
+-#if defined(HAVE_STDINT_H)
+ #include <stdint.h>
+-#else
+-typedef signed char int8_t;
+-typedef unsigned char uint8_t;
+-typedef signed short int16_t;
+-typedef unsigned short uint16_t;
+-typedef signed int int32_t;
+-typedef unsigned int uint32_t;
+-#if defined(_WIN64)
+-typedef signed __int64 int64_t;
+-typedef unsigned __int64 uint64_t;
+-typedef signed __int64 intptr_t;
+-typedef unsigned __int64 uintptr_t;
+-#else
+-typedef signed long long int64_t;
+-typedef unsigned long long uint64_t;
+-typedef signed long intptr_t;
+-typedef unsigned long uintptr_t;
+-#endif
+-#endif
+ 
+ typedef int bool_t;
+ 

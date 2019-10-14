@@ -22,16 +22,18 @@ Release:        0
 Summary:        Discover and manipulate Digital Media Renderers
 License:        LGPL-2.1
 Group:          System/Libraries
-Url:            http://01.org/dleyna
+URL:            http://01.org/dleyna
 Source:         https://01.org/sites/default/files/downloads/dleyna/%{name}-%{version}.tar_2.gz
+# PATCH-FIX-UPSTREAM dleyna-renderer-port-gupnp.patch -- Port to gunpn-1.2
+Patch:          dleyna-renderer-port-gupnp.patch
 
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dleyna-core-1.0) >= 0.6.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.28
 BuildRequires:  pkgconfig(glib-2.0) >= 2.28
-BuildRequires:  pkgconfig(gssdp-1.0) >= 0.13.2
-BuildRequires:  pkgconfig(gupnp-1.0) >= 0.20.5
+BuildRequires:  pkgconfig(gssdp-1.2)
+BuildRequires:  pkgconfig(gupnp-1.2)
 BuildRequires:  pkgconfig(gupnp-av-1.0) >= 0.11.5
 BuildRequires:  pkgconfig(gupnp-dlna-2.0) >= 0.9.4
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.28.2
@@ -52,14 +54,14 @@ dleyna-renderer is a library for implementing services that allow clients to dis
 Digital Media Renderers. An implementation of such a service for linux is also included
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 autoreconf -fi
 %configure \
 	--disable-static \
 	%{nil}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

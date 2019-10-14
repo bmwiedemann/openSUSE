@@ -27,25 +27,21 @@ Name:           plasma5-workspace
 %{!?_plasma5_bugfix: %global _plasma5_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.9.1 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
-Version:        5.16.5
+Version:        5.17.0
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 Url:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-workspace-%{version}.tar.xz
+Source:         plasma-workspace-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-workspace-%{version}.tar.xz.sig
+Source1:        plasma-workspace-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        baselibs.conf
 Source4:        plasmafullwayland.desktop
-# PATCHES 000-100 and above are from upstream 5.16 branch
-# PATCHES 101-500 are from upstream master/5.17 branch
 # PATCHES 501-??? are PATCH-FIX-OPENSUSE
-# PATCH-FIX-OPENSUSE 0001-Rename-qdbus-in-startkde.patch cgiboudeaux@gmx.com -- Rename the qdbus executable in startkde
-Patch501:       0001-Rename-qdbus-in-startkde.patch
-# PATCH-FIX-OPENSUSE 0001-Ignore-default-sddm-face-icons.patch boo#1001364 fabian@ritter-vogt.de -- Ignore default sddm face icons
+Patch501:       0001-Use-qdbus-qt5.patch
 Patch502:       0001-Ignore-default-sddm-face-icons.patch
 Patch503:       0001-Set-GTK_BACKEND-x11-in-a-wayland-session.patch
 # PATCH-FIX-UPSTREAM (once sddm part merged)
@@ -57,12 +53,12 @@ Patch507:       lazy-sddm-theme.patch
 BuildRequires:  breeze5-icons
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
-BuildRequires:  phonon4qt5-devel >= 4.6.60
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(AppStreamQt) >= 0.10.4
 BuildRequires:  cmake(KDED) >= %{kf5_version}
 BuildRequires:  cmake(KF5Activities) >= %{kf5_version}
+BuildRequires:  cmake(KF5ActivitiesStats) >= %{kf5_version}
 BuildRequires:  cmake(KF5Baloo)
 BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5Crash) >= %{kf5_version}
@@ -73,13 +69,13 @@ BuildRequires:  cmake(KF5GlobalAccel) >= %{kf5_version}
 BuildRequires:  cmake(KF5Holidays)
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
 BuildRequires:  cmake(KF5IdleTime) >= %{kf5_version}
-BuildRequires:  cmake(KF5JsEmbed) >= %{kf5_version}
 BuildRequires:  cmake(KF5KCMUtils) >= %{kf5_version}
 BuildRequires:  cmake(KF5KDELibs4Support) >= %{kf5_version}
 BuildRequires:  cmake(KF5NetworkManagerQt) >= %{kf5_version}
 BuildRequires:  cmake(KF5NewStuff) >= %{kf5_version}
 BuildRequires:  cmake(KF5NotifyConfig) >= %{kf5_version}
 BuildRequires:  cmake(KF5Package) >= %{kf5_version}
+BuildRequires:  cmake(KF5People) >= %{kf5_version}
 BuildRequires:  cmake(KF5Plasma) >= %{kf5_version}
 BuildRequires:  cmake(KF5PlasmaQuick)
 BuildRequires:  cmake(KF5Prison) >= %{kf5_version}
@@ -94,7 +90,9 @@ BuildRequires:  cmake(KF5Wallet) >= %{kf5_version}
 BuildRequires:  cmake(KF5Wayland) >= %{kf5_version}
 BuildRequires:  cmake(KF5XmlRpcClient)
 BuildRequires:  cmake(KScreenLocker) >= %{_plasma5_version}
+BuildRequires:  cmake(Phonon4Qt5) >= 4.6.60
 #!BuildIgnore:  kdialog
+BuildRequires:  libQt5PlatformHeaders-devel >= 5.4.0
 BuildRequires:  cmake(KWinDBusInterface) >= %{_plasma5_version}
 BuildRequires:  cmake(Qt5Concurrent) >= 5.4.0
 BuildRequires:  cmake(Qt5DBus) >= 5.4.0
@@ -378,24 +376,21 @@ fi
 
 %files
 %license COPYING*
-%{_kf5_bindir}/kcheckrunning
 %{_kf5_bindir}/kcminit
 %{_kf5_bindir}/kcminit_startup
-%{_kf5_bindir}/kdostartupconfig5
 %{_kf5_bindir}/klipper
 %{_kf5_bindir}/krunner
 %{_kf5_bindir}/ksmserver
 %{_kf5_bindir}/ksplashqml
-%{_kf5_bindir}/kstartupconfig5
 %{_kf5_bindir}/plasmashell
 %{_kf5_bindir}/plasmawindowed
-%{_kf5_bindir}/startkde
-%{_kf5_bindir}/startplasmacompositor
 %{_kf5_bindir}/systemmonitor
 %{_kf5_bindir}/plasma_waitforname
+%{_kf5_bindir}/plasma_session
+%{_kf5_bindir}/startplasma-wayland
+%{_kf5_bindir}/startplasma-x11
 %{_kf5_configdir}/autostart/org.kde.plasmashell.desktop
 %{_kf5_configdir}/autostart/klipper.desktop
-%{_kf5_configdir}/autostart/krunner.desktop
 %{_kf5_knsrcfilesdir}/plasmoids.knsrc
 %{_kf5_knsrcfilesdir}/wallpaper.knsrc
 %{_kf5_knsrcfilesdir}/wallpaperplugin.knsrc
@@ -403,14 +398,16 @@ fi
 %config %{_kf5_configdir}/plasmanotifyrc
 %dir %{_kf5_libdir}/libexec
 %{_kf5_libdir}/libexec/ksyncdbusenv
-%{_kf5_libdir}/libexec/startplasma
 %{_kf5_libdir}/libexec/ksmserver-logout-greeter
 %{_kf5_libdir}/libkdeinit5_kcminit.so
 %{_kf5_libdir}/libkdeinit5_kcminit_startup.so
 %{_kf5_libdir}/libkdeinit5_klipper.so
 %{_kf5_libdir}/libkdeinit5_ksmserver.so
 %{_kf5_libdir}/kconf_update_bin/krunnerplugins
+%{_kf5_libdir}/kconf_update_bin/krunnerglobalshortcuts
 %{_kf5_libdir}/libexec/baloorunner
+%{_kf5_libdir}/libexec/plasma-sourceenv.sh
+%{_kf5_libdir}/libexec/startplasma-waylandsession
 %{_kf5_plugindir}/
 %{_kf5_qmldir}/
 %{_kf5_applicationsdir}/org.kde.klipper.desktop
@@ -432,6 +429,8 @@ fi
 %{_kf5_notifydir}/
 %{_kf5_servicesdir}/
 %{_kf5_servicetypesdir}/
+%dir %{_kf5_sharedir}/kglobalaccel
+%{_kf5_sharedir}/kglobalaccel/krunner.desktop
 %{_kf5_sharedir}/ksplash/
 %{_kf5_sharedir}/kstyle/
 %{_kf5_plasmadir}/

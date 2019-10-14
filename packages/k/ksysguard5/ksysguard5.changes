@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Oct 10 14:25:46 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.0.php
+- Changes since 5.16.90:
+  * Fix a number of issues found by the OpenSuse security team in
+    networkhelper (boo#1151190)
+
+-------------------------------------------------------------------
+Thu Sep 19 12:32:35 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.90.php
+- Changes since 5.16.5:
+  * Port QLayout::setMargins to QLayout::setContentsMargins
+  * Set default visibility for per-process network sensors to true
+  * Replace s6_addr32 with s6_addr in the network plugin helper
+  * Yet another BSD compile fix
+  * Another FreeBSD compile fix
+  * Try to fix building the network plugin on FreeBSD
+  * Add a per-process network information plugin
+  * HiDPI icon in buttons and menus
+  * Linux softraid: Define _GNU_SOURCE for pipe2
+  * QT_NO_NARROWING_CONVERSIONS_IN_CONNECT is already defined in ecm
+  * Remove unused includes
+  * Ignore files
+  * Fix forward declaration
+  * ksysguardd: show Mandatory Access Control (SELinux/AppArmor) context
+  * ProcessList: add support for cgroups
+  * ProcessList: add NoNewPrivileges
+
+-------------------------------------------------------------------
 Tue Sep  3 12:44:12 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.16.5

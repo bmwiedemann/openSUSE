@@ -1,20 +1,20 @@
-From e430354b3628d250cba1e271ddc13024b4f59d8a Mon Sep 17 00:00:00 2001
+From 2167422cd0fa8b1059f5bc8a213bbeda3faa5391 Mon Sep 17 00:00:00 2001
 From: Fabian Vogt <fabian@ritter-vogt.de>
 Date: Sat, 24 Mar 2018 14:51:47 +0100
 Subject: [PATCH] Add suffix to the wayland session's name
 
 Sddm added the prefix previously, this is not the case anymore.
 ---
- plasmawayland.desktop.cmake | 46 +--------------------------------------------
+ login-sessions/plasmawayland.desktop.cmake | 46 +---------------------
  1 file changed, 1 insertion(+), 45 deletions(-)
 
-diff --git a/plasmawayland.desktop.cmake b/plasmawayland.desktop.cmake
-index 5d7db306..d2f98ee0 100644
---- a/plasmawayland.desktop.cmake
-+++ b/plasmawayland.desktop.cmake
+diff --git a/login-sessions/plasmawayland.desktop.cmake b/login-sessions/plasmawayland.desktop.cmake
+index 2415ec28..9319fcf9 100644
+--- a/login-sessions/plasmawayland.desktop.cmake
++++ b/login-sessions/plasmawayland.desktop.cmake
 @@ -2,51 +2,7 @@
- Exec=dbus-run-session ${CMAKE_INSTALL_FULL_BINDIR}/startplasmacompositor
- TryExec=${CMAKE_INSTALL_FULL_BINDIR}/startplasmacompositor
+ Exec=dbus-run-session ${CMAKE_INSTALL_FULL_BINDIR}/startplasma-wayland
+ TryExec=${CMAKE_INSTALL_FULL_BINDIR}/startplasma-wayland
  DesktopNames=KDE
 -Name=Plasma
 -Name[ar]=بلازما
@@ -66,5 +66,5 @@ index 5d7db306..d2f98ee0 100644
  Comment[ar]=بلازما كدي
  Comment[bs]=Plazma od strane KDe
 -- 
-2.16.2
+2.21.0
 

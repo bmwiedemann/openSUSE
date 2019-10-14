@@ -1,7 +1,7 @@
 #
 # spec file for package gocr
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gocr
-Version:        0.50
+Version:        0.52
 Release:        0
 Summary:        Optical Character Recognition Program
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
-Url:            http://jocr.sourceforge.net/
-Source0:        http://www-e.uni-magdeburg.de/jschulen/ocr/%{name}-%{version}.tar.gz
+URL:            https://www-e.uni-magdeburg.de/jschulen/ocr/index.html
+Source0:        https://www-e.uni-magdeburg.de/jschulen/ocr/%{name}-%{version}.tar.gz
 Source1:        gocr.desktop
-Source99:       %{name}.changes
+BuildRequires:  ImageMagick
 BuildRequires:  libnetpbm-devel
 BuildRequires:  transfig
-BuildRequires:  update-desktop-files
 Requires:       jpeg
 Requires:       netpbm
 Requires:       transfig
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 GOCR is an optical character recognition program. It reads images in
@@ -44,8 +42,6 @@ Summary:        Optical Character Recognition Program - Basic Graphical Interfac
 Group:          Productivity/Graphics/Other
 Requires:       %{name} = %{version}
 Requires:       tk
-Requires(postun): update-desktop-files
-Requires(pre):  update-desktop-files
 Supplements:    packageand(gocr:tk)
 
 %description gui
@@ -60,9 +56,6 @@ This package contains a basic graphical interface for GOCR.
 
 # Fix rpmlint warning "hidden-file-or-dir"
 rm -f examples/.#Makefile.1.22
-
-# Fix rpmlint warning "doc-file-dependency"
-chmod 644 examples/score
 
 # Remove build time references so build-compare can do its work (fix rpmlint warning "file-contains-current-date")
 FAKE_BUILDDATE=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%b %%e %%Y')
@@ -86,24 +79,16 @@ perl -pi -e "s|%{_datadir}/doc/gocr-\\\fBX.XX\\\fR/|%{_docdir}/gocr/|" %{buildro
 
 # Install desktop file
 install -D -m 0644 "%{SOURCE1}" "%{buildroot}%{_datadir}/applications/%{name}.desktop"
-%suse_update_desktop_file -r "%{name}" OCR program
-
-%post gui
-%desktop_database_post
-
-%postun gui
-%desktop_database_postun
 
 %files
-%defattr(-,root,root,-)
-%doc AUTHORS BUGS CREDITS HISTORY README READMEde.txt TODO gpl.html
+%license gpl.html
+%doc AUTHORS BUGS CREDITS HISTORY README TODO
 %doc doc/{examples.txt,gocr.html,unicode.txt}
 %doc examples/
-%{_mandir}/man1/gocr.1%{ext_man}
+%{_mandir}/man1/gocr.1%{?ext_man}
 %{_bindir}/gocr
 
 %files gui
-%defattr(-,root,root,-)
 %{_bindir}/gocr.tcl
 %{_datadir}/applications/gocr.desktop
 

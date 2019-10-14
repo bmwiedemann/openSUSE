@@ -10,11 +10,11 @@ See https://github.com/sddm/sddm/pull/1017
  sddm-theme/theme.conf.cmake | 1 +
  2 files changed, 3 insertions(+)
 
-Index: plasma-workspace-5.16.0/sddm-theme/Main.qml
+Index: plasma-workspace-5.15.80git.20190316T190106~d7654042/sddm-theme/Main.qml
 ===================================================================
---- plasma-workspace-5.16.0.orig/sddm-theme/Main.qml
-+++ plasma-workspace-5.16.0/sddm-theme/Main.qml
-@@ -182,6 +182,8 @@ PlasmaCore.ColorScope {
+--- plasma-workspace-5.15.80git.20190316T190106~d7654042.orig/sddm-theme/Main.qml	2019-03-16 19:01:06.000000000 +0100
++++ plasma-workspace-5.15.80git.20190316T190106~d7654042/sddm-theme/Main.qml	2019-03-16 20:56:49.279402750 +0100
+@@ -182,6 +182,8 @@
  
                      if ( userListModel.count === 0 ) return false
  
@@ -23,10 +23,10 @@ Index: plasma-workspace-5.16.0/sddm-theme/Main.qml
                      return userListModel.count <= userListModel.disableAvatarsThreshold && (userList.y + mainStack.y) > 0
                  }
  
-Index: plasma-workspace-5.16.0/sddm-theme/theme.conf.cmake
+Index: plasma-workspace-5.15.80git.20190316T190106~d7654042/sddm-theme/theme.conf.cmake
 ===================================================================
---- plasma-workspace-5.16.0.orig/sddm-theme/theme.conf.cmake
-+++ plasma-workspace-5.16.0/sddm-theme/theme.conf.cmake
+--- plasma-workspace-5.15.80git.20190316T190106~d7654042.orig/sddm-theme/theme.conf.cmake	2019-03-16 19:01:06.000000000 +0100
++++ plasma-workspace-5.15.80git.20190316T190106~d7654042/sddm-theme/theme.conf.cmake	2019-03-16 20:56:49.279402750 +0100
 @@ -3,3 +3,4 @@ type=image
  color=#1d99f3
  fontSize=10

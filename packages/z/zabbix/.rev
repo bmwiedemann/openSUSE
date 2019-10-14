@@ -7,4 +7,12 @@
     <comment>replacement of zabbix package with next LTS release (4.0)</comment>
     <requestid>734551</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>156b79ace8e8129122754e544606b49e</srcmd5>
+    <version>4.0.12</version>
+    <time>1571049757</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>738128</requestid>
+  </revision>
 </revisionlist>

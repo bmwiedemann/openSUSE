@@ -1,7 +1,7 @@
 #
 # spec file for package lighttpd
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@
 
 %define pkg_home %{_localstatedir}/lib/%{name}
 Name:           lighttpd
-Version:        1.4.49
+Version:        1.4.54
 Release:        0
 #
 %define pkg_name %{name}
@@ -33,52 +33,60 @@ Release:        0
 Summary:        A Secure, Fast, Compliant, and Very Flexible Web Server
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Web/Servers
-Url:            http://www.lighttpd.net/
-Source:         %{name}_%{tarball_version}.orig.tar.xz
+URL:            https://www.lighttpd.net/
+Source:         https://download.lighttpd.net/lighttpd/releases-1.4.x/%{name}-%{version}.tar.xz
+Source1:        https://download.lighttpd.net/lighttpd/releases-1.4.x/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.sysconfig
+Source3:        %{name}.keyring
 Source4:        lightytest.sh
 Source5:        lighttpd.SuSEfirewall
 Source6:        lighttpd-ssl.SuSEfirewall
 Source7:        lighttpd.logrotate
 BuildRequires:  FastCGI-devel
 BuildRequires:  GeoIP-devel
+BuildRequires:  cyrus-sasl-devel
 BuildRequires:  e2fsprogs-devel
+BuildRequires:  gamin-devel
 BuildRequires:  gdbm-devel
 BuildRequires:  iputils
+BuildRequires:  krb5-devel
 BuildRequires:  libattr-devel
 BuildRequires:  libbz2-devel
+BuildRequires:  libdbi-devel
 BuildRequires:  libmemcached-devel
 BuildRequires:  libtool
 BuildRequires:  libxml2-devel
-BuildRequires:  libdbi-devel
+BuildRequires:  lua51-devel
 BuildRequires:  mysql-devel
-BuildRequires:  postgresql-devel
 BuildRequires:  openldap2-devel
+BuildRequires:  pam-devel
 BuildRequires:  pcre-devel
+BuildRequires:  pkgconfig
+BuildRequires:  postgresql-devel
+%if 0%{?suse_version} > 1500
+# pg_config moved to postgresql-server-devel in postgresql11* packages boo#1153722
+BuildRequires:  postgresql-server-devel
+%endif 
+BuildRequires:  pwdutils
+BuildRequires:  sqlite-devel >= 3
+BuildRequires:  zlib-devel
+BuildRequires:  perl(CGI)
+BuildRequires:  pkgconfig(libev)
+BuildRequires:  pkgconfig(libmaxminddb)
+BuildRequires:  pkgconfig(systemd)
+Requires:       spawn-fcgi
+Requires(post): %fillup_prereq
+Requires(pre):  shadow
+Recommends:     %{name}-mod_openssl = %{version}
+Recommends:     logrotate
+Provides:       http_daemon
+Provides:       httpd
+%{?systemd_requires}
 %if 0%{?suse_version} >= 1330
 BuildRequires:  php7-fastcgi
 %else
 BuildRequires:  php5-fastcgi
 %endif
-BuildRequires:  pkgconfig
-BuildRequires:  pwdutils
-BuildRequires:  sqlite-devel >= 3
-BuildRequires:  zlib-devel
-BuildRequires:  krb5-devel
-BuildRequires:  cyrus-sasl-devel
-BuildRequires:  perl(CGI)
-BuildRequires:  systemd
-%{?systemd_requires}
-BuildRequires:  gamin-devel
-BuildRequires:  lua51-devel
-Requires:       spawn-fcgi
-Requires(pre):  pwdutils
-Requires(post): %fillup_prereq
-Recommends:     logrotate
-Recommends:     %{name}-mod_openssl = %{version}
-Provides:       http_daemon
-Provides:       httpd
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Lighttpd is a secure, fast, compliant, and very flexible Web server
@@ -199,20 +207,24 @@ This module feeds an rrdtool database with the traffic stats from
 lighttpd.
 
 %package mod_geoip
-Summary:        A Secure, Fast, Compliant, and Very Flexible Web Server
+Summary:        GeoIP legacy database support for Lighttp
 Group:          Productivity/Networking/Web/Servers
 Requires:       %{name} = %{version}
 
 %description mod_geoip
-Lighttpd a secure, fast, compliant, and very flexible Web server that
-has been optimized for high-performance environments. It has a very low
-memory footprint compared to other Web servers and takes care of CPU
-load.  Its advanced feature set (FastCGI, CGI, Auth,
-Output-Compression, URL-Rewriting, and more) makes lighttpd the perfect
-Web server software for every server that is suffering load problems.
+This module supports fast ip/location lookups using the legacy
+MaxMind GeoIP / GeoCity databases. The databases were
+discontinued 2 January 2019 and this module is deprecated.
+See %{name}-mod_maxminddb which supports MaxMind GeoIP2.
 
-This is just a dummy package which is not build in autobuild. see the
-buildservice project server:http if you want it.
+%package mod_maxminddb
+Summary:        MaxMind GeoIP2 database support for Lighttp
+Group:          Productivity/Networking/Web/Servers
+Requires:       %{name} = %{version}
+
+%description mod_maxminddb
+This module supports fast ip/location lookups using MaxMind
+GeoIP2 databases.
 
 %package mod_webdav
 Summary:        WebDAV module for Lighttpd
@@ -266,6 +278,14 @@ Requires:       %{name} = %{version}
 %description mod_authn_sasl
 A module to provide SASL authentication in lighttpd.
 
+%package mod_authn_pam
+Summary:        PAM authentication in lighttpd
+Group:          Productivity/Networking/Web/Servers
+Requires:       %{name} = %{version}
+
+%description mod_authn_pam
+A module to provide PAM authentication in lighttpd.
+
 %prep
 %setup -q -n %{pkg_name}-%{pkg_version}
 
@@ -274,10 +294,12 @@ export CFLAGS="%{optflags} -DLDAP_DEPRECATED -W -Wmissing-prototypes -Wmissing-d
 %configure                      \
     --bindir=%{_sbindir}        \
     --libdir=%{_libdir}/%{name} \
+    --with-libev                \
     --enable-lfs                \
     --enable-ipv6               \
     --with-pcre                 \
     --with-ldap                 \
+    --with-pam                  \
     --with-dbi                  \
     --with-pgsql                \
     --with-mysql                \
@@ -291,6 +313,7 @@ export CFLAGS="%{optflags} -DLDAP_DEPRECATED -W -Wmissing-prototypes -Wmissing-d
     --with-webdav-locks         \
     --with-fam                  \
     --with-geoip                \
+    --with-maxminddb            \
     --with-sasl                 \
     --with-attr
 make %{?_smp_mflags}
@@ -304,7 +327,7 @@ export PHP="/srv/www/cgi-bin/php5"
 sh -x %{SOURCE4}
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 install -d -m 0755                                 \
     %{buildroot}%{pkg_home}/sockets/               \
     %{buildroot}%{_var}/cache/%{name}/compress     \
@@ -361,7 +384,6 @@ chmod -x doc/scripts/spawn-php.sh doc/scripts/rrdtool-graph.sh
 %service_del_postun %{name}.service
 
 %files
-%defattr(-,root,root,-)
 %{_unitdir}/%{name}.service
 %{_sbindir}/rc%{name}
 %config(noreplace) %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/lighttpd*
@@ -420,13 +442,14 @@ chmod -x doc/scripts/spawn-php.sh doc/scripts/rrdtool-graph.sh
 %{_libdir}/%{name}/mod_simple_vhost.so
 %{_libdir}/%{name}/mod_ssi.so
 %{_libdir}/%{name}/mod_staticfile.so
+%{_libdir}/%{name}/mod_sockproxy.so
 %{_libdir}/%{name}/mod_status.so
 %{_libdir}/%{name}/mod_uploadprogress.so
 %{_libdir}/%{name}/mod_userdir.so
 %{_libdir}/%{name}/mod_usertrack.so
 %{_libdir}/%{name}/mod_vhostdb.so
 %{_libdir}/%{name}/mod_wstunnel.so
-%{_mandir}/man8/*.8*
+%{_mandir}/man8/*.8%{?ext_man}
 %doc AUTHORS NEWS README
 #doc doc/*.dot
 %doc doc/scripts/spawn-php.sh
@@ -465,77 +488,68 @@ chmod -x doc/scripts/spawn-php.sh doc/scripts/rrdtool-graph.sh
 %dir %attr(750,%{name},%{name}) %{_var}/log/%{name}/
 
 %files mod_cml
-%defattr(-,root,root,-)
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/cml.conf
 %{_libdir}/%{name}/mod_cml.so
 %doc doc/outdated/cml.txt
 
 %files mod_magnet
-%defattr(-,root,root,-)
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/magnet.conf
 %{_libdir}/%{name}/mod_magnet.so
 %doc doc/outdated/magnet.txt
 
 %files mod_mysql_vhost
-%defattr(-,root,root,-)
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/mysql_vhost.conf
 %{_libdir}/%{name}/mod_mysql_vhost.so
 %doc doc/outdated/mysqlvhost.txt
 
 %files mod_vhostdb_dbi
-%defattr(-,root,root,-)
 %{_libdir}/%{name}/mod_vhostdb_dbi.so
 
 %files mod_vhostdb_ldap
-%defattr(-,root,root,-)
 %{_libdir}/%{name}/mod_vhostdb_ldap.so
 
 %files mod_vhostdb_mysql
-%defattr(-,root,root,-)
 %{_libdir}/%{name}/mod_vhostdb_mysql.so
 
 %files mod_vhostdb_pgsql
-%defattr(-,root,root,-)
 %{_libdir}/%{name}/mod_vhostdb_pgsql.so
 
 %files mod_trigger_b4_dl
-%defattr(-,root,root,-)
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/trigger_b4_dl.conf
 %{_libdir}/%{name}/mod_trigger_b4_dl.so
 %doc doc/outdated/trigger_b4_dl.txt
 
 %files mod_rrdtool
-%defattr(-,root,root,-)
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/rrdtool.conf
 %doc doc/outdated/rrdtool.txt
 %doc doc/scripts/rrdtool-graph.sh
 %{_libdir}/%{name}/mod_rrdtool.so
 
 %files mod_geoip
-%defattr(-,root,root,-)
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/geoip.conf
 %{_libdir}/%{name}/mod_geoip.so
 
+%files mod_maxminddb
+%{_libdir}/%{name}/mod_maxminddb.so
+
 %files mod_webdav
-%defattr(-,root,root,-)
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/webdav.conf
 %{_libdir}/%{name}/mod_webdav.so
 %doc doc/outdated/webdav.txt
 
 %files mod_authn_gssapi
-%defattr(-,root,root,-)
 %{_libdir}/%{name}/mod_authn_gssapi.so
 
 %files mod_authn_ldap
-%defattr(-,root,root,-)
 %{_libdir}/%{name}/mod_authn_ldap.so
 
 %files mod_authn_mysql
-%defattr(-,root,root,-)
 %{_libdir}/%{name}/mod_authn_mysql.so
 
 %files mod_authn_sasl
-%defattr(-,root,root,-)
 %{_libdir}/%{name}/mod_authn_sasl.so
+
+%files mod_authn_pam
+%{_libdir}/%{name}/mod_authn_pam.so
 
 %changelog

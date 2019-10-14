@@ -545,4 +545,31 @@
     <comment></comment>
     <requestid>731321</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>d3511a8e0f4191487eb10bf1ab27736f</srcmd5>
+    <version>2.2.2</version>
+    <time>1571049752</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.2:
+  * Bug-fix
+    * [PICARD-1606] - Crashes on opening options with broken plugin
+    * [PICARD-1612] - Trackpad tap is not working properly on macOS
+    * [PICARD-1614] - macOS: Incorrect 'LSMinimumSystemVersion'
+    * [PICARD-1618] - macOS and Windows packages built without C astrcmp
+    * [PICARD-1621] - Lookup CD dropdown does not list additional drives
+    * [PICARD-1624] - Updating default CD device in options does not change default for keyboard shortcut
+  * Improvement
+    * [PICARD-1610] - Make the labels in Options &amp;gt; User Interface &amp;gt; Colours wider
+    * [PICARD-1619] - Grey out cover art providers list when cover art is disabled
+- Update to 2.2.1:
+  * Bug
+    * [PICARD-1603] - Translations from picard/ui/colors.py don’t show up in Picard
+    * [PICARD-1604] - Windows install is not using Qt default translations
+    * [PICARD-1607] - Upgrading a plugin displays the dialog box multiple times
+    * [PICARD-1608] - &quot;[non-album tracks]&quot; can not directly be removed
+    * [PICARD-1609] - Picard About shows Qt version PyQt was build against, not actually used Qt
+  * Improvement
+    * [PICARD-1602] - Tests should not be included in the sdist package (forwarded request 738102 from jaimeMF)</comment>
+    <requestid>738115</requestid>
+  </revision>
 </revisionlist>

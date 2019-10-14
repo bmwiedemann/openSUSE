@@ -90,7 +90,7 @@ popd # come back from javadir
 # poms
 install -d -m 755 %{buildroot}%{_mavenpomdir}
 install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}-%{version}.pom
-%add_maven_depmap %{name}-%{version}.pom %{name}-%{version}.jar -a "org.apache.commons:%{short_name}"
+%add_maven_depmap %{name}-%{version}.pom %{name}-%{version}.jar -a "%{short_name}:%{short_name}-core,%{short_name}:%{short_name}-bean-collections"
 
 # javadoc
 install -d -m 755 %{buildroot}%{_javadocdir}/%{name}

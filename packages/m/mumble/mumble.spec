@@ -16,6 +16,8 @@
 #
 
 
+#%%define snapshot rc2
+%define ver 1.3.0
 %if 0%{?fedora_version}
 %bcond_without ice
 %else
@@ -23,58 +25,47 @@
 %endif
 %bcond_without pulseaudio
 %bcond_without systemd
-%bcond_with    mumble11x
 %bcond_without bonjour
+%bcond_without system_opus
+%bcond_without system_speex
 # mumble must be able to talk to other clients which may use
-# differnt versions of celt. Since each celt release is
+# different versions of celt. Since each celt release is
 # incompatible to each other mumble bundles some specific
 # versions.
 %bcond_with     system_celt
-%bcond_without  system_speex
 Name:           mumble
-Version:        1.2.19%{?snapshot:_%{snapshot}}
+Version:        %{ver}%{?snapshot:_%{snapshot}}
 Release:        0
 Summary:        Voice Communication Client for Gamers
-License:        BSD-3-Clause
+# For Legal: the bundled opus and speex subdirectories are not built.
+# Most files are BSD-3-Clause, celt also contains BSD-2-Clause files.
+License:        BSD-2-Clause AND BSD-3-Clause
 Group:          Productivity/Multimedia/Sound/Utilities
-Url:            http://mumble.sourceforge.net/
+URL:            http://mumble.sourceforge.net/
+Source:         https://github.com/mumble-voip/mumble/releases/download/%{ver}%{?snapshot:-%{snapshot}}/%{name}-%{ver}%{?snapshot:-%{snapshot}}.tar.gz
+Source1:        https://github.com/mumble-voip/mumble/releases/download/%{ver}%{?snapshot:-%{snapshot}}/%{name}-%{ver}%{?snapshot:-%{snapshot}}.tar.gz.sig
 Source2:        mumble-server.init
 Source3:        murmur.apparmor
 # http://mumble.info/gpg/gpg.txt
-Source4:        https://raw.githubusercontent.com/mumble-voip/mumble-gpg-signatures/master/mumble-auto-build-2017.asc#/%{name}.keyring
+Source4:        https://raw.githubusercontent.com/mumble-voip/mumble-gpg-signatures/master/mumble-auto-build-2019.asc#/%{name}.keyring
 Source5:        mumble-server.service
 Source6:        baselibs.conf
-# PATCH-FIX-OPENSUSE Avoid excessive rebuilds stripping time and date from the binaries.
-Patch0:         mumble-1.2.2-buildcompare.diff
-# PATCH-FIX-UPSTREAM mumble-1.2.11-desktop_fix.diff -- https://github.com/mumble-voip/mumble/pull/1960
-Patch1:         mumble-1.2.11-desktop_fix.diff
-# PATCH-FEATURE-UPSTREAM https://github.com/mumble-voip/mumble/pull/2564
-Patch2:         appdata.patch
-# PATCH-FIX-UPSTREAM initialize-soundfile-format.patch -- Initialize a variable so it's not used uninitialized
-Patch3:         initialize-soundfile-format.patch
-Patch4:         0001-AudioOutput-do-not-use-non-existant-template-version.patch
-Patch5:         add-speechd-include-path.patch
-Patch6:         mumble-pr-3623-protobuf37.patch
-# PATCH-FIX-UPSTREAM mumble-1.2.19-limit-amount-of-messages.patch -- https://github.com/mumble-voip/mumble/pull/3510
-Patch7:         mumble-1.2.19-limit-amount-of-messages.patch
-# PATCH-FIX-UPSTREAM mumble-1.2.19-stricter-message-limit.patch -- https://github.com/mumble-voip/mumble/pull/3512
-Patch8:         mumble-1.2.19-stricter-message-limit.patch
-
+Patch0:         add-speechd-include-path.patch
+BuildRequires:  gcc-c++
+BuildRequires:  libcap-devel
+BuildRequires:  libogg-devel
+BuildRequires:  libsndfile-devel
+BuildRequires:  libspeechd-devel
+BuildRequires:  protobuf-devel
+Requires:       lsb-release
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_headers-devel
 %else
 BuildRequires:  boost-devel
 %endif
-BuildRequires:  gcc-c++
-BuildRequires:  libcap-devel
-BuildRequires:  libogg-devel
-BuildRequires:  libsndfile-devel
-BuildRequires:  protobuf-devel
-Requires:       lsb-release
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if %{with bonjour}
 %if 0%{?suse_version}
-BuildRequires:  avahi-compat-mDNSResponder-devel
+BuildRequires:  pkgconfig(avahi-compat-libdns_sd)
 %else
 BuildRequires:  avahi-compat-libdns_sd-devel
 %endif
@@ -83,47 +74,68 @@ BuildRequires:  avahi-compat-libdns_sd-devel
 BuildRequires:  libcelt-devel
 Requires:       libcelt0 > 0.7.0
 %endif
+%if %{with system_opus}
+BuildRequires:  pkgconfig(opus)
+%endif
 %if %{with system_speex}
-BuildRequires:  speex-devel
+BuildRequires:  pkgconfig(speex)
 BuildRequires:  pkgconfig(speexdsp)
 %endif
 %if 0%{?suse_version}
-BuildRequires:  alsa-devel
-BuildRequires:  libopenssl-devel
-BuildRequires:  libqt4-devel
-BuildRequires:  pkg-config
+BuildRequires:  libqt5-linguist
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(Qt5DBus)
+BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Network)
+BuildRequires:  pkgconfig(Qt5Sql)
+BuildRequires:  pkgconfig(Qt5Svg)
+BuildRequires:  pkgconfig(Qt5TextToSpeech)
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(libopenssl)
+BuildRequires:  pkgconfig(xi)
 %endif
 %if 0%{?fedora_version}
+BuildRequires:  Mesa-libGL-devel
 BuildRequires:  alsa-lib-devel
+BuildRequires:  libQt5DBus-devel
+BuildRequires:  libQt5Gui-devel
+BuildRequires:  libQt5Network-devel
+BuildRequires:  libQt5Sql-devel
+BuildRequires:  libQt5Xml-devel
 BuildRequires:  libXevie-devel
+BuildRequires:  libXi-devel
+BuildRequires:  libqt5-linguist
+BuildRequires:  libqt5-qtsvg-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
-BuildRequires:  qt4-devel
 %endif
 %if %{with ice}
 BuildRequires:  ice-devel
 %endif
 %if 0%{?mandriva_version}
 BuildRequires:  -alsa-plugins
+BuildRequires:  Mesa-libGL-devel
 BuildRequires:  alsa-lib-devel
+BuildRequires:  libQt5DBus-devel
+BuildRequires:  libQt5Gui-devel
+BuildRequires:  libQt5Network-devel
+BuildRequires:  libQt5Sql-devel
+BuildRequires:  libQt5Xml-devel
+BuildRequires:  libqt5-linguist
+BuildRequires:  libqt5-qtsvg-devel
 BuildRequires:  libxevie-devel
 BuildRequires:  libxi-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
-BuildRequires:  qt4-devel
-BuildRequires:  qt4-linguist
 %endif
 %if %{with pulseaudio}
 BuildRequires:  pulseaudio-devel
 %endif
-BuildRequires:  libspeechd-devel
-%if 0%{!?snapshot:1}
-Source:         https://github.com/mumble-voip/mumble/releases/download/%{version}/%{name}-%{version}.tar.gz
-Source1:        https://github.com/mumble-voip/mumble/releases/download/%{version}/%{name}-%{version}.tar.gz.sig
-%endif
 %if 0%{?suse_version}
-Requires:       qt-sql-sqlite
 %ifarch x86_64
 Recommends:     %{name}-32bit
 Conflicts:      %{name}-32bit < %{version}
@@ -132,8 +144,6 @@ Conflicts:      %{name}-32bit < %{version}
 Recommends:     %{name}-64bit
 Conflicts:      %{name}-64bit < %{version}
 %endif
-%else
-Requires:       qt4-sqlite
 %endif
 #
 %if 0%{?snapshot:1}
@@ -151,8 +161,10 @@ won't be audible to other players.
 %package server
 Summary:        Voice Communication Server for Gamers
 Group:          Productivity/Multimedia/Sound/Utilities
+Recommends:     libQt5Sql5-mysql
+Recommends:     libQt5Sql5-postgresql
+Requires:       libQt5Sql5-sqlite
 Requires:       lsb-release
-Requires:       qt-sql-sqlite
 Requires(pre):  %{_sbindir}/useradd
 %if 0%{?snapshot:1}
 Conflicts:      mumble-server < %{version}
@@ -169,128 +181,64 @@ characters, and has echo cancellation so the sound from your loudspeakers
 won't be audible to other players.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{ver}
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-
-%if !%{with system_celt}
-%if 0%{?snapshot:1}
-tar -xzf %{SOURCE50}
-tar -xzf %{SOURCE51}
-for v in 0.7.0 0.11.0; do
-	rmdir celt-$v-src
-	mv celt-$v celt-$v-src
-done
-%endif
-%endif
-#
-%if 0%{?mandriva_version}
-#XXX: dirty hack. QT_REQUIRE_VERSION doesn't work with -Wformat-security. should be fixed qt really
-sed -i -e '/QT_REQUIRE_VERSION/d' src/mumble/main.cpp src/mumble11x/main.cpp
-%endif
-#
+rm -v scripts/*.bak
 
 %build
-%if 0%{?fedora_version}
-ln -s %{_bindir}/qmake-qt4 qmake
-ln -s %{_bindir}/lrelease-qt4 lrelease
-ln -s %{_bindir}/lupdate-qt4 lupdate
-export PATH=$PATH:$PWD
-%endif
-%if 0%{?mandriva_version} > 2006
-export PATH=%{_libexecdir}/qt4/bin:$PATH
-export QTDIR=%{_libexecdir}/qt4/
-%endif
 #
 #
 %if 0
 # for not having to wait for compile when testing packaging stuff..
 mkdir release
 touch release/mumble release/murmurd release/libmumble.so.1.1.1
-%else
-%if 0%{?mandriva_version}
-# HACK: mandriva forgot to package qt translations
-if [ ! -e %{_libexecdir}/qt4/translations/qt_de.qm ]; then
-	sed -i -e '/QMAKE_EXTRA_TARGETS/s/copytrans//;/PRE_TARGETDEPS/s/qt_de\.qm//' src/mumble/mumble.pro
-	sed -i -e '/qt_.*\.qm/d' src/mumble/mumble.qrc
-fi
 %endif
-#
-# temporary hack, remove!
-sed -i -e '/QMAKE_CFLAGS/s/-Woverloaded-virtual -Wold-style-cast//' compiler.pri
-qmake \
-	QMAKE_CFLAGS_RELEASE="%{optflags} -Wall -fno-strict-aliasing" \
-	QMAKE_CXXFLAGS_RELEASE="%{optflags} -Wall -fno-strict-aliasing" \
-	DEFINES*=NO_UPDATE_CHECK \
-	DEFINES*=MUMBLE_VERSION=%{version} \
-	DEFINES*=PLUGIN_PATH=%{_libdir}/mumble/plugins \
-	CONFIG*=packaged \
+%qmake5 \
+        QMAKE_CFLAGS_RELEASE="%{optflags} -Wall -fno-strict-aliasing" \
+        QMAKE_CXXFLAGS_RELEASE="%{optflags} -Wall -fno-strict-aliasing" \
+        QMAKE_LRELEASE="%{_bindir}/lrelease-qt5" \
+        DEFINES*=NO_UPDATE_CHECK \
+        DEFINES*=MUMBLE_VERSION=%{version} \
+        DEFINES*=PLUGIN_PATH=%{_libdir}/mumble/plugins \
+        CONFIG*=packaged \
 %if 0%{?suse_version}
-	DEFINES*=NO_SYSTEM_CA_OVERRIDE \
+        DEFINES*=NO_SYSTEM_CA_OVERRIDE \
 %endif
-	CONFIG*=no-g15 \
-	CONFIG*=no-embed-qt-translations \
+        CONFIG*=no-g15 \
+        CONFIG*=no-embed-qt-translations \
 %if !%{with ice}
-	CONFIG*=no-ice \
+        CONFIG*=no-ice \
 %endif
 %if %{with system_celt}
-	CONFIG*=no-bundled-celt \
+        CONFIG*=no-bundled-celt \
 %endif
 %if %{with system_speex}
-	CONFIG*=no-bundled-speex \
+        CONFIG*=no-bundled-opus \
 %endif
-%if !%{with mumble11x}
-	CONFIG*=no-11x \
+%if %{with system_speex}
+        CONFIG*=no-bundled-speex \
 %endif
 %if !%{with bonjour}
-	CONFIG*=no-bonjour \
+        CONFIG*=no-bonjour \
 %endif
 %if !%{with pulseaudio}
-	CONFIG*=no-pulseaudio \
+        CONFIG*=no-pulseaudio \
 %endif
-%if 0%{?suse_version} == 1110
-  CONFIG*=no-xinput2 \
-%endif
-%if 0%{?suse_version} > 1500
-  CONFIG*=c++1z \
-%endif
-	CONFIG*=no-crash-report \
-	-recursive
+        CONFIG*=no-crash-report \
+        -recursive
 #
-### XXX: hack for incomplete dependencies
-make %{?_smp_mflags} qmake
-%if 0
-# that translation stuff is just broken
-# copy the available ones manually
-%if 0%{?suse_version}
-cp %{_datadir}/qt4/translations/qt_*.qm src/mumble
-# 10.3 doesn't have that one
-touch src/mumble/qt_pl.qm
-%endif
-make %{?_smp_mflags} -C src/mumble mumble_en.qm
-%if !0%{?mandriva_version}
-make %{?_smp_mflags} -C src/mumble qt_de.qm
-%endif
-#
-%endif
 # Include is broken for openSUSE, so fix it.
 sed -i "s,<libspeechd.h>,<speech-dispatcher/libspeechd.h>," src/mumble/TextToSpeech_unix.cpp
 ###
 #
 # deps for *.pb.cc are broken and fail for high -j so generate
 # them manually first
-for i in mumble murmur; do
-	make -C src/$i -f Makefile.Release compiler_pb_make_all
+for i in src/* ; do
+       grep -q compiler_pb_make_all $i/Makefile.Release || continue
+       make %{?_smp_mflags} -C $i -f Makefile.Release compiler_pb_make_all
 done
+
 make %{?_smp_mflags}
-%endif
 
 %install
 # client
@@ -317,13 +265,6 @@ install -m 644 release/libcelt0.so.0.*.* "%{buildroot}%{_libdir}/mumble"
 %endif
 
 #
-%if %{with mumble11x}
-install -D -m 0755 release/mumble11x %{buildroot}%{_bindir}/mumble11x
-%else
-# XXX
-/bin/rm -f "%{buildroot}%{_mandir}"/man1/mumble11x*
-%endif
-#
 # server
 install -D -m 0755 release/murmurd "%{buildroot}%{_sbindir}/murmurd"
 %if %{with systemd}
@@ -347,30 +288,26 @@ install -D -m 0644 scripts/murmur.conf %{buildroot}%{_sysconfdir}/dbus-1/system.
 install -D -m 0644 scripts/murmur.ini %{buildroot}%{_sysconfdir}/mumble-server.ini
 # fix up config file
 sed -i -e 's/^dbus=session/dbus=system/' \
-	-e 's/#uname=/uname=mumble-server/' \
-	-e 's@#pidfile=@pidfile=%{_localstatedir}/run/mumble-server/mumble-server.pid@' \
-	-e 's@#logfile=@logfile=%{_localstatedir}/log/mumble-server/@' \
-	%{buildroot}%{_sysconfdir}/mumble-server.ini
+        -e 's/#uname=/uname=mumble-server/' \
+        -e 's@#pidfile=@pidfile=%{_localstatedir}/run/mumble-server/mumble-server.pid@' \
+        -e 's@#logfile=@logfile=%{_localstatedir}/log/mumble-server/@' \
+        %{buildroot}%{_sysconfdir}/mumble-server.ini
 install -D -m 0755 scripts/murmur-user-wrapper %{buildroot}%{_bindir}/murmur-user-wrapper
 sed -i -e '/^SYSDIR=/s@=.*@=%{_docdir}/%{name}/scripts@' %{buildroot}%{_bindir}/murmur-user-wrapper
 for i in log lib run; do
-	install -d -m755 %{buildroot}%{_localstatedir}/$i/mumble-server
+        install -d -m755 %{buildroot}%{_localstatedir}/$i/mumble-server
 done
 #
 install -d %{buildroot}/%{_datadir}/applications
 %if 0%{?suse_version}
 sed 's/^Categories.*/Categories=X-SuSE-Core-Game;/' \
-	< scripts/mumble.desktop \
-	> %{buildroot}/%{_datadir}/applications/mumble.desktop
+        < scripts/mumble.desktop \
+        > %{buildroot}/%{_datadir}/applications/mumble.desktop
 %suse_update_desktop_file mumble
 %else
 install -m 644 scripts/mumble.desktop %{buildroot}/%{_datadir}/applications/mumble.desktop
 %endif
-%if %{with mumble11x}
-sed -e '/^Name=/s/$/ 1.1.x/;/^Exec=/s/$/11x/' \
-	< %{buildroot}/%{_datadir}/applications/mumble.desktop \
-	> %{buildroot}/%{_datadir}/applications/mumble11x.desktop
-%endif
+
 mkdir -p %{buildroot}%{_docdir}/%{name}
 cp -a scripts LICENSE README README.Linux %{buildroot}%{_docdir}/%{name}
 #
@@ -410,17 +347,12 @@ systemd-tmpfiles --create %{_libexecdir}/tmpfiles.d/mumble-server.conf || true
 %endif
 
 %files
-%defattr(-, root, root)
 %exclude %{_docdir}/%{name}/scripts/murmur.ini
 %doc %{_docdir}/%{name}
 %{_bindir}/mumble
 %{_bindir}/mumble-overlay
 %{_mandir}/man1/mumble-overlay.*
 %{_mandir}/man1/mumble.*
-%if %{with mumble11x}
-%{_bindir}/mumble11x
-%{_mandir}/man1/mumble11x*
-%endif
 %dir %{_datadir}/icons/hicolor
 %dir %{_datadir}/icons/hicolor/*
 %dir %{_datadir}/icons/hicolor/*/apps
@@ -430,7 +362,6 @@ systemd-tmpfiles --create %{_libexecdir}/tmpfiles.d/mumble-server.conf || true
 %{_libdir}/mumble
 
 %files server
-%defattr(-,root,root)
 %doc %{_docdir}/%{name}/scripts/murmur.ini
 %config %{_sysconfdir}/dbus-1/system.d/mumble-server.conf
 %config(noreplace) %{_sysconfdir}/mumble-server.ini

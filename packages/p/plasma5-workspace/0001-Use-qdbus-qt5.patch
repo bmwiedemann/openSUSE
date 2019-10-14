@@ -1,0 +1,36 @@
+From b5f67968332fa680e8af51be41d26aa47cfd3a67 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Thu, 19 Sep 2019 10:43:03 +0200
+Subject: [PATCH] Use qdbus-qt5
+
+---
+ startkde/startplasma-wayland.cpp | 2 +-
+ wallpapers/image/wallpaper.knsrc | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/startkde/startplasma-wayland.cpp b/startkde/startplasma-wayland.cpp
+index 5b0e0746d..c651ea4fe 100644
+--- a/startkde/startplasma-wayland.cpp
++++ b/startkde/startplasma-wayland.cpp
+@@ -71,7 +71,7 @@ int main(int /*argc*/, char** /*argv*/)
+     runEnvironmentScripts();
+ 
+     if (!qEnvironmentVariableIsSet("DBUS_SESSION_BUS_ADDRESS")) {
+-        out << "startplasmacompositor: Could not start D-Bus. Can you call qdbus?\n";
++        out << "startplasmacompositor: Could not start D-Bus. Can you call qdbus-qt5?\n";
+         return 1;
+     }
+     setupPlasmaEnvironment();
+diff --git a/wallpapers/image/wallpaper.knsrc b/wallpapers/image/wallpaper.knsrc
+index 6b390ba72..2136d43a5 100644
+--- a/wallpapers/image/wallpaper.knsrc
++++ b/wallpapers/image/wallpaper.knsrc
+@@ -43,4 +43,4 @@ Categories=KDE Wallpaper 800x600,KDE Wallpaper 1024x768,KDE Wallpaper 1280x1024,
+ StandardResource=wallpaper
+ Uncompress=archive
+ 
+-AdoptionCommand=qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript 'for (var i in desktops()) { d = desktops()[i]; d.wallpaperPlugin = "org.kde.image"; d.currentConfigGroup = ["Wallpaper", "org.kde.image", "General"]; d.writeConfig("Image", "%f") }'
++AdoptionCommand=qdbus-qt5 org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript 'for (var i in desktops()) { d = desktops()[i]; d.wallpaperPlugin = "org.kde.image"; d.currentConfigGroup = ["Wallpaper", "org.kde.image", "General"]; d.writeConfig("Image", "%f") }'
+-- 
+2.22.0
+

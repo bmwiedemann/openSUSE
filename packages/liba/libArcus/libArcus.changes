@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Oct 13 00:26:40 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Make sure the package actually builds, add
+  0001-Install-the-Python-extension-module-to-Python-sitear.patch
+  0002-Fix-Python3_SITEARCH-for-old-cmake.patch
+
+-------------------------------------------------------------------
+Fri Sep 27 06:25:31 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to version 4.3.0
+  * no code changes
+
+-------------------------------------------------------------------
+Thu Sep  5 07:42:23 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- fix build for factory
+
+-------------------------------------------------------------------
+Mon Aug 12 06:49:54 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- udpate to version 4.2.0
+  * just build env changes
+
+-------------------------------------------------------------------
 Thu Jun 13 06:58:41 UTC 2019 - Adrian Schröter <adrian@suse.de>
 
 - update to version 4.1.0

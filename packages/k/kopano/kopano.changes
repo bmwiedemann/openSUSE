@@ -1,7 +1,22 @@
 -------------------------------------------------------------------
+Sun Oct  6 21:21:57 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.7.84
+  * server: new installations will use files_v2 by default [KC-567]
+  * icalmapi: vCard 4.0 (RFC 6350) is now emitted
+  * kopano-set-oof has been removed; use `kopano-oof` instead [KC-981]
+  * kopano-localize-folders has been removed;
+    use `kopano-storeadm -Y` instead
+  * admin: the --mr-process option has been added
+  * dbadm: the "populate" action has been added
+  * daemons: the {pop3,imap,etc.}_listen directives can now take an
+    interface specifier similar to ping(8), e.g. "%eth0"
+  * server/ldapplugin: LDAP group membership cache [KC-1588]
+
+-------------------------------------------------------------------
 Thu Sep 12 18:23:03 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
-- Update to upstream snapshot 8.7.83
+- Update to release 8.7.83
   * libserver: fix "withholding" of properties from clients [KC-1547]
   * dagent, spooler: threaded more is enabled by default now [KC-1475]
   * ldapplugin: 22% speedup in retriving the entire user list [KC-1399]

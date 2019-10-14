@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Oct 10 14:25:46 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.0.php
+- Changes since 5.16.90:
+  * don't allow to resize or move fullscreen windows
+  * [platforms/hwcomposer] Fix build failure after D23495
+  * Use lambdas for queued invocation of composition suspending (kde#412353)
+  * [nightcolor] Print a debug message upon receiving new location from kded module
+  * [nightcolor] Add missing const qualifiers
+  * [nightcolor] Use local time in Automatic and Location mode
+
+-------------------------------------------------------------------
+Thu Sep 19 12:32:36 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.90.php
+- Too many changes to list here
+- Refresh 0001-Use-Xauthority-for-Xwayland.patch
+
+-------------------------------------------------------------------
 Tue Sep  3 12:44:12 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.16.5

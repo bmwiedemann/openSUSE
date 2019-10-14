@@ -20,15 +20,15 @@
 %define lname_private   libkdecorations2private6
 %bcond_without lang
 Name:           libkdecoration2
-Version:        5.16.5
+Version:        5.17.0
 Release:        0
 Summary:        KDE's window decorations library
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 Url:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/kdecoration-%{version}.tar.xz
+Source:         kdecoration-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kdecoration-%{version}.tar.xz.sig
+Source1:        kdecoration-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        baselibs.conf

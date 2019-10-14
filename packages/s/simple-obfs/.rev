@@ -36,4 +36,12 @@
 - Use gcc8 to fix build on Tumbleweed (forwarded request 715555 from hillwood)</comment>
     <requestid>715556</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>0df0ad6abfafe949bef33fd3c9fd58c6</srcmd5>
+    <version>0.0.5</version>
+    <time>1571049721</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>737994</requestid>
+  </revision>
 </revisionlist>

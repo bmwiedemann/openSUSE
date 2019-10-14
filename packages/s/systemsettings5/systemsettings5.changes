@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Oct 10 14:25:49 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.0.php
+- Changes since 5.16.90:
+  * Explicitly qmlRegisterType QAbstractItemModel
+  * Use symbolic icon in intro page
+
+-------------------------------------------------------------------
+Thu Sep 19 12:32:40 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.90.php
+- Changes since 5.16.5:
+  * add tooltips to the intro page
+  * Redesign intro page
+  * Improve keyboard navigation (kde#404065)
+  * It compiles fine without deprecated method
+  * We depends against 5.62
+  * It's defined in ECM
+  * Get rid of khtml usage (kill classic mode)
+  * [Sidebar] Use new Kirigami ListSectionHeader component
+  * fix XML syntax
+  * Port System Settings sidebar to QQC2
+  * Move Fonts category down a bit
+  * Make the System Settings category headers look consistent with other Kirigami lists
+  * Bring back and install System Administration category
+  * Adjust and remove some top-level categories to implement new Appearance section layout
+  * Rename "Desktop Behavior" category to "Workspace Behavior"
+  * Install in new logging directory when we use kf5 5.59.0
+  * Fix forward declaration
+  * Use new syntax
+- Drop patches, now upstream:
+  * install_administration_category.diff
+
+-------------------------------------------------------------------
 Tue Sep  3 12:44:14 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.16.5

@@ -1,4 +1,4 @@
-From 02cdcb383b938a3e17ea2bf63a14682473dc8d5b Mon Sep 17 00:00:00 2001
+From 8026c9649990d70ebe53c5c7d0c68e74fce28014 Mon Sep 17 00:00:00 2001
 From: Fabian Vogt <fabian@ritter-vogt.de>
 Date: Sat, 17 Mar 2018 23:25:56 +0100
 Subject: [PATCH] Use Xauthority for Xwayland authorization
@@ -18,19 +18,19 @@ starting applications as other users again
  3 files changed, 105 insertions(+), 2 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index ec780a9d5..1a5a72698 100644
+index 9f167e107..47d22f540 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -594,6 +594,7 @@ set(kwin_XLIB_LIBS
-     ${X11_X11_LIB}
      ${X11_ICE_LIB}
      ${X11_SM_LIB}
+     ${X11_X11_LIB}
 +    ${X11_Xau_LIB}
  )
  
  set(kwin_XCB_LIBS
 diff --git a/xwl/xwayland.cpp b/xwl/xwayland.cpp
-index a521f27c0..2cc8d398c 100644
+index 5f17d3923..17b73b3d7 100644
 --- a/xwl/xwayland.cpp
 +++ b/xwl/xwayland.cpp
 @@ -48,6 +48,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
@@ -42,7 +42,7 @@ index a521f27c0..2cc8d398c 100644
  static void readDisplay(int pipe)
  {
      QFile readPipe;
-@@ -105,8 +107,84 @@ Xwayland::~Xwayland()
+@@ -107,8 +109,84 @@ Xwayland::~Xwayland()
      s_self = nullptr;
  }
  
@@ -127,7 +127,7 @@ index a521f27c0..2cc8d398c 100644
      int pipeFds[2];
      if (pipe(pipeFds) != 0) {
          std::cerr << "FATAL ERROR failed to create pipe to start Xwayland " << std::endl;
-@@ -148,11 +226,15 @@ void Xwayland::init()
+@@ -150,11 +228,15 @@ void Xwayland::init()
      env.insert("WAYLAND_SOCKET", QByteArray::number(wlfd));
      env.insert("EGL_PLATFORM", QByteArrayLiteral("DRM"));
      m_xwaylandProcess->setProcessEnvironment(env);
@@ -145,7 +145,7 @@ index a521f27c0..2cc8d398c 100644
      m_xwaylandFailConnection = connect(m_xwaylandProcess, static_cast<void (QProcess::*)(QProcess::ProcessError)>(&QProcess::error), this,
          [this] (QProcess::ProcessError error) {
              if (error == QProcess::FailedToStart) {
-@@ -184,6 +266,23 @@ void Xwayland::prepareDestroy()
+@@ -186,6 +268,23 @@ void Xwayland::prepareDestroy()
  
  void Xwayland::createX11Connection()
  {
@@ -170,7 +170,7 @@ index a521f27c0..2cc8d398c 100644
      xcb_connection_t *c = nullptr;
      if (m_xcbConnectionFd == -1) {
 diff --git a/xwl/xwayland.h b/xwl/xwayland.h
-index 2ee1e607f..a8b89242b 100644
+index b759e6af5..3e07e3b89 100644
 --- a/xwl/xwayland.h
 +++ b/xwl/xwayland.h
 @@ -23,6 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
@@ -181,15 +181,15 @@ index 2ee1e607f..a8b89242b 100644
  
  class QProcess;
  
-@@ -72,6 +73,8 @@ private:
+@@ -74,6 +75,8 @@ private:
      const xcb_query_extension_reply_t *m_xfixes = nullptr;
      DataBridge *m_dataBridge = nullptr;
  
 +    QTemporaryFile m_xwaylandAuthority;
 +
      ApplicationWaylandAbstract *m_app;
- };
  
+     Q_DISABLE_COPY(Xwayland)
 -- 
-2.20.1
+2.22.0
 

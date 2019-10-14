@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Oct 14 08:22:05 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.1.7 bsc#1153841:
+  * The numeric literal argument of the 'time1' fudge option on a clock
+    can now have one or more letter suffixes that compensate for era
+    rollover in a GPS device.  Each "g" adds the number of seconds in a
+    1024-week (10-bit) GPS era. Each "G" adds the number of seconds in a
+    8192-week (13-bit) GPS era.
+  * The neoclock4x driver has been removed, due to the hardware and the
+    vendor having utterly vanished from the face of the earth.
+  * The NTS ALPN negotiation sequence has been modified for improved
+    interoperability with other NTS implementations.
+  * NTS key rotation now happens every 24 hours.  It used to rotate
+    every hour to enable testing of recovery from stale cookies.
+- Remove merged patch ntpsec-1.1.6-update-waf.patch
+- Enable documentation build
+
+-------------------------------------------------------------------
 Sat Aug 17 17:29:59 UTC 2019 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Fix build on Tumbleweed:

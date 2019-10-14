@@ -21,23 +21,26 @@
 %bcond_with browser_extension
 %bcond_without lang
 Name:           plasma-browser-integration
-Version:        5.16.5
+Version:        5.17.0
 Release:        0
 Summary:        Helper for the KDE Plasma Browser Integration
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Utilities
 Url:            https://cgit.kde.org/plasma-browser-integration.git
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-browser-integration-%{version}.tar.xz
+Source:         plasma-browser-integration-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-browser-integration-%{version}.tar.xz.sig
+Source1:        plasma-browser-integration-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  cmake(KF5Activities) >= %{kf5_version}
+BuildRequires:  cmake(KF5Crash) >= %{kf5_version}
 BuildRequires:  cmake(KF5DBusAddons) >= %{kf5_version}
+BuildRequires:  cmake(KF5FileMetaData) >= %{kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
 BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
 BuildRequires:  cmake(KF5Notifications) >= %{kf5_version}
+BuildRequires:  cmake(KF5Purpose) >= %{kf5_version}
 BuildRequires:  cmake(KF5Runner) >= %{kf5_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
 BuildRequires:  cmake(Qt5Core) >= %{qt5_version}

@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Oct 10 14:25:47 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.0.php
+- No code changes since 5.16.90
+
+-------------------------------------------------------------------
+Thu Sep 19 12:32:36 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.90.php
+- Changes since 5.16.5:
+  * update to latest kf5 dependency
+  * Add enforced mode size getter
+  * RandR: Replicate outputs with XRender extension
+  * Introduce output replication API
+  * Wayland: Set fractional output scale
+  * XRandR: Generic code cleanup
+  * Wayland: Rename output member variable
+  * Wayland: Improve screen code style
+  * Wayland: set KWayland outputs data in output class
+  * Wayland: unfriend config and output classes
+  * Wayland: output device name as create function argument only
+  * Wayland: save pointers in initializing list
+  * Simplify XRandR::outputChanged
+  * Wayland: manage outputs without id mapping
+  * Wayland: config update code cleanup
+  * Wayland: backend code cleanup
+  * Do hash and hex name based output hashes
+  * Install in new logging directory when we use kf5 5.59.0
+  * Fix forward declaration
+
+-------------------------------------------------------------------
 Tue Sep  3 12:44:12 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.16.5

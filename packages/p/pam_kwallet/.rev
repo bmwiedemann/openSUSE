@@ -444,4 +444,12 @@ This version removes the unneeded ldconfig call.</comment>
     <comment>Plasma 5.16.5</comment>
     <requestid>728200</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>379fa07f0495c689a4907d1c6b6a69e2</srcmd5>
+    <version>5.17.0</version>
+    <time>1571049667</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.17.0 pre-release tars. Please publish disable before accept. (forwarded request 737387 from Vogtinator)</comment>
+    <requestid>737481</requestid>
+  </revision>
 </revisionlist>

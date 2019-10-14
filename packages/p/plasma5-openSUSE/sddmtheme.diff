@@ -18,11 +18,10 @@ index 0000000..1885a36
 +After editing SVG files be sure to run currentColorFillFix.sh from plasma-framework
 \ No newline at end of file
 diff --git a/breeze/theme.conf b/breeze-openSUSE/theme.conf
-index 5dae68f..adacdc1 100644
+index 35c2a13..4d0709a 100644
 --- a/breeze/theme.conf
 +++ b/breeze-openSUSE/theme.conf
-@@ -1,6 +1,6 @@
- [General]
+@@ -2,5 +2,5 @@
  type=image
  color=#1d99f3
  fontSize=10

@@ -1,8 +1,8 @@
-diff --git a/sesman/sesman.ini b/sesman/sesman.ini
-index 37c7816..4a428ec 100644
---- a/sesman/sesman.ini
-+++ b/sesman/sesman.ini
-@@ -40,7 +40,7 @@ DisconnectedTimeLimit=0
+Index: b/sesman/sesman.ini
+===================================================================
+--- a/sesman/sesman.ini	2019-10-12 17:45:30.594432280 +0800
++++ b/sesman/sesman.ini	2019-10-12 17:45:37.222491421 +0800
+@@ -55,7 +55,7 @@ IdleTimeLimit=0
  
  ;; Policy - session allocation policy
  ; Type: enum [ "Default" | "UBD" | "UBI" | "UBC" | "UBDI" | "UBDC" ]
@@ -11,11 +11,11 @@ index 37c7816..4a428ec 100644
  ; "UBD" session per <User,BitPerPixel,DisplaySize>
  ; "UBI" session per <User,BitPerPixel,IPAddr>
  ; "UBC" session per <User,BitPerPixel,Connection>
-diff --git a/sesman/session.c b/sesman/session.c
-index 0b8bb6a..3a0164b 100644
---- a/sesman/session.c
-+++ b/sesman/session.c
-@@ -105,9 +105,6 @@ session_get_bydata(const char *name, int width, int height, int bpp, int type,
+Index: b/sesman/session.c
+===================================================================
+--- a/sesman/session.c	2019-10-12 17:45:30.598432316 +0800
++++ b/sesman/session.c	2019-10-12 17:45:37.222491421 +0800
+@@ -105,9 +105,6 @@ session_get_bydata(const char *name, int
      {
          case SCP_SESSION_TYPE_XVNC: /* 0 */
              type = SESMAN_SESSION_TYPE_XVNC; /* 2 */
@@ -25,21 +25,21 @@ index 0b8bb6a..3a0164b 100644
              break;
          case SCP_SESSION_TYPE_XRDP: /* 1 */
              type = SESMAN_SESSION_TYPE_XRDP; /* 1 */
-diff --git a/vnc/vnc.c b/vnc/vnc.c
-index db593da..0db68b9 100644
---- a/vnc/vnc.c
-+++ b/vnc/vnc.c
-@@ -383,7 +383,8 @@ lib_mod_event(struct vnc *v, int msg, long param1, long param2,
-         /* FramebufferUpdateRequest */
-         init_stream(s, 8192);
-         out_uint8(s, 3);
--        out_uint8(s, 0);
-+        out_uint8(s, v->incremental);
-+        v->incremental = 1;
-         x = (param1 >> 16) & 0xffff;
-         out_uint16_be(s, x);
-         y = param1 & 0xffff;
-@@ -724,7 +725,24 @@ lib_framebuffer_update(struct vnc *v)
+Index: b/vnc/vnc.c
+===================================================================
+--- a/vnc/vnc.c	2019-10-12 17:45:30.598432316 +0800
++++ b/vnc/vnc.c	2019-10-12 17:49:39.956657294 +0800
+@@ -385,7 +385,8 @@ lib_mod_event(struct vnc *v, int msg, lo
+             /* FramebufferUpdateRequest */
+             init_stream(s, 8192);
+             out_uint8(s, 3);
+-            out_uint8(s, 0);
++            out_uint8(s, v->incremental);
++            v->incremental = 1;
+             x = (param1 >> 16) & 0xffff;
+             out_uint16_be(s, x);
+             y = param1 & 0xffff;
+@@ -727,7 +728,24 @@ lib_framebuffer_update(struct vnc *v)
              {
                  v->mod_width = cx;
                  v->mod_height = cy;
@@ -65,7 +65,7 @@ index db593da..0db68b9 100644
              }
              else
              {
-@@ -740,12 +758,22 @@ lib_framebuffer_update(struct vnc *v)
+@@ -743,6 +761,15 @@ lib_framebuffer_update(struct vnc *v)
          error = v->server_end_update(v);
      }
  
@@ -80,16 +80,18 @@ index db593da..0db68b9 100644
 +
      if (error == 0)
      {
-         /* FramebufferUpdateRequest */
-         init_stream(s, 8192);
-         out_uint8(s, 3);
--        out_uint8(s, 1);
-+        out_uint8(s, v->incremental);
-+        v->incremental = 1;
-         out_uint16_be(s, 0);
-         out_uint16_be(s, 0);
-         out_uint16_be(s, v->mod_width);
-@@ -1327,11 +1355,12 @@ lib_mod_connect(struct vnc *v)
+         if (v->suppress_output == 0)
+@@ -750,7 +777,8 @@ lib_framebuffer_update(struct vnc *v)
+             /* FramebufferUpdateRequest */
+             init_stream(s, 8192);
+             out_uint8(s, 3);
+-            out_uint8(s, 1);
++            out_uint8(s, v->incremental);
++            v->incremental = 1;
+             out_uint16_be(s, 0);
+             out_uint16_be(s, 0);
+             out_uint16_be(s, v->mod_width);
+@@ -1333,11 +1361,12 @@ lib_mod_connect(struct vnc *v)
          init_stream(s, 8192);
          out_uint8(s, 2);
          out_uint8(s, 0);
@@ -103,8 +105,8 @@ index db593da..0db68b9 100644
          v->server_msg(v, "VNC sending encodings", 0);
          s_mark_end(s);
          error = trans_force_write_s(v->trans, s);
-@@ -1347,7 +1376,8 @@ lib_mod_connect(struct vnc *v)
-         /* FramebufferUpdateRequest */
+@@ -1530,7 +1559,8 @@ lib_mod_suppress_output(struct vnc* v, i
+         make_stream(s);
          init_stream(s, 8192);
          out_uint8(s, 3);
 -        out_uint8(s, 0);
@@ -113,11 +115,11 @@ index db593da..0db68b9 100644
          out_uint16_be(s, 0);
          out_uint16_be(s, 0);
          out_uint16_be(s, v->mod_width);
-diff --git a/vnc/vnc.h b/vnc/vnc.h
-index 3eee4e0..1990778 100644
---- a/vnc/vnc.h
-+++ b/vnc/vnc.h
-@@ -113,6 +113,7 @@ struct vnc
+Index: b/vnc/vnc.h
+===================================================================
+--- a/vnc/vnc.h	2019-10-12 17:45:30.598432316 +0800
++++ b/vnc/vnc.h	2019-10-12 17:45:37.222491421 +0800
+@@ -116,6 +116,7 @@ struct vnc
    int clip_chanid;
    struct stream *clip_data_s;
    int delay_ms;
