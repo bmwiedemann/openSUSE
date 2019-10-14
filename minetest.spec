@@ -28,7 +28,7 @@
 %bcond_with postgresql
 %endif
 Name:           minetest
-Version:        5.0.1
+Version:        5.1.0
 Release:        0
 Summary:        A InfiniMiner/Minecraft inspired game
 License:        LGPL-2.1-or-later AND CC-BY-SA-3.0
@@ -243,7 +243,9 @@ getent passwd %{name} > /dev/null || \
 
 %files data
 %license LICENSE.txt
-%doc CONTRIBUTING.md
+%doc README.md
+%doc .github/CONTRIBUTING.md
+%doc .github/SECURITY.md
 %doc %{_docdir}/%{name}/
 %{_datadir}/%{name}/
 

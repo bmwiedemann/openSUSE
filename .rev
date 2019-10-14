@@ -91,4 +91,12 @@ New upstream version.</comment>
   before applying such a workaround.</comment>
     <requestid>690637</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>02a265d7c43a07621b5f3bc830a889b6</srcmd5>
+    <version>5.1.0</version>
+    <time>1571051683</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>738236</requestid>
+  </revision>
 </revisionlist>
