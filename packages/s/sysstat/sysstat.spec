@@ -42,6 +42,7 @@ BuildRequires:  sed
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(systemd)
+Requires:       cron
 Requires:       procmail
 Requires:       xz
 %{?systemd_requires}

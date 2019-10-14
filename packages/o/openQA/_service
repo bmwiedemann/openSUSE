@@ -5,6 +5,7 @@
     <param name="extract">openQA.spec</param>
     <param name="extract">openQA-test.spec</param>
     <param name="extract">openQA-worker-test.spec</param>
+    <param name="extract">openQA-devel-test.spec</param>
     <param name="url">git://github.com/os-autoinst/openQA.git</param>
     <param name="revision">master</param>
     <param name="versionprefix">4.6</param>

@@ -1,0 +1,40 @@
+--- a/test/test_writers/test_odt.py
++++ b/test/test_writers/test_odt.py
+@@ -80,7 +80,7 @@ class DocutilsOdtTestCase(DocutilsTestSu
+                     sys.stderr.write(s1)
+         return WhichElementTree
+ 
+-    def process_test(self, input_filename, expected_filename, 
++    def process_test(self, input_filename, expected_filename,
+             save_output_name=None, settings_overrides=None):
+         if not self.check_import():
+             return
+@@ -112,19 +112,22 @@ class DocutilsOdtTestCase(DocutilsTestSu
+             outfile.close()
+         content1 = self.extract_file(result, 'content.xml')
+         content2 = self.extract_file(expected, 'content.xml')
+-        msg = 'content.xml not equal: expected len: %d  actual len: %d' % (
+-            len(content2), len(content1), )
+-        self.assertEqual(content1, content2, msg)
++        # self.assertEqual(content1, content2, msg)
++        self.assertEqual(content1, content2)
+ 
+     def extract_file(self, payload, filename):
++        from xml.etree import ElementTree as etree
+         payloadfile = BytesIO()
+         payloadfile.write(payload)
+         payloadfile.seek(0)
+         zfile = zipfile.ZipFile(payloadfile, 'r')
+         content1 = zfile.read(filename)
+-        doc = minidom.parseString(content1)
+-        #content2 = doc.toprettyxml(indent='  ')
+-        content2 = doc.toxml()
++        if hasattr(etree, 'canonicalize'):
++            content2 = etree.canonicalize(content1, with_comments=True)
++        else:
++            #content2 = doc.toprettyxml(indent='  ')
++            doc = minidom.parseString(content1)
++            content2 = doc.toxml()
+         return content2
+ 
+     def assertEqual(self, first, second, msg=None):

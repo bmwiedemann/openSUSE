@@ -1,5 +1,15 @@
---- papi-5.6.0/src/utils/Makefile	2017-12-19 18:14:32.000000000 +0100
-+++ papi-5.6.0/src/utils/Makefile	2018-08-22 15:56:27.704153834 +0200
+From: Tony Jones <tonyj@suse.de>
+Subject: Fix LDFLAGS order in utils/Makefile
+References: none
+Upstream: submitted Oct/2/2019
+Signed-off-by: Tony Jones <tonyj@suse.de>
+
+Binutils changed some time ago such that -l<dynamic lib> needs to follow the
+same existing rules as -l<static lib>, namely to be specified after any .o/.a
+files.
+
+--- a/src/utils/Makefile	2017-12-19 18:14:32.000000000 +0100
++++ b/src/utils/Makefile	2018-08-22 15:56:27.704153834 +0200
 @@ -16,46 +16,46 @@
  default all utils: $(ALL)
  
@@ -9,15 +19,15 @@
  
  papi_clockres: papi_clockres.o $(PAPILIB) $(CLOCKCORE)
 -	$(CC) $(LDFLAGS) -o papi_clockres papi_clockres.o $(PAPILIB) $(CLOCKCORE) -lm
-+	$(CC) -o papi_clockres papi_clockres.o $(PAPILIB) $(LDFLAGS) $(CLOCKCORE) -lm
++	$(CC) -o papi_clockres papi_clockres.o $(PAPILIB) $(CLOCKCORE) $(LDFLAGS) -lm
  
  papi_command_line: papi_command_line.o $(PAPILIB) $(DOLOOPS)
 -	$(CC) $(LDFLAGS) -o papi_command_line papi_command_line.o $(PAPILIB) $(DOLOOPS)
-+	$(CC) -o papi_command_line papi_command_line.o $(PAPILIB) $(LDFLAGS) $(DOLOOPS)
++	$(CC) -o papi_command_line papi_command_line.o $(PAPILIB) $(DOLOOPS) $(LDFLAGS)
  
  papi_component_avail: papi_component_avail.o $(PAPILIB) print_header.o
 -	$(CC) $(LDFLAGS) -o papi_component_avail papi_component_avail.o $(PAPILIB) print_header.o
-+	$(CC) -o papi_component_avail papi_component_avail.o $(PAPILIB) $(LDFLAGS) print_header.o
++	$(CC) -o papi_component_avail papi_component_avail.o $(PAPILIB) print_header.o $(LDFLAGS)
  
  papi_cost: papi_cost.o $(PAPILIB) cost_utils.o
 -	$(CC) $(LDFLAGS) -o papi_cost papi_cost.o cost_utils.o $(PAPILIB) -lm
@@ -49,7 +59,7 @@
  
  papi_native_avail: papi_native_avail.o $(PAPILIB) print_header.o
 -	$(CC) $(LDFLAGS) -o papi_native_avail papi_native_avail.o $(PAPILIB) print_header.o
-+	$(CC) -o papi_native_avail papi_native_avail.o $(PAPILIB) $(LDFLAGS) print_header.o
++	$(CC) -o papi_native_avail papi_native_avail.o $(PAPILIB) print_header.o $(LDFLAGS)
  
  papi_version: papi_version.o $(PAPILIB)
 -	$(CC) $(LDFLAGS) -o papi_version papi_version.o $(PAPILIB)

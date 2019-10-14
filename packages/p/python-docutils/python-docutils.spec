@@ -34,6 +34,9 @@ Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/docutils/
 Source:         https://files.pythonhosted.org/packages/source/d/docutils/docutils-%{version}.tar.gz
 Source99:       python-docutils-rpmlintrc
+# PATCH-FIX-UPSTREAM fix_tests_38.patch shp#docutils#161 mcepl@suse.com
+# Fixes failing tests in test_writers.test_odt.DocutilsOdtTestCase
+Patch0:         fix_tests_38.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
@@ -63,6 +66,7 @@ easy-to-read, what-you-see-is-what-you-get plaintext markup syntax.
 
 %prep
 %setup -q -n docutils-%{version}
+%autopatch -p1
 # Remove useless ".py" ending from executables:
 for i in tools/rst*; do mv "$i" "${i/.py}"; done
 sed -i "s|'tools/\(rst.*\)\.py'|'tools/\1'|" setup.py

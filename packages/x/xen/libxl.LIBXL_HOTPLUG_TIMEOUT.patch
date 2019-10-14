@@ -1,0 +1,306 @@
+References: bsc#1120095
+
+A domU with a large amount of disks may run into the hardcoded
+LIBXL_HOTPLUG_TIMEOUT limit, which is 40 seconds. This happens if the
+preparation for each disk takes an unexpected large amount of time. Then
+the sum of all configured disks and the individual preparation time will
+be larger than 40 seconds. The hotplug script which does the preparation
+takes a lock before doing the actual preparation. Since the hotplug
+scripts for each disk are spawned at nearly the same time, each one has
+to wait for the lock. Due to this contention, the total execution time
+of a script can easily exceed the timeout. In this case libxl will
+terminate the script because it has to assume an error condition.
+
+Example:
+10 configured disks, each one takes 3 seconds within the critital
+section. The total execution time will be 30 seconds, which is still
+within the limit. With 5 additional configured disks, the total
+execution time will be 45 seconds, which would trigger the timeout.
+
+To handle such setup without a recompile of libxl, a special key/value
+has to be created in xenstore prior domain creation. This can be done
+either manually, or at system startup.
+
+If this systemd service file is placed in /etc/systemd/system/, and
+activated, it will create the required entry in xenstore:
+
+/etc/systemd/system # cat xen-LIBXL_HOTPLUG_TIMEOUT.service
+[Unit]
+Description=set global LIBXL_HOTPLUG_TIMEOUT
+ConditionPathExists=/proc/xen/capabilities
+
+Requires=xenstored.service
+After=xenstored.service
+Requires=xen-init-dom0.service
+After=xen-init-dom0.service
+Before=xencommons.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStartPre=/bin/grep -q control_d /proc/xen/capabilities
+ExecStart=/usr/bin/xenstore-write /libxl/suse/per-device-LIBXL_HOTPLUG_TIMEOUT 5
+
+[Install]
+WantedBy=multi-user.target
+
+/etc/systemd/system # systemctl enable xen-LIBXL_HOTPLUG_TIMEOUT.service
+/etc/systemd/system # systemctl start xen-LIBXL_HOTPLUG_TIMEOUT.service
+
+In this example the per-device value will be set to 5 seconds.
+
+The change for libxl which handles this xenstore value will enable
+additional logging if the key is found. That extra logging will show how
+the execution time of each script.
+--- a/tools/libxl/libxl_aoutils.c
++++ b/tools/libxl/libxl_aoutils.c
+@@ -529,6 +529,8 @@ static void async_exec_timeout(libxl__eg
+ {
+     libxl__async_exec_state *aes = CONTAINER_OF(ev, *aes, time);
+     STATE_AO_GC(aes->ao);
++    char b[64];
++    libxl__suse_diff_timespec(&aes->start, b, sizeof(b));
+ 
+     if (!aes->rc)
+         aes->rc = rc;
+@@ -536,7 +538,7 @@ static void async_exec_timeout(libxl__eg
+     libxl__ev_time_deregister(gc, &aes->time);
+ 
+     assert(libxl__ev_child_inuse(&aes->child));
+-    LOG(ERROR, "killing execution of %s because of timeout", aes->what);
++    LOG(ERROR, "killing execution of %s because of timeout%s", aes->what, b);
+ 
+     if (kill(aes->child.pid, SIGKILL)) {
+         LOGEV(ERROR, errno, "unable to kill %s [%ld]",
+@@ -552,6 +554,10 @@ static void async_exec_done(libxl__egc *
+ {
+     libxl__async_exec_state *aes = CONTAINER_OF(child, *aes, child);
+     STATE_AO_GC(aes->ao);
++    char b[64];
++    libxl__suse_diff_timespec(&aes->start, b, sizeof(b));
++    if (b[0])
++        LOG(NOTICE, "finished execution of '%s'%s", aes->what, b);
+ 
+     libxl__ev_time_deregister(gc, &aes->time);
+ 
+--- a/tools/libxl/libxl_create.c
++++ b/tools/libxl/libxl_create.c
+@@ -986,6 +986,7 @@ static void initiate_domain_create(libxl
+      * build info around just to know if the domain has a device model or not.
+      */
+     store_libxl_entry(gc, domid, &d_config->b_info);
++    libxl__suse_domain_set_hotplug_timeout(gc, domid, d_config->num_disks, d_config->num_nics);
+ 
+     for (i = 0; i < d_config->num_disks; i++) {
+         ret = libxl__disk_devtype.set_default(gc, domid, &d_config->disks[i],
+--- a/tools/libxl/libxl_device.c
++++ b/tools/libxl/libxl_device.c
+@@ -1244,7 +1244,7 @@ static void device_hotplug(libxl__egc *e
+     }
+ 
+     aes->ao = ao;
+-    aes->what = GCSPRINTF("%s %s", args[0], args[1]);
++    aes->what = GCSPRINTF("%s %s for %s", args[0], args[1], be_path);
+     aes->env = env;
+     aes->args = args;
+     aes->callback = device_hotplug_child_death_cb;
+@@ -1253,6 +1253,15 @@ static void device_hotplug(libxl__egc *e
+     aes->stdfds[1] = 2;
+     aes->stdfds[2] = -1;
+ 
++    switch (aodev->dev->backend_kind) {
++    case LIBXL__DEVICE_KIND_VBD:
++    case LIBXL__DEVICE_KIND_VIF:
++        if (aodev->num_exec == 0)
++            libxl__suse_domain_get_hotplug_timeout(gc, aodev->dev->domid, aodev->dev->backend_kind, &aes->start, &aes->timeout_ms, be_path);
++    default:
++        break;
++    }
++
+     rc = libxl__async_exec_start(aes);
+     if (rc)
+         goto out;
+--- a/tools/libxl/libxl_event.c
++++ b/tools/libxl/libxl_event.c
+@@ -858,27 +858,29 @@ static void devstate_callback(libxl__egc
+ {
+     EGC_GC;
+     libxl__ev_devstate *ds = CONTAINER_OF(xsw, *ds, w);
++    char b[64];
++    libxl__suse_diff_timespec(&ds->w.start, b, sizeof(b));
+ 
+     if (rc) {
+         if (rc == ERROR_TIMEDOUT)
+-            LOG(DEBUG, "backend %s wanted state %d "" timed out", ds->w.path,
+-                ds->wanted);
++            LOG(DEBUG, "backend %s wanted state %d "" timed out%s", ds->w.path,
++                ds->wanted, b);
+         goto out;
+     }
+     if (!sstate) {
+-        LOG(DEBUG, "backend %s wanted state %d"" but it was removed",
+-            ds->w.path, ds->wanted);
++        LOG(DEBUG, "backend %s wanted state %d"" but it was removed%s",
++            ds->w.path, ds->wanted, b);
+         rc = ERROR_INVAL;
+         goto out;
+     }
+ 
+     int got = atoi(sstate);
+     if (got == ds->wanted) {
+-        LOG(DEBUG, "backend %s wanted state %d ok", ds->w.path, ds->wanted);
++        LOG(DEBUG, "backend %s wanted state %d ok%s", ds->w.path, ds->wanted, b);
+         rc = 0;
+     } else {
+-        LOG(DEBUG, "backend %s wanted state %d"" still waiting state %d",
+-            ds->w.path, ds->wanted, got);
++        LOG(DEBUG, "backend %s wanted state %d"" still waiting state %d%s",
++            ds->w.path, ds->wanted, got, b);
+         return;
+     }
+ 
+@@ -904,6 +906,8 @@ int libxl__ev_devstate_wait(libxl__ao *a
+     ds->w.path = state_path;
+     ds->w.timeout_ms = milliseconds;
+     ds->w.callback = devstate_callback;
++    rc = clock_gettime(CLOCK_MONOTONIC, &ds->w.start);
++    if (rc) goto out;
+     rc = libxl__xswait_start(gc, &ds->w);
+     if (rc) goto out;
+ 
+--- a/tools/libxl/libxl_internal.c
++++ b/tools/libxl/libxl_internal.c
+@@ -17,6 +17,97 @@
+ 
+ #include "libxl_internal.h"
+ 
++#define LIBXL_SUSE_PATH_TIMEOUT "/libxl/suse/per-device-LIBXL_HOTPLUG_TIMEOUT"
++#define LIBXL_SUSE_PATH_DISK_TIMEOUT "suse/disks-LIBXL_HOTPLUG_TIMEOUT"
++#define LIBXL_SUSE_PATH_NIC_TIMEOUT "suse/nics-LIBXL_HOTPLUG_TIMEOUT"
++
++void libxl__suse_domain_set_hotplug_timeout(libxl__gc *gc, uint32_t domid, long d, long n)
++{
++    char *path;
++    char *val, *p;
++    long v;
++
++    val = libxl__xs_read(gc, XBT_NULL, LIBXL_SUSE_PATH_TIMEOUT);
++    if (!val)
++        return;
++
++    v = strtol(val, NULL, 0);
++    if (v <= 0)
++        return;
++
++    path = libxl__xs_libxl_path(gc, domid);
++    if (d > 0) {
++        p = GCSPRINTF("%s/" LIBXL_SUSE_PATH_DISK_TIMEOUT, path);
++        LOGD(NOTICE, domid, "Setting %s to %ld*%ld=%ld", p, d, v, d*v);
++        libxl__xs_printf(gc, XBT_NULL, p, "%ld", d*v);
++    }
++    if (n > 0) {
++        p = GCSPRINTF("%s/" LIBXL_SUSE_PATH_NIC_TIMEOUT, path);
++        LOGD(NOTICE, domid, "Setting %s to %ld*%ld=%ld", p, n, v, n*v);
++        libxl__xs_printf(gc, XBT_NULL, p, "%ld", n*v);
++    }
++}
++
++void libxl__suse_domain_get_hotplug_timeout(libxl__gc *gc, uint32_t domid, libxl__device_kind kind, struct timespec *ts, int *timeout_ms, const char *be_path)
++{
++    char *path;
++    char *val, *p;
++    long v = 0;
++
++    path = libxl__xs_libxl_path(gc, domid);
++    if (!path)
++        return;
++
++    switch (kind) {
++    case LIBXL__DEVICE_KIND_VBD:
++        p = GCSPRINTF("%s/" LIBXL_SUSE_PATH_DISK_TIMEOUT, path);
++        break;
++    case LIBXL__DEVICE_KIND_VIF:
++        p = GCSPRINTF("%s/" LIBXL_SUSE_PATH_NIC_TIMEOUT, path);
++        break;
++    default:
++        return;
++    }
++    errno = 0;
++    val = libxl__xs_read(gc, XBT_NULL, p);
++    if (val)
++        v = strtol(val, NULL, 0);
++    LOGED(DEBUG, domid, "Got from '%s' = %ld from %s for %s", val?:"", v, p, be_path);
++    if (!val || v <= 0)
++        return;
++
++    if (v > (INT_MAX/1000))
++        v = (INT_MAX/1000);
++    v *= 1000;
++    LOGD(NOTICE, domid, "Replacing timeout %d with %ld for %s", *timeout_ms, v, be_path);
++    *timeout_ms = v;
++    if (clock_gettime(CLOCK_MONOTONIC, ts) < 0) {
++        LOGED(ERROR, domid, "clock_gettime failed for %s", be_path);
++        ts->tv_sec = ts->tv_nsec = 0;
++    }
++
++}
++
++void libxl__suse_diff_timespec(const struct timespec *old, char *b, size_t s)
++{
++    struct timespec new, diff;
++
++    if (old->tv_sec == 0 && old->tv_nsec == 0) {
++        *b = '\0';
++        return;
++    }
++    if (clock_gettime(CLOCK_MONOTONIC, &new))
++        new = *old;
++    if ((new.tv_nsec - old->tv_nsec) < 0) {
++        diff.tv_sec = new.tv_sec - old->tv_sec - 1;
++        diff.tv_nsec = new.tv_nsec - old->tv_nsec + (1000*1000*1000);
++    } else {
++        diff.tv_sec = new.tv_sec - old->tv_sec;
++        diff.tv_nsec = new.tv_nsec - old->tv_nsec;
++    }
++    snprintf(b, s, " (%ld.%09lds)", (long)diff.tv_sec, diff.tv_nsec);
++}
++
+ void libxl__alloc_failed(libxl_ctx *ctx, const char *func,
+                          size_t nmemb, size_t size) {
+ #define M "libxl: FATAL ERROR: memory allocation failure"
+--- a/tools/libxl/libxl_internal.h
++++ b/tools/libxl/libxl_internal.h
+@@ -50,6 +50,7 @@
+ #include <sys/un.h>
+ #include <sys/file.h>
+ #include <sys/ioctl.h>
++#include <time.h>
+ 
+ #include <xenevtchn.h>
+ #include <xenstore.h>
+@@ -1442,6 +1443,7 @@ struct libxl__xswait_state {
+     const char *what; /* for error msgs: noun phrase, what we're waiting for */
+     const char *path;
+     int timeout_ms; /* as for poll(2) */
++    struct timespec start;
+     libxl__xswait_callback *callback;
+     /* remaining fields are private to xswait */
+     libxl__ev_time time_ev;
+@@ -2547,6 +2549,7 @@ struct libxl__async_exec_state {
+     char **args; /* execution arguments */
+     char **env; /* execution environment */
+ 
++    struct timespec start;
+     /* private */
+     libxl__ev_time time;
+     libxl__ev_child child;
+@@ -4627,6 +4630,9 @@ static inline const char *libxl__qemu_qm
+ }
+ #endif
+ 
++_hidden void libxl__suse_domain_set_hotplug_timeout(libxl__gc *gc, uint32_t domid, long d, long n);
++_hidden void libxl__suse_domain_get_hotplug_timeout(libxl__gc *gc, uint32_t domid, libxl__device_kind kind, struct timespec *ts, int *timeout_ms, const char *be_path);
++_hidden void libxl__suse_diff_timespec(const struct timespec *old, char *b, size_t s);
+ /*
+  * Local variables:
+  * mode: C

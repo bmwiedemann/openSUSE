@@ -18,11 +18,10 @@
 
 %define libname liborcus-0_15-0
 Name:           liborcus
-Version:        0.15.1
+Version:        0.15.3
 Release:        0
 Summary:        Spreadsheet file processing library
 License:        MPL-2.0
-Group:          Productivity/Publishing/Word
 URL:            https://gitlab.com/orcus/orcus/
 Source:         http://kohei.us/files/orcus/src/%{name}-%{version}.tar.xz
 BuildRequires:  coreutils
@@ -51,7 +50,6 @@ BuildRequires:  boost-devel
 
 %package -n %{libname}
 Summary:        Spreadsheet file processing library
-Group:          System/Libraries
 
 %description -n %{libname}
 Standalone file import filter library for spreadsheet documents. Currently
@@ -63,7 +61,6 @@ under development are ODS, XLSX and CSV import filters.
 
 %package devel
 Summary:        Spreadsheet file processing library
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 Requires:       pkgconfig(zlib)
 
@@ -73,7 +70,6 @@ under development are ODS, XLSX and CSV import filters.
 
 %package tools
 Summary:        Spreadsheet file processing library
-Group:          Productivity/Publishing/Word
 Requires:       %{libname} = %{version}
 
 %description tools
@@ -81,7 +77,6 @@ Tools to work with various xml streams.
 
 %package -n python3-%{name}
 Summary:        Python bindings for liborcus
-Group:          Productivity/Publishing/Word
 Provides:       %{name}-python3 = %{version}
 
 %description -n python3-%{name}

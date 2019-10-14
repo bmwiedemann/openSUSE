@@ -2,7 +2,6 @@
 # spec file for package mpd
 #
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,113 +16,94 @@
 #
 
 
+%define mver    0.21
 %bcond_with    faad
 %bcond_without mpd_iso9660
-
-%if !%{defined _userunitdir}
-%define _userunitdir %{_prefix}/lib/systemd/user
-%endif
-%define mver    0.21
 Name:           mpd
-Version:        0.21.9
+Version:        0.21.15
 Release:        0
 Summary:        Music Player Daemon
-License:        GPL-3.0-or-later
-Group:          Productivity/Multimedia/Sound/Players
-Url:            https://www.musicpd.org/
-Source:         https://www.musicpd.org/download/mpd/%{mver}/mpd-%{version}.tar.xz
-Source2:        README.%{name}
-Source3:        mpd-user.conf
+License:        GPL-2.0-or-later
+URL:            https://www.musicpd.org
+Source0:        https://www.musicpd.org/download/mpd/%{mver}/mpd-%{version}.tar.xz
+Source1:        README.%{name}
+Source2:        mpd-user.conf
 # PATCH-FEATURE-OPENSUSE mpd-mpdconf_suse.patch --
 Patch0:         %{name}-mpdconf_suse.patch
 # PATCH-FEATURE-OPENSUSE mpd-docs.patch
-Patch3:         mpd-docs.patch
+Patch1:         mpd-docs.patch
 # PATCH-FIX-OPENSUSE mpd-sndfile.patch
-Patch4:         mpd-sndfile.patch
-%if 0%{?suse_version} >= 1500
-BuildRequires:  libboost_headers-devel >= 1.58
-%else
-BuildRequires:  boost-devel >= 1.58
-%endif
-%if 0%{?suse_version} >= 1500
+Patch2:         mpd-sndfile.patch
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-%else
-# Leap 42.3+ / SLE12SP3Backports
-BuildRequires:  gcc7
-BuildRequires:  gcc7-c++
-%endif
-#uildRequires:  cdrkit-cdrtools-compat
-%if %{with faad}
-BuildRequires:  faad2-devel
-%endif
+BuildRequires:  group(audio)
 #
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  libboost_headers-devel
 BuildRequires:  libcue-devel
-BuildRequires:  libmikmod-devel >= 3.2
+# MPD_ENABLE_AUTO_LIB
+BuildRequires:  libgcrypt-devel
+BuildRequires:  libmikmod-devel
 BuildRequires:  libmp3lame-devel
 BuildRequires:  meson >= 0.47.2
 BuildRequires:  pkgconfig
 # MPD_ENABLE_AUTO_PKG
-BuildRequires:  pkgconfig(alsa) >= 0.9.0
+BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(ao)
-BuildRequires:  pkgconfig(audiofile) >= 0.3
+BuildRequires:  pkgconfig(audiofile)
 BuildRequires:  pkgconfig(avahi-client)
-# MPD_ENABLE_AUTO_LIB
-BuildRequires:  libgcrypt-devel
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(expat)
-BuildRequires:  pkgconfig(flac) >= 1.2
-BuildRequires:  pkgconfig(fluidsynth) >= 1.1
-BuildRequires:  pkgconfig(icu-i18n) >= 50
+BuildRequires:  pkgconfig(flac)
+BuildRequires:  pkgconfig(fluidsynth)
+BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(id3tag)
-BuildRequires:  pkgconfig(jack) >= 0.100
-BuildRequires:  pkgconfig(libavcodec) >= 56.1
-BuildRequires:  pkgconfig(libavformat) >= 56.1
-BuildRequires:  pkgconfig(libavutil) >= 54.3
+BuildRequires:  pkgconfig(jack)
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libcdio) >= 2.0.0
 BuildRequires:  pkgconfig(libcdio_paranoia)
 BuildRequires:  pkgconfig(libchromaprint)
-BuildRequires:  pkgconfig(libcurl) >= 7.18
+BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libgme)
-%if %{with mpd_iso9660}
-BuildRequires:  pkgconfig(libiso9660)
-%endif
-BuildRequires:  pkgconfig(libmms) >= 0.4
+BuildRequires:  pkgconfig(libmms)
 BuildRequires:  pkgconfig(libmodplug)
-BuildRequires:  pkgconfig(libmpdclient) >= 2.9
+BuildRequires:  pkgconfig(libmpdclient)
 BuildRequires:  pkgconfig(libmpg123)
-BuildRequires:  pkgconfig(libnfs) >= 1.11
-BuildRequires:  pkgconfig(libpulse) >= 0.9.16
+BuildRequires:  pkgconfig(libnfs)
+BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libupnp)
 BuildRequires:  pkgconfig(mad)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(opus)
-BuildRequires:  pkgconfig(samplerate) >= 0.1.3
-BuildRequires:  pkgconfig(shine) >= 3.1
+BuildRequires:  pkgconfig(samplerate)
+BuildRequires:  pkgconfig(shine)
 BuildRequires:  pkgconfig(shout)
-BuildRequires:  pkgconfig(smbclient) >= 0.2
+BuildRequires:  pkgconfig(smbclient)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(soxr)
-BuildRequires:  pkgconfig(sqlite3) >= 3.7.3
+BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(twolame)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(vorbisenc)
 BuildRequires:  pkgconfig(wavpack)
-BuildRequires:  pkgconfig(yajl) >= 2.0
+BuildRequires:  pkgconfig(yajl)
 BuildRequires:  pkgconfig(zlib)
-BuildRequires:  pkgconfig(zziplib) >= 0.13
+BuildRequires:  pkgconfig(zziplib)
 Requires(pre):  %fillup_prereq
-Requires(pre):  pwdutils
-Requires(pre):  shadow
-%if 0%{?suse_version} >= 1500
-BuildRequires:  group(audio)
 Requires(pre):  group(audio)
-%endif
+Requires(pre):  shadow
 %{?systemd_requires}
+%if %{with faad}
+BuildRequires:  faad2-devel
+%endif
+%if %{with mpd_iso9660}
+BuildRequires:  pkgconfig(libiso9660)
+%endif
 
 %description
 A daemon for playing music (mp3, ogg vorbis, flac, and wav).  Music is
@@ -235,8 +215,8 @@ install -d \
         %{buildroot}%{_localstatedir}/lib/%{name}/playlists \
         %{buildroot}%{_sbindir}
 # additional docs
-install -m 0644 %{SOURCE2} README.mpd
-cp -a "%{SOURCE3}" "%{buildroot}%{_docdir}/%{name}/"
+install -m 0644 %{SOURCE1} README.mpd
+cp -a "%{SOURCE2}" "%{buildroot}%{_docdir}/%{name}/"
 ln -s service %{buildroot}%{_sbindir}/rcmpd
 rm %{buildroot}%{_libexecdir}/systemd/user/mpd.socket
 ln -s ../system/mpd.socket %{buildroot}%{_libexecdir}/systemd/user/mpd.socket
@@ -262,8 +242,8 @@ getent passwd mpd >/dev/null || useradd -r -g audio -d %{_localstatedir}/lib/mpd
 %{_bindir}/%{name}
 %{_sbindir}/rcmpd
 %attr(0755,mpd,audio) %{_localstatedir}/lib/%{name}
-%{_mandir}/man1/%{name}.1%{ext_man}
-%{_mandir}/man5/%{name}.conf.5%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
+%{_mandir}/man5/%{name}.conf.5%{?ext_man}
 %dir %{_docdir}/%{name}
 %doc %{_docdir}/%{name}
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg

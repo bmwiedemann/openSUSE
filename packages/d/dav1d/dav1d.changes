@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Oct 11 09:43:36 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.5.0
+  Medium release fixing regressions and minor issues, and
+  improving speed significantly:
+  * Export ITU T.35 metadata
+  * Speed improvements on blend_ on ARM
+  * Speed improvements on decode_coef and MSAC
+  * NEON optimizations for blend*, w_mask_, ipred functions for
+    ARM64
+  * NEON optimizations for CDEF and warp on ARM32
+  * SSE2 optimizations for MSAC hi_tok decoding
+  * SSSE3 optimizations for deblocking loopfilters and
+    warp_affine
+  * AVX-2 optimizations for film grain and ipred_z2
+  * SSE4 optimizations for warp_affine
+  * VSX optimizations for wiener
+  * Fix inverse transform overflows in x86 and NEON asm
+  * Fix integer overflows with large frames
+  * Improve film grain generation to match reference code
+  * Improve compatibility with older binutils for ARM
+  * More advanced Player example in tools
+
+- Bump soversion to 3
+
+- Added arm64_ipred_symbols_aligned.patch to fix aarch64
+  build
+
+-------------------------------------------------------------------
 Mon Aug  5 14:55:40 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.4.0
@@ -61,7 +90,7 @@ Tue Apr  2 06:43:21 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
   produces -32bit packages that would be uninstallable otherwise.
 
 -------------------------------------------------------------------
-Tue Mar 12 22:23:22 UTC 2019 - klaatu <aloisio@gmx.com>
+Tue Mar 12 22:23:22 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.2.1
   * SSSE3 optimization for cdef_dir

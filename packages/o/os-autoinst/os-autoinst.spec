@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.5.1568227729.687c4ca8
+Version:        4.5.1570825562.ae51e774
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -75,6 +75,14 @@ sed -e 's,/bin/env python,/bin/python,' -i crop.py
 # Replace version number from git to what's reported by the package
 sed  -i 's/ my $thisversion = qx{git.*rev-parse HEAD}.*;/ my $thisversion = "%{version}";/' isotovideo
 
+# don't require qemu within OBS
+# and exclude known flaky tests in OBS check
+# https://progress.opensuse.org/issues/52652
+for i in 18-qemu-options 18-backend-qemu 99-full-stack 13-osutils; do
+    rm t/$i.t
+    sed -i "s/ \?$i\.t//g" t/Makefile.am
+done
+
 %build
 mkdir -p m4
 autoreconf -f -i
@@ -105,11 +113,6 @@ sed '/perlcritic/d' -i Makefile
 sed '/Perl::Critic/d' -i cpanfile
 sed '/tidy/d' -i Makefile
 rm tools/lib/perlcritic/Perl/Critic/Policy/*.pm
-
-# don't require qemu within OBS
-for i in 18-qemu-options 18-backend-qemu 99-full-stack; do
-    cp t/05-pod.t t/${i}.t
-done
 
 # should work offline
 for p in $(cpanfile-dump); do rpm -q --whatprovides "perl($p)"; done

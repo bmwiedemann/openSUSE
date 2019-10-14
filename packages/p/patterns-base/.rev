@@ -377,4 +377,12 @@
   32bit pattern have it too (boo#1142156).</comment>
     <requestid>732891</requestid>
   </revision>
+  <revision rev="44" vrev="8">
+    <srcmd5>fa43bdb44f897c3e0aa642e9fa0bb464</srcmd5>
+    <version>20190612</version>
+    <time>1571057574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>737524</requestid>
+  </revision>
 </revisionlist>

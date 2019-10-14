@@ -1,17 +1,15 @@
-Index: xkeyboard-config-2.9/rules/base.xml.in
-===================================================================
---- xkeyboard-config-2.9.orig/rules/base.xml.in
-+++ xkeyboard-config-2.9/rules/base.xml.in
-@@ -5612,6 +5612,7 @@
-           <_description>Right Alt (while pressed)</_description>
+--- xkeyboard-config-2.27.orig/rules/base.xml	2019-10-11 19:01:38.759363000 +0200
++++ xkeyboard-config-2.27/rules/base.xml	2019-10-11 19:04:18.071327000 +0200
+@@ -6229,6 +6229,7 @@
+           <description>Right Alt (while pressed)</description>
          </configItem>
        </option>
 +      <!--
        <option>
          <configItem>
            <name>grp:lswitch</name>
-@@ -5624,6 +5625,7 @@
-           <_description>Left Win (while pressed)</_description>
+@@ -6241,6 +6242,7 @@
+           <description>Left Win (while pressed)</description>
          </configItem>
        </option>
 +      -->

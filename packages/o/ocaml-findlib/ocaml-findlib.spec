@@ -18,32 +18,29 @@
 
 
 Name:           ocaml-findlib
-Version:        1.7.3
+Version:        1.8.1
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Objective CAML package manager and build helper
 License:        MIT
 Group:          Development/Languages/OCaml
 
-Url:            http://projects.camlcity.org/projects/findlib.html
+Url:            https://github.com/ocaml/ocamlfind
 Source0:        findlib-%{version}.tar.xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-#
-Recommends:     ocaml-findlib-camlp4
 #
 Requires:       ocaml-compiler-libs
 Requires:       ocaml-runtime
 #
 Provides:       ocamlfind = %{version}
 
-BuildRequires:  gawk
 BuildRequires:  m4
 BuildRequires:  ncurses-devel
-BuildRequires:  ocaml >= 4.02.0
-BuildRequires:  ocaml-camlp4-devel >= 4.02.0
+BuildRequires:  ocaml
+BuildRequires:  ocaml-camlp4-devel
 BuildRequires:  ocaml-ocamlbuild
 BuildRequires:  ocaml-ocamldoc
-BuildRequires:  ocaml-rpm-macros >= 4.02.1
+BuildRequires:  ocaml-rpm-macros >= 20190930
 
 %description
 Findlib is a library manager for Objective Caml. It provides a
@@ -62,8 +59,6 @@ Requires:       %{name} = %{version}
 The ocaml-findlib-devel package contains libraries and signature files
 for developing applications that use ocaml-findlib.
 
-
-
 %package camlp4
 Summary:        Development files for ocaml-findlib
 Group:          Development/Languages/OCaml
@@ -73,7 +68,7 @@ Requires:       ocaml-camlp4-devel
 The ocaml-findlib-camlp4 contains signature files for developing applications that use camlp4
 
 %prep
-%setup -q -n findlib-%{version}
+%autosetup -p1 -n findlib-%{version}
 
 %build
 (cd tools/extract_args && make)
@@ -87,57 +82,42 @@ make all
 %if 0%{?ocaml_native_compiler}
 make opt
 %endif
-rm doc/guide-html/TIMESTAMP
+rm -fv doc/guide-html/TIMESTAMP
 
 %install
-make install prefix=$RPM_BUILD_ROOT
-rm -rfv $RPM_BUILD_ROOT%{_libdir}/ocaml/ocamlbuild
+make install prefix=%{buildroot}
+rm -rfv %{buildroot}%{_libdir}/ocaml/ocamlbuild
+%ocaml_create_file_list
 
-%files
-%defattr(-,root,root,-)
-%doc LICENSE doc/README
+# camlp4 support nee
+sed -i~ '
+/\/camlp4/ {
+w %{name}.files.camlp4
+d
+}
+/\/findlib/ {
+b
+}
+/\/num-top/ {
+b
+}
+w %{name}.files.x
+d
+' %{name}.files.devel
+diff -u "$_"~ "$_" && exit 2
+tee -a %{name}.files < %{name}.files.x
+
+%files -f %{name}.files
+%license LICENSE
 %{_libdir}/ocaml/ocamlfind.conf
+%{_libdir}/ocaml/topfind
 %{_bindir}/*
 %{_mandir}/man?/*
 #
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%{_libdir}/ocaml/*/META
-#
-%exclude %dir %{_libdir}/ocaml/camlp4
-%exclude %dir %{_libdir}/ocaml/findlib
-%exclude %dir %{_libdir}/ocaml/num-top
-%exclude %{_libdir}/ocaml/camlp4/META
-%exclude %{_libdir}/ocaml/findlib/META
-%exclude %{_libdir}/ocaml/num-top/META
-%{_libdir}/ocaml/topfind
-%dir %{_libdir}/ocaml/findlib
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.cmxs
-%endif
 
-%files devel
-%defattr(-,root,root,-)
-%doc LICENSE doc/README doc/guide-html
+%files devel -f %{name}.files.devel
 %{_libdir}/ocaml/*/Makefile.config
-#
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/findlib
-%dir %{_libdir}/ocaml/num-top
-%{_libdir}/ocaml/findlib/META
-%{_libdir}/ocaml/num-top/META
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.a
-%{_libdir}/ocaml/*/*.cmxa
-%endif
-%{_libdir}/ocaml/*/*.cma
-%{_libdir}/ocaml/*/*.cmi
-%{_libdir}/ocaml/*/*.mli
 
-%files camlp4
-%defattr(-,root,root,-)
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/camlp4
-%{_libdir}/ocaml/camlp4/META
+%files camlp4 -f %{name}.files.camlp4
 
 %changelog

@@ -34,12 +34,19 @@ Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
-Url:            http://gstreamer.freedesktop.org/
+Url:            https://gstreamer.freedesktop.org/
 Source:         https://gstreamer.freedesktop.org/src/gst-plugins-bad/%{_name}-%{version}.tar.xz
 Source2:        gstreamer-plugins-bad.appdata.xml
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM -- do not force C++98 for OpenEXR
+Patch0:         0001-Require-OpenEXR-2.3.0-at-least-and-do-not-force-C-98.patch
 
 BuildRequires:  Mesa-libGLESv3-devel
+%if !%{use_meson}
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
+%endif
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection-devel
@@ -55,7 +62,11 @@ BuildRequires:  orc >= 0.4.11
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
-BuildRequires:  pkgconfig(OpenEXR)
+%if %{suse_version} >= 1550
+BuildRequires:  pkgconfig(OpenEXR) >= 2.3.0
+%else
+BuildRequires:  pkgconfig(OpenEXR) <= 2.3.0
+%endif
 BuildRequires:  pkgconfig(aom)
 BuildRequires:  pkgconfig(bluez)
 BuildRequires:  pkgconfig(bzip2)
@@ -453,7 +464,10 @@ processing capabilities can be added simply by installing new plug-ins.
 %lang_package
 
 %prep
-%autosetup -p1 -n %{_name}-%{version}
+%setup -n %{_name}-%{version}
+%if %{suse_version} >= 1550
+%patch0 -p1
+%endif
 
 %build
 export PYTHON=%{_bindir}/python3
@@ -505,6 +519,7 @@ export PYTHON=%{_bindir}/python3
 	%{nil}
 %{meson_build}
 %else
+autoreconf -vfi
 %configure \
 %if ! 0%{?BUILD_ORIG}
 	--with-package-name='openSUSE GStreamer-plugins-bad package' \
@@ -552,14 +567,6 @@ fi
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{_name}-%{gst_branch}
 %fdupes %{buildroot}%{_datadir}/gtk-doc/html/
-
-%if 0%{?suse_version} < 1330
-%post
-%glib2_gsettings_schema_post
-
-%postun
-%glib2_gsettings_schema_postun
-%endif
 
 %post -n libgstadaptivedemux-1_0-0 -p /sbin/ldconfig
 %postun -n libgstadaptivedemux-1_0-0 -p /sbin/ldconfig

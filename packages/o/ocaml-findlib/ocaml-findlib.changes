@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Oct  2 17:59:21 UTC 2019 - ohering@suse.de
+
+- Move to github, use _service file
+
+-------------------------------------------------------------------
+Mon Sep 23 16:35:39 UTC 2019 - ohering@suse.de
+
+- Update to upstream version 1.8.1
+   Adapted to upcoming ocaml-4.09.
+   New API Findlib.list_packages' can specify a package prefix.
+   Fix reinstallation of "num" for OCaml-4.06.
+   Fix build with OCaml-4.07.
+   The installation of graphics/META is now optional.
+   Fix "ocamlfind query -d".
+   The environment variable OCAMLFIND_IGNORE_DUPS_IN is now interpreted as a list of directories.
+   Packages for "ocamlfind query" may now be separated by commas, too.
+   New "warning" property for packages.
+   Forgetting to pass -thread/-vmthread only prints a warning now, but doesn't stop the build.
+   For dealing with case-sensitive filesystems it is now only tried to match ASCII characters, but not encoding-dependent characters.
+
+-------------------------------------------------------------------
 Thu Aug 22 13:24:21 UTC 2019 - ohering@suse.de
 
 - Remove /etc/ocamlfind.conf because it is not configuration

@@ -749,4 +749,41 @@
 4.6.1568795030.c377d780b</comment>
     <requestid>731726</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>7dac37617a94f5f1217d99b7f9387bdb</srcmd5>
+    <version>4.6.1570902364.4f271c312</version>
+    <time>1571057678</time>
+    <user>dimstar_suse</user>
+    <comment>- No changelog - see openQA.changes
+- No changelog - see openQA.changes
+- Reset changes in test subpackages (useless duplication)
+
+- Update to version 4.6.1570902364.4f271c31:
+  * Accept a list of machines in defaults and job templates
+  * Collect coverage aretifacts in CircleCI
+  * There should be no need to update the flags
+  * Split data creation and update into two methods
+  * Fix cgroup creation
+  * Add unstable tests with retry to circleci
+  * Make job template code for testsuites clearer
+  * Lock test suites/machines/products used in YAML
+  * Add RETRY parameter to test targets in Makefile
+  * Add GLOBIGNORE to Makefile
+  * Add coverage and build.docs to circleci
+  * Add apparmor local overrides
+  * Split off creation/ update of job templates
+  * Dependency cron 191009000530 (#2380)
+  * Recompute worker's broken state after job finished
+  * Add test for refusing 'grab_jobs' when worker broken
+  * Remove dead code from WebSocket server
+  * Fix confusing test names in test for worker's QEMU check
+  * Store test JUnit results for CircleCI
+  * Update reference after saving YAML in editor
+  * Make clickable links if a setting looks like a URL
+  * Too many webui requests take more than a second to be processed, so limiting concurrency is much safer for now
+  * Add note about plugins not to enable on typical production setups
+  * apparmor: Update profile based on current o3 state
+  * Elaborate on differences between table and YAML</comment>
+    <requestid>738233</requestid>
+  </revision>
 </revisionlist>

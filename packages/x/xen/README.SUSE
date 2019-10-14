@@ -527,6 +527,64 @@ the amount of memory assigned to dom0.  Reboot the host for these changes to
 take effect.
 
 
+Adjusting LIBXL_HOTPLUG_TIMEOUT at runtime
+------------------------------------------
+A domU with a large amount of disks may run into the hardcoded
+LIBXL_HOTPLUG_TIMEOUT limit, which is 40 seconds. This happens if the
+preparation for each disk takes an unexpected large amount of time. Then
+the sum of all configured disks and the individual preparation time will
+be larger than 40 seconds. The hotplug script which does the preparation
+takes a lock before doing the actual preparation. Since the hotplug
+scripts for each disk are spawned at nearly the same time, each one has
+to wait for the lock. Due to this contention, the total execution time
+of a script can easily exceed the timeout. In this case libxl will
+terminate the script because it has to assume an error condition.
+
+Example:
+10 configured disks, each one takes 3 seconds within the critital
+section. The total execution time will be 30 seconds, which is still
+within the limit. With 5 additional configured disks, the total
+execution time will be 45 seconds, which would trigger the timeout.
+
+To handle such setup without a recompile of libxl, a special key/value
+has to be created in xenstore prior domain creation. This can be done
+either manually, or at system startup. A dedicated systemd service file
+exists to set the required value. To enable it, run these commands:
+
+/etc/systemd/system # systemctl enable xen-LIBXL_HOTPLUG_TIMEOUT.service
+/etc/systemd/system # systemctl start xen-LIBXL_HOTPLUG_TIMEOUT.service
+
+
+In case the value in this service file needs to be changed, a copy with
+the exact same name must be created in the /etc/systemd/system directory:
+
+/etc/systemd/system # cat xen-LIBXL_HOTPLUG_TIMEOUT.service
+[Unit]
+Description=set global LIBXL_HOTPLUG_TIMEOUT
+ConditionPathExists=/proc/xen/capabilities
+
+Requires=xenstored.service
+After=xenstored.service
+Requires=xen-init-dom0.service
+After=xen-init-dom0.service
+Before=xencommons.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStartPre=/bin/grep -q control_d /proc/xen/capabilities
+ExecStart=/usr/bin/xenstore-write /libxl/suse/per-device-LIBXL_HOTPLUG_TIMEOUT 10
+
+[Install]
+WantedBy=multi-user.target
+
+In this example the per-device value will be set to 10 seconds.
+
+The change for libxl which handles this xenstore value will enable
+additional logging if the key is found. That extra logging will show how
+the execution time of each script.
+
+
 Troubleshooting
 ---------------
 First try to get Linux running on bare metal before trying with Xen.

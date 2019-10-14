@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Oct  8 08:02:09 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Refresh spec-file via spec-cleaner and manual optimizations
+  * specified the correct license GPL-2.0-or-later
+  * remove openSUSE Leap 42.3 support
+  * remove obsolete version limitation in BuildRequire macros
+  * renumber Source and Patch
+- Update to 0.21.15
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.21.15/NEWS
+  * fix crash bug (0.21.9 regression)
+  * decoder
+    * opus: fix duplicate tags
+    * wildmidi: log error if library initialization fails
+    * mad: update bit rate after seeking
+    * mad: fix several bugs preventing the plugin from decoding the last frame
+    * opus: ignore case in replay gain tag names
+    * opus, vorbis: decode the "end of stream" packet
+    * mad: fix crackling sound (0.21.12 regression)
+    * sidplay: show track durations in database
+    * sidplay: convert tag values from Windows-1252 charset
+    * sidplay: strip text from "Date" tag
+    * dsdiff, dsf: fix displayed bit rate
+    * mpcdec: fix bogus ReplayGain values
+  * input
+    * tidal: deprecated because Tidal has changed the protocol
+    * cdio_paranoia: require libcdio-paranoia 10.2+0.93+1
+  * output
+    * httpd: reject some well-known URIs
+    * alsa: fix busy loop while draining
+    * alsa: fix missing drain call
+    * alsa: improve xrun-avoiding silence generator
+    * alsa: log when generating silence due to slow decoder
+    * alsa, osx: fix distortions with DSD_U32 and DoP on 32 bit CPUs
+    * jack: fix mono-to-stereo conversion
+    * jack: improved Windows compatibility
+  * player
+    * don't restart unseekable song after failed seek attempt
+    * fix crash after song change
+    * fix seek position after restarting the decoder
+  * protocol
+    * fix "list" with multiple "group" levels
+    * include command name in error responses 
+
+-------------------------------------------------------------------
 Tue Jul 23 07:42:13 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Remove patch GCC9-buildfix.patch (upsteamed)

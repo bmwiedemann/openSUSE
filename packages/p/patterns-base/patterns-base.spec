@@ -624,6 +624,7 @@ Provides:       pattern-order() = 1050
 Obsoletes:      pattern() = readonly_root_tools
 Requires:       pattern() = base
 
+Requires:       man
 Requires:       read-only-root-fs
 Requires:       rebootmgr
 Requires:       systemd-presets-branding-transactional-server

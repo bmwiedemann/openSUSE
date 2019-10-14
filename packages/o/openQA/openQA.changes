@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Mon Oct 14 09:07:30 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- Reset changes in test subpackages (useless duplication)
+
+-------------------------------------------------------------------
+Mon Oct 14 09:06:50 UTC 2019 - coolo@suse.com
+
+- Update to version 4.6.1570902364.4f271c31:
+  * Accept a list of machines in defaults and job templates
+  * Collect coverage aretifacts in CircleCI
+  * There should be no need to update the flags
+  * Split data creation and update into two methods
+  * Fix cgroup creation
+  * Add unstable tests with retry to circleci
+  * Make job template code for testsuites clearer
+  * Lock test suites/machines/products used in YAML
+  * Add RETRY parameter to test targets in Makefile
+  * Add GLOBIGNORE to Makefile
+  * Add coverage and build.docs to circleci
+  * Add apparmor local overrides
+  * Split off creation/ update of job templates
+  * Dependency cron 191009000530 (#2380)
+  * Recompute worker's broken state after job finished
+  * Add test for refusing 'grab_jobs' when worker broken
+  * Remove dead code from WebSocket server
+  * Fix confusing test names in test for worker's QEMU check
+  * Store test JUnit results for CircleCI
+  * Update reference after saving YAML in editor
+  * Make clickable links if a setting looks like a URL
+  * Too many webui requests take more than a second to be processed, so limiting concurrency is much safer for now
+  * Add note about plugins not to enable on typical production setups
+  * apparmor: Update profile based on current o3 state
+  * Elaborate on differences between table and YAML
+  * Use fork for nightly circleci job (#2365)
+  * Retry limit asset job on key constraint violations during scans
+  * Improve job dependencies documentation
+  * Consider 'not yet' as most recent when sorting running tests by 'Started' (#2369)
+  * Dependency cron 191002000541
+  * Fix "Sync Now" button in OBS Plugin
+  * Ignore errors loading dashboard if just navigating away
+  * Update filter form label without page-reload
+  * Correctly propagate job template name from YAML
+  * Fix "timeago" rendering on AJAX-enabled dashboard
+  * circleci: Remove whitespace at EOL
+  * Fix publishing documentation via Travis
+  * Don't silently exit doc generation if asciidoctor not available
+  * Retry limit asset job on key constraint violations
+  * Make t/37-limit_assets.t independent of t/14-grutasks.t
+  * Load build results on dashboard via AJAX
+  * Update perl-DBIx-Class-DeploymentHandler dependency to 0.002233 (#2359)
+  * Move stale job detection from ws server to scheduler
+  * Remove obsolete comment regarding offline workers
+  * Rely on t_updated for the worker's online status in the web UI
+  * Prevent failures in feature tour test
+  * Set default check interval for wait_util to 1 second
+  * Enforce same width for nodes in dependency graph
+  * Move test helper embed_server_for_testing to test utilities
+  * Add unit test for test schedule change processing
+  * Avoid race condition if test_order.json changes too often
+  * Reload test_order.json if it changes at test runtime
+  * Refactor job result file path concatenation
+  * Move incompletion logic when worker shows up again to scheduler
+  * Add missing api tests to circleci
+  * Explicitly specify constraint with JobTemplates->find_or_create
+  * Update tidy to 20190915
+  * Update .circleci/dependencies.txt
+  * Make the version number a simple link to the changelog
+  * Enable nightly circleci dependency job on master (#2343)
+  * spec: Fix missing dependency on IPC::Run in client (#2347)
+  * Tolerate exceptions in OBS api call from ObsRsync plugin
+  * Improve deleting a single asset in WebUI
+  * Prevent loading arbitrary plugins in live view handler
+  * Improve language of locking API documentation
+  * Prevent the ws server to query itself
+  * Clean up resource lock code a little bit
+  * Move helper that had been accidentally placed in OpenQA::Utils to the helper plugin
+  * Enforce consistent order for pending jobs of worker
+  * Add colors for more job results in dependency graph
+  * Use create instead of new/insert (overloads should still be fine)
+  * Include more columns in unique constraint to be more future proof
+  * Do not be lazy and use proper names for variables used more than once
+  * Delete duplicate records before creating the unique constraint
+  * Use a unique constraint to prevent a race condition that could result in the same module being added more than once under heavy load
+  * Don't show nested folders in OBS plugin
+  * Polish UI of OBS plugin
+  * Reuse Mojo::UserAgent in OBS plugin
+  * Don't parse XML with regex in OBS plugin
+
+-------------------------------------------------------------------
 Wed Sep 18 11:58:58 UTC 2019 - coolo@suse.com
 
 - Update to version 4.6.1568795030.c377d780b:

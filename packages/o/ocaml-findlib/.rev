@@ -122,4 +122,12 @@
   but built-in constants.</comment>
     <requestid>725330</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c1ae118afa30abf7f6eec2a626e8ddc6</srcmd5>
+    <version>1.8.1</version>
+    <time>1571057533</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>737376</requestid>
+  </revision>
 </revisionlist>

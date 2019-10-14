@@ -2339,4 +2339,12 @@
     <comment>Bug fixes for bsc#1135799, bsc#1145240, bsc#1137717, bsc#1145774, and a few additional upstream fixes</comment>
     <requestid>734420</requestid>
   </revision>
+  <revision rev="272" vrev="4">
+    <srcmd5>dd37f172195c5b4a3a485db8545c9cd9</srcmd5>
+    <version>4.12.1_02</version>
+    <time>1571057586</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>737541</requestid>
+  </revision>
 </revisionlist>

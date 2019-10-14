@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 10 13:46:44 UTC 2019 - Tony Jones <tonyj@suse.com>
+
+- Delete patch: papi-codecleanup.patch 
+  Patch has been present since first checkin but there is no indication 
+  as to it's purpose, no bug reference and it is not needed for successful 
+  test run. 
+
+- Refresh patch: papi-fix-ldflags.patch  
+  Add proper patch description. Contents pushed upstream. 
+
+-------------------------------------------------------------------
 Wed Apr 24 17:28:18 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Disable LTO (boo#1133272).
@@ -6,7 +17,7 @@ Wed Apr 24 17:28:18 UTC 2019 - Martin Liška <mliska@suse.cz>
 -------------------------------------------------------------------
 Thu Apr  4 15:44:09 UTC 2019 - Christian Vögl <christian.voegl@suse.com>
 
-- Update to 5.7.0
+- Update to 5.7.0 (jsc#SLE-8562)
   Major Changes:
   * Validation tests:  A substantial effort to add validation tests to PAPI
     to check and detect problems in the definition of PAPI preset events.  

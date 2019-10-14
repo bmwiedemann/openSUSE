@@ -16,7 +16,7 @@
 #
 
 Name:           ocaml-rpm-macros
-Version:        20191004
+Version:        20191009
 Release:        0
 Summary:        RPM macros for building OCaml source packages
 License:        GPL-2.0-only
@@ -90,10 +90,13 @@ tee %{buildroot}%{_rpmmacrodir}/macros.%{name} <<'_EOF_'
 %%ocaml_create_file_list \
 	> %%{name}.files ;\
 	> %%{name}.files.devel ;\
+	> %%{name}.files.ldsoconf ;\
 	> %%{name}.files.unhandled ;\
 	for i in \\\
 	COPYING \\\
 	COPYING.txt \\\
+	COPYRIGHT \\\
+	Copyright \\\
 	LICENCE \\\
 	LICENSE \\\
 	LICENSE.md \\\
@@ -113,7 +116,7 @@ tee %{buildroot}%{_rpmmacrodir}/macros.%{name} <<'_EOF_'
 	w %%{name}.files.devel\
 	d\
 	}\
-	/\\/[^/]\\+\\.\\(a\\|annot\\|cmx\\|cmxa\\|cma\\|cmi\\|cmt\\|cmti\\|exe\\|h\\|ml\\|mli\\)$/{\
+	/\\/[^/]\\+\\.\\(a\\|annot\\|cmx\\|cmxa\\|cma\\|cmi\\|cmo\\|cmt\\|cmti\\|exe\\|h\\|js\\|ml\\|mli\\|o\\)$/{\
 	w %%{name}.files.devel\
 	s@\\/[^/]\\+$@@\
 	s@^@%%dir @\
@@ -122,7 +125,17 @@ tee %{buildroot}%{_rpmmacrodir}/macros.%{name} <<'_EOF_'
 	w %%{name}.files.devel\
 	d\
 	}\
-	/\\/[^/]\\+\\.\\(cmxs\\|so\\)$/{\
+	/\\/[^/]\\+\\.\\(so\\|so.owner\\)$/{\
+	w %%{name}.files\
+	s@\\/[^/]\\+$@@\
+	w %%{name}.files.ldsoconf\
+	s@^@%%dir @\
+	w %%{name}.files\
+	s@\\/[^/]\\+$@@\
+	w %%{name}.files\
+	d\
+	}\
+	/\\/[^/]\\+\\.\\(cmxs\\)$/{\
 	w %%{name}.files\
 	s@\\/[^/]\\+$@@\
 	s@^@%%dir @\
@@ -134,12 +147,29 @@ tee %{buildroot}%{_rpmmacrodir}/macros.%{name} <<'_EOF_'
 	w %%{name}.files.unhandled\
 	d\
 	' ;\
-	for i in %%{name}.files %%{name}.files.devel ;\
+	for i in \\\
+	%%{name}.files \\\
+	%%{name}.files.devel \\\
+	%%{name}.files.ldsoconf \\\
+	%%{name}.files.unhandled \\\
+	;\
 	do\
 	  sort -u $i > $$ ;\
 	  mv $$ $i ;\
 	done ;\
-	head -n 1234 %%{name}.files %%{name}.files.devel %%{name}.files.unhandled ;\
+	if test -s %%{name}.files.ldsoconf ;\
+	then \
+		ldsoconfd='/etc/ld.so.conf.d' ;\
+		mkdir -vp "%%{buildroot}${ldsoconfd}" ;\
+		tee "%%{buildroot}${ldsoconfd}/%%{name}.conf" < %%{name}.files.ldsoconf ;\
+		echo "%config ${ldsoconfd}/%%{name}.conf" >> %%{name}.files ;\
+	fi ;\
+	head -n 1234 \\\
+	%%{name}.files \\\
+	%%{name}.files.devel \\\
+	%%{name}.files.ldsoconf \\\
+	%%{name}.files.unhandled \\\
+	;\
 	%%{nil}
 
 # setup.ml comes from oasis, but this is here for libs oasis depends on

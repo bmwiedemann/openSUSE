@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 10 13:18:26 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Requires cron, since sysstat.service wants to create 
+  /etc/cron.d/sysstat link and /etc/cron.d/ is from cron package
+
+-------------------------------------------------------------------
 Tue Sep 10 11:10:11 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Security fix: [bsc#1150114, CVE-2019-16167]

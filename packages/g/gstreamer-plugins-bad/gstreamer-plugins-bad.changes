@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 10 14:39:23 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix compilation with OpenEXR 2.4.0
+  + 0001-Require-OpenEXR-2.3.0-at-least-and-do-not-force-C-98.patch
+  + Readd libtool and autoreconf call
+- Remove Leap 42.x support from spec file
+
+-------------------------------------------------------------------
 Tue Sep 24 13:18:42 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.16.1:

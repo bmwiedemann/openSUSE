@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct  2 08:37:47 UTC 2019 - ohering@suse.de
+
+- bsc#1120095 - add code to change LIBXL_HOTPLUG_TIMEOUT at runtime
+  The included README has details about the impact of this change
+  libxl.LIBXL_HOTPLUG_TIMEOUT.patch
+
+-------------------------------------------------------------------
 Mon Sep 30 10:43:43 MDT 2019 - carnold@suse.com
 
 - bsc#1135799 - Partner-L3: Xen crashes on AMD ROME based machines

@@ -74,7 +74,6 @@ Group:          Development/Libraries/C and C++
 Url:            http://icl.cs.utk.edu/papi/index.html
 Source:         http://icl.cs.utk.edu/projects/papi/downloads/%{pname}-%{version}.tar.gz
 Source1:        %{pname}-rpmlintrc
-Patch0:         papi-codecleanup.patch
 Patch1:         papi-fix-ldflags.patch
 
 BuildRequires:  autoconf >= 2.61
@@ -156,7 +155,6 @@ This package contains the PAPI runtime library.
 
 %prep
 %setup -q -n %{pname}-%{version}
-%patch0
 %patch1 -p1
 
 # Create baselibs.conf dynamically (non-HPC build only).

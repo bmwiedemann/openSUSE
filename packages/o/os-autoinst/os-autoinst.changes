@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Oct 14 09:31:51 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1570825562.ae51e774:
+  * spec: Do not duplicate OBS-incompatible checks
+  * Exclude known flaky test 13-osutils in OBS check
+  * Revert "Allow loading needles from pool directory"
+  * Fix broadcasting message to ws clients if there are no clients
+  * command server: Improve dead-lock prevention with isotovideo
+  * Fix error handling when passing message from ws client to isotovideo
+  * Add possibility to have a comment text in script_run (fixed)
+  * t: Fix 'Not enough arguments for EV::timer' with import ordering
+  * Allow loading needles from pool directory
+  * Revert "Add possibility to have a comment text in the script_run"
+  * Fix tests for adding an error message to the script_run
+  * Add an error message to the script_run
+  * Add unit test for scheduling test modules at runtime
+  * Update test_order.json if test schedule changes at runtime
+  * Fix broken condition introduced by #1213
+  * Handle Failed to get "write" lock on libvirt
+  * Fix missing argument in consoles::sshVirtsh::run_cmd
+  * Append the name of the scenario in the domain xml
+  * Use hda audio instead of deprecated ac97
+
+-------------------------------------------------------------------
 Wed Sep 11 18:48:59 UTC 2019 - okurz@suse.com
 
 - Update to version 4.5.1568227729.687c4ca8:

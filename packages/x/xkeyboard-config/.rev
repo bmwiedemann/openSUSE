@@ -735,4 +735,15 @@ Everything below symbols/sun_vndr/ is CDDL-1.0 licensed (forwarded request 13624
 - supersedes U_xkeyboard-config_fix-typo-hungarian.patch</comment>
     <requestid>572000</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>fa787288be6924c2b07cebf111fb104d</srcmd5>
+    <version>2.27</version>
+    <time>1571057600</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.27
+  * bugfix release
+- supersedes U_Fix-typo-in-Polish-symbols-file.patch
+- adjusted n_disable-2xalt_2xctrl-toggle.diff</comment>
+    <requestid>737550</requestid>
+  </revision>
 </revisionlist>

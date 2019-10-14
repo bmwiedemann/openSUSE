@@ -1,0 +1,57 @@
+From e85c4be4565d59bb0a64a7cc2abbdb95be0982d8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Thu, 10 Oct 2019 16:38:37 +0200
+Subject: [PATCH] Require OpenEXR 2.3.0 at least, and do not force C++98
+
+OpenEXR 2.3.0 was released more than a year ago, and contains many
+correctness and security fixes, even more so the just released 2.4.0.
+
+OpenEXR 2.4.0 requires at least C++11 (and supports C++14/17), so
+drop the extra compiler flags.
+---
+ configure.ac            | 2 +-
+ ext/openexr/Makefile.am | 2 +-
+ ext/openexr/meson.build | 3 +--
+ 3 files changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index dbd15419d..06fd09472 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1752,7 +1752,7 @@ AG_GST_CHECK_FEATURE(OPENCV, [opencv plugins], opencv, [
+ dnl *** OpenEXR ***
+ translit(dnm, m, l) AM_CONDITIONAL(USE_OPENEXR, true)
+ AG_GST_CHECK_FEATURE(OPENEXR, [openexr library], openexr, [
+-  AG_GST_PKG_CHECK_MODULES(OPENEXR, OpenEXR)
++  AG_GST_PKG_CHECK_MODULES(OPENEXR, OpenEXR >= 2.3.0)
+ ])
+ 
+ dnl *** openh264 ***
+diff --git a/ext/openexr/Makefile.am b/ext/openexr/Makefile.am
+index 1a95fee6b..614c1376a 100644
+--- a/ext/openexr/Makefile.am
++++ b/ext/openexr/Makefile.am
+@@ -6,7 +6,7 @@ libgstopenexr_la_CFLAGS = \
+ 	$(OPENEXR_CFLAGS)
+ libgstopenexr_la_CXXFLAGS = \
+ 	$(GST_PLUGINS_BASE_CFLAGS) $(GST_BASE_CFLAGS) $(GST_CXXFLAGS) \
+-	$(OPENEXR_CFLAGS) -std=c++98
++	$(OPENEXR_CFLAGS)
+ libgstopenexr_la_LIBADD = \
+ 	$(GST_PLUGINS_BASE_LIBS) -lgstvideo-$(GST_API_VERSION) \
+ 	$(GST_BASE_LIBS) $(GST_LIBS) $(OPENEXR_LIBS)
+diff --git a/ext/openexr/meson.build b/ext/openexr/meson.build
+index 53cd5120f..4137d64b1 100644
+--- a/ext/openexr/meson.build
++++ b/ext/openexr/meson.build
+@@ -1,6 +1,5 @@
+-openexr_dep = dependency('OpenEXR', required: get_option('openexr'))
++openexr_dep = dependency('OpenEXR', required: get_option('openexr'), version: '>= 2.3.0')
+ if openexr_dep.found()
+-  openexr_extra_cpp_args = cxx.get_supported_arguments(['-std=c++98'])
+   gstopenexr = library('gstopenexr',
+     'gstopenexr.c',
+     'gstopenexrdec.cpp',
+-- 
+2.23.0
+

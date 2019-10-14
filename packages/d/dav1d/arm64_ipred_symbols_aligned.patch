@@ -1,0 +1,34 @@
+From 27601dbec97acb4f757b8c878a30fcdb6168b44d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Martin=20Storsj=C3=B6?= <martin@martin.st>
+Date: Fri, 11 Oct 2019 13:17:36 +0300
+Subject: [PATCH] arm64: ipred: Make sure all symbols are aligned
+
+Some (newer?) binutils versions error out if there are symbols in
+the text section, that point to unaligned addresses.
+---
+ src/arm/64/ipred.S | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/arm/64/ipred.S b/src/arm/64/ipred.S
+index 41b3c1c..9513212 100644
+--- a/src/arm/64/ipred.S
++++ b/src/arm/64/ipred.S
+@@ -2244,6 +2244,7 @@ L(ipred_cfl_ac_420_tbl):
+         .hword L(ipred_cfl_ac_420_tbl) - L(ipred_cfl_ac_420_w16)
+         .hword L(ipred_cfl_ac_420_tbl) - L(ipred_cfl_ac_420_w8)
+         .hword L(ipred_cfl_ac_420_tbl) - L(ipred_cfl_ac_420_w4)
++        .hword 0
+ 
+ L(ipred_cfl_ac_420_w16_tbl):
+         .hword L(ipred_cfl_ac_420_w16_tbl) - L(ipred_cfl_ac_420_w16_wpad0)
+@@ -2432,6 +2433,7 @@ L(ipred_cfl_ac_422_tbl):
+         .hword L(ipred_cfl_ac_422_tbl) - L(ipred_cfl_ac_422_w16)
+         .hword L(ipred_cfl_ac_422_tbl) - L(ipred_cfl_ac_422_w8)
+         .hword L(ipred_cfl_ac_422_tbl) - L(ipred_cfl_ac_422_w4)
++        .hword 0
+ 
+ L(ipred_cfl_ac_422_w16_tbl):
+         .hword L(ipred_cfl_ac_422_w16_tbl) - L(ipred_cfl_ac_422_w16_wpad0)
+-- 
+2.22.0
+

@@ -8,4 +8,18 @@
 trim changes file</comment>
     <requestid>735307</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>26443f0a2caad5fe147725be85df7f89</srcmd5>
+    <version>20191009</version>
+    <time>1571057555</time>
+    <user>dimstar_suse</user>
+    <comment>- Package also COPYRIGHT, for labltk
+- Package also Copyright, for dose3
+- Package also *.cmo
+- Package also *.so.owner
+- Package also *.o
+- Package also /etc/ld.so.conf.d
+- Package also *.js</comment>
+    <requestid>737404</requestid>
+  </revision>
 </revisionlist>

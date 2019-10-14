@@ -24,4 +24,12 @@
     <comment>Ensure reproducible dependency sorting required for automatic SRs.</comment>
     <requestid>704451</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>17b2e1d5851a126f926ae28001085f9c</srcmd5>
+    <version>1.1571044665.b011a0f19</version>
+    <time>1571057674</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.1571044665.b011a0f19</comment>
+    <requestid>738232</requestid>
+  </revision>
 </revisionlist>

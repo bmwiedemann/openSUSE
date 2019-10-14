@@ -247,4 +247,12 @@
     <comment></comment>
     <requestid>699831</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>338ba2c737d74fc759f60ade2d839e69</srcmd5>
+    <version>5.7.0</version>
+    <time>1571057579</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 737528 from jones_tony)</comment>
+    <requestid>737529</requestid>
+  </revision>
 </revisionlist>

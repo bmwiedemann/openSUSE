@@ -249,6 +249,7 @@ Patch466:       libxl.set-migration-constraints-from-cmdline.patch
 Patch467:       xenstore-run-in-studomain.patch
 Patch468:       libxl.prepare-environment-for-domcreate_stream_done.patch
 Patch469:       libxl.helper_done-crash.patch
+Patch470:       libxl.LIBXL_HOTPLUG_TIMEOUT.patch
 # python3 conversion patches
 Patch500:       build-python3-conversion.patch
 Patch501:       pygrub-python3-conversion.patch
@@ -501,6 +502,7 @@ Authors:
 %patch467 -p1
 %patch468 -p1
 %patch469 -p1
+%patch470 -p1
 # python3 conversion patches
 %patch500 -p1
 %patch501 -p1
