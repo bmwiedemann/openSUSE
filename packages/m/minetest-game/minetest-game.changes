@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Oct 13 13:55:18 UTC 2019 - Maximilian Trummer <opensuse@trummer.xyz>
+
+- Update to version 5.1.0
+  * See https://dev.minetest.net/Changelog#5.0.0_.E2.86.92_5.0.1
+  * Added dry dirt and dry dirt with dry grass. Grass never spreads on dry dirt
+  * Savannas now have dry dirt and dry dirt with dry grass
+  * Added steel bar door and steel bar trap door
+  * Added setting “enable_fence_tall” for fences that cannot be jumped over (mbartlett21)
+  * Firefly in a bottle can now be placed into vessels shelf
+  * Add flowing water sound
+  * Underground biomes extend much deeper, down to Y=-255
+  * Make the creative mod hand dig 'dig_immediate' nodes fast (paramat)
+  * Add new TNT sounds (TumeniNodes)
+  * Add missing infotext to nodes (An0n3m0us)
+  * Added translation support
+  * Added German, French, Spanish and Italian translations (Wuzzy, Hamlet, JDiaz, DrHackberry)
+
+-------------------------------------------------------------------
 Tue Apr  2 13:07:52 UTC 2019 - Maximilian Trummer <opensuse@trummer.xyz>
 
 - Update to version 5.0.1

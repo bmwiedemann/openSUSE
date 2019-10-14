@@ -6,6 +6,7 @@ Thu Oct 10 14:25:46 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
   * For more details please see:
   * https://www.kde.org/announcements/plasma-5.17.0.php
 - Changes since 5.16.90:
+  * [platforms/drm] Disable transformations
   * don't allow to resize or move fullscreen windows
   * [platforms/hwcomposer] Fix build failure after D23495
   * Use lambdas for queued invocation of composition suspending (kde#412353)

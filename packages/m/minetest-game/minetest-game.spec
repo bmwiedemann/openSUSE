@@ -17,7 +17,7 @@
 
 
 Name:           minetest-game
-Version:        5.0.1
+Version:        5.1.0
 Release:        0
 Summary:        Minetest Game
 License:        LGPL-2.1-or-later AND CC-BY-SA-3.0 AND CC-BY-SA-4.0 AND CC-BY-3.0 AND CC0-1.0
@@ -44,7 +44,7 @@ cp -ar * %{buildroot}%{_datadir}/minetest/games/minetest_game
 
 %files
 %license LICENSE.txt
-%doc README.txt
+%doc README.md
 %dir %{_datadir}/minetest/
 %dir %{_datadir}/minetest/games/
 %{_datadir}/minetest/games/minetest_game/
