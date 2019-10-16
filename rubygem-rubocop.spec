@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,20 +24,20 @@
 #
 
 Name:           rubygem-rubocop
-Version:        0.75.0
+Version:        0.75.1
 Release:        0
 %define mod_name rubocop
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby >= 2.3.0}
 BuildRequires:  %{rubygem gem2rpm}
+BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
 Url:            https://github.com/rubocop-hq/rubocop
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 # MANUAL
-Patch0:  0001-Use-usr-bin-bash-instead-of-env-as-the-shebang.patch
+Patch0:         0001-Use-usr-bin-bash-instead-of-env-as-the-shebang.patch
 # /MANUAL
 Summary:        Automatic Ruby code style checking tool
 License:        MIT
