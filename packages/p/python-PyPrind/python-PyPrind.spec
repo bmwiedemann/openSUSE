@@ -22,7 +22,6 @@ Version:        2.11.2
 Release:        0
 Summary:        Python progress bar and percent indicator utility
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/rasbt/pyprind
 Source0:        https://files.pythonhosted.org/packages/source/P/PyPrind/PyPrind-%{version}.tar.gz
 BuildRequires:  %{python_module psutil >= 3.2.0}
@@ -50,10 +49,10 @@ computation progress.
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -v tests
+%pytest tests
 
 %files %{python_files}
 %doc README.md

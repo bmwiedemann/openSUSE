@@ -1,7 +1,7 @@
 #
 # spec file for package python-mygpoclient
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2010 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,8 +23,7 @@ Version:        1.8
 Release:        0
 Summary:        Python gpodder.net API Client Library
 License:        GPL-3.0-or-later
-Group:          Development/Libraries/Python
-URL:            http://gpodder.org/mygpoclient
+URL:            https://gpodder.org/mygpoclient
 Source:         https://files.pythonhosted.org/packages/source/m/mygpoclient/mygpoclient-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -45,7 +44,7 @@ the my.gpodder.org web services.
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc AUTHORS

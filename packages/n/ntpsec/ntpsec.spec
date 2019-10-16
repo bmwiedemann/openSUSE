@@ -127,11 +127,7 @@ python3 ./waf build --verbose %{?_smp_mflags}
 python3 ./waf install --destdir=%{buildroot}
 
 # Use correct path in unit file
-sed -i "s|bin|sbin|g" etc/ntpd.service
 
-# FIXME: As long as systemdenable switch for install is broken
-install -pm 0644 -D etc/ntpd.service %{buildroot}/%{_unitdir}/ntpd.service
-install -pm 0644 -D etc/ntp-wait.service %{buildroot}/%{_unitdir}/ntp-wait.service
 ln -s service %{buildroot}%{_sbindir}/rcntpd
 ln -s service %{buildroot}%{_sbindir}/rcntplogtemp
 ln -s service %{buildroot}%{_sbindir}/rcntpviz-daily

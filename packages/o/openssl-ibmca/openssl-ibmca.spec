@@ -17,10 +17,10 @@
 
 
 Name:           openssl-ibmca
-Version:        2.0.3
+Version:        2.1.0
 Release:        0
 Summary:        The IBMCA OpenSSL dynamic engine
-License:        IPL-1.0
+License:        Apache-2.0
 Group:          Hardware/Other
 URL:            https://github.com/opencryptoki/openssl-ibmca
 Source:         https://github.com/opencryptoki/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz

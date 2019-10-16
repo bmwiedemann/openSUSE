@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 11 14:26:23 CEST 2019 - aschnell@suse.com
+
+- Added translation for new enum value RB_PASSWORD_REQUIRED
+  (bsc#1153871).
+- 4.2.47
+
+-------------------------------------------------------------------
 Fri Oct  4 11:07:07 UTC 2019 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - AutoYaST: do not include the uuid field in the <partition>

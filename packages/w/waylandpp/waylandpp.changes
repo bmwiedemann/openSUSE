@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 14 16:58:20 UTC 2019 - olaf@aepfle.de
+
+- Update to version 0.2.7 (4007255)
+  * a lot of internal cleanups, build system improvements
+- Remove waylandpp.patch
+
+-------------------------------------------------------------------
 Wed Mar 20 08:02:06 UTC 2019 - olaf@aepfle.de
 
 - Initial version 0.2.5

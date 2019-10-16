@@ -26,6 +26,7 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/aaugustin/websockets
 Source:         https://github.com/aaugustin/websockets/archive/%{version}.tar.gz
+Patch0:         python38-support.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -44,6 +45,7 @@ concurrent applications.
 
 %prep
 %setup -q -n websockets-%{version}
+%autopatch -p1
 
 %build
 export CFLAGS="%{optflags}"

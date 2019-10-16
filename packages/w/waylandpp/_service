@@ -1,11 +1,12 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="scm">git</param>
-    <param name="url">git://github.com/NilsBrause/waylandpp.git</param>
-    <param name="revision">0.2.5</param>
+    <param name="url">https://github.com/NilsBrause/waylandpp.git</param>
+    <!--- tag 0.2.7 -->
+    <param name="revision">400725571b66b8f853884412356c1fbcd1375998</param>
     <param name="filename">waylandpp</param>
     <param name='versionformat'>%ci.%h</param>
-    <param name="versionprefix">0.2.5</param>
+    <param name="versionprefix">0.2.7</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*tar</param>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 14 11:42:38 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Replace %fdupes -s with plain %fdupes; hardlinks are better.
+
+-------------------------------------------------------------------
 Mon Jun 10 05:46:29 UTC 2019 - pgajdos@suse.com
 
 - version update to 2.1.0

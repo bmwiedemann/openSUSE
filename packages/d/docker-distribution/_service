@@ -3,8 +3,8 @@
     <param name="url">https://github.com/docker/distribution.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="versionformat">2.6.2</param>
-    <param name="revision">v2.6.2</param>
+    <param name="versionformat">2.7.1</param>
+    <param name="revision">v2.7.1</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">distribution-*.tar</param>

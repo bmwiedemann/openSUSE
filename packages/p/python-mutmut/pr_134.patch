@@ -1,0 +1,23 @@
+From bd3866316949f8ba7162e0292be0776d6f51cf50 Mon Sep 17 00:00:00 2001
+From: Maxime Lapointe <hunter_spawn@hotmail.com>
+Date: Tue, 23 Jul 2019 08:55:15 -0400
+Subject: [PATCH] Use sys.executable as default python executable
+
+It's more likely to be the correct Python executable in case where someone specified the executable when running mutmut.
+---
+ mutmut/__main__.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: mutmut-1.6.0/mutmut/__main__.py
+===================================================================
+--- mutmut-1.6.0.orig/mutmut/__main__.py
++++ mutmut-1.6.0/mutmut/__main__.py
+@@ -193,7 +193,7 @@ class Progress(object):
+ @config_from_setup_cfg(
+     dict_synonyms='',
+     paths_to_exclude='',
+-    runner='python -m pytest -x',
++    runner='"' + sys.executable + '" -m pytest -x',
+     tests_dir='tests/:test/',
+     pre_mutation=None,
+     post_mutation=None,

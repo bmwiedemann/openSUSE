@@ -135,4 +135,12 @@
 - Install license file</comment>
     <requestid>628636</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>078a1171d187d44b268fb4215a96a85d</srcmd5>
+    <version>1.6.1</version>
+    <time>1571210098</time>
+    <user>dimstar_suse</user>
+    <comment>Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>738360</requestid>
+  </revision>
 </revisionlist>

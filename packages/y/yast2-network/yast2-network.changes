@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Oct 15 08:48:26 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix crash caused by type in widget method (caused in 4.2.22 by
+  rubocop done as side-effect of bsc#1153673 fix)
+- 4.2.23
+
+-------------------------------------------------------------------
+Mon Oct 14 08:53:14 UTC 2019 - Knut Anderssen <kanderssen@suse.com>
+
+- bsc#1153673
+  - Fix Yast::Logger dependency in bridge connection config.
+- 4.2.22
+
+-------------------------------------------------------------------
+Wed Oct  9 13:58:48 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
+
+- Update reference in VLAN, Bridge or Bond when its device is
+  removed or renamed (bsc#1153460)
+- 4.2.21
+
+-------------------------------------------------------------------
+Mon Oct  7 06:32:21 UTC 2019 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Place sysctl settings in /etc/sysctl.d/ (jsc#SLE-9077).
+- 4.2.20
+
+-------------------------------------------------------------------
+Mon Oct  7 06:05:22 UTC 2019 - Knut Anderssen <kanderssen@suse.com>
+
+- AutoYaST: Added back the activation of s390 devices during the
+  first stage as it was removed when switched to the new data model
+
+-------------------------------------------------------------------
 Fri Oct  4 13:51:42 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
 
 - Fix CLI tests for network (bsc#957537)

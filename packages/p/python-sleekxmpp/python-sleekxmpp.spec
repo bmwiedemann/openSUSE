@@ -23,7 +23,6 @@ Version:        1.3.3
 Release:        0
 Summary:        Python XMPP (Jabber) Library that Implements Everything as a Plugin
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/fritzy/SleekXMPP
 # https://github.com/fritzy/SleekXMPP/issues/505
 Source:         https://github.com/fritzy/SleekXMPP/archive/sleek-%{version}.tar.gz
@@ -35,16 +34,16 @@ Patch1:         %{_name}-fix-legacyauth.patch
 Patch2:         %{_name}-check-roster-push-origin.patch
 BuildRequires:  %{python_module dnspython}
 BuildRequires:  %{python_module xml}
-# SECTION test requirements
-BuildRequires:  %{python_module pytest}
-BuildRequires:  gpg
-# /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python2
 BuildRequires:  python3
 Requires:       python-dnspython
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module pytest}
+BuildRequires:  gpg
+# /SECTION
 
 %description
 SleekXMPP is an MIT licensed XMPP library for Python. The goals of
@@ -65,7 +64,7 @@ able to use this for bots, easy XEP protocoling, etc.
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}/
+%python_expand %fdupes %{buildroot}%{$python_sitelib}/
 
 %check
 # test_overall.py is skipped by upstream testall.py, too

@@ -1,7 +1,7 @@
 #
 # spec file for package python-babelfish
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,6 @@ Version:        0.5.5
 Release:        0
 Summary:        A Python library to work with countries and languages
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://travis-ci.org/Diaoul/babelfish
 Source:         https://files.pythonhosted.org/packages/source/b/babelfish/babelfish-%{version}.tar.gz
 Source99:       %{name}-rpmlintrc
@@ -44,7 +43,7 @@ BabelFish is a Python library to work with countries and languages.
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py test

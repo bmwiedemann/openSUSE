@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Tue Oct  8 11:16:32 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.4.11
+  * Multiple UDP output destinations allowed (use a space between
+    destinations)
+  * Window geometry persistence (useful for multiple instances)
+  * Fixed crash issue when opening log more than once and scrolling
+  * Added libacars uplink messages to plane log
+  * Fixed ACARS UDP output stopping when raw UDP output was toggled
+  * Merged Jeroen's CPU reduction button.
+
+-------------------------------------------------------------------
+Sun Jan 20 20:48:36 UTC 2019 - mardnh@gmx.de
+
+- Update to version 1.0.4.10
+  * Removed std::cout messages
+  * Fixed C-Channel assignment freq=0 message bug
+
+-------------------------------------------------------------------
+Sat Jan 19 12:09:42 UTC 2019 - mardnh@gmx.de
+
+- Update to version 1.0.4.9
+  * More ACARS message support.
+  * 8400bps channels use a raised cosine weighting for locking.
+  * 8400bps channels use large complex fasrfir RRC filter before
+    the mixer shifted to the approxmate place of the signal.
+  * RRC filter for 8400bps channels is 0.6 rather than 1.0.
+  * Slowed frequency agility of 8400bps signals.
+  * Added detection for stable non carrier detected states.
+  * Added AES and GES to the audio file logging names when availible.
+  * Delete audio files less then than 10k.
+  * Changed audio logging timeout to 2 secs.
+  * Reduced 8400bps symbol resonator from 35hz to 10hz.
+  * Allowed shifting 8400bps carrier to go less than 4200Hz.
+  * 24000Hz bandwith locking just for fun.
+  * Optimized 8400bps sample times better.
+  * Removed beep from C-Channel assignment.
+
+- Update to version 1.0.4.8
+  * Supports demodulation of C channels (8400bps signals).
+  * New tab layout.
+  * Supports audio codecs.
+  * If audio codecs are available it will log audio to disk as
+    well as playing it in real time.
+  * Fixed libcorrect linking issue on Linux. (you may have to
+    still move libcorrect.so into your system libs directory).
+  * Added unzip for the different database format on Linux.
+    (you will need unzip installed)
+
+- Rename binary to lowercase: JAERO -> jaero
+- Specfile cleanup
+- Add patch:
+  * jaero-use-system-libs.patch
+
+-------------------------------------------------------------------
+Sun Jan 28 10:03:58 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.0.4.7
+  * 1200 C-band burst
+  * Soft FEC
+  * Reduced CPU load on 600/1200 L-band
+
+-------------------------------------------------------------------
 Thu Apr 27 11:17:44 UTC 2017 - jengelh@inai.de
 
 - Trim filler words from description.

@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/kubic-project/bazel-workspaces</param>
+              <param name="changesrevision">28a1bcdf66c4a12189856a06c1b541f010a95015</param></service></servicedata>

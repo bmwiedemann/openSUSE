@@ -22,7 +22,7 @@
 %endif
 
 Name:           libica
-Version:        3.5.0
+Version:        3.6.0
 Release:        0
 Summary:        Library interface for the IBM Cryptographic Accelerator device driver
 License:        CPL-1.0

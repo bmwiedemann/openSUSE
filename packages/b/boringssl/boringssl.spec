@@ -19,7 +19,7 @@
 %define sover 1
 %define libname libboringssl%{sover}
 Name:           boringssl
-Version:        20190523
+Version:        20190916
 Release:        0
 Summary:        An SSL/TLS protocol implementation
 License:        OpenSSL

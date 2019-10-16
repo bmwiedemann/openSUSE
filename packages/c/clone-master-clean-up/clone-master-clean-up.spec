@@ -1,7 +1,7 @@
 #
 # spec file for package clone-master-clean-up
 #
-# Copyright (c) 2017 SUSE LLC
+# Copyright (c) 2017-2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,16 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           clone-master-clean-up
-Version:        1.4
+Version:        1.5
 Release:        0
-License:        GPL-2.0+
-Summary:        Clean up a system for cloning preparation
-Url:            https://www.suse.com
+Summary:        Tool to clean up a system for cloning preparation
+License:        GPL-2.0-or-later
 Group:          System/Management
+Url:            https://www.suse.com
 Source0:        clone-master-clean-up.sh
 Source1:        clone-master-clean-up.1
 Source2:        sysconfig.clone-master-clean-up
@@ -29,7 +30,10 @@ Source3:        custom_remove.template
 Source10:       LICENSE
 Source11:       README.md
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Requires:       systemd sed curl coreutils
+Requires:       coreutils
+Requires:       curl
+Requires:       sed
+Requires:       systemd
 Requires(post): %fillup_prereq
 BuildArch:      noarch
 
@@ -37,9 +41,9 @@ BuildArch:      noarch
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
-
 %description
-Clean up a system for cloning preparation by cleaning up usage history and log files, etc.
+A tool to clean up a system for cloning preparation by cleaning up
+usage history and log files, etc.
 
 %prep
 
@@ -65,8 +69,8 @@ mkdir -p %{buildroot}/%{_sysconfdir}/%{name}/
 %fillup_only -n clone-master-clean-up
 
 %files
-%doc %{basename:%{S:11}}
-%license %{basename:%{S:10}}
+%doc README.md
+%license LICENSE
 %{_sbindir}/*
 %{_mandir}/man1/*
 %{_fillupdir}/*
@@ -74,3 +78,5 @@ mkdir -p %{buildroot}/%{_sysconfdir}/%{name}/
 %dir %{_sysconfdir}/%{name}
 %{_datadir}/%{name}/custom_remove.template
 %ghost %config %{_sysconfdir}/%{name}/custom_remove
+
+%changelog

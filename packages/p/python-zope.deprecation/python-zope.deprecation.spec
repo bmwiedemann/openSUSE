@@ -23,16 +23,15 @@ Version:        4.4.0
 Release:        0
 Summary:        Zope Deprecation Infrastructure
 License:        ZPL-2.1
-Group:          Development/Languages/Python
-Url:            https://pypi.python.org/pypi/zope.deprecation
+URL:            https://pypi.python.org/pypi/zope.deprecation
 Source:         https://files.pythonhosted.org/packages/source/z/zope.deprecation/zope.deprecation-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
-# SECTION documentation requirements
-BuildRequires:  %{python_module Sphinx}
-# /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+# SECTION documentation requirements
+BuildRequires:  %{python_module Sphinx}
+# /SECTION
 %python_subpackages
 
 %description
@@ -44,7 +43,6 @@ previously mentioned Python objects.
 
 %package     -n %{name}-doc
 Summary:        Zope 3 Deprecation Infrastructure
-Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 Provides:       %{python_module zope.deprecation-doc = %{version}}
 
@@ -57,22 +55,21 @@ rm -rf zope.deprecation.egg-info
 
 %build
 %python_build
-%__python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo
+python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py -q test
 
 %files %{python_files}
-%defattr(-,root,root,-)
-%doc CHANGES.rst COPYRIGHT.txt LICENSE.txt README.rst
-%python_sitelib/*
+%license LICENSE.txt
+%doc CHANGES.rst COPYRIGHT.txt README.rst
+%{python_sitelib}/*
 
 %files -n %{name}-doc
-%defattr(-,root,root,-)
 %doc build/sphinx/html/
 
 %changelog

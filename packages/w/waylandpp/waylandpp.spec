@@ -19,15 +19,14 @@
 %define sover 0
 
 Name:           waylandpp
-Version:        0.2.5.20190224T162511.f389962
+Version:        0.2.7.20191014T190311.4007255
 Release:        0
 Summary:        Wayland C++ bindings
 License:        BSD-2-Clause AND GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Url:            https://github.com/NilsBrause/waylandpp
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         waylandpp.patch
-BuildRequires:  cmake >= 3.5.1
+BuildRequires:  cmake >= 3.13
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(egl)
@@ -60,7 +59,7 @@ Wayland C++ bindings
 
 %build
 %cmake
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
@@ -84,5 +83,6 @@ Wayland C++ bindings
 %{_libdir}/pkgconfig/wayland-cursor++.pc
 %{_libdir}/pkgconfig/wayland-egl++.pc
 %{_libdir}/lib*.so
+%{_libdir}/cmake
 
 %changelog

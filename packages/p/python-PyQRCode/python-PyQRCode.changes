@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 14 11:45:51 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Replace %fdupes -s with plain %fdupes; hardlinks are better.
+
+-------------------------------------------------------------------
 Mon Apr  1 08:43:21 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Sort out with spec-cleaner

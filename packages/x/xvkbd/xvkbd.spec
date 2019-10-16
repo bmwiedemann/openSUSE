@@ -1,7 +1,7 @@
 #
 # spec file for package xvkbd
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,33 +17,22 @@
 
 
 Name:           xvkbd
-Version:        3.9
+Version:        4.0
 Release:        0
 Summary:        Virtual Keyboard for the X Window System
 License:        GPL-2.0-or-later
-Group:          System/X11/Utilities
 URL:            http://t-sato.in.coocan.jp/xvkbd/
 Source0:        http://t-sato.in.coocan.jp/xvkbd/%{name}-%{version}.tar.gz
 Source1:        xvkbd.desktop
 Source2:        xvkbd.png
-Source3:        xvkbd.default
 # PATCH-FIX-UPSTREAM xvkbd-3.0-compilerwarnings.diff dkukawka@suse.de -- Avoid warnings with warn_unused_result
 Patch0:         xvkbd-3.0-compilerwarnings.diff
-%if 0%{?suse_version} > 1210
 BuildRequires:  desktop-file-utils
-%else
-BuildRequires:  update-desktop-files
-%endif
-%if 0%{?suse_version} > 1210
-BuildRequires:  imake
 BuildRequires:  libX11-devel
 BuildRequires:  libXaw-devel
 BuildRequires:  libXmu-devel
 BuildRequires:  libXt-devel
 BuildRequires:  libXtst-devel
-%else
-BuildRequires:  xorg-x11-devel
-%endif
 BuildRequires:  xaw3d-devel
 
 %description
@@ -60,27 +49,23 @@ FAKE_BUILDDATE=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%b %%e %%Y
 sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/g" xvkbd.c
 
 %build
-xmkmf -a
-make CCOPTIONS="%{optflags}" %{?_smp_mflags}
+%configure
+make %{?_smp_mflags}
 
 %install
-%make_install
-make DESTDIR=%{buildroot} install.man
-%if 0%{?suse_version} > 1210
+install -dm 0755 %{buildroot}%{_datadir}/X11/app-defaults
+%make_install appdefaultdir=%{buildroot}%{_datadir}/X11/app-defaults datarootdir=%{buildroot}%{_datadir}
 desktop-file-install %{SOURCE1}
 install -Dpm 0644 %{SOURCE2} %{buildroot}%{_datadir}/pixmaps/xvkbd.png
-%else
-%suse_update_desktop_file -i %{name}
-%endif
-install -Dpm 0644 %{SOURCE3} %{buildroot}%{appdefdir}/xvkbd.default
 
 %files
-%doc README
+%doc ChangeLog README
 %license COPYING
-%{_mandir}/man1/xvkbd.1x%{ext_man}
+%{_mandir}/man1/xvkbd.1%{?ext_man}
 %{_bindir}/xvkbd
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/xvkbd.png
+%{_datadir}/xvkbd/
 %dir %{_datadir}/X11/app-defaults/
 %{_datadir}/X11/app-defaults/*
 

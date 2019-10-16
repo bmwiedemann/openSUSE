@@ -197,6 +197,10 @@ Suggests:       libc++-devel
 %if %{with cxx}
 Requires:       libc++%{_socxx}
 %endif
+# Install after llvm packages that might have had diagtool as slave of llvm-ar
+# to prevent breaking the clang link group.
+OrderWithRequires: llvm7
+OrderWithRequires: llvm8
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 
@@ -1028,7 +1032,6 @@ rm -rf ./stage1 ./build
 %{_sbindir}/update-alternatives \
    --install %{_bindir}/llvm-ar llvm-ar %{_bindir}/llvm-ar-%{_relver} %{_uaver} \
    --slave %{_bindir}/bugpoint bugpoint %{_bindir}/bugpoint-%{_relver} \
-   --slave %{_bindir}/diagtool diagtool %{_bindir}/diagtool-%{_relver} \
    --slave %{_bindir}/dsymutil dsymutil %{_bindir}/dsymutil-%{_relver} \
    --slave %{_bindir}/hmaptool hmaptool %{_bindir}/hmaptool-%{_relver} \
    --slave %{_bindir}/llc llc %{_bindir}/llc-%{_relver} \
@@ -1085,7 +1088,6 @@ rm -rf ./stage1 ./build
    --slave %{_bindir}/yaml2obj yaml2obj %{_bindir}/yaml2obj-%{_relver} \
    --slave %{_mandir}/man1/FileCheck.1%{ext_man} FileCheck.1%{ext_man} %{_mandir}/man1/FileCheck-%{_relver}.1%{ext_man} \
    --slave %{_mandir}/man1/bugpoint.1%{ext_man} bugpoint.1%{ext_man} %{_mandir}/man1/bugpoint-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/diagtool.1%{ext_man} diagtool.1%{ext_man} %{_mandir}/man1/diagtool-%{_relver}.1%{ext_man} \
    --slave %{_mandir}/man1/dsymutil.1%{ext_man} dsymutil.1%{ext_man} %{_mandir}/man1/dsymutil-%{_relver}.1%{ext_man} \
    --slave %{_mandir}/man1/llc.1%{ext_man} llc.1%{ext_man} %{_mandir}/man1/llc-%{_relver}.1%{ext_man} \
    --slave %{_mandir}/man1/lli.1%{ext_man} lli.1%{ext_man} %{_mandir}/man1/lli-%{_relver}.1%{ext_man} \
@@ -1138,11 +1140,13 @@ fi
    --slave %{_bindir}/clang-reorder-fields clang-reorder-fields %{_bindir}/clang-reorder-fields-%{_relver} \
    --slave %{_bindir}/clang-tidy clang-tidy %{_bindir}/clang-tidy-%{_relver} \
    --slave %{_bindir}/clang-tidy-diff clang-tidy-diff %{_bindir}/clang-tidy-diff-%{_relver} \
+   --slave %{_bindir}/diagtool diagtool %{_bindir}/diagtool-%{_relver} \
    --slave %{_bindir}/find-all-symbols find-all-symbols %{_bindir}/find-all-symbols-%{_relver} \
    --slave %{_bindir}/git-clang-format git-clang-format %{_bindir}/git-clang-format-%{_relver} \
    --slave %{_bindir}/modularize modularize %{_bindir}/modularize-%{_relver} \
    --slave %{_bindir}/run-clang-tidy run-clang-tidy %{_bindir}/run-clang-tidy-%{_relver} \
    --slave %{_mandir}/man1/clang.1%{ext_man} clang.1%{ext_man} %{_mandir}/man1/clang-%{_relver}.1%{ext_man} \
+   --slave %{_mandir}/man1/diagtool.1%{ext_man} diagtool.1%{ext_man} %{_mandir}/man1/diagtool-%{_relver}.1%{ext_man} \
    --slave %{_datadir}/bash-completion/completions/clang.sh clang-bash-autocomplete.sh %{_libdir}/clang/%{_relver}/bash-autocomplete.sh
 
 %postun -n clang%{_sonum}
@@ -1182,7 +1186,6 @@ fi
 %license CREDITS.TXT LICENSE.TXT
 
 %{_bindir}/bugpoint
-%{_bindir}/diagtool
 %{_bindir}/dsymutil
 %{_bindir}/hmaptool
 %{_bindir}/llc
@@ -1240,7 +1243,6 @@ fi
 %{_bindir}/yaml2obj
 
 %{_bindir}/bugpoint-%{_relver}
-%{_bindir}/diagtool-%{_relver}
 %{_bindir}/dsymutil-%{_relver}
 %{_bindir}/hmaptool-%{_relver}
 %{_bindir}/llc-%{_relver}
@@ -1298,7 +1300,6 @@ fi
 %{_bindir}/yaml2obj-%{_relver}
 
 %ghost %{_sysconfdir}/alternatives/bugpoint
-%ghost %{_sysconfdir}/alternatives/diagtool
 %ghost %{_sysconfdir}/alternatives/dsymutil
 %ghost %{_sysconfdir}/alternatives/hmaptool
 %ghost %{_sysconfdir}/alternatives/llc
@@ -1357,7 +1358,6 @@ fi
 
 %{_mandir}/man1/FileCheck.1%{ext_man}
 %{_mandir}/man1/bugpoint.1%{ext_man}
-%{_mandir}/man1/diagtool.1%{ext_man}
 %{_mandir}/man1/dsymutil.1%{ext_man}
 %{_mandir}/man1/llc.1%{ext_man}
 %{_mandir}/man1/lli.1%{ext_man}
@@ -1384,7 +1384,6 @@ fi
 %{_mandir}/man1/tblgen.1%{ext_man}
 %{_mandir}/man1/FileCheck-%{_relver}.1%{ext_man}
 %{_mandir}/man1/bugpoint-%{_relver}.1%{ext_man}
-%{_mandir}/man1/diagtool-%{_relver}.1%{ext_man}
 %{_mandir}/man1/dsymutil-%{_relver}.1%{ext_man}
 %{_mandir}/man1/llc-%{_relver}.1%{ext_man}
 %{_mandir}/man1/lli-%{_relver}.1%{ext_man}
@@ -1411,7 +1410,6 @@ fi
 %{_mandir}/man1/tblgen-%{_relver}.1%{ext_man}
 %ghost %{_sysconfdir}/alternatives/FileCheck.1%{ext_man}
 %ghost %{_sysconfdir}/alternatives/bugpoint.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/diagtool.1%{ext_man}
 %ghost %{_sysconfdir}/alternatives/dsymutil.1%{ext_man}
 %ghost %{_sysconfdir}/alternatives/llc.1%{ext_man}
 %ghost %{_sysconfdir}/alternatives/lli.1%{ext_man}
@@ -1463,6 +1461,7 @@ fi
 %{_bindir}/clang-reorder-fields
 %{_bindir}/clang-tidy
 %{_bindir}/clang-tidy-diff
+%{_bindir}/diagtool
 %{_bindir}/find-all-symbols
 %{_bindir}/git-clang-format
 %{_bindir}/modularize
@@ -1487,6 +1486,7 @@ fi
 %{_bindir}/clang-reorder-fields-%{_relver}
 %{_bindir}/clang-tidy-%{_relver}
 %{_bindir}/clang-tidy-diff-%{_relver}
+%{_bindir}/diagtool-%{_relver}
 %{_bindir}/find-all-symbols-%{_relver}
 %{_bindir}/git-clang-format-%{_relver}
 %{_bindir}/modularize-%{_relver}
@@ -1511,14 +1511,18 @@ fi
 %ghost %{_sysconfdir}/alternatives/clang-reorder-fields
 %ghost %{_sysconfdir}/alternatives/clang-tidy
 %ghost %{_sysconfdir}/alternatives/clang-tidy-diff
+%ghost %{_sysconfdir}/alternatives/diagtool
 %ghost %{_sysconfdir}/alternatives/find-all-symbols
 %ghost %{_sysconfdir}/alternatives/git-clang-format
 %ghost %{_sysconfdir}/alternatives/modularize
 %ghost %{_sysconfdir}/alternatives/run-clang-tidy
 %ghost %{_sysconfdir}/alternatives/clang-bash-autocomplete.sh
 %{_mandir}/man1/clang.1%{ext_man}
+%{_mandir}/man1/diagtool.1%{ext_man}
 %{_mandir}/man1/clang-%{_relver}.1%{ext_man}
+%{_mandir}/man1/diagtool-%{_relver}.1%{ext_man}
 %ghost %{_sysconfdir}/alternatives/clang.1%{ext_man}
+%ghost %{_sysconfdir}/alternatives/diagtool.1%{ext_man}
 %dir %{_libdir}/clang/
 %dir %{_libdir}/clang/%{_relver}/
 %{_libdir}/clang/%{_relver}/bash-autocomplete.sh

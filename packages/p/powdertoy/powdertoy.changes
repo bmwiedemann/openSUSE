@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Oct 15 00:00:00 CEST 2019 - dsterba@suse.cz
+
+- Update to version 94.1
+  * "Force Integer Scaling" option for fullscreen. This makes "Change
+    Resolution" mode work as intended, and also forces normal fullscreen to an
+    integer scale (black borders will be placed around the edges)
+  * Fix some strange glitches when enabling or disabling fullscreen and
+    resizable window options
+  * Keyboard shortcuts are now based on en-US layout again, regardless of
+    actual layout. This fixes things like 'y' and 'z' being reversed on QWERTZ
+    lauouts, and fixes non-letter shortcuts on many other layouts
+  * Fix stasis wall not affecting GoL elements
+  * Add stasis wall and LDTC element
+  * Upgrade to SDL2 (changes all video / input handling), add unicode support
+    (not enabled at the moment but it is in there once we add the new font
+    characters)
+- Update to version 94.0
+  * Add Stasis wall (by moonheart08), elements inside don't move / update until
+    powered. Stasis wall must be powered via another powered wall
+  * New element: LDTC (Linear detector), by mark2222 and moonheart08
+  * Add unicode support. latin-1 and Cyrillic characters will be added later
+  * Upgrade to SDL2. This changes all the keyboard, mouse, and video handling.
+    This also gives a large fps boost for double scale mode users.
+  * Add "resizable window" option and alternate fullscreen mode. These may
+    appear odd because a pixelated game isn't meant to be stretched
+  * New event api for Lua scripts. Replaces tpt.register_ functions. A
+    temporary compatibility layer is provided
+  * Add inverted mode for TSNS and PSNS with .tmp = 2
+  * Use faster random number generator
+  * FPS updates less often in the HUD
+  * Change time format for old dates to include day of the month
+  * Rewrite rules to be be clearer and more comprehensive
+  * Fix single pixel pipe
+  * Fix memory leaks when saving stamps (fixes "bad allocation" crash)
+  * Fix gravity sometimes persisting a frame after undoing or clearing the sim
+  * Mac version updator will now open the website to download the new version from a browser
+  * Fix issues using sample tool or find mode on GoL elements
+- Removed patch powdertoy-93.3-fix-mimeinfo.patch, merged upstream
+
+-------------------------------------------------------------------
 Wed May 16 06:10:19 UTC 2018 - antoine.belvire@opensuse.org
 
 - Fix update-mime-info parser error on powdertoy-save.xml:

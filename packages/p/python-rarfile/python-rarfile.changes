@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 14 14:40:03 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Replace %fdupes -s with plain %fdupes; hardlinks are better.
+
+-------------------------------------------------------------------
 Sat Sep 21 13:58:36 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.1 (no changelog available)

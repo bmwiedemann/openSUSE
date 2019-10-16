@@ -7,4 +7,14 @@
     <comment>Toolbox container to help debugging on a Container Host OS with read-only root filesystem like MicroOS and Kubic</comment>
     <requestid>735630</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f76dd9bb721d05ff09b336e3c2984018</srcmd5>
+    <version>1.0.0</version>
+    <time>1571210066</time>
+    <user>dimstar_suse</user>
+    <comment>- Add glibc-locale and man
+- Don't exclude docu from installation
+</comment>
+    <requestid>738322</requestid>
+  </revision>
 </revisionlist>

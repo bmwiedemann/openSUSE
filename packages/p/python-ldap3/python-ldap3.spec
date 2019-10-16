@@ -51,7 +51,7 @@ dos2unix COPYING.LESSER.txt COPYING.txt README.rst LICENSE.txt
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec %{_bindir}/nosetests -s test || :

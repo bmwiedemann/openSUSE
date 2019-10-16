@@ -1,7 +1,7 @@
 #
 # spec file for package python-subgrab
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        0.17
 Release:        0
 Summary:        Script to download subtitles for media files
 License:        GPL-3.0-only
-Group:          Development/Languages/Python
 URL:            https://github.com/RafayGhafoor/Subscene-Subtitle-Grabber
 Source:         https://files.pythonhosted.org/packages/source/s/subgrab/subgrab-%{version}.zip
 BuildRequires:  %{python_module setuptools}
@@ -49,7 +48,7 @@ sed -i 's/bs4/beautifulsoup4/g' setup.py
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}/%{$python_sitelib}
+%python_expand %fdupes %{buildroot}/%{$python_sitelib}
 
 %files %{python_files}
 %python3_only %{_bindir}/subgrab

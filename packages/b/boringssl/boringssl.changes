@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Oct 14 10:40:13 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20190916:
+  * Revert "Fix VS build when assembler is enabled"
+  * Only bypass the signature verification itself in fuzzer mode.
+  * Move the PQ-experiment signal to SSL_CTX.
+  * Name cipher suite tests in runner by IETF names.
+  * Align TLS 1.3 cipher suite names with OpenSSL.
+  * Prefix all the SIKE symbols.
+  * Rename SIKE's params.c.
+  * Add post-quantum experiment signal extension.
+  * Fix shim error message endings.
+  * Add initial draft of ACVP tool.
+  * Implements SIKE/p434
+  * Add SipHash-2-4.
+  * Remove android_tools checkout
+  * Support key wrap with padding in CAVP.
+  * Add android_sdk checkout
+  * Move fipstools/ to util/fipstools/cavp
+  * Factor out TLS cipher selection to ssl_choose_tls_cipher.
+  * Emit empty signerInfos in PKCS#7 bundles.
+  * Clarify language about default SSL_CTX session ticket key behavior.
+  * Add an API to record use of delegated credential
+  * Fix runner tests with Go 1.13.
+  * Add a value barrier to constant-time selects.
+  * Avoid leaking intermediate states in point doubling special case.
+  * Split p224-64.c multiplication functions in three.
+  * Add AES-KWP
+  * Discuss the doubling case in windowed Booth representation.
+  * Update build tools.
+  * Set a minimum CMake version of 3.0.
+  * Replace addc64,subc64,mul64 in SIKE Go code with functions from math/bits
+  * Eliminate some superfluous conditions in SIKE Go code.
+  * Fix various typos.
+  * Fix name clash in test structures
+  * bcm: don't forget to cleanup HMAC_CTX.
+  * Handle fips_shared_support.c getting built in other builds.
+  * Fix various mistakes in ec_GFp_nistp_recode_scalar_bits comment.
+  * Fix filename in comment.
+  * Split EC_METHOD.mul into two operations.
+  * Split ec_point_mul_scalar into two operations.
+  * Add FIPS shared mode.
+  * delocate: add test for .file handling.
+  * delocate: translate uleb128 and sleb128 directives
+  * Integrate SIKE with TLS key exchange.
+  * Convert ecdsa_p224_key.pem to PKCS#8.
+
+-------------------------------------------------------------------
 Wed Sep  4 12:15:46 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Re-enable build on aarch64

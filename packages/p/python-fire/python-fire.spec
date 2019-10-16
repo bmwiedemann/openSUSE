@@ -25,6 +25,7 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/google/python-fire
 Source:         https://files.pythonhosted.org/packages/source/f/fire/fire-%{version}.tar.gz
+Patch0:         subpoint-usage-test.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -47,6 +48,7 @@ interfaces (CLIs) from a Python object.
 
 %prep
 %setup -q -n fire-%{version}
+%autopatch -p1
 
 %build
 %python_build

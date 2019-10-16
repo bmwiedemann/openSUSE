@@ -22,9 +22,8 @@ Version:        2.0.0
 Release:        0
 Summary:        Library for defining bulk search patterns to perform advanced string matching
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/Toilal/rebulk
-Source0:        https://pypi.io/packages/source/r/rebulk/rebulk-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/r/rebulk/rebulk-%{version}.tar.gz
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -56,7 +55,7 @@ done
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export PYTHONDONTWRITEBYTECODE=1

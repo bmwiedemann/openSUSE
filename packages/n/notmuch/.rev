@@ -195,4 +195,12 @@ From the NEWS file, this version reports the following:
     <comment></comment>
     <requestid>712760</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>b89fc5371e85b995293bc2a75cc814d3</srcmd5>
+    <version>0.29.1</version>
+    <time>1571210285</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>738579</requestid>
+  </revision>
 </revisionlist>

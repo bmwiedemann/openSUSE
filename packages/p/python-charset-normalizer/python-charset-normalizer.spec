@@ -20,11 +20,10 @@
 # https://github.com/Ousret/charset_normalizer/issues/1
 %define skip_python2 1
 Name:           python-charset-normalizer
-Version:        1.1.1
+Version:        1.3.0
 Release:        0
 Summary:        Python Universal Charset detector
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/ousret/charset_normalizer
 Source:         https://github.com/Ousret/charset_normalizer/archive/%{version}.tar.gz#/charset_normalizer-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -34,6 +33,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-PrettyTable
 Requires:       python-cached-property
 Requires:       python-dragonmapper
+Requires:       python-loguru
 Requires:       python-zhon
 Suggests:       python-requests-html
 BuildArch:      noarch
@@ -41,6 +41,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module PrettyTable}
 BuildRequires:  %{python_module cached-property}
 BuildRequires:  %{python_module dragonmapper}
+BuildRequires:  %{python_module loguru}
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module zhon}
 # /SECTION

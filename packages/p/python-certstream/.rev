@@ -32,4 +32,12 @@
     <comment>- Update to 1.10:</comment>
     <requestid>685806</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>0f7e1d4bb1df3b25d79a3267041bb104</srcmd5>
+    <version>1.10</version>
+    <time>1571210037</time>
+    <user>dimstar_suse</user>
+    <comment>Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>738298</requestid>
+  </revision>
 </revisionlist>

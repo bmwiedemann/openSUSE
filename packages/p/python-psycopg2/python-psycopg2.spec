@@ -22,7 +22,6 @@ Version:        2.8.3
 Release:        0
 Summary:        Python-PostgreSQL Database Adapter
 License:        LGPL-3.0-or-later AND (LGPL-3.0-or-later OR ZPL-2.0) AND SUSE-GPL-2.0-with-openssl-exception
-Group:          Development/Languages/Python
 URL:            http://initd.org/psycopg/
 Source:         https://files.pythonhosted.org/packages/source/p/psycopg2/psycopg2-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
@@ -30,7 +29,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  postgresql-devel >= 9.1
 BuildRequires:  python-rpm-macros
-%if 0%{?suse_version} > 1500 
+%if 0%{?suse_version} > 1500
 BuildRequires:  postgresql-server-devel
 %endif
 %if 0%{?suse_version} >= 1000 || 0%{?fedora_version} >= 24
@@ -58,7 +57,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %install
 %python_install
 %python_expand rm -rf %{buildroot}%{$python_sitearch}/psycopg2/tests # Don't package testsuite
-%fdupes -s %{buildroot}/%{_mandir}  # Create symlinks for man pages
+%fdupes %{buildroot}/%{_mandir}  # Create symlinks for man pages
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check

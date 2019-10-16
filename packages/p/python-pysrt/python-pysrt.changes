@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 14 14:17:23 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Replace %fdupes -s with plain %fdupes; hardlinks are better.
+
+-------------------------------------------------------------------
 Fri Mar 31 07:56:17 UTC 2017 - aloisio@gmx.com
 
 - Set correct group

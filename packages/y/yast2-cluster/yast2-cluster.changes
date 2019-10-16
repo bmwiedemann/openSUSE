@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct 11 07:48:01 UTC 2019 - Yuan Ren <yren@suse.com>
+
+- bsc#1149089 corosync-qdevice service ready to be configured
+        * Add corosync-qdevice RPM package into Yast2-cluster
+        * Add `IP Version` option in Dialog
+        * Member Address is enabled whatever transport and ip version
+        * Member Address is required/optional relations based on different transport or IP version used
+        * Auto Generate Node ID would disabled once IPV6 selected
+        * Auto Generate Node ID is required if UDP&IPv4&Member Address is empty
+        * When enable corosync-qdevice but Member Address is empty, a warning would occur
+        * Corosync-qdevice algorithm can only choose ffsplit
+        * Qdevice votes disabled to be set mannually, defualt is "1"
+        * expected_votes should be enabled only in nodelist empty&ipv4&udp
+        * Add corosync-qdevice service start/stop/status and enabale/disable at booting time
+- Version 4.2.5
+
+-------------------------------------------------------------------
 Wed Sep 25 07:06:51 UTC 2019 - nick wang <nwang@suse.com>
 
 - bsc#1151687, update the open ports to support pacemaker-remote,

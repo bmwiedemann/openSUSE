@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Mon Sep 02 14:40:52 UTC 2019 - jkowalczyk@suse.com
+
+- Update to version 0.3.0:
+  * Add check for version agreement with .spec to archive autodetection
+  * README add example _service configuration
+  * README update FAQ entries regarding Go module cache
+  * README update example to reflect current log output
+  * Add Go source archive autodetection based on RPM spec file name
+  * Add missing parameter archive to definition go_modules.service
+  * Add exception handling around shutil.rmtree for extracted archive
+  * README fix hyperlink
+  * README cite openSUSE packages built using obs-service-go_modules
+  * Reduce python module __doc__ from full copy to subset of README
+  * Packaging tar_scm service use revision instead of version to
+    fix use of _servicedata for changelog generation
+
+-------------------------------------------------------------------
+Mon Aug  5 20:45:43 UTC 2019 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update upstream repository location now in openSUSE organization
+
+-------------------------------------------------------------------
+Mon Aug 05 20:03:04 UTC 2019 - jkowalczyk@suse.com
+
+- Update to version 0.2.1:
+  * README documentation improvements
+
+-------------------------------------------------------------------
+Thu Aug  1 17:27:54 UTC 2019 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- obs-service-go_modules (0.2.0 released 2019/08/01) is the first
+  packaged release for review and feedback. This OBS Source Service
+  will download, verify and vendor Go module dependencies expressed
+  in the file go.mod.  By vendoring all dependencies during the OBS
+  Source Service stage, go build commands can run in the offline
+  OBS build environment. This initial version:
+  * Tested by packaging devel:languages:go/hugo, which has the
+    typical Go application unpacked layout containing go.mod at:
+    hugo-0.56.3/go.mod
+  * Supports tar.gz archives in the form
+    hugo-0.56.3.tar.gz -> hugo-0.56.3/
+    Other archive format and layout support to be added as needed
+  * Produces vendor.tar.gz
+    vendor.cpio archive support planned
+  * Replace print() with logging facilities
+  * Fix indentation for cmd_go_mod() return values
+  * Return non-zero exit codes on failure

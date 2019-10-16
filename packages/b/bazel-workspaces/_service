@@ -2,9 +2,10 @@
   <service mode="disabled" name="obs_scm">
     <param name="url">https://github.com/kubic-project/bazel-workspaces</param>
     <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
     <param name="filename">bazel-workspaces</param>
     <param name="versionformat">%cd</param>
-    <param name="revision">f8a15d08c1cf87778696373bc8a857e256a1273b</param>
+    <param name="revision">28a1bcdf66c4a12189856a06c1b541f010a95015</param>
   </service>
   <service mode="buildtime" name="tar" />
   <service mode="buildtime" name="recompress">

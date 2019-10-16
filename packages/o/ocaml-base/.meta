@@ -1,0 +1,8 @@
+<package name="ocaml-base" project="openSUSE:Factory">
+  <title>Standard library for OCaml</title>
+  <description>Base is a standard library for OCaml. It provides a standard set of general purpose modules that are well-tested, performant, and fully-portable across any environment that can run OCaml code. Unlike other standard library projects, Base is meant to be used as a wholesale replacement of the standard library distributed with the OCaml compiler. In particular it makes different choices and doesn’t re-export features that are not fully portable such as I/O, which are left to other libraries.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-base"/>
+  <url>https://github.com/janestreet/base</url>
+</package>

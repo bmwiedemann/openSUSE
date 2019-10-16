@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 15 18:53:36 UTC 2019 - Mark Post <mpost@suse.com>
+
+- Upgraded to version 3.6.0 (jsc#SLE-7584)
+  * [FEATURE] Add MSA9 CPACF support for Ed25519, Ed448, X25519 and X448
+
+-------------------------------------------------------------------
 Fri Aug 30 21:46:50 UTC 2019 - Mark Post <mpost@suse.com>
 
 - Upgraded to version 3.5.0 (Fate#327840)

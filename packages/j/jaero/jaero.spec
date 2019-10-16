@@ -1,7 +1,7 @@
 #
 # spec file for package jaero
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,20 +13,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           jaero
-Version:        1.0.4.6
+Version:        1.0.4.11
 Release:        0
 Summary:        A SatCom ACARS demodulator and decoder for the Aero standard
 # Bundled qcustomplot is GPL-3.0+
-License:        MIT and GPL-3.0+
+# Bundled kiss_fft is BSD-3-Clause
+License:        MIT AND GPL-3.0-or-later
 Group:          Productivity/Hamradio/Other
-Url:            http://jontio.zapto.org/hda1/jaero.html
+URL:            http://jontio.zapto.org/hda1/jaero.html
 Source:         https://github.com/jontio/JAERO/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.xz
+Patch0:         jaero-use-system-libs.patch
 BuildRequires:  gcc-c++
+BuildRequires:  hicolor-icon-theme
+BuildRequires:  libcorrect-devel
 BuildRequires:  libqt5-qtbase-common-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -38,8 +42,11 @@ BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(libacars)
+BuildRequires:  pkgconfig(vorbis)
 Requires(post): update-desktop-files
 Requires(postun): update-desktop-files
+Requires:       unzip
 
 %description
 JAERO is a program that demodulates and decodes Classic Aero ACARS (Aircraft
@@ -54,6 +61,14 @@ RTL-SDR dongle.
 
 %prep
 %setup -q -n JAERO-%{version}
+%patch0 -p1
+## remove bundled libs
+rm -rf libcorrect
+rm -rf libvorbis-*
+rm -rf libacars-*
+rm -rf libogg-*
+#rm -rf qcustomplot
+#rm -rf kiss_fft130
 
 %build
 mkdir JAERO/build
@@ -62,11 +77,9 @@ cd JAERO/build
 %make_jobs
 
 %install
-install -Dpm 0755 JAERO/build/JAERO %{buildroot}/%{_bindir}/JAERO
-mkdir -p %{buildroot}/%{_datadir}/applications/
-install -Dpm 0644 JAERO/JAERO.desktop %{buildroot}/%{_datadir}/applications/JAERO.desktop
-mkdir -p %{buildroot}/%{_datadir}/pixmaps/
-install -Dpm 0644 JAERO/images/primary-modem.svg %{buildroot}/%{_datadir}/pixmaps/JAERO.svg
+install -Dpm 0755 JAERO/build/JAERO  %{buildroot}/%{_bindir}/jaero
+install -Dpm 0644 JAERO/images/primary-modem.svg %{buildroot}/%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
+%suse_update_desktop_file -c %{name} JAERO "A SatCom ACARS demodulator and decoder for the Aero standard" %{name} %{name} Network HamRadio
 
 %post
 %desktop_database_post
@@ -75,10 +88,10 @@ install -Dpm 0644 JAERO/images/primary-modem.svg %{buildroot}/%{_datadir}/pixmap
 %desktop_database_postun
 
 %files
-%defattr(-,root,root)
-%doc README.md JAERO/LICENSE
-%{_bindir}/JAERO
-%{_datadir}/applications/JAERO.desktop
-%{_datadir}/pixmaps/JAERO.svg
+%license JAERO/LICENSE
+%doc README.md
+%{_bindir}/jaero
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 
 %changelog

@@ -1,7 +1,7 @@
 #
 # spec file for package mpibash
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%ifarch ppc64
-%define mpi_implem openmpi
-%else
-%define mpi_implem openmpi2
-%endif
 
 Name:           mpibash
 Version:        1.3
 Release:        0
 Summary:        Parallel scripting right from the Bourne-Again Shell
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Other
 Url:            https://github.com/lanl/MPI-Bash
 Source0:        https://github.com/lanl/MPI-Bash/releases/download/v%{version}/mpibash-%{version}.tar.gz
 BuildRequires:  bash-devel >= 4.4
-BuildRequires:  %{mpi_implem}
-BuildRequires:  %{mpi_implem}-devel
 BuildRequires:  libcircle-devel
-
+BuildRequires:  openmpi-macros-devel
+%openmpi_requires
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -60,7 +54,7 @@ This package contains example scripts for mpibash.
 %setup -q
 
 %build
-. %{_libdir}/mpi/gcc/%{mpi_implem}/bin/mpivars.sh
+%setup_openmpi
 %configure --docdir=%{_docdir}/%{name} --with-plugindir=%{_libdir}/%{name}/ CC=mpicc
 %make_build
 
@@ -81,3 +75,5 @@ sed -i '1s@env mpibash@mpibash@' %{buildroot}/%{_docdir}/%{name}/examples/* %{bu
 %files examples
 %defattr(-,root,root,-)
 %{_docdir}/%{name}/examples
+
+%changelog

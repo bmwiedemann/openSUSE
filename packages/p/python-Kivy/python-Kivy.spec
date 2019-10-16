@@ -22,7 +22,6 @@ Version:        1.11.1
 Release:        0
 Summary:        Hardware-accelerated multitouch application library
 License:        MIT AND Apache-2.0 AND LGPL-2.1-or-later AND GPL-2.0-or-later AND GPL-3.0-only AND BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://kivy.org/
 Source:         https://github.com/kivy/kivy/archive/%{version}.tar.gz#/kivy-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
@@ -68,7 +67,6 @@ user interfaces, such as multi-touch apps.
 
 %package        devel
 Summary:        Development files for %{name}
-Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 
 %description    devel
@@ -79,7 +77,6 @@ This package contains the headers and source files for extending kivy
 
 %package     -n %{name}-doc
 Summary:        Documentation for Kivy, a multitouch application library
-Group:          Documentation/HTML
 Provides:       %{python_module Kivy-doc = %{version}}
 
 %description -n %{name}-doc
@@ -109,7 +106,7 @@ sed -e '/^PYTHON/s/python/python3/' \
     -e '/^SPHINXOPTS	/s/$/ %{?_smp_mflags}/' \
     -i Makefile
 export PYTHONPATH=`ls -d ../build/lib*`
-make html && rm -r build/html/.buildinfo
+make %{?_smp_mflags} html && rm -r build/html/.buildinfo
 popd
 
 %install
@@ -119,8 +116,8 @@ popd
 install -dm0755 %{buildroot}%{_defaultdocdir}/%{name}-doc
 cp -a doc/build/html %{buildroot}/%{_defaultdocdir}/%{name}-doc
 
-%python_expand %fdupes -s %{buildroot}%{$python_sitearch}/kivy
-%fdupes -s %{buildroot}%{_defaultdocdir}/%{name}-doc
+%python_expand %fdupes %{buildroot}%{$python_sitearch}/kivy
+%fdupes %{buildroot}%{_defaultdocdir}/%{name}-doc
 
 # Disable tests, they randomly timeout
 # %%check

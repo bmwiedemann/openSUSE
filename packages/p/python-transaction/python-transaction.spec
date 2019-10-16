@@ -22,7 +22,6 @@ Version:        2.4.0
 Release:        0
 Summary:        Transaction management for Python
 License:        ZPL-2.1
-Group:          Development/Libraries/Python
 URL:            https://github.com/zopefoundation/transaction
 Source:         https://files.pythonhosted.org/packages/source/t/transaction/transaction-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -56,7 +55,7 @@ rm -rf transaction.egg-info
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py -q test

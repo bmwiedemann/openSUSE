@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 14 11:58:37 CEST 2019 - kukuk@suse.de
+
+- Add glibc-locale and man
+- Don't exclude docu from installation
+
+-------------------------------------------------------------------
 Wed Oct  2 16:01:24 CEST 2019 - kukuk@suse.de
 
 - Initial version

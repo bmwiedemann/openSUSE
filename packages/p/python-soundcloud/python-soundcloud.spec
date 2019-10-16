@@ -1,7 +1,7 @@
 #
 # spec file for package python-soundcloud
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,8 +23,7 @@ Version:        0.5.0
 Release:        0
 Summary:        A friendly wrapper library for the Soundcloud API
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
-Url:            https://github.com/soundcloud/soundcloud-python
+URL:            https://github.com/soundcloud/soundcloud-python
 Source:         https://files.pythonhosted.org/packages/source/s/soundcloud/soundcloud-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module fudge >= 1.0.3}
@@ -54,7 +53,7 @@ A friendly wrapper around the `Soundcloud API`_.
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_expand %{_bindir}/nosetests

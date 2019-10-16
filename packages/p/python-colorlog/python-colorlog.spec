@@ -22,10 +22,9 @@ Version:        4.0.2
 Release:        0
 Summary:        Log formatting with colors
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/borntyping/python-colorlog
-Source:         https://pypi.io/packages/source/c/colorlog/colorlog-%{version}.tar.gz
-BuildRequires:  %{python_module pytest} 
+Source:         https://files.pythonhosted.org/packages/source/c/colorlog/colorlog-%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -46,10 +45,10 @@ before it is used to format the string.
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} colorlog/tests/
+%pytest colorlog/tests/
 
 %files %{python_files}
 %doc README.md

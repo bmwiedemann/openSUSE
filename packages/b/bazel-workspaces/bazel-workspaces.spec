@@ -17,7 +17,7 @@
 
 
 Name:           bazel-workspaces
-Version:        20190919
+Version:        20191011
 Release:        0
 Summary:        Bazel workspaces for libraries packaged in openSUSE
 License:        Apache-2.0

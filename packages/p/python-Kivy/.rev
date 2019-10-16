@@ -430,4 +430,12 @@
     <comment>- update to 1.11.1 , no upstream changelog</comment>
     <requestid>722009</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>66e086ed68584280207922ea02f7701e</srcmd5>
+    <version>1.11.1</version>
+    <time>1571210054</time>
+    <user>dimstar_suse</user>
+    <comment>Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>738307</requestid>
+  </revision>
 </revisionlist>

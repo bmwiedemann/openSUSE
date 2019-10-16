@@ -23,10 +23,9 @@ Version:        1.2.0
 Release:        0
 Summary:        A library for deferring decorator actions
 License:        SUSE-Repoze AND ZPL-2.1
-Group:          Development/Languages/Python
 URL:            https://github.com/Pylons/venusian
 Source:         https://files.pythonhosted.org/packages/source/v/venusian/venusian-%{version}.tar.gz
-Patch:          fix-pylons-sphinx-theme.diff
+Patch0:         fix-pylons-sphinx-theme.diff
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -55,7 +54,6 @@ http://docs.pylonsproject.org/projects/venusian/dev/.
 
 %package doc
 Summary:        Documentation for %{name}
-Group:          Documentation/HTML
 Requires:       %{name} = %{version}
 
 %description doc
@@ -63,7 +61,7 @@ This package contains documentation files for %{name}.
 
 %prep
 %setup -q -n venusian-%{version}
-%patch -p1
+%patch0 -p1
 rm -rf venusian.egg-info
 
 %build
@@ -72,10 +70,10 @@ python3 setup.py build_sphinx && rm -v build/sphinx/html/{.buildinfo,objects.inv
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand py.test-%{$python_bin_suffix} -v venusian
+%pytest venusian
 
 %files %{python_files}
 %license LICENSE.txt

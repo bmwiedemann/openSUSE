@@ -243,6 +243,9 @@ running Open MPI/OpenSHMEM jobs.
 Summary:        OpenMPI runtime libraries for OpenMPI %{?with_hpc:HPC} version %{version}
 Group:          System/Libraries
 Requires:       %{name} = %{version}
+%if 0%{?default_openmpi}
+Provides:       openmpi-libs = %{version}
+%endif
 %{?with_hpc:%hpc_requires}
 
 %description %{!?with_hpc:libs}%{?with_hpc:-n lib%{name}}
@@ -266,6 +269,9 @@ Requires:       libibumad-devel
 Requires:       libibverbs-devel
 %if %{without hpc}
 Requires:       libstdc++-devel
+%if 0%{?default_openmpi}
+Provides:       openmpi-devel = %{version}
+%endif
 %else
 %hpc_requires_devel
 %endif
@@ -313,6 +319,9 @@ Requires:       %{name}-devel = %{version}
 # Make sure no two openmpi macro file can be installed at once
 Provides:       %{pname}-macros-provider = %{version}
 Conflicts:      otherproviders(%{pname}-macros-provider)
+# Conflict (without providing) with the older openmpi-hpc-macros-devel flag
+# to avoid issue with older packages
+Conflicts:      otherproviders(%{pname}-hpc-macros-devel)
 
 %if 0%{?default_openmpi}
 Provides:       openmpi-macros-devel = %{version}
@@ -525,6 +534,7 @@ cat <<EOF >%{buildroot}%{_sysconfdir}/rpm/macros.openmpi
 #
 # openmpi
 #
+%openmpi_prefix %{mpi_prefix}
 %setup_openmpi  source %{mpi_bindir}/mpivars.sh
 
 %openmpi_requires Requires: %{name}-libs

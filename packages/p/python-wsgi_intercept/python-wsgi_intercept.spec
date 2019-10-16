@@ -22,9 +22,9 @@ Version:        1.8.1
 Release:        0
 Summary:        Library for installing a WSGI application in place of a real URI for testing
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/cdent/python3-wsgi-intercept
 Source:         https://files.pythonhosted.org/packages/source/w/wsgi_intercept/wsgi_intercept-%{version}.tar.gz
+Patch0:         httplib2.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module httplib2}
 BuildRequires:  %{python_module pytest >= 2.4}
@@ -52,6 +52,7 @@ can avoid spawning multiple processes or threads to test your Web app.
 
 %prep
 %setup -q -n wsgi_intercept-%{version}
+%patch0 -p1
 
 %build
 %python_build

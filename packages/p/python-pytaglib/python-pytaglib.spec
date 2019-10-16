@@ -22,7 +22,6 @@ Version:        1.4.5
 Release:        0
 Summary:        Metadata "tagging" library based on TagLib
 License:        GPL-3.0-only OR MIT
-Group:          Development/Libraries/Python
 URL:            https://github.com/supermihi/pytaglib
 Source:         https://github.com/supermihi/pytaglib/archive/v%{version}.tar.gz
 # https://github.com/supermihi/pytaglib/issues/63
@@ -36,7 +35,6 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtag-devel
 BuildRequires:  python-rpm-macros
-
 %python_subpackages
 
 %description
@@ -56,7 +54,7 @@ sed -i -e "1d" src/pyprinttags.py
 %install
 %python_install
 mv %{buildroot}%{_bindir}/pyprinttags3 %{buildroot}/%{_bindir}/pyprinttags
-%python_expand %fdupes -s %{buildroot}%{$python_sitearch}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 # https://github.com/supermihi/pytaglib/issues/62
 mkdir -p %{buildroot}%{python3_sitelib}
 install -m 644 src/pyprinttags.py %{buildroot}%{python3_sitelib}

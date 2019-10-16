@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct 15 07:41:03 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.6:
+  * New Checks:
+    - heap-allocated-small-trivial-type
+    - signal-with-return-value
+    - qproperty-type-mismatch, contributed by Jean-Michaël Celerier
+  * Removed level3. Moved all level3 checks to manual level.
+  * Fixed regressions with LLVM 9.0
+  * Minimum LLVM was bumped to 5.0
+  * Fixit infrastructure was overhauled
+  * Clazy no longer rewrites files directly, to avoid races
+    when parallel invocations change the same header.
+  * Clazy now exports a yaml file with the replacements, to be
+    applied with clang-apply-replacements.
+  * The way to enable code rewrite is now: -Xclang -plugin-arg-clazy
+    -Xclang export-fixes for clang or -export-fixes=somefile.yaml for clazy-standalone
+  * All other fixit arguments and fixit env variables were removed
+- Update cmake-clang-cpp.patch to make clazy build with both clang 8 and 9.
+
+-------------------------------------------------------------------
 Sat Sep 28 18:38:25 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Add cmake-clang-cpp.patch: fix build with LLVM 9.

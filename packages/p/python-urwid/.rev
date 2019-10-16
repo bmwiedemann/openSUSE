@@ -101,4 +101,12 @@ Should fix problem with non-downloadable source file.</comment>
     <comment></comment>
     <requestid>580061</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>cb4ef5b77f728f17ab0e65156ffc1bed</srcmd5>
+    <version>2.0.1</version>
+    <time>1571210205</time>
+    <user>dimstar_suse</user>
+    <comment>Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>738419</requestid>
+  </revision>
 </revisionlist>

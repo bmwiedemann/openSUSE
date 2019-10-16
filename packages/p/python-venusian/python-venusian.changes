@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 14 14:49:37 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Replace %fdupes -s with plain %fdupes; hardlinks are better.
+
+-------------------------------------------------------------------
 Thu Feb  7 16:26:44 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to version 1.2.0 (2019-01-08)

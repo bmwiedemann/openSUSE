@@ -22,7 +22,6 @@ Version:        0.13.0
 Release:        0
 Summary:        Lesscss compiler
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/lesscpy/lesscpy
 Source:         https://files.pythonhosted.org/packages/source/l/lesscpy/lesscpy-%{version}.tar.gz
 BuildRequires:  %{python_module nose}
@@ -58,7 +57,7 @@ rm test/test_{bootstrap3,less,issues}.py
 %install
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/lesscpy
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %post
 %python_install_alternative lesscpy

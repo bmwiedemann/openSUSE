@@ -18,11 +18,11 @@ Change-Id: If52a0657de0f524a2c40cb51a6e9c36aac87024d
  ssl/CMakeLists.txt      | 6 ++++++
  5 files changed, 29 insertions(+)
 
-Index: boringssl-20190523/BUILDING.md
+Index: boringssl-20190916/BUILDING.md
 ===================================================================
---- boringssl-20190523.orig/BUILDING.md
-+++ boringssl-20190523/BUILDING.md
-@@ -79,6 +79,9 @@ Windows, where functions need to be tagg
+--- boringssl-20190916.orig/BUILDING.md
++++ boringssl-20190916/BUILDING.md
+@@ -78,6 +78,9 @@ Windows, where functions need to be tagg
  shared library, define `BORINGSSL_SHARED_LIBRARY` in any code which `#include`s
  the BoringSSL headers.
  
@@ -32,19 +32,19 @@ Index: boringssl-20190523/BUILDING.md
  In order to serve environments where code-size is important as well as those
  where performance is the overriding concern, `OPENSSL_SMALL` can be defined to
  remove some code that is especially large.
-Index: boringssl-20190523/CMakeLists.txt
+Index: boringssl-20190916/CMakeLists.txt
 ===================================================================
---- boringssl-20190523.orig/CMakeLists.txt
-+++ boringssl-20190523/CMakeLists.txt
+--- boringssl-20190916.orig/CMakeLists.txt
++++ boringssl-20190916/CMakeLists.txt
 @@ -1,5 +1,7 @@
- cmake_minimum_required(VERSION 2.8.11)
+ cmake_minimum_required(VERSION 3.0)
  
 +set(boringssl_SOVERSION 1)
 +
- # Report AppleClang separately from Clang. Their version numbers are different.
- # https://cmake.org/cmake/help/v3.0/policy/CMP0025.html
- if(POLICY CMP0025)
-@@ -546,6 +548,12 @@ endif()
+ # Defer enabling C and CXX languages.
+ project(BoringSSL NONE)
+ 
+@@ -536,6 +538,12 @@ endif()
  # Add minimal googletest targets. The provided one has many side-effects, and
  # googletest has a very straightforward build.
  add_library(boringssl_gtest third_party/googletest/src/gtest-all.cc)
@@ -57,11 +57,11 @@ Index: boringssl-20190523/CMakeLists.txt
  target_include_directories(boringssl_gtest PRIVATE third_party/googletest)
  
  include_directories(third_party/googletest/include)
-Index: boringssl-20190523/crypto/CMakeLists.txt
+Index: boringssl-20190916/crypto/CMakeLists.txt
 ===================================================================
---- boringssl-20190523.orig/crypto/CMakeLists.txt
-+++ boringssl-20190523/crypto/CMakeLists.txt
-@@ -419,6 +419,12 @@ add_library(
+--- boringssl-20190916.orig/crypto/CMakeLists.txt
++++ boringssl-20190916/crypto/CMakeLists.txt
+@@ -420,6 +420,12 @@ add_library(
    ${CRYPTO_ARCH_SOURCES}
    ${CRYPTO_FIPS_OBJECTS}
  )
@@ -72,12 +72,12 @@ Index: boringssl-20190523/crypto/CMakeLists.txt
 +  )
 +endif()
  
- add_dependencies(crypto global_target)
- 
-Index: boringssl-20190523/decrepit/CMakeLists.txt
+ if(FIPS_SHARED)
+   # Rewrite libcrypto.so to inject the correct module hash value. This assumes
+Index: boringssl-20190916/decrepit/CMakeLists.txt
 ===================================================================
---- boringssl-20190523.orig/decrepit/CMakeLists.txt
-+++ boringssl-20190523/decrepit/CMakeLists.txt
+--- boringssl-20190916.orig/decrepit/CMakeLists.txt
++++ boringssl-20190916/decrepit/CMakeLists.txt
 @@ -21,6 +21,12 @@ add_library(
    x509/x509_decrepit.c
    xts/xts.c
@@ -91,10 +91,10 @@ Index: boringssl-20190523/decrepit/CMakeLists.txt
  
  add_dependencies(decrepit global_target)
  
-Index: boringssl-20190523/ssl/CMakeLists.txt
+Index: boringssl-20190916/ssl/CMakeLists.txt
 ===================================================================
---- boringssl-20190523.orig/ssl/CMakeLists.txt
-+++ boringssl-20190523/ssl/CMakeLists.txt
+--- boringssl-20190916.orig/ssl/CMakeLists.txt
++++ boringssl-20190916/ssl/CMakeLists.txt
 @@ -40,6 +40,12 @@ add_library(
    tls13_enc.cc
    tls13_server.cc

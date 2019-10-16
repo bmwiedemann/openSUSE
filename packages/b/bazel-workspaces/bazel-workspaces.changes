@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Oct 11 08:08:51 UTC 2019 - mrostecki@opensuse.org
+
+- Update to version 20191011:
+  * Add workspace for msgpack
+
+-------------------------------------------------------------------
+Thu Oct 10 21:44:13 UTC 2019 - mrostecki@opensuse.org
+
+- Update to version 20191010:
+  * sql-parser: Fix headers directory
+
+-------------------------------------------------------------------
+Thu Oct 10 19:00:59 UTC 2019 - mrostecki@opensuse.org
+
+- Update to version 20191010:
+  * Add workspace for http-parser
+  * Add workspace for sql-parser
+
+-------------------------------------------------------------------
+Thu Sep 26 11:16:17 UTC 2019 - mrostecki@opensuse.org
+
+- Update to version 20190926:
+  * jwt_verify_lib: Fix the library name
+  * Add workspace for jwt_verify_lib
+  * Add workspace for luajit
+  * Add workspace for curl
+  * Add workspace for libevent
+  * benchmark: Add linkopts
+  * benchmark: Add benchmark_main library
+  * Add workspace for benchmark
+  * gtest: Make libraries public and dynamically linked
+  * gtest: Add gtest_main library
+  * Add workspace for openssl-cbs
+  * Add workspace for bsslwrapper
+  * Add workspace for googletest
+  * Add workspace for libcircllhist
+  * Add workspace for yaml-cpp
+  * Add workspace for gperftools
+  * Add workspace for c-ares
+  * Add workspace for rapidjson
+  * Add workspace for libprotobuf-mutator
+
+-------------------------------------------------------------------
 Fri Sep 20 12:59:27 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
 
 - Initial release

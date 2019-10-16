@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 14 13:37:16 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Replace %fdupes -s with plain %fdupes; hardlinks are better.
+
+-------------------------------------------------------------------
 Mon Oct  3 22:50:55 UTC 2016 - Greg.Freemyer@gmail.com
 
 - update to v1-1.5

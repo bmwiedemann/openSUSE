@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 14 11:43:24 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Replace %fdupes -s with plain %fdupes; hardlinks are better.
+
+-------------------------------------------------------------------
 Sat Mar 16 17:00:23 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Avoid name repetition in summary (rpmlint).

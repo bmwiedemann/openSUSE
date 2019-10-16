@@ -71,12 +71,12 @@ for seed in /var/lib/systemd/random-seed /var/lib/misc/random-seed; do
 done
 
 echo 'Clearing systemd journal'
-pushd /etc/systemd
+pushd /etc/systemd > /dev/null
 cp journald.conf journald.conf.bak
 echo -e '\nSystemMaxUse=1K' >> journald.conf
 systemctl restart systemd-journald
 mv journald.conf.bak journald.conf
-popd
+popd > /dev/null
 
 echo 'Clearing systemd machine ID file'
 truncate -s 0 /etc/machine-id
@@ -108,14 +108,59 @@ EOF
 echo 'Enabling YaST Firstboot if necessary'
 [ -e /etc/YaST2/firstboot.xml ] && touch /var/lib/YaST2/reconfig_system
 
+
 if [ "$CMCU_RSNAP" = "yes" ]; then
+SNAPPER_CMD="snapper delete"
     if [ -d /.snapshots ]; then
-        echo "Remove all btrfs snapshots from /.snapshot"
-        for s in `snapper list | awk '/pre/||/post/{print $3}'`; do
-            snapper delete $s
-        done
+	echo "Removing all pre/post btrfs snapshots from /.snapshot"
+	snapshots=$(dbus-send --type=method_call --system --print-reply \
+			      --dest=org.opensuse.Snapper \
+			      /org/opensuse/Snapper \
+			      org.opensuse.Snapper.ListSnapshots string:root \
+			      2>/dev/null | awk -- "
+BEGIN {arr=0; cnt=0; u2=0; u4=0; del=0}
+/array \[/ {arr++}
+/struct {/ {if (arr==1) cnt++}
+/}/ {if(arr==1&&--cnt==0){if(del==1) print id \"|\" lst;del=0;u4=0;u2=0}}
+/\]/ {arr--}
+# Don't delete current snapshot
+/string "current"/ {if (arr==1 && cnt==1) del=0}
+# ID: 1st uint32 value of each top struct in top array
+/uint32/ {if (arr==1 && cnt==1) if (++u4==1)id=\$2; else if (u4==2)lst=\$2}
+# Type: 1st uint16 value of each top struct in top array
+/uint16/ {if (arr==1 && cnt==1){if (++u2==1) {if (\$2==1 || \$2==2){del=1}}}}
+")
+
+	# Create chains
+	OFS=$IFS
+	IFS=" "
+	while read line; do
+	    [[ $line =~ ([^\|]+)\|(.*) ]]
+	    last[${BASH_REMATCH[1]}]=${BASH_REMATCH[2]};
+	    [ -z "${next[${BASH_REMATCH[1]}]}" ] && next[${BASH_REMATCH[1]}]=0
+	    next[${BASH_REMATCH[2]}]=${BASH_REMATCH[1]}
+	done <<< $snapshots
+	IFS=$OFS
+	# Find end of each chain and work backwards
+	for i in ${!next[@]}; do
+	    [ -n "${next[$i]}" ] || continue # unpopulated
+	    a=${next[$i]}; unset next[$i]; b=$i
+	    while true; do
+		if [ $a -eq 0 ]
+		then
+		    while true; do
+			unset next[$b]; $SNAPPER_CMD $b
+			b=${last[$b]}
+			[ $b -eq 0 ] && break 2
+		    done
+		else
+		    b=$a; a=${next[$a]}; unset next[$b]
+		fi
+	    done
+	done
     fi
 fi
+
 if [ "$CMCU_ZYPP_REPOS" = "yes" ]; then
     echo "Clean up all zypper repositories"
     rm -rf /etc/zypp/repos.d/*

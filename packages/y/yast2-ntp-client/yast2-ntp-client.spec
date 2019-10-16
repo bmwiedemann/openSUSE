@@ -17,7 +17,7 @@
 
 
 Name:           yast2-ntp-client
-Version:        4.2.4
+Version:        4.2.5
 Release:        0
 Summary:        YaST2 - NTP Client Configuration
 License:        GPL-2.0-or-later
@@ -28,10 +28,11 @@ Source0:        %{name}-%{version}.tar.bz2
 
 BuildRequires:  augeas-lenses
 BuildRequires:  autoyast2-installation
-# Needed for /etc/cron.* ownership; those directories have special permission handling
-BuildRequires:  cron
 BuildRequires:  perl-XML-Writer
 BuildRequires:  update-desktop-files
+# need as it own /usr/lib/systemd and for systemd macros
+BuildRequires:  systemd-rpm-macros
+%{?systemd_requires}
 # cwm/popup
 BuildRequires:  yast2 >= 4.1.15
 BuildRequires:  yast2-country-data
@@ -71,11 +72,31 @@ This package contains the YaST2 component for NTP client configuration.
 %yast_metainfo
 
 %post
+%service_add_post yast-timesync.service
+
 # upgrade old name and convert it to chrony (bsc#1079122)
 if [ -f /etc/cron.d/novell.ntp-synchronize ]; then
   mv /etc/cron.d/novell.ntp-synchronize /etc/cron.d/suse-ntp_synchronize
   sed -i 's:\* \* \* \* root .*:* * * * root /usr/sbin/chronyd -q \&>/dev/null:' /etc/cron.d/suse-ntp_synchronize
 fi
+
+# and now update cron to systemd timer. We need to support upgrade from SLE12 and also SLE15 SP1.
+# jsc#SLE-9113
+if [ -f /etc/cron.d/suse-ntp_synchronize ]; then
+  /usr/bin/erb timeout=$(grep -o '[[:digit:]]\+' /etc/cron.d/suse-ntp_synchronize) /usr/share/YaST2/data/yast-timesync.timer.erb > /etc/systemd/system/yast-timesync.timer
+  /bin/systemctl enable yast-timesync.timer
+  /bin/systemctl start yast-timesync.timer
+  rm /etc/cron.d/suse-ntp_synchronize
+fi
+
+%pre
+%service_add_pre yast-timesync.service
+
+%postun
+%service_del_postun yast-timesync.service
+
+%preun
+%service_del_preun yast-timesync.service
 
 %files
 %{yast_clientdir}
@@ -86,8 +107,8 @@ fi
 %{yast_metainfodir}
 %{yast_ydatadir}
 %{yast_schemadir}
-%ghost %{_sysconfdir}/cron.d/suse-ntp_synchronize
 %{yast_icondir}
+%{_unitdir}/yast-timesync.service
 %license COPYING
 %doc %{yast_docdir}
 

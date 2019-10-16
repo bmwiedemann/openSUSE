@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Oct  5 22:27:31 UTC 2019 - Asterios Dramis <asterios.dramis@gmail.com>
+
+- Update to version 4.0:
+  * Improvements related to Word Completion:
+    + English word list with frequency information will be
+      installed with xvkbd, which was derived from:
+      https://en.wiktionary.org/wiki/Wiktionary:Frequency_lists#Project_Gutenberg
+    + xvkbd can now "learn" the recently used words, so that those
+      words will be listed near top of the completion list
+      afterword.
+    + completion panel can be integrated into the xvkbd's main
+      window, when Integrate Completion Panel? on the Property
+      panel set on.
+    + xvkbd will insert blank (' ') automatically between words,
+      when Insert Blank after Completion? on the Property panel set
+      on.
+  * Modifier "Super" (keysym Super_L and Super_R) is now supported,
+    although it is not on the supplied keyboard layouts.
+    Modifier "Super" can be expressed as "\W" in -text option.
+  * Modifiers did not work correctly before first key is pressed.
+    This problem is fixed.
+  * To build, "./configure" may be used instead of "xmkmf".
+- Removed support for openSUSE <= 12.1.
+- Removed imake build requirement (not needed anymore, autoconf is
+  used).
+- Removed xvkbd.default (was not used anyway).
+- Rebased xvkbd-3.0-compilerwarnings.diff to apply cleanly.
+
+-------------------------------------------------------------------
 Sun Dec  2 21:06:18 UTC 2018 - Asterios Dramis <asterios.dramis@gmail.com>
 
 - Update to version 3.9:

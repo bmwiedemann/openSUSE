@@ -1,4 +1,159 @@
 -------------------------------------------------------------------
+Sat Oct 12 12:38:37 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.1.0
+  New games:
+  * Added support for Blade Runner.
+  * Added support for Duckman: The Graphic Adventures of a
+    Private Dick.
+  * Added support for Hoyle Bridge.
+  * Added support for Hoyle Children's Collection.
+  * Added support for Hoyle Classic Games.
+  * Added support for Hoyle Solitaire.
+  * Added support for Hyperspace Delivery Boy!
+  * Added support for Might and Magic IV - Clouds of Xeen.
+  * Added support for Might and Magic V - Darkside of Xeen.
+  * Added support for Might and Magic - World of Xeen.
+  * Added support for Might and Magic - World of Xeen 2 CD
+    Talkie.
+  * Added support for Might and Magic - Swords of Xeen.
+  * Added support for Mission Supernova Part 1.
+  * Added support for Mission Supernova Part 2.
+  * Added support for Quest for Glory: Shadows of Darkness.
+  * Added support for The Prince and the Coward.
+  * Added support for Versailles 1685.
+  New ports:
+  * Added Nintendo Switch port.
+  General:
+  * Improved GUI rendering and overall GUI performance.
+  * Added stretch mode option to control how the display is
+    stretched to the window or screen area.
+  * Fixed incorrect cursor movement when it's controlled using
+    the keyboard.
+  * Updated the Roland MT-32 emulation code to Munt 2.3.0.
+  * Improved unknown game variants reporting.
+  * Enabled cloud support.
+  * Added Text to Speech capabilities for better accessibility
+    on some platforms.
+  ADL:
+  * Improved color accuracy.
+  * Added a TV emulation mode.
+  * Added support for the WOZ disk image format.
+  Drascula:
+  * Fixed loading game from launcher when the game had been
+    saved in chapter 1.
+  Full Pipe:
+  * Fixed playtime not being restored when loading a savegame.
+  * Fixed a bug that leads to enormous memory consumption in
+    scene 22.
+  Kyra:
+  * Added support for the Amiga version of Eye of the Beholder I
+    + II.
+  * Added support for the FM-Towns version of Eye of the
+    Beholder II.
+  * Several bug fixes.
+  MOHAWK:
+  * Added a main menu for the 25th anniversary release of Myst
+    ME.
+  * Repurposed the landing menu as a main menu for the 25th
+    anniversary release of Riven.
+  * Added autosave to slot 0 to Myst and Riven.
+  * Added keyboard shortcuts for loading and saving as
+    documented in the game manual to Myst and Riven.
+  * Fixed a crash caused by the observatory viewer random
+    position going out of bounds in Myst.
+  * Fixed a crash caused by Jungle Island flies going out of
+    bounds in Riven.
+  * Fixed missing end credits for the Polish version in Riven.
+  * Improved usability for some puzzles in Myst and Riven.
+  * Fixed various crashes, graphics glitches, and sound
+    imperfections in Myst and Riven.
+  Mortevielle:
+  * Added speech synthesis on some platforms.
+  SCI:
+  * Added LarryScale, a high quality cartoon scaler for Leisure
+    Suit Larry 7.
+  * Fixed over 100 original game script bugs in CAMELOT, ECO1,
+    ECO2, FREDDYPHARKAS, GK1, HOYLE5, ICEMAN, KQ6, LB1, LB2,
+    LONGBOW, LSL6, MOTHERGOOSE256, PQ3, PQ4, QFG1VGA, QFG4, and
+    SQ4.
+  * Fixed a bug in version 2.0.0 that prevented the Macintosh
+    versions of Freddy Pharkas, King's Quest 6, and Quest for
+    Glory 1 (VGA) from loading.
+  * Fixed a crash in the Macintosh version of Freddy Pharkas
+    when picking up the shovel which makes the game completable.
+  * Fixed loading autosave games.
+  SCUMM:
+  * Implemented lipsync for v6 and v7+ games.
+  * Improved Audio quality in Humongous Entertainment games by
+    using the Miles AdLib driver.
+  * Fixed possible stack overflows in The Dig and Full Throttle.
+  * Fixed original speech glitch on submarine in Indiana Jones
+    and the Fate of Atlantis. Users need to recompress their
+    monster.sou using an up-to-date version of scummvm-tools for
+    this to take effect when using compressed audio.
+  * Fixed an issue in the wig maker room in the German version
+    of SPY Fox 3: Operation Ozone which makes the game
+    completable.
+  * Added sound driver for the Amiga versions of Monkey Island 2
+    and Indiana Jones and the Fate of Atlantis.
+  Sherlock:
+  * Fixed crash in Spanish version talking to lady in Tailor
+    shop.
+  SKY:
+  * Added workaround for original game bug to improve intro and
+    not cut off images which exist as fullscreen (320x200px) in
+    the game data files.
+  Tinsel:
+  * Fix loading Discworld 1 savegames from the launcher where
+    Rincewind had a held item.
+  * Script patch for hang in Discworld 1 GRA using items on
+    Temple big hammer.
+  * In Discworld 1, Held items being released that were never in
+    the Luggage or Rincewind's inventory will now be
+    automatically dropped into the Luggage rather than being
+    lost.
+  Titanic:
+  * Fixed bug in entering floor numbers numerically that could
+    crash the game.
+  * Fixed parser not getting properly reset across sentences in
+    a conversation.
+  * Fixed endless busy cursor on Titania closeup when brain
+    slots are incorrectly inserted.
+  * Fixed loading saves in front of Barbot could cause him to go
+    into an infinite animation loop.
+  * Fixed crash asking Parrot who sabotaged the ship.
+  Tucker:
+  * Fixed multiple graphic issues in Bud Tucker in Double
+    Trouble.
+  * Fixed multiple issues with font and subtitle rendering.
+  * Fixed dentist music in mall being played incorrectly.
+  * Fixed wrong sound effects being played.
+  * Fixed a bug that made the bubbles in the Plugs Shop not
+    always visible.
+  * Fixed a missing animation when Ego and Billie are on the
+    boat.
+  * Fixed a bug that caused a dead end in the second museum
+    scene.
+  * Bud is no longer able to walk outside the walkable area when
+    visiting the club.
+  * Bud is also no longer able to walk through closed doors.
+  * Added mouse wheel support for inventory scrolling.
+  * Allow skipping of speech.
+  * Improved savegame handling and added support for autosaves.
+  ZVISION:
+  * Fixed graphical glitch in Zork: Grand Inquisitor.
+  * Packaged the required fonts with ScummVM.
+  SDL ports (including Windows, Linux, macOS):
+  * Added support for game controllers.
+  * Added support for adding games via Drag and Drop.
+
+- Dropped scummvm-fix_CVE-2017-17528.patch (merged upstream)
+
+- Dropped scummvm.changes as source (no longer necessary as date
+  reference)
+
+-------------------------------------------------------------------
 Sun Aug 11 17:58:36 UTC 2019 - Benoît Monin <benoit.monin@gmx.fr>
 
 - run spec-cleaner

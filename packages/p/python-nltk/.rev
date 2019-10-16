@@ -66,4 +66,12 @@
     a compromised server CVE-2019-14751</comment>
     <requestid>730102</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>3de3579b67e6efdc6e39a350afa11b93</srcmd5>
+    <version>3.4.5</version>
+    <time>1571210103</time>
+    <user>dimstar_suse</user>
+    <comment>Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>738364</requestid>
+  </revision>
 </revisionlist>

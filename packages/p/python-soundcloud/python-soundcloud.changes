@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 14 14:43:18 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Replace %fdupes -s with plain %fdupes; hardlinks are better.
+
+-------------------------------------------------------------------
 Sat Nov 25 20:04:41 UTC 2017 - aloisio@gmx.com
 
 - Added missing runtime dependency

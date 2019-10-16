@@ -23,13 +23,16 @@ Version:        2.0
 Release:        0
 Summary:        Routines for dealing with data streams
 License:        MIT
-Group:          Development/Languages/Python
-Url:            https://github.com/jaraco/jaraco.stream
+URL:            https://github.com/jaraco/jaraco.stream
 Source:         https://files.pythonhosted.org/packages/source/j/%{_name}/%{_name}-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-jaraco.base >= 6.1
+Requires:       python-more-itertools
+Requires:       python-six
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module more-itertools}
 BuildRequires:  %{python_module pytest}
@@ -41,10 +44,6 @@ BuildRequires:  %{python_module jaraco.packaging >= 6.1}
 BuildRequires:  %{python_module pylons-sphinx-themes}
 BuildRequires:  %{python_module rst.linker >= 1.9}
 # /SECTION
-Requires:       python-jaraco.base >= 6.1
-Requires:       python-more-itertools
-Requires:       python-six
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -53,7 +52,6 @@ for loading gzip data on the fly.
 
 %package     -n %{name}-doc
 Summary:        Documentation files for %{name}
-Group:          Documentation/HTML
 Requires:       %{name} = %{version}
 Provides:       %{python_module jaraco.stream-doc = %{version}}
 
@@ -67,14 +65,14 @@ rm -rf jaraco.stream.egg-info
 
 %build
 %python_build
-%__python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo
+python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo
 
 %install
 %python_install
 # We will package the namespace __init__.py separately
 %{python_expand rm %{buildroot}%{$python_sitelib}/jaraco/__init__.py*
 rm -rf %{buildroot}%{$python_sitelib}/jaraco/__pycache__/
-%fdupes -s %{buildroot}%{$python_sitelib}
+%fdupes %{buildroot}%{$python_sitelib}
 }
 
 %check

@@ -48,4 +48,13 @@
   * Improves robustness of docstring parser in the face of unexpected format docstrings. #183</comment>
     <requestid>730554</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>c79338313cd5a7d26eebf83d789d7f68</srcmd5>
+    <version>0.2.1</version>
+    <time>1571210338</time>
+    <user>dimstar_suse</user>
+    <comment>- Add subpoint-usage-test.patch, which will change the subpoint usage string
+  if running under Python 3.8.</comment>
+    <requestid>738722</requestid>
+  </revision>
 </revisionlist>

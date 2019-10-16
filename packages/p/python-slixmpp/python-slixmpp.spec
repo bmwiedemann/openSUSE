@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,9 +24,8 @@ Version:        1.4.2
 Release:        0
 Summary:        Python XMPP (Jabber) Library that Implements Everything as a Plugin
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://slixmpp.readthedocs.io/
-Source:         https://lab.louiz.org/poezio/slixmpp/-/archive/slix-%{version}/slixmpp-slix-%{version}.tar.gz 
+Source:         https://lab.louiz.org/poezio/slixmpp/-/archive/slix-%{version}/slixmpp-slix-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE slixmpp-fix-legacyauth.patch nyov@nexnode.net -- Fix an error in legacyauth support.
 Patch0:         %{_name}-fix-legacyauth.patch
 BuildRequires:  %{python_module Cython}
@@ -57,7 +56,7 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitearch}/
+%python_expand %fdupes %{buildroot}%{$python_sitearch}/
 
 %check
 # %%python_exec run_tests.py

@@ -22,19 +22,18 @@ Version:        0.8.13
 Release:        0
 Summary:        Bindings for scrypt
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
-Url:            http://bitbucket.org/mhallin/py-scrypt
+URL:            https://bitbucket.org/mhallin/py-scrypt
 Source0:        https://files.pythonhosted.org/packages/source/s/scrypt/scrypt-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  gcc
+BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(openssl)
 # SECTION test requires
 BuildRequires:  %{python_module pytest}
 # /SECTION
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %python_subpackages
 
 %description
@@ -48,13 +47,12 @@ Bindings for the scrypt key derivation function library.
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitearch}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -mpytest
 
 %files %{python_files}
-%defattr(-,root,root)
 %doc README.rst
 %license LICENSE
 %pycache_only %{python_sitearch}/scrypt/__pycache__

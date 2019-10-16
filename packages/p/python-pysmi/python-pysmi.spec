@@ -22,7 +22,6 @@ Version:        0.3.4
 Release:        0
 Summary:        SNMP SMI/MIB Parser
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            http://pysmi.sourceforge.net/
 Source:         https://files.pythonhosted.org/packages/source/p/pysmi/pysmi-%{version}.tar.gz
 BuildRequires:  %{python_module ply}
@@ -52,7 +51,7 @@ mv %{buildroot}%{_bindir}/mibdump.py %{buildroot}%{_bindir}/mibdump
 mv %{buildroot}%{_bindir}/mibcopy.py %{buildroot}%{_bindir}/mibcopy
 %python_clone -a %{buildroot}%{_bindir}/mibdump
 %python_clone -a %{buildroot}%{_bindir}/mibcopy
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %post
 %python_install_alternative mibdump

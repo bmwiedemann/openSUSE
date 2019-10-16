@@ -43,4 +43,12 @@
 - Replace outdated llvm-clang-devel dependency by clang-devel.</comment>
     <requestid>734944</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6725aafe12baa478d53b37bc975acca1</srcmd5>
+    <version>1.6</version>
+    <time>1571210280</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.6</comment>
+    <requestid>738561</requestid>
+  </revision>
 </revisionlist>

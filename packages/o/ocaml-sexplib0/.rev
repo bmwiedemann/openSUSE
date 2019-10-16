@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d64c2a4ae98eb5051bf80ca766059e01</srcmd5>
+    <version>0.12.0</version>
+    <time>1571209979</time>
+    <user>dimstar_suse</user>
+    <comment>dependency of ocaml-base, which became a dependency of ocaml-pcre</comment>
+    <requestid>736825</requestid>
+  </revision>
+</revisionlist>

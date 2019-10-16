@@ -167,4 +167,12 @@
   * For more see CHANGES.rst</comment>
     <requestid>681508</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>867ac4604839b945a11353296a93acae</srcmd5>
+    <version>2.4.0</version>
+    <time>1571210174</time>
+    <user>dimstar_suse</user>
+    <comment>Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>738412</requestid>
+  </revision>
 </revisionlist>

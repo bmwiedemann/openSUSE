@@ -1,0 +1,22 @@
+From 9b5f88bca562f37d30eb7ac0f8f4ebdda68cb494 Mon Sep 17 00:00:00 2001
+From: Christoph Gohlke <cjgohlke@gmail.com>
+Date: Wed, 14 Aug 2019 14:01:06 -0700
+Subject: [PATCH] Fix test error on Python 3.8.0b3
+
+Fix `ImportError: cannot import name 'clock' from 'time' (unknown location)`
+---
+ test/math_test.py | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/test/math_test.py b/test/math_test.py
+index c0bb84eb3..f22ba5e12 100644
+--- a/test/math_test.py
++++ b/test/math_test.py
+@@ -2,7 +2,6 @@
+ import sys
+ import unittest
+ import math
+-from time import clock
+ import platform
+ 
+ import pygame.math

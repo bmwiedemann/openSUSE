@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Oct  8 13:24:41 UTC 2019 - abriel@suse.com
+
+- Bump version to 1.5
+- Don't show output from pushd/popd
+- Make snapper snapshot removal more generic
+  The output format is not really meant for machine reading, it's
+  format has changed thus the simple parser broke.
+  This now makes the parser more generic (using data from d-bus),
+  also now it is ensured the snapshots are deleted in the correct
+  order.
+  (bsc#1149322)
+
+-------------------------------------------------------------------
+Tue Aug 27 07:06:00 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in descriptions.
+
+-------------------------------------------------------------------
 Wed Aug  7 11:00:14 UTC 2019 - Egbert Eich <eich@suse.com>
 
 - Install README.md and license file, fix build warnings.
@@ -74,4 +92,3 @@ Fri Oct 23 09:05:07 UTC 2015 - hguo@suse.com
 Mon Sep 14 12:35:46 UTC 2015 - hguo@suse.com
 
 - Initial version, initial release.
-

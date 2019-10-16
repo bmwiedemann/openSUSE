@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 26 11:41:34 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with cmake 3.15 due to https://cmake.org/cmake/help/v3.15/policy/CMP0093.html
+  0001-Always-add-PROJECT_BINARY_DIR-to-include_directories.patch
+- Use system expat and udns libraries
+- Enable OpenMP support
+
+-------------------------------------------------------------------
 Fri Aug 16 22:11:30 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 2018.3.4

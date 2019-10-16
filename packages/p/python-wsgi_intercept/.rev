@@ -193,4 +193,13 @@
     <comment></comment>
     <requestid>705798</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>d3fb81b0cb1274100e35d17ddec1a967</srcmd5>
+    <version>1.8.1</version>
+    <time>1571210288</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to build with latest httplib2 releases:
+  * httplib2.patch</comment>
+    <requestid>738595</requestid>
+  </revision>
 </revisionlist>

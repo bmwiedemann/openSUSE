@@ -1,0 +1,16 @@
+<services>
+  <service mode="disabled" name="obs_scm">
+    <param name="url">https://github.com/bazelbuild/apple_support</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="filename">bazel-apple-support</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="revision">0.7.1</param>
+  </service>
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+</services>

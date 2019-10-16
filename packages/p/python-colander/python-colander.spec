@@ -23,13 +23,15 @@ Version:        1.7.0
 Release:        0
 Summary:        A schema-based serialization and deserialization library
 License:        BSD-4-Clause AND ZPL-2.1 AND MIT
-Group:          Development/Languages/Python
-Url:            https://github.com/Pylons/colander
+URL:            https://github.com/Pylons/colander
 Source:         https://files.pythonhosted.org/packages/source/c/colander/colander-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module translationstring}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-iso8601
+Requires:       python-translationstring
+BuildArch:      noarch
 # SECTION documentation requirements
 BuildRequires:  %{python_module Sphinx} >= 1.3.1
 BuildRequires:  %{python_module docutils}
@@ -43,10 +45,6 @@ BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module plaster-pastedeploy}
 BuildRequires:  %{python_module plaster}
 # /SECTION
-Requires:       python-iso8601
-Requires:       python-translationstring
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -65,19 +63,18 @@ for documentation.
 
 %package doc
 Summary:        Documentation for %{name}
-Group:          Documentation/HTML
 Requires:       %{name} = %{version}
 
 %description doc
 This package contains documentation files for %{name}.
 
 %package lang
+# FIXME: consider using %%lang_package macro
 Summary:        Translations for package %{name}
-Group:          System/Localization
 Requires:       %{name} = %{version}
 Requires:       python-base
-Provides:       %{name}-lang-all = %{version}
 Supplements:    %{name}
+Provides:       %{name}-lang-all = %{version}
 BuildArch:      noarch
 
 %description lang
@@ -94,7 +91,7 @@ Provides translations for the "%{name}" package.
 %python_install
 %find_lang colander
 %python_expand grep -F "%{$python_sitelib}" colander.lang > colander_%{$python_bin_suffix}.lang
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py nosetests --with-coverage
@@ -105,13 +102,13 @@ Provides translations for the "%{name}" package.
 %{python_sitelib}/*
 %exclude %{python_sitelib}/colander/locale
 
-%if %have_python2 && ! 0%{?skip_python2}
+%if %{have_python2} && ! 0%{?skip_python2}
 %files -n %{python2_prefix}-colander-lang -f colander_%{python2_bin_suffix}.lang
 %license LICENSE.txt
 %{python2_sitelib}/colander/locale
 %endif
 
-%if %have_python2 && ! 0%{?skip_python3}
+%if %{have_python2} && ! 0%{?skip_python3}
 %files -n %{python3_prefix}-colander-lang -f colander_%{python3_bin_suffix}.lang
 %license LICENSE.txt
 %{python3_sitelib}/colander/locale

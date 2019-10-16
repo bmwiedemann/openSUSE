@@ -30,7 +30,6 @@ Version:        4.9.3
 Release:        0
 Summary:        Zope interface extension for defining data schemas
 License:        ZPL-2.1
-Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/zope.schema
 Source:         https://files.pythonhosted.org/packages/source/z/zope.schema/zope.schema-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -38,6 +37,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-zope.event
 Requires:       python-zope.interface >= 3.6.0
+BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module zope.event}
 BuildRequires:  %{python_module zope.i18nmessageid}
@@ -45,7 +45,6 @@ BuildRequires:  %{python_module zope.interface >= 3.6.0}
 BuildRequires:  %{python_module zope.testing}
 BuildRequires:  %{python_module zope.testrunner}
 %endif
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -68,7 +67,7 @@ rm -rf zope.schema.egg-info
 %install
 %if !%{with test}
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
 %if %{with test}

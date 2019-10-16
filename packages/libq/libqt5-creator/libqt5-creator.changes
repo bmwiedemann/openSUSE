@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Oct 15 10:30:02 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 4.10.1
+  * Editing
+    - Fixed file saving with some text encodings
+    - Fixed `Preserve case` in advanced search and replace (QTCREATORBUG-19696)
+    - Fixed crash when changing editor font (QTCREATORBUG-22933)
+  * Help
+    - Fixed that text moved around when resizing and zooming (QTCREATORBUG-4756)
+  * All Projects
+    - Fixed `Qt Creator Plugin` wizard (QTCREATORBUG-22945)
+  * Debugging
+    - Fixed more layout restoration issues (QTCREATORBUG-22286, QTCREATORBUG-22415, QTCREATORBUG-22938)
+  * LLDB
+    - Fixed wrong empty command line argument when debugging (QTCREATORBUG-22975)
+  * Qt Quick Designer
+    - Removed transformations from list of unsupported types
+    - Fixed update of animation curve editor
+
+-------------------------------------------------------------------
 Thu Sep 19 21:46:57 UTC 2019 - Herbert Graeber <herbert@graeber-clan.de>
 
 - Add new pri file to plugin-devel subpackage

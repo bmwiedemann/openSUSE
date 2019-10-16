@@ -26,4 +26,12 @@
     <comment></comment>
     <requestid>731866</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>e67f817592ba2aed35be651de2b0109b</srcmd5>
+    <version>0.4.4</version>
+    <time>1571210048</time>
+    <user>dimstar_suse</user>
+    <comment>Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>738301</requestid>
+  </revision>
 </revisionlist>

@@ -17,8 +17,8 @@
 
 
 %define sname vacuum
-%define rtime 1547184578
-%define rhash 3164aec5
+%define rtime 1571036065
+%define rhash 9f3952b2
 Name:           %{sname}-im
 Version:        1.3.0+git%{rtime}.%{rhash}
 Release:        0

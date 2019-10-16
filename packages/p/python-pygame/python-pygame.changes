@@ -1,3 +1,10 @@
+------------------------------------------------------------------
+Tue Oct 15 04:11:07 UTC 2019 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add python-pygame-python38-import.patch from upstream to fix a build 
+  failure with Python 3.8.
+- Use autopatch macro rather than patch0, due to multiple patches.
+
 -------------------------------------------------------------------
 Mon May 20 08:46:49 UTC 2019 - pgajdos@suse.com
 

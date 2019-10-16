@@ -17,7 +17,7 @@
 
 
 Name:           clazy
-Version:        1.5
+Version:        1.6
 Release:        0
 Summary:        Qt oriented code checker based on the Clang framework
 License:        LGPL-2.0-or-later
@@ -57,10 +57,11 @@ sed -i 's#%{_bindir}/env sh#/bin/sh#' %{buildroot}%{_bindir}/clazy
 
 %files
 %license COPYING-LGPL2.txt
+%doc %{_datadir}/doc/clazy
 %doc README.md HOWTO Changelog
 %{_bindir}/clazy
 %{_bindir}/clazy-standalone
-%doc %{_datadir}/doc/clazy
+%{_datadir}/metainfo/org.kde.clazy.metainfo.xml
 %{_libdir}/ClazyPlugin.so
 %{_mandir}/man1/clazy.1%{?ext_man}
 

@@ -22,7 +22,6 @@ Version:        2.0
 Release:        0
 Summary:        A library to identify device capabilities (phones, tablets)
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/selwin/python-user-agents
 Source:         https://github.com/selwin/python-user-agents/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
@@ -48,7 +47,7 @@ strings.
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}/%{$python_sitelib}
+%python_expand %fdupes %{buildroot}/%{$python_sitelib}
 
 %check
 %python_expand $python -m unittest discover ||:

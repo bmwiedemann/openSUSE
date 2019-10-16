@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">git://github.com/openSUSEjfkw/obs-service-go_modules.git</param>
+              <param name="changesrevision">861db1a1f880e835fd688477acf0def5930947b1</param></service><service name="tar_scm">
+                <param name="url">git://github.com/openSUSE/obs-service-go_modules.git</param>
+              <param name="changesrevision">01876e4604a337048df00a3617ed1332d6fd7769</param></service></servicedata>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-libnacl
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,6 @@ Version:        1.6.1
 Release:        0
 Summary:        Python bindings for libsodium based on ctypes
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/saltstack/libnacl
 Source0:        https://github.com/saltstack/libnacl/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module devel}
@@ -49,7 +48,7 @@ in libnacl/__init__.py can be pulled out and placed directly in any project to g
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}/%{$python_sitelib}
+%python_expand %fdupes %{buildroot}/%{$python_sitelib}
 
 %check
 %python_expand $python tests/runtests.py

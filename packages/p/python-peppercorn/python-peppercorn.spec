@@ -23,18 +23,16 @@ Version:        0.6
 Release:        0
 Summary:        Pyramid exceptions logger
 License:        BSD-4-Clause AND ZPL-2.1 AND MIT
-Group:          Development/Languages/Python
-Url:            http://docs.pylonsproject.org/projects/peppercorn/en/latest/
+URL:            https://docs.pylonsproject.org/projects/peppercorn/en/latest/
 Source:         https://files.pythonhosted.org/packages/source/p/peppercorn/peppercorn-%{version}.tar.gz
-# Documentation requirements:
-BuildRequires:  python3-Sphinx
 # Testing requirements:
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pylons-sphinx-themes}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+# Documentation requirements:
+BuildRequires:  python3-Sphinx
 BuildArch:      noarch
 %python_subpackages
 
@@ -49,7 +47,6 @@ documentation.
 
 %package -n %{name}-doc
 Summary:        Documentation for Pyramid exceptions logger
-Group:          Documentation/HTML
 
 %description -n %{name}-doc
 This package contains documentation for %{name}.
@@ -63,23 +60,21 @@ python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py nosetests --with-coverage
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %if 0%{?leap_version} >= 420200 || 0%{?suse_version} > 1320
 %license LICENSE.txt
 %else
-%doc LICENSE.txt
+%license LICENSE.txt
 %endif
 %doc CHANGES.rst CONTRIBUTORS.txt COPYRIGHT.txt README.rst contributing.md
 %{python_sitelib}/*
 
 %files -n %{name}-doc
-%defattr(-,root,root,-)
 %doc build/sphinx/html
 
 %changelog

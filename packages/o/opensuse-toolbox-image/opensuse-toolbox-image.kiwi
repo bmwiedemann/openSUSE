@@ -34,13 +34,14 @@
     </type>
     <version>1.0.0</version>
     <packagemanager>zypper</packagemanager>
-    <rpm-excludedocs>true</rpm-excludedocs>
+    <rpm-excludedocs>false</rpm-excludedocs>
   </preferences>
   <repository>
     <source path="obsrepositories:/"/>
   </repository>
   <packages type="bootstrap">
     <package name="gdb"/>
+    <package name="glibc-locale"/>
     <package name="strace"/>
     <package name="ltrace"/>
     <package name="traceroute"/>
@@ -49,5 +50,6 @@
     <package name="tcpdump"/>
     <package name="vim"/>
     <package name="less"/>
+    <package name="man"/>
   </packages>
 </image>

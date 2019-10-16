@@ -637,4 +637,13 @@
   * Use hda audio instead of deprecated ac97</comment>
     <requestid>738234</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>07fb01bc3bd328ae17ec68d44470c20b</srcmd5>
+    <version>4.5.1571127896.7bd3da32</version>
+    <time>1571210312</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.5.1571127896.7bd3da32
+4.5.1571127896.7bd3da32</comment>
+    <requestid>738622</requestid>
+  </revision>
 </revisionlist>

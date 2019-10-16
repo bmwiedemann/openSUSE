@@ -1,0 +1,19 @@
+--- fire-0.2.1/fire/helptext_test.py~	2019-10-15 12:58:44.707467291 +1100
++++ fire-0.2.1/fire/helptext_test.py	2019-10-15 13:00:24.971635944 +1100
+@@ -20,6 +20,7 @@
+ 
+ import os
+ import textwrap
++import sys
+ 
+ from fire import formatting
+ from fire import helptext
+@@ -430,6 +431,8 @@
+     t = trace.FireTrace(component, name='SubPoint')
+     usage_output = helptext.UsageText(component, trace=t, verbose=False)
+     expected_output = 'Usage: SubPoint --x=X --y=Y'
++    if sys.hexversion > 0x03080000:
++        expected_output = 'Usage: SubPoint <group> | --x=X --y=Y'
+     self.assertIn(expected_output, usage_output)
+ 
+ if __name__ == '__main__':

@@ -1,7 +1,7 @@
 #
 # spec file for package docker-distribution
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,29 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           docker-distribution
-Version:        2.6.2
+Version:        2.7.1
 Release:        0
 Summary:        The Docker toolset to pack, ship, store, and deliver content
 License:        Apache-2.0
 Group:          System/Management
-Url:            http://www.docker.io
+Url:            https://github.com/docker/distribution
 Source0:        distribution-%{version}.tar.xz
 Source1:        registry-configuration.yml
 Source2:        registry.service
 Source3:        registry.SuSEfirewall2
 Source4:        README-registry.SUSE
-BuildRequires:  go >= 1.7.0
-BuildRequires:  make
+BuildRequires:  go >= 1.11
 BuildRequires:  systemd-rpm-macros
-Requires(pre):  %fillup_prereq
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExclusiveArch:  x86_64 s390x
-%{?systemd_requires}
+ExclusiveArch:  x86_64 s390x aarch64 armv7l armv7hl
 
 %description
 The Docker toolset to pack, ship, store, and deliver content.
@@ -50,6 +47,7 @@ be as useful with docker as they are without.
 %package registry
 Summary:        Registry server for Docker
 Group:          System/Management
+%{?systemd_ordering}
 
 %description registry
 Registry server for Docker (hosting/delivering of repositories and images).
@@ -90,7 +88,6 @@ install -Dpm 0644  %{SOURCE3} %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2
 
 %post registry
 %service_add_post registry.service
-%{fillup_only -n registry}
 
 %preun registry
 %service_del_preun registry.service

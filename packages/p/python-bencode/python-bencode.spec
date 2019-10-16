@@ -23,18 +23,16 @@ Version:        2.1.0
 Release:        0
 Summary:        The BitTorrent bencode module as light-weight, standalone package
 License:        BitTorrent-1.1
-Group:          Development/Languages/Python
-Url:            https://github.com/fuzeman/bencode.py
+URL:            https://github.com/fuzeman/bencode.py
 Source0:        https://files.pythonhosted.org/packages/source/b/bencode.py/bencode.py-%{version}.tar.gz
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -51,13 +49,12 @@ BitTorrent software as a dependency.
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/*

@@ -22,7 +22,6 @@ Version:        1.10
 Release:        0
 Summary:        Python library for receiving certificate transparency list updates
 License:        MIT
-Group:          Development/Libraries/Python
 URL:            https://github.com/CaliDog/certstream-python/
 Source0:        https://files.pythonhosted.org/packages/source/c/certstream/certstream-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools >= 18.0.1}
@@ -53,7 +52,7 @@ sed -i -e 's:==:>=:g' requirements.txt
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # there are no tests
 

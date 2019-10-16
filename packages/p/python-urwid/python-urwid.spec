@@ -1,7 +1,7 @@
 #
 # spec file for package python-urwid
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,16 +21,14 @@ Name:           python-urwid
 Version:        2.0.1
 Release:        0
 Summary:        A full-featured console (xterm et al.) user interface library
-License:        LGPL-2.1+
-Group:          Development/Languages/Python
-Url:            http://urwid.org
+License:        LGPL-2.1-or-later
+URL:            http://urwid.org
 Source:         https://files.pythonhosted.org/packages/source/u/urwid/urwid-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-curses
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %python_subpackages
 
 %description
@@ -57,7 +55,7 @@ find urwid -name "*.py" | xargs sed -i '1 { /^#!/ d }'
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitearch}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 # this test won't work on OBS
@@ -65,8 +63,8 @@ rm -f urwid/tests/test_vterm.py
 %python_exec setup.py -q test
 
 %files %{python_files}
-%defattr(-,root,root,-)
-%doc COPYING README.rst
+%license COPYING
+%doc README.rst
 %{python_sitearch}/urwid/
 %{python_sitearch}/urwid-%{version}-py%{python_version}.egg-info
 

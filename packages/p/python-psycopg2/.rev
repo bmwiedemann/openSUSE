@@ -261,4 +261,12 @@ See the COPYING file. There are GPL-2.0+ (with openssl linking exceptions for pg
     <comment></comment>
     <requestid>713467</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>e2cc29ce33e94d039f0f947b6dbc894e</srcmd5>
+    <version>2.8.3</version>
+    <time>1571210114</time>
+    <user>dimstar_suse</user>
+    <comment>Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>738373</requestid>
+  </revision>
 </revisionlist>

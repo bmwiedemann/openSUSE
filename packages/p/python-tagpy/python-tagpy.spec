@@ -1,7 +1,7 @@
 #
 # spec file for package python-tagpy
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,8 +23,7 @@ Version:        2013.1
 Release:        0
 Summary:        Python Bindings for TagLib
 License:        MIT
-Group:          Development/Libraries/Python
-Url:            https://mathema.tician.de/software/tagpy
+URL:            https://mathema.tician.de/software/tagpy
 Source:         https://files.pythonhosted.org/packages/source/t/tagpy/tagpy-%{version}.tar.gz
 Patch1:         python-tagpy-no_sleep.patch
 Patch2:         python-tagpy-remove_ccopt.patch
@@ -33,11 +32,6 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  autoconf
 BuildRequires:  automake
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_python-devel
-%else
-BuildRequires:  boost-devel
-%endif
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel
@@ -47,7 +41,11 @@ BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  update-desktop-files
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%if 0%{?suse_version} > 1325
+BuildRequires:  libboost_python-devel
+%else
+BuildRequires:  boost-devel
+%endif
 %python_subpackages
 
 %description
@@ -81,11 +79,10 @@ reading and writing mechanism is also supported.
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitearch}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %files %{python_files}
-%defattr(-,root,root)
-%doc LICENSE
+%license LICENSE
 %{python_sitearch}/_tagpy*.so
 %{python_sitearch}/tagpy/
 %{python_sitearch}/tagpy-%{version}-py%{python_version}.egg-info/

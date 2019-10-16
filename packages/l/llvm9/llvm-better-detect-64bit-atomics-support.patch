@@ -1,0 +1,20 @@
+Better detect 64bit atomics support.
+
+It appears that on i586 std::atomic<uint64_t>::load is compiled into
+instruction, but std::atomic<double>::load uses __atomic_load_8. This must
+be detected so the build system links it to libatomic.
+Index: llvm-7.0.0.src/cmake/modules/CheckAtomic.cmake
+===================================================================
+--- llvm-7.0.0.src.orig/cmake/modules/CheckAtomic.cmake
++++ llvm-7.0.0.src/cmake/modules/CheckAtomic.cmake
+@@ -26,8 +26,10 @@ function(check_working_cxx_atomics64 var
+ #include <atomic>
+ #include <cstdint>
+ std::atomic<uint64_t> x (0);
++std::atomic<double> y (0);
+ int main() {
+   uint64_t i = x.load(std::memory_order_relaxed);
++  double j = y.load(std::memory_order_relaxed);
+   return 0;
+ }
+ " ${varname})

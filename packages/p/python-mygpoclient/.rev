@@ -15,4 +15,12 @@
     <comment>Remove superfluous devel dependency for noarch package</comment>
     <requestid>655859</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>35c394fdb7fdee5cc20df9817b5802cc</srcmd5>
+    <version>1.8</version>
+    <time>1571210100</time>
+    <user>dimstar_suse</user>
+    <comment>Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>738363</requestid>
+  </revision>
 </revisionlist>

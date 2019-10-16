@@ -23,7 +23,6 @@ Version:        12.7
 Release:        0
 Summary:        Python framework for Telegram Bot API
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/nickoala/telepot
 Source:         https://github.com/nickoala/telepot/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -32,11 +31,10 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-aiohttp >= 2.0.0
 Requires:       python-urllib3 >= 1.9.1
+BuildArch:      noarch
 %ifpython3
 Requires:       python3-aiohttp >= 2.0.0
 %endif
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -50,7 +48,7 @@ Telepot helps you build applications for Telegram Bot API. It works on Python 2.
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}/
+%python_expand %fdupes %{buildroot}%{$python_sitelib}/
 
 %check
 # online tests

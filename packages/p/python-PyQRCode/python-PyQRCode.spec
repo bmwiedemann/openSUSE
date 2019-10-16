@@ -23,7 +23,6 @@ Version:        1.3.0
 Release:        0
 Summary:        Python 3 module to generate QR Codes
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/mnooner256/pyqrcode
 # This is unofficial fork with some additional fixes, the canonical
 # upstream repository is dead.
@@ -54,7 +53,7 @@ rm -rvf build/sphinx/html/.buildinfo
 %install
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/pyqr
-%python_expand %fdupes -s %{buildroot}/%{$python_sitelib}
+%python_expand %fdupes %{buildroot}/%{$python_sitelib}
 
 %check
 %pytest

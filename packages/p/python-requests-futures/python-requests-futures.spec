@@ -23,7 +23,6 @@ Version:        1.0.0
 Release:        0
 Summary:        Asynchronous Python HTTP Requests for Humans using Futures
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/ross/%{short_name}
 Source:         https://files.pythonhosted.org/packages/source/r/%{short_name}/%{short_name}-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools >= 38.6.1}
@@ -48,7 +47,7 @@ concurrent.futures or the backport for prior versions of python.
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # online tests on http://httpbin.org

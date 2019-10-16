@@ -43,4 +43,12 @@ New dependency of python-Pyramid</comment>
     <comment></comment>
     <requestid>691704</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>4cb3dd5c7b16ef453cf8ff8268cf9fc7</srcmd5>
+    <version>4.2.0</version>
+    <time>1571210237</time>
+    <user>dimstar_suse</user>
+    <comment>Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>738426</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           terminus
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
 Summary:        An X terminal written in Vala
 License:        GPL-3.0-or-later

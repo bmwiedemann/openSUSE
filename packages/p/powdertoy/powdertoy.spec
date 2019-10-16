@@ -1,7 +1,7 @@
 #
 # spec file for package powdertoy
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           powdertoy
-Version:        93.3
+Version:        94.1
 Release:        0
 Summary:        Physics sandbox game
 License:        GPL-3.0-only
 Group:          Amusements/Games/Other
 URL:            http://powdertoy.co.uk
 Source:         https://github.com/simtr/The-Powder-Toy/archive/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM powdertoy-93.3-fix-mimeinfo.patch -- Fix syntax problems
-Patch0:         powdertoy-93.3-fix-mimeinfo.patch
 BuildRequires:  ImageMagick
-BuildRequires:  SDL-devel
-BuildRequires:  SDL_mixer-devel
+BuildRequires:  SDL2-devel
+BuildRequires:  SDL2_mixer-devel
 BuildRequires:  fftw3-devel
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
@@ -52,7 +50,6 @@ bombs, realistic terrains and almost anything else.
 
 %prep
 %setup -q -n The-Powder-Toy-%{version}
-%patch0 -p1
 
 %build
 %ifarch x86_64
@@ -71,12 +68,13 @@ install -D -m 0755 build/powder64 %{buildroot}%{_bindir}/powder
 %else
 install -D -m 0755 build/powder %{buildroot}%{_bindir}/powder
 %endif
-convert resources/powder.ico -strip resources/powder.png
-install -D -m 0644 resources/powder-0.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/powder.png
-install -D -m 0644 resources/powder-1.png %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/powder.png
-install -D -m 0644 resources/powder-2.png %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/powder.png
-install -D -m 0644 resources/powder-3.png %{buildroot}%{_datadir}/icons/hicolor/24x24/apps/powder.png
-install -D -m 0644 resources/powder-4.png %{buildroot}%{_datadir}/icons/hicolor/16x16/apps/powder.png
+convert resources/icon.ico -strip resources/powder.png
+install -D -m 0644 resources/icon/powder-256.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/powder.png
+install -D -m 0644 resources/icon/powder-128.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/powder.png
+install -D -m 0644 resources/icon/powder-48.png %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/powder.png
+install -D -m 0644 resources/icon/powder-32.png %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/powder.png
+install -D -m 0644 resources/icon/powder-24.png %{buildroot}%{_datadir}/icons/hicolor/24x24/apps/powder.png
+install -D -m 0644 resources/icon/powder-16.png %{buildroot}%{_datadir}/icons/hicolor/16x16/apps/powder.png
 
 install -D -m 0644 resources/powder.desktop %{buildroot}%{_datadir}/applications/powder.desktop
 install -D -m 0644 resources/powder.appdata.xml %{buildroot}%{_datadir}/appdata/powder.appdata.xml

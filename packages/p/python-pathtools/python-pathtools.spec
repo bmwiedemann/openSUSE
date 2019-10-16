@@ -1,7 +1,7 @@
 #
 # spec file for package python-pathtools
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,16 +20,14 @@
 Name:           python-pathtools
 Version:        0.1.2
 Release:        0
-Url:            http://github.com/gorakhargosh/pathtools
 Summary:        File system general utilities
 License:        MIT
-Group:          Development/Languages/Python
+URL:            https://github.com/gorakhargosh/pathtools
 Source:         https://files.pythonhosted.org/packages/source/p/pathtools/pathtools-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %python_subpackages
 
@@ -47,11 +45,11 @@ cd docs && make html && rm -r build/html/.buildinfo # Build HTML docs
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%defattr(-,root,root,-)
-%doc AUTHORS LICENSE README docs/build/html
+%license LICENSE
+%doc AUTHORS README docs/build/html
 %{python_sitelib}/pathtools
 %{python_sitelib}/pathtools-%{version}-py%{python_version}.egg-info
 

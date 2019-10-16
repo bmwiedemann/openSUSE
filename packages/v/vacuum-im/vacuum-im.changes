@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 15 18:00:34 UTC 2019 - Andrey Karepin <egdfree@opensuse.org>
+
+- update source to 9f3952b21b8d3ee1ef76b31abbb027fb21d8ed89
+  * support for SCRAM-SHA1 authentication
+
+-------------------------------------------------------------------
 Fri Jan 11 11:19:49 UTC 2019 - Andrey Karepin <egdfree@opensuse.org>
 
 - update source to 3164aec53e8a1da58f328ed13657c654e650636c

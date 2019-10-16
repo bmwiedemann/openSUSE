@@ -24,4 +24,12 @@
   * Minor typo fixes</comment>
     <requestid>680068</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>cf65915044b40b4070c5b059bbaa8bef</srcmd5>
+    <version>4.0.2</version>
+    <time>1571210052</time>
+    <user>dimstar_suse</user>
+    <comment>Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>738303</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-twodict
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,6 @@ Release:        0
 Summary:        Simple two-way ordered dictionary for Python
 # The Unlicense
 License:        SUSE-Permissive
-Group:          Development/Languages/Python
 URL:            https://github.com/MrS0m30n3/twodict
 Source0:        https://files.pythonhosted.org/packages/source/t/twodict/twodict-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -46,7 +45,7 @@ supports almost all the features of the built-in dict.
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec test_twodict.py

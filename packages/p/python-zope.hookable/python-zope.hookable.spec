@@ -23,8 +23,7 @@ Version:        4.2.0
 Release:        0
 Summary:        Zope hookable
 License:        ZPL-2.1
-Group:          Development/Languages/Python
-Url:            http://www.python.org/pypi/zope.hookable
+URL:            https://www.python.org/pypi/zope.hookable
 Source:         https://files.pythonhosted.org/packages/source/z/zope.hookable/zope.hookable-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
@@ -51,9 +50,8 @@ that imported it, will see the change.
 
 %package     -n %{name}-doc
 Summary:        Zope hookable
-Group:          Development/Languages/Python
-Provides:       %{python_module zope.hookable-doc = %{version}}
 Requires:       %{name} = %{version}
+Provides:       %{python_module zope.hookable-doc = %{version}}
 
 %description -n %{name}-doc
 This package contains documentation files for %{name}.
@@ -64,23 +62,23 @@ rm -rf zope.hookable.egg-info
 
 %build
 %python_build
-%__python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo build/sphinx/html/objects.inv
+python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo build/sphinx/html/objects.inv
 
 %install
 %python_install
 %{python_expand rm -f %{buildroot}%{$python_sitearch}/zope/hookable/_zope_hookable.c
-  %fdupes -s %{buildroot}%{$python_sitearch}
+  %fdupes %{buildroot}%{$python_sitearch}
 }
 
 %check
 %python_exec setup.py test
 
 %files %{python_files}
-%doc CHANGES.rst COPYRIGHT.txt LICENSE.txt README.rst
+%license LICENSE.txt
+%doc CHANGES.rst COPYRIGHT.txt README.rst
 %{python_sitearch}/*
 
 %files -n %{name}-doc
-%defattr(-,root,root)
 %doc build/sphinx/html/
 
 %changelog

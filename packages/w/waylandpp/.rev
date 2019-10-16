@@ -7,4 +7,14 @@
     <comment>required by kodi.tv</comment>
     <requestid>691507</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e49b91c886e6f671a8cca1c4d57e147a</srcmd5>
+    <version>0.2.7.20191014T190311.4007255</version>
+    <time>1571210250</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.7 (4007255)
+  * a lot of internal cleanups, build system improvements
+- Remove waylandpp.patch</comment>
+    <requestid>738459</requestid>
+  </revision>
 </revisionlist>

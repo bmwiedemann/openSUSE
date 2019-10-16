@@ -645,4 +645,27 @@ No hurry to checkin ;-) but it is needed for QtLocation</comment>
     <comment>Add new pri files to plugin-devel subpackage, which are neccessary for build 3rd part plugins. (forwarded request 732098 from hgraeber)</comment>
     <requestid>732111</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>25395b52e2cba49c061d4898e650a188</srcmd5>
+    <version>4.10.1</version>
+    <time>1571210292</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.10.1
+  * Editing
+    - Fixed file saving with some text encodings
+    - Fixed `Preserve case` in advanced search and replace (QTCREATORBUG-19696)
+    - Fixed crash when changing editor font (QTCREATORBUG-22933)
+  * Help
+    - Fixed that text moved around when resizing and zooming (QTCREATORBUG-4756)
+  * All Projects
+    - Fixed `Qt Creator Plugin` wizard (QTCREATORBUG-22945)
+  * Debugging
+    - Fixed more layout restoration issues (QTCREATORBUG-22286, QTCREATORBUG-22415, QTCREATORBUG-22938)
+  * LLDB
+    - Fixed wrong empty command line argument when debugging (QTCREATORBUG-22975)
+  * Qt Quick Designer
+    - Removed transformations from list of unsupported types
+    - Fixed update of animation curve editor (forwarded request 738602 from cgiboudeaux)</comment>
+    <requestid>738605</requestid>
+  </revision>
 </revisionlist>

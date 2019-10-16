@@ -22,10 +22,10 @@ Release:        0
 Summary:        The mail indexer
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Email/Utilities
-Url:            https://notmuchmail.org
-Source0:        https://notmuchmail.org/releases/notmuch-%{version}.tar.xz
-Source1:        https://notmuchmail.org/releases/notmuch-%{version}.tar.xz.asc
-Source3:        https://notmuchmail.org/releases/test-databases/database-v1.tar.xz
+URL:            https://notmuchmail.org
+Source0:        %{URL}/releases/notmuch-%{version}.tar.xz
+Source1:        %{URL}/releases/notmuch-%{version}.tar.xz.asc
+Source3:        %{URL}/releases/test-databases/database-v1.tar.xz
 Source4:        notmuch.keyring
 
 %{bcond_without python}
@@ -267,7 +267,11 @@ export NOTMUCH_SKIP_TESTS="T600-named-queries"
 export NOTMUCH_SKIP_TESTS="T357-index-decryption ${NOTMUCH_SKIP_TESTS}"
 %endif # Leap 15.x
 
-make check
+# can only run the testsuite when debugging symbols are available (boo#1152451)
+if echo "%{optflags}"|grep -q '\-g'; then
+    make check
+fi
+
 %endif # {with tests}
 
 %post -n libnotmuch%{libversion} -p /sbin/ldconfig

@@ -22,7 +22,6 @@ Version:        0.4.4
 Release:        0
 Summary:        Multithreaded Click apps made easy
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/click-contrib/click-threading
 Source:         https://files.pythonhosted.org/packages/source/c/click-threading/click-threading-%{version}.tar.gz
 BuildRequires:  %{python_module click >= 5.0}
@@ -32,10 +31,10 @@ BuildRequires:  fdupes
 BuildRequires:  python-futures
 BuildRequires:  python-rpm-macros
 Requires:       python-click >= 5.0
+BuildArch:      noarch
 %ifpython2
 Requires:       python-futures
 %endif
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -51,7 +50,7 @@ rm -rf click_threading.egg-info
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8

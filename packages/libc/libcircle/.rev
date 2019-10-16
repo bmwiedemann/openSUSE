@@ -11,4 +11,13 @@
 </comment>
     <requestid>540634</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e36957e9cee7b7fc0b9fab96960a3c63</srcmd5>
+    <version>0.2.1~rc1</version>
+    <time>1571210269</time>
+    <user>dimstar_suse</user>
+    <comment>- Always use the default openmpi
+- Fix license and install COPYING</comment>
+    <requestid>738499</requestid>
+  </revision>
 </revisionlist>

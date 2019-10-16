@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/bazelbuild/rules_java</param>
+              <param name="changesrevision">7cf3cefd652008d0a64a419c34c13bdca6c8f178</param></service></servicedata>

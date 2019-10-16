@@ -1,0 +1,1257 @@
+diff --git a/clang-tools-extra/clang-apply-replacements/CMakeLists.txt b/clang-tools-extra/clang-apply-replacements/CMakeLists.txt
+index 5bfdcb487e1..9950f2ec335 100644
+--- a/clang-tools-extra/clang-apply-replacements/CMakeLists.txt
++++ b/clang-tools-extra/clang-apply-replacements/CMakeLists.txt
+@@ -4,8 +4,9 @@ set(LLVM_LINK_COMPONENTS
+ 
+ add_clang_library(clangApplyReplacements
+   lib/Tooling/ApplyReplacements.cpp
++  )
+ 
+-  LINK_LIBS
++clang_target_link_libraries(clangApplyReplacements INTERFACE
+   clangAST
+   clangBasic
+   clangRewrite
+diff --git a/clang-tools-extra/clang-apply-replacements/tool/CMakeLists.txt b/clang-tools-extra/clang-apply-replacements/tool/CMakeLists.txt
+index 26aa760c731..35d04fab689 100644
+--- a/clang-tools-extra/clang-apply-replacements/tool/CMakeLists.txt
++++ b/clang-tools-extra/clang-apply-replacements/tool/CMakeLists.txt
+@@ -8,6 +8,9 @@ add_clang_tool(clang-apply-replacements
+ target_link_libraries(clang-apply-replacements
+   PRIVATE
+   clangApplyReplacements
++  )
++clang_target_link_libraries(clang-apply-replacements
++  PRIVATE
+   clangBasic
+   clangFormat
+   clangRewrite
+diff --git a/clang-tools-extra/clang-change-namespace/CMakeLists.txt b/clang-tools-extra/clang-change-namespace/CMakeLists.txt
+index 178306423eb..599a422476a 100644
+--- a/clang-tools-extra/clang-change-namespace/CMakeLists.txt
++++ b/clang-tools-extra/clang-change-namespace/CMakeLists.txt
+@@ -4,8 +4,9 @@ set(LLVM_LINK_COMPONENTS
+ 
+ add_clang_library(clangChangeNamespace
+   ChangeNamespace.cpp
++  )
+ 
+-  LINK_LIBS
++clang_target_link_libraries(clangChangeNamespace INTERFACE
+   clangAST
+   clangASTMatchers
+   clangBasic
+diff --git a/clang-tools-extra/clang-change-namespace/tool/CMakeLists.txt b/clang-tools-extra/clang-change-namespace/tool/CMakeLists.txt
+index be4b830e515..3725c9b9f4b 100644
+--- a/clang-tools-extra/clang-change-namespace/tool/CMakeLists.txt
++++ b/clang-tools-extra/clang-change-namespace/tool/CMakeLists.txt
+@@ -8,11 +8,14 @@ add_clang_executable(clang-change-namespace
+   ClangChangeNamespace.cpp
+   )
+ target_link_libraries(clang-change-namespace
++  PRIVATE
++  clangChangeNamespace
++  )
++clang_target_link_libraries(clang-change-namespace
+   PRIVATE
+   clangAST
+   clangASTMatchers
+   clangBasic
+-  clangChangeNamespace
+   clangFormat
+   clangFrontend
+   clangRewrite
+diff --git a/clang-tools-extra/clang-doc/CMakeLists.txt b/clang-tools-extra/clang-doc/CMakeLists.txt
+index c301ad5afac..0ad372426e6 100644
+--- a/clang-tools-extra/clang-doc/CMakeLists.txt
++++ b/clang-tools-extra/clang-doc/CMakeLists.txt
+@@ -14,8 +14,9 @@ add_clang_library(clangDoc
+   Representation.cpp
+   Serialize.cpp
+   YAMLGenerator.cpp
++  )
+ 
+-  LINK_LIBS
++clang_target_link_libraries(clangDoc INTERFACE
+   clangAnalysis
+   clangAST
+   clangASTMatchers
+diff --git a/clang-tools-extra/clang-doc/tool/CMakeLists.txt b/clang-tools-extra/clang-doc/tool/CMakeLists.txt
+index de8c9bcbffa..722b5b75bae 100644
+--- a/clang-tools-extra/clang-doc/tool/CMakeLists.txt
++++ b/clang-tools-extra/clang-doc/tool/CMakeLists.txt
+@@ -5,12 +5,15 @@ add_clang_tool(clang-doc
+   )
+ 
+ target_link_libraries(clang-doc
++  PRIVATE
++  clangDoc
++  )
++clang_target_link_libraries(clang-doc
+   PRIVATE
+   clangAST
+   clangASTMatchers
+   clangBasic
+   clangFrontend
+-  clangDoc
+   clangTooling
+   clangToolingCore
+   )
+diff --git a/clang-tools-extra/clang-include-fixer/CMakeLists.txt b/clang-tools-extra/clang-include-fixer/CMakeLists.txt
+index f27f7403ea6..4a56d7679c2 100644
+--- a/clang-tools-extra/clang-include-fixer/CMakeLists.txt
++++ b/clang-tools-extra/clang-include-fixer/CMakeLists.txt
+@@ -11,6 +11,9 @@ add_clang_library(clangIncludeFixer
+   YamlSymbolIndex.cpp
+ 
+   LINK_LIBS
++  findAllSymbols
++  )
++clang_target_link_libraries(clangIncludeFixer INTERFACE
+   clangAST
+   clangBasic
+   clangFormat
+@@ -21,7 +24,6 @@ add_clang_library(clangIncludeFixer
+   clangSerialization
+   clangTooling
+   clangToolingCore
+-  findAllSymbols
+   )
+ 
+ add_subdirectory(plugin)
+diff --git a/clang-tools-extra/clang-include-fixer/find-all-symbols/CMakeLists.txt b/clang-tools-extra/clang-include-fixer/find-all-symbols/CMakeLists.txt
+index c5fe19bfdbd..5891adfb913 100644
+--- a/clang-tools-extra/clang-include-fixer/find-all-symbols/CMakeLists.txt
++++ b/clang-tools-extra/clang-include-fixer/find-all-symbols/CMakeLists.txt
+@@ -11,8 +11,8 @@ add_clang_library(findAllSymbols
+   PragmaCommentHandler.cpp
+   STLPostfixHeaderMap.cpp
+   SymbolInfo.cpp
+-
+-  LINK_LIBS
++  )
++clang_target_link_libraries(findAllSymbols INTERFACE
+   clangAST
+   clangASTMatchers
+   clangBasic
+diff --git a/clang-tools-extra/clang-include-fixer/find-all-symbols/tool/CMakeLists.txt b/clang-tools-extra/clang-include-fixer/find-all-symbols/tool/CMakeLists.txt
+index 64278ad1843..36a8587d5b1 100644
+--- a/clang-tools-extra/clang-include-fixer/find-all-symbols/tool/CMakeLists.txt
++++ b/clang-tools-extra/clang-include-fixer/find-all-symbols/tool/CMakeLists.txt
+@@ -5,6 +5,10 @@ add_clang_executable(find-all-symbols
+   )
+ 
+ target_link_libraries(find-all-symbols
++  PRIVATE
++  findAllSymbols
++  )
++clang_target_link_libraries(find-all-symbols
+   PRIVATE
+   clangAST
+   clangASTMatchers
+@@ -13,8 +17,7 @@ target_link_libraries(find-all-symbols
+   clangLex
+   clangSerialization
+   clangTooling
+-  findAllSymbols
+-  )
++)
+ 
+ install(TARGETS find-all-symbols
+   RUNTIME DESTINATION bin)
+diff --git a/clang-tools-extra/clang-include-fixer/plugin/CMakeLists.txt b/clang-tools-extra/clang-include-fixer/plugin/CMakeLists.txt
+index df792ea1bbe..6545a866236 100644
+--- a/clang-tools-extra/clang-include-fixer/plugin/CMakeLists.txt
++++ b/clang-tools-extra/clang-include-fixer/plugin/CMakeLists.txt
+@@ -2,12 +2,14 @@ add_clang_library(clangIncludeFixerPlugin
+   IncludeFixerPlugin.cpp
+ 
+   LINK_LIBS
++  clangIncludeFixer
++  ${LLVM_PTHREAD_LIB}
++  )
++clang_target_link_libraries(clangIncludeFixerPlugin INTERFACE
+   clangAST
+   clangBasic
+   clangFrontend
+-  clangIncludeFixer
+   clangParse
+   clangSema
+   clangTooling
+-  ${LLVM_PTHREAD_LIB}
+   )
+diff --git a/clang-tools-extra/clang-include-fixer/tool/CMakeLists.txt b/clang-tools-extra/clang-include-fixer/tool/CMakeLists.txt
+index 207995aa69d..24540a3b454 100644
+--- a/clang-tools-extra/clang-include-fixer/tool/CMakeLists.txt
++++ b/clang-tools-extra/clang-include-fixer/tool/CMakeLists.txt
+@@ -5,17 +5,20 @@ add_clang_tool(clang-include-fixer
+   )
+ 
+ target_link_libraries(clang-include-fixer
++  PRIVATE
++  clangIncludeFixer
++  findAllSymbols
++  )
++clang_target_link_libraries(clang-include-fixer
+   PRIVATE
+   clangBasic
+   clangFormat
+   clangFrontend
+-  clangIncludeFixer
+   clangRewrite
+   clangSerialization
+   clangTooling
+   clangToolingCore
+-  findAllSymbols
+-  )
++)
+ 
+ install(TARGETS clang-include-fixer
+   RUNTIME DESTINATION bin)
+diff --git a/clang-tools-extra/clang-move/CMakeLists.txt b/clang-tools-extra/clang-move/CMakeLists.txt
+index c63127ea325..3dce82b447a 100644
+--- a/clang-tools-extra/clang-move/CMakeLists.txt
++++ b/clang-tools-extra/clang-move/CMakeLists.txt
+@@ -5,8 +5,9 @@ set(LLVM_LINK_COMPONENTS
+ add_clang_library(clangMove
+   Move.cpp
+   HelperDeclRefGraph.cpp
++  )
+ 
+-  LINK_LIBS
++clang_target_link_libraries(clangMove INTERFACE
+   clangAnalysis
+   clangAST
+   clangASTMatchers
+diff --git a/clang-tools-extra/clang-move/tool/CMakeLists.txt b/clang-tools-extra/clang-move/tool/CMakeLists.txt
+index 7bc4f30d98d..4c60dfad8ca 100644
+--- a/clang-tools-extra/clang-move/tool/CMakeLists.txt
++++ b/clang-tools-extra/clang-move/tool/CMakeLists.txt
+@@ -5,13 +5,17 @@ add_clang_executable(clang-move
+   )
+ 
+ target_link_libraries(clang-move
++  PRIVATE
++  clangMove
++  )
++
++clang_target_link_libraries(clang-move
+   PRIVATE
+   clangAST
+   clangASTMatchers
+   clangBasic
+   clangFormat
+   clangFrontend
+-  clangMove
+   clangRewrite
+   clangSerialization
+   clangTooling
+diff --git a/clang-tools-extra/clang-query/CMakeLists.txt b/clang-tools-extra/clang-query/CMakeLists.txt
+index d1d68d502e3..e5e4ecf07d7 100644
+--- a/clang-tools-extra/clang-query/CMakeLists.txt
++++ b/clang-tools-extra/clang-query/CMakeLists.txt
+@@ -6,8 +6,8 @@ set(LLVM_LINK_COMPONENTS
+ add_clang_library(clangQuery
+   Query.cpp
+   QueryParser.cpp
+-
+-  LINK_LIBS
++  )
++clang_target_link_libraries(clangQuery INTERFACE
+   clangAST
+   clangASTMatchers
+   clangBasic
+diff --git a/clang-tools-extra/clang-query/tool/CMakeLists.txt b/clang-tools-extra/clang-query/tool/CMakeLists.txt
+index d6ac0ae7804..a64b9e5c44a 100644
+--- a/clang-tools-extra/clang-query/tool/CMakeLists.txt
++++ b/clang-tools-extra/clang-query/tool/CMakeLists.txt
+@@ -4,13 +4,16 @@ add_clang_executable(clang-query
+   ClangQuery.cpp
+   )
+ target_link_libraries(clang-query
++  PRIVATE
++  clangQuery
++  )
++clang_target_link_libraries(clang-query
+   PRIVATE
+   clangAST
+   clangASTMatchers
+   clangBasic
+   clangDynamicASTMatchers
+   clangFrontend
+-  clangQuery
+   clangSerialization
+   clangTooling
+   )
+diff --git a/clang-tools-extra/clang-reorder-fields/CMakeLists.txt b/clang-tools-extra/clang-reorder-fields/CMakeLists.txt
+index 9c75d785cc9..8017cbdd377 100644
+--- a/clang-tools-extra/clang-reorder-fields/CMakeLists.txt
++++ b/clang-tools-extra/clang-reorder-fields/CMakeLists.txt
+@@ -2,8 +2,8 @@ set(LLVM_LINK_COMPONENTS support)
+ 
+ add_clang_library(clangReorderFields
+   ReorderFieldsAction.cpp
+-
+-  LINK_LIBS
++  )
++clang_target_link_libraries(clangReorderFields INTERFACE
+   clangAST
+   clangASTMatchers
+   clangBasic
+diff --git a/clang-tools-extra/clang-reorder-fields/tool/CMakeLists.txt b/clang-tools-extra/clang-reorder-fields/tool/CMakeLists.txt
+index 718ee960a61..c71023e283f 100644
+--- a/clang-tools-extra/clang-reorder-fields/tool/CMakeLists.txt
++++ b/clang-tools-extra/clang-reorder-fields/tool/CMakeLists.txt
+@@ -3,10 +3,13 @@ add_clang_tool(clang-reorder-fields
+   )
+ 
+ target_link_libraries(clang-reorder-fields
++  PRIVATE
++  clangReorderFields
++  )
++clang_target_link_libraries(clang-reorder-fields
+   PRIVATE
+   clangBasic
+   clangFrontend
+-  clangReorderFields
+   clangRewrite
+   clangSerialization
+   clangTooling
+diff --git a/clang-tools-extra/clang-tidy/CMakeLists.txt b/clang-tools-extra/clang-tidy/CMakeLists.txt
+index 220652deb2d..7dbcc697599 100644
+--- a/clang-tools-extra/clang-tidy/CMakeLists.txt
++++ b/clang-tools-extra/clang-tidy/CMakeLists.txt
+@@ -14,8 +14,9 @@ add_clang_library(clangTidy
+ 
+   DEPENDS
+   ClangSACheckers
++  )
+ 
+-  LINK_LIBS
++clang_target_link_libraries(clangTidy INTERFACE
+   clangAST
+   clangASTMatchers
+   clangBasic
+@@ -30,7 +31,7 @@ add_clang_library(clangTidy
+   )
+ 
+ if(CLANG_ENABLE_STATIC_ANALYZER)
+-  target_link_libraries(clangTidy PRIVATE
++  clang_target_link_libraries(clangTidy PRIVATE
+     clangStaticAnalyzerCore
+     clangStaticAnalyzerFrontend
+   )
+diff --git a/clang-tools-extra/clang-tidy/abseil/CMakeLists.txt b/clang-tools-extra/clang-tidy/abseil/CMakeLists.txt
+index 3f88da6233f..feeb951e4f3 100644
+--- a/clang-tools-extra/clang-tidy/abseil/CMakeLists.txt
++++ b/clang-tools-extra/clang-tidy/abseil/CMakeLists.txt
+@@ -22,11 +22,14 @@ add_clang_library(clangTidyAbseilModule
+   UpgradeDurationConversionsCheck.cpp
+ 
+   LINK_LIBS
++  clangTidy
++  clangTidyUtils
++  )
++
++clang_target_link_libraries(clangTidyAbseilModule INTERFACE
+   clangAST
+   clangASTMatchers
+   clangBasic
+   clangLex
+-  clangTidy
+-  clangTidyUtils
+   clangTooling
+   )
+diff --git a/clang-tools-extra/clang-tidy/android/CMakeLists.txt b/clang-tools-extra/clang-tidy/android/CMakeLists.txt
+index 9d04003d9bb..cdb59411d36 100644
+--- a/clang-tools-extra/clang-tidy/android/CMakeLists.txt
++++ b/clang-tools-extra/clang-tidy/android/CMakeLists.txt
+@@ -20,10 +20,13 @@ add_clang_library(clangTidyAndroidModule
+   ComparisonInTempFailureRetryCheck.cpp
+ 
+   LINK_LIBS
++  clangTidy
++  clangTidyUtils
++  )
++
++clang_target_link_libraries(clangTidyAndroidModule INTERFACE
+   clangAST
+   clangASTMatchers
+   clangBasic
+   clangLex
+-  clangTidy
+-  clangTidyUtils
+   )
+diff --git a/clang-tools-extra/clang-tidy/boost/CMakeLists.txt b/clang-tools-extra/clang-tidy/boost/CMakeLists.txt
+index 059f6e91eca..1b4201e8057 100644
+--- a/clang-tools-extra/clang-tidy/boost/CMakeLists.txt
++++ b/clang-tools-extra/clang-tidy/boost/CMakeLists.txt
+@@ -5,10 +5,13 @@ add_clang_library(clangTidyBoostModule
+   UseToStringCheck.cpp
+ 
+   LINK_LIBS
++  clangTidy
++  clangTidyUtils
++  )
++
++clang_target_link_libraries(clangTidyBoostModule INTERFACE
+   clangAST
+   clangASTMatchers
+   clangBasic
+   clangLex
+-  clangTidy
+-  clangTidyUtils
+   )
+diff --git a/clang-tools-extra/clang-tidy/bugprone/CMakeLists.txt b/clang-tools-extra/clang-tidy/bugprone/CMakeLists.txt
+index 705ee97514e..13dc9b852a0 100644
+--- a/clang-tools-extra/clang-tidy/bugprone/CMakeLists.txt
++++ b/clang-tools-extra/clang-tidy/bugprone/CMakeLists.txt
+@@ -48,13 +48,16 @@ add_clang_library(clangTidyBugproneModule
+   VirtualNearMissCheck.cpp
+ 
+   LINK_LIBS
++  clangTidy
++  clangTidyCppCoreGuidelinesModule
++  clangTidyUtils
++  )
++
++clang_target_link_libraries(clangTidyBugproneModule INTERFACE
+   clangAnalysis
+   clangAST
+   clangASTMatchers
+   clangBasic
+   clangLex
+-  clangTidy
+-  clangTidyCppCoreGuidelinesModule
+-  clangTidyUtils
+   clangTooling
+   )
+diff --git a/clang-tools-extra/clang-tidy/cert/CMakeLists.txt b/clang-tools-extra/clang-tidy/cert/CMakeLists.txt
+index 474d9356adf..0fac040a6c6 100644
+--- a/clang-tools-extra/clang-tidy/cert/CMakeLists.txt
++++ b/clang-tools-extra/clang-tidy/cert/CMakeLists.txt
+@@ -15,10 +15,6 @@ add_clang_library(clangTidyCERTModule
+   VariadicFunctionDefCheck.cpp
+ 
+   LINK_LIBS
+-  clangAST
+-  clangASTMatchers
+-  clangBasic
+-  clangLex
+   clangTidy
+   clangTidyBugproneModule
+   clangTidyGoogleModule
+@@ -27,3 +23,10 @@ add_clang_library(clangTidyCERTModule
+   clangTidyReadabilityModule
+   clangTidyUtils
+   )
++
++clang_target_link_libraries(clangTidyCERTModule INTERFACE
++  clangAST
++  clangASTMatchers
++  clangBasic
++  clangLex
++  )
+diff --git a/clang-tools-extra/clang-tidy/cppcoreguidelines/CMakeLists.txt b/clang-tools-extra/clang-tidy/cppcoreguidelines/CMakeLists.txt
+index be852859325..03e77dd0827 100644
+--- a/clang-tools-extra/clang-tidy/cppcoreguidelines/CMakeLists.txt
++++ b/clang-tools-extra/clang-tidy/cppcoreguidelines/CMakeLists.txt
+@@ -22,15 +22,18 @@ add_clang_library(clangTidyCppCoreGuidelinesModule
+   SpecialMemberFunctionsCheck.cpp
+ 
+   LINK_LIBS
+-  clangAST
+-  clangASTMatchers
+-  clangBasic
+-  clangLex
+-  clangSerialization
+   clangTidy
+   clangTidyMiscModule
+   clangTidyModernizeModule
+   clangTidyReadabilityModule
+   clangTidyUtils
++  )
++
++clang_target_link_libraries(clangTidyCppCoreGuidelinesModule INTERFACE
++  clangAST
++  clangASTMatchers
++  clangBasic
++  clangLex
++  clangSerialization
+   clangTooling
+   )
+diff --git a/clang-tools-extra/clang-tidy/fuchsia/CMakeLists.txt b/clang-tools-extra/clang-tidy/fuchsia/CMakeLists.txt
+index 30b319e7e5a..703a8c69a43 100644
+--- a/clang-tools-extra/clang-tidy/fuchsia/CMakeLists.txt
++++ b/clang-tools-extra/clang-tidy/fuchsia/CMakeLists.txt
+@@ -12,11 +12,14 @@ add_clang_library(clangTidyFuchsiaModule
+   VirtualInheritanceCheck.cpp
+ 
+   LINK_LIBS
++  clangTidy
++  clangTidyGoogleModule
++  clangTidyUtils
++  )
++
++clang_target_link_libraries(clangTidyFuchsiaModule INTERFACE
+   clangAST
+   clangASTMatchers
+   clangBasic
+   clangLex
+-  clangTidy
+-  clangTidyGoogleModule
+-  clangTidyUtils
+   )
+diff --git a/clang-tools-extra/clang-tidy/google/CMakeLists.txt b/clang-tools-extra/clang-tidy/google/CMakeLists.txt
+index 08368932da5..bdab843e23c 100644
+--- a/clang-tools-extra/clang-tidy/google/CMakeLists.txt
++++ b/clang-tools-extra/clang-tidy/google/CMakeLists.txt
+@@ -21,11 +21,14 @@ add_clang_library(clangTidyGoogleModule
+   UsingNamespaceDirectiveCheck.cpp
+ 
+   LINK_LIBS
++  clangTidy
++  clangTidyReadabilityModule
++  clangTidyUtils
++  )
++
++clang_target_link_libraries(clangTidyGoogleModule INTERFACE
+   clangAST
+   clangASTMatchers
+   clangBasic
+   clangLex
+-  clangTidy
+-  clangTidyReadabilityModule
+-  clangTidyUtils
+   )
+diff --git a/clang-tools-extra/clang-tidy/hicpp/CMakeLists.txt b/clang-tools-extra/clang-tidy/hicpp/CMakeLists.txt
+index 4cf26767f3d..d256d698feb 100644
+--- a/clang-tools-extra/clang-tidy/hicpp/CMakeLists.txt
++++ b/clang-tools-extra/clang-tidy/hicpp/CMakeLists.txt
+@@ -8,11 +8,6 @@ add_clang_library(clangTidyHICPPModule
+   SignedBitwiseCheck.cpp
+ 
+   LINK_LIBS
+-  clangAST
+-  clangASTMatchers
+-  clangBasic
+-  clangLex
+-  clangSerialization
+   clangTidy
+   clangTidyBugproneModule
+   clangTidyCppCoreGuidelinesModule
+@@ -23,3 +18,11 @@ add_clang_library(clangTidyHICPPModule
+   clangTidyReadabilityModule
+   clangTidyUtils
+   )
++
++clang_target_link_libraries(clangTidyHICPPModule INTERFACE
++  clangAST
++  clangASTMatchers
++  clangBasic
++  clangLex
++  clangSerialization
++  )
+diff --git a/clang-tools-extra/clang-tidy/llvm/CMakeLists.txt b/clang-tools-extra/clang-tidy/llvm/CMakeLists.txt
+index c035596b556..60da3caacf0 100644
+--- a/clang-tools-extra/clang-tidy/llvm/CMakeLists.txt
++++ b/clang-tools-extra/clang-tidy/llvm/CMakeLists.txt
+@@ -9,12 +9,15 @@ add_clang_library(clangTidyLLVMModule
+   TwineLocalCheck.cpp
+ 
+   LINK_LIBS
++  clangTidy
++  clangTidyReadabilityModule
++  clangTidyUtils
++  )
++
++clang_target_link_libraries(clangTidyLLVMModule INTERFACE
+   clangAST
+   clangASTMatchers
+   clangBasic
+   clangLex
+-  clangTidy
+-  clangTidyReadabilityModule
+-  clangTidyUtils
+   clangTooling
+   )
+diff --git a/clang-tools-extra/clang-tidy/misc/CMakeLists.txt b/clang-tools-extra/clang-tidy/misc/CMakeLists.txt
+index 3fc152148d6..3fd61c454e5 100644
+--- a/clang-tools-extra/clang-tidy/misc/CMakeLists.txt
++++ b/clang-tools-extra/clang-tidy/misc/CMakeLists.txt
+@@ -17,13 +17,16 @@ add_clang_library(clangTidyMiscModule
+   UnusedUsingDeclsCheck.cpp
+ 
+   LINK_LIBS
++  clangTidy
++  clangTidyUtils
++  )
++
++clang_target_link_libraries(clangTidyMiscModule INTERFACE
+   clangAnalysis
+   clangAST
+   clangASTMatchers
+   clangBasic
+   clangLex
+   clangSerialization
+-  clangTidy
+-  clangTidyUtils
+   clangTooling
+   )
+diff --git a/clang-tools-extra/clang-tidy/modernize/CMakeLists.txt b/clang-tools-extra/clang-tidy/modernize/CMakeLists.txt
+index 36193f0a6d1..1b909552322 100644
+--- a/clang-tools-extra/clang-tidy/modernize/CMakeLists.txt
++++ b/clang-tools-extra/clang-tidy/modernize/CMakeLists.txt
+@@ -36,12 +36,15 @@ add_clang_library(clangTidyModernizeModule
+   UseUsingCheck.cpp
+ 
+   LINK_LIBS
++  clangTidy
++  clangTidyReadabilityModule
++  clangTidyUtils
++  )
++
++clang_target_link_libraries(clangTidyModernizeModule INTERFACE
+   clangAST
+   clangASTMatchers
+   clangBasic
+   clangLex
+-  clangTidy
+-  clangTidyReadabilityModule
+-  clangTidyUtils
+   clangTooling
+   )
+diff --git a/clang-tools-extra/clang-tidy/mpi/CMakeLists.txt b/clang-tools-extra/clang-tidy/mpi/CMakeLists.txt
+index 5be7b36550a..09b72452ab2 100644
+--- a/clang-tools-extra/clang-tidy/mpi/CMakeLists.txt
++++ b/clang-tools-extra/clang-tidy/mpi/CMakeLists.txt
+@@ -6,13 +6,16 @@ add_clang_library(clangTidyMPIModule
+   TypeMismatchCheck.cpp
+ 
+   LINK_LIBS
++  clangTidy
++  clangTidyUtils
++  )
++
++clang_target_link_libraries(clangTidyMPIModule INTERFACE
+   clangAnalysis
+   clangAST
+   clangASTMatchers
+   clangBasic
+   clangLex
+-  clangTidy
+-  clangTidyUtils
+   clangTooling
+   clangStaticAnalyzerCheckers
+   )
+diff --git a/clang-tools-extra/clang-tidy/objc/CMakeLists.txt b/clang-tools-extra/clang-tidy/objc/CMakeLists.txt
+index 4eeb14844a5..e0aee97c5d9 100644
+--- a/clang-tools-extra/clang-tidy/objc/CMakeLists.txt
++++ b/clang-tools-extra/clang-tidy/objc/CMakeLists.txt
+@@ -9,10 +9,13 @@ add_clang_library(clangTidyObjCModule
+   SuperSelfCheck.cpp
+ 
+   LINK_LIBS
++  clangTidy
++  clangTidyUtils
++  )
++
++clang_target_link_libraries(clangTidyObjCModule INTERFACE
+   clangAST
+   clangASTMatchers
+   clangBasic
+   clangLex
+-  clangTidy
+-  clangTidyUtils
+   )
+diff --git a/clang-tools-extra/clang-tidy/openmp/CMakeLists.txt b/clang-tools-extra/clang-tidy/openmp/CMakeLists.txt
+index bbd65f29036..acdf8b69aeb 100644
+--- a/clang-tools-extra/clang-tidy/openmp/CMakeLists.txt
++++ b/clang-tools-extra/clang-tidy/openmp/CMakeLists.txt
+@@ -6,9 +6,12 @@ add_clang_library(clangTidyOpenMPModule
+   UseDefaultNoneCheck.cpp
+ 
+   LINK_LIBS
++  clangTidy
++  clangTidyUtils
++  )
++
++clang_target_link_libraries(clangTidyOpenMPModule INTERFACE
+   clangAST
+   clangASTMatchers
+   clangBasic
+-  clangTidy
+-  clangTidyUtils
+   )
+diff --git a/clang-tools-extra/clang-tidy/performance/CMakeLists.txt b/clang-tools-extra/clang-tidy/performance/CMakeLists.txt
+index b6302a5ff81..5b47a8b71f6 100644
+--- a/clang-tools-extra/clang-tidy/performance/CMakeLists.txt
++++ b/clang-tools-extra/clang-tidy/performance/CMakeLists.txt
+@@ -16,11 +16,14 @@ add_clang_library(clangTidyPerformanceModule
+   UnnecessaryValueParamCheck.cpp
+ 
+   LINK_LIBS
++  clangTidy
++  clangTidyUtils
++  )
++
++clang_target_link_libraries(clangTidyPerformanceModule INTERFACE
+   clangAST
+   clangASTMatchers
+   clangAnalysis
+   clangBasic
+   clangLex
+-  clangTidy
+-  clangTidyUtils
+   )
+diff --git a/clang-tools-extra/clang-tidy/plugin/CMakeLists.txt b/clang-tools-extra/clang-tidy/plugin/CMakeLists.txt
+index c92f44df097..24e01f40514 100644
+--- a/clang-tools-extra/clang-tidy/plugin/CMakeLists.txt
++++ b/clang-tools-extra/clang-tidy/plugin/CMakeLists.txt
+@@ -2,11 +2,6 @@ add_clang_library(clangTidyPlugin
+   ClangTidyPlugin.cpp
+ 
+   LINK_LIBS
+-  clangAST
+-  clangASTMatchers
+-  clangBasic
+-  clangFrontend
+-  clangSema
+   clangTidy
+   clangTidyAbseilModule
+   clangTidyAndroidModule
+@@ -27,6 +22,14 @@ add_clang_library(clangTidyPlugin
+   clangTidyPortabilityModule
+   clangTidyReadabilityModule
+   clangTidyZirconModule
++  )
++
++clang_target_link_libraries(clangTidyPlugin INTERFACE
++  clangAST
++  clangASTMatchers
++  clangBasic
++  clangFrontend
++  clangSema
+   clangTooling
+   )
+ 
+diff --git a/clang-tools-extra/clang-tidy/portability/CMakeLists.txt b/clang-tools-extra/clang-tidy/portability/CMakeLists.txt
+index 0420a18a2a6..514e4bd03df 100644
+--- a/clang-tools-extra/clang-tidy/portability/CMakeLists.txt
++++ b/clang-tools-extra/clang-tidy/portability/CMakeLists.txt
+@@ -5,11 +5,14 @@ add_clang_library(clangTidyPortabilityModule
+   SIMDIntrinsicsCheck.cpp
+ 
+   LINK_LIBS
++  clangTidy
++  clangTidyUtils
++  )
++
++clang_target_link_libraries(clangTidyPortabilityModule INTERFACE
+   clangAST
+   clangASTMatchers
+   clangBasic
+   clangLex
+-  clangTidy
+-  clangTidyUtils
+   clangTooling
+   )
+diff --git a/clang-tools-extra/clang-tidy/readability/CMakeLists.txt b/clang-tools-extra/clang-tidy/readability/CMakeLists.txt
+index 2d226b10334..b5c86dbedf7 100644
+--- a/clang-tools-extra/clang-tidy/readability/CMakeLists.txt
++++ b/clang-tools-extra/clang-tidy/readability/CMakeLists.txt
+@@ -38,11 +38,14 @@ add_clang_library(clangTidyReadabilityModule
+   UppercaseLiteralSuffixCheck.cpp
+ 
+   LINK_LIBS
++  clangTidy
++  clangTidyUtils
++  )
++
++clang_target_link_libraries(clangTidyReadabilityModule INTERFACE
+   clangAST
+   clangASTMatchers
+   clangBasic
+   clangLex
+-  clangTidy
+-  clangTidyUtils
+   clangTooling
+   )
+diff --git a/clang-tools-extra/clang-tidy/tool/CMakeLists.txt b/clang-tools-extra/clang-tidy/tool/CMakeLists.txt
+index cbd87d15eef..84a6c8f9ffc 100644
+--- a/clang-tools-extra/clang-tidy/tool/CMakeLists.txt
++++ b/clang-tools-extra/clang-tidy/tool/CMakeLists.txt
+@@ -13,9 +13,6 @@ add_dependencies(clang-tidy
+   )
+ target_link_libraries(clang-tidy
+   PRIVATE
+-  clangAST
+-  clangASTMatchers
+-  clangBasic
+   clangTidy
+   clangTidyAndroidModule
+   clangTidyAbseilModule
+@@ -36,6 +33,13 @@ target_link_libraries(clang-tidy
+   clangTidyPortabilityModule
+   clangTidyReadabilityModule
+   clangTidyZirconModule
++  )
++
++clang_target_link_libraries(clang-tidy
++  PRIVATE
++  clangAST
++  clangASTMatchers
++  clangBasic
+   clangTooling
+   clangToolingCore
+   )
+diff --git a/clang-tools-extra/clang-tidy/utils/CMakeLists.txt b/clang-tools-extra/clang-tidy/utils/CMakeLists.txt
+index 5b2cc932964..516b9524b51 100644
+--- a/clang-tools-extra/clang-tidy/utils/CMakeLists.txt
++++ b/clang-tools-extra/clang-tidy/utils/CMakeLists.txt
+@@ -18,10 +18,13 @@ add_clang_library(clangTidyUtils
+   UsingInserter.cpp
+ 
+   LINK_LIBS
++  clangTidy
++  )
++
++clang_target_link_libraries(clangTidyUtils INTERFACE
+   clangAST
+   clangASTMatchers
+   clangBasic
+   clangLex
+-  clangTidy
+   clangToolingRefactoring
+   )
+diff --git a/clang-tools-extra/clang-tidy/zircon/CMakeLists.txt b/clang-tools-extra/clang-tidy/zircon/CMakeLists.txt
+index 7aa7cd3f669..3b7a2ab41d3 100644
+--- a/clang-tools-extra/clang-tidy/zircon/CMakeLists.txt
++++ b/clang-tools-extra/clang-tidy/zircon/CMakeLists.txt
+@@ -5,10 +5,13 @@ add_clang_library(clangTidyZirconModule
+   ZirconTidyModule.cpp
+ 
+   LINK_LIBS
++  clangTidy
++  clangTidyUtils
++  )
++
++clang_target_link_libraries(clangTidyZirconModule INTERFACE
+   clangAST
+   clangASTMatchers
+   clangBasic
+   clangLex
+-  clangTidy
+-  clangTidyUtils
+   )
+diff --git a/clang-tools-extra/clangd/CMakeLists.txt b/clang-tools-extra/clangd/CMakeLists.txt
+index 320e92fc3dd..cb71f833a96 100644
+--- a/clang-tools-extra/clangd/CMakeLists.txt
++++ b/clang-tools-extra/clangd/CMakeLists.txt
+@@ -102,16 +102,6 @@ add_clang_library(clangDaemon
+   refactor/Tweak.cpp
+ 
+   LINK_LIBS
+-  clangAST
+-  clangASTMatchers
+-  clangBasic
+-  clangDriver
+-  clangFormat
+-  clangFrontend
+-  clangIndex
+-  clangLex
+-  clangSema
+-  clangSerialization
+   clangTidy
+   clangTidyAndroidModule
+   clangTidyAbseilModule
+@@ -132,13 +122,26 @@ add_clang_library(clangDaemon
+   clangTidyPortabilityModule
+   clangTidyReadabilityModule
+   clangTidyZirconModule
++  ${LLVM_PTHREAD_LIB}
++  ${CLANGD_ATOMIC_LIB}
++  )
++
++clang_target_link_libraries(clangDaemon INTERFACE
++  clangAST
++  clangASTMatchers
++  clangBasic
++  clangDriver
++  clangFormat
++  clangFrontend
++  clangIndex
++  clangLex
++  clangSema
++  clangSerialization
+   clangTooling
+   clangToolingCore
+   clangToolingInclusions
+   clangToolingRefactoring
+   clangToolingSyntax
+-  ${LLVM_PTHREAD_LIB}
+-  ${CLANGD_ATOMIC_LIB}
+   )
+ 
+ add_subdirectory(refactor/tweaks)
+diff --git a/clang-tools-extra/clangd/fuzzer/CMakeLists.txt b/clang-tools-extra/clangd/fuzzer/CMakeLists.txt
+index 28191a3f560..0d4069ead72 100644
+--- a/clang-tools-extra/clangd/fuzzer/CMakeLists.txt
++++ b/clang-tools-extra/clangd/fuzzer/CMakeLists.txt
+@@ -14,8 +14,12 @@ add_llvm_fuzzer(clangd-fuzzer
+ 
+ target_link_libraries(clangd-fuzzer
+   PRIVATE
+-  clangBasic
+   clangDaemon
++  )
++
++clang_target_link_libraries(clangd-fuzzer
++  PRIVATE
++  clangBasic
+   clangFormat
+   clangFrontend
+   clangSema
+diff --git a/clang-tools-extra/clangd/index/dex/dexp/CMakeLists.txt b/clang-tools-extra/clangd/index/dex/dexp/CMakeLists.txt
+index ece339d702c..d2c2982fd92 100644
+--- a/clang-tools-extra/clangd/index/dex/dexp/CMakeLists.txt
++++ b/clang-tools-extra/clangd/index/dex/dexp/CMakeLists.txt
+@@ -11,6 +11,10 @@ add_clang_executable(dexp
+ 
+ target_link_libraries(dexp
+   PRIVATE
+-  clangBasic
+   clangDaemon
+   )
++
++clang_target_link_libraries(dexp
++  PRIVATE
++  clangBasic
++  )
+diff --git a/clang-tools-extra/clangd/indexer/CMakeLists.txt b/clang-tools-extra/clangd/indexer/CMakeLists.txt
+index 92aae0643ce..d92c79501b2 100644
+--- a/clang-tools-extra/clangd/indexer/CMakeLists.txt
++++ b/clang-tools-extra/clangd/indexer/CMakeLists.txt
+@@ -9,10 +9,14 @@ add_clang_executable(clangd-indexer
+   )
+ 
+ target_link_libraries(clangd-indexer
++  PRIVATE
++  clangDaemon
++  )
++
++clang_target_link_libraries(clangd-indexer
+   PRIVATE
+   clangAST
+   clangBasic
+-  clangDaemon
+   clangFrontend
+   clangIndex
+   clangLex
+diff --git a/clang-tools-extra/clangd/refactor/tweaks/CMakeLists.txt b/clang-tools-extra/clangd/refactor/tweaks/CMakeLists.txt
+index 051b6c4369d..966f79c6c22 100644
+--- a/clang-tools-extra/clangd/refactor/tweaks/CMakeLists.txt
++++ b/clang-tools-extra/clangd/refactor/tweaks/CMakeLists.txt
+@@ -22,9 +22,12 @@ add_clang_library(clangDaemonTweaks OBJECT
+   ExpandAutoType.cpp
+ 
+   LINK_LIBS
++  clangDaemon
++  )
++
++clang_target_link_libraries(clangDaemonTweaks INTERFACE
+   clangAST
+   clangBasic
+-  clangDaemon
+   clangToolingCore
+   clangToolingSyntax
+   )
+diff --git a/clang-tools-extra/clangd/tool/CMakeLists.txt b/clang-tools-extra/clangd/tool/CMakeLists.txt
+index 085ede37826..881edcf49d7 100644
+--- a/clang-tools-extra/clangd/tool/CMakeLists.txt
++++ b/clang-tools-extra/clangd/tool/CMakeLists.txt
+@@ -17,10 +17,15 @@ endif()
+ 
+ target_link_libraries(clangd
+   PRIVATE
+-  clangAST
+-  clangBasic
+   clangTidy
+   clangDaemon
++  ${CLANGD_XPC_LIBS}
++  )
++
++clang_target_link_libraries(clangd
++  PRIVATE
++  clangAST
++  clangBasic
+   clangFormat
+   clangFrontend
+   clangSema
+@@ -28,5 +33,4 @@ target_link_libraries(clangd
+   clangTooling
+   clangToolingCore
+   clangToolingSyntax
+-  ${CLANGD_XPC_LIBS}
+   )
+diff --git a/clang-tools-extra/clangd/unittests/CMakeLists.txt b/clang-tools-extra/clangd/unittests/CMakeLists.txt
+index faaf88d8306..59af5e8939f 100644
+--- a/clang-tools-extra/clangd/unittests/CMakeLists.txt
++++ b/clang-tools-extra/clangd/unittests/CMakeLists.txt
+@@ -76,23 +76,27 @@ add_unittest(ClangdUnitTests ClangdTests
+   )
+ 
+ target_link_libraries(ClangdTests
++  PRIVATE
++  clangDaemon
++  clangTidy
++  LLVMSupport
++  LLVMTestingSupport
++  )
++
++clang_target_link_libraries(ClangdTests
+   PRIVATE
+   clangAST
+   clangBasic
+-  clangDaemon
+   clangFormat
+   clangFrontend
+   clangIndex
+   clangLex
+   clangSema
+   clangSerialization
+-  clangTidy
+   clangTooling
+   clangToolingCore
+   clangToolingInclusions
+   clangToolingSyntax
+-  LLVMSupport
+-  LLVMTestingSupport
+   )
+ 
+ if (CLANGD_BUILD_XPC)
+diff --git a/clang-tools-extra/clangd/xpc/test-client/CMakeLists.txt b/clang-tools-extra/clangd/xpc/test-client/CMakeLists.txt
+index 283599ecce7..696ff4bb64b 100644
+--- a/clang-tools-extra/clangd/xpc/test-client/CMakeLists.txt
++++ b/clang-tools-extra/clangd/xpc/test-client/CMakeLists.txt
+@@ -15,12 +15,16 @@ set(LLVM_LINK_COMPONENTS
+ 
+ target_link_libraries(clangd-xpc-test-client
+   PRIVATE
+-  clangBasic
+   clangDaemon
++  clangdXpcJsonConversions
++)
++
++clang_target_link_libraries(clangd-xpc-test-client
++  PRIVATE
++  clangBasic
+   clangFormat
+   clangFrontend
+   clangSema
+   clangTooling
+   clangToolingCore
+-  clangdXpcJsonConversions
+ )
+diff --git a/clang-tools-extra/modularize/CMakeLists.txt b/clang-tools-extra/modularize/CMakeLists.txt
+index fa2c0e5346e..4caae81c49b 100644
+--- a/clang-tools-extra/modularize/CMakeLists.txt
++++ b/clang-tools-extra/modularize/CMakeLists.txt
+@@ -11,7 +11,7 @@ add_clang_tool(modularize
+   PreprocessorTracker.cpp
+   )
+ 
+-target_link_libraries(modularize
++clang_target_link_libraries(modularize
+   PRIVATE
+   clangAST
+   clangBasic
+diff --git a/clang-tools-extra/pp-trace/CMakeLists.txt b/clang-tools-extra/pp-trace/CMakeLists.txt
+index faa1d51a0a9..3325a89e95b 100644
+--- a/clang-tools-extra/pp-trace/CMakeLists.txt
++++ b/clang-tools-extra/pp-trace/CMakeLists.txt
+@@ -7,7 +7,7 @@ add_clang_executable(pp-trace
+   PPCallbacksTracker.cpp
+   )
+ 
+-target_link_libraries(pp-trace
++clang_target_link_libraries(pp-trace
+   PRIVATE
+   clangAST
+   clangBasic
+diff --git a/clang-tools-extra/tool-template/CMakeLists.txt b/clang-tools-extra/tool-template/CMakeLists.txt
+index 9a304d4344e..959bd3d1ac9 100644
+--- a/clang-tools-extra/tool-template/CMakeLists.txt
++++ b/clang-tools-extra/tool-template/CMakeLists.txt
+@@ -6,7 +6,7 @@ add_clang_executable(tool-template
+   ToolTemplate.cpp
+   )
+ 
+-target_link_libraries(tool-template
++clang_target_link_libraries(tool-template
+   PRIVATE
+   clangAST
+   clangASTMatchers
+diff --git a/clang-tools-extra/unittests/clang-apply-replacements/CMakeLists.txt b/clang-tools-extra/unittests/clang-apply-replacements/CMakeLists.txt
+index d3200d76b08..2032e20590a 100644
+--- a/clang-tools-extra/unittests/clang-apply-replacements/CMakeLists.txt
++++ b/clang-tools-extra/unittests/clang-apply-replacements/CMakeLists.txt
+@@ -11,7 +11,7 @@ add_extra_unittest(ClangApplyReplacementsTests
+   ApplyReplacementsTest.cpp
+   )
+ 
+-target_link_libraries(ClangApplyReplacementsTests
++clang_target_link_libraries(ClangApplyReplacementsTests
+   PRIVATE
+   clangApplyReplacements
+   clangBasic
+diff --git a/clang-tools-extra/unittests/clang-change-namespace/CMakeLists.txt b/clang-tools-extra/unittests/clang-change-namespace/CMakeLists.txt
+index 9c949723f54..269d64a46a1 100644
+--- a/clang-tools-extra/unittests/clang-change-namespace/CMakeLists.txt
++++ b/clang-tools-extra/unittests/clang-change-namespace/CMakeLists.txt
+@@ -15,7 +15,7 @@ add_extra_unittest(ClangChangeNamespaceTests
+   ChangeNamespaceTests.cpp
+   )
+ 
+-target_link_libraries(ClangChangeNamespaceTests
++clang_target_link_libraries(ClangChangeNamespaceTests
+   PRIVATE
+   clangAST
+   clangASTMatchers
+diff --git a/clang-tools-extra/unittests/clang-doc/CMakeLists.txt b/clang-tools-extra/unittests/clang-doc/CMakeLists.txt
+index 292a1d7a5f1..bdd7360d0e1 100644
+--- a/clang-tools-extra/unittests/clang-doc/CMakeLists.txt
++++ b/clang-tools-extra/unittests/clang-doc/CMakeLists.txt
+@@ -20,7 +20,7 @@ add_extra_unittest(ClangDocTests
+   YAMLGeneratorTest.cpp
+   )
+ 
+-target_link_libraries(ClangDocTests
++clang_target_link_libraries(ClangDocTests
+   PRIVATE
+   clangAST
+   clangASTMatchers
+diff --git a/clang-tools-extra/unittests/clang-include-fixer/CMakeLists.txt b/clang-tools-extra/unittests/clang-include-fixer/CMakeLists.txt
+index 997aa1459a3..be54dc18182 100644
+--- a/clang-tools-extra/unittests/clang-include-fixer/CMakeLists.txt
++++ b/clang-tools-extra/unittests/clang-include-fixer/CMakeLists.txt
+@@ -18,6 +18,10 @@ add_extra_unittest(ClangIncludeFixerTests
+ 
+ target_link_libraries(ClangIncludeFixerTests
+   PRIVATE
++  findAllSymbols
++  )
++
++clang_target_link_libraries(ClangIncludeFixerTests PRIVATE
+   clangBasic
+   clangFormat
+   clangFrontend
+@@ -26,7 +30,6 @@ target_link_libraries(ClangIncludeFixerTests
+   clangSerialization
+   clangTooling
+   clangToolingCore
+-  findAllSymbols
+   )
+ 
+ add_subdirectory(find-all-symbols)
+diff --git a/clang-tools-extra/unittests/clang-include-fixer/find-all-symbols/CMakeLists.txt b/clang-tools-extra/unittests/clang-include-fixer/find-all-symbols/CMakeLists.txt
+index 427aa8ed86f..2362afb832a 100644
+--- a/clang-tools-extra/unittests/clang-include-fixer/find-all-symbols/CMakeLists.txt
++++ b/clang-tools-extra/unittests/clang-include-fixer/find-all-symbols/CMakeLists.txt
+@@ -14,6 +14,10 @@ add_extra_unittest(FindAllSymbolsTests
+ 
+ target_link_libraries(FindAllSymbolsTests
+   PRIVATE
++  findAllSymbols
++  )
++
++clang_target_link_libraries(FindAllSymbolsTests PRIVATE
+   clangAST
+   clangASTMatchers
+   clangBasic
+@@ -21,5 +25,4 @@ target_link_libraries(FindAllSymbolsTests
+   clangLex
+   clangSerialization
+   clangTooling
+-  findAllSymbols
+   )
+diff --git a/clang-tools-extra/unittests/clang-move/CMakeLists.txt b/clang-tools-extra/unittests/clang-move/CMakeLists.txt
+index 1d5347fe30d..40efb5de243 100644
+--- a/clang-tools-extra/unittests/clang-move/CMakeLists.txt
++++ b/clang-tools-extra/unittests/clang-move/CMakeLists.txt
+@@ -16,13 +16,17 @@ add_extra_unittest(ClangMoveTests
+   )
+ 
+ target_link_libraries(ClangMoveTests
++  PRIVATE
++  clangMove
++  )
++
++clang_target_link_libraries(ClangMoveTests
+   PRIVATE
+   clangAST
+   clangASTMatchers
+   clangBasic
+   clangFormat
+   clangFrontend
+-  clangMove
+   clangRewrite
+   clangSerialization
+   clangTooling
+diff --git a/clang-tools-extra/unittests/clang-query/CMakeLists.txt b/clang-tools-extra/unittests/clang-query/CMakeLists.txt
+index 2177764c41a..87f161bc718 100644
+--- a/clang-tools-extra/unittests/clang-query/CMakeLists.txt
++++ b/clang-tools-extra/unittests/clang-query/CMakeLists.txt
+@@ -12,13 +12,17 @@ add_extra_unittest(ClangQueryTests
+   )
+ 
+ target_link_libraries(ClangQueryTests
++  PRIVATE
++  clangQuery
++  )
++
++clang_target_link_libraries(ClangQueryTests
+   PRIVATE
+   clangAST
+   clangASTMatchers
+   clangBasic
+   clangDynamicASTMatchers
+   clangFrontend
+-  clangQuery
+   clangSerialization
+   clangTooling
+   )
+diff --git a/clang-tools-extra/unittests/clang-tidy/CMakeLists.txt b/clang-tools-extra/unittests/clang-tidy/CMakeLists.txt
+index 93b49f546a0..3dba59f435f 100644
+--- a/clang-tools-extra/unittests/clang-tidy/CMakeLists.txt
++++ b/clang-tools-extra/unittests/clang-tidy/CMakeLists.txt
+@@ -23,12 +23,6 @@ add_extra_unittest(ClangTidyTests
+ 
+ target_link_libraries(ClangTidyTests
+   PRIVATE
+-  clangAST
+-  clangASTMatchers
+-  clangBasic
+-  clangFrontend
+-  clangLex
+-  clangSerialization
+   clangTidy
+   clangTidyAndroidModule
+   clangTidyGoogleModule
+@@ -36,6 +30,15 @@ target_link_libraries(ClangTidyTests
+   clangTidyObjCModule
+   clangTidyReadabilityModule
+   clangTidyUtils
++  )
++
++clang_target_link_libraries(ClangTidyTests PRIVATE
++  clangAST
++  clangASTMatchers
++  clangBasic
++  clangFrontend
++  clangLex
++  clangSerialization
+   clangTooling
+   clangToolingCore
+   clangToolingRefactoring

@@ -22,7 +22,6 @@ Version:        3.1
 Release:        0
 Summary:        RAR Archive Reader for Python
 License:        ISC
-Group:          Development/Languages/Python
 URL:            https://rarfile.readthedocs.org/
 Source0:        https://files.pythonhosted.org/packages/source/r/rarfile/rarfile-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -43,7 +42,6 @@ compressed files, the "unrar" utility is run.
 
 %package doc
 Summary:        RAR Archive Reader for Python (Documentation)
-Group:          Documentation/HTML
 BuildArch:      noarch
 
 %description doc
@@ -61,7 +59,7 @@ rm doc/_build/html/.buildinfo
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license LICENSE

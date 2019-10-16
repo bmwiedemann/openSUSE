@@ -1,7 +1,7 @@
 #
 # spec file for package hpx
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2019 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,17 +16,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%define mpi_implem openmpi2
-%ifarch ppc64
-%define mpi_implem openmpi
-%endif
-%if  0%{?sle_version} == 120300 && 0%{?is_opensuse}
-%define mpi_implem openmpi
-%endif
-%if 0%{?sle_version} == 120400 && !0%{?is_opensuse}
-%define mpi_implem openmpi
-%endif
 
 Name:           hpx
 Version:        1.2.1
@@ -43,13 +32,12 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  gcc-c++ >= 4.9
 BuildRequires:  gperftools-devel
-BuildRequires:  %{mpi_implem}-devel
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_regex-devel
+BuildRequires:  libboost_system-devel
 %ifarch aarch64 %arm
 BuildRequires:  libboost_chrono-devel
 BuildRequires:  libboost_context-devel
@@ -58,11 +46,10 @@ BuildRequires:  libboost_thread-devel
 %else
 BuildRequires:  boost-devel
 %endif
-BuildRequires:  %{mpi_implem}
-BuildRequires:  %{mpi_implem}-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  hwloc-devel
+BuildRequires:  openmpi-macros-devel
 
 %description
 HPX is a general purpose C++ runtime system for parallel and distributed applications of any scale.
@@ -81,6 +68,7 @@ This package contains development headers and libraries for hpx
 %package -n libhpx1
 Summary:        Libraries for the hpx package
 Group:          System/Libraries
+%openmpi_requires
 
 %description -n libhpx1
 HPX is a general purpose C++ runtime system for parallel and distributed applications of any scale.
@@ -110,7 +98,7 @@ This package contains static development libraries for the hpx package.
 %define cmake_opts -DCMAKE_SHARED_LINKER_FLAGS="$RPM_OPT_FLAGS -latomic" -DCMAKE_EXE_LINKER_FLAGS="$RPM_OPT_FLAGS -latomic"
 %endif
 
-. %{_libdir}/mpi/gcc/%{mpi_implem}/bin/mpivars.sh
+%setup_openmpi
 %{cmake} -DLIB=%{_lib} %{?cmake_opts:%{cmake_opts}} -DHPX_WITH_BUILD_BINARY_PACKAGE=ON
 make # no _smp_mflags to save memory
 
@@ -123,7 +111,7 @@ sed -i '1s@env @@' %{buildroot}/%{_bindir}/{hpx*.py,hpxcxx}
 
 %check
 # full testsuite takes too much memory just run tests.examples in 1.2.0
-. %{_libdir}/mpi/gcc/%{mpi_implem}/bin/mpivars.sh
+%setup_openmpi
 LD_LIBRARY_PATH="%{buildroot}/%{_libdir}:${LD_LIBRARY_PATH}" make -C build tests.examples
 
 %post -n libhpx1 -p /sbin/ldconfig

@@ -20,16 +20,13 @@
 %bcond_with libmpeg2
 %bcond_without mad
 Name:           scummvm
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Interpreter for several adventure games
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Other
-Url:            http://www.scummvm.org/
-Source:         http://www.scummvm.org/frs/scummvm/%{version}/scummvm-%{version}.tar.xz
-Source99:       %{name}.changes
-# PATCH-FIX-UPSTREAM scummvm-fix_CVE-2017-17528.patch -- backported commit #7aaac1d
-Patch0:         scummvm-fix_CVE-2017-17528.patch
+URL:            https://www.scummvm.org/
+Source:         https://www.scummvm.org/frs/scummvm/%{version}/scummvm-%{version}.tar.xz
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -82,12 +79,6 @@ These engines are in a worse state, but allow to play extra games.
 
 %prep
 %setup -q
-%patch0 -p1
-modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{SOURCE99}")"
-DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
-TIME="\"$(date -d "${modified}" "+%%R")\""
-sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" \
-    base/version.cpp backends/plugins/elf/version.cpp
 # build the endianness test without optimization otherwise gcc is too smart
 # and optimize everything away, making the test fail
 sed -i '/tmp_endianness_check.cpp/ s/$CXXFLAGS/$CXXFLAGS -fno-lto -O0/' configure

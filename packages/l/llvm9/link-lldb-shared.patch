@@ -1,0 +1,238 @@
+diff --git a/lldb/source/Core/CMakeLists.txt b/lldb/source/Core/CMakeLists.txt
+index 476e92878e0..3cd16eb22e4 100644
+--- a/lldb/source/Core/CMakeLists.txt
++++ b/lldb/source/Core/CMakeLists.txt
+@@ -66,7 +66,6 @@ add_lldb_library(lldbCore
+   ValueObjectVariable.cpp
+ 
+   LINK_LIBS
+-    clangAST
+     lldbBreakpoint
+     lldbDataFormatters
+     lldbExpression
+@@ -88,6 +87,10 @@ add_lldb_library(lldbCore
+     Demangle
+   )
+ 
++clang_target_link_libraries(lldbCore INTERFACE
++  clangAST
++  )
++
+ # Needed to properly resolve references in a debug build.
+ # TODO: Remove once we have better layering
+ set_target_properties(lldbCore PROPERTIES LINK_INTERFACE_MULTIPLICITY 4)
+diff --git a/lldb/source/Plugins/ExpressionParser/Clang/CMakeLists.txt b/lldb/source/Plugins/ExpressionParser/Clang/CMakeLists.txt
+index 99d50c4007f..f848264e273 100644
+--- a/lldb/source/Plugins/ExpressionParser/Clang/CMakeLists.txt
++++ b/lldb/source/Plugins/ExpressionParser/Clang/CMakeLists.txt
+@@ -26,17 +26,6 @@ add_lldb_library(lldbPluginExpressionParserClang PLUGIN
+   ${tablegen_deps}
+ 
+   LINK_LIBS
+-    clangAST
+-    clangCodeGen
+-    clangDriver
+-    clangEdit
+-    clangFrontend
+-    clangLex
+-    clangParse
+-    clangRewrite
+-    clangRewriteFrontend
+-    clangSema
+-    clangSerialization
+     lldbCore
+     lldbExpression
+     lldbHost
+@@ -53,3 +42,17 @@ add_lldb_library(lldbPluginExpressionParserClang PLUGIN
+     MCJIT
+     Support
+   )
++
++clang_target_link_libraries(lldbPluginExpressionParserClang INTERFACE
++  clangAST
++  clangCodeGen
++  clangDriver
++  clangEdit
++  clangFrontend
++  clangLex
++  clangParse
++  clangRewrite
++  clangRewriteFrontend
++  clangSema
++  clangSerialization
++  )
+diff --git a/lldb/source/Plugins/Language/ObjC/CMakeLists.txt b/lldb/source/Plugins/Language/ObjC/CMakeLists.txt
+index afb68d4de83..4c78f73c1b3 100644
+--- a/lldb/source/Plugins/Language/ObjC/CMakeLists.txt
++++ b/lldb/source/Plugins/Language/ObjC/CMakeLists.txt
+@@ -22,7 +22,6 @@ add_lldb_library(lldbPluginObjCLanguage PLUGIN
+   NSString.cpp
+ 
+   LINK_LIBS
+-    clangAST
+     lldbCore
+     lldbDataFormatters
+     lldbExpression
+@@ -35,3 +34,7 @@ add_lldb_library(lldbPluginObjCLanguage PLUGIN
+ 
+   EXTRA_CXXFLAGS ${EXTRA_CXXFLAGS}
+ )
++
++clang_target_link_libraries(lldbPluginObjCLanguage INTERFACE
++  clangAST
++)
+diff --git a/lldb/source/Plugins/LanguageRuntime/ObjC/AppleObjCRuntime/CMakeLists.txt b/lldb/source/Plugins/LanguageRuntime/ObjC/AppleObjCRuntime/CMakeLists.txt
+index 29d9ba1f823..6f49d7a16c7 100644
+--- a/lldb/source/Plugins/LanguageRuntime/ObjC/AppleObjCRuntime/CMakeLists.txt
++++ b/lldb/source/Plugins/LanguageRuntime/ObjC/AppleObjCRuntime/CMakeLists.txt
+@@ -9,7 +9,6 @@ add_lldb_library(lldbPluginAppleObjCRuntime PLUGIN
+   AppleObjCTypeEncodingParser.cpp
+ 
+   LINK_LIBS
+-    clangAST
+     lldbBreakpoint
+     lldbCore
+     lldbExpression
+@@ -23,3 +22,7 @@ add_lldb_library(lldbPluginAppleObjCRuntime PLUGIN
+   LINK_COMPONENTS
+     Support
+   )
++
++clang_target_link_libraries(lldbPluginAppleObjCRuntime INTERFACE
++  clangAST
++  )
+diff --git a/lldb/source/Plugins/LanguageRuntime/RenderScript/RenderScriptRuntime/CMakeLists.txt b/lldb/source/Plugins/LanguageRuntime/RenderScript/RenderScriptRuntime/CMakeLists.txt
+index 1a6c4994613..429cd5e0324 100644
+--- a/lldb/source/Plugins/LanguageRuntime/RenderScript/RenderScriptRuntime/CMakeLists.txt
++++ b/lldb/source/Plugins/LanguageRuntime/RenderScript/RenderScriptRuntime/CMakeLists.txt
+@@ -13,7 +13,6 @@ add_lldb_library(lldbPluginRenderScriptRuntime PLUGIN
+   ${tablegen_deps}
+ 
+   LINK_LIBS
+-    clangBasic
+     lldbBreakpoint
+     lldbCore
+     lldbDataFormatters
+@@ -28,3 +27,7 @@ add_lldb_library(lldbPluginRenderScriptRuntime PLUGIN
+     Support
+     Target
+   )
++
++clang_target_link_libraries(lldbPluginRenderScriptRuntime INTERFACE
++  clangBasic
++  )
+diff --git a/lldb/source/Plugins/SymbolFile/DWARF/CMakeLists.txt b/lldb/source/Plugins/SymbolFile/DWARF/CMakeLists.txt
+index 1107e531e46..312a87fb01d 100644
+--- a/lldb/source/Plugins/SymbolFile/DWARF/CMakeLists.txt
++++ b/lldb/source/Plugins/SymbolFile/DWARF/CMakeLists.txt
+@@ -43,8 +43,6 @@ add_lldb_library(lldbPluginSymbolFileDWARF PLUGIN
+   UniqueDWARFASTType.cpp
+ 
+   LINK_LIBS
+-    clangAST
+-    clangBasic
+     lldbCore
+     lldbExpression
+     lldbHost
+@@ -63,3 +61,8 @@ add_lldb_library(lldbPluginSymbolFileDWARF PLUGIN
+     DebugInfoDWARF
+     Support
+   )
++
++clang_target_link_libraries(lldbPluginSymbolFileDWARF INTERFACE
++    clangAST
++    clangBasic
++  )
+diff --git a/lldb/source/Plugins/SymbolFile/NativePDB/CMakeLists.txt b/lldb/source/Plugins/SymbolFile/NativePDB/CMakeLists.txt
+index 52b431db517..b0719758eae 100644
+--- a/lldb/source/Plugins/SymbolFile/NativePDB/CMakeLists.txt
++++ b/lldb/source/Plugins/SymbolFile/NativePDB/CMakeLists.txt
+@@ -11,8 +11,6 @@ add_lldb_library(lldbPluginSymbolFileNativePDB PLUGIN
+   UdtRecordCompleter.cpp
+ 
+   LINK_LIBS
+-    clangAST
+-    clangLex
+     lldbCore
+     lldbSymbol
+     lldbUtility
+@@ -21,3 +19,8 @@ add_lldb_library(lldbPluginSymbolFileNativePDB PLUGIN
+     DebugInfoPDB
+     Support
+   )
++
++clang_target_link_libraries(lldbPluginSymbolFileNativePDB INTERFACE
++  clangAST
++  clangLex
++  )
+diff --git a/lldb/source/Plugins/SymbolFile/PDB/CMakeLists.txt b/lldb/source/Plugins/SymbolFile/PDB/CMakeLists.txt
+index 64168d056ce..93502f9a626 100644
+--- a/lldb/source/Plugins/SymbolFile/PDB/CMakeLists.txt
++++ b/lldb/source/Plugins/SymbolFile/PDB/CMakeLists.txt
+@@ -4,8 +4,6 @@ add_lldb_library(lldbPluginSymbolFilePDB PLUGIN
+   SymbolFilePDB.cpp
+ 
+   LINK_LIBS
+-    clangAST
+-    clangLex
+     lldbCore
+     lldbSymbol
+     lldbUtility
+@@ -14,3 +12,8 @@ add_lldb_library(lldbPluginSymbolFilePDB PLUGIN
+     DebugInfoPDB
+     Support
+   )
++
++clang_target_link_libraries(lldbPluginSymbolFilePDB INTERFACE
++  clangAST
++  clangLex
++  )
+diff --git a/lldb/source/Symbol/CMakeLists.txt b/lldb/source/Symbol/CMakeLists.txt
+index 42ae414b3c8..f19d6191289 100644
+--- a/lldb/source/Symbol/CMakeLists.txt
++++ b/lldb/source/Symbol/CMakeLists.txt
+@@ -46,9 +46,6 @@ add_lldb_library(lldbSymbol
+   ${PLATFORM_SOURCES}
+ 
+   LINK_LIBS
+-    clangAST
+-    clangBasic
+-    clangFrontend
+     lldbCore
+     lldbExpression
+     lldbHost
+@@ -63,3 +60,9 @@ add_lldb_library(lldbSymbol
+   LINK_COMPONENTS
+     Support
+   )
++
++clang_target_link_libraries(lldbSymbol INTERFACE
++  clangAST
++  clangBasic
++  clangFrontend
++  )
+diff --git a/lldb/tools/lldb-instr/CMakeLists.txt b/lldb/tools/lldb-instr/CMakeLists.txt
+index e3dbeba4006..76d9b5fe382 100644
+--- a/lldb/tools/lldb-instr/CMakeLists.txt
++++ b/lldb/tools/lldb-instr/CMakeLists.txt
+@@ -1,7 +1,11 @@
+ add_lldb_tool(lldb-instr
+   Instrument.cpp
+ 
+-  LINK_LIBS
++  LINK_COMPONENTS
++    Support
++  )
++
++clang_target_link_libraries(lldb-instr PRIVATE
+     clangAST
+     clangBasic
+     clangCodeGen
+@@ -10,7 +14,4 @@ add_lldb_tool(lldb-instr
+     clangRewrite
+     clangSerialization
+     clangTooling
+-
+-  LINK_COMPONENTS
+-    Support
+   )

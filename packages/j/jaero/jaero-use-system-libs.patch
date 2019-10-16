@@ -1,0 +1,13 @@
+diff --git a/JAERO/jconvolutionalcodec.h b/JAERO/jconvolutionalcodec.h
+index 10c5f49..0101fa6 100644
+--- a/JAERO/jconvolutionalcodec.h
++++ b/JAERO/jconvolutionalcodec.h
+@@ -5,7 +5,7 @@
+ #ifdef __cplusplus
+   extern "C" {
+ #endif
+-#include "../libcorrect/include/correct.h"
++#include "correct.h"
+ #ifdef __cplusplus
+   }
+ #endif

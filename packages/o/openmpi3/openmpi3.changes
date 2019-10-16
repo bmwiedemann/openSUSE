@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 10 06:09:30 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Add missing Provides when openmpi3 is the default openmpi
+- Add conflict with the older hpc-macros-devel providers to avoid issues during updates
+- Add openmpi_prefix macro to openmpi-macros-devel
+
+-------------------------------------------------------------------
 Fri Sep 27 11:17:24 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Add macro file for non-hpc flavour

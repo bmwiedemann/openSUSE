@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
@@ -23,10 +23,11 @@ Release:        0
 Summary:        A Python Module for Interfacing with the SDL Multimedia Library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Python
-URL:            https://github.com/pygame/pygame
+Url:            https://github.com/pygame/pygame
 Source0:        https://files.pythonhosted.org/packages/source/p/pygame/pygame-%{version}.tar.gz
 # Do not test mp3 format; whe have that support disabled in SDL1
 Patch0:         python-pygame-test-no-mp3.patch
+Patch1:         python-pygame-python38-import.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module setuptools}
@@ -89,7 +90,7 @@ This package contains documentation and example programs for Pygame.
 
 %prep
 %setup -q -n pygame-%{version}
-%patch0 -p1
+%autopatch -p1
 sed -i 's/\r$//' docs/reST/ref/code_examples/draw_module_example.py
 sed -i 's/\r$//' docs/reST/ref/code_examples/joystick_calls.py
 # Fix wrong-script-interpreter

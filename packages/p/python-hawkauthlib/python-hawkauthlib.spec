@@ -1,7 +1,7 @@
 #
 # spec file for package python-hawkauthlib
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,6 @@ Version:        2.0.0
 Release:        0
 Summary:        Hawk Access Authentication protocol
 License:        MPL-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/mozilla-services/hawkauthlib
 Source0:        https://github.com/mozilla-services/hawkauthlib/archive/v%{version}.tar.gz
 # Add MPL-2.0 License text directly from MPL upstream, since it is not included in package tarball
@@ -47,12 +46,12 @@ simple HTTP request-signing scheme described in:https://npmjs.org/package/hawk
 
 %build
 %python_build
-cp %{S:1} LICENSE
+cp %{SOURCE1} LICENSE
 
 %install
 %python_install
 
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py test

@@ -24,7 +24,6 @@ Version:        3.4.5
 Release:        0
 Summary:        Natural Language Toolkit
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            http://nltk.org/
 Source:         https://files.pythonhosted.org/packages/source/n/nltk/%{pyname}-%{version}.zip
 BuildRequires:  %{interps}
@@ -73,7 +72,7 @@ sed -i "1,4{/\/usr\/bin\/env/d}" nltk/tokenize/stanford_segmenter.py
 %install
 %python_install
 
-%{python_expand %fdupes -s %{buildroot}%{$python_sitelib}/
+%{python_expand %fdupes %{buildroot}%{$python_sitelib}/
 chmod -x %{buildroot}%{$python_sitelib}/nltk/test/dependency.doctest
 }
 

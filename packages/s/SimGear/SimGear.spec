@@ -35,20 +35,20 @@ Source0:        https://sourceforge.net/projects/flightgear/files/release-%{main
 Patch1:         0001-Remove-deprecated-boost-utility.patch
 # PATCH-FIX-UPSTREAM 0001-boost-enable_if-Support-Boost-versions-1.56.patch
 Patch2:         0001-boost-enable_if-Support-Boost-versions-1.56.patch
+# PATCH-FIX-UPSTREAM 
+Patch3:         0001-Always-add-PROJECT_BINARY_DIR-to-include_directories.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libOpenSceneGraph-devel < 3.6
 BuildConflicts: libOpenSceneGraph-devel < 3.2
+BuildRequires:  libboost_headers-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(zlib)
-%if 0%{?suse_version} > 1330
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
-%endif
+BuildRequires:  udns-devel
 
 %description
 SimGear is a set of open-source libraries designed to be used as building
@@ -75,14 +75,11 @@ FlightGear flight simulator and many of its related utilities.
 Summary:        Development libraries and headers for SimGear
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
-%if 0%{?suse_version} > 1330
 BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
-%endif
 Requires:       libOpenSceneGraph-devel = %{openscenegraph_version}
 Requires:       libjpeg-devel
 Requires:       openal-soft-devel
+Requires:       udns-devel
 Requires:       zlib-devel
 
 %description devel
@@ -93,6 +90,7 @@ SimGear.
 %setup -q -n simgear-%{version}
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 export CFLAGS="%{optflags}"
@@ -100,8 +98,12 @@ export CXXFLAGS="%{optflags}"
 # configure to build shared simgear libraries
 %cmake \
 	-DSIMGEAR_SHARED:BOOL=ON \
+	-DSYSTEM_EXPAT:BOOL=ON \
+	-DSYSTEM_UDNS:BOOL=ON \
+	-DENABLE_OPENMP:BOOL=ON \
 	-DENABLE_TESTS:BOOL=OFF
-make %{?_smp_mflags}
+
+%cmake_build
 
 %install
 %cmake_install

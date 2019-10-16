@@ -1,0 +1,5 @@
+<package name="obs-service-go_modules" project="openSUSE:Factory">
+  <title>OBS Source Service to download, verify and vendor Go module dependency sources</title>
+  <description>Using go.mod and go.sum distributed with a Go application, the obs-service-go_modules service calls go mod download, go mod verify and go mod vendor. The service then creates vendor.tar.gz containing the vendor/ directory populated by go mod vendor, allowing Go application package builds without network access during the build stage.</description>
+  <devel project="devel:languages:go" package="obs-service-go_modules"/>
+</package>

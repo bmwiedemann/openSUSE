@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  4 12:39:15 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Only run the testsuite when debugging symbols are available
+  This fixes the issue reported in boo#1152451
+
+-------------------------------------------------------------------
 Thu Jun 20 09:50:39 UTC 2019 - Dan Čermák <dcermak@suse.com>
 
 - Update to notmuch 0.29.1:

@@ -23,12 +23,13 @@ Version:        3.1.0
 Release:        0
 Summary:        A python interface to Last.fm
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/pylast/pylast
 Source0:        https://files.pythonhosted.org/packages/source/p/pylast/pylast-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-six
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module flaky}
@@ -38,8 +39,6 @@ BuildRequires:  %{python_module pycodestyle}
 BuildRequires:  %{python_module pyflakes}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-Requires:       python-six
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -64,7 +63,7 @@ Features:
 
 %install
 %python_install
-%python_exec %fdupes -s %{buildroot}/%{python_sitelib}
+%python_exec %fdupes %{buildroot}/%{python_sitelib}
 
 %check
 # every test file has:

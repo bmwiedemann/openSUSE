@@ -200,4 +200,15 @@
   + python-pygame-test-no-mp3.patch</comment>
     <requestid>710330</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>9ae6c32128f22bc99c0ea470ac7b8a29</srcmd5>
+    <version>1.9.6</version>
+    <time>1571210264</time>
+    <user>dimstar_suse</user>
+    <comment>------------------------------------------------------------------
+- Add python-pygame-python38-import.patch from upstream to fix a build 
+  failure with Python 3.8.
+- Use autopatch macro rather than patch0, due to multiple patches.</comment>
+    <requestid>738496</requestid>
+  </revision>
 </revisionlist>

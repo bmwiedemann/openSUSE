@@ -223,4 +223,12 @@
 - Enable documentation build</comment>
     <requestid>738217</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>7c68f640d567e80a80481f6ff3a1d5a6</srcmd5>
+    <version>1.1.7</version>
+    <time>1571210006</time>
+    <user>dimstar_suse</user>
+    <comment>- Update the unit install commands wrt bsc#1153841</comment>
+    <requestid>738253</requestid>
+  </revision>
 </revisionlist>
