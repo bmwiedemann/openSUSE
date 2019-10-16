@@ -942,11 +942,14 @@ unsorted:
   - batctl 
   - bats 
   - bazel 
+  - bazel-apple-support-source 
   - bazel-gazelle 
   - bazel-gazelle-source 
+  - bazel-rules-apple-source 
   - bazel-rules-cc-source 
   - bazel-rules-foreign-cc-source 
   - bazel-rules-go-source 
+  - bazel-rules-java-source 
   - bazel-rules-proto-source 
   - bazel-skylib-source 
   - bazel-toolchains-source 
@@ -1561,6 +1564,11 @@ unsorted:
   - clang7-devel-32bit: [x86_64] 
   - clang8-devel 
   - clang8-devel-32bit: [x86_64] 
+  - clang9 
+  - clang9-checker 
+  - clang9-devel 
+  - clang9-devel-32bit: [x86_64] 
+  - clang9-doc 
   - clanlib 
   - clanlib-devel 
   - clanlib-doc 
@@ -6905,11 +6913,15 @@ unsorted:
   - libLLVM7 
   - libLLVM7-32bit: [x86_64] 
   - libLLVM8-32bit: [x86_64] 
+  - libLLVM9 
+  - libLLVM9-32bit: [x86_64] 
   - libLTO6 
   - libLTO6-32bit: [x86_64] 
   - libLTO7 
   - libLTO7-32bit: [x86_64] 
   - libLTO8-32bit: [x86_64] 
+  - libLTO9 
+  - libLTO9-32bit: [x86_64] 
   - libLimeSuite19_04-1 
   - libMagick++-7_Q16HDRI4-32bit: [x86_64] 
   - libMagick++-devel 
@@ -7943,6 +7955,8 @@ unsorted:
   - libclang7 
   - libclang7-32bit: [x86_64] 
   - libclang8-32bit: [x86_64] 
+  - libclang9 
+  - libclang9-32bit: [x86_64] 
   - libclastfm-devel 
   - libclaw-devel 
   - libclaw-doc 
@@ -9529,6 +9543,7 @@ unsorted:
   - liblldb6: [x86_64] 
   - liblldb7: [x86_64] 
   - liblldb8: [x86_64] 
+  - liblldb9: [x86_64] 
   - liblldp_clif1: [i586] 
   - liblldpctl4 
   - liblmdb-0_9_23-32bit: [x86_64] 
@@ -10062,6 +10077,7 @@ unsorted:
   - libomp6-devel 
   - libomp7-devel 
   - libomp8-devel 
+  - libomp9-devel 
   - liboop-devel 
   - liboop4 
   - libopae-c0: [x86_64] 
@@ -12232,6 +12248,7 @@ unsorted:
   - lld6 
   - lld7 
   - lld8 
+  - lld9 
   - lldb: [x86_64] 
   - lldb-devel: [x86_64] 
   - lldb6: [x86_64] 
@@ -12240,6 +12257,8 @@ unsorted:
   - lldb7-devel: [x86_64] 
   - lldb8: [x86_64] 
   - lldb8-devel: [x86_64] # devel package of dvd:libLLVM8 
+  - lldb9: [x86_64] 
+  - lldb9-devel: [x86_64] 
   - lldpd 
   - lldpd-devel 
   - llmnrd 
@@ -12282,6 +12301,18 @@ unsorted:
   - llvm8-polly 
   - llvm8-polly-devel 
   - llvm8-vim-plugins 
+  - llvm9 
+  - llvm9-LTO-devel 
+  - llvm9-LTO-devel-32bit: [x86_64] 
+  - llvm9-devel 
+  - llvm9-devel-32bit: [x86_64] 
+  - llvm9-doc 
+  - llvm9-emacs-plugins 
+  - llvm9-gold 
+  - llvm9-opt-viewer 
+  - llvm9-polly 
+  - llvm9-polly-devel 
+  - llvm9-vim-plugins 
   - lmarbles 
   - lmdb 
   - lmdb-devel 
@@ -14202,6 +14233,7 @@ unsorted:
   - objenesis 
   - objenesis-javadoc 
   - obs-service-appimage 
+  - obs-service-go_modules 
   - obs-service-kiwi_label_helper 
   - obs-service-kiwi_metainfo_helper 
   - obs-service-product_converter 
@@ -14210,6 +14242,8 @@ unsorted:
   - obs-service-snapcraft 
   - obs-service-tar 
   - ocaml 
+  - ocaml-base 
+  - ocaml-base-devel 
   - ocaml-benchmark 
   - ocaml-benchmark-devel 
   - ocaml-brlapi 
@@ -14313,6 +14347,8 @@ unsorted:
   - ocaml-runtime 
   - ocaml-sedlex 
   - ocaml-sedlex-devel 
+  - ocaml-sexplib0 
+  - ocaml-sexplib0-devel 
   - ocaml-sha 
   - ocaml-sha-devel 
   - ocaml-source 
@@ -14660,10 +14696,19 @@ unsorted:
   - openmpi-libs 
   - openmpi-libs-32bit: [x86_64] 
   - openmpi-testsuite 
+  - openmpi1 
+  - openmpi1-config 
+  - openmpi1-devel 
+  - openmpi1-docs 
   - openmpi1-gnu-hpc 
   - openmpi1-gnu-hpc-devel 
   - openmpi1-gnu-hpc-devel-static 
+  - openmpi1-gnu-hpc-docs 
   - openmpi1-gnu-hpc-macros-devel 
+  - openmpi1-libs 
+  - openmpi1-libs-32bit: [x86_64] 
+  - openmpi1-macros-devel 
+  - openmpi1-testsuite 
   - openmpi2 
   - openmpi2-config 
   - openmpi2-devel 
@@ -14693,6 +14738,7 @@ unsorted:
   - openmpi_1_10_7-gnu-hpc 
   - openmpi_1_10_7-gnu-hpc-devel 
   - openmpi_1_10_7-gnu-hpc-devel-static 
+  - openmpi_1_10_7-gnu-hpc-docs 
   - openmpi_1_10_7-gnu-hpc-macros-devel 
   - openmpi_1_10_7-gnu-hpc-testsuite 
   - openmpi_2_1_6-gnu-hpc 
@@ -20807,6 +20853,7 @@ unsorted:
   - python3-lldb6: [x86_64] 
   - python3-lldb7: [x86_64] 
   - python3-lldb8: [x86_64] 
+  - python3-lldb9: [x86_64] 
   - python3-llfuse 
   - python3-llvmlite 
   - python3-lmdb 
@@ -20900,6 +20947,7 @@ unsorted:
   - python3-munkres 
   - python3-musicbrainzngs 
   - python3-mutagen 
+  - python3-mutmut 
   - python3-mutt-ics 
   - python3-mygpoclient 
   - python3-mysql-connector-python 
@@ -20950,6 +20998,7 @@ unsorted:
   - python3-notify2 
   - python3-notmuch 
   - python3-novaclient 
+  - python3-nox 
   - python3-nss 
   - python3-ntfy 
   - python3-ntlm-auth 
