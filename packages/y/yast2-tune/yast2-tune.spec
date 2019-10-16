@@ -17,7 +17,7 @@
 
 
 Name:           yast2-tune
-Version:        4.2.0
+Version:        4.2.1
 Release:        0
 Summary:        YaST2 - Hardware Tuning
 License:        GPL-2.0-or-later
@@ -27,12 +27,12 @@ Url:            https://github.com/yast/yast-tune
 Source0:        %{name}-%{version}.tar.bz2
 
 BuildRequires:  update-desktop-files
-BuildRequires:  yast2
+# CFA::Sysctl
+BuildRequires:  yast2 >= 4.2.25
 BuildRequires:  yast2-devtools >= 4.2.2
 
-# hwinfo/classnames.ycp
-# Wizard::SetDesktopTitleAndIcon
-Requires:       yast2 >= 2.21.22
+# CFA::Sysctl
+Requires:       yast2 >= 4.2.25
 Requires:       yast2-bootloader
 Requires:       yast2-ruby-bindings >= 1.0.0
 

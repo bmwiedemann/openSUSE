@@ -1,10 +1,23 @@
 -------------------------------------------------------------------
+Thu Oct 10 13:39:18 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
+
+- fix crash of autoyast config dialog (bsc#1152913)
+- 4.2.12
+
+-------------------------------------------------------------------
+Tue Oct  8 10:29:07 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
+
+- Detect the installation medium type only during installation,
+  it crashes in an installed system (bsc#1152694)
+- 4.2.11
+
+-------------------------------------------------------------------
 Thu Oct  3 09:41:19 UTC 2019 - Michal Filka <mfilka@suse.com>
 
 - bnc#1140474
   - changed wording when informing the user about missing migration
     target
-- 4.2.10 
+- 4.2.10
 
 -------------------------------------------------------------------
 Fri Sep 27 11:12:02 UTC 2019 - jsrain@suse.cz

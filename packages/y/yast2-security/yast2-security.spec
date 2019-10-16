@@ -17,7 +17,7 @@
 
 
 Name:           yast2-security
-Version:        4.2.3
+Version:        4.2.4
 Release:        0
 Summary:        YaST2 - Security Configuration
 License:        GPL-2.0-only
@@ -34,8 +34,8 @@ BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  yast2-pam
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake) >= 0.2.5
-# Yast2::Systemd::Service
-BuildRequires:  yast2 >= 4.1.3
+# Yast2::CFA::Sysctl
+BuildRequires:  yast2 >= 4.2.25
 # Unfortunately we cannot move this to macros.yast,
 # bcond within macros are ignored by osc/OBS.
 %bcond_with yast_run_ci_tests
@@ -45,8 +45,8 @@ BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake-ci)
 
 # new Pam.ycp API
 Requires:       yast2-pam >= 2.14.0
-# Yast2::Systemd::Service
-Requires:       yast2 >= 4.1.3
+# CFA::Sysctl
+Requires:       yast2 >= 4.2.25
 Requires:       yast2-ruby-bindings >= 1.0.0
 
 Provides:       y2c_sec

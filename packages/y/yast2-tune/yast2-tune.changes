@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  4 13:30:49 UTC 2019 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Place sysctl settings in /etc/sysctl.d/ (jsc#SLE-9077).
+- 4.2.1
+
+-------------------------------------------------------------------
 Fri May 31 12:41:37 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
 
 - Add metainfo (fate#319035)

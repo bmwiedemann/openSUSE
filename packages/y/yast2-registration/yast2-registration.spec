@@ -17,7 +17,7 @@
 
 
 Name:           yast2-registration
-Version:        4.2.10
+Version:        4.2.12
 Release:        0
 Summary:        YaST2 - Registration Module
 License:        GPL-2.0-only
