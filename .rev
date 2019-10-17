@@ -1548,4 +1548,12 @@ https://gitlab.gnome.org/GNOME/gnome-control-center/commit/3e82d5386033e8fbf3f5b
     <comment> (forwarded request 720729 from iznogood)</comment>
     <requestid>720999</requestid>
   </revision>
+  <revision rev="182" vrev="1">
+    <srcmd5>df8ba0692d475652a6c4cff0ee798687</srcmd5>
+    <version>3.34.1</version>
+    <time>1571309982</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736535</requestid>
+  </revision>
 </revisionlist>
