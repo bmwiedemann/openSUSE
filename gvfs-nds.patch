@@ -1,7 +1,7 @@
-Index: b/daemon/gvfsbackendnds.c
+Index: gvfs-1.42.1/daemon/gvfsbackendnds.c
 ===================================================================
 --- /dev/null
-+++ b/daemon/gvfsbackendnds.c
++++ gvfs-1.42.1/daemon/gvfsbackendnds.c
 @@ -0,0 +1,747 @@
 +/* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode; nil; -*- */
 +/* GIO - GLib Input, Output and Streaming Library
@@ -751,10 +751,10 @@ Index: b/daemon/gvfsbackendnds.c
 +  g_set_application_name (_("Displaying Embedded Objects"));
 +}
 
-Index: b/daemon/gvfsbackendnds.h
+Index: gvfs-1.42.1/daemon/gvfsbackendnds.h
 ===================================================================
 --- /dev/null
-+++ b/daemon/gvfsbackendncs.h
++++ gvfs-1.42.1/daemon/gvfsbackendnds.h
 @@ -0,0 +1,53 @@
 +/* GIO - GLib Input, Output and Streaming Library
 + *
@@ -810,24 +810,24 @@ Index: b/daemon/gvfsbackendnds.h
 +
 +#endif /* __G_VFS_BACKEND_NDS_H__ */
 
-Index: b/meson_options.txt
+Index: gvfs-1.42.1/meson_options.txt
 ===================================================================
---- a/meson_options.txt
-+++ b/meson_options.txt
-@@ -15,6 +15,7 @@ option('google', type: 'boolean', value:
+--- gvfs-1.42.1.orig/meson_options.txt
++++ gvfs-1.42.1/meson_options.txt
+@@ -12,6 +12,7 @@ option('google', type: 'boolean', value:
  option('gphoto2', type: 'boolean', value: true, description: 'build with gphoto2 backend and volume monitor')
  option('http', type: 'boolean', value: true, description: 'build with http/dav backends')
  option('mtp', type: 'boolean', value: true, description: 'build with mtp backend and volume monitor')
 +option('nds', type: 'boolean', value: true, description: 'build with nds backend')
  option('nfs', type: 'boolean', value: true, description: 'build with nfs backend')
+ option('sftp', type: 'boolean', value: true, description: 'build with sftp backend')
  option('smb', type: 'boolean', value: true, description: 'build with smb backends')
- option('udisks2', type: 'boolean', value: true, description: 'build with udisks2 volume monitor')
 
-Index: b/meson.build
+Index: gvfs-1.42.1/meson.build
 ===================================================================
---- a/meson.build
-+++ b/meson.build
-@@ -465,6 +465,12 @@ config_h.set('HAVE_LIBMTP', enable_mtp)
+--- gvfs-1.42.1.orig/meson.build
++++ gvfs-1.42.1/meson.build
+@@ -449,6 +449,12 @@ config_h.set('HAVE_LIBMTP', enable_mtp)
  # *** AFP backend ***
  enable_afp = get_option('afp')
  
@@ -841,11 +841,11 @@ Index: b/meson.build
  enable_nfs = get_option('nfs')
  if enable_nfs
 
-Index: b/daemon/meson.build
+Index: gvfs-1.42.1/daemon/meson.build
 ===================================================================
---- a/daemon/meson.build
-+++ b/daemon/meson.build
-@@ -562,6 +562,22 @@ if enable_afp
+--- gvfs-1.42.1.orig/daemon/meson.build
++++ gvfs-1.42.1/daemon/meson.build
+@@ -530,6 +530,22 @@ if enable_afp
    mounts += ['afp-browse']
  endif
  
@@ -866,4 +866,5 @@ Index: b/daemon/meson.build
 +endif
 +
  if enable_nfs
-   sources = files('gvfsbackendnfs.c')
+   cflags = [
+     '-DBACKEND_HEADER=gvfsbackendnfs.h',

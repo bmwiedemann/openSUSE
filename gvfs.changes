@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Mon Oct 14 07:17:45 UTC 2019 - QK ZHU <qkzhu@suse.com>
+
+- Rebase SLE patches for version 1.42.1:
+  + gvfs-nds.patch
+  + gvfs-nvvfs.patch
+
+-------------------------------------------------------------------
+Mon Oct  7 07:47:29 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.42.1:
+  + dav: Fix mounting when 403 is returned for the parent folder.
+  + Revert "sftp: Always use port 22 if not specified".
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 15 19:24:28 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Fix Requires on -fuse package: now needs fuse3, not fuse. 
+
+-------------------------------------------------------------------
+Tue Sep 10 17:40:44 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.42.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 30 19:56:41 CDT 2019 - mgorse@suse.com
+
+- Update to version 1.41.91:
+  + fuse: Remove max_write limit.
+  + Several smaller bugfixes.
+  + Updated translations.
+- Changes from version 1.41.90:
+  + udisks2: Change display name for crypto_unknown devices.
+  + google: Disable deletion of non-empty directories.
+  + google: Fix crashes when deleting if the file isn't found.
+  + google: Fix issue with stale entries remaining after rename
+    operation.
+  + build: Define gvfs_rpath for libgvfsdaemon.so.
+  + proxy: Don't leak a GVfsDBusDaemon.
+  + Updated translations.
+- Changes from version 1.41.4:
+  + google: Do not enumerate volatile entries if title matches id.
+  + build: Add dependency on gsettings-desktop-schemas.
+  + daemon/udisks2: Handle lockdown option to disable writing.
+  + fuse: Define RENAME_* macros when they are not defined.
+  + google: Check ownership in is_owner() without additional HTTP
+    request.
+  + Several smaller bugfixes.
+  + Updated translations.
+- Changes from version 1.41.3:
+  + Updated translations.
+- Changes from version 1.41.2:
+  + build: Several meson improvements.
+  + build: Bump required meson version to 0.50.0.
+  + google: Support deleting shared Google Drive files.
+  + admin: Prevent core dumps when daemon is manually started.
+  + Several smaller bugfixes.
+  + Updated translations.
+- Changes from version 1.41.1:
+  + fuse: Adapt gvfsd-fuse to use fuse 3.x.
+  + daemon: Unify some translatable strings.
+  + Updated translations.
+- Specify meson version requirement.
+- Require fuse >= 3.0.0.
+- Require gsettings-desktop-schemas: new dependency.
+
+-------------------------------------------------------------------
 Wed Jul 17 10:07:09 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.40.2:
