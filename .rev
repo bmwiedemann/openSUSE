@@ -623,4 +623,12 @@ cd - (forwarded request 199127 from Zaitor)</comment>
     <comment></comment>
     <requestid>714727</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>344cb1d473835cb66ef1cfc6ac5a5142</srcmd5>
+    <version>3.34.1</version>
+    <time>1571310078</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736562</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Oct  7 16:55:15 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Fix firmware updates where the device needed a manual detach.
+  + Fix installing webapps.
+  + Fix signal blocking for search.
+  + Fix third party repo enabling.
+  + Hide the shortcut buttons for parentally filtered apps.
+  + Make disabled flatpak remote enabling work.
+  + Show snap channels as app alternates.
+  + Show the correct application when clicking from the GNOME Shell
+    menu.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  9 14:34:44 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.34.0:
+  + Add a link to the privacy policy in the review dialog.
+  + Add and improve many overview banners.
+  + Add support for download scheduling using Mogwai.
+  + Allow installing locale data automatically.
+  + Allow snaps to be shown by AppStream ID.
+  + Don't apply drop shadow on stock symbolic icons.
+  + Don't install queued apps when the network changes and is
+    metered.
+  + Fix the 'localised in my language' kudo.
+  + Hide addons that are not available in repos.
+  + Localize ESRB content rating strings.
+  + Never show the installation progress bar going backwards.
+  + Notify the user when an application can escape the sandbox.
+  + Refactor screenshots and hide those unavailable when offline.
+  + Select the rating systems selected based by territory.
+  + Use smaller default size for main window when required.
+  + Updated Translations.
+
+-------------------------------------------------------------------
 Thu Jul 11 17:51:39 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.4:
