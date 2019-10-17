@@ -18,7 +18,7 @@
 
 %define so_version 26
 Name:           qpdf
-Version:        9.0.1
+Version:        9.0.2
 Release:        0
 Summary:        Command-line tools and library for transforming PDF files
 License:        Apache-2.0

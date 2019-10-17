@@ -7,4 +7,19 @@
     <comment>- Initial packaging at 1.1.0</comment>
     <requestid>702782</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>91a6bf64a55b97cab0419cdbd9832295</srcmd5>
+    <version>1.2.0</version>
+    <time>1571307611</time>
+    <user>dimstar_suse</user>
+    <comment>- Use `pwd`/.cargo for vendor config so that CARGO_HOME export is not required (thanks to luke_nukem for this)
+- Version 1.2.0
+  - Add support for spaces in commands
+  - Add pager support
+  - Print detected OS with -v / --version
+  - Add (back) support for proxies
+- Set directory for 'git clone' in README.packager
+- Add '--path .' to 'cargo install' command to install the binaries for the package in current working directory.</comment>
+    <requestid>734433</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,257 @@
 -------------------------------------------------------------------
+Sun Oct 13 09:18:38 CEST 2019 - jslaby@suse.cz
+
+- Linux 5.3.6 (bnc#1151927).
+- libnvdimm: prevent nvdimm from requesting key when security
+  is disabled (bnc#1151927).
+- staging: erofs: detect potential multiref due to corrupted
+  images (bnc#1151927).
+- staging: erofs: avoid endless loop of invalid lookback distance
+  0 (bnc#1151927).
+- staging: erofs: add two missing erofs_workgroup_put for
+  corrupted images (bnc#1151927).
+- staging: erofs: some compressed cluster should be submitted
+  for corrupted images (bnc#1151927).
+- staging: erofs: fix an error handling in erofs_readdir()
+  (bnc#1151927).
+- coresight: etm4x: Use explicit barriers on enable/disable
+  (bnc#1151927).
+- vfs: Fix EOVERFLOW testing in put_compat_statfs64 (bnc#1151927).
+- riscv: Avoid interrupts being erroneously enabled in
+  handle_exception() (bnc#1151927).
+- perf stat: Reset previous counts on repeat with interval
+  (bnc#1151927).
+- tick: broadcast-hrtimer: Fix a race in bc_set_next
+  (bnc#1151927).
+- KVM: nVMX: Fix consistency check on injected exception error
+  code (bnc#1151927).
+- Btrfs: fix selftests failure due to uninitialized i_mode in
+  test inodes (bnc#1151927).
+- drm/radeon: Bail earlier when radeon.cik_/si_support=0 is passed
+  (bnc#1151927).
+- nfp: abm: fix memory leak in nfp_abm_u32_knode_replace
+  (bnc#1151927).
+- mlxsw: spectrum_flower: Fail in case user specifies multiple
+  mirror actions (bnc#1151927).
+- perf unwind: Fix libunwind build failure on i386 systems
+  (bnc#1151927).
+- i2c: qcom-geni: Disable DMA processing on the Lenovo Yoga C630
+  (bnc#1151927).
+- net: dsa: microchip: Always set regmap stride to 1
+  (bnc#1151927).
+- bpf: Fix bpf_event_output re-entry issue (bnc#1151927).
+- blk-mq: move lockdep_assert_held() into elevator_exit
+  (bnc#1151927).
+- libbpf: fix false uninitialized variable warning (bnc#1151927).
+- kernel/elfcore.c: include proper prototypes (bnc#1151927).
+- selftests/bpf: adjust strobemeta loop to satisfy latest clang
+  (bnc#1151927).
+- include/trace/events/writeback.h: fix -Wstringop-truncation
+  warnings (bnc#1151927).
+- perf build: Add detection of java-11-openjdk-devel package
+  (bnc#1151927).
+- sched/core: Fix migration to invalid CPU in
+  __set_cpus_allowed_ptr() (bnc#1151927).
+- sched/membarrier: Fix private expedited registration check
+  (bnc#1151927).
+- sched/membarrier: Call sync_core only before usermode for same
+  mm (bnc#1151927).
+- libnvdimm/nfit_test: Fix acpi_handle redefinition (bnc#1151927).
+- fuse: fix memleak in cuse_channel_open (bnc#1151927).
+- =?UTF-8?q?libnvdimm:=20Fix=20endian=20conversion=20issues?=
+  =?UTF-8?q?=C2=A0?= (bnc#1151927).
+- libnvdimm/region: Initialize bad block for volatile namespaces
+  (bnc#1151927).
+- iommu/amd: Fix downgrading default page-sizes in alloc_pte()
+  (bnc#1151927).
+- thermal_hwmon: Sanitize thermal_zone type (bnc#1151927).
+- thermal: Fix use-after-free when unregistering thermal zone
+  device (bnc#1151927).
+- ntb: point to right memory window index (bnc#1151927).
+- x86/purgatory: Disable the stackleak GCC plugin for the
+  purgatory (bnc#1151927).
+- selftests/seccomp: fix build on older kernels (bnc#1151927).
+- pwm: stm32-lp: Add check in case requested period cannot be
+  achieved (bnc#1151927).
+- SUNRPC: Don't try to parse incomplete RPC messages
+  (bnc#1151927).
+- pNFS: Ensure we do clear the return-on-close layout stateid
+  on fatal errors (bnc#1151927).
+- perf probe: Fix to clear tev->nargs in clear_probe_trace_event()
+  (bnc#1151927).
+- drm/amdgpu: Check for valid number of registers to read
+  (bnc#1151927).
+- drm/amdgpu: Fix KFD-related kernel oops on Hawaii (bnc#1151927).
+- netfilter: nf_tables: allow lookups in dynamic sets
+  (bnc#1151927).
+- watchdog: aspeed: Add support for AST2600 (bnc#1151927).
+- SUNRPC: RPC level errors should always set task->tk_rpc_status
+  (bnc#1151927).
+- ceph: reconnect connection if session hang in opening state
+  (bnc#1151927).
+- ceph: fetch cap_gen under spinlock in ceph_add_cap
+  (bnc#1151927).
+- ceph: fix directories inode i_blkbits initialization
+  (bnc#1151927).
+- fuse: fix request limit (bnc#1151927).
+- xen/pci: reserve MCFG areas earlier (bnc#1151927).
+- 9p: avoid attaching writeback_fid on mmap with type PRIVATE
+  (bnc#1151927).
+- 9p: Transport error uninitialized (bnc#1151927).
+- xprtrdma: Send Queue size grows after a reconnect (bnc#1151927).
+- xprtrdma: Toggle XPRT_CONGESTED in xprtrdma's slot methods
+  (bnc#1151927).
+- fs: nfs: Fix possible null-pointer dereferences in
+  encode_attrs() (bnc#1151927).
+- ima: fix freeing ongoing ahash_request (bnc#1151927).
+- ima: always return negative code for error (bnc#1151927).
+- drivers: thermal: qcom: tsens: Fix memory leak from qfprom read
+  (bnc#1151927).
+- cfg80211: initialize on-stack chandefs (bnc#1151927).
+- cfg80211: validate SSID/MBSSID element ordering assumption
+  (bnc#1151927).
+- nl80211: validate beacon head (bnc#1151927).
+- ieee802154: atusb: fix use-after-free at disconnect
+  (bnc#1151927).
+- xen/xenbus: fix self-deadlock after killing user process
+  (bnc#1151927).
+- xen/balloon: Set pages PageOffline() in balloon_add_region()
+  (bnc#1151927).
+- DTS: ARM: gta04: introduce legacy spi-cs-high to make display
+  work again (bnc#1151927).
+- sched: Add __ASSEMBLY__ guards around struct clone_args
+  (bnc#1151927).
+- libnvdimm/altmap: Track namespace boundaries in altmap
+  (bnc#1151927).
+- Revert "locking/pvqspinlock: Don't wait if vCPU is preempted"
+  (bnc#1151927).
+- mmc: sdhci: Let drivers define their DMA mask (bnc#1151927).
+- mmc: sdhci-of-esdhc: set DMA snooping based on DMA coherence
+  (bnc#1151927).
+- mmc: sdhci: improve ADMA error reporting (bnc#1151927).
+- mmc: tegra: Implement ->set_dma_mask() (bnc#1151927).
+- mac80211: keep BHs disabled while calling drv_tx_wake_queue()
+  (bnc#1151927).
+- drm/i915: to make vgpu ppgtt notificaiton as atomic operation
+  (bnc#1151927).
+- drm/i915/gvt: update vgpu workload head pointer correctly
+  (bnc#1151927).
+- drm/amd/powerplay: change metrics update period from 1ms to
+  100ms (bnc#1151927).
+- drm/nouveau/kms/nv50-: Don't create MSTMs for eDP connectors
+  (bnc#1151927).
+- drm/msm/dsi: Fix return value check for clk_get_parent
+  (bnc#1151927).
+- drm/omap: fix max fclk divider for omap36xx (bnc#1151927).
+- drm: mali-dp: Mark expected switch fall-through (bnc#1151927).
+- drm/atomic: Take the atomic toys away from X (bnc#1151927).
+- drm/atomic: Reject FLIP_ASYNC unconditionally (bnc#1151927).
+- drm/i915/dp: Fix dsc bpp calculations, v5 (bnc#1151927).
+- perf stat: Fix a segmentation fault when using repeat forever
+  (bnc#1151927).
+- perf tools: Fix segfault in cpu_cache_level__read()
+  (bnc#1151927).
+- watchdog: imx2_wdt: fix min() calculation in
+  imx2_wdt_set_timeout (bnc#1151927).
+- selftests: pidfd: Fix undefined reference to pthread_create()
+  (bnc#1151927).
+- selftests/tpm2: Add the missing TEST_FILES assignment
+  (bnc#1151927).
+- PCI: Restore Resizable BAR size bits correctly for 1MB BARs
+  (bnc#1151927).
+- PCI: vmd: Fix shadow offsets to reflect spec changes
+  (bnc#1151927).
+- PCI: hv: Avoid use of hv_pci_dev->pci_slot after freeing it
+  (bnc#1151927).
+- PCI: vmd: Fix config addressing when using bus offsets
+  (bnc#1151927).
+- timer: Read jiffies once when forwarding base clk (bnc#1151927).
+- usercopy: Avoid HIGHMEM pfn warning (bnc#1151927).
+- tracing: Make sure variable reference alias has correct
+  var_ref_idx (bnc#1151927).
+- power: supply: sbs-battery: only return health when battery
+  present (bnc#1151927).
+- power: supply: sbs-battery: use correct flags field
+  (bnc#1151927).
+- MIPS: Treat Loongson Extensions as ASEs (bnc#1151927).
+- crypto: ccree - use the full crypt length value (bnc#1151927).
+- crypto: ccree - account for TEE not ready to report
+  (bnc#1151927).
+- crypto: caam - fix concurrency issue in givencrypt descriptor
+  (bnc#1151927).
+- crypto: caam/qi - fix error handling in ERN handler
+  (bnc#1151927).
+- crypto: cavium/zip - Add missing single_release() (bnc#1151927).
+- crypto: skcipher - Unmap pages after an external error
+  (bnc#1151927).
+- crypto: qat - Silence smp_processor_id() warning (bnc#1151927).
+- tools lib traceevent: Do not free tep->cmdlines in
+  add_new_comm() on failure (bnc#1151927).
+- tools lib traceevent: Fix "robust" test of
+  do_generate_dynamic_list_file (bnc#1151927).
+- can: mcp251x: mcp251x_hw_reset(): allow more time after a reset
+  (bnc#1151927).
+- powerpc/mm: Fixup tlbie vs mtpidr/mtlpidr ordering issue on
+  POWER9 (bnc#1151927).
+- powerpc/mm: Fix an Oops in kasan_mmu_init() (bnc#1151927).
+- powerpc/mm: Add a helper to select PAGE_KERNEL_RO or
+  PAGE_READONLY (bnc#1151927).
+- powerpc/book3s64/radix: Rename CPU_FTR_P9_TLBIE_BUG feature flag
+  (bnc#1151927).
+- powerpc/book3s64/mm: Don't do tlbie fixup for some hardware
+  revisions (bnc#1151927).
+- powerpc/kasan: Fix shadow area set up for modules (bnc#1151927).
+- powerpc/kasan: Fix parallel loading of modules (bnc#1151927).
+- powerpc/powernv/ioda: Fix race in TCE level allocation
+  (bnc#1151927).
+- powerpc/pseries: Fix cpu_hotplug_lock acquisition in
+  resize_hpt() (bnc#1151927).
+- powerpc/powernv: Restrict OPAL symbol map to only be readable
+  by root (bnc#1151927).
+- powerpc/ptdump: Fix addresses display on PPC32 (bnc#1151927).
+- powerpc/32s: Fix boot failure with DEBUG_PAGEALLOC without KASAN
+  (bnc#1151927).
+- powerpc/603: Fix handling of the DIRTY flag (bnc#1151927).
+- powerpc/mce: Schedule work from irq_work (bnc#1151927).
+- powerpc/mce: Fix MCE handling for huge pages (bnc#1151927).
+- powerpc/xive: Implement get_irqchip_state method for XIVE to
+  fix shutdown race (bnc#1151927).
+- ASoC: sgtl5000: Improve VAG power and mute control
+  (bnc#1151927).
+- ASoC: Define a set of DAPM pre/post-up events (bnc#1151927).
+- PM / devfreq: tegra: Fix kHz to Hz conversion (bnc#1151927).
+- nbd: fix max number of supported devs (bnc#1151927).
+- KVM: X86: Fix userspace set invalid CR4 (bnc#1151927).
+- KVM: PPC: Book3S HV: Don't lose pending doorbell request on
+  migration on P9 (bnc#1151927).
+- KVM: PPC: Book3S HV: Check for MMU ready on piggybacked virtual
+  cores (bnc#1151927).
+- KVM: PPC: Book3S HV: Fix race in re-enabling XIVE escalation
+  interrupts (bnc#1151927).
+- KVM: PPC: Book3S HV: Don't push XIVE context when not using
+  XIVE device (bnc#1151927).
+- KVM: PPC: Book3S HV: XIVE: Free escalation interrupts before
+  disabling the VP (bnc#1151927).
+- KVM: PPC: Book3S: Enable XIVE native capability only if OPAL
+  has required functions (bnc#1151927).
+- KVM: s390: fix __insn32_query() inline assembly (bnc#1151927).
+- Revert "s390/dasd: Add discard support for ESE volumes"
+  (bnc#1151927).
+- s390/dasd: Fix error handling during online processing
+  (bnc#1151927).
+- s390/cio: exclude subchannels with no parent from pseudo check
+  (bnc#1151927).
+- s390/cio: avoid calling strlen on null pointer (bnc#1151927).
+- s390/topology: avoid firing events before kobjs are created
+  (bnc#1151927).
+- KVM: s390: Test for bad access register and size at the start
+  of S390_MEM_OP (bnc#1151927).
+- s390/sclp: Fix bit checked for has_sipl (bnc#1151927).
+- s390/process: avoid potential reading of freed stack
+  (bnc#1151927).
+- commit 519ea7b
+
+-------------------------------------------------------------------
 Tue Oct  8 08:38:40 CEST 2019 - jslaby@suse.cz
 
 - Linux 5.3.5 (bnc#1151927).
@@ -275,6 +528,68 @@ Tue Oct  8 08:38:40 CEST 2019 - jslaby@suse.cz
 - drm/mcde: Fix uninitialized variable (bnc#1151927).
 - drm/vkms: Fix crc worker races (bnc#1151927).
 - commit 1838763
+
+-------------------------------------------------------------------
+Mon Oct  7 11:44:07 CEST 2019 - mbrugger@suse.com
+
+- arm64: Update config files.
+- commit 4f2941c
+
+-------------------------------------------------------------------
+Mon Oct  7 11:43:37 CEST 2019 - mbrugger@suse.com
+
+- mm: refresh ZONE_DMA and ZONE_DMA32 comments in 'enum zone_type'
+  (jsc#SLE-7772).
+- arm64: use both ZONE_DMA and ZONE_DMA32 (jsc#SLE-7772).
+- arm64: rename variables used to calculate ZONE_DMA32's size
+  (jsc#SLE-7772).
+- arm64: mm: use arm64_dma_phys_limit instead of calling
+  max_zone_dma_phys() (jsc#SLE-7772).
+- mmc: sdhci-iproc: fix spurious interrupts on Multiblock reads
+  with bcm2711 (jsc#SLE-7772).
+- MAINTAINERS: Add BCM2711 to BCM2835 ARCH (jsc#SLE-7772).
+- arm64: dts: broadcom: Add reference to RPi 4 B (jsc#SLE-7772).
+- ARM: dts: Add minimal Raspberry Pi 4 support (jsc#SLE-7772).
+- ARM: bcm: Add support for BCM2711 SoC (jsc#SLE-7772).
+- dt-bindings: arm: bcm2835: Add Raspberry Pi 4 to DT schema
+  (jsc#SLE-7772).
+- dt-bindings: arm: Convert BCM2835 board/soc bindings to
+  json-schema (jsc#SLE-7772).
+- ARM: dts: bcm283x: Move BCM2835/6/7 specific to
+  bcm2835-common.dtsi (jsc#SLE-7772).
+- ARM: dts: bcm283x: Remove brcm, bcm2835-pl011 compatible
+  (jsc#SLE-7772).
+- ARM: dts: bcm283x: Remove simple-bus from fixed clocks
+  (jsc#SLE-7772).
+- bluetooth: hci_bcm: Fix RTS handling during startup
+  (jsc#SLE-7772).
+- clk: bcm2835: Mark PLLD_PER as CRITICAL (jsc#SLE-7772).
+- clk: bcm2835: Add BCM2711_CLOCK_EMMC2 support (jsc#SLE-7772).
+- clk: bcm2835: Introduce SoC specific clock registration
+  (jsc#SLE-7772).
+- dt-bindings: bcm2835-cprman: Add bcm2711 support (jsc#SLE-7772).
+- mmc: bcm2835: Take SWIOTLB memory size limitation into account
+  (jsc#SLE-7772).
+- mmc: sdhci-iproc: Add support for emmc2 of the BCM2711
+  (jsc#SLE-7772).
+- dt-bindings: mmc: sdhci-iproc: Add brcm,bcm2711-emmc2
+  (jsc#SLE-7772).
+- i2c: bcm2835: Add full name of devicetree node to adapter name
+  (jsc#SLE-7772).
+- i2c: bcm2835: Avoid clk stretch quirk for BCM2711
+  (jsc#SLE-7772).
+- dt-bindings: i2c: bcm2835: Add brcm,bcm2711 compatible
+  (jsc#SLE-7772).
+- ARM: dts: bcm283x: Enable HDMI at board level (jsc#SLE-7772).
+- ARM: dts: bcm283x: Define memory at board level (jsc#SLE-7772).
+- ARM: dts: bcm283x: Define MMC interfaces at board level
+  (jsc#SLE-7772).
+- pinctrl: bcm2835: Add support for BCM2711 pull-up functionality
+  (jsc#SLE-7772).
+- pinctrl: bcm2835: Add brcm,bcm2711 compatible (jsc#SLE-7772).
+- ARM: bcm283x: Reduce register ranges for UART, SPI and I2C
+  (jsc#SLE-7772).
+- commit be4f5e9
 
 -------------------------------------------------------------------
 Sun Oct  6 08:32:50 CEST 2019 - jslaby@suse.cz

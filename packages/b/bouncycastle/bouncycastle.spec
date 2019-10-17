@@ -16,10 +16,10 @@
 #
 
 
-%global ver  1.60
-%global shortver 160
-%global gittag r1v60
-%global archivever jdk15on-%{shortver}
+%global ver  1.64
+%global shortver 164
+%global gittag r1rv64
+%global archivever jdk15on-%{shortver}b07
 %global classname org.bouncycastle.jce.provider.BouncyCastleProvider
 Name:           bouncycastle
 Version:        %{ver}
@@ -27,14 +27,14 @@ Release:        0
 Summary:        Bouncy Castle Cryptography APIs for Java
 License:        MIT AND Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://www.bouncycastle.org
+URL:            https://www.bouncycastle.org
 Source0:        https://github.com/bcgit/bc-java/archive/%{gittag}.tar.gz
 # POMs from Maven Central
-Source1:        http://repo1.maven.org/maven2/org/bouncycastle/bcprov-jdk15on/%{version}/bcprov-jdk15on-%{version}.pom
-Source2:        http://repo1.maven.org/maven2/org/bouncycastle/bcpkix-jdk15on/%{version}/bcpkix-jdk15on-%{version}.pom
-Source3:        http://repo1.maven.org/maven2/org/bouncycastle/bcpg-jdk15on/%{version}/bcpg-jdk15on-%{version}.pom
-Source4:        http://repo1.maven.org/maven2/org/bouncycastle/bcmail-jdk15on/%{version}/bcmail-jdk15on-%{version}.pom
-Source5:        http://repo1.maven.org/maven2/org/bouncycastle/bctls-jdk15on/%{version}/bctls-jdk15on-%{version}.pom
+Source1:        https://repo1.maven.org/maven2/org/%{name}/bcprov-jdk15on/%{version}/bcprov-jdk15on-%{version}.pom
+Source2:        https://repo1.maven.org/maven2/org/%{name}/bcpkix-jdk15on/%{version}/bcpkix-jdk15on-%{version}.pom
+Source3:        https://repo1.maven.org/maven2/org/%{name}/bcpg-jdk15on/%{version}/bcpg-jdk15on-%{version}.pom
+Source4:        https://repo1.maven.org/maven2/org/%{name}/bcmail-jdk15on/%{version}/bcmail-jdk15on-%{version}.pom
+Source5:        https://repo1.maven.org/maven2/org/%{name}/bctls-jdk15on/%{version}/bctls-jdk15on-%{version}.pom
 Patch0:         bouncycastle-javadoc.patch
 BuildRequires:  ant
 BuildRequires:  ant-junit

@@ -1,4 +1,173 @@
 -------------------------------------------------------------------
+Sat Oct 12 17:27:09 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update pom files with those from Maven repository.
+
+-------------------------------------------------------------------
+Thu Oct 10 16:29:27 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Version update to 1.64 [bsc#1153385, CVE-2019-17359]
+  [bsc#1096291, CVE-2018-1000180][bsc#1100694, CVE-2018-1000613]
+  * Security Advisory:
+    - CVE-2019-17359: A change to the ASN.1 parser in 1.63 introduced
+      a regression that can cause an OutOfMemoryError to occur on
+      parsing ASN.1 data.
+  * Defects Fixed:
+    - OpenSSH: Fixed padding in generated Ed25519 private keys.
+    - GOST3410-2012-512 now uses the GOST3411-2012-256 as its KDF digest.
+    - Validation of headers in PemReader now looks for tailing dashes in header.
+    - Some compatibility issues around the signature encryption algorithm
+      field in CMS SignedData and the GOST algorithms have been addressed.
+  * Additional Features and Functionality:
+    - PKCS12 key stores containing only certificates can now be created
+      without the need to provide passwords.
+    - BCJSSE: Initial support for AlgorithmConstraints; protocol versions
+      and cipher suites.
+    - BCJSSE: Initial support for 'jdk.tls.disabledAlgorithms'; protocol
+      versions and cipher suites.
+    - BCJSSE: Add SecurityManager check to access session context.
+    - BCJSSE: Improved SunJSSE compatibility of the NULL_SESSION.
+    - BCJSSE: SSLContext algorithms updated for SunJSSE compatibility
+      	      (default enabled protocols).
+    - The digest functions Haraka-256 and Haraka-512 have been added to
+      the provider and the light-weight API
+    - XMSS/XMSS^MT key management now allows for allocating subsets of the
+      private key space using the extraKeyShard() method. Use of
+      StateAwareSignature is now deprecated.
+    - Support for Java 11's NamedParameterSpec class has been added
+      (using reflection) to the EC and EdEC KeyPairGenerator implementations.
+
+-------------------------------------------------------------------
+Thu Oct 10 16:22:11 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Version update to 1.63
+  * Defects Fixed:
+    - The ASN.1 parser would throw a large object exception for some objects
+      which could be safely parsed.
+    - GOST3412-2015 CTR mode was unusable at the JCE level.
+    - The DSTU MACs were failing to reset fully on doFinal().
+    - The DSTU MACs would throw an exception if the key was a multiple of the
+      size as the MAC's underlying buffer size.
+    - EdEC and QTESLA were not previously usable with the post Java 9 module structure.
+    - ECNR was not correctly bounds checking the input and could produce invalid signatures.
+    - ASN.1: Enforce no leading zeroes in OID branches (longer than 1 character).
+    - TLS: Fix X448 support in JcaTlsCrypto.
+    - Fixed field reduction for secp128r1 custom curve.
+    - Fixed unsigned multiplications in X448 field squaring.
+    - Some issues over subset Name Constraint validation in the CertPath analyser
+    - TimeStampResponse.getEncoded() could throw an exception if the TimeStampToken was null.
+    - Unnecessary memory usage in the ARGON2 implementation has been removed.
+    - Param-Z in the GOST-28147 algorithm was not resolving correctly.
+    - It is now possible to specify different S-Box parameters for the GOST 28147-89 MAC.
+  * Additional Features and Functionality:
+    - QTESLA is now updated with the round 2 changes. Note: the security catergories,
+      and in some cases key generation and signatures, have changed. The round 1 version is
+      now moved to org.bouncycastle.pqc.crypto.qteslarnd1, this package will be deleted in
+      1.64. Please keep in mind that QTESLA may continue to evolve.
+    - Support has been added for generating Ed25519/Ed448 signed certificates.
+    - A method for recovering the message/digest value from an ECNR signature has been added.
+    - Support for the ZUC-128 and ZUC-256 ciphers and MACs has been added to the provider
+      and the lightweight API.
+    - Support has been added for ChaCha20-Poly1305 AEAD mode from RFC 7539.
+    - Improved performance for multiple ECDSA verifications using same public key.
+    - Support for PBKDF2withHmacSM3 has been added to the BC provider.
+    - The S/MIME API has been fixed to avoid unnecessary delays due to DNS resolution of a
+      hosts name in internal MimeMessage preparation.
+    - The valid path for EST services has been updated to cope with the characters used in
+      the Aruba clearpass EST implementation.
+
+- Version update to 1.62
+  * Defects Fixed:
+    - DTLS: Fixed infinite loop on IO exceptions.
+    - DTLS: Retransmission timers now properly apply to flights monolithically.
+    - BCJSSE: setEnabledCipherSuites ignores unsupported cipher suites.
+    - BCJSSE: SSLSocket implementations store passed-in 'host' before connecting.
+    - BCJSSE: Handle SSLEngine closure prior to handshake.
+    - BCJSSE: Provider now configurable using security config under Java 11 and later.
+    - EdDSA verifiers now reject overly long signatures.
+    - XMSS/XMSS^MT OIDs now using the values defined in RFC 8391.
+    - XMSS/XMSS^MT keys now encoded with OID at start.
+    - An error causing valid paths to be rejected due to DN based name constraints
+      has been fixed in the CertPath API.
+    - Name constraint resolution now includes special handling of serial numbers.
+    - Cipher implementations now handle ByteBuffer usage where the ByteBuffer has
+      no backing array.
+    - CertificateFactory now enforces presence of PEM headers when required.
+    - A performance issue with RSA key pair generation that was introduced in 1.61
+      has been mostly eliminated.
+  * Additional Features and Functionality:
+    - Builders for X509 certificates and CRLs now support replace and remove extension methods.
+    - DTLS: Added server-side support for HelloVerifyRequest.
+    - DTLS: Added support for an overall handshake timeout.
+    - DTLS: Added support for the heartbeat extension (RFC 6520).
+    - DTLS: Improve record seq. behaviour in HelloVerifyRequest scenarios.
+    - TLS: BasicTlsPSKIdentity now reusable (returns cloned array from getPSK).
+    - BCJSSE: Improved ALPN support, including selectors from Java 9.
+    - Lightweight RSADigestSigner now support use of NullDigest.
+    - SM2Engine now supports C1C3C2 mode.
+    - SHA256withSM2 now added to provider.
+    - BCJSSE: Added support for ALPN selectors (including in BC extension API for earlier JDKs).
+    - BCJSSE: Support 'SSL' algorithm for SSLContext (alias for 'TLS').
+    - The BLAKE2xs XOF has been added to the lightweight API.
+    - Utility classes added to support journaling of SecureRandom and algorithms to allow
+      persistance and later resumption.
+    - PGP SexprParser now handles some unprotected key types.
+    - NONEwithRSA support added to lightweight RSADigestSigner.
+    - Support for the Ethereum flavor of IES has been added to the lightweight API.
+
+- Version update to 1.61
+  * Defects Fixed:
+    - Use of EC named curves could be lost if keys were constructed.
+      via a key factory and algorithm parameters.
+    - RFC3211WrapEngine would not properly handle messages longer than 127 bytes.
+    - The JCE implementations for RFC3211 would not return null AlgorithmParameters.
+    - TLS: Don't check CCS status for hello_request.
+    - TLS: Tolerate unrecognized hash algorithms.
+    - TLS: Tolerate unrecognized SNI types.
+    - Incompatibility issue in ECIES-KEM encryption in cofactor fixed.
+    - Issue with XMSS/XMSSMT private key loading which could result in invalid signatures fixed.
+    - StateAwareSignature.isSigningCapable() now returns false when the
+      key has reached it's maximum number of signatures.
+    - The McEliece KeyPairGenerator was failing to initialize the underlying
+      class if a SecureRandom was explicitly passed.
+    - The McEliece cipher would sometimes report the wrong value on a call
+      to Cipher.getOutputSize(int).
+    - CSHAKEDigest.leftEncode() was using the wrong endianness for multi byte values.
+    - Some ciphers, such as CAST6, were missing AlgorithmParameters implementations.
+    - An issue with the default "m" parameter for 1024 bit Diffie-Hellman keys which
+      could result in an exception on key pair generation has been fixed.
+    - The SPHINCS256 implementation is now more tolerant of parameters wrapped with a
+      SecureRandom and will not throw an exception if it receives one.
+    - A regression in PGPUtil.writeFileToLiteralData() which could cause corrupted
+      literal data has been fixed.
+    - Several parsing issues related to the processing of CMP PKIPublicationInfo.
+    - The ECGOST curves for id-tc26-gost-3410-12-256-paramSetA and
+      id-tc26-gost-3410-12-512-paramSetC had incorrect co-factors.
+  * Additional Features and Functionality:
+    - The qTESLA signature algorithm has been added to PQC light-weight API and the PQC provider.
+    - The password hashing function, Argon2 has been added to the lightweight API.
+    - BCJSSE: Added support for endpoint ID validation (HTTPS, LDAP, LDAPS).
+    - BCJSSE: Added support for 'useCipherSuitesOrder' parameter.
+    - BCJSSE: Added support for ALPN.
+    - BCJSSE: Various changes for improved compatibility with SunJSSE.
+    - BCJSSE: Provide default extended key/trust managers.
+    - TLS: Added support for TLS 1.2 features from RFC 8446.
+    - TLS: Removed support for EC point compression.
+    - TLS: Removed support for record compression.
+    - TLS: Updated to RFC 7627 from draft-ietf-tls-session-hash-04.
+    - TLS: Improved certificate sig. alg. checks.
+    - TLS: Finalised support for RFC 8442 cipher suites.
+    - Support has been added to the main Provider for the Ed25519 and Ed448 signature algorithms.
+    - Support has been added to the main Provider for the X25519 and X448 key agreement algorithms.
+    - Utility classes have been added for handling OpenSSH keys.
+    - Support for processing messages built using GPG and Curve25519 has been added to the OpenPGP API.
+    - The provider now recognises the standard SM3 OID.
+    - A new API for directly parsing and creating S/MIME documents has been added to the PKIX API.
+    - SM2 in public key cipher mode has been added to the provider API.
+    - The BCFKSLoadStoreParameter has been extended to allow the use of certificates and digital
+      signatures for verifying the integrity of BCFKS key stores.
+
+-------------------------------------------------------------------
 Tue Sep 24 14:35:32 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Package also the bcpkix bcpg bcmail bctls artifacts in separate

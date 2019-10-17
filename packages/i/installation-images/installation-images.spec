@@ -17,6 +17,12 @@
 # needsrootforbuild
 # needsbinariesforbuild
 
+# The files from i-i are, in parts, extracted and published in the FTP Tree
+# Since they are all auto-generated files, so they keep on changing. Having the mtime
+# constant though causes issues for rsync - which uses this information by default to decide
+# wether there is something to sync or not
+%global clamp_mtime_to_source_date_epoch 0
+
 # do not build 32-bit s390
 ExcludeArch:    s390
 
@@ -599,7 +605,7 @@ ExcludeArch:    %arm
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0+
 Group:          Metapackages
-Version:        14.440
+Version:        14.442
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)

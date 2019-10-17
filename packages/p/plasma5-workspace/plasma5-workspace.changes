@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 15 13:44:23 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix race on startup (kde#412970):
+  * 0001-gmenu-dbusmenu-proxy-Don-t-create-.gtkrc-2.0.patch
+
+-------------------------------------------------------------------
 Thu Oct 10 14:25:48 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.0

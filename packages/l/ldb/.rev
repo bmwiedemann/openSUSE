@@ -444,4 +444,12 @@ x86-64 when building with python 3.5.</comment>
     <comment></comment>
     <requestid>727298</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>f589ee0cc00624ffd3100652f07dcdf3</srcmd5>
+    <version>2.0.7</version>
+    <time>1571307467</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade to 2.0.7 required for samba 4.11.0</comment>
+    <requestid>738315</requestid>
+  </revision>
 </revisionlist>

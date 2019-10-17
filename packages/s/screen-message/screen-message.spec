@@ -19,7 +19,7 @@
 Name:           screen-message
 Version:        0.25
 Release:        0
-Summary:        Displays a short text fullscreen
+Summary:        Program to display a short text fullscreen
 License:        GPL-2.0-or-later
 Group:          System/X11/Utilities
 URL:            https://www.joachim-breitner.de/en/projects#screen-message
@@ -34,7 +34,8 @@ BuildRequires:  pango-devel
 BuildRequires:  update-desktop-files
 
 %description
-Screen Message is a small program to display a text as large as possible on your screen. You can edit the text while Screen Message is running. To blank the text, press Esc. To quit Screen Message, press Ctrl-Q or press Esc twice.
+Screen Message is a program to display a text as large as possible on
+the screen. The text can be edited while Screen Message is running.
 
 %prep
 %setup -q
@@ -48,7 +49,7 @@ mv README.Win32 README
 make %{?_smp_mflags}
 
 %install
-%make_install DESTDIR=%{buildroot} %{?_smp_mflags}
+%make_install %{?_smp_mflags}
 %suse_update_desktop_file -r -N '%{name}' -G 'Screen-Message' sm Utility GTK Accessibility Presentation
 
 %post

@@ -58,4 +58,16 @@
 - libffi-include-location.patch: Removed (forwarded request 731700 from Andreas_Schwab)</comment>
     <requestid>731707</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>67668d69957bfc5b8011f950655cacb9</srcmd5>
+    <version>3.2.1.git505</version>
+    <time>1571307460</time>
+    <user>dimstar_suse</user>
+    <comment>- Workaround aarch64 bug (boo#1153573) with upstream patch
+  https://github.com/libffi/libffi/pull/499 updated to apply
+  on current sources (upstream will probably rework this patch
+  so we need to monitor the issue for the proper fix):
+  * aarch64.patch (forwarded request 738187 from Guillaume_G)</comment>
+    <requestid>738228</requestid>
+  </revision>
 </revisionlist>

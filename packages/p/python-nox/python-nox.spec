@@ -55,6 +55,8 @@ Flexible test automation.
 
 %prep
 %setup -q -n nox-%{version}
+# Remove upper pins on dependencies
+sed -Ei 's/,? ?<=?[0-9][0-9.]*//' setup.py
 
 %build
 %python_build

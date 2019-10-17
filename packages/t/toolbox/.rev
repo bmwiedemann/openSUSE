@@ -7,4 +7,13 @@
     <comment>Script to start a toolbox container on a Container Host OS</comment>
     <requestid>735640</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6cb0325abe9ca9bcb710ac77ab370323</srcmd5>
+    <version>1.0+git20191014.3034fbc</version>
+    <time>1571307490</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+git20191014.3034fbc:
+  * Make default shell configureable, use /bin/bash as default</comment>
+    <requestid>738325</requestid>
+  </revision>
 </revisionlist>

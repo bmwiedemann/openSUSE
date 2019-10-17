@@ -24,4 +24,14 @@ sharing capabilities.</comment>
     <comment>Update to 2.3.0 to work nicely with libssh-0.9.0</comment>
     <requestid>720143</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0e37b0f8791c88dd8e28ea54d3756948</srcmd5>
+    <version>2.3.1</version>
+    <time>1571307699</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.1
+  - Allow the use of C.UTF-8 locale
+</comment>
+    <requestid>738819</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package balsa
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           balsa
-Version:        2.5.6
+Version:        2.5.8
 Release:        0
 Summary:        The GNOME Mail Program
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Email/Clients
-URL:            http://pawsa.fedorapeople.org/balsa/
-Source0:        http://pawsa.fedorapeople.org/balsa/%{name}-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM balsa-2.5.6-fix-build-breaker-typo.patch -- picked from upstream
-Patch0:         balsa-2.5.6-fix-build-breaker-typo.patch
+URL:            https://pawsa.fedorapeople.org/balsa/
+Source0:        %{url}/%{name}-%{version}.tar.bz2
+
 BuildRequires:  compface-devel
 BuildRequires:  fdupes
 BuildRequires:  gpgme-devel
@@ -35,8 +34,8 @@ BuildRequires:  libesmtp-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-html2text
-BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
+BuildRequires:  pkgconfig(fribidi)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gmime-2.6)
 BuildRequires:  pkgconfig(gnutls)
@@ -49,7 +48,6 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(webkit2gtk-4.0)
-Recommends:     %{name}-lang
 
 %description
 An e-mail client for GNOME. It supports
@@ -63,8 +61,7 @@ An e-mail client for GNOME. It supports
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure\
@@ -79,24 +76,12 @@ An e-mail client for GNOME. It supports
 	--with-gss\
 	--with-compface\
 	--with-html-widget=webkit2
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
-%suse_update_desktop_file -G "Mail Client" %{name}
-%suse_update_desktop_file -G "Mail Client" %{name}-mailto-handler
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
-
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
 
 %files
 %license COPYING

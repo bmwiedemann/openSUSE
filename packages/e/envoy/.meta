@@ -1,8 +1,0 @@
-<package name="envoy" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="security" package="envoy"/>
-  <build>
-    <disable/>
-  </build>
-</package>

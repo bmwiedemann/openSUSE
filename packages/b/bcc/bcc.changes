@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Oct 14 04:25:16 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 0.11.0
+  + Support for kernel up to 5.3
+  + Corresponding libbpf submodule release is v0.0.5
+  + Fix USDT issue with multi-threaded applications
+  + Fixed the early return behavior of lookup_or_init
+  + Support for nic hardware offload
+  + Fixed and Enabled Travis CI
+  + A lot of tools change with added new options, etc.
+- Update libbpf to 0.0.5
+  + bpf_btf_get_next_id() API to iterate over system's BTF objects
+  + libbpf_set_print() now returns previously set print callback
+  + libbpf versioning, build, and packaging improvements
+  + convenience helpers for working with BTF types
+  + experimental BPF CO-RE relocation support
+  + various AF_XDP fixes and enhancements
+  + BTF-defined maps
+  + tracing attachment APIs and bpf_link abstraction
+  + perf buffer API
+  + BTF-to-C conversion API
+  + btf__parse_elf API for loading .BTF from ELF files
+  + libbpf_num_possible_cpus() added
+  + passing through prog_flags through bpf_object__open
+  + new attach types detection added
+- Use version for REVISION instead of libversion
+
+-------------------------------------------------------------------
 Tue Jun  4 08:25:44 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to 0.10.0

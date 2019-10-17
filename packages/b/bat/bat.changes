@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Oct  1 19:06:41 UTC 2019 - Luke Jones <luke@ljones.dev>
+
+- Use `pwd`/.cargo for vendor config so that CARGO_HOME export is
+  not required.
+
+-------------------------------------------------------------------
+Tue Sep 24 14:49:11 UTC 2019 - Dany Marcoux <dmarcoux@suse.com>
+
+- Update to version 0.12.1
+  * Features
+    Binary file content can now be viewed with bat -A
+    bat can now be used as a man pager
+    Add new style component to separate multiple '--line-range'
+    Added '-L' as an alias for '--list-languages'
+  * Bugfixes
+    Output looks unbalanced when using '--style=grid,numbers' without 'header'
+    Issues with filenames starting with "cache"
+    '--terminal-width -10' is parsed incorrectly
+  * New syntaxes
+    Emacs Org mode
+    requirements.txt
+    DotENV '.env'
+    SSH config
+    And more... see upstream
+- Set directory for 'git clone' in README.packager
+- Add 'clang' to build dependencies
+
+-------------------------------------------------------------------
 Wed May 15 21:22:44 UTC 2019 - Dany Marcoux <dmarcoux@suse.com>
 
 - Update to version 0.11.0

@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-globalkeys
-Version:        0.14.2
+Version:        0.14.3
 Release:        0
 Summary:        Global keyboard shortcuts registration
 License:        LGPL-2.1-or-later

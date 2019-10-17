@@ -59,4 +59,21 @@
     <comment></comment>
     <requestid>732535</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>4d4120457a657372a21ef43c835d9837</srcmd5>
+    <version>8.0.1</version>
+    <time>1571307503</time>
+    <user>dimstar_suse</user>
+    <comment>- Move diagtool from llvm to clang subpackage.
+- Make sure clang is installed after llvm to prevent breaking the
+  clang link group due to this change.
+- Add run-test-single-threaded.patch to fix sporadic test failures.
+- (Build)Require only python3-base instead of full python3 package,
+  the additional modules are not required. Helps shortening the
+  build dependency chain.
+- Remove python3-* requires from lldb8 subpackage, and add it to
+  the bindings/pretty-printer subpackage (python3-lldb8).
+- Add python3-base Requires to python3-clang subpackage</comment>
+    <requestid>738486</requestid>
+  </revision>
 </revisionlist>

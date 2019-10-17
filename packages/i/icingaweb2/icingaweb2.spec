@@ -20,7 +20,7 @@
 %define revision 1
 
 Name:           icingaweb2
-Version:        2.7.1
+Version:        2.7.2
 Release:        %{revision}%{?dist}
 Summary:        Icinga Web 2
 License:        GPL-2.0-or-later AND MIT AND BSD-3-Clause
@@ -211,6 +211,9 @@ License:        LGPL-2.1-only
 Group:          Development/Libraries/Other
 Requires:       %{name}-common = %{version}-%{release}
 Requires:       %{php_common} >= %{php_version}
+# Need because of wrong version in very old icingaweb2 packages
+Obsoletes:      %{name}-vendor-HTMLPurifier < %{version}
+Obsoletes:      %{name}-vendor-HTMLPurifier > %{version}
 
 %description vendor-HTMLPurifier
 Icinga Web 2 vendor library HTMLPurifier.

@@ -26,6 +26,7 @@ License:        GPL-2.0-or-later
 Group:          Development/Libraries/Python
 URL:            https://github.com/python-bugzilla/python-bugzilla
 Source:         https://files.pythonhosted.org/packages/source/p/python-bugzilla/python-bugzilla-%{version}.tar.gz
+Patch0:         106-basic-auth.diff
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
@@ -49,6 +50,7 @@ ad-hoc bugzilla jiggery-pokery.
 
 %prep
 %setup -q
+%patch0 -p1
 sed -i -e '1{/^#!\/usr\/bin\/env python/d}' bugzilla/_cli.py
 
 %build

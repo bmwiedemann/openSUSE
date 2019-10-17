@@ -509,4 +509,15 @@
   * See included ChangeLog file for the complete changelog</comment>
     <requestid>732210</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>e22dd5c8e9663bfc1a58e85ff94576ed</srcmd5>
+    <version>9.0.2</version>
+    <time>1571307481</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 9.0.2
+  * Fix the name of the temporary file used by --replace-input so
+    that it doesn't require path splitting and works with paths
+    include directories.</comment>
+    <requestid>738319</requestid>
+  </revision>
 </revisionlist>

@@ -1542,4 +1542,12 @@ for 12.3</comment>
     <comment></comment>
     <requestid>731886</requestid>
   </revision>
+  <revision rev="173" vrev="1">
+    <srcmd5>a988e8bc29a984f500b861897663b6b4</srcmd5>
+    <version>13.2+20191015.280c25b</version>
+    <time>1571307512</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>738640</requestid>
+  </revision>
 </revisionlist>

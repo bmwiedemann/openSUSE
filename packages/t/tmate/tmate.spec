@@ -17,7 +17,7 @@
 
 
 Name:           tmate
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        Instant terminal sharing
 License:        MIT

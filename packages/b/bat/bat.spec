@@ -17,7 +17,7 @@
 
 
 Name:           bat
-Version:        0.11.0
+Version:        0.12.1
 Release:        0
 Summary:        A cat(1) clone with syntax highlighting and Git integration
 License:        MIT OR Apache-2.0
@@ -28,6 +28,7 @@ Source1:        vendor.tar.xz
 # Instructions on how to generate vendor.tar.xz
 Source2:        README.packager
 BuildRequires:  cargo
+BuildRequires:  clang
 BuildRequires:  cmake
 BuildRequires:  rust
 BuildRequires:  rust-std
@@ -39,8 +40,8 @@ programming and markup languages. It has git integration and automatic paging.
 
 %prep
 %setup -qa1
-mkdir cargo-home
-cat >cargo-home/config <<EOF
+mkdir .cargo
+cat >.cargo/config <<EOF
 [source.crates-io]
 registry = 'https://github.com/rust-lang/crates.io-index'
 replace-with = 'vendored-sources'
@@ -49,11 +50,9 @@ directory = './vendor'
 EOF
 
 %build
-export CARGO_HOME=$PWD/cargo-home
 cargo build --release --locked %{?_smp_mflags}
 
 %install
-export CARGO_HOME=$PWD/cargo-home
 cargo install --root=%{buildroot}%{_prefix} --path .
 
 # remove residue crate file

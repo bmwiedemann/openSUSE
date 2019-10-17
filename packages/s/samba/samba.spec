@@ -41,13 +41,6 @@
 %endif
 %endif
 
-%if 0%{?sle_version} >= 150000 && !0%{?is_opensuse}
-# SLE15 dropped perl-Parse-Yapp
-%define with_pidl 0
-%else
-%define with_pidl 1
-%endif
-
 %if 0%{?suse_version} > 1140 && 0%{?suse_version} != 1315
 %define         build_ctdb_pmda 1
 %endif
@@ -57,10 +50,10 @@
 %endif
 %endif
 
-%define talloc_version 2.1.16
-%define tevent_version 0.9.39
-%define tdb_version    1.3.18
-%define ldb_version    1.5.5
+%define talloc_version 2.2.0
+%define tevent_version 0.10.0
+%define tdb_version    1.4.2
+%define ldb_version    2.0.7
 
 %global with_mitkrb5 1
 %global with_dc 0
@@ -156,6 +149,7 @@ BuildRequires:  libjansson-devel
 BuildRequires:  python3-gpgme
 %else
 BuildRequires:  krb5-devel
+BuildRequires:  libgnutls-devel >= 3.2.0
 %endif
 %if %{with_mscat}
 BuildRequires:  libgnutls-devel >= 3.5.6
@@ -170,7 +164,7 @@ BuildRequires:  libtasn1-devel >= 3.8
 %else
 %define	build_make_smp_mflags %{?jobs:-j%jobs}
 %endif
-Version:        4.10.8+git.124.a2010fbd0de
+Version:        4.11.0+git.95.c88b5f2c0c6
 Release:        0
 Url:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -325,18 +319,6 @@ Requires:       python3
 
 %description libs-python3
 Dependencies of samba-libs that require python3.
-
-%package pidl
-Summary:        Perl IDL compiler
-License:        GPL-3.0-or-later
-Group:          Development/Tools
-Requires:       perl-Parse-Yapp
-Requires:       perl-base
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
-
-%description pidl
-The samba-pidl package contains the Perl IDL compiler used by Samba
-and Wireshark to parse IDL and similar protocols
 
 %package python3
 Summary:        Samba Python3 libraries
@@ -942,7 +924,7 @@ This package contains the Active Directory-compatible Domain Controller
 Summary:        Samba LDB modules
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Samba
-Requires:       libldb1 >= %{ldb_version}
+Requires:       libldb2 >= %{ldb_version}
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
 
@@ -1065,10 +1047,6 @@ pushd ctdb
 XML_CATALOG_FILES="file:///etc/xml/catalog file://$(pwd)/build/catalog.xml" make manpages
 popd
 
-pushd pidl
-perl Makefile.PL INSTALLDIRS=vendor
-popd
-
 %install
 install -d -m 0755 -p \
 	%{buildroot}/%{_sysconfdir}/{pam.d,xinetd.d,logrotate.d} \
@@ -1112,6 +1090,9 @@ make install \
 rm \
 	%{buildroot}/%{_libdir}/samba/ldb/ildap.so \
 	%{buildroot}/%{_libdir}/samba/ldb/ldbsamba_extensions.so \
+	%{buildroot}/%{_mandir}/man8/samba.8* \
+	%{buildroot}/%{_mandir}/man8/samba-tool.8* \
+	%{buildroot}/%{_mandir}/man8/samba_downgrade_db.8*
 %endif
 
 # CTDB
@@ -1509,8 +1490,6 @@ fi
 %postun -n %{libwbclient_name} -p /sbin/ldconfig
 %post libs -p /sbin/ldconfig
 %postun libs -p /sbin/ldconfig
-%post pidl -p /sbin/ldconfig
-%postun pidl -p /sbin/ldconfig
 %post test -p /sbin/ldconfig
 %postun test -p /sbin/ldconfig
 %post ad-dc -p /sbin/ldconfig
@@ -1677,8 +1656,6 @@ exit 0
 %{_mandir}/man5/smbpasswd.5.*
 %{_mandir}/man8/nmbd.8.*
 %{_mandir}/man8/smbd.8.*
-%exclude %{_mandir}/man8/samba-tool.8.*
-%exclude %{_mandir}/man8/samba.8.*
 %if 0%{?suse_version} > 1220
 %{_fillupdir}/sysconfig.samba
 %endif
@@ -1893,6 +1870,7 @@ exit 0
 %{_libdir}/samba/libgenrand-samba4.so
 %{_libdir}/samba/libgensec-samba4.so
 %{_libdir}/samba/libgpext-samba4.so
+%{_libdir}/samba/libgpo-samba4.so
 %{_libdir}/samba/libgse-samba4.so
 %{_libdir}/samba/libhttp-samba4.so
 %{_libdir}/samba/libidmap-samba4.so
@@ -1911,12 +1889,12 @@ exit 0
 %{_libdir}/samba/libndr-samba4.so
 %{_libdir}/samba/libnet-keytab-samba4.so
 %{_libdir}/samba/libnetif-samba4.so
-%{_libdir}/samba/libnon-posix-acls-samba4.so
 %{_libdir}/samba/libnpa-tstream-samba4.so
 %{_libdir}/samba/libnss-info-samba4.so
 %{_libdir}/samba/libpopt-samba3-cmdline-samba4.so
 %{_libdir}/samba/libpopt-samba3-samba4.so
 %{_libdir}/samba/libposix-eadb-samba4.so
+%{_libdir}/samba/libprinter-driver-samba4.so
 %{_libdir}/samba/libprinting-migrate-samba4.so
 %{_libdir}/samba/libregistry-samba4.so
 %{_libdir}/samba/libreplace-samba4.so
@@ -1968,29 +1946,6 @@ exit 0
 %files libs-python3
 %{_libdir}/samba/libsamba-net.%{py3_soflags_dash}-samba4.so
 %{_libdir}/samba/libsamba-python.%{py3_soflags_dash}-samba4.so
-
-%if %{with_pidl}
-%files pidl
-%defattr(-,root,root)
-%dir %{perl_vendorlib}/Parse
-%dir %{perl_vendorlib}/Parse/Pidl
-%{perl_vendorlib}/Parse/Pidl.pm*
-%{perl_vendorlib}/Parse/Pidl/*
-%{_mandir}/man1/pidl.1.*
-%{_mandir}/man3/Parse::Pidl::*.3pm.*
-%{_bindir}/pidl
-# both are part of perl-Parse-Yapp
-%exclude %dir %{perl_vendorlib}/Parse/Yapp
-%exclude %{perl_vendorlib}/Parse/Yapp/Driver.pm
-%else
-%exclude %{perl_vendorlib}/Parse/Pidl.pm*
-%exclude %{perl_vendorlib}/Parse/Pidl/*
-%exclude %{_mandir}/man1/pidl.1.*
-%exclude %{_mandir}/man3/Parse::Pidl::*.3pm.*
-%exclude %{_bindir}/pidl
-%exclude %dir %{perl_vendorlib}/Parse/Yapp
-%exclude %{perl_vendorlib}/Parse/Yapp/Driver.pm
-%endif
 
 %files python3
 %defattr(-,root,root)
@@ -2463,6 +2418,7 @@ exit 0
 %{_sbindir}/samba_kcc
 %{_sbindir}/samba_spnupdate
 %{_sbindir}/samba_upgradedns
+%{_sbindir}/samba_downgrade_db
 %{_sbindir}/rcsamba-ad-dc
 %{_libdir}/krb5/plugins/kdb/samba.so
 %{_libdir}/libdcerpc-server.so.0
@@ -2492,7 +2448,6 @@ exit 0
 %{_libdir}/samba/service/nbtd.so
 %{_libdir}/samba/service/ntp_signd.so
 %{_libdir}/samba/service/s3fs.so
-%{_libdir}/samba/service/web.so
 %{_libdir}/samba/service/winbindd.so
 %{_libdir}/samba/service/wrepl.so
 %{_datadir}/samba/setup
@@ -2586,6 +2541,9 @@ exit 0
 %{_datadir}/samba/setup/slapd.conf
 %{_datadir}/samba/setup/spn_update_list
 %{_datadir}/samba/setup/ypServ30.ldif
+%{_mandir}/man8/samba.8.*
+%{_mandir}/man8/samba-tool.8.*
+%{_mandir}/man8/samba_downgrade_db.8.*
 
 %files dsdb-modules
 %defattr(-,root,root)
@@ -2638,6 +2596,7 @@ exit 0
 %{_libdir}/samba/ldb/audit_log.so
 %{_libdir}/samba/ldb/group_audit_log.so
 %{_libdir}/samba/ldb/paged_results.so
+%{_libdir}/samba/ldb/count_attrs.so
 %endif
 
 %changelog

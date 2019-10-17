@@ -27,9 +27,9 @@
 %endif
 
 %define lmdb_version 0.9.16
-%define talloc_version 2.1.15
-%define tdb_version 1.3.17
-%define tevent_version 0.9.38
+%define talloc_version 2.2.0
+%define tdb_version 1.4.2
+%define tevent_version 0.10.0
 
 Name:           ldb
 BuildRequires:  docbook-xsl-stylesheets
@@ -57,7 +57,7 @@ BuildRequires:  lmdb-devel >= %{lmdb_version}
 %endif
 
 Url:            https://ldb.samba.org/
-Version:        1.5.5
+Version:        2.0.7
 Release:        0
 Summary:        An LDAP-like embedded database
 License:        LGPL-3.0-or-later
@@ -73,26 +73,28 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 LDB is an LDAP-like embedded database.
 
 
-%package -n libldb1
+%package -n libldb2
 Summary:        An LDAP-like embedded database
 Group:          System/Libraries
+Provides:       libldb1 = %{version}
+Obsoletes:      libldb1 < %{version}
 
-%description -n libldb1
+%description -n libldb2
 LDB is an LDAP-like embedded database.
 
-This package includes the ldb1 library.
+This package includes the ldb2 library.
 
 
 %package -n libldb-devel
-Summary:        Libraries and Header Files to Develop Programs with ldb1 Support
+Summary:        Libraries and Header Files to Develop Programs with ldb2 Support
 Group:          Development/Libraries/C and C++
-Requires:       libldb1 = %{version}
+Requires:       libldb2 = %{version}
 Requires:       pkg-config
 
 %description -n libldb-devel
 LDB is an LDAP-like embedded database.
 
-Libraries and Header Files to Develop Programs with ldb1 Support.
+Libraries and Header Files to Develop Programs with ldb2 Support.
 
 
 %package -n ldb-tools
@@ -106,7 +108,7 @@ Tools to manipulate LDB files.
 %package -n python3-ldb
 Summary:        Python3 bindings for the LDB library
 Group:          Development/Libraries/Python
-Requires:       libldb1 = %{version}
+Requires:       libldb2 = %{version}
 Obsoletes:      python-ldb
 
 %description -n python3-ldb
@@ -175,15 +177,15 @@ cp -a apidocs/man/* %{buildroot}/%{_mandir}
 
 sed -i 's;-lpyldb-util.%{py3_soflags_dash};-lpyldb-util.%{py3_soflags};g' %{buildroot}/%{_libdir}/pkgconfig/pyldb-util.%{py3_soflags}.pc
 
-%post -n libldb1 -p /sbin/ldconfig
+%post -n libldb2 -p /sbin/ldconfig
 
-%postun -n libldb1 -p /sbin/ldconfig
+%postun -n libldb2 -p /sbin/ldconfig
 
 %post -n python3-ldb -p /sbin/ldconfig
 
 %postun -n python3-ldb -p /sbin/ldconfig
 
-%files -n libldb1
+%files -n libldb2
 %defattr(-,root,root)
 %{_libdir}/libldb.so.*
 %dir %{_libdir}/ldb

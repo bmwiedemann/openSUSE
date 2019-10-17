@@ -313,4 +313,13 @@
   * Updated translations</comment>
     <requestid>737571</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>676fef23fe6a17f870e005af9a7a14d9</srcmd5>
+    <version>0.14.3</version>
+    <time>1571307766</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.3:
+  * In write_basic_package_version_file use the right package version</comment>
+    <requestid>739014</requestid>
+  </revision>
 </revisionlist>

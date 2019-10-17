@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Oct  5 14:20:06 UTC 2019 - James McDonough <jmcdonough@suse.com>
+
+- Update to samba 4.11.0
+  + For details on all items see WHATSNEW.txt in samba-doc
+    package
+  + Python2 runtime support removed; python 3.4 or later required
+  + Security improvements:
+    - SMB1 disabled by default
+    - lanman and plaintext authentication deprecated
+    - winbind: PAM_AUTH and NTLM_AUTH events logged
+    - GnuTLS 3.2 required; system FIPS mode setting honored
+  + CephFS Snapshot integration, exposed as previous file
+    versions
+  + ctdb changes:
+    - onnode -o option removed
+    - ctdbd logs when using more than 90% of a CPU thread
+    - CTDB_MONITOR_SWAP_USAGE variable removed
+  + AD Domain controller improvements:
+    - Upgrade AD databse format
+    - BIND9_FLATFILE deprecated
+    - default process model chagned to prefork
+    - bind9 dns operation duration logging
+    - Default schema updated to 2012_R2; function level is
+      unchanged
+    - many performance improvements
+  + Configuration webserver support removed
+
+-------------------------------------------------------------------
 Tue Sep  3 09:18:38 UTC 2019 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to samba 4.10.8

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  4 14:26:08 UTC 2019 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Write sysctl settings to a file under /etc/sysctl.d (jsc#SLE-9077).
+- 4.2.3
+
+-------------------------------------------------------------------
 Mon Aug 26 09:27:11 CEST 2019 - schubi@suse.de
 
 - Using rb_default_ruby_abi tag in the spec file in order to

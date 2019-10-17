@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-fsspec
-Version:        0.5.1
+Version:        0.5.2
 Release:        0
 Summary:        Filesystem specification package
 License:        BSD-3-Clause
@@ -31,6 +31,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module fusepy}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -49,7 +50,8 @@ A specification for pythonic filesystems.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# test_basic relies on speed of FS and timeouts in OBS
+%pytest -k 'not test_basic'
 
 %files %{python_files}
 %doc README.md

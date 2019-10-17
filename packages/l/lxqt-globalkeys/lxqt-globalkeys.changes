@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 17 06:31:35 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.3:
+  * In write_basic_package_version_file use the right package version
+
+-------------------------------------------------------------------
 Fri Oct 11 10:12:16 UTC 2019 - mvetter@suse.com
 
 - Update to 0.14.2:

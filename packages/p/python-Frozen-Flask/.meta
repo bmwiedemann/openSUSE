@@ -1,8 +1,0 @@
-<package name="python-Frozen-Flask" project="openSUSE:Factory">
-  <title>python-Frozen-Flask</title>
-  <description>A Flask application into a set of static files. The result can be hosted without any server-side software other than a traditional web server.</description>
-  <devel project="devel:languages:python:flask" package="python-Frozen-Flask"/>
-  <build>
-    <disable/>
-  </build>
-</package>

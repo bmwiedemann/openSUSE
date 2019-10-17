@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 16 15:34:03 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20191016.455c1428:
+  * build-fail-reminder: update api path to projects/:project/status
+
+-------------------------------------------------------------------
+Tue Oct 15 13:26:49 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20191015.0c4d62c5:
+  * adi: build kiwi images in a /images repository
+
+-------------------------------------------------------------------
 Tue Oct 15 12:22:04 UTC 2019 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20191015.35d7bf0c:

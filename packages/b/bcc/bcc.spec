@@ -16,7 +16,6 @@
 #
 
 
-%define libversion 0.10.0
 %if 0%{?is_opensuse} == 1
 %ifarch %ix86 x86_64
 %{!?with_lua: %global with_lua 1}
@@ -27,10 +26,10 @@
 %{!?with_lua: %global with_lua 0}
 %endif
 
-%define libbpf_version 0.0.3
+%define libbpf_version 0.0.5
 
 Name:           bcc
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        BPF Compiler Collection (BCC)
 License:        Apache-2.0
@@ -173,8 +172,8 @@ mkdir build
 pushd build
 CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" cmake \
 	-DPYTHON_CMD=python3 \
-	-DREVISION_LAST=%{libversion} \
-	-DREVISION=%{libversion} \
+	-DREVISION_LAST=%{version} \
+	-DREVISION=%{version} \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 %if 0%{?suse_version} > 1320
 	-DENABLE_LLVM_SHARED=1 \

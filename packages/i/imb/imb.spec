@@ -61,7 +61,7 @@ ExclusiveArch:  do_not_build
 %define buildtarget "IMB-MPI1 IMB-EXT IMB-IO IMB-P2P"
 %endif
 
-%if "%{flavor}" == "openmpi"
+%if "%{flavor}" == "openmpi1"
 %{bcond_with hpc}
 %undefine c_f_ver
 %global mpi_flavor openmpi

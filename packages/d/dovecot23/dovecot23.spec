@@ -17,11 +17,11 @@
 
 
 Name:           dovecot23
-Version:        2.3.7.2
+Version:        2.3.8
 Release:        0
 %define pkg_name dovecot
-%define dovecot_version 2.3.7.2
-%define dovecot_pigeonhole_version 0.5.7.2
+%define dovecot_version 2.3.8
+%define dovecot_pigeonhole_version 0.5.8
 %define dovecot_branch  2.3
 %define dovecot_pigeonhole_source_dir %{pkg_name}-%{dovecot_branch}-pigeonhole-%{dovecot_pigeonhole_version}
 %define dovecot_pigeonhole_docdir     %{_docdir}/%{pkg_name}/dovecot-pigeonhole
@@ -548,6 +548,7 @@ fi
 %{_prefix}/lib/%{pkg_name}/doveadm-server
 %{_prefix}/lib/%{pkg_name}/dovecot-lda
 %{_prefix}/lib/%{pkg_name}/gdbhelper
+%{_prefix}/lib/%{pkg_name}/health-check.sh
 %{_prefix}/lib/%{pkg_name}/imap
 %{_prefix}/lib/%{pkg_name}/imap-hibernate
 %{_prefix}/lib/%{pkg_name}/imap-login

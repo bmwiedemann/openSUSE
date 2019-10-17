@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 03 22:08:14 UTC 2019 - James McDonough <jmcdonough@suse.com>
+
+- Update to version 2.0.7
+  + Robustness improvements against duplicate attributes in ldb_filter_attrs()
+    (bso#13695)
+  + Robustness improvements against invalid string DN values (bso#14049)
+   + log database repack so users know what is happening (bso#14059)
+  + add ldb_options_get
+  + add "batch_mode" option.
+  + Remove Python 2.x support except to build just the bare C library
+  + Remove --extra-python (a build time mode to produce Python2 and Python3
+    bindings at the same time)
+  + Fix standalone build of ldb.
+  + CVE-2019-3824 out of bounds read in wildcard compare (bso#13773)
+
+-------------------------------------------------------------------
 Thu Aug  1 10:57:34 UTC 2019 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to 1.5.5

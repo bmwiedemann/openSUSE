@@ -1,0 +1,25 @@
+diff -purN libffi-3.2.1.git505.orig/src/aarch64/ffi.c libffi-3.2.1.git505/src/aarch64/ffi.c
+--- libffi-3.2.1.git505.orig/src/aarch64/ffi.c	2019-08-07 20:57:45.000000000 +0200
++++ libffi-3.2.1.git505/src/aarch64/ffi.c	2019-10-11 08:45:42.702088832 +0200
+@@ -815,7 +815,8 @@ ffi_prep_closure_loc (ffi_closure *closu
+   #else
+   unsigned char *tramp_code = ffi_data_to_code_pointer (tramp);
+   #endif
+-  ffi_clear_cache (tramp_code, tramp_code + FFI_TRAMPOLINE_SIZE);
++  if (tramp_code != NULL)
++    ffi_clear_cache (tramp_code, tramp_code + FFI_TRAMPOLINE_SIZE);
+ #endif
+ 
+   closure->cif = cif;
+diff -purN libffi-3.2.1.git505.orig/src/closures.c libffi-3.2.1.git505/src/closures.c
+--- libffi-3.2.1.git505.orig/src/closures.c	2019-08-07 20:57:45.000000000 +0200
++++ libffi-3.2.1.git505/src/closures.c	2019-10-11 08:43:59.265151289 +0200
+@@ -925,6 +925,8 @@ void *
+ ffi_data_to_code_pointer (void *data)
+ {
+   msegmentptr seg = segment_holding (gm, data);
++  if (seg == NULL)
++    return NULL;
+   return add_segment_exec_offset (data, seg);
+ }
+ 

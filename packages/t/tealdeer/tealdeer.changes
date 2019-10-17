@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Oct  1 21:32:17 UTC 2019 - Dany Marcoux <dmarcoux@suse.com>
+
+- Use `pwd`/.cargo for vendor config so that CARGO_HOME export is
+  not required (thanks to luke_nukem for this)
+
+-------------------------------------------------------------------
+Tue Sep 24 14:35:45 UTC 2019 - Dany Marcoux <dmarcoux@suse.com>
+
+- Version 1.2.0
+  - Add support for spaces in commands
+  - Add pager support
+  - Print detected OS with -v / --version
+  - Add (back) support for proxies
+- Set directory for 'git clone' in README.packager
+- Add '--path .' to 'cargo install' command to install the binaries for the
+  package in current working directory.
+
+-------------------------------------------------------------------
 Sun Apr 28 07:27:57 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim bias from descriptions. Remove double %setup.

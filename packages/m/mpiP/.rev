@@ -72,4 +72,12 @@
     <comment></comment>
     <requestid>587811</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>d24e3f4b8b4ce9f7e2eebe355cb8448b</srcmd5>
+    <version>3.4.1</version>
+    <time>1571307690</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix LTO support in archive files</comment>
+    <requestid>738813</requestid>
+  </revision>
 </revisionlist>

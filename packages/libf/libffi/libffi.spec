@@ -29,6 +29,8 @@ Source:         %name-%version.tar.xz
 Source99:       baselibs.conf
 Patch1:         gccbug.patch
 Patch2:         stdcall.patch
+# Workaround from https://github.com/libffi/libffi/issues/498
+Patch3:         aarch64.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -82,6 +84,7 @@ time.
 %setup -q
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 ./autogen.sh

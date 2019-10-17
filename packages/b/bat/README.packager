@@ -8,8 +8,8 @@
 
 2. Checkout version
 
-    git clone https://github.com/sharkdp/bat
-    cd bat
+    git clone https://github.com/sharkdp/bat ~/tmp/bat
+    cd ~/tmp/bat
     git checkout v0.10.0 (or another version from `git tag --list`)
 
 3. Generate archive

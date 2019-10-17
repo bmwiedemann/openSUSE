@@ -16,26 +16,24 @@
 #
 
 
-%define _name    dose3
-%define _version 5.0.1
 Name:            ocaml-dose
-Version:         3.5.0.1
+Version:         5.0.1
 Release:         0
 %{?ocaml_preserve_bytecode}
 Summary:         An OCaml dependency toolkit
 License:         LGPL-3.0+
 Group:           Development/Languages/OCaml
-Url:             http://www.mancoosi.org/software/ 
-Source:          http://gforge.inria.fr/frs/download.php/file/36063/%{_name}-%{_version}.tar.gz
+Url:             https://github.com/IRILL/dose3
+Source0:         %{name}-%{version}.tar.xz
+Patch0:          %{name}.patch
 BuildRequires:   ocaml
 BuildRequires:   ocaml-cppo
 BuildRequires:   ocaml-findlib
 BuildRequires:   ocaml-ocamlbuild
-BuildRequires:   ocaml-rpm-macros
+BuildRequires:   ocaml-rpm-macros >= 20191009
 BuildRequires:   ocamlfind(ocamlgraph)
 BuildRequires:   ocamlfind(cudf)
 BuildRequires:   ocamlfind(re)
-BuildRoot:       %{_tmppath}/%{name}-%{version}-build
 
 %description
 Dose3 is a framework made of several OCaml libraries for managing distribution
@@ -57,22 +55,23 @@ Requires:       %{name} = %{version}
 This package contains development files for package %{name}.
 
 %prep
-%setup -q -n %{_name}-%{_version}
+%autosetup -p1
+
+%build
 # Fix name of these manpages
 mv doc/manpages/{debcoinstall,deb-coinstall}.pod
 mv doc/manpages/{strongdeps,strong-deps}.pod
 
-%build
-%configure --with-ocamlgraph
+%configure
 make
 
 %install
-make DESTDIR=%{buildroot} install
+%make_install
 
 # Edit links that points to buildroot
-ln -sf %{_bindir}/distcheck %{buildroot}%{_bindir}/debcheck
-ln -sf %{_bindir}/distcheck %{buildroot}%{_bindir}/eclipsecheck
-ln -sf %{_bindir}/distcheck %{buildroot}%{_bindir}/rpmcheck
+ln -sf distcheck %{buildroot}%{_bindir}/debcheck
+ln -sf distcheck %{buildroot}%{_bindir}/eclipsecheck
+ln -sf distcheck %{buildroot}%{_bindir}/rpmcheck
 
 # Install man pages
 install -d %{buildroot}%{_mandir}/man{1,5,8}
@@ -80,31 +79,18 @@ for section in {1,5,8} ; do
   install -m0644 doc/manpages/*.${section} %{buildroot}%{_mandir}/man${section}
 done
 
+%ocaml_create_file_list
+
 %check
 make testlib
 
-%files
-%defattr(-,root,root)
+%files -f %{name}.files
 %doc CHANGES CREDITS README.architecture
-%license COPYING Copyright
 %{_bindir}/*
 %{_mandir}/man1/*.1%{ext_man}
 %{_mandir}/man5/*.5%{ext_man}
 %{_mandir}/man8/*.8%{ext_man}
-%dir %{_libdir}/ocaml/%{_name}
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/%{_name}/*.cmxs
-%endif
 
-%files devel
-%defattr(-,root,root)
-%license COPYING Copyright
-%{_libdir}/ocaml/%{_name}/META
-%{_libdir}/ocaml/%{_name}/*.cma
-%{_libdir}/ocaml/%{_name}/*.cmi
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/%{_name}/*.a
-%{_libdir}/ocaml/%{_name}/*.cmxa
-%endif
+%files devel -f %{name}.files.devel
 
 %changelog

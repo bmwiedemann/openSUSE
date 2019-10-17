@@ -17,7 +17,7 @@
 
 
 Name:           tealdeer
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        An implementation of tldr in Rust
 License:        MIT OR Apache-2.0
@@ -39,8 +39,8 @@ An implementation of tldr in Rust. It has example based and community-driven man
 
 %prep
 %setup -qa1
-mkdir cargo-home
-cat >cargo-home/config <<EOF
+mkdir .cargo
+cat >.cargo/config <<EOF
 [source.crates-io]
 registry = 'https://github.com/rust-lang/crates.io-index'
 replace-with = 'vendored-sources'
@@ -49,12 +49,10 @@ directory = './vendor'
 EOF
 
 %build
-export CARGO_HOME=$PWD/cargo-home
 cargo build --release --locked %{?_smp_mflags}
 
 %install
-export CARGO_HOME=$PWD/cargo-home
-cargo install --root=%{buildroot}%{_prefix}
+cargo install --root=%{buildroot}%{_prefix} --path .
 
 # remove residue crate file
 rm %{buildroot}%{_prefix}/.crates.toml

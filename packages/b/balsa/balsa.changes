@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 16 05:14:14 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.5.8:
+  + HTML email improvements; vcal attachment handling.
+- Changes from version 2.5.7:
+  + encryption, HTML email improvements; bug fixes.
+- Drop conditional post(un) handling for obsolete versions of
+  openSUSE.
+- Drop balsa-2.5.6-fix-build-breaker-typo.patch: Fixed upstream.
+- Drop update-desktop-files BuildRequires and macros as well as
+  balsa-lang Recommends, no longer needed.
+- Add pkgconfig(fribidi) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
 Sun Jul  8 18:04:48 UTC 2018 - bjorn.lie@gmail.com
 
 - Drop pkgconfig(libnm-glib) BuildRequires: Balsa switched from

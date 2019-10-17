@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct 16 11:36:22 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Update to 0.21.16
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.21.16/NEWS
+  * fix build with iconv() instead of ICU
+  * queue
+    * fix relative destination offset when moving a range
+  * storage
+    * curl: request the "resourcetype" property to fix database update
+    * curl: URL-encode more paths
+    * curl: follow redirects for collections without trailing slash
+  * update
+    * fix crash when music_directory is not a directory
+
+-------------------------------------------------------------------
 Tue Oct  8 08:02:09 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Refresh spec-file via spec-cleaner and manual optimizations

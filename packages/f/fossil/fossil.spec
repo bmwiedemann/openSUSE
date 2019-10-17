@@ -22,7 +22,7 @@
 %bcond_with system_sqlite
 %endif
 Name:           fossil
-Version:        2.9
+Version:        2.10
 Release:        0
 Summary:        Distributed software configuration management
 License:        BSD-2-Clause

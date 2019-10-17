@@ -1,8 +1,0 @@
-<package name="ddd" project="openSUSE:Factory">
-  <title>ddd</title>
-  <description>NOTE: Automatically created during Factory devel project migration by admin.</description>
-  <devel project="devel:tools" package="ddd"/>
-  <build>
-    <disable/>
-  </build>
-</package>

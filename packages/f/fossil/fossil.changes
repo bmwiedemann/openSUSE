@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct  5 11:16:57 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fossil 2.10:
+  * Add support for CGI-based Server Extensions
+  * UI improvement and extensions
+  * Change the default hash policy to SHA3
+  * Performance optimizations
+
+-------------------------------------------------------------------
 Sun Aug  4 09:23:16 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.9:

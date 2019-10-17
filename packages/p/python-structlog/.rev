@@ -25,4 +25,41 @@
 </comment>
     <requestid>690882</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fca2d8456e6b10cc363a207e1ca09115</srcmd5>
+    <version>19.2.0</version>
+    <time>1571307773</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 19.2.0:
+  Backward-incompatible changes:
+  * Python 3.4 is not supported anymore. It has been unsupported by
+    the Python core team for a while now and its PyPI downloads are negligible.
+    It's very unlikely that structlog will break under 3.4 anytime soon,
+    but we don't test it anymore.
+  Changes:
+  * Full Python 3.8 support for structlog.stdlib.
+  * Added more pass-through properties to structlog.stdlib.BoundLogger.
+    To makes it easier to use it as a drop-in replacement for logging.Logger. #198
+  * structlog.stdlib.ProcessorFormatter now takes a logger object as an
+    optional keyword argument. This makes ProcessorFormatter work properly
+    with stuctlog.stdlib.filter_by_level(). #219
+  * structlog.dev.ConsoleRenderer now uses no colors by default, if
+    colorama is not available. #215
+  * structlog.dev.ConsoleRenderer now initializes colorama lazily, to
+    prevent accidental side-effects just by importing structlog. #210
+  * Added new processor structlog.dev.set_exc_info() that will set
+    exc_info=True if the method's name is exception and exc_info isn't
+    set at all. This is only necessary when the standard library integration
+    is not used. It fixes the problem that in the default configuration,
+    structlog.get_logger().exception(&quot;hi&quot;) in an except block would not print the
+    exception without passing exc_info=True to it explicitly. #130, #173, #200, #204
+  * A best effort has been made to make as much of structlog pickleable as possible
+    to make it friendlier with multiprocessing and similar libraries.
+    Some classes can only be pickled on Python 3 or using the dill library
+    though and that is very unlikely to change.
+  * So far, the configuration proxy, structlog.processor.TimeStamper,
+    structlog.BoundLogger, structlog.PrintLogger and structlog.dev.ConsoleRenderer
+    have been made pickelable. Please report if you need any another class fixed. #126</comment>
+    <requestid>739016</requestid>
+  </revision>
 </revisionlist>
