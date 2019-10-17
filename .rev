@@ -365,4 +365,13 @@
     <comment>New stable release (forwarded request 715776 from iznogood)</comment>
     <requestid>716273</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>518d230f18a0833bbf18d11f869892b1</srcmd5>
+    <version>3.34.1</version>
+    <time>1571310502</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable sysprof for the time being: sysprof is still under
+  security review. (forwarded request 738823 from dimstar)</comment>
+    <requestid>738843</requestid>
+  </revision>
 </revisionlist>
