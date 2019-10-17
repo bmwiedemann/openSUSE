@@ -85,4 +85,14 @@
     <comment></comment>
     <requestid>725429</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>19c3cdbab8b41f3f4f9475b626ef6ce6</srcmd5>
+    <version>3.3.2</version>
+    <time>1571307776</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 3.3.2
+  * Refine the handling of fragment request.
+  * Minor bug fixes. (forwarded request 739017 from hillwood)</comment>
+    <requestid>739018</requestid>
+  </revision>
 </revisionlist>
