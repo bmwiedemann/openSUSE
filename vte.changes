@@ -1,4 +1,114 @@
 -------------------------------------------------------------------
+Fri Oct 11 19:15:14 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 0.58.2:
+  + ring: Fix an incorrect assertion.
+  + pty: Fix error check for ioctl(TIOCGPTPEER) failure.
+
+-------------------------------------------------------------------
+Mon Oct 07 20:23:55 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 0.58.1:
+  + emulation: Ensure the cursor remains onscreen when moving down.
+  + widget: Don't scroll to bottom on keystroke in read-only mode.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 09 19:47:50 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 0.58.0:
+  + build: Don't pass C warning flags to the C++ compiler.
+- Update URL to point to gitlab home.
+
+-------------------------------------------------------------------
+Sun Aug 11 10:51:42 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 0.57.90:
+  + draw: #include <algorithm> for std::max
+  + pty: Prefer using TIOCGPTPEER ioctl
+  + pty: Use O_NOCTTY when VTE_PTY_NOCTTY is set
+  + bidi: Disable Arabic ligatures
+  + Updated translations.
+- Changes from version 0.57.3:
+  + Add barebones README
+  + all: Add installation & debugging information
+  + app: Plug mem leaks
+  + bidi:
+    - Add API to enable or disable bidirectional text support
+    - Find the BiDi mapping for the RingView's contents
+  + build:
+    - Add debug flags when debug is enabled
+    - Add missing file
+    - Check gcc version
+    - Do not allow disabling asserts
+    - Fix build on meson 0.49
+    - Ignore everything in the build directory
+    - Increase test timeout
+    - List Wextra warnings
+    - Port to meson build system
+    - Use our own warning flags
+  + docs:
+    - Add index for API new in 0.56
+    - Add index for API new in 0.58
+  + docs,bidi: Clarify the relation between get_text API methods
+    and BiDi
+  + draw:
+    - Align the baseline across font styles
+    - Measure characters individually
+    - Optimise invalidation and painting
+  + emulation,bidi: Add keyboard swapping mode
+  + emulation:
+    - Fix background color handling of DCH and ECH
+    - Improve docs
+    - Make certain operataions convert line endings to hard newline
+    - Track BiDi parameters
+  + gir: Fix introspection annotations
+  + l10n:
+    - Add POTFILES.skip back
+    - Re-rename POTFILES to POTFILES.in
+  + mev: Fix an implicit fallthrough warning
+  + parser: glue: Correct parameter collection
+  + perf,bidi: Add BiDi demo and info files
+  + pty: Make vte_pty_child_setup() useful for flatpack
+  + reflect: Fix compiler warnings
+  + regex: Fix doc comment
+  + Revert "parser: glue: Use std::clamp"
+  + ring:
+    - fix printf format
+    - Keep an additional row writable
+    - Silence some warnings with debug disabled
+  + ringview: Add RingView infrastructure
+  + vala:
+    - Make binding tests compile without warning
+    - Make the vala test build without warnings
+  + vte.sh: Remove control chars for window title
+  + widget:
+    - Add valist signal marshallers
+  + widget: Avoid double painting of letters
+    - Cancel autoscroll on ending selecting
+    - Clean up invalidating in insert_char()
+    - Deprecate vte_terminal_[sg]et_rewrap_on_resize()
+    - Don't clamp before invalidating from process_incoming()
+    - Find contiguous LTR and RTL runs of decoration
+    - Fix invalidation with scrolling region
+    - Fix misleading comments in cursor_down()
+    - Increase minimum width to 2 cells plus padding
+    - Invalidate the entire paragraph when its contents change
+    - Merge identical m_color_defaults and m_fill_defaults
+    - Move out a common condition for painting the background
+    - Refactor offscreen cursor detection
+    - Remove line_is_wrappable()
+    - Revert to paint unused rows
+    - Set the soft_wrapped flag via wrapper methods
+    - Throw away remaining incoming data on finalize
+  + widget,bidi:
+   - Denote the direction in the I-beam cursor
+   - Display according to the BiDi mapping
+- Add meson BuildRequires and macro following upstreams port.
+- Drop gnome-common BuildRequires and autogen call, no longer
+  needed with meson buildsystem.
+
+-------------------------------------------------------------------
 Sat Aug 10 18:35:38 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Drop the glade catalog subpackage. The catalogue is unmaintained

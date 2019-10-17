@@ -21,27 +21,23 @@
 %define _binver 2.91
 %define _gtkver 3.0
 %define _name   vte
+
 Name:           vte
-Version:        0.56.3
+Version:        0.58.2
 Release:        0
 Summary:        Terminal Emulator Library
 License:        LGPL-2.0-only AND LGPL-3.0-only AND GPL-3.0-or-later
 Group:          Development/Libraries/GNOME
-URL:            http://www.gnome.org
-# Switched to sourceservice, as upstream have a tendency to not release tarballs on time.
-#Source:         http://download.gnome.org/sources/vte/0.45/%%{_name}-%%{version}.tar.xz
+URL:            https://gitlab.gnome.org/GNOME/vte
 Source:         %{_name}-%{version}.tar.xz
 
+BuildRequires:  c++_compiler
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
-#
-# Needed due to using sourceservice and we need to bootstrap tarball
-BuildRequires:  gnome-common
-#
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gperf
 BuildRequires:  gtk-doc
 BuildRequires:  intltool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(gio-2.0)
@@ -120,24 +116,18 @@ VTE.
 
 %prep
 %autosetup -n %{_name}-%{version} -p1
-translation-update-upstream
+translation-update-upstream po vte-%{_apiver}
 
 %build
-NOCONFIGURE=1 ./autogen.sh
-%configure \
-	--with-gtk=%{_gtkver}\
-	--disable-static \
-	--disable-glade-catalogue \
-	--enable-introspection \
-	--enable-gtk-doc \
+%meson \
+	-Ddocs=true \
 	%{nil}
-%make_build
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %find_lang vte-%{_apiver}
-find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes %{buildroot}/%{_prefix}
 
 %post -n libvte%{_sover} -p /sbin/ldconfig
@@ -145,7 +135,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n libvte%{_sover}
 %license COPYING.GPL3 COPYING.LGPL2 COPYING.LGPL3
-
 %{_libdir}/*.so.*
 %config %{_sysconfdir}/profile.d/vte.sh
 
@@ -164,6 +153,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/gtk-doc/html/vte-%{_apiver}/
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/vte-2.91.vapi
+%{_datadir}/vala/vapi/vte-2.91.deps
 
 %files lang -f vte-%{_apiver}.lang
 
