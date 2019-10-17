@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep  5 20:18:57 NZST 2019 - luke@ljones.dev
+
+- Update to version 3.33.90:
+  + Update translations.
+
+-------------------------------------------------------------------
 Mon Aug 12 10:39:34 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop inkscape and poppler-tools BuildRequires: No longer needed
