@@ -1,13 +1,17 @@
-Index: gnome-shell-3.24.2/js/ui/screenShield.js
-===================================================================
---- gnome-shell-3.24.2.orig/js/ui/screenShield.js
-+++ gnome-shell-3.24.2/js/ui/screenShield.js
-@@ -498,9 +498,31 @@ const ScreenShield = new Lang.Class({
+diff -urp gnome-shell-3.33.91.orig/js/ui/screenShield.js gnome-shell-3.33.91/js/ui/screenShield.js
+--- gnome-shell-3.33.91.orig/js/ui/screenShield.js	2019-09-04 14:04:13.523059437 -0500
++++ gnome-shell-3.33.91/js/ui/screenShield.js	2019-09-04 14:20:01.448084179 -0500
+@@ -492,7 +492,7 @@ var ScreenShield = class {
                                                  y_expand: true,
                                                  reactive: true,
                                                  pivot_point: new Clutter.Point({ x: 0.5, y: 0.5 }),
 -                                                name: 'lockDialogGroup' });
 +                                                name: 'lockDialogGroupReal' });
+ 
+         // Add background for this._lockDialogGroup
+         this._bgLockDialogGroup = new Clutter.Actor();
+@@ -505,6 +505,28 @@ var ScreenShield = class {
+         Main.layoutManager.connect('monitors-changed', this._updateBgLockDialogGroup.bind(this));
  
          this.actor.add_actor(this._lockDialogGroup);
 +
@@ -17,7 +21,7 @@ Index: gnome-shell-3.24.2/js/ui/screenShield.js
 +                                                pivot_point: new Clutter.Point({ x: 0.5, y: 0.5 }),
 +                                                name: 'lockDialogGroup' });
 +        primaryBackground.add_constraint(new Layout.MonitorConstraint({ primary: true }));
-+        this.actor.insert_child_below(primaryBackground, null);
+++        this.actor.insert_child_below(primaryBackground, null);
 +
 +        for (let i = 0; i < Main.layoutManager.monitors.length; i++) {
 +            if (Main.layoutManager.monitors [i].index == Main.layoutManager.primaryMonitor.index)
@@ -34,4 +38,4 @@ Index: gnome-shell-3.24.2/js/ui/screenShield.js
 +
          this.actor.add_actor(this._lockScreenGroup);
  
-         this._presence = new GnomeSession.Presence(Lang.bind(this, function(proxy, error) {
+         this._presence = new GnomeSession.Presence((proxy, error) => {

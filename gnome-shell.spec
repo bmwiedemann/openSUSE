@@ -19,31 +19,32 @@
 %global __requires_exclude typelib\\(Meta\\)
 
 Name:           gnome-shell
-Version:        3.32.2+11
+Version:        3.34.1
 Release:        0
 Summary:        GNOME Shell
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GnomeShell
-# We are using source services, so no download url for source
 Source:         %{name}-%{version}.tar.xz
 
+# PATCH-FIX-UPSTREAM gnome-shell-private-connection.patch bnc#751211 bgo#646187 dimstar@opensuse.org -- create private connections if the user is not authorized
+Patch1:         gnome-shell-private-connection.patch
 # SOURCE-FEATURE-SLE aboutMenu fate#314545 dliang@suse.com -- Add an applet on login UI to display suse icon, product name, hostname.
 Source1:        aboutMenu.js
 # SOURCE-FEATURE-SLE sle-background bsc#1007468 xwang@suse.com -- Add SUSE logo on lock screen for GNOME theme
 Source2:        sle-background.png
 
-# PATCH-FIX-UPSTREAM gnome-shell-private-connection.patch bnc#751211 bgo#646187 dimstar@opensuse.org -- create private connections if the user is not authorized
-Patch1:         gnome-shell-private-connection.patch
 # PATCH-FIX-OPENSUSE gnome-shell-disable-ibus-when-not-installed.patch bsc#987360 qzhao@suse.com -- disable ibus start when outof Chinese, Japanese, Korean area
 Patch2:         gnome-shell-disable-ibus-when-not-installed.patch
 # PATCH-FIX-UPSTREAM gnome-shell-Avoid-loginDialog-grab-focus-when-locked.patch bsc#1058521 bgo#788169 xwang@suse.com -- Avoid login dialog grabs focus when screen locked
 Patch3:         gnome-shell-Avoid-loginDialog-grab-focus-when-locked.patch
 # PATCH-FEATURE-OPENSUSE gnome-shell-fate324570-Make-GDM-background-image-configurable.patch fate#324570, glgo#GNOME/gnome-shell#680 qkzhu@suse.com -- make GDM background image configurable
 Patch4:         gnome-shell-fate324570-Make-GDM-background-image-configurable.patch
+# PATCH-FEATURE-OPENSUSE gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch jsc#SLE-9267 qkzhu@suse.com -- Remove sessionList of endSessionDialog
+Patch5:         gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch
+
 ## NOTE: Keep SLE-only patches at bottom (starting on 1000).
 # PATCH-FEATURE-SLE gnome-shell-gdm-login-applet.patch fate#314545 dliang@suse.com -- Add an applet on login UI to display suse icon, product name, hostname.
-
 Patch1001:      gnome-shell-gdm-login-applet.patch
 # PATCH-FEATURE-SLE gnome-shell-domain.patch fate#307773 dliang@suse.com -- Active Directory Integration
 Patch1002:      gnome-shell-domain.patch
@@ -61,6 +62,7 @@ Patch1007:      gs-fate318433-prevent-same-account-multi-logins.patch
 Patch1008:      gnome-shell-1007468-lock-screen-SUSE-logo-missing.patch
 
 # needed for directory ownership
+BuildRequires:  asciidoc
 BuildRequires:  dbus-1
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
@@ -77,7 +79,8 @@ BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gdk-x11-3.0)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.56.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.56.0
-BuildRequires:  pkgconfig(gjs-1.0) >= 1.47.0
+BuildRequires:  pkgconfig(gjs-1.0) >= 1.57.3
+BuildRequires:  pkgconfig(gnome-autoar-0)
 BuildRequires:  pkgconfig(gnome-bluetooth-1.0) >= 3.9.0
 BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.7.90
 BuildRequires:  pkgconfig(gnome-keybindings)
@@ -92,10 +95,10 @@ BuildRequires:  pkgconfig(json-glib-1.0) >= 0.13.2
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libcroco-0.6) >= 0.6.8
-BuildRequires:  pkgconfig(libecal-1.2) >= 3.5.3
+BuildRequires:  pkgconfig(libecal-2.0) >= 3.5.3
 BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.17.2
 BuildRequires:  pkgconfig(libgnome-menu-3.0) >= 3.5.3
-BuildRequires:  pkgconfig(libmutter-4) >= 3.32.2
+BuildRequires:  pkgconfig(libmutter-5) >= 3.33.92
 BuildRequires:  pkgconfig(libnm) >= 1.10.4
 BuildRequires:  pkgconfig(libpulse) >= 2.0
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
@@ -104,9 +107,9 @@ BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libstartup-notification-1.0) >= 0.11
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(mutter-clutter-4) >= 3.32.0
-BuildRequires:  pkgconfig(mutter-cogl-4) >= 3.32.0
-BuildRequires:  pkgconfig(mutter-cogl-pango-4) >= 3.32.0
+BuildRequires:  pkgconfig(mutter-clutter-5) >= 3.33.92
+BuildRequires:  pkgconfig(mutter-cogl-5) >= 3.33.92
+BuildRequires:  pkgconfig(mutter-cogl-pango-5) >= 3.33.92
 BuildRequires:  pkgconfig(polkit-agent-1) >= 0.100
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  python(abi) >= 3
@@ -169,6 +172,7 @@ into GNOME Shell calendar.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 translation-update-upstream
 
@@ -213,6 +217,7 @@ install -d %{buildroot}%{_datadir}/gnome-shell/modes
 %license COPYING
 %doc README.md NEWS
 %{_bindir}/gnome-shell
+%{_bindir}/gnome-extensions
 %{_bindir}/gnome-shell-extension-prefs
 %dir %{_libdir}/gnome-shell
 %dir %{_libexecdir}/gnome-shell
@@ -254,12 +259,15 @@ install -d %{buildroot}%{_datadir}/gnome-shell/modes
 %{_datadir}/gnome-shell/gnome-shell-osk-layouts.gresource
 %{_datadir}/gnome-shell/perf-background.xml
 %{_mandir}/man?/gnome-shell.?%{ext_man}
+%{_mandir}/man?/gnome-extensions.?%{ext_man}
 %dir %{_datadir}/xdg-desktop-portal
 %dir %{_datadir}/xdg-desktop-portal/portals
 %{_datadir}/xdg-desktop-portal/portals/gnome-shell.portal
 %{_userunitdir}/gnome-shell-wayland.target
 %{_userunitdir}/gnome-shell-x11.target
-%{_userunitdir}/gnome-shell.service
+%{_userunitdir}/gnome-shell-wayland.service
+%{_userunitdir}/gnome-shell-x11.service
+%{_userunitdir}/gnome-shell-disable-extensions.service
 %{_sysconfdir}/xdg/autostart/gnome-shell-overrides-migration.desktop
 %{_libexecdir}/gnome-shell/gnome-shell-overrides-migration.sh
 %{_datadir}/glib-2.0/schemas/00_org.gnome.shell.gschema.override

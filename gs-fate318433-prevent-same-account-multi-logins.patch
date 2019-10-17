@@ -1,17 +1,43 @@
-Index: gnome-shell-3.25.4/js/gdm/loginDialog.js
-===================================================================
---- gnome-shell-3.25.4.orig/js/gdm/loginDialog.js
-+++ gnome-shell-3.25.4/js/gdm/loginDialog.js
-@@ -926,6 +926,8 @@ var LoginDialog = new Lang.Class({
-                                                           this._authPrompt.updateSensitivity(false);
-                                                           let answer = this._authPrompt.getAnswer();
-                                                           this._user = this._userManager.get_user(answer);
-+                                                          this._userLoginForbidden =
-+                                                              this._user.is_x_logged_in_remotely();
-                                                           this._authPrompt.clear();
-                                                           this._authPrompt.startSpinning();
-                                                           this._authPrompt.begin({ userName: answer });
-@@ -990,6 +992,8 @@ var LoginDialog = new Lang.Class({
+diff -urp gnome-shell-3.33.91.orig/js/gdm/authPrompt.js gnome-shell-3.33.91/js/gdm/authPrompt.js
+--- gnome-shell-3.33.91.orig/js/gdm/authPrompt.js	2019-09-04 13:36:37.170279229 -0500
++++ gnome-shell-3.33.91/js/gdm/authPrompt.js	2019-09-04 15:11:35.568485953 -0500
+@@ -25,7 +25,9 @@ var AuthPromptStatus = {
+     NOT_VERIFYING: 0,
+     VERIFYING: 1,
+     VERIFICATION_FAILED: 2,
+-    VERIFICATION_SUCCEEDED: 3
++    VERIFICATION_SUCCEEDED: 3,
++    // NOTE fate#318433 extra state to track multi-login situation
++    VERIFIED_BUT_FORBIDDEN: 4
+ };
+ 
+ var BeginRequestType = {
+@@ -244,7 +246,12 @@ var AuthPrompt = class {
+     }
+ 
+     _onVerificationComplete() {
++        // NOTE update the spinning icon
+         this.setActorInDefaultButtonWell(null);
++
++        if (this.verificationStatus === AuthPromptStatus.VERIFIED_BUT_FORBIDDEN) {
++            return;
++        }
+         this.verificationStatus = AuthPromptStatus.VERIFICATION_SUCCEEDED;
+         this.cancelButton.reactive = false;
+     }
+diff -urp gnome-shell-3.33.91.orig/js/gdm/loginDialog.js gnome-shell-3.33.91/js/gdm/loginDialog.js
+--- gnome-shell-3.33.91.orig/js/gdm/loginDialog.js	2019-09-04 12:52:15.396169384 -0500
++++ gnome-shell-3.33.91/js/gdm/loginDialog.js	2019-09-04 14:47:26.796805978 -0500
+@@ -917,6 +917,8 @@ var LoginDialog = GObject.registerClass(
+                 this._authPrompt.updateSensitivity(false);
+                 let answer = this._authPrompt.getAnswer();
+                 this._user = this._userManager.get_user(answer);
++                this._userLoginForbidden =
++                    this._user.is_x_logged_in_remotely();
+                 this._authPrompt.clear();
+                 this._authPrompt.startSpinning();
+                 this._authPrompt.begin({ userName: answer });
+@@ -984,6 +986,8 @@ var LoginDialog = GObject.registerClass(
                                                          let answer = this._authPrompt.getAnswer();
                              let domain_answer = this._domainMenuButton.getDomainUser(answer);
                                                          this._user = this._userManager.get_user(domain_answer);
@@ -20,10 +46,10 @@ Index: gnome-shell-3.25.4/js/gdm/loginDialog.js
                                                          this._authPrompt.clear();
                                                          this._authPrompt.startSpinning();
                                                          this._authPrompt.begin({ userName: domain_answer});
-@@ -1023,6 +1027,28 @@ var LoginDialog = new Lang.Class({
-     },
+@@ -1010,6 +1014,28 @@ var LoginDialog = GObject.registerClass(
+     }
  
-     _onSessionOpened: function(client, serviceName) {
+     _onSessionOpened(client, serviceName) {
 +        if ( this._userLoginForbidden ) {
 +            this._authPrompt.setMessage(
 +                _('Sorry, you have to log out a previous session first. Multiple logins are not supported.'),
@@ -46,42 +72,14 @@ Index: gnome-shell-3.25.4/js/gdm/loginDialog.js
 +            return;
 +        }
 +
-         this._authPrompt.finish(Lang.bind(this, function() {
-             this._startSession(serviceName);
-         }));
-@@ -1206,6 +1232,7 @@ var LoginDialog = new Lang.Class({
+         this._authPrompt.finish(() => this._startSession(serviceName));
+     }
  
-     _onUserListActivated: function(activatedItem) {
+@@ -1190,6 +1216,7 @@ var LoginDialog = GObject.registerClass(
+ 
+     _onUserListActivated(activatedItem) {
          this._user = activatedItem.user;
 +        this._userLoginForbidden = this._user.is_x_logged_in_remotely();
  
          this._updateCancelButton();
  
-Index: gnome-shell-3.25.4/js/gdm/authPrompt.js
-===================================================================
---- gnome-shell-3.25.4.orig/js/gdm/authPrompt.js
-+++ gnome-shell-3.25.4/js/gdm/authPrompt.js
-@@ -30,7 +30,9 @@ var AuthPromptStatus = {
-     NOT_VERIFYING: 0,
-     VERIFYING: 1,
-     VERIFICATION_FAILED: 2,
--    VERIFICATION_SUCCEEDED: 3
-+    VERIFICATION_SUCCEEDED: 3,
-+    // NOTE fate#318433 extra state to track multi-login situation
-+    VERIFIED_BUT_FORBIDDEN: 4
- };
- 
- var BeginRequestType = {
-@@ -261,7 +263,12 @@ var AuthPrompt = new Lang.Class({
-     },
- 
-     _onVerificationComplete: function() {
-+        // NOTE update the spinning icon
-         this.setActorInDefaultButtonWell(null);
-+
-+        if (this.verificationStatus === AuthPromptStatus.VERIFIED_BUT_FORBIDDEN) {
-+            return;
-+        }
-         this.verificationStatus = AuthPromptStatus.VERIFICATION_SUCCEEDED;
-         this.cancelButton.reactive = false;
-     },

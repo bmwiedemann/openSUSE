@@ -1,30 +1,30 @@
-Index: gnome-shell-3.24.2/js/ui/screenShield.js
-===================================================================
---- gnome-shell-3.24.2.orig/js/ui/screenShield.js
-+++ gnome-shell-3.24.2/js/ui/screenShield.js
-@@ -438,6 +438,8 @@ const ScreenShield = new Lang.Class({
+diff --git a/js/ui/screenShield.js b/js/ui/screenShield.js
+index 7b154f2..ff7315d 100644
+--- a/js/ui/screenShield.js
++++ b/js/ui/screenShield.js
+@@ -431,6 +431,8 @@ var ScreenShield = class {
          this.actor = Main.layoutManager.screenShieldGroup;
  
          this._lockScreenState = MessageTray.State.HIDDEN;
 +        this._last_x = -1;
 +        this._last_y = -1;
-         this._lockScreenGroup = new St.Widget({ x_expand: true,
-                                                 y_expand: true,
-                                                 reactive: true,
-@@ -447,6 +449,8 @@ const ScreenShield = new Lang.Class({
-                                               });
+         this._lockScreenGroup = new St.Widget({
+             x_expand: true,
+             y_expand: true,
+@@ -441,6 +443,8 @@ var ScreenShield = class {
+         });
          this._lockScreenGroup.connect('key-press-event',
-                                       Lang.bind(this, this._onLockScreenKeyPress));
+                                       this._onLockScreenKeyPress.bind(this));
 +        this._lockScreenGroup.connect('motion-event',
-+                                      Lang.bind(this, this._onLockScreenMotion));
++                                      this._onLockScreenMotion.bind(this));
          this._lockScreenGroup.connect('scroll-event',
-                                       Lang.bind(this, this._onLockScreenScroll));
+                                       this._onLockScreenScroll.bind(this));
          Main.ctrlAltTabManager.addGroup(this._lockScreenGroup, _("Lock"), 'changes-prevent-symbolic');
-@@ -686,6 +690,25 @@ const ScreenShield = new Lang.Class({
+@@ -720,6 +724,25 @@ var ScreenShield = class {
          return Clutter.EVENT_STOP;
-     },
+     }
  
-+    _onLockScreenMotion: function(actor, event) {
++    _onLockScreenMotion(actor, event) {
 +        if (this._lockScreenState != MessageTray.State.SHOWN)
 +            return false;
 +        let [X, Y] = event.get_coords();
@@ -41,12 +41,12 @@ Index: gnome-shell-3.24.2/js/ui/screenShield.js
 +        if (distance >= min_distance)
 +            this._liftShield(true, 0);
 +        return true;
-+    },
++    }
 +
-     _onLockScreenScroll: function(actor, event) {
+     _onLockScreenScroll(actor, event) {
          if (this._lockScreenState != MessageTray.State.SHOWN)
              return Clutter.EVENT_PROPAGATE;
-@@ -1005,6 +1028,8 @@ const ScreenShield = new Lang.Class({
+@@ -1036,6 +1059,8 @@ var ScreenShield = class {
              return;
  
          this._ensureLockScreen();

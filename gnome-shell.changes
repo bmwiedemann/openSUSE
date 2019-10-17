@@ -1,4 +1,221 @@
 -------------------------------------------------------------------
+Wed Oct  9 10:26:03 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Fix "Frequent" view icons disappearing on hover
+  + Allow editing app folder names.
+  + Skip property transitions while hidden.
+  + Make menu animations more consistent.
+  + Improve performance when enabling/disabling all extensions.
+  + Fix extra icons appearing in "Frequent" view animation.
+  + Fix fading out desktop icons.
+  + Fix box-shadow glitch with prerendered resources.
+  + Fix accidentally skipped animations.
+  + Fix screenshots and window animations when scaled.
+  + Don't leak NOTIFY_SOCKET environment variable to applications.
+  + Fix lock-up on X11 when ibus is already running on startup.
+  + Fix screen dimming on idle.
+  + Do not notify systemd before initialization is complete.
+  + Support SAE secrets in network agent.
+  + Fix various regressions with dynamic workspaces.
+  + Fixed crashes.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep 21 17:10:28 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.34.0+148:
+  + shell-util: Do not scale the clip in
+    get_content_for_window_actor()
+  + Update Galician translation
+  + screenShield: Stop using deprecated actor property
+  + unlockDialog: Use inheritance instead of composition
+  + loginDialog: Stop using deprecated actor property
+  + environment: Try harder to find a transition
+  + layout: Don't use the actors pick workaround on update regions
+  + renameFolderMenu: Use a custom menu item inheriting from
+    PopupBaseMenuItem
+  + renameFolderMenu: Move to non-legacy coding style
+  + renameFolderMenu: Set the entry as menu focus actor
+  + popupMenu: Add focusActor property to define the default focus
+    actor
+  + popupBaseMenuItem: Add support for Hidden Ornament
+  + renameFolderMenu: Don't save the source
+  + folderIcon: Remove duplicated addMenu call
+  + workspace: Fix an incorrect signal check
+  + appDisplay: Animate DnD app icons at the position they were
+    dropped
+  + appDisplay: Add API to animate launch at given position
+  + workspace: Return results of forwarded acceptDrop
+  + overview: Only accept AppIcon drops if the app can open a new
+    window
+  + shell-app: Never allow opening new windows while an app is
+    starting
+  + workspace: Use AppIcon.app to check action-support by the drag
+    source
+  + introspect: Check whitelist also for GetRunningWindows()
+  + st: Fix box-shadow drawing with prerendered_texture
+  + workspace: Remove unused properties of WindowClone
+  + viewSelector: Only reset search entry if it has key focus
+  + workspace: Reset idle hide timeout for overlays on reentry
+  + workspace: Make title of overlay reactive
+  + workspace: Continue overlay idle hide timeout when pointing at
+    close button
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 17 09:11:28 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.34.0+117:
+  + util: Handle trailing LTR/RTL markers in URLs
+  + cleanup: Don't add linebreak before operators
+  + cleanup: Disambiguate assignments in arrow functions
+  + cleanup: Remove trailing spaces
+  + cleanup: Fix up "special" comments
+  + cleanup: Use consistent brace style of blocks
+  + cleanup: Avoid pointless "renames" in destructuring
+  + cleanup: Avoid unnecessary parentheses in arrow functions
+  + cleanup: Avoid useless return statements
+  + cleanup: Don't use Array/Object constructors
+
+-------------------------------------------------------------------
+Tue Sep 17 06:58:17 UTC 2019 - Chingkai Chu <qkzhu@suse.com>
+
+- Rebase gnome-shell-864872-unlock-by-mouse-motion.patch to 3.34. 
+
+-------------------------------------------------------------------
+Fri Sep 13 14:29:24 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.34.0+94:
+  + lookingGlass: Only update window list when visible
+  + ci: Disable MR handling for now
+  + ci: Disallow legacy style in merge requests
+  + ci: Fail on any common lint errors
+  + cleanup: Don't assume hasOwnProperty() method on objects
+  + cleanup: "Only" use two indentation styles for object literals
+  + cleanup: Stop using Mainloop module
+- Switch to checkout from master, we need the fixes for stability. 
+- Drop gnome-shell-remove-the-INITIALIZED-extensionState.patch:
+  Fixed upstream.
+
+-------------------------------------------------------------------
+Thu Sep 12 15:32:19 UTC 2019 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Add gnome-shell-remove-the-INITIALIZED-extensionState.patch: 
+  Completely remove the INITIALIZED ExtensionState
+
+-------------------------------------------------------------------
+Mon Sep  9 16:31:37 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.34.0:
+  + Handle startup/shutdown of misc X11 services.
+  + Fix sound volume mute/unmute.
+  + Correctly terminate pasted text.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  9 09:14:13 UTC 2019 - Chingkai Chu <qkzhu@suse.com>
+
+- Add gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch:
+  Remove sessionList of endSessionDialog for security reasons
+  (jsc#SLE-9267).
+
+-------------------------------------------------------------------
+Sat Sep  7 20:02:51 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Fixup _service to follow our standards.
+
+-------------------------------------------------------------------
+Thu Sep  5 16:00:43 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Rebase SLE patches and modernize syntax in a few cases:
+  gnome-shell-gdm-login-applet.patch
+  gnome-shell-domain.patch
+  gnome-shell-864872-unlock-by-mouse-motion.patch
+  gnome-shell-lock-bg-on-primary.patch
+  gs-fate318433-prevent-same-account-multi-logins.patch
+  gnome-shell-1007468-lock-screen-SUSE-logo-missing.patch
+
+-------------------------------------------------------------------
+Wed Sep  4 23:48:23 UTC 2019 - Luke Jones <luke@ljones.dev>
+
+- Update to version 3.33.92
+  + Animate pointer a11y pie timer.
+  + Fix restarting shell in systemd user session.
+  + Misc. bug fixes and cleanups.
+
+-------------------------------------------------------------------
+Tue Sep  3 01:40:52 UTC 2019 - Luke Jones <luke@ljones.dev>
+
+- Update to version 3.33.91
+  + Fix regression when adjusting brightness.
+  + Fix pointer a11y timeout animation.
+  + Add new extensions CLI tool.
+  + Only track top-level windows.
+  + Misc. bug fixes and cleanups.
+  + Re-apply gnome-shell-private-connection.patch
+- Changes from version 3.33.90
+  + Implement DND app picker folder management.
+  + Make Clocks/Weather integration work with sandboxed apps.
+  + Support startup via systemd user instance.
+  + Replace Tweener with Clutter animations.
+  + Minimize travel distance in overview animation.
+  + Rescan icon theme when installed apps changed.
+  + Consistently animate new window actions.
+  + Misc. bug fixes and cleanups.
+- Changes from version 3.33.4
+  + Fix unintentional interference between gestures.
+  + Fix unintentional loop while polkit dialog is active.
+  + Fix alt-tab icon size on HiDPI.
+  + Style fixes and improvements.
+  + Fix style updates for non-background CSS properties.
+  + Fix cursor visibility in screen recordings.
+  + Add option for disabling the hot corner.
+  + Use more fine-grained levels in battery indicator.
+  + Fix the calculation of the maximum number of app search
+    results.
+  + Handle horizontal workspace layout with gestures/animations.
+  + Improve handling of session mode extensions.
+  + Misc. bug fixes and cleanups.
+- Changes from version 3.33.3
+  + Prepare for optional X11.
+  + Fix opening window menu.
+  + Reload search providers when installed applications change.
+  + Implement locate-pointer accessibility feature.
+  + Allow to disable window menus via session mode.
+  + Implement mouse accessibility.
+  + Call GDM's RegisterSession() after startup.
+  + Fix extended keys popups being hidden by on-screen keyboard.
+  + Fix top bar being hidden by lock screen.
+  + Update theme to better match GTK's Adwaita.
+  + Set up GJS profiler when GJS_TRACE_FD is set.
+  + Misc. bug fixes and cleanups.
+- Changes from version 3.33.2
+  + Fix keeping actors visible in scrollviews.
+  + Move some chrome above popup windows.
+  + Include 'sandboxed-app-id' in winodw introspection info.
+  + Port to libecal-2.0.
+  + Support TCRYPT in mount password dialog.
+  + Misc. bug fixes and cleanups.
+- Changes from version 3.33.1
+  + Refine the app menu.
+  + Refine window preview style.
+  + Only emit ::style-changed on actual changes.
+  + Disable emoji on-screen keyboard support on X11.
+  + Fix tablet button mapping overlay.
+  + Don't crash for world clock locations with no timezone.
+  + Don't leak old on-screen keyboard layout groups.
+  + Fix ellipsization in dialog subtitles/bodies.
+  + Fix glitch of fullscreen window in workspace switch animation.
+  + Fix distortion of some image contents.
+  + Allow dragging unfocused tiled/maximized windows from top bar.
+  + Handle network interface name changes.
+  + Avoid unnecessary style changes when computing
+    :first/:last-child.
+  + Misc. bug fixes and cleanups.
+
+-------------------------------------------------------------------
 Wed Jul 24 20:55:12 UTC 2019 - bjorn.lie@gmail.com
 
 - Update to version 3.32.2+11:

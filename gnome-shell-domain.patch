@@ -1,7 +1,6 @@
-Index: gnome-shell-3.26.0/js/gdm/domain.js
-===================================================================
---- /dev/null
-+++ gnome-shell-3.26.0/js/gdm/domain.js
+diff -urNp gnome-shell-3.33.91.orig/js/gdm/domain.js gnome-shell-3.33.91/js/gdm/domain.js
+--- gnome-shell-3.33.91.orig/js/gdm/domain.js	1969-12-31 18:00:00.000000000 -0600
++++ gnome-shell-3.33.91/js/gdm/domain.js	2019-09-04 10:22:42.476273775 -0500
 @@ -0,0 +1,243 @@
 +// -*- mode: js; js-indent-level: 4; indent-tabs-mode: nil -*-
 +/*
@@ -246,21 +245,20 @@ Index: gnome-shell-3.26.0/js/gdm/domain.js
 +    }
 +});
 +Signals.addSignalMethods(DomainMenuButton.prototype);
-Index: gnome-shell-3.26.0/js/gdm/loginDialog.js
-===================================================================
---- gnome-shell-3.26.0.orig/js/gdm/loginDialog.js
-+++ gnome-shell-3.26.0/js/gdm/loginDialog.js
-@@ -33,6 +33,7 @@ const Signals = imports.signals;
- const St = imports.gi.St;
+diff -urNp gnome-shell-3.33.91.orig/js/gdm/loginDialog.js gnome-shell-3.33.91/js/gdm/loginDialog.js
+--- gnome-shell-3.33.91.orig/js/gdm/loginDialog.js	2019-09-04 10:05:51.598915194 -0500
++++ gnome-shell-3.33.91/js/gdm/loginDialog.js	2019-09-04 12:52:15.396169384 -0500
+@@ -22,6 +22,7 @@ const { AccountsService, Atk, Clutter, G
+ const Signals = imports.signals;
  
  const AuthPrompt = imports.gdm.authPrompt;
 +const Domain = imports.gdm.domain;
  const Batch = imports.gdm.batch;
  const BoxPointer = imports.ui.boxpointer;
  const CtrlAltTab = imports.ui.ctrlAltTab;
-@@ -452,6 +453,14 @@ var LoginDialog = new Lang.Class({
+@@ -437,6 +438,14 @@ var LoginDialog = GObject.registerClass(
          this._authPrompt.hide();
-         this.actor.add_child(this._authPrompt.actor);
+         this.add_child(this._authPrompt.actor);
  
 +        this._userLayout = new St.BoxLayout({ vertical: false,
 +                        x_expand: true
@@ -273,7 +271,7 @@ Index: gnome-shell-3.26.0/js/gdm/loginDialog.js
          // translators: this message is shown below the user list on the
          // login screen. It can be activated to reveal an entry for
          // manually entering the username.
-@@ -469,10 +478,24 @@ var LoginDialog = new Lang.Class({
+@@ -454,10 +463,24 @@ var LoginDialog = GObject.registerClass(
  
          this._notListedButton.hide();
  
@@ -300,11 +298,11 @@ Index: gnome-shell-3.26.0/js/gdm/loginDialog.js
  
          this._bannerView = new St.ScrollView({ style_class: 'login-dialog-banner-view',
                                                 opacity: 0,
-@@ -948,6 +971,37 @@ var LoginDialog = new Lang.Class({
-             }));
-     },
+@@ -942,6 +965,37 @@ var LoginDialog = GObject.registerClass(
+             });
+     }
  
-+    _askForDomainUsernameAndBeginVerification: function(domain) {
++    _askForDomainUsernameAndBeginVerification(domain) {
 +        this._authPrompt.setPasswordChar('');
 +        this._authPrompt.setQuestion(this._domainMenuButton.getQuestionMessage());
 +
@@ -335,22 +333,22 @@ Index: gnome-shell-3.26.0/js/gdm/loginDialog.js
 +        this._showPrompt();
 +    },
 +
-     _startSession: function(serviceName) {
-         Tweener.addTween(this.actor,
-                          { opacity: 0,
-@@ -1116,6 +1170,11 @@ var LoginDialog = new Lang.Class({
+     _startSession(serviceName) {
+         this._bindOpacity();
+         this.actor.ease({
+@@ -1099,6 +1153,11 @@ var LoginDialog = GObject.registerClass(
          this._askForUsernameAndBeginVerification();
-     },
+     }
  
-+    _hideUserListAskForDomainUsernameAndBeginVerification: function() {
++    _hideUserListAskForDomainUsernameAndBeginVerification() {
 +        this._hideUserList();
 +        this._askForDomainUsernameAndBeginVerification();
 +    },
 +
-     _hideUserListAndBeginVerification: function() {
+     _hideUserListAndBeginVerification() {
          this._hideUserList();
          this._authPrompt.begin();
-@@ -1128,6 +1187,9 @@ var LoginDialog = new Lang.Class({
+@@ -1111,6 +1170,9 @@ var LoginDialog = GObject.registerClass(
          this._sessionMenuButton.close();
          this._setUserListExpanded(true);
          this._notListedButton.show();
@@ -359,23 +357,10 @@ Index: gnome-shell-3.26.0/js/gdm/loginDialog.js
 +        this._userLayout.show();
          if (!Main.screenShield.locked)
              this._userList.actor.grab_key_focus();
-     },
-Index: gnome-shell-3.26.0/po/POTFILES.in
-===================================================================
---- gnome-shell-3.26.0.orig/po/POTFILES.in
-+++ gnome-shell-3.26.0/po/POTFILES.in
-@@ -7,6 +7,7 @@ data/org.gnome.shell.gschema.xml.in
- data/org.gnome.Shell.PortalHelper.desktop.in.in
- js/extensionPrefs/main.js
- js/gdm/authPrompt.js
-+js/gdm/domain.js
- js/gdm/loginDialog.js
- js/gdm/util.js
- js/misc/systemActions.js
-Index: gnome-shell-3.26.0/js/js-resources.gresource.xml
-===================================================================
---- gnome-shell-3.26.0.orig/js/js-resources.gresource.xml
-+++ gnome-shell-3.26.0/js/js-resources.gresource.xml
+     }
+diff -urNp gnome-shell-3.33.91.orig/js/js-resources.gresource.xml gnome-shell-3.33.91/js/js-resources.gresource.xml
+--- gnome-shell-3.33.91.orig/js/js-resources.gresource.xml	2019-09-04 10:21:23.651855885 -0500
++++ gnome-shell-3.33.91/js/js-resources.gresource.xml	2019-09-04 12:52:22.840208842 -0500
 @@ -2,6 +2,7 @@
  <gresources>
    <gresource prefix="/org/gnome/shell">
@@ -384,3 +369,14 @@ Index: gnome-shell-3.26.0/js/js-resources.gresource.xml
      <file>gdm/batch.js</file>
      <file>gdm/fingerprint.js</file>
      <file>gdm/loginDialog.js</file>
+diff -urNp gnome-shell-3.33.91.orig/po/POTFILES.in gnome-shell-3.33.91/po/POTFILES.in
+--- gnome-shell-3.33.91.orig/po/POTFILES.in	2019-08-21 15:00:39.000000000 -0500
++++ gnome-shell-3.33.91/po/POTFILES.in	2019-09-04 12:52:22.840208842 -0500
+@@ -7,6 +7,7 @@ data/org.gnome.shell.gschema.xml.in
+ data/org.gnome.Shell.PortalHelper.desktop.in.in
+ js/extensionPrefs/main.js
+ js/gdm/authPrompt.js
++js/gdm/domain.js
+ js/gdm/loginDialog.js
+ js/gdm/util.js
+ js/misc/systemActions.js

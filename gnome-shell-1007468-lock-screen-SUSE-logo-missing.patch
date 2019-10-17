@@ -1,33 +1,30 @@
-Index: gnome-shell-3.26.0/data/gnome-shell-theme.gresource.xml
-===================================================================
---- gnome-shell-3.26.0.orig/data/gnome-shell-theme.gresource.xml
-+++ gnome-shell-3.26.0/data/gnome-shell-theme.gresource.xml
-@@ -38,5 +38,6 @@
+diff -urp gnome-shell-3.33.91.orig/data/gnome-shell-theme.gresource.xml gnome-shell-3.33.91/data/gnome-shell-theme.gresource.xml
+--- gnome-shell-3.33.91.orig/data/gnome-shell-theme.gresource.xml	2019-08-21 15:00:39.000000000 -0500
++++ gnome-shell-3.33.91/data/gnome-shell-theme.gresource.xml	2019-09-04 15:20:19.511263425 -0500
+@@ -31,5 +31,6 @@
+     <file>toggle-on.svg</file>
+     <file>toggle-on-dark.svg</file>
      <file>toggle-on-hc.svg</file>
-     <file>ws-switch-arrow-up.png</file>
-     <file>ws-switch-arrow-down.png</file>
 +    <file>sle-background.png</file>
    </gresource>
  </gresources>
-Index: gnome-shell-3.26.0/data/theme/gnome-shell.css
-===================================================================
---- gnome-shell-3.26.0.orig/data/theme/gnome-shell.css
-+++ gnome-shell-3.26.0/data/theme/gnome-shell.css
-@@ -1599,6 +1599,9 @@ StScrollBar {
-   padding-top: 24px;
-   max-width: 23em; }
+diff -urp gnome-shell-3.33.91.orig/data/theme/gnome-shell-sass/_common.scss gnome-shell-3.33.91/data/theme/gnome-shell-sass/_common.scss
+--- gnome-shell-3.33.91.orig/data/theme/gnome-shell-sass/_common.scss	2019-08-21 15:00:39.000000000 -0500
++++ gnome-shell-3.33.91/data/theme/gnome-shell-sass/_common.scss	2019-09-04 15:22:50.500063729 -0500
+@@ -1912,6 +1912,9 @@ StScrollBar {
+   max-width: 23em;
+ }
  
 +.login-dialog-sle {
 +  background: #2e3436 url(sle-background.png); }
 +
  .login-dialog {
+   //reset
    border: none;
-   background-color: transparent; }
-Index: gnome-shell-3.26.0/js/ui/unlockDialog.js
-===================================================================
---- gnome-shell-3.26.0.orig/js/ui/unlockDialog.js
-+++ gnome-shell-3.26.0/js/ui/unlockDialog.js
-@@ -37,6 +37,7 @@ var UnlockDialog = new Lang.Class({
+diff -urp gnome-shell-3.33.91.orig/js/ui/unlockDialog.js gnome-shell-3.33.91/js/ui/unlockDialog.js
+--- gnome-shell-3.33.91.orig/js/ui/unlockDialog.js	2019-08-21 15:00:39.000000000 -0500
++++ gnome-shell-3.33.91/js/ui/unlockDialog.js	2019-09-04 15:24:01.072437800 -0500
+@@ -20,6 +20,7 @@ var UnlockDialog = class {
                                       layout_manager: new Clutter.BoxLayout(),
                                       visible: false });
  
