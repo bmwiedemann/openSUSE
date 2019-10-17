@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Oct  7 11:55:59 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Fix criticals and crashes when closing properties dialog.
+  + Fix opening file previews in Sushi.
+  + Fix criticals after trashing file.
+- Drop nautilus-fix-criticals-move-file-trash.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
+Thu Sep 26 12:39:50 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add nautilus-fix-criticals-move-file-trash.patch: window: Fix
+  criticals when moving file to trash.
+
+-------------------------------------------------------------------
+Tue Sep 10 21:00:05 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.0:
+  + Fix emblems not appearing on files in some cases.
+  + Respect recursivity setting in shell search provider.
+  + Make recursive permission changes apply only to children.
+
+-------------------------------------------------------------------
+Tue Sep  3 11:35:21 NZST 2019 - luke@ljones.dev
+
+- Update to version 3.33.90:
+  + Add tooltip to view menu button
+  + Show warning in read-only directories when pasting files.
+
+-------------------------------------------------------------------
 Tue Aug  6 17:56:22 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.3:
@@ -2074,7 +2105,7 @@ Wed Jun 15 09:57:08 UTC 2011 - dimstar@opensuse.org
   + Move the floating bar away from the cursor on hover
   + Add an autostart desktop file
   + Add metadata::custom-icon-name key for custom icons
-  + Fix opening the wrong directory when launching an instance 
+  + Fix opening the wrong directory when launching an instance
     from the command line
   + Misc crashers.
 
@@ -2148,7 +2179,7 @@ Mon Mar 28 15:31:24 UTC 2011 - fcrozat@novell.com
   + Updated translations
 - Changes from version 2.91.92:
   + Use a raised button for Search
-  + Tweak the floating bar background 
+  + Tweak the floating bar background
   + Only show the "Loading..." floating bar after half a second of
     loading.
   + Style cluebars according to mockups
@@ -2447,7 +2478,7 @@ Mon Jun 14 11:24:19 CEST 2010 - vuntz@opensuse.org
 Wed May 26 15:59:10 UTC 2010 - sshaw@decriptor.com
 
 - Pulled a patch from SLED. nautilus-boot-order.patch
-  Delays applets loading 
+  Delays applets loading
 
 -------------------------------------------------------------------
 Wed May 26 13:37:36 CEST 2010 - vuntz@opensuse.org
@@ -2629,7 +2660,7 @@ Tue Dec  1 13:26:39 CET 2009 - dimstar@opensuse.org
 Fri Nov 13 22:43:06 CET 2009 - dimstar@opensuse.org
 
 - Refresh nautilus-bnc363122-lockdown-context-menus.diff to apply
-  with fuzz=0. 
+  with fuzz=0.
 
 -------------------------------------------------------------------
 Mon Sep 21 22:01:01 CEST 2009 - dimstar@opensuse.org
@@ -2987,7 +3018,7 @@ Mon Sep 22 12:19:46 CDT 2008 - maw@suse.de
   + Always assume that trash directories are local.
 
 -------------------------------------------------------------------
-Mon Sep 22 11:11:11 CDT 2008 - federico@novell.com 
+Mon Sep 22 11:11:11 CDT 2008 - federico@novell.com
 
 - Added nautilus-sysadmin-desktop-items.diff.  With this, the sysadmin
   can set the /apps/nautilus/desktop/predefined_items_dir key in GConf
@@ -3071,7 +3102,7 @@ Fri Aug  8 18:13:57 CDT 2008 - maw@suse.de
     * Use linear selection instead of rectangle selection in when
       pressing shift
     * Still offer rectangular selection when pressing ctrl and
-      shift 
+      shift
     * Only wrap around horizontally in horizontal layout mode
     * Only wrap around vertically in vertical layout mode
     * Never wrap around when in rectangle selection
@@ -3125,7 +3156,7 @@ Wed Jul 23 11:53:46 CDT 2008 - maw@suse.de
 -------------------------------------------------------------------
 Fri Jul 18 10:49:52 CEST 2008 - rodrigo@suse.de
 
-- Fix typo in patch tags 
+- Fix typo in patch tags
 
 -------------------------------------------------------------------
 Fri Jun 27 17:24:42 CEST 2008 - maw@suse.de
@@ -3158,7 +3189,7 @@ Sat Jun  7 05:13:17 CEST 2008 - hpj@suse.de
 -------------------------------------------------------------------
 Fri Jun  6 14:11:22 CEST 2008 - rodrigo@suse.de
 
-- Add nautilus-bnc397852-huge-memory-leak.patch (bnc#397852) 
+- Add nautilus-bnc397852-huge-memory-leak.patch (bnc#397852)
 
 -------------------------------------------------------------------
 Thu May 22 00:50:50 CEST 2008 - hpj@suse.de
@@ -3273,7 +3304,7 @@ Fri Mar 21 19:58:39 CET 2008 - jpr@suse.de
 -------------------------------------------------------------------
 Fri Mar 21 16:47:13 CET 2008 - vuntz@suse.de
 
-- Add a gnome-desktop-devel buildrequires to fix the build. 
+- Add a gnome-desktop-devel buildrequires to fix the build.
 
 -------------------------------------------------------------------
 Fri Mar 21 01:35:53 CET 2008 - jpr@suse.de
@@ -3330,7 +3361,7 @@ Wed Mar  5 01:16:08 CET 2008 - maw@suse.de
 Thu Feb 28 12:59:16 CET 2008 - rodrigo@suse.de
 
 - Added tags for all upstreamed patches, as well as bug numbers for
-  all patches 
+  all patches
 
 -------------------------------------------------------------------
 Wed Feb 20 22:07:55 CET 2008 - federico@novell.com
@@ -3407,10 +3438,10 @@ Fri Jan 18 20:31:09 CET 2008 - jpr@suse.de
 
 - Updated nautilus-drives-and-volumes-on-desktop.diff to fix
   https://bugzilla.novell.com/show_bug.cgi?id=335411 - Nautilus
-  crashes when it gets a "volume-mounted" signal for a volume that is 
+  crashes when it gets a "volume-mounted" signal for a volume that is
   already mounted.  This also adds two new logging domains to Nautilus:
   "drives-volumes" and "desktop-links".
-  
+
 -------------------------------------------------------------------
 Thu Oct 11 16:39:38 CEST 2007 - sbrabec@suse.cz
 
@@ -3532,7 +3563,7 @@ Tue Mar 13 13:26:04 CST 2007 - maw@suse.de
 -------------------------------------------------------------------
 Tue Feb 27 23:06:27 CET 2007 - dmueller@suse.de
 
-- adjust BuildRequires: libexif->libexif-devel 
+- adjust BuildRequires: libexif->libexif-devel
 
 -------------------------------------------------------------------
 Mon Feb  5 16:52:19 CET 2007 - sbrabec@suse.cz
@@ -3618,7 +3649,7 @@ Tue Oct  3 00:06:18 CEST 2006 - jhargadon@suse.de
 
 - update to version 2.16.1
 - Default to search in current directory for non-indexed search
-- Fix clash with symbol names in gtk+ 
+- Fix clash with symbol names in gtk+
 
 -------------------------------------------------------------------
 Wed Sep 20 18:22:02 CEST 2006 - sbrabec@suse.cz
@@ -3631,7 +3662,7 @@ Thu Sep 14 01:05:47 CEST 2006 - jhargadon@suse.de
 - update to version 2.16.0
 - Handle enter activation when using typeahead search
 - Avoid using gnome_vfs_is_local in wrong places
-- Translations 
+- Translations
 
 -------------------------------------------------------------------
 Wed Aug 30 22:28:34 CEST 2006 - jhargadon@suse.de
@@ -3640,7 +3671,7 @@ Wed Aug 30 22:28:34 CEST 2006 - jhargadon@suse.de
 - Fix crash on startup
 - Fix crash on changing owner/group of file
 - Fix double free
-- Make sure all strings are displayed translated 
+- Make sure all strings are displayed translated
 
 -------------------------------------------------------------------
 Fri Aug 18 17:14:15 CEST 2006 - jhargadon@suse.de
@@ -3658,7 +3689,7 @@ Fri Aug 18 17:14:15 CEST 2006 - jhargadon@suse.de
 - Enable D'n'D reordering in the places sidebar
 - New icons for trash operations
 - Add a button/text toggle button to the location bar
-- Fix leak 
+- Fix leak
 
 -------------------------------------------------------------------
 Mon Aug  7 19:48:51 CEST 2006 - gekker@suse.de
@@ -3740,7 +3771,7 @@ Mon Aug  7 19:48:51 CEST 2006 - gekker@suse.de
 -------------------------------------------------------------------
 Wed Jun  7 18:33:29 CEST 2006 - jpr@suse.de
 
-- Don't update the .desktop file if it doesn't exist 
+- Don't update the .desktop file if it doesn't exist
 (really fix #177551)
 
 -------------------------------------------------------------------
@@ -3904,7 +3935,7 @@ Fri Mar 17 02:51:14 CET 2006 - federico@novell.com
 -------------------------------------------------------------------
 Tue Mar 14 13:03:46 CET 2006 - ro@suse.de
 
-- use beagle on ppc64 as well 
+- use beagle on ppc64 as well
 
 -------------------------------------------------------------------
 Thu Mar  2 12:49:01 CET 2006 - sbrabec@suse.cz
@@ -4111,7 +4142,7 @@ Thu Sep  8 16:40:29 CEST 2005 - adrian@suse.de
 Mon Sep  5 19:29:04 CEST 2005 - gekker@suse.de
 
 - Add submount patch (90584)
-- Fix spec to apply both desktop search patches 
+- Fix spec to apply both desktop search patches
 
 -------------------------------------------------------------------
 Mon Sep  5 11:46:32 CEST 2005 - mmj@suse.de
@@ -4123,7 +4154,7 @@ Sun Aug 28 21:07:12 CEST 2005 - jpr@suse.de
 
 - Default to browser mode (113690)
 
-- Add nautilus-search.desktop so gnome-panel has something to launch 
+- Add nautilus-search.desktop so gnome-panel has something to launch
   for file searches (113691)
 
 -------------------------------------------------------------------
@@ -4139,12 +4170,12 @@ Tue Aug 16 14:52:29 CEST 2005 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Thu Aug 11 22:19:34 CEST 2005 - gekker@suse.de
 
-- Update to version 2.11.91 
+- Update to version 2.11.91
 
 -------------------------------------------------------------------
 Tue Aug  2 22:58:57 CEST 2005 - gekker@suse.de
 
-- Update to version 2.11.90 
+- Update to version 2.11.90
 
 -------------------------------------------------------------------
 Wed Jul 13 13:56:01 CEST 2005 - sbrabec@suse.cz
@@ -4183,7 +4214,7 @@ Tue Mar 22 21:46:07 CET 2005 - clahey@suse.de
 Mon Mar 21 18:13:14 CET 2005 - hhetter@suse.de
 
 - create .hidden if it does not exist on startup to hide some
-  kde services (#58875) 
+  kde services (#58875)
 
 -------------------------------------------------------------------
 Mon Mar 14 09:49:41 CET 2005 - clahey@suse.de
@@ -4193,43 +4224,43 @@ Mon Mar 14 09:49:41 CET 2005 - clahey@suse.de
 -------------------------------------------------------------------
 Wed Mar  9 22:40:19 CET 2005 - gekker@suse.de
 
-- Update to version 2.10.0 (GNOME 2.10). 
+- Update to version 2.10.0 (GNOME 2.10).
 
 -------------------------------------------------------------------
 Mon Mar  7 13:08:28 CET 2005 - gekker@suse.de
 
-- Add nautilus-background-memory.patch 
+- Add nautilus-background-memory.patch
 
 -------------------------------------------------------------------
 Fri Mar  4 01:07:24 CET 2005 - gekker@suse.de
 
-- Update to version 2.9.92 
+- Update to version 2.9.92
 
 -------------------------------------------------------------------
 Fri Feb 11 16:12:21 CET 2005 - gekker@suse.de
 
 - Update to 2.9.91
-- Remove upstreamed libexif patch 
+- Remove upstreamed libexif patch
 
 -------------------------------------------------------------------
 Mon Feb  7 19:00:20 CET 2005 - gekker@suse.de
 
-- Update to version 2.9.90 
+- Update to version 2.9.90
 
 -------------------------------------------------------------------
 Mon Feb  7 11:16:59 CET 2005 - ro@suse.de
 
-- added gnome-menus to neededforbuild 
+- added gnome-menus to neededforbuild
 
 -------------------------------------------------------------------
 Tue Feb  1 15:57:50 CET 2005 - ro@suse.de
 
-- fix last change 
+- fix last change
 
 -------------------------------------------------------------------
 Mon Jan 31 15:22:34 CET 2005 - ro@suse.de
 
-- create directory in build-root before packaging 
+- create directory in build-root before packaging
 
 -------------------------------------------------------------------
 Fri Jan 28 16:19:20 CET 2005 - sbrabec@suse.cz
@@ -4254,7 +4285,7 @@ Thu Dec 16 18:08:03 CET 2004 - hvogel@suse.de
 -------------------------------------------------------------------
 Thu Dec 16 17:56:17 CET 2004 - hvogel@suse.de
 
-- require gnome-icon-theme for the desktop file icons 
+- require gnome-icon-theme for the desktop file icons
 
 -------------------------------------------------------------------
 Wed Dec 15 22:49:48 CET 2004 - hvogel@suse.de
@@ -4305,7 +4336,7 @@ Wed Sep 29 18:09:45 CEST 2004 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Wed Sep 29 13:25:00 CEST 2004 - hhetter@suse.de
 
-- fix Computer to drives location 
+- fix Computer to drives location
 
 -------------------------------------------------------------------
 Tue Sep 21 16:18:06 CEST 2004 - hhetter@suse.de
@@ -4337,7 +4368,7 @@ Tue Aug 17 21:01:25 CEST 2004 - dave@suse.de
 Thu Aug 12 22:01:33 CEST 2004 - dave@suse.de
 
 - Added patches:
-  nautilus-hide-desktop-files.patch - Update of 
+  nautilus-hide-desktop-files.patch - Update of
     nautilus-hide-separators.patch, fixes ximian bug #62339
   nautilus-trim-desktop-menu.patch - fixes ximian bug #59110
 
@@ -4358,7 +4389,7 @@ Wed Jun 23 00:41:26 CEST 2004 - dave@suse.de
 -------------------------------------------------------------------
 Thu Jun 17 20:18:57 CEST 2004 - dave@suse.de
 
-- Updated to nautilus-2.6.3 
+- Updated to nautilus-2.6.3
 
 -------------------------------------------------------------------
 Fri Jun  4 21:34:32 CEST 2004 - clahey@suse.de
@@ -4378,14 +4409,14 @@ Tue May 04 15:44:40 CEST 2004 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Fri Apr  2 10:47:25 CEST 2004 - hhetter@suse.de
 
-- add drives:// to the uri schemes (Bug Id#37848) 
+- add drives:// to the uri schemes (Bug Id#37848)
 
 -------------------------------------------------------------------
 Thu Apr  1 11:50:21 CEST 2004 - hhetter@suse.de
 
 - nautilus-uri-schemes.dif: add yast-settings:// and suse-menu://
   to the list of uris which desktop files are interpreted
-  (Bug Id#37848) 
+  (Bug Id#37848)
 
 -------------------------------------------------------------------
 Mon Mar 22 17:42:59 CET 2004 - sbrabec@suse.cz
@@ -4395,7 +4426,7 @@ Mon Mar 22 17:42:59 CET 2004 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Mon Mar 15 14:50:07 CET 2004 - hhetter@suse.de
 
-- install MyComputer Icon on first user startup 
+- install MyComputer Icon on first user startup
 
 -------------------------------------------------------------------
 Wed Mar 10 10:42:11 CET 2004 - sbrabec@suse.cz
@@ -4405,13 +4436,13 @@ Wed Mar 10 10:42:11 CET 2004 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Wed Mar  3 14:17:12 CET 2004 - hhetter@suse.de
 
-- remove control-center2 from #neededforbuild 
+- remove control-center2 from #neededforbuild
 
 -------------------------------------------------------------------
 Wed Feb 25 11:31:36 CET 2004 - hhetter@suse.de
 
 - apply nautilus-config-defaults.patch: start with sidebar
-  disabled, disable sound preview 
+  disabled, disable sound preview
 - remove deprecated filesharing patch
 
 -------------------------------------------------------------------
@@ -4422,13 +4453,13 @@ Fri Feb 20 13:55:24 CET 2004 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Thu Feb 12 14:27:04 CET 2004 - hhetter@suse.de
 
-- gconf schema (de-)installation in %post and %postun 
+- gconf schema (de-)installation in %post and %postun
 
 -------------------------------------------------------------------
 Mon Feb  9 15:33:59 CET 2004 - hhetter@suse.de
 
 - updated to version 2.4.2 [GNOME2.4.2]
-- cs-typo patch has gone upstream, removed 
+- cs-typo patch has gone upstream, removed
 
 -------------------------------------------------------------------
 Sat Jan 10 11:06:58 CET 2004 - adrian@suse.de
@@ -4473,7 +4504,7 @@ Sun Sep  7 15:05:33 CEST 2003 - adrian@suse.de
 -------------------------------------------------------------------
 Mon Aug 25 11:45:57 CEST 2003 - hhetter@suse.de
 
-- add filesharing patches 
+- add filesharing patches
 - add filesharing setup tool
 
 -------------------------------------------------------------------
@@ -4505,20 +4536,20 @@ Wed Jun 25 19:04:18 CEST 2003 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Wed Mar 19 11:14:50 CET 2003 - hhetter@suse.de
 
-- updated to version 2.2.2 
+- updated to version 2.2.2
 
 -------------------------------------------------------------------
 Tue Feb 25 12:20:10 CET 2003 - hhetter@suse.de
 
-- launch nautilus with --no-desktop in desktop files 
+- launch nautilus with --no-desktop in desktop files
   to prevent it from overtaking the desktop in other environments
-  as GNOME (#24105) 
+  as GNOME (#24105)
 
 -------------------------------------------------------------------
 Thu Feb 20 16:44:01 CET 2003 - hhetter@suse.de
 
 - remove the starthere - link hack which was only for
-  2.0.x versions of nautilus 
+  2.0.x versions of nautilus
 
 -------------------------------------------------------------------
 Thu Feb 13 12:25:49 CET 2003 - sbrabec@suse.cz
@@ -4528,17 +4559,17 @@ Thu Feb 13 12:25:49 CET 2003 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Mon Feb  3 16:23:20 CET 2003 - ro@suse.de
 
-- added startup-notification to neededforbuild 
+- added startup-notification to neededforbuild
 
 -------------------------------------------------------------------
 Wed Jan 29 09:28:26 CET 2003 - hhetter@suse.de
 
-- updated to version 2.2.0.2 
+- updated to version 2.2.0.2
 
 -------------------------------------------------------------------
 Mon Jan 20 17:51:00 CET 2003 - ro@suse.de
 
-- update to 2.1.91 
+- update to 2.1.91
 
 -------------------------------------------------------------------
 Mon Dec 16 16:03:47 CET 2002 - sbrabec@suse.cz
@@ -4556,13 +4587,13 @@ Thu Dec 12 13:38:08 CET 2002 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Fri Nov 29 09:25:34 CET 2002 - hhetter@suse.de
 
-- updated to version 2.0.8 [GNOME 2.0.3] 
+- updated to version 2.0.8 [GNOME 2.0.3]
 
 -------------------------------------------------------------------
 Thu Oct 24 16:22:06 CEST 2002 - hhetter@suse.de
 
 - applied new ja-patch from mfabian (partly upstream)
-- updated to version 2.0.7 
+- updated to version 2.0.7
 
 -------------------------------------------------------------------
 Mon Oct 21 16:42:12 CEST 2002 - mfabian@suse.de
@@ -4582,17 +4613,17 @@ Thu Sep 19 11:03:36 CEST 2002 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Tue Sep 17 15:39:06 CEST 2002 - hhetter@suse.de
 
-- added better hu po-file from tvamosi 
+- added better hu po-file from tvamosi
 
 -------------------------------------------------------------------
 Tue Sep 17 09:48:37 CEST 2002 - hhetter@suse.de
 
-- fix hungarian translation  
+- fix hungarian translation
 
 -------------------------------------------------------------------
 Tue Aug 20 11:22:36 CEST 2002 - hhetter@suse.de
 
-- added PreReq: filesystem 
+- added PreReq: filesystem
 
 -------------------------------------------------------------------
 Tue Aug  6 11:36:03 CEST 2002 - hhetter@suse.de
@@ -4619,7 +4650,7 @@ Fri Jul 26 08:58:12 CEST 2002 - hhetter@suse.de
 -------------------------------------------------------------------
 Thu Jul 25 14:35:06 CEST 2002 - hhetter@suse.de
 
-- fix filelist 
+- fix filelist
 
 -------------------------------------------------------------------
 Tue Jul 23 09:49:17 CEST 2002 - hhetter@suse.de
@@ -4627,68 +4658,68 @@ Tue Jul 23 09:49:17 CEST 2002 - hhetter@suse.de
 - updated to version 2.0.1
 	* Various UI cleanups from the ui review
 	* Various bugfixes
-	* The Gnome Nautilus theme now follows the gtk+ theme 
+	* The Gnome Nautilus theme now follows the gtk+ theme
 	  better
-	* Window geometry is stored even in 
+	* Window geometry is stored even in
 	  open-directories-in-same-window
 	* All executable bonobo components moved into libexec.
 	* Some performance improvements
 	* Accessibility fixes
 	* Add support for kernel supermount patch
-	* Read desktop file icons according to the icon theme 
+	* Read desktop file icons according to the icon theme
 	  specification
 	* New throbber for the gnome theme
 	* large version of trash icon
 	* Better handling of disk ejecting
-	* Proper handling of launching desktop files according 
+	* Proper handling of launching desktop files according
 	  to the spec
 
 -------------------------------------------------------------------
 Thu Jun 20 16:55:21 CEST 2002 - hhetter@suse.de
 
-- don't install schemas while make install 
+- don't install schemas while make install
 
 -------------------------------------------------------------------
 Fri Jun 14 11:47:32 CEST 2002 - hhetter@suse.de
 
 - filelist lookover
-- supply schema file 
+- supply schema file
 
 -------------------------------------------------------------------
 Tue Jun 11 15:28:17 CEST 2002 - hhetter@suse.de
 
-- updated to version 2.0.0 
+- updated to version 2.0.0
 
 -------------------------------------------------------------------
 Fri Jun  7 12:10:23 CEST 2002 - hhetter@suse.de
 
-- gnome-common in #neededforbuild 
+- gnome-common in #neededforbuild
 
 -------------------------------------------------------------------
 Fri Jun  7 09:40:41 CEST 2002 - hhetter@suse.de
 
-- really build nautilus treeview and notes 
+- really build nautilus treeview and notes
 
 -------------------------------------------------------------------
 Thu Jun  6 01:27:37 CEST 2002 - ro@suse.de
 
-- fix libdir usage 
+- fix libdir usage
 
 -------------------------------------------------------------------
 Wed Jun  5 16:19:54 CEST 2002 - hhetter@suse.de
 
-- added missing pkgtool files 
+- added missing pkgtool files
 
 -------------------------------------------------------------------
 Wed Jun  5 09:32:52 CEST 2002 - hhetter@suse.de
 
 - updated to version 1.1.19, source frozen
-- seperation from mozilla and gtkhtml modules 
+- seperation from mozilla and gtkhtml modules
 
 -------------------------------------------------------------------
 Wed May 22 16:03:31 CEST 2002 - meissner@suse.de
 
-- changed neededforbuild so we can run autoconf/aclocal, also added 
+- changed neededforbuild so we can run autoconf/aclocal, also added
   libjpeg.
 - %_lib fixes.
 
@@ -4696,7 +4727,7 @@ Wed May 22 16:03:31 CEST 2002 - meissner@suse.de
 Tue May  7 12:09:21 CEST 2002 - ro@suse.de
 
 - up to 1.1.15
-- added gail to neededforbuild (for eel2) 
+- added gail to neededforbuild (for eel2)
 
 -------------------------------------------------------------------
 Fri Feb  1 00:26:05 CET 2002 - ro@suse.de
@@ -4706,5 +4737,5 @@ Fri Feb  1 00:26:05 CET 2002 - ro@suse.de
 -------------------------------------------------------------------
 Thu Jan 24 16:01:49 CET 2002 - hhetter@suse.de
 
-- initial SuSE package for GNOME 2.0 platform 
+- initial SuSE package for GNOME 2.0 platform
 

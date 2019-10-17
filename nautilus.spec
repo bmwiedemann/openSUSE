@@ -17,14 +17,14 @@
 
 
 Name:           nautilus
-Version:        3.32.3
+Version:        3.34.1
 Release:        0
 Summary:        File Manager for the GNOME Desktop
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/File utilities
 URL:            https://wiki.gnome.org/Apps/Nautilus
 
-Source0:        https://download.gnome.org/sources/nautilus/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/nautilus/3.34/%{name}-%{version}.tar.xz
 # fate#308344 bgo#602147
 Source1:        mount-archive.desktop
 Source2:        set_trusted.desktop
@@ -113,7 +113,7 @@ This package contains development files for nautilus.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 translation-update-upstream
 
 %build
