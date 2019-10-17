@@ -1,0 +1,5 @@
+<package name="python-sshpubkeys" project="openSUSE:Factory">
+  <title>SSH public key parser</title>
+  <description>OpenSSH Public Key Parser for Python</description>
+  <devel project="devel:languages:python" package="python-sshpubkeys"/>
+</package>
