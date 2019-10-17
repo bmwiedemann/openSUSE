@@ -18,7 +18,6 @@ Have a look at http://en.opensuse.org/Portal:Factory for more details.</descript
   </lock>
   <build>
     <disable repository="snapshot"/>
-    <disable repository="totest"/>
     <disable repository="ports"/>
   </build>
   <publish>
@@ -28,15 +27,12 @@ Have a look at http://en.opensuse.org/Portal:Factory for more details.</descript
   <debuginfo>
     <enable/>
   </debuginfo>
-  <repository name="totest">
-    <arch>x86_64</arch>
-    <arch>i586</arch>
-  </repository>
   <repository name="standard" rebuild="local">
     <arch>x86_64</arch>
     <arch>i586</arch>
   </repository>
   <repository name="snapshot">
+    <path project="openSUSE:Tumbleweed" repository="standard"/>
     <arch>x86_64</arch>
     <arch>i586</arch>
   </repository>
