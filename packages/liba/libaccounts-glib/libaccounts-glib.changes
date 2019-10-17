@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct 11 09:12:52 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.24:
+  * ag-tool: fix typos.
+  * Remove Nokia backup conf files.
+  * Now using the meson build system.
+  * Bump soname.
+- Switch to source service checkout, use explicit released tag.
+- Add meson BuildRequires and macros following upstreams port.
+- Add pkgconfig(vapigen) BuildRequires: New dependency.
+- Drop python-libaccounts subpackage, no longer built.
+- Drop autoconf, automake, libtool and pkgconfig(python2)
+  BuildRequires: No longer needed.
+- Drop _version define, not needed as we are now using source
+  service.
+- Modernize spec, drop no longer needed tweaks and workarounds.
+
+-------------------------------------------------------------------
 Fri Nov  3 09:45:25 UTC 2017 - buschmann23@opensuse.org
 
 - spec file

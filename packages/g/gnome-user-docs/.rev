@@ -568,4 +568,22 @@
     <comment></comment>
     <requestid>717988</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>3d4d6e172845848914e54a9edee067ff</srcmd5>
+    <version>3.34.0</version>
+    <time>1571310525</time>
+    <user>dimstar_suse</user>
+    <comment>- Change License tag to &quot;CC-BY-3.0&quot;, as stated in README.md.
+
+- Update to version 3.34.0:
+  + Updates to GNOME Help.
+  + Updates to System Admin Guide.
+  + Updated translations.
+
+- Update to version 3.33.90:
+  + Updates to GNOME Help.
+  + Updates to System Admin Guide.
+  + Updated translations.</comment>
+    <requestid>739032</requestid>
+  </revision>
 </revisionlist>

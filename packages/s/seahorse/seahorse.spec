@@ -17,18 +17,20 @@
 
 
 Name:           seahorse
-Version:        3.32.2
+Version:        3.34
 Release:        0
 Summary:        GNOME interface for gnupg
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GFDL-1.1-only
 Group:          Productivity/Security
 URL:            https://wiki.gnome.org/Apps/Seahorse
-Source0:        https://download.gnome.org/sources/seahorse/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/seahorse/3.34/%{name}-%{version}.tar.xz
 
+BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  gpg2
 BuildRequires:  libgpgme-devel
-BuildRequires:  meson
+BuildRequires:  libxslt-tools
+BuildRequires:  meson >= 0.49
 BuildRequires:  openldap2-devel
 BuildRequires:  openssh
 BuildRequires:  pkcs11-helper-devel
@@ -80,6 +82,7 @@ translation-update-upstream
 	-Dhkp-support=true \
 	-Dldap-support=true \
 	-Dkey-sharing=true \
+	-Dmanpage=true \
 	%{nil}
 %meson_build
 

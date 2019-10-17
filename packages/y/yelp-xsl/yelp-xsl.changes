@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Sep  9 14:32:11 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.34.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  2 11:02:06 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.33.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Aug 31 19:01:24 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.33.4:
+  + Update highlight.pack.js to 9.15.8, added awk and shell.
+  + Removed intltool and other build updates.
+  + Updated translations.
+- Drop intltool dependency.
+
+-------------------------------------------------------------------
 Sat Mar 16 22:37:29 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.1:

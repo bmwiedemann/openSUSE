@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 16 08:34:16 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Inject -Wno-error into CFLAGS. It's kinda ridiculous for code
+  that is not maintained upstream to pass -Werror by default and
+  then not catching up. So for now we accept warnings.
+
+-------------------------------------------------------------------
 Tue Aug 13 11:26:39 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop superfluous hard pkgconfig(gtk+-2.0) Requires from

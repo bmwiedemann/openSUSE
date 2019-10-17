@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 16 09:09:38 UTC 2019 - christophe@krop.fr
+
+- Update to version 2.0
+- Add a _service file
+- Run spec-cleaner
+- Fix the license tag. telepathy-accounts-signon is LGPL-2.1-or-later
+
+-------------------------------------------------------------------
 Mon Aug 24 18:49:01 UTC 2015 - tittiatcoke@gmail.com
 
 - Initial package 1.0

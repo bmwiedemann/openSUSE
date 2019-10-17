@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Oct 14 16:40:55 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.0:
+  + gcr-prompt-dialog: Allow the use of mnemonics in the choice
+    label (glgo#GNOME/gcr!22).
+  + Use python3 shebang in ui/icons/render-icons.py
+    (glgo#GNOME/gcr!21).
+  + configure: Use PKG_PROG_PKG_CONFIG instead of reinventing it
+    (glgo#GNOME/gcr!20).
+  + Replace tap-gtester with one that relies on GLib 2.38+ TAP
+    output (glgo#GNOME/gcr!19).
+  + Remove SKS network from keyserver defaults (glgo#GNOME/gcr!18).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Aug 31 20:04:28 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.33.4:
+  + Move from intltool to gettext.
+  + Fix parameter type for signal handler causing stack smashing on
+    ppc64le.
+  + cleanup: Don't use deprecated g_type_class_add_private()
+    anymore.
+  + Fix GIR annotations.
+  + Fix hashtable ordering assumptions.
+  + build: Fix gcr-trust symbols not appearing in GIR, and hence
+    also VAPI.
+  + Update gcr_pkcs11_get_trust_{store|lookup}_slot URI checks.
+  + build: Update tap scripts for Python 3 compat.
+  + Updated translations.
+- Drop intltool dependency, and add gettext.
+
+-------------------------------------------------------------------
 Fri Jan 18 19:44:17 UTC 2019 - bjorn.lie@gmail.com
 
 - Update to version 3.28.1:

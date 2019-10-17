@@ -18,19 +18,19 @@
 
 
 Name:           gsettings-desktop-schemas
-Version:        3.32.0
+Version:        3.34.0
 Release:        0
 Summary:        Shared GSettings Schemas for the Desktop
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://gnome.org/
-Source0:        https://download.gnome.org/sources/gsettings-desktop-schemas/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gsettings-desktop-schemas/3.34/%{name}-%{version}.tar.xz
 
 # PATCH-FEATURE-OPENSUSE gsettings-desktop-schemas-fate324570-Add-key-for-GDM-background-configuration.patch fate#324570, glgo#GNOME/gnome-shell#680 qkzhu@suse.com -- This key is used by gnome-shell-fate324570-Make-GDM-background-image-configurable.patch
 Patch0:         gsettings-desktop-schemas-fate324570-Add-key-for-GDM-background-configuration.patch
 
 BuildRequires:  gobject-introspection-devel >= 1.31.0
-BuildRequires:  meson
+BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(gio-2.0) >= 2.31.0

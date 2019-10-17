@@ -624,4 +624,15 @@
     <comment>Scripted push of project GNOME:Next (forwarded request 695627 from dimstar)</comment>
     <requestid>695685</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>3c23ba854857e605b2665f806693684e</srcmd5>
+    <version>3.34.1</version>
+    <time>1571310496</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.34.1:
+  + Bugs fixed: icons: Unbreak providers without any visual
+    identity.
+  + Updated translations. (forwarded request 738727 from iznogood)</comment>
+    <requestid>738842</requestid>
+  </revision>
 </revisionlist>

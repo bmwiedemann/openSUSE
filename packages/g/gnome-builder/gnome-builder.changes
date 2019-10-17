@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Wed Oct 16 07:48:45 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Disable sysprof for the time being: sysprof is still under
+  security review.
+
+-------------------------------------------------------------------
+Sat Oct  5 08:20:22 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Added gitg to newcomers projects.
+  + Fix user disabling of quick-highlight plugin.
+  + Tweak bottom margin of editors for overlay scrollbars.
+  + Improve guessing of source code languages from basename.
+  + Fix branch selection from clone dialog.
+  + Fix podman invocations to use absolute directory path.
+  + Load search engine when loading a project.
+  + Build system fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 12 09:49:49 CST 2019 - sckang@suse.com
+
+- Update to version 3.34.0:
+  + Support for negative line numbers in "Go To Line" popover.
+  + Terminal workspaces are disabled for 3.34.
+  + Documentation fixes.
+  + Fix Escape usage in various search entries.
+  + Build system fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep  5 15:05:43 NZST 2019 - luke@ljones.dev
+
+- Update to version 3.33.92:
+  + A new Rust GNOME project template has been added in addition to
+    general improvements in the project creation assistant.
+  + Improvements to Vim emulation.
+  + Menu items within the glade designer pages have been fixed.
+  + Search improvements when regex and escape characters are used.
+  + Fixes for various keyboard shortcuts.
+  + Fix disappearance of Flatpak SDK installation popover.
+  + Fix saving of Glade documents when there are errors.
+  + Bug fixes to directory view and html-preview plugins.
+  + Buffer monitor tracking fixes.
+  + Improve drawing of transfer information in popovers.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 15 11:50:24 CEST 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.33.90:
+  + Fix deprecations from recent GLib changes.
+  + Update for recent Sysprof API changes.
+  + Multiple cursors improvements in editor.
+  + Fix meson tests use of IdeRunner.
+  + Sort commands in command-bar by priority.
+  + A new shellcmd plugin to execute shell commands from host,
+    build, or runtime environments including support for keyboard
+    shortcuts.
+  + Fix a number of "execve()" errors in build system usage.
+  + Project template improvements.
+  + Updated translations.
+- Changes from version 3.33.4:
+  + The greeter will disable input while opening a project.
+  + The sysprof plugin includes many new data sources.
+  + Git status in the project tree no longer uses color, instead
+    opting for an open circle for changes, and closed circle for
+    new files (along with bold).
+  + The UI tries to be more consistent in using italics for changes
+    as bold is used for new files in the project tree.
+  + Various project tree styling changes.
+  + Discovery of programs within Flatpak runtimes no longer
+    requires using `which'. The files are located directly using
+    known PATH.
+  + Various FreeBSD compilation fixes with Clang.
+  + Many other bug fixes and improvements.
+- Changes from version 3.33.3:
+  + The sysprof dependency has been bumped to 3.33.3. Note that
+    sysprof 3.33.3 introduces a new org.gnome.Sysprof3 service we
+    rely on, but also provides org.gnome.Sysprof2 for compat with
+    older systems.
+  + Validate application IDs when creating projects.
+  + Improvements to the golang language server integration.
+  + Improved formatting with `format-decls` comand-bar action.
+  + Updates for newcomer workflow.
+  + Improvements to Vim emulation.
+  + Cargo build system integration improvements.
+  + Improved gtkmm templates.
+  + Use --watch-bus when emulating rofiles-fuse to host.
+  + Improvements to completion-window opacity on Ctrl
+    key-press/release.
+  + Window stacking fixes.
+  + Directory names are now indexed and can be used to open a
+    file-browser.
+  + Foundry improvements including unit testing and PTY usage.
+  + Avoid displaying notifications in some situations.
+  + Terminal spawning has been redesigned to make it easier to
+    re-use.
+  + We now load .ui files in the editor by default, you can open
+    them from the designer using "View Design".
+  + GNUmakefile fixes.
+- Replace pkgconfig(sysprof-2) and pkgconfig(sysprof-ui-2) with
+  pkgconfig(sysprof-3) and pkgconfig(sysprof-ui-3) BuildRequires:
+  following upstreams changes.
+- Add pkgconfig(libpcre2-posix) BuildRequires: New dependency.
+- Add basever define, gnome-builder have a include folder in devel
+  package that follows the majoer-minor version changes.
+
+-------------------------------------------------------------------
 Tue Jul 16 17:42:36 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.4:

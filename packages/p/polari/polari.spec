@@ -18,16 +18,16 @@
 
 
 Name:           polari
-Version:        3.32.2
+Version:        3.34.0
 Release:        0
 Summary:        An IRC Client for GNOME
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/IRC
 URL:            https://wiki.gnome.org/Apps/Polari
-Source0:        https://download.gnome.org/sources/polari/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/polari/3.34/%{name}-%{version}.tar.xz
 Source99:       polari-rpmlintrc
+
 BuildRequires:  gjs >= 1.45.0
-BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.43.0
 BuildRequires:  mozjs60
 BuildRequires:  pkgconfig

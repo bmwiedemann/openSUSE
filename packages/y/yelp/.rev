@@ -792,4 +792,12 @@
     <comment>New stable rel (forwarded request 701533 from iznogood)</comment>
     <requestid>701618</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>049a8ff75d3fe4d9fa21cddad5b8fe76</srcmd5>
+    <version>3.34.0</version>
+    <time>1571310254</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736618</requestid>
+  </revision>
 </revisionlist>

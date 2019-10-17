@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sat Oct 12 16:21:51 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.3.1:
+  + Fixed a case where old data was not deleted correctly from the
+    store when inserting new values. This was causing
+    tracker-extract to log errors for multi-disc music albums
+    stored as FLAC files with embedded CUE sheets.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 10 05:53:31 CDT 2019 - mgorse@suse.com
+
+- Update to version 2.3.0:
+  + No changes since 2.2.99.1.
+
+-------------------------------------------------------------------
+Thu Sep  5 18:48:13 CDT 2019 - mgorse@suse.com
+
+- Update to version 2.2.99.1:
+  + Handle circular references in TrackerResource.
+  + Removed stress tests.
+  + Handle application/x-zero-size.
+  + Refactors and cleanups in functional testing infrastructure.
+  + Documentation improvements.
+  + Make tracker_sparql_escape_string() escape single quotes.
+  + Don't make tracker:referenceSource a subproperty of
+    nie:identifier.
+  + Translations: eu.
+- Add trackertestutils to -devel package.
+
+-------------------------------------------------------------------
+Thu Aug 22 16:59:05 CST 2019 - yfjiang@suse.com
+
+- Update to version 2.2.99.0:
+  + Support for storing Musicbrainz metadata in the multimedia
+    ontology.
+  + Doc cleanups.
+  + Test suite improvements.
+  + Build fixes.
+  + Fix detection of files that need writeback.
+  + Fix crashes and invalid memory writes.
+- libtracker-common is built as a static library and only used in
+  build time. So remove it in the %install section.
+- Drop fix-tracker-miner-fs-lto-crash.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Mon Jul 15 10:32:32 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Add fix-tracker-miner-fs-lto-crash.patch and enable

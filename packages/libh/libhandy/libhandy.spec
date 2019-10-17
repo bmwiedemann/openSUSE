@@ -19,13 +19,13 @@
 %define shlib %{name}-0_0-0
 
 Name:           libhandy
-Version:        0.0.10
+Version:        0.0.11
 Release:        0
 Summary:        A GTK+ library to develop UI for mobile devices
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://source.puri.sm/Librem5/libhandy/
-Source0:        %{url}-/archive/v%{version}/%{name}-v%{version}.tar.bz2
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.47.0
@@ -82,7 +82,7 @@ This package provides a catalog for libhandy, to allow the use
 libhandy widgets in Glade.
 
 %prep
-%autosetup -p1 -n %{name}-v%{version}
+%autosetup -p1
 
 %build
 %meson \

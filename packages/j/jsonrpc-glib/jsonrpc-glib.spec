@@ -18,16 +18,16 @@
 
 %define sover 1_0-1
 Name:           jsonrpc-glib
-Version:        3.32.0
+Version:        3.34.0
 Release:        0
 Summary:        Library to communicate with JSON-RPC based peers
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://gitlab.gnome.org/GNOME/jsonrpc-glib
-Source0:        https://download.gnome.org/sources/jsonrpc-glib/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/jsonrpc-glib/3.34/%{name}-%{version}.tar.xz
 
 BuildRequires:  gtk-doc
-BuildRequires:  meson >= 0.40.1
+BuildRequires:  meson >= 0.49.2
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)

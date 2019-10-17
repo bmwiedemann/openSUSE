@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Sep 10 13:51:20 CST 2019 - qkzhu@suse.com
+
+- Update to version 3.34.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep  7 22:03:58 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.33.92:
+  + Support profiling with sysprof.
+  + Improve network reachability check.
+  + Misc. bug fixes and cleanups: glgo#GNOME/polari!125,
+    glgo#GNOME/polari!124, glgo#GNOME/polari!126,
+    glgo#GNOME/polari!127, glgo#GNOME/polari!128,
+    glgo#GNOME/polari!129, glgo#GNOME/polari!131,
+    glgo#GNOME/polari!130, glgo#GNOME/polari!133.
+- Drop unneded hicolor-icon-theme BuildRequires.
+
+-------------------------------------------------------------------
+Tue Sep  3 14:55:38 CST 2019 - yfjiang@suse.com
+
+- Update to version 3.33.2:
+  + Display error message on failure to join room.
+  + Polish the no-results placeholder in userlist.
+  + Allow user-list to take up all available height.
+  + Show a clear indication when offline.
+  + Add a --quit command line option.
+
+-------------------------------------------------------------------
 Sun May 26 08:55:12 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.2:

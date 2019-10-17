@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Oct 16 10:45:43 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix glib-devel dependencies on the typelib files after they were
+  renamed to match the correct names.
+
+-------------------------------------------------------------------
+Wed Oct 16 09:55:21 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add libical-glib3 to baselibs.conf: dependency to evolution.
+
+-------------------------------------------------------------------
+Wed Oct  9 21:08:22 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.0.6
+  * Handle both COUNT and UNTIL in RRULEs
+  * Fix RRULE BYDAY with INTERVAL=2 conflict
+  * Various fuzzification fixes
+  * New publicly available function:
+    icaltimezone_truncate_vtimezone()
+  * Add option to disable building the test suite
+  * Built-in timezones updated to tzdata2019c
+
+-------------------------------------------------------------------
 Fri Oct  4 08:18:14 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use proper grammar in description.
@@ -7,7 +30,7 @@ Fri Oct  4 08:18:14 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 Tue Oct  1 14:48:12 UTC 2019 - Michael Gorse <mgorse@suse.com>
 
 - Build glib and gobject-introspection bindings separately in order
-  to avoid build cycle. 
+  to avoid build cycle.
 - Move gobject-introspection bindings into their own packages.
 - Move libical gir into libical-glib-devel.
 

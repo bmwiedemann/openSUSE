@@ -1,35 +1,37 @@
---- gnome-shell-extensions-3.32.0.orig/extensions/apps-menu/extension.js	2019-03-12 07:05:45.000000000 +0800
-+++ gnome-shell-extensions-3.32.0/extensions/apps-menu/extension.js	2019-03-20 15:52:39.830009264 +0800
-@@ -4,6 +4,8 @@
- const {
-     Atk, Clutter, Gio, GLib, GMenu, GObject, Gtk, Meta, Shell, St
+Index: gnome-shell-extensions-3.33.91/extensions/apps-menu/extension.js
+===================================================================
+--- gnome-shell-extensions-3.33.91.orig/extensions/apps-menu/extension.js
++++ gnome-shell-extensions-3.33.91/extensions/apps-menu/extension.js
+@@ -5,6 +5,8 @@ const {
+     Atk, Clutter, Gio, GLib, GMenu, GObject, Gtk, Meta, Shell, St,
  } = imports.gi;
+ const Signals = imports.signals;
 +const BoxPointer = imports.ui.boxpointer;
 +const AppFavorites = imports.ui.appFavorites;
+ 
  const DND = imports.ui.dnd;
- const Main = imports.ui.main;
- const PanelMenu = imports.ui.panelMenu;
-@@ -59,8 +61,19 @@
+ const ExtensionUtils = imports.misc.extensionUtils;
+@@ -46,8 +48,19 @@ class ApplicationMenuItem extends PopupM
          let textureCache = St.TextureCache.get_default();
          let iconThemeChangedId = textureCache.connect('icon-theme-changed',
-                                                       this._updateIcon.bind(this));
+             this._updateIcon.bind(this));
 +
 +        this.actor.connect('button-press-event', this._onButtonPress.bind(this));
 +        this.actor.connect('popup-menu', this._onKeyboardPopupMenu.bind(this));
 +        this._menu = null;
 +        this._menuManager = new PopupMenu.PopupMenuManager(this);
 +
-         this.actor.connect('destroy', () => {
+         this.connect('destroy', () => {
              textureCache.disconnect(iconThemeChangedId);
-+                if (this._menu) {
-+                    this._menu.destroy();
-+                    this._menu = null;
-+                    this._menuManager = null;
-+                }
++            if (this._menu) {
++                this._menu.destroy();
++                this._menu = null;
++                this._menuManager = null;
++            }
          });
          this._updateIcon();
  
-@@ -75,6 +88,106 @@
+@@ -62,6 +75,106 @@ class ApplicationMenuItem extends PopupM
          };
      }
  

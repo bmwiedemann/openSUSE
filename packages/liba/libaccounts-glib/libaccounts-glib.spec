@@ -1,7 +1,7 @@
 #
 # spec file for package libaccounts-glib
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define typelib typelib-1_0-Accounts-1_0
-%define sover   0
-%define _version VERSION_1.23-8d14b10652b2fe6c25d8ad8334e2d5023d254313
+%define sover   1
+
 Name:           libaccounts-glib
-Version:        1.23
+Version:        1.24
 Release:        0
 Summary:        Account management library for GLib Applications
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          System/Libraries
 Url:            https://gitlab.com/accounts-sso/libaccounts-glib
-Source:         https://gitlab.com/accounts-sso/%{name}/repository/VERSION_%{version}/archive.tar.gz#/%{name}-%{_version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 Source1:        baselibs.conf
-BuildRequires:  autoconf >= 2.64
-BuildRequires:  automake
+
 BuildRequires:  gtk-doc
-BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  pkg-config
 BuildRequires:  python3-gobject
 BuildRequires:  pkgconfig(check) >= 0.9.4
@@ -42,9 +41,9 @@ BuildRequires:  pkgconfig(gobject-2.0) >= 2.35.1
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.30.0
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(pygobject-3.0)
-BuildRequires:  pkgconfig(python2)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(sqlite3) >= 3.7.0
+BuildRequires:  pkgconfig(vapigen)
 
 %description
 This package contains the shared libraries for use by applications.
@@ -55,14 +54,6 @@ Group:          System/Libraries
 
 %description -n %{name}%{sover}
 This package contains the shared libraries for use by applications.
-
-%package -n python-libaccounts
-Summary:        Python bindings for the Account management library
-Group:          Development/Languages/Python
-
-%description -n python-libaccounts
-This package contains the python bindings for the account
-management library.
 
 %package -n python3-libaccounts
 Summary:        Python bindings for the Account management library
@@ -85,7 +76,6 @@ Summary:        Development files for libaccounts-glib
 Group:          Development/Libraries/C and C++
 Requires:       %{name}%{sover} = %{version}
 Requires:       %{typelib} = %{version}
-Requires:       python-libaccounts = %{version}
 Requires:       python3-libaccounts = %{version}
 
 %description devel
@@ -110,57 +100,32 @@ Requires:       %{name}%{sover} = %{version}
 This package contains the tools for the accounts-glib library.
 
 %prep
-%setup -q -n %{name}-%{_version}
+%autosetup -p1
 
 %build
-gtkdocize --copy --flavour no-tmpl
-autoreconf -fi
-%global _configure ../configure
-for python in python2 python3; do
-    mkdir -p build-$python
-    pushd build-$python
-    export PYTHON=$python
-    %configure \
-      --disable-static \
-      --enable-gtk-doc
-    make %{?_smp_mflags}
-    popd
-done
+%meson
+%meson_build
 
 %install
-%make_install -C build-python2
-%make_install -C build-python3/pygobject
-find %{buildroot} -type f -name "*.la" -delete -print
-
-# Remove a Mer specific file.
-rm -f %{buildroot}%{_datadir}/backup-framework/applications/accounts.conf
+%meson_install
 
 %post -n %{name}%{sover} -p /sbin/ldconfig
-
 %postun -n %{name}%{sover} -p /sbin/ldconfig
 
 %files -n %{name}%{sover}
-%defattr(-,root,root)
-%doc AUTHORS COPYING NEWS
+%license COPYING
+%doc NEWS README.md
 %{_libdir}/%{name}.so.%{sover}*
 
 %files -n %{typelib}
-%defattr(-,root,root)
 %{_libdir}/girepository-1.0/Accounts-1.0.typelib
 
-%files -n python-libaccounts
-%defattr(-,root,root)
-%{python_sitearch}/gi/overrides/
-
 %files -n python3-libaccounts
-%defattr(-,root,root)
 %{python3_sitearch}/gi/overrides/
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/%{name}/
-%{_libdir}/%{name}/
-%{_datadir}/%{name}/
+%{_datadir}/gettext/
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 %{_datadir}/gir-1.0/Accounts-1.0.gir
@@ -169,15 +134,11 @@ rm -f %{buildroot}%{_datadir}/backup-framework/applications/accounts.conf
 %{_datadir}/vala/vapi/%{name}.*
 
 %files docs
-%defattr(-,root,root)
 %doc %{_datadir}/gtk-doc/html/%{name}/
 
 %files tools
-%defattr(-,root,root)
 %{_bindir}/ag-backup
 %{_bindir}/ag-tool
-%{_mandir}/man1/ag-backup.1%{?ext_man}
-%{_mandir}/man1/ag-tool.1%{?ext_man}
 %dir %{_datadir}/dbus-1/
 %dir %{_datadir}/dbus-1/interfaces/
 %{_datadir}/dbus-1/interfaces/com.google.code.AccountsSSO.Accounts.Manager.xml

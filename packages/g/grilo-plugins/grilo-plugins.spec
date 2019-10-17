@@ -18,9 +18,9 @@
 
 %define plugin_dir %(pkg-config --variable plugindir grilo-0.3)
 Name:           grilo-plugins
-Version:        0.3.9
+Version:        0.3.10
 Release:        0
-Summary:        Media and metadata plugins for the Grilo media discovering and browsing framework
+Summary:        Media and metadata plugins for the Grilo framework
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://live.gnome.org/Grilo
@@ -43,8 +43,8 @@ BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(goa-1.0) >= 3.17.91
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gom-1.0) >= 0.3.2
-BuildRequires:  pkgconfig(grilo-0.3) >= 0.3.8
-BuildRequires:  pkgconfig(grilo-net-0.3) >= 0.3.8
+BuildRequires:  pkgconfig(grilo-0.3) >= 0.3.10
+BuildRequires:  pkgconfig(grilo-net-0.3) >= 0.3.10
 BuildRequires:  pkgconfig(grilo-pls-0.3)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0)
@@ -60,6 +60,7 @@ BuildRequires:  pkgconfig(oauth)
 BuildRequires:  pkgconfig(rest-0.7) >= 0.7.90
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(totem-plparser) >= 3.4.1
+BuildRequires:  pkgconfig(tracker-sparql-2.0) >= 2.3.0
 Recommends:     %{name}-lang
 # Recommend gupnp-plugin-dleyna (UPnP support)
 Recommends:     gupnp-plugin-dleyna
@@ -92,7 +93,7 @@ Grilo is a framework for browsing and searching media content from
 various sources using a single API.
 
 %package -n grilo-plugin-dleyna
-Summary:        dLeyna/DLNA plugin for the Grilo media framework
+Summary:        DLNA (dLeyna) plugin for the Grilo media framework
 # grilo-plugin-upnp was renamed to dleyna (based on the switch from libupnp to dleyna)
 # the plugin interacts with dLeyna on dbus using com.intel.dleyna-server
 Group:          Productivity/Multimedia/Other
@@ -104,8 +105,8 @@ Provides:       grilo-plugin-upnp = %{version}
 Grilo is a framework for browsing and searching media content from
 various sources using a single API.
 
-This package provides a plugin for accessing content from a UPnP/DLNA
-provider.
+This package provides a plugin for accessing content from a DLNA
+(dLeyna) provider.
 
 %package -n grilo-plugin-youtube
 Summary:        Youtube plugin for the Grilo media framework
@@ -159,7 +160,7 @@ This package provides the development files.
 
 %files
 %license COPYING
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS README.md
 %{_datadir}/help/C/grilo-plugins/
 # Explicitly list plugins
 %{plugin_dir}/libgrlbookmarks.so

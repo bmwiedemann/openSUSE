@@ -16,23 +16,21 @@
 #
 
 
-%define api_major 4
+# don't enable sysprof support by default
+%bcond_with profiler
+
+%define api_major 5
 %define api_minor 0
 %define libmutter libmutter-%{api_major}-%{api_minor}
 Name:           mutter
-Version:        3.32.2+43
+Version:        3.34.1+21
 Release:        0
 Summary:        Window and compositing manager based on Clutter
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
-# We are using source services, so no download url for source
 Source:         %{name}-%{version}.tar.xz
 
-# PATCH-FEATURE-UPSTREAM mutter-iconcache-Support-RGB16_565-format-for-16-bit-color-.patch FATE#323412 bgo#781704 bsc#1024748 vliaskovitis@suse.com -- iconcache: Support RGB16_565 format for 16-bit sessions
-Patch1:         mutter-iconcache-Support-RGB16_565-format-for-16-bit-color-.patch
-# PATCH-FIX-OPENSUSE mutter-xwayland-create-xauthority.patch bsc#1084737 hpj@suse.com -- Create and pass an Xauthority file to Xwayland and session
-Patch2:         mutter-xwayland-create-xauthority.patch
 # PATCH-FIX-OPENSUSE mutter-Lower-HIDPI_LIMIT-to-144.patch fate#326682, bsc#1125467 qkzhu@suse.com -- Lower HIDPI_LIMIT to 144
 Patch3:         mutter-Lower-HIDPI_LIMIT-to-144.patch
 ## SLE-only patches start at 1000
@@ -44,6 +42,7 @@ Patch1001:      mutter-SLE-relax-some-constraints-on-CSD-windows.patch
 Patch1002:      mutter-SLE-bsc984738-grab-display.patch
 
 BuildRequires:  Mesa-libGLESv3-devel
+BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -59,7 +58,7 @@ BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(gnome-desktop-3.0)
 BuildRequires:  pkgconfig(gnome-settings-daemon)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.5
-BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.19.3
+BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.33.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.19.7
 BuildRequires:  pkgconfig(gudev-1.0) >= 232
 BuildRequires:  pkgconfig(json-glib-1.0)
@@ -73,6 +72,10 @@ BuildRequires:  pkgconfig(libudev) >= 136
 BuildRequires:  pkgconfig(libwacom)
 BuildRequires:  pkgconfig(pango) >= 1.2.0
 BuildRequires:  pkgconfig(sm)
+%if %{with profiler}
+BuildRequires:  pkgconfig(sysprof-3)
+BuildRequires:  pkgconfig(sysprof-capture-3)
+%endif
 BuildRequires:  pkgconfig(upower-glib) >= 0.99.0
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.10
 BuildRequires:  pkgconfig(wayland-server) >= 1.13.0
@@ -147,8 +150,6 @@ applications that want to make use of the mutter library.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
 %patch3 -p1
 
 # SLE-only patches and translations.
@@ -167,6 +168,11 @@ translation-update-upstream po mutter
 	-Dclutter_tests=false \
 	-Dtests=false \
 	-Dinstalled_tests=false \
+%if %{with profiler}
+	-Dprofiler=true \
+%else
+	-Dprofiler=false \
+%endif
 	%{nil}
 %meson_build
 
@@ -191,7 +197,6 @@ translation-update-upstream po mutter
 
 # These so files are not split out since they are private to mutter
 %{_libdir}/mutter-%{api_major}/libmutter-clutter-%{api_major}.so.*
-%{_libdir}/mutter-%{api_major}/libmutter-cogl-gles2-%{api_major}.so.*
 %{_libdir}/mutter-%{api_major}/libmutter-cogl-pango-%{api_major}.so.*
 %{_libdir}/mutter-%{api_major}/libmutter-cogl-path-%{api_major}.so.*
 %{_libdir}/mutter-%{api_major}/libmutter-cogl-%{api_major}.so.*
@@ -232,7 +237,6 @@ translation-update-upstream po mutter
 %{_libdir}/mutter-%{api_major}/Cogl-%{api_major}.gir
 %{_libdir}/mutter-%{api_major}/CoglPango-%{api_major}.gir
 %{_libdir}/mutter-%{api_major}/libmutter-clutter-%{api_major}.so
-%{_libdir}/mutter-%{api_major}/libmutter-cogl-gles2-%{api_major}.so
 %{_libdir}/mutter-%{api_major}/libmutter-cogl-pango-%{api_major}.so
 %{_libdir}/mutter-%{api_major}/libmutter-cogl-path-%{api_major}.so
 %{_libdir}/mutter-%{api_major}/libmutter-cogl-%{api_major}.so
@@ -241,7 +245,6 @@ translation-update-upstream po mutter
 %{_libdir}/pkgconfig/mutter-clutter-%{api_major}.pc
 %{_libdir}/pkgconfig/mutter-clutter-x11-%{api_major}.pc
 %{_libdir}/pkgconfig/mutter-cogl-%{api_major}.pc
-%{_libdir}/pkgconfig/mutter-cogl-gles2-%{api_major}.pc
 %{_libdir}/pkgconfig/mutter-cogl-pango-%{api_major}.pc
 %{_libdir}/pkgconfig/mutter-cogl-path-%{api_major}.pc
 

@@ -1,14 +1,12 @@
-Index: gnome-shell-extensions-3.26.0/data/gnome-classic.css
+Index: gnome-shell-extensions-3.33.91/data/gnome-shell-sass/_common.scss
 ===================================================================
---- gnome-shell-extensions-3.26.0.orig/data/gnome-classic.css
-+++ gnome-shell-extensions-3.26.0/data/gnome-classic.css
-@@ -1602,7 +1602,8 @@ StScrollBar {
- 
- .login-dialog {
+--- gnome-shell-extensions-3.33.91.orig/data/gnome-shell-sass/_common.scss
++++ gnome-shell-extensions-3.33.91/data/gnome-shell-sass/_common.scss
+@@ -1916,6 +1916,7 @@ StScrollBar {
+   //reset
    border: none;
--  background-color: transparent; }
-+  background-color: transparent;
-+  background: #2e3436 url(sle-background.png); }
-   .login-dialog .modal-dialog-button-box {
-     spacing: 3px; }
-   .login-dialog .modal-dialog-button {
+   background-color: transparent;
++  background: #2e3436 url(sle-background.png);
+ 
+   $_gdm_fg: #f6f5f4;
+   $_gdm_bg: lighten(#2e3436, 19%);

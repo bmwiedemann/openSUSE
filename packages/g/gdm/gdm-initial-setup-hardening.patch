@@ -1,0 +1,92 @@
+Index: b/daemon/gdm-display.c
+===================================================================
+--- a/daemon/gdm-display.c	2019-10-07 16:56:30.000000000 +0800
++++ b/daemon/gdm-display.c	2019-10-11 18:32:02.962410140 +0800
+@@ -1523,12 +1523,12 @@ can_create_environment (const char *sess
+         return session_exists;
+ }
+ 
+-#define ALREADY_RAN_INITIAL_SETUP_ON_THIS_BOOT GDM_RUN_DIR "/gdm.ran-initial-setup"
++#define BLOCK_INITIAL_SETUP LOCALSTATEDIR "/lib/gdm/block-initial-setup"
+ 
+ static gboolean
+-already_done_initial_setup_on_this_boot (void)
++already_done_initial_setup (void)
+ {
+-        if (g_file_test (ALREADY_RAN_INITIAL_SETUP_ON_THIS_BOOT, G_FILE_TEST_EXISTS))
++        if (g_file_test (BLOCK_INITIAL_SETUP, G_FILE_TEST_EXISTS))
+                 return TRUE;
+ 
+         return FALSE;
+@@ -1624,7 +1624,7 @@ wants_initial_setup (GdmDisplay *self)
+ 
+         priv = gdm_display_get_instance_private (self);
+ 
+-        if (already_done_initial_setup_on_this_boot ()) {
++        if (already_done_initial_setup ()) {
+                 return FALSE;
+         }
+ 
+Index: b/daemon/gdm-manager.c
+===================================================================
+--- a/daemon/gdm-manager.c	2019-10-07 16:56:30.000000000 +0800
++++ b/daemon/gdm-manager.c	2019-10-11 18:32:26.370601206 +0800
+@@ -62,7 +62,7 @@
+ #define GDM_MANAGER_DISPLAYS_PATH GDM_DBUS_PATH "/Displays"
+ 
+ #define INITIAL_SETUP_USERNAME "gnome-initial-setup"
+-#define ALREADY_RAN_INITIAL_SETUP_ON_THIS_BOOT GDM_RUN_DIR "/gdm.ran-initial-setup"
++#define BLOCK_INITIAL_SETUP LOCALSTATEDIR "/lib/gdm/block-initial-setup"
+ 
+ typedef struct
+ {
+@@ -1781,6 +1781,7 @@ on_start_user_session (StartUserSessionO
+         gboolean doing_initial_setup = FALSE;
+         GdmDisplay *display;
+         const char *session_id;
++        int fd = -1;
+ #if defined(ENABLE_WAYLAND_SUPPORT) && defined(ENABLE_USER_DISPLAY_SERVER)
+         g_autofree char *display_session_type = NULL;
+ #endif
+@@ -1813,6 +1814,15 @@ on_start_user_session (StartUserSessionO
+ #endif
+                       NULL);
+ 
++        fd = open(BLOCK_INITIAL_SETUP, O_RDONLY|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC, 0644);
++        if (fd == -1 && errno != EEXIST) {
++                g_warning ("GdmDisplay: Could not write initial-setup-done marker to %s: %s",
++                           BLOCK_INITIAL_SETUP,
++                           strerror(errno));
++        }
++        else {
++                close(fd);
++        }
+         if (doing_initial_setup)
+                 chown_initial_setup_home_dir ();
+ 
+@@ -1833,8 +1843,6 @@ on_start_user_session (StartUserSessionO
+ 
+                 g_object_ref (display);
+                 if (doing_initial_setup) {
+-                        g_autoptr(GError) error = NULL;
+-
+ #if defined(ENABLE_WAYLAND_SUPPORT) && defined(ENABLE_USER_DISPLAY_SERVER)
+                         if (g_strcmp0 (display_session_type, "wayland") == 0) {
+                                 g_debug ("GdmManager: closing down initial setup display in background");
+@@ -1847,16 +1855,6 @@ on_start_user_session (StartUserSessionO
+                                 gdm_display_unmanage (display);
+                                 gdm_display_finish (display);
+                         }
+-
+-                        if (!g_file_set_contents (ALREADY_RAN_INITIAL_SETUP_ON_THIS_BOOT,
+-                                                  "1",
+-                                                  1,
+-                                                  &error)) {
+-                                g_warning ("GdmDisplay: Could not write initial-setup-done marker to %s: %s",
+-                                           ALREADY_RAN_INITIAL_SETUP_ON_THIS_BOOT,
+-                                           error->message);
+-                                g_clear_error (&error);
+-                        }
+                 } else {
+                         g_debug ("GdmManager: session has its display server, reusing our server for another login screen");
+                 }

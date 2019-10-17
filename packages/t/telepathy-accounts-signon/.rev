@@ -7,4 +7,15 @@
     <comment>require by new ktp-accounts-kcm</comment>
     <requestid>330298</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fd810091fa1e889700d8f4cbebc1eb20</srcmd5>
+    <version>2.0</version>
+    <time>1571310511</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0
+- Add a _service file
+- Run spec-cleaner
+- Fix the license tag. telepathy-accounts-signon is LGPL-2.1-or-later</comment>
+    <requestid>738848</requestid>
+  </revision>
 </revisionlist>

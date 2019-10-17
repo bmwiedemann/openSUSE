@@ -1012,4 +1012,12 @@
     <comment>Fix build with LTO</comment>
     <requestid>715812</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>3444465b1f223ad5c89172a465297761</srcmd5>
+    <version>2.3.1</version>
+    <time>1571310374</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>738473</requestid>
+  </revision>
 </revisionlist>

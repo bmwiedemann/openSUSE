@@ -24,6 +24,8 @@ License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/Zenity
 Source0:        https://download.gnome.org/sources/zenity/3.32/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM zenity-Fix-segfault-on-multiple-lists.patch -- src/forms.c: Fix segfault on multiple lists without values.
+Patch0:         zenity-Fix-segfault-on-multiple-lists.patch
 
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig

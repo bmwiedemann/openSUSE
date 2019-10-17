@@ -28,13 +28,13 @@
 %endif
 
 Name:           gnome-settings-daemon
-Version:        3.32.1
+Version:        3.34.1+0
 Release:        0
 Summary:        Settings daemon for the GNOME desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-only
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gnome-settings-daemon
-Source0:        https://download.gnome.org/sources/gnome-settings-daemon/3.32/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 
 # PATCH-FIX-OPENSUSE gnome-settings-daemon-initial-keyboard.patch bsc#979051 boo#1009515 federico@suse.com -- Deal with the default keyboard being set from xkb instead of GNOME
 Patch1:         gnome-settings-daemon-initial-keyboard.patch
@@ -42,8 +42,6 @@ Patch1:         gnome-settings-daemon-initial-keyboard.patch
 Patch2:         gnome-settings-daemon-switch-Japanese-default-input-to-mozc.patch
 # PATCH-FIX-UPSTREAM gnome-settings-daemon-bgo793253.patch bgo#793253 dimstar@opensuse.org -- Fix no-return-in-nonvoid-function
 Patch3:         gnome-settings-daemon-bgo793253.patch
-# PATCH-FIX-UPSTREAM gnome-settings-daemon-round-xft_dpi-to-integer.patch bsc#1086789 glgo#GNOME#gnome-settings-daemon!99 yfjiang@suse.com -- Round the Xft.dpi setting to an integer
-Patch4:         gnome-settings-daemon-round-xft_dpi-to-integer.patch
 
 ## SLE-only patches start at 1000
 # PATCH-FEATURE-SLE gnome-settings-daemon-notify-idle-resumed.patch bnc#439018 bnc#708182 bgo#575467 hpj@suse.com -- notify user about auto suspend when returning from sleep
@@ -66,15 +64,16 @@ BuildRequires:  polkit
 BuildRequires:  translation-update-upstream
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(colord) >= 1.0.2
+BuildRequires:  pkgconfig(colord) >= 1.3.5
 BuildRequires:  pkgconfig(fontconfig)
+BuildRequires:  pkgconfig(gcr-3) >= 3.7.5
 BuildRequires:  pkgconfig(geoclue-2.0) >= 2.1.2
 BuildRequires:  pkgconfig(geocode-glib-1.0) >= 3.10.0
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.53.0
 BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.11.1
-BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.23.3
+BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.33.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.15.3
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(gweather-3.0) >= 3.9.5
@@ -87,11 +86,13 @@ BuildRequires:  pkgconfig(libnotify) >= 0.7.3
 BuildRequires:  pkgconfig(libpulse) >= 2.0
 BuildRequires:  pkgconfig(libpulse-mainloop-glib) >= 2.0
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.36.2
+BuildRequires:  pkgconfig(mm-glib) >= 1.0
 BuildRequires:  pkgconfig(nss)
 BuildRequires:  pkgconfig(pango) >= 1.20.0
-BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.103
+BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.114
+BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
-BuildRequires:  pkgconfig(upower-glib) >= 0.99.0
+BuildRequires:  pkgconfig(upower-glib) >= 0.99.8
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xi)
@@ -145,18 +146,18 @@ contact the settings daemon via its DBus interface.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -N
 translation-update-upstream po %{name}
 gnome-patch-translation-prepare po %{name}
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
+
 # SLE-only patches start at 1000
 %if !0%{?is_opensuse}
 %patch1000 -p1
 %patch1001 -p1
-%patch1002
+%patch1002 -p1
 %patch1003 -p1
 %endif
 
@@ -185,50 +186,74 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wacom.deskt
 %{_datadir}/gnome-settings-daemon/
 %dir %{_libexecdir}/gnome-settings-daemon-3.0/
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-backlight-helper
-%{_libexecdir}/gnome-settings-daemon-3.0/gsd-locate-pointer
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-printer
-#%%{_libexecdir}/gnome-settings-daemon-3.0/gsd-test-*
-# From patch2
-#%%{_libexecdir}/novell-sysconfig-proxy-helper
 %dir %{_libdir}/gnome-settings-daemon-3.0/
 %{_libdir}/gnome-settings-daemon-3.0/libgsd.so
 # Explicitly list all the plugins so we know we don't lose any
 
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-a11y-settings
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.A11ySettings.desktop
-%{_libexecdir}/gnome-settings-daemon-3.0/gsd-clipboard
-%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Clipboard.desktop
+%{_userunitdir}/gsd-a11y-settings.service
+%{_userunitdir}/gsd-a11y-settings.target
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-color
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Color.desktop
+%{_userunitdir}/gsd-color.service
+%{_userunitdir}/gsd-color.target
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-datetime
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Datetime.desktop
+%{_userunitdir}/gsd-datetime.service
+%{_userunitdir}/gsd-datetime.target
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-dummy
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-housekeeping
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Housekeeping.desktop
+%{_userunitdir}/gsd-housekeeping.service
+%{_userunitdir}/gsd-housekeeping.target
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-keyboard
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Keyboard.desktop
+%{_userunitdir}/gsd-keyboard.service
+%{_userunitdir}/gsd-keyboard.target
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-media-keys
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.MediaKeys.desktop
-%{_libexecdir}/gnome-settings-daemon-3.0/gsd-mouse
-%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Mouse.desktop
+%{_userunitdir}/gsd-media-keys.service
+%{_userunitdir}/gsd-media-keys.target
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-power
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Power.desktop
+%{_userunitdir}/gsd-power.service
+%{_userunitdir}/gsd-power.target
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-print-notifications
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.PrintNotifications.desktop
+%{_userunitdir}/gsd-print-notifications.service
+%{_userunitdir}/gsd-print-notifications.target
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-rfkill
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Rfkill.desktop
+%{_userunitdir}/gsd-rfkill.service
+%{_userunitdir}/gsd-rfkill.target
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-screensaver-proxy
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.ScreensaverProxy.desktop
+%{_userunitdir}/gsd-screensaver-proxy.service
+%{_userunitdir}/gsd-screensaver-proxy.target
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-sharing
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Sharing.desktop
+%{_userunitdir}/gsd-sharing.service
+%{_userunitdir}/gsd-sharing.target
 %if %{with smartcard}
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-smartcard
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Smartcard.desktop
+%{_userunitdir}/gsd-smartcard.service
+%{_userunitdir}/gsd-smartcard.target
 %endif
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-sound
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Sound.desktop
+%{_userunitdir}/gsd-sound.service
+%{_userunitdir}/gsd-sound.target
+%{_libexecdir}/gnome-settings-daemon-3.0/gsd-wwan
+%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wwan.desktop
+%{_userunitdir}/gsd-wwan.service
+%{_userunitdir}/gsd-wwan.target
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-xsettings
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.XSettings.desktop
+%{_userunitdir}/gsd-xsettings.service
+%{_userunitdir}/gsd-xsettings.target
 %{_datadir}/glib-2.0/schemas/org.gnome.settings-daemon.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.settings-daemon.peripherals.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.settings-daemon.peripherals.wacom.gschema.xml
@@ -237,9 +262,8 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wacom.deskt
 %{_datadir}/glib-2.0/schemas/org.gnome.settings-daemon.plugins.housekeeping.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.settings-daemon.plugins.media-keys.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.settings-daemon.plugins.power.gschema.xml
-# From patch2
-#%%{_datadir}/glib-2.0/schemas/org.gnome.settings-daemon.plugins.proxy.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.settings-daemon.plugins.sharing.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.settings-daemon.plugins.wwan.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.settings-daemon.plugins.xsettings.gschema.xml
 %{_datadir}/polkit-1/actions/org.gnome.settings-daemon.plugins.power.policy
 # Own the directory since we can't depend on gconf providing them
@@ -254,6 +278,11 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wacom.deskt
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wacom.desktop
 %endif
 %{_udevrulesdir}/61-gnome-settings-daemon-rfkill.rules
+%{_userunitdir}/gnome-session-initialized.target.wants/
+%dir %{_userunitdir}/gnome-session-x11-services.target.wants/
+%{_userunitdir}/gnome-session-x11-services.target.wants/gsd-xsettings.target
+%{_userunitdir}/gsd-wacom.service
+%{_userunitdir}/gsd-wacom.target
 
 %files devel
 %doc AUTHORS ChangeLog

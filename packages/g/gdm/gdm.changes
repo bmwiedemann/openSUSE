@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Tue Oct  8 11:37:53 UTC 2019 - Felix Zhang <fezhang@suse.com>
+
+- Add gdm-initial-setup-hardening.patch: Introduce a persistent
+  state file to prevent gnome-initial-setup from running if any
+  regular users has previously logged into the system, replacing
+  the current runtime state file that pervents initial-setup from
+  running more than once per boot, so as to reduce the security
+  attack surface.
+  Make this fix openSUSE only for now as upstream discussion is
+  heading another way involving more complicated mechanisms
+  (boo#1140851, glgo#GNOME/gnome-initial-setup#76).
+- Rebase gdm-disable-gnome-initial-setup.patch.
+
+-------------------------------------------------------------------
+Mon Oct  7 10:02:43 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + De-duplicate sessions on pure Xorg too.
+  + Fix fast user switching by assuming the login screen VT is
+    always the initial one.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 18 02:59:55 UTC 2019 - Xiaoguang Wang <xwang@suse.com>
+
+- Update gdm-switch-to-tty1.patch: switch tty after plymouth
+  terminates.
+
+-------------------------------------------------------------------
+Wed Sep 11 16:25:58 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep  5 12:30:54 NZST 2019 - luke@ljones.dev
+
+- Update to version 3.33.92:
+  + Fix typo in debug message
+  + Revert vt changing fix, because it exposes logind bug and it
+    wasn't quite right anyway
+  + Ensure login screen gets reaped when user switching
+  + Translation updates
+
+-------------------------------------------------------------------
+Sun Sep  1 01:53:57 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 3.33.90:
+  + Update for changes to gnome-settings-daemon.
+  + initial-setup permissions fix.
+  + allow users to set PATH from ~/.config/environment.
+  + support systemd user sessions.
+  + misc warning fixes.
+  + leak fix in libgdm.
+  + vt changing fix.
+  + drop some deprecations.
+  + drop unused icons.
+  + Translation updates.
+  + Changes in version 3.33.4:
+  + Fix session search directories.
+  + Kill user sessions when stopping gdm.
+  + Add way for sessions to register when they successfully started
+  + Translation updates.
+- Rebased gdm-xauthlocalhostname.patch and
+    gdm-disable-gnome-initial-setup.patch.
+- Drop gdm-fails-to-restart-gnome-shell.patch,
+  gdm-kill-user-session.patch, and
+  gdm-remove-duplicate-sessions.patch: fixed upstream.
+- Drop icons and pixmaps from files.
+
+-------------------------------------------------------------------
 Fri Aug 02 19:05:30 UTC 2019 - bjorn.lie@gmail.com
 
 - Update to version 3.32.0+2:
@@ -34,9 +105,9 @@ Thu May  9 08:58:52 UTC 2019 - Xiaoguang Wang <xwang@suse.com>
 -------------------------------------------------------------------
 Sun Apr 28 07:23:07 UTC 2019 - qzheng <qzheng@suse.com>
 
-- Add gdm-remove-duplicate-sessions.patch: Backport from upstream 
-  commit 187c8515 and 1795bb31 to remove duplicate sessions once, 
-  after all sessions have been processed (boo#1131625, 
+- Add gdm-remove-duplicate-sessions.patch: Backport from upstream
+  commit 187c8515 and 1795bb31 to remove duplicate sessions once,
+  after all sessions have been processed (boo#1131625,
   glgo#GNOME/gdm#473).
 
 -------------------------------------------------------------------

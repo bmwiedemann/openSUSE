@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct  4 11:03:57 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.24.12:
+  + file chooser: allow sorting by file type.
+  + dnd: fix pointer offsets under X11 and Wayland.
+  + broadway: Fix a font problem.
+  + mir Drop this backend.
+  + printing: Get PPD from original host if needed.
+  + a11y: Fix interference with clutter a11y impl.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Sep  4 08:10:36 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.24.11:

@@ -1,7 +1,7 @@
 #
 # spec file for package telepathy-accounts-signon
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,44 +12,41 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           telepathy-accounts-signon
-Version:        1.0
+Version:        2.0
 Release:        0
 Summary:        A mission control plugin for Telepathy
-License:        LGPL-2.1
-Group:          System/GUI/KDE
-Source:         %{name}-%{version}-a4ae42797a9799fcbecb4c15bd9bd408e34c2eeb.tar.gz
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  kf5-filesystem
+License:        LGPL-2.1-or-later
+Group:          Productivity/Networking/Instant Messenger
+URL:            https://gitlab.com/accounts-sso/telepathy-accounts-signon
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  libaccounts-glib-devel
 BuildRequires:  libsignon-glib-devel
+BuildRequires:  meson
 BuildRequires:  telepathy-mission-control-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 A mission control plugin for Telepathy, integrating with libaccounts and libsignon
 to provide IM accounts and authentication. This code is based on Nemo Mobile's
 fork of the plugin from Empathy's ubuntu-online-account support.
 
-
 %prep
-%setup -q -n %{name}-%{version}-a4ae42797a9799fcbecb4c15bd9bd408e34c2eeb
+%setup -q
 
 %build
-  qmake-qt5
-  %make_jobs
+%meson
+%meson_build
 
 %install
-  make install INSTALL_ROOT=%{buildroot}
-  
+%meson_install
 
 %files
-%defattr(-,root,root)
-%doc COPYING COPYING.LGPL NOTES README
+%license COPYING.LGPL
+%doc README.md
 %{_libdir}/mission-control-plugins.0/mcp-account-manager-accounts-sso.so
 
 %changelog

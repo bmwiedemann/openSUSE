@@ -20,17 +20,17 @@
 %bcond_without python2
 %bcond_without python3
 Name:           libpeas
-Version:        1.22.0
+Version:        1.24.0
 Release:        0
 Summary:        GObject-based Plugin Engine
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/Libpeas
 # Source based on git _service
-Source:         %{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/libpeas/1.24/%{name}-%{version}.tar.xz
 #Source:         http://download.gnome.org/sources/libpeas/1.20/%%{name}-%%{version}.tar.xz
-BuildRequires:  gnome-common
-BuildRequires:  intltool
+BuildRequires:  gettext
+BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(gio-2.0) >= 2.32.0
@@ -172,23 +172,24 @@ every application the chance to assume its own extensibility.
 
 %prep
 %setup -q
-translation-update-upstream
+translation-update-upstream po %{name}
 
 %build
-NOCONFIGURE=1 ./autogen.sh
-%configure \
-        --enable-glade-catalog \
-        --enable-gtk-doc \
-%if %{with lua51}
-        --enable-lua5.1 \
+%meson \
+	-Dgtk_doc=true \
+%if !%{with lua51}
+	-Dlua51=false \
 %endif
-        %{nil}
-%make_build
+%if %{with python2}
+	-Dpython2=true \
+%endif
+	%{nil}
+%meson_build
 
 %install
-%make_install
+%meson_install
 find %{buildroot} -type f -name "*.la" -delete -print
-%find_lang %{name} %{?no_lang_C}
+%find_lang %{name}-1.0 %{?no_lang_C}
 
 %post -n libpeas-1_0-0 -p /sbin/ldconfig
 %postun -n libpeas-1_0-0 -p /sbin/ldconfig
@@ -215,7 +216,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %if %{with python2}
 %files loader-python
-%{_libdir}/libpeas-1.0/loaders/libpythonloader.so
+%{_libdir}/libpeas-1.0/loaders/libpython2loader.so
 %endif
 
 %if %{with python3}
@@ -245,6 +246,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/gir-1.0/Peas-1.0.gir
 %{_datadir}/gir-1.0/PeasGtk-1.0.gir
 
-%files lang -f %{name}.lang
+%files lang -f %{name}-1.0.lang
 
 %changelog

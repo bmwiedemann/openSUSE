@@ -22,13 +22,13 @@
 %global __requires_exclude_from ^%{python2_sitearch}/gi/__init__.py|%{python3_sitearch}/gi/__init__.py$
 %define _name   pygobject
 Name:           python-gobject
-Version:        3.32.2
+Version:        3.34.0
 Release:        0
 Summary:        Python bindings for GObject
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/Python
 URL:            https://wiki.gnome.org/Projects/PyGObject/
-Source0:        https://download.gnome.org/sources/pygobject/3.32/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/pygobject/3.34/%{_name}-%{version}.tar.xz
 
 BuildRequires:  %{python_module cairo >= 1.11.1}
 BuildRequires:  %{python_module cairo-devel}

@@ -17,13 +17,13 @@
 
 
 Name:           swell-foop
-Version:        3.32.0
+Version:        3.34.1
 Release:        0
 Summary:        Same Game for GNOME
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
 URL:            https://wiki.gnome.org/Apps/Swell_Foop
-Source0:        https://download.gnome.org/sources/swell-foop/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/swell-foop/3.34/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme

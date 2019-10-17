@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="disabled">
     <param name="scm">git</param>
     <param name="url">https://gitlab.gnome.org/GNOME/mutter.git</param>
-    <param name="revision">gnome-3-32</param>
+    <param name="revision">gnome-3-34</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="changesgenerate">enable</param>
   </service>

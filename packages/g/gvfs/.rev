@@ -1218,4 +1218,12 @@ Also wanted for 13.1</comment>
     <comment>New stable release (forwarded request 716023 from iznogood)</comment>
     <requestid>716279</requestid>
   </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>76d6ce7fb7b6d043cc53fb9bde949f6a</srcmd5>
+    <version>1.42.1</version>
+    <time>1571310402</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 738193 from dimstar)</comment>
+    <requestid>738532</requestid>
+  </revision>
 </revisionlist>

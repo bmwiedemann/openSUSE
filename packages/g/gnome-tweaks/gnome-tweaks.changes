@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Sep 27 11:52:41 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.0:
+  + Update gsettings schema for the Activities Overview Hot Corner.
+  + Fix an assertion with the new libhandy integration.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Aug 31 20:24:00 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.33.90:
+  + Use libhandy so the app displays better on narrower screens.
+  + Drop obsolete Application Menu tweak.
+  + Update GTK+ to GTK.
+  + Adapt to GNOME 3.33/3.34 gsettings schema changes.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Mar 11 09:07:42 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.0:

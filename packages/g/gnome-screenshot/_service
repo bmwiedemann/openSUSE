@@ -3,7 +3,7 @@
     <param name="url">https://gitlab.gnome.org/GNOME/gnome-screenshot.git</param>
     <param name="scm">git</param>
     <!-- Remove revision to get latest commit -->
-    <param name="revision">3.32.0</param>
+    <param name="revision">refs/tags/3.34.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <!-- To get the latest commit use instead:
     <param name="versionformat">3.30.0+%cd.%h</param>

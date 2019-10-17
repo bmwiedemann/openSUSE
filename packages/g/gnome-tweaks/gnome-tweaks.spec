@@ -18,13 +18,13 @@
 
 
 Name:           gnome-tweaks
-Version:        3.32.0
+Version:        3.34.0
 Release:        0
 Summary:        A tool to customize advanced GNOME 3 options
 License:        GPL-3.0-or-later AND CC0-1.0
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Tweaks
-Source0:        https://download.gnome.org/sources/gnome-tweaks/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-tweaks/3.34/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 # GI is needed to have typelib() Requires
@@ -55,7 +55,7 @@ of GNOME 3.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 translation-update-upstream
 # Tiny tweak to shut up rpmlint
 sed -i 's:Pantheon:X-Pantheon:g' */org.gnome.tweaks.desktop.in

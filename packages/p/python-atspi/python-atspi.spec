@@ -19,13 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define _name   pyatspi
 Name:           python-atspi
-Version:        2.32.1
+Version:        2.34.0
 Release:        0
 Summary:        Python bindings for the Assistive Technology Service Provider Interface
 License:        LGPL-2.0-only
 Group:          Development/Libraries/Python
 URL:            http://www.gnome.org/
-Source0:        https://download.gnome.org/sources/pyatspi/2.32/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/pyatspi/2.34/%{_name}-%{version}.tar.xz
 
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module gobject >= 2.90.1}

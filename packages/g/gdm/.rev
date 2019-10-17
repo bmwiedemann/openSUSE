@@ -1631,4 +1631,12 @@
     <comment> (forwarded request 720728 from iznogood)</comment>
     <requestid>720998</requestid>
   </revision>
+  <revision rev="218" vrev="1">
+    <srcmd5>2e305a0c973613ab4d08de50e1756e36</srcmd5>
+    <version>3.34.1</version>
+    <time>1571310286</time>
+    <user>dimstar_suse</user>
+    <comment>New stable + patch</comment>
+    <requestid>737582</requestid>
+  </revision>
 </revisionlist>

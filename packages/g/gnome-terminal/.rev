@@ -1000,4 +1000,1185 @@
     <comment> (forwarded request 701216 from iznogood)</comment>
     <requestid>701610</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>23e8f6e0295fa6a9185c8ca3d7e006ca</srcmd5>
+    <version>3.34.2</version>
+    <time>1571310348</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.34.2:
+  + Updated translations.
+- Update to version 3.34.1:
+  + client: legacy: Block one more undesirable environment
+    variable.
+  + build: Add required gio-unix-2.0 dependency.
+  + window: Ignore resize if fullscreen.
+  + Updated translations.
+- Update to version 3.34.0:
+  + build: Fix ChangeLog rule to work on a git worktree.
+  + Updated translations.
+- Update to version 3.33.90:
+  + Updated translations.
+- Changes from version 3.33.3:
+  + profile: Add hidden BiDi and shaping preferences.
+  + Updated translations.
+- Update to version 3.32.2:
+  + prefs: Plug a mem leak.
+  + headerbar: Disconnect menu model on dispose.
+  + Updated translations.
+- Update to version 3.32.1:
+  + build: Fix ChangeLog rule to work on a git worktree.
+  + headermenu: Add placeholder item for win.set-title.
+  + help:
+    - Update application screenshot for 3.32; remove localized
+      versions.
+    - Update application icon for 3.32.
+    - Fix pref-profiles.page to validate.
+  + window: Show last tab's accel in the tab menu.
+  + Updated translations.
+- Update to version 3.32.0:
+  + Updated translations.
+- Update to version 3.31.92:
+  + app: Automatically determine if headerbars should be used. If
+    the XDG_CURRENT_DESKTOP env var contains either GNOME or
+    GNOME-Classic, use headerbars, unless the user has explicitly
+    set the pref.
+  + prefs: Hide default-menubar setting when headerbars are used.
+    As headerbars combine the functionality of titlebar, toolbar
+    and menubar, they generally replace (not supplement) those
+    elements.
+  + Updated translations.
+- Update to version 3.31.90:
+  + accels: Add shortcut for toggling the primary menu.
+  + app:
+    - Refactor dynamic menu creation.
+    - Add env var to control headerbar setting.
+    - Only use headerbars on dialogues when the corresponding gtk
+      setting is set.
+  + build: Add -Wvla.
+  + client: legacy: Print errors to stderr.
+  + headerbar:
+    - Allow opening new windows by control-clicking new-tab button.
+    - Add some spacing to primary menu.
+  + prefs: Remove extra frames when using headerbars.
+  + prefs: Move action widgets into titlebar when using headerbars.
+  + Replace Bugzilla by Gitlab URL in DOAP file.
+  + search-popover: Set titlebar when headerbars are used.
+  + window:
+    - Expose more actions in primary menu.
+    - Support profiles from headerbar.
+    - Add primary menu to headerbar.
+    - Expose find action in headerbar.
+    - Move new-tab button into headerbar.
+  + Updated translations.
+- Update to version 3.31.0:
+  + app: Remove app menu.
+  + help: Comment out tab dragging description.
+  + icon: Update app icon.
+  + window:
+    - Fix zoom-out sensitivity.
+    - Add headerbar infrastructure.
+  + Updated translations. 
+- Drop upstream fixed patches:
+  + gnome-terminal-Comment-out-tab-dragging-description.patch.
+  + gnome-terminal-window-Fix-zoom-out-sensitivity.patch: window.
+- Add upstream bug fix patches:
+  + gnome-terminal-Comment-out-tab-dragging-description.patch:
+    help: Comment out tab dragging description.
+  + gnome-terminal-window-Fix-zoom-out-sensitivity.patch: window:
+    Fix zoom-out sensitivity.
+- Update to version 3.30.2:
+  + prefs: Hide the new terminal mode setting when disunified.
+  + Updated translations.
+- Update to version 3.30.1:
+  + accels: Use correct action name to set menubar visibility.
+  + app: Make new-terminal menu a hidden pref.
+  + Updated translations.
+- Update to version 3.30.0:
+  + build: Suppress vte deprecation warnings
+  + client: legacy:
+    - Validate startup ID as UTF-8
+    - Transmit startup id also when opening preferences
+    - Make wait return when the server exits
+  + desktop:
+    - Explicitly call with --window
+    - Add New Window and Preferences actions
+  + screen:
+    - Unregister the TerminalReceiver after dispose
+    - Don't emit child-exited on closing
+  + server: Add comment about pending dbus signals
+  + Updated translations.
+- Update to version 3.28.2:
+  + client: legacy: Fix output commenting.
+  + prefs: editor: Translate encoding names (bgo#795358).
+  + Updated translations.
+- Drop gnome-terminal-fix-output-commenting.patch and
+  gnome-terminal-translate-encoding-names.patch: Fixed upstream.
+- Add gnome-terminal-fix-output-commenting.patch: client: legacy:
+  Fix output commenting. Make sure each line starts with '#' even
+  if the message contains embedded newlines.
+- Add gnome-terminal-translate-encoding-names.patch: prefs: editor:
+  Translate encoding names (bgo#795358).
+- Update to version 3.28.1:
+  + window: Do not change New Terminal's behavior on right click
+    (bgo#794402).
+  + client: legacy: Fix prgname (bgo#793775).
+  + window: Don't misplace the notebook popup on Wayland
+    (bgo#794935).
+  + window: Remove redundant function call (bgo#794935).
+  + Plugs some memory leaks.
+  + Updated translations.
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+- Update to version 3.28.0:
+  + Updated translations.
+- Update to version 3.27.92:
+  + client: legacy: Error out when calling --preferences from
+    within gnome-terminal.
+  + client: legacy: Make --wait respect the pref whether to open a
+    window or tab.
+  + help: Fix various grammar issues and missing words.
+  + prefs: editor: Remove translatable placeholder.
+  + screen: No need to set PWD anymore, it's done by VTE now.
+  + window: Fix Clear Highlight to actually clear the highlight.
+  + window: Save contents to the Documents folder by default.
+  + Bugs fixed: bgo#731462, bgo#758452, bgo#792622, bgo#792885,
+    bgo#793382, bgo#793519, bgo#793558.
+  + Updated translations.
+- Modernize spec-file by calling spec-cleaner
+- Update to version 3.27.90:
+  + app: Revise the logic for having an appmenu (bgo#793135).
+  + all: Improve mnemonic handling
+  + Make mnemonics work in the Find and Preferences windows
+    (bgo#792978).
+  + prefs: editor:
+    - Rename General profile tab to Text, reorganize its contents
+      (bgo#722114).
+    - Use the same mnemonic for the two Reset buttons (bgo#791968).
+    - Make sure mnemonics don't conflict.
+  + help: Various fixes and improvements (bgo#792529).
+  + menubar: Change the Find entry back to Search (bgo#792912).
+  + profile: editor:
+    - More logical order for notebook tabs (bgo#792797).
+    - Move &quot;Allow blinking text&quot; to the bottom (bgo#792794).
+    - Demote &quot;Rewrap on resize&quot; to a hidden pref (bgo#792532).
+    - Fix spacing at the top of the Compatibility tab.
+  + schemas: Remove obsolete &quot;encodings&quot; entry (bgo#792607).
+  + Bugs fixed: bgo#722114, bgo#792760, bgo#792625, bgo#792533,
+    bgo#792503, bgo#791968 and bgo#793179.
+  + Updated translations.
+- Update to version 3.27.4:
+  + build: Fix compilation with Clang.
+  + client: legacy: Fix --version output.
+  + menubar: Remove ellipses from preference entries.
+  + profile: editor:
+    - Add &quot;Allow blinking text&quot; preference.
+    - Add &quot;Cell spacing&quot; preferences.
+    - Add &quot;Cursor blinking&quot; preference.
+    - Add window title to highlight color pickers.
+    - Align two combo boxes.
+    - Bypass palette mode for all colour pickers.
+    - Only show monospace fonts.
+    - Repaint the table when Enable shortcuts is toggled.
+    - Replace GtkTable with GtkGrid.
+    - Revert Tango palette's black to match the default.
+    - Specify color schemes in hex.
+    - Use zero based palette indices.
+  + regex:
+    - Allow apostrophes in URLs, except when enclosed between them.
+    - Allow balanced pairs of square brackets in URLs.
+    - Disallow terminating semicolon in URLs.
+  + search:
+    - Close the dialog on Escape key.
+    - Make reverse the default direction.
+    - Rename the label to Find.
+  + window:
+    - Maintain logical window size when line or char spacing
+      changes.
+    - Remove popup accelerators also in submenus.
+  + Bugs fixed: bgo#448044, bgo#559990, bgo#579964, bgo#763980,
+    bgo#771165, bgo#774619, bgo#790318, bgo#791312, bgo#791967,
+    bgo#791968, bgo#791969, bgo#792057, bgo#792083, bgo#792095,
+    bgo#792103, bgo#792139, bgo#792256, bgo#792319.
+  + Updated translations.
+- Update to version 3.27.3:
+  + Updated translations.
+- Update to version 3.27.1:
+  + When the server specified by the environment doesn't exist,
+    fall back to the default.
+  + Improve --tab behaviour to open a new tab in an existing
+    window.
+  + Add:
+    - --wait to make the client wait until the child process
+      exits, and then exit the client with the same exit status.
+    - Verbosity control options: --quiet/-q and --verbose/-v.
+  + Remove vala client.
+  + Port from GtkAction and GtkMenuManager to GAction and GMenu
+    (bgo#745329).
+  + Deactivate popup menus when the window closes (bgo#789927).
+  + Nautilus: Use the default display (lp#1722121).
+  + Don't try to open a non-default display (bgo#700267 bgo#719438
+    bgo#737694).
+  + Fix bugs: bgo#789692, bgo#789444, bgo#789356, bgo#733210.
+  + Updated translations.
+- Update Url to https://wiki.gnome.org/Apps/Terminal: current
+  Terminal's web page.
+- Point fdupes to the data directory instead of the build root,
+  which is a practice that must be avoided.
+- Drop %glib2_gsettings_schema_* and %desktop_database_*
+  post/postun scriptlets: RPM file triggers now does their work.
+- Drop vala BuildRequires: no longer needed now that the vala
+  client has been removed upstream.
+- Add pkgconfig(gio-unix-2.0) BuildRequires: note that it was
+  already being used since it was being pulled with gio-2.0
+  pkgconfig that lives in the same devel package.
+- Drop gnome-terminal-nb-translation.patch: Fixed upstream.
+- Add gnome-terminal-nb-translation.patch: Add updated Norwegian
+  bokmål translation.
+- Run spec-cleaner, modernize spec, use autosetup and make_build
+  macros.
+- Stop handling glib2_gsettings_schema_post(un) and
+  desktop_database_post(un) in post(un), we have file-triggers
+  taking care of this for us now.
+- Stop passing no longer needed suse_update_desktop_file macro.
+- Update to version 3.26.2:
+  + build: Don't call glib-genmarshal with both --header and
+    --body (bgo#788031).
+  + window: Fix tiled check (bgo#789356).
+  + Updated translations.
+- Update to version 3.26.1:
+  + Updated translations.
+- Update to version 3.26.0:
+  + Updated translations.
+- Update to version 3.25.92:
+  + util:
+    - Set application on about dialogue (bgo#786427).
+    - Strip off hastname from file:// URIs (bgo#781800).
+    - Handle invalid UTF-8 in hypersink tooltip (bgo#786814).
+  + Now using tr command to replace strings (bgo#782894).
+  + Added accel for Copy as HTML (bgo#365121).
+  + Added support for copying the selection to clipboard as HTML
+    (bgo#365121).
+  + Updated translations.
+- Update to version 3.25.1:
+  + Add support for OSC 8 hyperlinks (HTML-like anchors).
+  + util: Refuse to open file://some-other-host/path/to/file URIs.
+  + regex: Allow balanced pairs of parentheses in URLs.
+  + Fix a typo in comments.
+  + Updated translations.
+- Update to version 3.24.2:
+  + Updated translations.
+- Update to version 3.24.1:
+  + Updated translations.
+- Update to version 3.24.0:
+  + Updated translations.
+- Update to version 3.23.90:
+  + all: Use nice quotes.
+  + client: legacy:
+    - Warn on deprecated exec options.
+    - Add -- to usage line (bgo#774595).
+    - Remove option context description.
+  + screen:
+    - Use async spawning (bgo#772354).
+    - Fix check for foreground process.
+  + search provider: Fix incorrect assumption (bgo#1398958).
+  + Modernize metainfo files.
+  + Updated translations.
+- Drop obsolete clean section.
+- Update to version 3.22.1:
+  + screen:
+    - Remove WINDOWID env var on non-X11.
+    - container: Set widget CSS name (bgo#772134).
+  + client: legacy:
+    - Warn if no startup ID provided.
+    - Add VTE version and features to --version output
+      (bgo#771960).
+  + Updated translations.
+- Update to version 3.22.0:
+  + Updated translations.
+- Update to version 3.21.92:
+  + search: Always set PCRE2_MULTILINE flag. It's required by vte.
+  + window:
+    - Fix CSD size calculations with long titles.
+    - Make inspector available in non-debug builds.
+  + screen: Add unittest for very long regex match.
+  + client: legacy: Add command line option to show the
+    preferences.
+  + server: Make prefs dialogue an app window.
+  + Updated translations.
+- Drop gnome-terminal-fix-csd-calculation.patch: Fixed upstream
+- Drop gnome-terminal-notebook-avoid-crash-on-tab-DND.patch: It was
+  reverted upstream, and drag and drop of tabs disabled.
+- Conditionally apply translations-update-upstream BuildRequires
+  and macro for non-openSUSE only.
+- Add gnome-terminal-fix-csd-calculation.patch: Revert window: Fix
+  CSD size calculations with long titles. Taken from upstream git.
+- Update to version 3.21.90:
+  + window: Fix CSD size calculations with long titles.
+  + notebook: Make tabs nondetachable.
+  + Revert &quot;notebook: avoid crash on tab DND&quot;.
+  + appdata: Use *.metainfo.xml as extension for the nautilus
+    add-on.
+  + appdata: Add kudos for HiDpi, HighContrast and SearchProvider.
+  + all: Remove GRegex use and require PCRE2.
+  + window: Make geometry work better with gtk 3.20.
+  + window: Support animated and touch scrolling.
+  + Add 'Detach Terminal' action to tab context menu.
+  + Add Language headers to po files.
+  + Updated translations.
+- Enable pkconfig(pcre-2.8) BuildRequires: Now mandatory
+  dependency, also drop disabled --with-pcre, no longer needed.
+- Drop gnome-terminal-resize-fix.patch
+  gnome-terminal-profile-editor-initialize-palette.patch: Fixed
+  upstream.
+- Keep gnome-terminal-notebook-avoid-crash-on-tab-DND.patch:
+  Upstream reverted it, but we want it anyway.
+- Add gnome-terminal-notebook-avoid-crash-on-tab-DND.patch and
+  gnome-terminal-profile-editor-initialize-palette.patch: Two
+  cherrypicked bugfix commits from upstream stable branch
+  (bgo#768850, bgo#769161, boo#980474).
+- Update gnome-terminal-resize-fix.patch with latest revision of
+  the patches, still not accepted upstream (bgo#760944 bsc#987859).
+- Add gnome-terminal-resize-fix.patch: Fix resizing of
+  gnome-terminal, patches from upstream bug (bgo#760944).
+- Remove gnome-core obsoletes; it is from 2002 or so and not
+  relevant now.
+- Drop gnome-terminal-transparency-fix-for-broken-themes.patch and
+  gnome-terminal-transparency.patch: We will not be bringing these
+  back into the package as they brought various issues, and we do
+  not want to chase upstreams releases for rebaseing.
+- Following the above: Drop libtool BuildRequires and disabled
+  autreconf call: no longer needed since the patch needing it in
+  the past is already dropped.
+- Update to GNOME 3.20.2  Fate#318572
+- Update to version 3.20.2:
+  + server: Add a systemd user service (bgo#759115).
+  + window:
+    - Fix relief on tab menu button.
+    - Set widget CSS name.
+  + nautilus: Fix handing sftp folders with % character.
+  + Fix GSettings default value translations.
+  + Updated translations.
+- Update to GNOME 3.20  Fate#318572
+- Drop 0001-build-Add-cleanup-functions.patch,
+  0001-all-Do-not-use-s-format-with-g_variant_get.patch,
+  0001-profile-Fix-dummy-settings-patch.patch,
+  0001-utils-Fix-double-free-in-error-path.patch: fixed upstream.
+- Update to version 3.20.1:
+  + l10n: Mark a string for translation (bgo#763911).
+  + Updated translations.
+- Update to version 3.20.0:
+  + Updated translations.
+- Update to version 3.19.92:
+  + Updated translations.
+- Update to version 3.19.91:
+  + Bugs fixed: bgo#732128, bgo#734875, bgo#747316, bgo#756038,
+    rh#1310892.
+  + Updated translations.
+- Due to pcre2 support beeing disabled in vte, disable
+  pkconfig(pcre-2.8) BuildRequires, and pass --without-pcre2 to
+  configure.
+- Update to version 3.19.90:
+  + search: Revert to using a window instead of a popover.
+  + profile:
+    - Increase maximum of default column prefs.
+    - Don't compare alpha colour components.
+    - Add cursor colour prefs.
+    - editor:
+      . Add highlight colour prefs.
+      . Make it clearer what the colour pickers select.
+      . Don't compare alpha colour components.
+      . Unset colour alpha component.
+      . Add cursor colour prefs.
+      . Try to fix the UI file.
+      . Use new show-editor property on GtkColorButton.
+  + client:
+    - legacy:
+      . Reimplement deprecated --title option.
+      . --geometry option is unsupported on gtk+ &gt;= 3.19.5.
+  + window: Try again to find and fix a clipboard related crash.
+  + util:
+    . Fix compilation error in previous commit.
+    . Unset colour alpha component.
+  + screen: Don't use extra colours when using theme colors.
+  + Add more appdata.
+  + Updated translations.
+- Add pkgconfig(libpcre2-8) BuildRequires and stop passing
+  --without-pcre2 to configure.
+- Alter how we run %suse_update_desktop_file macro, upstream now
+  ships a correct .desktop file.
+- Drop disabled patch gnome-terminal-dark-theme.patch: Dark theme
+  restored upstream, so no longer needed.
+- Update to version 3.19.2:
+  + Bugs fixed: bgo#711059, bgo#755825, bgo#757314, bgo#757512.
+  + Updated translations.
+- Drop appdata-tools BuildRequires: validating the appdata's
+  validity is upstreams task.
+- Drop BuildRequires(gtk-2.0), we don't need gtk-builder-convert
+  anymore.
+- Enable back gconf2 migration code when building package for SLE
+  and disable gconf2 BuildRequires when building for openSUSE.
+- Update to version 3.19.1:
+  + Updated translations.
+- Pass --without-pcre2 to configure, we are missing it in openSUSE
+- Update to version 3.18.2:
+  + Updated translations.
+- Drop gconf2 Requires(pre), and pass --disable-migration to
+  configure. We do not expect any holdouts to migrate any longer.
+- Stop running autoreconf as patches are already disabled.
+- Update to version 3.18.1:
+  + notebook: Don't change show-tabs when going to empty notebook.
+  + window:
+    - Exit early from screen-removed handler for now empty
+      notebook.
+    - Pass tab switching keys to the terminal for tabless windows.
+  + profile: editor: Make colour buttons show their dialogue in
+    editor mode.
+  + i18n: Fix and mark incorrectly translated string as fuzzy.
+  + server: Use distinct exit code for gtk_init failure.
+  + Updated translations.
+- Update to version 3.18.0:
+  + Profile: Only use dconf when the settings backend is dconf.
+  + Updated translations.
+- Update to version 3.17.91:
+  + build:
+    - Don't include empty CSS.
+    - Include missing terminal.common.css in tarballs.
+  + Update translations.
+- Rebase gnome-terminal-dark-theme.patch and
+  gnome-terminal-transparency.patch, but do not yet apply them
+  (there are some behavioural errors with them at the moment).
+- Update to version 3.17.90:
+  + window:
+    - Move tabs menu into an arrow button on the notebook
+      (bgo#745329).
+    - Add new tab button to notebook action area (bgo#138020).
+    - Attach popup menus to their parent widgets (bgo#750755).
+  + notebook:
+    - Add API to create a box for the action buttons.
+    - Add pref to always show tabs bar.
+    - Add API to set the tab policy when to show the tabs bar.
+  + widgets: Remove close button CSS.
+  + app:
+    - Add CSS loading infrastructure.
+    - Let GtkApplication load the app menu automatically
+      (bgo#734791).
+  + util:
+    - Remove unused function.
+    - Add utility to parse /etc/shells.
+  + gterminal: Fix completion argument parsing.
+  + server:
+    - Stay around a bit after last window closes.
+    - Exit on unsupported locale.
+    - Simplify deprecated object property warning suppression
+      (bgo#749195).
+  + build:
+    - Update macros from upstream.
+    - Fix config.h include order.
+    - Use stable versions.
+    - Define min/max required/allowed glib and gtk+ versions.
+  + screen:
+    - Get process arguments without /proc on FreeBSD and OpenBSD.
+    - Update colors at the right spot (bgo#746425).
+  + Add new keyword 'cmd' to .desktop (bgo#749239).
+  + profile: editor: Make the profile preferences a GtkWindow.
+  + prefs:
+    - Make profile editors not transient.
+    - Make the preferences a GtkWindow (bgo#748342).
+  + client: legacy: Fall back to default profile (bgo#747106).
+  + profile: prefs: Remove update-records pref.
+  + Updated translations.
+- Update to version 3.16.2:
+  + Bump vte dependency.
+  + Updated translations.
+- Update to version 3.16.1:
+  + Make the ActiveTerminal field in the config file format work.
+  + client: legacy: Fall back to default profile (bgo#747106).
+  + Updated translations.
+- Add gnome-terminal-dark-theme.patch: Allow gnome-terminal to have
+  dark theme preferance.
+- Add libtool BuildRequires and call autoreconf as the above patch
+  touches the buildsystem.
+- Update to version 3.16.0:
+  + client: let DISPLAY flow through (bgo#746358).
+  + Updated translations.
+- Update to version 3.15.92:
+  + Bugs fixed: bgo#685742, bgo#733210, bgo#735242.
+  + Updated translations.
+- Update to version 3.15.90:
+  + tab-label: Rely on new GTK+ API to center the label
+    (bgo#743663).
+  + profile: Remove the &quot;Command&quot; sub-heading (bgo#744327).
+  + gterminal: Add more profile functions: allow adding, removing
+    and cloning a profile.
+  + window: Add tab position setting (bgo#75420#c25).
+  + Bugs fixed: bgo#739410, bgo#730632, bgo#743395. bgo#743663,
+    bgo#742304.
+  + Updated translations.
+- Rebase gnome-terminal-transparency.patch.
+- Update to version 3.15.0:
+  + notebook: Make tabs nondetachable.
+  + window:
+    - Focus the terminal if only a single tab remains in a
+      window (bgo#742422).
+    - window: Update size on tab title change (bgo#732588).
+  + Remove dark theme pref (bgo#707206, bgo#742040, bgo#742333,
+    bgo#649358).
+  + screen: Fix crash with empty child process command line
+    (bgo#742560).
+  + help:
+    - Update desc for text selection (bgo#742304).
+    - Fix window theme pref instructions (bgo#742040).
+    - fix tab/window pref instructions (bgo#742119).
+  + build: Use portable shell in configure.ac.
+  + client: Hide obsolete --title option. Accept it for
+    compatibility, but ignore it (bgo#740188).
+  + server:
+    - Sanitise the environment.
+    - Reorder atfork/setrlimit calls.
+    - Increase RLIMIT_NOFILE to the maximum allowed (bgo#646098).
+  + Updated translations.
+- Drop gnome-terminal-fix-crash.patch: fixed upstream.
+- Rebase gnome-terminal-transparency.patch.
+- Add gnome-terminal-fix-crash.patch: Fix crash with empty child
+  process command line (bgo#742560).
+- Add gnome-terminal-transparency.patch: Allow gnome-terminal to be
+  set to transparent.
+- Add gnome-terminal-transparency-fix-for-broken-themes.patch:
+  Ensure that the window itself always has a background. Some
+  themes don't specify a widget background color.
+- Update to version 3.14.2:
+  + Updated translations.
+- Update to version 3.14.1:
+  + Updated translations.
+- Update to version 3.14.0:
+  + Remove word-chars setting help (bgo#727774).
+  + Updated translations.
+- Update to version 3.13.92:
+  + help:
+    - Review pref-scrolling.
+    - Add ambiguous character width (bgo#727555).
+    - Document encodings per profile (bgo#727555).
+  + Flag gnome-terminal as a multiple-window app (bgo#735484).
+  + Allow disabling shortcuts (bgo#731933).
+  + Updated translations.
+- Update to version 3.13.90:
+  + Profile settings UI update.
+  + Updated translations.
+- Update to version 3.13.2:
+  + Bugs fixed: bgo#730850, bgo#730389, bgo#730936, bgo#731998.
+- Changes from version 3.13.1:
+  + Bugs fixed: bgo#724110, bgo#729394, bgo#729597, bgo#730390,
+    bgo#730498, bgo#730389.
+  + Updated translations.
+- Add vala BuildRequires: new dependency.
+- Update to version 3.13.0:
+  + Work with new vte 2.91 API.
+  + Bug fixes and improvements.
+  + Updated translations.
+- Update to version 3.12.3:
+  + Important bug fixes.
+  + Bug fixes.
+  + Updated translations.
+- Update to version 3.12.2:
+  + window: Fix parent class in template definition.
+  + Fix su/sudo detection.
+  + Updated translations.
+- Update to version 3.12.1:
+  + Fix shortcut key disabling (bgo#728121).
+  + Fix app menu New Terminal item (bgo#726942).
+  + Updated documentations.
+  + Updated translations.
+- Add
+  0001-build-Add-cleanup-functions.patch,
+  0001-all-Do-not-use-s-format-with-g_variant_get.patch,
+  0001-profile-Fix-dummy-settings-patch.patch,
+  0001-utils-Fix-double-free-in-error-path.patch: fixes for crashes
+  from upstream (bgo#708198, bgo#724264).
+- Update to version 3.12.0:
+  + Build fixes.
+  + Docs fixes (bgo#725252).
+  + Add appdata file (bgo#708448).
+  + Updated translations.
+- Add appdata-tools BuildRequires: new dependency to validate the
+  appdata files.
+- Update to version 3.11.3:
+  + terminal-app: Use correct variable for search provider.
+  + Updated translations.
+- Add gnome-shell BuildRequires: Needed to build search provider.
+- Update to version 3.11.2:
+  + client: legacy: We use application IDs instead of bus names.
+  + terminal-nautilus: initiate ssh with -t.
+  + all: Do not use '&amp;s' format with g_variant_get.
+  + screen:
+    - Fix word-chars setting.
+    - Allow getting the name of the current foreground process.
+    - Allow man: links containing hyphens.
+    - Add API to map UUIDs to screens.
+    - container:
+      . Use a GtkOverlay for the info bar.
+      . Remove scrolled window code.
+      . Fix parent class.
+  + profile: Add rewrap-on-resize.
+  + build:
+    - Drop support for dconf 0.12.
+    - help: Use no-lc-dist yelp.
+  + server: Add a search provider.
+  + app: Add setting to disable shell integration.
+  + accels: Add find items to accel editor.
+  + Remove last bits of GTK_STOCK.
+  + Replace deprecated mallard markup and namespace.
+  + Updated translations.
+- Create new subpackage gnome-shell-search-provider-gnome-terminal,
+  containing the new GNOME Shell search provider.
+- Update to version 3.11.0:
+  + Build fixes.
+  + Code cleanup.
+  + Let applications handle clicks in mouse tracking mode
+    (bgo#13299).
+  + Remove 'visible when necessary' pref value (bgo#712331).
+  + Documentation fixes (bgo#711164).
+  + Updated translations.
+- Update to version 3.10.2 (bnc#849913):
+  + Updated translations.
+- Update to version 3.10.1:
+  + Minor bugfixes.
+  + Updated translations.
+- Update to version 3.10.0:
+  + Updated translations.
+- Update to version 3.9.92:
+  + Remove UUID from profile list display (bgo#704097).
+  + Remove input method submenu from context menu.
+  + Make terminal close keybinding work for single tab windows
+    (bgo#701354).
+  + Fix a crash while waiting for clipboard data (rh#977010).
+  + Fix output of --disable-factory option (bgo#707899).
+  + Fix desktop file categories (bgo#707552).
+  + Misc bug and build fixes.
+  + Updated translations.
+- Pass --with-nautilus-extension to configure: the extensions is
+  now disabled by default, but we keep on providing it in a sep.
+  package.
+- Update to version 3.9.90:
+  + Build fixes and cleanup.
+  + Portability fixes.
+  + Migration fixes.
+  + Enable menu access key by default again.
+  + Enable nautilus extension by default.
+  + Remove input method submenu from context menu.
+  + Add Quit and New Terminal items to app menu.
+  + Implement dark theme checkbox in preferences.
+  + Unify new tab and new window.
+  + Updated translations.
+- No longer delete various languages for openSUSE &lt;= 11.2.
+- Pass --disable-static to configure: we only care for dynamic
+  stuff.
+- Create new subpackage nautilus-extension-terminal with the
+  extension for nautilus. Obsolete the former
+  nautilus-open-terminal from this new package (source was imported
+  into the main tree and renamed on the go).
+- Update to version 3.8.4:
+  + Fix a crash on session resume (rh#981440).
+  + Fix a mem leak.
+  + Don't write to gsettings on each startup if migration is
+    disabled.
+  + Updated translations.
+- Update to version 3.8.3:
+  + Reduce environmental pollution.
+  + Critical bug fixes: rh#966713, rh#968140.
+  + Bug fixes: bgo#640727.
+  + Updated translations.
+- Stop passing obsolete --disable-schemas-install and
+  --disable-scrollkeeper to configure.
+- Update to version 3.8.2:
+  + Misc fixes.
+  + Updated translations.
+- Update to version 3.8.1:
+  + Nautilus extension fixes (bgo#697225 and others).
+  + Portability fix (bgo#697024).
+  + Updated translations.
+- Update to version 3.8.0.1:
+  + accels: Add more accel-able tabs (bgo#696123).
+  + Updated translations.
+- Update to version 3.8.0:
+  + Bug fixes.
+  + Updated translations.
+- Update to version 3.7.92:
+  + Bug fixes.
+  + Bugs fixed: bgo#695759, bgo#695569, bgo#695571, bgo#695369,
+    rh#919715.
+  + Updated translations.
+- Update to version 3.7.91:
+  + Rewritten help in mallard.
+  + Bug fixes.
+  + Updated translations.
+- Update to version 3.7.2:
+  + Bugs fixed: bgo#691931, bgo#691932, bgo#692021, bgo#691997,
+    bgo#692055, bgo#692148.
+  + Updated translations.
+- Update to version 3.7.1:
+  + GConf-&gt;GSettings migration fixes.
+  + Keybindings fixes.
+- Update to version 3.7.0:
+  + Terminal now uses GSettings and DConf instead of GConf. The
+    existing profiles and settings will be automatically migrated
+    from GConf when first running this version.
+  + To make new tabs opened within Terminal have the same working
+    directory as the current tab, it is necessary for the shell
+    running in the terminal to cooperate. For this, vte installs a
+    bash shell script that you must use in your bash PS1 prompt.
+    For example, you can put this at the end of your ~/.bashrc:
+    export PS1='\[$(__vte_ps1)\]'$PS1
+  + Many bugs fixed.
+  + Updated translations.
+- Add pkgcondif(dconf) BuildRequires following upstreams port to
+  GSettings. Note: pkgconfig(gconf-2.0) is needed for the GConf to
+  DConf migration helper tool.
+- Replace pkgconfig(sm) and pkgconfig(ice) BuildRequires with
+  pkgconfig(libnautilus-extension), following upstreams changes.
+- Add pkgconfig(uuid) BuildRequires: new dependency.
+- Add pkgconfig(gio-2.0) BuildRequires so it can be versioned.
+- Add gsettings schema handling macros to post/postun.
+- Drop gnome-doc-utils-devel BuildRequires: it's no longer needed.
+- Update to version 3.6.1:
+  + Fix opening http-less URLs (bgo#685599).
+  + Updated translations.
+- Update to version 3.6.0:
+  + Updated documentation
+  + Updated translations.
+- Update to version 3.5.90:
+  + Port to new documentation infrastructure
+  + screen: Recognise man: and info: URIs
+  + Bugs fixed: bgo#676452
+  + Updated translations.
+- Add yelp-tools BuildRequires, following upstreams port to the new
+  documentation infrastructure (note: gnome-doc-utils-devel should
+  no longer be needed, but configure still checks for it).
+- Update to version 3.4.1.1:
+  + No changes.
+- Changes from version 3.4.1:
+  + Updated translations.
+- Update to version 3.4.0.1:
+  + No changes.
+- Changes from version 3.4.0:
+  + Use symbolic icon for the close button.
+  + Adapt for scroll changes in GTK+ 3.4.
+  + Updated translations.
+- Add pkgconfig(ice), pkgconfig(sm) and pkgconfig(x11)
+  BuildRequires: this used to be pulled in by something else
+  before, but the relayout of xorg-x11 packages changed that.
+- Update to version 3.3.0:
+  + Add default encoding profile property (bgo#108711)
+  + Works with gtk+ broadway backend
+  + Updated translations.
+- Update to version 3.2.1:
+  + Updated translations.
+- Update to version 3.2.0:
+  + Drop GTK 2 support.
+  + Updated translations.
+- Update to version 3.0.1:
+  + bgo#647077: Use gsettings for proxy settings.
+  + Updated translations.
+- Remove now unneeded dbus-1-glib-devel, scrollkeeper,
+  startup-notification-devel BuildRequires.
+- Change gconf2-devel BuildRequires to pkgconfig(gconf-2.0).
+- Add explicit pkgconfig() BuildRequires: glib-2.0, gtk+-3.0.
+- Drop our copy of gtk-builder-convert:
+  + Remove the source file.
+  + Remove python-xml BuildRequires.
+  + Do not set GTK_BUILDER_CONVERT on build.
+  + Add gtk2-devel BuildRequires, which has the script.
+- Update to version 3.0.0:
+  + Update paste sensitivity whenever clipboard changes
+  + Updated translations.
+- Update to version 2.33.90:
+  + Disable sorting in the Keyboard Shortcut editor
+  + Take system font from gsettings instead of gconf
+  + Theme close button
+  + Updated translations.
+- Changes from version 2.33.5:
+  + More port to gtk3
+  + Misc fixes.
+  + Updated translations.
+- Changes from version 2.33.4:
+  + More port to gtk3
+  + Updated translations.
+- Changes from version 2.33.3:
+  + Remove S/Key support
+  + More port to gtk3
+  + Updated translations.
+- Changes from version 2.33.2:
+  + Do not put TERM in the spawn env
+  + More port to gtk3
+  + Don't crash when receiving bogus data in dbus call
+  + Updated translations.
+- Changes from version 2.33.1:
+  + Make geometry parsing more robust
+  + Implement a better fix for wrong sizing of detached tabs
+  + Fix gridding for small sizes
+  + Port to gtk3
+  + Updated translations
+- Pass --with-gtk=3.0 to configure.
+- Add copy of git gtk2 gtk-builder-convert to fix build and not
+  rely on modified gtk2 packages, pass GTK_BUILDER_CONVERT varibale
+  to configure call, and add python-xml BuildRequires.
+- Change vte-devel BuildRequires to pkgconfig(vte-2.90)
+- Add pkgconfig(gsettings-desktop-schemas) BuildRequires.
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+- Own /usr/share/gnome and /usr/share/gnome/help to fix build.
+- Update to version 2.32.1:
+  + Don't crash when receiving bogus data in the dbus call
+    (rh#650276)
+  + Updated translations.
+- Update to version 2.32.0:
+  + bgo#630163: Set _NET_WM_DESKTOP on the new X window when
+    handling composited-changed
+  + Fix compiler warnings.
+  + Updated translations.
+- Drop gnome-terminal-desktop.patch and instead use
+  %suse_update_desktop_file to change the Name and GenericName.
+- Update summary and description.
+- Update to version 2.31.91:
+  + bgo#627776: Do resume when starting the factory
+  + bgo#627258: Adjust find dialogue spacing and packgings
+  + bgo#627133: Bump gtk3 req to 2.90.6
+  + Updated translations.
+- Update to version 2.31.90:
+  + Relicensed under GPLv3
+  + Translation updates.
+- Update License tag to &quot;GPLv3+; LGPLv2.1+&quot;.
+- Update to version 2.31.3:
+  + bgo#618188: edit profiles dialog in docs
+  + bgo#612712: Fix most of the GSEAL issues
+- Changes from version 2.31.2:
+  + Fix build
+- Changes from version 2.31.1:
+  + Features:
+    - bgo#78963: Add a Search menu
+    - Enable &quot;File -&gt; Save Contents&quot; again
+    - Show an info-bar if failed to execute command
+    - bgo#607875: Add &quot;Use custom default terminal size&quot; profile
+      setting
+  + bgo#521193: Closing tabs regression fixed
+  + bgo#521417: Fix compiler warnings
+  + bgo#614464: Escape &quot;:&quot;, &quot;@&quot; or &quot;/&quot; chars within proxy
+    user/password env vars
+  + Updated translations.
+- Added support for translation-update-upstream (FATE#301344).
+- Update to version 2.30.1:
+  + Updated translations.
+- Update to version 2.30.0:
+  + Don't apply the default size (bgo#607875)
+  + Hide the Save Contents menu entry
+  + Updated translations.
+- Update to version 2.29.92:
+  + Many bugs fixed: http://bugzilla.gnome.org/buglist.cgi?product=gnome-terminal&amp;bug_status=RESOLVED&amp;resolution=FIXED&amp;chfieldfrom=2009-09-24&amp;chfieldto=2010-03-29+23:59:00&amp;chfield=bug_status
+  + Many translation updates.
+- Update to version 2.29.6:
+  + Add &quot;Save Contents&quot; menu item
+- Update to version 2.29.5:
+  + Use gtk_widget_is_toplevel() instead of GTK_WIDGET_TOPLEVEL
+    (bgo#606298)
+  + Add ctrl-shift-up/down documentation (bgo#602004)
+  + Translation updates
+- Update to version 2.29.1:
+  + --geometry works again
+  + Tab detaching works again
+  + Unlimited scrollback
+  + Improved proxy env suppport
+  + Bold color support
+  + Updated translations.
+- Update to version 2.28.2:
+  + Updated translations.
+- Update to version 2.28.1:
+  + Plug leak.
+  + Updated translations.
+- Update to version 2.28.0:
+  + Updated translations.
+- Update to version 2.27.92:
+  + bgo#500563 - Update to GNOME Help Centre OMF Files for &quot;Issue 
+    24: Documentation Meta-data&quot; of GNOME's GHOP Contest
+  + bgo#553357 - Options in drop down boxes are not translated
+  + bgo#564648 - when switching to/from compositing enabled, windows
+    appear as new
+  + bgo#565328 - Factory prevents unmounting of device
+  + bgo#566335 - No obvious way to leave fullscreen
+  + bgo#571002 - URL linking also selects trailing dot.
+  + bgo#573279 - Accelerator for &quot;Cancel&quot; and &quot;Close this window&quot; 
+    in close dialog is the same
+  + bgo#574207 - Missing translator comment
+  + bgo#574776 - gnome-terminal crashed with SIGSEGV in 
+    gtk_menu_shell_select_first()
+  + bgo#575295 - Question-button label mismatch in the closing 
+    dialog
+  + bgo#575308 - Make gnome-terminal session loading work
+  + bgo#576675 - gnome terminal treats pixelsized fonts point sized
+  + bgo#577025 - Use of uninitialized variables
+  + bgo#577313 - gnome-terminal crashed with SIGSEGV in 
+    gtk_ui_manager_remove_ui()
+  + bgo#582861 - Tango profile black color is not black
+  + bgo#583690 - Setting keyboard shortcuts via mandatory gconf 
+    settings no longer works
+  + bgo#584943 - Creating new profile results in grayed out 
+    preferences on first view
+  + bgo#586308 - annoying session-saving misbehaviour
+  + bgo#587305 - wrong path in generated file
+  + bgo#590885 - possible typo
+  + bgo#590952 - gnome-terminal can't discriminate between shell 
+    and commands anymore
+  + bgo#594025 - crash in Terminal: running cat /dev/urandom
+  + Translation updates.
+- Update to version 2.27.91:
+  + bgo#575308 - Make gnome-terminal session loading work
+  + bgo#561663 - gnome-terminal crashes when gconf isn't set up
+                 correctly
+  + bgo#572549 - Memory corruption in gnome-terminal
+  + bgo#574776 - gnome-terminal crashed with SIGSEGV
+                 in gtk_menu_shell_select_first()
+  + bgo#576675 - gnome terminal treats pixelsized fonts point sized
+  + bgo#583690 - Setting keyboard shortcuts via mandatory gconf
+                 settings no longer works
+  + bgo#586308 - annoying session-saving misbehaviour
+  + bgo#590952 - gnome-terminal can't discriminate between shell
+                 and commands anymore
+  + Translation updates.
+- Do not package omf files twice.
+- Update to version 2.26.3.1:
+  + Build fix.
+- Changes from version 2.26.3:
+  + Try keeping the icon title in sync with the real title
+  + Fix various issues when enabling/disabling a compositing
+    manager (bgo#564648)
+  + Print &quot;Close this window?&quot; only if more than one tab would be
+    closed (bgo#575295)
+  + Fix profile editor on new profile being greyed out (bgo#584943)
+  + Misc fixes.
+  + Updated translations.
+- Update to version 2.26.2:
+  + Updated translations.
+- Update to version 2.26.1:
+  + bgo#500563: Update to GNOME Help Centre OMF Files
+  + bgo#574207: Missing translator comment
+  + bgo#575308: Make gnome-terminal session loading work
+  + bgo#576675: gnome terminal treats pixelsized fonts point sized
+  + bgo#577025: Use of uninitialized variables
+  + bgo#577313: Fix crash
+- Update to version 2.26.0:
+  + bgo#570591: running 'reset' shrinks the terminal window.
+  + bgo#572414: Close this terminal' warning labels button as
+    'Close Window'
+  + Fix possible gsize wraparound issue when demarshaling the data
+  + Correct the pspec ID.
+  + bgo#572549: Memory corruption in gnome-terminal.
+  + Updated translations.
+- Remove -fno-strict-aliasing from CFLAGS.
+- Do not add DocPath to desktop file: it's not needed by yelp.
+- Update to version 2.25.91:
+  + Translation updates
+- Remove docbook_4, gnome-common, gnutls-devel, libglade2-devel,
+  libgnomeprintui-devel, libwnck-devel, perl-XML-Parser,
+  scrollkeeper from BuildRequires
+- Add gconf2-devel, dbus-1-glib-devel to BuildRequires
+- Remove non-upstream translations: they'll get out-of-date.
+- Update to version 2.25.5:
+  + Break out of the loop once the work's done.
+  + Call g_thread_init(). bgo#565516
+  + chdir() to /home/chpe in the factory process, so we don't hog any
+    mountpoints. bgo#565328
+  + Reorder this conditional so we only get the RGBA colourmap if
+    compositing is enabled.
+  + bgo#506686 – could be smarter when parsing parenthesis
+    (for URL construction)
+  + Set the default keybindings also in the table in the code. Fixes accels
+    with borked GConf; part of bgo#564649.
+  + Translation updates
+- Translations update. 
+- Update to version 2.25.3:
+  + Libbonobo dependency dropped
+  + Libgnome and libgnomeui dependency dropped
+  + Depends on VTE 0.19
+  + Now uses DBus for single instance/factory setup
+  + Many bugs fixed
+  + Translation updates
+- Updated translations. 
+- Update to version 2.24.1.1:
+  + Revert the fix for bgo#548600 because it causes a regression.
+- Update to version 2.24.1:
+  + Bugs fixed: bgo#552952, bgo#453193, bgo#548388, bgo#548600
+    bgo#554485, bgo#555824, bgo#552938, bgo#552943, bgo#552950
+    bgo#553512  
+  + Translation updates
+- Update to version 2.24.0:
+  + Bug fixed: bgo#553111
+  + Updated translations
+- Respin gnome-terminal-desktop.patch.
+- Update to version 2.23.91:
+  + Bugs fixed: bgo#549308, bgo#399744, bgo#401547, bgo#151794,
+    bgo#519191
+  + Plug a mem leak.
+  + Don't try to g_strfreev something we don't own.
+  + Make the terminal window's role distinct from other g-t window's role,
+    to be able to match just them with devilspie.
+  + Use a static window role for the single instance encodings dialogue.
+  + Updated translations.
+- Update to version 2.23.6:
+  + g_listenv returns only the env var names, not name=value pairs.
+  + Translation updates
+- Update to version 2.23.4.2:
+  + Bugs fixed: bgo#536463, bgo#528683, bgo#418192, bgo#537112,
+    bgo#537888, bgo#536899, bgo#537215, bgo#536639, bgo#538809,
+    brc450808, and brc#450979
+- Drop the following upstreamed patch:
+  gnome-terminal-2.18.1-correct-help-uri.patch.
+- Remove gnome-terminal-force-terminal-draw.patch, it was fixed 
+  in a different way upstream, see bgo #338913
+- Remove gnome-terminal-uninited-vars.patch, the simple font 
+  selector it applied against was removed
+- Update to version 2.22.1:
+  + Bugs fixed: bgo#521193 and bgo#521417.
+- Custom look'n'feel gconf keys moved to gconf2-branding-openSUSE.
+- Update to version 2.22.0:
+  + Updated translations.
+- Update to version 2.21.92:
+  + Ensure menu items are always drawn
+  + Stop forcing invisible_char to *
+  + Updated translations.
+- Update to version 2.21.91.1:
+  + Adapt to new GChecksum API
+  + Fix cropped tab close buttons when using recent versions of
+    gnome-icon-theme
+  + Fix for bgo#336155
+  + Updated translations
+- Respin gnome-terminal-defaults.patch and
+  gnome-terminal-desktop.patch.
+- Update to version 2.21.90:
+  * Use the gtk-cursor-blink setting and remove the profile option
+  * Remove extra frame from profile editor
+  * Use G_STRFUNC instead of the deprecated G_GNUC_FUNCTION 
+- Removed bogus dependency on mDNSResponder.
+- Updated to version 2.18.2:
+  * license confusion fix
+  * documentation migrated to gnome-doc-utils
+  * use Tango terminal color scheme by default
+- Add gnome-terminal-2.18.1-correct-help-uri.patch so we can find
+  our help files correctly.
+- Use %fdupes
+- Split off a -lang subpackage.
+- Update to version 2.18.1
+- Several crashes fixed.
+- Do not call meinproc (#227624).
+- Update to version 2.18.0
+- Fixes for bugzilla.gnome.org #412733 and #410281.
+- Update to version 2.17.91
+  - Plug a memory leak.
+  - Do not disable some keybindings when DnDing notebook pages.
+  - Include the Tango color scheme.
+  - Remember the zoom setting for new tabs.
+  - Do not have clashing shortcuts in popups.
+  - Do not resize when switching between tabs, hopefully.
+  - Focus new terminals when they are created, always.
+  - Handle long terminal titles better.
+  - Do not paint initially terminals black.
+  - Various UI updates and inconsistencies eliminated.
+  - A few crashes fixed.
+- Remove upstreamed gnome-terminal-tab_resize_fix_r2082.patch
+- Fixed invalid window resize (#211443).
+- Removed obsolete scrollkeeper directory (#230786).
+- Spec file cleanup.
+- Move to /usr.
+- Remove dead patch
+- added gnome-doc-utils-devel in BuildRequires. 
+- update to version 2.16.1
+- Honours the --title switch
+- Fixes a couples of memory leaks
+- New and updated translations 
+- Bug 177355 - gnome-terminal --title command ignored.
+- update to version 2.16.0
+- Bug 354056 – Build broken: missing help/fr/Makefile.am
+- Bug 351319 – crash on Terminal
+- Part of Bug 352873 – crash in Terminal: Edit current profile aft...
+- Bug 353020 – Detaching a tab does not preserve the size
+- Bug 336943 – Critical warning and crash in gnome-terminal
+- Bug 138609 – Next/prev TAB keybindings should not be passed through
+  on  first/last tab
+- Fix intltool req.
+- update to version 2.15.4
+- Bug 349459 – does not assert dependency on gdk 2.10
+- Bug 85926 – dnd'd filenames should be escaped
+- Bug 324426 – Open/close tab adds row to terminal
+- Bug 336947 – [patch] Redundant vte_terminal_set_font_full() calls
+- Use real transparency when it's available
+- Improve the dialog to ask for confirmation when closing a window
+  with more than one tab open
+- Migrated to gnome-doc-utils
+- Exports authentication proxy settings
+- Fixes the close button of the about dialog
+- Includes final slashes on URL highlighting
+- Eliminates superfluous resize on drag-n-drop
+- updates to translations
+- Disable menu accelerators by default (#143086)
+- Use kdelibs3-doc in BuildRequires for meinproc (#153635#c14).
+- Update .desktop file (Name, GenericName, Comment, DocPath)
+- converted neededforbuild to BuildRequires
+- Update to version 2.12.0
+- Update to version 2.11.3 
+- Update to version 2.11.2 
+- Update to version 2.11.1
+- Fix uninitialized variables 
+- Reverted TERM to xterm (#73798).
+- Change desktop Name to Gnome Terminal.
+- Update to version 2.10.0 (GNOME 2.10). 
+- update version to 2.9.3 
+- Update version to 2.9.2 
+- added suse_update_desktop_file 
+- Set TERM=gnome. It fixes screen garbling in mutt (#43189).
+- locale rename: no -&gt; nb
+- Cache gnome-terminal help and show gnome-terminal in khelpcenter.
+- Upgraded to 2.6.0.
+- Upgraded patches.
+- Fixed gconf schemas installation (#33114).
+- remove schema patch, obsoleted by new one
+- include gnome-terminal-defaults.patch: don't use
+  system font, don't use mnemonics in the menubar
+- install schemas in %post and %postun 
+- fix build as user
+- updated to version 2.4.2 
+- Updated to version 2.4.1.
+- updated to version 2.4.0.1 [GNOME2.4] 
+- Obsolete gnome-core (bug #31480),
+- Use RPM_OPT_FLAGS.
+- GNOME prefix change to /opt/gnome.
+- Updated to version 2.2.2.
+- Clean-up of neededforbuild.
+- use gnome2-devel-packages in neededforbuild
+- use find_lang
+- added directories to filelist 
+- don't used font size from system fonts but use
+  the font specified in the schema file for the
+  default profile 
+- updated to version 2.2.0 
+- fix kde datadir
+- Added libjpeg to neededforbuild.
+- updated to version 2.0.2 [GNOME 2.0.3]
+- removed crash-on-restore.dif as it is upstream 
+- changed neededforbuild &lt;xf86 xdevel&gt; to &lt;x-devel-packages&gt;
+- Added alsa-devel to neededforbuild, because esound-devel can require it.
+- Added alsa to neededforbuild, because esound can depend on it.
+- updated to version 2.0.1
+- Fix for crash on session restore (post-2.0.1 fix from CVS).
+- added PreReq: filesystem 
+- fix schema file install 
+- use libpng-devel-packages in neededforbuild 
+- updated to version 2.0.0
+- provide schema file 
+- initial SuSE Release 1.9.7 
+</comment>
+    <requestid>738089</requestid>
+  </revision>
 </revisionlist>

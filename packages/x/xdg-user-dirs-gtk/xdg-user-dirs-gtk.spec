@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-user-dirs-gtk
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           xdg-user-dirs-gtk
-Version:        0.10
+Version:        0.10+13
 Release:        0
-Summary:        xdg-user-dir support for Gnome and Gtk+ applications
+Summary:        Xdg-user-dir support for Gnome and Gtk+ applications
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            http://download.gnome.org/sources/xdg-user-dirs-gtk
-Source0:        http://download.gnome.org/sources/xdg-user-dirs-gtk/0.10/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM xdg-user-dirs-gtk-XFCE-LXDE-autostart.patch fdo#33107 gber@opensuse.org -- Start xdg-user-dirs-gtk in Xfce sessions as well
 Patch1:         %{name}-XFCE-autostart.patch
+
+BuildRequires:  gnome-common
 BuildRequires:  gtk3-devel
 BuildRequires:  intltool
 BuildRequires:  translation-update-upstream
@@ -42,16 +44,17 @@ to help move they standard user directories to the correct names.
 %lang_package
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 translation-update-upstream
 
 %build
+NOCONFIGURE=1 ./autogen.sh
+export CFLAGS='-Wno-error=deprecated-declarations'
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-%makeinstall
+%make_install
 %suse_update_desktop_file user-dirs-update-gtk
 %find_lang %{name}
 

@@ -19,14 +19,15 @@
 %bcond_with zeitgeist
 
 Name:           bijiben
-Version:        3.32.2
+Version:        3.34.1
 Release:        0
 Summary:        Note editor for GNOME
 License:        GPL-3.0-or-later AND CC-BY-SA-3.0
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Bijiben
-Source0:        https://download.gnome.org/sources/bijiben/3.32/%{name}-%{version}.tar.xz
+Source0:        http://download.gnome.org/sources/bijiben/3.34/%{name}-%{version}.tar.xz
 
+BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  meson
@@ -34,12 +35,12 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.28
+BuildRequires:  pkgconfig(glib-2.0) >= 2.58
 BuildRequires:  pkgconfig(goa-1.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.19.3
-BuildRequires:  pkgconfig(libecal-1.2) >= 3.13.90
-BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.13.90
+BuildRequires:  pkgconfig(libecal-2.0) >= 3.33.92
+BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.33.92
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(tracker-sparql-2.0)
 BuildRequires:  pkgconfig(uuid)
@@ -86,7 +87,7 @@ search results from documents.
 
 %files
 %license COPYING
-%doc AUTHORS NEWS README TODO
+%doc AUTHORS NEWS README.md TODO
 %dir %{_datadir}/help
 %dir %{_datadir}/help/C
 %doc %{_datadir}/help/C/%{name}/

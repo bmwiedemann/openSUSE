@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Oct 14 17:17:04 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.34.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  3 19:42:29 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.33.90:
+  + Add a flatpak-based CI job.
+  + Relax sandboxing options in flatpak manifest.
+  + Run flatpak in interactive mode by default.
+  + Support saving both to disk and clipboard from CLI.
+  + Fix alignment of labels in save dialog.
+  + Make file chooser dialog modal.
+  + Fix crash when using the fallback X11 code path on HiDpi.
+  + Fix window screenshot size when using the fallback X11 code
+    path on HiDpi.
+  + Fix area selection flash when using the fallback X11 code path.
+  + Translation updates.
+- Require meson >= 0.50.0.
+
+-------------------------------------------------------------------
 Fri Mar 15 12:32:27 UTC 2019 - bjorn.lie@gmail.com
 
 - Update to version 3.32.0:

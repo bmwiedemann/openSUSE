@@ -19,14 +19,20 @@
 # FIXME # Figure out where this comes from and fix it.
 %global __requires_exclude typelib\\(Ide\\)
 
+# Update this on every major/minor bump
+%define basever 3.34
+
+# sysprof support is a nice to have, but sysprof is under security review and not available yet
+%bcond_with sysprof
+
 Name:           gnome-builder
-Version:        3.32.4
+Version:        3.34.1
 Release:        0
 Summary:        A toolsmith for GNOME-based applications
 License:        GPL-3.0-or-later AND GPL-2.0-or-later AND LGPL-3.0-or-later AND LGPL-2.1-or-later AND CC-BY-SA-3.0
 Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Builder
-Source0:        https://download.gnome.org/sources/gnome-builder/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-builder/%{basever}/%{name}-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
 
 BuildRequires:  fdupes
@@ -34,31 +40,34 @@ BuildRequires:  gcc-c++
 BuildRequires:  gtk-doc
 BuildRequires:  libvala-devel
 BuildRequires:  llvm-clang-devel >= 3.5
-BuildRequires:  meson >= 0.47.1
+BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
 BuildRequires:  pkgconfig(enchant-2)
 BuildRequires:  pkgconfig(flatpak) >= 0.8.0
-BuildRequires:  pkgconfig(gio-2.0) >= 2.58.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.61.2
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(gladeui-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.49.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.61.2
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.48.0
 BuildRequires:  pkgconfig(gspell-1) >= 1.2.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.26
 BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0.0
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.2.0
 BuildRequires:  pkgconfig(jsonrpc-glib-1.0) >= 3.30.1
-BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.30.2
+BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.33.90
 BuildRequires:  pkgconfig(libdevhelp-3.0) >= 3.25.1
 BuildRequires:  pkgconfig(libgit2-glib-1.0) >= 0.25.0
+BuildRequires:  pkgconfig(libpcre2-posix)
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.22.0
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.52.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.0
 BuildRequires:  pkgconfig(pangoft2) >= 1.38.0
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.21.0
-BuildRequires:  pkgconfig(sysprof-2) >= 3.30.2
-BuildRequires:  pkgconfig(sysprof-ui-2) >= 3.30.2
+%if %{with sysprof}
+BuildRequires:  pkgconfig(sysprof-3)
+BuildRequires:  pkgconfig(sysprof-ui-3)
+%endif
 BuildRequires:  pkgconfig(template-glib-1.0) >= 3.28.0
 BuildRequires:  pkgconfig(vapigen) >= 0.30.0.55
 BuildRequires:  pkgconfig(vte-2.91) >= 0.40.2
@@ -145,6 +154,9 @@ This package provides the vala-pack plugin for %{name}.
 	-Ddocs=true \
 	-Dhelp=true \
 	-Dnetwork_tests=false \
+%if %{without sysprof}
+        -Dplugin_sysprof=false \
+%endif
 	%{nil}
 %meson_build
 
@@ -170,6 +182,8 @@ rm -fr %{buildroot}%{_datadir}/doc/%{name}/*/.doctrees
 %{_bindir}/%{name}
 %{_libdir}/%{name}
 %{_libexecdir}/%{name}-clang
+%{_libexecdir}/%{name}-git
+%{_libexecdir}/%{name}-vala
 # EXCLUDE THE OPTIONAL PLUGINS FROM THE MAIN PACKAGE
 %exclude %{_libdir}/%{name}/plugins/jedi.plugin
 %exclude %{_libdir}/%{name}/plugins/jedi_plugin.py
@@ -203,7 +217,7 @@ rm -fr %{buildroot}%{_datadir}/doc/%{name}/*/.doctrees
 %{_datadir}/gtksourceview-4/styles/builder.style-scheme.xml
 %{_datadir}/icons/hicolor/
 %{_includedir}/%{name}/
-%{_includedir}/%{name}-3.32/
+%{_includedir}/%{name}-%{basever}/
 %{python3_sitearch}/gi/overrides/*
 
 %files doc

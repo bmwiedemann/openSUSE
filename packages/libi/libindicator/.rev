@@ -62,4 +62,12 @@
     <comment></comment>
     <requestid>588615</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>6b6a01164a80adc43fbb52c0cd5c2b45</srcmd5>
+    <version>16.10.0+bzr20171205</version>
+    <time>1571310484</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with GNOME 3.34 - Unity is defacto unmaintained, so this is the best we can do for now, short of dropping the code (forwarded request 738834 from dimstar)</comment>
+    <requestid>738839</requestid>
+  </revision>
 </revisionlist>

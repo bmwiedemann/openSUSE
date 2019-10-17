@@ -43,7 +43,13 @@ BuildRequires:  distribution-logos-openSUSE-Tumbleweed
 BuildRequires:  fdupes
 BuildRequires:  fribidi
 BuildRequires:  optipng
+%if 0%{?suse_version} >= 1550
+# rsvg-convert used to be packaged together with rsvg-view in one package. With the removal
+# of the rsvg-view program, this package was renamed to rsvg-convert (which is more fitting)
+BuildRequires:  rsvg-convert
+%else
 BuildRequires:  rsvg-view
+%endif
 BuildRequires:  suse-module-tools
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files

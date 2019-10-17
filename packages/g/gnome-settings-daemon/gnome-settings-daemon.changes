@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Sat Oct 12 16:56:25 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.34.1+0:
+  + power: Fix rounding of brightness value.
+
+-------------------------------------------------------------------
+Wed Oct 09 19:45:45 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.34.0+10:
+  + smartcard:
+    - Change timeout on spurious event error
+    - Change manager to non-blocking
+  + GsdSmartcardService: Use correct parent type for structs
+  + media-keys: Divide keyboard brightness value by 100
+  + Updated translations.
+- Switch to git checkout via source service, use upstream stable
+  branch.
+- Drop gsd-smartcard-parent-type.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Tue Oct  8 10:36:50 UTC 2019 - Yifan Jiang <yfjiang@suse.com>
+
+- Rebase gnome-settings-daemon-notify-idle-resumed.patch:
+  Add the newly added parameter NOTIFICATION_PRIVACY_SYSTEM for the
+  function of create_notification.
+
+-------------------------------------------------------------------
+Fri Sep 20 17:19:51 UTC 2019 - Felix Zhang <fezhang@suse.com>
+
+- Apply gnome-settings-daemon-sle-configure-timeout-blank.patch
+  correctly.
+- Rebase gnome-settings-daemon-notify-idle-resumed.patch.
+
+-------------------------------------------------------------------
+Tue Sep 17 19:33:05 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Add gsd-smartcard-parent-type.patch: use correct parent type for
+  structs.
+
+-------------------------------------------------------------------
+Tue Sep 10 05:51:17 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.34.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  6 11:40:02 NZST 2019 - luke@ljones.dev
+
+- Update to version 3.33.92:
+  + Media-keys: Fix MPRIS controller no longer working.
+  + XSettings: Make plugin able to run on demand.
+  + Ensure plugin is started after the shell.
+  + Replace deprecated 'g_type_class_add_private' in
+    GnomeSettingsPluginInfo.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Aug 31 05:37:59 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.33.90:
+  + Add systemd user service files for all the plugins.
+    - With the exception of gsd-xsettings, daemons do not use the
+      GDK X11 backend anymore.
+  + WWAN: New daemon, handles WWAN device settings.
+  + Mouse: Removed daemon, everything is now implemented in mutter.
+  + Clipboard: - Removed daemon, everything is now implemented in
+    mutter.
+  + Color: Use Planckian calculations on night light.
+  + Rfkill: - Handle airplane mode for WWAN interfaces.
+  + XSettings: Round Xft.dpi setting to an integer.
+  + Add entry for overlay scrolling setting.
+  + Media-keys: - Use device node from AcceleratorActivated
+    arguments.
+  + Updated translations.
+- Changes from version 3.33.0:
+  + Compile warning fixes.
+  + Media-keys:
+    - Keygrabbing has been reworked. The new UngrabAccelerators
+      DBus API on the shell is now required. Non-GNOME Desktops
+      using g-s-d will need to be updated for this.
+    - Add mapping for screen brightness cycle key.
+    - Fix launched clients inheriting DESKTOP_AUTOSTART_ID.
+    - Allow mapping of hard-coded keys.
+  + Power:
+    - Fix memory leak.
+    - Remove special handling of tablet devices.
+  + Mouse:
+    - Remove locate-pointer, in favor of gnome-shell handling.
+    - Remove mousetweaks support, in favor of gnome-shell handling.
+  + Keyboard: Remove numlock persistence, in favor of gnome-shell
+    handling.
+  + Updated translations.
+- Up colord, gsettings-desktop-schemas, polkit-gobject, and
+  upower-glib dependencies.
+- Add systemd dependency.
+- Add gcr and mm-glib dependencies for wwan.
+- Drop gnome-settings-daemon-round-xft_dpi-to-integer.patch: fixed
+  upstream.
+- Rebase patches: gnome-settings-daemon-initial-keyboard.patch,
+  gnome-settings-daemon-bgo793253.patch., and SLED patches:
+  gnome-settings-daemon-bnc873545-hide-warnings.patch,
+  gnome-settings-daemon-more-power-button-actions.patch,
+  gnome-settings-daemon-notify-idle-resumed.patch, and
+  gnome-settings-daemon-sle-configure-timeout-blank.patch.
+- Add gsd-wwan to files, and remove gsd-clipboard, gsd-mouse, and
+  gsd-locate-pointer.
+- Add systemd services and targets to files.
+
+-------------------------------------------------------------------
 Fri Aug  2 20:08:18 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Refresh patches with quilt.

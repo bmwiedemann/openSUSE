@@ -11,7 +11,7 @@ Index: PackageKit-1.1.12/backends/zypp/pk-backend-zypp.cpp
 ===================================================================
 --- PackageKit-1.1.12.orig/backends/zypp/pk-backend-zypp.cpp
 +++ PackageKit-1.1.12/backends/zypp/pk-backend-zypp.cpp
-@@ -1470,7 +1470,7 @@ zypp_perform_execution (PkBackendJob *jo
+@@ -1509,7 +1509,7 @@ zypp_perform_execution (PkBackendJob *jo
  				case INSTALL:
  				case UPDATE:
  					// for updates we only care for updates
@@ -20,18 +20,18 @@ Index: PackageKit-1.1.12/backends/zypp/pk-backend-zypp.cpp
  						continue;
  					break;
  				}
-@@ -3305,6 +3305,10 @@ backend_update_packages_thread (PkBacken
- 		}
+@@ -3347,6 +3347,10 @@ backend_update_packages_thread (PkBacken
  	}
- 
+ 	ResPool pool = zypp_build_pool (zypp, TRUE);
+ 	PkRestartEnum restart = PK_RESTART_ENUM_NONE;
++	
 +	if ( zypp->resolver()->upgradeMode() ) {
 +		zypp->resolver()->dupSetAllowVendorChange ( ZConfig::instance().solver_dupAllowVendorChange() );
 +	}
-+
+ 
  	PoolStatusSaver saver;
  
- 	for (guint i = 0; package_ids[i]; i++) {
-@@ -3323,12 +3327,12 @@ backend_update_packages_thread (PkBacken
+@@ -3366,12 +3370,12 @@ backend_update_packages_thread (PkBacken
  		// patches are special - they are not installed and can't have update candidates
  		if (sel->kind() != ResKind::patch) {
  			MIL << "sel " << sel->kind() << " " << sel->ident() << endl;

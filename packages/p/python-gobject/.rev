@@ -620,4 +620,12 @@ not get invalid dependencies (forwarded request 390575 from dimstar)</comment>
     <comment>New stable rel (forwarded request 711646 from iznogood)</comment>
     <requestid>711805</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>129606142dd4738566c4d8c2a8f5dbbc</srcmd5>
+    <version>3.34.0</version>
+    <time>1571310216</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736603</requestid>
+  </revision>
 </revisionlist>

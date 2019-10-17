@@ -8,10 +8,11 @@
         "launch-new-instance@gnome-shell-extensions.gcampax.github.com",
         "window-list@gnome-shell-extensions.gcampax.github.com",
         "workspace-indicator@gnome-shell-extensions.gcampax.github.com",
+        "desktop-icons@csoriano",
         "sle-classic@suse.com"
     ],
     "panel": {
-        "left": ["activities"],
+        "left": [],
         "center": [],
         "right": ["a11y", "keyboard", "dateMenu", "aggregateMenu"]
     }

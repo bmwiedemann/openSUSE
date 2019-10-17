@@ -1,12 +1,11 @@
-Index: plugins/power/gsd-power-constants.h
-===================================================================
---- plugins/power/gsd-power-constants.h.orig	2013-11-12 01:25:13.000000000 +0800
-+++ plugins/power/gsd-power-constants.h	2014-03-27 11:39:34.100125030 +0800
+diff -urp gnome-settings-daemon-3.33.90.orig/plugins/power/gsd-power-constants.h gnome-settings-daemon-3.33.90/plugins/power/gsd-power-constants.h
+--- gnome-settings-daemon-3.33.90.orig/plugins/power/gsd-power-constants.h	2019-08-05 18:40:19.000000000 -0500
++++ gnome-settings-daemon-3.33.90/plugins/power/gsd-power-constants.h	2019-08-31 19:43:57.783501103 -0500
 @@ -18,7 +18,7 @@
   */
  
  /* The blank delay when the screensaver is active */
--#define SCREENSAVER_TIMEOUT_BLANK                       15 /* seconds */
+-#define SCREENSAVER_TIMEOUT_BLANK                       30 /* seconds */
 +#define SCREENSAVER_TIMEOUT_BLANK                       300 /* seconds */
  
  /* The dim delay when dimming on idle is requested but idle-delay

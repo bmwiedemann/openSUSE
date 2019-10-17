@@ -1,4 +1,284 @@
 -------------------------------------------------------------------
+Mon Oct 14 17:06:58 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.46.2:
+  + Patterns and gradients reused across more than one element will
+    only get resolved once now; this should make things marginally
+    faster for patterns or gradients with fallbacks.
+  + glgo#GNOME/librsvg#515: Librsvg now has limits on the number of
+    loaded XML elements, and the number of referenced elements
+    within an SVG document. This is to mitigate malicious SVGs
+    which try to consume all memory, and those which try to consume
+    an exponential amount of CPU time.
+
+-------------------------------------------------------------------
+Mon Oct  7 16:57:23 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.46.1:
+  + Fix empty patterns which reference a fallback pattern with
+    children.
+
+-------------------------------------------------------------------
+Mon Sep  9 19:36:58 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.46.0:
+  + All of librsvg.so is now implemented in Rust! That is, except
+    for a very thin wrapper over the public API functions.
+    Hopefully we can remove this wrapper when Cargo gets some more
+    features around controlling the linking step. This release
+    requires at least Rust 1.34.
+  + Librsvg now comes with a Rust crate that can be used from Rust
+    applications. See librsvg_crate/examples. This Rust API is
+    designed to be idiomatic; if you want a Rust binding to the
+    shared library instead, please use the "rsvg-rs" crate from
+    crates.io.
+  + The following API functions are new in the C library:
+    - rsvg_handle_get_intrinsic_dimensions()
+    - rsvg_handle_render_document()
+    - rsvg_handle_render_layer()
+    - rsvg_handle_render_element()
+    - rsvg_handle_get_geometry_for_layer()
+    - rsvg_handle_get_geometry_for_element()
+    - Correspondingly, there is a new chapter in the documentation,
+      called "Recommendations for Applications". These new APIs
+      conform better with the web platform's idea of how SVG
+      sizing/positioning should work. Applications should now find
+      it easier to scale and render SVGs in a single call, instead
+      of having to obtain image dimensions first.
+  + A bunch of functions have been deprecated but are still
+    available:
+    - rsvg_handle_write()/close() are deprecated in favor of the
+      stream functions. Unfortunately the write()/close() pair
+      require buffering the entire document, in case it is a .svgz
+      compressed file; the streaming functions do not have this
+      problem.
+    - Functions that return RsvgDimensionData and RsvgPositionData
+      are deprecated, since they just use integers instead of
+      floating point numbers. They are replaced with the
+      _get_geometry_*() functions above.
+  + The library is a lot more strict now in terms of detecting that
+    the API functions are called in the correct order. For example,
+    calling rsvg_handle_get_dimensions() before rsvg_handle_close()
+    will now emit a critical warning.
+  + Librsvg is gradually moving towards using code from Mozilla's
+    Servo. We haven't quite gotten rid of libcroco and libxml2 yet,
+    but this is in progress.
+
+-------------------------------------------------------------------
+Mon Sep  2 21:56:12 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.45.92:
+  + Fix glgo#GNOME/librsvg#496: Ensure all lengths and angles parse
+    as finite numbers.
+  + Fix glgo#GNOME/librsvg#497: Don't panic on paths with
+    all-invalid commands.
+  + Fix glgo#GNOME/librsvg#500: Added additional SVG blend-modes
+    for the feBlend filter primitive.
+  + Some changes in the build structure to allow for faster builds.
+
+-------------------------------------------------------------------
+Mon Sep  2 21:56:11 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.45.90:
+  + New API functions:
+    - rsvg_handle_render_document().
+    - rsvg_handle_render_layer().
+    - rsvg_handle_render_element().
+    - rsvg_handle_get_geometry_for_layer().
+    - rsvg_handle_get_geometry_for_element().
+  + CairoRenderer in the librsvg_crate has corresponding functions
+    as well.
+  + Fix builds with gettext ≥ 0.20.
+  + If the C API is called out of order, downgrade hard panics to
+    g_critical() to cope with incorrect/old applications that
+    called rsvg_handle_get_dimensions() before
+    rsvg_handle_close().
+  + API reference documentation is much improved.
+
+-------------------------------------------------------------------
+Mon Sep  2 21:56:10 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.45.8:
+  + This version requires at least Rust 1.34.
+  + Fix build on Rust earlier than 1.36.
+  + Update gtk-rs and dependent crates.
+- Changes from version 2.45.7:
+  + Don't panic if an SVG has character data outside the first
+    element.
+  + Don't panic when there's an xi:include fallback with no parent
+    element.
+  + Fix blurry semi-opaque objects when rendering with a scaled
+    transformation.
+  + Don't ignore the first x/y/dx/dy in text/tspan elements if
+    there is more than one position specified.
+  + In librsvg_crate, SvgHandle now has a ::has_element_with_id()
+    method.
+  + rsvg-convert now catches the case where the SVG has no
+    dimensions.
+  + This version no longer contains the rsvg-view program, so
+    librsvg no longer depends on GTK.
+  + The poly element no longer supports "verts" as an alias for the
+    "points" attribute. The "verts" name was only used in SVG
+    pre-1.0, and we had been cargo-culting that name ever since.
+  + We now use more machinery from Mozilla Servo, in this case the
+    markup5ever and rust-selectors crates. This is in line with
+    gradually replacing libcroco with a Rust-only CSS machinery.
+  + Lots and lots of refactoring and cleanups: use the rctree crate
+    instead of our own tree representation; remove interior
+    mutability in element structs; make the gradients and patterns
+    code less repetitive.
+  + Update some dependencies.
+  + Fix static linking and Windows builds.
+- Drop rsvg-view subpackage and pkgconfig(gtk+-3.0) BuildRequires
+  and obsolete it from main library following upstream changes.
+- Add new rsvg-convert subpackage for the convert tool previously
+  packaged in rsvg-view.
+
+-------------------------------------------------------------------
+Mon Sep  2 21:56:09 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 2.45.6:
+  + Librsvg now requires Rust 1.30.0 or later.
+  + Librsvg now requires Cairo 1.16.0 or later.
+  + This version introduces librsvg_crate, an idiomatic Rust crate
+    for using librsvg from Rust programs directly, without using
+    GObject machinery. This API is subject to change, but you can
+    start using it now in an experimental fashion.
+  + All of the librsvg internals are now in Rust! The C code is
+    just a thin wrapper over Rust functions.
+  + The internals library has been converted to Rust 2018.
+  + Within librsvg_crate, there is a new infrastructure for doing
+    reftests in Rust, that does not depend on PNG reference files.
+    See librsvg_crate/tests for details.
+  + This release introduces the following new APIs:
+    - rsvg_handle_get_intrinsic_dimensions(),
+    - rsvg_handle_get_geometry_for_element().
+  + Parsing of the "style" attribute, which has a plain list of CSS
+    property declarations, is now done with rust-cssparser.
+  + CSS selector matching should be marginally faster than before.
+  + Fix Visual Studio builds.
+  + Fix glgo#GNOME/librsvg#11: Respect the "direction" property for
+    bidirectional text.
+  + Fix glgo#GNOME/librsvg#295: Ensure the initial viewport fits
+    into temporary surfaces for compositing.
+  + Fix glgo#GNOME/librsvg#425: Don't fail parsing if the system's
+    locale is broken.
+  + Fix glgo#GNOME/librsvg#438, glgo#GNOME/librsvg#443: Don't
+    create intermediate raster surfaces unless absolutely needed.
+    This was causing blurred output for SVGs from Inkscape and
+    Illustrator, since they include an "enable-background" property
+    even when there are no filters in use.
+  + Fix glgo#GNOME/librsvg#443: Fix blurry output when
+    enable-background is used without filters.
+  + Fix glgo#GNOME/librsvg#455: Fix rounding error on i386.
+  + Check for Cairo errors when constructing paths.
+
+-------------------------------------------------------------------
+Mon Sep  2 21:56:08 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 2.45.5:
+  + At build time, you can now pass $CARGO and $RUSTC environment
+    variables if you need to override the default Rust toolchain.
+    Please see COMPILING.md for details.
+  + Fix glgo#GNOME/librsvg#405: In the gdk-pixbuf loader, don't
+    crash if the write() function doesn't receive a GError.
+  + Fix glgo#GNOME/librsvg#268: Remove the comp-op property; it's
+    not in SVG 1.1 nor SVG 2.
+  + Fix glgo#GNOME/librsvg#415: register RsvgHandleFlags and the
+    RsvgError enum values in a thread-safe fashion.
+  + All of the library's non-GObject functionality is implemented
+    in Rust now.
+  + Update the cairo crate.
+  + Clean up the loading code paths.
+  + Updated compilation docs for Debian.
+  + Updated parts of the reference documentation.
+
+-------------------------------------------------------------------
+Mon Sep  2 21:56:07 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 2.45.4:
+  + Fix glgo#GNOME/librsvg#402: Fix the library's soname.
+
+-------------------------------------------------------------------
+Mon Sep  2 21:56:06 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 2.45.3:
+  + Big news! All the real work in the library is now implemented
+    in Rust. The public API is implemented in C, but most it calls
+    immediately into the Rust code.
+  + rsvg_handle_set_base_uri() now really assumes that it is passed
+    a URI. Previously it would try to differentiate between real
+    URIs, and absolute or relative file paths. If this breaks your
+    code (i.e. you are passing a filename, not a URI), please tell
+    us so we can restore the old behavior!
+  + Fix glgo#GNOME/librsvg#395: Don't panic in feMorphology if it
+    ends up with a negative scaling transformation.
+  + Fix glgo#GNOME/librsvg#398: Detect circular references in
+    gradients.
+  + Match the Firefox/Chrome behavior on gradients and patterns
+    with circular references for fallbacks.
+  + Fixes for Rust 1.30 and below.
+  + Lots and lots of refactoring.
+- Changes from version 2.45.2:
+  + rsvg_cleaup() is now deprecated. This was only meant to be
+    called from code to be checked by Valgrind. Leak checkers may
+    show reachable memory from libxml2; real memory leaks should
+    still be reported, of course.
+  + As an experimental change, librsvg no longer calls
+    xmlInitParser() from libxml2. Please tell us if this causes
+    problems for multithreaded programs.
+  + Added g_warning()s to ensure the API is called in the correct
+    sequence.
+  + The text handling code has been completely refactored and
+    simplified. This will allow us to implement the x/y/dx/dy
+    properties for multiple glyphs in the future. Please report any
+    problems you experience in text rendering.
+  + Fix glgo#GNOME/librsvg#385: Don't crash if there is no
+    rsvg_handle_write() before rsvg_handle_close().
+  + Fix glgo#GNOME/librsvg#391: Avoid undefined behavior when
+    casting opaque pointers.
+  + Fix crash when a linear RGB filter is followed by an SRGB
+    filter.
+  + Fix glgo#GNOME/librsvg#393: Stack overflow when freeing
+    thousands of sibling elements.
+  + Fix positioning of adjacent <tspan> elements.
+  + All the toplevel loading and drawing code is implemented in
+    Rust now.
+  + Pixbuf conversion code is in Rust now.
+  + Cleanups in the code for XML processing, markers, attributes.
+  + Many build/link fixes.
+  + Cleanups in the code that calls libxml2.
+- Changes from version 2.45.1:
+  + New public API, rsvg_handle_get_geometry_sub(), to get the
+    exact geometry of an element. The functions
+    rsvg_handle_get_position_sub() and
+    rsvg_handle_get_dimensions_sub() are deprecated now; these
+    returned incomplete data with integer coordinates.
+  + rsvg_handle_write() and rsvg_handle_close() are now deprecated
+    in favor of the functions which use a GInputStream. The former
+    need to buffer the entire SVG data first; the latter don't need
+    buffering.
+  + Librsvg no longer tries to load XML entities which reference
+    external resources, either parameter or general entities,
+    declared in the DTD. This never worked properly, and it is
+    better to do so via the xi:include mechanism. Also, unparsed
+    external entities with a notation are not really supported in
+    SVG; it has its own <image> element and similar for that
+    purpose. Only internal general entities are supported now, for
+    example:
+    - <!ENTITY foo "<some xml here>">.
+    - <!ENTITY bar "some text here">.
+  + Started support for localized error messages.
+  + Ported to Rust: loading code, XML processing code, data: URL
+    parsing.
+  + Many code cleanups and refactorings.
+  + Fix undefined behavior in casts.
+  + Cairo/Rust API updates.
+  + configure.ac cleanups.
+- Add lang_package macro/subpackage, librsvg now have translations.
+- Add a librsvg_sover define and set it to 2.
+
+-------------------------------------------------------------------
 Mon Sep  2 21:56:05 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.44.15:

@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Tue Oct 15 14:41:04 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Disable NTLM for the time being (causes build cycle):
+  + Drop samba-winbind BuildRequires.
+  + Pass -Dntlm=disabled to meson.
+
+-------------------------------------------------------------------
+Wed Oct  9 10:34:03 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.68.2:
+  + Documentation fixes.
+  + Windows compatibility test fixes.
+  + WebSockets: client_max_window_bits in server must have a value.
+  + build: improve diagnostics when detecting Apache.
+  + NTLM: Make v2 authentication more robust.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 12 02:05:49 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.68.1:
+  + Several memory leaks fixed in tests, examples, and parsing
+    code.
+  + SoupServer: Fixes to Windows path handling.
+  + Changes in version 2.68.0:
+  + Updated translations.
+  + Changes in version 2.67.93:
+  + SoupMessage: Handle Transfer-Encoding: identity for
+    compatibility reasons.
+  + WebSockets: Only poll IO stream when needed.
+  + WebSockets: Properly set cookies received during handshake.
+  + WebSockets: Plug a couple of memory leaks and fix a few
+    read-after-free memory errors.
+  + WebSockets: document how web socket extensions should treat
+    buffers in case of error.
+  + SoupSession: Don't reset user GCancellable internally.
+  + Tests: Make tests installable.
+  + Remove deprecate GTimeVal internal usage.
+  + CI: increase coverage by enabling all features during testing.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 11 15:01:18 UTC 2019 - mgorse@suse.com
+
+- Update to version 2.67.92:
+  + Silence GTimeVal deprecation warnings.
+  + API documentation and annotation fixes.
+  + Plug a couple of NTLM authentication memory leaks.
+  + Meson: Use feature options.
+  + Meson: Do not fallback to system krb5-config for
+    cross-compilation.
+  + NTLM: Fix build with NTLM enabled.
+  + Updated translations.
+- Changes from version 2.67.91:
+  + HSTS: New API to retrieve information about existing HSTS
+    policies.
+  + Updated translations.
+- Changes from version 2.67.90:
+  + WebSockets: add support for WebSocket extensions via new
+    SoupWebsocketExtensionManager and SoupWebsocketExtension API.
+  + WebSockets: add support for the permessage-deflate extension,
+    enabled by default in SoupServer and in the client side only if
+    SoupWebsocketExtensionManager is added to a session.
+  + WebSockets: Allow sending close frames with no body.
+  + WebSockets: ignore messages after close has been sent and
+    received.
+  + Meson: tls-check improved.
+  + Meson: improve Apache checks.
+- Changes from version 2.67.3:
+  + WebSockets: allow sending empty binary data.
+  + WebSockets: fail and load the connection on invalid payload
+    length.
+  + WebSockets: allow NULL characters in text messages data.
+  + WebSockets: Close connection on wrongly masked/unmasked frame
+    as per RFC.
+  + WebSockets: other code fixes.
+  + NTLM: Fix NTLMv2 authentication.
+  + SoupMessage: fix several deprecation warnings related to
+    private data.
+- Changes from version 2.67.2:
+  + gobject-introspection: Fix annotation for soup_auth_new().
+  + brotli: Do not advertise the decoder as it's failing with some
+    websites.
+  + Meson: Fix xml2 and sqlite fallbacks.
+  + HSTS: Add SoupHSTSEnforcer:hsts-enforced signal.
+  + HSTS: Fixes to the types used to store policies in the SQLite
+    storage.
+  + HSTS: Accept Strict-Transport-Security regardless of casing.
+  + WebSockets: Ensure messages finishes when handshake fails.
+  + WebSockets: Fix critical warnings and test failures.
+- Changes from version 2.67.1:
+  + Add a brotli decoder. This adds a new dependency on libbrotli.
+  + Add strict secure cookies support.
+  + Add HSTS enforcer SoupSession feature (with both memory and
+    sqlite backends).
+  + meson gtk-doc documentation fixes.
+- Add libbrotlidec to BuildRequires.
+- Adjust meson: need "enabled" rather than "true" in a few places.
+- Add samba-winbind to BuildRequires: meson checks for ntlm_auth.
+- Meson: doc option is now gtk_doc.
+- Add libsoup-disable-hsts-tests.patch: these require *.localhost
+  to resolve.
+
+-------------------------------------------------------------------
 Wed Sep 11 15:01:17 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.66.3:

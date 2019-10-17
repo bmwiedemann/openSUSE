@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep  9 15:37:58 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.34.0:
+  + No changes since 3.33.1.
+
+-------------------------------------------------------------------
+Sat Aug 31 09:06:02 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.33.1:
+  + Make GLib.Variant.unpack a bit less costly.
+  + pygobject: ignore GParameter deprecations.
+  + pygobject-object: fix refcount of floating return values.
+  + pygi-info: remove some dead code.
+
+-------------------------------------------------------------------
 Mon Jun 24 07:05:38 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.2:

@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Oct  4 17:48:13 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Fix broken symbolic icon.
+  + Updated translations.
+- Drop totem-fix-symbolic-icon.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Mon Sep 30 13:10:04 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add totem-fix-symbolic-icon.patch: Fix symbolic icon.
+
+-------------------------------------------------------------------
+Fri Sep  6 17:02:01 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.34.0:
+  + Make introspection non-optional for the plugin system to work.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  4 16:48:45 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add totem-revert-vaapi-disable.patch: Revert upstreams disabling
+  of vaapi support, it works fine on openSUSE.
+
+-------------------------------------------------------------------
+Tue Sep  3 10:32:38 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.33.90:
+  + Update application icon.
+  + Use title case for the "Open Containing Folder" menu item.
+  + Disable VAAPI support for now, it's too buggy.
+  + Changes in version 3.33.0:
+  + Add "Open containing folder" menu item.
+  + Include "totem" in the desktop keywords.
+  + Make --version command-line option public.
+  + Reduce GSettings writes on startup.
+  + Fix menu sensitivity for OpenSubtitles plugin.
+- Add open-directory plugin.
+  + Remove obsolete LIRC and Brasero plugins.
+- Remove/obsolete -plugin-brasero package: removed upstream.
+- Remove comments related to lirc: plugin removed upstream.
+
+-------------------------------------------------------------------
 Fri Jul 12 19:26:12 UTC 2019 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 3.32.1: 

@@ -19,13 +19,13 @@
 
 %global __requires_exclude typelib\\(Meta\\)
 Name:           gnome-shell-extensions
-Version:        3.32.1
+Version:        3.34.1
 Release:        0
 Summary:        A collection of extensions for GNOME Shell
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GnomeShell/Extensions
-Source0:        https://download.gnome.org/sources/gnome-shell-extensions/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-shell-extensions/3.34/%{name}-%{version}.tar.xz
 Source1:        README.SUSE
 Source2:        sle-classic.desktop
 Source3:        SLE-theme.tar.gz
@@ -35,12 +35,8 @@ Source6:        sle-classic@suse.com.tar.gz
 Source7:        00_org.gnome.shell.extensions.sle-classic.gschema.override
 # PATCH-FEATURE-OPENSUSE gnome-shell-add-app-to-desktop.patch bnc#870580 dliang@suse.com --  allow adding app shortcut to desktop easily.
 Patch1:         gnome-shell-add-app-to-desktop.patch
-# PATCH-FEATURE-OPENSUSE sle-classic-favorites-menu-at-end.patch bnc#890989 cxiong@suse.com -- put the favorites at the end of the app catogories for accessibility reason -- cxiong@suse.com bnc#890989
-Patch2:         gnome-shell-favorites-menu-at-end.patch
 # PATCH-FIX-OPENSUSE gnome-classic-s390-not-require-g-s-d_wacom.patch bsc#1129412 yfjiang@suse.com -- Remove the runtime requirement of g-s-d Wacom plugin
-Patch3:         gnome-classic-s390-not-require-g-s-d_wacom.patch
-# PATCH-FIX-UPSTREAM gse-apps-menu-Add_missing_chain-up.patch -- apps-menu: Add missing chain-up
-Patch4:         gse-apps-menu-Add_missing_chain-up.patch
+Patch2:         gnome-classic-s390-not-require-g-s-d_wacom.patch
 
 ## NOTE keep SLE Classic patch at the bottom
 # PATCH-FIX-SLE gse-sle-classic-ext.patch Fate#318572 cxiong@suse.com -- add sle classic support
@@ -90,6 +86,7 @@ This package provides files common to several GNOME Shell Extensions
 Summary:        A collection of extensions for Gnome-shell classic
 Group:          System/GUI/GNOME
 Requires:       gnome-shell-classic-session
+Requires:       gnome-shell-extension-desktop-icons
 Recommends:     %{name}-common-lang
 BuildArch:      noarch
 
@@ -113,11 +110,9 @@ gnome-shell classic.
 %prep
 %setup -q
 %patch1 -p1
-%patch2 -p1
 %ifarch s390 s390x
-%patch3 -p1
+%patch2 -p1
 %endif
-%patch4 -p1
 translation-update-upstream po %{name}
 gnome-patch-translation-prepare po %{name}
 
@@ -136,7 +131,7 @@ sed -i -e 's/openSUSE/SUSE Linux Enterprise/g' README.SUSE
 %meson \
     -D classic_mode=true \
     -D extension_set=classic \
-    -D enable_extensions="apps-menu,places-menu,launch-new-instance,window-list,workspace-indicator"
+    -D enable_extensions="apps-menu,places-menu,launch-new-instance,window-list,workspace-indicator, horizontal-workspaces"
 %meson_build
 
 %install
@@ -145,7 +140,7 @@ sed -i -e 's/openSUSE/SUSE Linux Enterprise/g' README.SUSE
 #Install SLE theme
 #Install sle-classic@suse.com extension
 install -m0644 %{SOURCE2} %{buildroot}/%{_datadir}/xsessions/sle-classic.desktop
-cp %{buildroot}/%{_datadir}/gnome-shell/extensions/window-list@gnome-shell-extensions.gcampax.github.com/classic.css \
+cp %{_builddir}/%{name}-%{version}/extensions/window-list/sle-classic.css \
 %{buildroot}/%{_datadir}/gnome-shell/extensions/window-list@gnome-shell-extensions.gcampax.github.com/sle-classic.css
 install -m0644 %{SOURCE5} %{buildroot}/%{_datadir}/gnome-shell/modes/sle-classic.json
 tar -xzvf %{SOURCE6}
@@ -198,6 +193,7 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %{_datadir}/gnome-shell/extensions/places-menu@gnome-shell-extensions.gcampax.github.com/
 %{_datadir}/gnome-shell/extensions/workspace-indicator@gnome-shell-extensions.gcampax.github.com/
 %{_datadir}/gnome-shell/extensions/window-list@gnome-shell-extensions.gcampax.github.com/
+%{_datadir}/gnome-shell/extensions/horizontal-workspaces@gnome-shell-extensions.gcampax.github.com/
 %dir %{_datadir}/gnome-shell/modes
 %{_datadir}/gnome-shell/modes/classic.json
 %dir %{_datadir}/gnome-shell/theme/

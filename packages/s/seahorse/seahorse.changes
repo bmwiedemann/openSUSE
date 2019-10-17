@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Oct  1 08:17:25 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34:
+  + gkr: Fix use-after-free in password interaction.
+  + Add OARS Metadata tags.
+  + Cleanup flatpak manifest.
+  + gkr: Fix a build failure due to a GKR GIR breakage.
+  + Depend on meson version >= 0.49.
+  + Fix a crash for some Epiphany passwords.
+  + Add mnemonics.
+  + ssh: Use Posix.Signal.TERM to unbreak building with valac
+    <= 0.40.
+  + Enable type-to-search.
+  + pgp: Fix a segfault when syncing GPG keys to an HKP server.
+  + gkr: Update user documentation for keyrings.
+  + Generate manpage from XML file.
+  + Implement GApplication.open() so we can import files from the
+    command line.
+  + pgp: Fix build related to GPG(ME) versions.
+- Add docbook-xsl-stylesheets and libxslt-tools BuildRequires and
+  pass manpage=true to meson: Build manpages.
+
+-------------------------------------------------------------------
 Thu May 16 20:08:09 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.2:

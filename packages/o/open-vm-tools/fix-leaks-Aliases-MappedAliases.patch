@@ -1,0 +1,64 @@
+commit 9bc72f0b09702754b429115658a85223cb3058bd
+Author: Oliver Kurth <okurth@vmware.com>
+Date:   Wed Oct 2 17:48:35 2019 -0700
+
+    Fix leaks in ListAliases and ListMappedAliases.
+    
+    The 'record' for each alias was being leaked.
+
+diff --git a/open-vm-tools/services/plugins/vix/vixTools.c b/open-vm-tools/services/plugins/vix/vixTools.c
+index 6352b915..9ba55073 100644
+--- a/open-vm-tools/services/plugins/vix/vixTools.c
++++ b/open-vm-tools/services/plugins/vix/vixTools.c
+@@ -9762,7 +9762,6 @@ VixToolsListAuthAliases(VixCommandReques
+    char *destPtr;
+    char *endDestPtr;
+    char *tmpBuf = NULL;
+-   char *recordBuf;
+    size_t recordSize;
+    char *escapedStr = NULL;
+    char *escapedStr2 = NULL;
+@@ -9822,6 +9821,8 @@ VixToolsListAuthAliases(VixCommandReques
+    destPtr += Str_Sprintf(destPtr, endDestPtr - destPtr, "%s",
+                           VIX_XML_ESCAPED_TAG);
+    for (i = 0; i < num; i++) {
++      char *recordBuf = NULL;
++
+       escapedStr = VixToolsEscapeXMLString(uaList[i].pemCert);
+       if (escapedStr == NULL) {
+          err = VIX_E_OUT_OF_MEMORY;
+@@ -9895,6 +9896,8 @@ VixToolsListAuthAliases(VixCommandReques
+          Log("%s: ListAuth list results too large, truncating", __FUNCTION__);
+          goto abort;
+       }
++      free(recordBuf);
++      recordBuf = NULL;
+    }
+ 
+    *result = resultBuffer;
+@@ -9960,7 +9963,6 @@ VixToolsListMappedAliases(VixCommandRequ
+    char *destPtr;
+    char *endDestPtr;
+    char *tmpBuf = NULL;
+-   char *recordBuf;
+    char *escapedStr = NULL;
+    char *escapedStr2 = NULL;
+    size_t recordSize;
+@@ -10014,6 +10016,8 @@ VixToolsListMappedAliases(VixCommandRequ
+    destPtr += Str_Sprintf(destPtr, endDestPtr - destPtr, "%s",
+                           VIX_XML_ESCAPED_TAG);
+    for (i = 0; i < num; i++) {
++      char *recordBuf = NULL;
++
+       escapedStr = VixToolsEscapeXMLString(maList[i].pemCert);
+       if (escapedStr == NULL) {
+          err = VIX_E_OUT_OF_MEMORY;
+@@ -10085,6 +10089,8 @@ VixToolsListMappedAliases(VixCommandRequ
+          Log("%s: ListMapped results too large, truncating", __FUNCTION__);
+          goto abort;
+       }
++      free(recordBuf);
++      recordBuf = NULL;
+    }
+ 
+    *result = resultBuffer;

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct 03 19:38:07 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 0.10+13:
+  + Comment invalid <category> in DOAP file to pass git pre-receive
+    hook.
+  + Make the 'Don't ask again' checkbox work properly.
+  + Updated translations.
+- Switch to git checkout, current master, via source service,
+  explicit commit.
+- Add gnome-common BuildRequires and pass autogen.sh, needed to
+  bootstrap the checkout.
+- Also pass export CFLAGS='-Wno-error=deprecated-declarations'.
+- Use modern macros and tweak Summary to silence rpmlint.
+
+-------------------------------------------------------------------
 Wed Feb 28 20:21:25 UTC 2018 - dimstar@opensuse.org
 
 - Modernize spec-file by calling spec-cleaner

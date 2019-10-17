@@ -6,6 +6,7 @@ typelib(GLib) = 2.0
 typelib(GModule) = 2.0
 typelib(GObject) = 2.0
 typelib(Gio) = 2.0
+typelib(Vulkan) = 1.0
 typelib(cairo) = 1.0
 typelib(fontconfig) = 2.0
 typelib(freetype2) = 2.0

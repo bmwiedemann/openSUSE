@@ -17,21 +17,18 @@
 
 
 Name:           gnome-session
-Version:        3.32.0+5
+Version:        3.34.1
 Release:        0
 Summary:        Session Tools for the GNOME Desktop
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
-# We are using source services, so no download url for source
 Source0:        %{name}-%{version}.tar.xz
 Source1:        gnome
 Source2:        gnome.desktop
 
 # PATCH-FIX-UPSTREAM gnome-session-better-handle-empty-xdg_session_type.patch bsc#1084756 bgo#794256 yfjiang@suse.com -- solution provided by msrb@suse.com using a more reasonable way to handle gpu acceleration check
 Patch0:         gnome-session-better-handle-empty-xdg_session_type.patch
-# PATCH-FIX-UPSTREAM gnome-session-presence-Enable-idle-detection-when-screen-locked.patch bsc#1118286 glgo#GNOME/gnome-shell#900 xwang@suse.com -- Enable dimming screen when screen is locked
-Patch1:         gnome-session-presence-Enable-idle-detection-when-screen-locked.patch
 # PATCH-FIX-OPENSUSE gnome-session-s390-not-require-g-s-d_wacom.patch bsc#1129412 yfjiang@suse.com -- Remove the runtime requirement of g-s-d Wacom plugin
 Patch2:         gnome-session-s390-not-require-g-s-d_wacom.patch
 
@@ -109,7 +106,6 @@ functional GNOME desktop.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 %ifarch s390 s390x
 %patch2 -p1
 %endif
@@ -204,8 +200,28 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %{_libexecdir}/gnome-session-check-accelerated
 %{_libexecdir}/gnome-session-check-accelerated-gl-helper
 %{_libexecdir}/gnome-session-check-accelerated-gles-helper
+%{_libexecdir}/gnome-session-ctl
 %{_libexecdir}/gnome-session-failed
 %{_datadir}/gnome-session/hardware-compatibility
+%{_userunitdir}/gnome-session-failed.service
+%{_userunitdir}/gnome-session-failed.target
+%{_userunitdir}/gnome-session-initialized.target
+%{_userunitdir}/gnome-session-manager.target
+%{_userunitdir}/gnome-session-manager@.service
+%{_userunitdir}/gnome-session-monitor.service
+%{_userunitdir}/gnome-session-pre.target
+%{_userunitdir}/gnome-session-restart-dbus.service
+%{_userunitdir}/gnome-session-shutdown.target
+%{_userunitdir}/gnome-session-signal-init.service
+%{_userunitdir}/gnome-session-stable.target
+%{_userunitdir}/gnome-session-stable.timer
+%{_userunitdir}/gnome-session-wayland.target
+%{_userunitdir}/gnome-session-wayland@.target
+%{_userunitdir}/gnome-session-x11.target
+%{_userunitdir}/gnome-session-x11@.target
+%{_userunitdir}/gnome-session-x11-services.target
+%{_userunitdir}/gnome-session.target
+%{_userunitdir}/gnome-session@.target
 
 %files lang -f %{name}-3.0.lang
 

@@ -21,15 +21,13 @@
 %define RPMTrackerAPI 2_0
 
 Name:           tracker
-Version:        2.2.2
+Version:        2.3.1
 Release:        0
 Summary:        Object database, tag/metadata database, search tool and indexer
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://wiki.gnome.org/Projects/Tracker
-Source0:        https://download.gnome.org/sources/tracker/2.2/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM fix-tracker-miner-fs-lto-crash.patch -- Fix build with LTO enabled
-Patch0:         fix-tracker-miner-fs-lto-crash.patch
+Source0:        https://download.gnome.org/sources/tracker/2.3/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -233,6 +231,7 @@ mkdir -p %{buildroot}%{_datadir}/tracker/icons/
 
 %fdupes %{buildroot}%{_datadir}/vala/
 %fdupes %{buildroot}%{_datadir}/gtk-doc
+rm -f %{buildroot}%{_libdir}/tracker-%{TrackerAPI}/libtracker-common.a
 
 %post -n libtracker-control-%{RPMTrackerAPI}-0 -p /sbin/ldconfig
 %postun -n libtracker-control-%{RPMTrackerAPI}-0 -p /sbin/ldconfig
@@ -267,7 +266,6 @@ mkdir -p %{buildroot}%{_datadir}/tracker/icons/
 %{_mandir}/man1/tracker-tag.1%{ext_man}
 
 %files -n libtracker-common-%{RPMTrackerAPI}
-%{_libdir}/tracker-%{TrackerAPI}/libtracker-common.so
 %{_libdir}/tracker-%{TrackerAPI}/libtracker-data.so
 %{_datadir}/glib-2.0/schemas/org.freedesktop.Tracker.enums.xml
 
@@ -292,6 +290,7 @@ mkdir -p %{buildroot}%{_datadir}/tracker/icons/
 %files -n tracker-devel
 %doc AUTHORS README.md NEWS
 %{_libdir}/lib*.so
+%{_libdir}/tracker-%{TrackerAPI}/trackertestutils
 %{_includedir}/tracker-%{TrackerAPI}/
 %{_libdir}/pkgconfig/tracker-control-%{TrackerAPI}.pc
 %{_libdir}/pkgconfig/tracker-miner-%{TrackerAPI}.pc

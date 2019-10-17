@@ -8,11 +8,10 @@ Subject: [PATCH] more power button actions
  plugins/media-keys/gsd-media-keys-manager.c | 6 ++++++
  2 files changed, 8 insertions(+)
 
-Index: gnome-settings-daemon-3.26.0/data/gsd-enums.h
-===================================================================
---- gnome-settings-daemon-3.26.0.orig/data/gsd-enums.h	2017-09-14 14:20:52.202275466 +0200
-+++ gnome-settings-daemon-3.26.0/data/gsd-enums.h	2017-09-14 14:21:26.602338266 +0200
-@@ -105,6 +105,7 @@
+diff -urp gnome-settings-daemon-3.33.90.orig/data/gsd-enums.h gnome-settings-daemon-3.33.90/data/gsd-enums.h
+--- gnome-settings-daemon-3.33.90.orig/data/gsd-enums.h	2019-08-05 18:40:19.000000000 -0500
++++ gnome-settings-daemon-3.33.90/data/gsd-enums.h	2019-08-31 19:45:22.123948132 -0500
+@@ -105,6 +105,7 @@ typedef enum
  typedef enum
  {
    GSD_POWER_BUTTON_ACTION_NOTHING,
@@ -20,17 +19,16 @@ Index: gnome-settings-daemon-3.26.0/data/gsd-enums.h
    GSD_POWER_BUTTON_ACTION_SUSPEND,
    GSD_POWER_BUTTON_ACTION_HIBERNATE,
    GSD_POWER_BUTTON_ACTION_INTERACTIVE
-Index: gnome-settings-daemon-3.26.0/plugins/media-keys/gsd-media-keys-manager.c
-===================================================================
---- gnome-settings-daemon-3.26.0.orig/plugins/media-keys/gsd-media-keys-manager.c	2017-09-14 14:20:52.202275466 +0200
-+++ gnome-settings-daemon-3.26.0/plugins/media-keys/gsd-media-keys-manager.c	2017-09-14 14:26:14.074784955 +0200
-@@ -1953,6 +1953,9 @@
+diff -urp gnome-settings-daemon-3.33.90.orig/plugins/media-keys/gsd-media-keys-manager.c gnome-settings-daemon-3.33.90/plugins/media-keys/gsd-media-keys-manager.c
+--- gnome-settings-daemon-3.33.90.orig/plugins/media-keys/gsd-media-keys-manager.c	2019-08-31 19:31:09.939430941 -0500
++++ gnome-settings-daemon-3.33.90/plugins/media-keys/gsd-media-keys-manager.c	2019-08-31 19:45:22.127948152 -0500
+@@ -2230,6 +2230,9 @@ do_config_power_button_action (GsdMediaK
  
-         action_type = g_settings_get_enum (manager->priv->power_settings, "power-button-action");
+         action_type = g_settings_get_enum (priv->power_settings, "power-button-action");
          switch (action_type) {
 +        case GSD_POWER_BUTTON_ACTION_SHUTDOWN:
 +                do_config_power_action (manager, GSD_POWER_ACTION_SHUTDOWN, in_lock_screen);
 +                break;
          case GSD_POWER_BUTTON_ACTION_SUSPEND:
-                 do_config_power_action (manager, GSD_POWER_ACTION_SUSPEND, in_lock_screen);
+                 action = GSD_POWER_ACTION_SUSPEND;
                  break;

@@ -18,13 +18,13 @@
 
 %define gs_plugin_api 13
 Name:           gnome-software
-Version:        3.32.4
+Version:        3.34.1
 Release:        0
 Summary:        GNOME Software Store
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Software
-Source0:        https://download.gnome.org/sources/gnome-software/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-software/3.34/%{name}-%{version}.tar.xz
 
 BuildRequires:  gtk-doc
 BuildRequires:  meson
@@ -130,14 +130,13 @@ rm %{buildroot}%{_datadir}/doc/%{name}/README.md
 %{_includedir}/%{name}/gnome-software.h
 %{_includedir}/%{name}/gs-app-list.h
 %{_includedir}/%{name}/gs-app.h
-%{_includedir}/%{name}/gs-auth.h
 %{_includedir}/%{name}/gs-category.h
+%{_includedir}/%{name}/gs-metered.h
 %{_includedir}/%{name}/gs-os-release.h
 %{_includedir}/%{name}/gs-plugin-vfuncs.h
 %{_includedir}/%{name}/gs-plugin.h
 %{_includedir}/%{name}/gs-plugin-event.h
 %{_includedir}/%{name}/gs-plugin-types.h
-%{_includedir}/%{name}/gs-price.h
 %{_includedir}/%{name}/gs-utils.h
 %{_libdir}/pkgconfig/gnome-software.pc
 

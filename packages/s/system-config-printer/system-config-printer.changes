@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep  8 08:50:01 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Fix printer icon location again, needed due to changes in
+  Adwaita. Now back to old location.
+
+-------------------------------------------------------------------
 Tue Jun 11 12:53:47 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to

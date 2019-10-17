@@ -17,7 +17,7 @@
 
 
 Name:           gobject-introspection
-Version:        1.60.2
+Version:        1.62.0
 Release:        0
 # FIXME: Find a way to identify if we need python3-gobject or python-gobject from gi-find-deps.sh.
 Summary:        GObject Introspection Tools
@@ -25,7 +25,7 @@ License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/GObjectIntrospection
 
-Source0:        https://download.gnome.org/sources/gobject-introspection/1.60/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gobject-introspection/1.62/%{name}-%{version}.tar.xz
 # gi-find-deps.sh is a rpm helper for Provides and Requires. Script creates typelib()-style Provides/Requires.
 Source1:        gi-find-deps.sh
 Source2:        gobjectintrospection.attr
@@ -37,7 +37,7 @@ BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gtk-doc
-BuildRequires:  meson >= 0.47
+BuildRequires:  meson >= 0.49.2
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Mako
 BuildRequires:  python3-Markdown
@@ -58,6 +58,7 @@ Requires:       libgirepository-1_0-1 = %{version}
 # gi-find-deps uses the enhanced grep variant in order to do multi-line matching (for pkg.requires(..))
 Requires:       pcre-tools
 Requires:       python3-xml
+Requires:       python(abi) = %{python3_version}
 
 %description
 The goal of the project is to describe the APIs and collect them in

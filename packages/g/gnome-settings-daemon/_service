@@ -1,0 +1,17 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://gitlab.gnome.org/GNOME/gnome-settings-daemon.git</param>
+    <param name="scm">git</param>
+    <param name="revision">gnome-3-34</param>
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
+    <param name="versionrewrite-pattern">GNOME_SETTINGS_DAEMON_(\d+)_(\d+)_(\d+)</param>
+    <param name="versionrewrite-replacement">\1.\2.\3</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+</services>

@@ -17,13 +17,13 @@
 
 
 Name:           template-glib
-Version:        3.32.0
+Version:        3.34.0
 Release:        0
 Summary:        Library for generating text based on a template and user defined state
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 Url:            https://git.gnome.org/browse/template-glib/
-Source0:        https://download.gnome.org/sources/template-glib/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/template-glib/3.34/%{name}-%{version}.tar.xz
 
 BuildRequires:  bison
 BuildRequires:  flex

@@ -17,16 +17,16 @@
 
 
 Name:           libdazzle
-Version:        3.32.3
+Version:        3.34.1
 Release:        0
 Summary:        Collection of fancy features for GLib and Gtk+
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Tools/Other
 URL:            https://gitlab.gnome.org/GNOME/libdazzle
-Source0:        https://download.gnome.org/sources/libdazzle/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/libdazzle/3.34/%{name}-%{version}.tar.xz
 
 BuildRequires:  gtk-doc
-BuildRequires:  meson
+BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0) >= 2.55.0
 BuildRequires:  pkgconfig(glib-2.0)
@@ -41,6 +41,14 @@ It provides various features that are wished in the underlying
 library but are not for various reasons. In most cases, they are
 wildly out of scope for those libraries. In other cases, the design
 isn't quite generic enough to work for everyone.
+
+%package -n     dazzle-list-counters
+Summary:        Collection of fancy features for GLib and Gtk+
+Group:          Development/Tools/Other
+
+%description -n dazzle-list-counters
+This package provides the dazzle-list-counters binary.
+
 
 %package -n     libdazzle-1_0-0
 Summary:        Collection of fancy features for GLib and Gtk+ -- Library file
@@ -71,7 +79,8 @@ This package provides the GObject Introspection bindings for libdazzle.
 %package        devel
 Summary:        Collection of fancy features for GLib and Gtk+ -- Development Files
 Group:          Development/Tools/Other
-Requires:       %{name} = %{version}
+Requires:       dazzle-list-counters = %{version}
+Requires:       libdazzle-1_0-0 = %{version}
 Requires:       typelib-1_0-libdazzle-1_0 = %{version}
 
 %description    devel
@@ -108,7 +117,7 @@ This package provides the development files, and its documentation, for libdazzl
 %post -n libdazzle-1_0-0 -p /sbin/ldconfig
 %postun -n libdazzle-1_0-0 -p /sbin/ldconfig
 
-%files
+%files -n dazzle-list-counters
 %doc NEWS README.md
 %{_bindir}/dazzle-list-counters
 

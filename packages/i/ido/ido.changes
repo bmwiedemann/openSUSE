@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 12 08:07:32 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add ido-fix-maintainer-cflags.patch: Do not pass -Werror
+  unconditionally. This is already part of
+  --enable-maintainer-flags, which is default enabled on the
+  unstable branch. For the stable branch, we accept new warnings
+  coming from updated toolchains and gnome stacks.
+
+-------------------------------------------------------------------
 Mon Mar 12 12:43:56 UTC 2018 - sor.alexei@meowr.ru
 
 - Change the source package RPM group to System/GUI/Other.

@@ -1,7 +1,7 @@
 #
 # spec file for package ido
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -32,6 +32,8 @@ Source:         https://launchpad.net/ubuntu/+archive/primary/+files/%{name}_%{_
 Source1:        baselibs.conf
 # PATCH-FIX-OPENSUSE ido-optional-ubuntu-private.patch sor.alexei@meowr.ru -- Make Ubuntu GTK+ Private API optional.
 Patch0:         ido-optional-ubuntu-private.patch
+# PATCH-FIX-OPENSUSE ido-fix-maintainer-cflags.patch dimstar@opensuse.org -- Strip -Werror from unconditional CFLAGS. This is part of maintainer_CFLAGS; fixes build with more recent toolchains/gnome stacks
+Patch1:         ido-fix-maintainer-cflags.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gnome-common
 BuildRequires:  pkgconfig
@@ -84,6 +86,7 @@ This package contains the development files for Ido.
 %prep
 %setup -q -c
 %patch0 -p1
+%patch1 -p1
 
 %build
 NOCONFIGURE=1 gnome-autogen.sh

@@ -1,4 +1,166 @@
 -------------------------------------------------------------------
+Mon Sep  9 13:55:37 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.34.0:
+  + Web:
+    - Complete *initial* support for Chrome/Chromium. Important:
+      In order - for this support to work, you will need a version
+      of Chrome/Chromium - which has not yet been released.
+    - Don't auto-enter focus mode for embedded role if reading PDF.
+    - Ensure we respect the choice to temporarily turn live
+      regions off.
+    - Ignore "document" load events for images emitted by Gecko.
+    - Eliminate some chattiness with popup button elements.
+  + Thunderbird: Attempt to improve performance by ignoring some
+    event spam.
+  + General:
+    - Several stability fixes for objects and applications going
+      defunct.
+    - Fix regression introduced by Shift Lock change.
+    - Improve reliability of mouse review when multiple objects
+      report same bounding box.
+  + New and updated translations.
+
+-------------------------------------------------------------------
+Sat Aug 31 13:35:06 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Re-enable translation-update-upstream, and fix invocation. 
+
+-------------------------------------------------------------------
+Fri Aug 30 15:33:51 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 3.33.91: 
+  + Web:
+    - Improve performance with structural navigation amongst
+      large objects.
+    -  Also fix performance regression introduced in unstable
+      release.
+    - Treat headings as paragraphs for the purpose of structural
+      navigation
+    - Treat push buttons with state has-popup as focus-mode
+      widgets
+    - Fix chattiness resulting from svg elements with no
+      information
+    - Don't generate tutorial messages for widgets in document
+      content
+    - Eliminate some chattiness with Google Drive menus
+    - Improve presentation of widgets which are destroyed and
+      recreated  while focused
+    - Improve detection and presentation of content which is
+      exposed to  us incorrectly due to CSS properties
+    - Ongoing work on Chromium support.
+  + GNOME Shell: Eliminate some chattiness with Dash
+  + Updated translations.
+- Changes from version 3.33.90:
+  + Web:
+    - Try to include results count during find in page searches
+    - Fix bugs preventing SayAll on page load from working
+    - Fix bug in braille presentation of new Firefox location
+      input
+    - Work around another instance of CSSed text being exposed
+      as one char  per line
+    - Improve presentation of treegrids
+    - Reduce chattiness with editable comboboxes and with
+      auto-focused  descendants
+    - Never treat layout-only-table cells as focus-mode widgets
+    - Make finding clickables more performant
+    - Ensure we present final word in element when navigating
+      by word
+    - Present caret-moved events from mouse clicks even if
+      element hasn't  changed
+  + Mouse Review:
+    - Improve overall presentation of units of text under
+      the pointer
+    - Improve logic filtering out irrelevant mouse movements
+      during review
+    - Apply non-mousereview cell/row presentation preferences
+      for a  more consistent experience
+    - Don't present description for mouse review if tooltip
+      presentation  is off
+  + General:
+    - Add support for Shift Lock
+    - Add initial support for AtspiText's scrollSubstringTo
+    - Add fall backs for click-at-point failures
+    - Also check for "underline:spelling" as indication of
+      spelling error
+    - Improve response time for mouse input events
+    - Allow building with gettext ≥ 0.20
+- Changes from version 3.33.3:
+  + Web:
+    - Improve presentation of Google Sheets when native
+      accessibility  support is being used rather than
+      live-region-based support.
+    - Add support for in-process ARIA feature for alternative
+      text for  cell indices
+    - Fix bug in live region support causing some information
+      to not be  presented
+    - Improve presentation of off-screen content (so that it isn't
+      spoken as if each word is on its own line)
+    - Ensure we present newly-focused widget when current
+      widget gets  destroyed
+    - Fix presentation of description-term and description-value
+      roles
+    - Fix bug causing basic context information to be missing
+      during  structural navigation
+    - Improve presentation of Dojo color-chooser buttons
+    - Speak the landmark type before the landmark name/content
+      rather  than after
+    - Don't treat two landmarks as being on the same line
+    - Fix issue resulting in some items being skipped during
+      SayAll
+    - Ensure we don't filter out links with author-provided names
+    - Improve likelihood that we'll speak link role for
+      descendant text
+    - Improve behavior of non-interactive web cells with click
+      handlers
+    - Ensure we present the newly-focused element after dialog
+      is dismissed
+    - Explicitly clear text selection when controlling navigation
+    - Work around another issue in Gecko's broken text
+      implementation
+  + Mouse Review: Fix bug causing us to present the wrong document
+    when multiple  documents are open
+  + General:
+    - Fix several issues related to presentation of combo boxes
+    - Separate out voice variants in GUI
+    - Fix braille traceback when there are no lines to display
+    - Add marks at end of line for speech
+    - Fix several "chattiness" issues
+    - Improve performance searching for objects in accessibility
+      tree
+    - Improve flat review of table rows
+    - Ignore window deactivate events if the event is not from
+      the active  window
+- Changes from version 3.33.1:
+  + Web:
+    - Fix issue navigating to and around multibyte characters
+    - Fix issue related to our workaround for broken Gecko text
+    - Improve presentation of nameless links with non-meaningful
+      URL
+    - Fix bug causing us to get stuck in a nested layout
+      tables when  using table navigation on the non-layout parent
+    - Don't exit focus mode when navigating among text in a
+      web app
+    - Only do the work to filter inferred labels if we have to
+    - Eliminate duplicate presentation of table-row content
+    - Fix bug in going to the beginning/end of a container
+      via structural  navigation
+  + Speech: When we don't have a custom char name, use
+    speech-dispatcher's API  to speak characters so that letters
+    are not presented as words
+  + Qt: Ignore events from accelerator labels
+  + LibreOffice: Do not announce selection changes from unfocused
+    combo boxes
+  + General:
+    - Handle the reported number of text selections being -1
+    - Migrate from intltool to gettext
+- Now requires version 2.26+ of at-spi2 and atk-bridge.
+- Drop intltool BuildRequires: no longer needed after port to
+  gettext.
+- Disable translation-update-upstream: it is not configured and
+  currently causes the build to fail.
+
+-------------------------------------------------------------------
 Wed Mar 13 19:45:56 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.0:

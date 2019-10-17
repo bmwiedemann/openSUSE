@@ -1,0 +1,49 @@
+From cd636315a5ff60567ff6a49ea10f326b69337029 Mon Sep 17 00:00:00 2001
+From: quartenium <quartenium@gmail.com>
+Date: Mon, 11 Sep 2017 17:59:11 +0300
+Subject: [PATCH] src/forms.c: Fix segfault on multiple lists without values
+
+If was not provided enought list-values for add-list options
+then column_types is NULL. Therefore need set it to default
+value.
+If count of columns values less than count of list values
+then set column nubmer to zero.
+---
+ src/forms.c | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/src/forms.c b/src/forms.c
+index 4e6fca5..15df718 100644
+--- a/src/forms.c
++++ b/src/forms.c
+@@ -110,8 +110,15 @@ zenity_forms_create_and_fill_list (
+ 	tree_view = gtk_tree_view_new ();
+ 
+ 	if (forms_data->column_values) {
++		int columns_values_count =
++			g_slist_length (forms_data->column_values);
++		int column_number = 0;
++		if (list_number < columns_values_count) {
++			column_number = list_number;
++		}
++
+ 		column_values =
+-			g_slist_nth_data (forms_data->column_values, list_number);
++			g_slist_nth_data (forms_data->column_values, column_number);
+ 		if (column_values) {
+ 			gchar **values = g_strsplit_set (column_values, "|", -1);
+ 			if (values) {
+@@ -130,6 +137,10 @@ zenity_forms_create_and_fill_list (
+ 					column_index++;
+ 				}
+ 			}
++		} else {
++			/* If no values available, add one with string type*/
++			column_types = g_new (GType, n_columns);
++			column_types[0] = G_TYPE_STRING;
+ 		}
+ 	}
+ 
+-- 
+2.22.0
+

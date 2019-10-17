@@ -17,7 +17,7 @@
 
 
 Name:           grilo
-Version:        0.3.9
+Version:        0.3.10
 Release:        0
 Summary:        Framework for browsing and searching media content
 License:        LGPL-2.1-or-later
@@ -28,7 +28,7 @@ Source0:        https://download.gnome.org/sources/grilo/0.3/%{name}-%{version}.
 BuildRequires:  fdupes
 BuildRequires:  gtk-doc
 BuildRequires:  intltool
-BuildRequires:  meson
+BuildRequires:  meson >= 0.46.0
 BuildRequires:  pkgconfig
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gio-2.0) >= 2.44
@@ -39,6 +39,7 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.41.3
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(oauth)
 BuildRequires:  pkgconfig(totem-plparser) >= 3.4.1
 BuildRequires:  pkgconfig(vapigen) >= 0.27
 
@@ -87,7 +88,7 @@ Grilo is a framework for browsing and searching media content from
 various sources using a single API.
 
 %package -n typelib-1_0-GrlNet-0_3
-Summary:        Framework for browsing and searching media content -- Networking Helper Library, Introspection bindings
+Summary:        Introspection bindings for grilo
 Group:          System/Libraries
 
 %description -n typelib-1_0-GrlNet-0_3
@@ -98,7 +99,7 @@ This package provides the GObject Introspection bindings for the
 libgrlnet library.
 
 %package -n typelib-1_0-GrlPls-0_3
-Summary:        Framework for browsing and searching media content -- Playlist Helper Library, Introspection bindings
+Summary:        Introspection bindings for grilo
 Group:          System/Libraries
 
 %description -n typelib-1_0-GrlPls-0_3
@@ -152,9 +153,8 @@ install -d %{buildroot}%{_libdir}/grilo-0.3
 install -d %{buildroot}%{_datadir}/grilo-0.3/plugins
 %fdupes %{buildroot}%{_datadir}
 
-# make check disabled: it requires grilo to be installed to /usr beforehand (in order to load the plugins)
-#%%check
-#make check
+%check
+%meson_test
 
 %post -n libgrilo-0_3-0 -p /sbin/ldconfig
 %postun -n libgrilo-0_3-0 -p /sbin/ldconfig

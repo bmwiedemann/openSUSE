@@ -60,11 +60,11 @@ BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  python3-lxml
-BuildRequires:  pkgconfig(systemd)
 BuildRequires:  update-desktop-files
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(libudev) >= 172
 BuildRequires:  pkgconfig(libusb-1.0)
+BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 Requires:       %{name}-common = %{version}
 Requires:       python3-cups
@@ -179,9 +179,9 @@ automatically configured when plugged on the computer.
 %install
 %make_install udevrulesdir=%{_prefix}/lib/udev/rules.d udevhelperdir=%{_prefix}/lib/udev
 for size in 8x8 16x16 22x22 24x24 32x32 48x48 256x256; do
-	if test -f %{_datadir}/icons/%{_iconlocation}/$size/legacy/printer.png; then
+	if test -f %{_datadir}/icons/%{_iconlocation}/$size/devices/printer.png; then
 		mkdir -p %{buildroot}/%{_datadir}/icons/hicolor/$size/apps
-		cp -a %{_datadir}/icons/%{_iconlocation}/$size/legacy/printer.png %{buildroot}/%{_datadir}/icons/hicolor/$size/apps/%{name}.png
+		cp -a %{_datadir}/icons/%{_iconlocation}/$size/devices/printer.png %{buildroot}/%{_datadir}/icons/hicolor/$size/apps/%{name}.png
 	fi
 done
 %suse_update_desktop_file print-applet

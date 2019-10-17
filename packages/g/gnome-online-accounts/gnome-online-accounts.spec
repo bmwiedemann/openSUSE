@@ -17,13 +17,13 @@
 
 
 Name:           gnome-online-accounts
-Version:        3.32.0
+Version:        3.34.1
 Release:        0
 Summary:        GNOME service to access online accounts
 License:        LGPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GnomeOnlineAccounts
-Source0:        https://download.gnome.org/sources/gnome-online-accounts/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-online-accounts/3.34/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  docbook-xsl-stylesheets

@@ -13,31 +13,30 @@ https://bugzilla.suse.com/show_bug.cgi?id=979051
  plugins/keyboard/gsd-keyboard-manager.c | 18 +++++++++++++-----
  1 file changed, 13 insertions(+), 5 deletions(-)
 
-Index: gnome-settings-daemon-3.32.1/plugins/keyboard/gsd-keyboard-manager.c
-===================================================================
---- gnome-settings-daemon-3.32.1.orig/plugins/keyboard/gsd-keyboard-manager.c
-+++ gnome-settings-daemon-3.32.1/plugins/keyboard/gsd-keyboard-manager.c
-@@ -479,7 +479,7 @@ update_gtk_im_module (GsdKeyboardManager
+diff -urp gnome-settings-daemon-3.33.90.orig/plugins/keyboard/gsd-keyboard-manager.c gnome-settings-daemon-3.33.90/plugins/keyboard/gsd-keyboard-manager.c
+--- gnome-settings-daemon-3.33.90.orig/plugins/keyboard/gsd-keyboard-manager.c	2019-08-05 18:40:19.000000000 -0500
++++ gnome-settings-daemon-3.33.90/plugins/keyboard/gsd-keyboard-manager.c	2019-08-31 06:29:26.930806593 -0500
+@@ -331,7 +331,7 @@ update_gtk_im_module (GsdKeyboardManager
  }
  
  static void
 -get_sources_from_xkb_config (GsdKeyboardManager *manager)
 +get_sources_from_xkb_config (GsdKeyboardManager *manager, gboolean running_under_gdm)
  {
-         GsdKeyboardManagerPrivate *priv = manager->priv;
          GVariantBuilder builder;
-@@ -498,7 +498,7 @@ get_sources_from_xkb_config (GsdKeyboard
+         GVariant *v;
+@@ -349,7 +349,7 @@ get_sources_from_xkb_config (GsdKeyboard
  
-         init_builder_with_sources (&builder, priv->input_sources_settings);
+         init_builder_with_sources (&builder, manager->input_sources_settings);
  
 -        if (!layouts) {
 +        if (!layouts && running_under_gdm) {
                  g_variant_builder_add (&builder, "(ss)", INPUT_SOURCE_TYPE_XKB, DEFAULT_LAYOUT);
                  goto out;
  	}
-@@ -678,15 +678,23 @@ maybe_create_initial_settings (GsdKeyboa
+@@ -528,15 +528,23 @@ maybe_create_initial_settings (GsdKeyboa
  
-         settings = manager->priv->input_sources_settings;
+         settings = manager->input_sources_settings;
  
 -        if (g_getenv ("RUNNING_UNDER_GDM"))
 -                return;

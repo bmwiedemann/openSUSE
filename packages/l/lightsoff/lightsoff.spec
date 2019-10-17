@@ -17,13 +17,13 @@
 
 
 Name:           lightsoff
-Version:        3.32.0
+Version:        3.34.0
 Release:        0
 Summary:        Lights Out Game for GNOME
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Other
 URL:            https://wiki.gnome.org/Apps/Lightsoff
-Source0:        https://download.gnome.org/sources/lightsoff/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/lightsoff/3.34/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gettext >= 0.19.8

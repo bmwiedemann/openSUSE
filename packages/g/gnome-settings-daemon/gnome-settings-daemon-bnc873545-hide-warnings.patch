@@ -4,17 +4,12 @@ Date: Tue, 6 May 2014 16:13:04 +0800
 Subject: [PATCH] hide warnings
 
 ---
- plugins/color/gsd-color-profiles.c | 2 ++
- plugins/color/gsd-color-state.c    | 2 ++
- 2 files changed, 4 insertions(+)
-
-diff --git a/plugins/color/gsd-color-profiles.c b/plugins/color/gsd-color-profiles.c
-index 2b01faa..05a728a 100644
---- a/plugins/color/gsd-color-profiles.c
-+++ b/plugins/color/gsd-color-profiles.c
-@@ -73,7 +73,9 @@ gcm_session_client_connect_cb (GObject *source_object,
+diff -urp gnome-settings-daemon-3.33.90.orig/plugins/color/gsd-color-profiles.c gnome-settings-daemon-3.33.90/plugins/color/gsd-color-profiles.c
+--- gnome-settings-daemon-3.33.90.orig/plugins/color/gsd-color-profiles.c	2019-08-05 18:40:19.000000000 -0500
++++ gnome-settings-daemon-3.33.90/plugins/color/gsd-color-profiles.c	2019-08-31 19:41:32.942733480 -0500
+@@ -71,7 +71,9 @@ gcm_session_client_connect_cb (GObject *
          profiles = GSD_COLOR_PROFILES (user_data);
-         ret = cd_client_get_has_server (profiles->priv->client);
+         ret = cd_client_get_has_server (profiles->client);
          if (!ret) {
 +                /* hide this warning for SLES
                  g_warning ("There is no colord server available");
@@ -22,13 +17,12 @@ index 2b01faa..05a728a 100644
                  return;
          }
  
-diff --git a/plugins/color/gsd-color-state.c b/plugins/color/gsd-color-state.c
-index 04823e4..20e8a2b 100644
---- a/plugins/color/gsd-color-state.c
-+++ b/plugins/color/gsd-color-state.c
-@@ -1297,7 +1297,9 @@ gcm_session_client_connect_cb (GObject *source_object,
+diff -urp gnome-settings-daemon-3.33.90.orig/plugins/color/gsd-color-state.c gnome-settings-daemon-3.33.90/plugins/color/gsd-color-state.c
+--- gnome-settings-daemon-3.33.90.orig/plugins/color/gsd-color-state.c	2019-08-05 18:40:19.000000000 -0500
++++ gnome-settings-daemon-3.33.90/plugins/color/gsd-color-state.c	2019-08-31 19:42:00.470879362 -0500
+@@ -1359,7 +1359,9 @@ gcm_session_client_connect_cb (GObject *
          /* is there an available colord instance? */
-         ret = cd_client_get_has_server (state->priv->client);
+         ret = cd_client_get_has_server (state->client);
          if (!ret) {
 +                /* hide this warning for SLES
                  g_warning ("There is no colord server available");
@@ -36,6 +30,3 @@ index 04823e4..20e8a2b 100644
                  return;
          }
  
--- 
-1.7.12.4
-

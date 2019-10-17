@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Sep  6 17:00:03 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.34.0:
+  + Fix installation location of systemd unit file on Fedora 64-bit
+    systems.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 30 21:28:39 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.33.1:
+  + Port to meson build system.
+  + Remove autotools as build system.
+- Add meson BuildRequires and macros.
+
+-------------------------------------------------------------------
 Mon Mar 11 15:11:20 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.0.1:

@@ -18,13 +18,15 @@
 
 %define build_zeitgeist_plugin 0
 Name:           totem
-Version:        3.32.1
+Version:        3.34.1
 Release:        0
 Summary:        Movie Player for the GNOME Desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            https://wiki.gnome.org/Apps/Videos
-Source0:        https://download.gnome.org/sources/totem/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/totem/3.34/%{name}-%{version}.tar.xz
+# PATCH-FEATURE-OPENSUSE totem-revert-vaapi-disable.patch -- Revert upstreams disabling of vaapi support
+Patch0:         totem-revert-vaapi-disable.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes
@@ -34,8 +36,6 @@ BuildRequires:  gstreamer-plugins-good >= 0.11.93
 BuildRequires:  gstreamer-utils >= 0.11.93
 BuildRequires:  gtk-doc
 BuildRequires:  intltool
-# FIXME meson does not recognise lirc_client
-#BuildRequires:  lirc-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-pylint
@@ -75,6 +75,8 @@ Recommends:     gstreamer-plugins-bad
 Recommends:     gstreamer-plugins-ugly
 Recommends:     totem-plugins
 Suggests:       gnome-dvb-daemon
+# totem-plugin-brasero has been removed.
+Obsoletes:      totem-plugin-brasero
 # totem-plugin-upnp has been substituted by a grilo plugin.
 Obsoletes:      totem-plugin-upnp <= %{version}
 # The browser plugins were dropped with totem 3.13.90
@@ -108,18 +110,6 @@ Totem is a movie player for the GNOME desktop based on GStreamer.
 
 This package includes plugins for Totem, to add advanced features.
 
-%package plugin-brasero
-Summary:        Brasero support for the Totem movie player
-Group:          Productivity/Multimedia/Video/Players
-Requires:       %{name} = %{version}
-Requires:       brasero
-Supplements:    packageand(%{name}:brasero)
-
-%description plugin-brasero
-Totem is movie player for the GNOME desktop based on GStreamer.
-
-This package includes the Brasero plugin for Totem.
-
 %if %{build_zeitgeist_plugin}
 %package plugin-zeitgeist
 Summary:        Zeitgeist support for the Totem movie player
@@ -151,8 +141,6 @@ sed -i 's/\[.*\]//g' po/POTFILES.in
 translation-update-upstream po totem
 
 %build
-# FIXME once we figure out whats wrong with lirc-devel, add this to meson calls
-# 	-Dwith-plugins=all \
 %meson \
 	-D enable-easy-codec-installation=yes \
 	-D enable-gtk-doc=true \
@@ -203,8 +191,8 @@ translation-update-upstream po totem
 %{_libdir}/totem/plugins/autoload-subtitles/
 %{_libdir}/totem/plugins/dbus/
 %{_libdir}/totem/plugins/im-status/
-#%%{_libdir}/totem/plugins/lirc/
 %{_libdir}/totem/plugins/media-player-keys/
+%{_libdir}/totem/plugins/open-directory/
 %{_libdir}/totem/plugins/opensubtitles/
 %{_libdir}/totem/plugins/properties/
 %{_libdir}/totem/plugins/pythonconsole/
@@ -220,9 +208,6 @@ translation-update-upstream po totem
 %{_datadir}/GConf/gsettings/pythonconsole.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.totem.plugins.opensubtitles.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.totem.plugins.pythonconsole.gschema.xml
-
-%files plugin-brasero
-%{_libdir}/totem/plugins/brasero-disc-recorder/
 
 %if %{build_zeitgeist_plugin}
 %files plugin-zeitgeist

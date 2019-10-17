@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Sat Oct  5 08:14:53 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + panel: hide handles when animations are disabled.
+- Drop libdazzle-remove-counters-from-docs.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Mon Sep 16 10:26:15 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add libdazzle-remove-counters-from-docs.patch: Fix build with
+  gtk-doc 1.32 or newer.
+- Rename main package to dazzle-list-counters, it is a more
+  descriptive name of what the package provide and added bonus it
+  will silence rpmlint.
+
+-------------------------------------------------------------------
+Tue Sep 10 05:58:28 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.34.0:
+  + Set NO_AT_BRIDGE=1 in automated tests.
+  + Allow Escape to clear/reset GtkSearchEntry based widgets.
+
+-------------------------------------------------------------------
+Thu Aug 15 11:38:18 CEST 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.33.90:
+  + Add helper for shortcuts to remove accels.
+  + Tweak styling for Adwaita.
+- Changes from version 3.33.4:
+  + Work around recent changes in GTK action muxing.
+  + Autoptr additions.
+  + Improve fuzzy text matches.
+  + Various fixes for alternative compilers.
+- Changes from version 3.33.3:
+  + libdazzle provides a backported GtkEventControllerMotion when
+    compiled against GTK versions <= 3.22. This means that
+    libdazzle now effectively supports 3.22 in addition to 3.24.
+  + libdazzle has been backported to support GLib 2.50 so that it
+    can be used on older platforms.
+  + Various API additions to simply use from bindings.
+  + A new compact mode for DzlSuggestionEntry.
+  + Improvements to shortcut activation.
+  + The fuzzy highlighter has been improved to work around some
+    embedded markup.
+  + Correctness fixes.
+  + The panel now has support for "needs-attention".
+- Changes from version 3.33.1:
+  + Do not reset child positions on DzlMultiPaned::add.
+  + Treat . as a break character in DzlPatternSpec.
+  + A new DzlSuggestionButton widget was added that transitions
+    from a GtkButton to a DzlSuggestionEntry.
+
+-------------------------------------------------------------------
 Thu Jul 25 00:50:54 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.3:

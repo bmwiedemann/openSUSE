@@ -18,13 +18,13 @@
 
 %define have_lang 1
 Name:           libsecret
-Version:        0.18.8
+Version:        0.19.1
 Release:        0
 Summary:        Library for accessing the Secret Service API
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/Libsecret
-Source0:        http://download.gnome.org/sources/libsecret/0.18/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/libsecret/0.19/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 ## SLE-only patches start at 1000
@@ -34,7 +34,9 @@ Patch1000:      libsecret-bsc932232-use-libgcrypt-allocators.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel >= 1.29
+BuildRequires:  gtk-doc
 BuildRequires:  libgcrypt-devel >= 1.2.2
+BuildRequires:  meson >= 0.50
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 BuildRequires:  vala >= 0.17.2.12
@@ -100,12 +102,12 @@ secrets. It communicates with the "Secret Service" using DBus.
 translation-update-upstream
 
 %build
-%configure \
-        --disable-static
-make %{?_smp_mflags} V=1
+%meson \
+    %{nil}
+%meson_build
 
 %install
-%make_install
+%meson_install
 find %{buildroot} -type f -name "*.la" -delete -print
 %if %{have_lang}
 %find_lang %{name} %{?no_lang_C}

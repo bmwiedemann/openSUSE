@@ -25,13 +25,13 @@
 %endif
 %bcond_with meson
 Name:           NetworkManager-applet
-Version:        1.8.22
+Version:        1.8.24
 Release:        0
 Summary:        GTK+ tray applet for use with NetworkManager
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 Url:            https://gnome.org/projects/NetworkManager
-Source:         http://download.gnome.org/sources/network-manager-applet/1.8/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/network-manager-applet/1.8/%{_name}-%{version}.tar.xz
 # PATCH-NEEDS-REBASE nm-applet-private-connection.patch boo#751211 bgo#646187 dimstar@opensuse.org -- Create private connections if the user is not authorised. Allows to create wifi connections without root access. Patch under discussion upstream. (WAS: PATCH-FIX-UPSTREAM)
 Patch0:         nm-applet-private-connection.patch
 # PATCH-FIX-OPENSUSE NetworkManager-gnome-bsc1003069-default-agent-owned-secrets.patch bsc#1003069 hpj@suse.com -- Make sure secrets default to agent-owned (encrypted keyring).
@@ -143,7 +143,7 @@ This library provides GTK+ dialogs for NetworkManager integration.
 %if %{with appindicator}
 %patch2 -p1
 %endif
-translation-update-upstream po network-manager-applet
+translation-update-upstream po nm-applet
 
 %build
 %if %{with meson}
@@ -176,7 +176,7 @@ autoreconf -fiv
 find %{buildroot} -type f -name "*.la" -delete -print
 %endif
 %suse_update_desktop_file -r nm-connection-editor GTK GNOME System X-SuSE-ServiceConfiguration
-%find_lang network-manager-applet %{?no_lang_C}
+%find_lang nm-applet %{?no_lang_C}
 
 %if 0%{?suse_version} < 1330
 %post
@@ -207,7 +207,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/icons/hicolor/*/apps/*.svg
 %{_mandir}/man1/nm-applet.1%{?ext_man}
 
-%files lang -f network-manager-applet.lang
+%files lang -f nm-applet.lang
 
 %files -n NetworkManager-connection-editor
 %{_bindir}/nm-connection-editor

@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Sep  9 15:15:54 CDT 2019 - mgorse@suse.com
+
+- Update to version 2.34.0:
+  + Updated doap, and include it in the tarball.
+
+-------------------------------------------------------------------
+Mon Sep  2 18:16:45 CDT 2019 - mgorse@suse.com
+
+- Update to version 2.33.92:
+  + Several test fixes.
+  + Add license header on some test files.
+
+-------------------------------------------------------------------
+Fri Aug 30 09:41:41 CDT 2019 - mgorse@suse.com
+
+- Update to version 2.33.90:
+  + Fix typo in get_imageLocale.
+  + event.str(): show event sender.
+  + Remove wrapper for atspi_text_notify_reading_position,
+    as the function has been removed from at-spi2-core.
+  + events: replace object:text:reading-position with
+    screen-reader:region-changed.
+  + Add wrapper for atspi_set_reference_window.
+- Changes from version 2.33.2:
+  + Add support for ROLE_CONTENT_DELETION and
+    ROLE_CONTENT_INSERTION.
+- Changes from version 2.33.1:
+  + Add accessibleId property.
+  + Add text.notifyReadingPosition.
+  + Fix print usage in example, for python 3 compatibility.
+
+-------------------------------------------------------------------
 Thu Apr 18 14:21:18 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Avoid use of em dashes in titles.

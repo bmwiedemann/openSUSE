@@ -1297,4 +1297,12 @@ Hence, recommended to be added to 12.3</comment>
     <comment></comment>
     <requestid>721461</requestid>
   </revision>
+  <revision rev="175" vrev="1">
+    <srcmd5>670b59b5c98d6c6f537c748400a19b56</srcmd5>
+    <version>3.34.1</version>
+    <time>1571310185</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736596</requestid>
+  </revision>
 </revisionlist>

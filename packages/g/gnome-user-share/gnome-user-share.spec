@@ -17,20 +17,21 @@
 
 
 Name:           gnome-user-share
-Version:        3.32.0.1
+Version:        3.34.0
 Release:        0
 Summary:        GNOME user file sharing
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/File-Sharing
 URL:            http://www.gnome.org/
-Source0:        https://download.gnome.org/sources/gnome-user-share/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-user-share/3.34/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
+BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(glib-2.0) >= 2.28
+BuildRequires:  pkgconfig(glib-2.0) >= 2.58
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libnautilus-extension) >= 3.27.90
@@ -57,16 +58,18 @@ up in the Network location in GNOME.
 
 %prep
 %autosetup -p1
-translation-update-upstream
+translation-update-upstream po %{name}
 
 %build
-%configure \
-    --with-modules-path=%{_libdir}/apache2/ \
-    --libexecdir=%{_libexecdir}/gnome-user-share
-%make_build
+%meson \
+	-Dmodules_path=%{_libdir}/apache2/ \
+	--libexecdir=%{_libexecdir}/gnome-user-share \
+	-Dsystemduserunitdir=%{_userunitdir} \
+	%{nil}
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 find %{buildroot} -type f -name "*.la" -delete -print
 %suse_update_desktop_file gnome-user-share-webdav Network FileTransfer

@@ -773,4 +773,12 @@
   disabled. Fix this by adding the missing chain-up.</comment>
     <requestid>721710</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>d9c161dcac85c5dc42d0bd3013de53fb</srcmd5>
+    <version>3.34.1</version>
+    <time>1571310072</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736561</requestid>
+  </revision>
 </revisionlist>

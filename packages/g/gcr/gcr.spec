@@ -17,24 +17,24 @@
 
 
 Name:           gcr
-Version:        3.28.1
+Version:        3.34.0
 Release:        0
 # FIXME: Verify if the requires in typelib-1_0-Gcr-3 is still correct and required (see bgo#725501).
 Summary:        Library for Crypto UI related tasks
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            http://www.gnome.org
-Source0:        http://download.gnome.org/sources/gcr/3.28/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gcr/3.34/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 # PATCH-FIX-SLE gcr-bsc932232-use-libgcrypt-allocators.patch bsc#932232 hpj@suse.com -- use libgcrypt allocators for FIPS mode
 Patch1:         gcr-bsc932232-use-libgcrypt-allocators.patch
 # For directory ownership
 BuildRequires:  dbus-1
+BuildRequires:  gettext >= 0.19.8
 BuildRequires:  gobject-introspection-devel >= 1.34
 # configure is looking for the gpg2 path
 BuildRequires:  gpg2
 BuildRequires:  gtk-doc
-BuildRequires:  intltool
 BuildRequires:  libgcrypt-devel >= 1.4.5
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files

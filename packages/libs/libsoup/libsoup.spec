@@ -17,14 +17,16 @@
 
 
 Name:           libsoup
-Version:        2.66.3
+Version:        2.68.2
 Release:        0
 Summary:        HTTP client/server library for GNOME
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/libsoup
-Source0:        https://download.gnome.org/sources/libsoup/2.66/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/libsoup/2.68/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+# PATCH-FIX-OPENSUSE libsoup-disable-hsts-tests.patch mgorse@suse.com -- disable hsts tests.
+Patch0:         libsoup-disable-hsts-tests.patch
 
 BuildRequires:  glib-networking
 BuildRequires:  meson
@@ -36,6 +38,7 @@ BuildRequires:  pkgconfig(gobject-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.5
 BuildRequires:  pkgconfig(gtk-doc) >= 1.20
 BuildRequires:  pkgconfig(krb5)
+BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  pkgconfig(libpsl) >= 0.20
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(sqlite3)
@@ -119,10 +122,11 @@ translation-update-upstream po libsoup
 
 %build
 %meson \
-	-Dgssapi=true \
+	-Dgssapi=enabled \
 	-Dkrb5_config='%{_libexecdir}/mit/bin/krb5-config' \
-	-Dvapi=true \
+	-Dvapi=enabled \
 	-Dgtk_doc=true \
+        -Dntlm=disabled \
 	%{nil}
 %meson_build
 

@@ -18,13 +18,13 @@
 
 %bcond_without  cdda
 Name:           gvfs
-Version:        1.40.2
+Version:        1.42.1
 Release:        0
 Summary:        Virtual File System functionality for GLib
 License:        LGPL-2.0-or-later AND GPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/gvfs
-Source0:        https://download.gnome.org/sources/gvfs/1.40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gvfs/1.42/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 ### NOTE: Please, keep SLE-only patches at bottom (starting on 1000).
@@ -35,7 +35,7 @@ Patch1001:      gvfs-nvvfs.patch
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libgcrypt-devel >= 1.2.2
-BuildRequires:  meson
+BuildRequires:  meson >= 0.50.0
 BuildRequires:  openssh
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
@@ -43,13 +43,14 @@ BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(avahi-client) >= 0.6
 BuildRequires:  pkgconfig(avahi-glib) >= 0.6
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(fuse) >= 2.8.0
+BuildRequires:  pkgconfig(fuse3) >= 3.0.0
 BuildRequires:  pkgconfig(gcr-base-3)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.57.2
 BuildRequires:  pkgconfig(goa-1.0) >= 3.17.1
 BuildRequires:  pkgconfig(gobject-2.0)
+BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.33.0
 BuildRequires:  pkgconfig(gudev-1.0) >= 147
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libbluray)
@@ -128,7 +129,7 @@ Summary:        VFS functionality for GLib
 License:        LGPL-2.0-or-later
 Group:          System/Filesystems
 Requires:       %{name} = %{version}
-Requires:       fuse
+Requires:       fuse3
 
 %description fuse
 gvfs GNOME's userspace virtual filesystem designed to work with the

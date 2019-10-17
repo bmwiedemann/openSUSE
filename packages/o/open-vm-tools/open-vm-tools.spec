@@ -161,6 +161,8 @@ Obsoletes:      open-vm-tools-deploypkg <= 10.0.5
 Supplements:    modalias(pci:v000015ADd*sv*sd*bc*sc*i*)
 ExclusiveArch:  %ix86 x86_64
 #Upstream patches
+Patch0:         fix-leaks-Aliases-MappedAliases.patch
+Patch1:         gcc9-static-inline.patch
 
 %systemd_requires
 
@@ -227,6 +229,8 @@ if you intend to create own plugins for vmtoolsd.
 # fix for an rpmlint warning regarding wrong line feeds
 sed -i -e "s/\r//" README
 #Upstream patches
+%patch0 -p2
+%patch1 -p2
 
 %build
 %if %{with_X}
@@ -391,7 +395,8 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-, root, root)
-%doc AUTHORS COPYING ChangeLog NEWS README
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README
 %{_bindir}/vmtoolsd
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/plugins

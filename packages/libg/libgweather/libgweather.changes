@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Oct  8 10:04:54 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep  5 09:22:01 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.33.92:
+  + This version fixes a bug when using the yr.no and NOAA weather
+    services together failing in some circumstances, and also fix
+    the iwin service.
+- Now requires meson >= 0.50.0.
+
+-------------------------------------------------------------------
+Fri Aug 30 21:11:32 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.33.0:
+  + This version of the library bumps the soname after an ABI break
+    in 3.28.0 that went unnoticed. If you see strange crashes,
+    make sure to bump the required version of libgweather to 3.28.0
+    or newer.
+- Update package name for the API version bump.
+- Up meson requirement to 0.48.0 and glib requirement to 2.44.0.
+
+-------------------------------------------------------------------
 Thu Jul  4 10:47:16 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.2:

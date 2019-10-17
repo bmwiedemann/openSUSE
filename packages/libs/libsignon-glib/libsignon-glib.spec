@@ -1,7 +1,7 @@
 #
 # spec file for package libsignon-glib
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,41 +12,41 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define _version VERSION_1.14-e90302e342bfd27bc8c9132ab9d0ea3d8723fd03
+%define sover 2
 
 Name:           libsignon-glib
-Version:        1.14
+Version:        2.1
 Release:        0
 Summary:        Library for signond
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          System/Libraries
-Url:            https://gitlab.com/accounts-sso/libsignon-glib
-Source:         https://gitlab.com/accounts-sso/%{name}/repository/VERSION_%{version}/archive.tar.bz2#/%{name}-%{_version}.tar.bz2
+URL:            https://gitlab.com/accounts-sso/libsignon-glib
+Source:         %{name}-%{version}.tar.xz
+
 BuildRequires:  gtk-doc
-BuildRequires:  libtool >= 2.2
-BuildRequires:  python-devel
-BuildRequires:  pkgconfig(check) >= 0.9.4
+BuildRequires:  meson
+BuildRequires:  pkgconfig
+BuildRequires:  python3-gobject-devel
 BuildRequires:  pkgconfig(gio-2.0) >= 2.36
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.35.1
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(signond) >= 8.40
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(vapigen)
 
 %description
 GLib-based client library for applications handling account
 authentication through the Online Accounts Single Sign-On service
 
-%package -n libsignon-glib1
+%package -n libsignon-glib%{sover}
 Summary:        Library for signond
 Group:          System/Libraries
 
-%description -n libsignon-glib1
+%description -n libsignon-glib%{sover}
 GLib-based client library for applications handling account
 authentication through the Online Accounts Single Sign-On service
 
@@ -55,7 +55,7 @@ This package provides shared libraries for libsignon-glib
 %package devel
 Summary:        Development headers for libsignon-glib
 Group:          Development/Libraries/C and C++
-Requires:       libsignon-glib1 = %{version}
+Requires:       libsignon-glib%{sover} = %{version}
 
 %description devel
 GLib-based client library for applications handling account
@@ -63,11 +63,19 @@ authentication through the Online Accounts Single Sign-On service
 
 This package provides development headers for libsignon-glib.
 
-%package -n typelib-1_0-Signon-1_0
+%package -n python3-libsignon-glib
+Summary:        Python bindings for the libsignon-glib library
+Group:          Development/Languages/Python
+
+%description -n python3-libsignon-glib
+This package contains the python bindings for the libsignon-glib
+management library.
+
+%package -n typelib-1_0-Signon-2_0
 Summary:        Library for signond -- Introspection bindings
 Group:          System/Libraries
 
-%description -n typelib-1_0-Signon-1_0
+%description -n typelib-1_0-Signon-2_0
 GLib-based client library for applications handling account
 authentication through the Online Accounts Single Sign-On service
 
@@ -75,39 +83,40 @@ This package provides the GObject Introspection bindings for
 libsignon-glib library.
 
 %prep
-%setup -q -n %{name}-%{_version}
-NOCONFIGURE=1 ./autogen.sh
+%autosetup -p1
 
 %build
-%configure
-make -j1
+%meson \
+	-Dtests=false \
+	%{nil}
+%meson_build
 
 %install
-make install DESTDIR=%{buildroot} %{?_smp_mflags}
-find %{buildroot}%{_libdir} -name "*.la" -delete
+%meson_install
 
-%post -n libsignon-glib1 -p /sbin/ldconfig
+%post -n libsignon-glib%{sover} -p /sbin/ldconfig
+%postun -n libsignon-glib%{sover} -p /sbin/ldconfig
 
-%postun -n libsignon-glib1 -p /sbin/ldconfig
-
-%files -n libsignon-glib1
-%defattr(-,root,root)
-%doc AUTHORS README.md NEWS COPYING
-%{_libdir}/libsignon-glib.so.1
-%{_libdir}/libsignon-glib.so.1.0.0
+%files -n libsignon-glib%{sover}
+%license COPYING
+%doc AUTHORS README.md NEWS
+%{_libdir}/libsignon-glib.so.*
 
 %files devel
-%defattr(-,root,root)
+%doc %{_datadir}/gtk-doc/html/
 %{_includedir}/libsignon-glib
 %{_libdir}/libsignon-glib.so
 %{_libdir}/pkgconfig/libsignon-glib.pc
-%{_datadir}/gir-1.0/Signon-1.0.gir
+%{_datadir}/gir-1.0/Signon-2.0.gir
 %dir %{_datadir}/vala
 %dir %{_datadir}/vala/vapi
-%{_datadir}/vala/vapi/signon.vapi
+%{_datadir}/vala/vapi/libsignon-glib.deps
+%{_datadir}/vala/vapi/libsignon-glib.vapi
 
-%files -n typelib-1_0-Signon-1_0
-%defattr(-,root,root)
-%{_libdir}/girepository-1.0/Signon-1.0.typelib
+%files -n python3-libsignon-glib
+%{python3_sitearch}/gi/overrides/
+
+%files -n typelib-1_0-Signon-2_0
+%{_libdir}/girepository-1.0/Signon-2.0.typelib
 
 %changelog

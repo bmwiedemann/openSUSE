@@ -115,4 +115,12 @@
     <comment>New stable rel (forwarded request 700468 from iznogood)</comment>
     <requestid>700574</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d8c6dd978e08a7512d94fbeccde77fbf</srcmd5>
+    <version>2.3.1</version>
+    <time>1571310380</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>738474</requestid>
+  </revision>
 </revisionlist>

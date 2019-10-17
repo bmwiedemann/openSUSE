@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Mon Oct  7 09:57:51 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Drop accidentally included `--debug` when launching
+    `gnome-session-binary`.
+  + Introduce a list of variables to potentially unset in launched
+    sessions.
+  + Updated translations.
+- Drop gnome-session-no-debug.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Tue Sep 17 22:16:07 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gnome-session-no-debug.patch: Disable debug log spam in
+  journald. Patch/bug to be sent upstream.
+
+-------------------------------------------------------------------
+Wed Sep 11 16:33:05 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.34.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep  5 11:52:46 NZST 2019 - luke@ljones.dev
+
+- Update to version 3.33.92:
+  + More systemd --user fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  1 13:53:21 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.33.90:
+  + Add support to manage the session using the systemd user
+    instance.
+  + Update session definitions to match new gnome-settings-daemon.
+  + Don't show logout button in fail whale when not logged in.
+  + Handle apps exiting abruptly at log out better.
+  + Updated translations.
+- Changes from version 3.33.4:
+  + Fix warning in log spew with dbus activated services.
+  + Fix idle detection.
+  + Advertize support for GDM's session registration API
+  + Updated translations.
+- Drop
+  gnome-session-presence-Enable-idle-detection-when-screen-locked.patch:
+  fixed upstream.
+- Add systemd user unit files.
+
+-------------------------------------------------------------------
 Fri Aug 02 18:53:38 UTC 2019 - bjorn.lie@gmail.com
 
 - Update to version 3.32.0+5:

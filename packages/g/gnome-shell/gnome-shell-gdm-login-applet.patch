@@ -1,19 +1,17 @@
-Index: gnome-shell-3.26.0/js/js-resources.gresource.xml
-===================================================================
---- gnome-shell-3.26.0.orig/js/js-resources.gresource.xml
-+++ gnome-shell-3.26.0/js/js-resources.gresource.xml
-@@ -34,6 +34,7 @@
- 
-     <file>portalHelper/main.js</file>
+diff -urpN gnome-shell-3.33.91.orig/js/js-resources.gresource.xml gnome-shell-3.33.91/js/js-resources.gresource.xml
+--- gnome-shell-3.33.91.orig/js/js-resources.gresource.xml	2019-08-21 15:00:39.000000000 -0500
++++ gnome-shell-3.33.91/js/js-resources.gresource.xml	2019-09-04 10:15:21.233934725 -0500
+@@ -32,6 +32,7 @@
+     <file>perf/core.js</file>
+     <file>perf/hwtest.js</file>
  
 +    <file>ui/aboutMenu.js</file>
      <file>ui/accessDialog.js</file>
      <file>ui/altTab.js</file>
      <file>ui/animation.js</file>
-Index: gnome-shell-3.26.0/js/ui/aboutMenu.js
-===================================================================
---- /dev/null
-+++ gnome-shell-3.26.0/js/ui/aboutMenu.js
+diff -urpN gnome-shell-3.33.91.orig/js/ui/aboutMenu.js gnome-shell-3.33.91/js/ui/aboutMenu.js
+--- gnome-shell-3.33.91.orig/js/ui/aboutMenu.js	1969-12-31 18:00:00.000000000 -0600
++++ gnome-shell-3.33.91/js/ui/aboutMenu.js	2019-09-04 10:15:40.562037171 -0500
 @@ -0,0 +1,150 @@
 +// -*- mode: js; js-indent-level: 4; indent-tabs-mode: nil -*-
 +
@@ -29,7 +27,7 @@ Index: gnome-shell-3.26.0/js/ui/aboutMenu.js
 +const AboutMenuButton = new Lang.Class({
 +    Name: 'AboutMenuButton',
 +    Extends: PanelMenu.Button,
-+    _init: function() {
++    _init() {
 +        this._hostname = null;
 +        this._updateHostnameId = 0;
 +        this._ticket = 1;
@@ -95,7 +93,7 @@ Index: gnome-shell-3.26.0/js/ui/aboutMenu.js
 +        return;
 +    },
 +
-+    _updateHostname: function(){
++    _updateHostname(){
 +        let hostname_text = get_hostname();
 +
 +        if ((this._hostname == null) || (this._hostname != hostname_text)) {
@@ -115,7 +113,7 @@ Index: gnome-shell-3.26.0/js/ui/aboutMenu.js
 +                                                  }));
 +    },
 +
-+    _destroy: function() {
++    _destroy() {
 +        this._ticket = 1;
 +        if (this._updateHostnameId) {
 +            GLib.source_remove (this._updateHostnameId);
@@ -165,11 +163,10 @@ Index: gnome-shell-3.26.0/js/ui/aboutMenu.js
 +
 +    return hostname;
 +}
-Index: gnome-shell-3.26.0/js/ui/panel.js
-===================================================================
---- gnome-shell-3.26.0.orig/js/ui/panel.js
-+++ gnome-shell-3.26.0/js/ui/panel.js
-@@ -758,6 +758,7 @@ var AggregateMenu = new Lang.Class({
+diff -urpN gnome-shell-3.33.91.orig/js/ui/panel.js gnome-shell-3.33.91/js/ui/panel.js
+--- gnome-shell-3.33.91.orig/js/ui/panel.js	2019-08-21 15:00:39.000000000 -0500
++++ gnome-shell-3.33.91/js/ui/panel.js	2019-09-04 10:15:40.562037171 -0500
+@@ -769,6 +769,7 @@ class AggregateMenu extends PanelMenu.Bu
  });
  
  const PANEL_ITEM_IMPLEMENTATIONS = {
@@ -177,16 +174,15 @@ Index: gnome-shell-3.26.0/js/ui/panel.js
      'activities': ActivitiesButton,
      'aggregateMenu': AggregateMenu,
      'appMenu': AppMenuButton,
-Index: gnome-shell-3.26.0/js/ui/sessionMode.js
-===================================================================
---- gnome-shell-3.26.0.orig/js/ui/sessionMode.js
-+++ gnome-shell-3.26.0/js/ui/sessionMode.js
-@@ -47,7 +47,7 @@ const _modes = {
-         unlockDialog: imports.gdm.loginDialog.LoginDialog,
-         components: ['polkitAgent'],
+diff -urpN gnome-shell-3.33.91.orig/js/ui/sessionMode.js gnome-shell-3.33.91/js/ui/sessionMode.js
+--- gnome-shell-3.33.91.orig/js/ui/sessionMode.js	2019-08-21 15:00:39.000000000 -0500
++++ gnome-shell-3.33.91/js/ui/sessionMode.js	2019-09-04 10:18:12.262841288 -0500
+@@ -33,7 +33,7 @@ const _modes = {
+         unlockDialog: null,
+         components: [],
          panel: {
 -            left: [],
 +            left: ['aboutMenu'],
-             center: ['dateMenu'],
-             right: ['a11yGreeter', 'keyboard', 'aggregateMenu'],
+             center: [],
+             right: []
          },

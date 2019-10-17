@@ -462,4 +462,12 @@
     <comment>Scripted push of project GNOME:Next (forwarded request 695597 from dimstar)</comment>
     <requestid>695762</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>6385c1615d376a5716e41c5bb3486789</srcmd5>
+    <version>3.34.0</version>
+    <time>1571310091</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736572</requestid>
+  </revision>
 </revisionlist>

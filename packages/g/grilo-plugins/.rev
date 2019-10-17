@@ -363,4 +363,12 @@
     <comment>New stable release (forwarded request 715825 from iznogood)</comment>
     <requestid>716276</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>5f67340bec56ec4021df2fb0f090a618</srcmd5>
+    <version>0.3.10</version>
+    <time>1571310107</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736575</requestid>
+  </revision>
 </revisionlist>

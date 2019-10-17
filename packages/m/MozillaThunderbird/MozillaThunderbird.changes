@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 10 14:30:09 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 68.1.2
+  Bugfixes
+  * Some attachments couldn't be opened in messages originating from
+    MS Outlook 2016
+  * Address book import from CSV
+  * Performance problem in message body search
+  * Ctrl+Enter to send a message would open an attachment if the
+    attachment pane had focus
+  * Calendar: Issues with "Today Pane" start-up
+  * Calendar: Glitches with custom repeat and reminder number input
+  * Calendar: Problems with WCAP provider
+- add mozilla-bmo1585099.patch to fix build with rust >= 1.38
+
+-------------------------------------------------------------------
 Wed Sep 25 11:46:51 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 68.1.1

@@ -26,11 +26,11 @@
 # major 69
 # mainver %major.99
 %define major           68
-%define mainver         %major.1.1
-%define orig_version    68.1.1
+%define mainver         %major.1.2
+%define orig_version    68.1.2
 %define orig_suffix     %{nil}
 %define update_channel  release
-%define releasedate     20190924105435
+%define releasedate     20191008153335
 %define source_prefix   thunderbird-%{mainver}
 
 # always build with GCC as SUSE Security Team requires that
@@ -55,11 +55,7 @@
 %define __provides_exclude ^lib.*\\.so.*$
 %define __requires_exclude ^(libmoz.*|liblgpllibs.*|libxul.*|libldap.*|libldif.*|libprldap.*)$
 %define localize 1
-%ifarch %ix86 x86_64
-%define crashreporter 1
-%else
 %define crashreporter 0
-%endif
 
 %define has_system_cairo 0
 
@@ -178,6 +174,7 @@ Patch21:        mozilla-bmo1554971.patch
 Patch22:        mozilla-nestegg-big-endian.patch
 Patch23:        mozilla-bmo1512162.patch
 Patch24:        mozilla-fix-top-level-asm.patch
+Patch25:        mozilla-bmo1585099.patch
 Patch100:       thunderbird-broken-locales-build.patch
 %endif # only_print_mozconfig
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -185,15 +182,8 @@ PreReq:         coreutils fileutils textutils /bin/sh
 Recommends:     libcanberra0
 Recommends:     libpulse0
 ### build options
-%ifarch aarch64 ppc ppc64 ppc64le s390 s390x ia64 %arm
-%define crashreporter 0
-%else
-%define crashreporter 1
-%endif
 %define has_system_cairo 0
 ### build options end
-%define __provides_exclude ^lib.*\\.so.*$
-%define __requires_exclude ^(libmoz.*|liblgpllibs.*|libxul.*|libldap.*|libldif.*|libprldap.*)$
 Requires:       mozilla-nspr >= %(rpm -q --queryformat '%%{VERSION}' mozilla-nspr)
 Requires:       mozilla-nss >= %(rpm -q --queryformat '%%{VERSION}' mozilla-nss)
 Requires(post): desktop-file-utils
@@ -266,7 +256,7 @@ fi
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
-%ifarch s390x
+%ifarch s390x ppc64
 %patch11 -p1
 %endif
 %patch12 -p1
@@ -282,6 +272,7 @@ fi
 %patch22 -p1
 %patch23 -p1
 %patch24 -p1
+%patch25 -p1
 # Thunderbird
 %patch100 -p1
 %endif # only_print_mozconfig
@@ -308,6 +299,7 @@ export SUSE_ASNEEDED=0
 export MOZ_BUILD_DATE=%{releasedate}
 export MOZILLA_OFFICIAL=1
 export BUILD_OFFICIAL=1
+export MOZ_TELEMETRY_REPORTING=1
 %if 0%{?suse_version} <= 1320
 export CC=gcc-7
 %else
@@ -329,9 +321,6 @@ export CFLAGS="$CFLAGS -mminimal-toc"
 %endif
 %endif
 export CXXFLAGS="$CFLAGS"
-%ifarch %{arm} aarch64
-export RUSTFLAGS="-Cdebuginfo=0"
-%endif
 export MOZCONFIG=$RPM_BUILD_DIR/mozconfig
 %if %{with only_print_mozconfig}
 echo "export CC=$CC"
@@ -345,6 +334,7 @@ cat << EOF
 %limit_build -m 2000
 export MOZ_DEBUG_FLAGS="-pipe"
 cat << EOF > $MOZCONFIG
+%endif
 mk_add_options MOZILLA_OFFICIAL=1
 mk_add_options BUILD_OFFICIAL=1
 mk_add_options MOZ_MILESTONE_RELEASE=1
@@ -356,11 +346,11 @@ mk_add_options MOZ_MAKE_FLAGS=%{?jobs:-j%jobs}
 %endif
 %endif
 mk_add_options MOZ_OBJDIR=$RPM_BUILD_DIR/obj
-ac_add_options --enable-application=comm/mail
-ac_add_options --enable-calendar
 ac_add_options --prefix=%{_prefix}
 ac_add_options --libdir=%{progdir}
 ac_add_options --includedir=%{_includedir}
+ac_add_options --enable-application=comm/mail
+ac_add_options --enable-calendar
 ac_add_options --disable-tests
 ac_add_options --disable-debug
 ac_add_options --enable-alsa
@@ -382,18 +372,20 @@ ac_add_options --disable-elf-hack
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 ac_add_options --with-system-zlib
+%if 0%{?localize}
 ac_add_options --with-l10n-base=$RPM_BUILD_DIR/l10n
+%endif
 ac_add_options --disable-updater
 #ac_add_options --with-system-png # no apng support
 #ac_add_options --enable-system-hunspell
 ac_add_options --enable-startup-notification
-ac_add_options --enable-official-branding
 ac_add_options --disable-necko-wifi
 ac_add_options --enable-update-channel=%{update_channel}
-ac_add_options --with-unsigned-addon-scopes=app
 %if %has_system_cairo
 ac_add_options --enable-system-cairo
 %endif
+ac_add_options --with-unsigned-addon-scopes=app
+ac_add_options --enable-official-branding
 %if ! %crashreporter
 ac_add_options --disable-crashreporter
 %endif
@@ -406,9 +398,8 @@ ac_add_options --with-arch=armv6
 ac_add_options --with-arch=armv7-a
 %endif
 %endif
-%if %{with mozilla_tb_valgrind}
-ac_add_options --disable-jemalloc
-ac_add_options --enable-valgrind
+%ifarch aarch64 %arm s390x
+ac_add_options --disable-webrtc
 %endif
 # mitigation/workaround for bmo#1512162
 %ifarch s390x
@@ -420,8 +411,11 @@ ac_add_options --enable-optimize="-O1"
 ac_add_options --enable-lto
 %endif
 %endif
-EOF
+%if %{with mozilla_tb_valgrind}
+ac_add_options --disable-jemalloc
+ac_add_options --enable-valgrind
 %endif
+EOF
 %if !%{with only_print_mozconfig}
 %ifarch ppc64 s390x s390
 # NOTE: Currently, system-icu is too old, so we can't build with that,
@@ -466,8 +460,8 @@ sed -r '/^(ja-JP-mac|en-US|$)/d;s/ .*$//' $RPM_BUILD_DIR/%{source_prefix}/comm/m
             [ "$_match" = "$locale" ] && _matched=1
         done
         [ $_matched -eq 1 ] && _l10ntarget=common || _l10ntarget=other
-	echo %{progdir}/extensions/langpack-$locale@thunderbird.mozilla.org \
-	  >> %{_tmppath}/translations.$_l10ntarget
+        echo %{progdir}/extensions/langpack-$locale@thunderbird.mozilla.org \
+          >> %{_tmppath}/translations.$_l10ntarget
 ' -- {}
 # repack the lightning xpi with all available locales (boo#939153) (lp#545778)
 _extid="{e2fda1a4-762b-4020-b5ad-a41df1933103}"
@@ -487,6 +481,19 @@ done
 (cd _lightning && zip -q9r ../"${_extid}.xpi" *)
 cp -p "${_extid}.xpi" %{buildroot}%{progdir}/distribution/extensions/
 %endif
+# remove some executable permissions
+find %{buildroot}%{_libdir}/%{progname}  \
+    -name "*.js" -o \
+    -name "*.jsm" -o \
+    -name "*.rdf" -o \
+    -name "*.properties" -o \
+    -name "*.dtd" -o \
+    -name "*.txt" -o \
+    -name "*.xml" -o \
+    -name "*.css" \
+    -exec chmod a-x {} +
+# remove mkdir.done files from installed base
+find %{buildroot}%{progdir} -type f -name ".mkdir.done" -delete
 # overwrite the mozilla start-script and link it to /usr/bin
 mkdir --parents %{buildroot}%{_bindir}/
 sed "s:%%PREFIX:%{_prefix}:g
@@ -500,6 +507,7 @@ ln -sf ../..%{progdir}/%{progname}.sh %{buildroot}%{_bindir}/%{progname}
 mkdir -p %{buildroot}%{_datadir}/applications
 install -m 644 %{SOURCE1} \
                %{buildroot}%{_datadir}/applications/%{desktop_file_name}.desktop
+%suse_update_desktop_file %{desktop_file_name} Network Email GTK
 # appdata
 mkdir -p %{buildroot}%{_datadir}/appdata
 cp %{SOURCE9} %{buildroot}%{_datadir}/appdata/%{desktop_file_name}.appdata.xml
@@ -513,24 +521,12 @@ rm suse-default-prefs
 cat > %{buildroot}%{progdir}/defaults/pref/all-l10n.js << EOF
 pref("general.useragent.locale", "chrome://global/locale/intl.properties");
 EOF
-# remove spurious executable bits
-find %{buildroot}%{_libdir}/%{progname}  \
-    -name "*.js" -o \
-    -name "*.jsm" -o \
-    -name "*.rdf" -o \
-    -name "*.properties" -o \
-    -name "*.dtd" -o \
-    -name "*.css" \
-    -exec chmod a-x {} +
-# remove mkdir.done files from installed base
-find $RPM_BUILD_ROOT%{progdir} -type f -name ".mkdir.done" -delete -print
 #
 for size in 16 22 24 32 48 64 128; do
   mkdir -p %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps/
   cp %{buildroot}%{progdir}/chrome/icons/default/default$size.png \
     %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps/%{progname}.png
 done
-%suse_update_desktop_file %{desktop_file_name} Network Email GTK
 # excluded files
 rm -f %{buildroot}%{progdir}/thunderbird
 rm -f %{buildroot}%{progdir}/removed-files

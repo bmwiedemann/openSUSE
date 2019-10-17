@@ -479,4 +479,12 @@
     <comment>- Avoid use of em dashes in titles. (forwarded request 695787 from jengelh)</comment>
     <requestid>695791</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>91b075949aa101b47fbd0f32be4d553c</srcmd5>
+    <version>2.34.0</version>
+    <time>1571310210</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736602</requestid>
+  </revision>
 </revisionlist>

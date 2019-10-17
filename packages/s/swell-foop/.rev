@@ -205,4 +205,14 @@
     <comment></comment>
     <requestid>689459</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>7681ad13de33ba27f442f060effa4697</srcmd5>
+    <version>3.34.1</version>
+    <time>1571310440</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.34.1:
+  + Fixed crash.
+  + Updated translations. (forwarded request 738591 from iznogood)</comment>
+    <requestid>738632</requestid>
+  </revision>
 </revisionlist>

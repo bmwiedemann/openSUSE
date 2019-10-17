@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat Oct 12 11:00:10 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.34.0+13:
+  + Symbolic:
+    - refined preferences-system-parental-controls
+    - add preferences-system-parental-controls
+    - fix missized copy icon; fix stroke in folder-new
+    - view-more use circles
+    - be less clever in the document icons
+    - symbolic: refine clear icons; retire brush metaphor for
+      clear-all
+    - refine alarm shape
+- Switch to git checkout, explicit commit from master branch.
+  Following this, add libtool BuildRequires and pass autogen.sh,
+  needed to boostrap since we are now using a checkout.
+
+-------------------------------------------------------------------
+Thu Sep 12 16:23:04 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.0:
+  + Fullcolor: update media-optical to the new style.
+
+-------------------------------------------------------------------
+Sun Sep  8 09:33:14 NZST 2019 - luke@ljones.dev
+
+- Update to version 3.33.92:
+  + symbolic:
+    - send-to metaphor.
+    - battery-missing-symbolic.
+    - pixel perfect question mark.
+    - mail-attachment metrics.
+    - view-reveal, view-conceal for passwords.
+    - keyboard.
+    - folders as inode.
+    - orientation icons.
+    - touch-disabled.
+    - weather-tornado.
+    - battery level icons.
+  + fullcolor: colorful packages.
+
+-------------------------------------------------------------------
 Mon Mar 18 17:58:38 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.0:
@@ -16,7 +57,7 @@ Tue Feb 19 20:14:52 UTC 2019 - bjorn.lie@gmail.com
     - emoji category tweaks
     - mail-reply, battery status
     - action icons eg rotation
-    - drive icon tweaks 
+    - drive icon tweaks
   + fullcolor:
     - more app/mimetype/device/status to legacy
     - new style for fullcolor icons - folders, mimetypes and
@@ -768,7 +809,7 @@ Thu Feb 12 00:24:20 CET 2009 - vuntz@novell.com
 Wed Oct  1 16:45:17 WST 2008 - mboman@suse.de
 
 - Update to version 2.24.0:
-  + Cosmetic version bump 
+  + Cosmetic version bump
 
 -------------------------------------------------------------------
 Mon Sep 15 21:15:53 EST 2008 - mboman@novell.com
@@ -776,7 +817,7 @@ Mon Sep 15 21:15:53 EST 2008 - mboman@novell.com
 - Update to version 2.23.92:
   + Changed the metaphor of the accessibility icon as requested by the a11y
     team
- 
+
 
 -------------------------------------------------------------------
 Sun Aug 31 05:06:19 CET 2008 - mboman@novell.com
@@ -810,7 +851,7 @@ Mon Jun 23 17:24:04 CEST 2008 - maw@suse.de
 
 - Update to version 2.23.2:
   + Changes to improve Consistency
-  + Drop old icons. 
+  + Drop old icons.
 
 -------------------------------------------------------------------
 Fri Mar 14 05:06:19 CET 2008 - maw@suse.de
@@ -896,7 +937,7 @@ Tue Oct 17 22:33:37 CEST 2006 - jhargadon@suse.de
 - update to version 2.16.0.1
 - Updated system-lock-screen icon to fill all sizes - bug #354257
 - Updated accessories-text-editor icon to fill all sizes - bug #354256
-- Updated 24x24 utilities-terminal icon from 22x22 icon - bug #354279 
+- Updated 24x24 utilities-terminal icon from 22x22 icon - bug #354279
 
 -------------------------------------------------------------------
 Thu Sep 14 00:32:59 CEST 2006 - jhargadon@suse.de
@@ -915,7 +956,7 @@ Thu Sep 14 00:32:59 CEST 2006 - jhargadon@suse.de
 - Replace emblem-package and emblem-web with new style icons
 - Add missing 32x32 mimetypes directory to index.theme.in
 - Updated network status icons
-- New translations [mg, mr] 
+- New translations [mg, mr]
 
 -------------------------------------------------------------------
 Fri Aug 25 00:55:54 CEST 2006 - jhargadon@suse.de
@@ -932,7 +973,7 @@ Fri Aug 25 00:55:54 CEST 2006 - jhargadon@suse.de
 - 32x32 versions of zoom icons
 - Updated style weather status icons
 - 32x32 and scalable applications-development icons
-- Updated translations 
+- Updated translations
 
 -------------------------------------------------------------------
 Mon Aug 21 23:41:09 CEST 2006 - jhargadon@suse.de
@@ -946,7 +987,7 @@ Mon Aug 21 23:41:09 CEST 2006 - jhargadon@suse.de
 - New printer device and print action icons
 - Add in spinner animations to replace gnome-spinner images
 - Update scalable folders to match the pixmaps better
-- Replace gnome-fs-regular with text-x-preview 
+- Replace gnome-fs-regular with text-x-preview
 
 -------------------------------------------------------------------
 Mon Apr 10 18:57:03 CEST 2006 - dobey@suse.de
@@ -1016,27 +1057,27 @@ Tue Sep 13 12:51:40 CEST 2005 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Mon Sep  5 09:06:32 CEST 2005 - rodrigo@suse.de
 
-- Update to version 2.12.0 
+- Update to version 2.12.0
 
 -------------------------------------------------------------------
 Tue Aug 23 00:22:33 CEST 2005 - gekker@suse.de
 
-- Update to version 2.11.92 
+- Update to version 2.11.92
 
 -------------------------------------------------------------------
 Thu Aug 11 07:07:17 CEST 2005 - gekker@suse.de
 
-- Update to version 2.11.91 
+- Update to version 2.11.91
 
 -------------------------------------------------------------------
 Tue Aug  2 00:48:39 CEST 2005 - gekker@suse.de
 
-- Update to version 2.11.90 
+- Update to version 2.11.90
 
 -------------------------------------------------------------------
 Fri Jul 22 18:06:25 CEST 2005 - gekker@suse.de
 
-- Update to version 2.11.5 
+- Update to version 2.11.5
 
 -------------------------------------------------------------------
 Wed Mar 23 20:18:11 CET 2005 - clahey@suse.de
@@ -1056,22 +1097,22 @@ Wed Mar 16 16:21:17 CET 2005 - clahey@suse.de
 -------------------------------------------------------------------
 Tue Mar  8 23:56:43 CET 2005 - gekker@suse.de
 
-- Update to version 2.10.0 (GNOME 2.10). 
+- Update to version 2.10.0 (GNOME 2.10).
 
 -------------------------------------------------------------------
 Thu Mar  3 17:18:45 CET 2005 - gekker@suse.de
 
-- Update to version 2.9.92 
+- Update to version 2.9.92
 
 -------------------------------------------------------------------
 Fri Feb 11 02:42:22 CET 2005 - gekker@suse.de
 
-- Update to version 2.9.91 
+- Update to version 2.9.91
 
 -------------------------------------------------------------------
 Sun Feb  6 00:47:23 CET 2005 - gekker@suse.de
 
-- Update to version 2.9.90 
+- Update to version 2.9.90
 
 -------------------------------------------------------------------
 Wed Jan 19 23:19:42 CET 2005 - clahey@suse.de
@@ -1081,18 +1122,18 @@ Wed Jan 19 23:19:42 CET 2005 - clahey@suse.de
 -------------------------------------------------------------------
 Thu Dec 16 18:28:50 CET 2004 - gekker@suse.de
 
-- Update to version 2.9.2 
+- Update to version 2.9.2
 
 -------------------------------------------------------------------
 Tue Nov 23 16:20:14 CET 2004 - gekker@suse.de
 
 - Update version to 2.9.1
-  Remove wordperfect file / artwork as it was already upstream. 
+  Remove wordperfect file / artwork as it was already upstream.
 
 -------------------------------------------------------------------
 Wed Sep 29 16:02:54 CEST 2004 - hhetter@suse.de
 
-- added essential icons for drives:/ operation to hicolor 
+- added essential icons for drives:/ operation to hicolor
 
 -------------------------------------------------------------------
 Mon Sep 27 17:28:28 CEST 2004 - mmichael@suse.de
@@ -1154,12 +1195,12 @@ Wed Jul 09 17:39:33 CEST 2003 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Mon Jun 23 02:04:21 CEST 2003 - ro@suse.de
 
-- added gnome-filesystem to neededforbuild 
+- added gnome-filesystem to neededforbuild
 
 -------------------------------------------------------------------
 Fri Jan 31 08:57:50 CET 2003 - hhetter@suse.de
 
-- updated to version 1.0.0 
+- updated to version 1.0.0
 
 -------------------------------------------------------------------
 Thu Jan 16 13:21:22 CET 2003 - sbrabec@suse.cz

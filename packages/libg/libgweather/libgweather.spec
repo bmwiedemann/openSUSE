@@ -17,22 +17,22 @@
 
 
 Name:           libgweather
-Version:        3.32.2
+Version:        3.34.0
 Release:        0
 Summary:        Library to get online weather information
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/LibGWeather
-Source0:        https://download.gnome.org/sources/libgweather/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/libgweather/3.34/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
 BuildRequires:  intltool
-BuildRequires:  meson >= 0.43.0
+BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(geocode-glib-1.0)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.35.1
+BuildRequires:  pkgconfig(gio-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.13.5
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.44.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.0
@@ -44,7 +44,7 @@ This is a library to download weather information from online sources.
 %package -n gweather-data
 Summary:        Auxiliary schema data for libgweather
 Group:          Development/Libraries/GNOME
-Requires:       libgweather-3-15 = %{version}
+Requires:       libgweather-3-16 = %{version}
 Recommends:     %{name}-lang
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
@@ -59,19 +59,19 @@ This package provides the architecture independent files.
 %package devel
 Summary:        Development files for libgweather, a weather info retrieval library
 Group:          Development/Libraries/GNOME
-Requires:       libgweather-3-15 = %{version}
+Requires:       libgweather-3-16 = %{version}
 Requires:       typelib-1_0-GWeather-3_0 = %{version}
 
 %description devel
 This is a library to download weather information from online sources.
 This package provides the development files.
 
-%package -n libgweather-3-15
+%package -n libgweather-3-16
 Summary:        Library to get online weather information
 Group:          Development/Libraries/GNOME
 Requires:       gweather-data >= %{version}
 
-%description -n libgweather-3-15
+%description -n libgweather-3-16
 This is a library to download weather information from online sources.
 
 %package -n typelib-1_0-GWeather-3_0
@@ -103,15 +103,15 @@ libgweather library.
 %find_lang libgweather-3.0 %{?no_lang_C}
 %find_lang libgweather-locations libgweather-3.0.lang %{?no_lang_C}
 
-%post -n libgweather-3-15 -p /sbin/ldconfig
-%postun -n libgweather-3-15 -p /sbin/ldconfig
+%post -n libgweather-3-16 -p /sbin/ldconfig
+%postun -n libgweather-3-16 -p /sbin/ldconfig
 
 %files -n gweather-data
 %{_datadir}/glib-2.0/schemas/org.gnome.GWeather.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.GWeather.gschema.xml
 %{_datadir}/libgweather/
 
-%files -n libgweather-3-15
+%files -n libgweather-3-16
 %license COPYING
 %{_libdir}/*.so.*
 

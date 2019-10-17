@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Sep 14 08:14:05 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 0.3.10:
+  + Tracker plugin now requires >= 2.3.0.
+  + Convert README to Markdown.
+  + Tracker:
+    - Implement source notification through TrackerNotifier.
+    - Mark playlists as a container.
+    - Use the correct property to retrieve album title.
+    - Use tracker:ExternalReference to retrieve musicbrainz ids.
+  + Chromaprint: Throw an error on missing decoders.
+  + Lua-Factory:
+    - Renamed grl-musicbrainz to grl-musicbrainz-coverart
+    - Acoustid:
+      . Return Multiple Results from AcoustID Plugin.
+      . Add support for creation_date.
+      . Return from source in case of no match.
+    - TheAudioDB: Add the ability to retrieve artist art.
+  + Updated translations.
+- Add explicit pkgconfig(tracker-sparql-2.0) BuildRequires: It is
+  already pulled in, but since meson checks for it, we add it.
+
+-------------------------------------------------------------------
 Tue Jul 16 17:48:30 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.3.8:

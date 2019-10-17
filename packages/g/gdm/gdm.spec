@@ -19,14 +19,15 @@
 %define systemdsystemunitdir %(pkg-config --variable=systemdsystemunitdir systemd)
 # FIXME: need to check what should be done to enable this (at least adapt the pam files). See bnc#699999
 %define enable_split_authentication 0
+
 Name:           gdm
-Version:        3.32.0+2
+Version:        3.34.1
 Release:        0
 Summary:        The GNOME Display Manager
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GDM
-# We are using source services, so no download url for source
+
 Source0:        %{name}-%{version}.tar.xz
 Source1:        gdm.pamd
 Source2:        gdm-autologin.pamd
@@ -54,16 +55,12 @@ Patch3:         gdm-default-wm.patch
 Patch4:         gdm-xauthlocalhostname.patch
 # PATCH-FIX-OPENSUSE gdm-switch-to-tty1.patch bsc#1113700 xwang@suse.com -- switch to tty1 when stopping gdm service
 Patch6:         gdm-switch-to-tty1.patch
-# PATCH-FIX-UPSTREAM gdm-fails-to-restart-gnome-shell.patch bsc#981976 glgo#GNOME/gdm#266 tyang@suse.com -- Gdm should stop after a few times fails
-Patch7:         gdm-fails-to-restart-gnome-shell.patch
 # PATCH-FIX-OPENSUSE gdm-add-runtime-option-to-disable-starting-X-server-as-u.patch bnc#1075805 bgo#793255 msrb@suse.com -- Add runtime option to start X under root instead of regular user. Necessary if no DRI drivers are present. rejected upstream
 Patch8:         gdm-add-runtime-option-to-disable-starting-X-server-as-u.patch
-# PATCH-FIX-UPSTREAM gdm-kill-user-session.patch bsc#1112294 glgo#GNOME/gdm#400 xwang@suse.com -- Kill all sessions when stopping gdm service
-Patch11:        gdm-kill-user-session.patch
+# PATCH-FIX-OPENSUSE gdm-initial-setup-hardening.patch boo#1140851, glgo#GNOME/gnome-initial-setup#76 fezhang@suse.com -- Prevent gnome-initial-setup running if any regular user has perviously logged into the system
+Patch9:         gdm-initial-setup-hardening.patch
 # PATCH-FIX-OPENSUSE gdm-s390-not-require-g-s-d_wacom.patch bsc#1129412 yfjiang@suse.com -- Remove the runtime requirement of g-s-d Wacom plugin
 Patch13:        gdm-s390-not-require-g-s-d_wacom.patch
-# PATCH-FIX-UPSTREAM gdm-remove-duplicate-sessions.patch boo#1131625 glgo#GNOME/gdm#473 qzheng@suse.com -- Remove duplicate sessions once, after all sessions have been processed.
-Patch14:        gdm-remove-duplicate-sessions.patch
 ### NOTE: Keep please SLE-only patches at bottom (starting on 1000).
 # PATCH-FIX-SLE gdm-disable-gnome-initial-setup.patch bnc#1067976 qzhao@suse.com -- Disable gnome-initial-setup runs before gdm, g-i-s will only serve for CJK people to choose the input-method after login.
 Patch1000:      gdm-disable-gnome-initial-setup.patch
@@ -214,13 +211,11 @@ cp %{SOURCE8} .
 %patch3 -p1
 %patch4 -p1
 %patch6 -p1
-%patch7 -p1
 %patch8 -p1
-%patch11 -p1
+%patch9 -p1
 %ifarch s390 s390x
 %patch13 -p1
 %endif
-%patch14 -p1
 
 # SLE-only patches start at 1000
 %if !0%{?is_opensuse}
@@ -343,8 +338,6 @@ dconf update
 %{_datadir}/gdm/
 %{_datadir}/gnome-session/sessions/gnome-login.session
 %{_datadir}/glib-2.0/schemas/org.gnome.login-screen.gschema.xml
-%{_datadir}/icons/*/*/*/*.*
-%{_datadir}/pixmaps/*.png
 /%{_lib}/security/pam_gdm.so
 %dir %{_libexecdir}/gdm
 %{_libexecdir}/gdm/gdm-*

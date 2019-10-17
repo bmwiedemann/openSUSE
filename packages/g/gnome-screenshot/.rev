@@ -298,4 +298,13 @@
     <comment>Update to 3.32.0 (forwarded request 695735 from dimstar)</comment>
     <requestid>695764</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>39b0c801c864d6a8eee69e60c50ccdeb</srcmd5>
+    <version>3.34.0</version>
+    <time>1571310433</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.34.0:
+  + Updated translations. (forwarded request 738461 from iznogood)</comment>
+    <requestid>738537</requestid>
+  </revision>
 </revisionlist>

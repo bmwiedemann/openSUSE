@@ -1,0 +1,18 @@
+diff --git a/js/ui/endSessionDialog.js b/js/ui/endSessionDialog.js
+index f51eb7b..5abad41 100644
+--- a/js/ui/endSessionDialog.js
++++ b/js/ui/endSessionDialog.js
+@@ -327,11 +327,11 @@ class EndSessionDialog extends ModalDialog.ModalDialog {
+         this._inhibitorSection.add_actor(this._applicationList);
+ 
+         this._sessionHeader = new St.Label({ style_class: 'end-session-dialog-list-header',
+-                                             text: _("Other users are logged in.") });
++                                             text: _("Other users are logged in. You can list these users by 'who' command.") });
+         this._sessionList = new St.BoxLayout({ style_class: 'end-session-dialog-session-list',
+                                                vertical: true });
+         this._inhibitorSection.add_actor(this._sessionHeader);
+-        this._inhibitorSection.add_actor(this._sessionList);
++        //this._inhibitorSection.add_actor(this._sessionList); Hide _sessionList for jsc#SLE-9267
+ 
+         this._dbusImpl = Gio.DBusExportedObject.wrapJSObject(EndSessionDialogIface, this);
+         this._dbusImpl.export(Gio.DBus.session, '/org/gnome/SessionManager/EndSessionDialog');

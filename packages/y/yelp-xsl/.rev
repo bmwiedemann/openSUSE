@@ -332,4 +332,22 @@
     <comment>Scripted push of project GNOME:Next (forwarded request 695575 from dimstar)</comment>
     <requestid>695745</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>0d765b4c32837c98451d37723367d523</srcmd5>
+    <version>3.34.0</version>
+    <time>1571310454</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.34.0:
+  + Updated translations.
+
+- Update to version 3.33.92:
+  + Updated translations.
+
+- Update to version 3.33.4:
+  + Update highlight.pack.js to 9.15.8, added awk and shell.
+  + Removed intltool and other build updates.
+  + Updated translations.
+- Drop intltool dependency.</comment>
+    <requestid>738649</requestid>
+  </revision>
 </revisionlist>

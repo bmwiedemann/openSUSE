@@ -18,22 +18,25 @@
 
 %define _name   gtksourceview
 Name:           gtksourceview4
-Version:        4.2.0
+Version:        4.4.0
 Release:        0
 Summary:        GTK+ Source Editing Widget
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GtkSourceView
-Source0:        https://download.gnome.org/sources/gtksourceview/4.2/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gtksourceview/4.4/%{_name}-%{version}.tar.xz
 Source1:        changes.lang
+
 BuildRequires:  gobject-introspection-devel
+BuildRequires:  gtk-doc
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  vala
 BuildRequires:  valgrind
 BuildRequires:  pkgconfig(gio-2.0) >= 2.48
 BuildRequires:  pkgconfig(gladeui-2.0) >= 3.9
 BuildRequires:  pkgconfig(glib-2.0) >= 2.48
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6
 
 %description
@@ -108,12 +111,15 @@ features typical of a source editor.
 %setup -q -n %{_name}-%{version}
 
 %build
-%configure --disable-static \
-        --enable-glade-catalog
-make %{?_smp_mflags}
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+%meson \
+    -Dglade_catalog=true \
+    -Dgtk_doc=true \
+    %{nil}
+%meson_build
 
 %install
-%make_install
+%meson_install
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{_name}-4
 # Install language definition for *.changes files:

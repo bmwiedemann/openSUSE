@@ -266,4 +266,22 @@
     <comment></comment>
     <requestid>667737</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>892e370f5017f3fe34cd1d8fd2b5fa48</srcmd5>
+    <version>3.34.0</version>
+    <time>1571310418</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.34.0:
+  + gcr-prompt-dialog: Allow the use of mnemonics in the choice
+    label (glgo#GNOME/gcr!22).
+  + Use python3 shebang in ui/icons/render-icons.py
+    (glgo#GNOME/gcr!21).
+  + configure: Use PKG_PROG_PKG_CONFIG instead of reinventing it
+    (glgo#GNOME/gcr!20).
+  + Replace tap-gtester with one that relies on GLib 2.38+ TAP
+    output (glgo#GNOME/gcr!19).
+  + Remove SKS network from keyserver defaults (glgo#GNOME/gcr!18).
+  + Updated translations. (forwarded request 738455 from iznogood)</comment>
+    <requestid>738535</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 11 11:47:05 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gcc9-static-inline.patch: Fix static inline when building
+  with gcc9.
+
+-------------------------------------------------------------------
+Wed Oct  9 14:02:35 UTC 2019 - Kirk Allan <kallan@suse.com>
+
+- Fix memory leak in VixToolsListAuthAliases and VixToolsListMappedAliases.
+  (bsc#1153271)
+  + Add patch fix-leaks-Aliases-MappedAliases.patch
+
+-------------------------------------------------------------------
 Tue Oct  1 14:42:18 UTC 2019 - Kirk Allan <kallan@suse.com>
 
 - Update to 11.0.0 (build 14549424) (boo#1151523)

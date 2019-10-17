@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct  9 15:26:34 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.18.4:
+  + Improve handling of externally added policy routing rules and
+    for rules that are taken over after a restart of NetworkManager
+    service.
+  + Fix taking over OVS devices after restart of NetworkManager.
+  + Bugfix reapplying IP configuration while activating.
+  + Allow reapplying Wi-Fi profile when seen-bssids changes.
+  + Various other bugfixes for minor issues and memory leaks.
+  + Various build and test fixes.
+
+-------------------------------------------------------------------
 Tue Jul 30 00:21:31 UTC 2019 - Jonathan Kang <sckang@suse.com>
 
 - Update to version 1.18.2(bsc#1138213):
@@ -187,7 +200,7 @@ Thu Jan 31 01:12:35 UTC 2019 - sckang@suse.com
 Tue Nov 20 07:02:46 UTC 2018 - sckang@suse.com
 
 - Modify nfs script: Only mount/unmount when the file type is nfs
-  (bsc#1074074).
+  (bsc#1074074, bsc#1146935).
 
 -------------------------------------------------------------------
 Sat Oct 27 13:04:09 UTC 2018 - bjorn.lie@gmail.com

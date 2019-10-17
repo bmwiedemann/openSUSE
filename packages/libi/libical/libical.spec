@@ -26,7 +26,7 @@
 %bcond_with glib
 %endif
 Name:           libical%{name_ext}
-Version:        3.0.5
+Version:        3.0.6
 Release:        0
 %if %{without glib}
 Summary:        An Implementation of Basic iCAL Protocols
@@ -37,8 +37,7 @@ Summary:        GObject wrapper for libical library
 License:        MPL-2.0 OR LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 %endif
-Url:            http://sourceforge.net/projects/freeassociation/
-#Git-Clone:     https://github.com/libical/libical
+URL:            https://github.com/libical/libical
 Source:         https://github.com/libical/libical/releases/download/v%{version}/libical-%{version}.tar.gz
 Source2:        baselibs.conf
 Source3:        libical-rpmlintrc
@@ -125,7 +124,8 @@ Summary:        Development files for building against %{name}
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       libical%{sonum} = %{version}
-Requires:       typelib-1_0-%{name}%{sonum} = %{version}
+Requires:       typelib-1_0-ICal-3_0 = %{version}
+Requires:       typelib-1_0-ICalGLib-3_0 = %{version}
 
 %description devel
 Development files for building against %{name}%{sonum}
@@ -138,18 +138,18 @@ BuildArch:      noarch
 %description doc
 Documentation files for %{name}%{sonum}
 
-%package -n typelib-1_0-libical%{sonum}
+%package -n typelib-1_0-ICal-3_0
 Summary:        Introspection bindings for libical
 Group:          Development/Libraries/C and C++
 
-%description -n typelib-1_0-libical%{sonum}
+%description -n typelib-1_0-ICal-3_0
 This package provides the gobject-introspection bindings for libical.
 
-%package -n typelib-1_0-%{name}%{sonum}
+%package -n typelib-1_0-ICalGLib-3_0
 Summary:        Introspection bindings for the libical glib bindings.
 Group:          Development/Libraries/C and C++
 
-%description -n typelib-1_0-%{name}%{sonum}
+%description -n typelib-1_0-ICalGLib-3_0
 This package provides the gobject-introspection bindings for libical-glib.
 %endif
 
@@ -231,10 +231,10 @@ rm %{buildroot}%{_libdir}/pkgconfig/libical.pc
 %files doc
 %{_datadir}/gtk-doc/html/libical-glib
 
-%files -n typelib-1_0-libical%{sonum}
+%files -n typelib-1_0-ICal-3_0
 %{_libdir}/girepository-1.0/ICal-3.0.typelib
 
-%files -n typelib-1_0-%{name}%{sonum}
+%files -n typelib-1_0-ICalGLib-3_0
 %{_libdir}/girepository-1.0/ICalGLib-3.0.typelib
 %endif
 

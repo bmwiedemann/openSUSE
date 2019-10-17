@@ -22,7 +22,7 @@
 %define _name   gtk+
 %bcond_without  broadway
 Name:           gtk3
-Version:        3.24.11
+Version:        3.24.12
 Release:        0
 Summary:        The GTK+ toolkit library (version 3)
 License:        LGPL-2.1-or-later

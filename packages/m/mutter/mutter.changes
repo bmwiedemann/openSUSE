@@ -1,4 +1,225 @@
 -------------------------------------------------------------------
+Sun Oct 13 17:58:09 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.34.1+21:
+  + x11: Map mimetypes back to selection atoms
+  + wayland:
+    - Figure out better the right selection source for a
+      wl_data_offer
+    - Set dummy selection source on .set_selection(null)
+    - Simplify MetaSelectionSourceWayland
+    - Check resource before emitting cancelled event
+    - Emit wl/primary offer after changing selection
+    - Chain up to the right finalize on
+      MetaWaylandDataSourceWayland
+    - Drop field from MetaWaylandDataSourcePrimary
+    - Plug MetaSelectionSourceWayland leaks
+  + clutter/shader-effect: Initialize shader-type properly
+  + ci: Change the without-native-backend to not build with Wayland
+    too
+  + main: Warn instead of error in meta_test_init()
+- Switch to the now available 3-34 stable branch in service.
+
+-------------------------------------------------------------------
+Thu Oct 10 21:46:49 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.34.1+9:
+  + kms/crtc: Read gamma state when prediction failed.
+  + kms: Always predict state after processing update.
+  + clutter-backend-x11: Don't push keymap events to clutter.
+  + event-x11: Use CLUTTER prefix for X11 filter docs.
+  + x11: Translate well known selection atoms to mimetypes.
+  + wayland/actor-surface: Queue redraw for frame callback.
+  + wayland/surface: Some minor coding style clean up.
+  + cogl-pango/meson.build: Remove extraneous quoting.
+  + backends: Update inhibited state for the monitor and respect
+    that state.
+
+-------------------------------------------------------------------
+Wed Oct  9 09:38:35 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Fix startup of X11 session services on wayland.
+  + Fix _NET_ACTIVE_WINDOW emission.
+  + Fix initial view perspective.
+  + Fix screenshots and window animations when scaled.
+  + Re-enable coredumps when capabilities are set.
+  + Fix scaling of DND surface actors.
+  + Optimize blitting of untransformed offscreen stage views.
+  + Fix freeze of pointer event delivery on X11.
+  + Fix scaling of stylus input coordinates with HiDPI.
+  + Fix memory leak when using implicit animations.
+  + Fix numlock state for native backend.
+  + Fixed crashes.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Oct  3 10:17:28 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
+
+- Disable sysprof support until it get security team approval.
+
+-------------------------------------------------------------------
+Sat Sep 21 17:08:50 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.34.0+30:
+  + window-actor: Use surface coordinates for the fast path in
+    get_image()
+  + shaped-texture: Use surface coordinates in get_image()
+  + shaped-texture: Declare that we inherit from GObject
+  + window/surface-actor: Add docstrings
+  + shaped-texture: Mark set the clip and return value nullable
+  + clutter/actor: Cancel delayed timelines on removal
+  + clutter/timeline: Don't emit ::paused signal on delayed
+    timelines
+  + clutter/timeline: Use a function to cancel the delay timeout
+  + wayland/dma-buf: Handle zero modifiers from
+    eglQueryDmaBufModifiersEXT
+  + stage: Compute view perspective when parameters changed
+  + build: Compile with `-ffloat-store` on x86 (32 bit)
+  + kms-impl-device: Use portable formatting for 64-bit integers
+  + output-kms: Use portable formatting for 64-bit integers
+  + input-settings: Use portable formatting for 64-bit integers
+  + clutter/stage-cogl: Use portable formatting for 64-bit integers
+  + clutter/paint-node: Convert safely from pointer to integer
+
+-------------------------------------------------------------------
+Tue Sep 17 09:06:26 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.34.0+14:
+  + idle-monitor: Reset timeout before firing watch
+  + idle-monitor: Remove redundant type cast
+  + idle-monitor: Make helper function static
+  + kms-device: Free path when finalizing
+  + kms-device: Handle impl device creation failure
+  + x11: Minor refactor of input focus handling code
+  + x11: Use the currently focused X window for _NET_ACTIVE_WINDOW
+
+-------------------------------------------------------------------
+Fri Sep 13 14:22:20 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.34.0+7:
+  + cogl/egl: Just notify about failure to create high priority
+    context
+  + clutter/actor:
+    - Remove unused private function
+    - Fix a wrong comment
+  + Fix a few tracing typos
+  + core: Split x11-display initialization in 2 signals
+  + plugins/default: Get default keymap from localed
+  + Updated translations.
+- Switch to checkout from master, we need the fixes for stability.
+
+-------------------------------------------------------------------
+Mon Sep  9 15:49:44 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.34.0:
+  + Fix xdg-output v3 support.
+  + Fix crash when changing decoration state.
+  + Add and remove connectors on hot-plug.
+
+-------------------------------------------------------------------
+Sat Sep 07 19:54:14 UTC 2019 - bjorn.lie@gmail.com
+
+- Fixup _service to follow our standards.
+
+-------------------------------------------------------------------
+Thu Sep  5 12:46:34 NZST 2019 - luke@ljones.dev
+
+- Update to version 3.33.92:
+  + Turn MetaShapedTexture into a ClutterContent implementation.
+  + Restore inhibit shortcut for overlay key.
+  + Misc. pointer a11y improvements.
+  + Fix position of drag surfaces.
+  + Implement subsurface.place_below() for parents.
+  + Add meta_window_actor_get_image().
+  + Revert faulty optimization from !719.
+  + Add additional sysprof trace points.
+  + Remove GLX "threaded swap wait" used on Nvidia.
+  + Implement geometric picking.
+  + Fix lost keyboard focus after DND.
+  + Misc. bug fixes and cleanups.
+- Drop
+  mutter-iconcache-Support-RGB16_565-format-for-16-bit-color-.patch
+
+-------------------------------------------------------------------
+Thu Aug 29 20:05:21 UTC 2019 - Luke Jones <luke@ljones.dev>
+
+- Remove mutter-xwayland-create-xauthority.patch, upstreamed.
+  Autostart of xwayland is enabled, and also sets xauthority.
+
+-------------------------------------------------------------------
+Wed Aug 28 23:17:54 UTC 2019 - luke@ljones.dev
+
+- Update to version 3.33.91
+  + Fix primary selection copy and paste between X11 and wayland.
+  + Improve monitor hotplug support.
+  + Remove a source of frame skips.
+  + Fix windows being lowered after unmaximizing with double click.
+  + Remove Clutter API for global grabs.
+  + Improve processing of incompressible events.
+  + Add xdg-output v3 support.
+  + Misc. bug fixes and cleanups.
+- Changes from version 3.33.90
+  + Fix visibility of clones with hidden source.
+  + Reduce freezes when opening some popup windows.
+  + Be more thorough when excluding obscured areas from painting.
+  + Make it possible to start Xwayland on demand.
+  + clutter: Expose layout_manager to transitions.
+  + Misc. bug fixes and cleanups.
+- Changes from version 3.33.4
+  + Discard page flip retries on hotplug.
+  + Add xdg-output v2 support.
+  + Restore DRM format fallbacks.
+  + Don't emit ::size-changed when only position changed.
+  + Expose workspace layout properties.
+  + Don't use grab modifiers when shortcuts are inhibited.
+  + Fix stuttering due to unchanged power save mode notifications.
+  + Add API to reorder workspaces.
+  + Make picking a new focus window more reliable.
+  + Defer actor allocation till shown.
+  + Try to use primary GPU for copy instead of glReadPixels.
+  + Unset pointer focus when the cursor is hidden.
+  + Fix modifier-drag on wayland subsurfaces.
+  + Fix background corruption on Nvidia after resuming from suspend.
+  + Only grab the locate-pointer key when necessary.
+  + Misc. bug fixes and cleanups.
+- Changes from version 3.33.3
+  + Prepare for running Xwayland on demand.
+  + Fix text selection color rendering.
+  + Fix black shadows when using fractional scaling.
+  + Honor startup sequence workspace on wayland.
+  + Only emit 'grab-op-end` signal after dropping grabs.
+  + Add a Sysprof-based profiler.
+  + Relax "xwayland-allow-grabs" setting.
+  + Implement locate-pointer accessibility feature.
+  + Implement mouse accessibility.
+  + Consolidate frame throttling.
+  + Fix setting blank cursor under wayland.
+  + Pixel-align OpenGL cursors.
+  + Handle returning from fullscreen/maximization better.
+  + Improve screencast support on multi-monitor systems.
+  + Fix running X11 applications with sudo under wayland.
+  + Implement toggle-keys notification.
+  + Add initial KMS transactional support.
+  + Improve finding new focus window when the old one is closed.
+  + Misc. bug fixes and cleanups.
+- Changes from version 3.33.2
+  + Fix rendering lag on Xorg.
+  + Misc. bug fixes and cleanups.
+- Changes from version 3.33.1
+  + Remove unused APIs and outdated driver support
+  + Enable EGL_IMG_context_priority.
+  + Disable mouse keys with Numlock on.
+  + Fix crash when restarting on X11.
+  + Implement clipboard manager.
+  + Fix spurious idle signals that prevent session unblank.
+  + Fix mapping of touchscreens that don't report dimensions.
+  + Fix propagating fractional scaling factor.
+  + Add experimental RT scheduling support.
+  + Misc. bug fixes and cleanups.
+
+-------------------------------------------------------------------
 Wed Jul 24 20:49:24 UTC 2019 - bjorn.lie@gmail.com
 
 - Update to version 3.32.2+43:
@@ -706,7 +927,7 @@ Sat Nov  4 02:03:57 UTC 2017 - luc14n0@linuxmail.org
   + Work with clients that require older linux_dmabuf protocol
     (bgo#788558).
   + Prevent crash when closing maximized windows (bgo#788666).
-  + Use the correct monitor for HiDPI scaling of shell chrome 
+  + Use the correct monitor for HiDPI scaling of shell chrome
     (bgo#788820).
   + Enable XWayland core dumps (bgo#789086).
   + Fixes:
@@ -818,7 +1039,7 @@ Thu Sep 14 14:39:13 UTC 2017 - fezhang@suse.com
 -------------------------------------------------------------------
 Tue Sep 12 19:59:13 UTC 2017 - zaitor@opensuse.org
 
-- Add disabled pkgconfig(libpipewire-0.1) BuildRequires and 
+- Add disabled pkgconfig(libpipewire-0.1) BuildRequires and
   --enable-remote-desktop configure flag, enable support for
   remote desktop and screen cast when the dependency is available
   in openSUSE.

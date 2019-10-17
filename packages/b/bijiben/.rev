@@ -367,4 +367,13 @@
     <comment></comment>
     <requestid>717987</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>4eb5b3e44bda2571fa44062f47d67379</srcmd5>
+    <version>3.34.1</version>
+    <time>1571310409</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.34.1:
+  + Updated translations. (forwarded request 738453 from iznogood)</comment>
+    <requestid>738534</requestid>
+  </revision>
 </revisionlist>

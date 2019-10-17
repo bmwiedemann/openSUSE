@@ -16,23 +16,26 @@
 #
 
 
+# Don't forget to update this in baselibs.conf too!
+%define librsvg_sover 2
+
 Name:           librsvg
-Version:        2.44.15
+Version:        2.46.2
 Release:        0
 Summary:        A Library for Rendering SVG Data
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later AND Apache-2.0 AND MIT
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/LibRsvg
-Source0:        https://download.gnome.org/sources/librsvg/2.44/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/librsvg/2.46/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  cargo
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  pkgconfig
-BuildRequires:  rust >= 1.27
+BuildRequires:  rust >= 1.34
 BuildRequires:  rust-std
 BuildRequires:  vala
-BuildRequires:  pkgconfig(cairo) >= 1.15.12
+BuildRequires:  pkgconfig(cairo) >= 1.16.0
 BuildRequires:  pkgconfig(cairo-png) >= 1.2.0
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2) >= 20.0.14
@@ -42,7 +45,6 @@ BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.48.0
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.12.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.10.0
 BuildRequires:  pkgconfig(libcroco-0.6) >= 0.6.1
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.0
 BuildRequires:  pkgconfig(pangocairo) >= 1.38.0
@@ -55,7 +57,7 @@ This package contains a library to render SVG (scalable vector
 graphics) data. This format has been specified by the W3C (see
 http://www.w3c.org).
 
-%package -n librsvg-2-2
+%package -n librsvg-2-%{librsvg_sover}
 Summary:        A Library for Rendering SVG Data
 License:        LGPL-2.0-or-later AND Apache-2.0 AND MIT
 Group:          System/Libraries
@@ -63,8 +65,9 @@ Provides:       librsvg2 = %{version}
 Obsoletes:      librsvg2 < %{version}
 Provides:       librsvg = %{version}
 Obsoletes:      librsvg < %{version}
+Obsoletes:      rsvg-view >= %{version}
 
-%description -n librsvg-2-2
+%description -n librsvg-2-%{librsvg_sover}
 This package contains a library to render SVG (scalable vector
 graphics) data. This format has been specified by the W3C (see
 http://www.w3c.org).
@@ -85,7 +88,7 @@ This package provides the GObject Introspection bindings for librsvg.
 Summary:        Development files for librsvg, a SVG render library
 License:        LGPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Requires:       librsvg-2-2 = %{version}
+Requires:       librsvg-2-%{librsvg_sover} = %{version}
 Requires:       typelib-1_0-Rsvg-2_0 = %{version}
 Provides:       librsvg2-devel = %{version}
 Obsoletes:      librsvg2-devel < %{version}
@@ -98,7 +101,7 @@ to develop applications that require these.
 Summary:        A gdk-pixbuf loader for SVG using librsvg
 License:        LGPL-2.0-or-later
 Group:          System/Libraries
-Supplements:    packageand(librsvg-2-2:gdk-pixbuf)
+Supplements:    packageand(librsvg-2-%{librsvg_sover}:gdk-pixbuf)
 %{gdk_pixbuf_loader_requires}
 
 %description -n gdk-pixbuf-loader-rsvg
@@ -108,13 +111,13 @@ http://www.w3c.org).
 
 This package provides a librsvg-based gdk-pixbuf loader.
 
-%package -n rsvg-view
-Summary:        SVG View using the GNOME Render SVG library
+%package -n rsvg-convert
+Summary:        SVG Convert using the GNOME Render SVG library
 License:        LGPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
 
-%description -n rsvg-view
-This package contains a library to render SVG (scalable vector
+%description -n rsvg-convert
+This package contains a tool to convert SVG (scalable vector
 graphics) data. This format has been specified by the W3C (see
 http://www.w3c.org).
 
@@ -128,14 +131,17 @@ BuildArch:      noarch
 This package contains a thumbnailer to render SVG (scalable vector
 graphics) data.
 
+%lang_package
+
 %prep
-%autosetup
+%autosetup -p1
 
 %build
-%configure\
-        --disable-static\
-        --enable-introspection\
-        --enable-vala
+%configure \
+	--disable-static\
+	--enable-introspection\
+	--enable-vala \
+	%{nil}
 %make_build
 
 %install
@@ -143,16 +149,17 @@ graphics) data.
 find %{buildroot} -type f -name "*.la" -delete -print
 # %%doc is used to package such contents
 rm -rf %{buildroot}%{_datadir}/doc/%{name}
+%find_lang %{name} %{?no_lang_C}
 
-%post -n librsvg-2-2 -p /sbin/ldconfig
+%post -n librsvg-2-%{librsvg_sover} -p /sbin/ldconfig
 %post -n gdk-pixbuf-loader-rsvg
 %{gdk_pixbuf_loader_post}
 
-%postun -n librsvg-2-2 -p /sbin/ldconfig
+%postun -n librsvg-2-%{librsvg_sover} -p /sbin/ldconfig
 %postun -n gdk-pixbuf-loader-rsvg
 %{gdk_pixbuf_loader_postun}
 
-%files -n librsvg-2-2
+%files -n librsvg-2-%{librsvg_sover}
 %license COPYING.LIB
 %doc NEWS README.md
 %{_libdir}/librsvg-2.so.*
@@ -163,10 +170,9 @@ rm -rf %{buildroot}%{_datadir}/doc/%{name}
 %files -n gdk-pixbuf-loader-rsvg
 %{_libdir}/gdk-pixbuf-2.0/*/loaders/libpixbufloader-svg.so
 
-%files -n rsvg-view
+%files -n rsvg-convert
 %license COPYING
 %{_bindir}/rsvg-convert
-%{_bindir}/rsvg-view-3
 %{_mandir}/man1/rsvg-convert.1%{?ext_man}
 
 %files -n rsvg-thumbnailer
@@ -186,5 +192,7 @@ rm -rf %{buildroot}%{_datadir}/doc/%{name}
 %dir %{_datadir}/gtk-doc
 %dir %{_datadir}/gtk-doc/html
 %doc %{_datadir}/gtk-doc/html/rsvg-2.0
+
+%files lang -f %{name}.lang
 
 %changelog

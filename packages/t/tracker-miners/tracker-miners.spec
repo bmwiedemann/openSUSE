@@ -17,13 +17,13 @@
 
 
 Name:           tracker-miners
-Version:        2.2.2
+Version:        2.3.1
 Release:        0
 Summary:        Various miners for Tracker
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/Tracker
-Source0:        https://download.gnome.org/sources/tracker-miners/2.2/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/tracker-miners/2.3/%{name}-%{version}.tar.xz
 
 BuildRequires:  giflib-devel
 BuildRequires:  intltool >= 0.40.0
@@ -41,6 +41,7 @@ BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 0.10.31
+BuildRequires:  pkgconfig(gstreamer-audio-1.0) >= 0.10.31
 BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= 0.10.31
 BuildRequires:  pkgconfig(gstreamer-tag-1.0) >= 0.10.31
 BuildRequires:  pkgconfig(icu-i18n) >= 4.8.1.1
@@ -50,7 +51,6 @@ BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libcue)
 BuildRequires:  pkgconfig(libexif) >= 0.6
-BuildRequires:  pkgconfig(libgrss) >= 0.7
 BuildRequires:  pkgconfig(libgsf-1) >= 1.14.24
 BuildRequires:  pkgconfig(libgxps)
 BuildRequires:  pkgconfig(libiptcdata)
@@ -59,7 +59,6 @@ BuildRequires:  pkgconfig(libosinfo-1.0) >= 0.2.9
 BuildRequires:  pkgconfig(libseccomp) >= 2.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6
 BuildRequires:  pkgconfig(poppler-glib) >= 0.16.0
-BuildRequires:  pkgconfig(taglib_c) >= 1.6
 BuildRequires:  pkgconfig(totem-plparser)
 BuildRequires:  pkgconfig(tracker-miner-2.0) >= 2.2.0
 BuildRequires:  pkgconfig(tracker-sparql-2.0) >= 2.2.0
@@ -70,6 +69,7 @@ Recommends:     %{name}-lang
 Conflicts:      libtracker-common-1_0 < 1.99
 # Make sure tracker is being updated to 1.99 too
 Conflicts:      tracker < 1.99
+Obsoletes:      tracker-miner-rss <= 2.2.2
 
 %description
 Tracker is a desktop-neutral object database, tag/metadata database,
@@ -88,17 +88,6 @@ search tool and indexer.
 
 This package contains a miner to index files and applications.
 
-%package -n tracker-miner-rss
-Summary:        Tracker miner to index ATOM and RSS feeds
-Group:          System/GUI/GNOME
-Requires:       %{name} >= %{version}
-
-%description -n tracker-miner-rss
-Tracker is a desktop-neutral object database, tag/metadata database,
-search tool and indexer.
-
-This package contains a miner to index ATOM and RSS feeds.
-
 %lang_package
 
 %prep
@@ -108,12 +97,14 @@ This package contains a miner to index ATOM and RSS feeds.
 %meson \
 	-Dfunctional_tests=false \
 	-Dsystemd_user_services=%{_userunitdir} \
+	-Dminer_rss=false \
 	%{nil}
 %meson_build
 
 %install
 %meson_install
 %find_lang %{name}
+rm -f %{_libdir}/tracker-miners-2.0/libtracker-miners-common.a
 
 %files
 %license COPYING
@@ -140,7 +131,6 @@ This package contains a miner to index ATOM and RSS feeds.
 %{_libdir}/tracker-miners-2.0/extract-modules/
 %{_libdir}/tracker-miners-2.0/writeback-modules/
 %{_libdir}/tracker-miners-2.0/libtracker-extract.so
-%{_libdir}/tracker-miners-2.0/libtracker-miners-common.so
 
 %files -n tracker-miner-files
 %{_libexecdir}/tracker-miner-fs
@@ -150,14 +140,6 @@ This package contains a miner to index ATOM and RSS feeds.
 %{_datadir}/dbus-1/services/org.freedesktop.Tracker1.Miner.Files.service
 %{_datadir}/glib-2.0/schemas/org.freedesktop.Tracker.Miner.Files.gschema.xml
 %{_sysconfdir}/xdg/autostart/tracker-miner-fs.desktop
-
-%files -n tracker-miner-rss
-%{_sysconfdir}/xdg/autostart/tracker-miner-rss.desktop
-%{_libexecdir}/tracker-miner-rss
-%{_userunitdir}/tracker-miner-rss.service
-%{_datadir}/dbus-1/services/org.freedesktop.Tracker1.Miner.RSS.service
-%{_datadir}/tracker/miners/org.freedesktop.Tracker1.Miner.RSS.service
-%{_mandir}/man1/tracker-miner-rss.1%{ext_man}
 
 %files lang -f %{name}.lang
 

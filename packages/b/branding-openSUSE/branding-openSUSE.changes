@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 15 15:32:39 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequires rsvg-convert instead of rsvg-view on suse_version
+  >= 1550. rsvg-view no longer exists and the sub-package from
+  librsvg was renamed accordingly.
+
+-------------------------------------------------------------------
 Fri Oct  4 07:57:58 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
 
 - Remove symlinks for grub2

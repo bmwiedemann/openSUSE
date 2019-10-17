@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 16 08:35:28 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Inject -Wno-error into CFLAGS. It's kinda ridiculous for code
+  that is not maintained upstream to pass -Werror by default and
+  then not catching up. So for now we accept warnings.
+
+-------------------------------------------------------------------
 Mon Mar 12 12:43:56 UTC 2018 - sor.alexei@meowr.ru
 
 - Replace dont-build-debug-tools.patch with

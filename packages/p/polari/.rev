@@ -280,4 +280,12 @@
     <comment>New stable rel (forwarded request 705495 from iznogood)</comment>
     <requestid>705587</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>2b53f066c93b122aa80a9122623c24eb</srcmd5>
+    <version>3.34.0</version>
+    <time>1571310202</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736600</requestid>
+  </revision>
 </revisionlist>

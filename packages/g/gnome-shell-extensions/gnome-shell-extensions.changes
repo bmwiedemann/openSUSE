@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Wed Oct  9 10:32:09 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Adjust to gnome-settings-daemon plugin removals.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct  8 04:35:27 UTC 2019 - Xiaoguang Wang <xwang@suse.com>
+
+- Add requires gnome-shell-extension-desktop-icons for package
+  gnome-shell-classic, when start sle-classic session, enable
+  extension desktop-icons automatically (bsc#1148036).
+
+-------------------------------------------------------------------
+Wed Sep 11 07:09:01 UTC 2019 - Xiaoguang Wang <xwang@suse.com>
+
+- Update gse-sle-classic-ext.patch: Missing the solution for
+  boo#1094148, add it back.
+
+-------------------------------------------------------------------
+Mon Sep  9 16:31:41 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.34.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  6 01:04:26 UTC 2019 - Xiaoguang Wang <xwang@suse.com>
+
+- Update to version 3.33.92:
+  + Translators: Марко Костић [sr], Tim Sabsch [de],
+    Rūdolfs Mazurs [lv], Matej Urbančič [sl], Balázs Úr [hu],
+    Claude Paroz [fr], Fran Dieguez [gl], Changwoo Ryu [ko],
+    Ryuta Fujii [ja], Fabio Tomat [fur], Goran Vidović [hr].
+- Adapt sle-classic to 3.33.92
+  + Update file sle-classic.json
+  + Update sle-classic@suse.com.tar.gz
+  + Update gse-sle-classic-ext.patch
+- Drop gnome-shell-favorites-menu-at-end.patch:
+  Merge this function to gse-sle-classic-ext.patch.
+
+-------------------------------------------------------------------
+Wed Sep  4 02:17:34 UTC 2019 - Xiaoguang Wang <xwang@suse.com>
+
+- Update to version 3.33.91:
+  + window-list: Support showing windows from all workspaces.
+  + Misc. bug fixes and cleanups.
+  + Make GNOME Classic more classic:
+    - Disable GNOME 3 overview.
+    - Add window picker button to window list.
+    - Style improvements and fixes.
+    - Support horizontal workspace layout in window list.
+    - Add draggable previews to window list workspace switcher.
+    - Arrange workspaces horizontally.
+  + workspace-indicator: Support horizontal workspace layout.
+  + workspace-indicator: Add draggable previews.
+- Drop gse-apps-menu-Add_missing_chain-up.patch: Fixed upstream.
+- Rebase gnome-shell-add-app-to-desktop.patch
+- Rebase gnome-shell-favorites-menu-at-end.patch
+- Rebase gse-sle-classic-ext.patch
+- Rebase sle-classic-lock-screen-background.patch
+
+-------------------------------------------------------------------
 Fri Aug  2 18:08:38 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add gse-apps-menu-Add_missing_chain-up.patch: PanelMenu.Button is

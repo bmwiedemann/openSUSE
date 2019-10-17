@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Oct 11 17:46:31 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.1:
+  * Rename `debug` option to `debugging`
+  * Fix racing build when using the enum header
+  * Add option to specify path to pygobject override directory
+- Changes from version 2.0:
+  * Support new signond 8.60
+  * New SignonSecurityContext with system and application contexts
+  * Add signon_list_available_mechanisms() method
+  * Remove a couple of obsolete methods
+  * Use the GTask API
+  * Build: switch to Meson build system
+  * Tests: increase code coverage
+- Changes from version 1.15:
+  * Do not build-depend on signond
+  * Update to the new signond D-Bus api with application context
+  * Create the Vala file at build time
+  * Handle the case where signond objects have been unregistered
+  * Respect thread affinity in callbacks
+  * Fix a memory leak
+  * Tests: make tests more robust
+- Switch to git checkout via source service, explict released tag.
+- Add meson BuildRequires and macros following upstreams port.
+- Bump sover following upstreams bumps.
+- Add explicit python3-gobject-devel and pkgconfig(vapigen)
+  BuildRequires, new dependencies.
+- Drop libtool, python-devel pkgconfig(check) and
+  pkgconfig(signond) BuildRequries, no longer needed.
+- Modernize spec.
+- Add new sub-package python3-libsignon-glib.
+
+-------------------------------------------------------------------
 Fri Nov  3 09:42:34 UTC 2017 - buschmann23@opensuse.org
 
 - spec file

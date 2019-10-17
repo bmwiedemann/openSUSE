@@ -1287,4 +1287,12 @@ Still we will be working in upstream with more easily &quot;merge-able&quot; imp
     <comment></comment>
     <requestid>728235</requestid>
   </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>4e854bf00cc09d23c36c21e4538e6ab4</srcmd5>
+    <version>3.24.12</version>
+    <time>1571310119</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736579</requestid>
+  </revision>
 </revisionlist>

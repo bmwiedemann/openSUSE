@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Sat Oct 12 16:23:44 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.3.1:
+  + Improved .odt extraction, fixing issues with hyphenated words.
+  + OpenBSD: Fixed build.
+  + functional-tests: Fixed a cause of intermittent failures,
+    removed some unused data files.
+  + Minor compiler warning and build system fixes.
+
+-------------------------------------------------------------------
+Tue Sep 10 05:56:18 CDT 2019 - mgorse@suse.com
+
+- Update to version 2.3.0:
+  + No changes since 2.2.99.1.
+
+-------------------------------------------------------------------
+Thu Sep  5 18:50:30 CDT 2019 - mgorse@suse.com
+
+- Update to version 2.2.99.1:
+  + The ~/Downloads folder is now indexed non-recursively by
+    default. This reduces the risk of Tracker unnecessarily
+    crawling large directories of source code or video game data.
+      - If users are storing data such as music or photos in
+    subfolders of the Downloads folder, they will need to move it
+    to an appropriate place (~/Music, ~/Pictures, etc.) so that
+    it is still indexed.
+  + Dispose TrackerResource objects before unref.
+  + Fixes in Musicbrainz metadata extraction.
+  + Translations: ca, eu.
+
+-------------------------------------------------------------------
+Mon Aug 26 16:38:55 CST 2019 - yfjiang@suse.com
+
+- Update to version 2.2.99.0:
+  + Support for reading Musicbrainz metadata from audio files.
+  + Tracker Writeback now uses GStreamer to write metadata to audio
+    files, instead of depending on taglib directly.
+  + Directories will now be ignored if they contain a file named
+    `.nomedia`. A file named `.trackerignore` has the same effect,
+    but the `.nomedia` file brings us in line with Android.
+  + Removed obsolete 'max-media-art-width' setting.
+- libtracker-miners-common is built as a static library and only
+  used in build time. So remove it in the %install section.
+- Add a new BuildRequires pkgconfig(gstreamer-audio-1.0).
+- Drop an unused BuildRequires pkgconfig(taglib_c).
+
+-------------------------------------------------------------------
+Tue Jun 25 22:04:32 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(libgrss) BuildRequires and subpackage
+  tracker-miner-rss: libfrss is dropped upstream. Following this,
+  add tracker-miner-rss Obsoletes to main tracker-miners package.
+
+-------------------------------------------------------------------
 Fri May  3 09:20:46 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.2.2:

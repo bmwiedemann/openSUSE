@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 10 18:13:20 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.34.0:
+  + No changes.
+
+-------------------------------------------------------------------
+Thu Aug 15 11:38:36 CEST 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.33.3:
+  + Custom marshallers are now provided for all signals to improve
+    the stack-unwinding capability from kernel tooling such as
+    Linux `perf`.
+  + Various build system improvements.
+
+-------------------------------------------------------------------
 Wed Jul  3 11:25:06 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Rename typelib-1_0-Jsonrpc-1.0 to typelib-1_0-Jsonrpc-1_0: adhere

@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Oct 16 04:32:47 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Bugs fixed: icons: Unbreak providers without any visual
+    identity.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 11 18:53:06 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep  5 12:51:34 NZST 2019 - luke@ljones.dev
+
+- Update to version 3.33.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Aug 31 05:15:29 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.33.91:
+  + Support Fedora Account System.
+  + Bugs fixed:
+    - owncloud: Use "Nextcloud", not "ownCloud", in user-visible
+      errors.
+    - build: Allow building with gettext ≥ 0.20.
+    - webview: Make it more flexible in terms of its size.
+    - kerberos: Use GTask's task data slot to leverage the
+      compiler.
+    - daemon: Return a D-Bus error if AddAccount fails to list all
+      providers.
+    - kerberos: Use GTask's task data slot to leverage the
+      compiler.
+    - build: Support the use of g_autolist with GoaObject.
+  - Port to GTask from GSimpleAsyncResult.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Mar 25 19:27:53 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.0:
@@ -749,7 +789,7 @@ Mon Jun 23 18:13:07 UTC 2014 - zaitor@opensuse.org
 -------------------------------------------------------------------
 Fri Jun 13 03:02:06 UTC 2014 - mgorse@suse.com
 
-- Update to version 3.10.5: 
+- Update to version 3.10.5:
   + Remove Windows Live chat support (bgo#728787)
   + Bugs fixed:
     - bgo#699553 ewsclient: Correctly cancel pending messages on
@@ -773,7 +813,7 @@ Sat May 17 13:06:16 UTC 2014 - zaitor@opensuse.org
 -------------------------------------------------------------------
 Fri May 16 14:59:35 UTC 2014 - mgorse@suse.com
 
-- Update to version 3.10.4: 
+- Update to version 3.10.4:
   + Bugs fixed:
     - bgo#726609 Popup is too small to display Facebook
       authorization

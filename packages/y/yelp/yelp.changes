@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep  9 14:28:40 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.34.0:
+  + Stable release. No changes since 3.33.92.
+
+-------------------------------------------------------------------
+Mon Sep  2 11:25:46 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.33.92:
+  + Allow the application name to be translated.
+  + Enable WebKit back-forward swipe gesture.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed May  8 09:36:23 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.2:

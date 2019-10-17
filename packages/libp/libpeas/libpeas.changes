@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri Oct  4 13:20:19 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Require gettext, rather than gettext-runtime-mini. 
+
+-------------------------------------------------------------------
+Tue Sep 10 05:23:41 CDT 2019 - mgorse@suse.com
+
+- Update to version 1.24.0:
+  + Setup troubleshooting environment when running automated tests.
+  + Translation updates.
+
+-------------------------------------------------------------------
+Thu Sep  5 09:10:50 CDT 2019 - mgorse@suse.com
+
+- Update to version 1.23.92:
+  + Fix soname usage to match 1.22.x.
+  + Fix typo in deprecation ignores.
+  + Fix gtk_menu_popup() deprecations.
+  + Fix meson build warning.
+  + Translation updates.
+- Soname is 1.0-0 again.
+- Reinstate demo package; it is being installed again.
+
+-------------------------------------------------------------------
+Sat Aug 31 09:55:53 CDT 2019 - mgorse@suse.com
+
+- Update to version 1.23.90.1:
+  + Ensure that programs linking against libpeas-1.0 also link
+    against gobject-introspection-1.0.
+  + Changes in version 1.23.90:
+  + Port to meson build system, autotools has been removed.
+  + Support for python3.8 in the python3 loader.
+  + Reduce warning impact of GParameter deprecations on API
+    consumers.
+  + Fix a number of deprecations in internal API.
+  + Remove use of intltool in favor of gettext.
+  + Add versioning macros and hide non-public symbols.
+  + Translation updates.
+- Switch to meson.
+- Drop intltool from BuildRequires; require gettext-runtime-mini.
+- Pass libpeas-1.0 to %find_lang.
+- Python 2 loader is now named libpython2loader.so.
+- Update package names: soname is now 1_0-1.
+- Remove demo package: no longer installed.
+
+-------------------------------------------------------------------
 Wed Aug 28 10:53:42 UTC 2019 - Michael Gorse <mgorse@suse.com>
 
 - Remove libpeas-loader-python from Recommends. There is already a

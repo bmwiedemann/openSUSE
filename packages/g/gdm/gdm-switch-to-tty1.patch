@@ -8,7 +8,7 @@ Index: gdm-3.32.0+2/daemon/main.c
  
 +#define SHELLSCRIPT "\
 +/bin/bash -c \
-+\'PROCESS=\"X Xwayland\"\;\
++\'PROCESS=\"X Xwayland plymouth\"\;\
 +R=$(pidof $PROCESS)\;\
 +while [ $? == 0 ]\;\
 +do sleep 1\;\

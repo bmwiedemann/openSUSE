@@ -1054,4 +1054,12 @@
     <comment>New stable release</comment>
     <requestid>714924</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>22407d5b2eded4c1e88119099476e370</srcmd5>
+    <version>3.34.1</version>
+    <time>1571310243</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736612</requestid>
+  </revision>
 </revisionlist>

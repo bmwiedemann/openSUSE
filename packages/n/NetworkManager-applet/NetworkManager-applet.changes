@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Oct  9 16:30:56 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Update translation-update-upstream and find_lang invocations.
+    The potfile name has changed.
+
+-------------------------------------------------------------------
+Wed Oct  9 15:22:29 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.8.24:
+  + Fixed external UI mode without interactive secrets.
+  + Ad-Hoc networks now support WPA2 authentication.
+  + Support for SAE authentication (WPA3 Personal) was added.
+  + Fixed applet operation on graphical servers other than X11
+    (such as Wayland).
+  + Various other bug fixes and enhancements.
+  + Added EXPERIMENTAL libnma-gtk4 library for use with GTK4. Not
+    recommended for production use!
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Jun 18 06:16:33 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Rebase feature-app-indicator-desktop-file.patch (boo#1138523).

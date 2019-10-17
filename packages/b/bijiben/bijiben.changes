@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Oct 14 16:38:31 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 12 09:25:53 CST 2019 - sckang@suse.com
+
+- Update to version 3.34.0:
+  + Added intltool as a flatpak dependency.
+  + Added missing icons in editor toolbar.
+  + Added new API to get human time.
+  + Changed settings window to use the same color chooser as editor window.
+  + Fixed missing notes from main view.
+  + Improved application model by removing duplicated note id objects.
+  + Improved Own/NextCloud notes management.
+  + Improved README to use markdown.
+  + Ported to libecal-2.0.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  6 23:16:33 NZST 2019 - luke@ljones.dev
+
+- Update to version 3.33.92:
+  + Added missing icons in editor toolbar.
+  + Added new API to get human time.
+  + Changed settings window to use the same color chooser as
+    editor window.
+  + Fixed appdata screenshot urls.
+  + Fixed missing notes from main view.
+  + Improved application model by removing duplicated note id
+    objects.
+  + Improved Own/NextCloud notes management.
+  + Ported to libecal-2.0.
+- Replace pkgconfig(libecal-1.2) with pkgconfig(libecal-2.0)
+  BuildRequires following upstreams port.
+
+-------------------------------------------------------------------
 Fri Jul 19 07:15:16 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.2:
@@ -542,7 +580,7 @@ Sat Jul 18 09:43:41 UTC 2015 - zaitor@opensuse.org
     - Notes & notebooks icons.
     - Fix thumbnails inside shell.
     - Empty result box.
-  + Bugs fixed: 
+  + Bugs fixed:
     - Fix crash when note color changes (rh#1204815).
     - Fix build error.
   + Updated translations.
@@ -797,7 +835,7 @@ Tue Feb  4 13:09:46 UTC 2014 - zaitor@opensuse.org
 - Update to version 3.11.5:
   + Unique window. But notes can be detached.
   + Memorize window's size and position.
-  + Bugs fixed: 
+  + Bugs fixed:
     - Main toolbar: fix positions.
     - Fix default width.
     - Do not toggle search on arrows, tab, return.
