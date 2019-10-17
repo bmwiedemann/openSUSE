@@ -20,14 +20,14 @@
 %define gdk_pixbuf_binary_version 2.10.0
 
 Name:           gdk-pixbuf
-Version:        2.38.2
+Version:        2.40.0
 Release:        0
 Summary:        An image loading library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://www.gnome.org/
 
-Source0:        https://download.gnome.org/sources/gdk-pixbuf/2.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gdk-pixbuf/2.40/%{name}-%{version}.tar.xz
 Source1:        macros.gdk-pixbuf
 Source2:        README.SUSE
 Source3:        gdk-pixbuf-rpmlintrc
