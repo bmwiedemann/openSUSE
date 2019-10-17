@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep 12 14:28:34 CST 2019 - qkzhu@suse.com
+
+- Update to version 0.34.0:
+  + Increment version number following 0.34 release. 
+
+-------------------------------------------------------------------
+Fri Aug 30 14:52:11 CDT 2019 - mgorse@suse.com
+
+- Update to version 0.33.2:
+  + Drop references to GDBusConnection objects when D-Bus
+    connections are closed.
+- Changes from version 0.33.1:
+  + Factor out a common method to route completion of D-Bus
+    methods through.
+  + build: Use weak bindings in gvdb to fix linking with LLD.
+
+-------------------------------------------------------------------
 Mon Mar 11 18:19:20 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.0:
