@@ -1,5 +1,5 @@
 #
-# spec file for package systemtap-headers
+# spec file for package systemtap-dtrace
 #
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
@@ -16,52 +16,42 @@
 #
 
 
-# Note: this separate package systemtap-headers exists so that ring0
-# packages can make use of the SDT headers without pulling in all
-# build requirements of the normal systemtap package.  Normal use
-# outside of BuildRequires in ring0 packages should use systemtap-sdt-devel
 %if ! %{defined _rundir}
 %define _rundir %{_localstatedir}/run
 %endif
-Name:           systemtap-headers
+Name:           systemtap-dtrace
 Version:        4.1
 Release:        0
-Summary:        SystemTap headers
+Summary:        SystemTap dtrace utility
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
 URL:            http://sourceware.org/systemtap/
-Source0:        https://sourceware.org/systemtap/ftp/releases/systemtap-%{version}.tar.gz
-Source1:        https://sourceware.org/systemtap/ftp/releases/systemtap-%{version}.tar.gz.asc
+Source0:        http://sourceware.org/systemtap/ftp/releases/systemtap-%{version}.tar.gz
+Source1:        http://sourceware.org/systemtap/ftp/releases/systemtap-%{version}.tar.gz.asc
 Source2:        systemtap.keyring
 Source3:        README-BEFORE-ADDING-PATCHES
 Source4:        README-KEYRING
-Source5:        stap-server.conf
-Patch1:         systemtap-build-source-dir.patch
-# sdt-devel provides the same header files as us, so we
-# must conflict
-Conflicts:      systemtap-sdt-devel
+BuildArch:      noarch
 
 %description
 SystemTap is an instrumentation system for systems running Linux.
-This package contains only the headers for static system probes and
-exists only to limit build cycles.  Normally you should install
-systemtap-sdt-devel, which also contains these headers.
+This package contains the dtrace utility to build provider and probe
+definitions.
 
 %prep
 %setup -q -n systemtap-%{version}
-%patch1 -p1
 
 %build
 # Our binutils always support '?' in the section characters on all
 # architectures, no need for configure tests
-sed -e 's/@support_section_question@/1/' < includes/sys/sdt-config.h.in > includes/sys/sdt-config.h
+sed s=@preferred_python@=%{_bindir}/python3= dtrace.in |sed s=@prefix@=%{_prefix}= >dtrace
 
 %install
-mkdir -p %{buildroot}%{_includedir}/sys
-cp -rp includes/sys/*.h %{buildroot}%{_includedir}/sys/
+mkdir -p %{buildroot}%{_bindir}
+install -m 755 dtrace %{buildroot}%{_bindir}
 
 %files
 %defattr(-,root,root)
-%{_includedir}/sys/*.h
+%{_bindir}/dtrace
 
 %changelog

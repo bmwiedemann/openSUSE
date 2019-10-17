@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sat Oct 12 23:12:21 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 4.1.2
+  * DNN module:
+    + Intel Inference Engine backend (OpenVINO):
+      - 2019R3 has been supported
+      - Support modern IE Core API
+      - New approach for custom layers management. Now all the OpenCV
+        layers fallbacks are implemented as IE custom layers which
+        helps to improve efficiency due less graph partitioning.
+      - High-level API which introduces dnn::Model class and set of
+        task-specific classes such dnn::ClassificationModel,
+        dnn::DetectionModel, dnn::SegmentationModel. It supports
+        automatic pre- and post-processing for deep learning networks.
+  * Performance improvements and platforms support:
+    + MSA SIMD implementation has been contributed for MIPS platforms:
+      https://github.com/opencv/opencv/pull/15422
+    + OpenCV.js optimization (threading and SIMD as part of GSoC
+      project): https://github.com/opencv/opencv/pull/15371
+    + More optimizations using SIMD intrinsics: dotProd, FAST corners,
+      HOG, LK pyramid (VSX), norm, warpPerspective, etc
+    + Fixed detection of Cascade Lake CPUs
+  * And many other great patches from OpenCV community:
+    + GUI: support topmost window mode (Win32/COCOA):
+      https://github.com/opencv/opencv/pull/14872
+    + Java: fix Mat.toString() for higher dimensions:
+      https://github.com/opencv/opencv/pull/15181
+    + Implementation of colormap "Turbo"
+      https://github.com/opencv/opencv/pull/15388
+    + QR-Code detection accuracy improvement:
+      https://github.com/opencv/opencv/pull/15356
+    + GSoC: Add learning-based super-resolution module:
+      https://github.com/opencv/opencv_contrib/pull/2229 and
+      https://github.com/opencv/opencv_contrib/pull/2231
+    + Detection accuracy improvement of the white marker aruco
+      corners: https://github.com/opencv/opencv_contrib/pull/2236
+    + Added pattern generator tool for aruco:
+      https://github.com/opencv/opencv_contrib/pull/2250
+    + and special thanks to @sturkmen72 for improvind and cleaning
+      up code of samples/tutorials
+  * Breaking changes:
+    + fixed values thresholding accuracy in calcHist()
+- Enable Graph API (G-API)
+- Minor spec file cleanup
+
+-------------------------------------------------------------------
 Wed Aug 28 15:05:46 UTC 2019 - Marius Kittler <marius.kittler@suse.com>
 
 - Include pkg-config file in opencv-devel package

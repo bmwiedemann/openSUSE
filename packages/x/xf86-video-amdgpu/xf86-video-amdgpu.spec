@@ -21,7 +21,7 @@
 %define pci_ids_dir %{_sysconfdir}/X11/xorg_pci_ids
 %endif
 Name:           xf86-video-amdgpu
-Version:        19.0.1
+Version:        19.1.0
 Release:        0
 Summary:        AMDGPU video driver for the Xorg X server
 License:        MIT

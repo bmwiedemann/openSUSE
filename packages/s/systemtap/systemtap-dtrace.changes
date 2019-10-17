@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Fri Sep 27 15:07:24 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Moved the dtrace binary into a separate package to resolve build
+  cycle with glib2 (bsc#1145438). 

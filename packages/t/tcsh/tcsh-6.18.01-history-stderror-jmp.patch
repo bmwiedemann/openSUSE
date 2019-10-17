@@ -25,25 +25,32 @@
      }
  
      cleanup_push(&unit, open_cleanup);
-@@ -2229,6 +2231,7 @@ dosource_flg(Char **t, struct command *c
+@@ -2225,7 +2227,7 @@ dosource(Char **t, struct command *c)
+ int
+ dosource_flg(Char **t, struct command *c, int flg)
+ {
+-    Char *f;
++    Char *f, **globbed;
      char *file;
      int fd;
      int newflg = 0;
-+    size_t omark;
- 
-     USE(c);
-     t++;
-@@ -2249,9 +2252,12 @@ dosource_flg(Char **t, struct command *c
+@@ -2248,12 +2253,17 @@ dosource_flg(Char **t, struct command *c
+     cleanup_push(file, xfree);
      xfree(f);
      t = glob_all_or_error(t);
-     cleanup_push(t, blk_cleanup);
-+    omark = cleanup_push_mark();
+-    cleanup_push(t, blk_cleanup);
++    globbed = t;
++    cleanup_push(globbed, blk_cleanup);
      fd = srcfile(file, 0, (flg | newflg), t);
 -    if ((!fd) && (!newflg) && (!bequiet))
 +    if ((!fd) && (!newflg) && (!bequiet)) {
-+	omark = cleanup_push_mark();
++	(void)cleanup_push_mark();
  	stderror(ERR_SYSTEM, file, strerror(errno));
 +    }
      /* We need to preserve fd and it's cleaning routines on the top of the
       * cleaning stack. Don't call cleanup_until() but clean it manually. */
++    cleanup_ignore(globbed);
++    blk_cleanup(globbed);
      cleanup_ignore(file);
+     xfree(file);
+ 

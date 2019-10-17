@@ -40,7 +40,7 @@
  }
  
  #define USE_JENKINS_HASH 1
-@@ -1353,5 +1353,16 @@ void
+@@ -1358,5 +1358,16 @@ void
  sethistory(int n)
  {
      histlen = n;

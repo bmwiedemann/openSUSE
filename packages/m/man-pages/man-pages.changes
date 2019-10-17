@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Oct 14 06:47:17 UTC 2019 - pgajdos@suse.com
+
+- version update to 5.03
+  * New and rewritten pages
+    pidfd_open.2
+    pidfd_send_signal.2
+    pivot_root.2
+    ipc_namespaces.7
+    uts_namespaces.7
+  * Newly documented interfaces in existing pages
+    clone.2
+        Document CLONE_PIDFD
+    fanotify_mark.2
+        Document FAN_MOVE_SELF
+    ptrace.2
+        Document PTRACE_GET_SYSCALL_INFO
+    regex.3
+        Document REG_STARTEND
+  * see Changes for other changes
+
+-------------------------------------------------------------------
 Fri Aug  2 10:26:12 UTC 2019 - pgajdos@suse.com
 
 - version update to 5.02

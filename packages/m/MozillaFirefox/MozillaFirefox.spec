@@ -19,13 +19,13 @@
 
 # changed with every update
 %define major          69
-%define mainver        %major.0.2
-%define orig_version   69.0.2
+%define mainver        %major.0.3
+%define orig_version   69.0.3
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
-%define releasedate    20191001234643
-%define source_prefix  firefox-%{orig_version}
+%define devpkg         1
+%define releasedate    20191009172106
 
 # always build with GCC as SUSE Security Team requires that
 %define clang_build 0
@@ -45,6 +45,7 @@ BuildArch:      i686
 # general build definitions
 %define progname firefox
 %define pkgname  MozillaFirefox
+%define srcname  firefox
 %define appname  Firefox
 %define progdir %{_prefix}/%_lib/%{progname}
 %define gnome_dir     %{_prefix}
@@ -139,7 +140,7 @@ License:        MPL-2.0
 Group:          Productivity/Networking/Web/Browsers
 Url:            http://www.mozilla.org/
 %if !%{with only_print_mozconfig}
-Source:         http://ftp.mozilla.org/pub/%{progname}/releases/%{version}%{orig_suffix}/source/firefox-%{orig_version}%{orig_suffix}.source.tar.xz
+Source:         http://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig_suffix}/source/%{srcname}-%{orig_version}%{orig_suffix}.source.tar.xz
 Source1:        MozillaFirefox.desktop
 Source2:        MozillaFirefox-rpmlintrc
 Source3:        mozilla.sh.in
@@ -154,14 +155,14 @@ Source12:       mozilla-get-app-id
 Source13:       spellcheck.js
 Source14:       https://github.com/openSUSE/firefox-scripts/raw/master/create-tar.sh
 Source15:       firefox-appdata.xml
-Source16:       MozillaFirefox.changes
+Source16:       %{name}.changes
 # Set up API keys, see http://www.chromium.org/developers/how-tos/api-keys
 # Note: these are for the openSUSE Firefox builds ONLY. For your own distribution,
 # please get your own set of keys.
 Source18:       mozilla-api-key
 Source19:       google-api-key
-Source20:       https://ftp.mozilla.org/pub/%{progname}/releases/%{version}%{orig_suffix}/source/%{progname}-%{orig_version}%{orig_suffix}.source.tar.xz.asc
-Source21:       https://ftp.mozilla.org/pub/%{progname}/releases/%{version}%{orig_suffix}/KEY#/mozilla.keyring
+Source20:       https://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig_suffix}/source/%{srcname}-%{orig_version}%{orig_suffix}.source.tar.xz.asc
+Source21:       https://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig_suffix}/KEY#/mozilla.keyring
 # Gecko/Toolkit
 Patch1:         mozilla-nongnome-proxies.patch
 Patch2:         mozilla-kde.patch
@@ -194,15 +195,16 @@ Patch102:       firefox-branded-icons.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires(post):   coreutils shared-mime-info desktop-file-utils
 Requires(postun): shared-mime-info desktop-file-utils
-%if %branding
-Requires:       %{name}-branding > 44.0
-%endif
+Requires:       %{name}-branding >= 68
 Requires:       mozilla-nspr >= %(rpm -q --queryformat '%%{VERSION}' mozilla-nspr)
 Requires:       mozilla-nss >= %(rpm -q --queryformat '%%{VERSION}' mozilla-nss)
 Recommends:     libcanberra0
 Recommends:     libpulse0
 # addon leads to startup crash (bnc#908892)
 Obsoletes:      tracker-miner-firefox < 0.15
+%if 0%{?devpkg} == 0
+Obsoletes:      %{name}-devel < %{version}
+%endif
 # libproxy's mozjs pacrunner crashes FF (bnc#759123)
 %if 0%{?suse_version} < 1220
 Obsoletes:      libproxy1-pacrunner-mozjs <= 0.4.7
@@ -214,6 +216,7 @@ Mozilla Firefox is a standalone web browser, designed for standards
 compliance and performance.  Its functionality can be enhanced via a
 plethora of extensions.
 
+%if 0%{?devpkg}
 %package devel
 Summary:        Devel package for %{appname}
 Group:          Development/Tools/Other
@@ -224,6 +227,7 @@ Requires:       perl(XML::Simple)
 
 %description devel
 Development files for %{appname} to make packaging of addons easier.
+%endif
 
 %if %localize
 %package translations-common
@@ -249,7 +253,6 @@ This package contains rarely used languages for the user interface
 of %{appname}.
 %endif
 
-%if %branding
 %package branding-upstream
 Summary:        Upstream branding for %{appname}
 Group:          Productivity/Networking/Web/Browsers
@@ -268,7 +271,6 @@ Supplements:    packageand(%{name}:branding-upstream)
 
 %description branding-upstream
 This package provides upstream look and feel for %{appname}.
-%endif
 
 %if %crashreporter
 %package buildsymbols
@@ -292,11 +294,11 @@ if (( $(stat -Lc%s "%{SOURCE7}") < MINSIZE)); then
     exit 1
 fi
 
-%setup -q -n %{source_prefix} -b 7 -b 10
+%setup -q -n %{srcname}-%{orig_version} -b 7 -b 10
 %else
-%setup -q -n %{source_prefix}
+%setup -q -n %{srcname}-%{orig_version}
 %endif
-cd $RPM_BUILD_DIR/%{source_prefix}
+cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
@@ -493,9 +495,14 @@ make -C browser/installer STRIP=/bin/true MOZ_PKG_FATAL_WARNINGS=0
 grep amazondotcom dist/firefox/browser/omni.ja
 # copy tree into RPM_BUILD_ROOT
 mkdir -p %{buildroot}%{progdir}
-cp -rf $RPM_BUILD_DIR/obj/dist/%{progname}/* %{buildroot}%{progdir}
+cp -rf $RPM_BUILD_DIR/obj/dist/%{srcname}/* %{buildroot}%{progdir}
 mkdir -p %{buildroot}%{progdir}/distribution/extensions
 mkdir -p %{buildroot}%{progdir}/browser/defaults/preferences/
+# renaming executables (for regular vs. ESR)
+%if "%{srcname}" != "%{progname}"
+mv %{buildroot}%{progdir}/%{srcname} %{buildroot}%{progdir}/%{progname}
+mv %{buildroot}%{progdir}/%{srcname}-bin %{buildroot}%{progdir}/%{progname}
+%endif
 # install gre prefs
 install -m 644 %{SOURCE13} %{buildroot}%{progdir}/defaults/pref/
 # install browser prefs
@@ -504,13 +511,13 @@ install -m 644 %{SOURCE9} %{buildroot}%{progdir}/browser/defaults/preferences/fi
 %if %localize
 mkdir -p %{buildroot}%{progdir}/browser/extensions
 truncate -s 0 %{_tmppath}/translations.{common,other}
-sed -r '/^(ja-JP-mac|en-US|)$/d;s/ .*$//' $RPM_BUILD_DIR/%{source_prefix}/browser/locales/shipped-locales \
+sed -r '/^(ja-JP-mac|en-US|)$/d;s/ .*$//' $RPM_BUILD_DIR/%{srcname}-%{orig_version}/browser/locales/shipped-locales \
     | xargs -n 1 -I {} /bin/sh -c '
         locale=$1
         pushd $RPM_BUILD_DIR/compare-locales
         PYTHONPATH=lib \
             scripts/compare-locales -m ../l10n-merged/$locale \
-            ../%{source_prefix}/browser/locales/l10n.ini ../l10n $locale
+            ../%{srcname}-%{orig_version}/browser/locales/l10n.ini ../l10n $locale
         popd
         LOCALE_MERGEDIR=$RPM_BUILD_DIR/l10n-merged/$locale \
             make -C browser/locales langpack-$locale
@@ -546,7 +553,7 @@ find %{buildroot}%{progdir} -type f -name ".mkdir.done" -delete
 mkdir --parents %{buildroot}/usr/bin
 sed "s:%%PREFIX:%{_prefix}:g
 s:%%PROGDIR:%{progdir}:g
-s:%%APPNAME:firefox:g
+s:%%APPNAME:%{progname}:g
 s:%%PROFILE:.mozilla/firefox:g" \
   %{SOURCE3} > %{buildroot}%{progdir}/%{progname}.sh
 chmod 755 %{buildroot}%{progdir}/%{progname}.sh
@@ -563,7 +570,8 @@ mkdir -p %{buildroot}%{_datadir}/mime/packages
 cp %{SOURCE8} %{buildroot}%{_datadir}/mime/packages/%{progname}.xml
 # appdata
 mkdir -p %{buildroot}%{_datadir}/appdata
-cp %{SOURCE15} %{buildroot}%{_datadir}/appdata/%{desktop_file_name}.appdata.xml
+sed "s:firefox.desktop:%{desktop_file_name}:g" \
+  %{SOURCE15} > %{buildroot}%{_datadir}/appdata/%{desktop_file_name}.appdata.xml
 # install man-page
 mkdir -p %{buildroot}%{_mandir}/man1/
 cp %{SOURCE11} %{buildroot}%{_mandir}/man1/%{progname}.1
@@ -593,6 +601,7 @@ rm -f %{buildroot}%{progdir}/run-mozilla.sh
 rm -f %{buildroot}%{progdir}/LICENSE
 rm -f %{buildroot}%{progdir}/precomplete
 rm -f %{buildroot}%{progdir}/update-settings.ini
+%if 0%{?devpkg}
 # devel
 mkdir -p %{buildroot}%{_bindir}
 install -m 755 %SOURCE12 %{buildroot}%{_bindir}
@@ -614,12 +623,7 @@ cat <<'FIN' >%{buildroot}%{_sysconfdir}/rpm/macros.%{progname}
    %%{__unzip} -q -d "$extdir" "%%1" \
    %%{nil}
 FIN
-# just dumping an xpi file there doesn't work...
-#%%firefox_ext_install() \
-#       extdir="%%{buildroot}%%{firefox_extdir}" \
-#       mkdir -p "$extdir" \
-#       cp "%%1" "$extdir" \
-#       %%{nil}
+%endif
 # fdupes
 %fdupes %{buildroot}%{progdir}
 %fdupes %{buildroot}%{_datadir}
@@ -673,8 +677,8 @@ exit 0
 %{progdir}/gtk2/libmozgtk.so
 %{progdir}/gmp-clearkey/
 %attr(755,root,root) %{progdir}/%{progname}.sh
-%{progdir}/firefox
-%{progdir}/firefox-bin
+%{progdir}/%{progname}
+%{progdir}/%{progname}-bin
 %{progdir}/application.ini
 %{progdir}/chrome.manifest
 %{progdir}/dependentlibs.list
@@ -705,13 +709,14 @@ exit 0
 %doc %{_mandir}/man1/%{progname}.1.gz
 %{_datadir}/appdata/
 
+%if 0%{?devpkg}
 %files devel
 %defattr(-,root,root)
 %{_bindir}/mozilla-get-app-id
 %config %{_sysconfdir}/rpm/macros.%{progname}
+%endif
 
 %if %localize
-
 %files translations-common -f %{_tmppath}/translations.common
 %defattr(-,root,root)
 %dir %{progdir}
@@ -725,11 +730,9 @@ exit 0
 
 # this package does not need to provide files but is needed to fulfill
 # requirements if no other branding package is to be installed
-%if %branding
 %files branding-upstream
 %defattr(-,root,root)
 %dir %{progdir}
-%endif
 
 %if %crashreporter
 %files buildsymbols

@@ -25,7 +25,7 @@ Release:        0
 Summary:        Instrumentation System
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
-Url:            https://sourceware.org/systemtap/
+URL:            https://sourceware.org/systemtap/
 Source0:        https://sourceware.org/systemtap/ftp/releases/systemtap-%{version}.tar.gz
 Source1:        https://sourceware.org/systemtap/ftp/releases/systemtap-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
@@ -46,6 +46,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  sqlite-devel
 BuildRequires:  pkgconfig(systemd)
+Requires:       %{name}-dtrace = %{version}
 Requires:       %{name}-runtime = %{version}-%{release}
 Requires:       libebl1
 Obsoletes:      systemtap-client < 1.5
@@ -105,6 +106,7 @@ make %{?_smp_mflags} V=1
 
 %install
 %make_install
+rm -f %{buildroot}%{_bindir}/dtrace
 rm -f %{buildroot}%{_libexecdir}/systemtap/stap-server-request
 # README, AUTHORS, NEWS, man3 and all examples packaged by systemtap-docs
 # COPYING needs to stay in main for GPL
@@ -174,6 +176,5 @@ install -m 644 %{SOURCE5} %{buildroot}%{_libexecdir}/tmpfiles.d
 %files sdt-devel
 %defattr(-,root,root)
 %{_includedir}/sys/*.h
-%{_bindir}/dtrace
 
 %changelog

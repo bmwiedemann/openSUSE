@@ -20,20 +20,17 @@
 %define _lto_cflags %{nil}
 %endif
 
-# The ADE required for gapi is not yet packaged, disable it for now
-%bcond_with gapi
-
 %define libname lib%{name}
 %define soname 4_1
 # disabled by default as many fail
 %bcond_with tests
-%bcond_without qt5
+%bcond_without gapi
 %bcond_without ffmpeg
 %bcond_without python2
 %bcond_without python3
 %bcond_without openblas
 Name:           opencv
-Version:        4.1.1
+Version:        4.1.2
 Release:        0
 Summary:        Collection of algorithms for computer vision
 # GPL-2.0 AND Apache-2.0 files are in 3rdparty/ittnotify which is not build
@@ -80,28 +77,17 @@ BuildRequires:  openblas-devel
 %endif
 %if %{with python2}
 BuildRequires:  pkgconfig(python)
-%if 0%{?suse_version} > 1325
 BuildRequires:  python2-numpy-devel
-%else
-BuildRequires:  python-numpy-devel
-%endif
 %endif
 %if %{with python3}
 BuildRequires:  python3-numpy-devel
 BuildRequires:  pkgconfig(python3)
 %endif
-%if %{with qt5}
 BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.2.0
 BuildRequires:  pkgconfig(Qt5Gui) >= 5.2.0
 BuildRequires:  pkgconfig(Qt5OpenGL) >= 5.2.0
 BuildRequires:  pkgconfig(Qt5Test) >= 5.2.0
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.2.0
-%else
-BuildRequires:  pkgconfig(QtCore)
-BuildRequires:  pkgconfig(QtGui)
-BuildRequires:  pkgconfig(QtOpenGL)
-BuildRequires:  pkgconfig(QtTest)
-%endif
 %if %{with ffmpeg}
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
@@ -241,6 +227,8 @@ rm -f doc/packaging.txt
       -DPYTHON_DEFAULT_EXECUTABLE=%{_bindir}/python3 \
 %endif
       -DOPENCV_SKIP_PYTHON_LOADER=ON \
+      -DOPENCV_PYTHON2_INSTALL_PATH=%{python2_sitearch} \
+      -DOPENCV_PYTHON3_INSTALL_PATH=%{python3_sitearch} \
 
 make %{?_smp_mflags} VERBOSE=1
 

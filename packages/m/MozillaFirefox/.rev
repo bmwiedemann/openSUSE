@@ -4093,4 +4093,15 @@
   (packaging but not branding specific)</comment>
     <requestid>735118</requestid>
   </revision>
+  <revision rev="298" vrev="1">
+    <srcmd5>dc39799c5805393b4737d6ae0ddee1e8</srcmd5>
+    <version>69.0.3</version>
+    <time>1571307397</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 69.0.3
+  * Fixed Yahoo mail users being prompted to download files when
+    clicking on emails (bmo#1582848)
+- devel package build can easily be disabled now</comment>
+    <requestid>738119</requestid>
+  </revision>
 </revisionlist>

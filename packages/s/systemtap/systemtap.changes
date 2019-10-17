@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 14 07:32:43 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Do not require exact version of systemtap-dtrace as build
+  counters are not same for different packages
+
+-------------------------------------------------------------------
+Mon Sep 30 14:07:44 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Moved the dtrace binary into a separate package to resolve build
+  cycle with glib2 (bsc#1145438).
+
+-------------------------------------------------------------------
 Fri Aug 9 20:06:57 UTC 2019 - Tony Jones <tonyj@suse.com>
 
 - Update to version 4.1.  

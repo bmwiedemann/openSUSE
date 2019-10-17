@@ -22,7 +22,7 @@ Release:        0
 Summary:        Documents and examples for systemtap
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
-Url:            https://sourceware.org/systemtap/
+URL:            https://sourceware.org/systemtap/
 Source0:        https://sourceware.org/systemtap/ftp/releases/systemtap-%{version}.tar.gz
 Source1:        https://sourceware.org/systemtap/ftp/releases/systemtap-%{version}.tar.gz.asc
 Source2:        systemtap.keyring

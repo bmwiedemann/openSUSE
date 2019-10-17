@@ -291,4 +291,13 @@
   /usr/share/X11/xorg.conf.d (boo#1139692)</comment>
     <requestid>719826</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a4e997dfd6f9b3fb6d9d9fabcd658401</srcmd5>
+    <version>19.1.0</version>
+    <time>1571307374</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 19.1.0 
+  * bugfixes and minor improvements</comment>
+    <requestid>737890</requestid>
+  </revision>
 </revisionlist>

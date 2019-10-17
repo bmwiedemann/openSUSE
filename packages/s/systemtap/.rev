@@ -767,4 +767,20 @@ Most projects for this reason don't even carry the generated configure script in
     <comment></comment>
     <requestid>723839</requestid>
   </revision>
+  <revision rev="106" vrev="2">
+    <srcmd5>67aad6dba9dc44b0a1b0c3986d1340f2</srcmd5>
+    <version>4.1</version>
+    <time>1571307443</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not require exact version of systemtap-dtrace as build
+  counters are not same for different packages
+
+- Moved the dtrace binary into a separate package to resolve build
+  cycle with glib2 (bsc#1145438).
+
+
+- Moved the dtrace binary into a separate package to resolve build
+  cycle with glib2 (bsc#1145438).</comment>
+    <requestid>738186</requestid>
+  </revision>
 </revisionlist>
