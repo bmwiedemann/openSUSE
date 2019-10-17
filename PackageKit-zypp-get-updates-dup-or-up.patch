@@ -1,0 +1,65 @@
+From fcb9cf74abc56b109d0f71d538f4ac53a996a0bb Mon Sep 17 00:00:00 2001
+From: Jonathan Kang <jonathankang@gnome.org>
+Date: Wed, 25 Sep 2019 14:49:11 +0800
+Subject: [PATCH] respect system wide settings when getting updates
+
+---
+ backends/zypp/pk-backend-zypp.cpp | 28 +++++++++++++++++++++++++++-
+ 1 file changed, 27 insertions(+), 1 deletion(-)
+
+diff --git a/backends/zypp/pk-backend-zypp.cpp b/backends/zypp/pk-backend-zypp.cpp
+index 8b09fb13a..460483f54 100644
+--- a/backends/zypp/pk-backend-zypp.cpp
++++ b/backends/zypp/pk-backend-zypp.cpp
+@@ -1192,7 +1192,25 @@ zypp_emit_filtered_packages_in_list (PkBackendJob *job, PkBitfield filters, cons
+ 	}
+ }
+ 
++static gboolean
++is_tumbleweed (void)
++{
++	gboolean ret = FALSE;
++	static const Capability cap( "product-update()", Rel::EQ, "dup" );
++	ui::Selectable::Ptr sel (ui::Selectable::get (ResKind::package, "openSUSE-release"));
++	if (sel) {
++		if (!sel->installedEmpty ()) {
++			for_ (it, sel->installedBegin (), sel->installedEnd ()) {
++				if (it->satSolvable ().provides ().matches (cap)) {
++					ret = TRUE;
++					break;
++				}
++			}
++		}
++	}
+ 
++	return ret;
++}
+ 
+ /**
+  * Returns a set of all packages the could be updated
+@@ -1201,13 +1219,21 @@ zypp_emit_filtered_packages_in_list (PkBackendJob *job, PkBitfield filters, cons
+ static void
+ zypp_get_package_updates (string repo, set<PoolItem> &pks)
+ {
++	ZYpp::Ptr zypp = getZYpp ();
++	zypp::Resolver_Ptr resolver = zypp->resolver ();
+ 	ResPool pool = ResPool::instance ();
+ 
+ 	ResObject::Kind kind = ResTraits<Package>::kind;
+ 	ResPool::byKind_iterator it = pool.byKindBegin (kind);
+ 	ResPool::byKind_iterator e = pool.byKindEnd (kind);
+ 
+-	getZYpp()->resolver()->doUpdate();
++	if (is_tumbleweed ()) {
++		resolver->dupSetAllowVendorChange (ZConfig::instance ().solver_dupAllowVendorChange ());
++		resolver->doUpgrade ();
++	} else {
++		resolver->doUpdate ();
++	}
++
+ 	for (; it != e; ++it)
+ 		if (it->status().isToBeInstalled()) {
+ 			ui::Selectable::constPtr s =
+-- 
+2.21.0
+

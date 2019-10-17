@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
@@ -47,16 +47,19 @@ Patch1:         PackageKit-return-on-transactions-going-backwards.patch
 Patch2:         PackageKit-add-mutex-lock-to-protect-backend-priv-eulas.patch
 # PATCH-FEATURE-OPENSUSE PackageKit-systemd-timers.patch bsc#1115410 sckang@suse.com -- Migrate from cron to systemd timers
 Patch3:         PackageKit-systemd-timers.patch
-Patch4:         zypp-Switch-to-doUpgrade-solver-when-required-by-distribution.patch
 # PATCH-FIX-OPENSUSE PackageKit-remove-polkit-rules.patch bsc#1125434 sckang@suse.com -- Remove polkit rules file
-Patch5:         PackageKit-remove-polkit-rules.patch
-Patch6:         zypp-perform-actions-disallowed-by-update-in-upgrade-mode.patch
+Patch4:         PackageKit-remove-polkit-rules.patch
 # PATCH-FIX-UPSTREAM PackageKit-zypp-fix-newest-filter.patch bsc#1137019 gh#hughsie/PackageKit#329 sckang@suse.com -- zypp: Emit installed package for newest filter
-Patch7:         PackageKit-zypp-fix-newest-filter.patch
+Patch5:         PackageKit-zypp-fix-newest-filter.patch
 # PATCH-FIX-UPSTREAM PackageKit-zypp-fix-what-provides-newest-filter.patch bsc#984865, gh#hughsie/PackageKit#335 sckang@suse.com -- zypp: Add support for newest filter in what-provides
-Patch8:         PackageKit-zypp-fix-what-provides-newest-filter.patch
+Patch6:         PackageKit-zypp-fix-what-provides-newest-filter.patch
 # PATCH-FIX-UPSTREAM PackageKit-drop-gtk2.patch gh#/hughsie/PackageKit#333 - Port away from gtk2 dependency
-Patch9:         PackageKit-drop-gtk2.patch
+Patch7:         PackageKit-drop-gtk2.patch
+# PATCH-FIX-UPSTREAM PackageKit-zypp-get-updates-dup-or-up.patch gh#hughsie/PackageKit#343 sckang@suse.com -- zypp: Fix get-updates in Tumbleweed
+Patch8:         PackageKit-zypp-get-updates-dup-or-up.patch
+# PATCH-FIX-UPSTREAM PackageKit-zypp-dont-set-upgrade-mode-on-updating-specific-packages.patch gh#hughsie/PackageKit#345 sckang@suse.com -- zypp: Don't set upgrade mode in update-packages
+Patch9:         PackageKit-zypp-dont-set-upgrade-mode-on-updating-specific-packages.patch
+Patch10:        zypp-perform-actions-disallowed-by-update-in-upgrade-mode.patch
 
 BuildRequires:  autoconf-archive
 BuildRequires:  fdupes
