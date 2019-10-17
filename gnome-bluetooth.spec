@@ -18,13 +18,13 @@
 
 %define _udevdir %(pkg-config --variable udevdir udev)
 Name:           gnome-bluetooth
-Version:        3.32.1
+Version:        3.34.0
 Release:        0
 Summary:        GNOME Bluetooth graphical utilities
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GnomeBluetooth
-Source0:        https://download.gnome.org/sources/gnome-bluetooth/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-bluetooth/3.34/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel

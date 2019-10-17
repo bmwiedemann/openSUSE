@@ -718,4 +718,12 @@ Should be copied to 12.2 if possible (it actually makes the bt stack work) (forw
     <comment>Scripted push of project GNOME:Next (forwarded request 695590 from dimstar)</comment>
     <requestid>695757</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>edbe2b495d57230b2f8816576d01bfd0</srcmd5>
+    <version>3.34.0</version>
+    <time>1571309954</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736527</requestid>
+  </revision>
 </revisionlist>
