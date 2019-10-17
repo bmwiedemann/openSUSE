@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Mon Oct  7 19:57:49 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Update tile size to 512 px when using --local option.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 10 13:47:23 CST 2019 - qkzhu@suse.com
+
+- Update to version 3.34.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep  7 22:41:01 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.33.92:
+  + Update OSM POI types.
+  + Fix performance issue when there's lots of location updates.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Aug 31 18:43:43 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.33.91:
+  + Updated translations.
+  + Changes in version 3.33.90:
+  + Fix bug going back to already selected place from the search
+    result list.
+  + Start immediatly at the last viewed location when app was
+    closed last.
+  + Remember the map type (street or aerial) from when the app
+    was closed last.
+  + Updated translations.
+  + Changes in version 3.33.4:
+  + Handle opening OpenStreetMap URLs pointing to either an
+    object or bare coordinates by pasting it into the search entry
+    and also as a program argument, in the same manner as with
+    geo: URIs.
+  + Updated translations.
+  + Changes in version 3.33.3:
+  + Auto-complete searches ("search-as-you-type") using
+    GraphHopper geocoder / Photon.
+  + Redesigned Send to-dialog with ability to copy and send
+    locations in e-mails and better integration with Weather and
+    Clocks.
+  + Show clockwise roundabout icons for turn-by-turn routing in
+    left-hand traffic countries and territories.
+  + Update appdata screenshots with tile style.
+  + Fix a crash when there's many contacts with addresses in
+    an Evolution address book.
+  + Updated translations.
+  + Changes in version 3.33.2:
+  + Accept additional formats when entering raw coordinates in
+    the search entry (decimal lat/lon degrees format with literal
+    ° symbol, and degrees, minutes, second format).
+  + Updated translations.
+  + Changes in version 3.33.1:
+  + Stop using GtkOffscreenWindow (prerequisite for eventually
+    porting to GTK 4).
+  + Fix printing dialog not closing in some circumstances.
+  + Add some missing appstream metadata.
+  + Add tests validating appdata and desktop files.
+  + Remove some unnessesary instructions in turn-by-turn route
+    searches.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed May 22 13:04:03 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.2.1:

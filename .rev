@@ -376,4 +376,12 @@
     <comment>New stable rel, not buildtested (forwarded request 704741 from iznogood)</comment>
     <requestid>704774</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>715543b5d118867e4c5dd3a03ec71eb3</srcmd5>
+    <version>3.34.1</version>
+    <time>1571310027</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736547</requestid>
+  </revision>
 </revisionlist>
