@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Mon Oct  7 07:45:36 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Created nightly app icon.
+  + Snap build improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 10 10:15:35 CST 2019 - qkzhu@suse.com
+
+- Update to version 3.34.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  2 19:20:17 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.33.92:
+  + README updates.
+  + Updated translations.
+- Changes from version 3.33.90:
+  + Flatpak build cleanup.
+  + Debug messages cleanup.
+  + Updated translations.
+- Changes from version 3.33.3:
+  + calculator library build fixes.
+  + CI build fixes.
+  + Added mnemonics for primary menu items.
+  + Dropped leading zeros octal prefix.
+  + Updated translations.
+- Changes from version 3.33.2:
+  + Separated calculator library.
+  + Ensure icon is available for shell.
+  + Support entering left/right shift with keyboard.
+  + Fixed CFA conversion rate.
+  + Remove copy icon from search provider results.
+  + Do not assume octal base for binary numbers.
+  + Show thousands separator in unit converter.
+  + Use currency name instead of display name for conversion.
+  + Quit warns and closes all windows.
+  + Avoid normalizing the equation twice in search.
+  + Ignore keypresses while calculating results.
+  + Only allow one decimal point in numbers.
+  + Application icon updated in help.
+  + Updated translations.
+- Add pkgconfig(gee-0.8) BuildRequires: New dependency.
+- Package new sub-packages gnome-calculator-devel and libgcalc-1.
+  Also handle shared library in post(un), and set needed Requires
+  in devel package.
+
+-------------------------------------------------------------------
 Wed Jun 26 10:00:39 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.2:

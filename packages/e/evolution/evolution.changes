@@ -1,4 +1,190 @@
 -------------------------------------------------------------------
+Mon Oct  7 08:16:46 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + EWebView: Pile calls to Web Extension proxy only when such
+    exists.
+  + Fix several memory leaks in ECalModel and its descendants.
+  + help:
+    - Update application logo.
+    - Fix a typo (semi-colon instead of colon).
+  + Bugs fixed: glgo#GNOME/evolution#524, glgo#GNOME/evolution#587,
+    glgo#GNOME/evolution#603, glgo#GNOME/evolution#610,
+    glgo#GNOME/evolution#611, glgo#GNOME/evolution#615,
+    glgo#GNOME/evolution#617, glgo#GNOME/evolution#623,
+    glgo#GNOME/evolution#624, glgo#GNOME/evolution#636,
+    glgo#GNOME/evolution#641, glgo#GNOME/evolution#644,
+    glgo#GNOME/evolution#645.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  9 16:02:51 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.34.0:
+  + help: Fix broken markup in cs help translation.
+  + help: Remove XInclude for Account settings' \"Identity\"
+    section.
+  + help: Cover server-side search behavior for remote accounts.
+  + help: Remove unproven statement about search speed.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep  5 12:28:53 NZST 2019 - luke@ljones.dev
+
+- Update to version 3.33.92:
+  + itip-formatter: Doesn't match attendee when an alias address is
+    used.
+  + ECompEditor: Set window's urgency hint after error when not
+    focused.
+  + Bug Fixes: glgo#GNOME/evolution#528, glgo#GNOME/evolution#551,
+    glgo#GNOME/evolution#562, glgo#GNOME/evolution#574,
+    glgo#GNOME/evolution#578, glgo#GNOME/evolution#583,
+    glgo#GNOME/evolution#588, glgo#GNOME/evolution#592,
+    glgo#GNOME/evolution#593, glgo#GNOME/evolution#601.
+
+-------------------------------------------------------------------
+Wed Sep  4 06:36:28 UTC 2019 - Luke Jones <luke@ljones.dev>
+
+- Update to version 3.33.92
+  + itip-formatter: Doesn't match attendee when an alias address is
+    used.
+  + ECompEditor: Set window's urgency hint after error when not
+    focused.
+  + Bug Fixes: glgo#GNOME/evolution#528, glgo#GNOME/evolution#551,
+    glgo#GNOME/evolution#562, glgo#GNOME/evolution#574,
+    glgo#GNOME/evolution#578, glgo#GNOME/evolution#583,
+    glgo#GNOME/evolution#588, glgo#GNOME/evolution#592,
+    glgo#GNOME/evolution#593, glgo#GNOME/evolution#601.
+- Update to version 3.33.91
+  + Include also CFLAGS in gtkdoc-scangobj command line.
+  + Fix few memory leaks in internal test programs.
+  + ECellTree: Limit deep threads indent up to 70% of the cell
+    width.
+  + EDayView: Time zone name not always updated on time zone change
+    in UI.
+  + Bug Fixes: glgo#GNOME/evolution#518, glgo#GNOME/evolution#541,
+    glgo#GNOME/evolution#554, glgo#GNOME/evolution#563,
+    glgo#GNOME/evolution#568, glgo#GNOME/evolution#576.
+- Update to version 3.33.90
+  + Add refresh interval settings for CardDAV address books.
+  + killev: Search for killall/pkill in runtime, rather than in
+    compile time.
+  + Use Unicode triple-dots in translatable strings.
+  + help: Replace an external redirect link by its direct link.
+  + help: Fix xmlns for XInclude (must be http) so pages validate.
+  + help: Cover formatting of received HTML mail, e.g. showing
+    Plain Text.
+  + Bug Fixes: glgo#GNOME/evolution#549, glgo#GNOME/evolution#564.
+- Update to version 3.33.4
+  + Use GtkPopover for EColorCombo widget.
+  + Do not unfold DKIM and ARC headers in message preview.
+  + Remember source message information when re-editing in Drafts
+    or Outbox.
+  + [ECalModel] Cache value for E_CAL_MODEL_FIELD_ICON.
+  + Inconsistent background color in ETable for Memos, Tasks and
+    List View.
+  + Incorrect timezone selected in ETimezoneDialog.
+  + Remove useless runtime check in date_time_list_finalize().
+  + Correct coding typo in e_day_view_on_editing_stopped().
+  + Refer to 'Evolution Website' only as 'Website' in the About
+    dialog.
+  + [ECompEditor] Ensure attendee changes stored before save.
+  + Check whether enum-based ICalParameter had been created before
+    using it.
+  + Test whether referenced column exists when loading ETableState.
+  + Search for Bogofilter/SpamAssassin binaries during configure
+    time.
+  + [addressbook] Claim what image size is expected when asking to
+    resize given image.
+  + help: Update main window screenshot for 3.32 style.
+  + Bug Fixes: bgo#755730, bgo#759493, glgo#GNOME/evolution#533,
+    glgo#GNOME/evolution#385, glgo#GNOME/evolution#479,
+    glgo#GNOME/evolution#487, glgo#GNOME/evolution#492,
+    glgo#GNOME/evolution#494, glgo#GNOME/evolution#499,
+    glgo#GNOME/evolution#501, glgo#GNOME/evolution#503,
+    glgo#GNOME/evolution#504, glgo#GNOME/evolution#506,
+    glgo#GNOME/evolution#507, glgo#GNOME/evolution#508,
+    glgo#GNOME/evolution#517, glgo#GNOME/evolution#519,
+    glgo#GNOME/evolution#529, glgo#GNOME/evolution#534.
+- Update to version 3.33.3
+  + Fix a crash in itip-view.c:extract_itip_data().
+  + Fix clang warnings (mostly [-Wenum-conversion]).
+  + Add all icon directories into icon theme search path in
+    maintainer mode.
+  + Local calendar config option to open for writing does nothing.
+  + Change path where backup/restore searches for the .running
+    file.
+  + Fix several memory leaks in the addressbook code.
+  + Memos cannot have set reminders according to RFC 5545.
+  + Use ECalComponentAlarm members instead of ICalProperty objects.
+  + Add 'Status' column to Memos and Calendar's List View.
+  + Bug Fixes:
+    bgo#233065, bgo#793795,glgo#GNOME/evolution#399,
+    glgo#GNOME/evolution#408, glgo#GNOME/evolution#433,
+    glgo#GNOME/evolution#481, glgo#GNOME/evolution#484,
+    glgo#GNOME/evolution#445, glgo#GNOME/evolution#446,
+    glgo#GNOME/evolution#448, glgo#GNOME/evolution#454,
+    glgo#GNOME/evolution#463, glgo#GNOME/evolution#468,
+    glgo#GNOME/evolution#472, glgo#GNOME/evolution#474,
+    glgo#GNOME/evolution#475, glgo#GNOME/evolution#476,
+    glgo#GNOME/evolution#478, glgo#GNOME/evolution#479.
+- Update to version 3.33.2
+  + Fixed typo in string.
+  + Prevent crash in cal_data_model_notify_recurrences_cb().
+  + Correct code typo in test-keyfile-settings-backend.c.
+  + Fix a possible memory leak in
+    e-web-view.c:web_view_initialize().
+  + Reference a GDBusProxy object in the synchronous call wrappers.
+  + Fix a crash when filling mail threaded view.
+  + Port to libecal-2.0 and adapt to libebook API changes.
+  + Address some issues reported by static analyzers..
+  + Correct type of ECalDataModel::timezone property.
+  + Miscellaneous changes for issues overlooked during port to
+    libical-glib.
+  + Bug Fixes: glgo#GNOME/evolution#240, glgo#GNOME/evolution#400,
+    glgo#GNOME/evolution#405, glgo#GNOME/evolution#406,
+    glgo#GNOME/evolution#407, glgo#GNOME/evolution#417,
+    glgo#GNOME/evolution#429, glgo#GNOME/evolution#430,
+    glgo#GNOME/evolution#432, glgo#GNOME/evolution#437,
+    glgo#GNOME/evolution#439, glgo#GNOME/evolution#112.
+- Update to version 3.33.1
+  + Expand/collapse buttons in vCard preview do nothing.
+  + Fix few memory leaks around vCard preview and mail attachment
+    parsing.
+  + Fix some maybe uninitialized variable usages.
+  + Inline Forward headers bold in Plain Text mode.
+  + Fix a copy&paste error with LC_TIME in emcu_change_locale().
+  + [CompEditor] Use CSS3 color name in the iCalendar COLOR
+    property.
+  + Update flatpak README.
+  + Add a link to an online build manual into the README.
+  + Fix two memory leaks.
+  + Use lower-case "mailto:" consistently in the code.
+  + [mail-notification] Use sound theme by default.
+  + help: Cover customizing keyboard shortcuts.
+  + help: A custom Archive mail folder requires to first set a
+    general one.
+  + help: New mail notification in mail icon is not a star anymore.
+  + help: Update screenshots of mail switcher to 3.32 style.
+  + help: Update application icon for 3.32.
+  + Bug Fixes: bg0#202257, bgo#203955, glgo#GNOME/evolution#190,
+    glgo#GNOME/evolution#210, glgo#GNOME/evolution#256,
+    glgo#GNOME/evolution#395, glgo#GNOME/evolution#286,
+    glgo#GNOME/evolution#323, glgo#GNOME/evolution#325,
+    glgo#GNOME/evolution#326, glgo#GNOME/evolution#327,
+    glgo#GNOME/evolution#330, glgo#GNOME/evolution#336,
+    glgo#GNOME/evolution#338, glgo#GNOME/evolution#339,
+    glgo#GNOME/evolution#343, glgo#GNOME/evolution#344,
+    glgo#GNOME/evolution#348, glgo#GNOME/evolution#359,
+    glgo#GNOME/evolution#370, glgo#GNOME/evolution#373,
+    glgo#GNOME/evolution#376, glgo#GNOME/evolution#377,
+    glgo#GNOME/evolution#378, glgo#GNOME/evolution#380,
+    glgo#GNOME/evolution#383, glgo#GNOME/evolution#384,
+    glgo#GNOME/evolution#386, glgo#GNOME/evolution#390,
+    glgo#GNOME/evolution#392, glgo#GNOME/evolution#94,
+    glgo#GNOME/evolution#99, glgo#GNOME/evolution#102.
+
+-------------------------------------------------------------------
 Mon Jul 22 19:23:33 UTC 2019 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Split text highlight plugin into a subpackage.
@@ -63,7 +249,7 @@ Wed Apr 10 09:40:48 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
   + Update flatpak 'master' version manifest.
   + Expand/collapse buttons in vCard preview do nothing.
   + Fix few memory leaks around vCard preview and mail attachment
-    parsing.
+    parsing.bgo
   + Fix some maybe uninitialized variable usages.
   + Fix a copy&paste error with LC_TIME in emcu_change_locale().
   + [CompEditor] Use CSS3 color name in the iCalendar COLOR
@@ -348,7 +534,7 @@ Wed Sep 26 17:49:59 UTC 2018 - bjorn.lie@gmail.com
 Tue Sep 18 03:10:31 UTC 2018 - luc14n0@linuxmail.org
 
 - Update to version 3.30.0:
-  + Miscellaneous: Help: Couple of fixes for Gmail POP/IMAP. 
+  + Miscellaneous: Help: Couple of fixes for Gmail POP/IMAP.
   + Updated translations.
 - Update spec:
   + Add cairo-gobject, camel-1.2, gnome-autoar-0,
@@ -376,7 +562,7 @@ Wed Aug 29 00:45:09 UTC 2018 - bjorn.lie@gmail.com
     frontpage.
   + Bugs fxed: glgo#GNOME/evolution!83,
     glgo#GNOME/evolution-data-server!82, and
-    glgo#GNOME/evolution!47. 
+    glgo#GNOME/evolution!47.
   + Updated translations.
 
 -------------------------------------------------------------------

@@ -17,13 +17,13 @@
 
 
 Name:           eog
-Version:        3.32.2
+Version:        3.34.1
 Release:        0
 Summary:        Image Viewer for GNOME
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://wiki.gnome.org/Apps/EyeOfGnome
-Source0:        https://download.gnome.org/sources/eog/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/eog/3.34/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gtk-doc
@@ -46,7 +46,7 @@ BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libpeas-1.0) >= 0.7.4
 BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 0.7.4
-BuildRequires:  pkgconfig(librsvg-2.0) >= 2.36.2
+BuildRequires:  pkgconfig(librsvg-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(shared-mime-info) >= 0.20
 Recommends:     %{name}-lang
 

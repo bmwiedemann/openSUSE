@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Oct  8 11:52:24 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.40.0:
+  + Allow creating a GdkPixbuf instance without any property.
+
+-------------------------------------------------------------------
+Mon Sep  9 08:46:09 UTC 2019 - mgorse@suse.com
+
+- Update to version 2.39.2:
+  + Add gdk_pixbuf_init_modules() for applications with GdkPixbuf
+    loader modules in a separate directory.
+  + Add subproject fallback for dependencies.
+  + Handle large XPM without crashing.
+  + Use the appropriate gdk-pixbuf-query-loaders on install.
+  + Disable deprecation warnings introduced by GLib 2.62.
+  + Escape GIF version in error messages.
+  + Render GIF frames on demand.
+
+-------------------------------------------------------------------
 Mon Sep  9 08:46:08 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.38.2:

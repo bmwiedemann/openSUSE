@@ -850,4 +850,12 @@
     <comment>New stable release (forwarded request 720986 from iznogood)</comment>
     <requestid>721001</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>77c53fa3467818189e1bf81c5591cd31</srcmd5>
+    <version>0.46.3</version>
+    <time>1571309833</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>736501</requestid>
+  </revision>
 </revisionlist>

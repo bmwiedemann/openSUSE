@@ -657,4 +657,12 @@
     <comment>t-u-u / boo#1086036 (forwarded request 589354 from dimstar)</comment>
     <requestid>590040</requestid>
   </revision>
+  <revision rev="89" vrev="4">
+    <srcmd5>422f50301ca044fe10c692cb4db5e63b</srcmd5>
+    <version>3.12.2+20171213.567326a7</version>
+    <time>1571309805</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736497</requestid>
+  </revision>
 </revisionlist>

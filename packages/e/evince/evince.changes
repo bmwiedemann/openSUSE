@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Oct  7 20:05:48 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + accessibility:
+    - Fix erroneous cast.
+    - Initialize private fields.
+  + build: Distribute meson build files when using autotools.
+  + flatpak: Update dependency versions.
+  + i18n: Fix typo in Ukrainian translation for Download.
+  + icon:
+    - Create a nightly app icon.
+    - Fix logo in README and add flatpak button.
+  + shell:
+    - Ignore higher mouse buttons on links.
+    - Fix slow scrolling on last pages of big pdf's.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 30 08:48:49 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.34.0:
+  + AppData: Add release information to AppData.
+- Switch to using explicit tag in _service.
+
+-------------------------------------------------------------------
+Mon Sep 30 08:45:16 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.32.1+0:
+  + AppData: Add 3.30 major release date.
+  + Add release information to AppData.
+
+-------------------------------------------------------------------
 Mon Sep 09 22:37:15 UTC 2019 - bjorn.lie@gmail.com
 
 - Update to version 3.32.0+28:

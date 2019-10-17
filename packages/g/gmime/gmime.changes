@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct  3 17:06:17 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.2.4:
+  + Replaced calls to g_memmove with memmove.
+  + Added a new GMIME_DECRYPT_NO_VERIFY flag that disables
+    signature verification.
+  + Modified GMimeParser to not set the OpenPGP state for
+    base64/uuencoded content.
+  + Added reporting of RFC 5322 addr-spec syntax violations to the
+    GMimeParserWarning API.
+  + Fixed a stack underflow error in the uudecode.c sample.
+  + Improved Vala bindings.
+
+-------------------------------------------------------------------
 Fri Nov 30 17:39:18 UTC 2018 - bjorn.lie@gmail.com
 
 - Update to version 3.2.3:

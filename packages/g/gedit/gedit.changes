@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Sep  9 17:57:24 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.34.0:
+  + Translation updates.
+
+-------------------------------------------------------------------
+Sun Sep  8 10:11:53 NZST 2019 - luke@ljones.dev
+
+- Update to version 3.33.92:
+  + Updated documentation.
+
+-------------------------------------------------------------------
+Mon Sep  2 15:46:28 CST 2019 - yfjiang@suse.com
+
+- Update to version 3.33.90:
+  + Add "gedit" to .desktop keywords as search workaround for Flatpak
+    and Snap.
+  + Build fixes.
+  + Updated translations.
+- Remove %{_libexecdir}/gedit/gedit-bugreport.sh and
+  %{_libexecdir}/gedit from spec since they have been taken out
+  from upstream code.
+
+-------------------------------------------------------------------
 Wed May 15 20:56:45 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.2:
@@ -241,7 +265,7 @@ Wed Apr 13 10:50:23 UTC 2016 - idonmez@suse.com
 
 - Update to GNOME 3.20  Fate#318572
 - Fix group for gedit-devel: should be Productivity/Text/Editors
-    
+
 -------------------------------------------------------------------
 Thu Mar 31 20:47:54 UTC 2016 - zaitor@opensuse.org
 
@@ -474,7 +498,7 @@ Wed Feb  4 12:22:33 UTC 2015 - zaitor@opensuse.org
 Wed Jan 14 05:09:57 UTC 2015 - tyang@suse.com
 
 - Fix bnc#910913: enabling plugin snippets causes crash when close
-  a tab. Add require for python3-gobject-cairo. 
+  a tab. Add require for python3-gobject-cairo.
 
 -------------------------------------------------------------------
 Thu Dec  4 14:22:37 UTC 2014 - zaitor@opensuse.org
@@ -889,7 +913,7 @@ Tue Nov 13 10:07:07 UTC 2012 - dimstar@opensuse.org
 - Update to version 3.6.2:
   + Misc bugfixes.
   + Updated translations.
-- Remove the hack in %setup to fixup the .desktop file: fixed 
+- Remove the hack in %setup to fixup the .desktop file: fixed
   upstream.
 
 -------------------------------------------------------------------
@@ -1614,7 +1638,7 @@ Mon Nov  3 09:39:12 CST 2008 - maw@suse.de
 Fri Oct  3 08:11:24 WST 2008 - mboman@suse.de
 
 - Update to version 2.24.0:
-  + Translation updates 
+  + Translation updates
 
 -------------------------------------------------------------------
 Wed Sep 17 00:15:25 CEST 2008 - vuntz@novell.com
@@ -1666,7 +1690,7 @@ Sat Jun 21 02:05:04 CEST 2008 - maw@suse.de
 -------------------------------------------------------------------
 Thu May  8 17:22:57 CEST 2008 - rodrigo@suse.de
 
-- Tag patches 
+- Tag patches
 
 -------------------------------------------------------------------
 Fri Apr 25 00:11:05 CEST 2008 - maw@suse.de
@@ -1737,7 +1761,7 @@ Mon Sep 17 15:59:24 CEST 2007 - maw@suse.de
 
 - Update to version 2.20.0:
   + Updated translations
-- This release requires gtksourceview 2.0. 
+- This release requires gtksourceview 2.0.
 
 -------------------------------------------------------------------
 Fri Aug 31 17:16:55 CEST 2007 - maw@suse.de
@@ -1792,10 +1816,10 @@ Tue Jul 10 00:23:56 CEST 2007 - maw@suse.de
 -------------------------------------------------------------------
 Thu May 10 12:37:29 CEST 2007 - pgajdos@suse.cz
 
-- removed 
+- removed
     - gnome-icon-theme and
     - hicolor-icon-theme
-  from Requires and BuildRequires [#247450] 
+  from Requires and BuildRequires [#247450]
 
 -------------------------------------------------------------------
 Fri Apr 27 12:32:12 CEST 2007 - sbrabec@suse.cz
@@ -1820,7 +1844,7 @@ Mon Apr  2 16:06:01 CDT 2007 - maw@suse.de
 -------------------------------------------------------------------
 Mon Mar 12 18:20:35 CET 2007 - jhargadon@suse.de
 
-- added gtk-doc to BuildRequires 
+- added gtk-doc to BuildRequires
 
 -------------------------------------------------------------------
 Wed Jan 17 12:50:45 CET 2007 - sbrabec@suse.cz
@@ -1837,7 +1861,7 @@ Wed Jan  3 17:31:26 CET 2007 - sbrabec@suse.cz
 Tue Nov 14 21:22:04 CET 2006 - jhargadon@suse.de
 
 - made changes to the BuildRequires and Requires to enable python
-  plugins.  defect #220820 
+  plugins.  defect #220820
 
 -------------------------------------------------------------------
 Fri Oct 13 17:54:43 CEST 2006 - danw@suse.de
@@ -1853,7 +1877,7 @@ Tue Oct  3 22:03:22 CEST 2006 - jhargadon@suse.de
 - Fix spinner with some themes
 - Some fixes to the file saving code
 - Filebrowser plugin fixes
-- translation updates 
+- translation updates
 
 -------------------------------------------------------------------
 Thu Sep 14 19:17:31 CEST 2006 - jhargadon@suse.de
@@ -1870,7 +1894,7 @@ Thu Sep 14 19:17:31 CEST 2006 - jhargadon@suse.de
 - Make sure the document is editable after printing
 - Consider the mime-type hierarchy to choose the syntax highlighting
 - Initialize gnome authentication manager before plugins
-- Misc improvements and bugfixes 
+- Misc improvements and bugfixes
 
 -------------------------------------------------------------------
 Wed Aug 30 23:49:36 CEST 2006 - jhargadon@suse.de
@@ -1887,7 +1911,7 @@ Wed Aug 30 23:49:36 CEST 2006 - jhargadon@suse.de
 - Preserve xattrs when saving
 - Fix autospell menu item state
 - Fix crash in GtkRecents code
-- Misc improvements and bugfixes 
+- Misc improvements and bugfixes
 
 -------------------------------------------------------------------
 Tue Aug 22 23:50:37 CEST 2006 - jhargadon@suse.de
@@ -1896,7 +1920,7 @@ Tue Aug 22 23:50:37 CEST 2006 - jhargadon@suse.de
 - Use GtkRecent for recent files support
 - Raise the existing document when reopening a file
 - File browser plugin bugfixes
-- Misc improvements and bugfixes 
+- Misc improvements and bugfixes
 
 -------------------------------------------------------------------
 Thu Aug 10 22:02:36 CEST 2006 - jhargadon@suse.de
@@ -1927,7 +1951,7 @@ Thu Aug 10 22:02:36 CEST 2006 - jhargadon@suse.de
 - Fix vim and kate modelines parsing
 - Fix the spell checking plugin
 - Make the tags plugin load files lazily to improve startup time
- 
+
 
 -------------------------------------------------------------------
 Thu Jun 29 17:15:50 CEST 2006 - sbrabec@suse.cz
@@ -1942,7 +1966,7 @@ Mon Jun 26 19:13:47 CEST 2006 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Thu Jun 15 20:53:05 CEST 2006 - dave@suse.de
 
-- Fix a problem with the save backport (bnc #181897) 
+- Fix a problem with the save backport (bnc #181897)
 
 -------------------------------------------------------------------
 Wed May 17 23:58:08 CEST 2006 - dave@suse.de
@@ -1989,7 +2013,7 @@ Wed Jan 25 21:31:34 CET 2006 - mls@suse.de
 -------------------------------------------------------------------
 Mon Dec 19 14:57:06 CET 2005 - ro@suse.de
 
-- added gnome-text-editor symlink to filelist 
+- added gnome-text-editor symlink to filelist
 
 -------------------------------------------------------------------
 Thu Oct 13 00:38:41 CEST 2005 - gekker@suse.de
@@ -2014,7 +2038,7 @@ Fri Aug 19 19:46:13 CEST 2005 - sreeves@suse.de
 -------------------------------------------------------------------
 Thu Aug 11 05:12:12 CEST 2005 - gekker@suse.de
 
-- Update to version 2.11.91 
+- Update to version 2.11.91
 
 -------------------------------------------------------------------
 Mon Jun 13 18:09:22 CEST 2005 - sbrabec@suse.cz
@@ -2030,29 +2054,29 @@ Thu Apr 14 17:17:06 CEST 2005 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Thu Mar 10 01:27:05 CET 2005 - gekker@suse.de
 
-- Update to version 2.10.0 (GNOME 2.10). 
+- Update to version 2.10.0 (GNOME 2.10).
 
 -------------------------------------------------------------------
 Thu Mar  3 17:28:57 CET 2005 - gekker@suse.de
 
 - Update to version 2.9.7
 - Add gedit-desktop.patch
-- Add gnome-icon-theme to neededforbuild 
+- Add gnome-icon-theme to neededforbuild
 
 -------------------------------------------------------------------
 Thu Feb 10 23:51:41 CET 2005 - gekker@suse.de
 
-- Update to version 2.9.6 
+- Update to version 2.9.6
 
 -------------------------------------------------------------------
 Tue Feb  8 13:10:30 CET 2005 - ro@suse.de
 
-- added gnome-desktop to neededforbuild 
+- added gnome-desktop to neededforbuild
 
 -------------------------------------------------------------------
 Mon Feb  7 11:14:06 CET 2005 - ro@suse.de
 
-- added gnome-menus to neededforbuild 
+- added gnome-menus to neededforbuild
 
 -------------------------------------------------------------------
 Wed Jan 26 00:55:04 CET 2005 - clahey@suse.de
@@ -2062,17 +2086,17 @@ Wed Jan 26 00:55:04 CET 2005 - clahey@suse.de
 -------------------------------------------------------------------
 Fri Jan 21 22:25:56 CET 2005 - gekker@suse.de
 
-- Use Rudi's improved 64-bit fix 
+- Use Rudi's improved 64-bit fix
 
 -------------------------------------------------------------------
 Fri Jan 21 19:29:38 CET 2005 - gekker@suse.de
 
-- Fix the 64-bit build 
+- Fix the 64-bit build
 
 -------------------------------------------------------------------
 Thu Jan 20 23:47:05 CET 2005 - gekker@suse.de
 
-- Update to version 2.9.4 
+- Update to version 2.9.4
 
 -------------------------------------------------------------------
 Fri Nov 19 12:35:41 CET 2004 - ro@suse.de
@@ -2093,7 +2117,7 @@ Tue Sep 21 18:26:06 CEST 2004 - sbrabec@suse.cz
 Wed Aug 25 05:12:14 CEST 2004 - clahey@suse.de
 
 - Cache gedit docs and have gedit show up in khelpcenter.
- 
+
 -------------------------------------------------------------------
 Wed Aug  4 23:04:16 CEST 2004 - clahey@suse.de
 
@@ -2138,7 +2162,7 @@ Thu Feb 12 10:06:41 CET 2004 - hhetter@suse.de
 -------------------------------------------------------------------
 Wed Jan 21 22:29:50 CET 2004 - ro@suse.de
 
-- fix pixmaps/Makefile.am 
+- fix pixmaps/Makefile.am
 
 -------------------------------------------------------------------
 Sat Jan 10 14:12:02 CET 2004 - adrian@suse.de
@@ -2178,24 +2202,24 @@ Mon Jul 14 15:35:26 CEST 2003 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Fri Jul  4 08:39:58 CEST 2003 - ro@suse.de
 
-- fix find_lang usage 
+- fix find_lang usage
 
 -------------------------------------------------------------------
 Wed Jul  2 12:53:27 CEST 2003 - hhetter@suse.de
 
-- updated to version 2.2.2 
+- updated to version 2.2.2
 - use find_lang
 
 -------------------------------------------------------------------
 Fri Jun 27 02:03:21 CEST 2003 - ro@suse.de
 
-- added directories to filelist 
+- added directories to filelist
 
 -------------------------------------------------------------------
 Wed Jun 11 00:50:13 CEST 2003 - ro@suse.de
 
 - added unpackaged files to filelist
-- remove .la files of plugins from buildroot 
+- remove .la files of plugins from buildroot
 
 -------------------------------------------------------------------
 Wed Feb 26 14:50:53 CET 2003 - hhetter@suse.de
@@ -2206,28 +2230,28 @@ Wed Feb 26 14:50:53 CET 2003 - hhetter@suse.de
 -------------------------------------------------------------------
 Fri Feb  7 08:51:16 CET 2003 - hhetter@suse.de
 
-- updated to version 2.2.0.1 [GNOME 2.2.0] 
+- updated to version 2.2.0.1 [GNOME 2.2.0]
 
 -------------------------------------------------------------------
 Tue Jan 28 11:30:04 CET 2003 - hhetter@suse.de
 
 - updated to version 2.2.0
-- filelist review 
+- filelist review
 
 -------------------------------------------------------------------
 Mon Jan 20 17:17:47 CET 2003 - ro@suse.de
 
-- update to 2.1.6 
+- update to 2.1.6
 
 -------------------------------------------------------------------
 Tue Jan 14 16:36:08 CET 2003 - ro@suse.de
 
-- added expat to neededforbuild 
+- added expat to neededforbuild
 
 -------------------------------------------------------------------
 Tue Nov 19 08:58:47 CET 2002 - hhetter@suse.de
 
-- updated to version 2.0.6 
+- updated to version 2.0.6
 
 -------------------------------------------------------------------
 Mon Nov 11 23:49:53 CET 2002 - ro@suse.de
@@ -2260,7 +2284,7 @@ Fri Sep 13 15:44:57 CEST 2002 - sf@suse.de
 
 - fixed to work on 64-bit archs
   call of eel_read_entire_file() was with &gsize instead of int,
-  sizeof(gsize) == sizeof(long) 
+  sizeof(gsize) == sizeof(long)
 
 -------------------------------------------------------------------
 Thu Aug 22 18:11:10 CEST 2002 - uli@suse.de
@@ -2270,12 +2294,12 @@ Thu Aug 22 18:11:10 CEST 2002 - uli@suse.de
 -------------------------------------------------------------------
 Tue Aug 20 10:45:50 CEST 2002 - hhetter@suse.de
 
-- added PreReq: filesystem 
+- added PreReq: filesystem
 
 -------------------------------------------------------------------
 Tue Aug 13 01:29:04 CEST 2002 - ro@suse.de
 
-- removed control-center from neededforbuild 
+- removed control-center from neededforbuild
 
 -------------------------------------------------------------------
 Mon Aug 12 01:12:05 CEST 2002 - ro@suse.de
@@ -2285,51 +2309,51 @@ Mon Aug 12 01:12:05 CEST 2002 - ro@suse.de
 -------------------------------------------------------------------
 Fri Aug  9 09:29:56 CEST 2002 - hhetter@suse.de
 
-- added openssl to neededforbuild 
+- added openssl to neededforbuild
 
 -------------------------------------------------------------------
 Wed Jul 31 11:10:06 CEST 2002 - hhetter@suse.de
 
 - fix build with scrollkeeper
-- initiate scrollkeeper-update 
+- initiate scrollkeeper-update
 
 -------------------------------------------------------------------
 Thu Jul 25 15:23:39 CEST 2002 - jordi@suse.de
 
-- updated to version 2.0.2 
+- updated to version 2.0.2
 
 -------------------------------------------------------------------
 Tue Jul 16 08:32:20 CEST 2002 - hhetter@suse.de
 
 - updated to version 2.0.1, fix descriptions from
   bugzilla.gnome.org:
-  #75861 Deleting a file in use does not prompt for "save" on close 
-  #76001 Should not save window geometry on exit 
-  #86333 modality problem on info/message box 
-  #87265 s/gedit/Text Editor? 
+  #75861 Deleting a file in use does not prompt for "save" on close
+  #76001 Should not save window geometry on exit
+  #86333 modality problem on info/message box
+  #87265 s/gedit/Text Editor?
 
 -------------------------------------------------------------------
 Thu Jun 20 17:52:42 CEST 2002 - hhetter@suse.de
 
-- don't install schemas while make install 
+- don't install schemas while make install
 
 -------------------------------------------------------------------
 Wed Jun 19 16:20:55 CEST 2002 - hhetter@suse.de
 
-- updated to version 2.0.0 
+- updated to version 2.0.0
 
 -------------------------------------------------------------------
 Thu Jun 13 16:39:12 CEST 2002 - hhetter@suse.de
 
-- supply schema files 
+- supply schema files
 
 -------------------------------------------------------------------
 Thu Jun 13 10:55:29 CEST 2002 - jordi@suse.de
 
-- Updated to version 1.121.1 
+- Updated to version 1.121.1
 
 -------------------------------------------------------------------
 Mon Apr 15 11:15:23 CEST 2002 - hhetter@suse.de
 
-- initial SuSE release 
+- initial SuSE release
 

@@ -19,13 +19,13 @@
 # systemtap is only offered as build-option, but not enabled, as it causes a build cycle
 %bcond_with     systemtap
 Name:           glib2
-Version:        2.60.7
+Version:        2.62.1
 Release:        0
 Summary:        General-Purpose Utility Library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/GLib
-Source0:        https://download.gnome.org/sources/glib/2.60/glib-%{version}.tar.xz
+Source0:        http://download.gnome.org/sources/glib/2.62/glib-%{version}.tar.xz
 Source1:        glib2.sh
 Source2:        glib2.csh
 # Not upstream file. Only proposes upstream packages:
@@ -55,7 +55,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  gtk-doc
 BuildRequires:  libselinux-devel
 BuildRequires:  m4
-BuildRequires:  meson
+BuildRequires:  meson >= 0.49.2
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 # gdbus-codegen is run during the build, so we need python3-xml

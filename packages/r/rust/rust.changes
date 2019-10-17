@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Sep 30 21:29:54 UTC 2019 - Luke Jones <luke@ljones.dev>
+
+- Add patch add-option-to-allow-warnings.patch to add a config option
+  which allows warnings and so enables v1.38 to bootstrap itself.
+
+-------------------------------------------------------------------
+Mon Sep 30 02:46:51 UTC 2019 - Luke Jones <luke@ljones.dev>
+
+- Update to version 1.38.0
+  + Language
+    - The `#[global_allocator]` attribute can now be used in submodules.
+    - The `#[deprecated]` attribute can now be used on macros.
+  + Compiler
+    - Added pipelined compilation support to `rustc`. This will
+      improve compilation times in some cases.
+  + Libraries
+    - `ascii::EscapeDefault` now implements `Clone` and `Display`.
+    - Derive macros for prelude traits (e.g. `Clone`, `Debug`, `Hash`) are now
+	  available at the same path as the trait. (e.g. The `Clone` derive macro
+	  is available at `std::clone::Clone`). This also makes all built-in macros
+	  available in `std`/`core` root. e.g. `std::include_bytes!`.
+    - `str::Chars` now implements `Debug`.
+    - `slice::{concat, connect, join}` now accepts `&[T]` in addition to `&T`.
+    - `*const T` and `*mut T` now implement `marker::Unpin`.
+    - `Arc<[T]>` and `Rc<[T]>` now implement `FromIterator<T>`.
+    - Added euclidean remainder and division operations (`div_euclid`,
+	  `rem_euclid`) to all numeric primitives. Additionally `checked`,
+	  `overflowing`, and `wrapping` versions are available for all
+	  integer primitives.
+    - `thread::AccessError` now implements `Clone`, `Copy`, `Eq`, `Error`, and
+      `PartialEq`.
+    - `iter::{StepBy, Peekable, Take}` now implement `DoubleEndedIterator`.
+  + Stabilized APIs
+    - `<*const T>::cast`
+    - `<*mut T>::cast`
+    - `Duration::as_secs_f32`
+    - `Duration::as_secs_f64`
+    - `Duration::div_f32`
+    - `Duration::div_f64`
+    - `Duration::from_secs_f32`
+    - `Duration::from_secs_f64`
+    - `Duration::mul_f32`
+    - `Duration::mul_f64`
+    - `any::type_name`
+  + Cargo
+    - Added pipelined compilation support to `cargo`.
+    - You can now pass the `--features` option multiple times to enable
+      multiple features.
+  + Misc
+    - `rustc` will now warn about some incorrect uses of
+      `mem::{uninitialized, zeroed}` that are known to cause undefined behaviour.
+
+-------------------------------------------------------------------
 Tue Sep 10 18:11:30 UTC 2019 - federico@suse.com
 
 - Use gcc7 on all of SLE12, since the embedded LLVM wants at least gcc 5.1.

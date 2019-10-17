@@ -18,13 +18,13 @@
 
 %bcond_without  python_bindings
 Name:           gedit
-Version:        3.32.2
+Version:        3.34.0
 Release:        0
 Summary:        UTF-8 text editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Gedit
-Source0:        https://download.gnome.org/sources/gedit/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gedit/3.34/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE gedit-desktop.patch -- Adds more MIME types.
 Patch0:         gedit-desktop.patch
 # PATCH-FIX-OPENSUSE gedit-plugins-python-env.patch bjorn.lie@gmail.com -- Fix python env
@@ -139,6 +139,7 @@ translation-update-upstream po %{name}
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.filebrowser.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.filebrowser.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.pythonconsole.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.spell.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.time.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.time.gschema.xml
 %dir %{_libdir}/gedit/
@@ -168,10 +169,6 @@ translation-update-upstream po %{name}
 %{_libdir}/gedit/plugins/libtime.so
 %{_libdir}/gedit/plugins/quickhighlight.plugin
 %{_libdir}/gedit/plugins/libquickhighlight.so
-%if "%{_libdir}" != "%{_libexecdir}"
-%dir %{_libexecdir}/gedit
-%endif
-%{_libexecdir}/gedit/gedit-bugreport.sh
 %{_mandir}/man1/gedit.1%{?ext_man}
 %{_datadir}/icons/hicolor/*/apps/*
 
@@ -181,7 +178,7 @@ translation-update-upstream po %{name}
 %endif
 
 %files devel
-%doc AUTHORS HACKING MAINTAINERS
+%doc AUTHORS CONTRIBUTING.md
 %doc %{_datadir}/gtk-doc/html/gedit/
 %{_datadir}/gedit/gir-1.0/
 %{_includedir}/*

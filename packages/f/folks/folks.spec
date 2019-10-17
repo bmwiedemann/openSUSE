@@ -17,29 +17,28 @@
 
 
 %define soversion      25
-%define module_version 43
+%define module_version 45
 %define with_zeitgeist  0
 Name:           folks
-Version:        0.11.4
+Version:        0.13.1
 Release:        0
 Summary:        Library to create metacontacts from multiple sources
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://telepathy.freedesktop.org/wiki/Folks
-Source:         http://download.gnome.org/sources/folks/0.11/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM folks-tracker.2.0.patch dimstar@opensuse.org -- Switch to tracker version 2.0, patch not upstream-ready
-Patch0:         folks-tracker.2.0.patch
+Source:         https://download.gnome.org/sources/folks/0.13/%{name}-%{version}.tar.xz
+BuildRequires:  gettext
 BuildRequires:  gobject-introspection-devel
-BuildRequires:  intltool >= 0.50.0
+BuildRequires:  meson >= 0.49
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  vala >= 0.22.0.28
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gee-0.8) >= 0.8.6
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.40.0
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(libebook-1.2) >= 3.13.90
 BuildRequires:  pkgconfig(libebook-contacts-1.2) >= 3.7.90
-BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.13.90
+BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.33.2
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(telepathy-glib) >= 0.19.9
 BuildRequires:  pkgconfig(tracker-sparql-2.0)
@@ -176,17 +175,17 @@ Telepathy connection managers) to create metacontacts.
 %autosetup -p1
 
 %build
-%configure \
-	--disable-static \
-	--enable-eds-backend \
-	--enable-tracker-backend \
-	--disable-libsocialweb-backend \
-	--disable-fatal-warnings \
+%define _lto_cflags %{nil}
+%meson \
+	-Dtracker_backend=true \
+%if %{with_zeitgeist}
+	-Dzeitgeist=true \
+%endif
 	%{nil}
-%make_build
+%meson_build
 
 %install
-%make_install
+%meson_install
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang folks %{?no_lang_C}
 
@@ -204,7 +203,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n libfolks%{soversion}
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS NEWS README.md
 %{_libdir}/libfolks.so.%{soversion}*
 %{_libdir}/libfolks-dummy.so.%{soversion}*
 %dir %{_libdir}/folks
@@ -216,7 +215,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/folks/%{module_version}/backends/ofono/
 
 %files -n libfolks-data
-%{_datadir}/GConf/gsettings/folks.convert
 %{_datadir}/glib-2.0/schemas/org.freedesktop.folks.gschema.xml
 
 %files -n typelib-1_0-Folks-0_6

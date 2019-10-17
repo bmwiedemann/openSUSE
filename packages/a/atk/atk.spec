@@ -17,13 +17,13 @@
 
 
 Name:           atk
-Version:        2.32.0
+Version:        2.34.1
 Release:        0
 Summary:        An Accessibility Toolkit
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-URL:            https://www.gtk.org/
-Source0:        https://download.gnome.org/sources/atk/2.32/%{name}-%{version}.tar.xz
+URL:            https://wiki.gnome.org/Accessibility
+Source0:        https://download.gnome.org/sources/atk/2.34/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  fdupes

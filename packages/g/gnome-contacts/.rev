@@ -441,4 +441,12 @@
     <comment>Add upstream patch to fix build (forwarded request 710136 from iznogood)</comment>
     <requestid>710352</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>5b10ed3c5795eafa637b26d815e988be</srcmd5>
+    <version>3.34</version>
+    <time>1571309974</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736534</requestid>
+  </revision>
 </revisionlist>

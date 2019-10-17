@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Sep  9 17:22:13 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop glibmm2 Provides and Obsoletes: Only glibmm2_4 compat
+  package should provide this.
+
+-------------------------------------------------------------------
+Fri Aug 30 16:44:10 CDT 2019 - mgorse@suse.com
+
+- Update to version 2.61.1:
+  + Glib:
+    - Add DateTime::get_timezone()
+    - Add KeyFile::get_locale_for_key()
+    - Add TimeZone::get_identifier()
+    - KeyFile: Make it a refcounted class
+    - Add Value_RefPtrBoxed<>
+    - Add Value<std::vector<string>> specializations and other
+      Value
+    - specializations that are necessary for _WRAP_PROPERTY
+  + Gio:
+    - Put _WRAP_VFUNC in protected sections
+    - Add AppInfo::launch_uris_async() and launch_uris_async()
+    - Add DBusConnection::get_flags()and property_flags()
+    - TlsClientConnection: Remove property_accepted_cas()
+    - ThemedIcon: Add create(const std::vector<Glib::ustring>&
+  + iconnames:
+    - Remove NO_GTYPE from some _WRAP_ENUMs
+    - TlsConnection: Remove rehandshake API
+    - Application: Add signal_name_lost()
+  + Glib and Gio:
+    - Use {} for function arguments initialisation
+    - Issue glgo#GNOME/glibmm#20
+  + gmmproc:
+    - generate_wrap_init.pl.in: Don't exclude any Gtk classes
+    - _WRAP_PROPERTY: generate a static_assert() that checks if
+    - the data type is acceptable
+    - Add _IS_REFCOUNTED_BOXEDTYPE
+    - _WRAP_ENUM and _WRAP_GERROR: Add gtype_func parameter
+  + Build:
+    - glibmmconfig.h.in: Remove unused configuration constants
+    - Change the ABI to glibmm-2.62
+  + Documentation:
+    - README: Add installation instructions
+    - Don’t use @retval on out args, use @param[out]
+- Update so_ver and base_ver
+- Update versions in baselibs.conf
+
+-------------------------------------------------------------------
 Mon Dec  3 18:11:02 UTC 2018 - bjorn.lie@gmail.com
 
 - Update to version 2.59.1:

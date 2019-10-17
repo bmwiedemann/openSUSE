@@ -17,13 +17,13 @@
 
 
 Name:           gnome-music
-Version:        3.32.2
+Version:        3.34.0
 Release:        0
 Summary:        Music Player for GNOME
 License:        SUSE-GPL-2.0-with-plugin-exception AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/gnome-music/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-music/3.34/%{name}-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
 
 BuildRequires:  fdupes
@@ -34,15 +34,15 @@ BuildRequires:  python3-devel >= 3.3
 BuildRequires:  pkgconfig(glib-2.0) >= 2.36.0
 BuildRequires:  pkgconfig(goa-1.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.35.0
-BuildRequires:  pkgconfig(grilo-0.3) >= 0.3.4
-BuildRequires:  pkgconfig(grilo-plugins-0.3)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.19.3
+BuildRequires:  pkgconfig(grilo-0.3) >= 0.3.8
+BuildRequires:  pkgconfig(grilo-plugins-0.3) >= 0.3.9
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.7
 BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.28.0
 BuildRequires:  pkgconfig(libmediaart-2.0) >= 1.9.1
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(py3cairo) >= 1.14
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.29.1
-BuildRequires:  pkgconfig(tracker-sparql-2.0) >= 1.99.1
+BuildRequires:  pkgconfig(tracker-sparql-2.0) >= 2.2.0
 Requires:       dbus-1-python3
 # gnome-music requires grilo-plugin-tracker to interact with tracker and find files (bsc#1083659)
 Requires:       grilo-plugin-tracker

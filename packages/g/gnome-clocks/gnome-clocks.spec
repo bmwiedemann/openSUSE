@@ -18,16 +18,16 @@
 
 
 Name:           gnome-clocks
-Version:        3.32.0
+Version:        3.34.0
 Release:        0
 Summary:        Clock application designed for GNOME 3
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://live.gnome.org/Design/Apps/Clock
-Source0:        https://download.gnome.org/sources/gnome-clocks/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-clocks/3.34/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
-BuildRequires:  meson >= 0.41.0
+BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 BuildRequires:  vala >= 0.23.3
@@ -74,10 +74,9 @@ translation-update-upstream
 
 %files
 %license COPYING
-%doc README
+%doc README.md
 %doc %{_datadir}/help/C/gnome-clocks/
 %{_bindir}/%{name}
-%{_datadir}/%{name}/
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/org.gnome.clocks.appdata.xml
 %{_datadir}/dbus-1/services/org.gnome.clocks.service

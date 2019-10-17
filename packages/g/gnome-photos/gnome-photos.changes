@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Sep 11 17:50:04 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Aug 31 09:14:56 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.33.91:
+  + build: Style fixes.
+  + flatpak:
+    - Fix the exiv2 build.
+    - Delete CMake-specific build files.
+    - Update LibRaw to 0.19.4.
+    - Fix the exiv2 build.
+    - Switch babl to Meson.
+    - Switch GEGL to Meson.
+    - Switch libgdata to Meson.
+  + icons: Update the application icon
+- Require meson 0.50.0.
+
+-------------------------------------------------------------------
 Tue Aug 20 17:29:49 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.1:

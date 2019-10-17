@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Sep 10 06:01:38 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.34.0:
+  + Avoid segfault when updating the boot menu.
+  + Fix application name in about dialog.
+  + Fixed unfunctional translations in meson.
+  + updates to Basque, Friulian, Persian and Catalan translations.
+
+-------------------------------------------------------------------
+Mon Sep  2 19:49:49 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.33.2:
+  + removing tests option in meson build system.
+  + update to Chinese (China) translation.
+  + Changes in version 3.33.1:
+  + Fixed abnormal headerbar height.
+  + Dropped autotools support.
+  + Fixed manpage check and version number in meson.
+  + Adding flatpak manifest and gitlab ci.
+  + Updates to Croatian and Danish translations.
+- Don't pass -Dtests=false to meson anymore; option was deleted
+  from meson.build.
+- Remove ABOUT-NLS and ChangeLog from files: no longer installed.
+
+-------------------------------------------------------------------
 Wed Apr 10 09:55:14 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.1:

@@ -20,7 +20,7 @@
 %define _version %(echo %{version} | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+')
 
 Name:           evolution
-Version:        3.32.4
+Version:        3.34.1
 Release:        0
 # FIXME: check if note on license is still valid (comment before license)
 Summary:        The Integrated GNOME Mail, Calendar, and Address Book Suite
@@ -28,7 +28,7 @@ Summary:        The Integrated GNOME Mail, Calendar, and Address Book Suite
 License:        LGPL-2.0-only AND LGPL-3.0-only AND OLDAP-2.8 AND CC-BY-SA-3.0 AND GFDL-1.1-only AND GFDL-1.3-only
 Group:          Productivity/Networking/Email/Clients
 URL:            https://wiki.gnome.org/Apps/Evolution/
-Source0:        https://download.gnome.org/sources/evolution/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/evolution/3.34/%{name}-%{version}.tar.xz
 
 BuildRequires:  bison
 BuildRequires:  bogofilter
@@ -66,6 +66,7 @@ BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 # NOTE when bumping this BR, bump the req in devel pac below
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.8.0
 # /NOTE
+BuildRequires:  pkgconfig(gspell-1)
 BuildRequires:  pkgconfig(gtkspell3-3.0)
 # NOTE when bumping this BR, bump the req in devel pac below
 BuildRequires:  pkgconfig(gweather-3.0) >= 3.10
@@ -74,7 +75,7 @@ BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libebackend-1.2) >= %{_version}
 BuildRequires:  pkgconfig(libebook-1.2) >= %{_version}
-BuildRequires:  pkgconfig(libecal-1.2) >= %{_version}
+BuildRequires:  pkgconfig(libecal-2.0) >= %{_version}
 BuildRequires:  pkgconfig(libedataserver-1.2) >= %{_version}
 BuildRequires:  pkgconfig(libedataserverui-1.2) >= %{_version}
 # NOTE when bumping this BR, bump the req in devel pac below
@@ -218,6 +219,7 @@ translation-update-upstream
 %{_datadir}/glib-2.0/schemas/org.gnome.evolution.bogofilter.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.evolution.spamassassin.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/*.png
+%{_datadir}/icons/hicolor/*/apps/evolution.svg
 %{_datadir}/icons/hicolor/*/apps/evolution-symbolic.svg
 %{_datadir}/metainfo/org.gnome.Evolution.appdata.xml
 %dir %{_libdir}/evolution/
@@ -288,7 +290,6 @@ translation-update-upstream
 %{_libexecdir}/evolution/killev
 %dir %{_libdir}/evolution/web-extensions
 %{_libdir}/evolution/web-extensions/libewebextension.so
-%{_libdir}/evolution/web-extensions/module-itip-formatter-webextension.so
 %dir %{_libdir}/evolution/web-extensions/webkit-editor
 %{_libdir}/evolution/web-extensions/webkit-editor/module-webkit-editor-webextension.so
 %dir %{_libdir}/evolution-data-server/ui-modules
@@ -315,7 +316,7 @@ translation-update-upstream
 %{_libdir}/evolution/modules/module-text-highlight.so
 
 %files devel
-%doc ChangeLog HACKING MAINTAINERS NEWS-1.0 README
+%doc ChangeLog HACKING MAINTAINERS NEWS-1.0
 %doc %{_datadir}/gtk-doc/html/evolution-*/
 %{_includedir}/evolution*
 %{_libdir}/pkgconfig/evolution-calendar-3.0.pc

@@ -1042,4 +1042,12 @@
     <comment> (forwarded request 729588 from iznogood)</comment>
     <requestid>729712</requestid>
   </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>9ac56ad2c691a8037e98ef23306a21bc</srcmd5>
+    <version>3.34.1</version>
+    <time>1571309854</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736506</requestid>
+  </revision>
 </revisionlist>

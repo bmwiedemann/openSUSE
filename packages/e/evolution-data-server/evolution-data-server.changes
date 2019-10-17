@@ -1,4 +1,151 @@
 -------------------------------------------------------------------
+Mon Oct  7 08:00:29 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Miscellaneous: Correct a developer comment for
+    SECTION:e-cancellable-locks.
+  + Bugs fixed: glgo#GNOME/evolution-data-server#145,
+    glgo#GNOME/evolution-data-server#151,
+    glgo#GNOME/evolution-data-server#156, glgo#GNOME/evolution#635.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Oct  3 23:49:49 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add explict pkgconfig(libical) BuildRequires: Needed after the
+  multibuild split of libical and libical-glib.
+
+-------------------------------------------------------------------
+Thu Sep 19 12:45:30 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable docs, fails to build with gtk-doc-1.32. Issue to be filed
+  upstream.
+
+-------------------------------------------------------------------
+Mon Sep  9 16:01:41 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.34.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep  5 11:55:54 NZST 2019 - luke@ljones.dev
+
+- Update to version 3.33.92:
+  + Avoid possible use after free caused in
+    vee_folder_set_expression()
+  + Bug Fixes: glgo#GNOME/evolution-data-server#136,
+    glgo#GNOME/evolution-data-server#141,
+    glgo#GNOME/evolution-data-server#147
+    glgo#GNOME/evolution-data-server#148
+    evo-glgo#GNOME/evolution-data-server#551
+
+-------------------------------------------------------------------
+Thu Aug 29 10:31:32 UTC 2019 - Luke Jones <luke@ljones.dev>
+
+- Update to version 3.33.91:
+  + Bugs fixed: glgo#GNOME/evolution-data-server#68,
+    glgo#GNOME/evolution-data-server#138,
+    glgo#GNOME/evolution-data-server#142,
+    glgo#GNOME/evolution#559, glgo#GNOME/evolution#568.
+  + Include also CFLAGS in gtkdoc-scangobj command line
+  + EDataFactory: Free backend when no client connects to it
+  + Correct typo in a developer comment
+  + GOA module: Run EWS autodiscovery asynchronously
+  + Fix two memory leaks
+  + Updated translations.
+- Changes from version 3.33.90:
+  + Bugs fixed: glgo#GNOME/evolution-data-server#112,
+    glgo#GNOME/evolution-data-server#137.
+  + EWebDAVDiscover can report failure on success and hide
+    collections
+  + e_webdav_discover_dialog_new: Set default response button for
+    the dialog
+  + Let the message-location check also real message location in
+    the search folders
+  + Updated translations.
+- Changes from version 3.33.4
+  + Bugs fixed: glgo#GNOME/evolution-data-server#128,
+    glgo#GNOME/evolution-data-server#130, glgo#GNOME/evolution#479.
+  + [LDAP] Fix several memory leaks
+  + Prefer built-in timezone component in
+    e_cal_util_copy_timezone()
+  + Fix a memory leak in e_cal_recur_generate_instances_sync()
+  + Miscellaneous changes in ecmb_modify_object_sync()
+  + Updated translations.
+- Changes from version 3.33.3:
+  + Bugs fixed: glgo#GNOME/evolution-data-server#108,
+    glgo#GNOME/evolution-data-server#117,
+    glgo#GNOME/evolution-data-server#120,
+    glgo#GNOME/evolution-data-server#121,
+    glgo#GNOME/evolution-data-server#123.
+  + EDataBook/EDataCal: Flush GDBus connection on backend property
+    change
+  + Add workaround for D-Bus property change into get-revision
+    tests
+  + Expose E-Book/Cal-BackendSExp lock
+  + Update overdue time immediately after the reminders' window is
+    mapped
+  + Add ESourceLocal::writable extension property
+  + CamelOperation can be used by other thread while in its
+    finalize()
+  + Memos cannot have set reminders according to RFC 5545
+  + Change how CamelOfflineStore goes online
+  + [IMAPx] Prefer local search in folders fully synchronized for
+    offline
+  + Correct e_cal_component_get_start_plus_duration()
+  + Updated translations.
+- Changes from version 3.33.2:
+  + The calendar part begun to use libical-glib, instead of
+    libical, which includes change from API version 1.2 to 2.0.
+  + The addressbook part and the calendar part changed client APIs,
+    which modified also D-Bus API, thus D-Bus services' versions
+    had been bumped as well.
+  + All the C libraries generate GObject introspection and Vala
+    bindings.
+  + Bugs fixed:
+    glgo#GNOME/evolution-data-server#33,
+    glgo#GNOME/evolution-data-server#89,
+    glgo#GNOME/evolution-data-server#105,
+    glgo#GNOME/evolution-data-server#106,
+    glgo#GNOME/evolution-data-server#112,
+    glgo#GNOME/evolution-data-server#114,
+    glgo#GNOME/evolution-data-server#116,
+    glgo#GNOME/evolution-data-server#190.
+  + [EWebDAVDiscover] Prevent crash on GError use in gio functions
+  + [SMTP] Log also DATA itself when SMTP logging is enabled
+  + [IMAPx] Fix a leak of CamelMessageInfo when downloading message
+    from a server
+  + Change libebook and libedata-book APIs
+  + Revert "Rename AddressBookView/CalendarView D-Bus members for
+    backward compatibility"
+  + Rename ECalBackendClass methods to address some gir warnings
+  + Enable vala bindings for libebackend, libedata-book and
+    libedata-cal
+  + Correct get_/set_property() for EReminderWatcher::default-zone
+  + Miscellaneous changes for issues overlooked during port to
+    libical-glib
+  + Updated translations.
+- Changes from version 3.33.1:
+  + Bugs fixed: glgo#GNOME/evolution-data-server#91,
+    glgo#GNOME/evolution-data-server#92,
+    glgo#GNOME/evolution-data-server#94,
+    glgo#GNOME/evolution-data-server#95,
+    glgo#GNOME/evolution-data-server#96,
+    glgo#GNOME/evolution-data-server#98,
+    glgo#GNOME/evolution-data-server#99,
+    glgo#GNOME/evolution-data-server#102,
+    glgo#GNOME/evolution#326, glgo#GNOME/evolution-data-server#39.
+  + Make sure libdb addressbooks are available before
+    book-migration test
+  + Fix typo: reach-ability 🡒 reachability
+  + [Flatpak] Use a persistent location for an NSS certificate
+    database
+  + Rename AddressBookView/CalendarView D-Bus members for backward
+    compatibility
+  + Address several issues reported by Coverity Scan
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Jul 15 16:20:35 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.4:

@@ -1920,4 +1920,12 @@ Recommended for 12.3</comment>
 - Replace packageand() by boolean dependencies. (forwarded request 717677 from 1Antoine1)</comment>
     <requestid>720995</requestid>
   </revision>
+  <revision rev="229" vrev="1">
+    <srcmd5>9ca212c2ee37fd6baaf7c7e519d9f2c0</srcmd5>
+    <version>3.34.1</version>
+    <time>1571309866</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736507</requestid>
+  </revision>
 </revisionlist>

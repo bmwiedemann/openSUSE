@@ -18,19 +18,19 @@
 
 
 Name:           gedit-plugins
-Version:        3.32.2
+Version:        3.34.0
 Release:        0
 Summary:        A collection of plugins for gedit
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Gedit/PluginsLists
-Source0:        https://download.gnome.org/sources/gedit-plugins/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gedit-plugins/3.34/%{name}-%{version}.tar.xz
 Source1:        gedit-plugins.SUSE
 # PATCH-FIX-UPSTREAM bracketcompletion-use-key-release-event-to-work-wi.patch boo#1027448 bgo#778737 hillwood@opensuse.org -- Switch to use key release event for ibus pinyin input method
 Patch0:         bracketcompletion-use-key-release-event-to-work-wi.patch
 
 BuildRequires:  fdupes
-BuildRequires:  libtool
+BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  translation-update-upstream
@@ -66,7 +66,7 @@ Suggests:       gedit-plugin-git
 Suggests:       gedit-plugin-joinlines
 Suggests:       gedit-plugin-multiedit
 Suggests:       gedit-plugin-smartspaces
-Suggests:       gedit-plugin-synctex
+Suggests:       gedit-plugin-session-saver
 Suggests:       gedit-plugin-terminal
 Suggests:       gedit-plugin-textsize
 Suggests:       gedit-plugin-wordcompletion
@@ -215,14 +215,14 @@ Provides:       gedit-plugins:%{_libdir}/gedit/plugins/smartspaces.plugin
 %description -n gedit-plugin-smartspaces
 The gedit smartspaces plugin
 
-%package -n gedit-plugin-synctex
-Summary:        Gedit synctex plugin
+%package -n gedit-plugin-session-saver
+Summary:        Gedit session-saver plugin
 Group:          Productivity/Text/Editors
 Requires:       %{name}-data = %{version}
-Provides:       gedit-plugins:%{_libdir}/gedit/plugins/synctex.plugin
+Provides:       gedit-plugins:%{_libdir}/gedit/plugins/session-saver.plugin
 
-%description -n gedit-plugin-synctex
-The gedit synctex plugin
+%description -n gedit-plugin-session-saver
+The gedit session-saver plugin
 
 %package -n gedit-plugin-terminal
 Summary:        Gedit terminal plugin
@@ -278,14 +278,14 @@ logs access and leave event for documents used with gedit.
 %autosetup -p1
 
 install -m644 %{SOURCE1} .
-translation-update-upstream
+translation-update-upstream po %{name}
 
 %build
-%configure
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name} %{?no_lang_C}
 %find_lang gedit %{name}.lang %{?no_lang_C}
@@ -298,8 +298,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n %{name}-data
 # Common files
 %{_libdir}/gedit/plugins/gpdefs.py*
-%dir %{_libdir}/gedit/plugins/__pycache__
-%{_libdir}/gedit/plugins/__pycache__/gpdefs*.pyc
 
 %files -n gedit-plugin-bookmarks
 ## Explicitly list all plugins so we know when we miss one
@@ -313,7 +311,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/metainfo/gedit-bracketcompletion.metainfo.xml
 %{_libdir}/gedit/plugins/bracketcompletion.plugin
 %{_libdir}/gedit/plugins/bracketcompletion.py*
-%{_libdir}/gedit/plugins/__pycache__/bracketcompletion*.pyc
 
 %files -n gedit-plugin-charmap
 # charmap
@@ -326,14 +323,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/metainfo/gedit-codecomment.metainfo.xml
 %{_libdir}/gedit/plugins/codecomment.plugin
 %{_libdir}/gedit/plugins/codecomment.py*
-%{_libdir}/gedit/plugins/__pycache__/codecomment*.pyc
 
 %files -n gedit-plugin-colorpicker
 # colorpicker
 %{_datadir}/metainfo/gedit-colorpicker.metainfo.xml
 %{_libdir}/gedit/plugins/colorpicker.plugin
 %{_libdir}/gedit/plugins/colorpicker.py*
-%{_libdir}/gedit/plugins/__pycache__/colorpicker*.pyc
 
 %files -n gedit-plugin-colorschemer
 # colorschemer
@@ -373,7 +368,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/metainfo/gedit-joinlines.metainfo.xml
 %{_libdir}/gedit/plugins/joinlines.plugin
 %{_libdir}/gedit/plugins/joinlines.py*
-%{_libdir}/gedit/plugins/__pycache__/joinlines*.pyc
 
 %files -n gedit-plugin-multiedit
 # multiedit
@@ -386,20 +380,18 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/metainfo/gedit-smartspaces.metainfo.xml
 %{_libdir}/gedit/plugins/smartspaces.plugin
 %{_libdir}/gedit/plugins/smartspaces.py*
-%{_libdir}/gedit/plugins/__pycache__/smartspaces*.pyc
 
-%files -n gedit-plugin-synctex
-# synctex
-%{_datadir}/metainfo/gedit-synctex.metainfo.xml
-%{_libdir}/gedit/plugins/synctex.plugin
-%{_libdir}/gedit/plugins/synctex/
+%files -n gedit-plugin-session-saver
+# session-saver
+%{_datadir}/gedit/plugins/sessionsaver/
+%{_libdir}/gedit/plugins/sessionsaver.plugin
+%{_libdir}/gedit/plugins/sessionsaver/
 
 %files -n gedit-plugin-terminal
 # terminal
 %{_datadir}/metainfo/gedit-terminal.metainfo.xml
 %{_libdir}/gedit/plugins/terminal.plugin
 %{_libdir}/gedit/plugins/terminal.py*
-%{_libdir}/gedit/plugins/__pycache__/terminal*.pyc
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.terminal.gschema.xml
 
 %files -n gedit-plugin-textsize

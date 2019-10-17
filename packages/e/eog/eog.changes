@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Oct  7 20:45:13 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Bug fixes:
+    - Check errors after rsvg_handle_close().
+    - icon: create a nightly app icon.
+    - EogApplication: Initialize debug before plugin engine
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 11 11:13:54 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 29 09:44:16 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.33.91:
+  + Updated translations.
+- Changes from version 3.33.90:
+  + Updated translations.
+- Changes from version 3.33.3:
+  + Improve meson port.
+  + build: Use #ifdef consistently.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jun 25 22:46:13 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.33.2:
+  + Bug fixes: Unreasonable limitation of scaling in print dialog.
+  + Updated translations.
+- Changes from version 3.33.1:
+  + Various help doc improvements.
+  + Bug fixes: glgo#GNOME/eog!20.
+
+------------------------------------------------------------------
 Wed May 22 13:10:18 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.2:

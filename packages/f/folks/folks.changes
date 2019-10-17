@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Sep  6 02:05:31 UTC 2019 - luke@ljones.dev
+
+- Disable lto in build due to lto causing segfault in Geary.
+
+-------------------------------------------------------------------
+Wed Sep  4 10:20:18 CDT 2019 - mgorse@suse.com
+
+- Update to version 0.13.1:
+  + Remove libsocialweb backend.
+- Changes in version 0.12.1:
+  + Disabled tests that were failing to be able to build a tarball.
+- Changes in version 0.12.0:
+  + Dropped depedency on libvaladoc (we now use the binary
+    directly).
+  + Bumped minimal GLib version to 2.44.
+  + Folks is now being built using meson.
+  + The autotools build definition was dropped.
+  + Dropped support for building without vala.
+  + Migrated to the GNOME GitLab and now use a CI-backed workflow.
+  + Moved from intltool to gettext.
+  + Various fixes for warnings.
+  + Lots of translation updates.
+  + Bugs fixed:
+    - Bug 784544 - Fatal error building git master.
+    - Bug 739997 - Crash when selecting contact.
+    - Bug 792238 - PotentialMatch: don't rely on null-terminated
+      string.
+    - Bug 792567 - Individual.display_name: don't fallback on
+      persona's display_id if it equals the IID.
+- Switch to meson.
+- Drop intltool dependency. Depend on gettext..
+- Drop folks-tracker.2.0.patch: fixed upstream.
+- Module_version is now 45.
+
+-------------------------------------------------------------------
 Fri Jan  4 00:30:47 UTC 2019 - bjorn.lie@gmail.com
 
 - Drop post(un) handling of glib2_gsettings_schema_post(un) for

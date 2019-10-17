@@ -26,23 +26,13 @@
 %endif
 
 Name:           gnome-control-center
-Version:        3.32.2+9
+Version:        3.34.1
 Release:        0
 Summary:        The GNOME Control Center
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
-# We are using source services, so no download url for source
 Source0:        %{name}-%{version}.tar.xz
-
-# PATCH-NEEDS-OPENSUSE gnome-control-center-disable-error-message-for-NM.patch bsc#989801 sckang@suse.com -- network: Improve the check for whether NM or wicked is running
-Patch0:         gnome-control-center-disable-error-message-for-NM.patch
-# PATCH-FIX-UPSTREAM control-center-network-add-domain-suffix-match.patch bgo#787882 bsc#1047509 sckang@suse.com -- wifi: Add domain-suffix-match entry
-Patch1:         control-center-network-add-domain-suffix-match.patch
-# PATCH-FIX-UPSTREAM control-center-network-fix-ce-apply-button.patch glgo#GNOME/gnome-control-center!402 bsc#1040054 sckang@suse.com -- network: disable the "Apply" button until a change has been made
-Patch2:         control-center-network-fix-ce-apply-button.patch
-# PATCH-FIX-UPSTREAM control-center-fix-mtu-label.patch glgo#GNOME/gnome-control-center!475 bsc#1040055 sckang@suse.com -- network: Fix mtu label not requesting enough space
-Patch3:         control-center-fix-mtu-label.patch
 
 ### patches for Leap >= 15 plus SLE >= 15, but not TW
 # PATCH-FEATURE-SLE gnome-control-center-info-never-use-gnome-software.patch bsc#999336 fezhang@suse.com -- info: Never search for gnome-software as an option when checking for updates on SLE and Leap 42.2, because we use gpk-update-viewer.
@@ -62,6 +52,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-dbusmock
 BuildRequires:  python3-pytest-xvfb
 BuildRequires:  translation-update-upstream
+BuildRequires:  xorg-x11-server-Xvfb
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(accountsservice) >= 0.6.39
 BuildRequires:  pkgconfig(cairo-gobject)
@@ -89,7 +80,6 @@ BuildRequires:  pkgconfig(gsound)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.20
 BuildRequires:  pkgconfig(gudev-1.0)
-BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libgtop-2.0)
 BuildRequires:  pkgconfig(libhandy-0.0) >= 0.0.9
 BuildRequires:  pkgconfig(libnm) >= 1.10.0
@@ -198,10 +188,6 @@ GNOME control center.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
 translation-update-upstream po gnome-control-center-2.0
 
 # patches for Leap >= 15 plus SLE >= 15, but not TW

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Sep 11 21:17:51 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.34:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  4 09:06:43 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.33.92:
+  + Updated the man page.
+  + Updated translations.
+  + Changes in version 3.33.91:
+  + Make the avatars more in line with the other apps in the GNOME
+    ecosystem.
+  + Fix searching contacts from GNOME Shell returning no results.
+  + Add a small description of the --search option.
+  + Updated translations.
+  + Changes in version 3.33.4:
+  + Flatpak: Allow webcam access (and other small fixes).
+  + Even better integration with CI.
+  + Add mnemonics to the setup window.
+  + Updated translations.
+  + Changes in version 3.33.1:
+  + Added a show-contact application action, so other applications
+    can activate Contacts to show a specific contact.
+  + Updated translations.
+- Drop gnome-contacts-disambiguate_Gtk.HeaderBar.patch: fixed
+    upstream.
+
+-------------------------------------------------------------------
 Sat Jun 15 19:27:35 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add gnome-contacts-disambiguate_Gtk.HeaderBar.patch: window:

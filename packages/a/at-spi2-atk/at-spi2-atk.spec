@@ -17,21 +17,21 @@
 
 
 Name:           at-spi2-atk
-Version:        2.32.0
+Version:        2.34.1
 Release:        0
 Summary:        GTK+ module for the Assistive Technology Service Provider Interface
-License:        LGPL-2.0-or-later
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://gitlab.gnome.org/GNOME/at-spi2-atk
-Source0:        https://download.gnome.org/sources/at-spi2-atk/2.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/at-spi2-atk/2.34/%{name}-%{version}.tar.xz
 Source98:       baselibs.conf
 Source99:       %{name}-rpmlintrc
 
 BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(atk) >= 2.31.2
-BuildRequires:  pkgconfig(atspi-2) >= 2.31.2
+BuildRequires:  pkgconfig(atk) >= 2.33.3
+BuildRequires:  pkgconfig(atspi-2) >= 2.33.2
 BuildRequires:  pkgconfig(dbus-1) >= 1.5
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.0.0

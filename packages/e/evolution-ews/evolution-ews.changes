@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Mon Oct  7 08:22:29 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Prefill email address as user name when creating new account.
+  + Autodiscover: Do not change user name with RedirectAddr.
+  + Bugs fixed: glgo#GNOME/evolution-ews#65,
+    glgo#GNOME/evolution-ews#66, glgo#GNOME/evolution-ews#69,
+    glgo#GNOME/evolution-ews#71.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 16 01:42:40 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Pass --DCMAKE_SKIP_RPATH=OFF and
+  -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON to cmake again. Otherwise,
+  the EDS backends don't have the library directory in their rpath.
+
+-------------------------------------------------------------------
+Mon Sep  9 16:05:25 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.34.0:
+  + No code/translation changes.
+
+-------------------------------------------------------------------
+Sat Sep  7 20:52:08 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace pkgconfig(libedata-cal-1.2) with
+  pkgconfig(libedata-cal-2.0) BuildRequires following upstreams
+  changes.
+- Use autosetup and cmake_build macros.
+- Stop passing -DCMAKE_SKIP_RPATH=OFF and
+  -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON to cmake, no longer needed.
+- Replace gcc-c++ with the genric c++_compiler BuildRequires.
+
+-------------------------------------------------------------------
+Thu Sep  5 13:37:26 NZST 2019 - luke@ljones.dev
+
+- Update to version 3.33.92:
+  + Fix a memory leak in camel_ews_store_ensure_virtual_folders().
+  + Bugs fixed: glgo#GNOME/evolution-ews#60.
+- Update to version 3.33.91:
+  + Bugs fixed: glgo#GNOME/evolution-ews#55,
+    glgo#GNOME/evolution-ews#56, glgo#GNOME/evolution-ews#57.
+- Update to version 3.33.4:
+  + Fix few memory leaks in e_cal_backend_ews_rid_to_index()
+  + Count with an ICalTimezone without internal component in
+    ewscal_set_availability_timezone().
+  + Categories property cannot be deleted.
+  + Bugs fixed: glgo#GNOME/evolution-ews#53.
+- Update to version 3.33.3:
+  + Fix issues found during 'make check'.
+  + Fix some compiler warnings reported by Clang in the test code.
+  + Bugs fixed: glgo#GNOME/evolution-ews#42,
+    glgo#GNOME/evolution-ews#49.
+- Update to version 3.33.2:
+  + Add refresh interval options to non-mail sources.
+  + Port to libecal-2.0 and adapt to address book API changes.
+- Update to version 3.33.1:
+  + Use lower-case "mailto:" consistently in the code.
+  + Bugs fixed: glgo#GNOME/evolution-ews#41,
+    glgo#GNOME/evolution-ews#39.
+  
+-------------------------------------------------------------------
 Mon May  6 18:13:56 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.2:

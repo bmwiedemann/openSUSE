@@ -637,4 +637,12 @@ Note this warning (not new), should we care?
   and HTML API docs are generated, no need for PS/PDF generation. (forwarded request 712117 from StefanBruens)</comment>
     <requestid>712351</requestid>
   </revision>
+  <revision rev="78" vrev="4">
+    <srcmd5>498f0a4d8c2b0f031ea00d0f1719fbd3</srcmd5>
+    <version>1.4.3</version>
+    <time>1571309819</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736499</requestid>
+  </revision>
 </revisionlist>

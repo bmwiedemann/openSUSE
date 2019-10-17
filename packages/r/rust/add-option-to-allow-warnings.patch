@@ -1,0 +1,112 @@
+From 935c1c86070dfac3515a4296bf991cdf544bae27 Mon Sep 17 00:00:00 2001
+From: Marc-Antoine Perennou <Marc-Antoine@Perennou.com>
+Date: Tue, 27 Aug 2019 09:37:51 +0200
+Subject: [PATCH] rustbuild: allow disabling deny(warnings) for bootstrap
+
+When deny-warnings is not specified or set to true, the behaviour is the same as before.
+When deny-warnings is set to false, warnings are now allowed
+
+Fixes #63911
+
+Signed-off-by: Marc-Antoine Perennou <Marc-Antoine@Perennou.com>
+---
+ src/bootstrap/bin/main.rs    | 3 ---
+ src/bootstrap/bin/rustc.rs   | 8 +++-----
+ src/bootstrap/bin/rustdoc.rs | 3 ---
+ src/bootstrap/bootstrap.py   | 2 ++
+ src/bootstrap/lib.rs         | 3 ---
+ src/build_helper/lib.rs      | 3 ---
+ 6 files changed, 5 insertions(+), 17 deletions(-)
+
+diff --git a/src/bootstrap/bin/main.rs b/src/bootstrap/bin/main.rs
+index bd1a87c5744d..138b7f4b2610 100644
+--- a/src/bootstrap/bin/main.rs
++++ b/src/bootstrap/bin/main.rs
+@@ -5,9 +5,6 @@
+ //! parent directory, and otherwise documentation can be found throughout the `build`
+ //! directory in each respective module.
+ 
+-// NO-RUSTC-WRAPPER
+-#![deny(warnings, rust_2018_idioms, unused_lifetimes)]
+-
+ use std::env;
+ 
+ use bootstrap::{Config, Build};
+diff --git a/src/bootstrap/bin/rustc.rs b/src/bootstrap/bin/rustc.rs
+index ce92ce026967..8cb48df14bfe 100644
+--- a/src/bootstrap/bin/rustc.rs
++++ b/src/bootstrap/bin/rustc.rs
+@@ -15,9 +15,6 @@
+ //! switching compilers for the bootstrap and for build scripts will probably
+ //! never get replaced.
+ 
+-// NO-RUSTC-WRAPPER
+-#![deny(warnings, rust_2018_idioms, unused_lifetimes)]
+-
+ use std::env;
+ use std::ffi::OsString;
+ use std::io;
+@@ -124,8 +121,9 @@ fn main() {
+ 
+     if env::var_os("RUSTC_DENY_WARNINGS").is_some() &&
+        env::var_os("RUSTC_EXTERNAL_TOOL").is_none() {
+-        // When extending this list, search for `NO-RUSTC-WRAPPER` and add the new lints
+-        // there as well, some code doesn't go through this `rustc` wrapper.
++        // When extending this list, add the new lints to the RUSTFLAGS of the
++        // build_bootstrap function of src/bootstrap/bootstrap.py as well as
++        // some code doesn't go through this `rustc` wrapper.
+         cmd.arg("-Dwarnings");
+         cmd.arg("-Drust_2018_idioms");
+         cmd.arg("-Dunused_lifetimes");
+diff --git a/src/bootstrap/bin/rustdoc.rs b/src/bootstrap/bin/rustdoc.rs
+index ff38ee8788f5..766a3463ecd8 100644
+--- a/src/bootstrap/bin/rustdoc.rs
++++ b/src/bootstrap/bin/rustdoc.rs
+@@ -2,9 +2,6 @@
+ //!
+ //! See comments in `src/bootstrap/rustc.rs` for more information.
+ 
+-// NO-RUSTC-WRAPPER
+-#![deny(warnings, rust_2018_idioms, unused_lifetimes)]
+-
+ use std::env;
+ use std::process::Command;
+ use std::path::PathBuf;
+diff --git a/src/bootstrap/bootstrap.py b/src/bootstrap/bootstrap.py
+index 86901792d797..3c56131396f2 100644
+--- a/src/bootstrap/bootstrap.py
++++ b/src/bootstrap/bootstrap.py
+@@ -631,6 +631,8 @@ def build_bootstrap(self):
+         target_linker = self.get_toml("linker", build_section)
+         if target_linker is not None:
+             env["RUSTFLAGS"] += "-C linker=" + target_linker + " "
++        if self.get_toml("deny-warnings", "rust") != "false":
++            env["RUSTFLAGS"] += "-Dwarnings -Drust_2018_idioms -Dunused_lifetimes "
+ 
+         env["PATH"] = os.path.join(self.bin_root(), "bin") + \
+             os.pathsep + env["PATH"]
+diff --git a/src/bootstrap/lib.rs b/src/bootstrap/lib.rs
+index c0e0ad1a857b..575844028d56 100644
+--- a/src/bootstrap/lib.rs
++++ b/src/bootstrap/lib.rs
+@@ -103,9 +103,6 @@
+ //! More documentation can be found in each respective module below, and you can
+ //! also check out the `src/bootstrap/README.md` file for more information.
+ 
+-// NO-RUSTC-WRAPPER
+-#![deny(warnings, rust_2018_idioms, unused_lifetimes)]
+-
+ #![feature(core_intrinsics)]
+ #![feature(drain_filter)]
+ 
+diff --git a/src/build_helper/lib.rs b/src/build_helper/lib.rs
+index 131d2034675e..f035a7119188 100644
+--- a/src/build_helper/lib.rs
++++ b/src/build_helper/lib.rs
+@@ -1,6 +1,3 @@
+-// NO-RUSTC-WRAPPER
+-#![deny(warnings, rust_2018_idioms, unused_lifetimes)]
+-
+ use std::fs::File;
+ use std::path::{Path, PathBuf};
+ use std::process::{Command, Stdio};

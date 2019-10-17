@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Sep 18 19:07:49 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.62.0:
+  + Glib:
+    - Add ustring::make_valid()
+    - Use convert_return_gchar_ptr_to_*() in a couple of ustring
+      methods
+    - Add ustring::sprintf(), wrapping g_strdup_printf()
+    - Fix callback races in glibmm when GSource is destructed
+    - Checksum, Datetime, TimeZone: Add Glib::Value
+      specializations
+    - Property: Add const get_proxy() returning ReadOnly. Getting
+      Proxy from ReadOnly is const
+    - Property: Update for compatibility with Gtk::Builder
+    - Fix memory leak in Variant<std::tuple<>>::create()
+    - Deprecate TimeVal
+  + Gio:
+    - Add Application::add_option_group()
+    - DBus::Object: Fix refcounts in some vfuncs
+    - Gio::DBus: Add ObjectProxy, ObjectSkeleton, ObjectManager,
+      ObjectManagerClient, ObjectManagerServer
+    - Drive, MountOperation, ThemedIcon, TlsDatabase,
+      VolumeMonitor: Fix ownership of some lists and arrays (Fixes
+      memory leaks and dangling pointers)
+    - Add SocketControlMessage::add_deserialize_func()
+  + gmmproc: Update for new glib deprecation macros
+  + Build: Require glib-2.0 >= 2.61.2
+  + Documentation:
+    - Glib::init(), Gio::init(): Improve the documentation
+    - Glib::ustring can't always replace std::string.
+
+-------------------------------------------------------------------
 Fri Mar 22 18:51:19 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.60.0:

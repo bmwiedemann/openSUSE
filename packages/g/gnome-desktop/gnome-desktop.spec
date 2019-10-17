@@ -17,13 +17,13 @@
 
 
 Name:           gnome-desktop
-Version:        3.32.2
+Version:        3.34.1
 Release:        0
 Summary:        The GNOME Desktop API Library
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/gnome-desktop/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-desktop/3.34/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 # PATCH-FIX-OPENSUSE gnome-desktop-switch-Japanese-default-input-to-mozc.patch bnc#1029083 boo#1056289 qzhao@suse.com -- Switch new user's default input engine from "anthy" to "mozc" in gnome-desktop with Japanese language and ibus input frame-work condition.
@@ -70,7 +70,7 @@ reasons.
 
 This package contains data files used by libgnome-dekstop.
 
-%package -n libgnome-desktop-3-17
+%package -n libgnome-desktop-3-18
 Summary:        The GNOME Desktop API Library
 # the library calls out to bwrap in order to fire up thumbnailers in a secure container
 Group:          System/Libraries
@@ -82,7 +82,7 @@ Recommends:     %{name}-lang
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
 
-%description -n libgnome-desktop-3-17
+%description -n libgnome-desktop-3-18
 The libgnome-desktop library provides API shared by several applications
 on the desktop, but that cannot live in the platform for various
 reasons.
@@ -102,7 +102,7 @@ libgnome-desktop.
 %package -n libgnome-desktop-3-devel
 Summary:        Development files for the GNOME Desktop API library
 Group:          Development/Libraries/GNOME
-Requires:       libgnome-desktop-3-17 = %{version}
+Requires:       libgnome-desktop-3-18 = %{version}
 # Needed as /usr/include/gnome-desktop-3.0/libgnome-desktop/gnome-xkb-info.h includes X11/extensions/XKBrules.h
 Requires:       libxkbfile-devel
 Requires:       typelib-1_0-GnomeDesktop-3_0 = %{version}
@@ -141,10 +141,10 @@ translation-update-upstream po gnome-desktop
 
 %fdupes %{buildroot}/%{_prefix}
 
-%post -n libgnome-desktop-3-17 -p /sbin/ldconfig
-%postun -n libgnome-desktop-3-17 -p /sbin/ldconfig
+%post -n libgnome-desktop-3-18 -p /sbin/ldconfig
+%postun -n libgnome-desktop-3-18 -p /sbin/ldconfig
 
-%files -n libgnome-desktop-3-17
+%files -n libgnome-desktop-3-18
 %license COPYING.LIB
 %doc AUTHORS NEWS README
 %{_libdir}/libgnome-desktop-3.so.*

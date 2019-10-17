@@ -962,4 +962,12 @@
     <comment>New stable release (forwarded request 703266 from iznogood)</comment>
     <requestid>704191</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>e77b9e855156ae54195f221552d98489</srcmd5>
+    <version>3.34.0</version>
+    <time>1571309899</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736517</requestid>
+  </revision>
 </revisionlist>

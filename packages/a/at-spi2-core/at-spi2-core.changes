@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Sep  9 15:08:37 CDT 2019 - mgorse@suse.com
+
+- Update to version 2.34.0:
+  + Fix a use after free when freeing an event.
+  + Clean up handling of the X11 property specifying the bus
+    address.
+  + Update doap.
+
+-------------------------------------------------------------------
+Mon Sep  2 18:10:18 CDT 2019 - mgorse@suse.com
+
+- Update to version 2.33.92:
+  + Now requires meson 0.50.0.
+  + License is now LGPL-2.1+.
+  + Meson: only link to libdl when it is necessary.
+  + Update installation instructions.
+  + Clarify atspi_editable_text_insert_text documentation.
+  + Do not warn on no reply from pending get_items call.
+  + Eliminate some superfluous runtime warnings.
+- Require meson >= 0.50.0.
+- Set license to LGPL-2.1-or-later.
+
+-------------------------------------------------------------------
+Fri Aug 30 09:27:56 CDT 2019 - mgorse@suse.com
+
+- Update to version 2.33.90:
+  + Refactor the API for the screen reader to notify listeners
+    of its status.
+  + Add a sender to the AtspiEvent struct.
+  + Add missing atspi_application_get_type prototype.
+  + Support mutter remote desktop interface for synthesizing
+    keyboard/mouse events (likely still needs work).
+
+-------------------------------------------------------------------
+Tue Jun 25 22:35:55 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.33.2:
+  + Check WAYLAND_DISPLAY, rather than XDG_SESSION_TYPE, to avoid X
+    connections. Fixes breakage if X is started with startx and
+    XDG_SESSION_TYPE is unset.
+  + X11: also try mod4 and mod5 to generate keysyms.
+  + Add ATSPI_ROLE_CONTENT_DELETION and
+    ATSPI_ROLE_CONTENT_INSERTION.
+  + Check for dbus-daemon in /usr/lib (for Solaris).
+
+-------------------------------------------------------------------
 Wed Apr 10 08:33:28 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.32.1:

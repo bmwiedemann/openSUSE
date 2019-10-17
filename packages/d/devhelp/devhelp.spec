@@ -20,13 +20,13 @@
 %define vim_plugin_dir %{_datadir}/vim/site/plugin
 
 Name:           devhelp
-Version:        3.32.0
+Version:        3.34.0
 Release:        0
 Summary:        Developer's Help Program for GNOME
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Devhelp
-Source0:        https://download.gnome.org/sources/devhelp/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/devhelp/3.34/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel >= 1.30.0

@@ -1,7 +1,7 @@
 #
 # spec file for package gmime
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,13 @@
 # NOTE - also update baselibs.conf when bumping this
 %define so_ver 3_0
 Name:           gmime
-Version:        3.2.3
+Version:        3.2.4
 Release:        0
 Summary:        MIME Parser and Utility Library
 License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Email/Utilities
 URL:            http://spruce.sourceforge.net/gmime/
-Source:         http://download.gnome.org/sources/gmime/3.2/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/gmime/3.2/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 BuildRequires:  gobject-introspection-devel >= 1.30.0
 BuildRequires:  gpgme-devel

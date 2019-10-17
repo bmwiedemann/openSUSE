@@ -16,25 +16,25 @@
 #
 
 
-%define         vala_version 0.44
-%define         vala_libversion 0_44
+%define         vala_version 0.46
+%define         vala_libversion 0_46
 # The priority defines which version of vala, in case of multiple ones are installed
 # is to be used by default. The rule-of-thumb for vala is to use MAJORMINOR without
 # decimal separator, hoping they will not get to the idea to create a 0.100 release.
-%define         vala_priority 44
+%define         vala_priority 46
 Name:           vala
-Version:        0.44.7
+Version:        0.46.3
 Release:        0
 Summary:        Programming language for GNOME
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/Other
 URL:            https://wiki.gnome.org/Projects/Vala
-Source0:        https://download.gnome.org/sources/vala/0.44/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/vala/0.46/%{name}-%{version}.tar.xz
 
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
-BuildRequires:  glib2-devel >= 2.40.0
+BuildRequires:  glib2-devel >= 2.48.0
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(libgvc) >= 2.16
@@ -121,10 +121,11 @@ from Vala source code.
 This package contains the libvaladoc development files.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%configure
+%configure \
+	%{nil}
 %make_build
 
 %install
@@ -205,19 +206,19 @@ fi
 %{_mandir}/man1/valadoc*.1%{?ext_man}
 
 %files -n valadoc-doclet-devhelp
-%dir %{_libdir}/valadoc
-%dir %{_libdir}/valadoc/doclets
-%{_libdir}/valadoc/doclets/devhelp/
+%dir %{_libdir}/valadoc-%{vala_version}
+%dir %{_libdir}/valadoc-%{vala_version}/doclets
+%{_libdir}/valadoc-%{vala_version}/doclets/devhelp/
 
 %files -n valadoc-doclet-gtkdoc
-%dir %{_libdir}/valadoc
-%dir %{_libdir}/valadoc/doclets
-%{_libdir}/valadoc/doclets/gtkdoc/
+%dir %{_libdir}/valadoc-%{vala_version}
+%dir %{_libdir}/valadoc-%{vala_version}/doclets
+%{_libdir}/valadoc-%{vala_version}/doclets/gtkdoc/
 
 %files -n valadoc-doclet-html
-%dir %{_libdir}/valadoc
-%dir %{_libdir}/valadoc/doclets
-%{_libdir}/valadoc/doclets/html/
+%dir %{_libdir}/valadoc-%{vala_version}
+%dir %{_libdir}/valadoc-%{vala_version}/doclets
+%{_libdir}/valadoc-%{vala_version}/doclets/html/
 
 %files -n libvala-%{vala_libversion}-0
 %{_libdir}/libvala-%{vala_version}.so.*
@@ -238,7 +239,7 @@ fi
 %files -n libvaladoc-%{vala_libversion}-devel
 %{_includedir}/valadoc-%{vala_version}/
 %{_libdir}/libvaladoc-%{vala_version}.so
-%{_datadir}/valadoc/
+%{_datadir}/valadoc-%{vala_version}/
 %{_libdir}/pkgconfig/valadoc-%{vala_version}.pc
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/valadoc-%{vala_version}.*

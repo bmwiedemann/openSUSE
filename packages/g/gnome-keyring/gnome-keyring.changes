@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 30 09:50:54 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.0:
+  + dbus-environment: Race fix in Setenv request to gnome-session.
+  + egg: Request that secure memory not be dumped to disk.
+  + Build and test fixes.
+  + Updated translations.
+- Refresh gnome-keyring-pam-auth-prompt-password.patch with quilt.
+
+-------------------------------------------------------------------
 Sat Mar  2 12:31:09 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.31.91:

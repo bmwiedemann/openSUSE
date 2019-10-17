@@ -47,6 +47,7 @@
   /usr/share/locale-bundle/**.mo r,
   /usr/share/mime/** r,
   /var/lib/color/icc/ r,
+  /var/lib/colord/icc/ r,
   /var/lib/colord/.cache/ rw,
   /var/lib/colord/.cache/** rw,
   /var/lib/colord/mapping.db rwk,

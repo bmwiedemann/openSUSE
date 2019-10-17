@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Sat Oct  5 14:34:11 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Background:
+    - Allow load background file relative to XML file.
+    - Update clock in both preview modes.
+  + Date & Time: Allow changing the timezone when auto-update is
+    prohibited.
+  + Network:
+    - Disable the "Apply" button until a change has been made.
+    - Fix Add Connection dialog.
+    - Accept empty values for the cloned mac address.
+  + Online Accounts: Fix a crash.
+  + Printers:
+    - Give printer name fewer characters in width.
+    - Check whether URI is valid while searching for printers.
+  + Region & Language: Fix crash in keyboard layout population.
+  + Search: Fix crash on clicking 'Search Locations'.
+  + Sharing: Set new shared folder visible as soon as it gets
+    added.
+  + Sound: Remove leftover canberra-gtk header inclusion.
+  + Updated translations.
+- Drop patches fixed upstream:
+  + gnome-control-center-Remove-leftover-canberra-gtk.patch.
+  + control-center-network-fix-ce-apply-button.patch.
+
+-------------------------------------------------------------------
+Sat Sep 21 09:38:32 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gnome-control-center-Remove-leftover-canberra-gtk.patch:
+  sound: Remove leftover canberra-gtk header inclusion. Following
+  this, drop pkgconfig(libcanberra-gtk3) BuildRequires: No longer
+  needed, nor used.
+- Add explicit xorg-x11-server-Xvfb BuildRequires: Previously
+  pulled in by libcanberra-gtk3. Needed for tests to succeed.
+
+-------------------------------------------------------------------
+Mon Sep  9 14:46:21 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.34.0.1:
+  + Sound: fix sliders not behaving properly.
+  + Changes in version 3.34.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  4 15:28:03 NZST 2019 - luke@ljones.dev
+
+- Update to version 3.33.90:
+  + Background: Clarify remove background button.
+  + Display: Various bugfixes.
+  + Search:
+    - Introduce Drag n' Drop
+    - Visual polishment.
+  + Updated translations.
+- Changes from version 3.33.3:
+  + Various minor improvements from the Every Detail Matters
+    session.
+  + Add shadows to application icons
+  + Documented Communication Guidelines
+  + Development builds with Flatpak working again
+  + Background: Redesigned panel.
+  + Display: Move Night Light to a tab, instead of a dialog.
+  + Keyboard Shortcuts:
+    - Panel renamed from "Keyboard".
+    - Minor UI adjustments.
+  + Mouse & Touchpad: Reinstate keyboard navitation.
+  + Power: Don't treat all batteries as laptop batteries.
+  + Sharing: Use a HdyLeaflet.
+  + User Accounts: Present the default avatar in the avatar
+    popover.
+  + Wacom: Ensure calibrator UI CSS only applies to its UI.
+  + Updated translations.
+- Remove control-center-fix-mtu-label.patch
+- Remove control-center-network-add-domain-suffix-match.patch
+- Remove gnome-control-center-disable-error-message-for-NM.patch
+
+-------------------------------------------------------------------
 Fri Aug 02 19:21:27 UTC 2019 - bjorn.lie@gmail.com
 
 - Update to version 3.32.2+9:

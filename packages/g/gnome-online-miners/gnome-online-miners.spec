@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-online-miners
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,18 +13,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gnome-online-miners
-Version:        3.30.0
+Version:        3.34.0
 Release:        0
 Summary:        Crawls through your online content
 License:        GPL-2.0-or-later
 Group:          System/Libraries
-URL:            http://download.gnome.org/sources/gnome-online-miners
-Source:         http://download.gnome.org/sources/gnome-online-miners/3.30/%{name}-%{version}.tar.xz
+URL:            https://wiki.gnome.org/Projects/GnomeOnlineMiners
+Source:         https://download.gnome.org/sources/gnome-online-miners/3.34/%{name}-%{version}.tar.xz
+
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.35.1

@@ -30,7 +30,6 @@ BuildRequires:  fdupes
 # Needed, as we provide a git snapshot
 BuildRequires:  gnome-common
 BuildRequires:  gobject-introspection-devel
-BuildRequires:  gtk-doc
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
 # We need the %%mime_database_* macros
@@ -179,7 +178,7 @@ translation-update-upstream
 NOCONFIGURE=1 ./autogen.sh
 %configure \
         --disable-static \
-        --enable-gtk-doc \
+        --disable-gtk-doc \
         --enable-search \
         --enable-playlist \
         --enable-nautilus \
@@ -261,13 +260,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/libbrasero-media3.pc
 %{_libdir}/pkgconfig/libbrasero-burn3.pc
-%{_datadir}/gtk-doc/html/libbrasero-burn/
-%{_datadir}/gtk-doc/html/libbrasero-media/
 %{_datadir}/gir-1.0/BraseroBurn-*.gir
 %{_datadir}/gir-1.0/BraseroMedia-*.gir
-# Own these repositories to not depend on gtk-doc while building:
-%dir %{_datadir}/gtk-doc
-%dir %{_datadir}/gtk-doc/html
 
 %files nautilus
 %{_libdir}/nautilus/extensions-3.0/*.so

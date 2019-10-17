@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sat Oct  5 08:22:43 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.62.1:
+  + Fix two memory leaks.
+
+-------------------------------------------------------------------
+Sat Sep  7 13:44:42 CDT 2019 - mgorse@suse.com
+
+- Update to version 2.62.0:
+  + Revert broken queued data fix for
+    glgo#GNOME/glib-networking#15.
+
+-------------------------------------------------------------------
+Mon Sep  2 00:45:58 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.61.92:
+  + Discard queued data after interrupted writes.
+  + Verify socket timeouts are respected.
+  + Fix a couple broken error messages.
+  + Changes in version 2.61.90:
+  + Fix translations of certain error messages
+  + Changes in version 2.61.2:
+  + Improve certain handshake error messages.
+  + Fix regressions introduced in 2.61.1.
+  + Changes in version 2.61.1:
+  + This release contains a major refactoring of the TLS
+    codebase. The GnuTLS backend now shares the same base classes
+    as the OpenSSL backend, to avoid duplicating as much code as
+    possible. The base classes, previously used only by the
+    OpenSSL backend and originally forked from glib-networking
+    several years ago, have been enhanced to achieve feature-parity
+    with the current state of the GnuTLS backend.  Please note
+    that the OpenSSL backend remains experimental. Further planned
+    work is required before this backend will be production-ready.
+
+-------------------------------------------------------------------
 Wed Aug 28 11:30:30 CEST 2019 - kukuk@suse.de
 
 - Move LICENSE_EXCEPTION to %license.

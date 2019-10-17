@@ -17,19 +17,19 @@
 
 
 Name:           gnome-photos
-Version:        3.32.1
+Version:        3.34.0
 Release:        0
 Summary:        Photo viewer for GNOME
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://wiki.gnome.org/Design/Apps/Photos
-Source0:        https://download.gnome.org/sources/gnome-photos/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-photos/3.34/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM gnome-photos-on-demand-activate-dleyna.patch bsc#992420, glgo#GNOME/gnome-photos#75 sckang@suse.com -- Activate dleyna-renderer-service on demand instead of on start-up.
 Patch0:         gnome-photos-on-demand-activate-dleyna.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  meson
+BuildRequires:  meson >= 0.50.0
 # Technically seen, glib2-tools would require this, but it introduces a loop there. So explictly require here
 BuildRequires:  gdk-pixbuf-loader-rsvg
 BuildRequires:  itstool

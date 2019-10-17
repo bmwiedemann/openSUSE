@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Sep  6 21:52:56 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 3.34.0:
+  + Fix possible use-after-free when using some gnome-shell
+    extensions.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  2 10:35:46 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.33.90:
+  + Describe "Reveal" as "Open Containing Folder".
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Mar 26 17:41:38 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.1:

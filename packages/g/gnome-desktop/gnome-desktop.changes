@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Oct  8 08:19:00 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 10 05:47:42 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.34.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  4 20:55:25 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.33.92.1:
+  + tests/wall*: Do not fail if some of the locales is missing.
+- Changes in version 3.33.92:
+  + Updated translations.
+- Changes in version 3.33.91:
+  + Updated translations.
+- Changes in version 3.33.90:
+  + Avoid using g_type_class_add_private().
+  + Updated translations.
+- Changes in version 3.33.4:
+  + Support common_name in ISO 639.
+  + Display locale @modifiers properly.
+  + Fix detection of builtin display on NVIDIA.
+  + GnomeBGSlideShow filename property replaced with a file
+    property.
+- Changes in version 3.33.3:
+  + Updated translations.
+- Changes in version 3.33.2:
+  + thumbnailer: Correctly cleanup stale thumbnailer directories.
+  + Updated translations.
+- Changes in version 3.33.1:
+  + gnome-languages: Use uselocale to avoid threadsafety issues.
+  + Add default keyboard layout for Indonesia.
+  + Updated translations.
+- API version is now 18.
+- Rebase gnome-desktop-switch-Japanese-default-input-to-mozc.patch.
+
+-------------------------------------------------------------------
 Tue May  7 13:05:30 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.2:

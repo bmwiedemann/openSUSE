@@ -1510,4 +1510,12 @@ Fri Dec  18 23:51:08 UTC 2015 - damjanovic.ivo@gmail.com
   + console: Don't accept --profile after the script name. (forwarded request 701519 from iznogood)</comment>
     <requestid>701617</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>5eba836d75e71050e00fcfdf8e8ecc37</srcmd5>
+    <version>1.58.1</version>
+    <time>1571309914</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736519</requestid>
+  </revision>
 </revisionlist>

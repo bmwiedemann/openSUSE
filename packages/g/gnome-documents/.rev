@@ -548,4 +548,12 @@
     <comment> (forwarded request 722907 from iznogood)</comment>
     <requestid>723067</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>14bbfc0f11e3fc62083e8b4cba06f53d</srcmd5>
+    <version>3.33.90</version>
+    <time>1571310003</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736538</requestid>
+  </revision>
 </revisionlist>

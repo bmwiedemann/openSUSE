@@ -17,13 +17,13 @@
 
 
 Name:           dconf
-Version:        0.32.0
+Version:        0.34.0
 Release:        0
 Summary:        Key-based configuration system
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://live.gnome.org/dconf
-Source0:        https://download.gnome.org/sources/dconf/0.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/dconf/0.34/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM 0001-gvdb-Restore-permissions-on-changed-files.patch bsc#1025721 bsc#971074 bgo#758066 fezhang@suse.com -- Restore permissions on files changed by dconf update.
 Patch0:         0001-gvdb-Restore-permissions-on-changed-files.patch

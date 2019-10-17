@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Oct  7 16:52:56 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Prevent machine names from expanding the icon view.
+  + Recommend Debian 10 and Endless OS 3.6 in "Download an OS".
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 10 10:29:34 CST 2019 - qkzhu@suse.com
+
+- Update to version 3.34.0:
+  + Only show supported architectures in "Download an OS" page.
+  + Fix crash with media enumeration.
+  + Adjust appdata to pass the strict validation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  6 21:00:13 UTC 2019 - mgorse@suse.com
+
+- Update to version 3.33.90:
+  + Auto enable boot menu for VMs with a CD/DVD assigned.
+  + Modernize the unnatended installation code.
+  + Prefer initrd over disk as injection method.
+  + Various Flatpak/CI build fixes.
+  + Print '-h' as the help commandline option (instead of -?).
+  + Wrap size and DnD overlays in OSD for better readability.
+  + Updated translations.
+- Changes from version 3.33.3:
+  + Split new box assistant into two (remote and virtual machines).
+  + Use 3.32 Sdk and Runtime for CI.
+  + Drop option to Share Clipboard (now it is always shared).
+  + Add tooltips for media entries in the assistant.
+  + Updated translations.
+  + Changes in version 3.33.2:
+  + Add 3D acceleration option to VM Properties dialog.
+  + Convert collection switcher to GtkRadioButtons to avoid
+    multi-selection.
+  + Stop enabling virtio-gpu by default to new installs (make
+    it opt-in).
+  + Use spice_main_channel_file_copy_async instead of deprecated
+    API.
+  + Pass username and port to openssh while connecting.
+  + Take screenshots with Gtk, instead of delegating to the
+    display widget.
+  + Don't duplicate Recommended Downloads in the "Show All" list.
+  + Updated translations.
+- Changes from version 3.33.1:
+  + Drop oVirt support.
+  + Add missing oxford comma to wizard-source.
+  + Use GtkFileChooserNative for the CD/DVD chooser.
+  + Don't steal input from username entry in express installs.
+  + Fix "Download an OS" search issue with modifier keys.
+  + Rename pango attribute incorrectly localized.
+  + Add CentOS logo.
+  + Updated translations.
+- Drop govirt dependency.
+
+-------------------------------------------------------------------
 Fri Sep  6 21:00:12 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.2:

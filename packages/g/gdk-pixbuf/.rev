@@ -606,4 +606,12 @@
     <comment></comment>
     <requestid>729387</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>6380fff6bd87d0f6b3bea3bad0b6274f</srcmd5>
+    <version>2.40.0</version>
+    <time>1571309891</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736514</requestid>
+  </revision>
 </revisionlist>

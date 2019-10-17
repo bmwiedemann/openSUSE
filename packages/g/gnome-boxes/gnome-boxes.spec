@@ -22,13 +22,13 @@
 %define govf_sover 0.1
 %define gfrdp_sover 0.1
 Name:           gnome-boxes
-Version:        3.32.2
+Version:        3.34.1
 Release:        0
 Summary:        A GNOME 3 application to access remote or virtual systems
 License:        LGPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/Apps/Boxes
-Source0:        https://download.gnome.org/sources/gnome-boxes/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-boxes/3.34/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.47.0
@@ -42,12 +42,11 @@ BuildRequires:  pkgconfig(gio-2.0) >= 2.50
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.6
-BuildRequires:  pkgconfig(govirt-1.0) >= 0.3.4
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.20
 BuildRequires:  pkgconfig(gtk-vnc-2.0) >= 0.4.4
 BuildRequires:  pkgconfig(gudev-1.0) >= 165
 BuildRequires:  pkgconfig(libarchive) >= 3.0.0
-BuildRequires:  pkgconfig(libosinfo-1.0) >= 1.1.0
+BuildRequires:  pkgconfig(libosinfo-1.0) >= 1.4.0
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.38
 BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.9

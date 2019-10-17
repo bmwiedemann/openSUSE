@@ -378,4 +378,12 @@
   libfolks-data subpackage, no longer needed.</comment>
     <requestid>695784</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>eff4c08bb4066661b1176c5ab65d3c6e</srcmd5>
+    <version>0.13.1</version>
+    <time>1571309885</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736511</requestid>
+  </revision>
 </revisionlist>

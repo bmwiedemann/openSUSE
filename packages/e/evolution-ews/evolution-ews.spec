@@ -16,21 +16,21 @@
 #
 
 
-# _version needs to be %{version} stripped to major.minor.micro only...
+# _version needs to be %%{version} stripped to major.minor.micro only...
 %define _version %(echo %{version} | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+')
 
 Name:           evolution-ews
-Version:        3.32.2
+Version:        3.34.1
 Release:        0
 Summary:        Exchange Connector for Evolution, compatible with Exchange 2007 and later
 License:        LGPL-2.1-only
 Group:          Productivity/Networking/Email/Clients
 URL:            https://wiki.gnome.org/Apps/Evolution
-Source0:        https://download.gnome.org/sources/evolution-ews/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/evolution-ews/3.34/%{name}-%{version}.tar.xz
 
+BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
@@ -43,9 +43,9 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.46
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.10
 BuildRequires:  pkgconfig(libebackend-1.2) >= %{_version}
 BuildRequires:  pkgconfig(libebook-1.2) >= %{_version}
-BuildRequires:  pkgconfig(libecal-1.2) >= %{_version}
+BuildRequires:  pkgconfig(libecal-2.0) >= %{_version}
 BuildRequires:  pkgconfig(libedata-book-1.2) >= %{_version}
-BuildRequires:  pkgconfig(libedata-cal-1.2) >= %{_version}
+BuildRequires:  pkgconfig(libedata-cal-2.0) >= %{_version}
 BuildRequires:  pkgconfig(libedataserver-1.2) >= %{_version}
 BuildRequires:  pkgconfig(libemail-engine) >= %{_version}
 BuildRequires:  pkgconfig(libical)
@@ -53,29 +53,27 @@ BuildRequires:  pkgconfig(libmspack) >= 0.4
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.42
 
 %description
-The EWS Exchange Connector for Evolution provides a Exchange backend
-from evolution-data-server as well as plugins for Evolution to access
-Exchange features.
+The EWS Exchange Connector for Evolution provides a Exchange
+backend from evolution-data-server as well as plugins for Evolution
+to access Exchange features.
 
-The EWS Exchange Connector is using the Exchange Web Services interface
-and is therefore compatible with Exchange 2007 and later.
+The EWS Exchange Connector is using the Exchange Web Services
+interface and is therefore compatible with Exchange 2007 and later.
 
-Provides exchange connectivity for exchange server 2007 and later using
-exchange web services protocol.
+Provides exchange connectivity for exchange server 2007 and later
+using exchange web services protocol.
 
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 translation-update-upstream
 
 %build
-# We need to build directly with the 'final rpath':
-# cmake is too stupid to get it right otherwise
 %cmake \
   -DCMAKE_SKIP_RPATH=OFF \
   -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install

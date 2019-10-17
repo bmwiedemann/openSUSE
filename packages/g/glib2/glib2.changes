@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Fri Oct  4 12:12:46 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.62.1:
+  + Fix regression in g_file_copy() when passing
+    `G_FILE_COPY_TARGET_DEFAULT_PERMS` flag; the destination
+    permissions would be private rather than following the process’
+    umask.
+  + Several `GDateTime` parsing fixes.
+  + Always build the tests if installed-tests are enabled, so that
+    the tests can actually be installed.
+  + Bugs fixed: glgo#GNOME/GLib#174, glgo#GNOME/GLib#1865,
+    glgo#GNOME/GLib#1875, glgo#GNOME/GLib#1887,
+    glgo#GNOME/GLib#1888, glgo#GNOME/GLib!1021,
+    glgo#GNOME/GLib!1094, glgo#GNOME/GLib!1101,
+    glgo#GNOME/GLib!1102, glgo#GNOME/GLib!1103,
+    glgo#GNOME/GLib!1127, glgo#GNOME/GLib!1128,
+    glgo#GNOME/GLib!1140, glgo#GNOME/GLib!1141,
+    glgo#GNOME/GLib!1142.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  6 10:31:47 NZST 2019 - luke@ljones.dev
+
+- Update to version 2.62.0:
+  + Fix new `GFileInfo` APIs to work when
+    `G_FILE_ATTRIBUTE_TIME_MODIFIED_USEC` was not queried.
+  + Bugs fixed: glgo#GNOME/GLib#487, glgo#GNOME/GLib!1084,
+    glgo#GNOME/GLib!1086,glgo#GNOME/GLib!1087.
+
+-------------------------------------------------------------------
+Thu Sep  5 20:24:54 NZST 2019 - luke@ljones.dev
+
+- Update to version 2.61.3:
+  + Support setting thread name on BSD systems.
+  + Install previously-uninstalled headers for public
+    `GNativeSocketAddress` object.
+  + Very initial support for Windows apps (UWP).
+  + Add various new valgrind suppressions to `glib.supp`.
+  + Bugs fixed: glgo#GNOME/GLib!83, glgo#GNOME/GLib!512,
+    glgo#GNOME/GLib!873, glgo#GNOME/GLib!905, glgo#GNOME/GLib!1057,
+    glgo#GNOME/GLib!1309, glgo#GNOME/GLib!1620,
+    glgo#GNOME/GLib!1761, glgo#GNOME/GLib!1803,
+    glgo#GNOME/GLib!1819, glgo#GNOME/GLib!1852,
+    glgo#GNOME/GLib!1854, glgo#GNOME/GLib!1860,
+    glgo#GNOME/GLib!1863, glgo#GNOME/GLib!1867,
+    glgo#GNOME/GLib!1870, glgo#GNOME/GLib!1879,
+    glgo#GNOME/GLib!1880, glgo#GNOME/GLib!1881,
+    glgo#GNOME/GLib!1002, glgo#GNOME/GLib!1011,
+    glgo#GNOME/GLib!1015, glgo#GNOME/GLib!1016,
+    glgo#GNOME/GLib!1017, glgo#GNOME/GLib!1023,
+    glgo#GNOME/GLib!1026, glgo#GNOME/GLib!1027,
+    glgo#GNOME/GLib!1031, glgo#GNOME/GLib!1032,
+    glgo#GNOME/GLib!1033, glgo#GNOME/GLib!1034,
+    glgo#GNOME/GLib!1036, glgo#GNOME/GLib!1037,
+    glgo#GNOME/GLib!1044, glgo#GNOME/GLib!1049,
+    glgo#GNOME/GLib!1050, glgo#GNOME/GLib!1054,
+    glgo#GNOME/GLib!1057, glgo#GNOME/GLib!1059,
+    glgo#GNOME/GLib!1066, glgo#GNOME/GLib!1068,
+    glgo#GNOME/GLib!1071, glgo#GNOME/GLib!1074,
+    glgo#GNOME/GLib!1075.
+-------------------------------------------------------------------
+Mon Sep  2 18:04:38 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.61.2:
+  + Add various new array functions (#236, #269, #373).
+  + Rework how D-Bus connections are closed/unreffed when
+    `g_test_dbus_down()` is called. Tests which leak a
+    `GDBusConnection` may now time out and abort, rather than
+    silently leaking. (#787)
+  + Add a deprecation macro for GLib macros, and use it;
+    third-party uses of long-deprecated GLib macros may now start
+    causing warnings. (#1060).
+  + Deprecate `GTime` and `GTimeVal`, and various functions which
+    use them. Use `GDateTime` and `guint64` UNIX timestamps
+    instead.
+  + Stop using `G_DISABLE_DEPRECATED` to allow disabling
+    deprecation warnings; third-party code should now be using
+    `GLIB_VERSION_{MIN_REQUIRED, MAX_ALLOWED}` to control symbol
+    usage.
+  + Improve `GNetworkMonitor` detection of offline states (#1788).
+  + Fix CVE-2019-12450, wide permissions of files when copying
+    using GIO.
+- Changes from version 2.61.1:
+  + Upgrade to Unicode Character Database v12.1.
+  + Improve network availability detection with NetworkManager to
+    treat lower levels of connectivity as having reduced
+    availability.
+- Changes from version 2.61.0:
+  + Add coloured output support to `gdbus introspect.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Sep  2 17:04:38 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.60.7:

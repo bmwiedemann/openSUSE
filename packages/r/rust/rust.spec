@@ -17,9 +17,9 @@
 #
 
 
-%global version_current 1.37.0
-%global version_previous 1.36.0
-%global version_bootstrap 1.36.0
+%global version_current 1.38.0
+%global version_previous 1.37.0
+%global version_bootstrap 1.37.0
 # some sub-packages are versioned independantly
 %global rustfmt_version 1.0.3
 %global clippy_version 0.0.212
@@ -124,6 +124,8 @@ Source108:      %{dl_url}/rust-%{version_bootstrap}-powerpc-unknown-linux-gnu.ta
 Patch0:         ignore-Wstring-conversion.patch
 # PATCH-FIX-UPSTREAM: Fix bug with timestamps which caused LLVM to rebuild - https://github.com/rust-lang/rust/issues/61206
 Patch1:         rust-61206-assume-tarball-llvm-is-fresh.patch
+# PATCH-FIX-UPSTREAM: Adds an option to ignore warnings, primaraily used in this build to allow v1.38 to bootstrap itself
+Patch2:         add-option-to-allow-warnings.patch
 BuildRequires:  ccache
 # Leap 42 to 42.3, SLE12 SP1, SP2
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 120200
@@ -376,6 +378,7 @@ This package includes HTML documentation for Cargo.
 
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 # use python3
 sed -i -e "1s|#!.*|#!%{_bindir}/python3|" x.py
@@ -412,6 +415,7 @@ chmod +x src/libcore/unicode/printable.py
 %build
 %define _lto_cflags %{nil}
 %configure \
+  --set rust.deny-warnings=false \
   --disable-option-checking \
   --build=%{rust_triple} --host=%{rust_triple} --target=%{rust_triple} \
   --enable-local-rust \

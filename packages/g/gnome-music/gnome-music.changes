@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Tue Sep 10 09:58:19 CST 2019 - qkzhu@suse.com
+
+- Update to version 3.34.0:
+  + This release marks the first stable release after a invasive
+    rewrite of Music internals and may still be rough around the edges.
+    Regressions and known issues are kept track of in #299.
+  + A flatpak issue with cover art retrieval was fixed.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  8 10:05:11 NZST 2019 - luke@ljones.dev
+
+- Update to version 3.33.92:
+  + Bug fixes.
+
+-------------------------------------------------------------------
+Sat Aug 31 09:21:15 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.33.90:
+  + Bug fixes.
+  + Search view rewrite and style update.
+  + Display an empty view if Tracker version is outdated.
+  + Updated translations.
+- Changes from version 3.33.4:
+  + Rewrite of the core of Music.
+  + Support gapless playback.
+  + MPRIS support rewrite.
+  + Playlists rewrite.
+  + Updated translations.
+- Changes from version 3.33.2:
+  + Improve Smooth progressbar support.
+  + Improve display of information for songs with no tags.
+  + Select a random song at launch when playing a playlist in
+    shuffle mode.
+  + AppData tags update.
+  + MPRIS misc cleanups.
+  + Lots of general cleanups.
+  + Bugs fixed:
+    - gnome-music crashes on startup.
+    -  Stop using GtkBox:padding, GtkBox:fill and GtkBox:expand.
+    - Do not rely on Tracker generated metadata.
+    -  MPRIS2 reports wrong .desktop file name.
+    -  Order of search and select buttons incorrect.
+    - flatpak nightly: Clicking on MPRIS player launches wrong
+      version.
+    - Incorrect timeline (progress bar) position for m4a file.
+    - HeaderBar in selection mode has the search/cancel button
+      order wrong.
+    - Repeat All Does Not Repeat Single Songs From Search.
+    - Resuming Playback Actually Restarts Song.
+  + Updated translations.
+- Up gtk3, tracker-sparql, grilo, and grilo-plugins dependencies.
+
+-------------------------------------------------------------------
 Mon May  6 18:02:58 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.2:

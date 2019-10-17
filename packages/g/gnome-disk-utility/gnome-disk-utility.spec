@@ -17,16 +17,16 @@
 
 
 Name:           gnome-disk-utility
-Version:        3.32.1
+Version:        3.34.0
 Release:        0
 Summary:        Disks application for dealing with storage devices
 License:        GPL-2.0-or-later
 Group:          Hardware/Other
 URL:            https://wiki.gnome.org/Apps/Disks
-Source0:        https://download.gnome.org/sources/gnome-disk-utility/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-disk-utility/3.34/%{name}-%{version}.tar.xz
 
 BuildRequires:  docbook-xsl-stylesheets
-BuildRequires:  meson
+BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
@@ -41,7 +41,7 @@ BuildRequires:  pkgconfig(libnotify) >= 0.7
 BuildRequires:  pkgconfig(libsecret-1) >= 0.7
 BuildRequires:  pkgconfig(libsystemd) >= 209
 BuildRequires:  pkgconfig(pwquality) >= 1.0.0
-BuildRequires:  pkgconfig(udisks2) >= 2.7.2
+BuildRequires:  pkgconfig(udisks2) >= 2.7.6
 Requires:       udisks2
 
 %description
@@ -68,7 +68,7 @@ translation-update-upstream po %{name}
 
 %files
 %license COPYING
-%doc AUTHORS HACKING NEWS README TODO
+%doc AUTHORS HACKING NEWS README.md TODO
 %{_bindir}/gnome-disks
 %{_bindir}/gnome-disk-image-mounter
 %{_datadir}/applications/*.desktop

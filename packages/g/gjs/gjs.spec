@@ -21,13 +21,13 @@
 # remove all conditional macros and enable systemtap.
 %bcond_with     systemtap
 Name:           gjs
-Version:        1.56.2
+Version:        1.58.1
 Release:        0
 Summary:        JavaScript bindings based on gobject-introspection and Mozilla
 License:        MIT AND LGPL-2.0-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/Gjs
-Source0:        https://download.gnome.org/sources/gjs/1.56/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gjs/1.58/%{name}-%{version}.tar.xz
 
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -101,6 +101,7 @@ make %{?_smp_mflags}
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
+rm %{buildroot}/usr/share/glib-2.0/schemas/org.gnome.GjsTest.gschema.xml
 
 %post -n libgjs0 -p /sbin/ldconfig
 %postun -n libgjs0 -p /sbin/ldconfig

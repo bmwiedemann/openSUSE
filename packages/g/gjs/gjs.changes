@@ -1,4 +1,136 @@
 -------------------------------------------------------------------
+Mon Oct  7 07:42:54 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.58.1:
+  + Closed bugs and merge requests:
+    - Import wiki documentation.
+    - Smaller CI, phase 1.
+    - Crashes after setting child property 'icon-name' on GtkStack
+      then displaying another GtkStack.
+    - GLib.strdelimit crashes.
+
+-------------------------------------------------------------------
+Sat Sep  7 15:45:12 CDT 2019 - mgorse@suse.com
+
+- Update to version 1.58.0:
+  + No changes.
+
+-------------------------------------------------------------------
+Thu Sep  5 14:51:49 NZST 2019 - luke@ljones.dev
+
+- Update to version 1.57.92:
+  + Enable regression test cases for GPtrArrays and GArrays
+    of structures.
+  * Various maintenance.
+
+-------------------------------------------------------------------
+Thu Aug 29 09:38:16 UTC 2019 - Luke Jones <luke@ljones.dev>
+
+- Update to version 1.57.91:
+  + GJS no longer links to libgtk-3. This makes it possible to load the Gtk-4.0
+    typelib in GJS and write programs that use GTK 4.
+  + The heapgraph tool has gained some improvements; it is now possible to print a
+    heap graph of multiple targets. You can also mark an object for better
+    identification in the heap graph by assigning a magic property: for example,
+    myObject.__heapgraph_name = 'Button' will make that object identify itself as
+    "Button" in heap graphs.
+  + Closed bugs and merge requests:
+    - Remove usage of Lang in non legacy code.
+    - GTK4.
+    - JS syntax fixes.
+    - gi: Avoid infinite recursion when converting GValues.
+    - Implement all GObject-introspection test suites.
+    - Heapgraph improvements.
+
+- Update to version 1.57.90:
+  + New JS API: GLib.Variant has gained a recursiveUnpack() method which
+    transforms the variant entirely into a JS object, discarding all type
+    information. This can be useful for dealing with a{sv} dictionaries, where
+    deepUnpack() will keep the values as GLib.Variant instances in order to
+    preserve the type information.
+  + New JS API: GLib.Variant has gained a deepUnpack() method which is exactly the
+    same as the already existing deep_unpack(), but fits with the other camelCase
+    APIs that GJS adds.
+  + Closed bugs and merge requests:
+    - Marshalling of GPtrArray broken.
+    - Fix locale chooser.
+    - dbus-wrapper: Remove interface skeleton flush idle on dispose.
+    - gobject: Use auto-compartment when getting property as well.
+    - modules/signals: Use array destructuring in _emit.
+    - GJS can't call glibtop_init function from libgtop.
+    - GLib's VariantDict is missing lookup.
+    - toString on an object implementing an interface fails.
+    - Regression in GstPbutils.Discoverer::discovered callback.
+    - GLib.Variant.deep_unpack not working properly with a{sv} variants.
+    - Various maintenance.
+  + Various CI fixes.
+
+- Update to version 1.57.4:
+  + Closed bugs and merge requests:
+    - gjs 1.57 requires a recent sysprof version for sysprof-capture-3.
+  + Misc documentation changes.
+
+
+- Update to version 1.57.3:
+  + The GJS profiler is now integrated directly into Sysprof 3, via the
+    GJS_TRACE_FD environment variable. Call stack information and garbage
+    collector timing will show up in Sysprof. See also GNOME/Initiatives#10
+  + New JS API: System.addressOfGObject(obj) will return a string with the hex
+    address of the underlying GObject of `obj` if it is a GObject wrapper, or
+    throw an exception if it is not. This is intended for debugging.
+  + New JS API: It's now possible to pass a value from Gio.DBusProxyFlags to the
+    constructor of a class created by Gio.DBusProxy.makeProxyWrapper().
+  + Backwards-incompatible change: Trying to read a write-only property on a DBus
+    proxy object, or write a read-only property, will now throw an exception.
+    Previously it would fail silently. It seems unlikely any code is relying on
+    the old behaviour, and if so then it was probably masking a bug.
+  + Closed bugs and merge requests:
+    - Build failure on Continuous.
+    - build: Bump glib requirement.
+    - profiler: avoid clearing 512 bytes of stack.
+    - system: add addressOfGObject method.
+    - Add support for GJS_TRACE_FD.
+    - Gio: Make possible to pass DBusProxyFlags to proxy wrapper.
+    - Various maintenance.
+    - Marshalling of GPtrArray broken.
+    - Build fix.
+    - Gio: sync dbus wrapper properties flags.
+    - GjsMaybeOwned: Reduce allocation when used as Object member.
+
+- Update to version 1.57.2:
+  + There are now overrides for Gio.SettingsSchema and Gio.Settings which avoid
+    aborting the whole process when trying to access a nonexistent key or child
+    schema. The original API from GLib was intended for apps, since apps should
+    have complete control over which settings keys they are allowed to access.
+    However, it is not a good fit for shell extensions, which may need to access
+    different settings keys depending on the version of GNOME shell they're
+    running on.
+    This feature is based on code from Cinnamon which the copyright holders have
+    kindly agreed to relicense to GJS's license.
+  + New JS API: It is now possible to pass GObject.TypeFlags to
+    GObject.registerClass(). For example, passing
+    `GTypeFlags: GObject.TypeFlags.ABSTRACT` in the class info object, will create
+    a class that cannot be instantiated. This functionality was present in
+    Lang.Class but has been missing from GObject.registerClass().
+  + Closed bugs and merge requests:
+    - Document logging features.
+    - Support optional GTypeFlags value in GObject subclasses.
+    - Ensure const-correctness in C++ objects.
+    - Programmer errors with GSettings cause segfaults.
+    - Various maintenance.
+    - debugger: Fix summary help.
+    - context: Use Heap pointers for GC objects stored in vectors.
+
+- Update to version 1.57.1:
+  + Closed bugs and merge requests:
+    -  Various maintenance.
+    -  mainloop: Assign null to property instead of deleting.
+    -  Added -d version note README.md.
+    -  Extra help for debugger commands.
+    -  Crash in BoxedInstance when struct could not be allocated directly.
+    -  Cairo conversion bugs.
+
+-------------------------------------------------------------------
 Wed May  8 08:27:47 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.56.2:

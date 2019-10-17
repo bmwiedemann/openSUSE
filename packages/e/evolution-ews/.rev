@@ -819,4 +819,12 @@
     <comment>New stable rel (forwarded request 701144 from iznogood)</comment>
     <requestid>701606</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>87cdd6191ed67d68e5e8f06dfc36eb70</srcmd5>
+    <version>3.34.1</version>
+    <time>1571309880</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736510</requestid>
+  </revision>
 </revisionlist>

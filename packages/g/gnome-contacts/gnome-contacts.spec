@@ -17,15 +17,13 @@
 
 
 Name:           gnome-contacts
-Version:        3.32.1
+Version:        3.34
 Release:        0
 Summary:        Contacts Manager for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://wiki.gnome.org/Apps/Contacts
-Source0:        https://download.gnome.org/sources/gnome-contacts/3.32/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM gnome-contacts-disambiguate_Gtk.HeaderBar.patch -- window: Disambiguate Gtk.HeaderBar
-Patch0:         gnome-contacts-disambiguate_Gtk.HeaderBar.patch
+Source0:        https://download.gnome.org/sources/gnome-contacts/3.34/%{name}-%{version}.tar.xz
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  docbook_4

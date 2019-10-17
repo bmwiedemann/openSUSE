@@ -42,16 +42,18 @@
 %bcond_with python3
 %endif
 Name:           webkit2gtk3
-Version:        2.26.0
+Version:        2.26.1
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        LGPL-2.0-or-later AND BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://webkitgtk.org/
-Source0:        https://webkitgtk.org/releases/%{_name}-%{version}.tar.xz
-Source1:        https://webkitgtk.org/releases/%{_name}-%{version}.tar.xz.asc
+Source0:        %{url}/releases/%{_name}-%{version}.tar.xz
+Source1:        %{url}/releases/%{_name}-%{version}.tar.xz.asc
 Source98:       baselibs.conf
 Source99:       webkit2gtk3.keyring
+# PATCH-FIX-OPENSUSE webkit2gtk3-fdo-soname.patch mgorse@suse.com -- don't call dlopen with an unversioned soname.
+Patch0:         webkit2gtk3-fdo-soname.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
@@ -105,8 +107,8 @@ BuildRequires:  pkgconfig(libxml-2.0) >= 2.8.0
 BuildRequires:  pkgconfig(libxslt) >= 1.1.7
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(upower-glib)
-#BuildRequires:  pkgconfig(wpe-1.0) >= 1.3.0
-#BuildRequires:  pkgconfig(wpebackend-fdo-1.0) >= 1.3.0
+BuildRequires:  pkgconfig(wpe-1.0) >= 1.3.0
+BuildRequires:  pkgconfig(wpebackend-fdo-1.0) >= 1.3.0
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} == 1315
@@ -130,8 +132,6 @@ BuildRequires:  python2-xml
 %if %{_gold_linker}
 BuildRequires:  binutils-gold
 %endif
-Requires:       bubblewrap
-Requires:       xdg-dbus-proxy
 
 %description
 WebKit is a web content engine, derived from KHTML and KJS from KDE,
@@ -146,7 +146,9 @@ more.
 Summary:        Library for rendering web content, GTK+ Port
 # Require the injected bundles. The bundles are dlopen()ed
 Group:          System/Libraries
+Requires:       bubblewrap
 Requires:       webkit2gtk-4_0-injected-bundles
+Requires:       xdg-dbus-proxy
 Recommends:     %{_pkgname_no_slpp}-lang
 Provides:       %{_pkgname_no_slpp} = %{version}
 Obsoletes:      webkit2gtk3-plugin-process-gtk2
@@ -331,7 +333,7 @@ export PYTHON=%{_bindir}/python3
   -DENABLE_JIT=OFF \
 %endif
   -DUSE_SYSTEM_MALLOC=ON \
-  -DUSE_WPE_RENDERER=OFF \
+  -DENABLE_BUBBLEWRAP_SANDBOX=ON \
 
 %ninja_build -j $max_link_jobs
 

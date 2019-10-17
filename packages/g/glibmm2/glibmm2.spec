@@ -1,7 +1,7 @@
 #
 # spec file for package glibmm2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,22 @@
 
 
 # Update baselibs.conf when changing this
-%define so_ver -2_60-1
+%define so_ver -2_62-1
 # Define a baseversion to ease updates
-%define base_ver 2.60
+%define base_ver 2.62
 # Define upstream name
 %define _name glibmm
+
 Name:           glibmm2
-Version:        2.59.1
+Version:        2.61.1
 Release:        0
 Summary:        C++ Interface for Glib
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.gtkmm.org/
-Source0:        http://download.gnome.org/sources/glibmm/2.59/%{_name}-%{version}.tar.xz
+Source0:        http://download.gnome.org/sources/glibmm/2.61/%{_name}-%{version}.tar.xz
 Source99:       baselibs.conf
+
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -48,8 +50,6 @@ C++ and makes it possible for gtkmm to wrap GObject-based APIs.
 %package -n libglibmm%{so_ver}
 Summary:        C++ Interface for Glib
 Group:          System/Libraries
-Provides:       glibmm2 = %{version}
-Obsoletes:      glibmm2 < %{version}
 
 %description -n libglibmm%{so_ver}
 Glibmm is the official C++ interface for the popular cross-platform

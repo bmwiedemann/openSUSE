@@ -1663,4 +1663,12 @@ WANTED for 13.1 (forwarded request 202421 from RBrownCCB)</comment>
     <comment></comment>
     <requestid>728230</requestid>
   </revision>
+  <revision rev="216" vrev="1">
+    <srcmd5>c1ca4d19396daa135bbd252aa4c647b4</srcmd5>
+    <version>2.62.1</version>
+    <time>1571309929</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736521</requestid>
+  </revision>
 </revisionlist>

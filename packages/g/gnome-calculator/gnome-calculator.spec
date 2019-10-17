@@ -16,14 +16,16 @@
 #
 
 
+%define sover 1-0_0_0
+
 Name:           gnome-calculator
-Version:        3.32.2
+Version:        3.34.1
 Release:        0
 Summary:        A GNOME Calculator Application
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://wiki.gnome.org/Apps/Calculator
-Source0:        https://download.gnome.org/sources/gnome-calculator/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-calculator/3.34/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  meson
@@ -33,6 +35,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 BuildRequires:  vala
 BuildRequires:  yelp-tools
+BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.40
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40
 BuildRequires:  pkgconfig(gmodule-export-2.0)
@@ -55,6 +58,23 @@ Supplements:    packageand(gnome-shell:%{name})
 This package contains a search provider to enable GNOME Shell to get
 search results from GNOME Calculator.
 
+%package -n libgcalc-%{sover}
+Summary:        Shared library for %{name}
+Group:          System/Libraries
+
+%description -n libgcalc-%{sover}
+This package contains the shared library for %{name}.
+
+%package devel
+Summary:        Development files for %{name}
+Group:          Development/Libraries/GNOME
+Requires:       %{name} = %{version}
+Requires:       libgcalc-%{sover} = %{version}
+
+%description devel
+The %{name}-devel package contains libraries and header files for
+developing applications that use %{name}.
+
 %lang_package
 
 %prep
@@ -72,6 +92,9 @@ translation-update-upstream
 
 %check
 %meson_test
+
+%post -n libgcalc-%{sover} -p /sbin/ldconfig
+%postun -n libgcalc-%{sover} -p /sbin/ldconfig
 
 %files
 %license COPYING
@@ -92,6 +115,22 @@ translation-update-upstream
 %dir %{_datadir}/gnome-shell/search-providers
 %{_datadir}/gnome-shell/search-providers/org.gnome.Calculator-search-provider.ini
 %{_libexecdir}/gnome-calculator-search-provider
+
+%files -n libgcalc-%{sover}
+%{_libdir}/libgcalc-1.so.*
+
+%files devel
+%dir %{_includedir}/gcalc-1
+%dir %{_includedir}/gcalc-1/gcalc
+%{_includedir}/gcalc-1/gcalc/gcalc.h
+%{_libdir}/libgcalc-1.so
+%{_libdir}/pkgconfig/gcalc-1.pc
+%dir %{_datadir}/gir-1.0
+%{_datadir}/gir-1.0/GCalc-1.gir
+%dir %{_datadir}/vala
+%dir %{_datadir}/vala/vapi
+%{_datadir}/vala/vapi/gcalc-1.deps
+%{_datadir}/vala/vapi/gcalc-1.vapi
 
 %files lang -f %{name}.lang
 

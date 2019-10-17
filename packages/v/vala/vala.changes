@@ -1,4 +1,243 @@
 -------------------------------------------------------------------
+Wed Oct  9 12:16:02 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.46.3:
+  + Various improvements and bug fixes:
+    - codegen:
+      . Accept children after generating type specific declarations
+      . Preserve full access to delegate variables and its
+        target/destroy cvalues
+      . Initialize delegate temp-var which is assigned by property
+        getter
+      . Silence warning about copying if delegate doesn't carry its
+        target
+      . Use gtype-boxed API for structs with "g_boxed_free"
+        attribute
+    - ccode: Implicitly register declaration for added
+      CCodeFunction
+    - vala: Fix compatible/disposable check between structs and
+      their subtypes
+    - vala: Don't issue a warning for non-public struct fields in
+      bindings
+    - girparser: Add required copy/free attributes for gtype-boxed
+      structs and regenerate GIR-based bindings to pick up
+      copy/free attributes
+    - docs: Mention requirement of autoconf-archive as
+      build-dependency
+    - vapi: Perform syntax and semantic check for all bindings on
+      "make check"
+  + Bindings:
+    - avahi-client: Fix "use of possibly unassigned parameter"
+      warnings
+    - glib-2.0: Set default_value attribute for GLib.pointer
+    - gnutls: Fix "use of possibly unassigned parameter" warnings
+    - tokyocabinet: Fix deprecation warnings
+    - xcb: Fix "missing return statement at end of subroutine body"
+      errors
+
+-------------------------------------------------------------------
+Mon Sep 30 08:37:49 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.46.2:
+  + Various improvements and bug fixes:
+    - vala:
+      . Report dedicated error message for params-array parameter
+        mismatch.
+      . Output "params" qualifier of parameters.
+      . Allow to override virtual interface implementations.
+      . Perform stricter compatibility check for delegates.
+    - codegen: Directly use "memmove()" while g_memmove() is
+      deprecated.
+    - valadoc: Explicitly pass --pkg libgvc.
+    - tests: Add more tests to increase coverage.
+  + Bindings:
+    - gio-unix-2.0: Fix DesktopAppInfo.get_string(),
+      UnixFDMessage.steal_fds().
+    - glib-2.0: DateTime.from_iso8601() can take a null TimeZone.
+    - gobject-2.0: Some cherry-picking from GIR generated binding.
+    - gstreamer: Update from 1.17.0+ git master.
+    - gtk4: Update to 3.96.0+bcea9652.
+    - gtk4: Constructors of Gtk.MediaFile needs to be static
+      functions.
+    - sqlite3: Fix use of possibly unassigned parameter `errmsg'.
+
+-------------------------------------------------------------------
+Thu Sep 19 18:52:03 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.46.1:
+  + Regression and bug fixes:
+    - vala: Run FlowAnalyzer on all given source-files.
+    - valadoc: Explicitly pass --pkg libvala@PACKAGE_SUFFIX@ as for
+      doclets/tests.
+  + Bindings:
+    - gio-unix-2.0: Add UnixMountEntry.get_root_path() since 2.60.
+    - gstreamer: Update from 1.17.0+ git master.
+    - gtk4: Update to 3.96.0+97231ca2.
+    - gtk+-3.0: Ownership mismatch of ColorButton.rgba
+      property-accessor.
+    - vapi: Update GIR-based bindings.
+
+-------------------------------------------------------------------
+Thu Sep 19 18:52:02 UTC 2019 - mgorse@suse.com
+
+- Update to version 0.46.0:
+  + Highlights:
+    - Add boolean CodeContext.keep_going and corresponding
+      compiler option.
+  + Various improvements and bug fixes:
+    - vala:
+      . Move find_parent_type_symbol/get_this_type() to
+        SemanticAnalyzer
+      . Exclude nullable simple-type structs from gobject-property
+        support.
+      . Reject unary operations on nullable
+        integer/floating/boolean type.
+    - codegen:
+      . Don't append unreachable clean-up section of Block.
+      . Don't cause double-free due append_local_free() in
+        uncaught-errors.
+      . Don't unconditionally add/return internal "result" variable
+    - codewriter: Write "weak" modifier for properties.
+    - girparser: Improve evaluation of instance-parameter
+      information.
+  + Regenerate GIR-based bindings to pick up out/ref
+    instance-parameters.
+    - girparser/gidlparser: "value_owned = true" by default for
+      property types.
+    - libvaladoc: Don't traverse into close circles with parent.
+    - genie: Creation methods should not be static.
+  + Bindings:
+    - glib-2.0: Fix MutexLocker binding.
+    - glib-2.0: Add missing "DestroysInstance" attributes to
+      Mutex/Locker API.
+    - glib-2.0: Use 'GStatBuf' as ctype for 'Stat'.
+    - glib-2.0: Add new symbols from 2.62.
+    - gio-2.0: Drop metadata for NativeSocketAddress.
+    - gstreamer: Update from 1.17.0+ git master.
+    - gtk4: Regenerate to pick up DestroyInstance attributes.
+    - json-glib-1.0: Change abstract methods of Serializable to
+      virtual.
+    - libsoup-2.4: soup_auth_new is not a constructor but a
+      factory method.
+    - vapi: Update GIR-based bindings.
+
+-------------------------------------------------------------------
+Thu Sep 19 18:52:01 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.45.91:
+  + Various improvements and bug fixes:
+    - vala: Init formal_target_type of built
+      ArrayCreationExpression from InitializerList.
+    - vala: Add missing closing brace/bracket in to_string() of
+      ArrayCreationExpression and InitializerList.
+  + Bindings:
+    - cairo: Add 1.16 symbols.
+    - linux: Add more Input and update UserspaceInput bindings.
+    - sqlite3: Bind sqlite3_expanded_sql() and
+      sqlite3_normalised_sql().
+  + Changes in version 0.45.90:
+  + Various improvements and bug fixes:
+    - vala:
+      . Support static methods in error-domains.
+    - codegen:
+      . Move private type-struct to type-definition section.
+    - valadoc: Install icons and doclets to API dependent folders.
+    - Bindings:
+      . glib-2.0: Add new symbols and deprecations from 2.62.
+      . glib-2.0: Add MappedFile.from_fd constructor.
+      . gstreamer: Update from 1.17.0+ git master.
+      . posix: . Add *at() calls and related constants.
+      . vapi: Update GIR-based bindings
+  + Changes in version 0.45.3:
+  + Various improvements and bug fixes:
+    - vala: Add Symbol.is_extern and use/set is accordingly.
+    - codegen:
+      . Don't write declaration of extern symbols with given
+        header.
+    - Bindings:
+      . glib-2.0: Add new symbols from 2.62.
+      . gstreamer: Update from 1.17.0+ git master.
+      . vapi: Update GIR-based bindings.
+  + Changes in version 0.45.2:
+  + Various improvements and bug fixes:
+    - genie: Drop unused "writeonly" token
+    - genie: Make 'self' match its TokenType name
+    - Bindings:
+      . gmodule-2.0: Build from GIR.
+      . glib-2.0: Add Unicode 12.0 symbols.
+      . gstreamer: Update from 1.17.0+ git master.
+      . webkit2gtk-4.0: Update to 2.25.1.
+      . vapi: Update GIR-based bindings.
+  + Changes in version 0.45.1:
+  + Highlights:
+    - Require and target GLib >= 2.48.
+    - Add support for --target-glib=auto.
+    - Report error for public creation methods of abstract classes.
+    - Report error for yield statements without async context.
+    - Write "Source" attribute in fast-vapi mode.
+    - Support GObject properties with nullable GType-based struct
+      type.
+    - valadoc: Drop obsolete "Driver" API.
+  + Various improvements and bug fixes:
+    - Bindings:
+      . Remove vte, vte-2.90 bindings.
+      . Rename graphene-1.0 to graphene-gobject-1.0.
+      . gstreamer: Update from 1.17.0+ git master.
+      . gtk4: Update to 3.96.0+322507f2.
+      . vapi: Update GIR-based bindings.
+- Up glib2 requirement.
+- Update vala_version, vala_libversion, and vala_priority.
+- Adjust doclets directory in files.
+
+-------------------------------------------------------------------
+Thu Sep 19 18:52:00 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.44.8:
+  + Various improvements and bug fixes:
+    - vala:
+      . Support static methods in error-domains.
+      . vala: Init formal_target_type of built
+        ArrayCreationExpression from InitializerList.
+      . Add missing closing brace/bracket in to_string() of
+        ArrayCreationExpression and InitializerList.
+      . Reject unary operations on nullable
+        integer/floating/boolean type.
+      . Run FlowAnalyzer on all given source-files.
+    - codegen:
+      . Don't append unreachable clean-up section of Block.
+      . Don't cause double-free due append_local_free() in
+        uncaught-errors.
+      . Don't unconditionally add/return internal "result"
+        variable.
+    - codewriter: Write "weak" modifier for properties
+    - girparser/gidlparser: "value_owned = true" by default for
+      property types.
+    - libvaladoc: Don't traverse into close circles with parent.
+    - genie: Creation methods should not be static.
+    - valadoc: Explicitly pass --pkg libvala@PACKAGE_SUFFIX@ as for
+      doclets/tests.
+  + Bindings:
+    - cairo: Add 1.16 symbols.
+    - glib-2.0: Fix MutexLocker binding.
+    - glib-2.0: Add missing "DestroysInstance" attributes to
+      Mutex/Locker API.
+    - glib-2.0: Use 'GStatBuf' as ctype for 'Stat'.
+    - glib-2.0: DateTime.from_iso8601() can take a null TimeZone.
+    - gio-2.0: Drop metadata for NativeSocketAddress.
+    - gio-unix-2.0: Add UnixMountEntry.get_root_path() since 2.60.
+    - gtk4: Sync from 0.46 branch.
+    - json-glib-1.0: Change abstract methods of Serializable to
+      virtual.
+    - libsoup-2.4: soup_auth_new is not a constructor but a factory
+      method.
+    - linux: Add more Input and update UserspaceInput bindings.
+    - posix: Add *at() calls and related constants.
+    - sqlite3: Bind sqlite3_expanded_sql() and
+      sqlite3_normalised_sql().
+    - sqlite3: Fix use of possibly unassigned parameter `errmsg'.
+    - webkit2gtk-4.0: Update to 2.26.0.
+
+-------------------------------------------------------------------
 Mon Aug  5 09:03:37 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.44.7:

@@ -18,13 +18,13 @@
 
 
 Name:           gnome-logs
-Version:        3.32.1
+Version:        3.34.0
 Release:        0
 Summary:        GNOME System Log Viewer
 License:        GPL-3.0-or-later
 Group:          System/X11/Utilities
 URL:            https://wiki.gnome.org/Apps/Logs
-Source0:        https://download.gnome.org/sources/gnome-logs/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-logs/3.34/%{name}-%{version}.tar.xz
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
@@ -52,7 +52,6 @@ A utility for viewing detailed event logs for the system.
 
 %build
 %meson \
-	-Dtests=false \
 	-Dman=true \
 	%{nil}
 %meson_build
@@ -65,7 +64,7 @@ A utility for viewing detailed event logs for the system.
 
 %files
 %license COPYING
-%doc ABOUT-NLS AUTHORS ChangeLog NEWS README
+%doc AUTHORS NEWS README
 %doc %{_datadir}/help/C/gnome-logs/
 %{_bindir}/%{name}
 %{_datadir}/metainfo/org.gnome.Logs.appdata.xml

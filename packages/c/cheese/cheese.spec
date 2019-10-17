@@ -18,19 +18,21 @@
 
 %define lib_major 8
 %define lib_gtk_major 25
+
 Name:           cheese
-Version:        3.32.1
+Version:        3.34.0
 Release:        0
 Summary:        Webcam Booth for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://wiki.gnome.org/Apps/Cheese
-Source0:        https://download.gnome.org/sources/cheese/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/cheese/3.34/%{name}-%{version}.tar.xz
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
-BuildRequires:  intltool >= 0.50.0
+BuildRequires:  gtk-doc
+BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
@@ -124,16 +126,14 @@ with fun graphical effects.
 
 %prep
 %autosetup -p1
-translation-update-upstream
+translation-update-upstream po %{name}
 
 %build
-%configure \
-	--disable-static \
-	--disable-scrollkeeper
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name} %{?no_lang_C}
 %suse_update_desktop_file org.gnome.Cheese
@@ -149,8 +149,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %doc AUTHORS README ChangeLog
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/cheese
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/org.gnome.Cheese.appdata.xml
+%dir %{_datadir}/metainfo
+%{_datadir}/metainfo/org.gnome.Cheese.appdata.xml
 %{_datadir}/applications/org.gnome.Cheese.desktop
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Cheese*.*
 %{_mandir}/man1/cheese.1%{?ext_man}
