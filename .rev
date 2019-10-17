@@ -510,4 +510,12 @@ a newer version not fitting</comment>
     <comment></comment>
     <requestid>727210</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>e1acd4f28a5b76a3dab074169126cfdd</srcmd5>
+    <version>2.62.1</version>
+    <time>1571309918</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736520</requestid>
+  </revision>
 </revisionlist>
