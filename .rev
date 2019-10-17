@@ -1655,4 +1655,28 @@
    * see Changes for more details</comment>
     <requestid>720567</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>3e2de23d5f02c794f67280da9c74d8e1</srcmd5>
+    <version>5.03</version>
+    <time>1571307427</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 5.03
+  * New and rewritten pages
+    pidfd_open.2
+    pidfd_send_signal.2
+    pivot_root.2
+    ipc_namespaces.7
+    uts_namespaces.7
+  * Newly documented interfaces in existing pages
+    clone.2
+        Document CLONE_PIDFD
+    fanotify_mark.2
+        Document FAN_MOVE_SELF
+    ptrace.2
+        Document PTRACE_GET_SYSCALL_INFO
+    regex.3
+        Document REG_STARTEND
+  * see Changes for other changes</comment>
+    <requestid>738175</requestid>
+  </revision>
 </revisionlist>
