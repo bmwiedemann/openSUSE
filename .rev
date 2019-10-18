@@ -85,4 +85,12 @@
     <comment>trivial cosmetic change in comments</comment>
     <requestid>643346</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6aa1a3cc5b43194e77d36aed2b9f4452</srcmd5>
+    <version>0.9.6</version>
+    <time>1571402020</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>737190</requestid>
+  </revision>
 </revisionlist>
