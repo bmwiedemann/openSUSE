@@ -19,7 +19,7 @@
 %global pkg_name constraints
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.11.1
+Version:        0.11.2
 Release:        0
 Summary:        Constraint manipulation
 License:        BSD-2-Clause
@@ -35,6 +35,7 @@ BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-semigroups-devel
 BuildRequires:  ghc-transformers-compat-devel
 BuildRequires:  ghc-transformers-devel
+BuildRequires:  ghc-type-equality-devel
 %if %{with tests}
 BuildRequires:  ghc-hspec-devel
 %endif
