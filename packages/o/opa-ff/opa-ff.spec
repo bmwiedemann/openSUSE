@@ -1,7 +1,7 @@
 #
 # spec file for package opa-ff
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,11 +12,11 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define git_ver .0.201.0.cb934204ad37
+%define git_ver .1.1.0.73b52d17053f
 %define opamgt_major 0
 %define opasadb_major 1_0_0
 
@@ -24,7 +24,7 @@
 %define opasysconfdir %{_sysconfdir}/opa/
 
 Name:           opa-ff
-Version:        10.8.0
+Version:        10.9.3
 Release:        0
 Summary:        Intel Omni-Path basic tools and libraries for fabric managment
 License:        BSD-3-Clause OR GPL-2.0-only
@@ -34,8 +34,6 @@ Source0:        %{name}-%{version}%{git_ver}.tar.gz
 Source1:        opa-ff.rpmlintrc
 Patch1:         opa-ff-add-shebang-for-exp-files.patch
 Patch2:         opa-ff-suse-build-fixes.patch
-Patch3:         reproducible.patch
-Patch4:         reproduciblecpu.patch
 BuildRequires:  gcc-c++
 BuildRequires:  infiniband-diags-devel
 BuildRequires:  libexpat-devel
@@ -65,6 +63,7 @@ Contains basic tools for fabric managment necessary on all compute nodes.
 %package -n opa-fastfabric
 Summary:        OmniPath management level tools and scripts
 Group:          Productivity/Networking/System
+Requires:       cron
 Requires:       opa-basic-tools
 %if 0%{?rhel}
 Requires:       atlas
@@ -78,7 +77,7 @@ Summary:        OmniPath Subnet Administrator database library
 Group:          System/Libraries
 
 %description -n libopasadb%{opasadb_major}
-This package contains the library necessary for opa-adress-resolution.
+This package contains the library necessary for opa-address-resolution.
 
 %package -n opa-address-resolution
 Summary:        OmniPath Address Resolution manager
@@ -111,7 +110,7 @@ This package contains the library necessary to build applications that interface
 %package -n libopamgt-devel
 Summary:        Omni-Path library development headers
 Group:          Development/Libraries/C and C++
-Requires:       libopamgt%{opamgt_major}
+Requires:       libopamgt%{opamgt_major} = %{version}
 
 %description -n libopamgt-devel
 This package contains the necessary headers for opamgt development.
@@ -128,11 +127,9 @@ Tools for parsing information from provided snapshot files and issuing packets t
 %setup -q -n  %{name}-%{version}%{git_ver}
 %patch1
 %patch2
-%patch3 -p1
-%patch4 -p1
 
 %build
-export RPM_OPT_FLAGS
+export RPM_OPT_FLAGS="$RPM_OPT_FLAGS -Wno-address-of-packed-member"
 if [ -d OpenIb_Host ]
 then
         cd OpenIb_Host && ./ff_build.sh %{_builddir} $FF_BUILD_ARGS
@@ -158,7 +155,7 @@ mkdir -p %{buildroot}%{_mandir}/man1
 mkdir -p %{buildroot}%{_mandir}/man8
 mkdir -p %{buildroot}%{_sysconfdir}/sysconfig
 mkdir -p %{buildroot}%{_sysconfdir}/sysconfig/opa
-
+mkdir -p  %{buildroot}%{_sysconfdir}/cron.daily/
 #Binaries and scripts installing (basic tools)
 #cd builtbin.OPENIB_FF.release
 cd $(cat %{_builddir}/RELEASE_PATH)
@@ -193,7 +190,10 @@ cd ../etc
 cp -t %{buildroot}/%{pseudo_opt}fm_tools/ ${ff_tools_fm}
 ln -s %{pseudo_opt}/fm_tools/config_check %{buildroot}%{_sbindir}/opafmconfigcheck
 ln -s %{pseudo_opt}/fm_tools/config_diff %{buildroot}%{_sbindir}/opafmconfigdiff
-
+cd cron.d
+# We do not want there cron.d stuff. Directly link the proper bin in cron.daily
+ln -s /%{pseudo_opt}tools/opacablehealthcron %{buildroot}%{_sysconfdir}/cron.daily/opa-cablehealth
+cd ..
 cd ../fastfabric/samples
 cp -t %{buildroot}%{pseudo_opt}samples ${ff_iba_samples} ${basic_samples}
 cd ..
@@ -215,7 +215,7 @@ cd ..
 
 #Config files
 cd ../config
-cp -t %{buildroot}%{_sysconfdir}/rdma dsap.conf
+cp -t %{buildroot}%{_sysconfdir}/rdma dsap.conf op_path_rec.conf opasadb.xml
 cp -t %{buildroot}/%{opasysconfdir} opamon.conf opamon.si.conf
 
 #Libraries installing
@@ -328,7 +328,8 @@ done
 %dir %{pseudo_opt}tools/
 %dir %{opasysconfdir}
 
-%doc README LICENSE
+%doc README
+%license LICENSE
 
 %files -n opa-fastfabric -f %{_builddir}/ff_file.list
 %defattr(-,root,root,0755)
@@ -350,6 +351,8 @@ done
 %config(noreplace) %{opasysconfdir}/hosts
 %config(noreplace) %{opasysconfdir}/ports
 %config(noreplace) %{opasysconfdir}/switches
+%dir %{_sysconfdir}/cron.daily
+%config(noreplace) %{_sysconfdir}/cron.daily/opa-cablehealth
 %{opasysconfdir}/opamon.si.conf
 # Replace opamon.si.conf, as it's a template config file.
 %{pseudo_opt}tools/osid_wrapper
@@ -374,6 +377,8 @@ done
 %{_mandir}/man1/opa_osd_perf.1*
 %{_mandir}/man1/opa_osd_query.1*
 %config(noreplace) %{_sysconfdir}/rdma/dsap.conf
+%config(noreplace) %{_sysconfdir}/rdma/op_path_rec.conf
+%config %{_sysconfdir}/rdma/opasadb.xml
 
 %files -n opa-address-resolution-devel
 %{_includedir}/infiniband
@@ -393,6 +398,7 @@ done
 %dir %{pseudo_opt}
 %dir %{pseudo_opt}tools/
 
-%doc README LICENSE
+%doc README
+%license LICENSE
 
 %changelog

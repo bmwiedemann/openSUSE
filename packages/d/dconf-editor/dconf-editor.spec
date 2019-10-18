@@ -17,13 +17,13 @@
 
 
 Name:           dconf-editor
-Version:        3.32.0
+Version:        3.34.2
 Release:        0
 Summary:        Graphical editor for the dconf key-based configuration system
 License:        GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/DconfEditor
-Source0:        https://download.gnome.org/sources/dconf-editor/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/dconf-editor/3.34/%{name}-%{version}.tar.xz
 
 BuildRequires:  appstream-glib-devel
 BuildRequires:  meson

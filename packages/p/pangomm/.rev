@@ -301,4 +301,12 @@
     <comment></comment>
     <requestid>657853</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>fba84bdb1437f553af4bccdc02ffc9c4</srcmd5>
+    <version>2.43.1</version>
+    <time>1571401975</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736599</requestid>
+  </revision>
 </revisionlist>

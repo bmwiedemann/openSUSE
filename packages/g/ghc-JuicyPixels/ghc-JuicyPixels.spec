@@ -18,7 +18,7 @@
 
 %global pkg_name JuicyPixels
 Name:           ghc-%{pkg_name}
-Version:        3.3.3.1
+Version:        3.3.4
 Release:        0
 Summary:        Picture loading/serialization (in png, jpeg, bitmap, gif, tga, tiff and radiance)
 License:        BSD-3-Clause

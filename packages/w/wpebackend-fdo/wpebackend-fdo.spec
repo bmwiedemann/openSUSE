@@ -26,6 +26,8 @@ License:        BSD-2-Clause
 URL:            https://github.com/Igalia/WPEBackend-fdo
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM memset-prototype.patch mgorse@suse.com -- fix usage of undeclared std::memset() function
+Patch0:         memset-prototype.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  cmake

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 01 10:38:47 UTC 2019 - dimstar@opensuse.org
+
+- Update to version 0.0.1+20190326:
+  + Updated translations.
+- Drop tracker-miner-rss Requires: the RSS miner was never reliable
+  and has been dropped from tracker.
+
+-------------------------------------------------------------------
 Fri Feb 01 20:28:36 UTC 2019 - bjorn.lie@gmail.com
 
 - Update to version 0.0.1+20190129:

@@ -1,0 +1,66 @@
+From 36a3b20a89f3fbed5fa38254883a12ba9486451b Mon Sep 17 00:00:00 2001
+From: Kjell Ahlstedt <kjellahlstedt@gmail.com>
+Date: Tue, 19 Mar 2019 14:59:39 +0100
+Subject: [PATCH] Use glibmm-2.62 instead of glibmm-2.60
+
+We have changed the ABI name in glibmm.
+---
+ MSVC_NMake/config-msvc.mak | 2 +-
+ configure.ac               | 6 +++---
+ tools/Makefile.am          | 2 +-
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/MSVC_NMake/config-msvc.mak b/MSVC_NMake/config-msvc.mak
+index df30385..4dee48e 100644
+--- a/MSVC_NMake/config-msvc.mak
++++ b/MSVC_NMake/config-msvc.mak
+@@ -13,7 +13,7 @@ GLIB_API_VERSION = 2.0
+ LIBSIGC_MAJOR_VERSION = 3
+ LIBSIGC_MINOR_VERSION = 0
+ GLIBMM_MAJOR_VERSION = 2
+-GLIBMM_MINOR_VERSION = 60
++GLIBMM_MINOR_VERSION = 62
+ CAIROMM_MAJOR_VERSION = 1
+ CAIROMM_MINOR_VERSION = 16
+ 
+diff --git a/configure.ac b/configure.ac
+index 9a1cf50..9ae804a 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -49,17 +49,17 @@ MM_AX_CXX_COMPILE_STDCXX([17], [noext], [mandatory])
+ AC_DISABLE_STATIC
+ LT_INIT([win32-dll])
+ 
+-AC_SUBST([PANGOMM_MODULES], ['glibmm-2.60 >= 2.59.1 cairomm-1.16 >= 1.15.1 pangocairo >= 1.41.0'])
++AC_SUBST([PANGOMM_MODULES], ['glibmm-2.62 >= 2.61.1 cairomm-1.16 >= 1.15.1 pangocairo >= 1.41.0'])
+ PKG_CHECK_MODULES([PANGOMM], [$PANGOMM_MODULES])
+ 
+ MM_PKG_CONFIG_SUBST([GTHREAD_CFLAGS], [--cflags-only-other gthread-2.0])
+-MM_PKG_CONFIG_SUBST([GMMPROC_DIR], [--variable=gmmprocdir glibmm-2.60])
++MM_PKG_CONFIG_SUBST([GMMPROC_DIR], [--variable=gmmprocdir glibmm-2.62])
+ 
+ MM_ARG_DISABLE_DEPRECATED_API
+ MM_ARG_ENABLE_DOCUMENTATION
+ MM_ARG_WITH_TAGFILE_DOC([libstdc++.tag], [mm-common-libstdc++])
+ MM_ARG_WITH_TAGFILE_DOC([libsigc++-3.0.tag], [sigc++-3.0])
+-MM_ARG_WITH_TAGFILE_DOC([glibmm-2.60.tag], [glibmm-2.60])
++MM_ARG_WITH_TAGFILE_DOC([glibmm-2.62.tag], [glibmm-2.62])
+ MM_ARG_WITH_TAGFILE_DOC([cairomm-1.16.tag], [cairomm-1.16])
+ 
+ AC_LANG([C++])
+diff --git a/tools/Makefile.am b/tools/Makefile.am
+index 3282371..f6fbe7b 100644
+--- a/tools/Makefile.am
++++ b/tools/Makefile.am
+@@ -30,7 +30,7 @@ dist_noinst_DATA = README
+ noinst_PROGRAMS  = extra_defs_gen/generate_extra_defs
+ 
+ extra_defs_gen_generate_extra_defs_SOURCES = extra_defs_gen/generate_defs_pango.cc
+-extra_defs_gen_generate_extra_defs_LDADD   = $(PANGOMM_LIBS) -lglibmm_generate_extra_defs-2.60
++extra_defs_gen_generate_extra_defs_LDADD   = $(PANGOMM_LIBS) -lglibmm_generate_extra_defs-2.62
+ extra_defs_gen_generate_extra_defs_LDFLAGS = -no-undefined -avoid-version
+ 
+ AM_CPPFLAGS = -I$(top_builddir) $(GTHREAD_CFLAGS) $(PANGOMM_CFLAGS)
+-- 
+2.22.0
+

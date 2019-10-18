@@ -136,4 +136,14 @@
     <comment>- Bump SOVER as needed. (missed during Aug 21 update)</comment>
     <requestid>729104</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>92bda86ef1de6a002d94a714e4d0cd9b</srcmd5>
+    <version>7.12.3352</version>
+    <time>1571401814</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop unused static libraries, functions of libOGLCompilerDLL and
+  libOSDependent are actually present in libglslang already.
+  [boo#1153950]</comment>
+    <requestid>738488</requestid>
+  </revision>
 </revisionlist>

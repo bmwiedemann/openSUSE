@@ -1,7 +1,7 @@
 #
 # spec file for package anjuta
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           anjuta
-Version:        3.28.0
+Version:        3.34.0
 Release:        0
 Summary:        Versatile Integrated Development Environment for GNOME
 License:        GPL-2.0-or-later
 Group:          Development/Tools/IDE
 URL:            https://wiki.gnome.org/Apps/Anjuta
-Source0:        http://download.gnome.org/sources/anjuta/3.28/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/anjuta/3.34/%{name}-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
 BuildRequires:  autogen
 BuildRequires:  binutils-devel

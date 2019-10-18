@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep 11 19:27:40 CDT 2019 - mgorse@suse.com
+
+- Update to version 0.18.0:
+  + Pixbufs:
+    - Add retro_pixbuf_set_aspect_ratio() for embedding aspect
+      ratio value to a GdkPixbuf.
+    - Add retro_pixbuf_get_aspect_ratio() for retrieving the value
+      set with retro_pixbuf_set_aspect_ratio().
+    - Deprecate x-dpi and y-dpi metadata options.
+  + RetroCoreView:
+    - Take pixbuf aspect ratio into account when drawing a
+      standalone pixbuf instead of using aspect ratio of the
+      current core.
+  + Fix build on Fedora 30.
+
+-------------------------------------------------------------------
 Mon Mar 11 09:31:07 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.16.1:

@@ -1,0 +1,35 @@
+From 73e2ba723c4e17021a7334152ec4438d12969248 Mon Sep 17 00:00:00 2001
+From: Adrian Perez de Castro <aperez@igalia.com>
+Date: Sat, 3 Aug 2019 00:45:39 +0300
+Subject: [PATCH] Fix usage of undeclared std::memset() function
+
+This adds the missing <cstring> inclusion and the std:: namespace prefix
+to the memset() invocation.
+---
+ src/view-backend-exportable-fdo.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/view-backend-exportable-fdo.cpp b/src/view-backend-exportable-fdo.cpp
+index bf44a16..63f0604 100644
+--- a/src/view-backend-exportable-fdo.cpp
++++ b/src/view-backend-exportable-fdo.cpp
+@@ -26,6 +26,7 @@
+ #include "view-backend-exportable-private.h"
+ #include "ws.h"
+ #include <cassert>
++#include <cstring>
+ 
+ namespace {
+ 
+@@ -50,7 +51,7 @@ public:
+         auto* attributes = &dmabuf_buffer->attributes;
+ 
+         struct wpe_view_backend_exportable_fdo_dmabuf_resource dmabuf_resource;
+-        memset(&dmabuf_resource, 0, sizeof(struct wpe_view_backend_exportable_fdo_dmabuf_resource));
++        std::memset(&dmabuf_resource, 0, sizeof(struct wpe_view_backend_exportable_fdo_dmabuf_resource));
+         dmabuf_resource.buffer_resource = dmabuf_buffer->buffer_resource;
+         dmabuf_resource.width = attributes->width;
+         dmabuf_resource.height = attributes->height;
+-- 
+2.23.0
+

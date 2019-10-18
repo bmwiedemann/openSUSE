@@ -1,4 +1,4 @@
-commit 39096d08575e62cf025a4fa2555b24ee5c19e23d
+commit 27eef417f53ce83fa313f1e7f668a56d2dd764e1
 Author: Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>
 Date:   Mon Aug 28 14:07:34 2017 +0200
 
@@ -7,10 +7,10 @@ Date:   Mon Aug 28 14:07:34 2017 +0200
     Signed-off-by: Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>
 
 diff --git MakeTools/funcs-ext.sh MakeTools/funcs-ext.sh
-index 56a85fd68afa..8c49f79bc6be 100755
+index 9aa4cd25e410..2f9689586caf 100755
 --- MakeTools/funcs-ext.sh
 +++ MakeTools/funcs-ext.sh
-@@ -710,31 +710,36 @@ function os_vendor()
+@@ -734,31 +734,36 @@ function os_vendor()
          # Apple Mac
          rval=apple
      else

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep  6 13:28:50 NZST 2019 - luke@ljones.dev
+
+- Update to version None:
+  + Add support for GameMode.
+  + Support for correctly identfying Flatpaks (specifically Steam).
+  + Add an EditorConfig file.
+  + Introduce the new Storage panel.
+  + Added/updated/fixed translations.
+
+-------------------------------------------------------------------
 Fri Mar 22 16:10:39 UTC 2019 - bjorn.lie@gmail.com
 
 - Update to version 3.32.0:

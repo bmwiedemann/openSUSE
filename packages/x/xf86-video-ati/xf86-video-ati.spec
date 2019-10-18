@@ -12,13 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define xserver_glamor 1
 Name:           xf86-video-ati
-Version:        19.0.1
+Version:        19.1.0
 Release:        0
 Summary:        ATI video driver for the Xorg X server
 License:        MIT

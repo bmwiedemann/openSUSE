@@ -17,13 +17,13 @@
 
 
 Name:           gnome-chess
-Version:        3.32.0
+Version:        3.34.0
 Release:        0
 Summary:        Chess Game for GNOME
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Board/Chess
 URL:            https://wiki.gnome.org/Apps/Chess
-Source0:        https://download.gnome.org/sources/gnome-chess/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-chess/3.34/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 # ITS Tool is needed because there are some XML formats that Gettext does not handle, at least not now (3.27.2).
@@ -38,10 +38,6 @@ BuildRequires:  pkgconfig(gmodule-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.19.0
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.32.0
 Requires:       chess_backend
-# After gnome 3.6, glchess was split out of gnome-games and runs under the name gnome-chess
-Obsoletes:      glchess < %{version}
-Obsoletes:      glchess-lang < %{version}
-Provides:       glchess = %{version}
 
 %description
 This is a game for playing the classic board game of chess, in which
@@ -52,7 +48,7 @@ in a window.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %meson

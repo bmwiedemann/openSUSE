@@ -18,7 +18,7 @@
 
 %global pkg_name ansi-terminal
 Name:           ghc-%{pkg_name}
-Version:        0.9.1
+Version:        0.10.1
 Release:        0
 Summary:        Simple ANSI terminal support, with Windows compatibility
 License:        BSD-3-Clause

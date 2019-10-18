@@ -20,13 +20,13 @@
 %define namever 0_14-0
 %define libver  0.14
 Name:           retro-gtk
-Version:        0.16.1
+Version:        0.18.0
 Release:        0
 Summary:        Toolkit to write Gtk+3-based frontends to libretro
 License:        GPL-3.0-only
 Group:          System/GUI/GNOME
 URL:            https://git.gnome.org/browse/retro-gtk
-Source0:        https://download.gnome.org/sources/retro-gtk/0.16/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/retro-gtk/0.18/%{name}-%{version}.tar.xz
 
 BuildRequires:  gobject-introspection-devel >= 0.6.7
 BuildRequires:  meson

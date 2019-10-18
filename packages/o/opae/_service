@@ -8,7 +8,7 @@
     <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@.%h</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
-    <param name="revision">c83632afa605c0051b15f7061136ef6bd167500a</param>
+    <param name="revision">4ec6dc67e7957bf7d1879fa2b3d7b56472d7c65b</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">opae*.tar</param>

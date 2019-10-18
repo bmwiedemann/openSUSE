@@ -17,30 +17,35 @@
 
 
 Name:           almanah
-Version:        0.11.1
+Version:        0.12.0
 Release:        0
-# FIXME: Remove -UE_CAL_DISABLE_DEPRECATED from CFLAGS (bgo#698259)
 Summary:        GTK+ application to allow you to keep a diary of your life
 License:        GPL-3.0+
 Group:          Productivity/Office/Other
-Url:            https://live.gnome.org/Almanah_Diary
-Source:         http://download.gnome.org/sources/almanah/0.11/%{name}-%{version}.tar.xz
+URL:            https://gitlab.gnome.org/GNOME/almanah
+Source:         https://download.gnome.org/sources/almanah/0.12/%{name}-%{version}.tar.xz
+
 BuildRequires:  gpgme-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
-BuildRequires:  sqlite3-devel
+BuildRequires:  meson
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(cryptui-0.0)
+BuildRequires:  pkgconfig(gcr-base-3)
+BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gmodule-2.0)
+BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.5.6
+BuildRequires:  pkgconfig(gtksourceview-3.0)
 BuildRequires:  pkgconfig(gtkspell3-3.0)
-BuildRequires:  pkgconfig(libecal-1.2) >= 3.5.91
+BuildRequires:  pkgconfig(libecal-2.0)
 BuildRequires:  pkgconfig(libedataserver-1.2)
+BuildRequires:  pkgconfig(sqlite3)
 Requires:       evolution-data-server
-Recommends:     %{name}-lang
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%glib2_gsettings_schema_requires
 
 %description
 Almanah Diary is a small application to ease the management of an encrypted
@@ -52,37 +57,25 @@ diary entries using multiple events.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-export CFLAGS="%{optflags} -UE_CAL_DISABLE_DEPRECATED"
-%configure --enable-encryption
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-%make_install install_sh=$(pwd)/install-sh
+%meson_install
+
 %suse_update_desktop_file %{name} X-SuSE-DesktopUtility
 %find_lang %{name} %{?no_lang_C}
 
-%post
-%glib2_gsettings_schema_post
-%icon_theme_cache_post
-%desktop_database_post
-
-%postun
-%glib2_gsettings_schema_postun
-%icon_theme_cache_postun
-%desktop_database_postun
-
 %files
-%defattr(-,root,root)
-%doc AUTHORS COPYING NEWS README ChangeLog
+%doc AUTHORS COPYING NEWS README.md
 %{_bindir}/%{name}
-%{_datadir}/%{name}/
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/almanah.appdata.xml
+%dir %{_datadir}/metainfo
+%{_datadir}/metainfo/almanah.appdata.xml
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/*/actions/almanah-tags-symbolic.svg
+%{_datadir}/icons/hicolor/*/*/almanah-*.svg
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %dir %{_datadir}/GConf/
 %dir %{_datadir}/GConf/gsettings/

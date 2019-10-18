@@ -2,8 +2,8 @@
   <service mode="disabled" name="tar_scm">
     <param name="url">https://gitlab.gnome.org/GNOME/gnome-usage.git</param>
     <param name="scm">git</param>
-    <param name="revision">v3.32.0</param>
-    <param name="versionformat">3.32.0</param>
+    <param name="revision">refs/tags/v3.33.2</param>
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service mode="disabled" name="recompress">

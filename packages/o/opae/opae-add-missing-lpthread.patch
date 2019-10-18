@@ -1,25 +1,59 @@
-diff --git libopae/CMakeLists.txt libopae/CMakeLists.txt
-index 08fc9a4..667c7d8 100644
---- libopae/CMakeLists.txt
-+++ libopae/CMakeLists.txt
-@@ -64,6 +64,7 @@ add_dependencies(opae-c copy-common-opae-header-files)
- target_link_libraries(opae-c
-   m
-   safestr
-+  pthread
-   ${libjson-c_LIBRARIES}
-   ${libuuid_LIBRARIES})
+commit 7e7cf56316751109f06f7a44cda3f1adb97b7c9a
+Author: Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>
+Date:   Wed Sep 6 09:28:13 2017 +0200
+
+    opae add missing lpthread
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>
+
+diff --git libopae/plugins/ase/api/CMakeLists.txt libopae/plugins/ase/api/CMakeLists.txt
+index cd31c6bdeac0..a5efd78c1790 100644
+--- libopae/plugins/ase/api/CMakeLists.txt
++++ libopae/plugins/ase/api/CMakeLists.txt
+@@ -57,6 +57,8 @@ set(ASEAPI_SRC
  
-diff --git tools/c++utils/CMakeLists.txt tools/c++utils/CMakeLists.txt
-index 41f61ec..914cb7e 100644
---- tools/c++utils/CMakeLists.txt
-+++ tools/c++utils/CMakeLists.txt
-@@ -51,7 +51,7 @@ set_target_properties(opae-c++-utils PROPERTIES
+ add_library(ase SHARED ${ASEAPI_SRC})
+ target_link_libraries(ase
++  pthread
++  dl
+   ${libjson-c_LIBRARIES}
+   ${libuuid_LIBRARIES}
+   ${librt_LIBRARIES})
+diff --git tools/base/fpgad/api/CMakeLists.txt tools/base/fpgad/api/CMakeLists.txt
+index 054ca6411275..c775484248cc 100644
+--- tools/base/fpgad/api/CMakeLists.txt
++++ tools/base/fpgad/api/CMakeLists.txt
+@@ -57,6 +57,7 @@ set_target_properties(fpgad-api PROPERTIES
+   SOVERSION ${INTEL_FPGA_API_VER_MAJOR})
+ 
+ target_link_libraries(fpgad-api
++  safestr
+   ${CMAKE_THREAD_LIBS_INIT}
+   ${libjson-c_LIBRARIES})
+ 
+diff --git tools/extra/c++utils/CMakeLists.txt tools/extra/c++utils/CMakeLists.txt
+index 399d4f3e3792..190e8180b83d 100644
+--- tools/extra/c++utils/CMakeLists.txt
++++ tools/extra/c++utils/CMakeLists.txt
+@@ -45,7 +45,7 @@ set_target_properties(opae-c++-utils PROPERTIES
    VERSION ${INTEL_FPGA_API_VERSION}
    SOVERSION ${INTEL_FPGA_API_VER_MAJOR})
  
--target_link_libraries(opae-c++-utils ${CJSON_LIBRARY})
-+target_link_libraries(opae-c++-utils pthread ${CJSON_LIBRARY})
+-target_link_libraries(opae-c++-utils ${libjson-c_LIBRARIES})
++target_link_libraries(opae-c++-utils pthread ${libjson-c_LIBRARIES})
  
  install(TARGETS opae-c++-utils
-         LIBRARY DESTINATION lib
+     LIBRARY DESTINATION ${OPAE_LIB_INSTALL_DIR}
+diff --git tools/extra/fpgadiag/CMakeLists.txt tools/extra/fpgadiag/CMakeLists.txt
+index f0ef73578ab0..f84d8053f585 100644
+--- tools/extra/fpgadiag/CMakeLists.txt
++++ tools/extra/fpgadiag/CMakeLists.txt
+@@ -52,7 +52,7 @@ add_library(opae-c++-nlb SHARED nlb.h
+ 
+ set_install_rpath(opae-c++-nlb)
+ 
+-target_link_libraries(opae-c++-nlb opae-c opae-cxx-core pthread)
++target_link_libraries(opae-c++-nlb opae-c opae-cxx-core pthread opae-c++-utils)
+ 
+ set_target_properties(opae-c++-nlb PROPERTIES
+   VERSION ${INTEL_FPGA_API_VERSION}

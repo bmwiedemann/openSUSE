@@ -17,15 +17,14 @@
 
 
 Name:           gnome-calendar
-Version:        3.32.2
+Version:        3.34.2
 Release:        0
 Summary:        A calendar application for GNOME
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Organizers
 URL:            https://wiki.gnome.org/Design/Apps/Calendar
-Source0:        https://download.gnome.org/sources/gnome-calendar/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-calendar/3.34/%{name}-%{version}.tar.xz
 
-BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(geocode-glib-1.0) >= 3.23
@@ -35,12 +34,12 @@ BuildRequires:  pkgconfig(goa-1.0) >= 3.2.0
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.21.2
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.20
 BuildRequires:  pkgconfig(gweather-3.0) >= 3.27.2
-BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.26.1
-BuildRequires:  pkgconfig(libecal-1.2) >= 3.13.90
+BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.33.1
+BuildRequires:  pkgconfig(libecal-2.0) >= 3.33.2
 BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.17.1
 BuildRequires:  pkgconfig(libedataserverui-1.2) >= 3.17.1
 BuildRequires:  pkgconfig(libgeoclue-2.0) >= 2.4
-BuildRequires:  pkgconfig(libical) >= 1.0
+BuildRequires:  pkgconfig(libical) >= 3.0.5
 BuildRequires:  pkgconfig(libsoup-2.4)
 
 %description
@@ -64,7 +63,6 @@ search results from GNOME Calendar.
 %build
 %meson \
 	-Dtracing=false \
-	-Ddocumentation=true \
 	%{nil}
 %meson_build
 
@@ -87,8 +85,6 @@ search results from GNOME Calendar.
 %{_datadir}/glib-2.0/schemas/org.gnome.calendar.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.calendar.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/*.*
-%dir %{_datadir}/gtk-doc/html/%{name}
-%doc %{_datadir}/gtk-doc/html/%{name}/*.*
 
 %files -n gnome-shell-search-provider-gnome-calendar
 %dir %{_datadir}/gnome-shell

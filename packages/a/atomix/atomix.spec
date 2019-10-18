@@ -17,13 +17,13 @@
 
 
 Name:           atomix
-Version:        3.32.1
+Version:        3.34.0
 Release:        0
 Summary:        A puzzle game where you move atoms to build a molecule
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Other
 URL:            https://wiki.gnome.org/Apps/Atomix
-Source0:        https://download.gnome.org/sources/atomix/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/atomix/3.34/%{name}-%{version}.tar.xz
 
 BuildRequires:  meson
 BuildRequires:  pkgconfig

@@ -61,4 +61,12 @@
     <comment>spec-cleaner (forwarded request 581099 from dimstar)</comment>
     <requestid>582741</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6dace42e18d46188fc8e4b82d33c5510</srcmd5>
+    <version>2.0.2+97</version>
+    <time>1571401947</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736555</requestid>
+  </revision>
 </revisionlist>

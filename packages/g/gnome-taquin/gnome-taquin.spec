@@ -17,13 +17,13 @@
 
 
 Name:           gnome-taquin
-Version:        3.32.0
+Version:        3.34.1
 Release:        0
 Summary:        A computer version of the 15-puzzle and other sliding puzzles
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Board/Puzzle
 URL:            https://wiki.gnome.org/Apps/Taquin
-Source0:        https://download.gnome.org/sources/gnome-taquin/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-taquin/3.34/%{name}-%{version}.tar.xz
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
@@ -35,8 +35,8 @@ BuildRequires:  pkgconfig
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
+BuildRequires:  pkgconfig(gsound) >= 1.0.2
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.15.0
-BuildRequires:  pkgconfig(libcanberra-gtk3) >= 0.26
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.32.0
 
 %description

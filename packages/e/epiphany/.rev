@@ -1326,4 +1326,12 @@ MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme
     <comment>We never noticed that the internal pdf viewer was removed in last unstable round.... (forwarded request 729589 from iznogood)</comment>
     <requestid>729713</requestid>
   </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>8b83c7ae10ad85653af9137599ff7d07</srcmd5>
+    <version>3.34.1</version>
+    <time>1571401907</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736505</requestid>
+  </revision>
 </revisionlist>

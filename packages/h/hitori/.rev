@@ -174,4 +174,12 @@
   + Updated translations. (forwarded request 725278 from iznogood)</comment>
     <requestid>725538</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>76292a7dbc4ad772a9e68fe6cf237e2c</srcmd5>
+    <version>3.34.0</version>
+    <time>1571401973</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736584</requestid>
+  </revision>
 </revisionlist>

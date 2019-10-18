@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Sep 19 16:49:04 CST 2019 - alynx.zhou@suse.com
+
+- Update to version 3.91.1:
+  + Project: Redesign the main user interface by introducing a 
+    sidebar-based layout
+- Remove doc AUTHORS because it is removed in the tarball
+- Update spec beacuse docs dir changed
+
+-------------------------------------------------------------------
+Tue Sep 10 08:43:31 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop gtk3-schema requires: this dependency does not belong here.
+  it is GTK3's responsibility to pull this in.
+
+-------------------------------------------------------------------
+Sun Sep  8 00:01:34 UTC 2019 - Luke Jones <luke@ljones.dev>
+
+- Add Requires: gtk3-schema so that the correct colour picker
+  schema is used.
+
+-------------------------------------------------------------------
+Fri Sep  6 10:28:58 UTC 2019 - Luke Jones <luke@ljones.dev>
+
+- Add gnome-todo-eds-libecal-2.0.patch to enable building against
+  newer evolution-data-server.
+- Replace pkgconfig(libecal-1.2) with pkgconfig(libecal-2.0)
+  BuildRequires following above patch.
+- Remove gnome-todo-autoptr-fix.patch, conflicts with
+  gnome-todo-eds-libecal-2.0.patch
+
+-------------------------------------------------------------------
 Wed May 29 19:17:23 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add gnome-todo-autoptr-fix.patch: Fix build with new glib.

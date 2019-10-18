@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Oct  7 21:44:22 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 12 14:55:05 CST 2019 - qkzhu@suse.com
+
+- Update to version 3.34.1:
+  + Fix the appdata file.
+- Changes from version 3.34.0:
+  + New stable 3.34 release. No changes since last unstable release.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 30 15:52:36 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.33.91:
+  + Two small bugs fixed.
+  + Updated translations.
+- Changes from version 3.33.90:
+  + Only small changes.
+- Changes from version 3.33.4:
+  + Some updates of the DTD and the appdata fields; and just a
+    small change, that allows running multiple instances, for a
+    hacky use.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Mar 12 16:13:57 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.0:

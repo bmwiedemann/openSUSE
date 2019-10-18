@@ -1,7 +1,7 @@
 #
 # spec file for package gdl
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gdl
-Version:        3.28.0
+Version:        3.34.0
 Release:        0
 Summary:        Gnome Devtool Libraries
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            http://ftp.gnome.org/pub/GNOME/sources/gdl/3.18/
-Source:         http://download.gnome.org/sources/gdl/3.28/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/gdl/3.34/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk3-devel

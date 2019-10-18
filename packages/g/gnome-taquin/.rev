@@ -119,4 +119,12 @@
     <comment></comment>
     <requestid>689470</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>395235f856d6246161885dfc33176af3</srcmd5>
+    <version>3.34.1</version>
+    <time>1571401955</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736565</requestid>
+  </revision>
 </revisionlist>

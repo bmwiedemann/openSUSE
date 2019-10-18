@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Oct  7 17:24:01 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.12.0:
+  + Move encryption support to SQLiteVFS to improve performance and
+    reduce the chance of data loss from use of temporary files.
+  + Various GTK version and API updates.
+  + Migrated from GtkToolbar to GtkHeaderBar.
+  + Various AppData file updates.
+  + Support undo and redo.
+  + Port to Meson.
+  + Port to libecal-2.0.
+  + Bugs fixed:
+    - Meson build claims implicit function declaration warnings.
+    - build: Port to meson.
+    - docs: Port README to Markdown and update it.
+    - event-factories: Fix an incorrect string comparison.
+  + Updated translations.
+- Add meson BuildRequires and macros following upstreams port.
+- Replace pkgconfig(libecal-1.2) with pkgconfig(libecal-2.0)
+  BuildRequires.
+- Add pkgconfig(gtksourceview-3.0) and pkgconfig(gcr-base-3)
+  BuildRequires: New dependencies.
+- Add explicit pkgconfig(glib-2.0), pkgconfig(gmodule-2.0),
+  pkgconfig(gthread-2.0), pkgconfig(gio-2.0) and pkgconfig(sqlite3)
+  BuildRequires and drop sqlite3-devel BuildRequires: Align with
+  what meson checks for.
+- Drop almanah-lang Recommends: No longer needed.
+- Drop glib2_gsettings_schema_post(un), icon_theme_cache_post(un)
+  desktop_database_post(un) and glib2_gsettings_schema_requires
+  macros, no longer needed by any supported versions of openSUSE.
+
+-------------------------------------------------------------------
 Thu Sep 25 11:30:46 UTC 2014 - dimstar@opensuse.org
 
 - Update to version 0.11.1:

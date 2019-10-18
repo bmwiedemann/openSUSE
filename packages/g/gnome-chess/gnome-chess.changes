@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Sep  8 21:14:18 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.34.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  2 20:54:09 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.33.90:
+  + Fix build with latest vala.
+  + Updated translations.
+- Drop ancient glchess and glchess-lang Obsoletes as well as
+  glchess Provides: No longer needed.
+- Use autosetup macro.
+
+-------------------------------------------------------------------
 Mon Mar 11 15:54:38 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.0:

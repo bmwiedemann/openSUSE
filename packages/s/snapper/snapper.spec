@@ -22,7 +22,7 @@
 %endif
 
 Name:           snapper
-Version:        0.8.3
+Version:        0.8.5
 Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source:         snapper-%{version}.tar.bz2
@@ -120,7 +120,7 @@ install -D -m 644 data/sysconfig.snapper "%{buildroot}/etc/sysconfig/snapper"
 %{find_lang} snapper
 
 %check
-make check
+make check VERBOSE=1
 
 %pre
 %if 0%{?suse_version}

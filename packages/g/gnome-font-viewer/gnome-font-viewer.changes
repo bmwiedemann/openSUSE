@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Sep 15 09:26:27 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  3 19:48:19 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.33.90:
+  + Fix compiler warning.
+  + Translation updates.
+  + Changes in version 3.33.4:
+  + Add a keyboard shortcut to go Back.
+  + Improve appdata file.
+  + Fix font installation when filenames would collide.
+  + Display an error dialog when installation fails.
+  + Improve compatibility for fonts with non-unicode charmaps.
+  + Fix thumbnailing for font collection files.
+  + Add a Location row to the Info dialog.
+  + Port to GtkFlowBox.
+  + Translation updates.
+- Require meson >= 0.50.0.
+
+-------------------------------------------------------------------
 Fri Mar 15 12:35:12 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.0:

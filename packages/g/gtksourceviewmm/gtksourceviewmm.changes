@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Sep  6 11:46:42 NZST 2019 - luke@ljones.dev
+
+- Update to version 3.91.1:
+  + Adapt to new-style enum values.
+  + Use gtksourceview-4 instead of gtksourceview-3.0,
+    and change ABI from gtksourceviewmm-3.0 to gtksourceviewmm-4.0.
+  + StyleSchemeChooserWidget: Correct the underlying GType name.
+  + Completion:
+    - Remove get/set_draw_spaces().
+    - show(): Rename to start().
+  + tests:
+    - Remove Gtk::Container::show_all() calls.
+    - Avoid deprecated Gtk::HBox and Gtk::VBox.
+    - Use the libsigc++-3.0 syntax.
+  + Remove deprecated API.
+
+-------------------------------------------------------------------
 Mon Mar  5 15:27:29 UTC 2018 - jengelh@inai.de
 
 - Fix SRPM group. Update summaries.

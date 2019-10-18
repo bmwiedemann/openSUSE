@@ -18,7 +18,7 @@
 %global configver 0.7
 
 Name:           cloud-init
-Version:        19.1
+Version:        19.2
 Release:        0
 License:        GPL-3.0 and AGPL-3.0
 Summary:        Cloud node initialization tool
@@ -26,7 +26,6 @@ Url:            http://launchpad.net/cloud-init/
 Group:          System/Management
 Source0:        %{name}-%{version}.tar.gz
 Source1:        rsyslog-cloud-init.cfg
-
 
 # FIXME 
 # python2 disables SIGPIPE, causing broken pipe errors in shell scripts (bsc#903449)
@@ -42,15 +41,11 @@ Patch41:        cloud-init-static-net.patch
 Patch42:        cloud-init-ostack-metadat-dencode.patch
 # FIXME (lp#1812117)
 Patch43:        cloud-init-write-routes.patch
-# FIXME (lp#1817368)
+# FIXME (lp#1817368) expected in 19.3
 Patch47:        cloud-init-trigger-udev.patch
-# FIXME (lp#1669875) patch by mvoelker@launchpad
-Patch48:        cloud-init-detect-nova.diff
-# FIXME (lp#1821102)
-Patch49:        cloud-init-add-static-routes.diff
-# FIXME (lp#1843634)
+# FIXME (lp#1843634) expected in 19.3
 Patch50:        cloud-init-noresolv-merge-no-dns-data.diff
-# FIXME
+# FIXME expected in 19.3
 Patch51:        cloud-init-after-wicked.patch
 
 BuildRequires:  fdupes
@@ -195,8 +190,6 @@ Documentation and examples for cloud-init tools
 %patch42
 %patch43
 %patch47
-%patch48 -p1
-%patch49 -p1
 %patch50 -p1
 %patch51 -p1
 

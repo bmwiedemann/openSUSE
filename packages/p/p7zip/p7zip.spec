@@ -1,7 +1,7 @@
 #
 # spec file for package p7zip
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -39,8 +39,8 @@ Url:            http://p7zip.sourceforge.net/
 # rm -rf p7zip_${VERSION}_src_all.tar.bz2
 Source:         p7zip_%{version}_src_all-norar.tar.bz2
 # Debian gzip-like CLI wrapper for p7zip (the version shipped within the p7zip tarball is too old)
-Source1:        https://anonscm.debian.org/cgit/users/robert/p7zip.git/plain/debian/scripts/p7zip
-Source2:        https://anonscm.debian.org/cgit/users/robert/p7zip.git/plain/debian/p7zip.1
+Source1:        https://salsa.debian.org/debian/p7zip/raw/master/debian/scripts/p7zip
+Source2:        https://salsa.debian.org/debian/p7zip/raw/master/debian/p7zip.1
 Patch1:         CVE-2016-9296.patch
 # PATCH-FIX-SUSE bnc#1077978 kstreitova@suse.com -- adjust makefile not to use CPP/7zip/Compress/Rar* files
 Patch2:         p7zip_16.02_norar.patch

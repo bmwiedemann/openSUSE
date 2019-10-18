@@ -25,9 +25,9 @@ Name:           ruby2.6
 ####
 
 %define patch_level p0
-Version:        2.6.3
+Version:        2.6.5
 Release:        0
-%define pkg_version 2.6.3
+%define pkg_version %{version}
 # make the exported API version explicit
 %define api_version 2.6.0
 %define rb_binary_suffix .ruby2.6

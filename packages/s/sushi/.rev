@@ -358,4 +358,12 @@
 </comment>
     <requestid>711173</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>b1b1ea41688c6438fe98c3f7384c715e</srcmd5>
+    <version>3.34.0</version>
+    <time>1571401988</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736607</requestid>
+  </revision>
 </revisionlist>

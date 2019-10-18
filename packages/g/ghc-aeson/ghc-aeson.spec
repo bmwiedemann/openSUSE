@@ -19,7 +19,7 @@
 %global pkg_name aeson
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.4.4.0
+Version:        1.4.5.0
 Release:        0
 Summary:        Fast JSON parsing and encoding
 License:        BSD-3-Clause

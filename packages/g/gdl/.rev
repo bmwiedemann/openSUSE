@@ -424,4 +424,12 @@
     <comment>Update to 3.28.0 (forwarded request 585450 from dimstar)</comment>
     <requestid>585831</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>a877b633f04e1ab384f6fc81b8d624f0</srcmd5>
+    <version>3.34.0</version>
+    <time>1571401913</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736515</requestid>
+  </revision>
 </revisionlist>

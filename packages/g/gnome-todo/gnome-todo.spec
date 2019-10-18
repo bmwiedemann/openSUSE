@@ -18,15 +18,16 @@
 
 
 Name:           gnome-todo
-Version:        3.28.1
+Version:        3.91.1
 Release:        0
 Summary:        Personal task manager for GNOME
 License:        GPL-3.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Todo
-Source0:        http://download.gnome.org/sources/gnome-todo/3.28/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM gnome-todo-autoptr-fix.patch -- Fix build with new glib
-Patch0:         gnome-todo-autoptr-fix.patch
+Source0:        https://download.gnome.org/sources/gnome-todo/3.91/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM gnome-todo-eds-libecal-2.0.patch -- Fix build with
+# new evolution-data-server
+Patch0:         gnome-todo-eds-libecal-2.0.patch
 
 BuildRequires:  gobject-introspection-devel >= 1.42.0
 BuildRequires:  gtk-doc
@@ -34,15 +35,15 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gio-2.0) >= 2.43.4
-BuildRequires:  pkgconfig(glib-2.0) >= 2.43.4
+BuildRequires:  pkgconfig(glib-2.0) >= 2.58.0
 BuildRequires:  pkgconfig(gmodule-export-2.0)
 BuildRequires:  pkgconfig(goa-1.0) >= 3.2.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:  pkgconfig(libecal-1.2) >= 3.13.90
+BuildRequires:  pkgconfig(libecal-2.0) >= 3.33.92
 BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.17.1
 BuildRequires:  pkgconfig(libedataserverui-1.2) >= 3.17.1
-BuildRequires:  pkgconfig(libical) >= 0.43
+BuildRequires:  pkgconfig(libical) >= 3.0.5
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.17
 BuildRequires:  pkgconfig(rest-0.7)
 Recommends:     %{name}-lang
@@ -88,7 +89,7 @@ GNOME desktop environment.
 
 %files
 %license COPYING
-%doc AUTHORS NEWS
+%doc NEWS
 %{_bindir}/%{name}
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/org.gnome.Todo.appdata.xml
@@ -107,7 +108,7 @@ GNOME desktop environment.
 %{_libdir}/girepository-1.0/Gtd-1.0.typelib
 
 %files devel
-%doc CONTRIBUTING.md HACKING.md README.md
+%doc doc/CONTRIBUTING.md doc/HACKING.md README.md
 %doc %{_datadir}/gtk-doc/html/gnome-todo/
 %{_datadir}/gir-1.0/Gtd-1.0.gir
 %{_includedir}/%{name}/

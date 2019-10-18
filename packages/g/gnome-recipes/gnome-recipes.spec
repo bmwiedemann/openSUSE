@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-recipes
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gnome-recipes
-Version:        2.0.2
+Version:        2.0.2+97
 Release:        0
 Summary:        A recipe app for GNOME
 License:        GPL-3.0-or-later
 Group:          Productivity/Other
 URL:            https://wiki.gnome.org/Design/Apps/Recipes
-Source0:        http://download.gnome.org/sources/gnome-recipes/2.0/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM gnome-recipes-nb-translations.patch bjorn.lie@gmail.com -- Update Norwegian Bokmål translations
-Patch0:         gnome-recipes-nb-translations.patch
+Source0:        %{name}-%{version}.tar.xz
+
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel >= 2.42
@@ -101,7 +100,7 @@ search results from Recipes.
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/dbus-1/services/org.gnome.Recipes.service
-%{_datadir}/appdata/org.gnome.Recipes.appdata.xml
+%{_datadir}/metainfo/org.gnome.Recipes.appdata.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.Recipes.gschema.xml
 %{_datadir}/mime/packages/org.gnome.Recipes-mime.xml
 %{_datadir}/%{name}

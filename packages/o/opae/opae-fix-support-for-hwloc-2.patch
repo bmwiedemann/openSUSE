@@ -1,0 +1,38 @@
+commit fecdec1b0a962f4451a87607720ad6844aa91cc0
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Thu Oct 10 11:28:35 2019 +0200
+
+    opae fix support for hwloc 2
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+diff --git tools/extra/pac/fpgabist/dma_vc/fpga_dma_test.c tools/extra/pac/fpgabist/dma_vc/fpga_dma_test.c
+index 4361cd4d3c17..35598f4a14c0 100644
+--- tools/extra/pac/fpgabist/dma_vc/fpga_dma_test.c
++++ tools/extra/pac/fpgabist/dma_vc/fpga_dma_test.c
+@@ -691,8 +691,15 @@ int main(int argc, char *argv[])
+ 		// Find the device from the topology
+ 		hwloc_topology_t topology;
+ 		hwloc_topology_init(&topology);
++#if HWLOC_API_VERSION >= 0x00020000
++		hwloc_topology_set_type_filter(topology, HWLOC_OBJ_PCI_DEVICE, HWLOC_TYPE_FILTER_KEEP_IMPORTANT);
++		hwloc_topology_set_type_filter(topology, HWLOC_OBJ_OS_DEVICE, HWLOC_TYPE_FILTER_KEEP_IMPORTANT);
++		hwloc_topology_set_type_filter(topology, HWLOC_OBJ_BRIDGE, HWLOC_TYPE_FILTER_KEEP_IMPORTANT);
++#else
+ 		hwloc_topology_set_flags(topology,
+-					 HWLOC_TOPOLOGY_FLAG_IO_DEVICES);
++								 HWLOC_TOPOLOGY_FLAG_IO_DEVICES);
++#endif
++
+ 		hwloc_topology_load(topology);
+ 		hwloc_obj_t obj = hwloc_get_pcidev_by_busid(topology, dom, bus,
+ 							    dev, func);
+@@ -708,7 +715,7 @@ int main(int argc, char *argv[])
+ 		printf("NODESET is %s\n", str);
+ #endif
+ 		if (memory_affinity) {
+-#if HWLOC_API_VERSION > 0x00020000
++#if HWLOC_API_VERSION >= 0x00020000
+ 			retval = hwloc_set_membind(
+ 				topology, obj2->nodeset, HWLOC_MEMBIND_THREAD,
+ 				HWLOC_MEMBIND_MIGRATE

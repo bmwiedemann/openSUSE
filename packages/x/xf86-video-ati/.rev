@@ -514,4 +514,13 @@ Just leave it pending if you dont want it 'till 13.1 (forwarded request 150617 f
   * Other improvements and fixes</comment>
     <requestid>687665</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>a1f88739f0eba7fe8025ef43445973e7</srcmd5>
+    <version>19.1.0</version>
+    <time>1571401856</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 19.1.0
+  * bug fixes and minor improvements</comment>
+    <requestid>738665</requestid>
+  </revision>
 </revisionlist>

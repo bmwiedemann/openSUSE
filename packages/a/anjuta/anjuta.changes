@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Sep  8 21:07:53 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.34.0:
+  + Replace Bugzilla by Gitlab URL in DOAP file.
+  + Add new vala version.
+  + anjuta-tags: fix tag for vala language.
+  + Convert README to markdown.
+  + Add build rule so that README is not flagged as missing.
+  + build: Allow building with vala 0.44.
+  + Fix error in distcheck.
+  + build: Don't require exact match in the bison check.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Mar 20 17:40:38 UTC 2018 - dimstar@opensuse.org
 
 - Unconditionally enable translation-update-upstream: on

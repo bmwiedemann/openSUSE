@@ -230,4 +230,12 @@
     <comment>New stable rel (forwarded request 702035 from iznogood)</comment>
     <requestid>703152</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>4bcf9d56139b8ebe2b3ffc302d67ec1c</srcmd5>
+    <version>3.34.2</version>
+    <time>1571401994</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 736741 from iznogood)</comment>
+    <requestid>736807</requestid>
+  </revision>
 </revisionlist>

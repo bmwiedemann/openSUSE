@@ -18,13 +18,13 @@
 
 
 Name:           gnome-usage
-Version:        3.32.0
+Version:        3.33.2
 Release:        0
 Summary:        System resources viewer for GNOME
 License:        GPL-3.0-only
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Usage
-Source:         %{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/gnome-usage/3.33/%{name}-%{version}.tar.xz
 
 BuildRequires:  meson >= 0.37.0
 BuildRequires:  pkgconfig
@@ -35,6 +35,7 @@ BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.10
 BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.30
 BuildRequires:  pkgconfig(libgtop-2.0)
+BuildRequires:  pkgconfig(tracker-sparql-2.0)
 Recommends:     %{name}-lang
 
 %description

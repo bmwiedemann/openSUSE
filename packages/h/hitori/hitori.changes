@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep  2 19:08:31 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.0:
+  + Updated translations.
+- Changes from version 3.33.0:
+  + Remember window size and position.
+  + Support localised (non-Arabic) digits on the game board.
+  + Add keyboard shortcuts dialogue and improve keyboard shortcuts
+    and mnemonics.
+  + Bugs fixed: bgo#732788, bgo#735330, glgo#GNOME/hitori#13,
+    glgo#GNOME/hitori!5, glgo#GNOME/hitori!7, glgo#GNOME/hitori!15,
+    glgo#GNOME/hitori!21, glgo#GNOME/hitori!22,
+    glgo#GNOME/hitori!23.
+
+-------------------------------------------------------------------
 Thu Aug 22 12:12:07 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.0:

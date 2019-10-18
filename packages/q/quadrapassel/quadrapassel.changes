@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Oct  7 12:51:12 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Snap, updated the YAML to using the GNOME extension.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 15 09:49:53 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.34.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 10 18:08:54 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.33.90:
+  + Switch from libcanberra-gtk to gsound.
+  + Updated translations.
+- Remove pkgconfig(libcanberra-gtk3) from BuildRequires, and add
+  pkgconfig(gsound).
+
+-------------------------------------------------------------------
 Mon Mar 11 09:05:42 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.0:

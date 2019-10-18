@@ -17,13 +17,13 @@
 
 
 Name:           quadrapassel
-Version:        3.32.0
+Version:        3.34.1
 Release:        0
 Summary:        Tetris Game for GNOME
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Action/Other
 URL:            https://live.gnome.org/Quadrapassel
-Source0:        https://download.gnome.org/sources/quadrapassel/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/quadrapassel/3.34/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  meson
@@ -34,8 +34,8 @@ BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(clutter-1.0) >= 1.0.0
 BuildRequires:  pkgconfig(clutter-gtk-1.0) >= 0.91.6
 BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gsound) >= 1.0.2
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12.0
-BuildRequires:  pkgconfig(libcanberra-gtk3) >= 0.26
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(manette-0.2)
 Recommends:     %{name}-lang

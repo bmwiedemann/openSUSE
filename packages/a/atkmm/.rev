@@ -221,4 +221,12 @@
     <comment></comment>
     <requestid>657849</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>b946dfd4d9e8ab764f8efb9df02f0f5c</srcmd5>
+    <version>2.29.1</version>
+    <time>1571401898</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736493</requestid>
+  </revision>
 </revisionlist>

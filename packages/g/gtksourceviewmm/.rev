@@ -120,4 +120,12 @@
     <comment>- Fix SRPM group. Update summaries. (forwarded request 583011 from jengelh)</comment>
     <requestid>583034</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>43ff2de553ace3a1952d17ac40611eef</srcmd5>
+    <version>3.91.1</version>
+    <time>1571401969</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736581</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,139 @@
 -------------------------------------------------------------------
+Sat Oct  5 14:42:01 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Fixes:
+    - MAME plugin now builds.
+    - Fixed pointer input not working until saving the game.
+    - Save directory is now properly loaded after a reset.
+    - Nintendo DS screen mode is now reset to vertical after a
+      reset.
+    - Fixed opening savestate manager with GTK animations disabled.
+    - Ensure bottom bar is always shown or hidden correctly on
+      mobile.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 12 17:36:01 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Drop gnome-games-revert-aspect-ratio.patch: not needed now that
+  retro-gtk 0.18.0 has been released.
+-Up retro-gtk dependency to 0.18.0. 
+
+-------------------------------------------------------------------
+Thu Sep 12 08:10:33 CST 2019 - qkzhu@suse.com
+
+- Update to version 3.34.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Aug 31 17:04:36 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.33.92:
+  + Fixes
+    - Missing savestate thumbnails don't corrupt UI anymore.
+    - Media button doesn't steal focus from the game anymore.
+    - Miscellaneous UI fixes.
+  + Various cleanups
+  + Translation updates.
+  + Changes in version 3.33.91:
+  + Manually created savestates can be renamed now.
+  + Nintendo DS screen layout settings are now stored inside
+    savestates.  instead of dconf.
+  + Added shortcuts for saving and loading the game, and for
+    showing savestates
+  + UI
+    - Creating a new savestate briefly flashes the game, similarly
+      to screenshots.
+    - Creation and deletion of savestate rows is now anumated.
+    - Added keyboard navigation in the savestates sidebar:
+      . Selecting a row immediately previews the savestate
+      . Pressing Enter loads the savestate
+      . Pressing Delete deletes the savestate
+      . Pressing Esc closes the sidebar
+    - When opening savestates sidebar, the game view cannot change
+      height anymore
+    - Covers and savestate thumbnails aren't blurry on HiDPI
+      anymore
+    - Sync fullscreen restore button style with Adwaita, making it
+      smaller and round.
+    - Preferences window now has a Back button when the window is
+      small.
+  + Fixes
+    - Headerbar autohide in fullscreen works properly now.
+    - Keyboard shortcuts don't depend on keyboard layout anymore.
+    - Savestate thumbnails now use correct aspect ratio for newly
+      created savestates.
+    - Creating multiple savestates in one second doesn't result in
+      an error anymore.
+    - Fixed a few runtime errors when working with savestates.
+    - Fixed crash when opening multliple Nintendo DS games in a row
+    - Savestates created by closing window with savestate sidebar
+      have correct thumbnail now.
+    - New savestate row in savestate sidebar cannot be selected
+      anymore.
+    - Opening savestate sidebar shifts the game in the correct
+      direction on RTL.
+    - Game covers have proper colors now instead of being 10%
+      darker.
+  + Various cleanups.
+  + Translation updates.
+  + Changes in version 3.33.90:
+  + Support multiple savestates for libretro games. Existing data
+    is migrated on the first run and and older versions will NOT
+    see it anymore.
+  + Only show fullscreen headerbar when cursor is nearby.
+    Generally, sync fullscreen behavior with libdazzle.
+  + Hide cursor after a timeout in non-fullscreen mode.
+  + Translation updates.
+  + Changes in version 3.33.4:
+  + Center headerbar title in adaptive mode.
+  + Explicitly specify 'm' dependency.
+  + Translation updates.
+  + Changes in version 3.33.3:
+  + UI
+    - Main window is now fully adaptive.
+    - Added dropdown arrow to media switcher button to match
+      Nintendo DS screen
+  +  layout switcher.
+    - Removed unused subtitles from collection.
+    - Increased padding on platforms sidebar items.
+  + Fixes
+    - Fixed backup/restore skipping empty directories.
+  + Dependencies:
+    - Minimum libhandy version has been increased to 0.0.10.
+  + Various cleanups.
+  + Translation updates.
+  + Changes in version 3.33.2:
+  + Remove Developers view. The API used previously for this has been shut
+  + down, and the metadata wasn't reliable anyway.
+  + Add backup and restore functions.
+  + UI
+    - List Nintendo DS shortucts in shortcuts dialog.
+    - Add mnemonics to primary menu.
+    - Use adaptive view switcher in collection.
+  + Fixes
+    - Fixed error infobar being visible on empty collection screen.
+    - Pressing Enter key twice immediately after starting a game
+      from a file  doesn't exit the game anymore.
+  + Various cleanups.
+  + Translation updates
+  + Changes in version 3.33.1:
+  + Allow to change screen layouts for Nintendo DS games when using
+    DeSmuME and DeSmuME 2015 cores.
+  + Replace plugin list in preferences by a list of platforms, and
+    allow to select libretro cores to be used for each platform.
+  + Show an error when trying to open a non-game file.
+  + Use a better icon for missing game thumbnails.
+  + Fixes
+  + Various cleanups.
+  + Translation updates
+- Up libhandy dependency.
+- Add gnome-games-revert-aspect-ratio.patch: revert change
+  requiring an unreleased retro-gtk. Remove this when we have a
+  retro-gtk package newer than 0.16.1.
+
+-------------------------------------------------------------------
 Wed Apr 10 16:09:24 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.1:

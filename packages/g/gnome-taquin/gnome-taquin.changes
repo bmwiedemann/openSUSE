@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Oct  7 18:32:52 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 10 06:20:00 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.34.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  3 19:15:12 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.33.91:
+  + One small bug fix, and a better appdata file.
+  + Updated translations.
+  + Changes in version 3.33.90:
+  + Many small code changes, and bug fixes.
+  + Packagers should note that the GSound library has replaced LibCanberra.
+  + Translations updated.
+  + Changes in version 3.33.4:
+  + Specify libm as a dependency, for platforms that separated it
+    from libc.
+  + Updated translations.
+- Drop libcanberra from BuildRequires, and add libgsound.
+
+-------------------------------------------------------------------
 Tue Mar 12 15:18:41 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.0:

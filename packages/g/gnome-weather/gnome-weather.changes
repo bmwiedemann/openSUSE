@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep 25 06:04:58 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.0:
+  + tests: Make dogtail tests optional.
+  + Updated translations. 
+
+-------------------------------------------------------------------
+Thu Sep  5 14:50:46 CST 2019 - Chingkai Chu <qkzhu@suse.com>
+
+- Update to version 3.33.90:
+  + Export location information to GNOME Shell.
+  + Use weather station's time zone.
+  + Allow enter key to show location.
+  + Bugs fixed: !18 Fix search provider
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Apr 22 16:30:40 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.2:

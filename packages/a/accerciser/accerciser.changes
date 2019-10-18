@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Mon Oct  7 07:39:21 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep  7 15:06:19 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.34.0:
+  + No changes.
+
+-------------------------------------------------------------------
+Mon Sep  2 10:42:38 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.33.92:
+  + Add highlighting on text selection.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 30 09:14:43 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.33.91:
+  + Fix autoreconf dependency check
+  + Updated translations.
+- Changes from version 3.33.4:
+  + Fix startup warnings
+  + Fix some accessibleId access cases
+  + Allow building with gettext ≥ 0.20
+  + Show event sender
+  + Fix auto-completion
+  + On left arrow, go to parent before collapsing it
+  + Use TreeModelFilter to filter the view
+  + Let accerciser be selected, but do not refresh or highlight it
+  + Hide applications without widgets by default
+  + Updated translations.
+- Changes from version 3.33.3:
+  + Fix using translations
+  + Fix some ui labelling
+  + Fix showing relations
+  + Use Unicode in translatable strings
+  + Fix build instructions
+  + Add expand/collapse node key handling
+  + Don't crash on empty schema list
+  + Better handle removed cursor row
+  + Use fonts which explicitly show U+FFFC
+  + Updated translations.
+- Changes from version 3.33.2:
+  + Restore preventing accerciser from exploring itself
+  + Fix focus computation for ctrl-alt-b
+  + Show accessible ID
+- Changes from version 3.33.1:
+  + help:
+    - Fix broken Mallard markup for key combinations
+    - Remove unhelpful Preferences screenshot
+  + Use autoreconf instead deprecated gnome-autogen
+  + Fix accessing items without a compositor
+  + Preferences dialog: fix setting title
+  + Fix warnings
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Jun 21 05:29:55 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.3:

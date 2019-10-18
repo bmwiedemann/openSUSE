@@ -17,13 +17,13 @@
 
 
 Name:           gnome-mines
-Version:        3.32.2
+Version:        3.34.0
 Release:        0
 Summary:        Minesweeper Game for GNOME
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Board/Other
 URL:            https://wiki.gnome.org/Mines
-Source0:        https://download.gnome.org/sources/gnome-mines/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-mines/3.34/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.37.1

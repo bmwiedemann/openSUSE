@@ -17,7 +17,7 @@
 
 
 Name:           gnome-news
-Version:        0.0.1+20190129
+Version:        0.0.1+20190326
 Release:        0
 Summary:        GNOME News Reader
 License:        GPL-3.0-or-later
@@ -34,7 +34,6 @@ BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  libxml2-tools
 BuildRequires:  python3-gobject
-Requires:       tracker-miner-rss
 BuildArch:      noarch
 
 %description

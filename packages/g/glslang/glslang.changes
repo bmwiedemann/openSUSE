@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 14 21:01:23 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop unused static libraries, functions of libOGLCompilerDLL and
+  libOSDependent are actually present in libglslang already.
+  [boo#1153950]
+
+-------------------------------------------------------------------
 Sat Sep  7 15:57:52 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Bump SOVER as needed.

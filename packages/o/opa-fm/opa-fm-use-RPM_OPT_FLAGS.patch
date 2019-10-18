@@ -1,4 +1,4 @@
-commit e8e5f92c86bb863ec6342a4348ce94b476349ab9
+commit 925cdfe3fa7d06d7264782cc44fdf718170a47e7
 Author: Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>
 Date:   Mon Aug 28 14:06:36 2017 +0200
 
@@ -7,13 +7,13 @@ Date:   Mon Aug 28 14:06:36 2017 +0200
     Signed-off-by: Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>
 
 diff --git Esm/Makerules.project Esm/Makerules.project
-index 1506ad302bc3..52520b03010f 100755
+index c3883708f1e0..58d74651b557 100755
 --- Esm/Makerules.project
 +++ Esm/Makerules.project
-@@ -123,6 +123,7 @@ BSCPROJ			=
+@@ -124,6 +124,7 @@ BSCPROJ			=
  CPROJ			= -DPRODUCT=$(PRODUCT) -DPRODUCT_$(PRODUCT) -DMODULEVERSION=$(MODULEVERSION)
  # include buildFeatureDefs to let inplace build work for stream consistency
- CPROJ			+= -include $(TL_DIR)/buildFeatureDefs
+ CPROJ			+= -include $(TL_DIR)/Fd/buildFeatureDefs
 +CPROJ			+= $(RPM_OPT_FLAGS)
  ifeq ($(IB_STACK),OPENIB)
  CPROJ			+= -DIB_STACK_OPENIB

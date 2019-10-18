@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct  7 21:33:05 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Add memset-prototype.patch: fix usage of undeclared
+  std::memset() function.
+
+-------------------------------------------------------------------
 Sat Oct  5 14:27:54 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add baselibs.conf, build 32-bit support libs.

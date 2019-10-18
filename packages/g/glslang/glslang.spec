@@ -82,12 +82,18 @@ make %{?_smp_mflags}
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %cmake_install
 b="%buildroot"
+find "$b" -type f -name "*.a" -print -delete
 mkdir -p "$b/%_includedir"
 cp -a SPIRV glslang "$b/%_includedir/"
 find "$b/%_includedir/" -type f ! -iname "*.h" -a ! -iname "*.hpp" -print -delete
 ln -s SPIRV/spirv.hpp "$b/%_includedir/"
 find "$b/%_includedir/" -type f -exec chmod a-x "{}" "+"
 cp build/StandAlone/libglslang-default-resource-limits.so "$b/%_libdir/"
+
+# 3rd party programs use -lOGLCompiler (because pristine glslang ships .a files),
+# so satisfy them under our shared build.
+ln -s libglslang.so "$b/%_libdir/libOGLCompiler.so"
+ln -s libglslang.so "$b/%_libdir/libOSDependent.so"
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
@@ -100,9 +106,10 @@ cp build/StandAlone/libglslang-default-resource-limits.so "$b/%_libdir/"
 %defattr(-,root,root)
 %_bindir/gls*
 %_bindir/spirv*
-%_libdir/*.a
 %_libdir/*resource*.so
 %_libdir/libHLSL.so
+%_libdir/libOGLCompiler.so
+%_libdir/libOSDependent.so
 %_libdir/libSPIRV.so
 %_libdir/libSPVRemapper.so
 %_libdir/libglslang.so

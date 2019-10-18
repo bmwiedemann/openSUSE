@@ -1,0 +1,67 @@
+From 3bef761f5f1fddc88df49841bdd0467738d95998 Mon Sep 17 00:00:00 2001
+From: Kjell Ahlstedt <kjellahlstedt@gmail.com>
+Date: Tue, 19 Mar 2019 14:55:45 +0100
+Subject: [PATCH] Use glibmm-2.62 instead of glibmm-2.60
+
+We have changed the ABI name in glibmm.
+---
+ MSVC_NMake/config-msvc.mak | 2 +-
+ codegen/Makefile.am        | 2 +-
+ configure.ac               | 6 +++---
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/MSVC_NMake/config-msvc.mak b/MSVC_NMake/config-msvc.mak
+index 62d2a22..a75a73a 100644
+--- a/MSVC_NMake/config-msvc.mak
++++ b/MSVC_NMake/config-msvc.mak
+@@ -13,7 +13,7 @@ GLIB_API_VERSION = 2.0
+ LIBSIGC_MAJOR_VERSION = 3
+ LIBSIGC_MINOR_VERSION = 0
+ GLIBMM_MAJOR_VERSION = 2
+-GLIBMM_MINOR_VERSION = 60
++GLIBMM_MINOR_VERSION = 62
+ 
+ 
+ !if "$(CFG)" == "debug" || "$(CFG)" == "Debug"
+diff --git a/codegen/Makefile.am b/codegen/Makefile.am
+index 4c2815f..2c20d2c 100644
+--- a/codegen/Makefile.am
++++ b/codegen/Makefile.am
+@@ -30,7 +30,7 @@ dist_noinst_SCRIPTS = generate_defs_and_docs.sh
+ noinst_PROGRAMS  = extradefs/generate_extra_defs
+ 
+ extradefs_generate_extra_defs_SOURCES = extradefs/generate_extra_defs_atk.cc
+-extradefs_generate_extra_defs_LDADD   = $(ATKMM_LIBS) -lglibmm_generate_extra_defs-2.60
++extradefs_generate_extra_defs_LDADD   = $(ATKMM_LIBS) -lglibmm_generate_extra_defs-2.62
+ extradefs_generate_extra_defs_LDFLAGS = -no-undefined -avoid-version
+ 
+ AM_CPPFLAGS = -I$(top_builddir) $(GTHREAD_CFLAGS) $(ATKMM_CFLAGS)
+diff --git a/configure.ac b/configure.ac
+index 289505c..2452c50 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -51,18 +51,18 @@ MM_AX_CXX_COMPILE_STDCXX([17], [noext], [mandatory])
+ AC_DISABLE_STATIC
+ LT_INIT([win32-dll])
+ 
+-AC_SUBST([ATKMM_MODULES], ['atk >= 1.18 glibmm-2.60 >= 2.59.1'])
++AC_SUBST([ATKMM_MODULES], ['atk >= 1.18 glibmm-2.62 >= 2.61.1'])
+ PKG_CHECK_MODULES([ATKMM], [$ATKMM_MODULES])
+ 
+ MM_PKG_CONFIG_SUBST([GTHREAD_CFLAGS], [--cflags-only-other gthread-2.0])
+-MM_PKG_CONFIG_SUBST([GMMPROC_DIR], [--variable=gmmprocdir glibmm-2.60])
++MM_PKG_CONFIG_SUBST([GMMPROC_DIR], [--variable=gmmprocdir glibmm-2.62])
+ 
+ MM_ARG_DISABLE_DEPRECATED_API
+ 
+ MM_ARG_ENABLE_DOCUMENTATION
+ MM_ARG_WITH_TAGFILE_DOC([libstdc++.tag], [mm-common-libstdc++])
+ MM_ARG_WITH_TAGFILE_DOC([libsigc++-3.0.tag], [sigc++-3.0])
+-MM_ARG_WITH_TAGFILE_DOC([glibmm-2.60.tag], [glibmm-2.60])
++MM_ARG_WITH_TAGFILE_DOC([glibmm-2.62.tag], [glibmm-2.62])
+ 
+ AC_LANG([C++])
+ MM_ARG_ENABLE_WARNINGS([ATKMM_WXXFLAGS],
+-- 
+2.22.0
+

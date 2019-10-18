@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Oct  7 22:22:30 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Update appdata file.
+
+-------------------------------------------------------------------
+Fri Sep 13 12:21:40 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  3 19:03:23 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.33.90:
+  + Drop libcanberra in favor of gsound.
+  + Port to meson build system.
+- Switch to meson.
+- Drop libcanberra from BuildRequires, and add gsound.
+- Drop intltool from BuildRequires, and add gettext.
+- Require vala to build.
+- Adjust icons directory in %files.
+
+-------------------------------------------------------------------
 Mon Aug  5 23:12:50 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.0:

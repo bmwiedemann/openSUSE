@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-aeson-pretty
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name aeson-pretty
 Name:           ghc-%{pkg_name}
-Version:        0.8.7
+Version:        0.8.8
 Release:        0
 Summary:        JSON pretty-printing library and command-line tool
 License:        BSD-3-Clause

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 02 15:14:15 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 2.0.2+97:
+  + help: Application menu has been replaced by menu button.
+  + Replace Bugzilla by Gitlab URL in DOAP file.
+  + Add halal category.
+  + Minor bug and build fixes.
+  + Updated translations.
+- Switch to git checkout via source service, explicit commit.
+- Drop gnome-recipes-nb-translations.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Wed Feb 28 16:29:25 UTC 2018 - dimstar@opensuse.org
 
 - Modernize spec-file by calling spec-cleaner

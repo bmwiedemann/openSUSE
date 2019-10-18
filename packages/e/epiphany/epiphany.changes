@@ -1,9 +1,152 @@
 -------------------------------------------------------------------
+Sat Oct  5 08:11:33 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Fix maximize state not being remembered.
+  + Middle click should not close pinned tabs.
+  + Fix Ctrl+Shift+G for Find Previous shortcut.
+  + Fix searching for special characters in address bar.
+  + Fix warning about invalid signal handler when closing browser.
+  + Focus web view after creation in automation mode.
+  + Various fixes to new adblocker.
+  + Separate font rows in preferences dialog.
+  + Improve about:applications on small screens.
+
+-------------------------------------------------------------------
 Mon Sep  9 23:41:15 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop pkgconfig(evince-document-3.0) and
   pkgconfig(evince-view-3.0) BuildRequires: Not needed, nor used
   since version 3.31.90.
+
+-------------------------------------------------------------------
+Sat Sep  7 16:56:13 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.0:
+  + New improved adblocker.
+  + Pinned tabs.
+  + Web process sandbox.
+  + Improved overview page design.
+  + Further enhancements for mobile devices.
+
+-------------------------------------------------------------------
+Sat Sep  7 16:56:12 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.33.92:
+  + Fix overview snapshot removal animation.
+  + Fix mistake in construction of web app icon URL.
+  + Ensure adblocker is ready before loading any resources.
+  + Failure to start web extension connection is now fatal.
+
+-------------------------------------------------------------------
+Sat Sep  7 16:56:11 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.33.91:
+  + Partially fix regressions from overview redesign.
+  + Fix crash when dragging tab to new window.
+  + Fix load state tracking regression.
+  + Disable accelerated compositing again.
+
+-------------------------------------------------------------------
+Sat Sep  7 16:56:10 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.33.90:
+  + New adblocker based on WebKit content extensions
+  + Close window after drag/drop last tab to another window
+  + Adjust address bar popover position
+  + Use Alt+Enter for opening pages in new tab
+  + Add Ctrl+G shortcut to search bar for next search result
+  + Fix search bar text highlighting
+  + Redesigned about:overview, the new tab page
+  + Add emoji picker context menu item
+  + Remove context menu item for inserting Unicode control
+    characters
+  + Fix inappropriate context menu entries for non-downloadable
+    videos
+  + Fix web app section of the preferences dialog
+  + On-demand accelerated compositing is once again enabled by
+    default
+  + Enabled bubblewrap web process sandbox
+- Changes from version 3.33.4:
+  + Support switching spellchecker languages
+  + Fix hangs when syncing bookmarks
+  + Fix glitched state when closing final tab from tabs popover
+  + Fix position of spinner in tabs
+  + Indicate when title of pinned tab has changed
+  + Fix tabs opening in strange places
+  + Don't refresh history dialog when loading page from history
+  + Allow loading more history dialog history using keyboard
+  + Make web view infobars work properly in mobile mode
+  + Add Ctrl+Tab and Ctrl+Shift+Tab to keyboard shortcuts dialog
+  + Fix crash when web app profile lacks .app file
+  + Ensure web apps broken beyond repair crash nicely
+  + Various improvements to history dialog
+  + Major rework of the preferences dialog
+  + Fix password manager error on forms without action attributes
+  + Show number of open pages in mobile mode
+  + Fix overview thumbnails improperly displaying placeholder icons
+  + Expose mouse gesture setting in preferences dialog
+- Changes from version 3.33.3:
+  + More fixes for web app migration
+  + More password manager fixes
+  + Add mobile user agent setting
+- Changes from version 3.33.2:
+  + Fix password manager for pages in iframes
+  + Search engines now have favicons in address bar dropdown
+  + Allow searching for open tabs with address bar
+  + Show error message for moved or deleted downloads
+  + Fix preferences language button sensitivity
+  + Continue downloads in background when last window is closed
+  + Add custom error page for missing files when loading file URIs
+  + Add visual feedback for importing Firefox bookmarks
+  + Fix crash opening preferences dialog in weird locales
+  + Fix manage additional URLs web apps preference
+  + Fix downloading blob URIs in web apps
+  + Add search match counter
+  + Pages popover should not exceed window size in X11
+  + Fix HTTP auth dialog losing focus when switching tabs
+  + Fix tab order reversing in session if tab is pinned
+  + Fix issues with ordering of pinned tabs
+  + Pinned tabs should not have a close button in tabs popover
+  + Add tooltips to items in address bar
+  + Log message to inspector console when adblocker blocks a
+    resource
+  + New redesigned cookies dialogs
+- Changes from version 3.33.1:
+  + Change Tech Preview app ID to org.gnome.Epiphany.Devel
+  + Improve tab order when opening links in new tabs
+  + Use elementary-style headerbar icons in Pantheon
+  + Remember zoom state for file URIs
+  + Prompt to set as default browser
+  + Add preference to ask where to save downloads
+  + Fix yellow search highlight disappearing when repeating search
+  + Allow pinning tabs
+  + Expose saving pages as HTML or PNGs in addition to MHTML
+  + Warn user when closing window with multiple tabs
+  + Comprehensively update user help
+  + Add preference to always start in incognito mode
+  + Add open in new incognito window to web app context menu
+  + Allow setting per-site permissions from security popover
+  + Allow writing HTTP and HTTPS URLs without slashes
+  + Fix tab list alignment with tabs not on top
+  + Fix low-resolution overview thumbnails in hidpi
+  + Add Ctrl+Enter shortcut to prepend www. and append .com to URL
+  + Always show tabs bar
+  + Incognito mode landing page is now adaptive
+  + Add drop shadow to icon in about:web
+  + Add empty state to about:applications
+  + Keep URL entry centered
+  + Fix icons overlapping with URL entry in right-to-left locales
+  + Adjust margins of suggestions popover
+  + Allow Ctrl+click to open new tab in back/forward lists
+  + Remove process model and process count settings (Spectre
+    mitigation)
+  + Use page instead of popover for mobile tab menu
+  + Always try saved HTTP auth credentials before prompting user
+  + Use WebKit's code for processing punycode and IDN
+  + Add swipe gesture to keyboard shortcuts dialog
+  + Update reader mode to latest readibility.js
+  + libdazzle is now required as a system dependency
 
 -------------------------------------------------------------------
 Sat Sep  7 16:56:09 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>

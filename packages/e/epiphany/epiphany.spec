@@ -17,13 +17,13 @@
 
 
 Name:           epiphany
-Version:        3.32.5
+Version:        3.34.1
 Release:        0
 Summary:        GNOME Web Browser
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Browsers
 URL:            https://wiki.gnome.org/Apps/Web
-Source0:        https://download.gnome.org/sources/epiphany/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/epiphany/3.34/%{name}-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
 
 BuildRequires:  fdupes
@@ -35,9 +35,9 @@ BuildRequires:  pkgconfig(cairo) >= 1.2
 BuildRequires:  pkgconfig(gcr-3) >= 3.5.5
 BuildRequires:  pkgconfig(gdk-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.36.5
-BuildRequires:  pkgconfig(gio-2.0) >= 2.52.0
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.52.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.52.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.61.2
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.61.2
+BuildRequires:  pkgconfig(glib-2.0) >= 2.61.2
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.13
 BuildRequires:  pkgconfig(gtk+-unix-print-3.0) >= 3.22.13
@@ -54,8 +54,8 @@ BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.12
 BuildRequires:  pkgconfig(libxslt) >= 1.1.7
 BuildRequires:  pkgconfig(nettle) >= 3.2
 BuildRequires:  pkgconfig(sqlite3) >= 3.0
-BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.23.90
-BuildRequires:  pkgconfig(webkit2gtk-web-extension-4.0) >= 2.23.90
+BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.25.1
+BuildRequires:  pkgconfig(webkit2gtk-web-extension-4.0) >= 2.25.1
 Requires:       %{name}-branding = %{version}
 Requires:       iso-codes
 Recommends:     %{name}-lang
@@ -128,8 +128,8 @@ translation-update-upstream
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Epiphany*
 %{_mandir}/man1/epiphany.1%{ext_man}
 %dir %{_libdir}/epiphany
-%dir %{_libdir}/epiphany/web-extensions
-%{_libdir}/epiphany/web-extensions/libephywebextension.so
+%dir %{_libdir}/epiphany/web-process-extensions
+%{_libdir}/epiphany/web-process-extensions/libephywebprocessextension.so
 %{_libdir}/epiphany/libephymain.so
 %{_libdir}/epiphany/libephymisc.so
 %{_libdir}/epiphany/libephysync.so
@@ -143,7 +143,7 @@ translation-update-upstream
 %{_datadir}/dbus-1/services/org.gnome.Epiphany.SearchProvider.service
 %dir %{_datadir}/gnome-shell
 %dir %{_datadir}/gnome-shell/search-providers
-%{_datadir}/gnome-shell/search-providers/org.gnome.Epiphany.search-provider.ini
+%{_datadir}/gnome-shell/search-providers/org.gnome.Epiphany.SearchProvider.ini
 %{_libexecdir}/epiphany-search-provider
 
 %files lang -f %{name}.lang

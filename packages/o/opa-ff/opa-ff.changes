@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep  6 14:32:59 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to v10.9.3.1.1
+  - No changelog available
+- Refresh patches against newer sources:
+  - opa-ff-add-shebang-for-exp-files.patch
+  - opa-ff-suse-build-fixes.patch
+- Drop patches merged upstream:
+  - reproduciblecpu.patch
+  - reproducible.patch
+
+-------------------------------------------------------------------
 Fri Dec 28 11:19:40 UTC 2018 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproduciblecpu.patch to drop -march=native (boo#1100677)

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep 26 11:07:49 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to v10.9.3.1.1
+  - No changelog available
+
+-------------------------------------------------------------------
+Thu Sep  5 11:55:47 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to v10.9.2.2.1
+  * No changelog available
+- Drop reproducible.patch as it was fixed upstream
+- Mark LICENSE with %license
+- Remove infiniband-diags-devel dependency as it is now provided by rdma-core-devel
+- Add opa-fm-force-code-symbols-to-be-loaded.patch to fix around missing
+  symbol for version patching when LTO is enabled
+
+-------------------------------------------------------------------
 Mon Oct 15 07:39:46 UTC 2018 - nmoreychaisemartin@suse.com
 
 - Update to v10.8.0.0.202 (fate#325858)

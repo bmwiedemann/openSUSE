@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Oct  7 18:14:51 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 12 08:03:48 CST 2019 - qkzhu@suse.com
+
+- Update to version 3.34.0:
+  + Updated translation.
+
+-------------------------------------------------------------------
+Fri Sep  6 12:23:05 CST 2019 - qkzhu@suse.com
+
+- Update to version 3.33.92:
+  + The board drawing method has been a bit modified, to look better
+    if its size is not divisible by 8.
+  + Updated translation.
+- Changes from version 3.33.91:
+  + Two small bugs fixed, all looks good.
+  + Updated translation.
+- Changes from version 3.33.90:
+  + GSound library replaced LibCanberra.
+  + Updated translation.
+- Replace pkgconfig(libcanberra-gtk3) with pkgconfig(gsound)
+  BuildRequires following upstream changes.
+
+-------------------------------------------------------------------
 Mon Mar 11 15:53:21 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.0:
