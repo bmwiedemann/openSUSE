@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Oct  9 20:40:38 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.2:
+  + Fix various crashers.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Oct  5 14:31:50 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Fix various crashers.
+  + Improve search results handling.
+  + Make command line argument -d stand for --date.
+  + Fix crashes when e_cal_util_get_system_timezone() returns NULL.
+  + Fix first weekday calculation.
+  + Remove g_get_current_time.
+  + Readd <Ctrl>n shortcut.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 10 10:08:14 CST 2019 - qkzhu@suse.com
+
+- Update to version 3.34.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  4 09:37:42 NZST 2019 - luke@ljones.dev
+
+- Update to version 3.33.4:
+  + Redesigned calendar management dialog.
+  + New, more reliable web discoverer code.
+  + Various bugfixes.
+  + Updated translations.
+  + Developer docs removed.
+
+-------------------------------------------------------------------
 Fri May 10 15:35:33 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.2:
