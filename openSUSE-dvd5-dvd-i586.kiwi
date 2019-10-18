@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20191017" schemaversion="4.1">
+<image name="OBS__openSUSE___20191018" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -32,11 +32,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20191017</productvar>
+      <productvar name="VERSION">20191018</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20191017,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20191018,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20191017/i586</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20191018/i586</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/suse-tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/suse-tumbleweed</productoption>
@@ -464,7 +464,7 @@
       <repopackage name="efont-unicode-bitmap-fonts"/>
       <repopackage name="ekiga"/>
       <repopackage name="ekiga-lang"/>
-      <repopackage name="ekiga-plugins-evolution" arch="i586,i686"/>
+      <repopackage name="ekiga-plugins-evolution"/>
       <repopackage name="elementary-xfce-icon-theme"/>
       <repopackage name="elfutils"/>
       <repopackage name="elfutils-lang"/>
@@ -573,6 +573,7 @@
       <repopackage name="firewalld-lang"/>
       <repopackage name="flac"/>
       <repopackage name="flatpak"/>
+      <repopackage name="flatpak-builder"/>
       <repopackage name="flex"/>
       <repopackage name="flute"/>
       <repopackage name="folks-lang"/>
@@ -716,6 +717,12 @@
       <repopackage name="gnome-backgrounds-lang"/>
       <repopackage name="gnome-bluetooth"/>
       <repopackage name="gnome-bluetooth-lang"/>
+      <repopackage name="gnome-builder"/>
+      <repopackage name="gnome-builder-doc"/>
+      <repopackage name="gnome-builder-lang"/>
+      <repopackage name="gnome-builder-plugin-jedi"/>
+      <repopackage name="gnome-builder-plugin-jhbuild"/>
+      <repopackage name="gnome-builder-plugin-vala-pack"/>
       <repopackage name="gnome-calculator"/>
       <repopackage name="gnome-calculator-lang"/>
       <repopackage name="gnome-characters"/>
@@ -1789,7 +1796,6 @@
       <repopackage name="libgdbm_compat4"/>
       <repopackage name="libgdk_pixbuf-2_0-0"/>
       <repopackage name="libgdl-3-5"/>
-      <repopackage name="libgdlmm-3_0-2"/>
       <repopackage name="libgdm1"/>
       <repopackage name="libgeany0"/>
       <repopackage name="libgee-0_8-2"/>
@@ -1921,7 +1927,6 @@
       <repopackage name="libgtkmm-3_0-1"/>
       <repopackage name="libgtksourceview-3_0-1"/>
       <repopackage name="libgtksourceview-4-0"/>
-      <repopackage name="libgtksourceviewmm-3_0-0"/>
       <repopackage name="libgtkspell0"/>
       <repopackage name="libgtkspell3-3-0"/>
       <repopackage name="libgtop-2_0-11"/>
@@ -2011,6 +2016,7 @@
       <repopackage name="libjson-c4"/>
       <repopackage name="libjson-glib-1_0-0"/>
       <repopackage name="libjsoncpp21"/>
+      <repopackage name="libjsonrpc-glib-1_0-1"/>
       <repopackage name="libjte1"/>
       <repopackage name="libJudy1"/>
       <repopackage name="libkaccounts1"/>
@@ -2763,6 +2769,7 @@
       <repopackage name="libteamdctl0"/>
       <repopackage name="libtelepathy-glib0"/>
       <repopackage name="libtelepathy-logger3"/>
+      <repopackage name="libtemplate_glib-1_0-0"/>
       <repopackage name="libtevent-util0"/>
       <repopackage name="libtevent0"/>
       <repopackage name="libthai-data"/>
@@ -3284,6 +3291,7 @@
       <repopackage name="mutter-data"/>
       <repopackage name="mutter-lang"/>
       <repopackage name="mxml"/>
+      <repopackage name="mypy"/>
       <repopackage name="myspell-cs_CZ"/>
       <repopackage name="myspell-da_DK"/>
       <repopackage name="myspell-de"/>
@@ -3322,8 +3330,6 @@
       <repopackage name="ncftp"/>
       <repopackage name="ncurses-devel"/>
       <repopackage name="ncurses-utils"/>
-      <repopackage name="nemiver"/>
-      <repopackage name="nemiver-lang"/>
       <repopackage name="net-snmp"/>
       <repopackage name="net-tools"/>
       <repopackage name="net-tools-lang"/>
@@ -4082,6 +4088,7 @@
       <repopackage name="python-rpm-macros"/>
       <repopackage name="python-sip-common"/>
       <repopackage name="python-tk"/>
+      <repopackage name="python-typeshed"/>
       <repopackage name="python-wxWidgets-3_0"/>
       <repopackage name="python-wxWidgets-3_0-lang"/>
       <repopackage name="python-xml"/>
@@ -4178,6 +4185,7 @@
       <repopackage name="python3-idna"/>
       <repopackage name="python3-incremental"/>
       <repopackage name="python3-ipaddr"/>
+      <repopackage name="python3-jedi"/>
       <repopackage name="python3-Jinja2"/>
       <repopackage name="python3-kiwisolver"/>
       <repopackage name="python3-ldb"/>
@@ -4192,12 +4200,14 @@
       <repopackage name="python3-matplotlib-cairo"/>
       <repopackage name="python3-matplotlib-gtk3"/>
       <repopackage name="python3-msgpack"/>
+      <repopackage name="python3-mypy_extensions"/>
       <repopackage name="python3-mysqlclient"/>
       <repopackage name="python3-netaddr"/>
       <repopackage name="python3-numpy"/>
       <repopackage name="python3-olefile"/>
       <repopackage name="python3-packaging"/>
       <repopackage name="python3-paramiko"/>
+      <repopackage name="python3-parso"/>
       <repopackage name="python3-pexpect"/>
       <repopackage name="python3-Pillow"/>
       <repopackage name="python3-pip"/>
@@ -4252,6 +4262,8 @@
       <repopackage name="python3-tevent"/>
       <repopackage name="python3-tornado4"/>
       <repopackage name="python3-Twisted"/>
+      <repopackage name="python3-typed-ast"/>
+      <repopackage name="python3-typing_extensions"/>
       <repopackage name="python3-urllib3"/>
       <repopackage name="python3-urwid"/>
       <repopackage name="python3-zope.event"/>
@@ -4995,6 +5007,7 @@
       <repopackage name="telepathy-mission-control"/>
       <repopackage name="telepathy-mission-control-plugin-goa"/>
       <repopackage name="telnet"/>
+      <repopackage name="template-glib-lang"/>
       <repopackage name="terminfo"/>
       <repopackage name="terminfo-base"/>
       <repopackage name="terminfo-screen"/>
@@ -5077,7 +5090,6 @@
       <repopackage name="typelib-1_0-Champlain-0_12"/>
       <repopackage name="typelib-1_0-Cheese-3_0"/>
       <repopackage name="typelib-1_0-Clutter-1_0"/>
-      <repopackage name="typelib-1_0-ClutterGst-3_0"/>
       <repopackage name="typelib-1_0-Cogl-1_0"/>
       <repopackage name="typelib-1_0-CoglPango-1_0"/>
       <repopackage name="typelib-1_0-EvinceDocument-3_0"/>
@@ -5117,6 +5129,7 @@
       <repopackage name="typelib-1_0-IBus-1_0"/>
       <repopackage name="typelib-1_0-JavaScriptCore-4_0"/>
       <repopackage name="typelib-1_0-Json-1_0"/>
+      <repopackage name="typelib-1_0-Jsonrpc-1_0"/>
       <repopackage name="typelib-1_0-libdazzle-1_0"/>
       <repopackage name="typelib-1_0-Libosinfo-1_0"/>
       <repopackage name="typelib-1_0-LibvirtGLib-1_0"/>
@@ -5137,10 +5150,12 @@
       <repopackage name="typelib-1_0-Soup-2_4"/>
       <repopackage name="typelib-1_0-TelepathyGlib-0_12"/>
       <repopackage name="typelib-1_0-TelepathyLogger-0_2"/>
+      <repopackage name="typelib-1_0-Template-1_0"/>
       <repopackage name="typelib-1_0-TotemPlParser-1_0"/>
       <repopackage name="typelib-1_0-Tracker-2_0"/>
       <repopackage name="typelib-1_0-TrackerControl-2_0"/>
       <repopackage name="typelib-1_0-UpowerGlib-1_0"/>
+      <repopackage name="typelib-1_0-Vte-2.91"/>
       <repopackage name="typelib-1_0-WebKit2-4_0"/>
       <repopackage name="typelib-1_0-Wnck-3_0"/>
       <repopackage name="typelib-1_0-Zpj-0_0"/>
