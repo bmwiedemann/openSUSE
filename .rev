@@ -863,4 +863,12 @@
     <comment>- updated to latest repository</comment>
     <requestid>727331</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>dc7984a09617667b9468adf1ba57ed90</srcmd5>
+    <version>0.8.5</version>
+    <time>1571401864</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 0.8.5</comment>
+    <requestid>738857</requestid>
+  </revision>
 </revisionlist>
