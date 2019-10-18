@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 20 02:02:13 UTC 2019 - psimons@suse.com
+
+- Update turtle to version 1.5.15.
+  1.5.15
+
+  * Add `toLines`
+  * Add `Turtle.Bytes.{fromUTF8,toUTF8}`
+  * Add `Turtle.Bytes.{compress,decompress}`
+  * Always expose a `MonadFail` instance, relying on the `fail` package
+    where needed. Related GHC 8.8 preparedness.
+
+-------------------------------------------------------------------
 Sun Jul 28 08:15:57 UTC 2019 - Peter Simons <psimons@suse.com>
 
 - Update Cabal file for more accurate build dependencies.
