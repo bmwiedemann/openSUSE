@@ -1756,6 +1756,7 @@ unsorted:
   - console-setup 
   - container-diff 
   - container-feeder 
+  - container-registry-systemd 
   - containerd 
   - containerd-ctr 
   - containerd-kubic 
@@ -2412,7 +2413,6 @@ unsorted:
   - eiciel-lang 
   - eigen3-devel 
   - eigen3-doc 
-  - ekiga-plugins-evolution: [x86_64] 
   - elektra 
   - elektra-qt-gui 
   - elementary 
@@ -2876,7 +2876,6 @@ unsorted:
   - flashfocus 
   - flashrom 
   - flatbuffers-devel 
-  - flatpak-builder: [i586] 
   - flatpak-devel 
   - flatpak-zsh-completion 
   - flawfinder 
@@ -4020,6 +4019,8 @@ unsorted:
   - ghc-transformers-devel 
   - ghc-turtle 
   - ghc-turtle-devel 
+  - ghc-type-equality 
+  - ghc-type-equality-devel 
   - ghc-typed-process 
   - ghc-typed-process-devel 
   - ghc-unicode-transforms 
@@ -4260,12 +4261,6 @@ unsorted:
   - gnome-boxes-lang 
   - gnome-break-timer 
   - gnome-break-timer-lang 
-  - gnome-builder: [i586] 
-  - gnome-builder-doc: [i586] 
-  - gnome-builder-lang: [i586] 
-  - gnome-builder-plugin-jedi: [i586] 
-  - gnome-builder-plugin-jhbuild: [i586] 
-  - gnome-builder-plugin-vala-pack: [i586] 
   - gnome-calculator-devel 
   - gnome-calendar 
   - gnome-calendar-lang 
@@ -6436,7 +6431,6 @@ unsorted:
   - kubernetes-proxy: [x86_64] 
   - kubernetes-salt 
   - kubernetes-scheduler: [x86_64] 
-  - kubic-dex-branding: [x86_64] 
   - kubic-haproxycfg: [x86_64] 
   - kubic-locale-archive: [i586] 
   - kubic-pause 
@@ -6503,6 +6497,7 @@ unsorted:
   - ladspa-vcf 
   - ladspa-vlevel 
   - ladspa-vocoder 
+  - ladspa-zam-plugins 
   - laf-plugin 
   - laf-plugin-javadoc 
   - lame-doc 
@@ -7457,6 +7452,7 @@ unsorted:
   - libasan4 
   - libasan4-32bit: [x86_64] 
   - libasan5-32bit: [x86_64] 
+  - libase1: [x86_64] 
   - libaslcommon0 
   - libasm-devel 
   - libasm1-32bit: [x86_64] 
@@ -7606,6 +7602,7 @@ unsorted:
   - libbitcoinconsensus0 
   - libbitmask-devel 
   - libbitmask1 
+  - libbitstream1: [x86_64] 
   - libblacs2-gnu-mpich-hpc 
   - libblacs2-gnu-mpich-hpc-devel 
   - libblacs2-gnu-mvapich2-hpc 
@@ -7656,6 +7653,7 @@ unsorted:
   - libbluray-devel 
   - libbluray-tools 
   - libbluray2-32bit: [x86_64] 
+  - libbmc1: [x86_64] 
   - libbml-devel 
   - libbml1 
   - libboinc-devel 
@@ -8562,6 +8560,7 @@ unsorted:
   - libfonts-javadoc 
   - libformula-javadoc 
   - libfparser-4_5_2 
+  - libfpgad-api1: [x86_64] 
   - libfplll5 
   - libfpm_pb0 
   - libfprint-devel 
@@ -8675,6 +8674,7 @@ unsorted:
   - libgdbm_compat4-32bit: [x86_64] 
   - libgdiplus-devel 
   - libgdiplus0 
+  - libgdlmm-3_0-2 
   - libgdruntime76 
   - libgdruntime76-32bit: [x86_64] 
   - libgeda-data 
@@ -8936,6 +8936,7 @@ unsorted:
   - libgtkmm-3_0-1-32bit: [x86_64] 
   - libgtkpod1 
   - libgtksourceview-2_0-0 
+  - libgtksourceviewmm-4_0-0 
   - libgtop 
   - libgtop-2_0-11-32bit: [x86_64] 
   - libgtop-devel 
@@ -9157,7 +9158,7 @@ unsorted:
   - libhpdf2_3_0 
   - libhpx1 
   - libhs5 
-  - libhssi-io0: [x86_64] 
+  - libhssi-io1: [x86_64] 
   - libhtp-devel 
   - libhtp2 
   - libhttp_parser2_7_1-32bit: [x86_64] 
@@ -9339,7 +9340,6 @@ unsorted:
   - libjson-c-devel 
   - libjson-c-doc 
   - libjson-glib-1_0-0-32bit: [x86_64] 
-  - libjsonrpc-glib-1_0-1: [i586] 
   - libjte-devel 
   - libjthread1_3_3 
   - libjwt_verify_lib0: [x86_64] 
@@ -10087,7 +10087,7 @@ unsorted:
   - libomp9-devel 
   - liboop-devel 
   - liboop4 
-  - libopae-c0: [x86_64] 
+  - libopae-c1: [x86_64] 
   - libopagent1-32bit: [x86_64] 
   - libopal-devel 
   - libopamgt-devel: [x86_64] 
@@ -11383,7 +11383,6 @@ unsorted:
   - libtelepathy-qt5-farstream0-32bit: [x86_64] 
   - libtelepathy-qt5-service0 
   - libtelepathy-qt5-service0-32bit: [x86_64] 
-  - libtemplate_glib-1_0-0: [i586] 
   - libtepl-4-0 
   - libteredo5 
   - libtermkey-devel 
@@ -11592,7 +11591,6 @@ unsorted:
   - libustr-1_0-1-32bit: [x86_64] 
   - libustr-devel 
   - libut1 
-  - libut2 
   - libutempter0-32bit: [x86_64] 
   - libuuid-devel-32bit: [x86_64] 
   - libuuid-devel-static 
@@ -12493,6 +12491,7 @@ unsorted:
   - lv2-examples 
   - lv2-guitarix 
   - lv2-swh-plugins 
+  - lv2-zam-plugins 
   - lvm2-devel 
   - lvm2-lockd 
   - lvm2-testsuite 
@@ -13529,7 +13528,6 @@ unsorted:
   - mypaint-brushes 
   - mypaint-brushes-devel 
   - mypaint-lang 
-  - mypy: [i586] 
   - myspell-af_NA 
   - myspell-af_ZA 
   - myspell-an 
@@ -13733,7 +13731,9 @@ unsorted:
   - neko-devel 
   - neko-mysql 
   - nemesis 
+  - nemiver 
   - nemiver-devel 
+  - nemiver-lang 
   - nemo 
   - nemo-devel 
   - nemo-extension-actions 
@@ -14538,6 +14538,7 @@ unsorted:
   - opa-fmgui 
   - opa-snapconfig: [x86_64] 
   - opae: [x86_64] 
+  - opae-ase: [x86_64] 
   - opae-devel: [x86_64] 
   - opam 
   - opam-file-format-devel 
@@ -17249,7 +17250,6 @@ unsorted:
   - python-troveclient 
   - python-troveclient-doc 
   - python-txsocksx 
-  - python-typeshed: [i586] 
   - python-vips 
   - python-volatility 
   - python-watcherclient 
@@ -20708,7 +20708,6 @@ unsorted:
   - python3-javapackages 
   - python3-jdatetime 
   - python3-jdcal 
-  - python3-jedi: [i586] 
   - python3-jedihttp 
   - python3-jeepney 
   - python3-jellyfish 
@@ -20961,7 +20960,6 @@ unsorted:
   - python3-mutmut 
   - python3-mutt-ics 
   - python3-mygpoclient 
-  - python3-mypy_extensions: [i586] 
   - python3-mysql-connector-python 
   - python3-nagiosplugin 
   - python3-natsort 
@@ -21115,7 +21113,6 @@ unsorted:
   - python3-parse_type 
   - python3-parsedatetime 
   - python3-parsel 
-  - python3-parso: [i586] 
   - python3-partd 
   - python3-parted 
   - python3-parver 
@@ -21903,8 +21900,6 @@ unsorted:
   - python3-txZMQ 
   - python3-txaio 
   - python3-txtorcon 
-  - python3-typed-ast: [i586] 
-  - python3-typing_extensions: [i586] 
   - python3-tzlocal 
   - python3-u-msgpack-python 
   - python3-ua-parser 
@@ -24260,7 +24255,6 @@ unsorted:
   - tellico-lang 
   - telnet-server 
   - template-glib-devel 
-  - template-glib-lang: [i586] 
   - tennebon-dynamic-wallpaper 
   - tensorflow: [x86_64] 
   - tensorflow-avx2-gnu-hpc: [x86_64] 
@@ -31967,6 +31961,7 @@ unsorted:
   - typelib-1_0-CinnamonDesktop-3_0 
   - typelib-1_0-CjsPrivate-1_0 
   - typelib-1_0-CloudProviders-0_3_0 
+  - typelib-1_0-ClutterGst-3_0 
   - typelib-1_0-Cogl-2_0 
   - typelib-1_0-CoglPango-2_0 
   - typelib-1_0-Colord-1_0 
@@ -32064,7 +32059,6 @@ unsorted:
   - typelib-1_0-ICal-3_0 
   - typelib-1_0-ICalGLib-3_0 
   - typelib-1_0-Ido3-0_1 
-  - typelib-1_0-Jsonrpc-1_0: [i586] 
   - typelib-1_0-Keybinder-0_0 
   - typelib-1_0-Keybinder-3_0 
   - typelib-1_0-Libmsi-1_0 
@@ -32102,7 +32096,6 @@ unsorted:
   - typelib-1_0-SpiceClientGlib-2_0 
   - typelib-1_0-SpiceClientGtk-3_0 
   - typelib-1_0-TelepathyFarstream-0_6 
-  - typelib-1_0-Template-1_0: [i586] 
   - typelib-1_0-Tepl-4 
   - typelib-1_0-Thunarx-3_0 
   - typelib-1_0-TrackerMiner-2_0 
@@ -32113,7 +32106,6 @@ unsorted:
   - typelib-1_0-UnityExtras-7_0 
   - typelib-1_0-Urfkill-0_0 
   - typelib-1_0-Vips-8_5 
-  - typelib-1_0-Vte-2.91: [i586] 
   - typelib-1_0-WebKit2WebExtension-4_0 
   - typelib-1_0-Wnck-1_0 
   - typelib-1_0-Workrave-1_0 
@@ -32388,7 +32380,6 @@ unsorted:
   - velocity-demo 
   - velocity-javadoc 
   - velocity-manual 
-  - velum 
   - velum-branding 
   - verilator 
   - verilator-devel 
@@ -33296,7 +33287,8 @@ unsorted:
   - zabbix-server 
   - zabbix-server-mysql 
   - zabbix-server-postgresql 
-  - zam-plugins 
+  - zam-plugins-jack 
+  - zam-plugins-vst 
   - zanshin 
   - zanshin-lang 
   - zathura 
