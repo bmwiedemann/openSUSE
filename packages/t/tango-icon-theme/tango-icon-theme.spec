@@ -1,7 +1,7 @@
 #
 # spec file for package tango-icon-theme
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -37,9 +37,9 @@ BuildRequires:  icon-naming-utils
 BuildRequires:  intltool
 BuildRequires:  librsvg-devel
 # Needed by patch0, patch1 and patch2
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  libtool
-BuildRequires:  rsvg-view
-Requires:       hicolor-icon-theme
+BuildRequires:  rsvg-convert
 Recommends:     gnome-icon-theme >= 2.12.0
 BuildArch:      noarch
 
@@ -64,7 +64,7 @@ cd ../%{name}-extras-0.1.1
 # Needed by patch1
 autoreconf -fi
 %configure --enable-png-creation
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -76,7 +76,7 @@ cd ../%{name}-extras-0.1.1
 %post
 %icon_theme_cache_post Tango
 
-# No need for %%icon_theme_cache_postun in %postun since the theme won't exist anymore
+# No need for %%icon_theme_cache_postun in %%postun since the theme won't exist anymore
 
 %files
 %license COPYING

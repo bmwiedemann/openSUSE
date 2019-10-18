@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 18 10:19:07 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 3.11.2
+  * Implement hash interface for Alias instances, allowing them to be used in multi-source queries.
+  * Workaround for MySQL prior to 8 and MariaDB handling of union queries inside of parenthesized expressions (like IN).
+  * Be more permissive in letting invalid values be stored in a field whose type is INTEGER or REAL, since Sqlite allows this.
+  * Fix for issue #1991 regarding setting intervening models to None. 
+  * Fixes the Model._pk and get_id() interfaces so they no longer introduce the possibility of accidentally resolving the FK.
+
+-------------------------------------------------------------------
 Wed Sep 11 08:24:43 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.10.0:

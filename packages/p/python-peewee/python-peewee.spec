@@ -18,15 +18,18 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-peewee
-Version:        3.10.0
+Version:        3.11.2
 Release:        0
 Summary:        An expressive ORM that supports multiple SQL backends
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/coleifer/peewee
-Source:         https://files.pythonhosted.org/packages/source/p/peewee/peewee-%{version}.tar.gz
+Source:         https://github.com/coleifer/peewee/archive/%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module Flask}
+BuildRequires:  %{python_module apsw}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module mysql-connector-python}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
@@ -46,9 +49,11 @@ An expressive ORM that supports PostgreSQL, MySQL and SQLite.
 
 %install
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone %{buildroot}%{_bindir}/pwiz.py
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+
+%check
+%pytest_arch tests
 
 %files %{python_files}
 %license LICENSE

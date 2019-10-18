@@ -119,4 +119,12 @@
   * Many bugfixes to enumerate, see CHANGELOG.md</comment>
     <requestid>730058</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bf50872cd89fbed93f28cf99aab63d2a</srcmd5>
+    <version>3.11.2</version>
+    <time>1571406152</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>741075</requestid>
+  </revision>
 </revisionlist>

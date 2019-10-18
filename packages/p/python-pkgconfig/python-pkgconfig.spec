@@ -1,7 +1,7 @@
 #
 # spec file for package python-pkgconfig
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pkgconfig
-Version:        1.3.1
+Version:        1.5.1
 Release:        0
 Summary:        Interface Python with pkg-config
 License:        MIT
@@ -47,9 +47,6 @@ command line tool and supports Python 2.6+.
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-
-%check
-%python_exec -m nose test.py
 
 %files %{python_files}
 %license LICENSE

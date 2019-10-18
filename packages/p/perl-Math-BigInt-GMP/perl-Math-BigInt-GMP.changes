@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 12 13:46:57 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.6007
+   see /usr/share/doc/packages/perl-Math-BigInt-GMP/CHANGES
+
+  1.6007 2019-10-10
+  
+   * Sync test files with Math-BigInt.
+
+-------------------------------------------------------------------
 Thu Nov  8 06:33:27 UTC 2018 - Stephan Kulow <coolo@suse.com>
 
 - updated to 1.6006

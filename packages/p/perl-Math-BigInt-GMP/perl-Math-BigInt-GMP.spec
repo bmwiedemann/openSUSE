@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Math-BigInt-GMP
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           perl-Math-BigInt-GMP
-Version:        1.6006
+Version:        1.6007
 Release:        0
 %define cpan_name Math-BigInt-GMP
-Summary:        Backend Library for Math::Bigint Etc. Based On Gmp
+Summary:        Backend library for Math::BigInt etc. based on GMP
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
 Url:            https://metacpan.org/release/%{cpan_name}
@@ -29,9 +29,9 @@ Source1:        cpanspec.yml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Math::BigInt) >= 1.999812
+BuildRequires:  perl(Math::BigInt) >= 1.999817
 BuildRequires:  perl(Test::More) >= 0.82
-Requires:       perl(Math::BigInt) >= 1.999812
+Requires:       perl(Math::BigInt) >= 1.999817
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  gmp-devel
@@ -60,10 +60,10 @@ find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-%{__make} %{?_smp_mflags}
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
