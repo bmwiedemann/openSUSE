@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 10 10:02:31 UTC 2019 - psimons@suse.com
+
+- Update pantry to version 0.2.0.0.
+  ## v0.2.0.0
+
+  Bug fixes:
+
+  * Don't compare the hashes of cabal files.
+    Addresses bugs such as [Stack
+    #5045](https://github.com/commercialhaskell/stack/issues/5045).
+    Data type changes: removed the `pmCabal` and `rpmCabal` fields.
+
+-------------------------------------------------------------------
 Wed Aug 28 02:02:36 UTC 2019 - psimons@suse.com
 
 - Update pantry to version 0.1.1.2.

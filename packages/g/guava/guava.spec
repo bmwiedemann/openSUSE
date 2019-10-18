@@ -1,7 +1,7 @@
 #
 # spec file for package guava
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        Apache-2.0 AND CC0-1.0
 Group:          Development/Libraries/Java
 URL:            https://github.com/google/guava
 Source0:        https://github.com/google/guava/archive/v%{version}.tar.gz
+Patch0:         %{name}-%{version}-java8compat.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.google.code.findbugs:jsr305)
@@ -49,12 +50,14 @@ API documentation for %{name}.
 
 %package testlib
 Summary:        The guava-testlib artifact
+Group:          Development/Libraries/Java
 
 %description testlib
 guava-testlib provides additional functionality for conveninent unit testing
 
 %prep
 %setup -q
+%patch0 -p1
 
 find . -name '*.jar' -delete
 

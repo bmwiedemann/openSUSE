@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep  7 02:01:38 UTC 2019 - psimons@suse.com
+
+- Update profunctors to version 5.5.
+  5.5 [2019.09.06]
+  ----------------
+  * Change the type of `roam` to make it actually useful.
+  * Add a `Cochoice` instance for `Forget`.
+
+-------------------------------------------------------------------
 Sat May 11 02:00:37 UTC 2019 - psimons@suse.com
 
 - Update profunctors to version 5.4.

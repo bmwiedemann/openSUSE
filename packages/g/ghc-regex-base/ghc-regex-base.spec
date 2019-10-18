@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-regex-base
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %global pkg_name regex-base
 Name:           ghc-%{pkg_name}
-Version:        0.93.2
+Version:        0.94.0.0
 Release:        0
-Summary:        Replaces/Enhances Text.Regex
+Summary:        Common "Text.Regex.*" API for Regex matching
 License:        BSD-3-Clause
 Group:          Development/Libraries/Haskell
 URL:            https://hackage.haskell.org/package/%{pkg_name}
@@ -31,9 +31,24 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-text-devel
 
 %description
-Interface API for regex-posix,pcre,parsec,tdfa,dfa.
+This package doesn't provide the ability to do regex matching, but instead
+provides the type-classes that constitute the abstract API that is implemented
+by 'regex-*' backends such as
+
+* <//hackage.haskell.org/package/regex-posix regex-posix>
+
+* <//hackage.haskell.org/package/regex-parsec regex-parsec>
+
+* <//hackage.haskell.org/package/regex-dfa regex-dfa>
+
+* <//hackage.haskell.org/package/regex-tdfa regex-tdfa>
+
+* <//hackage.haskell.org/package/regex-pcre regex-pcre>
+
+See also <https://wiki.haskell.org/Regular_expressions> for more information.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -65,5 +80,6 @@ This package provides the Haskell %{pkg_name} library development files.
 %license LICENSE
 
 %files devel -f %{name}-devel.files
+%doc ChangeLog.md
 
 %changelog

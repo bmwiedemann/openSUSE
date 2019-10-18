@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Sep 25 02:02:31 UTC 2019 - psimons@suse.com
+
+- Update math-functions to version 0.3.3.0.
+  ## Changes in 0.3.3.0
+
+    * New implementation for `logGamma`. Now it's precise within 2 ulps at full
+      range including zeros at 1 and 2.
+
+    * Bug with precision loss of `invErf` for parameters near zero is fixed.
+
+    * Fixed loss of precision in bundled `erf` near zero. (Affect primarily GHCJS)
+
+    * `factorial` for now uses lookup table
+
+    * `logFactorial` is optimized a bit (less number of terms is used)
+
+    * `m_sqrt_eps` constant added.
+
+    * Module `Numeric.SpecFunctions.Internal` is exposed.
+
+    * Many improvements for test suite. Tables of expected function values are
+      generated with mpmath, error estimates improved. Test suite itself is
+      migrated to `tasty` from `test-framework`.
+
+-------------------------------------------------------------------
+Tue Sep 10 02:02:37 UTC 2019 - psimons@suse.com
+
+- Update math-functions to version 0.3.2.1.
+  ## Changes in 0.3.2.1
+
+    * Fixes build on windows for GHC<8.0
+
+-------------------------------------------------------------------
+Fri Sep  6 06:39:53 UTC 2019 - psimons@suse.com
+
+- Update math-functions to version 0.3.2.0.
+  ## Changes in 0.3.2.0
+
+    * GHCJS is now supported
+
+    * Flag `system-expm1` is set to true by default. Only affects GHC<8.0
+
+-------------------------------------------------------------------
 Wed Nov 14 03:01:50 UTC 2018 - psimons@suse.com
 
 - Update math-functions to version 0.3.1.0.

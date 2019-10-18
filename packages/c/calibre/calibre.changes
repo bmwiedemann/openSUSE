@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Fri Oct 18 09:07:56 UTC 2019 - ecsos@opensuse.org
+
+- Update to 4.2.0
+  New features
+  - macOS: Various improvements to dark mode support"
+  - Viewer: Dont generate covers for books that dont have a cover.
+    Note that because of this all previously opened books will again
+    be prepared for first time reading.
+  - Viewer: Restore print to PDF functionality
+  - Viewer: Allow also jumping to book positions in Goto->Location
+  - Content server: When adding books and a duplicate is suspected
+    provide more information about what books match the duplicate
+  - FB2 Output: Speed up conversion of images and handle external
+    links
+  - Viewer: If the book has no ToC try to generate one from 
+    headings, if any.
+  - Viewer: Improve rendering of comics. No blank pages after large 
+    images or after every image in multi-page mode.
+  - Viewer: Make it easier to use the bookmarks panel with only
+    keyboard.
+  - Viewer: Set the classes calibre-viewer-paginated and 
+    calibre-viewer-scrolling on the <body> tag in Paged and Flow 
+    modes. This allows the User styles to target these modes, 
+    if needed.
+  - Viewer: Use the same loading spinner as is used by the rest of
+    calibre
+  Bug fixes
+  - Edit book: Fix a crash when editing CSS files caused by a 
+    behavior change in Qt 5.13.
+  - Fix a regression in 4.0 that broke rendering of PDF covers for
+    PDF files that used JPEG2000 compression.
+  - Viewer: Fix a regression in 4.1 that broke creating new color
+    schemes
+  - Viewer: Fix error while viewing books with a comment after a 
+    <meta> tag.
+  - Viewer: Fix an error when processing a CFI with an invalid 
+    text offset.
+  - Viewer: Fix scrolling backwards to previous chapter not always 
+    scrolling to the end of the chapter, if the chapter loads 
+    external resources.
+  - Viewer: Fix hang on books with namespaced attributes on <html> 
+    that do not belong to a known ebook namespace.
+  - Viewer: Fix search history not persisting between viewer 
+    restarts.
+  - Viewer: Fix scrollbar showing up on initial book open even if 
+    disabled in preferences.
+  - Viewer: Fix rendering of books with mathematics failing
+  - Viewer: When changing between individual sections/chapters in 
+    the book, only render the new chapter after loading is complete
+  - Viewer: Fix scrolling by screenfuls not working correctly in 
+    flow mode
+  - EPUB 2 metadata: Fix obfuscated fonts being broken when updating
+    metadata if the file uses Adobe font obfuscation and the 
+    identifier with the key has an uppercase UUID scheme name.
+  - Viewer: Fix right clicking on margins not showing controls
+  - Viewer: Preselect text in search box when showing it.
+  - Viewer: Fix SVG images that use xlink:href to refer to paths 
+    not being displayed.
+  - Content server: Fix detection of iOS on iPAD with iOS 13 which 
+    defaults to desktop mode
+  - Metadata jacket: Fix <br> tags in the comments not being rendered 
+    correctly when inserting the comments into the jacket page.
+  - Viewer: Show nicer error message for DRMed books
+  - Viewer: Fix preferences under Scrolling behavior not being saved
+    correctly
+  - Viewer: Fix remembered position sometimes off by one page in 
+    paged mode.
+  - Viewer: restrict max size of margin page turn indicators to 
+    25px rather than 75px
+  - Viewer: Dont flash the home page before loading a book if 
+    a book has been specified
+  - Viewer: Fix ctrl+m shortcut not working on windows
+  - Content server: Fix regression that caused series name in book
+    details view not not be blue to indicate it is clickable
+  Improved recipes
+  - Various Polish news sources
+  - Il Sole 24 Ore
+   
+-------------------------------------------------------------------
 Tue Oct  8 11:19:55 UTC 2019 - ecsos@opensuse.org
 
 - Update to 4.1.0

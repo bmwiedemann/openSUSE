@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 17 10:49:26 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.6.0
+  * Updated the old yet non-oficial CMake build option.
+  * Fix HiDPI display screen effective support (Qt >= 5.6).
+  * System-tray icon context menu has been refactored to
+    be exactly the same as the main-window context menu
+    that is re-instantiated on demand.
+  * Make sure compiler flags comply to c++11 as standard.
+
+-------------------------------------------------------------------
 Fri Jul 12 18:44:21 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.5.7

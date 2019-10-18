@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct  3 02:02:18 UTC 2019 - psimons@suse.com
+
+- Update blaze-html to version 0.9.1.2.
+  - 0.9.1.2 (2019-10-02)
+      * Bump QuickCheck dependency to 2.13
+      * Bump containers dependency to 0.6
+      * Check in generated code
+      * Regenerate .travis.yml using haskell-ci
+
+-------------------------------------------------------------------
 Sat Oct 20 11:31:15 UTC 2018 - Peter Simons <psimons@suse.com>
 
 - Use https URL to refer to bugs.opensuse.org.

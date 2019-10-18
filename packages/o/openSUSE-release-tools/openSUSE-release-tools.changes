@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Oct 17 11:07:50 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20191017.16ae84df:
+  * suppkg_rebuild: decode bytes before comparing
+
+-------------------------------------------------------------------
+Thu Oct 17 07:52:03 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20191017.23d4c737:
+  * build-fail-notification: Fix how we address the user
+
+-------------------------------------------------------------------
+Wed Oct 16 17:43:25 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20191016.ad934285:
+  * Added Vagrant box in 15-SP2 release tool
+
+-------------------------------------------------------------------
 Wed Oct 16 15:34:03 UTC 2019 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20191016.455c1428:

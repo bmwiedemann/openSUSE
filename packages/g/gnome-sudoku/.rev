@@ -270,4 +270,15 @@
     <comment></comment>
     <requestid>689468</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>f315bac8b26dde5e507e3f28e17f5d4b</srcmd5>
+    <version>3.34.1</version>
+    <time>1571402142</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.34.1:
+  + Fix earmark popover regression.
+  + Fix appdata release tags.
+  + Updated translations. (forwarded request 738451 from iznogood)</comment>
+    <requestid>738533</requestid>
+  </revision>
 </revisionlist>

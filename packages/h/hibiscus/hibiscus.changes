@@ -1,7 +1,100 @@
 -------------------------------------------------------------------
+Thu Oct 17 15:21:59 UTC 2019 - ecsos@opensuse.org
+
+- Update to 2.8.18
+  - NEW: 0837 Update auf HBCI4Java 3.1.13
+  - CHG: 0836 Neue HBCI4Java-Version https://github.com/hbci4j/hbci4java/commit/9813da9a9898eadc65f07fa8724c3079502863cc
+  - BUG: 0835 Klickt man bei einem neu angelegten 
+    ChipTAN-USB-tauglichen Bankzugang direkt nach dem Anlegen 
+    nochmal auf Speichern, wurde ein Fehler angezeigt, weil die 
+    Checkbox „Kartenleser via USB…“ noch fehlt
+  - NEW: 0834 Update auf HBCI4Java 3.1.12
+  - NEW: 0833 Update auf HBCI4Java 3.1.12-SNAPSHOT
+
+- Changes from 2.8.17
+  - NEW: 0832 Update auf HBCI4Java 3.1.11 (relevant für Comdirect)
+  - NEW: 0831 Update auf HBCI4Java 3.1.10
+  - NEW: 0830 Neue Option „Bei Erhalt der TAN automatisch 
+    fortsetzen“ bei ChipTAN USB
+
+- Changes from 2.8.16
+  - NEW: 0829 Update auf HBCI4Java 3.1.9
+  - NEW: 0828 Update auf HBCI4Java 3.1.8
+  - NEW: 0827 Update auf HBCI4Java 3.1.7
+  - NEW: 0826 Update auf HBCI4Java 3.1.6
+
+- Changes from 2.8.15
+  - NEW: 0826 Ergänzende Hilfetexte für die feste Zuordnung von 
+    Konten zu einem Bank-Zugang
+  - NEW: 0825 Update auf HBCI4Java 3.1.5 (Bugfix für Postbank)
+
+- Changes from 2.8.14
+  - NEW: 0824 Update auf HBCI4Java 3.1.4
+  - NEW: 0823 Neue HBCI4Java-Version HBCI4Java-Version - tolerieren,
+    wenn Eingabestream nicht vorhanden ist
+  - BUG: 0822 Update auf HBCI4Java 3.1.3 - NPE beim Umsatzabruf im
+    CAMT-Format, wenn BIC in Gegenkonto fehlt
+  - NEW: 0821 Update auf HBCI4Java 3.1.2 - SCA-Code 3076 auch in 
+    HIRMG suchen
+  - NEW: 0820 Hinweis-Text anzeigen, wenn nicht die erwartete 
+    HBCI4Java-Version geladen wurde - potentieller Installations- 
+    fehler
+  - NEW: 0819 Buttons zum Vergrößern und Verkleinern der Grafik bei
+    Matrix-TAN
+  - CHG: 0818 Überlange Namen von Banken stärker kürzen
+  - NEW: 0817 Update auf HBCI4Java 3.1.1 - beim Aktualisieren eines
+    Dauerauftrages war die Reihenfolge der HBCI-Nachrichten nicht
+    korrekt
+  - NEW: 0816 Update auf HBCI4Java 3.1.0
+  - NEW: 0815 Neue HBCI4Java-Version HBCI4Java-Version - Fehler 
+    beim Finalisieren der ChipTAN-USB Transaktion tolerieren
+  - NEW: 0814 Neue HBCI4Java-Version HBCI4Java-Version - 
+    Sicherstellen, dass HBCI+ noch funktioniert - wenn auch ohne SCA
+  - NEW: 0813 Neue HBCI4Java-Version HBCI4Java-Version - Abruf 
+    TAN-Medien und SEPA-Infos nur noch, wenn nötig
+  - NEW: 0812 Fortschrittsbalken bei der Konten-Synchronisierung 
+    jetzt kontinuierlicher und mit übersichtlicherem Logging
+  - NEW: 0811 Neue HBCI4Java-Version HBCI4Java-Version - weniger 
+    Logging, dafür aber verständlicher
+  - NEW: 0810 Neue HBCI4Java-Version HBCI4Java-Version - HKTAN 
+    jetzt auch in der anonymen Dialog-Initialisierung mitsenden, 
+    wenn noch keine Infos zum TAN-Verfahren bekannt sind
+  - NEW: 0809 Neue HBCI4Java-Version HBCI4Java-Version - erste 
+    funktional komplette Version mit SCA-Support
+  - NEW: 0808 Eigene Datumsformate in Velocity-Templates verwendbar
+  - NEW: 0807 Neue obantoo-Version mit aktualisierter BLZ-Datei 
+    gültig ab 09.09.2019
+  - NEW: 0806 Neue HBCI4Java-Version HBCI4Java-Version - HKTAN mit 
+    SCA-Ausnahme via 3076 sollte jetzt auch bei GVs gehen
+  - NEW: 0805 Neue HBCI4Java-Version HBCI4Java-Version - besseres 
+    Handling bei fehlendem tanmedia
+  - NEW: 0804 Neue HBCI4Java-Version HBCI4Java-Version mit erstem 
+    SCA-Support für PSD2
+  - CHG: 0803 Deutlicheren Hinweis anzeigen, wenn man versucht, 
+    eine SEPA-Lastschrift als Überweisung zu importieren
+    (und umgekehrt)
+  - BUG: 0802 Wenn man in der Umsatzliste eine Kontogruppe 
+    ausgewählt hat und diese Auswahl bestehen blieb, führte das 
+    beim nächsten Hibiscus-Start zu einem internen Fehler, der 
+    anschließend das automatisch Backup beim Shutdown verhinderte
+  - NEW: 0801 Nummer der Umsatzbuchung beim Druck mit ausgeben
+  - BUG: 0800 Erneutes Fix bei der Auswertung des Job-Status - 
+    Auftrag konnte u.U. fälschlicherweise als ausgeführt markiert 
+    werden, obwohl die Bank einen Fehler gesendet hat
+  - BUG: 0799 Bei der Anzeige der Umsätze nach Kategorien kann es
+    zu einem Fehler wegen der Sortierung kommen
+  - NEW: 0798 Spaltenbreite im Kategorie-Auswahl-Dialog speichern,
+    die Spalte mit der Bezeichnung kann zu kurz werden, wenn man 
+    einen Suchbegriff eingibt
+  - BUG: 0797 Wenn eine Auftragsart nicht unterstützt wird, wurde 
+    beim Versuch diese abzusenden in der Logdatei eine NPE geloggt.
+    Das leitete bei der Fehlersuche in die Irre - 
+    siehe https://homebanking-hilfe.de/forum/topic.php?p=145321#real145321
+
+-------------------------------------------------------------------
 Wed Jun 26 10:10:58 UTC 2019 - ecsos@opensuse.org
 
-- Updateto 2.8.13
+- Update to 2.8.13
   - NEW: 0796 Neue HBCI4Java-Version - fehlendes Tag „:25:“ in 
     MT940 tolerieren
   - NEW: 0795 Neue HBCI4Java-Version mit Fallback-Länderkennung DE,

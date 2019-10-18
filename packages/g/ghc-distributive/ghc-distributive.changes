@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep  7 02:01:56 UTC 2019 - psimons@suse.com
+
+- Update distributive to version 0.6.1.
+  0.6.1 [2019.09.06]
+  ------------------
+  * Add a `Distributive` instance for `WrappedMonad m`.
+
+-------------------------------------------------------------------
 Sat Oct 20 11:31:26 UTC 2018 - Peter Simons <psimons@suse.com>
 
 - Use https URL to refer to bugs.opensuse.org.

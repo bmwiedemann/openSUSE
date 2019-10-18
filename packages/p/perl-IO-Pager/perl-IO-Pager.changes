@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Oct  9 08:16:45 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.01
+   see /usr/share/doc/packages/perl-IO-Pager/CHANGES
+
+  1.01	Tue Oct 08 2019
+  	Add less.pm to MANIFEST
+  
+  	Fix interactive test 16
+  
+  1.00	Mon Oct 07 2019
+  	Fork Term::Pager to IO::Pager::Perl, with many new features.
+  	NOTE: This is a breaking change from 0.43 & 0.44. What was
+  	IO::Pager::Perl in those versions is now IO::Pager::less i.e;
+  	a shim for pager-less systems to use the pure perl pager
+  	implementation in IO::Pager::Perl.
+  
+  	Update bloody version number transclusions. RT#130643
+  
+  0.44	Mon Sep 30 2019
+  	Remove debugging calls mistakenly left in code. RT#130595
+  
+  	Skip testing on dumb "terminal" setups. RT#130596
+  
+  	Add (unexposed) code for less -J search line highlighting,
+  	and more form feed break to tp (IO::Pager::Perl).
+  
+  0.43	Sun Sep 29 2019
+  	Roll out a suboptimal but functional IO::Pager::Perl,
+  	fixing RT#130461 and RT#130565
+
+-------------------------------------------------------------------
 Fri Sep  6 08:10:18 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 0.42

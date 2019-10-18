@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pip-tools
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        Tool to keep pinned dependencies up to date
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/jazzband/pip-tools/
 Source:         https://files.pythonhosted.org/packages/source/p/pip-tools/pip-tools-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools_scm}

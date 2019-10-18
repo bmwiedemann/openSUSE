@@ -18,7 +18,7 @@
 
 %global pkg_name skylighting
 Name:           ghc-%{pkg_name}
-Version:        0.8.2
+Version:        0.8.2.3
 Release:        0
 Summary:        Syntax highlighting library
 License:        GPL-2.0-or-later
@@ -26,26 +26,11 @@ Group:          Development/Libraries/Haskell
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-aeson-devel
-BuildRequires:  ghc-ansi-terminal-devel
-BuildRequires:  ghc-attoparsec-devel
-BuildRequires:  ghc-base64-bytestring-devel
 BuildRequires:  ghc-binary-devel
-BuildRequires:  ghc-blaze-html-devel
 BuildRequires:  ghc-bytestring-devel
-BuildRequires:  ghc-case-insensitive-devel
-BuildRequires:  ghc-colour-devel
 BuildRequires:  ghc-containers-devel
-BuildRequires:  ghc-directory-devel
-BuildRequires:  ghc-filepath-devel
-BuildRequires:  ghc-hxt-devel
-BuildRequires:  ghc-mtl-devel
-BuildRequires:  ghc-regex-pcre-builtin-devel
 BuildRequires:  ghc-rpm-macros
-BuildRequires:  ghc-safe-devel
 BuildRequires:  ghc-skylighting-core-devel
-BuildRequires:  ghc-text-devel
-BuildRequires:  ghc-utf8-string-devel
 
 %description
 Skylighting is a syntax highlighting library with support for over one hundred

@@ -1,5 +1,5 @@
 Name:                memory
-version:             0.14.18
+version:             0.15.0
 x-revision: 1
 Synopsis:            memory and related abstraction stuff
 Description:
@@ -81,10 +81,12 @@ Library
                      Data.ByteArray.Methods
                      Data.ByteArray.MemView
                      Data.ByteArray.View
+
+  build-depends: base >= 4.9 && < 5
   if impl(ghc < 8.0)
-    build-depends:   base >= 4.9.0.0 && < 4.13
+    build-depends:   base
   else
-    build-depends:   base >= 4.9.0.0 && < 5
+    build-depends:   base
                    , ghc-prim
   -- FIXME armel or mispel is also little endian.
   -- might be a good idea to also add a runtime autodetect mode.
@@ -105,7 +107,7 @@ Library
     Build-depends:   deepseq >= 1.1
   if flag(support_foundation) || flag(support_basement)
     CPP-options:     -DWITH_BASEMENT_SUPPORT
-    Build-depends:   basement
+    Build-depends:   basement >= 0.0.7
     exposed-modules: Data.ByteArray.Sized
 
   ghc-options:       -Wall -fwarn-tabs
@@ -118,8 +120,11 @@ Test-Suite test-memory
   Other-modules:     Imports
                      SipHash
                      Utils
-  Build-Depends:     base
-                   , bytestring
+  if impl(ghc < 8.0)
+    buildable: False
+  else
+    build-depends:   base
+  Build-Depends:     bytestring
                    , memory
                    , basement >= 0.0.7
                    , foundation

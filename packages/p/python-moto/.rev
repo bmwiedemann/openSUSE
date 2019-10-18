@@ -23,4 +23,19 @@
     <comment></comment>
     <requestid>705183</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>900dd758fa2c5e2846faa3cf8ff42282</srcmd5>
+    <version>1.3.13</version>
+    <time>1571402162</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix working with newer botocore from upstream
+  git:
+  * botocore.patch
+
+- Enable testsuite
+
+- Update to 1.3.13:
+  * Various fixes and updates to match up features in boto/botocore</comment>
+    <requestid>739040</requestid>
+  </revision>
 </revisionlist>

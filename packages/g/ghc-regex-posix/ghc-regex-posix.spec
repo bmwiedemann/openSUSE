@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-regex-posix
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %global pkg_name regex-posix
 Name:           ghc-%{pkg_name}
-Version:        0.95.2
+Version:        0.96.0.0
 Release:        0
-Summary:        Replaces/Enhances Text.Regex
+Summary:        POSIX Backend for "Text.Regex" (regex-base)
 License:        BSD-3-Clause
 Group:          Development/Libraries/Haskell
 URL:            https://hackage.haskell.org/package/%{pkg_name}
@@ -33,7 +33,16 @@ BuildRequires:  ghc-regex-base-devel
 BuildRequires:  ghc-rpm-macros
 
 %description
-The posix regex backend for regex-base.
+The POSIX regex backend for <//hackage.haskell.org/package/regex-base
+regex-base>.
+
+The main appeal of this backend is that it's very lightweight due to its
+reliance on the ubiquitous
+<https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/regex.h.html POSIX.2
+regex> facility that is provided by the standard C library on most POSIX
+platforms.
+
+See also <https://wiki.haskell.org/Regular_expressions> for more information.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -65,5 +74,6 @@ This package provides the Haskell %{pkg_name} library development files.
 %license LICENSE
 
 %files devel -f %{name}-devel.files
+%doc ChangeLog.md
 
 %changelog

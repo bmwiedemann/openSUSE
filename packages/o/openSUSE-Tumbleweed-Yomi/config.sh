@@ -179,12 +179,12 @@ mkdir -p /etc/systemd/system/salt-minion.service.d/
 # Add a systemd overlay for salt-minion.service that will set the
 # master address to looking for.  We can inject the master address via
 # the boot parameters, using the variable 'master'.  For example:
-# 'master=master'.  By default the master address will be 'master'
+# 'master=10.0.2.2'.  By default the master address will be 'salt'
 cat > /usr/bin/master.sh <<-'EOF'
 	#!/bin/sh
 
 	# Default value of master
-	master=master
+	master=salt
 
 	# Search for the parameter 'master=' in /proc/cmdline
 	for arg in $(cat /proc/cmdline); do

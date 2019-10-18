@@ -18,7 +18,7 @@
 
 %global pkg_name connection
 Name:           ghc-%{pkg_name}
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        Simple and easy network connections API
 License:        BSD-3-Clause

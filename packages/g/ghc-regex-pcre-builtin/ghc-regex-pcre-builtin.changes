@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Oct  4 02:02:04 UTC 2019 - psimons@suse.com
+
+- Update regex-pcre-builtin to version 0.95.1.1.8.43.
+  Upstream has not updated the file "ChangeLog.md" since the last
+  release.
+
+-------------------------------------------------------------------
+Thu Oct  3 02:02:06 UTC 2019 - psimons@suse.com
+
+- Update regex-pcre-builtin to version 0.95.1.0.8.43.
+  Upstream added a new change log file in this release. With no
+  previous version to compare against, the automatic updater cannot
+  reliable determine the relevante entries for this release.
+
+-------------------------------------------------------------------
+Tue Oct  1 02:01:30 UTC 2019 - psimons@suse.com
+
+- Update regex-pcre-builtin to version 0.95.0.8.8.35.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Mon Sep 30 02:01:22 UTC 2019 - psimons@suse.com
+
+- Update regex-pcre-builtin to version 0.94.5.8.8.35.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Sat Oct 20 11:31:55 UTC 2018 - Peter Simons <psimons@suse.com>
 
 - Use https URL to refer to bugs.opensuse.org.

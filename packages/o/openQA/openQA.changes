@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Oct 17 07:52:16 UTC 2019 - coolo@suse.com
+
+- Update to version 4.6.1571253176.1a322744e:
+  * PostgreSQL errors can be localized, so just use the name of the unique constraint
+  * worker: Do not treat reconnect attempts as errors but with warning only
+  * Remove wrong error handling code when sending ws messages
+  * Prevent potential deadlocks in scheduler and ws server
+  * Hide old job templates editor for new groups
+  * Handle unique constraint correctly
+  * Add missing resultset for screenshots and make a few small optimizations
+  * Drop -v flag on test runs and avoid noisy job "name"
+  * clone job: Support specifying a port in host URL
+  * Add Dockerfiles from devel:openQA:ci (#2401)
+  * Allow . for job template name/ test suite in schema
+  * Remove openqa_dev from our spec file
+  * Add a docs section elaborating on YAML by way of example
+  * Fix openqa-load-templates example in documentation
+
+-------------------------------------------------------------------
 Mon Oct 14 09:07:30 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - Reset changes in test subpackages (useless duplication)

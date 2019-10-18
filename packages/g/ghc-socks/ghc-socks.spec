@@ -18,7 +18,7 @@
 
 %global pkg_name socks
 Name:           ghc-%{pkg_name}
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        Socks proxy (ver 5)
 License:        BSD-3-Clause

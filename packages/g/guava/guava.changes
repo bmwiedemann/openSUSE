@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 10 21:00:22 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * guava-25.0-java8compat.patch
+    + Avoid callingoverridden methods with covariant return types
+      for java.nio.ByteBuffer and java.nio.CharBuffer, which were
+      introduced in Java 9
+    + This allows us to produce with Java >= 9 binaries that are
+      compatible with Java 8
+
+-------------------------------------------------------------------
 Fri Apr 12 10:05:01 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of guava 25.0

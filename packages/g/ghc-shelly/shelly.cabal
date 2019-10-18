@@ -1,6 +1,6 @@
 Name:       shelly
 
-Version:     1.8.1
+Version:     1.9.0
 x-revision: 1
 Synopsis:    shell-like (systems) programming in Haskell
 
@@ -14,7 +14,7 @@ Description: Shelly provides convenient systems programming in Haskell,
              .
                * maintains its own environment, making it thread-safe.
              .
-               * is modern, using Text and system-filepath/system-fileio
+               * is modern, using Text filepath/directory
              .
              Shelly is originally forked from the Shellish package.
              .
@@ -47,18 +47,16 @@ Library
   Exposed-modules: Shelly, Shelly.Lifted, Shelly.Pipe, Shelly.Unix
   other-modules:   Shelly.Base, Shelly.Find, Shelly.Directory
   hs-source-dirs: src
-  other-extensions: InstanceSigs
 
   Build-depends:
     containers                >= 0.4.2.0,
-    time                      >= 1.3 && < 1.9,
+    time                      >= 1.3 && < 1.10,
     directory                 >= 1.3.0.0 && < 1.4.0.0,
     mtl                       >= 2,
     process                   >= 1.0,
     unix-compat               < 0.6,
     unix,
-    system-filepath           >= 0.4.7 && < 0.5,
-    system-fileio             < 0.4,
+    filepath,
     monad-control             >= 0.3.2 && < 1.1,
     lifted-base,
     lifted-async,
@@ -66,6 +64,7 @@ Library
     enclosed-exceptions,
     text, bytestring, async, transformers, transformers-base
 
+  build-depends: base >= 4.9
   if impl(ghc >= 7.6.1)
     build-depends:
         base >= 4.6 && < 5
@@ -113,7 +112,7 @@ Test-Suite shelly-testsuite
     WhichSpec
     WriteSpec
 
-  ghc-options: -O2 -Wall -fwarn-tabs -funbox-strict-fields -threaded
+  ghc-options: -Wall -fwarn-tabs -funbox-strict-fields -threaded
                -fno-warn-unused-do-bind -fno-warn-type-defaults
 
 
@@ -132,9 +131,7 @@ Test-Suite shelly-testsuite
     process                   >= 1.1.0,
     unix-compat               < 0.6,
     unix,
-    system-filepath           >= 0.4.7 && < 0.5,
-    system-fileio             < 0.4,
-    time                      >= 1.3 && < 1.9,
+    time                      >= 1.3 && < 1.10,
     mtl                       >= 2,
     HUnit                     >= 1.2,
     hspec                     >= 2.0,
@@ -147,6 +144,9 @@ Test-Suite shelly-testsuite
     lifted-async,
     enclosed-exceptions,
     exceptions
+
+  if impl(ghc < 8.0)
+    build-depends:       fail >= 4.9 && < 4.10
 
   extensions:
     CPP

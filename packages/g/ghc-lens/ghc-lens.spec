@@ -19,14 +19,13 @@
 %global pkg_name lens
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        4.17.1
+Version:        4.18.1
 Release:        0
 Summary:        Lenses, Folds and Traversals
 License:        BSD-2-Clause
 Group:          Development/Libraries/Haskell
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-array-devel
 BuildRequires:  ghc-base-orphans-devel
@@ -55,6 +54,7 @@ BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-th-abstraction-devel
 BuildRequires:  ghc-transformers-compat-devel
 BuildRequires:  ghc-transformers-devel
+BuildRequires:  ghc-type-equality-devel
 BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-vector-devel
 %if %{with tests}
@@ -111,7 +111,7 @@ constructions looks like:
 
 <<http://i.imgur.com/ALlbPRa.png>>
 
-<Hierarchy.png (Local Copy)>
+<images/Hierarchy.png (Local Copy)>
 
 You can compose any two elements of the hierarchy above using '(.)' from the
 'Prelude', and you can use any element of the hierarchy as any type it linked
@@ -170,7 +170,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

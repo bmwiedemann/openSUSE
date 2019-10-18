@@ -17,7 +17,7 @@
 
 
 Name:           perl-Test-Compile
-Version:        2.2.2
+Version:        2.3.0
 Release:        0
 %define cpan_name Test-Compile
 Summary:        Check whether Perl files compile correctly
@@ -44,8 +44,7 @@ Recommends:     perl(Devel::CheckOS)
 
 %description
 'Test::Compile' lets you check the whether your perl modules and scripts
-compile properly, and report its results in standard 'Test::Simple'
-fashion.
+compile properly, results are reported in standard 'Test::Simple' fashion.
 
 The basic usage - as shown above, will locate your perl files and test that
 they all compile.

@@ -1,0 +1,53 @@
+From 3f7e44cade8aae45396f6bbdd22c60ce4cd508d2 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Fri, 18 Oct 2019 09:36:27 +0200
+Subject: [PATCH] Fix reading environment variables with newline
+
+Summary:
+Use '\0' as separator as '\n' is likely to appear in values.
+
+BUG: 413130
+
+Test Plan:
+/etc/profile.d/mc.sh exported an mc() function,
+which resulted in "syntax error: unexpected end of file" in the Plasma session.
+Now the mc function is correctly set in the environment.
+
+Reviewers: #plasma, apol
+
+Subscribers: plasma-devel
+
+Tags: #plasma
+
+Differential Revision: https://phabricator.kde.org/D24750
+---
+ startkde/plasma-sourceenv.sh | 2 +-
+ startkde/startplasma.cpp     | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/startkde/plasma-sourceenv.sh b/startkde/plasma-sourceenv.sh
+index 70c3b6487..b8a50aa0d 100644
+--- a/startkde/plasma-sourceenv.sh
++++ b/startkde/plasma-sourceenv.sh
+@@ -3,4 +3,4 @@ do
+     . $i >/dev/null
+ done
+ 
+-env
++env -0
+diff --git a/startkde/startplasma.cpp b/startkde/startplasma.cpp
+index e0f7004b4..cb4eda2b8 100644
+--- a/startkde/startplasma.cpp
++++ b/startkde/startplasma.cpp
+@@ -91,7 +91,7 @@ void sourceFiles(const QStringList &files)
+     p.waitForFinished(-1);
+ 
+     const auto fullEnv = p.readAllStandardOutput();
+-    auto envs = fullEnv.split('\n');
++    auto envs = fullEnv.split('\0');
+ 
+     for (auto &env: envs) {
+         if (env.startsWith("_=") || env.startsWith("SHLVL"))
+-- 
+2.22.0
+

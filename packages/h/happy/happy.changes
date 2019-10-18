@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep  4 02:03:27 UTC 2019 - psimons@suse.com
+
+- Update happy to version 1.19.12.
+  1.19.12
+
+          * Fix for building with GHC 8.8.x
+          * Move custom Setup preprocessing steps into a separate
+            executable, like Alex
+
+  -----------------------------------------------------------------------------
+
+-------------------------------------------------------------------
 Fri Jun  7 02:01:39 UTC 2019 - psimons@suse.com
 
 - Update happy to version 1.19.11.

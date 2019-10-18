@@ -19,14 +19,14 @@
 %global pkg_name turtle
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.5.14
+Version:        1.5.15
 Release:        0
 Summary:        Shell programming, Haskell-style
 License:        BSD-3-Clause
 Group:          Development/Libraries/Haskell
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/3.cabal#/%{pkg_name}.cabal
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-ansi-wl-pprint-devel
 BuildRequires:  ghc-async-devel
@@ -44,6 +44,7 @@ BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-semigroups-devel
 BuildRequires:  ghc-stm-devel
+BuildRequires:  ghc-streaming-commons-devel
 BuildRequires:  ghc-system-fileio-devel
 BuildRequires:  ghc-system-filepath-devel
 BuildRequires:  ghc-temporary-devel
@@ -54,6 +55,7 @@ BuildRequires:  ghc-unix-compat-devel
 BuildRequires:  ghc-unix-devel
 %if %{with tests}
 BuildRequires:  ghc-doctest-devel
+BuildRequires:  ghc-fail-devel
 %endif
 
 %description

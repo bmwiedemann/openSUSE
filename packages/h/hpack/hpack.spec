@@ -19,7 +19,7 @@
 %global pkg_name hpack
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.31.2
+Version:        0.32.0
 Release:        0
 Summary:        A modern format for Haskell packages
 License:        MIT

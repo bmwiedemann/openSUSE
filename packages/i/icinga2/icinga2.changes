@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Oct 17 15:08:56 UTC 2019 - ecsos@opensuse.org
+
+- Update to 2.11.1
+  This release fixes a hidden long lasting bug unveiled with 2.11 
+  and distributed setups. If you are affected by agents/satellites
+  not accepting configuration anymore, or not reloading, please upgrade.
+  * Bugfixes
+    - Cluster Config Sync
+      - Never accept authoritative config markers from other instances #7552
+      - This affects setups where agent/satellites are newer than the config master, e.g. satellite/agent=2.11.0, master=2.10.
+    - Configuration
+      - Error message for command_endpoint should hint that zone is not set #7514
+      - Global variable 'ActiveStageOverride' has been set implicitly via 'ActiveStageOverride ... #7521
+  * Documentation
+    - Docs: Add upgrading/troubleshooting details for repos, config sync, agents #7526
+      - Explain repository requirements for 2.11: 
+        https://icinga.com/docs/icinga2/latest/doc/16-upgrading-icinga-2/#added-boost-166
+      - command_endpoint objects require a zone: 
+        https://icinga.com/docs/icinga2/latest/doc/16-upgrading-icinga-2/#agent-hosts-with-command-endpoint-require-a-zone
+      - Zones declared in zones.d are not loaded anymore: 
+        https://icinga.com/docs/icinga2/latest/doc/16-upgrading-icinga-2/#config-sync-zones-in-zones
+
+-------------------------------------------------------------------
 Thu Sep 19 12:37:55 UTC 2019 - ecsos@opensuse.org
 
 - Update to 2.11.0

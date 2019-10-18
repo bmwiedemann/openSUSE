@@ -1,0 +1,82 @@
+-------------------------------------------------------------------
+Thu Oct 17 12:44:51 UTC 2019 - kukuk@suse.com
+
+- Update to version 0.0+git20191017.60afa44:
+  * Update README.md and spec file
+
+-------------------------------------------------------------------
+Mon Oct 14 14:56:21 UTC 2019 - kukuk@suse.com
+
+- Update to version 0.0+git20191014.e6a46a5:
+  * Don't use localhost in realm for docker_auth
+
+-------------------------------------------------------------------
+Sun Oct 13 17:58:14 UTC 2019 - kukuk@suse.com
+
+- Update to version 0.0+git20191013.005baa4:
+  * setup-container-registry.sh: Don't overwrite user provided config files
+  * Fix typo in registry-auth_server.service
+
+-------------------------------------------------------------------
+Sun Oct 13 17:46:01 UTC 2019 - kukuk@suse.com
+
+- Update to version 0.0+git20191013.6c485fb:
+  * Fix start and configuration of auth_server
+
+-------------------------------------------------------------------
+Sun Oct 13 09:59:24 UTC 2019 - kukuk@suse.com
+
+- Update to version 0.0+git20191013.c074749:
+  * Start setup script
+  * Don't provide a default password
+
+-------------------------------------------------------------------
+Sat Oct 12 17:26:26 UTC 2019 - kukuk@suse.com
+
+- Update to version 0.0+git20191012.b1a2b2f:
+  * Make standalone version of config.yml default
+
+-------------------------------------------------------------------
+Sat Oct 12 17:15:30 UTC 2019 - kukuk@suse.com
+
+- Update to version 0.0+git20191012.d4b109f:
+  * Add configuration files for docker_auth (auth_server)
+
+-------------------------------------------------------------------
+Fri Oct 11 19:14:46 UTC 2019 - kukuk@suse.com
+
+- Update to version 0.0+git20191011.9205b6f:
+  * Provide template for configuration file with portus
+
+-------------------------------------------------------------------
+Fri Oct 11 18:46:24 UTC 2019 - kukuk@suse.com
+
+- Update to version 0.0+git20191011.2b6c197:
+  * Add option to create certificates for registry and portus
+  * Update spec file
+
+-------------------------------------------------------------------
+Mon Oct 07 18:27:28 UTC 2019 - kukuk@suse.com
+
+- Update to version 0.0+git20191007.f61ed01:
+  * Add README.md
+  * Use localhost, short and full hostname for the certificate
+
+-------------------------------------------------------------------
+Mon Oct 07 14:42:52 UTC 2019 - kukuk@suse.com
+
+- Update to version 0.0+git20191007.0228a80:
+  * Implment creating certificates for given or local hostnames
+  * Make sure the service file only starts if the certs dir exists
+
+-------------------------------------------------------------------
+Mon Oct 07 13:15:14 UTC 2019 - kukuk@suse.com
+
+- Update to version 0.0+git20191007.39a2c57:
+  * Implement merging of /usr/etc/registry with /etc/registry
+  * Adjust spec file
+
+-------------------------------------------------------------------
+Sun Oct  6 15:59:27 UTC 2019 - Thorsten Kukuk <kukuk@suse.com>
+
+- Initial release

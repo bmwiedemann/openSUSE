@@ -19,7 +19,7 @@
 %global pkg_name retry
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.8.0.1
+Version:        0.8.0.2
 Release:        0
 Summary:        Retry combinators for monadic actions that may fail
 License:        BSD-3-Clause

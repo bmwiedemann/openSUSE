@@ -19,7 +19,7 @@
 %global pkg_name optparse-applicative
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.15.0.0
+Version:        0.15.1.0
 Release:        0
 Summary:        Utilities and combinators for parsing command line options
 License:        BSD-3-Clause

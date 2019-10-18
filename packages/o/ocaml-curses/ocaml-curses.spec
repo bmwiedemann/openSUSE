@@ -31,7 +31,7 @@ BuildRequires:  ncurses-devel
 BuildRequires:  ocaml
 BuildRequires:  ocaml-oasis
 BuildRequires:  ocaml-ocamldoc
-BuildRequires:  ocaml-rpm-macros >= 4.03
+BuildRequires:  ocaml-rpm-macros >= 20191009
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -47,9 +47,7 @@ The %{name}-devel package contains libraries and signature files for
 developing applications that use %{name}.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 sed 's/@BOOL_WIDE_CURSES@/true/' config.ml.in | tee config.ml
@@ -98,43 +96,15 @@ _EOF_
 
 %install
 %ocaml_oasis_findlib_install
-#
-mkdir -vp %{buildroot}/etc/ld.so.conf.d/
-tee %{buildroot}/etc/ld.so.conf.d/%{name}.conf <<_EOF_
-%{_libdir}/ocaml/curses
-_EOF_
-#
+%ocaml_create_file_list
 
 %post   -p /sbin/ldconfig
 
 %postun -p /sbin/ldconfig
 
-%files
-%defattr(-,root,root,-)
-%doc COPYING
-/etc/ld.so.conf.d/*.conf
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.cmxs
-%endif
-%{_libdir}/ocaml/*/*.so
+%files -f %{name}.files
 
-%files devel
-%defattr(-,root,root,-)
-%doc COPYING
+%files devel -f %{name}.files.devel
 %{oasis_docdir_html}
-%dir %{_libdir}/ocaml/*
-%{_libdir}/ocaml/*/*.a
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.cmx
-%{_libdir}/ocaml/*/*.cmxa
-%endif
-%{_libdir}/ocaml/*/*.annot
-%{_libdir}/ocaml/*/*.cma
-%{_libdir}/ocaml/*/*.cmi
-%{_libdir}/ocaml/*/*.cmt
-%{_libdir}/ocaml/*/*.cmti
-%{_libdir}/ocaml/*/*.mli
-%{_libdir}/ocaml/*/META
 
 %changelog

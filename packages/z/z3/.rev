@@ -150,4 +150,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>732845</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d0026eb315e16ca6990a447223a926aa</srcmd5>
+    <version>4.8.6+git.20191009</version>
+    <time>1571402178</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>739089</requestid>
+  </revision>
 </revisionlist>

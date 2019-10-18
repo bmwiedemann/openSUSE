@@ -1043,4 +1043,41 @@ Fixed
 </comment>
     <requestid>716618</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>23b2e09912de2f792153297359934849</srcmd5>
+    <version>1.8.1</version>
+    <time>1571402217</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.1
+Added
+  * New userscripts:
+    + readability-js which uses Mozilla's node.js readability
+      library.
+    + qute-bitwarden which integrates the Bitwarden CLI.
+Changed
+  * The statusbar text for passthrough mode now shows all
+    configured bindings to leave the mode, not only one.
+  * When :config-source is used with a relative filename, the file
+    is now searched in the config directory instead of the current
+    working directory.
+  * HTML5 inputs with date/time types now enter insert mode when
+    selected.
+  * dictcli.py now shows where dictionaries are installed to and
+    complains when running it as root if doing so would result in
+    a wrong installation path.
+  * Changes to userscripts:
+    + qute-pass: Don't run pass if only a username is requested.
+    + qute-pass: Support private domains like myrouter.local.
+    + readability: Improved CSS styling.
+  * Performance improvements in various areas:
+    + Loading config files
+    + Typing without any completion matches
+    + General keyboard handling
+    + Scrolling
+  * :version now shows details about the loaded
+    autoconfig.yml/config.py.
+  * Hosts are now additionally looked up including their ports in
+    netrc files.</comment>
+    <requestid>740914</requestid>
+  </revision>
 </revisionlist>

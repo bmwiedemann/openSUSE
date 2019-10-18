@@ -18,63 +18,67 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-moto
-Version:        1.3.8
+Version:        1.3.13
 Release:        0
 Summary:        Library to mock out the boto library
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/spulec/moto
 Source:         https://files.pythonhosted.org/packages/source/m/moto/moto-%{version}.tar.gz
 Patch0:         unpin-reqs.patch
+Patch1:         botocore.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Jinja2 >= 2.7.3
+Requires:       python-Jinja2 >= 2.10.1
+Requires:       python-PyYAML >= 5.1
 Requires:       python-Werkzeug
 Requires:       python-aws-xray-sdk >= 0.93
 Requires:       python-boto >= 2.36.0
-Requires:       python-boto3 >= 1.6.16
-Requires:       python-botocore >= 1.12.13
-Requires:       python-cfn-lint
+Requires:       python-boto3 >= 1.9.201
+Requires:       python-botocore >= 1.12.201
+Requires:       python-cfn-lint >= 0.4.0
 Requires:       python-cryptography >= 2.3.0
 Requires:       python-docker >= 2.5.1
+Requires:       python-idna >= 2.5
 Requires:       python-jsondiff >= 1.1.2
 Requires:       python-mock
-Requires:       python-pyaml
 Requires:       python-python-dateutil >= 2.1
 Requires:       python-python-jose
 Requires:       python-pytz
 Requires:       python-requests >= 2.5
 Requires:       python-responses >= 0.9.0
 Requires:       python-six > 1.9
+Requires:       python-sshpubkeys >= 3.1.0
 Requires:       python-xmltodict
-Recommends:     python-jsonpickle
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
-Recommends:     python-flask
+Recommends:     python-Flask
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Jinja2 >= 2.7.3}
+BuildRequires:  %{python_module Flask}
+BuildRequires:  %{python_module Jinja2 >= 2.10.1}
+BuildRequires:  %{python_module PyYAML >= 5.1}
 BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module aws-xray-sdk >= 0.93}
 BuildRequires:  %{python_module boto >= 2.36.0}
-BuildRequires:  %{python_module boto3 >= 1.6.16}
-BuildRequires:  %{python_module botocore >= 1.12.13}
-BuildRequires:  %{python_module cfn-lint}
+BuildRequires:  %{python_module boto3 >= 1.9.201}
+BuildRequires:  %{python_module botocore >= 1.12.201}
+BuildRequires:  %{python_module cfn-lint >= 0.4.0}
 BuildRequires:  %{python_module cryptography >= 2.3.0}
 BuildRequires:  %{python_module docker >= 2.5.1}
 BuildRequires:  %{python_module freezegun}
+BuildRequires:  %{python_module idna >= 2.5}
 BuildRequires:  %{python_module jsondiff >= 1.1.2}
 BuildRequires:  %{python_module jsonpickle}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nose}
-BuildRequires:  %{python_module pyaml}
 BuildRequires:  %{python_module python-dateutil >= 2.1}
 BuildRequires:  %{python_module python-jose}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests >= 2.5}
 BuildRequires:  %{python_module responses >= 0.9.0}
 BuildRequires:  %{python_module six > 1.9}
+BuildRequires:  %{python_module sshpubkeys >= 3.1.0}
 BuildRequires:  %{python_module sure}
 BuildRequires:  %{python_module xmltodict}
 BuildRequires:  python-backports.tempfile
@@ -101,11 +105,12 @@ library.
 
 %python_clone -a %{buildroot}%{_bindir}/moto_server
 
-# Tests require a network connection
-# %%check
-# %%{python_expand export PYTHONPATH=%%{buildroot}%%{$python_sitelib}
-# nosetests-%%{$python_bin_suffix} -sv ./tests/
-# }
+%check
+# skipped tests require network connection
+export BOTO_CONFIG=/dev/null
+%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
+nosetests-%{$python_bin_suffix} -sv ./tests/ -e "(test_invoke_requestresponse_function|test_context_manager|test_decorator_start_and_stop|test_invoke_function_from_sns)"
+}
 
 %post
 %python_install_alternative moto_server

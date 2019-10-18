@@ -20,7 +20,7 @@
 %define revision 1
 
 Name:           icingaweb2
-Version:        2.7.2
+Version:        2.7.3
 Release:        %{revision}%{?dist}
 Summary:        Icinga Web 2
 License:        GPL-2.0-or-later AND MIT AND BSD-3-Clause
@@ -79,6 +79,8 @@ Requires:       %{php}-pgsql
 %define php_cli         %{php}
 # extra requirements on openSUSE
 BuildRequires:  fdupes
+BuildRequires:  gettext-tools
+BuildRequires:  config(krb5)
 Requires:       %{php}-ldap
 Requires:       %{php}-mysql
 Requires:       %{php}-pgsql

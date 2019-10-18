@@ -109,6 +109,7 @@
     <package name="kernel-default"/>
 
     <!-- Yomi requirements -->
+    <package name="SUSEConnect"/>    
     <package name="btrfsprogs"/>
     <package name="bzip2"/>
     <package name="dosfstools"/>

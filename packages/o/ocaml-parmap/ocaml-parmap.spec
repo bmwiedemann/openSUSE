@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-parmap
-Version:        20190330.8d19c66
+Version:        20191002.803edbb
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Multicore architecture exploitation for OCaml programs with minimal modifications
@@ -28,7 +28,7 @@ Source:         %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-oasis
 BuildRequires:  ocaml-ocamldoc
-BuildRequires:  ocaml-rpm-macros >= 4.03
+BuildRequires:  ocaml-rpm-macros >= 20191009
 BuildRequires:  ocamlfind(bigarray)
 BuildRequires:  ocamlfind(graphics)
 BuildRequires:  ocamlfind(unix)
@@ -55,7 +55,7 @@ developing applications that use %{name}.
 
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 echo -n > config.h
@@ -65,6 +65,15 @@ tee -a config.h <<_EOF_
 #define HAVE_DECL_SCHED_SETAFFINITY 1
 _EOF_
 fi
+ocaml_version="$(ocamlc -version)"
+case "${ocaml_version}" in
+  4.03.*|4.04.*|4.05.*)
+  echo 'let map_file = Bigarray.Genarray.map_file' >>parmap_compat.ml
+  ;;
+  *)
+  echo 'let map_file = Unix.map_file' >>parmap_compat.ml
+  ;;
+esac
 rm -fv setup.ml myocamlbuild.ml META* _* */_*
 # obs service changes every ^Version line ...
 sh -c "sed 's/^Version.*/Version: %{version}/' | tee _oasis" <<_EOF_
@@ -81,7 +90,7 @@ BuildTools:  ocamlbuild
 Library parmap
  Path: .
  Install: true
- Modules: Parmap
+ Modules: Parmap, Parmap_compat
  CSources: bytearray_stubs.c, setcore_stubs.c, config.h
  CCOpt: %{optflags} -I$PWD -Werror -D_GNU_SOURCE
 
@@ -108,45 +117,11 @@ _EOF_
 
 %install
 %ocaml_oasis_findlib_install
-#
-mkdir -vp %{buildroot}/etc/ld.so.conf.d/
-tee %{buildroot}/etc/ld.so.conf.d/%{name}.conf <<_EOF_
-%{_libdir}/ocaml/parmap
-_EOF_
-#
+%ocaml_create_file_list
 
-%post   -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
-
-%files
-%defattr(-,root,root)
-%doc README.md LICENSE
-/etc/ld.so.conf.d/*.conf
+%files -f %{name}.files
+%doc README.md
 %{_bindir}/*
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.cmxs
-%endif
-%{_libdir}/ocaml/*/*.so
 
-%files devel
-%defattr(-,root,root,-)
-%doc LICENSE
+%files devel -f %{name}.files.devel
 %{oasis_docdir_html}
-%dir %{_libdir}/ocaml/*
-%{_libdir}/ocaml/*/*.a
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.cmx
-%{_libdir}/ocaml/*/*.cmxa
-%endif
-%{_libdir}/ocaml/*/*.annot
-%{_libdir}/ocaml/*/*.cma
-%{_libdir}/ocaml/*/*.cmi
-%{_libdir}/ocaml/*/*.cmt
-%{_libdir}/ocaml/*/*.cmti
-%{_libdir}/ocaml/*/*.mli
-%{_libdir}/ocaml/*/META
-
-%changelog

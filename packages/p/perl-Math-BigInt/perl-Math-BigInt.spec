@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Math-BigInt
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-Math-BigInt
-Version:        1.999816
+Version:        1.999817
 Release:        0
 %define cpan_name Math-BigInt
 Summary:        Arbitrary size integer/float math package
@@ -48,13 +48,14 @@ is also provided for Perl operators.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
+find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install

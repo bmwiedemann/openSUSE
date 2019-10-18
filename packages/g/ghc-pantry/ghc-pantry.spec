@@ -19,7 +19,7 @@
 %global pkg_name pantry
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.1.2
+Version:        0.2.0.0
 Release:        0
 Summary:        Content addressable Haskell package management
 License:        BSD-3-Clause

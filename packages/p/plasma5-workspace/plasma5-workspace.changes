@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 18 07:48:42 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix reading environment variables with newline
+  (boo#1154345, kde#413130):
+  * 0001-Fix-reading-environment-variables-with-newline.patch
+
+-------------------------------------------------------------------
 Tue Oct 15 13:44:23 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix race on startup (kde#412970):

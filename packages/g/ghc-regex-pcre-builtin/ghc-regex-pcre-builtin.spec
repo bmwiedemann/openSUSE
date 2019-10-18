@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-regex-pcre-builtin
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %global pkg_name regex-pcre-builtin
 Name:           ghc-%{pkg_name}
-Version:        0.94.4.8.8.35
+Version:        0.95.1.1.8.43
 Release:        0
-Summary:        Replaces/Enhances Text.Regex
+Summary:        PCRE Backend for "Text.Regex" (regex-base)
 License:        BSD-3-Clause
 Group:          Development/Libraries/Haskell
 URL:            https://hackage.haskell.org/package/%{pkg_name}
@@ -31,9 +31,15 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-regex-base-devel
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-text-devel
 
 %description
-The PCRE backend to accompany regex-base, with bundled code from www.pcre.org.
+This package provides a <http://pcre.org/ PCRE> backend for the
+<//hackage.haskell.org/package/regex-base regex-base> API.
+
+See also <https://wiki.haskell.org/Regular_expressions> for more information.
+
+Includes bundled code from www.pcre.org.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -66,5 +72,6 @@ files.
 %license LICENSE
 
 %files devel -f %{name}-devel.files
+%doc ChangeLog.md
 
 %changelog

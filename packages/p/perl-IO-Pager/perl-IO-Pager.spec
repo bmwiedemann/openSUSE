@@ -17,7 +17,7 @@
 
 
 Name:           perl-IO-Pager
-Version:        0.42
+Version:        1.01
 Release:        0
 %define cpan_name IO-Pager
 Summary:        Select a pager and pipe text to it if destination is a TTY
@@ -31,8 +31,10 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(File::Which)
+BuildRequires:  perl(Term::ReadKey)
 BuildRequires:  perl(Test::More) >= 0.88
 Requires:       perl(File::Which)
+Requires:       perl(Term::ReadKey)
 %{perl_requires}
 
 %description
@@ -48,6 +50,7 @@ appropriate subclass for implementation specific details.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
+find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

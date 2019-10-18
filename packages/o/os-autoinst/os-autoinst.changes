@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 17 08:59:09 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1571302740.fbcb3c7b:
+  * Revert "Allow loading needles from current working directory" to fix regression
+  * needle: Fix typo 'parrent'
+  * Use $needle::needles_dir in needle downloader of developer mode
+  * Log data and pool dir when running fullstack test
+  * Allow loading needles from current working directory
+  * Improve error handling when parsing needle JSON
+  * Extend architecture.md to cover needle handling
+
+-------------------------------------------------------------------
 Tue Oct 15 13:18:14 UTC 2019 - okurz@suse.com
 
 - Update to version 4.5.1571127896.7bd3da32:

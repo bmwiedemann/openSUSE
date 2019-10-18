@@ -1,0 +1,5 @@
+<package name="container-registry-systemd" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:kubic" package="container-registry-systemd"/>
+</package>

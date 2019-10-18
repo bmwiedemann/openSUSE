@@ -17,13 +17,13 @@
 
 
 Name:           iagno
-Version:        3.32.0
+Version:        3.34.2
 Release:        0
 Summary:        Reversi Game for GNOME
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Board/Other
 URL:            https://wiki.gnome.org/Apps/Iagno
-Source0:        https://download.gnome.org/sources/iagno/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/iagno/3.34/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  itstool
@@ -32,9 +32,8 @@ BuildRequires:  pkgconfig
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gio-2.0) >= 2.40.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.23
-BuildRequires:  pkgconfig(libcanberra)
-BuildRequires:  pkgconfig(libcanberra-gtk3) >= 0.26
+BuildRequires:  pkgconfig(gsound) >= 1.0.2
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.32.0
 Recommends:     %{name}-lang
 

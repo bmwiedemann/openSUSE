@@ -20,7 +20,7 @@
 Name:           zam-plugins
 Version:        3.11
 Release:        0
-Summary:        A collection of LV2/LADSPA audio plugins for high quality processing
+Summary:        A collection of audio plugins for high quality processing
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            http://www.zamaudio.com/?p=976
@@ -63,6 +63,36 @@ ZamValve - Valve distortion (WDF physical model or tanh) plugin
 ZamGEQ31 - Mono 31 band graphic equalizer plugin
 ZamGEQ31X2 - Stereo 31 band graphic equalizer plugin
 
+%package -n ladspa-%{name}
+Summary:        A collection of audio plugins for high quality processing
+Requires:       ladspa%{?_isa}
+Conflicts:      %{name}
+
+%description -n ladspa-%{name}
+${sum}.
+
+%package -n lv2-%{name}
+Summary:        A collection of audio plugins for high quality processing
+Requires:       lv2%{?_isa}
+Conflicts:      %{name}
+
+%description -n lv2-%{name}
+${sum}.
+
+%package vst
+Summary:        A collection of audio plugins for high quality processing
+Conflicts:      %{name}
+
+%description vst
+${sum}.
+
+%package jack
+Summary:        A collection of audio plugins for high quality processing
+Conflicts:      %{name}
+
+%description jack
+${sum}.
+
 %prep
 %setup -q
 %patch0 -p1
@@ -76,11 +106,16 @@ make %{?_smp_mflags} SKIP_STRIPPING=true
 # remove executable flag where not needed
 find %{buildroot}%{_libdir}/lv2 -name \*.ttl -exec chmod -x {} +
 
-%files
+%files jack
 %{_bindir}/Za*
+
+%files -n ladspa-%{name}
 %{_libdir}/ladspa/Za*-ladspa.so
+
+%files -n lv2-%{name}
 %{_libdir}/lv2/Za*.lv2
-# uncertain about this one, see if there's a package that owns it
+
+%files vst
 %dir %{_libdir}/vst
 %{_libdir}/vst/Za*-vst.so
 

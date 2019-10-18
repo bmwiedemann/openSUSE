@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-regex-compat
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %global pkg_name regex-compat
 Name:           ghc-%{pkg_name}
-Version:        0.95.1
+Version:        0.95.2.0
 Release:        0
-Summary:        Replaces/Enhances Text.Regex
+Summary:        Replaces/Enhances "Text.Regex"
 License:        BSD-3-Clause
 Group:          Development/Libraries/Haskell
 URL:            https://hackage.haskell.org/package/%{pkg_name}
@@ -32,7 +32,10 @@ BuildRequires:  ghc-regex-posix-devel
 BuildRequires:  ghc-rpm-macros
 
 %description
-One module layer over regex-posix to replace Text.Regex.
+One module compat layer over <//hackage.haskell.org/package/regex-posix
+regex-posix> to replace "Text.Regex".
+
+See also <https://wiki.haskell.org/Regular_expressions> for more information.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -64,5 +67,6 @@ This package provides the Haskell %{pkg_name} library development files.
 %license LICENSE
 
 %files devel -f %{name}-devel.files
+%doc ChangeLog.md
 
 %changelog

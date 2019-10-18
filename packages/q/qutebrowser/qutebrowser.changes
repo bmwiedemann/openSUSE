@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Thu Oct 17 22:57:12 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to version 1.8.1
+Added
+  * New userscripts:
+    + readability-js which uses Mozilla's node.js readability
+      library.
+    + qute-bitwarden which integrates the Bitwarden CLI.
+
+Changed
+  * The statusbar text for passthrough mode now shows all
+    configured bindings to leave the mode, not only one.
+  * When :config-source is used with a relative filename, the file
+    is now searched in the config directory instead of the current
+    working directory.
+  * HTML5 inputs with date/time types now enter insert mode when
+    selected.
+  * dictcli.py now shows where dictionaries are installed to and
+    complains when running it as root if doing so would result in
+    a wrong installation path.
+  * Changes to userscripts:
+    + qute-pass: Don't run pass if only a username is requested.
+    + qute-pass: Support private domains like myrouter.local.
+    + readability: Improved CSS styling.
+  * Performance improvements in various areas:
+    + Loading config files
+    + Typing without any completion matches
+    + General keyboard handling
+    + Scrolling
+  * :version now shows details about the loaded
+    autoconfig.yml/config.py.
+  * Hosts are now additionally looked up including their ports in
+    netrc files.
+  * With Qt 5.10 or newer, qutebrowser now doesn't force software
+    rendering with Nouveau drivers anymore. However,
+    QtWebEngine/Chromium still do so.
+  * The XSS Auditor is now disabled by default
+    (content.xss_auditing = false). This reflects a similar change
+    in Chromium, see their XSS Auditor Design Document for details.
+
+Fixed
+  * :config-write-py now correctly writes config.unbind(...) lines
+    (instead of config.bind(..., None)) when unbinding a default
+    keybinding.
+  * Prevent repeat keyup events for JavaScript when a key is held
+    down.
+  * ~/.config/qutebrowser/blocked-hosts can now also contain
+    /etc/hosts-like lines, not just simple hostnames.
+  * Restored compatibility with Jinja2 2.8
+  * Fixed implicit type conversion warning with Python 3.8.
+  * The desktop file now sets StartupWMClass correctly, so the
+    qutebrowser icon is no longer shown twice in the Gnome dock
+    when pinned.
+  * Bindings involving keys which need the AltGr key now work
+    properly.
+  * Fixed crash (caused by a Qt bug) when typing characters above
+    the Unicode BMP (such as certain emoji or CJK characters).
+  * dictcli.py now works properly again.
+  * Shift can now be used while typing hint keystrings, which e.g.
+    allows typing number hints on French keyboards.
+  * With rapid hinting in number mode, backspace now edits the
+    filter text after following a hint.
+  * A certain type of error ("locking protocol") while initializing
+    sqlite now isn't handled as crash anymore.
+  * Crash when showing a permission request in certain scenarios.
+
+Removed
+  * At least Python 3.5.2 is now required to run qutebrowser,
+    support for 3.5.0 and 3.5.1 was dropped.
+
+-------------------------------------------------------------------
 Thu Jul 18 15:27:22 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
 
 - Update to version 1.7.0

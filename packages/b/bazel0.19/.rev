@@ -15,4 +15,12 @@
     <comment>- removed i586 buils as they are failing (forwarded request 730533 from mslacken)</comment>
     <requestid>730534</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b40e415ca5266be281f1241646180ab3</srcmd5>
+    <version>0.19.2</version>
+    <time>1571402195</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>739346</requestid>
+  </revision>
 </revisionlist>

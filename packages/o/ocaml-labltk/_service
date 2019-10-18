@@ -1,0 +1,15 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/garrigue/labltk.git</param>
+    <param name="scm">git</param>
+    <param name="versionformat">8.06.3</param>
+    <!-- ocaml-4.05 -->
+    <param name="revision">45da3591cbdcae1f034f4623909a98dce68aa841</param>
+    <param name="filename">ocaml-labltk</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

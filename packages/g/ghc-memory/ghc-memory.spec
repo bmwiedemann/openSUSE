@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-memory
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name memory
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.14.18
+Version:        0.15.0
 Release:        0
 Summary:        Memory and related abstraction stuff
 License:        BSD-3-Clause

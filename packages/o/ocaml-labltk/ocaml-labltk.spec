@@ -23,14 +23,13 @@ Release:        0
 Summary:        Tcl/Tk framework for ocaml
 License:        SUSE-LGPL-2.0-with-linking-exception
 Group:          Development/Languages/OCaml
-Url:            https://forge.ocamlcore.org/projects/labltk/
-Source:         labltk-%{version}.tar.xz
-BuildRequires:  ocaml
+Url:            https://github.com/garrigue/labltk
+Source:         %{name}-%{version}.tar.xz
+BuildRequires:  ocaml = 4.05.0
 BuildRequires:  ocaml-findlib
-BuildRequires:  ocaml-rpm-macros >= 4.05.0
+BuildRequires:  ocaml-rpm-macros >= 20191009
 BuildRequires:  tcl-devel
 BuildRequires:  tk-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 LablTk is an interface to the Tcl/Tk GUI framework. It allows to
@@ -53,7 +52,7 @@ language Tcl/Tk.
 This package contains the development files.  It includes the ocaml
 browser for code editing and library browsing.
 %prep
-%setup -q -n labltk-%{version}
+%autosetup -p1
 
 %build
 ./configure --use-findlib
@@ -82,46 +81,18 @@ make \
 find examples* -type f -exec chmod -v 644 {} \;
 cat $ld_conf
 #
-mkdir -vp %{buildroot}/etc/ld.so.conf.d/
-tee %{buildroot}/etc/ld.so.conf.d/%{name}.conf <<_EOF_
-%{_libdir}/ocaml/stublibs
-_EOF_
-#
+%ocaml_create_file_list
 
 %post   -p /sbin/ldconfig
 
 %postun -p /sbin/ldconfig
 
-%files
-%defattr(-,root,root,-)
-%{_bindir}/labltk
-/etc/ld.so.conf.d/*.conf
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%endif
-%{_libdir}/ocaml/*/*.so
-%{_libdir}/ocaml/*/*.so.owner
+%files -f %{name}.files
+%{_bindir}/*
 
-%files devel
-%defattr(-,root,root,-)
-%doc examples_labltk
-%doc examples_camltk
-%{_bindir}/ocamlbrowser
+%files devel -f %{name}.files.devel
 %{_libdir}/ocaml/*/labltktop
 %{_libdir}/ocaml/*/pp
 %{_libdir}/ocaml/*/tkcompiler
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%{_libdir}/ocaml/*/*.a
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.cmx
-%{_libdir}/ocaml/*/*.cmxa
-%endif
-%{_libdir}/ocaml/*/*.cma
-%{_libdir}/ocaml/*/*.cmi
-%{_libdir}/ocaml/*/*.cmo
-%{_libdir}/ocaml/*/*.mli
-%{_libdir}/ocaml/*/META
 
 %changelog

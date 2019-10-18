@@ -88,4 +88,12 @@ different profiles.</comment>
     <comment>- Add basic configuration for nano in /etc/nanorc</comment>
     <requestid>735876</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>c5210770a2be94a9530fb53338af5181</srcmd5>
+    <version>1.0.0</version>
+    <time>1571402193</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>739202</requestid>
+  </revision>
 </revisionlist>

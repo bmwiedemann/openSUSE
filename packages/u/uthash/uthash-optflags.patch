@@ -1,13 +1,17 @@
-Index: b/tests/Makefile
+---
+ tests/Makefile |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: uthash-2.1.0/tests/Makefile
 ===================================================================
---- a/tests/Makefile
-+++ b/tests/Makefile
-@@ -17,7 +17,7 @@ PROGS = test1 test2 test3 test4 test5 te
+--- uthash-2.1.0.orig/tests/Makefile
++++ uthash-2.1.0/tests/Makefile
+@@ -16,7 +16,7 @@ PROGS = test1 test2 test3 test4 test5 te
  CFLAGS += -I$(HASHDIR)
  #CFLAGS += -DHASH_BLOOM=16
  #CFLAGS += -O2
 -CFLAGS += -g
 +CFLAGS += $(OPTFLAGS)
  #CFLAGS += -Wstrict-aliasing=2
- CFLAGS += -Wall 
- #CFLAGS += -Wextra 
+ CFLAGS += -Wall
+ #CFLAGS += -Wextra

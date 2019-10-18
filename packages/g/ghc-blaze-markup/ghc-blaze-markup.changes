@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct  3 02:01:58 UTC 2019 - psimons@suse.com
+
+- Update blaze-markup to version 0.8.2.3.
+  - 0.8.2.3 (2019-10-02)
+      * Bump `base` to 4.13
+      * Bump `tasty` to 1.2
+      * Bump `QuickCheck` to 2.13
+
+-------------------------------------------------------------------
 Sat Jan 19 12:33:33 UTC 2019 - Peter Simons <psimons@suse.com>
 
 - Update Cabal build instructions for more accurate dependencies.

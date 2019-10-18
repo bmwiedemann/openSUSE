@@ -17,7 +17,7 @@
 
 
 Name:           qutebrowser
-Version:        1.7.0
+Version:        1.8.1
 Release:        0
 Summary:        Keyboard-driven vim-like browser based on Qt5
 License:        GPL-3.0-or-later
@@ -64,7 +64,7 @@ It's based on PyQt5 and can use either QtWebEngine or QtWebKit.
 %prep
 %setup -q
 sed -i '1d' %{name}/__main__.py
-sed -i 's,^#!/usr/bin/env python,#!/usr/bin/python,;s,^#!/usr/bin/env bash,#!/bin/bash,' \
+sed -i 's,^#!/usr/bin/env ,#!/usr/bin/,' \
     misc/userscripts/* \
     scripts/*.py
 mv misc/Makefile .

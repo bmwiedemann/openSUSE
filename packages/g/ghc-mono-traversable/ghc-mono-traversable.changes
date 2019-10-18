@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct  4 02:01:58 UTC 2019 - psimons@suse.com
+
+- Update mono-traversable to version 1.0.13.0.
+  ## 1.0.13.0
+  * Added `WrappedPoly` to `Data.MonoTraversable`
+    [#180](https://github.com/snoyberg/mono-traversable/pull/180)
+
+-------------------------------------------------------------------
 Thu Aug 15 02:01:34 UTC 2019 - psimons@suse.com
 
 - Update mono-traversable to version 1.0.12.0.

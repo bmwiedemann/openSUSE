@@ -16,10 +16,10 @@
 #
 
 
-%define version_unconverted 4.8.4+git.20190224
+%define version_unconverted 4.8.6+git.20191009
 %define sover 4_8
 Name:           z3
-Version:        4.8.4+git.20190224
+Version:        4.8.6+git.20191009
 Release:        0
 Summary:        Theorem prover from Microsoft Research
 License:        MIT
@@ -107,6 +107,7 @@ Python bindings for the Z3 library.
 %{_libdir}/libz3.so
 %dir %{_libdir}/cmake/z3/
 %{_libdir}/cmake/z3/Z3Config.cmake
+%{_libdir}/cmake/z3/Z3ConfigVersion.cmake
 %{_libdir}/cmake/z3/Z3Targets*
 
 %files -n python3-%{name}

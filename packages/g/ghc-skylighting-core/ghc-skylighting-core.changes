@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Oct  4 02:02:06 UTC 2019 - psimons@suse.com
+
+- Update skylighting-core to version 0.8.2.3.
+  ## 0.8.2.3 -- 2019-10-03
+
+    * Tests: ensure we read test files as UTF-8.
+
+    * Fix compiler warnings around Monoid imports.
+
+    * Add MonadFail constraint (allowing compilation with ghc 8.8.x).
+
+    * Add cabal.project and move CI from Travis to GitHub Actions.
+
+-------------------------------------------------------------------
+Wed Oct  2 02:01:44 UTC 2019 - psimons@suse.com
+
+- Update skylighting-core to version 0.8.2.2.
+  ## 0.8.2.2 -- 2019-09-30
+
+    * Remove upper bound on regex-base and require
+      regex-pcre-builtin >= 0.95, to avoid a build conflict
+      with earlier versions of regex-pcre-builtin and
+      regex-base >= 0.94.
+
+    * Remove unused system-pcre flag in skylighting.cabal.
+      This flag only affects skylighting-core.
+
+-------------------------------------------------------------------
+Thu Sep 26 02:01:29 UTC 2019 - psimons@suse.com
+
+- Update skylighting-core to version 0.8.2.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/skylighting-core-0.8.2.1/src/changelog.md
+
+-------------------------------------------------------------------
 Mon Jul 15 02:01:57 UTC 2019 - psimons@suse.com
 
 - Update skylighting-core to version 0.8.2.

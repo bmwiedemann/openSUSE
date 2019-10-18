@@ -17,8 +17,9 @@
 
 
 %global pkg_name regex-tdfa
+%bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.2.3.2
+Version:        1.3.0
 Release:        0
 Summary:        Replaces/Enhances Text.Regex
 License:        BSD-3-Clause
@@ -33,6 +34,11 @@ BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-parsec-devel
 BuildRequires:  ghc-regex-base-devel
 BuildRequires:  ghc-rpm-macros
+%if %{with tests}
+BuildRequires:  ghc-file-embed-devel
+BuildRequires:  ghc-filepath-devel
+BuildRequires:  ghc-utf8-string-devel
+%endif
 
 %description
 A new all Haskell "tagged" DFA regex engine, inspired by libtre.
@@ -56,6 +62,9 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %install
 %ghc_lib_install
+
+%check
+%cabal_test
 
 %post devel
 %ghc_pkg_recache

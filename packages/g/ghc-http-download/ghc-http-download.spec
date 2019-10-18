@@ -26,7 +26,7 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/Haskell
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/4.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base64-bytestring-devel
 BuildRequires:  ghc-bytestring-devel
@@ -71,7 +71,6 @@ This package provides the Haskell %{pkg_name} library development files.
 cp -p %{SOURCE1} %{pkg_name}.cabal
 echo > Setup.hs 'import Distribution.Simple'
 echo >>Setup.hs 'main = defaultMain'
-cabal-tweak-dep-ver cryptonite '==0.25.*' ' < 1'
 
 %build
 %ghc_lib_build

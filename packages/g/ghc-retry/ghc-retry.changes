@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 28 02:01:09 UTC 2019 - psimons@suse.com
+
+- Update retry to version 0.8.0.2.
+  0.8.0.2
+  * Update docs for default retry policy. [PR 64](https://github.com/Soostone/retry/pull/64)
+
+-------------------------------------------------------------------
 Thu May  2 02:00:58 UTC 2019 - psimons@suse.com
 
 - Update retry to version 0.8.0.1.

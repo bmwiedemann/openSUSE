@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <services>
   <service name="obs_scm" mode="disabled">
-    <param name="extract">docker/travis_test/Dockerfile</param>
     <param name="extract">openQA.spec</param>
     <param name="extract">openQA-test.spec</param>
     <param name="extract">openQA-worker-test.spec</param>

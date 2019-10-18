@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Sat Oct 12 14:49:34 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct  7 20:43:41 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 10 18:14:51 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.34.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  4 14:55:04 CEST 2019 - dimstar@opensuse.org
+
+- Update to version 3.33.92:
+  + Updated translations.
+- Changes from version 3.33.91:
+  + Some more AI things: had to adjust a bit their level, as they
+    were too hard (!). Other than that, one small bug fixed.
+- Changes from version 3.33.90:
+  + The UI has changed a bit. The scorer is not displayed anymore,
+    as it was suggesting the good strategy would be to turn as many
+    pieces of the opponent as possible during a game (hint: it is
+    not); it has been replaced by a simple indication of the
+    current player, visible in the headerbar.
+  + The New Game button was moved also, allowing to draw the board
+    centered.
+  + All this permits to make the game able to run on small screens,
+    and it probably makes the window layout a bit cleaner.
+  + For a similar reason, the themes dialog has gone and is now
+    replaced by a submenu of the hamburger menu.
+- Changes from version 3.33.5:
+  + Just trying to fix build on some platforms.
+- Changes from version 3.33.4:
+  + Many changes; please, have fun testing.
+  + First of all, there is a new AI (for Medium and Hard); it is
+    only a depth 3 (for Hard) instead of a depth 6, and so there
+    should never be a lag again; and it is a bit harder I think –at
+    least, it defeats usually the old AI– while using mostly the
+    same tricks, as its strategy feels a bit more obscure.
+  + Secondly, if you play with a mouse, the currently targetted
+    tile is highlighted, if it is playable; that feels not too much
+    disturbing, but may be a bit reassuring sometimes.
+  + Thirdly, an option has been added to highlight the opponent
+    tiles that might be turned by a ply; that should be helpful for
+    casual players and newbies. And, trying to play (using mouse
+    or keyboard) on an occupied tile (briefly) highlights the
+    playable tiles (this might evolve in the future).
+- Changes from version 3.33.2:
+  + The AI is now five times faster, for similar results.
+- Replace pkgconfig(libcanberra) and pkgconfig(libcanberra-gtk3) by
+  pkgconfig(gsound): follow upstreams port to GSound.
+
+-------------------------------------------------------------------
 Mon Mar 11 17:46:02 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.0:

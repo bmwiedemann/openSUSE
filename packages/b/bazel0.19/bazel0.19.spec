@@ -51,6 +51,8 @@ as mobile operating systems.
 %setup -q -c
 # Remove executable permissions
 chmod 0644 AUTHORS CHANGELOG.md CONTRIBUTORS LICENSE
+# Fix collision between grpc's gettid and glibc's gettid
+find third_party/grpc -type f -name "*.c" -exec sed -i -e 's|gettid(|my_gettid(|g' {} +
 
 %build
 %ifarch %arm aarch64

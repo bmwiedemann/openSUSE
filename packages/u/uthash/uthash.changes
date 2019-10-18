@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 17 23:15:07 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.1.0
+  * The library moved to become a fully header-only library. There
+    is no more static archive. (And, for openSUSE, no more shared
+    library.)
+- Drop libut-shared.patch (fails to apply, usecase is gone)
+- Switch to noarch as there are only headers and doc now.
+
+-------------------------------------------------------------------
 Tue Jan 24 09:53:06 UTC 2017 - jengelh@inai.de
 
 - Rename soname to sover to reflect use of the variable

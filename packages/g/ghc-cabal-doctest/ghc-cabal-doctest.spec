@@ -18,7 +18,7 @@
 
 %global pkg_name cabal-doctest
 Name:           ghc-%{pkg_name}
-Version:        1.0.7
+Version:        1.0.8
 Release:        0
 Summary:        A Setup.hs helper for doctests running
 License:        BSD-3-Clause

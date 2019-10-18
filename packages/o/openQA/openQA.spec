@@ -60,7 +60,7 @@
 %define devel_requires %build_requires %test_requires rsync curl postgresql-devel qemu qemu-kvm tar postgresql-server xorg-x11-fonts sudo perl(Devel::Cover) perl(Devel::Cover::Report::Codecov) perl(Perl::Tidy)
 
 Name:           openQA
-Version:        4.6.1570902364.4f271c312
+Version:        4.6.1571253176.1a322744e
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -71,7 +71,6 @@ Source0:        %{name}-%{version}.tar.xz
 # use update-cache to update it
 Source1:        cache.txz
 Source101:      update-cache.sh
-Source102:      Dockerfile
 BuildRequires:  %{build_requires}
 BuildRequires:  fdupes
 Requires:       %{main_requires}

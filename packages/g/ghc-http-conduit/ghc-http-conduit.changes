@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 10 10:02:33 UTC 2019 - psimons@suse.com
+
+- Update http-conduit to version 2.3.7.3.
+  ## 2.3.7.3
+
+  * Relax test suite version bounds
+
+-------------------------------------------------------------------
+Tue Oct  8 02:02:21 UTC 2019 - psimons@suse.com
+
+- Update http-conduit to version 2.3.7.2.
+  ## 2.3.7.2
+
+  * Add the `network3` flag
+
+-------------------------------------------------------------------
 Wed May  1 02:03:21 UTC 2019 - psimons@suse.com
 
 - Update http-conduit to version 2.3.7.1.

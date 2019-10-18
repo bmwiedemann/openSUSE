@@ -18,7 +18,7 @@
 
 %bcond_with tests
 Name:           happy
-Version:        1.19.11
+Version:        1.19.12
 Release:        0
 Summary:        Happy is a parser generator for Haskell
 License:        BSD-2-Clause
@@ -31,8 +31,6 @@ BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-array-devel
 BuildRequires:  ghc-containers-devel
-BuildRequires:  ghc-directory-devel
-BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  libxml2
@@ -48,6 +46,7 @@ to the 'yacc' tool for C.
 
 %prep
 %setup -q
+find . -type f -exec chmod -x {} +
 
 %build
 %ghc_bin_build
@@ -70,7 +69,20 @@ rm -rf doc/autom4te.cache doc/config.log doc/config.status
 %license LICENSE
 %doc CHANGES README.md TODO doc examples
 %{_bindir}/%{name}
-%{_datadir}/%{name}-%{version}
+%dir %{_datadir}/%{name}-%{version}
 %{_mandir}/man1/*
+%{_datadir}/%{name}-%{version}/GLR_Base
+%{_datadir}/%{name}-%{version}/GLR_Lib
+%{_datadir}/%{name}-%{version}/GLR_Lib-ghc
+%{_datadir}/%{name}-%{version}/GLR_Lib-ghc-debug
+%{_datadir}/%{name}-%{version}/HappyTemplate
+%{_datadir}/%{name}-%{version}/HappyTemplate-arrays
+%{_datadir}/%{name}-%{version}/HappyTemplate-arrays-coerce
+%{_datadir}/%{name}-%{version}/HappyTemplate-arrays-coerce-debug
+%{_datadir}/%{name}-%{version}/HappyTemplate-arrays-debug
+%{_datadir}/%{name}-%{version}/HappyTemplate-arrays-ghc
+%{_datadir}/%{name}-%{version}/HappyTemplate-arrays-ghc-debug
+%{_datadir}/%{name}-%{version}/HappyTemplate-coerce
+%{_datadir}/%{name}-%{version}/HappyTemplate-ghc
 
 %changelog

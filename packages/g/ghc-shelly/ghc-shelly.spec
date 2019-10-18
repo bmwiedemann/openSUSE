@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-shelly
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name shelly
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.8.1
+Version:        1.9.0
 Release:        0
 Summary:        Shell-like (systems) programming in Haskell
 License:        BSD-3-Clause
@@ -34,14 +34,13 @@ BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-enclosed-exceptions-devel
 BuildRequires:  ghc-exceptions-devel
+BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-lifted-async-devel
 BuildRequires:  ghc-lifted-base-devel
 BuildRequires:  ghc-monad-control-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-rpm-macros
-BuildRequires:  ghc-system-fileio-devel
-BuildRequires:  ghc-system-filepath-devel
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-transformers-base-devel
@@ -50,7 +49,6 @@ BuildRequires:  ghc-unix-compat-devel
 BuildRequires:  ghc-unix-devel
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
-BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-hspec-contrib-devel
 BuildRequires:  ghc-hspec-devel
 %endif
@@ -66,7 +64,7 @@ demonstration of elegance.
 
 * maintains its own environment, making it thread-safe.
 
-* is modern, using Text and system-filepath/system-fileio
+* is modern, using Text filepath/directory
 
 Shelly is originally forked from the Shellish package.
 

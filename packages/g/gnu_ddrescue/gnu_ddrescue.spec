@@ -17,19 +17,20 @@
 
 
 Name:           gnu_ddrescue
-Version:        1.24
+Version:        1.25~pre1
 Release:        0
+%define rversion	1.25-pre1
 Summary:        I/O error aware data recovery and copying utility
 License:        GPL-2.0-or-later
-Group:          System/Base
+Group:          base recovery-tools
 URL:            http://gnu.org/software/ddrescue/ddrescue.html
-Source:         http://ftp.gnu.org/gnu/ddrescue/ddrescue-%version.tar.lz
-Source2:        http://ftp.gnu.org/gnu/ddrescue/ddrescue-%version.tar.lz.sig
+Source:         http://download.savannah.gnu.org/releases/ddrescue/ddrescue-%rversion.tar.lz
+#Source:         http://download.savannah.gnu.org/releases/ddrescue/ddrescue-%rversion.tar.lz.sig
 Source3:        %name.keyring
 BuildRequires:  gcc-c++
 BuildRequires:  lzip
-# FIXME: use proper Requires(pre/post/preun/...)
-PreReq:         %install_info_prereq
+Requires(post):  %install_info_prereq
+Requires(preun): %install_info_prereq
 
 %description
 GNU ddrescue is a data recovery tool. It copies data from one file or
@@ -40,7 +41,7 @@ It is more memory and time efficient than dd_rescue+dd_rhelp on disks
 with more than a few hundred bad sectors.
 
 %prep
-%setup -q -n ddrescue-%version
+%autosetup -n ddrescue-%rversion
 
 %build
 # not autoconf, but at least it behaves (nearly) like it.

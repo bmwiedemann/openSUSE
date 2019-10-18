@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct  9 08:20:46 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 0.24
+   see /usr/share/doc/packages/perl-Spreadsheet-ReadSXC/Changes
+
+  0.24  2019-10-08
+      - Fix parsing the text of cells that only contain "0"
+        These were returned as undef, instead of 0 unless the StandardCurrency
+        option was used.
+      - Fix parsing multiple sheets. If the first cell of the new table was empty,
+        the last defined value of the old table was used instead, if the
+        real (instead of formatted) values were used.
+
+-------------------------------------------------------------------
 Fri Oct  4 09:36:11 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 0.23

@@ -1,0 +1,24 @@
+From e4a4e6183560489e98b95e815b439c7a1cf3566c Mon Sep 17 00:00:00 2001
+From: Steve Pulec <spulec@gmail.com>
+Date: Mon, 29 Jul 2019 22:52:29 -0500
+Subject: [PATCH] Allow passing of encoding-type for s3 get_bucket_versions
+ without throwing error.
+
+This was a change made in https://github.com/boto/botocore/pull/1794.
+---
+ moto/s3/models.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/moto/s3/models.py b/moto/s3/models.py
+index 2a628d681..528eacee3 100644
+--- a/moto/s3/models.py
++++ b/moto/s3/models.py
+@@ -764,7 +764,7 @@ def get_bucket_versions(self, bucket_name, delimiter=None,
+                             prefix=''):
+         bucket = self.get_bucket(bucket_name)
+ 
+-        if any((delimiter, encoding_type, key_marker, version_id_marker)):
++        if any((delimiter, key_marker, version_id_marker)):
+             raise NotImplementedError(
+                 "Called get_bucket_versions with some of delimiter, encoding_type, key_marker, version_id_marker")
+ 

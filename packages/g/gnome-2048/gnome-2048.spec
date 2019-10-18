@@ -17,13 +17,13 @@
 
 
 Name:           gnome-2048
-Version:        3.32.0
+Version:        3.34.2
 Release:        0
 Summary:        Sliding block puzzle game
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Board/Puzzle
 URL:            https://wiki.gnome.org/Apps/2048
-Source0:        https://download.gnome.org/sources/gnome-2048/3.32/%{name}-%{version}.tar.xz
+Source0:        http://download.gnome.org/sources/gnome-2048/3.34/%{name}-%{version}.tar.xz
 
 BuildRequires:  appstream-glib-devel
 BuildRequires:  itstool
