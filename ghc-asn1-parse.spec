@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-asn1-parse
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name asn1-parse
 Name:           ghc-%{pkg_name}
-Version:        0.9.4
+Version:        0.9.5
 Release:        0
 Summary:        Simple monadic parser for ASN1 stream types
 License:        BSD-3-Clause
