@@ -100,7 +100,6 @@ unsorted:
   - MozillaFirefox-devel 
   - MozillaFirefox-translations-common: [i586] 
   - MozillaFirefox-translations-other 
-  - MozillaThunderbird-buildsymbols 
   - MozillaThunderbird-translations-other 
   - MultiMarkdown-6 
   - MyGUI 
@@ -2052,6 +2051,7 @@ unsorted:
   - davfs2 
   - davix 
   - davix-devel 
+  - dazzle-list-counters 
   - db48-doc 
   - dbench 
   - dbench4 
@@ -2412,6 +2412,7 @@ unsorted:
   - eiciel-lang 
   - eigen3-devel 
   - eigen3-doc 
+  - ekiga-plugins-evolution: [x86_64] 
   - elektra 
   - elektra-qt-gui 
   - elementary 
@@ -2580,7 +2581,6 @@ unsorted:
   - evmctl: [i586] 
   - evolution-data-server-32bit: [x86_64] 
   - evolution-data-server-devel 
-  - evolution-data-server-doc 
   - evolution-devel 
   - evtest 
   - exa: [x86_64] 
@@ -2876,6 +2876,7 @@ unsorted:
   - flashfocus 
   - flashrom 
   - flatbuffers-devel 
+  - flatpak-builder: [i586] 
   - flatpak-devel 
   - flatpak-zsh-completion 
   - flawfinder 
@@ -3370,8 +3371,8 @@ unsorted:
   - gedit-plugin-joinlines 
   - gedit-plugin-latex 
   - gedit-plugin-multiedit 
+  - gedit-plugin-session-saver 
   - gedit-plugin-smartspaces 
-  - gedit-plugin-synctex 
   - gedit-plugin-terminal 
   - gedit-plugin-textsize 
   - gedit-plugin-translate 
@@ -4259,6 +4260,13 @@ unsorted:
   - gnome-boxes-lang 
   - gnome-break-timer 
   - gnome-break-timer-lang 
+  - gnome-builder: [i586] 
+  - gnome-builder-doc: [i586] 
+  - gnome-builder-lang: [i586] 
+  - gnome-builder-plugin-jedi: [i586] 
+  - gnome-builder-plugin-jhbuild: [i586] 
+  - gnome-builder-plugin-vala-pack: [i586] 
+  - gnome-calculator-devel 
   - gnome-calendar 
   - gnome-calendar-lang 
   - gnome-colors-icon-theme 
@@ -4321,7 +4329,6 @@ unsorted:
   - gnome-search-tool-lang 
   - gnome-settings-daemon-devel 
   - gnome-shell-devel 
-  - gnome-shell-extension-desktop-icons 
   - gnome-shell-extension-gpaste 
   - gnome-shell-extension-hamster 
   - gnome-shell-extension-onboard 
@@ -5320,7 +5327,7 @@ unsorted:
   - imb-gnu-openmpi3-hpc 
   - imb-mpich 
   - imb-mvapich2 
-  - imb-openmpi 
+  - imb-openmpi1 
   - imb-openmpi2 
   - imb-openmpi3 
   - imb_2019_3-gnu-mpich-hpc 
@@ -7215,7 +7222,6 @@ unsorted:
   - libUnitTest++-2_0_0 
   - libVFlib3-5 
   - libWN3 
-  - libWPEBackend-fdo-1_0-1 
   - libWPEBackend-fdo-1_0-1-32bit: [x86_64] 
   - libX11-devel-32bit: [x86_64] 
   - libX11-xcb1-32bit: [x86_64] 
@@ -7339,7 +7345,7 @@ unsorted:
   - libaccounts-glib-devel 
   - libaccounts-glib-docs 
   - libaccounts-glib-tools 
-  - libaccounts-glib0-32bit: [x86_64] 
+  - libaccounts-glib1-32bit: [x86_64] 
   - libaccounts-qt5-1-32bit: [x86_64] 
   - libaccounts-qt5-devel 
   - libaccounts-qt5-doc 
@@ -8146,7 +8152,6 @@ unsorted:
   - libdatrie-devel 
   - libdav1d3-32bit: [x86_64] 
   - libdavix0 
-  - libdazzle 
   - libdazzle-devel 
   - libdb-4_8-devel-32bit: [x86_64] 
   - libdb_java-4_8 
@@ -8303,11 +8308,11 @@ unsorted:
   - libebl-plugins-32bit: [x86_64] 
   - libebml-devel 
   - libebml4-32bit: [x86_64] 
-  - libebook-1_2-19-32bit: [x86_64] 
-  - libebook-contacts-1_2-2-32bit: [x86_64] 
+  - libebook-1_2-20-32bit: [x86_64] 
+  - libebook-contacts-1_2-3-32bit: [x86_64] 
   - libebur128-1 
   - libebur128-devel 
-  - libecal-1_2-19-32bit: [x86_64] 
+  - libecal-2_0-1-32bit: [x86_64] 
   - libecholib1_3 
   - libecholib1_3-devel 
   - libechonest-qt5-devel 
@@ -8320,8 +8325,8 @@ unsorted:
   - libecryptfs1 
   - libecryptfs1-32bit: [x86_64] 
   - libector1 
-  - libedata-book-1_2-25-32bit: [x86_64] 
-  - libedata-cal-1_2-29-32bit: [x86_64] 
+  - libedata-book-1_2-26-32bit: [x86_64] 
+  - libedata-cal-2_0-1-32bit: [x86_64] 
   - libedataserver-1_2-24-32bit: [x86_64] 
   - libedataserverui-1_2-2-32bit: [x86_64] 
   - libedit-devel 
@@ -8631,6 +8636,7 @@ unsorted:
   - libgbm-devel 
   - libgbm-devel-32bit: [x86_64] 
   - libgbm1-32bit: [x86_64] 
+  - libgcalc-1-0_0_0 
   - libgcc_s1-gcc7 
   - libgcc_s1-gcc7-32bit: [x86_64] 
   - libgcin-im-client1-32bit: [x86_64] 
@@ -8718,8 +8724,8 @@ unsorted:
   - libgio-fam 
   - libgio-fam-32bit: [x86_64] 
   - libgiomm-2_4-1-32bit: [x86_64] 
-  - libgiomm-2_60-1 
-  - libgiomm-2_60-1-32bit: [x86_64] 
+  - libgiomm-2_62-1 
+  - libgiomm-2_62-1-32bit: [x86_64] 
   - libgirara-gtk3-3 
   - libgirepository-1_0-1-32bit: [x86_64] 
   - libgit2-28-32bit: [x86_64] 
@@ -8738,8 +8744,8 @@ unsorted:
   - libglfw2 
   - libglfw3 
   - libglibmm-2_4-1-32bit: [x86_64] 
-  - libglibmm-2_60-1 
-  - libglibmm-2_60-1-32bit: [x86_64] 
+  - libglibmm-2_62-1 
+  - libglibmm-2_62-1-32bit: [x86_64] 
   - libglog0 
   - libglom-1_32-0 
   - libglom-devel 
@@ -8770,7 +8776,7 @@ unsorted:
   - libgnome-desktop-2-17 
   - libgnome-desktop-2-17-32bit: [x86_64] 
   - libgnome-desktop-2-devel 
-  - libgnome-desktop-3-17-32bit: [x86_64] 
+  - libgnome-desktop-3-18-32bit: [x86_64] 
   - libgnome-desktop-3-devel 
   - libgnome-games-support-devel 
   - libgnome-keyring-devel 
@@ -8968,7 +8974,7 @@ unsorted:
   - libgviewv4l2core-2_0-2 
   - libgviewv4l2core-lang 
   - libgvncpulse-1_0-0 
-  - libgweather-3-15-32bit: [x86_64] 
+  - libgweather-3-16-32bit: [x86_64] 
   - libgweather-devel 
   - libgwengui-cpp0 
   - libgwengui-fox16-0 
@@ -9186,7 +9192,7 @@ unsorted:
   - libical-doc 
   - libical-glib-devel 
   - libical-glib-doc 
-  - libical-glib3 
+  - libical-glib3-32bit: [x86_64] 
   - libical3-32bit: [x86_64] 
   - libicecream-devel 
   - libicns-devel 
@@ -9333,6 +9339,7 @@ unsorted:
   - libjson-c-devel 
   - libjson-c-doc 
   - libjson-glib-1_0-0-32bit: [x86_64] 
+  - libjsonrpc-glib-1_0-1: [i586] 
   - libjte-devel 
   - libjthread1_3_3 
   - libjwt_verify_lib0: [x86_64] 
@@ -11140,7 +11147,7 @@ unsorted:
   - libsignal-protocol-c-devel 
   - libsignal-protocol-c2 
   - libsignon-glib-devel 
-  - libsignon-glib1 
+  - libsignon-glib2 
   - libsignon-qt5-1-32bit: [x86_64] 
   - libsignon-qt5-devel 
   - libsignon-qt5-docs 
@@ -11376,6 +11383,7 @@ unsorted:
   - libtelepathy-qt5-farstream0-32bit: [x86_64] 
   - libtelepathy-qt5-service0 
   - libtelepathy-qt5-service0-32bit: [x86_64] 
+  - libtemplate_glib-1_0-0: [i586] 
   - libtepl-4-0 
   - libteredo5 
   - libtermkey-devel 
@@ -11610,9 +11618,9 @@ unsorted:
   - libva-x11-2-32bit: [x86_64] 
   - libva2-32bit: [x86_64] 
   - libvacuumutils37 
-  - libvala-0_44-devel 
-  - libvaladoc-0_44-0 
-  - libvaladoc-0_44-devel 
+  - libvala-0_46-devel 
+  - libvaladoc-0_46-0 
+  - libvaladoc-0_46-devel 
   - libvamp-hostsdk3-32bit: [x86_64] 
   - libvamp-sdk2 
   - libvamp-sdk2-32bit: [x86_64] 
@@ -11803,7 +11811,6 @@ unsorted:
   - libwpd-devel 
   - libwpd-devel-doc 
   - libwpd-tools 
-  - libwpe-1_0-1 
   - libwpe-1_0-1-32bit: [x86_64] 
   - libwpe-devel 
   - libwpg-devel 
@@ -13327,7 +13334,7 @@ unsorted:
   - mpitests-mvapich2-psm-gnu-hpc 
   - mpitests-mvapich2-psm2: [x86_64] 
   - mpitests-mvapich2-psm2-gnu-hpc: [x86_64] 
-  - mpitests-openmpi 
+  - mpitests-openmpi1 
   - mpitests-openmpi1-gnu-hpc 
   - mpitests-openmpi2 
   - mpitests-openmpi2-gnu-hpc 
@@ -13522,6 +13529,7 @@ unsorted:
   - mypaint-brushes 
   - mypaint-brushes-devel 
   - mypaint-lang 
+  - mypy: [i586] 
   - myspell-af_NA 
   - myspell-af_ZA 
   - myspell-an 
@@ -17080,7 +17088,6 @@ unsorted:
   - python-kid-doc 
   - python-ktoblzcheck 
   - python-lammps 
-  - python-libaccounts 
   - python-libaddrxlat 
   - python-libcomps-doc 
   - python-libesedb 
@@ -17242,6 +17249,7 @@ unsorted:
   - python-troveclient 
   - python-troveclient-doc 
   - python-txsocksx 
+  - python-typeshed: [i586] 
   - python-vips 
   - python-volatility 
   - python-watcherclient 
@@ -19267,6 +19275,7 @@ unsorted:
   - python2-sqlitedict 
   - python2-sqlparse 
   - python2-ssdeep 
+  - python2-sshpubkeys 
   - python2-sshtunnel 
   - python2-statistics 
   - python2-statsd 
@@ -20699,6 +20708,7 @@ unsorted:
   - python3-javapackages 
   - python3-jdatetime 
   - python3-jdcal 
+  - python3-jedi: [i586] 
   - python3-jedihttp 
   - python3-jeepney 
   - python3-jellyfish 
@@ -20828,6 +20838,7 @@ unsorted:
   - python3-librosa 
   - python3-libsass 
   - python3-libscca 
+  - python3-libsignon-glib 
   - python3-libsigscan 
   - python3-libsmdev 
   - python3-libsmraw 
@@ -20950,6 +20961,7 @@ unsorted:
   - python3-mutmut 
   - python3-mutt-ics 
   - python3-mygpoclient 
+  - python3-mypy_extensions: [i586] 
   - python3-mysql-connector-python 
   - python3-nagiosplugin 
   - python3-natsort 
@@ -21103,6 +21115,7 @@ unsorted:
   - python3-parse_type 
   - python3-parsedatetime 
   - python3-parsel 
+  - python3-parso: [i586] 
   - python3-partd 
   - python3-parted 
   - python3-parver 
@@ -21761,6 +21774,7 @@ unsorted:
   - python3-sqlitedict 
   - python3-sqlparse 
   - python3-ssdeep 
+  - python3-sshpubkeys 
   - python3-sshtunnel 
   - python3-sss-murmur 
   - python3-sss_nss_idmap 
@@ -21889,6 +21903,8 @@ unsorted:
   - python3-txZMQ 
   - python3-txaio 
   - python3-txtorcon 
+  - python3-typed-ast: [i586] 
+  - python3-typing_extensions: [i586] 
   - python3-tzlocal 
   - python3-u-msgpack-python 
   - python3-ua-parser 
@@ -22444,7 +22460,7 @@ unsorted:
   - rsstail 
   - rst2html5 
   - rstart 
-  - rsvg-view 
+  - rsvg-convert 
   - rsyslog-diag-tools 
   - rsyslog-doc 
   - rsyslog-module-dbi 
@@ -23301,7 +23317,6 @@ unsorted:
   - samba-dsdb-modules 
   - samba-krb-printing 
   - samba-libs-python3-32bit: [x86_64] 
-  - samba-pidl 
   - samba-test 
   - samplicator 
   - sane-backends-32bit: [x86_64] 
@@ -24120,8 +24135,10 @@ unsorted:
   - syslog-ng-smtp: [x86_64] 
   - syslog-ng-sql: [x86_64] 
   - syslogd 
+  - sysprof 
   - sysprof-capture-devel-static 
   - sysprof-devel 
+  - sysprof-lang 
   - sysstat 
   - sysstat-isag 
   - system-group-obsolete 
@@ -24140,6 +24157,7 @@ unsorted:
   - systemsettings5-devel 
   - systemtap 
   - systemtap-docs 
+  - systemtap-dtrace 
   - systemtap-headers 
   - systemtap-runtime 
   - systemtap-sdt-devel 
@@ -24242,6 +24260,7 @@ unsorted:
   - tellico-lang 
   - telnet-server 
   - template-glib-devel 
+  - template-glib-lang: [i586] 
   - tennebon-dynamic-wallpaper 
   - tensorflow: [x86_64] 
   - tensorflow-avx2-gnu-hpc: [x86_64] 
@@ -31758,7 +31777,6 @@ unsorted:
   - trace-cmd 
   - trackballs 
   - tracker-devel 
-  - tracker-miner-rss 
   - trader 
   - trader-lang 
   - transconnect 
@@ -31961,8 +31979,12 @@ unsorted:
   - typelib-1_0-DbusmenuGtk3-0_4 
   - typelib-1_0-Dee-1_0 
   - typelib-1_0-Devhelp-3_0 
+  - typelib-1_0-EBackend-1_2 
   - typelib-1_0-EBook-1_2 
   - typelib-1_0-EBookContacts-1_2 
+  - typelib-1_0-ECal-2_0 
+  - typelib-1_0-EDataBook-1_2 
+  - typelib-1_0-EDataCal-2_0 
   - typelib-1_0-EDataServer-1_2 
   - typelib-1_0-EDataServerUI-1_2 
   - typelib-1_0-Eek-0_90 
@@ -32037,10 +32059,12 @@ unsorted:
   - typelib-1_0-GtkSpell-3_0 
   - typelib-1_0-GtkVnc-2_0 
   - typelib-1_0-Gucharmap-2_90 
-  - typelib-1_0-Handy-0_0 
   - typelib-1_0-HarfBuzz-0_0 
   - typelib-1_0-Hinawa-2_0 
+  - typelib-1_0-ICal-3_0 
+  - typelib-1_0-ICalGLib-3_0 
   - typelib-1_0-Ido3-0_1 
+  - typelib-1_0-Jsonrpc-1_0: [i586] 
   - typelib-1_0-Keybinder-0_0 
   - typelib-1_0-Keybinder-3_0 
   - typelib-1_0-Libmsi-1_0 
@@ -32073,11 +32097,12 @@ unsorted:
   - typelib-1_0-RygelRenderer-2_6 
   - typelib-1_0-RygelRendererGst-2_6 
   - typelib-1_0-RygelServer-2_6 
-  - typelib-1_0-Signon-1_0 
+  - typelib-1_0-Signon-2_0 
   - typelib-1_0-Skk-1_0 
   - typelib-1_0-SpiceClientGlib-2_0 
   - typelib-1_0-SpiceClientGtk-3_0 
   - typelib-1_0-TelepathyFarstream-0_6 
+  - typelib-1_0-Template-1_0: [i586] 
   - typelib-1_0-Tepl-4 
   - typelib-1_0-Thunarx-3_0 
   - typelib-1_0-TrackerMiner-2_0 
@@ -32088,6 +32113,7 @@ unsorted:
   - typelib-1_0-UnityExtras-7_0 
   - typelib-1_0-Urfkill-0_0 
   - typelib-1_0-Vips-8_5 
+  - typelib-1_0-Vte-2.91: [i586] 
   - typelib-1_0-WebKit2WebExtension-4_0 
   - typelib-1_0-Wnck-1_0 
   - typelib-1_0-Workrave-1_0 
@@ -32099,8 +32125,6 @@ unsorted:
   - typelib-1_0-XreaderView-1_5 
   - typelib-1_0-Zeitgeist-2_0 
   - typelib-1_0-kkc-1_0 
-  - typelib-1_0-libical-glib3 
-  - typelib-1_0-libical3 
   - typelib-1_0-libmirage-3_2 
   - typesafe-config 
   - typesafe-config-javadoc 
@@ -32777,7 +32801,6 @@ unsorted:
   - xcursor-themes 
   - xcursorgen 
   - xdbedizzy 
-  - xdg-dbus-proxy 
   - xdg-desktop-portal-devel 
   - xdiskusage 
   - xditview 
