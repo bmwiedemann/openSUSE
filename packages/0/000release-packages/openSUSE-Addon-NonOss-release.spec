@@ -15,7 +15,7 @@
 
 Name:           openSUSE-Addon-NonOss-release
 %define         product openSUSE-Addon-NonOss
-Summary:        openSUSE NonOSS Addon
+Summary:        openSUSE NonOSS Addon%{?betaversion: %{betaversion}}
 Version:        20191018
 Release:        0
 License:        BSD-3-Clause

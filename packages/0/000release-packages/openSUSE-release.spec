@@ -212,7 +212,7 @@ Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(ftp)
 Provides:       product_flavor(openSUSE) = 20191018-0
-Summary:        openSUSE Tumbleweed
+Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description ftp
 openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
@@ -227,7 +227,7 @@ Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(mini)
 Provides:       product_flavor(openSUSE) = 20191018-0
-Summary:        openSUSE Tumbleweed
+Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description mini
 openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
@@ -242,7 +242,7 @@ Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(dvd)
 Provides:       product_flavor(openSUSE) = 20191018-0
-Summary:        openSUSE Tumbleweed
+Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description dvd
 openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
@@ -257,7 +257,7 @@ Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(livecd-kde)
 Provides:       product_flavor(openSUSE) = 20191018-0
-Summary:        openSUSE Tumbleweed
+Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description livecd-kde
 openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
@@ -272,7 +272,7 @@ Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(livecd-x11)
 Provides:       product_flavor(openSUSE) = 20191018-0
-Summary:        openSUSE Tumbleweed
+Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description livecd-x11
 openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
@@ -287,7 +287,7 @@ Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(livecd-gnome)
 Provides:       product_flavor(openSUSE) = 20191018-0
-Summary:        openSUSE Tumbleweed
+Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description livecd-gnome
 openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
@@ -302,7 +302,7 @@ Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(livecd-xfce)
 Provides:       product_flavor(openSUSE) = 20191018-0
-Summary:        openSUSE Tumbleweed
+Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description livecd-xfce
 openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
@@ -317,7 +317,7 @@ Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(usb-kde)
 Provides:       product_flavor(openSUSE) = 20191018-0
-Summary:        openSUSE Tumbleweed
+Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description usb-kde
 openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
@@ -332,7 +332,7 @@ Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(usb-gnome)
 Provides:       product_flavor(openSUSE) = 20191018-0
-Summary:        openSUSE Tumbleweed
+Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description usb-gnome
 openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
@@ -347,7 +347,7 @@ Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(usb-x11)
 Provides:       product_flavor(openSUSE) = 20191018-0
-Summary:        openSUSE Tumbleweed
+Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description usb-x11
 openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
@@ -362,7 +362,7 @@ Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance)
 Provides:       product_flavor(openSUSE) = 20191018-0
-Summary:        openSUSE Tumbleweed
+Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description appliance
 openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.

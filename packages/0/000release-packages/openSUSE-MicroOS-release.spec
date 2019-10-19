@@ -62,7 +62,7 @@ Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(dvd)
 Provides:       product_flavor(openSUSE-MicroOS) = 20191018-0
-Summary:        openSUSE MicroOS
+Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
 
 %description dvd
 openSUSE MicroOS combines the benefits of a rolling OS with a read-only root filesystem with transactional updates. It is a modern Linux Operating System, designed for single-service installations, such as container hosts. It is optimized for large, clustered deployments.
@@ -78,7 +78,7 @@ Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(kubic-dvd)
 Provides:       product_flavor(openSUSE-MicroOS) = 20191018-0
-Summary:        openSUSE MicroOS
+Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
 
 %description kubic-dvd
 openSUSE MicroOS combines the benefits of a rolling OS with a read-only root filesystem with transactional updates. It is a modern Linux Operating System, designed for single-service installations, such as container hosts. It is optimized for large, clustered deployments.
@@ -94,7 +94,7 @@ Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance)
 Provides:       product_flavor(openSUSE-MicroOS) = 20191018-0
-Summary:        openSUSE MicroOS
+Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
 
 %description appliance
 openSUSE MicroOS combines the benefits of a rolling OS with a read-only root filesystem with transactional updates. It is a modern Linux Operating System, designed for single-service installations, such as container hosts. It is optimized for large, clustered deployments.
@@ -110,7 +110,7 @@ Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance-kubic)
 Provides:       product_flavor(openSUSE-MicroOS) = 20191018-0
-Summary:        openSUSE MicroOS
+Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
 
 %description appliance-kubic
 openSUSE MicroOS combines the benefits of a rolling OS with a read-only root filesystem with transactional updates. It is a modern Linux Operating System, designed for single-service installations, such as container hosts. It is optimized for large, clustered deployments.
