@@ -4538,6 +4538,9 @@ Provides: weakremover(vulkan-devel-32bit)
 Provides: weakremover(libunrar5_6_1)
 %endif
 # 15.0:update
+Provides: weakremover(gnu8-compilers-hpc)
+Provides: weakremover(gnu8-compilers-hpc-devel)
+Provides: weakremover(gnu8-compilers-hpc-macros-devel)
 Provides: weakremover(netpbm-vulnerable)
 Provides: weakremover(pam_ldap)
 Provides: weakremover(systemd-mini-bash-completion)
