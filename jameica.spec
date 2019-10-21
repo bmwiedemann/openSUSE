@@ -16,11 +16,11 @@
 #
 
 
-%define _build 453
-%define _buildreleases 452
-%define _tag V_2_8_4_BUILD_%{_build}
+%define _build 454
+%define _buildreleases 454
+%define _tag V_2_8_5_BUILD_%{_build}
 Name:           jameica
-Version:        2.8.4
+Version:        2.8.5
 Release:        0
 Summary:        Runtime environment for Java applications like Hibiscus
 License:        GPL-2.0-only AND LGPL-2.0-only AND Apache-2.0 AND CPL-1.0 AND Zlib AND MPL-1.0 AND EPL-1.0
