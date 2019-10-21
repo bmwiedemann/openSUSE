@@ -1,8 +1,8 @@
-Index: tbb-2019_U8/cmake/templates/TBBConfig.cmake.in
+Index: tbb-2019_U9/cmake/templates/TBBConfig.cmake.in
 ===================================================================
---- tbb-2019_U8.orig/cmake/templates/TBBConfig.cmake.in
-+++ tbb-2019_U8/cmake/templates/TBBConfig.cmake.in
-@@ -60,8 +60,6 @@ foreach (_tbb_component ${TBB_FIND_COMPO
+--- tbb-2019_U9.orig/cmake/templates/TBBConfig.cmake.in
++++ tbb-2019_U9/cmake/templates/TBBConfig.cmake.in
+@@ -53,8 +53,6 @@ foreach (_tbb_component ${TBB_FIND_COMPO
      if (EXISTS "${_tbb_release_lib}" OR EXISTS "${_tbb_debug_lib}")
          if (NOT TARGET TBB::${_tbb_component})
              add_library(TBB::${_tbb_component} SHARED IMPORTED)
@@ -11,16 +11,16 @@ Index: tbb-2019_U8/cmake/templates/TBBConfig.cmake.in
  
              if (EXISTS "${_tbb_release_lib}")
                  set_target_properties(TBB::${_tbb_component} PROPERTIES
-Index: tbb-2019_U8/cmake/templates/TBBConfigInternal.cmake.in
+Index: tbb-2019_U9/cmake/templates/TBBConfigInternal.cmake.in
 ===================================================================
---- tbb-2019_U8.orig/cmake/templates/TBBConfigInternal.cmake.in
-+++ tbb-2019_U8/cmake/templates/TBBConfigInternal.cmake.in
-@@ -43,8 +43,6 @@ foreach (_tbb_component ${TBB_FIND_COMPO
- 
+--- tbb-2019_U9.orig/cmake/templates/TBBConfigInternal.cmake.in
++++ tbb-2019_U9/cmake/templates/TBBConfigInternal.cmake.in
+@@ -54,8 +54,6 @@ foreach (_tbb_component ${TBB_FIND_COMPO
      if (EXISTS "${_tbb_release_lib}" OR EXISTS "${_tbb_debug_lib}")
-         add_library(TBB::${_tbb_component} SHARED IMPORTED)
--        set_target_properties(TBB::${_tbb_component} PROPERTIES
--                              INTERFACE_INCLUDE_DIRECTORIES "${_tbb_root}/include"@TBB_COMPILE_DEFINITIONS@)
+         if (NOT TARGET TBB::${_tbb_component})
+             add_library(TBB::${_tbb_component} SHARED IMPORTED)
+-            set_target_properties(TBB::${_tbb_component} PROPERTIES
+-                                INTERFACE_INCLUDE_DIRECTORIES "${_tbb_root}/include"@TBB_COMPILE_DEFINITIONS@)
  
-         if (EXISTS "${_tbb_release_lib}")
-             set_target_properties(TBB::${_tbb_component} PROPERTIES
+             if (EXISTS "${_tbb_release_lib}")
+                 set_target_properties(TBB::${_tbb_component} PROPERTIES

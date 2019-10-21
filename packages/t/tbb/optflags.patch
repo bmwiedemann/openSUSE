@@ -1,13 +1,13 @@
-Index: tbb-2019_U8/build/linux.gcc.inc
+Index: tbb-2019_U9/build/linux.gcc.inc
 ===================================================================
---- tbb-2019_U8.orig/build/linux.gcc.inc
-+++ tbb-2019_U8/build/linux.gcc.inc
-@@ -65,7 +65,7 @@ ifneq (,$(shell $(CONLY) -dumpfullversio
+--- tbb-2019_U9.orig/build/linux.gcc.inc
++++ tbb-2019_U9/build/linux.gcc.inc
+@@ -72,7 +72,7 @@ ifeq ($(cfg), debug)
+         CPLUS_FLAGS = -DTBB_USE_DEBUG -O0 -g
  endif
  
- ifeq ($(cfg), release)
--        CPLUS_FLAGS = $(ITT_NOTIFY) -g -O2 -DUSE_PTHREAD
-+        CPLUS_FLAGS = $(ITT_NOTIFY) -g -O2 $(OPTFLAGS) -DUSE_PTHREAD
- endif
- ifeq ($(cfg), debug)
-         CPLUS_FLAGS = -DTBB_USE_DEBUG $(ITT_NOTIFY) -g -O0 -DUSE_PTHREAD
+-CPLUS_FLAGS += $(ITT_NOTIFY) -DUSE_PTHREAD -pthread
++CPLUS_FLAGS += $(ITT_NOTIFY) $(OPTFLAGS) -DUSE_PTHREAD -pthread
+ LIB_LINK_FLAGS += -pthread
+ 
+ TBB_ASM.OBJ=

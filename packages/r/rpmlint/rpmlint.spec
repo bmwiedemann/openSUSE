@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
@@ -61,6 +61,7 @@ Patch63:        fix-diag-sortorder.diff
 Patch72:        rpmlint-slpp-NUM-NUM.patch
 Patch77:        suse-rpmlint-all-pie.patch
 Patch78:        add-check-for-a-non-zero-.text-segment-in-.a-archive.patch
+Patch79:        rpm415-workaround.diff
 BuildRequires:  desktop-file-utils
 BuildRequires:  obs-service-format_spec_file
 BuildRequires:  python3-flake8

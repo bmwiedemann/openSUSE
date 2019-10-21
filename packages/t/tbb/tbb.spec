@@ -16,7 +16,7 @@
 #
 
 
-%define rel_ver 2019_U8
+%define rel_ver 2019_U9
 %define so_ver 2
 
 %bcond_with python2

@@ -1,0 +1,131 @@
+From 337b45065f36b9b92986f5a65a2befb620365ab2 Mon Sep 17 00:00:00 2001
+From: Till Maas <opensource@till.name>
+Date: Thu, 5 Sep 2019 14:53:25 +0200
+Subject: [PATCH] Makefile: Support DESTDIR variable
+
+Use DESTDIR as a prefix for all installation paths to allow installing
+into a different root directory. This allows to use the Makefile to
+build an RPM package that calls `make install DESTDIR=...`.
+---
+ src/brickd/Makefile | 50 +++++++++++++++++++++++++-------------------------
+ 1 file changed, 25 insertions(+), 25 deletions(-)
+
+diff --git a/src/brickd/Makefile b/src/brickd/Makefile
+index ba6c9b2..333fd87 100644
+--- a/src/brickd/Makefile
++++ b/src/brickd/Makefile
+@@ -571,86 +571,86 @@ $(TARGET): $(OBJECTS) Makefile
+ install: all
+ ifeq ($(PLATFORM),Linux)
+ 	@echo MD $(bindir)
+-	$(E)$(INSTALL) -d -m 755 $(bindir)
++	$(E)$(INSTALL) -d -m 755 $(DESTDIR)$(bindir)
+ 
+ 	@echo MD $(sysconfdir)
+-	$(E)$(INSTALL) -d -m 755 $(sysconfdir)
++	$(E)$(INSTALL) -d -m 755 $(DESTDIR)$(sysconfdir)
+ 
+ ifeq ($(WITH_SYSTEMD),no)
+ 	@echo MD $(sysconfdir)/init.d
+-	$(E)$(INSTALL) -d -m 755 $(sysconfdir)/init.d
++	$(E)$(INSTALL) -d -m 755 $(DESTDIR)$(sysconfdir)/init.d
+ endif
+ 
+ 	@echo MD $(sysconfdir)/logrotate.d
+-	$(E)$(INSTALL) -d -m 755 $(sysconfdir)/logrotate.d
++	$(E)$(INSTALL) -d -m 755 $(DESTDIR)$(sysconfdir)/logrotate.d
+ 
+ 	@echo MD $(localstatedir)/log
+-	$(E)$(INSTALL) -d -m 755 $(localstatedir)/log
++	$(E)$(INSTALL) -d -m 755 $(DESTDIR)$(localstatedir)/log
+ 
+ 	@echo MD $(localstatedir)/run
+-	$(E)$(INSTALL) -d -m 755 $(localstatedir)/run
++	$(E)$(INSTALL) -d -m 755 $(DESTDIR)$(localstatedir)/run
+ 
+ 	@echo MD $(datadir)
+-	$(E)$(INSTALL) -d -m 755 $(datadir)
++	$(E)$(INSTALL) -d -m 755 $(DESTDIR)$(datadir)
+ 
+ 	@echo MD $(datadir)/man/man8
+-	$(E)$(INSTALL) -d -m 755 $(datadir)/man/man8
++	$(E)$(INSTALL) -d -m 755 $(DESTDIR)$(datadir)/man/man8
+ 
+ 	@echo MD $(datadir)/man/man5
+-	$(E)$(INSTALL) -d -m 755 $(datadir)/man/man5
++	$(E)$(INSTALL) -d -m 755 $(DESTDIR)$(datadir)/man/man5
+ 
+ ifeq ($(WITH_PM_UTILS),yes)
+ 	@echo MD $(libdir)/pm-utils/power.d
+-	$(E)$(INSTALL) -d -m 755 $(libdir)/pm-utils/power.d
++	$(E)$(INSTALL) -d -m 755 $(DESTDIR)$(libdir)/pm-utils/power.d
+ 
+ 	@echo MD $(libdir)/pm-utils/sleep.d
+-	$(E)$(INSTALL) -d -m 755 $(libdir)/pm-utils/sleep.d
++	$(E)$(INSTALL) -d -m 755 $(DESTDIR)$(libdir)/pm-utils/sleep.d
+ endif
+ 
+ ifeq ($(WITH_SYSTEMD),yes)
+ 	@echo MD $(syslibdir)/systemd/system
+-	$(E)$(INSTALL) -d -m 755 $(syslibdir)/systemd/system
++	$(E)$(INSTALL) -d -m 755 $(DESTDIR)$(syslibdir)/systemd/system
+ endif
+ 
+ 	@echo CP brickd
+-	$(E)$(INSTALL) -m 755 brickd $(bindir)
++	$(E)$(INSTALL) -m 755 brickd $(DESTDIR)$(bindir)
+ 
+ 	@echo CP brickd.conf
+ ifneq ($(WITH_RED_BRICK),no)
+-	$(E)$(INSTALL) -m 644 ../build_data/linux/installer/etc/brickd-red-brick.conf $(sysconfdir)/brickd.conf
++	$(E)$(INSTALL) -m 644 ../build_data/linux/installer/etc/brickd-red-brick.conf $(DESTDIR)$(sysconfdir)/brickd.conf
+ else
+-	$(E)$(INSTALL) -m 644 ../build_data/linux/installer/etc/brickd-default.conf $(sysconfdir)/brickd.conf
++	$(E)$(INSTALL) -m 644 ../build_data/linux/installer/etc/brickd-default.conf $(DESTDIR)$(sysconfdir)/brickd.conf
+ endif
+ 
+ ifeq ($(WITH_SYSTEMD),no)
+ 	@echo CP brickd [init.d script]
+-	$(E)$(INSTALL) -m 755 ../build_data/linux/installer/usr/share/brickd/brickd-sysv-init $(sysconfdir)/init.d/brickd
++	$(E)$(INSTALL) -m 755 ../build_data/linux/installer/usr/share/brickd/brickd-sysv-init $(DESTDIR)$(sysconfdir)/init.d/brickd
+ else
+ 	@echo CP brickd.service [systemd service]
+-	$(E)$(INSTALL) -m 644 ../build_data/linux/installer/lib/systemd/system/brickd.service $(syslibdir)/systemd/system
++	$(E)$(INSTALL) -m 644 ../build_data/linux/installer/lib/systemd/system/brickd.service $(DESTDIR)$(syslibdir)/systemd/system
+ endif
+ 
+ 	@echo CP brickd [logrotate.d script]
+-	$(E)$(INSTALL) -m 644 ../build_data/linux/installer/etc/logrotate.d/brickd $(sysconfdir)/logrotate.d
++	$(E)$(INSTALL) -m 644 ../build_data/linux/installer/etc/logrotate.d/brickd $(DESTDIR)$(sysconfdir)/logrotate.d
+ 
+ 	@echo CP brickd.8 [manpage]
+-	$(E)$(INSTALL) -m 644 ../build_data/linux/installer/usr/share/man/man8/brickd.8 $(datadir)/man/man8
+-	$(E)gzip -n -f $(datadir)/man/man8/brickd.8
++	$(E)$(INSTALL) -m 644 ../build_data/linux/installer/usr/share/man/man8/brickd.8 $(DESTDIR)$(datadir)/man/man8
++	$(E)gzip -n -f $(DESTDIR)$(datadir)/man/man8/brickd.8
+ 
+ 	@echo CP brickd.conf.5 [manpage]
+-	$(E)$(INSTALL) -m 644 ../build_data/linux/installer/usr/share/man/man5/brickd.conf.5 $(datadir)/man/man5
+-	$(E)gzip -n -f $(datadir)/man/man5/brickd.conf.5
++	$(E)$(INSTALL) -m 644 ../build_data/linux/installer/usr/share/man/man5/brickd.conf.5 $(DESTDIR)$(datadir)/man/man5
++	$(E)gzip -n -f $(DESTDIR)$(datadir)/man/man5/brickd.conf.5
+ endif
+ 
+ ifeq ($(WITH_PM_UTILS),yes)
+ 	@echo CP 42brickd [pm-utils script]
+-	$(E)$(INSTALL) -m 755 ../build_data/linux/installer/usr/lib/pm-utils/power.d/42brickd $(libdir)/pm-utils/power.d
+-	$(E)$(INSTALL) -m 755 ../build_data/linux/installer/usr/lib/pm-utils/sleep.d/42brickd $(libdir)/pm-utils/sleep.d
++	$(E)$(INSTALL) -m 755 ../build_data/linux/installer/usr/lib/pm-utils/power.d/42brickd $(DESTDIR)$(libdir)/pm-utils/power.d
++	$(E)$(INSTALL) -m 755 ../build_data/linux/installer/usr/lib/pm-utils/sleep.d/42brickd $(DESTDIR)$(libdir)/pm-utils/sleep.d
+ endif
+ 
+ ifeq ($(WITH_SYSTEMD),yes)
+ 	@echo CP brickd-resume.service [systemd service]
+-	$(E)$(INSTALL) -m 644 ../build_data/linux/installer/lib/systemd/system/brickd-resume.service $(syslibdir)/systemd/system
++	$(E)$(INSTALL) -m 644 ../build_data/linux/installer/lib/systemd/system/brickd-resume.service $(DESTDIR)$(syslibdir)/systemd/system
+ endif
+ 
+ %.o: %.c Makefile
+-- 
+2.16.4
+

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct 20 13:37:30 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.0
+ * Use a valid curve when constructing an EC_KEY that looks like
+   X25519. The recent EC group cofactor change results in
+   stricter validation, which causes the EC_GROUP_set_generator()
+   call to fail.
+ * Fixed a padding oracle in PKCS7_dataDecode and
+   CMS_decrypt_set1_pkey. (Note that the CMS code is currently
+   disabled).
+
+-------------------------------------------------------------------
 Wed May 22 13:45:30 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 2.9.2

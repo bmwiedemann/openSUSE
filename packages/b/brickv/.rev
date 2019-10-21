@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>66d103bd21c2536433ca5b4eff9ed4dd</srcmd5>
+    <version>2.4.9</version>
+    <time>1571653678</time>
+    <user>dimstar_suse</user>
+    <comment>- fix review comment to use full path for source location
+- fix review comment to remove buildroot and defattr</comment>
+    <requestid>738462</requestid>
+  </revision>
+</revisionlist>

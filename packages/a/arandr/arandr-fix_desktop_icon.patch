@@ -1,0 +1,11 @@
+--- data/arandr.desktop.orig	2012-12-03 16:04:36.247554504 +0100
++++ data/arandr.desktop	2012-12-03 16:10:39.136988024 +0100
+@@ -2,7 +2,7 @@
+ Name=ARandR
+ GenericName=Screen Settings
+ GenericName[de]=Bildschirmeinstellungen
+-Icon=display
++Icon=package_utility_desktop
+ Exec=arandr
+ Terminal=false
+ Type=Application

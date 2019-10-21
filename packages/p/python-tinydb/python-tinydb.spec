@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-tinydb
-Version:        3.14.1
+Version:        3.15.0
 Release:        0
 Summary:        A document-oriented database
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/msiemens/tinydb
 Source:         https://files.pythonhosted.org/packages/source/t/tinydb/tinydb-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
@@ -64,6 +63,6 @@ sed -i 's/ujson/ujson_is_broken/' tinydb/storages.py
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/tinydb*
 
 %changelog

@@ -2130,4 +2130,12 @@ Note that this will require adding `Preinstall: libzstd1` to the `openSUSE:Facto
     <user>dimstar_suse</user>
     <comment>Revert to previous revision</comment>
   </revision>
+  <revision rev="275" vrev="9">
+    <srcmd5>37a9f2b7f34cba3f96d14d66da73d28e</srcmd5>
+    <version>4.14.2.1</version>
+    <time>1571653480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>732635</requestid>
+  </revision>
 </revisionlist>

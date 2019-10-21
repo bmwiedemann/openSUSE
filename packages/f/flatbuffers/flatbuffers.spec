@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           flatbuffers
 %define   sonum 1
-Version:        1.10.0.20190321T162332.a746143
+Version:        1.11.0
 Release:        0
 Summary:        Memory Efficient Serialization Library
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 Url:            http://google.github.io/flatbuffers/
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/google/flatbuffers/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 2.8.11.2
 BuildRequires:  gcc-c++
 

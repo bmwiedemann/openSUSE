@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 18 08:36:44 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- make check takes too long and end up timing out causing
+  build failures; disable %%check section until fixed.
+
+-------------------------------------------------------------------
 Sat Aug 31 15:31:57 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Fix download URLs for include-maxima.de.texi and

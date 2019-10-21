@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Oct 20 20:24:23 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.1.3
+  * IPv6 support added
+  * Avoid endless loops on unexpected end of input.
+  * Generate SMFError when the parser finds unexpected end of input.
+  * general cleanups and bringing back the fluidsynth backend
+  * migration to full GNUInstallDirs support
+  * modernization started of the CMake build system
+  * Library includes reorganization
+  * Fixed drumstick-file unit test
+  * Custom commandline parser replaced by standard Qt5 QCommandLineParser
+  * fixed spurious error message for ALSA input
+- Drop Dont-use-QOverload.patch. No longer needed.
+- Update the libdrumstick-rt-plugins license tag, eassynth contains
+  Apache-2.0 files.
+
+-------------------------------------------------------------------
 Tue Dec 18 15:13:00 UTC 2018 - wbauer@tmo.at
 
 - Add Dont-use-QOverload.patch to make it build on Leap 42.3

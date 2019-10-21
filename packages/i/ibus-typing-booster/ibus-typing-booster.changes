@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Oct 18 12:49:48 UTC 2019 - maiku.fabian@gmail.com
+
+- Update to 2.7.0
+- Add support for compose sequences
+  Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/47
+  Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/36
+- Test cases for compose support
+- When using doctest: log to stderr and set logging level to DEBUG
+- Properly close file handles when loading hunspell dictionaries
+
+-------------------------------------------------------------------
+Fri Oct 11 10:55:48 UTC 2019 - maiku.fabian@gmail.com
+
+- Update to 2.6.8
+- Quote the tables for the key and mouse bindings in the README.md as code
+- Do not hardcode the list of useful m17n input methods
+- Use LOGGER.exeption() in exception handlers
+- Use python logging module with log file rotation instead of writing to stdout/stderr
+- Fix set_preedit_underline() with parameter update_gsettings=True
+- Fix mni-inscript2-{beng,mtei}.mim and sat-inscript2-{deva,olck}.mim
+  (m17n-db-1.8.0-inscript2-mni-sat.patch)
+
+-------------------------------------------------------------------
 Tue Oct 01 22:05:20 UTC 2019 - maiku.fabian@gmail.com
 
 - Update to 2.6.7

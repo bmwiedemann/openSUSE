@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Oct 19 17:02:55 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.30.0:
+  This release adds support for half-precision float and
+  schedulesthe deprecation of memset/memcpy accepting 5 arguments
+  (cf. LLVM change).
+  * PR #518: Fix use of -fPIC flag in wheels
+  * PR #513: Remove restriction on sphinx version from Anaconda distro
+  * PR #512: fix for block labels which contain "interesting"
+    characters
+  * PR #511: Deprecate the use of memset/memcpy with alias
+  * PR #510: Add fp16 Intrinsics
+  * PR #509: Add Half-Precision Type
+  * PR #502: Add -fPIC flag for manylinux1 wheel building
+  * PR #491: Fix incorrect hierarchy in the documentation for
+    ir.Constant.
+  * PR #474: Update docs
+  * PR #470: Fix leak on string returning APIs.
+
+-------------------------------------------------------------------
 Wed Jun 19 01:25:56 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Package examples

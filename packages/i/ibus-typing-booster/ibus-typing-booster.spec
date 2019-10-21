@@ -15,7 +15,7 @@
 #
 
 Name:           ibus-typing-booster
-Version:        2.6.7
+Version:        2.7.0
 Release:        0 
 Summary:        An input completion utility
 License:        GPL-3.0+
@@ -23,6 +23,7 @@ Group:          System/X11/Utilities
 URL:            https://mike-fabian.github.io/ibus-typing-booster/
 Source0:        https://github.com/mike-fabian/ibus-typing-booster/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://releases.pagure.org/inscript2/inscript2-20160423.tar.gz
+Patch0:         m17n-db-1.8.0-inscript2-mni-sat.patch
 BuildRequires:  ibus-devel
 BuildRequires:  python3
 BuildRequires:  python3-devel
@@ -85,6 +86,7 @@ input method to speedup typing.
 %setup -q
 ##extract inscript2 maps
 tar xzf %{SOURCE1}
+%patch0 -p0
 
 %build
 export PYTHON=%{_bindir}/python3
@@ -109,19 +111,6 @@ cp -p inscript2/icons/* %{buildroot}%{_datadir}/m17n/icons
 
 %find_lang %{name}
 
-cat << 'EOF' >> engine.sh
-#!/bin/sh
-# run doctests
-pushd engine
-for i in hunspell_suggest.py m17n_translit.py itb_emoji.py itb_util.py; do
-  python3 ${i} -v &
-done
-popd
-wait
-echo "engine tests passed";
-EOF
-chmod +x engine.sh
-
 %check
 export LC_ALL=en_US.UTF-8
 export M17NDIR=%{buildroot}%{_datadir}/m17n/
@@ -130,14 +119,13 @@ desktop-file-validate \
     %{buildroot}%{_datadir}/applications/ibus-setup-typing-booster.desktop
 desktop-file-validate \
     $RPM_BUILD_ROOT%{_datadir}/applications/emoji-picker.desktop
-time ./engine.sh
-#pushd engine
+pushd engine
     # run doctests
-    #python3 hunspell_suggest.py -v
-    #python3 m17n_translit.py -v
-    #python3 itb_emoji.py -v
-    #python3 itb_util.py -v
-#popd
+    python3 hunspell_suggest.py -v
+    python3 m17n_translit.py -v
+    python3 itb_emoji.py -v
+    python3 itb_util.py -v
+popd
 mkdir -p /tmp/glib-2.0/schemas/
 cp org.freedesktop.ibus.engine.typing-booster.gschema.xml \
    /tmp/glib-2.0/schemas/org.freedesktop.ibus.engine.typing-booster.gschema.xml

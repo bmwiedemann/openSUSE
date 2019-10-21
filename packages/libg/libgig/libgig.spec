@@ -2,7 +2,7 @@
 #
 # spec file for package libgig
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -14,17 +14,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define sover_gig  8
+%define sover_gig  9
 %define sover_akai 0
 Name:           libgig
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        Library for loading Gigasampler and DLS Level 1/2 files
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 Url:            http://linuxsampler.org/
 ExclusiveArch:  %ix86 x86_64
@@ -99,7 +99,8 @@ echo "%{_libdir}/libakai" > "%{buildroot}%{_sysconfdir}/ld.so.conf.d/libakai%{so
 
 %files -n libgig%{sover_gig}
 %defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog NEWS README TODO
+%license  COPYING
+%doc AUTHORS ChangeLog NEWS README TODO
 %dir %{_libdir}/libgig/
 %{_libdir}/libgig/libgig.so.%{sover_gig}
 %{_libdir}/libgig/libgig.so.%{sover_gig}.*
@@ -110,7 +111,8 @@ echo "%{_libdir}/libakai" > "%{buildroot}%{_sysconfdir}/ld.so.conf.d/libakai%{so
 
 %files -n libakai%{sover_akai}
 %defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog NEWS README TODO
+%license  COPYING
+%doc AUTHORS ChangeLog NEWS README TODO
 %{_libdir}/libgig/libakai.so.%{sover_akai}
 %{_libdir}/libgig/libakai.so.%{sover_akai}.*
 %config %{_sysconfdir}/ld.so.conf.d/libakai%{sover_akai}.conf
@@ -133,7 +135,8 @@ echo "%{_libdir}/libakai" > "%{buildroot}%{_sysconfdir}/ld.so.conf.d/libakai%{so
 
 %files -n libgig-tools
 %defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog NEWS README TODO
+%license  COPYING
+%doc AUTHORS ChangeLog NEWS README TODO
 %{_bindir}/akaidump
 %{_bindir}/akaiextract
 %{_bindir}/dlsdump

@@ -1,0 +1,275 @@
+From 5bc138a7663e471edad24cc662366bc743d3d3e0 Mon Sep 17 00:00:00 2001
+From: Panu Matilainen <pmatilai@redhat.com>
+Date: Fri, 10 May 2019 13:10:00 +0300
+Subject: [PATCH 1/2] Stop papering over the security disaster known as prelink
+
+Back in the turn of the century somebody thought it was a neat idea
+to completely compromise system security to improve program start-up
+start-up times a wee bit. Since then, people have thankfully started
+coming to their senses and removed prelink from distros entirely.
+
+Lets stop papering over the security disaster: we obviously cannot
+stop people from using prelink, but instead of trying to undo the
+damage for verification purposes, we'll now report such a system as
+compromised. Which is how it should be, IMNSHO.
+
+This eliminates a whole lot of extra junk from each and every file
+digest calculation that we do, so it might even show up on somebodys
+performance charts. It also gets rid of libelf dependency outside
+librpmbuild, which is a nice little bonus.
+
+Inspired by a patch to eliminate a rendundant double open of regular
+files in rpmDoDigest() from Denys Vlasenko, taken a little further...
+---
+ macros.in           |  10 ---
+ rpmio/Makefile.am   |   1 -
+ rpmio/rpmfileutil.c | 176 +++-----------------------------------------
+ 3 files changed, 9 insertions(+), 178 deletions(-)
+
+diff --git a/macros.in b/macros.in
+index a6069ee4d..32c453479 100644
+--- a/macros.in
++++ b/macros.in
+@@ -685,16 +685,6 @@ package or when debugging this package.\
+ #	gpg --batch --no-verbose --verify --no-secmem-warning \
+ #	%{__signature_filename} %{__plaintext_filename}
+ #
+-# XXX rpm-4.1 verifies prelinked libraries using a prelink undo helper.
+-#	Normally this macro is defined in /etc/rpm/macros.prelink, installed
+-#	with the prelink package. If the macro is undefined, then prelinked
+-#	shared libraries contents are MD5 digest verified (as usual), rather
+-#	than MD5 verifying the output of the prelink undo helper.
+-#
+-#	Note: The 2nd token is used as argv[0] and "library" is a
+-#	placeholder that will be deleted and replaced with the appropriate
+-#	library file path.
+-#%__prelink_undo_cmd     /usr/sbin/prelink prelink -y library
+ 
+ # Horowitz Key Protocol server configuration
+ #
+diff --git a/rpmio/Makefile.am b/rpmio/Makefile.am
+index 6024ae4e2..cedd784de 100644
+--- a/rpmio/Makefile.am
++++ b/rpmio/Makefile.am
+@@ -42,7 +42,6 @@ librpmio_la_LIBADD = \
+ 	@WITH_OPENSSL_LIB@ \
+ 	@WITH_BZ2_LIB@ \
+ 	@WITH_ZLIB_LIB@ \
+-	@WITH_LIBELF_LIB@ \
+ 	@WITH_POPT_LIB@ \
+ 	@WITH_LZMA_LIB@ \
+ 	$(ZSTD_LIBS) \
+diff --git a/rpmio/rpmfileutil.c b/rpmio/rpmfileutil.c
+index 98f19e8a6..4349c64a7 100644
+--- a/rpmio/rpmfileutil.c
++++ b/rpmio/rpmfileutil.c
+@@ -1,18 +1,5 @@
+ #include "system.h"
+ 
+-#if HAVE_GELF_H
+-
+-#include <gelf.h>
+-
+-#if !defined(DT_GNU_PRELINKED)
+-#define DT_GNU_PRELINKED        0x6ffffdf5
+-#endif
+-#if !defined(DT_GNU_LIBLIST)
+-#define DT_GNU_LIBLIST          0x6ffffef9
+-#endif
+-
+-#endif
+-
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/wait.h>
+@@ -34,178 +21,33 @@
+ static const char *rpm_config_dir = NULL;
+ static pthread_once_t configDirSet = PTHREAD_ONCE_INIT;
+ 
+-static int is_prelinked(int fdno)
+-{
+-    int prelinked = 0;
+-#if HAVE_GELF_H && HAVE_LIBELF
+-    Elf *elf = NULL;
+-    Elf_Scn *scn = NULL;
+-    Elf_Data *data = NULL;
+-    GElf_Ehdr ehdr;
+-    GElf_Shdr shdr;
+-    GElf_Dyn dyn;
+-
+-    (void) elf_version(EV_CURRENT);
+-
+-    if ((elf = elf_begin (fdno, ELF_C_READ, NULL)) == NULL ||
+-	       elf_kind(elf) != ELF_K_ELF || gelf_getehdr(elf, &ehdr) == NULL ||
+-	       !(ehdr.e_type == ET_DYN || ehdr.e_type == ET_EXEC))
+-	goto exit;
+-
+-    while (!prelinked && (scn = elf_nextscn(elf, scn)) != NULL) {
+-	(void) gelf_getshdr(scn, &shdr);
+-	if (shdr.sh_type != SHT_DYNAMIC || shdr.sh_entsize == 0)
+-	    continue;
+-	while (!prelinked && (data = elf_getdata (scn, data)) != NULL) {
+-	    int maxndx = data->d_size / shdr.sh_entsize;
+-
+-            for (int ndx = 0; ndx < maxndx; ++ndx) {
+-		(void) gelf_getdyn (data, ndx, &dyn);
+-		if (!(dyn.d_tag == DT_GNU_PRELINKED || dyn.d_tag == DT_GNU_LIBLIST))
+-		    continue;
+-		prelinked = 1;
+-		break;
+-	    }
+-	}
+-    }
+-
+-exit:
+-    if (elf) (void) elf_end(elf);
+-#endif
+-    return prelinked;
+-}
+-
+-static int open_dso(const char * path, pid_t * pidp, rpm_loff_t *fsizep)
+-{
+-    static const char * cmd = NULL;
+-    static int initted = 0;
+-    int fdno;
+-
+-    if (!initted) {
+-	cmd = rpmExpand("%{?__prelink_undo_cmd}", NULL);
+-	initted++;
+-    }
+-
+-    if (pidp) *pidp = 0;
+-
+-    if (fsizep) {
+-	struct stat sb, * st = &sb;
+-	if (stat(path, st) < 0)
+-	    return -1;
+-	*fsizep = st->st_size;
+-    }
+-
+-    fdno = open(path, O_RDONLY);
+-    if (fdno < 0)
+-	return fdno;
+-
+-    if (!(cmd && *cmd))
+-	return fdno;
+-
+-    if (pidp != NULL && is_prelinked(fdno)) {
+-	int pipes[2];
+-	pid_t pid;
+-
+-	close(fdno);
+-	pipes[0] = pipes[1] = -1;
+-	if (pipe(pipes) < 0)
+-	    return -1;
+-
+-	pid = fork();
+-	if (pid < 0) {
+-	    close(pipes[0]);
+-	    close(pipes[1]);
+-	    return -1;
+-	}
+-
+-	if (pid == 0) {
+-	    ARGV_t av, lib;
+-	    int dfd;
+-	    argvSplit(&av, cmd, " ");
+-
+-	    close(pipes[0]);
+-	    dfd = dup2(pipes[1], STDOUT_FILENO);
+-	    close(pipes[1]);
+-	    if (dfd >= 0 && (lib = argvSearch(av, "library", NULL)) != NULL) {
+-		*lib = (char *) path;
+-		unsetenv("MALLOC_CHECK_");
+-		execve(av[0], av+1, environ);
+-	    }
+-	    _exit(127); /* not normally reached */
+-	} else {
+-	    *pidp = pid;
+-	    fdno = pipes[0];
+-	    close(pipes[1]);
+-	}
+-    }
+-
+-    return fdno;
+-}
+-
+ int rpmDoDigest(int algo, const char * fn,int asAscii,
+                 unsigned char * digest, rpm_loff_t * fsizep)
+ {
+-    const char * path;
+-    urltype ut = urlPath(fn, &path);
+     unsigned char * dig = NULL;
+     size_t diglen, buflen = 32 * BUFSIZ;
+     unsigned char *buf = xmalloc(buflen);
+-    FD_t fd;
+     rpm_loff_t fsize = 0;
+-    pid_t pid = 0;
+     int rc = 0;
+-    int fdno;
+ 
+-    fdno = open_dso(path, &pid, &fsize);
+-    if (fdno < 0) {
+-	rc = 1;
+-	goto exit;
+-    }
++    FD_t fd = Fopen(fn, "r.ufdio");
+ 
+-    switch (ut) {
+-    case URL_IS_PATH:
+-    case URL_IS_UNKNOWN:
+-    case URL_IS_HTTPS:
+-    case URL_IS_HTTP:
+-    case URL_IS_FTP:
+-    case URL_IS_HKP:
+-    case URL_IS_DASH:
+-    default:
+-	/* Either use the pipe to prelink -y or open the URL. */
+-	fd = (pid != 0) ? fdDup(fdno) : Fopen(fn, "r.ufdio");
+-	(void) close(fdno);
+-	if (fd == NULL || Ferror(fd)) {
+-	    rc = 1;
+-	    if (fd != NULL)
+-		(void) Fclose(fd);
+-	    break;
+-	}
+-	
++    if (fd) {
+ 	fdInitDigest(fd, algo, 0);
+-	fsize = 0;
+ 	while ((rc = Fread(buf, sizeof(*buf), buflen, fd)) > 0)
+ 	    fsize += rc;
+ 	fdFiniDigest(fd, algo, (void **)&dig, &diglen, asAscii);
+-	if (dig == NULL || Ferror(fd))
+-	    rc = 1;
+-
+-	(void) Fclose(fd);
+-	break;
++	Fclose(fd);
+     }
+ 
+-    /* Reap the prelink -y helper. */
+-    if (pid) {
+-	int status;
+-	(void) waitpid(pid, &status, 0);
+-	if (!WIFEXITED(status) || WEXITSTATUS(status))
+-	    rc = 1;
++    if (dig == NULL || Ferror(fd)) {
++	rc = 1;
++    } else {
++	memcpy(digest, dig, diglen);
++	if (fsizep)
++	    *fsizep = fsize;
+     }
+ 
+-exit:
+-    if (fsizep)
+-	*fsizep = fsize;
+-    if (!rc)
+-	memcpy(digest, dig, diglen);
+     dig = _free(dig);
+     free(buf);
+ 
+-- 
+2.20.1
+

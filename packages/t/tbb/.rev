@@ -243,4 +243,36 @@
     concurrent_{map,multimap,set,multiset} (requires C++11).</comment>
     <requestid>708277</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>0cc786c07a91c9974d240f39a34f1655</srcmd5>
+    <version>2019_20190605</version>
+    <time>1571653547</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2019_u9
+  * Multiple APIs are deprecated. For details, please see
+    Deprecated Features appendix in the TBB reference manual.
+  * Added C++17 deduction guides for flow graph nodes.
+  Preview Features
+  * Added isolated_task_group class that allows multiple threads to add 
+    and execute tasks sharing the same isolation.
+  * Extended the flow graph API to simplify connecting nodes.
+  * Added erase() by heterogeneous keys for concurrent ordered containers.
+  * Added a possibility to suspend task execution at a specific point
+    and resume it later.
+  
+  Bugs fixed
+  * Fixed the emplace() method of concurrent unordered containers to
+    destroy a temporary element that was not inserted.
+  * Fixed a bug in the merge() method of concurrent unordered
+    containers.
+  * Fixed behavior of a continue_node that follows buffering nodes.
+  * Added support for move-only types to tbb::parallel_pipeline
+  * Fixed detection of clang version when CUDA toolkit is installed
+- Refresh patches:
+  * cmake-remove-include-path.patch
+  * disable-irml.patch
+  * optflags.patch
+</comment>
+    <requestid>738866</requestid>
+  </revision>
 </revisionlist>

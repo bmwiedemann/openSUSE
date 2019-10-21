@@ -24,11 +24,10 @@
 %define         llvm_major 8
 %endif
 Name:           python-llvmlite
-Version:        0.29.0
+Version:        0.30.0
 Release:        0
 Summary:        Lightweight wrapper around basic LLVM functionality
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            http://llvmlite.pydata.org
 Source:         https://github.com/numba/llvmlite/archive/v%{version}.tar.gz#/llvmlite-%{version}.tar.gz
 BuildRequires:  %{python_module devel}

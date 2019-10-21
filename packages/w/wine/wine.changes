@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 19 06:37:25 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- updated to 4.18 development release
+  - Many new VBScript functions.
+  - A number of cleanups and improvements in Quartz.
+  - Fixes for several test failures.
+  - Various bug fixes.
+- updated staging to 4.18
+
+-------------------------------------------------------------------
 Sat Sep 28 08:46:05 UTC 2019 - Marcus Meissner <meissner@suse.com>
 
 - updated to 4.17 development release

@@ -1138,5 +1138,11 @@ addFilter(' no-provides ')
 # bash completion files are not scripts, do not require them marked as %config
 addFilter('W: non-conffile-in-etc /etc/bash_completion.d/')
 
+# info uses file triggers now (boo#1152169)
+addFilter(' info-files-without-install-info-postin' )
+addFilter(' postin-without-install-info ')
+addFilter(' info-files-without-install-info-postun ')
+addFilter(' postin-without-install-info ')
+
 # config ends here
 

@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Sat Oct 19 12:01:34 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Drop unnecessary dependency on python-devel
+- Remove dependency on enum-compat, using python2-enum34 instead
+- Add examples to docs
+- Fix fdupes and tidy spec
+- Activate test suite, with a few tests deselected due to
+  test runner environment
+- Update to v1.7.1, last release supporting Python 2.7
+
+-------------------------------------------------------------------
+Sun Feb 24 12:50:43 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Initial release 1.6.0

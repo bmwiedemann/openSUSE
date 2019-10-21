@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Aug 28 11:17:12 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Split librpmbuild into a separate subpackage, it's pulled in by
+  python-rpm
+
+-------------------------------------------------------------------
+Fri Aug 23 07:19:03 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Add set-flto=auto-by-default.patch in order to utilize -flto=auto.
+
+-------------------------------------------------------------------
+Tue Aug  6 08:49:50 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Move more into rpm-build subpackage:
+  * brp- and -check scripts
+  * .prov and .req files, with *find* scripts
+  * elfdeps, debugedit and sepdebugcrcfix
+  * librpmbuild and dependents
+- Add upstream patches which remove libelf dep from librpmio and plugins:
+  * 0001-Stop-papering-over-the-security-disaster-known-as-pr.patch
+  * 0002-Fix-use-after-free-introduced-in-0f21bdd0d7b2c45564d.patch
+
+-------------------------------------------------------------------
 Fri Jun  7 15:03:15 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Enable decompression and creation of zstd-based payloads.

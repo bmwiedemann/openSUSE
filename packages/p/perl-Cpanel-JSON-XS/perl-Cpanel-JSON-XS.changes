@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Oct 16 10:10:00 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 4.14
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  4.14 2019-10-15 (rurban)
+          - Fix tests for nvtype long double (#153)
+          - Fix PREREQ's. E.g. CentOS 7 has not Test::More anymore. (#152 by Pali)
+  
+  4.13 2019-10-14 (rurban)
+          - For JSON_TYPE_INT and JSON_TYPE_FLOAT allow to encode numeric values
+            above 2^64 in PV slot via Math::BigInt/Float (#145, #148, #149 by Pali)
+          - For JSON_TYPE_INT and JSON_TYPE_FLOAT encoder allow to pass Math::BigInt
+            and Math::BigFloat objects with allow_bignum. (#147 by Pali)
+          - Fix encoding floating point values above 2^64 in PV slot to JSON_TYPE_INT
+            (#148, #150 by Pali)
+          - Do not allow serializing objects when convert_blessed is not enabled.
+            (#146 by Pali)
+
+-------------------------------------------------------------------
 Wed Jun 12 05:04:32 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 4.12

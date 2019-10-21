@@ -1,0 +1,30 @@
+From c3011d173bf4d3e08c885fde0dc05021dfc29af5 Mon Sep 17 00:00:00 2001
+From: Ludwig Nussel <ludwig.nussel@suse.de>
+Date: Wed, 25 Sep 2019 18:01:38 +0200
+Subject: [PATCH] use RPM_OPT_FLAGS in rpm package builds
+
+---
+ src/brickd/Makefile | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/brickd/Makefile b/src/brickd/Makefile
+index 206512d..e93505e 100644
+--- a/src/brickd/Makefile
++++ b/src/brickd/Makefile
+@@ -349,9 +349,13 @@ CFLAGS += -std=gnu99 -Wall -Wextra -I..
+ 
+ ifeq ($(WITH_DEBUG),yes)
+ 	CFLAGS += -O0 -g -ggdb
++else
++ifdef RPM_OPT_FLAGS
++	CFLAGS += $(RPM_OPT_FLAGS)
+ else
+ 	CFLAGS += -O2
+ endif
++endif
+ 
+ ifeq ($(WITH_GPROF),yes)
+ 	CFLAGS += -pg -no-pie
+-- 
+2.16.4
+

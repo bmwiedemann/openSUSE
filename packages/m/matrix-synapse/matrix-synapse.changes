@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 18 13:36:18 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Update to 1.4.1.
+
+  * Fix bug where redacted events were sometimes incorrectly censored in the
+    database, breaking APIs that attempted to fetch such events.
+
+  The full changelog is included in
+  /usr/share/doc/packages/matrix-synapse/CHANGES.md.
+
+-------------------------------------------------------------------
 Thu Oct  3 22:16:13 UTC 2019 - Aleksa Sarai <asarai@suse.com>
 
 - Do not include ACME support by default (txacme is broken in openSUSE).

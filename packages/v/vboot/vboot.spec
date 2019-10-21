@@ -15,9 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%define major_version 76
-%define minor_version 12239
+%define major_version 78
+%define minor_version 12499
 Name:           vboot
 Version:        %{major_version}.%{minor_version}
 Release:        0
@@ -64,7 +63,6 @@ rm -f %{buildroot}%{_prefix}/lib/pkgconfig/vboot_host.pc
 
 %files
 %doc README LICENSE
-%{_bindir}/bdb_extend
 %{_bindir}/chromeos-tpm-recovery
 %{_bindir}/cgpt
 %{_bindir}/common_minimal.sh
@@ -86,7 +84,6 @@ rm -f %{buildroot}%{_prefix}/lib/pkgconfig/vboot_host.pc
 %{_bindir}/resign_firmwarefd.sh
 %{_bindir}/set_gbb_flags.sh
 %{_bindir}/signature_digest_utility
-%{_bindir}/tpm_init_temp_fix
 %{_bindir}/tpm-nvsize
 %{_bindir}/tpmc
 %{_bindir}/vbutil_firmware

@@ -1,0 +1,75 @@
+-------------------------------------------------------------------
+Sun Oct 13 14:30:46 UTC 2019 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 0.1.10:
+  * package has been ported to Python 3 and GTK 3
+  * 9 new laguages, and updates to existing i18n
+
+-------------------------------------------------------------------
+Wed Mar 21 20:04:23 UTC 2018 - seife+obs@b1-systems.com
+
+- BuildRequire desktop-data instead of desktop-data-openSUSE to
+  fix build on SLES
+
+-------------------------------------------------------------------
+Wed Mar  2 12:44:22 UTC 2016 - mvetter@suse.com
+
+- Update to version 0.1.9:
+  * XRandR version 1.5 is accepted
+  * Translations were added (Albanian) and updated
+
+-------------------------------------------------------------------
+Thu Jul 16 08:17:28 UTC 2015 - mvetter@suse.com
+
+- Cleanup spec
+- Update to version 0.1.8
+  * Add support for choosing the primary output
+  * Use "save" button in the file-save dialog
+  * Update and add a lot of new languages
+
+-------------------------------------------------------------------
+Mon Mar 18 08:53:32 UTC 2013 - cfarrell@suse.com
+
+- license update: GPL-3.0
+  Look at screenlayout/gui.py ; Fedora also use GPLv3 (their equivalent)
+  for this package
+
+-------------------------------------------------------------------
+Tue Mar  5 15:19:12 UTC 2013 - seife+obs@b1-systems.com
+
+- don't buildrequire xorg-x11 (not needed)
+- require xrandr instead of xorg-x11 on 12.2+ and python-gtk
+
+-------------------------------------------------------------------
+Tue Mar  5 08:32:57 UTC 2013 - seife+obs@b1-systems.com
+
+- update to version 0.1.7.1
+  * fix AttributeError when modes with same name have different
+    resolutions
+  * show the entire output submenu as disabled instead of the
+    "Active" checkbox
+- obsoleted upstream patch removed
+
+-------------------------------------------------------------------
+Sat Mar  2 10:30:51 UTC 2013 - seife+obs@b1-systems.com
+
+- update to version 0.1.7
+  * Fix the 'primary' issue
+  - ignores the primary keyword
+  - makes ARandR compatible with xrandr 1.4.0
+  * Merged parts of the cglita branch
+  - solves ValueError / "1080p" issue
+  * New translations:
+  - Ukrainian (by Rax Garfield)
+  - Hungarian (by Tamás Nagy)
+  - Greek (by Dimitris Giouroukis)
+  - Korean (by ParkJS)
+  * Updated translations:
+  - Lithuanian (by Mantas Kriaučiūnas)
+- add upstream patch to disable unconnected outputs
+
+-------------------------------------------------------------------
+Mon Dec 03 15:25:19 CET 2012 - pascal.bleser@opensuse.org
+
+- initial version (0.1.6)
+

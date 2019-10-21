@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 21 07:14:55 UTC 2019 - Petr Cervinka <petr@cervinka.net>
+
+- Fix test execution
+
+-------------------------------------------------------------------
 Tue Feb 26 11:12:07 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Drop patch replace-pytest-pep8-with-pytest-codestyle.patch

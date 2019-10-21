@@ -1,0 +1,5 @@
+<package name="python-taskw" project="openSUSE:Factory">
+  <title>python-taskw</title>
+  <description>Python bindings for taskwarrior</description>
+  <devel project="devel:languages:python" package="python-taskw"/>
+</package>

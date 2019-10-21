@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 15 14:36:08 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.49.1:
+  * Release v3.49.1
+  * Update client library to include the client ID when revoking tokens
+  * Support legacy API tokens in the stream context
+  * Reset account info cache after adding or deleting an SSH key
+  * Get the access token using form URL-encoded data not JSON, in browser login command
+  * Allow overriding the OAuth 2.0 endpoint URLs
+  * Fix argument escaping in drush command
+
+-------------------------------------------------------------------
 Tue Oct 08 19:02:39 UTC 2019 - jimmy@boombatower.com
 
 - Update to version 3.49.0:

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 18 18:35:58 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- (Build)Require only python3-base instead of full python3 package,
+  the additional modules are not required. Helps shortening the
+  build dependency chain.
+- Remove python3-* requires from lldb6 subpackage, and add it to
+  the bindings/pretty-printer subpackage (python3-lldb6).
+
+-------------------------------------------------------------------
 Thu Aug 15 23:41:42 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Remove -fno-strict-aliasing, which upstream doesn't use any more

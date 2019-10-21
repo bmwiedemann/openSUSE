@@ -1,0 +1,5 @@
+<package name="brickv" project="openSUSE:Factory">
+  <title>Tinkerforge Brick Viewer</title>
+  <description></description>
+  <devel project="electronics" package="brickv"/>
+</package>

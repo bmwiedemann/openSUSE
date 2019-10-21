@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-flatbuffers
-Version:        1.10.0.20190321T162332.a746143
+Version:        1.11.0
 Release:        0
 Summary:        The FlatBuffers serialization format for Python
 License:        Apache-2.0
 Group:          Development/Languages/Python
 Url:            https://github.com/google/flatbuffers
-Source:         flatbuffers-%{version}.tar.xz
+Source:         https://github.com/google/flatbuffers/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

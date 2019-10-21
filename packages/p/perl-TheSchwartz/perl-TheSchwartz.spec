@@ -17,7 +17,7 @@
 
 
 Name:           perl-TheSchwartz
-Version:        1.13
+Version:        1.14
 Release:        0
 %define cpan_name TheSchwartz
 Summary:        Reliable job queue
@@ -30,8 +30,10 @@ BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Class::Accessor::Fast)
 BuildRequires:  perl(Data::ObjectDriver) >= 0.04
 BuildRequires:  perl(Module::Build::Tiny) >= 0.035
+Requires:       perl(Class::Accessor::Fast)
 Requires:       perl(Data::ObjectDriver) >= 0.04
 %{perl_requires}
 

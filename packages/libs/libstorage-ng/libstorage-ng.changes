@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Fri Oct 18 11:07:38 UTC 2019 - ancor@suse.de
+
+- merge gh#openSUSE/libstorage-ng#675
+- Log messages about the mount_by fallback are just warnings
+  (related to bsc#1151075)
+- 4.2.17
+
+--------------------------------------------------------------------
 Sat Oct 12 02:54:34 UTC 2019 - opensuse-packaging@opensuse.org
 
 - Translated using Weblate (Chinese (Taiwan)) (bsc#1149754)
@@ -9,7 +17,7 @@ Fri Oct 11 12:15:41 UTC 2019 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#674
 - cache luks activation information (for bsc#1129496)
-- use password from LUKS activation for resize
+- use password from LUKS activation for resize (bsc#1153871)
 - extended integration test
 - fixed typos
 - 4.2.15

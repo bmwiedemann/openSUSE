@@ -28,7 +28,6 @@
 %bcond_without openvdb
 %bcond_without osl
 %bcond_without system_audaspace
-%bcond_with wplayer
 
 # Set this to 1 for fixing bugs.
 %define debugbuild 0
@@ -380,7 +379,6 @@ install -D -m 0755 %{SOURCE4} %{buildroot}%{_bindir}/
 mkdir -p %{buildroot}%{_datadir}/appdata/
 install -D -m 0644 %{SOURCE8} %{buildroot}%{_datadir}/appdata/
 
-find %{buildroot} -empty -print -delete
 chmod -f 0644 %{buildroot}%{_datadir}/%{name}/%{_version}/scripts/modules/console_python.py
 
 find %{buildroot}%{_docdir}/%{name} -name "*.py" -perm 0755 -print0 | \
@@ -391,22 +389,6 @@ rm -rf %{buildroot}%{_datadir}/locale/languages
 
 %ifnarch x86_64
 find %{buildroot}%{_datadir}/%{name}/%{_version}/scripts/ -name "*.h" -print -delete
-%endif
-
-# Factory is now of the opinion that every /usr/bin file needs a man page,
-%if %{with wplayer}
-# Create man1 directory if it doesn't exist.
-mkdir -p %{buildroot}%{_mandir}/man1
-# Generate man page with help2man
-pushd %{buildroot}%{_mandir}/man1
-cp -v %{buildroot}%{_bindir}/blenderplayer ./
-help2man \
-	--version-string="%{version}" \
-	--help-option="-h" -n "a utility for previewing .blend files" \
-	-s 1 -m "User Commands" -S "Stichting Blender Foundation" -N -o blenderplayer.1 ./'blenderplayer -h ""'
-rm blenderplayer
-popd
-#cp -v %%{SOURCE5} %%{buildroot}%%{_mandir}/man1
 %endif
 
 # don't package thumbnailer

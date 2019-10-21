@@ -44,4 +44,15 @@
 - ExclusiveArch Intel</comment>
     <requestid>583410</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>971ed6fb188b24f081d90c6f5752a34e</srcmd5>
+    <version>4.2.0</version>
+    <time>1571653775</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.2.0
+  new libgig soversion
+  use %license for COPYING 
+</comment>
+    <requestid>741210</requestid>
+  </revision>
 </revisionlist>

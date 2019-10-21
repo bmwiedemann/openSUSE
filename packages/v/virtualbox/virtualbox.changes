@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 15 20:27:49 UTC 2019 - Larry Finger <Larry.Finger@gmail.com>
+
+- Kernel 5.4.0-rc3 introduces a change in the way the compiler handles the fallthrough
+  attribute leading to build errors. File "fixes_for_5.4.patch" is modified to build correctly.
+
+-------------------------------------------------------------------
 Tue Oct  8 16:28:12 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - added "BuildRequires: pkgconfig(xdamage)" in order to fix build

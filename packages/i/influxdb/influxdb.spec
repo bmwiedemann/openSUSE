@@ -26,7 +26,7 @@ Name:           influxdb
 Summary:        Scalable datastore for metrics, events, and real-time analytics
 License:        MIT
 Group:          Productivity/Databases/Servers
-Version:        1.7.6
+Version:        1.7.8
 Release:        0
 Url:            https://github.com/influxdata/influxdb
 Source:         %{name}-%{version}.tar.xz
@@ -149,7 +149,6 @@ getent passwd influxdb >/dev/null || useradd -r -g influxdb \
 %{_bindir}/influx_stress
 %{_bindir}/influx_tools
 %{_bindir}/influx_tsm
-%{_bindir}/store
 %{_sbindir}/rcinfluxdb
 %if %{with systemd}
 %{_unitdir}/influxdb.service

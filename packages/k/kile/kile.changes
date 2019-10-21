@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sun Oct 20 13:53:11 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 3.0 Beta 3
+  * No changelog available
+- Drop patches merged upstream:
+  * 0001-Silence-CMake-s-CMP0071-policy-warning.patch
+  * 0003-Remove-X-DBUS-StartupType-from-desktop-file.patch
+  * 0004-GIT_SILENT-made-messages-after-extraction.patch
+  * 0005-Fix-minor-EBN-issues.patch
+  * 0006-Fix-minor-EBN-issues.patch
+  * 0007-GIT_SILENT-made-messages-after-extraction.patch
+  * 0008-no-op-open-save-.ui-files.patch
+  * 0009-Use-KMessageWidget-in-PostscriptDialog.patch
+  * 0010-Fix-minor-EBN-issues.patch
+  * 0011-Fix-minor-EBN-issues-explicit-normalize.patch
+  * 0012-GIT_SILENT-made-messages-after-extraction.patch
+  * 0013-i18n-fix-few-string-puzzles.patch
+  * 0014-User-menu-do-not-attempt-to-load-an-empty-file-name.patch
+  * 0015-Fix-minor-typo.patch
+  * 0016-GIT_SILENT-made-messages-after-extraction.patch
+  * 0017-SVN_SILENT-made-messages-.desktop-file-always-resolv.patch
+  * 0018-no-need-to-declare-void-functions-with-no-parameters.patch
+  * 0019-Fix-tab-icons-for-informing-the-user-of-clandestine-.patch
+  * 0020-Use-more-functor-based-signal-slot-connections-in-Ki.patch
+  * 0021-Search-for-the-file_save_copy_as-action-inside-KText.patch
+  * 0022-Fix-Appstreamercli-minor-issues.patch
+  * 0023-GIT_SILENT-made-messages-after-extraction.patch
+  * 0024-GIT_SILENT-made-messages-after-extraction.patch
+  * 0025-GIT_SILENT-made-messages-after-extraction.patch
+  * 0026-GIT_SILENT-made-messages-after-extraction.patch
+  * 0027-actually-initialize-kcrash-properly.patch
+  * 0028-GIT_SILENT-made-messages-after-extraction.patch
+  * 0029-GIT_SILENT-made-messages-after-extraction.patch
+  * 0030-GIT_SILENT-made-messages-after-extraction.patch
+  * 0031-GIT_SILENT-made-messages-after-extraction.patch
+  * 0032-GIT_SILENT-made-messages-after-extraction.patch
+  * 0033-GIT_SILENT-made-messages-after-extraction.patch
+  * 0034-Avoid-crashing-when-closing-a-document-that-is-being.patch
+  * 0035-GIT_SILENT-made-messages-after-extraction.patch
+
+-------------------------------------------------------------------
 Mon Feb 25 19:20:52 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 3.0 Beta 2

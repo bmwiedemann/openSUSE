@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 15 07:12:22 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- filter install-info warnings. Handled by file triggers now (boo#1152169)
+
+-------------------------------------------------------------------
+Mon Oct  7 12:01:22 CEST 2019 - mls@suse.de
+
+- backport rpm415 workaround from upstream
+  new patch: rpm415-workaround.diff
+
+-------------------------------------------------------------------
 Mon Sep 30 08:15:38 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 -  update add-check-for-a-non-zero-.text-segment-in-.a-archive.patch

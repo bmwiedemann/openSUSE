@@ -1,0 +1,13 @@
+diff --git a/platform.in b/platform.in
+index fa3921f..cff01e1 100644
+--- a/platform.in
++++ b/platform.in
+@@ -60,7 +60,7 @@
+ %_smp_mflags -j%{_smp_build_ncpus}
+ 
+ # Enable LTO optimization with a maximal parallelism
+-%_lto_cflags -flto=%{_smp_build_ncpus}
++%_lto_cflags -flto=auto
+ 
+ #==============================================================================
+ # ---- Build policy macros.

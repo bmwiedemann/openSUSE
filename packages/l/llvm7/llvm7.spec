@@ -119,7 +119,7 @@ BuildRequires:  libstdc++-devel
 BuildRequires:  libtool
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  python3
+BuildRequires:  python3-base
 BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(zlib)
@@ -423,8 +423,6 @@ BuildRequires:  pkgconfig(panel)
 BuildRequires:  pkgconfig(python3)
 # Avoid multiple provider errors
 Requires:       liblldb%{_sonum} = %{_relver}
-Requires:       python3
-Requires:       python3-six
 ExclusiveArch:  x86_64
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -467,6 +465,8 @@ Group:          Development/Libraries/Python
 BuildRequires:  swig >= 3.0.11
 # Avoid multiple provider errors
 Requires:       liblldb%{_sonum} = %{_relver}
+Requires:       python3-base
+Requires:       python3-six
 Provides:       %{python3_sitearch}/lldb/
 Conflicts:      %{python3_sitearch}/lldb/
 

@@ -1,0 +1,82 @@
+-------------------------------------------------------------------
+Fri Oct 18 08:22:51 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Disable openmpi3 and the openmpi flavor in SLE. 
+
+-------------------------------------------------------------------
+Mon Oct  7 09:23:07 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Remake patch adios-correct-func-ret.patch to make sure the functions 
+  return something instead of changing the return type from int to void.
+
+-------------------------------------------------------------------
+Mon Apr 29 09:40:06 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Move the static libraries to a -devel-static packages. Adios doesn't
+  provides shared libraries and the static libraries are required for
+  the bindings to work.
+
+-------------------------------------------------------------------
+Wed Apr 10 09:20:20 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Fix path for the files that were installed directly at /etc.
+
+-------------------------------------------------------------------
+Mon Apr  8 07:43:14 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update Licensing. 
+
+-------------------------------------------------------------------
+Fri Mar 29 08:28:48 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Generalize and trim bias from description.
+
+-------------------------------------------------------------------
+Thu Mar 28 10:40:04 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Drop the packages and flavors for examples/examples-hpc. It's easier
+  for an interested user to download directly the source package and build
+  them directly.
+- Update the URLs to use https
+- Add -L option to the standard master package
+- Delete the module .version file in the %postun if it's the default one
+- Use the macro %hpc_modules_init to load the module files
+
+-------------------------------------------------------------------
+Mon Mar 25 19:37:08 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Re-add CPATH, C_INCLUDE_PATH and CPLUS_INCLUDE_PATH to the module
+file.
+- Add a separate package with the examples in two flavors one for 
+non-HPC  and another one for HPC: examples and examples-hpc. 
+- Update Requires for the devel package.
+
+-------------------------------------------------------------------
+Wed Feb 20 14:57:33 UTC 2019 - Ana Guerrero López <aguerrero@suse.com>
+
+- Update to version 1.31.1 (jsc#SLE-6004)
+- Add python support:
+  * This is only for Python2
+  * Update in the module file
+  * Add needed Requires on python2-xml and python2-PyYAML
+- Fix a few python shebangs with patch fix_python_shebang.patch
+- Add a Requires on hdf5 for every mpi flavor and update the module 
+file with 'depends-on phdf5'.
+- Add examples packages. It's only created for the openmpi flavor 
+to avoid having several packages with the same content.
+- Spec file polishing: spec-cleaner and update to the lastest 
+packaging convention for HPC packages.
+
+-------------------------------------------------------------------
+Tue Jan  9 19:35:14 UTC 2018 - jjolly@suse.com
+
+- Added hpc macros support
+  * Added _multibuild with serial, openmpi, and gnu-openmpi-hpc
+  * Created devel package and module package
+  * Created lua lmod module file for adios
+- Added adios-correct-func-ret.patch
+
+-------------------------------------------------------------------
+Fri Jan  5 01:12:14 UTC 2018 - jjolly@suse.com
+
+- First pass on adios specfile

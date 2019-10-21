@@ -941,4 +941,12 @@ Enable cycles-osl in build</comment>
     <comment>Fix ppc build and only use build threads if $_threads &gt; 3</comment>
     <requestid>737385</requestid>
   </revision>
+  <revision rev="121" vrev="5">
+    <srcmd5>138078d1b95062c6e5967323206e1292</srcmd5>
+    <version>2.80</version>
+    <time>1571653837</time>
+    <user>dimstar_suse</user>
+    <comment>cleanup</comment>
+    <requestid>741315</requestid>
+  </revision>
 </revisionlist>

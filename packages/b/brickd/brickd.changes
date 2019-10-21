@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Mon Sep 30 18:04:15 UTC 2019 - Frank Kunz <frank@kunz-im-inter.net>
+
+- added doc files
+
+-------------------------------------------------------------------
+Wed Sep 25 16:13:46 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- use download_files in disabled mode to make the package suitable for
+  inclusion in the distro
+- buildrequire pkgconfig files to OBS chooses the right package
+- backport DESTDIR support (0001-Makefile-Support-DESTDIR-variable.patch)
+- use optflags for compiling
+  (0001-use-RPM_OPT_FLAGS-in-rpm-package-builds.patch)
+- fix path of systemd unit files in the Makefile already
+  (0001-systemd-unit-files-are-always-in-prefix-lib-systemd.patch)
+
+-------------------------------------------------------------------
+Mon Sep 23 20:04:30 UTC 2019 - Frank Kunz <frank@kunz-im-inter.net>
+
+- release 2.4.0

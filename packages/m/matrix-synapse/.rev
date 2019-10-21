@@ -19,4 +19,12 @@ mostly-working synapse than nothing at all) and the package has been update to
     <comment>Add entry for boo#1153017.</comment>
     <requestid>734955</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>13d20582c6c13cd357e9d6910af56b10</srcmd5>
+    <version>1.4.1</version>
+    <time>1571653716</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>741125</requestid>
+  </revision>
 </revisionlist>

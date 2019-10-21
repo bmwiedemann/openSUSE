@@ -195,6 +195,10 @@ new native programs that use the LLVM infrastructure.
 Summary:        Documentation for LLVM
 Group:          Documentation/HTML
 Requires:       %{name} = %{version}
+Provides:       llvm-doc-provider = %{version}
+Conflicts:      llvm-doc-provider < %{version}
+# The docs used to be contained in the devel package.
+Conflicts:      llvm-devel-provider < 9.0.0
 
 %description doc
 This package contains documentation for the LLVM infrastructure.
@@ -282,6 +286,12 @@ This package contains the clang (C language) frontend for LLVM.
 Summary:        Documentation for Clang
 Group:          Documentation/HTML
 Requires:       clang%{_sonum} = %{version}
+Provides:       clang-doc-provider = %{version}
+Conflicts:      clang-doc-provider < %{version}
+# The docs used to be contained in the devel package.
+Conflicts:      clang6-devel
+Conflicts:      clang7-devel
+Conflicts:      clang8-devel
 
 %description -n clang%{_sonum}-doc
 This package contains documentation for the Clang compiler.

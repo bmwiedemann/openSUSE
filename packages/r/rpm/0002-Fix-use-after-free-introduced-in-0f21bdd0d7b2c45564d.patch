@@ -1,0 +1,39 @@
+From a35fbd503d944fa1d2a0e893d2ca97f244299b35 Mon Sep 17 00:00:00 2001
+From: Panu Matilainen <pmatilai@redhat.com>
+Date: Tue, 14 May 2019 13:55:52 +0300
+Subject: [PATCH 2/2] Fix use-after-free introduced in
+ 0f21bdd0d7b2c45564ddb5a24bbebd530867bd54
+
+Unlike typical fooFree() functions in rpm, Fclose() doesn't set the
+pointer to NULL so there's a use-after-free in checking for Ferror()
+that segfaults and stuff. Delay Fclose() until the end so we actually
+catch io errors too, that was another thing that went missing in
+commit 0f21bdd0d7b2c45564ddb5a24bbebd530867bd54 (although it would've
+probably caused an error via null digest instead)
+---
+ rpmio/rpmfileutil.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/rpmio/rpmfileutil.c b/rpmio/rpmfileutil.c
+index 4349c64a7..16a954a10 100644
+--- a/rpmio/rpmfileutil.c
++++ b/rpmio/rpmfileutil.c
+@@ -37,7 +37,6 @@ int rpmDoDigest(int algo, const char * fn,int asAscii,
+ 	while ((rc = Fread(buf, sizeof(*buf), buflen, fd)) > 0)
+ 	    fsize += rc;
+ 	fdFiniDigest(fd, algo, (void **)&dig, &diglen, asAscii);
+-	Fclose(fd);
+     }
+ 
+     if (dig == NULL || Ferror(fd)) {
+@@ -50,6 +49,7 @@ int rpmDoDigest(int algo, const char * fn,int asAscii,
+ 
+     dig = _free(dig);
+     free(buf);
++    Fclose(fd);
+ 
+     return rc;
+ }
+-- 
+2.20.1
+

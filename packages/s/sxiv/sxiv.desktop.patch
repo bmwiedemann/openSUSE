@@ -1,5 +1,5 @@
---- a/sxiv.desktop	2017-09-02 19:19:43.398683153 +0200
-+++ b/sxiv.desktop	2017-09-02 19:19:15.798785902 +0200
+--- sxiv-25.orig/sxiv.desktop	2019-01-26 14:54:40.000000000 +0100
++++ sxiv-25/sxiv.desktop	2019-10-13 16:48:42.093020286 +0200
 @@ -1,8 +1,11 @@
  [Desktop Entry]
 -Type=Application

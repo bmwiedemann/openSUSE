@@ -8,7 +8,7 @@
 +WERROR :=
  FIRMWARE_FLAGS := -nostdinc -ffreestanding -fno-builtin -fno-stack-protector
  COMMON_FLAGS := -pipe ${WERROR} -Wall -Wstrict-prototypes -Wtype-limits \
- 	-Wundef -Wmissing-prototypes -Wno-trigraphs -Wredundant-decls \
+ 	-Wundef -Wmissing-prototypes -Wno-trigraphs -Wredundant-decls -Wshadow \
 @@ -237,12 +237,6 @@
  CXX ?= g++
  PKG_CONFIG ?= pkg-config
@@ -22,7 +22,7 @@
  # Optional Libraries
  LIBZIP_VERSION := $(shell ${PKG_CONFIG} --modversion libzip 2>/dev/null)
  HAVE_LIBZIP := $(if ${LIBZIP_VERSION},1)
-@@ -1002,7 +996,6 @@
+@@ -922,7 +916,6 @@
  # Link tests for external repos
  ${BUILD}/host/linktest/extern: ${HOSTLIB}
  ${BUILD}/host/linktest/extern: LIBS = ${HOSTLIB}
@@ -30,7 +30,7 @@
  TEST_OBJS += ${BUILD}/host/linktest/extern.o
  
  .PHONY: hostlib
-@@ -1081,9 +1074,6 @@
+@@ -1001,9 +994,6 @@
  ${UTIL_BINS} ${UTIL_BINS_STATIC}: ${UTILLIB}
  ${UTIL_BINS} ${UTIL_BINS_STATIC}: LIBS = ${UTILLIB}
  

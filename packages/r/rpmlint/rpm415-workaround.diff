@@ -1,0 +1,58 @@
+Ugly workaround for RPM 4.14 vs 4.15 python3 bindings incompatibility
+
+Upstream commits:
+    a310a79f81f2b2dd3a31a101562e67915476a751
+    8fd904b53c028dded0b308ee95f1a5ff998584fd
+
+diff --git a/rpmlint/Pkg.py b/rpmlint/Pkg.py
+index 8d01f30..1b25771 100644
+--- rpmlint-rpmlint-1.11.orig/Pkg.py
++++ rpmlint-rpmlint-1.11/Pkg.py
+@@ -143,8 +143,17 @@ def is_utf8(fname):
+ 
+ 
+ def is_utf8_bytestr(s):
++    """Returns True whether the given text is UTF-8.
++    Due to changes in rpm, needs to handle both bytes and unicode."""
+     try:
+-        s.decode('UTF-8')
++        if hasattr(s, 'decode'):
++            s.decode('utf-8')
++        elif hasattr(s, 'encode'):
++            s.encode('utf-8')
++        else:
++            unexpected = type(s).__name__
++            raise TypeError(
++                'Expected str/unicode/bytes, not {}'.format(unexpected))
+     except UnicodeError:
+         return False
+     return True
+--- rpmlint-rpmlint-1.11.orig/PostCheck.py
++++ rpmlint-rpmlint-1.11/PostCheck.py
+@@ -70,6 +70,8 @@ def incorrect_perl_script(prog, perlscri
+ def check_syntax_script(prog, commandline, script):
+     if not script:
+         return False
++    if isinstance(script, str):
++        script = script.encode('utf-8')
+     # TODO: test that "prog" is available/executable
+     tmpfd, tmpname = tempfile.mkstemp(prefix='rpmlint.')
+     tmpfile = os.fdopen(tmpfd, 'wb')
+--- rpmlint-rpmlint-1.11.orig/rpmlint-checks-master/CheckFilelist.py
++++ rpmlint-rpmlint-1.11/rpmlint-checks-master/CheckFilelist.py
+@@ -425,8 +425,13 @@ class FilelistCheck(AbstractCheck.Abstra
+         invalidfhs = set()
+         invalidopt = set()
+ 
+-        isSUSE = (pkg.header[RPMTAG_VENDOR] and
+-                  b'SUSE' in pkg.header[RPMTAG_VENDOR])
++        isSUSE = False
++        if pkg.header[RPMTAG_VENDOR]:
++            vendor = pkg.header[RPMTAG_VENDOR]
++            if isinstance(vendor, str):
++                isSUSE = 'SUSE' in vendor
++            else:
++                isSUSE = b'SUSE' in vendor
+ 
+         # the checks here only warn about a directory once rather
+         # than reporting potentially hundreds of files individually

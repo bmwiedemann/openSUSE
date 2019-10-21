@@ -1,0 +1,29 @@
+From 18355a9e0a93e23d7f2f1ab3338534ebf191c101 Mon Sep 17 00:00:00 2001
+From: Ludwig Nussel <ludwig.nussel@suse.de>
+Date: Wed, 25 Sep 2019 18:07:16 +0200
+Subject: [PATCH] systemd unit files are always in $prefix/lib/systemd
+
+---
+ src/brickd/Makefile | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/src/brickd/Makefile b/src/brickd/Makefile
+index e93505e..729315c 100644
+--- a/src/brickd/Makefile
++++ b/src/brickd/Makefile
+@@ -75,12 +75,8 @@ endif
+ endif
+ 
+ ifndef syslibdir
+-ifeq ($(prefix),/usr)
+-	syslibdir := /lib
+-else
+ 	syslibdir := $(prefix)/lib
+ endif
+-endif
+ 
+ ifndef libdir
+ 	libdir := $(prefix)/lib
+-- 
+2.16.4
+

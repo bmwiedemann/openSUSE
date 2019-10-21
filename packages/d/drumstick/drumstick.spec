@@ -1,7 +1,7 @@
 #
 # spec file for package drumstick
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2005-2010 Pedro Lopez-Cabanillas <plcl@users.sourceforge.net>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,22 +13,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           drumstick
-Version:        1.1.2
+Version:        1.1.3
 Release:        0
 Summary:        MIDI Sequencer C++ Library Bindings
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Midi
 URL:            http://drumstick.sourceforge.net/
-Source:         %{name}-%{version}.tar.bz2
-# PATCH-FIX-OPENSUSE
-Patch:          Dont-use-QOverload.patch
+Source:         https://sourceforge.net/projects/drumstick/files/%{version}/%{name}-%{version}.tar.bz2
 BuildRequires:  alsa-devel
-BuildRequires:  cmake >= 2.8.11
+BuildRequires:  cmake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  docbook_4
 BuildRequires:  doxygen
@@ -36,13 +34,13 @@ BuildRequires:  graphviz
 BuildRequires:  kf5-filesystem
 BuildRequires:  libxslt
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libpulse-simple)
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  pkgconfig(libpulse-simple)
 Requires(post): shared-mime-info
 Requires(postun): shared-mime-info
 
@@ -51,6 +49,7 @@ This package includes test and example programs for drumstick libraries.
 
 %package -n libdrumstick-rt1
 Summary:        MIDI Sequencer C++ Library
+License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          System/Libraries
 Requires:       libdrumstick-rt-plugins
 
@@ -60,6 +59,7 @@ This library includes a class for managing realtime MIDI input/output backends.
 
 %package -n libdrumstick-rt-plugins
 Summary:        MIDI Sequencer C++ Library
+License:        GPL-2.0-or-later AND GPL-3.0-or-later AND Apache-2.0
 Group:          System/Libraries
 
 %description -n libdrumstick-rt-plugins
@@ -68,6 +68,7 @@ This package contains input/output plugins for libdrumstick-rt1.
 
 %package -n libdrumstick-file1
 Summary:        MIDI Sequencer C++ Library
+License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          System/Libraries
 
 %description -n libdrumstick-file1
@@ -79,6 +80,7 @@ depend on ALSA.
 
 %package -n libdrumstick-alsa1
 Summary:        MIDI Sequencer C++ Library
+License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          System/Libraries
 
 %description -n libdrumstick-alsa1
@@ -88,6 +90,7 @@ recording and playback functionality to C++/Qt5 programs.
 
 %package -n libdrumstick-devel
 Summary:        Development package for the libdrumstick library
+License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       alsa-devel
 Requires:       glibc-devel
@@ -95,7 +98,7 @@ Requires:       libdrumstick-alsa1 = %{version}
 Requires:       libdrumstick-file1 = %{version}
 Requires:       libdrumstick-rt1 = %{version}
 Requires:       libstdc++-devel
-Requires:       pkgconfig(Qt5Core)
+Requires:       cmake(Qt5Core)
 
 %description -n libdrumstick-devel
 This package contains the files needed to compile programs that use the
@@ -103,6 +106,7 @@ libdrumstick libraries.
 
 %package -n libdrumstick-doc
 Summary:        Development documentation package for the drumstick libraries
+License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Documentation/Other
 BuildArch:      noarch
 
@@ -111,9 +115,11 @@ This package contains the developer's documentation of the drumstick libraries.
 
 %prep
 %setup -q
-%if 0%{?suse_version} < 1500
-%patch -p1
-%endif
+
+# Update obsolete config file
+doxygen -u Doxyfile.in
+sed -i 's#%{_includedir}/QtCore#%{_includedir}/qt5/QtCore#' Doxyfile.in
+sed -i 's#%{_includedir}/QtGui#%{_includedir}/qt5/QtGui#' Doxyfile.in
 
 %build
 %cmake_kf5  -- -DSTATIC_DRUMSTICK=0
@@ -170,6 +176,7 @@ make %{?_smp_mflags} doxygen
 %files -n libdrumstick-devel
 %license COPYING
 %dir %{_includedir}/%{name}
+%{_datadir}/drumstick/
 %{_includedir}/%{name}.h
 %{_includedir}/%{name}/*.h
 %{_libdir}/libdrumstick-alsa.so

@@ -21,10 +21,10 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  grub-core/loader/efi/chainloader.c |  538 +++++++++++++++++++++++++++++++++--
  1 files changed, 507 insertions(+), 31 deletions(-)
 
-Index: grub-2.02~beta2/grub-core/loader/efi/chainloader.c
+Index: grub-2.04~rc1/grub-core/loader/efi/chainloader.c
 ===================================================================
---- grub-2.02~beta2.orig/grub-core/loader/efi/chainloader.c
-+++ grub-2.02~beta2/grub-core/loader/efi/chainloader.c
+--- grub-2.04~rc1.orig/grub-core/loader/efi/chainloader.c
++++ grub-2.04~rc1/grub-core/loader/efi/chainloader.c
 @@ -40,15 +40,31 @@
  #include <grub/i386/macho.h>
  #endif
@@ -65,7 +65,7 @@ Index: grub-2.02~beta2/grub-core/loader/efi/chainloader.c
  
    grub_dl_unref (my_mod);
    return GRUB_ERR_NONE;
-@@ -187,12 +204,460 @@ make_file_path (grub_efi_device_path_t *
+@@ -197,12 +214,460 @@ make_file_path (grub_efi_device_path_t *
    return file_path;
  }
  
@@ -527,7 +527,7 @@ Index: grub-2.02~beta2/grub-core/loader/efi/chainloader.c
    grub_efi_status_t status;
    grub_efi_boot_services_t *b;
    grub_device_t dev = 0;
-@@ -200,7 +665,6 @@ grub_cmd_chainloader (grub_command_t cmd
+@@ -210,7 +675,6 @@ grub_cmd_chainloader (grub_command_t cmd
    grub_efi_loaded_image_t *loaded_image;
    char *filename;
    void *boot_image = 0;
@@ -535,7 +535,7 @@ Index: grub-2.02~beta2/grub-core/loader/efi/chainloader.c
  
    if (argc == 0)
      return grub_error (GRUB_ERR_BAD_ARGUMENT, N_("filename expected"));
-@@ -212,9 +676,36 @@ grub_cmd_chainloader (grub_command_t cmd
+@@ -222,9 +686,36 @@ grub_cmd_chainloader (grub_command_t cmd
    address = 0;
    image_handle = 0;
    file_path = 0;
@@ -569,10 +569,10 @@ Index: grub-2.02~beta2/grub-core/loader/efi/chainloader.c
 +      *(--p16) = 0;
 +    }
 +
-   file = grub_file_open (filename);
+   file = grub_file_open (filename, GRUB_FILE_TYPE_EFI_CHAINLOADED_IMAGE);
    if (! file)
      goto fail;
-@@ -260,14 +751,14 @@ grub_cmd_chainloader (grub_command_t cmd
+@@ -270,14 +761,14 @@ grub_cmd_chainloader (grub_command_t cmd
    grub_printf ("file path: ");
    grub_efi_print_device_path (file_path);
  
@@ -590,7 +590,7 @@ Index: grub-2.02~beta2/grub-core/loader/efi/chainloader.c
  
    status = efi_call_4 (b->allocate_pages, GRUB_EFI_ALLOCATE_ANY_PAGES,
  			      GRUB_EFI_LOADER_CODE,
-@@ -281,7 +772,7 @@ grub_cmd_chainloader (grub_command_t cmd
+@@ -291,7 +782,7 @@ grub_cmd_chainloader (grub_command_t cmd
      }
  
    boot_image = (void *) ((grub_addr_t) address);
@@ -599,7 +599,7 @@ Index: grub-2.02~beta2/grub-core/loader/efi/chainloader.c
      {
        if (grub_errno == GRUB_ERR_NONE)
  	grub_error (GRUB_ERR_BAD_OS, N_("premature end of file %s"),
-@@ -291,7 +782,7 @@ grub_cmd_chainloader (grub_command_t cmd
+@@ -301,7 +792,7 @@ grub_cmd_chainloader (grub_command_t cmd
      }
  
  #if defined (__i386__) || defined (__x86_64__)
@@ -608,7 +608,7 @@ Index: grub-2.02~beta2/grub-core/loader/efi/chainloader.c
      {
        struct grub_macho_fat_header *head = boot_image;
        if (head->magic
-@@ -314,20 +805,30 @@ grub_cmd_chainloader (grub_command_t cmd
+@@ -324,20 +815,30 @@ grub_cmd_chainloader (grub_command_t cmd
  	      > ~grub_cpu_to_le32 (archs[i].size)
  	      || grub_cpu_to_le32 (archs[i].offset)
  	      + grub_cpu_to_le32 (archs[i].size)
@@ -642,7 +642,7 @@ Index: grub-2.02~beta2/grub-core/loader/efi/chainloader.c
  		       &image_handle);
    if (status != GRUB_EFI_SUCCESS)
      {
-@@ -350,33 +851,10 @@ grub_cmd_chainloader (grub_command_t cmd
+@@ -360,33 +861,10 @@ grub_cmd_chainloader (grub_command_t cmd
      }
    loaded_image->device_handle = dev_handle;
  
@@ -678,7 +678,7 @@ Index: grub-2.02~beta2/grub-core/loader/efi/chainloader.c
      }
  
    grub_file_close (file);
-@@ -398,6 +876,9 @@ grub_cmd_chainloader (grub_command_t cmd
+@@ -408,6 +886,9 @@ grub_cmd_chainloader (grub_command_t cmd
    if (address)
      efi_call_2 (b->free_pages, address, pages);
  

@@ -1,26 +1,20 @@
-Index: sxiv-24/Makefile
+Index: sxiv-25/Makefile
 ===================================================================
---- sxiv-24.orig/Makefile
-+++ sxiv-24/Makefile
-@@ -7,7 +7,7 @@ PREFIX = /usr/local
- MANPREFIX = $(PREFIX)/share/man
- 
- CC = cc
--DEF_CFLAGS = -std=c99 -Wall -pedantic
-+DEF_CFLAGS = -Wall
- DEF_CPPFLAGS = -I/usr/include/freetype2
- 
- # autoreload backend: inotify/nop
-@@ -20,7 +20,7 @@ HAVE_GIFLIB = 1
+--- sxiv-25.orig/Makefile	2019-01-26 14:54:40.000000000 +0100
++++ sxiv-25/Makefile	2019-10-13 16:45:00.384870829 +0200
+@@ -16,8 +16,9 @@
  HAVE_LIBEXIF = 1
  
- ALL_CFLAGS = $(DEF_CFLAGS) $(CFLAGS)
--REQ_CPPFLAGS = -I. -D_XOPEN_SOURCE=700 -DVERSION=\"$(VERSION)\" \
-+REQ_CPPFLAGS = -I. -D_GNU_SOURCE -DVERSION=\"$(VERSION)\" \
-   -DHAVE_GIFLIB=$(HAVE_GIFLIB) -DHAVE_LIBEXIF=$(HAVE_LIBEXIF)
- ALL_CPPFLAGS = $(REQ_CPPFLAGS) $(DEF_CPPFLAGS) $(CPPFLAGS)
+ cflags = -std=c99 -Wall -pedantic $(CFLAGS)
+-cppflags = -I. $(CPPFLAGS) -D_XOPEN_SOURCE=700 -DHAVE_GIFLIB=$(HAVE_GIFLIB) \
+-  -DHAVE_LIBEXIF=$(HAVE_LIBEXIF) -I/usr/include/freetype2
++cppflags = -I. $(CPPFLAGS) -D_GNU_SOURCE -DVERSION=\"$(VERSION)\" \
++   -DHAVE_GIFLIB=$(HAVE_GIFLIB) -DHAVE_LIBEXIF=$(HAVE_LIBEXIF) \
++   -I/usr/include/freetype2
  
-@@ -73,6 +73,7 @@ install: all
+ lib_exif_0 =
+ lib_exif_1 = -lexif
+@@ -76,6 +77,7 @@
  	mkdir -p $(DESTDIR)$(PREFIX)/share/sxiv/exec
  	cp exec/* $(DESTDIR)$(PREFIX)/share/sxiv/exec/
  	chmod 755 $(DESTDIR)$(PREFIX)/share/sxiv/exec/*
@@ -28,3 +22,10 @@ Index: sxiv-24/Makefile
  
  uninstall:
  	@echo "REMOVE bin/sxiv"
+@@ -84,4 +86,5 @@
+ 	rm -f $(DESTDIR)$(MANPREFIX)/man1/sxiv.1
+ 	@echo "REMOVE share/sxiv/"
+ 	rm -rf $(DESTDIR)$(PREFIX)/share/sxiv
+-
++	@echo "REMOVE share/applications/sxiv.desktop"
++	rm -f $(DESTDIR)$(PREFIX)/share/applications/sxiv.desktop

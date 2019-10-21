@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>76ae866b46f5d96b7a17c39eb0376cce</srcmd5>
+    <version>2.4.0</version>
+    <time>1571653674</time>
+    <user>dimstar_suse</user>
+    <comment>This package provides the Tinkerforce brick daemon (https://www.tinkerforge.com/en/doc/). It acts as a bridge between the Tinkerforge hardware and the API bindings for the different programming languages.</comment>
+    <requestid>738120</requestid>
+  </revision>
+</revisionlist>

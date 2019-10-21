@@ -19,49 +19,13 @@
 
 %bcond_without lang
 Name:           kile
-Version:        2.9.92
+Version:        2.9.93
 Release:        0
 Summary:        A LaTeX Source Editor and TeX Shell
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            http://kile.sourceforge.net/
-Source:         https://downloads.sourceforge.net/project/kile/unstable/kile-3.0b2/kile-%{version}.tar.bz2
-# Patches from v3.0b2..09910015
-Patch001:       0001-Silence-CMake-s-CMP0071-policy-warning.patch
-# Patch002 contains binary data, not supported
-Patch003:       0003-Remove-X-DBUS-StartupType-from-desktop-file.patch
-Patch004:       0004-GIT_SILENT-made-messages-after-extraction.patch
-Patch005:       0005-Fix-minor-EBN-issues.patch
-Patch006:       0006-Fix-minor-EBN-issues.patch
-Patch007:       0007-GIT_SILENT-made-messages-after-extraction.patch
-Patch008:       0008-no-op-open-save-.ui-files.patch
-Patch009:       0009-Use-KMessageWidget-in-PostscriptDialog.patch
-Patch010:       0010-Fix-minor-EBN-issues.patch
-Patch011:       0011-Fix-minor-EBN-issues-explicit-normalize.patch
-Patch012:       0012-GIT_SILENT-made-messages-after-extraction.patch
-Patch013:       0013-i18n-fix-few-string-puzzles.patch
-Patch014:       0014-User-menu-do-not-attempt-to-load-an-empty-file-name.patch
-Patch015:       0015-Fix-minor-typo.patch
-Patch016:       0016-GIT_SILENT-made-messages-after-extraction.patch
-Patch017:       0017-SVN_SILENT-made-messages-.desktop-file-always-resolv.patch
-Patch018:       0018-no-need-to-declare-void-functions-with-no-parameters.patch
-Patch019:       0019-Fix-tab-icons-for-informing-the-user-of-clandestine-.patch
-Patch020:       0020-Use-more-functor-based-signal-slot-connections-in-Ki.patch
-Patch021:       0021-Search-for-the-file_save_copy_as-action-inside-KText.patch
-Patch022:       0022-Fix-Appstreamercli-minor-issues.patch
-Patch023:       0023-GIT_SILENT-made-messages-after-extraction.patch
-Patch024:       0024-GIT_SILENT-made-messages-after-extraction.patch
-Patch025:       0025-GIT_SILENT-made-messages-after-extraction.patch
-Patch026:       0026-GIT_SILENT-made-messages-after-extraction.patch
-Patch027:       0027-actually-initialize-kcrash-properly.patch
-Patch028:       0028-GIT_SILENT-made-messages-after-extraction.patch
-Patch029:       0029-GIT_SILENT-made-messages-after-extraction.patch
-Patch030:       0030-GIT_SILENT-made-messages-after-extraction.patch
-Patch031:       0031-GIT_SILENT-made-messages-after-extraction.patch
-Patch032:       0032-GIT_SILENT-made-messages-after-extraction.patch
-Patch033:       0033-GIT_SILENT-made-messages-after-extraction.patch
-Patch034:       0034-Avoid-crashing-when-closing-a-document-that-is-being.patch
-Patch035:       0035-GIT_SILENT-made-messages-after-extraction.patch
+Source:         https://downloads.sourceforge.net/project/kile/unstable/kile-3.0b3/kile-%{version}.tar.bz2
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  kconfig-devel
@@ -112,7 +76,8 @@ Suggests:       texlive-doc
 Suggests:       texlive-latex-doc
 # was in Factory for a short while, in version 2.9.92
 Provides:       kile5 = %{version}
-Obsoletes:      kile5 <= %{version}
+Obsoletes:      kile5 < %{version}
+
 %description
 Kile is a user-friendly TeX/LaTeX editor by KDE.
 
@@ -139,7 +104,7 @@ The main features are:
 %lang_package
 
 %prep
-%autosetup -p1 -n kile-%{version}
+%setup -q
 
 %build
 %cmake_kf5 -d build
@@ -159,6 +124,12 @@ The main features are:
 %files
 %license COPYING*
 %{_datadir}/kile/
+%dir %{_kf5_iconsdir}/hicolor/150x150
+%dir %{_kf5_iconsdir}/hicolor/150x150/apps
+%dir %{_kf5_iconsdir}/hicolor/310x310
+%dir %{_kf5_iconsdir}/hicolor/310x310/apps
+%dir %{_kf5_iconsdir}/hicolor/44x44
+%dir %{_kf5_iconsdir}/hicolor/44x44/apps
 %{_kf5_iconsdir}/hicolor/*/*/*
 %{_datadir}/doc/kile/
 %{_kf5_htmldir}/en/kile/

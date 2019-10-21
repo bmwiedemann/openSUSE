@@ -25,4 +25,12 @@
   * Refresh patch fix-requirements.patch</comment>
     <requestid>679224</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>7809ee416ef62086675d6e1d170cb388</srcmd5>
+    <version>3.0.0</version>
+    <time>1571653947</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>741437</requestid>
+  </revision>
 </revisionlist>

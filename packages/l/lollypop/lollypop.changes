@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Oct 20 19:30:59 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add missing runtime Requires: python3-gobject-Gdk.
+
+-------------------------------------------------------------------
 Tue Sep 03 16:14:19 UTC 2019 - antoine.belvire@opensuse.org
 
 - Update to version 1.1.4.16:

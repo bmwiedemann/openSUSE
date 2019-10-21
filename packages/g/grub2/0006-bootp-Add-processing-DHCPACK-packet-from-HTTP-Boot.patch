@@ -21,32 +21,23 @@ Signed-off-by: Ken Lin <ken.lin@hpe.com>
  include/grub/net.h    |  1 +
  2 files changed, 66 insertions(+), 2 deletions(-)
 
-diff --git a/grub-core/net/bootp.c b/grub-core/net/bootp.c
-index 81173b4..04f9f3d 100644
---- a/grub-core/net/bootp.c
-+++ b/grub-core/net/bootp.c
-@@ -207,6 +207,11 @@ parse_dhcp_vendor (const char *name, const void *vend, int limit, int *mask)
-                                      taglength);
-           break;
+Index: grub-2.04~rc1/grub-core/net/bootp.c
+===================================================================
+--- grub-2.04~rc1.orig/grub-core/net/bootp.c
++++ grub-2.04~rc1/grub-core/net/bootp.c
+@@ -340,6 +340,53 @@ grub_net_configure_by_dhcp_ack (const ch
+   if (!inter)
+     return 0;
  
-+        case GRUB_NET_BOOTP_VENDOR_CLASS_IDENTIFIER:
-+          grub_env_set_net_property (name, "vendor_class_identifier", (const char *) ptr,
-+                                     taglength);
-+	  break;
-+
- 	case GRUB_NET_BOOTP_EXTENSIONS_PATH:
-           grub_env_set_net_property (name, "extensionspath", (const char *) ptr,
-                                      taglength);
-@@ -281,6 +286,66 @@ grub_net_configure_by_dhcp_ack (const char *name,
-     }
- #endif
- 
++  /* FIXME: Introduce new http flag for better synergy with existing tftp code base */
 +  if (size > OFFSET_OF (vendor, bp))
 +    {
 +      char *cidvar;
 +      const char *cid;
 +
-+      parse_dhcp_vendor (name, &bp->vendor, size - OFFSET_OF (vendor, bp), &mask);
++      opt = find_dhcp_option (bp, size, GRUB_NET_BOOTP_VENDOR_CLASS_IDENTIFIER, &opt_len);
++      if (opt && opt_len)
++	grub_env_set_net_property (name, "vendor_class_identifier", (const char *) opt, opt_len);
 +      cidvar = grub_xasprintf ("net_%s_%s", name, "vendor_class_identifier");
 +      cid = grub_env_get (cidvar);
 +      grub_free (cidvar);
@@ -55,10 +46,12 @@ index 81173b4..04f9f3d 100644
 +	{
 +	  char *proto, *ip, *pa;
 +
++	  /* FIXME: Provide better URL function that returns in place pointers
++	   * so that we don't have to free them.
++	   */
 +	  if (!dissect_url (bp->boot_file, &proto, &ip, &pa))
 +	    return inter;
 +
-+	  grub_env_set_net_property (name, "boot_file", pa, grub_strlen (pa));
 +	  if (is_def)
 +	    {
 +	      grub_net_default_server = grub_strdup (ip);
@@ -70,61 +63,40 @@ index 81173b4..04f9f3d 100644
 +	      *device = grub_xasprintf ("%s,%s", proto, ip);
 +	      grub_print_error ();
 +	    }
-+	  if (path)
-+	    {
-+	      *path = grub_strdup (pa);
-+	      grub_print_error ();
-+	      if (*path)
-+		{
-+		  char *slash;
-+		  slash = grub_strrchr (*path, '/');
-+		  if (slash)
-+		    *slash = 0;
-+		  else
-+		    **path = 0;
-+		}
-+	    }
-+	  grub_net_add_ipv4_local (inter, mask);
-+	  inter->dhcp_ack = grub_malloc (size);
-+	  if (inter->dhcp_ack)
-+	    {
-+	      grub_memcpy (inter->dhcp_ack, bp, size);
-+	      inter->dhcp_acklen = size;
-+	    }
-+	  else
-+	    grub_errno = GRUB_ERR_NONE;
 +
++	  boot_file = pa;
++	  boot_file_len = grub_strlen (pa);
++
++	  /* FIXME: Don't use malloc buffer here */
 +	  grub_free (proto);
 +	  grub_free (ip);
-+	  grub_free (pa);
-+	  return inter;
++
++	  /* FIXME: NEED TO FREE boot_file */
++	  goto boot_file;
 +	}
 +    }
 +
-   if (size > OFFSET_OF (boot_file, bp))
-     grub_env_set_net_property (name, "boot_file", bp->boot_file,
-                                sizeof (bp->boot_file));
-@@ -342,8 +407,6 @@ grub_net_configure_by_dhcp_ack (const char *name,
- 	    **path = 0;
+   opt = find_dhcp_option (bp, size, GRUB_NET_DHCP_OVERLOAD, &opt_len);
+   if (opt && opt_len == 1)
+     overload = *opt;
+@@ -416,6 +463,8 @@ grub_net_configure_by_dhcp_ack (const ch
  	}
      }
--  if (size > OFFSET_OF (vendor, bp))
--    parse_dhcp_vendor (name, &bp->vendor, size - OFFSET_OF (vendor, bp), &mask);
-   grub_net_add_ipv4_local (inter, mask);
-   
-   inter->dhcp_ack = grub_malloc (size);
-diff --git a/include/grub/net.h b/include/grub/net.h
-index 38a3973..e4bf678 100644
---- a/include/grub/net.h
-+++ b/include/grub/net.h
-@@ -517,6 +517,7 @@ enum
+ 
++boot_file:
++
+   if (boot_file)
+     {
+       grub_env_set_net_property (name, "boot_file", boot_file, boot_file_len);
+Index: grub-2.04~rc1/include/grub/net.h
+===================================================================
+--- grub-2.04~rc1.orig/include/grub/net.h
++++ grub-2.04~rc1/include/grub/net.h
+@@ -523,6 +523,7 @@ enum
      GRUB_NET_BOOTP_DOMAIN = 0x0f,
      GRUB_NET_BOOTP_ROOT_PATH = 0x11,
      GRUB_NET_BOOTP_EXTENSIONS_PATH = 0x12,
 +    GRUB_NET_BOOTP_VENDOR_CLASS_IDENTIFIER = 0x3C,
-     GRUB_NET_BOOTP_END = 0xff
-   };
- 
--- 
-2.6.6
-
+     GRUB_NET_DHCP_REQUESTED_IP_ADDRESS = 50,
+     GRUB_NET_DHCP_OVERLOAD = 52,
+     GRUB_NET_DHCP_MESSAGE_TYPE = 53,

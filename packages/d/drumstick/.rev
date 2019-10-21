@@ -39,4 +39,25 @@
     <comment></comment>
     <requestid>659346</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f3ee4fc45a377a302fb2337dd10285eb</srcmd5>
+    <version>1.1.3</version>
+    <time>1571653890</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.3
+  * IPv6 support added
+  * Avoid endless loops on unexpected end of input.
+  * Generate SMFError when the parser finds unexpected end of input.
+  * general cleanups and bringing back the fluidsynth backend
+  * migration to full GNUInstallDirs support
+  * modernization started of the CMake build system
+  * Library includes reorganization
+  * Fixed drumstick-file unit test
+  * Custom commandline parser replaced by standard Qt5 QCommandLineParser
+  * fixed spurious error message for ALSA input
+- Drop Dont-use-QOverload.patch. No longer needed.
+- Update the libdrumstick-rt-plugins license tag, eassynth contains
+  Apache-2.0 files.</comment>
+    <requestid>741353</requestid>
+  </revision>
 </revisionlist>

@@ -26,7 +26,8 @@ License:        Apache-2.0
 Group:          Development/Libraries/Cross
 Url:            https://github.com/googleapis/googleapis
 Source0:        %{name}-%{version}.tar.xz
-Source1:        %{name}-rpmlintrc
+Source1:        BUILD
+Source2:        %{name}-rpmlintrc
 BuildRequires:  fdupes
 
 %description
@@ -46,6 +47,7 @@ This package contains source code for googleapis.
 
 %prep
 %setup -q
+cp %{SOURCE1} .
 
 %build
 # TODO: If anyone will be interested in compiled googleapis protobufs for C++
@@ -53,7 +55,7 @@ This package contains source code for googleapis.
 
 %install
 mkdir -p %{buildroot}%{src_install_dir}
-tar -xJf %{SOURCE0} --strip-components=1 -C %{buildroot}%{src_install_dir}
+cp -r * %{buildroot}%{src_install_dir}
 
 %fdupes %{buildroot}%{src_install_dir}
 # Fix hidden-dile-or-dir warning.

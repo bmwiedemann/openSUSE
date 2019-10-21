@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 11 12:49:37 UTC 2019 - Frank Schreiner <FSchreiner@suse.com>
+
+- cleanup control character in changelog 
+
+-------------------------------------------------------------------
 Sun May  5 09:25:21 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to version 2.0.1
@@ -10,7 +15,7 @@ Mon Jan 14 13:37:10 UTC 2019 - Stephan Kulow <coolo@suse.com>
 - updated to version 2.0.0
  see installed CHANGELOG
 
-  2.0.0 -- Changed p_ separator to  https://github.com/grosser/fast_gettext/pull/107 add np and add gettext aliases
+  2.0.0 -- Changed p_ separator to ^D https://github.com/grosser/fast_gettext/pull/107 add np and add gettext aliases
 
 -------------------------------------------------------------------
 Sat Dec  8 16:21:09 UTC 2018 - Stephan Kulow <coolo@suse.com>

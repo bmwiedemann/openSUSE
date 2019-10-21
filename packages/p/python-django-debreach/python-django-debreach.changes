@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 18 20:24:18 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- switch to python3 only (Django 2.x)
+
+-------------------------------------------------------------------
 Thu Jan 17 12:22:35 UTC 2019 - Nicolas Bock <nicolas.bock@suse.com>
 
 - Fix missing BuildRequires to include: python python3

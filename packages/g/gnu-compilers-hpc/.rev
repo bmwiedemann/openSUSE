@@ -83,4 +83,12 @@
 - For the base compiler add a Provides: for the versioned form. (forwarded request 724405 from eeich)</comment>
     <requestid>724406</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>dbae97ece688f47867e035bf385d3996</srcmd5>
+    <version>1.4</version>
+    <time>1571653759</time>
+    <user>dimstar_suse</user>
+    <comment>  for SLE-15-SP2: add gcc v.9 (jsc#SLE-8604)</comment>
+    <requestid>741204</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9d40052e55fc8d8d44f1fb618b382e09</srcmd5>
+    <version>0.1.10</version>
+    <time>1571653659</time>
+    <user>dimstar_suse</user>
+    <comment>Re-adding arandr, which was earlier removed from factory due to its usage of an older GTK</comment>
+    <requestid>738112</requestid>
+  </revision>
+</revisionlist>

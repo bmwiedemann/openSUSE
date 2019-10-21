@@ -7,4 +7,15 @@
     <comment>New major version of LLVM, now with additional dependency fixes.</comment>
     <requestid>738487</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>209f9668da908e67be98fbc292db8524</srcmd5>
+    <version>9.0.0</version>
+    <time>1571653808</time>
+    <user>dimstar_suse</user>
+    <comment>- Let new {llvm,clang}*-doc packages &quot;Conflict&quot; with older devel
+  packages, which they were split from.
+- Let doc packages conflict with older versions of themselves.
+</comment>
+    <requestid>741231</requestid>
+  </revision>
 </revisionlist>

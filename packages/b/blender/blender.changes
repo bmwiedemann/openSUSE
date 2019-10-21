@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 15 12:53:43 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Don't remove 0-length files 
+  would mostly remove __init__.py files, which is harmful
+- Remove wplayer build conditional (option not available anymore)
+
+-------------------------------------------------------------------
 Wed Oct  2 09:19:39 UTC 2019 - Dave Plater <davejplater@gmail.com>
 
 - Fix ppc build with 0006-add_ppc64el-s390x_support.patch.

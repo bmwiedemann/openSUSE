@@ -4,12 +4,18 @@ References: bsc#892852, bsc#891946
 Patch-Mainline: not yet
 
 Needed to allow s390x-emu to be telecontrolled via LOADPARM.
+
+v2: Added GRUB_FILE_TYPE_READ_ENVVAR as file type by read_file sub-command
+tracked by verifier framework.
+
 ---
  grub-core/commands/read.c |   34 ++++++++++++++++++++++++++++++++++
  1 file changed, 34 insertions(+)
 
---- a/grub-core/commands/read.c
-+++ b/grub-core/commands/read.c
+Index: grub-2.04~rc1/grub-core/commands/read.c
+===================================================================
+--- grub-2.04~rc1.orig/grub-core/commands/read.c
++++ grub-2.04~rc1/grub-core/commands/read.c
 @@ -20,6 +20,7 @@
  #include <grub/dl.h>
  #include <grub/misc.h>
@@ -33,7 +39,7 @@ Needed to allow s390x-emu to be telecontrolled via LOADPARM.
 +    return grub_error (GRUB_ERR_BAD_ARGUMENT, N_("file name expected"));
 +  if (argc < 2)
 +    return grub_error (GRUB_ERR_BAD_ARGUMENT, N_("variable name expected"));
-+  file = grub_file_open (args[i++]);
++  file = grub_file_open (args[i++], GRUB_FILE_TYPE_READ_ENVVAR);
 +  if (! file)
 +    return grub_errno;
 +  while ( i < argc )
@@ -68,3 +74,15 @@ Needed to allow s390x-emu to be telecontrolled via LOADPARM.
    grub_unregister_command (cmd);
 +  grub_unregister_command (cme);
  }
+Index: grub-2.04~rc1/include/grub/file.h
+===================================================================
+--- grub-2.04~rc1.orig/include/grub/file.h
++++ grub-2.04~rc1/include/grub/file.h
+@@ -122,6 +122,7 @@ enum grub_file_type
+     GRUB_FILE_TYPE_FS_SEARCH,
+     GRUB_FILE_TYPE_AUDIO,
+     GRUB_FILE_TYPE_VBE_DUMP,
++    GRUB_FILE_TYPE_READ_ENVVAR,
+ 
+     GRUB_FILE_TYPE_LOADENV,
+     GRUB_FILE_TYPE_SAVEENV,

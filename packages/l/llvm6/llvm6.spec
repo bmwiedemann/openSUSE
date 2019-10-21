@@ -111,7 +111,7 @@ BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  python3
+BuildRequires:  python3-base
 BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(zlib)
 # Avoid multiple provider errors
@@ -394,8 +394,8 @@ LLD is a linker from the LLVM project. That is a drop-in replacement for system 
 %package opt-viewer
 Summary:        Tools for visualising the LLVM optimization records
 Group:          Development/Languages/Other
-BuildRequires:  python3
-Requires:       python3
+BuildRequires:  python3-base
+Requires:       python3-base
 Requires:       python3-PyYAML
 Requires:       python3-Pygments
 BuildArch:      noarch
@@ -420,8 +420,6 @@ BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(zlib)
 # Avoid multiple provider errors
 Requires:       liblldb%{_sonum} = %{version}
-Requires:       python3
-Requires:       python3-six
 ExclusiveArch:  x86_64
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -465,10 +463,12 @@ This package contains the development files for LLDB.
 %if %{with lldb_python}
 %package -n python3-lldb%{_sonum}
 Summary:        Python bindings for liblldb
-# Avoid multiple provider errors
 Group:          Development/Languages/Python
 BuildRequires:  swig >= 3.0.11
+# Avoid multiple provider errors
 Requires:       liblldb%{_sonum} = %{version}
+Requires:       python3-base
+Requires:       python3-six
 Provides:       %{python3_sitearch}/lldb/
 Conflicts:      %{python3_sitearch}/lldb/
 

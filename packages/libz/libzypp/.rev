@@ -3045,4 +3045,12 @@
     <comment>Softwarestack update</comment>
     <requestid>721457</requestid>
   </revision>
+  <revision rev="417" vrev="1">
+    <srcmd5>d081f29f09131840a3831b8e60069da1</srcmd5>
+    <version>17.15.0</version>
+    <time>1571653602</time>
+    <user>dimstar_suse</user>
+    <comment>Softwarestack update</comment>
+    <requestid>741113</requestid>
+  </revision>
 </revisionlist>

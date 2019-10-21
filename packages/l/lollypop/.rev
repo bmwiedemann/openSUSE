@@ -1027,4 +1027,12 @@
   * Do not crash if sidebar is disabled (glgo#World/lollypop#1987).</comment>
     <requestid>728052</requestid>
   </revision>
+  <revision rev="101" vrev="2">
+    <srcmd5>423145948d196c9e5d2568835f8a7cce</srcmd5>
+    <version>1.1.4.16</version>
+    <time>1571653883</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>741349</requestid>
+  </revision>
 </revisionlist>

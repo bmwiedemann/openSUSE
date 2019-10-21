@@ -48,7 +48,7 @@ BuildRequires:  %{python_module itsdangerous >= 0.21}
 BuildRequires:  %{python_module mock >= 1.3.0}
 BuildRequires:  %{python_module passlib >= 1.7}
 BuildRequires:  %{python_module pydocstyle >= 1.0.0}
-BuildRequires:  %{python_module pytest >= 3.0.5}
+BuildRequires:  %{python_module pytest < 4}
 BuildRequires:  %{python_module pytest-runner >= 2.6.2}
 BuildRequires:  %{python_module pytest-translations >= 1.0.4}
 # Don't require python modules just needed for testing that are not available in SLE

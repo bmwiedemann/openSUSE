@@ -17,7 +17,7 @@
 
 
 Name:           libzypp
-Version:        17.14.0
+Version:        17.15.0
 Release:        0
 Url:            https://github.com/openSUSE/libzypp
 Summary:        Library for package, patch, pattern and product management

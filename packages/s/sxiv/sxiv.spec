@@ -1,7 +1,7 @@
 #
 # spec file for package sxiv
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           sxiv
-Version:        24
+Version:        25
 Release:        0
 Summary:        Simple X Image Viewer
 License:        GPL-2.0-only
@@ -63,14 +63,6 @@ make %{?_smp_mflags} V=1
 %make_install PREFIX=%{_prefix}
 cd icon
 %make_install
-
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
 
 %files
 %license LICENSE

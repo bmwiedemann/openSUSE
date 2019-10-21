@@ -305,6 +305,200 @@ This package provides the "analyzers-stempel" module for Lucene.
 
 %files analyzers-stempel -f .mfiles-analyzers-stempel
 
+%if 0
+
+%package analyzers-icu
+Summary:        Lucene ICU Analysis Components
+Group:          Development/Libraries/Java
+Requires:       mvn(com.ibm.icu:icu4j)
+Requires:       mvn(org.apache.lucene:lucene-analyzers-common)
+Requires:       mvn(org.apache.lucene:lucene-core)
+BuildArch:      noarch
+
+%description analyzers-icu
+Provides integration with ICU (International Components for Unicode) for
+stronger Unicode and internationalization support.
+
+%files analyzers-icu -f .mfiles-analyzers-icu
+
+%package analyzers-kuromoji
+Summary:        Lucene Kuromoji Japanese Morphological Analyzer
+Group:          Development/Libraries/Java
+Requires:       mvn(org.apache.lucene:lucene-analyzers-common)
+Requires:       mvn(org.apache.lucene:lucene-core)
+BuildArch:      noarch
+
+%description analyzers-kuromoji
+Lucene Kuromoji Japanese Morphological Analyzer.
+
+%files analyzers-kuromoji -f .mfiles-analyzers-kuromoji
+
+%package analyzers-morfologik
+Summary:        Lucene Morfologik Polish Lemmatizer
+Group:          Development/Libraries/Java
+Requires:       mvn(org.apache.lucene:lucene-analyzers-common)
+Requires:       mvn(org.apache.lucene:lucene-core)
+Requires:       mvn(org.carrot2:morfologik-fsa)
+Requires:       mvn(org.carrot2:morfologik-polish)
+Requires:       mvn(org.carrot2:morfologik-stemming)
+BuildArch:      noarch
+
+%description analyzers-morfologik
+A dictionary-driven lemmatizer for Polish (includes morphosyntactic
+annotations).
+
+%files analyzers-morfologik -f .mfiles-analyzers-morfologik
+
+%package analyzers-phonetic
+Summary:        Lucene Phonetic Filters
+Group:          Development/Libraries/Java
+Requires:       mvn(commons-codec:commons-codec)
+Requires:       mvn(org.apache.lucene:lucene-analyzers-common)
+Requires:       mvn(org.apache.lucene:lucene-core)
+BuildArch:      noarch
+
+%description analyzers-phonetic
+Provides phonetic encoding via Commons Codec.
+
+%files analyzers-phonetic -f .mfiles-analyzers-phonetic
+
+%package analyzers-uima
+Summary:        Lucene UIMA Analysis Components
+Group:          Development/Libraries/Java
+Requires:       mvn(org.apache.lucene:lucene-analyzers-common)
+Requires:       mvn(org.apache.lucene:lucene-core)
+Requires:       mvn(org.apache.uima:Tagger)
+Requires:       mvn(org.apache.uima:WhitespaceTokenizer)
+Requires:       mvn(org.apache.uima:uimaj-core)
+BuildArch:      noarch
+
+%description analyzers-uima
+Lucene Integration with UIMA for extracting metadata from arbitrary (text)
+fields and enrich document with features extracted from UIMA types (language,
+sentences, concepts, named entities, etc.).
+
+%files analyzers-uima -f .mfiles-analyzers-uima
+
+%package benchmark
+Summary:        Lucene Benchmarking Module
+Group:          Development/Libraries/Java
+Requires:       mvn(com.ibm.icu:icu4j)
+Requires:       mvn(net.sourceforge.nekohtml:nekohtml)
+Requires:       mvn(org.apache.commons:commons-compress)
+Requires:       mvn(org.apache.lucene:lucene-analyzers-common)
+Requires:       mvn(org.apache.lucene:lucene-codecs)
+Requires:       mvn(org.apache.lucene:lucene-core)
+Requires:       mvn(org.apache.lucene:lucene-facet)
+Requires:       mvn(org.apache.lucene:lucene-highlighter)
+Requires:       mvn(org.apache.lucene:lucene-join)
+Requires:       mvn(org.apache.lucene:lucene-memory)
+Requires:       mvn(org.apache.lucene:lucene-queries)
+Requires:       mvn(org.apache.lucene:lucene-queryparser)
+Requires:       mvn(org.apache.lucene:lucene-spatial-extras)
+Requires:       mvn(org.locationtech.spatial4j:spatial4j)
+Requires:       mvn(xerces:xercesImpl)
+BuildArch:      noarch
+
+%description benchmark
+Lucene Benchmarking Module.
+
+%files benchmark -f .mfiles-benchmark
+
+%package demo
+Summary:        Lucene Demo Module
+Group:          Development/Libraries/Java
+Requires:       mvn(javax.servlet:servlet-api)
+Requires:       mvn(org.apache.lucene:lucene-analyzers-common)
+Requires:       mvn(org.apache.lucene:lucene-core)
+Requires:       mvn(org.apache.lucene:lucene-expressions)
+Requires:       mvn(org.apache.lucene:lucene-facet)
+Requires:       mvn(org.apache.lucene:lucene-queries)
+Requires:       mvn(org.apache.lucene:lucene-queryparser)
+BuildArch:      noarch
+
+%description 
+Demo for Apache Lucene Java.
+
+%files demo -f .mfiles-demo
+
+%package expressions
+Summary:        Lucene Expressions Module
+Group:          Development/Libraries/Java
+Requires:       mvn(org.antlr:antlr4-runtime)
+Requires:       mvn(org.apache.lucene:lucene-core)
+Requires:       mvn(org.ow2.asm:asm)
+Requires:       mvn(org.ow2.asm:asm-commons)
+BuildArch:      noarch
+
+%description expressions
+Dynamically computed values to sort/facet/search on based on a pluggable
+grammar.
+
+%files expressions -f .mfiles-expressions
+
+%package replicator
+Summary:        Lucene Replicator Module
+Group:          Development/Libraries/Java
+Requires:       mvn(commons-logging:commons-logging)
+Requires:       mvn(javax.servlet:javax.servlet-api)
+Requires:       mvn(org.apache.httpcomponents:httpclient)
+Requires:       mvn(org.apache.httpcomponents:httpcore)
+Requires:       mvn(org.apache.lucene:lucene-core)
+Requires:       mvn(org.apache.lucene:lucene-facet)
+Requires:       mvn(org.eclipse.jetty:jetty-continuation)
+Requires:       mvn(org.eclipse.jetty:jetty-http)
+Requires:       mvn(org.eclipse.jetty:jetty-io)
+Requires:       mvn(org.eclipse.jetty:jetty-server)
+Requires:       mvn(org.eclipse.jetty:jetty-servlet)
+Requires:       mvn(org.eclipse.jetty:jetty-util)
+BuildArch:      noarch
+
+%description replicator
+Lucene Replicator Module.
+
+%files replicator -f .mfiles-replicator
+
+%package spatial-extras
+Summary:        Spatial Strategies for Apache Lucene
+Group:          Development/Libraries/Java
+Requires:       mvn(org.apache.lucene:lucene-core)
+Requires:       mvn(org.apache.lucene:lucene-spatial3d)
+Requires:       mvn(org.locationtech.spatial4j:spatial4j)
+BuildArch:      noarch
+
+%description spatial-extras
+Spatial Strategies for Apache Lucene.
+
+%files spatial-extras -f .mfiles-spatial-extras
+
+%package suggest
+Summary:        Lucene Suggest Module
+Group:          Development/Libraries/Java
+Requires:       mvn(org.apache.lucene:lucene-analyzers-common)
+Requires:       mvn(org.apache.lucene:lucene-core)
+BuildArch:      noarch
+
+%description suggest
+Lucene Suggest Module.
+
+%files suggest -f .mfiles-suggest
+
+%package test-framework
+Summary:        Apache Lucene Java Test Framework
+Group:          Development/Libraries/Java
+Requires:       mvn(com.carrotsearch.randomizedtesting:randomizedtesting-runner)
+Requires:       mvn(junit:junit)
+Requires:       mvn(org.apache.lucene:lucene-codecs)
+Requires:       mvn(org.apache.lucene:lucene-core)
+BuildArch:      noarch
+
+%description test-framework
+Apache Lucene Java Test Framework.
+
+%files test-framework -f .mfiles-test-framework
+
+%endif
+
 %prep
 %setup -q
 

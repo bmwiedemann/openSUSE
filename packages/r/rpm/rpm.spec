@@ -19,6 +19,8 @@
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %{?!_fillupdir:%define _fillupdir /var/adm/fillup-templates}
 
+%global librpmsover 8
+
 Name:           rpm
 BuildRequires:  binutils
 BuildRequires:  bzip2
@@ -133,6 +135,9 @@ Patch118:       dwz-compression.patch
 Patch119:       getncpus.diff
 Patch120:       rpmfc-push-name-epoch-version-release-macro-before-invoking-depgens.patch
 Patch121:       adopt-language-specific-build_fooflags-macros-from-F.patch
+Patch122:       0001-Stop-papering-over-the-security-disaster-known-as-pr.patch
+Patch123:       0002-Fix-use-after-free-introduced-in-0f21bdd0d7b2c45564d.patch
+Patch124:       set-flto=auto-by-default.patch
 Patch6464:      auto-config-update-aarch64-ppc64le.diff
 Patch6465:      auto-config-update-riscv64.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -148,6 +153,15 @@ RPM can be used to install and remove software packages. With rpm, it
 is easy to update packages.  RPM keeps track of all these manipulations
 in a central database.	This way it is possible to get an overview of
 all installed packages.  RPM also supports database queries.
+
+%package -n librpmbuild%{librpmsover}
+Summary:        Library for building RPM packages
+# Was part of rpm before
+Group:          System/Libraries
+Conflicts:      rpm < %{version}
+
+%description -n librpmbuild%{librpmsover}
+Thie package contains a library with functions for building RPM packages.
 
 %package devel
 Summary:        Development files for librpm
@@ -233,6 +247,9 @@ rm -f rpmdb/db.h
 %patch -P 109                      -P 114               -P 117 -P 118
 %patch -P 119 -P 120
 %patch121 -p1
+%patch122 -p1
+%patch123 -p1
+%patch124 -p1
 
 %ifarch aarch64 ppc64le riscv64
 %patch6464
@@ -399,13 +416,23 @@ fi
 	/etc/rpm
 	/bin/rpm
 	/usr/bin/*
-        %exclude /usr/bin/rpmbuild
+	%exclude /usr/bin/rpmbuild
+	%exclude %{_libdir}/librpmbuild.so.*
+	%exclude /usr/lib/rpm/elfdeps
+	%exclude /usr/lib/rpm/rpmdeps
+	%exclude /usr/lib/rpm/debugedit
+	%exclude /usr/lib/rpm/sepdebugcrcfix
+	%exclude /usr/bin/rpmspec
+	%exclude /usr/lib/rpm/*.prov
+	%exclude /usr/lib/rpm/*.req
+	%exclude /usr/lib/rpm/brp-*
+	%exclude /usr/lib/rpm/check-*
+	%exclude /usr/lib/rpm/*find*
 	/usr/sbin/rpmconfigcheck
 	/usr/lib/systemd/system/rpmconfigcheck.service
 	/usr/lib/rpm
 	%{_libdir}/rpm-plugins
 	%{_libdir}/librpm.so.*
-	%{_libdir}/librpmbuild.so.*
 	%{_libdir}/librpmio.so.*
 	%{_libdir}/librpmsign.so.*
 %doc	%{_mandir}/man[18]/*.[18]*
@@ -421,9 +448,23 @@ fi
 %dir	%attr(755,root,root) /usr/src/packages/RPMS/*
 	%{_fillupdir}/sysconfig.services-rpm
 
+%files -n librpmbuild%{librpmsover}
+%{_libdir}/librpmbuild.so.%{librpmsover}
+%{_libdir}/librpmbuild.so.%{librpmsover}.*
+
 %files build
 %defattr(-,root,root)
 /usr/bin/rpmbuild
+/usr/lib/rpm/elfdeps
+/usr/lib/rpm/rpmdeps
+/usr/lib/rpm/debugedit
+/usr/lib/rpm/sepdebugcrcfix
+/usr/bin/rpmspec
+/usr/lib/rpm/*.prov
+/usr/lib/rpm/*.req
+/usr/lib/rpm/brp-*
+/usr/lib/rpm/check-*
+/usr/lib/rpm/*find*
 
 %files devel
 %defattr(644,root,root,755)

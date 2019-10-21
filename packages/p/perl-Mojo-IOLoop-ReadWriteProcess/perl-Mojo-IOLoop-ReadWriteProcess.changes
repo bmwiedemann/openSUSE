@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Oct 18 08:59:00 UTC 2019 -  <timueller+perl@suse.de>
+
+- Change the `find` call for modifying permissions to leave also shell scripts
+   and files in the t/ directory alone
+
+-------------------------------------------------------------------
+Wed Oct 16 10:12:14 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 0.24
+   see /usr/share/doc/packages/perl-Mojo-IOLoop-ReadWriteProcess/Changes
+
+  0.24 2019-10-15T11:11:50Z
+  
+     - Fix compatibility with Mojolicious 8.23 by kraih
+
+-------------------------------------------------------------------
+Fri Oct 11 09:57:33 UTC 2019 - Oliver Kurz <okurz@suse.com>
+
+- Exclude non-working tests with perl-Mojolicious >= 8.23
+  See https://github.com/mudler/Mojo-IOLoop-ReadWriteProcess/issues/4
+  for details
+
+-------------------------------------------------------------------
 Tue Aug 14 07:35:56 UTC 2018 - edigiacinto@suse.com
 
 - Add prctl syscall codes for ppc64le and aarch64 

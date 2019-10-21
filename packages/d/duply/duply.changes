@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Oct 18 11:42:12 UTC 2019 - malcolmlewis@opensuse.org
+
+- Fix source download URL.
+
+-------------------------------------------------------------------
+Thu Oct 17 19:12:57 UTC 2019 - malcolmlewis@opensuse.org
+
+- Updated to version 2.2:
+  + Implement grouping for batch commands new separators are []
+    (square brackets) or groupIn/groupOut command 'backup'
+    translates now to [pre_bkp_post] to be skipped as one block in
+    case a condition was set in the batch instruction.
+- Changes from version 2.1:
+  + Be more verbose when duplicity version detection fails.
+  + Using info shows python binary's path for easier
+    identification now.
+  + Reworked python interpreter handling, it's either configured
+    per PYTHON var unconfigured, parsed from duplicity shebang or
+    set to current duplicity default 'python2' (was 'python' until
+    now).
+  + Donot quotewrap strings because of slashes (eg. paths) anymore.
+  + Bugfix: improved in/exclude stripping from conf DUPL_PARAMS.
+- Remove obsolete Groups tag (fate#326485).
+
+-------------------------------------------------------------------
 Sun Jul 29 11:27:23 UTC 2018 - jengelh@inai.de
 
 - Ensure neutrality of descriptions.

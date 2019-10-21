@@ -1,7 +1,7 @@
 #
 # spec file for package GeoIP
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -26,7 +26,6 @@ URL:            http://www.maxmind.com/
 Source0:        https://github.com/maxmind/geoip-api-c/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        LICENSE
 Source2:        README.SUSE
-Source3:        geoip-fetch
 Source4:        baselibs.conf
 Source5:        geoip-csv-to-dat.cpp
 Source6:        geoip-asn-csv-to-dat.cpp
@@ -42,8 +41,8 @@ This database simply contains IP blocks as keys, and countries as
 values. This database should be more complete and accurate than using
 reverse DNS lookups.
 
-MaxMind offers a service where you can have your database updated
-automically each month.
+Note that GeoIP is deprecated and the database discontinued:
+https://support.maxmind.com/geolite-legacy-discontinuation-notice/
 
 %package data
 Summary:        GeoLite country data for GeoIP
@@ -53,8 +52,9 @@ BuildArch:      noarch
 
 %description data
 This package does not actually contain any data. It only exists to
-give ownership the database files you can fetch using
-"geoip-fetch".
+give ownership the database files. The files are no longer
+available as they are deprecated. See
+https://support.maxmind.com/geolite-legacy-discontinuation-notice/
 
 %package -n lib%{name}1
 Summary:        Shared libraries of the GeoIP C API
@@ -70,8 +70,8 @@ This database simply contains IP blocks as keys, and countries as
 values.  This database should be more complete and accurate than using
 reverse DNS lookups.
 
-MaxMind offers a service where you can have your database updated
-automically each month.
+Note that GeoIP is deprecated and the database discontinued:
+https://support.maxmind.com/geolite-legacy-discontinuation-notice/
 
 This package holds the shared libraries for GeoIP.
 
@@ -90,8 +90,8 @@ This database simply contains IP blocks as keys, and countries as
 values.  This database should be more complete and accurate than using
 reverse DNS lookups.
 
-MaxMind offers a service where you can have your database updated
-automically each month.
+Note that GeoIP is deprecated and the database discontinued:
+https://support.maxmind.com/geolite-legacy-discontinuation-notice/
 
 This package holds the development files for GeoIP.
 
@@ -121,8 +121,6 @@ g++ %{optflags} -I %{buildroot}%{_includedir} -L %{buildroot}%{_libdir} -o %{bui
 install -m 0755 %{SOURCE7} %{buildroot}%{_prefix}/lib/geoip/
 # do not ship these
 rm %{buildroot}%{_libdir}/libGeoIP.la
-# install fetcher
-install -Dpm 0755 %{SOURCE3} %{buildroot}%{_sbindir}/geoip-fetch
 
 %check
 # as tests require a running network OBS can not run it
@@ -141,7 +139,6 @@ make %{?_smp_mflags} check
 %{_bindir}/geoiplookup6
 %{_mandir}/man1/geoiplookup6.1%{?ext_man}
 %{_mandir}/man1/geoiplookup.1%{?ext_man}
-%{_sbindir}/geoip-fetch
 %{_prefix}/lib/geoip/
 
 %files data

@@ -3294,4 +3294,17 @@
 - updated staging to 4.17</comment>
     <requestid>733925</requestid>
   </revision>
+  <revision rev="288" vrev="1">
+    <srcmd5>1e67030dc61ba7b8b63ea7c8df11615f</srcmd5>
+    <version>4.18</version>
+    <time>1571653766</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 4.18 development release
+  - Many new VBScript functions.
+  - A number of cleanups and improvements in Quartz.
+  - Fixes for several test failures.
+  - Various bug fixes.
+- updated staging to 4.18</comment>
+    <requestid>741205</requestid>
+  </revision>
 </revisionlist>

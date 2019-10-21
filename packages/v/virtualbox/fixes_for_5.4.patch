@@ -105,3 +105,26 @@ Index: VirtualBox-6.0.12/src/VBox/Additions/linux/drm/vbox_main.c
  }
  
  int
+Index: VirtualBox-6.0.12/include/iprt/cdefs.h
+===================================================================
+--- VirtualBox-6.0.12.orig/include/iprt/cdefs.h
++++ VirtualBox-6.0.12/include/iprt/cdefs.h
+@@ -1166,14 +1166,15 @@
+  * Tell the compiler that we're falling through to the next case in a switch.
+  * @sa RT_FALL_THRU  */
+ #if RT_GNUC_PREREQ(7, 0)
+-# define RT_FALL_THROUGH()      __attribute__((fallthrough))
++# define FALL_THROUGH		__attribute__((__fallthrough__))
+ #else
+-# define RT_FALL_THROUGH()      (void)0
++# define FALL_THROUGH      (void)0
+ #endif
+ /** @def RT_FALL_THRU
+  * Tell the compiler that we're falling thru to the next case in a switch.
+  * @sa RT_FALL_THROUGH */
+-#define RT_FALL_THRU()          RT_FALL_THROUGH()
++#define RT_FALL_THRU()          FALL_THROUGH
++#define RT_FALL_THROUGH()	FALL_THROUGH
+ 
+ 
+ /** @def RT_IPRT_FORMAT_ATTR

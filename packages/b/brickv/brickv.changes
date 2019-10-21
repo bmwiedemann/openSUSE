@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Mon Oct 14 17:08:20 UTC 2019 - Frank Kunz <mailinglists@kunz-im-inter.net>
+
+- fix review comment to use full path for source location
+- fix review comment to remove buildroot and defattr
+
+-------------------------------------------------------------------
+Mon Sep 30 18:00:37 UTC 2019 - Frank Kunz <frank@kunz-im-inter.net>
+
+- added doc files
+
+-------------------------------------------------------------------
+Mon Sep 30 13:48:52 UTC 2019 - Frank Kunz <frank@kunz-im-inter.net>
+
+- Remove shebang from files where not needed
+  (0002-Fix-shebang.patch)
+- Add support to overwrite iso codes and local providers
+  (0001-Support-to-use-local-iso-codes-and-mobile-providers-.patch)
+- Force UTF-8 for build scripts
+- Switch off source service
+
+-------------------------------------------------------------------
+Sat Sep 28 10:40:10 UTC 2019 - Frank Kunz <frank@kunz-im-inter.net>
+
+- install udev rule
+- install desktop file
+
+-------------------------------------------------------------------
+Sat Sep 28 09:01:17 UTC 2019 - Frank Kunz <frank@kunz-im-inter.net>
+
+- fix install command
+
+-------------------------------------------------------------------
+Sat Sep 28 08:28:50 UTC 2019 - Frank Kunz <frank@kunz-im-inter.net>
+
+- use mobile providers list and iso codes provided by the distribution
+  (0001-SUSE-Use-local-providers-and-iso-codes.patch)
+- add requied python packages dependencies
+- use fdupes macro for cleanup duplicated files
+
+-------------------------------------------------------------------
+Wed Sep 25 16:47:31 UTC 2019 - Frank Kunz <frank@kunz-im-inter.net>
+
+- intial version 2.4.9

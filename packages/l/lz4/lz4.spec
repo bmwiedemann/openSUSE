@@ -18,7 +18,7 @@
 
 %define lname	liblz4-1
 Name:           lz4
-Version:        1.9.1
+Version:        1.9.2
 Release:        0
 Summary:        Hash-based Predictive Lempel–Ziv compressor
 License:        GPL-2.0-or-later AND BSD-2-Clause
@@ -71,10 +71,7 @@ applications that want to make use of liblz4.
 %patch -P 2 -p1
 
 %build
-# Goddammit, lz4, stop hardcoding silent mode.
-perl -i -pe 's{^\t@}{\t}g' Makefile */Makefile
-
-make %{?_smp_mflags} CFLAGS="%optflags"
+V=1 make %{?_smp_mflags} CFLAGS="%optflags"
 
 %install
 %make_install PREFIX="%_prefix" LIBDIR="%_libdir"
@@ -82,6 +79,7 @@ rm -f "%buildroot/%_libdir"/*.a
 
 %check
 LD_LIBRARY_PATH="%buildroot/%_libdir" ldd -r "%buildroot/%_bindir/lz4"
+make %{?_smp_mflags} check
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 18 12:35:02 UTC 2019 - Knut Anderssen<kanderssen@suse.com>
+
+- Keyboard: Permit to set the Keyboard layout in AutoYaST config
+  (bsc#1153550)
+- 4.2.6
+
+-------------------------------------------------------------------
 Wed Sep 18 08:52:48 UTC 2019 - David Diaz <dgonzalez@suse.com>
 
 - Add missing Persian/Farsi language and keyboard layout

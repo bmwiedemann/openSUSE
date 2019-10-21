@@ -40,6 +40,7 @@ Requires:       python3-Pillow
 Requires:       python3-beautifulsoup4
 Requires:       python3-cairo
 Requires:       python3-gobject
+Requires:       python3-gobject-Gdk
 Requires:       python3-pylast
 Recommends:     easytag
 Recommends:     kid3-cli
