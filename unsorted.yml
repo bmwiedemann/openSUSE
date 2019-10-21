@@ -298,6 +298,36 @@ unsorted:
   - addrwatch 
   - ade-devel 
   - adinatha-fonts 
+  - adios-gnu-mpich-hpc 
+  - adios-gnu-mpich-hpc-devel 
+  - adios-gnu-mpich-hpc-devel-static 
+  - adios-gnu-mvapich2-hpc 
+  - adios-gnu-mvapich2-hpc-devel 
+  - adios-gnu-mvapich2-hpc-devel-static 
+  - adios-gnu-openmpi1-hpc 
+  - adios-gnu-openmpi1-hpc-devel 
+  - adios-gnu-openmpi1-hpc-devel-static 
+  - adios-gnu-openmpi2-hpc 
+  - adios-gnu-openmpi2-hpc-devel 
+  - adios-gnu-openmpi2-hpc-devel-static 
+  - adios-gnu-openmpi3-hpc 
+  - adios-gnu-openmpi3-hpc-devel 
+  - adios-gnu-openmpi3-hpc-devel-static 
+  - adios_1_13_1-gnu-mpich-hpc 
+  - adios_1_13_1-gnu-mpich-hpc-devel 
+  - adios_1_13_1-gnu-mpich-hpc-devel-static 
+  - adios_1_13_1-gnu-mvapich2-hpc 
+  - adios_1_13_1-gnu-mvapich2-hpc-devel 
+  - adios_1_13_1-gnu-mvapich2-hpc-devel-static 
+  - adios_1_13_1-gnu-openmpi1-hpc 
+  - adios_1_13_1-gnu-openmpi1-hpc-devel 
+  - adios_1_13_1-gnu-openmpi1-hpc-devel-static 
+  - adios_1_13_1-gnu-openmpi2-hpc 
+  - adios_1_13_1-gnu-openmpi2-hpc-devel 
+  - adios_1_13_1-gnu-openmpi2-hpc-devel-static 
+  - adios_1_13_1-gnu-openmpi3-hpc 
+  - adios_1_13_1-gnu-openmpi3-hpc-devel 
+  - adios_1_13_1-gnu-openmpi3-hpc-devel-static 
   - adlmidi 
   - adlmidi-tools 
   - adminer 
@@ -584,6 +614,7 @@ unsorted:
   - aqute-bnd-javadoc 
   - aqute-bndlib 
   - arabic-amiri-fonts 
+  - arandr 
   - aranym 
   - arc 
   - arc-icon-theme 
@@ -1154,6 +1185,8 @@ unsorted:
   - brasero-devel 
   - breeze4-style 
   - brevity 
+  - brickd 
+  - brickv 
   - bridge-utils 
   - bridge-utils-devel 
   - brightnessctl 
@@ -8716,7 +8749,7 @@ unsorted:
   - libgif7-32bit: [x86_64] 
   - libgig-devel 
   - libgig-tools 
-  - libgig8 
+  - libgig9 
   - libgimp-2_0-0-32bit: [x86_64] 
   - libgimpui-2_0-0-32bit: [x86_64] 
   - libginac-devel 
@@ -14699,12 +14732,6 @@ unsorted:
   - openmarkup 
   - openmarkup-javadoc 
   - openmarkup-manual 
-  - openmpi 
-  - openmpi-config 
-  - openmpi-devel 
-  - openmpi-libs 
-  - openmpi-libs-32bit: [x86_64] 
-  - openmpi-testsuite 
   - openmpi1 
   - openmpi1-config 
   - openmpi1-devel 
@@ -17992,7 +18019,6 @@ unsorted:
   - python2-django-classy-tags 
   - python2-django-contrib-comments 
   - python2-django-crispy-forms 
-  - python2-django-debreach 
   - python2-django-environ 
   - python2-django-formtools 
   - python2-django-grappelli 
@@ -18259,9 +18285,11 @@ unsorted:
   - python2-hyperlink 
   - python2-hypothesis 
   - python2-hypothesis-fspaths 
+  - python2-i3ipc 
   - python2-icalendar 
   - python2-identify 
   - python2-ifaddr 
+  - python2-ijson 
   - python2-imagecodecs 
   - python2-imageio 
   - python2-imagesize 
@@ -19298,6 +19326,7 @@ unsorted:
   - python2-subliminal 
   - python2-subst 
   - python2-suds-jurko 
+  - python2-suntime 
   - python2-sure 
   - python2-sushy 
   - python2-svgwrite 
@@ -19312,6 +19341,7 @@ unsorted:
   - python2-tagpy 
   - python2-tap.py 
   - python2-targetcli-fb 
+  - python2-taskw 
   - python2-tblib 
   - python2-technicolor 
   - python2-telepot 
@@ -20636,11 +20666,13 @@ unsorted:
   - python3-hyper 
   - python3-hypothesis 
   - python3-hypothesis-fspaths 
+  - python3-i3ipc 
   - python3-icalendar 
   - python3-identify 
   - python3-idle 
   - python3-idna_ssl 
   - python3-ifaddr 
+  - python3-ijson 
   - python3-imagecodecs 
   - python3-imageio 
   - python3-imageio-ffmpeg 
@@ -21795,6 +21827,7 @@ unsorted:
   - python3-subst 
   - python3-suds-jurko 
   - python3-sunpy 
+  - python3-suntime 
   - python3-sure 
   - python3-susepubliccloudinfo 
   - python3-sushy 
@@ -21812,6 +21845,7 @@ unsorted:
   - python3-talloc-devel 
   - python3-tap.py 
   - python3-targetcli-fb 
+  - python3-taskw 
   - python3-tbb 
   - python3-tblib 
   - python3-tdb-32bit: [x86_64] 
