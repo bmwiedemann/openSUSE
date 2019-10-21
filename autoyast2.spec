@@ -22,7 +22,7 @@
 %endif
 
 Name:           autoyast2
-Version:        4.2.10
+Version:        4.2.12
 Release:        0
 Summary:        YaST2 - Automated Installation
 License:        GPL-2.0-only
@@ -59,6 +59,7 @@ BuildRequires:  systemd-rpm-macros
 %else
 BuildRequires:  systemd
 %endif
+BuildRequires:  rubygem(%rb_default_ruby_abi:yast-rake)
 
 Requires:       autoyast2-installation = %{version}
 Requires:       libxslt
@@ -115,8 +116,8 @@ Requires:       yast2-bootloader
 Requires:       yast2-core
 Requires:       yast2-country
 Requires:       yast2-ncurses
-# Disabling local repos in second stage only.
-Requires:       yast2-packager >= 4.1.33
+# Y2Packager::MediumType
+Requires:       yast2-packager >= 4.2.25
 # ServicesManagerTargetClass::BaseTargets
 Requires:       yast2-services-manager >= 3.1.10
 # Required for one time sync before installation
@@ -140,8 +141,10 @@ generated with the autoyast2 package.
 %prep
 %setup -q
 
+%check
+%yast_check
+
 %build
-%yast_build
 
 %install
 %yast_install
@@ -152,33 +155,6 @@ generated with the autoyast2 package.
 for d in %{buildroot}%{_datadir}/autoinstall/modules/*.desktop ; do
     %suse_update_desktop_file $d
 done
-
-# Class conf
-install -d -m 700 %{buildroot}%{_sysconfdir}/autoinstall
-# Installation files
-install -d -m 700 %{buildroot}%{_localstatedir}/adm/autoinstall/scripts
-install -d -m 700 %{buildroot}%{_localstatedir}/adm/autoinstall/init.d
-install -d -m 700 %{buildroot}%{_localstatedir}/adm/autoinstall/logs
-install -d -m 700 %{buildroot}%{_localstatedir}/adm/autoinstall/files
-install -d -m 700 %{buildroot}%{_localstatedir}/adm/autoinstall/cache
-
-# Repository
-install -d %{buildroot}%{_localstatedir}/lib/autoinstall/repository
-install -d %{buildroot}%{_localstatedir}/lib/autoinstall/repository/templates
-install -d %{buildroot}%{_localstatedir}/lib/autoinstall/repository/rules
-install -d %{buildroot}%{_localstatedir}/lib/autoinstall/repository/classes
-install -d %{buildroot}%{_localstatedir}/lib/autoinstall/autoconf
-install -d %{buildroot}%{_localstatedir}/lib/autoinstall/tmp
-
-# Systemd Stuff
-mkdir -p %{buildroot}%{_unitdir}/
-install -m 644 scripts/autoyast-initscripts.service %{buildroot}%{_unitdir}/
-
-# Documentation
-install -d -m 755 %{buildroot}%{yast_docdir}/html
-tar -xvpf %{SOURCE1} -C %{buildroot}%{yast_docdir}/html
-mv %{buildroot}%{yast_docdir}/html/autoyast/* %{buildroot}%{yast_docdir}/html/
-rmdir %{buildroot}%{yast_docdir}/html/autoyast
 
 %post
 %{fillup_only -n autoinstall}
@@ -232,11 +208,9 @@ rmdir %{buildroot}%{yast_docdir}/html/autoyast
 %dir %{yast_scrconfdir}
 %{yast_scrconfdir}/autoinstall.scr
 %{yast_scrconfdir}/cfg_autoinstall.scr
-# DTD files
+# autoinstall modules
 %dir %{_datadir}/autoinstall
-#%dir %{_datadir}/autoinstall/dtd
 %dir %{_datadir}/autoinstall/modules
-#%{_datadir}/autoinstall/dtd/*
 
 # systemd service file
 %{_unitdir}/autoyast-initscripts.service
