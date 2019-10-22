@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct  1 10:12:16 UTC 2019 - Julio González Gil <jgonzalez@suse.com>
+
+- Fix building and installation for CentOS8, RHEL8 and RES8
+
+-------------------------------------------------------------------
 Thu Aug 22 11:25:57 UTC 2019 - FSchreiner@suse.com
 
 - Update to version 0.10.10.1566390389.9f923f8:

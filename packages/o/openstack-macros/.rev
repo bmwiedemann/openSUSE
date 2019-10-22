@@ -117,4 +117,14 @@
   * openstack-macros: Bump version for Rocky to 2018.2.0</comment>
     <requestid>724653</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>7ddfaf66ea84783606ca5810454f119a</srcmd5>
+    <version>2019.2.1</version>
+    <time>1571751430</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2019.2.1:
+  * openstack-macros: Define %http_dashboard_dir
+  * openstack-macros: Use py3 in %openstack_test_package_install</comment>
+    <requestid>736484</requestid>
+  </revision>
 </revisionlist>

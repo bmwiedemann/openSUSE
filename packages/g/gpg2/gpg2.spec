@@ -60,7 +60,6 @@ Requires:       libgcrypt20 >= 1.7.0
 Requires:       libksba >= 1.3.4
 Requires:       pinentry
 Requires(post): %{install_info_prereq}
-Recommends:     %{name}-lang = %{version}
 Obsoletes:      dirmngr < 2.1.0
 Provides:       dirmngr = %{version}
 Provides:       gnupg = %{version}

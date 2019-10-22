@@ -1,6 +1,6 @@
 <servicedata>
-<service name="tar_scm">
-                <param name="url">https://github.com/openSUSE/rpm-config-SUSE</param>
-              <param name="changesrevision">a734ff65dcb46b1bde78adc48624e2d9e7875c3b</param></service><service name="tar_scm">
-                <param name="url">https://github.com/hramrach/rpm-config-SUSE</param>
-              <param name="changesrevision">5ca49877086ae0ef42b3ecf650034ec80a1c9513</param></service></servicedata>
+  <service name="tar_scm">
+    <param name="url">https://github.com/openSUSE/rpm-config-SUSE</param>
+    <param name="changesrevision">54f9f71bacdfb944d88f722d71a4d35651f7cc8a</param>
+  </service>
+</servicedata>

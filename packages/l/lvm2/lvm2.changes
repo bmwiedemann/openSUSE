@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 21 07:59:33 UTC 2019 - heming.zhao@suse.com
+
+- lvm2-pvscan needs process speed improvement on a large scale PVs (jcs#SLE-5498)
+  + jcs-SLE5498_pvscan-allow-use-of-noudevsync-option.patch
+
+-------------------------------------------------------------------
 Wed Oct  2 10:28:33 UTC 2019 - Martin Wilck <mwilck@suse.com>
 
 - Fix LV activation issues (boo#1152378, rh#1727270)

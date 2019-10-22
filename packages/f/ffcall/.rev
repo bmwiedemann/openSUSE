@@ -162,4 +162,12 @@
 - Use -ffat-lto-objects when building static libraries.</comment>
     <requestid>730438</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>648955da18887bf437aa99bf8bb91f47</srcmd5>
+    <version>2.2</version>
+    <time>1571751875</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>741482</requestid>
+  </revision>
 </revisionlist>

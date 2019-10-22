@@ -39,6 +39,8 @@ Patch3:         djvulibre-CVE-2019-15145.patch
 Patch4:         djvulibre-CVE-2019-15142.patch
 # do not segfault when libtiff encounters corrupted TIFF (upstream issue #295)
 Patch5:         djvulibre-invalid-tiff.patch
+# https://sourceforge.net/p/djvu/bugs/293/
+Patch6:         djvulibre-always-assume-that-cpuid-works-on-x86_64.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -91,7 +93,14 @@ software platform for distributing documents and images.
 This package contains the documentation.
 
 %prep
-%autosetup -p1
+%setup -q
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
 
 %build
 %configure \

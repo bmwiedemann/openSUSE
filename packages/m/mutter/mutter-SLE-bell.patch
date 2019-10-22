@@ -1,8 +1,8 @@
-Index: mutter-3.23.2/src/meta/prefs.h
+Index: mutter-3.34.1+24/src/meta/prefs.h
 ===================================================================
---- mutter-3.23.2.orig/src/meta/prefs.h
-+++ mutter-3.23.2/src/meta/prefs.h
-@@ -89,6 +89,7 @@ typedef enum
+--- mutter-3.34.1+24.orig/src/meta/prefs.h
++++ mutter-3.34.1+24/src/meta/prefs.h
+@@ -91,6 +91,7 @@ typedef enum
    META_PREF_WORKSPACE_NAMES,
    META_PREF_VISUAL_BELL,
    META_PREF_AUDIBLE_BELL,
@@ -10,27 +10,29 @@ Index: mutter-3.23.2/src/meta/prefs.h
    META_PREF_VISUAL_BELL_TYPE,
    META_PREF_GNOME_ACCESSIBILITY,
    META_PREF_GNOME_ANIMATIONS,
-@@ -399,6 +400,7 @@ MetaKeyBindingAction meta_prefs_get_keyb
- 
- gboolean           meta_prefs_get_visual_bell      (void);
+@@ -479,6 +480,9 @@ META_EXPORT
  gboolean           meta_prefs_bell_is_audible      (void);
+ 
+ META_EXPORT
 +gboolean           meta_prefs_bell_force_through_server (void);
++
++META_EXPORT
  GDesktopVisualBellType meta_prefs_get_visual_bell_type (void);
  
  #endif
-Index: mutter-3.23.2/src/core/prefs.c
+Index: mutter-3.34.1+24/src/core/prefs.c
 ===================================================================
---- mutter-3.23.2.orig/src/core/prefs.c
-+++ mutter-3.23.2/src/core/prefs.c
-@@ -93,6 +93,7 @@ static gboolean auto_raise_delay = 500;
+--- mutter-3.34.1+24.orig/src/core/prefs.c
++++ mutter-3.34.1+24/src/core/prefs.c
+@@ -99,6 +99,7 @@ static gboolean auto_raise_delay = 500;
  static gboolean focus_change_on_pointer_rest = FALSE;
  static gboolean bell_is_visible = FALSE;
  static gboolean bell_is_audible = TRUE;
 +static gboolean bell_force_through_server = FALSE;
  static gboolean gnome_accessibility = FALSE;
  static gboolean gnome_animations = TRUE;
- static char *cursor_theme = NULL;
-@@ -353,6 +354,13 @@ static MetaBoolPreference preferences_bo
+ static gboolean locate_pointer_is_enabled = FALSE;
+@@ -346,6 +347,13 @@ static MetaBoolPreference preferences_bo
        &bell_is_audible, /* FIXME: change the name: it's confusing */
      },
      {
@@ -44,7 +46,7 @@ Index: mutter-3.23.2/src/core/prefs.c
        { KEY_GNOME_ACCESSIBILITY,
          SCHEMA_INTERFACE,
          META_PREF_GNOME_ACCESSIBILITY,
-@@ -1813,6 +1821,9 @@ meta_preference_to_string (MetaPreferenc
+@@ -1654,6 +1662,9 @@ meta_preference_to_string (MetaPreferenc
      case META_PREF_AUDIBLE_BELL:
        return "AUDIBLE_BELL";
  
@@ -54,7 +56,7 @@ Index: mutter-3.23.2/src/core/prefs.c
      case META_PREF_VISUAL_BELL_TYPE:
        return "VISUAL_BELL_TYPE";
  
-@@ -2077,6 +2088,12 @@ meta_prefs_bell_is_audible (void)
+@@ -1929,6 +1940,12 @@ meta_prefs_bell_is_audible (void)
    return bell_is_audible;
  }
  
@@ -67,28 +69,42 @@ Index: mutter-3.23.2/src/core/prefs.c
  GDesktopVisualBellType
  meta_prefs_get_visual_bell_type (void)
  {
-Index: mutter-3.23.2/src/core/bell.c
+Index: mutter-3.34.1+24/src/core/bell.c
 ===================================================================
---- mutter-3.23.2.orig/src/core/bell.c
-+++ mutter-3.23.2/src/core/bell.c
-@@ -220,6 +220,12 @@ meta_bell_notify (MetaDisplay *display,
+--- mutter-3.34.1+24.orig/src/core/bell.c
++++ mutter-3.34.1+24/src/core/bell.c
+@@ -54,6 +54,11 @@
+ #include "core/window-private.h"
+ #include "meta/compositor.h"
+ 
++#include "meta/display.h"
++#include "meta/meta-x11-display.h"
++#include <X11/Xlib.h>
++#include <X11/XKBlib.h>
++
+ G_DEFINE_TYPE (MetaBell, meta_bell, G_TYPE_OBJECT)
+ 
+ enum
+@@ -202,6 +207,14 @@ meta_bell_notify (MetaDisplay *display,
    if (meta_prefs_get_visual_bell ())
      bell_visual_notify (display, window);
  
 +  if (meta_prefs_bell_force_through_server ())
 +   {
-+    XkbForceBell (display->xdisplay, 100);
++    MetaX11Display *x11_display = meta_display_get_x11_display (display);
++    Display *xdisplay = meta_x11_display_get_xdisplay (x11_display);
++    XkbForceBell (xdisplay, 100);
 +    return TRUE;
 +    }
 +
    if (meta_prefs_bell_is_audible ())
      return bell_audible_notify (display, window);
  
-Index: mutter-3.23.2/data/org.gnome.mutter.gschema.xml.in
+Index: mutter-3.34.1+24/data/org.gnome.mutter.gschema.xml.in
 ===================================================================
---- mutter-3.23.2.orig/data/org.gnome.mutter.gschema.xml.in
-+++ mutter-3.23.2/data/org.gnome.mutter.gschema.xml.in
-@@ -102,6 +102,16 @@
+--- mutter-3.34.1+24.orig/data/org.gnome.mutter.gschema.xml.in
++++ mutter-3.34.1+24/data/org.gnome.mutter.gschema.xml.in
+@@ -137,6 +137,16 @@
        </description>
      </key>
  

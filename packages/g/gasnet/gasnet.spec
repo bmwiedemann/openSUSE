@@ -17,7 +17,6 @@
 
 
 %define _buildshell /bin/bash
-%define mpi_implem openmpi2
 
 Name:           gasnet
 Version:        1.32.0
@@ -43,9 +42,8 @@ BuildRequires:  libfabric-devel
 %ifarch x86_64
 BuildRequires:  libpsm2-devel
 %endif
-BuildRequires:  %{mpi_implem}
-BuildRequires:  %{mpi_implem}-devel
 BuildRequires:  libtool
+BuildRequires:  openmpi-macros-devel
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -76,6 +74,7 @@ Development package for GASNet. Including header files and libraries.
 %package -n libgasnet-%{libver}
 Summary:        Runtime libraries for GASNet
 Group:          System/Libraries
+%openmpi_requires
 
 %description -n libgasnet-%{libver}
 GASNet is a language-independent, low-level networking layer that provides
@@ -110,7 +109,7 @@ FAKE_BUILDTIME=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%H:%%M:%%S
 sed -i -e "s/__DATE__/\"$FAKE_BUILDDATE\"/" -e "s/__TIME__/\"$FAKE_BUILDTIME\"/" gasnet_tools.c gasnet_trace.c tests/test.h
 
 %build
-. %{_libdir}/mpi/gcc/%{mpi_implem}/bin/mpivars.sh
+%setup_openmpi
 %configure --enable-udp --enable-mpi --enable-par --enable-ibv --disable-aligned-segments  --enable-segment-fast --with-segment-mmap-max=4GB --disable-debug --enable-force-posix-realtime --enable-smp \
 %ifarch x86_64 %{ix86}
     --enable-ofi \
@@ -127,11 +126,11 @@ sed -i -e "s/__DATE__/\"$FAKE_BUILDDATE\"/" -e "s/__TIME__/\"$FAKE_BUILDTIME\"/"
 make %{?_smp_mflags} MANUAL_CFLAGS="%optflags -fPIC" MANUAL_MPICFLAGS="%optflags -fPIC" MANUAL_CXXFLAGS="%optflags -fPIC"
 
 %check
-. %{_libdir}/mpi/gcc/%{mpi_implem}/bin/mpivars.sh
+%setup_openmpi
 make %{?_smp_mflags} check MANUAL_CFLAGS="%optflags -fPIC" MANUAL_MPICFLAGS="%optflags -fPIC" MANUAL_CXXFLAGS="%optflags -fPIC"
 
 %install
-. %{_libdir}/mpi/gcc/%{mpi_implem}/bin/mpivars.sh
+%setup_openmpi
 make %{?_smp_mflags} DESTDIR=%{buildroot} install
 %fdupes %{buildroot}/%{_prefix}
 chmod +x %{buildroot}/%{_bindir}/*.pl

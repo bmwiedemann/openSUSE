@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 18 08:33:20 UTC 2019 - pgajdos@suse.com
+
+- do not segfault when mmx enabled [bsc#1154401]
+- added patches
+  https://sourceforge.net/p/djvu/bugs/293/
+  + djvulibre-always-assume-that-cpuid-works-on-x86_64.patch
+
+-------------------------------------------------------------------
 Tue Sep  3 06:21:13 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim conjecture, bias, and metadata repetitions from description.

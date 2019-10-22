@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Mon Oct 21 22:46:25 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to v1.18.1
+Improvements:
+  * Disable slabinfo plugin by default to reduce the total number
+    of metrics collected
+  * Add dbengine RAM usage statistics
+  * Support Google Hangouts chat notifications
+  * Add CMocka unit tests
+  * Add prerequisites to enable automatic updates for installations
+    via the static binary (kickstart-static64.sh)
+
+Bug fixes:
+  * Fix unbound collector timings: Convert recursion timings to
+    milliseconds.
+  * Fix unbound collector unhandled exceptions
+  * Fix megacli collector binary search and sudo check
+  * Fix Clang warnings
+  * Fix python.d error logging: change chart suppress msg level
+    from ERROR to INFO
+  * Fix freeipmi update frequency check: was warning that 5 was too
+    frequent and it was setting it to 5.
+  * Fix alarm configurations not getting loaded, via better
+    handling of chart names with special characters
+  * Don't write HTTP response 204 messages to the logs
+  * Fix build when CMocka isn't installed
+  * Prevent zombie processes when a child is re-parented to netdata
+    when its running in a container, by adding child process reaper
+
+- Update to v1.18.0
+Improvements:
+  * Database engine:
+    + Make dbengine the default memory mode
+    + Increase dbengine default cache size
+    + Reduce overhead during write IO
+    + Detect deadlock in dbengine page cache
+    + Remove hard cap from page cache size to eliminate deadlocks.
+
+  * New collectors:
+    + SLAB cache mechanism
+    + Gearman worker statistics
+    + vCenter Server Appliance
+    + Zookeeper servers
+    + Hadoop Distributed File System (HDFS) nodes
+
+  * Collector improvements:
+    + rabbitmq: Add vhosts message metrics from /api/vhosts
+    + elasticsearch: collect metrics from _cat/indices
+    + mysql: collect galera cluster metrics
+    + Allow configuration of the python.d launch command from
+      netdata.conf
+    + x509check: smtp cert check support
+    + dnsmasq_dhcp: respect conf-dir,conf-file,dhcp-host options
+    + plugin: respect previously running jobs after plugin restart
+    + httpcheck: add current state duration chart
+    + springboot2: fix context
+
+  * Health:
+    + Enable alarm templates for chart dimensions
+    + Center the chart on the proper chart and time whenever an
+      alarm link is clicked
+
+  * Other:
+    + API: Include family into the allmetrics JSON response
+    + API: Add fixed width option to badges
+    + Allow hostnames in Access Control Lists
+
+Bug fixes:
+  * Fix issue error in alarm notification script, when executed
+    without any arguments
+  * Fix Coverity warnings
+  * Fix dbengine consistency when a writer modifies a page
+    concurrently with a reader querying its metrics
+  * Fix memory leak on netdata exit
+  * Fix for missing boundary data points in certain cases
+  * Fix unhandled exception log warnings in the python.d collector
+    orchestrator start\_job
+  * Fix CORS errors when accessing the health management API,
+    by permitingt x-auth-token in Access-Control-Allow-Headers
+  * Fix misleading error log entries RRDSET: chart name 'XXX' on
+    host 'YYY' already exists, by changing the log level for
+    chart updates
+  * Properly resolve all Kubernetes container names
+  * Fix LGTM warnings
+  * Fix agent UI redirect loop during cloud sign-in
+  * Fix python.d.plugin bug in parsing configuration files with no
+    explicitly defined jobs
+  * Fix potential buffer overflow in the web server
+  * Fix netdata group deletion on linux for uninstall script
+  * Various cppcheck fixes
+  * Fix handling of illegal metric timestamps in database engine
+  * Fix a resource leak
+  * Fix rabbitmq collector error when no vhosts are available.
+
+-------------------------------------------------------------------
 Wed Sep  4 08:03:47 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
 
 - Update to v1.17.0

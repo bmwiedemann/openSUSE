@@ -1,15 +1,21 @@
-From: Sebastian Parschauer <sparschauer@suse.de>
-Date: Tue, 9 Jan 2018 08:50:37 +0100
-Subject: configure: Fix build with older autotools
+From: Andrea Stacchiotti <andreastacchiotti@gmail.com>
+Date: Tue, 9 Jan 2018 18:10:40 +0100
+Subject: configure: Add `AM_PROG_CC_C_O` macro
 References: https://github.com/scanmem/scanmem/issues/289
-Patch-mainline: not yet
+Patch-mainline: v0.18
+Git-commit: 3b4bf8366c6fe2e15798ab252cfeda76fb003105
 
-The new test framework requires the configure.ac macro AM_PROG_CC_C_O
-to be set with older autotools.
+This macro checks that the C compiler supports the -c and -o
+options together, which is needed to build the testing exe.
+
+This macro is needed only for automake <1.14, but add it for
+compatibility with older environments.
 ---
- configure.ac |    1 +
+ configure.ac | 1 +
  1 file changed, 1 insertion(+)
 
+diff --git a/configure.ac b/configure.ac
+index 5b8bac337589..45dfceeeaff2 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -9,6 +9,7 @@ AC_HEADER_STDBOOL

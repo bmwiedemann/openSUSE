@@ -7,10 +7,10 @@ References: bsc#954872
  tools/libxl/libxlu_disk_l.l |    2 ++
  4 files changed, 37 insertions(+), 6 deletions(-)
 
-Index: xen-4.12.0-testing/tools/libxl/libxl_disk.c
+Index: xen-4.13.0-testing/tools/libxl/libxl_disk.c
 ===================================================================
---- xen-4.12.0-testing.orig/tools/libxl/libxl_disk.c
-+++ xen-4.12.0-testing/tools/libxl/libxl_disk.c
+--- xen-4.13.0-testing.orig/tools/libxl/libxl_disk.c
++++ xen-4.13.0-testing/tools/libxl/libxl_disk.c
 @@ -178,7 +178,7 @@ static int libxl__device_disk_setdefault
      return rc;
  }
@@ -20,9 +20,9 @@ Index: xen-4.12.0-testing/tools/libxl/libxl_disk.c
                                     const libxl_device_disk *disk,
                                     libxl__device *device)
  {
-@@ -355,6 +355,10 @@ static void device_disk_add(libxl__egc *
-                 /* now create a phy device to export the device to the guest */
-                 goto do_backend_phy;
+@@ -336,6 +336,10 @@ static void device_disk_add(libxl__egc *
+                 rc = ERROR_FAIL;
+                 goto out;
              case LIBXL_DISK_BACKEND_QDISK:
 +		if (disk->script) {
 +                    script = libxl__abs_path(gc, disk->script, libxl__xen_script_dir_path());
@@ -31,12 +31,12 @@ Index: xen-4.12.0-testing/tools/libxl/libxl_disk.c
                  flexarray_append(back, "params");
                  flexarray_append(back, GCSPRINTF("%s:%s",
                                libxl__device_disk_string_of_format(disk->format),
-Index: xen-4.12.0-testing/tools/libxl/libxl_device.c
+Index: xen-4.13.0-testing/tools/libxl/libxl_device.c
 ===================================================================
---- xen-4.12.0-testing.orig/tools/libxl/libxl_device.c
-+++ xen-4.12.0-testing/tools/libxl/libxl_device.c
-@@ -343,7 +343,8 @@ static int disk_try_backend(disk_try_bac
-         return backend;
+--- xen-4.13.0-testing.orig/tools/libxl/libxl_device.c
++++ xen-4.13.0-testing/tools/libxl/libxl_device.c
+@@ -326,7 +326,8 @@ static int disk_try_backend(disk_try_bac
+         return 0;
  
      case LIBXL_DISK_BACKEND_QDISK:
 -        if (a->disk->script) goto bad_script;
@@ -45,10 +45,22 @@ Index: xen-4.12.0-testing/tools/libxl/libxl_device.c
          return backend;
  
      default:
-Index: xen-4.12.0-testing/tools/libxl/libxl_dm.c
+@@ -343,11 +344,6 @@ static int disk_try_backend(disk_try_bac
+                libxl_disk_format_to_string(a->disk->format));
+     return 0;
+ 
+- bad_script:
+-    LOG(DEBUG, "Disk vdev=%s, backend %s not compatible with script=...",
+-        a->disk->vdev, libxl_disk_backend_to_string(backend));
+-    return 0;
+-
+  bad_colo:
+     LOG(DEBUG, "Disk vdev=%s, backend %s not compatible with colo",
+         a->disk->vdev, libxl_disk_backend_to_string(backend));
+Index: xen-4.13.0-testing/tools/libxl/libxl_dm.c
 ===================================================================
---- xen-4.12.0-testing.orig/tools/libxl/libxl_dm.c
-+++ xen-4.12.0-testing/tools/libxl/libxl_dm.c
+--- xen-4.13.0-testing.orig/tools/libxl/libxl_dm.c
++++ xen-4.13.0-testing/tools/libxl/libxl_dm.c
 @@ -1162,6 +1162,30 @@ out:
      return rc;
  }
@@ -80,7 +92,7 @@ Index: xen-4.12.0-testing/tools/libxl/libxl_dm.c
  static int libxl__build_device_model_args_new(libxl__gc *gc,
                                          const char *dm, int guest_domid,
                                          const libxl_domain_config *guest_config,
-@@ -1793,9 +1817,11 @@ static int libxl__build_device_model_arg
+@@ -1795,9 +1819,11 @@ static int libxl__build_device_model_arg
                  libxl__device_disk_dev_number(disks[i].vdev, &disk, &part);
              const char *format;
              char *drive;
@@ -93,19 +105,10 @@ Index: xen-4.12.0-testing/tools/libxl/libxl_dm.c
              if (dev_number == -1) {
                  LOGD(WARN, guest_domid, "unable to determine"" disk number for %s",
                       disks[i].vdev);
-@@ -1836,7 +1862,7 @@ static int libxl__build_device_model_arg
-                  * the bootloader path.
-                  */
-                 if (disks[i].backend == LIBXL_DISK_BACKEND_TAP)
--                    target_path = libxl__blktap_devpath(gc, disks[i].pdev_path,
-+                    target_path = libxl__blktap_devpath(gc, target_path,
-                                                         disks[i].format);
-                 else
-                     target_path = libxl__device_disk_find_local_path(gc,
-Index: xen-4.12.0-testing/tools/libxl/libxlu_disk_l.l
+Index: xen-4.13.0-testing/tools/libxl/libxlu_disk_l.l
 ===================================================================
---- xen-4.12.0-testing.orig/tools/libxl/libxlu_disk_l.l
-+++ xen-4.12.0-testing/tools/libxl/libxlu_disk_l.l
+--- xen-4.13.0-testing.orig/tools/libxl/libxlu_disk_l.l
++++ xen-4.13.0-testing/tools/libxl/libxlu_disk_l.l
 @@ -230,6 +230,8 @@ target=.*	{ STRIP(','); SAVESTRING("targ
                      free(newscript);
                  }
@@ -115,13 +118,13 @@ Index: xen-4.12.0-testing/tools/libxl/libxlu_disk_l.l
  tapdisk:/.*	{ DPC->had_depr_prefix=1; DEPRECATE(0); }
  tap2?:/.*	{ DPC->had_depr_prefix=1; DEPRECATE(0); }
  aio:/.*		{ DPC->had_depr_prefix=1; DEPRECATE(0); }
-Index: xen-4.12.0-testing/tools/libxl/libxl_internal.h
+Index: xen-4.13.0-testing/tools/libxl/libxl_internal.h
 ===================================================================
---- xen-4.12.0-testing.orig/tools/libxl/libxl_internal.h
-+++ xen-4.12.0-testing/tools/libxl/libxl_internal.h
-@@ -1916,6 +1916,10 @@ _hidden char *libxl__blktap_devpath(libx
-  */
- _hidden int libxl__device_destroy_tapdisk(libxl__gc *gc, const char *params);
+--- xen-4.13.0-testing.orig/tools/libxl/libxl_internal.h
++++ xen-4.13.0-testing/tools/libxl/libxl_internal.h
+@@ -1945,6 +1945,10 @@ struct libxl__cpuid_policy {
+     char *policy[4];
+ };
  
 +_hidden int libxl__device_from_disk(libxl__gc *gc, uint32_t domid,
 +                                   const libxl_device_disk *disk,

@@ -233,4 +233,12 @@
     a.k.a. GitHub issue #66 (forwarded request 735889 from hillwood)</comment>
     <requestid>736432</requestid>
   </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>d10eef8210ccb377503586773d4b80dd</srcmd5>
+    <version>1.3.9.2</version>
+    <time>1571751856</time>
+    <user>dimstar_suse</user>
+    <comment>This is an input module for ibus that should be included</comment>
+    <requestid>74102</requestid>
+  </revision>
 </revisionlist>

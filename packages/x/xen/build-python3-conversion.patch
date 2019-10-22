@@ -1,7 +1,7 @@
-Index: xen-4.12.0-testing/Config.mk
+Index: xen-4.13.0-testing/Config.mk
 ===================================================================
---- xen-4.12.0-testing.orig/Config.mk
-+++ xen-4.12.0-testing/Config.mk
+--- xen-4.13.0-testing.orig/Config.mk
++++ xen-4.13.0-testing/Config.mk
 @@ -82,7 +82,7 @@ EXTRA_INCLUDES += $(EXTRA_PREFIX)/includ
  EXTRA_LIB += $(EXTRA_PREFIX)/lib
  endif
@@ -11,88 +11,43 @@ Index: xen-4.12.0-testing/Config.mk
  PYTHON_PREFIX_ARG ?= --prefix="$(prefix)"
  # The above requires that prefix contains *no spaces*. This variable is here
  # to permit the user to set PYTHON_PREFIX_ARG to '' to workaround this bug:
-Index: xen-4.12.0-testing/tools/configure
+Index: xen-4.13.0-testing/tools/configure
 ===================================================================
---- xen-4.12.0-testing.orig/tools/configure
-+++ xen-4.12.0-testing/tools/configure
-@@ -6953,7 +6953,7 @@ if echo "$PYTHON" | grep -q "^/"; then :
-     PYTHON=`basename $PYTHONPATH`
- 
- elif test -z "$PYTHON"; then :
+--- xen-4.13.0-testing.orig/tools/configure
++++ xen-4.13.0-testing/tools/configure
+@@ -6926,7 +6926,7 @@ then
+ fi;;
+ esac
+ if test -z "$PYTHON"; then :
 -  PYTHON="python"
 +  PYTHON="python3"
- else
-   as_fn_error $? "PYTHON specified, but is not an absolute path" "$LINENO" 5
  fi
-@@ -7002,15 +7002,15 @@ if test x"${PYTHONPATH}" = x"no"
+ if echo "$PYTHON" | grep -q "^/"; then :
+ 
+@@ -6981,15 +6981,15 @@ if test x"${PYTHONPATH}" = x"no"
  then
      as_fn_error $? "Unable to find $PYTHON, please install $PYTHON" "$LINENO" 5
  fi
--{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for python version >= 2.3 " >&5
--$as_echo_n "checking for python version >= 2.3 ... " >&6; }
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for python version >= 2.6 " >&5
+-$as_echo_n "checking for python version >= 2.6 ... " >&6; }
+-`$PYTHON -c 'import sys; sys.exit(eval("sys.version_info < (2, 6)"))'`
 +{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for python3 version >= 3.0 " >&5
 +$as_echo_n "checking for python3 version >= 3.0 ... " >&6; }
- `$PYTHON -c 'import sys; sys.exit(eval("sys.version_info < (2, 3)"))'`
++`$PYTHON -c 'import sys; sys.exit(eval("sys.version_info < (3, 0)"))'`
  if test "$?" != "0"
  then
      python_version=`$PYTHON -V 2>&1`
      { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
  $as_echo "no" >&6; }
--    as_fn_error $? "$python_version is too old, minimum required version is 2.3" "$LINENO" 5
+-    as_fn_error $? "$python_version is too old, minimum required version is 2.6" "$LINENO" 5
 +    as_fn_error $? "$python_version is too old, minimum required version is 3.0" "$LINENO" 5
  else
      { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
  $as_echo "yes" >&6; }
-@@ -7419,7 +7419,7 @@ if test "$cross_compiling" != yes; then
- ac_previous_cppflags=$CPPFLAGS
- ac_previous_ldflags=$LDFLAGS
- ac_python_version=`$PYTHON -c 'import distutils.sysconfig; \
--    print distutils.sysconfig.get_config_var("VERSION")'`
-+    print(distutils.sysconfig.get_config_var(\"VERSION\"))'`
- # Extract the first word of "$PYTHON-config", so it can be a program name with args.
- set dummy $PYTHON-config; ac_word=$2
- { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
-@@ -7464,20 +7464,20 @@ fi
- if test x"$pyconfig" = x"no"; then :
- 
-         CPPFLAGS="$CFLAGS `$PYTHON -c 'import distutils.sysconfig; \
--        print "-I" + distutils.sysconfig.get_config_var("INCLUDEPY")'`"
-+        print("-I" + distutils.sysconfig.get_config_var(\"INCLUDEPY\"))'`"
-     CPPFLAGS="$CPPFLAGS `$PYTHON -c 'import distutils.sysconfig; \
--        print distutils.sysconfig.get_config_var("CFLAGS")'`"
-+        print(distutils.sysconfig.get_config_var(\"CFLAGS\"))'`"
-     PYTHON_LIBS="$LDFLAGS `$PYTHON -c 'import distutils.sysconfig; \
--        print distutils.sysconfig.get_config_var("LIBS")'`"
-+        print(distutils.sysconfig.get_config_var(\"LIBS\"))'`"
-     PYTHON_LIBS="$LDFLAGS `$PYTHON -c 'import distutils.sysconfig; \
--        print distutils.sysconfig.get_config_var("SYSLIBS")'`"
-+        print(distutils.sysconfig.get_config_var(\"SYSLIBS\"))'`"
-     LDFLAGS="$LDFLAGS `$PYTHON -c 'import distutils.sysconfig; \
--        print "-L" + distutils.sysconfig.get_python_lib(plat_specific=1,\
--        standard_lib=1) + "/config"'`"
-+        print("-L" + distutils.sysconfig.get_python_lib(plat_specific=1,\
-+        standard_lib=1) + "/config")'`"
-     LDFLAGS="$LDFLAGS `$PYTHON -c 'import distutils.sysconfig; \
--        print distutils.sysconfig.get_config_var("LINKFORSHARED")'`"
-+        print(distutils.sysconfig.get_config_var(\"LINKFORSHARED\"))'`"
-     LDFLAGS="$LDFLAGS `$PYTHON -c 'import distutils.sysconfig; \
--        print distutils.sysconfig.get_config_var("LDFLAGS")'`"
-+        print(distutils.sysconfig.get_config_var(\"LDFLAGS\"))'`"
- 
- else
- 
-@@ -7494,7 +7494,6 @@ else
-   as_fn_error $? "Unable to find Python development headers" "$LINENO" 5
- fi
- 
--
- as_ac_Lib=`$as_echo "ac_cv_lib_python$ac_python_version''_PyArg_ParseTuple" | $as_tr_sh`
- { $as_echo "$as_me:${as_lineno-$LINENO}: checking for PyArg_ParseTuple in -lpython$ac_python_version" >&5
- $as_echo_n "checking for PyArg_ParseTuple in -lpython$ac_python_version... " >&6; }
-Index: xen-4.12.0-testing/tools/python/test.py
+Index: xen-4.13.0-testing/tools/python/test.py
 ===================================================================
---- xen-4.12.0-testing.orig/tools/python/test.py
-+++ xen-4.12.0-testing/tools/python/test.py
+--- xen-4.13.0-testing.orig/tools/python/test.py
++++ xen-4.13.0-testing/tools/python/test.py
 @@ -1,4 +1,4 @@
 -#! /usr/bin/env python2.3
 +#!/usr/bin/python3
@@ -409,86 +364,31 @@ Index: xen-4.12.0-testing/tools/python/test.py
              raise
  
  
-Index: xen-4.12.0-testing/tools/configure.ac
+Index: xen-4.13.0-testing/tools/configure.ac
 ===================================================================
---- xen-4.12.0-testing.orig/tools/configure.ac
-+++ xen-4.12.0-testing/tools/configure.ac
-@@ -355,10 +355,10 @@ esac
- AS_IF([echo "$PYTHON" | grep -q "^/"], [
-     PYTHONPATH=$PYTHON
-     PYTHON=`basename $PYTHONPATH`
--],[test -z "$PYTHON"], [PYTHON="python"],
-+],[test -z "$PYTHON"], [PYTHON="python3"],
- [AC_MSG_ERROR([PYTHON specified, but is not an absolute path])])
+--- xen-4.13.0-testing.orig/tools/configure.ac
++++ xen-4.13.0-testing/tools/configure.ac
+@@ -337,13 +337,13 @@ case "$host_os" in
+   freebsd*) ;;
+   *) AX_PATH_PROG_OR_FAIL([BASH], [bash]);;
+ esac
+-AS_IF([test -z "$PYTHON"], [PYTHON="python"])
++AS_IF([test -z "$PYTHON"], [PYTHON="python3"])
+ AS_IF([echo "$PYTHON" | grep -q "^/"], [], [PYTHON=`type -p "$PYTHON"`])
+ PYTHONPATH=$PYTHON
+ PYTHON=`basename $PYTHONPATH`
+ 
  AX_PATH_PROG_OR_FAIL([PYTHONPATH], [$PYTHON])
--AX_CHECK_PYTHON_VERSION([2], [3])
+-AX_CHECK_PYTHON_VERSION([2], [6])
 +AX_CHECK_PYTHON_VERSION([3], [0])
  
  AS_IF([test "$cross_compiling" != yes], [
      AX_CHECK_PYTHON_DEVEL()
-Index: xen-4.12.0-testing/m4/python_devel.m4
+Index: xen-4.13.0-testing/tools/libxl/idl.py
 ===================================================================
---- xen-4.12.0-testing.orig/m4/python_devel.m4
-+++ xen-4.12.0-testing/m4/python_devel.m4
-@@ -2,25 +2,25 @@ AC_DEFUN([AX_CHECK_PYTHON_DEVEL], [
- ac_previous_cppflags=$CPPFLAGS
- ac_previous_ldflags=$LDFLAGS
- ac_python_version=`$PYTHON -c 'import distutils.sysconfig; \
--    print distutils.sysconfig.get_config_var("VERSION")'`
-+    print(distutils.sysconfig.get_config_var("VERSION"))'`
- AC_PATH_PROG([pyconfig], [$PYTHON-config], [no])
- AS_IF([test x"$pyconfig" = x"no"], [
-     dnl For those that don't have python-config
-     CPPFLAGS="$CFLAGS `$PYTHON -c 'import distutils.sysconfig; \
--        print "-I" + distutils.sysconfig.get_config_var("INCLUDEPY")'`"
-+        print("-I" + distutils.sysconfig.get_config_var("INCLUDEPY"))'`"
-     CPPFLAGS="$CPPFLAGS `$PYTHON -c 'import distutils.sysconfig; \
--        print distutils.sysconfig.get_config_var("CFLAGS")'`"
-+        print(distutils.sysconfig.get_config_var("CFLAGS"))'`"
-     PYTHON_LIBS="$LDFLAGS `$PYTHON -c 'import distutils.sysconfig; \
--        print distutils.sysconfig.get_config_var("LIBS")'`"
-+        print(distutils.sysconfig.get_config_var("LIBS"))'`"
-     PYTHON_LIBS="$LDFLAGS `$PYTHON -c 'import distutils.sysconfig; \
--        print distutils.sysconfig.get_config_var("SYSLIBS")'`"
-+        print(distutils.sysconfig.get_config_var("SYSLIBS"))'`"
-     LDFLAGS="$LDFLAGS `$PYTHON -c 'import distutils.sysconfig; \
--        print "-L" + distutils.sysconfig.get_python_lib(plat_specific=1,\
--        standard_lib=1) + "/config"'`"
-+        print("-L" + distutils.sysconfig.get_python_lib(plat_specific=1,\
-+        standard_lib=1) + "/config")'`"
-     LDFLAGS="$LDFLAGS `$PYTHON -c 'import distutils.sysconfig; \
--        print distutils.sysconfig.get_config_var("LINKFORSHARED")'`"
-+        print(distutils.sysconfig.get_config_var("LINKFORSHARED"))'`"
-     LDFLAGS="$LDFLAGS `$PYTHON -c 'import distutils.sysconfig; \
--        print distutils.sysconfig.get_config_var("LDFLAGS")'`"
-+        print(distutils.sysconfig.get_config_var("LDFLAGS"))'`"
- ], [
-     dnl If python-config is found use it
-     CPPFLAGS="$CFLAGS `$PYTHON-config --cflags`"
-@@ -30,9 +30,6 @@ AS_IF([test x"$pyconfig" = x"no"], [
- 
- AC_CHECK_HEADER([Python.h], [],
-     [AC_MSG_ERROR([Unable to find Python development headers])],)
--AC_CHECK_LIB(python$ac_python_version, PyArg_ParseTuple, [],
--    [AC_MSG_ERROR([Unable to find a suitable python development library])],
--    [$PYTHON_LIBS])
- CPPFLAGS=$ac_previous_cppflags
- LDFLAGS=$ac_previous_ldflags
- ])
-Index: xen-4.12.0-testing/tools/libxl/idl.py
-===================================================================
---- xen-4.12.0-testing.orig/tools/libxl/idl.py
-+++ xen-4.12.0-testing/tools/libxl/idl.py
-@@ -11,7 +11,7 @@ DIR_BOTH = 3
- _default_namespace = ""
- def namespace(s):
-     if type(s) != str:
--        raise TypeError, "Require a string for the default namespace."
-+        raise TypeError("Require a string for the default namespace.")
-     global _default_namespace
-     _default_namespace = s
- 
-@@ -269,7 +269,7 @@ class KeyedUnion(Aggregate):
+--- xen-4.13.0-testing.orig/tools/libxl/idl.py
++++ xen-4.13.0-testing/tools/libxl/idl.py
+@@ -271,7 +271,7 @@ class KeyedUnion(Aggregate):
          if not isinstance(keyvar_type, Enumeration):
              raise ValueError
  
@@ -497,7 +397,7 @@ Index: xen-4.12.0-testing/tools/libxl/idl.py
          
          self.keyvar = Field(keyvar_type, keyvar_name, **kv_kwargs)
  
-@@ -315,7 +315,7 @@ class Array(Type):
+@@ -317,7 +317,7 @@ class Array(Type):
          kwargs.setdefault('json_parse_type', 'JSON_ARRAY')
          Type.__init__(self, namespace=elem_type.namespace, typename=elem_type.rawname + " *", **kwargs)
  
@@ -506,13 +406,7 @@ Index: xen-4.12.0-testing/tools/libxl/idl.py
  
          self.lenvar = Field(integer, lenvar_name, **lv_kwargs)
          self.elem_type = elem_type
-@@ -346,12 +346,12 @@ class OrderedDict(dict):
-         return [(x,self[x]) for x in self.__ordered]
- 
- def parse(f):
--    print >>sys.stderr, "Parsing %s" % f
-+    print("Parsing %s" % f, file=sys.stderr)
- 
+@@ -353,7 +353,7 @@ def parse(f):
      globs = {}
      locs = OrderedDict()
  
@@ -521,147 +415,31 @@ Index: xen-4.12.0-testing/tools/libxl/idl.py
          if isinstance(t, Type):
              globs[n] = t
          elif isinstance(t,type(object)) and issubclass(t, Type):
-@@ -362,11 +362,10 @@ def parse(f):
-             globs[n] = t
- 
-     try:
--        execfile(f, globs, locs)
--    except SyntaxError,e:
--        raise SyntaxError, \
--              "Errors were found at line %d while processing %s:\n\t%s"\
--              %(e.lineno,f,e.text)
-+        exec(compile(open(f).read(), f, 'exec'), globs, locs)
-+    except SyntaxError as e:
-+        raise SyntaxError("Errors were found at line %d while processing %s:\n\t%s"\
-+              %(e.lineno,f,e.text))
- 
-     types = [t for t in locs.ordered_values() if isinstance(t,Type)]
- 
-Index: xen-4.12.0-testing/tools/libxl/gentest.py
+Index: xen-4.13.0-testing/tools/libxl/gentest.py
 ===================================================================
---- xen-4.12.0-testing.orig/tools/libxl/gentest.py
-+++ xen-4.12.0-testing/tools/libxl/gentest.py
+--- xen-4.13.0-testing.orig/tools/libxl/gentest.py
++++ xen-4.13.0-testing/tools/libxl/gentest.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/python
 +#!/usr/bin/python3
  
- import os
- import sys
-@@ -86,7 +86,7 @@ def gen_rand_init(ty, v, indent = "    "
+ from __future__ import print_function
  
- if __name__ == '__main__':
-     if len(sys.argv) < 3:
--        print >>sys.stderr, "Usage: gentest.py <idl> <implementation>"
-+        print("Usage: gentest.py <idl> <implementation>", file=sys.stderr)
-         sys.exit(1)
- 
-     random.seed(os.getenv('LIBXL_TESTIDL_SEED'))
-Index: xen-4.12.0-testing/tools/libxl/gentypes.py
+Index: xen-4.13.0-testing/tools/libxl/gentypes.py
 ===================================================================
---- xen-4.12.0-testing.orig/tools/libxl/gentypes.py
-+++ xen-4.12.0-testing/tools/libxl/gentypes.py
+--- xen-4.13.0-testing.orig/tools/libxl/gentypes.py
++++ xen-4.13.0-testing/tools/libxl/gentypes.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/python
 +#!/usr/bin/python3
  
- import sys
- import re
-@@ -576,14 +576,14 @@ def libxl_C_enum_from_string(ty, str, e,
+ from __future__ import print_function
  
- if __name__ == '__main__':
-     if len(sys.argv) != 6:
--        print >>sys.stderr, "Usage: gentypes.py <idl> <header> <header-private> <header-json> <implementation>"
-+        print("Usage: gentypes.py <idl> <header> <header-private> <header-json> <implementation>", file=sys.stderr)
-         sys.exit(1)
- 
-     (_, idlname, header, header_private, header_json, impl) = sys.argv
- 
-     (builtins,types) = idl.parse(idlname)
- 
--    print "outputting libxl type definitions to %s" % header
-+    print("outputting libxl type definitions to %s" % header)
- 
-     f = open(header, "w")
- 
-@@ -633,7 +633,7 @@ if __name__ == '__main__':
-     f.write("""#endif /* %s */\n""" % (header_define))
-     f.close()
- 
--    print "outputting libxl JSON definitions to %s" % header_json
-+    print("outputting libxl JSON definitions to %s" % header_json)
- 
-     f = open(header_json, "w")
- 
-@@ -657,7 +657,7 @@ if __name__ == '__main__':
-     f.write("""#endif /* %s */\n""" % header_json_define)
-     f.close()
- 
--    print "outputting libxl type internal definitions to %s" % header_private
-+    print("outputting libxl type internal definitions to %s" % header_private)
- 
-     f = open(header_private, "w")
- 
-@@ -683,7 +683,7 @@ if __name__ == '__main__':
-     f.write("""#endif /* %s */\n""" % header_json_define)
-     f.close()
- 
--    print "outputting libxl type implementations to %s" % impl
-+    print("outputting libxl type implementations to %s" % impl)
- 
-     f = open(impl, "w")
-     f.write("""
-Index: xen-4.12.0-testing/tools/ocaml/libs/xl/genwrap.py
+Index: xen-4.13.0-testing/tools/ocaml/libs/xentoollog/genlevels.py
 ===================================================================
---- xen-4.12.0-testing.orig/tools/ocaml/libs/xl/genwrap.py
-+++ xen-4.12.0-testing/tools/ocaml/libs/xl/genwrap.py
-@@ -1,8 +1,9 @@
--#!/usr/bin/python
-+#!/usr/bin/python3
- 
- import sys,os
- 
- import idl
-+from functools import reduce
- 
- # typename -> ( ocaml_type, c_from_ocaml, ocaml_from_c )
- builtins = {
-@@ -78,7 +79,7 @@ def ocaml_type_of(ty):
-     elif isinstance(ty,idl.Array):
-         return "%s array" % ocaml_type_of(ty.elem_type)
-     elif isinstance(ty,idl.Builtin):
--        if not builtins.has_key(ty.typename):
-+        if ty.typename not in builtins:
-             raise NotImplementedError("Unknown Builtin %s (%s)" % (ty.typename, type(ty)))
-         typename,_,_ = builtins[ty.typename]
-         if not typename:
-@@ -251,7 +252,7 @@ def gen_ocaml_ml(ty, interface, indent="
-             else:
-                 s += "\texternal default : ctx -> %sunit -> t = \"stub_libxl_%s_init\"\n" % (union_args, ty.rawname)
- 
--        if functions.has_key(ty.rawname):
-+        if ty.rawname in functions:
-             for name,args in functions[ty.rawname]:
-                 s += "\texternal %s : " % name
-                 s += " -> ".join(args)
-@@ -278,7 +279,7 @@ def c_val(ty, c, o, indent="", parent =
-         else:
-             s += "%s = Int_val(%s);" % (c, o)
-     elif isinstance(ty,idl.Builtin):
--        if not builtins.has_key(ty.typename):
-+        if ty.typename not in builtins:
-             raise NotImplementedError("Unknown Builtin %s (%s)" % (ty.typename, type(ty)))
-         _,fn,_ = builtins[ty.typename]
-         if not fn:
-@@ -375,7 +376,7 @@ def ocaml_Val(ty, o, c, indent="", paren
-         else:
-             s += "%s = Val_int(%s);" % (o, c)
-     elif isinstance(ty,idl.Builtin):
--        if not builtins.has_key(ty.typename):
-+        if ty.typename not in builtins:
-             raise NotImplementedError("Unknown Builtin %s (%s)" % (ty.typename, type(ty)))
-         _,_,fn = builtins[ty.typename]
-         if not fn:
-@@ -513,14 +514,14 @@ def gen_c_defaults(ty):
+--- xen-4.13.0-testing.orig/tools/ocaml/libs/xentoollog/genlevels.py
++++ xen-4.13.0-testing/tools/ocaml/libs/xentoollog/genlevels.py
+@@ -89,7 +89,7 @@ def gen_c(level):
  def autogen_header(open_comment, close_comment):
      s = open_comment + " AUTO-GENERATED FILE DO NOT EDIT " + close_comment + "\n"
      s += open_comment + " autogenerated by \n"
@@ -670,113 +448,37 @@ Index: xen-4.12.0-testing/tools/ocaml/libs/xl/genwrap.py
      s += "%s" % " ".join(sys.argv)
      s += "\n " + close_comment + "\n\n"
      return s
- 
- if __name__ == '__main__':
-     if len(sys.argv) < 4:
--        print >>sys.stderr, "Usage: genwrap.py <idl> <mli> <ml> <c-inc>"
-+        print("Usage: genwrap.py <idl> <mli> <ml> <c-inc>", file=sys.stderr)
-         sys.exit(1)
- 
-     (_,types) = idl.parse(sys.argv[1])
-@@ -533,7 +534,7 @@ if __name__ == '__main__':
- 
-     for t in blacklist:
-         if t not in [ty.rawname for ty in types]:
--            print "unknown type %s in blacklist" % t
-+            print("unknown type %s in blacklist" % t)
- 
-     types = [ty for ty in types if not ty.rawname in blacklist]
- 
-@@ -564,7 +565,7 @@ if __name__ == '__main__':
-             cinc.write("\n")
-         cinc.write(gen_Val_ocaml(ty))
-         cinc.write("\n")
--        if functions.has_key(ty.rawname):
-+        if ty.rawname in functions:
-             cinc.write(gen_c_stub_prototype(ty, functions[ty.rawname]))
-             cinc.write("\n")
-         if ty.init_fn is not None:
-Index: xen-4.12.0-testing/tools/ocaml/libs/xentoollog/genlevels.py
+Index: xen-4.13.0-testing/tools/include/xen-foreign/mkheader.py
 ===================================================================
---- xen-4.12.0-testing.orig/tools/ocaml/libs/xentoollog/genlevels.py
-+++ xen-4.12.0-testing/tools/ocaml/libs/xentoollog/genlevels.py
-@@ -1,6 +1,7 @@
--#!/usr/bin/python
-+#!/usr/bin/python3
- 
- import sys
-+from functools import reduce
- 
- def read_levels():
- 	f = open('../../../libs/toollog/include/xentoollog.h', 'r')
-@@ -86,14 +87,14 @@ def gen_c(level):
- def autogen_header(open_comment, close_comment):
-     s = open_comment + " AUTO-GENERATED FILE DO NOT EDIT " + close_comment + "\n"
-     s += open_comment + " autogenerated by \n"
--    s += reduce(lambda x,y: x + " ", range(len(open_comment + " ")), "")
-+    s += reduce(lambda x,y: x + " ", list(range(len(open_comment + " "))), "")
-     s += "%s" % " ".join(sys.argv)
-     s += "\n " + close_comment + "\n\n"
-     return s
- 
- if __name__ == '__main__':
- 	if len(sys.argv) < 3:
--		print >>sys.stderr, "Usage: genlevels.py <mli> <ml> <c-inc>"
-+		print("Usage: genlevels.py <mli> <ml> <c-inc>", file=sys.stderr)
- 		sys.exit(1)
- 
- 	levels, olevels = read_levels()
-Index: xen-4.12.0-testing/tools/include/xen-foreign/mkheader.py
-===================================================================
---- xen-4.12.0-testing.orig/tools/include/xen-foreign/mkheader.py
-+++ xen-4.12.0-testing/tools/include/xen-foreign/mkheader.py
+--- xen-4.13.0-testing.orig/tools/include/xen-foreign/mkheader.py
++++ xen-4.13.0-testing/tools/include/xen-foreign/mkheader.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/python
 +#!/usr/bin/python3
  
  import sys, re;
  from structs import unions, structs, defines;
-@@ -205,8 +205,8 @@ for struct in structs:
-     output = re.sub("\\b(%s)_t\\b" % struct, "\\1_%s_t" % arch, output);
- 
- # replace: integer types
--integers = inttypes[arch].keys();
--integers.sort(lambda a, b: cmp(len(b),len(a)));
-+integers = list(inttypes[arch].keys());
-+integers.sort(key = len, reverse=True)
- for type in integers:
-     output = re.sub("\\b%s\\b" % type, inttypes[arch][type], output);
- 
-Index: xen-4.12.0-testing/tools/include/xen-foreign/mkchecker.py
+Index: xen-4.13.0-testing/tools/include/xen-foreign/mkchecker.py
 ===================================================================
---- xen-4.12.0-testing.orig/tools/include/xen-foreign/mkchecker.py
-+++ xen-4.12.0-testing/tools/include/xen-foreign/mkchecker.py
+--- xen-4.13.0-testing.orig/tools/include/xen-foreign/mkchecker.py
++++ xen-4.13.0-testing/tools/include/xen-foreign/mkchecker.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/python
 +#!/usr/bin/python3
  
  import sys;
  from structs import structs, compat_arches;
-@@ -37,7 +37,7 @@ for struct in structs:
-     f.write('\tprintf("%%-25s |", "%s");\n' % struct);
-     for a in archs:
-         s = struct + "_" + a;
--        if compat_arches.has_key(a):
-+        if a in compat_arches:
-             compat = compat_arches[a]
-             c = struct + "_" + compat;
-         else:
-Index: xen-4.12.0-testing/xen/tools/gen-cpuid.py
+Index: xen-4.13.0-testing/xen/tools/gen-cpuid.py
 ===================================================================
---- xen-4.12.0-testing.orig/xen/tools/gen-cpuid.py
-+++ xen-4.12.0-testing/xen/tools/gen-cpuid.py
+--- xen-4.13.0-testing.orig/xen/tools/gen-cpuid.py
++++ xen-4.13.0-testing/xen/tools/gen-cpuid.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3
  # -*- coding: utf-8 -*-
  
  import sys, os, re
-@@ -133,7 +133,7 @@ def crunch_numbers(state):
+@@ -135,7 +135,7 @@ def crunch_numbers(state):
      common_1d = (FPU, VME, DE, PSE, TSC, MSR, PAE, MCE, CX8, APIC,
                   MTRR, PGE, MCA, CMOV, PAT, PSE36, MMX, FXSR)
  
@@ -785,7 +487,7 @@ Index: xen-4.12.0-testing/xen/tools/gen-cpuid.py
      state.common_1d = featureset_to_uint32s(common_1d, 1)[0]
      state.special = featureset_to_uint32s(state.raw_special, nr_entries)
      state.pv = featureset_to_uint32s(state.raw_pv, nr_entries)
-@@ -308,11 +308,11 @@ def crunch_numbers(state):
+@@ -316,11 +316,11 @@ def crunch_numbers(state):
  
          state.deep_deps[feat] = seen[1:]
  
@@ -800,7 +502,7 @@ Index: xen-4.12.0-testing/xen/tools/gen-cpuid.py
      except AttributeError:
          _tmp = state.deep_deps.items()
  
-@@ -320,10 +320,10 @@ def crunch_numbers(state):
+@@ -328,10 +328,10 @@ def crunch_numbers(state):
          state.deep_deps[k] = featureset_to_uint32s(v, nr_entries)
  
      # Calculate the bitfield name declarations
@@ -813,50 +515,50 @@ Index: xen-4.12.0-testing/xen/tools/gen-cpuid.py
  
              name = state.names.get(word * 32 + bit, "")
  
-Index: xen-4.12.0-testing/xen/tools/compat-build-source.py
+Index: xen-4.13.0-testing/xen/tools/compat-build-source.py
 ===================================================================
---- xen-4.12.0-testing.orig/xen/tools/compat-build-source.py
-+++ xen-4.12.0-testing/xen/tools/compat-build-source.py
+--- xen-4.13.0-testing.orig/xen/tools/compat-build-source.py
++++ xen-4.13.0-testing/xen/tools/compat-build-source.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3
  
  import re,sys
  
-Index: xen-4.12.0-testing/xen/tools/compat-build-header.py
+Index: xen-4.13.0-testing/xen/tools/compat-build-header.py
 ===================================================================
---- xen-4.12.0-testing.orig/xen/tools/compat-build-header.py
-+++ xen-4.12.0-testing/xen/tools/compat-build-header.py
+--- xen-4.13.0-testing.orig/xen/tools/compat-build-header.py
++++ xen-4.13.0-testing/xen/tools/compat-build-header.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3
  
  import re,sys
  
-Index: xen-4.12.0-testing/xen/xsm/flask/gen-policy.py
+Index: xen-4.13.0-testing/xen/xsm/flask/gen-policy.py
 ===================================================================
---- xen-4.12.0-testing.orig/xen/xsm/flask/gen-policy.py
-+++ xen-4.12.0-testing/xen/xsm/flask/gen-policy.py
+--- xen-4.13.0-testing.orig/xen/xsm/flask/gen-policy.py
++++ xen-4.13.0-testing/xen/xsm/flask/gen-policy.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3
  import sys
  
  policy_size = 0
-Index: xen-4.12.0-testing/xen/tools/fig-to-oct.py
+Index: xen-4.13.0-testing/xen/tools/fig-to-oct.py
 ===================================================================
---- xen-4.12.0-testing.orig/xen/tools/fig-to-oct.py
-+++ xen-4.12.0-testing/xen/tools/fig-to-oct.py
+--- xen-4.13.0-testing.orig/xen/tools/fig-to-oct.py
++++ xen-4.13.0-testing/xen/tools/fig-to-oct.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3
  import sys
  
  chars_per_line = 18
-Index: xen-4.12.0-testing/tools/misc/xensymoops
+Index: xen-4.13.0-testing/tools/misc/xensymoops
 ===================================================================
---- xen-4.12.0-testing.orig/tools/misc/xensymoops
-+++ xen-4.12.0-testing/tools/misc/xensymoops
+--- xen-4.13.0-testing.orig/tools/misc/xensymoops
++++ xen-4.13.0-testing/tools/misc/xensymoops
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3

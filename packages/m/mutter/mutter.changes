@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 17 08:03:06 UTC 2019 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Rebase patches:
+  + Update mutter-SLE-bell.patch
+  + Disable mutter-SLE-bsc984738-grab-display.patch
+
+-------------------------------------------------------------------
 Sun Oct 13 17:58:09 UTC 2019 - bjorn.lie@gmail.com
 
 - Update to version 3.34.1+21:

@@ -1,7 +1,7 @@
 #
 # spec file for package sddm
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -127,6 +127,11 @@ This package provides upstream branding for SDDM.
 %autosetup -p1
 
 %build
+LOGIN_DEFS_PATH="%{_sysconfdir}/login.defs"
+if test \( -n "%{?_distconfdir}" -a -e "%{_distconfdir}/login.defs" \); then
+  LOGIN_DEFS_PATH="%{_distconfdir}/login.defs"
+fi
+
 %cmake \
       -DCMAKE_BUILD_TYPE=Release \
       -DMINIMUM_VT=7 \
@@ -136,7 +141,8 @@ This package provides upstream branding for SDDM.
       -DBUILD_MAN_PAGES=ON \
       -DSTATE_DIR="%{_localstatedir}/lib/sddm" \
       -DRUNTIME_DIR="/run/sddm" \
-      -DPID_FILE="/run/sddm.pid"
+      -DPID_FILE="/run/sddm.pid" \
+      -DLOGIN_DEFS_PATH:path="${LOGIN_DEFS_PATH}"
   %make_jobs
 
 %install

@@ -17,7 +17,7 @@
 
 
 Name:           container-registry-systemd
-Version:        0.0+git20191017.60afa44
+Version:        0.0+git20191022.f65282e
 Release:        0
 Summary:        Systemd service files and config files for container-registry
 License:        GPL-3.0-or-later

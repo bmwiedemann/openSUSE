@@ -10,11 +10,11 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  xen/include/public/arch-arm.h | 14 +++++++-------
  1 file changed, 7 insertions(+), 7 deletions(-)
 
-Index: xen-4.10.0-testing/xen/include/public/arch-arm.h
+Index: xen-4.13.0-testing/xen/include/public/arch-arm.h
 ===================================================================
---- xen-4.10.0-testing.orig/xen/include/public/arch-arm.h
-+++ xen-4.10.0-testing/xen/include/public/arch-arm.h
-@@ -363,13 +363,13 @@ typedef uint64_t xen_callback_t;
+--- xen-4.13.0-testing.orig/xen/include/public/arch-arm.h
++++ xen-4.13.0-testing/xen/include/public/arch-arm.h
+@@ -371,13 +371,13 @@ typedef uint64_t xen_callback_t;
  
  /* 64 bit modes */
  #define PSR_MODE_BIT  0x10 /* Set iff AArch32 */

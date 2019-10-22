@@ -1,7 +1,7 @@
-Index: gnome-shell-extensions-3.34.0/extensions/window-list/extension.js
+Index: gnome-shell-extensions-3.34.1/extensions/window-list/extension.js
 ===================================================================
---- gnome-shell-extensions-3.34.0.orig/extensions/window-list/extension.js
-+++ gnome-shell-extensions-3.34.0/extensions/window-list/extension.js
+--- gnome-shell-extensions-3.34.1.orig/extensions/window-list/extension.js
++++ gnome-shell-extensions-3.34.1/extensions/window-list/extension.js
 @@ -23,6 +23,9 @@ const GroupingMode = {
      ALWAYS: 2,
  };
@@ -82,10 +82,10 @@ Index: gnome-shell-extensions-3.34.0/extensions/window-list/extension.js
          Main.overview.hide = this._hideOverviewOrig;
      }
  
-Index: gnome-shell-extensions-3.34.0/extensions/window-list/sle-classic.css
+Index: gnome-shell-extensions-3.34.1/extensions/window-list/sle-classic.css
 ===================================================================
 --- /dev/null
-+++ gnome-shell-extensions-3.34.0/extensions/window-list/sle-classic.css
++++ gnome-shell-extensions-3.34.1/extensions/window-list/sle-classic.css
 @@ -0,0 +1,46 @@
 +@import url("stylesheet.css");
 +
@@ -133,10 +133,10 @@ Index: gnome-shell-extensions-3.34.0/extensions/window-list/sle-classic.css
 +    color: #888;
 +    box-shadow: inset -1px -1px 1px rgba(0,0,0,0.5);
 +  }
-Index: gnome-shell-extensions-3.34.0/extensions/places-menu/extension.js
+Index: gnome-shell-extensions-3.34.1/extensions/places-menu/extension.js
 ===================================================================
---- gnome-shell-extensions-3.34.0.orig/extensions/places-menu/extension.js
-+++ gnome-shell-extensions-3.34.0/extensions/places-menu/extension.js
+--- gnome-shell-extensions-3.34.1.orig/extensions/places-menu/extension.js
++++ gnome-shell-extensions-3.34.1/extensions/places-menu/extension.js
 @@ -133,13 +133,21 @@ function init() {
  
  let _indicator;
@@ -160,10 +160,10 @@ Index: gnome-shell-extensions-3.34.0/extensions/places-menu/extension.js
  }
  
  function disable() {
-Index: gnome-shell-extensions-3.34.0/extensions/apps-menu/extension.js
+Index: gnome-shell-extensions-3.34.1/extensions/apps-menu/extension.js
 ===================================================================
---- gnome-shell-extensions-3.34.0.orig/extensions/apps-menu/extension.js
-+++ gnome-shell-extensions-3.34.0/extensions/apps-menu/extension.js
+--- gnome-shell-extensions-3.34.1.orig/extensions/apps-menu/extension.js
++++ gnome-shell-extensions-3.34.1/extensions/apps-menu/extension.js
 @@ -27,6 +27,10 @@ const NAVIGATION_REGION_OVERSHOOT = 50;
  Gio._promisify(Gio._LocalFilePrototype, 'query_info_async', 'query_info_finish');
  Gio._promisify(Gio._LocalFilePrototype, 'set_attributes_async', 'set_attributes_finish');
@@ -214,10 +214,23 @@ Index: gnome-shell-extensions-3.34.0/extensions/apps-menu/extension.js
  }
  
  function disable() {
-Index: gnome-shell-extensions-3.34.0/data/gnome-classic.scss
+Index: gnome-shell-extensions-3.34.1/data/gnome-classic.scss
 ===================================================================
---- gnome-shell-extensions-3.34.0.orig/data/gnome-classic.scss
-+++ gnome-shell-extensions-3.34.0/data/gnome-classic.scss
+--- gnome-shell-extensions-3.34.1.orig/data/gnome-classic.scss
++++ gnome-shell-extensions-3.34.1/data/gnome-classic.scss
+@@ -62,9 +62,9 @@ $variant: 'light';
+   &.lock-screen,
+   &.unlock-screen, 
+   &.login-screen { 
+-    background-color: transparentize($bg_color, 0.5);
+-    background-gradient-start: transparentize($bg_color, 0.5);
+-    background-gradient-end: transparentize($bg_color, 0.5);
++    background-color: transparent;
++    background-gradient-direction: none;
++    background-gradient-end: none;
+     border-bottom: none;
+     .panel-button { color: $osd_fg_color; }
+   }
 @@ -93,3 +93,5 @@ $variant: 'light';
    background-image: url("calendar-today.svg");
  }

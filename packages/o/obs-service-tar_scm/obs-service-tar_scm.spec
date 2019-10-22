@@ -22,7 +22,7 @@
 %bcond_with    obs_scm_testsuite
 %endif
 
-%if 0%{?suse_version} >= 1315 || 0%{?fedora_version} >= 29
+%if 0%{?suse_version} >= 1315 || 0%{?fedora_version} >= 29 || 0%{?rhel_version} >= 800 || 0%{?centos_version} >= 800 || 0%{?rhel} >= 8
 %bcond_without python3
 %else
 %bcond_with    python3
@@ -53,14 +53,14 @@
 %endif
 %endif
 
-%if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version} || 0%{?scientificlinux_version}
-%if 0%{?fedora_version} >= 29 || 0%{?rhel_version} >= 800 || 0%{?centos_version} >= 800
+%if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version} || 0%{?scientificlinux_version} || 0%{?rhel}
+%if 0%{?fedora_version} >= 29 || 0%{?rhel_version} >= 800 || 0%{?centos_version} >= 800 || 0%{?rhel} >= 8
 %define pyyaml_package %{use_python}-PyYAML
 %else
 %define pyyaml_package PyYAML
 %endif
 
-%if 0%{?fedora_version} >= 24 || 0%{?rhel_version} >= 800 || 0%{?centos_version} >= 800
+%if 0%{?fedora_version} >= 24 || 0%{?rhel_version} >= 800 || 0%{?centos_version} >= 800 || 0%{?rhel} >= 8
 %define locale_package glibc-langpack-en
 %else
 %define locale_package glibc-common

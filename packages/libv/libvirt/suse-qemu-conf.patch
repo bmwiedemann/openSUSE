@@ -7,10 +7,10 @@ suse-qemu-conf-secdriver.patch, suse-qemu-conf-lockmgr.patch,
 etc.), but for now they are all lumped together in this
 single patch.
 
-Index: libvirt-5.7.0/src/qemu/qemu.conf
+Index: libvirt-5.8.0/src/qemu/qemu.conf
 ===================================================================
---- libvirt-5.7.0.orig/src/qemu/qemu.conf
-+++ libvirt-5.7.0/src/qemu/qemu.conf
+--- libvirt-5.8.0.orig/src/qemu/qemu.conf
++++ libvirt-5.8.0/src/qemu/qemu.conf
 @@ -420,10 +420,19 @@
  # isolation, but it cannot appear in a list of drivers.
  #
@@ -60,11 +60,11 @@ Index: libvirt-5.7.0/src/qemu/qemu.conf
  #
  #lock_manager = "lockd"
  
-Index: libvirt-5.7.0/src/qemu/qemu_conf.c
+Index: libvirt-5.8.0/src/qemu/qemu_conf.c
 ===================================================================
---- libvirt-5.7.0.orig/src/qemu/qemu_conf.c
-+++ libvirt-5.7.0/src/qemu/qemu_conf.c
-@@ -287,7 +287,7 @@ virQEMUDriverConfigPtr virQEMUDriverConf
+--- libvirt-5.8.0.orig/src/qemu/qemu_conf.c
++++ libvirt-5.8.0/src/qemu/qemu_conf.c
+@@ -278,7 +278,7 @@ virQEMUDriverConfigPtr virQEMUDriverConf
  
      cfg->clearEmulatorCapabilities = true;
  

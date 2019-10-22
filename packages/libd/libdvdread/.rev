@@ -253,4 +253,12 @@
 - Point URL to videolan.org</comment>
     <requestid>723233</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>0dc03576338d37d7fa2ab3845d5c670b</srcmd5>
+    <version>6.0.2</version>
+    <time>1571751540</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>740894</requestid>
+  </revision>
 </revisionlist>

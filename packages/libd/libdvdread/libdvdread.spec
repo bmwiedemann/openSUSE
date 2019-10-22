@@ -17,14 +17,14 @@
 
 
 Name:           libdvdread
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 Summary:        Library for Reading DVD Video Images
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://www.videolan.org/developers/libdvdnav.html
 Source0:        http://download.videolan.org/videolan/%{name}/%{version}/%{name}-%{version}.tar.bz2
-Source1:        http://download.videolan.org/videolan/%{name}/%{version}/%{name}-%{version}.tar.bz2.asc
+#Source1:        http://download.videolan.org/videolan/%{name}/%{version}/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
 BuildRequires:  autoconf
@@ -37,13 +37,13 @@ BuildRequires:  pkgconfig(openssl)
 This package contains shared libraries for accessing DVD images (this
 package does not contain DeCSS algorithms).
 
-%package -n libdvdread4
+%package -n libdvdread7
 Summary:        Library for Reading DVD Video Images
 Group:          Productivity/Multimedia/Other
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} <= 0.9.7
 
-%description -n libdvdread4
+%description -n libdvdread7
 This package contains shared libraries for accessing DVD images (this
 package does not contain DeCSS algorithms).
 
@@ -51,7 +51,7 @@ package does not contain DeCSS algorithms).
 Summary:        Development Environment for libdvdread
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
-Requires:       libdvdread4 = %{version}
+Requires:       libdvdread7 = %{version}
 
 %description devel
 This package contains the include-files and static libraries for
@@ -73,14 +73,14 @@ find %{buildroot} -type f -name "*.la" -delete -print
 # We install the files on our own, using %%doc
 rm -rf %{buildroot}%{_datadir}/doc/libdvdread/
 
-%post   -n libdvdread4 -p /sbin/ldconfig
-%postun -n libdvdread4 -p /sbin/ldconfig
+%post   -n libdvdread7 -p /sbin/ldconfig
+%postun -n libdvdread7 -p /sbin/ldconfig
 
-%files -n libdvdread4
+%files -n libdvdread7
 %license COPYING
 %doc AUTHORS NEWS README
-%{_libdir}/libdvdread.so.4
-%{_libdir}/libdvdread.so.4.*
+%{_libdir}/libdvdread.so.7
+%{_libdir}/libdvdread.so.7.*
 
 %files devel
 %{_includedir}/dvdread

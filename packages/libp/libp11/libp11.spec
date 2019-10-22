@@ -25,7 +25,7 @@
 %define libname libp11-3
 %endif
 Name:           libp11
-Version:        0.4.9
+Version:        0.4.10
 Release:        0
 Summary:        Library Implementing a Small Layer on Top of PKCS#11 API
 License:        LGPL-2.1-or-later

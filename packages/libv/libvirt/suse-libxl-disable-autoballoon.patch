@@ -6,10 +6,10 @@ autoballooning. This patch changes libvirt to also disable autoballooning
 by default. It can only be enabled with the 'autoballoon' setting in
 libxl.conf. See jsc#SLE-3059 for more details.
 
-Index: libvirt-5.7.0/src/libxl/libxl.conf
+Index: libvirt-5.8.0/src/libxl/libxl.conf
 ===================================================================
---- libvirt-5.7.0.orig/src/libxl/libxl.conf
-+++ libvirt-5.7.0/src/libxl/libxl.conf
+--- libvirt-5.8.0.orig/src/libxl/libxl.conf
++++ libvirt-5.8.0/src/libxl/libxl.conf
 @@ -4,12 +4,11 @@
  
  # Enable autoballooning of domain0
@@ -27,10 +27,10 @@ Index: libvirt-5.7.0/src/libxl/libxl.conf
  
  
  # In order to prevent accidentally starting two domains that
-Index: libvirt-5.7.0/src/libxl/libxl_conf.c
+Index: libvirt-5.8.0/src/libxl/libxl_conf.c
 ===================================================================
---- libvirt-5.7.0.orig/src/libxl/libxl_conf.c
-+++ libvirt-5.7.0/src/libxl/libxl_conf.c
+--- libvirt-5.8.0.orig/src/libxl/libxl_conf.c
++++ libvirt-5.8.0/src/libxl/libxl_conf.c
 @@ -22,7 +22,6 @@
  
  #include <config.h>

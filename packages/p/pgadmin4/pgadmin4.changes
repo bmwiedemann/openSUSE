@@ -1,4 +1,123 @@
 -------------------------------------------------------------------
+Mon Oct 21 15:38:51 UTC 2019 - ecsos@opensuse.org
+
+- Update to 4.14
+  - New features
+    * Added Copy with headers functionality when copy data from 
+      Query Tool/View Data.
+    * Implemeted the Query Plan Analyser.
+    * Include PostgreSQL 12 binaries in the container.
+  - Housekeeping
+    * Add Reverse Engineered and Modified SQL tests for Synonyms.
+    * Add Reverse Engineered and Modified SQL tests for Unique 
+      Constraints.
+- Optimize Webpack to improve overall performance.
+  - Bug fixes
+    * Ensure backup a partition table should not backup the whole 
+      database.
+    * Ensure that ‘ENTER’ key in the data filter should not run the
+      query.
+    * Fix issue where backup fails for schema name that needs 
+      quoting.
+    * Highlighted the color of closing or opening parenthesis when
+      user select them in CodeMirror.
+    * Fix issue where export job fails when deselecting all the 
+      columns.
+    * Fix an error where ‘false’ string is displayed when we add 
+      a new parameter in the Parameters tab, also clear the old 
+      value when the user changes the parameter name.
+    * Ensure that pgAdmin should work behind reverse proxy if the 
+      inbuilt server is used as it is.
+    * Fix issue where pgAdmin does not load completely if loaded in
+      an iframe.
+    * Ensure the search path should not be quoted for Database.
+    * Ensure pgAdmin should work behind reverse proxy on a non
+      standard port.
+    * Fix query tool open issue on Internet Explorer.
+    * Fix issue where query history is not visible in the query
+      history tab.
+    * Ensure the search path should not be quoted for Function, 
+      Procedure and Trigger Function.
+    * Fix issue where VALID foreign keys show as NOT VALID in the 
+      SQL tab for tables.
+    * Ensure the MAC OSX app should be notarized for Catalina.
+
+- Changes from 4.13
+  - New features
+    * Added Gather Merge, Named Tuple Store Scan and Table Function
+      Scan icon for explain module.
+    * Don’t wait for the database connection before rendering the 
+      Query Tool UI, for improved UX.
+    * Allow configuration options to be set from the environment in
+      the container distribution.
+    * Ensure editable and read-only columns in Query Tool should be
+      identified by icons and tooltips in the column header.
+    * Add an Italian translation.
+    * Refactor Dockerfile to avoid needing to run supporting
+      scripts (i.e. ‘docker build .’ will work) and minimise layers.
+  - Housekeeping
+    * Add Reverse Engineered SQL tests for Schemas.
+    * Add Reverse Engineered SQL tests for Views.
+    * Add Reverse Engineered SQL tests for Rules.
+    * Add Reverse Engineered and Modified SQL tests for Foreign Keys.
+    * Add Reverse Engineered and Modified SQL tests for Foreign Servers.
+    * Add Reverse Engineered and Modified SQL tests for Foreign Tables.
+    * Add Reverse Engineered and Modified SQL tests for FTS Templates.
+    * Add Reverse Engineered and Modified SQL tests for Indexes.
+    * Add Reverse Engineered and Modified SQL tests for Primary Keys.
+    * Add Reverse Engineered and Modified SQL tests for User Mappings.
+    * Add Modified SQL tests for Resource Group.
+  - Bug fixes
+    * Added ProjectSet icon for explain module.
+    * Ensure Boolean columns should be editable using keyboard keys.
+    * Further code refactoring to stabilise the Feature Tests.
+    * Fix an issue where oid column should not be pasted when 
+      copy/paste row is used on query output containing the oid 
+      column.
+    * Fix display of validation error message in SlickGrid cells.
+    * Fix issue where Validated switch option is inverted for the 
+      Foreign Key.
+    * Fix a debugger error when using Python 2.7.
+    * Fix error while importing data to a table using Import/Export
+      dialog and providing “Not null columns” option.
+    * Ensure View should be created with special characters.
+    * Ensure Boolean columns should be editable in View/Edit data 
+      and Query Tool.
+    * Fix an error that could be seen when click on any system 
+      column of a table.
+    * Unescape HTML entities in database names in the Query Tool
+      title bar.
+    * Add editor options for plain text mode and to disable block 
+      folding to workaround rendering speed issues in CodeMirror 
+      with very large scripts.
+    * Ensure port and username should not be mandatory when 
+      a service is provided.
+    * Fix Truncate option deselect issue for compound triggers.
+    * Fix length and precision enable/disable issue when changing 
+      the data type for Domain node.
+    * Fix SQL tab issue for Views. It’s a regression of compound
+      triggers.
+    * Fix PGADMIN_SERVER_JSON_FILE environment variable support in
+      the container.
+    * Fix exception in query history for python 2.7.
+    * Fix query tool launch error if user name contain html
+      characters.
+    * Increase cache control max age for static files to improve 
+      performance over longer run.
+    * Fix SQL issue of length and precision when changing the data
+      type of Column.
+    * Fix modified SQL for Index when reset the value of Fill 
+      factor and Clustered?.
+    * Fix reversed engineered SQL for btree Index when provided 
+      sort order and NULLs.
+    * Ensure sequence with negative value should be created.
+    * Fix issue where EXEC script doesn’t write the complete script
+      for Procedures.
+    * Fix query tool and view data issue with the Italian language.
+    * Ensure Primary Key should be created with Index.
+    * Fix query history exception for Python 3.6.
+
+-------------------------------------------------------------------
 Sat Sep  7 09:14:37 UTC 2019 - ecsos@opensuse.org
 
 - Update to 4.12

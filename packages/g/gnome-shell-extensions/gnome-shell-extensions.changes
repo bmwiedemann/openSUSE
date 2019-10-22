@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 17 07:44:40 UTC 2019 - Xiaoguang Wang <xwang@suse.com>
+
+- Update gse-sle-classic-ext.patch: Change panel background color
+  to transparent on lock screen and unlock screen.
+
+-------------------------------------------------------------------
 Wed Oct  9 10:32:09 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.1:

@@ -3384,4 +3384,12 @@ py2 vs py3 crap. I just want to use python!
     suse-libvirtd-service-xen.patch</comment>
     <requestid>728994</requestid>
   </revision>
+  <revision rev="290" vrev="1">
+    <srcmd5>e539056858504dad6278887e36b12b8a</srcmd5>
+    <version>5.8.0</version>
+    <time>1571751491</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>737172</requestid>
+  </revision>
 </revisionlist>

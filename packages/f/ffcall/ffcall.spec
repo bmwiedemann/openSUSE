@@ -83,7 +83,7 @@ fi
 find . -name \*.o | xargs rm -f
 
 %build
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+%global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 export CFLAGS="%{optflags} -g -fPIC -fno-strict-aliasing"
 export STRIP=true STRIPPROG=true
 %configure --disable-rpath --with-gnu-ld --enable-thread=posix

@@ -1084,4 +1084,12 @@
 </comment>
     <requestid>738929</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>2da345a93c1a127825f6a65bc345c343</srcmd5>
+    <version>2019.10.22</version>
+    <time>1571751902</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2019.10.22</comment>
+    <requestid>741613</requestid>
+  </revision>
 </revisionlist>

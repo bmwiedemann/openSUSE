@@ -189,6 +189,62 @@
            <!-- Create no product media, but a flavor release subpackage -->
     </media>
 
+    <media type="image"
+           flavor="appliance-docker" 
+           mediastyle="suse-tumbleweed"
+           name="openSUSE-Tumbleweed-appliance-docker" >
+       <!-- Create no product media, but a flavor release subpackage -->
+    </media>
+
+    <media type="image"
+           flavor="appliance-kvm" 
+           mediastyle="suse-tumbleweed"
+           name="openSUSE-Tumbleweed-appliance-kvm" >
+       <!-- Create no product media, but a flavor release subpackage -->
+    </media>
+
+    <media type="image"
+           flavor="appliance-vmware" 
+           mediastyle="suse-tumbleweed"
+           name="openSUSE-Tumbleweed-appliance-vmware" >
+       <!-- Create no product media, but a flavor release subpackage -->
+    </media>
+
+    <media type="image"
+           flavor="appliance-openstack" 
+           mediastyle="suse-tumbleweed"
+           name="openSUSE-Tumbleweed-appliance-openstack" >
+       <!-- Create no product media, but a flavor release subpackage -->
+    </media>
+
+    <media type="image"
+           flavor="appliance-hyperv" 
+           mediastyle="suse-tumbleweed"
+           name="openSUSE-Tumbleweed-appliance-hyperv" >
+       <!-- Create no product media, but a flavor release subpackage -->
+    </media>
+
+    <media type="image"
+           flavor="appliance-vagrant" 
+           mediastyle="suse-tumbleweed"
+           name="openSUSE-Tumbleweed-appliance-vagrant" >
+       <!-- Create no product media, but a flavor release subpackage -->
+    </media>
+
+    <media type="image"
+           flavor="appliance-wsl" 
+           mediastyle="suse-tumbleweed"
+           name="openSUSE-Tumbleweed-appliance-wsl" >
+       <!-- Create no product media, but a flavor release subpackage -->
+    </media>
+
+    <media type="image"
+           flavor="appliance-custom" 
+           mediastyle="suse-tumbleweed"
+           name="openSUSE-Tumbleweed-appliance-custom" >
+       <!-- Create no product media, but a flavor release subpackage -->
+    </media>
+
   </mediasets>
 
   <xi:include href="NON_FTP_PACKAGES.group"/>

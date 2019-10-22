@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 17 21:13:24 UTC 2019 - Jimmy Berry <jberry@suse.com>
+
+- Update to 0.13.0
+  - Remove an old deprecation warning (behavior itself already
+    changed since a long time).
+  - The AIOHTTP integration now attaches the request body to crash
+    reports. Thanks to Vitali Rebkavets!
+  - Add an experimental PySpark integration.
+  - First release to be tested under Python 3.8. No code changes
+    were necessary though, so previous releases also might have
+    worked.
+
+-------------------------------------------------------------------
 Wed Oct  2 20:34:44 UTC 2019 - Jimmy Berry <jberry@suse.com>
 
 - Update to 0.12.3

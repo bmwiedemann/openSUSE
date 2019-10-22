@@ -43,5 +43,5 @@ cp -av \\\
        smoketests static test tests tools tox.ini \\\
    %{buildroot}/%{openstack_test_package_dir} || : \
 rm -rf %{buildroot}/%{openstack_test_package_dir}/%1 \
-ln -s %{python2_sitelib}/%1 %{buildroot}/%{openstack_test_package_dir}/%1 \
+ln -s %{python3_sitelib}/%1 %{buildroot}/%{openstack_test_package_dir}/%1 \
 %nil

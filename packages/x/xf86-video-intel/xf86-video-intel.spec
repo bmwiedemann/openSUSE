@@ -18,6 +18,7 @@
 
 %bcond_with glamor
 %bcond_with backlighthelper
+%bcond_with valgrind
 Name:           xf86-video-intel
 Version:        2.99.917+git8674.25c9a2fcc
 Release:        0
@@ -47,7 +48,9 @@ BuildRequires:  pkgconfig(pciaccess) >= 0.10
 BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  pkgconfig(randrproto)
 BuildRequires:  pkgconfig(renderproto)
+%if %{with valgrind}
 BuildRequires:  pkgconfig(valgrind)
+%endif
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xcb-aux)
@@ -113,7 +116,6 @@ Obsoletes:      xorg-x11-driver-video-intel < %{version}
 # No Provides, as we technically don't provide the binaries
 Obsoletes:      855resolution
 Obsoletes:      915resolution
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %ix86 x86_64
 %{x11_abi_videodrv_req}
 %if %{with glamor}
@@ -158,6 +160,9 @@ autoreconf -fvi
 %endif
 	--enable-dri3 \
 	--enable-uxa \
+%if %{with valgrind}
+	--enable-valgrind \
+%endif
 	--with-default-dri=2
 
 make %{?_smp_mflags}
@@ -178,7 +183,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %endif
 
 %defattr(-,root,root)
-%doc AUTHORS COPYING NEWS README
+%license COPYING
+%doc AUTHORS NEWS README
 %ifarch %ix86
 %{_libdir}/libI810XvMC.so*
 %endif

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct  8 17:07:03 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 5.8.0
+  - bsc#1149100
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html
+
+-------------------------------------------------------------------
 Thu Sep  5 22:21:03 UTC 2019 - James Fehlig <jfehlig@suse.com>
 
 - Add apparmor-abstractions as a required package for daemon

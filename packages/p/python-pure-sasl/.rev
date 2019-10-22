@@ -52,4 +52,13 @@
 </comment>
     <requestid>678109</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>af5c7c257994310c9bbc36e3a645e134</srcmd5>
+    <version>0.6.2</version>
+    <time>1571751927</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.2
+  * Fix GSSAPI wrapping using in Python 3</comment>
+    <requestid>741632</requestid>
+  </revision>
 </revisionlist>

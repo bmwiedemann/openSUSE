@@ -70,12 +70,11 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 Name:           %{package_name}
-Version:        1.17.2
+Version:        1.17.3
 Release:        0
 Summary:        NumPy array processing for numbers, strings, records and objects
 License:        BSD-3-Clause
-Group:          Development/Libraries/Python
-Url:            http://www.numpy.org/
+URL:            http://www.numpy.org/
 Source:         https://files.pythonhosted.org/packages/source/n/numpy/numpy-%{version}.zip
 Source99:       python-numpy-rpmlintrc
 # PATCH-FIX-OPENSUSE numpy-buildfix.patch -- openSUSE-specific build fixes
@@ -134,7 +133,6 @@ basic linear algebra and random number generation.
 
 %package devel
 Summary:        Development files for numpy applications
-Group:          Development/Libraries/Python
 Requires:       %{name} = %{version}
 Requires:       python-devel
 %if %{without hpc}

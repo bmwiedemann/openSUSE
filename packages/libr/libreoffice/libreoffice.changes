@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Oct 18 09:56:13 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add mssing krasa_jaga_svg icons to filelist
+
+-------------------------------------------------------------------
+Thu Oct 17 11:59:59 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 6.3.3.1:
+  * 6.3 series stability fixes
+- Remove merged 0001-Check-for-EMOJI-content-only-on-ICU-57-and-newer.patch
+
+-------------------------------------------------------------------
+Mon Oct  7 07:42:34 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- As gtk2 will be removed in future releases we are disabling it
+  on 6.3 too to test out if we expose some regressions while we
+  can revert back and enable it again
+
+-------------------------------------------------------------------
+Fri Sep 27 19:53:32 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Enable build on ppc64le.
+- Let the test suite run on ppc64le and disable the failing tests.
+
+-------------------------------------------------------------------
 Thu Sep 19 08:36:59 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 6.3.2.2:

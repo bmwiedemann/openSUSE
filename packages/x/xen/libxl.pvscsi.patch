@@ -34,13 +34,13 @@ Cc: Wei Liu <wei.liu2@citrix.com>
  tools/libxl/xl_cmdtable.c            |   15 
  16 files changed, 2326 insertions(+), 4 deletions(-)
 
-Index: xen-4.12.1-testing/docs/man/xl.cfg.5.pod.in
+Index: xen-4.13.0-testing/docs/man/xl.cfg.5.pod.in
 ===================================================================
---- xen-4.12.1-testing.orig/docs/man/xl.cfg.5.pod.in
-+++ xen-4.12.1-testing/docs/man/xl.cfg.5.pod.in
-@@ -693,6 +693,62 @@ frontend to backend. It can be used as a
+--- xen-4.13.0-testing.orig/docs/man/xl.cfg.5.pod.in
++++ xen-4.13.0-testing/docs/man/xl.cfg.5.pod.in
+@@ -750,6 +750,62 @@ frontend to backend. It can be used as a
  For more information about the protocol, see
- https://xenbits.xen.org/docs/unstable/misc/pvcalls.html.
+ https://xenbits.xenproject.org/docs/unstable/misc/pvcalls.html.
  
 +=item B<vscsi=[ "VSCSI_SPEC_STRING", "VSCSI_SPEC_STRING", ...]>
 +
@@ -101,11 +101,11 @@ Index: xen-4.12.1-testing/docs/man/xl.cfg.5.pod.in
  =item B<vfb=[ "VFB_SPEC_STRING", "VFB_SPEC_STRING", ...]>
  
  Specifies the paravirtual framebuffer devices which should be supplied
-Index: xen-4.12.1-testing/docs/man/xl.1.pod.in
+Index: xen-4.13.0-testing/docs/man/xl.1.pod.in
 ===================================================================
---- xen-4.12.1-testing.orig/docs/man/xl.1.pod.in
-+++ xen-4.12.1-testing/docs/man/xl.1.pod.in
-@@ -1544,6 +1544,24 @@ List virtual network interfaces for a do
+--- xen-4.13.0-testing.orig/docs/man/xl.1.pod.in
++++ xen-4.13.0-testing/docs/man/xl.1.pod.in
+@@ -1575,6 +1575,24 @@ List virtual network interfaces for a do
  
  =back
  
@@ -130,11 +130,11 @@ Index: xen-4.12.1-testing/docs/man/xl.1.pod.in
  =head1 PCI PASS-THROUGH
  
  =over 4
-Index: xen-4.12.1-testing/tools/libxl/Makefile
+Index: xen-4.13.0-testing/tools/libxl/Makefile
 ===================================================================
---- xen-4.12.1-testing.orig/tools/libxl/Makefile
-+++ xen-4.12.1-testing/tools/libxl/Makefile
-@@ -130,6 +130,7 @@ endif
+--- xen-4.13.0-testing.orig/tools/libxl/Makefile
++++ xen-4.13.0-testing/tools/libxl/Makefile
+@@ -127,6 +127,7 @@ endif
  LIBXL_LIBS += -lyajl
  
  LIBXL_OBJS = flexarray.o libxl.o libxl_create.o libxl_dm.o libxl_pci.o \
@@ -142,7 +142,7 @@ Index: xen-4.12.1-testing/tools/libxl/Makefile
  			libxl_dom.o libxl_exec.o libxl_xshelp.o libxl_device.o \
  			libxl_internal.o libxl_utils.o libxl_uuid.o \
  			libxl_json.o libxl_aoutils.o libxl_numa.o libxl_vnuma.o \
-@@ -176,6 +177,7 @@ AUTOINCS= libxlu_cfg_y.h libxlu_cfg_l.h
+@@ -173,6 +174,7 @@ AUTOINCS= libxlu_cfg_y.h libxlu_cfg_l.h
  AUTOSRCS= libxlu_cfg_y.c libxlu_cfg_l.c
  AUTOSRCS += _libxl_save_msgs_callout.c _libxl_save_msgs_helper.c
  LIBXLU_OBJS = libxlu_cfg_y.o libxlu_cfg_l.o libxlu_cfg.o \
@@ -150,11 +150,11 @@ Index: xen-4.12.1-testing/tools/libxl/Makefile
  	libxlu_disk_l.o libxlu_disk.o libxlu_vif.o libxlu_pci.o
  $(LIBXLU_OBJS): CFLAGS += $(CFLAGS_libxenctrl) # For xentoollog.h
  
-Index: xen-4.12.1-testing/tools/libxl/libxl.h
+Index: xen-4.13.0-testing/tools/libxl/libxl.h
 ===================================================================
---- xen-4.12.1-testing.orig/tools/libxl/libxl.h
-+++ xen-4.12.1-testing/tools/libxl/libxl.h
-@@ -1061,6 +1061,13 @@ void libxl_mac_copy(libxl_ctx *ctx, libx
+--- xen-4.13.0-testing.orig/tools/libxl/libxl.h
++++ xen-4.13.0-testing/tools/libxl/libxl.h
+@@ -1124,6 +1124,13 @@ void libxl_mac_copy(libxl_ctx *ctx, libx
  #define LIBXL_HAVE_PCITOPOLOGY 1
  
  /*
@@ -168,8 +168,8 @@ Index: xen-4.12.1-testing/tools/libxl/libxl.h
   * LIBXL_HAVE_SOCKET_BITMAP
   *
   * If this is defined, then libxl_socket_bitmap_alloc and
-@@ -1991,6 +1998,41 @@ int libxl_device_channel_getinfo(libxl_c
-                                  libxl_device_channel *channel,
+@@ -2119,6 +2126,41 @@ int libxl_device_channel_getinfo(libxl_c
+                                  const libxl_device_channel *channel,
                                   libxl_channelinfo *channelinfo);
  
 +/* Virtual SCSI */
@@ -210,11 +210,11 @@ Index: xen-4.12.1-testing/tools/libxl/libxl.h
  /* Virtual TPMs */
  int libxl_device_vtpm_add(libxl_ctx *ctx, uint32_t domid, libxl_device_vtpm *vtpm,
                            const libxl_asyncop_how *ao_how)
-Index: xen-4.12.1-testing/tools/libxl/libxl_create.c
+Index: xen-4.13.0-testing/tools/libxl/libxl_create.c
 ===================================================================
---- xen-4.12.1-testing.orig/tools/libxl/libxl_create.c
-+++ xen-4.12.1-testing/tools/libxl/libxl_create.c
-@@ -1519,6 +1519,7 @@ const struct libxl_device_type *device_t
+--- xen-4.13.0-testing.orig/tools/libxl/libxl_create.c
++++ xen-4.13.0-testing/tools/libxl/libxl_create.c
+@@ -1563,6 +1563,7 @@ const libxl__device_type *device_type_tb
      &libxl__disk_devtype,
      &libxl__nic_devtype,
      &libxl__vtpm_devtype,
@@ -222,23 +222,23 @@ Index: xen-4.12.1-testing/tools/libxl/libxl_create.c
      &libxl__usbctrl_devtype,
      &libxl__usbdev_devtype,
      &libxl__pcidev_devtype,
-Index: xen-4.12.1-testing/tools/libxl/libxl_internal.h
+Index: xen-4.13.0-testing/tools/libxl/libxl_internal.h
 ===================================================================
---- xen-4.12.1-testing.orig/tools/libxl/libxl_internal.h
-+++ xen-4.12.1-testing/tools/libxl/libxl_internal.h
-@@ -3810,6 +3810,7 @@ extern const struct libxl_device_type li
- extern const struct libxl_device_type libxl__disk_devtype;
- extern const struct libxl_device_type libxl__nic_devtype;
- extern const struct libxl_device_type libxl__vtpm_devtype;
-+extern const struct libxl_device_type libxl__vscsictrl_devtype;
- extern const struct libxl_device_type libxl__usbctrl_devtype;
- extern const struct libxl_device_type libxl__usbdev_devtype;
- extern const struct libxl_device_type libxl__pcidev_devtype;
-Index: xen-4.12.1-testing/tools/libxl/libxl_types.idl
+--- xen-4.13.0-testing.orig/tools/libxl/libxl_internal.h
++++ xen-4.13.0-testing/tools/libxl/libxl_internal.h
+@@ -3838,6 +3838,7 @@ extern const libxl__device_type libxl__v
+ extern const libxl__device_type libxl__disk_devtype;
+ extern const libxl__device_type libxl__nic_devtype;
+ extern const libxl__device_type libxl__vtpm_devtype;
++extern const libxl__device_type libxl__vscsictrl_devtype;
+ extern const libxl__device_type libxl__usbctrl_devtype;
+ extern const libxl__device_type libxl__usbdev_devtype;
+ extern const libxl__device_type libxl__pcidev_devtype;
+Index: xen-4.13.0-testing/tools/libxl/libxl_types.idl
 ===================================================================
---- xen-4.12.1-testing.orig/tools/libxl/libxl_types.idl
-+++ xen-4.12.1-testing/tools/libxl/libxl_types.idl
-@@ -909,6 +909,43 @@ libxl_device_vsnd = Struct("device_vsnd"
+--- xen-4.13.0-testing.orig/tools/libxl/libxl_types.idl
++++ xen-4.13.0-testing/tools/libxl/libxl_types.idl
+@@ -928,6 +928,43 @@ libxl_device_vsnd = Struct("device_vsnd"
      ("pcms", Array(libxl_vsnd_pcm, "num_vsnd_pcms"))
      ])
  
@@ -282,7 +282,7 @@ Index: xen-4.12.1-testing/tools/libxl/libxl_types.idl
  libxl_domain_config = Struct("domain_config", [
      ("c_info", libxl_domain_create_info),
      ("b_info", libxl_domain_build_info),
-@@ -920,6 +957,7 @@ libxl_domain_config = Struct("domain_con
+@@ -939,6 +976,7 @@ libxl_domain_config = Struct("domain_con
      ("dtdevs", Array(libxl_device_dtdev, "num_dtdevs")),
      ("vfbs", Array(libxl_device_vfb, "num_vfbs")),
      ("vkbs", Array(libxl_device_vkb, "num_vkbs")),
@@ -290,7 +290,7 @@ Index: xen-4.12.1-testing/tools/libxl/libxl_types.idl
      ("vtpms", Array(libxl_device_vtpm, "num_vtpms")),
      ("p9s", Array(libxl_device_p9, "num_p9s")),
      ("pvcallsifs", Array(libxl_device_pvcallsif, "num_pvcallsifs")),
-@@ -961,6 +999,21 @@ libxl_nicinfo = Struct("nicinfo", [
+@@ -980,6 +1018,21 @@ libxl_nicinfo = Struct("nicinfo", [
      ("rref_rx", integer),
      ], dir=DIR_OUT)
  
@@ -312,11 +312,11 @@ Index: xen-4.12.1-testing/tools/libxl/libxl_types.idl
  libxl_vtpminfo = Struct("vtpminfo", [
      ("backend", string),
      ("backend_id", uint32),
-Index: xen-4.12.1-testing/tools/libxl/libxl_types_internal.idl
+Index: xen-4.13.0-testing/tools/libxl/libxl_types_internal.idl
 ===================================================================
---- xen-4.12.1-testing.orig/tools/libxl/libxl_types_internal.idl
-+++ xen-4.12.1-testing/tools/libxl/libxl_types_internal.idl
-@@ -30,6 +30,7 @@ libxl__device_kind = Enumeration("device
+--- xen-4.13.0-testing.orig/tools/libxl/libxl_types_internal.idl
++++ xen-4.13.0-testing/tools/libxl/libxl_types_internal.idl
+@@ -31,6 +31,7 @@ libxl__device_kind = Enumeration("device
      (13, "VUART"),
      (14, "PVCALLS"),
      (15, "VSND"),
@@ -324,10 +324,10 @@ Index: xen-4.12.1-testing/tools/libxl/libxl_types_internal.idl
      ])
  
  libxl__console_backend = Enumeration("console_backend", [
-Index: xen-4.12.1-testing/tools/libxl/libxl_vscsi.c
+Index: xen-4.13.0-testing/tools/libxl/libxl_vscsi.c
 ===================================================================
 --- /dev/null
-+++ xen-4.12.1-testing/tools/libxl/libxl_vscsi.c
++++ xen-4.13.0-testing/tools/libxl/libxl_vscsi.c
 @@ -0,0 +1,1185 @@
 +/*
 + * Copyright (C) 2016      SUSE Linux GmbH
@@ -1514,10 +1514,10 @@ Index: xen-4.12.1-testing/tools/libxl/libxl_vscsi.c
 + * indent-tabs-mode: nil
 + * End:
 + */
-Index: xen-4.12.1-testing/tools/libxl/libxlu_vscsi.c
+Index: xen-4.13.0-testing/tools/libxl/libxlu_vscsi.c
 ===================================================================
 --- /dev/null
-+++ xen-4.12.1-testing/tools/libxl/libxlu_vscsi.c
++++ xen-4.13.0-testing/tools/libxl/libxlu_vscsi.c
 @@ -0,0 +1,668 @@
 +/*
 + * libxlu_vscsi.c - xl configuration file parsing: setup and helper functions
@@ -2187,11 +2187,11 @@ Index: xen-4.12.1-testing/tools/libxl/libxlu_vscsi.c
 +    return ERROR_INVAL;
 +}
 +#endif
-Index: xen-4.12.1-testing/tools/libxl/libxlutil.h
+Index: xen-4.13.0-testing/tools/libxl/libxlutil.h
 ===================================================================
---- xen-4.12.1-testing.orig/tools/libxl/libxlutil.h
-+++ xen-4.12.1-testing/tools/libxl/libxlutil.h
-@@ -118,6 +118,25 @@ int xlu_rdm_parse(XLU_Config *cfg, libxl
+--- xen-4.13.0-testing.orig/tools/libxl/libxlutil.h
++++ xen-4.13.0-testing/tools/libxl/libxlutil.h
+@@ -123,6 +123,25 @@ int xlu_rdm_parse(XLU_Config *cfg, libxl
  int xlu_vif_parse_rate(XLU_Config *cfg, const char *rate,
                         libxl_device_nic *nic);
  
@@ -2217,23 +2217,23 @@ Index: xen-4.12.1-testing/tools/libxl/libxlutil.h
  #endif /* LIBXLUTIL_H */
  
  /*
-Index: xen-4.12.1-testing/tools/xl/Makefile
+Index: xen-4.13.0-testing/tools/xl/Makefile
 ===================================================================
---- xen-4.12.1-testing.orig/tools/xl/Makefile
-+++ xen-4.12.1-testing/tools/xl/Makefile
+--- xen-4.13.0-testing.orig/tools/xl/Makefile
++++ xen-4.13.0-testing/tools/xl/Makefile
 @@ -18,7 +18,7 @@ CFLAGS_XL += -Wshadow
  XL_OBJS-$(CONFIG_X86) = xl_psr.o
  XL_OBJS = xl.o xl_cmdtable.o xl_sxp.o xl_utils.o $(XL_OBJS-y)
- XL_OBJS += xl_tmem.o xl_parse.o xl_cpupool.o xl_flask.o
+ XL_OBJS += xl_parse.o xl_cpupool.o xl_flask.o
 -XL_OBJS += xl_vtpm.o xl_block.o xl_nic.o xl_usb.o
 +XL_OBJS += xl_vtpm.o xl_vscsi.o xl_block.o xl_nic.o xl_usb.o
  XL_OBJS += xl_sched.o xl_pci.o xl_vcpu.o xl_cdrom.o xl_mem.o
  XL_OBJS += xl_info.o xl_console.o xl_misc.o
  XL_OBJS += xl_vmcontrol.o xl_saverestore.o xl_migrate.o
-Index: xen-4.12.1-testing/tools/xl/xl.h
+Index: xen-4.13.0-testing/tools/xl/xl.h
 ===================================================================
---- xen-4.12.1-testing.orig/tools/xl/xl.h
-+++ xen-4.12.1-testing/tools/xl/xl.h
+--- xen-4.13.0-testing.orig/tools/xl/xl.h
++++ xen-4.13.0-testing/tools/xl/xl.h
 @@ -165,6 +165,9 @@ int main_channellist(int argc, char **ar
  int main_blockattach(int argc, char **argv);
  int main_blocklist(int argc, char **argv);
@@ -2244,11 +2244,11 @@ Index: xen-4.12.1-testing/tools/xl/xl.h
  int main_vtpmattach(int argc, char **argv);
  int main_vtpmlist(int argc, char **argv);
  int main_vtpmdetach(int argc, char **argv);
-Index: xen-4.12.1-testing/tools/xl/xl_parse.c
+Index: xen-4.13.0-testing/tools/xl/xl_parse.c
 ===================================================================
---- xen-4.12.1-testing.orig/tools/xl/xl_parse.c
-+++ xen-4.12.1-testing/tools/xl/xl_parse.c
-@@ -1211,7 +1211,8 @@ void parse_config_data(const char *confi
+--- xen-4.13.0-testing.orig/tools/xl/xl_parse.c
++++ xen-4.13.0-testing/tools/xl/xl_parse.c
+@@ -1212,7 +1212,8 @@ void parse_config_data(const char *confi
      long l, vcpus = 0;
      XLU_Config *config;
      XLU_ConfigList *cpus, *vbds, *nics, *pcis, *cvfbs, *cpuids, *vtpms,
@@ -2258,7 +2258,7 @@ Index: xen-4.12.1-testing/tools/xl/xl_parse.c
      XLU_ConfigList *channels, *ioports, *irqs, *iomem, *viridian, *dtdevs,
                     *mca_caps;
      int num_ioports, num_irqs, num_iomem, num_cpus, num_viridian, num_mca_caps;
-@@ -1974,6 +1975,17 @@ void parse_config_data(const char *confi
+@@ -2104,6 +2105,17 @@ void parse_config_data(const char *confi
          }
      }
  
@@ -2276,10 +2276,10 @@ Index: xen-4.12.1-testing/tools/xl/xl_parse.c
      if (!xlu_cfg_get_list(config, "vtpm", &vtpms, 0, 0)) {
          d_config->num_vtpms = 0;
          d_config->vtpms = NULL;
-Index: xen-4.12.1-testing/tools/xl/xl_vscsi.c
+Index: xen-4.13.0-testing/tools/xl/xl_vscsi.c
 ===================================================================
 --- /dev/null
-+++ xen-4.12.1-testing/tools/xl/xl_vscsi.c
++++ xen-4.13.0-testing/tools/xl/xl_vscsi.c
 @@ -0,0 +1,229 @@
 +/*
 + * Copyright 2009-2017 Citrix Ltd and other contributors
@@ -2510,10 +2510,10 @@ Index: xen-4.12.1-testing/tools/xl/xl_vscsi.c
 +    return !!rc;
 +}
 +
-Index: xen-4.12.1-testing/tools/xl/xl_cmdtable.c
+Index: xen-4.13.0-testing/tools/xl/xl_cmdtable.c
 ===================================================================
---- xen-4.12.1-testing.orig/tools/xl/xl_cmdtable.c
-+++ xen-4.12.1-testing/tools/xl/xl_cmdtable.c
+--- xen-4.13.0-testing.orig/tools/xl/xl_cmdtable.c
++++ xen-4.13.0-testing/tools/xl/xl_cmdtable.c
 @@ -368,6 +368,21 @@ struct cmd_spec cmd_table[] = {
        "Destroy a domain's virtual block device",
        "<Domain> <DevId>",

@@ -1006,4 +1006,16 @@
   these any more anyway. (forwarded request 727088 from mwilck)</comment>
     <requestid>727089</requestid>
   </revision>
+  <revision rev="127" vrev="3">
+    <srcmd5>3e7100e5aba624e089493912792ac99a</srcmd5>
+    <version>3.19.6</version>
+    <time>1571751842</time>
+    <user>dimstar_suse</user>
+    <comment>- Added missing requirement lsb-release (needed for root password
+  prompt, e.g. hp-plugin).
+- Changed the pgp server to pool.sks-keyservers.net to avoid timeouts
+  from pgp.mit.edu
+  * New patch: hplip-change-pgp-server.patch</comment>
+    <requestid>741595</requestid>
+  </revision>
 </revisionlist>

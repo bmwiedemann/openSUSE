@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Tue Oct 15 07:42:20 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.60.8
+  * Prevent a potentially unbounded buffer over-read by no longer
+  supporting null-terminated UCS-2 and UCS-4 encoded strings with the
+  original C API. @xref{Upgrading from Aspell 0.60.7}.
+  * Ensure that possible typos are listed before other suggestions when
+  typo analysis is used.  Also fix a bug so that suggestions that split
+  a word using a space or hyphen are not always first.
+  * Add Markdown filter.
+  * Add new @option{wordlists} option, which is a list of UTF-8 files that
+  contain additional words to accept.
+  * Add new @option{camel-case} option, which enables support for checking
+  camelCase words.
+  * Sort personal and replacement dictionaries.
+  * Change @code{ultra} suggestion mode to only find words that are within
+  one-edit distance or have the same soundslike.
+  * Implement the @code{aspell filter} command.
+  * Fix a bug in @code{AspellDocumentChecker} that prevented it from
+  working with UCS-2 and UCS-4 encoded strings.
+  * Remove unused @option{sug-edit-dist} option.
+  * @code{AspellDocumentChecker} now expects the document a line at a time
+  in order to work with the new Markdown filter.  If the document is
+  split on white space characters instead, nothing will break, but new
+  filters such as the Markdown filter may give incorrect results.
+  * The @option{clean} option and command will no longer split a word.
+  * Various documentation improvements.
+  * Removal of several outdated appendices that don't really belong in the
+  main manual.  Parts that are still relevent may eventually be moved
+  elsewhere, but for now they are available online at
+  @uref{http://aspell.net/0.60.7/man-html/}.
+  * Fix various crashes and other problems found by Google's OSS-Fuzz.
+  * Add partial support for recognizing the Unicode apostrophe (') in
+  words.  In particular Aspell will accept the Unicode apostrophe when
+  the language uses an ISO Latin charset that doesn't already have a
+  Unicode apostrophe.  For now, Aspell will still use the ASCII version
+  in suggestions.
+  * Detect when a dictionary compiled on a 32-bit machine is used on a
+  64-bit one (and vise versa), as due to an oversight, compiled
+  dictionaries depend on more than the endianness.  Also added a compile
+  time option to remove this dependency, but at the cost of breaking
+  compatibility with already compiled dictionaries on 64-bit systems.
+  * Fix a bug which caused Aspell to crash when passing in a null string
+  to almost any of the C API functions.  This should not happen if the
+  size is also zero as the pointer should never be derefrenced.
+  * Fix a bug that caused Aspell to crash with a SEGFAULT when built with
+  mingw-w64.
+  * In addition to outputting a warning when building with NDEBUG defined,
+  also include NDEBUG in the version string.
+  * Various compile fixes for newer version of Gcc and Clang.
+  * Fix VPATH builds.
+  * Use utf-8 encoding for manual instead of iso-8859-1.
+  * Other minor updates and bug fixes.
+- deleted patches
+  - aspell-automake-1.13.patch (upstreamed)
+  - aspell-epmty_file.patch (upstreamed, bsc#266130 does not exhibit)
+  - gcc7-fix-warnings.patch (upstreamed)
+
+-------------------------------------------------------------------
 Sat Feb 11 13:32:04 UTC 2017 - jengelh@inai.de
 
 - Compact descriptions

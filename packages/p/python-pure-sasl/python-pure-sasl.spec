@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without test
 Name:           python-pure-sasl
-Version:        0.6.1
+Version:        0.6.2
 Release:        0
 Summary:        Pure Python client SASL implementation
 License:        MIT

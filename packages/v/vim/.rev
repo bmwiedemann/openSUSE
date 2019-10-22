@@ -4063,4 +4063,41 @@ always built-in because vim has direct perl dependencies anyway.
   * get(func, dict, def) does not work properly.</comment>
     <requestid>731703</requestid>
   </revision>
+  <revision rev="243" vrev="1">
+    <srcmd5>bb7daac4d8d3432a302ae04679e12e7f</srcmd5>
+    <version>8.1.2148</version>
+    <time>1571751563</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 8.1.2148, fixes the following problems
+  * Using &quot;x&quot; before a closed fold may delete that fold.
+  * SafeStateAgain not triggered if callback uses feedkeys().
+  * Compiler test for Perl may fail.
+  * Not easy to jump to function line from profile.
+  * &quot;make test&quot; for indent files doesn't cause make to fail.
+  * The screen.c file is much too big.
+  * Function for ex command is named inconsistently.
+  * Fix for &quot;x&quot; deleting a fold has side effects.
+  * &quot;precedes&quot; in 'listchars' not used properly.
+  * The mouse code is spread out.
+  * Some tests fail when +balloon_eval_term is missing but _balloon_eval is
+  present. (Dominique Pelle)
+  * No tests for state().
+  * No tests for SafeState and SafeStateAgain.
+  * Test for SafeState and SafeStateAgain may fail.
+  * Test for SafeStateAgain may still fail.
+  * Mouse code is spread out.
+  * When 'wincolor' is set text property changes highlighting. (Andy Stewart)
+  * &quot;gk&quot; moves to start of line instead of upwards.
+  * When editing a buffer 'colorcolumn' may not work.
+  * Test for SafeState autocommand is a bit flaky.
+  * Get many log messages when waiting for a typed character.
+  * Crash when trying to put a terminal buffer in a popup window.
+  * The ops.c file is too big.
+  * Build error with +textprop but without +terminal. (Tony Mechelynck)
+  * Popup window test fails without +terminal.
+  * The terminal API is limited and can't be disabled.
+  * The spell.c file is too big.
+  * Some files have a weird name to fit in 8.3 characters.</comment>
+    <requestid>740984</requestid>
+  </revision>
 </revisionlist>

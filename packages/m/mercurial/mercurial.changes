@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct  9 11:00:48 UTC 2019 - Andrei Dziahel <develop7@develop7.info>
+
+- Mercurial 5.1.2 
+  Regularly scheduled bug fix release.
+
+  * extensions
+    + phabricator: don't abort if property writing fails during amending
+  * tests
+    + test: allow different result for zstd compression (issue6188)
+
+-------------------------------------------------------------------
 Sun Sep 15 16:49:18 UTC 2019 - Andrei Dziahel <develop7@develop7.info>
 
 - Mercurial 5.1.1 

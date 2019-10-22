@@ -18,7 +18,7 @@
 
 
 Name:           stress-ng
-Version:        0.10.07
+Version:        0.10.08
 Release:        0
 Summary:        Tool to load and stress a computer
 License:        GPL-2.0-only
@@ -27,6 +27,7 @@ URL:            https://kernel.ubuntu.com/~cking/stress-ng/
 Source:         https://kernel.ubuntu.com/~cking/tarballs/%{name}/%{name}-%{version}.tar.xz
 BuildRequires:  keyutils-devel
 BuildRequires:  libaio-devel
+BuildRequires:  libapparmor-devel
 BuildRequires:  libattr-devel
 BuildRequires:  libbsd-devel
 BuildRequires:  libcap-devel

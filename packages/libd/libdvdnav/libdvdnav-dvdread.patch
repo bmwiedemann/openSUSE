@@ -9,6 +9,6 @@
  Version: @VERSION@
  
 -Requires.private: dvdread >= 4.1.2
-+Requires.private: dvdread >= 5.0.2
++Requires.private: dvdread >= 6.0.0
  Cflags: -I${includedir} @THREAD_CFLAGS@
  Libs: -L${libdir} -ldvdnav @THREAD_LIBS@

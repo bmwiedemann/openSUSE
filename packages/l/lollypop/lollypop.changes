@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 21 19:11:17 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.2.0:
+  * New sidebar.
+  * New banners.
+  * Better web tracks support.
+  * New suggestion view.
+- Update build dependencies according to meson.build.
+- Add man page to list of installed files.
+
+-------------------------------------------------------------------
 Sun Oct 20 19:30:59 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add missing runtime Requires: python3-gobject-Gdk.

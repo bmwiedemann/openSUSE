@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct  9 17:06:32 UTC 2019 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Use the compiler default C std, since 2012 gcc defaults
+  have changed, we now only need to get rid of ANSIFLAGS, override
+  that variable instead.
+
+-------------------------------------------------------------------
 Tue Jul  2 07:19:53 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 2.10.1

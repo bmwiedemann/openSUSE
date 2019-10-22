@@ -35,6 +35,7 @@ BuildRequires:  mysql-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel
+BuildRequires:  zlib-devel
 %if 0%{?suse_version} > 1500
 BuildRequires:  postgresql-server-devel
 %endif
@@ -60,7 +61,7 @@ autoreconf -fiv
   --with-system-luajit \
   %endif
   --with-pgsql
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install

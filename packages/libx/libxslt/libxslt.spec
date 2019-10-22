@@ -40,6 +40,8 @@ Patch4:         libxslt-CVE-2019-11068.patch
 Patch5:         libxslt-CVE-2019-13117.patch
 # PATCH-FIX-UPSTREAM bsc#1140101 CVE-2019-13118 Fix uninitialized read with UTF-8 grouping chars
 Patch6:         libxslt-CVE-2019-13118.patch
+# PATCH-FIX-UPSTREAM bsc#1154609 CVE-2019-18197 Fix dangling pointer in xsltCopyText
+Patch7:         libxslt-CVE-2019-18197.patch
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libgpg-error-devel
 BuildRequires:  libtool
@@ -112,6 +114,7 @@ xtend the
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 %build
 autoreconf -fvi

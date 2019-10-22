@@ -2575,4 +2575,23 @@ Petr</comment>
     <comment>  bsc#1152684 VUL-1: CVE-2019-9853: libreoffice: macro execution bypassed the security settings</comment>
     <requestid>734335</requestid>
   </revision>
+  <revision rev="189" vrev="1">
+    <srcmd5>e16716d51998c83c1e13839853a578ef</srcmd5>
+    <version>6.3.3.1</version>
+    <time>1571751572</time>
+    <user>dimstar_suse</user>
+    <comment>- Add mssing krasa_jaga_svg icons to filelist
+
+- Update to 6.3.3.1:
+  * 6.3 series stability fixes
+- Remove merged 0001-Check-for-EMOJI-content-only-on-ICU-57-and-newer.patch
+
+- As gtk2 will be removed in future releases we are disabling it
+  on 6.3 too to test out if we expose some regressions while we
+  can revert back and enable it again
+
+- Enable build on ppc64le.
+- Let the test suite run on ppc64le and disable the failing tests.</comment>
+    <requestid>741035</requestid>
+  </revision>
 </revisionlist>

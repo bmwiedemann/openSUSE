@@ -1,7 +1,7 @@
-Index: libvirt-5.7.0/tools/Makefile.am
+Index: libvirt-5.8.0/tools/Makefile.am
 ===================================================================
---- libvirt-5.7.0.orig/tools/Makefile.am
-+++ libvirt-5.7.0/tools/Makefile.am
+--- libvirt-5.8.0.orig/tools/Makefile.am
++++ libvirt-5.8.0/tools/Makefile.am
 @@ -59,6 +59,7 @@ PODFILES = \
  	virt-sanlock-cleanup.pod \
  	virt-xml-validate.pod \
@@ -28,10 +28,10 @@ Index: libvirt-5.7.0/tools/Makefile.am
  virt-xml-validate: virt-xml-validate.in Makefile
  	$(AM_V_GEN)sed -e 's|[@]schemadir@|$(pkgdatadir)/schemas|g' \
  		       -e 's|[@]VERSION@|$(VERSION)|g' \
-Index: libvirt-5.7.0/tools/virt-create-rootfs
+Index: libvirt-5.8.0/tools/virt-create-rootfs
 ===================================================================
 --- /dev/null
-+++ libvirt-5.7.0/tools/virt-create-rootfs
++++ libvirt-5.8.0/tools/virt-create-rootfs
 @@ -0,0 +1,214 @@
 +#!/bin/sh
 +set -e
@@ -247,10 +247,10 @@ Index: libvirt-5.7.0/tools/virt-create-rootfs
 +    echo "pts/0" >> "$ROOT/etc/securetty"
 +    chroot "$ROOT" /usr/bin/passwd
 +fi
-Index: libvirt-5.7.0/tools/virt-create-rootfs.pod
+Index: libvirt-5.8.0/tools/virt-create-rootfs.pod
 ===================================================================
 --- /dev/null
-+++ libvirt-5.7.0/tools/virt-create-rootfs.pod
++++ libvirt-5.8.0/tools/virt-create-rootfs.pod
 @@ -0,0 +1,77 @@
 +=head1 NAME
 +

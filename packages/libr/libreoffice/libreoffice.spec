@@ -41,7 +41,6 @@
 %endif
 %if 0%{?suse_version} > 1320 || (0%{?sle_version} >= 120300 && 0%{?is_opensuse})
 %bcond_without system_gpgme
-%bcond_without gtk3
 %else
 # Hack in the bundled libs to not pop up on requires/provides to avoid
 # faking libreoffice provide some system packages
@@ -49,10 +48,9 @@
 %global __requires_exclude_from ^%{_libdir}/libreoffice/program/lib(gpg|assuan).*\\.so.*$
 %global __requires_exclude ^libgpgmepp\\.so.*$
 %bcond_with system_gpgme
-%bcond_with gtk3
 %endif
 Name:           libreoffice
-Version:        6.3.2.2
+Version:        6.3.3.1
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -101,7 +99,6 @@ Patch1:         scp2-user-config-suse.diff
 Patch2:         nlpsolver-no-broken-help.diff
 Patch3:         mediawiki-no-broken-help.diff
 Patch5:         mdds-1-5.patch
-Patch6:         0001-Check-for-EMOJI-content-only-on-ICU-57-and-newer.patch
 # try to save space by using hardlinks
 Patch990:       install-with-hardlinks.diff
 # save time by relying on rpm check rather than doing stupid find+grep
@@ -170,14 +167,12 @@ BuildRequires:  pkgconfig(dbus-1) >= 0.60
 BuildRequires:  pkgconfig(epoxy) >= 1.2
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(gl)
-# >= 2.4 is needed for bluetooth support ; >= 2.40 is needed for gtk3
-BuildRequires:  pkgconfig(glib-2.0) >= 2.4
+BuildRequires:  pkgconfig(glib-2.0) >= 2.40
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(graphite2) >= 0.9.3
 BuildRequires:  pkgconfig(gssrpc)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
-BuildRequires:  pkgconfig(gtk+-2.0) >= 2.18.0
 BuildRequires:  pkgconfig(harfbuzz) >= 0.9.42
 BuildRequires:  pkgconfig(harfbuzz-icu) >= 0.9.42
 BuildRequires:  pkgconfig(hunspell)
@@ -252,7 +247,7 @@ Provides:       %{name}-icon-theme-crystal = %{version}
 Obsoletes:      %{name}-icon-theme-crystal < %{version}
 Provides:       %{name}-icon-theme-oxygen = %{version}
 Obsoletes:      %{name}-icon-theme-oxygen < %{version}
-ExclusiveArch:  aarch64 %{ix86} x86_64
+ExclusiveArch:  aarch64 %{ix86} x86_64 ppc64le
 %if 0%{?suse_version} >= 1500
 BuildRequires:  libmariadb-devel
 %else
@@ -269,17 +264,7 @@ BuildRequires:  gcc7-c++
 Requires(post): update-desktop-files
 Requires(postun): update-desktop-files
 %endif
-%if %{with gtk3}
-BuildRequires:  pkgconfig(glib-2.0) >= 2.40
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.18
-%else
-Provides:       libreofficekit = %{version}
-Obsoletes:      libreofficekit < %{version}
-Provides:       libreofficekit-devel = %{version}
-Obsoletes:      libreofficekit-devel < %{version}
-Provides:       %{name}-gtk3 = %{version}
-Obsoletes:      %{name}-gtk3 < %{version}
-%endif
 %if %{with system_gpgme}
 BuildRequires:  libgpgmepp-devel
 %endif
@@ -569,23 +554,6 @@ Supplements:    packageand(libreoffice:plasma5-workspace)
 %description gtk3
 This package contains Gtk3 interface rendering option for LibreOffice.
 
-%package gtk2
-Summary:        Gtk2 interface for LibreOffice
-Group:          Productivity/Office/Suite
-Recommends:     %{name}-gnome = %{version}
-Conflicts:      %{name}-gnome < %{version}
-# We are default if gtk3 is not present
-%if !%{with gtk3}
-Supplements:    packageand(libreoffice:gnome-session)
-# Without kde and gtk3 ntegration we provide gtk2 interface there
-%if !%{with kdeintegration}
-Supplements:    packageand(libreoffice:plasma5-workspace)
-%endif
-%endif
-
-%description gtk2
-This package contains Gtk2 interface rendering option for LibreOffice.
-
 %package qt5
 Summary:        Qt5/KDE Frameworks interface for LibreOffice
 Group:          Productivity/Office/Suite
@@ -635,7 +603,7 @@ Requires:       %{name} = %{version}
 %ifarch %{ix86}
 Requires:       jre-32 >= 1.6
 %endif
-%ifarch x86_64 aarch64
+%ifarch x86_64 aarch64 ppc64le
 Requires:       jre-64 >= 1.6
 %endif
 
@@ -666,7 +634,7 @@ Requires(pre):  libreoffice = %{version}
 %ifarch %{ix86}
 Requires:       jre-32 >= 1.6
 %endif
-%ifarch x86_64 aarch64
+%ifarch x86_64 aarch64 ppc64le
 Requires:       jre-64 >= 1.6
 %endif
 
@@ -686,7 +654,7 @@ Requires(pre):  libreoffice = %{version}
 %ifarch %{ix86}
 Requires:       jre-32 >= 1.6
 %endif
-%ifarch x86_64 aarch64
+%ifarch x86_64 aarch64 ppc64le
 Requires:       jre-64 >= 1.6
 %endif
 
@@ -986,7 +954,6 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch2
 %patch3
 %patch5 -p1
-%patch6 -p1
 %patch990 -p1
 %patch991 -p1
 
@@ -1005,6 +972,14 @@ sed -i -e /CppunitTest_sw_uiwriter/d sw/Module_sw.mk
 sed -i -e /CPPUNIT_TEST\(testODFEncryptedGPG\)/d xmlsecurity/qa/unit/signing/signing.cxx
 # breaks on LTO https://bugs.documentfoundation.org/show_bug.cgi?id=126442
 sed -i -e /CppunitTest_sw_apitests/d sw/Module_sw.mk
+# Disable failing tests on ppc64le for now
+%ifarch ppc64le
+sed -i -e /CppunitTest_sc_addin_functions_test/d sc/Module_sc.mk
+sed -i -e /CppunitTest_sc_array_functions_test/d sc/Module_sc.mk
+sed -i -e /CppunitTest_sc_dataprovider/d sc/Module_sc.mk # https://bugs.documentfoundation.org/show_bug.cgi?id=127099
+sed -i -e /CppunitTest_sc_financial_functions_test/d sc/Module_sc.mk # https://bugs.documentfoundation.org/show_bug.cgi?id=127083
+sed -i -e /CppunitTest_sc_statistical_functions_test/d sc/Module_sc.mk
+%endif
 
 %if 0%{?suse_version} < 1500
 # Header-only libboost_system is not available
@@ -1080,8 +1055,8 @@ export NOCONFIGURE=yes
         --disable-online-update \
         --disable-gstreamer-0-10 \
         --enable-gstreamer-1-0 \
-%if %{with gtk3}
         --enable-gtk3 \
+        --disable-gtk \
 %if %{with kdeintegration}
         --disable-gtk3-kde5 \
         --enable-kde5 \
@@ -1089,9 +1064,6 @@ export NOCONFIGURE=yes
 %else
         --disable-kde5 \
         --disable-qt5 \
-%endif
-%else
-        --disable-gtk3 \
 %endif
         --enable-introspection \
         --with-doxygen \
@@ -1146,8 +1118,8 @@ export NOCONFIGURE=yes
 make verbose=t build-nocheck
 
 %check
-# Run tests only on 64b intel as they are resource hogs
-%ifarch x86_64
+# Run tests only on x86_64 and ppc64le as they are resource hogs
+%ifarch x86_64 ppc64le
 # safeguard jarfires that can get magically overriden by the make
 mkdir savejar
 cp %{buildroot}%{_libdir}/%{name}/program/classes/*.jar savejar/
@@ -1163,9 +1135,6 @@ set +x
 
 # Split out gtk3 interface to -gtk3 subpackage
 grep -v "%{_libdir}/libreoffice/program/libvclplug_gtk3lo.so" file-lists/gnome_list.txt > tmplist
-mv tmplist file-lists/gnome_list.txt
-# also split out gtk2 interface to make sure we do not pull gtk2 for fun of it
-grep -v "%{_libdir}/libreoffice/program/libvclplug_gtklo.so" file-lists/gnome_list.txt > tmplist
 mv tmplist file-lists/gnome_list.txt
 
 # Remove firebird connector from main package filelist
@@ -1339,17 +1308,12 @@ rm pyfiles.txt
 cp %{SOURCE6} %{buildroot}%{_libdir}/libreoffice/share/palette/SUSE.soc
 echo "%{_libdir}/libreoffice/share/palette/SUSE.soc" >> file-lists/common_list.txt
 
-%if %{with gtk3}
 # Symlink gtk3 libreofficekit to libdir
 ln -s %{_libdir}/%{name}/program/liblibreofficekitgtk.so %{buildroot}%{_libdir}/liblibreofficekitgtk.so
 
 # Libreofficekit headers
 mkdir -p %{buildroot}%{_includedir}/LibreOfficeKit/
 install -m 0644 include/LibreOfficeKit/* %{buildroot}%{_includedir}/LibreOfficeKit/
-%else
-# remove files that are not supposed to be installed with disabled libreofficekit
-rm -rf %{buildroot}%{_libdir}/libreoffice/share/libreofficekit/
-%endif
 
 # Symlink uno.py and unohelper.py so that python can find them
 # This is done after the cache files generating on purpose
@@ -1460,7 +1424,6 @@ exit 0
 %dir %{_datadir}/icons/locolor/32x32/apps
 %dir %{_datadir}/icons/locolor/32x32/mimetypes
 
-%if %{with gtk3}
 %files -n libreofficekit
 %dir %{_libdir}/girepository-1.0
 %{_libdir}/girepository-1.0/LOKDocView-0.1.typelib
@@ -1475,7 +1438,6 @@ exit 0
 %{_datadir}/gir-1.0/LOKDocView-0.1.gir
 %dir %{_includedir}/LibreOfficeKit
 %{_includedir}/LibreOfficeKit/*
-%endif
 
 %files glade
 %dir %{_datadir}/glade
@@ -1522,13 +1484,8 @@ exit 0
 
 %files -f file-lists/gnome_list.txt gnome
 
-%if %{with gtk3}
 %files gtk3
 %{_libdir}/libreoffice/program/libvclplug_gtk3lo.so
-%endif
-
-%files gtk2
-%{_libdir}/libreoffice/program/libvclplug_gtklo.so
 
 %if %{with kdeintegration}
 %files -f file-lists/kde4_list.txt qt5
@@ -1561,6 +1518,7 @@ exit 0
 %{_datadir}/%{name}/share/config/images_elementary.zip
 %{_datadir}/%{name}/share/config/images_colibre.zip
 %{_datadir}/%{name}/share/config/images_karasa_jaga.zip
+%{_datadir}/%{name}/share/config/images_karasa_jaga_svg.zip
 %{_datadir}/%{name}/share/config/images_sifr.zip
 %{_datadir}/%{name}/share/config/images_sifr_dark.zip
 %{_datadir}/%{name}/share/config/images_sifr_svg.zip

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 19 17:06:38 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1571474599.7d873cb5:
+  * Rely on QEMUMACHINE default in OFW
+  * Update to new perltidy version 20190915
+  * Allow read_json() to return multiple results
+  * All JSON communication goes through myjsonrpc.pm
+
+-------------------------------------------------------------------
 Thu Oct 17 08:59:09 UTC 2019 - okurz@suse.com
 
 - Update to version 4.5.1571302740.fbcb3c7b:

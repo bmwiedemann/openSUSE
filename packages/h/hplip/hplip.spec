@@ -76,6 +76,9 @@ Patch303:       photocard-fix-import-error-for-pcardext.patch
 Patch400:       hplip-remove-imageprocessor.diff
 # Let a function return NULL instead of nothing
 Patch401:       hplip-orblite-return-null.diff
+# Use a pgp server (pool.sks-keyservers.net) which doesn't throw proxy errors
+# or run into timeouts most of the time
+Patch402:       hplip-change-pgp-server.patch
 BuildRequires:  %{pymod devel}
 BuildRequires:  %{pymod qt5-devel}
 BuildRequires:  %{pymod xml}
@@ -137,6 +140,8 @@ Requires:       cups > 1.5
 # to get "all the HPLIP stuff" installed has the RPM requirement:
 Requires:       foomatic-filters
 Requires:       ghostscript
+# hp-plugin requries lsb_release
+Requires:       lsb-release
 Requires(post): %{_bindir}/find
 Requires(post): /bin/grep
 Requires(post): /bin/sed
@@ -304,6 +309,7 @@ This sub-package is only required by developers.
 %patch303 -p1 -b .photocard_import
 %patch400 -p1
 %patch401 -p1
+%patch402 -p1
 
 # replace "env" shebang and "/usr/bin/python" with real executable
 find . -name '*.py' -o -name pstotiff | \

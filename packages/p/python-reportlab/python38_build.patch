@@ -1,0 +1,117 @@
+--- a/src/reportlab/lib/fontfinder.py
++++ b/src/reportlab/lib/fontfinder.py
+@@ -67,6 +67,11 @@ try:
+ except ImportError:
+     from md5 import md5
+ 
++try:
++    from time import clock
++except ImportError:
++    from time import process_time as clock
++
+ EXTENSIONS = ['.ttf','.ttc','.otf','.pfb','.pfa']
+ 
+ # PDF font flags (see PDF Reference Guide table 5.19)
+@@ -229,7 +234,7 @@ class FontFinder:
+         self.__dict__.update(finder2.__dict__)
+ 
+     def search(self):
+-        started = time.clock()
++        started = clock()
+         if not self._dirs:
+             raise ValueError("Font search path is empty!  Please specify search directories using addDirectory or addDirectories")
+ 
+@@ -311,7 +316,7 @@ class FontFinder:
+         if self.useCache:
+             self.save(cfn)
+ 
+-        finished = time.clock()
++        finished = clock()
+ ##        print "found %d fonts; skipped %d; bad %d.  Took %0.2f seconds" % (
+ ##            len(self._fonts), len(self._skippedFiles), len(self._badFiles),
+ ##            finished - started
+--- a/src/reportlab/pdfbase/cidfonts.py
++++ b/src/reportlab/pdfbase/cidfonts.py
+@@ -16,6 +16,11 @@ try:
+ except ImportError:
+     from md5 import md5
+ 
++try:
++    from time import clock
++except ImportError:
++    from time import process_time as clock
++
+ import reportlab
+ from reportlab.pdfbase import pdfmetrics
+ from reportlab.pdfbase._cidfontdata import allowedTypeFaces, allowedEncodings, CIDFontInfo, \
+@@ -97,7 +102,7 @@ class CIDEncoding(pdfmetrics.Encoding):
+         """This is a tricky one as CMAP files are Postscript
+         ones.  Some refer to others with a 'usecmap'
+         command"""
+-        #started = time.clock()
++        #started = clock()
+         cmapfile = findCMapFile(name)
+         # this will CRAWL with the unicode encodings...
+         rawdata = open(cmapfile, 'r').read()
+@@ -155,7 +160,7 @@ class CIDEncoding(pdfmetrics.Encoding):
+ 
+             else:
+                 words = words[1:]
+-        #finished = time.clock()
++        #finished = clock()
+         #print 'parsed CMAP %s in %0.4f seconds' % (self.name, finished - started)
+ 
+     def translate(self, text):
+@@ -204,14 +209,14 @@ class CIDEncoding(pdfmetrics.Encoding):
+         f.close()
+ 
+     def fastLoad(self, directory):
+-        started = time.clock()
++        started = clock()
+         f = open(os.path.join(directory, self.name + '.fastmap'), 'rb')
+         self._mapFileHash = marshal.load(f)
+         self._codeSpaceRanges = marshal.load(f)
+         self._notDefRanges = marshal.load(f)
+         self._cmap = marshal.load(f)
+         f.close()
+-        finished = time.clock()
++        finished = clock()
+         #print 'loaded %s in %0.4f seconds' % (self.name, finished - started)
+ 
+     def getData(self):
+--- a/tests/test_multibyte_jpn.py
++++ b/tests/test_multibyte_jpn.py
+@@ -19,6 +19,11 @@ from reportlab.pdfbase.cidfonts import C
+ global VERBOSE
+ VERBOSE = 0
+ 
++try:
++    from time import clock
++except ImportError:
++    from time import process_time as clock
++
+ 
+ class JapaneseFontTests(unittest.TestCase):
+ 
+@@ -343,7 +348,7 @@ class JapaneseFontTests(unittest.TestCas
+ 
+         #try with Unicode truetype - Mincho for starters
+ ##        import time
+-##        started = time.clock()
++##        started = clock()
+ ##        c.showPage()
+ ##        c.setFont('Helvetica',16)
+ ##        c.drawString(100,750, 'About to say Tokyo in MS Gothic...')
+@@ -360,9 +365,9 @@
+ ##
+ ##
+ ##        #tokyoUCS2 = '\x67\x71\x4E\xAC'
+-##        finished = time.clock()
+-        
+-        
++##        finished = clock()
++
++
+ 
+ 
+ 

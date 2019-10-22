@@ -93,4 +93,12 @@
     10 seconds by default. If another play session starts before the period (forwarded request 711702 from hillwood)</comment>
     <requestid>711703</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>65b630c0ecf6c04e82e0abbfc3683b89</srcmd5>
+    <version>3.3.2</version>
+    <time>1571752003</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>741779</requestid>
+  </revision>
 </revisionlist>

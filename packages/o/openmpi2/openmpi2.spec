@@ -322,7 +322,10 @@ Group:          Development/Libraries/Parallel
 Requires:       %{name}-devel = %{version}
 # Make sure no two openmpi macro file can be installed at once
 Provides:       %{pname}-macros-provider = %{version}
-Conflicts:      otherproviders(%{pname}-macros-devel-provider)
+Conflicts:      otherproviders(%{pname}-macros-provider)
+# Conflict (without providing) with the older openmpi-hpc-macros-devel flag
+# to avoid issue with older packages
+Conflicts:      otherproviders(%{pname}-hpc-macros-devel)
 
 %if 0%{?default_openmpi}
 Provides:       openmpi-macros-devel = %{version}
@@ -535,6 +538,7 @@ cat <<EOF >%{buildroot}%{_sysconfdir}/rpm/macros.openmpi
 #
 # openmpi
 #
+%openmpi_prefix %{mpi_prefix}
 %setup_openmpi  source %{mpi_bindir}/mpivars.sh
 
 %openmpi_requires Requires: %{name}-libs

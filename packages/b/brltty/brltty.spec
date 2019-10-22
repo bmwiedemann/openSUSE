@@ -60,13 +60,13 @@ BuildRequires:  pkg-config
 BuildRequires:  python3
 BuildRequires:  python3-Cython
 BuildRequires:  python3-devel
-BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  tcl-devel
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(bluez)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(icu-i18n)
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libusb-1.0)
 %if %{?with_polkit}
 BuildRequires:  pkgconfig(polkit-gobject-1)
@@ -333,7 +333,11 @@ touch %{buildroot}%{_sysconfdir}/brlapi.key
 # Don't include source files in binary package
 rm -f %{buildroot}%{_libdir}/ocaml/brlapi/brlapi.{mli,cmxa}
 # Don't claim generic USB serial adapters (boo#1007652)
-sed -i 's/^ENV{PRODUCT}=="403\/6001\/\*"/#ENV{PRODUCT}=="403\/6001\/\*"/' Autostart/Udev/rules
+sed -i \
+  -e 's/^ENV{PRODUCT}=="403\/6001\/\*"/#ENV{PRODUCT}=="403\/6001\/\*"/' \
+  -e 's/^ENV{PRODUCT}=="10c4\/ea60\/\*"/#ENV{PRODUCT}=="10c4\/ea60\/\*"/' \
+  -e 's/^ENV{PRODUCT}=="10c4\/ea80\/\*"/#ENV{PRODUCT}=="10c4\/ea80\/\*"/' \
+  Autostart/Udev/rules
 mkdir -p %{buildroot}%{_udevdir}/rules.d
 install -m644 Autostart/Udev/rules %{buildroot}%{_udevdir}/rules.d/69-%{name}.rules
 %if %{?with_polkit}

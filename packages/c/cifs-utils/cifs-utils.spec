@@ -43,6 +43,7 @@ Patch7:         0008-mount.cifs.c-fix-memory-leaks-in-main-func.patch
 Patch8:         0009-Zero-fill-the-allocated-memory-for-new-struct-cifs_n.patch
 Patch9:         0010-Zero-fill-the-allocated-memory-for-a-new-ACE.patch
 Patch10:        0011-fix-doublefree.patch
+Patch11:        0012-mount.cifs-Fix-invalid-free.patch
 
 # cifs-utils 6.8 switched to python for man page generation
 # we need to require either py2 or py3 package
@@ -130,6 +131,7 @@ cp -a ${RPM_SOURCE_DIR}/README.cifstab.migration .
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
+%patch11 -p1
 
 %build
 export CFLAGS="%{optflags} -D_GNU_SOURCE -fpie"

@@ -281,4 +281,15 @@
     <comment>- Trim conjecture, bias, and metadata repetitions from description. (forwarded request 727904 from jengelh)</comment>
     <requestid>727906</requestid>
   </revision>
+  <revision rev="38" vrev="5">
+    <srcmd5>a48138f076c29ec2917720c8e0cdd918</srcmd5>
+    <version>3.5.27</version>
+    <time>1571751763</time>
+    <user>dimstar_suse</user>
+    <comment>- do not segfault when mmx enabled [bsc#1154401]
+- added patches
+  https://sourceforge.net/p/djvu/bugs/293/
+  + djvulibre-always-assume-that-cpuid-works-on-x86_64.patch</comment>
+    <requestid>741427</requestid>
+  </revision>
 </revisionlist>

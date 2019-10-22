@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Mon Oct 14 10:45:44 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.1.2148, fixes the following problems
+  * Using "x" before a closed fold may delete that fold.
+  * SafeStateAgain not triggered if callback uses feedkeys().
+  * Compiler test for Perl may fail.
+  * Not easy to jump to function line from profile.
+  * "make test" for indent files doesn't cause make to fail.
+  * The screen.c file is much too big.
+  * Function for ex command is named inconsistently.
+  * Fix for "x" deleting a fold has side effects.
+  * "precedes" in 'listchars' not used properly.
+  * The mouse code is spread out.
+  * Some tests fail when +balloon_eval_term is missing but _balloon_eval is
+  present. (Dominique Pelle)
+  * No tests for state().
+  * No tests for SafeState and SafeStateAgain.
+  * Test for SafeState and SafeStateAgain may fail.
+  * Test for SafeStateAgain may still fail.
+  * Mouse code is spread out.
+  * When 'wincolor' is set text property changes highlighting. (Andy Stewart)
+  * "gk" moves to start of line instead of upwards.
+  * When editing a buffer 'colorcolumn' may not work.
+  * Test for SafeState autocommand is a bit flaky.
+  * Get many log messages when waiting for a typed character.
+  * Crash when trying to put a terminal buffer in a popup window.
+  * The ops.c file is too big.
+  * Build error with +textprop but without +terminal. (Tony Mechelynck)
+  * Popup window test fails without +terminal.
+  * The terminal API is limited and can't be disabled.
+  * The spell.c file is too big.
+  * Some files have a weird name to fit in 8.3 characters.
+  * Multi-byte chars do not work properly with "%.*S" in printf().
+  * Missing a few changes for the renamed files.
+  * Cannot easily select one test function to execute.
+  * Renamed libvterm mouse.c file not in distributed file list.
+  * Do not get a hint that $TEST_FILTER was active.
+  * Not clear why channel log file ends.
+  * Double free when memory allocation fails. (Zu-Ming Jiang)
+  * The fileio.c file is too big.
+  * Leaking memory when getting item from dict.
+  * Too many #ifdefs.
+  * :mksession is not sufficiently tested.
+  * mksession test fails on MS-Windows.
+  * state() test fails on some Mac systems.
+  * :mksession is not sufficiently tested.
+  * write_session_file() often defined but not used.
+  * Can't build with GTK and FEAT_GUI_GNOME. (Tony Mechelynck)
+  * wrong error message if "termdebugger" is not executable.
+  * The normal.c file is too big.
+  * No tests for dragging the mouse beyond the window.
+  * Various memory leaks reported by asan.
+  * Cannot close the cmdline window from CmdWinEnter. (George Brown)
+  * popup_getoptions() hangs with tab-local popup.
+  * CTRL-C closes two popups instead of one.
+  * Viminfo file not sufficiently tested.
+  * Build number for ConPTY is outdated.
+  * ":help expr-!~?" only works after searching.
+  * When a popup is closed with CTRL-C the callback aborts.
+  * No check for out of memory.
+  * CursorLine highlight used while 'cursorline' is off.
+  * Termcodes test fails when $TERM is "dumb".
+  * memory access error for empty string when 'encoding' is a single byte
+  encoding.
+  * Some MB_ macros are more complicated than necessary. (Dominique Pelle)
+  * Mode is not updated when switching to terminal in Insert mode.
+  * Cannot build without terminal feature.
+  * Parsing CSI sequence is messy.
+  * Ruler is not updated if win_execute() moves cursor.
+  * Fnamemodify() fails when repeating :e.
+  * Viminfo not sufficiently tested.
+  * The indent.c file is a bit big.
+  * Renamed libvterm sources makes merging difficult.
+  * Using hard coded executable path in test.
+  * MSVC build fails.
+  * MSVC tests fail.
+  * MS-Windows: screen mess when not recognizing insider build.
+  * Some tests fail when run as root.
+  * Modifier keys are not always recognized.
+  * With modifyOtherKeys Alt-a does not work properly.
+  * using freed memory with autocmd from fuzzer. (Dhiraj Mishra, Dominique
+  Pelle)
+  * Parsing the termresponse is not tested.
+  * Including the build number in the Win32 binary is confusing.
+  * The modifyOtherKeys codes are not tested.
+  * "gk" and "gj" do not work correctly in number column.
+  * :tselect has an extra hit-enter prompt.
+  * Some key mappings do not work with modifyOtherKeys.
+  * Cannot see each command even when 'verbose' is set.
+  * Side effects when using t_ti to enable modifyOtherKeys.
+  * Cannot map <C-H> when modifyOtherKeys is enabled.
+  * Build failure.
+  * Crash when allocating memory fails. (Zu-Ming Jiang)
+  * No test for right click extending Visual area.
+
+-------------------------------------------------------------------
 Wed Sep 18 09:36:58 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.1.2052, fixes the following problems

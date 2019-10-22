@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 18 18:11:38 UTC 2019 - Tony Jones <tonyj@suse.com>
+
+- Update Cavium ThunderX2 with now public events (jsc#SLE-10000)
+  New patch: update-cavium-thunderx2-with-now-public-events.patch
+
+-------------------------------------------------------------------
 Thu Aug 15 08:25:29 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add provides/obsoletes wrt bsc#1145710 to avoid file conflict

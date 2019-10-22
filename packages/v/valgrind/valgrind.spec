@@ -19,13 +19,14 @@
 # during building the major version of glibc is built into the suppression file
 %define glibc_main_version %(getconf GNU_LIBC_VERSION | cut -d' ' -f2 | cut -d. -f1)
 %define glibc_major_version %(getconf GNU_LIBC_VERSION | cut -d' ' -f2 | cut -d. -f2)
-%define building_docs 1
+
+%bcond_without docs
 
 Name:           valgrind
 Version:        3.15.0
 Release:        0
 Summary:        Memory Management Debugger
-License:        GPL-2.0-or-later
+License:        GPL-2.0-or-later AND GFDL-1.2-only
 Group:          Development/Tools/Debuggers
 Url:            http://valgrind.org/
 Source0:        ftp://sourceware.org/pub/valgrind/valgrind-%{version}.tar.bz2
@@ -34,22 +35,22 @@ Source0:        ftp://sourceware.org/pub/valgrind/valgrind-%{version}.tar.bz2
 Patch0:         valgrind.xen.patch
 Patch1:         jit-register-unregister.diff
 Patch2:         armv6-support.diff
-BuildRequires:  automake
+%if %{with docs}
 BuildRequires:  docbook-xsl-stylesheets
-BuildRequires:  docbook_4
+BuildRequires:  libxslt
+%endif
+BuildRequires:  automake
 %if 0%{?suse_version} < 1320
 BuildRequires:  gcc8-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-BuildRequires:  libxslt
 BuildRequires:  pkgconfig
 BuildRequires:  procps
 Requires:       glibc >= %{glibc_main_version}.%{glibc_major_version}
 Requires:       glibc < %{glibc_main_version}.%{lua:print(rpm.expand("%{glibc_major_version}")+1)}
 Provides:       callgrind = %{version}
 Obsoletes:      callgrind < %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  aarch64 %ix86 x86_64 ppc ppc64 ppc64le s390x armv7l armv7hl armv6l armv6hl
 %ifarch x86_64 ppc64
 %if 0%{?suse_version} < 1320
@@ -81,33 +82,34 @@ memory, but is usually still usable. Valgrind is still in development,
 but it has been successfully used to optimize several KDE applications.
 
 %package devel
-Summary:        Memory Management Debugger
+Summary:        Header files for for Valgrind
+License:        GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
 Requires:       %{name} = %{version}
+Requires:       %{name}-client-headers = %{version}
 
 %description devel
-Valgrind checks all memory operations in an application, like read,
-write, malloc, new, free, and delete. Valgrind can find uses of
-uninitialized memory, access to already freed memory, overflows,
-illegal stack operations, memory leaks, and any illegal
-new/malloc/free/delete commands. Another program in the package is
-"cachegrind," a profiler based on the valgrind engine.
+This package contains the Valgrind header files.
 
-To use valgrind you should compile your application with "-g -O0"
-compiler options. Afterwards you can use it with:
+%package client-headers
+Summary:        Header files for for Valgrind
+# The client headers are permissively licensed under a BSD-style
+# license. SPDX License Request filed.
+# License:      BSD-3-Clause
+License:        GPL-2.0-or-later AND GFDL-1.2-only
+Group:          Development/Tools/Debuggers
+Provides:       valgrind-devel:%{_includedir}/valgrind/valgrind.h
 
-valgrind --tool=memcheck --sloppy-malloc=yes --leak-check=yes
---db-attach=yes my_application, for example.
-
-More valgrind options can be listed via "valgrind --help". There is
-also complete documentation in the %{_docdir}/valgrind/
-directory. A debugged application runs slower and needs much more
-memory, but is usually still usable. Valgrind is still in development,
-but it has been successfully used to optimize several KDE applications.
+%description client-headers
+This package contains the BSD-style licensed Valgrind header
+files for inclusion into regular programs. The program can
+detect if it is running under Valgrind and interact with the
+Valgrind core and plugins.
 
 %ifarch x86_64 ppc64 s390x
 %package 32bit
 Summary:        Memory Management Debugger
+License:        GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
 Requires:       %{name} = %{version}
 Provides:       valgrind:%{_libdir}/valgrind/32bit-core.xml
@@ -175,7 +177,7 @@ export GDB=%{_bindir}/gdb
     %{nil}
 
 make %{?_smp_mflags}
-%if %{building_docs}
+%if %{with docs}
 pushd docs
     #make all-docs
     # building the docs needs network access at the moment :-(
@@ -186,12 +188,14 @@ popd
 %install
 make DESTDIR=%{buildroot} install %{?_smp_mflags}
 rm %{buildroot}/%{_libdir}/valgrind/lib*.a # drop unreproducible unused files to fix boo#1118163
+
 mkdir -p %{buildroot}/%{_defaultdocdir}
 if test -d %{buildroot}%{_datadir}/doc/valgrind; then
+     # Remove Postscript manual (20 MByte), there are PDF and HTML versions
+     rm %{buildroot}%{_datadir}/doc/valgrind/valgrind_manual.ps
      mv %{buildroot}%{_datadir}/doc/valgrind %{buildroot}/%{_defaultdocdir}
 fi
 mkdir -p %{buildroot}%{_docdir}/%{name}
-cp -a README* NEWS AUTHORS %{buildroot}/%{_defaultdocdir}/%{name}
 
 %check
 # OBS doesn't have a z13
@@ -203,13 +207,25 @@ VALGRIND_LIB=$PWD/.in_place VALGRIND_LIB_INNER=$PWD/.in_place ./coregrind/valgri
 %endif
 
 %files devel
-%{_includedir}/valgrind
+%{_includedir}/valgrind/config.h
+%{_includedir}/valgrind/vki
+%{_includedir}/valgrind/libvex*.h
+%{_includedir}/valgrind/pub_tool*.h
 %{_libdir}/pkgconfig/valgrind.pc
+
+%files client-headers
+%dir %{_includedir}/valgrind
+%{_includedir}/valgrind/callgrind.h
+%{_includedir}/valgrind/drd.h
+%{_includedir}/valgrind/helgrind.h
+%{_includedir}/valgrind/memcheck.h
+%{_includedir}/valgrind/valgrind.h
 
 %files
 %license COPYING COPYING.DOCS
 %{_bindir}/*
-%doc %{_defaultdocdir}/%{name}
+%doc README* NEWS AUTHORS
+%doc %{_defaultdocdir}/%{name}/
 %doc %{_mandir}/*/*
 %dir %{_libdir}/valgrind
 %ifarch aarch64

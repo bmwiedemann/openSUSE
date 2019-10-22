@@ -23,7 +23,7 @@
 %endif
 
 Name:           libxkbcommon
-Version:        0.8.4
+Version:        0.9.1
 Release:        0
 Summary:        Library for handling xkb descriptions
 License:        MIT
@@ -33,14 +33,14 @@ Url:            http://xkbcommon.org/
 #Git-Clone:	git://github.com/xkbcommon/libxkbcommon
 Source:         https://xkbcommon.org/download/%name-%version.tar.xz
 Source2:        baselibs.conf
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-#git#BuildRequires:  autoconf >= 2.62
-#git#BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  flex
-#git#BuildRequires:  libtool >= 2
-BuildRequires:  pkgconfig
+BuildRequires:  meson
+BuildRequires:  pkg-config
 BuildRequires:  xz
+BuildRequires:  pkgconfig(wayland-client) >= 1.2.0
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.7
+BuildRequires:  pkgconfig(wayland-scanner)
 BuildRequires:  pkgconfig(xkeyboard-config)
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
 BuildRequires:  pkgconfig(xproto)
@@ -113,24 +113,16 @@ in %name-x11-0.
 %setup -q
 
 %build
-if [ ! -e configure ]; then
-	NOCONFIGURE=1 ./autogen.sh
-fi
 %if %{with x11}
-extra_opts=--enable-x11
+ef=-Denable-x11=true
 %else
-extra_opts=--disable-x11
+ef=-Denable-x11=false
 %endif
-# Ensure people will use pkgconfig to locate headers.
-%configure --disable-static --includedir="%_includedir/%name" $extra_opts
-make %{?_smp_mflags} V=1
+%meson -Denable-docs=false --includedir="%_includedir/%name" $ef
+%meson_build
 
 %install
-%make_install
-rm -f "%buildroot/%_libdir"/*.la
-
-%check
-make check
+%meson_install
 
 %post   -n libxkbcommon0 -p /sbin/ldconfig
 %postun -n libxkbcommon0 -p /sbin/ldconfig
@@ -138,13 +130,11 @@ make check
 %postun -n libxkbcommon-x11-0 -p /sbin/ldconfig
 
 %files -n libxkbcommon0
-%defattr(-,root,root)
-%doc LICENSE NEWS
+%license LICENSE
 %_libdir/libxkbcommon.so.*
 
 %files devel
-%defattr(-,root,root)
-%doc LICENSE NEWS
+%doc NEWS
 %_includedir/%name/
 %if %{with x11}
 %exclude %_includedir/%name/xkbcommon/xkbcommon-x11.h
@@ -154,13 +144,11 @@ make check
 
 %if %{with x11}
 %files -n libxkbcommon-x11-0
-%defattr(-,root,root)
-%doc LICENSE NEWS
+%license LICENSE
 %_libdir/libxkbcommon-x11.so.*
 
 %files x11-devel
-%defattr(-,root,root)
-%doc LICENSE NEWS
+%license LICENSE
 %dir %_includedir/%name
 %dir %_includedir/%name/xkbcommon
 %_includedir/%name/xkbcommon/xkbcommon-x11.h

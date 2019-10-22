@@ -1001,4 +1001,14 @@ https://git.reviewboard.kde.org/r/104878/ (forwarded request 116659 from StefanB
     <comment></comment>
     <requestid>732143</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>6f014c42f968acb65a53bc7b2a7974e5</srcmd5>
+    <version>2.9.70git.20191004T143525~5ed62f9a08</version>
+    <time>1571751456</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.9.70git.20191004T143525~5ed62f9a08:
+  * Register Play/Pause as global shortcut again (boo#1152751, kde#373590)
+  * Fix missing directory separators when saving podcasts to disk</comment>
+    <requestid>736815</requestid>
+  </revision>
 </revisionlist>

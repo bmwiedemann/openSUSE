@@ -116,11 +116,15 @@ BuildRequires:  rust-std
 BuildRequires:  wxWidgets-any-devel
 # csharp is not on s390 machines
 %ifnarch s390x
+%if 0%{?is_opensuse}
 BuildRequires:  mono(csharp)
+%endif
 %endif
 %else
 BuildRequires:  boost-devel
+%if 0%{?is_opensuse}
 BuildRequires:  mono-core
+%endif
 BuildRequires:  wxWidgets-devel
 %endif
 %endif

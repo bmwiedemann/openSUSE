@@ -23,11 +23,7 @@
 %define _uaver  801
 %define _socxx  1
 %define _revsn  366581
-%ifarch x86_64 aarch64 %arm
-%bcond_without libcxx
-%else
 %bcond_with libcxx
-%endif
 %ifarch aarch64 ppc64 ppc64le %{ix86} x86_64
 %bcond_without openmp
 %else
@@ -58,7 +54,7 @@
 %bcond_with ffi
 %bcond_with oprofile
 %bcond_with valgrind
-%bcond_without pyclang
+%bcond_with pyclang
 
 Name:           llvm8
 Version:        8.0.1

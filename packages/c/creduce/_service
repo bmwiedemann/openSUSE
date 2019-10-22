@@ -5,7 +5,7 @@
     <param name="changesgenerate">enable</param>
     <param name="filename">creduce</param>
     <param name="versionformat">2.10.0+git.%cd.%h</param>
-    <param name="revision">fb91843c547794f165e5764a003166191e6c6643</param>
+    <param name="revision">8a67e69c49ef123a1c0a4898ac259249411a01dd</param>
   </service>
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>

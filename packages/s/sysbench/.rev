@@ -278,4 +278,13 @@
     <comment>Update</comment>
     <requestid>726877</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>122ce298f1113182ec2999a49c2cf55e</srcmd5>
+    <version>1.0.17</version>
+    <time>1571751889</time>
+    <user>dimstar_suse</user>
+    <comment>- Add zlib build dependency
+- Use more of modern macros for building</comment>
+    <requestid>741496</requestid>
+  </revision>
 </revisionlist>

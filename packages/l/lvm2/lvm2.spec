@@ -60,6 +60,7 @@ Patch0002:      bug-1149408_Fix-rounding-writes-up-to-sector-size.patch
 Patch0003:      bug-1149408_vgcreate-vgextend-restrict-PVs-with-mixed-block-size.patch
 Patch0004:      bug-1152378-md-component-detection-for-differing-PV-and-device-s.patch
 Patch0005:      bug-1152378-pvscan-fix-PV-online-when-device-has-a-different-siz.patch
+Patch0006:      jcs-SLE5498_pvscan-allow-use-of-noudevsync-option.patch
 # SUSE patches: 1000+ for LVM
 # Never upstream
 Patch1001:      cmirrord_remove_date_time_from_compilation.patch
@@ -119,6 +120,7 @@ Volume Manager.
 %patch0003 -p1
 %patch0004 -p1
 %patch0005 -p1
+%patch0006 -p1
 %patch1001 -p1
 %patch1002 -p1
 %patch1003 -p1

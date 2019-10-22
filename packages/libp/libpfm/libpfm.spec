@@ -32,6 +32,7 @@ Source1:        baselibs.conf
 Patch0:         0001-s390-cpumf-add-IBM-z14-ZR1-support.patch
 Patch1:         0001-s390-cpumf-add-support-for-counter-second-version-nu.patch
 Patch2:         0001-s390-cpumf-add-support-for-machine-type-8561.patch
+Patch3:         update-cavium-thunderx2-with-now-public-events.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros

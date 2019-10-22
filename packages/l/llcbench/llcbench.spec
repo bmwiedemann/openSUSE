@@ -1,7 +1,7 @@
 #
 # spec file for package llcbench
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,7 +20,7 @@ Name:           llcbench
 Version:        1.10
 Release:        0
 Summary:        Low Level Architectural Characterization Benchmark Suite
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          System/Benchmark
 Url:            http://icl.cs.utk.edu/llcbench/
 Source:         http://icl.cs.utk.edu/llcbench/llcbench.tar.gz
@@ -30,8 +30,8 @@ Patch0:         llcbench-gfortran.patch
 Patch1:         llcbench-noinline.patch
 BuildRequires:  blas-devel
 BuildRequires:  gcc-fortran
-BuildRequires:  openmpi2-devel
-Requires:       openmpi2
+BuildRequires:  openmpi-macros-devel
+%openmpi_requires
 Suggests:       gnuplot
 Provides:       blasbench
 Provides:       cachebench
@@ -47,12 +47,12 @@ MPBench, CacheBench, and BLASBench into a single benchmark package.
 %patch1 -p1
 
 %build
+%setup_openmpi
 ln -sf conf/sys.linux-lam sys.def
 sed -i \
   -e "s|gcc|cc %{optflags}|g" \
   -e "s|g77|gfortran|g" \
   -e "s|-O3|-O2|g" \
-  -e "s|mpicc|%{_libdir}/mpi/gcc/openmpi2/bin/mpicc|g" \
   sys.def
 make %{?_smp_mflags} compile
 

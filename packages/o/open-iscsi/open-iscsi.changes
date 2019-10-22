@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 18 21:00:41 UTC 2019 - Lee Duncan <lduncan@suse.com>
+
+- Merge in latest upstream, with fixes for:
+  * Support CHAP SHA-1, SHA-256, SHA3-256 vis openssl libcrypto
+    - this requires an update of the SPEC file, as well
+  * Initialize timeout for printing specific session info
+  Updating (in addition to the SPEC file):
+  * open-iscsi-SUSE-latest.diff.bz2
+
+-------------------------------------------------------------------
 Fri Sep 13 16:20:52 UTC 2019 - Lee Duncan <lduncan@suse.com>
 
 - Upgraded to upstream version 2.0.878, which becomes 2.0.878-suse

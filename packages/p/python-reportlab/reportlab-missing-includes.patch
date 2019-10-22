@@ -1,7 +1,5 @@
-Index: src/rl_addons/renderPM/gt1/gt1-namecontext.c
-===================================================================
---- src/rl_addons/renderPM/gt1/gt1-namecontext.c.orig
-+++ src/rl_addons/renderPM/gt1/gt1-namecontext.c
+--- a/src/rl_addons/renderPM/gt1/gt1-namecontext.c
++++ b/src/rl_addons/renderPM/gt1/gt1-namecontext.c
 @@ -1,6 +1,10 @@
  /* A module for a simple "name context", i.e. lisp-style atoms */
  

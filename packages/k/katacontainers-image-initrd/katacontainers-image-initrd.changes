@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Oct 21 14:10:04 UTC 2019 - Ralf Haferkamp <rhafer@suse.com>
+
+- Update to 1.9.0~rc0:
+  agent:
+    - firecracker: send logs to a vsock port
+    - network: Setup DNS for sandbox
+    - protocols/client: support hybrid vsocks
+    - Fix incorrect script reference in TRACING.md
+  osbuilder:
+    - osbuilder: Add USE_PODMAN as an alternate for USE_DOCKER
+    - README: Update how to use DEBUG variable
+    - Fix yq
+    - initrd_builder: Create empty resolv.conf in rootfs
+    - rootfs: update fedora to 29 for arm64.
+- Fix config for set-version source-service to set version based
+  on the osbuilder filename. The previously used
+  "katacontainers-image-initrd" caused the service to fail.
+
+-------------------------------------------------------------------
 Wed Sep 25 11:42:06 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
 
 - Update package version to 1.9.0~alpha2:

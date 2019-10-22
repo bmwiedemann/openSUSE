@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 10 08:38:42 UTC 2019 - christophe@krop.fr
+
+- Update to version 2.9.70git.20191004T143525~5ed62f9a08:
+  * Register Play/Pause as global shortcut again (boo#1152751, kde#373590)
+  * Fix missing directory separators when saving podcasts to disk
+
+-------------------------------------------------------------------
 Fri Sep 20 10:23:20 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to version 2.9.70git.20190920T110913~b986f52d1d:

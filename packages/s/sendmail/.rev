@@ -811,4 +811,12 @@ SUSE- proprietary prefix added until Sendmail is accepted as valid SPDX license 
   * The former deprecated macro RES_USE_INET6 is gone with glibc 2.30</comment>
     <requestid>733805</requestid>
   </revision>
+  <revision rev="91" vrev="19">
+    <srcmd5>bddb675c1fa1731cac9000b6119a09c7</srcmd5>
+    <version>8.15.2</version>
+    <time>1571751879</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>741483</requestid>
+  </revision>
 </revisionlist>

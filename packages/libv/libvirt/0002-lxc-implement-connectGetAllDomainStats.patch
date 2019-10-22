@@ -9,10 +9,10 @@ them using the existing API.
  src/lxc/lxc_driver.c | 138 +++++++++++++++++++++++++++++++++++++++++++++++++++
  1 file changed, 138 insertions(+)
 
-Index: libvirt-5.7.0/src/lxc/lxc_driver.c
+Index: libvirt-5.8.0/src/lxc/lxc_driver.c
 ===================================================================
---- libvirt-5.7.0.orig/src/lxc/lxc_driver.c
-+++ libvirt-5.7.0/src/lxc/lxc_driver.c
+--- libvirt-5.8.0.orig/src/lxc/lxc_driver.c
++++ libvirt-5.8.0/src/lxc/lxc_driver.c
 @@ -75,6 +75,7 @@
  #include "viraccessapichecklxc.h"
  #include "virhostdev.h"
@@ -21,23 +21,22 @@ Index: libvirt-5.7.0/src/lxc/lxc_driver.c
  
  #define VIR_FROM_THIS VIR_FROM_LXC
  
-@@ -5402,6 +5403,142 @@ lxcDomainHasManagedSaveImage(virDomainPt
+@@ -5404,6 +5405,135 @@ lxcDomainHasManagedSaveImage(virDomainPt
      return ret;
  }
  
 +static int
 +lxcDomainGetStatsCpu(virDomainObjPtr dom,
-+                     virDomainStatsRecordPtr record,
-+                     int *maxparams)
++                     virTypedParamListPtr params)
 +{
 +    virLXCDomainObjPrivatePtr priv = dom->privateData;
-+    return virCgroupGetStatsCpu(priv->cgroup, record, maxparams);
++    return virCgroupGetStatsCpu(priv->cgroup, params);
 +}
 +
 +typedef int
 +(*lxcDomainGetStatsFunc)(virDomainObjPtr dom,
-+                         virDomainStatsRecordPtr record,
-+                         int *maxparams);
++                         virTypedParamListPtr params);
++
 +
 +struct lxcDomainGetStatsWorker {
 +    lxcDomainGetStatsFunc func;
@@ -57,36 +56,30 @@ Index: libvirt-5.7.0/src/lxc/lxc_driver.c
 +                  unsigned int stats,
 +                  virDomainStatsRecordPtr *record)
 +{
-+    int maxparams = 0;
-+    virDomainStatsRecordPtr tmp;
++    VIR_AUTOFREE(virDomainStatsRecordPtr) tmp = NULL;
++    VIR_AUTOPTR(virTypedParamList) params = NULL;
 +    size_t i;
-+    int ret = -1;
 +
-+    if (VIR_ALLOC(tmp) < 0)
-+        goto cleanup;
++    if (VIR_ALLOC(params) < 0)
++        return -1;
 +
 +    for (i = 0; lxcDomainGetStatsWorkers[i].func; i++) {
 +        if (stats & lxcDomainGetStatsWorkers[i].stats) {
-+            if (lxcDomainGetStatsWorkers[i].func(dom, tmp, &maxparams) < 0)
-+                goto cleanup;
++            if (lxcDomainGetStatsWorkers[i].func(dom, params) < 0)
++                return -1;
 +        }
 +    }
 +
++    if (VIR_ALLOC(tmp) < 0)
++        return -1;
++
 +    if (!(tmp->dom = virGetDomain(conn, dom->def->name,
 +                                  dom->def->uuid, dom->def->id)))
-+        goto cleanup;
++        return -1;
 +
-+    *record = tmp;
-+    tmp = NULL;
-+    ret = 0;
-+
-+ cleanup:
-+    if (tmp) {
-+        virTypedParamsFree(tmp->params, tmp->nparams);
-+        VIR_FREE(tmp);
-+    }
-+
-+    return ret;
++    tmp->nparams = virTypedParamListStealParams(params, &tmp->params);
++    VIR_STEAL_PTR(*record, tmp);
++    return 0;
 +}
 +
 +static int
@@ -164,7 +157,7 @@ Index: libvirt-5.7.0/src/lxc/lxc_driver.c
  
  /* Function Tables */
  static virHypervisorDriver lxcHypervisorDriver = {
-@@ -5497,6 +5634,7 @@ static virHypervisorDriver lxcHypervisor
+@@ -5499,6 +5629,7 @@ static virHypervisorDriver lxcHypervisor
      .nodeGetFreePages = lxcNodeGetFreePages, /* 1.2.6 */
      .nodeAllocPages = lxcNodeAllocPages, /* 1.2.9 */
      .domainHasManagedSaveImage = lxcDomainHasManagedSaveImage, /* 1.2.13 */

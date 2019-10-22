@@ -212,4 +212,12 @@
     <comment>- Update to new upstream release 0.8.4</comment>
     <requestid>678388</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>561ea1ef3d663ef3f7399b5f997727bd</srcmd5>
+    <version>0.9.1</version>
+    <time>1571751783</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.9.1</comment>
+    <requestid>741445</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 21 06:26:50 UTC 2019 - Sebastian Parschauer <s.parschauer@gmx.de> - 0.17-1
+
+- Update the spec file by running spec-cleaner
+- Update patches to final upstream description
+  * update: fix-build-with-older-autotools.patch
+
+-------------------------------------------------------------------
 Tue Jan  9 06:42:03 UTC 2018 - sparschauer@suse.de
 
 - Update to version 0.17:

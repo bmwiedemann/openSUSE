@@ -1035,4 +1035,18 @@
     <comment></comment>
     <requestid>741349</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>80ab6967f24ba90e40ce645b8da933a7</srcmd5>
+    <version>1.2.0</version>
+    <time>1571751913</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.0:
+  * New sidebar.
+  * New banners.
+  * Better web tracks support.
+  * New suggestion view.
+- Update build dependencies according to meson.build.
+- Add man page to list of installed files.</comment>
+    <requestid>741618</requestid>
+  </revision>
 </revisionlist>

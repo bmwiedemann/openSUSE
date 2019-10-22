@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 22 04:23:31 UTC 2019 - Jason Sikes <jsikes@suse.com>
+
+- Update to version 0.4.10:
+
+  * Added EC signing through EVP API 
+  * Added an empty EC private key required by OpenSSL 1.1.1 
+  * Stored additional certificate attributes 
+  * Engine allowed to use private keys without a PIN 
+  * Lazy binding used as a workaround for buggy modules 
+  * MinGW build fixes and documentation 
+  * LibreSSL 2.8.3 build fixes 
+  * Error handling fixes 
+
+-------------------------------------------------------------------
 Tue Mar 12 16:15:22 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Add p11-kit-devel to BuildRequires (boo#1122413)

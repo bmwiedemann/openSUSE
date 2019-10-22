@@ -1,7 +1,7 @@
-Index: xen-4.10.0-testing/tools/misc/xencons
+Index: xen-4.13.0-testing/tools/misc/xencons
 ===================================================================
---- xen-4.10.0-testing.orig/tools/misc/xencons
-+++ xen-4.10.0-testing/tools/misc/xencons
+--- xen-4.13.0-testing.orig/tools/misc/xencons
++++ xen-4.13.0-testing/tools/misc/xencons
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3
@@ -67,10 +67,10 @@ Index: xen-4.10.0-testing/tools/misc/xencons
 +        print(sys.argv[0] + " <host> <port>")
          sys.exit(1)
      connect(str(sys.argv[1]),int(sys.argv[2]))
-Index: xen-4.10.0-testing/tools/misc/xencov_split
+Index: xen-4.13.0-testing/tools/misc/xencov_split
 ===================================================================
---- xen-4.10.0-testing.orig/tools/misc/xencov_split
-+++ xen-4.10.0-testing/tools/misc/xencov_split
+--- xen-4.13.0-testing.orig/tools/misc/xencov_split
++++ xen-4.13.0-testing/tools/misc/xencov_split
 @@ -1,4 +1,4 @@
 -#!/usr/bin/python
 +#!/usr/bin/python3
@@ -97,10 +97,10 @@ Index: xen-4.10.0-testing/tools/misc/xencov_split
          sys.exit(1)
      except KeyboardInterrupt:
          sys.exit(1)
-Index: xen-4.10.0-testing/tools/misc/xenpvnetboot
+Index: xen-4.13.0-testing/tools/misc/xenpvnetboot
 ===================================================================
---- xen-4.10.0-testing.orig/tools/misc/xenpvnetboot
-+++ xen-4.10.0-testing/tools/misc/xenpvnetboot
+--- xen-4.13.0-testing.orig/tools/misc/xenpvnetboot
++++ xen-4.13.0-testing/tools/misc/xenpvnetboot
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3
@@ -224,10 +224,10 @@ Index: xen-4.10.0-testing/tools/misc/xenpvnetboot
          sys.exit(1)
  
      sys.stdout.flush()
-Index: xen-4.10.0-testing/tools/python/scripts/convert-legacy-stream
+Index: xen-4.13.0-testing/tools/python/scripts/convert-legacy-stream
 ===================================================================
---- xen-4.10.0-testing.orig/tools/python/scripts/convert-legacy-stream
-+++ xen-4.10.0-testing/tools/python/scripts/convert-legacy-stream
+--- xen-4.13.0-testing.orig/tools/python/scripts/convert-legacy-stream
++++ xen-4.13.0-testing/tools/python/scripts/convert-legacy-stream
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3
@@ -272,10 +272,10 @@ Index: xen-4.10.0-testing/tools/python/scripts/convert-legacy-stream
          sys.exit(e.code)
      except KeyboardInterrupt:
          sys.exit(1)
-Index: xen-4.10.0-testing/tools/python/scripts/verify-stream-v2
+Index: xen-4.13.0-testing/tools/python/scripts/verify-stream-v2
 ===================================================================
---- xen-4.10.0-testing.orig/tools/python/scripts/verify-stream-v2
-+++ xen-4.10.0-testing/tools/python/scripts/verify-stream-v2
+--- xen-4.13.0-testing.orig/tools/python/scripts/verify-stream-v2
++++ xen-4.13.0-testing/tools/python/scripts/verify-stream-v2
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3
@@ -327,40 +327,20 @@ Index: xen-4.10.0-testing/tools/python/scripts/verify-stream-v2
          sys.exit(e.code)
      except KeyboardInterrupt:
          sys.exit(2)
-Index: xen-4.10.0-testing/tools/xenmon/xenmon.py
+Index: xen-4.13.0-testing/tools/xenmon/xenmon.py
 ===================================================================
---- xen-4.10.0-testing.orig/tools/xenmon/xenmon.py
-+++ xen-4.10.0-testing/tools/xenmon/xenmon.py
+--- xen-4.13.0-testing.orig/tools/xenmon/xenmon.py
++++ xen-4.13.0-testing/tools/xenmon/xenmon.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3
  
  #####################################################################
  # xenmon is a front-end for xenbaked.
-@@ -248,8 +248,8 @@ def display(scr, row, col, str, attr=0):
-         scr.keypad(0)
-         _c.echo()
-         _c.endwin()
--        print "Your terminal screen is not big enough; Please resize it."
--        print "row=%d, col=%d, str='%s'" % (row, col, str)
-+        print("Your terminal screen is not big enough; Please resize it.")
-+        print("row=%d, col=%d, str='%s'" % (row, col, str))
-         sys.exit(1)
- 
- 
-@@ -704,7 +704,7 @@ def main():
-         try:
-             writelog()
-         except:
--            print 'Quitting.'
-+            print('Quitting.')
-     stop_xenbaked()
- 
- if __name__ == "__main__":
-Index: xen-4.10.0-testing/tools/xentrace/xentrace_format
+Index: xen-4.13.0-testing/tools/xentrace/xentrace_format
 ===================================================================
---- xen-4.10.0-testing.orig/tools/xentrace/xentrace_format
-+++ xen-4.10.0-testing/tools/xentrace/xentrace_format
+--- xen-4.13.0-testing.orig/tools/xentrace/xentrace_format
++++ xen-4.13.0-testing/tools/xentrace/xentrace_format
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3

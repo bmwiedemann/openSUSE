@@ -76,4 +76,14 @@
 - Add python3-base Requires to python3-clang subpackage</comment>
     <requestid>738486</requestid>
   </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>e22acbc7caa03b2a9e6dc51d3bab26dc</srcmd5>
+    <version>8.0.1</version>
+    <time>1571751700</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't build libc++ and python3-clang anymore, because they come
+  from llvm9 now (boo#1145735). 
+</comment>
+    <requestid>741225</requestid>
+  </revision>
 </revisionlist>

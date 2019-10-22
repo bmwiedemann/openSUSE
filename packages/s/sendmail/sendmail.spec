@@ -249,7 +249,7 @@ fi
     set +f
 
 %build
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+%global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
     #
     ID=$(id -u)
     RPM_OPT_FLAGS="%{optflags} -fno-strict-aliasing -D_GNU_SOURCE"

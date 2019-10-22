@@ -466,4 +466,12 @@
     libxslt-do_not_build_doc_nor_xsltproc.patch</comment>
     <requestid>734238</requestid>
   </revision>
+  <revision rev="60" vrev="5">
+    <srcmd5>c70e774e67760fb0553d01d26a3e9e6a</srcmd5>
+    <version>1.1.33</version>
+    <time>1571751832</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>741568</requestid>
+  </revision>
 </revisionlist>

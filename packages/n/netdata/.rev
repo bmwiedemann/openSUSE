@@ -2102,4 +2102,41 @@ Improvements:
     + Fixed sensor chips filtering in python sensors collector</comment>
     <requestid>728171</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>454f1c64592c00a15a1738ce8a98eeea</srcmd5>
+    <version>1.18.1</version>
+    <time>1571751923</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.18.1
+Improvements:
+  * Disable slabinfo plugin by default to reduce the total number
+    of metrics collected
+  * Add dbengine RAM usage statistics
+  * Support Google Hangouts chat notifications
+  * Add CMocka unit tests
+  * Add prerequisites to enable automatic updates for installations
+    via the static binary (kickstart-static64.sh)
+Bug fixes:
+  * Fix unbound collector timings: Convert recursion timings to
+    milliseconds.
+  * Fix unbound collector unhandled exceptions
+  * Fix megacli collector binary search and sudo check
+  * Fix Clang warnings
+  * Fix python.d error logging: change chart suppress msg level
+    from ERROR to INFO
+  * Fix freeipmi update frequency check: was warning that 5 was too
+    frequent and it was setting it to 5.
+  * Fix alarm configurations not getting loaded, via better
+    handling of chart names with special characters
+  * Don't write HTTP response 204 messages to the logs
+  * Fix build when CMocka isn't installed
+  * Prevent zombie processes when a child is re-parented to netdata
+    when its running in a container, by adding child process reaper
+- Update to v1.18.0
+Improvements:
+  * Database engine:
+    + Make dbengine the default memory mode
+    + Increase dbengine default cache size</comment>
+    <requestid>741631</requestid>
+  </revision>
 </revisionlist>

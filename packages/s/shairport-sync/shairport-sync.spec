@@ -17,7 +17,7 @@
 
 
 Name:           shairport-sync
-Version:        3.3.1
+Version:        3.3.2
 Release:        0
 Summary:        An AirPlay audio player
 License:        GPL-3.0-only

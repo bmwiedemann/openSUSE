@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Admin
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,27 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Flask-Admin
-Version:        1.5.3
+Version:        1.5.4
 Release:        0
 Summary:        Extensible admin interface framework for Flask
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/flask-admin/flask-admin/
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-Admin/Flask-Admin-%{version}.tar.gz
 BuildRequires:  %{python_module Flask >= 0.7}
 BuildRequires:  %{python_module Flask-BabelEx}
 BuildRequires:  %{python_module Flask-SQLAlchemy}
-BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module Pillow >= 3.3.2}
+BuildRequires:  %{python_module SQLAlchemy-Utils}
 BuildRequires:  %{python_module WTForms}
+BuildRequires:  %{python_module arrow}
+BuildRequires:  %{python_module colour}
 BuildRequires:  %{python_module nose >= 1.0}
 BuildRequires:  %{python_module peewee}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python2-enum34
+BuildRequires:  python2-ipaddr
 Requires:       python-Flask >= 0.7
 Requires:       python-WTForms
 BuildArch:      noarch

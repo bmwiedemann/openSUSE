@@ -1,7 +1,7 @@
 #
 # spec file for package aspell
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,15 +12,15 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           aspell
-Version:        0.60.6.1
+Version:        0.60.8
 Release:        0
 Summary:        A Spell Checker
-License:        GFDL-1.1+ and LGPL-2.1 and HPND and SUSE-BSD-Mark-Modifications
+License:        GFDL-1.1-or-later AND LGPL-2.1-only AND HPND AND SUSE-BSD-Mark-Modifications
 Group:          Productivity/Text/Spell
 Url:            http://aspell.net/
 Source0:        ftp://ftp.gnu.org/gnu/aspell/%{name}-%{version}.tar.gz
@@ -31,11 +31,6 @@ Source100:      baselibs.conf
 Patch0:         aspell-strict-aliasing.patch
 # PATCH-FIX-OPENSUSE aspell-quotes.patch lmichnovic@suse.cz -- Fix command execution in script "run-with-aspell"
 Patch1:         aspell-quotes.patch
-# PATCH-FIX-OPENSUSE aspell-epmty_file.patch bnc#266130 lmichnovic@suse.cz -- Fix SIGSEV when checking empty file
-Patch2:         aspell-epmty_file.patch
-# PATCH-FIX-UPSTREAM aspell-automake-1.13.patch pgajdos@suse.cz -- fix build with new automake
-Patch3:         aspell-automake-1.13.patch
-Patch4:         gcc7-fix-warnings.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -125,9 +120,6 @@ This package contains the pspell compatibility library.
 %setup -q
 %patch0
 %patch1
-%patch2
-%patch3
-%patch4 -p1
 
 %build
 autoreconf -fiv

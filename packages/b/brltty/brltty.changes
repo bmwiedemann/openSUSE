@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  9 16:38:37 CEST 2019 - ro@suse.de
+
+- change udev rule again to also not automatically use the braille
+  driver for USB IDs 10c4:ea60 and 10c4:ea80 as these are generic
+  IDs of generic UART bridges and should not be used for higher
+  level devices (bsc#1093378, bsc#1093455, bsc#1007652) 
+
+-------------------------------------------------------------------
 Wed Jun 19 11:20:40 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(libsystemd) instead of systemd-devel:

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 09 12:20:11 UTC 2019 - tbechtold@suse.com
+
+- Update to version 2019.2.1:
+  * openstack-macros: Define %http_dashboard_dir
+  * openstack-macros: Use py3 in %openstack_test_package_install
+
+-------------------------------------------------------------------
 Tue Aug 20 04:37:54 UTC 2019 - tbechtold@suse.com
 
 - Update to version 2019.2.1:

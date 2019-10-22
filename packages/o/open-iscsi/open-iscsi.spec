@@ -37,7 +37,7 @@ BuildRequires:  libmount-devel
 BuildRequires:  libtool
 BuildRequires:  make
 BuildRequires:  open-isns-devel
-BuildRequires:  openssl-devel
+BuildRequires:  openssl-devel >= 1.1.1c
 BuildRequires:  pkg-config
 BuildRequires:  suse-module-tools
 BuildRequires:  pkgconfig(libsystemd)

@@ -42,8 +42,8 @@
 %endif
 
 Name:           katacontainers
-Version:        1.9.0~alpha2
-Release:        <CI_CNT>.<B_CNT>
+Version:        1.9.0~rc0
+Release:        0
 Summary:        Kata Containers OCI container runtime
 License:        Apache-2.0
 Group:          System/Management

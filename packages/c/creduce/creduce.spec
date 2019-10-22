@@ -17,12 +17,12 @@
 
 
 Name:           creduce
-Version:        2.10.0+git.20190513.fb91843
+Version:        2.10.0+git.20191010.8a67e69
 Release:        0
 Summary:        C-Reduce, a C program reducer
 License:        BSD-3-Clause
 Group:          Development/Tools/Other
-Url:            https://github.com/csmith-project/creduce
+URL:            https://github.com/csmith-project/creduce
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  astyle
 BuildRequires:  clang8-devel
@@ -65,7 +65,7 @@ bugs in compilers and other tools that process C/C++ code.
 
 %build
 %configure --libexec=%{_bindir}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

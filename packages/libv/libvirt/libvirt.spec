@@ -183,7 +183,7 @@
 
 Name:           libvirt
 Url:            http://libvirt.org/
-Version:        5.7.0
+Version:        5.8.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -1034,7 +1034,6 @@ export PYTHON=%{_bindir}/python3
            %{?arg_esx} \
            %{?arg_hyperv} \
            %{?arg_vmware} \
-           --without-xenapi \
            --without-vz \
            --without-bhyve \
            --with-remote-default-mode=legacy \
@@ -1897,10 +1896,6 @@ fi
 %dir %{_datadir}/doc/%{name}
 %dir %{_datadir}/doc/%{name}/examples
 %doc %{_datadir}/doc/%{name}/examples/*
-
-# API docs
-%dir %{_datadir}/gtk-doc/html/%{name}/
-%doc %{_datadir}/gtk-doc/html/%{name}/*
 
 %if %{with_sanlock}
 

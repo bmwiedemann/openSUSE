@@ -60,7 +60,7 @@
 %define devel_requires %build_requires %test_requires rsync curl postgresql-devel qemu qemu-kvm tar postgresql-server xorg-x11-fonts sudo perl(Devel::Cover) perl(Devel::Cover::Report::Codecov) perl(Perl::Tidy)
 
 Name:           openQA
-Version:        4.6.1571253176.1a322744e
+Version:        4.6.1571651389.1516f15e7
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -375,6 +375,8 @@ fi
 # apparmor profile
 %dir %{_sysconfdir}/apparmor.d
 %config %{_sysconfdir}/apparmor.d/usr.share.openqa.script.openqa
+%dir %{_sysconfdir}/apparmor.d/local
+%config %{_sysconfdir}/apparmor.d/local/usr.share.openqa.script.openqa
 # init
 %dir %{_unitdir}
 %{_unitdir}/openqa-webui.service

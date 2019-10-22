@@ -28,6 +28,8 @@ Group:          Development/Languages/Python
 Source0:        https://files.pythonhosted.org/packages/source/r/reportlab/reportlab-%{version}.tar.gz
 Source1:        encryption.gif
 Patch0:         reportlab-missing-includes.patch
+# https://bitbucket.org/rptlab/reportlab/pull-requests/60
+Patch1:         python38_build.patch
 BuildRequires:  %{python_module Pillow >= 4.0.0}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
@@ -51,7 +53,7 @@ The ReportLab Toolkit. An Open Source Python library for generating PDFs and gra
 
 %prep
 %setup -q -n reportlab-%{version}
-%patch0
+%autopatch -p1
 sed -i "1d" src/reportlab/lib/{formatters,fonts,corp,units,pagesizes,__init__,randomtext,logger,normalDate}.py
 sed -i "1d" src/reportlab/graphics/{widgets/table,barcode/test,testdrawings,testshapes}.py # Fix non-executable bits
 

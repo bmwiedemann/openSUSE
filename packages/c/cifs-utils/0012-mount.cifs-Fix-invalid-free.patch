@@ -1,0 +1,77 @@
+From d48a8d61c07e3841ffd71f3aafa5db28dd35b6a7 Mon Sep 17 00:00:00 2001
+From: "Paulo Alcantara (SUSE)" <pc@cjr.nz>
+Date: Thu, 19 Sep 2019 08:35:47 -0300
+Subject: [PATCH] mount.cifs: Fix invalid free
+
+When attemping to chdir into non-existing directories, mount.cifs
+crashes.
+
+This patch fixes the following ASAN report:
+
+$ ./mount.cifs //localhost/foo /mnt/invalid-dir -o ...
+/mnt/bar -o username=foo,password=foo,vers=1.0
+Couldn't chdir to /mnt/bar: No such file or directory
+=================================================================
+==11846==ERROR: AddressSanitizer: attempting free on address which was
+not malloc()-ed: 0x7ffd86332e97 in thread T0
+    #0 0x7f0860ca01e7 in
+    __interceptor_free (/usr/lib64/libasan.so.5+0x10a1e7)
+    #1 0x557edece9ccb in
+    acquire_mountpoint (/home/paulo/src/cifs-utils/mount.cifs+0xeccb)
+    #2 0x557edecea63d in
+    main (/home/paulo/src/cifs-utils/mount.cifs+0xf63d)
+    #3 0x7f08609f0bca in __libc_start_main (/lib64/libc.so.6+0x26bca)
+    #4 0x557edece27d9 in
+    _start (/home/paulo/src/cifs-utils/mount.cifs+0x77d9)
+
+Address 0x7ffd86332e97 is located in stack of thread T0 at offset 8951
+in frame
+    #0 0x557edece9ce0 in
+    main (/home/paulo/src/cifs-utils/mount.cifs+0xece0)
+
+  This frame has 2 object(s):
+    [48, 52) 'rc' (line 1959)
+    [64, 72) 'mountpoint' (line 1955) <== Memory access at offset 8951
+    overflows this variable
+HINT: this may be a false positive if your program uses some custom
+stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: bad-free (/usr/lib64/libasan.so.5+0x10a1e7)
+in __interceptor_free
+==11846==ABORTING
+
+Fixes: bf7f48f4c7dc ("mount.cifs.c: fix memory leaks in main func")
+Signed-off-by: Paulo Alcantara (SUSE) <pc@cjr.nz>
+---
+ mount.cifs.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/mount.cifs.c b/mount.cifs.c
+index 7748d54aa814..0c38adcd99b1 100644
+--- a/mount.cifs.c
++++ b/mount.cifs.c
+@@ -1893,7 +1893,7 @@ acquire_mountpoint(char **mountpointp)
+ 	int rc, dacrc;
+ 	uid_t realuid, oldfsuid;
+ 	gid_t oldfsgid;
+-	char *mountpoint;
++	char *mountpoint = NULL;
+ 
+ 	/*
+ 	 * Acquire the necessary privileges to chdir to the mountpoint. If
+@@ -1942,9 +1942,9 @@ restore_privs:
+ 		gid_t __attribute__((unused)) gignore = setfsgid(oldfsgid);
+ 	}
+ 
+-	if (rc) {
+-		free(*mountpointp);
+-	}
++	if (rc)
++		free(mountpoint);
++
+ 	return rc;
+ }
+ 
+-- 
+2.23.0
+

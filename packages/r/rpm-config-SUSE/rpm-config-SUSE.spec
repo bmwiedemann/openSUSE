@@ -13,12 +13,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           rpm-config-SUSE
-Version:        0.g35
+Version:        0.g40
 Release:        0
 Summary:        SUSE specific RPM configuration files
 License:        GPL-2.0-or-later
@@ -75,6 +75,7 @@ cp -a macros.d %{buildroot}%{_rpmconfigdir}
 %{_rpmconfigdir}/brp-suse
 %{_rpmconfigdir}/firmware.prov
 %{_rpmconfigdir}/sysvinitdeps.sh
+%{_rpmconfigdir}/locale.prov
 # kmod deps
 %{_rpmconfigdir}/find-provides.ksyms
 %{_rpmconfigdir}/find-requires.ksyms

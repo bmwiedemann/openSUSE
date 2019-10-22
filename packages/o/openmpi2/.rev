@@ -272,4 +272,14 @@
     <comment></comment>
     <requestid>734647</requestid>
   </revision>
+  <revision rev="29" vrev="7">
+    <srcmd5>b3d486714aeca1632ea6b1e753df3400</srcmd5>
+    <version>2.1.6</version>
+    <time>1571751449</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix conflict with other opoenmpi*-macros-devel
+- Add conflict with older provider name to avoid issues during updates
+- Add openmpi_prefix macro to openmpi-macros-devel</comment>
+    <requestid>736812</requestid>
+  </revision>
 </revisionlist>

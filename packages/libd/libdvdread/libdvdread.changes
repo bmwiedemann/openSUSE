@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 17 16:32:22 UTC 2019 - enzokiel@kabelmail.de
+
+- Update to version 6.0.2:
+  * use reentrant getmntent_r
+  * fix playback of some discs, by fixing pgc_t structure
+- Removed gpg signature (not available)
+
+-------------------------------------------------------------------
 Wed Aug 14 08:34:46 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Minor cleanup with spec-cleaner

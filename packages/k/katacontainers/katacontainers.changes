@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Oct 21 14:15:11 UTC 2019 - Ralf Haferkamp <rhafer@suse.com>
+
+- Update to 1.9.0~rc0:
+  runtime:
+    - Fix cache factory UT
+    - Virtio-fs v0.3 support
+    - virtcontainers: set agent's logs vsock port
+    - config: Fix `virtio-fs` typo in Makefile
+    - Hypervisor: UUID fix for acrn hypevisor
+    - virtcontainers: change firecracker socket permissions
+    - Add annotations to provide custom configs
+    - Fix CRIO + Firecracker
+    - rootless: add rootless to kata
+    - QEMU: do not require nvdimm machine option with initrd
+    - s390x: Fix runtime build for s390x
+    - versions: Update kernel to 4.19.75
+    - config: honor DEFSHAREDFS_QEMU_VIRTIOFS and CONFIG_QEMU_VIRTIOFS_IN
+    - Support Firecracker 0.18
+    - virtcontainers: fix the issue of missing qemu error logs
+    - config: Fix the qemu-virtiofs.toml
+    - s390x: Share image between qemu instances
+    - The unit of newMemory is MB
+    - config: use 9p as default shared filesystem for nemu
+    - Remove annotation config json key
+  shim:
+    - shim/firecracker: Read agent's logs
+    - vendor: update kata agent
+- Fix config for set-version source-service to set version based
+  on the runtime filename. The previously used "katacontainers"
+  caused the service to fail.
+
+-------------------------------------------------------------------
 Wed Sep 25 11:46:31 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
 
 - Update katacontainers to version 1.9.0~alpha2: 

@@ -94,14 +94,14 @@ It also contains a small tutorial for using that library.
 %autopatch -p1
 
 %build
-export CFLAGS="%{optflags} -std=gnu99 -D_GNU_SOURCE $(getconf LFS_CFLAGS)"
+export CFLAGS="%{optflags} -D_GNU_SOURCE $(getconf LFS_CFLAGS)"
 %configure \
 	--with-bzip2 \
 	--with-png \
 	--with-zlib \
     --enable-freetype-config \
 	--disable-static
-make %{?_smp_mflags}
+make %{?_smp_mflags} ANSIFLAGS=
 
 %install
 %make_install

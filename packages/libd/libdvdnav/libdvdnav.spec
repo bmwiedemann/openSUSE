@@ -18,17 +18,17 @@
 
 %define libname libdvdnav4
 Name:           libdvdnav
-Version:        6.0.0
+Version:        6.0.1
 Release:        0
 Summary:        DVD Navigation Library
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://www.videolan.org/developers/libdvdnav.html
 Source0:        http://download.videolan.org/videolan/%{name}/%{version}/%{name}-%{version}.tar.bz2
-Source1:        http://download.videolan.org/videolan/%{name}/%{version}/%{name}-%{version}.tar.bz2.asc
+#Source1:        http://download.videolan.org/videolan/%{name}/%{version}/%{name}-%{version}.tar.bz2.asc
 Source1000:     baselibs.conf
 Patch0:         libdvdnav-dvdread.patch
-BuildRequires:  libdvdread-devel >= 5.0.3
+BuildRequires:  pkgconfig(dvdread) >= 6.0.0
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 

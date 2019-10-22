@@ -24,8 +24,8 @@
 
 Name:           xen
 ExclusiveArch:  %ix86 x86_64 aarch64
-%define changeset 38667
-%define xen_build_dir xen-4.12.1-testing
+%define changeset 40015
+%define xen_build_dir xen-4.13.0-testing
 #
 %define with_gdbsx 0
 %define with_dom0_support 0
@@ -127,12 +127,12 @@ BuildRequires:  makeinfo
 BuildRequires:  pesign-obs-integration
 %endif
 
-Version:        4.12.1_02
+Version:        4.13.0_01
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
 Group:          System/Kernel
-Source0:        xen-4.12.1-testing-src.tar.bz2
+Source0:        xen-4.13.0-testing-src.tar.bz2
 Source1:        stubdom.tar.bz2
 Source5:        ipxe.tar.bz2
 Source6:        mini-os.tar.bz2
@@ -147,6 +147,9 @@ Source22:       block-npiv
 Source23:       block-npiv-vport
 Source26:       init.xen_loop
 Source29:       block-dmmd
+# Xen API remote authentication sources
+Source30:       etc_pam.d_xen-api
+Source31:       xenapiusers
 # Init script and sysconf file for pciback
 Source34:       init.pciback
 Source35:       sysconfig.pciback
@@ -159,60 +162,6 @@ Source57:       xen-utils-0.1.tar.bz2
 # For xen-libs
 Source99:       baselibs.conf
 # Upstream patches
-Patch1:         5d419d49-x86-spec-ctrl-report-proper-status.patch
-Patch2:         5d43253c-x86-ucode-always-collect_cpu_info-at-boot.patch
-Patch3:         5d4aa36f-x86-apic-enable-x2APIC-mode-earlier.patch
-Patch4:         5d4afa7a-credit2-fix-memory-leak.patch
-Patch5:         5d4d850a-introduce-bss-percpu-page-aligned.patch
-Patch6:         5d516531-x86-xpti-dont-leak-TSS-adjacent-data.patch
-Patch7:         5d5bf475-x86-PV-fix-handling-of-iommu-mappings.patch
-Patch8:         5d6524ca-x86-mm-correctly-init-M2P-entries.patch
-Patch9:         5d67ceaf-x86-properly-gate-PKU-clearing.patch
-Patch10:        5d70bfba-x86-shadow-dont-enable-with-too-small-allocation.patch
-Patch11:        5d779811-x86-fix-CPUID7-0-eax-levelling-MSR.patch
-Patch12:        5d77b40f-fix-hvm_all_ioreq_servers_add_vcpu-cleanup.patch
-Patch13:        5d80ea13-vpci-honor-read-only-devices.patch
-Patch14:        5d89d8d9-libxc-x86-avoid-overflow-in-CPUID-APIC-ID.patch
-Patch15:        5d8b715f-ACPI-cpuidle-bump-max-num-of-states.patch
-# AMD x2APIC
-Patch301:       5ca7660f-x86-entry-drop-unused-includes.patch
-Patch302:       5cf8da09-adjust-sysdom-creation-call-earlier-on-x86.patch
-Patch303:       5cab2a6b-x86-ACPI-also-parse-AMD-tables-early.patch
-Patch304:       5cab2ab7-x86-IOMMU-introduce-init-ops.patch
-Patch305:       5cab2ae8-x86-IOMMU-abstract-iommu_supports_eim.patch
-Patch306:       5cab2b4e-x86-IOMMU-abstract-iommu_enable_x2apic_IR.patch
-Patch307:       5cab2b95-x86-IOMMU-initialize-iommu_ops-in.patch
-Patch308:       5cac9a4b-x86-IOMMU-abstract-adjust_vtd_irq_affinities.patch
-Patch309:       5cdeac7f-AMD-IOMMU-adjust-IOMMU-list-head-init.patch
-Patch310:       5d0cf4e4-AMD-IOMMU-initialize-IRQ-tasklet-once.patch
-Patch311:       5d149bb0-AMD-IOMMU-dont-add-IOMMUs.patch
-Patch312:       5d1b3fab-AMD-IOMMU-restrict-feature-logging.patch
-Patch313:       5d358508-x86-IRQ-desc-affinity-represents-request.patch
-Patch314:       5d358534-x86-IRQ-consolidate-arch-cpu_mask-use.patch
-Patch315:       5d358a67-AMD-IOMMU-pass-IOMMU-to-iterate_ivrs_entries-cb.patch
-Patch316:       5d358a92-AMD-IOMMU-pass-IOMMU-to-amd_iommu_alloc_intremap_table.patch
-Patch317:       5d39811c-x86-IOMMU-dont-restrict-IRQ-affinities.patch
-Patch318:       5d417813-AMD-IOMMU-bitfield-extended-features.patch
-Patch319:       5d417838-AMD-IOMMU-bitfield-control-reg.patch
-Patch320:       5d41785b-AMD-IOMMU-bitfield-IRTE.patch
-Patch321:       5d41787e-AMD-IOMMU-pass-IOMMU-to-gfu-intremap-entry.patch
-Patch322:       5d4178ad-AMD-IOMMU-128bit-non-guest-APIC-IRTE.patch
-Patch323:       5d4178fc-AMD-IOMMU-split-amd_iommu_init_one.patch
-Patch324:       5d41793f-AMD-IOMMU-allow-enabling-without-IRQ.patch
-Patch325:       5d417a16-AMD-IOMMU-adjust-IRQ-setup-for-x2APIC.patch
-Patch326:       5d417ab6-AMD-IOMMU-enable-x2APIC-mode.patch
-Patch327:       5d417b38-AMD-IOMMU-correct-IRTE-updating.patch
-Patch328:       5d417b6a-AMD-IOMMU-dont-needlessly-log-headers.patch
-Patch329:       5d4a9d25-AMD-IOMMU-drop-not-found-message.patch
-Patch330:       5d80e7c0-AMD-IOMMU-free-shared-IRT-once.patch
-Patch331:       5d80e80d-AMD-IOMMU-valid-flag-for-IVRS-mappings.patch
-Patch332:       5d80e82e-AMD-IOMMU-alloc_intremap_table-callers-handle-errors.patch
-Patch333:       5d80e857-x86-PCI-read-MSI-X-table-entry-count-early.patch
-Patch334:       5d8b72e5-AMD-IOMMU-dont-blindly-alloc-intremap-tables.patch
-Patch335:       5d8b730e-AMD-IOMMU-phantom-funcs-share-intremap-tables.patch
-Patch336:       5d8b733b-x86-PCI-read-max-MSI-vector-count-early.patch
-Patch337:       5d8b736d-AMD-IOMMU-replace-INTREMAP_ENTRIES.patch
-Patch338:       5d8b7393-AMD-IOMMU-restrict-intremap-table-sizes.patch
 # Our platform specific patches
 Patch400:       xen-destdir.patch
 Patch401:       vif-bridge-no-iptables.patch
@@ -226,7 +175,6 @@ Patch408:       disable-building-pv-shim.patch
 Patch409:       xenstore-launch.patch
 # Needs to go upstream
 Patch420:       suspend_evtchn_lock.patch
-Patch421:       xen-tools.etc_pollution.patch
 Patch422:       stubdom-have-iovec.patch
 Patch423:       vif-route.patch
 # Other bug fixes or features
@@ -239,23 +187,18 @@ Patch456:       pygrub-boot-legacy-sles.patch
 Patch457:       pygrub-handle-one-line-menu-entries.patch
 Patch458:       aarch64-rename-PSR_MODE_ELxx-to-match-linux-headers.patch
 Patch459:       aarch64-maybe-uninitialized.patch
-Patch460:       CVE-2014-0222-blktap-qcow1-validate-l2-table-size.patch
-Patch461:       blktap2-no-uninit.patch
 Patch462:       libxc.sr.superpage.patch
 Patch463:       libxl.add-option-to-disable-disk-cache-flushes-in-qdisk.patch
 Patch464:       libxl.pvscsi.patch
 Patch465:       xen.libxl.dmmd.patch
 Patch466:       libxl.set-migration-constraints-from-cmdline.patch
 Patch467:       xenstore-run-in-studomain.patch
-Patch468:       libxl.prepare-environment-for-domcreate_stream_done.patch
 Patch469:       libxl.helper_done-crash.patch
 Patch470:       libxl.LIBXL_HOTPLUG_TIMEOUT.patch
 # python3 conversion patches
 Patch500:       build-python3-conversion.patch
-Patch501:       pygrub-python3-conversion.patch
-Patch502:       migration-python3-conversion.patch
-Patch503:       bin-python3-conversion.patch
-Patch504:       fix-xenpvnetboot.patch
+Patch501:       migration-python3-conversion.patch
+Patch502:       bin-python3-conversion.patch
 # Hypervisor and PV driver Patches
 Patch600:       xen.bug1026236.suse_vtsc_tolerance.patch
 Patch601:       x86-ioapic-ack-default.patch
@@ -413,59 +356,6 @@ Authors:
 %prep
 %setup -q -n %xen_build_dir -a 1 -a 5 -a 6 -a 57
 # Upstream patches
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch301 -p1
-%patch302 -p1
-%patch303 -p1
-%patch304 -p1
-%patch305 -p1
-%patch306 -p1
-%patch307 -p1
-%patch308 -p1
-%patch309 -p1
-%patch310 -p1
-%patch311 -p1
-%patch312 -p1
-%patch313 -p1
-%patch314 -p1
-%patch315 -p1
-%patch316 -p1
-%patch317 -p1
-%patch318 -p1
-%patch319 -p1
-%patch320 -p1
-%patch321 -p1
-%patch322 -p1
-%patch323 -p1
-%patch324 -p1
-%patch325 -p1
-%patch326 -p1
-%patch327 -p1
-%patch328 -p1
-%patch329 -p1
-%patch330 -p1
-%patch331 -p1
-%patch332 -p1
-%patch333 -p1
-%patch334 -p1
-%patch335 -p1
-%patch336 -p1
-%patch337 -p1
-%patch338 -p1
 # Our platform specific patches
 %patch400 -p1
 %patch401 -p1
@@ -479,7 +369,6 @@ Authors:
 %patch409 -p1
 # Needs to go upstream
 %patch420 -p1
-%patch421 -p1
 %patch422 -p1
 %patch423 -p1
 # Other bug fixes or features
@@ -492,23 +381,18 @@ Authors:
 %patch457 -p1
 %patch458 -p1
 %patch459 -p1
-%patch460 -p1
-%patch461 -p1
 %patch462 -p1
 %patch463 -p1
 %patch464 -p1
 %patch465 -p1
 %patch466 -p1
 %patch467 -p1
-%patch468 -p1
 %patch469 -p1
 %patch470 -p1
 # python3 conversion patches
 %patch500 -p1
 %patch501 -p1
 %patch502 -p1
-%patch503 -p1
-%patch504 -p1
 # Hypervisor and PV driver Patches
 %patch600 -p1
 %patch601 -p1
@@ -631,10 +515,8 @@ make \
 	DESTDIR=%{buildroot} \
 	SYSCONFIG_DIR=%{_fillupdir} \
 	PKG_INSTALLDIR=%{_libdir}/pkgconfig \
-	BASH_COMPLETION_DIR=%{_datadir}/bash-completion/completions \
 	%{?_smp_mflags} \
 	install
-rm -rfv %{buildroot}/etc/xen
 find %{buildroot} -ls
 for i in %{buildroot}/%{_fillupdir}/*
 do
@@ -896,20 +778,30 @@ for name in vtpm-platforms.txt crashdb.txt xenpaging.txt \
     install -m 644 docs/misc/$name %{buildroot}/%{_defaultdocdir}/xen/misc/
 done
 
-mkdir -p %{buildroot}/lib/modprobe.d
-install -m644 %SOURCE26 %{buildroot}/lib/modprobe.d/xen_loop.conf
+mkdir -p %{buildroot}/etc/modprobe.d
+install -m644 %SOURCE26 %{buildroot}/etc/modprobe.d/xen_loop.conf
 
 # xen-utils
 make -C tools/xen-utils-0.1 install DESTDIR=%{buildroot} XEN_INTREE_BUILD=yes XEN_ROOT=$PWD
 install -m755 %SOURCE37 %{buildroot}/usr/sbin/xen2libvirt
 
-install -D -m644 tools/xentrace/formats %{buildroot}%{_datadir}/xen/xentrace_formats.txt
+rm -f %{buildroot}/etc/xen/README*
+# Example config
+mkdir -p %{buildroot}/etc/xen/{vm,examples,scripts}
+mv %{buildroot}/etc/xen/xlexample* %{buildroot}/etc/xen/examples
+rm -f %{buildroot}/etc/xen/examples/*nbd
+install -m644 tools/xentrace/formats %{buildroot}/etc/xen/examples/xentrace_formats.txt
 
 # Scripts
-rm -f %{buildroot}%{_libexecdir}/xen/scripts/block-*nbd
-install -m755 %SOURCE21 %SOURCE22 %SOURCE23 %SOURCE29 %{buildroot}%{_libexecdir}/xen/scripts/
+rm -f %{buildroot}/etc/xen/scripts/block-*nbd
+install -m755 %SOURCE21 %SOURCE22 %SOURCE23 %SOURCE29 %{buildroot}/etc/xen/scripts/
 mkdir -p %{buildroot}/usr/lib/supportconfig/plugins
 install -m 755 %SOURCE13 %{buildroot}/usr/lib/supportconfig/plugins/xen
+
+# Xen API remote authentication files
+install -d %{buildroot}/etc/pam.d
+install -m644 %SOURCE30 %{buildroot}/etc/pam.d/xen-api
+install -m644 %SOURCE31 %{buildroot}/etc/xen/
 
 # Logrotate
 install -m644 -D %SOURCE15 %{buildroot}/etc/logrotate.d/xen
@@ -937,35 +829,10 @@ do
 	echo -n > $conf
 done
 `"
-> mods
 for mod in $mods
 do
-	# load by alias, if possible, to handle pvops and xenlinux
-	alias="$mod"
-	case "$mod" in
-		xen-evtchn) ;;
-		xen-gntdev) ;;
-		xen-gntalloc) ;;
-		xen-blkback) alias='xen-backend:vbd' ;;
-		xen-netback) alias='xen-backend:vif' ;;
-		xen-pciback) alias='xen-backend:pci' ;;
-		evtchn) unset alias ;;
-		gntdev) unset alias ;;
-		netbk) alias='xen-backend:vif' ;;
-		blkbk) alias='xen-backend:vbd' ;;
-		xen-scsibk) unset alias ;;
-		usbbk) unset alias ;;
-		pciback) alias='xen-backend:pci' ;;
-		xen-acpi-processor) ;;
-		blktap2) unset alias ;;
-		*) ;;
-	esac
-	if test -n "${alias}"
-	then
-		echo "ExecStart=-/bin/sh -c 'modprobe $alias || :'" >> mods
-	fi
+	echo "ExecStart=-/bin/sh -c 'modprobe $mod || :'" >> %{buildroot}/%{_unitdir}/${bn}
 done
-sort -u mods | tee -a %{buildroot}/%{_unitdir}/${bn}
 rm -rfv %{buildroot}/%{_initddir}
 install -m644 %SOURCE35 %{buildroot}/%{_fillupdir}/sysconfig.pciback
 
@@ -983,6 +850,7 @@ find %{buildroot} \( \
 	-name qemu-img-xen -o \
 	-name qemu-nbd-xen -o \
 	-name palcode-clipper -o \
+	-name xen-shim-syms -o \
 	-name "*.dtb" -o \
 	-name "openbios-*" -o \
 	-name "petalogix*" -o \
@@ -1010,7 +878,8 @@ find %{buildroot} -type f -size 0 -delete -print
 # !with_dom0_support
 
 # 32 bit hypervisor no longer supported.  Remove dom0 tools.
-rm -rf %{buildroot}/%{_datadir}
+rm -rf %{buildroot}/%{_datadir}/doc
+rm -rf %{buildroot}/%{_datadir}/man
 rm -rf %{buildroot}/%{_libdir}/xen
 rm -rf %{buildroot}/%{_libdir}/python*
 rm -rf %{buildroot}/%{_libdir}/ocaml*
@@ -1060,6 +929,7 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 /usr/bin/xentrace_format
 %ifarch x86_64
 /usr/bin/xen-cpuid
+/usr/sbin/xen-ucode
 %endif
 /usr/sbin/xenbaked
 /usr/sbin/xenconsoled
@@ -1070,7 +940,6 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 /usr/sbin/xenpm
 /usr/sbin/xenpmd
 /usr/sbin/xenstored
-/usr/sbin/xen-tmem-list-parse
 /usr/sbin/xentop
 /usr/sbin/xentrace
 /usr/sbin/xentrace_setsize
@@ -1098,21 +967,22 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 /usr/sbin/xen-destroy
 /usr/sbin/xen-livepatch
 /usr/sbin/xen-diag
-%dir %{_libexecdir}/xen/scripts
-%{_libexecdir}/xen/scripts/block*
-%{_libexecdir}/xen/scripts/external-device-migrate
-%{_libexecdir}/xen/scripts/hotplugpath.sh
-%{_libexecdir}/xen/scripts/launch-xenstore
-%{_libexecdir}/xen/scripts/locking.sh
-%{_libexecdir}/xen/scripts/logging.sh
-%{_libexecdir}/xen/scripts/vif2
-%{_libexecdir}/xen/scripts/vif-*
-%{_libexecdir}/xen/scripts/vscsi
-%{_libexecdir}/xen/scripts/xen-hotplug-*
-%{_libexecdir}/xen/scripts/xen-network-common.sh
-%{_libexecdir}/xen/scripts/xen-script-common.sh
-%{_libexecdir}/xen/scripts/colo-proxy-setup
-%{_libexecdir}/xen/scripts/remus-netbuf-setup
+%dir %attr(700,root,root) /etc/xen
+%dir /etc/xen/scripts
+/etc/xen/scripts/block*
+/etc/xen/scripts/external-device-migrate
+/etc/xen/scripts/hotplugpath.sh
+/etc/xen/scripts/launch-xenstore
+/etc/xen/scripts/locking.sh
+/etc/xen/scripts/logging.sh
+/etc/xen/scripts/vif2
+/etc/xen/scripts/vif-*
+/etc/xen/scripts/vscsi
+/etc/xen/scripts/xen-hotplug-*
+/etc/xen/scripts/xen-network-common.sh
+/etc/xen/scripts/xen-script-common.sh
+/etc/xen/scripts/colo-proxy-setup
+/etc/xen/scripts/remus-netbuf-setup
 %dir /usr/lib/supportconfig
 %dir /usr/lib/supportconfig/plugins
 /usr/lib/supportconfig/plugins/xen
@@ -1132,13 +1002,19 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 %dir /var/log/xen
 %dir /var/log/xen/console
 %config /etc/logrotate.d/xen
-%dir /lib/modprobe.d
-/lib/modprobe.d/xen_loop.conf
+/etc/xen/auto
+%config /etc/xen/examples
+%config /etc/xen/cpupool
+%config /etc/xen/vm
+%config(noreplace) /etc/xen/xenapiusers
+%config(noreplace) /etc/xen/xl.conf
+%config /etc/pam.d/xen-api
+%config /etc/modprobe.d/xen_loop.conf
 %config %{_unitdir}
 %exclude %{_unitdir}/%{name}-vcpu-watch.service
 %config %{with_systemd_modules_load}
-%{_datadir}/bash-completion
-%{_datadir}/xen
+%dir /etc/modprobe.d
+/etc/bash_completion.d/xl.sh
 %dir %{_libdir}/python%{pyver}/site-packages/grub
 %dir %{_libdir}/python%{pyver}/site-packages/xen
 %dir %{_libdir}/python%{pyver}/site-packages/xen/lowlevel
@@ -1158,6 +1034,7 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 
 %if %{with xen_oxenstored}
 /usr/sbin/oxenstored
+/etc/xen/oxenstored.conf
 %dir %{_libdir}/ocaml
 %dir %{_libdir}/ocaml/xenbus
 %dir %{_libdir}/ocaml/xenctrl
@@ -1269,17 +1146,6 @@ if [ -x /sbin/update-bootloader ]; then
 fi
 
 %pre tools
-for empty_config_file in \
-	logrotate.d/xen \
-	modprobe.d/xen_loop.conf \
-	pam.d/xen-api \
-	xen/cpupool \
-	xen/xenapiusers \
-	xen/xl.conf
-do
-  test -f /etc/${empty_config_file}.rpmsave && mv -v /etc/${empty_config_file}.rpmsave /etc/${empty_config_file}.rpmsave.old ||:
-done
-
 %service_add_pre xencommons.service
 %service_add_pre xendomains.service
 %service_add_pre xen-watchdog.service
@@ -1350,18 +1216,6 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %service_del_postun xenconsoled.service
 %service_del_postun xen-init-dom0.service
 %service_del_postun xen-qemu-dom0-disk-backend.service
-
-%posttrans tools
-for empty_config_file in \
-	logrotate.d/xen \
-	modprobe.d/xen_loop.conf \
-	pam.d/xen-api \
-	xen/cpupool \
-	xen/xenapiusers \
-	xen/xl.conf
-do
-  test -f /etc/${empty_config_file}.rpmsave && mv -v /etc/${empty_config_file}.rpmsave /etc/${empty_config_file}
-done
 
 %endif
 

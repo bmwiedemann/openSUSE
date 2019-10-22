@@ -75,10 +75,10 @@
 %endif
 
 Name:           darktable
-Version:        2.6.2
+Version:        2.6.3
 Release:        0
 %define pkg_name darktable
-%define pkg_version 2.6.2
+%define pkg_version 2.6.3
 Url:            http://www.darktable.org/
 Source0:        %{name}-%{pkg_version}.tar.xz
 Source1:        https://github.com/darktable-org/darktable/releases/download/release-2.6.1/darktable-usermanual.pdf
@@ -91,10 +91,8 @@ Source98:       debian.tar.xz
 Source99:       README.openSUSE
 Patch:          darktable-old-glib.patch
 Patch1:         basecurve.readme.patch
-# PATCH-FIX-UPSTREAM Backported from upcoming 2.8.0 version, https://patch-diff.githubusercontent.com/raw/darktable-org/darktable/pull/2550.patch
-Patch2:         Fix-OpenMP-4_0-issues-with-GCC9.patch
 # PATCH-FIX-UPSTREAM Fixed (differently) in 2.8.0
-Patch3:         0001-Fix-build-with-exiv2-0.27.patch
+Patch2:         0001-Fix-build-with-exiv2-0.27.patch
 
 ExclusiveArch:  x86_64 aarch64
 # build time tools
@@ -227,7 +225,6 @@ This package provides the user manual in PDF format.
 %patch -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 chmod -x tools/basecurve/* tools/noise/*
 
 cp %{S:1} %{S:2} %{S:3} %{S:4} .

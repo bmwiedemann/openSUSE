@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           python
 Version:        2.7.16
 Release:        0
@@ -90,6 +91,9 @@ Patch53:        CVE-2019-9947-no-ctrl-char-http.patch
 Patch54:        CVE-2018-20852-cookie-domain-check.patch
 # PATCH-FIX-UPSTREAM https://github.com/python/cpython/pull/12341
 Patch55:        bpo36302-sort-module-sources.patch
+# PATCH-FIX-UPSTREAM CVE-2019-16935-xmlrpc-doc-server_title.patch bsc#1153238 mcepl@suse.com
+# XSS vulnerability in the documentation XML-RPC server in server_title field
+Patch56:        CVE-2019-16935-xmlrpc-doc-server_title.patch
 # COMMON-PATCH-END
 BuildRequires:  automake
 BuildRequires:  db-devel
@@ -252,6 +256,7 @@ that rely on earlier non-verification behavior.
 %patch53 -p1
 %patch54 -p1
 %patch55 -p1
+%patch56 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^version_required/dnl version_required/' configure.ac

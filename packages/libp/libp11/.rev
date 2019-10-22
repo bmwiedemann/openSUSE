@@ -214,4 +214,12 @@
     <comment></comment>
     <requestid>685480</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>82a4604b80ef0fc01899a5fb8695e86a</srcmd5>
+    <version>0.4.10</version>
+    <time>1571751944</time>
+    <user>dimstar_suse</user>
+    <comment>Version bump for jsc#SLE-7482.</comment>
+    <requestid>741643</requestid>
+  </revision>
 </revisionlist>

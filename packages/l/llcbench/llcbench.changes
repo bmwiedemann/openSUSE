@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 10 07:06:51 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Use openmpi-macros-devel to automatically pick the default OpenMPI version
+- Use new setup_openmpi macro to pick the right mpicc
+
+-------------------------------------------------------------------
 Sat Oct 21 06:47:51 UTC 2017 - mpluskal@suse.com
 
 - Force specific version of mpicc

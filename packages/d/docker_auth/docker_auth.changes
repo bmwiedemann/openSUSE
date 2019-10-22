@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Mon Oct 21 11:50:59 CEST 2019 - kukuk@suse.de
+
+- Remove unused vendor/github.com/facebookgo/stats
+
+-------------------------------------------------------------------
+Sat Oct 12 08:40:12 UTC 2019 - kukuk@suse.com
+
+- Update to version 1.4.0+git20190925.6f38360:
+  * Move the whole charts directory to the root of the repo
+  * fix simple.yaml example: replace user with test
+  * optimize helm chart structure:split configmap into two parts(configmap and secret)
+  * feat: extended TLS configuration (#259)
+  * add helm chart of docker_auth that supports High-Available
+  * Use go get instead of go install
+  * Add plugin authn and authz implementations
+  * Revert "return 401 when there is no user or password (#251)"
+  * Use a different go-bindata package
+  * Change from using govendor to go modules for managing dependencies
+  * Add support for lowercases DN elements (#247)
+  * return 401 when there is no user or password (#251)
+  * gofmt everything
+  * Add custom authentication and authorization implementations to avoid spawning new processes (#254)
+
+-------------------------------------------------------------------
+Sat Oct 12 08:39:04 UTC 2019 - kukuk@suse.com
+
+- Initial release

@@ -18,11 +18,11 @@ them.
  create mode 100644 src/conf/domain_stats.c
  create mode 100644 src/conf/domain_stats.h
 
-Index: libvirt-5.7.0/src/conf/domain_stats.c
+Index: libvirt-5.8.0/src/conf/domain_stats.c
 ===================================================================
 --- /dev/null
-+++ libvirt-5.7.0/src/conf/domain_stats.c
-@@ -0,0 +1,139 @@
++++ libvirt-5.8.0/src/conf/domain_stats.c
+@@ -0,0 +1,119 @@
 +/*
 + * domain_stats.c: domain stats extraction helpers
 + *
@@ -63,52 +63,34 @@ Index: libvirt-5.7.0/src/conf/domain_stats.c
 +
 +int
 +virDomainStatsGetState(virDomainObjPtr dom,
-+                       virDomainStatsRecordPtr record,
-+                       int *maxparams)
++                       virTypedParamListPtr params)
 +{
-+    if (virTypedParamsAddInt(&record->params,
-+                             &record->nparams,
-+                             maxparams,
-+                             "state.state",
-+                             dom->state.state) < 0)
++    if (virTypedParamListAddInt(params, dom->state.state, "state.state") < 0)
 +        return -1;
 +
-+    if (virTypedParamsAddInt(&record->params,
-+                             &record->nparams,
-+                             maxparams,
-+                             "state.reason",
-+                             dom->state.reason) < 0)
++    if (virTypedParamListAddInt(params, dom->state.reason, "state.reason") < 0)
 +        return -1;
 +
 +    return 0;
 +}
 +
-+#define STATS_ADD_NET_PARAM(record, maxparams, num, name, value) \
-+do { \
-+    char param_name[VIR_TYPED_PARAM_FIELD_LENGTH]; \
-+    snprintf(param_name, VIR_TYPED_PARAM_FIELD_LENGTH, \
-+             "net.%zu.%s", num, name); \
-+    if (value >= 0 && virTypedParamsAddULLong(&(record)->params, \
-+                                              &(record)->nparams, \
-+                                              maxparams, \
-+                                              param_name, \
-+                                              value) < 0) \
-+        return -1; \
-+} while (0)
++#define STATS_ADD_NET_PARAM(params, num, name, value) \
++    if (value >= 0 && \
++        virTypedParamListAddULLong((params), (value), "net.%zu.%s", (num), (name)) < 0) \
++        return -1;
 +
 +int
 +virDomainStatsGetInterface(virDomainObjPtr dom,
-+                           virDomainStatsRecordPtr record,
-+                           int *maxparams)
++                           virTypedParamListPtr params)
 +{
 +    size_t i;
 +    struct _virDomainInterfaceStats tmp;
-+    int ret = -1;
 +
 +    if (!virDomainObjIsActive(dom))
 +        return 0;
 +
-+    VIR_DOMAIN_STATS_ADD_COUNT_PARAM(record, maxparams, "net", dom->def->nnets);
++    if (virTypedParamListAddUInt(params, dom->def->nnets, "net.count") < 0)
++        return -1;
 +
 +    /* Check the path is one of the domain's network interfaces. */
 +    for (i = 0; i < dom->def->nnets; i++) {
@@ -122,8 +104,8 @@ Index: libvirt-5.7.0/src/conf/domain_stats.c
 +
 +        actualType = virDomainNetGetActualType(net);
 +
-+        VIR_DOMAIN_STATS_ADD_NAME_PARAM(record, maxparams,
-+                            "net", "name", i, net->ifname);
++        if (virTypedParamListAddString(params, net->ifname, "net.%zu.name", i) < 0)
++            return -1;
 +
 +        if (actualType == VIR_DOMAIN_NET_TYPE_VHOSTUSER) {
 +            if (virNetDevOpenvswitchInterfaceStats(net->ifname, &tmp) < 0) {
@@ -138,35 +120,33 @@ Index: libvirt-5.7.0/src/conf/domain_stats.c
 +            }
 +        }
 +
-+        STATS_ADD_NET_PARAM(record, maxparams, i,
-+                           "rx.bytes", tmp.rx_bytes);
-+        STATS_ADD_NET_PARAM(record, maxparams, i,
-+                           "rx.pkts", tmp.rx_packets);
-+        STATS_ADD_NET_PARAM(record, maxparams, i,
-+                           "rx.errs", tmp.rx_errs);
-+        STATS_ADD_NET_PARAM(record, maxparams, i,
-+                           "rx.drop", tmp.rx_drop);
-+        STATS_ADD_NET_PARAM(record, maxparams, i,
-+                           "tx.bytes", tmp.tx_bytes);
-+        STATS_ADD_NET_PARAM(record, maxparams, i,
-+                           "tx.pkts", tmp.tx_packets);
-+        STATS_ADD_NET_PARAM(record, maxparams, i,
-+                           "tx.errs", tmp.tx_errs);
-+        STATS_ADD_NET_PARAM(record, maxparams, i,
-+                           "tx.drop", tmp.tx_drop);
++        STATS_ADD_NET_PARAM(params, i,
++                            "rx.bytes", tmp.rx_bytes);
++        STATS_ADD_NET_PARAM(params, i,
++                            "rx.pkts", tmp.rx_packets);
++        STATS_ADD_NET_PARAM(params, i,
++                            "rx.errs", tmp.rx_errs);
++        STATS_ADD_NET_PARAM(params, i,
++                            "rx.drop", tmp.rx_drop);
++        STATS_ADD_NET_PARAM(params, i,
++                            "tx.bytes", tmp.tx_bytes);
++        STATS_ADD_NET_PARAM(params, i,
++                            "tx.pkts", tmp.tx_packets);
++        STATS_ADD_NET_PARAM(params, i,
++                            "tx.errs", tmp.tx_errs);
++        STATS_ADD_NET_PARAM(params, i,
++                            "tx.drop", tmp.tx_drop);
 +    }
 +
-+    ret = 0;
-+ cleanup:
-+    return ret;
++    return 0;
 +}
 +
 +#undef STATS_ADD_NET_PARAM
-Index: libvirt-5.7.0/src/conf/domain_stats.h
+Index: libvirt-5.8.0/src/conf/domain_stats.h
 ===================================================================
 --- /dev/null
-+++ libvirt-5.7.0/src/conf/domain_stats.h
-@@ -0,0 +1,64 @@
++++ libvirt-5.8.0/src/conf/domain_stats.h
+@@ -0,0 +1,62 @@
 +/*
 + * domain_stats.h: domain stats extraction helpers
 + *
@@ -223,19 +203,17 @@ Index: libvirt-5.7.0/src/conf/domain_stats.h
 +} while (0)
 +
 +int virDomainStatsGetState(virDomainObjPtr dom,
-+                           virDomainStatsRecordPtr record,
-+                           int *maxparams);
++                           virTypedParamListPtr params);
 +
 +int virDomainStatsGetInterface(virDomainObjPtr dom,
-+                               virDomainStatsRecordPtr record,
-+                               int *maxparams);
++                           virTypedParamListPtr params);
 +
 +#endif /* __DOMAIN_STATS_H */
-Index: libvirt-5.7.0/src/libvirt_private.syms
+Index: libvirt-5.8.0/src/libvirt_private.syms
 ===================================================================
---- libvirt-5.7.0.orig/src/libvirt_private.syms
-+++ libvirt-5.7.0/src/libvirt_private.syms
-@@ -695,6 +695,9 @@ virDomainConfNWFilterInstantiate;
+--- libvirt-5.8.0.orig/src/libvirt_private.syms
++++ libvirt-5.8.0/src/libvirt_private.syms
+@@ -697,6 +697,9 @@ virDomainConfNWFilterInstantiate;
  virDomainConfNWFilterTeardown;
  virDomainConfVMNWFilterTeardown;
  
@@ -253,10 +231,10 @@ Index: libvirt-5.7.0/src/libvirt_private.syms
  virCgroupHasController;
  virCgroupHasEmptyTasks;
  virCgroupKillPainfully;
-Index: libvirt-5.7.0/src/qemu/qemu_driver.c
+Index: libvirt-5.8.0/src/qemu/qemu_driver.c
 ===================================================================
---- libvirt-5.7.0.orig/src/qemu/qemu_driver.c
-+++ libvirt-5.7.0/src/qemu/qemu_driver.c
+--- libvirt-5.8.0.orig/src/qemu/qemu_driver.c
++++ libvirt-5.8.0/src/qemu/qemu_driver.c
 @@ -67,6 +67,7 @@
  #include "virarptable.h"
  #include "viruuid.h"
@@ -265,115 +243,53 @@ Index: libvirt-5.7.0/src/qemu/qemu_driver.c
  #include "domain_audit.h"
  #include "node_device_conf.h"
  #include "virpci.h"
-@@ -20767,21 +20768,7 @@ qemuDomainGetStatsState(virQEMUDriverPtr
-                         int *maxparams,
+@@ -20451,13 +20452,7 @@ qemuDomainGetStatsState(virQEMUDriverPtr
+                         virTypedParamListPtr params,
                          unsigned int privflags ATTRIBUTE_UNUSED)
  {
--    if (virTypedParamsAddInt(&record->params,
--                             &record->nparams,
--                             maxparams,
--                             "state.state",
--                             dom->state.state) < 0)
+-    if (virTypedParamListAddInt(params, dom->state.state, "state.state") < 0)
 -        return -1;
 -
--    if (virTypedParamsAddInt(&record->params,
--                             &record->nparams,
--                             maxparams,
--                             "state.reason",
--                             dom->state.reason) < 0)
+-    if (virTypedParamListAddInt(params, dom->state.reason, "state.reason") < 0)
 -        return -1;
 -
 -    return 0;
-+    return virDomainStatsGetState(dom, record, maxparams);
++    return virDomainStatsGetState(dom, params);
  }
  
  
-@@ -20998,37 +20985,7 @@ qemuDomainGetStatsCpuCgroup(virDomainObj
-                             int *maxparams)
- {
-     qemuDomainObjPrivatePtr priv = dom->privateData;
--    unsigned long long cpu_time = 0;
--    unsigned long long user_time = 0;
--    unsigned long long sys_time = 0;
--    int err = 0;
--
--    if (!priv->cgroup)
--        return 0;
--
+@@ -20659,17 +20654,7 @@ qemuDomainGetStatsCpuCgroup(virDomainObj
+     if (!priv->cgroup)
+         return 0;
+ 
 -    err = virCgroupGetCpuacctUsage(priv->cgroup, &cpu_time);
--    if (!err && virTypedParamsAddULLong(&record->params,
--                                        &record->nparams,
--                                        maxparams,
--                                        "cpu.time",
--                                        cpu_time) < 0)
+-    if (!err && virTypedParamListAddULLong(params, cpu_time, "cpu.time") < 0)
 -        return -1;
 -
 -    err = virCgroupGetCpuacctStat(priv->cgroup, &user_time, &sys_time);
--    if (!err && virTypedParamsAddULLong(&record->params,
--                                        &record->nparams,
--                                        maxparams,
--                                        "cpu.user",
--                                        user_time) < 0)
+-    if (!err && virTypedParamListAddULLong(params, user_time, "cpu.user") < 0)
 -        return -1;
--    if (!err && virTypedParamsAddULLong(&record->params,
--                                        &record->nparams,
--                                        maxparams,
--                                        "cpu.system",
--                                        sys_time) < 0)
+-    if (!err && virTypedParamListAddULLong(params, sys_time, "cpu.system") < 0)
 -        return -1;
 -
 -    return 0;
-+    return virCgroupGetStatsCpu(priv->cgroup, record, maxparams);
++    return virCgroupGetStatsCpu(priv->cgroup, params);
  }
  
  
-@@ -21224,44 +21181,6 @@ qemuDomainGetStatsVcpu(virQEMUDriverPtr
+@@ -20827,79 +20812,15 @@ qemuDomainGetStatsVcpu(virQEMUDriverPtr
      return ret;
  }
  
--#define QEMU_ADD_COUNT_PARAM(record, maxparams, type, count) \
--do { \
--    char param_name[VIR_TYPED_PARAM_FIELD_LENGTH]; \
--    snprintf(param_name, VIR_TYPED_PARAM_FIELD_LENGTH, "%s.count", type); \
--    if (virTypedParamsAddUInt(&(record)->params, \
--                              &(record)->nparams, \
--                              maxparams, \
--                              param_name, \
--                              count) < 0) \
--        goto cleanup; \
--} while (0)
--
--#define QEMU_ADD_NAME_PARAM(record, maxparams, type, subtype, num, name) \
--do { \
--    char param_name[VIR_TYPED_PARAM_FIELD_LENGTH]; \
--    snprintf(param_name, VIR_TYPED_PARAM_FIELD_LENGTH, \
--             "%s.%zu.%s", type, num, subtype); \
--    if (virTypedParamsAddString(&(record)->params, \
--                                &(record)->nparams, \
--                                maxparams, \
--                                param_name, \
--                                name) < 0) \
--        goto cleanup; \
--} while (0)
--
--#define QEMU_ADD_NET_PARAM(record, maxparams, num, name, value) \
--do { \
--    char param_name[VIR_TYPED_PARAM_FIELD_LENGTH]; \
--    snprintf(param_name, VIR_TYPED_PARAM_FIELD_LENGTH, \
--             "net.%zu.%s", num, name); \
--    if (value >= 0 && virTypedParamsAddULLong(&(record)->params, \
--                                              &(record)->nparams, \
--                                              maxparams, \
--                                              param_name, \
--                                              value) < 0) \
--        return -1; \
--} while (0)
+-#define QEMU_ADD_NET_PARAM(params, num, name, value) \
+-    if (value >= 0 && \
+-        virTypedParamListAddULLong((params), (value), "net.%zu.%s", (num), (name)) < 0) \
+-        return -1;
 -
  static int
  qemuDomainGetStatsInterface(virQEMUDriverPtr driver ATTRIBUTE_UNUSED,
                              virDomainObjPtr dom,
-@@ -21269,68 +21188,9 @@ qemuDomainGetStatsInterface(virQEMUDrive
-                             int *maxparams,
+                             virTypedParamListPtr params,
                              unsigned int privflags ATTRIBUTE_UNUSED)
  {
 -    size_t i;
@@ -383,7 +299,8 @@ Index: libvirt-5.7.0/src/qemu/qemu_driver.c
 -    if (!virDomainObjIsActive(dom))
 -        return 0;
 -
--    QEMU_ADD_COUNT_PARAM(record, maxparams, "net", dom->def->nnets);
+-    if (virTypedParamListAddUInt(params, dom->def->nnets, "net.count") < 0)
+-        goto cleanup;
 -
 -    /* Check the path is one of the domain's network interfaces. */
 -    for (i = 0; i < dom->def->nnets; i++) {
@@ -397,8 +314,8 @@ Index: libvirt-5.7.0/src/qemu/qemu_driver.c
 -
 -        actualType = virDomainNetGetActualType(net);
 -
--        QEMU_ADD_NAME_PARAM(record, maxparams,
--                            "net", "name", i, net->ifname);
+-        if (virTypedParamListAddString(params, net->ifname, "net.%zu.name", i) < 0)
+-            goto cleanup;
 -
 -        if (actualType == VIR_DOMAIN_NET_TYPE_VHOSTUSER) {
 -            if (virNetDevOpenvswitchInterfaceStats(net->ifname, &tmp) < 0) {
@@ -413,96 +330,45 @@ Index: libvirt-5.7.0/src/qemu/qemu_driver.c
 -            }
 -        }
 -
--        QEMU_ADD_NET_PARAM(record, maxparams, i,
+-        QEMU_ADD_NET_PARAM(params, i,
 -                           "rx.bytes", tmp.rx_bytes);
--        QEMU_ADD_NET_PARAM(record, maxparams, i,
+-        QEMU_ADD_NET_PARAM(params, i,
 -                           "rx.pkts", tmp.rx_packets);
--        QEMU_ADD_NET_PARAM(record, maxparams, i,
+-        QEMU_ADD_NET_PARAM(params, i,
 -                           "rx.errs", tmp.rx_errs);
--        QEMU_ADD_NET_PARAM(record, maxparams, i,
+-        QEMU_ADD_NET_PARAM(params, i,
 -                           "rx.drop", tmp.rx_drop);
--        QEMU_ADD_NET_PARAM(record, maxparams, i,
+-        QEMU_ADD_NET_PARAM(params, i,
 -                           "tx.bytes", tmp.tx_bytes);
--        QEMU_ADD_NET_PARAM(record, maxparams, i,
+-        QEMU_ADD_NET_PARAM(params, i,
 -                           "tx.pkts", tmp.tx_packets);
--        QEMU_ADD_NET_PARAM(record, maxparams, i,
+-        QEMU_ADD_NET_PARAM(params, i,
 -                           "tx.errs", tmp.tx_errs);
--        QEMU_ADD_NET_PARAM(record, maxparams, i,
+-        QEMU_ADD_NET_PARAM(params, i,
 -                           "tx.drop", tmp.tx_drop);
 -    }
 -
 -    ret = 0;
 - cleanup:
 -    return ret;
-+    return virDomainStatsGetInterface(dom, record, maxparams);
++    return virDomainStatsGetInterface(dom,params);
  }
  
 -#undef QEMU_ADD_NET_PARAM
--
- #define QEMU_ADD_BLOCK_PARAM_UI(record, maxparams, num, name, value) \
-     do { \
-         char param_name[VIR_TYPED_PARAM_FIELD_LENGTH]; \
-@@ -21560,10 +21420,10 @@ qemuDomainGetStatsBlockExportHeader(virD
- {
-     int ret = -1;
  
--    QEMU_ADD_NAME_PARAM(records, nrecords, "block", "name", recordnr, disk->dst);
-+    VIR_DOMAIN_STATS_ADD_NAME_PARAM(records, nrecords, "block", "name", recordnr, disk->dst);
- 
-     if (virStorageSourceIsLocalStorage(src) && src->path)
--        QEMU_ADD_NAME_PARAM(records, nrecords, "block", "path", recordnr, src->path);
-+        VIR_DOMAIN_STATS_ADD_NAME_PARAM(records, nrecords, "block", "path", recordnr, src->path);
-     if (src->id)
-         QEMU_ADD_BLOCK_PARAM_UI(records, nrecords, recordnr, "backingIndex",
-                                 src->id);
-@@ -21717,7 +21577,7 @@ qemuDomainGetStatsBlock(virQEMUDriverPtr
-      * after the iteration than it is to iterate twice; but we still
-      * want count listed first.  */
-     count_index = record->nparams;
--    QEMU_ADD_COUNT_PARAM(record, maxparams, "block", 0);
-+    VIR_DOMAIN_STATS_ADD_COUNT_PARAM(record, maxparams, "block", 0);
- 
-     for (i = 0; i < dom->def->ndisks; i++) {
-         if (qemuDomainGetStatsBlockExportDisk(dom->def->disks[i], stats, nodestats,
-@@ -21742,8 +21602,6 @@ qemuDomainGetStatsBlock(virQEMUDriverPtr
- 
- #undef QEMU_ADD_BLOCK_PARAM_ULL
- 
--#undef QEMU_ADD_NAME_PARAM
--
- #define QEMU_ADD_IOTHREAD_PARAM_UI(record, maxparams, id, name, value) \
-     do { \
-         char param_name[VIR_TYPED_PARAM_FIELD_LENGTH]; \
-@@ -21795,7 +21653,7 @@ qemuDomainGetStatsIOThread(virQEMUDriver
-     if (niothreads == 0)
-         return 0;
- 
--    QEMU_ADD_COUNT_PARAM(record, maxparams, "iothread", niothreads);
-+    VIR_DOMAIN_STATS_ADD_COUNT_PARAM(record, maxparams, "iothread", niothreads);
- 
-     for (i = 0; i < niothreads; i++) {
-         if (iothreads[i]->poll_valid) {
-@@ -21828,8 +21686,6 @@ qemuDomainGetStatsIOThread(virQEMUDriver
- 
- #undef QEMU_ADD_IOTHREAD_PARAM_ULL
- 
--#undef QEMU_ADD_COUNT_PARAM
--
+ /* refresh information by opening images on the disk */
  static int
- qemuDomainGetStatsPerfOneEvent(virPerfPtr perf,
-                                virPerfEventType type,
-Index: libvirt-5.7.0/src/util/vircgroup.c
+Index: libvirt-5.8.0/src/util/vircgroup.c
 ===================================================================
---- libvirt-5.7.0.orig/src/util/vircgroup.c
-+++ libvirt-5.7.0/src/util/vircgroup.c
-@@ -2791,6 +2791,44 @@ virCgroupControllerAvailable(int control
+--- libvirt-5.8.0.orig/src/util/vircgroup.c
++++ libvirt-5.8.0/src/util/vircgroup.c
+@@ -2792,6 +2792,31 @@ virCgroupControllerAvailable(int control
      return ret;
  }
  
 +int
 +virCgroupGetStatsCpu(virCgroupPtr cgroup,
-+                     virDomainStatsRecordPtr record,
-+                     int *maxparams)
++                     virTypedParamListPtr params)
 +{
 +    unsigned long long cpu_time = 0;
 +    unsigned long long user_time = 0;
@@ -513,25 +379,13 @@ Index: libvirt-5.7.0/src/util/vircgroup.c
 +        return 0;
 +
 +    err = virCgroupGetCpuacctUsage(cgroup, &cpu_time);
-+    if (!err && virTypedParamsAddULLong(&record->params,
-+                                        &record->nparams,
-+                                        maxparams,
-+                                        "cpu.time",
-+                                        cpu_time) < 0)
++    if (!err && virTypedParamListAddULLong(params, cpu_time, "cpu.time") < 0)
 +        return -1;
 +
 +    err = virCgroupGetCpuacctStat(cgroup, &user_time, &sys_time);
-+    if (!err && virTypedParamsAddULLong(&record->params,
-+                                        &record->nparams,
-+                                        maxparams,
-+                                        "cpu.user",
-+                                        user_time) < 0)
++    if (!err && virTypedParamListAddULLong(params, user_time, "cpu.user") < 0)
 +        return -1;
-+    if (!err && virTypedParamsAddULLong(&record->params,
-+                                        &record->nparams,
-+                                        maxparams,
-+                                        "cpu.system",
-+                                        sys_time) < 0)
++    if (!err && virTypedParamListAddULLong(params, sys_time, "cpu.system") < 0)
 +        return -1;
 +
 +    return 0;
@@ -540,14 +394,13 @@ Index: libvirt-5.7.0/src/util/vircgroup.c
  #else /* !__linux__ */
  
  bool
-@@ -2800,6 +2838,15 @@ virCgroupAvailable(void)
+@@ -2801,6 +2826,14 @@ virCgroupAvailable(void)
  }
  
  
 +int
 +virCgroupGetStatsCpu(virCgroupPtr cgroup,
-+                     virDomainStatsRecordPtr record,
-+                     int *maxparams)
++                     virTypedParamListPtr params)
 +{
 +    return 0;
 +}
@@ -556,22 +409,29 @@ Index: libvirt-5.7.0/src/util/vircgroup.c
  int
  virCgroupNewPartition(const char *path ATTRIBUTE_UNUSED,
                        bool create ATTRIBUTE_UNUSED,
-Index: libvirt-5.7.0/src/util/vircgroup.h
+Index: libvirt-5.8.0/src/util/vircgroup.h
 ===================================================================
---- libvirt-5.7.0.orig/src/util/vircgroup.h
-+++ libvirt-5.7.0/src/util/vircgroup.h
-@@ -285,3 +285,7 @@ int virCgroupSetOwner(virCgroupPtr cgrou
+--- libvirt-5.8.0.orig/src/util/vircgroup.h
++++ libvirt-5.8.0/src/util/vircgroup.h
+@@ -24,6 +24,7 @@
+ #include "virutil.h"
+ #include "virbitmap.h"
+ #include "virenum.h"
++#include "virtypedparam.h"
+ 
+ struct _virCgroup;
+ typedef struct _virCgroup virCgroup;
+@@ -285,3 +286,6 @@ int virCgroupSetOwner(virCgroupPtr cgrou
  int virCgroupHasEmptyTasks(virCgroupPtr cgroup, int controller);
  
  bool virCgroupControllerAvailable(int controller);
 +
 +int virCgroupGetStatsCpu(virCgroupPtr cgroup,
-+                         virDomainStatsRecordPtr record,
-+                         int *maxparams);
-Index: libvirt-5.7.0/src/conf/Makefile.inc.am
++                         virTypedParamListPtr params);
+Index: libvirt-5.8.0/src/conf/Makefile.inc.am
 ===================================================================
---- libvirt-5.7.0.orig/src/conf/Makefile.inc.am
-+++ libvirt-5.7.0/src/conf/Makefile.inc.am
+--- libvirt-5.8.0.orig/src/conf/Makefile.inc.am
++++ libvirt-5.8.0/src/conf/Makefile.inc.am
 @@ -26,6 +26,8 @@ DOMAIN_CONF_SOURCES = \
  	conf/domain_audit.h \
  	conf/domain_nwfilter.c \

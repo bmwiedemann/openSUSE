@@ -1227,4 +1227,17 @@
     <comment></comment>
     <requestid>731140</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>f77a08ccb0474ee50ad81f23cda5c540</srcmd5>
+    <version>5.1.2</version>
+    <time>1571751423</time>
+    <user>dimstar_suse</user>
+    <comment>- Mercurial 5.1.2 
+  Regularly scheduled bug fix release.
+  * extensions
+    + phabricator: don't abort if property writing fails during amending
+  * tests
+    + test: allow different result for zstd compression (issue6188) (forwarded request 736466 from develop7)</comment>
+    <requestid>736467</requestid>
+  </revision>
 </revisionlist>

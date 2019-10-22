@@ -209,4 +209,41 @@
   * update to LLVM 8.0</comment>
     <requestid>711116</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>1f8fc61a734c3d7191d86b68ae194016</srcmd5>
+    <version>2.10.0+git.20191010.8a67e69</version>
+    <time>1571751954</time>
+    <user>dimstar_suse</user>
+    <comment>- Move back Group in spec file.
+
+- Update to version 2.10.0+git.20191010.8a67e69:
+  * Update the Travis-CI test-build configuration.
+  * Update copyright years.
+  * Put recently added clang_delta test files into distributions.
+  * fixed an issue for processing dependent template name
+  * added a bunch of tests for rename-class pass
+  * fixed an issue for rewriting dtor
+  * added several tests for rename-class
+  * added a couple of tests
+  * handle another case for overloaded operators
+  * skip overloaded functions for rename-fun
+  * skip AttributedStmt
+  * more fixes to macros
+  * handle function bodies with macro expansions
+  * handle macro arg expansions
+  * fixed an issue for removing unused vars
+  * fixed a crash for empty-struct-to-int
+  * a couple of tests for empty-struct-to-int
+  * fixed an issue for processing macro expansions
+  * handle cases where CurrentFD is null
+  * added a utility function to get expansion loc for macroID
+  * added one more test
+  * get expansion loc for checing isInIncludedFile
+  * relax the constraint on CurrentFD
+  * fixed another issue with macro expansion
+  * added several tests for return-void pass
+  * handle cases where return type is macro
+  * added several tests for aggregate-to-scalar pass</comment>
+    <requestid>741677</requestid>
+  </revision>
 </revisionlist>

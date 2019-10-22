@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 16 07:48:29 UTC 2019 - Andreas Schneider <asn@cryptomilk.org>
+
+- Added missing requirement lsb-release (needed for root password
+  prompt, e.g. hp-plugin).
+- Changed the pgp server to pool.sks-keyservers.net to avoid timeouts
+  from pgp.mit.edu
+  * New patch: hplip-change-pgp-server.patch
+
+-------------------------------------------------------------------
 Thu Aug 29 20:33:04 UTC 2019 - Martin Wilck <mwilck@suse.com>
 
 - Renamed "hplip-scan" to "hplip-scan-utils" to express the

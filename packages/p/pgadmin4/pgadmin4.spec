@@ -18,7 +18,7 @@
 
 %global	pgadmin4instdir %{_libdir}/pgadmin4-%{version}
 Name:           pgadmin4
-Version:        4.12
+Version:        4.14
 Release:        0
 Summary:        Management tool for PostgreSQL
 License:        PostgreSQL

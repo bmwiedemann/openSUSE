@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Oct 21 14:13:30 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20191021.8bb85c5f:
+  * Fix test plan URL for 15.2
+
+-------------------------------------------------------------------
+Sat Oct 19 14:51:07 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20191019.a97469df:
+  * conf.py: remove delreq-review default setting
+  * StagingAPI: complex delete requests are no longer used
+
+-------------------------------------------------------------------
+Sat Oct 19 12:28:46 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20191019.24a8cf2b:
+  * testenv: install shadow for useradd
+
+-------------------------------------------------------------------
 Thu Oct 17 20:42:50 UTC 2019 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20191017.180e4464:

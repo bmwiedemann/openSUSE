@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 18 20:27:55 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Update to version 0.9.1
+  * Various improvements to comment output.
+  * Fixed expand when ran from build.rs.
+  * More debugging output for expansion.
+  * New option to add a default private constructor in C++ tagged enums.
+  * Syn and related dependencies updated to 1.0.
+
+-------------------------------------------------------------------
 Thu Aug  8 20:44:33 UTC 2019 - Luke Jones <luke@ljones.dev>
 
 - Update to version 0.9.0

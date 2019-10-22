@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Oct 19 11:20:00 UTC 2019 - doug@uq.edu.au
+
+- Update to version 1.2.14:
+  * Changed Legacy Proposal button to Prevalent Algorithms button.
+  * Prevalent Algorithms button populates Phase 1 and 2 Algorithm
+    text entry boxes with a merge of Windows 10 and
+    macOS/iOS/iPadOS L2TP clients' IKEv1 proposals.
+  * Added use IKEv2 key exchange option.
+  * Improved debugging output for Libreswan and strongSwan.
+    Libreswan debugging can now be cutomized by setting the
+    PLUTODEBUG environment variable.
+    strongSwan debugging can now be cutomized by setting the
+    CHARONDEBUG environment variable.
+  * Gray out "IPsec Settings..." button if neither Libreswan nor
+    strongSwan are found.
+  * Updated translations.
+
+-------------------------------------------------------------------
 Mon Mar 25 00:50:00 UTC 2019 - doug@uq.edu.au
 
 - Update to version 1.2.12:

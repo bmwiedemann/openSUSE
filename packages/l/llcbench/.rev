@@ -34,4 +34,12 @@
     <comment>- Force specific version of mpicc</comment>
     <requestid>535639</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>52f8082b3f0c3026e81beb9c9fba796b</srcmd5>
+    <version>1.10</version>
+    <time>1571751872</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>741481</requestid>
+  </revision>
 </revisionlist>

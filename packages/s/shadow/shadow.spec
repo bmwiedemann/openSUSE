@@ -16,6 +16,12 @@
 #
 
 
+%if ! %{defined _distconfdir}
+  %define _distconfdir %{_sysconfdir}
+%else
+  %define no_config 1
+%endif
+
 Name:           shadow
 Version:        4.7
 Release:        0
@@ -59,11 +65,14 @@ Patch14:        shadow-login_defs-suse.patch
 Patch20:        disable_new_audit_function.patch
 # PATCH-FIX-UPSTREAM shadow-usermod-variable.patch https://github.com/shadow-maint/shadow/pull/170 sbrabec@suse.com -- Fix variable name.
 Patch21:        shadow-usermod-variable.patch
+# PATCH-FEATURE-UPSTREAM libeconf.patch https://github.com/shadow-maint/shadow/pull/180 kukuk@suse.com -- Add support for a vendor directory and libeconf
+Patch22:        libeconf.patch
 BuildRequires:  audit-devel > 2.3
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libacl-devel
 BuildRequires:  libattr-devel
+BuildRequires:  libeconf-devel
 BuildRequires:  libselinux-devel
 BuildRequires:  libsemanage-devel
 BuildRequires:  libtool
@@ -105,6 +114,7 @@ group accounts.
 %patch20 -p1
 %endif
 %patch21 -p1
+%patch22 -p1
 
 iconv -f ISO88591 -t utf-8  doc/HOWTO > doc/HOWTO.utf8
 mv -v doc/HOWTO.utf8 doc/HOWTO
@@ -126,7 +136,8 @@ autoreconf -fvi
   --with-selinux \
   --without-libcrack \
   --disable-shared \
-  --with-group-name-max-length=32
+  --with-group-name-max-length=32 \
+  --enable-vendordir=%{_distconfdir}
 make %{?_smp_mflags} V=1
 
 %install
@@ -200,10 +211,19 @@ rm %{buildroot}/%{_mandir}/*/man5/passwd.5*
 
 rm -rf %{buildroot}%{_mandir}/{??,??_??}
 
+# Move /etc to /usr/etc
+if [ ! -d %{buildroot}%{_distconfdir} ]; then
+    mkdir -p %{buildroot}%{_distconfdir}
+    mv %{buildroot}%{_sysconfdir}/{login.defs,pam.d} %{buildroot}%{_distconfdir}
+fi
+
 %find_lang shadow
 
 %pre
 %service_add_pre shadow.service shadow.timer
+for i in login.defs pam.d/chage pam.d/chfn pam.d/chpasswd pam.d/chsh pam.d/groupadd pam.d/groupdel pam.d/groupmod pam.d/newusers pam.d/passwd pam.d/useradd pam.d/userdel pam.d/usermod; do
+  test -f /etc/${i}.rpmsave && mv -v /etc/${i}.rpmsave /etc/${i}.rpmsave.old ||:
+done
 
 %post
 %set_permissions %{_bindir}/chage
@@ -235,13 +255,38 @@ rm -rf %{buildroot}%{_mandir}/{??,??_??}
 %postun
 %service_del_postun shadow.service shadow.timer
 
+%posttrans
+# Migration to /usr/etc
+for i in login.defs pam.d/chage pam.d/chfn pam.d/chpasswd pam.d/chsh pam.d/groupadd pam.d/groupdel pam.d/groupmod pam.d/newusers pam.d/passwd pam.d/useradd pam.d/userdel pam.d/usermod; do
+  test -f /etc/${i}.rpmsave && mv -v /etc/${i}.rpmsave /etc/${i} ||:
+done
+
 %files -f shadow.lang
 %license COPYING
 %doc NEWS doc/HOWTO README README.changes-pwdutils
+%if %{defined no_config}
+%attr(0644,root,root) %{_distconfdir}/login.defs
+%else
 %attr(0644,root,root) %config %{_sysconfdir}/login.defs
+%endif
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/default/useradd
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/subuid
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/subgid
+%if %{defined no_config}
+%{_distconfdir}/pam.d/chage
+%{_distconfdir}/pam.d/chfn
+%{_distconfdir}/pam.d/chsh
+%{_distconfdir}/pam.d/passwd
+%{_distconfdir}/pam.d/useradd
+%{_distconfdir}/pam.d/chpasswd
+%{_distconfdir}/pam.d/groupadd
+%{_distconfdir}/pam.d/groupdel
+%{_distconfdir}/pam.d/groupmod
+%{_distconfdir}/pam.d/newusers
+%{_distconfdir}/pam.d/useradd
+%{_distconfdir}/pam.d/userdel
+%{_distconfdir}/pam.d/usermod
+%else
 %config %{_sysconfdir}/pam.d/chage
 %config %{_sysconfdir}/pam.d/chfn
 %config %{_sysconfdir}/pam.d/chsh
@@ -255,6 +300,7 @@ rm -rf %{buildroot}%{_mandir}/{??,??_??}
 %config %{_sysconfdir}/pam.d/useradd
 %config %{_sysconfdir}/pam.d/userdel
 %config %{_sysconfdir}/pam.d/usermod
+%endif
 %verify(not mode) %attr(2755,root,shadow) %{_bindir}/chage
 %verify(not mode) %attr(4755,root,shadow) %{_bindir}/chfn
 %verify(not mode) %attr(4755,root,shadow) %{_bindir}/chsh

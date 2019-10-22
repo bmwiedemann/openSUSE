@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct  8 19:46:52 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2019-16935-xmlrpc-doc-server_title.patch fixing
+  bsc#1153238 (aka CVE-2019-16935) fixing a reflected XSS in
+  python/Lib/DocXMLRPCServer.py
+
+-------------------------------------------------------------------
 Wed Sep 25 13:25:33 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add bpo36302-sort-module-sources.patch (boo#1041090)

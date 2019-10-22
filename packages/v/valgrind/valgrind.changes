@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 17 22:43:21 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Move the BSD-style licensed client headers to a subpackage.
+  Packages only requiring e.g. valgrind.h during build no longer
+  need the full valgrind and valgrind-devel packages then.
+- Clean up documentation a bit:
+  + use %build_cond, drop unused docbook_4 BuildRequires
+  + remove the Postscript Valgrind manual in favor of the PDF one.
+- Add GFDL-1.2 to the License, relevant for man pages and Valgrind
+  PDF/HTML manual.
+
+-------------------------------------------------------------------
 Wed May  8 15:36:12 UTC 2019 - Dirk Mueller <dmueller@suse.com>
 
 - update to 3.15.0 (fate#327402) (jira SLE-5861):

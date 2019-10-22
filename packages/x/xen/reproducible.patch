@@ -11,10 +11,10 @@ Date:   Wed Oct 24 09:50:26 2018 +0200
     
     Signed-off-by: Bernhard M. Wiedemann <bwiedemann@suse.de>
 
-Index: xen-4.12.0-testing/Config.mk
+Index: xen-4.13.0-testing/Config.mk
 ===================================================================
---- xen-4.12.0-testing.orig/Config.mk
-+++ xen-4.12.0-testing/Config.mk
+--- xen-4.13.0-testing.orig/Config.mk
++++ xen-4.13.0-testing/Config.mk
 @@ -151,6 +151,14 @@ export XEN_HAS_BUILD_ID=y
  build_id_linker := --build-id=sha1
  endif
@@ -30,11 +30,11 @@ Index: xen-4.12.0-testing/Config.mk
  ifndef XEN_HAS_CHECKPOLICY
      CHECKPOLICY ?= checkpolicy
      XEN_HAS_CHECKPOLICY := $(shell $(CHECKPOLICY) -h 2>&1 | grep -q xen && echo y || echo n)
-Index: xen-4.12.0-testing/xen/arch/x86/Makefile
+Index: xen-4.13.0-testing/xen/arch/x86/Makefile
 ===================================================================
---- xen-4.12.0-testing.orig/xen/arch/x86/Makefile
-+++ xen-4.12.0-testing/xen/arch/x86/Makefile
-@@ -155,6 +155,7 @@ note.o: $(TARGET)-syms
+--- xen-4.13.0-testing.orig/xen/arch/x86/Makefile
++++ xen-4.13.0-testing/xen/arch/x86/Makefile
+@@ -162,6 +162,7 @@ note.o: $(TARGET)-syms
  
  EFI_LDFLAGS = $(patsubst -m%,-mi386pep,$(LDFLAGS)) --subsystem=10
  EFI_LDFLAGS += --image-base=$(1) --stack=0,0 --heap=0,0 --strip-debug

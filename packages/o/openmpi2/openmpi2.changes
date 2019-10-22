@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 10 06:06:10 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Fix conflict with other opoenmpi*-macros-devel
+- Add conflict with older provider name to avoid issues during updates
+- Add openmpi_prefix macro to openmpi-macros-devel
+
+-------------------------------------------------------------------
 Mon Sep 16 17:00:14 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add -ffat-lto-objects in spec to avoid build error

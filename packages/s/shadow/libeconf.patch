@@ -1,0 +1,362 @@
+From b52ce71c276d6dafceac6b942b534af77b647f48 Mon Sep 17 00:00:00 2001
+From: Thorsten Kukuk <kukuk@suse.com>
+Date: Fri, 20 Sep 2019 10:27:31 +0200
+Subject: [PATCH] Add support for a vendor directory and libeconf
+
+With this, it is possible for Linux distributors to store their
+supplied default configuration files somewhere below /usr, while
+/etc only contains the changes made by the user. The new option
+--enable-vendordir defines where the shadow suite should additional
+look for login.defs if this file is not in /etc.
+libeconf is a key/value configuration file reading library, which
+handles the split of configuration files in different locations
+and merges them transparently for the application.
+---
+ configure.ac          | 13 +++++++-
+ lib/Makefile.am       |  4 +++
+ lib/getdef.c          | 76 +++++++++++++++++++++++++++++++++++++++++++
+ libmisc/Makefile.am   |  2 +-
+ libmisc/prefix_flag.c | 18 ++++++----
+ src/Makefile.am       | 55 ++++++++++++++++---------------
+ 6 files changed, 132 insertions(+), 36 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 1907afbd..6a273766 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -247,7 +247,7 @@ AC_ARG_ENABLE(subordinate-ids,
+ 	[enable_subids="maybe"]
+ )
+ 
+-AC_ARG_WITH(audit, 
++AC_ARG_WITH(audit,
+ 	[AC_HELP_STRING([--with-audit], [use auditing support @<:@default=yes if found@:>@])],
+ 	[with_audit=$withval], [with_audit=maybe])
+ AC_ARG_WITH(libpam,
+@@ -321,6 +321,17 @@ AC_SEARCH_LIBS(inet_ntoa, inet)
+ AC_SEARCH_LIBS(socket, socket)
+ AC_SEARCH_LIBS(gethostbyname, nsl)
+ 
++AC_CHECK_LIB([econf],[econf_readDirs],[LIBECONF="-leconf"],[LIBECONF=""])
++if test -n "$LIBECONF"; then
++	ECONF_CPPFLAGS="-DUSE_ECONF=1"
++	AC_ARG_ENABLE([vendordir],
++		AS_HELP_STRING([--enable-vendordir=DIR], [Directory for distribution provided configuration files]),,[])
++fi
++AC_SUBST(ECONF_CPPFLAGS)
++AC_SUBST(LIBECONF)
++AC_SUBST([VENDORDIR], [$enable_vendordir])
++AM_CONDITIONAL([HAVE_VENDORDIR], [test "x$enable_vendordir" != x])
++
+ if test "$enable_shadowgrp" = "yes"; then
+ 	AC_DEFINE(SHADOWGRP, 1, [Define to support the shadow group file.])
+ fi
+diff --git a/lib/Makefile.am b/lib/Makefile.am
+index fd634542..a40c08a1 100644
+--- a/lib/Makefile.am
++++ b/lib/Makefile.am
+@@ -6,6 +6,10 @@ DEFS =
+ noinst_LTLIBRARIES = libshadow.la
+ 
+ libshadow_la_LDFLAGS = -version-info 0:0:0
++libshadow_la_CPPFLAGS = $(ECONF_CPPFLAGS)
++if HAVE_VENDORDIR
++libshadow_la_CPPFLAGS += -DVENDORDIR=\"$(VENDORDIR)\"
++endif
+ 
+ libshadow_la_SOURCES = \
+ 	commonio.c \
+diff --git a/lib/getdef.c b/lib/getdef.c
+index ece33a78..939aea29 100644
+--- a/lib/getdef.c
++++ b/lib/getdef.c
+@@ -40,6 +40,9 @@
+ #include <stdlib.h>
+ #include <ctype.h>
+ #include <errno.h>
++#ifdef USE_ECONF
++#include <libeconf.h>
++#endif
+ #include "getdef.h"
+ /*
+  * A configuration item definition.
+@@ -152,11 +155,20 @@ static struct itemdef knowndef_table[] = {
+ 	{NULL, NULL}
+ };
+ 
++#ifdef USE_ECONF
++#ifdef VENDORDIR
++static const char* vendordir = VENDORDIR;
++#else
++static const char* vendordir = NULL;
++#endif
++static const char* sysconfdir = "/etc";
++#else
+ #ifndef LOGINDEFS
+ #define LOGINDEFS "/etc/login.defs"
+ #endif
+ 
+ static const char* def_fname = LOGINDEFS;	/* login config defs file       */
++#endif
+ static bool def_loaded = false;		/* are defs already loaded?     */
+ 
+ /* local function prototypes */
+@@ -433,7 +445,27 @@ static /*@observer@*/ /*@null@*/struct itemdef *def_find (const char *name)
+ 
+ void setdef_config_file (const char* file)
+ {
++#ifdef USE_ECONF
++	size_t len;
++	char* cp;
++
++	len = strlen(file) + strlen(sysconfdir) + 2;
++	cp = malloc(len);
++	if (cp == NULL)
++		exit (13);
++	snprintf(cp, len, "%s/%s", file, sysconfdir);
++	sysconfdir = cp;
++#ifdef VENDORDIR
++	len = strlen(file) + strlen(vendordir) + 2;
++	cp = malloc(len);
++	if (cp == NULL)
++		exit (13);
++	snprintf(cp, len, "%s/%s", file, vendordir);
++	vendordir = cp;
++#endif
++#else
+ 	def_fname = file;
++#endif
+ }
+ 
+ /*
+@@ -444,9 +476,16 @@ void setdef_config_file (const char* file)
+ 
+ static void def_load (void)
+ {
++#ifdef USE_ECONF
++	econf_file *defs_file = NULL;
++	econf_err error;
++	char **keys;
++	size_t key_number;
++#else
+ 	int i;
+ 	FILE *fp;
+ 	char buf[1024], *name, *value, *s;
++#endif
+ 
+ 	/*
+ 	 * Set the initialized flag.
+@@ -454,6 +493,42 @@ static void def_load (void)
+ 	 */
+ 	def_loaded = true;
+ 
++#ifdef USE_ECONF
++
++	error = econf_readDirs (&defs_file, vendordir, sysconfdir, "login", "defs", " \t", "#");
++	if (error) {
++		if (error == ECONF_NOFILE)
++			return;
++
++		SYSLOG ((LOG_CRIT, "cannot open login definitions [%s]",
++			econf_errString(error)));
++		exit (EXIT_FAILURE);
++	}
++
++	if ((error = econf_getKeys(defs_file, NULL, &key_number, &keys))) {
++		SYSLOG ((LOG_CRIT, "cannot read login definitions [%s]",
++			econf_errString(error)));
++		exit (EXIT_FAILURE);
++	}
++
++	for (size_t i = 0; i < key_number; i++) {
++		char *value;
++
++		econf_getStringValue(defs_file, NULL, keys[i], &value);
++
++		/*
++		 * Store the value in def_table.
++		 *
++		 * Ignore failures to load the login.defs file.
++		 * The error was already reported to the user and to
++		 * syslog. The tools will just use their default values.
++		 */
++		(void)putdef_str (keys[i], value);
++	}
++
++	econf_free (keys);
++	econf_free (defs_file);
++#else
+ 	/*
+ 	 * Open the configuration definitions file.
+ 	 */
+@@ -517,6 +592,7 @@ static void def_load (void)
+ 	}
+ 
+ 	(void) fclose (fp);
++#endif
+ }
+ 
+ 
+diff --git a/libmisc/Makefile.am b/libmisc/Makefile.am
+index 9aed980f..7f43161f 100644
+--- a/libmisc/Makefile.am
++++ b/libmisc/Makefile.am
+@@ -1,7 +1,7 @@
+ 
+ EXTRA_DIST = .indent.pro xgetXXbyYY.c
+ 
+-AM_CPPFLAGS = -I$(top_srcdir)/lib
++AM_CPPFLAGS = -I$(top_srcdir)/lib $(ECONF_CPPFLAGS)
+ 
+ noinst_LIBRARIES = libmisc.a
+ 
+diff --git a/libmisc/prefix_flag.c b/libmisc/prefix_flag.c
+index cd1eec47..4fe6d195 100644
+--- a/libmisc/prefix_flag.c
++++ b/libmisc/prefix_flag.c
+@@ -96,7 +96,7 @@ extern const char* process_prefix_flag (const char* short_opt, int argc, char **
+ 		}
+ 	}
+ 
+-	
++
+ 
+ 	if (prefix != NULL) {
+ 		if ( prefix[0] == '\0' || !strcmp(prefix, "/"))
+@@ -113,7 +113,7 @@ extern const char* process_prefix_flag (const char* short_opt, int argc, char **
+ 		group_db_file = xmalloc(len);
+ 		snprintf(group_db_file, len, "%s/%s", prefix, GROUP_FILE);
+ 		gr_setdbname(group_db_file);
+-	
++
+ #ifdef  SHADOWGRP
+ 		len = strlen(prefix) + strlen(SGROUP_FILE) + 2;
+ 		sgroup_db_file = xmalloc(len);
+@@ -128,7 +128,7 @@ extern const char* process_prefix_flag (const char* short_opt, int argc, char **
+ 		spw_db_file = xmalloc(len);
+ 		snprintf(spw_db_file, len, "%s/%s", prefix, SHADOW_FILE);
+ 		spw_setdbname(spw_db_file);
+-		
++
+ #ifdef ENABLE_SUBIDS
+ 		len = strlen(prefix) + strlen("/etc/subuid") + 2;
+ 		suid_db_file = xmalloc(len);
+@@ -141,11 +141,15 @@ extern const char* process_prefix_flag (const char* short_opt, int argc, char **
+ 		sub_gid_setdbname(sgid_db_file);
+ #endif
+ 
++#ifdef USE_ECONF
++		setdef_config_file(prefix);
++#else
+ 		len = strlen(prefix) + strlen("/etc/login.defs") + 2;
+ 		def_conf_file = xmalloc(len);
+ 		snprintf(def_conf_file, len, "%s/%s", prefix, "/etc/login.defs");
+ 		setdef_config_file(def_conf_file);
+-	}	
++#endif
++	}
+ 
+ 	if (prefix == NULL)
+ 		return "";
+@@ -169,7 +173,7 @@ extern struct group *prefix_getgrnam(const char *name)
+ 		fclose(fg);
+ 		return grp;
+ 	}
+-	
++
+ 	return getgrnam(name);
+ }
+ 
+@@ -262,7 +266,7 @@ extern void prefix_setpwent()
+ 	}
+ 	if (fp_pwent)
+ 		fclose (fp_pwent);
+-	
++
+ 	fp_pwent = fopen(passwd_db_file, "rt");
+ 	if(!fp_pwent)
+ 		return;
+@@ -293,7 +297,7 @@ extern void prefix_setgrent()
+ 	}
+ 	if (fp_grent)
+ 		fclose (fp_grent);
+-	
++
+ 	fp_grent = fopen(group_db_file, "rt");
+ 	if(!fp_grent)
+ 		return;
+diff --git a/src/Makefile.am b/src/Makefile.am
+index f7f132ee..451816d7 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -88,42 +88,43 @@ else
+ LIBCRYPT_NOPAM = $(LIBCRYPT)
+ endif
+ 
+-chage_LDADD    = $(LDADD) $(LIBPAM_SUID) $(LIBAUDIT) $(LIBSELINUX)
++chage_LDADD    = $(LDADD) $(LIBPAM_SUID) $(LIBAUDIT) $(LIBSELINUX) $(LIBECONF)
+ newuidmap_LDADD    = $(LDADD) $(LIBSELINUX) $(LIBCAP)
+ newgidmap_LDADD    = $(LDADD) $(LIBSELINUX) $(LIBCAP)
+-chfn_LDADD     = $(LDADD) $(LIBPAM) $(LIBSELINUX) $(LIBCRYPT_NOPAM) $(LIBSKEY) $(LIBMD)
+-chgpasswd_LDADD = $(LDADD) $(LIBPAM_SUID) $(LIBSELINUX) $(LIBCRYPT)
+-chsh_LDADD     = $(LDADD) $(LIBPAM) $(LIBSELINUX) $(LIBCRYPT_NOPAM) $(LIBSKEY) $(LIBMD)
+-chpasswd_LDADD = $(LDADD) $(LIBPAM) $(LIBSELINUX) $(LIBCRYPT)
+-gpasswd_LDADD  = $(LDADD) $(LIBAUDIT) $(LIBSELINUX) $(LIBCRYPT)
+-groupadd_LDADD = $(LDADD) $(LIBPAM_SUID) $(LIBAUDIT) $(LIBSELINUX)
+-groupdel_LDADD = $(LDADD) $(LIBPAM_SUID) $(LIBAUDIT) $(LIBSELINUX)
+-groupmems_LDADD = $(LDADD) $(LIBPAM) $(LIBSELINUX)
+-groupmod_LDADD = $(LDADD) $(LIBPAM_SUID) $(LIBAUDIT) $(LIBSELINUX)
+-grpck_LDADD    = $(LDADD) $(LIBSELINUX)
+-grpconv_LDADD  = $(LDADD) $(LIBSELINUX)
+-grpunconv_LDADD = $(LDADD) $(LIBSELINUX)
+-lastlog_LDADD   = $(LDADD) $(LIBAUDIT)
++chfn_LDADD     = $(LDADD) $(LIBPAM) $(LIBSELINUX) $(LIBCRYPT_NOPAM) $(LIBSKEY) $(LIBMD) $(LIBECONF)
++chgpasswd_LDADD = $(LDADD) $(LIBPAM_SUID) $(LIBSELINUX) $(LIBCRYPT) $(LIBECONF)
++chsh_LDADD     = $(LDADD) $(LIBPAM) $(LIBSELINUX) $(LIBCRYPT_NOPAM) $(LIBSKEY) $(LIBMD) $(LIBECONF)
++chpasswd_LDADD = $(LDADD) $(LIBPAM) $(LIBSELINUX) $(LIBCRYPT) $(LIBECONF)
++expiry_LDADD = $(LDADD) $(LIBECONF)
++gpasswd_LDADD  = $(LDADD) $(LIBAUDIT) $(LIBSELINUX) $(LIBCRYPT) $(LIBECONF)
++groupadd_LDADD = $(LDADD) $(LIBPAM_SUID) $(LIBAUDIT) $(LIBSELINUX) $(LIBECONF)
++groupdel_LDADD = $(LDADD) $(LIBPAM_SUID) $(LIBAUDIT) $(LIBSELINUX) $(LIBECONF)
++groupmems_LDADD = $(LDADD) $(LIBPAM) $(LIBSELINUX) $(LIBECONF)
++groupmod_LDADD = $(LDADD) $(LIBPAM_SUID) $(LIBAUDIT) $(LIBSELINUX) $(LIBECONF)
++grpck_LDADD    = $(LDADD) $(LIBSELINUX) $(LIBECONF)
++grpconv_LDADD  = $(LDADD) $(LIBSELINUX) $(LIBECONF)
++grpunconv_LDADD = $(LDADD) $(LIBSELINUX) $(LIBECONF)
++lastlog_LDADD   = $(LDADD) $(LIBAUDIT) $(LIBECONF)
+ login_SOURCES  = \
+ 	login.c \
+ 	login_nopam.c
+-login_LDADD    = $(LDADD) $(LIBPAM) $(LIBAUDIT) $(LIBCRYPT_NOPAM) $(LIBSKEY) $(LIBMD)
+-newgrp_LDADD   = $(LDADD) $(LIBAUDIT) $(LIBCRYPT)
+-newusers_LDADD = $(LDADD) $(LIBPAM) $(LIBSELINUX) $(LIBCRYPT)
++login_LDADD    = $(LDADD) $(LIBPAM) $(LIBAUDIT) $(LIBCRYPT_NOPAM) $(LIBSKEY) $(LIBMD) $(LIBECONF)
++newgrp_LDADD   = $(LDADD) $(LIBAUDIT) $(LIBCRYPT) $(LIBECONF)
++newusers_LDADD = $(LDADD) $(LIBPAM) $(LIBSELINUX) $(LIBCRYPT) $(LIBECONF)
+ nologin_LDADD  =
+-passwd_LDADD   = $(LDADD) $(LIBPAM) $(LIBCRACK) $(LIBAUDIT) $(LIBSELINUX) $(LIBCRYPT_NOPAM)
+-pwck_LDADD     = $(LDADD) $(LIBSELINUX)
+-pwconv_LDADD   = $(LDADD) $(LIBSELINUX)
+-pwunconv_LDADD = $(LDADD) $(LIBSELINUX)
++passwd_LDADD   = $(LDADD) $(LIBPAM) $(LIBCRACK) $(LIBAUDIT) $(LIBSELINUX) $(LIBCRYPT_NOPAM) $(LIBECONF)
++pwck_LDADD     = $(LDADD) $(LIBSELINUX) $(LIBECONF)
++pwconv_LDADD   = $(LDADD) $(LIBSELINUX) $(LIBECONF)
++pwunconv_LDADD = $(LDADD) $(LIBSELINUX) $(LIBECONF)
+ su_SOURCES     = \
+ 	su.c \
+ 	suauth.c
+-su_LDADD       = $(LDADD) $(LIBPAM) $(LIBAUDIT) $(LIBCRYPT_NOPAM) $(LIBSKEY) $(LIBMD)
+-sulogin_LDADD  = $(LDADD) $(LIBCRYPT)
+-useradd_LDADD  = $(LDADD) $(LIBPAM_SUID) $(LIBAUDIT) $(LIBSELINUX) $(LIBSEMANAGE) $(LIBACL) $(LIBATTR)
+-userdel_LDADD  = $(LDADD) $(LIBPAM_SUID) $(LIBAUDIT) $(LIBSELINUX) $(LIBSEMANAGE)
+-usermod_LDADD  = $(LDADD) $(LIBPAM_SUID) $(LIBAUDIT) $(LIBSELINUX) $(LIBSEMANAGE) $(LIBACL) $(LIBATTR)
+-vipw_LDADD     = $(LDADD) $(LIBSELINUX)
++su_LDADD       = $(LDADD) $(LIBPAM) $(LIBAUDIT) $(LIBCRYPT_NOPAM) $(LIBSKEY) $(LIBMD) $(LIBECONF)
++sulogin_LDADD  = $(LDADD) $(LIBCRYPT) $(LIBECONF)
++useradd_LDADD  = $(LDADD) $(LIBPAM_SUID) $(LIBAUDIT) $(LIBSELINUX) $(LIBSEMANAGE) $(LIBACL) $(LIBATTR) $(LIBECONF)
++userdel_LDADD  = $(LDADD) $(LIBPAM_SUID) $(LIBAUDIT) $(LIBSELINUX) $(LIBSEMANAGE) $(LIBECONF)
++usermod_LDADD  = $(LDADD) $(LIBPAM_SUID) $(LIBAUDIT) $(LIBSELINUX) $(LIBSEMANAGE) $(LIBACL) $(LIBATTR) $(LIBECONF)
++vipw_LDADD     = $(LDADD) $(LIBSELINUX) $(LIBECONF)
+ 
+ install-am: all-am
+ 	$(MAKE) $(AM_MAKEFLAGS) install-exec-am install-data-am

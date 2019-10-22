@@ -434,4 +434,15 @@
   allow OBS to shortcut by using systemd-devel-mini. (forwarded request 710882 from dimstar)</comment>
     <requestid>710885</requestid>
   </revision>
+  <revision rev="48" vrev="4">
+    <srcmd5>da8ed3d97280ecc80f2b811c3898daa7</srcmd5>
+    <version>6.0</version>
+    <time>1571751442</time>
+    <user>dimstar_suse</user>
+    <comment>- change udev rule again to also not automatically use the braille
+  driver for USB IDs 10c4:ea60 and 10c4:ea80 as these are generic
+  IDs of generic UART bridges and should not be used for higher
+  level devices (bsc#1093378, bsc#1093455, bsc#1007652) (forwarded request 736701 from oertel)</comment>
+    <requestid>736726</requestid>
+  </revision>
 </revisionlist>

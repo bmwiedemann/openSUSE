@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 21 18:19:17 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2019.10.22
+  * atresplayer: fix extraction
+  * dumpert: fix extraction
+  * mit: Remove support for video.mit.edu
+  * twitch: update VOD URL matching
+  * facebook: Bypass download rate limits
+
+-------------------------------------------------------------------
 Wed Oct 16 17:37:41 UTC 2019 - Sebastien CHAVAUX <seb95.scou@gmail.com>
 
 - Update to release 2019.10-16:

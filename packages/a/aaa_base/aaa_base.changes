@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Oct 17 05:21:44 UTC 2019 - werner@suse.de
+
+- Update to version 84.87+git20191017.bf0a315:
+  * Use short TERM name rxvt for rxvt-unicode and rxvt-unicode-256-color
+
+-------------------------------------------------------------------
+Thu Oct 17 05:09:46 UTC 2019 - werner@suse.de
+
+- Update to version 84.87+git20191017.14003c1:
+  * Use official key binding functions in inputrc
+    that is replace up-history with previous-history, down-history with
+    next-history and backward-delete-word with backward-kill-word
+    (bsc#1084934).  Add some missed key escape sequences for urxvt-unicode
+    terminal as well (boo#1007715).
+
+-------------------------------------------------------------------
+Wed Oct 16 15:03:33 UTC 2019 - ro@suse.com
+
+- Update to version 84.87+git20191016.80d1420:
+  * backup-sysconfig: fall back top cpio if tar is not available
+    (bsc#1089299)
+  * backup-rpmdb: check if rpm database is okay before backup to
+    avoid overwriting good backups with corrupt ones (bsc#1079861)
+  * service: check if there is a second argument before using it
+    (bsc#1051143)
+
+-------------------------------------------------------------------
+Mon Oct 14 16:00:12 UTC 2019 - ro@suse.com
+
+- Update to version 84.87+git20191014.52dc403:
+  * also add color alias for ip command, jira#sle-9880, bsc#1153943
+
+-------------------------------------------------------------------
+Thu Oct 10 13:32:05 UTC 2019 - ro@suse.com
+
+- Update to version 84.87+git20191010.b20083a:
+  * check if variables can be set before modifying them
+    to avoid warnings on login with a restricted shell
+    (bsc#1138869)
+
+-------------------------------------------------------------------
+Wed Oct 09 09:27:06 UTC 2019 - ro@suse.com
+
+- Update to version 84.87+git20191009.4c2bd8e:
+  * Add s390x compressed kernel support (bsc#1151023)
+  * Fix LC_NAME and LC_ADDRESS in sh.ssh
+  * fix string test to arithmetic test in /etc/profile.d/wsl.sh
+
+-------------------------------------------------------------------
 Thu Aug 22 13:48:30 UTC 2019 - ro@suse.com
 
 - Update to version 84.87+git20190822.82a17f1:

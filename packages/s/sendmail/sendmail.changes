@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 14 10:25:24 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Avoid recursion trouble in spec file cause by undefined _lto_cflags 
+
+-------------------------------------------------------------------
 Sat Sep 28 07:32:14 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch sendmail-8.15.2-glibc-2.30.patch

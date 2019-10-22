@@ -17,7 +17,7 @@
 
 
 Name:           lollypop
-Version:        1.1.4.16
+Version:        1.2.0
 Release:        0
 Summary:        GNOME music playing application
 License:        GPL-3.0-or-later
@@ -30,8 +30,10 @@ BuildRequires:  itstool
 BuildRequires:  meson >= 0.41
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
-BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.35.9
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
+BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.35.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
+BuildRequires:  pkgconfig(libsoup-2.4)
+BuildRequires:  pkgconfig(pygobject-3.0) >= 3.29.1
 # Can't migrate to GDBus, the server-side support is not implemented yet:
 #     https://bugzilla.gnome.org/show_bug.cgi?id=656330
 Requires:       dbus-1-python3
@@ -73,7 +75,7 @@ Summary:        GNOME music playing application - gnome-shell search provider
 Group:          Productivity/Multimedia/Sound/Players
 Requires:       %{name} = %{version}
 Requires:       gnome-shell
-Supplements:    packageand(%{name}:gnome-shell)
+Supplements:    (%{name} and gnome-shell)
 
 %description -n gnome-shell-search-provider-lollypop
 Lollypop is a GNOME music playing application.
@@ -107,6 +109,7 @@ search results from %{name}.
 %{_datadir}/applications/org.gnome.Lollypop.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.Lollypop.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Lollypop*
+%{_mandir}/man1/lollypop.1%{?ext_man}
 %{python3_sitelib}/lollypop/
 
 %files -n gnome-shell-search-provider-%{name}

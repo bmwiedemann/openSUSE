@@ -1,11 +1,13 @@
---- xen-4.11.0-testing/tools/firmware/Makefile.orig	2018-04-20 10:41:02.186884556 -0600
-+++ xen-4.11.0-testing/tools/firmware/Makefile	2018-04-20 10:41:24.675182540 -0600
-@@ -2,7 +2,7 @@ XEN_ROOT = $(CURDIR)/../..
- include $(XEN_ROOT)/tools/Rules.mk
- 
- ifneq ($(XEN_TARGET_ARCH),x86_32)
--CONFIG_PV_SHIM := y
-+CONFIG_PV_SHIM := n
- endif
- 
- # hvmloader is a 32-bit protected mode binary.
+--- xen-4.13.0-testing/xen/arch/x86/configs/pvshim_defconfig.orig	2019-10-14 09:46:44.567846243 -0600
++++ xen-4.13.0-testing/xen/arch/x86/configs/pvshim_defconfig	2019-10-14 09:47:17.722552005 -0600
+@@ -2,8 +2,8 @@
+ CONFIG_PV=y
+ CONFIG_XEN_GUEST=y
+ CONFIG_PVH_GUEST=y
+-CONFIG_PV_SHIM=y
+-CONFIG_PV_SHIM_EXCLUSIVE=y
++CONFIG_PV_SHIM=n
++CONFIG_PV_SHIM_EXCLUSIVE=n
+ CONFIG_NR_CPUS=32
+ # Disable features not used by the PV shim
+ # CONFIG_SHADOW_PAGING is not set

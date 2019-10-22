@@ -781,4 +781,12 @@
     <comment>Scripted push from {project}</comment>
     <requestid>736561</requestid>
   </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>443885c22eb092f131b1ed120fa61852</srcmd5>
+    <version>3.34.1</version>
+    <time>1571751597</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 739034 from fcrozat)</comment>
+    <requestid>741072</requestid>
+  </revision>
 </revisionlist>
