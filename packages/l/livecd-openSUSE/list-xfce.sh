@@ -33,6 +33,9 @@ buildignore libreoffice
 # Pulls in sane-backends
 buildignore simple-scan
 
+# Moved here from list-common.sh, too big for x11
+install xf86-video-vmware i686,x86_64
+
 # make sure pdf support for xreader is installed
 install xreader-plugin-pdfdocument
 

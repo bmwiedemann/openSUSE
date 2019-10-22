@@ -33,6 +33,9 @@ buildignore Mesa-libva
 # No python2 necessary
 buildignore python-base
 
+# Pulls in libpython2_7
+buildignore libpeas-loader-python
+
 buildignore aspell-en
 buildignore ModemManager
 buildignore yast2-printer

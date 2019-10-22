@@ -12,7 +12,7 @@ fetch_pkglist() {
 	local package=$2
 	local repo=$3
 	local arch=$4
-	local binaryname=$(osc ls -b ${project} ${package} -a ${arch} | grep .packages | xargs)
+	local binaryname=$(osc ls -b ${project} ${package} -a ${arch} -r ${repo} | grep .packages | xargs)
 
 	osc api /build/${project}/${repo}/${arch}/${package}/${binaryname} | awk -F\| '{ print $1 }' | sort -u
 }

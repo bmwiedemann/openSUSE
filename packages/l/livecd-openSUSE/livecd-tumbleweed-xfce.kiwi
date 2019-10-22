@@ -382,7 +382,6 @@
     <package name="xf86-video-tga"/>
     <package name="xf86-video-v4l"/>
     <package name="xf86-video-vesa"/>
-    <package name="xf86-video-vmware" arch="i686,x86_64"/>
     <package name="xf86-video-voodoo"/>
     <package name="xfsdump"/>
     <package name="xfsprogs"/>
@@ -462,6 +461,7 @@
     <ignore name="libreoffice"/>
     <package name="aaa_base" replaces="simple-scan"/>
     <ignore name="simple-scan"/>
+    <package name="xf86-video-vmware" arch="i686,x86_64"/>
     <package name="xreader-plugin-pdfdocument"/>
     <package name="alsa-firmware"/>
     <package name="opensuse-welcome"/>

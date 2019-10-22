@@ -43,6 +43,9 @@ buildignore patterns-kde-kde_games
 buildignore patterns-kde-kde_utilities
 install kcharselect
 
+# Moved here from list-common.sh, too big for x11
+install xf86-video-vmware i686,x86_64
+
 # No PIM
 buildignore patterns-kde-kde_pim
 

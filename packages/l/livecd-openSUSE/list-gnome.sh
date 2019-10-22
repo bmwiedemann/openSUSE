@@ -78,6 +78,9 @@ buildignore fwupd-lang
 # Moved here from list-common.sh. cyrus-sasl is needed by Pidgin in Xfce Live CD
 buildignore cyrus-sasl
 
+# Moved here from list-common.sh, too big for x11
+install xf86-video-vmware i686,x86_64
+
 # From rest_cd_core
 install alsa-firmware
 

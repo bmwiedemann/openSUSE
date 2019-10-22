@@ -382,7 +382,6 @@
     <package name="xf86-video-tga"/>
     <package name="xf86-video-v4l"/>
     <package name="xf86-video-vesa"/>
-    <package name="xf86-video-vmware" arch="i686,x86_64"/>
     <package name="xf86-video-voodoo"/>
     <package name="xfsdump"/>
     <package name="xfsprogs"/>
@@ -475,6 +474,7 @@
     <package name="aaa_base" replaces="patterns-kde-kde_utilities"/>
     <ignore name="patterns-kde-kde_utilities"/>
     <package name="kcharselect"/>
+    <package name="xf86-video-vmware" arch="i686,x86_64"/>
     <package name="aaa_base" replaces="patterns-kde-kde_pim"/>
     <ignore name="patterns-kde-kde_pim"/>
     <package name="aaa_base" replaces="gdb"/>

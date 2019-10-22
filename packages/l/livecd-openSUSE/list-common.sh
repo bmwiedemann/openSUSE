@@ -263,7 +263,6 @@ install xf86-video-tdfx
 install xf86-video-tga
 install xf86-video-v4l
 install xf86-video-vesa
-install xf86-video-vmware i686,x86_64
 install xf86-video-voodoo
 install xfsdump
 install xfsprogs

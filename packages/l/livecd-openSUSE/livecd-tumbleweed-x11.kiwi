@@ -382,7 +382,6 @@
     <package name="xf86-video-tga"/>
     <package name="xf86-video-v4l"/>
     <package name="xf86-video-vesa"/>
-    <package name="xf86-video-vmware" arch="i686,x86_64"/>
     <package name="xf86-video-voodoo"/>
     <package name="xfsdump"/>
     <package name="xfsprogs"/>
@@ -472,6 +471,8 @@
     <ignore name="Mesa-libva"/>
     <package name="aaa_base" replaces="python-base"/>
     <ignore name="python-base"/>
+    <package name="aaa_base" replaces="libpeas-loader-python"/>
+    <ignore name="libpeas-loader-python"/>
     <package name="aaa_base" replaces="aspell-en"/>
     <ignore name="aspell-en"/>
     <package name="aaa_base" replaces="ModemManager"/>

@@ -648,4 +648,14 @@
     <time>1569839691</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="77" vrev="77">
+    <srcmd5>8a23e8fa5abcaa82c77ee8bd83bd5f29</srcmd5>
+    <version>unknown</version>
+    <time>1571741693</time>
+    <user>dimstar_suse</user>
+    <comment>- list-x11: Block libpeas-loader-python to avoid libpython2_7
+- Fix pkg-diff for prjs with multiple repos
+- Move xf86-video-vmware from list-common to list-{gnome,kde,xfce} (forwarded request 741736 from favogt)</comment>
+    <requestid>741737</requestid>
+  </revision>
 </revisionlist>
