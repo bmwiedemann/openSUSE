@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  9 07:55:48 UTC 2019 - Yuan Ren <yren@suse.com>
+
+- Replace corosync-2.4.5.tar.gz with a clean source.tar.gz(bsc#1144200) 
+	The reason is some binaries left in corosync-2.4.5.tar.gz
+
+-------------------------------------------------------------------
 Fri Aug 16 09:50:28 UTC 2019 - Yuan Ren <yren@suse.com>
 
 - corosync-2.4.5 upgrade(bsc#1144200)
