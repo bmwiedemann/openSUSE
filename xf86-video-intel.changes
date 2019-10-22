@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 18 17:37:10 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Guard valgrind BuildRequires with a bcond, defaulting to disabled
+  (upstream default), and actually enable it when requested.
+
+-------------------------------------------------------------------
 Wed Apr 24 17:46:17 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Disable LTO (boo#1133292).
