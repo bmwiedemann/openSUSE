@@ -16,7 +16,7 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
@@ -32,13 +32,16 @@ Source:         https://download.kde.org/stable/applications/%{version}/src/%{na
 Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  akonadi-server-devel >= %{_kapp_version}
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
-BuildRequires:  kcalcore-devel
-BuildRequires:  kcalutils-devel
 BuildRequires:  kf5-filesystem
-BuildRequires:  kholidays-devel
-BuildRequires:  kidentitymanagement-devel >= %{_kapp_version}
+BuildRequires:  cmake(KF5Akonadi)
+BuildRequires:  cmake(KF5CalendarCore)
+BuildRequires:  cmake(KF5CalendarUtils)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5Holidays)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IdentityManagement)
+BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Test)
 Recommends:     %{name}-lang
 
@@ -64,10 +67,10 @@ This package provides plugins for KDE PIM needed to read and write calendar-rela
 %package devel
 Summary:        Development files for kalarmcal
 Group:          Development/Libraries/KDE
-Requires:       akonadi-server-devel >= %{_kapp_version}
-Requires:       kcalcore-devel >= %{_kapp_version}
-Requires:       kholidays-devel
-Requires:       kidentitymanagement-devel >= %{_kapp_version}
+Requires:       cmake(KF5Akonadi)
+Requires:       cmake(KF5CalendarCore)
+Requires:       cmake(KF5Holidays)
+Requires:       cmake(KF5IdentityManagement)
 Requires:       libKF5AlarmCalendar5 = %{version}
 
 %description devel

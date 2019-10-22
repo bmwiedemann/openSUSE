@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-kde
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -321,9 +321,11 @@ Recommends:     plasma-nm5
 Recommends:     plasma5-pa
 Recommends:     plasma5-pk-updates
 Recommends:     plasma5-addons
+Recommends:     plasma5-thunderbolt
 Recommends:     kgamma5
 Recommends:     kdeconnect-kde
 Recommends:     kde-print-manager
+Recommends:     kwrited5
 # Wayland is optional
 Recommends:     plasma5-session-wayland
 
@@ -349,7 +351,6 @@ Recommends:     alsa-plugins-pulse
 # Thumbnailers
 Recommends:     ffmpegthumbs
 Recommends:     kdegraphics-thumbnailers
-Recommends:     kde-odf-thumbnail
 
 %description kde_plasma
 Base packages for the KDE Plasma 5 desktop environment.

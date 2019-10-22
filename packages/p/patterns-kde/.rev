@@ -207,4 +207,16 @@ This also handles TW properly. (forwarded request 653860 from lslezak)</comment>
 </comment>
     <requestid>702801</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>3a029019208605ea10e0a2c33c9f47fb</srcmd5>
+    <version>20181130</version>
+    <time>1571755285</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop kde-odf-thumbnail recommends, is part of kio-extras5
+
+- Recommend plasma5-thunderbolt in kde_plasma
+
+- Recommend kwrited5 in kde_plasma</comment>
+    <requestid>738415</requestid>
+  </revision>
 </revisionlist>

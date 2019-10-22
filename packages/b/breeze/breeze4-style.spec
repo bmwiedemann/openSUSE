@@ -39,6 +39,9 @@ BuildRequires:  libxcb-devel
 # This sets the breeze4 style as default in a Plasma environment
 Recommends:     kdebase4-workspace-libs
 Supplements:    packageand(breeze5-style:libqt4)
+%if 0%{?suse_version} > 1500
+ExclusiveArch:  do_not_build
+%endif
 
 %description
 Artwork, styles and assets for the Breeze visual style for the Plasma Desktop.

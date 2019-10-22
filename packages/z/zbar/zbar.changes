@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 20 11:40:04 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove references to Qt4 from zbar-qt pkgconfig file (#62),
+  add 0001-Create-correct-pkconfig-file-for-zbar-qt5.patch
+
+-------------------------------------------------------------------
 Sat Jul  6 10:07:41 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 0.23:

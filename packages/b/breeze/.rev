@@ -766,4 +766,12 @@
     <comment>Plasma 5.17.0 pre-release tars. Please publish disable before accept. (forwarded request 737387 from Vogtinator)</comment>
     <requestid>737455</requestid>
   </revision>
+  <revision rev="89" vrev="2">
+    <srcmd5>22e62b8444eee4af9f4d439e489bfb1e</srcmd5>
+    <version>5.17.0</version>
+    <time>1571755276</time>
+    <user>dimstar_suse</user>
+    <comment>- Stop building breeze4-style for factory.</comment>
+    <requestid>738327</requestid>
+  </revision>
 </revisionlist>

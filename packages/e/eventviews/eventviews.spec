@@ -32,6 +32,8 @@ Source:         https://download.kde.org/stable/applications/%{version}/src/%{na
 Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-month-monthscene.cpp-remove-comma-in-year-in-the-tit.patch
 BuildRequires:  akonadi-calendar-devel >= %{_kapp_version}
 BuildRequires:  akonadi-server-devel
 BuildRequires:  calendarsupport-devel
@@ -68,7 +70,7 @@ calendar events in agenda, list, month view or timeline fashion.
 %endif
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build

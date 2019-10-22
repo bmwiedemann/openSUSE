@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct 14 14:47:29 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Drop kde-odf-thumbnail recommends, is part of kio-extras5
+
+-------------------------------------------------------------------
+Fri Oct 11 11:07:03 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Recommend plasma5-thunderbolt in kde_plasma
+
+-------------------------------------------------------------------
+Tue May 14 09:50:33 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Recommend kwrited5 in kde_plasma
+
+-------------------------------------------------------------------
 Thu May  9 13:48:28 UTC 2019 - wbauer@tmo.at
 
 - Add back the kde_telepathy pattern (boo#1116043)

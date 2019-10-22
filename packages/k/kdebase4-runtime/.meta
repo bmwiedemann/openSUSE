@@ -1,5 +1,0 @@
-<package name="kdebase4-runtime" project="openSUSE:Factory">
-  <title>The KDE Runtime Components</title>
-  <description>This package contains all run-time dependencies of KDE applications.</description>
-  <devel project="KDE:Applications" package="kdebase4-runtime"/>
-</package>

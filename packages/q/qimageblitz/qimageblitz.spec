@@ -16,10 +16,15 @@
 #
 
 
-%define soname_qt4 libqimageblitz
 %define soname_qt5 libqimageblitz5
-%define sover_qt4 4
 %define sover_qt5 1
+%if 0%{?suse_version} <= 1500
+%bcond_without qt4
+%define soname_qt4 libqimageblitz
+%define sover_qt4 4
+%else
+%bcond_with qt4
+%endif
 Name:           qimageblitz
 Version:        0.0.6+svn1515099
 Release:        0
@@ -37,14 +42,17 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Widgets)
+%if %{with qt4}
 BuildRequires:  pkgconfig(QtCore)
 BuildRequires:  pkgconfig(QtGui)
+%endif
 
 %description
 qimageblitz is a graphical effect and filter library for Qt that
 contains many improvements over KDE 3.x's kdefx library including
 bugfixes, memory and speed improvements, and MMX/SSE support.
 
+%if %{with qt4}
 %package -n %{soname_qt4}%{sover_qt4}
 Summary:        Graphical effect and filter library for Qt4
 Group:          System/Libraries
@@ -54,6 +62,7 @@ libqimageblitz is a graphical effect and filter library for Qt4
 that contains many improvements over KDE 3.x's kdefx library
 including bugfixes, memory and speed improvements, and MMX/SSE
 support.
+%endif
 
 %package -n %{soname_qt5}-%{sover_qt5}
 Summary:        Graphical effect and filter library for Qt5
@@ -65,6 +74,7 @@ that contains many improvements over KDE 3.x's kdefx library
 including bugfixes, memory and speed improvements, and MMX/SSE
 support.
 
+%if %{with qt4}
 %package -n %{soname_qt4}-devel
 Summary:        Development files for libqimageblitz4
 Group:          Development/Libraries/C and C++
@@ -72,6 +82,7 @@ Requires:       %{soname_qt4}%{sover_qt4} = %{version}
 
 %description -n %{soname_qt4}-devel
 This package contains development files for libqimageblitz.
+%endif
 
 %package -n %{soname_qt5}-devel
 Summary:        Development files for libqimageblitz5
@@ -89,35 +100,45 @@ WORKDIR="$PWD"
 %define __builddir build-qt5
 %cmake -DQT4_BUILD=OFF
 make %{?_smp_mflags} V=1
+
+%if %{with qt4}
 cd "$WORKDIR"
 %define __builddir build-qt4
 %cmake -DQT4_BUILD=ON
 make %{?_smp_mflags} V=1
+%endif
 
 %install
 WORKDIR="$PWD"
 %define __builddir build-qt5
 %cmake_install
+
+%if %{with qt4}
 cd "$WORKDIR"
 %define __builddir build-qt4
 %cmake_install
+%endif
 
+%if %{with qt4}
 %post -n %{soname_qt4}%{sover_qt4} -p /sbin/ldconfig
 
 %postun -n %{soname_qt4}%{sover_qt4} -p /sbin/ldconfig
+%endif
 
 %post -n %{soname_qt5}-%{sover_qt5} -p /sbin/ldconfig
 
 %postun -n %{soname_qt5}-%{sover_qt5} -p /sbin/ldconfig
 
+%if %{with qt4}
 %files -n %{soname_qt4}%{sover_qt4}
-%if 0%{?suse_version} >= 1500
+%if 0%{?suse_version} == 1500
 %license COPYING
 %else
 %doc COPYING
 %endif
 %doc Changelog README.*
 %{_libdir}/%{soname_qt4}.so.%{sover_qt4}*
+%endif
 
 %files -n %{soname_qt5}-%{sover_qt5}
 %if 0%{?suse_version} >= 1500
@@ -128,11 +149,13 @@ cd "$WORKDIR"
 %doc Changelog README.*
 %{_libdir}/%{soname_qt5}.so.%{sover_qt5}*
 
+%if %{with qt4}
 %files -n %{soname_qt4}-devel
 %{_includedir}/qimageblitz/
 %{_bindir}/blitztest
 %{_libdir}/%{soname_qt4}.so
 %{_libdir}/pkgconfig/qimageblitz.pc
+%endif
 
 %files -n %{soname_qt5}-devel
 %{_includedir}/qimageblitz5/

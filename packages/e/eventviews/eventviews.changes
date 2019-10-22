@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 17 08:28:22 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add 0001-month-monthscene.cpp-remove-comma-in-year-in-the-tit.patch
+  to fix a display bug in korganizer (kde#412833)
+
+-------------------------------------------------------------------
 Fri Oct 11 07:42:25 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.2

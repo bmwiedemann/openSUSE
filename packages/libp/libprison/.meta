@@ -1,6 +1,0 @@
-<package name="libprison" project="openSUSE:Factory">
-  <title>Qt api to produce QRCode and DataMatrix barcodes</title>
-  <description>Prison is a barcode api currently offering a nice Qt api to produce QRCode
-barcodes and DataMatrix barcodes, and can easily be made support more.</description>
-  <devel project="KDE:Distro:Factory" package="libprison"/>
-</package>

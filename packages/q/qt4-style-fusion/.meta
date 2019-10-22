@@ -1,5 +1,0 @@
-<package name="qt4-style-fusion" project="openSUSE:Factory">
-  <title>Fusion widget style for Qt4</title>
-  <description>Qt4 backport of the Qt5 fusion widget style.</description>
-  <devel project="KDE:Qt" package="qt4-style-fusion"/>
-</package>

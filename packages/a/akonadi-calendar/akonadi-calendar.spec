@@ -16,7 +16,7 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
@@ -32,19 +32,21 @@ Source:         https://download.kde.org/stable/applications/%{version}/src/%{na
 Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  akonadi-contact-devel
-BuildRequires:  akonadi-server-devel >= %{_kapp_version}
-BuildRequires:  extra-cmake-modules >= 5.17.0
-BuildRequires:  kcalcore-devel
-BuildRequires:  kcalutils-devel
-BuildRequires:  kcodecs-devel
-BuildRequires:  kcontacts-devel
-BuildRequires:  kidentitymanagement-devel
-BuildRequires:  kio-devel
-BuildRequires:  kmailtransport-devel >= %{_kapp_version}
-BuildRequires:  kwallet-devel
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Test)
+BuildRequires:  extra-cmake-modules >= %{kf5_version}
+BuildRequires:  cmake(KF5Akonadi)
+BuildRequires:  cmake(KF5AkonadiContact)
+BuildRequires:  cmake(KF5CalendarCore)
+BuildRequires:  cmake(KF5CalendarUtils)
+BuildRequires:  cmake(KF5Codecs)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5IdentityManagement)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5MailTransport)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(Qt5Test)
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
 
@@ -71,12 +73,13 @@ This package provides plugins required by PIM applications to read and write cal
 %package devel
 Summary:        KDE PIM Libraries: Build Environment
 Group:          Development/Libraries/KDE
-Requires:       akonadi-contact-devel >= %{_kapp_version}
-Requires:       akonadi-server-devel >= %{_kapp_version}
-Requires:       kcalcore-devel >= %{_kapp_version}
-Requires:       libKF5AkonadiCalendar5 = %{version}
 Obsoletes:      akonadi5-calendar-devel < %{version}
 Provides:       akonadi5-calendar-devel = %{version}
+Requires:       cmake(KF5Akonadi)
+Requires:       cmake(KF5CalendarCore)
+Requires:       cmake(KF5I18n)
+Requires:       cmake(KF5WidgetsAddons)
+Requires:       libKF5AkonadiCalendar5 = %{version}
 
 %description devel
 Development package for akonadi-calendar.

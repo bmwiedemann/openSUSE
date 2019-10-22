@@ -28,6 +28,13 @@ Group:          Productivity/Other
 URL:            https://github.com/mchehab/zbar
 Source0:        https://linuxtv.org/downloads/%{name}/%{name}-%{version}.tar.bz2
 Source98:       baselibs.conf
+# PATCH-FIX-UPSTREAM -- https://github.com/mchehab/zbar/pull/63
+Patch0:         0001-Create-correct-pkconfig-file-for-zbar-qt5.patch
+# autoconf/automake required due to patched configure.ac (Patch0)
+%if 0%{?suse_version} >= 1550
+BuildRequires:  autoconf
+BuildRequires:  automake >= 1.16
+%endif
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  xmlto
@@ -98,6 +105,9 @@ applications using the zbar-qt library.
 
 %prep
 %setup -q
+%if 0%{?suse_version} >= 1550
+%patch0 -p1
+%endif
 
 %build
 test -x "$(type -p gcc)" && export CC=$_
