@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 15 14:22:21 UTC 2019 - Johannes Thumshirn <jthumshirn@suse.com>
+
+- Enable build of python-bindings for libbtrfsutil
+
+-------------------------------------------------------------------
 Tue Sep 17 10:01:18 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
 
 - Update to 5.2.2:
