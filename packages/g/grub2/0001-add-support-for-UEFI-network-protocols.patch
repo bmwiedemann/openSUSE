@@ -23,10 +23,6 @@ V3:
   * Finish HTTP transaction in one go
   * Fix bsc#1076132
 
-V4
-  * Add fs_ prefix with upstream commit 
-    ad4bfeec5 Change fs functions to add fs_ prefix
-
 ---
  grub-core/Makefile.core.def        |   18 +
  grub-core/io/bufio.c               |    2 +-
@@ -57,19 +53,30 @@ V4
  create mode 100644 include/grub/efi/http.h
  create mode 100644 include/grub/net/efi.h
 
-Index: grub-2.04~rc1/grub-core/Makefile.core.def
-===================================================================
---- grub-2.04~rc1.orig/grub-core/Makefile.core.def
-+++ grub-2.04~rc1/grub-core/Makefile.core.def
-@@ -1854,7 +1854,6 @@ module = {
- module = {
-   name = linuxefi;
-   efi = loader/i386/efi/linux.c;
--  efi = lib/cmdline.c;
-   enable = i386_efi;
-   enable = x86_64_efi;
+diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
+index a65c27f7f..e93c77255 100644
+--- a/grub-core/Makefile.core.def
++++ b/grub-core/Makefile.core.def
+@@ -2167,6 +2167,18 @@ module = {
  };
-@@ -2283,6 +2282,12 @@ module = {
+ 
+ module = {
++  name = efi_netfs;
++  common = net/efi/efi_netfs.c;
++  common = net/efi/net.c;
++  common = net/efi/http.c;
++  common = net/efi/pxe.c;
++  common = net/efi/ip4_config.c;
++  common = net/efi/ip6_config.c;
++  common = net/efi/dhcp.c;
++  enable = efi;
++};
++
++module = {
+   name = net;
+   common = net/net.c;
+   common = net/dns.c;
+@@ -2179,6 +2191,12 @@ module = {
    common = net/ethernet.c;
    common = net/arp.c;
    common = net/netbuff.c;
@@ -82,11 +89,11 @@ Index: grub-2.04~rc1/grub-core/Makefile.core.def
  };
  
  module = {
-Index: grub-2.04~rc1/grub-core/io/bufio.c
-===================================================================
---- grub-2.04~rc1.orig/grub-core/io/bufio.c
-+++ grub-2.04~rc1/grub-core/io/bufio.c
-@@ -139,7 +139,7 @@ grub_bufio_read (grub_file_t file, char
+diff --git a/grub-core/io/bufio.c b/grub-core/io/bufio.c
+index 22438277d..d0b0f71b6 100644
+--- a/grub-core/io/bufio.c
++++ b/grub-core/io/bufio.c
+@@ -132,7 +132,7 @@ grub_bufio_read (grub_file_t file, char *buf, grub_size_t len)
      return res;
  
    /* Need to read some more.  */
@@ -95,11 +102,11 @@ Index: grub-2.04~rc1/grub-core/io/bufio.c
    /* Now read between file->offset + res and bufio->buffer_at.  */
    if (file->offset + res < next_buf)
      {
-Index: grub-2.04~rc1/grub-core/kern/efi/efi.c
-===================================================================
---- grub-2.04~rc1.orig/grub-core/kern/efi/efi.c
-+++ grub-2.04~rc1/grub-core/kern/efi/efi.c
-@@ -722,7 +722,7 @@ grub_efi_print_device_path (grub_efi_dev
+diff --git a/grub-core/kern/efi/efi.c b/grub-core/kern/efi/efi.c
+index d467785fc..0ceaa487c 100644
+--- a/grub-core/kern/efi/efi.c
++++ b/grub-core/kern/efi/efi.c
+@@ -672,7 +672,7 @@ grub_efi_print_device_path (grub_efi_device_path_t *dp)
  	      {
  		grub_efi_ipv4_device_path_t *ipv4
  		  = (grub_efi_ipv4_device_path_t *) dp;
@@ -108,7 +115,7 @@ Index: grub-2.04~rc1/grub-core/kern/efi/efi.c
  			     (unsigned) ipv4->local_ip_address[0],
  			     (unsigned) ipv4->local_ip_address[1],
  			     (unsigned) ipv4->local_ip_address[2],
-@@ -735,33 +735,60 @@ grub_efi_print_device_path (grub_efi_dev
+@@ -685,33 +685,60 @@ grub_efi_print_device_path (grub_efi_device_path_t *dp)
  			     (unsigned) ipv4->remote_port,
  			     (unsigned) ipv4->protocol,
  			     (unsigned) ipv4->static_ip_address);
@@ -186,7 +193,7 @@ Index: grub-2.04~rc1/grub-core/kern/efi/efi.c
  	      }
  	      break;
  	    case GRUB_EFI_INFINIBAND_DEVICE_PATH_SUBTYPE:
-@@ -801,6 +828,39 @@ grub_efi_print_device_path (grub_efi_dev
+@@ -751,6 +778,39 @@ grub_efi_print_device_path (grub_efi_device_path_t *dp)
  	      dump_vendor_path ("Messaging",
  				(grub_efi_vendor_device_path_t *) dp);
  	      break;
@@ -226,10 +233,10 @@ Index: grub-2.04~rc1/grub-core/kern/efi/efi.c
  	    default:
  	      grub_printf ("/UnknownMessaging(%x)", (unsigned) subtype);
  	      break;
-Index: grub-2.04~rc1/grub-core/net/drivers/efi/efinet.c
-===================================================================
---- grub-2.04~rc1.orig/grub-core/net/drivers/efi/efinet.c
-+++ grub-2.04~rc1/grub-core/net/drivers/efi/efinet.c
+diff --git a/grub-core/net/drivers/efi/efinet.c b/grub-core/net/drivers/efi/efinet.c
+index 82a28fb6e..f189209ba 100644
+--- a/grub-core/net/drivers/efi/efinet.c
++++ b/grub-core/net/drivers/efi/efinet.c
 @@ -24,6 +24,7 @@
  #include <grub/efi/efi.h>
  #include <grub/i18n.h>
@@ -238,7 +245,7 @@ Index: grub-2.04~rc1/grub-core/net/drivers/efi/efinet.c
  
  GRUB_MOD_LICENSE ("GPLv3+");
  
-@@ -481,6 +482,17 @@ grub_efinet_create_dhcp_ack_from_device_
+@@ -481,6 +482,17 @@ grub_efinet_create_dhcp_ack_from_device_path (grub_efi_device_path_t *dp, int *u
  
    ldp = grub_efi_find_last_device_path (ddp);
  
@@ -256,7 +263,7 @@ Index: grub-2.04~rc1/grub-core/net/drivers/efi/efinet.c
    if (GRUB_EFI_DEVICE_PATH_TYPE (ldp) != GRUB_EFI_MESSAGING_DEVICE_PATH_TYPE
        || (GRUB_EFI_DEVICE_PATH_SUBTYPE (ldp) != GRUB_EFI_IPV4_DEVICE_PATH_SUBTYPE
            && GRUB_EFI_DEVICE_PATH_SUBTYPE (ldp) != GRUB_EFI_IPV6_DEVICE_PATH_SUBTYPE))
-@@ -744,6 +756,7 @@ grub_efi_net_config_real (grub_efi_handl
+@@ -744,6 +756,7 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
  	if (GRUB_EFI_DEVICE_PATH_TYPE (ldp) != GRUB_EFI_MESSAGING_DEVICE_PATH_TYPE
  	    || (GRUB_EFI_DEVICE_PATH_SUBTYPE (ldp) != GRUB_EFI_IPV4_DEVICE_PATH_SUBTYPE
  		&& GRUB_EFI_DEVICE_PATH_SUBTYPE (ldp) != GRUB_EFI_IPV6_DEVICE_PATH_SUBTYPE
@@ -264,7 +271,7 @@ Index: grub-2.04~rc1/grub-core/net/drivers/efi/efinet.c
  		&& GRUB_EFI_DEVICE_PATH_SUBTYPE (ldp) != GRUB_EFI_URI_DEVICE_PATH_SUBTYPE))
  	  continue;
  	dup_dp = grub_efi_duplicate_device_path (dp);
-@@ -759,6 +772,15 @@ grub_efi_net_config_real (grub_efi_handl
+@@ -759,6 +772,15 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
  	  }
  
  	dup_ldp = grub_efi_find_last_device_path (dup_dp);
@@ -280,7 +287,7 @@ Index: grub-2.04~rc1/grub-core/net/drivers/efi/efinet.c
  	dup_ldp->type = GRUB_EFI_END_DEVICE_PATH_TYPE;
  	dup_ldp->subtype = GRUB_EFI_END_ENTIRE_DEVICE_PATH_SUBTYPE;
  	dup_ldp->length = sizeof (*dup_ldp);
-@@ -816,6 +838,9 @@ grub_efi_net_config_real (grub_efi_handl
+@@ -816,6 +838,9 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
  
  GRUB_MOD_INIT(efinet)
  {
@@ -298,10 +305,11 @@ Index: grub-2.04~rc1/grub-core/net/drivers/efi/efinet.c
 +  grub_efi_net_config = NULL;
  }
  
-Index: grub-2.04~rc1/grub-core/net/efi/dhcp.c
-===================================================================
+diff --git a/grub-core/net/efi/dhcp.c b/grub-core/net/efi/dhcp.c
+new file mode 100644
+index 000000000..dbef63d8c
 --- /dev/null
-+++ grub-2.04~rc1/grub-core/net/efi/dhcp.c
++++ b/grub-core/net/efi/dhcp.c
 @@ -0,0 +1,397 @@
 +#include <grub/mm.h>
 +#include <grub/command.h>
@@ -700,10 +708,74 @@ Index: grub-2.04~rc1/grub-core/net/efi/dhcp.c
 +
 +grub_command_func_t grub_efi_net_bootp = grub_cmd_efi_bootp;
 +grub_command_func_t grub_efi_net_bootp6 = grub_cmd_efi_bootp6;
-Index: grub-2.04~rc1/grub-core/net/efi/http.c
-===================================================================
+diff --git a/grub-core/net/efi/efi_netfs.c b/grub-core/net/efi/efi_netfs.c
+new file mode 100644
+index 000000000..ef371d885
 --- /dev/null
-+++ grub-2.04~rc1/grub-core/net/efi/http.c
++++ b/grub-core/net/efi/efi_netfs.c
+@@ -0,0 +1,57 @@
++#include <grub/dl.h>
++#include <grub/env.h>
++#define EFI_NET_CMD_PREFIX "net_efi"
++#include <grub/net/efi.h>
++
++GRUB_MOD_LICENSE ("GPLv3+");
++
++static grub_command_t cmd_efi_lsroutes;
++static grub_command_t cmd_efi_lscards;
++static grub_command_t cmd_efi_lsaddrs;
++static grub_command_t cmd_efi_addaddr;
++static grub_command_t cmd_efi_bootp;
++static grub_command_t cmd_efi_bootp6;
++
++static int initialized;
++
++GRUB_MOD_INIT(efi_netfs)
++{
++  if (grub_net_open)
++    return;
++
++  if (grub_efi_net_fs_init ())
++    {
++      cmd_efi_lsroutes = grub_register_command ("net_efi_ls_routes", grub_efi_net_list_routes,
++					    "", N_("list network routes"));
++      cmd_efi_lscards = grub_register_command ("net_efi_ls_cards", grub_efi_net_list_cards,
++					   "", N_("list network cards"));
++      cmd_efi_lsaddrs = grub_register_command ("net_efi_ls_addr", grub_efi_net_list_addrs,
++					  "", N_("list network addresses"));
++      cmd_efi_addaddr = grub_register_command ("net_efi_add_addr", grub_efi_net_add_addr,
++					  N_("SHORTNAME CARD ADDRESS [HWADDRESS]"),
++					  N_("Add a network address."));
++      cmd_efi_bootp = grub_register_command ("net_efi_bootp", grub_efi_net_bootp,
++					 N_("[CARD]"),
++					 N_("perform a bootp autoconfiguration"));
++      cmd_efi_bootp6 = grub_register_command ("net_efi_bootp6", grub_efi_net_bootp6,
++					 N_("[CARD]"),
++					 N_("perform a bootp autoconfiguration"));
++      initialized = 1;
++    }
++}
++
++GRUB_MOD_FINI(efi_netfs)
++{
++  if (initialized)
++    {
++      grub_unregister_command (cmd_efi_lsroutes);
++      grub_unregister_command (cmd_efi_lscards);
++      grub_unregister_command (cmd_efi_lsaddrs);
++      grub_unregister_command (cmd_efi_addaddr);
++      grub_unregister_command (cmd_efi_bootp);
++      grub_unregister_command (cmd_efi_bootp6);
++      grub_efi_net_fs_fini ();
++      initialized = 0;
++      return;
++    }
++}
+diff --git a/grub-core/net/efi/http.c b/grub-core/net/efi/http.c
+new file mode 100644
+index 000000000..3f61fd2fa
+--- /dev/null
++++ b/grub-core/net/efi/http.c
 @@ -0,0 +1,419 @@
 +
 +#include <grub/efi/api.h>
@@ -1124,10 +1196,11 @@ Index: grub-2.04~rc1/grub-core/net/efi/http.c
 +    .read = grub_efihttp_read,
 +    .close = grub_efihttp_close
 +  };
-Index: grub-2.04~rc1/grub-core/net/efi/ip4_config.c
-===================================================================
+diff --git a/grub-core/net/efi/ip4_config.c b/grub-core/net/efi/ip4_config.c
+new file mode 100644
+index 000000000..b711a5d94
 --- /dev/null
-+++ grub-2.04~rc1/grub-core/net/efi/ip4_config.c
++++ b/grub-core/net/efi/ip4_config.c
 @@ -0,0 +1,398 @@
 +
 +#include <grub/efi/api.h>
@@ -1527,10 +1600,11 @@ Index: grub-2.04~rc1/grub-core/net/efi/ip4_config.c
 +    .set_gateway = grub_efi_ip4_interface_set_gateway,
 +    .set_dns = grub_efi_ip4_interface_set_dns
 +  };
-Index: grub-2.04~rc1/grub-core/net/efi/ip6_config.c
-===================================================================
+diff --git a/grub-core/net/efi/ip6_config.c b/grub-core/net/efi/ip6_config.c
+new file mode 100644
+index 000000000..017c4d05b
 --- /dev/null
-+++ grub-2.04~rc1/grub-core/net/efi/ip6_config.c
++++ b/grub-core/net/efi/ip6_config.c
 @@ -0,0 +1,422 @@
 +#include <grub/efi/api.h>
 +#include <grub/efi/efi.h>
@@ -1954,10 +2028,11 @@ Index: grub-2.04~rc1/grub-core/net/efi/ip6_config.c
 +    .set_gateway = grub_efi_ip6_interface_set_gateway,
 +    .set_dns = grub_efi_ip6_interface_set_dns
 +  };
-Index: grub-2.04~rc1/grub-core/net/efi/net.c
-===================================================================
+diff --git a/grub-core/net/efi/net.c b/grub-core/net/efi/net.c
+new file mode 100644
+index 000000000..0bac343b4
 --- /dev/null
-+++ grub-2.04~rc1/grub-core/net/efi/net.c
++++ b/grub-core/net/efi/net.c
 @@ -0,0 +1,1428 @@
 +#include <grub/net.h>
 +#include <grub/env.h>
@@ -3252,13 +3327,13 @@ Index: grub-2.04~rc1/grub-core/net/efi/net.c
 +static struct grub_fs grub_efi_netfs =
 +  {
 +    .name = "efi netfs",
-+    .fs_dir = grub_efi_netfs_dir,
-+    .fs_open = grub_efi_netfs_open,
-+    .fs_read = grub_efi_netfs_read,
-+    .fs_close = grub_efi_netfs_close,
-+    .fs_label = NULL,
-+    .fs_uuid = NULL,
-+    .fs_mtime = NULL,
++    .dir = grub_efi_netfs_dir,
++    .open = grub_efi_netfs_open,
++    .read = grub_efi_netfs_read,
++    .close = grub_efi_netfs_close,
++    .label = NULL,
++    .uuid = NULL,
++    .mtime = NULL,
 +  };
 +
 +int
@@ -3387,10 +3462,11 @@ Index: grub-2.04~rc1/grub-core/net/efi/net.c
 +  grub_net_open = NULL;
 +  grub_fs_unregister (&grub_efi_netfs);
 +}
-Index: grub-2.04~rc1/grub-core/net/efi/pxe.c
-===================================================================
+diff --git a/grub-core/net/efi/pxe.c b/grub-core/net/efi/pxe.c
+new file mode 100644
+index 000000000..4b6b48cb1
 --- /dev/null
-+++ grub-2.04~rc1/grub-core/net/efi/pxe.c
++++ b/grub-core/net/efi/pxe.c
 @@ -0,0 +1,424 @@
 +
 +#include <grub/efi/api.h>
@@ -3816,10 +3892,10 @@ Index: grub-2.04~rc1/grub-core/net/efi/pxe.c
 +    .close = pxe_close
 +  };
 +
-Index: grub-2.04~rc1/grub-core/net/net.c
-===================================================================
---- grub-2.04~rc1.orig/grub-core/net/net.c
-+++ grub-2.04~rc1/grub-core/net/net.c
+diff --git a/grub-core/net/net.c b/grub-core/net/net.c
+index 5cc0d2f3b..02bbe956b 100644
+--- a/grub-core/net/net.c
++++ b/grub-core/net/net.c
 @@ -32,6 +32,9 @@
  #include <grub/loader.h>
  #include <grub/bufio.h>
@@ -3830,7 +3906,7 @@ Index: grub-2.04~rc1/grub-core/net/net.c
  
  GRUB_MOD_LICENSE ("GPLv3+");
  
-@@ -1817,8 +1820,49 @@ static grub_command_t cmd_addaddr, cmd_d
+@@ -1817,8 +1820,49 @@ static grub_command_t cmd_addaddr, cmd_deladdr, cmd_addroute, cmd_delroute;
  static grub_command_t cmd_lsroutes, cmd_lscards;
  static grub_command_t cmd_lsaddr, cmd_slaac;
  
@@ -3926,11 +4002,11 @@ Index: grub-2.04~rc1/grub-core/net/net.c
 +  init_mode = INIT_MODE_NONE;
 +#endif
  }
-Index: grub-2.04~rc1/include/grub/efi/api.h
-===================================================================
---- grub-2.04~rc1.orig/include/grub/efi/api.h
-+++ grub-2.04~rc1/include/grub/efi/api.h
-@@ -588,6 +588,23 @@ typedef grub_uint16_t grub_efi_ipv6_addr
+diff --git a/include/grub/efi/api.h b/include/grub/efi/api.h
+index 99ba068e3..cfedd7895 100644
+--- a/include/grub/efi/api.h
++++ b/include/grub/efi/api.h
+@@ -588,6 +588,23 @@ typedef grub_uint16_t grub_efi_ipv6_address_t[8];
  typedef grub_uint8_t grub_efi_ip_address_t[8] __attribute__ ((aligned(4)));
  typedef grub_efi_uint64_t grub_efi_physical_address_t;
  typedef grub_efi_uint64_t grub_efi_virtual_address_t;
@@ -4003,7 +4079,7 @@ Index: grub-2.04~rc1/include/grub/efi/api.h
  struct grub_efi_open_protocol_information_entry
  {
    grub_efi_handle_t agent_handle;
-@@ -1473,23 +1518,28 @@ typedef struct grub_efi_simple_text_outp
+@@ -1473,23 +1518,28 @@ typedef struct grub_efi_simple_text_output_interface grub_efi_simple_text_output
  
  typedef grub_uint8_t grub_efi_pxe_packet_t[1472];
  
@@ -4175,12 +4251,13 @@ Index: grub-2.04~rc1/include/grub/efi/api.h
 +typedef struct grub_efi_ip6_config_manual_address grub_efi_ip6_config_manual_address_t;
 +
  #if (GRUB_TARGET_SIZEOF_VOID_P == 4) || defined (__ia64__) \
-   || defined (__aarch64__) || defined (__MINGW64__) || defined (__CYGWIN__) \
-   || defined(__riscv)
-Index: grub-2.04~rc1/include/grub/efi/dhcp.h
-===================================================================
+   || defined (__aarch64__) || defined (__MINGW64__) || defined (__CYGWIN__)
+ 
+diff --git a/include/grub/efi/dhcp.h b/include/grub/efi/dhcp.h
+new file mode 100644
+index 000000000..fdb88eb81
 --- /dev/null
-+++ grub-2.04~rc1/include/grub/efi/dhcp.h
++++ b/include/grub/efi/dhcp.h
 @@ -0,0 +1,343 @@
 +#ifndef GRUB_EFI_DHCP_HEADER
 +#define GRUB_EFI_DHCP_HEADER	1
@@ -4525,10 +4602,11 @@ Index: grub-2.04~rc1/include/grub/efi/dhcp.h
 +};
 +
 +#endif /* ! GRUB_EFI_DHCP_HEADER */
-Index: grub-2.04~rc1/include/grub/efi/http.h
-===================================================================
+diff --git a/include/grub/efi/http.h b/include/grub/efi/http.h
+new file mode 100644
+index 000000000..c5e9a89f5
 --- /dev/null
-+++ grub-2.04~rc1/include/grub/efi/http.h
++++ b/include/grub/efi/http.h
 @@ -0,0 +1,215 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader
@@ -4745,10 +4823,11 @@ Index: grub-2.04~rc1/include/grub/efi/http.h
 +typedef struct grub_efi_http grub_efi_http_t;
 +
 +#endif /* !GRUB_EFI_HTTP_HEADER */
-Index: grub-2.04~rc1/include/grub/net/efi.h
-===================================================================
+diff --git a/include/grub/net/efi.h b/include/grub/net/efi.h
+new file mode 100644
+index 000000000..de90d223e
 --- /dev/null
-+++ grub-2.04~rc1/include/grub/net/efi.h
++++ b/include/grub/net/efi.h
 @@ -0,0 +1,144 @@
 +#ifndef GRUB_NET_EFI_HEADER
 +#define GRUB_NET_EFI_HEADER	1
@@ -4894,3 +4973,88 @@ Index: grub-2.04~rc1/include/grub/net/efi.h
 +extern grub_command_func_t grub_efi_net_bootp6;
 +
 +#endif /* ! GRUB_NET_EFI_HEADER */
+diff --git a/util/grub-mknetdir.c b/util/grub-mknetdir.c
+index 82073d5cc..ae31271bb 100644
+--- a/util/grub-mknetdir.c
++++ b/util/grub-mknetdir.c
+@@ -32,13 +32,15 @@
+ 
+ static char *rootdir = NULL, *subdir = NULL;
+ static char *debug_image = NULL;
++static char efi_netfs = 0;
+ 
+ enum
+   {
+     OPTION_NET_DIRECTORY = 0x301,
+     OPTION_SUBDIR,
+     OPTION_DEBUG,
+-    OPTION_DEBUG_IMAGE
++    OPTION_DEBUG_IMAGE,
++    OPTION_DEBUG_EFI_NETFS
+   };
+ 
+ static struct argp_option options[] = {
+@@ -49,6 +51,7 @@ static struct argp_option options[] = {
+    0, N_("relative subdirectory on network server"), 2},
+   {"debug", OPTION_DEBUG, 0, OPTION_HIDDEN, 0, 2},
+   {"debug-image", OPTION_DEBUG_IMAGE, N_("STRING"), OPTION_HIDDEN, 0, 2},
++  {"debug-efi-netfs", OPTION_DEBUG_EFI_NETFS, 0, OPTION_HIDDEN, 0, 2},
+   {0, 0, 0, 0, 0, 0}
+ };
+ 
+@@ -67,6 +70,9 @@ argp_parser (int key, char *arg, struct argp_state *state)
+       free (subdir);
+       subdir = xstrdup (arg);
+       return 0;
++    case OPTION_DEBUG_EFI_NETFS:
++      efi_netfs = 1;
++      return 0;
+       /* This is an undocumented feature...  */
+     case OPTION_DEBUG:
+       verbosity++;
+@@ -82,7 +88,6 @@ argp_parser (int key, char *arg, struct argp_state *state)
+     }
+ }
+ 
+-
+ struct argp argp = {
+   options, argp_parser, NULL,
+   "\v"N_("Prepares GRUB network boot images at net_directory/subdir "
+@@ -92,7 +97,7 @@ struct argp argp = {
+ 
+ static char *base;
+ 
+-static const struct
++static struct
+ {
+   const char *mkimage_target;
+   const char *netmodule;
+@@ -154,6 +159,7 @@ process_input_dir (const char *input_dir, enum grub_install_plat platform)
+   grub_install_push_module (targets[platform].netmodule);
+ 
+   output = grub_util_path_concat_ext (2, grubdir, "core", targets[platform].ext);
++
+   grub_install_make_image_wrap (input_dir, prefix, output,
+ 				0, load_cfg,
+ 				targets[platform].mkimage_target, 0);
+@@ -190,7 +196,16 @@ main (int argc, char *argv[])
+ 
+   grub_install_mkdir_p (base);
+ 
+-  grub_install_push_module ("tftp");
++  if (!efi_netfs)
++    {
++      grub_install_push_module ("tftp");
++      grub_install_push_module ("http");
++    }
++  else
++    {
++      targets[GRUB_INSTALL_PLATFORM_I386_EFI].netmodule = "efi_netfs";
++      targets[GRUB_INSTALL_PLATFORM_X86_64_EFI].netmodule = "efi_netfs";
++    }
+ 
+   if (!grub_install_source_directory)
+     {
+-- 
+2.13.6
+

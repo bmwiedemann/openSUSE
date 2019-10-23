@@ -1,8 +1,8 @@
-Index: grub-2.04~rc1/grub-core/kern/ieee1275/openfw.c
+Index: grub-2.02/grub-core/kern/ieee1275/openfw.c
 ===================================================================
---- grub-2.04~rc1.orig/grub-core/kern/ieee1275/openfw.c
-+++ grub-2.04~rc1/grub-core/kern/ieee1275/openfw.c
-@@ -595,7 +595,7 @@ grub_ieee1275_canonicalise_devname (cons
+--- grub-2.02.orig/grub-core/kern/ieee1275/openfw.c
++++ grub-2.02/grub-core/kern/ieee1275/openfw.c
+@@ -592,7 +592,7 @@ grub_ieee1275_canonicalise_devname (cons
  
  /* Check if it's a CAS reboot. If so, set the script to be executed.  */
  int
@@ -11,7 +11,7 @@ Index: grub-2.04~rc1/grub-core/kern/ieee1275/openfw.c
  {
    grub_uint32_t ibm_ca_support_reboot;
    grub_uint32_t ibm_fw_nbr_reboots;
-@@ -628,16 +628,37 @@ grub_ieee1275_cas_reboot (char *script)
+@@ -625,16 +625,37 @@ grub_ieee1275_cas_reboot (char *script)
  
    if (ibm_ca_support_reboot || ibm_fw_nbr_reboots)
      {
@@ -57,7 +57,7 @@ Index: grub-2.04~rc1/grub-core/kern/ieee1275/openfw.c
    grub_ieee1275_set_boot_last_label ("");
  
    return -1;
-@@ -651,8 +672,9 @@ int grub_ieee1275_set_boot_last_label (c
+@@ -648,7 +669,8 @@ int grub_ieee1275_set_boot_last_label (c
    grub_dprintf("ieee1275", "set boot_last_label (size: %" PRIxGRUB_SIZE ")\n", grub_strlen(text));
    if (! grub_ieee1275_finddevice ("/options", &options) &&
        options != (grub_ieee1275_ihandle_t) -1)
@@ -67,11 +67,10 @@ Index: grub-2.04~rc1/grub-core/kern/ieee1275/openfw.c
 +                                grub_strlen (text) + 1, &actual);
    return 0;
  }
- 
-Index: grub-2.04~rc1/grub-core/normal/main.c
+Index: grub-2.02/grub-core/normal/main.c
 ===================================================================
---- grub-2.04~rc1.orig/grub-core/normal/main.c
-+++ grub-2.04~rc1/grub-core/normal/main.c
+--- grub-2.02.orig/grub-core/normal/main.c
++++ grub-2.02/grub-core/normal/main.c
 @@ -281,10 +281,9 @@ grub_normal_execute (const char *config,
  #ifdef GRUB_MACHINE_IEEE1275
        int boot;
@@ -85,11 +84,11 @@ Index: grub-2.04~rc1/grub-core/normal/main.c
          {
            if (! grub_script_execute_new_scope (script, 0, dummy))
              boot = 1;
-Index: grub-2.04~rc1/include/grub/ieee1275/ieee1275.h
+Index: grub-2.02/include/grub/ieee1275/ieee1275.h
 ===================================================================
---- grub-2.04~rc1.orig/include/grub/ieee1275/ieee1275.h
-+++ grub-2.04~rc1/include/grub/ieee1275/ieee1275.h
-@@ -263,7 +263,7 @@ int EXPORT_FUNC(grub_ieee1275_devalias_n
+--- grub-2.02.orig/include/grub/ieee1275/ieee1275.h
++++ grub-2.02/include/grub/ieee1275/ieee1275.h
+@@ -243,7 +243,7 @@ int EXPORT_FUNC(grub_ieee1275_devalias_n
  void EXPORT_FUNC(grub_ieee1275_children_peer) (struct grub_ieee1275_devalias *alias);
  void EXPORT_FUNC(grub_ieee1275_children_first) (const char *devpath,
  						struct grub_ieee1275_devalias *alias);
@@ -97,4 +96,4 @@ Index: grub-2.04~rc1/include/grub/ieee1275/ieee1275.h
 +int EXPORT_FUNC(grub_ieee1275_cas_reboot) (char **script);
  int EXPORT_FUNC(grub_ieee1275_set_boot_last_label) (const char *text);
  
- char *EXPORT_FUNC(grub_ieee1275_get_boot_dev) (void);
+ #define FOR_IEEE1275_DEVALIASES(alias) for (grub_ieee1275_devalias_init_iterator (&(alias)); grub_ieee1275_devalias_next (&(alias));)

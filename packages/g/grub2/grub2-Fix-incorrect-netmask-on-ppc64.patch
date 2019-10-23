@@ -26,16 +26,15 @@ The count of zero with __builtin_clz can be 22. (clz counts the number of one bi
  grub-core/net/drivers/ieee1275/ofnet.c | 2 +-
  1 file changed, 1 insertion(+), 2 deletions(-)
 
-Index: grub-2.04~rc1/grub-core/net/drivers/ieee1275/ofnet.c
-===================================================================
---- grub-2.04~rc1.orig/grub-core/net/drivers/ieee1275/ofnet.c
-+++ grub-2.04~rc1/grub-core/net/drivers/ieee1275/ofnet.c
-@@ -220,7 +220,7 @@ grub_ieee1275_parse_bootpath (const char
-                                  flags);
-       inter->vlantag = vlantag;
+diff -ur grub-2.02~/grub-core/net/drivers/ieee1275/ofnet.c grub-2.02/grub-core/net/drivers/ieee1275/ofnet.c
+--- grub-2.02~/grub-core/net/drivers/ieee1275/ofnet.c	2018-03-26 13:49:55.399558334 +0200
++++ grub-2.02/grub-core/net/drivers/ieee1275/ofnet.c	2018-03-26 13:51:03.092656921 +0200
+@@ -232,7 +232,7 @@
+         }
+ 
        grub_net_add_ipv4_local (inter,
 -                          __builtin_ctz (~grub_le_to_cpu32 (subnet_mask.ipv4)));
 +                          __builtin_clz (~ (subnet_mask.ipv4)));
- 
      }
  
+   if (gateway_addr.ipv4 != 0)

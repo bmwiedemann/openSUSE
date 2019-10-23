@@ -1,11 +1,7 @@
-
-v2: Add GRUB_FILE_TYPE_CONFIG to grub_file_open, see also upstream commit
-ca0a4f689 verifiers: File type for fine-grained signature-verification controlling
-
-Index: grub-2.04~rc1/grub-core/kern/efi/init.c
+Index: grub-2.02~beta2/grub-core/kern/efi/init.c
 ===================================================================
---- grub-2.04~rc1.orig/grub-core/kern/efi/init.c
-+++ grub-2.04~rc1/grub-core/kern/efi/init.c
+--- grub-2.02~beta2.orig/grub-core/kern/efi/init.c
++++ grub-2.02~beta2/grub-core/kern/efi/init.c
 @@ -25,6 +25,7 @@
  #include <grub/env.h>
  #include <grub/mm.h>
@@ -36,7 +32,7 @@ Index: grub-2.04~rc1/grub-core/kern/efi/init.c
 +    goto quit;
 +
 +  config = grub_xasprintf ("(%s)%s/grub.cfg", device, path);
-+  config_fd = grub_file_open (config, GRUB_FILE_TYPE_CONFIG);
++  config_fd = grub_file_open (config);
 +
 +  /* everything's fine, so quit the workaround */
 +  if (config_fd)
@@ -57,7 +53,7 @@ Index: grub-2.04~rc1/grub-core/kern/efi/init.c
 +  if (! config_upper)
 +    goto quit;
 +
-+  config_fd = grub_file_open (config_upper, GRUB_FILE_TYPE_CONFIG);
++  config_fd = grub_file_open (config_upper);
 +
 +  /* if config can be found by the upper case path, return it */
 +  if (config_fd)
@@ -82,7 +78,7 @@ Index: grub-2.04~rc1/grub-core/kern/efi/init.c
  
  void
  grub_machine_get_bootlocation (char **device, char **path)
-@@ -72,6 +134,12 @@ grub_machine_get_bootlocation (char **de
+@@ -69,6 +131,12 @@ grub_machine_get_bootlocation (char **de
        p = grub_strrchr (*path, '/');
        if (p)
          *p = '\0';

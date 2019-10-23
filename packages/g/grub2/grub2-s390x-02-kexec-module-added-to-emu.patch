@@ -9,14 +9,14 @@
  include/grub/emu/misc.h      |    3 
  8 files changed, 204 insertions(+), 4 deletions(-)
 
-Index: grub-2.04~rc1/grub-core/Makefile.core.def
+Index: grub-2.02~beta2/grub-core/Makefile.core.def
 ===================================================================
---- grub-2.04~rc1.orig/grub-core/Makefile.core.def
-+++ grub-2.04~rc1/grub-core/Makefile.core.def
-@@ -1786,9 +1786,9 @@ module = {
+--- grub-2.02~beta2.orig/grub-core/Makefile.core.def	2016-01-29 22:59:52.244526390 +0300
++++ grub-2.02~beta2/grub-core/Makefile.core.def	2016-01-29 22:59:52.240526390 +0300
+@@ -1667,9 +1667,9 @@
+   ia64_efi = loader/ia64/efi/linux.c;
+   arm = loader/arm/linux.c;
    arm64 = loader/arm64/linux.c;
-   riscv32 = loader/riscv/linux.c;
-   riscv64 = loader/riscv/linux.c;
 +  emu = loader/emu/linux.c;
    common = loader/linux.c;
    common = lib/cmdline.c;
@@ -24,10 +24,10 @@ Index: grub-2.04~rc1/grub-core/Makefile.core.def
  };
  
  module = {
-Index: grub-2.04~rc1/grub-core/loader/emu/linux.c
+Index: grub-2.02~beta2/grub-core/loader/emu/linux.c
 ===================================================================
---- /dev/null
-+++ grub-2.04~rc1/grub-core/loader/emu/linux.c
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ grub-2.02~beta2/grub-core/loader/emu/linux.c	2016-01-29 22:59:52.240526390 +0300
 @@ -0,0 +1,173 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader
@@ -202,10 +202,10 @@ Index: grub-2.04~rc1/grub-core/loader/emu/linux.c
 +  grub_unregister_command (cmd_linux);
 +  grub_unregister_command (cmd_initrd);
 +}
-Index: grub-2.04~rc1/include/grub/emu/hostfile.h
+Index: grub-2.02~beta2/include/grub/emu/hostfile.h
 ===================================================================
---- grub-2.04~rc1.orig/include/grub/emu/hostfile.h
-+++ grub-2.04~rc1/include/grub/emu/hostfile.h
+--- grub-2.02~beta2.orig/include/grub/emu/hostfile.h	2016-01-29 22:59:52.244526390 +0300
++++ grub-2.02~beta2/include/grub/emu/hostfile.h	2016-01-29 22:59:52.240526390 +0300
 @@ -22,6 +22,7 @@
  #include <grub/disk.h>
  #include <grub/partition.h>
@@ -214,7 +214,7 @@ Index: grub-2.04~rc1/include/grub/emu/hostfile.h
  #include <grub/osdep/hostfile.h>
  
  int
-@@ -29,7 +30,7 @@ grub_util_is_directory (const char *path
+@@ -29,7 +30,7 @@
  int
  grub_util_is_special_file (const char *path);
  int
@@ -223,10 +223,10 @@ Index: grub-2.04~rc1/include/grub/emu/hostfile.h
  
  char *
  grub_util_path_concat (size_t n, ...);
-Index: grub-2.04~rc1/include/grub/emu/exec.h
+Index: grub-2.02~beta2/include/grub/emu/exec.h
 ===================================================================
---- grub-2.04~rc1.orig/include/grub/emu/exec.h
-+++ grub-2.04~rc1/include/grub/emu/exec.h
+--- grub-2.02~beta2.orig/include/grub/emu/exec.h	2016-01-29 22:59:52.244526390 +0300
++++ grub-2.02~beta2/include/grub/emu/exec.h	2016-01-29 22:59:52.240526390 +0300
 @@ -23,6 +23,8 @@
  #include <stdarg.h>
  
@@ -236,7 +236,7 @@ Index: grub-2.04~rc1/include/grub/emu/exec.h
  pid_t
  grub_util_exec_pipe (const char *const *argv, int *fd);
  pid_t
-@@ -32,7 +34,7 @@ int
+@@ -32,7 +34,7 @@
  grub_util_exec_redirect_all (const char *const *argv, const char *stdin_file,
  			     const char *stdout_file, const char *stderr_file);
  int
@@ -245,11 +245,11 @@ Index: grub-2.04~rc1/include/grub/emu/exec.h
  int
  grub_util_exec_redirect (const char *const *argv, const char *stdin_file,
  			 const char *stdout_file);
-Index: grub-2.04~rc1/grub-core/Makefile.am
+Index: grub-2.02~beta2/grub-core/Makefile.am
 ===================================================================
---- grub-2.04~rc1.orig/grub-core/Makefile.am
-+++ grub-2.04~rc1/grub-core/Makefile.am
-@@ -303,6 +303,7 @@ KERNEL_HEADER_FILES += $(top_srcdir)/inc
+--- grub-2.02~beta2.orig/grub-core/Makefile.am	2016-01-29 22:59:52.244526390 +0300
++++ grub-2.02~beta2/grub-core/Makefile.am	2016-01-29 22:59:52.240526390 +0300
+@@ -258,6 +258,7 @@
  KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/emu/hostdisk.h
  KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/emu/hostfile.h
  KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/extcmd.h
@@ -257,11 +257,11 @@ Index: grub-2.04~rc1/grub-core/Makefile.am
  if COND_GRUB_EMU_SDL
  KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/sdl.h
  endif
-Index: grub-2.04~rc1/grub-core/kern/emu/main.c
+Index: grub-2.02~beta2/grub-core/kern/emu/main.c
 ===================================================================
---- grub-2.04~rc1.orig/grub-core/kern/emu/main.c
-+++ grub-2.04~rc1/grub-core/kern/emu/main.c
-@@ -107,6 +107,7 @@ static struct argp_option options[] = {
+--- grub-2.02~beta2.orig/grub-core/kern/emu/main.c	2016-01-29 22:59:52.244526390 +0300
++++ grub-2.02~beta2/grub-core/kern/emu/main.c	2016-01-29 22:59:52.240526390 +0300
+@@ -106,6 +106,7 @@
     N_("use GRUB files in the directory DIR [default=%s]"), 0},
    {"verbose",     'v', 0,      0, N_("print verbose messages."), 0},
    {"hold",     'H', N_("SECS"),      OPTION_ARG_OPTIONAL, N_("wait until a debugger will attach"), 0},
@@ -269,7 +269,7 @@ Index: grub-2.04~rc1/grub-core/kern/emu/main.c
    { 0, 0, 0, 0, 0, 0 }
  };
  
-@@ -164,6 +165,9 @@ argp_parser (int key, char *arg, struct
+@@ -163,6 +164,9 @@
      case 'v':
        verbosity++;
        break;
@@ -279,11 +279,11 @@ Index: grub-2.04~rc1/grub-core/kern/emu/main.c
  
      case ARGP_KEY_ARG:
        {
-Index: grub-2.04~rc1/grub-core/kern/emu/misc.c
+Index: grub-2.02~beta2/grub-core/kern/emu/misc.c
 ===================================================================
---- grub-2.04~rc1.orig/grub-core/kern/emu/misc.c
-+++ grub-2.04~rc1/grub-core/kern/emu/misc.c
-@@ -39,6 +39,7 @@
+--- grub-2.02~beta2.orig/grub-core/kern/emu/misc.c	2016-01-29 22:59:52.244526390 +0300
++++ grub-2.02~beta2/grub-core/kern/emu/misc.c	2016-01-29 22:59:52.240526390 +0300
+@@ -37,6 +37,7 @@
  #include <grub/emu/misc.h>
  
  int verbosity;
@@ -291,7 +291,7 @@ Index: grub-2.04~rc1/grub-core/kern/emu/misc.c
  
  void
  grub_util_warn (const char *fmt, ...)
-@@ -82,7 +83,7 @@ grub_util_error (const char *fmt, ...)
+@@ -80,7 +81,7 @@
    vfprintf (stderr, fmt, ap);
    va_end (ap);
    fprintf (stderr, ".\n");
@@ -300,7 +300,7 @@ Index: grub-2.04~rc1/grub-core/kern/emu/misc.c
  }
  
  void *
-@@ -141,6 +142,9 @@ xasprintf (const char *fmt, ...)
+@@ -138,6 +139,9 @@
  void
  grub_exit (void)
  {
@@ -310,7 +310,7 @@ Index: grub-2.04~rc1/grub-core/kern/emu/misc.c
    exit (1);
  }
  #endif
-@@ -202,3 +206,15 @@ grub_util_load_image (const char *path,
+@@ -199,3 +203,15 @@
  
    fclose (fp);
  }
@@ -326,13 +326,13 @@ Index: grub-2.04~rc1/grub-core/kern/emu/misc.c
 +{
 +  return kexecute;
 +}
-Index: grub-2.04~rc1/include/grub/emu/misc.h
+Index: grub-2.02~beta2/include/grub/emu/misc.h
 ===================================================================
---- grub-2.04~rc1.orig/include/grub/emu/misc.h
-+++ grub-2.04~rc1/include/grub/emu/misc.h
-@@ -56,6 +56,9 @@ void EXPORT_FUNC(grub_util_warn) (const
- void EXPORT_FUNC(grub_util_info) (const char *fmt, ...) __attribute__ ((format (GNU_PRINTF, 1, 2)));
- void EXPORT_FUNC(grub_util_error) (const char *fmt, ...) __attribute__ ((format (GNU_PRINTF, 1, 2), noreturn));
+--- grub-2.02~beta2.orig/include/grub/emu/misc.h	2016-01-29 22:59:52.244526390 +0300
++++ grub-2.02~beta2/include/grub/emu/misc.h	2016-01-29 22:59:52.240526390 +0300
+@@ -60,6 +60,9 @@
+ void EXPORT_FUNC(grub_util_info) (const char *fmt, ...) __attribute__ ((format (__printf__, 1, 2)));
+ void EXPORT_FUNC(grub_util_error) (const char *fmt, ...) __attribute__ ((format (__printf__, 1, 2), noreturn));
  
 +void EXPORT_FUNC(grub_util_set_kexecute) (void);
 +int EXPORT_FUNC(grub_util_get_kexecute) (void) WARN_UNUSED_RESULT;

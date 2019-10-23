@@ -6,13 +6,6 @@ References: fate#314485
 Patch-Mainline: no
 
 Signed-off-by: Michael Chang <mchang@suse.com>
-
-v2: Adjust patch according to new upstream commits
-4d4a8c96e verifiers: Add possibility to verify kernel and modules command lines
-ca0a4f689 verifiers: File type for fine-grained signature-verification controlling
-7d36709d5 i386: make struct linux_kernel_header architecture specific
-4bc909bf8 Remove grub_efi_allocate_pages.
-
 ---
  grub-core/Makefile.core.def       |    8 +
  grub-core/kern/efi/mm.c           |   32 ++++
@@ -22,11 +15,11 @@ ca0a4f689 verifiers: File type for fine-grained signature-verification controlli
  5 files changed, 415 insertions(+), 0 deletions(-)
  create mode 100644 grub-core/loader/i386/efi/linux.c
 
-Index: grub-2.04~rc1/grub-core/Makefile.core.def
+Index: grub-2.02~beta2/grub-core/Makefile.core.def
 ===================================================================
---- grub-2.04~rc1.orig/grub-core/Makefile.core.def
-+++ grub-2.04~rc1/grub-core/Makefile.core.def
-@@ -1850,6 +1850,14 @@ module = {
+--- grub-2.02~beta2.orig/grub-core/Makefile.core.def
++++ grub-2.02~beta2/grub-core/Makefile.core.def
+@@ -1691,6 +1691,14 @@ module = {
  };
  
  module = {
@@ -41,13 +34,13 @@ Index: grub-2.04~rc1/grub-core/Makefile.core.def
    name = chain;
    efi = loader/efi/chainloader.c;
    i386_pc = loader/i386/pc/chainloader.c;
-Index: grub-2.04~rc1/grub-core/kern/efi/mm.c
+Index: grub-2.02~beta2/grub-core/kern/efi/mm.c
 ===================================================================
---- grub-2.04~rc1.orig/grub-core/kern/efi/mm.c
-+++ grub-2.04~rc1/grub-core/kern/efi/mm.c
-@@ -113,6 +113,38 @@ grub_efi_drop_alloc (grub_efi_physical_a
-     }
- }
+--- grub-2.02~beta2.orig/grub-core/kern/efi/mm.c
++++ grub-2.02~beta2/grub-core/kern/efi/mm.c
+@@ -49,6 +49,38 @@ static grub_efi_uintn_t finish_desc_size
+ static grub_efi_uint32_t finish_desc_version;
+ int grub_efi_is_finished = 0;
  
 +/* Allocate pages below a specified address */
 +void *
@@ -83,12 +76,12 @@ Index: grub-2.04~rc1/grub-core/kern/efi/mm.c
 +
  /* Allocate pages. Return the pointer to the first of allocated pages.  */
  void *
- grub_efi_allocate_pages_real (grub_efi_physical_address_t address,
-Index: grub-2.04~rc1/grub-core/loader/i386/efi/linux.c
+ grub_efi_allocate_pages (grub_efi_physical_address_t address,
+Index: grub-2.02~beta2/grub-core/loader/i386/efi/linux.c
 ===================================================================
 --- /dev/null
-+++ grub-2.04~rc1/grub-core/loader/i386/efi/linux.c
-@@ -0,0 +1,342 @@
++++ grub-2.02~beta2/grub-core/loader/i386/efi/linux.c
+@@ -0,0 +1,371 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader
 + *  Copyright (C) 2012  Free Software Foundation, Inc.
@@ -130,6 +123,32 @@ Index: grub-2.04~rc1/grub-core/loader/i386/efi/linux.c
 +static char *linux_cmdline;
 +
 +#define BYTES_TO_PAGES(bytes)   (((bytes) + 0xfff) >> 12)
++
++#define SHIM_LOCK_GUID \
++  { 0x605dab50, 0xe046, 0x4300, {0xab, 0xb6, 0x3d, 0xd8, 0x10, 0xdd, 0x8b, 0x23} }
++
++struct grub_efi_shim_lock
++{
++  grub_efi_status_t (*verify) (void *buffer, grub_uint32_t size);
++};
++typedef struct grub_efi_shim_lock grub_efi_shim_lock_t;
++
++static grub_efi_boolean_t
++grub_linuxefi_secure_validate (void *data, grub_uint32_t size)
++{
++  grub_efi_guid_t guid = SHIM_LOCK_GUID;
++  grub_efi_shim_lock_t *shim_lock;
++
++  shim_lock = grub_efi_locate_protocol(&guid, NULL);
++
++  if (!shim_lock)
++    return 1;
++
++  if (shim_lock->verify(data, size) == GRUB_EFI_SUCCESS)
++    return 1;
++
++  return 0;
++}
 +
 +typedef void(*handover_func)(void *, grub_efi_system_table_t *, struct linux_kernel_params *);
 +
@@ -196,8 +215,8 @@ Index: grub-2.04~rc1/grub-core/loader/i386/efi/linux.c
 +
 +  for (i = 0; i < argc; i++)
 +    {
-+      files[i] = grub_file_open (argv[i], GRUB_FILE_TYPE_LINUX_INITRD
-+			 | GRUB_FILE_TYPE_NO_DECOMPRESS);
++      grub_file_filter_disable_compression ();
++      files[i] = grub_file_open (argv[i]);
 +      if (! files[i])
 +        goto fail;
 +      nfiles++;
@@ -250,10 +269,9 @@ Index: grub-2.04~rc1/grub-core/loader/i386/efi/linux.c
 +		int argc, char *argv[])
 +{
 +  grub_file_t file = 0;
-+  struct linux_i386_kernel_header lh;
++  struct linux_kernel_header lh;
 +  grub_ssize_t len, start, filelen;
 +  void *kernel;
-+  grub_err_t err;
 +
 +  grub_dl_ref (my_mod);
 +
@@ -263,7 +281,7 @@ Index: grub-2.04~rc1/grub-core/loader/i386/efi/linux.c
 +      goto fail;
 +    }
 +
-+  file = grub_file_open (argv[0], GRUB_FILE_TYPE_LINUX_KERNEL);
++  file = grub_file_open (argv[0]);
 +  if (! file)
 +    goto fail;
 +
@@ -280,6 +298,13 @@ Index: grub-2.04~rc1/grub-core/loader/i386/efi/linux.c
 +  if (grub_file_read (file, kernel, filelen) != filelen)
 +    {
 +      grub_error (GRUB_ERR_FILE_READ_ERROR, N_("Can't read kernel %s"), argv[0]);
++      goto fail;
++    }
++
++  if (! grub_linuxefi_secure_validate (kernel, filelen))
++    {
++      grub_error (GRUB_ERR_INVALID_COMMAND, N_("%s has invalid signature"), argv[0]);
++      grub_free (kernel);
 +      goto fail;
 +    }
 +
@@ -339,12 +364,9 @@ Index: grub-2.04~rc1/grub-core/loader/i386/efi/linux.c
 +    }
 +
 +  grub_memcpy (linux_cmdline, LINUX_IMAGE, sizeof (LINUX_IMAGE));
-+  err = grub_create_loader_cmdline (argc, argv,
++  grub_create_loader_cmdline (argc, argv,
 +                              linux_cmdline + sizeof (LINUX_IMAGE) - 1,
-+			      lh.cmdline_size - (sizeof (LINUX_IMAGE) - 1),
-+			      GRUB_VERIFY_KERNEL_CMDLINE);
-+  if (err)
-+    goto fail;
++			      lh.cmdline_size - (sizeof (LINUX_IMAGE) - 1));
 +
 +  lh.cmd_line_ptr = (grub_uint32_t)(grub_addr_t)linux_cmdline;
 +
@@ -353,7 +375,7 @@ Index: grub-2.04~rc1/grub-core/loader/i386/efi/linux.c
 +  start = (lh.setup_sects + 1) * 512;
 +  len = grub_file_size(file) - start;
 +
-+  kernel_mem = grub_efi_allocate_fixed (lh.pref_address,
++  kernel_mem = grub_efi_allocate_pages(lh.pref_address,
 +				       BYTES_TO_PAGES(lh.init_size));
 +
 +  if (!kernel_mem)
@@ -431,17 +453,29 @@ Index: grub-2.04~rc1/grub-core/loader/i386/efi/linux.c
 +  grub_unregister_command (cmd_linux);
 +  grub_unregister_command (cmd_initrd);
 +}
-Index: grub-2.04~rc1/include/grub/efi/efi.h
+Index: grub-2.02~beta2/include/grub/efi/efi.h
 ===================================================================
---- grub-2.04~rc1.orig/include/grub/efi/efi.h
-+++ grub-2.04~rc1/include/grub/efi/efi.h
-@@ -47,6 +47,9 @@ EXPORT_FUNC(grub_efi_allocate_fixed) (gr
- 				      grub_efi_uintn_t pages);
+--- grub-2.02~beta2.orig/include/grub/efi/efi.h
++++ grub-2.02~beta2/include/grub/efi/efi.h
+@@ -40,6 +40,9 @@ void EXPORT_FUNC(grub_efi_stall) (grub_e
  void *
- EXPORT_FUNC(grub_efi_allocate_any_pages) (grub_efi_uintn_t pages);
+ EXPORT_FUNC(grub_efi_allocate_pages) (grub_efi_physical_address_t address,
+ 				      grub_efi_uintn_t pages);
 +void *
 +EXPORT_FUNC(grub_efi_allocate_pages_max) (grub_efi_physical_address_t max,
 +					  grub_efi_uintn_t pages);
  void EXPORT_FUNC(grub_efi_free_pages) (grub_efi_physical_address_t address,
  				       grub_efi_uintn_t pages);
- grub_efi_uintn_t EXPORT_FUNC(grub_efi_find_mmap_size) (void);
+ int
+Index: grub-2.02~beta2/include/grub/i386/linux.h
+===================================================================
+--- grub-2.02~beta2.orig/include/grub/i386/linux.h
++++ grub-2.02~beta2/include/grub/i386/linux.h
+@@ -139,6 +139,7 @@ struct linux_kernel_header
+   grub_uint64_t setup_data;
+   grub_uint64_t pref_address;
+   grub_uint32_t init_size;
++  grub_uint32_t handover_offset;
+ } GRUB_PACKED;
+ 
+ /* Boot parameters for Linux based on 2.6.12. This is used by the setup

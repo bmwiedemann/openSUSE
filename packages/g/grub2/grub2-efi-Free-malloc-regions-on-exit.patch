@@ -1,0 +1,186 @@
+From 33298c813c36a50ccc881c33c9b6eacfb830c21a Mon Sep 17 00:00:00 2001
+From: Alexander Graf <agraf@suse.de>
+Subject: [PATCH v7 2/2] efi: Free malloc regions on exit
+
+When we exit grub, we don't free all the memory that we allocated earlier
+for our heap region. This can cause problems with setups where you try
+to descend the boot order using "exit" entries, such as PXE -> HD boot
+scenarios.
+
+Signed-off-by: Alexander Graf <agraf@suse.de>
+
+---
+
+v2 -> v3:
+
+  - add comment explaining the number of regions
+  - move nr of regions into a define
+  - add warning if we exceed the number of freeable regions
+  - reset region counter to 0 on fini
+
+v3 -> v4:
+
+  - use dynamic list instead of static array at runtime
+  - use allocate_pool for list, so we are not bound by heap or random numbers
+  - remember all allocations, not just the heap
+
+v4 -> v5:
+
+  - free dynamic list entries on allocation removal
+
+v5 -> v6:
+
+  - move next ptr to last field
+  - s/start_addr/address/
+  - s/grub_efi_unremember_pages()/grub_efi_drop_alloc()/
+  - s/grub_efi_remember_pages()/grub_efi_store_alloc()/
+  - move grub_efi_drop_alloc after grub_efi_store_alloc
+  - s/grub2/GRUB/
+  - Make grub_efi_memory_fini comment more verbose
+  - Drop useless efi_allocated_memory = NULL; line
+
+v6 -> v7:
+
+  - rewrite grub_efi_drop_alloc() according to Daniel's comments
+---
+ grub-core/kern/efi/init.c |  1 +
+ grub-core/kern/efi/mm.c   | 79 +++++++++++++++++++++++++++++++++++++++++++++++
+ include/grub/efi/efi.h    |  1 +
+ 3 files changed, 81 insertions(+)
+
+diff --git a/grub-core/kern/efi/init.c b/grub-core/kern/efi/init.c
+index 2c31847bf..3dfdf2d22 100644
+--- a/grub-core/kern/efi/init.c
++++ b/grub-core/kern/efi/init.c
+@@ -80,4 +80,5 @@ grub_efi_fini (void)
+ {
+   grub_efidisk_fini ();
+   grub_console_fini ();
++  grub_efi_memory_fini ();
+ }
+diff --git a/grub-core/kern/efi/mm.c b/grub-core/kern/efi/mm.c
+index ac2a4c556..6da8c206a 100644
+--- a/grub-core/kern/efi/mm.c
++++ b/grub-core/kern/efi/mm.c
+@@ -49,6 +49,69 @@ static grub_efi_uintn_t finish_desc_size;
+ static grub_efi_uint32_t finish_desc_version;
+ int grub_efi_is_finished = 0;
+ 
++/*
++ * We need to roll back EFI allocations on exit. Remember allocations that
++ * we'll free on exit.
++ */
++struct efi_allocation;
++struct efi_allocation {
++	grub_efi_physical_address_t address;
++	grub_efi_uint64_t pages;
++	struct efi_allocation *next;
++};
++static struct efi_allocation *efi_allocated_memory;
++
++static void
++grub_efi_store_alloc (grub_efi_physical_address_t address,
++                         grub_efi_uintn_t pages)
++{
++  grub_efi_boot_services_t *b;
++  struct efi_allocation *alloc;
++  grub_efi_status_t status;
++
++  b = grub_efi_system_table->boot_services;
++  status = efi_call_3 (b->allocate_pool, GRUB_EFI_LOADER_DATA,
++                           sizeof(*alloc), (void**)&alloc);
++  if (status == GRUB_EFI_SUCCESS)
++    {
++      alloc->next = efi_allocated_memory;
++      alloc->address = address;
++      alloc->pages = pages;
++      efi_allocated_memory = alloc;
++    }
++  else
++      grub_printf ("Could not malloc memory to remember EFI allocation. "
++                   "Exiting GRUB won't free all memory.\n");
++}
++
++static void
++grub_efi_drop_alloc (grub_efi_physical_address_t address,
++                           grub_efi_uintn_t pages)
++{
++  struct efi_allocation *ea, *eap;
++  grub_efi_boot_services_t *b;
++
++  b = grub_efi_system_table->boot_services;
++
++  for (eap = NULL, ea = efi_allocated_memory; ea; eap = ea, ea = ea->next)
++    {
++      if (ea->address != address || ea->pages != pages)
++         continue;
++
++      /* Remove the current entry from the list */
++      if (eap)
++        eap->next = ea->next;
++      else
++        efi_allocated_memory = ea->next;
++
++      /* Then free the memory backing it */
++      efi_call_1 (b->free_pool, ea);
++
++      /* And leave, we're done */
++      break;
++    }
++}
++
+ /* Allocate pages below a specified address */
+ void *
+ grub_efi_allocate_pages_max (grub_efi_physical_address_t max,
+@@ -79,6 +142,7 @@ grub_efi_allocate_pages_real (grub_efi_physical_address_t address,
+ 	return 0;
+     }
+ 
++  grub_efi_store_alloc (address, pages);
+   return (void *) ((grub_addr_t) address);
+ }
+ 
+@@ -108,6 +172,7 @@ grub_efi_free_pages (grub_efi_physical_address_t address,
+ 
+   b = grub_efi_system_table->boot_services;
+   efi_call_2 (b->free_pages, address, pages);
++  grub_efi_drop_alloc (address, pages);
+ }
+ 
+ #if defined (__i386__) || defined (__x86_64__)
+@@ -422,6 +487,20 @@ add_memory_regions (grub_efi_memory_descriptor_t *memory_map,
+     grub_fatal ("too little memory");
+ }
+ 
++void
++grub_efi_memory_fini (void)
++{
++  /*
++   * Free all stale allocations. grub_efi_free_pages() will remove
++   * the found entry from the list and it will always find the first
++   * list entry (efi_allocated_memory is the list start). Hence we
++   * remove all entries from the list until none is left altogether.
++   */
++  while (efi_allocated_memory)
++      grub_efi_free_pages (efi_allocated_memory->address,
++                           efi_allocated_memory->pages);
++}
++
+ #if 0
+ /* Print the memory map.  */
+ static void
+diff --git a/include/grub/efi/efi.h b/include/grub/efi/efi.h
+index 3fa082816..c996913e5 100644
+--- a/include/grub/efi/efi.h
++++ b/include/grub/efi/efi.h
+@@ -55,6 +55,7 @@ EXPORT_FUNC(grub_efi_get_memory_map) (grub_efi_uintn_t *memory_map_size,
+ 				      grub_efi_uintn_t *map_key,
+ 				      grub_efi_uintn_t *descriptor_size,
+ 				      grub_efi_uint32_t *descriptor_version);
++void grub_efi_memory_fini (void);
+ grub_efi_loaded_image_t *EXPORT_FUNC(grub_efi_get_loaded_image) (grub_efi_handle_t image_handle);
+ void EXPORT_FUNC(grub_efi_print_device_path) (grub_efi_device_path_t *dp);
+ char *EXPORT_FUNC(grub_efi_get_filename) (grub_efi_device_path_t *dp);
+-- 
+2.12.3
+

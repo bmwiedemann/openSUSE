@@ -14,16 +14,16 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  grub-core/loader/efi/chainloader.c |   17 ++++++++++++++++-
  1 file changed, 16 insertions(+), 1 deletion(-)
 
-Index: grub-2.04~rc1/grub-core/loader/efi/chainloader.c
+Index: grub-2.02~beta2/grub-core/loader/efi/chainloader.c
 ===================================================================
---- grub-2.04~rc1.orig/grub-core/loader/efi/chainloader.c
-+++ grub-2.04~rc1/grub-core/loader/efi/chainloader.c
-@@ -714,12 +714,16 @@ grub_cmd_chainloader (grub_command_t cmd
+--- grub-2.02~beta2.orig/grub-core/loader/efi/chainloader.c
++++ grub-2.02~beta2/grub-core/loader/efi/chainloader.c
+@@ -706,12 +706,16 @@ grub_cmd_chainloader (grub_command_t cmd
        *(--p16) = 0;
      }
  
 +  grub_dprintf ("chain", "cmd='%s'\n", filename);
-   file = grub_file_open (filename, GRUB_FILE_TYPE_EFI_CHAINLOADED_IMAGE);
+   file = grub_file_open (filename);
    if (! file)
      goto fail;
  

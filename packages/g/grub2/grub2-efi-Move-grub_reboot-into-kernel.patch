@@ -1,0 +1,122 @@
+From dee74e9bd88aa31e38b1e77dc7845930aa1cd60f Mon Sep 17 00:00:00 2001
+From: Alexander Graf <agraf@suse.de>
+Subject: [PATCH v7 1/2] efi: Move grub_reboot() into kernel
+
+The reboot function calls machine_fini() and then reboots the system.
+Currently it lives in lib/ which means it gets compiled into the
+reboot module which lives on the heap.
+
+In a following patch, I want to free the heap on machine_fini()
+though, so we would free the memory that the code is running in. That
+obviously breaks with smarter UEFI implementations.
+
+So this patch moves it into the core. That way we ensure that all
+code running after machine_fini() in the UEFI case is running from
+memory that got allocated (and gets deallocated) by the UEFI core.
+
+Signed-off-by: Alexander Graf <agraf@suse.de>
+
+---
+
+v3 -> v4:
+
+  - Move grub_reboot to kern/efi/efi.c
+---
+ grub-core/Makefile.core.def |  4 ----
+ grub-core/kern/efi/efi.c    |  9 +++++++++
+ grub-core/lib/efi/reboot.c  | 33 ---------------------------------
+ include/grub/misc.h         |  3 ++-
+ 4 files changed, 11 insertions(+), 38 deletions(-)
+ delete mode 100644 grub-core/lib/efi/reboot.c
+
+diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
+index a65c27f7f..1cc4ce374 100644
+--- a/grub-core/Makefile.core.def
++++ b/grub-core/Makefile.core.def
+@@ -872,10 +872,6 @@ module = {
+   name = reboot;
+   i386 = lib/i386/reboot.c;
+   i386 = lib/i386/reboot_trampoline.S;
+-  ia64_efi = lib/efi/reboot.c;
+-  x86_64_efi = lib/efi/reboot.c;
+-  arm_efi = lib/efi/reboot.c;
+-  arm64_efi = lib/efi/reboot.c;
+   powerpc_ieee1275 = lib/ieee1275/reboot.c;
+   sparc64_ieee1275 = lib/ieee1275/reboot.c;
+   mips_arc = lib/mips/arc/reboot.c;
+diff --git a/grub-core/kern/efi/efi.c b/grub-core/kern/efi/efi.c
+index d467785fc..708581fcb 100644
+--- a/grub-core/kern/efi/efi.c
++++ b/grub-core/kern/efi/efi.c
+@@ -155,6 +155,15 @@ grub_efi_get_loaded_image (grub_efi_handle_t image_handle)
+ }
+ 
+ void
++grub_reboot (void)
++{
++  grub_machine_fini (GRUB_LOADER_FLAG_NORETURN);
++  efi_call_4 (grub_efi_system_table->runtime_services->reset_system,
++              GRUB_EFI_RESET_COLD, GRUB_EFI_SUCCESS, 0, NULL);
++  for (;;) ;
++}
++
++void
+ grub_exit (void)
+ {
+   grub_machine_fini (GRUB_LOADER_FLAG_NORETURN);
+diff --git a/grub-core/lib/efi/reboot.c b/grub-core/lib/efi/reboot.c
+deleted file mode 100644
+index 7de8bcb5d..000000000
+--- a/grub-core/lib/efi/reboot.c
++++ /dev/null
+@@ -1,33 +0,0 @@
+-/*
+- *  GRUB  --  GRand Unified Bootloader
+- *  Copyright (C) 2011  Free Software Foundation, Inc.
+- *
+- *  GRUB is free software: you can redistribute it and/or modify
+- *  it under the terms of the GNU General Public License as published by
+- *  the Free Software Foundation, either version 3 of the License, or
+- *  (at your option) any later version.
+- *
+- *  GRUB is distributed in the hope that it will be useful,
+- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- *  GNU General Public License for more details.
+- *
+- *  You should have received a copy of the GNU General Public License
+- *  along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
+- */
+-
+-#include <grub/efi/api.h>
+-#include <grub/efi/efi.h>
+-#include <grub/mm.h>
+-#include <grub/misc.h>
+-#include <grub/kernel.h>
+-#include <grub/loader.h>
+-
+-void
+-grub_reboot (void)
+-{
+-  grub_machine_fini (GRUB_LOADER_FLAG_NORETURN);
+-  efi_call_4 (grub_efi_system_table->runtime_services->reset_system,
+-              GRUB_EFI_RESET_COLD, GRUB_EFI_SUCCESS, 0, NULL);
+-  for (;;) ;
+-}
+diff --git a/include/grub/misc.h b/include/grub/misc.h
+index 2a9f87cc2..372f009e8 100644
+--- a/include/grub/misc.h
++++ b/include/grub/misc.h
+@@ -396,7 +396,8 @@ grub_abs (int x)
+ }
+ 
+ /* Reboot the machine.  */
+-#if defined (GRUB_MACHINE_EMU) || defined (GRUB_MACHINE_QEMU_MIPS)
++#if defined (GRUB_MACHINE_EMU) || defined (GRUB_MACHINE_QEMU_MIPS) || \
++    defined (GRUB_MACHINE_EFI)
+ void EXPORT_FUNC(grub_reboot) (void) __attribute__ ((noreturn));
+ #else
+ void grub_reboot (void) __attribute__ ((noreturn));
+-- 
+2.12.3
+

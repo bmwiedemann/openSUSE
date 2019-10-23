@@ -24,11 +24,11 @@ parameters
  include/grub/ieee1275/ieee1275.h |  2 ++
  4 files changed, 90 insertions(+)
 
-Index: grub-2.04~rc1/grub-core/kern/ieee1275/openfw.c
+Index: grub-2.02~beta2/grub-core/kern/ieee1275/openfw.c
 ===================================================================
---- grub-2.04~rc1.orig/grub-core/kern/ieee1275/openfw.c
-+++ grub-2.04~rc1/grub-core/kern/ieee1275/openfw.c
-@@ -593,6 +593,69 @@ grub_ieee1275_canonicalise_devname (cons
+--- grub-2.02~beta2.orig/grub-core/kern/ieee1275/openfw.c	2016-01-29 23:08:47.560532720 +0300
++++ grub-2.02~beta2/grub-core/kern/ieee1275/openfw.c	2016-01-29 23:08:47.556532720 +0300
+@@ -590,3 +590,65 @@
    return NULL;
  }
  
@@ -94,14 +94,10 @@ Index: grub-2.04~rc1/grub-core/kern/ieee1275/openfw.c
 +                                grub_strlen (text), &actual);
 +  return 0;
 +}
-+
- char *
- grub_ieee1275_get_boot_dev (void)
- {
-Index: grub-2.04~rc1/grub-core/normal/main.c
+Index: grub-2.02~beta2/grub-core/normal/main.c
 ===================================================================
---- grub-2.04~rc1.orig/grub-core/normal/main.c
-+++ grub-2.04~rc1/grub-core/normal/main.c
+--- grub-2.02~beta2.orig/grub-core/normal/main.c	2016-01-29 23:08:47.560532720 +0300
++++ grub-2.02~beta2/grub-core/normal/main.c	2016-01-29 23:09:59.812533575 +0300
 @@ -33,6 +33,9 @@
  #include <grub/charset.h>
  #include <grub/script_sh.h>
@@ -112,7 +108,7 @@ Index: grub-2.04~rc1/grub-core/normal/main.c
  
  GRUB_MOD_LICENSE ("GPLv3+");
  
-@@ -275,6 +278,21 @@ grub_normal_execute (const char *config,
+@@ -275,6 +278,21 @@
      {
        menu = read_config_file (config);
  
@@ -134,21 +130,21 @@ Index: grub-2.04~rc1/grub-core/normal/main.c
        /* Ignore any error.  */
        grub_errno = GRUB_ERR_NONE;
      }
-Index: grub-2.04~rc1/grub-core/script/execute.c
+Index: grub-2.02~beta2/grub-core/script/execute.c
 ===================================================================
---- grub-2.04~rc1.orig/grub-core/script/execute.c
-+++ grub-2.04~rc1/grub-core/script/execute.c
-@@ -28,6 +28,9 @@
+--- grub-2.02~beta2.orig/grub-core/script/execute.c	2016-01-29 23:08:47.560532720 +0300
++++ grub-2.02~beta2/grub-core/script/execute.c	2016-01-29 23:08:47.560532720 +0300
+@@ -27,6 +27,9 @@
+ #include <grub/normal.h>
  #include <grub/extcmd.h>
  #include <grub/i18n.h>
- #include <grub/verify.h>
 +#ifdef GRUB_MACHINE_IEEE1275
 +#include <grub/ieee1275/ieee1275.h>
 +#endif
  
  /* Max digits for a char is 3 (0xFF is 255), similarly for an int it
     is sizeof (int) * 3, and one extra for a possible -ve sign.  */
-@@ -878,6 +881,10 @@ grub_script_execute_sourcecode (const ch
+@@ -877,6 +880,10 @@
    grub_err_t ret = 0;
    struct grub_script *parsed_script;
  
@@ -159,16 +155,16 @@ Index: grub-2.04~rc1/grub-core/script/execute.c
    while (source)
      {
        char *line;
-Index: grub-2.04~rc1/include/grub/ieee1275/ieee1275.h
+Index: grub-2.02~beta2/include/grub/ieee1275/ieee1275.h
 ===================================================================
---- grub-2.04~rc1.orig/include/grub/ieee1275/ieee1275.h
-+++ grub-2.04~rc1/include/grub/ieee1275/ieee1275.h
-@@ -263,6 +263,8 @@ int EXPORT_FUNC(grub_ieee1275_devalias_n
+--- grub-2.02~beta2.orig/include/grub/ieee1275/ieee1275.h	2016-01-29 23:08:47.560532720 +0300
++++ grub-2.02~beta2/include/grub/ieee1275/ieee1275.h	2016-01-29 23:08:47.560532720 +0300
+@@ -242,6 +242,8 @@
  void EXPORT_FUNC(grub_ieee1275_children_peer) (struct grub_ieee1275_devalias *alias);
  void EXPORT_FUNC(grub_ieee1275_children_first) (const char *devpath,
  						struct grub_ieee1275_devalias *alias);
 +int EXPORT_FUNC(grub_ieee1275_cas_reboot) (char *script);
 +int EXPORT_FUNC(grub_ieee1275_set_boot_last_label) (const char *text);
  
- char *EXPORT_FUNC(grub_ieee1275_get_boot_dev) (void);
+ #define FOR_IEEE1275_DEVALIASES(alias) for (grub_ieee1275_devalias_init_iterator (&(alias)); grub_ieee1275_devalias_next (&(alias));)
  

@@ -1,7 +1,7 @@
-Index: grub-2.04~rc1/grub-core/kern/ieee1275/cmain.c
+Index: grub-2.02~beta2/grub-core/kern/ieee1275/cmain.c
 ===================================================================
---- grub-2.04~rc1.orig/grub-core/kern/ieee1275/cmain.c
-+++ grub-2.04~rc1/grub-core/kern/ieee1275/cmain.c
+--- grub-2.02~beta2.orig/grub-core/kern/ieee1275/cmain.c
++++ grub-2.02~beta2/grub-core/kern/ieee1275/cmain.c
 @@ -90,7 +90,10 @@ grub_ieee1275_find_options (void)
    }
  
@@ -14,11 +14,11 @@ Index: grub-2.04~rc1/grub-core/kern/ieee1275/cmain.c
  
    /* Old Macs have no key repeat, newer ones have fully working one.
       The ones inbetween when repeated key generates an escaoe sequence
-Index: grub-2.04~rc1/grub-core/video/ieee1275.c
+Index: grub-2.02~beta2/grub-core/video/ieee1275.c
 ===================================================================
---- grub-2.04~rc1.orig/grub-core/video/ieee1275.c
-+++ grub-2.04~rc1/grub-core/video/ieee1275.c
-@@ -352,9 +352,12 @@ static struct grub_video_adapter grub_vi
+--- grub-2.02~beta2.orig/grub-core/video/ieee1275.c
++++ grub-2.02~beta2/grub-core/video/ieee1275.c
+@@ -351,9 +351,12 @@ static struct grub_video_adapter grub_vi
  
  GRUB_MOD_INIT(ieee1275_fb)
  {
@@ -34,14 +34,14 @@ Index: grub-2.04~rc1/grub-core/video/ieee1275.c
  }
  
  GRUB_MOD_FINI(ieee1275_fb)
-Index: grub-2.04~rc1/include/grub/ieee1275/ieee1275.h
+Index: grub-2.02~beta2/include/grub/ieee1275/ieee1275.h
 ===================================================================
---- grub-2.04~rc1.orig/include/grub/ieee1275/ieee1275.h
-+++ grub-2.04~rc1/include/grub/ieee1275/ieee1275.h
-@@ -148,6 +148,8 @@ enum grub_ieee1275_flag
-   GRUB_IEEE1275_FLAG_CURSORONOFF_ANSI_BROKEN,
+--- grub-2.02~beta2.orig/include/grub/ieee1275/ieee1275.h
++++ grub-2.02~beta2/include/grub/ieee1275/ieee1275.h
+@@ -145,6 +145,8 @@ enum grub_ieee1275_flag
+   GRUB_IEEE1275_FLAG_BROKEN_REPEAT,
  
-   GRUB_IEEE1275_FLAG_RAW_DEVNAMES,
+   GRUB_IEEE1275_FLAG_CURSORONOFF_ANSI_BROKEN,
 +
 +  GRUB_IEEE1275_FLAG_DISABLE_VIDEO_SUPPORT
  };
