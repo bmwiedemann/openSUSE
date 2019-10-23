@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 16 20:56:59 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.124
+  * loader: Add support for metal surfaces
+  * loader: Use dxgi1_2 header instead of 1_6
+  * loader: Dynamically load DXGI
+  * layers: allow concurrent layer device creation
+
+-------------------------------------------------------------------
 Sun Sep 22 21:59:40 UTC 2019 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to the new upstream release 1.1.123

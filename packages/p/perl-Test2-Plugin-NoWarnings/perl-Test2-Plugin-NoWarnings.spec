@@ -17,7 +17,7 @@
 
 
 Name:           perl-Test2-Plugin-NoWarnings
-Version:        0.07
+Version:        0.08
 Release:        0
 %define cpan_name Test2-Plugin-NoWarnings
 Summary:        Fail if tests warn
@@ -30,7 +30,6 @@ BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Capture::Tiny)
 BuildRequires:  perl(IPC::Run3)
 BuildRequires:  perl(Test2) >= 1.302096
 BuildRequires:  perl(Test2::API)
@@ -72,7 +71,7 @@ make test
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md
+%doc appveyor.yml Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md
 %license LICENSE
 
 %changelog

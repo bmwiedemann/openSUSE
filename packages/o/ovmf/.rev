@@ -297,4 +297,12 @@
     <comment>Update to edk2-stable201908 and enable TLS for AArch64</comment>
     <requestid>727926</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>eaed53bab1e74eb4ce2b423016b79f07</srcmd5>
+    <version>201908</version>
+    <time>1571837596</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>739020</requestid>
+  </revision>
 </revisionlist>

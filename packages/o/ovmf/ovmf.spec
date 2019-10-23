@@ -40,6 +40,7 @@ Source4:        openSUSE-UEFI-CA-Certificate-2048.crt
 Source5:        openSUSE-UEFI-SIGN-Certificate-2048.crt
 # berkeley-softfloat-3: https://github.com/ucb-bar/berkeley-softfloat-3
 Source6:        berkeley-softfloat-3-%{softfloat_version}.tar.xz
+Source7:        descriptors.tar.xz
 Source100:      %{name}-rpmlintrc
 Source101:      gdb_uefi.py.in
 Source102:      gen-key-enrollment-iso.sh
@@ -180,6 +181,9 @@ popd
 pushd ArmPkg/Library/ArmSoftFloatLib/berkeley-softfloat-3
 tar -xf %{SOURCE6} --strip 1
 popd
+
+# prepare the firmware descriptors for qemu
+tar -xf %{SOURCE7}
 
 chmod +x %{SOURCE102}
 
@@ -469,19 +473,24 @@ sed -i s/'\r'// License.txt
 install -d %{buildroot}/%{_bindir}
 install -m 0755 --strip BaseTools/Source/C/bin/EfiRom %{buildroot}/%{_bindir}
 
+# Replace @DATADIR@ in the firmware descriptors
+sed -i "s:@DATADIR@:%{_datadir}/qemu:" descriptors/*.json
+
 %ifarch %ix86
 tr -d '\r' < OvmfPkg/License.txt > License-ovmf.txt
-install -m 0644 -D ovmf-ia32.bin %{buildroot}/%{_datadir}/qemu/ovmf-ia32.bin
-install -m 0644 -D ovmf-ia32-code.bin %{buildroot}/%{_datadir}/qemu/ovmf-ia32-code.bin
-install -m 0644 -D ovmf-ia32-vars.bin %{buildroot}/%{_datadir}/qemu/ovmf-ia32-vars.bin
+install -m 0644 -D ovmf-ia32*.bin -t %{buildroot}/%{_datadir}/qemu/
+install -m 0644 -D descriptors/*-ia32*.json \
+	-t %{buildroot}/%{_datadir}/qemu/firmware
 %else
 %ifarch x86_64
 tr -d '\r' < OvmfPkg/License.txt > License-ovmf.txt
 
 # Install firmware files
-install -m 0644 -D ovmf-x86_64.bin %{buildroot}/%{_datadir}/qemu/ovmf-x86_64.bin
-install -m 0644 ovmf-x86_64-*.bin %{buildroot}/%{_datadir}/qemu/
+install -m 0644 -D ovmf-x86_64*.bin -t %{buildroot}/%{_datadir}/qemu/
 %fdupes %{buildroot}/%{_datadir}/qemu/
+
+install -m 0644 -D descriptors/*-x86_64*.json \
+	-t %{buildroot}/%{_datadir}/qemu/firmware
 
 # Install debug symbols, gdb-uefi.py
 install -d %{buildroot}/%{_datadir}/ovmf-x86_64/
@@ -497,16 +506,18 @@ mv source/ovmf-x86_64* %{buildroot}/usr/src/debug
 %ifarch aarch64
 # Install firmware files
 install -d %{buildroot}/%{_datadir}/qemu/
-install -m 0644 -D qemu-uefi-aarch64*.bin %{buildroot}/%{_datadir}/qemu/
-install -m 0644 -D aavmf-aarch64-*code.bin %{buildroot}/%{_datadir}/qemu/
-install -m 0644 -D aavmf-aarch64-*vars.bin %{buildroot}/%{_datadir}/qemu/
+install -m 0644 -D qemu-uefi-aarch64*.bin -t %{buildroot}/%{_datadir}/qemu/
+install -m 0644 -D aavmf-aarch64-*.bin -t %{buildroot}/%{_datadir}/qemu/
 %fdupes %{buildroot}/%{_datadir}/qemu/
 
+install -m 0644 -D descriptors/*-aarch64*.json \
+	-t %{buildroot}/%{_datadir}/qemu/firmware
 %else
 %ifarch %arm
-install -m 0644 -D qemu-uefi-aarch32.bin %{buildroot}/%{_datadir}/qemu/qemu-uefi-aarch32.bin
-install -m 0644 -D aavmf-aarch32-code.bin %{buildroot}/%{_datadir}/qemu/aavmf-aarch32-code.bin
-install -m 0644 -D aavmf-aarch32-vars.bin %{buildroot}/%{_datadir}/qemu/aavmf-aarch32-vars.bin
+install -m 0644 -D qemu-uefi-aarch32.bin -t %{buildroot}/%{_datadir}/qemu/
+install -m 0644 -D aavmf-aarch32-*.bin -t %{buildroot}/%{_datadir}/qemu/
+install -m 0644 -D descriptors/*-aarch32*.json \
+	-t %{buildroot}/%{_datadir}/qemu/firmware
 %endif #arm
 %endif #aarch64
 %endif #x86_64
@@ -540,6 +551,8 @@ install -m 0755 %{SOURCE102} %{buildroot}/%{_datadir}/ovmf/
 %license License.txt License-ovmf.txt 
 %dir %{_datadir}/qemu/
 %{_datadir}/qemu/ovmf-ia32*.bin
+%dir %{_datadir}/qemu/firmware
+%{_datadir}/qemu/firmware/*-ia32*.json
 %endif
 
 %ifarch x86_64
@@ -548,6 +561,8 @@ install -m 0755 %{SOURCE102} %{buildroot}/%{_datadir}/ovmf/
 %license License.txt License-ovmf.txt
 %dir %{_datadir}/qemu/
 %{_datadir}/qemu/ovmf-x86_64*.bin
+%dir %{_datadir}/qemu/firmware
+%{_datadir}/qemu/firmware/*-x86_64*.json
 
 %files -n qemu-ovmf-x86_64-debug
 %defattr(-,root,root)
@@ -566,6 +581,8 @@ install -m 0755 %{SOURCE102} %{buildroot}/%{_datadir}/ovmf/
 %{_datadir}/qemu/qemu-uefi-aarch64*.bin
 %{_datadir}/qemu/aavmf-aarch64-*code.bin
 %{_datadir}/qemu/aavmf-aarch64-*vars.bin
+%dir %{_datadir}/qemu/firmware
+%{_datadir}/qemu/firmware/*-aarch64*.json
 %endif
 
 %ifarch %arm
@@ -576,6 +593,8 @@ install -m 0755 %{SOURCE102} %{buildroot}/%{_datadir}/ovmf/
 %{_datadir}/qemu/qemu-uefi-aarch32.bin
 %{_datadir}/qemu/aavmf-aarch32-code.bin
 %{_datadir}/qemu/aavmf-aarch32-vars.bin
+%dir %{_datadir}/qemu/firmware
+%{_datadir}/qemu/firmware/*-aarch32*.json
 %endif
 
 %changelog

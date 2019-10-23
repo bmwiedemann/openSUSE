@@ -19,6 +19,7 @@
 %define udev_with_btrfs_builtin 190
 %define udev_version %(rpm -q --queryformat %%{VERSION} udev)
 %define package_udev_rules %{udev_version} >= %{udev_with_btrfs_builtin}
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 
 # enable building of btrfsprogs-static
 %if 0%{?suse_version} <= 1310 || 0%{?suse_version} == 1315
@@ -173,6 +174,19 @@ Requires:       libbtrfsutil1 = %{version}
 This package contains the libraries and headers files for developers to
 build applications to interface with Btrfs using libbtrfsutil.
 
+%package -n python-btrfsutil
+Summary:        Python bindings for developing with libbtrfsutil
+Group:          Development/Languages/Python
+Requires:       %{name} = %{version}-%{release}
+Requires:       libbtrfsutil1 = %{version}
+Requires:       python3
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  pkgconfig(python3)
+
+%description -n python-btrfsutil
+This package contains the python bindings to build applications to interface
+with Btrfs using libbtrfsutil.
+
 %prep
 %setup -q -n btrfs-progs-v%{version}
 %patch1 -p1
@@ -185,7 +199,7 @@ export CFLAGS="%{optflags} -include sles11-defaults.h"
 %endif
 
 %configure			\
-			--disable-python	\
+			--enable-python	\
 %if !%{build_docs}
 			--disable-documentation	\
 %endif
@@ -203,7 +217,8 @@ make install		\
 %if %{build_static}
 	install-static 	\
 %endif
-	DESTDIR=%{buildroot} prefix=%{_prefix} bindir=%{_sbindir} mandir=%{_mandir} libdir=%{_libdir}
+	DESTDIR=%{buildroot} prefix=%{_prefix} bindir=%{_sbindir} mandir=%{_mandir} libdir=%{_libdir} \
+	install_python
 
 %if !%{build_docs}
 cd Documentation
@@ -397,5 +412,8 @@ done
 %dir %{_udevrulesdir}
 %{_udevrulesdir}/64-btrfs-dm.rules
 %endif
+
+%files -n python-btrfsutil
+%{python3_sitearch}/*
 
 %changelog
