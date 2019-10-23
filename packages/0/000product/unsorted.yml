@@ -14530,6 +14530,13 @@ unsorted:
   - openSUSE-appstream-process 
   - openSUSE-driverupdate 
   - openSUSE-release-appliance 
+  - openSUSE-release-appliance-docker 
+  - openSUSE-release-appliance-hyperv 
+  - openSUSE-release-appliance-kvm 
+  - openSUSE-release-appliance-openstack 
+  - openSUSE-release-appliance-vagrant 
+  - openSUSE-release-appliance-vmware 
+  - openSUSE-release-appliance-wsl 
   - openSUSE-release-ftp 
   - openSUSE-release-livecd-gnome 
   - openSUSE-release-livecd-kde 

@@ -3379,7 +3379,8 @@
     <package name="open-vm-tools-desktop" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="openSUSE-build-key" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="openSUSE-release" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="openSUSE-release-dvd" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="openSUSE-release-appliance-custom" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="openSUSE-release-dvd" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release-dvd -->
     <package name="openSUSE-xfce-icon-theme" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="openafs" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
     <package name="openafs-client" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
