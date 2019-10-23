@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 17 10:35:23 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Use both TERM names of urxvt: rxvt-unicode and rxvt-unicode-256-color
+- Add some missed key escape sequences for urxvt-unicode
+  terminal as well (boo#1007715).
+
+-------------------------------------------------------------------
 Mon Oct 14 08:34:04 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Fix patch tcsh-6.18.01-history-stderror-jmp.patch to avoid

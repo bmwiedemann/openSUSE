@@ -15,4 +15,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>369654</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ad2218d0f40e46a2c2ba78acb79eca04</srcmd5>
+    <version>0.5.1</version>
+    <time>1571837724</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 0.5.1
+  see installed CHANGELOG
+  0.5.1 (2019-10-16)
+  ------------------
+  * Implement closing open fds after call to fork (bsc#1151960). This will work
+    only in linux system with mounted /proc. For other Unixes it works as before.
+  * drop support for ruby that is EOL (2.3 and lower)
+  * Added support for ruby 2.4, 2.5, 2.6</comment>
+    <requestid>739031</requestid>
+  </revision>
 </revisionlist>

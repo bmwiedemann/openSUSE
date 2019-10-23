@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 16 20:34:54 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Build qt bindings separately to avoid build cycle with
+  samba/libsoup. 
+
+-------------------------------------------------------------------
 Fri Jun 14 13:18:36 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - gpgme 1.13.1:

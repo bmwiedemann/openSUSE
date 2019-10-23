@@ -1,0 +1,46 @@
+From b37054aa5aebfed9e7c8ee423067aefef0facd39 Mon Sep 17 00:00:00 2001
+From: Franck Bui <fbui@suse.com>
+Date: Wed, 9 Oct 2019 16:11:17 +0200
+Subject: [PATCH] compat-rules: escape '$' when used for shell expansion
+
+Make sure to use '$$' in shell expansions since the behavior of udev
+is undefined when it encounters unknown substitions.
+
+udev used to silently ignore them but since v243 (commit
+d7aee41db35f808bca), it throws such warning:
+
+   systemd-udevd[443]: /usr/lib/udev/rules.d/61-persistent-storage-compat.rules:83 Invalid value "/bin/sh -c 'eui="%s{eui}"; echo ${eui// /}" for PROGRAM (char 33: invalid substitution type), ignoring, but please fix it.
+
+No functional changes.
+---
+ rules/61-persistent-storage-compat.rules | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/rules/61-persistent-storage-compat.rules b/rules/61-persistent-storage-compat.rules
+index 0cdc8c4195..bd229f619b 100644
+--- a/rules/61-persistent-storage-compat.rules
++++ b/rules/61-persistent-storage-compat.rules
+@@ -80,17 +80,17 @@ ENV{COMPAT_SYMLINK_GENERATION}!="1", GOTO="generation_2"
+ # symlink is created.
+ 
+ KERNEL=="nvme*", ENV{DEVTYPE}=="disk", ENV{ID_NVME_EUI_COMPAT}!="?*", ATTRS{eui}=="?*", ATTRS{eui}!="0000000000000000", \
+-  PROGRAM=="/bin/sh -c 'eui=\"%s{eui}\"; echo ${eui// /}", ENV{ID_NVME_EUI_COMPAT}="2%c"
++  PROGRAM=="/bin/sh -c 'eui=\"%s{eui}\"; echo $${eui// /}", ENV{ID_NVME_EUI_COMPAT}="2%c"
+ 
+ KERNEL=="nvme*", ENV{DEVTYPE}=="disk", ENV{ID_NVME_NGUID_COMPAT}!="?*", ATTRS{nguid}=="?*", \
+-  PROGRAM=="/bin/sh -c 'nguid=\"%s{nguid}\"; echo ${nguid//-/}", ENV{ID_NVME_NGUID_COMPAT}="%c"
++  PROGRAM=="/bin/sh -c 'nguid=\"%s{nguid}\"; echo $${nguid//-/}", ENV{ID_NVME_NGUID_COMPAT}="%c"
+ 
+ KERNEL=="nvme*", ENV{DEVTYPE}=="disk", ENV{ID_NVME_SERIAL_COMPAT}!="?*", ATTRS{model}=="?*", ATTRS{serial}=="?*", \
+   PROGRAM=="/bin/sh -c ' \
+     cd /sys/%p; \
+     while ! [ -f model ]; do \
+       cd ..; \
+-      [ $(pwd) = %S ] && exit 1; \
++      [ $$(pwd) = %S ] && exit 1; \
+    done; \
+    cut -c 1-16 model'", ENV{ID_NVME_SERIAL_COMPAT}="SNVMe_%c%s{serial}"
+ 
+-- 
+2.16.4
+

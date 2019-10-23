@@ -26,7 +26,7 @@
 ##### WARNING: please do not edit this auto generated spec file. Use the systemd.spec! #####
 %define mini -mini
 %define min_kernel_version 4.5
-%define suse_version +suse.36.g9e41d7ec35
+%define suse_version +suse.91.g428b937f91
 
 %bcond_with     gnuefi
 %if 0%{?bootstrap}
@@ -167,6 +167,7 @@ Source200:      scripts-udev-convert-lib-udev-path.sh
 # broken in upstream and need an urgent fix. Even in this case, the
 # patches are temporary and should be removed as soon as a fix is
 # merged by upstream.
+Patch1:         0001-compat-rules-escape-when-used-for-shell-expansion.patch
 Patch2:         0001-logind-keep-backward-compatibility-with-UserTasksMax.patch
 
 %description
@@ -331,6 +332,22 @@ Systemd tools to spawn and manage containers and virtual machines.
 This package contains systemd-nspawn, machinectl, systemd-machined,
 and systemd-importd.
 
+%if %{with networkd} || %{with resolved}
+%package network
+Summary:        Systemd tools for networkd and resolved
+License:        LGPL-2.1-or-later
+Group:          System/Base
+Requires:       %{name} = %{version}-%{release}
+Provides:       systemd:/usr/lib/systemd/systemd-networkd
+Provides:       systemd:/usr/lib/systemd/systemd-resolved
+%systemd_requires
+
+%description network
+Systemd tools to manage network settings using networkd and
+resolver tools for resolved
+
+%endif
+
 %if %{with portabled}
 %package portable
 Summary:        Systemd tools for portable services
@@ -398,7 +415,7 @@ To activate this NSS module, you will need to include it in
 Summary:        Plugin for local hostname resolution via systemd-resolved
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name}-network = %{version}-%{release}
 
 %description -n nss-resolve
 This package contains a plug-in module for the Name Service Switch
@@ -445,6 +462,10 @@ serialized journal contents.
 
 This package contains systemd-journal-gatewayd,
 systemd-journal-remote, and systemd-journal-upload.
+%endif
+
+%if ! 0%{?bootstrap}
+%lang_package
 %endif
 
 %prep
@@ -526,6 +547,7 @@ opensuse_ntp_servers=({0..3}.opensuse.pool.ntp.org)
 mv %{buildroot}%{_libdir}/libnss_myhostname.so.2 %{buildroot}/%{_lib}
 %else
 rm %{buildroot}%{_libdir}/libnss_systemd.so*
+rm -r %{buildroot}%{_datadir}/locale
 %endif
 
 # Don't ship resolvconf symlink for now as it conflicts with the
@@ -719,7 +741,9 @@ fi
 # which may still be used by yast.
 cat %{S:14} >>%{buildroot}%{_datarootdir}/systemd/kbd-model-map
 
+%if ! 0%{?bootstrap}
 %find_lang systemd
+%endif
 
 # Build of installation images uses a hard coded list of packages with
 # a %pre that needs to be run during the build. systemd is one of them
@@ -769,13 +793,6 @@ systemctl daemon-reexec  || :
 %systemd_post machines.target
 %systemd_post remote-fs.target
 %systemd_post systemd-timesyncd.service
-%if %{with networkd}
-%systemd_post systemd-networkd.service
-%systemd_post systemd-networkd-wait-online.service
-%endif
-%if %{with resolved}
-%systemd_post systemd-resolved.service
-%endif
 
 # v228 wrongly set world writable suid root permissions on timestamp
 # files used by permanent timers. Fix the timestamps that might have
@@ -818,12 +835,6 @@ test -e %{_prefix}/lib/systemd/scripts/.migrate-sysconfig-i18n.sh~done || {
 # Avoid restarting logind until fixed upstream (issue #1163)
 %systemd_postun_with_restart systemd-journald.service
 %systemd_postun_with_restart systemd-timesyncd.service
-%if %{with networkd}
-%systemd_postun_with_restart systemd-networkd.service
-%endif
-%if %{with resolved}
-%systemd_postun_with_restart systemd-resolved.service
-%endif
 
 %pre -n udev%{?mini}
 # New installations uses the last compat symlink generation number
@@ -936,6 +947,45 @@ fi
 %service_del_postun systemd-journal-upload.service
 %endif
 
+%if %{with networkd} || %{with resolved}
+%pre network
+%if %{with networkd}
+%service_add_pre systemd-networkd.service
+%service_add_pre systemd-networkd-wait-online.service
+%endif
+%if %{with resolved}
+%service_add_pre systemd-resolved.service
+%endif
+
+%post network
+%tmpfiles_create portables.conf
+%if %{with networkd}
+%service_add_post systemd-networkd.service
+%service_add_post systemd-networkd-wait-online.service
+%endif
+%if %{with resolved}
+%service_add_post systemd-resolved.service
+%endif
+
+%preun network
+%if %{with networkd}
+%service_del_preun systemd-networkd.service
+%service_del_preun systemd-networkd-wait-online.service
+%endif
+%if %{with resolved}
+%service_del_preun systemd-resolved.service
+%endif
+
+%postun network
+%if %{with networkd}
+%service_del_postun systemd-networkd.service
+%service_del_postun systemd-networkd-wait-online.service
+%endif
+%if %{with resolved}
+%service_del_postun systemd-resolved.service
+%endif
+%endif
+
 %if %{with portabled}
 %pre portable
 %service_add_pre systemd-portabled.service
@@ -953,7 +1003,7 @@ fi
 
 %clean
 
-%files -f systemd.lang
+%files
 %defattr(-,root,root)
 %license LICENSE*
 /bin/systemd
@@ -964,12 +1014,6 @@ fi
 %{_bindir}/hostnamectl
 %{_bindir}/kernel-install
 %{_bindir}/localectl
-%if %{with networkd}
-%{_bindir}/networkctl
-%endif
-%if %{with resolved}
-%{_bindir}/resolvectl
-%endif
 %{_bindir}/systemctl
 %{_bindir}/systemd-analyze
 %{_bindir}/systemd-delta
@@ -989,9 +1033,6 @@ fi
 %{_bindir}/systemd-tty-ask-password-agent
 %{_bindir}/systemd-tmpfiles
 %{_bindir}/systemd-machine-id-setup
-%if %{with resolved}
-%{_bindir}/systemd-resolve
-%endif
 %{_bindir}/systemd-socket-activate
 %{_bindir}/systemd-stdio-bridge
 %{_bindir}/systemd-detect-virt
@@ -1064,9 +1105,6 @@ fi
 %{_prefix}/lib/systemd/systemd-*
 %{_prefix}/lib/systemd/systemd
 %{_prefix}/lib/systemd/libsystemd-shared-*.so
-%if %{with resolved}
-%{_prefix}/lib/systemd/resolv.conf
-%endif
 %{_prefix}/lib/systemd/scripts
 %exclude %{_prefix}/lib/systemd/scripts/fix-machines-btrfs-subvol.sh
 %dir %{_journalcatalogdir}
@@ -1116,11 +1154,6 @@ fi
 %dir %{_sysconfdir}/sysctl.d
 %{_sysctldir}/99-sysctl.conf
 
-%if %{with networkd}
-%dir %{_sysconfdir}/systemd/network
-%{_prefix}/lib/systemd/network/80-container-host0.network
-%endif
-
 %dir %{_sysconfdir}/X11/xinit
 %dir %{_sysconfdir}/X11/xinit/xinitrc.d
 %dir %{_sysconfdir}/X11/xorg.conf.d
@@ -1139,12 +1172,6 @@ fi
 %config(noreplace) %{_sysconfdir}/systemd/system.conf
 %config(noreplace) %{_sysconfdir}/systemd/timesyncd.conf
 %config(noreplace) %{_sysconfdir}/systemd/user.conf
-%if %{with networkd}
-%config(noreplace) %{_sysconfdir}/systemd/networkd.conf
-%endif
-%if %{with resolved}
-%config(noreplace) %{_sysconfdir}/systemd/resolved.conf
-%endif
 
 %dir %{_datadir}/dbus-1
 %dir %{_datadir}/dbus-1/system.d
@@ -1156,12 +1183,6 @@ fi
 %{_datadir}/dbus-1/system.d/org.freedesktop.hostname1.conf
 %{_datadir}/dbus-1/system.d/org.freedesktop.timedate1.conf
 %{_datadir}/dbus-1/system.d/org.freedesktop.timesync1.conf
-%if %{with networkd}
-%{_datadir}/dbus-1/system.d/org.freedesktop.network1.conf
-%endif
-%if %{with resolved}
-%{_datadir}/dbus-1/system.d/org.freedesktop.resolve1.conf
-%endif
 
 # FIXME: why do we have to own this dir ?
 %dir %{_prefix}/lib/modprobe.d
@@ -1190,12 +1211,6 @@ fi
 %{_datadir}/dbus-1/system-services/org.freedesktop.hostname1.service
 %{_datadir}/dbus-1/system-services/org.freedesktop.timedate1.service
 %{_datadir}/dbus-1/system-services/org.freedesktop.timesync1.service
-%if %{with networkd}
-%{_datadir}/dbus-1/system-services/org.freedesktop.network1.service
-%endif
-%if %{with resolved}
-%{_datadir}/dbus-1/system-services/org.freedesktop.resolve1.service
-%endif
 
 %dir %{_datadir}/polkit-1
 %dir %{_datadir}/polkit-1/actions
@@ -1204,13 +1219,6 @@ fi
 %{_datadir}/polkit-1/actions/org.freedesktop.locale1.policy
 %{_datadir}/polkit-1/actions/org.freedesktop.timedate1.policy
 %{_datadir}/polkit-1/actions/org.freedesktop.login1.policy
-%if %{with networkd}
-%{_datadir}/polkit-1/actions/org.freedesktop.network1.policy
-%{_datadir}/polkit-1/rules.d/60-systemd-networkd.rules
-%endif
-%if %{with resolved}
-%{_datadir}/polkit-1/actions/org.freedesktop.resolve1.policy
-%endif
 
 %if ! 0%{?bootstrap}
 %{_mandir}/man1/[a-rt-z]*ctl.1*
@@ -1393,10 +1401,6 @@ fi
 %dir %{_sysconfdir}/systemd/nspawn
 %{_bindir}/systemd-nspawn
 %{_unitdir}/systemd-nspawn@.service
-%if %{with networkd}
-%{_prefix}/lib/systemd/network/80-container-ve.network
-%{_prefix}/lib/systemd/network/80-container-vz.network
-%endif
 %if %{with machined}
 %{_bindir}/machinectl
 %{_prefix}/lib/systemd/systemd-machined
@@ -1434,6 +1438,8 @@ fi
 %endif
 
 %if ! 0%{?bootstrap}
+%files lang -f systemd.lang
+
 %files logger
 %defattr(-,root,root)
 %dir %attr(2755,root,systemd-journal) %{_localstatedir}/log/journal/
@@ -1484,6 +1490,32 @@ fi
 %{_mandir}/man8/systemd-journal-remote.*
 %{_mandir}/man8/systemd-journal-upload.*
 %{_datadir}/systemd/gatewayd
+%endif
+
+%if %{with networkd} || %{with resolved}
+%files network
+%defattr(-,root,root)
+%if %{with networkd}
+%dir %{_sysconfdir}/systemd/network
+%config(noreplace) %{_sysconfdir}/systemd/networkd.conf
+%{_bindir}/networkctl
+%{_datadir}/dbus-1/system.d/org.freedesktop.network1.conf
+%{_datadir}/dbus-1/system-services/org.freedesktop.network1.service
+%{_datadir}/polkit-1/actions/org.freedesktop.network1.policy
+%{_datadir}/polkit-1/rules.d/60-systemd-networkd.rules
+%{_prefix}/lib/systemd/network/80-container-host0.network
+%{_prefix}/lib/systemd/network/80-container-ve.network
+%{_prefix}/lib/systemd/network/80-container-vz.network
+%endif
+%if %{with resolved}
+%{_bindir}/resolvectl
+%{_bindir}/systemd-resolve
+%config(noreplace) %{_sysconfdir}/systemd/resolved.conf
+%{_datadir}/dbus-1/system.d/org.freedesktop.resolve1.conf
+%{_datadir}/dbus-1/system-services/org.freedesktop.resolve1.service
+%{_datadir}/polkit-1/actions/org.freedesktop.resolve1.policy
+%{_prefix}/lib/systemd/resolv.conf
+%endif
 %endif
 
 %if %{with portabled}

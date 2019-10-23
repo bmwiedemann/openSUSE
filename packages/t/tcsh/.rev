@@ -656,4 +656,14 @@
   breaks in sourcing standard system files (boo#1153839)</comment>
     <requestid>738215</requestid>
   </revision>
+  <revision rev="67" vrev="5">
+    <srcmd5>f07ef0e1bab0a23597d99bb3c9be71b9</srcmd5>
+    <version>6.21.00</version>
+    <time>1571837811</time>
+    <user>dimstar_suse</user>
+    <comment>- Use both TERM names of urxvt: rxvt-unicode and rxvt-unicode-256-color
+- Add some missed key escape sequences for urxvt-unicode
+  terminal as well (boo#1007715).</comment>
+    <requestid>739108</requestid>
+  </revision>
 </revisionlist>

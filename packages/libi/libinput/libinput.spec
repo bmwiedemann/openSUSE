@@ -18,12 +18,12 @@
 
 Name:           libinput
 %define lname	libinput10
-Version:        1.14.1
+Version:        1.14.2
 Release:        0
 Summary:        Input device and event processing library
 License:        MIT
-Group:          Development/Libraries/C and C++
-Url:            http://www.freedesktop.org/wiki/Software/libinput/
+Group:          c development hardware
+URL:            https://www.freedesktop.org/wiki/Software/libinput/
 
 #Git-Clone:	https://gitlab.freedesktop.org/libinput/libinput.git
 #Git-Web:	https://gitlab.freedesktop.org/libinput/libinput/
@@ -56,7 +56,7 @@ other applications that need to directly deal with input devices.
 
 %package udev
 Summary:        Input device and event processing library integration into udev
-Group:          System/Base
+Group:          base
 
 %description udev
 The libinput udev helper rule will set the LIBINPUT_DEVICE_GROUP
@@ -66,7 +66,7 @@ physical device.
 
 %package -n %lname
 Summary:        Input device and event processing library
-Group:          System/Libraries
+Group:          c development hardware
 Recommends:     %name-udev
 
 %description -n %lname
@@ -80,7 +80,7 @@ functionality that users expect.
 
 %package tools
 Summary:        Utilities to display libinput configuration
-Group:          System/X11/Utilities
+Group:          hardware
 
 %description tools
 This tool lists the locally recognised devices and their respective
@@ -88,7 +88,7 @@ configuration options and configuration defaults.
 
 %package devel
 Summary:        Development files for the Input Device Library
-Group:          Development/Libraries/C and C++
+Group:          c development
 Requires:       %lname = %version
 
 %description devel

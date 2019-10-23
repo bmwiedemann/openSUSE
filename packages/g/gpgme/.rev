@@ -606,4 +606,13 @@ See the HACKING file in the doc directory (forwarded request 176432 from babelwo
     <comment></comment>
     <requestid>710077</requestid>
   </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>23701706b704bf1f0a6194875bc8f651</srcmd5>
+    <version>1.13.1</version>
+    <time>1571837891</time>
+    <user>dimstar_suse</user>
+    <comment>- Build qt bindings separately to avoid build cycle with
+  samba/libsoup.</comment>
+    <requestid>739153</requestid>
+  </revision>
 </revisionlist>

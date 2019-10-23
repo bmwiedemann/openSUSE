@@ -1,7 +1,90 @@
 -------------------------------------------------------------------
+Mon Oct 21 10:33:27 UTC 2019 - Franck Bui <fbui@suse.com>
+
+- Add 0001-compat-rules-escape-when-used-for-shell-expansion.patch (bsc#1153648)
+
+  Added to the quaratine area to avoid uploading a new tar ball just
+  for that single change. It will be dropped during the next import.
+
+-------------------------------------------------------------------
+Mon Oct 21 09:06:10 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- don't package locales in -mini package
+
+-------------------------------------------------------------------
+Fri Oct  4 14:26:59 UTC 2019 - Franck Bui <fbui@suse.com>
+
+- Import commit 428b937f917ae177f2315e8469800941885e441a
+
+  0026b58744 pid1: fix DefaultTasksMax initialization
+
+-------------------------------------------------------------------
+Mon Sep 30 10:43:28 UTC 2019 - Franck Bui <fbui@suse.com>
+
+- Import commit ed81f69153488279957268e247a5c81b678da491 (changes from v243-stable)
+
+  fab6f010ac dhcp6: use unaligned_read_be32()
+  f2d9af4322 dhcp6: add missing option length check
+  ccf797511e ndisc: make first solicit delayed randomly
+  f2275b6e12 dhcp6: read OPTION_INFORMATION_REFRESH_TIME option
+  6dfbe58ee7 l10n: update Czech Translation
+  d4cd0e9d32 sd-radv: if lifetime < SD_RADV_DEFAULT_MAX_TIMEOUT_USEC, adjust timeout (#13491)
+  dbefe59259 polkit: fix typo
+  a321507476 sd-netlink: fix invalid assertion
+  45dca7fe86 network: do not enter failed state if device's sysfs entry does not exist yet
+  dd83d58796 network: add missing link->network checks
+  b294305888 path: stop watching path specs once we triggered the target unit
+  2cd636c437 hwdb: add Medion Akoya E2292 (#13498)
+  d133bdd1fa po: update Brazilian Portuguese translation
+  530e09b594 po: update Polish translation
+  0c5c3e34c1 polkit: change "revert settings" to "reset settings"
+  73e0f372d8 man: fix description of ARPIntervalSec= units
+  5412cc54a1 hwdb: axis override for Dell 9360 touchpad
+  9d4e658529 test: drop the missed || exit 1 expression
+  7ed7ea82f6 udevadm: use usec_add()
+  477bf86c91 udevadm: missing initialization of descriptor
+  19ac31c989 networkd: unbreak routing_policy_rule_compare_func()
+  a20a2157a8 core: coldplug possible nop_job
+  eb55241742 tty-ask-pwd-agent: fix message forwarded to wall(1)
+  1a3c53c06c core: Fix setting StatusUnitFormat from config files
+  91db81e4dd network DHCP4: Dont mislead the logs.
+  6af590838b Update m4 for selective utmp support.	modified:   tmpfiles.d/systemd.conf.m4
+  6823c907cf core: restore initialization of u->source_mtime
+  29308bcc13 mount-setup: relabel items mentioned directly in relabel-extra.d
+  8ca1e56165 Call getgroups() to know size of supplementary groups array to allocate
+  5d84a7ad1c test: add test cases for empty string match
+  1536348cc8 udev: fix multi match
+  3ccafef0ad man: move TimeoutCleanSec= entry from .service to .exec
+  8c0c30a820 zsh: udpate bootctl completions
+  0556c247a2 resolved: fix abort when recv() returns 0
+  9a25d75520 man: remove repeated words
+  be3be29347 hwdb: Also mark lis3lv02d sensors in "HP" laptops as being in the base
+  4b92ffccaa udev: also logs file permission
+  75a2845e5a udev: add missing flag for OPTIONS=static_node
+  19e9fc4262 network: do not abort execution when a config file cannot be loaded
+  3e1267cf50 fileio: update warning message
+  1b3156edd2 pstore: fix use after free
+  f500d2fa81 journal: Make the output of --update-catalog deterministic
+  64d0f7042d travis: protect the systemd organization on Fuzzit from forks
+  4247938ee1 hwdb: Mark lis3lv02d sensors in HP laptops as being in the base
+  379158684a po: update Japanese translation
+  31e1bbd1ca docs: fix push recipe in RELEASE.md
+  f06530d86b man/systemctl.xml: fix missing "not"
+  22aba2b969 docs: fix typo in boot loader doc
+  000e08ca70 pstore: fix typo in error message - directoy -> directory
+  f7f9c69ac5 Fix typo in comment: overide -> override
+  ca8ba8f8c0 po: update Polish translation
+  
+-------------------------------------------------------------------
 Mon Sep 23 11:45:18 UTC 2019 - Franck Bui <fbui@suse.com>
 
 - Some files related to the portable stuff were missing some %exclude
+
+-------------------------------------------------------------------
+Wed Sep 18 14:59:16 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- split off networkd and resolved into separate network subpackage
+- use separate lang package for translations
 
 -------------------------------------------------------------------
 Wed Sep 18 12:17:37 UTC 2019 - Franck Bui <fbui@suse.com>

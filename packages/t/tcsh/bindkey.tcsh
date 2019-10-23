@@ -726,7 +726,7 @@ if ( "$TERM" == "mlterm" ) then
 	bindkey    "^[9"	history-search-backward
 endif
 #
-if ( "$TERM" == "rxvt-unicode" ) then
+if ( "$TERM" == "rxvt-unicode" || $TERM == "rxvt-unicode-256color" ) then
 	bindkey    '^[[23$'	undefined-key
 	bindkey    '^[[24$'	undefined-key
 	bindkey    "^[[11\^"	undefined-key
@@ -775,6 +775,10 @@ if ( "$TERM" == "rxvt-unicode" ) then
 	bindkey    "^[^[Ow"	beginning-of-line
 	bindkey    "^[^[Ox"	up-history
 	bindkey    "^[^[Oy"	history-search-backward
+	bindkey    "^[Oc"	forward-word
+	bindkey    "^[Od"	backward-word
+	bindkey    "^[Oa"	history-search-backward
+	bindkey    "^[Ob"	history-search-forward
 	bindkey    "^[[c"	forward-word
 	bindkey    "^[[d"	backward-word
 	bindkey    "^[[a"	history-search-backward

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 17 08:07:34 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
+
+- updated to version 0.5.1
+  see installed CHANGELOG
+
+  0.5.1 (2019-10-16)
+  ------------------
+
+  * Implement closing open fds after call to fork (bsc#1151960). This will work
+    only in linux system with mounted /proc. For other Unixes it works as before.
+  * drop support for ruby that is EOL (2.3 and lower)
+  * Added support for ruby 2.4, 2.5, 2.6
+
+-------------------------------------------------------------------
 Sat Dec 19 05:30:47 UTC 2015 - coolo@suse.com
 
 - updated to version 0.5.0
@@ -6,7 +20,7 @@ Sat Dec 19 05:30:47 UTC 2015 - coolo@suse.com
 
   0.5.0 (2015-12-18)
   ------------------
-  
+
   * Added chroot option for executing in different system root.
   * Added ENV overwrite option.
   * Allowed to specify known exit codes that are not errors.

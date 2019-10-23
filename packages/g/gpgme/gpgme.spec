@@ -16,23 +16,31 @@
 #
 
 
-# Enable Qt bindings on TW and 42.3 (needed for KDE PIM)
-%define with_qt 0%{?suse_version} >= 1330 || 0%{?sle_version} >= 120300
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == ""
 %bcond_without python2
 %bcond_without python3
-Name:           gpgme
+%bcond_with qt
+%define psuffix %{nil}
+%else
+%bcond_with python2
+%bcond_with python3
+%bcond_without qt
+%define psuffix qt
+%endif
+Name:           gpgme%{psuffix}
 Version:        1.13.1
 Release:        0
 Summary:        Programmatic library interface to GnuPG
 License:        LGPL-2.1-or-later AND GPL-3.0-or-later
 Group:          Productivity/Security
 URL:            http://www.gnupg.org/related_software/gpgme/
-Source:         ftp://ftp.gnupg.org/gcrypt/gpgme/%{name}-%{version}.tar.bz2
-Source1:        ftp://ftp.gnupg.org/gcrypt/gpgme/%{name}-%{version}.tar.bz2.sig
+Source:         ftp://ftp.gnupg.org/gcrypt/gpgme/gpgme-%{version}.tar.bz2
+Source1:        ftp://ftp.gnupg.org/gcrypt/gpgme/gpgme-%{version}.tar.bz2.sig
 Source2:        baselibs.conf
 Source3:        gpgme.keyring
 # used to have a fixed timestamp
-Source99:       %{name}.changes
+Source99:       gpgme.changes
 BuildRequires:  gcc-c++
 BuildRequires:  gpg2 >= 2.0.10
 BuildRequires:  libassuan-devel >= 2.4.2
@@ -47,10 +55,10 @@ BuildRequires:  python2-devel >= 2.7
 %if %{with python3}
 BuildRequires:  python3-devel >= 3.4
 %endif
-%if 0%{with_qt}
+%if %{with qt}
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Test)
-%endif # with_qt
+%endif
 
 %description
 GnuPG Made Easy (GPGME) is a library designed to make access to GnuPG
@@ -174,7 +182,7 @@ management.
 This package contains the bindings to use the library in Qt C++ applications.
 
 %prep
-%setup -q
+%setup -q -n gpgme-%{version}
 
 %ifarch %{ix86}
 sed -i -e '/t-callbacks.py/d' lang/python/tests/Makefile.{am,in}
@@ -188,9 +196,9 @@ languages="cl cpp"
 languages="${languages} python"
 %endif
 
-%if 0%{?with_qt}
-languages="${languages} qt"
-%endif # with_qt
+%if %{with qt}
+languages="cpp qt"
+%endif
 
 %configure \
 	--disable-silent-rules \
@@ -215,27 +223,40 @@ find %{buildroot}%{python3_sitearch}/gpg-*.egg-info -delete -print
 rm -vf %{buildroot}%{python3_sitelib}/gpg/install_files.txt
 find %{buildroot}%{python3_sitearch}/gpg -type f -name "*.pyc" -delete -print
 %endif
+%if %{with qt}
+rm -r %{buildroot}%{_bindir}
+rm -r %{buildroot}%{_datadir}/aclocal/gpgme*
+rm -r %{buildroot}%{_includedir}/gpgme*
+rm -r %{buildroot}%{_infodir}/gpgme*
+rm -r %{buildroot}%{_libdir}/cmake/Gpgmepp
+rm -r %{buildroot}%{_libdir}/libgpgme*
+rm -r %{buildroot}%{_libdir}/pkgconfig/gpgme*
+%endif
 
 %check
 %if ! 0%{?qemu_user_space_build}
 make %{?_smp_mflags} check
 %endif
 
+%if %{with qt}
+%post -n libqgpgme7 -p /sbin/ldconfig
+%postun -n libqgpgme7 -p /sbin/ldconfig
+%endif
+
+%if !%{with qt}
 %post -n libgpgme11 -p /sbin/ldconfig
 %postun -n libgpgme11 -p /sbin/ldconfig
 %post -n libgpgmepp6 -p /sbin/ldconfig
 %postun -n libgpgmepp6 -p /sbin/ldconfig
-%if 0%{with_qt}
-%post -n libqgpgme7 -p /sbin/ldconfig
-%postun -n libqgpgme7 -p /sbin/ldconfig
-%endif # with_qt
 
 %post
 %install_info --info-dir=%{_infodir} %{_infodir}/gpgme.info%{ext_info}
 
 %preun
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/gpgme.info%{ext_info}
+%endif
 
+%if !%{with qt}
 %files
 %license COPYING COPYING.LESSER
 %doc AUTHORS ChangeLog ChangeLog-2011 README NEWS THANKS TODO VERSION
@@ -265,6 +286,7 @@ make %{?_smp_mflags} check
 %dir %{_libdir}/cmake
 %dir %{_libdir}/cmake/Gpgmepp
 %{_libdir}/cmake/Gpgmepp/GpgmeppConfig*.cmake
+%endif
 
 %if %{with python2}
 %files -n python2-gpg
@@ -276,7 +298,7 @@ make %{?_smp_mflags} check
 %{python3_sitearch}/gpg
 %endif
 
-%if 0%{with_qt}
+%if %{with qt}
 %files -n libqgpgme7
 %{_libdir}/libqgpgme.so.*
 
@@ -287,6 +309,6 @@ make %{?_smp_mflags} check
 %dir %{_libdir}/cmake/QGpgme
 %{_libdir}/cmake/QGpgme/*.cmake
 %{_libdir}/libqgpgme.so
-%endif # with_qt
+%endif
 
 %changelog
