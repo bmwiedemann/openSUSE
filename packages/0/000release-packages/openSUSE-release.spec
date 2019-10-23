@@ -20,7 +20,7 @@
 #define betaversion %{nil}
 %define codename Tumbleweed
 Name:           openSUSE-release
-Version:        20191021
+Version:        20191022
 Release:        0
 # 0 is the product release, not the build release of this package
 Summary:        openSUSE Tumbleweed
@@ -55,7 +55,7 @@ Provides:       system-installation() = openSUSE
 Obsoletes:      aaa_version
 Obsoletes:      openSUSE-Promo-release <= 11.1
 Obsoletes:      openSUSE-release-live <= 11.0
-Obsoletes:      product_flavor(%{product}) < 20191021
+Obsoletes:      product_flavor(%{product}) < 20191022
 # bnc#826592
 Provides:       weakremover(kernel-default) < 3.11
 Provides:       weakremover(kernel-desktop) < 4.2
@@ -183,7 +183,7 @@ Provides:       weakremover(openssl-debuginfo)
 %include %{SOURCE100}
 Provides:       %name-%version
 Provides:       product() = openSUSE
-Provides:       product(openSUSE) = 20191021-0
+Provides:       product(openSUSE) = 20191022-0
 %ifarch x86_64
 Provides:       product-register-target() = openSUSE%2DTumbleweed%2Dx86_64
 %endif
@@ -197,7 +197,7 @@ Provides:       product-register-target() = openSUSE%2DTumbleweed%2Dppc64le
 Provides:       product-register-target() = openSUSE%2DTumbleweed%2Daarch64
 %endif
 Provides:       product-label() = openSUSE
-Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Aopensuse%3A20191021
+Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Aopensuse%3A20191022
 Provides:       product-url(releasenotes) = http%3A%2F%2Fdoc.opensuse.org%2Frelease%2Dnotes%2Fx86_64%2FopenSUSE%2FTumbleweed%2Frelease%2Dnotes%2DopenSUSE.rpm
 Provides:       product-url(repository) = http%3A%2F%2Fdownload.opensuse.org%2Ftumbleweed%2Frepo%2Foss%2F
 Requires:       product_flavor(openSUSE)
@@ -211,7 +211,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(ftp)
-Provides:       product_flavor(openSUSE) = 20191021-0
+Provides:       product_flavor(openSUSE) = 20191022-0
 Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description ftp
@@ -226,7 +226,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(mini)
-Provides:       product_flavor(openSUSE) = 20191021-0
+Provides:       product_flavor(openSUSE) = 20191022-0
 Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description mini
@@ -241,7 +241,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(dvd)
-Provides:       product_flavor(openSUSE) = 20191021-0
+Provides:       product_flavor(openSUSE) = 20191022-0
 Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description dvd
@@ -256,7 +256,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(livecd-kde)
-Provides:       product_flavor(openSUSE) = 20191021-0
+Provides:       product_flavor(openSUSE) = 20191022-0
 Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description livecd-kde
@@ -271,7 +271,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(livecd-x11)
-Provides:       product_flavor(openSUSE) = 20191021-0
+Provides:       product_flavor(openSUSE) = 20191022-0
 Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description livecd-x11
@@ -286,7 +286,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(livecd-gnome)
-Provides:       product_flavor(openSUSE) = 20191021-0
+Provides:       product_flavor(openSUSE) = 20191022-0
 Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description livecd-gnome
@@ -301,7 +301,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(livecd-xfce)
-Provides:       product_flavor(openSUSE) = 20191021-0
+Provides:       product_flavor(openSUSE) = 20191022-0
 Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description livecd-xfce
@@ -316,7 +316,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(usb-kde)
-Provides:       product_flavor(openSUSE) = 20191021-0
+Provides:       product_flavor(openSUSE) = 20191022-0
 Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description usb-kde
@@ -331,7 +331,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(usb-gnome)
-Provides:       product_flavor(openSUSE) = 20191021-0
+Provides:       product_flavor(openSUSE) = 20191022-0
 Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description usb-gnome
@@ -346,7 +346,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(usb-x11)
-Provides:       product_flavor(openSUSE) = 20191021-0
+Provides:       product_flavor(openSUSE) = 20191022-0
 Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description usb-x11
@@ -361,7 +361,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance)
-Provides:       product_flavor(openSUSE) = 20191021-0
+Provides:       product_flavor(openSUSE) = 20191022-0
 Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description appliance
@@ -370,6 +370,126 @@ openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
 %files appliance
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/openSUSE-release-appliance
+
+%package appliance-docker
+License:        BSD-3-Clause
+Group:          System/Fhs
+Provides:       product_flavor()
+Provides:       flavor(appliance-docker)
+Provides:       product_flavor(openSUSE) = 20191022-0
+Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
+
+%description appliance-docker
+openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
+
+%files appliance-docker
+%defattr(-,root,root)
+%doc %{_defaultdocdir}/openSUSE-release-appliance-docker
+
+%package appliance-kvm
+License:        BSD-3-Clause
+Group:          System/Fhs
+Provides:       product_flavor()
+Provides:       flavor(appliance-kvm)
+Provides:       product_flavor(openSUSE) = 20191022-0
+Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
+
+%description appliance-kvm
+openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
+
+%files appliance-kvm
+%defattr(-,root,root)
+%doc %{_defaultdocdir}/openSUSE-release-appliance-kvm
+
+%package appliance-vmware
+License:        BSD-3-Clause
+Group:          System/Fhs
+Provides:       product_flavor()
+Provides:       flavor(appliance-vmware)
+Provides:       product_flavor(openSUSE) = 20191022-0
+Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
+
+%description appliance-vmware
+openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
+
+%files appliance-vmware
+%defattr(-,root,root)
+%doc %{_defaultdocdir}/openSUSE-release-appliance-vmware
+
+%package appliance-openstack
+License:        BSD-3-Clause
+Group:          System/Fhs
+Provides:       product_flavor()
+Provides:       flavor(appliance-openstack)
+Provides:       product_flavor(openSUSE) = 20191022-0
+Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
+
+%description appliance-openstack
+openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
+
+%files appliance-openstack
+%defattr(-,root,root)
+%doc %{_defaultdocdir}/openSUSE-release-appliance-openstack
+
+%package appliance-hyperv
+License:        BSD-3-Clause
+Group:          System/Fhs
+Provides:       product_flavor()
+Provides:       flavor(appliance-hyperv)
+Provides:       product_flavor(openSUSE) = 20191022-0
+Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
+
+%description appliance-hyperv
+openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
+
+%files appliance-hyperv
+%defattr(-,root,root)
+%doc %{_defaultdocdir}/openSUSE-release-appliance-hyperv
+
+%package appliance-vagrant
+License:        BSD-3-Clause
+Group:          System/Fhs
+Provides:       product_flavor()
+Provides:       flavor(appliance-vagrant)
+Provides:       product_flavor(openSUSE) = 20191022-0
+Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
+
+%description appliance-vagrant
+openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
+
+%files appliance-vagrant
+%defattr(-,root,root)
+%doc %{_defaultdocdir}/openSUSE-release-appliance-vagrant
+
+%package appliance-wsl
+License:        BSD-3-Clause
+Group:          System/Fhs
+Provides:       product_flavor()
+Provides:       flavor(appliance-wsl)
+Provides:       product_flavor(openSUSE) = 20191022-0
+Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
+
+%description appliance-wsl
+openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
+
+%files appliance-wsl
+%defattr(-,root,root)
+%doc %{_defaultdocdir}/openSUSE-release-appliance-wsl
+
+%package appliance-custom
+License:        BSD-3-Clause
+Group:          System/Fhs
+Provides:       product_flavor()
+Provides:       flavor(appliance-custom)
+Provides:       product_flavor(openSUSE) = 20191022-0
+Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
+
+%description appliance-custom
+openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
+
+%files appliance-custom
+%defattr(-,root,root)
+%doc %{_defaultdocdir}/openSUSE-release-appliance-custom
 
 
 
@@ -435,10 +555,10 @@ cat >$RPM_BUILD_ROOT/etc/products.d/openSUSE.prod << EOF
 <product schemeversion="0">
   <vendor>openSUSE</vendor>
   <name>openSUSE</name>
-  <version>20191021</version>
+  <version>20191022</version>
   <release>0</release>
   <arch>%{_target_cpu}</arch>
-  <cpeid>cpe:/o:opensuse:opensuse:20191021</cpeid>
+  <cpeid>cpe:/o:opensuse:opensuse:20191022</cpeid>
   <productline>openSUSE</productline>
   <register>
     <pool>
@@ -558,6 +678,54 @@ EOF
 mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance
 cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance/README << EOF
 This package only exists for providing the product flavor 'appliance'.
+
+EOF
+
+mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance-docker
+cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance-docker/README << EOF
+This package only exists for providing the product flavor 'appliance-docker'.
+
+EOF
+
+mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance-kvm
+cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance-kvm/README << EOF
+This package only exists for providing the product flavor 'appliance-kvm'.
+
+EOF
+
+mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance-vmware
+cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance-vmware/README << EOF
+This package only exists for providing the product flavor 'appliance-vmware'.
+
+EOF
+
+mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance-openstack
+cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance-openstack/README << EOF
+This package only exists for providing the product flavor 'appliance-openstack'.
+
+EOF
+
+mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance-hyperv
+cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance-hyperv/README << EOF
+This package only exists for providing the product flavor 'appliance-hyperv'.
+
+EOF
+
+mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance-vagrant
+cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance-vagrant/README << EOF
+This package only exists for providing the product flavor 'appliance-vagrant'.
+
+EOF
+
+mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance-wsl
+cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance-wsl/README << EOF
+This package only exists for providing the product flavor 'appliance-wsl'.
+
+EOF
+
+mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance-custom
+cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-release-appliance-custom/README << EOF
+This package only exists for providing the product flavor 'appliance-custom'.
 
 EOF
 
