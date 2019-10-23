@@ -476,4 +476,12 @@
     the &quot;resolver&quot; directive was used in SMTP proxy. (forwarded request 723395 from darix)</comment>
     <requestid>723397</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>660a89078efbb2454a359c43b0191a30</srcmd5>
+    <version>1.17.4</version>
+    <time>1571838707</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>741950</requestid>
+  </revision>
 </revisionlist>

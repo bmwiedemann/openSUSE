@@ -281,4 +281,15 @@ gruss friseer (forwarded request 77922 from Friseer)</comment>
     <comment></comment>
     <requestid>725008</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>fdb665674be1f1ed936f5c9d8f561284</srcmd5>
+    <version>2.1.11</version>
+    <time>1571838532</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patches with the feature of &quot;prepare&quot; and &quot;check&quot;
+  watchers. That feature is needed by envoy-proxy:
+  * 0001-evwatch-Add-prepare-and-check-watchers.patch
+  * 0002-evwatch-fix-race-condition.patch (forwarded request 741457 from mrostecki)</comment>
+    <requestid>741477</requestid>
+  </revision>
 </revisionlist>

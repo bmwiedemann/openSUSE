@@ -29,14 +29,14 @@
 %endif
 
 # MANUAL: Update the git_version and git_revision
-%define git_version fc5a7d91d54cc98f64fc28f9e288b46a0bee756c
-%define git_short   fc5a7d91d54c
+%define git_version 45c710223c5fbf04dc3028b9a90b51892e36ca7f
+%define git_short   45c710223c5f
 # How to get the git_revision
 # git clone https://github.com/docker/libnetwork.git libnetwork
 # cd libnetwork
 # git checkout $git_version
 # git_revision=r$(git rev-list HEAD | wc -l)
-%define git_revision r2800
+%define git_revision r2874
 
 %global provider        github
 %global provider_tld    com
@@ -58,7 +58,7 @@ Summary:        Docker Networking
 License:        Apache-2.0
 Group:          Development/Languages/Golang
 Url:            http://github.com/docker/libnetwork
-Source0:        %{repo}-git.%{git_version}.tar.xz
+Source0:        %{repo}-git.%{git_short}.tar.xz
 Source1:        %{realname}-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
@@ -111,7 +111,7 @@ support.
 
 
 %prep
-%setup -q -n %{repo}-git.%{git_version}
+%setup -q -n %{repo}-git.%{git_short}
 
 %build
 %goprep %{import_path}

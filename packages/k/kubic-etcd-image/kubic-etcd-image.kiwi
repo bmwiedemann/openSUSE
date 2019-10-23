@@ -15,7 +15,7 @@
       <containerconfig
         name="kubic/etcd"
         tag="latest"
-        additionaltags="%PKG_VERSION%,%PKG_VERSION%-%RELEASE%"
+        additionaltags="%PKG_VERSION%,%PKG_VERSION%-%RELEASE%,%PKG_VERSION%-0"
         maintainer="Thorsten Kukuk &lt;kukuk@suse.com&gt;">
         <expose>
           <port number="2379"/>

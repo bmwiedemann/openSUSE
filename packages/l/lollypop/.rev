@@ -1049,4 +1049,15 @@
 - Add man page to list of installed files.</comment>
     <requestid>741618</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>15d0f1e42e3fbcd5381155feea824c88</srcmd5>
+    <version>1.2.1</version>
+    <time>1571838701</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.1:
+  * Bugfixes.
+  * Allows to show album tracks in artist view (like in previous
+    releases).</comment>
+    <requestid>741935</requestid>
+  </revision>
 </revisionlist>

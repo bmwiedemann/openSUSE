@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon Oct 21 14:05:35 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix broken go_api evaluation (1.12 < 1.5, when evaluated as floats),
+  let RPM evaluate the expression, drop no longer required bc.
+- Own the gdbinit.d directory, avoid the build dependency on gdb.
+
+-------------------------------------------------------------------
+Fri Oct 18 05:11:29 UTC 2019 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.12.12 (released 2019/10/17) includes fixes to the go command,
+  runtime, syscall and net packages.
+  Refs boo#1141689.
+  * go#34881 net/http: Client.Do() panics when URL includes HTTP basic auth
+  * go#34789 cmd/go/internal/modconv: TestConvertLegacyConfig failing on release-branch.go1.12
+  * go#34713 runtime, internal/poll: darwin: ensure that no thread is consumed, nor a syscall.Read if FD isn't yet ready for I/O
+  * go#34711 runtime: "program exceeds 50-thread limit" in test of os package on darwin-arm-mg912baios
+  * go#34661 net: infinite loop in LookupAddr()
+  * go#34641 syscall: (*LazyProc).Call does not keep arguments alive (anymore)
+  * go#33983 cmd/cover: cannot run in directory with no .go files
+  * go#33982 x/sys/unix: TestPassFD consistently failing in aix-ppc64 builder on release-branch.go1.12
+  * go#33877 net/http: Transport leaks net.Conns if connections never become idle
+  * go#33758 x/build, cmd/go: TestGoGetInsecure failing in release-branch.go1.12
+  * go#33757 x/build, runtime: linux-s390x-ibm regression in TestGdbPython on release-branch.go1.12
+  * go#33756 x/build: skip `darwin-386-10_14` builder on release-branch.go1.12
+  * go#33673 cmd/go: regression on the default of CGO_ENABLED to 0 for cross builds
+  * go#31887 cmd/go: downloads follow plain-HTTP redirects even when the -insecure flag is not set
+  * go#31305 x/arch/arm64/arm64asm: TestObjdumpARM64TestDecode{GNU,Go}Syntaxdata failing at Go 1.12.3
+
+-------------------------------------------------------------------
+Thu Oct 17 22:18:23 UTC 2019 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.12.11 (released 2019/10/17) includes security fixes to the
+  crypto/dsa package addressing the following CVE:
+  CVE-2019-17596
+  Refs boo#1141689.
+  * boo#1154402 CVE-2019-17596
+  * go#34961 crypto/dsa: invalid public key causes panic in dsa.Verify
+
+-------------------------------------------------------------------
+Thu Sep 26 04:09:51 UTC 2019 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.12.10 (released 2019/09/25) includes security fixes to the
+  net/http package addressing the following CVE:
+  CVE-2019-16276
+  Refs boo#1141689.
+  * boo#1152082 CVE-2019-16276
+  * go#34540 net/http: invalid headers are normalized, allowing request smuggling
+
+-------------------------------------------------------------------
 Thu Aug 15 23:44:35 UTC 2019 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.12.9 (released 2019/08/15) includes fixes to the linker and

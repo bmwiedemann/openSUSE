@@ -53,4 +53,16 @@
 - Rebase patch gn-flags.patch</comment>
     <requestid>701245</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6e7bc094815d240363d752303b6fe0bb</srcmd5>
+    <version>0.1616</version>
+    <time>1571838864</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1616:
+  * no upstream changelog
+- Remove merged patch gn-add_missing_arm_files.patch
+- Add patch to always use python3 in tests:
+  * gn-always-python3.patch</comment>
+    <requestid>742110</requestid>
+  </revision>
 </revisionlist>

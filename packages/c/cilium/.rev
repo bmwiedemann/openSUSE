@@ -221,4 +221,12 @@
     <user>maxlin_factory</user>
     <comment>osc copypac from project:openSUSE:Factory package:cilium revision:17</comment>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a01ebfcfe67c324eac93c00e9bac3443</srcmd5>
+    <version>1.6.3</version>
+    <time>1571838496</time>
+    <user>dimstar_suse</user>
+    <comment>Please stage with K8s 1.16 (Currently in N)</comment>
+    <requestid>738202</requestid>
+  </revision>
 </revisionlist>

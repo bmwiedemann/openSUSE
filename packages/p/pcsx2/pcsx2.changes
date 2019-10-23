@@ -1,0 +1,2926 @@
+-------------------------------------------------------------------
+Sat Sep 21 14:12:37 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Use "ExclusiveArch: i586" to disable x86_64 build
+- Remove unneeded baselibs.conf
+
+-------------------------------------------------------------------
+Fri Sep 20 21:24:21 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Add baselibs.conf to source, so we can push it to Factory.
+
+-------------------------------------------------------------------
+Fri Sep 13 11:53:47 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190911:
+  * GSdx: Enable OpenCL on Linux (#3099)
+  * Onepad: Update to latest controller database.
+
+-------------------------------------------------------------------
+Mon Sep 09 19:46:32 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190907:
+  * Take care of a typo that only effects pcsx2 if built without superVU.
+  * gsdx-gui: Fix Align Sprite checkbox not working properly.
+  * Locales: Update Portuguese Brazilian Translation. (#3092)
+
+-------------------------------------------------------------------
+Wed Sep 04 11:54:36 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190902:
+  * pcsx2-counters: Revert to older VRender/VBlank timings
+  * gsdx: Use the same ini code on both Windows and Linux
+  * Locales: ja-JP: fix non-desu-masu forms. (#3097)
+
+-------------------------------------------------------------------
+Sun Sep 01 20:06:04 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190831:
+  * gsdx-hw: Add FFX us/eu demo/prototype discs to crc list.
+  * Gamedb: Adjust/add some entries for Jak games.
+  * gsdx-hw: Add Jak 1 jap, Jak 2 eu, Jak 3 eu/us demo discs to crc list.
+
+-------------------------------------------------------------------
+Wed Aug 28 19:45:47 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190826:
+  * gsdx-ogl/d3d11: Add a assert when texture is too small or too big.
+  * gsdx-d3d11: Adjust maximum texture size limit based on available feature level.
+  * cdvd: Fix end-of-disc issues (#3051)
+  * Get rid of extremely spammy warnings when compiling as debug.
+  * pango: reenable harfbuzz check, but don't fail if it isn't there. Revisit once travis builds have pango 1.44 in them.
+  * Add option not to build dev9ghzdrk.
+  * clang: Get rid of a number of warnings. I don't need pages of warnings that things clearly marked in the code as deprecated are deprecated, and I doubt I'll be worrying about those overloaded functions any time soon.
+  * GameDB: Enter the Matrix changes. (#3081)
+  * gsdx-hw: Re enable automatic mipmapping for Jak 1 and 3.
+  * GSdx-hw OGL: log if tex size gt PBO segment size.
+  * GSdx-hw OGL: fix PBO pool map size.
+  * PCSX2: Avoid hang when switching renders with hotkey. (#3072)
+  * Comment out the fix for the moment, since Travis hates me.
+  * One more try here. Make harfbuzz optional instead of required for the moment, and worry about travis once it's on distributions with pango 1.44+.
+  * Add harfbuzz to travis as well.
+  * Add harfbuzz as a dependency to play nice with pango 1.44+.
+  * Revert "3rdparty/pthreads4w: Fixup process exit logic. (#3056)"
+  * Revert "3rdparty/pthreads4w: Ensure on_process_init early execution. (#3073)"
+  * 3rdparty/pthreads4w: Ensure on_process_init early execution. (#3073)
+  * GSdx: Fix mipmap SSE2 code for linear mipmap nearest filter. (#3064)
+  * GSdx-hw: Add Jak 1 JP and Jak 3 EU crc ids.
+  * GSdx-hw: Add a crc id for Jak 1 US region.
+  * GSdx-hw TC: improve search tex in RT
+  * GSdx-hw TC: invalidate Source with Target TEX0
+  * GSdx-hw TC: fix Target::Inside check
+  * GSdx-hw TC: fix end block computations
+  * GSdx-hw: SwSpriteRender, fix drawing region
+  * GSdx-hw: SwSpriteRender, improve no rast. check
+  * GameDB: Crazy Frog Racer 2/Alone in the Dark fixes
+  * 3rdparty/pthreads4w: Fixup process exit logic. (#3056)
+  * onepad-legacy: Use mt_queue, and move it from onepad to common. (#3060)
+  * Gamedb: Also add Norway region of Harry Potter COS to gamedb with a gamefix patch.
+  * Gamedb: Add Harry Potter and the Chamber of Secrets Finnish version to gamedb along with a gamefix patch.
+
+-------------------------------------------------------------------
+Thu Aug 08 20:16:11 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190807:
+  * PCSX2: Wait some frames between F9 SW render toggles. (#3052)
+  * GSDumpGUI: Replaced watchdog thread with Forms.Timer
+  * GSDumpGUI: Some changes based on willkuer's review.
+  * GSDumpGUI: Now textbox path change requires enter key.
+  * GSDumpGUI: Make it 64bit friendly.
+  * GSDumpGUI: Add bits information to window title.
+  * GSDumpGUI: Avoid startup crash on invalid path settings.
+  * GSDumpGUI: Update textboxes after using the File Dialog.
+  * GSDumpGUI: Actually start reading the stderr stream.
+  * GSDumpGUI: Different color for error log output.
+  * GSDumpGUI: Enable stderr redirection.
+  * GSDumpGUI: Replace directory tree dialog.
+  * GSDumpGUI: Watch for directory changes.
+  * GSDumpGUI: Fix unbalanced stack exception.
+  * GSDumpGUI: Run one frame per loop for better performance.
+  * GSDumpGUI: Close when GSdx window is hidden.
+  * GSDumpGUI: create the vsync packet just once.
+  * GSDumpGUI: Minor improvements.
+  * GameDB: MTX Mototrax glitchy graphics fixes
+  * GSdx: Use rt for dRect size, update crc level label.
+
+-------------------------------------------------------------------
+Sat Aug 03 17:28:37 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190802:
+  * PCSX2: Set pad plugin and bios defaults automatically. (#3020)
+  * GSdx: Remove useless logo_ogl.bmp include from VS project files.
+  * gsdx-hw: Add some logs for OI fixes, add JakX beta eu crc id.
+  * gsdx-hw: Add OI rendering fix for Big Mutha Truckers.
+  * gsdx-hw/gamedb: Add gamefix for Dog of Bay as well as some game crc ids.
+
+-------------------------------------------------------------------
+Sat Jul 27 19:15:43 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190726:
+  * GameDB: Super Monkey Ball Deluxe Monkey Billiards DX minigame fixes
+  * Lilypad: Update Xinput description. (#3038)
+  * spu2-x: Set default to SDL on Linux instead of portaudio, unless you don't have SDL 2.
+  * Spu2-x: Fix noise generator. (#3030)
+  * Fix Game Database error message.
+
+-------------------------------------------------------------------
+Fri Jul 19 12:59:24 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190718:
+  * Gamedb: Patch for Jak X NTSC Public Beta. (#3029)
+  * Gamedb: Update Spider Man 3 Jap patch, add Korean version to db list along with a gamepatch port by Arapapa.
+  * Gamedb: Add some gamefix patches, add/modify db entries.
+  * gsdx-gui: A few more adjustments to the osd/shade boost sliders.
+  * gsdx-ogl/d3d11: Also ensure that we set proper ini values for Shade Boost sliders.
+  * gsdx-osd: Ensure we set proper data for osd options.
+
+-------------------------------------------------------------------
+Tue Jul 16 07:23:15 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190715:
+  * gsdx-d3d11: Set maximum allowed texture size to d3d10 limits which is 8192.
+  * gsdx-gui: Allow only digit inputs in osd edit boxes for font size, timeout, and max logs.
+  * gsdx-gui: Fix some overlapping text on osd gui.
+  * gsdx-gui: Put/move hw adv. & hacks option after blending option.
+
+-------------------------------------------------------------------
+Sun Jul 14 14:50:56 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190713:
+  * Cache code cleanups.
+  * Travis: Bump Ubuntu version to Xenial
+  * GSdx-hw: New SW sprite renderer, used in Jak games only for now. (#3001)
+  * pcsx2: Auto select proper GSdx plugin in Plugin Selection. (#3013)
+  * GameDB: Various updates/cleanup and gamefixes for Ratatouille and Dog's Life
+  * pcsx2: Fix microVU debug logging.
+  * gsdx-ogl: Comment out pabe bit, not yet used.
+  * gsdx: Fix unknown pragma clang warnings.
+  * gsdx-hw: Add Harry Potter and the Goblet of Fire, Project Snowblind to automatic mipmapping.
+  * GameDB: Bully/Canis Canem Edit unbeatable Chapter 2 level fixes.
+  * GSdx: Add temperature setting. (#2989)
+
+-------------------------------------------------------------------
+Wed Jul 10 20:39:46 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190708:
+  * gsdx-d3d11: Extend BLEND_NO_BAR to also hit on clamp 0, it's faster than standard HDR algo.
+  * gsdx-d3d11: Extend sw blending to BLEND_NO_BAR which is also free and doesn't require rt sample nor any barriers.
+  * Remove sVU_Compare.h and iVU1micro.cpp, both of which appear unused.
+  * Take care of a few clang warnings.
+  * gamedb: Looks like I copied outdated patch codes on my previous commit for Ace Combat Zero.
+  * Gamedb/GSdx-hw: Add gamefix patches for Ace Combat Zero JP/KO versions. Add KO version to crc id list.
+
+-------------------------------------------------------------------
+Sat Jul 06 10:38:59 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190704:
+  * build.sh and cmake plugin code cleanup (#2953)
+  * [skip ci] README: Update system requirements
+  * Onepad: Update controller database.
+
+-------------------------------------------------------------------
+Wed Jul 03 12:26:45 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190701:
+  * CDVD: Add fallback path for blockdump source name unavailability
+  * CDVD: Add configurable directory for blockdumps storage
+  * GsDumpFinder: fix error when dir not found
+
+-------------------------------------------------------------------
+Thu Jun 27 20:44:39 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190623:
+  * gsdx-hw: Add an OI hack for Sonic Unleashed.
+  * gsdx-d3d11: Add rgba channel selection/support to StretchRect.
+  * gsdx-ogl: Add rgba channel selection/support to StretchRect.
+  * gsdx-hw: Purge Sonic unleashed crc hack.
+  * GameDB: Serials update and some gamefixes. (#2999)
+
+-------------------------------------------------------------------
+Sat Jun 22 10:49:12 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190620:
+  * gsdx-hw: Revert dmc 3 TS hack purge.
+  * GameDB: Popcap crashing fixes
+  * Switch a bunch of 64 bit #ifdef's to use the cross-platform 64-bit define I added into Pcsx2Defs.h.
+  * Add warning on gcc 9.
+  * Gamedb/gsdx-hw: Add gamefix patch and crc id for Harry Potter and the Prisoner of Azkaban EU.
+  * gsdx-d3d11/gui: Move the nvidia hack toggle to Disable Safe Features.
+  * BuildParameters.cmake: fix typo
+  * gsdx-hw: Purge useless d3d11 only hacl for DMC3.
+  * GameDB: Naruto games fixes and beta trial updates (#2994)
+  * GSdx-dialog:  Unused parameter on hacks dialog constructor
+  * GSdx-Dialog: Remove useless member variable
+  * Remove sVU_Debug.h, as nothing in it is actually used anywhere.
+  * Added a universal 64-bit define, and a message indicating that Pcsx2 was compiled as 64 bit in the system information.
+  * gsdx-hw: Fix incorrect variable name when tc is disabled.
+  * gsdx-d3d11/gui: Don't display Reference Device in available Adapters in release builds. Display it only on debug builds.
+  * gsdx-d3d11: Remove remaining uav (UnorderedAccessView) code, it wasn't used
+  * gsdx-d3d11: Update nvidia hack handling.
+  * gsdx-gui: Purge Sprite hack from the gui.
+  * gsdx-hw: Remove no longer needed Sprite hack, replaced by improved atst code already.
+  * gsdx-d3d11: Update d3d shader macro handling to a much better algorithm.
+
+-------------------------------------------------------------------
+Sat Jun 15 22:05:50 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190615:
+  * gsdx-hw: Add Jak2 demo crc id, US version.
+  * gsdx-hw purge HauntingGround crc hacks.
+  * gsdx-d3d11: Add draw call number to debug logs.
+  * gsdx-hw: Purge CastlevaniaCoD, CastlevaniaLoI, NanoBreaker crc hacks.
+  * GSdx-d3d11: Partial port of EmulateBlending() from OGL renderer to DX11 renderer and ps_blend() from OGL shader to DX11 shader (only accumulation blend).
+  * GSdx-d3d11: Ported SW blending variables from OGL to DX11 PSSelector/BSSelector/pixel shader.
+  * GSdx: Made a DX11/OGL-independent blend map in GSDevice.cpp. Convert to OGL/DX11 specific constants at run time.
+
+-------------------------------------------------------------------
+Mon Jun 10 11:01:01 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190606:
+  * [skip ci] GSDumpgui: Handle dumpPath as optional. (#2981)
+  * Gamedb: Add SLES-51219 Harry Potter and the Chamber of Secrets Portugal release.
+  * Gamedb: Fix for Mafia (S) SLES-52282. (#2974)
+  * gsdx-hw: Use std max for scaling factor, bonus add jak3 crc id for eu preview/us international release.
+  * Build: Changes required to compile and run using VS 2019 (#2975)
+  * debugger: Muti-byte hex strings can now be pasted into the memory view. (#2960)
+
+-------------------------------------------------------------------
+Fri May 31 17:47:57 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190531:
+  * [skip ci] gsdumpgui: Auto select gsdx dll and gs dump when a directory location is reloaded/changed.
+  * gsdx-hw: Remove no longer used linear parameter from ComputeFixedTEX0, add an assert that m_target isn't handled with invalid_tex0 yet due to upscaling.
+  * gsdx-hw: Fix border issue on ComputeFixedTEX0.
+
+-------------------------------------------------------------------
+Mon May 27 12:51:34 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190526:
+  * PCSX2 > GUI: update and improvements of Scandinavian translations
+  * gsdx-hw: Re add GSC_RedDeadRevolver crc hack that only skipped blur effects to aggressive mode only.
+
+-------------------------------------------------------------------
+Fri May 24 14:05:08 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190524:
+  * onepad: Update to latest controlled database.
+  * gamedb/gsdx: Harry Potter Chamber of secrets db and crc update.
+  * gsdx-d3d11: Don't run Alpha Stencil on DATE with texture shuffle.
+  * gsdx-gui: update alpha stencil, crc hack level tooltips.
+  * [skip ci] gsdumpgui: Properly disable/grey out some debug options based on Debug Mode check.
+
+-------------------------------------------------------------------
+Sat May 18 15:09:52 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190517:
+  * Locales: Update ja_JP localing.
+  * gsdx-hw: Purge GSC_GTASanAndreas crc hacks.
+
+-------------------------------------------------------------------
+Mon May 13 12:45:36 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190511:
+  * wx: Replace a bunch of wx 2.8 macros with the wx 3.x versions.
+  * Add a few default functions in explicitly. (-Wdeprecated-copy)
+  * GSdx: Variables should be initialized in the order in which they are declared. (-Wreorder)
+  * gsdx-d3d11: ensure texture size of at least 1x1
+
+-------------------------------------------------------------------
+Mon May 06 12:39:33 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190505:
+  * gsdx-hw: Purge GSC_SimpsonsGame crc hacks.
+
+-------------------------------------------------------------------
+Fri May 03 21:38:35 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190503:
+  * gamedb: Add CrashTagTeamRacingIbit gamefix to Crash Tag Team Racing.
+  * gsdx-hw/gamedb: Add Star Wars - The Force Unleashed to gamedb and crc list.
+  * gsdx-hw: Update OI_StarWarsForceUnleashed hack.
+  * gsdx-hw: Purge GSC_StarWarsForceUnleashed crc hacks.
+  * gsdx-hw: Check for null texture before commit in hacks. (#2951)
+  * gsdx-sw: Add an option to toggle auto flush on sw renderer.
+  * pcsx2: ofc I forgot to completely remove the variable from the previous commit ...
+  * pcsx2-gui: Don't put Screenshot button in a submenu.
+  * microVU: Add gamefix for Crash Tag Team Racing. Fixes constant recompilation problems.
+
+-------------------------------------------------------------------
+Sun Apr 28 12:43:39 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190428:
+  * onepad: Cleanup in a few places.
+  * onepad: Update to include latest controller database.
+  * onepad: bring the sensibility changes over to onepad as well as onepad_legacy.
+  * Onepad (legacy) sensibility implementation for linux (#2932)
+
+-------------------------------------------------------------------
+Fri Apr 26 17:42:47 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190426:
+  * gsdx ogl: commit texture in copy function
+  * gsdx ogl: only always uncommit texture in debug build
+  * gsdx ogl: always commit a sparse texture when force_texture_clear is enabled
+  * gsdx-ogl: Do some integer casts for destination texture commit to StretchRect.
+  * gsdx ogl: sparse texture : only commit new area
+  * gsdx hw: commit texture before a clear in OI hack
+  * gsdx-ogl: update Save() to use committed size of texture
+  * gsdx-ogl: Add detection of Sparse Depth in isDss()
+  * gsdx-ogl: add destination texture commit to StretchRect
+  * gsdx: enable sparse render target in TC
+  * gsdx: add uncommit in recycle
+  * gsdx-ogl: add texture commit ogl renderer
+  * gsdx ogl: enable sparse feature on GSdevice interface
+  * gsdx ogl: implement CommitPages
+  * gsdx ogl: handle creation of sparse texture
+  * gsdx hw: add API to manage sparse texture allocation
+  * gsdx hw: allow to create sparse texture at device level
+  * gsdx-d3d11: Move colclip code to blending function.
+  * gsdx-hw: Forgot to remove a crc region check for dbzbt2-3, no longer needed.
+  * gsdx-hw: Purge crc hacks that had their half screen issues resolved (Texture shuffle case).
+  * GSdx-hw: Add secret ini option to disable TS half bottom detection
+  * GSdx-hw: Add automatic detection of half-bottom in TS
+  * GSdx-hw: Move src to protected member
+  * GSdx-hwtc: Propagate valid area from dst to source
+  * GSdx-hw: Store bounding rectangle in protected member
+
+-------------------------------------------------------------------
+Wed Apr 24 12:34:12 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190424:
+  * GameDB: Add VU Clamping for Battle Gear 3. (#2939)
+  * gsdx-gui: Separate opengl and direct3d blending options.
+  * gsdx-d3d11: Adjust fbmask code on d3d11.
+  * pcsx2-wx: Remove extra separator line.
+  * gsdx-d3d11: Don't enable fbmask on triangle primitives.
+  * gsdx-gui: Purge the aout (Alpha hack) from the gui, will be useless with fbmask emulation, enable blending option on d3d11.
+  * gsdx-d3d11: Partial port of frame buffer masking from opengl.
+  * gsdx-d3d11: Remove old aout code.
+  * PCSX2: update & improvments of Scandinavian translations
+  * Fixing stiks state monitor (#2933)
+  * pcsx2 savestates: Bump savestate version, required for the previous TAS PR merge.
+  * recording: Opt-into keybindings, revert potential overrides if disabled
+  * recording: freeze recording information to savestate regardless
+  * recording: various formatting and review corrections
+  * recording: Append copyright headers
+  * gui:recording: Revert addition of Screenshot As, will contribute as separate PR
+  * recording: Added some more useful logs and cleaned up some TODOs
+  * recording: Use conventional savestate functions, save save-state in a separate file alongside recording file
+  * recording: Significant refactor on VirtualPad implementation
+  * recording: Use wxFopen instead of f_open
+  * recording:gui: Temporarily remove Movie Editor GUI, add back at a later date
+  * recording:gui: Overhaul VirtualPad GUIs
+  * recording:gui: was not correctly removing recording top level menu bar option
+  * gui:recording: force ascii for filepath of recording, remove legacy conversions
+  * recording: removed C++ reserved pattern usages, removed japanese comments
+  * travis: include recording header files in travis build properly
+  * recording: recording file implementation
+  * recording: implementation for recording file GUI panel
+  * recording:gui: dialog for creating a new recording
+  * recording: main recording functions and input gathering
+  * recording:gui: movie editor window and virtual pads
+  * gui:recording: new mainmenu event listeners
+  * gui:recording: All main window modifications and additions
+  * recording: implementation for new keybindings
+  * recording: added new log sources
+  * recording: all modifications to pcsx2/ source
+  * GSdx: implemented saving a snapshot to a dialog provided file path
+  * recording: visual studio project changes
+  * travis:recording: added Recording sources to CMake scripts
+  * recording: gitignore modifications and new keybindings
+
+-------------------------------------------------------------------
+Sat Apr 20 18:35:46 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190420:
+  * gsdx-gui: Fixes typos on the tooltip for disabling safe features. (#2931)
+  * Gamedb: Visual concept hanging fixes. (#2929)
+  * gsdx-hw: Move GSC_RadiataStories, GSC_StarOcean3, GSC_ValkyrieProfile2 crc hacks to D3D level.
+  * gsdx ogl: Bypass the texture cache when the frame buffer will be sampled.
+
+-------------------------------------------------------------------
+Mon Apr 15 16:43:31 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190415:
+  * [skip ci] GSDumpGui: Only reload dumps and dlls separately if their respective settings change, make config portable, autodetect dump/dll folder. (#2926)
+
+-------------------------------------------------------------------
+Mon Apr 15 11:59:17 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190414:
+  * PCSX2: compiled mo-file for latest pt_BR update (#2910).
+  * [skip ci] GSDumpGUI: Fixes multiinstance crashes. (#2925)
+  * Locale: Br. Portuguese Translation - Update. (#2910)
+  * Gamedb: WRC avec sebastien loeb performance fixes. (#2923)
+  * spu2-x-gui: Increase synchronizing mode drop down list vertical size.
+  * gsdx-ogl: Check if primitives are triangles instead of overlapping.
+  * Gamedb: Remove stall delay branch patches from WRC3, WRC Rally Evolved/WRC avec Sebastien Loeb.
+  * pcsx2: Fix stall on branch .. in delay slot.
+  * GSdx-d3d11: Enable break on D3D message
+  * [skip ci] Readme.md: Update system requirements info.
+  * gsdx-hw: Disable automatic mipmapping on Jak games for now.
+  * Gamedb: Fixes, serial and patches update. (#2914)
+
+-------------------------------------------------------------------
+Sat Apr 06 13:02:26 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190405:
+  * Gamedb: Add gamefix patch for (Choro Q - High Grade) Gadget Racers NTSC-J.
+  * Lilypad: Replace question mark with "N/A" on Diagonotics window when a device is not active.
+  * gsdx-hw: Some minor comment and code adjustments.
+
+-------------------------------------------------------------------
+Wed Apr 03 19:02:46 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190401:
+  * Pnach: Add Author line. (#2911)
+
+-------------------------------------------------------------------
+Wed Mar 27 17:26:51 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190326:
+  * GSDumpGUI: Make sure all child processes are closed when closing main form. (#2900)
+
+-------------------------------------------------------------------
+Tue Mar 26 20:00:39 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190326:
+  * gsdx:-debug: Update previous GSDrawingContext commit to show log only on gl sw renderer.
+  * gsdx TC: remove dead code
+  * gsdx ogl: disable sparse in extenstion detection
+  * gsdx-ogl: Disable sparse depth on amd.
+  * GameDB: Add patch for Panzer Dragoon. (#2902)
+  * GameDB: Fix PlayStation Underground 4.4 entries
+
+-------------------------------------------------------------------
+Mon Mar 25 13:45:32 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190323:
+  * Gamedb: Also add patches for Klonoa 2 JP version.
+  * Gamedb: Also add patches for Klonoa 2 EU version.
+
+-------------------------------------------------------------------
+Fri Mar 22 13:27:46 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190321:
+  * Updated Klonoa 2 patch to new one by Prafull, works much better and fixes some corrupt textures
+  * Workaround to avoid access violation problem in Klonoa 2 loading Volkan Inferno Lets hope the build bot doesn't mess this up :P
+
+-------------------------------------------------------------------
+Wed Mar 20 21:43:17 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190319:
+  * [skip ci] README.md: Improve readability. (#2893)
+  * gsdx-hw: Add another Sly 2 prototype/beta disc to crc list.
+
+-------------------------------------------------------------------
+Sun Mar 17 19:03:15 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190317:
+  * gsdx-hw: Purge GSC_NarutimateAccel, GSC_Naruto crc hacks.
+  * gsdx-gui: Fix overlap issue with Rendering threads text.
+
+-------------------------------------------------------------------
+Thu Mar 14 21:38:50 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190312:
+  * Gamedb: Add King's Field IV ntsc-j patch.
+  * gsdx-ocl: Fix some compile warnings.
+  * gsdx-gui: Properly grey out opencl device text when opencl is enabled, also some minor cleanup.
+  * Plugins: Remove PADSSSPSX and xpad.
+
+-------------------------------------------------------------------
+Mon Mar 11 13:33:29 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190311:
+  * dev9ghzdrk: pthread_create returns status, not thread handle
+
+-------------------------------------------------------------------
+Sat Mar 09 17:33:50 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190308:
+  * gsdx-hw: Update a few crc issue categories for several games.
+  * gsdx-hw: Move GSC_Okami to Aggressive level.
+  * Gsdx hw: Purge GSC_TalesOfAbyss crc hacks.
+  * gsdx-gui: Adjust advanced settings and hacks gui.
+  * Locale: purging some ja_JP localization
+  * gsdx-hw: Move GSC_YakuzaGames to partial level.
+  * gsdx-d3d11: Minor adjustments to DATE code.
+  * gsdx-ogl: Minor adjustments to DATE code.
+  * gsdx-debug: Use gl GL_INS print macro for a log instead of relying on debug build.
+
+-------------------------------------------------------------------
+Sun Mar 03 15:32:59 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190303:
+  * gsdx-gui: Update blending option.
+  * Gamedb: Add vuClampMode 2 gamefix for James Bond 007 - Nightfire.
+
+-------------------------------------------------------------------
+Fri Mar 01 17:33:14 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190301:
+  * cdvd: Get rid of code that disabled loading psx discs.
+  * PCSX2-EE: Improve SetGSCrt logging
+  * PCSX2: Avoid enabling VuClipFlag at some scenarios
+  * Locale: Update ja_JP translation
+  * gsdx: Forgot to move the crc state for mgs3 and ace combat 4.
+
+-------------------------------------------------------------------
+Wed Feb 27 15:21:15 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190225:
+  * gsdx: Purge depth crc hack for GSC_RadiataStories.
+  * [skip ci] git: Update issue template links.
+  * gsdx: Purge GSC_CrashNburn crc hacks.
+  * Add comments to prevent various warnings about falling through on case statements.
+
+-------------------------------------------------------------------
+Sat Feb 23 19:21:06 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190223:
+  * gsdx: Purge all crc hacks for GSC_OnePieceGrandAdventure and GSC_OnePieceGrandBattle.
+
+-------------------------------------------------------------------
+Fri Feb 22 20:02:15 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190222:
+  * gsdx: Purge depth crc hack for Haunting Ground.
+  * gsdx hw:move vertices fixup for texture shuffle in RendererHw
+
+-------------------------------------------------------------------
+Thu Feb 21 20:59:05 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190221:
+  * Gamedb: Add GIFFIFOHack gamefix to remaining Mana Khemia games.
+  * Gamedb: Add gamefixes for NFL Street 2, Killzone, Constantine, ShellShock.
+  * Revert "gsdx-gui: Use a separate drop down list for sparse texture."
+  * gsdx-gui: Use a separate drop down list for sparse texture.
+  * gsdx d3d11: re-normalize coordinate when TEX0 is invalid.
+  * gsdx ogl: re-normalize coordinate when TEX0 is invalid
+  * gsdx: add a function to fix the TEX0 register value for HW renderer
+  * gsdx: Allow to save and restore drawing context
+  * gsdx-gui: Adjust psx compat gui.
+  * gsdx: Save hotkey toggle to ini config.
+
+-------------------------------------------------------------------
+Tue Feb 19 20:50:31 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190219:
+  * fxaa.fx: Purge d3d9 shader code.
+
+-------------------------------------------------------------------
+Mon Feb 18 16:06:50 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190218:
+  * x86emitter: Purge empty file sse_helpers.h.
+  * gsdx-gui: Add hotkey nametags to some options that have hotkey support already.
+  * Lilypad: Don't toggle width and heigh for Inputs window with Show/hide Special Inputs button.
+  * Lilypad: Partially revert #2832
+
+-------------------------------------------------------------------
+Fri Feb 15 13:40:27 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190213:
+  * gsdx device: use same target for fxaa/shaderboost/shaderfx
+  * gsdx device: use generic resize texture function
+  * onepad/onepad legacy: Remove Windows placeholder dirs.
+  * spu2-x-gui: Reduce window height.
+  * gsdx-gui: Adjust some button positioning and window width.
+  * gsdx: Reuse same selected renderer image/banner for ps1 emu compatibility as ps2.
+  * gsdx: Adjust/cleanup ini options.
+  * gsdx: Cleanup/update Wild Arms offset hack.
+  * gsdx: Move GSTexturecache files from Common to HW renderer.
+  * GSdx: Adjust Burnout crc hacks to work on multiplayer mode as well.
+  * lilypad: Some tweaks and fixes.
+
+-------------------------------------------------------------------
+Sat Feb 09 14:01:49 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190209:
+  * gsdx-egl: Also do the same for egl pointer logs.
+  * gsdx-ogl: Enable function pointer support logs only when "debug_opengl" is enabled in the ini.
+  * [skip ci] gsdumpgui: Auto select first GSdx dll on the list upon program launch.
+  * [skip ci] gsdumpgui: Allow to open ini file even when no gsdx dll is selected.
+  * [skip ci] gsdumpgui: Update code to share only one gsdx config for all dlls.
+  * gsdx-ogl: Small colclip improvements.
+
+-------------------------------------------------------------------
+Fri Feb 08 13:22:14 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190207:
+  * GSdx-gui: Set ini option to 0 for sparse texture since the feature is not yet implemented, also add tooltip for the gui option.
+  * gsdx-ogl: Fix override detection for extensions.
+  * gsdx-gtk: Add linux option for Sparse Texture in advanced options.
+  * gsdx-gui: Add windows option for GL Sparse Texture in advanced options.
+  * gsdx-ogl: glTexturePageCommitmentEXT should be optional for sparse texture.
+  * gsdx ogl: remove boilerplate of extension check
+  * gsdx ogl: load GL_EXT_direct_state_access for sparse texture
+  * gsdx-ogl: add sparse format detection
+  * gsdx-ogl: use a print_once macro
+  *  gsdx-ogl: add extensions check that might be useful in the future
+  * gsdx ogl: use a set to store the supported extension
+  * gsdx-ogl: add a separate glext.h file
+  * 3rdpary: import GL/glcorearb.h
+  * gsdx-ogl: use only core debug extension
+  * gsdx-ogl: add missing define of glcorearb.h
+  * gsdx-ogl: clean partially the GL1 mess
+  * gsdx-ogl: generate nearly all gl entries function pointers
+
+-------------------------------------------------------------------
+Mon Feb 04 19:32:08 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190202:
+  * gsdx hw: use non virtual Create Texture function.
+  * 3rdparty:soundtouch: Upgrade SoundTouch lib to 2.1.2. (#2787)
+
+-------------------------------------------------------------------
+Fri Feb 01 14:34:03 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190131:
+  * [skip ci] nsis: Update banner/logo.
+  * lilypad: Adjust Special Inputs window and button behavior.
+  * pcsx2: Update speed hack presets to be more friendly and usable (#2793)
+  * [skip ci] NSIS: Add code comments, small tweaks, misc. copyright changes
+  * NSIS: Fix uninstaller regression with regkey removal.
+  * gsdx: Merge Sly 2 and 3 crc hacks.
+  * gsdx-d3d11: Remove unused function OMSetRenderTargets with UnorderedAccessView.
+  * gsdx-debug: Disable Alpha Test debug logs on d3d11.
+
+-------------------------------------------------------------------
+Sun Jan 27 22:48:28 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190127:
+  * gsdx-d3d11: Framebuffer copy improvements
+  * gsdx-ogl: Update intel bad driver log.
+  * gsdx: Remove some useless dx9 comments.
+  * gsdx-d3d11: Add final specifier to some voids.
+  * gsdx-d3d11: Merge/move GSDeviceDX code to GSDevice11.
+  * gsdx-ogl: Remove useless SetupIA from GSDeviceOGL.h not used.
+  * gsdx-ogl: Enable anisotropic filtering only for triangles.
+  * gamedb: Add eeClampMode full gamefix for Castlevania - Lament of Innocence.
+  * onepad: Add the Logitech Chillstream to the database.
+  * gsdx-ocl: Add some ifdef checks for opencl renderer.
+  * onepad: Add the SteelSeries Stratus XL to the database. Issue #2825
+
+-------------------------------------------------------------------
+Thu Jan 24 21:16:50 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190124:
+  * GSdx-d3d11: Add final to Renderer class and DrawPrims, also change some voids to inline.
+  * GSdx-d3d11: Merge GSRendererDX11 and GSRendererDX together.
+  * gsdx-hw: Adjust/cleanup hw hacks variable calls.
+  * PCSX2: Remove the arbitrary limit on patches by converting the patch list to a vector. (#2797)
+  * GSdx: Adjust Scaling Factor.
+  * gsdx-gui: Update Accurate date tooltip.
+
+-------------------------------------------------------------------
+Tue Jan 22 13:24:14 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190122:
+  * gsdx-d3d11: ICO depth HLE
+  * gsdx-d3d11: Update texture copy method to handle depth
+  * gsdx-d3d11: Cache rt depth stencil on m_state
+  * gsdx: Adjust some crc hack comments for some games.
+
+-------------------------------------------------------------------
+Mon Jan 21 13:50:02 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190120:
+  * Gsdx: Purge GSC_RedDeadRevolver crc hacks.
+  * GSdx: Purge GSC_BlackHawkDown crc hacks.
+
+-------------------------------------------------------------------
+Sat Jan 19 17:56:49 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190118:
+  * GSdx: Add glsl shaders to VS solution.
+
+-------------------------------------------------------------------
+Fri Jan 18 13:55:33 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190118:
+  * gsdx-tc: Remove CanConvertDepth virtual bool and use m_can_convert_depth for depth toggling.
+  * GSdx: Move GSC_DeathByDegreesTekkenNinaWilliams to partial crc level.
+  * gsdx: Add Death By Degrees crc id for US region.
+  * tfx.fx: Correct a couple more blending factors.
+  * GSdx: Purge GSC_LegoBatman crc hacks.
+  * GSdx: Adjust dbz bt glow/blur crc hack.
+  * gsdx: Remove remaining MSAA ui code
+  * gsdx-hw: Completely remove MSAA from renderer code.
+
+-------------------------------------------------------------------
+Tue Jan 15 14:11:38 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190115:
+  * GameDB: Add vuClampMode = 2 for UEFA Euro 2004. (#2814)
+  * tfx.fx: Adjust some blending factors
+  * GSdx-d3d11: Remove afix factor from 24bit format.
+
+-------------------------------------------------------------------
+Mon Jan 14 12:56:57 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190114:
+  * GSdx-d3d: Move channel and texture shuffle in GSRendererDX.
+  * GSdx-gui: Add 10x and 12x as an upscaling option.
+  * GSdx: Hide the MSAA option.
+  * GSdx: Purge GSC_EternalPoison crc hacks.
+  * GSdx: Adjust GSC_GodOfWar 1 and 2 crc hacks a bit more.
+  * GSdx: Purge OI_GodOfWar2 hw hack.
+  * GSdx: Remove depth crc hacks for god of war 1 and 2.
+
+-------------------------------------------------------------------
+Sat Jan 12 19:28:02 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190112:
+  * GSdx-ogl: Correct DATE log.
+  * GSdx-ogl: Add perf log for Slow DATE code on texture shuffle/no prim overlap.
+  * GSdx: Move BoundingBox to HW render and update d3d11 code to use the gl bounding box as well.
+  * convert.fx: Update main4 shader to better support hdr colclip.
+  * GSdx-d3d11: Add/port HDR colclip support.
+  * GSdx-d3d11: Remove colclip and negative blend algo.
+  * Remove the unused 'incomplete and untested' BaseTaskThread class.
+
+-------------------------------------------------------------------
+Thu Jan 10 19:06:29 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190109:
+  * spu2-x: Remove DecodeDPLII.cpp and DPLII.h files "Dolby Pro Logic II".
+  * spu2-x: Adjust some Dolby Pro Logic II code.
+  * pcsx2: Remove/disable unused variables.
+  * GSdx: Add option to Disable Safe Features.
+
+-------------------------------------------------------------------
+Fri Jan 04 19:32:21 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190103:
+  * Remove CDVDPeops and PeopsSPU2. (#2792)
+  * GSdx-d3d11: Re enable shader code logging.
+  * cmake: Re add the -mxsave flag to compiler flags.
+
+-------------------------------------------------------------------
+Wed Jan 02 16:22:31 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190102:
+  * Properly escape the period in Translation.cmake.
+  * GSdx: Adjust some checks in the gui code.
+  * pcsx2: Remove unused variable "maddr" from Vif1_MFIFO.cpp.
+  * Skip over translation files with .git in the path when building pcsx2 with cmake. Fixes an intermittant cmake build error about duplicate rules.
+  * spu2-x: Remove unused GetLinearSrAr code.
+  * GSdx-gui: Update the crc hack level tooltip again.
+  * GSdx-gui: Update crc hack level tooltip.
+
+-------------------------------------------------------------------
+Sun Dec 30 19:54:12 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181230:
+  * gsdx: remove dds parameter from texture save method
+  * gsdx-d3d11: enable splitting of alpha in dumps
+  * GSdx: Purge a crc hacks for GSC_Onimusha3.
+  * GSdx: Purge some crc hacks for GSC_BurnoutGames.
+  * GSdx: Adjust Aggressive state crc level.
+  * Gabedb: Add EE clampmode gamefix to full for DreamWorks Shrek the Third.
+
+-------------------------------------------------------------------
+Fri Dec 28 13:19:52 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181228:
+  * Gabedb: Add EE clampmode gamefix to full for NFS Carbon.
+  * Take care of a cmake 3.11 deprecation warning when finding OpenGL.
+  * Only use -Wno-class-memaccess on gcc 8.0 or higher, as it didn't exist previously.
+  * Revert "cmake: Add -mxsave flag to ARCH_FLAG in BuildParameters."
+  * cmake: Add -mxsave flag to ARCH_FLAG in BuildParameters.
+  * PCSX2: updates & improvements of Scandinavian translations
+  * GSdx-d3d: Add texture shuffle check in DATE selection.
+  * GSdx: Disable/uncheck "Large Framebuffer" option by default.
+  * GSdx: Fix OpenCL detection.
+  * Dev9ghzdrk: MAC updated to work with XLink 7.4.32
+  * GSdx: Cleanup file includes.
+  * gsdx-d3d11: remove useless gs creation method
+  * gsdx-d3d11: Enable HLSL debugging on development builds
+  * GSdx-osd: Change default font color to blue/cyan.
+
+-------------------------------------------------------------------
+Mon Dec 24 20:11:11 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181224:
+  * GSdx: Partially re add Bully crc hack.
+  * GSdx: Update GSC_DBZBT2, GSC_DBZBT3 crc hacks.
+  * GSdx: Purge GSC_Bully, GSC_BullyCC crc hacks. It's the same game.
+  * GSdx: Purge OI_SMTNocturne hw hack.
+  * GSdx-TC: Get rid of nasty ZWriteMustNotClear hack.
+  * gsdx-d3d11: Fix CopyOffscreen bug
+
+-------------------------------------------------------------------
+Sun Dec 23 13:59:05 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181223:
+  * GSdx-d3d: Disable MSAA unti it's properly fixed.
+  * GSdx: Remove d3d9.lib and d3d9.dll from common.props.
+  * GSdx: Remove d3d9 header include from stdafx.h
+  * GSdx-d3d: update blend table to use src1 blending and remove the nasty hack which we couldn't before because of d3d9.
+  * GSdx-d3d: Adjust D3D11Blend, get rid of some casts.
+  * GSdx: Update/remove useless d3d9 comments.
+  * GSdx-ogl: Update blend table and remove d3d9 code, remove useless defines and directly use gl code.
+  * GSdx-d3d: Update blend table enums from D3D9 to D3D11.
+  * GSdx-d3d: Rename d3d9 blendtable and variables to d3d11.
+  * GSdx: Remove support for D3D9 device on ps1 emu compatibility.
+  * GSdx: Get rid of d3d9 adapter code from GSSettingsdlg and GSDevice.
+  * GSdx-osd: Lower default font size from 28 to 25.
+  * gsdx-d3d11: Fix Depth FST
+
+-------------------------------------------------------------------
+Fri Dec 21 18:54:36 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181221:
+  * GSdx: Purge GSC_Black crc hacks.
+  * GSdx: Move GSC_GTASanAndreas crc hack to aggressive state.
+  * GSdx: Adjust GSC_DemonStone crc hack.
+  * GSdx: Purge GSC_SuikodenTactics crc hacks.
+  * GSdx-gui: Might bea good idea to also change Auto to Automatic for interlacing option to keep it consistent with the other options.
+  * GSdx-gui: Add Default name tags to default options for Anisotropic Filtering and Interlacing.
+  * GSdx: Purge GSC_LordOfTheRingsTwoTowers crc hacks.
+  * GSdx: Move GSC_MetalGearSolid3 to Aggressive crc state.
+  * GSdx-gui: Update MSAA tooltip.
+  * tfx.fx: Remove commented out code in clamp_wrap_uv function.
+  * GSdx: Remove some crc hacks for GSC_IkkiTousen.
+  * gsdx-osd: Update m_font to use unique_ptr
+  * GSdx: Add color to OSD, move it to its own tab, and change the widget defaults on the dialog box.
+  * gsdx-osd: Update Linux dialog
+  * gsdx-osd: Update osd gui
+  * gsdx-osd: Add support for custom colors
+  * gsdx-osd: Rename log speed to log timeout
+  * gsdx-osd: Switch to opacity
+  * gsdx-osd: Scale based on window size
+  * gsdx-d3d11: Port RenderOsd function from opengl to support osd on d3d11
+  * gsdx-d3d11: Port OSD shader from OGL
+  * convert.fx: Add color support to IA
+  * gsdx-osd: Update manager to support DX11
+  * GSdx-d3d11: Adjust DATE code, and remove rtCopy.
+  * tfx.fx: Remove datst (DATE), and RTCopy.
+  * GSdx: Set some enum values correctly.
+  * GSdx-gui: Remove some leftover D3D9 code in the gui.
+  * GSdx: Adjust some of the crc hacks comments and what category they fall under.
+  * GSdx: Purge GSC_SpyroNewBeginning, GSC_SpyroEternalNight crc hacks.
+
+-------------------------------------------------------------------
+Thu Dec 20 12:08:57 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181220:
+  * GSdx: Purge GSC_StarWarsBattlefront and GSC_StarWarsBattlefront2 crc hacks.
+  * GSdx: Purge GSC_SoulCaliburGames crc hacks.
+  * GSdx: Purge GSC_HeavyMetalThunder crc hacks.
+  * GSdx: Adjust/remove crc hacks GSC_FrontMission5, GSC_HauntingGround.
+  * GSdx: Purge GSC_FinalFightStreetwise crc hacks.
+
+-------------------------------------------------------------------
+Thu Dec 20 00:22:29 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181220:
+  * GSdx: Purge Direct3D9 Render entirely. (#2762)
+  * GSdx-d3d11: Remove commented out code for int_fst.
+  * tfx.fx: Update Vertex and Geometry shaders to support the new depth sample state.
+  * tfx.fx: Add tfx shaders to support depth sampling.
+  * GSdx-gui: Remove Direct3D9 option from the gui.
+
+-------------------------------------------------------------------
+Tue Dec 18 12:01:07 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181218:
+  * GSdx-d3d11: Redo destination format and alpha output.
+  * GSdx-d3d11: Add support for dfmt shader macro.
+  * tfx.fx: Add support for dfmt to pick the shader for 16bit alpha output.
+  * GSdx-debug: Do some casts and fix warnings.
+
+-------------------------------------------------------------------
+Mon Dec 17 14:30:22 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181217:
+  * GSdx-d3d: Add remaining code for RGB channel.
+  * gsdx-d3d11: Copy render target when it matches texture in slot 4
+  * gsdx-d3d11: Move shader/sample state set to it's own function
+  * gsdx-d3d11: Add CopyRenderTarget function
+  * gsdx-d3d11: Store shader resource textures on GSDevice11
+  * gsdx-d3d11: Store render target texture in GSDevice11
+  * gsdx-d3d11: Add equality check for GSTexture11
+  * GSdx-d3d11: Add remaining psm.depth code.
+  * GSdx-d3d: Remove psm.depth skip on d3d.
+  * GSdx: Add crc id for ZettaiZetsumeiToshi2 EU.
+
+-------------------------------------------------------------------
+Sat Dec 15 13:53:30 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181215:
+  * GSdx-d3d: Simplify aout for reading.
+  * GSdx: Adjust God of War 1 and 2 crc hacks.
+  * GSdx-d3d11: Plug the TOA and Urban Chaos code in to channel shuffle.
+  * GSdx-d3d11: Add support for Tales of Abyss and Urban Chaos shader bit and shader macro.
+  * tfx.tx: Add support for Tales of Abyss and Urban Chaos HLE shader.
+
+-------------------------------------------------------------------
+Thu Dec 13 17:18:14 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181213:
+  * GSdx-d3d: Add fixme note fo rPSSetShaderResource slot 4 channel shuffle.
+  * GSdx-d3d11: Add support for depth convert format in texture sampler.
+  * GSdx-d3d11: Add support for depth_fmt bit as well as macro for shader.
+  * tfx.fx: Add shaders support for PS_DEPTH_FMT on channel shuffle.
+  * GSdx-d3d: Add support for channel shuffle in GSRendererDX.
+  * GSdx-d3d: Add support for ChannelShuffle in PS constant buffer.
+  * GSdx-d3d11: Add the shader fetch in GSTextureFX11.
+  * GSdx-d3d: Add the channel bit to support channel shuffle.
+  * tfx.fx: Port channel shuffle shaders from OpenGL.
+  * Localization: Update ja_JP localization
+  * SaveSlots: Initialise the crc to 0, as well as serialName being an empty string.
+  * Some annoying logs about COP0 are now COP0 Logs.
+  * GSdx: Forgot to remove OI_TalesOfLegendia from header file.
+  * GSdx: Remove OI_TalesOfLegendia HW hack. (#2747)
+  * pcsx2-git: Update ignored files
+
+-------------------------------------------------------------------
+Tue Dec 11 17:55:32 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181211:
+  * GSTextureCache: Initialize palette texture if needed and not done yet.
+  * GSTextureCache: Attach palette if needed (psm.pal > 0) also when reading part of framebuffer as texture.
+  * GSTextureCache: Refactor and fix palette management (v2).
+  * GSTextureCache: Refactor code to avoid using local shared pointer.
+  * GSTextureCache: Centralize CLUT comparison logic in PaletteKey equality operator.
+  * GSTextureCache: Reformat code and adjust comments.
+  * GSTextureCache: Compare also pal value in PaletteKey eq operator.
+  * GSTextureCache: Add ASSERTs on pal value to ease debugging.
+  * GSRendererOGL/GSTextureCache: Improve ICO hack by using palette cache for depth sampling, removing only point of creation of palette textures outside TC.
+
+-------------------------------------------------------------------
+Tue Dec 11 13:32:09 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181211:
+  * GSdx: Add proper Jak1 game to Automatic mipmapping.
+  * Gsdx: Adjust Burnout crc hacks to work on progressive mode.
+  * Saveslots: Initialize serialName to a blank string.
+  * GSdx-ogl: Switch shader numbers main18 and main19.
+  * GSdx-TCOGL: Adjust depth format cases in Texture Cache GL.
+  * Remove gigaherz old wip 'new' iopdma code. (#2703)
+  * GSdx-gui: Enable "Disable Depth Emulation" option for Direct3D11.
+  * GSdx-d3d: Support depth as texture.
+  * GSdx: Enable Texture Cache and RendererHW to support depth on Direct3D11.
+  * GSdx-d3d: Add support to write in depth buffer.
+  * Gsdx-d3d: Allow Direct3D11 to skip psm.depth on texture sampler.
+  * GSdx-TC11: Add support for depth formats in Direct3D11 Texture Cache.
+  * convert.fx port main10-16 shaders from Opengl to Direct3d11.
+  * spu2-x: Fix warnings regarding initializing with memset/memzero/etc... (#2682)
+  * onepad: Add support for the Nintendo Switch Horipad controller.
+  * GSdx-gui: Correct Large Framebuffer tooltip.
+
+-------------------------------------------------------------------
+Sat Dec 08 22:34:07 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181208:
+  * GSdx-gui: Update Large Framebuffer tooltip.
+  * GSdx: Reduce some code checks for dbz bt hacks.
+  * Switch to using the current cmake policies, not deprecated ones. (#2642)
+  * zzogl-pg: Don't include GLWin32.cpp when compiling for Linux.
+
+-------------------------------------------------------------------
+Thu Dec 06 18:37:09 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181206:
+  * GSdx: Add Nickelodeon: Barnyard to automatic mipmapping.
+
+-------------------------------------------------------------------
+Thu Dec 06 09:23:06 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181206:
+  * GSdx: Add crc ids for Burnout: Takedown and Revenge.
+  * PCSX2: Change EE Cyclerate, Cycle Skipping speedhacks gui level colors.
+  * GSdx: Remove bloom crc hack for Haunting Ground.
+
+-------------------------------------------------------------------
+Sun Dec 02 09:50:45 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181202:
+  * GSdx: Revert DBZ BT3 Ghosting/Blur hack.
+  * GSdx: Ease crc hack for DBZ BT2.
+  * GSdx: Add JaX and Jak 3 to automatic mipmapping.
+
+-------------------------------------------------------------------
+Fri Nov 30 13:26:22 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181130:
+  * GSdx-d3d: Update Fast DATE and Alpha Stencil behaviour.
+  * PCSX2: Apply updated ja_jp translation. (#2724)
+  * GSdx-d3d: Replace DATE one calls with a variable.
+  * GSdx-d3d: Partial port for DATE one (Fast Date) and Fast Accurate Date.
+  * GSdx: Ease crc hack for DBZ BT3.
+
+-------------------------------------------------------------------
+Wed Nov 28 21:53:36 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181128:
+  * PCSX2: Update ja_JP translations. (#2721)
+  * GSdx-gtk: Move around some options to better match windows gui.
+  * GSdx-ogl: Implement a fast Accurate Date algorithm.
+  * SPU2-X-gui: Replace logo. (#2719)
+  * Gamedb: Purge FMVinSoftwareHack gamefixes for Silent Hill 2.
+  * GSdx: Always enable Unscale Point and Line.
+
+-------------------------------------------------------------------
+Mon Nov 26 13:48:17 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181126:
+  * GSVector4i: Fix compare64 function.
+
+-------------------------------------------------------------------
+Sun Nov 25 22:03:12 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181125:
+  * GSdx: Adjust Frame Buffer Conversion tooltip and TC comment to match recent changes.
+  * GSdx-ogl: Move rgb channel 7 to empty slot 5.
+
+-------------------------------------------------------------------
+Sat Nov 24 15:27:03 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181124:
+  * GSdx: Make OI_TalesOfLegendia hack active only when depth is not supported/disabled.
+  * GSdx: Add crc id for Tenchu Fatal Shadows JP.
+  * Gamedb: Ease Ghost in the Shell COP2 patch.
+
+-------------------------------------------------------------------
+Fri Nov 23 21:40:21 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181122:
+  * pcsx2: Add StaticLine between Zoom and Disable window resize border.
+  * pcsx2: Purge leftover commented out code for exclusive fullscreen.
+  * GameDB: Fix Ace Combat V NTSC-J Patch Address. (#2700)
+
+-------------------------------------------------------------------
+Tue Nov 20 13:55:36 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181120:
+  * Minor README edit by TheTechnician27
+  * pcsx2: Fix some issues on FMV Aspect Ratio Override.
+  * GameDB: Add Ace Combat 5 COP2 Patch on NTSC-J. (#2694)
+
+-------------------------------------------------------------------
+Mon Nov 19 13:30:21 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181118:
+  * PCSX2: Correct FMVAspectRatioSwitchNames ini labels.
+  * PCSX2: "FMV Aspect Ratio Switch/Override" feature.
+
+-------------------------------------------------------------------
+Sun Nov 18 15:55:33 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181118:
+  * GSdx-osd: Remove/purge OSD Indicator code.
+  * GSdx-gtk: Adjust some spacing, ocd satisfaction and preparation for the next commit.
+  * Gamedb: Add gamefix patch for SpongeBob SquarePants: Battle for Bikini Bottom.
+  * Gsdx: Adjust GSC_Oneechanbara2Special (Zombie Hunters 2) crc hack.
+
+-------------------------------------------------------------------
+Sat Nov 17 22:19:34 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181117:
+  * GSdx-TC: Adjust comment for PaletteMap when 8-bit texture is disabled.
+  * GSdx: Add some extra comments for GSC_HauntingGround crc hacks.
+  * GSdx: Remove blur/ghosting crc hacks for GSC_ShadowofRome.
+  * GSdx: Add google translated comments for crc hacks in GSHwHacks.cpp.
+  * GSdx: Remove/purge commented out hacks "GSHwHacks.cpp.
+  * GSdx: Prevent Null Renderer from crashing in Linux.
+  * GSdx: Folder Reorganization. (#2657)
+  * gsdx: Fix memory leak
+  * A bit of cleanup.
+
+-------------------------------------------------------------------
+Wed Nov 14 13:58:07 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181114:
+  * ci: Fix Travis CI builds
+
+-------------------------------------------------------------------
+Tue Nov 13 21:33:43 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181113:
+  * GSdx-TC: Use PaletteMap also when 8-bit texture is disabled by caching only clut copies. (#2681)
+  * GSdx-d3d: Rename Blend Selector to better match opengl code.
+  * GSdx-d3d: Rename Depth Stencil Selector to better match opengl code.
+
+-------------------------------------------------------------------
+Mon Nov 12 20:50:37 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181112:
+  * GSdx: Rename some variables in GSHwHack.cpp.
+  * GSdx-gui: Switch places for "Alpha Correction" and "Logarithmic Z" on d3d9.
+
+-------------------------------------------------------------------
+Mon Nov 12 13:58:07 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181111:
+  * GSdx-d3d: Remove not yet used rt parameter in channel shuffle function.
+
+-------------------------------------------------------------------
+Sun Nov 11 12:33:40 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181111:
+  * GSCrc: Small comment correction that I didn't notice before.
+  * GSdx: Add a couple of GT3/4 crc ids.
+  * GSdx-TC: Remove virtual specifier from PaletteKeyHash operator, PaletteKeyEqual operator and Palette destructor. (#2680)
+
+-------------------------------------------------------------------
+Sat Nov 10 16:44:19 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181110:
+  * GSdx: Removed crc id 0x7D4EA48F (multiloader). (#2677)
+  * PCSX2: Update Dutch Translations. (#2678)
+  * Debugger: Make EE kernel region accessible to debugger. (#2559)
+  * Removed hack - use xinputNotInstalled as a flag instead of reusing pXInputEnable
+  * Call XInputGetState only when XInputGetExtended is not
+  * PCSX2: Add ability to pass launch arguments to games with CLI option '--gameargs="-arg1 -arg2 -etc (#2576)
+
+-------------------------------------------------------------------
+Tue Nov 06 19:36:32 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181105:
+  * GameDB: Remove CRC check for Forbidden Siren 2 patch allowing it to work with another version as found in https://forums.pcsx2.net/Thread-bug-report-Forbidden-Siren-2-Pal?page=2
+
+-------------------------------------------------------------------
+Mon Nov 05 13:37:06 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181104:
+  * GSdx-TC: Palette management rework. (#2344)
+
+-------------------------------------------------------------------
+Sun Nov 04 20:18:05 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181104:
+  * PCSX2: Update of Brazilian-Portuguese Main mo-file
+  * GSdx: Add a CRC id for RedDeadRevolver RU. (#2673)
+  * PCSX2: Update Brazilian/Portuguese translations. (#2672)
+
+-------------------------------------------------------------------
+Sat Nov 03 01:40:34 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181102:
+  * GSdx-gui: Remove "Recommended" word from crc hack levels Partial and Full.
+
+-------------------------------------------------------------------
+Thu Nov 01 23:11:38 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181101:
+  * Gamedb: Change the Kings Field 4 comments for the patches a bit to explain what the issue is.
+  * GameDB: Add patches for King's Field IV PAL/NTSC-U.
+  * GSdx-gui: Increase the vertical size for the drop down list for crc hack level, blending accuracy, and TV shader.
+
+-------------------------------------------------------------------
+Wed Oct 31 14:12:28 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181031:
+  * 3rdparty:wxwidgets: Cache strings for "Next>" or "Finish" buttons in wxWizard so locale stays consistent throughougt wizard's lifetime (#2664)
+
+-------------------------------------------------------------------
+Tue Oct 30 14:02:59 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181028:
+  * Refresh the save slots if either the crc *or* the serial number are different. (Needed for ps1 saves.)
+  * GSdx-GUI: Disable large framebuffer for custom res
+  * GSdx-HW: Remove inefficient scaling algorithm
+  * Expand out a define to get rid of a warning. Get rid of other compiler warnings. Re-indent so that it doesn't look like a statement is part of an if statement when it isn't.
+  * Get rid of a few GSdx warnings. Remove some extra newlines in Sio's console output.
+
+-------------------------------------------------------------------
+Thu Oct 25 23:14:57 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181023:
+  * GSdx: Add an enum for channel fetch.
+  * pcsx2-gui: Align some of the buttons/options in GS Window.
+
+-------------------------------------------------------------------
+Mon Oct 22 18:12:33 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181020:
+  * GSdx-d3d: SetupDATE - > use pretty enum names.
+  * GSdx: Add Harry Potter and the Half-Blood Prince to automatic mipmapping.
+
+-------------------------------------------------------------------
+Fri Oct 19 18:12:00 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181019:
+  * GSdx-d3d: Add macro to support ScalingFactor in shaders.
+  * GSdx-d3d: Partial port of the ICO HLE workaround.
+  * GSdx: Revert disabled crc hack on native res for SFEX3.
+  * GameDB: Add GIFFIFOHack to Mana Khemia 1 and 2.
+  * GSdx-d3d: Move around some functions in DrawPrims to better match ogl.
+
+-------------------------------------------------------------------
+Wed Oct 17 19:54:52 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181016:
+  * GSdx-gui: Change internal resolution drop down list names.
+  * Reenable the new saveslots. Disable the logging for them.
+  * Revert "Saveslots: This version is still commented out, and somewhat broken at the moment. If you uncomment it, after loading a game, pause and then resume to force the save and load menus to update."
+  * pcsx2: small string typo fix.
+
+-------------------------------------------------------------------
+Mon Oct 15 20:22:10 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181015:
+  * GSdx: Change how crc hacks work on native res.
+  * SPU2-X: Adjust NextA case comments a bit.
+
+-------------------------------------------------------------------
+Mon Oct 15 13:08:59 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181015:
+  * SPU2-X: Also include the registers from case 5 since it makes more sense to have both NextA writable.
+  * SPU2-X: Fixes a regression with Wallace And Gromit: Curse Of The Were-Rabbit sound cutting off.
+  * PCSX2: Add tooltip warning for Widescreen Patches.
+  * Dev9ghzdrk: Postinst for deb to add network capabilities
+
+-------------------------------------------------------------------
+Sun Oct 14 10:56:13 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181014:
+  * Saveslots: This version is still commented out, and somewhat broken at the moment. If you uncomment it, after loading a game, pause and then resume to force the save and load menus to update.
+  * Add some logging for the saveslot changes, and the option to turn on just the extra ui update calls without the other saveslot changes, for testing.
+  * A few more flags that slipped by the last commits.
+  * Removing some warnings from GSdx and pcsx2 because gcc 8 spams them mercilessly. They should probably be fixed properly, but in the meantime, this'll prevent them from masking other compiler warnings.
+  * PCSX2: update of Scandinavian translations
+  * Update compiler flags, as a number of plugins didn't have them set. Setting -Wno-parentheses across the board to suppress warnings about gtk from gcc 8.
+
+-------------------------------------------------------------------
+Sat Oct 13 13:02:05 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181012:
+  * onepad_legacy: Separate the wx dialog code from the linux code here, too.
+  * onepad: Start to separate wx dialog code from linux code, as wxWidgets is multiplatform.
+
+-------------------------------------------------------------------
+Fri Oct 12 17:48:44 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181010:
+  * PCSX2: GUI textstring corrections
+  * GSdx-gui: Forgot to update the buttons in Capture Settings.
+  * GSdx-gui: Minor spacing changes to some buttons.
+
+-------------------------------------------------------------------
+Wed Oct 10 12:43:17 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181009:
+  * Onepad_legacy: Add missing header copyright notices.
+  * Remove the -fpermissive flag, as it doesn't actually seem necessary, and it generates a compiler warning.
+  * Dev9ghzdrk: Get host mac correctly on Windows. (#2619)
+  * GSdx-d3d: 24bit no alpha channel port from OpenGL.
+  * GameDB: Add patches for Ice Age 2 to make the games playable.(ntscu and pal).
+  * glsl, fx: Update point sampler comment.
+  * GSdx-d3d: Use a pretty enum for ate_second_pass.
+  * GSdx-d3d: Remove point sampler from d3d9.
+  * GSdx-d3d: Use Colormask instead of GSDXRecoverableError on d3d9 texture shuffle.
+  * PCSX2: Added complete Dutch translations. (#2625)
+  * Fix
+  * Enable dev9ghzdrk plugin for Linux build
+  * GSdx-d3d: Reformat GSRendererDX11.cpp.
+  * GSdx-d3d: Port directly set impossible mode in the blending table from OpenGL.
+
+-------------------------------------------------------------------
+Sun Oct 07 14:07:32 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181006:
+  * onepad_legacy: delete dead code.
+  * onepad_legacy: reformat code.
+  * Onepad-legacy: Even if std is used all over the place, lets not put the entire project in std's namespace.
+
+-------------------------------------------------------------------
+Sat Oct 06 23:21:55 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181006:
+  * GSdx-d3d: Add some comments in blendmap enums.
+  * GSdx-d3d: Make blend enums easier to read.
+  * Redo how the saveslot code works. Still leaving disabled until it's been tested.
+  * Update Onepad's controller list.
+
+-------------------------------------------------------------------
+Fri Oct 05 11:40:38 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181005:
+  * GSdx-d3d: optimize colclip 0 port from OpenGL.
+  * pcsx2: Update some redirect links.
+  * glsl: remove signed int cast  side (masks and offsets are unsigned to begin with.
+  * Update Travis CI for Linux networking addition
+  * GSdx-d3d: Change DATE variable to local.
+
+-------------------------------------------------------------------
+Wed Oct 03 20:19:09 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181003:
+  * GSdx-gui: Adjust space/rows on some tooltips so they fit better, rename Auto to Automatic list on adv. gl settings in hw hacks.
+  * tfx.fs: Remove whitespaces.
+  * GSdx: Limit Wrap negative UV when PS_FST is 0 only.
+  * Add network capability for Linux (#2586)
+  * GSdx-d3d: Add colclip_wrap variable.
+  * GSdx-d3d: purge GSDrawingContext* context and GSDrawingEnvironment env from GSRendererDX.h
+
+-------------------------------------------------------------------
+Tue Oct 02 13:04:49 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20181002:
+  * New helper include for gtk for use in plugins. Mostly based on the gtk 2/3 helper functions I added to spu2-x for the moment.
+  * GSdx-d3d: Reformat GSRendererDX.cpp.
+  * GSdx: Add a crc id for Burnout Revenge EU.
+  * GSdx-gui: Remove Xenosaga tooltip from TC Offset hack.
+  * GSdx: Wrap negative UV on region repeat wrap mode.
+  * Disable the new saveslot code. (It can be reenabled by uncommenting the define in Saveslots.h)
+  * Make it easy to turn on and off the new saveslot code. Comment out a UI update that doesn't look needed that could have been causing issues.
+
+-------------------------------------------------------------------
+Sat Sep 29 18:13:26 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180928:
+  * GSdx-d3d: Keep fract in [0;1] range port from OpenGL.
+
+-------------------------------------------------------------------
+Wed Sep 26 18:17:29 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180926:
+  * GameDB: Add VU Clamp Mode and GIF FIFO Hack to SOCOM 1. Resolves bad shadows/random HUD and sprite corruption.
+
+-------------------------------------------------------------------
+Tue Sep 25 12:56:50 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180925:
+  * GSdx-d3d: Update nvidia hack with vendor id detection.
+  * GSdx-d3d: Port mipmap max_layer calculation from opengl to direct3d.
+
+-------------------------------------------------------------------
+Sun Sep 23 20:51:36 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180923:
+  * PCSX2: update of Scandinavian translations
+
+-------------------------------------------------------------------
+Thu Sep 20 12:30:18 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180920:
+  * gsdx: Split TC offset hack into X and Y components
+  * gsdx:hw: Move TC offset variables to GSRendererHW
+
+-------------------------------------------------------------------
+Tue Sep 18 23:26:57 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180917:
+  * GSdx-d3d: tfx.fx correct texture shuffle shaders.
+  * pcsx2: Warn if GameDB section start tag is incorrect
+  * pcsx2: Improve GameDB multiline section parsing
+  * GSdx-d3d: Mask alpha channel on 24bit format.
+  * Remove an extern that goes to a function not in the code.
+  * Restore wxInvalidDateTime, and fix the call that was crashing debug.
+  * GSdx-tc: Update fb conversion hack comment with latest d3d changes.
+
+-------------------------------------------------------------------
+Sat Sep 15 12:01:55 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180915:
+  * Using wxInvalidDatetime does not get along with debug builds. Using 1/1/1970 instead.
+  * GSdx-d3d: Move Selector reset states in to a separate function.
+
+-------------------------------------------------------------------
+Thu Sep 13 23:39:59 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180913:
+  * GSdx: GPU accelerate 8 bits texture conversion port from OpenGL to Direct3D11.
+  * GSdx-gui: Minor osd gui adjustments.
+
+-------------------------------------------------------------------
+Wed Sep 12 13:10:52 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180912:
+  * GSdx: Add Yakuza ntsc-u demo crc id.
+  * PCSX2: Save/load slot improvements.
+  * build.sh: correct some tab/space issues left by arcum from previous commit.
+
+-------------------------------------------------------------------
+Thu Sep 06 07:32:29 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180905:
+  * Add a new option to build.sh to not generate translations while building the project.
+
+-------------------------------------------------------------------
+Wed Sep 05 12:21:43 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180904:
+  * pcsx2|utilities; Revert ambiguous wxString related commits
+  * Missed some more code from testing. I do know what I'm doing I swear
+  * Missed a debug log.
+  * Reverted shift register stuff back to how it was, my changes made no difference now and it was slightly more optimal before. Also fixed spaces (blame PSI :P )
+  * Fixed MFSA/MTSA, of course there's a game that abuses it (Rayman 3)
+
+-------------------------------------------------------------------
+Tue Sep 04 13:20:07 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180903:
+  * utilities: Fix compile when using --enable-stl wxWidgets builds
+  * utilities: Split thread internal callback function
+  * SPU2-X-gui: Small corrections requested by turtleli.
+  * GSdx-gui: Minor adjustements.
+
+-------------------------------------------------------------------
+Mon Sep 03 18:56:26 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180903:
+  * SPU2-X: More gui adjustements.
+  * GSdx: GSHwHack.cpp adjust a few lines I forgot in the previous commit.
+  * GSdx: Adjust Yakuza games crc hacks and do some reformatting.
+  * pcsx2|utilities: Remove ambiguous wxString-related overloads
+
+-------------------------------------------------------------------
+Sat Sep 01 10:50:35 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180901:
+  * GSdx: Add Sly2 Internal prototype disc crc id.
+  * Gamedb: Tidy up remaining tab spaces and some other cleaning.
+  * Gamedb: Merge duplicate patches, the only difference is the crc id, the patch codes are the same.
+  * GameDB: Remove trailing whitespace
+  * debugger: Reset breakpoint skip on boot
+  * pcsx2: Don't store the GameDB serial in the key list
+  * pcsx2: Remove GameDB blocktable
+  * utilities: Remove HashMap
+  * pcsx2: Simplify GameDB hashing
+  * pcsx2: Simplify Game_Data member functions
+  * pcsx2: Remove GameDB write related code
+  * GSdx-gui: Grey out Texture filtering and Interlacing on Null.
+  * gsdx:windows: Show different adapters for each renderer
+  * gsdx:windows: Don't refer to D3D10
+  * gsdx:windows: Refactor D3D11/9 adapter enumeration code
+  * gsdx:windows: Init hacks dialog member variables in constructor
+  * gsdx:windows: Open sub dialogs using temporary objects
+  * round count in constructor (to squash)
+  * gsdx ogl: allow to reallocate the vertex/index buffer
+  * gsdx ogl: use vector for layout parameter of Vertex Array
+  * i10n: update pt_BR translation
+
+-------------------------------------------------------------------
+Tue Aug 28 13:22:21 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180827:
+  * GSdx: Add some crc ids for HarryPotterATPOA KO/JP.
+  * Gamedb: Add Harry Potter and The Prisoner of Azkaban KO/JP gamefix patches.
+  * Gamedb: Correct misspelled SkipMPEGHack for Paris-Dakar Rally.
+
+-------------------------------------------------------------------
+Mon Aug 27 13:05:33 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180827:
+  * glsl: Replace leftover tabs with spaces in shaderboost.
+  * Add System Out as a logging source. (#2563)
+  * pcsx2:gui: Remove Game Database dialog and panel
+
+-------------------------------------------------------------------
+Sun Aug 26 16:55:18 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180825:
+  * SPU2-X (Linux): Lets try this again. GTK 3 fixes. Volume slider added. Latency slider shows ms. Debug button disables and reenables. Various dialog box tweaks.
+
+-------------------------------------------------------------------
+Sat Aug 25 16:54:01 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180825:
+  * Rename VU Cycle stealing to EE Cycle Skipping, and change tool tips for EE Cycle Stealing and EE Cycle Skipping
+  * ci: Disable clang-format checks on Travis CI
+  * Revert my last couple commits because they don't meet a robot's code formatting standards.
+  * Attempt to placate evil spirits.
+  * Spu2-x(Linux): Debug button greys out when appropriate. Minor cleanup on last commit.
+  * Spu2-X (Linux): Dialog cleanup. Add volume control. Switch Ok/Cancel buttons to be the same as other plugins on Linux. Add in code for GTK 3 to get rid of depreciation warnings.
+
+-------------------------------------------------------------------
+Fri Aug 24 13:33:11 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180824:
+  * GSdx-gui: Don't disable Anisotropic Filtering on gl when Allow 8-bit textures is enabled.
+
+-------------------------------------------------------------------
+Thu Aug 23 20:37:17 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180822:
+  * glsl: Replace leftover tabs with spaces in tfx_fs.
+  * Gsdx: Point Sampler changes.
+  * [skip ci] Update all links to https on README.md.
+  * Translations: pt_BR: fix typo in pcsx2_Iconized.po (#2561)
+  * Get rid of AppConfigDialog.cpp.
+  * GSdx: Add Ape Escape 2 to automatic mipmapping.
+  * GSdx-gui: Put TC Offset X Y hacks in one line similar to Skipdraw Offset
+
+-------------------------------------------------------------------
+Tue Aug 21 12:10:01 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180821:
+  * GSdx-d3d: Reduce state change - port from GL.
+  * GSdx-d3d: s/sample_4a/sample_4_index/
+  * GSdx-d3d: Drop an useless min in FS - port from GL.
+
+-------------------------------------------------------------------
+Tue Aug 21 07:42:11 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180820:
+  * gsdx:hw: Enable skipdraw hack to skip a range of draw calls
+
+-------------------------------------------------------------------
+Mon Aug 20 12:58:49 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180820:
+  * GSdx-gui: Revert spacing between Texture filtering and Hardware settings.
+  * GSdx-gui: Adjust main gui spacing.
+  * Add the Logitech Rumble Gamepad F510 to onepad's database.
+
+-------------------------------------------------------------------
+Sat Aug 18 13:07:56 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180817:
+  * Make the dialog for zzogl-pg GTK 3 compatible.
+  * utilities: Restrict pxWindowAndFlag templates to wxObject derived classes
+
+-------------------------------------------------------------------
+Thu Aug 16 13:21:29 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180816:
+  * cmake: Add -mxsave flag to compiler flags
+
+-------------------------------------------------------------------
+Sun Aug 12 21:44:09 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180812:
+  * gsdx:gtk: Improve dialog for small screen resolutions
+  * gsdx:gtk3: Fix fetching of monitor resolution
+  * gsdx:gtk+3: Adjust visual layout
+  * gsdx:gtk3: Switch to non-deprecated GTK3 API
+  * common: Use GCC's _xgetbv definition from GCC 8.2 onwards
+
+-------------------------------------------------------------------
+Sun Aug 12 11:38:51 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180812:
+  * GameDB: Add XgKickHack to Warhammer 40K. Fixes corrupted graphics.
+  * Debugger: Display ACC register. (#2527)
+
+-------------------------------------------------------------------
+Fri Aug 10 16:44:28 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180809:
+  * SPU2-X-gui: Update gui interface.
+
+-------------------------------------------------------------------
+Wed Aug 08 11:25:09 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180808:
+  * spu2-x:gtk3: Fix hbox/vbox deprecation warnings
+  * spu2-x:linux: Reduce non-timestretch minimum latency to 3ms
+  * GSdx-gui: Properly grey out Anisotropic Filtering text when the option is inactive.
+
+-------------------------------------------------------------------
+Tue Aug 07 11:06:02 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180807:
+  * GSdx-gui: Update CRC Hack Level tooltips.
+  * gsdx:ogl: Remove unused variables
+  * pcsx2: Avoid trigraphs
+  * onepad|spu2-x: Avoid -Wmissing-braces on clang
+  * pcsx2: Add override to SysTraceLog functions declarations/definitions
+
+-------------------------------------------------------------------
+Sat Aug 04 20:45:28 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180804:
+  * GSdx: Adjust God of War II crc hack.
+  * GameDB: Add eeClampMode gamefix to Destroy All Humans 2 (ntsc).
+  * GameDB: Add EE and VU clamping mode gamefix for  A.C.E. 3 the final.
+  * GSdx: Add/adjust crc ids.
+
+-------------------------------------------------------------------
+Wed Aug 01 12:17:21 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180801:
+  * GSdx: Adjust ShinOnimusha crc hack. (#2521)
+  * Grammar corrections in readme-Docs.txt (#2529)
+  * GameDB: Add patches for Harry Potter (Chamber of Secrets, Prisoner of Azkaban).
+  * Just adding some comments to MMI fix.
+  * Corrected MMI PMADDW and PMSUBW on the Interpreters thanks to DobieStation for finding the fix
+
+-------------------------------------------------------------------
+Tue Jul 31 11:37:06 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180731:
+  * GSdx: Add games to automatic mipmapping, add some crc ids.
+  * GameDB: Conflict 4, K-1 WorldGP 2006 and Mahou Sensei Negima! Kagai Jugyou fixes.
+
+-------------------------------------------------------------------
+Mon Jul 30 11:32:32 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180730:
+  * Debugger: Display/set correct VU values (#2526)
+
+-------------------------------------------------------------------
+Tue Jul 24 12:30:25 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180723:
+  * GameDB: Apply EE Clamp gamefix to Kenran Butousai. Fixes missing graphics.
+
+-------------------------------------------------------------------
+Mon Jul 23 07:52:10 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180723:
+  * pcsx2:windows: Fix path issues
+  * spu2-x:linux: Fix ini path issue
+  * gsdx:windows: Fix screenshot/GS dump path issues
+  * misc-plugins:windows: Fix ini/log path issues
+  * common: Add plugin compatibility file
+  * dev9null|fwnull|usbnull:windows: Export *setLogDir
+  * pcsx2: Pass UTF-8 pathnames to plugins
+
+-------------------------------------------------------------------
+Fri Jul 20 12:15:27 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180719:
+  * GSdx: Adjust Spartan crc hack, add missing crc id. (#2510)
+  * GSdx: Add Harry Potter Order of the Phoenix to automatic mipmapping.
+  * GSdx: Add/adjust some CRC ids. (#2512)
+
+-------------------------------------------------------------------
+Tue Jul 17 18:50:42 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180715:
+  * GSdx: Add some missing crc ids.
+  * EE Rec/Int: Removed micro optimisation in QFSRV/MSTAB/MSTAH. Reverted functionality to match the documentation. There were some scenarios that weren't really accounted for, like developers doing what they're told not to do.
+
+-------------------------------------------------------------------
+Sun Jul 15 11:15:05 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180714:
+  * MFIFO: Fix Tadr position on END tags with data. An Empty interrupt needs to be fired at DMA end for FF7 DoC, but the formula doesn't work out normally since we don't increment TADR on END tags (due to Soul Calibur 2 & 3 breaking), so a special case is made for MFIFO
+
+-------------------------------------------------------------------
+Fri Jul 13 19:08:43 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180712:
+  * GameDB: Disable mVU Flag hack for Full Spectrum Warrior. Remove EE Timing hack from Full Spectrum Warrior games. (#2504)
+  * GSdx: Adjust Kunoichi crc hack (#2502)
+
+-------------------------------------------------------------------
+Thu Jul 12 13:13:34 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180712:
+  * dev9null|fwnull|usbnull: Switch to new null config code
+  * common: Add common null plugin config code
+  * dev9null|fwnull|usbnull:windows: Remove snprintf define
+  * dev9null|fwnull|usbnull: Remove *About()
+  * common: Remove PluginNullAbout
+  * fwnull|usbnull: Remove unused Windows-specific stuff
+
+-------------------------------------------------------------------
+Tue Jul 10 08:04:54 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180709:
+  * GameDB: Fix missing game board in Monopoly Party, add Gene Troopers
+
+-------------------------------------------------------------------
+Wed Jul 04 12:47:48 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180703:
+  * GSdx: Add some missing crc ids. (#2498)
+  * GameDB: Drakengard 2 fixes, Mvu flag fix for Full Spectrum Warrior and missing serials. (#2490)
+  * GSdx: Adjust Ghost In The Shell SOC crc hack. (#2492)
+
+-------------------------------------------------------------------
+Sun Jul 01 21:12:03 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180701:
+  * GSdx: Add crc id for Shadow of Rome Demo (NTSC-U).
+  * GSdx: Add crc id for ICO Demo (NTSC-U).
+  * GSdx: Add crc id for The Getaway Black Monday Demo (NTSC-U).
+
+-------------------------------------------------------------------
+Fri Jun 29 18:41:53 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180628:
+  * IOP: VBlank handler small fix
+
+-------------------------------------------------------------------
+Thu Jun 28 12:17:46 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180627:
+  * GameDB: Various patches update. (#2487)
+
+-------------------------------------------------------------------
+Wed Jun 27 18:13:39 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180627:
+  * Counters: Fix vsync hsync cycles calculation for rounding error
+  * GSdx: Add Nicktoons Unite to Automatic Mipmapping.
+  * GSdx: Add crc id for The Getaway Black Monday (NTSC-J).
+  * GSdx: Add crc id for Ratchet And Clank 3 Regular Demo (NTSC-U).
+
+-------------------------------------------------------------------
+Mon Jun 25 17:17:14 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180624:
+  * GSdx: Add crc id for Ratchet & Clank 2: Going Commando & Jak II Demo disc (NTSC-U).
+
+-------------------------------------------------------------------
+Sat Jun 23 12:01:51 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180622:
+  * ci: Update Travis CI configuration
+  * common: Call va_end after vfprintf in PluginLog
+
+-------------------------------------------------------------------
+Thu Jun 21 22:41:29 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180620:
+  * Mild improvement to VIF MFIFO logging, got rid of a useless global variable \o/
+
+-------------------------------------------------------------------
+Tue Jun 19 22:53:11 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180618:
+  * GSdx: Add Sly 3 PAL demo crc id.
+  * GameDB: Add Jak X Beta Trial to DB and a patch that makes it able to boot. (#2482)
+  * GSdx: Add some missing crc ids.
+
+-------------------------------------------------------------------
+Thu Jun 14 18:04:50 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180613:
+  * PCSX2: Update Scandinavian translations. (#2481)
+
+-------------------------------------------------------------------
+Mon Jun 11 15:59:20 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180611:
+  * cdvdgigaherz:gtk: Simplify GUI dialog
+  * cdvdgigaherz: Replace use of deprecated wstring_convert
+  * cdvdgigaherz:windows: Adjust CD read success condition
+  * cdvdgigaherz: Remove unused mode parameter/member variables
+  * GSdx-d3d: Rearange PSSelector(GSDeviceDX.h).
+  * GameDB: Moorhuhn Fun Kart 2008.
+  * GSdx: Purge leftover SSX3 crc ids no longer needed.
+
+-------------------------------------------------------------------
+Sat Jun 09 12:58:37 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180609:
+  * GSdx: Also update Tekken 5 ntsc-j crc hacks to work on progressive mode.
+  * GSdx: CRC hacks for Tekken 5 NTSC-U should work on progressive mode as well now.
+  * psxmode: move pgifInit() over to EE reset; start porting recent (later than ~2001) changes in CdRom.cpp, starting with labels; add a note on missing video timing recalculation when entering psxmode
+
+-------------------------------------------------------------------
+Fri Jun 08 17:49:03 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180608:
+  * psxmode: actually apply the new iop / cd read timings; add seek delays that mimic real ones; altogether this at least fixes fmv playing way too quickly (music in Chrono Cross intro is fine now, for example)
+
+-------------------------------------------------------------------
+Wed Jun 06 18:43:06 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180606:
+  * GameDB: Remove Rounding modes on Teen Titans
+  * GameDB: Add gamefix to restore missing text in Teen Titans.
+
+-------------------------------------------------------------------
+Sat Jun 02 11:33:00 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180602:
+  * GameDB: Add/adjust DOA2 Hardcore patch.
+  * GameDB: Add EE patches for Spyro NB/EN.
+  * GSdx: Purge Spyro NB /EN hw hack fixes.
+
+-------------------------------------------------------------------
+Fri Jun 01 17:16:22 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180531:
+  * GSdx: Disable Alpha hack gui option on D3D9.
+
+-------------------------------------------------------------------
+Thu May 31 10:07:43 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180531:
+  * cmake: Fix GSdx EGL build libX11-xcb linkage issue
+
+-------------------------------------------------------------------
+Wed May 30 12:58:22 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180530:
+  * GSdx:Port better support of palette from GL to D3D10/11.
+  * MFIFO: Refactor of some of the VIF/GIF MFIFO functionality. Centralised the MFIFO resume function which should have been separate anyway. Added some more memory address safeguards. Logging now makes a bit more sense to look at.
+
+-------------------------------------------------------------------
+Sun May 27 16:17:58 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180527:
+  * GameDB: Clean up/reformat db a bit more.
+  * GameDB: Rayman Revolution fixes + missing demo entry
+
+-------------------------------------------------------------------
+Sat May 26 17:11:17 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180526:
+  * Previous fix for Eragon was incorrect. Game makes PATH3 busy then performs a reset, allowing VIF to continue, this is the fix I should have made ;)
+  * PS1 mode: Adjustments to processor clock speed and CD read speed.  (#2447)
+
+-------------------------------------------------------------------
+Thu May 24 18:52:29 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180524:
+  * Gamedb: Clean up db partially.
+
+-------------------------------------------------------------------
+Thu May 24 12:44:12 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180523:
+  * Gamedb: Add Giffifohack gamefix to NFL Street 3.
+
+-------------------------------------------------------------------
+Wed May 23 12:24:39 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180522:
+  * GSdx: Adjust Sky Gunner crc hack.
+  * GSdx: Add some missing crc ids.
+
+-------------------------------------------------------------------
+Tue May 22 12:20:37 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180521:
+  * VIF FIFO: Hacked the hack. Fixes Downtown Run.  Tested all known games that need the hack, they still work *phew*
+
+-------------------------------------------------------------------
+Mon May 21 17:26:07 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180521:
+  * GSdx-OSD: Adjust messages.
+
+-------------------------------------------------------------------
+Mon May 21 12:28:20 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180521:
+  * GSdx: Adjust Spyro New Beginning crc hack.
+
+-------------------------------------------------------------------
+Sun May 20 19:05:24 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180520:
+  * GSdx: Update Spyro Hw fix/hack.
+
+-------------------------------------------------------------------
+Sat May 19 11:27:08 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180519:
+  * GSdx: Adjust Sonic Unleashed crc hacks.
+  * Fixed optimisation problem on branch in branch delay slot. Fixes Dropship - United Peace Force.  Props to MrCK1 for finding the issue.
+
+-------------------------------------------------------------------
+Wed May 16 13:09:24 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180516:
+  * GSdx: Add a missing crc id for CrashNburn EU.
+  * GameDB: Code cleanup/ Vampire Night EE Timing Hack removal/ Armored Core fixes
+  * GSdx: Remove Hummer Badlands CRC Hack.
+
+-------------------------------------------------------------------
+Sat May 12 12:20:07 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180512:
+  * common: Work around GCC8 _xgetbv bug
+
+-------------------------------------------------------------------
+Fri May 11 23:44:54 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180511:
+  * GameDB: Scarface and Harry Potter COS Updates. (#2431)
+  * GameDB: Update Dead or Alive 2 gamefix patch.
+
+-------------------------------------------------------------------
+Thu May 10 12:39:29 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180510:
+  * [skip ci] GSDumpGui: Adjust copyright information.
+
+-------------------------------------------------------------------
+Wed May 09 17:10:47 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180509:
+  * GSdx: Adjust crc hacks for Big Mutha Truckers.
+
+-------------------------------------------------------------------
+Wed May 09 12:48:22 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180509:
+  * GSdx: Adjust crc hacks for Heavy Metal Thunder.
+
+-------------------------------------------------------------------
+Tue May 08 12:47:27 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180507:
+  * GameDB: Add Prafull's Patch for Klonoa 2.
+
+-------------------------------------------------------------------
+Sun May 06 10:37:53 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180506:
+  * gsdx: remove DirectCompute backend
+  * common: Fix multiple _xgetbv() error on GCC 8
+  * GSdx: Purge crc ids/games no longer needed.
+
+-------------------------------------------------------------------
+Sat May 05 19:14:11 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180505:
+  * i10n: update mo files
+
+-------------------------------------------------------------------
+Sat May 05 09:56:10 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180505:
+  * Gsdx: Remove Captain Tsubasa crc hacks.
+  * GSdx: Adjust crc ids.
+
+-------------------------------------------------------------------
+Thu May 03 12:11:11 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180503:
+  * GameDB: Add Harry Potter patch for the PAL version.
+
+-------------------------------------------------------------------
+Wed May 02 12:14:47 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180502:
+  * GameDB: Minor info-alterations (#2379)
+
+-------------------------------------------------------------------
+Tue May 01 15:45:40 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180501:
+  * GameDB: Add XgKickHack for Crash Twinsanity (NTSC-J).
+
+-------------------------------------------------------------------
+Sun Apr 29 19:42:53 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180429:
+  * gsdx-legacy: Copy GSdx baseclasses changes
+  * baseclasses: Move from unfree to 3rdparty
+  * baseclasses|gsdx: Move code from baseclasses to GSdx
+  * gsdx: Remove code that does nothing
+
+-------------------------------------------------------------------
+Sat Apr 28 12:29:13 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180428:
+  * pcsx2: Remove theming support
+
+-------------------------------------------------------------------
+Fri Apr 27 20:40:10 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180427:
+  * Gsdx: Adjust Front Mission 5 crc hacks.
+
+-------------------------------------------------------------------
+Thu Apr 26 12:37:00 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180426:
+  * pcsx2: Fix potential return of uninitialised value
+  * pcsx2: Use enums instead of hardcoded integer
+
+-------------------------------------------------------------------
+Wed Apr 25 10:56:52 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180424:
+  * GSdx: Update D3D fbmask emulation on texture shuffle.
+
+-------------------------------------------------------------------
+Mon Apr 23 12:18:19 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180422:
+  * GSdx: Add Sly 3 demos crc ids.
+
+-------------------------------------------------------------------
+Thu Apr 19 12:21:27 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180419:
+  * GameDB: Add vuClampMode hack/remove eeClampMode hack for Pac-Man World Rally. Fixes bad geometry. This also replaces the EEClampMode hack in the NTSC-U release which didn't appear to do anything.
+
+-------------------------------------------------------------------
+Tue Apr 17 12:18:48 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180417:
+  * PCSX2-GUI: 'About' Logo
+
+-------------------------------------------------------------------
+Mon Apr 16 22:44:54 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180416:
+  * PCSX2-GUI
+
+-------------------------------------------------------------------
+Mon Apr 16 12:45:36 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180415:
+  * Add missing names to About Box, removed duplicate, misc. formatting
+  * GameDB: Add vuClampMode hack to Katamari/SkipMPEGHack to Arctic Thunder.
+
+-------------------------------------------------------------------
+Sun Apr 15 10:00:56 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180415:
+  * GSdx-TC: Don't skip depth lookup on Jackie Chan Adv and SVC Chaos.
+  * GSdx: Add some missing crc ids.
+  * Update widescreen patches/cheats.
+
+-------------------------------------------------------------------
+Sat Apr 14 11:10:31 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180413:
+  * Updated Russian translation (#2377)
+
+-------------------------------------------------------------------
+Thu Apr 12 12:56:52 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180411:
+  * PCSX2: Update gamefix tooltip.
+
+-------------------------------------------------------------------
+Tue Apr 10 22:44:01 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180410:
+  * GameDB: Revert Crash Tag Team Racing gamefix.
+
+-------------------------------------------------------------------
+Sat Apr 07 10:32:04 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180407:
+  * GameDB: Add XgKickHack for Crash Twinsanity (NTSC-U)
+
+-------------------------------------------------------------------
+Tue Apr 03 15:58:10 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180403:
+  * GSdx: Adjust Naruto series crc hacks
+
+-------------------------------------------------------------------
+Mon Apr 02 10:52:30 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180402:
+  * Gsdx: Add some missing crc ids.
+  * GSdx: Adjust CRC hacks.
+
+-------------------------------------------------------------------
+Sat Mar 31 11:03:49 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180331:
+  * SPU2-X: Fix UI regression
+
+-------------------------------------------------------------------
+Wed Mar 28 11:00:11 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180327:
+  * GameDB: Add Quake 3 Revolution patch.
+  * GSdx: Add Quak3 Revolution to Automatic mipmapping.
+  * GSdx: Adjust CRC hacks.
+  * GSdx: Remove fbmask handle in GSRendererDX.
+
+-------------------------------------------------------------------
+Sat Mar 24 10:36:54 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180323:
+  * GSdx-D3D: Texture and channel shuffle improvements.
+
+-------------------------------------------------------------------
+Thu Mar 22 17:00:35 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 1.5.0~git20180322:
+  * GSdx Adjust/Replace crc hack for Final Fight Streetwise.
+  * GSdx: Add some missing crc ids.
+
+-------------------------------------------------------------------
+Tue Mar 20 14:35:34 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 1.5.0~git20180320:
+  * GameDB: Updates
+
+-------------------------------------------------------------------
+Mon Mar 19 15:10:59 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 1.5.0~git20180319:
+  * GSdx: Add Shox to Automatic Mipmapping
+
+-------------------------------------------------------------------
+Tue Mar 13 19:09:42 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180313:
+  * GSdx: Cleanup hacks in GSRendererHW.
+  * GSdx: Remove GT3/Concept CRC Hacks.
+  * GSdx: Add/adjust CRC ids.
+
+-------------------------------------------------------------------
+Thu Mar 08 18:28:45 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180308:
+  * PCSX2: Minor lingual correction on tooltip (#2328)
+  * Gif: Allow flag setting for PRIM/REG transfers on 0 length packets. Fixes Reservoir Dogs
+
+-------------------------------------------------------------------
+Mon Mar 05 15:50:30 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180305:
+  * Console Window: Reset the titlebar when the VM is shutdown.
+  * GameDB: Add GIF FIFO hack for Spongebob SquarePants: Creature From the Krusty Krab (fixes bad graphics) [skip ci]
+  * GSdx: Rename HW hacks drop list options.
+
+-------------------------------------------------------------------
+Sun Mar 04 15:23:54 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180304:
+  * PCSX2: Remove the "DisableOutput" option. (#2298)
+
+-------------------------------------------------------------------
+Sat Mar 03 12:19:44 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180303:
+  * gsdx: Remove inappropriate comment
+  * GSdx-TC: Fix load size calculation in target update
+
+-------------------------------------------------------------------
+Fri Mar 02 13:57:25 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180302:
+  * GSdx: GSCrc.cpp reformat comments and whitespaces.
+  * GSdx: Add/adjust CRC ids.
+
+-------------------------------------------------------------------
+Wed Feb 28 13:59:16 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180228:
+  * gui: Fix trace logging panel misc section behaviour
+  * pcsx2: Fix Trace Logging enable/disable behaviour
+  * gui: Fix apply button on Trace Logging dialog
+  * utilities: Fix CheckedStaticBox behaviour
+  * Fr translation update (#2270)
+  * GameDB: Update Crash Tag Team Racing
+  * GameDB: Fix for many games
+  * More Relocations
+  * Relocations
+  * GameDB: Scarface
+
+-------------------------------------------------------------------
+Sun Feb 25 15:26:55 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180225:
+  * GameDB: VU rounding fixes for Guitar Hero series and Hitman Contracts.
+
+-------------------------------------------------------------------
+Sat Feb 24 21:24:21 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180224:
+  * Portuguese-BR translation update
+
+-------------------------------------------------------------------
+Thu Feb 22 18:25:24 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180222:
+  * GSdx (OGL HW): Perform a texture shuffle when the address of the framebuffer and the texture are the same.
+  * GSdx: Remove GT4/Tourist Trophy CRC hacks
+  * Gsdx: Adjust Ikkitousen CRC hacks.
+  * Final Fantasy X fix, Compat update
+
+-------------------------------------------------------------------
+Tue Feb 20 12:18:02 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180220:
+  * Utilities: Fix subtraction operation function in FixedInt class (#2313)
+
+-------------------------------------------------------------------
+Tue Feb 13 13:28:44 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180213:
+  * cmake: Improve wxWidgets and SDL linkage check
+
+-------------------------------------------------------------------
+Sun Feb 11 18:04:29 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180210:
+  * PCSX2-Counters: Fix rounding of blank and render
+  * Counters: Fix Hblank calculation for DVD videmodes
+  * GameDB: Update Silent Hill 3
+  * pcsx2: Fix string truncation on Windows
+  * gsdx:d3d: Fix fbmask conversion on texture shuffle
+  * cdvdgigaherz:windows: Refactor to use early returns
+  * cdvdgigaherz:windows: Avoid unneeded DVD ioctls
+  * GSdx: Adjust DBZ BT2 CRC hack and id, add R&C3 EU to Automatic Mipmap.
+  * GSdx: Change Skipdraw Maximum limit value.
+  * Resolve cases where GUI values are not updated when adjusting sliders with the scroll wheel.
+  * Remove unused 'About Box' references on Linux and Windows from SPU2-X/CMakeLists, ect.
+  * Make GUI more user-friendly by disabling some options when they aren't used.
+  * Plugins: Move Xpad and USBqemu plugins to old plugins solution
+  * pcsx2: Fix copy bytes patch command
+  * PCSX2: Avoid SYSTEM.CNF error message in PSX mode (#2286)
+  * PCSX2: Add configurable Cheats folder to Components Selectors.
+  * cdvd: Fix writing of CD blockdumps
+  * cdvd: Fix and switch to writing v2 format blockdumps
+  * Gif: Don't set state on NOP packet. Fixes #2277
+  * Portuguese-BR translation update
+  * PCSX2: Memory card minor code improvements
+  * PCSX2: Add keyboard shortcuts to memory card dialog right-click menu
+  * PCSX2: Update PSX memory card file extension
+  * PCSX2: Replace PSX memory card checkbox
+  * GSDumpGUI: Update the GUI interface
+  * gsdumpgui: s/GSDX/GSdx/
+  * gsdumpgui: Improve renderer override handling
+  * cmake: Remove old macro substitution workaround
+
+-------------------------------------------------------------------
+Sun Jan 14 16:10:05 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20180114:
+  * Enhance "Assemble Opcode" to be pre-populated by existing instruction. (#2244)
+  * GSdx: Disable Merge Sprite on native resolution.
+  * SPU2-X: Prevent volume check from altering volume
+  * GSdx: Add Dark Cloud CRCs to automatic mipmapping
+  * GSdx: Merge CRC hacks of Wild Arms 4 and 5
+  * cmake: Don't print a git describe error with shallow clones.
+  * GSdx: Remove/move/merge CRC hacks.
+  * GSdx: Move CRC hacks for Soul Calibur 2&3 to DX level.
+  * PCSX2-WX: Display the video mode on titlebar
+  * iop: Fix booting ELF files on a different drive
+  * Fix mouse click focus in debugger near functions ending in a branch. (#2250)
+  * Corrected MipsOpscodes table for unconditional branch. (#2247)
+
+-------------------------------------------------------------------
+Wed Jan 03 18:34:02 UTC 2018 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20171228:
+  * Portuguese-BR translation update (#2209)
+  * GameDB: Fixes and compatibility status update (#2223)
+
+-------------------------------------------------------------------
+Thu Dec 21 20:56:23 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20171220:
+  * Italian translation update (#2155)
+  * GameDB: Add proper rounding mode for Beyond Good and Evil v2 (#2214)
+  * Gsdx: Tekken 5 Channel effect and CRC Hacks
+  * GSdx: Add hidden option to disable Nvidia hack
+  * Make PSX cards appear as Pocketstation devices. (#2208)
+  * GameDB: Add proper rounding mode for Beyond Good and Evil (#2210)
+
+-------------------------------------------------------------------
+Tue Dec 05 18:34:27 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20171202:
+  * Flag XP as an unsupported OS.
+
+-------------------------------------------------------------------
+Fri Dec 01 09:43:28 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20171130:
+  * ci: Fix Travis CI build issues
+
+-------------------------------------------------------------------
+Thu Nov 30 10:36:46 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20171128:
+  * GSdx: Remove/move CRC hacks for Simpsons Game
+  * GSdx: Extend support of "Preload Frame Data" for Direct3D.
+  * pcsx2:gui: Display '&' properly in recent ISO list menu
+
+-------------------------------------------------------------------
+Sun Nov 26 16:39:09 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20171124:
+  * cdvdgigaherz: Always read 2352 bytes from CD sectors
+  * cdvdgigaherz: Detect CD track mode correctly
+  * Update PCSX2_FAQ.doc to reflect changes made on the PCSX2 Forum (#2087)
+  * Updating Portuguese-BR translation
+  * Translations: French
+  * GSdx: Automatic HW Mipmapping option
+  * GSdx: Rearrange HW Hacks
+  * Updating Spanish translation
+  * Swedish translation update
+  * GSdx: Remove CRC hack for James Bond Everything or Nothing. Thes hack was used to avoid a VRAM spike, but isn't needed anymore.
+
+-------------------------------------------------------------------
+Fri Nov 17 19:37:04 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20171114:
+  * Add vuClampMode fix to EA Burnout titles.
+  * GSdx: Add/move CRC hacks for Street Fighter EX3
+
+-------------------------------------------------------------------
+Sun Nov 12 18:19:56 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20171111:
+  * GSdx-Capture: Grayout configure button for codecs
+  * GSdx-Capture: Format event commands in switch-case
+  * GSdx: Add CPU Frame buffer Conversion Hack
+
+-------------------------------------------------------------------
+Wed Nov 01 15:06:09 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20171031:
+  * Update SoundTouch lib to v2.0.0
+
+-------------------------------------------------------------------
+Sun Oct 29 19:20:01 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20171029:
+  * pcsx2|common|gsnull: Remove GSprintf API
+
+-------------------------------------------------------------------
+Sun Oct 15 11:06:31 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20171014:
+  * ci: Update Travis CI and AppVeyor configurations
+  * cdvdgigaherz: Fix Q subchannel relative offset calculation
+  * PS2-HW: Remove address of non-existent registers
+  * windows: Fix Devel solution configuration
+
+-------------------------------------------------------------------
+Thu Oct 12 14:47:21 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20171010:
+  * PS2-HW: Fix DMA channel register addresses
+  * Add clear list option to ISO Selector
+
+-------------------------------------------------------------------
+Fri Sep 22 12:26:56 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170917:
+  * Allow PSX memcard creation, dynamic SIO delay type.
+
+-------------------------------------------------------------------
+Sat Sep 09 21:08:07 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170908:
+  * PCSX2-GUI: Logo Update (Wider image)
+  * gsdx: Prefix std:: to string and to_string
+  * gsdx: Remove hash_{map,set} macros
+  * gsdx: Prefix std:: to vector
+  * gsdx: Prefix std:: to list
+  * gdsx: Prefix std:: to map
+  * gsdx: Prefix std:: to min and max
+  * gsdx: Prefix std:: to shared_ptr
+  * gsdx: Prefix std:: to ostringstream, pair, codecvt*
+  * gsdx: Remove "using namespace std"
+
+-------------------------------------------------------------------
+Thu Sep 07 15:08:54 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170906:
+  * GSdx-ogl: Fix GSdx crashing on Intel igpus
+  * GSdx - dx9: Edit Alpha Correction (FBA) tooltip.
+  * GSdx-ogl:
+
+-------------------------------------------------------------------
+Fri Sep 01 15:40:38 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170831:
+  * ci: Fix Travis CI
+  * gsdx:ogl: Call swap interval function on rendering thread
+  * pcsx2: Apply vsync changes immediately on settings change
+  * pcsx2: Fix inconsistent framelimiter/vsync interaction
+  * lilypad: Fix Lock Direction/Input/Both features
+  * GSdx-Windows: Grey out OSD and Shader Configuration
+
+-------------------------------------------------------------------
+Wed Aug 30 14:35:59 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170830:
+  * GSdx GSDevice11: Fix unsigned warning under VS2015 with DEBUG build enabled.
+  * GSdx GSCodeBuffer: std::vector instead of std::list, to speedup linear scan. Using range loop on destruction.
+  * GSdx GSLocalMemory: Reserve space required in the std::vector before adding elements to it.
+  * GSdx GSDirtyRect: std::vector instead of std::list, to speedup linear scan. Improved const-ness. Using range loop.
+  * GSdx GSFastList: Introducing the custom container template class.
+  * GSdx GSTextureCacheSW: Ported erase iterator trick. Using FastList instead of std::list. Using range loops. Using more efficient erase pattern.
+  * GSdx GSDevice: Using FastList instead of std::list. Using range loops (correctly). Using auto instead of declaring iterator type.
+  * GSdx GSTextureCache: Using FastList instead of std::list. Various other improvements. Using range loops where possible (correctly). Using auto where possible (minimize code changes whenever it's decided to change back to a std container). Use more efficient erase pattern (where possible). Minor code tweaks.
+
+-------------------------------------------------------------------
+Sun Aug 27 09:53:38 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170825:
+  * GSdx-D3D11: Avoid undefined behavior in swapchain
+
+-------------------------------------------------------------------
+Wed Aug 16 21:29:38 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170816:
+  * GSdx: Add missing CRC for GT3
+
+-------------------------------------------------------------------
+Tue Aug 15 09:50:03 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170814:
+  * Update German Translation
+  * small updates
+  * small update
+  * small update
+  * a few corrections
+  * revert kapitalized personal pronouns
+  * glsl: extension must be declared first
+  * glsl: miss color of SSO interface
+  * correction
+  * correction
+  * small update
+
+-------------------------------------------------------------------
+Fri Aug 11 13:20:12 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170810:
+  * onepad: fallback on 2nd gamepad for the 2nd player
+  * onepad: print a more accurate message when only a single pad is detected
+
+-------------------------------------------------------------------
+Thu Aug 10 13:01:40 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170810:
+  * gsdx ogl: factorize common context init code
+  * gsdx ogl: factorize SetVSync
+  * gsdx ogl: test adaptive/late vsync driver support
+  * core: add a getter for the vsync option
+  * pcsx2 gui: uses a combo box for Vsync
+  * Update Translations (#2029)
+  * PCSX2-WX: Force disable MTVU hack on safest preset
+  * PCSX2-Git: Minor changes in issue template file
+  * Add Horipad One config
+
+-------------------------------------------------------------------
+Mon Jul 31 20:20:26 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170729:
+  * onepad: add a first time wizard to notify that plugin auto-map the Gamepad/Joystick
+  * Update GSCrc.cpp (#2018)
+  * GSdx-Windows: Fix Shadeboost text bug
+  * lilypad: Fix button detection issue in Kung Fu Panda
+  * PCSX2-Counters: Fix tracking of scalar limit
+  * GSdx: Adjust CRC for DBZ BT3
+  * GSdx: Add missing CRC for Tomb Raider Underworld
+
+-------------------------------------------------------------------
+Mon Jul 17 15:02:55 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170713:
+  * GSdx: Rework framebuffer height calculation
+
+-------------------------------------------------------------------
+Thu Jul 13 15:24:38 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170712:
+  * gsdx ogl: handle float integral coordinate for depth sampling
+  * glsl: reduce geometry shader complexity
+  * PCSX2-WX: Add restore defaults to GS panel
+  * PCSX2-WX: Revert titlebar update behavior on Windows
+
+-------------------------------------------------------------------
+Tue Jul 04 16:38:14 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170703:
+  * cmake: Fix NetBSD compilation
+  * cs_CZ update
+  * GSdx-ogl: Printing console messages v2 (#1954)
+  * core: add hidden option EnableVsyncWindowFlag to add the WS_POPUP flag
+  * gsdx: remove the unused GSsetFrameLimit API
+  * gsdx: store vsync state into an integer
+  * i10n: upload cs_CZ mo binary files
+  * onepad: Add platform:Linux on game db entries that miss it
+  * gsdx:d3d11: Fix sprite geometry shader
+  * Added Danish mo-files.
+  * GameDB
+  * i10n: upload da_DK precompiled mo file
+
+-------------------------------------------------------------------
+Fri Jun 30 10:59:25 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170630:
+  * cmake: blacklist GCC 7.0 and GCC 7.1 (based on a small testcase)
+  * GSdx: Cleanup warnings on MSVC
+  * GSdx: Remove/move DBZ:BT3 CRC
+  * GameDB: Add fixes to various games (#1977)
+
+-------------------------------------------------------------------
+Sat Jun 24 11:17:11 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170623:
+  * ci: Fix 32-bit Travis CI builds
+
+-------------------------------------------------------------------
+Tue Jun 20 09:14:22 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170619:
+  * PCSX2-WX: Increment max ISO count in recent ISO list
+  * PCSX2-WX: Add "Always ask when booting" option
+
+-------------------------------------------------------------------
+Tue Jun 13 13:23:06 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170613:
+  * gsdx:d3d11: Fix incorrect geometry shader use
+
+-------------------------------------------------------------------
+Fri Jun 09 15:32:00 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170609:
+  * Add Danish translation
+
+-------------------------------------------------------------------
+Mon Jun 05 07:53:00 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170605:
+  * 3rdparty: Add xz submodule
+  * 3rdparty:xz: Add project and config file
+  * gsdx: Use std::vector for xz dump output buffer
+  * windows: Link GSdx to liblzma (xz)
+  * unix: Remove LZMA_SUPPORTED define
+  * gsdx: Fix GS dump readback EOF handling
+  * gsdx: windows: Port xz dump readback
+  * GSdx-OGL: Extend ICO workaround to PAL videomode
+  * GSdx-HW: Revamp buffer size calculation
+  * GSdx-HW: Move scaling code to separate subroutine
+  * gsdx: Fix variable initialisation issue
+
+-------------------------------------------------------------------
+Thu May 25 08:14:40 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170524:
+  * GSdx: Implement SYNCV register bitfields
+
+-------------------------------------------------------------------
+Tue May 23 17:53:29 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170523:
+  * onepad: Remove use of "using namespace std"
+
+-------------------------------------------------------------------
+Mon May 22 07:44:49 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170521:
+  * linux: requires liblzma (xz) to build GSdx
+  * gsdx: dump gsdump in xz format directly
+
+-------------------------------------------------------------------
+Sun May 21 14:05:39 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170521:
+  * gsdx: defer init of GSUtil global object
+
+-------------------------------------------------------------------
+Tue May 16 08:38:49 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170516:
+  * common: workaround to start ASAN with recent glibc
+  * Add installer icon, update copyright and build instructions for NSIS 3.0.
+  * Implement version detection for previous installs, separate savestates/memcard categories in the uninstaller. Cleanup scripts and misc. tweaks.
+  * Remove unused SVN templates and condense installer files. Reduced compile errors by removing output folder dependency.
+  * Block installation on XP/fix an uninstaller regression and add ManifestDPIAware to the installer. Remove NSIS dirs from .gitignore.
+  * Reformat version detection, move null plugins, force remove folder in uninstaller.
+  * Check/Install DirectX redistributables on Win8.1 and older (so as long as they have admin privileges). Removed SSSE3 and AVX references from build instructions.
+  * Split portable/pre-install and full installer into own scripts. Move shared definitions to their own files to reduce code duplication.
+  * Added pre-install dialog, updated build instructions, fix RegKey in uninstaller, automatically backup old configuration folder, misc. changes.
+
+-------------------------------------------------------------------
+Mon May 15 10:51:58 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170513:
+  * Cmake: what should have been the previous commit
+  * common: use = default instead of trivial constructor/destructor
+  * core/gui: use = default instead of trivial constructor/destructor
+  * core: use = default instead of trivial constructor/destructor
+  * core: use = default instead of trivial copy constructor
+  * gsdx: use = default instead of trivial constructor/destructor
+  * common: remove throw specifier on destructor
+  * common: use = default instead of trivial destructor
+  * core: remove throw specifier on destructor
+  * core: use = default for trivial destructor
+  * core: remove noexcept on destructor
+  * pcsx2|common: replace throw() by noexcept
+  * gsdx linux: port to latest GTK3 API
+
+-------------------------------------------------------------------
+Fri May 12 11:09:43 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170511:
+  * onepad: remove useless code
+  * onepad: be sure m_unique_id is set even in case of early return
+  * gsdx: only print once OpenGL status message
+  * cmake: better gcc + gsdx integration
+
+-------------------------------------------------------------------
+Thu May 11 09:46:16 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170511:
+  * Allow building the player with the legacy GSdx.
+  * GSFrame: Update title only after rendering starts
+  * Counters: Update videomode enum with proper prefix
+
+-------------------------------------------------------------------
+Mon May 08 08:08:05 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170508:
+  * GSDX: Add missing grayouts to Shadeboost options
+  * GSDX: Remove redundant parenthesis from combobox text
+  * cmake: search /usr/bin/wx-config32 (for arch users...)
+
+-------------------------------------------------------------------
+Fri May 05 18:23:53 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170503:
+  * onepad: s/set_keyboad_key/set_keyboard_key/
+  * onepad: drop useless goto statement
+  * onepad: allow to save/reload SDL2 mapping from OnePAD2.ini file
+  * onepad: remove dead code
+  * onepad: replace key_status pointer by g_key_status object
+  * onepad: replace conf pointer by g_conf object
+  * onepad: create a LUT for the pad key => SDL key mapping
+  * onepad: move KeyName in the dialog and remove the now useless dialog.h
+
+-------------------------------------------------------------------
+Wed May 03 18:42:45 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170503:
+  * build.sh: avoid duplicate on clang-tidy analysis
+  * common: add make_unique for C++11
+  * modernize: use std::make_unique instead of std::unique_ptr
+
+-------------------------------------------------------------------
+Tue May 02 09:19:24 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~20170502:
+  * onepad: add DUALSHOCK4 USB Wireless Adapator mapping
+
+-------------------------------------------------------------------
+Mon May 01 10:24:22 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~20170430:
+  * onepad: move an ok button to the right corner
+  * gsdx: call XInitThread on Linux dump replay
+  * gsdx: Fix uptr size on Windows x64 build
+  * Revert "pcsx2: call XInitThreads at init"
+  * gsdx egl: rewrite the EGL implementation
+  * spu2x: comment unused variable
+  * pcsx2: remove unused variable
+  * psx|spu2x|gsdx: shift negative value is undefined in C standard
+  * gif: avoid (wrong) uninitialized warning
+  * svu: cast variable to int to avoid unsigned vs int comparison
+  * spu2-x: Remove outdated website text file
+  * pcsx2: Remove unnecessary aMax/aMin macros
+
+-------------------------------------------------------------------
+Fri Apr 28 13:41:48 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0:
+  * spu2-x: Combine XAudio2 2.7/2.8+ code into an inline file
+  * spu2-x:xaudio2: Simplify XAudio2Error exception
+  * spu2-x:xaudio2: Improve cleanup after an exception
+  * spu2-x:xaudio2: Use unique_ptr
+  * spu2-x:xaudio2: Comment stuff to investigate
+  * cmake: create the macro add_custom_glib_res to handle resources
+  * cmake: reindent onepad/CMakeLists.txt with space
+  * onepad: add a game controller db resource
+  * onepad: use range loop and vector of unique_ptr to manage the joystick
+  * onepad: properly indent comments
+  * onepad: drop hacks/options for DualShock3
+  * onepad: remove SDL1 manual detection code path
+  * onepad: move enum first in .h file
+  * onepad: plug SDL2 API game controller
+  * onepad: use external resource to support more joysticks
+  * onepad: Move init/destroy code to constructor/destructor
+  * onepad: drop the pad if an error was detected
+  * onepad: add hot-plugging support
+  * onepad: use range loop for hash iteration
+  * onepad: add an unique identifier
+  * onepad: plug uid instead of the index
+  * onepad: add a GUI list box to select joypad based on UID
+  * onepad: replace pthred/queue with std::mutex/mt_queue
+  * onepad: remove autorepeat deadcode
+  * onepad: clean the gamepad/joystick interface
+
+-------------------------------------------------------------------
+Fri Apr 28 07:51:27 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0dev~20170427:
+  * GSdx: Move/add GT4 CRC
+
+-------------------------------------------------------------------
+Thu Apr 27 08:32:32 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0dev~20170426:
+  * pcsx2: call XInitThreads at init
+
+-------------------------------------------------------------------
+Mon Apr 24 08:21:41 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0dev~20170423:
+  * zh_CN po files update
+  * zh_CN mo files update
+
+-------------------------------------------------------------------
+Sun Apr 23 10:58:37 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0dev~20170423:
+  * gsdx: fix EGL build
+  * gsdx: don't request a depth buffer on the window
+  * cmake: update "check these lib..." strings
+
+-------------------------------------------------------------------
+Sat Apr 22 08:50:28 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0dev~20170421:
+  * pcsx2: Fix booting ISO from commandline
+
+-------------------------------------------------------------------
+Fri Apr 21 09:35:21 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0dev~20170421:
+  * PCSX2-Counters: Detect DVD variant videomodes
+  * gsdx sw: always enable the gs memory wrapping emulation
+  * pcsx2: Fix autorun when commandline and current CDVD options differ
+  * pcsx2: Fix "nodisc" commandline option
+  * pcsx2: Avoid clearing current ISO when not autorunning with an ISO
+  * GSdx: Move Resident Evil 4 and The Getaway series CRC hacks
+  * GSdx: Remove Dirge Of Cerberus CRC hack
+
+-------------------------------------------------------------------
+Thu Apr 20 15:11:16 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0dev~20170419:
+  * onepad: create a legacy version for SDL1
+
+-------------------------------------------------------------------
+Wed Apr 19 07:30:31 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170419:
+  * Align functions to up to 16 bytes in the function scanner
+
+-------------------------------------------------------------------
+Mon Apr 17 22:09:39 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170417:
+  * ci: Initialise git submodules in AppVeyor
+
+-------------------------------------------------------------------
+Sat Apr 15 23:52:39 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170415:
+  * Make memory view row size configurable, store it and "Align window to row size" in settings
+
+-------------------------------------------------------------------
+Fri Apr 14 18:46:49 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170414:
+  * common: drop pthread TLS emulation
+
+-------------------------------------------------------------------
+Thu Apr 13 20:04:44 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170413:
+  * linux: mesa full steam ahead !
+  * common: Replace __threadlocal with C++11 thread_local
+
+-------------------------------------------------------------------
+Wed Apr 12 21:55:37 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170412:
+  * gsdx: use vector of char as shader container
+  * gsdx linux: implement GSdxApp::LoadResource based on g_resource
+  * gsdx: always NULL terminate resources on Windows
+  * gsdx ogl: use load resource to load shader
+  * gsdx: add GSmkdir for windows based on CreateDirectory
+  * gsdx: add GStempdir wrapper to get a tempory directory
+
+-------------------------------------------------------------------
+Tue Apr 11 08:48:26 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170411:
+  * cdvdgigaherz: Avoid LL after date in library name string
+
+-------------------------------------------------------------------
+Sun Apr 09 11:53:37 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170409:
+  * pcsx2: Remove unused variables
+  * gsdx ogl: remove useless glx/egl context print
+
+-------------------------------------------------------------------
+Sat Apr 08 13:44:13 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170408:
+  * gsdx linux gui: reduce height on/for small screen
+  * gsdx linux gui: align gui with wndows (tooltip + checkbox)
+  * gsdx ogl: Deleted objects are automatically unbound/unmapped
+  * remove an old merge conflict file (that souldn't have been commited)
+
+-------------------------------------------------------------------
+Thu Apr 06 19:22:27 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170406:
+  * GameDB: Add GT3 memcard filter
+  * GSdx ogl sw: Move GL_ARB_copy_image to optional
+
+-------------------------------------------------------------------
+Wed Apr 05 20:31:40 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170404:
+  * gsdx sw: Update comment on the GCC bug
+
+-------------------------------------------------------------------
+Tue Apr 04 20:02:57 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170404:
+  * gsdx ogl: reduce requirement for SW renderer
+
+-------------------------------------------------------------------
+Sat Apr 01 17:57:59 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170401:
+  * GameIndex: minor update
+  * gsdx: cpu detection take 3! Don't use 64 bits type in Xbyak::Cpu
+  * GSdx: Memory Wrapping Windows port
+  * GSdx: Direct3D port of HPO special/V2
+  * GSdx: Main & Hacks window update
+  * GSdx: Shader & OSD window update
+  * GSdx: Add Windows GUI for split texture filtering option
+  * GSdx: Unscale Point and Line Direct3D11 port
+  * GSdx: Add merge sprite hack to GSdx hacks dialog
+  * gsdx: workaround AVX2 generated code by GCC
+
+-------------------------------------------------------------------
+Thu Mar 30 08:27:08 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170330:
+  * GSdx-PCRTC: Minor modification to NTSC saturation
+  * gsdx: Avoid const strings in header file
+
+-------------------------------------------------------------------
+Wed Mar 29 08:18:22 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 20170328~v1.5.0dev:
+  * gsdx:windows: Fix console output when replaying dumps
+  * lilypad: Use l length modifier for wide character string
+  * Swedish translation update.
+  * Add crc hack for project metafalica
+  * GSdx ogl: SSO Workaround for AMD buggy drivers (#1858)
+  * gsdx: Move renderer config loading from GSOpen2 to _GSOpen
+  * gsdx: Store the current renderer in GSdxApp
+  * gsdx: Improve OpenGL HW renderer checks
+  * gsdx: Add template version of GetConfig
+  * gsdx: Add an automatic CRC hack level
+
+-------------------------------------------------------------------
+Mon Feb 13 16:18:28 UTC 2017 - pousaduarte@gmail.com
+
+- Enforce XDG specification for configuration files
+
+
+-------------------------------------------------------------------
+Sat Feb 11 19:30:22 UTC 2017 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20170211:
+  * pcsx2: set the size of the vector in the constructor
+  * gsdx ogl: allow to start without GL_ARB_texture_barrier
+  * gsdx ogl: drop fallback of GL_ARB_clear_texture
+  * cmake: add an option to enable openCL
+  * gsdx opencl: warning+compilation fixes
+  * gsdx ogl: add a texture barrier when target is read back
+  * gsdx sw: init completely m_scanline buffer
+  * gsdx wgl: retry to create a context without advance flag
+  * GameIndex.dbf: Removed Shin Megami Tensei Digital Devil Saga series EE timing hack
+
+-------------------------------------------------------------------
+Wed Jan 11 22:53:07 UTC 2017 - guoyunhebrave@gmail.com
+
+- Drop openSUSE-release BuildRequires to build on openSUSE Leap 42.2 i586
+
+-------------------------------------------------------------------
+Tue Jan 10 07:23:07 UTC 2017 - guoyunhebrave@gmail.com
+
+- version 1.4.0+git20170110
+  * [New Feature] Debugger by Kingcom
+  * [New Feature] Folder memory cards by AdmiralCurtiss
+  * [New Feature] EE Overclock by ssakash and Blyss Sarania
+  * [New Feature] Support for loading Gzip and CSO compressed ISO's by Avih and
+    Unknown W.Brackets
+  * [New Feature] Per channel volume adjustment by gigaherz
+  * [Enhancement] Configurable template on GSFrame titlebar by Avih
+  * [Enhancement] Revamped Core and GSDX plugin dialogs by Turtleli, Gregory and
+    ssakash
+  * [Bug-Fix] Recompiler Improvements and Core Refactors by Refraction, ssakash
+    and Gregory
+  * [Bug-Fix] Programmable blending to reproduce GS blending unit output by Gregory
+  * [Bug-Fix] Improved CRTC output size handling by ssakash and .r5
+  * [Bug-Fix] Software renderer improvements by Gabest and Gregory
+  * [Bug-Fix] Accurate destination alpha testing by Gregory
+  * [Bug-Fix] Improved read of depth / color by Gregory
+  * [Bug-Fix] Time Stretcher: Improvements to tempo adjustments by Avih
+  * GIF: Better Handling for Finish Interrupt request signal by Refraction
+  * MicroVU: General Improvements by ssakash and Refraction
+  * SIF: Limit/Mask transfer size to 1mb-16bytes by Refraction
+  * VIF: Better handling of IRQ and MFIFO Timing improvements by Refraction
+  * EE Interpreter: Improved TLB miss exception handling by Gregory
+  * See http://pcsx2.net/273-1-4-0-release-end-2015-report.html
+- Drop patches
+  * pcsx2-cdvdiso-fopen64.patch
+  * pcsx2-cdvdisoefp-header.patch
+  * pcsx2-optflags.patch
+  * pcsx2-spu2null-overflow.patch

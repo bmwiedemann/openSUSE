@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Oct 21 22:27:00 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Update to 1.17.4
+  * https://nginx.org/en/CHANGES
+  * Better detection of incorrect client behavior in HTTP/2.
+  * In handling of not fully read client request body when
+    returning errors in HTTP/2.
+  * The "worker_shutdown_timeout" directive might not work when
+    using HTTP/2.
+  * A segmentation fault might occur in a worker process when
+    using HTTP/2 and the "proxy_request_buffering" directive.
+  * The ECONNABORTED error log level was "crit" instead of
+    "error" on Windows when using SSL.
+  * nginx ignored extra data when using chunked transfer
+    encoding.
+  * nginx always returned the 500 error if the "return" directive
+    was used and an error occurred during reading client request body.
+  * In memory allocation error handling.
+
+-------------------------------------------------------------------
 Wed Aug 14 23:21:27 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 1.17.3

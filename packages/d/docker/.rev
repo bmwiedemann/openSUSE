@@ -921,4 +921,15 @@ delete request for docker-image-migrator was submitted in parallel.</comment>
     <comment></comment>
     <requestid>734439</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>081c3a4a9edb0983e1e2027fd460b64b</srcmd5>
+    <version>19.03.3_ce</version>
+    <time>1571838456</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop containerd.service workaround (we've released enough versions without
+  containerd.service -- there's no need to support package upgrades that old).
+- Update to Docker 19.03.3-ce. See upstream changelog in the packaged
+  /usr/share/doc/packages/docker/CHANGELOG.md. bsc#1153367</comment>
+    <requestid>736409</requestid>
+  </revision>
 </revisionlist>

@@ -36,6 +36,10 @@ Source2:        %{name}.keyring
 Source3:        libevent-rpmlintrc
 Source99:       baselibs.conf
 Patch0:         python3-shebang.patch
+# PATCH-FEATURE-UPSTREAM 0001-evwatch-Add-prepare-and-check-watchers.patch
+Patch1:         0001-evwatch-Add-prepare-and-check-watchers.patch
+# PATCH-FEATURE-UPSTREAM 0002-evwatch-fix-race-condition.patch
+Patch2:         0002-evwatch-fix-race-condition.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -114,6 +118,8 @@ This package holds the static libraries for libevent2.
 %prep
 %setup -q  -n %{name}-%{version}-%{version_suffix}
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

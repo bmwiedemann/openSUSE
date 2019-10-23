@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct 21 14:32:29 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 0.066
+   see /usr/share/doc/packages/perl-CryptX/Changes
+
+  0.066   2019-10-20
+          - fix #57 Build fails on i686
+          - bundled libtomcrypt update branch:develop (commit:354c9051 2019-10-20)
+          - no perl module code change
+  
+  0.065   2019-10-19
+          - fix #56 Math::BigInt 1.999817 breaks the tests of CryptX
+          - bundled libtomcrypt update branch:develop (commit:25410c75 2019-10-17)
+          - no perl module code change, just tests
+
+-------------------------------------------------------------------
 Sat Jun 15 05:06:46 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.064

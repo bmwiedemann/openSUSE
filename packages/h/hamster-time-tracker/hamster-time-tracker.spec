@@ -17,6 +17,7 @@
 
 
 %global ext_version 0.10.0
+%global ext_gnome_version 3.34
 %global ext_uuid contact@projecthamster.org
 %bcond_without extension
 
@@ -59,6 +60,9 @@ Patch115:       0015-extension.js-add-jshint-validthis-hints.patch
 Patch116:       0016-extension.js-fix-indentation-after-previous-change.patch
 Patch117:       0017-Don-t-log-ACTIVITIES-at-every-refresh.patch
 Patch118:       0018-doc-remove-broken-link-to-usejsdoc.org.patch
+Patch119:	0019-factsBox-use-GObject.registerClass.patch
+Patch120:	0020-panelWidget-fix-object.actor-is-deprecated-warning.patch
+Patch121:	0021-metadata.json-mark-GNOME-3.34-as-supported.patch
 BuildRequires:  fdupes
 BuildRequires:  intltool
 # For detecting typelib() dependencies
@@ -130,8 +134,8 @@ cd hamster-shell-extension-%{ext_version}
 %patch104 -p1
 %patch105 -p1
 %patch106 -p1
-# Tumbleweed: GNOME 3.32 support for shell extension
-# https://github.com/projecthamster/hamster-shell-extension/pull/312
+# Tumbleweed: GNOME 3.32, 3.34 support for shell extension
+# https://github.com/projecthamster/hamster-shell-extension/pull/316
 %if 0%{?suse_version} >= 1550
 %patch107 -p1
 %patch108 -p1
@@ -145,6 +149,9 @@ cd hamster-shell-extension-%{ext_version}
 %patch116 -p1
 %patch117 -p1
 %patch118 -p1
+%patch119 -p1
+%patch120 -p1
+%patch121 -p1
 %endif
 mkdir build
 cp %{SOURCE2} build
@@ -214,8 +221,8 @@ tar xz -f hamster-shell-extension-%{ext_version}/dist/%{ext_uuid}.tgz \
 %dir %{_datadir}/help
 %{_datadir}/help/C
 
-%package -n gnome-shell-extension-hamster
-Version:        2.2.2%{ext_version}
+%package -n gnome-shell-extension-hamster-time-tracker
+Version:        %{ext_version}_%{ext_gnome_version}
 Release:        0
 Summary:        Hamster time tracker for GNOME Shell status menu
 License:        GPL-3.0-only
@@ -228,17 +235,21 @@ Requires:       gnome-shell >= 3.10
 %endif
 Requires:       %{name}
 Supplements:    packageand(gnome-shell:%{name})
+# The predecessor package had a broken version number.
+Obsoletes:	gnome-shell-extension-hamster < 2.2.20.10.1
+Provides:	gnome-shell-extension-hamster = 2.2.20.10.1
 
-%description -n gnome-shell-extension-hamster
-GNOME Shell extension to track activities quickly and efficiently via
-the main GNOME shell menu. Packaged for openSUSE Factory because the
+%description -n gnome-shell-extension-hamster-time-tracker
+
+GNOME Shell extension to track activities in hamster via the main
+GNOME shell menu. Packaged for openSUSE Factory because the
 upstream version on extensions.gnome.org often leaks behind current
 GNOME shell development.
 
 %files lang -f %{name}.lang
 
 %if %{with extension}
-%files -n gnome-shell-extension-hamster
+%files -n gnome-shell-extension-hamster-time-tracker
 %defattr(-, root, root)
 %dir %{_datadir}/gnome-shell
 %{_datadir}/gnome-shell/extensions

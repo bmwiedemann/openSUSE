@@ -1,0 +1,44 @@
+From 69af56aff2e49cf8888f70a761bfa281ad48ef95 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Tue, 22 Oct 2019 16:50:13 +0200
+Subject: [PATCH 19/21] factsBox: use GObject.registerClass()
+
+For some reason I don't remember, just this class had been handled
+differently in e2a5edf ("Port GObject classes to JS6 classes").
+Handle them like all others.
+
+Fixes this problem:
+gnome-shell[9973]: TypeError: this.factsBox.refresh is not a function
+
+Signed-off-by: Martin Wilck <mwilck@suse.com>
+---
+ extension/widgets/factsBox.js | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/extension/widgets/factsBox.js b/extension/widgets/factsBox.js
+index 5deb703..e524781 100644
+--- a/extension/widgets/factsBox.js
++++ b/extension/widgets/factsBox.js
+@@ -43,10 +43,10 @@ const TodaysFactsWidget = Me.imports.widgets.todaysFactsWidget.TodaysFactsWidget
+  * well as todays facts.
+  * @class
+  */
+-var FactsBox =
++const FactsBox = GObject.registerClass(
+ class FactsBox extends PopupMenu.PopupBaseMenuItem {
+-    constructor(controller, panelWidget) {
+-        super({reactive: false});
++    _init(controller, panelWidget) {
++        super._init({reactive: false});
+ 
+         this._controller = controller;
+ 
+@@ -106,4 +106,4 @@ class FactsBox extends PopupMenu.PopupBaseMenuItem {
+     unfocus() {
+         global.stage.set_key_focus(null);
+     }
+-};
++});
+-- 
+2.23.0
+

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 23 09:20:56 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Add llvm9-libs-fix.patch and build the package with LLVM9
+  as a dependency.
+
+-------------------------------------------------------------------
 Tue Oct 22 06:52:25 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Move back Group in spec file.

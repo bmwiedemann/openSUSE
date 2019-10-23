@@ -115,6 +115,37 @@ Index: node-v12.11.1/test/parallel/test-crypto-scrypt.js
      type: Error,
    };
    common.expectsError(() => crypto.scrypt('pass', 'salt', 1, options, () => {}),
+@@ -224,10 +189,10 @@ for (const { args, expected } of badargs
+ {
+   // Values for maxmem that do not fit in 32 bits but that are still safe
+   // integers should be allowed.
+-  crypto.scrypt('', '', 4, { maxmem: 2 ** 52 },
++  crypto.scrypt('test', 'test', 4, { maxmem: 2 ** 52 },
+                 common.mustCall((err, actual) => {
+                   assert.ifError(err);
+-                  assert.strictEqual(actual.toString('hex'), 'd72c87d0');
++                  assert.strictEqual(actual.toString('hex'), 'cd6dc07d');
+                 }));
+ 
+   // Values that exceed Number.isSafeInteger should not be allowed.
+@@ -243,7 +208,7 @@ for (const { args, expected } of badargs
+     let accessCount = 0;
+ 
+     // Find out how often the value is accessed.
+-    crypto.scryptSync('', '', 1, {
++    crypto.scryptSync('test', 'test', 1, {
+       get [name]() {
+         accessCount++;
+         return value;
+@@ -252,7 +217,7 @@ for (const { args, expected } of badargs
+ 
+     // Try to crash the process on the last access.
+     common.expectsError(() => {
+-      crypto.scryptSync('', '', 1, {
++      crypto.scryptSync('test', 'test', 1, {
+         get [name]() {
+           if (--accessCount === 0)
+             return '';
 Index: node-v12.11.1/test/parallel/test-repl-envvars.js
 ===================================================================
 --- node-v12.11.1.orig/test/parallel/test-repl-envvars.js

@@ -1211,4 +1211,14 @@ http://weekly.golang.org/doc/devel/weekly.html#2012-02-07
     <comment>Update changelog to reference existing bnc# CVE tracking issues (forwarded request 724679 from jfkw)</comment>
     <requestid>724681</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>efe7d3d5d9410d8d2306b54b0db84626</srcmd5>
+    <version>1.12.12</version>
+    <time>1571838542</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix broken go_api evaluation (1.12 &amp;lt; 1.5, when evaluated as floats),
+  let RPM evaluate the expression, drop no longer required bc.
+- Own the gdbinit.d directory, avoid the build dependency on gdb. (forwarded request 741580 from StefanBruens)</comment>
+    <requestid>741602</requestid>
+  </revision>
 </revisionlist>

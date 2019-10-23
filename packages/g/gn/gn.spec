@@ -17,22 +17,20 @@
 
 
 Name:           gn
-Version:        0.1544
+Version:        0.1616
 Release:        0
 Summary:        A meta-build system that generates build files for Ninja
 License:        BSD-3-Clause
-Group:          Development/Tools/Building
 URL:            https://gn.googlesource.com/
 Source:         https://dev.gentoo.org/~floppym/dist/%{name}-%{version}.tar.gz
 Patch0:         gn-flags.patch
-# PATCH-FIX-UPSTREAM: https://bugs.chromium.org/p/gn/issues/detail?id=6
-Patch1:         gn-add_missing_arm_files.patch
+Patch1:         gn-always-python3.patch
 BuildRequires:  gcc-c++
-%if 0%{suse_version} < 1500
+BuildRequires:  ninja
+BuildRequires:  python3-base
+%if 0%{?suse_version} < 1500
 BuildRequires:  gcc7-c++
 %endif
-BuildRequires:  ninja
-BuildRequires:  python2-base
 
 %description
 GN is a meta-build system that generates build files for Ninja.
@@ -46,13 +44,13 @@ GN is a meta-build system that generates build files for Ninja.
 export CC=gcc
 export CXX=g++
 export AR=ar
-%if 0%{suse_version} < 1500
+%if 0%{?suse_version} < 1500
 export CC=gcc-7
 export CXX=g++-7
 %endif
 export CXXFLAGS="%{optflags}"
 # bootstrap
-python2 build/gen.py --no-last-commit-position
+python3 build/gen.py --no-last-commit-position
 cat >out/last_commit_position.h <<-EOF
 	#ifndef OUT_LAST_COMMIT_POSITION_H_
 	#define OUT_LAST_COMMIT_POSITION_H_

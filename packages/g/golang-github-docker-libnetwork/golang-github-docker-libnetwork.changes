@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  8 23:43:49 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Update to libnetwork 45c710223c5f, which is required for Docker 19.03.3-ce.
+  bsc#1153367
+
+-------------------------------------------------------------------
 Mon Jul 22 23:16:08 UTC 2019 - Aleksa Sarai <asarai@suse.com>
 
 - Update to version git.fc5a7d91d54cc98f64fc28f9e288b46a0bee756c, which is

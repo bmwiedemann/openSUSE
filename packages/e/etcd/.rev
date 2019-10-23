@@ -144,4 +144,12 @@
     <comment></comment>
     <requestid>718153</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8ab78a6e107311238ae0a0dd1b69919f</srcmd5>
+    <version>3.3.15</version>
+    <time>1571838473</time>
+    <user>dimstar_suse</user>
+    <comment>Needed for k8s 1.16</comment>
+    <requestid>736836</requestid>
+  </revision>
 </revisionlist>

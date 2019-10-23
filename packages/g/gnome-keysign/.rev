@@ -172,4 +172,12 @@ Binary file gnome-keysign-0.9.tar.xz (revision 3) deleted</comment>
     <comment></comment>
     <requestid>618984</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>f277c77439ba730e2f6c29cce9ca305f</srcmd5>
+    <version>0.9.7.2</version>
+    <time>1571838734</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct dependency on gstreamer plugin (forwarded request 741440 from Andreas_Schwab)</comment>
+    <requestid>742023</requestid>
+  </revision>
 </revisionlist>

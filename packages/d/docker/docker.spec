@@ -42,17 +42,17 @@
 # helpfully injects into our build environment from the changelog). If you want
 # to generate a new git_commit_epoch, use this:
 #  $ date --date="$(git show --format=fuller --date=iso $COMMIT_ID | grep -oP '(?<=^CommitDate: ).*')" '+%s'
-%define git_version 6a30dfca0366
-%define git_commit_epoch 1567053734
+%define git_version a872fc2f86c0
+%define git_commit_epoch 1570493609
 
 # These are the git commits required. We verify them against the source to make
 # sure we didn't miss anything important when doing upgrades.
-%define required_containerd 894b81a4b802e4eb2a91d1ce216b8817763c29fb
-%define required_dockerrunc 425e105d5a03fabd737a126ad93d62a9eeede87f
-%define required_libnetwork fc5a7d91d54cc98f64fc28f9e288b46a0bee756c
+%define required_containerd b34a5c8af56e510852c35414db4c1f4fa6172339
+%define required_dockerrunc 3e425f80a8c931f88e6d94a8c831b9d5aa481657
+%define required_libnetwork 45c710223c5fbf04dc3028b9a90b51892e36ca7f
 
 Name:           %{realname}%{name_suffix}
-Version:        19.03.2_ce
+Version:        19.03.3_ce
 Release:        0
 Summary:        The Moby-project Linux container runtime
 License:        Apache-2.0
@@ -352,7 +352,7 @@ grep 'LIBNETWORK_COMMIT=%{required_libnetwork}' hack/dockerfile/install/proxy.in
 %install
 install -d %{buildroot}%{_bindir}
 install -D -m755 components/cli/build/docker %{buildroot}/%{_bindir}/docker
-install -D -m755 components/engine/bundles/latest/dynbinary-daemon/dockerd %{buildroot}/%{_bindir}/dockerd
+install -D -m755 components/engine/bundles/dynbinary-daemon/dockerd %{buildroot}/%{_bindir}/dockerd
 install -d %{buildroot}/%{_localstatedir}/lib/docker
 install -Dd -m 0755 \
 	%{buildroot}%{_sysconfdir}/init.d \
@@ -431,17 +431,6 @@ grep -q '^dockremap:' /etc/sub{uid,gid} || \
 %post
 %service_add_post %{realname}.service
 %{fillup_only -n docker}
-
-# NOTE: This is a pretty hacky way of getting around the fact we've removed
-#       containerd.service and now everything is spawned underneath Docker. In
-#       order to force containerd.service to be stopped on the upgrade we need
-#       to trick the systemd macros into thinking that this is an "uninstall".
-#       Hopefully we can remove this soon.
-(
-	FIRST_ARG=0
-	%service_del_preun containerd.service containerd.socket
-	%service_del_postun containerd.service containerd.socket
-)
 
 %if "%flavour" == "kubic"
 %post kubeadm-criconfig

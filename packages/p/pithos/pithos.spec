@@ -1,7 +1,7 @@
 #
 # spec file for package pithos
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2012-2014 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,31 +13,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %global appid io.github.Pithos
 Name:           pithos
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 Summary:        Native Pandora Radio client for Linux
 License:        GPL-3.0-only
 Group:          Productivity/Multimedia/Other
 Url:            https://pithos.github.io/
 Source0:        https://github.com/pithos/pithos/releases/download/%{version}/pithos-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM pithos-fix-deprecated-pygobject.patch -- Fix deprecated PyGObject usage
-Patch0:         pithos-fix-deprecated-pygobject.patch
 
 BuildRequires:  gdk-pixbuf-devel
 BuildRequires:  glib2-devel
-BuildRequires:  meson
+BuildRequires:  meson >= 0.50.0
 # Needed for automatic typelib() Requires.
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  python3-devel >= 3.4
-BuildRequires:  update-desktop-files
 Requires:       gstreamer-plugins-bad
 Requires:       gstreamer-plugins-good
 Requires:       python3-cairo
@@ -60,39 +57,26 @@ features such as media keys, notifications, and the sound menu.
 
 %install
 %meson_install
-find %{buildroot} -name \*.pyc -delete # boo#1110032
+
+# Fix boo#1110032 - Create noarch pyc files
+find %{buildroot} -name \*.pyc -delete
 %py3_compile %{buildroot}
 
 # Remove unnecessary icons
 rm -rf %{buildroot}%{_datadir}/icons/ubuntu-mono*
 
-%suse_update_desktop_file %{appid}
-
-%if 0%{?suse_version} < 1330
-%post
-%glib2_gsettings_schema_post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%glib2_gsettings_schema_postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
-
 %files
-%defattr(-,root,root)
-%doc license README.md
+%license license
+%doc README.md
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
 %{_datadir}/applications/%{appid}.desktop
 %{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
 %{_datadir}/icons/hicolor/
-%dir %{_datadir}/appdata/
-%{_datadir}/appdata/%{appid}.appdata.xml
+%{_datadir}/metainfo/%{appid}.appdata.xml
 %dir %{_datadir}/dbus-1
 %dir %{_datadir}/dbus-1/services
-%{_datadir}/dbus-1/services/io.github.Pithos.service
+%{_datadir}/dbus-1/services/%{appid}.service
 %{_mandir}/man1/pithos.1%{?ext_man}
 
 %changelog

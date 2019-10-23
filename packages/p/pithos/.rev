@@ -179,4 +179,29 @@
     <comment></comment>
     <requestid>706391</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>547c643904c2f01f0c86cba76d327100</srcmd5>
+    <version>1.5.0</version>
+    <time>1571838739</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.0:
+  + This is a relatively small release fixing appmenu integration
+    on modern versions of GNOME as well as using more sandbox
+    (Flatpak) friendly APIs. Note that this move may introduce
+    behavior changes on some platforms.
+  + Remove appmenu and move into a menu button in the toolbar.
+  + Fix preference dialog accidentally getting destroyed.
+  + Notify: Migrate to GNotification.
+  + MPRIS: Rename name to match app-id
+    (org.mpris.MediaPlayer2.io.github.Pithos).
+  + Screensaver Pause: Remove platform specific screensaver support
+    and use GTK's built-in detection.
+- Drop pithos-fix-deprecated-pygobject.patch: Fixed upstream.
+- Drop post(un) handling of glib2_gsettings_schema_post(un),
+  desktop_database_post(un) and icon_theme_cache_post(un), no
+  longer needed for any supported version of openSUSE.
+- Drop update-desktop-files BuildRequires and macro, no longer
+  needed. (forwarded request 741938 from iznogood)</comment>
+    <requestid>742024</requestid>
+  </revision>
 </revisionlist>

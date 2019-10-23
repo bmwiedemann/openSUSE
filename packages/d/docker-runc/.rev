@@ -167,4 +167,15 @@ necessary for the Docker 17.07.0_ce update.</comment>
     <comment>Docker v18.09.7 update.</comment>
     <requestid>712299</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>1b063524d3a462a478ea6f2ff8d79db3</srcmd5>
+    <version>1.0.0rc8+gitr3917_3e425f80a8c9</version>
+    <time>1571838430</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to runc 3e425f80a8c9, which is required for Docker 19.03.3-ce.
+  bsc#1153367
+- Add backported fix for CVE-2019-16884. bsc#1152308
+  + CVE-2019-16884.patch</comment>
+    <requestid>736405</requestid>
+  </revision>
 </revisionlist>

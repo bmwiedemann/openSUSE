@@ -47,4 +47,12 @@
     <comment>- add avoid-wrong-provides.diff to avoid wrong provides</comment>
     <requestid>690874</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4f54f110c9db960a86afbaf91bcc271d</srcmd5>
+    <version>97</version>
+    <time>1571838832</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>742095</requestid>
+  </revision>
 </revisionlist>

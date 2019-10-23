@@ -15,4 +15,12 @@
     <comment>- Add wrapper for etcd [bsc#1149392]</comment>
     <requestid>728700</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bc070c229db0942aa64f674b31e316f1</srcmd5>
+    <version>3.3.15</version>
+    <time>1571838478</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>736853</requestid>
+  </revision>
 </revisionlist>

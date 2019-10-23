@@ -1,0 +1,18 @@
+diff --git a/clang_delta/Makefile.in b/clang_delta/Makefile.in
+index 5bd6e56..b915946 100644
+--- a/clang_delta/Makefile.in
++++ b/clang_delta/Makefile.in
+@@ -575,12 +575,7 @@ clang_delta_CXXFLAGS = \
+ # libraries.  So probably, we could move `LLVMLDFLAGS' back to the definition
+ # of `clang_delta_LDFLAGS'.  I'll do that later.
+ clang_delta_LDADD = \
+-	-lclangStaticAnalyzerFrontend -lclangStaticAnalyzerCheckers \
+-	-lclangStaticAnalyzerCore \
+-	-lclangFrontendTool -lclangFrontend -lclangDriver -lclangSerialization \
+-	-lclangCodeGen -lclangParse -lclangSema -lclangAnalysis \
+-	-lclangRewriteFrontend -lclangRewrite -lclangAST -lclangBasic -lclangEdit -lclangLex \
+-	-lclangARCMigrate \
++	-lclang-cpp \
+ 	$(LLVMLIBS) \
+ 	$(CLANG_LDFLAGS) \
+ 	$(LLVMLDFLAGS)

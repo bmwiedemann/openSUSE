@@ -78,8 +78,7 @@
 %define go_api 1.12
 
 # shared library support
-%define shared_supported %(echo "%{go_api} >= 1.5" | bc -l)
-%if %{shared_supported}
+%if "%{rpm_vercmp %{go_api} 1.5}" > "0"
 %if %{with gccgo}
 %define with_shared 1
 %else
@@ -119,7 +118,7 @@
 %endif
 
 Name:           go1.12
-Version:        1.12.9
+Version:        1.12.12
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
@@ -159,10 +158,7 @@ Recommends:     %{name}-doc = %{version}
 BuildRequires:  gcc-c++
 %endif
 #BNC#818502 debug edit tool of rpm fails on i586 builds
-BuildRequires:  bc
 BuildRequires:  rpm >= 4.11.1
-# for go.gdbinit, directory ownership
-BuildRequires:  gdb
 Requires(post):	update-alternatives
 Requires(postun):	update-alternatives
 Requires:       gcc
@@ -359,6 +355,7 @@ fi
 %{_libdir}/go/%{go_api}
 %dir %{_datadir}/go
 %{_datadir}/go/%{go_api}
+%dir %{_sysconfdir}/gdbinit.d/
 %config %{_sysconfdir}/gdbinit.d/go.gdb
 %ghost %{_sysconfdir}/alternatives/go
 %ghost %{_sysconfdir}/alternatives/gofmt

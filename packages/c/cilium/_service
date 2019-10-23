@@ -1,16 +1,17 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/cilium/cilium</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">refs/tags/v1.5.5</param>
+    <param name="revision">refs/tags/v1.6.3</param>
     <param name="filename">cilium</param>
-    <param name="changesgenerate">enable</param>
+    <param name="changesgenerate">disable</param>
   </service>
-  <service name="recompress" mode="disabled">
-    <param name="file">cilium-*.tar</param>
-    <param name="compression">gz</param>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
   </service>
   <service name="set_version" mode="disabled"/>
 </services>

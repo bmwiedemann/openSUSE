@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct  8 23:39:02 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Update to runc 3e425f80a8c9, which is required for Docker 19.03.3-ce.
+  bsc#1153367
+- Rebase CVE-2019-16884 fix (3e425f80a8c9 doesn't contain the entire fix).
+  bsc#1152308
+  - CVE-2019-16884.patch
+
+-------------------------------------------------------------------
+Thu Sep 26 14:54:07 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Add backported fix for CVE-2019-16884. bsc#1152308
+  + CVE-2019-16884.patch
+
+-------------------------------------------------------------------
 Fri Jun 28 01:39:44 UTC 2019 - Aleksa Sarai <asarai@suse.com>
 
 - Update to runc 425e105d5a03, which is required for Docker v18.09.7-ce.

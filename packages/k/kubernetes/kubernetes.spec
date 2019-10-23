@@ -18,11 +18,11 @@
 
 %{!?tmpfiles_create:%global tmpfiles_create systemd-tmpfiles --create}
 # baseversion - version of kubernetes for this package
-%define baseversion 1.15
+%define baseversion 1.16
 # maxcriversion - version of cri-tools which is notsupported by this version of kubeadm.
-%define maxcriversion 1.16
+%define maxcriversion 1.17
 Name:           kubernetes
-Version:        %{baseversion}.4
+Version:        %{baseversion}.2
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -52,7 +52,7 @@ BuildRequires:  bash-completion
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  go-go-md2man
-# Kubernetes 1.15.4 requires at least go 1.12.9 (see changelog)
+# Kubernetes 1.16.1 requires at least go 1.12.10 (see changelog)
 BuildRequires:  golang(API) = 1.12
 BuildRequires:  go >= 1.12.9
 BuildRequires:  golang(github.com/jteeuwen/go-bindata)
@@ -447,7 +447,6 @@ fi
 %{_mandir}/man1/kube-apiserver.1%{?ext_man}
 %{_mandir}/man1/kube-controller-manager.1%{?ext_man}
 %{_mandir}/man1/kube-scheduler.1%{?ext_man}
-%{_mandir}/man1/cloud-controller-manager.1%{?ext_man}
 %{_bindir}/kube-apiserver
 %{_bindir}/kube-controller-manager
 %{_bindir}/kube-scheduler

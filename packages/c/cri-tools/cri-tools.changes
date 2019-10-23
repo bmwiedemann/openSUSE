@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Sep 26 09:07:07 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Update to v1.16.1:
+  * crictl:
+    * Fix empty fields in crictl inspect(p/i) result.
+    * Pass pod config when pulling image during container creation.
+    * Fix crictl stats panic.
+  * critest
+    * Skip hostnetwork portforward test on windows.
+    * Add hostname test.
+
+-------------------------------------------------------------------
+Tue Sep 17 09:23:45 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v1.16.0:
+  * crictl:
+    * Add container 'run' subcommand.
+    * Pull image on container creation.
+    * Treat first crictl stats argument as filter ID.
+    * Add -a (remove all) option to rmp.
+    * Create directory for config file.
+    * Add container rm --force, -f and --all, -a flags.
+    * Add images aliases image, img.
+    * Add --all, -a flag to image removal (rmi).
+    * Update Kubernetes vendors to 1.16.0 and add addiontion IPs for Pods.
+  * critest:
+    * Add registry prefix option.
+    * Add test for MaskedPaths and ReadonlyPaths.
+    * Switch to multi-arch nonewprivs image.
+    * Use arch specific hostnet-nginx image.
+    * Use a dedicated image for all reference test.
+    * Use IsAppArmorEnabled of Kubernetes instead of local one.
+    * Fix exec test timeout issues.
+
+-------------------------------------------------------------------
 Thu Jul  4 13:41:53 UTC 2019 - Michal Jura <mjura@suse.com>
 
 - Update golang(API) requiremnt to 1.12

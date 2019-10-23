@@ -18,9 +18,9 @@
 
 %{!?tmpfiles_create:%global tmpfiles_create systemd-tmpfiles --create}
 # baseversion - version of kubernetes for this package
-%define baseversion 1.15
+%define baseversion 1.16
 Name:           kubectl
-Version:        %{baseversion}.4
+Version:        %{baseversion}.2
 Release:        0
 Summary:        Kubectl (Kubernetes client tools)
 License:        Apache-2.0
@@ -34,9 +34,9 @@ BuildRequires:  bash-completion
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  go-go-md2man
-# Kubernetes 1.15.4 requires at least go 1.12.9 (see changelog)
+# Kubernetes 1.16.1 requires at least go 1.12.10 (see changelog)
 BuildRequires:  golang(API) = 1.12
-BuildRequires:  go >= 1.12.9
+BuildRequires:  go >= 1.12.10
 BuildRequires:  golang(github.com/jteeuwen/go-bindata)
 BuildRequires:  golang-packaging
 BuildRequires:  rsync

@@ -17,16 +17,16 @@
 
 
 Name:           etcd-for-k8s-image
-Version:        3.3.10
+Version:        3.3.15
 Release:        0
 Summary:        Etcd and etcdtl for k8s image
 License:        Apache-2.0
 Group:          System/Management
 Url:            https://github.com/coreos/etcd
 Source:         etcd-%{version}.tar.xz
-Source1:        etcd-3.2.24.tar.xz
-BuildRequires:  go
+BuildRequires:  go1.12 >= 1.12.9
 BuildRequires:  golang-packaging
+BuildRequires:  golang(API) = 1.12
 ExcludeArch:    %ix86
 ExcludeArch:    s390
 Conflicts:      etcd
@@ -38,22 +38,14 @@ service discovery. This package contains different versions of etcd and
 etcdctl for the kubernetes container image.
 
 %prep
-%setup -q -n etcd-%{version} -b1
+%setup -q -n etcd-%{version} 
 
 %build
 %{goprep} github.com/coreos/etcd
-%{gobuild} cmd/etcd
-%{gobuild} cmd/etcdctl
+%{gobuild} .
+%{gobuild} etcdctl
 mkdir bin
 mv ../go/bin/etcd* bin
-
-#cd ../etcd-3.2.24
-#rm -rf ../go/*
-#%{goprep} github.com/coreos/etcd
-#%{gobuild} cmd/etcd
-#%{gobuild} cmd/etcdctl
-#mkdir bin
-#mv ../go/bin/etcd* bin
 
 %install
 mkdir -p %{buildroot}%{_bindir}
@@ -71,18 +63,12 @@ echo "exec %{_sbindir}/etcd-%{version} \"\$@\"" >> %{buildroot}%{_sbindir}/etcd
 chmod 755 %{buildroot}%{_sbindir}/etcd
 ln -sf etcdctl-%{version} %{buildroot}%{_bindir}/etcdctl
 
-#cd ../etcd-3.2.24
-#install -m 0755 bin/etcd %{buildroot}%{_sbindir}/etcd-3.2.24
-#install -m 0755 bin/etcdctl %{buildroot}%{_bindir}/etcdctl-3.2.24
-
 %files
 %defattr(-,root,root)
 %license LICENSE
 %{_sbindir}/etcd
 %{_sbindir}/etcd-%{version}
-#%{_sbindir}/etcd-3.2.24
 %{_bindir}/etcdctl
 %{_bindir}/etcdctl-%{version}
-#%{_bindir}/etcdctl-3.2.24
 
 %changelog

@@ -4,8 +4,8 @@
     <param name="url">https://github.com/coreos/etcd.git</param>
     <param name="exclude">.git</param>
     <param name="filename">etcd</param>
-    <param name="versionformat">3.3.11</param>
-    <param name="revision">v3.3.11</param>
+    <param name="versionformat">3.3.15</param>
+    <param name="revision">v3.3.15</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="recompress" mode="disabled">

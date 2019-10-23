@@ -8,10 +8,10 @@ management via update_alternatives.
 
 This is also important for generation of binary
 modules for multiple versions of NodeJS
-Index: node-v12.11.0/Makefile
+Index: node-v12.13.0/Makefile
 ===================================================================
---- node-v12.11.0.orig/Makefile
-+++ node-v12.11.0/Makefile
+--- node-v12.13.0.orig/Makefile
++++ node-v12.13.0/Makefile
 @@ -45,7 +45,7 @@ BUILDTYPE_LOWER := $(shell echo $(BUILDT
  EXEEXT := $(shell $(PYTHON) -c \
  		"import sys; print('.exe' if sys.platform == 'win32' else '')")
@@ -21,10 +21,10 @@ Index: node-v12.11.0/Makefile
  NODE ?= ./$(NODE_EXE)
  NODE_G_EXE = node_g$(EXEEXT)
  NPM ?= ./deps/npm/bin/npm-cli.js
-Index: node-v12.11.0/tools/install.py
+Index: node-v12.13.0/tools/install.py
 ===================================================================
---- node-v12.11.0.orig/tools/install.py
-+++ node-v12.11.0/tools/install.py
+--- node-v12.13.0.orig/tools/install.py
++++ node-v12.13.0/tools/install.py
 @@ -81,7 +81,7 @@ def uninstall(paths, dst):
      try_remove(path, dst)
  
@@ -125,10 +125,10 @@ Index: node-v12.11.0/tools/install.py
  
  def run(args):
    global node_prefix, install_path, target_defaults, variables
-Index: node-v12.11.0/doc/node.1
+Index: node-v12.13.0/doc/node.1
 ===================================================================
---- node-v12.11.0.orig/doc/node.1
-+++ node-v12.11.0/doc/node.1
+--- node-v12.13.0.orig/doc/node.1
++++ node-v12.13.0/doc/node.1
 @@ -30,24 +30,24 @@
  .Dt NODE 1
  .
@@ -158,10 +158,10 @@ Index: node-v12.11.0/doc/node.1
  .Op Fl -v8-options
  .
  .\"======================================================================
-Index: node-v12.11.0/src/node.stp
+Index: node-v12.13.0/src/node.stp
 ===================================================================
---- node-v12.11.0.orig/src/node.stp
-+++ node-v12.11.0/src/node.stp
+--- node-v12.13.0.orig/src/node.stp
++++ node-v12.13.0/src/node.stp
 @@ -19,7 +19,7 @@
  // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
  // USE OR OTHER DEALINGS IN THE SOFTWARE.
@@ -234,12 +234,12 @@ Index: node-v12.11.0/src/node.stp
  {
    scavenge = 1 << 0;
    compact = 1 << 1;
-Index: node-v12.11.0/deps/npm/man/man1/npm.1
+Index: node-v12.13.0/deps/npm/man/man1/npm.1
 ===================================================================
---- node-v12.11.0.orig/deps/npm/man/man1/npm.1
-+++ node-v12.11.0/deps/npm/man/man1/npm.1
+--- node-v12.13.0.orig/deps/npm/man/man1/npm.1
++++ node-v12.13.0/deps/npm/man/man1/npm.1
 @@ -1,11 +1,11 @@
- .TH "NPM" "1" "September 2019" "" ""
+ .TH "NPM" "1" "October 2019" "" ""
  .SH "NAME"
 -\fBnpm\fR \- javascript package manager
 +\fBnpm12\fR \- javascript package manager
@@ -338,10 +338,10 @@ Index: node-v12.11.0/deps/npm/man/man1/npm.1
  
  .RE
  
-Index: node-v12.11.0/node.gyp
+Index: node-v12.13.0/node.gyp
 ===================================================================
---- node-v12.11.0.orig/node.gyp
-+++ node-v12.11.0/node.gyp
+--- node-v12.13.0.orig/node.gyp
++++ node-v12.13.0/node.gyp
 @@ -21,8 +21,8 @@
      'node_use_openssl%': 'true',
      'node_shared_openssl%': 'false',
@@ -353,10 +353,10 @@ Index: node-v12.11.0/node.gyp
      'node_intermediate_lib_type%': 'static_library',
      'library_files': [
        'lib/internal/bootstrap/environment.js',
-Index: node-v12.11.0/src/node_main.cc
+Index: node-v12.13.0/src/node_main.cc
 ===================================================================
---- node-v12.11.0.orig/src/node_main.cc
-+++ node-v12.11.0/src/node_main.cc
+--- node-v12.13.0.orig/src/node_main.cc
++++ node-v12.13.0/src/node_main.cc
 @@ -121,6 +121,7 @@ int main(int argc, char* argv[]) {
  #endif
    // Disable stdio buffering, it interacts poorly with printf()
@@ -365,10 +365,10 @@ Index: node-v12.11.0/src/node_main.cc
    setvbuf(stdout, nullptr, _IONBF, 0);
    setvbuf(stderr, nullptr, _IONBF, 0);
    return node::Start(argc, argv);
-Index: node-v12.11.0/deps/npm/man/man1/npx.1
+Index: node-v12.13.0/deps/npm/man/man1/npx.1
 ===================================================================
---- node-v12.11.0.orig/deps/npm/man/man1/npx.1
-+++ node-v12.11.0/deps/npm/man/man1/npx.1
+--- node-v12.13.0.orig/deps/npm/man/man1/npx.1
++++ node-v12.13.0/deps/npm/man/man1/npx.1
 @@ -1,32 +1,32 @@
  .TH "NPX" "1" "April 2018" "npx@10.1.1" "User Commands"
  .SH "NAME"
@@ -452,10 +452,10 @@ Index: node-v12.11.0/deps/npm/man/man1/npx.1
 +\fBnpm12\-config(7)\fP
  
  .RE
-Index: node-v12.11.0/tools/test.py
+Index: node-v12.13.0/tools/test.py
 ===================================================================
---- node-v12.11.0.orig/tools/test.py
-+++ node-v12.11.0/tools/test.py
+--- node-v12.13.0.orig/tools/test.py
++++ node-v12.13.0/tools/test.py
 @@ -883,7 +883,7 @@ class Context(object):
      if self.vm is not None:
        return self.vm

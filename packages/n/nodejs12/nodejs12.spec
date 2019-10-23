@@ -26,7 +26,7 @@
 ###########################################################
 
 Name:           nodejs12
-Version:        12.11.1
+Version:        12.13.0
 Release:        0
 
 %define node_version_number 12
@@ -42,6 +42,7 @@ Release:        0
 %endif
 
 %bcond_with    valgrind_tests
+%bcond_without nodejs_lto
 
 %if 0%{?suse_version} == 1110
 %define _libexecdir %{_exec_prefix}/lib
@@ -121,8 +122,6 @@ Source20:       bash_output_helper.bash
 ## Patches not distribution specific
 Patch3:         fix_ci_tests.patch
 Patch7:         manual_configure.patch
-
-Patch32:        fix_build_with_openssl_1.1.1d.patch
 
 ## Patches specific to SUSE and openSUSE
 # PATCH-FIX-OPENSUSE -- set correct path for dtrace if it is built
@@ -251,7 +250,7 @@ Requires:       openssl1
 %endif
 
 # Building Node.js only makes sense on V8 architectures.
-ExclusiveArch:  %{ix86} x86_64 armv7hl aarch64 ppc64 ppc64le s390x
+ExclusiveArch:  x86_64 aarch64 ppc64 ppc64le s390x
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -275,7 +274,7 @@ Requires:       %{name}-devel = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
 Provides:       npm = %{version}
-Provides:       npm(npm) = 6.10.3
+Provides:       npm(npm) = 6.12.0
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
 Requires:       group(nobody)
@@ -319,7 +318,6 @@ tar Jxvf %{SOURCE11}
 %patch7 -p1
 %if 0%{with valgrind_tests}
 %endif
-%patch32 -p1
 %patch101 -p1
 %patch102 -p1
 # Add check_output to configure script (not part of Python 2.6 in SLE11).
@@ -331,7 +329,7 @@ tar Jxvf %{SOURCE11}
 %patch200 -p1
 
 # abnormalities from patching
-find -name configure.js.orig -delete
+find \( -name \*.js.orig -or -name \*.md.orig \) -delete
 
 %build
 # normalize shebang
@@ -357,10 +355,6 @@ find deps/cares -name *.[ch] -delete
 
 find deps/zlib -name *.[ch] -delete
 
-# Annoying, over-repetitive patch updated just because lines in
-# documentation changes every version.
-find -name *.md.orig -delete
-
 # percent-configure pulls in something that confuses node's configure
 # script, so we'll do it thus:
 export CFLAGS="%{optflags}"
@@ -376,7 +370,7 @@ export CXX=%{?cpp_exec}
 
 ./configure \
     --prefix=%{_prefix} \
-%if %{node_version_number} >= 12
+%if 0%{?with nodejs_lto} && %{node_version_number} >= 12
     --enable-lto \
 %endif
 %if ! 0%{with intree_openssl}

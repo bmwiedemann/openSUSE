@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Oct 21 14:35:53 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.42
+   see /usr/share/doc/packages/perl-Image-Info/CHANGES
+
+  2019-10-19  Slaven Rezic  <slaven@rezic.de>
+  
+      Release 1.42
+  
+      Stable release with all changes in 1.41_50
+  
+  2019-10-16  Slaven Rezic  <slaven@rezic.de>
+  
+      Release 1.41_50
+  
+      Support for WEBP files (RT #130529) (by Nicolas Clark)
+  
+      Cease a warning (by H.Merijn Brand)
+  
+      Various minor test and CI polishing
+
+-------------------------------------------------------------------
 Thu Jul 13 05:36:59 UTC 2017 - coolo@suse.com
 
 - updated to 1.41

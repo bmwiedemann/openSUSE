@@ -18,7 +18,7 @@
 
 %define rname kdev-python
 Name:           kdevelop5-plugin-python3
-Version:        5.4.2
+Version:        5.4.3
 Release:        0
 Summary:        Python support for KDevelop
 License:        GPL-2.0-or-later

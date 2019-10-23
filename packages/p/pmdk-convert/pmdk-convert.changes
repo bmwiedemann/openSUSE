@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 11 14:27:45 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to pmdk-convert v1.7 (jsc#SLE-9886)
+  - Adds support for PMDK 1.7.
+- Add cmake_hash.patch because binary file are dropped to avoid ClamAV warnings, pre downloaded
+    tarballs have not the expected hash.
+
+-------------------------------------------------------------------
 Tue Apr 30 15:18:22 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Reenable ClamAV

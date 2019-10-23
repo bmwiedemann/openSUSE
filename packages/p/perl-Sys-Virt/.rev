@@ -691,4 +691,15 @@ libvirt package, so the perl bindings should have them too.
   - Add all new APIs and constants in libvirt 5.7.0</comment>
     <requestid>728578</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>c65f87a25f220adac1e5d54d4812c7f8</srcmd5>
+    <version>5.8.0</version>
+    <time>1571838608</time>
+    <user>dimstar_suse</user>
+    <comment>Updated perl bindings for libvirt 5.8.0.
+
+- Update to 5.8.0
+  - Add all new APIs and constants in libvirt 5.8.0</comment>
+    <requestid>737236</requestid>
+  </revision>
 </revisionlist>

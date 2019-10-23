@@ -3,8 +3,8 @@
     <param name="url">https://github.com/docker/libnetwork.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="versionformat">git.%H</param>
-    <param name="revision">fc5a7d91d54cc98f64fc28f9e288b46a0bee756c</param>
+    <param name="versionformat">git.%h</param>
+    <param name="revision">45c710223c5fbf04dc3028b9a90b51892e36ca7f</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">libnetwork-*.tar</param>

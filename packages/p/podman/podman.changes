@@ -1,4 +1,159 @@
 -------------------------------------------------------------------
+Fri Oct  4 06:57:16 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update podman to v1.6.1
+  * Features
+    - The podman network create, podman network rm, podman network
+      inspect, and podman network ls commands have been added to
+      manage CNI networks used by Podman
+    - The podman volume create command can now create and mount
+      volumes with options, allowing volumes backed by NFS, tmpfs,
+      and many other filesystems
+    - Podman can now run containers without CGroups for better
+      integration with systemd by using the --cgroups=disabled flag
+      with podman create and podman run. This is presently only
+      supported with the crun OCI runtime
+    - The podman volume rm and podman volume inspect commands can now
+      refer to volumes by an unambiguous partial name, in addition to
+      full name (e.g. podman volume rm myvol to remove a volume named
+      myvolume) (#3891)
+    - The podman run and podman create commands now support the
+      --pull flag to allow forced re-pulling of images (#3734)
+    - Mounting volumes into a container using --volume, --mount, and
+      --tmpfs now allows the suid, dev, and exec mount options (the
+      inverse of nosuid, nodev, noexec) (#3819)
+    - Mounting volumes into a container using --mount now allows the
+      relabel=Z and relabel=z options to relabel mounts.
+    - The podman push command now supports the --digestfile option to
+      save a file containing the pushed digest
+    - Pods can now have their hostname set via podman pod create
+      --hostname or providing Pod YAML with a hostname set to podman
+      play kube (#3732)
+    - The podman image sign command now supports the --cert-dir flag
+    - The podman run and podman create commands now support the
+      --security-opt label=filetype:$LABEL flag to set the SELinux
+      label for container files
+    - The remote Podman client now supports healthchecks
+  * Bugfixes
+    - Fixed a bug where remote podman pull would panic if a Varlink
+      connection was not available (#4013)
+    - Fixed a bug where podman exec would not properly set terminal
+      size when creating a new exec session (#3903)
+    - Fixed a bug where podman exec would not clean up socket
+      symlinks on the host (#3962)
+    - Fixed a bug where Podman could not run systemd in containers
+      that created a CGroup namespace
+    - Fixed a bug where podman prune -a would attempt to prune images
+      used by Buildah and CRI-O, causing errors (#3983)
+    - Fixed a bug where improper permissions on the ~/.config
+      directory could cause rootless Podman to use an incorrect
+      directory for storing some files
+    - Fixed a bug where the bash completions for podman import threw
+      errors
+    - Fixed a bug where Podman volumes created with podman volume
+      create would not copy the contents of their mountpoint the
+      first time they were mounted into a container (#3945)
+    - Fixed a bug where rootless Podman could not run podman exec
+      when the container was not run inside a CGroup owned by the
+      user (#3937)
+    - Fixed a bug where podman play kube would panic when given Pod
+      YAML without a securityContext (#3956)
+    - Fixed a bug where Podman would place files incorrectly when
+      storage.conf configuration items were set to the empty string
+      (#3952)
+    - Fixed a bug where podman build did not correctly inherit
+      Podman's CGroup configuration, causing crashed on CGroups V2
+      systems (#3938)
+    - Fixed a bug where podman cp would improperly copy files on the
+      host when copying a symlink in the container that included a
+      glob operator (#3829)
+    - Fixed a bug where remote podman run --rm would exit before the
+      container was completely removed, allowing race conditions when
+      removing container resources (#3870)
+    - Fixed a bug where rootless Podman would not properly handle
+      changes to /etc/subuid and /etc/subgid after a container was
+      launched
+    - Fixed a bug where rootless Podman could not include some
+      devices in a container using the --device flag (#3905)
+    - Fixed a bug where the commit Varlink API would segfault if
+      provided incorrect arguments (#3897)
+    - Fixed a bug where temporary files were not properly cleaned up
+      after a build using remote Podman (#3869)
+    - Fixed a bug where podman remote cp crashed instead of reporting
+      it was not yet supported (#3861)
+    - Fixed a bug where podman exec would run as the wrong user when
+      execing into a container was started from an image with
+      Dockerfile USER (or a user specified via podman run --user)
+      (#3838)
+    - Fixed a bug where images pulled using the oci: transport would
+      be improperly named
+    - Fixed a bug where podman varlink would hang when managed by
+      systemd due to SD_NOTIFY support conflicting with Varlink
+      (#3572)
+    - Fixed a bug where mounts to the same destination would
+      sometimes not trigger a conflict, causing a race as to which
+      was actually mounted
+    - Fixed a bug where podman exec --preserve-fds caused Podman to
+      hang (#4020)
+    - Fixed a bug where removing an unmounted container that was
+      unmounted might sometimes not properly clean up the container
+      (#4033)
+    - Fixed a bug where the Varlink server would freeze when run in a
+      systemd unit file (#4005)
+    - Fixed a bug where Podman would not properly set the $HOME
+      environment variable when the OCI runtime did not set it
+    - Fixed a bug where rootless Podman would incorrectly print
+      warning messages when an OCI runtime was not found (#4012)
+    - Fixed a bug where named volumes would conflict with, instead of
+      overriding, tmpfs filesystems added by the --read-only-tmpfs
+      flag to podman create and podman run
+    - Fixed a bug where podman cp would incorrectly make the target
+      directory when copying to a symlink which pointed to a
+      nonexistent directory (#3894)
+    - Fixed a bug where remote Podman would incorrectly read STDIN
+      when the -i flag was not set (#4095)
+    - Fixed a bug where podman play kube would create an empty pod
+      when given an unsupported YAML type (#4093)
+    - Fixed a bug where podman import --change improperly parsed CMD
+      (#4000)
+    - Fixed a bug where rootless Podman on systems using CGroups V2
+      would not function with the cgroupfs CGroups manager
+    - Fixed a bug where rootless Podman could not correctly identify
+      the DBus session address, causing containers to fail to start
+      (#4162)
+    - Fixed a bug where rootless Podman with slirp4netns networking
+      would fail to start containers due to mount leaks
+  * Misc
+    - Significant changes were made to Podman volumes in this
+      release. If you have pre-existing volumes, it is strongly
+      recommended to run podman system renumber after upgrading.
+    - Version 0.8.1 or greater of the CNI Plugins is now required for
+      Podman
+    - Version 2.0.1 or greater of Conmon is strongly recommended
+    - Updated vendored Buildah to v1.11.2
+    - Updated vendored containers/storage library to v1.13.4
+    - Improved error messages when trying to create a pod with no
+      name via podman play kube
+    - Improved error messages when trying to run podman pause or
+      podman stats on a rootless container on a system without
+      CGroups V2 enabled
+    - TMPDIR has been set to /var/tmp by default to better handle
+      large temporary files
+    - podman wait has been optimized to detect stopped containers
+      more rapidly
+    - Podman containers now include a ContainerManager annotation
+      indicating they were created by libpod
+    - The podman info command now includes information about
+      slirp4netns and fuse-overlayfs if they are available
+    - Podman no longer sets a default size of 65kb for tmpfs
+      filesystems
+    - The default Podman CNI network has been renamed in an attempt
+      to prevent conflicts with CRI-O when both are run on the same
+      system. This should only take effect on system restart
+    - The output of podman volume inspect has been more closely
+      matched to docker volume inspect
+
+-------------------------------------------------------------------
 Thu Sep  5 15:26:01 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
 
 - Add katacontainers as a recommended package, and include it as an
@@ -13,21 +168,21 @@ Tue Aug 27 08:04:20 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
  * Bugfixes
    - Fixed a bug where podman run and podman create did not honor the --authfile
      option (#3730)
-   - Fixed a bug where containers restored with podman container restore 
+   - Fixed a bug where containers restored with podman container restore
      --import would incorrectly duplicate the Conmon PID file of the original container
-   - Fixed a bug where podman build ignored the default OCI runtime configured 
+   - Fixed a bug where podman build ignored the default OCI runtime configured
      in libpod.conf
-   - Fixed a bug where podman run --rm (or force-removing any running container 
+   - Fixed a bug where podman run --rm (or force-removing any running container
      with podman rm --force) were not retrieving the correct exit code (#3795)
-   - Fixed a bug where Podman would exit with an error if any configured hooks 
+   - Fixed a bug where Podman would exit with an error if any configured hooks
      directory was not present
-   - Fixed a bug where podman inspect and podman commit would not use the 
+   - Fixed a bug where podman inspect and podman commit would not use the
      correct CMD for containers run with podman play kube
    - Fixed a bug created pods when using rootless Podman and CGroups V2 (#3801)
-   - Fixed a bug where the podman events command with the --since or --until 
+   - Fixed a bug where the podman events command with the --since or --until
      options could take a very long time to complete
  * Misc
-   - Rootless Podman will now inherit OCI runtime configuration from the root 
+   - Rootless Podman will now inherit OCI runtime configuration from the root
      configuration (#3781)
    - Podman now properly sets a user agent while contacting registries (#3788)
 

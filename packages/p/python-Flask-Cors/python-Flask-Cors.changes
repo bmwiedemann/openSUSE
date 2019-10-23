@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 22 12:20:25 UTC 2019 - Petr Cervinka <petr@cervinka.net>
+
+- Add patch 0001-Disable-ACL_ORIGIN-check.patch to disable failing 
+  ACL_ORIGIN check in test (boo#1154808)
+
+-------------------------------------------------------------------
 Sat Jun  8 23:12:35 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - specfile:

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 21 08:47:35 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- Correct dependency on gstreamer plugin
+
+-------------------------------------------------------------------
 Sun Jun 17 11:20:41 UTC 2018 - bjorn.lie@gmail.com
 
 - Update to version 0.9.7.2:

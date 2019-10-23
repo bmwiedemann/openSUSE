@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 22 13:32:40 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 4.7.4:
+  * Release 4.7.4
+  * Fix XSS if Adminer is accessible at URL /data:
+  * Do not put unused doc links to single driver compiled version
+  * Fix PostgreSQL doc root
+  * Save bytes
+  * add links to oracle docs
+  * add links to postgres docs
+  * Bump version
+
+-------------------------------------------------------------------
 Thu Aug 29 13:18:42 UTC 2019 - jimmy@boombatower.com
 
 - Update to version 4.7.3:

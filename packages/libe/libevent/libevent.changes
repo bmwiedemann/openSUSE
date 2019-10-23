@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 24 12:03:16 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Add upstream patches with the feature of "prepare" and "check"
+  watchers. That feature is needed by envoy-proxy:
+  * 0001-evwatch-Add-prepare-and-check-watchers.patch
+  * 0002-evwatch-fix-race-condition.patch
+
+-------------------------------------------------------------------
 Tue Aug 20 22:27:52 UTC 2019 - David Disseldorp <ddiss@suse.com>
 
 - Update to 2.1.11 stable

@@ -20,7 +20,7 @@
 %define name_source1    crictl.yaml
 
 Name:           cri-tools
-Version:        1.15.0
+Version:        1.16.1
 Release:        0
 Summary:        CLI and validation tools for Kubelet Container Runtime Interface
 License:        Apache-2.0

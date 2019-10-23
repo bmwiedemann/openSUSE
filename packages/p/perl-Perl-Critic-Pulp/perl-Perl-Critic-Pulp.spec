@@ -17,7 +17,7 @@
 
 
 Name:           perl-Perl-Critic-Pulp
-Version:        96
+Version:        97
 Release:        0
 #Upstream: GPL-1.0-or-later
 %define cpan_name Perl-Critic-Pulp
@@ -66,7 +66,7 @@ Perl::Critic/POLICY THEMES).
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -name "*.sh" -print0 | xargs -0 chmod 644
 %patch0 -p1
 
 %build

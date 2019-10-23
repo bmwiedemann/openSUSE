@@ -414,4 +414,41 @@
     <comment>1.16.0 is being a pain, so this will have to do for now</comment>
     <requestid>732774</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>55a511dd6442cf13602d108055ae4e03</srcmd5>
+    <version>1.16.2</version>
+    <time>1571838514</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.16.2:
+  * apiextensions: npe panic in structural schema unfold
+  * Fix dynamic kubelet config init order
+  * Fixed bug in TopologyManager with SingleNUMANode Policy
+  * Merge pull request #83102 from feiskyer/fix-too-many-calls
+  * Address PR comment
+  * Update service controller to prevent orphaned public IP addresses
+  * Limit YAML/JSON decode size
+  * bump gopkg.in/yaml.v2 v2.2.4
+  * Add/Update CHANGELOG-1.16.md for v1.16.1.
+  * Kubernetes version v1.16.2-beta.0 openapi-spec file updates
+  * Don't leak a go routine on panic
+  * using online instead to fix kubelet service failed with wrong number of possible NUMA nodes
+  * Update go mod hcsshim version to fix the kube-proxy issue cannot access service by self nodeip:port on windows
+
+- Update to version 1.16.1:
+  * Deflake TestWatchBasedManager
+  * Update to use go1.12.10
+  * remove apiserver loopback client QPS limit
+  * Use ipv4 in wincat port forward
+  * Update codegen violation rules
+  * Update generated code
+  * Add example3.io:v1 to update-codegen.sh
+  * Add example3.io
+  * informer-gen: allow package names containing dots
+  * Update cluster autoscaler version to 1.16.1
+  * Fix ipv6 ip allocation method for standard lb
+  * fix map assignment to entry in nil map,when use --feature-gates in kubeadm
+  * Fix closing of dirs in doSafeMakeDir
+  * Fixed a scheduler panic on PodAffinity</comment>
+    <requestid>738890</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Oct 22 18:58:23 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- Added a Provides: for gnome-shell-extension-hamster for proper
+  package renaming
+
+-------------------------------------------------------------------
+Tue Oct 22 15:14:44 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- Make hamster-shell-extension compatible with GNOME 3.34 for TW
+  (gh#projecthamster/hamster-shell-extension#316)
+  * added 0019-factsBox-use-GObject.registerClass.patch
+  * added 0020-panelWidget-fix-object.actor-is-deprecated-warning.patch
+  * added 0021-metadata.json-mark-GNOME-3.34-as-supported.patch
+- Renamed gnome-shell-extension-hamster to gnome-shell-extension-hamster-time-tracker
+  and changed version number scheme which was broken before
+  * coded "maximum GNOME shell version" in
+  * don't use hamster main package version, as the extension has an
+    independent code base and the hamster API is stable
+
+-------------------------------------------------------------------
 Fri May 10 09:56:26 UTC 2019 - Martin Wilck <mwilck@suse.com>
 
 - Make hamster-shell-extension compatible with GNOME 3.32 for TW

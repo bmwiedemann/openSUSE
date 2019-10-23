@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Fri Oct 11 15:14:19 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Update to version 1.6.3:
+  * Highlights
+    * KVStore free operation
+    * 100% Kube-proxy replacement
+    * Socket-based load-balancing
+    * Policy scalability improvements
+    * Generic CNI chaining
+    * Native AWS ENI mode
+  * Key Fixes
+    * Fix IP leak on main interface when using ENI IPAM
+    * Fix deadlock caused by buffered channel being full when
+      large amounts of local identities are allocated while
+      FQDNSelectors are being updated
+  * Minor Bug Fixes
+    * Fix apiVersion in micropk8s Daemonset in microk8s-prepull.yml
+      to apps/v1
+    * Do not try to delete CiliumEndpoint from K8s if name /
+      namespace fields are empty
+    * Configure sysctl if IPv6 is disabled for the health
+      endpoint's device to have IPv6 disabled as well in order to
+      avoid emitting IPv6 autoconf frames
+    * Fix monitor reporting status to not show monitor as always
+      being disabled
+    * Fix sockops compilation / verification on newer LLVM versions
+    * Ensure that unroutable packets are dropped as being
+      unroutable when they are unroutable via cilium_host device
+    * Fix bug where L7 wildcarding for policy was not occurring for
+      CIDR-based policy rules
+  * Enhancements
+    * Populate source and destination ports for DNS records in the
+      monitor
+    * Backport of pkg/sysctl to make it easier to configure sysctl
+      options
+    * Support client certificate rotation in the etcd client
+  * Encryption Fixes
+    * Fix packet drops when using encryption by setting output-mark
+      to use table 200 post-encryption and set different MTU for
+      main/200 tables / not using policies/states for subnets
+  * Dependencies
+    * Update netlink library to get support for output-mark
+    * Update golang version in Docker images to v1.12.10
+    * Always run update when building dependencies in Docker images
+    * Bump K8s dependency to v1.16.1
+    * Bump golang.org/sys/unix library version
+  * Documentation
+    * Update supported Kubernetes versions
+    * Update microk8s instructions to use cilium plugin to microk8s
+
+-------------------------------------------------------------------
 Mon Jul 29 11:38:56 UTC 2019 - mrostecki@opensuse.org
 
 - Update to version 1.5.5:

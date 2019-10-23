@@ -2,9 +2,9 @@
 #
 # Generating `vendor.tar.xz`
 
-1. Install `cargo` and `cargo-vendor` from official repositories. `cargo` is provided by `rust`
+1. Install `cargo` from official repositories.
 
-    zypper install rust cargo-vendor
+    zypper install cargo
 
 2. Checkout version
 

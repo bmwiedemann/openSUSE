@@ -23,8 +23,11 @@ Summary:        Authenticaton for container registry with tokens
 License:        Apache-2.0
 URL:            https://github.com/cesanta/docker_auth
 Source:         docker_auth-%{version}.tar.xz
-BuildRequires:  golang(API) = 1.12
 BuildRequires:  go1.12 >= 1.12.9
+BuildRequires:  golang(API) = 1.12
+%ifarch %arm aarch64
+BuildRequires:  binutils-gold
+%endif
 
 %description
 This package contains a tool to authenticate the access to

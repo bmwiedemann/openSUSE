@@ -2,10 +2,10 @@ Add migration constraint parameters to libvirt perl bindings
 
 References: fate#316614, bsc#859868
 
-Index: Sys-Virt-v5.7.0/lib/Sys/Virt/Domain.pm
+Index: Sys-Virt-v5.8.0/lib/Sys/Virt/Domain.pm
 ===================================================================
---- Sys-Virt-v5.7.0.orig/lib/Sys/Virt/Domain.pm
-+++ Sys-Virt-v5.7.0/lib/Sys/Virt/Domain.pm
+--- Sys-Virt-v5.8.0.orig/lib/Sys/Virt/Domain.pm
++++ Sys-Virt-v5.8.0/lib/Sys/Virt/Domain.pm
 @@ -1141,6 +1141,22 @@ progress is not made
  
  The number of connections used during parallel migration.
@@ -29,11 +29,11 @@ Index: Sys-Virt-v5.7.0/lib/Sys/Virt/Domain.pm
  =back
  
  =item $ddom = $dom->migrate(destcon, flags=0, dname=undef, uri=undef, bandwidth=0)
-Index: Sys-Virt-v5.7.0/lib/Sys/Virt.xs
+Index: Sys-Virt-v5.8.0/lib/Sys/Virt.xs
 ===================================================================
---- Sys-Virt-v5.7.0.orig/lib/Sys/Virt.xs
-+++ Sys-Virt-v5.7.0/lib/Sys/Virt.xs
-@@ -5355,7 +5355,7 @@ _migrate(dom, destcon, newparams, flags=
+--- Sys-Virt-v5.8.0.orig/lib/Sys/Virt.xs
++++ Sys-Virt-v5.8.0/lib/Sys/Virt.xs
+@@ -5413,7 +5413,7 @@ _migrate(dom, destcon, newparams, flags=
       virTypedParameterPtr params;
       int nparams;
      CODE:
@@ -42,7 +42,7 @@ Index: Sys-Virt-v5.7.0/lib/Sys/Virt.xs
       Newx(params, nparams, virTypedParameter);
  
       strncpy(params[0].field, VIR_MIGRATE_PARAM_URI,
-@@ -5422,6 +5422,22 @@ _migrate(dom, destcon, newparams, flags=
+@@ -5480,6 +5480,22 @@ _migrate(dom, destcon, newparams, flags=
               VIR_TYPED_PARAM_FIELD_LENGTH);
       params[15].type = VIR_TYPED_PARAM_ULLONG;
  
@@ -65,7 +65,7 @@ Index: Sys-Virt-v5.7.0/lib/Sys/Virt.xs
       nparams = vir_typed_param_from_hv(newparams, params, nparams);
  
       vir_typed_param_add_string_list_from_hv(newparams, &params, &nparams,
-@@ -5450,7 +5466,7 @@ _migrate_to_uri(dom, desturi, newparams,
+@@ -5508,7 +5524,7 @@ _migrate_to_uri(dom, desturi, newparams,
       virTypedParameterPtr params;
       int nparams;
    PPCODE:
@@ -74,7 +74,7 @@ Index: Sys-Virt-v5.7.0/lib/Sys/Virt.xs
       Newx(params, nparams, virTypedParameter);
  
       strncpy(params[0].field, VIR_MIGRATE_PARAM_URI,
-@@ -5513,10 +5529,26 @@ _migrate_to_uri(dom, desturi, newparams,
+@@ -5571,10 +5587,26 @@ _migrate_to_uri(dom, desturi, newparams,
               VIR_TYPED_PARAM_FIELD_LENGTH);
       params[14].type = VIR_TYPED_PARAM_INT;
  
@@ -102,7 +102,7 @@ Index: Sys-Virt-v5.7.0/lib/Sys/Virt.xs
       nparams = vir_typed_param_from_hv(newparams, params, nparams);
  
       vir_typed_param_add_string_list_from_hv(newparams, &params, &nparams,
-@@ -9172,6 +9204,10 @@ BOOT:
+@@ -9239,6 +9271,10 @@ BOOT:
        REGISTER_CONSTANT_STR(VIR_MIGRATE_PARAM_PARALLEL_CONNECTIONS, MIGRATE_PARAM_PARALLEL_CONNECTIONS);
  
        REGISTER_CONSTANT(VIR_DOMAIN_MIGRATE_MAX_SPEED_POSTCOPY, MIGRATE_MAX_SPEED_POSTCOPY);

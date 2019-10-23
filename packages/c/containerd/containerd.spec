@@ -34,11 +34,11 @@
 %endif
 
 # MANUAL: Update the git_version.
-%define git_version 894b81a4b802e4eb2a91d1ce216b8817763c29fb
-%define git_short   894b81a4b802
+%define git_version b34a5c8af56e510852c35414db4c1f4fa6172339
+%define git_short   b34a5c8af56e
 
 Name:           %{realname}%{name_suffix}
-Version:        1.2.6
+Version:        1.2.10
 Release:        0
 Summary:        Standalone OCI Container Daemon
 License:        Apache-2.0

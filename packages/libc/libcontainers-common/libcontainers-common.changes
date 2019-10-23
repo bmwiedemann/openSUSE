@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Oct  2 08:29:50 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to image 4.0.0
+  - Add http response to log
+  - Add tests for parsing OpenShift kubeconfig files
+  - Compress: define some consts for the compression algos
+  - Compression: add support for the zstd
+  - Compression: allow to specify the compression format
+  - Copy: add nil checks
+  - Copy: compression: default to gzip
+  - Copy: don't lose annotations of BlobInfo
+  - Copy: fix options.DestinationCtx nil check
+  - Copy: use a bigger buffer for the compression
+  - Fix cross-compilation by vendoring latest c/storage
+  - Internal/testing/explicitfilepath-tmpdir: handle unset TMPDIR
+  - Keyctl: clean up after tests
+  - Make container tools work with go+openssl
+  - Make test-skopeo: replace c/image module instead of copying code
+  - Media type checks
+  - Move keyctl to internal & func remove auth from keyring
+  - Replace vendor.conf by go.mod
+  - Update dependencies
+  - Update test certificates
+  - Update to mergo v0.3.5
+  - Vendor.conf: update reference for containers/storage
+- Update to storage 1.13.4
+  - Update generated files
+  - ImageBigData: distinguish between no-such-image and no-such-item
+  - ImageSize: don't get tripped up by images with no layers
+  - tarlogger: disable raw accouting
+- Update to libpod 1.6.0
+  - Nothing changed regarding the OCI hooks documentation provided by this
+    package
+
+-------------------------------------------------------------------
 Mon Sep 23 15:28:02 UTC 2019 - Richard Brown <rbrown@suse.com>
 
 - Update to image 1.4.4
@@ -22,7 +57,7 @@ Wed Aug  7 10:35:07 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
 -------------------------------------------------------------------
 Tue Aug  6 11:42:17 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
 
-- Add a default registries.d configuration file, used to specify images 
+- Add a default registries.d configuration file, used to specify images
   signatures storage location.
 
 -------------------------------------------------------------------

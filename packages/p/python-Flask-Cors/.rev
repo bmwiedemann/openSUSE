@@ -24,4 +24,14 @@
     <comment></comment>
     <requestid>709898</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>cce4afac337095d9650d13f02152c426</srcmd5>
+    <version>3.0.8</version>
+    <time>1571838878</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch 0001-Disable-ACL_ORIGIN-check.patch to disable failing 
+  ACL_ORIGIN check in test (boo#1154808)
+</comment>
+    <requestid>742134</requestid>
+  </revision>
 </revisionlist>

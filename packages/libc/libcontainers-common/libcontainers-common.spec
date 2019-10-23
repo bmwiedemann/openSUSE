@@ -16,13 +16,13 @@
 #
 
 # libpodver - version from containers/libpod
-%define libpodver 1.5.1
+%define libpodver 1.6.0
 
 # storagever - version from containers/storage
-%define storagever 1.13.2
+%define storagever 1.13.4
 
 # imagever - version from containers/image
-%define imagever 3.0.2
+%define imagever 4.0.0
 
 Name:           libcontainers-common
 Version:        20190923

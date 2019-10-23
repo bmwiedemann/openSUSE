@@ -58,4 +58,35 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>737438</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7019b2b97c480ca2d9779c4871fa5154</srcmd5>
+    <version>12.13.0</version>
+    <time>1571838780</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to LTS release 12.13.0 (jira#SLE-8947):
+  * deps: update npm to 6.12.0
+  * doc:
+    + fix --enable-source-maps flag in v12.12.0 changelog
+    + set module version 72 to node 12
+    + fix tls version values
+  * fs: do not emit 'finish' before 'open' on write empty file
+- versioned.patch: refreshed
+
+- Update to 12.12.0:
+  * depreciations: Add documentation-only deprecation for
+    process._tickCallback()
+  * esm: Using JSON modules is experimental again
+  * fs: Introduce opendir() and fs.Dir to iterate through directories
+  * process: Add source-map support to stack traces by using
+    --enable-source-maps
+  * tls:
+    + Honor pauseOnConnect option
+    + Add option for private keys for OpenSSL engines
+- fix_build_with_openssl_1.1.1d.patch: upstreamed
+
+- Remove unsupported 32-bit architectures
+- fix_ci_tests.patch: correct build with SUSE backport of KDF
+  patches to OpenSSL 1.1.1d</comment>
+    <requestid>742075</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Thu Oct 10 09:50:11 UTC 2019 - rbrown@suse.com
+
+- Update to version 3.3.15:
+  * version: 3.3.15
+  * vendor: regenerate
+  * go.mod: remove, change back to "glide"
+  * version: 3.3.14
+  * Documentation/upgrades: special upgrade guides for >= 3.3.14
+  * version: 3.3.14-rc.0
+  * vendor: regenerate
+  * go.mod: regenerate
+  * gitignore: track vendor directory
+  * *: test with Go 1.12.9
+  * version: 3.3.14-beta.0
+  * tests/e2e: add missing curl
+  * e2e: move
+  * test: do not run "v2store" tests
+  * test: bump up timeout for e2e tests
+  * travis: fix functional tests
+  * functional: add back, travis
+  * auth: fix tests
+  * travis: do not run functional for now
+  * travis: skip windows build
+  * test: fix repo path
+  * tests/e2e: fix
+  * build: remove tools
+  * integration: fix tests
+  * integration: fix "HashKVRequest"
+  * functional: update
+  * travis.yml: fix, run e2e
+  * integration: update
+  * etcdserver: detect leader change on reads
+  * clientv3: rewrite based on 3.4
+  * raft: fix compile error in "Panic"
+  * pkg/*: add
+  * etcdserver/api/v3rpc: support watch fragmentation
+  * tests: update
+  * *: regenerate proto
+  * etcdserver/etcdserverpb/rpc.proto: add watch progress/fragment
+  * vendor: regenerate, upgrade gRPC to 1.23.0
+  * go.mod: migrate to Go module
+  * scripts: update release, genproto, dep
+  * Makefile/build: sync with 3.4 branch
+  * *: use new adt.IntervalTree interface
+  * pkg/adt: remove TODO
+  * pkg/adt: fix interval tree black-height property based on rbtree
+  * pkg/adt: document textbook implementation with pseudo-code
+  * pkg/adt: mask test failure, add TODO
+  * pkg/adt: add "IntervalTree.Delete" failure case
+  * pkg/adt: test node "11" deletion
+  * pkg/adt: README "IntervalTree.Delete" test case images
+  * pkg/adt: README initial commit
+  * pkg/adt: add "visitLevel", make "IntervalTree" interface, more tests
+  * pkg: clean up code format
+  * travis: update
+  * etcdserver: add "etcd_server_snapshot_apply_inflights_total"
+  * etcdserver/api: add "etcd_network_snapshot_send_inflights_total", "etcd_network_snapshot_receive_inflights_total"
+  * Raft HTTP: fix pause/resume race condition
+  * ctlv3: add missing newline in EndpointHealth
+  * ctlv3: support "write-out" for "endpoint health" command
+  *  etcd: Replace ghodss/yaml with sigs.k8s.io/yaml
+  * version: bump up 3.3.13
+  * clientv3: fix race condition in "Endpoints" methods
+  * etcdserver: improve heartbeat send failures logging
+  * Documentation metadata for 3.3 branch (#10692)
+  * vendor: add missing files
+  * vendor: Run scripts/updatedeps.sh to cleanup unused code
+  * client: Switch to case sensitive unmarshalling to be compatible with ugorji
+  * *: update bill-of-materials
+  * vendor: Add json-iterator and its dependencies
+  * scripts: Remove generated code and script
+  * client: Replace ugorji/codec with json-iterator/go
+  * mvcc: fix db_compaction_total_duration_milliseconds
+  * wal: Add test for Verify
+  * wal: add Verify function to perform corruption check on wal contents
+  * *: Change gRPC proxy to expose etcd server endpoint /metrics
+  * travis: fix tests by using proper code path
+  * etcdserver: Use panic instead of fatal on no space left error
+  * raft: cherry pick of #8334 to release-3.3
+  * travis.yml: update Go 1.10.8
+  * version: 3.3.12
+  * etcdctl: fix strings.HasPrefix args order
+  * version: 3.3.11+git
+
+-------------------------------------------------------------------
 Wed Jul 24 08:40:09 UTC 2019 - matthias.gerstner@suse.com
 
 - removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by

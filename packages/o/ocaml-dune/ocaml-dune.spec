@@ -66,6 +66,7 @@ mv %{buildroot}%{_prefix}/man %{buildroot}%{_datadir}
 
 %files -f %{name}.files
 %doc CHANGES.md README.md
+%doc doc/*.rst
 %{_bindir}/*
 %{_mandir}/*/*
 %{_datadir}/emacs

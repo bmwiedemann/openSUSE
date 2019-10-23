@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 10 12:47:55 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- add %PKG_VERSION%-0 tag to work with hardcoded kubernetes tag requirements 
+
+-------------------------------------------------------------------
 Sat Jul 20 10:22:15 CEST 2019 - kukuk@suse.de
 
 - Split from CaaSP image

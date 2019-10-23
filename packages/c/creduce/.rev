@@ -246,4 +246,13 @@
   * added several tests for aggregate-to-scalar pass</comment>
     <requestid>741677</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>dd6a162fcecca26c56b8f8e54cb91c44</srcmd5>
+    <version>2.10.0+git.20191010.8a67e69</version>
+    <time>1571838822</time>
+    <user>dimstar_suse</user>
+    <comment>- Add llvm9-libs-fix.patch and build the package with LLVM9
+  as a dependency.</comment>
+    <requestid>742088</requestid>
+  </revision>
 </revisionlist>

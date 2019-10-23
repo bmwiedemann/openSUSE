@@ -24,13 +24,14 @@ License:        BSD-3-Clause
 Group:          Development/Tools/Other
 URL:            https://github.com/csmith-project/creduce
 Source:         %{name}-%{version}.tar.xz
+Patch0:         llvm9-libs-fix.patch
 BuildRequires:  astyle
-BuildRequires:  clang8-devel
+BuildRequires:  clang9-devel
 BuildRequires:  delta
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  indent
-BuildRequires:  llvm8-devel
+BuildRequires:  llvm9-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  perl-Benchmark-Timer
 BuildRequires:  perl-Exporter-Lite
@@ -40,10 +41,10 @@ BuildRequires:  perl-Regexp-Common
 BuildRequires:  perl-Term-ReadKey
 BuildRequires:  zlib-devel
 Requires:       astyle
-Requires:       clang8-devel
+Requires:       clang9-devel
 Requires:       delta
 Requires:       indent
-Requires:       llvm8-devel
+Requires:       llvm9-devel
 Requires:       perl-Benchmark-Timer
 Requires:       perl-Exporter-Lite
 Requires:       perl-File-Which
@@ -62,6 +63,7 @@ bugs in compilers and other tools that process C/C++ code.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure --libexec=%{_bindir}

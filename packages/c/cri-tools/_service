@@ -4,8 +4,8 @@
 <param name="url">https://github.com/kubernetes-sigs/cri-tools.git</param>
 <param name="scm">git</param>
 <param name="filename">cri-tools</param>
-<param name="versionformat">1.15.0</param>
-<param name="revision">v1.15.0</param>
+<param name="versionformat">1.16.1</param>
+<param name="revision">v1.16.1</param>
 </service>
 
 <service name="recompress" mode="disabled">

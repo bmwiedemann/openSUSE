@@ -274,4 +274,12 @@ Docker 17.07.0_ce update. This SR is in conjunction with:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>720988</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>d3745e76eb86fd55f9070dea9d3b5452</srcmd5>
+    <version>1.2.10</version>
+    <time>1571838522</time>
+    <user>dimstar_suse</user>
+    <comment>Required for Docker 19.03.3-ce update.</comment>
+    <requestid>740817</requestid>
+  </revision>
 </revisionlist>

@@ -85,4 +85,14 @@
     <user>dimstar_suse</user>
     <comment>Revert to 1.3.1 - 1.6.x is only compatible with k8s 1.16</comment>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e0e1105b6908af0c828002396e7fae93</srcmd5>
+    <version>1.6.2</version>
+    <time>1571838464</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.2:
+  * Required by Kubernetes 1.16
+  * Three new plugins: azure, route53 and forward</comment>
+    <requestid>736835</requestid>
+  </revision>
 </revisionlist>

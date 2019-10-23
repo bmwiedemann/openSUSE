@@ -1,7 +1,7 @@
 #
 # spec file for package dbench4
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,16 +20,15 @@ Name:           dbench4
 Version:        4.0
 Release:        0
 Summary:        File System Benchmark Similar to Netbench
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          System/Benchmark
-Url:            https://dbench.samba.org
+URL:            https://dbench.samba.org
 Source:         https://www.samba.org/ftp/tridge/dbench/dbench-%{version}.tar.gz
 Patch1:         fileio_leak_repair.diff
 Patch2:         build-fix-paths.diff
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  popt-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Dbench is a file system benchmark that generates load patterns similar
@@ -48,19 +47,19 @@ with older versions.
 %build
 autoreconf -fiv
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-make %{?_smp_mflags} DESTDIR=%{buildroot} install
+%make_install
 
 %files
-%defattr(-,root,root)
-%doc README COPYING
+%license COPYING
+%doc README
 %dir %{_datadir}/dbench4
 %attr(644,root,root) %{_datadir}/dbench4/client.txt
-%{_mandir}/man1/dbench4.1%{ext_man}
-%{_mandir}/man1/tbench4.1%{ext_man}
-%{_mandir}/man1/tbench4_srv.1%{ext_man}
+%{_mandir}/man1/dbench4.1%{?ext_man}
+%{_mandir}/man1/tbench4.1%{?ext_man}
+%{_mandir}/man1/tbench4_srv.1%{?ext_man}
 %{_bindir}/dbench4
 %{_bindir}/tbench4
 %{_bindir}/tbench4_srv

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Oct 22 10:54:49 UTC 2019 - wbauer@tmo.at
+
+- Update to 5.4.3
+  * ProblemNavigationContext: Fix incorrect link target for
+    file:line links with declarations
+  * ProjectManagerView: Make items with an empty icon have the same
+    indent as items with a valid icon
+  * Welcome page: fix version of QtQuick.XmlListModel import to
+    match Qt 5.7 ff.
+  * Welcome page: fix version of QtQuick.Layouts import to match
+    Qt 5.7 ff.
+  * [Grepview] Use the correct fallback icon for Collapse All
+  * FileManagerListJob: use a semaphore for locking
+  * Fix Infinite Recursion in DUChain
+  * Cache the defines/includes for gcc-like compilers per language
+    type
+  * Only write defines file when needed
+  * Don't set super long name on completely anon structs
+  * Use type name as fallback ID for anon typedef'ed structs/unions
+    etc. (kde#409041)
+  * Fixed crash when filtering class list (kde#406931)
+  * Gcclikecompiler: properly resolve include paths with symbolic
+    links (kde#405221)
+
+-------------------------------------------------------------------
 Tue Sep  3 12:10:35 UTC 2019 - wbauer@tmo.at
 
 - Update to 5.4.2

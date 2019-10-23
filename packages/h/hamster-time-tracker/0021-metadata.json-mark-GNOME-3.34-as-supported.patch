@@ -1,0 +1,27 @@
+From 627243b7b06691f518e40dc62636081eefa397f2 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Tue, 22 Oct 2019 16:55:54 +0200
+Subject: [PATCH 21/21] metadata.json: mark GNOME 3.34 as supported
+
+Signed-off-by: Martin Wilck <mwilck@suse.com>
+---
+ data/metadata.json | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/data/metadata.json b/data/metadata.json
+index edf6099..4bd7a90 100644
+--- a/data/metadata.json
++++ b/data/metadata.json
+@@ -10,7 +10,8 @@
+     "gettext-domain": "hamster-shell-extension",
+     "settings-schema": "org.gnome.shell.extensions.project-hamster",
+     "shell-version": [
+-        "3.32"
++        "3.32",
++        "3.34"
+     ],
+     "url": "https://github.com/projecthamster/hamster-shell-extension.git",
+     "uuid": "contact@projecthamster.org",
+-- 
+2.23.0
+

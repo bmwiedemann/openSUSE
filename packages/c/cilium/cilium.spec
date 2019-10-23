@@ -35,13 +35,13 @@
 %endif
 
 Name:           cilium
-Version:        1.5.5
+Version:        1.6.3
 Release:        0
 Summary:        Linux Native, HTTP Aware Networking and Security for Containers
 License:        Apache-2.0 AND GPL-2.0-or-later
 Group:          System/Management
 URL:            https://github.com/cilium/cilium
-Source0:        %{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 Source2:        cilium-cni-install
 Source3:        cilium-cni-uninstall
@@ -243,26 +243,27 @@ install -D -m 0755 %{SOURCE3} %{buildroot}%{_sbindir}/cilium-cni-uninstall
 install -D -m 0755 contrib/packaging/docker/init-container.sh %{buildroot}/%{_bindir}/cilium-init
 install -D -m 0644 contrib/systemd/cilium %{buildroot}%{_fillupdir}/sysconfig.cilium
 install -D -m 0644 proxylib/libcilium.h %{buildroot}%{_includedir}/libcilium.h
-install -D -m 0644 examples/kubernetes/1.14/cilium-crio.yaml %{buildroot}%{_datadir}/k8s-yaml/cilium/cilium.yaml
+install -D -m 0644 install/kubernetes/quick-install.yaml %{buildroot}%{_datadir}/k8s-yaml/cilium/quick-install.yaml
+pushd install/kubernetes/cilium
+for yaml_file in $(find . -type f -name "*.yaml"); do
+    install -D -m 0644 ${yaml_file} %{buildroot}%{_datadir}/k8s-helm/cilium/${yaml_file}
+done
+popd
 sed -i \
-    -e 's|image: docker.io/cilium/cilium:.*|image: registry.opensuse.org/kubic/cilium:%{version}|g' \
-    -e 's|image: docker.io/cilium/cilium-init:.*|image: registry.opensuse.org/kubic/cilium-init:%{version}|g' \
-    -e 's|image: docker.io/cilium/operator:.*|image: registry.opensuse.org/kubic/cilium-operator:%{version}|g' \
-    -e 's|image: docker.io/cilium/cilium-etcd-operator:.*|image: registry.opensuse.org/kubic/cilium-etcd-operator:2.0|g' \
+    -e 's|image: \"docker.io/cilium/cilium:.*|image: \"registry.opensuse.org/kubic/cilium:%{version}\"|' \
+    -e 's|image: \"docker.io/cilium/cilium-init:.*|image: \"registry.opensuse.org/kubic/cilium-init:%{version}\"|' \
+    -e 's|image: \"docker.io/cilium/operator:.*|image: \"registry.opensuse.org/kubic/cilium-operator:%{version}\"|' \
     -e 's|/init-container.sh|cilium-init|g' \
     -e 's|/cni-install.sh|cilium-cni-install|g' \
     -e 's|/cni-uninstall.sh|cilium-cni-uninstall|g' \
-    -e 's|--container-runtime=crio|--container-runtime=crio\n        - --disable-envoy-version-check|g' \
-    %{buildroot}%{_datadir}/k8s-yaml/cilium/cilium.yaml
+    -e 's|--config-dir=/tmp/cilium/config-map|--config-dir=/tmp/cilium/config-map\n        - --disable-envoy-version-check|g' \
+    %{buildroot}%{_datadir}/k8s-yaml/cilium/quick-install.yaml
 
 mkdir -p %{buildroot}%{bash_completion_dir}
 %{buildroot}%{_bindir}/cilium completion > %{buildroot}%{bash_completion_dir}/cilium
+rm %{buildroot}%{_sysconfdir}/bash_completion.d/cilium
 
 mv %{buildroot}%{_sysconfdir}/cni/net.d/05-cilium-cni.conf %{buildroot}%{_sysconfdir}/cni/net.d/10-cilium-cni.conf
-
-#TODO removed after https://github.com/cilium/cilium/pull/8184
-sed -i '2 i\
-    "cniVersion": "0.3.1",'  %{buildroot}%{_sysconfdir}/cni/net.d/10-cilium-cni.conf
 
 %pre
 getent group cilium >/dev/null || groupadd -r cilium
@@ -308,6 +309,7 @@ getent group cilium >/dev/null || groupadd -r cilium
 %{_bindir}/cilium-agent
 %{_bindir}/cilium-bugtool
 %{_bindir}/cilium-health
+%{_bindir}/cilium-health-responder
 %{_bindir}/cilium-map-migrate
 %{_bindir}/cilium-node-monitor
 %{_bindir}/cilium-ring-dump
@@ -343,6 +345,8 @@ getent group cilium >/dev/null || groupadd -r cilium
 %files k8s-yaml
 %dir %{_datarootdir}/k8s-yaml
 %dir %{_datarootdir}/k8s-yaml/cilium
-%{_datadir}/k8s-yaml/cilium/cilium.yaml
+%{_datadir}/k8s-yaml/cilium/quick-install.yaml
+%dir %{_datadir}/k8s-helm
+%{_datadir}/k8s-helm/cilium
 
 %changelog

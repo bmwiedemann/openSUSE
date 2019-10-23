@@ -29,14 +29,14 @@
 %endif
 
 # MANUAL: Update the git_version, git_short, and git_revision
-%define git_version 425e105d5a03fabd737a126ad93d62a9eeede87f
-%define git_short   425e105d5a03
+%define git_version 3e425f80a8c931f88e6d94a8c831b9d5aa481657
+%define git_short   3e425f80a8c9
 # How to get the git_revision
 # git clone ${url}.git runc-upstream
 # cd runc-upstream
 # git checkout $git_version
 # git_revision=r$(git rev-list HEAD | wc -l)
-%define git_revision r3826
+%define git_revision r3917
 
 %define go_tool go
 %define _name runc
@@ -49,8 +49,10 @@ Summary:        Tool for spawning and running OCI containers
 License:        Apache-2.0
 Group:          System/Management
 Url:            https://github.com/opencontainers/runc
-Source:         %{realname}-git.%{git_version}.tar.xz
+Source:         %{realname}-git.%{git_short}.tar.xz
 Source1:        %{realname}-rpmlintrc
+# FIX-UPSTREAM: Backport of https://github.com/opencontainers/runc/pull/2130.
+Patch1:         CVE-2019-16884.patch
 BuildRequires:  fdupes
 BuildRequires:  go-go-md2man
 BuildRequires:  libapparmor-devel
@@ -86,7 +88,9 @@ of Docker. It was originally designed to be a replacement for LXC within Docker,
 and has grown to become a separate project entirely.
 
 %prep
-%setup -q -n %{realname}-git.%{git_version}
+%setup -q -n %{realname}-git.%{git_short}
+# CVE-2019-16884 bsc#1152308
+%patch1 -p1
 
 %build
 # Do not use symlinks. If you want to run the unit tests for this package at
@@ -94,9 +98,9 @@ and has grown to become a separate project entirely.
 # will get confused by symlinks.
 export GOPATH=${HOME}/go
 export PROJECT=${HOME}/go/src/%project
-mkdir -pv $PROJECT
+mkdir -p $PROJECT
 rm -rf $PROJECT/*
-cp -av * $PROJECT
+cp -a * $PROJECT
 
 # Build all features.
 export BUILDTAGS="apparmor selinux seccomp"

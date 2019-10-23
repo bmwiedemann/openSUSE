@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 15 12:59:38 UTC 2019 - Dany Marcoux <dmarcoux@suse.com>
+
+- Instruct packager to install cargo directly from the cargo package
+
+-------------------------------------------------------------------
 Tue Oct  1 19:06:41 UTC 2019 - Luke Jones <luke@ljones.dev>
 
 - Use `pwd`/.cargo for vendor config so that CARGO_HOME export is

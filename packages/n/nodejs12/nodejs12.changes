@@ -1,10 +1,43 @@
 -------------------------------------------------------------------
-Wed Oct  2 14:37:59 UTC 2019 - Adam Majer <adam.majer@suse.de>
+Mon Oct 21 12:27:14 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Update to LTS release 12.13.0 (jira#SLE-8947):
+  * deps: update npm to 6.12.0
+  * doc:
+    + fix --enable-source-maps flag in v12.12.0 changelog
+    + set module version 72 to node 12
+    + fix tls version values
+  * fs: do not emit 'finish' before 'open' on write empty file
+
+- versioned.patch: refreshed
+
+-------------------------------------------------------------------
+Mon Oct 14 13:01:24 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Update to 12.12.0:
+  * depreciations: Add documentation-only deprecation for
+    process._tickCallback()
+  * esm: Using JSON modules is experimental again
+  * fs: Introduce opendir() and fs.Dir to iterate through directories
+  * process: Add source-map support to stack traces by using
+    --enable-source-maps
+  * tls:
+    + Honor pauseOnConnect option
+    + Add option for private keys for OpenSSL engines
+
+- fix_build_with_openssl_1.1.1d.patch: upstreamed
+
+-------------------------------------------------------------------
+Mon Oct 14 11:42:48 UTC 2019 - Adam Majer <adam.majer@suse.de>
 
 - Update to 12.11.1:
   * build: fixed building
   * deps: Updated small-icu data to support "unit" style in the
     Intl.NumberFormat API
+
+- Remove unsupported 32-bit architectures
+- fix_ci_tests.patch: correct build with SUSE backport of KDF
+  patches to OpenSSL 1.1.1d
 
 -------------------------------------------------------------------
 Thu Sep 26 15:25:35 UTC 2019 - Adam Majer <adam.majer@suse.de>

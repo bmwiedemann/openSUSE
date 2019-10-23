@@ -22,7 +22,7 @@
 %endif
 
 Name:           etcd
-Version:        3.3.11
+Version:        3.3.15
 Release:        0
 Summary:        Highly-available key value store for configuration and service discovery
 License:        Apache-2.0
@@ -36,9 +36,8 @@ BuildRequires:  golang-packaging
 BuildRequires:  shadow
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
-BuildRequires:  golang(API) = 1.11
-# go1.11.3 contains sec. fixes bsc#1118897(CVE-2018-16873) bsc#1118897(CVE-2018-16873) bsc#1118899(CVE-2018-16875)
-BuildRequires:  go1.11 >= 1.11.3
+BuildRequires:  golang(API) = 1.12
+BuildRequires:  go1.12 >= 1.12.9
 ExcludeArch:    %ix86
 Requires(post): %fillup_prereq
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -71,8 +70,8 @@ cp %{SOURCE5} .
 
 %build
 %{goprep} github.com/coreos/etcd
-%{gobuild} cmd/etcd
-%{gobuild} cmd/etcdctl
+%{gobuild} .
+%{gobuild} etcdctl
 
 %install
 %{goinstall}

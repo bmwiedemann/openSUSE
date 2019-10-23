@@ -1,0 +1,74 @@
+--- pmdk-convert-1.7/CMakeLists.txt.orig	2019-10-11 17:08:31.902957611 +0200
++++ pmdk-convert-1.7/CMakeLists.txt	2019-10-11 17:08:36.834990730 +0200
+@@ -361,7 +361,7 @@
+ if(BUILD_CONVERT_V6)
+ 	set(VER17 1.7)
+ 
+-	get_pmdk(${VER17} 865ce1b422bc83109cb4a63dcff8fd1077eea3617e668faf6a043208d8be03ca ${VER17})
++	get_pmdk(${VER17} 1f392065dc6d9a1a23c936bb45cd1227f2aab992c09164efd21f6ef06782bb2c ${VER17})
+ 
+ 	function(build_libpmem_convert)
+ 		set(LIBPMEM_SOURCES
+@@ -732,7 +732,7 @@
+ if(BUILD_CONVERT_V5)
+ 	set(VER16 1.6.1)
+ 
+-	get_pmdk(${VER16} f263c8301f86ddf8bc5e020909ac52350baedba5c169a1a3a7786df64f129446 ${VER16})
++	get_pmdk(${VER16} 06cc78859025e2d9a5615a61aaa100fec9bf5576a961fee334e0de2737c8b882 ${VER16})
+ 
+ 	set(SOURCES_16
+ 		${VER16}/src/libpmemobj/alloc_class.c
+@@ -903,7 +903,7 @@
+ if(BUILD_15)
+ 	set(VER15 1.5.2)
+ 
+-	get_pmdk(${VER15} a72691971a98b8472b26271f19d69e6c9b849c1ca42124ea2e2bd8c3fcdff1b1 ${VER15})
++	get_pmdk(${VER15} 6e0dd6c9384bd6b5b964869181c4d4f290e8a762b8dff3280e245bed5e352334 ${VER15})
+ 
+ 	set(SOURCES_15
+ 		${VER15}/src/libpmemobj/alloc_class.c
+@@ -1014,7 +1014,7 @@
+ 
+ 	set(VER14 1.4.3)
+ 
+-	get_pmdk(${VER14} 93a8ba7383fa02dfd176d50aff56ace6bbac86bbaf26b8b1949ee703a4ec3a31 ${VER14})
++	get_pmdk(${VER14} 18ff747baf5db7eb5216e0f6d1923d1d7c1708dc6426453c5faf9fa68ad2101e ${VER14})
+ 
+ 	set(SOURCES_14
+ 		${VER14}/src/libpmemobj/alloc_class.c
+@@ -1178,7 +1178,7 @@
+ 
+ 	set(VER13 1.3.3)
+ 
+-	get_pmdk(${VER13} 5d46497bb151e6a36e801aed45bfef0d068c55cb2267329053e7489e01742f47 ${VER13})
++	get_pmdk(${VER13} bca2bb34cd14ec1ea458c98b6487eb76085713657109886963ccab0f8b5df7f8 ${VER13})
+ 
+ 	set(SOURCES_13
+ 		${VER13}/src/libpmemobj/alloc_class.c
+@@ -1281,7 +1281,7 @@
+ 
+ 	set(VER12 1.2.4)
+ 
+-	get_pmdk(${VER12} aa57b4d969a7582ad5897b5e979b3f2a4015ace7777388227826a65dbf626edd ${VER12})
++	get_pmdk(${VER12} e1a3471191123ca28eba92e5e9ac363d51929890507c4e7abf2f00a5b18fe315 ${VER12})
+ 
+ 	set(SOURCES_12
+ 		${VER12}/src/libpmemobj/bucket.c
+@@ -1374,7 +1374,7 @@
+ 
+ 	set(VER11 1.1)
+ 
+-	get_pmdk(${VER11} 2d51a356bf0bd61b0259844894223305d5d825af68d51a07aa1d2bc926b65c43 ${VER11})
++	get_pmdk(${VER11} 0c33b9502a2ec0fd4726404f0793607312485c88daeca56d1c0a1e968029b34a ${VER11})
+ 
+ 	set(SOURCES_11
+ 		${VER11}/src/libpmemobj/bucket.c
+@@ -1461,7 +1461,7 @@
+ 
+ 	set(VER10 1.0)
+ 
+-	get_pmdk(${VER10} e9c9ed72168047f65fae72808933bfeafd965ed3237ab3fbfb199c362bf5b773 ${VER10})
++	get_pmdk(${VER10} 7b61f6aa18679141a86a3703ede1db5637c85e152dfd91b3ce5a1c2e4a5d8946 ${VER10})
+ 
+ 	set(SOURCES_10
+ 		${VER10}/src/libpmemobj/bucket.c

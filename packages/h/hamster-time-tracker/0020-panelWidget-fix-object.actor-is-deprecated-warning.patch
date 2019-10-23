@@ -1,0 +1,34 @@
+From 5c88b3c79f192acc69a8e13d19be7469752fb01b Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Tue, 22 Oct 2019 16:54:26 +0200
+Subject: [PATCH 20/21] panelWidget: fix "object.actor is deprecated" warning
+
+Fixes: gnome-shell[9973]: Usage of object.actor is deprecated for PanelWidget
+
+See https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/487
+
+Signed-off-by: Martin Wilck <mwilck@suse.com>
+---
+ extension/widgets/panelWidget.js | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/extension/widgets/panelWidget.js b/extension/widgets/panelWidget.js
+index 905623a..9288f06 100644
+--- a/extension/widgets/panelWidget.js
++++ b/extension/widgets/panelWidget.js
+@@ -76,8 +76,10 @@ class PanelWidget extends PanelMenu.Button {
+         // Setup the main layout container for the part of the extension
+         // visible in the panel.
+         let panelContainer = new St.BoxLayout({style_class: "panel-box"});
+-        this.actor.add_actor(panelContainer);
+-        this.actor.add_style_class_name('panel-status-button');
++
++	let _actor = (this instanceof Clutter.Actor ? this : this.actor);
++        _actor.add_actor(panelContainer);
++        _actor.add_style_class_name('panel-status-button');
+ 
+         this.panelLabel = new St.Label({
+             text: _("Loading..."),
+-- 
+2.23.0
+

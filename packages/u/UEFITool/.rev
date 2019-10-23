@@ -52,4 +52,13 @@
   * Fix EC region parse</comment>
     <requestid>658060</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8fdf94b7ed05b3d6de53972d8f6e9add</srcmd5>
+    <version>20181230</version>
+    <time>1571838875</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20181230:
+  * Implement custom LZMA dictionary size support, fixes #154</comment>
+    <requestid>742131</requestid>
+  </revision>
 </revisionlist>
