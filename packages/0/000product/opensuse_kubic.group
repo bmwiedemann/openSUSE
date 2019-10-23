@@ -517,6 +517,7 @@
     <package name="system-user-daemon" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="system-user-nobody" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="systemd-logger" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-defaults -->
+    <package name="systemd-presets-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-container_runtime_kubernetes -->
     <package name="tallow" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="tar" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="terminfo" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->

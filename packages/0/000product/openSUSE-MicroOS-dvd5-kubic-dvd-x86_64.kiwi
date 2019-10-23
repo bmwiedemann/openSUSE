@@ -552,6 +552,7 @@
       <repopackage name="systemd"/>
       <repopackage name="systemd-logger" arch="x86_64"/>
       <repopackage name="systemd-presets-branding-MicroOS"/>
+      <repopackage name="systemd-presets-branding-openSUSE" arch="x86_64"/>
       <repopackage name="systemd-presets-common-SUSE"/>
       <repopackage name="systemd-sysvinit"/>
       <repopackage name="sysuser-shadow"/>
