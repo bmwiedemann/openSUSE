@@ -507,7 +507,6 @@ Recommends:     setserial
 Recommends:     sharutils
 Recommends:     spax
 Recommends:     strace
-Recommends:     tcpdump
 Recommends:     telnet
 Recommends:     terminfo
 Recommends:     vlan

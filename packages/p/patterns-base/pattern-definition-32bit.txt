@@ -205,7 +205,6 @@ Recommends:     setserial-32bit
 Recommends:     sharutils-32bit
 Recommends:     spax-32bit
 Recommends:     strace-32bit
-Recommends:     tcpdump-32bit
 Recommends:     telnet-32bit
 Recommends:     terminfo-32bit
 Recommends:     vlan-32bit
@@ -330,8 +329,8 @@ The 32bit pattern complementing x11.
 %package x11_enhanced-32bit
 Summary:        X Window System
 Recommends:     pattern()-32bit
-Recommends:     glibc-locale-base-32bit
 Recommends:     glibc-locale-32bit
+Recommends:     glibc-locale-base-32bit
 Recommends:     xkeyboard-config-32bit
 Recommends:     xorg-x11-essentials-32bit
 Recommends:     web_browser-32bit

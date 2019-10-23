@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 23 08:29:20 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Remove tcpdump from enhanced_base
+
+-------------------------------------------------------------------
 Fri Sep 27 12:17:44 UTC 2019 - Richard Brown <rbrown@suse.com>
 
 - transactional_base require man by default (boo#1127539)
