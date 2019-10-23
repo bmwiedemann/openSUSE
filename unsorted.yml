@@ -598,7 +598,6 @@ unsorted:
   - appmenu-gtk-module-common 
   - appmenu-gtk2-module 
   - appmenu-gtk3-module 
-  - appmenu-qt 
   - appmenu-registrar 
   - appres 
   - appstream-glib-devel 
@@ -829,7 +828,6 @@ unsorted:
   - autocutsel 
   - autofdo 
   - autojump 
-  - automoc4 
   - autonym-fonts 
   - autoopts 
   - autossh 
@@ -1183,7 +1181,6 @@ unsorted:
   - bpython-doc 
   - branding-upstream 
   - brasero-devel 
-  - breeze4-style 
   - brevity 
   - brickd 
   - brickv 
@@ -2293,6 +2290,7 @@ unsorted:
   - docker-runc-kubic 
   - docker-test 
   - docker-zsh-completion 
+  - docker_auth 
   - docky 
   - docky-devel 
   - docky-lang 
@@ -5930,7 +5928,6 @@ unsorted:
   - kasumi 
   - katacontainers: [x86_64] # recommended by opensuse_kubic:patterns-containers-kubeadm 
   - katacontainers-image-initrd: [x86_64] 
-  - kate4-parts 
   - kauth-devel 
   - kauth-devel-32bit: [x86_64] 
   - kawaii-player 
@@ -5977,17 +5974,6 @@ unsorted:
   - kdbusaddons-devel-32bit: [x86_64] 
   - kde-l10n-devel 
   - kde-oxygen-fonts 
-  - kde4-filesystem 
-  - kde4-kgreeter-plugins 
-  - kdebase4-runtime 
-  - kdebase4-runtime-devel 
-  - kdebase4-workspace 
-  - kdebase4-workspace-addons 
-  - kdebase4-workspace-devel 
-  - kdebase4-workspace-liboxygenstyle 
-  - kdebase4-workspace-liboxygenstyle-32bit: [x86_64] 
-  - kdebase4-workspace-libs 
-  - kdebase4-workspace-libs-32bit: [x86_64] 
   - kdebugsettings 
   - kdebugsettings-lang 
   - kdeclarative-components-32bit: [x86_64] 
@@ -5996,10 +5982,6 @@ unsorted:
   - kdeclarative-tools 
   - kded-devel 
   - kdegames-carddecks-other 
-  - kdelibs4 
-  - kdelibs4-branding-upstream 
-  - kdelibs4-core 
-  - kdelibs4-doc 
   - kdelibs4support-32bit: [x86_64] 
   - kdelibs4support-devel 
   - kdelibs4support-devel-32bit: [x86_64] 
@@ -6031,8 +6013,6 @@ unsorted:
   - kdiagram-devel 
   - kdiff3 
   - kdiff3-lang 
-  - kdm 
-  - kdm-branding-upstream 
   - kdnssd 
   - kdnssd-framework-devel 
   - kdnssd-framework-devel-32bit: [x86_64] 
@@ -6310,7 +6290,6 @@ unsorted:
   - konqueror-devel 
   - konqueror-lang 
   - konqueror-plugins 
-  - konsole4-part 
   - kontactinterface-devel 
   - kopano-archiver 
   - kopano-backup 
@@ -6372,7 +6351,6 @@ unsorted:
   - kpty-devel 
   - kpty-devel-32bit: [x86_64] 
   - kraft 
-  - krandr 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
   - krb5-devel 
@@ -6489,12 +6467,10 @@ unsorted:
   - kwebkitpart-lang 
   - kwidgetsaddons-devel 
   - kwidgetsaddons-devel-32bit: [x86_64] 
-  - kwin 
   - kwin5-devel 
   - kwindowsystem-devel 
   - kwindowsystem-devel-32bit: [x86_64] 
   - kwrite 
-  - kwrited5 
   - kxml 
   - kxml-javadoc 
   - kxmlgui-devel 
@@ -7518,10 +7494,6 @@ unsorted:
   - libatrildocument3 
   - libatrilview3 
   - libatspi0-32bit: [x86_64] 
-  - libattica-devel 
-  - libattica-devel-32bit: [x86_64] 
-  - libattica0_4 
-  - libattica0_4-32bit: [x86_64] 
   - libattr-devel 
   - libattr-devel-32bit: [x86_64] 
   - libattr-devel-static 
@@ -7816,7 +7788,6 @@ unsorted:
   - libbraille 
   - libbraille-devel 
   - libbraille-fake 
-  - libbreezecommon4-5 
   - libbrotli-devel 
   - libbrotlicommon1-32bit: [x86_64] 
   - libbrotlidec1-32bit: [x86_64] 
@@ -8212,9 +8183,6 @@ unsorted:
   - libdbusmenu-gtk4 
   - libdbusmenu-jsonloader-devel 
   - libdbusmenu-jsonloader4 
-  - libdbusmenu-qt-devel 
-  - libdbusmenu-qt2 
-  - libdbusmenu-qt2-32bit: [x86_64] 
   - libdbusmenu-qt5-2-32bit: [x86_64] 
   - libdbusmenu-qt5-devel 
   - libdbusmenu-qt5-devel-32bit: [x86_64] 
@@ -8311,7 +8279,7 @@ unsorted:
   - libdvdnav-devel 
   - libdvdnav4-32bit: [x86_64] 
   - libdvdread-devel 
-  - libdvdread4-32bit: [x86_64] 
+  - libdvdread7-32bit: [x86_64] 
   - libdw-devel 
   - libdw1-32bit: [x86_64] 
   - libdwarf-devel 
@@ -9378,13 +9346,9 @@ unsorted:
   - libjwt_verify_lib0: [x86_64] 
   - libjxrglue0 
   - libkaccounts1-32bit: [x86_64] 
-  - libkactivities-devel 
-  - libkactivities6 
-  - libkactivities6-32bit: [x86_64] 
   - libkate-devel 
   - libkate-tools 
   - libkate1-32bit: [x86_64] 
-  - libkatepartinterfaces4 
   - libkcapi-devel 
   - libkcapi-tools 
   - libkcapi0 
@@ -9402,16 +9366,10 @@ unsorted:
   - libkcsoap0 
   - libkcutil0 
   - libkdcraw-devel 
-  - libkde4 
-  - libkde4-32bit: [x86_64] 
-  - libkde4-devel 
   - libkdecoration2-devel 
   - libkdecoration2-devel-32bit: [x86_64] 
   - libkdecorations2-5-32bit: [x86_64] 
   - libkdecorations2private6-32bit: [x86_64] 
-  - libkdecore4 
-  - libkdecore4-32bit: [x86_64] 
-  - libkdecore4-devel 
   - libkdegames-devel 
   - libkdepim-devel 
   - libkdstatemachineeditor_core1_2_5 
@@ -9489,9 +9447,6 @@ unsorted:
   - libksi-devel 
   - libksi1 
   - libksieve-devel 
-  - libksuseinstall-devel 
-  - libksuseinstall1 
-  - libksuseinstall1-32bit: [x86_64] 
   - libksysguard5-32bit: [x86_64] 
   - libksysguard5-devel 
   - libksysguard5-devel-32bit: [x86_64] 
@@ -10402,8 +10357,6 @@ unsorted:
   - libphodav-2_0-0 
   - libphonenumber-devel 
   - libphonenumber8 
-  - libphonon4 
-  - libphonon4-32bit: [x86_64] 
   - libphonon4qt5-32bit: [x86_64] 
   - libphysfs-devel 
   - libphysfs1 
@@ -10461,9 +10414,6 @@ unsorted:
   - libpocketsphinx1 
   - libpocl2 
   - libpodofo-devel 
-  - libpolkit-qt-1-1 
-  - libpolkit-qt-1-1-32bit: [x86_64] 
-  - libpolkit-qt-1-devel 
   - libpolkit-qt5-1-1-32bit: [x86_64] 
   - libpolkit-qt5-1-devel 
   - libpolkit-qt5-1-devel-32bit: [x86_64] 
@@ -10501,9 +10451,6 @@ unsorted:
   - libpresage-doc 
   - libprimesieve-devel 
   - libprimesieve9 
-  - libprison-devel 
-  - libprison0 
-  - libprison0-32bit: [x86_64] 
   - libprofiler0 
   - libproj15 
   - libpromises-devel 
@@ -10591,15 +10538,10 @@ unsorted:
   - libqgpgme7-32bit: [x86_64] 
   - libqhexedit4 
   - libqhull7-7_2_0 
-  - libqimageblitz-devel 
-  - libqimageblitz4 
   - libqimageblitz5-1 
   - libqimageblitz5-devel 
   - libqjack-devel 
   - libqjack0 
-  - libqjson-devel 
-  - libqjson0 
-  - libqjson0-32bit: [x86_64] 
   - libqmatrixclient-devel 
   - libqmi-devel 
   - libqmmp-devel 
@@ -10617,24 +10559,6 @@ unsorted:
   - libqsastime0 
   - libqscintilla2_qt5-15 
   - libqscintilla_qt5-devel 
-  - libqt4 
-  - libqt4-32bit: [x86_64] 
-  - libqt4-devel 
-  - libqt4-devel-32bit: [x86_64] 
-  - libqt4-linguist 
-  - libqt4-private-headers-devel 
-  - libqt4-qt3support 
-  - libqt4-qt3support-32bit: [x86_64] 
-  - libqt4-sql 
-  - libqt4-sql-32bit: [x86_64] 
-  - libqt4-sql-postgresql 
-  - libqt4-sql-postgresql-32bit: [x86_64] 
-  - libqt4-sql-sqlite 
-  - libqt4-sql-sqlite-32bit: [x86_64] 
-  - libqt4-sql-unixODBC 
-  - libqt4-sql-unixODBC-32bit: [x86_64] 
-  - libqt4-x11 
-  - libqt4-x11-32bit: [x86_64] 
   - libqt5-creator 
   - libqt5-creator-plugin-devel 
   - libqt5-linguist 
@@ -10880,7 +10804,7 @@ unsorted:
   - libreoffice-calc-extensions 
   - libreoffice-gdb-pretty-printers 
   - libreoffice-glade 
-  - libreoffice-gtk2 
+  - libreoffice-gtk2: [i586] 
   - libreoffice-l10n-af 
   - libreoffice-l10n-am 
   - libreoffice-l10n-ar 
@@ -14910,7 +14834,6 @@ unsorted:
   - osc-plugin-install 
   - osc-plugin-origin: [x86_64] 
   - osc-plugin-staging: [x86_64] 
-  - osc-plugin-vdelreq: [x86_64] 
   - osclib: [x86_64] 
   - osdlyrics 
   - osdlyrics-lang 
@@ -14975,7 +14898,6 @@ unsorted:
   - owncloud-client-l10n 
   - owncloud-client-nautilus 
   - owncloud-client-nemo 
-  - oxygen4-cursors 
   - oxygen5 
   - oxygen5-cursors 
   - oxygen5-decoration 
@@ -16383,9 +16305,7 @@ unsorted:
   - phobos-devel 
   - phobos-devel-static 
   - phodav-devel 
-  - phonon-backend-gstreamer 
   - phonon-backend-vlc 
-  - phonon-devel 
   - phonon4qt5-backend-vlc 
   - phonon4qt5-backend-vlc-lang 
   - phonon4qt5-devel 
@@ -16524,7 +16444,6 @@ unsorted:
   - plasma-nm5-strongswan 
   - plasma-pass 
   - plasma-pass-lang 
-  - plasma-theme-oxygen 
   - plasma-vault 
   - plasma-vault-backend-cryfs 
   - plasma-vault-backend-encfs 
@@ -16533,8 +16452,6 @@ unsorted:
   - plasma5-applet-suse-prime 
   - plasma5-sdk 
   - plasma5-sdk-lang 
-  - plasma5-thunderbolt 
-  - plasma5-thunderbolt-lang 
   - plasma5-workspace-devel 
   - plasma5-workspace-libs-32bit: [x86_64] 
   - plasma5-workspace-wallpapers 
@@ -18090,8 +18007,6 @@ unsorted:
   - python2-email_validator 
   - python2-emoji 
   - python2-empy 
-  - python2-enable 
-  - python2-enable-kiva 
   - python2-enaml 
   - python2-encore 
   - python2-entrypoint2 
@@ -20448,8 +20363,6 @@ unsorted:
   - python3-email_validator 
   - python3-emoji 
   - python3-empy 
-  - python3-enable 
-  - python3-enable-kiva 
   - python3-enaml 
   - python3-encore 
   - python3-entrypoint2 
@@ -22218,7 +22131,6 @@ unsorted:
   - qsynergy 
   - qsynth 
   - qsynth-lang 
-  - qt4-style-fusion 
   - qt5ct 
   - qtcurve-gtk2 
   - qtcurve-gtk2-32bit: [x86_64] 
@@ -23549,9 +23461,6 @@ unsorted:
   - sdl_bomber 
   - sdlscavenger 
   - sdparm 
-  - seamonkey 
-  - seamonkey-translations-common 
-  - seamonkey-translations-other 
   - seccheck 
   - sedutil: [x86_64] 
   - segv_handler 
@@ -23781,8 +23690,6 @@ unsorted:
   - sndio 
   - sndio-devel 
   - sngrep 
-  - sni-qt 
-  - sni-qt-32bit: [x86_64] 
   - snmpsim 
   - snorenotify-qt5 
   - snorenotify-qt5-devel 
@@ -32378,6 +32285,7 @@ unsorted:
   - valadoc-doclet-gtkdoc 
   - valadoc-doclet-html 
   - valgrind-32bit: [x86_64] 
+  - valgrind-client-headers 
   - valgrind-devel 
   - vamp-plugin-sdk 
   - vamp-plugin-sdk-devel 
@@ -33046,6 +32954,7 @@ unsorted:
   - xmvn-parent 
   - xmvn-resolve 
   - xmvn-subst 
+  - xob 
   - xom 
   - xonotic 
   - xonotic-data 

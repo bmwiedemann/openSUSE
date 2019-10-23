@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20191021" schemaversion="4.1">
+<image name="OBS__openSUSE___20191022" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -32,11 +32,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20191021</productvar>
+      <productvar name="VERSION">20191022</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20191021,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20191022,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20191021/i586</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20191022/i586</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/suse-tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/suse-tumbleweed</productoption>
@@ -1431,6 +1431,7 @@
       <repopackage name="kwin5-lang"/>
       <repopackage name="kwordquiz"/>
       <repopackage name="kwordquiz-lang"/>
+      <repopackage name="kwrited5"/>
       <repopackage name="lame"/>
       <repopackage name="latex2html-pngicons"/>
       <repopackage name="leafpad"/>
@@ -1664,7 +1665,7 @@
       <repopackage name="libdv4"/>
       <repopackage name="libdvbpsi10"/>
       <repopackage name="libdvdnav4"/>
-      <repopackage name="libdvdread4"/>
+      <repopackage name="libdvdread7"/>
       <repopackage name="libdw1"/>
       <repopackage name="libe-book-0_1-1"/>
       <repopackage name="libebackend-1_2-10"/>
@@ -3992,6 +3993,8 @@
       <repopackage name="plasma5-session"/>
       <repopackage name="plasma5-session-wayland"/>
       <repopackage name="plasma5-theme-openSUSE"/>
+      <repopackage name="plasma5-thunderbolt"/>
+      <repopackage name="plasma5-thunderbolt-lang"/>
       <repopackage name="plasma5-workspace"/>
       <repopackage name="plasma5-workspace-branding-openSUSE"/>
       <repopackage name="plasma5-workspace-lang"/>

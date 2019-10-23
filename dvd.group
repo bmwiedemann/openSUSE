@@ -1421,6 +1421,7 @@
     <package name="kwin5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kwordquiz" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kwordquiz-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
+    <package name="kwrited5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="lame" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="latex2html-pngicons" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="leafpad" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
@@ -1945,7 +1946,7 @@
     <package name="libdv4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdvbpsi10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libdvdnav4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libdvdread4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libdvdread7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdw1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libe-book-0_1-1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libebackend-1_2-10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3941,6 +3942,8 @@
     <package name="plasma5-session" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="plasma5-session-wayland" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="plasma5-theme-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="plasma5-thunderbolt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="plasma5-thunderbolt-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="plasma5-workspace" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="plasma5-workspace-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="plasma5-workspace-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -4235,7 +4238,7 @@
     <package name="qemu-ipxe" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="qemu-ksm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="qemu-kvm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
-    <package name="qemu-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="qemu-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="qemu-linux-user" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="qemu-ppc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="qemu-s390" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
