@@ -1,5 +1,5 @@
 <package name="ilmbase" project="openSUSE:Factory">
   <title>IlmBase</title>
   <description>This package was branched from devel:libraries:c_c++ in order to ... update to 1.0.2</description>
-  <devel project="devel:libraries:c_c++" package="ilmbase"/>
+  <devel project="graphics" package="ilmbase"/>
 </package>
