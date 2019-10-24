@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 23 17:54:18 CEST 2019 - ro@suse.de
+
+- Fix build-requires for factory/tumbleweed rsvg-convert tool is
+  now in rsvg-convert package.
+
+-------------------------------------------------------------------
 Sat Feb 13 22:46:02 UTC 2016 - mailaender@opensuse.org
 
 - Use https://en.opensuse.org/SourceUrls

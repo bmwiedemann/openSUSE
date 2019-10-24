@@ -15,4 +15,14 @@
     <comment>1</comment>
     <requestid>378525</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5e1c7c8c8b6eb07d1fee10dcd8e554a2</srcmd5>
+    <version>1.4.2</version>
+    <time>1571951442</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build-requires for factory/tumbleweed rsvg-convert tool is
+  now in rsvg-convert package.
+</comment>
+    <requestid>742517</requestid>
+  </revision>
 </revisionlist>
