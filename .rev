@@ -97,4 +97,12 @@
   * Update README for gitlab migration</comment>
     <requestid>687590</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8786521955c070fc5633db4d0825c79c</srcmd5>
+    <version>1.0.12</version>
+    <time>1571950858</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>741456</requestid>
+  </revision>
 </revisionlist>
