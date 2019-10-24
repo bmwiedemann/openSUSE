@@ -1,4 +1,4 @@
-From 02a12c0a13facb1442e40c3c1c06eb03cc1dc567 Mon Sep 17 00:00:00 2001
+From dc7797478604d41d2f002f885cd2a8cd3d22fd19 Mon Sep 17 00:00:00 2001
 From: Alexander Graf <agraf@suse.de>
 Date: Thu, 26 Apr 2018 13:30:32 +0200
 Subject: [PATCH] tools: zynqmpbif: Add support for load=after

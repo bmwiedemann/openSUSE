@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 23 14:06:06 UTC 2019 - Gabriele Santomaggio <gsantomaggio@suse.de>
+
+- Changes for 22.1.4
+  * http://erlang.org/download/OTP-22.1.4.README
+  * compiler: Fixed a bug where the compiler could generate incorrect
+    code for a 'receive' statement inside a 'try'.
+  * crypto:  FIxed a bug if the erlang emulator was linked with a
+    very old cryptolib version (1.0.1 or earlier).
+    The bug now fixed could have triggered a core dump if
+    an unknown cipher name was used in crypto functions.
+  * erts: Erlang/OTP can now be built on macOS Catalina (10.15).
+
+-------------------------------------------------------------------
 Tue Oct 15 16:35:54 UTC 2019 - matwey.kornilov@gmail.com
 
 - Changes for 22.1.3:

@@ -1,0 +1,23 @@
+From 527acc3ce0bb881aafe14d7919447075774519f7 Mon Sep 17 00:00:00 2001
+From: Simon Krajewski <simon@haxe.org>
+Date: Wed, 12 Dec 2018 21:42:21 +0100
+Subject: [PATCH] add -unsafe-string and update libs submodule
+
+---
+ Makefile | 2 +-
+ libs     | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index b846a06976..27ea839c04 100644
+--- a/Makefile
++++ b/Makefile
+@@ -28,7 +28,7 @@ LFLAGS=
+ STATICLINK?=0
+ 
+ CFLAGS= -bin-annot
+-ALL_CFLAGS= $(CFLAGS) -g -w -3 -I libs/extlib -I libs/extc -I libs/neko -I libs/javalib -I libs/ziplib -I libs/swflib -I libs/xml-light -I libs/ttflib -I libs/ilib -I libs/objsize -I libs/pcre \
++ALL_CFLAGS= $(CFLAGS) -unsafe-string -g -w -3 -I libs/extlib -I libs/extc -I libs/neko -I libs/javalib -I libs/ziplib -I libs/swflib -I libs/xml-light -I libs/ttflib -I libs/ilib -I libs/objsize -I libs/pcre \
+ 	-I src -I src/context -I src/generators -I src/macro -I src/optimization -I src/syntax -I src/typing -I src/display
+ 
+ LIBS=unix str libs/extlib/extLib libs/xml-light/xml-light libs/swflib/swflib \

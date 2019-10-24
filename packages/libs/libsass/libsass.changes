@@ -574,10 +574,7 @@ Wed Nov 23 15:49:50 UTC 2016 - ronisbr@gmail.com
 
   * Expose our memory allocator
 
-    This feature has taken many proposed forms over the last 4
-    months. After much patent and considered discussion by @am11
-    @mgreter @saper and @xoofx you can now access our memory
-    allocator on the C-API.
+    You can now access our memory allocator using the C-API.
 
     void* sass_alloc_memory(size_t size)
     char* sass_copy_c_string(const char* str)

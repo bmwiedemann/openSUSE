@@ -1,6 +1,18 @@
 -------------------------------------------------------------------
 Thu Sep 26 08:06:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
+- Update to 0.46.0:
+  * Many fixes and changes for llvm/cuda updates
+    See CHANGE_LOG file for details
+- Add fix-max-name-size.patch to fix issue with numba
+  identifier length on recent LLVM versions.
+- Remove test from skip-failing-tests.patch fixed by
+  fix-max-name-size.patch.  The test is important, if it is failing
+  numba will not work reliably.
+
+-------------------------------------------------------------------
+Thu Sep 26 08:06:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
 - Update to 0.45.1:
   * Many fixes and changes for llvm/cuda updates
     See CHANGE_LOG file for details

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Oct 24 14:26:46 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Tag LICENSE file as %license
+
+-------------------------------------------------------------------
+Thu Oct 24 14:17:12 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Temporarily remove GdkPixbuf.t test that fails since the update
+  of gdk-pixbuf to 2.38.2 [bsc#1155004]
+
+-------------------------------------------------------------------
+Thu Oct 24 13:54:45 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update to 1.24993:
+  * Fix two test failures on newer versions of gtk+/gnome-shell/mutter
+
+-------------------------------------------------------------------
 Tue May  9 16:45:47 UTC 2017 - sor.alexei@meowr.ru
 
 - Update to version 1.24992 (changes since 1.2498):
@@ -7,7 +24,7 @@ Tue May  9 16:45:47 UTC 2017 - sor.alexei@meowr.ru
     robust/lenient.
   * Fix typos in POD (bgo#760067).
   * Fix typos in POD (bgo#772333).
-  ∗ Handle removing '.' from @INC for perl-5.26.0 compatibility.
+  * Handle removing '.' from @INC for perl-5.26.0 compatibility.
   * Update FSF Address (RT#89038).
 - Provide perl-Gtk2-devel as there are some header files in the
   package.

@@ -41,8 +41,12 @@ electrical diagram software.
 
 %prep
 %setup -q -n %{modname}-%{version}
+chmod a-x README LICENSE.txt
 rm -rf *.egg-info
 sed -i '/^#!\/usr\/bin\/env python3/d' -i src/main.py
+# Rename package and adjust console script
+mv src qet_tb_generator
+sed -i 's/qet_tb_generator=src.main:main/qet_tb_generator=qet_tb_generator.main:main/' setup.py
 
 %build
 %python_build
@@ -55,6 +59,6 @@ sed -i '/^#!\/usr\/bin\/env python3/d' -i src/main.py
 %doc README
 %license LICENSE.txt
 %python3_only %{_bindir}/%{modname}
-%{python_sitelib}/*
+%{python_sitelib}/qet_tb_generator*
 
 %changelog

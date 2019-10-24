@@ -18,7 +18,7 @@
 
 
 Name:           lshw
-Version:        B.02.18+git.20190324
+Version:        B.02.18+git.20190613
 Release:        0
 Summary:        HardWare LiSter
 License:        GPL-2.0-only
@@ -27,8 +27,6 @@ URL:            https://www.ezix.org/project/wiki/HardwareLiSter
 Source:         lshw-%{version}.tar.xz
 Source1:        lshw.desktop.in
 Source2:        lshw.png
-# PATCH-FIX-UPSTREAM lswh-logical-name-iface.patch bsc#1133923
-Patch0:         lswh-logical-name-iface.patch
 # PATCH-FIX-UPSTREAM lshw-display-latest-version.patch lshw-help-man.patch lshw-modified-time.patch bsc##1130818
 Patch1:         lshw-display-latest-version.patch
 Patch2:         lshw-help-man.patch
@@ -82,7 +80,6 @@ http://www.ezix.org/software/lshw.html
 
 %prep
 %setup -q
-%patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
@@ -96,7 +93,7 @@ make \
   all gui
 
 %install
-%make_install install-gui
+%make_install install-gui VERSION="%{version}"
 
 install -d "%{buildroot}%{_datadir}/applications"
 sed 's,@@EXEC@@,%{_sbindir}/gtk-lshw,g' < "%{SOURCE1}" \

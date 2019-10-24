@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 10 11:54:47 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not BuildRequire python: this is python2, but in other places
+  we buildrequire python3-Sphinx. This does not really belong
+  together.
+- Switch the python-nautilus Requires in
+  nautilus-extension-nextcloud to be python3-nautilus: the plugin
+  supports py3 already, so best to make use of it.
+
+-------------------------------------------------------------------
 Fri Sep 27 20:42:15 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
 
 - Update to 2.6.0

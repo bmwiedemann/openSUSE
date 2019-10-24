@@ -17,12 +17,12 @@
 
 
 Name:           cdemu-client
-Version:        3.2.0
+Version:        3.2.3
 Release:        0
 Summary:        Command-line client to control cdemu-daemon
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
-Url:            http://cdemu.sf.net/about/client/
+URL:            https://cdemu.sf.net/about/client/
 
 #Git-Clone:	git://git.code.sf.net/p/cdemu/code
 Source:         http://downloads.sf.net/cdemu/%name-%version.tar.bz2
@@ -61,7 +61,6 @@ make %{?_smp_mflags}
 %find_lang cdemu
 
 %files
-%defattr(-,root,root)
 %doc AUTHORS COPYING NEWS README
 %_bindir/cdemu
 %_datadir/applications/%name.desktop

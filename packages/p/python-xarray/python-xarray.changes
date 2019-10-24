@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Oct 24 19:52:12 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- update to version 0.14.0
+  + Breaking changes
+    * Dropped the `drop=False` optional parameter from Variable.isel.
+      It was unused and doesn't make sense for a Variable.
+  + New functions/methods
+    * Added xarray.map_blocks, modeled after dask.array.map_blocks.
+      Also added Dataset.unify_chunks, DataArray.unify_chunks and
+      testing.assert_chunks_equal
+  + Enhancements
+    * xarray.core.GroupBy enhancements.
+      > Added a repr
+      > Added a ``GroupBy.dims`` property that mirrors the dimensions
+        of each group.
+    * Speed up Dataset.isel up to 33% and DataArray.isel up to 25% for small
+      arrays
+  + Bug fixes
+    * Reintroduce support for weakref (broken in v0.13.0). Support has been
+      reinstated for DataArray and Dataset objects only. Internal xarray
+      objects remain unaddressable by weakref in order to save memory
+    * Line plots with the x or y argument set to a 1D non-dimensional coord
+      now plot the correct data for 2D DataArrays
+    * Make xarray.concat more robust when merging variables present in some datasets but
+      not others.
+    * The default behaviour of reducing across all dimensions for
+      xarray.core.groupby.DataArrayGroupBy objects has now been properly removed
+      as was done for xarray.core.groupby.DatasetGroupBy in 0.13.0.
+      Use xarray.ALL_DIMS if you need to replicate previous behaviour.
+      Also raise nicer error message when no groups are created.
+    * Fix error in concatenating unlabeled dimensions.
+
+-------------------------------------------------------------------
 Sat Sep 21 19:53:35 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - update to version 0.13.0:

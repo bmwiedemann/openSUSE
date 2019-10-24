@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 23 17:28:57 CEST 2019 - ro@suse.de
+
+- fix build-requires for factory/tumbleweed
+  rsvg-convert tool is now in rsvg-convert package 
+
+-------------------------------------------------------------------
 Wed Jan  2 10:48:33 UTC 2019 - badshah400@gmail.com
 
 - Update to version 7.0.4:

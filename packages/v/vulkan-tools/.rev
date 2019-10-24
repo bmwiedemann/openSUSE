@@ -63,4 +63,12 @@
     <comment>- Update to new upstream release/snapshot 1.1.120</comment>
     <requestid>725036</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4b197c6e75b19891938d80b2edc0d917</srcmd5>
+    <version>1.1.124</version>
+    <time>1571951365</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>742267</requestid>
+  </revision>
 </revisionlist>

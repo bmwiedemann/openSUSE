@@ -93,4 +93,12 @@
     <comment>- %{apache_branch} converted to number (forwarded request 348389 from pgajdos)</comment>
     <requestid>348400</requestid>
   </revision>
+  <revision rev="12" vrev="15">
+    <srcmd5>f7ea397cdae8be62952b6bb6b4002078</srcmd5>
+    <version>1.10.1</version>
+    <time>1571951430</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>742505</requestid>
+  </revision>
 </revisionlist>

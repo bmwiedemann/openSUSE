@@ -56,11 +56,16 @@
 # All requirements needed by the tests executed during build-time.
 # Do not require on this in individual sub-packages except for the devel
 # package.
-%define test_requires %common_requires %main_requires %python_scripts_requires %worker_requires perl(App::cpanminus) perl(Perl::Critic) perl(Perl::Critic::Freenode) perl(Test::Mojo) perl(Test::More) perl(Test::Strict) perl(Test::Fatal) perl(Test::MockModule) perl(Test::Output) perl(Test::Pod) perl(Test::Warnings) perl(Selenium::Remote::Driver) perl(Selenium::Remote::WDKeys) ShellCheck os-autoinst-devel
-%define devel_requires %build_requires %test_requires rsync curl postgresql-devel qemu qemu-kvm tar postgresql-server xorg-x11-fonts sudo perl(Devel::Cover) perl(Devel::Cover::Report::Codecov) perl(Perl::Tidy)
+%define test_requires %common_requires %main_requires %python_scripts_requires %worker_requires perl(App::cpanminus) perl(Perl::Critic) perl(Perl::Critic::Freenode) perl(Test::Mojo) perl(Test::More) perl(Test::Strict) perl(Test::Fatal) perl(Test::MockModule) perl(Test::Output) perl(Test::Pod) perl(Test::Warnings) perl(Selenium::Remote::Driver) perl(Selenium::Remote::WDKeys) ShellCheck os-autoinst-devel postgresql-server
+%ifarch x86_64
+%define qemu qemu qemu-kvm
+%else
+%define qemu qemu
+%endif
+%define devel_requires %build_requires %test_requires rsync curl postgresql-devel %qemu tar xorg-x11-fonts sudo perl(Devel::Cover) perl(Devel::Cover::Report::Codecov) perl(Perl::Tidy)
 
 Name:           openQA
-Version:        4.6.1571651389.1516f15e7
+Version:        4.6.1571860277.da2de85d9
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later

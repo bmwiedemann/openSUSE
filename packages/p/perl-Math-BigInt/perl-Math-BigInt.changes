@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 22 17:06:52 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.999818
+   see /usr/share/doc/packages/perl-Math-BigInt/CHANGES
+
+  1.999818 2019-10-20
+  
+   * Fix CPAN RT #130736 regarding numify() on a Math::BigFloat with a large
+     number of digits and an equally large, but negative, exponent.
+  
+   * Fix a problem in to_ieee754() due to rounding in bpow().
+
+-------------------------------------------------------------------
 Sat Oct 12 13:43:38 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 1.999817

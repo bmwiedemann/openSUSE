@@ -1,10 +1,11 @@
 <services>
   <service mode="disabled" name="tar_scm">
-    <param name="url">https://github.com/stackb/rules_proto</param>
+    <param name="url">https://github.com/bazelbuild/rules_proto</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">bazel-rules-proto</param>
     <param name="versionformat">%cd</param>
+    <param name="revision">b0cc14be5da05168b01db282fe93bdf17aa2b9f4</param>
   </service>
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>

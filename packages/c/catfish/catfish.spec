@@ -31,7 +31,11 @@ BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  python3-distutils-extra
+%if 0%{suse_version} >= 1550
+BuildRequires:  rsvg-convert
+%else
 BuildRequires:  rsvg-view
+%endif
 BuildRequires:  update-desktop-files
 # Needed for typelib() - Requires.
 BuildRequires:  gobject-introspection

@@ -17,7 +17,7 @@
 
 
 Name:           perl-Math-BigInt
-Version:        1.999817
+Version:        1.999818
 Release:        0
 %define cpan_name Math-BigInt
 Summary:        Arbitrary size integer/float math package
@@ -48,7 +48,7 @@ is also provided for Perl operators.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -name "*.sh" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

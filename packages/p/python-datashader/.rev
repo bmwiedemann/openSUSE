@@ -100,4 +100,12 @@
   * InteractiveImage and Pipeline are now deprecated; removed from examples (#751)</comment>
     <requestid>737420</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>5e11dd0bc1cc2e4a8049453cf2e6d2dc</srcmd5>
+    <version>0.8.0</version>
+    <time>1571951482</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>742650</requestid>
+  </revision>
 </revisionlist>

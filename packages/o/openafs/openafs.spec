@@ -57,11 +57,11 @@
 
 # used for %setup only
 # leave upstream tar-balls untouched for integrity checks.
-%define upstream_version 1.8.4
+%define upstream_version 1.8.5
 
 Name:           openafs
 
-Version:        1.8.4
+Version:        1.8.5
 Release:        0
 Summary:        OpenAFS Distributed File System
 License:        IPL-1.0

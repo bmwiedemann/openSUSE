@@ -40,7 +40,6 @@ BuildRequires:  gobject-introspection-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python
 BuildRequires:  qtkeychain-qt5-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Concurrent)
@@ -111,7 +110,7 @@ Summary:        Nautilus overlay icons
 Group:          Productivity/File utilities
 Requires:       %{name} = %{version}
 Requires:       nautilus
-Requires:       python-nautilus
+Requires:       python3-nautilus
 Supplements:    packageand(%{name}:nautilus)
 BuildArch:      noarch
 
@@ -188,7 +187,7 @@ rm -r %{buildroot}%{_datadir}/nemo-python/
 # Generate bytecode for extensions.
 for fm in caja nautilus nemo; do
     if [ -d %{buildroot}%{_datadir}/$fm-python/ ]; then
-        %py_compile %{buildroot}%{_datadir}/$fm-python/extensions/
+        %py3_compile %{buildroot}%{_datadir}/$fm-python/extensions/
     fi
 done
 
@@ -236,18 +235,25 @@ install -Dpm 0644 sysctl-sync-inotify.conf \
 %files -n nautilus-extension-nextcloud
 %dir %{_datadir}/nautilus-python/
 %dir %{_datadir}/nautilus-python/extensions/
+%dir %{_datadir}/nautilus-python/extensions/__pycache__
 %{_datadir}/nautilus-python/extensions/syncstate-Nextcloud.py*
+%{_datadir}/nautilus-python/extensions/__pycache__/syncstate-Nextcloud*
+
 
 %if 0%{?is_opensuse}
 %files -n caja-extension-nextcloud
 %dir %{_datadir}/caja-python/
 %dir %{_datadir}/caja-python/extensions/
+%dir %{_datadir}/caja-python/extensions/__pycache__
 %{_datadir}/caja-python/extensions/syncstate-Nextcloud.py*
+%{_datadir}/caja-python/extensions/__pycache__/*
 
 %files -n nemo-extension-nextcloud
 %dir %{_datadir}/nemo-python/
 %dir %{_datadir}/nemo-python/extensions/
+%dir %{_datadir}/nemo-python/extensions/__pycache__
 %{_datadir}/nemo-python/extensions/syncstate-Nextcloud.py*
+%{_datadir}/nemo-python/extensions/__pycache__/*
 
 %files dolphin
 %{_libdir}/libnextclouddolphinpluginhelper.so

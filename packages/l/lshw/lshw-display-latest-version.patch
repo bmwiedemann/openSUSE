@@ -14,10 +14,10 @@ Signed-off-by: Vasant Hegde <hegdevasant@linux.vnet.ibm.com>
  src/lshw.cc | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/src/lshw.cc b/src/lshw.cc
-index 219a008..be233eb 100644
---- a/src/lshw.cc
-+++ b/src/lshw.cc
+Index: lshw-B.02.18+git.20190613/src/lshw.cc
+===================================================================
+--- lshw-B.02.18+git.20190613.orig/src/lshw.cc
++++ lshw-B.02.18+git.20190613/src/lshw.cc
 @@ -121,7 +121,7 @@ char **argv)
        printf("%s\n", getpackageversion());
        if(latest)

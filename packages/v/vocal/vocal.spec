@@ -30,7 +30,11 @@ BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
+%if 0%{suse_version} >= 1550
+BuildRequires:  rsvg-convert
+%else
 BuildRequires:  rsvg-view
+%endif
 BuildRequires:  update-desktop-files
 BuildRequires:  vala
 BuildRequires:  pkgconfig(clutter-gst-3.0)

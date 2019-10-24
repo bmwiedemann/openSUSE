@@ -1,4 +1,4 @@
-From b333967ac327cf84e0e927bc302b069a89384cb7 Mon Sep 17 00:00:00 2001
+From 79010f19df5787e201b2c9e7c6f54d70ac5c2ef6 Mon Sep 17 00:00:00 2001
 From: Alexander Graf <agraf@suse.de>
 Date: Wed, 21 Feb 2018 17:41:13 +0100
 Subject: [PATCH] rpi: Use firmware provided device tree
@@ -28,10 +28,10 @@ Signed-off-by: Guillaume Gardet <guillaume.gardet@free.fr>
  5 files changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/configs/rpi_0_w_defconfig b/configs/rpi_0_w_defconfig
-index 39da54c3e7..81997056f4 100644
+index fe5a7763a6..ed7f9381e9 100644
 --- a/configs/rpi_0_w_defconfig
 +++ b/configs/rpi_0_w_defconfig
-@@ -14,7 +14,7 @@ CONFIG_CMD_GPIO=y
+@@ -17,7 +17,7 @@ CONFIG_CMD_GPIO=y
  CONFIG_CMD_MMC=y
  CONFIG_CMD_USB=y
  CONFIG_CMD_FS_UUID=y
@@ -41,10 +41,10 @@ index 39da54c3e7..81997056f4 100644
  CONFIG_ENV_FAT_INTERFACE="mmc"
  CONFIG_ENV_FAT_DEVICE_AND_PART="0:1"
 diff --git a/configs/rpi_2_defconfig b/configs/rpi_2_defconfig
-index 5f5b40522d..06080b9347 100644
+index bf331c0ad0..52e3c3b234 100644
 --- a/configs/rpi_2_defconfig
 +++ b/configs/rpi_2_defconfig
-@@ -14,7 +14,7 @@ CONFIG_CMD_GPIO=y
+@@ -17,7 +17,7 @@ CONFIG_CMD_GPIO=y
  CONFIG_CMD_MMC=y
  CONFIG_CMD_USB=y
  CONFIG_CMD_FS_UUID=y
@@ -54,10 +54,10 @@ index 5f5b40522d..06080b9347 100644
  CONFIG_ENV_FAT_INTERFACE="mmc"
  CONFIG_ENV_FAT_DEVICE_AND_PART="0:1"
 diff --git a/configs/rpi_3_32b_defconfig b/configs/rpi_3_32b_defconfig
-index bbf902bb91..17f672c9da 100644
+index c2417a0ec9..191962f0f7 100644
 --- a/configs/rpi_3_32b_defconfig
 +++ b/configs/rpi_3_32b_defconfig
-@@ -15,7 +15,7 @@ CONFIG_CMD_GPIO=y
+@@ -18,7 +18,7 @@ CONFIG_CMD_GPIO=y
  CONFIG_CMD_MMC=y
  CONFIG_CMD_USB=y
  CONFIG_CMD_FS_UUID=y
@@ -67,10 +67,10 @@ index bbf902bb91..17f672c9da 100644
  CONFIG_ENV_FAT_INTERFACE="mmc"
  CONFIG_ENV_FAT_DEVICE_AND_PART="0:1"
 diff --git a/configs/rpi_3_defconfig b/configs/rpi_3_defconfig
-index ea40351dc4..e84adb5f83 100644
+index 4fa682539c..03a2356d3d 100644
 --- a/configs/rpi_3_defconfig
 +++ b/configs/rpi_3_defconfig
-@@ -15,7 +15,7 @@ CONFIG_CMD_GPIO=y
+@@ -18,7 +18,7 @@ CONFIG_CMD_GPIO=y
  CONFIG_CMD_MMC=y
  CONFIG_CMD_USB=y
  CONFIG_CMD_FS_UUID=y
@@ -80,10 +80,10 @@ index ea40351dc4..e84adb5f83 100644
  CONFIG_ENV_FAT_INTERFACE="mmc"
  CONFIG_ENV_FAT_DEVICE_AND_PART="0:1"
 diff --git a/configs/rpi_defconfig b/configs/rpi_defconfig
-index 981d17381a..8a2a5b83f8 100644
+index 2c04b3334e..bf00d8b669 100644
 --- a/configs/rpi_defconfig
 +++ b/configs/rpi_defconfig
-@@ -14,7 +14,7 @@ CONFIG_CMD_GPIO=y
+@@ -17,7 +17,7 @@ CONFIG_CMD_GPIO=y
  CONFIG_CMD_MMC=y
  CONFIG_CMD_USB=y
  CONFIG_CMD_FS_UUID=y

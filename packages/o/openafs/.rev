@@ -329,4 +329,12 @@
     <comment></comment>
     <requestid>736843</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ea12467260f94ca3a4f826acf0fe987e</srcmd5>
+    <version>1.8.5</version>
+    <time>1571951451</time>
+    <user>dimstar_suse</user>
+    <comment>security update 1.8.5</comment>
+    <requestid>742532</requestid>
+  </revision>
 </revisionlist>

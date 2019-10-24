@@ -92,4 +92,16 @@ factory)</comment>
   * lshw-modified-time.patch</comment>
     <requestid>700059</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4f353828b63976eb128de3aa7317af09</srcmd5>
+    <version>B.02.18+git.20190613</version>
+    <time>1571951460</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version B.02.18+git.20190613 (fate#326432 jsc#SLE-7715):
+  * devtree: Add DIMM running speed
+  * spd: Print dimm rank information
+  * Display proper logical name of network device
+- Drop no longer needed lswh-logical-name-iface.patch</comment>
+    <requestid>742629</requestid>
+  </revision>
 </revisionlist>

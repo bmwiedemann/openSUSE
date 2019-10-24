@@ -1,4 +1,239 @@
 -------------------------------------------------------------------
+Wed Oct 23 15:29:31 UTC 2019 - Matthias Brugger <mbrugger@suse.com>
+
+- include update_git.sh as source in the spec file
+
+-------------------------------------------------------------------
+Wed Oct 23 09:48:41 UTC 2019 - Matthias Brugger <mbrugger@suse.com>
+
+- Make factory-auto bot happy
+
+-------------------------------------------------------------------
+Wed Oct  9 08:08:32 UTC 2019 - Matthias Brugger <mbrugger@suse.com>
+
+- Enable RaspberryPi4 builds
+
+-------------------------------------------------------------------
+Tue Oct  8 19:19:43 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2019.10
+* Patches added:
+  0009-libfdt-fdt_address_cells-and-fdt_si.patch
+  0010-libfdt-return-correct-value-if-size.patch
+  0011-libfdt-Allow-size-cells-of-0.patch
+  0012-dm-Fix-default-address-cells-return.patch
+
+-------------------------------------------------------------------
+Tue Oct  8 11:45:21 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to v2019.10:
+  * Platforms fixes: Amlogic, Atmel, Exynos5, Marvell, NXP,
+      Rockchip, SunXi, TI
+  * add support for RPi4
+  * RPi4: Fix amount of memory seen by the kernel
+  * RPi: Fix USB 1.1 keyboard (boo#1139351, boo#1131064)
+  * I2C fixes
+  * MMC fixes
+  * NET fixes
+  * SPI fixes
+  * UEFI fixes
+  * USB fixes
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2019.10
+* Patches dropped (upstreamed):
+  0009-ARM-exynos5-Try-to-boot-on-mmc2-bef.patch
+
+-------------------------------------------------------------------
+Wed Sep  4 21:56:21 UTC 2019 - Andreas Färber <afaerber@suse.de>
+
+- Add avnetultra96rev1
+
+-------------------------------------------------------------------
+Wed Aug 21 14:27:40 UTC 2019 - Matthias Brugger <mbrugger@suse.com>
+
+- update_git.sh: Allow GIT_LOCAL_TREE to be a soft link as well
+
+-------------------------------------------------------------------
+Sat Aug 10 19:11:07 UTC 2019 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Add u-boot-zynqzturn
+
+-------------------------------------------------------------------
+Mon Jul 22 13:15:36 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Handle patch list automatically in spec file from update_git.sh
+
+-------------------------------------------------------------------
+Mon Jul 22 09:01:41 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- Add u-boot-qemu-riscv64smode
+
+-------------------------------------------------------------------
+Thu Jul 18 08:19:51 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2019.07
+* Patches added:
+  0009-ARM-exynos5-Try-to-boot-on-mmc2-bef.patch
+
+-------------------------------------------------------------------
+Wed Jul 10 22:57:15 UTC 2019 - Andreas Färber <afaerber@suse.de>
+
+- Fail on errors building RK3288 SD card images (tinker-rk3288 previously)
+- Add libretech-cc and libretech-ac
+
+-------------------------------------------------------------------
+Wed Jul 10 17:05:47 UTC 2019 - Matwey V. Kornilov <matwey.kornilov@gmail.com>
+
+- Add u-boot-rock64-rk3328
+
+-------------------------------------------------------------------
+Wed Jul 10 16:20:42 UTC 2019 - Torsten Duwe <duwe@suse.com>
+
+- reflect upstream config changes in multibuild and spec file:
+  * am335x_evm includes support for am335x_boneblack -- dropped.
+  * Sinovoip BPI M2 Plus is correctly named Bananapi M2 Plus H3
+
+-------------------------------------------------------------------
+Tue Jul  9 09:38:01 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build of u-boot-rock960-rk3399 by adding required 
+  python-pyelftools dep
+
+-------------------------------------------------------------------
+Tue Jul  9 06:50:32 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to v2019.07:
+  * Fix booting for wandboard
+  * DWC and i.MX6 fixes
+  * usb: dwc3: fixes
+  * usb: ehci-mx6: Fix bus enumeration for DM case
+  * rockchip: make_fit_atf.py: fix loadables property set error
+  * rockchip: rk3288: enable TPL for tinker-board
+  * spl: atf: Fix uninitialized pointer to bl31_image_info
+  * poplar: increase SYS_MALLOC_F_LEN for DM_FLAG_PRE_RELOC support
+  * UEFI: The definition of an unimplemented function is corrected.
+  * ARM: uniphier: fixes
+  * rockchip: rk3399: fixes
+  * efi_loader: lots of fixes
+  * armv8: fix typo in LINUX_KERNEL_IMAGE_HEADER check
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2019.07
+* Patches upstreamed:
+  0009-armv8-fix-typo-in-LINUX_KERNEL_IMAG.patch
+  0010-poplar-increase-SYS_MALLOC_F_LEN-fo.patch
+
+-------------------------------------------------------------------
+Sun Jun 16 19:09:48 UTC 2019 - Andreas Färber <afaerber@suse.de>
+
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2019.07
+* Fix boot on Tegra platforms:
+  0009-armv8-fix-typo-in-LINUX_KERNEL_IMAG.patch
+* Fix boot on Poplar board:
+  0010-poplar-increase-SYS_MALLOC_F_LEN-fo.patch
+
+-------------------------------------------------------------------
+Sat Jun 15 18:26:14 UTC 2019 - Andreas Färber <afaerber@suse.de>
+
+- rpi3: Override the text base for compatibility with TF-A
+
+-------------------------------------------------------------------
+Thu Jun 13 07:19:36 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to v2019.07-rc4:
+  * SPI fixes
+  * Video fixes
+  * Tegra updates
+  * Support for managing the non-volatile attribute of UEFI variables
+    is added though we do not have a backend for persistence yet. 
+  * Error messages for changes of UEFI variables are provided.
+  * UEFI boottime service implementations are corrected.
+  * Error messages for the 'setenv -e' and 'bootefi bootmgr' commands are
+    added.
+  * risc-v qemu updates
+  * Enable MMC in SPL for helios4
+  * NET fixes
+  * some fix for rk3399-puma
+  * rockchip script make_fit_atf.py cleanup
+  * Enable TPL for rk3399 orangepi and nanopi4;
+  * add support for rk3399 boards: Nanopi NEO4, Rockpro64, Rock PI 4
+  * amlogic updates
+  * DaVinci updates
+  * FAT fixes
+- Update to v2019.07-rc3:
+  * sh updates
+  * SoCFPGA PL310 cleanup + A10 fix, A10 DT cleanup, DW GPIO fix
+  * Several bug fixes for the UEFI sub-system are provided.
+  * The SetTime() boottime service is implemented.
+  * mips updates
+  * stm32 updates
+  * DM fixes
+  * fsl updates
+  * MMC fixes for i.MX53
+  * sunxi fixes
+  * I2C fixes
+  * Minor patches to improve UEFI specification compliance are provided.
+  * To allow running the UEFI self compliance tests an outdated version of
+    the Unicode collation protocol has been added as a configuration option
+    (disabled by default).
+  * Allow coreboot to process unhandled tags
+  * Enable NVMe on QEMU x86_64 target
+  * arndale fixes
+  * SoCFPGA DT and reset cleanup, AE MCVEVK board support.
+
+-------------------------------------------------------------------
+Tue May 21 08:02:28 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update update_git.sh
+
+-------------------------------------------------------------------
+Tue May 21 07:35:34 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to v2019.07-rc2:
+  * Net updates
+  * UEFI updates for EBBR compliance
+  * Minor fixes
+  * Rockchip improvements and new features
+  * Marvell boards updates
+  * Sunxi updates
+  * x86 fixes
+  * SPI fixes
+  * i.MX updates
+
+-------------------------------------------------------------------
+Sat May 18 21:13:08 UTC 2019 - Andreas Färber <afaerber@suse.de>
+
+- Clean up multibuild conversion
+* Rename is_risc5 to is_riscv64
+* Fix armv6 board builds (rpi)
+* Fix RK3288 board builds and SPL installation (firefly-rk3288, tinker-rk3288)
+* Fix RK3399 SPL build and installation
+* Fix H5 board builds (orangepipc2)
+* TBD: am335xboneblack, sinovoipbpim2plus
+
+-------------------------------------------------------------------
+Thu May  9 11:58:36 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to v2019.07-rc1:
+  * Board fixes
+  * btrfs fixes
+  * ext4 symlink support and other fixes
+  * ext4 block group descriptor sizing
+  * UEFI rework
+  * Add and enable brcmnand driver on a number of relevant platforms.
+    Also add and enable LED drivers on more bcm platforms.
+  * Various ARMv8 fixes/improvements, including extending PSCI
+    functionality.
+  * fs_loader improvments
+  * Various FIT/SPL improvements
+  * PCI bugfixes
+  * adds support for the BootNext and BootCurrent variables
+  * doc/README.ARM-memory-map was dropped (9ad996adcc135bc34b185957567c8c46deb90d4f)
+- Update update_git.sh to remove reference to pre_checkin.sh
+
+-------------------------------------------------------------------
+Mon Apr 29 09:55:08 UTC 2019 - Torsten Duwe <duwe@suse.de>
+
+- Convert spec file(s) to multibuild
+
+-------------------------------------------------------------------
 Tue Apr  9 12:46:27 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to v2019.04:

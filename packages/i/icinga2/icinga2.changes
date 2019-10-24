@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 24 14:56:33 UTC 2019 - ecsos@opensuse.org
+
+- Update to 2.11.2
+  This release fixes a problem where the newly introduced config sync "check-change-then-reload" functionality could cause endless reload loops with agents. The most visible parts are failing command endpoint checks with "not connected" UNKNOWN state. Only applies to HA enabled zones with 2 masters and/or 2 satellites.
+  * Bugfixes
+    - Cluster Config Sync
+      - Config sync checksum change detection may not work within high load HA clusters #7565
+
+-------------------------------------------------------------------
 Thu Oct 17 15:08:56 UTC 2019 - ecsos@opensuse.org
 
 - Update to 2.11.1

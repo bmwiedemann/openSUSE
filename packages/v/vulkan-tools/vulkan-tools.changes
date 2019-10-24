@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 16 21:16:14 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.124
+  * vulkaninfo: Handle absence of device group extension
+
+-------------------------------------------------------------------
+Sun Sep 22 22:02:39 UTC 2019 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to new upstream release 1.1.123
+  * vulkaninfo: support VK_EXT_subgroup_size_control,
+    index_type_uint8_ext, VK_EXT_full_screen_exclusive.
+
+-------------------------------------------------------------------
 Wed Aug 21 08:53:29 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release/snapshot 1.1.120

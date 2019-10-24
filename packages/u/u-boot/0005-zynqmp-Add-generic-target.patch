@@ -1,4 +1,4 @@
-From c702a07ea5cbd1c381f3aba2228a74b9c2c4f838 Mon Sep 17 00:00:00 2001
+From 5cca414fc09b0819289d32d2994eb21daa82c068 Mon Sep 17 00:00:00 2001
 From: Alexander Graf <agraf@suse.de>
 Date: Tue, 24 Apr 2018 21:25:23 +0200
 Subject: [PATCH] zynqmp: Add generic target

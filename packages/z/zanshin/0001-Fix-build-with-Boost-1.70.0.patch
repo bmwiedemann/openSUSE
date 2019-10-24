@@ -1,0 +1,30 @@
+From 66e06787dc96dfb1509f91b1d86b9b048f849ccf Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Fri, 11 Oct 2019 11:18:45 +0200
+Subject: [PATCH] Fix build with Boost 1.70.0.
+
+Patch by "K. Mlynarczyk" <mlynarczyk@emar.pl> submitted to upstream cucumber-cpp
+---
+ 3rdparty/cucumber-cpp/src/drivers/BoostDriver.cpp | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/3rdparty/cucumber-cpp/src/drivers/BoostDriver.cpp b/3rdparty/cucumber-cpp/src/drivers/BoostDriver.cpp
+index 141ae29..8e4b75b 100644
+--- a/3rdparty/cucumber-cpp/src/drivers/BoostDriver.cpp
++++ b/3rdparty/cucumber-cpp/src/drivers/BoostDriver.cpp
+@@ -34,7 +34,11 @@ public:
+     // Formatter
+     void log_start( std::ostream&, counter_t test_cases_amount) {};
+     void log_finish( std::ostream&) {};
+-    void log_build_info( std::ostream&) {};
++#if BOOST_VERSION >= 107000
++    void log_build_info( std::ostream&, bool /*log_build_info*/) {};
++#else
++     void log_build_info( std::ostream&) {};
++#endif
+ 
+     void test_unit_start( std::ostream&, test_unit const& tu) {};
+     void test_unit_finish( std::ostream&, test_unit const& tu, unsigned long elapsed) {};
+-- 
+2.23.0
+

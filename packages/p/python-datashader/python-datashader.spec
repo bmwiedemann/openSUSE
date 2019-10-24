@@ -32,6 +32,8 @@ URL:            https://github.com/bokeh/datashader
 Source0:        https://files.pythonhosted.org/packages/source/d/datashader/datashader-%{version}.tar.gz
 Source100:      python-datashader-rpmlintrc
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module param >= 1.6.0}
+BuildRequires:  %{python_module pyct}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -67,8 +69,6 @@ BuildRequires:  %{python_module nbsmoke >= 0.2.6}
 BuildRequires:  %{python_module numba >= 0.37.0}
 BuildRequires:  %{python_module numpy >= 1.7}
 BuildRequires:  %{python_module pandas >= 0.24.1}
-BuildRequires:  %{python_module param >= 1.6.0}
-BuildRequires:  %{python_module pyct}
 BuildRequires:  %{python_module pytest >= 3.9.3}
 BuildRequires:  %{python_module pytest-benchmark >= 3.0.0}
 BuildRequires:  %{python_module scikit-image}

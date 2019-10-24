@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="disabled">
     <param name="extract">dist/rpm/os-autoinst.spec</param>
     <param name="extract">dist/rpm/os-autoinst-test.spec</param>
-    <param name="versionprefix">4.5</param>
+    <param name="versionprefix">4.6</param>
     <param name="versionformat">%ct.%h</param>
     <param name="url">git://github.com/os-autoinst/os-autoinst.git</param>
     <param name="scm">git</param>

@@ -235,4 +235,13 @@
     <comment>- npsdk-aarch64-support.patch: remove obsolete patch (forwarded request 598495 from Andreas_Schwab)</comment>
     <requestid>599175</requestid>
   </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>9d4f104a0ad9043fa423ddc3a8a8149c</srcmd5>
+    <version>4.10.6</version>
+    <time>1571951330</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build-requires for factory/tumbleweed
+  rsvg-convert tool is now in rsvg-convert package (forwarded request 742213 from oertel)</comment>
+    <requestid>742236</requestid>
+  </revision>
 </revisionlist>

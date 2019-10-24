@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Oct 24 00:54:46 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- update to version 1.12.6:
+  + Enhancements:
+    * Ensured that shared_axes option on layout plots is respected across backends
+    * Allow plotting partially irregular (curvilinear) mesh
+    * Add support for dependent functions in dynamic operations
+    * Add support for fast QuadMesh rasterization with datashader >= 0.8
+    * Allow passing Panel widgets as operation parameter
+  + Bug fixes:
+    * Fixed issue rounding datetimes in Curve step interpolation
+    * Fix resampling of categorical colorcet colormaps
+    * Ensure that changing the Stream source deletes the old source
+    * Ensure missing hover tool does not break plot
+    * Ensure .apply work correctly on HoloMaps
+    * Ensure Grid axes are always aligned in bokeh
+    * Fix hover tool on Image and Raster plots with inverted axis
+    * Ensure that DynamicMaps are still linked to streams after groupby
+    * Using hv.renderer no longer switches backends
+    * Ensure that Points/Scatter categorizes data correctly when axes are inverted
+    * Fixed error creating legend for matplotlib Image artists
+    * Ensure that unqualified Options objects are supported
+    * Fix bounds check when constructing Image with ImageInterface
+    * Ensure elements cannot be constructed with wrong number of columns
+    * Ensure streaming data works on bokeh server
+  + Compatibility:
+    * Ensure HoloViews is fully compatible with xarray 0.13.0
+    * Ensure that deprecated matplotlib 3.1 rcparams do not warn
+    * Ensure compatibility with new legend options in bokeh 1.4.0
+
+-------------------------------------------------------------------
 Sat Aug 31 04:47:26 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - update to version 1.12.5:

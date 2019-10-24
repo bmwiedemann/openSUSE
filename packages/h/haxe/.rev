@@ -171,4 +171,12 @@ We're in the process of easing the installation process across different Linux d
     blob/3.4.7/extra/CHANGES.txt#L1-L18</comment>
     <requestid>579334</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>7c91e88cfc69ed1c4b7b26f2b2153dcd</srcmd5>
+    <version>3.4.7</version>
+    <time>1571951403</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>742471</requestid>
+  </revision>
 </revisionlist>

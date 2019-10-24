@@ -33,7 +33,11 @@ BuildRequires:  docbook-xsl-stylesheets
 # set to %{version} when mate-common has an equal release to mate-desktop
 BuildRequires:  mate-common >= 1.22
 BuildRequires:  pkgconfig
+%if 0%{suse_version} >= 1550
+BuildRequires:  rsvg-convert
+%else
 BuildRequires:  rsvg-view
+%endif
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(dconf) >= 0.13.4
 BuildRequires:  pkgconfig(glib-2.0) >= 2.50

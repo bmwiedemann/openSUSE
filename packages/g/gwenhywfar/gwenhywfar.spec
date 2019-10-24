@@ -15,20 +15,22 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define libversion 60
-%define devversion 4
-%define devrelease 4.20
+
+%define libversion 78
+%define devversion 5
+%define devrelease 4.99
 # Beta does not mean "before release" but a release that is considered as beta:
-%define _version %{version}
+%define _version %{version}rc6
+%define _name gwenhywfar
 %bcond_with configure
 Name:           gwenhywfar
-Version:        4.20.2
+Version:        4.99.22
 Release:        0
 Summary:        Multiplatform helper library for other libraries
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://www.aquamaniac.de/rdm/projects/gwenhywfar
-Source:         https://github.com/aqbanking/gwenhywfar/archive/%{_version}.tar.gz#/%{name}-%{_version}.tar.gz
+Source:         https://github.com/aqbanking/gwenhywfar/archive/%{_version}.tar.gz#/%{_name}-%{_version}.tar.gz
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 # For doc graphs
@@ -177,10 +179,10 @@ Summary:        Header files for the Gwenhywfar multi-platform helper library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
-Requires:       libgwengui-fox16-0 = %{version}
-Requires:       libgwengui-gtk2-0 = %{version}
-Requires:       libgwengui-gtk3-0 = %{version}
-Requires:       libgwengui-qt5-0 = %{version}
+Requires:       libgwengui-fox16-0 >= %{version}
+Requires:       libgwengui-gtk2-0 >= %{version}
+Requires:       libgwengui-gtk3-0 >= %{version}
+Requires:       libgwengui-qt5-0 >= %{version}
 Requires:       libgwenhywfar%{libversion} = %{version}
 
 %description devel
@@ -193,7 +195,7 @@ communication etc).
 %lang_package
 
 %prep
-%setup -q -n %{name}-%{_version}
+%setup -q -n %{_name}-%{_version}
 
 %build
 export PATH=%{_libqt5_bindir}:$PATH
@@ -218,15 +220,16 @@ make %{?_smp_mflags} srcdoc
 %make_install install-srcdoc
 pushd %{buildroot}%{_docdir}/%{name}/api
     # we don't want another 'gwenhywfar' dir below docpath
-    mv %{name}/* ./
-    rm -rf %{name}
+    mv %{_name}/* ./
+    rm -rf %{_name}
     # remove empty files
     `find -maxdepth 1 -type f -empty -print0 | xargs -0 echo rm -f`
 popd
 find %{buildroot} -type f -name "*.la" -delete -print
-%find_lang %{name}
-%fdupes %{buildroot}%{_datadir}/%{name}/apidoc
+%find_lang %{_name}
+%fdupes %{buildroot}%{_datadir}/%{_name}/apidoc
 %fdupes %{buildroot}%{_libdir}/cmake
+%fdupes %{buildroot}%{_docdir}
 
 %post   -n libgwenhywfar%{libversion} -p /sbin/ldconfig
 %postun -n libgwenhywfar%{libversion} -p /sbin/ldconfig
@@ -244,12 +247,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files
 %license COPYING
 %doc AUTHORS NEWS README TODO
-%dir %{_datadir}/%{name}/
-%{_datadir}/%{name}/ca-bundle.crt
-%{_datadir}/%{name}/dialogs/
-%dir %{_libdir}/%{name}
-%dir %{_libdir}/%{name}/plugins
-%dir %{_libdir}/%{name}/plugins/%{libversion}
+%dir %{_datadir}/%{_name}/
+%{_datadir}/%{_name}/ca-bundle.crt
+%{_datadir}/%{_name}/dialogs/
+%dir %{_libdir}/%{_name}
+%dir %{_libdir}/%{_name}/plugins
+%dir %{_libdir}/%{_name}/plugins/%{libversion}
 %exclude %{_docdir}/%{name}/api
 
 %files tools
@@ -259,13 +262,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/typemaker
 %{_bindir}/typemaker2
 %{_bindir}/xmlmerge
-%{_datadir}/%{name}/typemaker2/
+%{_datadir}/%{_name}/typemaker2/
 
 %files -n libgwenhywfar%{libversion}-plugins
-%{_libdir}/%{name}/plugins/%{libversion}/*
+%{_libdir}/%{_name}/plugins/%{libversion}/*
 
 %files -n libgwenhywfar%{libversion}
-%{_libdir}/lib%{name}.so.*
+%{_libdir}/lib%{_name}.so.*
 
 %files -n libgwengui-cpp0
 %{_libdir}/libgwengui-cpp.so.*
@@ -283,22 +286,22 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libgwengui-fox16.so.*
 
 %files devel
-%{_bindir}/%{name}-config
+%{_bindir}/%{_name}-config
 %dir %{_datadir}/aclocal
-%{_datadir}/aclocal/%{name}.m4
+%{_datadir}/aclocal/%{_name}.m4
 %doc %{_docdir}/%{name}/api/
-%{_includedir}/%{name}%{devversion}/
+%{_includedir}/%{_name}%{devversion}/
 %{_libdir}/*.so
-%{_libdir}/pkgconfig/%{name}.pc
+%{_libdir}/pkgconfig/%{_name}.pc
 %{_libdir}/pkgconfig/gwengui-gtk2.pc
 %{_libdir}/pkgconfig/gwengui-gtk3.pc
 %{_libdir}/pkgconfig/gwengui-qt5.pc
 %{_libdir}/pkgconfig/gwengui-fox16.pc
 %dir %{_libdir}/cmake
-%{_libdir}/cmake/%{name}-%{devrelease}
+%{_libdir}/cmake/%{_name}-%{devrelease}
 %{_libdir}/cmake/gwengui-cpp-%{devrelease}
 %{_libdir}/cmake/gwengui-qt5-%{devrelease}
 
-%files lang -f %{name}.lang
+%files lang -f %{_name}.lang
 
 %changelog

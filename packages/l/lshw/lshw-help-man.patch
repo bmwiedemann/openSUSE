@@ -15,11 +15,11 @@ Signed-off-by: Vasant Hegde <hegdevasant@linux.vnet.ibm.com>
  src/lshw.cc | 2 +-
  2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/src/lshw.1 b/src/lshw.1
-index 43239da..79c3619 100644
---- a/src/lshw.1
-+++ b/src/lshw.1
-@@ -53,7 +53,7 @@ Outputs the device tree showing hardware paths, very much like the output of HP-
+Index: lshw-B.02.18+git.20190613/src/lshw.1
+===================================================================
+--- lshw-B.02.18+git.20190613.orig/src/lshw.1
++++ lshw-B.02.18+git.20190613/src/lshw.1
+@@ -53,7 +53,7 @@ Outputs the device tree showing hardware
  Outputs the device list showing bus information, detailing SCSI, USB, IDE and PCI addresses.
  .TP
  \fB-dump \fIfilename\fB\fR
@@ -28,10 +28,10 @@ index 43239da..79c3619 100644
  .TP
  \fB-class \fIclass\fB\fR
  Only show the given class of hardware. \fIclass\fR can be found using \fBlshw -short\fR or \fBlshw -businfo\fR\&.
-diff --git a/src/lshw.cc b/src/lshw.cc
-index 5fc8ade..219a008 100644
---- a/src/lshw.cc
-+++ b/src/lshw.cc
+Index: lshw-B.02.18+git.20190613/src/lshw.cc
+===================================================================
+--- lshw-B.02.18+git.20190613.orig/src/lshw.cc
++++ lshw-B.02.18+git.20190613/src/lshw.cc
 @@ -35,7 +35,7 @@ void usage(const char *progname)
      fprintf(stderr, _("\t-X              use graphical interface\n"));
    fprintf(stderr, _("\noptions can be\n"));

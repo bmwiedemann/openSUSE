@@ -12,14 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define src_install_dir /usr/src/%{name}
 
 Name:           bazel-rules-proto
-Version:        20190115
+Version:        20190719
 Release:        0
 Summary:        Bazel build rules for Protocol Buffers
 License:        Apache-2.0
@@ -50,16 +50,6 @@ This package contains source code of bazel-rules-proto.
 %install
 mkdir -p %{buildroot}%{src_install_dir}
 tar -xJf %{SOURCE0} --strip-components=1 -C %{buildroot}%{src_install_dir}
-# Fix hidden-dile-or-dir warning.
-find %{buildroot}%{src_install_dir} -name ".*" -exec rm -rf "{}" +
-# Remove files for Dart language - it's not packaged in openSUSE.
-find %{buildroot}%{src_install_dir} -type f -name "*.dart" -exec rm -f "{}" +
-# Fix env-script-interpreter error.
-find %{buildroot}%{src_install_dir} -type f -name "*.py" -exec sed -i 's|#!/usr/bin/env python3|#!/usr/bin/python3|' "{}" +
-find %{buildroot}%{src_install_dir} -type f -name "*.rb" -exec sed -i 's|#!/usr/bin/env ruby|#!/usr/bin/ruby|' "{}" +
-# Fix non-executable-script warning.
-chmod +x %{buildroot}%{src_install_dir}/ruby/example/routeguide/client.rb
-chmod +x %{buildroot}%{src_install_dir}/ruby/example/routeguide/server.rb
 
 %fdupes %{buildroot}%{src_install_dir}
 
@@ -69,4 +59,3 @@ chmod +x %{buildroot}%{src_install_dir}/ruby/example/routeguide/server.rb
 %{src_install_dir}
 
 %changelog
-

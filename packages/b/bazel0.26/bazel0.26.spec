@@ -52,9 +52,7 @@ Requires(post):	update-alternatives
 Requires(postun): update-alternatives
 Requires:       %{openjdktouse}
 Provides:       bazel = %{version}
-%ifarch armv7l
-ExclusiveArch:  do_not_build
-%endif
+ExclusiveArch:  x86_64 aarch64
 
 %description
 Tool for the automation of building and testing of software. It supports Java,
@@ -65,6 +63,8 @@ as mobile operating systems.
 %setup -q -c
 # Remove executable permissions
 chmod 0644 AUTHORS CHANGELOG.md CONTRIBUTORS LICENSE
+# Fix collision between grpc's gettid and glibc's gettid
+find third_party/grpc -type f -name "*.cc" -exec sed -i -e 's|gettid(|my_gettid(|g' {} +
 
 %build
 %ifarch aarch64 %arm

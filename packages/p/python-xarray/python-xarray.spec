@@ -17,22 +17,23 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%define         skip_python2 1
 Name:           python-xarray
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        N-D labeled arrays and datasets in Python
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/pydata/xarray
 Source:         https://files.pythonhosted.org/packages/source/x/xarray/xarray-%{version}.tar.gz
-BuildRequires:  %{python_module numpy-devel >= 1.12}
-BuildRequires:  %{python_module pandas >= 0.19.2}
+BuildRequires:  %{python_module numpy-devel >= 1.14}
+BuildRequires:  %{python_module numpy >= 1.14}
+BuildRequires:  %{python_module pandas >= 0.24}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.12
-Requires:       python-pandas >= 0.19.2
+Requires:       python-numpy >= 1.14
+Requires:       python-pandas >= 0.24
 Recommends:     python-scipy
 Provides:       python-xray = %{version}
 Obsoletes:      python-xray < %{version}
@@ -67,7 +68,7 @@ The dataset is an in-memory representation of a netCDF file.
 
 %check
 # Tests are xfail on aarch64: gh#pydata/xarray#2334
-%pytest -k "not test_datetime_reduce and not test_roundtrip_numpy_datetime_data and not test_download_from_github"
+%pytest -k "not test_datetime_reduce and not test_roundtrip_numpy_datetime_data and not test_download_from_github" xarray
 
 %files %{python_files}
 %doc README.rst

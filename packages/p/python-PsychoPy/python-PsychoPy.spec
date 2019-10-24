@@ -16,8 +16,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 Name:           python-PsychoPy
-Version:        3.1.5
+Version:        3.2.4
 Release:        0
 License:        GPL-3.0-or-later
 Summary:        Psychology experiment software in Python
@@ -106,6 +107,7 @@ Recommends:     python-gevent
 Recommends:     python-greenlet
 Recommends:     python-msgpack
 Recommends:     python-psutil
+Recommends:     python-psychtoolbox
 Recommends:     python-pyosf
 Recommends:     python-pyparallel
 Recommends:     python-pyserial

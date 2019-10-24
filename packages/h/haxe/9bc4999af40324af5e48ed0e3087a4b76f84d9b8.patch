@@ -1,0 +1,25 @@
+From 9bc4999af40324af5e48ed0e3087a4b76f84d9b8 Mon Sep 17 00:00:00 2001
+From: Andy Li <andy@onthewings.net>
+Date: Fri, 26 Jul 2019 16:39:39 +0800
+Subject: [PATCH] use camlp5 instead of camlp4 (#8547)
+
+---
+ Makefile       | 2 +-
+ Makefile.win   | 2 +-
+ opam           | 2 +-
+ tests/Brewfile | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 27ea839c04..1b691c714d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -61,7 +61,7 @@ endif
+ 
+ CC_CMD = $(COMPILER) $(ALL_CFLAGS) -c $<
+ 
+-CC_PARSER_CMD = $(COMPILER) -pp camlp4o $(ALL_CFLAGS) -c src/syntax/parser.ml
++CC_PARSER_CMD = $(COMPILER) -pp camlp5o $(ALL_CFLAGS) -c src/syntax/parser.ml
+ 
+ RELDIR=../../..
+ 

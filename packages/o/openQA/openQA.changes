@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Oct 24 09:07:31 UTC 2019 - coolo@suse.com
+
+- Update to version 4.6.1571860277.da2de85d9:
+  * spec: Fix package tests already failing on database setup
+  * Fix VNC port info for ports > 99 in devel mode
+  * Prevent logging needle problems twice
+  * Provide default filename for needles from the name
+  * Move needle_info() from Utils.pm to Step.pm
+  * Fix missing 'qemu-kvm' in non-x86_64 package tests
+  * Reduce use of project dir to be more flexible regarding custom test runs
+  * Calculate coverage in Circleci in all branches
+  * Move private function used across multiple classes into OpenQA::Utils
+  * Log all installed packages instead of per-repo
+  * Use Mojo::File to list cached files
+  * Dependency cron 191022000544 (#2417)
+  * fetchneedles: Make script fully POSIX sh compatible
+  * fetchneedles: Avoid double-negation in symlink check
+  * client: Fix the default host 'http://localhost' instead of https
+  * There are many cache methods that do not need to be public
+  * Disconnecting a random handle from the cache does nothing
+  * fetchneedles: Save on execution time by skipping over needle dir symlinks
+
+-------------------------------------------------------------------
 Mon Oct 21 09:50:11 UTC 2019 - coolo@suse.com
 
 - Update to version 4.6.1571651389.1516f15e7:

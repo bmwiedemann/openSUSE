@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_evasive
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,11 +12,11 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%if %{apache_branch} >= 204
+%if %apache_branch >= 204
 %define ap_suffix 24
 %else
 %define ap_suffix 20
@@ -25,14 +25,14 @@ Name:           apache2-mod_evasive
 Version:        1.10.1
 Release:        0
 Summary:        Denial of Service evasion module for Apache
-License:        GPL-2.0+
-Group:          Productivity/Networking/Web/Servers
 #
 # Only mod_evasive20.c (GPL-2.0+) is provided in object form.
 # mod_evasive.c (GPL-2.0) and mod_evasiveNSAPI.c (non-OSI compliant)
 # are merely shipped unmodified, fulfilling their terms.
 #
-Url:            http://zdziarski.com/blog/?page_id=442
+License:        GPL-2.0-or-later
+Group:          Productivity/Networking/Web/Servers
+URL:            https://github.com/jzdziarski/mod_evasive
 
 Source:         http://zdziarski.com/blog/wp-content/uploads/2010/02/mod_evasive_%version.tar.gz
 Source2:        mod_evasive.conf
@@ -46,8 +46,8 @@ BuildRequires:  curl-devel
 BuildRequires:  gcc-c++
 BuildRequires:  pcre-devel
 Recommends:     mailx
-Requires:       %{apache_mmn}
-Requires:       %{apache_suse_maintenance_mmn}
+Requires:       %apache_mmn
+Requires:       %apache_suse_maintenance_mmn
 Requires:       apache2
 
 %description
@@ -64,28 +64,28 @@ abuses via email and syslog facilities.
 
 %build
 cp -a %{S:2} .
-%if %{ap_suffix} == 24
+%if %ap_suffix == 24
 # create apache httpd-2.4 version and compile it
 sed 's/connection->remote_ip/connection->client_ip/' \
-  < mod_evasive20.c > mod_evasive%{ap_suffix}.c
-sed -i 's/evasive20_module/evasive24_module/' mod_evasive%{ap_suffix}.c
+	<mod_evasive20.c >"mod_evasive%ap_suffix.c"
+sed -i 's/evasive20_module/evasive24_module/' "mod_evasive%ap_suffix.c"
 sed -i 's/evasive20/evasive24/g' mod_evasive.conf
 %endif
-%apache_apxs -Wc,"%{optflags}" -c mod_evasive%{ap_suffix}.c
+%apache_apxs -Wc,"%optflags" -c "mod_evasive%ap_suffix.c"
 
 %install
 b="%buildroot"
 mkdir -p "$b/%apache_libexecdir" "$b/%apache_sysconfdir/conf.d"
 
 %apache_apxs -i -S LIBEXECDIR="%buildroot/%apache_libexecdir" \
-	-n mod_evasive%{ap_suffix}.so mod_evasive%{ap_suffix}.la;
-cp -a mod_evasive.conf "$b/%apache_sysconfdir/conf.d/";
+	-n "mod_evasive%ap_suffix.so" "mod_evasive%ap_suffix.la"
+cp -a mod_evasive.conf "$b/%apache_sysconfdir/conf.d/"
 perl -i -pe "s{/usr/lib/}{%_libdir/}g" \
-	"$b/%apache_sysconfdir/conf.d/mod_evasive.conf";
+	"$b/%apache_sysconfdir/conf.d/mod_evasive.conf"
 
 %check
 set +x
-%apache_test_module_load -m evasive%{ap_suffix} -i mod_evasive.conf
+%apache_test_module_load -m evasive%ap_suffix -i mod_evasive.conf
 set -x
 
 %files

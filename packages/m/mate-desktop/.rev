@@ -214,4 +214,12 @@
     <comment>We don't need python-libxml2 at all and it broke the package, as it was renamed in Factory</comment>
     <requestid>733407</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>98a40f632b305ea3b9035ab73260a681</srcmd5>
+    <version>1.23.1</version>
+    <time>1571951358</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>742260</requestid>
+  </revision>
 </revisionlist>

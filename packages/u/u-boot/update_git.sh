@@ -13,15 +13,15 @@ set -e
 
 GIT_TREE=git://github.com/openSUSE/u-boot.git
 GIT_LOCAL_TREE=~/git/u-boot-opensuse
-GIT_BRANCH=tumbleweed-2019.04
-GIT_UPSTREAM_TAG=v2019.04
+GIT_BRANCH=tumbleweed-2019.10
+GIT_UPSTREAM_TAG=v2019.10
 GIT_DIR=/dev/shm/u-boot-factory-git-dir
 CMP_DIR=/dev/shm/u-boot-factory-cmp-dir
 
 rm -rf $GIT_DIR
 rm -rf $CMP_DIR
 
-if [ -d "$GIT_LOCAL_TREE" ]; then
+if [ -d "$GIT_LOCAL_TREE" ] || [ -L "$GIT_LOCAL_TREE" ]; then
     echo "Processing $GIT_BRANCH branch of local git tree, using tag:" \
          "$GIT_UPSTREAM_TAG"
     if ! (cd $GIT_LOCAL_TREE && git show-branch $GIT_BRANCH &>/dev/null); then
@@ -99,28 +99,6 @@ rm -rf $GIT_DIR
         echo "  ${i##*/}" >> u-boot.changes.added
     done
 
-    for package in u-boot u-boot-board; do
-        while IFS= read -r line; do
-            if [ "$line" = "PATCH_FILES" ]; then
-                for i in 0???-*.patch; do
-                    NUM=${i%%-*}
-                    echo -e "Patch$NUM:      $i"
-                done
-            elif [ "$line" = "PATCH_EXEC" ]; then
-                for i in 0???-*.patch; do
-                    NUM=${i%%-*}
-                    echo "%patch$NUM -p1"
-                done
-            elif [ "$line" = "ARCHIVE_VERSION" ]; then
-                echo "%define archive_version $UBOOT_VERSION"
-            elif [ "$line" = "UBOOT_VERSION" ]; then
-                echo "Version:        $(echo $UBOOT_VERSION | sed 's/-/~/g')"
-            else
-                echo "$line"
-            fi
-        done < $package.spec.in > $package.spec.tmp
-    done
-
     # Factory requires all deleted and added patches to be mentioned
     if [ -e u-boot.changes.deleted ] || [ -e u-boot.changes.added ]; then
         echo "Patch queue updated from ${GIT_TREE} ${GIT_BRANCH}" > u-boot.changes.proposed
@@ -152,8 +130,18 @@ rm -rf $GIT_DIR
 
 rm -rf $CMP_DIR
 
+echo "Updating patch list"
+# Handle patch list automatically in spec file
+patch_list=`ls 0*.patch`
+# Remove current patches from spec file
+sed -i '/# Patches: start/,/# Patches: end/  {//!d}' u-boot.spec
+# Add patches to spec file
+for file in $patch_list; do
+  i=`echo $file | awk -F'[-.]' '{print $1}'`
+  sed -i "/# Patches: end/i Patch$i:      $file" u-boot.spec
+done
+
+
 osc service localrun format_spec_file
 
-/bin/sh pre_checkin.sh
-
-echo "Please remember to run pre_checkin.sh after modifying u-boot.changes."
+echo "Please update version in u-boot.spec, if needed"

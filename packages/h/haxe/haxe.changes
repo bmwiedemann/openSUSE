@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 23 11:12:13 UTC 2019 - olaf@aepfle.de
+
+- build with camlp5, use --unsafe-strings
+  add 527acc3ce0bb881aafe14d7919447075774519f7.patch
+  add 9bc4999af40324af5e48ed0e3087a4b76f84d9b8.patch
+  add ocamllibs-2502c82e45d2cfca6dfe6ecb558f56104d0c43f9.tar.gz
+  remove ocamllibs-ab5be31c6dd1fcd761c2ba16c5d767bcf6792490.tar.gz
+
+-------------------------------------------------------------------
 Fri Feb 23 09:31:36 UTC 2018 - andy@onthewings.net
 
 - Update to 3.4.7

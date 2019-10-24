@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 23 17:28:57 CEST 2019 - ro@suse.de
+
+- fix build-requires for factory/tumbleweed
+  rsvg-convert tool is now in rsvg-convert package 
+
+-------------------------------------------------------------------
 Thu Apr 19 10:34:08 UTC 2018 - schwab@suse.de
 
 - npsdk-aarch64-support.patch: remove obsolete patch

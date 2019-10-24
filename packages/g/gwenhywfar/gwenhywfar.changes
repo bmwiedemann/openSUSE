@@ -1,8 +1,24 @@
 -------------------------------------------------------------------
-Wed Aug 28 06:22:19 UTC 2019 - Johannes Engel <jcnengel@gmail.com>
+Mon Oct 14 07:42:59 UTC 2019 - Nico Kruber <nico.kruber@gmail.com>
 
-- Downgrade to 4.20.2 to enable aqbanking 5 builds
-  * Fix crash with FinTS
+- Update to 4.99.22rc6
+
+-------------------------------------------------------------------
+Sat Sep 28 13:36:03 UTC 2019 - Johannes Engel <jcnengel@gmail.com>
+
+- Update to 4.99.19rc3
+  + Merge with gwenhywfar package
+
+-------------------------------------------------------------------
+Tue Sep 24 22:49:26 UTC 2019 - Nico Kruber <nico.kruber@gmail.com>
+
+- Update to 4.99.17rc1
+
+-------------------------------------------------------------------
+Sat Sep 14 18:09:48 UTC 2019 - Johannes Engel <jcnengel@gmail.com>
+
+- Update to 4.99.15
+  + Fix issue with Postbank
 
 -------------------------------------------------------------------
 Tue Apr 23 15:44:53 UTC 2019 - Michele Bologna <michele.bologna@suse.com>

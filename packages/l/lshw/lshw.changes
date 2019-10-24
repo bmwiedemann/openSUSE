@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 24 14:25:29 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version B.02.18+git.20190613 (fate#326432 jsc#SLE-7715):
+  * devtree: Add DIMM running speed
+  * spd: Print dimm rank information
+  * Display proper logical name of network device
+- Drop no longer needed lswh-logical-name-iface.patch
+
+-------------------------------------------------------------------
 Thu May  2 09:56:21 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix displaying proper logical name of network device bsc#1133923

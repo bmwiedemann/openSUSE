@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 17 10:29:04 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.3
+  * Improved setting and retrieval of daemon/library debug masks
+  * Fixed a "is no" comparison against a literal
+
+-------------------------------------------------------------------
 Wed Jul  3 11:49:44 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 3.2.0

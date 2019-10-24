@@ -16,7 +16,7 @@
 #
 
 
-%global commit_ocamllibs ab5be31c6dd1fcd761c2ba16c5d767bcf6792490
+%global commit_ocamllibs 2502c82e45d2cfca6dfe6ecb558f56104d0c43f9
 %global commit_haxelib a494d8be523e26fcf875e2c33915808dc221e17a
 
 Name:           haxe
@@ -32,12 +32,14 @@ Url:            https://haxe.org/
 Source0:        https://github.com/HaxeFoundation/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/HaxeFoundation/ocamllibs/archive/%{commit_ocamllibs}.tar.gz#/ocamllibs-%{commit_ocamllibs}.tar.gz
 Source2:        https://github.com/HaxeFoundation/haxelib/archive/%{commit_haxelib}.tar.gz#/haxelib-%{commit_haxelib}.tar.gz
+Patch0:         527acc3ce0bb881aafe14d7919447075774519f7.patch
+Patch1:         9bc4999af40324af5e48ed0e3087a4b76f84d9b8.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  help2man
 BuildRequires:  neko-devel >= 2.2.0
 BuildRequires:  neko >= 2.2.0
 BuildRequires:  ocaml >= 4.02.3
-BuildRequires:  ocaml-camlp4-devel
+BuildRequires:  ocaml-camlp5-devel
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pcre-devel-static
 BuildRequires:  cmake
@@ -51,11 +53,12 @@ source code to Adobe Flash SWF files, ActionScript 3, JavaScript,
 C++, PHP, C#, Java, Python, Lua, and Neko VM binary files.
 
 %prep
-%setup -q
+%autosetup -p1
+
+%build
 pushd libs && tar -xf %{SOURCE1} --strip-components=1 && popd
 pushd extra/haxelib_src && tar -xf %{SOURCE2} --strip-components=1 && popd
 
-%build
 # note that the Makefile does not support parallel building
 
 # Haxe 3.4.* is not safe-string compatible.

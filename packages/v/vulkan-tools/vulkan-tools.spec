@@ -16,18 +16,17 @@
 #
 
 
-%define version_unconverted 1.1.120
+%define version_unconverted 1.1.124
 
 Name:           vulkan-tools
-Version:        1.1.120
+Version:        1.1.124
 Release:        0
-Summary:        Reference ICD loader for Vulkan
+Summary:        Diagnostic utilities for Vulkan
 License:        Apache-2.0
-Group:          Development/Libraries/C and C++
-URL:            http://www.khronos.org/
+Group:          vulkan
+URL:            https://github.com/KhronosGroup/Vulkan-Tools
 
-#Git-URL:       https://github.com/KhronosGroup/Vulkan-Tools
-Source:         Vulkan-Tools-%version.tar.xz
+Source:         https://github.com/KhronosGroup/Vulkan-Tools/archive/v%version.tar.gz
 BuildRequires:  cmake >= 3.4
 BuildRequires:  gcc-c++ >= 4.8
 BuildRequires:  glslang-devel >= 7.11.3226

@@ -35,7 +35,11 @@ BuildRequires:  itstool
 BuildRequires:  mate-common >= 1.22
 BuildRequires:  pkgconfig
 BuildRequires:  popt-devel
+%if 0%{suse_version} >= 1550
+BuildRequires:  rsvg-convert
+%else
 BuildRequires:  rsvg-view
+%endif
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(atk)

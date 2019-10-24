@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 Name:           python-numba
-Version:        0.45.1
+Version:        0.46.0
 Release:        0
 Summary:        NumPy-aware optimizing compiler for Python using LLVM
 License:        BSD-2-Clause
@@ -26,7 +27,13 @@ Group:          Development/Languages/Python
 URL:            https://github.com/numba/numba
 Source:         https://files.pythonhosted.org/packages/source/n/numba/numba-%{version}.tar.gz
 Patch0:         skip-failing-tests.patch
+# PATCH-FIX-UPSTREAM fix-max-name-size.patch -- fix for gh#numba/numba#3876 -- from gh#numba/numba#4373
+Patch1:         fix-max-name-size.patch
+BuildRequires:  %{python_module Jinja2}
+BuildRequires:  %{python_module Pygments}
+BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module llvmlite >= 0.29}
 BuildRequires:  %{python_module numpy-devel >= 1.10}
 BuildRequires:  %{python_module pytest}
@@ -36,15 +43,24 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-funcsigs
 BuildRequires:  python-rpm-macros
-BuildRequires:  python-singledispatch
+BuildRequires:  python2-enum34
+BuildRequires:  python2-funcsigs
+BuildRequires:  python2-singledispatch
+BuildRequires:  python3-tbb
+BuildRequires:  tbb-devel
 Requires:       python-llvmlite >= 0.29
 Requires:       python-numpy >= 1.10
 Requires:       python-scipy >= 0.16
+Recommends:     python-Jinja2
+Recommends:     python-Pygments
+Recommends:     python-cffi
+Recommends:     python-tbb
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
 %ifpython2
-Requires:       python-funcsigs
-Requires:       python-singledispatch
+Requires:       python2-enum34
+Requires:       python2-funcsigs
+Requires:       python2-singledispatch
 %endif
 %python_subpackages
 
@@ -65,14 +81,14 @@ in the decorator.
 Numba is a mechanism for producing machine code from Python syntax and typed
 data structures such as those that exist in NumPy.
 
-%package devel
+%package        devel
 Summary:        Development files for numba applications
 Group:          Development/Libraries/Python
 Requires:       %{name} = %{version}
 Requires:       python-devel
 Requires:       python-numpy-devel >= 1.7
 
-%description devel
+%description    devel
 This package contains files for developing applications using numba.
 
 %prep
@@ -81,6 +97,7 @@ This package contains files for developing applications using numba.
 sed -i '1{\@^#!%{_bindir}/env python@d}' numba/appdirs.py
 
 %build
+export CFLAGS="%{optflags} -fPIC"
 %python_build
 
 %install
@@ -91,11 +108,13 @@ sed -i '1{\@^#!%{_bindir}/env python@d}' numba/appdirs.py
 %python_clone -a %{buildroot}%{_bindir}/pycc
 
 %check
+mv numba numba_temp
+export NUMBA_PARALLEL_DIAGNOSTICS=1
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-$python setup.py build_ext --inplace
 %{buildroot}%{_bindir}/numba-%{$python_bin_suffix} -s
 $python -m numba.runtests -v -b --exclude-tags='long_running' -m %{_smp_build_ncpus} -- numba.tests
 }
+mv numba_temp numba
 
 %post
 %{python_install_alternative numba pycc}

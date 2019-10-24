@@ -1,7 +1,7 @@
 #
 # spec file for package retext
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,11 @@ BuildRequires:  python3-Markups >= 2.0
 BuildRequires:  python3-devel
 BuildRequires:  python3-docutils
 BuildRequires:  python3-qt5
+%if 0%{suse_version} >= 1550
+BuildRequires:  rsvg-convert
+%else
 BuildRequires:  rsvg-view
+%endif
 BuildRequires:  update-desktop-files
 Requires:       python3-Markdown
 Requires:       python3-Markups >= 2.0
