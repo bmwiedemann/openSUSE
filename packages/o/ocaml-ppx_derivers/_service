@@ -1,0 +1,14 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/ocaml-ppx/ppx_derivers.git</param>
+    <param name="scm">git</param>
+    <param name="versionformat">1.2.1</param>
+    <param name="revision">1.2.1</param>
+    <param name="filename">ocaml-ppx_derivers</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

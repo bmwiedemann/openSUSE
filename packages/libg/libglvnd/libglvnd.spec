@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,7 +20,7 @@
 #
 
 Name:           libglvnd
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 Summary:        The GL Vendor-Neutral Dispatch library
 License:        MIT
@@ -29,6 +29,7 @@ Url:            https://github.com/NVIDIA/libglvnd
 # Source is _service generated
 Source:         %name-%version.tar.gz
 Source1:        baselibs.conf
+Patch0:         n_0001-GL-Bump-GL-version-to-9-2.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -51,7 +52,6 @@ OpenGL ABI proposal.
 Summary:        Development files for libglvnd
 Group:          Development/Libraries/C and C++
 Requires:       %name = %version
-Recommends:     Mesa-libGL-devel >= 12.0.0
 
 %description devel
 Vendor-neutral dispatch layer for arbitrating OpenGL API calls between
@@ -61,6 +61,7 @@ development.
 
 %prep
 %setup -q
+%patch0 -p1
 # fix env shebang to call py3 directly
 sed -i -e "1s|#!.*|#!/usr/bin/python3|" src/generate/*.py
 
@@ -71,6 +72,7 @@ sed -i -e "1s|#!.*|#!/usr/bin/python3|" src/generate/*.py
     --libdir=/usr/X11R6/%_lib \
 %endif
     --disable-static \
+    --disable-headers \
     --disable-silent-rules
 make %{?_smp_mflags}
 
@@ -90,6 +92,9 @@ EOF
   echo "%config %_sysconfdir/ld.so.conf.d/%name.conf" >%_builddir/%name-%version/filelist.rpm
 fi
 %endif
+mkdir -p %buildroot/usr/share/doc/packages/%name/pkgconfig
+mv %buildroot/%_libdir/pkgconfig/{gl,egl,glesv1_cm,glesv2}.pc \
+   %buildroot/usr/share/doc/packages/%name/pkgconfig
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -97,6 +102,7 @@ fi
 %files -f filelist.rpm
 %defattr(-,root,root)
 %doc README.md
+/usr/share/doc/packages/%name/pkgconfig
 %if 0%{?suse_version} < 1330
 %dir /usr/X11R6
 %dir /usr/X11R6/%_lib

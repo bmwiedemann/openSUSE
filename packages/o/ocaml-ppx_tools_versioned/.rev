@@ -49,4 +49,12 @@ The is a dependency of sedlex, which in turn is a dependency of the next version
 </comment>
     <requestid>719284</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>38128f188cbb8d9839d12b09d4be2de7</srcmd5>
+    <version>5.2.3</version>
+    <time>1571950922</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>735916</requestid>
+  </revision>
 </revisionlist>

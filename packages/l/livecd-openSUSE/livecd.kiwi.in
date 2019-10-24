@@ -59,8 +59,8 @@
   </packages>
   <packages type="bootstrap">
     <package name="filesystem"/>
-    <package name="openSUSE-release"/>
-    <package name="openSUSE-release-livecd-@FLAVOR@"/>
+    <package name="@RELEASEPREFIX@-release"/>
+    <package name="@RELEASEPREFIX@-release-livecd-@FLAVOR@"/>
     <package name="branding-openSUSE"/>
   </packages>
   <repository type="rpm-md">

@@ -1,0 +1,31 @@
+--- a/isdnlog/Makefile.in
++++ b/isdnlog/Makefile.in
+@@ -2185,22 +2185,22 @@ distrib: distclean
+ #		uuencode /tmp/isdnlog-$(I4LVERSION).tar.gz isdnlog-$(I4LVERSION).tar.gz > /tmp/isdnlog-$(I4LVERSION).uue
+ 
+ $(ISDNLOG):     $(ISDNLOG_OBJS)
+-		$(CC) -o $(ISDNLOG) $(LFLAGS) $(ISDNLOG_OBJS) $(ORALIBS) $(LIB)
++		$(CC) -o $(ISDNLOG) $(CFLAGS) $(ISDNLOG_OBJS) $(ORALIBS) $(LIB)
+ 
+ $(ISDNREP):     $(ISDNREP_OBJS)
+-		$(CC) -o $(ISDNREP) $(LFLAGS) $(ISDNREP_OBJS) $(LIB)
++		$(CC) -o $(ISDNREP) $(CFLAGS) $(ISDNREP_OBJS) $(LIB)
+ 
+ $(ISDNBILL):    $(ISDNBILL_OBJS)
+-		$(CC) -o $(ISDNBILL) $(LFLAGS) $(ISDNBILL_OBJS) $(LIB)
++		$(CC) -o $(ISDNBILL) $(CFLAGS) $(ISDNBILL_OBJS) $(LIB)
+ 
+ $(ISDNCONF):    $(ISDNCONF_OBJS)
+-		$(CC) -o $(ISDNCONF) $(LFLAGS) $(ISDNCONF_OBJS) $(LIB)
++		$(CC) -o $(ISDNCONF) $(CFLAGS) $(ISDNCONF_OBJS) $(LIB)
+ 
+ $(ISDNRATE):    $(ISDNRATE_OBJS)
+-		$(CC) -o $(ISDNRATE) $(LFLAGS) $(ISDNRATE_OBJS) $(LIB)
++		$(CC) -o $(ISDNRATE) $(CFLAGS) $(ISDNRATE_OBJS) $(LIB)
+ 
+ $(ORA_LOAD):    $(ORA_LOAD_OBJS)
+-		$(CC) -o $(ORA_LOAD) $(LFLAGS) $(ORA_LOAD_OBJS) $(ORALIBS)
++		$(CC) -o $(ORA_LOAD) $(CFLAGS) $(ORA_LOAD_OBJS) $(ORALIBS)
+ 
+ isdnlog/oracle.o: isdnlog/oracle.pc
+ 	$(PC) $(PCFLAGS) include=isdnlog code=ansi_c lname=isdnlog/_kgw.lis \

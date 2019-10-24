@@ -25,83 +25,42 @@ Group:          Development/Languages/OCaml
 
 URL:            https://github.com/djs55/ocaml-sha/
 Source0:        https://github.com/djs55/ocaml-sha/archive/v%{version}/%{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocamlfind
-BuildRequires:  ocaml-ounit-devel
-BuildRequires:  opam-installer
-BuildRequires:  ocaml-rpm-macros
+BuildRequires:  ocaml-rpm-macros >= 20191009
 
 %description
 A binding for SHA interface code in OCaml. Offering the same interface than
 the MD5 digest included in the OCaml standard library.
 It's currently providing SHA1, SHA256 and SHA512 hash functions.
 
-
 %package        devel
 Summary:        Development files for %{name}
 Group:          Development/Languages/OCaml
 Requires:       %{name} = %{version}
 
-
 %description    devel
 The %{name}-devel package contains libraries and signature files for
 developing applications that use %{name}.
 
-
 %prep
-%setup -q -n %{name}-%{version}
-
+%autosetup -p1
 
 %build
-dune build @install
-
+%ocaml_dune_setup
+%ocaml_dune_build
 
 %install
-mkdir -p %{buildroot}%{_libdir}/ocaml
-dune install --destdir=%{buildroot}
-# These files will be installed using doc and license directives.
-rm -r %{buildroot}/usr/doc
-
+%ocaml_dune_install
+%ocaml_create_file_list
 
 %check
-dune runtest
+%ocaml_dune_test || : make check failed
 
+%files -f %{name}.files
+%doc README
 
-%files
-%defattr(-,root,root,-)
-%doc README CHANGES.md
-%license LICENSE.md
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%{_libdir}/ocaml/*/*.so
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.cmxs
-%endif
-
-
-%files devel
-%defattr(-,root,root,-)
-%doc README CHANGES.md
-%license LICENSE.md
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.a
-%{_libdir}/ocaml/*/*.cmx
-%{_libdir}/ocaml/*/*.cmxa
-%endif
-%{_libdir}/ocaml/*/*.ml
-%{_libdir}/ocaml/*/*.mli
-%{_libdir}/ocaml/*/*.cma
-%{_libdir}/ocaml/*/*.cmi
-%{_libdir}/ocaml/*/*.cmt
-%{_libdir}/ocaml/*/*.cmti
-%{_libdir}/ocaml/*/META
-%{_libdir}/ocaml/*/opam
-%{_libdir}/ocaml/*/dune-package
-
+%files devel -f %{name}.files.devel
 
 %changelog

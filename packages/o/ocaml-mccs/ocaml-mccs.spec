@@ -30,8 +30,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  ocaml
 BuildRequires:  ocaml-cudf-devel
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros
-BuildRequires:  ocamlfind
+BuildRequires:  ocaml-rpm-macros >= 20190930
 
 %description
 mccs (which stands for Multi Criteria CUDF Solver) is a CUDF problem solver
@@ -46,46 +45,27 @@ Requires:       %{name} = %{version}
 This package contains development files for %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-dune build @install
+%ocaml_dune_setup
+%ocaml_dune_build
 
 %install
-install -d %{buildroot}%{_libdir}/ocaml/mccs/glpk/internal
+%ocaml_dune_install
+%ocaml_create_file_list
 
-pushd _build/install/default/lib
-install -m0644 mccs/{META,dune-package,libmccs*,mccs*} %{buildroot}%{_libdir}/ocaml/mccs
-install -m0644 mccs/glpk/internal/*mccs* %{buildroot}%{_libdir}/ocaml/mccs/glpk/internal
-install -m0755 stublibs/dllmccs_stubs.so %{buildroot}%{_libdir}/libmccs_stubs.so
+%check
+%ocaml_dune_test
 
 %post -p /sbin/ldconfig
 
 %postun -p /sbin/ldconfig
 
-%files
+%files -f %{name}.files
 %doc README.md
 %license LICENCE
-%dir %{_libdir}/ocaml/mccs
-%{_libdir}/libmccs_stubs.so
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/mccs/*.cmxs
-%endif
 
-%files devel
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/mccs/*.a
-%{_libdir}/ocaml/mccs/*.cmx
-%{_libdir}/ocaml/mccs/*.cmxa
-%endif
-%{_libdir}/ocaml/mccs/*.cma
-%{_libdir}/ocaml/mccs/*.cmi
-%{_libdir}/ocaml/mccs/*.cmt
-%{_libdir}/ocaml/mccs/*.cmti
-%{_libdir}/ocaml/mccs/*.ml
-%{_libdir}/ocaml/mccs/*.mli
-%{_libdir}/ocaml/mccs/META
-%{_libdir}/ocaml/mccs/dune-package
-%{_libdir}/ocaml/mccs/glpk/
+%files devel -f %{name}.files.devel
 
 %changelog

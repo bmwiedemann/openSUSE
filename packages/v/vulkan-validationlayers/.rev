@@ -55,4 +55,12 @@
     <comment>- Update to new upstream release 1.1.120</comment>
     <requestid>725035</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9bc6b1f75ebcc8827a8339f95c37e3c4</srcmd5>
+    <version>1.1.124</version>
+    <time>1571950981</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.1.124</comment>
+    <requestid>738944</requestid>
+  </revision>
 </revisionlist>

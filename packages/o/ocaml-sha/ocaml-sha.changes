@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 30 12:34:56 UTC 2019 - ohering@suse.de
+
+- use dune macros from ocaml-rpm-macros
+
+-------------------------------------------------------------------
 Tue Feb 19 02:58:28 UTC 2019 - andy@onthewings.net
 
 - Update install section for ocaml-dune 1.7.1. 

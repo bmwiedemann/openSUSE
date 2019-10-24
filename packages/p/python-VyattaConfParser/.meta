@@ -1,0 +1,8 @@
+<package name="python-VyattaConfParser" project="openSUSE:Factory">
+  <title>A python config parser for Vyatta</title>
+  <description>A python config parser for Vyatta.
+
+</description>
+  <devel project="devel:languages:python" package="python-VyattaConfParser"/>
+  <url>https://github.com/hedin/vyatta-conf-parser</url>
+</package>

@@ -1,0 +1,15 @@
+<package name="virtme" project="openSUSE:Factory">
+  <title>Virtualize the running distro or a simple rootfs</title>
+  <description>Virtme is a set of simple tools to run a virtualized Linux kernel that
+uses the host Linux distribution or a simple rootfs instead of a whole
+disk image.
+
+Virtme is tiny, easy to use, and makes testing kernel changes quite simple.
+
+Some day this might be useful as a sort of sandbox.  Right now it's not
+really configurable enough for that.
+
+</description>
+  <devel project="Virtualization" package="virtme"/>
+  <url>https://git.kernel.org/cgit/utils/kernel/virtme/virtme.git</url>
+</package>

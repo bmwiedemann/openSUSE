@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Tue Oct 15 15:53:23 UTC 2019 - Marcos de Souza <mpdesouza@suse.com>
+
+- Remove the python3- prefix from the final package
+- Added full source URL
+
+-------------------------------------------------------------------
+Tue Oct 15 01:38:51 UTC 2019 - Marcos de Souza <mpdesouza@suse.com>
+
+- Remove _service and add the virtme source code into the project.
+
+-------------------------------------------------------------------
+Sat Oct 12 01:09:46 UTC 2019 - Marcos de Souza <mpdesouza@suse.com>
+
+- Add busybox and qemu as dependencies of virtme. Now 'virtme-run
+  --installed-kernel' works out-of-the-box.
+
+-------------------------------------------------------------------
+Thu Oct 10 19:41:06 UTC 2019 - Marcos de Souza <mpdesouza@suse.com>
+
+- Newly released version 0.1.1
+- Use an OBS service to download the tarball
+- Removed all patches, since they are all included in the new version
+
+-------------------------------------------------------------------
+Mon Sep 30 03:27:06 UTC 2019 - Marcos de Souza <mpdesouza@suse.com>
+
+- Add a new patch to support --mods auto in openSUSE.
+
+-------------------------------------------------------------------
+Mon Sep 30 03:00:03 UTC 2019 - Marcos de Souza <mpdesouza@suse.com>
+
+- Update virtme version with previous patches already included in the upstream
+  project
+
+-------------------------------------------------------------------
+Mon Aug 26 02:13:38 UTC 2019 - Marcos de Souza <mpdesouza@suse.com>
+
+- Add patches to enable experimental --kdir with modules enabled
+
+-------------------------------------------------------------------
+Thu Aug 22 02:09:04 UTC 2019 - Marcos de Souza <mpdesouza@suse.com>
+
+- First version of the package

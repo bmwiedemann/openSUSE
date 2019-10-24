@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Oct  7 21:32:25 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- move gl, egl, glesv1_cm and glesv2 pkgconfig files to doc
+  directory, so these can be picked up by Mesa build; no longer
+  require Mesa devel subpackages ...
+
+-------------------------------------------------------------------
+Mon Oct  7 16:12:05 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- reverting inclusion of GL, EGL, GLES, GLES2, GLES3 headers;
+  no longer let libglvnd-devel package provide and obsolete 
+  corresponding Mesa gl, egl, gles* devel subpackages; headers
+  just aren't compatible; instead require them ...
+- supersedes patches:
+  * n_0001-eglplatform-fix-mesa-specific-defines.patch
+  * u_add-gl3ext.h
+
+-------------------------------------------------------------------
+Sun Oct  6 10:51:27 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- let libglvnd-devel also provide/obsolete Mesa-libGLESv3-devel
+
+-------------------------------------------------------------------
+Fri Sep 27 11:24:45 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- let libglvnd-devel provide/obsolete some of previous Mesa devel
+  packages:
+  * Mesa-libGL-devel
+  * Mesa-libEGL-devel
+  * Mesa-libGLESv1_CM-devel
+  * Mesa-libGLESv2-devel
+  * Mesa-KHR-devel
+- u_add-gl3ext.h
+  * adds missing include/GLES/gl3ext.h 
+
+-------------------------------------------------------------------
+Thu Sep 26 07:01:41 UTC 2019 - Tobias Klausmann <tobias.klausmann@freenet.de>
+
+- Update to version 1.2.0:
+  * Changes:
+    + Libglvnd now includes and installs the header files for OpenGL, GLES, EGL,
+      and GLX.
+    + Added pkg-config files for each library.
+    + The X11 libraries are now an optional dependency if you're not building
+      GLX.
+- n_0001-GL-Bump-GL-version-to-9-2.patch  
+  * with a version of 1.2 the XServer build fails; set the version accordingly to
+    allow XServer builds again.
+- n_0001-eglplatform-fix-mesa-specific-defines.patch
+  * the XServer fails to build; add the mesa specific defines to eglplatform, to
+    let it build again.
+
+-------------------------------------------------------------------
 Tue Mar 19 15:30:52 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to release 1.1.1

@@ -17,7 +17,7 @@
 
 
 Name:           libX11
-Version:        1.6.8
+Version:        1.6.9
 Release:        0
 Summary:        Core X11 protocol client library
 License:        MIT
@@ -111,6 +111,8 @@ Requires:       libX11-xcb1 = %{version}
 # O/P added for 12.2
 Provides:       xorg-x11-libX11-devel = 7.6_%{version}-%{release}
 Obsoletes:      xorg-x11-libX11-devel < 7.6_%{version}-%{release}
+Conflicts:      xorgproto-devel < 2019.2
+Provides:       xorgproto-devel:%{_includedir}/X11/extensions/XKBgeom.h
 
 %description devel
 The X Window System is a network-transparent window system that was

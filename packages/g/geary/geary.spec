@@ -17,13 +17,13 @@
 
 
 Name:           geary
-Version:        3.32.2
+Version:        3.34.1
 Release:        0
 Summary:        An email reader for the GNOME desktop
 License:        LGPL-2.1-or-later AND CC-BY-3.0 AND BSD-2-Clause
 Group:          Productivity/Networking/Email/Clients
 URL:            https://wiki.gnome.org/Apps/Geary
-Source0:        https://download.gnome.org/sources/geary/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/geary/3.34/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  itstool
@@ -31,6 +31,7 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xml2po
+BuildRequires:  pkgconfig(appstream-glib)
 BuildRequires:  pkgconfig(enchant-2) >= 2.1
 BuildRequires:  pkgconfig(folks)
 BuildRequires:  pkgconfig(gcr-3) >= 3.10.1
@@ -40,13 +41,14 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.42.0
 BuildRequires:  pkgconfig(gmime-2.6) >= 2.6.17
 BuildRequires:  pkgconfig(goa-1.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(gspell-1)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(javascriptcoregtk-4.0) >= 2.10.0
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libcanberra) >= 0.28
-BuildRequires:  pkgconfig(libnotify) >= 0.7.5
+BuildRequires:  pkgconfig(libhandy-0.0) >= 0.0.9
 BuildRequires:  pkgconfig(libsecret-1) >= 0.11
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.48
 BuildRequires:  pkgconfig(libunwind)
@@ -70,7 +72,8 @@ may be read without having to navigate between messages.
 
 %build
 %meson \
-	%{nil}
+    -Dtnef-support=false \
+    %{nil}
 %meson_build
 
 %install
@@ -94,6 +97,7 @@ may be read without having to navigate between messages.
 %{_datadir}/applications/geary-autostart.desktop
 %{_datadir}/icons/hicolor/
 %{_datadir}/glib-2.0/schemas/org.gnome.Geary.gschema.xml
+%{_datadir}/dbus-1/services/org.gnome.Geary.service
 
 %files lang -f %{name}.lang
 

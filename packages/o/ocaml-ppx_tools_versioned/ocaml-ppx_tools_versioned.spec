@@ -24,14 +24,11 @@ Summary:        Tools for authors of ppx rewriters
 License:        MIT
 Group:          Development/Languages/OCaml
 Url:            https://github.com/ocaml-ppx/ppx_tools_versioned
-Source:         https://github.com/ocaml-ppx/ppx_tools_versioned/archive/%{version}/ppx_tools_versioned-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-migrate-parsetree-devel
-BuildRequires:  ocaml-result-devel
-BuildRequires:  ocaml-rpm-macros
-BuildRequires:  opam-installer
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  ocaml-rpm-macros >= 20190930
+BuildRequires:  ocamlfind(ocaml-migrate-parsetree)
 
 %description
 A variant of ppx_tools based on ocaml-migrate-parsetree.
@@ -46,55 +43,23 @@ The %{name}-devel package contains libraries and signature files for
 developing applications that use %{name}.
 
 %prep
-%setup -q -n ppx_tools_versioned-%{version}
+%autosetup -p1
 
 %build
-dune build @install --profile=release
+%ocaml_dune_setup
+%ocaml_dune_build
 
 %install
-dune install --destdir="%{buildroot}" --verbose
+%ocaml_dune_install
+%ocaml_create_file_list
 
-# These files will be installed using the doc and license directives
-rm %{buildroot}/usr/doc/ppx_tools_versioned/{LICENSE,README.md}
+%check
+%ocaml_dune_test
 
-%files
-%defattr(-,root,root)
-%doc README.md
+%files -f %{name}.files
 %license LICENSE
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.cmxs
-%{_libdir}/ocaml/*/*/*.cmxs
-%endif
-
-%files devel
-%defattr(-,root,root,-)
 %doc README.md
-%license LICENSE
-%dir %{_libdir}/ocaml/*
-%dir %{_libdir}/ocaml/*/metaquot_*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.a
-%{_libdir}/ocaml/*/*.cmx
-%{_libdir}/ocaml/*/*.cmxa
-%{_libdir}/ocaml/*/*/*.a
-%{_libdir}/ocaml/*/*/*.cmx
-%{_libdir}/ocaml/*/*/*.cmxa
-%endif
-%{_libdir}/ocaml/*/META
-%{_libdir}/ocaml/*/opam
-%{_libdir}/ocaml/*/dune-package
-%{_libdir}/ocaml/*/*.cma
-%{_libdir}/ocaml/*/*.cmi
-%{_libdir}/ocaml/*/*.cmt
-%{_libdir}/ocaml/*/*.cmti
-%{_libdir}/ocaml/*/*.ml
-%{_libdir}/ocaml/*/*.mli
-%{_libdir}/ocaml/*/*/*.cma
-%{_libdir}/ocaml/*/*/*.cmi
-%{_libdir}/ocaml/*/*/*.cmt
-%{_libdir}/ocaml/*/*/*.ml
-%{_libdir}/ocaml/*/*/*.exe
+
+%files devel -f %{name}.files.devel
 
 %changelog

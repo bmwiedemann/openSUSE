@@ -18,12 +18,8 @@
 #
 
 
-# cppo may use opam-installer but opam requires cppo for its build.
-# So here we don't use opam-installer by default.
-# Build with "--with-opam" to use opam despite the circular dependency.
-%bcond_with opam
 Name:           ocaml-cppo
-Version:        1.6.5
+Version:        1.6.6
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        The C preprocessor written in OCaml
@@ -33,15 +29,11 @@ Url:            https://github.com/ocaml-community/cppo
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-ocamldoc
-BuildRequires:  ocaml-rpm-macros >= 4.03
+BuildRequires:  ocaml-rpm-macros >= 20191009
 BuildRequires:  ocamlfind(easy-format)
 BuildRequires:  ocamlfind(ocamlbuild)
 BuildRequires:  ocamlfind(str)
 BuildRequires:  ocamlfind(unix)
-%if %{with opam}
-BuildRequires:  opam
-%endif
 
 %description
 Cppo is an equivalent of the C preprocessor targeted at the OCaml language and
@@ -66,53 +58,23 @@ The %{name}-devel package contains libraries and signature files for
 developing applications that use %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-dune build @install --profile release
+%ocaml_dune_setup
+%ocaml_dune_build
 
 %install
-%if %{with opam}
-  install -d %{buildroot}%{_libdir}/ocaml
-  dune install --prefix=%{buildroot}%{_prefix} --libdir=%{buildroot}%{_libdir}/ocaml
-  rm -r %{buildroot}%{_prefix}/doc
-%else
-  # By hand, not funny
-  cd _build/install/default
-  install -d %{buildroot}%{_libdir}/ocaml/cppo{,_ocamlbuild}
-  install -m0644 lib/cppo/* %{buildroot}%{_libdir}/ocaml/cppo/
-  install -m0644 lib/cppo_ocamlbuild/* %{buildroot}%{_libdir}/ocaml/cppo_ocamlbuild/
-  install -d %{buildroot}%{_bindir}
-  install -m0755 bin/cppo %{buildroot}%{_bindir}
-%endif
+%ocaml_dune_install
+%ocaml_create_file_list
 
-%files
-%defattr(-,root,root)
+%check
+%ocaml_dune_test
+
+%files -f %{name}.files
+%doc README.md
 %{_bindir}/cppo
-%doc LICENSE.md README.md
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.cmxs
-%endif
 
-%files devel
-%defattr(-,root,root,-)
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.a
-%{_libdir}/ocaml/*/*.cmx
-%{_libdir}/ocaml/*/*.cmxa
-%endif
-%{_libdir}/ocaml/*/*.cma
-%{_libdir}/ocaml/*/*.cmi
-%{_libdir}/ocaml/*/*.cmt
-%{_libdir}/ocaml/*/*.cmti
-%{_libdir}/ocaml/*/*.ml
-%{_libdir}/ocaml/*/*.mli
-%{_libdir}/ocaml/*/dune-package
-%{_libdir}/ocaml/*/META
-%{_libdir}/ocaml/*/opam
+%files devel -f %{name}.files.devel
 
 %changelog

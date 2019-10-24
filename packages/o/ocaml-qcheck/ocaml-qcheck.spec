@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-qcheck
-Version:        0.9
+Version:        0.10
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        QuickCheck inspired property-based testing for OCaml
@@ -25,21 +25,19 @@ License:        BSD-2-Clause
 Group:          Development/Languages/OCaml
 
 URL:            https://github.com/c-cube/qcheck
-Source0:        https://github.com/c-cube/qcheck/archive/%{version}/%{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-ounit-devel
-BuildRequires:  ocaml-rpm-macros
-BuildRequires:  ocamlfind
-BuildRequires:  opam-installer
+BuildRequires:  ocaml-rpm-macros >= 20190930
+BuildRequires:  ocamlfind(bytes)
+BuildRequires:  ocamlfind(oUnit)
+BuildRequires:  ocamlfind(unix)
 
 %description
 This module allows to check invariants (properties of some types) over
 randomly generated instances of the type. It provides combinators for
 generating instances and printing them.
-
 
 %package        devel
 Summary:        Development files for %{name}
@@ -52,48 +50,29 @@ developing applications that use %{name}.
 
 
 %prep
-%setup -q -n qcheck-%{version}
+%autosetup -p1
 
 %build
 # do not build alcotest support since it is not packaged yet
-dune build @install -p qcheck,qcheck-core,qcheck-ounit
+args='--for-release-of-packages=qcheck,qcheck-core,qcheck-ounit'
+OCAML_DUNE_INSTALLED_LIBRARIES_ARGS=''
+OCAML_DUNE_EXTERNAL_LIB_DEPS_ARGS="${args}"
+OCAML_DUNE_BUILD_INSTALL_ARGS="${args}"
+%ocaml_dune_setup
+%ocaml_dune_build
 
 %install
-mkdir -p %{buildroot}%{_libdir}/ocaml
-dune install --destdir=%{buildroot} qcheck qcheck-core qcheck-ounit
+OCAML_DUNE_INSTALL_ARGS='qcheck qcheck-core qcheck-ounit'
+%ocaml_dune_install
+%ocaml_create_file_list
 
-# These files will be installed using doc and license directives.
-rm -r %{buildroot}/usr/doc
+%check
+%ocaml_dune_test
 
-%files
-%defattr(-,root,root,-)
-%doc README.adoc CHANGELOG.md
+%files -f %{name}.files
 %license LICENSE
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%dir %{_libdir}/ocaml/*/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/{,*/}*.cmxs
-%endif
+%doc README.adoc
 
-%files devel
-%defattr(-,root,root,-)
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%dir %{_libdir}/ocaml/*/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/{,*/}*.a
-%{_libdir}/ocaml/*/{,*/}*.cmx
-%{_libdir}/ocaml/*/{,*/}*.cmxa
-%endif
-%{_libdir}/ocaml/*/{,*/}*.ml
-%{_libdir}/ocaml/*/{,*/}*.mli
-%{_libdir}/ocaml/*/{,*/}*.cma
-%{_libdir}/ocaml/*/{,*/}*.cmi
-%{_libdir}/ocaml/*/{,*/}*.cmt
-%{_libdir}/ocaml/*/{,*/}*.cmti
-%{_libdir}/ocaml/*/dune-package
-%{_libdir}/ocaml/*/META
-%{_libdir}/ocaml/*/opam
+%files devel -f %{name}.files.devel
 
 %changelog

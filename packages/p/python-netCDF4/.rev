@@ -266,4 +266,25 @@
     <comment></comment>
     <requestid>707519</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5122d30f58ed3a90efb05a299e17b14a</srcmd5>
+    <version>1.5.2</version>
+    <time>1571950936</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.2:
+ * fix for scaling bug when _Unsigned attribute is set and byteorder of data
+   does not match native byteorder (issue #930).
+ * revise documentation for Python 3 (issue #946).
+ * establish support for Python 2.7, 3.5, 3.6 and 3.7 (issue #948).
+ * use dict built-in instead of OrderedDict for Python 3.7+
+   (pull request #955).
+ * remove underline ANSI in Dataset string representation (pull request #956).
+ * remove newlines from string representation (pull request #960).
+ * fix for issue #957 (size of scalar var is a float since numpy.prod(())=1.0).
+ * make sure Variable.setncattr fails to set _FillValue (issue #959).
+ * fix detection of parallel HDF5 support with netcdf-c 4.6.1 (issue #964).
+- Remove not needed netcdf-disable-broken-test.patch as the bug was
+  fixed in netcdf itself</comment>
+    <requestid>736040</requestid>
+  </revision>
 </revisionlist>

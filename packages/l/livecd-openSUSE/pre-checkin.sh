@@ -33,9 +33,11 @@ archive() {
 for distro in leap tumbleweed; do
 	distroname="openSUSE Tumbleweed"
 	bootsplash="bgrt"
+	releaseprefix="openSUSE"
 	if [ "${distro}" = "leap" ]; then
 		distroname="openSUSE Leap %OS_VERSION_ID%"
 		bootsplash="openSUSE"
+		releaseprefix="Leap"
 	fi
 
 	for flavor in gnome kde xfce x11; do
@@ -58,6 +60,7 @@ for distro in leap tumbleweed; do
 		     s#@DISPLAYNAME@#${name}#g;\
 		     s#@VOLID@#${name// /_}#g;\
 		     s#@BOOTSPLASH@#${bootsplash}#g;\
+		     s#@RELEASEPREFIX@#${releaseprefix}#g;\
 		     s#@PACKAGES@#${PACKAGES}#g;" livecd.kiwi.in > livecd-${distro}-${flavor}.kiwi      
 	done
 done

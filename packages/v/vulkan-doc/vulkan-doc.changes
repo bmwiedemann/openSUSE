@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sun Sep 22 21:47:34 UTC 2019 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to 1.1.123
+  * Add missing aspect mask descriptions to
+    elink:VkImageAspectFlagBits.
+  * Modify validity generator script to not check validity of
+    ignored values.
+  * Fix footnote markup in the <<vkGetDeviceProcAddr behavior>>
+    table.
+  * Require that <<interfaces-builtin-variables-sgs,
+    code:SubgroupSize>> be a power of two.
+  * Clarify that shaderFloat64 and shaderInt64 enable all storage
+    classes, while shaderFloat16, shaderInt8, and shaderInt16
+    only enable non-interface storage classes. in the
+    <<features-shaderFloat64>>, <<features-shaderInt64>>, and
+    <<features-shaderInt16>> descriptions and for
+    slink:VkPhysicalDeviceShaderFloat16Int8FeaturesKHR.
+  * Fix broken asciidoctor conditional logic in the
+    <<spirvenv-module-validation, Validation Rules within a
+    Module>> section, and add style guide language to help avoid
+    this problem in the future.
+  * Modify VUID assignment script to use the first API include in
+    a block as part of the VUID name rather than the last one, so
+    the VUID is based on the promoted API name.
+  * Cleanup string descriptions to consistently refer to
+    "null-terminated UTF-8" strings.
+  * Clarify the purpose of the
+    slink:VkPhysicalDeviceLimits::ptext:maxDescriptorSet* limits.
+  * Fix the slink:VkPhysicalDeviceRayTracingPropertiesNV limits
+    for pname:maxGeometryCount, pname:maxInstanceCount, and
+    pname:maxTriangleCount in the <<limits-required, Required
+    Limits>>.
+  * Update SPIR-V image op sign-matching rules in the
+    <<spirvenv-module-validation, Validation Rules within a
+    Module>> section, the <<formats-numericformat>> table, and
+    the <<interfaces-resources-descset, Descriptor Set
+    Interface>> section.
+  * New extensions VK_KHR_shader_subgroup_extended_types,
+    VK_GOOGLE_user_type.
+
+-------------------------------------------------------------------
 Sun Aug 18 23:54:31 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to 1.1.120

@@ -17,10 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# Tests require an internet connection
-%bcond_with tests
 Name:           python-pandas-datareader
-Version:        0.7.4
+Version:        0.8.1
 Release:        0
 Summary:        Data readers extracted from the pandas codebase
 License:        BSD-3-Clause
@@ -30,27 +28,18 @@ Source:         https://files.pythonhosted.org/packages/source/p/pandas-dataread
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module lxml}
-BuildRequires:  %{python_module pandas >= 0.19.2}
+BuildRequires:  %{python_module pandas >= 0.21}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.3.0}
-BuildRequires:  %{python_module requests-file}
-BuildRequires:  %{python_module requests-ftp}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module versioneer}
 BuildRequires:  %{python_module wrapt}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-beautifulsoup4
-Requires:       python-html5lib
 Requires:       python-lxml
-Requires:       python-pandas >= 0.19.2
-Requires:       python-requests
-Requires:       python-requests-file
-Requires:       python-requests-ftp
-Requires:       python-wrapt
+Requires:       python-pandas >= 0.21
+Requires:       python-requests >= 2.3.0
 BuildArch:      noarch
-%if %{with tests}
-BuildRequires:  %{python_module nose}
-%endif
 %python_subpackages
 
 %description
@@ -66,10 +55,9 @@ Remote data access for pandas. Works for multiple versions of pandas.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with tests}
 %check
-%python_expand nosetests-%{$python_bin_suffix}
-%endif
+# ONLINE tests only
+#%%pytest
 
 %files %{python_files}
 %doc README.rst

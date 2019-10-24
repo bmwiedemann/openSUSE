@@ -537,4 +537,13 @@
     <comment></comment>
     <requestid>724702</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>2b33429af90d07e47439c5cb0900fc30</srcmd5>
+    <version>5.0.7</version>
+    <time>1571950878</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0.7
+</comment>
+    <requestid>734064</requestid>
+  </revision>
 </revisionlist>

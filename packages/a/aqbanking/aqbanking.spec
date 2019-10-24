@@ -17,7 +17,7 @@
 
 
 %define          build_ofx 1
-%define	devversion	5.8
+%define		devversion 5.99
 # disable EBICS plugin for older openSUSE versions due to problems linking
 # to xmlsec1-gcrypt:
 %if 0%{?suse_version} > 1320 || 0%{?leap_version} >= 420300
@@ -25,32 +25,35 @@
 %else
 %define          build_ebics 0
 %endif
-%define          aq_plugindir   %{_libdir}/aqbanking/plugins/35
+%define _name aqbanking
+%define          aq_plugindir   %{_libdir}/aqbanking/plugins/43
 %define          fronts_libdir  %{aq_plugindir}/frontends
 %define          imex_plugindir %{aq_plugindir}/imexporters
-%define          imex_datadir   %{_datadir}/%{name}/imexporters
-%define          fronts_datadir %{_datadir}/%{name}/frontends
+%define          imex_datadir   %{_datadir}/%{_name}/imexporters
+%define          fronts_datadir %{_datadir}/%{_name}/frontends
 %define          qb_cfgmoddir   %{fronts_libdir}/qbanking/cfgmodules
 %define          q4b_cfgmoddir  %{fronts_libdir}/q4banking/cfgmodules
 
 Name:           aqbanking
-Version:        5.8.2
+Version:        5.99.40
+%define _version %{version}beta
 Release:        0
 Summary:        Library for Online Banking Functions and Financial Data Import and Export
 License:        GPL-2.0 or GPL-3.0
 Group:          Productivity/Office/Finance
 Url:            http://www.aquamaniac.de/aqbanking/
-Source:         %{name}-%{version}.tar.gz
-Source1:        aqbanking4-handbook-20091231.pdf
-#Source2:	%{name}-%{version}.tar.gz.asc
-Source3:	%{name}.keyring
+Source:         %{_name}-%{_version}.tar.gz
+Source1:        aqbanking6-handbook-20190221.pdf
+# Not available for beta:
+#Source2:       %%{name}-%%{_version}.tar.gz.asc
+Source3:        %{_name}.keyring
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
-BuildRequires:  gwenhywfar-devel = 4.20.1
-BuildRequires:  gwenhywfar-tools >= 4.20
+BuildRequires:  gwenhywfar-devel >= 4.99.19
+BuildRequires:  gwenhywfar-tools >= 4.99.19
 BuildRequires:  ktoblzcheck-devel >= 1.10
 BuildRequires:  pkgconfig
 %if !0%{?sles_version}
@@ -80,7 +83,7 @@ Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       cmake
 Requires:       glibc-devel
-Requires:       gwenhywfar-devel >= 4.10.0
+Requires:       gwenhywfar-devel >= 4.99.19
 Requires:       ktoblzcheck-devel
 %if %build_ofx
 Requires:       libofx-devel
@@ -121,15 +124,6 @@ AqBanking is a generic OnlineBanking interface. It allows multiple
 backends (currently HBCI) and multiple frontends  (e.g. KDE, GNOME,
 console) to be used.
 
-%package -n libaqofxconnect7
-Summary:        Connector between Aqbanking and OFX
-License:        GPL-2.0 or GPL-3.0
-Group:          Development/Libraries/C and C++
-
-%description -n libaqofxconnect7
-Conncetor between Aqbanking and OFX. Necessary for OFX direct connect
-access.
-
 %endif
 
 %if %build_ebics
@@ -145,19 +139,11 @@ AqBanking is a generic OnlineBanking interface. It allows multiple
 backends (currently HBCI) and multiple frontends  (e.g. KDE, GNOME,
 console) to be used.
 
-%package -n libaqebics0
-Summary:        Connector between Aqbanking and EBICS
-License:        GPL-2.0 or GPL-3.0
-Group:          Development/Libraries/C and C++
-
-%description -n libaqebics0
-Conncetor between Aqbanking and EBICS. Necessary for EBICS access.
-
 %endif
 %lang_package
 
 %prep
-%setup -q
+%setup -q -n %{_name}-%{_version}
 
 %build
 BACKEND_LIST="aqhbci aqnone aqpaypal"
@@ -177,27 +163,28 @@ export CPP
 	--with-backends="$BACKEND_LIST"  \
 	--enable-full-doc \
 	--with-docpath=%{_docdir}/%{name} \
-	--enable-gui-tests
+#	--enable-gui-tests
 make
 
 %install
 %makeinstall
-mv %{buildroot}%{_includedir}/aqpaypal %{buildroot}%{_includedir}/%{name}5/
+#mv %{buildroot}%{_datadir}/doc/%{_name} %{buildroot}%{_datadir}/doc/%{name}
+#mv %{buildroot}%{_includedir}/aqpaypal %{buildroot}%{_includedir}/%{name}6/
 %if %build_ebics
-mv %{buildroot}%{_includedir}/aqebics %{buildroot}%{_includedir}/%{name}5/
+#mv %{buildroot}%{_includedir}/aqebics %{buildroot}%{_includedir}/%{name}6/
 %endif
 find %{buildroot} -type f -name "*.la" -delete -print
 # Remove files that we'll have elsewhere
 rm %{buildroot}%{_datadir}/doc/%{name}/{AUTHORS,COPYING,ChangeLog,README}
-mv %{buildroot}%{_datadir}/doc/aqhbci/aqhbci-tool/README README.aqhbci
-mv %{buildroot}%{_datadir}/doc/aqpaypal/aqpaypal-tool/README README.aqpaypal
+#mv %{buildroot}%{_datadir}/doc/aqhbci/aqhbci-tool/README README.aqhbci
+#mv %{buildroot}%{_datadir}/doc/aqpaypal/aqpaypal-tool/README README.aqpaypal
 %if %build_ebics
-mv %{buildroot}%{_datadir}/doc/aqebics/aqebics-tool/README README.aqebics
+#mv %{buildroot}%{_datadir}/doc/aqebics/aqebics-tool/README README.aqebics
 %endif
 # Install the handbook
 mkdir -p %{buildroot}/%{_docdir}/%{name}
 %__install -m 644 %{S:1} %{buildroot}%{_docdir}/%{name}/aqbanking-handbook.pdf
-%find_lang %{name}
+%find_lang %{_name}
 %fdupes %{buildroot}
 
 %post -p /sbin/ldconfig
@@ -210,10 +197,6 @@ mkdir -p %{buildroot}/%{_docdir}/%{name}
 
 %postun ofx -p /sbin/ldconfig
 
-%post -n libaqofxconnect7 -p /sbin/ldconfig
-
-%postun -n libaqofxconnect7 -p /sbin/ldconfig
-
 %endif
 
 %if %build_ebics
@@ -222,68 +205,66 @@ mkdir -p %{buildroot}/%{_docdir}/%{name}
 
 %postun ebics -p /sbin/ldconfig
 
-%post -n libaqebics0 -p /sbin/ldconfig
-
-%postun -n libaqebics0 -p /sbin/ldconfig
-
 %endif
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog NEWS README TODO README.aqhbci README.aqpaypal
-%exclude %{_docdir}/%{name}/%{name}-handbook.pdf
+%doc AUTHORS COPYING ChangeLog NEWS README TODO
+# README.aqhbci README.aqpaypal
+%exclude %{_docdir}/%{name}/aqbanking-handbook.pdf
 ### The original aqbanking files
-%{_bindir}/%{name}-cli
-%{_libdir}/lib%{name}*.so.*
+%{_bindir}/%{_name}-cli
+%{_libdir}/lib%{_name}*.so.*
 %dir %{aq_plugindir}/dbio
-%{aq_plugindir}/dbio/dtaus.*
 %{aq_plugindir}/dbio/swift.*
-%{_datadir}/%{name}/aqbanking/
-%{_datadir}/%{name}/bankinfo/
-%{_datadir}/%{name}/dialogs/
-%{_datadir}/%{name}/typemaker2/
-%dir %{_datadir}/%{name}/backends
+%{_datadir}/%{_name}/aqbanking/
+%{_datadir}/%{_name}/bankinfo/
+%{_datadir}/%{_name}/dialogs/
+%{_datadir}/%{_name}/typemaker2/
+%dir %{_datadir}/%{_name}/backends
 %{aq_plugindir}/bankinfo
+%{imex_plugindir}/camt.*
 %{imex_plugindir}/ctxfile.*
 %{imex_plugindir}/csv.*
-%{imex_plugindir}/dtaus.*
 %{imex_plugindir}/eri2.*
 %{imex_plugindir}/openhbci1.*
 %{imex_plugindir}/q43.*
 %{imex_plugindir}/sepa.*
 %{imex_plugindir}/swift.*
+%{imex_plugindir}/xml.*
 %{imex_plugindir}/xmldb.*
 %{imex_plugindir}/yellownet.*
 %{imex_datadir}/ctxfile
+%{imex_datadir}/camt
 %{imex_datadir}/csv
-%{imex_datadir}/dtaus
 %{imex_datadir}/eri
 %{imex_datadir}/eri2
 %{imex_datadir}/openhbci1
 %{imex_datadir}/q43
 %{imex_datadir}/sepa
 %{imex_datadir}/swift
+%{imex_datadir}/xml
 %{imex_datadir}/xmldb/profiles/*
 %{imex_datadir}/yellownet/profiles/*
 ### The aqhbci files
 %{_bindir}/aqhbci-tool4
-%{_libdir}/libaqhbci.so.*
+#{_libdir}/libaqhbci.so.*
 %{aq_plugindir}/providers/aqhbci.*
-%{_datadir}/%{name}/backends/aqhbci
+%{_datadir}/%{_name}/backends/aqhbci
 ### The aqpaypal files
 %{_bindir}/aqpaypal-tool
-%{_libdir}/libaqpaypal.so.*
+#{_libdir}/libaqpaypal.so.*
 %{aq_plugindir}/providers/aqpaypal.*
-%{_datadir}/%{name}/backends/aqpaypal
+%{_datadir}/%{_name}/backends/aqpaypal
 ### The aqnone files
-%{_libdir}/libaqnone.so.*
+#{_libdir}/libaqnone.so.*
 %{aq_plugindir}/providers/aqnone.*
 ## Directories
 %dir %{_libdir}/aqbanking
 %dir %{_libdir}/aqbanking/plugins
 %dir %{aq_plugindir}
 %dir %{aq_plugindir}/providers
-%dir %{_datadir}/%{name}
+%dir %{_datadir}/%{_name}
 %dir %{imex_plugindir}
 %dir %{imex_datadir}
 %dir %{imex_datadir}/xmldb
@@ -297,32 +278,32 @@ mkdir -p %{buildroot}/%{_docdir}/%{name}
 %files devel
 %defattr(-,root,root)
 ### The aqbanking files
-%{_bindir}/%{name}-config
-%{_includedir}/%{name}5/
-%{_libdir}/cmake/%{name}-%{devversion}/
+%{_bindir}/%{_name}-config
+%{_includedir}/%{_name}6/
+%{_libdir}/cmake/%{_name}-%{devversion}/
 %{_libdir}/libaqbanking.so
-%{_libdir}/libaqhbci.so
-%{_libdir}/libaqpaypal.so
-%{_libdir}/libaqnone.so
-%{_libdir}/libaqbankingpp.so
-%{_libdir}/pkgconfig/%{name}.pc
+#{_libdir}/libaqhbci.so
+#{_libdir}/libaqpaypal.so
+#{_libdir}/libaqnone.so
+#{_libdir}/libaqbankingpp.so
+%{_libdir}/pkgconfig/%{_name}.pc
 %dir %{_datadir}/aclocal
-%{_datadir}/aclocal/%{name}.m4
+%{_datadir}/aclocal/%{_name}.m4
 ### The aqhbci files
-%{_bindir}/hbcixml3
+#{_bindir}/hbcixml3
 # .so files from sub-packages
 %if %build_ofx
-%{_libdir}/libaqofxconnect.so
+#{_libdir}/libaqofxconnect.so
 %endif
 %if %build_ebics
-%{_libdir}/libaqebics.so
+#{_libdir}/libaqebics.so
 %endif
 
 %files doc
 %defattr(-,root,root)
 %{_docdir}/%{name}/aqbanking-handbook.pdf
 
-%files lang -f %{name}.lang
+%files lang -f %{_name}.lang
 
 %if %build_ofx
 
@@ -333,26 +314,18 @@ mkdir -p %{buildroot}/%{_docdir}/%{name}
 %{imex_datadir}/ofx
 %{_datadir}/aqbanking/backends/aqofxconnect
 
-%files -n libaqofxconnect7
-%defattr(-,root,root)
-%{_libdir}/libaqofxconnect.so.*
-
 %endif
 
 %if %build_ebics
 
 %files ebics
-%doc README.aqebics
+#doc README.aqebics
 %defattr(-,root,root)
 %{_bindir}/aqebics-tool
 %{aq_plugindir}/providers/aqebics.*
-#%{imex_plugindir}/ebics.*
-#%{imex_datadir}/ebics
+#{imex_plugindir}/ebics.*
+#{imex_datadir}/ebics
 %{_datadir}/aqbanking/backends/aqebics
-
-%files -n libaqebics0
-%defattr(-,root,root)
-%{_libdir}/libaqebics.so.*
 
 %endif
 

@@ -1,4 +1,209 @@
 -------------------------------------------------------------------
+Fri Oct 18 18:59:45 CEST 2019 - jslaby@suse.cz
+
+- Linux 5.3.7 (bnc#1151927).
+- efi/tpm: Fix sanity check of unsigned tbl_size being less than
+  zero (bnc#1151927).
+- io_uring: only flush workqueues on fileset removal
+  (bnc#1151927).
+- x86/asm: Fix MWAITX C-state hint value (bnc#1151927).
+- mtd: rawnand: au1550nd: Fix au_read_buf16() prototype
+  (bnc#1151927).
+- hwmon: Fix HWMON_P_MIN_ALARM mask (bnc#1151927).
+- tracing: Get trace_array reference for available_tracers files
+  (bnc#1151927).
+- ftrace: Get a reference counter for the trace_array on filter
+  files (bnc#1151927).
+- tracing/hwlat: Don't ignore outer-loop duration when calculating
+  max_latency (bnc#1151927).
+- tracing/hwlat: Report total time spent in all NMIs during the
+  sample (bnc#1151927).
+- arm64/sve: Fix wrong free for task->thread.sve_state
+  (bnc#1151927).
+- media: stkwebcam: fix runtime PM after driver unbind
+  (bnc#1151927).
+- drm/msm: Use the correct dma_sync calls harder (bnc#1151927).
+- drm/i915: Mark contents as dirty on a write fault (bnc#1151927).
+- drm/i915: Whitelist COMMON_SLICE_CHICKEN2 (bnc#1151927).
+- drm/i915: Bump skl+ max plane width to 5k for linear/x-tiled
+  (bnc#1151927).
+- Fix the locking in dcache_readdir() and friends (bnc#1151927).
+- iio: light: fix vcnl4000 devicetree hooks (bnc#1151927).
+- arm64: topology: Use PPTT to determine if PE is a thread
+  (bnc#1151927).
+- ACPI/PPTT: Add support for ACPI 6.3 thread flag (bnc#1151927).
+- RDMA/vmw_pvrdma: Free SRQ only once (bnc#1151927).
+- MIPS: elf_hwcap: Export userspace ASEs (bnc#1151927).
+- MIPS: Disable Loongson MMI instructions for kernel build
+  (bnc#1151927).
+- NFS: Fix O_DIRECT accounting of number of bytes read/written
+  (bnc#1151927).
+- btrfs: fix uninitialized ret in ref-verify (bnc#1151927).
+- btrfs: fix incorrect updating of log root tree (bnc#1151927).
+- Btrfs: fix memory leak due to concurrent append writes with
+  fiemap (bnc#1151927).
+- btrfs: fix balance convert to single on 32-bit host CPUs
+  (bnc#1151927).
+- btrfs: allocate new inode in NOFS context (bnc#1151927).
+- btrfs: relocation: fix use-after-free on dead relocation roots
+  (bnc#1151927).
+- gpiolib: don't clear FLAG_IS_OUT when emulating
+  open-drain/open-source (bnc#1151927).
+- gpio: fix getting nonexclusive gpiods from DT (bnc#1151927).
+- firmware: google: increment VPD key_len properly (bnc#1151927).
+- IB/core: Fix wrong iterating on ports (bnc#1151927).
+- mm/vmpressure.c: fix a signedness bug in
+  vmpressure_register_event() (bnc#1151927).
+- mm/page_alloc.c: fix a crash in free_pages_prepare()
+  (bnc#1151927).
+- mm/z3fold.c: claim page in the beginning of free (bnc#1151927).
+- kernel/sysctl.c: do not override max_threads provided by
+  userspace (bnc#1151927).
+- cifs: use cifsInodeInfo->open_file_lock while iterating to
+  avoid a panic (bnc#1151927).
+- CIFS: Force reval dentry if LOOKUP_REVAL flag is set
+  (bnc#1151927).
+- CIFS: Force revalidate inode when dentry is stale (bnc#1151927).
+- CIFS: Gracefully handle QueryInfo errors during open
+  (bnc#1151927).
+- selinux: fix context string corruption in convert_context()
+  (bnc#1151927).
+- blk-wbt: fix performance regression in wbt scale_up/scale_down
+  (bnc#1151927).
+- drm/i915: Perform GGTT restore much earlier during resume
+  (bnc#1151927).
+- perf inject jit: Fix JIT_CODE_MOVE filename (bnc#1151927).
+- perf llvm: Don't access out-of-scope array (bnc#1151927).
+- efi/tpm: Only set 'efi_tpm_final_log_size' after successful
+  event log parsing (bnc#1151927).
+- efi/tpm: Don't traverse an event log with no events
+  (bnc#1151927).
+- efi/tpm: Don't access event->count when it isn't mapped
+  (bnc#1151927).
+- efivar/ssdt: Don't iterate over EFI vars if no SSDT override
+  was specified (bnc#1151927).
+- iio: accel: adxl372: Perform a reset at start up (bnc#1151927).
+- iio: accel: adxl372: Fix push to buffers lost samples
+  (bnc#1151927).
+- iio: accel: adxl372: Fix/remove limitation for FIFO samples
+  (bnc#1151927).
+- iio: light: add missing vcnl4040 of_compatible (bnc#1151927).
+- iio: light: opt3001: fix mutex unlock race (bnc#1151927).
+- iio: adc: stm32-adc: fix a race when using several adcs with
+  dma and irq (bnc#1151927).
+- iio: adc: stm32-adc: move registers definitions (bnc#1151927).
+- iio: adc: axp288: Override TS pin bias current for some models
+  (bnc#1151927).
+- iio: adc: ad799x: fix probe error handling (bnc#1151927).
+- iio: adc: hx711: fix bug in sampling of data (bnc#1151927).
+- staging: vt6655: Fix memory leak in vt6655_probe (bnc#1151927).
+- staging: rtl8188eu: fix HighestRate check in
+  odm_ARFBRefresh_8188E() (bnc#1151927).
+- Staging: fbtft: fix memory leak in fbtft_framebuffer_alloc
+  (bnc#1151927).
+- staging: bcm2835-audio: Fix draining behavior regression
+  (bnc#1151927).
+- staging/fbtft: Depend on OF (bnc#1151927).
+- gpio: eic: sprd: Fix the incorrect EIC offset when toggling
+  (bnc#1151927).
+- mei: avoid FW version request on Ibex Peak and earlier
+  (bnc#1151927).
+- mei: me: add comet point (lake) LP device ids (bnc#1151927).
+- USB: legousbtower: fix use-after-free on release (bnc#1151927).
+- USB: legousbtower: fix open after failed reset request
+  (bnc#1151927).
+- USB: legousbtower: fix potential NULL-deref on disconnect
+  (bnc#1151927).
+- USB: legousbtower: fix deadlock on disconnect (bnc#1151927).
+- USB: legousbtower: fix slab info leak at probe (bnc#1151927).
+- usb: typec: ucsi: displayport: Fix for the mode entering routine
+  (bnc#1151927).
+- usb: typec: ucsi: ccg: Remove run_isr flag (bnc#1151927).
+- usb: typec: tcpm: usb: typec: tcpm: Fix a signedness bug in
+  tcpm_fw_get_caps() (bnc#1151927).
+- usb: renesas_usbhs: gadget: Fix usb_ep_set_{halt,wedge}()
+  behavior (bnc#1151927).
+- usb: renesas_usbhs: gadget: Do not discard queues in
+  usb_ep_set_{halt,wedge}() (bnc#1151927).
+- USB: dummy-hcd: fix power budget for SuperSpeed mode
+  (bnc#1151927).
+- USB: microtek: fix info-leak at probe (bnc#1151927).
+- USB: usblcd: fix I/O after disconnect (bnc#1151927).
+- USB: serial: fix runtime PM after driver unbind (bnc#1151927).
+- USB: serial: option: add support for Cinterion CLS8 devices
+  (bnc#1151927).
+- USB: serial: option: add Telit FN980 compositions (bnc#1151927).
+- USB: serial: ftdi_sio: add device IDs for Sienna and Echelon
+  PL-20 (bnc#1151927).
+- USB: serial: keyspan: fix NULL-derefs on open() and write()
+  (bnc#1151927).
+- serial: uartps: Fix uartps_major handling (bnc#1151927).
+- serial: uartlite: fix exit path null pointer (bnc#1151927).
+- USB: ldusb: fix NULL-derefs on driver unbind (bnc#1151927).
+- USB: chaoskey: fix use-after-free on release (bnc#1151927).
+- USB: usblp: fix runtime PM after driver unbind (bnc#1151927).
+- USB: iowarrior: fix use-after-free after driver unbind
+  (bnc#1151927).
+- USB: iowarrior: fix use-after-free on release (bnc#1151927).
+- USB: iowarrior: fix use-after-free on disconnect (bnc#1151927).
+- USB: adutux: fix use-after-free on release (bnc#1151927).
+- USB: adutux: fix NULL-derefs on disconnect (bnc#1151927).
+- USB: adutux: fix use-after-free on disconnect (bnc#1151927).
+- xhci: Fix NULL pointer dereference in
+  xhci_clear_tt_buffer_complete() (bnc#1151927).
+- xhci: Increase STS_SAVE timeout in xhci_suspend() (bnc#1151927).
+- xhci: Prevent deadlock when xhci adapter breaks during init
+  (bnc#1151927).
+- usb: xhci: wait for CNR controller not ready bit in xhci resume
+  (bnc#1151927).
+- xhci: Fix USB 3.1 capability detection on early xHCI 1.1 spec
+  based hosts (bnc#1151927).
+- xhci: Check all endpoints for LPM timeout (bnc#1151927).
+- xhci: Prevent device initiated U1/U2 link pm if exit latency
+  is too long (bnc#1151927).
+- xhci: Fix false warning message about wrong bounce buffer
+  write length (bnc#1151927).
+- USB: usb-skeleton: fix NULL-deref on disconnect (bnc#1151927).
+- USB: usb-skeleton: fix runtime PM after driver unbind
+  (bnc#1151927).
+- USB: yurex: fix NULL-derefs on disconnect (bnc#1151927).
+- USB: yurex: Don't retry on unexpected errors (bnc#1151927).
+- USB: rio500: Remove Rio 500 kernel driver (bnc#1151927).
+- panic: ensure preemption is disabled during panic()
+  (bnc#1151927).
+- commit f52c7f6
+
+-------------------------------------------------------------------
+Thu Oct 17 20:59:54 CEST 2019 - jslaby@suse.cz
+
+- Revert "drm/i915/bios: make child device order the priority
+  order" (bnc#1152971 fdo#112028).
+- commit 3eea5a9
+
+-------------------------------------------------------------------
+Tue Oct 15 14:54:58 CEST 2019 - jslaby@suse.cz
+
+- Update
+  patches.kernel.org/5.3.4-063-sched-core-Fix-CPU-controller-for-RT_GROUP_SCHE.patch
+  (bnc#1151927 bnc#1135646).
+  Add a bnc ref.
+- commit d6c109d
+
+-------------------------------------------------------------------
+Tue Oct 15 14:21:35 CEST 2019 - jslaby@suse.cz
+
+- Update config files.
+  Disable CONFIG_RT_GROUP_SCHED again (bnc#950955 bnc#1153228).
+- commit a55f3f6
+
+-------------------------------------------------------------------
+Tue Oct 15 14:18:53 CEST 2019 - jslaby@suse.cz
+
+- Update config files.
+  Just refresh (RTC_DRV_BD70528 dismissed).
+- commit 418ca4c
+
+-------------------------------------------------------------------
 Sun Oct 13 09:18:38 CEST 2019 - jslaby@suse.cz
 
 - Linux 5.3.6 (bnc#1151927).

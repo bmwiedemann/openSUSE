@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-configargparse
-Version:        0.14.0
+Version:        0.15.1
 Release:        0
 Summary:        A drop-in replacement for argparse
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/bw2/ConfigArgParse
 Source:         https://files.pythonhosted.org/packages/source/C/ConfigArgParse/ConfigArgParse-%{version}.tar.gz
-Patch0:         skip-test.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
@@ -53,7 +52,6 @@ add these features
 
 %prep
 %setup -q -n ConfigArgParse-%{version}
-%patch0 -p1
 
 %build
 %python_build

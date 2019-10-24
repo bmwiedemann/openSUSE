@@ -34,4 +34,12 @@ Update: Package LICENSE files as %license.</comment>
 </comment>
     <requestid>677429</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>01f8f473ade0dc5f55bb8d701e9682b8</srcmd5>
+    <version>1.1+9</version>
+    <time>1571950913</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>735913</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Oct 16 21:46:53 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.124
+  * layers: Support VK_NV_dedicated_allocation_image_aliasing
+  * layers: Add validation for VK_KHR_shader_subgroup_extended_types
+  * layers: Add VK_NV_clip_space_w_scaling
+  * layers: track vkGetPhysicalDeviceFeatures*() called state
+  * gpu: Add gpu-av as a validation object
+
+-------------------------------------------------------------------
+Sun Sep 22 22:07:44 UTC 2019 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to new upstream release 1.1.123
+  * corechecks: Add support for VK_INDEX_TYPE_UINT8_EXT
+  * corechecks: Add VUs checking for indexTypeUint8
+  * layers: Add VK_NV_fill_rectangle
+  * layers: Re-ban ray tracing stages in render pass
+  * layers: Remove QueueInfo tracking from ObjectLifetimes
+  * layers: Add cgpl, ccpl, crtpl state for all intercepts
+  * layers: Use persistent objects for ThreadSafety tracking
+  * libVkLayer_*.so were all merged into
+    libVkLayer_khronos_validation.so.
+
+-------------------------------------------------------------------
 Wed Aug 21 09:20:52 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 1.1.120

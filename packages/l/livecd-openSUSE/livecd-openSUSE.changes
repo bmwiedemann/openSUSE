@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 23 13:39:39 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- It's Leap-release on Leap now for some reason
+- Only install opensuse-welcome on TW
+
+-------------------------------------------------------------------
 Tue Oct 22 08:40:15 UTC 2019 - Fabian Vogt <fvogt@suse.com>
 
 - list-x11: Block libpeas-loader-python to avoid libpython2_7

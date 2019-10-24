@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 23 13:07:43 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.15.1
+  * Drop support for EOL Python 2.6, 3.2-3.3
+  * Add Python 3.6
+  * sudo no longer needed
+  * travis: Add latest Python versions.
+  * Drop support for EOL Python 3.4
+  * Fix DeprecationWarning: invalid escape sequence \[
+- dropped skip-test.patch
+  * https://github.com/bw2/ConfigArgParse/commit/6267759da55c87508394314292c6c5286220d99d
+
+-------------------------------------------------------------------
 Tue Sep 17 09:14:02 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip failing tests that were reported upstream with no reaction

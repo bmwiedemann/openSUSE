@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct  2 11:25:50 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Version update to 1.16.3
+  * significant performance improvements for dict / rawdict text
+    extraction
+  * Page.getText() now support text extraction for "blocks" and
+    "words" 
+
+-------------------------------------------------------------------
 Tue Sep 17 21:26:39 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
 
 - Version update to 1.16.2

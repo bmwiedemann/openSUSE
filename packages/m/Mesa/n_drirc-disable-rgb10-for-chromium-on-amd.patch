@@ -1,10 +1,10 @@
-Index: mesa-19.1.2/src/util/00-mesa-defaults.conf
+Index: mesa-19.2.0/src/util/00-mesa-defaults.conf
 ===================================================================
---- mesa-19.1.2.orig/src/util/00-mesa-defaults.conf
-+++ mesa-19.1.2/src/util/00-mesa-defaults.conf
-@@ -451,6 +451,17 @@ TODO: document the other workarounds.
-         <application name="Rayman Legends" executable="Rayman Legends.exe">
-             <option name="dynamic_texture_workaround" value="true" />
+--- mesa-19.2.0.orig/src/util/00-mesa-defaults.conf
++++ mesa-19.2.0/src/util/00-mesa-defaults.conf
+@@ -490,6 +490,17 @@ TODO: document the other workarounds.
+             <option name="glx_disable_ext_buffer_age" value="true" />
+             <option name="glx_disable_oml_sync_control" value="true" />
          </application>
 +
 +        <!-- This is workaround to prevent distorted colors on hardware accelerated video in Chromium. https://bugzilla.opensuse.org/show_bug.cgi?id=1113211 -->
@@ -18,5 +18,5 @@ Index: mesa-19.1.2/src/util/00-mesa-defaults.conf
 +        </application>
 +
      </device>
-     <!-- vmwgfx doesn't like full buffer swaps and can't sync to vertical retraces.-->
-     <device driver="vmwgfx">
+     <device driver="radeonsi">
+         <application name="ARK: Survival Evolved (and unintentionally the UE4 demo template)" executable="ShooterGame">

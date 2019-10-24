@@ -68,4 +68,4 @@ buildignore cyrus-sasl
 install alsa-firmware
 
 # From x11_enhanced, but that pattern can't be installed
-install opensuse-welcome
+[ "$distro" = "tumbleweed" ] && install opensuse-welcome

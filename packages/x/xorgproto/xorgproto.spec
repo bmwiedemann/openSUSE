@@ -17,7 +17,7 @@
 
 
 Name:           xorgproto
-Version:        2019.1
+Version:        2019.2
 Release:        0
 Url:            http://xorg.freedesktop.org/
 Summary:        The X11 Protocol collection

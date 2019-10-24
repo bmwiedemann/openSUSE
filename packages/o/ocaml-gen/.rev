@@ -22,4 +22,12 @@ update: fixed license ID (used wrong casing)</comment>
 </comment>
     <requestid>704395</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>190f46cd26385e951e5d14ea1a71d09d</srcmd5>
+    <version>0.5.2</version>
+    <time>1571950906</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>735912</requestid>
+  </revision>
 </revisionlist>

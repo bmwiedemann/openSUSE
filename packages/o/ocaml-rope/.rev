@@ -29,4 +29,12 @@ It is a dependency of the next version of Haxe(4.0.0).</comment>
 </comment>
     <requestid>686861</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>95ff2d6072717745f2f887452ef5c61c</srcmd5>
+    <version>0.6.2</version>
+    <time>1571950934</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>735921</requestid>
+  </revision>
 </revisionlist>

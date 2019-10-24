@@ -38,8 +38,7 @@ BuildRequires:  ncurses-devel
 BuildRequires:  openssl-devel
 BuildRequires:  ppp-devel
 BuildRequires:  sgmltool
-#!BuildIgnore:  systemd
-BuildRequires:  systemd-mini
+BuildRequires:  pkgconfig(systemd)
 BuildRequires:  tcl-devel
 BuildRequires:  xorg-x11
 BuildRequires:  xorg-x11-devel
@@ -62,10 +61,14 @@ Source7:        i4l.conf
 Source8:        i4l-base-postprocess
 Source9:        i4l-base-sysconfig
 Source10:       libcapi20-3.0.7.tar.bz2
+Source11:       linux.isdn.h.txt
+Source12:       linux.isdnif.h.txt
+Source13:       linux.isdn_ppp.h.txt
 Source99:       i4l-base-rpmlintrc
 Patch:          isdn4k-utils.dif
 Patch1:         capi20_3.0.7.patch
 Patch2:         isdn4k-utils-gcc5-fixes.patch
+Patch3:         isdn4k-utils-CFLAGS.patch
 Patch31:        divactrl_2.1-gcc.diff
 Patch32:        divactrl_2.1-fix.diff
 Patch33:        divactrl_2.1-dprintf.diff
@@ -227,6 +230,7 @@ tar -xjf %{S:10}
 %patch35 -p1
 %patch1 -p0
 %patch2 -p2
+%patch3 -p1
 chmod a+x */configure
 mv -f eicon/firmware/eicon_firm.tgz eicon/firmware/firmware.tgz
 mv -f eicon/firmware ../divactrl_2.1/
@@ -237,14 +241,22 @@ pushd ../divactrl_2.1/
 %patch36
 %patch39 -p1
 popd
-pushd ../isdn4k-utils
 %patch37 -p1
 %patch38 -p1
-popd
 %patch50 -p1
 %patch51 -p1
 
 %build
+if test -f /usr/include/linux/isdn.h
+then
+ : noch mal von der Schippe gesprungen ...
+else
+ mkdir -p .purgatory/linux
+ ln -sv %{S:11} .purgatory/linux/isdn.h
+ ln -sv %{S:12} .purgatory/linux/isdnif.h
+ ln -sv %{S:13} .purgatory/linux/isdn_ppp.h
+ export RPM_OPT_FLAGS="$RPM_OPT_FLAGS -I$PWD/.purgatory"
+fi
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 # This package failed when testing with -Wl,-as-needed being default.
 # So we disable it here, if you want to retest, just delete this comment and the line below.
@@ -286,6 +298,7 @@ cd ../divactrl_2.1
 make CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing -fgnu89-inline"
 
 %install
+test -d .purgatory/linux && export RPM_OPT_FLAGS="$RPM_OPT_FLAGS -I$PWD/.purgatory"
 mkdir -p $RPM_BUILD_ROOT/usr/{sbin,bin,share,include}
 mkdir -p $RPM_BUILD_ROOT/usr/share/man/man8
 mkdir -p $RPM_BUILD_ROOT/sbin
@@ -310,6 +323,7 @@ while read line ; do
     esac
 done
 make DESTDIR=$RPM_BUILD_ROOT install INSTALL_PROGRAM='install -m 0755' \
+     CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing -fgnu89-inline" \
      INSTALL_DATA='install -m 0644' INSTALL_MAN='install -m 0644' \
      INSTALL_DIR='install -m 0755 -d' INSTALL_SBIN='install -m 0755' \
      INSTALL_BIN='install -m 0755'

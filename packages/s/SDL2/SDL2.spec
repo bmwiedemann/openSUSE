@@ -34,6 +34,7 @@ Source4:        baselibs.conf
 Patch1:         sdl2-symvers.patch
 Patch2:         SDL2-endian.patch
 Patch3:         CVE-2019-13616.patch
+Patch4:         sdl2-khronos.patch
 BuildRequires:  cmake
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++

@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Tue Oct  1 20:32:45 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.2
+  * Fix parsing of multiple values with same key
+- Run tests
+
+-------------------------------------------------------------------
+Mon Aug  7 11:53:58 UTC 2017 - mardnh@gmx.de
+
+- Initial package, version 0.5.1

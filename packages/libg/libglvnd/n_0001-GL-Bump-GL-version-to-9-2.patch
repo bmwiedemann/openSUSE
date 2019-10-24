@@ -1,0 +1,33 @@
+From d498a96f97c7d41f773b326f643a6ae1d46a090d Mon Sep 17 00:00:00 2001
+From: Tobias Klausmann <tobias.johannes.klausmann@mni.thm.de>
+Date: Fri, 20 Sep 2019 20:30:52 +0200
+Subject: [PATCH] GL: Bump GL Version to 9.2
+
+With a version of 1.2 the XServer build fails with:
+
+configure: error: Package requirements (glproto >= 1.4.17 gl >= 9.2.0) were not met:
+Package dependency requirement 'gl >= 9.2.0' could not be satisfied.
+Package 'gl' has version '1.2', required version is '>= 9.2.0'
+
+Set the version accordingly to allow XServer builds again.
+
+Signed-off-by: Tobias Klausmann <tobias.klausmann@freenet.de>
+---
+ src/GL/gl.pc.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/GL/gl.pc.in b/src/GL/gl.pc.in
+index 0eaa149..d643756 100644
+--- a/src/GL/gl.pc.in
++++ b/src/GL/gl.pc.in
+@@ -5,6 +5,6 @@ includedir=@includedir@
+ 
+ Name: gl
+ Description: Legacy OpenGL and GLX library and headers
+-Version: 1.2
++Version: 9.2.0
+ Libs: -L${libdir} -lGL
+ Cflags: -I${includedir}
+-- 
+2.23.0
+

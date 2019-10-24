@@ -1,0 +1,41 @@
+From d63e1627c0ead6165f382765ea3b9a4eba6aa8d7 Mon Sep 17 00:00:00 2001
+From: Aaron Puchert <aaronpuchert@alice-dsl.net>
+Date: Wed, 25 Sep 2019 18:34:34 +0000
+Subject: [PATCH] Link with clang-cpp instead of Clang component libraries
+
+Since LLVM 9, the Clang C++ API is exposed via the new clang-cpp target,
+and the component libraries need no longer be packaged [1].
+
+[1] https://releases.llvm.org/9.0.0/tools/clang/docs/ReleaseNotes.html#build-system-changes
+---
+ src/gallium/targets/opencl/meson.build | 14 +-------------
+ 1 file changed, 1 insertion(+), 13 deletions(-)
+
+diff --git a/src/gallium/targets/opencl/meson.build b/src/gallium/targets/opencl/meson.build
+index 907cc74337d..031d35b9716 100644
+--- a/src/gallium/targets/opencl/meson.build
++++ b/src/gallium/targets/opencl/meson.build
+@@ -43,19 +43,7 @@ libopencl = shared_library(
+   dependencies : [
+     idep_mesautil,
+     dep_clock, dep_dl, dep_unwind, dep_elf,
+-    cpp.find_library('clangCodeGen', dirs : llvm_libdir),
+-    cpp.find_library('clangFrontendTool', dirs : llvm_libdir),
+-    cpp.find_library('clangFrontend', dirs : llvm_libdir),
+-    cpp.find_library('clangDriver', dirs : llvm_libdir),
+-    cpp.find_library('clangSerialization', dirs : llvm_libdir),
+-    cpp.find_library('clangParse', dirs : llvm_libdir),
+-    cpp.find_library('clangSema', dirs : llvm_libdir),
+-    cpp.find_library('clangAnalysis', dirs : llvm_libdir),
+-    cpp.find_library('clangAST', dirs : llvm_libdir),
+-    cpp.find_library('clangASTMatchers', dirs : llvm_libdir),
+-    cpp.find_library('clangEdit', dirs : llvm_libdir),
+-    cpp.find_library('clangLex', dirs : llvm_libdir),
+-    cpp.find_library('clangBasic', dirs : llvm_libdir),
++    cpp.find_library('clang-cpp', dirs : llvm_libdir),
+   ],
+   version : '@0@.0.0'.format(opencl_version),
+   install : true,
+-- 
+2.23.0
+

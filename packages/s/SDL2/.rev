@@ -208,4 +208,12 @@
 - Update to version 2.0.10</comment>
     <requestid>725546</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>e44a6b06d64c48ebb64104ec16422e27</srcmd5>
+    <version>2.0.10</version>
+    <time>1571950815</time>
+    <user>dimstar_suse</user>
+    <comment>place in :M</comment>
+    <requestid>736700</requestid>
+  </revision>
 </revisionlist>

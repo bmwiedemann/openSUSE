@@ -17,16 +17,13 @@
 
 
 Name:           libconfini
-Version:        1.10.2
+Version:        1.10.4
 Release:        0
 Summary:        INI file parser libarary
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://madmurphy.github.io/libconfini
-Source:         https://github.com/madmurphy/libconfini/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
+Source:         https://github.com/madmurphy/libconfini/releases/download/%{version}/%{name}-%{version}-with-configure.tar.gz
 BuildRequires:  pkgconfig
 
 %description
@@ -49,10 +46,9 @@ libconfini is a INI file parser library written in C.
 This package contains files required for development.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}-with-configure
 
 %build
-./autogen.sh --noconfigure
 %configure --disable-static --docdir=%{_docdir}/%{name}
 make %{?_smp_mflags}
 

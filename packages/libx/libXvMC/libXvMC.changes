@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Oct 20 18:24:27 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add conflicts for old xorgproto-devel, X11/extensions/vldXvMC.h
+  was moved to libXvMC-devel.
+
+-------------------------------------------------------------------
+Mon Sep 30 09:54:48 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.12
+  * This release fixes the pkgconfig data to not refer to libXv, 
+    adds a pkgconfig file for libXvMCW, and prepares for a future
+    xorgproto release. There should be no functional changes.
+- n_bring-back-libXv-dep.patch
+  * fixes build of Mesa's xvmc gallium driver, since that 
+    references in XvMCCreateContex also XvQueryAdaptors, 
+    XvFreeAdaptorInfo and XvFreeAdaptorInfo
+
+-------------------------------------------------------------------
 Fri Mar 22 11:21:33 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.11

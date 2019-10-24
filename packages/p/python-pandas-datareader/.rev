@@ -31,4 +31,16 @@
     <comment></comment>
     <requestid>720882</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>dadec6a364c0818494deba86b6848f5c</srcmd5>
+    <version>0.8.1</version>
+    <time>1571950948</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.1:
+  * A new connector for Econdb
+  * Migrated IEX readers to IEX Cloud
+  * Removal of Google finance and Morningstar
+  * Immediate deprecation of Robinhood for quotes and historical data</comment>
+    <requestid>736051</requestid>
+  </revision>
 </revisionlist>

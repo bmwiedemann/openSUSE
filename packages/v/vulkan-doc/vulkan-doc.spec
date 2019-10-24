@@ -16,19 +16,19 @@
 #
 
 
-%define version_unconverted 1.1.120
+%define version_unconverted 1.1.123
 Name:           vulkan-doc
-Version:        1.1.120
+Version:        1.1.123
 Release:        0
 Summary:        Formal documentation of the Vulkan API
 License:        CC-BY-SA-4.0 AND Apache-2.0
 Group:          Documentation/HTML
-URL:            https://github.com/KhronosGroup/Vulkan-Docs
-Source:         Vulkan-Docs-%version.tar.xz
-BuildRequires:  rubygem(asciidoctor) >= 1.5.8
+URL:            https://github.com/KhronosGroup/
+Source:         https://github.com/KhronosGroup/Vulkan-Docs/archive/v%version.tar.gz
 BuildRequires:  make
-BuildRequires:  python3-base
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-base
+BuildRequires:  rubygem(asciidoctor) >= 1.5.8
 BuildArch:      noarch
 
 %description
@@ -41,8 +41,8 @@ including:
 
 %package -n python3-spec_tools
 Summary:        Build tools for the Vulkan layer validation ICD
-Group:          Development/Tools/Other
 License:        Apache-2.0
+Group:          Development/Tools/Other
 BuildArch:      noarch
 
 %description -n python3-spec_tools

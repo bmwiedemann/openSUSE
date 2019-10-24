@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-camomile
-Version:        0.8.5
+Version:        1.0.2
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Unicode library for OCaml
@@ -27,17 +27,12 @@ Summary:        Unicode library for OCaml
 License:        LGPL-2.0+
 Group:          Development/Languages/OCaml
 Url:            https://github.com/yoriyuki/Camomile/wiki
-Source0:        camomile-%{version}.tar.bz2
-# Use ocamlopt -g option to enable debuginfo.
-Patch1:         camomile-0.8.3-enable-debug.patch
-Patch2:         ocaml-camomile.bytecode.patch
-BuildRequires:  fdupes
-BuildRequires:  ocaml >= 3.12.1-12
-BuildRequires:  ocaml-camlp4-devel
-BuildRequires:  ocaml-findlib-devel
-BuildRequires:  ocaml-ocamldoc
-BuildRequires:  ocaml-rpm-macros >= 4.02.1
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source0:        %{name}-%{version}.tar.xz
+BuildRequires:  ocaml
+BuildRequires:  ocaml-dune
+BuildRequires:  ocaml-rpm-macros >= 20191009
+BuildRequires:  ocamlfind(bigarray)
+BuildRequires:  ocamlfind(str)
 
 %description
 Camomile is a Unicode library for ocaml. Camomile provides Unicode
@@ -64,61 +59,24 @@ The %{name}-data package contains data files for developing
 applications that use %{name}.
 
 %prep
-%setup -q -n camomile-%{version}
-
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
-# Parallel builds don't work.
-./configure --prefix=%{_prefix} --datadir=%{_datadir} --libdir=%{_libdir}
-make do_byte
-%if 0%{?ocaml_native_compiler}
-make do_opt
-%endif
-make %{?_smp_mflags} dochtml
-make %{?_smp_mflags} man
+%ocaml_dune_setup
+%ocaml_dune_build
 
 %install
-export DESTDIR=%{buildroot}
-export OCAMLFIND_DESTDIR=%{buildroot}%{_libdir}/ocaml
-mkdir -p $OCAMLFIND_DESTDIR/stublibs $OCAMLFIND_DESTDIR/camomile
-mkdir -p %{buildroot}%{_bindir}
-make install prefix=%{buildroot}%{_prefix} DATADIR=%{buildroot}%{_datadir}
-%if 0%{?ocaml_native_compiler}
-cp tools/camomilecharmap.opt %{buildroot}%{_bindir}/camomilecharmap
-cp tools/camomilelocaledef.opt %{buildroot}%{_bindir}/camomilelocaledef
-%endif
-%fdupes %{buildroot}
+%ocaml_dune_install
+%ocaml_create_file_list
 
-%files
-%defattr(-,root,root,-)
-%doc COPYING README
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%{_bindir}/camomilecharmap
-%{_bindir}/camomilelocaledef
-%endif
+%check
+%ocaml_dune_test || : make check failed
 
-%files devel
-%defattr(-,root,root,-)
-%doc README dochtml/*
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.a
-%{_libdir}/ocaml/*/*.cmx
-%{_libdir}/ocaml/*/*.cmxa
-%endif
-%{_libdir}/ocaml/*/*.cma
-%{_libdir}/ocaml/*/*.cmi
-%{_libdir}/ocaml/*/*.mli
-%{_libdir}/ocaml/*/META
+%files -f %{name}.files
+
+%files devel -f %{name}.files.devel
 
 %files data
-%defattr(-,root,root,-)
-%doc README
 %{_datadir}/camomile/
 
 %changelog

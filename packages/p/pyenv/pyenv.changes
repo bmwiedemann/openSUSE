@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Oct  9 21:19:24 UTC 2019 - Chris Coutinho <chrisbcoutinho@gmail.com>
+
+- Update to 1.2.13
+  * python-build: Add CPython 3.7.4
+  * python-build: Add CPython 3.6.9
+
+- Update to 1.2.12
+  * python-build: Find zlib from Xcode or brew on Mojave (#1353)
+  * python-build: Add PyPy 7.1.1 (#1335)
+  * python-build: Add CPython 3.8.0b1
+
+- Update to 1.2.11
+  * python-build: Fix posix_close name collision in 2.4 builds (#1321)
+  * python-build: Add CPython 3.4.10 (#1322)
+  * python-build: Add Anaconda 2019.03
+  * python-build: Allow overriding the preference of OpenSSL version per definition basis (#1302, #1325, #1326)
+  * python-build: Imported changes from rbenv/ruby-build 20190401 (#1327)
+  * python-build: Use GNU Readline 8.0 on macOS if brew's package isn't available (#1329)
+
+- Update to 1.2.10
+  * python-build: Force y, Y, yes or YES to confirm installation (#1217)
+  * python-build: Add PyPy 7.0.0, 7.1.0
+  * python-build: Add CPython 2.7.16, 3.5.7 and 3.7.3
+  * python-build: Install python-gdb.py (#1190, #1289)
+  * python-build: Add micropython 1.10
+  * python-build: Prefer Homebrew's OpenSSL 1.1 over 1.0 (#839, #1302)
+
+-------------------------------------------------------------------
 Mon Jan 28 14:22:07 UTC 2019 - thomas.schraitle@suse.com
 
 - Update to 1.2.9:

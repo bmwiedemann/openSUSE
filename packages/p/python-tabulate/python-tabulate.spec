@@ -18,15 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-tabulate
-Version:        0.8.3
+Version:        0.8.5
 Release:        0
 Summary:        Pretty-printer for tabular data in Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://bitbucket.org/astanin/python-tabulate
 Source:         https://files.pythonhosted.org/packages/source/t/tabulate/tabulate-%{version}.tar.gz
-# https://github.com/astanin/python-tabulate/pull/2
-Patch0:         pr_2.patch
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module setuptools}
@@ -54,7 +52,6 @@ The main use cases of the library are:
 
 %prep
 %setup -n tabulate-%{version}
-%patch0 -p1
 
 %build
 %python_build
@@ -68,7 +65,7 @@ The main use cases of the library are:
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst
+%doc README.md
 %python3_only %{_bindir}/tabulate
 %{python_sitelib}/*
 

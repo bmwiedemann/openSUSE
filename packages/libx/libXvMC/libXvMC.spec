@@ -12,13 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libXvMC
 %define lname	libXvMC1
-Version:        1.0.11
+Version:        1.0.12
 Release:        0
 Summary:        X-Video Motion Compensation library
 License:        MIT
@@ -29,7 +29,7 @@ Url:            http://xorg.freedesktop.org/
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libXvMC/
 Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Patch0:         n_bring-back-libXv-dep.patch
 #git#BuildRequires:	autoconf >= 2.60, automake, libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(videoproto)
@@ -64,6 +64,8 @@ comp, iDCT, and VLD (Variable-Length Decoding) for MPEG-2/MPEG-4-ASP.
 Summary:        Development files for the X-Video Motion Compensation library
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
+Conflicts:      xorgproto-devel < 2019.2
+Provides:       xorgproto-devel:%{_includedir}/X11/extensions/vldXvMC.h
 
 %description devel
 X-Video Motion Compensation (XvMC), is an extension of the X video
@@ -76,6 +78,7 @@ in %lname.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure --docdir=%_docdir/%name --disable-static
@@ -98,6 +101,7 @@ rm -f "%buildroot/%_libdir"/*.la
 %_includedir/X11/*
 %_libdir/libXvMC*.so
 %_libdir/pkgconfig/xvmc.pc
+%_libdir/pkgconfig/xvmc-wrapper.pc
 %_docdir/%name
 
 %changelog

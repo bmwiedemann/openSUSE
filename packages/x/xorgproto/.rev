@@ -45,4 +45,15 @@ for *proto packages.</comment>
     keysyms. No functional changes to any of the protocols.</comment>
     <requestid>711706</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>461287aa790883f23e2595a7c8ce0897</srcmd5>
+    <version>2019.2</version>
+    <time>1571950844</time>
+    <user>dimstar_suse</user>
+    <comment>- xorgproto 2019.2
+  * This release moves more header files to the legacy set. Note
+    that this means libX11 older than 1.6.9 and libXvMC older
+    than 1.0.12 will not build without some legacy headers installed.</comment>
+    <requestid>741048</requestid>
+  </revision>
 </revisionlist>

@@ -3795,4 +3795,54 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   * bugfix release</comment>
     <requestid>731650</requestid>
   </revision>
+  <revision rev="357" vrev="229">
+    <srcmd5>ef214500cfce8b5754d03766ef32bf6e</srcmd5>
+    <version>unknown</version>
+    <time>1571950832</time>
+    <user>dimstar_suse</user>
+    <comment>- let Mesa-libEGL-devel require libX11 devel via &quot;pkgconfig(x11)&quot;
+  since EGL/eglplatform.h includes X11/Xlib.h
+
+- Update to version 19.2.1
+  * fixes all over the tree: intel, amd, nine, nir, egl, gallium,
+    scons, meson, glsl, haiku, android, and nouveau all got fixes.
+
+- pickup gl, egl, glesv1_cm and glesv2 pkgconfig files from 
+  libglvnd build and add them to the appropriate devel subpackages
+
+- reintroduce GL, EGL, GLES* devel subpackages since corresponding
+  header and pkgconfig files from libglvnd didn't work out ... 
+
+- Rebase n_opencl_dep_libclang.patch after update.
+
+- Update to version 19.2.0 including changes to
+  * release-infastructure
+  * the build
+  * drivers: turnip, radv, android, intel and amd common code
+  * new features: check Phoronix
+    https://www.phoronix.com/scan.php?page=news_item&amp;px=Mesa-19.2-Released
+- supersedes U_llvmpipe-Don-t-use-u_ringbuffer-for-lp_scene_queue.patch
+- adjusted n_drirc-disable-rgb10-for-chromium-on-amd.patch
+- supersedes n_glesv1_cm-glesv2.patch
+
+- no longer build 
+  * Mesa-libGL-devel
+  * Mesa-libEGL-devel
+  * Mesa-libGLESv1_CM-devel
+  * Mesa-libGLESv2-devel
+  * Mesa-libGLESv3-devel
+  Instead of requiring these let Mesa-devel package require 
+  libglvnd-devel &gt;= 1.2.0, which provides the contents of these
+  packages now (header files for OpenGL, GLES, EGL, and GLX). 
+  Adjusted baselibs.conf accordingly.
+- modified check for llvm version in a way so it works also with
+  older llvm packages (by making use of &quot;llvm-config -version&quot;), 
+  where there is %{_llvm_sonum} macro defined yet
+- moved manual pages to Mesa-devel package
+
+- n_opencl_dep_libclang.patch
+  * Link OpenCL library with libclang-cpp.so instead of the
+    component libraries for LLVM &gt;= 9.</comment>
+    <requestid>740902</requestid>
+  </revision>
 </revisionlist>

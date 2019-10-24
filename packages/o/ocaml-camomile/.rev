@@ -21,4 +21,17 @@
 - Remove autodeps for pre openSUSE 12.1 releases</comment>
     <requestid>512519</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>303104fdfe26e2325453fba4052c6c67</srcmd5>
+    <version>1.0.2</version>
+    <time>1571950962</time>
+    <user>dimstar_suse</user>
+    <comment>- use dune macros from ocaml-rpm-macros
+
+- Update to version 1.0.2
+  Fix build
+  Remove camomile-0.8.3-enable-debug.patch
+  Remove ocaml-camomile.bytecode.patch</comment>
+    <requestid>738548</requestid>
+  </revision>
 </revisionlist>

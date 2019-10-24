@@ -40,4 +40,14 @@
     <comment></comment>
     <requestid>731170</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>09e914c21166b5dc6adae02f598f64ce</srcmd5>
+    <version>0.8.5</version>
+    <time>1571950940</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.5:
+  * various bugfixes
+- Remove merged pr_2.patch</comment>
+    <requestid>736041</requestid>
+  </revision>
 </revisionlist>

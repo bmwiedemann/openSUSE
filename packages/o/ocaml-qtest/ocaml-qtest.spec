@@ -25,17 +25,12 @@ License:        GPL-3.0-or-later
 Group:          Development/Languages/OCaml
 
 URL:            https://github.com/vincent-hugot/qtest
-Source0:        https://github.com/vincent-hugot/qtest/archive/v%{version}/%{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source0:        %{name}-%{version}.tar.xz
 
-BuildRequires:  help2man
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-findlib
-BuildRequires:  ocaml-ounit-devel
-BuildRequires:  ocaml-qcheck-devel
-BuildRequires:  ocaml-rpm-macros
-BuildRequires:  opam-installer
+BuildRequires:  ocaml-rpm-macros >= 20190930
+BuildRequires:  ocamlfind(qcheck)
 
 %description
 qtest extracts inline unit tests written using a special syntax in
@@ -55,56 +50,24 @@ developing applications that use %{name}.
 
 
 %prep
-%setup -q -n qtest-%{version}
+%autosetup -p1
 
 %build
-dune build @install --profile=release
+%ocaml_dune_setup
+%ocaml_dune_build
 
 %install
-dune install --destdir="%{buildroot}" --verbose
+%ocaml_dune_install
+%ocaml_create_file_list
 
-# These files will be installed using the doc and license directives
-rm %{buildroot}/usr/doc/qtest/{LICENSE,README.adoc}
+%check
+%ocaml_dune_test
 
-# generate manpage
-mkdir -p %{buildroot}/%{_mandir}/man1/
-help2man %{buildroot}/%{_bindir}/qtest \
-    --output %{buildroot}/%{_mandir}/man1/qtest.1 \
-    --name "Inline (Unit) Tests for OCaml" \
-    --version-string %{version} \
-    --no-info
-
-%files
-%defattr(-,root,root,-)
-%doc README.adoc HOWTO.adoc
+%files -f %{name}.files
 %license LICENSE
-%{_bindir}/qtest
-%{_mandir}/man1/qtest.1*
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*/
-%dir %{_libdir}/ocaml/*/*/
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*/*.cmxs
-%endif
+%doc README.adoc
+%{_bindir}/*
 
-%files devel
-%defattr(-,root,root,-)
-%doc README.adoc HOWTO.adoc
-%license LICENSE
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*/
-%dir %{_libdir}/ocaml/*/*/
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*/*.a
-%{_libdir}/ocaml/*/*/*.cmx
-%{_libdir}/ocaml/*/*/*.cmxa
-%endif
-%{_libdir}/ocaml/*/*/*.cma
-%{_libdir}/ocaml/*/*/*.cmi
-%{_libdir}/ocaml/*/*/*.cmt
-%{_libdir}/ocaml/*/*/*.ml
-%{_libdir}/ocaml/*/META
-%{_libdir}/ocaml/*/opam
-%{_libdir}/ocaml/*/dune-package
+%files devel -f %{name}.files.devel
 
 %changelog

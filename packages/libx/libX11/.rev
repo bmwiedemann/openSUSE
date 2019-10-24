@@ -252,4 +252,12 @@ additions, including new UTF-8 compose sequences for:
   * bug fixes</comment>
     <requestid>710377</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c00335fcad5d81f8993216e4aef69089</srcmd5>
+    <version>1.6.9</version>
+    <time>1571950865</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>741458</requestid>
+  </revision>
 </revisionlist>

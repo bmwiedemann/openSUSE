@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>735327</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>99873fa6ecb255cdb41a225a049ee616</srcmd5>
+    <version>1.10.4</version>
+    <time>1571950996</time>
+    <user>dimstar_suse</user>
+    <comment>libconfini 1.10.4 (forwarded request 741232 from AndreasStieger)</comment>
+    <requestid>741233</requestid>
+  </revision>
 </revisionlist>

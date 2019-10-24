@@ -18,18 +18,19 @@
 
 
 Name:           ocaml-easy-format
-Version:        1.2.0
+Version:        1.3.2
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Data pretty printing made easy
 License:        BSD-3-Clause
 Group:          Development/Languages/OCaml
-Url:            https://github.com/mjambon/easy-format
-Source:         easy-format-%{version}.tar.xz
+Url:            https://github.com/ocaml-community/easy-format
+Source0:        %{name}-%{version}.tar.xz
+Patch0:         %{name}.patch
 BuildRequires:  ocaml
-BuildRequires:  ocaml-oasis
-BuildRequires:  ocaml-ocamldoc
-BuildRequires:  ocaml-rpm-macros >= 4.03
+BuildRequires:  ocaml-dune
+BuildRequires:  ocaml-findlib
+BuildRequires:  ocaml-rpm-macros >= 20190930
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -59,107 +60,23 @@ The %{name}-devel package contains libraries and signature files for
 developing applications that use %{name}.
 
 %prep
-%setup -qn easy-format-%{version}
+%autosetup -p1
 
 %build
-tee _oasis <<_EOF_
-OASISFormat: 0.4
-Name:        "easy-format"
-Version:     %{version}
-Synopsis:    Data pretty printing made easy
-Authors:     Martin Jambon
-LicenseFile: LICENSE
-License:     %{license}
-Plugins:     META(`oasis version`)
-BuildTools:  ocamlbuild
-
-Library "easy-format"
- Path: .
- Modules: Easy_format
- Install: true
-
-Document easy_format
- Title:                "API reference for easy-format"
- Type:                 ocamlbuild
- BuildTools+:          ocamldoc
- InstallDir:           \$htmldir
- Install:              true
- XOCamlbuildPath:      .
- XOCamlbuildLibraries: easy-format
-
-Executable lambda_example
- Install: false
- Path: .
- MainIs: lambda_example.ml
- CompiledObject: best
- BuildDepends: easy-format
-
-Executable test_easy_format
- Install: false
- Path: .
- MainIs: test_easy_format.ml
- CompiledObject: best
- BuildDepends: easy-format
-
-Executable simple_example
- Install: false
- Path: .
- MainIs: simple_example.ml
- CompiledObject: best
- BuildDepends: easy-format
-
-Test lambda_example
- Type: Custom (0.0.1)
- Command: \$lambda_example
- Run: true
-
-Test simple_example
- Type: Custom (0.0.1)
- Command: \$simple_example
- Run: true
-
-Test test_easy_format
- Type: Custom (0.0.1)
- Command: \$test_easy_format
- Run: true
-_EOF_
-%oasis_setup
-%ocaml_oasis_configure --enable-docs --enable-tests
-%ocaml_oasis_build
-%ocaml_oasis_doc
+%ocaml_dune_setup
+%ocaml_dune_build
 
 %install
-%ocaml_oasis_findlib_install
+%ocaml_dune_install
+%ocaml_create_file_list
 
 %check
-%ocaml_oasis_test
+%ocaml_dune_test || : make check failed
 
-%files
-%defattr(-,root,root)
-%doc LICENSE README.md
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.cmxs
-%endif
+%files -f %{name}.files
+%license LICENSE
+%doc README.md
 
-%files devel
-%defattr(-,root,root,-)
-%doc examples/
-%{oasis_docdir_html}
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.a
-%{_libdir}/ocaml/*/*.cmx
-%{_libdir}/ocaml/*/*.cmxa
-%endif
-%{_libdir}/ocaml/*/*.annot
-%{_libdir}/ocaml/*/*.cma
-%{_libdir}/ocaml/*/*.cmi
-%{_libdir}/ocaml/*/*.cmt
-%{_libdir}/ocaml/*/*.cmti
-%{_libdir}/ocaml/*/*.mli
-%{_libdir}/ocaml/*/META
+%files devel -f %{name}.files.devel
 
 %changelog

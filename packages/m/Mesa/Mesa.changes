@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Mon Oct 14 10:23:51 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- let Mesa-libEGL-devel require libX11 devel via "pkgconfig(x11)"
+  since EGL/eglplatform.h includes X11/Xlib.h
+
+-------------------------------------------------------------------
+Wed Oct  9 22:16:18 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 19.2.1
+  * fixes all over the tree: intel, amd, nine, nir, egl, gallium,
+    scons, meson, glsl, haiku, android, and nouveau all got fixes.
+
+-------------------------------------------------------------------
+Mon Oct  7 21:50:32 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- pickup gl, egl, glesv1_cm and glesv2 pkgconfig files from 
+  libglvnd build and add them to the appropriate devel subpackages
+
+-------------------------------------------------------------------
+Mon Oct  7 16:20:49 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- reintroduce GL, EGL, GLES* devel subpackages since corresponding
+  header and pkgconfig files from libglvnd didn't work out ... 
+
+-------------------------------------------------------------------
+Mon Sep 30 11:42:12 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Rebase n_opencl_dep_libclang.patch after update.
+
+-------------------------------------------------------------------
+Mon Sep 30 09:02:03 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 19.2.0 including changes to
+  * release-infastructure
+  * the build
+  * drivers: turnip, radv, android, intel and amd common code
+  * new features: check Phoronix
+    https://www.phoronix.com/scan.php?page=news_item&px=Mesa-19.2-Released
+- supersedes U_llvmpipe-Don-t-use-u_ringbuffer-for-lp_scene_queue.patch
+- adjusted n_drirc-disable-rgb10-for-chromium-on-amd.patch
+- supersedes n_glesv1_cm-glesv2.patch
+
+-------------------------------------------------------------------
+Sat Sep 28 13:42:30 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- no longer build 
+  * Mesa-libGL-devel
+  * Mesa-libEGL-devel
+  * Mesa-libGLESv1_CM-devel
+  * Mesa-libGLESv2-devel
+  * Mesa-libGLESv3-devel
+  Instead of requiring these let Mesa-devel package require 
+  libglvnd-devel >= 1.2.0, which provides the contents of these
+  packages now (header files for OpenGL, GLES, EGL, and GLX). 
+  Adjusted baselibs.conf accordingly.
+- modified check for llvm version in a way so it works also with
+  older llvm packages (by making use of "llvm-config -version"), 
+  where there is %{_llvm_sonum} macro defined yet
+- moved manual pages to Mesa-devel package
+
+-------------------------------------------------------------------
+Wed Sep 25 18:34:34 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- n_opencl_dep_libclang.patch
+  * Link OpenCL library with libclang-cpp.so instead of the
+    component libraries for LLVM >= 9.
+
+-------------------------------------------------------------------
 Wed Sep 18 06:59:29 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 19.1.7

@@ -26,13 +26,14 @@ Group:          Development/Languages/OCaml
 
 URL:            https://github.com/c-cube/gen
 Source0:        https://github.com/c-cube/gen/archive/%{version}/%{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-findlib
-BuildRequires:  ocaml-rpm-macros
-BuildRequires:  opam-installer
+BuildRequires:  ocaml-rpm-macros >= 20190930
+BuildRequires:  ocamlfind(bytes)
+BuildRequires:  ocamlfind(qtest.lib)
+BuildRequires:  ocamlfind(qcheck)
+BuildRequires:  ocamlfind(oUnit)
 
 %description
 Iterators for OCaml, both restartable and consumable.
@@ -50,46 +51,23 @@ developing applications that use %{name}.
 
 
 %prep
-%setup -q -n gen-%{version}
+%autosetup -p1 -n gen-%{version}
 
 %build
-dune build @install --profile=release
+%ocaml_dune_setup
+%ocaml_dune_build
 
 %install
-dune install --destdir="%{buildroot}" --verbose
+%ocaml_dune_install
+%ocaml_create_file_list
 
-# These files will be installed using the doc and license directives
-rm %{buildroot}/usr/doc/gen/{LICENSE,README.md,CHANGELOG.md}
+%check
+%ocaml_dune_test || : make check failed
 
-%files
-%defattr(-,root,root,-)
-%doc README.md CHANGELOG.md
+%files -f %{name}.files
 %license LICENSE
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.cmxs
-%endif
+%doc README.md
 
-%files devel
-%defattr(-,root,root,-)
-%doc README.md CHANGELOG.md
-%license LICENSE
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.a
-%{_libdir}/ocaml/*/*.cmx
-%{_libdir}/ocaml/*/*.cmxa
-%endif
-%{_libdir}/ocaml/*/dune-package
-%{_libdir}/ocaml/*/opam
-%{_libdir}/ocaml/*/*.ml
-%{_libdir}/ocaml/*/*.mli
-%{_libdir}/ocaml/*/*.cma
-%{_libdir}/ocaml/*/*.cmi
-%{_libdir}/ocaml/*/*.cmt
-%{_libdir}/ocaml/*/*.cmti
-%{_libdir}/ocaml/*/META
+%files devel -f %{name}.files.devel
 
 %changelog

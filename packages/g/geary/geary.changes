@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Mon Oct  7 07:40:41 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Fix conversation and composer colours under dark themes.
+  + Fixes for link editing in rich text mode.
+  + Fix drafts being left over in Gmail.
+  + Fix application not exiting on quit.
+  + Fix crash when sending certain emails.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 22 15:23:48 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.0:
+  + Improved desktop contact integration.
+  + Added support for TNEF attachments.
+  + User interface and icon refinements.
+  + Subject line now also spell checked in the composer.
+  + Updated user manual.
+  + Improved problem reporting tool.
+  + New Inspector window for real-time debugging.
+  + Improved server compatibility.
+  + Numerous bug fixes and user interface improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 12 12:35:03 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.33.91:
+  + Bugs fixed:
+    - Background sync being cancelled on folder close.
+    - Retry IMAP pool connections on GLib "Unknown error on
+      connect".
+    - Temporarily replace WebKitGTK process model API with env
+      var.
+    - Conditionally enable WebKitGTK shared secondary process
+      model.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep  5 10:00:45 NZST 2019 - luke@ljones.dev
+
+- Update to version 3.33.90:
+  + Bug fixes and server compatibility improvements
+  + User interface translation updates
+- Changes from version 3.33.1
+  + Improved conversation performance
+  + Add dependency on libhandy
+  + Add IMAP and SMTP integration tests
+  + Added support for TNEF attachments
+  + Added Inspector window for real-time debugging
+  + Updated symbolic images
+  + Switched from libnotify to GNotify
+  + Added support for TNEF attachments
+  + Added support for application activation via DBus
+  + Add Inspector for real-time debugging
+  + Integrate desktop contacts into contacts popover
+  + Update the user manual
+  + Improved server compatibility
+  + Numerous bug fixes and user interface improvements
+  + Numerous user interface translation updates
+  + Bug fixes and server compatibility improvements
+  + User interface translation updates
+
+-------------------------------------------------------------------
 Sun Aug  4 06:33:38 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.2:
@@ -678,7 +743,7 @@ Sun Dec 22 11:39:09 UTC 2013 - zaitor@opensuse.org
 
 - Add geary-compile-with-WebKitGTK-2.3.x.patch, compile with
   WebKitGTK 2.3.x. This also introduces compiling WebKit-3.0.gir to
-  a VAPI and using that during compilation (bgo#720315). 
+  a VAPI and using that during compilation (bgo#720315).
 
 -------------------------------------------------------------------
 Sun Dec 15 12:01:28 UTC 2013 - zaitor@opensuse.org

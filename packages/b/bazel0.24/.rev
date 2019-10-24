@@ -25,4 +25,12 @@ If this SR looks good to you, please accept it together with:
     <comment></comment>
     <requestid>717910</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>aaa0a4ff57efc4cea17eb9d9bf305c92</srcmd5>
+    <version>0.24.1</version>
+    <time>1571951015</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>742166</requestid>
+  </revision>
 </revisionlist>

@@ -4852,4 +4852,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.3.6 &amp; arm64 mm</comment>
     <requestid>738082</requestid>
   </revision>
+  <revision rev="511" vrev="1">
+    <srcmd5>489a35e357551013a2b2868a483a0162</srcmd5>
+    <version>5.3.7</version>
+    <time>1571950791</time>
+    <user>dimstar_suse</user>
+    <comment>5.3.7 &amp; intel VGA fix &amp; disable RT_GROUP_SCHED</comment>
+    <requestid>741409</requestid>
+  </revision>
 </revisionlist>

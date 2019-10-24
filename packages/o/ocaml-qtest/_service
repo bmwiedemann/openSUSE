@@ -1,0 +1,14 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/vincent-hugot/qtest.git</param>
+    <param name="scm">git</param>
+    <param name="versionformat">2.9</param>
+    <param name="revision">074da5e3a0d480937ddc379fc6f4feeab9da85e3</param>
+    <param name="filename">ocaml-qtest</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

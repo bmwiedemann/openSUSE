@@ -41,7 +41,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 19.1.7
+%define _version 19.2.1
 %define with_opencl 0
 %define with_vulkan 0
 %define with_llvm 0
@@ -109,7 +109,7 @@
 %endif
 
 Name:           Mesa
-Version:        19.1.7
+Version:        19.2.1
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -123,11 +123,10 @@ Source3:        README.updates
 Source4:        manual-pages.tar.bz2
 Source6:        %{name}-rpmlintrc
 Source7:        Mesa.keyring
-Patch0:         U_llvmpipe-Don-t-use-u_ringbuffer-for-lp_scene_queue.patch
+Patch1:         n_opencl_dep_libclang.patch
 # never to be upstreamed
 Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
 Patch58:        u_dep_xcb.patch
-Patch60:        n_glesv1_cm-glesv2.patch
 
 BuildRequires:  bison
 BuildRequires:  fdupes
@@ -260,6 +259,7 @@ Requires:       libOSMesa-devel = %{version}
 Requires:       libgbm-devel
 Provides:       Mesa-devel-static = %{version}
 Provides:       xorg-x11-Mesa-devel = %{version}
+Requires:       libglvnd-devel >= 1.2.0
 Obsoletes:      Mesa-devel-static < %{version}
 Obsoletes:      xorg-x11-Mesa-devel < %{version}
 Provides:       Mesa-libIndirectGL-devel = %{version}
@@ -308,6 +308,7 @@ Summary:        Development files for the EGL API
 Group:          Development/Libraries/C and C++
 Requires:       Mesa-KHR-devel = %{version}
 Requires:       Mesa-libEGL1 = %{version}
+Requires:       pkgconfig(x11)
 %if 0%{?libglvnd}
 Requires:       libglvnd-devel >= 0.1.0
 %endif
@@ -725,10 +726,13 @@ programs against the XA state tracker.
 # remove some docs
 rm -rf docs/README.{VMS,WIN32,OS2}
 
-%patch0 -p1
+%if 0%{with_llvm}
+if test $(llvm-config --version | cut -d "." -f1) -ge 9; then 
+%patch1 -p1
+fi
+%endif
 %patch54 -p1
 %patch58 -p1
-%patch60 -p1
 
 # Remove requires to libglvnd/libglvnd-devel from baselibs.conf when
 # disabling libglvnd build; ugly ...
@@ -888,6 +892,11 @@ rm -f %{buildroot}%{_libdir}/libGLES*
 # determine the vendor
 ln -s %{_libdir}/libGLX_mesa.so.0 %{buildroot}%{_libdir}/libGLX_indirect.so.0
 %endif
+
+# pickup pkgconfig files from libglvnd build
+rm -f %{buildroot}/%{_libdir}/pkgconfig/{gl,egl,glesv1_cm,glesv2}.pc
+install -m 0644 /usr/share/doc/packages/libglvnd/pkgconfig/{gl,egl,glesv1_cm,glesv2}.pc \
+   %{buildroot}/%{_libdir}/pkgconfig/
 
 for dir in ../xc/doc/man/{GL/gl,GL/glx}; do
  pushd $dir
@@ -1134,6 +1143,9 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 
 %files devel
 %doc docs/*.html
+%if 0%{?libglvnd} >= 120
+/usr/share/man/man3/*
+%endif
 
 # !drivers
 %endif

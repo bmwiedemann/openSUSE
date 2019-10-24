@@ -26,16 +26,14 @@ Group:          Development/Languages/OCaml
 
 URL:            https://github.com/ocaml-ppx/ocaml-migrate-parsetree
 Source0:        https://github.com/ocaml-ppx/ocaml-migrate-parsetree/archive/v%{version}/%{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-findlib
-BuildRequires:  ocaml-ocamldoc
-BuildRequires:  ocaml-ppx_derivers-devel
-BuildRequires:  ocaml-result-devel
-BuildRequires:  ocaml-rpm-macros
-BuildRequires:  opam-installer
+BuildRequires:  ocaml-rpm-macros >= 20190930
+BuildRequires:  ocamlfind(compiler-libs.common)
+BuildRequires:  ocamlfind(ppx_derivers)
+BuildRequires:  ocamlfind(result)
+
 
 %description
 This library converts between parsetrees of different OCaml versions.
@@ -54,54 +52,23 @@ developing applications that use %{name}.
 
 
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup -p1
 
 %build
-make %{?_smp_mflags}
+%ocaml_dune_setup
+%ocaml_dune_build
 
 %install
-mkdir -p %{buildroot}%{_libdir}/ocaml
-%make_install INSTALL_ARGS='--destdir=%{buildroot}'
+%ocaml_dune_install
+%ocaml_create_file_list
 
-# These files will be installed using doc and license directives.
-rm -r %{buildroot}/usr/doc
+%check
+%ocaml_dune_test
 
-%files
-%defattr(-,root,root,-)
-%doc README.md MANUAL.md CHANGES.md LICENSE.md
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*/
-%dir %{_libdir}/ocaml/*/*/
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.cmxs
-%{_libdir}/ocaml/*/*/*.cmxs
-%endif
+%files -f %{name}.files
+%license LICENSE.md
+%doc README.md MANUAL.md
 
-%files devel
-%defattr(-,root,root,-)
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*/
-%dir %{_libdir}/ocaml/*/*/
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.a
-%{_libdir}/ocaml/*/*/*.a
-%{_libdir}/ocaml/*/*.cmx
-%{_libdir}/ocaml/*/*/*.cmx
-%{_libdir}/ocaml/*/*.cmxa
-%{_libdir}/ocaml/*/*/*.cmxa
-%endif
-%{_libdir}/ocaml/*/opam
-%{_libdir}/ocaml/*/dune-package
-%{_libdir}/ocaml/*/*.ml
-%{_libdir}/ocaml/*/*/*.ml
-%{_libdir}/ocaml/*/*.mli
-%{_libdir}/ocaml/*/*.cma
-%{_libdir}/ocaml/*/*/*.cma
-%{_libdir}/ocaml/*/*.cmi
-%{_libdir}/ocaml/*/*/*.cmi
-%{_libdir}/ocaml/*/*.cmt
-%{_libdir}/ocaml/*/*/*.cmt
-%{_libdir}/ocaml/*/*.cmti
-%{_libdir}/ocaml/*/META
+%files devel -f %{name}.files.devel
 
 %changelog

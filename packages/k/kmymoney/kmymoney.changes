@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Sep 23 07:47:43 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 5.0.7
+  * See https://blog.bembel.net/2019/09/kmymoney-5-0-7-released/
+  * Full support for the new regulations of the PSD2 which affects
+    the online banking availability for German users. KMyMoney now
+    requires a Gwenhywfar minimum version of 4.99.16 and an
+    AqBanking version of 5.99.32.
+- Bugs fixed:
+  * Date Entry change to land on month part instead of day part
+    (kde#374123)
+  * Copy SEPA credit transfer fails (kde#389944)
+  * Schedule Reports show both sides of transactions (kde#395977)
+  * Outbox can't edit a saved item (kde#400846)
+  * Scheduled Transaction Report does not show amount (kde#407072)
+  * Unable to change forecast days (kde#410391)
+
+-------------------------------------------------------------------
 Tue Aug 20 06:29:16 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.0.6. Bugs fixed:

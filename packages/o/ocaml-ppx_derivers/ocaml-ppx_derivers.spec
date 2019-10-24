@@ -25,14 +25,11 @@ License:        BSD-3-Clause
 Group:          Development/Languages/OCaml
 
 URL:            https://github.com/ocaml-ppx/ppx_derivers
-Source0:        https://github.com/ocaml-ppx/ppx_derivers/archive/%{version}/%{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-findlib
-BuildRequires:  ocaml-rpm-macros
-BuildRequires:  opam-installer
+BuildRequires:  ocaml-rpm-macros >= 20190930
 
 %description
 Ppx_derivers is a tiny package whose sole purpose is to allow
@@ -50,47 +47,23 @@ developing applications that use %{name}.
 
 
 %prep
-%setup -q -n ppx_derivers-%{version}
+%autosetup -p1
 
 %build
-dune build @install
+%ocaml_dune_setup
+%ocaml_dune_build
 
 %install
-mkdir -p %{buildroot}%{_libdir}/ocaml
-dune install --destdir=%{buildroot}
+%ocaml_dune_install
+%ocaml_create_file_list
 
-# These files will be installed using doc and license directives.
-rm -r %{buildroot}/usr/doc
+%check
+%ocaml_dune_test
 
-%files
-%defattr(-,root,root,-)
-%doc README.md CHANGES.md
+%files -f %{name}.files
 %license LICENSE.md
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.cmxs
-%endif
+%doc README.md
 
-%files devel
-%defattr(-,root,root,-)
-%doc README.md CHANGES.md
-%license LICENSE.md
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.a
-%{_libdir}/ocaml/*/*.cmx
-%{_libdir}/ocaml/*/*.cmxa
-%endif
-%{_libdir}/ocaml/*/opam
-%{_libdir}/ocaml/*/META
-%{_libdir}/ocaml/*/dune-package
-%{_libdir}/ocaml/*/*.ml
-%{_libdir}/ocaml/*/*.mli
-%{_libdir}/ocaml/*/*.cma
-%{_libdir}/ocaml/*/*.cmi
-%{_libdir}/ocaml/*/*.cmt
-%{_libdir}/ocaml/*/*.cmti
+%files devel -f %{name}.files.devel
 
 %changelog

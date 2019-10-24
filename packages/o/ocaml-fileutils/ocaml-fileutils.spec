@@ -17,22 +17,21 @@
 
 
 Name:           ocaml-fileutils
-Version:        0.5.2
+Version:        0.6.1
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        OCaml library for common file and filename operations
 License:        SUSE-LGPL-2.0-with-linking-exception
 Group:          Development/Languages/OCaml
 Url:            https://github.com/gildor478/ocaml-fileutils
-Source0:        ocaml-fileutils-%{version}.tar.xz
-BuildRequires:  ocaml >= 4.00.1
-BuildRequires:  ocaml-oasis
-BuildRequires:  ocaml-ocamldoc
-BuildRequires:  ocaml-rpm-macros >= 4.03
-BuildRequires:  ocamlfind(oUnit)
+Source0:        %{name}-%{version}.tar.xz
+BuildRequires:  ocaml
+BuildRequires:  ocaml-dune
+BuildRequires:  ocaml-rpm-macros >= 20190930
+BuildRequires:  ocamlfind(bigarray)
+BuildRequires:  ocamlfind(stdlib-shims)
 BuildRequires:  ocamlfind(str)
 BuildRequires:  ocamlfind(unix)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This library is intended to provide a basic interface to the most
@@ -54,47 +53,23 @@ The %{name}-devel package contains libraries and signature files for
 developing applications that use %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%oasis_setup
-%ocaml_oasis_configure --enable-docs
-%ocaml_oasis_build
-%ocaml_oasis_doc
+%ocaml_dune_setup
+%ocaml_dune_build
 
 %install
-%ocaml_oasis_findlib_install
+%ocaml_dune_install
+%ocaml_create_file_list
 
 %check
-%ocaml_oasis_test
+%ocaml_dune_test || : make check failed
 
-%files
-%defattr(-,root,root,-)
-%doc COPYING.txt
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.cmxs
-%endif
+%files -f %{name}.files
+%license LICENSE.txt
+%doc README.md
 
-%files devel
-%defattr(-,root,root,-)
-%doc COPYING.txt AUTHORS.txt CHANGELOG.txt README.txt TODO.txt
-%{oasis_docdir_html}
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.a
-%{_libdir}/ocaml/*/*.cmx
-%{_libdir}/ocaml/*/*.cmxa
-%endif
-%{_libdir}/ocaml/*/*.annot
-%{_libdir}/ocaml/*/*.cma
-%{_libdir}/ocaml/*/*.cmi
-%{_libdir}/ocaml/*/*.cmt
-%{_libdir}/ocaml/*/*.cmti
-%{_libdir}/ocaml/*/*.mli
-%{_libdir}/ocaml/*/*.ml
-%{_libdir}/ocaml/*/META
+%files devel -f %{name}.files.devel
 
 %changelog

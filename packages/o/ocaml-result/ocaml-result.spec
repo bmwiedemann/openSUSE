@@ -28,7 +28,7 @@ Url:            https://github.com/janestreet/result
 Source0:        %{url}/archive/%{version}/%{_name}-%{version}.tar.gz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 4.03
+BuildRequires:  ocaml-rpm-macros >= 20190930
 
 %description
 Projects that want to use the new result type defined in OCaml >= 4.03 while
@@ -51,33 +51,20 @@ This package contains development files for %{name}.
 %setup -q -n %{_name}-%{version}
 
 %build
-dune build @install --profile=release
+%ocaml_dune_setup
+%ocaml_dune_build
 
 %install
-dune install --prefix=%{buildroot}%{_prefix} --libdir=%{buildroot}%{_libdir}/ocaml
-rm -r %{buildroot}%{_prefix}/doc
+%ocaml_dune_install
+%ocaml_create_file_list
 
-%files
-%doc CHANGES.md README.md
+%check
+%ocaml_dune_test || : make check failed
+
+%files -f %{name}.files
 %license LICENSE.md
-%dir %{_libdir}/ocaml
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.cmxs
-%endif
+%doc README.md
 
-%files devel
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.a
-%{_libdir}/ocaml/*/*.cmx
-%{_libdir}/ocaml/*/*.cmxa
-%endif
-%{_libdir}/ocaml/*/*.cma
-%{_libdir}/ocaml/*/*.cmi
-%{_libdir}/ocaml/*/*.cmt
-%{_libdir}/ocaml/*/*.ml
-%{_libdir}/ocaml/*/META
-%{_libdir}/ocaml/*/dune-package
-%{_libdir}/ocaml/*/opam
+%files devel -f %{name}.files.devel
 
 %changelog

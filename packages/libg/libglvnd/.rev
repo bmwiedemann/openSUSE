@@ -148,4 +148,48 @@
   * Fixed a segfault when generating GLX dispatch stubs for AARCH64</comment>
     <requestid>686460</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b01bdb8b271b5ba3edb214085887474d</srcmd5>
+    <version>1.2.0</version>
+    <time>1571950807</time>
+    <user>dimstar_suse</user>
+    <comment>- move gl, egl, glesv1_cm and glesv2 pkgconfig files to doc
+  directory, so these can be picked up by Mesa build; no longer
+  require Mesa devel subpackages ...
+
+- reverting inclusion of GL, EGL, GLES, GLES2, GLES3 headers;
+  no longer let libglvnd-devel package provide and obsolete 
+  corresponding Mesa gl, egl, gles* devel subpackages; headers
+  just aren't compatible; instead require them ...
+- supersedes patches:
+  * n_0001-eglplatform-fix-mesa-specific-defines.patch
+  * u_add-gl3ext.h
+
+- let libglvnd-devel also provide/obsolete Mesa-libGLESv3-devel
+
+- let libglvnd-devel provide/obsolete some of previous Mesa devel
+  packages:
+  * Mesa-libGL-devel
+  * Mesa-libEGL-devel
+  * Mesa-libGLESv1_CM-devel
+  * Mesa-libGLESv2-devel
+  * Mesa-KHR-devel
+- u_add-gl3ext.h
+  * adds missing include/GLES/gl3ext.h 
+
+- Update to version 1.2.0:
+  * Changes:
+    + Libglvnd now includes and installs the header files for OpenGL, GLES, EGL,
+      and GLX.
+    + Added pkg-config files for each library.
+    + The X11 libraries are now an optional dependency if you're not building
+      GLX.
+- n_0001-GL-Bump-GL-version-to-9-2.patch  
+  * with a version of 1.2 the XServer build fails; set the version accordingly to
+    allow XServer builds again.
+- n_0001-eglplatform-fix-mesa-specific-defines.patch
+  * the XServer fails to build; add the mesa specific defines to eglplatform, to
+    let it build again.</comment>
+    <requestid>735975</requestid>
+  </revision>
 </revisionlist>

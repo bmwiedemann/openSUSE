@@ -36,4 +36,12 @@
     <comment>- Skip failing tests that were reported upstream with no reaction</comment>
     <requestid>731447</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cf9730ac4f5b294ee93d6cb139bd4551</srcmd5>
+    <version>0.15.1</version>
+    <time>1571951007</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>742147</requestid>
+  </revision>
 </revisionlist>

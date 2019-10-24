@@ -28,14 +28,13 @@
 %bcond_with qtwebengine
 %endif
 Name:           kmymoney
-Version:        5.0.6
+Version:        5.0.7
 Release:        0
 Summary:        A Personal Finance Manager by KDE
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Productivity/Office/Finance
 URL:            https://www.kmymoney.org/
 Source0:        https://download.kde.org/stable/kmymoney/%{version}/src/%{name}-%{version}.tar.xz
-BuildRequires:  aqbanking-devel >= 5.8.0
 BuildRequires:  doxygen
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
@@ -82,6 +81,7 @@ BuildRequires:  cmake(Qt5Svg) >= 5.6.0
 BuildRequires:  cmake(Qt5Test) >= 5.6.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.6.0
 BuildRequires:  cmake(Qt5Xml) >= 5.6.0
+BuildRequires:  cmake(aqbanking) >= 5.99.32
 BuildRequires:  pkgconfig(libical)
 BuildRequires:  pkgconfig(sqlcipher)
 BuildRequires:  pkgconfig(sqlite3)

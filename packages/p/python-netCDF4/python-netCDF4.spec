@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-netCDF4
-Version:        1.5.1.2
+Version:        1.5.2
 Release:        0
 Summary:        Python interface to netCDF 3 and 4
 License:        HPND AND MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Unidata/netcdf4-python
 Source:         https://files.pythonhosted.org/packages/source/n/netCDF4/netCDF4-%{version}.tar.gz
-Patch0:         netcdf-disable-broken-test.patch
 BuildRequires:  %{python_module Cython >= 0.21}
 BuildRequires:  %{python_module cftime}
 BuildRequires:  %{python_module devel}
@@ -66,7 +65,6 @@ containing vlens, and vlens containing compound types) are not supported.
 
 %prep
 %setup -q -n netCDF4-%{version}
-%patch0 -p1
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
