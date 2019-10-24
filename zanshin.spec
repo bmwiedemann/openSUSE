@@ -1,7 +1,7 @@
 #
 # spec file for package zanshin
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,29 +12,33 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%bcond_without lang
 
+%bcond_without lang
 Name:           zanshin
 Version:        0.5.0
 Release:        0
 Summary:        TODO Application
-License:        GPL-2.0 or GPL-3.0
+# zanshin is GPL-2.0-only, 3rdparty/cucumber-cpp is MIT
+License:        GPL-2.0-only AND MIT
 Group:          Productivity/Office/Organizers
-Url:            https://zanshin.kde.org/
+URL:            https://zanshin.kde.org/
 Source:         https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz
-Patch0:         findKF5sooner.patch
-Patch1:         useknownGCCflag.patch
-Patch2:         qpointerconnect.diff
-# PATCH-FIX-OPENSUSE
-Patch3:         fix-build-with-Qt-5.6.patch
+Patch0:         0001-Fix-compilation-with-latest-KCalCore-API-changes-Att.patch
+Patch1:         0001-Fix-build-with-Boost-1.70.0.patch
+Patch2:         0001-Look-for-AkonadiContact.patch
+Patch3:         0001-Remove-the-delegation-feature.patch
+Patch4:         0001-Fix-compilation-after-Collection-referenced-was-removed.patch
+Patch5:         0001-Fix-linking-of-the-cuke-steps.patch
+Patch6:         0001-Make-it-build-both-with-pre-and-post.patch
 BuildRequires:  boost-devel
 BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Akonadi)
 BuildRequires:  cmake(KF5AkonadiCalendar)
+BuildRequires:  cmake(KF5AkonadiContact)
 BuildRequires:  cmake(KF5AkonadiMime)
 BuildRequires:  cmake(KF5AkonadiNotes)
 BuildRequires:  cmake(KF5AkonadiSearch)
@@ -52,7 +56,6 @@ BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Recommends:     %{name}-lang
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Zanshin Todo is an application for managing your day-to-day actions.
@@ -62,11 +65,7 @@ job and personal life. You will never forget anything anymore.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -81,8 +80,8 @@ job and personal life. You will never forget anything anymore.
 %endif
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS COPYING gpl-*.txt
+%license COPYING 3rdparty/cucumber-cpp/LICENSE.txt
+%doc AUTHORS gpl-*.txt
 %{_kf5_bindir}/renku
 %{_kf5_bindir}/zanshin
 %{_kf5_bindir}/zanshin-migrator
@@ -107,7 +106,7 @@ job and personal life. You will never forget anything anymore.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%doc COPYING
+%license COPYING
 %endif
 
 %changelog

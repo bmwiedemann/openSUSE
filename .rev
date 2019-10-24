@@ -31,4 +31,26 @@
     <comment></comment>
     <requestid>710913</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d68129ec1c360c51676eaa5180b454af</srcmd5>
+    <version>0.5.0</version>
+    <time>1571951335</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the license tag. Zanshin has GPL-2.0-only and MIT files
+
+- Add patches to build with recent kcalendarcore versions:
+  * 0001-Fix-compilation-with-latest-KCalCore-API-changes-Att.patch
+  * 0001-Fix-build-with-Boost-1.70.0.patch
+  * 0001-Look-for-AkonadiContact.patch
+  * 0001-Remove-the-delegation-feature.patch
+  * 0001-Fix-compilation-after-Collection-referenced-was-removed.patch
+  * 0001-Fix-linking-of-the-cuke-steps.patch
+  * 0001-Make-it-build-both-with-pre-and-post.patch
+- Drop patches:
+  * findKF5sooner.patch
+  * useknownGCCflag.patch
+  * qpointerconnect.diff
+  * fix-build-with-Qt-5.6.patch</comment>
+    <requestid>742248</requestid>
+  </revision>
 </revisionlist>
