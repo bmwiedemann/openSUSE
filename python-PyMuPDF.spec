@@ -17,11 +17,11 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# Upstream doesn't support Python 2 anymore.
+# Python 2 build fails always
 %define skip_python2 1
 %define pypi_name PyMuPDF
 Name:           python-%{pypi_name}
-Version:        1.16.2
+Version:        1.16.3
 Release:        0
 Summary:        Python binding for MuPDF, a PDF and XPS viewer
 License:        GPL-3.0-only AND AGPL-3.0-only
