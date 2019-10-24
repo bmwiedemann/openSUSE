@@ -480,6 +480,11 @@ unsorted:
   - antlr-manual 
   - antlr-maven-plugin 
   - antlr-maven-plugin-javadoc 
+  - antlr3-bootstrap-tool 
+  - antlr3-java 
+  - antlr3-java-javadoc 
+  - antlr3-javadoc 
+  - antlr3-tool 
   - antlr3c-devel 
   - antlr4 
   - aom-tools 
@@ -2291,9 +2296,6 @@ unsorted:
   - docker-test 
   - docker-zsh-completion 
   - docker_auth 
-  - docky 
-  - docky-devel 
-  - docky-lang 
   - dogtail 
   - doh 
   - dolphin-devel 
@@ -4356,7 +4358,7 @@ unsorted:
   - gnome-settings-daemon-devel 
   - gnome-shell-devel 
   - gnome-shell-extension-gpaste 
-  - gnome-shell-extension-hamster 
+  - gnome-shell-extension-hamster-time-tracker 
   - gnome-shell-extension-onboard 
   - gnome-shell-extension-terminus 
   - gnome-shell-search-provider-boxes 
@@ -7862,6 +7864,7 @@ unsorted:
   - libcap-progs 
   - libcap1 
   - libcap1-32bit: [x86_64] 
+  - libcap2-32bit: [x86_64] 
   - libcapi20-2 
   - libcapi20-2-32bit: [x86_64] 
   - libcapi20-3-32bit: [x86_64] 
@@ -10804,7 +10807,6 @@ unsorted:
   - libreoffice-calc-extensions 
   - libreoffice-gdb-pretty-printers 
   - libreoffice-glade 
-  - libreoffice-gtk2: [i586] 
   - libreoffice-l10n-af 
   - libreoffice-l10n-am 
   - libreoffice-l10n-ar 
@@ -13885,10 +13887,10 @@ unsorted:
   - nodejs-emojione-swift 
   - nodejs-packaging 
   - nodejs-underscore 
-  - nodejs10 
-  - nodejs10-devel 
+  - nodejs10: [x86_64] 
+  - nodejs10-devel: [x86_64] 
   - nodejs10-docs 
-  - nodejs12-docs 
+  - nodejs12-docs: [x86_64] 
   - nodejs8 
   - nodejs8-devel 
   - nodejs8-docs 
@@ -14121,7 +14123,7 @@ unsorted:
   - novprog-lang 
   - nping 
   - npkg 
-  - npm10 
+  - npm10: [x86_64] 
   - npm8 
   - npth-devel 
   - nqp 
@@ -14284,8 +14286,6 @@ unsorted:
   - ocaml-ocamldoc 
   - ocaml-ocamlgraph 
   - ocaml-ocamlgraph-devel 
-  - ocaml-odn 
-  - ocaml-odn-devel 
   - ocaml-ounit 
   - ocaml-ounit-devel 
   - ocaml-parmap 
@@ -15252,6 +15252,7 @@ unsorted:
   - pcsc-reflex60 
   - pcsc-tools 
   - pcsc-towitoko-devel 
+  - pcsx2: [i586] 
   - pdf2djvu 
   - pdf2djvu-lang 
   - pdf2svg 
@@ -16711,6 +16712,10 @@ unsorted:
   - ppp-userpass 
   - pps-tools 
   - pps-tools-devel 
+  - ppsspp 
+  - ppsspp-common 
+  - ppsspp-headless 
+  - ppsspp-qt 
   - praat 
   - pragha-plugins-devel 
   - prboom-plus 
@@ -16958,6 +16963,7 @@ unsorted:
   - python-bpython-common 
   - python-bpython-doc 
   - python-braille 
+  - python-btrfsutil 
   - python-caja-devel 
   - python-caja-lang 
   - python-castellan-doc 
@@ -17896,6 +17902,7 @@ unsorted:
   - python2-dask-distributed 
   - python2-dask-dot 
   - python2-dask-multiprocessing 
+  - python2-datadiff 
   - python2-dateparser 
   - python2-datrie 
   - python2-dbf 
@@ -20209,6 +20216,7 @@ unsorted:
   - python3-dask-distributed 
   - python3-dask-dot 
   - python3-dask-multiprocessing 
+  - python3-datadiff 
   - python3-datashader 
   - python3-dateparser 
   - python3-datrie 
@@ -23933,6 +23941,9 @@ unsorted:
   - stressapptest 
   - stringtemplate 
   - stringtemplate-javadoc 
+  - stringtemplate4 
+  - stringtemplate4-bootstrap 
+  - stringtemplate4-javadoc 
   - strip-nondeterminism 
   - strongswan 
   - strongswan-doc 
@@ -24094,6 +24105,7 @@ unsorted:
   - systemd-mini-container 
   - systemd-mini-devel 
   - systemd-mini-sysvinit 
+  - systemd-network 
   - systemd-portable 
   - systemd-ui 
   - systemd-zram-service 

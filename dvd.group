@@ -3321,8 +3321,6 @@
     <package name="nma-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="nmap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
     <package name="nodejs-common" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="nodejs12" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="nodejs12-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="notification-daemon" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="notification-daemon-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="noto-coloremoji-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3342,7 +3340,6 @@
     <package name="noto-serif-tc-bold-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="noto-serif-tc-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="noto-serif-tc-regular-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="npm12" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="nscd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="nss-mdns" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="nss_ldap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
@@ -4933,6 +4930,7 @@
     <package name="systemd" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="systemd-container" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="systemd-icon-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="systemd-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="systemd-logger" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="systemd-presets-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="systemd-presets-branding-transactional-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
@@ -5609,6 +5607,9 @@
   <conditional name="only_i586"/>
   <packagelist relationship="recommends">
     <package name="elinks" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="nodejs10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="nodejs10-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="npm10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <!-- patterns-media-rest_dvd uninstallable: nothing provides pattern() = apparmor_opt needed by patterns-media-rest_dvd-20170319-23.1.i586-->
   </packagelist>
 </group>
@@ -5685,7 +5686,6 @@
     <package name="libcanberra-gtk0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libcanberra-gtk2-module-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libcanberra0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libcap2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libcom_err2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libcontainers-common" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libcrack2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -5811,6 +5811,9 @@
     <package name="mcelog" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="mokutil" supportstatus="unsupported"/> <!-- reason: dvd:mokutil -->
     <package name="mozilla-nss-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_kernel -->
+    <package name="nodejs12" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="nodejs12-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="npm12" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="nss-mdns-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="nss_ldap-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="numactl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
