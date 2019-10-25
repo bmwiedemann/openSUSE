@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 25 08:34:00 UTC 2019 - Andrey Gankov <gankov@opensuse.org>
+
+- Update to version 3.34.1:
+  + Compatibility with recent appstream-glib
+- Changes from version 3.34.0:
+  + Update to gnome-shell 3.34.0
+- Replace pkgconfig(mutter-clutter-4) BuildRequires with
+  pkgconfig(mutter-clutter-5), following upstreams changes for
+  GNOME 3.34.
+
+-------------------------------------------------------------------
 Sat Jul 13 22:11:36 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Disable LTO, gpaste fails to build with it.
