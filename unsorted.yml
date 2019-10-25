@@ -990,7 +990,7 @@ unsorted:
   - bazel0.19: [x86_64] 
   - bazel0.24: [x86_64] 
   - bazel0.25: [x86_64] 
-  - bazel0.26 
+  - bazel0.26: [x86_64] 
   - bb 
   - bbe 
   - bbswitch 
@@ -4870,6 +4870,7 @@ unsorted:
   - gtksourceview2-lang 
   - gtksourceview4-devel 
   - gtksourceviewmm-devel 
+  - gtksourceviewmm3_0-devel 
   - gtkspell-devel 
   - gtkspell-doc 
   - gtkspell3-devel 
@@ -5948,6 +5949,7 @@ unsorted:
   - kbookmarks-devel-32bit: [x86_64] 
   - kbuild 
   - kcalcore-devel 
+  - kcalendarcore-devel 
   - kcalutils-devel 
   - kcmutils-devel 
   - kcmutils-devel-32bit: [x86_64] 
@@ -7445,8 +7447,6 @@ unsorted:
   - libapr-util1-dbd-mysql 
   - libapr-util1-dbd-pgsql 
   - libapr-util1-dbd-sqlite3 
-  - libaqebics0 
-  - libaqofxconnect7 
   - libarchive-devel 
   - libarchive13-32bit: [x86_64] 
   - libargtable2-0 
@@ -8678,7 +8678,6 @@ unsorted:
   - libgdbm_compat4-32bit: [x86_64] 
   - libgdiplus-devel 
   - libgdiplus0 
-  - libgdlmm-3_0-2 
   - libgdruntime76 
   - libgdruntime76-32bit: [x86_64] 
   - libgeda-data 
@@ -8986,8 +8985,8 @@ unsorted:
   - libgwengui-gtk2-0 
   - libgwengui-gtk3-0 
   - libgwengui-qt5-0 
-  - libgwenhywfar60 
-  - libgwenhywfar60-plugins 
+  - libgwenhywfar78 
+  - libgwenhywfar78-plugins 
   - libgxps-devel 
   - libgxps-tools 
   - libgxw0 
@@ -13690,9 +13689,7 @@ unsorted:
   - neko-devel 
   - neko-mysql 
   - nemesis 
-  - nemiver 
   - nemiver-devel 
-  - nemiver-lang 
   - nemo 
   - nemo-devel 
   - nemo-extension-actions 
@@ -17327,8 +17324,6 @@ unsorted:
   - python2-Pint 
   - python2-PrettyTable 
   - python2-PsyLab 
-  - python2-PsychoPy 
-  - python2-PsychoPy-lang 
   - python2-PyAudio 
   - python2-PyAutoGUI 
   - python2-PyBindGen 
@@ -17400,6 +17395,7 @@ unsorted:
   - python2-URLObject 
   - python2-UkPostcodeParser 
   - python2-Unidecode 
+  - python2-VyattaConfParser 
   - python2-WSGIProxy2 
   - python2-WSME 
   - python2-WTForms 
@@ -17912,6 +17908,7 @@ unsorted:
   - python2-debian 
   - python2-debtcollector 
   - python2-decorator 
+  - python2-deepdiff 
   - python2-defusedxml 
   - python2-delegator 
   - python2-delegator.py 
@@ -18163,6 +18160,7 @@ unsorted:
   - python2-gpod 
   - python2-gprof2dot 
   - python2-gpsd 
+  - python2-gpxpy 
   - python2-grab 
   - python2-graphviz 
   - python2-greenlet 
@@ -18527,8 +18525,6 @@ unsorted:
   - python2-ntlm-auth 
   - python2-ntplib 
   - python2-num2words 
-  - python2-numba 
-  - python2-numba-devel 
   - python2-numericalunits 
   - python2-numexpr 
   - python2-numpy-devel 
@@ -19615,6 +19611,7 @@ unsorted:
   - python3-PrettyTable: [i586] 
   - python3-PsyLab 
   - python3-PsychoPy 
+  - python3-PsychoPy-lang 
   - python3-Pweave 
   - python3-PyAudio 
   - python3-PyAutoGUI 
@@ -19688,6 +19685,7 @@ unsorted:
   - python3-URLObject 
   - python3-UkPostcodeParser 
   - python3-Unidecode 
+  - python3-VyattaConfParser 
   - python3-WSGIProxy2 
   - python3-WSME 
   - python3-WTForms 
@@ -20227,6 +20225,7 @@ unsorted:
   - python3-ddt 
   - python3-debian 
   - python3-debtcollector 
+  - python3-deepdiff 
   - python3-defusedxml 
   - python3-delegator 
   - python3-delegator.py 
@@ -20543,6 +20542,7 @@ unsorted:
   - python3-gphoto2 
   - python3-gprof2dot 
   - python3-gpsd 
+  - python3-gpxpy 
   - python3-grab 
   - python3-graphviz 
   - python3-greenlet-devel 
@@ -32414,6 +32414,7 @@ unsorted:
   - virt-top 
   - virt-v2v: [x86_64] 
   - virt-viewer 
+  - virtme 
   - virtualbox 
   - virtualbox-devel 
   - virtualbox-guest-desktop-icons 

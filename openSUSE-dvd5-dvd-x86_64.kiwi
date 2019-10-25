@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20191023" schemaversion="4.1">
+<image name="OBS__openSUSE___20191024" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20191023</productvar>
+      <productvar name="VERSION">20191024</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20191023,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20191024,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20191023/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20191024/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/suse-tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/suse-tumbleweed</productoption>
@@ -1874,6 +1874,7 @@
       <repopackage name="libgdk_pixbuf-2_0-0"/>
       <repopackage name="libgdk_pixbuf-2_0-0-32bit" arch="x86_64"/>
       <repopackage name="libgdl-3-5"/>
+      <repopackage name="libgdlmm-3_0-2"/>
       <repopackage name="libgdm1"/>
       <repopackage name="libgeany0"/>
       <repopackage name="libgee-0_8-2"/>
@@ -2016,6 +2017,7 @@
       <repopackage name="libgtkmm-3_0-1"/>
       <repopackage name="libgtksourceview-3_0-1"/>
       <repopackage name="libgtksourceview-4-0"/>
+      <repopackage name="libgtksourceviewmm-3_0-0"/>
       <repopackage name="libgtkspell0"/>
       <repopackage name="libgtkspell3-3-0"/>
       <repopackage name="libgtop-2_0-11"/>
@@ -3525,6 +3527,8 @@
       <repopackage name="ncftp"/>
       <repopackage name="ncurses-devel"/>
       <repopackage name="ncurses-utils"/>
+      <repopackage name="nemiver"/>
+      <repopackage name="nemiver-lang"/>
       <repopackage name="net-snmp"/>
       <repopackage name="net-tools"/>
       <repopackage name="net-tools-lang"/>
