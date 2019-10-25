@@ -2075,6 +2075,7 @@
     <package name="libgdbm_compat4" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libgdk_pixbuf-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libgdl-3-5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libgdlmm-3_0-2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libgdm1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgeany0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
     <package name="libgee-0_8-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2203,6 +2204,7 @@
     <package name="libgtkmm-3_0-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgtksourceview-3_0-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libgtksourceview-4-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libgtksourceviewmm-3_0-0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libgtkspell0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgtkspell3-3-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="libgtop-2_0-11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3307,6 +3309,8 @@
     <package name="ncftp" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ncurses-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-C-C++-devel_C_C++ -->
     <package name="ncurses-utils" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="nemiver" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="nemiver-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="net-snmp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="net-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="net-tools-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
