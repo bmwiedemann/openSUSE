@@ -23,7 +23,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           chrony
-Version:        3.4
+Version:        3.5
 Release:        0
 Summary:        System Clock Synchronization Client and Server
 License:        GPL-2.0-only
@@ -35,7 +35,7 @@ Source3:        chrony.dhclient
 Source4:        chrony.helper
 Source5:        chrony-dnssrv@.service
 Source6:        chrony-dnssrv@.timer
-Source7:        https://download.tuxfamily.org/chrony/chrony-3.4-tar-gz-asc.txt#/chrony-%{version}.tar.gz.sig
+Source7:        https://download.tuxfamily.org/chrony/chrony-%{version}-tar-gz-asc.txt#/chrony-%{version}.tar.gz.sig
 Source8:        chrony.keyring
 # Simulator for test suite
 Source10:       https://github.com/mlichvar/clknetsim/archive/%{clknetsim_ver}/clknetsim-%{clknetsim_ver}.tar.gz
@@ -63,6 +63,13 @@ Requires(post): %fillup_prereq
 Requires(pre):  %{_sbindir}/groupadd
 Requires(pre):  %{_sbindir}/useradd
 Provides:       ntp-daemon
+# asciidoctor to create html docs, only available on Leap 15.0 ++
+%if 0%{?suse_version} == 1500 && 0%{?is_opensuse} && !0%{?is_backports}
+BuildRequires:  ruby2.5-rubygem-asciidoctor
+%endif
+%if %{?suse_version} >= 1550
+BuildRequires:  ruby2.6-rubygem-asciidoctor
+%endif
 %ifarch s390 s390x ppc64le
 BuildRequires:  libseccomp-devel >= 2.2.0
 %else
