@@ -1,0 +1,161 @@
+Index: httpd-2.4.41/modules/ssl/ssl_engine_config.c
+===================================================================
+--- httpd-2.4.41.orig/modules/ssl/ssl_engine_config.c	2018-10-18 12:06:37.000000000 +0200
++++ httpd-2.4.41/modules/ssl/ssl_engine_config.c	2019-10-21 21:20:32.102340905 +0200
+@@ -932,7 +932,9 @@ const char *ssl_cmd_SSLCertificateKeyFil
+     SSLSrvConfigRec *sc = mySrvConfig(cmd->server);
+     const char *err;
+ 
+-    if ((err = ssl_cmd_check_file(cmd, &arg))) {
++    /* Check keyfile exists for non-ENGINE keys. */
++    if (!modssl_is_engine_key(arg)
++        && (err = ssl_cmd_check_file(cmd, &arg))) {
+         return err;
+     }
+ 
+Index: httpd-2.4.41/modules/ssl/ssl_engine_init.c
+===================================================================
+--- httpd-2.4.41.orig/modules/ssl/ssl_engine_init.c	2019-08-06 14:16:14.000000000 +0200
++++ httpd-2.4.41/modules/ssl/ssl_engine_init.c	2019-10-21 21:20:32.102340905 +0200
+@@ -1247,6 +1247,8 @@ static apr_status_t ssl_init_server_cert
+                 (certfile = APR_ARRAY_IDX(mctx->pks->cert_files, i,
+                                           const char *));
+          i++) {
++        EVP_PKEY *pkey;
++
+         key_id = apr_psprintf(ptemp, "%s:%d", vhost_id, i);
+ 
+         ERR_clear_error();
+@@ -1281,12 +1283,26 @@ static apr_status_t ssl_init_server_cert
+ 
+         ERR_clear_error();
+ 
+-        if ((SSL_CTX_use_PrivateKey_file(mctx->ssl_ctx, keyfile,
+-                                         SSL_FILETYPE_PEM) < 1) &&
+-            (ERR_GET_FUNC(ERR_peek_last_error())
+-                != X509_F_X509_CHECK_PRIVATE_KEY)) {
++        if (modssl_is_engine_key(keyfile)) {
++            apr_status_t rv;
++
++            if ((rv = modssl_load_engine_pkey(s, ptemp, keyfile, &pkey))) {
++                return rv;
++            }
++
++            if (SSL_CTX_use_PrivateKey(mctx->ssl_ctx, pkey) < 1) {
++                ap_log_error(APLOG_MARK, APLOG_EMERG, 0, s, APLOGNO(10130)
++                             "Failed to configure private key %s from engine",
++                             keyfile);
++                ssl_log_ssl_error(SSLLOG_MARK, APLOG_EMERG, s);
++                return APR_EGENERAL;
++            }
++        }
++        else if ((SSL_CTX_use_PrivateKey_file(mctx->ssl_ctx, keyfile,
++                                              SSL_FILETYPE_PEM) < 1)
++                 && (ERR_GET_FUNC(ERR_peek_last_error())
++                     != X509_F_X509_CHECK_PRIVATE_KEY)) {
+             ssl_asn1_t *asn1;
+-            EVP_PKEY *pkey;
+             const unsigned char *ptr;
+ 
+             ERR_clear_error();
+Index: httpd-2.4.41/modules/ssl/ssl_engine_pphrase.c
+===================================================================
+--- httpd-2.4.41.orig/modules/ssl/ssl_engine_pphrase.c	2018-12-11 15:14:40.000000000 +0100
++++ httpd-2.4.41/modules/ssl/ssl_engine_pphrase.c	2019-10-21 21:20:32.102340905 +0200
+@@ -614,3 +614,52 @@ int ssl_pphrase_Handle_CB(char *buf, int
+      */
+     return (len);
+ }
++
++#if defined(HAVE_OPENSSL_ENGINE_H) && defined(HAVE_ENGINE_INIT)
++apr_status_t modssl_load_engine_pkey(server_rec *s, apr_pool_t *p,
++                                     const char *keyid, EVP_PKEY **ppkey)
++{
++    SSLModConfigRec *mc = myModConfig(s);
++    EVP_PKEY *pPrivateKey = NULL;
++    ENGINE *e;
++    UI_METHOD *ui_method;
++
++    if (!mc->szCryptoDevice) {
++        ap_log_error(APLOG_MARK, APLOG_EMERG, 0, s, APLOGNO(10131)
++                     "Init: Cannot load private key `%s' without engine",
++                     keyid);
++        return ssl_die(s);
++    }
++
++    /*
++     * Using the builtin OpenSSL UI only, for now...
++     */
++    ui_method = UI_OpenSSL();
++
++    if (!(e = ENGINE_by_id(mc->szCryptoDevice))) {
++        ap_log_error(APLOG_MARK, APLOG_EMERG, 0, s, APLOGNO(10132)
++                     "Init: Failed to load Crypto Device API `%s'",
++                     mc->szCryptoDevice);
++        ssl_log_ssl_error(SSLLOG_MARK, APLOG_EMERG, s);
++        return ssl_die(s);
++    }
++
++    if (APLOGdebug(s)) {
++        ENGINE_ctrl_cmd_string(e, "VERBOSE", NULL, 0);
++    }
++
++    pPrivateKey = ENGINE_load_private_key(e, keyid, ui_method, NULL);
++    if (pPrivateKey == NULL) {
++        ap_log_error(APLOG_MARK, APLOG_EMERG, 0, s, APLOGNO(10133)
++                     "Init: Unable to get the private key");
++        ssl_log_ssl_error(SSLLOG_MARK, APLOG_EMERG, s);
++        return ssl_die(s);
++    }
++
++    *ppkey = pPrivateKey;
++
++    ENGINE_free(e);
++
++    return APR_SUCCESS;
++}
++#endif
+Index: httpd-2.4.41/modules/ssl/ssl_private.h
+===================================================================
+--- httpd-2.4.41.orig/modules/ssl/ssl_private.h	2018-11-23 16:10:24.000000000 +0100
++++ httpd-2.4.41/modules/ssl/ssl_private.h	2019-10-21 21:20:32.102340905 +0200
+@@ -1001,6 +1001,10 @@ BOOL         ssl_util_vhost_matches(cons
+ /**  Pass Phrase Support  */
+ apr_status_t ssl_load_encrypted_pkey(server_rec *, apr_pool_t *, int,
+                                      const char *, apr_array_header_t **);
++/* Load private key from the configured ENGINE, returned as **pkey.
++ * Errors logged on failure. */
++apr_status_t modssl_load_engine_pkey(server_rec *s, apr_pool_t *p,
++                                     const char *keyid, EVP_PKEY **ppkey);
+ 
+ /**  Diffie-Hellman Parameter Support  */
+ DH           *ssl_dh_GetParamFromFile(const char *);
+@@ -1106,6 +1110,10 @@ DH *modssl_get_dh_params(unsigned keylen
+  * corresponding SSLConnRec structure for the connection. */
+ int modssl_request_is_tls(const request_rec *r, SSLConnRec **sslconn);
+ 
++/* Returns non-zero if the cert/key filename should be handled through
++ * the configure ENGINE. */
++int modssl_is_engine_key(const char *name);
++
+ int ssl_is_challenge(conn_rec *c, const char *servername, 
+                      X509 **pcert, EVP_PKEY **pkey);
+ 
+Index: httpd-2.4.41/modules/ssl/ssl_util.c
+===================================================================
+--- httpd-2.4.41.orig/modules/ssl/ssl_util.c	2018-11-23 16:10:24.000000000 +0100
++++ httpd-2.4.41/modules/ssl/ssl_util.c	2019-10-21 21:20:32.106340927 +0200
+@@ -480,3 +480,13 @@ void ssl_util_thread_id_setup(apr_pool_t
+ }
+ 
+ #endif /* #if APR_HAS_THREADS && MODSSL_USE_OPENSSL_PRE_1_1_API */
++
++int modssl_is_engine_key(const char *name)
++{
++#if defined(HAVE_OPENSSL_ENGINE_H) && defined(HAVE_ENGINE_INIT)
++    /* ### Can handle any other special ENGINE key names here? */
++    return strncmp(name, "pkcs11:", 7) == 0;
++#else
++    return 0;
++#endif
++}

@@ -1,0 +1,178 @@
+Index: httpd-2.4.41/modules/ssl/ssl_util.c
+===================================================================
+--- httpd-2.4.41.orig/modules/ssl/ssl_util.c	2019-10-21 21:29:44.081536735 +0200
++++ httpd-2.4.41/modules/ssl/ssl_util.c	2019-10-21 21:29:44.093536806 +0200
+@@ -481,7 +481,7 @@ void ssl_util_thread_id_setup(apr_pool_t
+ 
+ #endif /* #if APR_HAS_THREADS && MODSSL_USE_OPENSSL_PRE_1_1_API */
+ 
+-int modssl_is_engine_key(const char *name)
++int modssl_is_engine_id(const char *name)
+ {
+ #if defined(HAVE_OPENSSL_ENGINE_H) && defined(HAVE_ENGINE_INIT)
+     /* ### Can handle any other special ENGINE key names here? */
+Index: httpd-2.4.41/modules/ssl/ssl_engine_config.c
+===================================================================
+--- httpd-2.4.41.orig/modules/ssl/ssl_engine_config.c	2019-10-21 21:29:44.081536735 +0200
++++ httpd-2.4.41/modules/ssl/ssl_engine_config.c	2019-10-21 21:31:14.970078134 +0200
+@@ -916,7 +916,9 @@ const char *ssl_cmd_SSLCertificateFile(c
+     SSLSrvConfigRec *sc = mySrvConfig(cmd->server);
+     const char *err;
+ 
+-    if ((err = ssl_cmd_check_file(cmd, &arg))) {
++    /* Only check for non-ENGINE based certs. */
++    if (!modssl_is_engine_id(arg)
++        && (err = ssl_cmd_check_file(cmd, &arg))) {
+         return err;
+     }
+ 
+@@ -933,7 +935,7 @@ const char *ssl_cmd_SSLCertificateKeyFil
+     const char *err;
+ 
+     /* Check keyfile exists for non-ENGINE keys. */
+-    if (!modssl_is_engine_key(arg)
++    if (!modssl_is_engine_id(arg)
+         && (err = ssl_cmd_check_file(cmd, &arg))) {
+         return err;
+     }
+Index: httpd-2.4.41/modules/ssl/ssl_engine_init.c
+===================================================================
+--- httpd-2.4.41.orig/modules/ssl/ssl_engine_init.c	2019-10-21 21:29:44.081536735 +0200
++++ httpd-2.4.41/modules/ssl/ssl_engine_init.c	2019-10-21 21:29:44.097536830 +0200
+@@ -1248,13 +1248,17 @@ static apr_status_t ssl_init_server_cert
+                                           const char *));
+          i++) {
+         EVP_PKEY *pkey;
++        const char *engine_certfile = NULL;
+ 
+         key_id = apr_psprintf(ptemp, "%s:%d", vhost_id, i);
+ 
+         ERR_clear_error();
+ 
+         /* first the certificate (public key) */
+-        if (mctx->cert_chain) {
++        if (modssl_is_engine_id(certfile)) {
++            engine_certfile = certfile;
++        }
++        else if (mctx->cert_chain) {
+             if ((SSL_CTX_use_certificate_file(mctx->ssl_ctx, certfile,
+                                               SSL_FILETYPE_PEM) < 1)) {
+                 ap_log_error(APLOG_MARK, APLOG_EMERG, 0, s, APLOGNO(02561)
+@@ -1283,13 +1287,28 @@ static apr_status_t ssl_init_server_cert
+ 
+         ERR_clear_error();
+ 
+-        if (modssl_is_engine_key(keyfile)) {
++        if (modssl_is_engine_id(keyfile)) {
+             apr_status_t rv;
+ 
+-            if ((rv = modssl_load_engine_pkey(s, ptemp, keyfile, &pkey))) {
++            cert = NULL;
++            if ((rv = modssl_load_engine_keypair(s, ptemp, engine_certfile,
++                                                 keyfile, &cert, &pkey))) {
+                 return rv;
+             }
+ 
++            if (cert) {
++                if (SSL_CTX_use_certificate(mctx->ssl_ctx, cert) < 1) {
++                    ap_log_error(APLOG_MARK, APLOG_EMERG, 0, s, APLOGNO()
++                                 "Failed to configure engine certificate %s, check %s",
++                                 key_id, certfile);
++                    ssl_log_ssl_error(SSLLOG_MARK, APLOG_EMERG, s);
++                    return APR_EGENERAL;
++                }
++
++                /* SSL_CTX now owns the cert. */
++                X509_free(cert);
++            }
++
+             if (SSL_CTX_use_PrivateKey(mctx->ssl_ctx, pkey) < 1) {
+                 ap_log_error(APLOG_MARK, APLOG_EMERG, 0, s, APLOGNO(10130)
+                              "Failed to configure private key %s from engine",
+Index: httpd-2.4.41/modules/ssl/ssl_engine_pphrase.c
+===================================================================
+--- httpd-2.4.41.orig/modules/ssl/ssl_engine_pphrase.c	2019-10-21 21:29:44.081536735 +0200
++++ httpd-2.4.41/modules/ssl/ssl_engine_pphrase.c	2019-10-21 21:29:44.097536830 +0200
+@@ -616,11 +616,11 @@ int ssl_pphrase_Handle_CB(char *buf, int
+ }
+ 
+ #if defined(HAVE_OPENSSL_ENGINE_H) && defined(HAVE_ENGINE_INIT)
+-apr_status_t modssl_load_engine_pkey(server_rec *s, apr_pool_t *p,
+-                                     const char *keyid, EVP_PKEY **ppkey)
++apr_status_t modssl_load_engine_keypair(server_rec *s, apr_pool_t *p,
++                                        const char *certid, const char *keyid,
++                                        X509 **pubkey, EVP_PKEY **privkey)
+ {
+     SSLModConfigRec *mc = myModConfig(s);
+-    EVP_PKEY *pPrivateKey = NULL;
+     ENGINE *e;
+     UI_METHOD *ui_method;
+ 
+@@ -648,16 +648,30 @@ apr_status_t modssl_load_engine_pkey(ser
+         ENGINE_ctrl_cmd_string(e, "VERBOSE", NULL, 0);
+     }
+ 
+-    pPrivateKey = ENGINE_load_private_key(e, keyid, ui_method, NULL);
+-    if (pPrivateKey == NULL) {
++    if (certid) {
++        struct {
++            const char *cert_id;
++            X509 *cert;
++        } params = { certid, NULL };
++
++        if (!ENGINE_ctrl_cmd(e, "LOAD_CERT_CTRL", 0, &params, NULL, 1)) {
++            ap_log_error(APLOG_MARK, APLOG_EMERG, 0, s, APLOGNO(10136)
++                         "Init: Unable to get the certificate");
++            ssl_log_ssl_error(SSLLOG_MARK, APLOG_EMERG, s);
++            return ssl_die(s);
++        }
++
++        *pubkey = params.cert;
++    }
++
++    *privkey = ENGINE_load_private_key(e, keyid, ui_method, NULL);
++    if (*privkey == NULL) {
+         ap_log_error(APLOG_MARK, APLOG_EMERG, 0, s, APLOGNO(10133)
+                      "Init: Unable to get the private key");
+         ssl_log_ssl_error(SSLLOG_MARK, APLOG_EMERG, s);
+         return ssl_die(s);
+     }
+ 
+-    *ppkey = pPrivateKey;
+-
+     ENGINE_free(e);
+ 
+     return APR_SUCCESS;
+Index: httpd-2.4.41/modules/ssl/ssl_private.h
+===================================================================
+--- httpd-2.4.41.orig/modules/ssl/ssl_private.h	2019-10-21 21:29:44.081536735 +0200
++++ httpd-2.4.41/modules/ssl/ssl_private.h	2019-10-21 21:29:44.097536830 +0200
+@@ -1001,10 +1001,13 @@ BOOL         ssl_util_vhost_matches(cons
+ /**  Pass Phrase Support  */
+ apr_status_t ssl_load_encrypted_pkey(server_rec *, apr_pool_t *, int,
+                                      const char *, apr_array_header_t **);
+-/* Load private key from the configured ENGINE, returned as **pkey.
+- * Errors logged on failure. */
+-apr_status_t modssl_load_engine_pkey(server_rec *s, apr_pool_t *p,
+-                                     const char *keyid, EVP_PKEY **ppkey);
++
++/* Load public and/or private key from the configured ENGINE. Private
++ * key returned as *pkey.  certid can be NULL, in which case *pubkey
++ * is not altered.  Errors logged on failure. */
++apr_status_t modssl_load_engine_keypair(server_rec *s, apr_pool_t *p,
++                                        const char *certid, const char *keyid,
++                                        X509 **pubkey, EVP_PKEY **privkey);
+ 
+ /**  Diffie-Hellman Parameter Support  */
+ DH           *ssl_dh_GetParamFromFile(const char *);
+@@ -1111,8 +1114,8 @@ DH *modssl_get_dh_params(unsigned keylen
+ int modssl_request_is_tls(const request_rec *r, SSLConnRec **sslconn);
+ 
+ /* Returns non-zero if the cert/key filename should be handled through
+- * the configure ENGINE. */
+-int modssl_is_engine_key(const char *name);
++ * the configured ENGINE. */
++int modssl_is_engine_id(const char *name);
+ 
+ int ssl_is_challenge(conn_rec *c, const char *servername, 
+                      X509 **pcert, EVP_PKEY **pkey);

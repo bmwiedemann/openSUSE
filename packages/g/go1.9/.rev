@@ -78,4 +78,13 @@
     <comment></comment>
     <requestid>711930</requestid>
   </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>23f774d5a08453ddc0bec7b0f106bd1a</srcmd5>
+    <version>1.9.7</version>
+    <time>1572021486</time>
+    <user>dimstar_suse</user>
+    <comment>- Let RPM evaluate the go_api version compare, drop no longer required bc.
+- Own the gdbinit.d directory, avoid the build dependency on gdb. (forwarded request 741606 from StefanBruens)</comment>
+    <requestid>741611</requestid>
+  </revision>
 </revisionlist>

@@ -427,4 +427,19 @@
   present (bsc#1143635)</comment>
     <requestid>731242</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a2c21782067cdd80c8150b4da45f7787</srcmd5>
+    <version>0.3.23</version>
+    <time>1572021531</time>
+    <user>dimstar_suse</user>
+    <comment>- 0.3.23
+  fix .spec file to correctly apply switch_server_cert_location_to_etc.patch to SLE15SP2+ (bsc#1130864)
+
+- Update to 0.3.22
+  switch_server_cert_location_to_etc.patch: add patch to switch server cert path for SLE15.2+ to /etc (bsc#1130864)
+
+- Update to 0.3.21
+  Fix error on first activation of packagehub extension (bsc#1124318)</comment>
+    <requestid>741836</requestid>
+  </revision>
 </revisionlist>

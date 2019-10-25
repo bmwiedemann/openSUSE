@@ -359,16 +359,7 @@
  arrays of characters representing all or part of a CRT screen.
 --- misc/gen-pkgconfig.in
 +++ misc/gen-pkgconfig.in	2019-08-12 08:07:59.759015287 +0000
-@@ -78,7 +78,7 @@ if [ "$includedir" != "/usr/include" ];
- fi
- 
- LDFLAGS=
--if [ "$libdir" != "/usr/lib" ]; then
-+if [ "$libdir" != "/usr/lib" -a "$libdir" != "/usr/lib64" ]; then
- 	LDFLAGS="$LDFLAGS -L\${libdir}"
- fi
- if [ "x@EXTRA_LDFLAGS@" != "x" ]; then
-@@ -101,6 +101,7 @@ do
+@@ -127,6 +127,7 @@ do
  	LIBS="-l$name"
  
  	desc="ncurses @NCURSES_MAJOR@.@NCURSES_MINOR@"
@@ -376,7 +367,7 @@
  	reqs=
  
  	if [ $name = $MAIN_LIBRARY ]; then
-@@ -110,9 +111,11 @@ do
+@@ -137,9 +138,11 @@ do
  		desc="$desc terminal interface library"
  	elif expr $name : ".*${CXX_NAME}.*" >/dev/null ; then
  		reqs="$PANEL_LIBRARY${suffix}, $MENU_LIBRARY${suffix}, $FORM_LIBRARY${suffix}, $MAIN_LIBRARY${suffix}"
@@ -388,7 +379,7 @@
  		desc="$desc add-on library"
  	fi
  
-@@ -122,6 +125,8 @@ do
+@@ -149,6 +152,8 @@ do
  	   [ $NEED_TINFO != yes ] ; then
  		[ -n "$reqs" ] && reqs="$reqs, "
  		reqs="${reqs}${SUB_LIBRARY}${suffix}"

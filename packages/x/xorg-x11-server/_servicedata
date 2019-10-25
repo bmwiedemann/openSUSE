@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://gitlab.freedesktop.org/xorg/xserver.git</param>
+              <param name="changesrevision">b6ee04e774af1fc2e2560583c95dfac688494c2a</param></service></servicedata>

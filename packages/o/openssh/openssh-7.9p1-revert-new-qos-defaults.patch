@@ -1,0 +1,76 @@
+commit 101aa2f70c937abb428c9433c39ba0fd9a91fe6b
+Author: Hans Petter Jansson <hpj@cl.no>
+Date:   Thu Jun 20 23:54:11 2019 +0200
+
+    Revert IPQoS DSCP AF21/CS1 from upstream due to bugs in other software
+    
+    Reverts OpenBSD-Commit-ID: d11d2a4484f461524ef0c20870523dfcdeb52181
+
+diff --git a/readconf.c b/readconf.c
+index 24f2cb1..bbdea0d 100644
+--- a/readconf.c
++++ b/readconf.c
+@@ -2183,9 +2183,9 @@ fill_default_options(Options * options)
+ 	if (options->visual_host_key == -1)
+ 		options->visual_host_key = 0;
+ 	if (options->ip_qos_interactive == -1)
+-		options->ip_qos_interactive = IPTOS_DSCP_AF21;
++		options->ip_qos_interactive = IPTOS_LOWDELAY;
+ 	if (options->ip_qos_bulk == -1)
+-		options->ip_qos_bulk = IPTOS_DSCP_CS1;
++		options->ip_qos_bulk = IPTOS_THROUGHPUT;
+ 	if (options->request_tty == -1)
+ 		options->request_tty = REQUEST_TTY_AUTO;
+ 	if (options->proxy_use_fdpass == -1)
+diff --git a/servconf.c b/servconf.c
+index 13cf154..766ac6b 100644
+--- a/servconf.c
++++ b/servconf.c
+@@ -445,9 +445,9 @@ fill_default_server_options(ServerOptions *options)
+ 	if (options->permit_tun == -1)
+ 		options->permit_tun = SSH_TUNMODE_NO;
+ 	if (options->ip_qos_interactive == -1)
+-		options->ip_qos_interactive = IPTOS_DSCP_AF21;
++		options->ip_qos_interactive = IPTOS_LOWDELAY;
+ 	if (options->ip_qos_bulk == -1)
+-		options->ip_qos_bulk = IPTOS_DSCP_CS1;
++		options->ip_qos_bulk = IPTOS_THROUGHPUT;
+ 	if (options->version_addendum == NULL)
+ 		options->version_addendum = xstrdup("");
+ 	if (options->fwd_opts.streamlocal_bind_mask == (mode_t)-1)
+diff --git a/ssh_config.5 b/ssh_config.5
+index 3bf0502..10246f8 100644
+--- a/ssh_config.5
++++ b/ssh_config.5
+@@ -1088,11 +1088,9 @@ If one argument is specified, it is used as the packet class unconditionally.
+ If two values are specified, the first is automatically selected for
+ interactive sessions and the second for non-interactive sessions.
+ The default is
+-.Cm af21
+-(Low-Latency Data)
++.Cm lowdelay
+ for interactive sessions and
+-.Cm cs1
+-(Lower Effort)
++.Cm throughput
+ for non-interactive sessions.
+ .It Cm KbdInteractiveAuthentication
+ Specifies whether to use keyboard-interactive authentication.
+diff --git a/sshd_config.5 b/sshd_config.5
+index 50a4917..a276fcb 100644
+--- a/sshd_config.5
++++ b/sshd_config.5
+@@ -868,11 +868,9 @@ If one argument is specified, it is used as the packet class unconditionally.
+ If two values are specified, the first is automatically selected for
+ interactive sessions and the second for non-interactive sessions.
+ The default is
+-.Cm af21
+-(Low-Latency Data)
++.Cm lowdelay
+ for interactive sessions and
+-.Cm cs1
+-(Lower Effort)
++.Cm throughput
+ for non-interactive sessions.
+ .It Cm KbdInteractiveAuthentication
+ Specifies whether to allow keyboard-interactive authentication.

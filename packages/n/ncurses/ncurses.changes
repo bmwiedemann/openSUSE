@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Oct 21 09:33:41 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20191019
+  + modify make_hash to not require --disable-leaks, to simplify building
+    with address-sanitizer.
+  + modify tic to exit if it cannot remove a conflicting name, because
+    treating that as a partial success can cause an infinite loop in
+    use-resolution (report/testcase by Hongxu Chen, cf: 20111001).
+
+-------------------------------------------------------------------
+Wed Oct 16 08:29:53 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20191015
+  + improve buffer-checks in captoinfo.c, for some cases when the
+    input string is shorter than expected.
+  > fix two errata in tic (report/testcases by Hongxu Chen):
+  + check for missing character after backslash in write_it
+  + check for missing characters after "%>" when converting from termcap
+    syntax (cf: 980530).
+
+-------------------------------------------------------------------
+Mon Oct 14 10:04:05 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Avoid recursion trouble in spec file cause by undefined _lto_cflags 
+
+-------------------------------------------------------------------
+Mon Oct 14 06:38:31 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20191012
+  + amend recent changes to ncurses*-config and pc-files to filter out
+    Debian linker-flags (report by Sven Joachim, cf: 20150516).
+  + clarify relationship between tic, infocmp and captoinfo in manpage.
+  + check for invalid hashcode in _nc_find_type_entry and
+    _nc_find_name_entry.
+  > fix several errata in tic (reports/testcases by "zjuchenyuan"):
+  + check for invalid hashcode in _nc_find_entry.
+  + check for missing character after backslash in fmt_entry
+  + check for acsc with odd length in dump_entry in check for one-one
+    mapping (cf: 20060415);
+  + check length when converting from old AIX box_chars_1 capability,
+    overlooked in changes to eliminate strcpy (cf: 20001007).
+- Add ncurses patch 20191005
+  + modify the ncurse*-config and pc-files to more closely match for the
+    -I and -l options.
+
+-------------------------------------------------------------------
 Tue Oct  1 07:28:54 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20190928

@@ -1,4 +1,136 @@
 -------------------------------------------------------------------
+Mon Oct 14 23:58:39 UTC 2019 - Hans Petter Jansson <hpj@suse.com>
+
+- Add openssh-7.9p1-keygen-preserve-perms.patch (bsc#1150574).
+  This attempts to preserve the permissions of any existing
+  known_hosts file when modified by ssh-keygen (for instance,
+  with -R).
+- Add patch from upstream openssh-7.9p1-revert-new-qos-defaults.patch
+
+-------------------------------------------------------------------
+Mon Oct 14 23:56:42 UTC 2019 - Hans Petter Jansson <hpj@suse.com>
+
+- Run 'ssh-keygen -A' on startup only if SSHD_AUTO_KEYGEN="yes"
+  in /etc/sysconfig/ssh. This is set to "yes" by default, but
+  can be changed by the system administrator (bsc#1139089).
+
+-------------------------------------------------------------------
+Mon Oct 14 23:50:04 UTC 2019 - Hans Petter Jansson <hpj@suse.com>
+
+- Add openssh-7.9p1-keygen-preserve-perms.patch (bsc#1150574).
+  This attempts to preserve the permissions of any existing
+  known_hosts file when modified by ssh-keygen (for instance,
+  with -R).
+
+-------------------------------------------------------------------
+Thu Oct 10 00:41:18 UTC 2019 - Hans Petter Jansson <hpj@suse.com>
+
+- Version update to 8.1p1:
+  * ssh-keygen(1): when acting as a CA and signing certificates with
+    an RSA key, default to using the rsa-sha2-512 signature algorithm.
+    Certificates signed by RSA keys will therefore be incompatible
+    with OpenSSH versions prior to 7.2 unless the default is
+    overridden (using "ssh-keygen -t ssh-rsa -s ...").
+  * ssh(1): Allow %n to be expanded in ProxyCommand strings
+  * ssh(1), sshd(8): Allow prepending a list of algorithms to the
+    default set by starting the list with the '^' character, E.g.
+    "HostKeyAlgorithms ^ssh-ed25519"
+  * ssh-keygen(1): add an experimental lightweight signature and
+    verification ability. Signatures may be made using regular ssh keys
+    held on disk or stored in a ssh-agent and verified against an
+    authorized_keys-like list of allowed keys. Signatures embed a
+    namespace that prevents confusion and attacks between different
+    usage domains (e.g. files vs email).
+  * ssh-keygen(1): print key comment when extracting public key from a
+    private key.
+  * ssh-keygen(1): accept the verbose flag when searching for host keys
+    in known hosts (i.e. "ssh-keygen -vF host") to print the matching
+    host's random-art signature too.
+  * All: support PKCS8 as an optional format for storage of private
+    keys to disk.  The OpenSSH native key format remains the default,
+    but PKCS8 is a superior format to PEM if interoperability with
+    non-OpenSSH software is required, as it may use a less insecure
+    key derivation function than PEM's.
+
+- Additional changes from 8.0p1 release:
+  * scp(1): Add "-T" flag to disable client-side filtering of
+    server file list.
+  * sshd(8): Remove support for obsolete "host/port" syntax.
+  * ssh(1), ssh-agent(1), ssh-add(1): Add support for ECDSA keys in
+    PKCS#11 tokens.
+  * ssh(1), sshd(8): Add experimental quantum-computing resistant
+    key exchange method, based on a combination of Streamlined NTRU
+    Prime 4591^761 and X25519.
+  * ssh-keygen(1): Increase the default RSA key size to 3072 bits,
+    following NIST Special Publication 800-57's guidance for a
+    128-bit equivalent symmetric security level.
+  * ssh(1): Allow "PKCS11Provider=none" to override later instances of
+    the PKCS11Provider directive in ssh_config,
+  * sshd(8): Add a log message for situations where a connection is
+    dropped for attempting to run a command but a sshd_config
+    ForceCommand=internal-sftp restriction is in effect.
+  * ssh(1): When prompting whether to record a new host key, accept
+    the key fingerprint as a synonym for "yes". This allows the user
+    to paste a fingerprint obtained out of band at the prompt and
+    have the client do the comparison for you.
+  * ssh-keygen(1): When signing multiple certificates on a single
+    command-line invocation, allow automatically incrementing the
+    certificate serial number.
+  * scp(1), sftp(1): Accept -J option as an alias to ProxyJump on
+    the scp and sftp command-lines.
+  * ssh-agent(1), ssh-pkcs11-helper(8), ssh-add(1): Accept "-v"
+    command-line flags to increase the verbosity of output; pass
+    verbose flags though to subprocesses, such as ssh-pkcs11-helper
+    started from ssh-agent.
+  * ssh-add(1): Add a "-T" option to allowing testing whether keys in
+    an agent are usable by performing a signature and a verification.
+  * sftp-server(8): Add a "lsetstat@openssh.com" protocol extension
+    that replicates the functionality of the existing SSH2_FXP_SETSTAT
+    operation but does not follow symlinks.
+  * sftp(1): Add "-h" flag to chown/chgrp/chmod commands to request
+    they do not follow symlinks.
+  * sshd(8): Expose $SSH_CONNECTION in the PAM environment. This makes
+    the connection 4-tuple available to PAM modules that wish to use
+    it in decision-making.
+  * sshd(8): Add a ssh_config "Match final" predicate Matches in same
+    pass as "Match canonical" but doesn't require hostname
+    canonicalisation be enabled.
+  * sftp(1): Support a prefix of '@' to suppress echo of sftp batch
+    commands.
+  * ssh-keygen(1): When printing certificate contents using
+    "ssh-keygen -Lf /path/certificate", include the algorithm that
+    the CA used to sign the cert.
+
+- Rebased patches:
+  * openssh-7.7p1-IPv6_X_forwarding.patch
+  * openssh-7.7p1-X_forward_with_disabled_ipv6.patch
+  * openssh-7.7p1-cavstest-ctr.patch
+  * openssh-7.7p1-cavstest-kdf.patch
+  * openssh-7.7p1-disable_openssl_abi_check.patch
+  * openssh-7.7p1-fips.patch
+  * openssh-7.7p1-fips_checks.patch
+  * openssh-7.7p1-hostname_changes_when_forwarding_X.patch
+  * openssh-7.7p1-ldap.patch
+  * openssh-7.7p1-seed-prng.patch
+  * openssh-7.7p1-sftp_force_permissions.patch
+  * openssh-7.7p1-sftp_print_diagnostic_messages.patch
+  * openssh-8.0p1-gssapi-keyex.patch (formerly
+    openssh-7.7p1-gssapi_key_exchange.patch)
+  * openssh-8.1p1-audit.patch (formerly openssh-7.7p1-audit.patch)
+
+- Removed patches (integrated upstream):
+  * 0001-upstream-Fix-two-race-conditions-in-sshd-relating-to.patch
+  * openssh-7.7p1-seccomp_ioctl_s390_EP11.patch
+  * openssh-7.9p1-CVE-2018-20685.patch
+  * openssh-7.9p1-brace-expansion.patch
+  * openssh-CVE-2019-6109-force-progressmeter-update.patch
+  * openssh-CVE-2019-6109-sanitize-scp-filenames.patch
+  * openssh-CVE-2019-6111-scp-client-wildcard.patch
+
+- Removed patches (obsolete):
+  * openssh-openssl-1_0_0-compatibility.patch
+
+-------------------------------------------------------------------
 Mon Aug 19 11:24:36 CEST 2019 - kukuk@suse.de
 
 - don't install SuSEfirewall2 service on Factory, since SuSEfirewall2

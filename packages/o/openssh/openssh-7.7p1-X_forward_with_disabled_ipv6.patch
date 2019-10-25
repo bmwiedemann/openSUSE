@@ -3,15 +3,11 @@
 Do not throw away already open sockets for X11 forwarding if another socket
 family is not available for bind()
 
-diff --git a/openssh-7.7p1/channels.c b/openssh-7.7p1/channels.c
---- openssh-7.7p1/channels.c
-+++ openssh-7.7p1/channels.c
-@@ -4421,16 +4421,23 @@ x11_create_display_inet(struct ssh *ssh,
- 			if (ai->ai_family == AF_INET6)
- 				sock_set_v6only(sock);
- 			if (x11_use_localhost)
- 				set_reuseaddr(sock);
- 			if (bind(sock, ai->ai_addr, ai->ai_addrlen) < 0) {
+diff --git a/channels.c b/channels.c
+index f51b7e3..95af47e 100644
+--- a/channels.c
++++ b/channels.c
+@@ -4637,6 +4637,13 @@ x11_create_display_inet(struct ssh *ssh, int x11_display_offset,
  				debug2("%s: bind port %d: %.100s", __func__,
  				    port, strerror(errno));
  				close(sock);
@@ -21,12 +17,7 @@ diff --git a/openssh-7.7p1/channels.c b/openssh-7.7p1/channels.c
 +				 * disabled while being supported)
 +				 */
 +				if (EADDRNOTAVAIL == errno)
-+    					continue;
++					continue;
  				for (n = 0; n < num_socks; n++)
  					close(socks[n]);
  				num_socks = 0;
- 				break;
- 			}
- 			socks[num_socks++] = sock;
- 			if (num_socks == NUM_SOCKS)
- 				break;

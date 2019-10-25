@@ -3307,4 +3307,12 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
 - Rebase patches with quilt.</comment>
     <requestid>732654</requestid>
   </revision>
+  <revision rev="374" vrev="1">
+    <srcmd5>a680791ec3d6af5b7f6920506147b663</srcmd5>
+    <version>1.20.5+24</version>
+    <time>1572021509</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>741720</requestid>
+  </revision>
 </revisionlist>

@@ -1,5 +1,8 @@
 #!/bin/sh
-if ! grep -q '^[[:space:]]*HostKey[[:space:]]' /etc/ssh/sshd_config; then
+
+. /etc/sysconfig/ssh
+
+if [ "$SSHD_AUTO_KEYGEN" = "yes" ]; then
     echo "Checking for missing server keys in /etc/ssh"
     ssh-keygen -A
 fi

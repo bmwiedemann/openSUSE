@@ -28,7 +28,7 @@ URL:            https://www.gnu.org/software/texinfo/
 Source0:        https://ftp.gnu.org/pub/gnu/texinfo/texinfo-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/pub/gnu/texinfo/texinfo-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
-Source10:       info-dir
+Source42:       %{name}-rpmlintrc
 Patch1:         texinfo-zlib.patch
 Patch2:         install-info_exitcode.patch
 BuildRequires:  automake
@@ -131,8 +131,6 @@ mkdir -p %{buildroot}/sbin
 mv %{buildroot}%{_bindir}/install-info %{buildroot}/sbin/
 ln -sf ../../sbin/install-info %{buildroot}%{_bindir}/install-info
 
-install -m 644 %{SOURCE10} %{buildroot}%{_infodir}/dir
-
 %find_lang %{name} %{name}.lang
 %find_lang %{name}_document %{name}_document.lang
 
@@ -218,7 +216,7 @@ end
 
 %files -n info
 %defattr(-,root,root,0755)
-%config(noreplace) %verify(not md5 size mtime) %{_infodir}/dir
+%ghost %verify(not md5 size mtime) %{_infodir}/dir
 /sbin/install-info
 %{_bindir}/install-info
 %{_bindir}/info

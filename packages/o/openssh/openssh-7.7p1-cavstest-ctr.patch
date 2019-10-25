@@ -2,11 +2,11 @@
 # Parent  cc1022edba2c5eeb0facba08468f65afc2466b63
 CAVS test for OpenSSH's own CTR encryption mode implementation
 
-Index: openssh-7.9p1/Makefile.in
-===================================================================
---- openssh-7.9p1.orig/Makefile.in
-+++ openssh-7.9p1/Makefile.in
-@@ -24,6 +24,7 @@ ASKPASS_PROGRAM=$(libexecdir)/ssh-askpas
+diff --git a/Makefile.in b/Makefile.in
+index 7488595..d426006 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -24,6 +24,7 @@ ASKPASS_PROGRAM=$(libexecdir)/ssh-askpass
  SFTP_SERVER=$(libexecdir)/sftp-server
  SSH_KEYSIGN=$(libexecdir)/ssh-keysign
  SSH_PKCS11_HELPER=$(libexecdir)/ssh-pkcs11-helper
@@ -23,7 +23,7 @@ Index: openssh-7.9p1/Makefile.in
  XMSS_OBJS=\
  	ssh-xmss.o \
  	sshkey-xmss.o \
-@@ -204,6 +207,10 @@ sftp-server$(EXEEXT): $(LIBCOMPAT) libss
+@@ -210,6 +213,10 @@ sftp-server$(EXEEXT): $(LIBCOMPAT) libssh.a sftp.o sftp-common.o sftp-server.o s
  sftp$(EXEEXT): $(LIBCOMPAT) libssh.a sftp.o sftp-client.o sftp-common.o sftp-glob.o progressmeter.o
  	$(LD) -o $@ progressmeter.o sftp.o sftp-client.o sftp-common.o sftp-glob.o $(LDFLAGS) -lssh -lopenbsd-compat $(LIBS) $(LIBEDIT)
  
@@ -34,7 +34,7 @@ Index: openssh-7.9p1/Makefile.in
  # test driver for the loginrec code - not built by default
  logintest: logintest.o $(LIBCOMPAT) libssh.a loginrec.o
  	$(LD) -o $@ logintest.o $(LDFLAGS) loginrec.o -lopenbsd-compat -lssh $(LIBS)
-@@ -348,6 +355,7 @@ install-files:
+@@ -354,6 +361,7 @@ install-files:
  	$(INSTALL) -m 0755 $(STRIP_OPT) ssh-pkcs11-helper$(EXEEXT) $(DESTDIR)$(SSH_PKCS11_HELPER)$(EXEEXT)
  	$(INSTALL) -m 0755 $(STRIP_OPT) sftp$(EXEEXT) $(DESTDIR)$(bindir)/sftp$(EXEEXT)
  	$(INSTALL) -m 0755 $(STRIP_OPT) sftp-server$(EXEEXT) $(DESTDIR)$(SFTP_SERVER)$(EXEEXT)
@@ -42,10 +42,11 @@ Index: openssh-7.9p1/Makefile.in
  	$(INSTALL) -m 644 ssh.1.out $(DESTDIR)$(mandir)/$(mansubdir)1/ssh.1
  	$(INSTALL) -m 644 scp.1.out $(DESTDIR)$(mandir)/$(mansubdir)1/scp.1
  	$(INSTALL) -m 644 ssh-add.1.out $(DESTDIR)$(mandir)/$(mansubdir)1/ssh-add.1
-Index: openssh-7.9p1/cavstest-ctr.c
-===================================================================
+diff --git a/cavstest-ctr.c b/cavstest-ctr.c
+new file mode 100644
+index 0000000..f81cb72
 --- /dev/null
-+++ openssh-7.9p1/cavstest-ctr.c
++++ b/cavstest-ctr.c
 @@ -0,0 +1,214 @@
 +/*
 + *
@@ -261,13 +262,13 @@ Index: openssh-7.9p1/cavstest-ctr.c
 +	printf("\n");
 +	return 0;
 +}
-Index: openssh-7.9p1/cipher.c
-===================================================================
---- openssh-7.9p1.orig/cipher.c
-+++ openssh-7.9p1/cipher.c
-@@ -54,15 +54,6 @@
- #include "fips.h"
- #include "log.h"
+diff --git a/cipher.c b/cipher.c
+index acca752..b67a4ff 100644
+--- a/cipher.c
++++ b/cipher.c
+@@ -58,15 +58,6 @@
+ #define EVP_CIPHER_CTX void
+ #endif
  
 -struct sshcipher_ctx {
 -	int	plaintext;
@@ -281,11 +282,11 @@ Index: openssh-7.9p1/cipher.c
  struct sshcipher {
  	char	*name;
  	u_int	block_size;
-Index: openssh-7.9p1/cipher.h
-===================================================================
---- openssh-7.9p1.orig/cipher.h
-+++ openssh-7.9p1/cipher.h
-@@ -46,7 +46,15 @@
+diff --git a/cipher.h b/cipher.h
+index 5843aab..d7d8c89 100644
+--- a/cipher.h
++++ b/cipher.h
+@@ -48,7 +48,15 @@
  #define CIPHER_DECRYPT		0
  
  struct sshcipher;

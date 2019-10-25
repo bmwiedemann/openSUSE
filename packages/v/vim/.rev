@@ -4100,4 +4100,12 @@ always built-in because vim has direct perl dependencies anyway.
   * Some files have a weird name to fit in 8.3 characters.</comment>
     <requestid>740984</requestid>
   </revision>
+  <revision rev="244" vrev="2">
+    <srcmd5>b77dd40e8d4de361293b06ae7514dee0</srcmd5>
+    <version>8.1.2148</version>
+    <time>1572021578</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>742143</requestid>
+  </revision>
 </revisionlist>

@@ -3,23 +3,23 @@
 FIPS 140-2 compliance. Perform selftests on start and use only FIPS approved
 algorithms.
 
-Index: openssh-7.9p1/Makefile.in
-===================================================================
---- openssh-7.9p1.orig/Makefile.in	2019-02-28 17:20:15.767164591 +0100
-+++ openssh-7.9p1/Makefile.in	2019-03-12 11:41:49.662894934 +0100
-@@ -102,6 +102,8 @@ LIBSSH_OBJS=${LIBOPENSSH_OBJS} \
- 	kexdhs.o kexgexs.o kexecdhs.o kexc25519s.o \
+diff --git a/Makefile.in b/Makefile.in
+index 1d2b2d9..7488595 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -103,6 +103,8 @@ LIBSSH_OBJS=${LIBOPENSSH_OBJS} \
  	platform-pledge.o platform-tracing.o platform-misc.o
+ 
  
 +LIBSSH_OBJS += fips.o
 +
  SSHOBJS= ssh.o readconf.o clientloop.o sshtty.o \
  	sshconnect.o sshconnect2.o mux.o
  
-Index: openssh-7.9p1/cipher-ctr.c
-===================================================================
---- openssh-7.9p1.orig/cipher-ctr.c	2018-10-17 02:01:20.000000000 +0200
-+++ openssh-7.9p1/cipher-ctr.c	2019-02-28 17:20:15.919165544 +0100
+diff --git a/cipher-ctr.c b/cipher-ctr.c
+index 32771f2..b66f92f 100644
+--- a/cipher-ctr.c
++++ b/cipher-ctr.c
 @@ -27,6 +27,8 @@
  #include "xmalloc.h"
  #include "log.h"
@@ -38,20 +38,21 @@ Index: openssh-7.9p1/cipher-ctr.c
  #endif
  	return (&aes_ctr);
  }
-Index: openssh-7.9p1/cipher.c
-===================================================================
---- openssh-7.9p1.orig/cipher.c	2018-10-17 02:01:20.000000000 +0200
-+++ openssh-7.9p1/cipher.c	2019-03-12 11:41:49.662894934 +0100
-@@ -51,6 +51,8 @@
+diff --git a/cipher.c b/cipher.c
+index 25f98ba..acca752 100644
+--- a/cipher.c
++++ b/cipher.c
+@@ -51,6 +51,9 @@
  
  #include "openbsd-compat/openssl-compat.h"
  
 +#include "fips.h"
 +#include "log.h"
- 
- struct sshcipher_ctx {
- 	int	plaintext;
-@@ -80,7 +82,7 @@ struct sshcipher {
++
+ #ifndef WITH_OPENSSL
+ #define EVP_CIPHER_CTX void
+ #endif
+@@ -83,7 +86,7 @@ struct sshcipher {
  #endif
  };
  
@@ -60,7 +61,7 @@ Index: openssh-7.9p1/cipher.c
  #ifdef WITH_OPENSSL
  #ifndef OPENSSL_NO_DES
  	{ "3des-cbc",		8, 24, 0, 0, CFLAG_CBC, EVP_des_ede3_cbc },
-@@ -111,8 +113,52 @@ static const struct sshcipher ciphers[]
+@@ -114,8 +117,52 @@ static const struct sshcipher ciphers[] = {
  	{ NULL,			0, 0, 0, 0, 0, NULL }
  };
  
@@ -113,7 +114,7 @@ Index: openssh-7.9p1/cipher.c
  /* Returns a comma-separated list of supported ciphers. */
  char *
  cipher_alg_list(char sep, int auth_only)
-@@ -121,7 +167,7 @@ cipher_alg_list(char sep, int auth_only)
+@@ -124,7 +171,7 @@ cipher_alg_list(char sep, int auth_only)
  	size_t nlen, rlen = 0;
  	const struct sshcipher *c;
  
@@ -122,7 +123,7 @@ Index: openssh-7.9p1/cipher.c
  		if ((c->flags & CFLAG_INTERNAL) != 0)
  			continue;
  		if (auth_only && c->auth_len == 0)
-@@ -193,7 +239,7 @@ const struct sshcipher *
+@@ -196,7 +243,7 @@ const struct sshcipher *
  cipher_by_name(const char *name)
  {
  	const struct sshcipher *c;
@@ -131,10 +132,11 @@ Index: openssh-7.9p1/cipher.c
  		if (strcmp(c->name, name) == 0)
  			return c;
  	return NULL;
-Index: openssh-7.9p1/fips.c
-===================================================================
---- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssh-7.9p1/fips.c	2019-03-12 11:42:10.971006569 +0100
+diff --git a/fips.c b/fips.c
+new file mode 100644
+index 0000000..23e3876
+--- /dev/null
++++ b/fips.c
 @@ -0,0 +1,212 @@
 +/*
 + * Copyright (c) 2012 Petr Cerny.  All rights reserved.
@@ -348,10 +350,11 @@ Index: openssh-7.9p1/fips.c
 +	return dgst;
 +}
 +
-Index: openssh-7.9p1/fips.h
-===================================================================
---- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssh-7.9p1/fips.h	2019-03-12 11:41:49.514894158 +0100
+diff --git a/fips.h b/fips.h
+new file mode 100644
+index 0000000..a115a61
+--- /dev/null
++++ b/fips.h
 @@ -0,0 +1,44 @@
 +/*
 + * Copyright (c) 2012 Petr Cerny.  All rights reserved.
@@ -397,11 +400,11 @@ Index: openssh-7.9p1/fips.h
 +
 +#endif
 +
-Index: openssh-7.9p1/hmac.c
-===================================================================
---- openssh-7.9p1.orig/hmac.c	2018-10-17 02:01:20.000000000 +0200
-+++ openssh-7.9p1/hmac.c	2019-02-28 17:20:15.919165544 +0100
-@@ -144,7 +144,7 @@ hmac_test(void *key, size_t klen, void *
+diff --git a/hmac.c b/hmac.c
+index 3268887..b905a1e 100644
+--- a/hmac.c
++++ b/hmac.c
+@@ -146,7 +146,7 @@ hmac_test(void *key, size_t klen, void *m, size_t mlen, u_char *e, size_t elen)
  	size_t			 i;
  	u_char			 digest[16];
  
@@ -410,11 +413,11 @@ Index: openssh-7.9p1/hmac.c
  		printf("ssh_hmac_start failed");
  	if (ssh_hmac_init(ctx, key, klen) < 0 ||
  	    ssh_hmac_update(ctx, m, mlen) < 0 ||
-Index: openssh-7.9p1/kex.c
-===================================================================
---- openssh-7.9p1.orig/kex.c	2018-10-17 02:01:20.000000000 +0200
-+++ openssh-7.9p1/kex.c	2019-02-28 17:20:15.919165544 +0100
-@@ -54,6 +54,8 @@
+diff --git a/kex.c b/kex.c
+index 49d7015..1f82c2e 100644
+--- a/kex.c
++++ b/kex.c
+@@ -60,6 +60,8 @@
  #include "sshbuf.h"
  #include "digest.h"
  
@@ -423,7 +426,7 @@ Index: openssh-7.9p1/kex.c
  /* prototype */
  static int kex_choose_conf(struct ssh *);
  static int kex_input_newkeys(int, u_int32_t, struct ssh *);
-@@ -77,7 +79,7 @@ struct kexalg {
+@@ -83,7 +85,7 @@ struct kexalg {
  	int ec_nid;
  	int hash_alg;
  };
@@ -432,8 +435,8 @@ Index: openssh-7.9p1/kex.c
  #ifdef WITH_OPENSSL
  	{ KEX_DH1, KEX_DH_GRP1_SHA1, 0, SSH_DIGEST_SHA1 },
  	{ KEX_DH14_SHA1, KEX_DH_GRP14_SHA1, 0, SSH_DIGEST_SHA1 },
-@@ -106,6 +108,47 @@ static const struct kexalg kexalgs[] = {
- 	{ NULL, -1, -1, -1},
+@@ -114,6 +116,47 @@ static const struct kexalg kexalgs[] = {
+ 	{ NULL, 0, -1, -1},
  };
  
 +static const struct kexalg kexalgs_fips140_2[] = {
@@ -480,7 +483,7 @@ Index: openssh-7.9p1/kex.c
  char *
  kex_alg_list(char sep)
  {
-@@ -113,7 +156,7 @@ kex_alg_list(char sep)
+@@ -121,7 +164,7 @@ kex_alg_list(char sep)
  	size_t nlen, rlen = 0;
  	const struct kexalg *k;
  
@@ -489,7 +492,7 @@ Index: openssh-7.9p1/kex.c
  		if (ret != NULL)
  			ret[rlen++] = sep;
  		nlen = strlen(k->name);
-@@ -133,7 +176,7 @@ kex_alg_by_name(const char *name)
+@@ -141,7 +184,7 @@ kex_alg_by_name(const char *name)
  {
  	const struct kexalg *k;
  
@@ -498,7 +501,7 @@ Index: openssh-7.9p1/kex.c
  		if (strcmp(k->name, name) == 0)
  			return k;
  	}
-@@ -153,7 +196,10 @@ kex_names_valid(const char *names)
+@@ -161,7 +204,10 @@ kex_names_valid(const char *names)
  	for ((p = strsep(&cp, ",")); p && *p != '\0';
  	    (p = strsep(&cp, ","))) {
  		if (kex_alg_by_name(p) == NULL) {
@@ -509,11 +512,11 @@ Index: openssh-7.9p1/kex.c
  			free(s);
  			return 0;
  		}
-Index: openssh-7.9p1/mac.c
-===================================================================
---- openssh-7.9p1.orig/mac.c	2018-10-17 02:01:20.000000000 +0200
-+++ openssh-7.9p1/mac.c	2019-02-28 17:20:15.923165569 +0100
-@@ -40,6 +40,9 @@
+diff --git a/mac.c b/mac.c
+index f3dda66..90d71c8 100644
+--- a/mac.c
++++ b/mac.c
+@@ -41,6 +41,9 @@
  
  #include "openbsd-compat/openssl-compat.h"
  
@@ -523,7 +526,7 @@ Index: openssh-7.9p1/mac.c
  #define SSH_DIGEST	1	/* SSH_DIGEST_XXX */
  #define SSH_UMAC	2	/* UMAC (not integrated with OpenSSL) */
  #define SSH_UMAC128	3
-@@ -54,7 +57,7 @@ struct macalg {
+@@ -55,7 +58,7 @@ struct macalg {
  	int		etm;		/* Encrypt-then-MAC */
  };
  
@@ -532,7 +535,7 @@ Index: openssh-7.9p1/mac.c
  	/* Encrypt-and-MAC (encrypt-and-authenticate) variants */
  	{ "hmac-sha1",				SSH_DIGEST, SSH_DIGEST_SHA1, 0, 0, 0, 0 },
  	{ "hmac-sha1-96",			SSH_DIGEST, SSH_DIGEST_SHA1, 96, 0, 0, 0 },
-@@ -82,6 +85,41 @@ static const struct macalg macs[] = {
+@@ -79,6 +82,41 @@ static const struct macalg macs[] = {
  	{ NULL,					0, 0, 0, 0, 0, 0 }
  };
  
@@ -574,7 +577,7 @@ Index: openssh-7.9p1/mac.c
  /* Returns a list of supported MACs separated by the specified char. */
  char *
  mac_alg_list(char sep)
-@@ -90,7 +128,7 @@ mac_alg_list(char sep)
+@@ -87,7 +125,7 @@ mac_alg_list(char sep)
  	size_t nlen, rlen = 0;
  	const struct macalg *m;
  
@@ -583,7 +586,7 @@ Index: openssh-7.9p1/mac.c
  		if (ret != NULL)
  			ret[rlen++] = sep;
  		nlen = strlen(m->name);
-@@ -129,7 +167,7 @@ mac_setup(struct sshmac *mac, char *name
+@@ -126,7 +164,7 @@ mac_setup(struct sshmac *mac, char *name)
  {
  	const struct macalg *m;
  
@@ -592,11 +595,11 @@ Index: openssh-7.9p1/mac.c
  		if (strcmp(name, m->name) != 0)
  			continue;
  		if (mac != NULL)
-Index: openssh-7.9p1/myproposal.h
-===================================================================
---- openssh-7.9p1.orig/myproposal.h	2018-10-17 02:01:20.000000000 +0200
-+++ openssh-7.9p1/myproposal.h	2019-02-28 17:20:15.923165569 +0100
-@@ -151,6 +151,8 @@
+diff --git a/myproposal.h b/myproposal.h
+index 34bd10c..e6be484 100644
+--- a/myproposal.h
++++ b/myproposal.h
+@@ -144,6 +144,8 @@
  
  #else /* WITH_OPENSSL */
  
@@ -605,10 +608,10 @@ Index: openssh-7.9p1/myproposal.h
  #define KEX_SERVER_KEX		\
  	"curve25519-sha256," \
  	"curve25519-sha256@libssh.org"
-Index: openssh-7.9p1/readconf.c
-===================================================================
---- openssh-7.9p1.orig/readconf.c	2018-10-17 02:01:20.000000000 +0200
-+++ openssh-7.9p1/readconf.c	2019-02-28 20:20:19.619112418 +0100
+diff --git a/readconf.c b/readconf.c
+index f78b4d6..228f481 100644
+--- a/readconf.c
++++ b/readconf.c
 @@ -68,6 +68,8 @@
  #include "myproposal.h"
  #include "digest.h"
@@ -618,7 +621,7 @@ Index: openssh-7.9p1/readconf.c
  /* Format of the configuration file:
  
     # Configuration data is parsed as follows:
-@@ -1816,6 +1818,23 @@ option_clear_or_none(const char *o)
+@@ -1837,6 +1839,23 @@ option_clear_or_none(const char *o)
  	return o == NULL || strcasecmp(o, "none") == 0;
  }
  
@@ -642,7 +645,7 @@ Index: openssh-7.9p1/readconf.c
  /*
   * Initializes options to special values that indicate that they have not yet
   * been set.  Read_config_file will only set options with this value. Options
-@@ -2095,6 +2114,8 @@ fill_default_options(Options * options)
+@@ -2116,6 +2135,8 @@ fill_default_options(Options * options)
  		options->canonicalize_hostname = SSH_CANONICALISE_NO;
  	if (options->fingerprint_hash == -1)
  		options->fingerprint_hash = SSH_FP_HASH_DEFAULT;
@@ -651,7 +654,7 @@ Index: openssh-7.9p1/readconf.c
  	if (options->update_hostkeys == -1)
  		options->update_hostkeys = 0;
  
-@@ -2122,6 +2143,7 @@ fill_default_options(Options * options)
+@@ -2143,6 +2164,7 @@ fill_default_options(Options * options)
  	free(all_kex);
  	free(all_key);
  	free(all_sig);
@@ -659,10 +662,10 @@ Index: openssh-7.9p1/readconf.c
  
  #define CLEAR_ON_NONE(v) \
  	do { \
-Index: openssh-7.9p1/readconf.h
-===================================================================
---- openssh-7.9p1.orig/readconf.h	2018-10-17 02:01:20.000000000 +0200
-+++ openssh-7.9p1/readconf.h	2019-02-28 17:20:15.923165569 +0100
+diff --git a/readconf.h b/readconf.h
+index 8e36bf3..67111e9 100644
+--- a/readconf.h
++++ b/readconf.h
 @@ -197,6 +197,7 @@ typedef struct {
  #define SSH_STRICT_HOSTKEY_YES	2
  #define SSH_STRICT_HOSTKEY_ASK	3
@@ -671,10 +674,10 @@ Index: openssh-7.9p1/readconf.h
  void     initialize_options(Options *);
  void     fill_default_options(Options *);
  void	 fill_default_options_for_canonicalization(Options *);
-Index: openssh-7.9p1/servconf.c
-===================================================================
---- openssh-7.9p1.orig/servconf.c	2019-02-28 17:20:15.851165117 +0100
-+++ openssh-7.9p1/servconf.c	2019-02-28 17:20:15.923165569 +0100
+diff --git a/servconf.c b/servconf.c
+index f58fecb..a8833a9 100644
+--- a/servconf.c
++++ b/servconf.c
 @@ -64,6 +64,7 @@
  #include "auth.h"
  #include "myproposal.h"
@@ -716,7 +719,7 @@ Index: openssh-7.9p1/servconf.c
  }
  
  static void
-@@ -410,6 +430,8 @@ fill_default_server_options(ServerOption
+@@ -424,6 +444,8 @@ fill_default_server_options(ServerOptions *options)
  		options->fwd_opts.streamlocal_bind_unlink = 0;
  	if (options->fingerprint_hash == -1)
  		options->fingerprint_hash = SSH_FP_HASH_DEFAULT;
@@ -725,20 +728,20 @@ Index: openssh-7.9p1/servconf.c
  	if (options->disable_forwarding == -1)
  		options->disable_forwarding = 0;
  	if (options->expose_userauth_info == -1)
-Index: openssh-7.9p1/ssh-keygen.c
-===================================================================
---- openssh-7.9p1.orig/ssh-keygen.c	2018-10-17 02:01:20.000000000 +0200
-+++ openssh-7.9p1/ssh-keygen.c	2019-02-28 17:20:15.923165569 +0100
-@@ -61,6 +61,8 @@
- #include "utf8.h"
+diff --git a/ssh-keygen.c b/ssh-keygen.c
+index 8c829ca..da63fb0 100644
+--- a/ssh-keygen.c
++++ b/ssh-keygen.c
+@@ -64,6 +64,8 @@
  #include "authfd.h"
+ #include "sshsig.h"
  
 +#include "fips.h"
 +
  #ifdef WITH_OPENSSL
  # define DEFAULT_KEY_TYPE_NAME "rsa"
  #else
-@@ -996,11 +998,13 @@ do_fingerprint(struct passwd *pw)
+@@ -1002,11 +1004,13 @@ do_fingerprint(struct passwd *pw)
  static void
  do_gen_all_hostkeys(struct passwd *pw)
  {
@@ -754,7 +757,7 @@ Index: openssh-7.9p1/ssh-keygen.c
  #ifdef WITH_OPENSSL
  		{ "rsa", "RSA" ,_PATH_HOST_RSA_KEY_FILE },
  		{ "dsa", "DSA", _PATH_HOST_DSA_KEY_FILE },
-@@ -1015,6 +1019,17 @@ do_gen_all_hostkeys(struct passwd *pw)
+@@ -1021,6 +1025,17 @@ do_gen_all_hostkeys(struct passwd *pw)
  		{ NULL, NULL, NULL }
  	};
  
@@ -769,10 +772,10 @@ Index: openssh-7.9p1/ssh-keygen.c
 +	};
 +
 +	struct Key_types *key_types;
+ 	u_int32_t bits = 0;
  	int first = 0;
  	struct stat st;
- 	struct sshkey *private, *public;
-@@ -1022,6 +1037,12 @@ do_gen_all_hostkeys(struct passwd *pw)
+@@ -1029,6 +1044,12 @@ do_gen_all_hostkeys(struct passwd *pw)
  	int i, type, fd, r;
  	FILE *f;
  
@@ -785,7 +788,7 @@ Index: openssh-7.9p1/ssh-keygen.c
  	for (i = 0; key_types[i].key_type; i++) {
  		public = private = NULL;
  		prv_tmp = pub_tmp = prv_file = pub_file = NULL;
-@@ -2817,6 +2838,15 @@ main(int argc, char **argv)
+@@ -3215,6 +3236,15 @@ main(int argc, char **argv)
  		key_type_name = DEFAULT_KEY_TYPE_NAME;
  
  	type = sshkey_type_from_name(key_type_name);
@@ -801,35 +804,11 @@ Index: openssh-7.9p1/ssh-keygen.c
  	type_bits_valid(type, key_type_name, &bits);
  
  	if (!quiet)
-Index: openssh-7.9p1/ssh_config.0
-===================================================================
---- openssh-7.9p1.orig/ssh_config.0	2018-10-19 03:06:19.000000000 +0200
-+++ openssh-7.9p1/ssh_config.0	2019-02-28 17:20:15.923165569 +0100
-@@ -353,6 +353,9 @@ DESCRIPTION
-              Specifies the hash algorithm used when displaying key
-              fingerprints.  Valid options are: md5 and sha256 (the default).
- 
-+             In the FIPS mode the minimum of SHA-1 is enforced (which means
-+             sha256).
-+
-      ForwardAgent
-              Specifies whether the connection to the authentication agent (if
-              any) will be forwarded to the remote machine.  The argument must
-@@ -610,6 +613,9 @@ DESCRIPTION
-              The list of available key exchange algorithms may also be
-              obtained using "ssh -Q kex".
- 
-+             In the FIPS mode the FIPS standard takes precedence over RFC and
-+             forces the minimum to a higher value, currently 2048 bits.
-+
-      LocalCommand
-              Specifies a command to execute on the local machine after
-              successfully connecting to the server.  The command string
-Index: openssh-7.9p1/ssh_config.5
-===================================================================
---- openssh-7.9p1.orig/ssh_config.5	2018-10-17 02:01:20.000000000 +0200
-+++ openssh-7.9p1/ssh_config.5	2019-02-28 17:20:15.923165569 +0100
-@@ -642,6 +642,8 @@ Valid options are:
+diff --git a/ssh_config.5 b/ssh_config.5
+index 02a8789..f0cb291 100644
+--- a/ssh_config.5
++++ b/ssh_config.5
+@@ -664,6 +664,8 @@ Valid options are:
  and
  .Cm sha256
  (the default).
@@ -838,11 +817,11 @@ Index: openssh-7.9p1/ssh_config.5
  .It Cm ForwardAgent
  Specifies whether the connection to the authentication agent (if any)
  will be forwarded to the remote machine.
-Index: openssh-7.9p1/sshd.c
-===================================================================
---- openssh-7.9p1.orig/sshd.c	2018-10-17 02:01:20.000000000 +0200
-+++ openssh-7.9p1/sshd.c	2019-03-12 11:41:49.514894158 +0100
-@@ -123,6 +123,8 @@
+diff --git a/sshd.c b/sshd.c
+index 6b55ef7..c8086cd 100644
+--- a/sshd.c
++++ b/sshd.c
+@@ -127,6 +127,8 @@
  #include "version.h"
  #include "ssherr.h"
  
@@ -851,35 +830,11 @@ Index: openssh-7.9p1/sshd.c
  /* Re-exec fds */
  #define REEXEC_DEVCRYPTO_RESERVED_FD	(STDERR_FILENO + 1)
  #define REEXEC_STARTUP_PIPE_FD		(STDERR_FILENO + 2)
-Index: openssh-7.9p1/sshd_config.0
-===================================================================
---- openssh-7.9p1.orig/sshd_config.0	2019-02-28 17:20:15.851165117 +0100
-+++ openssh-7.9p1/sshd_config.0	2019-02-28 17:20:15.927165594 +0100
-@@ -348,6 +348,9 @@ DESCRIPTION
-              Specifies the hash algorithm used when logging key fingerprints.
-              Valid options are: md5 and sha256.  The default is sha256.
- 
-+             In the FIPS mode the minimum of SHA-1 is enforced (which means
-+             sha256).
-+
-      ForceCommand
-              Forces the execution of the command specified by ForceCommand,
-              ignoring any command supplied by the client and ~/.ssh/rc if
-@@ -555,6 +558,9 @@ DESCRIPTION
-              The list of available key exchange algorithms may also be
-              obtained using "ssh -Q kex".
- 
-+             In the FIPS mode the FIPS standard takes precedence over RFC and
-+             forces the minimum to a higher value, currently 2048 bits.
-+
-      ListenAddress
-              Specifies the local addresses sshd(8) should listen on.  The
-              following forms may be used:
-Index: openssh-7.9p1/sshd_config.5
-===================================================================
---- openssh-7.9p1.orig/sshd_config.5	2019-02-28 17:20:15.851165117 +0100
-+++ openssh-7.9p1/sshd_config.5	2019-02-28 17:20:15.927165594 +0100
-@@ -603,6 +603,8 @@ and
+diff --git a/sshd_config.5 b/sshd_config.5
+index 0707b47..8818ea5 100644
+--- a/sshd_config.5
++++ b/sshd_config.5
+@@ -605,6 +605,8 @@ and
  .Cm sha256 .
  The default is
  .Cm sha256 .

@@ -1,0 +1,39 @@
+commit 07ffb49749c310b82e44278ae05e081d6f4a82bf
+Author: Hans Petter Jansson <hpj@cl.no>
+Date:   Fri Sep 27 01:57:16 2019 +0200
+
+    ssh-keygen: Preserve known_hosts permissions on rewrite
+    
+    Transfer the permissions of the old known_hosts file instead of
+    just going with what mkstemp() gives us. This is useful in corner
+    cases where known_hosts is shared between users.
+
+diff --git a/ssh-keygen.c b/ssh-keygen.c
+index 03a7fe5..ca8a309 100644
+--- a/ssh-keygen.c
++++ b/ssh-keygen.c
+@@ -1338,6 +1338,11 @@ do_known_hosts(struct passwd *pw, const char *name)
+ 		if (inplace)
+ 			unlink(tmp);
+ 	} else if (inplace) {
++		struct stat st;
++
++		/* Get metadata for existing file */
++		r = stat(identity_file, &st);
++
+ 		/* Backup existing file */
+ 		if (unlink(old) == -1 && errno != ENOENT)
+ 			fatal("unlink %.100s: %s", old, strerror(errno));
+@@ -1352,6 +1357,12 @@ do_known_hosts(struct passwd *pw, const char *name)
+ 			unlink(old);
+ 			exit(1);
+ 		}
++		/* Preserve permissions; non-critical */
++		if (r != -1)
++			r = chown(identity_file, st.st_uid, st.st_gid);
++		if (r != -1)
++			chmod(identity_file,
++			      st.st_mode & (S_IRWXU | S_IRWXG | S_IRWXO));
+ 
+ 		printf("%s updated.\n", identity_file);
+ 		printf("Original contents retained as %s\n", old);

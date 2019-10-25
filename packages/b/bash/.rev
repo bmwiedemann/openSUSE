@@ -1505,4 +1505,15 @@ Upstream declares the bash license to be GPL-3.0+ - not GPL-2.0+ (forwarded requ
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>733440</requestid>
   </revision>
+  <revision rev="159" vrev="3">
+    <srcmd5>2782b8fd56efe4c32c230617e065b851</srcmd5>
+    <version>5.0.11</version>
+    <time>1572021458</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove PILOTPORT and PILOTRATE environment variable from
+  default ~/.bashrc (/etc/skel/.bashrc) (bsc#1123510)
+- Move definitions of environment variables from ~/.bashrc to
+  ~/.profile (/etc/skel/.profile)</comment>
+    <requestid>738886</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,6 @@
 
 # PyPI package name is file-magic. Version is taken from setup.py
 %define file_magic_version 0.3.0
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 
 Name:           python-magic
@@ -33,8 +32,8 @@ Release:        0
 Summary:        Python module to use libmagic
 License:        BSD-3-Clause AND BSD-4-Clause
 Group:          Development/Languages/Python
+%{expand:%(sed -n -e '/^Source0\?:/,/^BuildRoot:/p' <%{_sourcedir}/file.spec)}
 Source99:       file.spec
-%{expand:%(sed -n -e '/^Source:/,/^BuildRoot:/p' <%{_sourcedir}/file.spec)}
 Requires:       libmagic1
 Provides:       python-file-magic = %{file_magic_version}
 %global         _miscdir    %{_datadir}/misc
@@ -49,7 +48,6 @@ interface.
 %{expand:%(sed -n -e '/^%%prep/,/^%%build/p' <%{_sourcedir}/file.spec | sed -e '1d' -e '$d')}
 ln -sf README.md python/README
 
-%build
 pushd python
 %python_build
 popd

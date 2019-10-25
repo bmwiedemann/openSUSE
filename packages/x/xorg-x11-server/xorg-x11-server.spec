@@ -46,7 +46,7 @@
 %endif
 
 Name:           xorg-x11-server
-Version:        1.20.5
+Version:        1.20.5+24
 Release:        0
 Url:            http://xorg.freedesktop.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -55,7 +55,7 @@ Summary:        X
 # Source URL: http://xorg.freedesktop.org/archive/individual/xserver/
 License:        MIT
 Group:          System/X11/Servers/XF86_4
-Source0:        xorg-server-%{version}.tar.bz2
+Source0:        xserver-%{version}.tar.xz
 Source1:        sysconfig.displaymanager.template
 Source2:        README.updates
 Source3:        xorgcfg.tar.bz2
@@ -249,16 +249,7 @@ Patch1502:      U_dix-window-Use-ConfigureWindow-instead-of-MoveWindow.patch
 
 Patch1503:      u_xfree86-Do-not-claim-pci-slots-if-fb-slot-is-already.patch
 
-Patch1504:      U_xwayland-Separate-DamagePtr-into-separate-window-data.patch
-
 Patch1505:      U_xwayland-Allow-passing-a-fd.patch
-
-# required for NVIDIA's PRIME render offload support
-Patch1601:      0001-xsync-Add-resource-inside-of-SyncCreate-export-SyncC.patch
-Patch1602:      0002-GLX-Add-a-per-client-vendor-mapping.patch
-Patch1603:      0003-GLX-Use-the-sending-client-for-looking-up-XID-s.patch
-Patch1604:      0004-GLX-Add-a-function-to-change-a-clients-vendor-list.patch
-Patch1605:      0005-GLX-Set-GlxServerExports-major-minor-Version.patch
 
 %description
 This package contains the X.Org Server.
@@ -367,7 +358,7 @@ Group:          Development/Sources
 This package contains patched sources of X.Org Server.
 
 %prep
-%setup -q -n xorg-server-%{version} -a3
+%setup -q -n xserver-%{version} -a3
 # Early verification if the ABI Defines are correct. Let's not waste build cycles if the Provides are wrong at the end.
 sh %{SOURCE92} --verify . %{SOURCE91}
 
@@ -384,25 +375,16 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 #
 %patch100 -p1
 #%patch101 -p1
-
 %patch104 -p1
-
 %patch112 -p1
-
 %patch115 -p1
-
 %patch117 -p1
-
 %patch160 -p1
-
 %patch208 -p1
 %patch209 -p1
-
 ### not applicable anymore
 #%patch210 -p1
-
 %patch215 -p1
-
 %patch1000 -p1
 
 ### disabled for now
@@ -411,25 +393,11 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 #%patch1211 -p1
 ### patch222 might not be applicable anymore
 #%patch1222 -p1
-
 %patch1401 -p1
-
 %patch1501 -p1
-
 %patch1502 -p1
-
 %patch1503 -p1
-
-%patch1504 -p1
-
 %patch1505 -p1
-
-# required for NVIDIA's PRIME render offload support
-%patch1601 -p1
-%patch1602 -p1
-%patch1603 -p1
-%patch1604 -p1
-%patch1605 -p1
 
 %build
 %define _lto_cflags %{nil}
@@ -442,7 +410,7 @@ autoreconf -fi
 export PCI_TXT_IDS_DIR=%{pci_ids_dir}
 %endif
 %configure CFLAGS="%{optflags} -fno-strict-aliasing" \
-	    --sysconfdir=/etc \
+            --sysconfdir=/etc \
             --enable-xdmcp \
             --enable-xdm-auth-1 \
             --enable-dri \
@@ -468,7 +436,7 @@ export PCI_TXT_IDS_DIR=%{pci_ids_dir}
 %else
             --enable-xorg \
 %if 0%{?suse_version} > 1120
-	    --enable-config-udev \
+            --enable-config-udev \
 %endif
 %endif
 %if 0%{?have_wayland} == 1
@@ -477,8 +445,8 @@ export PCI_TXT_IDS_DIR=%{pci_ids_dir}
             --disable-xwayland \
 %endif
 %if 0%{?build_suid_wrapper} == 1
-	    --enable-suid-wrapper \
-	    --libexecdir=%{suid_wrapper_dir} \
+            --enable-suid-wrapper \
+            --libexecdir=%{suid_wrapper_dir} \
 %endif
             --with-log-dir="/var/log" \
             --with-os-name="openSUSE" \
@@ -486,7 +454,7 @@ export PCI_TXT_IDS_DIR=%{pci_ids_dir}
             --with-fontrootdir="/usr/share/fonts" \
             --with-xkb-path="/usr/share/X11/xkb" \
             --with-xkb-output="/var/lib/xkb/compiled" \
-	    --with-default-font-path="/usr/share/fonts/misc:unscaled,\
+            --with-default-font-path="/usr/share/fonts/misc:unscaled,\
 /usr/share/fonts/Type1/,/usr/share/fonts/100dpi:unscaled,\
 %if 0%{?suse_version} > 1210
 /usr/share/fonts/75dpi:unscaled,/usr/share/fonts/ghostscript/,\

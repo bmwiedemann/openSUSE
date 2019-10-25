@@ -39,6 +39,9 @@ Patch2:         0001-Do-not-try-to-store-negative-values-in-unsigned-int.patch
 Patch3:         zlib-power8-fate325307.patch
 #PATCH-FIX-UPSTREAM https://github.com/madler/zlib/pull/410
 Patch4:         410.patch
+#PATCH-FIX-SUSE do not check exact version match as the lib can be updated
+#               we should simply rely on soname versioning to protect us
+Patch5:         zlib-no-version-check.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -124,6 +127,7 @@ developing applications which use minizip.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 cp %{SOURCE4} .
 
 %build

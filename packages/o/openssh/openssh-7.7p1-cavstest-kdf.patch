@@ -2,10 +2,10 @@
 # Parent  1e1d5a2ab8bddfc800f570755f9ea1addcc878c1
 CAVS test for KDF implementation in OpenSSH
 
-Index: openssh-7.9p1/Makefile.in
-===================================================================
---- openssh-7.9p1.orig/Makefile.in	2019-03-12 16:12:42.213142294 +0100
-+++ openssh-7.9p1/Makefile.in	2019-03-28 13:49:37.150166231 +0100
+diff --git a/Makefile.in b/Makefile.in
+index d426006..85818f4 100644
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -25,6 +25,7 @@ SFTP_SERVER=$(libexecdir)/sftp-server
  SSH_KEYSIGN=$(libexecdir)/ssh-keysign
  SSH_PKCS11_HELPER=$(libexecdir)/ssh-pkcs11-helper
@@ -23,7 +23,7 @@ Index: openssh-7.9p1/Makefile.in
  
  XMSS_OBJS=\
  	ssh-xmss.o \
-@@ -211,6 +212,9 @@ sftp$(EXEEXT): $(LIBCOMPAT) libssh.a sft
+@@ -217,6 +218,9 @@ sftp$(EXEEXT): $(LIBCOMPAT) libssh.a sftp.o sftp-client.o sftp-common.o sftp-glo
  cavstest-ctr$(EXEEXT): $(LIBCOMPAT) libssh.a cavstest-ctr.o
  	$(LD) -o $@ cavstest-ctr.o $(LDFLAGS) -lssh -lopenbsd-compat -lssh $(LIBS)
  
@@ -33,7 +33,7 @@ Index: openssh-7.9p1/Makefile.in
  # test driver for the loginrec code - not built by default
  logintest: logintest.o $(LIBCOMPAT) libssh.a loginrec.o
  	$(LD) -o $@ logintest.o $(LDFLAGS) loginrec.o -lopenbsd-compat -lssh $(LIBS)
-@@ -356,6 +360,7 @@ install-files:
+@@ -362,6 +366,7 @@ install-files:
  	$(INSTALL) -m 0755 $(STRIP_OPT) sftp$(EXEEXT) $(DESTDIR)$(bindir)/sftp$(EXEEXT)
  	$(INSTALL) -m 0755 $(STRIP_OPT) sftp-server$(EXEEXT) $(DESTDIR)$(SFTP_SERVER)$(EXEEXT)
  	$(INSTALL) -m 0755 $(STRIP_OPT) cavstest-ctr$(EXEEXT) $(DESTDIR)$(libexecdir)/cavstest-ctr$(EXEEXT)
@@ -41,11 +41,12 @@ Index: openssh-7.9p1/Makefile.in
  	$(INSTALL) -m 644 ssh.1.out $(DESTDIR)$(mandir)/$(mansubdir)1/ssh.1
  	$(INSTALL) -m 644 scp.1.out $(DESTDIR)$(mandir)/$(mansubdir)1/scp.1
  	$(INSTALL) -m 644 ssh-add.1.out $(DESTDIR)$(mandir)/$(mansubdir)1/ssh-add.1
-Index: openssh-7.9p1/cavstest-kdf.c
-===================================================================
---- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssh-7.9p1/cavstest-kdf.c	2019-03-28 13:54:20.047709759 +0100
-@@ -0,0 +1,384 @@
+diff --git a/cavstest-kdf.c b/cavstest-kdf.c
+new file mode 100644
+index 0000000..a6ecf45
+--- /dev/null
++++ b/cavstest-kdf.c
+@@ -0,0 +1,402 @@
 +/*
 + * Copyright (C) 2015, Stephan Mueller <smueller@chronox.de>
 + *
@@ -93,6 +94,7 @@ Index: openssh-7.9p1/cavstest-kdf.c
 +#include <openssl/bn.h>
 +
 +#include "xmalloc.h"
++#include "ssherr.h"
 +#include "sshbuf.h"
 +#include "sshkey.h"
 +#include "cipher.h"
@@ -207,6 +209,23 @@ Index: openssh-7.9p1/cavstest-kdf.c
 +	unsigned int ek_len;
 +	unsigned int ik_len;
 +};
++
++#ifdef WITH_OPENSSL
++static int
++kex_derive_keys_bn(struct ssh *ssh, u_char *hash, u_int hashlen,
++    const BIGNUM *secret)
++{
++	struct sshbuf *shared_secret;
++	int r;
++
++	if ((shared_secret = sshbuf_new()) == NULL)
++		return SSH_ERR_ALLOC_FAIL;
++	if ((r = sshbuf_put_bignum2(shared_secret, secret)) == 0)
++		r = kex_derive_keys(ssh, hash, hashlen, shared_secret);
++	sshbuf_free(shared_secret);
++	return r;
++}
++#endif
 +
 +static int sshkdf_cavs(struct kdf_cavs *test)
 +{

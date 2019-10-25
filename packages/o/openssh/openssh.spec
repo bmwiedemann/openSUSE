@@ -37,7 +37,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           openssh
-Version:        7.9p1
+Version:        8.1p1
 Release:        0
 Summary:        Secure Shell Client and Server (Remote Login Program)
 License:        BSD-2-Clause AND MIT
@@ -70,7 +70,6 @@ Patch14:        openssh-7.7p1-seccomp_stat.patch
 # https://bugzilla.mindrot.org/show_bug.cgi?id=2752
 Patch15:        openssh-7.7p1-seccomp_ipc_flock.patch
 # https://bugzilla.mindrot.org/show_bug.cgi?id=2752
-Patch16:        openssh-7.7p1-seccomp_ioctl_s390_EP11.patch
 # Local FIPS patchset
 Patch17:        openssh-7.7p1-fips.patch
 # Local cavs patchset
@@ -82,9 +81,9 @@ Patch20:        openssh-7.7p1-fips_checks.patch
 Patch21:        openssh-7.7p1-seed-prng.patch
 # https://bugzilla.mindrot.org/show_bug.cgi?id=2641
 Patch22:        openssh-7.7p1-systemd-notify.patch
-Patch23:        openssh-7.7p1-gssapi_key_exchange.patch
+Patch23:        openssh-8.0p1-gssapi-keyex.patch
 # https://bugzilla.mindrot.org/show_bug.cgi?id=1402
-Patch24:        openssh-7.7p1-audit.patch
+Patch24:        openssh-8.1p1-audit.patch
 # Local patch to disable runtime abi SSL checks, quite pointless for us
 Patch26:        openssh-7.7p1-disable_openssl_abi_check.patch
 # https://bugzilla.mindrot.org/show_bug.cgi?id=2641
@@ -98,13 +97,8 @@ Patch31:        openssh-7.7p1-ldap.patch
 # https://bugzilla.mindrot.org/show_bug.cgi?id=2213
 Patch32:        openssh-7.7p1-IPv6_X_forwarding.patch
 Patch33:        openssh-7.7p1-sftp_print_diagnostic_messages.patch
-Patch34:        openssh-openssl-1_0_0-compatibility.patch
-Patch35:        openssh-7.9p1-CVE-2018-20685.patch
-Patch36:        openssh-CVE-2019-6109-sanitize-scp-filenames.patch
-Patch37:        openssh-CVE-2019-6109-force-progressmeter-update.patch
-Patch38:        openssh-CVE-2019-6111-scp-client-wildcard.patch
-Patch39:        openssh-7.9p1-brace-expansion.patch
-Patch40:        0001-upstream-Fix-two-race-conditions-in-sshd-relating-to.patch
+Patch34:        openssh-7.9p1-keygen-preserve-perms.patch
+Patch35:        openssh-7.9p1-revert-new-qos-defaults.patch
 BuildRequires:  audit-devel
 BuildRequires:  autoconf
 BuildRequires:  groff

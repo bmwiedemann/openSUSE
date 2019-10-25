@@ -35,7 +35,7 @@ Release:        0
 Summary:        A Tool to Determine File Types
 License:        BSD-2-Clause
 Group:          Productivity/File utilities
-Source:         ftp://ftp.astron.com/pub/file/file-%{version}.tar.gz
+Source0:        ftp://ftp.astron.com/pub/file/file-%{version}.tar.gz
 Source2:        baselibs.conf
 Source3:        file-rpmlintrc
 Source4:        ftp://ftp.astron.com/pub/file/file-%{version}.tar.gz.asc
@@ -65,6 +65,7 @@ Patch36:        file-5.15-clear-invalid.patch
 Patch37:        file-secure_getenv.patch
 Patch39:        file-5.28-btrfs-image.dif
 Patch42:        file-upstream.patch
+Patch43:        CVE-2019-18218-46a8443f.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %global         _sysconfdir /etc
 %global         _miscdir    %{_datadir}/misc
@@ -134,6 +135,7 @@ to develop applications that require the magic "file" interface.
 %patch37 -p1 -b .getenv
 %patch39 -p1 -b .btrfs
 %patch42 -p0 -b .tmp
+%patch43 -p0 -b .CVE-2019-18218
 %patch -b .0
 test -s src/magic.h.in || cp -p src/magic.h src/magic.h.in
 rm -fv src/magic.h

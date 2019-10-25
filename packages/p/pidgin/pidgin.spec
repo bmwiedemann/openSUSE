@@ -40,6 +40,8 @@ Patch3:         pidgin-ncurses-6.0-accessors.patch
 Patch4:         pidgin-use-default-alsa.patch
 # PATCH-FIX-UPSTREAM pidgin-enable-sni-gnutls.patch bsc#1086439 pidgin.im#17300 fezhang@suse.com -- Enable SNI extension in GnuTLS connections.
 Patch5:         pidgin-enable-sni-gnutls.patch
+# PATCH-FIX-UPSTREAM pidgin-Leaky-deprecation-clean-ups.patch pidgin.im#17415 fezhang@suse.com -- Fix warnings of deprecation of GParameter
+Patch6:         pidgin-Leaky-deprecation-clean-ups.patch
 BuildRequires:  ca-certificates-mozilla
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -235,6 +237,7 @@ translation-update-upstream
 %patch4 -p1
 %endif
 %patch5 -p1
+%patch6 -p1
 
 cp -f %{SOURCE3} %{name}-prefs.xml
 

@@ -4,15 +4,11 @@ disable run-time check for OpenSSL ABI by version number as that is not a
 reliable indicator of ABI changes and doesn't make much sense in a
 distribution package
 
-diff --git a/openssh-7.7p1/configure.ac b/openssh-7.7p1/configure.ac
---- openssh-7.7p1/configure.ac
-+++ openssh-7.7p1/configure.ac
-@@ -4895,16 +4895,29 @@ AC_ARG_WITH([bsd-auth],
- 		if test "x$withval" != "xno" ; then
- 			AC_DEFINE([BSD_AUTH], [1],
- 				[Define if you have BSD auth support])
- 			BSD_AUTH_MSG=yes
- 		fi
+diff --git a/configure.ac b/configure.ac
+index 42ffd95..20a1884 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -4878,6 +4878,19 @@ AC_ARG_WITH([bsd-auth],
  	]
  )
  
@@ -32,33 +28,21 @@ diff --git a/openssh-7.7p1/configure.ac b/openssh-7.7p1/configure.ac
  # Where to place sshd.pid
  piddir=/var/run
  # make sure the directory exists
- if test ! -d $piddir ; then
- 	piddir=`eval echo ${sysconfdir}`
- 	case $piddir in
- 		NONE/*) piddir=`echo $piddir | sed "s~NONE~$ac_default_prefix~"` ;;
- 	esac
-diff --git a/openssh-7.7p1/entropy.c b/openssh-7.7p1/entropy.c
---- openssh-7.7p1/entropy.c
-+++ openssh-7.7p1/entropy.c
-@@ -209,19 +209,21 @@ rexec_recv_rng_seed(Buffer *m)
- #endif /* OPENSSL_PRNG_ONLY */
+diff --git a/entropy.c b/entropy.c
+index f8b9f42..4957b23 100644
+--- a/entropy.c
++++ b/entropy.c
+@@ -223,11 +223,13 @@ seed_rng(void)
+ 	/* Initialise libcrypto */
+ 	ssh_libcrypto_init();
  
- void
- seed_rng(void)
- {
- #ifndef OPENSSL_PRNG_ONLY
- 	unsigned char buf[RANDOM_SEED_SIZE];
- #endif
 +#ifndef DISTRO_SSL
- 	if (!ssh_compatible_openssl(OPENSSL_VERSION_NUMBER, SSLeay()))
+ 	if (!ssh_compatible_openssl(OPENSSL_VERSION_NUMBER,
+ 	    OpenSSL_version_num()))
  		fatal("OpenSSL version mismatch. Built against %lx, you "
- 		    "have %lx", (u_long)OPENSSL_VERSION_NUMBER, SSLeay());
+ 		    "have %lx", (u_long)OPENSSL_VERSION_NUMBER,
+ 		    OpenSSL_version_num());
 +#endif
  
  #ifndef OPENSSL_PRNG_ONLY
- 	if (RAND_status() == 1) {
- 		debug3("RNG is ready, skipping seeding");
- 		return;
- 	}
- 
- 	if (seed_from_prngd(buf, sizeof(buf)) == -1)
+ 	if (RAND_status() == 1)

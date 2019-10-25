@@ -314,7 +314,7 @@ mv tack-* tack
 %patch0 -p0 -b .p0
 
 %build
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+%global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 #
 # Note that there is a test if the system call poll(2) really works
 # on terminal or files.  To make sure that even in OBS the configure

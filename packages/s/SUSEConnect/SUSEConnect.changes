@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Oct 14 13:16:03 UTC 2019 - Thomas Schmidt <tschmidt@suse.com>
+
+- 0.3.23
+  fix .spec file to correctly apply switch_server_cert_location_to_etc.patch to SLE15SP2+ (bsc#1130864)
+
+-------------------------------------------------------------------
+Mon Sep 30 08:15:35 UTC 2019 - Thomas Schmidt <tschmidt@suse.com>
+
+- Update to 0.3.22
+  switch_server_cert_location_to_etc.patch: add patch to switch server cert path for SLE15.2+ to /etc (bsc#1130864)
+
+-------------------------------------------------------------------
+Thu Sep 26 09:53:36 UTC 2019 - Thomas Schmidt <tschmidt@suse.com>
+
+- Update to 0.3.21
+  Fix error on first activation of packagehub extension (bsc#1124318)
+
+-------------------------------------------------------------------
 Wed Aug 8 16:02:30 UTC 2019 - Ivan Kapelyukhin <ikapelyukhin@suse.com>
 
 - Update to 0.3.20

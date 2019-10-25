@@ -3,26 +3,11 @@
 Put back sftp client diagnostic messages in batch mode
 
 bsc#1023275
-
-Index: openssh-7.8p1/sftp.0
-===================================================================
---- openssh-7.8p1.orig/sftp.0
-+++ openssh-7.8p1/sftp.0
-@@ -160,6 +160,9 @@ DESCRIPTION
-      -p      Preserves modification times, access times, and modes from the
-              original files transferred.
- 
-+     -Q      Not-so-quiet batch mode: forces printing of diagnostic messages
-+             in batch mode.
-+
-      -q      Quiet mode: disables the progress meter as well as warning and
-              diagnostic messages from ssh(1).
- 
-Index: openssh-7.8p1/sftp.1
-===================================================================
---- openssh-7.8p1.orig/sftp.1
-+++ openssh-7.8p1/sftp.1
-@@ -256,6 +256,9 @@ Specifies the port to connect to on the
+diff --git a/sftp.1 b/sftp.1
+index a52c1cf..7333de8 100644
+--- a/sftp.1
++++ b/sftp.1
+@@ -278,6 +278,9 @@ Specifies the port to connect to on the remote host.
  .It Fl p
  Preserves modification times, access times, and modes from the
  original files transferred.
@@ -32,11 +17,11 @@ Index: openssh-7.8p1/sftp.1
  .It Fl q
  Quiet mode: disables the progress meter as well as warning and
  diagnostic messages from
-Index: openssh-7.8p1/sftp.c
-===================================================================
---- openssh-7.8p1.orig/sftp.c
-+++ openssh-7.8p1/sftp.c
-@@ -86,6 +86,9 @@ static volatile pid_t sshpid = -1;
+diff --git a/sftp.c b/sftp.c
+index b66037f..6c94a38 100644
+--- a/sftp.c
++++ b/sftp.c
+@@ -85,6 +85,9 @@ static volatile pid_t sshpid = -1;
  /* Suppress diagnositic messages */
  int quiet = 0;
  
@@ -46,16 +31,16 @@ Index: openssh-7.8p1/sftp.c
  /* This is set to 0 if the progressmeter is not desired. */
  int showprogress = 1;
  
-@@ -2373,7 +2376,7 @@ main(int argc, char **argv)
+@@ -2406,7 +2409,7 @@ main(int argc, char **argv)
  	infile = stdin;
  
  	while ((ch = getopt(argc, argv,
--	    "1246afhpqrvCc:D:i:l:o:s:S:b:B:F:P:R:")) != -1) {
-+	    "1246afhpQqrvCc:D:i:l:o:s:S:b:B:F:P:R:")) != -1) {
+-	    "1246afhpqrvCc:D:i:l:o:s:S:b:B:F:J:P:R:")) != -1) {
++	    "1246afhpQqrvCc:D:i:l:o:s:S:b:B:F:J:P:R:")) != -1) {
  		switch (ch) {
  		/* Passed through to ssh(1) */
  		case '4':
-@@ -2389,6 +2392,9 @@ main(int argc, char **argv)
+@@ -2423,6 +2426,9 @@ main(int argc, char **argv)
  			addargs(&args, "-%c", ch);
  			addargs(&args, "%s", optarg);
  			break;
@@ -65,7 +50,7 @@ Index: openssh-7.8p1/sftp.c
  		case 'q':
  			ll = SYSLOG_LEVEL_ERROR;
  			quiet = 1;
-@@ -2472,6 +2478,8 @@ main(int argc, char **argv)
+@@ -2506,6 +2512,8 @@ main(int argc, char **argv)
  			usage();
  		}
  	}

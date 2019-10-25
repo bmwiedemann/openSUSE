@@ -1317,4 +1317,41 @@ So all in all: this fixes the build failures for openSUSE Tumblewee (forwarded r
     <comment></comment>
     <requestid>724538</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>0aa682898ae65a2da1b2fc76a7a4e9c7</srcmd5>
+    <version>8.1p1</version>
+    <time>1572021592</time>
+    <user>dimstar_suse</user>
+    <comment>- Add openssh-7.9p1-keygen-preserve-perms.patch (bsc#1150574).
+  This attempts to preserve the permissions of any existing
+  known_hosts file when modified by ssh-keygen (for instance,
+  with -R).
+- Add patch from upstream openssh-7.9p1-revert-new-qos-defaults.patch
+
+- Run 'ssh-keygen -A' on startup only if SSHD_AUTO_KEYGEN=&quot;yes&quot;
+  in /etc/sysconfig/ssh. This is set to &quot;yes&quot; by default, but
+  can be changed by the system administrator (bsc#1139089).
+
+- Add openssh-7.9p1-keygen-preserve-perms.patch (bsc#1150574).
+  This attempts to preserve the permissions of any existing
+  known_hosts file when modified by ssh-keygen (for instance,
+  with -R).
+
+- Version update to 8.1p1:
+  * ssh-keygen(1): when acting as a CA and signing certificates with
+    an RSA key, default to using the rsa-sha2-512 signature algorithm.
+    Certificates signed by RSA keys will therefore be incompatible
+    with OpenSSH versions prior to 7.2 unless the default is
+    overridden (using &quot;ssh-keygen -t ssh-rsa -s ...&quot;).
+  * ssh(1): Allow %n to be expanded in ProxyCommand strings
+  * ssh(1), sshd(8): Allow prepending a list of algorithms to the
+    default set by starting the list with the '^' character, E.g.
+    &quot;HostKeyAlgorithms ^ssh-ed25519&quot;
+  * ssh-keygen(1): add an experimental lightweight signature and
+    verification ability. Signatures may be made using regular ssh keys
+    held on disk or stored in a ssh-agent and verified against an
+    authorized_keys-like list of allowed keys. Signatures embed a
+    namespace that prevents confusion and attacks between different</comment>
+    <requestid>738544</requestid>
+  </revision>
 </revisionlist>

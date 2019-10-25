@@ -14,10 +14,11 @@
 # file is not found (or the hash matches), proceed in non-FIPS mode and abort
 # otherwise.
 
-Index: openssh-7.9p1/fips-check.c
-===================================================================
---- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssh-7.9p1/fips-check.c	2019-03-12 11:42:19.299050200 +0100
+diff --git a/fips-check.c b/fips-check.c
+new file mode 100644
+index 0000000..eceb031
+--- /dev/null
++++ b/fips-check.c
 @@ -0,0 +1,34 @@
 +#include "includes.h"
 +#include <fcntl.h>
@@ -53,10 +54,10 @@ Index: openssh-7.9p1/fips-check.c
 +    fips_ssh_init();
 +	return 0;
 +}
-Index: openssh-7.9p1/fips.c
-===================================================================
---- openssh-7.9p1.orig/fips.c	2019-03-12 11:42:19.299050200 +0100
-+++ openssh-7.9p1/fips.c	2019-03-12 11:43:02.363275819 +0100
+diff --git a/fips.c b/fips.c
+index 23e3876..297ae99 100644
+--- a/fips.c
++++ b/fips.c
 @@ -35,30 +35,293 @@
  #include "log.h"
  #include "xmalloc.h"
@@ -245,9 +246,7 @@ Index: openssh-7.9p1/fips.c
  {
  	int fips_required = 0;
 -	char *env = getenv(SSH_FORCE_FIPS_ENV);
-+	int fips_fd;
-+	char fips_sys = 0;
- 
+-
 -	if (env) {
 -		errno = 0;
 -		fips_required = strtol(env, NULL, 10);
@@ -257,6 +256,9 @@ Index: openssh-7.9p1/fips.c
 -			fips_required = 0;
 -		} else
 -			fips_required = 1;
++	int fips_fd;
++	char fips_sys = 0;
++
 +	struct stat dummy;
 +	if (-1 == stat(FIPS_PROC_PATH, &dummy)) {
 +		switch (errno) {
@@ -362,10 +364,10 @@ Index: openssh-7.9p1/fips.c
  int
  fips_mode(void)
  {
-Index: openssh-7.9p1/fips.h
-===================================================================
---- openssh-7.9p1.orig/fips.h	2019-03-12 11:42:13.819021490 +0100
-+++ openssh-7.9p1/fips.h	2019-03-12 11:42:19.303050221 +0100
+diff --git a/fips.h b/fips.h
+index a115a61..3404684 100644
+--- a/fips.h
++++ b/fips.h
 @@ -1,5 +1,5 @@
  /*
 - * Copyright (c) 2012 Petr Cerny.  All rights reserved.
@@ -402,38 +404,38 @@ Index: openssh-7.9p1/fips.h
  int	 fips_mode(void);
  int	 fips_correct_dgst(int);
  int	 fips_dgst_min(void);
-@@ -41,4 +56,3 @@ enum fp_type	 fips_correct_fp_type(enum
+@@ -41,4 +56,3 @@ enum fp_type	 fips_correct_fp_type(enum fp_type);
  int	 fips_filter_crypto(char **, fips_filters);
  
  #endif
 -
-Index: openssh-7.9p1/sftp-server.c
-===================================================================
---- openssh-7.9p1.orig/sftp-server.c	2019-03-12 11:42:13.819021490 +0100
-+++ openssh-7.9p1/sftp-server.c	2019-03-12 11:42:19.303050221 +0100
-@@ -51,6 +51,8 @@
- #include "sftp.h"
- #include "sftp-common.h"
+diff --git a/sftp-server.c b/sftp-server.c
+index b133cbc..c3086b6 100644
+--- a/sftp-server.c
++++ b/sftp-server.c
+@@ -53,6 +53,8 @@
+ 
+ char *sftp_realpath(const char *, char *); /* sftp-realpath.c */
  
 +#include "fips.h"
 +
  /* Our verbosity */
  static LogLevel log_level = SYSLOG_LEVEL_ERROR;
  
-@@ -1509,6 +1511,9 @@ sftp_server_main(int argc, char **argv,
+@@ -1595,6 +1597,9 @@ sftp_server_main(int argc, char **argv, struct passwd *user_pw)
  	extern char *optarg;
  	extern char *__progname;
  
 +	/* initialize fips */
 +	fips_ssh_init();
 +
- 	ssh_malloc_init();	/* must be called before any mallocs */
  	__progname = ssh_get_progname(argv[0]);
  	log_init(__progname, log_level, log_facility, log_stderr);
-Index: openssh-7.9p1/ssh.c
-===================================================================
---- openssh-7.9p1.orig/ssh.c	2019-03-12 11:42:13.823021511 +0100
-+++ openssh-7.9p1/ssh.c	2019-03-12 11:42:19.303050221 +0100
+ 
+diff --git a/ssh.c b/ssh.c
+index ee51823..882d1da 100644
+--- a/ssh.c
++++ b/ssh.c
 @@ -113,6 +113,8 @@
  #include "ssh-pkcs11.h"
  #endif
@@ -443,29 +445,29 @@ Index: openssh-7.9p1/ssh.c
  extern char *__progname;
  
  /* Saves a copy of argv for setproctitle emulation */
-@@ -593,6 +595,10 @@ main(int ac, char **av)
+@@ -596,6 +598,10 @@ main(int ac, char **av)
  	struct ssh_digest_ctx *md;
  	u_char conn_hash[SSH_DIGEST_MAX_LENGTH];
  
-+    /* initialize fips - can go before ssh_malloc_init(), since that is a
-+     * OpenBSD-only thing (as of OpenSSH 7.6p1) */
++	/* initialize fips - can go before ssh_malloc_init(), since that is a
++	 * OpenBSD-only thing (as of OpenSSH 7.6p1) */
 +	fips_ssh_init();
 +
- 	ssh_malloc_init();	/* must be called before any mallocs */
  	/* Ensure that fds 0, 1 and 2 are open or directed to /dev/null */
  	sanitise_stdfd();
-Index: openssh-7.9p1/sshd.c
-===================================================================
---- openssh-7.9p1.orig/sshd.c	2019-03-12 11:42:13.823021511 +0100
-+++ openssh-7.9p1/sshd.c	2019-03-12 11:42:19.303050221 +0100
-@@ -1485,6 +1485,10 @@ main(int ac, char **av)
+ 
+diff --git a/sshd.c b/sshd.c
+index c8086cd..bb20eec 100644
+--- a/sshd.c
++++ b/sshd.c
+@@ -1443,6 +1443,10 @@ main(int ac, char **av)
  	Authctxt *authctxt;
  	struct connection_info *connection_info = NULL;
  
-+    /* initialize fips - can go before ssh_malloc_init(), since that is a
-+     * OpenBSD-only thing (as of OpenSSH 7.6p1) */
++	/* initialize fips - can go before ssh_malloc_init(), since that is a
++	 * OpenBSD-only thing (as of OpenSSH 7.6p1) */
 +	fips_ssh_init();
 +
- 	ssh_malloc_init();	/* must be called before any mallocs */
- 
  #ifdef HAVE_SECUREWARE
+ 	(void)set_auth_parameters(ac, av);
+ #endif

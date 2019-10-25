@@ -625,4 +625,15 @@ Passed the spec file through spec cleaner (forwarded request 116645 from worldci
   * 410.patch</comment>
     <requestid>715995</requestid>
   </revision>
+  <revision rev="74" vrev="11">
+    <srcmd5>be2dc054face914f30828759ad24c601</srcmd5>
+    <version>1.2.11</version>
+    <time>1572021474</time>
+    <user>dimstar_suse</user>
+    <comment>- Add SUSE specific patch to fix bsc#1138793, we simply don't want
+  to test if the app was linked with exactly same version of zlib
+  like the one that is present on the runtime:
+  * zlib-no-version-check.patch</comment>
+    <requestid>741412</requestid>
+  </revision>
 </revisionlist>

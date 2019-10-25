@@ -47,7 +47,7 @@ python3 -O -c "import sys, os, compileall; br='%{buildroot}'; compileall.compile
 %define _udevrulesdir /usr/lib/udev/rules.d
 Name:           virtualbox
 # ********* If the VB version exceeds 6.0.x, notify the libvirt maintainer!!
-Version:        6.0.12
+Version:        6.0.14
 Release:        0
 Summary:        VirtualBox is an Emulator
 License:        GPL-2.0-or-later
@@ -60,6 +60,7 @@ Url:            http://www.virtualbox.org/
 #%%(bash %%{_sourcedir}/virtualbox-patch-source.sh VirtualBox-%%{version}.tar.bz2)
 Source0:        VirtualBox-%{version}-patched.tar.bz2
 Source1:        UserManual.pdf
+Source2:        VirtualBox.appdata.xml
 Source3:        %{name}-60-vboxguest.rules
 Source4:        %{name}-default.virtualbox
 Source5:        %{name}-kmp-files
@@ -144,8 +145,6 @@ Patch125:       remove_vbox_video_build.patch
 Patch128:       fix_lib_search.patch
 # Fixes for modified kernel in Leap 42.3
 Patch130:       fixes_for_Leap42.3.patch
-# Fixes for API changes in kernel 5.3
-Patch131:       fixes_for_5.3.patch
 # Fixes for Qt5.13 on 32-bit systems
 Patch132:       fixes_for_qt5.13.patch
 #endif
@@ -450,7 +449,6 @@ as an "extpack" for VirtualBox. The implementation is licensed under GPL.
 # Patch for Leap 42.3
 %patch130 -p1
 %endif
-%patch131 -p1
 # Handle the 32-bit changes needed for Qt 5.13
 %ifarch %ix86 && 0%{?qt5ver} >= 51300
 %patch132 -p1
@@ -591,6 +589,7 @@ install -d -m 755 %{buildroot}%{_bindir}
 install -d -m 755 %{buildroot}%{_sbindir}
 install -d -m 755 %{buildroot}%{_datadir}/virtualbox/nls
 install -d -m 755 %{buildroot}%{_datadir}/pixmaps
+install -d -m 755 %{buildroot}%{_datadir}/metainfo
 install -d -m 755 %{buildroot}%{_datadir}/applications
 install -d -m 755 %{buildroot}%{_vbox_instdir}/sdk/bindings/xpcom
 install -d -m 755 %{buildroot}%{_vbox_instdir}/components
@@ -712,7 +711,12 @@ popd
 install -m 644 out/linux.*/release/bin/virtualbox.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
 %suse_update_desktop_file			%{buildroot}%{_datadir}/applications/%{name}.desktop 'System Emulator'
 
+# install appstream file
+mkdir -p %{buildroot}%{_datadir}/metainfo
+install -m 644 %{SOURCE2}			%{buildroot}%{_datadir}/metainfo/%{name}.appdata.xml
+
 # create a menu entry
+mkdir -p %{buildroot}%{_datadir}/pixmaps
 install -m 644 out/linux.*/release/bin/VBox.png %{buildroot}%{_datadir}/pixmaps/virtualbox.png
 # install config with session shutdown defs
 install -m 644 %{SOURCE4}			%{buildroot}%{_sysconfdir}/default/virtualbox
@@ -1024,6 +1028,7 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_vbox_instdir}/VBoxSharedClipboard.so
 %{_datadir}/pixmaps/virtualbox.png
 %{_datadir}/applications/%{name}.desktop
+%{_datadir}/metainfo/%{name}.appdata.xml
 %{_udevrulesdir}/60-vboxdrv.rules
 
 %files guest-x11

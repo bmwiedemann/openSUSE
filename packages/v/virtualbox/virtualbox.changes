@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Oct 22 06:44:20 UTC 2019 - Larry Finger <Larry.Finger@gmail.com>
+
+- Tweak file setup for appstream.
+
+-------------------------------------------------------------------
+Tue Oct 22 00:39:41 UTC 2019 - Larry Finger <Larry.Finger@gmail.com>
+
+- Add directory %{buildroot}%{_datadir}/metainfo for metafile "virtualbox.appdata.xml
+
+-------------------------------------------------------------------
+Mon Oct 21 18:39:47 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Add appstream file (boo#1154128)
+
+-------------------------------------------------------------------
+Wed Oct 16 18:14:41 UTC 2019 - Larry Finger <Larry.Finger@gmail.com>
+
+- Version bumk to 6.0.14 (released October 15 2019 by Oracle)
+
+This is a maintenance release. The following items were fixed and/or added:
+
+Virtualization core: fixed an invalid-guest state guru meditation in some rare circumstances on Intel hosts
+Virtualization core: some fixes for systems with lots of processors
+Audio: relaxed VRM / VRA (variable rate audio) bit checks to provide more compatibility for guests running ALSA setups with the AC'97 emulation
+USB: made device capturing for passthrough more accurate and reliable on Windows host
+Network: fixed potential issue with interrupt signalling for network adapters in UEFI guests
+3D: fixed flicker and redraw issues when using VBoxSVGA or VMSVGA graphics adapter (bugs #18562, #18956)
+3D: fixed crash with some applications when using VBoxSVGA or VMSVGA graphics adapter (bug #18638)
+macOS host: fix crash of GUI VM process which showed up frequently with 10.15 Catalina (bug #18990)
+Linux host: support Linux 5.3, thank you Larry Finger (see also bug #18911)
+Linux host: improve python version detection during rpm package creation, can change package dependencies and fix some installation problems
+Linux guests: calls to aio_read(3) and aio_write(3) may fail inside shared folders (bug #18805)
+Linux guests: fix problem with shared folder unmounting in service script, thank you Denis Ryndine (bug #18853)
+Linux guests: VBox 6.0.10 GAs fail to compile on Red Hat/CentOS/Oracle Linux 7.7 and Red Hat 8.1 Beta (bug #18917)
+
+Fix vulnerabilities CVE-2019-3028 CVE-2019-3017 CVE-2019-2944 CVE-2019-3026 CVE-2019-3021
+                    CVE-2019-2984 CVE-2019-3002 CVE-2019-3005 CVE-2019-3031 CVE-2019-1547
+                    CVE-2019-2926 (bsc#1154166)
+
+Removed file "fixes_for_5.3.patch" - fixes included upstream.
+
+-------------------------------------------------------------------
 Tue Oct 15 20:27:49 UTC 2019 - Larry Finger <Larry.Finger@gmail.com>
 
 - Kernel 5.4.0-rc3 introduces a change in the way the compiler handles the fallthrough

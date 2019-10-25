@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 22 06:15:35 UTC 2019 - Felix Zhang <fezhang@suse.com>
+
+- Add pidgin-Leaky-deprecation-clean-ups.patch: Fix warnings of
+  deprecation of GParameter that result in build failures of
+  plugins that build with -Werror (pidgin.im#17415).
+
+-------------------------------------------------------------------
 Tue Apr 17 12:50:20 UTC 2018 - dimstar@opensuse.org
 
 - Drop pkgconfig(NetworkManager) BuildRequires and Requires: this

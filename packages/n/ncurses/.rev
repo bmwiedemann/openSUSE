@@ -2591,4 +2591,41 @@
   + build-fixes for Ada95 configure-script and corresponding test package</comment>
     <requestid>734487</requestid>
   </revision>
+  <revision rev="162" vrev="22">
+    <srcmd5>bcb82ad6f971dba492a16addd3d4f0b4</srcmd5>
+    <version>6.1</version>
+    <time>1572021522</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20191019
+  + modify make_hash to not require --disable-leaks, to simplify building
+    with address-sanitizer.
+  + modify tic to exit if it cannot remove a conflicting name, because
+    treating that as a partial success can cause an infinite loop in
+    use-resolution (report/testcase by Hongxu Chen, cf: 20111001).
+
+- Add ncurses patch 20191015
+  + improve buffer-checks in captoinfo.c, for some cases when the
+    input string is shorter than expected.
+  &gt; fix two errata in tic (report/testcases by Hongxu Chen):
+  + check for missing character after backslash in write_it
+  + check for missing characters after &quot;%&gt;&quot; when converting from termcap
+    syntax (cf: 980530).
+
+- Avoid recursion trouble in spec file cause by undefined _lto_cflags 
+
+- Add ncurses patch 20191012
+  + amend recent changes to ncurses*-config and pc-files to filter out
+    Debian linker-flags (report by Sven Joachim, cf: 20150516).
+  + clarify relationship between tic, infocmp and captoinfo in manpage.
+  + check for invalid hashcode in _nc_find_type_entry and
+    _nc_find_name_entry.
+  &gt; fix several errata in tic (reports/testcases by &quot;zjuchenyuan&quot;):
+  + check for invalid hashcode in _nc_find_entry.
+  + check for missing character after backslash in fmt_entry
+  + check for acsc with odd length in dump_entry in check for one-one
+    mapping (cf: 20060415);
+  + check length when converting from old AIX box_chars_1 capability,
+    overlooked in changes to eliminate strcpy (cf: 20001007).</comment>
+    <requestid>741817</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           SUSEConnect
-Version:        0.3.20
+Version:        0.3.23
 Release:        0
 %define mod_name suse-connect
 %define mod_full_name %{mod_name}-%{version}
@@ -83,6 +83,7 @@ Source:         %{mod_full_name}.gem
 Source1:        %{name}.5
 Source2:        %{name}.8
 Source3:        %{name}.example
+Patch0:         switch_server_cert_location_to_etc.patch
 
 Summary:        Utility to register a system with the SUSE Customer Center
 License:        LGPL-2.1
@@ -99,6 +100,9 @@ product subscriptions and enable the product repositories/services locally.
 for s in %{sources}; do
     cp -p $s .
 done
+for s in %{patches}; do
+    cp -p $s .
+done
 
 %build
 
@@ -108,6 +112,12 @@ mkdir -p %{buildroot}%{_bindir}
 gem install --verbose --local --build-root=%{buildroot} --no-user-install -f --no-document %{gem_install_options} ./%{mod_full_name}.gem
 mv %{buildroot}%{_bindir}/%{name}* %{buildroot}%{_sbindir}/%{name}
 ln -s %{_sbindir}/%{name} %{buildroot}%{_bindir}/%{name}
+
+# system certificate location changed to /etc/pki/trust/anchors/registration_server.pem, see bsc#1130864
+# sle_version >= 150200 is matching SLES + Leap >= 15SP2, suse_version >= 1550 is Tumbleweed
+%if (0%{?sle_version} >= 150200 || 0%{?suse_version} >= 1550)
+patch -d %{buildroot}%{gem_base}/gems/%{mod_full_name} -p1 < switch_server_cert_location_to_etc.patch
+%endif
 
 install -D -m 644 %_sourcedir/SUSEConnect.5 %{buildroot}%_mandir/man5/SUSEConnect.5
 install -D -m 644 %_sourcedir/SUSEConnect.8 %{buildroot}%_mandir/man8/SUSEConnect.8

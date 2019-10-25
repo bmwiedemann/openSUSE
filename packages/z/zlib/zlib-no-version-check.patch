@@ -1,0 +1,49 @@
+Index: zlib-1.2.11/infback.c
+===================================================================
+--- zlib-1.2.11.orig/infback.c
++++ zlib-1.2.11/infback.c
+@@ -34,8 +34,7 @@ int stream_size;
+ {
+     struct inflate_state FAR *state;
+ 
+-    if (version == Z_NULL || version[0] != ZLIB_VERSION[0] ||
+-        stream_size != (int)(sizeof(z_stream)))
++    if (stream_size != (int)(sizeof(z_stream)))
+         return Z_VERSION_ERROR;
+     if (strm == Z_NULL || window == Z_NULL ||
+         windowBits < 8 || windowBits > 15)
+Index: zlib-1.2.11/inflate.c
+===================================================================
+--- zlib-1.2.11.orig/inflate.c
++++ zlib-1.2.11/inflate.c
+@@ -219,8 +219,7 @@ int stream_size;
+     int ret;
+     struct inflate_state FAR *state;
+ 
+-    if (version == Z_NULL || version[0] != ZLIB_VERSION[0] ||
+-        stream_size != (int)(sizeof(z_stream)))
++    if (stream_size != (int)(sizeof(z_stream)))
+         return Z_VERSION_ERROR;
+     if (strm == Z_NULL) return Z_STREAM_ERROR;
+     strm->msg = Z_NULL;                 /* in case we return an error */
+Index: zlib-1.2.11/deflate.c
+===================================================================
+--- zlib-1.2.11.orig/deflate.c
++++ zlib-1.2.11/deflate.c
+@@ -263,15 +263,13 @@ int ZEXPORT deflateInit2_(strm, level, m
+ {
+     deflate_state *s;
+     int wrap = 1;
+-    static const char my_version[] = ZLIB_VERSION;
+ 
+     ushf *overlay;
+     /* We overlay pending_buf and d_buf+l_buf. This works since the average
+      * output size for (length,distance) codes is <= 24 bits.
+      */
+ 
+-    if (version == Z_NULL || version[0] != my_version[0] ||
+-        stream_size != sizeof(z_stream)) {
++    if (stream_size != sizeof(z_stream)) {
+         return Z_VERSION_ERROR;
+     }
+     if (strm == Z_NULL) return Z_STREAM_ERROR;

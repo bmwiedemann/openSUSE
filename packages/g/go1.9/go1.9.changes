@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 21 17:26:58 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Let RPM evaluate the go_api version compare, drop no longer required bc.
+- Own the gdbinit.d directory, avoid the build dependency on gdb.
+
+-------------------------------------------------------------------
 Sat Jun 22 09:38:30 UTC 2019 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Enable %arm architecture

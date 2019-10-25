@@ -17,7 +17,7 @@
 
 
 Name:           yast2-schema
-Version:        4.2.4
+Version:        4.2.5
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -80,7 +80,8 @@ BuildRequires:  yast2-s390
 %endif
 BuildRequires:  yast2-samba-client
 BuildRequires:  yast2-samba-server
-BuildRequires:  yast2-security
+# extra_services in security.rnc
+BuildRequires:  yast2-security >= 4.2.5
 BuildRequires:  yast2-services-manager
 BuildRequires:  yast2-sound
 BuildRequires:  yast2-squid

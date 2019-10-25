@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 23 12:35:39 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add python38-config.patch to make vim buildable with new Python 3.8.
+  (gh#vim/vim#4080)
+
+-------------------------------------------------------------------
 Mon Oct 14 10:45:44 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.1.2148, fixes the following problems

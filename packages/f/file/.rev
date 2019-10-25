@@ -1245,4 +1245,19 @@ SPDX format (forwarded request 126065 from babelworx)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>710542</requestid>
   </revision>
+  <revision rev="114" vrev="3">
+    <srcmd5>113aff16d86307507498eecfb8890397</srcmd5>
+    <version>5.37</version>
+    <time>1572021552</time>
+    <user>dimstar_suse</user>
+    <comment>- Add temporary patch CVE-2019-18218-46a8443f.patch from upstream
+  to fix bsc#1154661 -- heap-based buffer overflow in cdf_read_property_info in cdf.c
+
+- Let python-magic build with latest rpm 
+
+- Let python-magic build with latest rpm
+
+- Correct version of file which is now 5.37</comment>
+    <requestid>741869</requestid>
+  </revision>
 </revisionlist>

@@ -1598,4 +1598,17 @@ READ https://httpd.apache.org/docs/2.4/upgrading.html
 In apache2-vhost.template, we recommend users to create custom logs like `/var/log/apache2/dummy-host.example.com-access_log`. But these files are not processed by logrotate and will grow fast. So I add these files to logrotate configuration. (forwarded request 735419 from guoyunhe)</comment>
     <requestid>735601</requestid>
   </revision>
+  <revision rev="161" vrev="4">
+    <srcmd5>4b7653fd12385396c76f5fc884e3cc33</srcmd5>
+    <version>2.4.41</version>
+    <time>1572021499</time>
+    <user>dimstar_suse</user>
+    <comment>- load private keys and certificates from pkcs11 token [SLE-7653]
+- added patches
+  load certificates from openssl engine
+  + apache2-load-certificates-from-pkcs11.patch
+  load private keys from openssl engine
+  + apache2-load-private-keys-from-pkcs11.patch</comment>
+    <requestid>741682</requestid>
+  </revision>
 </revisionlist>

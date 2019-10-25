@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue Oct 22 06:54:42 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 1.20.5+24:
+  * Fix crash on XkbSetMap
+- Drop unneeded obsinfo file and tweak _service.
+
+-------------------------------------------------------------------
+Sat Oct 12 18:53:52 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.20.5+22:
+  * miext/sync:
+    - Make struct _SyncObject::initialized fully ABI compatible
+    - Fix needless ABI change
+  * xf86: Disable unused crtc functions when a lease is revoked
+  * xwayland:
+    - Handle the case of windows being realized before redirection
+    - Refactor surface creation into a separate function
+    - Separate DamagePtr into separate window data
+    - Do not free a NULL GBM bo
+    - Expand the RANDR screen size limits
+    - Update screen pixmap on output resize
+    - Reset scheduled frames after hiding tablet cursor
+    - Check status in GBM pixmap creation
+    - Avoid a crash on pointer enter with a grab
+  * GLX:
+    - Fix previous context validation in xorgGlxMakeCurrent
+    - Set GlxServerExports::{major,minor}Version
+    - Add a function to change a clients vendor list
+    - Use the sending client for looking up XID's
+    - Add a per-client vendor mapping
+  * xsync: Add resource inside of SyncCreate, export SyncCreate
+  * dri2: Sync i965_pci_ids.h from mesa
+  * Xi: Use current device active grab to deliver touch events if
+    any
+  * Revert "present/scmd: Check that the flip and screen pixmap
+    pitches match"
+  * glamor: Make pixmap exportable from `gbm_bo_from_pixmap()`
+- Drop patches fixed upstream:
+  * U_xwayland-Separate-DamagePtr-into-separate-window-data.patch
+  * 0001-xsync-Add-resource-inside-of-SyncCreate-export-SyncC.patch
+  * 0002-GLX-Add-a-per-client-vendor-mapping.patch
+  * 0003-GLX-Use-the-sending-client-for-looking-up-XID-s.patch
+  * 0004-GLX-Add-a-function-to-change-a-clients-vendor-list.patch
+  * 0005-GLX-Set-GlxServerExports-major-minor-Version.patch
+- Switch to gitcheckout via source service, use the stable released
+  branch but set explicit commit used in _service.
+
+-------------------------------------------------------------------
 Sat Sep 21 10:23:06 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - reintroduce Xvfb subpackage (boo#1151457)

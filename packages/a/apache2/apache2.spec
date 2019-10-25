@@ -146,6 +146,10 @@ Patch111:       httpd-visibility.patch
 # PATCH-FEATURE-UPSTREAM kstreitova@suse.com -- backport of HttpContentLengthHeadZero and HttpExpectStrict
 Patch115:       httpd-2.4.x-fate317766-config-control-two-protocol-options.diff
 Patch116:       deprecated-scripts-arch.patch
+# load private keys from openssl engine
+Patch117:       apache2-load-private-keys-from-pkcs11.patch
+# load certificates from openssl engine
+Patch118:       apache2-load-certificates-from-pkcs11.patch
 BuildRequires:  apache-rpm-macros-control
 BuildRequires:  apr-util-devel
 #Since 2.4.7 the event MPM requires apr 1.5.0 or later.
@@ -338,6 +342,8 @@ to administrators of web servers in general.
 %if 0%{?suse_version} == 1110
 %patch116 -p1
 %endif
+%patch117 -p1
+%patch118 -p1
 cat %{_sourcedir}/SUSE-NOTICE >> NOTICE
 # install READMEs
 a=$(basename %{SOURCE22})

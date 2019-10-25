@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 22 07:01:23 UTC 2019 - pgajdos@suse.com
+
+- load private keys and certificates from pkcs11 token [SLE-7653]
+- added patches
+  load certificates from openssl engine
+  + apache2-load-certificates-from-pkcs11.patch
+  load private keys from openssl engine
+  + apache2-load-private-keys-from-pkcs11.patch
+
+-------------------------------------------------------------------
 Sat Oct  5 14:03:54 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
 
 - Add custom log files to logrotate according to apache2-vhost.template
