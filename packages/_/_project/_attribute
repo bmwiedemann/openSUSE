@@ -256,6 +256,16 @@ products:
     - x86_64
   - kubic-weave-npc-image:
     - x86_64
+  - opensuse-bind-image:
+    - x86_64
+  - opensuse-dhcp-server-image:
+    - x86_64
+  - opensuse-docker_auth-image:
+    - x86_64
+  - opensuse-mariadb-image:
+    - x86_64
+  - opensuse-registry-image:
+    - x86_64
   - opensuse-toolbox-image:
     - x86_64
   - opensuse-tumbleweed-image:docker:
