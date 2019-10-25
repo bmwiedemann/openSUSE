@@ -163,4 +163,14 @@
     <comment></comment>
     <requestid>742269</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>c6f4a1e66efcea417bd79d289645123d</srcmd5>
+    <version>0.46.0</version>
+    <time>1572021791</time>
+    <user>dimstar_suse</user>
+    <comment>Restore python2 support
+
+Python2 support was turned off by accident.  I don't go out of my way to support Python 2, but when it requires no additional work like here I don't see the point in manually turning it off.</comment>
+    <requestid>742877</requestid>
+  </revision>
 </revisionlist>

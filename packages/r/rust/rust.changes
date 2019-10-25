@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 23 09:56:33 UTC 2019 - Ralf Haferkamp <rhafer@suse.com>
+
+- Switch to bundled version of libgit2 for now. libgit2-sys seems
+  to expect using the bundled variant, which just seems to point
+  to a snapshot of the master branch and doesn't match any released
+  libgit2 (bsc#1154817).
+  See: https://github.com/rust-lang/rust/issues/63476 and
+  https://github.com/rust-lang/git2-rs/issues/458 for details.
+
+-------------------------------------------------------------------
 Mon Sep 30 21:29:54 UTC 2019 - Luke Jones <luke@ljones.dev>
 
 - Add patch add-option-to-allow-warnings.patch to add a config option

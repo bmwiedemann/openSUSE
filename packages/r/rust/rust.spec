@@ -150,10 +150,8 @@ BuildRequires:  procps
 BuildRequires:  python3-base
 BuildRequires:  pkgconfig(libcurl)
 # The following requires must mirror:
-# LIBGIT2_SYS_USE_PKG_CONFIG &&
 # LIBSSH2_SYS_USE_PKG_CONFIG
 %if !%with rust_bootstrap || 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 120500
-BuildRequires:  pkgconfig(libgit2) >= 0.23
 BuildRequires:  pkgconfig(libssh2) >= 1.4.3
 %endif
 BuildRequires:  pkgconfig(openssl)
@@ -460,9 +458,8 @@ export CC=gcc-7
 export CXX=g++-7
 %endif
 # Cargo use system libs if not bootstrapping
-# restircted only to libgit due to version changes causing with cargo rpm deps
+# restircted only to libssh due to version changes causing with cargo rpm deps
 %if !%with rust_bootstrap || 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 120500
-export LIBGIT2_SYS_USE_PKG_CONFIG=1
 export LIBSSH2_SYS_USE_PKG_CONFIG=1
 %endif
 # eliminate complain from RPMlint
@@ -486,9 +483,8 @@ export CC=gcc-7
 export CXX=g++-7
 %endif
 # Cargo use system libs if not bootstrapping
-# restircted only to libgit due to version changes causing with cargo rpm deps
+# restircted only to libssh due to version changes causing with cargo rpm deps
 %if !%with rust_bootstrap || 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 120500
-export LIBGIT2_SYS_USE_PKG_CONFIG=1
 export LIBSSH2_SYS_USE_PKG_CONFIG=1
 %endif
 # eliminate complain from RPMlint

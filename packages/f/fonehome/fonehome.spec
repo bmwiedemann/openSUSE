@@ -1,7 +1,7 @@
 #
 # spec file for package fonehome
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2012 Archie L. Cobbs <archie@dellroad.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -42,7 +42,7 @@
 %define authkeys_options    no-X11-forwarding,no-agent-forwarding,no-pty,permitopen="0.0.0.0:9",command="sleep 99999d"
 
 Name:           fonehome
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Remote access to machines behind firewalls
 License:        Apache-2.0

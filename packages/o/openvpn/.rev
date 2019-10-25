@@ -720,4 +720,12 @@ behaviour fixing bsc#941569</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>720978</requestid>
   </revision>
+  <revision rev="84" vrev="3">
+    <srcmd5>acbc7cf5575373ee6f1af0e5373fda6d</srcmd5>
+    <version>2.4.7</version>
+    <time>1572021612</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>741878</requestid>
+  </revision>
 </revisionlist>

@@ -24,7 +24,7 @@
 %define espeakdev espeak-devel
 %endif
 Name:           speech-dispatcher
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 # FIXME missing backends: festival lite, ibmeci (ibm tts), dumbtts/ivona, nas
 # Almost all files are under GPLv2+, however src/c/clients/spdsend/spdsend.h is
@@ -40,16 +40,16 @@ Source99:       baselibs.conf
 BuildRequires:  %{espeakdev}
 BuildRequires:  alsa-devel
 BuildRequires:  dotconf-devel
+BuildRequires:  gettext
 BuildRequires:  glib2-devel
-BuildRequires:  intltool
 BuildRequires:  libao-devel
 BuildRequires:  libpulse-devel
 BuildRequires:  libsndfile-devel
 BuildRequires:  libtool
 BuildRequires:  python3-setuptools
-BuildRequires:  pkgconfig(systemd)
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  texinfo
+BuildRequires:  pkgconfig(systemd)
 Requires:       python3-speechd
 # FIXME: use proper Requires(pre/post/preun/...)
 PreReq:         %{install_info_prereq}
@@ -176,7 +176,8 @@ sed -i "s/#AddModule \"%{espeak}\"/AddModule \"%{espeak}\"/" -i config/speechd.c
         --with-pulse \
         --without-baratinoo \
         --without-flite \
-        --without-kali
+        --without-kali \
+        --with-ibmtts=no
 make %{?_smp_mflags}
 
 %install
@@ -222,7 +223,6 @@ rm %{buildroot}%{_infodir}/dir
 %postun -n libspeechd2 -p /sbin/ldconfig
 
 %files -f %{name}.lang
-%defattr(-,root,root,-)
 %doc AUTHORS ANNOUNCE NEWS README.md
 %license COPYING.LGPL
 %dir %{_sysconfdir}/speech-dispatcher/
@@ -254,28 +254,23 @@ rm %{buildroot}%{_infodir}/dir
 %{_sbindir}/rcspeech-dispatcherd
 
 %files configure
-%defattr(-,root,root,-)
 %{_bindir}/spd-conf
 %{python3_sitearch}/speechd_config/
 %{_datadir}/speech-dispatcher/
 
 %files module-espeak
-%defattr(-,root,root,-)
 %config(noreplace) %{_sysconfdir}/speech-dispatcher/modules/espeak.conf
 %{_libdir}/speech-dispatcher-modules/sd_%{espeak}
 
 %files -n libspeechd2
-%defattr(-,root,root,-)
 %{_libdir}/libspeechd.so.*
 
 %files -n libspeechd-devel
-%defattr(-,root,root,-)
 %{_includedir}/%{name}/
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/%{name}.pc
 
 %files -n python3-speechd
-%defattr(-,root,root,-)
 %{python3_sitearch}/speechd/
 
 %changelog

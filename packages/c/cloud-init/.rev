@@ -779,4 +779,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>738480</requestid>
   </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>7c2cb62e89f8ddfe8846128c7b24df65</srcmd5>
+    <version>19.2</version>
+    <time>1572021622</time>
+    <user>dimstar_suse</user>
+    <comment>- Add cloud-init-renderer-detect.patch (bsc#1154092, boo#1142988)
+  + Short curcuit the conditional for identifying the sysconfig renderer.
+    If we find ifup/ifdown accept the renderer as available.
+
+- Add cloud-init-break-resolv-symlink.patch (bsc#1151488)
+  + If /etc/resolv.conf is a symlink break it. This will avoid netconfig
+    from clobbering the changes cloud-init applied.</comment>
+    <requestid>741941</requestid>
+  </revision>
 </revisionlist>

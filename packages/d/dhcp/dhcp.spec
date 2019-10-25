@@ -86,6 +86,8 @@ Patch17:        0017-server-no-success-report-before-send.919959.patch
 Patch18:        0018-client-fail-on-script-pre-init-error-bsc-912098.patch
 # PATCH-FIX-SLE dhcp-4.2.4-P1-interval bsc#947780
 Patch20:        0020-dhcp-4.x.x-fixed-improper-lease-duration-checking.patch
+Patch21:        0021-dhcp-ip-family-symlinks.patch
+Patch22:        dhcp-CVE-2019-6470.patch
 BuildRequires:  automake
 BuildRequires:  dos2unix
 BuildRequires:  libtool
@@ -103,7 +105,7 @@ Requires:       dhcp = %{version}
 Requires:       net-tools
 Requires(post): %fillup_prereq
 Requires(pre):  shadow
-%systemd_requires
+%systemd_ordering
 %if 0%{?suse_version} >= 1330
 Requires(pre):  group(nogroup)
 %endif
@@ -193,6 +195,8 @@ with the Internet Software Consortium (ISC) dhcpctl API.
 %patch17 -p1
 %patch18 -p1
 %patch20
+%patch21
+%patch22
 ##
 find . -type f -name \*.cat\* -exec rm -f {} \;
 dos2unix contrib/ms2isc/*
@@ -236,6 +240,7 @@ export CFLAGS LDFLAGS FFLAGS CXXFLAGS
 	--enable-failover \
 	--enable-paranoia \
 	--enable-early-chroot \
+	--enable-secs-byteorder \
 	--with-ldap \
 	--with-ldapcrypto \
 	--with-cli-pid-file=%{_localstatedir}/run/dhclient.pid \

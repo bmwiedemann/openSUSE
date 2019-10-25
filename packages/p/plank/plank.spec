@@ -17,18 +17,17 @@
 
 
 %global __provides_exclude_from ^%{_libdir}/.*/docklets/.*\\.so$
-
 %define soname	libplank
 %define sover 1
 Name:           plank
-Version:        0.11.4
+Version:        0.11.89
 Release:        0
 Summary:        Trivial dock
 License:        GPL-3.0-or-later
 Group:          System/GUI/Other
-Url:            https://launchpad.net/plank
-Source:         https://launchpad.net/%{name}/1.0/%{version}/+download/%{name}-%{version}.tar.xz
-Source2:        https://launchpad.net/%{name}/1.0/%{version}/+download/%{name}-%{version}.tar.xz.asc
+URL:            https://launchpad.net/plank
+Source0:        https://launchpad.net/%{name}/1.0/%{version}/+download/%{name}-%{version}.tar.xz
+Source1:        https://launchpad.net/%{name}/1.0/%{version}/+download/%{name}-%{version}.tar.xz.asc
 Source3:        %{name}.keyring
 BuildRequires:  autoconf >= 2.65
 BuildRequires:  automake >= 1.11
@@ -50,6 +49,7 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.40
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.34
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.10.0
 BuildRequires:  pkgconfig(libbamf3) >= 0.2.92
+BuildRequires:  pkgconfig(libgnome-menu-3.0)
 BuildRequires:  pkgconfig(libwnck-3.0)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xfixes) >= 5.0
@@ -57,7 +57,6 @@ BuildRequires:  pkgconfig(xi) >= 1.6.99.1
 Requires:       bamf-daemon >= 0.2.92
 Recommends:     %{name}-docklets
 Recommends:     %{name}-lang
-%glib2_gsettings_schema_requires
 
 %description
 Plank is a trivial dock.
@@ -111,16 +110,6 @@ make %{?_smp_mflags}
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name}
 
-%post
-%icon_theme_cache_post
-%desktop_database_post
-%glib2_gsettings_schema_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%glib2_gsettings_schema_postun
-
 %post -n %{soname}%{sover} -p /sbin/ldconfig
 %postun -n %{soname}%{sover} -p /sbin/ldconfig
 
@@ -129,7 +118,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %doc AUTHORS COPYRIGHT HACKING NEWS README
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
-%{_datadir}/appdata/%{name}.appdata.xml
+%{_datadir}/metainfo/%{name}.appdata.xml
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.??g
 %{_datadir}/glib-2.0/schemas/*%{name}.gschema.xml

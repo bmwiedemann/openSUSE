@@ -56,6 +56,7 @@ BuildRequires:  iproute2
 BuildRequires:  libselinux-devel
 BuildRequires:  lzo-devel
 BuildRequires:  openssl-devel
+BuildRequires:  p11-kit-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkcs11-helper-devel >= 1.11
 BuildRequires:  xz

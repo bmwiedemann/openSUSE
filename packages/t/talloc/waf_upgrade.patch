@@ -1,0 +1,3299 @@
+From aabdcc91513e242c4f191e1bbbb70c890416d213 Mon Sep 17 00:00:00 2001
+From: Andreas Schneider <asn@samba.org>
+Date: Mon, 3 Jun 2019 10:40:55 +0200
+Subject: [PATCH] third_party: Update waf to version 2.0.17
+
+This fixes building Samba, libtalloc, libtevent, libtdb and libldb with
+Python 3.8.
+
+     wget https://waf.io/waf-2.0.17.tar.bz2
+     tar -xf waf-2.0.17.tar.bz2
+     git rm third_party/waf/waflib/ -r
+     mkdir third_party/waf -p
+     rsync -a waf-2.0.17/waflib/ third_party/waf/waflib/
+     git add third_party/waf/waflib/
+
+(Then update version number in buildtools/bin/waf and
+buildtools/wafsamba/wafsamba.py)
+
+BUG: https://bugzilla.samba.org/show_bug.cgi?id=13960
+
+Signed-off-by: Andreas Schneider <asn@samba.org>
+Reviewed-by: Andrew Bartlett <abartlet@samba.org>
+Signed-off-by: Andrew Bartlett <abartlet@samba.org>
+---
+ buildtools/bin/waf                            |   2 +-
+ buildtools/wafsamba/wafsamba.py               |   2 +-
+ third_party/waf/waflib/Build.py               |  62 ++++-
+ third_party/waf/waflib/ConfigSet.py           |   4 +-
+ third_party/waf/waflib/Configure.py           |   5 +-
+ third_party/waf/waflib/Context.py             |  16 +-
+ third_party/waf/waflib/Logs.py                |   9 +-
+ third_party/waf/waflib/Node.py                |   3 +-
+ third_party/waf/waflib/Runner.py              |  60 ++++-
+ third_party/waf/waflib/Scripting.py           |  15 +-
+ third_party/waf/waflib/Task.py                | 215 ++++++++++++++----
+ third_party/waf/waflib/TaskGen.py             |   6 +-
+ third_party/waf/waflib/Tools/c_config.py      |  11 +-
+ third_party/waf/waflib/Tools/c_preproc.py     |   8 +-
+ third_party/waf/waflib/Tools/ccroot.py        |  22 +-
+ third_party/waf/waflib/Tools/d_scan.py        |   8 +-
+ third_party/waf/waflib/Tools/fc.py            |  24 +-
+ third_party/waf/waflib/Tools/fc_config.py     |   6 +-
+ third_party/waf/waflib/Tools/fc_scan.py       |  12 +-
+ third_party/waf/waflib/Tools/ifort.py         |   2 +-
+ third_party/waf/waflib/Tools/javaw.py         | 157 +++++++++++--
+ third_party/waf/waflib/Tools/md5_tstamp.py    |   6 +-
+ third_party/waf/waflib/Tools/msvc.py          |  18 +-
+ third_party/waf/waflib/Tools/python.py        |  18 +-
+ third_party/waf/waflib/Tools/qt5.py           |  14 +-
+ third_party/waf/waflib/Tools/waf_unit_test.py |   4 +-
+ third_party/waf/waflib/Tools/winres.py        |   4 +-
+ third_party/waf/waflib/Utils.py               |  26 ++-
+ third_party/waf/waflib/ansiterm.py            |   2 +-
+ third_party/waf/waflib/extras/buildcopy.py    |   7 +-
+ third_party/waf/waflib/extras/clang_cross.py  |  92 ++++++++
+ .../waf/waflib/extras/clang_cross_common.py   | 113 +++++++++
+ .../waf/waflib/extras/clangxx_cross.py        | 106 +++++++++
+ third_party/waf/waflib/extras/color_msvc.py   |  59 +++++
+ third_party/waf/waflib/extras/cppcheck.py     |  12 +-
+ third_party/waf/waflib/extras/cpplint.py      |  77 +++----
+ third_party/waf/waflib/extras/cython.py       |  15 +-
+ third_party/waf/waflib/extras/distnet.py      |   2 +-
+ third_party/waf/waflib/extras/doxygen.py      |  13 +-
+ third_party/waf/waflib/extras/erlang.py       |   2 +-
+ third_party/waf/waflib/extras/fast_partial.py |   3 +-
+ third_party/waf/waflib/extras/fc_cray.py      |   2 +-
+ third_party/waf/waflib/extras/fc_nec.py       |   2 +-
+ third_party/waf/waflib/extras/fc_nfort.py     |  52 +++++
+ third_party/waf/waflib/extras/gccdeps.py      |   6 +-
+ third_party/waf/waflib/extras/kde4.py         |   2 +-
+ third_party/waf/waflib/extras/msvcdeps.py     |  73 +++---
+ third_party/waf/waflib/extras/ocaml.py        |   2 +-
+ .../waf/waflib/extras/parallel_debug.py       |   9 +-
+ third_party/waf/waflib/extras/pgicc.py        |   2 +-
+ third_party/waf/waflib/extras/protoc.py       |  93 +++-----
+ third_party/waf/waflib/extras/pyqt5.py        |  21 +-
+ third_party/waf/waflib/extras/qt4.py          |   6 +-
+ third_party/waf/waflib/extras/remote.py       |   2 +-
+ .../waf/waflib/extras/run_do_script.py        |   2 +-
+ third_party/waf/waflib/extras/sphinx.py       |  81 +++++++
+ third_party/waf/waflib/extras/swig.py         |   4 +-
+ third_party/waf/waflib/extras/syms.py         |   2 +-
+ third_party/waf/waflib/extras/use_config.py   |   2 +-
+ third_party/waf/waflib/extras/xcode6.py       |   8 +-
+ third_party/waf/waflib/processor.py           |   4 +
+ 61 files changed, 1259 insertions(+), 358 deletions(-)
+ create mode 100644 third_party/waf/waflib/extras/clang_cross.py
+ create mode 100644 third_party/waf/waflib/extras/clang_cross_common.py
+ create mode 100644 third_party/waf/waflib/extras/clangxx_cross.py
+ create mode 100644 third_party/waf/waflib/extras/color_msvc.py
+ create mode 100644 third_party/waf/waflib/extras/fc_nfort.py
+ create mode 100644 third_party/waf/waflib/extras/sphinx.py
+
+diff --git a/buildtools/bin/waf b/buildtools/bin/waf
+index 3ee4d5bc4df..8413f2332b7 100755
+--- a/buildtools/bin/waf
++++ b/buildtools/bin/waf
+@@ -32,7 +32,7 @@ POSSIBILITY OF SUCH DAMAGE.
+ 
+ import os, sys, inspect
+ 
+-VERSION="2.0.8"
++VERSION="2.0.17"
+ REVISION="x"
+ GIT="x"
+ INSTALL="x"
+diff --git a/buildtools/wafsamba/wafsamba.py b/buildtools/wafsamba/wafsamba.py
+index cd3e9d3e7a8..76d65ebfcb6 100644
+--- a/buildtools/wafsamba/wafsamba.py
++++ b/buildtools/wafsamba/wafsamba.py
+@@ -38,7 +38,7 @@ LIB_PATH="shared"
+ 
+ os.environ['PYTHONUNBUFFERED'] = '1'
+ 
+-if Context.HEXVERSION not in (0x2000800,):
++if Context.HEXVERSION not in (0x2001100,):
+     Logs.error('''
+ Please use the version of waf that comes with Samba, not
+ a system installed version. See http://wiki.samba.org/index.php/Waf
+diff --git a/third_party/waf/waflib/Build.py b/third_party/waf/waflib/Build.py
+index 8347a287a81..39f0991918b 100644
+--- a/third_party/waf/waflib/Build.py
++++ b/third_party/waf/waflib/Build.py
+@@ -104,7 +104,7 @@ class BuildContext(Context.Context):
+ 		"""Amount of jobs to run in parallel"""
+ 
+ 		self.targets = Options.options.targets
+-		"""List of targets to build (default: \*)"""
++		"""List of targets to build (default: \\*)"""
+ 
+ 		self.keep = Options.options.keep
+ 		"""Whether the build should continue past errors"""
+@@ -758,14 +758,31 @@ class BuildContext(Context.Context):
+ 			elif not ln.is_child_of(self.srcnode):
+ 				Logs.warn('CWD %s is not under %s, forcing --targets=* (run distclean?)', ln.abspath(), self.srcnode.abspath())
+ 				ln = self.srcnode
+-			for tg in self.groups[self.current_group]:
++
++			def is_post(tg, ln):
+ 				try:
+ 					p = tg.path
+ 				except AttributeError:
+ 					pass
+ 				else:
+ 					if p.is_child_of(ln):
+-						tgpost(tg)
++						return True
++
++			def is_post_group():
++				for i, g in enumerate(self.groups):
++					if i > self.current_group:
++						for tg in g:
++							if is_post(tg, ln):
++								return True
++
++			if self.post_mode == POST_LAZY and ln != self.srcnode:
++				# partial folder builds require all targets from a previous build group
++				if is_post_group():
++					ln = self.srcnode
++
++			for tg in self.groups[self.current_group]:
++				if is_post(tg, ln):
++					tgpost(tg)
+ 
+ 	def get_tasks_group(self, idx):
+ 		"""
+@@ -884,7 +901,7 @@ class BuildContext(Context.Context):
+ 
+ 		:param dest: absolute path of the symlink
+ 		:type dest: :py:class:`waflib.Node.Node` or string (absolute path)
+-		:param src: link contents, which is a relative or abolute path which may exist or not
++		:param src: link contents, which is a relative or absolute path which may exist or not
+ 		:type src: string
+ 		:param env: configuration set for performing substitutions in dest
+ 		:type env: :py:class:`waflib.ConfigSet.ConfigSet`
+@@ -1038,12 +1055,16 @@ class inst(Task.Task):
+ 		"""
+ 		Returns the destination path where files will be installed, pre-pending `destdir`.
+ 
++		Relative paths will be interpreted relative to `PREFIX` if no `destdir` is given.
++
+ 		:rtype: string
+ 		"""
+ 		if isinstance(self.install_to, Node.Node):
+ 			dest = self.install_to.abspath()
+ 		else:
+-			dest = Utils.subst_vars(self.install_to, self.env)
++			dest = os.path.normpath(Utils.subst_vars(self.install_to, self.env))
++		if not os.path.isabs(dest):
++		    dest = os.path.join(self.env.PREFIX, dest)
+ 		if destdir and Options.options.destdir:
+ 			dest = os.path.join(Options.options.destdir, os.path.splitdrive(dest)[1].lstrip(os.sep))
+ 		return dest
+@@ -1139,11 +1160,19 @@ class inst(Task.Task):
+ 				# same size and identical timestamps -> make no copy
+ 				if st1.st_mtime + 2 >= st2.st_mtime and st1.st_size == st2.st_size:
+ 					if not self.generator.bld.progress_bar:
+-						Logs.info('- install %s (from %s)', tgt, lbl)
++
++						c1 = Logs.colors.NORMAL
++						c2 = Logs.colors.BLUE
++
++						Logs.info('%s- install %s%s%s (from %s)', c1, c2, tgt, c1, lbl)
+ 					return False
+ 
+ 		if not self.generator.bld.progress_bar:
+-			Logs.info('+ install %s (from %s)', tgt, lbl)
++
++			c1 = Logs.colors.NORMAL
++			c2 = Logs.colors.BLUE
++
++			Logs.info('%s+ install %s%s%s (from %s)', c1, c2, tgt, c1, lbl)
+ 
+ 		# Give best attempt at making destination overwritable,
+ 		# like the 'install' utility used by 'make install' does.
+@@ -1200,14 +1229,18 @@ class inst(Task.Task):
+ 		"""
+ 		if os.path.islink(tgt) and os.readlink(tgt) == src:
+ 			if not self.generator.bld.progress_bar:
+-				Logs.info('- symlink %s (to %s)', tgt, src)
++				c1 = Logs.colors.NORMAL
++				c2 = Logs.colors.BLUE
++				Logs.info('%s- symlink %s%s%s (to %s)', c1, c2, tgt, c1, src)
+ 		else:
+ 			try:
+ 				os.remove(tgt)
+ 			except OSError:
+ 				pass
+ 			if not self.generator.bld.progress_bar:
+-				Logs.info('+ symlink %s (to %s)', tgt, src)
++				c1 = Logs.colors.NORMAL
++				c2 = Logs.colors.BLUE
++				Logs.info('%s+ symlink %s%s%s (to %s)', c1, c2, tgt, c1, src)
+ 			os.symlink(src, tgt)
+ 			self.fix_perms(tgt)
+ 
+@@ -1216,7 +1249,9 @@ class inst(Task.Task):
+ 		See :py:meth:`waflib.Build.inst.do_install`
+ 		"""
+ 		if not self.generator.bld.progress_bar:
+-			Logs.info('- remove %s', tgt)
++			c1 = Logs.colors.NORMAL
++			c2 = Logs.colors.BLUE
++			Logs.info('%s- remove %s%s%s', c1, c2, tgt, c1)
+ 
+ 		#self.uninstall.append(tgt)
+ 		try:
+@@ -1236,7 +1271,9 @@ class inst(Task.Task):
+ 		"""
+ 		try:
+ 			if not self.generator.bld.progress_bar:
+-				Logs.info('- remove %s', tgt)
++				c1 = Logs.colors.NORMAL
++				c2 = Logs.colors.BLUE
++				Logs.info('%s- remove %s%s%s', c1, c2, tgt, c1)
+ 			os.remove(tgt)
+ 		except OSError:
+ 			pass
+@@ -1297,7 +1334,8 @@ class CleanContext(BuildContext):
+ 			lst = []
+ 			for env in self.all_envs.values():
+ 				lst.extend(self.root.find_or_declare(f) for f in env[CFG_FILES])
+-			for n in self.bldnode.ant_glob('**/*', excl='.lock* *conf_check_*/** config.log c4che/*', quiet=True):
++			excluded_dirs = '.lock* *conf_check_*/** config.log %s/*' % CACHE_DIR
++			for n in self.bldnode.ant_glob('**/*', excl=excluded_dirs, quiet=True):
+ 				if n in lst:
+ 					continue
+ 				n.delete()
+diff --git a/third_party/waf/waflib/ConfigSet.py b/third_party/waf/waflib/ConfigSet.py
+index b300bb56b7c..901fba6c067 100644
+--- a/third_party/waf/waflib/ConfigSet.py
++++ b/third_party/waf/waflib/ConfigSet.py
+@@ -11,7 +11,7 @@ The values put in :py:class:`ConfigSet` must be serializable (dicts, lists, stri
+ 
+ import copy, re, os
+ from waflib import Logs, Utils
+-re_imp = re.compile('^(#)*?([^#=]*?)\ =\ (.*?)$', re.M)
++re_imp = re.compile(r'^(#)*?([^#=]*?)\ =\ (.*?)$', re.M)
+ 
+ class ConfigSet(object):
+ 	"""
+@@ -312,7 +312,7 @@ class ConfigSet(object):
+ 		:type filename: string
+ 		"""
+ 		tbl = self.table
+-		code = Utils.readf(filename, m='rU')
++		code = Utils.readf(filename, m='r')
+ 		for m in re_imp.finditer(code):
+ 			g = m.group
+ 			tbl[g(2)] = eval(g(3))
+diff --git a/third_party/waf/waflib/Configure.py b/third_party/waf/waflib/Configure.py
+index 20ca705e696..db09c0e3a40 100644
+--- a/third_party/waf/waflib/Configure.py
++++ b/third_party/waf/waflib/Configure.py
+@@ -125,7 +125,7 @@ class ConfigurationContext(Context.Context):
+ 		self.bldnode.mkdir()
+ 
+ 		if not os.path.isdir(self.bldnode.abspath()):
+-			conf.fatal('Could not create the build directory %s' % self.bldnode.abspath())
++			self.fatal('Could not create the build directory %s' % self.bldnode.abspath())
+ 
+ 	def execute(self):
+ 		"""
+@@ -180,6 +180,7 @@ class ConfigurationContext(Context.Context):
+ 		env.hash = self.hash
+ 		env.files = self.files
+ 		env.environ = dict(self.environ)
++		env.launch_dir = Context.launch_dir
+ 
+ 		if not (self.env.NO_LOCK_IN_RUN or env.environ.get('NO_LOCK_IN_RUN') or getattr(Options.options, 'no_lock_in_run')):
+ 			env.store(os.path.join(Context.run_dir, Options.lockfile))
+@@ -286,7 +287,7 @@ class ConfigurationContext(Context.Context):
+ 
+ 	def eval_rules(self, rules):
+ 		"""
+-		Execute configuration tests provided as list of funcitons to run
++		Execute configuration tests provided as list of functions to run
+ 
+ 		:param rules: list of configuration method names
+ 		:type rules: list of string
+diff --git a/third_party/waf/waflib/Context.py b/third_party/waf/waflib/Context.py
+index 3222fb1551c..d0759aada58 100644
+--- a/third_party/waf/waflib/Context.py
++++ b/third_party/waf/waflib/Context.py
+@@ -11,13 +11,13 @@ from waflib import Utils, Errors, Logs
+ import waflib.Node
+ 
+ # the following 3 constants are updated on each new release (do not touch)
+-HEXVERSION=0x2000800
++HEXVERSION=0x2001100
+ """Constant updated on new releases"""
+ 
+-WAFVERSION="2.0.8"
++WAFVERSION="2.0.17"
+ """Constant updated on new releases"""
+ 
+-WAFREVISION="f78fbc32bb355a3291c9b5f79bbe0c8dfe81282a"
++WAFREVISION="6bc6cb599c702e985780e9f705b291b812123693"
+ """Git revision when the waf version is updated"""
+ 
+ ABI = 20
+@@ -266,7 +266,7 @@ class Context(ctx):
+ 				cache[node] = True
+ 				self.pre_recurse(node)
+ 				try:
+-					function_code = node.read('rU', encoding)
++					function_code = node.read('r', encoding)
+ 					exec(compile(function_code, node.abspath(), 'exec'), self.exec_dict)
+ 				finally:
+ 					self.post_recurse(node)
+@@ -502,7 +502,7 @@ class Context(ctx):
+ 			def build(bld):
+ 				bld.to_log('starting the build')
+ 
+-		Provide a logger on the context class or override this methid if necessary.
++		Provide a logger on the context class or override this method if necessary.
+ 
+ 		:param msg: message
+ 		:type msg: string
+@@ -613,7 +613,7 @@ class Context(ctx):
+ 		is typically called once for a programming language group, see for
+ 		example :py:mod:`waflib.Tools.compiler_c`
+ 
+-		:param var: glob expression, for example 'cxx\_\*.py'
++		:param var: glob expression, for example 'cxx\\_\\*.py'
+ 		:type var: string
+ 		:param ban: list of exact file names to exclude
+ 		:type ban: list of string
+@@ -662,7 +662,7 @@ def load_module(path, encoding=None):
+ 
+ 	module = imp.new_module(WSCRIPT_FILE)
+ 	try:
+-		code = Utils.readf(path, m='rU', encoding=encoding)
++		code = Utils.readf(path, m='r', encoding=encoding)
+ 	except EnvironmentError:
+ 		raise Errors.WafError('Could not read the file %r' % path)
+ 
+@@ -678,7 +678,7 @@ def load_module(path, encoding=None):
+ 
+ def load_tool(tool, tooldir=None, ctx=None, with_sys_path=True):
+ 	"""
+-	Importx a Waf tool as a python module, and stores it in the dict :py:const:`waflib.Context.Context.tools`
++	Imports a Waf tool as a python module, and stores it in the dict :py:const:`waflib.Context.Context.tools`
+ 
+ 	:type  tool: string
+ 	:param tool: Name of the tool
+diff --git a/third_party/waf/waflib/Logs.py b/third_party/waf/waflib/Logs.py
+index 2a475169b9b..298411db51e 100644
+--- a/third_party/waf/waflib/Logs.py
++++ b/third_party/waf/waflib/Logs.py
+@@ -237,7 +237,10 @@ class formatter(logging.Formatter):
+ 		if rec.levelno >= logging.INFO:
+ 			# the goal of this is to format without the leading "Logs, hour" prefix
+ 			if rec.args:
+-				return msg % rec.args
++				try:
++					return msg % rec.args
++				except UnicodeDecodeError:
++					return msg.encode('utf-8') % rec.args
+ 			return msg
+ 
+ 		rec.msg = msg
+@@ -276,9 +279,9 @@ def error(*k, **kw):
+ 
+ def warn(*k, **kw):
+ 	"""
+-	Wraps logging.warn
++	Wraps logging.warning
+ 	"""
+-	log.warn(*k, **kw)
++	log.warning(*k, **kw)
+ 
+ def info(*k, **kw):
+ 	"""
+diff --git a/third_party/waf/waflib/Node.py b/third_party/waf/waflib/Node.py
+index 4ac1ea8a0b8..2ad18466970 100644
+--- a/third_party/waf/waflib/Node.py
++++ b/third_party/waf/waflib/Node.py
+@@ -73,7 +73,7 @@ def ant_matcher(s, ignorecase):
+ 			if k == '**':
+ 				accu.append(k)
+ 			else:
+-				k = k.replace('.', '[.]').replace('*','.*').replace('?', '.').replace('+', '\\+')
++				k = k.replace('.', '[.]').replace('*', '.*').replace('?', '.').replace('+', '\\+')
+ 				k = '^%s$' % k
+ 				try:
+ 					exp = re.compile(k, flags=reflags)
+@@ -595,7 +595,6 @@ class Node(object):
+ 		:rtype: iterator
+ 		"""
+ 		dircont = self.listdir()
+-		dircont.sort()
+ 
+ 		try:
+ 			lst = set(self.children.keys())
+diff --git a/third_party/waf/waflib/Runner.py b/third_party/waf/waflib/Runner.py
+index 7535c83de9e..91d55479e20 100644
+--- a/third_party/waf/waflib/Runner.py
++++ b/third_party/waf/waflib/Runner.py
+@@ -37,6 +37,8 @@ class PriorityTasks(object):
+ 		return len(self.lst)
+ 	def __iter__(self):
+ 		return iter(self.lst)
++	def __str__(self):
++		return 'PriorityTasks: [%s]' % '\n  '.join(str(x) for x in self.lst)
+ 	def clear(self):
+ 		self.lst = []
+ 	def append(self, task):
+@@ -181,10 +183,12 @@ class Parallel(object):
+ 		The reverse dependency graph of dependencies obtained from Task.run_after
+ 		"""
+ 
+-		self.spawner = Spawner(self)
++		self.spawner = None
+ 		"""
+ 		Coordinating daemon thread that spawns thread consumers
+ 		"""
++		if self.numjobs > 1:
++			self.spawner = Spawner(self)
+ 
+ 	def get_next_task(self):
+ 		"""
+@@ -226,6 +230,10 @@ class Parallel(object):
+ 					pass
+ 				else:
+ 					if cond:
++						# The most common reason is conflicting build order declaration
++						# for example: "X run_after Y" and "Y run_after X"
++						# Another can be changing "run_after" dependencies while the build is running
++						# for example: updating "tsk.run_after" in the "runnable_status" method
+ 						lst = []
+ 						for tsk in self.postponed:
+ 							deps = [id(x) for x in tsk.run_after if not x.hasrun]
+@@ -250,6 +258,8 @@ class Parallel(object):
+ 							self.outstanding.append(x)
+ 							break
+ 					else:
++						if self.stop or self.error:
++							break
+ 						raise Errors.WafError('Broken revdeps detected on %r' % self.incomplete)
+ 				else:
+ 					tasks = next(self.biter)
+@@ -298,6 +308,8 @@ class Parallel(object):
+ 	def mark_finished(self, tsk):
+ 		def try_unfreeze(x):
+ 			# DAG ancestors are likely to be in the incomplete set
++			# This assumes that the run_after contents have not changed
++			# after the build starts, else a deadlock may occur
+ 			if x in self.incomplete:
+ 				# TODO remove dependencies to free some memory?
+ 				# x.run_after.remove(tsk)
+@@ -323,6 +335,19 @@ class Parallel(object):
+ 					try_unfreeze(x)
+ 			del self.revdeps[tsk]
+ 
++		if hasattr(tsk, 'semaphore'):
++			sem = tsk.semaphore
++			try:
++				sem.release(tsk)
++			except KeyError:
++				# TODO
++				pass
++			else:
++				while sem.waiting and not sem.is_locked():
++					# take a frozen task, make it ready to run
++					x = sem.waiting.pop()
++					self._add_task(x)
++
+ 	def get_out(self):
+ 		"""
+ 		Waits for a Task that task consumers add to :py:attr:`waflib.Runner.Parallel.out` after execution.
+@@ -346,8 +371,29 @@ class Parallel(object):
+ 		:param tsk: task instance
+ 		:type tsk: :py:attr:`waflib.Task.Task`
+ 		"""
++		# TODO change in waf 2.1
+ 		self.ready.put(tsk)
+ 
++	def _add_task(self, tsk):
++		if hasattr(tsk, 'semaphore'):
++			sem = tsk.semaphore
++			try:
++				sem.acquire(tsk)
++			except IndexError:
++				sem.waiting.add(tsk)
++				return
++
++		self.count += 1
++		self.processed += 1
++		if self.numjobs == 1:
++			tsk.log_display(tsk.generator.bld)
++			try:
++				self.process_task(tsk)
++			finally:
++				self.out.put(tsk)
++		else:
++			self.add_task(tsk)
++
+ 	def process_task(self, tsk):
+ 		"""
+ 		Processes a task and attempts to stop the build in case of errors
+@@ -447,17 +493,7 @@ class Parallel(object):
+ 
+ 			st = self.task_status(tsk)
+ 			if st == Task.RUN_ME:
+-				self.count += 1
+-				self.processed += 1
+-
+-				if self.numjobs == 1:
+-					tsk.log_display(tsk.generator.bld)
+-					try:
+-						self.process_task(tsk)
+-					finally:
+-						self.out.put(tsk)
+-				else:
+-					self.add_task(tsk)
++				self._add_task(tsk)
+ 			elif st == Task.ASK_LATER:
+ 				self.postpone(tsk)
+ 			elif st == Task.SKIP_ME:
+diff --git a/third_party/waf/waflib/Scripting.py b/third_party/waf/waflib/Scripting.py
+index 18203d52701..ae17a8b4503 100644
+--- a/third_party/waf/waflib/Scripting.py
++++ b/third_party/waf/waflib/Scripting.py
+@@ -122,7 +122,8 @@ def waf_entry_point(current_directory, version, wafdir):
+ 		if no_climb:
+ 			break
+ 
+-	if not Context.run_dir:
++	wscript = os.path.normpath(os.path.join(Context.run_dir, Context.WSCRIPT_FILE))
++	if not os.path.exists(wscript):
+ 		if options.whelp:
+ 			Logs.warn('These are the generic options (no wscript/project found)')
+ 			ctx.parser.print_help()
+@@ -137,7 +138,7 @@ def waf_entry_point(current_directory, version, wafdir):
+ 		sys.exit(1)
+ 
+ 	try:
+-		set_main_module(os.path.normpath(os.path.join(Context.run_dir, Context.WSCRIPT_FILE)))
++		set_main_module(wscript)
+ 	except Errors.WafError as e:
+ 		Logs.pprint('RED', e.verbose_msg)
+ 		Logs.error(str(e))
+@@ -215,7 +216,10 @@ def parse_options():
+ 	ctx = Context.create_context('options')
+ 	ctx.execute()
+ 	if not Options.commands:
+-		Options.commands.append(default_cmd)
++		if isinstance(default_cmd, list):
++			Options.commands.extend(default_cmd)
++		else:
++			Options.commands.append(default_cmd)
+ 	if Options.options.whelp:
+ 		ctx.parser.print_help()
+ 		sys.exit(0)
+@@ -279,7 +283,7 @@ def distclean_dir(dirname):
+ 			pass
+ 
+ 	try:
+-		shutil.rmtree('c4che')
++		shutil.rmtree(Build.CACHE_DIR)
+ 	except OSError:
+ 		pass
+ 
+@@ -597,12 +601,15 @@ def autoconfigure(execute_method):
+ 			cmd = env.config_cmd or 'configure'
+ 			if Configure.autoconfig == 'clobber':
+ 				tmp = Options.options.__dict__
++				launch_dir_tmp = Context.launch_dir
+ 				if env.options:
+ 					Options.options.__dict__ = env.options
++				Context.launch_dir = env.launch_dir
+ 				try:
+ 					run_command(cmd)
+ 				finally:
+ 					Options.options.__dict__ = tmp
++					Context.launch_dir = launch_dir_tmp
+ 			else:
+ 				run_command(cmd)
+ 			run_command(self.cmd)
+diff --git a/third_party/waf/waflib/Task.py b/third_party/waf/waflib/Task.py
+index c4642443f55..cb49a7394df 100644
+--- a/third_party/waf/waflib/Task.py
++++ b/third_party/waf/waflib/Task.py
+@@ -50,6 +50,9 @@ def f(tsk):
+ 	bld = gen.bld
+ 	cwdx = tsk.get_cwd()
+ 	p = env.get_flat
++	def to_list(xx):
++		if isinstance(xx, str): return [xx]
++		return xx
+ 	tsk.last_cmd = cmd = \'\'\' %s \'\'\' % s
+ 	return tsk.exec_command(cmd, cwd=cwdx, env=env.env or None)
+ '''
+@@ -75,6 +78,20 @@ def f(tsk):
+ 	return tsk.exec_command(lst, cwd=cwdx, env=env.env or None)
+ '''
+ 
++COMPILE_TEMPLATE_SIG_VARS = '''
++def f(tsk):
++	sig = tsk.generator.bld.hash_env_vars(tsk.env, tsk.vars)
++	tsk.m.update(sig)
++	env = tsk.env
++	gen = tsk.generator
++	bld = gen.bld
++	cwdx = tsk.get_cwd()
++	p = env.get_flat
++	buf = []
++	%s
++	tsk.m.update(repr(buf).encode())
++'''
++
+ classes = {}
+ """
+ The metaclass :py:class:`waflib.Task.store_task_type` stores all class tasks
+@@ -101,8 +118,13 @@ class store_task_type(type):
+ 				# change the name of run_str or it is impossible to subclass with a function
+ 				cls.run_str = None
+ 				cls.run = f
++				# process variables
+ 				cls.vars = list(set(cls.vars + dvars))
+ 				cls.vars.sort()
++				if cls.vars:
++					fun = compile_sig_vars(cls.vars)
++					if fun:
++						cls.sig_vars = fun
+ 			elif getattr(cls, 'run', None) and not 'hcode' in cls.__dict__:
+ 				# getattr(cls, 'hcode') would look in the upper classes
+ 				cls.hcode = Utils.h_cmd(cls.run)
+@@ -115,10 +137,12 @@ evil = store_task_type('evil', (object,), {})
+ 
+ class Task(evil):
+ 	"""
+-	This class deals with the filesystem (:py:class:`waflib.Node.Node`). The method :py:class:`waflib.Task.Task.runnable_status`
+-	uses a hash value (from :py:class:`waflib.Task.Task.signature`) which is persistent from build to build. When the value changes,
+-	the task has to be executed. The method :py:class:`waflib.Task.Task.post_run` will assign the task signature to the output
+-	nodes (if present).
++	Task objects represents actions to perform such as commands to execute by calling the `run` method.
++
++	Detecting when to execute a task occurs in the method :py:meth:`waflib.Task.Task.runnable_status`.
++
++	Detecting which tasks to execute is performed through a hash value returned by
++	:py:meth:`waflib.Task.Task.signature`. The task signature is persistent from build to build.
+ 	"""
+ 	vars = []
+ 	"""ConfigSet variables that should trigger a rebuild (class attribute used for :py:meth:`waflib.Task.Task.sig_vars`)"""
+@@ -139,10 +163,10 @@ class Task(evil):
+ 	"""File extensions that objects of this task class may create"""
+ 
+ 	before = []
+-	"""List of task class names to execute before instances of this class"""
++	"""The instances of this class are executed before the instances of classes whose names are in this list"""
+ 
+ 	after = []
+-	"""List of task class names to execute after instances of this class"""
++	"""The instances of this class are executed after the instances of classes whose names are in this list"""
+ 
+ 	hcode = Utils.SIG_NIL
+ 	"""String representing an additional hash for the class representation"""
+@@ -282,25 +306,31 @@ class Task(evil):
+ 		if hasattr(self, 'stderr'):
+ 			kw['stderr'] = self.stderr
+ 
+-		# workaround for command line length limit:
+-		# http://support.microsoft.com/kb/830473
+-		if not isinstance(cmd, str) and (len(repr(cmd)) >= 8192 if Utils.is_win32 else len(cmd) > 200000):
+-			cmd, args = self.split_argfile(cmd)
+-			try:
+-				(fd, tmp) = tempfile.mkstemp()
+-				os.write(fd, '\r\n'.join(args).encode())
+-				os.close(fd)
+-				if Logs.verbose:
+-					Logs.debug('argfile: @%r -> %r', tmp, args)
+-				return self.generator.bld.exec_command(cmd + ['@' + tmp], **kw)
+-			finally:
++		if not isinstance(cmd, str):
++			if Utils.is_win32:
++				# win32 compares the resulting length http://support.microsoft.com/kb/830473
++				too_long = sum([len(arg) for arg in cmd]) + len(cmd) > 8192
++			else:
++				# non-win32 counts the amount of arguments (200k)
++				too_long = len(cmd) > 200000
++
++			if too_long and getattr(self, 'allow_argsfile', True):
++				# Shunt arguments to a temporary file if the command is too long.
++				cmd, args = self.split_argfile(cmd)
+ 				try:
+-					os.remove(tmp)
+-				except OSError:
+-					# anti-virus and indexers can keep files open -_-
+-					pass
+-		else:
+-			return self.generator.bld.exec_command(cmd, **kw)
++					(fd, tmp) = tempfile.mkstemp()
++					os.write(fd, '\r\n'.join(args).encode())
++					os.close(fd)
++					if Logs.verbose:
++						Logs.debug('argfile: @%r -> %r', tmp, args)
++					return self.generator.bld.exec_command(cmd + ['@' + tmp], **kw)
++				finally:
++					try:
++						os.remove(tmp)
++					except OSError:
++						# anti-virus and indexers can keep files open -_-
++						pass
++		return self.generator.bld.exec_command(cmd, **kw)
+ 
+ 	def process(self):
+ 		"""
+@@ -572,6 +602,9 @@ class Task(evil):
+ 		"""
+ 		Run this task only after the given *task*.
+ 
++		Calling this method from :py:meth:`waflib.Task.Task.runnable_status` may cause
++		build deadlocks; see :py:meth:`waflib.Tools.fc.fc.runnable_status` for details.
++
+ 		:param task: task
+ 		:type task: :py:class:`waflib.Task.Task`
+ 		"""
+@@ -751,6 +784,10 @@ class Task(evil):
+ 	def sig_vars(self):
+ 		"""
+ 		Used by :py:meth:`waflib.Task.Task.signature`; it hashes :py:attr:`waflib.Task.Task.env` variables/values
++		When overriding this method, and if scriptlet expressions are used, make sure to follow
++		the code in :py:meth:`waflib.Task.Task.compile_sig_vars` to enable dependencies on scriptlet results.
++
++		This method may be replaced on subclasses by the metaclass to force dependencies on scriptlet code.
+ 		"""
+ 		sig = self.generator.bld.hash_env_vars(self.env, self.vars)
+ 		self.m.update(sig)
+@@ -1013,7 +1050,7 @@ def funex(c):
+ 	exec(c, dc)
+ 	return dc['f']
+ 
+-re_cond = re.compile('(?P<var>\w+)|(?P<or>\|)|(?P<and>&)')
++re_cond = re.compile(r'(?P<var>\w+)|(?P<or>\|)|(?P<and>&)')
+ re_novar = re.compile(r'^(SRC|TGT)\W+.*?$')
+ reg_act = re.compile(r'(?P<backslash>\\)|(?P<dollar>\$\$)|(?P<subst>\$\{(?P<var>\w+)(?P<code>.*?)\})', re.M)
+ def compile_fun_shell(line):
+@@ -1033,6 +1070,9 @@ def compile_fun_shell(line):
+ 		return None
+ 	line = reg_act.sub(repl, line) or line
+ 	dvars = []
++	def add_dvar(x):
++		if x not in dvars:
++			dvars.append(x)
+ 
+ 	def replc(m):
+ 		# performs substitutions and populates dvars
+@@ -1042,8 +1082,7 @@ def compile_fun_shell(line):
+ 			return ' or '
+ 		else:
+ 			x = m.group('var')
+-			if x not in dvars:
+-				dvars.append(x)
++			add_dvar(x)
+ 			return 'env[%r]' % x
+ 
+ 	parm = []
+@@ -1061,8 +1100,7 @@ def compile_fun_shell(line):
+ 				app('" ".join([a.path_from(cwdx) for a in tsk.outputs])')
+ 		elif meth:
+ 			if meth.startswith(':'):
+-				if var not in dvars:
+-					dvars.append(var)
++				add_dvar(var)
+ 				m = meth[1:]
+ 				if m == 'SRC':
+ 					m = '[a.path_from(cwdx) for a in tsk.inputs]'
+@@ -1072,19 +1110,21 @@ def compile_fun_shell(line):
+ 					m = '[tsk.inputs%s]' % m[3:]
+ 				elif re_novar.match(m):
+ 					m = '[tsk.outputs%s]' % m[3:]
+-				elif m[:3] not in ('tsk', 'gen', 'bld'):
+-					dvars.append(meth[1:])
+-					m = '%r' % m
++				else:
++					add_dvar(m)
++					if m[:3] not in ('tsk', 'gen', 'bld'):
++						m = '%r' % m
+ 				app('" ".join(tsk.colon(%r, %s))' % (var, m))
+ 			elif meth.startswith('?'):
+ 				# In A?B|C output env.A if one of env.B or env.C is non-empty
+ 				expr = re_cond.sub(replc, meth[1:])
+ 				app('p(%r) if (%s) else ""' % (var, expr))
+ 			else:
+-				app('%s%s' % (var, meth))
++				call = '%s%s' % (var, meth)
++				add_dvar(call)
++				app(call)
+ 		else:
+-			if var not in dvars:
+-				dvars.append(var)
++			add_dvar(var)
+ 			app("p('%s')" % var)
+ 	if parm:
+ 		parm = "%% (%s) " % (',\n\t\t'.join(parm))
+@@ -1105,6 +1145,10 @@ def compile_fun_noshell(line):
+ 	merge = False
+ 	app = buf.append
+ 
++	def add_dvar(x):
++		if x not in dvars:
++			dvars.append(x)
++
+ 	def replc(m):
+ 		# performs substitutions and populates dvars
+ 		if m.group('and'):
+@@ -1113,8 +1157,7 @@ def compile_fun_noshell(line):
+ 			return ' or '
+ 		else:
+ 			x = m.group('var')
+-			if x not in dvars:
+-				dvars.append(x)
++			add_dvar(x)
+ 			return 'env[%r]' % x
+ 
+ 	for m in reg_act_noshell.finditer(line):
+@@ -1139,8 +1182,7 @@ def compile_fun_noshell(line):
+ 			elif code:
+ 				if code.startswith(':'):
+ 					# a composed variable ${FOO:OUT}
+-					if not var in dvars:
+-						dvars.append(var)
++					add_dvar(var)
+ 					m = code[1:]
+ 					if m == 'SRC':
+ 						m = '[a.path_from(cwdx) for a in tsk.inputs]'
+@@ -1150,9 +1192,10 @@ def compile_fun_noshell(line):
+ 						m = '[tsk.inputs%s]' % m[3:]
+ 					elif re_novar.match(m):
+ 						m = '[tsk.outputs%s]' % m[3:]
+-					elif m[:3] not in ('tsk', 'gen', 'bld'):
+-						dvars.append(m)
+-						m = '%r' % m
++					else:
++						add_dvar(m)
++						if m[:3] not in ('tsk', 'gen', 'bld'):
++							m = '%r' % m
+ 					app('tsk.colon(%r, %s)' % (var, m))
+ 				elif code.startswith('?'):
+ 					# In A?B|C output env.A if one of env.B or env.C is non-empty
+@@ -1160,12 +1203,13 @@ def compile_fun_noshell(line):
+ 					app('to_list(env[%r] if (%s) else [])' % (var, expr))
+ 				else:
+ 					# plain code such as ${tsk.inputs[0].abspath()}
+-					app('gen.to_list(%s%s)' % (var, code))
++					call = '%s%s' % (var, code)
++					add_dvar(call)
++					app('to_list(%s)' % call)
+ 			else:
+ 				# a plain variable such as # a plain variable like ${AR}
+ 				app('to_list(env[%r])' % var)
+-				if not var in dvars:
+-					dvars.append(var)
++				add_dvar(var)
+ 		if merge:
+ 			tmp = 'merge(%s, %s)' % (buf[-2], buf[-1])
+ 			del buf[-1]
+@@ -1222,6 +1266,36 @@ def compile_fun(line, shell=False):
+ 	else:
+ 		return compile_fun_noshell(line)
+ 
++def compile_sig_vars(vars):
++	"""
++	This method produces a sig_vars method suitable for subclasses that provide
++	scriptlet code in their run_str code.
++	If no such method can be created, this method returns None.
++
++	The purpose of the sig_vars method returned is to ensures
++	that rebuilds occur whenever the contents of the expression changes.
++	This is the case B below::
++
++		import time
++		# case A: regular variables
++		tg = bld(rule='echo ${FOO}')
++		tg.env.FOO = '%s' % time.time()
++		# case B
++		bld(rule='echo ${gen.foo}', foo='%s' % time.time())
++
++	:param vars: env variables such as CXXFLAGS or gen.foo
++	:type vars: list of string
++	:return: A sig_vars method relevant for dependencies if adequate, else None
++	:rtype: A function, or None in most cases
++	"""
++	buf = []
++	for x in sorted(vars):
++		if x[:3] in ('tsk', 'gen', 'bld'):
++			buf.append('buf.append(%s)' % x)
++	if buf:
++		return funex(COMPILE_TEMPLATE_SIG_VARS % '\n\t'.join(buf))
++	return None
++
+ def task_factory(name, func=None, vars=None, color='GREEN', ext_in=[], ext_out=[], before=[], after=[], shell=False, scan=None):
+ 	"""
+ 	Returns a new task subclass with the function ``run`` compiled from the line given.
+@@ -1279,3 +1353,54 @@ def deep_inputs(cls):
+ TaskBase = Task
+ "Provided for compatibility reasons, TaskBase should not be used"
+ 
++class TaskSemaphore(object):
++	"""
++	Task semaphores provide a simple and efficient way of throttling the amount of
++	a particular task to run concurrently. The throttling value is capped
++	by the amount of maximum jobs, so for example, a `TaskSemaphore(10)`
++	has no effect in a `-j2` build.
++
++	Task semaphores are typically specified on the task class level::
++
++		class compile(waflib.Task.Task):
++			semaphore = waflib.Task.TaskSemaphore(2)
++			run_str = 'touch ${TGT}'
++
++	Task semaphores are meant to be used by the build scheduler in the main
++	thread, so there are no guarantees of thread safety.
++	"""
++	def __init__(self, num):
++		"""
++		:param num: maximum value of concurrent tasks
++		:type num: int
++		"""
++		self.num = num
++		self.locking = set()
++		self.waiting = set()
++
++	def is_locked(self):
++		"""Returns True if this semaphore cannot be acquired by more tasks"""
++		return len(self.locking) >= self.num
++
++	def acquire(self, tsk):
++		"""
++		Mark the semaphore as used by the given task (not re-entrant).
++
++		:param tsk: task object
++		:type tsk: :py:class:`waflib.Task.Task`
++		:raises: :py:class:`IndexError` in case the resource is already acquired
++		"""
++		if self.is_locked():
++			raise IndexError('Cannot lock more %r' % self.locking)
++		self.locking.add(tsk)
++
++	def release(self, tsk):
++		"""
++		Mark the semaphore as unused by the given task.
++
++		:param tsk: task object
++		:type tsk: :py:class:`waflib.Task.Task`
++		:raises: :py:class:`KeyError` in case the resource is not acquired by the task
++		"""
++		self.locking.remove(tsk)
++
+diff --git a/third_party/waf/waflib/TaskGen.py b/third_party/waf/waflib/TaskGen.py
+index 40007b55ca7..532b7d5cdb4 100644
+--- a/third_party/waf/waflib/TaskGen.py
++++ b/third_party/waf/waflib/TaskGen.py
+@@ -74,7 +74,7 @@ class task_gen(object):
+ 		else:
+ 			self.bld = kw['bld']
+ 			self.env = self.bld.env.derive()
+-			self.path = self.bld.path # emulate chdir when reading scripts
++			self.path = kw.get('path', self.bld.path) # by default, emulate chdir when reading scripts
+ 
+ 			# Provide a unique index per folder
+ 			# This is part of a measure to prevent output file name collisions
+@@ -556,7 +556,7 @@ def process_rule(self):
+ 	* chmod: permissions for the resulting files (integer value such as Utils.O755)
+ 	* shell: set to False to execute the command directly (default is True to use a shell)
+ 	* scan: scanner function
+-	* vars: list of variables to trigger rebuilts, such as CFLAGS
++	* vars: list of variables to trigger rebuilds, such as CFLAGS
+ 	* cls_str: string to display when executing the task
+ 	* cls_keyword: label to display when executing the task
+ 	* cache_rule: by default, try to re-use similar classes, set to False to disable
+@@ -727,7 +727,7 @@ def sequence_order(self):
+ 	self.bld.prev = self
+ 
+ 
+-re_m4 = re.compile('@(\w+)@', re.M)
++re_m4 = re.compile(r'@(\w+)@', re.M)
+ 
+ class subst_pc(Task.Task):
+ 	"""
+diff --git a/third_party/waf/waflib/Tools/c_config.py b/third_party/waf/waflib/Tools/c_config.py
+index 76082152cd9..d546be95614 100644
+--- a/third_party/waf/waflib/Tools/c_config.py
++++ b/third_party/waf/waflib/Tools/c_config.py
+@@ -250,9 +250,9 @@ def exec_cfg(self, kw):
+ 	:type atleast_pkgconfig_version: string
+ 	:param package: package name, for example *gtk+-2.0*
+ 	:type package: string
+-	:param uselib_store: if the test is successful, define HAVE\_*name*. It is also used to define *conf.env.FLAGS_name* variables.
++	:param uselib_store: if the test is successful, define HAVE\\_*name*. It is also used to define *conf.env.FLAGS_name* variables.
+ 	:type uselib_store: string
+-	:param modversion: if provided, return the version of the given module and define *name*\_VERSION
++	:param modversion: if provided, return the version of the given module and define *name*\\_VERSION
+ 	:type modversion: string
+ 	:param args: arguments to give to *package* when retrieving flags
+ 	:type args: list of string
+@@ -358,13 +358,12 @@ def check_cfg(self, *k, **kw):
+ 	ret = None
+ 	try:
+ 		ret = self.exec_cfg(kw)
+-	except self.errors.WafError:
++	except self.errors.WafError as e:
+ 		if 'errmsg' in kw:
+ 			self.end_msg(kw['errmsg'], 'YELLOW', **kw)
+ 		if Logs.verbose > 1:
+-			raise
+-		else:
+-			self.fatal('The configuration failed')
++			self.to_log('Command failure: %s' % e)
++		self.fatal('The configuration failed')
+ 	else:
+ 		if not ret:
+ 			ret = True
+diff --git a/third_party/waf/waflib/Tools/c_preproc.py b/third_party/waf/waflib/Tools/c_preproc.py
+index c2c239baa26..68e5f5aea29 100644
+--- a/third_party/waf/waflib/Tools/c_preproc.py
++++ b/third_party/waf/waflib/Tools/c_preproc.py
+@@ -75,13 +75,13 @@ re_lines = re.compile(
+ 	re.IGNORECASE | re.MULTILINE)
+ """Match #include lines"""
+ 
+-re_mac = re.compile("^[a-zA-Z_]\w*")
++re_mac = re.compile(r"^[a-zA-Z_]\w*")
+ """Match macro definitions"""
+ 
+ re_fun = re.compile('^[a-zA-Z_][a-zA-Z0-9_]*[(]')
+ """Match macro functions"""
+ 
+-re_pragma_once = re.compile('^\s*once\s*', re.IGNORECASE)
++re_pragma_once = re.compile(r'^\s*once\s*', re.IGNORECASE)
+ """Match #pragma once statements"""
+ 
+ re_nl = re.compile('\\\\\r*\n', re.MULTILINE)
+@@ -146,7 +146,7 @@ def repl(m):
+ 
+ prec = {}
+ """
+-Operator precendence rules required for parsing expressions of the form::
++Operator precedence rules required for parsing expressions of the form::
+ 
+ 	#if 1 && 2 != 0
+ """
+@@ -660,7 +660,7 @@ def extract_macro(txt):
+ 			# empty define, assign an empty token
+ 			return (v, [[], [('T','')]])
+ 
+-re_include = re.compile('^\s*(<(?:.*)>|"(?:.*)")')
++re_include = re.compile(r'^\s*(<(?:.*)>|"(?:.*)")')
+ def extract_include(txt, defs):
+ 	"""
+ 	Process a line in the form::
+diff --git a/third_party/waf/waflib/Tools/ccroot.py b/third_party/waf/waflib/Tools/ccroot.py
+index 394f36b8e12..579d5b2b72b 100644
+--- a/third_party/waf/waflib/Tools/ccroot.py
++++ b/third_party/waf/waflib/Tools/ccroot.py
+@@ -111,7 +111,7 @@ def apply_incpaths(self):
+ 		tg = bld(features='includes', includes='.')
+ 
+ 	The folders only need to be relative to the current directory, the equivalent build directory is
+-	added automatically (for headers created in the build directory). This enable using a build directory
++	added automatically (for headers created in the build directory). This enables using a build directory
+ 	or not (``top == out``).
+ 
+ 	This method will add a list of nodes read by :py:func:`waflib.Tools.ccroot.to_incnodes` in ``tg.env.INCPATHS``,
+@@ -161,7 +161,7 @@ class link_task(Task.Task):
+ 				nums = self.generator.vnum.split('.')
+ 				if self.env.DEST_BINFMT == 'pe':
+ 					# include the version in the dll file name,
+-					# the import lib file name stays unversionned.
++					# the import lib file name stays unversioned.
+ 					name = name + '-' + nums[0]
+ 				elif self.env.DEST_OS == 'openbsd':
+ 					pattern = '%s.%s' % (pattern, nums[0])
+@@ -238,6 +238,17 @@ def rm_tgt(cls):
+ 	setattr(cls, 'run', wrap)
+ rm_tgt(stlink_task)
+ 
++@feature('skip_stlib_link_deps')
++@before_method('process_use')
++def apply_skip_stlib_link_deps(self):
++	"""
++	This enables an optimization in the :py:func:wafilb.Tools.ccroot.processes_use: method that skips dependency and
++	link flag optimizations for targets that generate static libraries (via the :py:class:Tools.ccroot.stlink_task task).
++	The actual behavior is implemented in :py:func:wafilb.Tools.ccroot.processes_use: method so this feature only tells waf
++	to enable the new behavior.
++	"""
++	self.env.SKIP_STLIB_LINK_DEPS = True
++
+ @feature('c', 'cxx', 'd', 'fc', 'asm')
+ @after_method('process_source')
+ def apply_link(self):
+@@ -386,7 +397,11 @@ def process_use(self):
+ 		y = self.bld.get_tgen_by_name(x)
+ 		var = y.tmp_use_var
+ 		if var and link_task:
+-			if var == 'LIB' or y.tmp_use_stlib or x in names:
++			if self.env.SKIP_STLIB_LINK_DEPS and isinstance(link_task, stlink_task):
++				# If the skip_stlib_link_deps feature is enabled then we should
++				# avoid adding lib deps to the stlink_task instance.
++				pass
++			elif var == 'LIB' or y.tmp_use_stlib or x in names:
+ 				self.env.append_value(var, [y.target[y.target.rfind(os.sep) + 1:]])
+ 				self.link_task.dep_nodes.extend(y.link_task.outputs)
+ 				tmp_path = y.link_task.outputs[0].parent.path_from(self.get_cwd())
+@@ -600,6 +615,7 @@ def apply_vnum(self):
+ 
+ 	if getattr(self, 'install_task', None):
+ 		self.install_task.hasrun = Task.SKIPPED
++		self.install_task.no_errcheck_out = True
+ 		path = self.install_task.install_to
+ 		if self.env.DEST_OS == 'openbsd':
+ 			libname = self.link_task.outputs[0].name
+diff --git a/third_party/waf/waflib/Tools/d_scan.py b/third_party/waf/waflib/Tools/d_scan.py
+index 14c6c313e9a..4e807a6b9fc 100644
+--- a/third_party/waf/waflib/Tools/d_scan.py
++++ b/third_party/waf/waflib/Tools/d_scan.py
+@@ -93,8 +93,8 @@ class d_parser(object):
+ 
+ 		self.allnames = []
+ 
+-		self.re_module = re.compile("module\s+([^;]+)")
+-		self.re_import = re.compile("import\s+([^;]+)")
++		self.re_module = re.compile(r"module\s+([^;]+)")
++		self.re_import = re.compile(r"import\s+([^;]+)")
+ 		self.re_import_bindings = re.compile("([^:]+):(.*)")
+ 		self.re_import_alias = re.compile("[^=]+=(.+)")
+ 
+@@ -138,7 +138,7 @@ class d_parser(object):
+ 
+ 		mod_name = self.re_module.search(code)
+ 		if mod_name:
+-			self.module = re.sub('\s+', '', mod_name.group(1)) # strip all whitespaces
++			self.module = re.sub(r'\s+', '', mod_name.group(1)) # strip all whitespaces
+ 
+ 		# go through the code, have a look at all import occurrences
+ 
+@@ -146,7 +146,7 @@ class d_parser(object):
+ 		import_iterator = self.re_import.finditer(code)
+ 		if import_iterator:
+ 			for import_match in import_iterator:
+-				import_match_str = re.sub('\s+', '', import_match.group(1)) # strip all whitespaces
++				import_match_str = re.sub(r'\s+', '', import_match.group(1)) # strip all whitespaces
+ 
+ 				# does this end with an import bindings declaration?
+ 				# (import bindings always terminate the list of imports)
+diff --git a/third_party/waf/waflib/Tools/fc.py b/third_party/waf/waflib/Tools/fc.py
+index 621eb5029df..fd4d39c90ae 100644
+--- a/third_party/waf/waflib/Tools/fc.py
++++ b/third_party/waf/waflib/Tools/fc.py
+@@ -28,10 +28,24 @@ def modfile(conf, name):
+ 	Turns a module name into the right module file name.
+ 	Defaults to all lower case.
+ 	"""
+-	return {'lower'     :name.lower() + '.mod',
+-		'lower.MOD' :name.lower() + '.MOD',
+-		'UPPER.mod' :name.upper() + '.mod',
+-		'UPPER'     :name.upper() + '.MOD'}[conf.env.FC_MOD_CAPITALIZATION or 'lower']
++	if name.find(':') >= 0:
++		# Depending on a submodule!
++		separator = conf.env.FC_SUBMOD_SEPARATOR or '@'
++		# Ancestors of the submodule will be prefixed to the
++		# submodule name, separated by a colon.
++		modpath = name.split(':')
++		# Only the ancestor (actual) module and the submodule name
++		# will be used for the filename.
++		modname = modpath[0] + separator + modpath[-1]
++		suffix = conf.env.FC_SUBMOD_SUFFIX or '.smod'
++	else:
++		modname = name
++		suffix = '.mod'
++
++	return {'lower'     :modname.lower() + suffix.lower(),
++		'lower.MOD' :modname.lower() + suffix.upper(),
++		'UPPER.mod' :modname.upper() + suffix.lower(),
++		'UPPER'     :modname.upper() + suffix.upper()}[conf.env.FC_MOD_CAPITALIZATION or 'lower']
+ 
+ def get_fortran_tasks(tsk):
+ 	"""
+@@ -121,6 +135,8 @@ class fc(Task.Task):
+ 		for k in ins.keys():
+ 			for a in ins[k]:
+ 				a.run_after.update(outs[k])
++				for x in outs[k]:
++					self.generator.bld.producer.revdeps[x].add(a)
+ 
+ 				# the scanner cannot output nodes, so we have to set them
+ 				# ourselves as task.dep_nodes (additional input nodes)
+diff --git a/third_party/waf/waflib/Tools/fc_config.py b/third_party/waf/waflib/Tools/fc_config.py
+index 0df460b5d1e..dc5e5c9e9a2 100644
+--- a/third_party/waf/waflib/Tools/fc_config.py
++++ b/third_party/waf/waflib/Tools/fc_config.py
+@@ -178,8 +178,8 @@ def check_fortran_dummy_main(self, *k, **kw):
+ # ------------------------------------------------------------------------
+ 
+ GCC_DRIVER_LINE = re.compile('^Driving:')
+-POSIX_STATIC_EXT = re.compile('\S+\.a')
+-POSIX_LIB_FLAGS = re.compile('-l\S+')
++POSIX_STATIC_EXT = re.compile(r'\S+\.a')
++POSIX_LIB_FLAGS = re.compile(r'-l\S+')
+ 
+ @conf
+ def is_link_verbose(self, txt):
+@@ -281,7 +281,7 @@ def _parse_flink_token(lexer, token, tmp_flags):
+ 	elif POSIX_LIB_FLAGS.match(token):
+ 		tmp_flags.append(token)
+ 	else:
+-		# ignore anything not explicitely taken into account
++		# ignore anything not explicitly taken into account
+ 		pass
+ 
+ 	t = lexer.get_token()
+diff --git a/third_party/waf/waflib/Tools/fc_scan.py b/third_party/waf/waflib/Tools/fc_scan.py
+index 12cb0fc041e..0824c92b7ee 100644
+--- a/third_party/waf/waflib/Tools/fc_scan.py
++++ b/third_party/waf/waflib/Tools/fc_scan.py
+@@ -5,13 +5,15 @@
+ 
+ import re
+ 
+-INC_REGEX = """(?:^|['">]\s*;)\s*(?:|#\s*)INCLUDE\s+(?:\w+_)?[<"'](.+?)(?=["'>])"""
+-USE_REGEX = """(?:^|;)\s*USE(?:\s+|(?:(?:\s*,\s*(?:NON_)?INTRINSIC)?\s*::))\s*(\w+)"""
+-MOD_REGEX = """(?:^|;)\s*MODULE(?!\s*PROCEDURE)(?:\s+|(?:(?:\s*,\s*(?:NON_)?INTRINSIC)?\s*::))\s*(\w+)"""
++INC_REGEX = r"""(?:^|['">]\s*;)\s*(?:|#\s*)INCLUDE\s+(?:\w+_)?[<"'](.+?)(?=["'>])"""
++USE_REGEX = r"""(?:^|;)\s*USE(?:\s+|(?:(?:\s*,\s*(?:NON_)?INTRINSIC)?\s*::))\s*(\w+)"""
++MOD_REGEX = r"""(?:^|;)\s*MODULE(?!\s+(?:PROCEDURE|SUBROUTINE|FUNCTION))\s+(\w+)"""
++SMD_REGEX = r"""(?:^|;)\s*SUBMODULE\s*\(([\w:]+)\)\s*(\w+)"""
+ 
+ re_inc = re.compile(INC_REGEX, re.I)
+ re_use = re.compile(USE_REGEX, re.I)
+ re_mod = re.compile(MOD_REGEX, re.I)
++re_smd = re.compile(SMD_REGEX, re.I)
+ 
+ class fortran_parser(object):
+ 	"""
+@@ -58,6 +60,10 @@ class fortran_parser(object):
+ 			m = re_mod.search(line)
+ 			if m:
+ 				mods.append(m.group(1))
++			m = re_smd.search(line)
++			if m:
++				uses.append(m.group(1))
++				mods.append('{0}:{1}'.format(m.group(1),m.group(2)))
+ 		return (incs, uses, mods)
+ 
+ 	def start(self, node):
+diff --git a/third_party/waf/waflib/Tools/ifort.py b/third_party/waf/waflib/Tools/ifort.py
+index 74934f3f661..17d3052910f 100644
+--- a/third_party/waf/waflib/Tools/ifort.py
++++ b/third_party/waf/waflib/Tools/ifort.py
+@@ -107,7 +107,7 @@ def gather_ifort_versions(conf, versions):
+ 	"""
+ 	List compiler versions by looking up registry keys
+ 	"""
+-	version_pattern = re.compile('^...?.?\....?.?')
++	version_pattern = re.compile(r'^...?.?\....?.?')
+ 	try:
+ 		all_versions = Utils.winreg.OpenKey(Utils.winreg.HKEY_LOCAL_MACHINE, 'SOFTWARE\\Wow6432node\\Intel\\Compilers\\Fortran')
+ 	except OSError:
+diff --git a/third_party/waf/waflib/Tools/javaw.py b/third_party/waf/waflib/Tools/javaw.py
+index f6fd20cc689..fd1cf469abf 100644
+--- a/third_party/waf/waflib/Tools/javaw.py
++++ b/third_party/waf/waflib/Tools/javaw.py
+@@ -24,12 +24,95 @@ You would have to run::
+    java -jar /path/to/jython.jar waf configure
+ 
+ [1] http://www.jython.org/
++
++Usage
++=====
++
++Load the "java" tool.
++
++def configure(conf):
++	conf.load('java')
++
++Java tools will be autodetected and eventually, if present, the quite
++standard JAVA_HOME environment variable will be used. The also standard
++CLASSPATH variable is used for library searching.
++
++In configuration phase checks can be done on the system environment, for
++example to check if a class is known in the classpath::
++
++	conf.check_java_class('java.io.FileOutputStream')
++
++or if the system supports JNI applications building::
++
++	conf.check_jni_headers()
++
++
++The java tool supports compiling java code, creating jar files and
++creating javadoc documentation. This can be either done separately or
++together in a single definition. For example to manage them separately::
++
++	bld(features  = 'javac',
++		srcdir    = 'src',
++		compat    = '1.7',
++		use       = 'animals',
++		name      = 'cats-src',
++	)
++
++	bld(features  = 'jar',
++		basedir   = '.',
++		destfile  = '../cats.jar',
++		name      = 'cats',
++		use       = 'cats-src'
++	)
++
++
++Or together by defining all the needed attributes::
++
++	bld(features   = 'javac jar javadoc',
++		srcdir     = 'src/',  # folder containing the sources to compile
++		outdir     = 'src',   # folder where to output the classes (in the build directory)
++		compat     = '1.6',   # java compatibility version number
++		classpath  = ['.', '..'],
++
++		# jar
++		basedir    = 'src', # folder containing the classes and other files to package (must match outdir)
++		destfile   = 'foo.jar', # do not put the destfile in the folder of the java classes!
++		use        = 'NNN',
++		jaropts    = ['-C', 'default/src/', '.'], # can be used to give files
++		manifest   = 'src/Manifest.mf', # Manifest file to include
++
++		# javadoc
++		javadoc_package = ['com.meow' , 'com.meow.truc.bar', 'com.meow.truc.foo'],
++		javadoc_output  = 'javadoc',
++	)
++
++External jar dependencies can be mapped to a standard waf "use" dependency by
++setting an environment variable with a CLASSPATH prefix in the configuration,
++for example::
++
++	conf.env.CLASSPATH_NNN = ['aaaa.jar', 'bbbb.jar']
++
++and then NNN can be freely used in rules as::
++
++	use        = 'NNN',
++
++In the java tool the dependencies via use are not transitive by default, as
++this necessity depends on the code. To enable recursive dependency scanning
++use on a specific rule:
++
++		recurse_use = True
++
++Or build-wise by setting RECURSE_JAVA:
++
++		bld.env.RECURSE_JAVA = True
++
++Unit tests can be integrated in the waf unit test environment using the javatest extra.
+ """
+ 
+ import os, shutil
+ from waflib import Task, Utils, Errors, Node
+ from waflib.Configure import conf
+-from waflib.TaskGen import feature, before_method, after_method
++from waflib.TaskGen import feature, before_method, after_method, taskgen_method
+ 
+ from waflib.Tools import ccroot
+ ccroot.USELIB_VARS['javac'] = set(['CLASSPATH', 'JAVACFLAGS'])
+@@ -107,6 +190,37 @@ def apply_java(self):
+ 	if names:
+ 		tsk.env.append_value('JAVACFLAGS', ['-sourcepath', names])
+ 
++
++@taskgen_method
++def java_use_rec(self, name, **kw):
++	"""
++	Processes recursively the *use* attribute for each referred java compilation
++	"""
++	if name in self.tmp_use_seen:
++		return
++
++	self.tmp_use_seen.append(name)
++
++	try:
++		y = self.bld.get_tgen_by_name(name)
++	except Errors.WafError:
++		self.uselib.append(name)
++		return
++	else:
++		y.post()
++		# Add generated JAR name for CLASSPATH. Task ordering (set_run_after)
++		# is already guaranteed by ordering done between the single tasks
++		if hasattr(y, 'jar_task'):
++			self.use_lst.append(y.jar_task.outputs[0].abspath())
++		else:
++			if hasattr(y,'outdir'):
++				self.use_lst.append(y.outdir.abspath())
++			else:
++				self.use_lst.append(y.path.get_bld().abspath())
++
++	for x in self.to_list(getattr(y, 'use', [])):
++		self.java_use_rec(x)
++
+ @feature('javac')
+ @before_method('propagate_uselib_vars')
+ @after_method('apply_java')
+@@ -114,24 +228,39 @@ def use_javac_files(self):
+ 	"""
+ 	Processes the *use* attribute referring to other java compilations
+ 	"""
+-	lst = []
++	self.use_lst = []
++	self.tmp_use_seen = []
+ 	self.uselib = self.to_list(getattr(self, 'uselib', []))
+ 	names = self.to_list(getattr(self, 'use', []))
+ 	get = self.bld.get_tgen_by_name
+ 	for x in names:
+ 		try:
+-			y = get(x)
++			tg = get(x)
+ 		except Errors.WafError:
+ 			self.uselib.append(x)
+ 		else:
+-			y.post()
+-			if hasattr(y, 'jar_task'):
+-				lst.append(y.jar_task.outputs[0].abspath())
+-				self.javac_task.set_run_after(y.jar_task)
++			tg.post()
++			if hasattr(tg, 'jar_task'):
++				self.use_lst.append(tg.jar_task.outputs[0].abspath())
++				self.javac_task.set_run_after(tg.jar_task)
++				self.javac_task.dep_nodes.extend(tg.jar_task.outputs)
+ 			else:
+-				for tsk in y.tasks:
++				if hasattr(tg, 'outdir'):
++					base_node = tg.outdir.abspath()
++				else:
++					base_node = tg.path.get_bld()
++
++				self.use_lst.append(base_node.abspath())
++				self.javac_task.dep_nodes.extend([x for x in base_node.ant_glob(JAR_RE, remove=False, quiet=True)])
++
++				for tsk in tg.tasks:
+ 					self.javac_task.set_run_after(tsk)
+-	self.env.append_value('CLASSPATH', lst)
++
++		# If recurse use scan is enabled recursively add use attribute for each used one
++		if getattr(self, 'recurse_use', False) or self.bld.env.RECURSE_JAVA:
++			self.java_use_rec(x)
++
++	self.env.append_value('CLASSPATH', self.use_lst)
+ 
+ @feature('javac')
+ @after_method('apply_java', 'propagate_uselib_vars', 'use_javac_files')
+@@ -245,7 +374,7 @@ class jar_create(JTask):
+ 				return Task.ASK_LATER
+ 		if not self.inputs:
+ 			try:
+-				self.inputs = [x for x in self.basedir.ant_glob(JAR_RE, remove=False) if id(x) != id(self.outputs[0])]
++				self.inputs = [x for x in self.basedir.ant_glob(JAR_RE, remove=False, quiet=True) if id(x) != id(self.outputs[0])]
+ 			except Exception:
+ 				raise Errors.WafError('Could not find the basedir %r for %r' % (self.basedir, self))
+ 		return super(jar_create, self).runnable_status()
+@@ -279,14 +408,14 @@ class javac(JTask):
+ 			self.inputs  = []
+ 			for x in self.srcdir:
+ 				if x.exists():
+-					self.inputs.extend(x.ant_glob(SOURCE_RE, remove=False))
++					self.inputs.extend(x.ant_glob(SOURCE_RE, remove=False, quiet=True))
+ 		return super(javac, self).runnable_status()
+ 
+ 	def post_run(self):
+ 		"""
+ 		List class files created
+ 		"""
+-		for node in self.generator.outdir.ant_glob('**/*.class'):
++		for node in self.generator.outdir.ant_glob('**/*.class', quiet=True):
+ 			self.generator.bld.node_sigs[node] = self.uid()
+ 		self.generator.bld.task_sigs[self.uid()] = self.cache_sig
+ 
+@@ -338,7 +467,7 @@ class javadoc(Task.Task):
+ 		self.generator.bld.cmd_and_log(lst, cwd=wd, env=env.env or None, quiet=0)
+ 
+ 	def post_run(self):
+-		nodes = self.generator.javadoc_output.ant_glob('**')
++		nodes = self.generator.javadoc_output.ant_glob('**', quiet=True)
+ 		for node in nodes:
+ 			self.generator.bld.node_sigs[node] = self.uid()
+ 		self.generator.bld.task_sigs[self.uid()] = self.cache_sig
+@@ -356,7 +485,7 @@ def configure(self):
+ 		self.env.JAVA_HOME = [self.environ['JAVA_HOME']]
+ 
+ 	for x in 'javac java jar javadoc'.split():
+-		self.find_program(x, var=x.upper(), path_list=java_path)
++		self.find_program(x, var=x.upper(), path_list=java_path, mandatory=(x not in ('javadoc')))
+ 
+ 	if 'CLASSPATH' in self.environ:
+ 		v.CLASSPATH = self.environ['CLASSPATH']
+diff --git a/third_party/waf/waflib/Tools/md5_tstamp.py b/third_party/waf/waflib/Tools/md5_tstamp.py
+index 6428e46024e..d1569fa9ec1 100644
+--- a/third_party/waf/waflib/Tools/md5_tstamp.py
++++ b/third_party/waf/waflib/Tools/md5_tstamp.py
+@@ -2,8 +2,10 @@
+ # encoding: utf-8
+ 
+ """
+-Re-calculate md5 hashes of files only when the file times or the file
+-size have changed.
++Re-calculate md5 hashes of files only when the file time have changed::
++
++	def options(opt):
++		opt.load('md5_tstamp')
+ 
+ The hashes can also reflect either the file contents (STRONGEST=True) or the
+ file time and file size.
+diff --git a/third_party/waf/waflib/Tools/msvc.py b/third_party/waf/waflib/Tools/msvc.py
+index 17b347d4583..f169c7f441b 100644
+--- a/third_party/waf/waflib/Tools/msvc.py
++++ b/third_party/waf/waflib/Tools/msvc.py
+@@ -281,7 +281,7 @@ def gather_wince_supported_platforms():
+ 
+ def gather_msvc_detected_versions():
+ 	#Detected MSVC versions!
+-	version_pattern = re.compile('^(\d\d?\.\d\d?)(Exp)?$')
++	version_pattern = re.compile(r'^(\d\d?\.\d\d?)(Exp)?$')
+ 	detected_versions = []
+ 	for vcver,vcvar in (('VCExpress','Exp'), ('VisualStudio','')):
+ 		prefix = 'SOFTWARE\\Wow6432node\\Microsoft\\' + vcver
+@@ -367,7 +367,7 @@ def gather_wsdk_versions(conf, versions):
+ 	:param versions: list to modify
+ 	:type versions: list
+ 	"""
+-	version_pattern = re.compile('^v..?.?\...?.?')
++	version_pattern = re.compile(r'^v..?.?\...?.?')
+ 	try:
+ 		all_versions = Utils.winreg.OpenKey(Utils.winreg.HKEY_LOCAL_MACHINE, 'SOFTWARE\\Wow6432node\\Microsoft\\Microsoft SDKs\\Windows')
+ 	except OSError:
+@@ -525,7 +525,7 @@ def gather_icl_versions(conf, versions):
+ 	:param versions: list to modify
+ 	:type versions: list
+ 	"""
+-	version_pattern = re.compile('^...?.?\....?.?')
++	version_pattern = re.compile(r'^...?.?\....?.?')
+ 	try:
+ 		all_versions = Utils.winreg.OpenKey(Utils.winreg.HKEY_LOCAL_MACHINE, 'SOFTWARE\\Wow6432node\\Intel\\Compilers\\C++')
+ 	except OSError:
+@@ -579,7 +579,7 @@ def gather_intel_composer_versions(conf, versions):
+ 	:param versions: list to modify
+ 	:type versions: list
+ 	"""
+-	version_pattern = re.compile('^...?.?\...?.?.?')
++	version_pattern = re.compile(r'^...?.?\...?.?.?')
+ 	try:
+ 		all_versions = Utils.winreg.OpenKey(Utils.winreg.HKEY_LOCAL_MACHINE, 'SOFTWARE\\Wow6432node\\Intel\\Suites')
+ 	except OSError:
+@@ -683,7 +683,7 @@ def find_lt_names_msvc(self, libname, is_static=False):
+ 				if not is_static and ltdict.get('library_names', ''):
+ 					dllnames=ltdict['library_names'].split()
+ 					dll=dllnames[0].lower()
+-					dll=re.sub('\.dll$', '', dll)
++					dll=re.sub(r'\.dll$', '', dll)
+ 					return (lt_libdir, dll, False)
+ 				elif ltdict.get('old_library', ''):
+ 					olib=ltdict['old_library']
+@@ -700,7 +700,7 @@ def find_lt_names_msvc(self, libname, is_static=False):
+ @conf
+ def libname_msvc(self, libname, is_static=False):
+ 	lib = libname.lower()
+-	lib = re.sub('\.lib$','',lib)
++	lib = re.sub(r'\.lib$','',lib)
+ 
+ 	if lib in g_msvc_systemlibs:
+ 		return lib
+@@ -747,11 +747,11 @@ def libname_msvc(self, libname, is_static=False):
+ 		for libn in libnames:
+ 			if os.path.exists(os.path.join(path, libn)):
+ 				Logs.debug('msvc: lib found: %s', os.path.join(path,libn))
+-				return re.sub('\.lib$', '',libn)
++				return re.sub(r'\.lib$', '',libn)
+ 
+ 	#if no lib can be found, just return the libname as msvc expects it
+ 	self.fatal('The library %r could not be found' % libname)
+-	return re.sub('\.lib$', '', libname)
++	return re.sub(r'\.lib$', '', libname)
+ 
+ @conf
+ def check_lib_msvc(self, libname, is_static=False, uselib_store=None):
+@@ -969,7 +969,7 @@ def apply_flags_msvc(self):
+ 	if not is_static:
+ 		for f in self.env.LINKFLAGS:
+ 			d = f.lower()
+-			if d[1:] == 'debug':
++			if d[1:] in ('debug', 'debug:full', 'debug:fastlink'):
+ 				pdbnode = self.link_task.outputs[0].change_ext('.pdb')
+ 				self.link_task.outputs.append(pdbnode)
+ 
+diff --git a/third_party/waf/waflib/Tools/python.py b/third_party/waf/waflib/Tools/python.py
+index 52a05c668e3..63a8917d7c1 100644
+--- a/third_party/waf/waflib/Tools/python.py
++++ b/third_party/waf/waflib/Tools/python.py
+@@ -329,6 +329,10 @@ def check_python_headers(conf, features='pyembed pyext'):
+ 	conf.find_program([''.join(pybin) + '-config', 'python%s-config' % num, 'python-config-%s' % num, 'python%sm-config' % num], var='PYTHON_CONFIG', msg="python-config", mandatory=False)
+ 
+ 	if env.PYTHON_CONFIG:
++		# check python-config output only once
++		if conf.env.HAVE_PYTHON_H:
++			return
++
+ 		# python2.6-config requires 3 runs
+ 		all_flags = [['--cflags', '--libs', '--ldflags']]
+ 		if sys.hexversion < 0x2070000:
+@@ -338,7 +342,13 @@ def check_python_headers(conf, features='pyembed pyext'):
+ 
+ 		if 'pyembed' in features:
+ 			for flags in all_flags:
+-				conf.check_cfg(msg='Asking python-config for pyembed %r flags' % ' '.join(flags), path=env.PYTHON_CONFIG, package='', uselib_store='PYEMBED', args=flags)
++				# Python 3.8 has different flags for pyembed, needs --embed
++				embedflags = flags + ['--embed']
++				try:
++					conf.check_cfg(msg='Asking python-config for pyembed %r flags' % ' '.join(embedflags), path=env.PYTHON_CONFIG, package='', uselib_store='PYEMBED', args=embedflags)
++				except conf.errors.ConfigurationError:
++					# However Python < 3.8 doesn't accept --embed, so we need a fallback
++					conf.check_cfg(msg='Asking python-config for pyembed %r flags' % ' '.join(flags), path=env.PYTHON_CONFIG, package='', uselib_store='PYEMBED', args=flags)
+ 
+ 			try:
+ 				conf.test_pyembed(xx)
+@@ -446,9 +456,9 @@ def check_python_version(conf, minver=None):
+ 	Check if the python interpreter is found matching a given minimum version.
+ 	minver should be a tuple, eg. to check for python >= 2.4.2 pass (2,4,2) as minver.
+ 
+-	If successful, PYTHON_VERSION is defined as 'MAJOR.MINOR'
+-	(eg. '2.4') of the actual python version found, and PYTHONDIR is
+-	defined, pointing to the site-packages directory appropriate for
++	If successful, PYTHON_VERSION is defined as 'MAJOR.MINOR' (eg. '2.4')
++	of the actual python version found, and PYTHONDIR and PYTHONARCHDIR
++	are defined, pointing to the site-packages directories appropriate for
+ 	this python version, where modules/packages/extensions should be
+ 	installed.
+ 
+diff --git a/third_party/waf/waflib/Tools/qt5.py b/third_party/waf/waflib/Tools/qt5.py
+index 4f9c6908fc5..287c25374a4 100644
+--- a/third_party/waf/waflib/Tools/qt5.py
++++ b/third_party/waf/waflib/Tools/qt5.py
+@@ -74,7 +74,7 @@ else:
+ 
+ import os, sys, re
+ from waflib.Tools import cxx
+-from waflib import Task, Utils, Options, Errors, Context
++from waflib import Build, Task, Utils, Options, Errors, Context
+ from waflib.TaskGen import feature, after_method, extension, before_method
+ from waflib.Configure import conf
+ from waflib import Logs
+@@ -167,6 +167,10 @@ class qxx(Task.classes['cxx']):
+ 		node = self.inputs[0]
+ 		bld = self.generator.bld
+ 
++		# skip on uninstall due to generated files
++		if bld.is_install == Build.UNINSTALL:
++			return
++
+ 		try:
+ 			# compute the signature once to know if there is a moc file to create
+ 			self.signature()
+@@ -313,11 +317,11 @@ def apply_qt5(self):
+ 
+ 	The additional parameters are:
+ 
+-	:param lang: list of translation files (\*.ts) to process
++	:param lang: list of translation files (\\*.ts) to process
+ 	:type lang: list of :py:class:`waflib.Node.Node` or string without the .ts extension
+-	:param update: whether to process the C++ files to update the \*.ts files (use **waf --translate**)
++	:param update: whether to process the C++ files to update the \\*.ts files (use **waf --translate**)
+ 	:type update: bool
+-	:param langname: if given, transform the \*.ts files into a .qrc files to include in the binary file
++	:param langname: if given, transform the \\*.ts files into a .qrc files to include in the binary file
+ 	:type langname: :py:class:`waflib.Node.Node` or string without the .qrc extension
+ 	"""
+ 	if getattr(self, 'lang', None):
+@@ -762,7 +766,7 @@ def set_qt5_libs_to_check(self):
+ 		if self.environ.get('QT5_FORCE_STATIC'):
+ 			pat = self.env.cxxstlib_PATTERN
+ 		if Utils.unversioned_sys_platform() == 'darwin':
+-			pat = "%s\.framework"
++			pat = r"%s\.framework"
+ 		re_qt = re.compile(pat%'Qt5?(?P<name>.*)'+'$')
+ 		for x in dirlst:
+ 			m = re_qt.match(x)
+diff --git a/third_party/waf/waflib/Tools/waf_unit_test.py b/third_party/waf/waflib/Tools/waf_unit_test.py
+index a71ed1c0909..6ff6f72739f 100644
+--- a/third_party/waf/waflib/Tools/waf_unit_test.py
++++ b/third_party/waf/waflib/Tools/waf_unit_test.py
+@@ -205,7 +205,7 @@ class utest(Task.Task):
+ 		return self.exec_command(self.ut_exec)
+ 
+ 	def exec_command(self, cmd, **kw):
+-		Logs.debug('runner: %r', cmd)
++		self.generator.bld.log_command(cmd, kw)
+ 		if getattr(Options.options, 'dump_test_scripts', False):
+ 			script_code = SCRIPT_TEMPLATE % {
+ 				'python': sys.executable,
+@@ -214,7 +214,7 @@ class utest(Task.Task):
+ 				'cmd': cmd
+ 			}
+ 			script_file = self.inputs[0].abspath() + '_run.py'
+-			Utils.writef(script_file, script_code)
++			Utils.writef(script_file, script_code, encoding='utf-8')
+ 			os.chmod(script_file, Utils.O755)
+ 			if Logs.verbose > 1:
+ 				Logs.info('Test debug file written as %r' % script_file)
+diff --git a/third_party/waf/waflib/Tools/winres.py b/third_party/waf/waflib/Tools/winres.py
+index 586c596cf93..9be1ed66009 100644
+--- a/third_party/waf/waflib/Tools/winres.py
++++ b/third_party/waf/waflib/Tools/winres.py
+@@ -24,8 +24,8 @@ def rc_file(self, node):
+ 		self.compiled_tasks = [rctask]
+ 
+ re_lines = re.compile(
+-	'(?:^[ \t]*(#|%:)[ \t]*(ifdef|ifndef|if|else|elif|endif|include|import|define|undef|pragma)[ \t]*(.*?)\s*$)|'\
+-	'(?:^\w+[ \t]*(ICON|BITMAP|CURSOR|HTML|FONT|MESSAGETABLE|TYPELIB|REGISTRY|D3DFX)[ \t]*(.*?)\s*$)',
++	r'(?:^[ \t]*(#|%:)[ \t]*(ifdef|ifndef|if|else|elif|endif|include|import|define|undef|pragma)[ \t]*(.*?)\s*$)|'\
++	r'(?:^\w+[ \t]*(ICON|BITMAP|CURSOR|HTML|FONT|MESSAGETABLE|TYPELIB|REGISTRY|D3DFX)[ \t]*(.*?)\s*$)',
+ 	re.IGNORECASE | re.MULTILINE)
+ 
+ class rc_parser(c_preproc.c_parser):
+diff --git a/third_party/waf/waflib/Utils.py b/third_party/waf/waflib/Utils.py
+index b4665c4dc2b..7472226da58 100644
+--- a/third_party/waf/waflib/Utils.py
++++ b/third_party/waf/waflib/Utils.py
+@@ -49,10 +49,16 @@ try:
+ 	from hashlib import md5
+ except ImportError:
+ 	try:
+-		from md5 import md5
++		from hashlib import sha1 as md5
+ 	except ImportError:
+-		# never fail to enable fixes from another module
++		# never fail to enable potential fixes from another module
+ 		pass
++else:
++	try:
++		md5().digest()
++	except ValueError:
++		# Fips? #2213
++		from hashlib import sha1 as md5
+ 
+ try:
+ 	import threading
+@@ -202,7 +208,7 @@ class lazy_generator(object):
+ 
+ 	next = __next__
+ 
+-is_win32 = os.sep == '\\' or sys.platform == 'win32' # msys2
++is_win32 = os.sep == '\\' or sys.platform == 'win32' or os.name == 'nt' # msys2
+ """
+ Whether this system is a Windows series
+ """
+@@ -484,7 +490,9 @@ def split_path_msys(path):
+ if sys.platform == 'cygwin':
+ 	split_path = split_path_cygwin
+ elif is_win32:
+-	if os.environ.get('MSYSTEM'):
++	# Consider this an MSYSTEM environment if $MSYSTEM is set and python
++	# reports is executable from a unix like path on a windows host.
++	if os.environ.get('MSYSTEM') and sys.executable.startswith('/'):
+ 		split_path = split_path_msys
+ 	else:
+ 		split_path = split_path_win32
+@@ -596,6 +604,12 @@ def h_list(lst):
+ 	"""
+ 	return md5(repr(lst).encode()).digest()
+ 
++if sys.hexversion < 0x3000000:
++	def h_list_python2(lst):
++		return md5(repr(lst)).digest()
++	h_list_python2.__doc__ = h_list.__doc__
++	h_list = h_list_python2
++
+ def h_fun(fun):
+ 	"""
+ 	Hash functions
+@@ -730,7 +744,7 @@ def unversioned_sys_platform():
+ 	if s == 'cli' and os.name == 'nt':
+ 		# ironpython is only on windows as far as we know
+ 		return 'win32'
+-	return re.split('\d+$', s)[0]
++	return re.split(r'\d+$', s)[0]
+ 
+ def nada(*k, **kw):
+ 	"""
+@@ -871,7 +885,7 @@ def get_process():
+ 	except IndexError:
+ 		filepath = os.path.dirname(os.path.abspath(__file__)) + os.sep + 'processor.py'
+ 		cmd = [sys.executable, '-c', readf(filepath)]
+-		return subprocess.Popen(cmd, stdout=subprocess.PIPE, stdin=subprocess.PIPE, bufsize=0)
++		return subprocess.Popen(cmd, stdout=subprocess.PIPE, stdin=subprocess.PIPE, bufsize=0, close_fds=not is_win32)
+ 
+ def run_prefork_process(cmd, kwargs, cargs):
+ 	"""
+diff --git a/third_party/waf/waflib/ansiterm.py b/third_party/waf/waflib/ansiterm.py
+index 0d20c6374b7..027f0ad68a3 100644
+--- a/third_party/waf/waflib/ansiterm.py
++++ b/third_party/waf/waflib/ansiterm.py
+@@ -264,7 +264,7 @@ else:
+ 			'u': pop_cursor,
+ 		}
+ 		# Match either the escape sequence or text not containing escape sequence
+-		ansi_tokens = re.compile('(?:\x1b\[([0-9?;]*)([a-zA-Z])|([^\x1b]+))')
++		ansi_tokens = re.compile(r'(?:\x1b\[([0-9?;]*)([a-zA-Z])|([^\x1b]+))')
+ 		def write(self, text):
+ 			try:
+ 				wlock.acquire()
+diff --git a/third_party/waf/waflib/extras/buildcopy.py b/third_party/waf/waflib/extras/buildcopy.py
+index a6d9ac83114..eaff7e605a6 100644
+--- a/third_party/waf/waflib/extras/buildcopy.py
++++ b/third_party/waf/waflib/extras/buildcopy.py
+@@ -22,7 +22,7 @@ Examples::
+ 
+ """
+ import os, shutil
+-from waflib import Errors, Task, TaskGen, Utils, Node
++from waflib import Errors, Task, TaskGen, Utils, Node, Logs
+ 
+ @TaskGen.before_method('process_source')
+ @TaskGen.feature('buildcopy')
+@@ -58,10 +58,13 @@ def make_buildcopy(self):
+ 		raise Errors.WafError('buildcopy: File not found in src: %s'%os.path.join(*lst))
+ 
+ 	nodes = [ to_src_nodes(n) for n in getattr(self, 'buildcopy_source', getattr(self, 'source', [])) ]
++	if not nodes:
++		Logs.warn('buildcopy: No source files provided to buildcopy in %s (set `buildcopy_source` or `source`)',
++			self)
++		return
+ 	node_pairs = [(n, n.get_bld()) for n in nodes]
+ 	self.create_task('buildcopy', [n[0] for n in node_pairs], [n[1] for n in node_pairs], node_pairs=node_pairs)
+ 
+-
+ class buildcopy(Task.Task):
+ 	"""
+ 	Copy for each pair `n` in `node_pairs`: n[0] -> n[1].
+diff --git a/third_party/waf/waflib/extras/clang_cross.py b/third_party/waf/waflib/extras/clang_cross.py
+new file mode 100644
+index 00000000000..1b51e2886cb
+--- /dev/null
++++ b/third_party/waf/waflib/extras/clang_cross.py
+@@ -0,0 +1,92 @@
++#!/usr/bin/env python
++# encoding: utf-8
++# Krzysztof KosiÅski 2014
++# DragoonX6 2018
++
++"""
++Detect the Clang C compiler
++This version is an attempt at supporting the -target and -sysroot flag of Clang.
++"""
++
++from waflib.Tools import ccroot, ar, gcc
++from waflib.Configure import conf
++import waflib.Context
++import waflib.extras.clang_cross_common
++
++def options(opt):
++	"""
++	Target triplet for clang::
++			$ waf configure --clang-target-triple=x86_64-pc-linux-gnu
++	"""
++	cc_compiler_opts = opt.add_option_group('Configuration options')
++	cc_compiler_opts.add_option('--clang-target-triple', default=None,
++		help='Target triple for clang',
++		dest='clang_target_triple')
++	cc_compiler_opts.add_option('--clang-sysroot', default=None,
++		help='Sysroot for clang',
++		dest='clang_sysroot')
++
++@conf
++def find_clang(conf):
++	"""
++	Finds the program clang and executes it to ensure it really is clang
++	"""
++
++	import os
++
++	cc = conf.find_program('clang', var='CC')
++
++	if conf.options.clang_target_triple != None:
++		conf.env.append_value('CC', ['-target', conf.options.clang_target_triple])
++
++	if conf.options.clang_sysroot != None:
++		sysroot = str()
++
++		if os.path.isabs(conf.options.clang_sysroot):
++			sysroot = conf.options.clang_sysroot
++		else:
++			sysroot = os.path.normpath(os.path.join(os.getcwd(), conf.options.clang_sysroot))
++
++		conf.env.append_value('CC', ['--sysroot', sysroot])
++
++	conf.get_cc_version(cc, clang=True)
++	conf.env.CC_NAME = 'clang'
++
++@conf
++def clang_modifier_x86_64_w64_mingw32(conf):
++	conf.gcc_modifier_win32()
++
++@conf
++def clang_modifier_i386_w64_mingw32(conf):
++	conf.gcc_modifier_win32()
++
++@conf
++def clang_modifier_x86_64_windows_msvc(conf):
++	conf.clang_modifier_msvc()
++
++	# Allow the user to override any flags if they so desire.
++	clang_modifier_user_func = getattr(conf, 'clang_modifier_x86_64_windows_msvc_user', None)
++	if clang_modifier_user_func:
++		clang_modifier_user_func()
++
++@conf
++def clang_modifier_i386_windows_msvc(conf):
++	conf.clang_modifier_msvc()
++
++	# Allow the user to override any flags if they so desire.
++	clang_modifier_user_func = getattr(conf, 'clang_modifier_i386_windows_msvc_user', None)
++	if clang_modifier_user_func:
++		clang_modifier_user_func()
++
++def configure(conf):
++	conf.find_clang()
++	conf.find_program(['llvm-ar', 'ar'], var='AR')
++	conf.find_ar()
++	conf.gcc_common_flags()
++	# Allow the user to provide flags for the target platform.
++	conf.gcc_modifier_platform()
++	# And allow more fine grained control based on the compiler's triplet.
++	conf.clang_modifier_target_triple()
++	conf.cc_load_tools()
++	conf.cc_add_flags()
++	conf.link_add_flags()
+diff --git a/third_party/waf/waflib/extras/clang_cross_common.py b/third_party/waf/waflib/extras/clang_cross_common.py
+new file mode 100644
+index 00000000000..b76a070065c
+--- /dev/null
++++ b/third_party/waf/waflib/extras/clang_cross_common.py
+@@ -0,0 +1,113 @@
++#!/usr/bin/env python
++# encoding: utf-8
++# DragoonX6 2018
++
++"""
++Common routines for cross_clang.py and cross_clangxx.py
++"""
++
++from waflib.Configure import conf
++import waflib.Context
++
++def normalize_target_triple(target_triple):
++	target_triple = target_triple[:-1]
++	normalized_triple = target_triple.replace('--', '-unknown-')
++
++	if normalized_triple.startswith('-'):
++		normalized_triple = 'unknown' + normalized_triple
++
++	if normalized_triple.endswith('-'):
++		normalized_triple += 'unknown'
++
++	# Normalize MinGW builds to *arch*-w64-mingw32
++	if normalized_triple.endswith('windows-gnu'):
++		normalized_triple = normalized_triple[:normalized_triple.index('-')] + '-w64-mingw32'
++
++	# Strip the vendor when doing msvc builds, since it's unused anyway.
++	if normalized_triple.endswith('windows-msvc'):
++		normalized_triple = normalized_triple[:normalized_triple.index('-')] + '-windows-msvc'
++
++	return normalized_triple.replace('-', '_')
++
++@conf
++def clang_modifier_msvc(conf):
++	import os
++
++	"""
++	Really basic setup to use clang in msvc mode.
++	We actually don't really want to do a lot, even though clang is msvc compatible
++	in this mode, that doesn't mean we're actually using msvc.
++	It's probably the best to leave it to the user, we can assume msvc mode if the user
++	uses the clang-cl frontend, but this module only concerns itself with the gcc-like frontend.
++	"""
++	v = conf.env
++	v.cprogram_PATTERN = '%s.exe'
++
++	v.cshlib_PATTERN   = '%s.dll'
++	v.implib_PATTERN   = '%s.lib'
++	v.IMPLIB_ST        = '-Wl,-IMPLIB:%s'
++	v.SHLIB_MARKER     = []
++
++	v.CFLAGS_cshlib    = []
++	v.LINKFLAGS_cshlib = ['-Wl,-DLL']
++	v.cstlib_PATTERN   = '%s.lib'
++	v.STLIB_MARKER     = []
++
++	del(v.AR)
++	conf.find_program(['llvm-lib', 'lib'], var='AR')
++	v.ARFLAGS          = ['-nologo']
++	v.AR_TGT_F         = ['-out:']
++
++	# Default to the linker supplied with llvm instead of link.exe or ld
++	v.LINK_CC          = v.CC + ['-fuse-ld=lld', '-nostdlib']
++	v.CCLNK_TGT_F      = ['-o']
++	v.def_PATTERN      = '-Wl,-def:%s'
++
++	v.LINKFLAGS = []
++
++	v.LIB_ST            = '-l%s'
++	v.LIBPATH_ST        = '-Wl,-LIBPATH:%s'
++	v.STLIB_ST          = '-l%s'
++	v.STLIBPATH_ST      = '-Wl,-LIBPATH:%s'
++
++	CFLAGS_CRT_COMMON = [
++		'-Xclang', '--dependent-lib=oldnames',
++		'-Xclang', '-fno-rtti-data',
++		'-D_MT'
++	]
++
++	v.CFLAGS_CRT_MULTITHREADED = CFLAGS_CRT_COMMON + [
++		'-Xclang', '-flto-visibility-public-std',
++		'-Xclang', '--dependent-lib=libcmt',
++	]
++	v.CXXFLAGS_CRT_MULTITHREADED = v.CFLAGS_CRT_MULTITHREADED
++
++	v.CFLAGS_CRT_MULTITHREADED_DBG = CFLAGS_CRT_COMMON + [
++		'-D_DEBUG',
++		'-Xclang', '-flto-visibility-public-std',
++		'-Xclang', '--dependent-lib=libcmtd',
++	]
++	v.CXXFLAGS_CRT_MULTITHREADED_DBG = v.CFLAGS_CRT_MULTITHREADED_DBG
++
++	v.CFLAGS_CRT_MULTITHREADED_DLL = CFLAGS_CRT_COMMON + [
++		'-D_DLL',
++		'-Xclang', '--dependent-lib=msvcrt'
++	]
++	v.CXXFLAGS_CRT_MULTITHREADED_DLL = v.CFLAGS_CRT_MULTITHREADED_DLL
++
++	v.CFLAGS_CRT_MULTITHREADED_DLL_DBG = CFLAGS_CRT_COMMON + [
++		'-D_DLL',
++		'-D_DEBUG',
++		'-Xclang', '--dependent-lib=msvcrtd',
++	]
++	v.CXXFLAGS_CRT_MULTITHREADED_DLL_DBG = v.CFLAGS_CRT_MULTITHREADED_DLL_DBG
++
++@conf
++def clang_modifier_target_triple(conf, cpp=False):
++	compiler = conf.env.CXX if cpp else conf.env.CC
++	output = conf.cmd_and_log(compiler + ['-dumpmachine'], output=waflib.Context.STDOUT)
++
++	modifier = ('clangxx' if cpp else 'clang') + '_modifier_'
++	clang_modifier_func = getattr(conf, modifier + normalize_target_triple(output), None)
++	if clang_modifier_func:
++		clang_modifier_func()
+diff --git a/third_party/waf/waflib/extras/clangxx_cross.py b/third_party/waf/waflib/extras/clangxx_cross.py
+new file mode 100644
+index 00000000000..0ad38ad46c0
+--- /dev/null
++++ b/third_party/waf/waflib/extras/clangxx_cross.py
+@@ -0,0 +1,106 @@
++#!/usr/bin/env python
++# encoding: utf-8
++# Thomas Nagy 2009-2018 (ita)
++# DragoonX6 2018
++
++"""
++Detect the Clang++ C++ compiler
++This version is an attempt at supporting the -target and -sysroot flag of Clang++.
++"""
++
++from waflib.Tools import ccroot, ar, gxx
++from waflib.Configure import conf
++import waflib.extras.clang_cross_common
++
++def options(opt):
++	"""
++	Target triplet for clang++::
++			$ waf configure --clangxx-target-triple=x86_64-pc-linux-gnu
++	"""
++	cxx_compiler_opts = opt.add_option_group('Configuration options')
++	cxx_compiler_opts.add_option('--clangxx-target-triple', default=None,
++		help='Target triple for clang++',
++		dest='clangxx_target_triple')
++	cxx_compiler_opts.add_option('--clangxx-sysroot', default=None,
++		help='Sysroot for clang++',
++		dest='clangxx_sysroot')
++
++@conf
++def find_clangxx(conf):
++	"""
++	Finds the program clang++, and executes it to ensure it really is clang++
++	"""
++
++	import os
++
++	cxx = conf.find_program('clang++', var='CXX')
++
++	if conf.options.clangxx_target_triple != None:
++		conf.env.append_value('CXX', ['-target', conf.options.clangxx_target_triple])
++
++	if conf.options.clangxx_sysroot != None:
++		sysroot = str()
++
++		if os.path.isabs(conf.options.clangxx_sysroot):
++			sysroot = conf.options.clangxx_sysroot
++		else:
++			sysroot = os.path.normpath(os.path.join(os.getcwd(), conf.options.clangxx_sysroot))
++
++		conf.env.append_value('CXX', ['--sysroot', sysroot])
++
++	conf.get_cc_version(cxx, clang=True)
++	conf.env.CXX_NAME = 'clang'
++
++@conf
++def clangxx_modifier_x86_64_w64_mingw32(conf):
++	conf.gcc_modifier_win32()
++
++@conf
++def clangxx_modifier_i386_w64_mingw32(conf):
++	conf.gcc_modifier_win32()
++
++@conf
++def clangxx_modifier_msvc(conf):
++	v = conf.env
++	v.cxxprogram_PATTERN = v.cprogram_PATTERN
++	v.cxxshlib_PATTERN   = v.cshlib_PATTERN
++
++	v.CXXFLAGS_cxxshlib  = []
++	v.LINKFLAGS_cxxshlib = v.LINKFLAGS_cshlib
++	v.cxxstlib_PATTERN   = v.cstlib_PATTERN
++
++	v.LINK_CXX           = v.CXX + ['-fuse-ld=lld', '-nostdlib']
++	v.CXXLNK_TGT_F       = v.CCLNK_TGT_F
++
++@conf
++def clangxx_modifier_x86_64_windows_msvc(conf):
++	conf.clang_modifier_msvc()
++	conf.clangxx_modifier_msvc()
++
++	# Allow the user to override any flags if they so desire.
++	clang_modifier_user_func = getattr(conf, 'clangxx_modifier_x86_64_windows_msvc_user', None)
++	if clang_modifier_user_func:
++		clang_modifier_user_func()
++
++@conf
++def clangxx_modifier_i386_windows_msvc(conf):
++	conf.clang_modifier_msvc()
++	conf.clangxx_modifier_msvc()
++
++	# Allow the user to override any flags if they so desire.
++	clang_modifier_user_func = getattr(conf, 'clangxx_modifier_i386_windows_msvc_user', None)
++	if clang_modifier_user_func:
++		clang_modifier_user_func()
++
++def configure(conf):
++	conf.find_clangxx()
++	conf.find_program(['llvm-ar', 'ar'], var='AR')
++	conf.find_ar()
++	conf.gxx_common_flags()
++	# Allow the user to provide flags for the target platform.
++	conf.gxx_modifier_platform()
++	# And allow more fine grained control based on the compiler's triplet.
++	conf.clang_modifier_target_triple(cpp=True)
++	conf.cxx_load_tools()
++	conf.cxx_add_flags()
++	conf.link_add_flags()
+diff --git a/third_party/waf/waflib/extras/color_msvc.py b/third_party/waf/waflib/extras/color_msvc.py
+new file mode 100644
+index 00000000000..60bacb7b240
+--- /dev/null
++++ b/third_party/waf/waflib/extras/color_msvc.py
+@@ -0,0 +1,59 @@
++#!/usr/bin/env python
++# encoding: utf-8
++
++# Replaces the default formatter by one which understands MSVC output and colorizes it.
++# Modified from color_gcc.py
++
++__author__ = __maintainer__ = "Alibek Omarov <a1ba.omarov@gmail.com>"
++__copyright__ = "Alibek Omarov, 2019"
++
++import sys
++from waflib import Logs
++
++class ColorMSVCFormatter(Logs.formatter):
++	def __init__(self, colors):
++		self.colors = colors
++		Logs.formatter.__init__(self)
++	
++	def parseMessage(self, line, color):
++		# Split messaage from 'disk:filepath: type: message'
++		arr = line.split(':', 3)
++		if len(arr) < 4:
++			return line
++		
++		colored = self.colors.BOLD + arr[0] + ':' + arr[1] + ':' + self.colors.NORMAL
++		colored += color + arr[2] + ':' + self.colors.NORMAL
++		colored += arr[3]
++		return colored
++	
++	def format(self, rec):
++		frame = sys._getframe()
++		while frame:
++			func = frame.f_code.co_name
++			if func == 'exec_command':
++				cmd = frame.f_locals.get('cmd')
++				if isinstance(cmd, list):
++					# Fix file case, it may be CL.EXE or cl.exe
++					argv0 = cmd[0].lower()
++					if 'cl.exe' in argv0:
++						lines = []
++						# This will not work with "localized" versions
++						# of MSVC
++						for line in rec.msg.splitlines():
++							if ': warning ' in line:
++								lines.append(self.parseMessage(line, self.colors.YELLOW))
++							elif ': error ' in line:
++								lines.append(self.parseMessage(line, self.colors.RED))
++							elif ': fatal error ' in line:
++								lines.append(self.parseMessage(line, self.colors.RED + self.colors.BOLD))
++							elif ': note: ' in line:
++								lines.append(self.parseMessage(line, self.colors.CYAN))
++							else:
++								lines.append(line)
++						rec.msg = "\n".join(lines)
++			frame = frame.f_back
++		return Logs.formatter.format(self, rec)
++
++def options(opt):
++	Logs.log.handlers[0].setFormatter(ColorMSVCFormatter(Logs.colors))
++
+diff --git a/third_party/waf/waflib/extras/cppcheck.py b/third_party/waf/waflib/extras/cppcheck.py
+index 43dc544df73..13ff42477fd 100644
+--- a/third_party/waf/waflib/extras/cppcheck.py
++++ b/third_party/waf/waflib/extras/cppcheck.py
+@@ -205,11 +205,17 @@ def _tgen_create_cmd(self):
+ 		args.append('--enable=%s' % lib_enable)
+ 
+ 	for src in self.to_list(getattr(self, 'source', [])):
+-		args.append('%r' % src)
++		if not isinstance(src, str):
++			src = repr(src)
++		args.append(src)
+ 	for inc in self.to_incnodes(self.to_list(getattr(self, 'includes', []))):
+-		args.append('-I%r' % inc)
++		if not isinstance(inc, str):
++			inc = repr(inc)
++		args.append('-I%s' % inc)
+ 	for inc in self.to_incnodes(self.to_list(self.env.INCLUDES)):
+-		args.append('-I%r' % inc)
++		if not isinstance(inc, str):
++			inc = repr(inc)
++		args.append('-I%s' % inc)
+ 	return cmd + args
+ 
+ 
+diff --git a/third_party/waf/waflib/extras/cpplint.py b/third_party/waf/waflib/extras/cpplint.py
+index fc914c2450b..8cdd6ddacb3 100644
+--- a/third_party/waf/waflib/extras/cpplint.py
++++ b/third_party/waf/waflib/extras/cpplint.py
+@@ -38,26 +38,25 @@ When using this tool, the wscript will look like:
+ from __future__ import absolute_import
+ import sys, re
+ import logging
+-import threading
+-from waflib import Task, TaskGen, Logs, Options, Node
+-try:
+-    import cpplint.cpplint as cpplint_tool
+-except ImportError:
+-    try:
+-        import cpplint as cpplint_tool
+-    except ImportError:
+-        pass
++from waflib import Errors, Task, TaskGen, Logs, Options, Node, Utils
+ 
+ 
+ critical_errors = 0
+ CPPLINT_FORMAT = '[CPPLINT] %(filename)s:\nline %(linenum)s, severity %(confidence)s, category: %(category)s\n%(message)s\n'
+-RE_EMACS = re.compile('(?P<filename>.*):(?P<linenum>\d+):  (?P<message>.*)  \[(?P<category>.*)\] \[(?P<confidence>\d+)\]')
++RE_EMACS = re.compile(r'(?P<filename>.*):(?P<linenum>\d+):  (?P<message>.*)  \[(?P<category>.*)\] \[(?P<confidence>\d+)\]')
+ CPPLINT_RE = {
+     'waf': RE_EMACS,
+     'emacs': RE_EMACS,
+-    'vs7': re.compile('(?P<filename>.*)\((?P<linenum>\d+)\):  (?P<message>.*)  \[(?P<category>.*)\] \[(?P<confidence>\d+)\]'),
+-    'eclipse': re.compile('(?P<filename>.*):(?P<linenum>\d+): warning: (?P<message>.*)  \[(?P<category>.*)\] \[(?P<confidence>\d+)\]'),
++    'vs7': re.compile(r'(?P<filename>.*)\((?P<linenum>\d+)\):  (?P<message>.*)  \[(?P<category>.*)\] \[(?P<confidence>\d+)\]'),
++    'eclipse': re.compile(r'(?P<filename>.*):(?P<linenum>\d+): warning: (?P<message>.*)  \[(?P<category>.*)\] \[(?P<confidence>\d+)\]'),
+ }
++CPPLINT_STR = ('${CPPLINT} '
++               '--verbose=${CPPLINT_LEVEL} '
++               '--output=${CPPLINT_OUTPUT} '
++               '--filter=${CPPLINT_FILTERS} '
++               '--root=${CPPLINT_ROOT} '
++               '--linelength=${CPPLINT_LINE_LENGTH} ')
++
+ 
+ def options(opt):
+     opt.add_option('--cpplint-filters', type='string',
+@@ -71,24 +70,21 @@ def options(opt):
+     opt.add_option('--cpplint-break', default=5, type='int', dest='CPPLINT_BREAK',
+                    help='break the build if error >= level (default: 5)')
+     opt.add_option('--cpplint-root', type='string',
+-                   default=None, dest='CPPLINT_ROOT',
++                   default='', dest='CPPLINT_ROOT',
+                    help='root directory used to derive header guard')
+     opt.add_option('--cpplint-skip', action='store_true',
+                    default=False, dest='CPPLINT_SKIP',
+                    help='skip cpplint during build')
+     opt.add_option('--cpplint-output', type='string',
+                    default='waf', dest='CPPLINT_OUTPUT',
+-                   help='select output format (waf, emacs, vs7)')
++                   help='select output format (waf, emacs, vs7, eclipse)')
+ 
+ 
+ def configure(conf):
+-    conf.start_msg('Checking cpplint')
+     try:
+-        cpplint_tool._cpplint_state
+-        conf.end_msg('ok')
+-    except NameError:
++        conf.find_program('cpplint', var='CPPLINT')
++    except Errors.ConfigurationError:
+         conf.env.CPPLINT_SKIP = True
+-        conf.end_msg('not found, skipping it.')
+ 
+ 
+ class cpplint_formatter(Logs.formatter, object):
+@@ -117,34 +113,22 @@ class cpplint_handler(Logs.log_handler, object):
+ 
+ 
+ class cpplint_wrapper(object):
+-    stream = None
+-    tasks_count = 0
+-    lock = threading.RLock()
+-
+     def __init__(self, logger, threshold, fmt):
+         self.logger = logger
+         self.threshold = threshold
+-        self.error_count = 0
+         self.fmt = fmt
+ 
+     def __enter__(self):
+-        with cpplint_wrapper.lock:
+-            cpplint_wrapper.tasks_count += 1
+-            if cpplint_wrapper.tasks_count == 1:
+-                sys.stderr.flush()
+-                cpplint_wrapper.stream = sys.stderr
+-                sys.stderr = self
+-            return self
++        return self
+ 
+     def __exit__(self, exc_type, exc_value, traceback):
+-        with cpplint_wrapper.lock:
+-            cpplint_wrapper.tasks_count -= 1
+-            if cpplint_wrapper.tasks_count == 0:
+-                sys.stderr = cpplint_wrapper.stream
+-                sys.stderr.flush()
+-
+-    def isatty(self):
+-        return True
++        if isinstance(exc_value, Utils.subprocess.CalledProcessError):
++            messages = [m for m in exc_value.output.splitlines() 
++                        if 'Done processing' not in m 
++                        and 'Total errors found' not in m]
++            for message in messages:
++                self.write(message)
++            return True
+ 
+     def write(self, message):
+         global critical_errors
+@@ -184,12 +168,15 @@ class cpplint(Task.Task):
+     def run(self):
+         global critical_errors
+         with cpplint_wrapper(get_cpplint_logger(self.env.CPPLINT_OUTPUT), self.env.CPPLINT_BREAK, self.env.CPPLINT_OUTPUT):
+-            if self.env.CPPLINT_OUTPUT != 'waf':
+-                cpplint_tool._SetOutputFormat(self.env.CPPLINT_OUTPUT)
+-            cpplint_tool._SetFilters(self.env.CPPLINT_FILTERS)
+-            cpplint_tool._line_length = self.env.CPPLINT_LINE_LENGTH
+-            cpplint_tool._root = self.env.CPPLINT_ROOT
+-            cpplint_tool.ProcessFile(self.inputs[0].abspath(), self.env.CPPLINT_LEVEL)
++            params = {key: str(self.env[key]) for key in self.env if 'CPPLINT_' in key}
++            if params['CPPLINT_OUTPUT'] is 'waf':
++                params['CPPLINT_OUTPUT'] = 'emacs'
++            params['CPPLINT'] = self.env.get_flat('CPPLINT')
++            cmd = Utils.subst_vars(CPPLINT_STR, params)
++            env = self.env.env or None
++            Utils.subprocess.check_output(cmd + self.inputs[0].abspath(),
++                                          stderr=Utils.subprocess.STDOUT,
++                                          env=env, shell=True)
+         return critical_errors
+ 
+ @TaskGen.extension('.h', '.hh', '.hpp', '.hxx')
+diff --git a/third_party/waf/waflib/extras/cython.py b/third_party/waf/waflib/extras/cython.py
+index 2b2c7ccc265..591c274d950 100644
+--- a/third_party/waf/waflib/extras/cython.py
++++ b/third_party/waf/waflib/extras/cython.py
+@@ -8,8 +8,9 @@ from waflib.TaskGen import extension
+ 
+ cy_api_pat = re.compile(r'\s*?cdef\s*?(public|api)\w*')
+ re_cyt = re.compile(r"""
+-	(?:from\s+(\w+)\s+)?   # optionally match "from foo" and capture foo
+-	c?import\s(\w+|[*])    # require "import bar" and capture bar
++	^\s*                           # must begin with some whitespace characters
++	(?:from\s+(\w+)(?:\.\w+)*\s+)? # optionally match "from foo(.baz)" and capture foo
++	c?import\s(\w+|[*])            # require "import bar" and capture bar
+ 	""", re.M | re.VERBOSE)
+ 
+ @extension('.pyx')
+@@ -85,12 +86,12 @@ class cython(Task.Task):
+ 		node = self.inputs[0]
+ 		txt = node.read()
+ 
+-		mods = []
++		mods = set()
+ 		for m in re_cyt.finditer(txt):
+ 			if m.group(1):  # matches "from foo import bar"
+-				mods.append(m.group(1))
++				mods.add(m.group(1))
+ 			else:
+-				mods.append(m.group(2))
++				mods.add(m.group(2))
+ 
+ 		Logs.debug('cython: mods %r', mods)
+ 		incs = getattr(self.generator, 'cython_includes', [])
+@@ -99,7 +100,7 @@ class cython(Task.Task):
+ 
+ 		found = []
+ 		missing = []
+-		for x in mods:
++		for x in sorted(mods):
+ 			for y in incs:
+ 				k = y.find_resource(x + '.pxd')
+ 				if k:
+@@ -141,6 +142,6 @@ def configure(ctx):
+ 	if not ctx.env.PYTHON:
+ 		ctx.fatal('Load the python tool first!')
+ 	ctx.find_program('cython', var='CYTHON')
+-	if ctx.options.cython_flags:
++	if hasattr(ctx.options, 'cython_flags'):
+ 		ctx.env.CYTHONFLAGS = ctx.options.cython_flags
+ 
+diff --git a/third_party/waf/waflib/extras/distnet.py b/third_party/waf/waflib/extras/distnet.py
+index 09a31a6d437..ff3ed8e1146 100644
+--- a/third_party/waf/waflib/extras/distnet.py
++++ b/third_party/waf/waflib/extras/distnet.py
+@@ -44,7 +44,7 @@ TARFORMAT = 'w:bz2'
+ TIMEOUT = 60
+ REQUIRES = 'requires.txt'
+ 
+-re_com = re.compile('\s*#.*', re.M)
++re_com = re.compile(r'\s*#.*', re.M)
+ 
+ def total_version_order(num):
+ 	lst = num.split('.')
+diff --git a/third_party/waf/waflib/extras/doxygen.py b/third_party/waf/waflib/extras/doxygen.py
+index 3eae22fe179..423d8455025 100644
+--- a/third_party/waf/waflib/extras/doxygen.py
++++ b/third_party/waf/waflib/extras/doxygen.py
+@@ -27,6 +27,7 @@ When using this tool, the wscript will look like:
+ """
+ 
+ import os, os.path, re
++from collections import OrderedDict
+ from waflib import Task, Utils, Node
+ from waflib.TaskGen import feature
+ 
+@@ -40,7 +41,13 @@ inc m mm py f90c cc cxx cpp c++ java ii ixx ipp i++ inl h hh hxx
+ re_rl = re.compile('\\\\\r*\n', re.MULTILINE)
+ re_nl = re.compile('\r*\n', re.M)
+ def parse_doxy(txt):
+-	tbl = {}
++	'''
++	Parses a doxygen file.
++	Returns an ordered dictionary. We cannot return a default dictionary, as the
++	order in which the entries are reported does matter, especially for the
++	'@INCLUDE' lines.
++	'''
++	tbl = OrderedDict()
+ 	txt   = re_rl.sub('', txt)
+ 	lines = re_nl.split(txt)
+ 	for x in lines:
+@@ -190,13 +197,13 @@ class tar(Task.Task):
+ @feature('doxygen')
+ def process_doxy(self):
+ 	if not getattr(self, 'doxyfile', None):
+-		self.generator.bld.fatal('no doxyfile??')
++		self.bld.fatal('no doxyfile variable specified??')
+ 
+ 	node = self.doxyfile
+ 	if not isinstance(node, Node.Node):
+ 		node = self.path.find_resource(node)
+ 	if not node:
+-		raise ValueError('doxygen file not found')
++		self.bld.fatal('doxygen file %s not found' % self.doxyfile)
+ 
+ 	# the task instance
+ 	dsk = self.create_task('doxygen', node)
+diff --git a/third_party/waf/waflib/extras/erlang.py b/third_party/waf/waflib/extras/erlang.py
+index 49f6d5b475b..0b93d9a4f46 100644
+--- a/third_party/waf/waflib/extras/erlang.py
++++ b/third_party/waf/waflib/extras/erlang.py
+@@ -51,7 +51,7 @@ class erl(Task.Task):
+ 			if n.abspath() in scanned:
+ 				continue
+ 
+-			for i in re.findall('-include\("(.*)"\)\.', n.read()):
++			for i in re.findall(r'-include\("(.*)"\)\.', n.read()):
+ 				for d in task.erlc_incnodes:
+ 					r = d.find_node(i)
+ 					if r:
+diff --git a/third_party/waf/waflib/extras/fast_partial.py b/third_party/waf/waflib/extras/fast_partial.py
+index b3af513b255..71b8318eecb 100644
+--- a/third_party/waf/waflib/extras/fast_partial.py
++++ b/third_party/waf/waflib/extras/fast_partial.py
+@@ -17,8 +17,9 @@ Usage::
+ 	def options(opt):
+ 		opt.load('fast_partial')
+ 
+-Assuptions:
++Assumptions:
+ * Mostly for C/C++/Fortran targets with link tasks (object-only targets are not handled)
++  try it in the folder generated by utils/genbench.py
+ * For full project builds: no --targets and no pruning from subfolders
+ * The installation phase is ignored
+ * `use=` dependencies are specified up front even across build groups
+diff --git a/third_party/waf/waflib/extras/fc_cray.py b/third_party/waf/waflib/extras/fc_cray.py
+index ec2906742b4..da733fade3d 100644
+--- a/third_party/waf/waflib/extras/fc_cray.py
++++ b/third_party/waf/waflib/extras/fc_cray.py
+@@ -20,7 +20,7 @@ def find_crayftn(conf):
+ @conf
+ def crayftn_flags(conf):
+ 	v = conf.env
+-	v['_FCMODOUTFLAGS']  = ['-em', '-J.'] # enable module files and put them in the current directoy
++	v['_FCMODOUTFLAGS']  = ['-em', '-J.'] # enable module files and put them in the current directory
+ 	v['FCFLAGS_DEBUG'] = ['-m1'] # more verbose compiler warnings
+ 	v['FCFLAGS_fcshlib']   = ['-h pic']
+ 	v['LINKFLAGS_fcshlib'] = ['-h shared']
+diff --git a/third_party/waf/waflib/extras/fc_nec.py b/third_party/waf/waflib/extras/fc_nec.py
+index 4b70f3dcccd..67c86808985 100644
+--- a/third_party/waf/waflib/extras/fc_nec.py
++++ b/third_party/waf/waflib/extras/fc_nec.py
+@@ -20,7 +20,7 @@ def find_sxfc(conf):
+ @conf
+ def sxfc_flags(conf):
+ 	v = conf.env
+-	v['_FCMODOUTFLAGS']  = [] # enable module files and put them in the current directoy
++	v['_FCMODOUTFLAGS']  = [] # enable module files and put them in the current directory
+ 	v['FCFLAGS_DEBUG'] = [] # more verbose compiler warnings
+ 	v['FCFLAGS_fcshlib']   = []
+ 	v['LINKFLAGS_fcshlib'] = []
+diff --git a/third_party/waf/waflib/extras/fc_nfort.py b/third_party/waf/waflib/extras/fc_nfort.py
+new file mode 100644
+index 00000000000..c25886b8e70
+--- /dev/null
++++ b/third_party/waf/waflib/extras/fc_nfort.py
+@@ -0,0 +1,52 @@
++#! /usr/bin/env python
++# encoding: utf-8
++# Detection of the NEC Fortran compiler for Aurora Tsubasa
++
++import re
++from waflib.Tools import fc,fc_config,fc_scan
++from waflib.Configure import conf
++from waflib.Tools.compiler_fc import fc_compiler
++fc_compiler['linux'].append('fc_nfort')
++
++@conf
++def find_nfort(conf):
++	fc=conf.find_program(['nfort'],var='FC')
++	conf.get_nfort_version(fc)
++	conf.env.FC_NAME='NFORT'
++	conf.env.FC_MOD_CAPITALIZATION='lower'
++
++@conf
++def nfort_flags(conf):
++	v=conf.env
++	v['_FCMODOUTFLAGS']=[]
++	v['FCFLAGS_DEBUG']=[]
++	v['FCFLAGS_fcshlib']=[]
++	v['LINKFLAGS_fcshlib']=[]
++	v['FCSTLIB_MARKER']=''
++	v['FCSHLIB_MARKER']=''
++
++@conf
++def get_nfort_version(conf,fc):
++	version_re=re.compile(r"nfort\s*\(NFORT\)\s*(?P<major>\d+)\.(?P<minor>\d+)\.",re.I).search
++	cmd=fc+['--version']
++	out,err=fc_config.getoutput(conf,cmd,stdin=False)
++	if out:
++		match=version_re(out)
++	else:
++		match=version_re(err)
++	if not match:
++		return(False)
++		conf.fatal('Could not determine the NEC NFORT Fortran compiler version.')
++	else:
++		k=match.groupdict()
++		conf.env['FC_VERSION']=(k['major'],k['minor'])
++
++def configure(conf):
++	conf.find_nfort()
++	conf.find_program('nar',var='AR')
++	conf.add_os_flags('ARFLAGS')
++	if not conf.env.ARFLAGS:
++		conf.env.ARFLAGS=['rcs']
++	conf.fc_flags()
++	conf.fc_add_flags()
++	conf.nfort_flags()
+diff --git a/third_party/waf/waflib/extras/gccdeps.py b/third_party/waf/waflib/extras/gccdeps.py
+index d9758ab34d5..bfabe72e6fd 100644
+--- a/third_party/waf/waflib/extras/gccdeps.py
++++ b/third_party/waf/waflib/extras/gccdeps.py
+@@ -36,7 +36,7 @@ def scan(self):
+ 	names = []
+ 	return (nodes, names)
+ 
+-re_o = re.compile("\.o$")
++re_o = re.compile(r"\.o$")
+ re_splitter = re.compile(r'(?<!\\)\s+') # split by space, except when spaces are escaped
+ 
+ def remove_makefile_rule_lhs(line):
+@@ -197,7 +197,7 @@ def configure(conf):
+ 		except Errors.ConfigurationError:
+ 			pass
+ 		else:
+-			conf.env.append_value('CFLAGS', gccdeps_flags)
++			conf.env.append_value('CFLAGS', flags)
+ 			conf.env.append_unique('ENABLE_GCCDEPS', 'c')
+ 
+ 	if conf.env.CXX_NAME in supported_compilers:
+@@ -206,7 +206,7 @@ def configure(conf):
+ 		except Errors.ConfigurationError:
+ 			pass
+ 		else:
+-			conf.env.append_value('CXXFLAGS', gccdeps_flags)
++			conf.env.append_value('CXXFLAGS', flags)
+ 			conf.env.append_unique('ENABLE_GCCDEPS', 'cxx')
+ 
+ def options(opt):
+diff --git a/third_party/waf/waflib/extras/kde4.py b/third_party/waf/waflib/extras/kde4.py
+index e49a9ec00e1..aed9bfb5575 100644
+--- a/third_party/waf/waflib/extras/kde4.py
++++ b/third_party/waf/waflib/extras/kde4.py
+@@ -71,7 +71,7 @@ def configure(self):
+ 	fu = re.compile('#(.*)\n')
+ 	txt = fu.sub('', txt)
+ 
+-	setregexp = re.compile('([sS][eE][tT]\s*\()\s*([^\s]+)\s+\"([^"]+)\"\)')
++	setregexp = re.compile(r'([sS][eE][tT]\s*\()\s*([^\s]+)\s+\"([^"]+)\"\)')
+ 	found = setregexp.findall(txt)
+ 
+ 	for (_, key, val) in found:
+diff --git a/third_party/waf/waflib/extras/msvcdeps.py b/third_party/waf/waflib/extras/msvcdeps.py
+index fc1ecd4d08c..873a4193150 100644
+--- a/third_party/waf/waflib/extras/msvcdeps.py
++++ b/third_party/waf/waflib/extras/msvcdeps.py
+@@ -50,28 +50,35 @@ def apply_msvcdeps_flags(taskgen):
+ 		if taskgen.env.get_flat(flag).find(PREPROCESSOR_FLAG) < 0:
+ 			taskgen.env.append_value(flag, PREPROCESSOR_FLAG)
+ 
+-	# Figure out what casing conventions the user's shell used when
+-	# launching Waf
+-	(drive, _) = os.path.splitdrive(taskgen.bld.srcnode.abspath())
+-	taskgen.msvcdeps_drive_lowercase = drive == drive.lower()
+-
+ def path_to_node(base_node, path, cached_nodes):
+-	# Take the base node and the path and return a node
+-	# Results are cached because searching the node tree is expensive
+-	# The following code is executed by threads, it is not safe, so a lock is needed...
+-	if getattr(path, '__hash__'):
+-		node_lookup_key = (base_node, path)
+-	else:
+-		# Not hashable, assume it is a list and join into a string
+-		node_lookup_key = (base_node, os.path.sep.join(path))
++	'''
++	Take the base node and the path and return a node
++	Results are cached because searching the node tree is expensive
++	The following code is executed by threads, it is not safe, so a lock is needed...
++	'''
++	# normalize the path because ant_glob() does not understand
++	# parent path components (..)
++	path = os.path.normpath(path)
++
++	# normalize the path case to increase likelihood of a cache hit
++	path = os.path.normcase(path)
++
++	# ant_glob interprets [] and () characters, so those must be replaced
++	path = path.replace('[', '?').replace(']', '?').replace('(', '[(]').replace(')', '[)]')
++
++	node_lookup_key = (base_node, path)
++
+ 	try:
+-		lock.acquire()
+ 		node = cached_nodes[node_lookup_key]
+ 	except KeyError:
+-		node = base_node.find_resource(path)
+-		cached_nodes[node_lookup_key] = node
+-	finally:
+-		lock.release()
++		# retry with lock on cache miss
++		with lock:
++			try:
++				node = cached_nodes[node_lookup_key]
++			except KeyError:
++				node_list = base_node.ant_glob([path], ignorecase=True, remove=False, quiet=True, regex=False)
++				node = cached_nodes[node_lookup_key] = node_list[0] if node_list else None
++
+ 	return node
+ 
+ def post_run(self):
+@@ -86,11 +93,6 @@ def post_run(self):
+ 	unresolved_names = []
+ 	resolved_nodes = []
+ 
+-	lowercase = self.generator.msvcdeps_drive_lowercase
+-	correct_case_path = bld.path.abspath()
+-	correct_case_path_len = len(correct_case_path)
+-	correct_case_path_norm = os.path.normcase(correct_case_path)
+-
+ 	# Dynamically bind to the cache
+ 	try:
+ 		cached_nodes = bld.cached_nodes
+@@ -100,26 +102,15 @@ def post_run(self):
+ 	for path in self.msvcdeps_paths:
+ 		node = None
+ 		if os.path.isabs(path):
+-			# Force drive letter to match conventions of main source tree
+-			drive, tail = os.path.splitdrive(path)
+-
+-			if os.path.normcase(path[:correct_case_path_len]) == correct_case_path_norm:
+-				# Path is in the sandbox, force it to be correct.  MSVC sometimes returns a lowercase path.
+-				path = correct_case_path + path[correct_case_path_len:]
+-			else:
+-				# Check the drive letter
+-				if lowercase and (drive != drive.lower()):
+-					path = drive.lower() + tail
+-				elif (not lowercase) and (drive != drive.upper()):
+-					path = drive.upper() + tail
+ 			node = path_to_node(bld.root, path, cached_nodes)
+ 		else:
++			# when calling find_resource, make sure the path does not begin with '..'
+ 			base_node = bld.bldnode
+-			# when calling find_resource, make sure the path does not begin by '..'
+ 			path = [k for k in Utils.split_path(path) if k and k != '.']
+ 			while path[0] == '..':
+-				path = path[1:]
++				path.pop(0)
+ 				base_node = base_node.parent
++			path = os.sep.join(path)
+ 
+ 			node = path_to_node(base_node, path, cached_nodes)
+ 
+@@ -213,8 +204,12 @@ def exec_command(self, cmd, **kw):
+ 			raw_out = self.generator.bld.cmd_and_log(cmd + ['@' + tmp], **kw)
+ 			ret = 0
+ 		except Errors.WafError as e:
+-			raw_out = e.stdout
+-			ret = e.returncode
++			# Use e.msg if e.stdout is not set
++			raw_out = getattr(e, 'stdout', e.msg)
++
++			# Return non-zero error code even if we didn't
++			# get one from the exception object
++			ret = getattr(e, 'returncode', 1)
+ 
+ 		for line in raw_out.splitlines():
+ 			if line.startswith(INCLUDE_PATTERN):
+diff --git a/third_party/waf/waflib/extras/ocaml.py b/third_party/waf/waflib/extras/ocaml.py
+index afe73c0ca3e..7d785c6f542 100644
+--- a/third_party/waf/waflib/extras/ocaml.py
++++ b/third_party/waf/waflib/extras/ocaml.py
+@@ -15,7 +15,7 @@ EXT_MLI = ['.mli']
+ EXT_MLC = ['.c']
+ EXT_ML  = ['.ml']
+ 
+-open_re = re.compile('^\s*open\s+([a-zA-Z]+)(;;){0,1}$', re.M)
++open_re = re.compile(r'^\s*open\s+([a-zA-Z]+)(;;){0,1}$', re.M)
+ foo = re.compile(r"""(\(\*)|(\*\))|("(\\.|[^"\\])*"|'(\\.|[^'\\])*'|.[^()*"'\\]*)""", re.M)
+ def filter_comments(txt):
+ 	meh = [0]
+diff --git a/third_party/waf/waflib/extras/parallel_debug.py b/third_party/waf/waflib/extras/parallel_debug.py
+index 35883a3dd74..4ffec5e53eb 100644
+--- a/third_party/waf/waflib/extras/parallel_debug.py
++++ b/third_party/waf/waflib/extras/parallel_debug.py
+@@ -3,13 +3,16 @@
+ # Thomas Nagy, 2007-2010 (ita)
+ 
+ """
+-Debugging helper for parallel compilation, outputs
+-a file named pdebug.svg in the source directory::
++Debugging helper for parallel compilation.
++
++Copy it to your project and load it with::
+ 
+ 	def options(opt):
+-		opt.load('parallel_debug')
++		opt.load('parallel_debug', tooldir='.')
+ 	def build(bld):
+ 		...
++
++The build will then output a file named pdebug.svg in the source directory.
+ """
+ 
+ import re, sys, threading, time, traceback
+diff --git a/third_party/waf/waflib/extras/pgicc.py b/third_party/waf/waflib/extras/pgicc.py
+index 9790b9cf8ba..f8068d53c09 100644
+--- a/third_party/waf/waflib/extras/pgicc.py
++++ b/third_party/waf/waflib/extras/pgicc.py
+@@ -60,7 +60,7 @@ def get_pgi_version(conf, cc):
+ 	except Errors.WafError:
+ 		conf.fatal('Could not find pgi compiler %r' % cmd)
+ 
+-	version = re.findall('^COMPVER\s*=(.*)', out, re.M)
++	version = re.findall(r'^COMPVER\s*=(.*)', out, re.M)
+ 	if len(version) != 1:
+ 		conf.fatal('Could not determine the compiler version')
+ 	return version[0]
+diff --git a/third_party/waf/waflib/extras/protoc.py b/third_party/waf/waflib/extras/protoc.py
+index f3cb4d86ab8..4a519cc6a00 100644
+--- a/third_party/waf/waflib/extras/protoc.py
++++ b/third_party/waf/waflib/extras/protoc.py
+@@ -6,7 +6,7 @@
+ import re, os
+ from waflib.Task import Task
+ from waflib.TaskGen import extension
+-from waflib import Errors, Context
++from waflib import Errors, Context, Logs
+ 
+ """
+ A simple tool to integrate protocol buffers into your build system.
+@@ -67,6 +67,13 @@ Example for Java:
+                 protoc_includes = ['inc']) # for protoc to search dependencies
+ 
+ 
++Protoc includes passed via protoc_includes are either relative to the taskgen
++or to the project and are searched in this order.
++
++Include directories external to the waf project can also be passed to the
++extra by using protoc_extincludes
++
++                protoc_extincludes = ['/usr/include/pblib']
+ 
+ 
+ Notes when using this tool:
+@@ -82,7 +89,7 @@ Notes when using this tool:
+ """
+ 
+ class protoc(Task):
+-	run_str = '${PROTOC} ${PROTOC_FL:PROTOC_FLAGS} ${PROTOC_ST:INCPATHS} ${PROTOC_ST:PROTOC_INCPATHS} ${SRC[0].bldpath()}'
++	run_str = '${PROTOC} ${PROTOC_FL:PROTOC_FLAGS} ${PROTOC_ST:INCPATHS} ${PROTOC_ST:PROTOC_INCPATHS} ${PROTOC_ST:PROTOC_EXTINCPATHS} ${SRC[0].bldpath()}'
+ 	color   = 'BLUE'
+ 	ext_out = ['.h', 'pb.cc', '.py', '.java']
+ 	def scan(self):
+@@ -104,7 +111,17 @@ class protoc(Task):
+ 
+ 		if 'py' in self.generator.features or 'javac' in self.generator.features:
+ 			for incpath in getattr(self.generator, 'protoc_includes', []):
+-				search_nodes.append(self.generator.bld.path.find_node(incpath))
++				incpath_node = self.generator.path.find_node(incpath)
++				if incpath_node:
++					search_nodes.append(incpath_node)
++				else:
++					# Check if relative to top-level for extra tg dependencies
++					incpath_node = self.generator.bld.path.find_node(incpath)
++					if incpath_node:
++						search_nodes.append(incpath_node)
++					else:
++						raise Errors.WafError('protoc: include path %r does not exist' % incpath)
++
+ 
+ 		def parse_node(node):
+ 			if node in seen:
+@@ -126,7 +143,7 @@ class protoc(Task):
+ 		parse_node(node)
+ 		# Add also dependencies path to INCPATHS so protoc will find the included file
+ 		for deppath in nodes:
+-			self.env.append_value('INCPATHS', deppath.parent.bldpath())
++			self.env.append_unique('INCPATHS', deppath.parent.bldpath())
+ 		return (nodes, names)
+ 
+ @extension('.proto')
+@@ -153,61 +170,12 @@ def process_protoc(self, node):
+ 		protoc_flags.append('--python_out=%s' % node.parent.get_bld().bldpath())
+ 
+ 	if 'javac' in self.features:
+-		pkgname, javapkg, javacn, nodename = None, None, None, None
+-		messages = []
+-
+-		# .java file name is done with some rules depending on .proto file content:
+-		#   -) package is either derived from option java_package if present
+-		#      or from package directive
+-		#   -) file name is either derived from option java_outer_classname if present
+-		#      or the .proto file is converted to camelcase. If a message
+-		#      is named the same then the behaviour depends on protoc version
+-		#
+-		# See also: https://developers.google.com/protocol-buffers/docs/reference/java-generated#invocation
+-
+-		code = node.read().splitlines()
+-		for line in code:
+-			m = re.search(r'^package\s+(.*);', line)
+-			if m:
+-				pkgname = m.groups()[0]
+-			m = re.search(r'^option\s+(\S*)\s*=\s*"(\S*)";', line)
+-			if m:
+-				optname = m.groups()[0]
+-				if optname == 'java_package':
+-					javapkg = m.groups()[1]
+-				elif optname == 'java_outer_classname':
+-					javacn = m.groups()[1]
+-			if self.env.PROTOC_MAJOR > '2':
+-				m = re.search(r'^message\s+(\w*)\s*{*', line)
+-				if m:
+-					messages.append(m.groups()[0])
+-
+-		if javapkg:
+-			nodename = javapkg
+-		elif pkgname:
+-			nodename = pkgname
+-		else:
+-			raise Errors.WafError('Cannot derive java name from protoc file')
+-
+-		nodename = nodename.replace('.',os.sep) + os.sep
+-		if javacn:
+-			nodename += javacn + '.java'
+-		else:
+-			if self.env.PROTOC_MAJOR > '2' and node.abspath()[node.abspath().rfind(os.sep)+1:node.abspath().rfind('.')].title() in messages:
+-				nodename += node.abspath()[node.abspath().rfind(os.sep)+1:node.abspath().rfind('.')].title().replace('_','') + 'OuterClass.java'
+-			else:
+-				nodename += node.abspath()[node.abspath().rfind(os.sep)+1:node.abspath().rfind('.')].title().replace('_','') + '.java'
+-
+-		java_node = node.parent.find_or_declare(nodename)
+-		out_nodes.append(java_node)
+-		protoc_flags.append('--java_out=%s' % node.parent.get_bld().bldpath())
+-
+ 		# Make javac get also pick java code generated in build
+ 		if not node.parent.get_bld() in self.javac_task.srcdir:
+ 			self.javac_task.srcdir.append(node.parent.get_bld())
+ 
+-	if not out_nodes:
+-		raise Errors.WafError('Feature %r not supported by protoc extra' % self.features)
++		protoc_flags.append('--java_out=%s' % node.parent.get_bld().bldpath())
++		node.parent.get_bld().mkdir()
+ 
+ 	tsk = self.create_task('protoc', node, out_nodes)
+ 	tsk.env.append_value('PROTOC_FLAGS', protoc_flags)
+@@ -219,9 +187,22 @@ def process_protoc(self, node):
+ 	# For C++ standard include files dirs are used,
+ 	# but this doesn't apply to Python for example
+ 	for incpath in getattr(self, 'protoc_includes', []):
+-		incdirs.append(self.path.find_node(incpath).bldpath())
++		incpath_node = self.path.find_node(incpath)
++		if incpath_node:
++			incdirs.append(incpath_node.bldpath())
++		else:
++			# Check if relative to top-level for extra tg dependencies
++			incpath_node = self.bld.path.find_node(incpath)
++			if incpath_node:
++				incdirs.append(incpath_node.bldpath())
++			else:
++				raise Errors.WafError('protoc: include path %r does not exist' % incpath)
++
+ 	tsk.env.PROTOC_INCPATHS = incdirs
+ 
++	# Include paths external to the waf project (ie. shared pb repositories)
++	tsk.env.PROTOC_EXTINCPATHS = getattr(self, 'protoc_extincludes', [])
++
+ 	# PR2115: protoc generates output of .proto files in nested
+ 	# directories  by canonicalizing paths. To avoid this we have to pass
+ 	# as first include the full directory file of the .proto file
+diff --git a/third_party/waf/waflib/extras/pyqt5.py b/third_party/waf/waflib/extras/pyqt5.py
+index c21dfa72048..9c941764cc2 100644
+--- a/third_party/waf/waflib/extras/pyqt5.py
++++ b/third_party/waf/waflib/extras/pyqt5.py
+@@ -1,6 +1,6 @@
+ #!/usr/bin/env python
+ # encoding: utf-8
+-# Federico Pellegrin, 2016-2018 (fedepell) adapted for Python
++# Federico Pellegrin, 2016-2019 (fedepell) adapted for Python
+ 
+ """
+ This tool helps with finding Python Qt5 tools and libraries,
+@@ -30,7 +30,7 @@ Load the "pyqt5" tool.
+ 
+ Add into the sources list also the qrc resources files or ui5
+ definition files and they will be translated into python code
+-with the system tools (PyQt5, pyside2, PyQt4 are searched in this
++with the system tools (PyQt5, PySide2, PyQt4 are searched in this
+ order) and then compiled
+ """
+ 
+@@ -111,9 +111,9 @@ def apply_pyqt5(self):
+ 	"""
+ 	The additional parameters are:
+ 
+-	:param lang: list of translation files (\*.ts) to process
++	:param lang: list of translation files (\\*.ts) to process
+ 	:type lang: list of :py:class:`waflib.Node.Node` or string without the .ts extension
+-	:param langname: if given, transform the \*.ts files into a .qrc files to include in the binary file
++	:param langname: if given, transform the \\*.ts files into a .qrc files to include in the binary file
+ 	:type langname: :py:class:`waflib.Node.Node` or string without the .qrc extension
+ 	"""
+ 	if getattr(self, 'lang', None):
+@@ -207,11 +207,15 @@ def configure(self):
+ @conf
+ def find_pyqt5_binaries(self):
+ 	"""
+-	Detects PyQt5 or pyside2 programs such as pyuic5/pyside2-uic, pyrcc5/pyside2-rcc
++	Detects PyQt5 or PySide2 programs such as pyuic5/pyside2-uic, pyrcc5/pyside2-rcc
+ 	"""
+ 	env = self.env
+ 
+-	if getattr(Options.options, 'want_pyside2', True):
++	if getattr(Options.options, 'want_pyqt5', True):
++		self.find_program(['pyuic5'], var='QT_PYUIC')
++		self.find_program(['pyrcc5'], var='QT_PYRCC')
++		self.find_program(['pylupdate5'], var='QT_PYLUPDATE')
++	elif getattr(Options.options, 'want_pyside2', True):
+ 		self.find_program(['pyside2-uic'], var='QT_PYUIC')
+ 		self.find_program(['pyside2-rcc'], var='QT_PYRCC')
+ 		self.find_program(['pyside2-lupdate'], var='QT_PYLUPDATE')
+@@ -227,7 +231,7 @@ def find_pyqt5_binaries(self):
+ 	if not env.QT_PYUIC:
+ 		self.fatal('cannot find the uic compiler for python for qt5')
+ 
+-	if not env.QT_PYUIC:
++	if not env.QT_PYRCC:
+ 		self.fatal('cannot find the rcc compiler for python for qt5')
+ 
+ 	self.find_program(['lrelease-qt5', 'lrelease'], var='QT_LRELEASE')
+@@ -237,5 +241,6 @@ def options(opt):
+ 	Command-line options
+ 	"""
+ 	pyqt5opt=opt.add_option_group("Python QT5 Options")
+-	pyqt5opt.add_option('--pyqt5-pyside2', action='store_true', default=False, dest='want_pyside2', help='use pyside2 bindings as python QT5 bindings (default PyQt5 is searched first, PySide2 after)')
++	pyqt5opt.add_option('--pyqt5-pyqt5', action='store_true', default=False, dest='want_pyqt5', help='use PyQt5 bindings as python QT5 bindings (default PyQt5 is searched first, PySide2 after, PyQt4 last)')
++	pyqt5opt.add_option('--pyqt5-pyside2', action='store_true', default=False, dest='want_pyside2', help='use PySide2 bindings as python QT5 bindings (default PyQt5 is searched first, PySide2 after, PyQt4 last)')
+ 	pyqt5opt.add_option('--pyqt5-pyqt4', action='store_true', default=False, dest='want_pyqt4', help='use PyQt4 bindings as python QT5 bindings (default PyQt5 is searched first, PySide2 after, PyQt4 last)')
+diff --git a/third_party/waf/waflib/extras/qt4.py b/third_party/waf/waflib/extras/qt4.py
+index 90cae7e0ae5..d19a4ddac3f 100644
+--- a/third_party/waf/waflib/extras/qt4.py
++++ b/third_party/waf/waflib/extras/qt4.py
+@@ -290,11 +290,11 @@ def apply_qt4(self):
+ 
+ 	The additional parameters are:
+ 
+-	:param lang: list of translation files (\*.ts) to process
++	:param lang: list of translation files (\\*.ts) to process
+ 	:type lang: list of :py:class:`waflib.Node.Node` or string without the .ts extension
+-	:param update: whether to process the C++ files to update the \*.ts files (use **waf --translate**)
++	:param update: whether to process the C++ files to update the \\*.ts files (use **waf --translate**)
+ 	:type update: bool
+-	:param langname: if given, transform the \*.ts files into a .qrc files to include in the binary file
++	:param langname: if given, transform the \\*.ts files into a .qrc files to include in the binary file
+ 	:type langname: :py:class:`waflib.Node.Node` or string without the .qrc extension
+ 	"""
+ 	if getattr(self, 'lang', None):
+diff --git a/third_party/waf/waflib/extras/remote.py b/third_party/waf/waflib/extras/remote.py
+index 3b038f772b5..f43b600f023 100644
+--- a/third_party/waf/waflib/extras/remote.py
++++ b/third_party/waf/waflib/extras/remote.py
+@@ -203,7 +203,7 @@ class remote(BuildContext):
+ 					Options.commands.remove(k)
+ 
+ 	def login_to_host(self, login):
+-		return re.sub('(\w+@)', '', login)
++		return re.sub(r'(\w+@)', '', login)
+ 
+ 	def variant_to_login(self, variant):
+ 		"""linux_32_debug -> search env.LINUX_32 and then env.LINUX"""
+diff --git a/third_party/waf/waflib/extras/run_do_script.py b/third_party/waf/waflib/extras/run_do_script.py
+index f3c58122c9b..07e3aa2591c 100644
+--- a/third_party/waf/waflib/extras/run_do_script.py
++++ b/third_party/waf/waflib/extras/run_do_script.py
+@@ -101,7 +101,7 @@ class run_do_script(run_do_script_base):
+ 		with open(**kwargs) as log:
+ 			log_tail = log.readlines()[-10:]
+ 			for line in log_tail:
+-				error_found = re.match("r\(([0-9]+)\)", line)
++				error_found = re.match(r"r\(([0-9]+)\)", line)
+ 				if error_found:
+ 					return error_found.group(1), ''.join(log_tail)
+ 				else:
+diff --git a/third_party/waf/waflib/extras/sphinx.py b/third_party/waf/waflib/extras/sphinx.py
+new file mode 100644
+index 00000000000..ce11110e634
+--- /dev/null
++++ b/third_party/waf/waflib/extras/sphinx.py
+@@ -0,0 +1,81 @@
++"""Support for Sphinx documentation
++
++This is a wrapper for sphinx-build program. Please note that sphinx-build supports only one output format which can
++passed to build via sphinx_output_format attribute. The default output format is html.
++
++Example wscript:
++
++def configure(cnf):
++    conf.load('sphinx')
++
++def build(bld):
++    bld(
++        features='sphinx',
++        sphinx_source='sources',  # path to source directory
++        sphinx_options='-a -v',  # sphinx-build program additional options
++        sphinx_output_format='man'  # output format of sphinx documentation
++        )
++
++"""
++
++from waflib.Node import Node
++from waflib import Utils
++from waflib.Task import Task
++from waflib.TaskGen import feature, after_method
++
++
++def configure(cnf):
++    """Check if sphinx-build program is available and loads gnu_dirs tool."""
++    cnf.find_program('sphinx-build', var='SPHINX_BUILD', mandatory=False)
++    cnf.load('gnu_dirs')
++
++
++@feature('sphinx')
++def build_sphinx(self):
++    """Builds sphinx sources.
++    """
++    if not self.env.SPHINX_BUILD:
++        self.bld.fatal('Program SPHINX_BUILD not defined.')
++    if not getattr(self, 'sphinx_source', None):
++        self.bld.fatal('Attribute sphinx_source not defined.')
++    if not isinstance(self.sphinx_source, Node):
++        self.sphinx_source = self.path.find_node(self.sphinx_source)
++    if not self.sphinx_source:
++        self.bld.fatal('Can\'t find sphinx_source: %r' % self.sphinx_source)
++
++    Utils.def_attrs(self, sphinx_output_format='html')
++    self.env.SPHINX_OUTPUT_FORMAT = self.sphinx_output_format
++    self.env.SPHINX_OPTIONS = getattr(self, 'sphinx_options', [])
++
++    for source_file in self.sphinx_source.ant_glob('**/*'):
++        self.bld.add_manual_dependency(self.sphinx_source, source_file)
++
++    sphinx_build_task = self.create_task('SphinxBuildingTask')
++    sphinx_build_task.set_inputs(self.sphinx_source)
++    sphinx_build_task.set_outputs(self.path.get_bld())
++
++    # the sphinx-build results are in <build + output_format> directory
++    sphinx_output_directory = self.path.get_bld().make_node(self.env.SPHINX_OUTPUT_FORMAT)
++    sphinx_output_directory.mkdir()
++    Utils.def_attrs(self, install_path=get_install_path(self))
++    self.add_install_files(install_to=self.install_path,
++                           install_from=sphinx_output_directory.ant_glob('**/*'),
++                           cwd=sphinx_output_directory,
++                           relative_trick=True)
++
++
++def get_install_path(tg):
++    if tg.env.SPHINX_OUTPUT_FORMAT == 'man':
++        return tg.env.MANDIR
++    elif tg.env.SPHINX_OUTPUT_FORMAT == 'info':
++        return tg.env.INFODIR
++    else:
++        return tg.env.DOCDIR
++
++
++class SphinxBuildingTask(Task):
++    color = 'BOLD'
++    run_str = '${SPHINX_BUILD} -M ${SPHINX_OUTPUT_FORMAT} ${SRC} ${TGT} ${SPHINX_OPTIONS}'
++
++    def keyword(self):
++        return 'Compiling (%s)' % self.env.SPHINX_OUTPUT_FORMAT
+diff --git a/third_party/waf/waflib/extras/swig.py b/third_party/waf/waflib/extras/swig.py
+index fd3d6d2c995..740ab46d963 100644
+--- a/third_party/waf/waflib/extras/swig.py
++++ b/third_party/waf/waflib/extras/swig.py
+@@ -17,10 +17,10 @@ tasks have to be added dynamically:
+ 
+ SWIG_EXTS = ['.swig', '.i']
+ 
+-re_module = re.compile('%module(?:\s*\(.*\))?\s+(.+)', re.M)
++re_module = re.compile(r'%module(?:\s*\(.*\))?\s+(.+)', re.M)
+ 
+ re_1 = re.compile(r'^%module.*?\s+([\w]+)\s*?$', re.M)
+-re_2 = re.compile('[#%]include [<"](.*)[">]', re.M)
++re_2 = re.compile(r'[#%](?:include|import(?:\(module=".*"\))+|python(?:begin|code)) [<"](.*)[">]', re.M)
+ 
+ class swig(Task.Task):
+ 	color   = 'BLUE'
+diff --git a/third_party/waf/waflib/extras/syms.py b/third_party/waf/waflib/extras/syms.py
+index dfa005930e4..562f708e1ea 100644
+--- a/third_party/waf/waflib/extras/syms.py
++++ b/third_party/waf/waflib/extras/syms.py
+@@ -31,7 +31,7 @@ class gen_sym(Task):
+ 			if self.env.DEST_BINFMT == 'pe': #gcc uses nm, and has a preceding _ on windows
+ 				re_nm = re.compile(r'(T|D)\s+_(?P<symbol>%s)\b' % reg)
+ 			elif self.env.DEST_BINFMT=='mac-o':
+-				re_nm=re.compile(r'(T|D)\s+(?P<symbol>_?%s)\b' % reg)
++				re_nm=re.compile(r'(T|D)\s+(?P<symbol>_?(%s))\b' % reg)
+ 			else:
+ 				re_nm = re.compile(r'(T|D)\s+(?P<symbol>%s)\b' % reg)
+ 			cmd = (self.env.NM or ['nm']) + ['-g', obj.abspath()]
+diff --git a/third_party/waf/waflib/extras/use_config.py b/third_party/waf/waflib/extras/use_config.py
+index 71df793a2a3..ef5129f219b 100644
+--- a/third_party/waf/waflib/extras/use_config.py
++++ b/third_party/waf/waflib/extras/use_config.py
+@@ -52,7 +52,7 @@ import os
+ 
+ local_repo = ''
+ """Local repository containing additional Waf tools (plugins)"""
+-remote_repo = 'https://raw.githubusercontent.com/waf-project/waf/master/'
++remote_repo = 'https://gitlab.com/ita1024/waf/raw/master/'
+ """
+ Remote directory containing downloadable waf tools. The missing tools can be downloaded by using::
+ 
+diff --git a/third_party/waf/waflib/extras/xcode6.py b/third_party/waf/waflib/extras/xcode6.py
+index c062a74e4fc..91bbff181ec 100644
+--- a/third_party/waf/waflib/extras/xcode6.py
++++ b/third_party/waf/waflib/extras/xcode6.py
+@@ -147,7 +147,7 @@ def newid():
+ Represents a tree node in the XCode project plist file format.
+ When written to a file, all attributes of XCodeNode are stringified together with
+ its value. However, attributes starting with an underscore _ are ignored
+-during that process and allows you to store arbitray values that are not supposed
++during that process and allows you to store arbitrary values that are not supposed
+ to be written out.
+ """
+ class XCodeNode(object):
+@@ -247,7 +247,7 @@ class PBXBuildFile(XCodeNode):
+ 		# fileRef is a reference to a PBXFileReference object
+ 		self.fileRef = fileRef
+ 
+-		# A map of key/value pairs for additionnal settings.
++		# A map of key/value pairs for additional settings.
+ 		self.settings = settings
+ 
+ 	def __hash__(self):
+@@ -435,8 +435,8 @@ class PBXProject(XCodeNode):
+ 	def create_target_dependency(self, target, name):
+ 		""" : param target : PXBNativeTarget """
+ 		proxy = PBXContainerItemProxy(self, target, name)
+-		dependecy = PBXTargetDependency(target, proxy)
+-		return dependecy
++		dependency = PBXTargetDependency(target, proxy)
++		return dependency
+ 
+ 	def write(self, file):
+ 
+diff --git a/third_party/waf/waflib/processor.py b/third_party/waf/waflib/processor.py
+index 2eecf3bd93f..eff2e69adfb 100755
+--- a/third_party/waf/waflib/processor.py
++++ b/third_party/waf/waflib/processor.py
+@@ -27,6 +27,10 @@ def run():
+ 	[cmd, kwargs, cargs] = cPickle.loads(base64.b64decode(txt))
+ 	cargs = cargs or {}
+ 
++	if not 'close_fds' in kwargs:
++		# workers have no fds
++		kwargs['close_fds'] = False
++
+ 	ret = 1
+ 	out, err, ex, trace = (None, None, None, None)
+ 	try:
+-- 
+2.23.0
+

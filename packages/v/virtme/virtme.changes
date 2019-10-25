@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct 17 02:06:33 UTC 2019 - Marcos de Souza <mpdesouza@suse.com>
+
+- Current Tumbleweed's busybox does not work with virtme. For now require
+  busybox-static since it works;
+  * 0001-mkinitramfs.py-Search-for-busybox-.-static-first.patch: Check for
+    busybox-static over dynamically linked busybox
+- Change the dependency to busybox-static instead of the dynamically linked on.
+
+-------------------------------------------------------------------
+Wed Oct 16 17:51:50 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias, conjecture and vision from descriptions.
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
 Tue Oct 15 15:53:23 UTC 2019 - Marcos de Souza <mpdesouza@suse.com>
 
 - Remove the python3- prefix from the final package

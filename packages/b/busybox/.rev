@@ -562,4 +562,12 @@
     <comment></comment>
     <requestid>732096</requestid>
   </revision>
+  <revision rev="53" vrev="5">
+    <srcmd5>4e7c0bac52f2e725d4b5c19a4e92434e</srcmd5>
+    <version>1.30.1</version>
+    <time>1572021729</time>
+    <user>dimstar_suse</user>
+    <comment>- Add man.conf to container variant (forwarded request 742256 from kukuk)</comment>
+    <requestid>742257</requestid>
+  </revision>
 </revisionlist>

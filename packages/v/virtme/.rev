@@ -7,4 +7,12 @@
     <comment>New package see https://lists.opensuse.org/opensuse-factory/2019-10/msg00087.html </comment>
     <requestid>738661</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f9f7b5a2862f0afb1c7665cbbbb9eec4</srcmd5>
+    <version>0.1.1</version>
+    <time>1572021774</time>
+    <user>dimstar_suse</user>
+    <comment>Add patch to check for busbox-static, instead of busybox.</comment>
+    <requestid>742761</requestid>
+  </revision>
 </revisionlist>

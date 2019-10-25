@@ -35,9 +35,9 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-Deep Difference of dictionaries, iterables, strings and other objects.
-Search for objects within other objects.
-Hash any object based on their content.
+A Python module to calculate Deep Difference of dictionaries,
+iterables, strings and other objects. It can search for objects
+within other objects, and hash any object based on their content.
 
 %prep
 %setup -q -n deepdiff-%{version}

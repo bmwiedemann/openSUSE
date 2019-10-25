@@ -47,6 +47,10 @@ Patch47:        cloud-init-trigger-udev.patch
 Patch50:        cloud-init-noresolv-merge-no-dns-data.diff
 # FIXME expected in 19.3
 Patch51:        cloud-init-after-wicked.patch
+# FIXME (lp#1849296)
+Patch52:        cloud-init-break-resolv-symlink.patch
+# FIXME (lp#1849378)
+Patch53:        cloud-init-renderer-detect.patch
 
 BuildRequires:  fdupes
 BuildRequires:  filesystem
@@ -192,6 +196,8 @@ Documentation and examples for cloud-init tools
 %patch47
 %patch50 -p1
 %patch51 -p1
+%patch52
+%patch53
 
 %build
 %if 0%{?suse_version} && 0%{?suse_version} <= 1315

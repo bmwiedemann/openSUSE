@@ -29,6 +29,8 @@ Source1:        https://www.libssh2.org/download/%{pkg_name}-%{version}.tar.gz.a
 Source2:        baselibs.conf
 Source3:        libssh2_org.keyring
 Patch0:         libssh2-ocloexec.patch
+# PATCH-FIX-UPSTREAM bsc#1154862 CVE-2019-17498
+Patch1:         libssh2_org-CVE-2019-17498.patch
 BuildRequires:  groff
 BuildRequires:  libtool
 BuildRequires:  man
@@ -69,6 +71,7 @@ SECSH-PUBLICKEY.
 %prep
 %setup -q -n %{pkg_name}-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 sed -i -e 's@AM_CONFIG_HEADER@AC_CONFIG_HEADERS@g' configure.ac

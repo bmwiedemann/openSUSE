@@ -98,4 +98,13 @@
     <comment></comment>
     <requestid>724744</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>389a107d2ed8a1b1ead7245af4d223c9</srcmd5>
+    <version>2019.10.0</version>
+    <time>1572021748</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2019.10.0
+Also see sr#741039 for missing runtime dependency.</comment>
+    <requestid>741078</requestid>
+  </revision>
 </revisionlist>

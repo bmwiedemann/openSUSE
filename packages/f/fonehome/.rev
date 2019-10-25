@@ -63,4 +63,14 @@ See also https://bugzilla.novell.com/show_bug.cgi?id=803028#c7</comment>
     <comment>- Convert fonehome client from SysV to systemd service (bsc#1116015)</comment>
     <requestid>649078</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0282d8a8dd10cc21b54e39b1f4a504a3</srcmd5>
+    <version>1.1.1</version>
+    <time>1572021793</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 1.1.1
+  + Filter zero bytes from /proc/X/cmdline to avoid bash warning
+  + Run %post commands with reduced privileges (bsc#1154200)</comment>
+    <requestid>742953</requestid>
+  </revision>
 </revisionlist>

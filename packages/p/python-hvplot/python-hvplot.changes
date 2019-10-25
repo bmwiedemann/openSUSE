@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Thu Oct 24 01:08:54 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.5.2
+  * Stop swallowing groupby widgets when passing widgets
+  * Exposing plot at top level
+  * Allow tiles to be objects as well as strings
+  * Coastline sets geo=True by default
+  * Fix multi z
+  * Don't count by if subplots
+  * Adding a max size for checking symmetry
+  * Reading over docs and adding widgets and timeseries sections
+  * Fixing up row/col to make behavior match groupby/by
+  * Allow more widget options
+  * Allow the source Dataset to flow through to Histogram elements
+  * Add indexes to table output by default
+  * Made hvplot API dynamic by accepting parameter/widget instances
+  * Entrypoints for pandas >=0.25
+  * Fix stats plots ordering
+  * Make glasbey_category10 the default categorical colormap
+  * Fixing proj_to_cartopy for pyproj <2.2 and adding test
+  * Determine whether data is divergent and use a RdBu colormap / center … 
+  * Fixed bug when providing empty edgelist
+  * Allow constructing geo-RGB
+  * Derived datetime for tabular data
+  * Fixing color order should match node order
+  * Adding the ability to get index on hover
+  * Fixing lim should be used as range when datashading
+  * Allow datashade/rasterize even when c is same as x or y
+  * If datashade=True then hover should be false by default
+  * If cmap is a dict, just pass it through
+  * Fix 'where' parameter in .hvplot().step()
+  * Alternative implementation to aspect handling
+  * Allow cmap to be list
+  * Adding derived datatime for xarray
+  * Using attrs to set default x and y for gridded outputs
+  * Fix label for xr.Dataset
+  * Use default opts if set, changing default numeric cmap
+  * Sort by date by default when using pandas objects
+  * Improved handling of datashader aggregator
+  * Add coastline/tiles options
+  * Label from attributes
+  * Only include numeric columns by default if available in data
+  * Handle heatmap rendering as array
+  * Add support for geo hexbin
+  * Consistently handle dim mappings
+  * Fixed handling of logz
+  * Trying to do more sensible defaults for 2D xarrays
+  * Allow list types for xlim,ylim tuples
+  * Expose responsive plot options
+  * Consistently warn if plot type does not support geo
+  * Plot vectorfield
+  * Add clabel
+  * Let holoviews set defaults for points
+  * Changed ioam pinning to pyviz
+  * Add errorbars
+  * Add min_count option for hexbin plots.
+  * Make xsampling/ysampling -> x_sampling/y_sampling
+  * If line or scatter, warn that it will not project
+
+-------------------------------------------------------------------
 Mon Jun  3 19:11:24 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Fix jupyter dependencies.

@@ -17,7 +17,7 @@
 
 
 Name:           arp-scan
-Version:        1.9.5
+Version:        1.9.6
 Release:        0
 Summary:        ARP scanning and fingerprinting tool
 # strlcpy.c and strlcat.c have ISC header and embeded {getopt,obstack}.{c,h} has LGPL-2.1
@@ -27,7 +27,7 @@ URL:            https://github.com/royhills/arp-scan
 Source:         https://github.com/royhills/arp-scan/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  libpcap-devel
+BuildRequires:  libpcap-devel >= 1.5.0
 BuildRequires:  perl-macros
 BuildRequires:  perl(LWP::Simple)
 Requires:       perl(LWP::Simple)
@@ -44,7 +44,7 @@ arp-scan is a command-line tool that uses the ARP protocol to discover and finge
 %build
 autoreconf -fiv
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %check
 make %{?_smp_mflags} check

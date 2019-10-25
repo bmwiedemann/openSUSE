@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 23 13:53:38 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Security fix: [bsc#1154862, CVE-2019-17498]
+  * The SSH_MSG_DISCONNECT:packet.c logic has an integer overflow in
+    a bounds check that might lead to disclose sensitive information
+    or cause a denial of service
+  * Add patch libssh2_org-CVE-2019-17498.patch
+
+-------------------------------------------------------------------
 Thu Jun 20 11:07:36 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Version update to 1.9.0:

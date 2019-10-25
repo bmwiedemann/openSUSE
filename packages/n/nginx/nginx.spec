@@ -70,7 +70,7 @@
 %define ngx_doc_dir    %{_datadir}/doc/packages/%{name}
 #
 Name:           nginx
-Version:        1.17.4
+Version:        1.17.5
 Release:        0
 %define ngx_fancyindex_version 0.4.2
 %define ngx_fancyindex_module_path ngx-fancyindex-%{ngx_fancyindex_version}
@@ -89,8 +89,8 @@ Release:        0
 Summary:        A HTTP server and IMAP/POP3 proxy server
 License:        BSD-2-Clause
 Group:          Productivity/Networking/Web/Proxy
-Url:            http://nginx.org/
-Source:         http://nginx.org/download/nginx-%{version}.tar.gz
+URL:            https://nginx.org
+Source0:        https://nginx.org/download/nginx-%{version}.tar.gz
 Source1:        nginx.init
 Source2:        nginx.logrotate
 Source3:        nginx.service

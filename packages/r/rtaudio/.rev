@@ -15,4 +15,20 @@
 </comment>
     <requestid>569249</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>91476148cedf23fad220ac88f50d05b8</srcmd5>
+    <version>5.1.0</version>
+    <time>1572021753</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.1.0:
+ * new C API wrapper
+ * new static functions to get API names
+ * many WASAPI updates (thanks to Marcus Tomlinson)
+ * miscellaneous build system updates
+ * bug fix for stream ticking in CoreAudio if using two devices for duplex
+ * ALSA stream handle bug fixes
+ * see git history for complete list of changes
+</comment>
+    <requestid>742737</requestid>
+  </revision>
 </revisionlist>

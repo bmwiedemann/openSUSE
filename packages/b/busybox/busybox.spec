@@ -28,6 +28,7 @@ Source1:        BusyBox.1
 Source2:        busybox.config
 Source3:        busybox-static.config
 Source4:        busybox-container.config
+Source5:        man.conf
 # other patches
 Patch:          busybox.install.patch
 Provides:       useradd_or_adduser_dep
@@ -99,9 +100,11 @@ install -m 0644 busybox.links %{buildroot}%{_datadir}/busybox
 install -m 0644 busybox-container.links %{buildroot}%{_datadir}/busybox
 install applets/install.sh %{buildroot}%{_bindir}/busybox.install
 install busybox-container.install %{buildroot}%{_bindir}/busybox-container.install
-install -m 0755 busybox %{buildroot}/%{_bindir}
-install -m 0755 busybox-static %{buildroot}/%{_bindir}
-install -m 0755 busybox-container %{buildroot}/%{_bindir}
+install -m 0755 busybox %{buildroot}%{_bindir}
+install -m 0755 busybox-static %{buildroot}%{_bindir}
+install -m 0755 busybox-container %{buildroot}%{_bindir}
+install -d %{buildroot}%{_sysconfdir}
+install -m 0644 %{SOURCE5} %{buildroot}%{_sysconfdir}/
 install -d %{buildroot}%{_mandir}/man1
 install -m 644 docs/BusyBox.1 %{buildroot}%{_mandir}/man1
 
@@ -120,6 +123,7 @@ install -m 644 docs/BusyBox.1 %{buildroot}%{_mandir}/man1
 
 %files container
 %license LICENSE
+%{_sysconfdir}/man.conf
 %{_bindir}/busybox-container
 %{_bindir}/busybox-container.install
 %{_datadir}/busybox/busybox-container.links

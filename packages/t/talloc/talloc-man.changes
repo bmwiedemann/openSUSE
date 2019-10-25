@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 21 14:36:01 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add two patches making build compatible with Python 3.8.0:
+  - waf_upgrade.patch
+  - waf_use_native_waf_timer.patch
+
+-------------------------------------------------------------------
 Thu Oct 03 21:50:38 UTC 2019 - James McDonough <jmcdonough@suse.com>
 
 - Update to version 2.2.0

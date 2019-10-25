@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 25 14:38:52 UTC 2019 -  <archie.cobbs@gmail.com>
+
+- Upgrade to version 1.1.1
+  + Filter zero bytes from /proc/X/cmdline to avoid bash warning
+  + Run %post commands with reduced privileges (bsc#1154200)
+
+-------------------------------------------------------------------
 Wed Nov 14 18:32:59 UTC 2018 - archie.cobbs@gmail.com
 
 - Convert fonehome client from SysV to systemd service (bsc#1116015)

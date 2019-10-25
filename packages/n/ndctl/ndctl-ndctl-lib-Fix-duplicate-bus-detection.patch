@@ -1,10 +1,10 @@
-From patchwork Wed Aug  7 17:51:39 2019
-X-Patchwork-Submitter: Dan Williams <dan.j.williams@intel.com>
-X-Patchwork-Id: 11082723
-Subject: [ndctl PATCH] ndctl/lib: Fix duplicate bus detection
+From d961a474be65c8195bb069c470b01f951bd2eb90 Mon Sep 17 00:00:00 2001
 From: Dan Williams <dan.j.williams@intel.com>
-Date: Wed, 07 Aug 2019 10:51:39 -0700
-Message-ID: <156520029994.1268132.13388510714364773911.stgit@dwillia2-desk3.amr.corp.intel.com>
+Date: Wed, 7 Aug 2019 10:51:39 -0700
+Subject: [PATCH] ndctl/lib: Fix duplicate bus detection
+
+Patch-mainline: expected v67
+Git-commit: d961a474be65c8195bb069c470b01f951bd2eb90
 
 After an ndctl_invalidate() event the next add_bus() invocation attempts
 to rescan for new bus objects and drop duplicate instances that match
@@ -17,8 +17,9 @@ name'. Use the bus device-name to disambiguate buses with the same
 Reported-by: Aneesh Kumar K.V <aneesh.kumar@linux.ibm.com>
 Tested-by: Aneesh Kumar K.V <aneesh.kumar@linux.ibm.com>
 Signed-off-by: Dan Williams <dan.j.williams@intel.com>
+Signed-off-by: Vishal Verma <vishal.l.verma@intel.com>
 ---
- ndctl/lib/libndctl.c |    4 +++-
+ ndctl/lib/libndctl.c | 4 +++-
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/ndctl/lib/libndctl.c b/ndctl/lib/libndctl.c
@@ -36,3 +37,6 @@ index 4d9cc7e29c6b..6596f94edef8 100644
  			free_bus(bus, NULL);
  			free(path);
  			return bus_dup;
+-- 
+2.23.0
+

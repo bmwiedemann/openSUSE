@@ -1,0 +1,31 @@
+From f2b13f805a203b7aaa5e4ba09cceb06396903e6c Mon Sep 17 00:00:00 2001
+From: Marcos Paulo de Souza <mpdesouza@suse.com>
+Date: Wed, 16 Oct 2019 23:01:56 -0300
+Subject: [PATCH] mkinitramfs.py: Search for busybox{.,-}static first
+
+In currentl Tumbleweed, using busybox dynamic linked does not work. For
+now let's check if we have busybox static first.
+
+Fix: #51
+
+Signed-off-by: Marcos Paulo de Souza <mpdesouza@suse.com>
+---
+ virtme/mkinitramfs.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/virtme/mkinitramfs.py b/virtme/mkinitramfs.py
+index 8fb2f0e..193f510 100644
+--- a/virtme/mkinitramfs.py
++++ b/virtme/mkinitramfs.py
+@@ -169,7 +169,7 @@ def mkinitramfs(out, config) -> None:
+ def find_busybox(root, is_native) -> Optional[str]:
+     for p in itertools.product(['usr/local', 'usr', ''],
+                                ['bin', 'sbin'],
+-                               ['', '-static', '.static']):
++                               ['-static', '.static', '']):
+         path = os.path.join(root, p[0], p[1], 'busybox' + p[2])
+         if os.path.isfile(path):
+             return path
+-- 
+2.23.0
+

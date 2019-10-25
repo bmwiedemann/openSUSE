@@ -49,4 +49,16 @@
 - Drop no longer needed arp-scan-avoid-crash.patch</comment>
     <requestid>681692</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bcd1ce88b30d54b1c7bcadb75f59ac3a</srcmd5>
+    <version>1.9.6</version>
+    <time>1572021781</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9.6 (boo#1154552):
+  * Use libpcap function pcap_set_immediate_mode() instead of ioctl
+    calls to ensure packets are delivered immediately. This means
+    that arp-scan now requires libpcap 1.5.0 or later and will
+    not work with earlier libpcap versions</comment>
+    <requestid>742832</requestid>
+  </revision>
 </revisionlist>

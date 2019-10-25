@@ -1,7 +1,7 @@
 #
 # spec file for package rtaudio
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define sover 6
 Name:           rtaudio
-Version:        5.0.0
+Version:        5.1.0
 Release:        0
 Summary:        Real-time Audio I/O Library
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            http://www.music.mcgill.ca/~gary/rtaudio/
-Source0:        http://www.music.mcgill.ca/~gary/rtaudio/release/rtaudio-5.0.0.tar.gz
+Source0:        http://www.music.mcgill.ca/~gary/rtaudio/release/rtaudio-%{version}.tar.gz
 BuildRequires:  alsa-lib-devel
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -66,7 +66,7 @@ rm -r include/ tests/Windows
 # remove all hidden files
 find . -name ".*" -delete
 # extract livense from readme
-sed -n '/license/,$p' readme > COPYING
+sed -n '/license/,$p' README.md > COPYING
 
 %build
 %configure --with-jack --with-alsa --with-pulse --disable-static --disable-silent-rules
@@ -80,7 +80,7 @@ rm %{buildroot}%{_libdir}/lib%{name}.la
 %postun -n librtaudio%{sover} -p /sbin/ldconfig
 
 %files -n librtaudio%{sover}
-%doc readme doc/release.txt
+%doc README.md doc/release.txt
 %{_libdir}/lib%{name}.so.*
 %license COPYING
 

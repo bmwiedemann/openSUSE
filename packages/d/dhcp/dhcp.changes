@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Oct 15 15:18:59 UTC 2019 - Reinhard Max <max@suse.com>
+
+- bsc#1134078, CVE-2019-6470, dhcp-CVE-2019-6470.patch:
+  DHCPv6 server crashes regularly.
+- Add compile option --enable-secs-byteorder to avoid duplicate
+  lease warnings [bsc#1089524].
+
+-------------------------------------------------------------------
+Wed Oct  2 16:50:48 CEST 2019 - kukuk@suse.de
+
+- Make systemd a weak dependency as we don't want that in a container
+
+-------------------------------------------------------------------
+Wed Aug 28 12:38:32 UTC 2019 - Reinhard Max <max@suse.com>
+
+- bsc#1136572: Use IPv6 when called as dhclient6, dhcpd6, and
+  dhcrelay6 (0021-dhcp-ip-family-symlinks.patch).
+
+-------------------------------------------------------------------
 Thu Aug  8 12:19:53 UTC 2019 - Dirk Mueller <dmueller@suse.com>
 
 - dhclient-script: replace host(1) with getent, which is more

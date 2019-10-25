@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 22 19:57:22 UTC 2019 - Robert Schweikert <rjschwei@suse.com>
+
+- Add cloud-init-renderer-detect.patch (bsc#1154092, boo#1142988)
+  + Short curcuit the conditional for identifying the sysconfig renderer.
+    If we find ifup/ifdown accept the renderer as available.
+
+-------------------------------------------------------------------
+Tue Oct 22 12:13:59 UTC 2019 - Robert Schweikert <rjschwei@suse.com>
+
+- Add cloud-init-break-resolv-symlink.patch (bsc#1151488)
+  + If /etc/resolv.conf is a symlink break it. This will avoid netconfig
+    from clobbering the changes cloud-init applied.
+
+-------------------------------------------------------------------
 Thu Sep 26 12:15:50 UTC 2019 - Robert Schweikert <rjschwei@suse.com>
 
 - Update to cloud-init 19.2 (bsc#1099358)

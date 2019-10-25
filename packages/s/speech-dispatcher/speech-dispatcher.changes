@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Oct 22 14:42:09 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Drop -ibmtts package for now. It requires a third-party library
+  which we do not package. 
+
+-------------------------------------------------------------------
+Wed Oct  9 18:38:43 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Drop intltool from BuildRequires. Require gettext. 
+- Exclude ibmtts.conf from the main package.
+
+-------------------------------------------------------------------
+Tue Oct  8 23:31:00 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.9.1: 
+  * Add module for the non-free IBM TTS (voxin) speech synthesis.
+  * Extend licence to later versions of GPL and LGPL.
+  * Update mailing list address to savannah.
+  * Make generic modules fallback to existing voices.
+- Create separate package for ibmtts module: most users won't use
+  this.
+
+-------------------------------------------------------------------
 Wed Jun 12 14:51:02 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to

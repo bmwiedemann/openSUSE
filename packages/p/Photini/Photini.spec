@@ -17,7 +17,7 @@
 
 
 Name:           Photini
-Version:        2019.8.0
+Version:        2019.10.0
 Release:        0
 Summary:        Digital photograph metadata (EXIF, IPTC, XMP) editing application
 License:        GPL-3.0-or-later
@@ -31,11 +31,16 @@ BuildRequires:  python3-appdirs >= 1.3
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-six >= 1.5
+Requires:       ffmpeg
 Requires:       libgexiv2-2 >= 0.5
 Requires:       python3-appdirs >= 1.3
+Requires:       python3-flickrapi
 Requires:       python3-gobject
+Requires:       python3-gpxpy
+Requires:       python3-keyring
 Requires:       python3-qt5
 Requires:       python3-requests >= 2.4.0
+Requires:       python3-requests-oauthlib
 Requires:       python3-sip
 Requires:       python3-six >= 1.5
 Requires:       typelib(GExiv2)

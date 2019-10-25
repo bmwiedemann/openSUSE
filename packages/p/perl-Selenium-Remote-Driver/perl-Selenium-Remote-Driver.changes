@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 22 17:09:26 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.35
+   see /usr/share/doc/packages/perl-Selenium-Remote-Driver/Changes
+
+  1.35  10-21-2019 TEODESIAN
+          [BUG FIXES]
+          - Fix race condition and inability to find a port in certain circumstances when using direct driver modules.
+
+-------------------------------------------------------------------
 Mon Sep 16 12:34:43 UTC 2019 - Tina Mueller <tina.mueller@suse.com>
 
 - Remove post_install (not needed anymore)

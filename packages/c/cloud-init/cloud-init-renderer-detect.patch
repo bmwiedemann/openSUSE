@@ -1,0 +1,20 @@
+--- cloudinit/net/sysconfig.py.orig
++++ cloudinit/net/sysconfig.py
+@@ -748,7 +748,7 @@ class Renderer(renderer.Renderer):
+ def available(target=None):
+     sysconfig = available_sysconfig(target=target)
+     nm = available_nm(target=target)
+-    return (util.get_linux_distro()[0] in KNOWN_DISTROS
++    return (util.system_info()['variant'] in KNOWN_DISTROS
+             and any([nm, sysconfig]))
+ 
+ 
+@@ -758,6 +758,8 @@ def available_sysconfig(target=None):
+     for p in expected:
+         if not util.which(p, search=search, target=target):
+             return False
++    else:
++        return True
+ 
+     expected_paths = ['etc/sysconfig/network/scripts/functions.netconfig']
+     for p in expected_paths:

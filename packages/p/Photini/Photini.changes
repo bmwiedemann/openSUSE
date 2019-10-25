@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 15 11:35:20 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2019.10.0
+  * GPS coords address lookup is now on a separate tab.
+  * Map tabs now display altitude as well as latitude &
+    longitude.
+  * File count shows progress during import.
+  * Added 'move files' option to importer.
+  * Added Czech and Catalan localisations.
+  * Better handling of some non-standard metadata values.
+  * Use FFmpeg instead of Exiv2 to read video file metadata.
+
+-------------------------------------------------------------------
 Tue Aug 20 09:36:55 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2019.8.0

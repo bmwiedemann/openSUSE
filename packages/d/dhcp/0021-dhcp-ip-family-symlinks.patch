@@ -1,0 +1,60 @@
+--- client/dhclient.c.orig
++++ client/dhclient.c
+@@ -252,6 +252,17 @@ main(int argc, char **argv) {
+ 	progname = argv[0];
+ #endif
+ 
++#ifdef DHCPv6
++	/* Support being called using `dhclient4` or `dhclient6` symlinks */
++	if (argv[0][strlen(argv[0]) - 1] == '4') {
++		local_family_set = 1;
++		local_family = AF_INET;
++	} else if (argv[0][strlen(argv[0]) - 1] == '6') {
++		local_family_set = 1;
++		local_family = AF_INET6;
++	}
++#endif /* DHCPv6 */
++
+ 	/* Initialize client globals. */
+ 	memset(&default_duid, 0, sizeof(default_duid));
+ 
+--- relay/dhcrelay.c.orig
++++ relay/dhcrelay.c
+@@ -237,6 +237,17 @@ main(int argc, char **argv) {
+ 	progname = argv[0];
+ #endif
+ 
++#ifdef DHCPv6
++	/* Support being called using `dhcrelay4` or `dhcrelay6` symlinks */
++	if (argv[0][strlen(argv[0]) - 1] == '4') {
++		local_family_set = 1;
++		local_family = AF_INET;
++	} else if (argv[0][strlen(argv[0]) - 1] == '6') {
++		local_family_set = 1;
++		local_family = AF_INET6;
++	}
++#endif /* DHCPv6 */
++
+ 	/* Make sure that file descriptors 0(stdin), 1,(stdout), and
+ 	   2(stderr) are open. To do this, we assume that when we
+ 	   open a file the lowest available file descriptor is used. */
+--- server/dhcpd.c.orig
++++ server/dhcpd.c
+@@ -260,6 +260,17 @@ main(int argc, char **argv) {
+ 	progname = argv[0];
+ #endif
+ 
++#ifdef DHCPv6
++	/* Support being called using `dhcpd4` or `dhcpd6` symlinks */
++	if (argv[0][strlen(argv[0]) - 1] == '4') {
++		local_family_set = 1;
++		local_family = AF_INET;
++	} else if (argv[0][strlen(argv[0]) - 1] == '6') {
++		local_family_set = 1;
++		local_family = AF_INET6;
++	}
++#endif /* DHCPv6 */
++
+         /* Make sure that file descriptors 0 (stdin), 1, (stdout), and
+            2 (stderr) are open. To do this, we assume that when we
+            open a file the lowest available file descriptor is used. */

@@ -25,7 +25,7 @@
 %define min_ndctl_ver 60.1
 
 Name:           pmdk
-Version:        1.6
+Version:        1.7
 Release:        0
 Summary:        Persistent Memory Development Kit
 License:        BSD-3-Clause
@@ -70,6 +70,7 @@ Summary:        Utilities for Persistent Memory
 Group:          System/Base
 Obsoletes:      nvml-tools < %version-%release
 Provides:       nvml-tools = %version-%release
+Requires:       bash-completion
 
 %description tools
 The Persistent Memory Development Kit (PMDK) is a collection of
@@ -314,6 +315,11 @@ make install DESTDIR="$b" LIB_AR= \
 	docdir="%_docdir"
 mkdir -p "$b/%_datadir/pmdk"
 cp utils/pmdk.magic "$b/%_datadir/pmdk/"
+
+#Fix installation dir for bash completion
+mkdir -p %buildroot%{_datadir}/bash-completion/completions
+mv %buildroot%_sysconfdir/bash_completion.d/* %buildroot%{_datadir}/bash-completion/completions
+
 %fdupes %buildroot/%_prefix
 
 %check
@@ -344,7 +350,7 @@ cp src/test/testconfig.sh.example src/test/testconfig.sh
 
 %files tools
 %defattr(-,root,root)
-%config %_sysconfdir/bash_completion.d/*
+%{_datadir}/bash-completion/completions/*
 %_bindir/daxio
 %_bindir/pmempool
 %_bindir/pmreorder

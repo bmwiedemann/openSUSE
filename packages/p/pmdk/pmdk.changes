@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct 11 14:19:47 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to PMDK 1.7 (jsc#SLE-9886)
+  - Introduces new APIs in libpmemobj for managing space used by transactions.
+    (see pmemobj_tx_log_append_buffer man page for details)
+  - Introduces new APIs in librpmem, splitting rpmem_persist into rpmem_flush
+    and rpmem_drain, allowing applications to use the flush + drain model
+    already known from libpmem. (libpmemobj does not use this feature yet)
+  - Optimizes large libpmemobj transactions by significantly reducing
+    the amount of memory modified at the commit phase.
+  - Optimizes tracking of libpmemobj reservations.
+  - Adds new flags for libpmemobj's pmemobj_tx_xadd_range[_direct] API:
+    POBJ_XADD_NO_SNAPSHOT and POBJ_XADD_ASSUME_INITIALIZED, allowing
+    applications to optimize how memory is tracked by the library.
+- To support some of the above changes the libpmemobj on-media layout had
+  to be changed, which means that old pools have to be converted using
+  pmdk-convert >= 1.7.
+
+-------------------------------------------------------------------
 Wed May 15 05:59:44 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Disable Werror to deal with a new GCC 9 warning.

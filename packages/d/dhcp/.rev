@@ -1028,4 +1028,12 @@ a dhcpv6 server assert crash (bnc#767661), and other bugs
     <comment></comment>
     <requestid>726481</requestid>
   </revision>
+  <revision rev="115" vrev="12">
+    <srcmd5>c1013ae91d72c543e012a9ee61d60768</srcmd5>
+    <version>4.3.5</version>
+    <time>1572021607</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>741877</requestid>
+  </revision>
 </revisionlist>

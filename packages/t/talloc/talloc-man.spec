@@ -44,6 +44,9 @@ Source:         https://download.samba.org/pub/talloc/talloc-%{version}.tar.gz
 Source1:        https://download.samba.org/pub/talloc/talloc-%{version}.tar.asc
 Source4:        baselibs.conf
 Patch0:         talloc-python3.5-fix-soabi_name.patch
+# Originally from https://git.samba.org/samba.git/?p=samba.git;a=patch;h=aabdcc91513e242c4f191e1bbbb70c890416d213
+Patch1:         waf_upgrade.patch
+Patch2:         waf_use_native_waf_timer.patch
 Source50:       talloc.keyring
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -111,7 +114,7 @@ Libraries and Header Files to Develop Programs with python3-talloc Support
 
 %prep
 %setup -n talloc-%{version} -q
-%patch0 -p1
+%autopatch -p1
 sed -i 's;../../buildtools/bin/waf;./buildtools/bin/waf;g' Makefile
 
 %build

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun  9 19:28:17 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 5.1.0:
+ * new C API wrapper
+ * new static functions to get API names
+ * many WASAPI updates (thanks to Marcus Tomlinson)
+ * miscellaneous build system updates
+ * bug fix for stream ticking in CoreAudio if using two devices for duplex
+ * ALSA stream handle bug fixes
+ * see git history for complete list of changes
+
+-------------------------------------------------------------------
 Mon Jan 22 12:17:07 UTC 2018 - jengelh@inai.de
 
 - Trim SRPM and devel descriptions. Put in accurate summaries.
