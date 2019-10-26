@@ -5475,7 +5475,6 @@ unsorted:
   - iprange 
   - iproute2-bash-completion 
   - iproxy 
-  - ipsec-tools 
   - ipset-devel 
   - iptables-backend-nft 
   - ipv6gen 
@@ -14316,8 +14315,6 @@ unsorted:
   - ocaml-source 
   - ocaml-stdlib-shims 
   - ocaml-stdlib-shims-devel 
-  - ocaml-type-conv 
-  - ocaml-type-conv-devel 
   - ocaml-uutf 
   - ocaml-uutf-devel 
   - ocaml-x11 
@@ -15254,8 +15251,6 @@ unsorted:
   - pdf2djvu-lang 
   - pdf2svg 
   - pdfgrep 
-  - pdfmod 
-  - pdfmod-lang 
   - pdns 
   - pdns-backend-geoip 
   - pdns-backend-godbc 
@@ -17395,7 +17390,6 @@ unsorted:
   - python2-URLObject 
   - python2-UkPostcodeParser 
   - python2-Unidecode 
-  - python2-VyattaConfParser 
   - python2-WSGIProxy2 
   - python2-WSME 
   - python2-WTForms 
@@ -18525,6 +18519,8 @@ unsorted:
   - python2-ntlm-auth 
   - python2-ntplib 
   - python2-num2words 
+  - python2-numba 
+  - python2-numba-devel 
   - python2-numericalunits 
   - python2-numexpr 
   - python2-numpy-devel 
@@ -19388,7 +19384,6 @@ unsorted:
   - python2-vine 
   - python2-virt-bootstrap: [x86_64] 
   - python2-virtkey 
-  - python2-virtualbmc 
   - python2-virtualenv 
   - python2-virtualenv-clone 
   - python2-virtualenvwrapper 
@@ -21906,7 +21901,6 @@ unsorted:
   - python3-vim-vint 
   - python3-vine 
   - python3-virtkey 
-  - python3-virtualbmc 
   - python3-virtualbox 
   - python3-virtualenv 
   - python3-virtualenv-clone 
