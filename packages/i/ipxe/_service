@@ -1,7 +1,7 @@
 <services>
   <service mode="disabled" name="tar_scm">
     <param name="scm">git</param>
-    <param name="url">git://git.ipxe.org/ipxe.git</param>
+    <param name="url">https://git.ipxe.org/ipxe.git</param>
     <param name="exclude">.git</param>
     <param name="versionformat">1.0.0+git%cd.%h</param>
     <param name="filename">ipxe</param>

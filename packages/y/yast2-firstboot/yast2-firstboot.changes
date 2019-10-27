@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 11 12:08:36 CEST 2019 - schubi@suse.de
+
+- Adapted to refactored Keyboard module (part of bsc#1142957).
+- 4.2.4
+
+-------------------------------------------------------------------
 Tue Oct  1 09:33:02 UTC 2019 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Removed call to the already dropped DNS.write_hostname= method

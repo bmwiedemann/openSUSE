@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 25 19:11:23 UTC 2019 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to v4.5.0 (2019-10-25)
+  + Use registerutils functions to check registration.
+
+-------------------------------------------------------------------
 Mon Oct 14 20:30:52 UTC 2019 - Sean Marlow <sean.marlow@suse.com>
 
 - Update to v4.4.0 (2019-10-14)

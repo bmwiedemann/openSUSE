@@ -1056,4 +1056,12 @@
     <comment>5.17.0</comment>
     <requestid>737631</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>53d323aa74dbe760baf59110f898a49c</srcmd5>
+    <version>5.17.1</version>
+    <time>1572179932</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.17.1</comment>
+    <requestid>742068</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct 26 05:39:14 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.5.1
+  * SSE2 optimizations for CDEF, wiener and warp_affine
+  * NEON optimizations for SGR on ARM32
+  * Fix mismatch issue in x86 asm in inverse identity transforms
+  * Fix build issue in ARM64 assembly if debug info was enabled
+  * Add a workaround for Xcode 11 -fstack-check bug
+
+- Dropped arm64_ipred_symbols_aligned.patch (merged upstream)
+
+-------------------------------------------------------------------
 Fri Oct 11 09:43:36 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.5.0

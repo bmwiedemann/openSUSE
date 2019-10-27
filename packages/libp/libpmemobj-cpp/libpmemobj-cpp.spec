@@ -21,7 +21,7 @@ Name:           libpmemobj-cpp
 Summary:        C++ bindings for libpmemobj
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Version:        1.6
+Version:        1.8
 Release:        0
 URL:            http://pmem.io/pmdk/
 Source:         https://github.com/pmem/libpmemobj-cpp/archive/%{version}.tar.gz
@@ -29,7 +29,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libpmemobj) >= 1.4
+BuildRequires:  pkgconfig(libpmemobj) >= 1.7
 ExclusiveArch:  x86_64
 
 %description
@@ -77,6 +77,7 @@ make %{?_smp_mflags}
 %doc ChangeLog
 %_includedir/libpmemobj++/
 %_libdir/libpmemobj++/
+%{_libdir}/pkgconfig/*.pc
 
 %files devel-doc
 %_docdir/%name/

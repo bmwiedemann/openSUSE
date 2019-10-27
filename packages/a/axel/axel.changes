@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Oct 24 20:16:14 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.17.6:
+ - Fixed handling of non-recoverable HTTP errors
+ - Cleanup of connection setup code
+ - Fixed manpage reproducibility issue
+ - Use tracker instead of PTS from Debian
+- update to version 2.17.5:
+ - Fixed progress indicator misalignment
+ - Cleaned up the wget-like progress output code
+ - Improved progress output flushing
+- update to version 2.17.4:
+ - Fixed build with bionic libc (Android)
+ - TCP Fast Open support on Linux
+ - TCP code cleanup
+ - Removed dependency on libm
+ - Data types and format strings cleanup
+ - String handling cleanup
+ - Format string checking GCC attributes added
+ - Buildsystem fixes and improvements
+ - Updates to the documentation
+ - Updated all translations
+ - Fixed Footnotes in documentation
+ - Fixed a typo in README.md
+
+-------------------------------------------------------------------
 Sun Jun  9 19:21:11 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 2.17.3:

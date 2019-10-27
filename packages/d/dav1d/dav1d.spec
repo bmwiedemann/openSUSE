@@ -18,7 +18,7 @@
 
 %define sover   3
 Name:           dav1d
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 Summary:        An AV1 decoder
 License:        BSD-2-Clause
@@ -26,8 +26,6 @@ Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            https://code.videolan.org/videolan/dav1d
 Source0:        https://code.videolan.org/videolan/dav1d/-/archive/%{version}/dav1d-%{version}.tar.gz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM arm64_ipred_symbols_aligned.patch
-Patch0:         arm64_ipred_symbols_aligned.patch
 BuildRequires:  meson >= 0.47.0
 BuildRequires:  nasm
 BuildRequires:  pkgconfig

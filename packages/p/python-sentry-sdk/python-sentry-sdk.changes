@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 25 14:53:43 UTC 2019 - Jimmy Berry <jberry@suse.com>
+
+- Update to 0.13.1
+  - Add new global functions for setting scope/context data.
+  - Fix a bug that would make Django 1.11+ apps crash when using
+    function-based middleware.
+
+-------------------------------------------------------------------
 Thu Oct 17 21:13:24 UTC 2019 - Jimmy Berry <jberry@suse.com>
 
 - Update to 0.13.0

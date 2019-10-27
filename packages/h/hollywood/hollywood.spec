@@ -19,14 +19,13 @@
 #
 
 Name:           hollywood
-Version:        1.15
+Version:        1.18
 Release:        0
 Summary:        Program to fill the console with Hollywood melodrama technobabble
 License:        Apache-2.0 AND CC0-1.0
 Group:          Amusements/Toys/Other
 Url:            https://launchpad.net/hollywood
-Source:         https://launchpad.net/hollywood/trunk/1.15/+download/hollywood_%{version}.orig.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         tmux-version-comp.patch
+Source:         https://launchpad.net/hollywood/trunk/%{version}/+download/hollywood_%{version}.orig.tar.gz#/%{name}-%{version}.tar.gz
 Recommends:     byobu
 Recommends:     apg
 Recommends:     bmon
@@ -86,7 +85,6 @@ and statistics, like any good computer screen on Wall Street.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 

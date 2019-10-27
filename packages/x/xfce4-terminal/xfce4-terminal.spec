@@ -33,6 +33,7 @@ BuildRequires:  utempter-devel
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.8
+BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libxfce4ui-2)
 BuildRequires:  pkgconfig(libxfconf-0)
 BuildRequires:  pkgconfig(vte-2.91)
@@ -56,10 +57,10 @@ helps to save space on the desktop.
 NOCONFIGURE=1 ./autogen.sh
 %configure \
     --enable-maintainer-mode \
-	--with-utempter
+    --with-utempter
 %else
 %configure \
-	--with-utempter
+    --with-utempter
 %endif
 %make_build
 

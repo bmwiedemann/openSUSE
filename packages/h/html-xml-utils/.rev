@@ -31,4 +31,28 @@
     <comment></comment>
     <requestid>622856</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d90ef71af31adaf38e541e2a7e16c266</srcmd5>
+    <version>7.8</version>
+    <time>1572180111</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 7.8:
+ * textwrap.c, langinfo.c, hxnormalize.c: Added knowledge about
+   languages that do not use spaces between words. In such languages,
+   a newline should not be converted to a space in outc() in
+   textwrap.c, but only to a break opportunity.
+ * hxtoc.c: The element to group headings in HTML5 is called
+   HGROUP, not HEADER. The heading of a section (SECTION, ARTICLE,
+   etc.) need not be the first element, there may be non-header
+   elements before it.
+ * hxwls.c: Print &quot;longdesc&quot;, &quot;classid&quot; or &quot;codebase&quot; in the second
+   column for the corresponding attribute. Also recognize srcset
+   (somewhat).
+ * hxnormalize.c: Added option -X to indicate the input is XML
+   instead of HTML. Handle conversion of CDATA elements to XML by
+   escaping &lt; and &amp; instead of adding &lt;![CDATA[. Added corresponding
+   test normalize13.sh.
+</comment>
+    <requestid>743106</requestid>
+  </revision>
 </revisionlist>

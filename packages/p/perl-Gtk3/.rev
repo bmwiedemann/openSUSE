@@ -7,4 +7,12 @@
     <comment>Resubmission perl-Cairo-GObject dependency pushed on SR 719898</comment>
     <requestid>719899</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3bf542812b9b08a1c281a48b9e136b5f</srcmd5>
+    <version>0.036</version>
+    <time>1572180082</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>743017</requestid>
+  </revision>
 </revisionlist>

@@ -17,14 +17,15 @@
 
 
 Name:           perl-Gtk3
-Version:        0.035
+Version:        0.036
 Release:        0
 %define cpan_name Gtk3
 Summary:        Perl interface to the 3.x series of the gtk+ toolkit
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Gtk3/
+Url:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/X/XA/XAOC/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
@@ -32,11 +33,16 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(Cairo::GObject) >= 1.000
 BuildRequires:  perl(Glib::Object::Introspection) >= 0.043
 BuildRequires:  perl(Test::Simple) >= 0.96
-BuildRequires:  typelib(Gtk) = 3.0
 Requires:       perl(Cairo::GObject) >= 1.000
 Requires:       perl(Glib::Object::Introspection) >= 0.043
 Requires:       perl(Test::Simple) >= 0.96
 %{perl_requires}
+# MANUAL BEGIN
+BuildRequires:  typelib(Gtk) = 3.0
+%if 0%{?suse_version} >= 01550
+BuildRequires:  typelib(GdkPixdata) = 2.0
+%endif
+# MANUAL END
 
 %description
 The 'Gtk3' module allows a Perl developer to use the gtk+ graphical user
@@ -57,8 +63,11 @@ organized in accordance with these principles.
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
+
+%check
+make test
 
 %install
 %perl_make_install

@@ -66,4 +66,12 @@ mpv which can be used to control the media player using dbus</comment>
     <comment></comment>
     <requestid>710001</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8998e529bec914d342eaeeaac5fc737a</srcmd5>
+    <version>0.0+git20191025.2b12542</version>
+    <time>1572180068</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>742984</requestid>
+  </revision>
 </revisionlist>

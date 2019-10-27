@@ -17,7 +17,7 @@
 
 
 Name:           ddgr
-Version:        1.6
+Version:        1.7
 Release:        0
 Summary:        DuckDuckGo from the terminal
 License:        GPL-3.0-only

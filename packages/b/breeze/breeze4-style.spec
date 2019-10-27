@@ -17,15 +17,15 @@
 
 
 Name:           breeze4-style
-Version:        5.17.0
+Version:        5.17.1
 Release:        0
 Summary:        Plasma Desktop artwork, styles and assets
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         breeze-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/breeze-%{version}.tar.xz
 %if %{with lang}
-Source1:        breeze-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/breeze-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE add-support-for-Q3ListView-to-the-KDE4-style.patch boo#973728 wbauer@tmo.at -- fixes collapse/expand icon in Q3ListView that still may be used by some KDE4 applications (knode e.g.)

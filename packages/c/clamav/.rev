@@ -1002,4 +1002,15 @@
     <comment></comment>
     <requestid>729457</requestid>
   </revision>
+  <revision rev="100" vrev="2">
+    <srcmd5>8139992acfcb5865402703a2b08eba98</srcmd5>
+    <version>0.101.4</version>
+    <time>1572180055</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1151839: Increase the startup timeout of clamd to 5 minutes
+  to cater for the grown virus database as a workaround until
+  clamd has learned to talk to systemd to extend the timeout as
+  long as needed.</comment>
+    <requestid>742982</requestid>
+  </revision>
 </revisionlist>

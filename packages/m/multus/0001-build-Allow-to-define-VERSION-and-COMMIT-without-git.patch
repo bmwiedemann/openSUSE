@@ -1,0 +1,54 @@
+From d2a7fc037cff470deac7e5622a77d0526a8dec5c Mon Sep 17 00:00:00 2001
+From: Michal Rostecki <mrostecki@opensuse.org>
+Date: Fri, 25 Oct 2019 09:43:31 +0200
+Subject: [PATCH] build: Allow to define VERSION and COMMIT without git
+
+Previously the build script required git to be used and installed which
+did not allow to build Multus from a tarball which doesn't contain .git
+directory. That made packaging of Multus hard.
+
+Example usage after the change if you do not want to use git:
+
+```
+$ VERSION=v3.3 COMMIT=ba33df ./build
+```
+
+Signed-off-by: Michal Rostecki <mrostecki@opensuse.org>
+---
+ build | 18 ++++++++++--------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
+
+diff --git a/build b/build
+index 7c6a1bca..16d3c8c8 100755
+--- a/build
++++ b/build
+@@ -9,16 +9,18 @@ fi
+ 
+ # Add version/commit/date into binary
+ # In case of TravisCI, need to check error code of 'git describe'.
+-set +e
+-git describe --tags --abbrev=0 > /dev/null 2>&1
+-if [ "$?" != "0" ]; then
+-	VERSION="master"
+-else
+-	VERSION=$(git describe --tags --abbrev=0)
++if [ -z "$VERSION" ]; then
++	set +e
++	git describe --tags --abbrev=0 > /dev/null 2>&1
++	if [ "$?" != "0" ]; then
++		VERSION="master"
++	else
++		VERSION=$(git describe --tags --abbrev=0)
++	fi
++	set -e
+ fi
+-set -e
+ DATE=$(date --iso-8601=seconds)
+-COMMIT=$(git rev-parse --verify HEAD)
++COMMIT=${COMMIT:-$(git rev-parse --verify HEAD)}
+ LDFLAGS="-X main.version=${VERSION:-master} -X main.commit=${COMMIT} -X main.date=${DATE}"
+ export CGO_ENABLED=0
+ 
+-- 
+2.16.4
+

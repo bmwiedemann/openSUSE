@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 22 16:44:44 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.1.php
+- Changes since 5.17.0:
+  * Fix non-atomic output init (kde#412684)
+  * [aurorae] Fix visibility of Context Help button (kde#413145)
+  * [effects/startupfeedback] Scale application icon size with cursor size
+  * glx: Don't use sRGB configs on llvmpipe with depth 16
+  * [aurorae] Fix crash on KCM teardown with Qt5.14
+  * [tabbox] Correctly set global short on kwin tabbox (kde#407000)
+
+-------------------------------------------------------------------
 Thu Oct 10 14:25:46 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.0

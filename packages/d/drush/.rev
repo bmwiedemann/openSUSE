@@ -108,4 +108,12 @@ See http://drush.ws, the homepage for the drush project.</comment>
     <comment></comment>
     <requestid>714515</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>cc5585b4307fb9a4ccf80eb9ad153379</srcmd5>
+    <version>8.3.1</version>
+    <time>1572180037</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>742961</requestid>
+  </revision>
 </revisionlist>

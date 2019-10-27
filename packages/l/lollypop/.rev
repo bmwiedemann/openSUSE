@@ -1060,4 +1060,15 @@
     releases).</comment>
     <requestid>741935</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>bc20de09ca6a70153866f411bc53d5f6</srcmd5>
+    <version>1.2.2</version>
+    <time>1572180090</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.2:
+  * Support popularity in smart playlists.
+  * Add &quot;Little played albums&quot; section (glgo#World/lollypop#2071).
+  * Bug fixes.</comment>
+    <requestid>743081</requestid>
+  </revision>
 </revisionlist>

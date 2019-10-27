@@ -18,15 +18,15 @@
 
 %bcond_without lang
 Name:           kde-gtk-config5
-Version:        5.17.0
+Version:        5.17.1
 Release:        0
 Summary:        KCM Module to Configure GTK2 and GTK3 Applications Appearance Under KDE
 License:        LGPL-3.0-or-later AND GPL-3.0-or-later
 Group:          System/GUI/KDE
 Url:            http://projects.kde.org/kde-gtk-config
-Source:         kde-gtk-config-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/kde-gtk-config-%{version}.tar.xz
 %if %{with lang}
-Source1:        kde-gtk-config-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/kde-gtk-config-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        gtkrc-2.0-kde4.template

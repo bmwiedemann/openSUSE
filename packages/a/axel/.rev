@@ -63,4 +63,34 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>710220</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>627f547c3e7f44b6064fb52460aeb030</srcmd5>
+    <version>2.17.6</version>
+    <time>1572180113</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.17.6:
+ - Fixed handling of non-recoverable HTTP errors
+ - Cleanup of connection setup code
+ - Fixed manpage reproducibility issue
+ - Use tracker instead of PTS from Debian
+- update to version 2.17.5:
+ - Fixed progress indicator misalignment
+ - Cleaned up the wget-like progress output code
+ - Improved progress output flushing
+- update to version 2.17.4:
+ - Fixed build with bionic libc (Android)
+ - TCP Fast Open support on Linux
+ - TCP code cleanup
+ - Removed dependency on libm
+ - Data types and format strings cleanup
+ - String handling cleanup
+ - Format string checking GCC attributes added
+ - Buildsystem fixes and improvements
+ - Updates to the documentation
+ - Updated all translations
+ - Fixed Footnotes in documentation
+ - Fixed a typo in README.md
+</comment>
+    <requestid>743107</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 25 12:56:35 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
+
+- Upgrade support for the Online installation medium
+  (jsc#SLE-7214)
+- 4.2.14
+
+-------------------------------------------------------------------
+Fri Oct 18 10:14:56 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
+
+- AutoYaST support for the OnlineOnly installation medium
+  (jsc#SLE-7214)
+- 4.2.13
+
+-------------------------------------------------------------------
 Thu Oct 10 13:39:18 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
 
 - fix crash of autoyast config dialog (bsc#1152913)

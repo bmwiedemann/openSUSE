@@ -1,0 +1,15 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/garrigue/lablgl.git</param>
+    <param name="scm">git</param>
+    <param name="versionformat">1.06</param>
+    <!-- v1.06 -->
+    <param name="revision">d0fd3cb1d1ca345e47ea198aead3dce727650ae4</param>
+    <param name="filename">ocaml-lablgl</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

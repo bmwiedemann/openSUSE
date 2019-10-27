@@ -16,13 +16,12 @@
 #
 
 
-%define version_unconverted 1.1.124
 Name:           vulkan-headers
-Version:        1.1.124
+Version:        1.1.126
 Release:        0
 Summary:        Vulkan C and C++ API header files
 License:        Apache-2.0
-Group:          development libraries c vulkan
+Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/Vulkan-Headers
 Source:         https://github.com/KhronosGroup/Vulkan-Headers/archive/v%version.tar.gz
 BuildRequires:  cmake >= 2.8.11

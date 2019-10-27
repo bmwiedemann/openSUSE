@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 25 18:08:22 UTC 2019 - Andy Li <andy@onthewings.net>
+
+- Update to neko 2.3.0.
+  * Added socket_set_broadcast function.
+  * Fixed sha1_update.
+  * Fixed 0x7F detection in utf8 functions.
+  * Changed date_get_tz to take an argument (a timestamp),
+    and to return minutes instead of seconds.
+  * Added date_utc_format, date_get_utc_day, and
+    date_get_utc_hours - all variants of existing functions, but
+    using gmtime_r instead of localtime_r.
+
+-------------------------------------------------------------------
 Wed Dec 20 07:48:01 UTC 2017 - andy@onthewings.net
 
 - Update to neko 2.2.0.

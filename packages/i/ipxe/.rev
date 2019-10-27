@@ -65,4 +65,12 @@ to make it compile on Factory again</comment>
   * ipxe-efi-recognize-plt32-relocation.patch</comment>
     <requestid>730405</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0d416bd922fa0f127fcc56a1ba8dd7b7</srcmd5>
+    <version>1.0.0+git20190929.3fe683eb</version>
+    <time>1572180048</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>742973</requestid>
+  </revision>
 </revisionlist>

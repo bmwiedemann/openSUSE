@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 24 20:15:07 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 1.7:
+ - Use setproctitle to set process name
+ - Monkeypatch textwrap for CJK wide characters
+ - Fix write to GNU Screen paste buffer
+ - Refresh current page on URL expansion toggle
+ - Smarter colorization and better support for native terminals on Windows
+ - Handle bangs in the form g!
+
+-------------------------------------------------------------------
 Sat Mar 16 14:54:31 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 1.6:

@@ -21,7 +21,7 @@
 
 %define _waf_ver 2.0.9
 %define _mbc_ver 3.3.17
-%define _mpv_ver 0.30.0+git.1571393471.acba87e53f
+%define _mpv_ver 0.30.0+git.1572040975.a908101258
 %define lname   libmpv1
 
 Name:           mpv
@@ -30,7 +30,7 @@ Release:        0
 Summary:        Advanced general-purpose multimedia player
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Video/Players
-Url:            http://mpv.io/
+URL:            http://mpv.io/
 Source:         %{name}-%{_mpv_ver}.tar.xz
 Source1:        https://waf.io/waf-%{_waf_ver}
 Source2:        %{name}.changes
@@ -93,6 +93,7 @@ BuildRequires:  pkgconfig(xrandr) >= 1.2.0
 BuildRequires:  pkgconfig(xscrnsaver)
 BuildRequires:  pkgconfig(xv)
 BuildRequires:  pkgconfig(xxf86vm)
+BuildRequires:  pkgconfig(zimg)
 BuildRequires:  pkgconfig(zlib)
 Requires:       hicolor-icon-theme
 Requires(post): hicolor-icon-theme
@@ -241,6 +242,7 @@ python3 ./waf configure \
   --enable-gl-x11                    \
   --enable-egl-x11                   \
   --enable-egl-drm                   \
+  --enable-zimg                      \
   ${myopts}
 
 python3 ./waf build --verbose %{?_smp_mflags}

@@ -17,7 +17,7 @@
 
 
 Name:           drush
-Version:        8.3.0
+Version:        8.3.1
 Release:        0
 Summary:        Command line shell and scripting interface for Drupal
 # See licenses.txt for dependency licenses.

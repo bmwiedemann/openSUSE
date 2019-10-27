@@ -7,4 +7,12 @@
     <comment>Add gmic to openSUSE:Factory.</comment>
     <requestid>732744</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ff20881cc81f62c0f56d779f6349dd54</srcmd5>
+    <version>2.7.4</version>
+    <time>1572180030</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.7.4.  No changelog available</comment>
+    <requestid>737583</requestid>
+  </revision>
 </revisionlist>

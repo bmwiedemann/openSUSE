@@ -19,7 +19,7 @@
 %define flavor @BUILD_FLAVOR@
 %define mod_name lua-mpris
 %define mpv_lua_flavor lua51
-Version:        0.0+git20190614.e4567e2
+Version:        0.0+git20191025.2b12542
 Release:        0
 Summary:        MPRIS api for lua
 License:        MIT

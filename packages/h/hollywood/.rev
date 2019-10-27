@@ -44,4 +44,66 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>708837</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1a5d11da72d9aac0243260471942807f</srcmd5>
+    <version>1.18</version>
+    <time>1572180117</time>
+    <user>dimstar_suse</user>
+    <comment>- remove tmux-version-comp.patch not needed anymore
+- update to version 1.18:
+  * bin/wallstreet, debian/control, lib/wallstreet/newsbeuter =&gt;
+    lib/wallstreet/newsboat, lib/wallstreet/ticker, lib/wallstreet/w3m,
+    share/wallstreet/newsbeuter.config =&gt;
+    share/wallstreet/newsboat.config, share/wallstreet/newsbeuter.urls
+    =&gt; share/wallstreet/newsboat.urls:
+    - Get wallstreet working again
+    - move from newsbeuter to newsboat, Closes: #914627
+    - move from google to yahoo
+    - replace rsstail panel
+  * bin/wallstreet, share/wallstreet/newsboat.config:
+    - drop support for Ubuntu versions before 16.10
+    - simplify pane sizing
+    - text wrap newsboat at 70 columns
+  * debian/changelog:
+    - merge in Debian maintainer changelogs, here upstream into this one
+- update to version 1.17:
+  * No change rebuild
+- update to version 1.16:
+  * debian/control:
+    - added atop
+  * bin/hollywood, debian/control, lib/hollywood/apg,
+    lib/hollywood/atop, lib/hollywood/bmon, lib/hollywood/cmatrix,
+    lib/hollywood/code, lib/hollywood/errno, lib/hollywood/hexdump,
+    lib/hollywood/htop, lib/hollywood/jp2a, lib/hollywood/logs,
+    lib/hollywood/man, lib/hollywood/mplayer, lib/hollywood/speedometer,
+    lib/hollywood/sshart, lib/hollywood/stat, lib/hollywood/tree,
+    share/man/man1/hollywood.1:
+    - rework the pane reorganization system
+      + rather than just using the presets, tear down all panes but one,
+        and build them back up
+      + adds much more randomness (2^16) and more interesting pane layouts
+    - speed up mplayer (when sound is off), makes for a more interesting
+      animation
+    - add and document a command line option for -d|--delay in seconds,
+      for the amount of time between window reorganization
+    - simplify the pkill/trap to only catch ctrl-c (SIGINT)
+    - loop the mplayer animation, in case the delay is longer than the
+      length of the animation
+    - reorganize the stat widget, to run head first, then randomize,
+      improves start time drammatically
+  * lib/hollywood/apg, lib/hollywood/code, lib/hollywood/jp2a,
+    lib/hollywood/logs, lib/hollywood/map, lib/hollywood/sshart,
+    share/hollywood/map.jpg:
+    - randomize the colors on apg
+    - use locate -l to stop matching after 4096 files
+    - randomize the logs order
+    - add a map, because there's always a world map
+  * debian/control, debian/copyright, debian/wallstreet.install,
+    share/man/man1/wallstreet.1:
+    - merge some of the changes from debian
+  * share/man/man1/hollywood.1:
+    - add link to hollywood.computer
+</comment>
+    <requestid>743109</requestid>
+  </revision>
 </revisionlist>

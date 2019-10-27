@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 25 14:49:13 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 8.3.1:
+  * Prep for 8.3.1
+  * Try out Drupal 9 support (#4227)
+  * Better UX in case of mixing Drupal 7 sources with Drupal 8 root (#4143)
+  * Updated subscription options in README.md (#4125)
+  * Back to dev
+
+-------------------------------------------------------------------
 Wed Jul 10 19:36:17 UTC 2019 - jimmy@boombatower.com
 
 - Update to version 8.3.0:

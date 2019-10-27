@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 23 11:51:58 UTC 2019 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- AutoYaST: consider CT_DMMULTIPATH an alias of CT_DISK (related
+  to bsc#1130988).
+- 4.2.51
+
+-------------------------------------------------------------------
 Fri Oct 18 21:01:14 UTC 2019 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Fix translation of some encryption related widgets (bsc#1154364).

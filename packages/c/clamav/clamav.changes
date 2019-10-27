@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 25 14:53:06 UTC 2019 - Reinhard Max <max@suse.com>
+
+- bsc#1151839: Increase the startup timeout of clamd to 5 minutes
+  to cater for the grown virus database as a workaround until
+  clamd has learned to talk to systemd to extend the timeout as
+  long as needed.
+
+-------------------------------------------------------------------
 Wed Sep  4 19:12:01 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.101.4:

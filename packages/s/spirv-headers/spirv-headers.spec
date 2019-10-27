@@ -16,10 +16,8 @@
 #
 
 
-%define version_unconverted 1.5.1
-
 Name:           spirv-headers
-Version:        1.5.1
+Version:        1.5.1.corrected
 Release:        0
 Summary:        Machine-readable files from the SPIR-V registry
 License:        MIT

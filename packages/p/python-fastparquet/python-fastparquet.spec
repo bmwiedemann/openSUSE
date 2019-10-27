@@ -19,6 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # Test files not included
 %bcond_without  test
+%define         skip_python2 1
 Name:           python-fastparquet
 Version:        0.3.2
 Release:        0
@@ -80,18 +81,18 @@ export CFLAGS="%{optflags}"
 
 %if %{with test}
 %check
-mkdir tester
-cp -r test-data tester/
-cp -r fastparquet/test tester/
-pushd tester
+cp -r fastparquet/test .
+mv fastparquet temp
+rm -rf build _build*
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
 export PYTHONDONTWRITEBYTECODE=1
 rm -rf build _build*
 # Test test_time_millis fails in i586
 # test_datetime_roundtrip fails due to a warning being accidentally caught by the test
-pytest-%{$python_bin_suffix} . -k 'not test_time_millis and not test_datetime_roundtrip'
+pytest-%{$python_bin_suffix} test -k 'not test_time_millis and not test_datetime_roundtrip and not test_errors'
 }
-popd
+mv temp fastparquet
+rm -rf test
 %endif
 
 %files %{python_files}

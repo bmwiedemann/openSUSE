@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 26 10:58:43 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.25.13
+  libmpg123:
+  * Reset the flag for having a frame to decode before trying to
+    parse a new one. This prevents very unkind behaviour
+    (crashes) when combinging mpg123_scan() with decoding later
+    on for damaged streams that have a mixture of different MPEG
+    versions.
+
+-------------------------------------------------------------------
 Sat Aug 24 19:01:13 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.25.12

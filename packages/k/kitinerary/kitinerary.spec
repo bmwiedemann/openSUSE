@@ -29,20 +29,24 @@ Source:         https://download.kde.org/stable/applications/%{version}/src/%{na
 Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= 1.0.0
-BuildRequires:  kcalcore-devel
-BuildRequires:  kcontacts-devel
+BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
-BuildRequires:  kmime-devel
-BuildRequires:  kpkpass-devel
 BuildRequires:  libpoppler-qt5-devel
-%if 0%{?suse_version} > 1510
-BuildRequires:  zxing-cpp-devel
-%endif
+BuildRequires:  libxml2-devel
+BuildRequires:  zlib-devel
+BuildRequires:  cmake(KF5CalendarCore)
+BuildRequires:  cmake(KF5Contacts)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5Mime)
+BuildRequires:  cmake(KPimPkPass)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Test)
 Requires:       libKPimItinerary5 = %{version}
+%if 0%{?suse_version} > 1500
+BuildRequires:  libphonenumber-devel
+BuildRequires:  cmake(ZXing)
+%endif
 
 %description
 Kitinerary is a library which provides a data model and a system to extract information
@@ -63,6 +67,11 @@ This package contains the library itself.
 Summary:        Development files for kitinerary
 Group:          Development/Libraries/KDE
 Requires:       libKPimItinerary5 = %{version}
+Requires:       cmake(KF5CalendarCore)
+Requires:       cmake(KF5Contacts)
+Requires:       cmake(KF5Mime)
+Requires:       cmake(KPimPkPass)
+Requires:       cmake(Qt5Gui)
 
 %description devel
 This package contains all necessary include files and libraries needed

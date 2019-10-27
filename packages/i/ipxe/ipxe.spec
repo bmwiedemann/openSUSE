@@ -1,7 +1,7 @@
 #
 # spec file for package ipxe
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           ipxe
-Version:        1.0.0+git20190817.0b3000bb
+Version:        1.0.0+git20190929.3fe683eb
 Release:        0
 Summary:        A Network Boot Firmware
 License:        GPL-2.0-only
@@ -30,7 +30,7 @@ BuildRequires:  binutils-devel
 %if 0%{?sle_version} >= 150000 && 0%{?sle_version} < 159999
 BuildRequires:  cross-aarch64-gcc7
 %else
-BuildRequires:  cross-aarch64-gcc8
+BuildRequires:  cross-aarch64-gcc9
 %endif
 %endif
 BuildRequires:  perl
@@ -110,6 +110,6 @@ install -D -m0644 src/bin-arm64-efi/snp.efi %{buildroot}/%{_datadir}/%{name}/snp
 %{_datadir}/%{name}/snp-arm64.efi
 %endif
 %{_datadir}/%{name}/undionly.kpxe
-%doc COPYING COPYING.GPLv2 COPYING.UBDL
+%license COPYING COPYING.GPLv2 COPYING.UBDL
 
 %changelog

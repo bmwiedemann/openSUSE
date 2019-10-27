@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct 25 18:40:36 UTC 2019 - Tina Mueller <tina.mueller@suse.com>
+
+- Require typelib(GdkPixdata) only in suse 01550 and higher
+
+-------------------------------------------------------------------
+Mon Oct 21 15:59:32 UTC 2019 - Tina Mueller <tina.mueller@suse.com>
+
+- Added manual dependencies:
+   * BuildRequires:  typelib(GdkPixdata) = 2.0
+   * BuildRequires:  typelib(Gtk) = 3.0
+
+-------------------------------------------------------------------
+Wed Aug 28 05:14:10 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.036
+   see /usr/share/doc/packages/perl-Gtk3/
+
+-------------------------------------------------------------------
 Mon Jul 22 14:29:11 UTC 2019 - malcolmlewis@opensuse.org
 
 - Updated to version 0.35:

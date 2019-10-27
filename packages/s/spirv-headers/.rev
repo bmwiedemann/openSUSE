@@ -127,4 +127,12 @@
     <comment>- Update to release 1.5.1</comment>
     <requestid>733816</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1a3a2192fcfa70a99bdcd6c9dfbf57ba</srcmd5>
+    <version>1.5.1.corrected</version>
+    <time>1572179727</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.5.1.corrected</comment>
+    <requestid>743115</requestid>
+  </revision>
 </revisionlist>

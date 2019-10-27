@@ -69,4 +69,12 @@
     <comment></comment>
     <requestid>573707</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>28f52211626d5b6b198330b4120fe1af</srcmd5>
+    <version>0.3.5+git20190809.b2e5a15</version>
+    <time>1572180120</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with new Vala</comment>
+    <requestid>743116</requestid>
+  </revision>
 </revisionlist>

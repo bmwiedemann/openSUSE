@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Oct 25 12:34:08 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update cross compiler to GCC 9
+- Change the git address from _service to use HTTPS
+- Replace %doc to %license
+
+-------------------------------------------------------------------
+Fri Oct 25 12:28:49 UTC 2019 - aplanas@suse.com
+
+- Update to version 1.0.0+git20190929.3fe683eb:
+  * [lan78xx] Always enable automatic speed and duplex detection
+  * [efi] Do not attempt EFI_USB_IO_PROTOCOL transfers during shutdown
+  * [efi] Report failed control transfers as expected by the USB core
+  * [golan] Fix address-of-pointer bug for multicast attach/detach
+  * [ethernet] Avoid false positive Coverity warning
+  * [coverity] Override assumptions about wcrtomb() and hmac_init()
+  * [crypto] Profile the various stages of modular multiplication
+  * [crypto] Drag in configured digestInfo prefixes for any use of RSA
+  * [tls] Add missing call to tls_tx_resume() when restarting negotiation
+  * [peerdist] Limit number of concurrent raw block downloads
+
+-------------------------------------------------------------------
 Thu Sep 12 11:59:33 UTC 2019 - bwiedemann@suse.com
 
 - Update to version 1.0.0+git20190817.0b3000bb:

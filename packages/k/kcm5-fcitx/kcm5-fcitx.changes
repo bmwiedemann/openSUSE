@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 23 17:28:57 CEST 2019 - ro@suse.de
+
+- fix build-requires for factory/tumbleweed
+  rsvg-convert tool is now in rsvg-convert package 
+
+-------------------------------------------------------------------
 Mon Mar 12 08:57:16 UTC 2018 - werner@suse.de
 
 - Repair next removed dependency, that is add build require

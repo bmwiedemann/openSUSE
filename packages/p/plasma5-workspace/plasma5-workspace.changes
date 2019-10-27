@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Oct 22 16:44:45 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.1.php
+- Changes since 5.17.0:
+  * [Windows Runner] Gather window again when running result (kde#412386)
+  * [startplasma] Pass actual variable to kapplymousetheme
+  * Fix slideshow crashing in invalidate() (kde#413018)
+  * Fix reading environment variables with newline (kde#413130)
+  * [Media Controller] Multiple artists support (kde#405762)
+  * [gmenu-dbusmenu-proxy] Don't create ~/.gtkrc-2.0
+  * [Notifications] Also consider enabled and connected for screen to be checked against
+  * [Notifications] Don't bind model inside headerItem
+  * [XembedSNIProxy] Do not crash on null pointer (kde#409652)
+  * [XembedSNIProxy] Scale only big icons (kde#366047)
+  * [XembedSNIProxy] Check size in each update() (kde#358240)
+- Remove patches, now upstream:
+  * 0001-Fix-reading-environment-variables-with-newline.patch
+  * 0001-gmenu-dbusmenu-proxy-Don-t-create-.gtkrc-2.0.patch
+
+-------------------------------------------------------------------
 Fri Oct 18 07:48:42 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix reading environment variables with newline

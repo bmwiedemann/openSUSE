@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sentry-sdk
-Version:        0.13.0
+Version:        0.13.1
 Release:        0
 Summary:        Python SDK for Sentry.io
 License:        BSD-2-Clause

@@ -18,7 +18,7 @@
 
 
 Name:           ocaml-lablgl
-Version:        1.05
+Version:        1.06
 Release:        0
 %{?ocaml_preserve_bytecode}
 
@@ -26,22 +26,18 @@ Summary:        LablGL is an OpenGL interface for Objective Caml
 License:        BSD-3-Clause
 Group:          Development/Languages/OCaml
 
-Url:            https://forge.ocamlcore.org/projects/lablgl/
-Source0:        lablgl-%{version}.tar.xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Url:            https://github.com/garrigue/lablgl
+Source0:        %{name}-%{version}.tar.xz
 
-BuildRequires:  Mesa-devel
-BuildRequires:  freeglut-devel
 BuildRequires:  ocaml
-BuildRequires:  ocaml-camlp4-devel
+BuildRequires:  ocaml-findlib
+BuildRequires:  ocaml-camlp5-devel
 BuildRequires:  ocaml-labltk-devel
-BuildRequires:  ocaml-rpm-macros >= 4.02.1
-BuildRequires:  tcl-devel
-BuildRequires:  tk-devel
-BuildRequires:  xorg-x11-libX11-devel
-BuildRequires:  xorg-x11-libXext-devel
-BuildRequires:  xorg-x11-libXmu-devel
-BuildRequires:  xorg-x11-proto-devel
+BuildRequires:  ocaml-rpm-macros >= 20191004
+BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(glu)
+BuildRequires:  pkgconfig(freeglut)
+BuildRequires:  pkgconfig(xmu)
 
 %description
 LablGL is is an Objective Caml interface to OpenGL. Support is
@@ -63,9 +59,10 @@ developing applications that use %{name}.
 
 
 %prep
-%setup -q -n lablgl-%{version}
+%autosetup -p1
 
-cat > Makefile.config <<EOF
+%build
+tee Makefile.config <<EOF
 %if 0%{?ocaml_native_compiler}
 CAMLC = ocamlc.opt
 CAMLOPT = ocamlopt.opt
@@ -74,12 +71,12 @@ CAMLC = ocamlc
 CAMLOPT = ocamlc
 %endif
 BINDIR = %{_bindir}
-XINCLUDES = -I%{_prefix}/X11R6/include
-XLIBS = -lXext -lXmu -lX11
+XINCLUDES = $(pkg-config --cflags xmu)
+XLIBS = $(pkg-config --libs xmu)
 TKINCLUDES = -I%{_includedir}
-GLINCLUDES =
-GLLIBS = -lGL -lGLU
-GLUTLIBS = -lglut -lXxf86vm
+GLINCLUDES = $(pkg-config --cflags glu)
+GLLIBS = $(pkg-config --libs glu)
+GLUTLIBS = $(pkg-config --libs freeglut || echo '-lglut')
 RANLIB = :
 LIBDIR = %{_libdir}/ocaml
 DLLDIR = %{_libdir}/ocaml/stublibs
@@ -88,7 +85,6 @@ TOGLDIR=Togl
 COPTS = $RPM_OPT_FLAGS
 EOF
 
-%build
 make all
 %if 0%{?ocaml_native_compiler}
 make opt
@@ -140,32 +136,18 @@ tee %{buildroot}/etc/ld.so.conf.d/%{name}.conf <<_EOF_
 %{_libdir}/ocaml/stublibs
 _EOF_
 #
+%ocaml_create_file_list
 
 %post   -p /sbin/ldconfig
 
 %postun -p /sbin/ldconfig
 
-%files
-%defattr(-,root,root,-)
+%files -f %{name}.files
 %doc README
 /etc/ld.so.conf.d/*.conf
 %{_bindir}/lablgl
 %{_bindir}/lablglut
-%dir %{_libdir}/ocaml/lablGL
-%{_libdir}/ocaml/stublibs/*.so
 
-%files devel
-%defattr(-,root,root,-)
-%doc CHANGES COPYRIGHT README LablGlut/examples Togl/examples
-%{_libdir}/ocaml/lablGL/META
-%{_libdir}/ocaml/lablGL/*.a
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/lablGL/*.cmxa
-%{_libdir}/ocaml/lablGL/*.cmx
-%endif
-%{_libdir}/ocaml/lablGL/*.cma
-%{_libdir}/ocaml/lablGL/*.cmi
-%{_libdir}/ocaml/lablGL/*.mli
-%{_libdir}/ocaml/lablGL/build.ml
+%files devel -f %{name}.files.devel
 
 %changelog

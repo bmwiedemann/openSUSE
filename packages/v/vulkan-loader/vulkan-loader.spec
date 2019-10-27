@@ -16,15 +16,13 @@
 #
 
 
-%define version_unconverted 1.1.124
-
 Name:           vulkan-loader
 %define lname	libvulkan1
-Version:        1.1.124
+Version:        1.1.126
 Release:        0
 Summary:        Reference ICD loader for Vulkan
 License:        Apache-2.0
-Group:          development vulkan
+Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/Vulkan-Loader
 
 Source:         https://github.com/KhronosGroup/Vulkan-Loader/archive/v%version.tar.gz

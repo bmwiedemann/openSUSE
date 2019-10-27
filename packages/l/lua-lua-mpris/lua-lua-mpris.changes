@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 25 16:54:12 UTC 2019 - alarrosa@suse.com
+
+- Update to version 0.0+git20191025.2b12542:
+  * Set correct values for SupportedMimeTypes and SupportedUriSchemes properties
+  This fixes the plugin to work correctly with KDE Plasma 5.17 .
+
+-------------------------------------------------------------------
 Fri Jun 14 14:41:19 UTC 2019 - alarrosa@suse.com
 
 - Update to version 0.0+git20190614.e4567e2:

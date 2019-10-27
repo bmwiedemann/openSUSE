@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 25 00:04:07 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Update to version 3.3:
+  * This release updates for parameters necessary to properly
+    create a CNI configuration under Kubernetes 1.16, among other
+    recent stability fixes.
+- Add multus-k8s-yaml package which provides the Kubernetes yaml
+  file to run Multus containers.
+- Add patch which fixes the build from tarball:
+  * 0001-build-Allow-to-define-VERSION-and-COMMIT-without-git.patch
+
+-------------------------------------------------------------------
 Tue Nov 27 17:08:00 UTC 2018 - Michał Rostecki <mrostecki@suse.de>
 
 - Initial version 3.1

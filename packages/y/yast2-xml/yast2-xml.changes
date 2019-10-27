@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 16 13:36:00 UTC 2019 - Knut Anderssen <kanderssen@suse.com>
+
+- Return string instead of Boolean when calling Execute with
+  .xml.string (bsc#1153539)
+- 4.1.1
+
+-------------------------------------------------------------------
 Tue Feb 26 14:17:57 UTC 2019 - José Iván López González <jlopez@suse.com>
 
 - Version bump (bsc#1124009)

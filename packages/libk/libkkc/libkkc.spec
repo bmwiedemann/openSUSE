@@ -1,7 +1,7 @@
 #
 # spec file for package libkkc
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define soname 2
 %define data_version 0.2.7
 Name:           libkkc
-Version:        0.3.5+git20171220.7d365e1
+Version:        0.3.5+git20190809.b2e5a15
 Release:        0
 Summary:        Japanese Kana-string to Kana-Kanji-mixed-string converter
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          System/I18n/Japanese
 Url:            https://github.com/ueno/libkkc
 Source:         %{name}-%{version}.tar.xz

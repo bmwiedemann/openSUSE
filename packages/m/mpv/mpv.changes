@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 26 06:20:24 UTC 2019 - idonmez@suse.com
+
+- Update to version 0.30.0+git.1572040975.a908101258:
+  * See https://github.com/mpv-player/mpv/compare/acba87e53f..a908101258
+    for the complete changelog.
+- Enable zimg support: Add BR on pkgconfig(zimg), add --enable-zimg
+
+-------------------------------------------------------------------
 Sat Oct 19 06:35:50 UTC 2019 - idonmez@suse.com
 
 - Update to version 0.30.0+git.1571393471.acba87e53f:
