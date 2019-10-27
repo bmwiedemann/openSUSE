@@ -13347,6 +13347,7 @@ unsorted:
   - multipath-tools-devel 
   - multitail 
   - multus 
+  - multus-k8s-yaml 
   - mumble 
   - mumble-32bit: [x86_64] 
   - mumble-server 
@@ -16305,7 +16306,6 @@ unsorted:
   - phobos-devel 
   - phobos-devel-static 
   - phodav-devel 
-  - phonon-backend-vlc 
   - phonon4qt5-backend-vlc 
   - phonon4qt5-backend-vlc-lang 
   - phonon4qt5-devel 
@@ -18045,7 +18045,6 @@ unsorted:
   - python2-fastcluster 
   - python2-fasteners 
   - python2-fastimport 
-  - python2-fastparquet 
   - python2-fastremap 
   - python2-fb-re2 
   - python2-fedmsg 
@@ -31768,8 +31767,6 @@ unsorted:
   - transmission-daemon 
   - transmission-qt 
   - transmission-qt-lang 
-  - transporter 
-  - transporter-lang 
   - transset 
   - tre-devel 
   - treelayout 
