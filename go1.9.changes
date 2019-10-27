@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 23 16:13:46 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove unneeded systemd BuildRequires.
+- Remove specific support for Leap 42.x (EOL), treat it like SLE12
+- Add some missing dir-only markers in files section.
+
+-------------------------------------------------------------------
 Mon Oct 21 17:26:58 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Let RPM evaluate the go_api version compare, drop no longer required bc.

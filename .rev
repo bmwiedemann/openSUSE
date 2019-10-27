@@ -87,4 +87,14 @@
 - Own the gdbinit.d directory, avoid the build dependency on gdb. (forwarded request 741606 from StefanBruens)</comment>
     <requestid>741611</requestid>
   </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>af489f3520c92c239dfc414a7f06bebd</srcmd5>
+    <version>1.9.7</version>
+    <time>1572180021</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded systemd BuildRequires.
+- Remove specific support for Leap 42.x (EOL), treat it like SLE12
+- Add some missing dir-only markers in files section. (forwarded request 742222 from StefanBruens)</comment>
+    <requestid>743079</requestid>
+  </revision>
 </revisionlist>

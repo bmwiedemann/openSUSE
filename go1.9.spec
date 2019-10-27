@@ -31,13 +31,8 @@
 # of a known bug with binutils 2.27 https://github.com/golang/go/issues/16906.
 # Leap will work but we don't have go1.4 in there.
 %if 0%{?suse_version} > 1320
-# openSUSE Factory
+# openSUSE Factory, Leap 15.x, SLE 15
 %define with_gccgo 1
-%else
-%if 0%{?suse_version} == 1315 && 0%{?is_opensuse}
-# openSUSE Leap
-%define with_gccgo 1
-%endif
 %endif
 
 # The fallback bootstrap method via go1.4 doesn't work
@@ -131,7 +126,6 @@ BuildRequires:  gcc7-go
 BuildRequires:  go1.4
 %endif
 BuildRequires:  fdupes
-BuildRequires:  systemd
 Recommends:     %{name}-doc = %{version}
 %ifarch %{tsan_arch}
 # Needed to compile compiler-rt/TSAN.
@@ -361,9 +355,9 @@ fi
 %defattr(-,root,root,-)
 %{_bindir}/go
 %{_bindir}/gofmt
-%{_libdir}/go
+%dir %{_libdir}/go
 %{_libdir}/go/%{go_api}
-%{_datadir}/go
+%dir %{_datadir}/go
 %{_datadir}/go/%{go_api}
 %dir %{_sysconfdir}/gdbinit.d/
 %config %{_sysconfdir}/gdbinit.d/go.gdb
