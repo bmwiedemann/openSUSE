@@ -24,4 +24,12 @@
     <comment>- Make package building even on SLE-12/Leap 42</comment>
     <requestid>645807</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>23ed5444abeb24c378f31d7d4f0c25ad</srcmd5>
+    <version>0.0+git20190816.9e176fe</version>
+    <time>1572180061</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>742983</requestid>
+  </revision>
 </revisionlist>

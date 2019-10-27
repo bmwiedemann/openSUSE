@@ -4,7 +4,7 @@
     <param name="filename">lua-ldbus</param>
     <param name="versionformat">0.0+git%cd.%h</param>
     <param name="scm">git</param>
-    <param name="revision">e277e22eecbc1234aea70c7edf18a86266e841b1</param>
+    <param name="revision">9e176fe851006037a643610e6d8f3a8e597d4073</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="recompress" mode="disabled">

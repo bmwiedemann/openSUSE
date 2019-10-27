@@ -1,7 +1,7 @@
 #
 # spec file for package lua-ldbus
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define flavor @BUILD_FLAVOR@
 %define mod_name ldbus
-Version:        0.0+git20161023.e277e22
+Version:        0.0+git20190816.9e176fe
 Release:        0
 Summary:        Lua bindings to dbus
 License:        MIT
