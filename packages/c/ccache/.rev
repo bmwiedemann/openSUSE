@@ -445,4 +445,18 @@ Fixed a regression in 3.7.2 when using the compiler option “-Werror” and the
   * Fixed make check with “funny” locales.</comment>
     <requestid>726110</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>f1831fc2d579b3db098e2e826f4d296e</srcmd5>
+    <version>3.7.4</version>
+    <time>1572277434</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.7.4:
+  * Added support for the -gz[=type] compiler option (previously
+    ccache would think that “-gz” alone would enable debug
+    information, thus potentially including the current directory
+    in the hash).
+  * Added support for converting paths like “/c/users/...” into
+    relative paths on Windows.</comment>
+    <requestid>742098</requestid>
+  </revision>
 </revisionlist>

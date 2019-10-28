@@ -1,0 +1,781 @@
+From 7442846941cb7a552485f139308a0004c27fa567 Mon Sep 17 00:00:00 2001
+From: Christian Ammer <chrie.ammer@gmail.com>
+Date: Sun, 25 Nov 2018 02:59:42 +0100
+Subject: [PATCH 03/10] Bugfix for `ares_getaddrinfo` and additional unit tests
+ (#234)
+
+This PullRequest fixes a bug in the function add_to_addrinfo which task is to add new addrinfo items to the ai_next linked list. Also additional unit tests for testing ares_getaddrinfo will be added:
+
+Additional mock server test classes (ares-test-mock-ai.cc):
+MockTCPChannelTestAI
+MockExtraOptsTestAI
+MockNoCheckRespChannelTestAI
+MockEDNSChannelTestAI
+RotateMultiMockTestAI
+NoRotateMultiMockTestAI
+
+Additional live tests (ares-test-live-ai.cc):
+LiveGetHostByNameV4
+LiveGetHostByNameV6
+LiveGetHostByNameV4AndV6
+
+Fix By: Christian Ammer (@ChristianAmmer)
+---
+ ares_getaddrinfo.c        |  69 ++++----
+ test/ares-test-ai.h       |  29 ++++
+ test/ares-test-live-ai.cc |  85 +++++++++
+ test/ares-test-mock-ai.cc | 434 +++++++++++++++++++++++++++++++++++++++++++++-
+ 4 files changed, 584 insertions(+), 33 deletions(-)
+ create mode 100644 test/ares-test-live-ai.cc
+
+diff --git a/ares_getaddrinfo.c b/ares_getaddrinfo.c
+index 36f29b5..b89a29c 100644
+--- a/ares_getaddrinfo.c
++++ b/ares_getaddrinfo.c
+@@ -81,8 +81,8 @@ static int get_address_index(const struct in_addr *addr,
+ static int get6_address_index(const struct ares_in6_addr *addr,
+                               const struct apattern *sortlist, int nsort);
+ static int as_is_first(const struct host_query *hquery);
+-static void add_to_addrinfo(struct ares_addrinfo** ai,
+-                            const struct hostent* host);
++static int add_to_addrinfo(struct ares_addrinfo** ai,
++                           const struct hostent* host);
+ static void next_dns_lookup(struct host_query *hquery);
+ static int is_implemented(const int family);
+ 
+@@ -213,16 +213,15 @@ static int file_lookup(const char *name, int family, struct ares_addrinfo **ai)
+     }
+   }
+   status = ARES_ENOTFOUND;
+-  while (ares__get_hostent(fp, family, &host) == ARES_SUCCESS) {
++  while (status != ARES_ENOMEM &&
++      ares__get_hostent(fp, family, &host) == ARES_SUCCESS) {
+     if (strcasecmp(host->h_name, name) == 0) {
+-      add_to_addrinfo(ai, host);
+-      status = ARES_SUCCESS;
++      status = add_to_addrinfo(ai, host);
+     }
+     else {
+       for (alias = host->h_aliases; *alias; alias++) {
+         if (strcasecmp(*alias, name) == 0) {
+-          add_to_addrinfo(ai, host);
+-          status = ARES_SUCCESS;
++          status = add_to_addrinfo(ai, host);
+           break;
+         }
+       }
+@@ -233,38 +232,41 @@ static int file_lookup(const char *name, int family, struct ares_addrinfo **ai)
+   return status;
+ }
+ 
+-static void add_to_addrinfo(struct ares_addrinfo** ai,
++static int add_to_addrinfo(struct ares_addrinfo** ai,
+ 		            const struct hostent* host) {
+   static const struct ares_addrinfo EmptyAddrinfo; 
+-  struct ares_addrinfo* next_ai;
++  struct ares_addrinfo* front;
+   char** p;
+   if (!host || (host->h_addrtype != AF_INET && host->h_addrtype != AF_INET6)) {
+-    return;
++    return ARES_SUCCESS;
+   }
+   for (p = host->h_addr_list; *p; ++p) {
+-    next_ai = ares_malloc(sizeof(struct ares_addrinfo));
+-    *next_ai = EmptyAddrinfo;
+-    if (*ai) {
+-      (*ai)->ai_next = next_ai;
+-    }
+-    else {
+-      *ai = next_ai;
+-    }
++    front = ares_malloc(sizeof(struct ares_addrinfo));
++    if (!front) goto nomem;
++    *front = EmptyAddrinfo;
++    front->ai_next = *ai; /* insert at front */
++    *ai = front;
+     if (host->h_addrtype == AF_INET) {
+-      next_ai->ai_protocol = IPPROTO_UDP;
+-      next_ai->ai_family = AF_INET;
+-      next_ai->ai_addr = ares_malloc(sizeof(struct sockaddr_in));
+-      memcpy(&((struct sockaddr_in*)(next_ai->ai_addr))->sin_addr, *p,
++      front->ai_protocol = IPPROTO_UDP;
++      front->ai_family = AF_INET;
++      front->ai_addr = ares_malloc(sizeof(struct sockaddr_in));
++      if (!front->ai_addr) goto nomem;
++      memcpy(&((struct sockaddr_in*)(front->ai_addr))->sin_addr, *p,
+         host->h_length);
+     }
+     else {
+-      next_ai->ai_protocol = IPPROTO_UDP;
+-      next_ai->ai_family = AF_INET6;
+-      next_ai->ai_addr = ares_malloc(sizeof(struct sockaddr_in6));
+-      memcpy(&((struct sockaddr_in6*)(next_ai->ai_addr))->sin6_addr, *p,
++      front->ai_protocol = IPPROTO_UDP;
++      front->ai_family = AF_INET6;
++      front->ai_addr = ares_malloc(sizeof(struct sockaddr_in6));
++      if (!front->ai_addr) goto nomem;
++      memcpy(&((struct sockaddr_in6*)(front->ai_addr))->sin6_addr, *p,
+         host->h_length);
+     }
+   }
++  return ARES_SUCCESS;
++nomem:
++  ares_freeaddrinfo(*ai);
++  return ARES_ENOMEM;
+ }
+ 
+ static void next_dns_lookup(struct host_query *hquery) {
+@@ -320,6 +322,7 @@ static void host_callback(void *arg, int status, int timeouts,
+   struct hostent *host = NULL;
+   int qtype;
+   int qtypestatus;
++  int addinfostatus = ARES_SUCCESS;
+   hquery->timeouts += timeouts;
+ 
+   hquery->remaining--;
+@@ -332,7 +335,7 @@ static void host_callback(void *arg, int status, int timeouts,
+       if (host && channel->nsort) {
+         sort_addresses(host, channel->sortlist, channel->nsort);
+       }
+-      add_to_addrinfo(&hquery->ai, host);
++      addinfostatus = add_to_addrinfo(&hquery->ai, host);
+       ares_free_hostent(host);
+     }
+     else if (qtypestatus == ARES_SUCCESS && qtype == T_AAAA) {
+@@ -341,14 +344,18 @@ static void host_callback(void *arg, int status, int timeouts,
+       if (host && channel->nsort) {
+         sort6_addresses(host, channel->sortlist, channel->nsort);
+       }
+-      add_to_addrinfo(&hquery->ai, host);
++      addinfostatus = add_to_addrinfo(&hquery->ai, host);
+       ares_free_hostent(host);
+     }
+   }
+ 
+   if (!hquery->remaining) {
+-    if (hquery->ai) {
+-      // at least one query ended with ARES_SUCCESS
++    if (addinfostatus != ARES_SUCCESS) {
++      /* no memory */
++      end_hquery(hquery, addinfostatus);
++    }
++    else if (hquery->ai) {
++      /* at least one query ended with ARES_SUCCESS */
+       end_hquery(hquery, ARES_SUCCESS);
+     }
+     else if (status == ARES_ENOTFOUND) {
+@@ -359,7 +366,7 @@ static void host_callback(void *arg, int status, int timeouts,
+     }
+   }
+ 
+-  // at this point we keep on waiting for the next query to finish
++  /* at this point we keep on waiting for the next query to finish */
+ }
+ 
+ static void sort_addresses(struct hostent *host,
+diff --git a/test/ares-test-ai.h b/test/ares-test-ai.h
+index a7a6a73..d558489 100644
+--- a/test/ares-test-ai.h
++++ b/test/ares-test-ai.h
+@@ -23,8 +23,37 @@ class MockUDPChannelTestAI
+   MockUDPChannelTestAI() : MockChannelOptsTest(1, GetParam(), false, nullptr, 0) {}
+ };
+ 
++class MockTCPChannelTestAI
++    : public MockChannelOptsTest,
++      public ::testing::WithParamInterface<int> {
++ public:
++  MockTCPChannelTestAI() : MockChannelOptsTest(1, GetParam(), true, nullptr, 0) {}
++};
++
++
++// Test fixture that uses a default channel.
++class DefaultChannelTestAI : public LibraryTest {
++ public:
++  DefaultChannelTestAI() : channel_(nullptr) {
++    EXPECT_EQ(ARES_SUCCESS, ares_init(&channel_));
++    EXPECT_NE(nullptr, channel_);
++  }
++
++  ~DefaultChannelTestAI() {
++    ares_destroy(channel_);
++    channel_ = nullptr;
++  }
++
++  // Process all pending work on ares-owned file descriptors.
++  void Process();
++
++ protected:
++  ares_channel channel_;
++};
++
+ // Structure that describes the result of an ares_addr_callback invocation.
+ struct AIResult {
++  AIResult() : done(), status(), airesult() {}
+   // Whether the callback has been invoked.
+   bool done;
+   // Explicitly provided result information.
+diff --git a/test/ares-test-live-ai.cc b/test/ares-test-live-ai.cc
+new file mode 100644
+index 0000000..96260fb
+--- /dev/null
++++ b/test/ares-test-live-ai.cc
+@@ -0,0 +1,85 @@
++// This file includes tests that attempt to do real lookups
++// of DNS names using the local machine's live infrastructure.
++// As a result, we don't check the results very closely, to allow
++// for varying local configurations.
++
++#include "ares-test.h"
++#include "ares-test-ai.h"
++
++#ifdef HAVE_NETDB_H
++#include <netdb.h>
++#endif
++
++namespace ares {
++namespace test {
++
++MATCHER_P(IncludesAtLeastNumAddresses, n, "") {
++  int cnt = 0;
++  for (const ares_addrinfo* ai = arg; ai != NULL; ai = ai->ai_next)
++    cnt++;
++  return cnt >= n;
++}
++
++MATCHER_P(OnlyIncludesAddrType, addrtype, "") {
++  for (const ares_addrinfo* ai = arg; ai != NULL; ai = ai->ai_next)
++    if (ai->ai_family != addrtype)
++      return false;
++  return true;
++}
++
++MATCHER_P(IncludesAddrType, addrtype, "") {
++  for (const ares_addrinfo* ai = arg; ai != NULL; ai = ai->ai_next)
++    if (ai->ai_family == addrtype)
++      return true;
++  return false;
++}
++
++void DefaultChannelTestAI::Process() {
++  ProcessWork(channel_, NoExtraFDs, nullptr);
++}
++
++// Use the address of Google's public DNS servers as example addresses that are
++// likely to be accessible everywhere/everywhen.
++
++VIRT_NONVIRT_TEST_F(DefaultChannelTestAI, LiveGetHostByNameV4) {
++  struct ares_addrinfo hints = {};
++  hints.ai_family = AF_INET;
++  AIResult result;
++  ares_getaddrinfo(channel_, "www.google.com.", NULL, &hints, AICallback, &result);
++  Process();
++  EXPECT_TRUE(result.done);
++  EXPECT_EQ(ARES_SUCCESS, result.status);
++  EXPECT_THAT(result.airesult, IncludesAtLeastNumAddresses(1));
++  EXPECT_THAT(result.airesult, OnlyIncludesAddrType(AF_INET));
++  ares_freeaddrinfo(result.airesult);
++}
++
++VIRT_NONVIRT_TEST_F(DefaultChannelTestAI, LiveGetHostByNameV6) {
++  struct ares_addrinfo hints = {};
++  hints.ai_family = AF_INET6;
++  AIResult result;
++  ares_getaddrinfo(channel_, "www.google.com.", NULL, &hints, AICallback, &result);
++  Process();
++  EXPECT_TRUE(result.done);
++  EXPECT_EQ(ARES_SUCCESS, result.status);
++  EXPECT_THAT(result.airesult, IncludesAtLeastNumAddresses(1));
++  EXPECT_THAT(result.airesult, OnlyIncludesAddrType(AF_INET6));
++  ares_freeaddrinfo(result.airesult);
++}
++
++VIRT_NONVIRT_TEST_F(DefaultChannelTestAI, LiveGetHostByNameV4AndV6) {
++  struct ares_addrinfo hints = {};
++  hints.ai_family = AF_UNSPEC;
++  AIResult result;
++  ares_getaddrinfo(channel_, "www.google.com.", NULL, &hints, AICallback, &result);
++  Process();
++  EXPECT_TRUE(result.done);
++  EXPECT_EQ(ARES_SUCCESS, result.status);
++  EXPECT_THAT(result.airesult, IncludesAtLeastNumAddresses(2));
++  EXPECT_THAT(result.airesult, IncludesAddrType(AF_INET6));
++  EXPECT_THAT(result.airesult, IncludesAddrType(AF_INET));
++  ares_freeaddrinfo(result.airesult);
++}
++
++}  // namespace test
++}  // namespace ares
+diff --git a/test/ares-test-mock-ai.cc b/test/ares-test-mock-ai.cc
+index 28a01be..a67f811 100644
+--- a/test/ares-test-mock-ai.cc
++++ b/test/ares-test-mock-ai.cc
+@@ -96,6 +96,261 @@ TEST_P(MockUDPChannelTestAI, ParallelLookups) {
+   ares_freeaddrinfo(result3.airesult);
+ }
+ 
++// UDP to TCP specific test
++TEST_P(MockUDPChannelTestAI, TruncationRetry) {
++  DNSPacket rsptruncated;
++  rsptruncated.set_response().set_aa().set_tc()
++    .add_question(new DNSQuestion("www.google.com", ns_t_a));
++  DNSPacket rspok;
++  rspok.set_response()
++    .add_question(new DNSQuestion("www.google.com", ns_t_a))
++    .add_answer(new DNSARR("www.google.com", 100, {1, 2, 3, 4}));
++  EXPECT_CALL(server_, OnRequest("www.google.com", ns_t_a))
++    .WillOnce(SetReply(&server_, &rsptruncated))
++    .WillOnce(SetReply(&server_, &rspok));
++
++  AIResult result;
++  struct ares_addrinfo hints = {};
++  hints.ai_family = AF_INET;
++  ares_getaddrinfo(channel_, "www.google.com.", NULL, &hints, AICallback, &result);
++  Process();
++  EXPECT_TRUE(result.done);
++  EXPECT_EQ(result.status, ARES_SUCCESS);
++  EXPECT_THAT(result.airesult, IncludesNumAddresses(1));
++  EXPECT_THAT(result.airesult, IncludesV4Address("1.2.3.4"));
++  ares_freeaddrinfo(result.airesult);
++}
++
++// TCP only to prevent retries
++TEST_P(MockTCPChannelTestAI, MalformedResponse) {
++  std::vector<byte> one = {0x01};
++  EXPECT_CALL(server_, OnRequest("www.google.com", ns_t_a))
++    .WillOnce(SetReplyData(&server_, one));
++
++  AIResult result;
++  struct ares_addrinfo hints = {};
++  hints.ai_family = AF_INET;
++  ares_getaddrinfo(channel_, "www.google.com.", NULL, &hints, AICallback, &result);
++  Process();
++  EXPECT_TRUE(result.done);
++  EXPECT_EQ(ARES_ETIMEOUT, result.status);
++  ares_freeaddrinfo(result.airesult);
++}
++
++TEST_P(MockTCPChannelTestAI, FormErrResponse) {
++  DNSPacket rsp;
++  rsp.set_response().set_aa()
++    .add_question(new DNSQuestion("www.google.com", ns_t_a));
++  rsp.set_rcode(ns_r_formerr);
++  EXPECT_CALL(server_, OnRequest("www.google.com", ns_t_a))
++    .WillOnce(SetReply(&server_, &rsp));
++  
++  AIResult result;
++  struct ares_addrinfo hints = {};
++  hints.ai_family = AF_INET;
++  ares_getaddrinfo(channel_, "www.google.com.", NULL, &hints, AICallback, &result);
++  Process();
++  EXPECT_TRUE(result.done);
++  EXPECT_EQ(ARES_EFORMERR, result.status);
++  ares_freeaddrinfo(result.airesult);
++}
++
++TEST_P(MockTCPChannelTestAI, ServFailResponse) {
++  DNSPacket rsp;
++  rsp.set_response().set_aa()
++    .add_question(new DNSQuestion("www.google.com", ns_t_a));
++  rsp.set_rcode(ns_r_servfail);
++  EXPECT_CALL(server_, OnRequest("www.google.com", ns_t_a))
++    .WillOnce(SetReply(&server_, &rsp));
++  
++  AIResult result;
++  struct ares_addrinfo hints = {};
++  hints.ai_family = AF_INET;
++  ares_getaddrinfo(channel_, "www.google.com.", NULL, &hints, AICallback, &result);
++  Process();
++  EXPECT_TRUE(result.done);
++  // ARES_FLAG_NOCHECKRESP not set, so SERVFAIL consumed
++  EXPECT_EQ(ARES_ECONNREFUSED, result.status);
++  ares_freeaddrinfo(result.airesult);
++}
++
++TEST_P(MockTCPChannelTestAI, NotImplResponse) {
++  DNSPacket rsp;
++  rsp.set_response().set_aa()
++    .add_question(new DNSQuestion("www.google.com", ns_t_a));
++  rsp.set_rcode(ns_r_notimpl);
++  EXPECT_CALL(server_, OnRequest("www.google.com", ns_t_a))
++    .WillOnce(SetReply(&server_, &rsp));
++  
++  AIResult result;
++  struct ares_addrinfo hints = {};
++  hints.ai_family = AF_INET;
++  ares_getaddrinfo(channel_, "www.google.com.", NULL, &hints, AICallback, &result);
++  Process();
++  EXPECT_TRUE(result.done);
++  // ARES_FLAG_NOCHECKRESP not set, so NOTIMPL consumed
++  EXPECT_EQ(ARES_ECONNREFUSED, result.status);
++  ares_freeaddrinfo(result.airesult);
++}
++
++TEST_P(MockTCPChannelTestAI, RefusedResponse) {
++  DNSPacket rsp;
++  rsp.set_response().set_aa()
++    .add_question(new DNSQuestion("www.google.com", ns_t_a));
++  rsp.set_rcode(ns_r_refused);
++  EXPECT_CALL(server_, OnRequest("www.google.com", ns_t_a))
++    .WillOnce(SetReply(&server_, &rsp));
++  
++  AIResult result;
++  struct ares_addrinfo hints = {};
++  hints.ai_family = AF_INET;
++  ares_getaddrinfo(channel_, "www.google.com.", NULL, &hints, AICallback, &result);
++  Process();
++  EXPECT_TRUE(result.done);
++  // ARES_FLAG_NOCHECKRESP not set, so REFUSED consumed
++  EXPECT_EQ(ARES_ECONNREFUSED, result.status);
++  ares_freeaddrinfo(result.airesult);
++}
++
++// TODO: make it work
++//TEST_P(MockTCPChannelTestAI, YXDomainResponse) {
++//  DNSPacket rsp;
++//  rsp.set_response().set_aa()
++//    .add_question(new DNSQuestion("www.google.com", ns_t_a));
++//  rsp.set_rcode(ns_r_yxdomain);
++//  EXPECT_CALL(server_, OnRequest("www.google.com", ns_t_a))
++//    .WillOnce(SetReply(&server_, &rsp));
++//  
++//  AIResult result;
++//  struct ares_addrinfo hints = {};
++//  hints.ai_family = AF_INET;
++//  ares_getaddrinfo(channel_, "www.google.com.", NULL, &hints, AICallback, &result);
++//  Process();
++//  EXPECT_TRUE(result.done);
++//  EXPECT_EQ(ARES_ENODATA, result.status);
++//  ares_freeaddrinfo(result.airesult);
++//}
++
++class MockExtraOptsTestAI
++    : public MockChannelOptsTest,
++      public ::testing::WithParamInterface< std::pair<int, bool> > {
++ public:
++  MockExtraOptsTestAI()
++    : MockChannelOptsTest(1, GetParam().first, GetParam().second,
++                          FillOptions(&opts_),
++                          ARES_OPT_SOCK_SNDBUF|ARES_OPT_SOCK_RCVBUF) {}
++  static struct ares_options* FillOptions(struct ares_options * opts) {
++    memset(opts, 0, sizeof(struct ares_options));
++    // Set a few options that affect socket communications
++    opts->socket_send_buffer_size = 514;
++    opts->socket_receive_buffer_size = 514;
++    return opts;
++  }
++ private:
++  struct ares_options opts_;
++};
++
++TEST_P(MockExtraOptsTestAI, SimpleQuery) {
++  ares_set_local_ip4(channel_, 0x7F000001);
++  byte addr6[16] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
++                    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01};
++  ares_set_local_ip6(channel_, addr6);
++  ares_set_local_dev(channel_, "dummy");
++
++  DNSPacket rsp;
++  rsp.set_response().set_aa()
++    .add_question(new DNSQuestion("www.google.com", ns_t_a))
++    .add_answer(new DNSARR("www.google.com", 100, {2, 3, 4, 5}));
++  ON_CALL(server_, OnRequest("www.google.com", ns_t_a))
++    .WillByDefault(SetReply(&server_, &rsp));
++  
++  AIResult result;
++  struct ares_addrinfo hints = {};
++  hints.ai_family = AF_INET;
++  ares_getaddrinfo(channel_, "www.google.com.", NULL, &hints, AICallback, &result);
++  Process();
++  EXPECT_TRUE(result.done);
++  EXPECT_EQ(ARES_SUCCESS, result.status);
++  EXPECT_THAT(result.airesult, IncludesNumAddresses(1));
++  EXPECT_THAT(result.airesult, IncludesV4Address("2.3.4.5"));
++  ares_freeaddrinfo(result.airesult);
++}
++
++class MockFlagsChannelOptsTestAI
++    : public MockChannelOptsTest,
++      public ::testing::WithParamInterface< std::pair<int, bool> > {
++ public:
++  MockFlagsChannelOptsTestAI(int flags)
++    : MockChannelOptsTest(1, GetParam().first, GetParam().second,
++                          FillOptions(&opts_, flags), ARES_OPT_FLAGS) {}
++  static struct ares_options* FillOptions(struct ares_options * opts, int flags) {
++    memset(opts, 0, sizeof(struct ares_options));
++    opts->flags = flags;
++    return opts;
++  }
++ private:
++  struct ares_options opts_;
++};
++
++class MockNoCheckRespChannelTestAI : public MockFlagsChannelOptsTestAI {
++ public:
++  MockNoCheckRespChannelTestAI() : MockFlagsChannelOptsTestAI(ARES_FLAG_NOCHECKRESP) {}
++};
++
++TEST_P(MockNoCheckRespChannelTestAI, ServFailResponse) {
++  DNSPacket rsp;
++  rsp.set_response().set_aa()
++    .add_question(new DNSQuestion("www.google.com", ns_t_a));
++  rsp.set_rcode(ns_r_servfail);
++  ON_CALL(server_, OnRequest("www.google.com", ns_t_a))
++    .WillByDefault(SetReply(&server_, &rsp));
++  
++  AIResult result;
++  struct ares_addrinfo hints = {};
++  hints.ai_family = AF_INET;
++  ares_getaddrinfo(channel_, "www.google.com.", NULL, &hints, AICallback, &result);
++  Process();
++  EXPECT_TRUE(result.done);
++  EXPECT_EQ(ARES_ESERVFAIL, result.status);
++  ares_freeaddrinfo(result.airesult);
++}
++
++TEST_P(MockNoCheckRespChannelTestAI, NotImplResponse) {
++  DNSPacket rsp;
++  rsp.set_response().set_aa()
++    .add_question(new DNSQuestion("www.google.com", ns_t_a));
++  rsp.set_rcode(ns_r_notimpl);
++  ON_CALL(server_, OnRequest("www.google.com", ns_t_a))
++    .WillByDefault(SetReply(&server_, &rsp));
++  
++  AIResult result;
++  struct ares_addrinfo hints = {};
++  hints.ai_family = AF_INET;
++  ares_getaddrinfo(channel_, "www.google.com.", NULL, &hints, AICallback, &result);
++  Process();
++  EXPECT_TRUE(result.done);
++  EXPECT_EQ(ARES_ENOTIMP, result.status);
++  ares_freeaddrinfo(result.airesult);
++}
++
++TEST_P(MockNoCheckRespChannelTestAI, RefusedResponse) {
++  DNSPacket rsp;
++  rsp.set_response().set_aa()
++    .add_question(new DNSQuestion("www.google.com", ns_t_a));
++  rsp.set_rcode(ns_r_refused);
++  ON_CALL(server_, OnRequest("www.google.com", ns_t_a))
++    .WillByDefault(SetReply(&server_, &rsp));
++  
++  AIResult result;
++  struct ares_addrinfo hints = {};
++  hints.ai_family = AF_INET;
++  ares_getaddrinfo(channel_, "www.google.com.", NULL, &hints, AICallback, &result);
++  Process();
++  EXPECT_TRUE(result.done);
++  EXPECT_EQ(ARES_EREFUSED, result.status);
++  ares_freeaddrinfo(result.airesult);
++}
++
+ TEST_P(MockChannelTestAI, FamilyV6) {
+   DNSPacket rsp6;
+   rsp6.set_response().set_aa()
+@@ -118,7 +373,6 @@ TEST_P(MockChannelTestAI, FamilyV6) {
+   ares_freeaddrinfo(result.airesult);
+ }
+ 
+-
+ TEST_P(MockChannelTestAI, FamilyV4) {
+   DNSPacket rsp4;
+   rsp4.set_response().set_aa()
+@@ -190,6 +444,34 @@ TEST_P(MockChannelTestAI, FamilyUnspecified) {
+   ares_freeaddrinfo(result.airesult);
+ }
+ 
++class MockEDNSChannelTestAI : public MockFlagsChannelOptsTestAI {
++ public:
++  MockEDNSChannelTestAI() : MockFlagsChannelOptsTestAI(ARES_FLAG_EDNS) {}
++};
++
++TEST_P(MockEDNSChannelTestAI, RetryWithoutEDNS) {
++  DNSPacket rspfail;
++  rspfail.set_response().set_aa().set_rcode(ns_r_servfail)
++    .add_question(new DNSQuestion("www.google.com", ns_t_a));
++  DNSPacket rspok;
++  rspok.set_response()
++    .add_question(new DNSQuestion("www.google.com", ns_t_a))
++    .add_answer(new DNSARR("www.google.com", 100, {1, 2, 3, 4}));
++  EXPECT_CALL(server_, OnRequest("www.google.com", ns_t_a))
++    .WillOnce(SetReply(&server_, &rspfail))
++    .WillOnce(SetReply(&server_, &rspok));
++  
++  AIResult result;
++  struct ares_addrinfo hints = {};
++  hints.ai_family = AF_INET;
++  ares_getaddrinfo(channel_, "www.google.com.", NULL, &hints, AICallback, &result);
++  Process();
++  EXPECT_TRUE(result.done);
++  EXPECT_EQ(ARES_SUCCESS, result.status);
++  EXPECT_THAT(result.airesult, IncludesV4Address("1.2.3.4"));
++  ares_freeaddrinfo(result.airesult);
++}
++
+ TEST_P(MockChannelTestAI, SearchDomains) {
+   DNSPacket nofirst;
+   nofirst.set_response().set_aa().set_rcode(ns_r_nxdomain)
+@@ -267,11 +549,159 @@ TEST_P(MockChannelTestAI, SearchDomainsServFailOnAAAA) {
+   ares_freeaddrinfo(result.airesult);
+ }
+ 
++class MockMultiServerChannelTestAI
++  : public MockChannelOptsTest,
++    public ::testing::WithParamInterface< std::pair<int, bool> > {
++ public:
++  MockMultiServerChannelTestAI(bool rotate)
++    : MockChannelOptsTest(3, GetParam().first, GetParam().second, nullptr, rotate ? ARES_OPT_ROTATE : ARES_OPT_NOROTATE) {}
++  void CheckExample() {
++    AIResult result;
++    struct ares_addrinfo hints = {};
++    hints.ai_family = AF_INET;
++    ares_getaddrinfo(channel_, "www.example.com.", NULL, &hints, AICallback, &result);
++    Process();
++    EXPECT_TRUE(result.done);
++    EXPECT_EQ(result.status, ARES_SUCCESS);
++    EXPECT_THAT(result.airesult, IncludesNumAddresses(1));
++    EXPECT_THAT(result.airesult, IncludesV4Address("2.3.4.5"));
++    ares_freeaddrinfo(result.airesult);
++  }
++};
++
++class RotateMultiMockTestAI : public MockMultiServerChannelTestAI {
++ public:
++  RotateMultiMockTestAI() : MockMultiServerChannelTestAI(true) {}
++};
++
++class NoRotateMultiMockTestAI : public MockMultiServerChannelTestAI {
++ public:
++  NoRotateMultiMockTestAI() : MockMultiServerChannelTestAI(false) {}
++};
++
++
++TEST_P(RotateMultiMockTestAI, ThirdServer) {
++  struct ares_options opts = {0};
++  int optmask = 0;
++  EXPECT_EQ(ARES_SUCCESS, ares_save_options(channel_, &opts, &optmask));
++  EXPECT_EQ(0, (optmask & ARES_OPT_NOROTATE));
++  ares_destroy_options(&opts);
++
++  DNSPacket servfailrsp;
++  servfailrsp.set_response().set_aa().set_rcode(ns_r_servfail)
++    .add_question(new DNSQuestion("www.example.com", ns_t_a));
++  DNSPacket notimplrsp;
++  notimplrsp.set_response().set_aa().set_rcode(ns_r_notimpl)
++    .add_question(new DNSQuestion("www.example.com", ns_t_a));
++  DNSPacket okrsp;
++  okrsp.set_response().set_aa()
++    .add_question(new DNSQuestion("www.example.com", ns_t_a))
++    .add_answer(new DNSARR("www.example.com", 100, {2,3,4,5}));
++
++  EXPECT_CALL(*servers_[0], OnRequest("www.example.com", ns_t_a))
++    .WillOnce(SetReply(servers_[0].get(), &servfailrsp));
++  EXPECT_CALL(*servers_[1], OnRequest("www.example.com", ns_t_a))
++    .WillOnce(SetReply(servers_[1].get(), &notimplrsp));
++  EXPECT_CALL(*servers_[2], OnRequest("www.example.com", ns_t_a))
++    .WillOnce(SetReply(servers_[2].get(), &okrsp));
++  CheckExample();
++
++  // Second time around, starts from server [1].
++  EXPECT_CALL(*servers_[1], OnRequest("www.example.com", ns_t_a))
++    .WillOnce(SetReply(servers_[1].get(), &servfailrsp));
++  EXPECT_CALL(*servers_[2], OnRequest("www.example.com", ns_t_a))
++    .WillOnce(SetReply(servers_[2].get(), &notimplrsp));
++  EXPECT_CALL(*servers_[0], OnRequest("www.example.com", ns_t_a))
++    .WillOnce(SetReply(servers_[0].get(), &okrsp));
++  CheckExample();
++
++  // Third time around, starts from server [2].
++  EXPECT_CALL(*servers_[2], OnRequest("www.example.com", ns_t_a))
++    .WillOnce(SetReply(servers_[2].get(), &servfailrsp));
++  EXPECT_CALL(*servers_[0], OnRequest("www.example.com", ns_t_a))
++    .WillOnce(SetReply(servers_[0].get(), &notimplrsp));
++  EXPECT_CALL(*servers_[1], OnRequest("www.example.com", ns_t_a))
++    .WillOnce(SetReply(servers_[1].get(), &okrsp));
++  CheckExample();
++}
++
++TEST_P(NoRotateMultiMockTestAI, ThirdServer) {
++  struct ares_options opts = {0};
++  int optmask = 0;
++  EXPECT_EQ(ARES_SUCCESS, ares_save_options(channel_, &opts, &optmask));
++  EXPECT_EQ(ARES_OPT_NOROTATE, (optmask & ARES_OPT_NOROTATE));
++  ares_destroy_options(&opts);
++
++  DNSPacket servfailrsp;
++  servfailrsp.set_response().set_aa().set_rcode(ns_r_servfail)
++    .add_question(new DNSQuestion("www.example.com", ns_t_a));
++  DNSPacket notimplrsp;
++  notimplrsp.set_response().set_aa().set_rcode(ns_r_notimpl)
++    .add_question(new DNSQuestion("www.example.com", ns_t_a));
++  DNSPacket okrsp;
++  okrsp.set_response().set_aa()
++    .add_question(new DNSQuestion("www.example.com", ns_t_a))
++    .add_answer(new DNSARR("www.example.com", 100, {2,3,4,5}));
++
++  EXPECT_CALL(*servers_[0], OnRequest("www.example.com", ns_t_a))
++    .WillOnce(SetReply(servers_[0].get(), &servfailrsp));
++  EXPECT_CALL(*servers_[1], OnRequest("www.example.com", ns_t_a))
++    .WillOnce(SetReply(servers_[1].get(), &notimplrsp));
++  EXPECT_CALL(*servers_[2], OnRequest("www.example.com", ns_t_a))
++    .WillOnce(SetReply(servers_[2].get(), &okrsp));
++  CheckExample();
++
++  // Second time around, still starts from server [0].
++  EXPECT_CALL(*servers_[0], OnRequest("www.example.com", ns_t_a))
++    .WillOnce(SetReply(servers_[0].get(), &servfailrsp));
++  EXPECT_CALL(*servers_[1], OnRequest("www.example.com", ns_t_a))
++    .WillOnce(SetReply(servers_[1].get(), &notimplrsp));
++  EXPECT_CALL(*servers_[2], OnRequest("www.example.com", ns_t_a))
++    .WillOnce(SetReply(servers_[2].get(), &okrsp));
++  CheckExample();
++
++  // Third time around, still starts from server [0].
++  EXPECT_CALL(*servers_[0], OnRequest("www.example.com", ns_t_a))
++    .WillOnce(SetReply(servers_[0].get(), &servfailrsp));
++  EXPECT_CALL(*servers_[1], OnRequest("www.example.com", ns_t_a))
++    .WillOnce(SetReply(servers_[1].get(), &notimplrsp));
++  EXPECT_CALL(*servers_[2], OnRequest("www.example.com", ns_t_a))
++    .WillOnce(SetReply(servers_[2].get(), &okrsp));
++  CheckExample();
++}
++
++// force-tcp does currently not work, possibly test DNS server swallows
++// bytes from second query
++//INSTANTIATE_TEST_CASE_P(AddressFamiliesAI, MockChannelTestAI,
++//                       ::testing::ValuesIn(ares::test::families_modes));
++//const std::vector<std::pair<int, bool>> both_families_udponly = {
++//  std::make_pair<int, bool>(AF_INET, false),
++//  std::make_pair<int, bool>(AF_INET6, false)
++//};
+ INSTANTIATE_TEST_CASE_P(AddressFamiliesAI, MockChannelTestAI,
+-                        ::testing::Values(std::make_pair<int, bool>(AF_INET, false)));
++			::testing::Values(std::make_pair<int, bool>(AF_INET, false)));
+ 
+ INSTANTIATE_TEST_CASE_P(AddressFamiliesAI, MockUDPChannelTestAI,
+                         ::testing::ValuesIn(ares::test::families));
+ 
++INSTANTIATE_TEST_CASE_P(AddressFamiliesAI, MockTCPChannelTestAI,
++                        ::testing::ValuesIn(ares::test::families));
++
++INSTANTIATE_TEST_CASE_P(AddressFamiliesAI, MockExtraOptsTestAI,
++			::testing::ValuesIn(ares::test::families_modes));
++
++INSTANTIATE_TEST_CASE_P(AddressFamiliesAI, MockNoCheckRespChannelTestAI,
++			::testing::ValuesIn(ares::test::families_modes));
++
++INSTANTIATE_TEST_CASE_P(AddressFamiliesAI, MockEDNSChannelTestAI,
++			::testing::ValuesIn(ares::test::families_modes));
++
++INSTANTIATE_TEST_CASE_P(TransportModesAI, RotateMultiMockTestAI,
++			::testing::ValuesIn(ares::test::families_modes));
++
++INSTANTIATE_TEST_CASE_P(TransportModesAI, NoRotateMultiMockTestAI,
++			::testing::ValuesIn(ares::test::families_modes));
++
++
+ }  // namespace test
+ }  // namespace ares
+-- 
+2.16.4
+

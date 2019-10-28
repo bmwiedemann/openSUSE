@@ -134,4 +134,12 @@ solution</comment>
   Fixes bsc#1145724</comment>
     <requestid>731904</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>a0bc368c5ee88fd9178ab6cac963dfe0</srcmd5>
+    <version>1.2.0</version>
+    <time>1572277561</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>742192</requestid>
+  </revision>
 </revisionlist>

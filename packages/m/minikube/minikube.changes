@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep 30 14:32:15 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Update to 1.4.0
+  * Update default Kubernetes version to v1.16.0
+  * Upgrade dashboard to 2.0.0b4
+  * Upgrade addon-manager to v9.0.2, improve startup and reconcile
+    latency
+  * Add --interactive flag to prevent stdin prompts
+  * Automatically install docker-machine-driver-hyperkit if missing
+    or incompatible
+  * Driver defaults to the one previously used by the cluster
+  * Include port names in the 'minikube service' cmd's output
+  * Include ISO files as part of a GitHub release
+
+-------------------------------------------------------------------
 Mon Jun 24 14:33:12 UTC 2019 - Dany Marcoux <dmarcoux@suse.com>
 
 - Add libvirt to recommended packages

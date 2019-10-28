@@ -334,4 +334,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>727769</requestid>
   </revision>
+  <revision rev="38" vrev="5">
+    <srcmd5>06598fa384d9d3f191c224bad3efaab7</srcmd5>
+    <version>3.2</version>
+    <time>1572277527</time>
+    <user>dimstar_suse</user>
+    <comment>1 recommended fixe from upstream:
+- dmidecode-fix-system-slot-information-for-pcie-ssd.patch: Fix
+  System Slot Information for PCIe SSD.
+Partial support for SMBIOS 3.3.0:
+- dmidecode-add-enumerated-values-from-smbios-3.3.0.patch: Add
+  enumerated values from SMBIOS 3.3.0 (bsc#1153533).
+</comment>
+    <requestid>742155</requestid>
+  </revision>
 </revisionlist>

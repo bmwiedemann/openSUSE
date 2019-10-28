@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Oct 21 14:42:00 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 0.171.0
+   see /usr/share/doc/packages/perl-Test-MockModule/Changes
+
+  v0.171.0
+  - 89dc5c0 Fixes #25 - mocking core::global no longer fails trying to load the module - Geoff Franks
+  - 9bb081a update ci for fewer infinite loops - Geoff Franks
+  - 289d014 Update release notes for all the newly merged PRs - Geoff Franks
+  - fef9e74 Allow chaining of new with mock, redefine, define - Nicolas Rochelemagne
+  - e136131 Prevent redefine() from triggering DESTROY. - Felipe Gasper
+  - 311f6b4 Adjust Travis CI configuration to use travis-perl.github.io - Nicolas Rochelemagne
+  - 2bed3e2 Add strict mode to ban the use of noop and mock. - Todd Rinaldo
+  - 0298d8d Provide define method so the mock method is unneeded in tests. - Todd Rinaldo
+  
+  v0.171.0
+  - allow chaining of new with mock, redefine, define
+  - redefine() no longer triggers errors if the object being mocked is not a hashref
+  - Adds a define() method for mocking new functions that do not exist. Throws an
+    error if a function does exist.
+  - Adds `strict` mode to prevent usage of noop() and mock() functions, and force
+    the usage of define/redefine if desired.:
+    ```
+    use Test::MockModule qw/strict/;
+    ```
+  - Mocking CORE::GLOBAL no longer throws errors indicating CORE::GLOBAL should have
+    been installed/loaded
+
+-------------------------------------------------------------------
 Thu Sep 20 06:02:05 UTC 2018 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.170.0

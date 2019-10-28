@@ -1,4 +1,23 @@
 --------------------------------------------------------------------
+Wed Oct 23 13:46:25 UTC 2019 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#196
+- show debug info also on console device
+- fix reading slp data
+- show both autoyast and autoyast2 options on linuxrc info page
+- support autoyast-style URL syntax
+- read and parse autoyast file
+- add needed entries to global config struct
+- add new autoyast.parse key
+- parse autoyast/autoyast2 options and add new autoyast url schemes
+- activate new autoyast code
+- fix parsing linuxrc options embedded in AutoYaST file (bsc#1145574)
+- document autoyast option behavior
+- small additions to autoyast handling doc
+- support autoyast url schemes in linuxrc
+- 7.0.0
+
+--------------------------------------------------------------------
 Tue Sep 24 13:39:06 UTC 2019 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#195

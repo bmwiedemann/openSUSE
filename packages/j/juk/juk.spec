@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without  lang
 Name:           juk
-Version:        19.08.1
+Version:        19.08.2
 Release:        0
 Summary:        Jukebox
 License:        GPL-2.0-or-later
@@ -83,6 +83,7 @@ Jukebox and music manager by KDE
 %license COPYING
 %{_kf5_sharedir}/dbus-1/interfaces/org.kde.juk.*
 %{_kf5_applicationsdir}/org.kde.juk.desktop
+%{_kf5_notifydir}/juk.notifyrc
 %{_kf5_appsdir}/juk/
 %{_kf5_bindir}/juk
 %{_kf5_appstreamdir}/org.kde.juk.appdata.xml

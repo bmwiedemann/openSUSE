@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           artikulate
-Version:        19.08.1
+Version:        19.08.2
 Release:        0
 Summary:        Pronunciation Self-Teaching
 License:        LGPL-3.0-or-later AND GPL-2.0-only AND BSD-3-Clause
@@ -79,7 +79,7 @@ Improve your pronunciation by listening to native speakers.
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  %suse_update_desktop_file org.kde.%{name}       X-KDE-Edu-Teaching
+  %suse_update_desktop_file org.kde.%{name}       Languages
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig

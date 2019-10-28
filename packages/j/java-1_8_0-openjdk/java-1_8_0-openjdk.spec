@@ -190,6 +190,8 @@ Patch14:        zero-javadoc-verbose.patch
 #
 # Patch for PPC
 Patch103:       ppc-zero-hotspot.patch
+# Patch for aarch64
+Patch104:       hotspot-aarch64.patch
 
 Patch1001:      java-1_8_0-openjdk-suse-desktop-files.patch
 Patch1002:      icedtea-3.8.0-s390.patch
@@ -521,6 +523,10 @@ patch -p0 -i %{PATCH14}
 %ifarch ppc ppc64 ppc64le
 # PPC fixes
 patch -p0 -i %{PATCH103}
+%endif
+
+%ifarch aarch64
+patch -p0 -i %{PATCH104}
 %endif
 
 patch -p0 -i %{PATCH2001}

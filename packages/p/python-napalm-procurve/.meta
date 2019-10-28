@@ -1,0 +1,5 @@
+<package name="python-napalm-procurve" project="openSUSE:Factory">
+  <title>python-napalm-procurve</title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-napalm-procurve"/>
+</package>

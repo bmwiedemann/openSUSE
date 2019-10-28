@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Wed Oct  2 12:07:29 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use %license macro
+
+-------------------------------------------------------------------
+Tue Oct  1 19:12:01 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Use github source URL
+- Fix URL
+- Run tests
+- Specfile cleanup
+- Add patch:
+  * python-nxapi-plumbing-fix-broken-test.patch
+
+-------------------------------------------------------------------
+Wed Mar  6 15:02:50 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Initial checkin

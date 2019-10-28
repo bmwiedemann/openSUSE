@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Oct 22 06:43:32 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 68.2.0
+  * Message Display WebExtension API
+  * Message Search WebExtension API
+  * Better visual feedback for unread messages when using the dark theme
+  * Fixed various issues when editing mailing list
+  * Fixed application windows not maintaining their size after restart
+  MFSA 2019-33 (bsc#1154738)
+  * CVE-2019-15903 (bmo#1584907)
+    Heap overflow in expat library in XML_GetCurrentLineNumber
+  * CVE-2019-11757 (bmo#1577107)
+    Use-after-free when creating index updates in IndexedDB
+  * CVE-2019-11758 (bmo#1536227)
+    Potentially exploitable crash due to 360 Total Security
+  * CVE-2019-11759 (bmo#1577953)
+    Stack buffer overflow in HKDF output
+  * CVE-2019-11760 (bmo#1577719)
+    Stack buffer overflow in WebRTC networking
+  * CVE-2019-11761 (bmo#1561502)
+    Unintended access to a privileged JSONView object
+  * CVE-2019-11762 (bmo#1582857)
+    document.domain-based origin isolation has same-origin-property violation
+  * CVE-2019-11763 (bmo#1584216)
+    Incorrect HTML parsing results in XSS bypass technique
+  * CVE-2019-11764 (bmo#1558522, bmo#1577061, bmo#1548044, bmo#1571223,
+    bmo#1573048, bmo#1578933, bmo#1575217, bmo#1583684, bmo#1586845,
+    bmo#1581950, bmo#1583463, bmo#1586599)
+    Memory safety bugs fixed in Firefox 70 and Firefox ESR 68.2
+- removed obsolete patches
+    mozilla-bmo1573381.patch
+    mozilla-bmo1512162.patch
+    mozilla-bmo1585099.patch
+
+-------------------------------------------------------------------
 Thu Oct 10 14:30:09 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 68.1.2

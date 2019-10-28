@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 11 07:46:08 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.2.php
+- Changes since 19.08.1:
+  * Fix unwanted removal of /* before emacs mode line, which broke compilation
+  * Fix script for the case of multiple .rc files in the same line
+
+-------------------------------------------------------------------
 Thu Sep  5 14:00:21 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.1

@@ -16,7 +16,7 @@
 #
 
 
-%define _sonum 8
+%define _sonum 9
 %ifarch x86_64
 %define has_lldb 1
 # python3-lldb%{_sonum} is only built with these distributions (see llvm%{_sonum} package)
@@ -25,10 +25,10 @@
 %endif
 %endif
 Name:           llvm
-Version:        8.0.1
+Version:        9.0.0
 Release:        0
 Summary:        Low Level Virtual Machine
-License:        NCSA
+License:        Apache-2.0 WITH LLVM-exception OR NCSA
 Group:          Development/Languages/Other
 URL:            https://www.llvm.org/
 # This file documents the process for updating llvm
@@ -52,6 +52,7 @@ BuildRequires:  lldb%{_sonum}-devel = %{version}
 %if 0%{?has_lldb_python}
 BuildRequires:  python3-lldb%{_sonum} = %{version}
 %endif
+Recommends:     %{name}-doc
 # Mirrors ExcludeArch in llvm%{_sonum}
 ExcludeArch:    s390
 
@@ -81,11 +82,25 @@ This package is a dummy package that depends on the version of
 llvm-devel that openSUSE currently supports.  Packages that
 don't require a specific LLVM version should depend on this.
 
+%package doc
+Summary:        Documentation for LLVM
+Group:          Documentation/HTML
+Requires:       %{name} = %{version}
+Requires:       llvm%{_sonum}-doc = %{version}
+
+%description doc
+This package contains documentation for the LLVM infrastructure.
+
+This package is a dummy package that depends on the version of
+llvm-doc that openSUSE currently supports.  Packages that
+don't require a specific LLVM version should depend on this.
+
 %package -n clang
 Summary:        CLANG frontend for LLVM
 Group:          Development/Languages/C and C++
 Url:            https://clang.llvm.org/
 Requires:       clang%{_sonum} = %{version}
+Recommends:     clang-doc
 Provides:       llvm-clang = %{version}
 Obsoletes:      llvm-clang < %{version}
 
@@ -129,6 +144,19 @@ This package is a dummy package that depends on the version of
 clang-devel that openSUSE currently supports.  Packages that
 don't require a specific Clang version should depend on this.
 
+%package -n clang-doc
+Summary:        Documentation for Clang
+Group:          Documentation/HTML
+Requires:       clang = %{version}
+Requires:       clang%{_sonum}-doc = %{version}
+
+%description -n clang-doc
+This package contains documentation for the Clang compiler.
+
+This package is a dummy package that depends on the version of
+clang-doc that openSUSE currently supports.  Packages that
+don't require a specific Clang version should depend on this.
+
 %package LTO-devel
 Summary:        Link-time optimizer for LLVM (devel package)
 Group:          Development/Libraries/C and C++
@@ -158,6 +186,7 @@ don't require a specific LLVM version should depend on this.
 Summary:        Vim plugins for LLVM
 Group:          Productivity/Text/Editors
 Requires:       llvm%{_sonum}-vim-plugins = %{version}
+Supplements:    packageand(llvm:vim)
 BuildArch:      noarch
 
 %description    vim-plugins
@@ -171,6 +200,7 @@ don't require a specific LLVM version should depend on this.
 Summary:        Emacs plugins for LLVM
 Group:          Productivity/Text/Editors
 Requires:       llvm%{_sonum}-emacs-plugins = %{version}
+Supplements:    packageand(llvm:emacs)
 BuildArch:      noarch
 
 %description    emacs-plugins
@@ -185,6 +215,7 @@ Summary:        Software debugger built using LLVM libraries
 Group:          Development/Tools/Debuggers
 Url:            https://lldb.llvm.org/
 Requires:       lldb%{_sonum} = %{version}
+Recommends:     python3-lldb
 
 %description -n lldb
 LLDB is a next generation, high-performance debugger. It is built as a set

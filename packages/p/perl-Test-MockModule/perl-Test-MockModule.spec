@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-MockModule
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,11 @@
 
 
 Name:           perl-Test-MockModule
-Version:        0.170.0
+Version:        0.171.0
 Release:        0
 %define cpan_name Test-MockModule
 Summary:        Override subroutines in a module for unit testing
-License:        Artistic-1.0 or GPL-1.0+
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
 Url:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/G/GF/GFRANKS/%{cpan_name}-v%{version}.tar.gz
@@ -48,10 +48,10 @@ given module go out of scope, or when you 'unmock()' the subroutine.
 
 %prep
 %setup -q -n %{cpan_name}-v%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -name "*.sh" -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Build.PL installdirs=vendor
+perl Build.PL installdirs=vendor
 ./Build build flags=%{?_smp_mflags}
 
 %check
@@ -63,7 +63,7 @@ find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes ci README.md
+%doc Changes README.md
 %license LICENSE
 
 %changelog

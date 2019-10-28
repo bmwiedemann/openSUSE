@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 23 15:21:21 UTC 2019 - Jiri Bohac <jbohac@suse.cz>
+
+- create the radvd group on upgrades (bsc#1149037)
+
+-------------------------------------------------------------------
 Thu Aug 15 11:42:43 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
 
 - new version 2.18:

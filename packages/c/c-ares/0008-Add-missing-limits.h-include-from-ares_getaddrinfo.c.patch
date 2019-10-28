@@ -1,0 +1,35 @@
+From e65da6067e5f3524c940671dcffc966cc69f451f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dan=20No=C3=A9?= <dpn@google.com>
+Date: Wed, 17 Jul 2019 09:29:11 -0400
+Subject: [PATCH 08/10] Add missing limits.h include from ares_getaddrinfo.c
+ (#267)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This files references INT_MAX, but does not include limits.h. This can
+cause a build failure on some platforms. Include limits.h if we have it.
+
+Fix-by: Dan Noé <dpn@google.com>
+---
+ ares_getaddrinfo.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/ares_getaddrinfo.c b/ares_getaddrinfo.c
+index 86c9e71..dba5a00 100644
+--- a/ares_getaddrinfo.c
++++ b/ares_getaddrinfo.c
+@@ -48,6 +48,10 @@
+ #endif
+ #include <assert.h>
+ 
++#ifdef HAVE_LIMITS_H
++#include <limits.h>
++#endif
++
+ #include "ares.h"
+ #include "bitncmp.h"
+ #include "ares_private.h"
+-- 
+2.16.4
+

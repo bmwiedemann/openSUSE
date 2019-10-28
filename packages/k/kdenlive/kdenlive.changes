@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 11 07:42:41 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.2.php
+- Too many changes to list here.
+
+-------------------------------------------------------------------
 Thu Sep  5 14:00:24 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.1
@@ -6,21 +15,21 @@ Thu Sep  5 14:00:24 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
   * For more details please see:
   * https://www.kde.org/announcements/announce-applications-19.08.1.php
 - Changes since 19.08.0:
-  * Fix disabling clip only disable audio part of an AV clip. BUG: 411466 (kde#411466) 
-  * Fix regression breaking timeline resize 
-  * Fix timelinekeyboard focus on start and grab not correctly ended 
-  * default effects to video 
-  * Fix disabling autoscroll. Fixes #312 
-  * Convert old custom effects to new customAudio/Video naming Related to #336 
-  * Fix group move sometimes moving clip very far from expected location. Fixes #328 
-  * Ctrl resize in monitor effects keeps center position Fixes #321 
-  * Shift resize in monitor effect keeps aspect ratio Related to #321 
-  * Update appdata version 
-  * Fix effect/composition list filter working on untranslated strings Fixes #339 
-  * Merge branch 'rgb_parade' into 'master' 
-  * Fix custom effects not recognized as audio Fixes #336 
-  * Fix encoder speed ignored BUG: 411000 (kde#411000) 
-  * Late update of version in appdata.. 
+  * Fix disabling clip only disable audio part of an AV clip. BUG: 411466 (kde#411466)
+  * Fix regression breaking timeline resize
+  * Fix timelinekeyboard focus on start and grab not correctly ended
+  * default effects to video
+  * Fix disabling autoscroll. Fixes #312
+  * Convert old custom effects to new customAudio/Video naming Related to #336
+  * Fix group move sometimes moving clip very far from expected location. Fixes #328
+  * Ctrl resize in monitor effects keeps center position Fixes #321
+  * Shift resize in monitor effect keeps aspect ratio Related to #321
+  * Update appdata version
+  * Fix effect/composition list filter working on untranslated strings Fixes #339
+  * Merge branch 'rgb_parade' into 'master'
+  * Fix custom effects not recognized as audio Fixes #336
+  * Fix encoder speed ignored BUG: 411000 (kde#411000)
+  * Late update of version in appdata..
   * Use the parameter readable and translatable name instead of its formal name for the color edit widget
 
 -------------------------------------------------------------------
@@ -39,31 +48,31 @@ Fri Aug  9 08:30:44 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
   * Fix crash when dragging clip in insert mode. (kde#409577)
   * Use the translated transition names in the 'Properties' header
   * Fix freeze and fade ins allowed to go past last frame Fixes #327
-  * Fix revert speed clip reloading incorrectly 
-  * Fix copy/paste of clip with negative speed 
-  * Fix issues on clip reload: slideshow clips broken and title duration reset 
-  * Fix slideshow effects disappearing. Fixes #316 
-  * Fix track effect keyframes Fixes #238 
-  * Fix track effects don't invalidate timeline preview 
-  * Fix effect presets broken on comma locales, clear preset after resetting effect Fixes #303 
-  * Fix crash in extract zone when no track is active. Fixes #310 
-  * Fix reverting clip speed modifies in/out 
-  * Fix audio overlay showing up randomly. Fixes #305 
-  * Fix Find clip in bin not always scrolling to correct position. Fixes #302 
-  * Fix possible crash changing profile when cache job was running 
-  * Fix editing bin clip does not invalidate timeline preview. Fixes #307 
-  * Fix audiobalance (MLT doesn't handle start param as stated) Fixes #301 
-  * Fix target track inconsistencies: 3 state button, hide when shouldn't be available 
-  * Make the strings in the settings dialog translatable 
-  * Make effect names translatable in menus and in settings panel 
-  * Remember last target track and restore when another clip is selected 
-  * Dont' process insert when no track active, don't move cursor if no clip inserted 
-  * Correctly place timeline toolbar after editing toolbars 
-  * Lift/gamma/gain: make it possible to have finer adjustments with Shift modifier Fixes #297 
-  * Fix MLT effects with float param and no xml description Fixes #295 
+  * Fix revert speed clip reloading incorrectly
+  * Fix copy/paste of clip with negative speed
+  * Fix issues on clip reload: slideshow clips broken and title duration reset
+  * Fix slideshow effects disappearing. Fixes #316
+  * Fix track effect keyframes Fixes #238
+  * Fix track effects don't invalidate timeline preview
+  * Fix effect presets broken on comma locales, clear preset after resetting effect Fixes #303
+  * Fix crash in extract zone when no track is active. Fixes #310
+  * Fix reverting clip speed modifies in/out
+  * Fix audio overlay showing up randomly. Fixes #305
+  * Fix Find clip in bin not always scrolling to correct position. Fixes #302
+  * Fix possible crash changing profile when cache job was running
+  * Fix editing bin clip does not invalidate timeline preview. Fixes #307
+  * Fix audiobalance (MLT doesn't handle start param as stated) Fixes #301
+  * Fix target track inconsistencies: 3 state button, hide when shouldn't be available
+  * Make the strings in the settings dialog translatable
+  * Make effect names translatable in menus and in settings panel
+  * Remember last target track and restore when another clip is selected
+  * Dont' process insert when no track active, don't move cursor if no clip inserted
+  * Correctly place timeline toolbar after editing toolbars
+  * Lift/gamma/gain: make it possible to have finer adjustments with Shift modifier Fixes #297
+  * Fix MLT effects with float param and no xml description Fixes #295
   * Cleanup timeline selection: rubber select works again when starting over a clip.
-  * Attempt to fix Windows build 
-  * Various fixes for icon view: Fix long name breaking layout, fix seeking and subclip zone marker Related to #287 
+  * Attempt to fix Windows build
+  * Various fixes for icon view: Fix long name breaking layout, fix seeking and subclip zone marker Related to #287
   * Fix some bugs in handling of NVidia HWaccel for proxies and timeline preview
 
 -------------------------------------------------------------------

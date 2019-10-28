@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 16 07:21:20 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.7.4:
+  * Added support for the -gz[=type] compiler option (previously
+    ccache would think that “-gz” alone would enable debug
+    information, thus potentially including the current directory
+    in the hash).
+  * Added support for converting paths like “/c/users/...” into
+    relative paths on Windows.
+
+-------------------------------------------------------------------
 Mon Aug 26 08:57:55 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 3.7.3:

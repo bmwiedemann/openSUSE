@@ -17,14 +17,15 @@
 
 
 Name:           minikube
-Version:        1.0.1
+Version:        1.4.0
 Release:        0
 Summary:        Tool to run Kubernetes locally
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/kubernetes/minikube
 Source:         https://github.com/kubernetes/minikube/archive/v%{version}.tar.gz
-Source1:        minikube-rpmlintrc
+Source1:        vendor.tar.gz
+Source2:        minikube-rpmlintrc
 BuildRequires:  git-core
 BuildRequires:  golang-github-jteeuwen-go-bindata
 BuildRequires:  golang-packaging
@@ -56,6 +57,8 @@ virtual machines with Docker.
 
 %prep
 %setup -q
+tar -zxf %{SOURCE1}
+sed -i -e "s|GO111MODULE := on|GO111MODULE := off|" Makefile
 
 %build
 %{goprep} k8s.io/minikube

@@ -111,6 +111,7 @@ rtl8192ee:	realtek
 rtl8723bs:	realtek
 rtl8xxxu:	realtek
 r8169:		realtek
+r8152:		realtek
 vt6656:		usb-network		vt6656_stage
 DFU:		atheros		ar3k
 Atheros:	atheros		ar3k
@@ -172,4 +173,5 @@ cdns-mhdp:	platform
 fsl-mc:		dpaa2
 mscc-phy:	platform
 meson-vdec:	media
-ast		platform
+ice:		network
+ast:		platform

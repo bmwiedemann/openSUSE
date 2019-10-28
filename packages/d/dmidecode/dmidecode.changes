@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 23 13:31:26 UTC 2019 - Jean Delvare <jdelvare@suse.de>
+
+1 recommended fixe from upstream:
+- dmidecode-fix-system-slot-information-for-pcie-ssd.patch: Fix
+  System Slot Information for PCIe SSD.
+
+Partial support for SMBIOS 3.3.0:
+- dmidecode-add-enumerated-values-from-smbios-3.3.0.patch: Add
+  enumerated values from SMBIOS 3.3.0 (bsc#1153533).
+
+-------------------------------------------------------------------
 Mon Aug 26 12:35:42 UTC 2019 - Jean Delvare <jdelvare@suse.de>
 
 2 recommended fixes from upstream:

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 16 14:40:37 UTC 2019 - Marcus Schaefer <ms@suse.com>
+
+- Fixed ISO Application ID match
+    
+  When creating ISO's with xorriso the application ID is stored
+  upper case. The match in this code did not care for this and
+  failed the match.
+
+-------------------------------------------------------------------
 Thu Sep 12 09:44:38 UTC 2019 - David Cassany <dcassany@suse.com>
 
 - Drop netboot descriptions for openSUSE Leap 15.2

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 21 06:41:23 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Apply hotspot-aarch64.patch only for aarch64, as some other 
+  archs (armv6/7) use other hotspot sources
+
+-------------------------------------------------------------------
+Thu Oct 17 10:07:15 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix boo#1138529:
+  * hotspot-aarch64.patch
+
+-------------------------------------------------------------------
 Fri Jul 19 06:28:01 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version jdk8u222 (icedtea 3.13.0)

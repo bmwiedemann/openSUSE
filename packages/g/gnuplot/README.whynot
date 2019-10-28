@@ -1,6 +1,0 @@
-     Why PDF support is not enabled:
-     ===============================
-
-Requires libpdf which is a commercial library and therefore not
-part of SuSE LINUX.  As a replacement the `pdfcairo' terminal
-can be used to generate output in pdf.

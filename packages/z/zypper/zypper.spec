@@ -27,7 +27,7 @@ BuildRequires:  cmake >= 2.4.6
 BuildRequires:  gcc-c++ >= 4.7
 BuildRequires:  gettext-devel >= 0.15
 BuildRequires:  libxml2-devel
-BuildRequires:  libzypp-devel >= 17.14.0
+BuildRequires:  libzypp-devel >= 17.15.0
 BuildRequires:  readline-devel >= 5.1
 Requires:       procps
 %if 0%{?suse_version}
@@ -50,7 +50,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Command line software manager using libzypp
 License:        GPL-2.0-or-later
 Group:          System/Packages
-Version:        1.14.30
+Version:        1.14.32
 Release:        0
 Source:         %{name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc

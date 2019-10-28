@@ -1,2 +1,0 @@
-# tmp directory for package nagios
-d /var/run/nagios 0770 nagios nagcmd

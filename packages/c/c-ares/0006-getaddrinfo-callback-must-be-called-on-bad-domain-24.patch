@@ -1,0 +1,37 @@
+From 36348062003d1ef1a36148dd6d6a225f0ad65f5f Mon Sep 17 00:00:00 2001
+From: kedixa <1204837541@qq.com>
+Date: Thu, 2 May 2019 21:08:41 +0800
+Subject: [PATCH 06/10] getaddrinfo: callback must be called on bad domain
+ (#249)
+
+Due to an order of incrementing the remaining queries and calling ares_query, on a bad domain
+the registered callback wouldn't be called.
+
+Bug: #248
+Fixed-By: @kedixa
+---
+ ares_getaddrinfo.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/ares_getaddrinfo.c b/ares_getaddrinfo.c
+index 16c8b38..c9db8a2 100644
+--- a/ares_getaddrinfo.c
++++ b/ares_getaddrinfo.c
+@@ -307,12 +307,12 @@ static void next_dns_lookup(struct host_query *hquery) {
+ 
+   if (s) {
+     if (hquery->ai_family == AF_INET || hquery->ai_family == AF_UNSPEC) {
+-      ares_query(hquery->channel, s, C_IN, T_A, host_callback, hquery);
+       hquery->remaining++;
++      ares_query(hquery->channel, s, C_IN, T_A, host_callback, hquery);
+     }
+     if (hquery->ai_family == AF_INET6 || hquery->ai_family == AF_UNSPEC) {
+-      ares_query(hquery->channel, s, C_IN, T_AAAA, host_callback, hquery);
+       hquery->remaining++;
++      ares_query(hquery->channel, s, C_IN, T_AAAA, host_callback, hquery);
+     }
+     if (is_s_allocated) {
+       ares_free(s);
+-- 
+2.16.4
+

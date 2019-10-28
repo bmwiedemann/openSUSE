@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Wed Oct 23 16:33:33 CEST 2019 - tiwai@suse.de
+
+- Fix the missing ast and qla2xx firmwares due to typos in
+  extrawhence file
+
+-------------------------------------------------------------------
+Wed Oct 23 13:41:12 UTC 2019 - tiwai@suse.com
+
+- Update to version 20191023 (git commit: ad7a8b22b1d0):
+  * Mellanox: Add new mlxsw_spectrum2 firmware 29.2000.2308
+  * Mellanox: Add new mlxsw_spectrum firmware 13.2000.2308
+  * rtl_nic: add firmware files for RTL8153
+  * rtl_bt: Update configuration file for BT part of RTL8822CU
+  * bnx2x: Add FW 7.13.15.0.
+- Update topics.list and modaliases for r8152 and ice
+
+-------------------------------------------------------------------
+Wed Oct 23 07:05:55 UTC 2019 - tiwai@suse.com
+
+- Update to version 20191022 (git-commit: 2b016afc348b):
+  * linux-firmware: Update AMD cpu microcode
+  * linux-firmware: Update firmware file for Intel Bluetooth AX200
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * linux-firmware: Update firmware file for Intel Bluetooth 9560
+  * linux-firmware: Update firmware file for Intel Bluetooth 9260
+  * amdgpu: add initial navi14 firmware form 19.30
+  * rtlwifi: rtl8821ae: Add firmware for the RTL8812AE variant.
+  * ice: Fix up WHENCE entry and symlink
+  * nvidia: Update Tegra210 XUSB firmware to v50.24
+  * nvidia: Add XUSB firmware for Tegra194
+  * Remove duplicate symlinks
+  * copy-firmware: Create symlinks from WHENCE file
+  * Make symlinks consistent
+  * amdgpu: update vega20 ucode for 19.30
+  * amdgpu: update vega12 ucode for 19.30
+  * amdgpu: update vega10 ucode for 19.30
+  * amdgpu: update picasso ucode for 19.30
+  * amdgpu: update raven2 ucode for 19.30
+  * amdgpu: update raven ucode for 19.30
+  * amdgpu: add new raven rlc firmware
+  * ice: Add package file for Intel E800 series driver
+  * amdgpu: add initial navi10 firmware
+  * drm/i915/firmware: Add v9.0.0 of HuC for Icelake
+  * drm/i915/firmware: Add v4.0.0 of HuC for Cometlake
+  * drm/i915/firmware: Add v4.0.0 of HuC for Geminilake
+  * drm/i915/firmware: Add v2.0.0 of HuC for Broxton
+  * drm/i915/firmware: Add v4.0.0 of HuC for Kabylake
+  * drm/i915/firmware: Add v2.0.0 of HuC for Skylake
+  * drm/i915/firmware: Add v33 of GuC for CML
+  * drm/i915/firmware: Add v2.04 of DMC for TGL
+  * drm/i915/firmware: Add v1.09 of DMC for ICL
+  * qcom: add firmware files for Adreno a630
+- Update module aliases and topics list
+- Update install-split.sh to deal with the proper symlinks
+- Add verbose mode to install-split.sh
+
+-------------------------------------------------------------------
 Mon Sep 23 07:05:01 UTC 2019 - tiwai@suse.com
 
 - Update to version 20190909 (git-commit 6c6918ad8ae0):

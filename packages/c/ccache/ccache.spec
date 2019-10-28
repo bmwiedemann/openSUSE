@@ -17,7 +17,7 @@
 
 
 Name:           ccache
-Version:        3.7.3
+Version:        3.7.4
 Release:        0
 Summary:        A Fast C/C++ Compiler Cache
 License:        GPL-3.0-or-later
@@ -41,7 +41,7 @@ Objective-C++.
 %build
 %configure \
   --without-bundled-zlib
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install

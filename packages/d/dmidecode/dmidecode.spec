@@ -31,6 +31,8 @@ Patch1:         dmidecode-fix-redfish-hostname-print-length.patch
 Patch2:         dmidecode-add-logical-non-volatile-device.patch
 Patch3:         dmidecode-only-scan-dev-mem-for-entry-point-on-x86.patch
 Patch4:         dmidecode-fix-formatting-of-tpm-table-output.patch
+Patch5:         dmidecode-fix-system-slot-information-for-pcie-ssd.patch
+Patch6:         dmidecode-add-enumerated-values-from-smbios-3.3.0.patch
 Provides:       pmtools:%{_sbindir}/dmidecode
 Obsoletes:      pmtools < 20071117
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -57,6 +59,8 @@ the BIOS told it to.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
+%patch6 -p1
 
 %build
 make CFLAGS="%{optflags}" %{?_smp_mflags}

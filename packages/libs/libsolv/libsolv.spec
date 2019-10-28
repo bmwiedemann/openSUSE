@@ -52,7 +52,7 @@
 %bcond_with zypp
 
 Name:           libsolv
-Version:        0.7.6
+Version:        0.7.7
 Release:        0
 Summary:        Package dependency solver using a satisfiability algorithm
 License:        BSD-3-Clause
@@ -207,7 +207,7 @@ Perl bindings for libsolv.
 %setup -q
 
 %build
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+%global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 export CFLAGS="%{optflags}"
 export CXXFLAGS="$CFLAGS"
 

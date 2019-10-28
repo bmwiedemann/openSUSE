@@ -1,8 +1,0 @@
-
-## Path           : System/Management
-## Description    : Extra cli switches for docker daemon
-## Type           : string
-## Default        : ""
-## ServiceRestart : docker
-#
-DOCKER_OPTS=""

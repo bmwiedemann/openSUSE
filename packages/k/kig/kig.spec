@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kig
-Version:        19.08.1
+Version:        19.08.2
 Release:        0
 Summary:        Interactive Geometry
 License:        GPL-2.0-or-later
@@ -88,7 +88,6 @@ drawing mathematical figures and including them in other documents.
 
 %files
 %license COPYING*
-#{_kf5_sharedir}/katepart/
 %dir %{_kf5_htmldir}
 %dir %{_kf5_htmldir}/en
 %doc %lang(en) %{_kf5_htmldir}/en/*/

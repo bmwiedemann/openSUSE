@@ -1,5 +1,0 @@
-<package name="perl-Web-MREST" project="openSUSE:Factory">
-  <title>Web::MREST</title>
-  <description>Minimalistic REST server</description>
-  <devel project="devel:languages:perl" package="perl-Web-MREST"/>
-</package>

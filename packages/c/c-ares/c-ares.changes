@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Oct 23 15:11:27 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Add upstream patches with the ares_getaddrinfo function:
+  * 0001-Add-initial-implementation-for-ares_getaddrinfo-112.patch
+  * 0002-Remaining-queries-counter-fix-additional-unit-tests-.patch
+  * 0003-Bugfix-for-ares_getaddrinfo-and-additional-unit-test.patch
+  * 0004-Add-ares__sortaddrinfo-to-support-getaddrinfo-sorted.patch
+  * 0005-getaddrinfo-avoid-infinite-loop-in-case-of-NXDOMAIN-.patch
+  * 0006-getaddrinfo-callback-must-be-called-on-bad-domain-24.patch
+  * 0007-getaddrinfo-enhancements-257.patch
+  * 0008-Add-missing-limits.h-include-from-ares_getaddrinfo.c.patch
+  * 0009-Increase-portability-of-ares-test-mock-ai.cc-235.patch
+- Add a patch which disables test failing on OBS (but passing in
+  local environment):
+  * 0010-Disable-failing-test.patch
+
+-------------------------------------------------------------------
 Wed Feb 13 15:44:18 UTC 2019 - adam.majer@suse.de
 
 - Version update to 1.15.0:

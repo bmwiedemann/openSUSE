@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 11 07:42:30 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.2.php
+- Changes since 19.08.1:
+  * Don't trigger repeat-at-login alarms when editing or importing
+  * Fix error on undo of an active alarm deletion
+  * Fix errors in determining a collection's validity and content mime types
+  * Show correct read-only status of an alarm in its context menu
+  * Fix determination of writable collections
+  * When asked for writable collections, only return fully writable ones
+
+-------------------------------------------------------------------
 Thu Sep  5 14:00:07 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.1

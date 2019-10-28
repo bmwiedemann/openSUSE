@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 11 07:42:26 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.2.php
+- Changes since 19.08.1:
+  * Improve hi-dpi support
+  * Fix encoding of size tooltip in radial map (kde#411243)
+
+-------------------------------------------------------------------
 Thu Sep  5 14:00:02 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.1

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 11 07:42:49 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.2.php
+- Changes since 19.08.1:
+  * Fix build with cmake < 3.12
+  * Enable QURL_NO_CAST_FROM_STRING and fix compilation
+
+-------------------------------------------------------------------
 Thu Sep  5 14:00:34 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.1

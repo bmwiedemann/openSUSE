@@ -87,4 +87,23 @@
     <comment></comment>
     <requestid>711710</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>da4a8da5f92875512276c5104bdf3d33</srcmd5>
+    <version>1.4.0</version>
+    <time>1572277602</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.0
+  * Update default Kubernetes version to v1.16.0
+  * Upgrade dashboard to 2.0.0b4
+  * Upgrade addon-manager to v9.0.2, improve startup and reconcile
+    latency
+  * Add --interactive flag to prevent stdin prompts
+  * Automatically install docker-machine-driver-hyperkit if missing
+    or incompatible
+  * Driver defaults to the one previously used by the cluster
+  * Include port names in the 'minikube service' cmd's output
+  * Include ISO files as part of a GitHub release
+</comment>
+    <requestid>734544</requestid>
+  </revision>
 </revisionlist>
