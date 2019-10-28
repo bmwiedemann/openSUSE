@@ -2538,6 +2538,7 @@
     <package name="libpeas-loader-python3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpfs2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libpgm-5_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libphonenumber8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libphonon4qt5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libpinyin-data" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpinyin13" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2574,7 +2575,7 @@
     <package name="libprojectM3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libprotobuf-c1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libprotobuf-lite20" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libprotobuf20" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="libprotobuf20" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libproxy1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libproxy1-config-gnome3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libproxy1-config-kde" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
