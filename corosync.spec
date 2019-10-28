@@ -53,17 +53,18 @@ Group:          Productivity/Clustering/HA
 Version:        2.4.5
 Release:        0
 Url:            http://corosync.github.io/corosync/
+# source should be Souce code.tar.gz, https://github.com/corosync/corosync/archive/vX.X.X.tar.gz
 Source0:        %{name}-%{version}.tar.gz
 Source2:        baselibs.conf
 Patch1:         upstream-afd97d7884940_coroapi-Use-size_t-for-private_data_size.patch
-Patch2:		Fix-compile-warnings-with-GCC-7.2.1.patch
-Patch3:		bug-1083561_upgrade-from-1-x-y.patch
-Patch4:		bug-882449_corosync-conf-example.patch
-Patch5:		bug-1032634_fix-ifdown-udp.patch
-Patch6:		bug-1001164_corosync.conf-example.patch
-Patch7:		corosync-2.3.4-fix-bashisms.patch
-Patch8:		corosync-init-lockfile-path-error.patch
-Patch9:		corosync-start-stop-level.patch
+Patch2:         Fix-compile-warnings-with-GCC-7.2.1.patch
+Patch3:         bug-1083561_upgrade-from-1-x-y.patch
+Patch4:         bug-882449_corosync-conf-example.patch
+Patch5:         bug-1032634_fix-ifdown-udp.patch
+Patch6:         bug-1001164_corosync.conf-example.patch
+Patch7:         corosync-2.3.4-fix-bashisms.patch
+Patch8:         corosync-init-lockfile-path-error.patch
+Patch9:         corosync-start-stop-level.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # openais is indeed gone and should be uninstalled. Yes, we do not
@@ -87,7 +88,7 @@ Conflicts:      openais <= 0.89, openais-devel <= 0.89
 
 # Build bits
 
-BuildRequires:	groff-full
+BuildRequires:  groff-full
 BuildRequires:  libqb-devel
 BuildRequires:  mozilla-nss-devel
 BuildRequires:  zlib-devel

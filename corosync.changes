@@ -25,7 +25,7 @@ Fri Aug 16 09:50:28 UTC 2019 - Yuan Ren <yren@suse.com>
 	0009-bsc#1088619-add-version.patch
 	0010-qdevice-net-instance.c-optarg-should-be-str.patch
 	0011-NSS_NoDB_Init-the-parameter-is-reserved-must-be-NULL.patch
-	0012-cpg-inform-clients-about-left-nodes-during-pause.patch
+	0012-cpg-Inform-clients-about-left-nodes-during-pause.patch
 	bnc#872651-stop-cluster.patch
 	disable-build-html-docs.patch
    Renamed:
