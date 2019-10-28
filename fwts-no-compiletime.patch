@@ -1,0 +1,13 @@
+Index: fwts-19.09.00/src/acpica/source/compiler/aslutils.c
+===================================================================
+--- fwts-19.09.00.orig/src/acpica/source/compiler/aslutils.c
++++ fwts-19.09.00/src/acpica/source/compiler/aslutils.c
+@@ -561,7 +561,7 @@ UtDisplayOneSummary (
+         /* Compiler name and version number */
+ 
+         FlPrintFile (FileId, "%s version %X [%s]\n\n",
+-            ASL_COMPILER_NAME, (UINT32) ACPI_CA_VERSION, __DATE__);
++            ASL_COMPILER_NAME, (UINT32) ACPI_CA_VERSION);
+     }
+ 
+     /* Summary of main input and output files */
