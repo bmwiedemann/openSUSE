@@ -1268,4 +1268,12 @@ So it would be very nice to get this into 12.2. As it is an isolated feature, it
     <comment>new version</comment>
     <requestid>718118</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>6449edadfa3050210356300817af4895</srcmd5>
+    <version>9.0.0</version>
+    <time>1572277593</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>733091</requestid>
+  </revision>
 </revisionlist>

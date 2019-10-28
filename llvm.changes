@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Sep 22 19:55:01 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 9.0.0.
+  * For details, see the release notes:
+    - https://releases.llvm.org/9.0.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/9.0.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/9.0.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/9.0.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/9.0.0/tools/lld/docs/ReleaseNotes.html
+- Change License to "Apache-2.0 WITH LLVM-exception".
+  (https://llvm.org/foundation/relicensing/)
+- Offer separate packages for the documentation of llvm and clang,
+  recommend them for the main package: they are not required for
+  development, but actually useful for working with the non-devel
+  packages.
+- Recommend editor plugins not just for llvm-devel.
+- Make lldb recommend python3-lldb (it contains pretty printers).
+
+-------------------------------------------------------------------
 Sat Jul 20 19:01:13 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 8.0.1.
