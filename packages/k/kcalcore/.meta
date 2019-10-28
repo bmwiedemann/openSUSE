@@ -2,4 +2,7 @@
   <title></title>
   <description></description>
   <devel project="KDE:Applications" package="kcalcore"/>
+  <build>
+    <disable/>
+  </build>
 </package>
