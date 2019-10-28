@@ -1,0 +1,49 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2f04bb180ca1e41154f405062d5e733e</srcmd5>
+    <version>0.32.0</version>
+    <time>1507755474</time>
+    <user>dimstar_suse</user>
+    <comment>breaking up the Azure SDK</comment>
+    <requestid>531813</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3ecd2b7947b2277750dcf2541cc3d58b</srcmd5>
+    <version>0.33.0</version>
+    <time>1518596718</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571090</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c3a93b03fa8caf98640a865914048374</srcmd5>
+    <version>0.40.0</version>
+    <time>1526220275</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.40.0
+- Move LICENSE.txt from %doc to %license section
+- Refresh patches for new version
+- Update Requires from setup.py
+- Update %description from setup.py
+- Add patch ag_drop-compatible-releases-operator.patch
+- Drop patch ag_drop-compatible-releases-operaror.patch</comment>
+    <requestid>603169</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7c54fce02ec1f44e07a627d51adbe261</srcmd5>
+    <version>0.53.0</version>
+    <time>1557833490</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694386</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3a5c3b02499a57ec39f4d0d656e79435</srcmd5>
+    <version>0.61.1</version>
+    <time>1570710523</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to latest version (forwarded request 735160 from glaubitz)</comment>
+    <requestid>735678</requestid>
+  </revision>
+</revisionlist>

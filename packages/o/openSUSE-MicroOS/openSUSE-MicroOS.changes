@@ -1,0 +1,257 @@
+-------------------------------------------------------------------
+Wed Oct  2 09:46:13 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Drop "rd.neednet=0" as dracut bug fixed now
+
+-------------------------------------------------------------------
+Wed Oct  2 08:46:00 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Add RaspberryPi2 platform, only built with plain MicroOS flavor
+
+-------------------------------------------------------------------
+Mon Sep 30 07:51:30 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add kernel-firmware for RPi
+
+-------------------------------------------------------------------
+Mon Sep  9 13:53:08 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Regain sanity: Add replacebootconfig.sh to use the actual GRUB
+  config the system would generate itself
+- Mount by-uuid
+- Add rd.neednet=0 to work around dracut bug
+- Set ignition.platform.id in the cmdline
+- Remove swap for Pine64 and RPi3 and the pointless swapaccount
+  parameter from all flavours (boo#1149663)
+
+-------------------------------------------------------------------
+Thu Aug 29 15:25:19 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Use creative kiwi approach for modifying /etc/fstab (boo#1129566)
+- Use ignition-dracut
+- Add /boot/writable subvolume
+
+-------------------------------------------------------------------
+Thu Aug 22 15:29:49 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Enable chronyd instead of systemd-timesyncd, that's what the DVD
+  install uses
+
+-------------------------------------------------------------------
+Wed Aug 21 09:08:00 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Add kubic_admin, kubic_loadbalancer and kubic_worker patterns to
+  the Kubic-kubeadm flavor.
+
+-------------------------------------------------------------------
+Tue Apr 30 15:17:09 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Rename to MicroOS:
+- New flavors: bare, ContainerHost and Kubic-kubeadm
+- Remove workaround for kiwi bug
+- Merge XEN into kvm-and-xen
+- Remove unneeded sections in config.sh:
+  * cloud.cfg change was a noop
+  * RPi HDMI hotplug is implemented now
+- Bump version to 16.0.0
+- Remove -x86_64 suffixes, arch is part of the filename already
+
+-------------------------------------------------------------------
+Wed Apr 24 15:07:59 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Don't set DHCLIENT_SET_HOSTNAME to yes, cloud-init takes care of the hostname
+
+-------------------------------------------------------------------
+Thu Apr 11 12:40:57 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Workaround gh#SUSE/kiwi#1053 by adding grub2-*-efi explicitly
+
+-------------------------------------------------------------------
+Tue Apr  2 08:33:11 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Use the new microos and containers patterns and release pkg
+
+-------------------------------------------------------------------
+Wed Mar 20 10:53:27 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Remove xfsprogs from OpenStack - leftover from JeOS
+
+-------------------------------------------------------------------
+Fri Mar 15 19:40:38 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Merge bootstrap package sections
+- Remove unpartitioned space, no longer needed
+
+-------------------------------------------------------------------
+Tue Feb 19 14:04:25 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Use more kiwi-friendly container-runtime and container-runtime-kubernetes patterns
+  [boo#1125949]
+
+-------------------------------------------------------------------
+Wed Feb 13 13:52:22 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Drop the data partition, disable quotas entirely instead
+  (we'd need a seperate /var partition, but kiwi can't do it)
+- Change profile configuration: MicroOS+podman and MicroOS+cri-o+kubeadm
+- Use glibc-locale-base instead of glibc-locale
+- Fix etc overlay with new transactional-update and read-only-root-fs
+- Add cloud-init and cloud-init-config-casp directly
+
+-------------------------------------------------------------------
+Fri Feb  1 11:25:06 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- VMware image was apparently not read-only, fixed
+
+-------------------------------------------------------------------
+Fri Feb  1 09:59:11 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Add apparmor pattern to cri-o profile directly
+
+-------------------------------------------------------------------
+Tue Jan 31 19:13:00 UTC 2019 - Denis Kondratenko <dkondratenko@suse.com>
+
+- correct owner for vagrant home directory
+  
+-------------------------------------------------------------------
+Tue Jan 31 16:35:00 UTC 2019 - Denis Kondratenko <dkondratenko@suse.com>
+
+- unpredictable kernel-native ethX naming for Vagrant box to come up for 
+  ssh config
+
+-------------------------------------------------------------------
+Mon Jan 28 14:10:36 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Remove docker profiles
+- Only install cri-o-kubeadm-criconfig on kubeadm
+
+-------------------------------------------------------------------
+Thu Jan 24 16:20:27 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Enable systemd-timesyncd
+
+-------------------------------------------------------------------
+Tue Jan 22 14:24:00 UTC 2019 - Denis Kondratenko <dkondratenko@suse.com>
+
+- Enable kubelet service for images
+
+-------------------------------------------------------------------
+Tue Jan  8 14:16:47 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Rename from kubic-images to openSUSE-Tumbleweed-Kubic
+
+-------------------------------------------------------------------
+Thu Nov 22 10:48:18 CET 2018 - alvaro.saurin@suse.com
+
+- Use the net.ifnames=0 in the kernel cmdline args for KVM/Xen
+
+-------------------------------------------------------------------
+Tue Oct  2 15:21:41 UTC 2018 - Fabian Vogt <fvogt@suse.com>
+
+- Don't install kernel-firmware for the Vagrant flavour
+
+-------------------------------------------------------------------
+Tue Sep 25 16:14:55 UTC 2018 - Richard Brown <rbrown@suse.com>
+
+- Add Vagrant flavour (from jan.fajerski@suse.com)
+- Resolve criconfig dependency choice 
+
+-------------------------------------------------------------------
+Mon Sep 10 11:33:36 UTC 2018 - Fabian Vogt <fvogt@suse.com>
+
+- Avoid kernel-default-base:
+  * Missing important kernel modules for kubernetes
+
+-------------------------------------------------------------------
+Wed Sep  5 12:48:31 UTC 2018 - fvogt@suse.com
+
+- Remove cloud-init-config subvolume (boo#1107283)
+
+-------------------------------------------------------------------
+Thu Aug 23 10:13:06 UTC 2018 - rbrown@suse.com
+
+- Replace CaaSP-Stack flavour with kubeadm flavour
+- Introduce seperate crio and docker profiles
+
+-------------------------------------------------------------------
+Fri Aug 17 08:38:34 UTC 2018 - fvogt@suse.com
+
+- Decouple from CaaSP: It goes a separate path from now
+- Enable btrfs_quota_groups (bsc#1093518) (still broken in kiwi as of now)
+- Don't remove /etc/localtime in config.sh
+- Set bootloader_console="gfxterm" unless tty is on serial console
+- Remove systemd.show_status=0 from the kernel cmdline (bsc#1089826)
+- Fix VMware capitalization
+- Fix (kvm-and-)xen driver inclusion on non-MicroOS
+
+-------------------------------------------------------------------
+Fri Jun 22 12:44:13 UTC 2018 - fvogt@suse.com
+
+- Don't use import=true:
+  * OBS doesn't handle it correctly
+  * No effect in combination with _multibuild
+
+-------------------------------------------------------------------
+Thu Jun 21 07:39:06 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Use legacy MBR instead of GPT for Pine64 due to boo#1098550
+
+-------------------------------------------------------------------
+Tue Jun 19 16:06:50 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Don't setup data_part on Pine64
+
+-------------------------------------------------------------------
+Mon Jun 18 11:29:48 UTC 2018 - fvogt@suse.com
+
+- Don't setup data_part on RPi, it breaks the MBR
+
+-------------------------------------------------------------------
+Fri Jun  8 09:25:07 UTC 2018 - fvogt@suse.com
+
+- Add patterns-caasp-apparmor to the Stack profile
+
+-------------------------------------------------------------------
+Mon May 28 17:12:07 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Add pine64 flavour
+
+-------------------------------------------------------------------
+Wed May 23 12:51:01 UTC 2018 - fvogt@suse.com
+
+- Add sections to allow building against CaaSP
+- Add pre_checkin.sh to generate both caasp and kubic image descriptions
+- Update schema to version 6.7
+
+-------------------------------------------------------------------
+Wed May 23 07:06:54 UTC 2018 - fvogt@suse.com
+
+- Don't try to enable quotas here, it's wrong (bsc#1093518)
+
+-------------------------------------------------------------------
+Fri May  4 09:13:44 UTC 2018 - fvogt@suse.com
+
+- /var/lib/docker on a separate partition with btrfs
+- Adjust snapper configuration to enable quotas, disable timeline
+  snapshots and keep fewer number snapshots
+- Only call add-yast-repos if available
+- Adjust zypp.conf to disable multiversion and recommends and enable
+  excludedocs
+- Use set -exo pipefail for good measure
+
+-------------------------------------------------------------------
+Wed May  2 12:06:06 UTC 2018 - fvogt@suse.com
+
+- Add hardware-x86_64 flavor with kernel-default
+- Include live-add-yast-repos
+
+-------------------------------------------------------------------
+Wed Apr 25 13:51:17 UTC 2018 - fvogt@suse.com
+
+- Add new flavors and targets for patterns-caasp-Stack and patterns-caasp-onlyDVD
+- Add _constraints
+
+-------------------------------------------------------------------
+Fri Apr 13 07:24:55 UTC 2018 - fvogt@suse.com
+
+- New image, based on SLE 15 JeOS and CaaSP 3.0 descriptions

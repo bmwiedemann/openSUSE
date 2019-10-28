@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>969ddbdd549d4e126ad337fb4ba24541</srcmd5>
+    <version>1.0.1</version>
+    <time>1408957418</time>
+    <user>coolo</user>
+    <comment>license fixed
+
+new module for Qore programming language as described in: http://lists.opensuse.org/opensuse-factory/2013-01/msg00105.html</comment>
+    <requestid>245611</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>969ddbdd549d4e126ad337fb4ba24541</srcmd5>
+    <version>1.0.1</version>
+    <time>1409303136</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>2256e96d51254dc92058fa1852f05ebf</srcmd5>
+    <version>1.0.1</version>
+    <time>1441054784</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328131</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9bbc816515b99b978a5da8f1c7dbe890</srcmd5>
+    <version>6.2.1810</version>
+    <time>1554384123</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on ARM and PPC, only include immintrin.h when SSE is available
+- Correct License:, netgen has always been LGPL-2.1-only.
+- Package License file.
+- Remove boost BuildRequires:, it is not used at all.
+- Guard Requires: occt-devel in devel package with bcond, so it
+  does not get pulled in if netgen is built without OpenCascade.
+
+
+- switch to gcc7
+- Remove ldconfig calls since there are only dlopened plugins,
+  no standard libraries.
+- Wrap description.
+- Use convenient %make_install, and run fdupes.
+- update to version 6.2.1810
+  obsoletes:
+    allow_fine_curves.patch
+    occ-pi-constant.patch
+    do_stl_init.patch
+- switch to cmake, obsoletes AM_PROG_AR.patch
+- use obs_scm, obsoletes svnfetch.sh and netgen.sh
+- move include files into /usr/include/netgen/
+- use -fno-strict-aliasing
+- add some extra header wrapper files missed by FreeCAD
+- switch to OpenCASCADE 7.2.0
+- switch to OpenCASCADE 7.1.0 and newer boost
+- enable python for openSUSE Tumbleweed
+- Using source service to follow git master (pre-6.1)
+- use new oce instead of OpenCASCADE
+- enable openmpi
+- use fixes for rpath from Johannes Obermayer
+- Changed to upstream version
+- /usr/bin/netgen was a policy violation, -&gt; /usr/lib/netgen
+- Pulling git snapshot 5.1-dev, as the official 5.0.0 release only compiles 
+  with _MSC_VER; Ng_stl_Init() missing otherwise
+- added full autoconf tooling to spec-file, sigh...
+- renamed /usr/bin/netgen.sh to /usr/bin/netgen
+- update to 5.0.0
+  * upstream changelog is empty
+- obsolete fully upstreamed occ-6.5.0 patch
+- patching ng/Makefile to find -lTogl1.7
+- improved netgen.sh to allow parameters and preserve cwd.
+- allow_fine_curves.patch added, finer defaults, extended slider range
+ 
+- remove unneeded lam and lam-devel package requirement
+- new version 4.9.13
+- added patch occ-6.5.0.patch taken from debian package
+- fixed compiling errors on gcc44
+- new upstream version 4.9.11
+- new upstream version 
+</comment>
+    <requestid>688784</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,16 @@
+<package name="perl-Gnome2-Canvas" project="openSUSE:Factory">
+  <title>Gnome2-Canvas Perl module</title>
+  <description>The Gnome2::Canvas module allows a perl developer to use the GnomeCanvas
+widget with Gtk2-Perl.  Find out more about Gnome+ at http://www.gnome.org.
+
+Like the Gtk2 module on which it depends, Gnome2::Canvas follows the C API
+of libgnomecanvas-2.0 as closely as possible while still being perlish.
+Thus, the C API reference remains the canonical documentation.
+
+To discuss gtk2-perl, ask questions and flame/praise the authors,
+join gtk-perl-list@gnome.org at lists.gnome.org.
+
+Also have a look at the gtk2-perl website and sourceforge project page,
+http://gtk2-perl.sourceforge.net</description>
+  <devel project="devel:languages:perl" package="perl-Gnome2-Canvas"/>
+</package>

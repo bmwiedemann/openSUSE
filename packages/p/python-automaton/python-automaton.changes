@@ -1,0 +1,154 @@
+-------------------------------------------------------------------
+Mon Apr  8 13:58:02 UTC 2019 - cloud-devel@suse.de
+
+- update to version 1.16.0
+  - add lib-forward-testing-python3 test job
+  - Change openstack-dev to openstack-discuss
+  - Update reno for stable/rocky
+  - Use template for lower-constraints
+  - add python 3.6 unit test job
+  - import zuul job settings from project-config
+
+-------------------------------------------------------------------
+Tue Sep 11 07:51:46 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.15.0
+  - set default python to python3
+  - fix tox python3 overrides
+  - Update reno for stable/queens
+  - Trivial: Update pypi url to new url
+  - Switch to stestr
+  - fix list of default virtualenvs
+  - Updated from global requirements
+  - add lower-constraints job
+
+-------------------------------------------------------------------
+Mon Sep  3 18:12:21 UTC 2018 - dmueller@suse.com
+
+- switch to stable/rocky spec template
+
+-------------------------------------------------------------------
+Fri Feb 23 12:47:46 UTC 2018 - tbechtold@suse.com
+
+- Switch to stable/queens spec template
+
+-------------------------------------------------------------------
+Thu Jan 18 08:51:55 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.14.0
+  - Updated from global requirements
+
+-------------------------------------------------------------------
+Wed Dec 20 09:36:34 UTC 2017 - cloud-devel@suse.de
+
+- update to version 1.13.1
+  - Update reno for stable/pike
+  - Remove setting of version/release from releasenotes
+  - Updated from global requirements
+  - Avoid tox_install.sh for constraints support
+  - Remove kwarg default_start_state in the machine constructor
+
+-------------------------------------------------------------------
+Thu Sep 28 06:18:52 UTC 2017 - cloud-devel@suse.de
+
+- update to version 1.12.1
+  - Update .gitreview for stable/pike
+  - Updated from global requirements
+  - Update UPPER_CONSTRAINTS_FILE for stable/pike
+
+-------------------------------------------------------------------
+Thu Aug 24 08:47:50 UTC 2017 - tbechtold@suse.com
+
+- Fix url
+
+-------------------------------------------------------------------
+Mon Aug  7 08:02:57 UTC 2017 - cloud-devel@suse.de
+
+- update to version 1.12.0
+  - rearrange existing documentation according to the new standard layout
+  - Update URLs in documents according to document migration
+  - Remove support for py34
+  - update link to docs in readme
+  - Update reno for stable/ocata
+  - Remove unused dependecy testscenarios
+  - Remove pbr warnerrors in favor of sphinx check
+  - Updated from global requirements
+  - switch from oslosphinx to openstackdocstheme
+
+-------------------------------------------------------------------
+Fri Feb 10 14:03:11 UTC 2017 - cloud-devel@suse.de
+
+- update to version 1.7.0:
+  - Removes unnecessary utf-8 encoding
+  - Add Constraints support
+  - Updated from global requirements
+  - Don't include openstack/common in flake8 exclude list
+  - Changed the home-page link
+  - Replace six.iteritems() with .items()
+  - Fix release notes gate failure
+  - Add reno for release notes management
+
+-------------------------------------------------------------------
+Fri Aug 26 20:48:47 UTC 2016 - tbechtold@suse.com
+
+- update to version 1.4.0:
+  * Remove discover from test-requirements
+  * Add Python 3.5 classifier and venv
+  * Updated from global requirements
+- Update _service and switch to upstream spec template
+
+-------------------------------------------------------------------
+Thu Mar  3 14:15:57 UTC 2016 - tbechtold@suse.com
+
+- update to 1.2.0:
+  * Add a state-space machine building example
+  * Ensure state space can also pass on_enter/exit callbacks
+  * Updated from global requirements
+  * Updated from global requirements
+  * Ensure machine special method(s) include in generated docs
+  * Put py34 first in the envlist order of tox ,remove py33
+  * Removes MANIFEST.in as it is not needed explicitely by PBR
+  * Deprecated tox -downloadcache option removed
+  * Updated from global requirements
+  * Remove python 2.6 and cleanup tox.ini
+  * Added code coverage section to tox
+  * No need for Oslo Incubator Sync
+  * Ignore generated files
+  * docs - Set pbr 'warnerrors' option for doc build
+  * Remove dummy/placeholder 'ChangeLog' as its not needed
+  * Enhance the README
+  * Fix the build path in .gitignore file
+  * Updated from global requirements
+  * Provide a finite machine build() method
+  * Allow for raising on duplicate transition registration
+- update Requires according to requirements.txt
+
+-------------------------------------------------------------------
+Wed Sep  9 06:37:10 UTC 2015 - tbechtold@suse.com
+
+- update to 0.7.0:
+  * Updated from global requirements
+  * Activate pep8 check that _ is imported
+
+-------------------------------------------------------------------
+Wed Jul 29 05:20:53 UTC 2015 - tbechtold@suse.com
+
+- Unify spec file
+
+-------------------------------------------------------------------
+Tue Jul 28 11:54:52 UTC 2015 - tbechtold@suse.com
+
+- update to 0.5.0:
+  * Ensure doctesting and doc8 testing done in py27 env
+  * Updated from global requirements
+  * Remove setup.cfg 'requires-python' incorrect entry
+  * Document `process_event` return and expose return namedtuple type
+  * Allow providing and using a 'nested_start_state_fetcher'
+- add _service
+- update Requires according to requirements.txt
+
+-------------------------------------------------------------------
+Wed Jul 22 12:37:15 UTC 2015 - dmueller@suse.com
+
+- Initial package (0.4.0)
+

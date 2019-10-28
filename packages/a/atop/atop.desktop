@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Terminal=true
+TryExec=atop
+Exec=atop
+Type=Application
+Categories=
+StartupNotify=false
+Name=atop
+GenericName=System Monitor
+

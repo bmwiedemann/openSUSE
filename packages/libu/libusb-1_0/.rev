@@ -1,0 +1,317 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>2f951440c9e3110200abe841b69d7bec</srcmd5>
+    <version>0.9.3</version>
+    <time>1222209455</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>9b668b7e4e5e662fa926fd2be614fc39</srcmd5>
+    <version>0.9.3</version>
+    <time>1222257813</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>9c4e6868b245aa9526d67085c0943e1e</srcmd5>
+    <version>0.9.3</version>
+    <time>1223309785</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>58e86dc1be4a786e27592a65ff4acd0d</srcmd5>
+    <version>0.9.3</version>
+    <time>1235390118</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>669861f1382322b628a1396180506167</srcmd5>
+    <version>1.0.0</version>
+    <time>1239731000</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1f286d38bc17764ca5477b419b12db34</srcmd5>
+    <version>1.0.1</version>
+    <time>1243464778</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c29602608fbd58987f705f0429e77620</srcmd5>
+    <version>1.0.2</version>
+    <time>1247078335</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>c29602608fbd58987f705f0429e77620</srcmd5>
+    <version>1.0.2</version>
+    <time>1247078335</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8a01f3ee84ccb8a4aff282b319a3163f</srcmd5>
+    <version>1.0.6</version>
+    <time>1259919523</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/libusb-1_0 based on submit request 25484 from user sbrabec
+</comment>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>8e52a2ff9c5063d37970a08f6099903e</srcmd5>
+    <version>1.0.6</version>
+    <time>1260544151</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/libusb-1_0 based on submit request 26250 from user sbrabec
+</comment>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>ef1edd48d8a1ccabf3dd62be907ff742</srcmd5>
+    <version>1.0.6</version>
+    <time>1263480711</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/libusb-1_0 based on submit request 29426 from user coolo
+</comment>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>bfc46b2db6e722a8a968af0e88198c01</srcmd5>
+    <version>1.0.6</version>
+    <time>1268924752</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>4f69db5cb2594ed5982e03d908b5fcb8</srcmd5>
+    <version>1.0.6</version>
+    <time>1272121537</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/libusb-1_0 based on submit request 38671 from user coolo
+</comment>
+    <requestid>38671</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>38c4188856f086077d1ec36e326dbb9d</srcmd5>
+    <version>1.0.8</version>
+    <time>1277734725</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/libusb-1_0 based on submit request 41979 from user prusnak
+</comment>
+    <requestid>41979</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>38c4188856f086077d1ec36e326dbb9d</srcmd5>
+    <version>1.0.8</version>
+    <time>1278667364</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>38c4188856f086077d1ec36e326dbb9d</srcmd5>
+    <version>1.0.8</version>
+    <time>1278678593</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>38c4188856f086077d1ec36e326dbb9d</srcmd5>
+    <version>1.0.8</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>a99186d9c5dfe6309fa73588e70df6c9</srcmd5>
+    <version>1.0.8</version>
+    <time>1307616012</time>
+    <user>saschpe</user>
+    <comment>- move libusb from /usr to / to make it usable for other packages
+  and work around rpmlint stupidity</comment>
+    <requestid>72927</requestid>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>03a47a110c8b24a7549d66aff23b0c69</srcmd5>
+    <version>1.0.8</version>
+    <time>1307616023</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72927
+</comment>
+  </revision>
+  <revision rev="20" vrev="10">
+    <srcmd5>03a47a110c8b24a7549d66aff23b0c69</srcmd5>
+    <version>1.0.8</version>
+    <time>1319182143</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="11">
+    <srcmd5>ddcbed8bf7f8b0c2715fac0b995ff9b6</srcmd5>
+    <version>1.0.8</version>
+    <time>1321886872</time>
+    <user>coolo</user>
+    <comment>- add libtool as buildrequire to avoid implicit dependency (forwarded request 92613 from coolo)</comment>
+    <requestid>92698</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d7c8e738207bf73851f1ab7314f47506</srcmd5>
+    <version>1.0.8_1.0.9rc3</version>
+    <time>1322814450</time>
+    <user>coolo</user>
+    <comment>Fix baselibs.conf (forwarded request 94389 from dimstar)</comment>
+    <requestid>94395</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>f0459c0b19d5e7f1ae97c6d143d08fed</srcmd5>
+    <version>1.0.8_1.0.9rc3</version>
+    <time>1323192366</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>71c4da35c964810cc56f8977663c8cdc</srcmd5>
+    <version>1.0.8_1.0.9rc3</version>
+    <time>1329318981</time>
+    <user>coolo</user>
+    <comment>- Libraries back in %{_libdir}, /usr merge project. (forwarded request 104140 from elvigia)</comment>
+    <requestid>104145</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>da60763ffb81c73d15e88caff9c9932a</srcmd5>
+    <version>1.0.8.99.3.218</version>
+    <time>1334216321</time>
+    <user>coolo</user>
+    <comment>- Update to the latest git snapshot 6b1982b:
+  * Bug fixes.
+  * Support for USB 3.0.
+  * Add LIBUSB_TRANSFER_ADD_ZERO_PACKET flag.</comment>
+    <requestid>112485</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d84be64fa197b15ac381d48a4bd1eab6</srcmd5>
+    <version>1.0.9</version>
+    <time>1334927894</time>
+    <user>coolo</user>
+    <comment>Update to 1.0.9 final (forwarded request 114772 from dimstar)</comment>
+    <requestid>114780</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>a7931246aaf680124049692fe7f63802</srcmd5>
+    <version>1.0.9</version>
+    <time>1336580266</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>116925</requestid>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>a7931246aaf680124049692fe7f63802</srcmd5>
+    <version>1.0.9</version>
+    <time>1340183648</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="29" vrev="6">
+    <srcmd5>a7931246aaf680124049692fe7f63802</srcmd5>
+    <version>1.0.9</version>
+    <time>1359109369</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="7">
+    <srcmd5>5d4bb428089e7486399cdd2709b1ed24</srcmd5>
+    <version>1.0.9</version>
+    <time>1366175909</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 170858 from m_meister)</comment>
+    <requestid>170904</requestid>
+  </revision>
+  <revision rev="31" vrev="9">
+    <srcmd5>5d4bb428089e7486399cdd2709b1ed24</srcmd5>
+    <version>1.0.9</version>
+    <time>1379663121</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>dadd54b27158bdea5a1d070b1f0f6a67</srcmd5>
+    <version>1.0.18</version>
+    <time>1392538237</time>
+    <user>coolo</user>
+    <comment>- New upstream, new home page.
+- Update to version 1.0.18:
+  * API extensions:
+    * hotplug support
+    * topology support
+    * error processing, detaching, debugging etc.
+  * many fixes
+  * for more see ChangeLog
+It is exactly just the previous request, just fixes format of udev BuildRequires.</comment>
+    <requestid>221338</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>08873d56de632279d40fe6b288a1c10c</srcmd5>
+    <version>1.0.18</version>
+    <time>1401167340</time>
+    <user>coolo</user>
+    <comment>- Build with pkgconfig(libudev), not pkgconfig(udev). (forwarded request 235039 from sbrabec)</comment>
+    <requestid>235041</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>269332f1ed0741300d4f092d46635619</srcmd5>
+    <version>1.0.19</version>
+    <time>1406369981</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242198</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>269332f1ed0741300d4f092d46635619</srcmd5>
+    <version>1.0.19</version>
+    <time>1409301746</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>5e6f91f22fad5596f6ef675e9e6f81ba</srcmd5>
+    <version>1.0.20</version>
+    <time>1443067995</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>330999</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>992c8a7b40f2ccfbbbf757405f24f275</srcmd5>
+    <version>1.0.20</version>
+    <time>1446048962</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>340573</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>b86cb6418a8a8cf63a4df8831ad7c7fa</srcmd5>
+    <version>1.0.20</version>
+    <time>1465750439</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400317</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>378e485956c3b55bae1fca45ff112753</srcmd5>
+    <version>1.0.21</version>
+    <time>1478174193</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438239</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>35e1fc9d1e03df1a4fd704aa8d8dc1cf</srcmd5>
+    <version>1.0.22</version>
+    <time>1522059099</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590913</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>d4a5e241b3bf9f731046360e89f15057</srcmd5>
+    <version>1.0.23</version>
+    <time>1567580190</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727093</requestid>
+  </revision>
+</revisionlist>

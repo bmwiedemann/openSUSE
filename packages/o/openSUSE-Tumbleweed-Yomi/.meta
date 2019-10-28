@@ -1,0 +1,5 @@
+<package name="openSUSE-Tumbleweed-Yomi" project="openSUSE:Factory">
+  <title>Live image for Yomi installations</title>
+  <description></description>
+  <devel project="systemsmanagement:yomi" package="openSUSE-Tumbleweed-Yomi"/>
+</package>

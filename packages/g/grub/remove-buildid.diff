@@ -1,0 +1,16 @@
+--- stage1/Makefile.am
++++ stage1/Makefile.am
+@@ -12,4 +12,4 @@ stage1_exec_SOURCES = stage1.S stage1.h
+ 
+ SUFFIXES = .exec
+ .exec:
+-	$(OBJCOPY) -O binary $< $@
++	$(OBJCOPY) -R .note.gnu.build-id -O binary $< $@
+--- stage2/Makefile.am
++++ stage2/Makefile.am
+@@ -269,4 +269,4 @@ pxegrub: pxeloader diskless
+ # General rule for making a raw binary.
+ SUFFIXES = .exec
+ .exec:
+-	$(OBJCOPY) -O binary $< $@
++	$(OBJCOPY) -R .note.gnu.build-id -O binary $< $@

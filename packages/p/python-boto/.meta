@@ -1,0 +1,13 @@
+<package name="python-boto" project="openSUSE:Factory">
+  <title></title>
+  <description>An integrated interface to current and future infrastructural services offered
+by Amazon Web Services. Currently, this includes:
+ 
+    * Simple Storage Service (S3)
+    * Simple Queue Service (SQS)
+    * Elastic Compute Cloud (EC2)
+    * Mechanical Turk
+    * SimpleDB
+    * CloudFront</description>
+  <devel project="devel:languages:python:aws" package="python-boto"/>
+</package>

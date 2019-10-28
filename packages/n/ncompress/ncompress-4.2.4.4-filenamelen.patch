@@ -1,0 +1,40 @@
+--- ncompress-4.2.4.4/compress42.c	2010-09-10 05:40:22.000000000 +0200
++++ ncompress-4.2.4.4/compress42.c.filenamelen	2015-11-11 15:57:39.354280794 +0100
+@@ -213,7 +213,7 @@
+ #	define	OBUFSIZ	BUFSIZ	/* Default output buffer size							*/
+ #endif
+ 
+-#define MAXPATHLEN 1024		/* MAXPATHLEN - maximum length of a pathname we allow 	*/
++#define MAXPATHLEN PATH_MAX		/* MAXPATHLEN - maximum length of a pathname we allow 	*/
+ #define	SIZE_INNER_LOOP		256	/* Size of the inter (fast) compress loop			*/
+ 
+ 							/* Defines for third byte of header 					*/
+@@ -700,6 +700,7 @@
+ 	{
+     	REG3	char		**filelist;
+ 		REG4	char		**fileptr;
++        int i;
+ 
+     	if (fgnd_flag = (signal(SIGINT, SIG_IGN) != SIG_IGN))
+ 			signal(SIGINT, (SIG_TYPE)abort_compress);
+@@ -713,6 +714,12 @@
+     	nomagic = 1;	/* Original didn't have a magic number */
+ #endif
+ 
++        for(i=0;i<argc;i++){
++            if(strlen(argv[i])>(MAXPATHLEN-1)){
++                fprintf(stderr,"Filename too long\n");
++                exit(1);
++            }
++        }
+     	filelist = (char **)malloc(argc*sizeof(char *));
+     	if (filelist == NULL)
+ 		{
+@@ -860,6 +867,7 @@
+ 		}
+ 
+ 		exit((exit_code== -1) ? 1:exit_code);
++                return 0;
+ 	}
+ 
+ void

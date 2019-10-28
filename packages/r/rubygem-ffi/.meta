@@ -1,0 +1,10 @@
+<package name="rubygem-ffi" project="openSUSE:Factory">
+  <title>Title of New Package</title>
+  <description>
+LONG DESCRIPTION 
+GOES 
+HERE
+  </description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-ffi"/>
+  <url>PUT_UPSTREAM_URL_HERE</url>
+</package>

@@ -1,0 +1,30 @@
+From d6ba264038fde08baf5e62bdde2a5614792db5c8 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 24 May 2019 10:53:09 +0200
+Subject: [PATCH 14/25] control_shm: add missing socket close to the error path
+ (coverity)
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/control/control_shm.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/control/control_shm.c b/src/control/control_shm.c
+index 1d9de8b75860..40d4264342fc 100644
+--- a/src/control/control_shm.c
++++ b/src/control/control_shm.c
+@@ -424,8 +424,10 @@ static int make_local_socket(const char *filename)
+ 	addr->sun_family = AF_LOCAL;
+ 	memcpy(addr->sun_path, filename, l);
+ 
+-	if (connect(sock, (struct sockaddr *) addr, size) < 0)
++	if (connect(sock, (struct sockaddr *) addr, size) < 0) {
++		close(sock);
+ 		return -errno;
++	}
+ 	return sock;
+ }
+ 
+-- 
+2.16.4
+

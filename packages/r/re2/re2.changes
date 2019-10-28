@@ -1,0 +1,185 @@
+-------------------------------------------------------------------
+Thu Sep 12 01:16:44 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2019-09-01:
+  * build system fixes
+
+-------------------------------------------------------------------
+Fri Aug  2 10:01:06 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2019-08-01:
+  * Update Unicode data to 12.1.0
+  * Various developer visible changes
+
+-------------------------------------------------------------------
+Mon Jul 22 15:22:25 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix download url
+
+-------------------------------------------------------------------
+Wed Jul 17 17:27:10 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2019-07-01:
+  * developer visible changes
+
+-------------------------------------------------------------------
+Wed Mar 13 16:04:27 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2019-03-01:
+  * developer visible changes only
+
+-------------------------------------------------------------------
+Fri Jan  4 11:42:56 UTC 2019 - astieger@suse.com
+
+- update to 2019-01-01:
+  * developer visible changes, performance tweaks and bug fixes
+
+-------------------------------------------------------------------
+Wed Oct 17 09:01:20 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- update to 2018-10-01:
+  * developer visible changes only
+
+-------------------------------------------------------------------
+Wed Sep  5 12:04:00 UTC 2018 - astieger@suse.com
+
+- update to 2018-09-01:
+  * developer visible changes only
+
+-------------------------------------------------------------------
+Thu Aug 23 12:46:51 UTC 2018 - astieger@suse.com
+
+- update to 2018-08-01:
+  * Fix the "DFA out of memory" error for the reverse Prog
+
+-------------------------------------------------------------------
+Fri Jul 20 12:53:33 UTC 2018 - mpluskal@suse.com
+
+- Simplify spec file a bit
+
+-------------------------------------------------------------------
+Fri Jul 20 11:57:00 UTC 2018 - astieger@suse.com
+
+- update to 2018-07-01:
+  * Fix a "DFA out of memory" error
+  * Update Unicode data to 11.0.0
+  * Fix `-Wclass-memaccess' warnings and fallthrough macros
+  * Use the standard first-byte analysis for the DFA too
+
+-------------------------------------------------------------------
+Fri Apr  6 12:26:44 UTC 2018 - mpluskal@suse.com
+
+- Update to version 2018-04-01
+  * developer visible changes only
+
+-------------------------------------------------------------------
+Wed Mar 21 08:10:46 UTC 2018 - astieger@suse.com
+
+- update to 2018-03-01:
+  * no longer linking against librd and libm
+  * other developer visible changes
+
+-------------------------------------------------------------------
+Fri Feb  2 10:26:54 UTC 2018 - astieger@suse.com
+
+- update to 2018-02-01:
+  * developer visible changes only
+
+-------------------------------------------------------------------
+Wed Jan  3 16:14:03 UTC 2018 - mpluskal@suse.com
+
+- Update to version 2018-01-01
+  * No upstream changelog available 
+
+-------------------------------------------------------------------
+Wed Jan  3 12:27:06 UTC 2018 - dimstar@opensuse.org
+
+- Add baselibs.conf: create libre2-0-32bit, dependency to
+  libqt5-qtwebengine-32bit.
+
+-------------------------------------------------------------------
+Mon Dec 18 14:19:37 UTC 2017 - mpluskal@suse.com
+
+- Update to version 2017-12-01
+  * No upstream changelog available 
+
+-------------------------------------------------------------------
+Fri Nov  3 08:50:46 UTC 2017 - mpluskal@suse.com
+
+- Update to version 2017-11-01
+  * No upstream changelog available 
+
+-------------------------------------------------------------------
+Mon Sep  4 12:11:07 UTC 2017 - mpluskal@suse.com
+
+- Update to version 2017-07-01
+  * No upstream changelog available 
+
+-------------------------------------------------------------------
+Sat Jul 29 10:04:51 UTC 2017 - mpluskal@suse.com
+
+- Update to version 2017-07-01
+  * No upstream changelog available 
+
+-------------------------------------------------------------------
+Sun Jun 11 09:55:00 UTC 2017 - mpluskal@suse.com
+
+- Update to version 2017-06-01
+  * No upstream changelog available 
+
+-------------------------------------------------------------------
+Fri May 19 08:42:56 UTC 2017 - vsistek@suse.com
+
+- Update to version 2017-05-01
+  * No upstream changelog available 
+
+-------------------------------------------------------------------
+Thu Apr 13 14:07:55 UTC 2017 - mpluskal@suse.com
+
+- Update to version 2017-04-01
+  * No upstream changelog available
+
+-------------------------------------------------------------------
+Thu Mar 16 11:38:30 UTC 2017 - mpluskal@suse.com
+
+- Update to version 2017-03-01
+  * No upstream changelog available
+
+-------------------------------------------------------------------
+Sat Jan 14 10:21:10 UTC 2017 - mpluskal@suse.com
+
+- Update to version 2017-01-01
+  * No upstream changelog available
+
+-------------------------------------------------------------------
+Sat Dec  3 12:10:17 UTC 2016 - mpluskal@suse.com
+
+- Update to version 2016-11-01:
+  * No upstream changelog available
+- Drop no longer needed re2-gcc61.patch
+
+-------------------------------------------------------------------
+Sat Oct 22 22:14:31 UTC 2016 - jengelh@inai.de
+
+- Fixup group and avoid rm indirection
+
+-------------------------------------------------------------------
+Thu Sep  8 07:53:14 UTC 2016 - mpluskal@suse.com
+
+- Drop releasenumber
+
+-------------------------------------------------------------------
+Wed Sep  7 12:17:14 UTC 2016 - tchvatal@suse.com
+
+- Version update to 2016-09-01 version
+  * Various changes based on google needs, long changelog in upstream
+    github repo
+- Rebase spec on Fedora package
+- Add patch to build with gcc 6.1:
+  * re2-gcc61.patch
+
+-------------------------------------------------------------------
+Fri Dec 21 12:44:23 UTC 2012 - aplanas@novell.com
+
+- Initial package version. 
+

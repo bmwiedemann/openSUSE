@@ -1,0 +1,8 @@
+<package name="less" project="openSUSE:Factory">
+  <title>Text File Browser and Pager Similar to more</title>
+  <description>less is a text file browser and pager similar to more. It allows
+backward as well as forward movement within a file. Also, less does not
+have to read the entire input file before starting. It is possible to
+start an editor at any time from within less.</description>
+  <devel project="Base:System" package="less"/>
+</package>

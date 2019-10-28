@@ -1,0 +1,6 @@
+<package name="python-XlsxWriter" project="openSUSE:Factory">
+  <title>Python module for writing OOXML spreadsheet files</title>
+  <description>XlsxWriter is a Python module for writing files in the Microsoft Office Open XML spreadsheet format.
+It can be used to write text, numbers, formulas and hyperlinks to multiple worksheets and it supports features such as formatting and many more.</description>
+  <devel project="devel:languages:python:numeric" package="python-XlsxWriter"/>
+</package>

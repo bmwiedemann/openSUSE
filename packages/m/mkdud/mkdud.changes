@@ -1,0 +1,326 @@
+--------------------------------------------------------------------
+Mon Sep 23 13:12:48 UTC 2019 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mkdud#31
+- adjust spec file to build on SLE-11
+- 1.47
+
+--------------------------------------------------------------------
+Mon Sep 23 11:50:34 UTC 2019 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mkdud#28
+- start moving doc to asciidoc; add proper man page
+- 1.46
+
+--------------------------------------------------------------------
+Thu Apr 4 13:04:44 UTC 2019 - snwint@suse.de
+
+- merge gh#openSUSE/mkdud#30
+- map Kubic to Tumbleweed
+- 1.45
+
+--------------------------------------------------------------------
+Tue Jan 8 09:39:11 UTC 2019 - snwint@suse.de
+
+- merge gh#openSUSE/mkdud#27
+- fix architecture auto-detection for elf binaries and libraries
+- 1.44
+
+--------------------------------------------------------------------
+Thu Dec 20 11:00:46 UTC 2018 - snwint@suse.de
+
+- merge gh#openSUSE/mkdud#26
+- fix building on old distros
+- 1.43
+
+--------------------------------------------------------------------
+Thu Dec 20 10:27:23 UTC 2018 - snwint@suse.de
+
+- merge gh#openSUSE/mkdud#25
+- fix package build
+- 1.42
+
+--------------------------------------------------------------------
+Thu Dec 20 10:05:17 UTC 2018 - snwint@suse.de
+
+- merge gh#openSUSE/mkdud#24
+- Add bash completion
+- 1.41
+
+--------------------------------------------------------------------
+Tue Dec 11 15:16:47 UTC 2018 - snwint@suse.de
+
+- merge gh#openSUSE/mkdud#23
+- move spec file into obs directory
+- 1.40
+
+--------------------------------------------------------------------
+Tue Dec 11 14:38:08 UTC 2018 - snwint@suse.de
+
+- merge gh#openSUSE/mkdud#22
+- fix reading oscrc (gh#openSUSE/mkdud#19)
+- update git2log script
+- add package spec file
+- 1.39
+
+--------------------------------------------------------------------
+Thu Nov 15 13:35:09 UTC 2018 - snwint@suse.de
+
+- merge gh#openSUSE/mkdud#21
+- add HOWTO describing some typical uses
+- update git2log script
+- fix typo
+- 1.38
+
+--------------------------------------------------------------------
+Thu Nov 15 13:09:18 UTC 2018 - snwint@suse.de
+
+- merge gh#openSUSE/mkdud#20
+- put 'module.config' files into module directory
+- 1.37
+
+--------------------------------------------------------------------
+Mon Aug 27 12:50:19 UTC 2018 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mkdud#18
+- look also at ~/.config/osc/oscrc for osc config
+- 1.36
+
+--------------------------------------------------------------------
+Tue May 8 14:29:23 UTC 2018 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mkdud#15
+- add links to related blog articles
+- 1.35
+
+--------------------------------------------------------------------
+Thu Apr 26 14:23:20 UTC 2018 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mkdud#14
+- fix Makefile and update git2log script
+- 1.34
+
+--------------------------------------------------------------------
+Thu Apr 26 14:20:34 UTC 2018 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mkdud#13
+- improve documentation
+- 1.33
+
+--------------------------------------------------------------------
+Tue Apr 10 08:20:24 UTC 2018 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mkdud#12
+- adjust mkdud to work around a problem when updating coreutils
+  (bsc#1087901)
+- 1.32
+
+--------------------------------------------------------------------
+Wed Mar 21 15:11:00 UTC 2018 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mkdud#11
+- adjust CaaSP support (bsc#1085261)
+- 1.31
+
+--------------------------------------------------------------------
+Mon May 8 15:02:59 UTC 2017 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mkdud#10
+- support openSUSE Kubic
+- fix service pack condition check
+- 1.30
+
+-------------------------------------------------------------------
+Fri Jan 13 15:18:32 UTC 2017 - snwint@suse.com
+
+- merge pr gh#openSUSE/mkdud#9
+- follow casp -> caasp renaming
+- 1.29
+
+-------------------------------------------------------------------
+Wed Dec 14 09:26:19 UTC 2016 - snwint@suse.com
+
+- merge pr gh#openSUSE/mkdud#8
+- use latest git2log script from linuxrc-devtools package
+- support CASP and extend documentation for --dist option
+- 1.28
+
+-------------------------------------------------------------------
+Wed Nov 30 15:21:13 UTC 2016 - snwint@suse.com
+
+- more readable variable names
+- be more specific about dists that support DUDs as rpm
+- squash dashes ('-') to match more dist name spellings
+- support creating a dud in rpm format (bsc#1006175)
+- adjust documentation to include rpm format
+- accept driver updates packed as rpm
+- 1.27
+
+-------------------------------------------------------------------
+Mon Nov 28 12:46:21 UTC 2016 - snwint@suse.com
+
+- even more more verbose message
+- even more verbose error message
+- allow to skip distribution check using --force (bsc#1012241)
+- 1.26
+
+-------------------------------------------------------------------
+Fri Feb 12 09:41:11 UTC 2016 - snwint@suse.com
+
+- add support for leap and tumbleweed
+- 1.25
+
+-------------------------------------------------------------------
+Thu Jan 21 08:51:11 UTC 2016 - snwint@suse.com
+
+- Remove warning on yast replacement for versions supporting it.
+- 1.24
+
+-------------------------------------------------------------------
+Tue Jan 19 13:46:13 UTC 2016 - snwint@suse.com
+
+- better public key file detection
+- 1.23
+
+-------------------------------------------------------------------
+Thu Jan 14 14:17:15 UTC 2016 - snwint@suse.com
+
+- added --obs-keys option to retrieve necessary obs project keys
+- 1.22
+
+-------------------------------------------------------------------
+Wed Jan 13 13:56:12 UTC 2016 - snwint@suse.com
+
+- use mkpath instead of make_path to be compatible with older perl versions
+- 1.21
+
+-------------------------------------------------------------------
+Wed Jan 13 11:58:31 UTC 2016 - snwint@suse.com
+
+- suppport adding public pgp keys for rpm verification
+- 1.20
+
+-------------------------------------------------------------------
+Tue Sep 29 09:15:16 UTC 2015 - snwint@suse.com
+
+- Add information about openSUSE development
+- Convert README to Markdown
+- 1.19
+
+-------------------------------------------------------------------
+Thu Apr 30 15:21:03 CEST 2015 - snwint@suse.com
+
+- clarify iso usage in README
+- support creating duds in iso9660 format
+- 1.18
+
+-------------------------------------------------------------------
+Wed Mar  4 13:40:45 CET 2015 - snwint@suse.com
+
+- adjust permissions of gpg dir
+- 1.17
+
+-------------------------------------------------------------------
+Fri Feb 13 12:06:10 CET 2015 - snwint@suse.com
+
+- added --prefix option to let users choose the directory prefix
+- 1.16
+
+-------------------------------------------------------------------
+Wed Feb 11 11:42:33 CET 2015 - snwint@suse.com
+
+- create and read directly (non-detached) signed updates
+- 1.15
+
+-------------------------------------------------------------------
+Mon Feb  9 14:16:09 CET 2015 - snwint@suse.com
+
+- support creating signed driver updates
+- 1.14
+
+-------------------------------------------------------------------
+Mon Jan 26 16:41:08 CET 2015 - snwint@suse.com
+
+- fix git2log script
+- 1.13
+
+-------------------------------------------------------------------
+Mon Jan 26 16:23:15 CET 2015 - snwint@suse.com
+
+- updated git2log script
+- 1.12
+
+-------------------------------------------------------------------
+Mon Jan 26 16:20:32 CET 2015 - snwint@suse.com
+
+- Fix typo
+- 1.11
+
+-------------------------------------------------------------------
+Mon Oct 13 15:36:14 CEST 2014 - jenkins@suse.com
+
+- added 'archive' Makefile target
+- updated git2log script
+- 1.10
+
+-------------------------------------------------------------------
+Wed May 14 11:19:12 CEST 2014 - snwint@suse.de
+
+- adjust /sbin/yast check to work with latest yast packages
+- 1.9
+
+-------------------------------------------------------------------
+Fri Apr 25 10:13:37 CEST 2014 - snwint@suse.de
+
+- add 'format' option to support different DUD formats
+- update supported arch list
+- 1.8
+
+-------------------------------------------------------------------
+Fri Jan 31 10:48:30 CET 2014 - snwint@suse.de
+
+- fixed file magic usage
+- 1.6
+
+-------------------------------------------------------------------
+Wed Jan  8 16:29:52 CET 2014 - snwint@suse.de
+
+- support conditional DUDs
+- 1.5
+
+-------------------------------------------------------------------
+Fri Nov 15 13:05:42 CET 2013 - snwint@suse.de
+
+- support Ruby files
+- better parsing of file locations in ycp/rb files
+
+-------------------------------------------------------------------
+Fri Sep  6 14:15:31 CEST 2013 - snwint@suse.de
+
+- prevent /usr/src/packages to be created
+- new option --force replaces old --may-replace-yast
+- add --no-docs option: remove package docs (map pages, info pages, /usr/share/doc)
+- clarified dist names for service packs
+- map dist specs like sles11-sp1 to sles11
+
+-------------------------------------------------------------------
+Tue Aug  6 10:46:50 CEST 2013 - snwint@suse.de
+
+- fix creating some minimalistic driver updates
+
+-------------------------------------------------------------------
+Thu Jul 11 16:39:24 CEST 2013 - snwint@suse.de
+
+- rename rpm2dud to mkdud
+- complete code rewrite with lots of new cool functions
+
+-------------------------------------------------------------------
+Tue Mar 12 14:26:26 CET 2013 - snwint@suse.de
+
+- support adding and running ordinary files
+
+-------------------------------------------------------------------
+Fri Sep  2 15:14:14 CEST 2011 - snwint@suse.de
+
+- initial version
+

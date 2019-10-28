@@ -1,0 +1,33 @@
+Index: gammaray-2.9.0/ui/resources/CMakeLists.txt
+===================================================================
+--- gammaray-2.9.0.orig/ui/resources/CMakeLists.txt
++++ gammaray-2.9.0/ui/resources/CMakeLists.txt
+@@ -1,14 +1,14 @@
+ # See https://standards.freedesktop.org/icon-theme-spec/icon-theme-spec-latest.html
+ if(UNIX AND NOT APPLE AND GAMMARAY_BUILD_UI)
+   foreach(size 16 24 32 48 64 128 256 512)
+-    foreach(scale 1 2 3)
++    #foreach(scale 1 2 3)
+       set(scaled_size ${size}x${size})
+       set(source gammaray/GammaRay-${scaled_size}.png)
+ 
+-      if(${scale} GREATER 1)
+-        set(scaled_size ${size}x${size}@${scale})
+-        set(source gammaray/GammaRay-${scaled_size}x.png)
+-      endif()
++      #if(${scale} GREATER 1)
++      #  set(scaled_size ${size}x${size}@${scale})
++      #  set(source gammaray/GammaRay-${scaled_size}x.png)
++      #endif()
+ 
+       if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${source})
+         install(
+@@ -16,7 +16,7 @@ if(UNIX AND NOT APPLE AND GAMMARAY_BUILD
+           DESTINATION "${ICON_INSTALL_DIR}/hicolor/${scaled_size}/apps" RENAME GammaRay.png
+         )
+       endif()
+-    endforeach()
++    #endforeach()
+   endforeach()
+ endif()
+ 

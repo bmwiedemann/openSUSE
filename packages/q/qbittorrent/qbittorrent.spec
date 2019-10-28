@@ -18,7 +18,7 @@
 
 
 Name:           qbittorrent
-Version:        4.1.8
+Version:        4.1.9
 Release:        0
 Summary:        A BitTorrent client in Qt
 License:        GPL-2.0-or-later
@@ -30,16 +30,16 @@ Source2:        %{name}.keyring
 BuildRequires:  cmake >= 3.9
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libqt5-linguist-devel
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  libboost_system-devel
+BuildRequires:  cmake(Qt5Concurrent)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(libtorrent-rasterbar) >= 1.1.4
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(zlib)
@@ -49,12 +49,6 @@ Requires:       GeoIP
 Recommends:     python
 # For search engines.
 Recommends:     python3
-%if 0%{?suse_version} >= 1500
-BuildRequires:  libboost_system-devel
-%else
-BuildRequires:  boost-devel
-BuildRequires:  update-desktop-files
-%endif
 
 %description
 qBittorrent is a bittorrent client programmed in C++ and Qt that
@@ -111,16 +105,6 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}-nox
 
 %post nox
 %service_add_post %{name}-nox@.service
-
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
 
 %files
 %license COPYING

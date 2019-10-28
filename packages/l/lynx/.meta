@@ -1,0 +1,8 @@
+<package name="lynx" project="openSUSE:Factory">
+  <title>A Text-Based WWW Browser</title>
+  <description>Lynx is an easy-to-use browser for HTML documents and other Internet
+services like FTP, telnet, and news.  Lynx is fast.  It is purely text
+based and therefore makes it possible to use WWW resources on text
+terminals.</description>
+  <devel project="network" package="lynx"/>
+</package>

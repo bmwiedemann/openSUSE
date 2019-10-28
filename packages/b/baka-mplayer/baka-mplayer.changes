@@ -1,0 +1,152 @@
+-------------------------------------------------------------------
+Thu Oct 25 10:13:33 UTC 2018 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- cleanup specfile 
+
+-------------------------------------------------------------------
+Tue Mar 21 16:05:43 UTC 2017 - olaf@aepfle.de
+
+- Remove Category "Utilities" from desktop file
+
+-------------------------------------------------------------------
+Thu Mar  2 09:49:30 UTC 2017 - jengelh@inai.de
+
+- Throw out NPOV wording and instead mention a number of
+  real features.
+
+-------------------------------------------------------------------
+Wed Feb 22 12:06:19 UTC 2017 - mimi.vx@gmail.com
+
+- import from packman
+
+-------------------------------------------------------------------
+Tue Jan 19 12:22:38 UTC 2016 - aloisio@gmx.com
+
+- Update to version 2.0.4
+  * New: Highly requested Hide All Controls mode (under
+    Settings menu)
+  * New: Ability to add external audio files
+  * New: Option to not save recently opened files
+  * New: Option to not restore playback position
+  * New: Option to change mpv msg-level
+  * New: "clear" command
+  * New: Explain how to leave full screen mode
+  * New: Message is displayed for Motion Interpolation &
+    Deinterlace options
+  * New: Media Info displays if hwdec is in use or not
+  * Fixed: Reordering playlist items would make them disappear
+    (Windows only)
+  * Fixed: Show message if file couldn't be opened
+  * Fixed: An issue with resuming playback position
+  * Fixed: Hide Album Art fully hides that portion
+  * Fixed: Command line output is no longer double spaced
+  * Changed: Double click a Key Binding entry to change it
+  * Changed: Renamed an item to Open Copied Link
+  * Changed: Cmd line shortcut key is now Ctrl+`
+  * Changed: Cmd line no longer requires "debug debug" to show
+    output
+  * Changed: Gesture info is visually represented
+  * Changed: Button text case to Sane Case
+
+-------------------------------------------------------------------
+Mon Jul  6 03:19:16 UTC 2015 - liujianfeng1994@gmail.com
+
+- Update to version 2.0.3
+  *Hint: If you speed up the video, Baka will display how much real time you have remaining.
+  *Fixed: Status info is now displayed with audio files without album art
+  *Fixed: Disable Show in Folder for online files
+  *Fixed: Key Bindings table is, and can be, sorted alphabetically
+  *Changed: Logo :D
+  *Changed: Settings file uses JSON
+  *Changed: Currently playing file is selected in playlist (old behavior)
+  *Changed: External subtitles will be labeled as so
+  *Changed: Volume level shown on mouse scroll
+  *Changed: Speed is increased/decreased by interval of 10%
+  *Changed: Sub font size is increased/decreased by 0.1
+  *Improved: Overall design
+  *Improved: Playback Info display
+  *Added: Croatian translation
+  *Added: Dutch translation
+  *Added: French translation
+  *Added: Spanish translation
+  *Added: Mute (different from setting volume to 0)
+  *Added: Thumbnail buttons (Windows only)
+  *Added: Metadata (ex. ID3 Tags) to playback info
+  *Added: Delete external sub file along with video file (optional)
+  *Added: Motion Interpolation option (previously called "smoothmotion")
+  *Added: "help" command
+
+-------------------------------------------------------------------
+Thu Feb 12 19:54:43 UTC 2015 - aloisio@gmx.com
+
+- Update to version 2.0.2
+  * Fixed: Dim Desktop on multiple platforms
+  * Fixed: Playing files located in the root directory (Windows only)
+  * Fixed: Show parent folder under recently opened list (Windows only)
+  * Fixed: Show in Folder selects file (Windows only)
+  * Fixed: Gesture sensitivity is resolution independent
+  * Changed: Custom settings implementation
+  * Changed: File info shows up as overlay
+  * Changed: Some default key-bindings for easier workflow
+  * Improved: Major code refracting for efficiency
+  * Improved: Playlist
+  * Improved: Fit Window
+  * Improved: Settings
+  * Improved: Multiple-monitor support
+  * Improved: Tweaked interface colors for better visibility
+  * Added: Italian translation
+  * Added: Support for custom keyboard shortcuts
+  * Added: Playlist will auto show if cursor is near it in full screen
+  * Added: Automatic Updating (Windows only)
+  * Added: Command-Line engine
+  * Added: Support for easily updating youtube-dl
+
+-------------------------------------------------------------------
+Thu Jan  1 12:20:20 UTC 2015 - aloisio@gmx.com
+
+- Added support for $RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Mon Dec 29 08:55:52 UTC 2014 - aloisio@gmx.com
+
+- updated to version 2.0.1
+  *  Fixed: Spacing in debug window output
+  *  Fixed: Some issue with loading mpv settings
+  *  Fixed: Desktop file for better platform integration
+  *  Changed: Build system from CMake to QMake
+  *  Changed: Some menu item shortcut keys
+  *  Changed: Increased seekbar height
+  *  Changed: Fast seeking
+  *  Changed: Do not save window size into settings
+  *  Added: Youtube video playback support (and others)
+  *  Added: Ability to open directories
+  *  Added: Recently opened file list
+  *  Added: Interact with mpv directly via command line interface
+  *  Added: Fit Window 150%
+  *  Added: Gesture Support
+         Click & drag cursor up/down to change volume
+         Click & drag cursor left/right to seek
+  *  Playlist
+         Search is now case-insensitive
+         Up/Down Arrow keys navigate, Enter plays
+         Currently playing item is bolded
+  *  Added Translations
+         Chinese
+         Korean
+         Portuguese
+         Russian
+
+-------------------------------------------------------------------
+Mon Dec  1 21:42:25 UTC 2014 - edogawa@aon.at
+
+- stop using %cmake, fixes the unresolvable requirement for libmainwindow.so
+
+-------------------------------------------------------------------
+Mon Nov 24 21:17:26 UTC 2014 - scarabeus@opensuse.org
+
+- Fix desc/summary to not be mpv
+
+-------------------------------------------------------------------
+Mon Nov 24 21:13:25 UTC 2014 - scarabeus@opensuse.org
+
+- Initial commit. Player using libmpv as its backend.

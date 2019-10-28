@@ -1,0 +1,189 @@
+-------------------------------------------------------------------
+Tue Jun  4 13:19:36 UTC 2019 - Karol Babioch <kbabioch@suse.de>
+
+- Version 1.0.8 (released 2019-06-04)
+  * Fix insecure debug file handling CVE-2019-12209 (bsc#1135729).
+  * Fix debug file descriptor leak CVE-2019-12210 (bsc#1135727).
+  * Fix a non-critical buffer oob access.
+- Applied spec-cleaner
+
+-------------------------------------------------------------------
+Tue May 15 09:04:06 UTC 2018 - kbabioch@suse.com
+
+- Update to version 1.0.7:
+  - Add authpending_file to signal authentication activity
+  - Add nodetect to skip to avoid unnecessary cue messages
+
+-------------------------------------------------------------------
+Wed Apr 18 11:47:00 UTC 2018 - kbabioch@suse.com
+
+- Update to version 1.0.6:
+  - Fix an issue when using syslog as a debug facility.
+  - Do not honor cue if no sutable device is found. 
+
+-------------------------------------------------------------------
+Wed Apr 18 07:54:00 UTC 2018 - jengelh@inai.de
+
+- Update descriptions, trim bias and other-OS stuff.
+- Remove extraneous --bindir.
+
+-------------------------------------------------------------------
+Tue Apr 17 06:59:04 UTC 2018 - kbabioch@suse.com
+
+- Update to version 1.0.5:
+  - General bugfixes and quality-of-life improvements. 
+
+-------------------------------------------------------------------
+Thu Jan  7 21:34:49 UTC 2016 - t.gruner@katodev.de
+
+- Version 1.0.4 (released 2016-01-07)
+  - Fixed possible permission escalation when using XDG_CONFIG_HOME.
+
+-------------------------------------------------------------------
+Fri Nov  6 22:00:05 UTC 2015 - t.gruner@katodev.de
+
+- Version 1.0.3 (released 2015-11-02)
+  - Bugfix in pamu2fcfg.
+  - Minor improvements for verbose mode in pamu2fcfg. 
+
+-------------------------------------------------------------------
+Tue Oct  6 14:11:20 UTC 2015 - t.gruner@katodev.de
+
+- Version 1.0.2 (released 2015-10-06)
+  - Changes to automake flags.
+  - Improve build on OS X.
+- Cleanup .spec file
+- Add baselib.conf
+
+-------------------------------------------------------------------
+Wed Jul  8 21:23:52 UTC 2015 - t.gruner@katodev.de
+
+- Version 1.0.1 (released 2015-06-18)
+  - Minor changes to man pages and install hooks.
+- Version 1.0.0 (released 2015-06-17)
+  - Use XDG_CONFIG_HOME as default for config files.
+  - Added manual and interactive mode.
+  - Added verbose mode.
+
+-------------------------------------------------------------------
+Wed Jan 21 15:05:38 UTC 2015 - t.gruner@katodev.de
+
+- Version 0.0.1 (released 2015-01-16)
+  - Changed failure mode after authentication error.
+  - Added call to setcred.
+
+-------------------------------------------------------------------
+Tue Jan 13 07:45:00 UTC 2015 - t.gruner@katodev.de
+
+- Version 0.0.0
+
+2014-12-16  Alessio Di Mauro <alessio@yubico.com>
+
+	* Makefile.am: More fix to Makefile.am.
+
+2014-12-16  Alessio Di Mauro <alessio@yubico.com>
+
+	* NEWS: Updated NEWS.
+
+2014-12-16  Alessio Di Mauro <alessio@yubico.com>
+
+	* Makefile.am, pamu2fcfg/Makefile.am: Cleaned release target.
+
+2014-12-16  Alessio Di Mauro <alessio@yubico.com>
+
+	* Makefile.am: Changed repo variable name.
+
+2014-12-16  Alessio Di Mauro <alessio@yubico.com>
+
+	* pam-u2f.c, util.c: Indent.
+
+2014-12-16  Alessio Di Mauro <alessio@yubico.com>
+
+	* README: Fixed link in AsciiDoc.
+
+2014-12-15  Alessio Di Mauro <alessio@yubico.com>
+
+	* .travis.yml: Added more asciidoc related packets to Travis build.
+
+2014-12-15  Alessio Di Mauro <alessio@yubico.com>
+
+	* build-aux/travis: Added more ldconfig.
+
+2014-12-15  Alessio Di Mauro <alessio@yubico.com>
+
+	* .travis.yml: Added check to Travis build.
+
+2014-12-15  Alessio Di Mauro <alessio@yubico.com>
+
+	* build-aux/travis: Permissions.
+
+2014-12-15  Alessio Di Mauro <alessio@yubico.com>
+
+	* .travis.yml: Removed libhidapi from Travis build.
+
+2014-12-15  Alessio Di Mauro <alessio@yubico.com>
+
+	* .travis.yml, build-aux/travis: Added travis build.
+
+2014-12-15  Alessio Di Mauro <alessio@yubico.com>
+
+	* Makefile.am, pamu2fcfg/Makefile.am: Fixed Makefile.
+
+2014-12-12  Alessio Di Mauro <alessio@yubico.com>
+
+	* configure.ac: Fixed typo in configure.ac.
+
+2014-12-12  Alessio Di Mauro <alessio@yubico.com>
+
+	* README: Updated README.
+
+2014-12-12  Alessio Di Mauro <alessio@yubico.com>
+
+	* pamu2fcfg/pamu2fcfg.c: Removed linebreak at the end of the final
+	printout.
+
+2014-12-12  Alessio Di Mauro <alessio@yubico.com>
+
+	* .gitignore, pamu2fcfg/cmdline.c, pamu2fcfg/cmdline.ggo,
+	pamu2fcfg/cmdline.h, pamu2fcfg/pamu2fcfg.1.txt,
+	pamu2fcfg/pamu2fcfg.c: Added man page.
+
+2014-12-12  Alessio Di Mauro <alessio@yubico.com>
+
+	* pamu2fcfg/pamu2fcfg.c: Improved timout presentation.
+
+2014-12-12  Alessio Di Mauro <alessio@yubico.com>
+
+	* Makefile.am, pamu2fcfg/cmdline.c, pamu2fcfg/cmdline.h,
+	pamu2fcfg/pamu2fcfg.c: Indent.
+
+2014-12-12  Alessio Di Mauro <alessio@yubico.com>
+
+	* .gitignore, Makefile.am, configure.ac, pamu2fcfg/Makefile.am,
+	pamu2fcfg/cmdline.c, pamu2fcfg/cmdline.ggo, pamu2fcfg/cmdline.h,
+	pamu2fcfg/pamu2fcfg.c: Added first version of the registration tool.
+
+2014-12-12  Alessio Di Mauro <alessio@yubico.com>
+
+	* pam-u2f.c, util.c: Fixed some warnings.
+
+2014-12-12  Alessio Di Mauro <alessio@yubico.com>
+
+	* README, pam-u2f.c, pam_u2f.8.txt, util.h: Changed default origin
+	and appid to pam://$HOSTNAME.
+
+2014-12-10  Alessio Di Mauro <alessio@yubico.com>
+
+	* README: Typo in README.
+
+2014-12-10  Alessio Di Mauro <alessio@yubico.com>
+
+	* .gitignore, AUTHORS, BLURB, COPYING, Makefile.am, NEWS, README,
+	README.adoc, README.md, configure.ac, m4/lib-ld.m4, m4/lib-link.m4,
+	m4/lib-prefix.m4, m4/manywarnings.m4, m4/warnings.m4, pam-u2f.c,
+	pam_u2f.8.txt, tests/Makefile.am, tests/basic.c, util.c, util.h: 
+	Added initial content.
+
+2014-12-10  Alessio Di Mauro <a-dma@users.noreply.github.com>
+
+	* Initial commit

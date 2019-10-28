@@ -1,0 +1,41 @@
+<package name="gkrellm" project="openSUSE:Factory">
+  <title>Manages Multiple Stacked Monitors</title>
+  <description>With a single process, GKrellM manages multiple stacked monitors and
+supports applying themes to match the monitors appearance to your
+window manager, Gtk, or any other theme.
+
+* SMP CPU, Disk, Proc, and active net interface monitors with LEDs.
+
+* Internet monitor that displays current and charts historical port
+   hits.
+
+* Memory and swap space usage meters and a system uptime monitor.
+
+* File system meters show capacity and free space and can mount and
+   umount.
+
+* A mailbox monitor that can launch a mail reader and fetch remote
+   mail.
+
+* Clock, calendar, and hostname display.
+
+* APM laptop battery monitor.
+
+* CPU and motherboard temperature display if lm_sensors modules are
+   installed.
+
+* Multiple monitors managed by a single process to reduce system
+   load.
+
+* PPP on and off button that can execute your PPP scripts.
+
+* Charts are autoscaling with configurable grid line resolution.
+
+* Separate colors for &quot;in&quot; and &quot;out&quot; data.  The in color is used for
+   CPU user time, disk read, forks, and net receive data.  The out
+   color is used for CPU sys time, disk write, load, and net
+   transmit data.
+
+* A different theme can be created with the GIMP.</description>
+  <devel project="X11:Utilities" package="gkrellm"/>
+</package>

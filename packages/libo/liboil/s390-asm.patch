@@ -1,0 +1,11 @@
+--- liboil-0.3.17/liboil/liboilcpu-misc.c	2018/03/14 23:58:34	1.1
++++ liboil-0.3.17/liboil/liboilcpu-misc.c	2018/03/15 00:19:57
+@@ -87,7 +87,7 @@
+ oil_profile_stamp_s390(void)
+ {
+   uint64_t ts;
+-  __asm__ __volatile__ ("STCK %0(%0)\n" : : "r" (&ts));
++  __asm__ __volatile__ ("stck %0\n" : "=Q" (ts) : : "cc");
+   return ts;
+ }
+ 

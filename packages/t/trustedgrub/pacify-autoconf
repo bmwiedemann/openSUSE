@@ -1,0 +1,11 @@
+--- /tmp/grub-0.97/configure.ac	2005-05-08 04:36:03.000000000 +0200
++++ grub-0.97/configure.ac	2007-01-29 19:51:37.000000000 +0100
+@@ -17,7 +17,7 @@
+ AC_CONFIG_SRCDIR([stage2/stage2.c])
+ AC_CONFIG_HEADER([config.h])
+ AM_INIT_AUTOMAKE
+-
++AM_PROG_AS
+ AC_CANONICAL_HOST
+ 
+ case "$host_cpu" in

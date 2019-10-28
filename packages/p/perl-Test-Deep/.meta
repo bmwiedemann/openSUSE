@@ -1,0 +1,13 @@
+<package name="perl-Test-Deep" project="openSUSE:Factory">
+  <title>Extremely flexible deep comparison</title>
+  <description>If you don't know anything about automated testing in Perl then you should
+probably read about Test::Simple and Test::More before preceding.
+Test::Deep uses the Test::Builder framework.
+Test::Deep gives you very flexible ways to check that the result you got
+is the result you were expecting. At it's simplest it compares two
+structures by going through each level, ensuring that the values match,
+that arrays and hashes have the same elements and that references are
+blessed into the correct class. It also handles circular data structures
+without getting caught in an infinite loop.</description>
+  <devel project="devel:languages:perl" package="perl-Test-Deep"/>
+</package>

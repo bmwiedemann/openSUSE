@@ -1,0 +1,41 @@
+From 4aa960c48b4d292425597d283f3ef15d02590082 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 24 May 2019 10:39:05 +0200
+Subject: [PATCH 11/25] src/conf.c: add missing va_end() call (coverity)
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/conf.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/src/conf.c b/src/conf.c
+index cda5518e673b..3a3c91bf4284 100644
+--- a/src/conf.c
++++ b/src/conf.c
+@@ -3034,8 +3034,10 @@ int snd_config_save(snd_config_t *config, snd_output_t *out)
+ 		if (!k) \
+ 			break; \
+ 		err = fcn(config, k, &n); \
+-		if (err < 0) \
++		if (err < 0) { \
++			va_end(arg); \
+ 			return err; \
++		} \
+ 		config = n; \
+ 	} \
+ 	va_end(arg); \
+@@ -3056,8 +3058,10 @@ int snd_config_save(snd_config_t *config, snd_output_t *out)
+ 		if (!k) \
+ 			break; \
+ 		err = fcn(root, config, k, &n); \
+-		if (err < 0) \
++		if (err < 0) { \
++			va_end(arg); \
+ 			return err; \
++		} \
+ 		config = n; \
+ 	} \
+ 	va_end(arg); \
+-- 
+2.16.4
+

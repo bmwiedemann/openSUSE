@@ -1,0 +1,763 @@
+-------------------------------------------------------------------
+Sun Oct  6 13:26:36 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.63.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.63.0.php
+- No code change since 5.62.0
+
+-------------------------------------------------------------------
+Sat Sep  7 20:36:48 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.62.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.62.0.php
+- Changes since 5.61.0:
+  * Fix test failing
+  * Localize long number strings (kde#409077)
+  * Support passing target to ki18n_wrap_ui macro
+
+-------------------------------------------------------------------
+Wed Aug  7 17:51:27 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.61.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.61.0.php
+- Changes since 5.60.0:
+  * Fix string scaping 
+  * Replace QString::null with QString
+
+-------------------------------------------------------------------
+Fri Jul 19 11:41:43 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Don't lower minimum Qt version anymore, it requires 5.11 now
+
+-------------------------------------------------------------------
+Sun Jul 14 06:41:38 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.60.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.60.0.php
+- No code changes since 5.59.0
+
+-------------------------------------------------------------------
+Sun Jun 09 07:35:12 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.59.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.59.0.php
+- No code changes since 5.58.0
+
+-------------------------------------------------------------------
+Wed May 15 18:16:16 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.58.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.58.0.php
+- No code changes since 5.57.0
+
+-------------------------------------------------------------------
+Sun Apr 14 20:21:43 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.57.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.57.0.php
+- Changes since 5.56.0:
+  * Report human-readable error if Qt5Widgets is required but is not found
+  * Add missing &
+  * [i18n] compile without foreach
+  * Fix compile without deprecated methods
+- Refreshed patches:
+  * fallbackLang.diff
+
+-------------------------------------------------------------------
+Sun Mar 10 20:15:36 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.56.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.56.0.php
+- Changes since 5.55.0:
+  * Port some code to for(...:...)
+
+-------------------------------------------------------------------
+Fri Feb 15 09:25:42 UTC 2019 - alarrosa@suse.com
+
+- Downgrade the Qt version requirement to build with 5.9
+
+-------------------------------------------------------------------
+Sun Feb 10 22:03:09 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.55.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.55.0.php
+- Changes since 5.54.0:
+  * delete copy constructor and assignment operator of some internal classes
+
+-------------------------------------------------------------------
+Mon Jan 14 06:08:47 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.54.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.54.0.php
+- Changes since 5.53.0:
+  * No code changes since 5.53.0
+
+-------------------------------------------------------------------
+Sun Dec 09 19:43:44 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.53.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.53.0.php
+- Changes since 5.52.0:
+  * No code changes since 5.52.0
+
+-------------------------------------------------------------------
+Sun Nov 11 19:48:05 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.52.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.52.0.php
+- Changes since 5.51.0:
+  * No code changes since 5.51.0
+
+-------------------------------------------------------------------
+Tue Oct 16 08:02:14 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct 15 11:50:35 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.51.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.51.0.php
+- Changes since 5.50.0:
+  * Remove misleading use of KDE_INSTALL_PYTHONBINDINGSDIR
+  * Properly scope CMAKE_REQUIRED_LIBRARIES change
+  * Android: Make sure we're looking for .mo files in the right path
+  * Fix autotests with -DBUILD_QCH:BOOL=TRUE
+- Refreshed patches:
+  * fallbackLang.diff
+
+-------------------------------------------------------------------
+Thu Sep 13 21:58:45 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.50.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.50.0.php
+- Changes since 5.49.0:
+  * Assert if trying to use a KCatalog without a QCoreApplication
+  * Port ki18n from QtScript to QtQml
+  * Migrate build system to use find_package in autotests/ki18n_install
+  * API docs: fix *xi18n* calls in example code to use correct variants
+  * Check the build directory for po/ as well
+
+-------------------------------------------------------------------
+Sun Aug 19 09:19:07 UTC 2018 - christophe@krop.fr
+
+- Update to 5.49.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.49.0.php
+- Changes since 5.48.0:
+  * Reuse function that already does the same
+  * Fix the catalog handling and locale detection on Android
+  * Readability, skip no-op statements
+  * Fix KCatalog::translate when translation is same as original text
+  * a file has been renamed
+  * Let ki18n macro file name follow style of other find_package related files
+  * Fix the configure check for _nl_msg_cat_cntr
+  * Don't generate files in the source directory
+  * libintl: Determine if _nl_msg_cat_cntr exists before use (kde#365917)
+  * Fix the binary-factory builds.
+
+-------------------------------------------------------------------
+Mon Jul 16 04:37:40 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.48.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.48.0.php
+- Changes since 5.47.0:
+  * In cmake macro file use CMAKE_CURRENT_LIST_DIR consequently instead of mixed use with KF5I18n_DIR
+  * KF5I18NMacros: Don't install an empty dir when no po files exist
+  * Add missing override
+  * Use override
+
+-------------------------------------------------------------------
+Tue Jun 12 21:26:05 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.47.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.47.0.php
+- Changes since 5.46.0:
+  * Override
+
+-------------------------------------------------------------------
+Sun May 13 21:03:03 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.46.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.46.0.php
+- Changes since 5.45.0:
+  * [API dox] New UI marker @info:placeholder
+  * [API dox] New UI marker @item:valuesuffix
+  * Don't need to run previous iterations commands again
+- Dropped patches, now upstream:
+  * 0001-Don-t-need-to-run-previous-iterations-commands-again.patch
+
+-------------------------------------------------------------------
+Wed May  2 11:27:21 UTC 2018 - fabian@ritter-vogt.de
+
+- Add patch to accelerate building of gettext catalogs:
+  * 0001-Don-t-need-to-run-previous-iterations-commands-again.patch
+
+-------------------------------------------------------------------
+Sat Apr 14 13:19:04 CEST 2018 - lbeltrame@kde.org
+
+- Update to 5.45.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.45.0.php
+- Changes since 5.44.0:
+  * Also let the autotests know where they can find KF5I18NMacros
+  * Make sure ki18n can build its own translations.
+  * Don't call PythonInterp.cmake in KF5I18NMacros.
+  * Remove not necessary QtCore and co
+  * Make it possible to generate po files in parallel
+  * Create a constructor for KLocalizedStringPrivate
+
+-------------------------------------------------------------------
+Mon Mar 12 23:29:41 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.44.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.44.0.php
+- Changes since 5.43.0:
+  * API dox: add note about calling setApplicationDomain after QApp creation
+
+-------------------------------------------------------------------
+Mon Feb 12 23:42:08 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.43.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.43.0.php
+- Changes since 5.42.0:
+  * Fix finding libintl when "cross"-compiling native Yocto packages
+
+-------------------------------------------------------------------
+Tue Jan 16 22:50:17 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.42.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.42.0.php
+- Changes since 5.41.0:
+  * Remove obsolete reviewboardrc file
+  * do not treat ts-pmap-compile as exectuable
+  * cmake: Mark UIC-generated .h files to skip AUTOMOC by default.
+  * Fix a memory leak in KuitStaticData
+  * KI18n: fix a number of double lookups
+
+-------------------------------------------------------------------
+Sun Dec 17 09:43:48 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.41.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.41.0.php
+- Changes since 5.40.0:
+  * None
+
+-------------------------------------------------------------------
+Mon Nov 13 07:01:14 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.40.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.40.0.php
+- Changes since 5.39.0:
+  * None
+
+-------------------------------------------------------------------
+Mon Oct 23 06:41:40 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.39.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.39.0.php
+- Changes since 5.38.0:
+  * None
+
+-------------------------------------------------------------------
+Tue Sep 12 07:11:17 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.38.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.38.0.php
+- Changes since 5.37.0:
+  * autotests: fix when fr_FR is installed. semanticTags() needs English.
+
+-------------------------------------------------------------------
+Sat Aug 12 09:23:27 UTC 2017 - christophe@krop.fr
+
+- Update to 5.37.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.37.0.php
+- Changes since 5.36.0 :
+  * Allow loading i18n catalogs from arbitrary locations
+  * Fix build with Qt 5.9.1 and clang
+  * Make sure that the tsfiles target is generated
+
+-------------------------------------------------------------------
+Wed Jul 12 07:14:00 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.36.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.36.0.php
+- Changes since 5.35.0:
+  * Make sure that the tsfiles target is generated
+  * DOXYGEN_PREPROC -> DOXYGEN_SHOULD_SKIP_THIS, to standardize within KF5
+  * Remove custom doxygen config files
+  * [FEATURE] Option to build & install QCH file with the public API dox
+
+-------------------------------------------------------------------
+Sun Jun 11 09:27:43 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.35.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.35.0.php
+- Changes since 5.34.0:
+  * Fix compilation of Python bindings
+  * API dox: note CamelCase includes by @class tag with more classes
+  * Extend Programmer's Guide with notes about influence of setlocale()
+
+-------------------------------------------------------------------
+Mon May 15 13:53:17 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.34.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.34.0.php
+- Changes since 5.33.0:
+  * fix basename handling of po files (kde#379116)
+  * Fix ki18n bootstrapping
+  * Move .po and .ts files look-up to build-time
+  * Docs: correct doctype for non-deprecated root element with ui.rc file example
+  * Docs: Use non-deprecated <gui> root element with rc file example
+
+-------------------------------------------------------------------
+Sat Apr 15 10:11:49 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.33.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.33.0.php
+- Changes since 5.32.0:
+  * Upgrade ECM and KF5 version requirements for 5.33.0 release.
+  * don't add the autotests dir when test building is disabled
+  * add .arcconfig file
+  * Upgrade KF5 version to 5.33.0.
+
+-------------------------------------------------------------------
+Sun Mar 19 14:50:38 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.32.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.32.0.php
+- Changes since 5.31.0:
+  * Commit translations from l10n-kf5
+  * Upgrade ECM and KF5 version requirements for 5.32.0 release.
+  * Upgrade KF5 version to 5.32.0.
+
+-------------------------------------------------------------------
+Thu Feb  9 09:29:10 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.31.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.31.0.php
+
+-------------------------------------------------------------------
+Sun Jan  8 23:41:16 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.30.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.30.0.php
+
+-------------------------------------------------------------------
+Sun Dec  4 01:59:42 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.29.0
+  * Check properly pointer inequality from dngettext (kde#372681)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.29.0.php
+
+-------------------------------------------------------------------
+Sat Nov  5 22:06:00 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.28.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.28.0.php
+
+-------------------------------------------------------------------
+Sat Oct 22 09:24:57 UTC 2016 - alarrosa@suse.com
+
+- Added gettext-tools requirement to ki18n-devel since
+  gettext-tools contains msgmerge
+
+-------------------------------------------------------------------
+Sun Oct  2 12:55:19 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.27.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.27.0.php
+
+-------------------------------------------------------------------
+Tue Sep  6 20:50:12 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.26.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.26.0.php
+
+-------------------------------------------------------------------
+Sun Aug  7 21:53:16 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.25.0
+  * Qt >= 5.5 is now required
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.25.0.php
+
+-------------------------------------------------------------------
+Wed Jul  6 15:04:07 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.24.0
+  * Also search catalogs for stripped variants of values in
+    env var LANGUAGE
+  * Fix parsing of env var values WRT modifier and codeset,
+    done in wrong order
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.24.0.php
+
+-------------------------------------------------------------------
+Mon Jun  6 21:25:24 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.23.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.23.0.php
+
+-------------------------------------------------------------------
+Sat May  7 18:31:57 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.22.0 (boo#980066)
+  * libgettext: Fix potential use-after-free using non-g++ compilers
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.22.0.php
+
+-------------------------------------------------------------------
+Mon Apr  4 14:20:33 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.21.0 (boo#974793)
+  * Use qt system locale langs as fallback on non UNIX
+  * Upgrade Qt version requirement to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.21.0.php
+
+-------------------------------------------------------------------
+Sun Mar  6 09:58:16 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.20.0 (boo#970856)
+  * Use portable import macro for nl_msg_cat_cntr
+  * Skip looking up . and .. to find the translations for an application
+  * Restrict _nl_msg_cat_cntr use to GNU gettext implementations
+  * Add KLocalizedString::languages()
+  * Place Gettext calls only if catalog has been located
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.20.0.php
+
+-------------------------------------------------------------------
+Sat Feb  6 18:02:56 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.19.0 (boo#967668)
+  * Reduce use of gettext API
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.19.0.php
+
+-------------------------------------------------------------------
+Sat Jan  2 17:43:35 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.18.0
+  * Document the first argument rule for plurals in QML
+  * Reduce unwanted type changes
+  * Make it possible to use doubles as index for i18np*() calls in QML
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.18.0.php
+
+-------------------------------------------------------------------
+Thu Dec 10 23:06:26 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.17.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.17.0.php
+
+-------------------------------------------------------------------
+Sun Nov  8 17:00:56 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.16.0 (boo#955067)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.16.0.php
+
+-------------------------------------------------------------------
+Tue Oct  6 08:18:36 UTC 2015 - wbauer@tmo.at
+
+- Add /usr/share/locale-bundle/ to the list of directories that are
+  searched for translations
+
+-------------------------------------------------------------------
+Mon Oct  5 17:37:18 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.15.0
+  * Remove strict iterators for msvc to make ki18n build
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.15.0.php
+
+-------------------------------------------------------------------
+Mon Sep 21 20:45:16 UTC 2015 - wbauer@tmo.at
+
+- Tag the LC_SCRIPTS files in the -lang file list with the language
+  they belong to, so that they will be put into the correct
+  bundle-lang-kde-xx packages
+
+-------------------------------------------------------------------
+Tue Sep  8 17:13:10 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.14.0
+  * Gracefully handle no newline at end of pmap file
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.14.0.php
+
+-------------------------------------------------------------------
+Tue Aug  4 19:20:28 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.13.0
+  * The Qt version requirement has been bumped from 5.2 to 5.3
+  * Debug output has been ported to categorized output, for less
+    noise by default
+  * Docbook documentation has been reviewed and updated
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.13.0.php
+
+-------------------------------------------------------------------
+Sat Aug  1 13:54:53 UTC 2015 - wbauer@tmo.at
+
+- Fix fallbackLang.diff: slashes were missing which resulted in
+  wrong paths, relPath (XX/LC_MESSAGE/) was erroneously added
+  to the returned directory path too which prevented the translation
+  files from actually being opened. (boo#932158)
+
+-------------------------------------------------------------------
+Sun Jul  5 18:45:08 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.12.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.12.0.php
+
+-------------------------------------------------------------------
+Fri Jun 12 11:40:35 UTC 2015 - tittiatcoke@gmail.com
+
+- Adjust patch fallbackLang.diff to search through some openSUSE
+  specific locale paths. Search only these specific locations to
+  prevent searching too many locations.
+
+-------------------------------------------------------------------
+Sun Jun  7 19:07:35 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.11.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.11.0.php
+
+-------------------------------------------------------------------
+Sun May  3 19:44:01 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.10.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.10.0.php
+
+-------------------------------------------------------------------
+Sat Apr  4 14:40:37 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.9.0
+  * Reload the global Qt catalog when using i18n()
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.9.0.php
+
+-------------------------------------------------------------------
+Sat Mar  7 16:58:39 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.8.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.8.0.php
+
+-------------------------------------------------------------------
+Fri Feb 27 17:52:51 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Improve fallbackLang.diff to look into kf5 locale subdir first,
+  boo#904524
+
+-------------------------------------------------------------------
+Sun Feb  8 18:15:09 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * Mark results as required to warn when API is misused
+  * Added BUILD_WITH_QTSCRIPT buildsystem option to allow a reduced
+    feature-set on embedded systems
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.7.0.php
+
+-------------------------------------------------------------------
+Sat Jan  3 18:03:12 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.6.0.php
+
+-------------------------------------------------------------------
+Sat Dec  6 12:53:34 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.5.0.php
+
+-------------------------------------------------------------------
+Sun Nov  2 17:46:54 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.4.0.php
+
+-------------------------------------------------------------------
+Sat Oct  4 17:59:25 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.0
+  * Remove leftover Perl dependency
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.3.0.php
+
+-------------------------------------------------------------------
+Thu Sep 25 16:54:04 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added fallbackLang.diff: make translations be seen from a custom
+  directory (which will be $share_prefix/locale/kf5. Otherwise
+  every langauge in the KF5 era will need to conflict with kdelibs4
+  ones. Needs also adjusting in kf5-filesystem, and dropping of
+  find_lang in some packages, as that macro doesn't look in
+  subdirectories.
+
+-------------------------------------------------------------------
+Tue Sep  9 09:49:18 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.0
+  * For more details please see:
+    http://kde.org/announcements/kde-frameworks-5.2.php
+- Added gettext-runtime and python (Build)Requires
+
+-------------------------------------------------------------------
+Sat Aug  2 10:20:02 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.0
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.1.php
+- Harden required Qt5 libs versions
+
+-------------------------------------------------------------------
+Tue Jul  1 21:35:42 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.0
+  * Final release of KDE Frameworks 5
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.0.php
+
+-------------------------------------------------------------------
+Sun Jun  1 18:02:12 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.100.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta3.php
+- Add baselibs.conf
+
+-------------------------------------------------------------------
+Sun May  4 01:41:11 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.99.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta2.php
+
+-------------------------------------------------------------------
+Sat Mar 29 19:47:39 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.98.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta1.php
+
+-------------------------------------------------------------------
+Tue Mar  4 16:38:14 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.97.0:
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-alpha2.php
+
+-------------------------------------------------------------------
+Sun Feb 23 22:43:10 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added patches from upstream
+  * 0008-Cleanup-after-QtScript-port.patch
+  * 0009-Do-not-leak-script-interfaces-and-their-script-engin.patch
+
+-------------------------------------------------------------------
+Sun Feb 23 17:53:28 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added patches from upstream, which implement plugins via QtScript,
+  instead of KJS:
+  * 0001-Print-actual-path-that-failed-to-load.patch
+  * 0002-More-test-cases-for-Transcript.patch
+  * 0006-Separate-ktranscript-plugin-test-into-its-own-autote.patch
+  * 0007-Ported-KTranscript-script-engine-use-from-KJS-to-QtS.patch
+- Droped kjs-devel(Build)Requires, and added pkgconfig(Qt5Script)
+  BuildRequires, as per added patches
+
+-------------------------------------------------------------------
+Sat Feb  8 02:18:37 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Init ki18n package
+

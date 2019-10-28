@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Sun Jun 25 01:56:09 UTC 2017 - bwiedemann@suse.com
+
+- Add tei-roma-2.11-fix-race.patch to fix race condition during build
+
+-------------------------------------------------------------------
+Thu Nov 29 16:11:38 CET 2007 - ke@suse.de
+
+- Update to version 2.11.
+
+-------------------------------------------------------------------
+Mon Apr  2 16:24:58 CEST 2007 - ke@suse.de
+
+- Update to version 2.8.
+- Install the roma man page.
+
+-------------------------------------------------------------------
+Thu Mar 29 11:34:05 CEST 2007 - coolo@suse.de
+
+- Fix BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan 12 12:46:06 CET 2007 - ke@suse.de
+
+- Remove /usr/share/xml from the files list.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:48:16 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Nov 16 14:40:53 CET 2005 - ke@suse.de
+
+- New package: Version 1.7.10.
+

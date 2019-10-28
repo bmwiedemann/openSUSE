@@ -1,0 +1,6 @@
+<package name="xengine" project="openSUSE:Factory">
+  <title>Reciprocating engine for X</title>
+  <description>Xengine displays a reciprocating engine in a window and is a benchmark
+for X.</description>
+  <devel project="Education" package="xengine"/>
+</package>

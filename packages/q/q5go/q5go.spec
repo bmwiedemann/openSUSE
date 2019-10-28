@@ -24,11 +24,14 @@ License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Other
 URL:            https://github.com/bernds/q5go
 Source0:        https://github.com/bernds/%{name}/archive/%{name}-%{version}.tar.gz
+Patch0:         0001-Disable-game-tree-header-with-Qt-5.10.patch
+Patch1:         0001-Remove-PlaceholderText-colorroles-which-were-added-b.patch
+Patch2:         0001-Add-missing-includes.patch
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 # Required for https://doc.qt.io/qt-5/qmetaobject.html#invokeMethod-4
-BuildRequires:  pkgconfig(Qt5Core) >= 5.10
+BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5Network)
@@ -47,7 +50,7 @@ q5Go is a tool for Go players which performs the following functions:
  * Export to a variety of formats
 
 %prep
-%setup -q -n q5Go-q5go-%{version}
+%autosetup -p1 -n q5Go-q5go-%{version}
 
 %build
 pushd src

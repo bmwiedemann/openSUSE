@@ -1,0 +1,929 @@
+-------------------------------------------------------------------
+Fri Oct 11 08:30:27 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
+
+- Display the human readable product names in the summary dialog
+  (bsc#1153663)
+- 4.2.8
+
+-------------------------------------------------------------------
+Mon Sep 30 07:50:24 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
+
+- Automatically offer the modules and extensions in the offline
+  media installation (jsc#SLE-7101)
+- 4.2.7
+
+-------------------------------------------------------------------
+Wed Aug 28 13:06:58 CEST 2019 - schubi@suse.de
+
+- Removed empty entry in desktop file (bsc#144894).
+- 4.2.6
+
+-------------------------------------------------------------------
+Tue Aug 27 18:53:03 CEST 2019 - schubi@suse.de
+
+- Set X-SuSE-YaST-AutoInstResource in desktop file (bsc#144894).
+- 4.2.5
+
+-------------------------------------------------------------------
+Fri Jul 26 12:27:45 CEST 2019 - schubi@suse.de
+
+- AY: Adapted docu regarding <add_on_others> flag (bsc#1125411).
+- 4.2.4
+
+-------------------------------------------------------------------
+Thu Jul 25 08:40:00 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
+
+- Release the sources to avoid using up all server connections
+  (bsc#1141127)
+- 4.2.3
+
+-------------------------------------------------------------------
+Tue Jul  9 17:42:52 CEST 2019 - schubi@suse.de
+
+- AY Export/Import: Support also repositories not containing any
+  product (usually custom or 3rd party repositories) (bsc#1125441).
+- 4.2.2
+
+-------------------------------------------------------------------
+Mon Jul  1 07:40:05 UTC 2019 - David Diaz <dgonzalez@suse.com>
+
+- Do not abort when an addon license is refused (bsc#1114018).
+- 4.2.1
+
+-------------------------------------------------------------------
+Fri May 31 12:23:30 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Add metainfo (fate#319035)
+- Revamp spec
+- Replace GenericName with Comment
+- 4.2.0
+
+-------------------------------------------------------------------
+Wed May 22 16:20:22 CEST 2019 - schubi@suse.de
+
+- Fix: Update repository will be registered while installing
+  an add-on on a running system (bsc#1055126).
+- 4.1.12
+
+-------------------------------------------------------------------
+Wed Apr  3 09:56:32 CEST 2019 - schubi@suse.de
+
+- Removing add-on repo: Deselecting product in solver too.
+  (bsc#1077399)
+- 4.1.11
+
+-------------------------------------------------------------------
+Fri Dec 14 17:13:20 UTC 2018 - lslezak@suse.cz
+
+- Fixed displaying previous dialog content when going back and
+  forth in the installation workflow (bsc#1117492)
+- 4.1.10
+
+-------------------------------------------------------------------
+Fri Nov 23 17:08:05 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Provide icon with module (boo#1109310)
+- 4.1.9
+
+-------------------------------------------------------------------
+Tue Nov 20 11:10:09 CET 2018 - schubi@suse.de
+
+- Function SelectProduct removed in order NOT to select All
+  available products (bsc#1116332). 
+- 4.1.8
+
+-------------------------------------------------------------------
+Tue Oct 16 13:17:31 CEST 2018 - schubi@suse.de
+
+- Fixed path to license file. . Build error in bsc#1108139.
+- 4.1.7
+
+-------------------------------------------------------------------
+Wed Sep 12 15:50:58 UTC 2018 - dgonzalez@suse.com
+
+- Fix and improve the repo name selection in the AddOn auto client
+  (bsc#1108139)
+- 4.1.6
+
+-------------------------------------------------------------------
+Thu Aug 30 08:50:09 UTC 2018 - dgonzalez@suse.com
+
+- Fix the run of AddOn auto client (bsc#1106536).
+- Add missing dependencies to the AddOn auto client.
+- 4.1.5
+
+-------------------------------------------------------------------
+Mon Aug 27 11:11:21 UTC 2018 - knut.anderssen@suse.com
+
+- Fixing some import dependencies in the AddOn auto client
+  (bsc#1081509)
+- 4.1.4
+
+-------------------------------------------------------------------
+Mon Aug 27 07:03:03 UTC 2018 - knut.anderssen@suse.com
+
+- Do not show the main dialog when it is immediately skipped
+  (bsc#1102705)
+- 4.1.3
+
+-------------------------------------------------------------------
+Mon Aug 20 12:35:51 CEST 2018 - schubi@suse.de
+
+- Switched license in spec file from SPDX2 to SPDX3 format.
+- Changed dir of COPYING file.
+
+-------------------------------------------------------------------
+Mon Jul 23 08:42:56 UTC 2018 - dgonzalez@suse.com
+
+- Refactor AddOn auto client (bsc#1081509)
+- 4.1.2
+
+-------------------------------------------------------------------
+Thu Jun 28 09:12:22 CEST 2018 - schubi@suse.de
+
+- Added additional searchkeys to desktop file (fate#321043).
+- 4.1.1
+
+-------------------------------------------------------------------
+Mon Jun 11 08:09:18 UTC 2018 - diazglezdavid@gmail.com
+
+- Do not ignore "priority" property when store sources (bsc#1081509)
+- 4.1.0
+
+-------------------------------------------------------------------
+Thu Apr 12 06:44:36 UTC 2018 - igonzalezsosa@suse.com
+
+- Allow the user to change the CD/DVD when using addon=dvd:///
+  (bsc#1082789).
+- 4.0.8
+
+-------------------------------------------------------------------
+Thu Mar 22 13:24:31 CET 2018 - schubi@suse.de
+
+- AutoYaST: Reporting missing AY configuration file entries.
+  (bnc#1084596)
+- 4.0.7
+
+-------------------------------------------------------------------
+Wed Feb  7 15:48:56 UTC 2018 - mvidner@suse.com
+
+- Made the addon=url boot option work with a multi-product medium
+  such as the SLE-15 Packages DVD (FATE#324656)
+- 4.0.6
+
+-------------------------------------------------------------------
+Mon Jan  8 10:57:47 UTC 2018 - lslezak@suse.cz
+
+- Fixed a crash when when adding an addon (bsc#1074766)
+- 4.0.5
+
+-------------------------------------------------------------------
+Wed Dec 20 16:08:43 CET 2017 - schubi@suse.de
+
+- Improved error message for adding a product. (bnc#1071173)
+- 4.0.4
+
+-------------------------------------------------------------------
+Mon Dec  4 13:16:40 UTC 2017 - lslezak@suse.cz
+
+- Fixed adding multiple products from a multi-product medium
+  (bsc#1062813)
+- 4.0.3
+
+-------------------------------------------------------------------
+Tue Oct 31 12:41:46 UTC 2017 - lslezak@suse.cz
+
+- Hide the "I would like to install an additional Add On Product"
+  check box after pressing "Add" button (fix up for the previous
+  change) (bsc#1065843)
+- 4.0.2
+
+-------------------------------------------------------------------
+Thu Oct 19 11:14:52 UTC 2017 - lslezak@suse.cz
+
+- Allow preselecting the add-on URL schema and hiding the "I would
+  like to install an additional Add On Product" check box from
+  the external code (FATE#323163)
+- 4.0.1
+
+-------------------------------------------------------------------
+Wed Sep 20 16:46:37 UTC 2017 - lslezak@suse.cz
+
+- Display also the repository path in the URL column if it is
+  defined (fate#323886)
+- 4.0.0
+
+-------------------------------------------------------------------
+Wed Aug 16 08:59:30 UTC 2017 - ancor@suse.com
+
+- Removed support for floppy (fate#319096)
+- 3.3.1
+
+-------------------------------------------------------------------
+Thu Jul 27 08:44:31 UTC 2017 - jreidinger@suse.com
+
+- drop inst_lang_addon client because openSUSE Lang Addon is also
+  dropped, this drops also all read of /content file (FATE#322386)
+- 3.3.0
+
+-------------------------------------------------------------------
+Mon Jul 10 15:20:52 UTC 2017 - lslezak@suse.cz
+
+- Do not skip the boot command line addons ("addon=...") when
+  using the default online repositories (bsc#1047239)
+- 3.2.1
+
+-------------------------------------------------------------------
+Mon Apr  3 11:20:57 UTC 2017 - schubi@suse.de
+
+- AutoYaST: Expanding URL in order to handle tags like $releasever.
+  (bnc#972046)
+- 3.2.0
+
+-------------------------------------------------------------------
+
+Thu Aug 11 15:59:06 CEST 2016 - schubi@suse.de
+
+- Added "confirm_license" to the RNC file.
+  (bnc#992535)
+- 3.1.17
+
+-------------------------------------------------------------------
+Thu Jul 14 14:20:17 UTC 2016 - cwh@suse.com
+
+- Fix layout of Add-On screen (bsc#951720)
+- 3.1.16
+
+-------------------------------------------------------------------
+Tue May 31 07:43:57 UTC 2016 - igonzalezsosa@suse.com
+
+- Drop yast2-add-on-devel-doc package (fate#320356).
+- 3.1.15
+
+-------------------------------------------------------------------
+Wed Apr 27 16:52:55 CEST 2016 - schubi@suse.de
+
+- AutoYaST: Do not reset add-on signature handling by the general
+  signature handling. (bnc#976859)
+- 3.1.14
+
+-------------------------------------------------------------------
+Fri Apr 22 11:49:43 UTC 2016 - lslezak@suse.cz
+
+- Added missing "priority" tag in the AutoYaST schema (bsc#976457)
+- 3.1.13
+
+-------------------------------------------------------------------
+Thu Feb 11 15:15:24 CET 2016 - schubi@suse.de
+
+- Confirming add-on product licenses while AutoYaST installation.
+  (Fate#318945)
+- 3.1.12
+
+-------------------------------------------------------------------
+Wed Oct  7 19:22:13 UTC 2015 - lslezak@suse.cz
+
+- restart the installation workflow to activate the new
+  installation steps added by an add-on via installation.xml
+  (bsc#949185)
+- 3.1.11
+
+-------------------------------------------------------------------
+Thu Dec  4 09:49:06 UTC 2014 - jreidinger@suse.com
+
+- remove X-KDE-Library from desktop file (bnc#899104)
+
+-------------------------------------------------------------------
+Mon Sep  1 09:09:40 UTC 2014 - jreidinger@suse.com
+
+- make add-ons dialog consistent when going back (bnc#893103)
+- 3.1.9
+
+-------------------------------------------------------------------
+Mon Jun  2 16:49:24 UTC 2014 - jreidinger@suse.com
+
+- always set correct state for add-on add checkbox dialog
+- 3.1.8
+
+-------------------------------------------------------------------
+Mon Jun  2 16:24:42 UTC 2014 - jreidinger@suse.com
+
+- Properly show summary screen in installation after adding first
+  add-on
+- make Abort button working on add-on work-flow (bnc#879397)
+- 3.1.7
+
+-------------------------------------------------------------------
+Wed May 21 20:08:35 UTC 2014 - jreidinger@suse.com
+
+- Do not create endless loop in add-on selection (bnc#878997)
+- 3.1.6
+
+-------------------------------------------------------------------
+Tue May 20 08:12:32 UTC 2014 - jreidinger@suse.com
+
+- do not skip to addon workflow too early before add-on from SCC
+  (bnc#878534)
+- 3.1.5
+
+-------------------------------------------------------------------
+Thu May 15 14:19:52 UTC 2014 - lslezak@suse.cz
+
+- fixed going back in URL type dialog
+- 3.1.4
+
+-------------------------------------------------------------------
+Tue May 13 18:26:16 UTC 2014 - lslezak@suse.cz
+
+- handle the global enable/disable checkbox in the URL type dialog
+  (bnc#870625)
+- 3.1.3
+
+-------------------------------------------------------------------
+Fri Jan 17 15:42:12 UTC 2014 - vmoravec@suse.com
+
+- Fix autoyast config file issue BNC#846011
+- 3.1.2
+
+-------------------------------------------------------------------
+Wed Nov 13 15:56:18 UTC 2013 - jreidinger@suse.com
+
+- Add explicit COPYING file
+
+-------------------------------------------------------------------
+Wed Sep 18 09:29:11 UTC 2013 - lslezak@suse.cz
+
+- do not use *.spec.in template, use *.spec file with RPM macros
+  instead
+- 3.1.0
+
+-------------------------------------------------------------------
+Tue Sep  3 09:00:14 UTC 2013 - lslezak@suse.cz
+
+- Recalculating layout after redrawing the list of currently used
+  Add-Ons (port from SLE11 bnc#517919) (bnc#831825)
+- 3.0.2
+
+-------------------------------------------------------------------
+Mon Aug  5 13:40:42 CEST 2013 - jsuchome@suse.cz
+
+- check the product profile of new add-on product (backport of
+  fate#310730) 
+- 3.0.1
+
+-------------------------------------------------------------------
+Wed Jul 31 08:25:29 UTC 2013 - yast-devel@opensuse.org
+
+- converted from YCP to Ruby by YCP Killer
+  (https://github.com/yast/ycp-killer)
+- version 3.0.0
+
+-------------------------------------------------------------------
+Thu Jul 25 15:09:55 UTC 2013 - lslezak@suse.cz
+
+- removed obsolete BuildRequires (yast2-testsuite, yast2-packager,
+  yast2-installation, yast2-storage)
+- move development documentation to devel-doc subpackage
+- 2.24.1
+
+-------------------------------------------------------------------
+Mon Mar 18 09:05:29 UTC 2013 - lslezak@suse.cz
+
+- configure the network when adding remote add-ons via boot
+  parameter in DVD installation (bnc#809912)
+- 2.24.0
+
+-------------------------------------------------------------------
+Sun Jan 20 15:41:50 UTC 2013 - lslezak@suse.cz
+
+- add the add-ons specified in the boot parameters (fate#314318)
+- 2.23.1
+
+-------------------------------------------------------------------
+Sun Jan 20 14:41:39 UTC 2013 - lslezak@suse.cz
+
+- added support for specifying add-on repo alias name (fate#313144)
+  (bnc#741529)
+
+-------------------------------------------------------------------
+Mon Oct 29 15:11:24 CET 2012 - jsuchome@suse.cz
+
+- inst_suseconfig removed, replaced by warning after new kernel
+  installation
+- 2.23.0 
+
+-------------------------------------------------------------------
+Thu Mar 29 13:48:15 CEST 2012 - jsuchome@suse.cz
+
+- merged proofread texts 
+- confirmed license
+- 2.22.0
+
+-------------------------------------------------------------------
+Mon Oct 24 07:41:54 UTC 2011 - jsrain@suse.cz
+
+- adjust installation workflow after integrating add-on products
+  via AutoYaST (bnc#725439)
+- 2.21.6
+
+-------------------------------------------------------------------
+Mon Sep 26 14:54:40 CEST 2011 - visnov@suse.cz
+
+- set dialog title
+- 2.21.5 
+
+-------------------------------------------------------------------
+Fri Aug  5 12:20:14 CEST 2011 - tgoettlicher@suse.de
+
+- fixed .desktop file (bnc #681249)
+
+-------------------------------------------------------------------
+Wed Aug  3 13:21:14 UTC 2011 - lslezak@suse.cz
+
+- cleanup: removed obsoleted SourceManager::SyncAddedAndDeleted()
+  call (zmd sync has been removed)
+- 2.21.4
+
+-------------------------------------------------------------------
+Fri Jul 22 13:28:42 UTC 2011 - lslezak@suse.cz
+
+- properly remove an add-on from installation workflow when it
+  is not compliant (bnc#701497) 
+- 2.21.3
+
+-------------------------------------------------------------------
+Wed Jun 29 18:07:46 CEST 2011 - ug@suse.de
+
+- fixed relurl://.... for add-on config in autoyast XML
+  (bnc#702863)
+
+-------------------------------------------------------------------
+Mon Jun 27 15:14:21 UTC 2011 - lslezak@suse.cz
+
+- don't start package manager when license agreement is aborted
+  (bnc#701497) 
+- 2.21.2
+
+-------------------------------------------------------------------
+Fri Jun 24 08:19:41 UTC 2011 - lslezak@suse.cz
+
+- properly handle abort in software selection (finish add-on
+  workflow instead of going on) (bnc#691133)
+
+-------------------------------------------------------------------
+Fri Jun  3 15:41:23 CEST 2011 - locilka@suse.cz
+
+- Added support for clonning system configuration (used add-on
+  products) (FATE #311374).
+- 2.21.1
+
+------------------------------------------------------------------
+Fri Jan  7 10:35:45 CET 2011 - locilka@suse.cz
+
+- Fixed help text (BNC #363222)
+
+------------------------------------------------------------------
+Wed Jan 13 18:56:03 CET 2010 - kmachalkova@suse.cz
+
+- Adjusted .desktop file(s) to wrap /sbin/yast2/ calls in xdg-su
+  where root privileges are needed, removed X-KDE-SubstituteUID key 
+  (bnc#540627)
+
+-------------------------------------------------------------------
+Fri Apr  3 14:34:11 CEST 2009 - locilka@suse.cz
+
+- Adjusting initial repository name according to LABEL in content
+  file (bnc #481828).
+- 2.18.4
+
+-------------------------------------------------------------------
+Wed Mar 18 17:59:31 CET 2009 - locilka@suse.cz
+
+- Removing a work around that broke the possibility to use several
+  add-ons with the same URL (especially physical media-based ones)
+  (bnc #475352).
+
+-------------------------------------------------------------------
+Fri Mar 13 12:30:23 CET 2009 - locilka@suse.cz
+
+- Solving MenuButton shortcut conflicts (bnc #50003 c#39).
+
+-------------------------------------------------------------------
+Wed Feb 18 13:26:03 CET 2009 - locilka@suse.cz
+
+- Reloading libzypp state if user declines the Add-On
+  deinstallation proposal or some add-on finished libzypp in its
+  workflow (bnc #476417).
+- 2.18.3
+
+-------------------------------------------------------------------
+Tue Feb 17 13:30:31 CET 2009 - locilka@suse.cz
+
+- Installed products are not directly connected with their add-on
+  repositories. Merging them together and removing both add-on
+  product and repository when removing an add-on (bnc #475591).
+
+-------------------------------------------------------------------
+Wed Feb 11 19:10:33 CET 2009 - locilka@suse.cz
+
+- Selecting all products available on add-on media for installation
+  (bnc #474745).
+
+-------------------------------------------------------------------
+Mon Feb  2 14:34:27 CET 2009 - locilka@suse.cz
+
+- Forcing recreating and redrawing the table of add-on products.
+- Opening new wizard window before calling inst_rpmcopy and closing
+  after it returns.
+- Adding more debugging messages (all bnc #471020).
+- 2.18.2
+
+-------------------------------------------------------------------
+Mon Jan 26 16:51:09 CET 2009 - locilka@suse.cz
+
+- Added new client inst_add-on_software providing the functionality
+  to open package selector in a desired mode (and optionally to
+  install the selected software) (bnc #469320).
+- 2.18.1
+
+-------------------------------------------------------------------
+Fri Jan 23 16:40:01 CET 2009 - locilka@suse.cz
+
+- Fixed displaying repository information for add-on products
+  (bnc #459461)
+- Storing sources before calling registration on a running system
+  (bnc #468449)
+- 2.18.0
+
+-------------------------------------------------------------------
+Mon Jan 12 15:12:49 CET 2009 - locilka@suse.cz
+
+- Fixed displaying URL and product directory while editing an
+  already stored and opened AutoYaST configuration (bnc #464162).
+
+-------------------------------------------------------------------
+Tue Dec 16 14:33:23 CET 2008 - locilka@suse.cz
+
+- Preventing from showing add-on added by Community Repositories
+  twice (bnc #450274).
+
+-------------------------------------------------------------------
+Fri Dec 12 15:35:36 CET 2008 - locilka@suse.cz
+
+- Fixed appearance of buttons and their handling (e.g.,
+  confirmation when aborting the configuration) in the Add-Ons
+  overview/installation dialogs (bnc #449773).
+- 2.17.12
+
+-------------------------------------------------------------------
+Tue Nov 18 12:45:49 CET 2008 - locilka@suse.cz
+
+- Listing only type=="addon" products (bnc #441984).
+- Informing user what is going to happen after removing an add-on
+  product (bnc #441984).
+- 2.17.11
+
+-------------------------------------------------------------------
+Fri Nov  7 17:34:05 CET 2008 - locilka@suse.cz
+
+- Checking download files signatures (bnc #409927).
+- 2.17.10
+
+-------------------------------------------------------------------
+Wed Nov  5 14:15:06 CET 2008 - locilka@suse.cz
+
+- Always refreshing and loading the newly added source
+  (bnc #441380).
+- 2.17.9
+
+-------------------------------------------------------------------
+Tue Nov  4 09:32:38 CET 2008 - locilka@suse.cz
+
+- Hiding back button instead of disabling it (acccording to YaST
+  Style Guide) (bnc #440565).
+- 2.17.8
+
+-------------------------------------------------------------------
+Mon Nov  3 17:37:44 CET 2008 - locilka@suse.cz
+
+- Make `cancel behave like `abort (bnc #439435).
+- 2.17.7
+
+-------------------------------------------------------------------
+Tue Oct 14 13:00:52 CEST 2008 - locilka@suse.cz
+
+- Add-Ons AutoYaST client now sets the product name if found by
+  RepositoryScan (bnc #434708).
+- Repository name defined in AutoYaST profile is preferred
+  (bnc #433981).
+- Using [OK] button to accept the AutoYaST configuration overview
+  dialog (bnc #427407).
+- 2.17.6
+
+-------------------------------------------------------------------
+Wed Oct  1 11:57:38 CEST 2008 - locilka@suse.cz
+
+- Changed texts (bnc #431177).
+- 2.17.5
+
+-------------------------------------------------------------------
+Tue Sep 30 10:53:19 CEST 2008 - locilka@suse.cz
+
+- Support for commandline: "help", "longhelp", and "xmlhelp"
+  (bnc #430852).
+- 2.17.4
+
+-------------------------------------------------------------------
+Mon Sep  8 17:34:39 CEST 2008 - locilka@suse.cz
+
+- merged texts from proofread
+- 2.17.3
+
+-------------------------------------------------------------------
+Fri Aug 15 16:26:05 CEST 2008 - locilka@suse.cz
+
+- Finished deinstallation of Add-On (FATE #300654).
+- 2.17.2
+
+-------------------------------------------------------------------
+Tue Jul 22 12:16:55 CEST 2008 - coolo@suse.de
+
+- revert again
+
+-------------------------------------------------------------------
+Tue Jul 22 11:55:51 CEST 2008 - ro@suse.de
+
+- temporarily remove conflicts with older yast2-pkg-bindings
+  to have alpha1 installable 
+
+-------------------------------------------------------------------
+Fri Jun 27 18:11:27 CEST 2008 - locilka@suse.cz
+
+- Implemented Add-Ons overview (FATE #303588).
+- Implemented deinstallation of Add-On (FATE #300654).
+- 2.17.1
+
+-------------------------------------------------------------------
+Tue Jun 17 14:23:45 CEST 2008 - lslezak@suse.cz
+
+- use Pkg::SourceSaveAll() instead of Pkg::SourceFinishAll()
+  (bnc#395738) 
+- 2.17.0
+
+-------------------------------------------------------------------
+Thu May 22 17:18:25 CEST 2008 - locilka@suse.cz
+
+- Readded managing AddOnProduct::add_on_products (list of used
+  Add-On products) when a new Add-On is used (bnc #393620).
+- 2.16.8
+
+-------------------------------------------------------------------
+Wed May 21 16:30:09 CEST 2008 - locilka@suse.cz
+
+- Adjusting AddOnProduct::src_id to the latest source ID added.
+  It is needed for downloading the product workflow and
+  registration to proceed (bnc #393011).
+- 2.16.7
+
+-------------------------------------------------------------------
+Mon May 19 16:32:19 CEST 2008 - locilka@suse.cz
+
+- Re-enabling SLP and Community Repositories for Add-Ons
+  (bnc #392083).
+- 2.16.6
+
+-------------------------------------------------------------------
+Fri May 16 16:40:22 CEST 2008 - jsrain@suse.cz
+
+- added categories Settings and System into desktop file
+  (bnc #382778)
+
+-------------------------------------------------------------------
+Thu May 15 16:20:48 CEST 2008 - locilka@suse.cz
+
+- Using functions for adding repositories exported by the
+  yast2-packager to unify the offered types of repositories
+  (bnc #368207).
+- Updated RPM dependencies.
+- 2.16.5
+
+-------------------------------------------------------------------
+Wed May 14 11:15:45 CEST 2008 - ug@suse.de
+
+- ask for add-on source when ask_on_error is set
+- 2.16.4
+
+-------------------------------------------------------------------
+Mon Apr 14 12:17:23 CEST 2008 - locilka@suse.cz
+
+- Unified Button Labels: OK instead of Accept (fate #120373).
+- 2.16.3
+
+-------------------------------------------------------------------
+Tue Apr  1 10:02:15 CEST 2008 - jsrain@suse.cz
+
+- merged texts from proofread
+- 2.16.2
+
+-------------------------------------------------------------------
+Mon Mar 17 12:43:32 CET 2008 - jsrain@suse.cz
+
+- added 'StartupNotify=true' to the desktop file (bnc #304964)
+
+-------------------------------------------------------------------
+Tue Nov 20 13:33:28 CET 2007 - locilka@suse.cz
+
+- Displaying busy-message when removing add-on (#305807).
+- 2.16.1
+
+-------------------------------------------------------------------
+Mon Nov 19 16:46:21 CET 2007 - locilka@suse.cz
+
+- Fixed / unified used terminology (repositories) (FATE #302970).
+
+-------------------------------------------------------------------
+Wed Oct 24 16:27:41 CEST 2007 - locilka@suse.cz
+
+- Changes in StorageDevices module API (#335582).
+- 2.16.0
+
+-------------------------------------------------------------------
+Thu Oct 11 11:03:11 CEST 2007 - locilka@suse.cz
+
+- List Product Name, then Product URL instead if vice versa
+  (#332837).
+
+-------------------------------------------------------------------
+Mon Sep 24 14:15:57 CEST 2007 - locilka@suse.cz
+
+- Do not ask whether to install packages in the inst-sys (#327742).
+- 2.15.17
+
+-------------------------------------------------------------------
+Mon Sep 24 09:29:12 CEST 2007 - locilka@suse.cz
+
+- Calling Pkg::SourceReleaseAll(); after a new Add-On is used and
+  completely merged (#293428 c#44).
+- 2.15.16
+
+-------------------------------------------------------------------
+Wed Sep  5 14:02:25 CEST 2007 - locilka@suse.cz
+
+- NotEnoughMemory-functions moved to a separate misc.ycp include
+  file to make them possible to be used from packager (#305554).
+- Skipping Add-Ons when requested by user (#305554).
+- Adjusted RPM dependencies.
+- 2.15.15
+
+-------------------------------------------------------------------
+Wed Aug 29 10:21:17 CEST 2007 - locilka@suse.cz
+
+- Using new Wizard window without installation steps displayed when
+  adding new Add-On. Dialog help is visible immediately. Restoring
+  dialog buttons when redrawing list of used Add-Ons (#305788).
+- Requesting confirmation when user wants to delete already added
+  Add-On (#305802).
+- Not skipping to the "Add-On Product Media" dialog in case of
+  going_back in the installation workflow even if there is not
+  Add-On in use yet (#305809).
+- Disabling [ Next ] button in Media Selection dialog unless some
+  media type is selected (#305850).
+- 2.15.14
+
+-------------------------------------------------------------------
+Mon Aug 27 18:10:53 CEST 2007 - locilka@suse.cz
+
+- Adjusting Add-On's name if set in SourceDialogs when adding it
+  during installation and on a running system (#304659).
+- 2.15.13
+
+-------------------------------------------------------------------
+Wed Aug 22 12:29:40 CEST 2007 - locilka@suse.cz
+
+- Disabled [ Back ] button and using [ Cancel ] instead of
+  [ Abort ] button in the "New Add-On" dialog (#298052).
+- Do not ask whether to abort the Add-On configuration when
+  [ Cancel ] clicked in installation, just return to the previous
+  dialog (#298052).
+- 2.15.12
+
+-------------------------------------------------------------------
+Mon Aug  6 10:25:56 CEST 2007 - locilka@suse.cz
+
+- Fixed text by proofreading.
+- 2.15.11
+
+-------------------------------------------------------------------
+Fri Jun 22 15:11:59 CEST 2007 - locilka@suse.cz
+
+- Added a code checking for open/closed dialogs after Pkg bindings
+  were called to use a new Add-On product.
+- 2.15.10
+
+-------------------------------------------------------------------
+Fri Jun  1 15:35:46 CEST 2007 - locilka@suse.cz
+
+- Fixed Add-On client to provide command-line again. Providing
+  "help" and "longhelp" (#279074).
+- Fixed Add-On workflow to store the "PRODUCT" tag from content
+  file for later usage in AutoYaST cloning (#279893).
+- 2.15.9
+
+-------------------------------------------------------------------
+Fri May 25 13:30:04 CEST 2007 - jsrain@suse.cz
+
+- removed outdated translations from .desktop-files (#271209)
+
+-------------------------------------------------------------------
+Mon May 14 09:07:40 CEST 2007 - jsrain@suse.cz
+
+- Fixed Add-Ons in AutoYaST Write function to Integrate all Add-Ons
+  via AddOnProduct::Integrate (#260613).
+- 2.15.8
+
+-------------------------------------------------------------------
+Wed May  2 10:05:37 CEST 2007 - locilka@suse.cz
+
+- CommandLine interface (no support reported) for add-on (#269886)
+- CommandLine interface (no support reported) for vendor (#269911)
+- 2.15.7
+
+-------------------------------------------------------------------
+Wed Apr  4 15:42:16 CEST 2007 - ug@suse.de
+
+- signature checks for individual add-ons for autoyast
+
+-------------------------------------------------------------------
+Fri Mar 30 13:44:18 CEST 2007 - locilka@suse.cz
+
+- Reporting Low-Memory issue during installation on machines with
+  less than 384 MB (-5%) of total memory (together with available
+  swap). User is warned not to use Add-Ons in such case (bugzilla
+  #239630).
+- Skipping the first table listing Add-Ons if no Add-Ons are in
+  use. The first dialog is then Selecting the Add-On (FATE
+  #301928).
+- Adjusted RPM dependencies
+- 2.15.6
+
+-------------------------------------------------------------------
+Wed Mar 28 16:11:59 CEST 2007 - locilka@suse.cz
+
+- Adjusted to use WorkflowManager instead of AddOnProduct module
+  in some cases (for FATE #129).
+- Adjusted RPM requirements and BuildRequires.
+- 2.15.5
+
+-------------------------------------------------------------------
+Tue Mar 13 15:24:27 CET 2007 - locilka@suse.cz
+
+- Redraw Wizard steps when Add-Ons are changed in the installation
+  proposal. This change allows to reflect the current workflow look
+  just after the workflow change is made (#254035).
+- Adjusted RPM dependencies (yast2-packager).
+- 2.15.4
+
+-------------------------------------------------------------------
+Mon Mar  5 17:14:07 CET 2007 - locilka@suse.cz
+
+- Moving AddOnProduct module back to yast2-installation because
+  this module is needed in the second-stage installation.
+- AddOnProduct-related testsuites moved back to yast2-installation.
+- 2.15.3
+
+-------------------------------------------------------------------
+Mon Feb 26 09:49:07 CET 2007 - locilka@suse.cz
+
+- Fixing RPM spec file to properly cover all files included in it.
+- 2.15.2
+
+-------------------------------------------------------------------
+Fri Feb 23 10:10:04 CET 2007 - locilka@suse.cz
+
+- Fixed registering new agents when y2update is part of the Add-On
+  media (#245508) also for mode "update" and "autoinstallation"
+  by using Stage::initial only (#247892).
+- 2.15.1
+
+-------------------------------------------------------------------
+Thu Feb 22 14:33:03 CET 2007 - locilka@suse.cz
+
+- Added forgotten inst_add-on and inst_language_add-on client from
+  yast2-installation.
+- Added autoyast2-installation into Requires because of the second
+  stage installation.
+- Added forgotten testsuites from yast2-installation.
+- Fixed paths to included files and textdomain.
+
+-------------------------------------------------------------------
+Fri Feb 16 17:55:54 CET 2007 - locilka@suse.cz
+
+- Registering new agents when y2update is part of the Add-On media,
+  some agents might have been added (#245508).
+
+-------------------------------------------------------------------
+Fri Feb 16 15:52:48 2007 - locilka@suse.cz
+
+- initial version split from yast2-installation-2.15.8 to
+  minimize required packages (#238673).
+- 2.15.0

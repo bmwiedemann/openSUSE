@@ -1,0 +1,13 @@
+Index: gluegen-v2.3.1/src/java/com/jogamp/common/os/Platform.java
+===================================================================
+--- gluegen-v2.3.1.orig/src/java/com/jogamp/common/os/Platform.java
++++ gluegen-v2.3.1/src/java/com/jogamp/common/os/Platform.java
+@@ -256,7 +256,7 @@ public class Platform extends PlatformPr
+     private static final String useTempJarCachePropName = "jogamp.gluegen.UseTempJarCache";
+ 
+     /** fixed basename of JAR file and native library */
+-    private static final String libBaseName = "gluegen-rt";
++    private static final String libBaseName = "gluegen2-rt";
+ 
+     //
+     // static initialization order:

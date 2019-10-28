@@ -1,0 +1,102 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b1a2e5156471de8b8eaada99ed147a29</srcmd5>
+    <version>4.0.0</version>
+    <time>1540447933</time>
+    <user>dimstar_suse</user>
+    <comment>- added change from request #639007
+  - rename package to python3-espressomd
+  - install COPYING for all packages
+  - change license to GPL-3.0-or-later
+  - added sonum define
+- Version bump to 4.0.0
+- Rename pacakge to python-espressomd
+- Dropped 1830.patch - merged upstream
+- Dropped doc package - under rework in 4.0.0
+- New features:
+  - Reaction ensemble methods for the modelling of chemical reactions, including constant pH and Wang-Landau schemes.
+  - Polarisable particles via the Drude-oscillator scheme.
+  - Steepest-descent energy minimization scheme.
+  - Methods for active particles (swimmer_reaction, dipolar swimmers).
+  - GPU-accelerated P3M method for electrostatic interactions.
+  - GPU-accelerated direct summation and Barnes-Hutt schemes for dipolar interactions under open boundary conditions.
+  - Support for the electrostatic and magnetostatics method provided by the ScaFaCoS library.
+  - Immersed boundary method for soft immersed objects in an LB fluid.
+  - Virtual sites acting as inertialess tracers in an LB fluid usable as part of the immersed boundary method or independently.
+  - New bonded quartic and Coulomb interactions.
+  - Possibility to tune the skin parameter.
+  - Support for saving to the h5md file format for molecular dynamics data.
+  - Connection to the MD Analysis Python package.
+  - A rotate_system command was added, which rotates the particle positions around the system’s center of mass.
+- Added 2255.patch to fix numpy issue on i586
+- Added 2259.patch to fix numpy issue on big-endian platforms
+- Added 2265.patch to fix test on i586
+- add 1830.patch to fix install
+- update version 3.3.1+git20180203.f74064d
+  * many many small fixes
+  * support for newer cython
+- adapt to new openlmi package - source mpivars.h during build
+- use individual libboost-*-devel packages instead of boost-devel
+- RPM group fixup
+- switched to cmake build-system
+- build python module
+- dropped header as they are for internal use only
+- dropped pkg-config files as nothing depends on libs yet
+- update version 3.3.1+git20160803.6ed0518.tar.gz
+  * overhaul of buildsystem
+  * many many small fixes
+- fix boo#985147
+  * there's a commit that removed redefinition of malloc and realloc
+    which fixed build for gcc 6. but it's too hard to cherry pick, so 
+    update to the latest git version is a good idea
+- there's no --without-mpi option left in configure.ac, so &quot;-openmpi&quot;
+  sub-package is meaningless now (everything has openmpi support)
+  and since there's no two main packages any more, &quot;-common&quot; sub-package
+  is also meaningless now (and it doesn't contains data), merged.
+- add sub-package: &quot;-devel&quot;, &quot;libEspresso0&quot;, &quot;libEspressoTcl0&quot;
+- add generate_headers.rb to gather those .hpp that're really used
+  into &quot;-devel&quot; sub-package
+- create pkgconfig files
+- add some texlive BuildRequires to build pdf documentation.
+- update version 3.3.1+git20160622.6aa229c:
+  * added edge statistics for meshes used by object-in-fluid
+  * added pos_folded property
+  * Adapted simple LB tests to current interface.
+  * system.part.writevtk()
+  * redesigned exclusions and added slice input
+  * Scafacos: Add long range energy to correct place in energy data structure
+  * Correction to scafacos energy calculation: Check cutoff in near field contrib
+  * Scafacos: Sort out conditional compilation and cython includes
+  * Scafacos: methods shared between electrostatics and dipolar calculations
+- Update to version 3.3.1
+  * A lot of changes; please read the NEWS file
+- version bumped to 3.3.0
+- Highlights of this release include:
+  - Calculation of the electrokinetic equations via the ELECTROKINETICS feature,
+   - the Shan/Chen method for multi component lattice Boltzmann fluids,
+   - the P3M and MMM1D methods can now be computed on a GPU,
+   -  ESPResSo now has a rudimentary Python interface.
+   For a complete list of the changes in the release, please refer to:
+   http://download.savannah.gnu.org/releases/espressomd/NEWS
+- build openmpi and non-mpi version
+- initial commit
+</comment>
+    <requestid>642286</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6101b284408147dde65b955102aec656</srcmd5>
+    <version>4.0.1</version>
+    <time>1549017872</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668739</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>93eeb2334faa1cc7002eeb58800441cd</srcmd5>
+    <version>4.0.2</version>
+    <time>1556817600</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699890</requestid>
+  </revision>
+</revisionlist>

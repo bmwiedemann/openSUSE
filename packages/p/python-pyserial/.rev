@@ -1,0 +1,133 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cd3f87aa8de03c6ca1cb40497d6bb4f6</srcmd5>
+    <version>2.5</version>
+    <time>1315862013</time>
+    <user>lrupp</user>
+    <comment>Replaces python-serial, there's a delete request too ;-)</comment>
+    <requestid>81116</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>cd3f87aa8de03c6ca1cb40497d6bb4f6</srcmd5>
+    <version>2.5</version>
+    <time>1319182402</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>fdf55386480ea38fd76a056f93275e4f</srcmd5>
+    <version>2.5</version>
+    <time>1323194247</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>fdf55386480ea38fd76a056f93275e4f</srcmd5>
+    <version>2.5</version>
+    <time>1340184083</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>fdf55386480ea38fd76a056f93275e4f</srcmd5>
+    <version>2.5</version>
+    <time>1359110102</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2f862689d5dfd8de26c9c9fd2bd76575</srcmd5>
+    <version>2.6</version>
+    <time>1368451569</time>
+    <user>coolo</user>
+    <comment>python3 package added
+update to 2.6 version
+spec file cleaned from old TODO comments (forwarded request 174583 from HighwayStar)</comment>
+    <requestid>174797</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>8550113e22ec59617d919f3ac53006dc</srcmd5>
+    <version>2.6</version>
+    <time>1371649834</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179969</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>8550113e22ec59617d919f3ac53006dc</srcmd5>
+    <version>2.6</version>
+    <time>1379664260</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>26073f6c7d9cfb100a26e1d3bfc2a52d</srcmd5>
+    <version>2.7</version>
+    <time>1385388186</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 208218 from posophe)</comment>
+    <requestid>208219</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>26073f6c7d9cfb100a26e1d3bfc2a52d</srcmd5>
+    <version>2.7</version>
+    <time>1409302964</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2af50192d0bbaba45211c0ebc4efb2b8</srcmd5>
+    <version>3.0.1</version>
+    <time>1464014301</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397070</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>54efe4afe558453623759072de12538f</srcmd5>
+    <version>3.0.1</version>
+    <time>1471867212</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419504</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>29e402fd55f20adb75644f1d3901470d</srcmd5>
+    <version>3.3</version>
+    <time>1492618089</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>486222</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>48aa72aa2439f7eea5a4e388545cab1a</srcmd5>
+    <version>3.3</version>
+    <time>1498638787</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505426</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5f1de44455c367587c267da5f03f1390</srcmd5>
+    <version>3.4</version>
+    <time>1502559804</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>515045</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>3fbfd149a2234a62104ee21c576b59a5</srcmd5>
+    <version>3.4</version>
+    <time>1544816818</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>655906</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>d450f5c401de653681f443f561d3c0e5</srcmd5>
+    <version>3.4</version>
+    <time>1555691811</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694194</requestid>
+  </revision>
+</revisionlist>

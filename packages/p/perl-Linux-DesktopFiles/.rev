@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bd40361f41f874708b683406d837fef7</srcmd5>
+    <version>0.21</version>
+    <time>1507197402</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.21
+   see /usr/share/doc/packages/perl-Linux-DesktopFiles/Changes
+  0.21  2017-09-21
+      - Fixed a minor bug for icon names that contain one or more dots (e.g.: &quot;foo.bar.baz&quot;).
+        Thanks to Erik Dubois for reporting this issue (https://github.com/trizen/obmenu-generator/issues/16).
+- Initial package, version 0.20
+</comment>
+    <requestid>530208</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>eb1ac0643941cdd7a69479262459641b</srcmd5>
+    <version>0.22</version>
+    <time>1507280637</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.22
+   see /usr/share/doc/packages/perl-Linux-DesktopFiles/Changes
+  0.22  2017-10-04
+      - Make sure the category names are unique, so we don't store an application twice under the same category.
+- updated to 0.21
+   see /usr/share/doc/packages/perl-Linux-DesktopFiles/Changes
+  0.21  2017-09-21
+      - Fixed a minor bug for icon names that contain one or more dots (e.g.: &quot;foo.bar.baz&quot;).
+        Thanks to Erik Dubois for reporting this issue (https://github.com/trizen/obmenu-generator/issues/16).
+- Initial package, version 0.20
+</comment>
+    <requestid>531582</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3e06867def461a91926411981b7f3606</srcmd5>
+    <version>0.24</version>
+    <time>1508770326</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>535745</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>27c60437daa8b552adb51a015a5102bc</srcmd5>
+    <version>0.25</version>
+    <time>1508876668</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536225</requestid>
+  </revision>
+</revisionlist>

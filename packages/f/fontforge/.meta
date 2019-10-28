@@ -1,0 +1,8 @@
+<package name="fontforge" project="openSUSE:Factory">
+  <title>A Font Editor</title>
+  <description>FontForge allows editing of outline and bitmap fonts.  With it, you can
+create new fonts or modify old ones.  It also converts font formats and
+can convert among PostScript (ASCII &amp; binary Type 1, some Type 3s, and
+some Type 0s), TrueType, OpenType (Type2), and CID-keyed fonts.</description>
+  <devel project="M17N" package="fontforge"/>
+</package>

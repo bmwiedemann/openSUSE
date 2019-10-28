@@ -1,0 +1,13 @@
+--- option.c
++++ option.c
+@@ -134,6 +134,10 @@
+ 			s--;
+ 			optc = 'z';
+ 			break;
++		case 'l':
++			if (less_is_more)
++				continue;
++			break;
+ 		case 'n':
+ 			if (less_is_more)
+ 				optc = 'z';

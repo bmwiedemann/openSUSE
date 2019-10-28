@@ -1,0 +1,9 @@
+<package name="psgplay" project="openSUSE:Factory">
+  <title>Player for Atari ST Music Files</title>
+  <description>This package allows you to play music from Atari ST games and demos on
+your PC.
+
+You can find a comprehensive archive on the World Wide Web at
+http://www.nocrew.org/software/psgplay/tunes/</description>
+  <devel project="Emulators" package="psgplay"/>
+</package>

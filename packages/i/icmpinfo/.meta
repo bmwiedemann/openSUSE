@@ -1,0 +1,5 @@
+<package name="icmpinfo" project="openSUSE:Factory">
+  <title>A Tool for Looking at ICMP Messages</title>
+  <description>A tool for looking at the ICMP messages received on the running host.</description>
+  <devel project="network:utilities" package="icmpinfo"/>
+</package>

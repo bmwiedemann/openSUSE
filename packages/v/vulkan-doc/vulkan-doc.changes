@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Oct 26 11:39:31 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.126
+  * Allow slink:VkRenderPassFragmentDensityMapCreateInfoEXT to
+    extend.
+  * Update the elink:VkAccessFlagBits etext:VK_ACCESS_MEMORY_*
+    flags definition to make clear that
+    ename:VK_ACCESS_MEMORY_READ_BIT and
+    ename:VK_ACCESS_MEMORY_WRITE_BIT are meant to be equivalent
+    to setting all applicable etext:READ and etext:WRITE access
+    flags, and update the
+    <<synchronization-access-types-supported, supported access
+    types>> table accordingly.
+  * Clarify the memory mapping NOTE about invalidation described
+    for flink:vkInvalidateMappedMemoryRanges.
+  * Fix label for flink:vkCmdWaitEvents VUID 02803.
+
+-------------------------------------------------------------------
 Sun Sep 22 21:47:34 UTC 2019 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to 1.1.123

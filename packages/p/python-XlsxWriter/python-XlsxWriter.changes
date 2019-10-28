@@ -1,0 +1,251 @@
+-------------------------------------------------------------------
+Sat Sep 14 06:44:46 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Use %pytest, as setup.py test invokes python which does not exist
+  if only python3 flavour is built.
+
+-------------------------------------------------------------------
+Mon Jul 22 16:16:15 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to Release 1.1.8
+  * Added ability to combine Doughnut and Pie charts.
+  * Added gauge chart example which is a combination of a Doughnut and a Pie
+    chart.
+- Update to Release 1.1.7
+  * Added docs on object_position.
+  * Added fix for sizing of cell comment boxes when they cross columns/rows that
+    have size changes that occur after the comment is written.
+  * Added fix for the sizing of worksheet objects (images, charts, textboxes)
+    when the underlying cell sizes have changed and the "object_position"
+    parameter has been set to 1 "Move and size with cells". An additional mode 4
+    has been added to simulate inserting the object in hidden rows.
+    * Added object positioning for charts and textboxes, it was already supported
+    for images. Note, the parameter is now called ``object_position``. The
+    previous parameter name ``positioning`` is deprecated but still supported
+    for images.
+- Update to Release 1.1.6
+  * Fixed issue where images that started in hidden rows/columns weren't placed
+    correctly in the worksheet.
+  * Fixed the mime-type reported by system ``file(1)``. The mime-type reported
+    by "file --mime-type"/magic was incorrect for XlsxWriter files since it
+    expected the ``[Content_types]`` to be the first file in the zip container.
+
+-------------------------------------------------------------------
+Mon Feb 25 03:41:22 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.1.5
+  * Break compatibility with Python 2.6
+
+-------------------------------------------------------------------
+Fri Feb 22 14:04:35 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.1.4
+  * Fix for issues where zipfile.py raises "ZIP does not support
+    timestamps before 1980" exception.
+    Issue `#535 <https://github.com/jmcnamara/XlsxWriter/issues/535>`_.
+- from v1.1.3
+  * Fix handling of ``'num_format': '0'`` in duplicate formats.
+    Issue `#584 <https://github.com/jmcnamara/XlsxWriter/issues/584>`_.
+- Activate the test suite using the GitHub repository archive.
+
+-------------------------------------------------------------------
+Sat Dec 22 02:29:29 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 1.1.2
+  * Fix for issue where ``in_memory`` files weren't compressed.
+    Issue `#573 <https://github.com/jmcnamara/XlsxWriter/issues/573>`_.
+  * Fix ``write()`` so that it handles array formulas as documented.
+    Issue `#418 <https://github.com/jmcnamara/XlsxWriter/issues/418>`_.
+  * Fix for issue with special characters in worksheet table functions.
+    Issue `#442 <https://github.com/jmcnamara/XlsxWriter/issues/442>`_.
+  * Added warnings for input issues in :func:`write_rich_string()` such as blank
+    strings, double formats or insufficient parameters.
+    Issue `#425 <https://github.com/jmcnamara/XlsxWriter/issues/425>`_.
+- Update to version 1.1.1
+  * Added comment font name and size options.
+    Issue `#201 <https://github.com/jmcnamara/XlsxWriter/issues/201>`_.
+  * Fix for issue when using text boxes in the same workbook as a chartsheet.
+    Issue `#420 <https://github.com/jmcnamara/XlsxWriter/issues/420>`_.
+- Update to version 1.1.0
+  * Added functionality to align chart category axis labels. See the
+    ``label_align`` property of the :func:`set_x_axis()` method.
+  * Added worksheet :func:`hide_row_col_headers()` method to turn off worksheet
+    row and column headings.
+    Issue `#480 <https://github.com/jmcnamara/XlsxWriter/issues/480>`_.
+  * Added the :func:`set_tab_ratio()` method to set the ratio between the
+    worksheet tabs and the horizontal slider.
+    Issue `#481 <https://github.com/jmcnamara/XlsxWriter/issues/481>`_.
+  * Fixed issue with icon conditional formats when the values were zero.
+    Issue `#565 <https://github.com/jmcnamara/XlsxWriter/issues/565>`_.
+- Update to version 1.0.9
+  * Fix for issue with formulas quoted as strings in conditional formats,
+    introduced in version 1.0.7.
+    Issue `#564 <https://github.com/jmcnamara/XlsxWriter/issues/564>`_.
+- Update to version 1.0.8
+  * Added named exceptions to XlsxWriter. See :ref:`exceptions`.
+  * Removed the implicit :func:`close()` in the destructor since it wasn't
+    guaranteed to work correctly and raised a confusing exception when any other
+    exception was triggered. **Note that this is a backward incompatible
+    change.** The ``with`` context manager is a better way to close
+    automatically, see :func:`close()`.
+  * Added border, fill, pattern and gradient formatting options to
+    :func:`set_legend()`.
+    Issue `#545 <https://github.com/jmcnamara/XlsxWriter/issues/545>`_.
+  * Added ``top_right`` position to :func:`set_legend()`.
+    Issue `#537 <https://github.com/jmcnamara/XlsxWriter/issues/537>`_.
+- Update to version 1.0.7
+  * Fix for unicode type error in Python 3.
+    Issue `#554 <https://github.com/jmcnamara/XlsxWriter/issues/554>`_.
+- Update to version 1.0.6
+  * Added some performance improvements.
+    PR `#551 <https://github.com/jmcnamara/XlsxWriter/pull/551>`_.
+- Update to version 1.0.5
+  * Added example of how to subclass the Workbook and Worksheet objects. See
+    :ref:`ex_inheritance1` and :ref:`ex_inheritance2`.
+  * Added support for WMF and EMF image formats to the Worksheet
+    :func:`add_image` method.
+- Update to version 1.0.4
+  * Set the xlsx internal file member datetimes to 1980-01-01 00:00:00 like
+    Excel so that apps can produce a consistent binary file once the workbook
+    :func:`set_properties` ``created`` date is set.
+    Pull request `#495 <https://github.com/jmcnamara/XlsxWriter/pull/495>`_.
+  * Fix for jpeg images that reported unknown height/width due to unusual SOF markers.
+    Issue `#506 <https://github.com/jmcnamara/XlsxWriter/issues/506>`_.
+  * Added support for blanks in list autofilter.
+    Issue `#505 <https://github.com/jmcnamara/XlsxWriter/issues/505>`_.
+- Update to version 1.0.3
+  * Added Excel 2010 data bar features such as solid fills and control over the
+    display of negative values. See :ref:`working_with_conditional_formats` and
+    :ref:`ex_cond_format`.
+    Feature request `#502 <https://github.com/jmcnamara/XlsxWriter/issues/502>`_.
+  * Fixed :func:`set_column` parameter names to match docs and other methods.
+    Note, this is a backward incompatible change.
+    Issue `#504 <https://github.com/jmcnamara/XlsxWriter/issues/504>`_.
+  * Fixed missing plotarea formatting in pie/doughnut charts.
+- Update to version 1.0.2
+  * Fix for cases where the hyperlink style added in the previous release didn't
+    work.
+    Feature request `#455 <https://github.com/jmcnamara/XlsxWriter/issues/455>`_.
+- Update to version 1.0.1
+  * Changed default :func:`write_url` format to the Excel hyperlink style so that
+    it changes when the theme is changed and also so that it indicates that the
+    link has been clicked.
+    Feature request `#455 <https://github.com/jmcnamara/XlsxWriter/issues/455>`_.
+- Update to version 1.0.0
+  * Added icon sets to conditional formatting. See
+    :ref:`working_with_conditional_formats` and :ref:`ex_cond_format`.
+    Feature request `#387 <https://github.com/jmcnamara/XlsxWriter/issues/387>`_.
+- Update to version 0.9.9
+  * Added ``stop_if_true`` parameter to conditional formatting.
+    Feature request `#386 <https://github.com/jmcnamara/XlsxWriter/issues/386>`_.
+- Update to version 0.9.8
+  * Fixed issue where spurious deprecation warning was raised in ``-Werror`` mode.
+    ssue `#451 <https://github.com/jmcnamara/XlsxWriter/issues/451>`_.
+- Update to version 0.9.7
+  * Minor bug and doc fixes.
+
+-------------------------------------------------------------------
+Thu Mar  2 09:01:52 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.9.6 (changes since 0.9.3):
+  * Add user definable removal of timezones in datetimes
+    (gh#jmcnamara/XlsxWriter#257).
+  * Fix a duplicate header warning in add_table when there is only
+    one user defined header (gh#jmcnamara/XlsxWriter#380).
+  * A fix for the center_across property in add_format
+    (gh#jmcnamara/XlsxWriter#381).
+  * A fix for a missing remove_timezone option in the Chart class
+    (gh#jmcnamara/XlsxWriter#404).
+  * A fix for a table with data but without a header
+    (gh#jmcnamara/XlsxWriter#405>).
+  * Add a warning when the number of series in a chart exceeds
+    Excel's limit of 255 (gh#jmcnamara/XlsxWriter#399).
+- Update for the multipython build.
+
+-------------------------------------------------------------------
+Mon Aug 15 14:51:56 UTC 2016 - toddrme2178@gmail.com
+
+- Fix update-alternatives implementation.
+
+-------------------------------------------------------------------
+Fri Jul 22 16:23:41 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 0.9.3 (changes since 0.8.7):
+  * Add workbook :func:`set_custom_property` method to set custom
+    document properties.
+  * Fix for :func:`insert_image` issue when handling images with
+    zero dpi.
+  * Add :ref:`trendline properties <chart_series_option_trendline>`:
+  ``intercept``, ``display_equation`` and ``display_r_squared``.
+  * Documented used of font rotation in chart :ref:`data labels
+    <chart_series_option_data_labels>`.
+  * Add workbook :func:`set_size` method to set the workbook window
+    size.
+  * Add check to :func:`add_table` to prevent duplicate header
+    names which leads to a corrupt Excel file.
+- Fix SLE 11 build.
+
+-------------------------------------------------------------------
+Wed May 25 15:35:15 UTC 2016 - toddrme2178@gmail.com
+
+- Update to 0.8.7
+  * Fix for issue when inserting read-only images on Windows.
+    Issue `#352 <https://github.com/jmcnamara/XlsxWriter/issues/352>`_.
+  * Added :func:`get_worksheet_by_name()` method to allow the retrieval of a
+    worksheet from a workbook via its name.
+  * Fixed issue where internal file creation and modification dates where in the
+    local timezone instead of UTC.
+- Switch to pythonhosted URL.
+- Rename to python3-XlsxWriter to conform to python packaging guidelines
+- Implement update-alternatives
+
+-------------------------------------------------------------------
+Thu Apr 28 06:45:38 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 0.8.6 (changes since 0.8.4):
+  * Add additional documentation on :ref:`ewx_pandas` and
+    :ref:`pandas_examples`.
+  * Add fix for :func:`set_center_across` format method.
+  * Fix for ``external:`` urls where the target/anchor contains
+    spaces.
+
+-------------------------------------------------------------------
+Thu Feb 11 16:26:54 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 0.8.4 (changes since 0.7.7):
+  * Add checks for valid and non-duplicate worksheet table names.
+  * Add chart pattern fills, see :ref:`chart_formatting_pattern`
+    and :ref:`ex_chart_pattern`.
+  * Add additional documentation on :ref:`working_with_formulas`.
+  * Add option to set chart tick interval.
+  * Add transparency option to solid fill colours in chart areas
+    (:ref:`chart_formatting_fill`).
+  * Add options to configure chart axis tick placement.
+    See :func:`set_x_axis()`.
+  * Fix for :func:`write_url` exception when the URL contains two
+    ``#`` location/anchors. Note, URLs like this aren't strictly
+    valid and cannot be entered manually in Excel.
+
+-------------------------------------------------------------------
+Mon Nov 23 20:34:07 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.7.7:
+  * Add support for table header formatting and a fix for wrapped
+    lines in the header.
+
+-------------------------------------------------------------------
+Sat Oct 10 13:26:03 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.7.6:
+  * Add option to allow data validation input messages with the
+    'any' validate parameter.
+  * Fix url encoding of links to external files and directories.
+  * Allow hyperlinks longer than 255 characters when the link and
+    anchor are each less than or equal to 255 characters.
+  * Add ``hyperlink_base`` document property.
+  * Fix for images with negative offsets.
+
+-------------------------------------------------------------------
+Sat Jul 18 19:02:32 UTC 2015 - sor.alexei@meowr.ru
+
+- Initial package.

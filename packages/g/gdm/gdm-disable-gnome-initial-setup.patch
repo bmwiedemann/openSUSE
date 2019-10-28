@@ -1,0 +1,42 @@
+Index: b/daemon/gdm-display.c
+===================================================================
+--- a/daemon/gdm-display.c	2019-10-11 21:11:39.925180538 +0800
++++ b/daemon/gdm-display.c	2019-10-11 21:14:23.866397460 +0800
+@@ -570,7 +570,7 @@ gdm_display_prepare (GdmDisplay *self)
+          */
+         look_for_existing_users_sync (self);
+ 
+-        priv->doing_initial_setup = wants_initial_setup (self);
++        priv->doing_initial_setup = FALSE;
+ 
+         g_object_ref (self);
+         ret = GDM_DISPLAY_GET_CLASS (self)->prepare (self);
+@@ -1509,6 +1509,7 @@ on_launch_environment_session_died (GdmL
+         self_destruct (self);
+ }
+ 
++#if 0
+ static gboolean
+ can_create_environment (const char *session_id)
+ {
+@@ -1660,6 +1661,7 @@ wants_initial_setup (GdmDisplay *self)
+ 
+         return enabled;
+ }
++#endif
+ 
+ void
+ gdm_display_start_greeter_session (GdmDisplay *self)
+Index: b/data/gdm.schemas.in
+===================================================================
+--- a/data/gdm.schemas.in	2019-10-11 21:11:39.925180538 +0800
++++ b/data/gdm.schemas.in	2019-10-11 21:11:43.473206874 +0800
+@@ -50,7 +50,7 @@
+     <schema>
+       <key>daemon/InitialSetupEnable</key>
+       <signature>b</signature>
+-      <default>true</default>
++      <default>false</default>
+     </schema>
+     <schema>
+       <key>daemon/WaylandEnable</key>

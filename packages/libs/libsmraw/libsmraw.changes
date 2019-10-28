@@ -1,0 +1,96 @@
+-------------------------------------------------------------------
+Wed Apr 17 21:10:32 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20181227
+        * Added smraw.net.rc
+
+-------------------------------------------------------------------
+Wed Oct  4 22:37:30 UTC 2017 - Greg.Freemyer@gmail.com
+
+- rename python-libsmraw to python2-libsmraw as expected by singlespec
+- remove Provides pysmraw as it is not versioned
+
+-------------------------------------------------------------------
+Mon Oct  2 22:35:26 UTC 2017 - Greg.Freemyer@gmail.com
+
+- update to v0~20170803
+	* applied 2017 update
+	* worked on tests
+- change Group: field for python binding to devel/languages/python
+- Add python3 binding subpackage
+
+-------------------------------------------------------------------
+Thu Feb 16 20:27:09 UTC 2017 - Greg.Freemyer@gmail.com
+
+- update to v0~20160424
+	* bug fix for information file
+	* changes for Python 3 support
+	* Changes to Python bindings
+	* fixes for rpmbuild
+	* removed read/write random
+	* updated dependencies
+	* worked on tests
+- clean-up BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan  9 21:07:49 UTC 2015 - Greg.Freemyer@gmail.com
+
+- update to v0~20150105
+	* 2015 update
+	* worked on Python 3 support
+	* worked on tests
+	* worked on multi-threading support
+	* code clean up
+	* bug fixes for information file
+	* bug fix in Python-bindings
+- update URL to the new github site
+- replace Source: field with fully defined URL
+- remove DL-URL comment
+- start using more packages from OBS, not internal version
+- remove %if opensuse logic.  Not needed now libyal is in security:forensics
+
+-------------------------------------------------------------------
+Fri Sep 19 18:20:20 UTC 2014 - Greg.Freemyer@gmail.com
+
+- update to 20140817
+  * Worked on smrawmount
+- updated Source: field to have fullpath; removed DL_URL field
+
+-------------------------------------------------------------------
+Fri Aug 22 22:51:52 UTC 2014 - Greg.Freemyer@gmail.com
+
+- update BuildRequires to use as many external packages as possible
+- add Provides: pysmraw to python sub-project to match upstream requires
+- add %doc to all sub-projects
+
+-------------------------------------------------------------------
+Thu Aug 14 00:53:26 UTC 2014 - Greg.Freemyer@gmail.com
+
+- update to 0~20140728
+	* removed examples
+	* worked on Python bindings
+	* smrawmount worked on Dokan support
+	* added smrawverify
+	* worked on tests
+	  - replaced compare test by smrawverify test
+	* smrawmount added -X option
+	* updated dependencies
+	* textual changes
+	* changes due to libmfdata and libfdata merge
+- use internal version of libhmac, external version is causing build errors
+
+-------------------------------------------------------------------
+Fri Aug  2 15:50:27 UTC 2013 - Greg.Freemyer@gmail.com
+
+- update DL-URL
+- clean up BuildRequires a little bit
+
+-------------------------------------------------------------------
+Mon Apr 22 15:33:44 UTC 2013 - Greg.Freemyer@gmail.com
+
+- Re-organize BuildRequires and add comments about why many are commented out
+
+-------------------------------------------------------------------
+Fri Apr  5 20:49:37 UTC 2013 - jengelh@inai.de
+
+- Initial package (version 0~20130402) for build.opensuse.org

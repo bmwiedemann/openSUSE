@@ -1,0 +1,515 @@
+-------------------------------------------------------------------
+Wed Aug 21 12:36:23 UTC 2019 - pgajdos@suse.com
+
+- version update to 20190801 [bsc#1145185]
+  * Bugfixes
+  * Added Croatian translation
+  * Added user decompositions
+  * New graphic for the splash/about screen
+  * Images embedded in SFDs are now serialised as PNGs
+  * Both the Windows and Mac builds are now built with Python 3 instead of Python 2.
+  * The minimum supported version for the Mac build is now MacOS Sierra (10.12)
+  * FontForge no longer uses gnulib
+  * collab support has been removed
+  * Complete GDK support, enabled by default on Windows and Macintosh, from @jtanx.
+  * Enhanced UFO 3 support, with separate import/export paths for UFO 2 and UFO 3,
+    from @frank-trampe. See the technical bulletin here for more information.
+  * Improved feature file support, from @skef and @khaledhosny.
+  * WOFF2 support, from @jtanx.
+  * Unicode 12.1.0 support, from @JoesCat.
+  * Extended Python interfaces, from @skef.
+- modified patches
+  % fontforge-version.patch (refreshed)
+- deleted patches
+  - reproducible.patch (upstreamed)
+
+-------------------------------------------------------------------
+Wed Aug  1 03:37:01 UTC 2018 - bwiedemann@suse.com
+
+- Add reproducible.patch to override font build dates (boo#1047218)
+- repack sources to .xz since we have to repack already
+
+-------------------------------------------------------------------
+Mon Dec 18 10:41:08 UTC 2017 - pgajdos@suse.com
+
+- updated to 20170731
+  * This incorporates a large number of adjustments and fixes.
+
+-------------------------------------------------------------------
+Thu Nov  9 19:06:46 UTC 2017 - jmatejek@suse.com
+
+- switch to python 3
+
+-------------------------------------------------------------------
+Fri Dec  9 14:15:44 UTC 2016 - pgajdos@suse.com
+
+- updated to 20161005 [bsc#1014793]: 
+  * This release introduces a new icon set, new functionality for 
+    custom icon selection graphics, support for GlyphOrderAndAliasDB 
+    files, and support for Unicode 9.0.
+  * It also fixes a number of small bugs relating to certain bitmap
+    typefaces, stroke expansion, handling of CID ranges, and the 
+    user interface.
+- removed upstreamed patches:
+  - propagate-creation-and-modification-times-to-ttf.patch
+  - fontforge-eof-crash.patch
+
+-------------------------------------------------------------------
+Tue Jan 26 08:10:44 UTC 2016 - pgajdos@suse.com
+
+- do not crash on invalid input data (when eof reached) [bsc#963023]
+  + fontforge-eof-crash.patch
+
+-------------------------------------------------------------------
+Wed Dec 16 14:03:36 UTC 2015 - pgajdos@suse.com
+
+- updated to 20150824: This fixes a few bugs, including some in 
+  U. F. O. kerning classes and FreeType rasterization, and adds 
+  a Korean translation.
+
+-------------------------------------------------------------------
+Mon May 11 08:36:20 UTC 2015 - pgajdos@suse.com
+
+- updated to 20150430: this release includes a few bug fixes, 
+  performance enhancements, and refreshed icons.
+- download uthash when get-source.sh
+- fontforge --version now returns fontforge release version
+  + fontforge-version.patch
+
+-------------------------------------------------------------------
+Fri May  1 13:17:09 UTC 2015 - coolo@suse.com
+
+- also repackage the broken gnulib links to fix build with 
+  newer libtool
+
+-------------------------------------------------------------------
+Mon Apr 20 07:10:42 UTC 2015 - pgajdos@suse.com
+
+- repack source [bnc#926061]
+
+-------------------------------------------------------------------
+Tue Mar 31 09:55:24 UTC 2015 - pgajdos@suse.com
+
+- updated to 20150330:
+  * fixes a few crashes, enhances round-tripping of information in 
+    certain file formats, and fixes some bad logic
+  * adds support for fine point adjustment
+  * etc. see https://github.com/fontforge/fontforge/releases
+    for details
+- remove %requires_ge libpng16-16 as it seems fontforge is not so 
+  picky anymore
+- doc is generated
+- remove pfaedit compat
+- removed patches (upstreamed or not needed):
+  - fontforge-fixgiflib.patch
+  - fontforge-arraysubscript.patch
+  - fontforge-fdleak.patch
+  - fontforge-libpng.diff
+  - fontforge-docdir.patch
+  - fontforge-python-module-name.diff
+
+-------------------------------------------------------------------
+Thu Feb  5 08:45:26 UTC 2015 - coolo@suse.com
+
+- added propagate-creation-and-modification-times-to-ttf.patch from
+  debian's reproducible build project to get reproducible font builds
+
+-------------------------------------------------------------------
+Thu Oct  2 22:54:57 UTC 2014 - crrodriguez@opensuse.org
+
+- Cleanup BuildRequires, in particular do not use legacy
+  metapackage xorg-x11-devel
+
+-------------------------------------------------------------------
+Sat May 31 16:12:53 UTC 2014 - jengelh@inai.de
+
+- Update fontforge-fixgiflib.patch to support giflib7-5.1
+
+-------------------------------------------------------------------
+Mon Mar 17 07:21:51 UTC 2014 - pgajdos@suse.com
+
+- fixed linking against libpng (1.5, 1.6) [bnc#867041]
+  * added fontforge-libpng.diff
+  * removed libpng14-dynamic.diff
+- spec file cleanup
+  * call spec-cleaner
+  * fontforge-20090622-fdleak.patch renamed to fontforge-fdleak.patch
+  * docdir.patch renamed to fontforge-docdir.patch
+
+-------------------------------------------------------------------
+Sun Mar  9 13:40:08 UTC 2014 - schwab@linux-m68k.org
+
+- fontforge-arraysubscript.patch: Fix invalid array subscript
+
+-------------------------------------------------------------------
+Thu Nov 14 06:59:13 UTC 2013 - jengelh@inai.de
+
+- Put documentation into a separate subpackage
+- Spruce of description of fontforge-devel a bit
+- File list simplification/exactness
+
+-------------------------------------------------------------------
+Mon Sep  9 08:48:04 UTC 2013 - coolo@suse.com
+
+- add fontforge-fixgiflib.patch to fix build with giflib 5.0.5
+
+-------------------------------------------------------------------
+Tue Apr 16 12:17:30 UTC 2013 - pgajdos@suse.com
+
+- use %requires_eq rather than %requires_ge (exact version)
+
+-------------------------------------------------------------------
+Tue Apr 16 12:05:41 UTC 2013 - pgajdos@suse.com
+
+- %requires_ge libpng16-16 to avoid 
+  'Application built with libpng-1.5.14 but running with 1.6.1'
+  warning when running fontforge
+
+-------------------------------------------------------------------
+Fri Jan  4 12:44:05 UTC 2013 - dmitry_r@opensuse.org
+
+- Build with cairo and pango support
+
+-------------------------------------------------------------------
+Sun Dec 30 06:44:35 UTC 2012 - dmitry_r@opensuse.org
+
+- Update to 20120731b
+  * see included changelog.html for details
+  * removed obsolete fontforge.py27.diff
+  * removed obsolete fontforge-missing-closedir.diff 
+  * removed obsolete libpng14.diff 
+
+-------------------------------------------------------------------
+Tue Dec 20 20:25:40 UTC 2011 - coolo@suse.com
+
+- remove call to suse_update_config (very old work around)
+
+-------------------------------------------------------------------
+Mon Oct  3 07:55:35 UTC 2011 - pgajdos@suse.com
+
+- Make rpmlint more happy.
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.)
+
+-------------------------------------------------------------------
+Mon May 16 14:38:39 CEST 2011 - pgajdos@suse.cz
+
+- updated to 20110222:
+  * Did a lot of work to improve the accuracy in remove overlap.
+  * Fix various error messages. 
+  * Remove some obsolete documentation. 
+  * Technical fixes to stroking code. 
+  * Add a miterlimit to stroking code.
+  * FontForge was using the wrong MIME type for svg files. 
+    W3C has changed it and it's now "image/svg+xml" not 
+    "image/svg-xml" or "image/svg".
+  * etc. on 
+    http://fontforge.sourceforge.net/changelog.html
+  * libpng14.diff and fontforge.py27.diff kept but not needed yet
+
+-------------------------------------------------------------------
+Mon Sep  6 08:54:57 UTC 2010 - coolo@novell.com
+
+- adapt to python 2.7
+
+-------------------------------------------------------------------
+Thu Apr  8 10:56:13 CEST 2010 - tiwai@suse.de
+
+- fix build with older distros before libpng 1.4
+
+-------------------------------------------------------------------
+Thu Apr  8 08:12:59 UTC 2010 - coolo@novell.com
+
+- compile with libpng 1.4
+
+-------------------------------------------------------------------
+Mon Apr  5 12:00:54 UTC 2010 - toms@suse.de
+
+- Updated to 20090923
+- Enabled Python bindings
+
+-------------------------------------------------------------------
+Sat Oct  3 12:16:21 UTC 2009 - crrodriguez@opensuse.org
+
+- fontforge-20090622-1.6: missing call to closedir  [bnc#543458]
+- fix -devel package dependencies 
+
+-------------------------------------------------------------------
+Mon Jul 27 16:57:52 CEST 2009 - tiwai@suse.de
+
+- fix missing closedir() (bnc#525022)
+
+-------------------------------------------------------------------
+Mon Jul 27 15:29:55 CEST 2009 - tiwai@suse.de
+
+- updated to version 20090622
+  lots of changes.  See changelog.html for details
+
+-------------------------------------------------------------------
+Thu Jan 22 00:51:12 CET 2009 - crrodriguez@suse.de
+
+- remove "la" files and static libraries
+- add missing freetype2-devel dependency to -devel package
+
+-------------------------------------------------------------------
+Mon May 26 12:58:18 CEST 2008 - mfabian@suse.de
+
+- bnc#246804: update to 20080429 (needed to build recent versions
+  of the DejaVu fonts and freefont).
+
+-------------------------------------------------------------------
+Fri Feb 29 10:03:29 CET 2008 - coolo@suse.de
+
+- fix typo
+
+-------------------------------------------------------------------
+Thu Feb 21 17:47:55 CET 2008 - mfabian@suse.de
+
+- update to 20080203 (bugfix release, fixes also bnc#363014).
+- create -devel sub-package.
+
+-------------------------------------------------------------------
+Thu Aug 02 16:33:43 CEST 2007 - mfabian@suse.de
+
+- update to 20070723 (user interace redesigned, many bugfixes).
+- add ldconfig post scripts.
+- remove executable flags from documentation.
+- remove DOS line-endings from documentation.
+
+-------------------------------------------------------------------
+Tue Jul 24 12:49:54 CEST 2007 - coolo@suse.de
+
+- remove BuildPreRequires 
+
+-------------------------------------------------------------------
+Tue Feb 06 17:06:16 CET 2007 - mfabian@suse.de
+
+- Bugzilla #242363: uninitialized variable.
+
+-------------------------------------------------------------------
+Wed Jan 03 11:43:21 CET 2007 - mfabian@suse.de
+
+- update to 20061220.
+- remove fontforge-strncat.patch,
+  bugzilla-221210-locale-variable-used-before-set.patch,
+  bugzilla-225616-local-variable-used-before-set.patch
+  (included upstream).
+- fix bugzilla #231126: "array subscript out of range".
+
+-------------------------------------------------------------------
+Tue Dec 19 18:40:01 CET 2006 - mfabian@suse.de
+
+- update to 20061025.
+  • fontimage program has been added.
+- fix bugzilla #225616 ("local variable used before set").
+
+-------------------------------------------------------------------
+Fri Nov 17 19:54:59 CET 2006 - mfabian@suse.de
+
+- Bugzilla #221210: "local variable used before set"
+
+-------------------------------------------------------------------
+Mon Nov  6 00:28:15 CET 2006 - ro@suse.de
+
+- fix permissions on icon file
+- fix gcc warning for strncat 
+
+-------------------------------------------------------------------
+Tue Oct 17 14:25:48 CEST 2006 - mfabian@suse.de
+
+- update to 20061014.
+  remove bugzilla-203490-local-variable-used-before-set.patch
+  (included upstream).
+- Fix Bugzilla #211543 ("array subscript out of range).
+- Fix invalid operation (like x = x++;)
+
+-------------------------------------------------------------------
+Thu Sep 07 12:12:47 CEST 2006 - mfabian@suse.de
+
+- fix bugzilla #203490: "local variable used before set".
+- add Japanese documentation.
+
+-------------------------------------------------------------------
+Wed Sep 06 17:26:27 CEST 2006 - mfabian@suse.de
+
+- update to 20060822.
+  remove bugzilla-197499-local-variable-used-before-set.patch
+  (included upstream).
+
+-------------------------------------------------------------------
+Thu Aug 10 16:29:49 CEST 2006 - mfabian@suse.de
+
+- Bugzilla 197499: "local variable used before set".
+
+-------------------------------------------------------------------
+Tue Jul 18 12:55:55 CEST 2006 - mfabian@suse.de
+
+- update to 20060715.
+  fixes a crash when building freefont.
+
+-------------------------------------------------------------------
+Fri Mar 17 15:46:54 CET 2006 - mfabian@suse.de
+
+- Bugzilla #158759: "locale variable used before set".
+  (already fixed in latest upstream version).
+
+-------------------------------------------------------------------
+Thu Mar 09 17:02:39 CET 2006 - mfabian@suse.de
+
+- Bugzilla #153958: "array subscript out of range".
+  (already fixed in latest upstream version).
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:58 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sun Oct  2 15:06:38 CEST 2005 - stbinner@suse.de
+
+- fix capitalization of .desktop GenericName entry
+
+-------------------------------------------------------------------
+Thu Aug 04 17:31:55 CEST 2005 - mfabian@suse.de
+
+- update to 20050803.
+  cannot update documentation because the download link for the
+  documentation is currently dead.
+
+-------------------------------------------------------------------
+Wed May 11 12:31:06 CEST 2005 - mfabian@suse.de
+
+- update to 20050502.
+- all .html and .png files should have mode 644.
+- fix fontforge.desktop file (thanks to
+  Thomas Schraitle<thomas.schraitle@suse.de>).
+
+-------------------------------------------------------------------
+Tue Dec 14 21:27:40 CET 2004 - hvogel@suse.de
+
+- install icon 
+
+-------------------------------------------------------------------
+Thu Nov 11 12:48:59 CET 2004 - ro@suse.de
+
+- fixed file list
+
+-------------------------------------------------------------------
+Wed Aug 18 18:30:54 CEST 2004 - mfabian@suse.de
+
+- rename: PfaEdit -> fontforge (has been renamed upstream).
+- update to 20040808.
+
+-------------------------------------------------------------------
+Mon Apr 26 00:16:16 CEST 2004 - ro@suse.de
+
+- use no-strict-aliasing
+
+-------------------------------------------------------------------
+Thu Feb 26 15:27:52 CET 2004 - mfabian@suse.de
+
+- update to 040224.
+
+-------------------------------------------------------------------
+Sat Jan 10 15:11:21 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Sat Aug 23 17:12:17 CEST 2003 - mfabian@suse.de
+
+- make it build on older distributions.
+
+-------------------------------------------------------------------
+Mon Aug 18 12:17:35 CEST 2003 - mfabian@suse.de
+
+- update to 030817.
+- add desktop file.
+
+-------------------------------------------------------------------
+Fri May 16 15:53:29 CEST 2003 - mfabian@suse.de
+
+- update binaries and documentation to 030512
+- add .so and .la file to file list
+- add "freetype2 freetype2-devel" to neededforbuild
+
+-------------------------------------------------------------------
+Wed Feb 12 11:31:46 CET 2003 - mfabian@suse.de
+
+- update binaries and documentation to 030211
+
+-------------------------------------------------------------------
+Wed Nov 13 18:12:20 CET 2002 - mfabian@suse.de
+
+- update to 021105
+- use x-devel-packages instead of xf86 in # neededforbuild
+- use dynamic linking
+
+-------------------------------------------------------------------
+Tue Oct 22 21:49:47 CEST 2002 - mfabian@suse.de
+
+- update to 021021 and update documentation to 020910.
+
+-------------------------------------------------------------------
+Fri Jul 26 18:12:53 CEST 2002 - mfabian@suse.de
+
+- update to version 020724
+- include documentation, remove cidmaps.tar.bz2 and use updated
+  cidmaps.tgz from the documentation tar ball
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:11 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Tue Jan 22 14:47:41 CET 2002 - mfabian@suse.de
+
+- update to version 020121.
+- updated cidmaps.tar.bz2
+
+-------------------------------------------------------------------
+Wed Sep  5 19:24:25 CEST 2001 - mfabian@suse.de
+
+- adapted for SuSE, version 010905
+
+-------------------------------------------------------------------
+Thu May 10 2001 - George Williams <gww@silcom.com>
+
+- My first attempt at rpm, updated to 10 May sources
+
+-------------------------------------------------------------------
+Tue May 01 2001 - Scott Pakin <pakin@uiuc.edu>
+
+- Removed (unused) dynamic library files
+
+-------------------------------------------------------------------
+Sun Apr 29 2001 - Scott Pakin <pakin@uiuc.edu>
+
+- Upgraded from 220401 to 280401.
+
+-------------------------------------------------------------------
+Tue Apr 24 2001 - Scott Pakin <pakin@uiuc.edu>
+
+- Upgraded from 190401 to 220401.
+
+-------------------------------------------------------------------
+Fri Apr 20 2001 - Scott Pakin <pakin@uiuc.edu>
+
+- Upgraded from 020401 to 190401.
+
+-------------------------------------------------------------------
+Tue Apr 10 2001 - Scott Pakin <pakin@uiuc.edu>
+
+- Upgraded from 210301 to 020401.
+
+-------------------------------------------------------------------
+Thu Mar 22 2001 Scott Pakin <pakin@uiuc.edu>
+
+- Initial release
+
+

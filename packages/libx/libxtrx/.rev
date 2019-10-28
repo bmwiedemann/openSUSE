@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bd381383a26119b9f9c8a2006f1dfbeb</srcmd5>
+    <version>0.0.0+git.20171213</version>
+    <time>1518025205</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>560866</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>60f0bcabe14ef4c05dae68c971cb44a2</srcmd5>
+    <version>0.0.0+git.20171213</version>
+    <time>1525211062</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602839</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bff41013528c789a4c97e3ad00b5f34e</srcmd5>
+    <version>0.0.0+git.20181227</version>
+    <time>1547211817</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>661740</requestid>
+  </revision>
+</revisionlist>

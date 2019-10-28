@@ -1,0 +1,11 @@
+<package name="vtk" project="openSUSE:Factory">
+  <title>Visualisation Toolkit for 3D Computer Graphics</title>
+  <description>
+The Visualization ToolKit (VTK) is an open source, freely available software
+system for 3D computer graphics, image processing, and visualization used by
+thousands of researchers and developers around the world. VTK consists of a C++
+class library, and several interpreted interface layers including Tcl/Tk, Java,
+and Python.
+  </description>
+  <devel project="science" package="vtk"/>
+</package>

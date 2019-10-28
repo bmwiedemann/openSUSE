@@ -1,0 +1,8 @@
+<package name="ncompress" project="openSUSE:Factory">
+  <title>Old Standard Compression Utilities</title>
+  <description>This package contains the compress and uncompress utilities as
+described in POSIX. They were the standard on old UNIX systems and are
+obsoleted by gzip today
+  </description>
+  <devel project="Archiving" package="ncompress"/>
+</package>

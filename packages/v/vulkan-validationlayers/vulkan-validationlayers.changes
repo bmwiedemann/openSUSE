@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Oct 26 11:45:44 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.126
+  * layers: Precompute vertex attribute alignment requirement
+  * layers: Add for pipeline layout compat VUs
+  * layers: Store shared pointer to command pool in command buffer
+  * layers: Improve large descriptor set validation filtering
+  * layers: Add VK_KHR_spirv_1_4 validation
+  * layers: Move event/query Updates to PostCallRecordQueueSubmit
+  * layers: Validate DescriptorSet Binding data
+  * layers: Add PreCallValidateCmdTraceRaysNV
+
+-------------------------------------------------------------------
 Wed Oct 16 21:46:53 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.1.124

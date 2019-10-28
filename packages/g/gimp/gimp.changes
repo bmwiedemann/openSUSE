@@ -1,0 +1,2259 @@
+-------------------------------------------------------------------
+Sat Jun 15 17:24:43 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.10.12:
+  + Core:
+    - Add an "Incremental" option to the Dodge/Burn tool, which,
+      similarly to the Paintbrush, Pencil, and Eraser tools,
+      applies the effect incrementally as the pointer moves.
+    - Curves now have a concept of smooth vs corner points: smooth
+      points produce a smooth curve, while corner points produce a
+      sharp curve (previously, all points were smooth).
+    - Search the user font directory path on Windows (since Windows
+      10, non-admin users have the ability to install fonts). This
+      is only a temporary hack until fontconfig adds proper
+      upstream support.
+    - In gimp_brush_core_get_paint_buffer(), when allocating a new
+      paint buffer, clear the old buffer *before* allocating the
+      new one, to reduce the amount of simultaneously allocated
+      memory.
+    - In GimpPaintbrush, avoid refilling the paint buffer at each
+      dab if the paint color/pixmap hasn't changed, hence allowing
+      faster painting in some specific cases.
+    - Add hygon cpu detection and enable MMX/SSE support.
+    - Add a GimpSymmetry::get_transform() virtual function and a
+      corresponding gimp_symmetry_get_transform() function which
+      return the brush transform corresponding to a given symmetry
+      stroke in terms of the rotation angle and reflection flag (in
+      contrast to gimp_symmetry_get_operation() which returns the
+      same transforation in terms of a GeglNode). This allows us to
+      simplify, fix (artifact bugs, etc.), and improve the
+      painting-code performance for several symmetry painting
+      cases.
+    - New gimp-brush-pipe-spacing parasite set by core code to
+      preserve GIH brush's spacing across reloads.
+    - Add a new Offset filter tool, as a front-end to gimp:offset.
+      The tool replaces, and provides the same interface as the
+      drawable-offset dialog while also providing live preview and
+      on-canvas interaction.
+  + Plug-ins:
+    - Exported profile and data format strategy updated in several
+      file plug-ins.
+    - When not saving a profile, we always export as sRGB data, as
+      most viewers would not display the image properly otherwise.
+    - When saving a profile:
+      . If a profile was manually assigned, we always export to the
+        assigned format, hence pixel data is converted accordingly,
+        whatever the work format.
+    - If no profile was assigned:
+      . If the export format support high-bit depth, we export the
+        work format as-is.
+      . If the export format is 8-bit max, we convert the work
+        format to sRGB, except if the work format is 8-bit linear.
+  + The following plug-ins were updated: JPEG, PNG, TIFF and WebP.
+  + Tools:
+    - Add input/output spin-buttons to the Curves tool, which allow
+      setting the selected point's coordinates numerically. When
+      the image precision is greater than 8-bpc, use a 0.00-100.00
+      range for the point-coordinate spin-buttons instead of a
+      0-255 range.
+    - In the Curves tool, allow changing the curve's point types
+      (cf. new curve corner points in Core section). Corner points
+      are displayed with a diamond shape instead of a circle.
+    - Free Select tool now creates a selection as soon as the
+      polygon is closed. This selection is updated when the
+      polygon, or the relevant tool-options, change, similarly to
+      GimpRectangleSelectTool.
+    - Derive GimpEraser from GimpPaintbrush, instead of directly
+      from GimpBrushCore. This allows GimpEraser to reuse the
+      paint-buffer content across dabs, improving performance.
+    - Allow moving an intersecting pair of guides with the Move tool.
+  + User interface:
+    - In GimpCurveView, when dragging an existing curve point,
+      don't immediately move the point to the cursor position upon
+      button press, but rather move it relative to its current
+      position as the cursor moves. This allows selecting a point
+      without moving it, and adjusting its position more easily.
+    - When the cursor hovers above a point in GimpCurveView, or
+      when dragging a point, have the coordinate indicator show the
+      point's position, rather than the cursor's.
+    - In GimpCurveView, when holding down Ctrl while
+      adding/dragging a point, snap the y-coordinate to the
+      original curve (at the start of the drag). This is
+      particularly useful for adding points along the curve.
+    - In GimpDashboard, don't show legend for groups with no meter.
+    - Add a tile-alloc-total variable to the dashboard's memory and
+      misc groups, showing the total amount of memory used by the
+      tile allocator.
+    - Add a "Save Keyboard Shortcuts Now" button to the Configure
+      Keyboard Shortcuts dialog.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun May  5 09:49:36 UTC 2019 - ecsos@opensuse.org
+
+- No more need pkgconfig(glib-2.0) >= 2.56.0 for build.
+  pkgconfig(glib-2.0) >= 2.54.2 is enough.
+
+-------------------------------------------------------------------
+Sun Apr  7 23:28:13 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.10.10:
+  - Core:
+    - Add gimp-scratch allocator, a fast memory allocator (on the
+      order of magnitude of alloca()), suitable for small (up to a
+      few megabytes), short-lived (usually, bound to the current
+      stack-frame) allocations.  Unlike alloca(), gimp-scratch
+      doesn't use the stack, and is therefore safer, and will also
+      serve bigger requests, by falling-back to malloc().
+    - In gimp_drawable_transform_buffer_affine(), avoid modifying
+      the clipping mode when transforming layer masks, since this
+      function is used (among other things) to transform layer
+      masks together with their layer, in which case they should
+      use the same clipping mode as the layer. This fixes a
+      regression introduced by commit 2ae823ba, causing layer masks
+      to be transformed with a mismatched clipping mode during
+      layer transforms, leading to discrepencies between the
+      transformed layer and the transformed mask.
+    - Moved swap/cache and temporary files out the GIMP user config
+      dir and added new config file substitutions ${gimp_cache_dir}
+      and ${gimp_temp_dir}.
+    - Pass the GEGL tile-cache size, swap path, and thread-count to
+      plug-ins as part of their config, and have libgimp set the
+      plug-in's GeglConfig accordingly upon initialization.
+    - Layer groups are now rendered in bigger chunks rather than
+      tile-by-tile (which used to pretty much eliminate
+      multithreading for groups), which improves the rendering
+      speed.
+    - Make saving/exporting files more robust to errors. In
+      particular if an error occurs during the process (be it a
+      bug, a memory error, or anything else), GIMP won't overwrite
+      anymore any existing file with incomplete contents, so that
+      you won't end up with no valid files at all.
+    - Fix a regression on support of various graphics tablet.
+    - Remove the "Edit -> Fade..." feature: it makes GIMP use two
+      buffers instead of one (east into system resources), it's
+      broken in 2.10, and we can make the UX better for filters.
+    - New generic canvas modifier 'Alt + middle click' allowing to
+      pick layers by clicking on pixels. The available layers will
+      be looped through (starting from the upper one) while Alt key
+      is hold and the picked layer name will be temporarily
+      displayed in the status bar.
+    - When clearing a channel, do nothing if the channel is already
+      empty; otherwise, align the cleared rectangle to the channel
+      buffer's tile grid, so that all affected tiles are dropped,
+      rather than zeroed.  Furthermore, only update the affected
+      region of the channel.
+    - Brush and pattern saving logics has been moved to core code
+      (instead of plug-in).
+    - Clipboard brushes and pattern can now be duplicated.
+    - Parametric brushes are now 32-bit float to avoid
+      posterization on large brushes.  Note: raster brushes are
+      still 8-bit and plug-ins only have access to 8-bit versions
+      of high-precision brushes/patterns. New API will be required
+      to handle high-precision data.
+    - On-canvas preview while editing a color in the colormap of an
+      indexed image.
+  - User interface:
+    - Enabled HiDPI/Retina support for the GTK2/OSX build, fixes
+      blurry icons. 
+    - Add a tooltip to the "better compression" checkbox in save
+      dialog to make it clearer it does not mean that the file size
+      is necessarily smaller in every cases. In particular some
+      best/worst case are possible when an algorithm less efficient
+      in general may end up better on a particular image.
+    - Add basic support for cursors with a scale factor of 2 for
+      HiDPI (artwork to be updated).
+    - Foreground and background color icons, as well as color
+      history will now display out-of-gamut warning on indexed
+      images for colors outside of the palette, as well as on
+      grayscale images, for non-gray colors.
+    - Pack color picker and hexadecimal entry on same line in Color
+      dock.
+    - Add an "Open as Image" button to the brushes dialog.
+  - Usability:
+    - Attempting to transform locked layers or paint on them now
+      results in blinking around the status bar (where the warning
+      message is displayed) and around the toolbar where lock
+      toggles are. The same applies to attempting to move a
+      selection where there is none — GIMP will blink around the
+      toolbar where the moving target (layer, selection, path) is
+      chosen.
+    - GIMP now allows selecting default export file type for new
+      projects.  The choice is limited to PNG, JPEG, WebP, PSD,
+      ORA, TIFF, BMP.
+    - GimpSpinScale widget now has an optional feature to constrain
+      the value to integer when dragging with a pointer (even if
+      the scale allows for fractional numbers), set with new
+      function gimp_spin_scale_set_constrain_drag().  This is
+      useful for settings where fractional numbers are technically
+      possible, yet most common use case are with integers (such as
+      pixel sizes, angles in degrees, etc.) so you want the easy
+      interface to be constrained. Fractional numbers are still
+      settable, for instance by keyboard edit; and arrow
+      incrementation won't drop fraction parts.  This is currently
+      only activated for brush options in paint tools.
+  - Tools:
+    - In scale tool, scale around center even when using numeric
+      input.
+    - New algorithm in the Bucket Fill tool when selecting the
+      affected area "Fill by line art detection", based off the
+      G'Mic algorithm for "smart colorization":
+      https://hal.archives-ouvertes.fr/hal-01891876 In a few words,
+      it identifies painted pixels (either based on grayscale or
+      opacity values) and tries to close line arts to allow filling
+      even with not perfectly closed zones; the second step of the
+      algorithm will flood the colors under line art pixels to
+      prevent "holes" in the filling.  It is possible to control a
+      max size (in pixels) for the flooding, as well as max length
+      of closing segments and splines.
+    - The Bucket Fill tool got new interaction allowing to hold the
+      click and move the mouse to fill based on several seed zones
+      (for "Fill by line art detection" as well as "Fill similar
+      colors"). You can now cancel the fill in progress with right
+      click as in other tools.
+    - The Bucket Fill tool now allows color picking with
+      ctrl-click, same as every painting tool. It will pick either
+      the foreground or background color depending on the selected
+      Fill Type. The ctrl-alt modifier combination is also possible
+      to pick the non-Fill Type color.
+    - In the Bucket Fill tool, the Alt modifier will now switch to
+      "FG color fill" when "Pattern fill" was set (instead of doing
+      nothing).
+    - In the Unified Transform tool, default to preserving aspect
+      ratio when scaling up or down.
+    - In the Healing tool, "Sample merged" now also work for the
+      target pixels, allowing to draw in empty layers.
+    - Selection by color is now parallelized, hence improving speed
+      of the Select by Color tool (and any other processing which
+      may share this piece of code now or in the future).
+    - Add "Constrain handles" and "Around center" options to the
+      perspective-transform tool's GUI, which are similar to the
+      corresponding options of the unified-transform tool.
+    - Improve color picking on indexed image to always select an
+      indexed color corresponding to the picked pixel in the
+      colormap.
+  - Plug-ins:
+    - file-pdf-save GUI now clearly indicates the order the layers
+      will be used to make multi-page PDFs.
+    - Add DDS loading/exporting plug-in originally developed by
+      Shawn Kirst and Arne Reuter.
+    - Rename the Guillotine plug-in to Slice Using Guides.
+    - Add a new option saving a color profile when exporting PNG,
+      JPEG, TIFF.  Always save it when exporting to PSD.
+    - Remove the "Advanced" expanders from the PNG and TIFF export
+      dialogs.
+    - Full rewrite of the Spyrogimp plug-in with much more options
+      and better interaction.
+    - Indexed TIFF with alpha channel now supported.
+  - Filters:
+    - Add on-canvas GUI (simple lines) for circular, linear, and
+      zoom motion blur.
+  - Help:
+    - Link to the bugtracker directly from the Help menu, also link
+      to the wiki and the roadmap. Remove the link to currently
+      disabled registry.gimp.org.
+  - Translations:
+    - Czech, Danish, French, Italian, Japanese, Marathi, Polish,
+      Russian, Spanish, Swedish, Ukrainian.
+
+-------------------------------------------------------------------
+Mon Mar 25 14:59:10 UTC 2019 - mvetter@suse.com
+
+- bsc#1130407: Remove dependency on JasPer.
+  OpenJPEG is actually used.
+
+-------------------------------------------------------------------
+Fri Nov 09 06:33:32 UTC 2018 - sean@suspend.net
+
+- Update to vesion 2.10.8:
+  +Core:
+  - Use adaptive chunk size in GimpProjectio nwhen rendering the
+    projection asynchronously, rather than using a fixed chunk size.
+    This provides a better trade-off between throughput and
+    responsiveness dynamically, based on how fast the processing is.
+  +Tools:
+  - In all selection tools, show error on attempt to
+    subtract-from/intersect-with empty selection.
+  - Fix text along path not working with vertical text.
+  - Fix Text tool's frame position when undoing a move operation.
+  - Streamline Text tool's drawing blocking/unblocking logic.
+  - When moving a text layer using the text tool (through alt-drag),
+    don't change the layer's box mode to "fixed", which is unnecessary,
+    since the layer's size isn't affected.
+  - Transform and deformation operations now maintain color for fully
+    transparent pixels, making unerase and curves manipulation of alpha
+    channel more reliable.
+  - All transform tools now apply changes when you asve or export/overwrite
+    an image without pressing Enter first to confirm changes.
+  - Heal, Dodge/Burn, Smudge and Convovle tools now adjust the processed
+    buffer and mask_buffer regions according to the changes made to the 
+    application region, as calculated by intersecting it with the 
+    drawable and mask extents. This fixes wrong application position
+    when painting on a drawable whose origin is above/to the left of the
+    image's origin, and there's a selection active.
+  +Plug-ins:
+  - Port all plug-ins to the new iterator API in GEGL.
+  - Improve automatic detection of HEIC/HEIF files.
+  - Improve RawTherapee discovery by looking up registry key (should
+    become useful with RawTherapee 5.5 and more). 
+  +Usability:
+  - Compatibility information in the Save dialog is now more understandable.
+    The minimum GIMP version for the XCD file is always written down when it
+    is GIMP 2.8 or over. The list of features warranting the minimum version
+    is now listed in an expander container rather than as tooltip, which
+    makes it more discoverable. The warning on compression is now displayed
+    as its own text under the checkbox and not as additional text to the minimum    GIMP version label.
+  +CLI:
+   - New self-explanatory --enable-win32-debug-console CLI option
+  +Translations:
+   - Updated translations: Danish, Dutch, Finnish, German, Hungarian,
+     Italian, Polish, Portugese (Brazil), Spanish, Swedish, Ukranian.
+
+-------------------------------------------------------------------
+Mon Sep 17 07:59:13 UTC 2018 - ecsos@opensuse.org
+
+- pkgconfig(glib-2.0) >= 2.56.0 is needed.
+
+-------------------------------------------------------------------
+Thu Aug 23 20:33:37 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.10.6:
+  + Core:
+    - Render drawable previews asynchronously.
+    - Merge the file view filter and file format lists in
+      GimpFileDialog. The presence of 2 lists was very confusing.
+    - DLL search priority is now updated before running a plug-in
+      on Windows, depending on the executable bitness. This gets
+      rid of one of the last remnant of DLL hell in GIMP, which was
+      when running 32-bit plug-ins from a 64-bit build of GIMP.
+  + Filters:
+    - New "Little Planet" (gegl:stereographic-projection) filter.
+    - New "Long Shadow" (gegl:long-shadow) filter.
+  + Tools:
+    - Halt the Measure tool after straightening.
+    - Add an "orientation" option to the measure tool,
+      corresponding to the "orientation" property of
+      GimpToolCompass (i.e., it controls the orientation against
+      which the angle is measured, when not in 3-point mode.) The
+      orientation is "auto" by default, so that the angle is always
+      <= 45 deg.  Note that the "orientation" option affects the
+      tool's "straighten" function, so that the layer is rotated
+      toward the current orientation.
+    - Text layers can now represent vertical texts, with 4
+      variants: left-to-right and right-to-left lines, and forcing
+      all characters to be upright or following Unicode's vertical
+      orientation property. See also:
+      https://www.unicode.org/reports/tr50/
+      http://www.unicode.org/Public/UCD/latest/ucd/VerticalOrientation.txt
+  + User Interface:
+    - The Dashboard dockable dialog now has an "async" field to the
+      dashboard's "misc" group, showing the number of async
+      operations currently in the "running" state.
+    - New Preferences option to enable/disable layer-group
+      previews, since these can get quite time-expensive.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul  6 17:47:11 UTC 2018 - ecsos@opensuse.org
+
+- fix build error for Leap 42.3
+- add missing requires
+
+-------------------------------------------------------------------
+Fri Jul  6 01:20:19 UTC 2018 - mrueckert@suse.de
+
+- bump versions in BR according to the configure.ac
+- move library requires in libgimp to %requires_ge and also force
+  the libgegl update
+
+-------------------------------------------------------------------
+Thu Jul  5 16:47:10 UTC 2018 - mrueckert@suse.de
+
+- update to 2.10.4 bug fix release
+  Core:
+  - Remove gimp_display_shell_draw_background() and all clipping
+    hacks for drawing the canvas background. This optimizes away
+    one entire step of drawing of image size, for each expose.
+  - Font loading does not block startup anymore. Only consequence
+    is that the Text tool may not be usable immediately if fonts
+    are not fully loaded yet (and will output an appropriate error
+    if you do so). All non-text related activities can be performed
+      right away.
+  - Change of the URL from bugzilla to gitlab where appropriate.
+  - New tool option manager to better keep track of user context
+    and paint options in a consistent manner.
+  User Interface:
+  - The Dashboard dockable dialog now has a 'Memory' group that
+    shows memory-usage information: the currently used memory size,
+    the available physical memory size, and the total physical
+    memory size.  It can also show the tile-cache size, for
+    comparison against the other memory stats. Note that the
+    upper-bound of the meter is the physical memory size, so the
+    memory usage may be over 100% when GIMP uses the swap.
+  - The Dashboard dockable dialog now has "read" and "written"
+    fields in the dashboard swap group, which report the total
+    amount of data read-from/written-to the tile swap, respetively.
+    Additionally, the swap busy indicator (used as the meter's LED)
+    has been improved, so that it's active whenever data has been
+    read-from/written-to the swap during the last sampling
+    interval, rather than at the point of sampling.
+  - Fonts can now be tagged. The user interface is the same as for
+    brushes, patterns etc.
+  - Some icons fixed: larger spacing between broken chains and
+    gimp-tool-ellipse-select made symmetrical.
+  Usability:
+  - When a plug-in cannot be applied to an image because of
+    mismatch in image types (e.g. layer has no alpha or image is
+    greyscale), GIMP now displays a message listing supported image
+    types for this plug-in.
+  Tools:
+  - The Measurement tool now has an "Auto straighten" option
+    allowing to rotate the active drawable (layer, channel…) so
+    that the measurement line is used as horizon. As other
+    transform tools, the feature will work on linked drawables as
+    well.
+  - The Smudge tool now paints correctly on images with a color
+    profile other than the GIMP's built-in one.
+  Build:
+  - Installer: set compatibility options to run Python plugins in
+    HiDPI-aware mode.
+  - Put back compatibility DLLs for really old plugins.
+  - Install binary tool `gimp-test-clipboard` on the system to
+    allow people to help us debug clipboard bugs.
+  - --enable-bundled-mypaint-brushes renamed
+    --enable-relocatable-bundle and also make WMF fonts looked up
+    on the runtime prefix of GIMP (instead of the build-time path)
+    when this build option was set.
+  Plug-ins:
+  - gimptool-2.0 binary now accepts source files with non-standard
+    extensions if it can try to guess appropriate language from the
+    compiler being used. It will also properly quote arguments for
+    shell usage.
+  - Run explicitly Python 2 as Python plug-in interpreter to
+    prevent breakage on systems where Python 3 is the default.
+  - raw_input()'s argument in Python console is now optional, and
+    input() support has been added.
+  File Formats:
+  - The PSD loader now provides an option to load "merged",
+    pre-composited version of the images that becomes available
+    when a PSD file was saved with "Maximize Compatibility" option
+    enabled in Photoshop. This is useful when loading PSD files
+    that use features that GIMP doesn't currently support, and
+    therefore can't render correctly, such as adjustment layers.
+    When loading the merged image version, we avoid loading certain
+    additional data from the file, such as channels, paths, and
+    guides, while still loading metadata. This option is currently
+    exposed as an additional file type ("Photoshop image
+    (merged)"), which has to be explicitly selected from the
+    file-type list when opening the image.
+  - Embedding GIMP's built-in sRGB color profile to exported files
+    is now optional. The default choice can be set in the
+    Preferences dialog.
+  Translations:
+  - Updated translations: Catalan, Czech, Danish, Dutch, Finnish,
+    Greek, Hungarian, Italian, Latvian, Polish, Romanian, Russian,
+    Spanish, Swedish, Ukrainian.
+
+-------------------------------------------------------------------
+Mon May 21 00:30:50 UTC 2018 - plinnell@opensuse.org
+
+- update to 2.10.2 bugfix release
+- drop gimp-Fix-reference-to-gegl-0.3.patch
+
++ Core:
+
+  - Discard fonts which fail to load and popup an info dialog to allow
+    people debug their fonts.
+  - New API to suppress updates in UI until plug-ins are done
+    introducing changes.
+  - New API to calculate histograms in separate threads, with possible further
+    extension to handle similar cases elsewhere in GIMP.
+  - Tool options are now properly saved and reloaded per-device at
+    startup.
+
++ Plug-ins:
+
+  - New plug-in for importing and exporting HEIF images.
+  - Enable visibility of rasterized vector layer from PSD.
+  - Single-window screenshots in Windows fixed to correctly snap a
+    window even when it is partly off-screen or covered by another
+    window or when display scaling is not set to 100%.
+
++ Filters:
+
+  - New Spherize filter to wrap an image around a spherical cap
+  - New Recursive Transform filter to create Droste effect.
+
++ Usability:
+
+  - Warn users, when alpha-only painting has no effect. E.g. when target
+    drawable doesn't have an alpha channel, or the alpha channel is locked.
+  - Make the splash texts dynamic, so they are larger on larger splashes.
+  - Mention pressing Enter to complete Foreground selection in the status bar.
+  - Make sure that clicking outside any selection prevents Rectangle Select
+    and Ellipse Select tools from creating empty selections.
+  - Improve mouse wheel zooming behavior to keep the same point
+    centered under the pointer even if the image is completely visible
+    in the canvas.
+  - Add "View -> Center Image in Window" (Shift+J) as a quick way to
+    center the image at any zoom level.
+
++ Translations:
+
+  - Updated translations: Catalan, Danish, Dutch, French, German, Greek,
+    Hungarian, Icelandic, Italian, Latvian, Polish, Russian, Spanish,
+    Swedish, Ukrainian.
+  - New translation of Windows installer: Chinese (Taiwan)
+
++ Build:
+
+  - Add a --with-bug-report-url configure option allowing packagers to
+    set the address of their own bug tracker. This address will be the
+    one opened by the debug dialog for reporting bugs.
+  - Add a flatpak manifest for the gtk3-port branch.
+  - Remove the possibility to disable script-fu.
+  - Add a --with-icc-directory configure option to customize the color
+    profile directory. By default, it is set to the common path
+    /usr/share/color/icc.
+
++ Documentation:
+
+  - Updating the description of the XCF format "devel-docs/xcf.txt", for
+    third-party readers wishing to support GIMP 2.10 XCF files.
+  - Add documentation skeletons for all enums in libgimpbase/, there is
+    much room for improvement.
+
+
+
+-------------------------------------------------------------------
+Wed May  2 09:48:37 UTC 2018 - bjorn.lie@gmail.com
+
+- Add gimp-Fix-reference-to-gegl-0.3.patch: gimp.pc: Fix reference
+  to gegl-0.3 - we require and build for gegl-0.4 now.
+
+-------------------------------------------------------------------
+Mon Apr 30 19:39:35 UTC 2018 - badshah400@gmail.com
+
+- Update BuildRequires versions to be consistent with configure
+  script.
+
+-------------------------------------------------------------------
+Mon Apr 30 09:08:09 UTC 2018 - jweberhofer@weberhofer.at
+
+- let libgimp-2_0-0 require libbabl-0_1-0 >= 0.1.46 to enforce updating
+  to the required version.
+
+-------------------------------------------------------------------
+Sat Apr 28 17:30:13 UTC 2018 - jweberhofer@weberhofer.at
+
+- libbabl is required in version 0.1.46+
+
+-------------------------------------------------------------------
+Sat Apr 28 00:59:13 UTC 2018 - mrueckert@suse.de
+
+- add BR for gdk-pixbuf-loader-rsvg to enable svg icons
+- enable jpeg2000 support: new BR pkgconfig(libopenjp2)
+- enable webp support: new BR pkgconfig(libwebp) >= 0.6.0
+- enable OpenEXR support: new BR pkgconfig(OpenEXR)
+- enable email support: new BR/R for xdg-utils for xdg-email
+- set LC_ALL/LANG in %prep and %build to silence warnings about
+  encoding of the translations
+- make sure we can see the compiler cmdlines by disabling the
+  silent rules
+
+-------------------------------------------------------------------
+Fri Apr 27 22:22:46 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.10.0:
+  + Image processing nearly fully ported to GEGL, allowing high bit
+    depth processing, multi-threaded and hardware accelerated pixel
+    processing, and more. 
+  + Color management is a core feature now, most widgets and
+    preview areas are color-managed.
+  + Many improved tools, and several new and exciting tools, such
+    as the Warp transform, the Unified transform and the Handle
+    transform tools.
+  + On-canvas preview for all filters ported to GEGL.
+  + Improved digital painting with canvas rotation and flipping,
+    symmetry painting, MyPaint brush support.
+  + Support for several new image formats added (OpenEXR, RGBE,
+    WebP, HGT), as well as improved support for many existing
+    formats (in particular more robust PSD importing).
+  + Metadata viewing and editing for Exif, XMP, IPTC, and DICOM.
+  + Basic HiDPI support: automatic or user-selected icon size.
+  + New themes for GIMP (Light, Gray, Dark, and System) and new
+    symbolic icons meant to somewhat dim the environment and shift
+    the focus towards content (former theme and color icons are
+    still available in Preferences).
+  + And more, better, more, and even more awesome!
+- Drop gimp-gegl03-buildfix.patch: Fixed upstream, following this
+  drop libtool BuildRequires and no longer pass autoreconf.
+- Replace pkgconfig(gegl-0.3) with gegl-0.4) BuildRequires.
+- Add gcc-c++, gegl, glib-networking, pkgconfig(gexiv2),
+  pkgconfig(liblzma), pkgconfig(libmypaint),
+  pkgconfig(mypaint-brushes-1.0) and pkgconfig(poppler-data)
+  BuildRequires: New dependencies.
+
+-------------------------------------------------------------------
+Thu Mar  8 01:16:27 UTC 2018 - bjorn.lie@gmail.com
+
+- Add gimp-gegl03-buildfix.patch: Port to gegl-03, patch taken from
+  debian.
+- Following the above port, replace pkgconfig(gegl-0.2) with
+  pkgconfig(gegl-0.3) BuildRequires and add libtool BuildRequires:
+  and pass autoreconf as the above patch touches the buildsystem.
+
+-------------------------------------------------------------------
+Sun Jan  7 13:50:15 UTC 2018 - zaitor@opensuse.org
+
+- Run spec-cleaner, modernize spec, drop Obsoletes for versions
+  no longer supported.
+
+-------------------------------------------------------------------
+Sat Jan  6 04:13:05 UTC 2018 - plinnell@opensuse.org
+
+- Don't build with webkit1, as it is no longer maintained and has
+  plenty of security bugs.  This disables the GIMP's built-in help
+  browser; it will use an external browser when configured this way.
+
+  This works around a number of security vulnerabilities in Webkit1:
+
+  https://bugzilla.suse.com/show_bug.cgi?id=923223
+  https://bugzilla.suse.com/show_bug.cgi?id=906375
+  https://bugzilla.suse.com/show_bug.cgi?id=906374
+  https://bugzilla.suse.com/show_bug.cgi?id=906373
+  https://bugzilla.suse.com/show_bug.cgi?id=1034856
+  https://bugzilla.suse.com/show_bug.cgi?id=871792
+  https://bugzilla.suse.com/show_bug.cgi?id=879607
+  https://bugzilla.suse.com/show_bug.cgi?id=892084
+
+-------------------------------------------------------------------
+Wed May 31 04:59:00 UTC 2017 - plinnell@opensuse.org
+
+- drop mypaint until it is in Factory. 
+
+-------------------------------------------------------------------
+Fri May 12 03:38:13 UTC 2017 - plinnell@opensuse.org
+
+- update to 2.8.22
+- drop upstream patches - now in the the source
+- drop gimp-fix-PDF-Import-filter-crash.patch
+- drop gimp-bgo773233-CVE-2007-3126.patch
+- conditionalize mypaint support
+- full change log:
+  https://git.gnome.org/browse/gimp/plain/NEWS?h=GIMP_2_8_22
+
+-------------------------------------------------------------------
+Sat Feb 25 10:45:30 UTC 2017 - mailaender@opensuse.org
+
+- Build with libmypaint support.
+
+-------------------------------------------------------------------
+Tue Feb 21 11:25:43 UTC 2017 - zaitor@opensuse.org
+
+- Add gimp-bgo773233-CVE-2007-3126.patch: Gimp 2.3.14 allows
+  context-dependent attackers to cause a denial of service (crash)
+  via an ICO file with an InfoHeader containing a Height of zero
+  (bgo#773233, CVE-2007-3126).
+- Add gimp-fix-PDF-Import-filter-crash.patch: Fix a crash in PDF
+  Import filter when importing large image PDF or specifying high
+  resolution (bgo#593576).
+
+-------------------------------------------------------------------
+Thu Feb  9 11:15:33 UTC 2017 - zaitor@opensuse.org
+
+- Add conditional gimp-help-browser Obsoletes for Tumbleweed and
+  Leap newer than 42.x.
+
+-------------------------------------------------------------------
+Wed Feb  8 00:51:20 UTC 2017 - jengelh@inai.de
+
+- Remove --with-pic, this is only for static libs.
+- Trim description on non-main subpackages.
+
+-------------------------------------------------------------------
+Fri Feb  3 21:15:06 UTC 2017 - plinnell@opensuse.org
+
+ - update to 2.8.20
+
+- Core:
+
+ - Avoid D-Bus error message when built without D-Bus support
+ - fix OS X min required conditional in gimpimagewindow.c
+ - Saving to existing .xcf.bz and .xcf.gz files didn't truncate them
+   and could lead to unnecessarily large files
+ - Text layer created by gimp-text-fontname doesn't respect border
+   when resized
+ - avoid seeking when saving XCF files to prevent corruption with
+   file network shares (fixed since 2014, but not mentioned in NEWS yet)
+
+GUI:
+
+ - Flow on Paint Dynamics editor dialog: the 'y' axis is indicating
+   'Rate' instead 'Flow'
+ - Vertical ruler shows artifacts if the status bar isn't showing
+ - Tablet stylus misbehaves when crossing the edge of a dock in
+   multi-window-mode
+ - Disable the new "automatic window tabbing" feature introduced on macOS
+   Sierra
+ - Improve the visiblity of slider handles with dark themes
+ - Make it harder to switch to renaming if selecting already selected
+   items in resource lists
+
+Tools:
+
+ - make toggling to color picker mode of paint tools more robust
+
+Libgimp:
+
+ - call gimp_file_entry_set_filename() with filename encoding
+
+Plug-ins:
+
+ - Prevent the Python console from closing by the Escape key
+ - Help browser does not launch on OS X
+ - Filter 'Edge Detect/Difference of Gaussians' returns empty image
+ - only use -xobjective-c for compile commands
+ - mkgen.pl: fix calls to write_file() routine to write to current
+   directory
+ - When printing, the images are composed onto a white background to
+   prevent printing a black box instead of a transaprent image
+ - Fix color visison deficiency display filters to apply gamma
+   correction directly
+
+
+Updated Translations:
+
+ - Catalan  - Czech  - Danish  - Finnish  - French  - German 
+ - Greek  - Hungarian  - Icelandic  - Italian  - Polish
+ - Portuguese  - Slovak  - Slovenian  - Scottish Gaelic 
+ - Spanish  - Swedish
+
+
+General:
+
+ - Bug fixes
+
+-------------------------------------------------------------------
+Sun Jan 15 15:44:05 UTC 2017 - zaitor@opensuse.org
+
+- Replace -devel BuildRequires for their pkgconfig version aligned
+  with what configure looks for:
+  - babl-devel for pkgconfig(babl).
+  - gegl-devel for pkgconfig(gegl-0.2).
+  - libpng-devel for pkgconfig(libpng).
+  - libpoppler-glib-devel for pkgconfig(poppler-glib).
+  - xorg-x11-libXfixes-devel for pkgconfig(xfixes).
+  - xorg-x11-libXpm-devel for pkgconfig(xpm).
+  - zlib-devel for pkgconfig(zlib).
+- Add an explicit pkgconfig(cairo-pdf) BuildRequires: configure
+  checks for it (full pdf support).
+- Run spec-cleaner: drop obsolete clean, modernise macros.
+- No longer depend on libwebkit-devel for Tumbleweed and pass
+  --disable-webkit to configure for Tumbleweed.
+
+-------------------------------------------------------------------
+Sun Jul 31 04:04:52 UTC 2016 - plinnell@opensuse.org
+
+- update to 2.8.18
+- Drop gimp-Multiple-Use-After-Free.patch - upstreamed
+ +Core: - Initialize fontconfig cache in separate thread to keep GUI
+   responsive on first startup
+ - Properly recognize layer masks as deactivated, e.g. for moving layers
+ - Create $XDG_DATA_HOME if it doesn't exist
+ - (CVE-2016-4994) Multiple Use-After-Free when parsing XCF channel
+   and layer properties
+ - Fix progress access to prevent crash on rapid sequence of commands
+ - Fix crash in gimp-gradient-segment-range-move
+
++GUI:
+
+ - Disable color picker buttons on OS X to prevent a GUI lockup
+ - Disable "new-style" full-screen mode on OS X to prevent a crash
+ - Pulsing progress bar in splash screen to indicate unknown durations
+ - Fix gamut warning color for lcms display filter
+ - Fix unbolding of bold font on edit
+ - Prevent accidental renaming of wrong adjacent item
+
++Installer:
+
+ - Change compression settings to decrease size by 20%
+ - Add Catalan, Danish, French, Dutch
+
++Plug-ins:
+
+ - Fix crash on sRGB JPEG image drag & drop
+ - Fix ambiguous octal-escaped output of c-source
+ - Fix KISS CEL export
+ - Fix progress bar for file-compressor
+ - Make Script-Fu regex match return proper character indexes for
+   Unicode characters
+ - Fix Script-Fu modulo for large numbers
+
++General:
+
+ - Documentation updates
+ - Bug fixes
+ - Translation updates
+
+-------------------------------------------------------------------
+Thu Jun 23 09:25:51 UTC 2016 - zaitor@opensuse.org
+
+- Fix CVE-2016-4994 (boo#986021, bgo#767873):
+  + Add gimp-Multiple-Use-After-Free.patch: Multiple Use-After-Free
+    when parsing XCF channel and layer properties.
+
+-------------------------------------------------------------------
+Sat Dec  5 03:32:03 UTC 2015 - plinnell@opensuse.org
+
+- Explcitly declare the libgimp version in Requires, so upgrades
+  bring in the updated libraries as well. Makes the upgrade from
+  2.8.x > 2.8.16 seamless and avoids an error on start.
+
+-------------------------------------------------------------------
+Sat Nov 28 20:25:06 UTC 2015 - plinnell@opensuse.org
+
+- update to version 2.8.16
+- fix a couple of rpmlint warnings
+ +Core:
+ - Seek much less when writing XCF
+ - Don't seek past the end of the file when writing XCF
+ - Windows: call SetDLLDirectory() for less DLL hell
+ - Fix velocity parameter on .GIH brushes
+ - Fix brokenness while transforming certain sets of linked layers
+  +GUI:
+ - Always show image tabs in single window mode
+ - Fix switching of dock tabs by DND hovering
+ - Don't make the scroll area for tags too small
+ - Fixed a crash in the save dialog
+ - Fix issue where ruler updates made things very slow on Windows
+
+  +Plug-ins:
+ - Fix several issues in the BMP plug-in
+ - Make Gfig work with the new brush size behavior again
+ - Fix font export in the PDF plug-in
+ - Support layer groups in OpenRaster files
+ - Fix loading of PSD files with layer groups
+
+ + General:
+ - OSX build system fixes
+ - Bug fixes
+ - Translation updates
+
+-------------------------------------------------------------------
+Wed Apr  8 16:48:38 UTC 2015 - dimstar@opensuse.org
+
+- Replace liblcms-devel BuildRequires with pkgconfig(lcms2): gimp
+  has been ported to lcms2 since version 2.8.8.
+
+-------------------------------------------------------------------
+Sat Sep 20 16:05:27 UTC 2014 - mailaender@opensuse.org
+
+- update to version 2.8.14:
+  + Fix libtool versioning (forgot to bump gimp_interface_age).
+- Changes from Version 2.8.12:
+  + Core:
+    - Fix brush sizes when used from plug-ins.
+    - Make XCF loading more robust against broken files.
+  + GUI:
+    - Make sure the widget direction matches the GUI language.
+    - Remove the option to disable the warning when closing a
+      modified image.
+    - Fix canvas overlay widgets (like the text options) for
+      tablets.
+    - Make DND work between images in one dockable.
+  + Libgimp: Make gimp_image_get_name() return the string used for
+    the image title.
+  + Plug-ins:
+    - Make script-fu-server more secure by listening to 127.0.0.1
+      by default and add a warning about changing that IP. This
+      breaks the procedure's API, but for security reasons.
+    - Bring back proper script-fu translations.
+  + General:
+    - Add Jenkins tutorial.
+    - Documentation updates.
+    - Bug fixes.
+  + Updated translations.
+- Drop gimp-use-recommended-freetype-include.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Dec 11 17:18:44 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Add gimp-use-recommended-freetype-include.patch:
+  Freetype upstream recommends using their macros together with
+  ft2build include. Positive sideeffect is that this patch makes
+  it build with both freetype2 2.5.1, and older versions.
+
+-------------------------------------------------------------------
+Sun Dec  1 21:49:27 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.8.10:
+  + Core:
+    - Set manifest as Windows 8 compatible.
+  + GUI:
+    - Indicate if a file was exported in the Quit dialog.
+    - Add shortcuts and hint labels to the close and quit dialogs
+      that make closing and quitting easier and more consistent.
+    - Rename the File->Export menu labels to match Save/Save as.
+    - Fix keyboard shortcuts on OSX Mavericks.
+    - Don't open lots of progress popups when opening many files.
+    - Correctly restore the hidden state of docks in single window
+      mode.
+  + Libgimp:
+    - Fix exporting an image consisting of a single layer group.
+    - Don't attempt to pick transparent colors.
+  + Plug-ins: Fix crash in LCMS plugin if RGB profile was missing.
+  + General:
+    - Fix compile on NetBSD (missing -lexecinfo).
+    - Bug fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 26 11:12:21 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.8.8:
+  + General:
+    - Fix lots of places to use GIO to get proper file sizes and
+      times on windows.
+    - Add an AppData file for GIMP.
+    - Backport lcms2 support from master, because lcms1 is not
+      getting bug fixes any longer.
+    - Lots of bug fixes.
+  + Core:
+    - Make sure indexed images always have a colormap.
+    - Fix language selection via preferences on Windows.
+    - Don't crash on setting a large text size.
+  + GUI:
+    - Keep the same image active when switching between MWM and
+      SWM.
+    - Make sure all dockables are properly resizable (particularly
+      shrinkable).
+    - Add links to jump directly to Save/Export from the
+      Export/Save file extension warning dialogs.
+  + Libgimp: Fix GimpPickButton on OSX.
+  + Plug-ins:
+    - Properly document plug-in-autocrop-layer's PDB interface.
+    - Fix importing of indexed BMPs.
+  + Updated translations.
+- Split out ASCII-Art plugin in subpackage gimp-plugin-aa. The
+  package supplements gimp and libaa1, so any user having both
+  installed will get the plugin as well (bnc#851509).
+
+-------------------------------------------------------------------
+Sat Sep 21 14:45:43 UTC 2013 - dimstar@opensuse.org
+
+- Change RPM Group of shared library package to System/Libraries.
+
+-------------------------------------------------------------------
+Mon Aug 19 10:45:38 UTC 2013 - dimstar@opensuse.org
+
+- Drop branding-upstream subpackage: starting with openSUSE 13.1,
+  we will no longer replace the gimp splashcreen with a branded
+  version. This in order to maintain the identity of gimp.
+- Remove gimp-branding Requires.
+- Obsolete gimp-branding.
+
+-------------------------------------------------------------------
+Sat Jun 22 08:31:14 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 2.8.6:
+  + Core:
+    - Fix saving to URIs, it was broken to only allow exporting,
+      and fix save/export of compressed files.
+    - Fix brush spacing for drawing in any direction.
+    - Increase the maximum size of clipboard brushes and patterns
+      to 1024x1024.
+    - Make sure data objects are saved when only their name was
+      changed.
+  + GUI:
+    - Don't allow single-window docks to shrink smaller than their
+      requisition.
+    - Make sure a single-window's right docks keep their size
+      across sessions.
+    - Allow to change the spacing of non-generated brushes again.
+    - In single-window mode, make Escape move the focus to the
+      canvas, and beep if the focus is already there.
+    - Be smarter about unavailable fonts, and don't crash.
+    - Make clicking the single-window's close button quit GIMP.
+    - Make view-close (Ctrl+W) only close image windows and tabs,
+      not docks.
+  + Libgimp: Add SIGNED_ROUND() which also rounds negative values
+    correctly.
+  + Plug-ins:
+    - Make GIMP_PLUGIN_DEBUG work again after GLib changed logging.
+    - Fix zealous crop for transparent borders.
+  + Installer: Add Hungarian translation.
+  + Data: Add a default "Color from Gradient" dynamics and tool
+    preset.
+  + General: Lots of bug fixes.
+  + Updated translations. 
+
+-------------------------------------------------------------------
+Thu Mar  7 12:04:59 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.8.4:
+  + Core:
+    - Move the OSX gimpdir to "~/Library/Application Support".
+  + GUI:
+    - Better names for the default filters in save and export
+    - Make tool drawing (esp. the brush outline) much more
+      responsive
+    - Remember the "maximized" state across sessions
+    - Simplify the splash image code a lot, makes it appear
+      immediately again
+    - Allow the text tool to start on an image without layers
+    - Various fixes for text style attribute handling
+    - Set unconfigured input devices to eraser if GTK+ says they
+      are erasers
+    - Make language selectable in Preferences on OSX
+  + Libgimp:
+    - Make libgimp drawable combo boxes aware of layer groups
+    - Make sure plug-in windows appear on top on OSX
+    - Fix item width in GimpPageSelector (used e.g. in PDF import)
+  + Plug-ins:
+    - Better default values in the Drop Shadow script
+    - Fix a whole bunch of bugs in the BMP plug-in
+    - On OSX, use the system's screenshot utility
+  + Installer:
+    - Add Brazilian-Portuguese translation to the Windows installer
+  + Source and build system:
+    - Many improvements to the OSX bundle build system
+    - Support automake 1.13
+  + General: Lots of bug fixes
+  + Updated translations.
+- Drop gimp-CVE-2012-5576.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Nov 27 11:11:04 UTC 2012 - dimstar@opensuse.org
+
+- Add gimp-CVE-2012-5576.patch: fix memory corruption vulnerability
+  when reading XWD files (bnc#791372, bgo#687392, CVE-2012-5576).
+
+-------------------------------------------------------------------
+Wed Aug 29 11:43:22 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 2.8.2:
+  + Core:
+    - Make tag matching always case-insensitive
+    - Let the tile-cache-size default to half the physical memory
+  + GUI:
+    - Mention that the image was exported in the close warning
+      dialog
+    - Make sure popup windows appear on top on OSX
+    - Allow file opening by dropping to the OSX dock
+    - Fix the visibility logic of the export/overwrite menu items
+    - Remove all "Use GEGL" menu items, they only add bugs and zero
+      function
+    - Improve performance of display filters, especially color
+      management
+    - Fix the image window title to comply with the save/export
+      spec and use the same image name everywhere, not only in the
+      title
+    - Fix positioning of pasted/dropped stuff to be more reasonable
+  + Libgimp:
+    - Move gimpdir and thumbnails to proper locations on OSX
+    - Implement relocation on OSX
+    - Allow to use $(gimp_installation_dir) in config files
+  + Plug-ins:
+    - Fix remembering of JPEG load/save defaults
+    - Revive the page setup dialog on Windows
+  + Source and build system:
+    - Add Windows installer infrastructure
+    - Add infrastructure to build GIMP.app on OSX
+  + General:
+    - Lots of bug fixes
+  + Updated translations.
+- Drop gimp-CVE-2012-3236.patch: fixed upstream.
+- Clean spec-file using spec-cleaner.
+
+-------------------------------------------------------------------
+Mon Jun 25 09:51:07 CEST 2012 - vuntz@opensuse.org
+
+- Add gimp-CVE-2012-3236.patch: fix crash in file handling for fit
+  files. Fix CVE-2012-3236, bnc#768376.
+
+-------------------------------------------------------------------
+Mon May 14 13:05:34 UTC 2012 - vuntz@opensuse.org
+
+- Correctly version librsvg-devel BuildRequires: 2.36.0 is needed.
+  We don't version the BuildRequires on 12.1 and earlier to avoid
+  useless unresolvables; it will just result in file-svg plugin not
+  being built when librsvg is not recent enough there.
+
+-------------------------------------------------------------------
+Thu May  3 14:52:22 UTC 2012 - badshah400@gmail.com
+
+- Update to version 2.8.0:
+  + Core: Add gimp's own GimpOperationBrightnessContrast because
+    GEGL one is different
+  + Plug-ins: Fix some GFig rendering issues
+  + Source and build system: Depend on Babl 0.1.10, GEGL 0.2.0
+    and some other new library versions.
+
+-------------------------------------------------------------------
+Sat Apr  7 08:08:21 UTC 2012 - vuntz@opensuse.org
+
+- Update license from GPL-2.0+ to GPL-3.0+, following upstream
+  change.
+- Completely drop HAL-related packaging since it is now gone
+  upstream:
+  + Remove build_hal macro
+  + Remove optional hal-devel BuildRequires.
+  + Remove optional gimp-module-hal subpackage.
+  + Note that we already have a Obsoletes for gimp-module-hal.
+- Add pkgconfig(gudev-1.0) BuildRequires for the new gudev input
+  module.
+- Add ghostscript-devel, ghostscript-library, libbz2-devel,
+  libjasper-devel, pkgconfig(atk), pkgconfig(xcursor)
+  BuildRequires: new dependencies upstream.
+  + Note about ghostscript-library: ideally, we'd avoid listing it
+    explicitly, but in OBS, ghostscript-mini is preferred by
+    default, but it is not enough for gimp.
+- Add explicit pkgconfig(gdk-pixbuf-2.0) BuildRequires so it can be
+  versioned.
+- Add explicit libjpeg-devel, xorg-x11-libXpm-devel, zlib-devel
+  BuildRequires: they were missing before.
+- Add libxslt-tools BuildRequires (or libxslt-devel on versions of
+  openSUSE <= 12.1) to have xsltproc installed.
+- Add fdupes BuildRequires and use %fdupes in %install to avoid
+  duplicated files.
+- Change gimp-doc Obsoletes in devel subpackage from <= to < to
+  avoid rpmlint warning about self-obsoletion.
+
+-------------------------------------------------------------------
+Fri Apr  6 17:44:10 UTC 2012 - dimstar@opensuse.org
+
+- Update to 2.8.0-RC1:
+  + User Interface:
+    - Single-Window Mode
+    - Multi-Column Dock Windows
+    - More Screen Real Estate For Dockable Dialogs
+    - Save And Export
+    - Layer Groups
+    - Tools Drawn With Cairo
+    - On-Canvas Text Editing
+    - Keyboard Shortcut Changes
+    - Simple Math In Size Entries
+  + Tools & Plug-ins:
+    - Brush System Improvements
+    - Tool Preset Improvements
+    - Cage Transform Tool
+    - File Plug-Ins
+    - For Tablet Users
+    - Resource Tagging
+  + Miscellaneous:
+    - Enhancements to scripting abilities
+    - API changes
+  + For detailed changes, see NEWS file and
+    http://www.gimp.org/release-notes/gimp-2.7.html
+
+-------------------------------------------------------------------
+Wed Feb  1 09:09:46 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 2.6.12:
+  + Bugs fixed: bgo#623045, bgo#627328, bgo#631728, bgo#631885,
+    bgo#639203, bgo#640219, bgo#640612, bgo#641259, bgo#646947,
+    bgo#652280, bgo#660305.
+  + Updated translations.
+- Drop gimp-CVE-2010-4540-and-more.patch: fixed upstream.
+- Drop gimp-CVE-2010-4543.patch: fixed upstream.
+- Drop gimp-fix-linking.patch: fixed upstream.
+- Drop gimp-CVE-2011-2896.patch: fixed upstream.
+- Drop gimp-pyslice-cellspacing-fix.patch: fixed upstream.
+- Drop gimp-poppler-0.18.patch: fixed upstream.
+- Remove call to autoreconf and libtool BuildRequires: they were
+  only needed for gimp-fix-linking.patch.
+
+-------------------------------------------------------------------
+Fri Oct 21 11:19:42 UTC 2011 - vuntz@opensuse.org
+
+- Change gimp-2.0-scanner-plugin Recommends to a Suggests: this
+  installs xsane by default, and really, xsane is so horribly
+  broken UI-wise that we don't want that.
+
+-------------------------------------------------------------------
+Sat Oct 15 04:47:12 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Wed Oct 12 15:26:00 UTC 2011 - vuntz@opensuse.org
+
+- Add a warning comment about changing the content of the branding
+  package, to make our life easier in branding-openSUSE.
+
+-------------------------------------------------------------------
+Thu Oct  6 21:57:36 UTC 2011 - vuntz@opensuse.org
+
+- Add iso-codes Recommends since the iso-codes data is used at
+  runtime, but its presence is not mandatory.
+- Remove explicit gtk2 Requires: the library will get
+  automatically added to the list of Requires.
+
+-------------------------------------------------------------------
+Tue Sep 20 13:34:58 UTC 2011 - vuntz@opensuse.org
+
+- Update gimp-fix-linking.patch: add another missing -lm.
+- Add gimp-poppler-0.18.patch: fix build with poppler 0.17/0.18.
+
+-------------------------------------------------------------------
+Fri Sep  9 13:29:26 UTC 2011 - vuntz@opensuse.org
+
+- Add gimp-fix-linking.patch: fix linking issue.
+- Add gimp-CVE-2011-2896.patch: Fix heap corruption and buffer
+  overflow in LZW code. Fix bnc#711491, CVE-2011-2896.
+- Add gimp-pyslice-cellspacing-fix.patch: fix a crash in the
+  pyslice plugin.
+- Add call to autoreconf, needed by gimp-fix-linking.patch.
+
+-------------------------------------------------------------------
+Wed Jul  6 16:24:31 CEST 2011 - vuntz@opensuse.org
+
+- Change branding-upstream subpackage:
+  + Add Requires for gimp since the branding package is useless
+    without it.
+  + Update summary and description.
+  + Make noarch.
+- Change branding Requires in main subpackage to be "= %{version}",
+  instead of ">= 2.4", which is wrong.
+
+-------------------------------------------------------------------
+Wed Jun 15 16:19:39 CEST 2011 - vuntz@opensuse.org
+
+- Fix build on Factory, by not excluding the
+  libcontroller-linux-input.so module from the file list of the
+  main package when we build without hal. It was only excluded to
+  be part of a hal subpackage when there is the hal dependency.
+
+-------------------------------------------------------------------
+Sun Jun 12 00:14:35 CEST 2011 - vuntz@opensuse.org
+
+- On 12.1 and later, stop building the gimp-module-hal subpackage:
+  + we don't want hal anymore on 12.1 and later (see bnc#697016).
+    We use a build_hal define to control that behavior.
+  + remove hal-devel BuildRequires
+  + do not build a gimp-module-hal subpackage anymore
+  + add gimp-module-hal Obsoletes for smooth upgrades
+
+-------------------------------------------------------------------
+Tue Feb 15 10:13:30 CET 2011 - vuntz@opensuse.org
+
+- Add gimp-CVE-2010-4540-and-more.patch and
+  gimp-CVE-2010-4543.patch to fix buffer overflows: CVE-2010-4540,
+  CVE-2010-4541, CVE-2010-4542, CVE-2010-4543. Fix bnc#662043.
+
+-------------------------------------------------------------------
+Sat Feb 12 17:45:43 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+
+-------------------------------------------------------------------
+Fri Jan  7 10:17:51 CET 2011 - vuntz@opensuse.org
+
+- Move ownership from various directories from gimp to
+  libgimp-2_0-0, to not force external gimp plug-ins/modules/etc.
+  to have a gimp BuildRequires for directory ownership.
+
+-------------------------------------------------------------------
+Mon Dec 20 11:33:02 CET 2010 - vuntz@opensuse.org
+
+- Split gimp libraries in libgimp-2_0-0 and libgimpui-2_0-0
+  subpackages, and add baselibs.conf for those. Fix bnc#660439.
+- Change accordingly the Requires of the devel package, and the
+  scriptlets to run ldconfig.
+- Remove explicit glib2-devel and gtk2-devel Requires in devel
+  package: they will automatically be added the pkgconfig() way.
+- Move the gimptool-2.0 man page to the devel subpackage, where the
+  binary lives.
+
+-------------------------------------------------------------------
+Tue Nov 23 08:28:28 UTC 2010 - aj@suse.de
+
+- Change lang package Requires to Recommends since it is not
+  mandatory at runtime.
+
+-------------------------------------------------------------------
+Mon Oct  4 12:09:19 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.6.11:
+  + bgo#631199: Printing and Print preview broken with cairo 1.10
+  + Other bugs fixed: bgo#572865, bgo#628893, bgo#623850,
+    bgo#624487, bgo#557380, bgo#627009, bgo#626020, bgo#624698,
+    bgo#624275.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug  9 20:11:10 CEST 2010 - vuntz@opensuse.org
+
+- Add alsa-devel BuildRequires to build the MIDI Input module.
+
+-------------------------------------------------------------------
+Tue Aug  3 22:34:45 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.6.10:
+  + bgo#613328: TGA files saved with incorrect header yOrigin data
+  + bgo#623290: Save As... does not save Windows Bitmap as default
+                in dialog
+  + bgo#621363: CMYK decompose broken
+  + bgo#595170: brush - color from gradient works wrong in
+                greyscale
+  + bgo#613838: Error in gimp-hue-saturation PDB call
+  + bgo#622608: GIMP crashes when clicking any scroll bar from
+                combo boxes
+  + bgo#565459: newly opened images are put into the background
+- Changes from version 2.6.9:
+  + bgo#612618: Font selection remains visible
+  + bgo#620604: Description of "histogram" procedure is slightly
+                inaccurate
+  + bgo#541586: Tool options not saved/loaded correctly?
+  + bgo#614153: Importing PDF files with long titles
+  + bgo#599233: Dialog of "Save as BMP" ignores changes which are
+                not made with a mouse
+  + bgo#610478: Layer preview suddenly stops getting updated
+  + bgo#609026: leaks shared memory
+  + bgo#609056: Exporting to Alias PIX format fails
+                are always in English
+  + bgo#607242: GIMP 2.7.0 fails to build against libpng 1.4.0
+  + bgo#606372: Saving to .ppm fails on indexed colorspace
+  + bgo#604508: gimp-layer-new-from-visible should work from
+                updated projection
+  + Fix crashes: bgo#600112, bgo#565001, bgo#604820, bgo#603711
+  + Other fixes: bgo#622234, bgo#622196, bgo#608188, bgo#605237
+  + Updated translations.
+- Drop gimp-new-libpng.patch and gimp-fix-statusbar.patch, both
+  came from upstream git and are now included.
+
+-------------------------------------------------------------------
+Mon Jun 14 12:05:43 CEST 2010 - vuntz@opensuse.org
+
+- Ship the openSUSE palette so that it's available in GIMP.
+
+-------------------------------------------------------------------
+Sun May 23 19:41:18 CEST 2010 - vuntz@opensuse.org
+
+- Add gimp-fix-statusbar.patch to fix missing widgets in status
+  bar. Fix bnc#601712.
+
+-------------------------------------------------------------------
+Sun May 23 16:16:03 CEST 2010 - vuntz@opensuse.org
+
+- Move the input device module to a specific package, to isolate
+  the HAL dependency. Fix bnc#601947.
+
+-------------------------------------------------------------------
+Tue Apr  6 12:40:10 CEST 2010 - vuntz@opensuse.org
+
+- Add gimp-new-libpng.patch to fix build with newer libpng.
+
+-------------------------------------------------------------------
+Fri Dec 11 15:43:28 CET 2009 - vuntz@opensuse.org
+
+- Update to version 2.6.8:
+  + bgo#470698 - MapObject cannot modify highlight
+  + bgo#593848 - FG color changed to black when FG-BG Editor tab
+                 created
+  + bgo#594651 - layer.scale() raises RuntimeError
+  + bgo#594998 - Keyboard shortcuts does not work for first image
+                 when dock is focused
+  + bgo#599765 - F1 key on gimp-tool-align in menu have wrong link
+                 and it open gimp-tool-move
+  + bgo#600484 - Gimp BMP Integer Overflow Vulnerability
+  + bgo#600741 - "read_channel_data()" Integer Overflow
+                 Vulnerability
+  + bgo#601891 - gimp_image_get_selection returns None
+  + bgo#602761 - plug-in-grid: Parameters Horizontal/Vertical
+                 Spacing and Horizontal/Vertical Offset are
+                 reversed.
+  + bgo#603995 - PCX plugin doesn't sanitize input to avoid
+                 allocation overflows.
+  + bgo#603998 - PCX: Calculating amount of memory to allocate may
+                 overflow.
+  + bgo#604000 - SGI: sanitize input
+  + bgo#604001 - SGI: Calculating amount of memory to allocate may
+                 overflow.
+  + bgo#604002 - SGI: RLE encoded input data may write beyond
+                 allocated buffers
+  + bgo#604004 - SGI: allocate memory consistently
+  + bgo#604008 - GBR, PAT: sanitize input data
+  + bgo#604078 - Crash when pressing Backspace with Free Select
+                 Tool
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 26 16:51:28 CET 2009 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Fri Sep  4 15:07:54 CEST 2009 - vuntz@novell.com
+
+- Change Name in .desktop file to "GIMP", not "The GIMP". The
+  project has stopped calling it the GIMP.
+
+-------------------------------------------------------------------
+Thu Aug 20 22:38:00 CEST 2009 - crrodriguez@suse.de
+
+- add support for versioning external plugins, providing
+  rpm macros gimp_abi_version and gimp_api_version
+
+-------------------------------------------------------------------
+Wed Aug 19 21:47:53 CEST 2009 - beineri@opensuse.org
+
+- Everyone calls it "GIMP" so let us follow that in the application
+  start menu, fixes problem with launcher finding it (bnc#508279).
+
+-------------------------------------------------------------------
+Fri Aug 14 11:44:03 CEST 2009 - beineri@opensuse.org
+
+- Update to version 2.6.7:
+   + bgo#591017 - Tablet pan is not working as fast as it should
+   + bgo#577581 - Crashes when using any colors tool/function on
+                  Windows
+   + bgo#589667 - GIMP crashes when clicking GEGL Operation on
+                  Windows
+   + bgo#569833 - file-jpeg-save erroneous with small quality
+                  values
+   + bgo#590638 - Changing palettes from list to grid view loses
+                  "locked to dock" status
+   + bgo#589674 - "Send by Email" does not update "Filename"
+   + bgo#589674 - "Send by Email" does not update "Filename"
+   + bgo#586851 - Transparent BMP files fail to load
+   + bgo#589205 - help-browser uses deprecated (and sometimes
+                  broken) webkit call
+   + bgo#582821 - 'Sphere Designer' does not reset correctly...
+   + bgo#570353 - first time open of .svg file ignores the
+                  requested units
+   + bgo#555777 - Export to MNG animation fails
+   + bgo#577301 - Dithering with transparency is broken for
+                  "positioned" method
+   + bgo#493778 - metadata plug-in crashes on some images
+   + bgo#567466 - PNG comment not found if more than 1 tEXt chunks
+   + bgo#585665 - Exporting to PSD with a blank text layer creates
+                  a corrupt file
+   + bgo#586316 - Levels tool does not adjust output levels
+                  correctly if input levels are changed
+   + bgo#569661 - Import from PDF throws errors when entering
+                  resolution in pixels per millimetre
+   + bgo#567262 - Black pixels appear in "Spread" filter preview
+   + bgo#554658 - Path Dialog: Path preview pics not to see
+                  constantly
+   + bgo#167604 - gimp_gradient_get_color_at() may return
+                  out-of-bounds values
+   + bgo#567393 - Rectangle select tool size shrinks to 0 if size
+                  is larger than the image and the up or down arrow
+                  is pressed
+   + bgo#587543 - crash when invoking certain actions by keyboard
+                  shortcut
+   + bgo#563029 - Closing maximized image doesn't restore document
+                  window size
+   + bgo#585488 - Perspective transformation on a layer with a mask
+                  causes crash
+   + bgo#586008 - GIMP crashes when right-click canceling a drawing
+                  action initiated outside layer boundaries
+   + bgo#584345 - when printing, the number of copies should be
+                  reset to 1
+   + bgo#557061 - Alpha to Logo
+   + bgo#472644 - Rotate with clipping crops the whole layer
+   + bgo#577575 - transform tool fills underlying extracted area
+                  wrongly
+   + bgo#555738 - Image display is wrong after undoing canvas size
+   + bgo#577024 - help-browser plugin crashes when used with webkit
+                  1.1.3
+   + bgo#555025 - Action GEGL box widgets weirdness
+- Drop gimp-gegl-babl-versions-check.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Jul 30 12:03:00 CEST 2009 - vuntz@novell.com
+
+- Add a Supplements between gimp and gimp-help to get the
+  help-browser package automatically installed.
+- Update descriptions of packages.
+
+-------------------------------------------------------------------
+Fri Jul 24 18:12:21 CEST 2009 - beineri@opensuse.org
+
+- Split off gnome-help-browser sub-package to save 4MB libwebkit
+  dependency on Live-CDs where gimp-help is not included.
+- Only include latest ChangeLog.
+
+-------------------------------------------------------------------
+Thu Jun 11 04:09:03 CEST 2009 - vuntz@novell.com
+
+- Add gimp-gegl-babl-versions-check.patch to fix the code used to
+  check the babl and gegl version. Taken from Fedora/upstream.
+
+-------------------------------------------------------------------
+Tue Mar 17 06:59:41 CET 2009 - mboman@suse.de
+
+- Update to version 2.6.6:
+  + bgo#571117 - lcms plug-in crashes on broken profile
+  + bgo#575154 - changing the help browser preference may not work
+  + bgo#573542 - blur plugin: bug in the first line
+  + bgo#572403 - gimp-2.6 crashed with SIGSEGV in
+    IA__g_object_get()
+  + bgo#573695 - 1-bit white background saved as PBM becomes all
+    black
+  + bgo#573488 - Small bug in Filter>Distorts>Ripple
+  + bgo#572156 - top left pixel position/coordinate is not 0,0 but
+    1,1
+  + bgo#472644 - Rotate with clipping crops the whole layer
+  + Translation updates
+- Remove glibc-devel from Requires in -devel package
+- Use py_requires.
+- Remove gimp-enable-gtk-deprecated.patch: unneeded now.
+
+-------------------------------------------------------------------
+Tue Feb 17 03:16:35 CET 2009 - vuntz@novell.com
+
+- Remove some BuildRequires:
+  + libcurl-devel: not needed since we have gio
+  + gnome-keyring-devel, gnome-vfs2-devel, libgnomeui-devel: not
+    needed either since we have gio
+- Fix Provides/Obsoletes for gimp-doc in devel package.
+
+-------------------------------------------------------------------
+Mon Feb 16 07:39:48 CET 2009 - mboman@suse.de
+
+- Update to version 2.6.5:
+  + bgo#571628 - Scaling image to 25% turn background from white
+    to grey
+  + bgo#567840 - GIMP's GtkScaleButton conflicts with GTK's
+  + bgo#569043 - GEGL tool - missing Operation Settings for all
+    sub-tools
+  + bgo#568890 - don't rely on GtkAction implementation details
+  + bgo#568909 - wrong RGB values for color names in
+    libgimpcolor/gimprgb-parse.c
+  + bgo#568839 - wrong hex RGB value for the color names slategrey
+    and slategray
+  + bgo#559408 - Brushes dragged to the image window look strange
+  + bgo#563337 - Rectangle Select Tool does not allow 1:1 fixed
+    ratio
+  + bgo#568016 - Black pullout parameter of plug-in-newsprint has
+    no effect
+  + bgo#562818 - First image opened in GIMP offset
+  + bgo#562213 - Align Tool doesn't work properly if it is the
+    active tool at startup
+  + Translation updates
+- Add gimp-enable-gtk-deprecated.patch due to using deprecated
+  API call gtk_widget_get_action. Upstream is working on it so
+  could probably be removed with the next version update
+- Merge gtk-doc from -doc to -devel
+- Fix BuildRequires according to what's in configure.ac:
+    * Add: babl-devel, cairo-devel, fontconfig-devel, glib2-devel,
+           gnome-keyring-devel, gnome-vfs2-devel, gtk2-devel,
+           libcurl-devel, libpng-devel, pango-devel,
+           xorg-x11-libXfixes-devel
+    * Remove: BuildRequires: alsa-devel, cups, cups-devel,
+              curl-devel, gnome-common, gnutls-devel, gtk-doc,
+              libgimpprint, libgimpprint-devel, libglade2-devel,
+              libgnomeprintui-devel, libgtkhtml-devel,
+              libwnck-devel, perl-XML-Parser, postfix,
+              python-devel, slang-devel
+
+-------------------------------------------------------------------
+Tue Feb 10 20:49:36 CET 2009 - vuntz@novell.com
+
+- Remove non-upstream translations: they'll get out-of-date.
+
+-------------------------------------------------------------------
+Mon Jan 19 21:07:51 CET 2009 - crrodriguez@suse.de
+
+- remove "la" files [BNC#357465]
+
+-------------------------------------------------------------------
+Fri Jan  2 23:23:48 EST 2009 - mboman@suse.de
+
+- Update to version 2.6.4:
+  + bgo#565223 - Perspective transformation jagged edges / comb effect
+  + bgo#563985 - jpg save dialog: "cancel" is treated like "commit"
+    for settings
+  + bgo#564087 - Using clone tool on a layer with a part out of canvas
+    causes crashes
+  + bgo#564593 - crash when the drawable is changed while a color tool
+    is active
+  + bgo#564869 - GIMP crashes on selecting Tools->GEGL operation
+  + bgo#565138 - python-fu-foggify does not check if image is in rgb mode
+  + bgo#563130 - Hue selection mode does not cross the 0-360 degrees line
+  + bgo#563179 - Scrollbars not resized when we extend the canvas size
+  + bgo#562459 - PF_PALETTE: 'TypeError' when used in a plugin that is
+    registered in <Image>
+  + bgo#562427 - Compilation with --as-needed
+  + bgo#562386 - PF_SLIDER and PF_SPINNER 'Step' values do not change
+    consistently...
+  + bgo#562366 - Default image dimensions are not correctly
+    transferred in the file/new dialog box
+  + bgo#561899 - GIMP can't save to mounted filesystem if file exists
+  + Translation updates
+
+-------------------------------------------------------------------
+Mon Dec 29 12:54:31 EST 2008 - mboman@suse.de
+
+- Update to version 2.6.3:
+  + bgo#558454 - Plugin Map Color Range disappears from GIMP
+  + bgo#559239 - Error while loading psd-data
+  + bgo#560903 - Explicit zooming with e.g. '1' should handle
+    zoom-focus better
+  + bgo#560245 - Zoom selection always centered in the Navigation tab
+  + bgo#559490 - Wrong lang tags for 'no'
+  + bgo#559292 - SOTA Chrome cannot accept different textures
+  + bgo#560375 - Clearing an already empty document history crashes GIMP
+  + bgo#559580 - Image windows need better default locations
+  + bgo#560283 - "Scale image..." causes distortion around edges
+  + bgo#559716 - Changing crop size in Crop Tool Options can make UI
+    unresponsive
+  + bgo#558549 - Stroking a single-point path with a paint tool
+    crashes GIMP
+  + bgo#559015 - Move tool gives bad information about px moved
+  + bgo#558660 - help behavior for locales without manual translation
+  + Translation updates
+- Remove gimp-help-fallback-en.patch. Fixed upstream
+
+-------------------------------------------------------------------
+Fri Dec 19 13:10:12 EST 2008 - mauro@suse.de
+
+- Added hu-po.tar.bz2 to fix bnc#460663
+  + Updated hungarian translation.
+
+-------------------------------------------------------------------
+Mon Nov  3 15:43:04 CET 2008 - sbrabec@suse.cz
+
+- If help translation does not exist, fallback to English
+  (bgo#558660).
+
+-------------------------------------------------------------------
+Fri Oct 31 13:13:16 CET 2008 - sbrabec@suse.cz
+
+- Updated to version 2.6.2:
+  * scaling speed improved
+  * several crash, bug and regression against 2.4 fixes
+  * translation updates
+  * See NEWS for more
+
+-------------------------------------------------------------------
+Fri Oct 10 15:06:50 CEST 2008 - sbrabec@suse.cz
+
+- Updated to version 2.6.1:
+  * 10 important crash and bug fixes
+  * translation updates
+  * See NEWS for more
+
+-------------------------------------------------------------------
+Mon Oct  6 15:06:38 CEST 2008 - sbrabec@suse.cz
+
+- Conflict with other branding providers (FATE#304881, bnc#429324).
+
+-------------------------------------------------------------------
+Thu Oct  2 11:47:37 CEST 2008 - sbrabec@suse.cz
+
+- Updated to version 2.6.0, the new stable branch:
+  * depends on GEGL and uses it optionally in some color operations
+  * UI refactoring
+  * many improvements and new features
+  * See NEWS for details.
+
+-------------------------------------------------------------------
+Thu Sep  4 13:04:15 CEST 2008 - sbrabec@suse.cz
+
+- Recommend gimp-2.0-scanner-plugin (bnc#422558).
+
+-------------------------------------------------------------------
+Fri Aug 22 11:34:12 CEST 2008 - sbrabec@suse.cz
+
+- Updated to version 2.4.7:
+  * python binding fixes
+  * fixed memory leak
+  * bug fixes
+  * translation updates
+  * See NEWS for details.
+
+-------------------------------------------------------------------
+Wed Jul 16 12:21:21 CEST 2008 - sbrabec@suse.cz
+
+- Updated to version 2.4.6:
+  * many fixes
+  * translation updates
+  * See NEWS for details.
+
+-------------------------------------------------------------------
+Tue Apr 15 16:40:53 CEST 2008 - sbrabec@suse.cz
+
+- Fixed dependencies of the branding package.
+
+-------------------------------------------------------------------
+Mon Apr 14 19:09:46 CEST 2008 - sbrabec@suse.cz
+
+- Use packageand form of branding supplement.
+
+-------------------------------------------------------------------
+Thu Mar 27 17:02:35 CET 2008 - sbrabec@suse.cz
+
+- Added support for vendor branding (bnc#372091).
+
+-------------------------------------------------------------------
+Mon Mar  3 18:15:47 CET 2008 - sbrabec@suse.cz
+
+- Updated to version 2.4.5:
+  * many fixes
+  * many corrections
+  * translation updates
+  * See NEWS for details.
+
+-------------------------------------------------------------------
+Wed Jan 30 13:36:26 CET 2008 - sbrabec@suse.cz
+
+- Split plugins requiring python-gtk into a separate package
+  (bnc#339862).
+
+-------------------------------------------------------------------
+Fri Dec  7 14:49:05 CET 2007 - sbrabec@suse.cz
+
+- Removed gutenprint from BuildRequires (#245683#c23).
+- Require python-gtk (#339862).
+
+-------------------------------------------------------------------
+Wed Oct 24 16:01:59 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 2.4.0:
+  * further improved the rectangle select and crop tools
+  * allow to mark out-of-gamut colors when doing a soft proof
+  * bug fixes
+- Package renamed from gimp-unstable to gimp.
+
+-------------------------------------------------------------------
+Thu Oct 11 18:40:37 CEST 2007 - sbrabec@suse.cz
+
+- poppler devel package names prepended by "lib".
+
+-------------------------------------------------------------------
+Mon Oct  8 17:05:26 CEST 2007 - sbrabec@suse.cz
+
+-  Use binding specific poppler devel package.
+
+-------------------------------------------------------------------
+Mon Sep 24 11:23:01 CEST 2007 - stbinner@suse.de
+
+- update to GIMP 2.3 Release Candidate 3 (#327516)
+   * Changes in GIMP 2.4.0-rc3:
+    - use the new format for storing recently used files
+    - added conversion options to the color profile conversion plug-in
+    - allow to disable the toolbox menu on all platforms
+    - further improved handling of the JPEG settings
+    - switch tabs when hovering over them
+    - added a PDB function to remove the alpha channel from a layer
+    - plug-in previews remember the state of the Preview checkbox
+    - allow to grow the image/layer using the Crop tool
+   * Changes in GIMP 2.4.0-rc2:
+    - more improvements and bug fixes in the rectangle tools
+    - antialias the display for zoom levels between 100% and 200%
+    - fix zoomed-out display problems
+    - improve handling of JPEG settings
+    - fix script-fu error reporting
+    - on OS X, get rid of menubars in windows and use the global menubar
+    - fix plug-ins using GimpZoomPreview
+    - throw properly catchable exceptions from foreign script-fu function
+      (like PDB wrappers)
+   * Changes in GIMP 2.4.0-rc1:
+    - further improvement to the Print plug-in
+    - completed the color management functionality for 2.4
+    - store JPEG setting with the image and use them when saving as JPEG
+    - further improved the rectangle tools, in particular handling of the
+      fixed aspect ratio
+   - added color profile selector widget
+   - further improved the display quality for zoomed-out views
+
+-------------------------------------------------------------------
+Tue Sep 11 11:28:46 CEST 2007 - stbinner@suse.de
+
+- add Conflict with gimp-lang (#307289)
+
+-------------------------------------------------------------------
+Mon Jul 30 20:51:52 CEST 2007 - maw@suse.de
+
+- Update to version 2.3.19:
+  + support long layer names in PSD files
+  + improved EXIF handling in the JPEG file plug-in
+  + added control for the playback speed in the Animation Playback plug-in
+  + avoid needless image preview invalidation
+  + allow to edit the image comment in the Image Properties dialog
+  + further improved rectangle tools
+  + made JPEG save parameters user-configurable
+  + avoid color conversions between identical ICC color profiles
+  + improved Print plug-in
+  + improved loading and saving of indexed TGA images
+  + temporarily show the hidden image statusbar while the progress is active
+  + added support for loading .abr v6 Photoshop brushes
+  + improved usability of color scales
+  + improved display quality of zoomed-out image view
+  + improved import of multi-page TIFF files
+  + reduced rounding errors in Blur routines (core and plug-ins)
+  + further improved parameter checks in the PDB
+  + added support for loading .abr v2 Photoshop brushes
+  + improved border behavior of the Blur tool
+  + show the brush outline at the Clone tool's source position
+  + added libgimpbase API to retrieve the user's Pictures folder
+  + add a shortcut to the user's Pictures folder to the file-chooser dialog
+  + improved the quality of the Motion Blur filter
+  + save paths in TIFF files
+  + let the Screenshot plug-in name the new layer after the window
+  + use memory slices to reduce memory fragmentation
+  + some code cleanup
+  + lots of bug fixes
+- Remove upstreamed gimp-psd-overflow.patch and gimp-sunras-overflow.patch.
+
+-------------------------------------------------------------------
+Thu Jul 19 00:34:33 CEST 2007 - maw@suse.de
+
+- Respin gimp-psd-overflow.patch (http://bugzilla.gnome.org/show_bug.cgi?id=456042
+  and https://bugzilla.novell.com/show_bug.cgi?id=284288#c13).
+
+-------------------------------------------------------------------
+Wed Jul  4 00:37:01 CEST 2007 - maw@suse.de
+
+- Add gimp-psd-overflow.patch (#284288 and CVE-2007-2949), fixing
+  a buffer overflow.
+
+-------------------------------------------------------------------
+Fri May 11 10:46:17 CEST 2007 - pgajdos@suse.cz
+
+- removed gnome-icon-theme from BuildRequires and Requires
+  [#247450]
+ 
+-------------------------------------------------------------------
+Mon May  7 15:53:06 CEST 2007 - sbrabec@suse.cz
+
+  * Updated to version gimp-2.3.16:
+  * XOR color configurable as a workaround for broken drivers
+  * keyboard shortcuts can assign to procedures without menu entry
+  * configurable height of the preview area in data editors
+  * improved file detection in TGA plug-in
+  * improved brush scaling code, now also scales up
+  * converted standard pixmap brushes to parametric ones
+  * improved zoom tool behavior
+  * D-Bus methods have a return value indicating success or failure
+  * added more menu tooltips
+  * procedures can request the display ID they are called from
+  * depend on GTK+ >= 2.10.6
+  * filename passed on the command-line can open new image
+  * various optimizations, bug fixes and code cleanup
+
+-------------------------------------------------------------------
+Fri May  4 15:32:01 CEST 2007 - sbrabec@suse.cz
+
+- Fixed buffer overflow in sunras plugin (#270506, GNOME#433902,
+  CVE-2007-2356).
+
+-------------------------------------------------------------------
+Wed Apr  4 17:58:14 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version gimp-2.3.15:
+  * Fixes, improvements, UI and API changes. See NEWS for more.
+
+-------------------------------------------------------------------
+Thu Mar  8 12:42:36 CET 2007 - sbrabec@suse.cz
+
+- Removed obsolete hicolor icon symlink (#248676).
+
+-------------------------------------------------------------------
+Wed Mar  7 13:15:37 CET 2007 - pgajdos@suse.cz
+
+- fixed 'warning: subscript out of range' (#231161) 
+- subscript-outrng.patch
+
+-------------------------------------------------------------------
+Tue Feb 27 22:39:36 CET 2007 - dmueller@suse.de
+
+- adjust buildrequires: libexif -> libexif-devel 
+
+-------------------------------------------------------------------
+Wed Jan  3 14:40:21 CET 2007 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Thu Sep 14 18:07:32 CEST 2006 - sbrabec@suse.cz
+
+- Updated to version 2.3.11:
+  * Many new features, see
+    /usr/share/doc/packages/gimp-unstable/NEWS for more.
+  * Many bug fixes and code cleanup.
+- Removed dcraw hack.
+
+-------------------------------------------------------------------
+Wed Aug 16 12:03:09 CEST 2006 - cthiel@suse.de
+
+- buildrequire python-gtk-devel instead of python-gtk
+
+-------------------------------------------------------------------
+Fri Jul 28 13:32:10 CEST 2006 - sbrabec@suse.cz
+
+- Fixed buffer overflow in xcf_load_vector (CVE-2006-3404,
+  #190901, GNOME#346742).
+
+-------------------------------------------------------------------
+Thu Jun 29 19:26:56 CEST 2006 - nadvornik@suse.cz
+
+- do not use deprecated libpng functions
+
+-------------------------------------------------------------------
+Wed Feb 15 10:31:33 CET 2006 - stbinner@suse.de
+
+- use just "Gimp" as name, don't duplicate GenericName description
+
+-------------------------------------------------------------------
+Fri Feb 10 16:25:00 CET 2006 - sbrabec@suse.cz
+
+- Updated to version 2.3.7.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:31:36 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan  5 17:11:33 CET 2006 - sbrabec@suse.cz
+
+- Updated to version 2.3.6.
+- Enabled parallel build.
+
+-------------------------------------------------------------------
+Tue Jan  3 15:58:27 CET 2006 - sbrabec@suse.cz
+
+- Suggest AdobeICCProfiles.
+
+-------------------------------------------------------------------
+Mon Nov 21 15:44:56 CET 2005 - sbrabec@suse.cz
+
+- Moved gimptool to -devel subpackage.
+- Provide gimp symlink.
+
+-------------------------------------------------------------------
+Tue Nov  8 11:34:46 CET 2005 - sbrabec@suse.cz
+
+- Build with strict aliasing.
+- Fixed random return value.
+
+-------------------------------------------------------------------
+Mon Nov  7 15:11:03 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 2.3.5.
+
+-------------------------------------------------------------------
+Wed Nov  2 23:05:44 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Tue Sep 27 19:59:09 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 2.3.4.
+
+-------------------------------------------------------------------
+Mon Aug 15 13:18:28 CEST 2005 - sbrabec@suse.cz
+
+- Provide gimp-2.0 virtual.
+
+-------------------------------------------------------------------
+Wed Aug 10 14:43:02 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 2.3.3.
+
+-------------------------------------------------------------------
+Thu Aug  4 18:45:24 CEST 2005 - sbrabec@suse.cz
+
+- Do not self-conflict.
+
+-------------------------------------------------------------------
+Fri Jul 15 11:56:01 CEST 2005 - sbrabec@suse.cz
+
+- Provide and conflict with gimp.
+
+-------------------------------------------------------------------
+Tue Jul 12 11:03:52 CEST 2005 - sbrabec@suse.cz
+
+- Fixed MMX patch reject.
+
+-------------------------------------------------------------------
+Mon Jul 11 16:52:29 CEST 2005 - sbrabec@suse.cz
+
+- Created SuSE package for unstable branch.
+- Updated to version 2.3.2.
+- Removed unneeded static modules and .la files for modules.
+
+-------------------------------------------------------------------
+Thu Jul  7 22:43:59 CEST 2005 - gekker@suse.de
+
+- Fix use of uninitialized variables
+- Fix to work with -D_FORTIFY_SOURCE=2 
+
+-------------------------------------------------------------------
+Tue Jun  7 11:35:22 CEST 2005 - sbrabec@suse.cz
+
+- Fixed multiple processors option.
+
+-------------------------------------------------------------------
+Wed Jun  1 18:03:49 CEST 2005 - sbrabec@suse.cz
+
+- Fixed devel requirements.
+
+-------------------------------------------------------------------
+Wed May 18 16:19:32 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 2.2.7.
+
+-------------------------------------------------------------------
+Tue May 10 00:56:08 CEST 2005 - ro@suse.de
+
+- use -mmmx and -msse to compile asm-code for these extensions 
+
+-------------------------------------------------------------------
+Tue Apr 12 13:16:43 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 2.2.6.
+
+-------------------------------------------------------------------
+Wed Apr  6 19:32:12 CEST 2005 - sbrabec@suse.cz
+
+- Fixed incomplete array element type.
+
+-------------------------------------------------------------------
+Mon Feb 28 12:17:23 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 2.2.4.
+
+-------------------------------------------------------------------
+Mon Jan 24 12:40:09 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 2.2.3.
+
+-------------------------------------------------------------------
+Mon Jan 17 18:49:10 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 2.2.2.
+
+-------------------------------------------------------------------
+Thu Jan  6 23:54:17 CET 2005 - ro@suse.de
+
+- postfix is in neededforbuild, so add "-sendmail" for PLUS
+
+-------------------------------------------------------------------
+Thu Jan 06 18:56:01 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 2.2.1.
+
+-------------------------------------------------------------------
+Tue Oct 26 23:55:35 CEST 2004 - mmj@suse.de
+
+- locale rename no to nb
+
+-------------------------------------------------------------------
+Wed Sep 22 17:44:34 CEST 2004 - adrian@suse.de
+
+- add MimeTypes line to desktop file. Gimp does support .xcf files now
+
+-------------------------------------------------------------------
+Mon Aug 30 23:31:20 CEST 2004 - rml@suse.de
+
+- upgrade to gimp 2.0.4 (Ximian bug #64677)
+
+-------------------------------------------------------------------
+Fri Aug 27 18:45:47 CEST 2004 - shprasad@suse.de
+
+- Fixes bug #63425
+  Fixes GIMP Crash at the time of acquiring screen-shot and select
+  extension type as png
+
+- Partially fixes bug #63420
+  Doesn't allow to crash.
+
+-------------------------------------------------------------------
+Mon Aug 16 12:07:51 CEST 2004 - shprasad@suse.de
+
+- Fixes bug #63006.
+  Added the gtk-file-chooser dialog to Open/Save a file. 
+
+-------------------------------------------------------------------
+Thu Jun 17 18:26:48 CEST 2004 - sbrabec@suse.cz
+
+- Updated to version 2.0.2.
+
+-------------------------------------------------------------------
+Fri Jun 04 12:43:35 CEST 2004 - sbrabec@suse.cz
+
+- Updated to bugfix version 2.0.1.
+
+-------------------------------------------------------------------
+Tue May 25 17:29:09 CEST 2004 - ro@suse.de
+
+- added libcroco to neededforbuild
+
+-------------------------------------------------------------------
+Wed May 19 15:18:52 CEST 2004 - sbrabec@suse.cz
+
+- German translation update from Karl Eichwalder.
+
+-------------------------------------------------------------------
+Fri May 07 15:16:05 CEST 2004 - sbrabec@suse.cz
+
+- Better fix (fork() instead of fail wrapper) of gimp-remote bug
+  (#38512), backported from gimp-2.0.1.
+  http://bugzilla.gnome.org/show_bug.cgi?id=139158
+
+-------------------------------------------------------------------
+Wed Apr  7 15:36:22 CEST 2004 - sbrabec@suse.cz
+
+- Work around of gimp-remote bug (#38512).
+  http://bugzilla.gnome.org/show_bug.cgi?id=139158
+
+-------------------------------------------------------------------
+Wed Apr  7 15:08:29 CEST 2004 - sbrabec@suse.cz
+
+- Fixed WMF plugin (#38582).
+
+-------------------------------------------------------------------
+Thu Mar 25 23:28:16 CET 2004 - mmj@suse.de
+
+- Add postfix to # neededforbuild
+
+-------------------------------------------------------------------
+Wed Mar 24 12:19:14 CET 2004 - hhetter@suse.de
+
+- updated to version 2.0.0 finally 
+
+-------------------------------------------------------------------
+Mon Mar 22 17:51:32 CET 2004 - sbrabec@suse.cz
+
+- Provide gimp2-devel.
+
+-------------------------------------------------------------------
+Mon Mar 22 13:38:03 CET 2004 - sbrabec@suse.cz
+
+- Updated to version 2.0rc1.
+- GIMP GNOME MIME info files linked to proper place,
+- Obsolete gimp2-devel, too.
+
+-------------------------------------------------------------------
+Fri Mar  5 10:35:43 CET 2004 - hhetter@suse.de
+
+- updated to 2.0pre4 
+- removed gimp-po-de.patch, it's upstream
+- adapted tiff_no_lzw patch
+
+-------------------------------------------------------------------
+Tue Mar 02 15:38:47 CET 2004 - sbrabec@suse.cz
+
+- Symlink binaries for convenience.
+
+-------------------------------------------------------------------
+Tue Mar 02 14:36:40 CET 2004 - sbrabec@suse.cz
+
+- German typo fix (bug #34349).
+
+-------------------------------------------------------------------
+Fri Feb 27 13:59:54 CET 2004 - schwab@suse.de
+
+- Fix broken configure check.
+
+-------------------------------------------------------------------
+Fri Feb 20 12:58:44 CET 2004 - sbrabec@suse.cz
+
+- Provide and obsolete gimp2.
+
+-------------------------------------------------------------------
+Thu Feb 19 16:08:48 CET 2004 - sbrabec@suse.cz
+
+- Package renamed to gimp.
+
+-------------------------------------------------------------------
+Thu Feb  5 10:08:37 CET 2004 - hhetter@suse.de
+
+- updated to version 2.0pre3
+- remove desktop file patch, it's called gimp2 now  
+
+-------------------------------------------------------------------
+Thu Jan 29 11:45:22 CET 2004 - hhetter@suse.de
+
+- updated to version 2.0pre2 
+
+-------------------------------------------------------------------
+Tue Jan 27 12:41:16 CET 2004 - hhetter@suse.de
+
+- updated to version 2.0pre1
+- renew patch for LZW deactivation 
+
+-------------------------------------------------------------------
+Mon Oct 20 16:02:06 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 1.3.21. Fixes screenshot bug (#32288).
+- Build SVG plug-in.
+- Clean-up of neededforbuild.
+
+-------------------------------------------------------------------
+Wed Oct 15 02:15:02 CEST 2003 - ro@suse.de
+
+- run full autoreconf 
+
+-------------------------------------------------------------------
+Thu Sep 18 16:42:16 CEST 2003 - sbrabec@suse.cz
+
+- Do not show LZW in tiff save dialog at all (bug #29849).
+
+-------------------------------------------------------------------
+Mon Sep 15 14:26:12 CEST 2003 - hhetter@suse.de
+
+- name label "Gimp 1.3" in desktop file (Bug Id #30841) 
+
+-------------------------------------------------------------------
+Mon Sep 08 13:55:29 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 1.3.20.
+
+-------------------------------------------------------------------
+Thu Aug 28 15:55:40 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 1.3.19.
+- Enabled EXIF support.
+
+-------------------------------------------------------------------
+Sat Aug 16 23:19:28 CEST 2003 - adrian@suse.de
+
+- install desktop file
+
+-------------------------------------------------------------------
+Thu Aug 14 11:24:10 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 1.3.18.
+
+-------------------------------------------------------------------
+Mon Aug 04 14:44:09 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 1.3.17.
+
+-------------------------------------------------------------------
+Fri Jul 25 06:26:44 CEST 2003 - hhetter@suse.de
+
+- fix build 
+
+-------------------------------------------------------------------
+Thu Jun 26 18:15:42 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 1.3.15.
+- Used system libgimpprint.
+
+-------------------------------------------------------------------
+Fri Jun 20 01:59:59 CEST 2003 - ro@suse.de
+
+- added directories to filelist
+
+-------------------------------------------------------------------
+Tue Jun 10 13:16:54 CEST 2003 - sbrabec@suse.cz
+
+- Initial SuSE version of GTK2 port.
+

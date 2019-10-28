@@ -1,0 +1,86 @@
+--- TrustedGRUB-1.1.3/stage2/stage2.c.orig	2007-11-11 22:53:04.000000000 +0100
++++ TrustedGRUB-1.1.3/stage2/stage2.c	2008-09-16 14:46:13.000000000 +0200
+@@ -512,10 +512,13 @@ menu_restart:
+           /* print shortcut buffer */
+           gotoxy(5, 3);
+ 	  if (search_mode)
++	      {
++		x = search_direction ? '?' : '/';
+ 	    grub_printf("%c%s%c%c%c%c",
+-		        x, search_buf, x = search_direction ? '?' : '/',
++		        x, search_buf, x,
+ 			DISP_HORIZ,
+ 			search_found >= 0 ? DISP_HORIZ : 'X', DISP_HORIZ);
++	      }
+ 	  else if (shortcut_buf[0])
+             grub_printf("<%s..>", shortcut_buf);
+           else
+--- TrustedGRUB-1.1.3/stage2/disk_io.c
++++ TrustedGRUB-1.1.3/stage2/disk_io.c
+@@ -1828,7 +1828,7 @@ grub_read (char *buf, int len)
+ #ifdef DEBUG
+ 	printf("Kernel: Data is in memory -> copying %d Bytes at file position: %d      \n", len, filepos);
+ #endif
+-	memcpy(buf, RAW_ADDR(kernel_real_addr + filepos), len);
++	memcpy(buf, (char*)(RAW_ADDR(kernel_real_addr + filepos)), len);
+ 	filepos += len;
+ 	return len;
+     }
+--- TrustedGRUB-1.1.3/grub/asmstub.c	2009/07/29 12:15:53	1.1
++++ TrustedGRUB-1.1.3/grub/asmstub.c	2009/07/29 12:18:13
+@@ -269,14 +269,17 @@
+ 
+ long tcg_check_tpm (void)
+ {
++	return 0;
+ }
+ 
+ long check_for_tpm (void)
+ {
++	return 0;
+ }
+ 
+ long tpm_present (void)
+ {
++	return 0;
+ }
+ 
+ void tcg_hash_extend_pcr (void)
+--- TrustedGRUB-1.1.3/stage2/Makefile.am.orig	2010-04-13 16:17:55.000000000 +0200
++++ TrustedGRUB-1.1.3/stage2/Makefile.am	2010-04-14 12:51:19.000000000 +0200
+@@ -21,9 +21,9 @@ libgrub_a_SOURCES = boot.c builtins.c ch
+ 	fsys_vstafs.c fsys_xfs.c gunzip.c md5.c serial.c sha1.c stage2.c \
+ 	terminfo.c tparm.c
+ libgrub_a_CFLAGS = $(GRUB_CFLAGS) -I$(top_srcdir)/lib \
+-	-DGRUB_UTIL=1 -DFSYS_EXT2FS=1 -DFSYS_FAT=1 -DFSYS_FFS=1 -DFSYS_ISO9660=1 \
++	-DGRUB_UTIL=1 -DFSYS_EXT2FS=1 -DFSYS_FAT=1 \
+ 	-DFSYS_ISO9660=1 -DFSYS_JFS=1 -DFSYS_MINIX=1 -DFSYS_NTFS=1 \
+-	-DFSYS_REISERFS=1 -DFSYS_UFS2=1 -DFSYS_VSTAFS=1 -DFSYS_XFS=1 \
++	-DFSYS_REISERFS=1 -DFSYS_VSTAFS=1 \
+ 	-DUSE_MD5_PASSWORDS=1 -DSUPPORT_SERIAL=1 -DSUPPORT_HERCULES=1
+ 
+ # Stage 2 and Stage 1.5's.
+--- TrustedGRUB-1.1.3/util/sha1.c.orig	2007-11-11 21:14:28.000000000 +0100
++++ TrustedGRUB-1.1.3/util/sha1.c	2010-04-14 12:54:24.000000000 +0200
+@@ -387,7 +387,6 @@ int calculate_sha1(char* filename, t_U32
+     int round = 1;
+     struct stat attribute;
+     char *tcgbuffer;
+-    tcgbuffer = (char*) malloc(TCG_BUFFER_SIZE);
+ 
+ #ifdef DEBUG
+     printf("Calculating SHA1 for file: %s\n",filename);
+--- TrustedGRUB-1.1.3/grub/Makefile.am.orig	2007-05-09 13:53:22.000000000 +0200
++++ TrustedGRUB-1.1.3/grub/Makefile.am	2010-04-14 13:00:26.000000000 +0200
+@@ -6,9 +6,9 @@ else
+ SERIAL_FLAGS = -DSUPPORT_SERIAL=1 
+ endif
+ 
+-AM_CPPFLAGS = -DGRUB_UTIL=1 -DFSYS_EXT2FS=1 -DFSYS_FAT=1 -DFSYS_NTFS=1 -DFSYS_FFS=1 \
++AM_CPPFLAGS = -DGRUB_UTIL=1 -DFSYS_EXT2FS=1 -DFSYS_FAT=1 -DFSYS_NTFS=1 \
+ 	-DFSYS_ISO9660=1 -DFSYS_JFS=1 -DFSYS_MINIX=1 -DFSYS_REISERFS=1 \
+-	-DFSYS_UFS2=1 -DFSYS_VSTAFS=1 -DFSYS_XFS=1 \
++	-DFSYS_VSTAFS=1 \
+ 	-DUSE_MD5_PASSWORDS=1 -DSUPPORT_HERCULES=1 \
+ 	$(SERIAL_FLAGS) -I$(top_srcdir)/stage2 \
+ 	-I$(top_srcdir)/stage1 -I$(top_srcdir)/lib

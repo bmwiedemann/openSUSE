@@ -1,0 +1,96 @@
+-------------------------------------------------------------------
+Mon Jun 18 07:11:36 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.6.7
+  * Add secondary weapon system (#33)
+  * Add diagonal direction stickiness (#457)
+  * Add option to remove blood (#544)
+  * Fix unpausing not ignoring first key press (#548)
+  * Fix compass arrows in shared camera view (#530)
+  * Improve some sprites with semi-transparency
+- Add patch:
+  * cdogs-sdl-buildfix.patch
+
+-------------------------------------------------------------------
+Thu Nov  2 15:20:50 UTC 2017 - mailaender@opensuse.org
+
+- update to version 0.6.6 (New campaigns and HUD improvements)
+  * New campaign, Grave Intent
+  * New campaign, AI Insurgency 2
+  * Update Sand campaign, new weapons
+  * Update Doom campaign, new map items
+  * Fix AI line-of-sight algorithm (#227)
+  * Fix logging colours in Linux (#523)
+  * Fix blood splatter speed (#489)
+  * Fix audio panning (#507)
+  * Fix recording high scores for co-op AI (#386)
+  * Fix loading static wrecks in some older campaigns
+  * Add new character heads - evil ogre, bones, big bones
+  * Add second window (#383)
+  * Add floating text for pickups (#380)
+  * Add low ammo notifications (#362)
+  * Add QWERTY layout name entry (#517)
+  * Improve spectator HUD, show HUD (#382)
+  * Improve health gauge, add animations (#360)
+  * Improve co-op AI by avoiding friendly lines of fire (#295)
+  * Fix copy pasting static levels (#525)
+  * Fix incorrect objective counts when adding static objectives (#527)
+  * Fix rescue/kill objectives not using access flags
+  * Improve cave map type, add rooms, squares
+- drop system-enet.patch (included upstream)
+
+-------------------------------------------------------------------
+Mon Jun  5 10:50:24 UTC 2017 - mailaender@opensuse.org
+
+- update to version 0.6.5
+  * Add Harmful Crysalis campaign
+  * Add hitscan weapons, continuous collision detection (#372)
+  * Add scream sounds for females and other races (#371)
+  * Add sound effect for opening/closing map (#468)
+  * Add random seed to game start options
+  * Fix editor crash on startup (#488)
+  * Fix destroyed map objects dropping unavailable weapons (#493)
+  * Fix missing custom hitsounds
+  * Fix console window shown in Windows (#229)
+  * Improve character editor (#462)
+  * Improve Doom campaign with gun spawners, chainsaw, hitscan weapons
+  * Add pickups from destroyed map objects (#367)
+  * Add gas leak sound effect
+  * Add pitch variations to some sound effects (#369)
+  * Add some animated map objects to AI Insurgency campaign
+  * Fix mission time not synced over network (#405)
+  * Improve walk animation (#18)
+  * Change command line option to allow arbitrary config settings (#473)
+- drop upstreamed datadir.patch install-prefix.patch copying.patch
+- drop cdogs-sdl-0.6.1-mga-unbundle-yajl.patch as lib is customized
+- replace cdogs-sdl-0.6.0-mga-unbundle-enet.patch with system-enet.patch
+
+-------------------------------------------------------------------
+Fri Nov 18 16:53:22 UTC 2016 - mailaender@opensuse.org
+
+- update to version 0.6.3
+  * Add new character faces (#69)
+  * Add new character color keys (#441, #61)
+  * Add Temple of Carnage dogfight map
+  * Add bullet mass attribute (#444)
+  * Add animated map objects (#430)
+  * Add option to turn off brass shells (#448)
+  * Add highlights for gun pickups
+  * Add --nohud
+  * Add Splitscreen AI config
+  * Add extra logging around gun pickups
+  * Fix showing map when paused (#446)
+  * Fix various bugs around split screen logic
+  * Fix obsolete valid graphics mode check (#449)
+  * Fix gun recoil animations
+- remove patches applied by upstream
+  * cmake-install.patch
+  * appdata.patch
+- add copying.patch to fix FSF address etc.
+- add datadir.patch and install-prefix.patch to fix the installer
+
+-------------------------------------------------------------------
+Sat Aug 20 20:39:12 UTC 2016 - mailaender@opensuse.org
+
+- initial packaging of version 0.6.2
+

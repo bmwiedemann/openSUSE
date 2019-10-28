@@ -263,7 +263,7 @@ sed -i "s/\/var\/run/\/run/" conf/nginx.conf
   --add-dynamic-module=%{nginx_rtmp_module_path} \
   %endif
 %if 0%{?suse_version} > 1220
-  --with-cc-opt="%{optflags} -fPIC -D_GNU_SOURCE -std=gnu99 -fstack-protector" \
+  --with-cc-opt="%{optflags} -fPIC -D_GNU_SOURCE" \
   --with-ld-opt="-Wl,-z,relro,-z,now -pie"
 %else
   --with-cc-opt="%{optflags}"

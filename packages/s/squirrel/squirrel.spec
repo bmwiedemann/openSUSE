@@ -25,7 +25,7 @@ Summary:        A high level imperative/OO programming language
 License:        MIT
 Group:          Development/Languages/Other
 URL:            http://squirrel-lang.org/
-Source:         https://downloads.sourceforge.net/project/%{name}/squirrel3/%{name}%20%{version}%20stable/%{name}_%{tarver}_stable.tar.gz
+Source:         https://downloads.sourceforge.net/%{name}/%{name}_%{tarver}_stable.tar.gz
 Patch0:         squirrel-autoconfiscate.patch.bz2
 Patch1:         squirrel-aliasing.patch
 Patch2:         squirrel-ptr_conversion.patch
@@ -36,11 +36,10 @@ BuildRequires:  gcc-c++
 BuildRequires:  libtool
 
 %description
-Squirrel is a light weight programming language
-featuring higher-order functions,classes/inheritance,
-delegation,tail recursion,generators,cooperative
-threads,exception handling, reference counting and
-garbage collection on demand. C-like syntax.
+Squirrel is a programming language featuring higher-order functions,
+classes, inheritance, delegation, tail recursion, generators,
+cooperative threads, exception handling, reference counting, garbage
+collection on demand, and a C-like syntax.
 
 %package        devel
 Summary:        Development files for %{name}
@@ -86,7 +85,7 @@ dos2unix -q $(find . -type f)
 %patch2 -p1
 %patch3
 %patch4 -p1
-find . -type f -exec chmod -x {} \;
+find . -type f -exec chmod -x {} +
 chmod +x configure config.guess config.sub depcomp install-sh ltmain.sh missing
 autoreconf -fi
 
@@ -101,12 +100,12 @@ make %{?_smp_mflags}
 %make_install
 install -d %{buildroot}/%{_defaultdocdir}/%{name}
 install -m 644 README HISTORY COPYRIGHT %{buildroot}/%{_defaultdocdir}/%{name}
+rm -fv %{buildroot}/%{_libdir}/*.la
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root,755)
 %dir %{_defaultdocdir}/%{name}
 %doc %{_defaultdocdir}/%{name}/README
 %doc %{_defaultdocdir}/%{name}/HISTORY
@@ -115,14 +114,11 @@ install -m 644 README HISTORY COPYRIGHT %{buildroot}/%{_defaultdocdir}/%{name}
 %{_libdir}/*.so.*
 
 %files devel
-%defattr(-,root,root,755)
 %{_includedir}/*
 %{_libdir}/*.so
 
 %files devel-static
-%defattr(-,root,root,755)
 %{_libdir}/*.a
-%{_libdir}/*.la
 
 %files doc
 %exclude %{_defaultdocdir}/%{name}/README
@@ -131,7 +127,6 @@ install -m 644 README HISTORY COPYRIGHT %{buildroot}/%{_defaultdocdir}/%{name}
 %{_defaultdocdir}/%{name}/*
 
 %files examples
-%defattr(644,root,root,755)
 %{_datadir}/%{name}
 
 %changelog

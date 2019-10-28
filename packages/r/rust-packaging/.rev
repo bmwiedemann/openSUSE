@@ -103,4 +103,17 @@
     <comment></comment>
     <requestid>727052</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b8ea07427fd33abacbec2bef2f5fb4e2</srcmd5>
+    <version>10</version>
+    <time>1572278355</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace semantic_version dependency with custom CargoVersion parser
+  + Add 0001-metadata-replace-semantic-version-with-a-custom-pars.patch
+
+- Add 0001-Ignore-Cargo.lock.patch
+  This fixes build problems when the .crate file contains a Cargo.lock
+  file</comment>
+    <requestid>743471</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>608e400df37108afef707125a56dafd4</srcmd5>
+    <version>1.6.1</version>
+    <time>1493369174</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by latest version of python-CherryPy, which is already in openSUSE:Factory</comment>
+    <requestid>489837</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0b036d72bc3e7e421dce887efa2318ca</srcmd5>
+    <version>1.6.1</version>
+    <time>1516091865</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with python3 only available</comment>
+    <requestid>563592</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9d506111c3b8a57ace26bab59d2d5203</srcmd5>
+    <version>1.6.1</version>
+    <time>1545866923</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659707</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2e8ee4e449dd770e427bf1156affbd13</srcmd5>
+    <version>1.14</version>
+    <time>1553888170</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686862</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e508433613a4790a119298289ab1bd8b</srcmd5>
+    <version>1.14.1</version>
+    <time>1555830238</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695847</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="atop" project="openSUSE:Factory">
+  <title>Monitor for System Resources and Process Activity</title>
+  <description>Atop is an ASCII full-screen performance monitor, similar to the top command. At regular intervals, it shows system-level activity related to the CPU, memory, swap, disks and network layers, and it shows for every active process the CPU utilization in system and user mode, the virtual and resident memory growth, priority, username, state, and exit code. The process level activity is also shown for processes which finished during the last interval, to get a complete overview about the consumers of things such as CPU time. Atop only shows the active system-resources and processes, and only shows the deviations since the previous interval.</description>
+  <devel project="utilities" package="atop"/>
+</package>

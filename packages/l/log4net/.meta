@@ -1,0 +1,7 @@
+<package name="log4net" project="openSUSE:Factory">
+  <title>A .NET framework for logging</title>
+  <description>log4net is a tool to help the programmer output log statements to a
+variety of output targets. log4net is a port of the excellent log4j
+framework to the .NET runtime</description>
+  <devel project="GNOME:Factory" package="log4net"/>
+</package>

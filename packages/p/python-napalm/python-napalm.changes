@@ -1,0 +1,101 @@
+-------------------------------------------------------------------
+Mon Oct  7 18:55:30 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Use github source URL (the pypi tarball does not contain tests)
+- Add all required packages to run the testsuite BuildRequires
+- Run testsuite
+- Use %license macro
+
+-------------------------------------------------------------------
+Wed Mar  6 13:33:51 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Initial checkin
+
+-------------------------------------------------------------------
+Tue Dec 11 13:33:04 UTC 2018 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Bump to 2.3.3
+
+  * Add a tutorial to use Napalm mock driver
+  * Create hierarch of directories to search for textfsm templates
+  * Junos fix is_enabled in logical interface
+  * Delete the ip validation of the destination of get_route_to in Junos
+  * support added for LLDP
+  * Fix ResourceWarning: unclosed files in base/helpers.py
+  * Update get_environment defaults if keys are missing
+  * nxos_ssh Update sh int regexp for 7.3.3.N1
+  * Raise exception instead of returning string in get_route_to
+  * Fix bugs with IOS ping method
+  * Fix the use of deprecated inspect.getargspec() for inspect.getfullarg
+  * QFX5100-48S-6Q to use rpc_call_without_information
+  * Convert over to safe form of YAML load
+  * Fix inspect in consistent way and use py23_compat
+  * Add NAPALM Dockerfile
+  * EOS BGP Description not getting retrieved
+  * Updating optional args documentation
+  * Fix Community Drivers link in Docs
+
+- Includes 2.3.2
+
+  * commit_config with comment (#701)
+  * NXOS_SSH - fix crash issue in get_bgp_neighbors() (#678)
+  * Fixes #695 - inconsistent use of domain name in LLDP (#698)
+  * Fix bug with get_interfaces_ip with multiple ipv6 addrs on interface
+  * Fix #703 (#704) / Fixes PIP10 compatibility issues
+  * updated README.md since cl_napalm_test has been deprecated (#702)
+  * Remove duplicated keys in dict (#712)
+  * Creating generic way in napalm to create and close a netmiko connection
+  * Fix ipv6 test for nxos which causes RTD to fail (#720)
+  * Dictionary literal (#721)
+  * Add test for sphinx documentation (#719)
+  * raise napalm ErrorLock instead of jnpr ErrorLock (#707)
+  * Fix garbled docstrings in RTD and enable strict checking for Sphinx
+  * Updated fix for Catalyst 6500 reporting VLAN as N/A (#725)
+  * Fixing deprecated use of e.message (#726)
+  * Replace jtextfsm with textfsm (#731)
+  * Fix #736 (get_route_to bgp confed) (#737)
+  * IOS: get_bgp_neighbor_detail (#727)
+  * Implement get_ntp_peers on Cisco IOS (#752)
+  * The EX4300-48P has issues with LLDP information tags (#758)
+  * Fix issue with LLDP neighbors when remote device lacks system
+  * Fix #659 (#761)
+  * Freeze requirements-dev.txt to specific versions, fixes#780
+  * Fix Travis and PY34 Tox issue (#782)
+  * junos: support edit/top keywords in set based configs (#760)
+  * Allow bangs in EOS banner (#738)
+
+- Includes 2.3.1
+
+  * Remove multiple entries for netmiko (#617)
+  * Fixes NX-OS string change in show diff rollback-patch output (#619)
+  * Require to upgrade setuptools
+  * Modify NX-OS to properly save config to startup-config on commit_conf
+  * Fixing NX-OS rollback issue (#626)
+  * Junos fix next-hop self in get_bgp_config() (#620)
+  * IOS-XR: return the is_alive flag for the SSH channel (#623)
+  * Fix get_interfaces_ip for non ipv6 devices (#627)
+  * Fixes for CAM and ARP parsing issues in nxos_ssh.py (#634)
+  * Minor improvement to get_arp processing on NXOS SSH (#639)
+  * Don't hide relevant import errors (#635)
+  * Update index.rst (#650)
+  * improved exceptions - added new base exception (#649) …
+  * Fixes #640 junos ConnectionException (#648)
+  * FIXES #653 additional error message on failed replace (#654)
+  * NX-OS ping implementation using more shared common code (#642)
+  * Fix get_mac_table on IOS when there are routed ports
+  * Updating junos.py to support PTX platform (#665)
+  * Minor doc changes for NX-OS and IOS (#669)
+  * Unify netmiko argument processing across napalm drivers (#673)
+  * Make nxos_facts behavior more consistent between NX-API and SSH (#674)
+  * Update get_interfaces_ip to deal with unnumbered interfaces (#632)
+  * Fix issue about N9K with vxlan (#676)
+  * Fix setup.py issue when using pip 10. (#692)
+  * Add virtualbox provider to the docs (#679)
+  * Lldp neighbors detail bugfix (#675)
+  * Add StackStorm integrations to README (#683)
+  * Track BGP state to report is_up (#684)
+
+-------------------------------------------------------------------
+Fri Feb  9 21:53:12 UTC 2018 - daniel.molkentin@suse.com
+
+- Initial checkin

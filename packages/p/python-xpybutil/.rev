@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8c015db995fab4e8d282bc33623f6ce8</srcmd5>
+    <version>0.0.5</version>
+    <time>1529667006</time>
+    <user>maxlin_factory</user>
+    <comment>Needed for flashfocus
+
+- Add python-xpybutil-0.0.5-remove-selftest.patch:
+  Don't test whether package itself is present
+  Don't install README here too
+- Initial package in version 0.0.5 for openSUSE
+</comment>
+    <requestid>614559</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8715fa614b453bab2d655924c4ecd4e6</srcmd5>
+    <version>0.0.5</version>
+    <time>1531947426</time>
+    <user>dimstar_suse</user>
+    <comment>- Require python-rpm-macros</comment>
+    <requestid>623628</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>55fdc75d2fa4523e84bc52f77a47e8f8</srcmd5>
+    <version>0.0.6</version>
+    <time>1563790893</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.0.6:
+  * Fixed bug affecting windows with opacity==0
+- Refresh python-xpybutil-0.0.5-remove-selftest.patch</comment>
+    <requestid>717443</requestid>
+  </revision>
+</revisionlist>

@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kwave
-Version:        19.08.1
+Version:        19.08.2
 Release:        0
 Summary:        Sound Editor designed for KDE
 License:        GPL-2.0-or-later
@@ -59,7 +59,11 @@ BuildRequires:  libsamplerate-devel
 BuildRequires:  libvorbis-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
+%if 0%{?suse_version} > 1500
+BuildRequires:  rsvg-convert
+%else
 BuildRequires:  rsvg-view
+%endif
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core)

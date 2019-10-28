@@ -1,0 +1,26 @@
+From: Bernhard M. Wiedemann <bmwiedemann opensuse org>
+
+PATCH-FIX-OPENSUSE
+since upstream does not include this anymore
+in latest https://github.com/TEIC/TEI.git
+
+In our .spec %install section we call
+make release
+which copies all files listed into a directory called 'release'
+
+We must not include 'release' in this list
+because that creates non-determinism at build time due to
+filesystem ordering and races between reader and writer processes
+
+Index: tei-roma-2.11/Makefile
+===================================================================
+--- tei-roma-2.11.orig/Makefile
++++ tei-roma-2.11/Makefile
+@@ -6,7 +6,6 @@ FILES=ChangeLog \
+ 	notam \
+ 	parser \
+ 	progressbar \
+-	release \
+ 	resource \
+ 	roma \
+ 	roma.sh \

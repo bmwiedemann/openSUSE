@@ -855,4 +855,12 @@
     <comment>KDE Applications 19.08.1 (forwarded request 728705 from luca_b)</comment>
     <requestid>728871</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>18ced1a518ad9245c78d10c2e505348c</srcmd5>
+    <version>19.08.2</version>
+    <time>1572277943</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.08.2</comment>
+    <requestid>737793</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,506 @@
+-------------------------------------------------------------------
+Wed Jul 10 09:19:54 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Disable LTO.
+
+-------------------------------------------------------------------
+Sat Jul  6 11:36:25 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 2.11.0:
+  * Drop support for Qt 4 and Qt <= 5.4.
+  * Drop support for MSVC 2010 and MSVC 2012, as well as GCC < 4.8.
+  * Add support for more QtNetwork properties.
+  * Add new network operations monitoring tool.
+  * Fix inspection of QJson types.
+  * Add thread affinity check to the problem reporter.
+  * Add new event monitoring tool.
+  * Initial forward compatibility with Qt6 build system.
+  * Improved performance of the Qt Quick 2 inspector and the signal
+    monitor.
+- Drop patches merged upstream:
+  * fix-build-with-qt-5.13.patch
+  * 0001-Make-sure-the-defined-variables-are-relative-before-.patch
+  * Adapt-to-Qt-5.13-changes-for-attached-property-handling.patch
+  * Adapt-to-attached-property-changes-in-Qt-5.12.4.patch
+- Cleanup specfile: remove conditionals for no longer supported
+  distributions
+
+-------------------------------------------------------------------
+Mon Jun 17 20:05:15 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add upstream patches to fix build with Qt 5.12.4 and 5.13:
+  * Adapt-to-Qt-5.13-changes-for-attached-property-handling.patch
+  * Adapt-to-attached-property-changes-in-Qt-5.12.4.patch
+
+-------------------------------------------------------------------
+Tue May 14 11:52:44 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add 0001-Make-sure-the-defined-variables-are-relative-before-.patch
+  to fix runtime issues.
+
+-------------------------------------------------------------------
+Wed Apr 10 18:04:06 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add fix-build-with-qt-5.13.patch
+
+-------------------------------------------------------------------
+Tue Apr  2 13:26:04 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove the vtk-tcl dependency.
+
+-------------------------------------------------------------------
+Thu Feb 28 21:01:00 UTC 2019 - wbauer@tmo.at
+
+- Update to 2.10.0:
+  * Increase CMake requirement to version 3.1 on all platforms.
+  * Add object navigation to the paint analyzer.
+  * Reduce network load by moving more property model features to
+    the client side.
+  * Port object hierarchy visualizer plugin to Qt 5.
+  * Add new system information plugin, which supersedes the
+    standard paths plugin.
+  * Use application palette rather than style palette in the style
+    inspector.
+  * Improve gdb injector performance.
+  * Reduce performance impact of the widget paint analyzer in
+    Windows debug builds.
+  * Improve Qt Quick item picking in case of zero-sized parent
+    elements.
+  * Provide access to QAbstractItemModel role name mapping.
+  * Add QtPositioning plugin allowing to monitor and simulate geo
+    localization.
+  * Add NMEA geo localization playback.
+  * Add support for generic functor property accessors.
+  * Add property access for mime data and clipboard types.
+  * Add infrastructure to override generic property access, such as
+    Qt Quick anchor properties.
+  * Add custom property access for Qt Quick anchors properties to
+    no longer trigger their on-demand creation.
+  * Add generic problem reporter infrastructure, and port some
+    existing checks to it.
+- Drop patches merged upstream:
+  * fix-build-qt-5.12.patch
+  * fix-build-qt-5.12-again.patch
+
+-------------------------------------------------------------------
+Wed Nov 14 10:37:36 UTC 2018 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove unneeded build dependencies.
+
+-------------------------------------------------------------------
+Fri Oct  5 08:01:34 UTC 2018 - fabian@ritter-vogt.de
+
+- Add patches to fix build against Qt 5.12:
+  * fix-build-qt-5.12.patch
+  * fix-build-qt-5.12-again.patch
+
+-------------------------------------------------------------------
+Thu Oct  4 12:19:52 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 2.9.1:
+  * Fix crash in in-process mode with networking disabled.
+  * Fix compilation with Qt 5.12.
+  * Update Android toolchain file.
+  * Allow to disable QtScript dependency.
+  * Fix crash on zero-sized paint operations.
+  * Fix plugin deployment on Android.
+  * Fix crash in Qt Quick inspector when encountering invalid bounding rects.
+  * Fix activating the Qt3D plugin when attaching to a Qt3D application at runtime.
+  * Fix out-of-bounds framebuffer read in Qt Quick remote view for some non-integer scaling factors.
+- Use %license
+
+-------------------------------------------------------------------
+Fri Feb  9 12:04:59 UTC 2018 - alarrosa@suse.com
+
+- Update to 2.9.0:
+  * Improve Qt Quick Controls 2 tracer coloring.
+  * Fix issues with QSG diagnostic render modes in combination with QQuickWidget.
+  * Improve input validation in the connect dialog.
+  * Fix Qt Quick remote view on targets without GL_BGRA support.
+  * Add texture and texture atlas inspection for QSGMaterial using objects.
+  * Only read and send the actually visible screen content in the Qt Quick remote view.
+  * Support dynamic shaders in the QSGMaterial shader view.
+  * Show vertex and fragment uniforms for shader effects in the QSGMaterial tab.
+  * Fix crashes during changing/restoring QSG diagnostic render modes.
+  * Batch row/column count requests for better remote model performance.
+  * Drop support for CMake 2.8, at least 3.0 is required now.
+  * Improved performance in the Qt Quick inspector.
+  * Add support for QSGRenderNode.
+  * Consider compiler version as part of the probe ABI on Windows.
+  * Fix multithreading issues in the timer inspector.
+  * Add search line to timer inspector.
+  * Add screenshot support in Qt Quick inspector.
+  * Improve item picking support in Qt Quick inspector.
+  * Add texture waste indicator to texture inspection tab.
+  * Add color picker for remote views.
+  * Add object navigation and source navigation to the timer inspector.
+  * Add support for cross-architecture injection on Windows.
+  * Add support for editing enum/flag properties not registered with the Qt meta object system.
+  * Add network configuration view.
+  * Improved indication that a target process is being inspected by GammaRay.
+  * Add widget tab focus chain visualization.
+  * Fix re-attaching to a target application on Windows.
+  * Add QML binding inspector (requires Qt 5.10 or newer).
+  * Add support for QtWebEngine to the web inspector tool.
+  * Improved argument inspection in the QPainter analyzer.
+  * Support paint analysis with the Qt Quick software renderer (requires Qt 5.9.3 or newer).
+  * Improved Qt Quick anchor property display.
+  * Fix property editing of gadget value types.
+  * Fix interaction issues in string type property editor.
+  * Add action to slow down Qt Quick animation timers.
+  * Add support for visualizing clip areas in the Qt Quick software renderer.
+  * Clear Qt Quick target overlay on GammaRay client disconnect.
+  * Add automatic down-cast support to GammaRay metatype system.
+  * Add QObject creation stack trace view.
+  * Add source code navigation to the message browser stack trace view.
+  * Add stack trace view for painter operations in the paint analyzer view.
+  * Fix rpath support in probe ABI detection on macOS.
+  * Fix user manual access on macOS.
+  * Add profiling support to the paint analyzer.
+  * Use relative RPATHs on Linux, to make installations fully relocatable.
+  * Add mouse wheel zoom in the Qt 3D geometry inspector.
+  * Improve performance of the Qt Quick scene graph model.
+  * Improve editing of boolean properties.
+  * Add diagnostic shading modes to the Qt 3D geometry inspector.
+  * Support vertex picking in the Qt 3D geometry inspector.
+  * Support Qt 3D painted textures in the paint analyzer.
+  * Fix Qt 3D buffer decoding for tightly packed attributes.
+  * Fix server-side decoration state going out-of-sync in the Qt Quick inspector.
+  * Fix crash when validating dynamic meta objects.
+  * Fix support of namespaced and semi-qualified enums/flags.
+
+- Update to 2.8.2:
+  * Fix high-dpi icon installation.
+  * Fix documentation build with spaces in the path.
+  * Fix build of the QtIvi inspector with Qt 5.10.
+  * Fix detection of libdl.
+  * Fix incomplete installation of multi-probe builds on second make install run.
+  * Fix build issues in some Windows and cross-compilation setups.
+  * Fix widget export action plugin loading on Windows.
+
+- Rebase Fix_icons_installation.patch
+
+-------------------------------------------------------------------
+Wed Nov  1 18:47:50 UTC 2017 - christophe@krop.fr
+
+- Update to 2.8.1:
+
+  * Fix compilation with interestingly packaged qmllint on Ubuntu.
+  * Fix error handling in LLDB injector when LLDB scripting support is not available.
+  * Fix tree view corruption when searching.
+  * Fix linking with backward-cpp in BFD mode using a static libbdf.
+  * Fix assert when launching a Windows target using a Qt debug build.
+  * Fix crash during attaching on Windows.
+  * Fix build with MSVC2010 and Qt4.8.
+  * Fix attach dialog not seeing 32bit processes on 64bit Windows systems.
+  * Add support for Qt 5.9.2.
+- Add Fix_icons_installation.patch.
+
+-------------------------------------------------------------------
+Sat Jun 17 10:30:15 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 2.8.0:
+  * Fix possible deadlock in WinDLL injector.
+  * Add code navigation for C++-created objects (Linux-only, requires a debug build).
+  * Add legend for the QtQuick inspector overlay.
+  * Add QtQuickControls2 layout support in the QtQuick inspector.
+  * Add layouting grid overlay to the QtQuick inspector.
+  * Add support for non-QtIviProperty properties in QtIvi modules.
+  * Improved QtQuick2 remote view performance.
+  * Basic support for the QtQuick2 software renderer.
+  * Add QtQuick Control 2 tracing support.
+  * ... and much more than can fit here. See the changelog for details:
+	https://github.com/KDAB/GammaRay/releases/tag/v2.8.0
+
+-------------------------------------------------------------------
+Fri Feb 17 16:09:45 UTC 2017 - alarrosa@suse.com
+
+- Update to 2.7.0:
+  * Improved enum and flag editor in the property view.
+  * Add style hint view to style inspector.
+  * Fix runtime QSG visualization mode switching for newer Qt versions.
+  * Initial support for statically compiling GammaRay into a target.
+  * Support for QtWayland 5.8.
+  * Add object navigation for the translation inspector.
+  * Automatically re-scan meta types to captures types registered later.
+  * Improved Wayland log and timeline view.
+  * Add object navigation for Wayland clients.
+  * Show alive object statistics in the meta object browser.
+  * Add Qt3D geometry inspector (requires Qt >= 5.7 and Qt3D)
+  * Allow to hide inactive tools.
+  * Fix handling of partially out-of-view QQuickItems in the QQ2 inspector.
+  * Improve error handling in the GDB injector.
+  * Fix QML support not being activated when attaching to a QtQuick application at runtime.
+  * Fix widget layout overlay for nested QLayouts.
+  * Fix crash on client disconnect.
+  * Syntax highlighting and code folding for textual content (requires KF5::SyntaxHighlighting)
+  * Add 3D widget layout visualization.
+  * Allow to hide non-visible elements in the full-depth picking dialog.
+  * Add QtIvi inspection tool (requires Qt5IviCore)
+  * Fix QSG geometry inspector not showing geometry correctly on first selection.
+  * Build both release and debug probes by default when using MSVC.
+  * Add more editor defaults for code navigation on Linux.
+  * Add QtSCXML support to the state machine debugger (requires Qt >= 5.8).
+  * Show QtQuick overlays also in the target application.
+  * Avoid leaking GammaRay translated strings into the translation inspector.
+  * Fix launching targets on macOS >= 10.9.
+- When building for at least Leap 42.2, BuildRequire glslang-devel
+  which is an optional package
+- When building for Factory, BuildRequire cmake(KF5yntaxHighlighting)
+  which is an optional package
+ 
+-------------------------------------------------------------------
+Sun Jan 29 19:21:49 UTC 2017 - jengelh@inai.de
+
+- Directly call ldconfig as scriptlet
+
+-------------------------------------------------------------------
+Thu Oct 27 14:40:21 UTC 2016 - alarrosa@suse.com
+
+- Update to 2.6.0:
+  * Reworked tool view handling, enabling deeper IDE integration of individual tools.
+  * Merged model and selection model inspector.
+  * Fixed crash when quickly changing selection in model inspector.
+  * Add QMetaObject validation, identifying common problems with signal/slot declarations.
+  * Support object navigation to and from the model and text document inspectors as well as the signal plotter.
+  * Visualize model selections.
+  * Allow to inspect model content also for disabled cells.
+  * Show model cell flags in model inspector.
+  * Fix sorting in object method view.
+  * Fix handling of source model changes for proxy and selection models.
+  * Add in-app picking for selection models and actions.
+  * Extended the user manual with example problems diagnosed with GammaRay.
+  * Allow to rescan the meta type database.
+  * Add object navigation from the meta type view to the meta object browser.
+  * Show registered comparison and stream operators in the meta type browser.
+  * Add object navigation support to the action and timer inspectors.
+  * Visualize enabled state in the action inspector too.
+  * Support editing of nested properties of value types.
+  * Fix various enum/flag display issues in the property view.
+  * Fix AArch64 detection on ELF platforms.
+  * Support ABI detection on systems without ldd.
+  * Add Wayland compositor inspector.
+  * Add advanced element picking mode for widget and Qt Quick inspectors.
+  * Fix crash when encountering an empty translation context.
+  * Extend user manual content.
+  * Fix a number of memory leaks.
+  * Fix crash when selecting a dangling top-level layout in the widget inspector.
+  * Fix missing standard icon types in style inspector for some Qt versions.
+  * Fix table layout in style inspector.
+  * Fix invalid memory access in palette model.
+  * Fix selecting entries in the resource browser.
+
+-------------------------------------------------------------------
+Sat Oct 22 13:04:21 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Bump Qt BuildRequires to 5.2.0
+
+-------------------------------------------------------------------
+Fri Jul  1 16:51:56 UTC 2016 - toddrme2178@gmail.com
+
+- Make Group tag consistent with other packages.
+
+-------------------------------------------------------------------
+Sat Jul 11 16:39:36 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 2.3.0:
+  * Add QtBluetooth support.
+  * Support local sockets next to TCP for connecting to the probe.
+  * Change probe plugin loading to be compatible with Android .apk
+    restrictions.
+  * Don't generate backtraces for GammaRay-caused qWarnings.
+  * Also show properties defined in a meta object in the meta
+    object browser.
+  * Add non-QObject meta object found via QMetaType to the meta
+    object browser (finds Q_GADGETs with Qt 5.5).
+  * Performance improvements in object tracking, remote model,
+    property view, signal spy and several other places.
+  * Ongoing refactoring work to enable embedding the
+    GammaRay client and launcher components into other
+    host applications.
+  * Add copy backtrace feature in the message browser.
+  * Improved UI-less build option for embedded targets.
+  * Fix various crashes, including when interacting with
+    QOpenGLContext, QDBusAdapter, QML ListModels or Qt containers
+    containing types that cannot be serialized.
+  * Make paint analyzing also work with Qt 5.5 despite the necessary
+    functionality being removed in Qt.
+  * Add support for static properties in the property view.
+  * Qt 5.5 compatibility.
+  * Initial support for QNX 6.6.
+  * Improved QtQuick2 in-app item picking.
+  * Fixed/improved tracking of object reparenting in the
+    object tree model.
+  * Fix widget layout overlay widget leaking into
+    object/widget tree.
+  * Optional compression support for the client/server communication,
+    speeds up debugging over slow USB connections.
+  * Fix initial selection in the model browser having no effect.
+
+-------------------------------------------------------------------
+Thu Apr  9 01:30:16 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 2.2.1:
+  * Fix spawning a large number of threads in the process list.
+  * Add GAMMARAY_BUILD_UI build option to only build the non-UI
+    parts, useful for embedded targets.
+  * Add workaround for QSortFilterProxyModel regression introduced
+    in qtbase commit bec1854cc0.
+  * Follow kdstatemachineeditor KDSME API changes.
+  * Use the preload injector by default on Mac for Qt >= 5.4.
+  * Fix probe ABI detection on Mac bundles.
+  * Fix asserts caused by icon loading in
+    QCoreApplication-only targets.
+  * Fix crash when target deletes a signal sender in a slot.
+ - Changes since 2.2.0:
+  * New translation inspector plug-in.
+  * New signal monitor and object lifetime plotter plug-in.
+  * Support displaying of QQmlListProperty contents.
+  * Expose signal/slot spy callback API to plug-ins.
+  * Improved state machine visualization using KDSME.
+  * Support for QQmlTimer in the timertop plug-in.
+  * Support exporting of QResource data.
+  * Improved QSGMaterial viewer.
+  * Various performance improvements for the QtQuick2
+    remote preview.
+  * Improved Qt 5.4 compatibility.
+  * Fix handling of large images in the resource browser.
+  * Support for manually emitting signals, and improved
+    method display.
+ - Changes since 2.1.2:
+  * Fix crash when selecting the scene graph root node.
+  * Fix two asserts in Qt 5.4 when dealing with connections
+    to slot objects.
+  * Fix build with Vivante OpenGL ES2 stack.
+  * Build fixes for Android.
+  * Fix build issues with Qt5.4 and Clang.
+  * Fix minor compiler warnings and Coverity Scan issues.
+ - Changes since 2.1.1:
+  * Fix invoking non-slot methods with arguments.
+  * Fix QtQuick2 preview not showing any content with
+    Qt 5.2 or older.
+  * Fix crash when encountering tooltips in Qt5 targets.
+  * Fix deadlock in object list model.
+  * Fix QGraphicsView scene selection in in-process mode.
+  * Fix debug message handler for Qt5.
+  * A missing relocatable startup hook is
+    no longer fatal with Qt 5.4.
+  * Fix Qt 5.4 compatibility of the QtQuick2 preview.
+ - Changes since 2.1.0:
+  * Aggregated property view combining static, dynamic and
+    non-QObject property views.
+  * Qt5Qml/Qt5Quick support
+    (see http://github.com/KDAB/GammaRay/wiki/QtQuick2-Support-Status)
+  * Probe ABI auto-detection on Linux, Mac and Windows.
+  * Support to navigate to objects that are property values.
+  * Plug-ins can now add specialized tabs to the property view.
+  * Support adding and deleting dynamic QObject properties.
+  * Support for "hidden" plug-ins, i.e. plug-ins that only
+    provide type support but no own tool view.
+  * Support KF5 in the KJob tracker plug-in.
+  * Support for Qt 5.4 object creation/destruction callbacks.
+  * Improved connection view, and support for viewing
+    connections in Qt5 applications.
+ - Changes since 2.0.2:
+  * Restore compatibility with Qt4.7
+  * Avoid leaking shared-memory in case of crashes of gammaray-client
+  * Fix various crashes
+  * Fix various crashes with heavily multithreaded debuggees
+  * Fix unnecessary value limits in property editor for
+    QPointF, QSizeF, etc
+  * Improve property editor value loading performance
+ - Changes since 2.0.1:
+  * LLDB injector (enables Mac OSX 10.9 support)
+  * Fix various cases where client and server states get out of sync
+ - Changes since 2.0.0:
+  * Out-of-process UI
+  * Remote Debugging
+  * Multi-probe support
+  * Probe usable on targets without QtWidget available
+  * Fix preload check on MIPS/MIPSel (issue #63)
+  * Support for displaying arguments of monitored signals
+- Drop libQtWebKit-devel and libkde4-devel BuildRequires
+- Added pkgconfig(Qt5Concurrent), pkgconfig(Qt5Core),
+  pkgconfig(Qt5Designer), pkgconfig(Qt5Gui), pkgconfig(Qt5Network),
+  pkgconfig(Qt5PrintSupport), pkgconfig(Qt5Qml) >= 5.1.0,
+  pkgconfig(Qt5Quick), pkgconfig(Qt5Script),
+  pgconfig(Qt5ScriptTools), pkgconfig(Qt5Svg), pkgconfig(Qt5Test),
+  pkgconfig(Qt5WebKitWidgets), pkgconfig(Qt5Widgets),
+  libQt5Core-private-headers-devel, libQt5Gui-private-headers-devel,
+  libQt5Network-private-headers-devel and
+  libqt5-qtdeclarative-private-headers-devel BuildRequires
+- Enable devel subpackage
+
+-------------------------------------------------------------------
+Sat Dec  7 13:25:08 UTC 2013 - cgiboudeaux@gmx.com
+
+- Update to 1.3.2:
+ * Support more Qt5-specific data types
+ * Fix crash on some QtQuick2 applicaitons
+ * Support VTK6
+ * Fix crash in selection model inspector
+ * Fix probe re-injections
+
+-------------------------------------------------------------------
+Mon Aug  5 17:35:43 UTC 2013 - hrvoje.senjan@gmail.com
+
+- enable CMAKE_SKIP_INSTALL_RPATH option so RPATH is ommited from 
+  install tree
+
+-------------------------------------------------------------------
+Sun Jul 21 19:10:32 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 1.3.1:
+- Changes since 1.3.0:
+ * Fix state machine viewer on Windows
+ * Fix crash in model cell viewer
+ * Fix crash in meta object browser caused by deleted dynamic 
+   meta objects
+ * Improve performance of the mime type browser
+ * Improvements in the state machine viewer image export
+ * Compile fixes for some Qt5 configurations
+- Changes since 1.2.0:
+ * New KJob tracker plugin (requires KDE4)
+ * Qt5 support
+ * New Meta Object Browser tool
+ * New QStandardPaths and QMimeTypeDatabase browsers (Qt5 only)
+- Changes since 1.1.1:
+ * Published API for writing your own plugin
+ * New QStyle inspector
+ * New QAction inspector with shortcut conflict finder
+ * New QPalette editor
+ * QWidget paint operation introspection using QPaintBuffer 
+   (requires private headers)
+- Dropped gammaray-gcc47.patch, not needed
+- Added libkde4-devel, python-devel, graphviz-devel and libxml2-devel
+  BuildRequires
+- Added qvtk.diff, so variable is used, instead of hardcoded QVTK
+- Adjust license format
+
+-------------------------------------------------------------------
+Tue Nov 20 17:23:54 UTC 2012 - nico.kruber@gmail.com
+
+- Fix the SLES build (%make_install is not expanded on SLES)
+
+-------------------------------------------------------------------
+Tue May 15 09:31:35 UTC 2012 - idonmez@suse.com
+
+- Fix compilation with gcc 4.7 
+
+-------------------------------------------------------------------
+Mon Mar 19 12:05:14 UTC 2012 - toddrme2178@gmail.com
+
+- Update to version 1.1.0
+- Added vtk dependencies for viewing source structure
+- Cleaned up spec file formatting
+
+-------------------------------------------------------------------
+Thu Nov  3 09:03:32 UTC 2011 - idonmez@suse.com
+
+- Fix build on openSUSE 11.4 and lower 
+
+-------------------------------------------------------------------
+Sun Oct 30 21:25:49 UTC 2011 - wstephenson@suse.com
+
+- Initial version 1.0.50
+

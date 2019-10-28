@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1883b31494b31dbcb37855f8499b48eb</srcmd5>
+    <version>2.6.2</version>
+    <time>1523616591</time>
+    <user>maxlin_factory</user>
+    <comment>- bring License line into closer accordance with actual licenses
+  mentioned in the tarball
+- split off xml/pskc/ directory/files from liboath0 into a separate
+  &quot;oath-toolkit-xml&quot; subpackage to prevent conflicts if two versions of the
+  liboath library were ever installed at the same time</comment>
+    <requestid>595675</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>68076e7aef361b0436859ebd779e53a1</srcmd5>
+    <version>2.6.2</version>
+    <time>1523875755</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>596420</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e920623add5ac12e832f2c4b02d54218</srcmd5>
+    <version>2.6.2</version>
+    <time>1524144729</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597884</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>0d7765fdf5b550486b0667ef340b3bd0</srcmd5>
+    <version>2.6.2</version>
+    <time>1527276989</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611219</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>0cc1adab6efa1fc32bc7df7370772a7e</srcmd5>
+    <version>2.6.2</version>
+    <time>1531469739</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621209</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>017a5e3eb5a464a4c13d34d6f755ef50</srcmd5>
+    <version>2.6.2</version>
+    <time>1534321755</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627660</requestid>
+  </revision>
+</revisionlist>

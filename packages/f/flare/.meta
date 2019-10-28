@@ -1,0 +1,5 @@
+<package name="flare" project="openSUSE:Factory">
+  <title>Flare</title>
+  <description>Free Libre Action Roleplaying Engine</description>
+  <devel project="games" package="flare"/>
+</package>

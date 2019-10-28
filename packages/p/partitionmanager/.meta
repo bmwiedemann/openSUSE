@@ -1,0 +1,8 @@
+<package name="partitionmanager" project="openSUSE:Factory">
+  <title>KDE Partition Manager</title>
+  <description>This software allows you to manage your disks, partitions and file systems:
+Create, resize, delete, copy, backup and restore partitions with a large number of supported file systems (ext2/3, reiserfs, NTFS, FAT32 and more).
+
+It makes use of external programs to get its job done, so you might have to install additional software (preferably packages from your distribution) to make use of all features and get full support for all file systems.</description>
+  <devel project="KDE:Extra" package="partitionmanager"/>
+</package>

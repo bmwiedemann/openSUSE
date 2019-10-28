@@ -1,0 +1,114 @@
+-------------------------------------------------------------------
+Thu Apr 18 15:24:46 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.14.1
+  * Fix failing doctest in parse_timedelta
+- Launch tests and removing some unneeded dependencies
+
+-------------------------------------------------------------------
+Wed Mar 20 01:58:47 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add missing %license
+- Re-activate test suite
+- Remove bcond python2
+- Add missing build dependency jaraco.functools >= 1.20
+- Remove inappropriate build dependency pytest-flake8
+
+-------------------------------------------------------------------
+Mon Mar 18 09:31:58 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- fix last version update missing new runtime requires
+
+-------------------------------------------------------------------
+Thu Mar 14 18:11:24 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade all the way to 1.14:
+  - Package refresh, including use of declarative config in the package metadata.
+  - Enhancements to BackoffDelay: Added .reset method and Made
+    iterable to retrieve delay values.
+  - Added UTC module (Python 3 only), inspired by the utc project.
+  - Scheduler now honors daylight savings times in the PeriodicCommands.
+  - Added timing.BackoffDelay, suitable for implementing
+    exponential backoff delays, such as those between retries.
+  - Added support for months, years to parse_timedelta.
+  - Introducing timing.Timer, featuring a expired method for
+    detecting when a certain duration has been exceeded.
+  - Stopwatch now behaves reliably during timezone changes and
+    (presumably) daylight savings time changes.
+  - Update project skeleton.
+- Run the SPEC file through spec-cleaner
+- Switched off test suite run temporarily. gh#jaraco/tempora#6
+
+-------------------------------------------------------------------
+Tue Dec  4 12:55:04 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Jan 11 12:25:33 UTC 2018 - tchvatal@suse.com
+
+- Fix building with python3 only available
+
+-------------------------------------------------------------------
+Fri Mar 31 13:43:53 UTC 2017 - jmatejek@suse.com
+
+- update for singlespec
+- update to 1.6.1
+  * adopt irc.schedule as tempora.schedule
+  * adopt jaraco.timing as tempora.timing
+
+-------------------------------------------------------------------
+Tue Aug  2 13:24:18 UTC 2016 - sor.alexei@meowr.ru
+
+- Switch to Python2.
+
+-------------------------------------------------------------------
+Thu Jun  9 17:28:20 UTC 2016 - toddrme2178@gmail.com
+
+- Remove unneeded python3-Sphinx dependency.
+
+-------------------------------------------------------------------
+Sun May  8 07:09:08 UTC 2016 - arun@gmx.de
+
+- specfile:
+  * updated source url to files.pythonhosted.org
+
+-------------------------------------------------------------------
+Tue Dec 29 19:40:21 UTC 2015 - arun@gmx.de
+
+- specfile:
+  * updated url (moved to github)
+  * *.txt -> *.rst in %doc
+  * changed from zip to tar-ball
+
+- update to version 1.4:
+  * moved to Github.
+  * Improved test support on Python 2.
+
+-------------------------------------------------------------------
+Sat Apr 25 17:58:49 UTC 2015 - arun@gmx.de
+
+- specfile:
+  * added python3-setuptools_scm
+  * removed python3-hgtools
+
+- update to version 1.3:
+  * Added divide_timedelta from "svg.charts".
+  * Added date_range from "svg.charts".
+
+-------------------------------------------------------------------
+Sun Feb 22 20:47:30 UTC 2015 - arun@gmx.de
+
+- update to version 1.2:
+  * Only require sphinx and pytest-runner when necessary.
+
+-------------------------------------------------------------------
+Mon Feb 16 02:13:54 UTC 2015 - arun@gmx.de
+
+- update to version 1.1:
+  *  Add license info (retroactively applied to all commits).
+
+-------------------------------------------------------------------
+Sat Feb 14 21:31:45 UTC 2015 - arun@gmx.de
+
+- initial version

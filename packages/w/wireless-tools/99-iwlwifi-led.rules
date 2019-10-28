@@ -1,0 +1,2 @@
+SUBSYSTEM=="leds", ACTION=="add", KERNEL=="iwl-phy*:assoc", RUN+="@UDEVDIR@/iwlwifi-led.sh"
+

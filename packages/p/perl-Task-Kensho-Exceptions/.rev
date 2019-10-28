@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>672d934acbf4f76a876ff5806c1be190</srcmd5>
+    <version>0.28</version>
+    <time>1326104202</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>98366</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>672d934acbf4f76a876ff5806c1be190</srcmd5>
+    <version>0.28</version>
+    <time>1340183924</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>672d934acbf4f76a876ff5806c1be190</srcmd5>
+    <version>0.28</version>
+    <time>1359109805</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>672d934acbf4f76a876ff5806c1be190</srcmd5>
+    <version>0.28</version>
+    <time>1379663855</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5eae75da1ea2e420ccc3dd8cff95a2ac</srcmd5>
+    <version>0.35</version>
+    <time>1393253582</time>
+    <user>coolo</user>
+    <comment>- updated to 0.35</comment>
+    <requestid>223622</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f7f4a14c9aa5020acef20c8412c89360</srcmd5>
+    <version>0.36</version>
+    <time>1395148608</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>226445</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>f7f4a14c9aa5020acef20c8412c89360</srcmd5>
+    <version>0.36</version>
+    <time>1409302499</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1cce4f298cb9d0b7e72c1c286a4805f4</srcmd5>
+    <version>0.38</version>
+    <time>1429186441</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297053</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1dfeba6f19e313039087be43544adebe</srcmd5>
+    <version>0.39</version>
+    <time>1464204557</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397840</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f5734554080261ce35a865140f845ee6</srcmd5>
+    <version>0.40</version>
+    <time>1562843253</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691005</requestid>
+  </revision>
+</revisionlist>

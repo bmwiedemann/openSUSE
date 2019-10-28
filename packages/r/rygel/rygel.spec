@@ -17,18 +17,18 @@
 
 
 Name:           rygel
-Version:        0.38.1
+Version:        0.38.2
 Release:        0
 Summary:        UPnP/DLNA home media server for GNOME
 License:        LGPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            http://live.gnome.org/Rygel
-Source0:        https://download.gnome.org/sources/rygel/0.38/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel >= 1.33.4
-BuildRequires:  libtool
 BuildRequires:  libunistring-devel
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  suse-xsl-stylesheets
 BuildRequires:  translation-update-upstream
@@ -221,30 +221,18 @@ the local machine.
 translation-update-upstream
 
 %build
-NOCONFIGURE=1 ./autogen.sh
-%configure \
-    --enable-tracker-plugin \
-    --enable-media-export-plugin \
-    --enable-external-plugin \
-    --enable-gst-launch-plugin
-%make_build
-
-# Future use
-#%%meson \
-#	-Dapi-docs=false \
-#	-Dsystemd-user-units-dir=auto \
-#	-Dexamples=false \
-#	-Dtests=false \
-#	-Dgstreamer=true \
-#	-Dgtk=true \
-#	%%{nil}
-#%%meson_build
+%meson \
+	-Dapi-docs=false \
+	-Dsystemd-user-units-dir=auto \
+	-Dexamples=false \
+	-Dtests=false \
+	-Dgstreamer=true \
+	-Dgtk=true \
+	%{nil}
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
-# Future use
-#%%meson_install
+%meson_install
 
 %fdupes %{buildroot}%{_datadir}
 %suse_update_desktop_file rygel

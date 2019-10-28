@@ -1,0 +1,139 @@
+--- gnuplot.texi
++++ gnuplot.texi	2018-10-09 07:29:53.428331979 +0000
+@@ -10678,8 +10678,7 @@ but
+ @end example
+ 
+ See also
+-@uref{http://www.gnuplot.info/demo/poldat.html,poldat.dem: polar plot using @ref{angles} demo.
+-}
++@uref{http://www.gnuplot.info/demo/poldat.html,poldat.dem}: polar plot using @ref{angles} demo.
+ 
+ @node arrow, autoscale, angles, set-show
+ @subsection arrow
+@@ -21466,13 +21465,10 @@ Syntax:
+                         @{[no]enhanced@}
+ @end example
+ 
+-@end itemizeif
+ @example
+                         @{mono|ansi|ansi256|ansirgb@}
+ @end example
+ 
+-@end itemizeif
+-
+ where <xchars> and <ychars> set the size of the text block. The default is
+ 79 by 24. The last newline is printed only if `feed` is enabled.
+ 
+@@ -21510,7 +21506,6 @@ See also e.g. the description at
+ @uref{https://en.wikipedia.org/wiki/ANSI_escape_code#Colors,https://en.wikipedia.org/wiki/ANSI_escape_code#Colors
+ }
+ 
+-@end itemizeif
+ Example:
+ @example
+       set term dumb mono size 60,15 aspect 1
+@@ -21882,8 +21877,6 @@ Preferred combinations are `medium norma
+ 
+ With each of these drivers, a binary copy is required on a PC to print.
+ Do not use `print`---use instead `copy file /b lpt1:`.
+-@end itemizeif
+-
+ 
+ @node excl, fig, epson_180dpi, complete_list_of_terminals
+ @subsection excl
+@@ -22683,8 +22676,6 @@ the environmental variable GNUPLOT_LUA_D
+ All arguments will be provided to the selected script for further
+ evaluation. E.g. 'set term lua tikz help' will cause the script itself
+ to print additional help on options and choices for the script.
+-@end itemizeif
+-
+ 
+ @node mf, mp, lua, complete_list_of_terminals
+ @subsection mf
+@@ -23378,7 +23369,6 @@ terminals.  It has no options."
+ @c ?term km-tek40xx
+ @cindex km-tek40xx
+ 
+-@end itemizeif
+ @c ?commands set terminal selanar
+ @c ?set terminal selanar
+ @c ?set term selanar
+@@ -23386,7 +23376,6 @@ terminals.  It has no options."
+ @c ?term selanar
+ @cindex selanar
+ 
+-@end itemizeif
+ @c ?commands set terminal sixel
+ @c ?set terminal sixel
+ @c ?set term sixel
+@@ -23407,7 +23396,6 @@ For use with xterm emulation, xterm must
+ "--enable-sixel-graphics" and started with "-ti 340" on the command line.
+ Menu option "sixelScrolling" should be selected. xterm/vt340 emulation
+ limits plots to 16 simultaneous colors, but other emulators may permit more.
+-@end itemizeif
+ @c ?commands set terminal bitgraph
+ @c ?set terminal bitgraph
+ @c ?set term bitgraph
+@@ -23415,7 +23403,6 @@ limits plots to 16 simultaneous colors,
+ @c ?term bitgraph
+ @cindex bitgraph
+ 
+-@end itemizeif
+ This family of terminal drivers supports a variety of VT-like terminals.
+ `tek40xx` supports Tektronix 4010 and others as well as most TEK emulators.
+ `vttek` supports VT-like tek40xx terminal emulators.
+@@ -23797,7 +23784,6 @@ Syntax:
+                 [dump "file"] \\
+ @end example
+ 
+-@end itemizeif
+ @example
+                 [mode]
+ 
+@@ -23817,7 +23803,6 @@ If this option is present, (i.e the dump
+ the key KP_Delete will write the file.  This action cannot and cannot be
+ rebound. The file is written in raw ppm (P6) format. Note that this option
+ is reset each time the `set term` command is issued.
+-@end itemizeif
+ 
+ To get high resolution modes, you will probably have to modify the
+ configuration file of libvga, usually /etc/vga/libvga.conf.  Using
+@@ -24023,7 +24008,6 @@ of an additional redraw after releasing
+ 
+ `Line Styles...` allows customization of the line colors and styles.
+ 
+-@end itemizeif
+ `Update wgnuplot.ini` saves the current window locations, window sizes, text
+ window font, text window font size, graph window font, graph window font
+ size, background color to the initialization file `wgnuplot.ini`.
+@@ -24189,8 +24173,6 @@ This file is located in the user's appli
+       Line5=0 0 128 0 4
+ @end example
+ 
+-@end itemizeif
+-
+ @c ^ <h3>Text window options</h3> 
+ 
+ These settings apply to the wgnuplot text-window only."
+@@ -24227,7 +24209,6 @@ solid line in color mode, or a dashed li
+ line width is 1 pixel.  If `Linestyle` is negative, it specifies the width of
+ a SOLID line in pixels.  Line1 and any linestyle used with the `points` style
+ must be SOLID with unit width.
+-@end itemizeif
+ 
+ See `graph-menu`."
+ 
+@@ -24615,13 +24596,10 @@ later by `set term x11 [no]raise [no]per
+  `-ctrlq   ` closes window on ctrl-q rather than q
+ @end example
+ 
+-@end itemizeif
+ @example
+  `-persist`  plot windows survive after main gnuplot program exits
+ @end example
+ 
+-@end itemizeif
+-
+ @cindex X resources
+ 
+ The options are shown above in their command-line syntax.  When entered as

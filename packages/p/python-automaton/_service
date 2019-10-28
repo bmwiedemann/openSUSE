@@ -1,0 +1,16 @@
+<services>
+  <service mode="disabled" name="renderspec">
+    <param name="input-template">https://raw.githubusercontent.com/openstack/rpm-packaging/stable/stein/openstack/automaton/automaton.spec.j2</param>
+    <param name="output-name">python-automaton.spec</param>
+    <param name="requirements">https://raw.githubusercontent.com/openstack/automaton/stable/stein/requirements.txt</param>
+    <param name="changelog-email">cloud-devel@suse.de</param>
+    <param name="changelog-provider">gh,openstack,automaton</param>
+  </service>
+  <service mode="disabled" name="download_files">
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="refresh_patches" mode="disabled">
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="format_spec_file" mode="disabled"/>
+</services>

@@ -1,0 +1,134 @@
+---
+ libmilter/comm.c     |   16 +++++++++++++---
+ libmilter/listener.c |    6 +++---
+ libsm/local.h        |    5 ++++-
+ libsm/refill.c       |    5 ++++-
+ sendmail/sfsasl.c    |    6 ++++--
+ 5 files changed, 28 insertions(+), 10 deletions(-)
+
+--- libmilter/comm.c
++++ libmilter/comm.c	2016-04-14 07:25:09.745910028 +0000
+@@ -78,8 +78,11 @@ mi_rd_cmd(sd, timeout, cmd, rlen, name)
+ 	i = 0;
+ 	for (;;)
+ 	{
++		struct timeval tv;
++		tv.tv_sec  = timeout->tv_sec;
++		tv.tv_usec = timeout->tv_usec;
+ 		FD_RD_INIT(sd, rds, excs);
+-		ret = FD_RD_READY(sd, rds, excs, timeout);
++		ret = FD_RD_READY(sd, rds, excs, &tv);
+ 		if (ret == 0)
+ 			break;
+ 		else if (ret < 0)
+@@ -151,8 +154,11 @@ mi_rd_cmd(sd, timeout, cmd, rlen, name)
+ 	i = 0;
+ 	for (;;)
+ 	{
++		struct timeval tv;
++		tv.tv_sec  = timeout->tv_sec;
++		tv.tv_usec = timeout->tv_usec;
+ 		FD_RD_INIT(sd, rds, excs);
+-		ret = FD_RD_READY(sd, rds, excs, timeout);
++		ret = FD_RD_READY(sd, rds, excs, &tv);
+ 		if (ret == 0)
+ 			break;
+ 		else if (ret < 0)
+@@ -251,6 +257,8 @@ retry_writev(fd, iov, iovcnt, timeout)
+ 	written = 0;
+ 	for (;;)
+ 	{
++		struct timeval tv;
++
+ 		while (iovcnt > 0 && iov[0].iov_len == 0)
+ 		{
+ 			iov++;
+@@ -267,8 +275,10 @@ retry_writev(fd, iov, iovcnt, timeout)
+ 		**  FD_SETSIZE is checked when socket is created.
+ 		*/
+ 
++		tv.tv_sec  = timeout->tv_sec;
++		tv.tv_usec = timeout->tv_usec;
+ 		FD_WR_INIT(fd, wrs);
+-		i = FD_WR_READY(fd, wrs, timeout);
++		i = FD_WR_READY(fd, wrs, &tv);
+ 		if (i == 0)
+ 			return MI_FAILURE;
+ 		if (i < 0)
+--- libmilter/listener.c
++++ libmilter/listener.c	2016-04-14 07:25:09.745910028 +0000
+@@ -685,12 +685,12 @@ mi_closener()
+ 	int rs = 0;							\
+ 	struct timeval st;						\
+ 									\
+-	st.tv_sec = (s);						\
+-	st.tv_usec = 0;							\
+-	if (st.tv_sec > 0)						\
++	if ((s) > 0)							\
+ 	{								\
+ 		for (;;)						\
+ 		{							\
++			st.tv_sec = (s);				\
++			st.tv_usec = 0;					\
+ 			rs = select(0, NULL, NULL, NULL, &st);		\
+ 			if (rs < 0 && errno == EINTR)			\
+ 				continue;				\
+--- libsm/local.h
++++ libsm/local.h	2016-04-14 07:25:09.773909514 +0000
+@@ -258,8 +258,11 @@ int sm_flags __P((int));
+ 		return SM_IO_EOF; \
+ 	do \
+ 	{	\
++		struct timeval tv;		\
++		tv.tv_sec  = sm_io_to.tv_sec;	\
++		tv.tv_usec = sm_io_to.tv_usec;	\
+ 		sm_io_to_sel = select((fd) + 1, NULL, &sm_io_to_mask, \
+-					&sm_io_x_mask, &sm_io_to); \
++					&sm_io_x_mask, &tv); \
+ 	} while (sm_io_to_sel < 0 && errno == EINTR); \
+ 	if (sm_io_to_sel < 0) \
+ 	{ \
+--- libsm/refill.c
++++ libsm/refill.c	2016-04-14 07:25:09.773909514 +0000
+@@ -79,8 +79,11 @@ static int sm_lflush __P((SM_FILE_T *, i
+ 		return SM_IO_EOF;					\
+ 	do								\
+ 	{								\
++		struct timeval tv;					\
++		tv.tv_sec  = (to)->tv_sec;				\
++		tv.tv_usec = (to)->tv_usec;				\
+ 		(sel_ret) = select((fd) + 1, &sm_io_to_mask, NULL,	\
+-			   	&sm_io_x_mask, (to));			\
++			   	&sm_io_x_mask, &tv);			\
+ 	} while ((sel_ret) < 0 && errno == EINTR);			\
+ 	if ((sel_ret) < 0)						\
+ 	{								\
+--- sendmail/sfsasl.c
++++ sendmail/sfsasl.c	2016-04-14 07:25:09.777909439 +0000
+@@ -609,8 +609,6 @@ tls_retry(ssl, rfd, wfd, tlsstart, timeo
+ 	left = timeout - (now - tlsstart);
+ 	if (left <= 0)
+ 		return 0;	/* timeout */
+-	tv.tv_sec = left;
+-	tv.tv_usec = 0;
+ 
+ 	if (LogLevel > 14)
+ 	{
+@@ -643,6 +641,8 @@ tls_retry(ssl, rfd, wfd, tlsstart, timeo
+ 		FD_SET(rfd, &ssl_maskx);
+ 		do
+ 		{
++			tv.tv_sec = left;
++			tv.tv_usec = 0;
+ 			ret = select(rfd + 1, &ssl_maskr, NULL, &ssl_maskx,
+ 					&tv);
+ 		} while (ret < 0 && errno == EINTR);
+@@ -661,6 +661,8 @@ tls_retry(ssl, rfd, wfd, tlsstart, timeo
+ 		FD_SET(rfd, &ssl_maskx);
+ 		do
+ 		{
++			tv.tv_sec = left;
++			tv.tv_usec = 0;
+ 			ret = select(wfd + 1, NULL, &ssl_maskw, &ssl_maskx,
+ 					&tv);
+ 		} while (ret < 0 && errno == EINTR);

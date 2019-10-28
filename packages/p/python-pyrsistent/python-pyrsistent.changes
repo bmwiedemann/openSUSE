@@ -1,0 +1,74 @@
+-------------------------------------------------------------------
+Mon Jul 29 08:24:54 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.15.4:
+  * support new pytest
+  * Fix #174, fix a GC traversal bug in pvector evolver C extension.
+
+-------------------------------------------------------------------
+Thu Jul 18 09:42:37 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use pytest4 for testing as pytest 5.x series do not work; bug
+  was reported upstream
+
+-------------------------------------------------------------------
+Thu Jul 18 09:38:13 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.15.3:
+  * Fix #172, catch all exceptions during extension build to reduce chance of corner cases that prevents installation.
+  * Fix #171, in PVector equality comparison don's assume that other object has a length, check before calling len.
+  * Fix #168, write warning about failing build of C extension directly to stderr to avoid that pip silences it.
+  * Fix #155, update PMapEvolver type stub to better reflect implementation.
+
+-------------------------------------------------------------------
+Wed Jun  5 09:20:42 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.15.2
+  * Fix #166, Propagate 'ignore_extra' param in hierarchy. Thanks 
+    @ss18 for this!
+  * Fix #167, thaw typing. Thanks @nattofriends for this!
+  * Fix #154, not possible to insert empty pmap as leaf node with 
+    transform.
+  * Python 3.4 is no longer officially supported since it is EOL 
+    since 2019-03-18.
+  * Fix #157, major improvements to type hints. Thanks @je-l for 
+    working on this and @nattofriend for reviewing the PR!
+
+-------------------------------------------------------------------
+Mon Mar 18 10:49:20 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.14.11:
+  * Fix #152 Don't use __builtin_popcount, this hopefully fixes #147 Error in pvectorc.cp37-win_amd64.pyd file, as well.
+    Thanks @benrg for this!
+  * Fix #151 Fix compatibility for hypothesis 4. Thanks @felixonmars for this!
+  * Fix #148, only require pytest-runner if running tests. Thanks @ccorbacho for this!
+  * Fix #144, Compile pvectormodule.c on windows. Thanks @ganwell for this!
+  * Fix #142, Improve type stubs. Thanks @arxanas for this!
+  * Fix #102, add PEP 561 type annotation stubs for most pyrsistent types. Thanks @nattofriends for this!
+  * Fix #135, Type classes for Python 3 type annotations of pyrsistent types. Thanks @nattofriends for this!
+  * Fix #128, Allow PClass and PRecord to ignore input parameters to constructor that are not part of the spec
+    instead of blowing up with a type error. Thanks @agberk for this!
+  * Fix #137, deprecation warnings in Python 3.7. Thanks @thombashi for this!
+  * Fix #129, building via setuptools and setup.py. Thanks @galuszkak for this!
+
+-------------------------------------------------------------------
+Sat Aug 11 06:34:31 UTC 2018 - tchvatal@suse.com
+
+- Drop the test conditional
+- Use %license macro
+
+-------------------------------------------------------------------
+Fri Aug 10 23:33:25 UTC 2018 - jsikes@suse.de
+
+- Version jump to 0.14.4
+  * Fix PClass double-factory-ing in a few situations.
+  * Fix #121, regression in PClass.set() 
+  * Fix regression where type names break sequence fields
+  * Allowing 'set' as a valid container for multiple fields.
+  * Fix #131 Clarify that dot-notation can be used for element access on PMaps
+  * Fix #133 Python 3.7 compatibility
+
+-------------------------------------------------------------------
+Thu Sep  7 22:41:57 UTC 2017 - toddrme2178@gmail.com
+
+- initial version

@@ -1,0 +1,543 @@
+From fcbf95a78efdb310f918363e69706e1a98d93a9f Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Thu, 24 Oct 2019 13:18:55 +0200
+Subject: [PATCH] metadata: replace semantic-version with a custom parser
+
+The library semantic-version changed a lot during the last versions,
+making the Metadata class very fragile.
+
+A custom-made semantic version parsed, based on some Cargo specifics,
+has been implemented to replace the old parser.
+
+As a result of that, new features were implemented, like the support for
+wildcard expressions, as documented in the Cargo book.
+
+Fix: #93
+---
+ requirements.txt     |   1 -
+ rust2rpm/metadata.py | 217 ++++++++++++++++++++++++++++++++-----------
+ setup.py             |   3 -
+ test.py              | 199 ++++++++++++++++++++++++++++++++++++++-
+ 4 files changed, 360 insertions(+), 60 deletions(-)
+
+diff --git a/requirements.txt b/requirements.txt
+index ae4dec3..6789459 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -1,4 +1,3 @@
+ jinja2
+ requests
+-semantic_version
+ tqdm
+diff --git a/rust2rpm/metadata.py b/rust2rpm/metadata.py
+index fc24152..6dd8bb0 100644
+--- a/rust2rpm/metadata.py
++++ b/rust2rpm/metadata.py
+@@ -6,7 +6,162 @@ import json
+ import re
+ import subprocess
+ 
+-import semantic_version as semver
++
++Requirement = collections.namedtuple('Requirement', ('kind',
++                                                     'version'))
++
++
++Version = collections.namedtuple('Version', ('major', 'minor',
++                                             'patch', 'pre_release',
++                                             'build'))
++
++
++class CargoSemVer:
++    """Cargo semantic versioning parser"""
++    KIND_ANY = '*'
++    KIND_LT = '<'
++    KIND_LTE = '<='
++    KIND_SHORTEQ = '='
++    KIND_EQUAL = '=='
++    KIND_EMPTY = ''
++    KIND_GTE = '>='
++    KIND_GT = '>'
++    KIND_NEQ = '!='
++    KIND_CARET = '^'
++    KIND_TILDE = '~'
++    KIND_COMPATIBLE = '~='
++
++    def __init__(self, requirement):
++        requirements = requirement.replace(' ', '').split(',')
++        self.requirements = [self.parse(i) for i in requirements]
++        self.normalized = [j for i in self.requirements
++                           for j in self.normalize(i)]
++
++    @staticmethod
++    def parse(requirement):
++        if not requirement:
++            raise ValueError(f'Invalid empty requirement '
++                             f'specification: {requirement}')
++
++        match = re.match(
++            r'^(?:([\d.]*\*))$|^(?:(<|<=|=|==|>=|>||!=|\^|~|~=)(\d.*))$',
++            requirement)
++        if not match:
++            raise ValueError(f'Invalid requirement '
++                             f'specification: {requirement}')
++
++        wildcard, kind, version = match.groups()
++        if wildcard:
++            version = wildcard.replace('.*', '').replace('*', '')
++            kind = CargoSemVer.KIND_ANY
++        return Requirement(kind, CargoSemVer.parse_version(version))
++
++    @staticmethod
++    def parse_version(version):
++        match = re.match(
++            r'^(\d+)?(?:\.(\d+))?(?:\.(\d+))?(?:-([\w.-]+))?(?:\+([\w.-]+))?$',
++            version)
++        if not match:
++            raise ValueError(f'Invalid version string: {version}')
++
++        major, minor, patch, pre_release, build = match.groups()
++        major = int(major) if major else major
++        minor = int(minor) if minor else minor
++        patch = int(patch) if patch else patch
++        return Version(major, minor, patch, pre_release, build)
++
++    @staticmethod
++    def unparse_version(version, sep='-'):
++        version_str = f'{version.major}.{version.minor or 0}' \
++            f'.{version.patch or 0}'
++        if version.pre_release:
++            version_str = f'{version_str}{sep}{version.pre_release}'
++        if version.build:
++            version_str = f'{version_str}+{version.build}'
++        return version_str
++
++    @staticmethod
++    def coerce(version):
++        return Version(version.major or 0,
++                       version.minor or 0,
++                       version.patch or 0,
++                       version.pre_release,
++                       version.build)
++
++    @staticmethod
++    def next_major(version):
++        major, minor, patch, pre_release, _ = version
++        if pre_release and not minor and not patch:
++            return Version(major, minor or 0, patch or 0, None, None)
++        return Version((major or 0) + 1, 0, 0, None, None)
++
++    @staticmethod
++    def next_minor(version):
++        major, minor, patch, pre_release, _ = version
++        if pre_release and not patch:
++            return Version(major, minor or 0, patch or 0, None, None)
++        return Version(major, (minor or 0) + 1, 0, None, None)
++
++    @staticmethod
++    def next_patch(version):
++        major, minor, patch, pre_release, _ = version
++        if pre_release:
++            return Version(major, minor or 0, patch or 0, None, None)
++        return Version(major, minor or 0, (patch or 0) + 1, None, None)
++
++    @staticmethod
++    def normalize(requirement):
++        normalized = []
++        kind, version = requirement
++        if kind == CargoSemVer.KIND_NEQ:
++            raise ValueError(f'Kind not supported: {requirement}')
++
++        if kind == CargoSemVer.KIND_EQUAL:
++            kind = CargoSemVer.KIND_SHORTEQ
++
++        coerced_version = CargoSemVer.coerce(version)
++        if version.pre_release:
++            version = CargoSemVer.next_patch(version)
++
++        if kind == CargoSemVer.KIND_ANY:
++            normalized.append((CargoSemVer.KIND_GTE,
++                               CargoSemVer.coerce(version)))
++            if version.major:
++                if version.minor is not None:
++                    upper_version = CargoSemVer.next_minor(version)
++                else:
++                    upper_version = CargoSemVer.next_major(version)
++                normalized.append((CargoSemVer.KIND_LT, upper_version))
++        elif kind in (CargoSemVer.KIND_SHORTEQ,
++                      CargoSemVer.KIND_GT, CargoSemVer.KIND_GTE,
++                      CargoSemVer.KIND_LT, CargoSemVer.KIND_LTE):
++            normalized.append((kind, coerced_version))
++        elif kind in (CargoSemVer.KIND_CARET,
++                      CargoSemVer.KIND_COMPATIBLE,
++                      CargoSemVer.KIND_EMPTY):
++            if version.major == 0:
++                if version.minor is not None:
++                    if version.minor != 0 or version.patch is None:
++                        upper_version = CargoSemVer.next_minor(version)
++                    else:
++                        upper_version = CargoSemVer.next_patch(version)
++                else:
++                    upper_version = CargoSemVer.next_major(version)
++            else:
++                upper_version = CargoSemVer.next_major(version)
++            normalized.append((CargoSemVer.KIND_GTE, coerced_version))
++            normalized.append((CargoSemVer.KIND_LT, upper_version))
++        elif kind == CargoSemVer.KIND_TILDE:
++            if version.minor is None:
++                upper_version = CargoSemVer.next_major(version)
++            else:
++                upper_version = CargoSemVer.next_minor(version)
++            normalized.append((CargoSemVer.KIND_GTE, coerced_version))
++            normalized.append((CargoSemVer.KIND_LT, upper_version))
++        else:
++            raise ValueError(f'Found unhandled kind: {requirement}')
++        return normalized
++
+ 
+ class Target:
+     def __init__(self, name, kind):
+@@ -16,6 +171,7 @@ class Target:
+     def __repr__(self):
+         return f"<Target {self.name} ({self.kind})>"
+ 
++
+ class Dependency:
+     def __init__(self, name, req=None, features=(), optional=False):
+         self.name = name
+@@ -34,70 +190,23 @@ class Dependency:
+                   "features": features}
+         return cls(**kwargs)
+ 
+-    @staticmethod
+-    def _normalize_req(req):
+-        if "*" in req and req != "*":
+-            raise NotImplementedError(f"'*' is not supported: {req}")
+-        spec = semver.Spec(req.replace(" ", ""))
+-        reqs = []
+-        for req in spec.specs:
+-            if req.kind == req.KIND_ANY:
+-                # Any means any
+-                continue
+-            ver = req.spec
+-            if req.kind in {req.KIND_NEQ, req.KIND_EMPTY}:
+-                raise NotImplementedError(f"'!=' and empty kinds are not supported: {req}")
+-            coerced = str(semver.Version.coerce(str(ver)))
+-            if ver.prerelease:
+-                coerced = coerced.replace("-", "~")
+-                # This will advance us to closest stable version (2.0.0-beta.6 → 2.0.0)
+-                ver = ver.next_patch()
+-            if req.kind == req.KIND_EQUAL:
+-                req.kind = req.KIND_SHORTEQ
+-            if req.kind in {req.KIND_CARET, req.KIND_COMPATIBLE}:
+-                if ver.major == 0:
+-                    if ver.minor is not None:
+-                        if ver.minor != 0 or ver.patch is None:
+-                            upper = ver.next_minor()
+-                        else:
+-                            upper = ver.next_patch()
+-                    else:
+-                        upper = ver.next_major()
+-                else:
+-                    upper = ver.next_major()
+-                reqs.append((">=", coerced))
+-                reqs.append(("<", upper))
+-            elif req.kind == req.KIND_TILDE:
+-                if ver.minor is None:
+-                    upper = ver.next_major()
+-                else:
+-                    upper = ver.next_minor()
+-                reqs.append((">=", coerced))
+-                reqs.append(("<", upper))
+-            elif req.kind in {req.KIND_SHORTEQ,
+-                              req.KIND_GT,
+-                              req.KIND_GTE,
+-                              req.KIND_LT,
+-                              req.KIND_LTE}:
+-                reqs.append((str(req.kind), coerced))
+-            else:
+-                raise AssertionError(f"Found unhandled kind: {req.kind}")
+-        return reqs
+-
+     @staticmethod
+     def _apply_reqs(name, reqs, feature=None):
+         fstr = f"/{feature}" if feature is not None else ""
+         cap = f"crate({name}{fstr})"
+         if not reqs:
+             return cap
+-        deps = " with ".join(f"{cap} {op} {version}" for op, version in reqs)
++        deps = ' with '.join(
++            f'{cap} {op} {CargoSemVer.unparse_version(version, sep="~")}'
++            for op, version in reqs)
+         if len(reqs) > 1:
+             return f"({deps})"
+         else:
+             return deps
+ 
+     def normalize(self):
+-        return [self._apply_reqs(self.name, self._normalize_req(self.req), feature)
++        semver = CargoSemVer(self.req)
++        return [self._apply_reqs(self.name, semver.normalized, feature)
+                 for feature in self.features or (None,)]
+ 
+     def __repr__(self):
+@@ -106,6 +215,7 @@ class Dependency:
+     def __str__(self):
+         return "\n".join(self.normalize())
+ 
++
+ class Metadata:
+     def __init__(self, name, version):
+         self.name = name
+@@ -258,5 +368,6 @@ class Metadata:
+                         for feature in features)
+             return fdeps | deps
+ 
++
+ def normalize_deps(deps):
+     return set().union(*(d.normalize() for d in deps))
+diff --git a/setup.py b/setup.py
+index b5b1157..bf95f85 100644
+--- a/setup.py
++++ b/setup.py
+@@ -31,9 +31,6 @@ ARGS = dict(
+         ],
+     },
+     install_requires=[
+-        # Metadata parser
+-        "semantic_version",
+-
+         # CLI tool
+         "jinja2",
+         "requests",
+diff --git a/test.py b/test.py
+index 035df79..27e8232 100644
+--- a/test.py
++++ b/test.py
+@@ -1,6 +1,8 @@
+ import pytest
+ 
+ import rust2rpm
++from rust2rpm.metadata import Version
++
+ 
+ @pytest.mark.parametrize("req, rpmdep", [
+     ("^1.2.3",
+@@ -26,7 +28,11 @@ import rust2rpm
+     ("~1",
+      "(crate(test) >= 1.0.0 with crate(test) < 2.0.0)"),
+     ("*",
+-     "crate(test)"),
++     "crate(test) >= 0.0.0"),
++    ("1.*",
++     "(crate(test) >= 1.0.0 with crate(test) < 2.0.0)"),
++    ("1.2*",
++     "(crate(test) >= 1.2.0 with crate(test) < 1.3.0)"),
+     (">= 1.2.0",
+      "crate(test) >= 1.2.0"),
+     ("> 1",
+@@ -37,8 +43,8 @@ import rust2rpm
+      "crate(test) = 1.2.3"),
+     (">= 1.2, < 1.5",
+      "(crate(test) >= 1.2.0 with crate(test) < 1.5.0)"),
+-    ("^2.0.0-alpha.6",
+-     "(crate(test) >= 2.0.0~alpha.6 with crate(test) < 3.0.0)"),
++    ("^1.0.0-alpha.6",
++     "(crate(test) >= 1.0.0~alpha.6 with crate(test) < 2.0.0)"),
+     ("^0.1.0-alpha.6",
+      "(crate(test) >= 0.1.0~alpha.6 with crate(test) < 0.2.0)"),
+     ("^0.0.1-alpha.6",
+@@ -49,3 +55,190 @@ import rust2rpm
+ def test_dependency(req, rpmdep):
+     dep = rust2rpm.Dependency("test", req)
+     assert str(dep) == rpmdep
++
++
++@pytest.mark.parametrize('version, parsed_version', [
++    ('', (None, None, None, None, None)),
++    ('0', (0, None, None, None, None)),
++    ('1.0', (1, 0, None, None, None)),
++    ('2.1.0', (2, 1, 0, None, None)),
++    ('2.1.0+build1', (2, 1, 0, None, 'build1')),
++    ('2.1.0-alpha1', (2, 1, 0, 'alpha1', None)),
++    ('2.1.0-alpha1+build1', (2, 1, 0, 'alpha1', 'build1')),
++])
++def test_parse_version(version, parsed_version):
++    result = rust2rpm.metadata.CargoSemVer.parse_version(version)
++    assert result == parsed_version
++
++
++@pytest.mark.parametrize('parsed_version, version', [
++    (Version(0, None, None, None, None), '0.0.0'),
++    (Version(1, 0, None, None, None), '1.0.0'),
++    (Version(2, 1, 0, None, None), '2.1.0'),
++    (Version(2, 1, 0, None, 'build1'), '2.1.0+build1'),
++    (Version(2, 1, 0, 'alpha1', None), '2.1.0-alpha1'),
++    (Version(2, 1, 0, 'alpha1', 'build1'), '2.1.0-alpha1+build1'),
++])
++def test_unparse_version(parsed_version, version):
++    result = rust2rpm.metadata.CargoSemVer.unparse_version(parsed_version)
++    assert result == version
++
++
++@pytest.mark.parametrize('parsed_version, version', [
++    (Version(2, 1, 0, None, None), '2.1.0'),
++    (Version(2, 1, 0, None, 'build1'), '2.1.0+build1'),
++    (Version(2, 1, 0, 'alpha1', None), '2.1.0~alpha1'),
++    (Version(2, 1, 0, 'alpha1', 'build1'), '2.1.0~alpha1+build1'),
++])
++def test_unparse_version_sep(parsed_version, version):
++    result = rust2rpm.metadata.CargoSemVer.unparse_version(
++        parsed_version, sep='~')
++    assert result == version
++
++
++@pytest.mark.parametrize('requirement, parsed_requirement', [
++    ('*', ('*', (None, None, None, None, None))),
++    ('0.*', ('*', (0, None, None, None, None))),
++    ('0.1.*', ('*', (0, 1, None, None, None))),
++    ('<0', ('<', (0, None, None, None, None))),
++    ('<0.1', ('<', (0, 1, None, None, None))),
++    ('<0.1.2', ('<', (0, 1, 2, None, None))),
++    ('<0.1.2-alpha1', ('<', (0, 1, 2, 'alpha1', None))),
++    ('<=0.1.2', ('<=', (0, 1, 2, None, None))),
++    ('=0.1.2', ('=', (0, 1, 2, None, None))),
++    ('==0.1.2', ('==', (0, 1, 2, None, None))),
++    ('>=0.1.2', ('>=', (0, 1, 2, None, None))),
++    ('>0.1.2', ('>', (0, 1, 2, None, None))),
++    ('0.1.2', ('', (0, 1, 2, None, None))),
++    ('!=0.1.2', ('!=', (0, 1, 2, None, None))),
++    ('^0.1.2', ('^', (0, 1, 2, None, None))),
++    ('~0.1.2', ('~', (0, 1, 2, None, None))),
++    ('~=0.1.2', ('~=', (0, 1, 2, None, None))),
++])
++def test_parse(requirement, parsed_requirement):
++    result = rust2rpm.metadata.CargoSemVer.parse(requirement)
++    assert result == parsed_requirement
++
++
++@pytest.mark.parametrize('version, coerced_version', [
++    (Version(0, None, None, None, None),
++     (0, 0, 0, None, None)),
++    (Version(1, 0, None, None, None),
++     (1, 0, 0, None, None)),
++    (Version(2, 1, 0, None, None),
++     (2, 1, 0, None, None)),
++    (Version(2, 1, 0, None, 'build1'),
++     (2, 1, 0, None, 'build1')),
++    (Version(2, 1, 0, 'alpha1', None),
++     (2, 1, 0, 'alpha1', None)),
++    (Version(2, 1, 0, 'alpha1', 'build1'),
++     (2, 1, 0, 'alpha1', 'build1')),
++])
++def test_coerce(version, coerced_version):
++    result = rust2rpm.metadata.CargoSemVer.coerce(version)
++    assert result == coerced_version
++
++
++@pytest.mark.parametrize('version, next_version', [
++    ((0, None, None, None, None), (1, 0, 0, None, None)),
++    ((1, 0, None, None, None), (2, 0, 0, None, None)),
++    ((2, 1, 0, None, None), (3, 0, 0, None, None)),
++    ((2, 0, 0, None, 'build1'), (3, 0, 0, None, None)),
++    ((2, None, None, 'alpha1', None), (2, 0, 0, None, None)),
++    ((2, 0, None, 'alpha1', None), (2, 0, 0, None, None)),
++    ((2, 0, 0, 'alpha1', None), (2, 0, 0, None, None)),
++    ((2, 1, None, 'alpha1', None), (3, 0, 0, None, None)),
++    ((2, 1, 0, 'alpha1', None), (3, 0, 0, None, None)),
++    ((2, 1, 1, 'alpha1', None), (3, 0, 0, None, None)),
++    ((2, 0, 1, 'alpha1', 'build1'), (3, 0, 0, None, None)),
++])
++def test_next_major(version, next_version):
++    result = rust2rpm.metadata.CargoSemVer.next_major(version)
++    assert result == next_version
++
++
++@pytest.mark.parametrize('version, next_version', [
++    ((0, None, None, None, None), (0, 1, 0, None, None)),
++    ((1, 0, None, None, None), (1, 1, 0, None, None)),
++    ((2, 1, 0, None, None), (2, 2, 0, None, None)),
++    ((2, 1, 0, None, 'build1'), (2, 2, 0, None, None)),
++    ((2, None, None, 'alpha1', None), (2, 0, 0, None, None)),
++    ((2, 0, None, 'alpha1', None), (2, 0, 0, None, None)),
++    ((2, 0, 0, 'alpha1', None), (2, 0, 0, None, None)),
++    ((2, 1, None, 'alpha1', None), (2, 1, 0, None, None)),
++    ((2, 1, 0, 'alpha1', None), (2, 1, 0, None, None)),
++    ((2, 1, 1, 'alpha1', None), (2, 2, 0, None, None)),
++    ((2, 1, 0, 'alpha1', 'build1'), (2, 1, 0, None, None)),
++])
++def test_next_minor(version, next_version):
++    result = rust2rpm.metadata.CargoSemVer.next_minor(version)
++    assert result == next_version
++
++
++@pytest.mark.parametrize('version, next_version', [
++    ((0, None, None, None, None), (0, 0, 1, None, None)),
++    ((1, 0, None, None, None), (1, 0, 1, None, None)),
++    ((2, 1, 0, None, None), (2, 1, 1, None, None)),
++    ((2, 1, 0, None, 'build1'), (2, 1, 1, None, None)),
++    ((2, None, None, 'alpha1', None), (2, 0, 0, None, None)),
++    ((2, 0, None, 'alpha1', None), (2, 0, 0, None, None)),
++    ((2, 0, 0, 'alpha1', None), (2, 0, 0, None, None)),
++    ((2, 1, None, 'alpha1', None), (2, 1, 0, None, None)),
++    ((2, 1, 0, 'alpha1', None), (2, 1, 0, None, None)),
++    ((2, 1, 1, 'alpha1', None), (2, 1, 1, None, None)),
++    ((2, 1, 0, 'alpha1', 'build1'), (2, 1, 0, None, None)),
++])
++def test_next_patch(version, next_version):
++    result = rust2rpm.metadata.CargoSemVer.next_patch(version)
++    assert result == next_version
++
++
++@pytest.mark.parametrize("requirement, normalized_requirement", [
++    (('^', Version(1, 2, 3, None, None)),
++     [('>=', (1, 2, 3, None, None)), ('<', (2, 0, 0, None, None))]),
++    (('^', Version(1, 2, None, None, None)),
++     [('>=', (1, 2, 0, None, None)), ('<', (2, 0, 0, None, None))]),
++    (('^', Version(1, None, None, None, None)),
++     [('>=', (1, 0, 0, None, None)), ('<', (2, 0, 0, None, None))]),
++    (('^', Version(0, 2, 3, None, None)),
++     [('>=', (0, 2, 3, None, None)), ('<', (0, 3, 0, None, None))]),
++    (('^', Version(0, 2, None, None, None)),
++     [('>=', (0, 2, 0, None, None)), ('<', (0, 3, 0, None, None))]),
++    (('^', Version(0, 0, 3, None, None)),
++     [('>=', (0, 0, 3, None, None)), ('<', (0, 0, 4, None, None))]),
++    (('^', Version(0, 0, None, None, None)),
++     [('>=', (0, 0, 0, None, None)), ('<', (0, 1, 0, None, None))]),
++    (('^', Version(0, None, None, None, None)),
++     [('>=', (0, 0, 0, None, None)), ('<', (1, 0, 0, None, None))]),
++    (('~', Version(1, 2, 3, None, None)),
++     [('>=', (1, 2, 3, None, None)), ('<', (1, 3, 0, None, None))]),
++    (('~', Version(1, 2, None, None, None)),
++     [('>=', (1, 2, 0, None, None)), ('<', (1, 3, 0, None, None))]),
++    (('~', Version(1, None, None, None, None)),
++     [('>=', (1, 0, 0, None, None)), ('<', (2, 0, 0, None, None))]),
++    (('*', Version(None, None, None, None, None)),
++     [('>=', (0, 0, 0, None, None))]),
++    (('*', Version(1, None, None, None, None)),
++     [('>=', (1, 0, 0, None, None)), ('<', (2, 0, 0, None, None))]),
++    (('*', Version(1, 2, None, None, None)),
++     [('>=', (1, 2, 0, None, None)), ('<', (1, 3, 0, None, None))]),
++    (('>=', Version(1, 2, 0, None, None)),
++     [('>=', (1, 2, 0, None, None))]),
++    (('>', Version(1, None, None, None, None)),
++     [('>', (1, 0, 0, None, None))]),
++    (('<', Version(2, None, None, None, None)),
++     [('<', (2, 0, 0, None, None))]),
++    (('=', Version(1, 2, 3, None, None)),
++     [('=', (1, 2, 3, None, None))]),
++    (('^', Version(1, 0, 0, 'alpha.6', None)),
++     [('>=', (1, 0, 0, 'alpha.6', None)), ('<', (2, 0, 0, None, None))]),
++    (('^', Version(0, 1, 0, 'alpha.6', None)),
++     [('>=', (0, 1, 0, 'alpha.6', None)), ('<', (0, 2, 0, None, None))]),
++    (('^', Version(0, 0, 1, 'alpha.6', None)),
++     [('>=', (0, 0, 1, 'alpha.6', None)), ('<', (0, 0, 2, None, None))]),
++    (('^', Version(0, 0, 0, 'alpha.6', None)),
++     [('>=', (0, 0, 0, 'alpha.6', None)), ('<', (0, 0, 1, None, None))]),
++])
++def test_normalize(requirement, normalized_requirement):
++    result = rust2rpm.metadata.CargoSemVer.normalize(requirement)
++    assert result == normalized_requirement
+-- 
+2.21.0
+

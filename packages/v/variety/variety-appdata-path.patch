@@ -1,0 +1,10 @@
+diff -Naur a/setup.py b/setup.py
+--- a/setup.py	2017-09-18 22:48:48.000000000 -0500
++++ b/setup.py	2017-09-23 17:03:16.282567260 -0500
+@@ -85,5 +85,5 @@
+ "deviantART or any other place are also supported.",
+     url='https://launchpad.net/variety',
+     cmdclass={'install': InstallAndUpdateDataDirectory},
+-    data_files=[('share/metainfo', ['variety.appdata.xml'])]
++    data_files=[('share/appdata', ['variety.appdata.xml'])]
+ )

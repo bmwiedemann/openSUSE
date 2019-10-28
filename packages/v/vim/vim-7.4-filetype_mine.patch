@@ -1,0 +1,13 @@
+Index: vim-8.1.1467/runtime/filetype.vim
+===================================================================
+--- vim-8.1.1467.orig/runtime/filetype.vim
++++ vim-8.1.1467/runtime/filetype.vim
+@@ -17,7 +17,7 @@ augroup filetypedetect
+ 
+ " Ignored extensions
+ if exists("*fnameescape")
+-au BufNewFile,BufRead ?\+.orig,?\+.bak,?\+.old,?\+.new,?\+.dpkg-dist,?\+.dpkg-old,?\+.dpkg-new,?\+.dpkg-bak,?\+.rpmsave,?\+.rpmnew,?\+.pacsave,?\+.pacnew
++au BufNewFile,BufRead ?\+.orig,?\+.bak,?\+.old,?\+.mine,?\+.new,?\+.dpkg-dist,?\+.dpkg-old,?\+.dpkg-new,?\+.dpkg-bak,?\+.rpmsave,?\+.rpmnew,?\+.pacsave,?\+.pacnew
+ 	\ exe "doau filetypedetect BufRead " . fnameescape(expand("<afile>:r"))
+ au BufNewFile,BufRead *~
+ 	\ let s:name = expand("<afile>") |

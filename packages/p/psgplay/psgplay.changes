@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Fri Dec  2 08:58:49 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Thu Mar 29 17:11:20 CEST 2007 - rguenther@suse.de
+
+- add zlib-devel BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:39 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Apr 11 17:57:29 CEST 2005 - pth@suse.de
+
+- Clean up the code.
+- Use autoreconf
+
+-------------------------------------------------------------------
+Sun Jan 11 11:50:39 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Tue Apr 22 14:26:25 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Tue Apr 10 18:20:04 CEST 2001 - uli@suse.de
+
+- fixed Group tag
+
+-------------------------------------------------------------------
+Tue Oct 26 18:45:17 MEST 1999 - uli@suse.de
+
+- update -> 0.6
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Fri Mar  5 12:30:56 MET 1999 - uli@suse.de
+
+- new package, version 0.4
+

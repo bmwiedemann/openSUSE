@@ -1,0 +1,222 @@
+-------------------------------------------------------------------
+Wed Sep 25 09:34:48 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update more the py38 compat patchset by taking more commits from
+  upstream:
+  * importlib-py38.patch
+
+-------------------------------------------------------------------
+Wed Sep 11 11:22:31 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to not pull importlib_metadata on python 3.8:
+  * importlib-py38.patch
+
+-------------------------------------------------------------------
+Mon Aug 19 08:18:32 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.6.5:
+  * #4344: Fix RuntimeError/StopIteration when trying to collect package with "init.py" only.
+  * #5478: Fix encode error when using unicode strings in exceptions with pytest.raises.
+  * #5524: Fix issue where tmp_path and tmpdir would not remove directories containing files marked as read-only,
+           which could lead to pytest crashing when executed a second time with the --basetemp option.
+  * #5547: --step-wise now handles xfail(strict=True) markers properly.
+  * #5650: Improved output when parsing an ini configuration file fails.
+
+-------------------------------------------------------------------
+Fri Jul 19 10:16:52 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add setuptools requires as we still use entrypoints
+
+-------------------------------------------------------------------
+Tue Jul  9 11:33:41 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix the multubild flavor name
+
+-------------------------------------------------------------------
+Tue Jul  2 13:27:39 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.6.4:
+  * #5404: Emit a warning when attempting to unwrap a broken object raises an exception, for easier debugging (#5080).
+  * #5444: Fix --stepwise mode when the first file passed on the command-line fails to collect.
+  * #5482: Fix bug introduced in 4.6.0 causing collection errors when passing more than 2 positional arguments to pytest.mark.parametrize.
+  * #5505: Fix crash when discovery fails while using -p no:terminal.
+
+-------------------------------------------------------------------
+Wed Jun 12 08:58:07 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 4.6.3
+ * -q has again an impact on the style of the collected items (--collect-only)
+    when --log-cli-level is used.
+ * Fix regressions of #5063 for importlib_metadata.PathDistribution which
+    have their files attribute being None.
+ * Fix regression where the obj attribute of TestCase items was no longer
+    bound to methods.
+
+-------------------------------------------------------------------
+Fri Jun  7 11:03:23 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fixup the requirements to match up setup.py
+
+-------------------------------------------------------------------
+Tue Jun  4 14:01:58 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 4.6.2
+ * Revert unrolling of all() to fix NameError on nested comprehensions.
+ * Revert unrolling of all() to fix incorrect handling of generators with if.
+ * Revert unrolling of all() to fix incorrect assertion when using all()
+    in an expression.
+
+-------------------------------------------------------------------
+Mon Jun  3 08:45:49 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 4.6.1
+- The 4.6.X series will be the last series to support Python 2 and Python 3.4.
+ * Fix pytest.mark.parametrize when the argvalues is an iterator.
+ * Fix assertion rewriting of all() calls to deal with non-generators.
+ *  Added the junit_log_passing_tests ini value which can be used to enable
+   or disable logging of passing test output in the Junit XML file.
+ *  pytester’s testdir.spawn uses tmpdir as HOME/USERPROFILE directory.
+ * Unroll calls to all to full for-loops with assertion rewriting for better
+    failure messages, especially when using Generator Expressions.
+ *  Switch from pkg_resources to importlib-metadata for entrypoint detection
+    for improved performance and import time.
+ * The output for ini options in --help has been improved.
+ * pytest.importorskip includes the ImportError now in the default reason.
+ * Captured logs that are output for each failing test are formatted
+   using the ColoredLevelFormatter.
+ * Improved formatting of multiline log messages in Python 3.
+ * The debugging plugin imports the wrapped Pdb class (--pdbcls) on-demand now.
+ * The pytest_enter_pdb hook gets called with post-mortem (--pdb).
+ * Fix issue where fixtures dependent on other parametrized fixtures would
+ be erroneously parametrized.
+ * Handle internal error due to a lone surrogate unicode character not being
+    representable in Jython.
+ * Ensure that sys.stdout.mode does not include 'b' as it is a text stream.
+ * Pytest’s internal python plugin can be disabled using -p no:python again.
+ * Fix issue with disable_test_id_escaping_and_forfeit_all_rights_to_community_support
+    option not working when using a list of test IDs in parametrized tests.
+ * Show the test module being collected when emitting PytestCollectionWarning messages
+   for test classes with __init__ and __new__ methods to make it easier to pin down the problem.
+ * Fix regression in 4.5.0 with --lf not re-running all tests with known failures
+    from non-selected tests.
+
+-------------------------------------------------------------------
+Thu May 23 10:06:51 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 4.5.0
+- drop 4dbb56146a1fe0bf70df801582f0abde4ef4e64c.patch - upstream merged
+ * A warning is now emitted when unknown marks are used as a decorator
+ * Show XFail reason as part of JUnitXML message field
+ * Messages from crash reports are displayed within test summaries now
+ * New flag --strict-markers that triggers an error when unknown markers
+ * Assertion failure messages for sequences and dicts contain the number
+   of different items now.
+ * Improve reporting with --lf and --ff
+ * The --cache-show option/action accepts an optional glob to show only
+   matching cache entries.
+ * Standard input (stdin) can be given to pytester’s Testdir.run() and Testdir.popen().
+ * he -r option learnt about A to display all reports (including passed ones)
+   in the short test summary.
+ * The short test summary is displayed after passes with output (-rP).
+ * The --last-failed (--lf) option got smarter and will now skip entire files
+   if all tests of that test file have passed in previous runs, greatly speeding up collection.
+ * Introduce new specific warning PytestWarning subclasses to make it easier
+  to filter warnings based on the class, rather than on the message
+ * New record_testsuite_property session-scoped fixture allows users to log
+   <property> tags at the testsuite level with the junitxml plugin.
+ * --fixtures now also shows fixture scope for scopes other than "function".
+ * Deselected items from plugins using pytest_collect_modifyitems as a hookwrapper
+   are correctly reported now.
+ * With usage errors exitstatus is set to EXIT_USAGEERROR in the pytest_sessionfinish
+   hook now as expected.
+ * outcome.exit is not used with EOF in the pdb wrapper anymore, but only with quit.
+ * logging.raiseExceptions is not set to False anymore.
+ * pytest now depends on wcwidth to properly track unicode character sizes for more
+   precise terminal output.
+ * pytester’s Testdir.popen() uses stdout and stderr via keyword arguments with
+   defaults now (subprocess.PIPE).
+ * The code for the short test summary in the terminal was moved to the terminal plugin.
+ * Improved validation of kwargs for various methods in the pytester plugin.
+ * record_property now emits a PytestWarning when used with junit_family=xunit2:
+   the fixture generates property tags as children of testcase, which is not permitted
+     according to the most recent schema.
+ * Fix crash caused by error in __repr__ function with both showlocals
+   and verbose output enabled.
+ * Eliminate core dependency on ‘terminal’ plugin.
+ * Doc: pytest_ignore_collect, pytest_collect_directory, pytest_collect_file
+    and pytest_pycollect_makemodule hooks’s ‘path’ parameter documented type is now py.path.local
+ * Improve help for --runxfail flag.
+
+-------------------------------------------------------------------
+Mon May  6 11:01:13 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.4.1:
+  * #5031: Environment variables are properly restored when using pytester's testdir fixture.
+  * #5039: Fix regression with --pdbcls, which stopped working with local modules in 4.0.0.
+  * #5092: Produce a warning when unknown keywords are passed to pytest.param(...).
+  * #5098: Invalidate import caches with monkeypatch.syspath_prepend, which is required with namespace packages being used.
+
+-------------------------------------------------------------------
+Thu Apr  4 11:34:00 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- add 4dbb56146a1fe0bf70df801582f0abde4ef4e64c.patch - fix tests on 32bit 
+
+-------------------------------------------------------------------
+Mon Apr  1 12:01:47 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 4.4.0
+- drop doc subpackage
+ * async test functions are skipped and a warning is emitted when
+   a suitable async plugin is not installed
+ * Include new disable_test_id_escaping_and_forfeit_all_rights_to_community_support
+   option to disable ascii-escaping in parametrized values.
+ * the -p option can now be used to early-load plugins also by entry-point name
+ * The --pdbcls option handles classes via module attributes now
+ * The testpaths configuration option is now displayed next to the rootdir
+   and inifile ines in the pytest header if the option is in effec
+ * Doctests can be skipped now dynamically using pytest.skip()
+ * Handle -p plug after -p no:plug.
+ * Namespace packages are handled better with monkeypatch.syspath_prepend
+   and testdir.syspathinsert 
+
+-------------------------------------------------------------------
+Mon Mar 25 08:58:59 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.3.1:
+  * #4810: Logging messages inside pytest_runtest_logreport() are now properly captured and displayed.
+  * #4861: Improve validation of contents written to captured output so it behaves the same as when capture is disabled.
+  * #4898: Fix AttributeError: FixtureRequest has no 'confg' attribute bug in testdir.copy_example.
+  * #4768: Avoid pkg_resources import at the top-level.
+
+-------------------------------------------------------------------
+Tue Feb 19 09:27:11 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to 4.3.0
+  * pytest.warns() now emits a warning when it receives unknown keyword
+     arguments.
+  * Usage errors from argparse are mapped to pytest's UsageError.
+  * Add the --ignore-glob parameter to exclude test-modules with Unix
+     shell-style wildcard
+  * With the help of new set_log_path() method there is a way to set log_file
+     paths from hooks.
+  * For detailed changelog please consult upstream list:
+    + https://docs.pytest.org/en/latest/changelog.html#changelog
+
+-------------------------------------------------------------------
+Thu Jan 31 12:55:28 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.2.0:
+  * This is 4.x series release and as such removes lot of
+    deprecated features
+  * 5.0 series will support only python3 of 3.5 version and newer
+  * For detailed changelog please consult upstream list:
+    + https://docs.pytest.org/en/latest/changelog.html#changelog
+- Drop upstream merged fix_test_raises_exception_looks_iterable.patch
+
+-------------------------------------------------------------------
+Fri Jan  4 22:08:17 CET 2019 - mcepl@suse.com
+
+- Switch the package to multibuild.
+- Add fix_test_raises_exception_looks_iterable.patch from
+  gh#pytest-dev/pytest#4525
+

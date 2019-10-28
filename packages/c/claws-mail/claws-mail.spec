@@ -26,6 +26,11 @@
 %else
 %bcond_with    vcalendar
 %endif
+%if 0%{?suse_version} >= 1550
+%bcond_without litehtml
+%else
+%bcond_with    litehtml
+%endif
 %bcond_with    tnef
 
 Name:           claws-mail
@@ -88,6 +93,11 @@ BuildRequires:  pkgconfig(libnm)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(sm)
+# LiteHTML requires Gumbo which is currently shipped only with Tumbleweed
+%if %{with litehtml}
+BuildRequires:  c++_compiler
+BuildRequires:  pkgconfig(gumbo)
+%endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       pinentry-gtk2
 %{?libperl_requires}

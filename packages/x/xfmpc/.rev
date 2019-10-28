@@ -1,0 +1,147 @@
+<revisionlist>
+  <revision rev="1" vrev="18">
+    <srcmd5>e6614454eb4e17527e6f9f189fd61e9b</srcmd5>
+    <version>0.2.0</version>
+    <time>1295305165</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57559 from user gberh
+</comment>
+    <requestid>57559</requestid>
+  </revision>
+  <revision rev="2" vrev="19">
+    <srcmd5>26c4b1b1c26e05708b4d27f12edcd49d</srcmd5>
+    <version>0.2.0</version>
+    <time>1295305171</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57559
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>daf4be14b5abd05e734d0b1c28b5f2ac</srcmd5>
+    <version>0.2.1</version>
+    <time>1296841536</time>
+    <user>darix</user>
+    <comment>Accepted submit request 60011 from user gberh
+</comment>
+    <requestid>60011</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>31850a4366ff1f8f8d5adb7a3e8ef776</srcmd5>
+    <version>0.2.1</version>
+    <time>1296841542</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 60011
+</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>31850a4366ff1f8f8d5adb7a3e8ef776</srcmd5>
+    <version>0.2.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>e820dac2f1ce623ed339206b643c141b</srcmd5>
+    <version>0.2.1</version>
+    <time>1298031535</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61721 from user gberh
+</comment>
+    <requestid>61721</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>9e61323c114587b5c754593acc49862a</srcmd5>
+    <version>0.2.1</version>
+    <time>1298031541</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61721
+</comment>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>9e61323c114587b5c754593acc49862a</srcmd5>
+    <version>0.2.1</version>
+    <time>1319182596</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>03645ed069dcd47d89da8cc61136862a</srcmd5>
+    <version>0.2.2</version>
+    <time>1319556081</time>
+    <user>coolo</user>
+    <comment>- update to version 0.2.2
+  - add status-icon to hide Xfmpc and keep it running in the
+    background
+  - add a Shortcuts dialog to show existing shortcuts
+  - tweak visual aspects
+  - fix misc bugs</comment>
+    <requestid>89181</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>4278f0f92509adca2f06bf0e5ebead84</srcmd5>
+    <version>0.2.2</version>
+    <time>1323195339</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>a75c6ecb879e5ed56c889eb4edbc6171</srcmd5>
+    <version>0.2.2</version>
+    <time>1334759401</time>
+    <user>coolo</user>
+    <comment>- specfile cleanup
+- split off -lang subpackage</comment>
+    <requestid>112560</requestid>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>a75c6ecb879e5ed56c889eb4edbc6171</srcmd5>
+    <version>0.2.2</version>
+    <time>1340184362</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>a75c6ecb879e5ed56c889eb4edbc6171</srcmd5>
+    <version>0.2.2</version>
+    <time>1359110640</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>a75c6ecb879e5ed56c889eb4edbc6171</srcmd5>
+    <version>0.2.2</version>
+    <time>1379665062</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>a75c6ecb879e5ed56c889eb4edbc6171</srcmd5>
+    <version>0.2.2</version>
+    <time>1409303747</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0f353e99f816edeec9769c6be7b5b51e</srcmd5>
+    <version>0.2.3</version>
+    <time>1507391425</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure neutrality of description. Remove redundant %clean section. (forwarded request 530709 from jengelh)</comment>
+    <requestid>530813</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9c68c9c3770ed2fa5e5db30e8a59a582</srcmd5>
+    <version>0.2.90</version>
+    <time>1552299330</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>683058</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2a0d69f6f728a50c89b41189ae41fb2b</srcmd5>
+    <version>0.3.0</version>
+    <time>1561405984</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711585</requestid>
+  </revision>
+</revisionlist>

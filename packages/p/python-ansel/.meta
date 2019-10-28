@@ -1,0 +1,5 @@
+<package name="python-ansel" project="openSUSE:Factory">
+  <title>python-ansel</title>
+  <description>Codecs for reading/writing documents in the ANSEL character set</description>
+  <devel project="devel:languages:python" package="python-ansel"/>
+</package>

@@ -1,0 +1,42 @@
+From 33c7ea0865b7f87cef1c3d3e767734c0edd02e84 Mon Sep 17 00:00:00 2001
+From: Adam Miartus <amiartus@de.adit-jv.com>
+Date: Thu, 23 May 2019 11:44:30 +0200
+Subject: [PATCH 06/25] pcm: file: add missing unlock on early return
+
+Signed-off-by: Adam Miartus <amiartus@de.adit-jv.com>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ src/pcm/pcm_file.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/src/pcm/pcm_file.c b/src/pcm/pcm_file.c
+index dcaa41d10e35..8e2c70b12ab1 100644
+--- a/src/pcm/pcm_file.c
++++ b/src/pcm/pcm_file.c
+@@ -584,8 +584,10 @@ static snd_pcm_sframes_t snd_pcm_file_readi(snd_pcm_t *pcm, void *buffer, snd_pc
+ 	__snd_pcm_lock(pcm);
+ 
+ 	frames = _snd_pcm_readi(file->gen.slave, buffer, size);
+-	if (frames <= 0)
++	if (frames <= 0) {
++		__snd_pcm_unlock(pcm);
+ 		return frames;
++	}
+ 
+ 	snd_pcm_areas_from_buf(pcm, areas, buffer);
+ 	snd_pcm_file_areas_read_infile(pcm, areas, 0, frames);
+@@ -605,8 +607,10 @@ static snd_pcm_sframes_t snd_pcm_file_readn(snd_pcm_t *pcm, void **bufs, snd_pcm
+ 
+ 	__snd_pcm_lock(pcm);
+ 	frames = _snd_pcm_readn(file->gen.slave, bufs, size);
+-	if (frames <= 0)
++	if (frames <= 0) {
++		__snd_pcm_unlock(pcm);
+ 		return frames;
++	}
+ 
+ 	snd_pcm_areas_from_bufs(pcm, areas, bufs);
+ 	snd_pcm_file_areas_read_infile(pcm, areas, 0, frames);
+-- 
+2.16.4
+

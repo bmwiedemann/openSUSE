@@ -1,0 +1,243 @@
+-------------------------------------------------------------------
+Fri Aug 23 20:20:31 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase for summaries.
+
+-------------------------------------------------------------------
+Sat Aug 17 16:27:23 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 2.14: No changelog provided.
+- Add tarball signature verification:
+  * Add Gerd Hoffmann's public key as source (fbi.keyring).
+  * Add tarball signature as source.
+
+-------------------------------------------------------------------
+Wed May 11 03:03:48 UTC 2016 - stefan.bruens@rwth-aachen.de
+
+- Update to version 2.12:
+  * add poppler based fbpdf
+- Update to version 2.11:
+  * Untangled the console switching code from the fbdev code.
+  * Added support for drm, which also is the new default.
+  * Missing console switching support is not a fatal error any more.
+    -> fbi can be used from a remote login
+
+-------------------------------------------------------------------
+Sun Jan 17 18:56:29 UTC 2016 - p.drouand@gmail.com
+
+- Update to version 2.10
+  * No changelog available
+- Remove 0001-fix-misssing-space.patch; fixed on upstream release
+- Perform a spec-cleaner
+
+-------------------------------------------------------------------
+Thu May 10 08:16:03 UTC 2012 - toganm@opensuse.org
+
+- cleanup 
+  * fixed file-contains-date-and-time warning
+  * removed not used ida.png and ida-desktop.patch
+
+-------------------------------------------------------------------
+Wed May  9 14:28:53 UTC 2012 - toganm@opensuse.org
+
+- reworked package
+  * remove dependency to openmotif-devel and therefore remove
+  subpackage ida due to licensing (bnc#761246) 
+  * fix fbi man page display error
+
+-------------------------------------------------------------------
+Wed May  2 06:46:42 UTC 2012 - toganm@opensuse.org
+
+- update to 2.09
+  * fix /usr/share/X11/app-defaults/Ida installation 
+
+
+-------------------------------------------------------------------
+Sun Aug  7 05:47:14 UTC 2011 - lazy.kent@opensuse.org
+
+- update to 2.08
+- removed libpng-1.4 and jpeg-8.0.2 patches (fixed upstream)
+- fix build dependencies (requires libpcd-devel)
+- fbi package requires ghostscript-library to run fbgs script
+- added desktop_database_post/un macros for ida
+- updated site URL
+- corrected License tags
+- use full URL for source
+- man pages marked as doc
+- minor spec formatting
+
+-------------------------------------------------------------------
+Thu Feb 17 09:51:01 CET 2011 - pgajdos@suse.cz
+
+- apply fbi-jpeg-8.0.2.patch conditionally (only for 11.3) 
+  [bnc#648885]
+
+-------------------------------------------------------------------
+Mon Dec 20 11:23:06 UTC 2010 - puzel@novell.com
+
+- disable fbi-jpeg-8.0.2.patch - fix build 
+
+-------------------------------------------------------------------
+Tue Nov 23 14:52:12 CET 2010 - pgajdos@suse.cz
+
+- use jpeg 8.0.2 headers and transupp.c [bnc#648855]
+
+-------------------------------------------------------------------
+Fri May  7 09:46:44 UTC 2010 - puzel@novell.com
+
+- add fbi-libpng-1.4.patch: fix build with new libpng 
+
+-------------------------------------------------------------------
+Wed Jan 28 15:34:59 CET 2009 - mvyskocil@suse.cz
+
+- fixed BR: libpcd2-devel 
+
+-------------------------------------------------------------------
+Wed Jun 25 14:02:04 CEST 2008 - puzel@suse.cz
+
+- updated to 2.07 
+  * bugfix release
+  * removed fbida-2.06.diff (fixed in upstream)
+
+-------------------------------------------------------------------
+Sat Apr 26 10:21:46 CEST 2008 - coolo@suse.de
+
+- remove unused header
+
+-------------------------------------------------------------------
+Tue Jul 17 18:29:29 CEST 2007 - pcerny@suse.cz
+
+- fixed some rpmlint complaints
+
+-------------------------------------------------------------------
+Wed May  9 17:25:28 CEST 2007 - pcerny@suse.cz
+
+- updated to 2.06
+
+-------------------------------------------------------------------
+Sat Mar  3 10:26:19 CET 2007 - aj@suse.de
+
+- Fix buildrequires.
+
+-------------------------------------------------------------------
+Mon Nov  6 23:35:13 CET 2006 - cthiel@suse.de
+
+- fix build (images in /usr/share/pixmaps/ don't need to be executable)
+
+-------------------------------------------------------------------
+Tue Aug  8 15:11:40 CEST 2006 - cthiel@suse.de
+
+- fix build with X.org 7.1
+
+-------------------------------------------------------------------
+Tue Jul 25 09:29:47 CEST 2006 - kraxel@suse.de
+
+- update to version 2.05
+  * bugfix release, #194659, DSA 1124-1
+
+-------------------------------------------------------------------
+Thu Jun 15 17:40:37 CEST 2006 - kraxel@suse.de
+
+- update to version 2.04
+  * bugfix release, closes #168728
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:49 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan 13 14:17:04 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Tue Jan 25 12:17:34 CET 2005 - kraxel@suse.de
+
+- update to version 2.03
+
+-------------------------------------------------------------------
+Mon Jan 10 15:37:29 CET 2005 - adrian@suse.de
+
+- fix last fix
+
+-------------------------------------------------------------------
+Tue Dec 14 21:10:19 CET 2004 - hvogel@suse.de
+
+- fix desktop file
+
+-------------------------------------------------------------------
+Mon Nov  8 16:21:43 CET 2004 - kraxel@suse.de
+
+- update to version 2.02
+
+-------------------------------------------------------------------
+Fri Jul 30 17:00:26 CEST 2004 - meissner@suse.de
+
+- Ported to use new libexif.
+
+-------------------------------------------------------------------
+Tue Jun  8 13:04:43 CEST 2004 - kraxel@suse.de
+
+- update to version 2.00
+
+-------------------------------------------------------------------
+Thu Mar 25 15:29:52 CET 2004 - kraxel@suse.de
+
+- remove workaround for #34903 (fixed now).
+
+-------------------------------------------------------------------
+Tue Mar  9 17:43:24 CET 2004 - kraxel@suse.de
+
+- workaround #34903.
+
+-------------------------------------------------------------------
+Fri Mar  5 23:28:01 CET 2004 - kraxel@suse.de
+
+- add libexif to neededforbuild.
+
+-------------------------------------------------------------------
+Thu Feb 26 23:43:57 CET 2004 - kraxel@suse.de
+
+- updated to version 1.31.
+
+-------------------------------------------------------------------
+Thu Jan 29 19:10:04 CET 2004 - kraxel@suse.de
+
+- updated to version 1.30.
+
+-------------------------------------------------------------------
+Wed Jan  7 16:41:20 CET 2004 - kraxel@suse.de
+
+- updated to version 1.29, added exiftran subpackage.
+
+-------------------------------------------------------------------
+Fri Oct 17 14:51:22 CEST 2003 - kraxel@suse.de
+
+- updated to version 1.28
+
+-------------------------------------------------------------------
+Fri Feb  7 11:35:54 CET 2003 - kraxel@suse.de
+
+- updated to version 1.26
+
+-------------------------------------------------------------------
+Thu Jun 20 16:53:13 CEST 2002 - kraxel@suse.de
+
+- updated to version 1.25
+
+-------------------------------------------------------------------
+Tue Apr 30 11:40:11 CEST 2002 - kraxel@suse.de
+
+- updated to version 1.24
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:07 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Mon Jan 28 11:11:37 CET 2002 - kraxel@suse.de
+
+- initial release.
+

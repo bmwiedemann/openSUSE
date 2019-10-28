@@ -1,0 +1,14 @@
+<package name="prozgui" project="openSUSE:Factory">
+  <title>GUI Advanced Linux Download Manager</title>
+  <description>This is the GUI version of ProZilla. It uses libprozilla and the GUI is
+created and designed with the Fast Light Tool Kit (fltk).
+
+ProZilla is a download accelerator program written for Linux to speed
+up the normal file download process. It often gives speed increases of
+around 200% to 300%. It supports both the FTP and HTTP protocols, and
+the theory behind it is very simple. The program opens multiple
+connections to a server, and each of the connections downloads a part
+of the file, thus defeating existing Internet congestion prevention
+methods which slow down a single connection based download.</description>
+  <devel project="network:utilities" package="prozgui"/>
+</package>

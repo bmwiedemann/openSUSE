@@ -1,0 +1,84 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a4aa889fde22f8b3225e3983ebd8c807</srcmd5>
+    <version>1.1.0</version>
+    <time>1503592312</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>506748</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c811a1211d2f3ed6a2435840b6a16589</srcmd5>
+    <version>1.1.0</version>
+    <time>1511817351</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545250</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>71b22b5482b4a8bdaaf206b8d4471861</srcmd5>
+    <version>1.1.0</version>
+    <time>1513015016</time>
+    <user>dimstar_suse</user>
+    <comment>- rework mypaint-scons-to-python3.patch
+  * fix more 'print' parentheses
+</comment>
+    <requestid>555698</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a3408e69828a0182da46993545bf2549</srcmd5>
+    <version>1.1.0</version>
+    <time>1525121786</time>
+    <user>dimstar_suse</user>
+    <comment>Needed __before__ accepting https://build.opensuse.org/request/show/602290
+
+- Updated standalone library libmypaint already provides its own lang files; just strip mypaint-lang of all libmypaint.mo files to avoid a file conflict between the libmypaint-lang and mypaint-lang.
+- Recommend instead of requiring lang package.
+- Don't run desktop database and icon cache update scripts as part
+  of post(un) for openSUSE &gt;=1500; these are taken care of by
+  rpm's file triggers.
+- Fix env-based hashbang in the main app binary.
+</comment>
+    <requestid>602293</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>4b8392fe2352f20c7d36ddc710083da4</srcmd5>
+    <version>1.1.0</version>
+    <time>1525256335</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602831</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>b75907dbb609981a5b8e5f2c2ff7a6e1</srcmd5>
+    <version>1.1.0</version>
+    <time>1525343672</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603340</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>08c8d320436b57944e6abf4f289be04f</srcmd5>
+    <version>1.1.0</version>
+    <time>1537787578</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637023</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>6003886fc24f96953444000a988273b6</srcmd5>
+    <version>1.1.0</version>
+    <time>1560338255</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709122</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>8d6e4bd566b05778dac2d38d234207fe</srcmd5>
+    <version>1.1.0</version>
+    <time>1572278371</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>743508</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,14 @@
+diff -aru hdjmod-1.28o/device.c hdjmod-1.28/device.c
+--- hdjmod-1.28o/device.c	2012-12-23 17:41:13.111607777 +0100
++++ hdjmod-1.28/device.c	2012-12-23 17:42:33.115898437 +0100
+@@ -2397,7 +2397,9 @@
+ 		nl_sk = netlink_kernel_create(
+ 									&init_net,
+ 									unit,
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3,7,0)
+ 									THIS_MODULE,
++#endif
+ 									NULL);
+ #else
+ 		nl_sk = netlink_kernel_create(
+Nur in hdjmod-1.28: .device.c.swp.

@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Mon Sep 23 16:35:39 UTC 2019 - ohering@suse.de
+
+- Update to version 0.14.0, with _service
+  See included Changes for details
+
+-------------------------------------------------------------------
+Tue Jul 25 13:04:54 UTC 2017 - ohering@suse.de
+
+- Use Group: Development/Languages/OCaml
+
+-------------------------------------------------------------------
+Mon Jul 17 13:03:37 UTC 2017 - ohering@suse.de
+
+- Update to version 0.11.0
+  See included Changes for details
+
+-------------------------------------------------------------------
+Mon Jul 17 12:48:58 UTC 2017 - ohering@suse.de
+
+- Wrap specfile conditionals to fix quilt setup
+
+-------------------------------------------------------------------
+Mon Jul 17 10:48:58 UTC 2017 - ohering@suse.de
+
+- Remove autodeps for pre openSUSE 12.1 releases
+
+-------------------------------------------------------------------
+Wed May 18 22:50:59 UTC 2016 - ohering@suse.de
+
+- Initial version 0.9.2 (fate#320836)
+  Separate project after ocaml-4.03
+

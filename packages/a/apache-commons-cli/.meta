@@ -1,0 +1,5 @@
+<package name="apache-commons-cli" project="openSUSE:Factory">
+  <title></title>
+  <description>The Apache Commons CLI library provides an API for parsing command line options passed to programs. It's also able to print help messages detailing the options available for a command line tool. </description>
+  <devel project="Java:packages" package="apache-commons-cli"/>
+</package>

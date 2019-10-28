@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Wed Oct 18 16:45:30 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+- Update to version 0.8.4
+  * See changelog at https://github.com/larsimmisch/pyalsaaudio/blob/0.8.4/CHANGES
+
+-------------------------------------------------------------------
+Mon Feb 13 18:47:31 UTC 2017 - trcs@gmx.com
+
+- specfile:
+  * applied spec-cleaner
+  * changed to https for source url
+  * updated source url to files.pythonhosted.org
+
+- splitted doc subpackage
+
+- update to version 0.8.2:
+  * fix #3 (we cannot get the revision from git for pip installs)
+
+- changes from version 0.8.1:
+  * document changes (this file)
+
+- changes from version 0.8:
+  * 'PCM()' has new 'device' and 'cardindex' keyword arguments.
+    + The keyword 'device' allows to select virtual devices,
+      'cardindex' can be used to select hardware cards by index (as
+      with 'mixers()' and 'Mixer()').
+    + The 'card' keyword argument is still supported, but deprecated.
+    + The reason for this change is that the 'card' keyword argument
+      guessed a device name from the card name, but this only works
+      sometimes, and breaks opening virtual devices.
+  * new function 'pcms()' to list available PCM devices.
+  * mixers() and Mixer() take an additional 'device' keyword argument.
+    This allows to list or open virtual devices.
+  * The default behaviour of Mixer() without any arguments has
+    changed.  Now Mixer() will try to open the 'default' Mixer instead
+    of the Mixer that is associated with card 0.
+  * fix a memory leak under Python 3.x
+  * some more memory leaks in error conditions fixed.
+
+-------------------------------------------------------------------
+Sun Jan 13 15:07:02 UTC 2013 - p.drouand@gmail.com
+
+- Initial python3 support
+
+-------------------------------------------------------------------
+Fri Sep  2 07:59:58 UTC 2011 - saschpe@suse.de
+
+- Initial version
+

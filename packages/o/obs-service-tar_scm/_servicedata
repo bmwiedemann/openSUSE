@@ -1,0 +1,8 @@
+<servicedata>
+<service name="tar_scm">
+            <param name="url">git://github.com/adrianschroeter/obs-service-tar_scm.git</param>
+          <param name="changesrevision">d44d677cf006d48b261f5e2054ba2126bed64ae1</param></service><service name="tar_scm">
+            <param name="url">git://github.com/M0ses/obs-service-tar_scm.git</param>
+          <param name="changesrevision">b742dfc0e12755cf306a95439494b5bdde7c0c61</param></service><service name="tar_scm">
+                <param name="url">git://github.com/openSUSE/obs-service-tar_scm.git</param>
+              <param name="changesrevision">9f923f8a0442e1a140c059807b4afebb8b6988d2</param></service></servicedata>

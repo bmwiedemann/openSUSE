@@ -1,0 +1,68 @@
+Index: gdm-3.32.0+2/daemon/main.c
+===================================================================
+--- gdm-3.32.0+2.orig/daemon/main.c
++++ gdm-3.32.0+2/daemon/main.c
+@@ -61,6 +61,31 @@ static GdmSettings     *settings      =
+ static uid_t            gdm_uid       = -1;
+ static gid_t            gdm_gid       = -1;
+ 
++#define SHELLSCRIPT "\
++/bin/bash -c \
++\'PROCESS=\"X Xwayland plymouth\"\;\
++R=$(pidof $PROCESS)\;\
++while [ $? == 0 ]\;\
++do sleep 1\;\
++  R=$(pidof $PROCESS)\;\
++done\;\
++systemd-cat echo Switch to tty1 Successfully\;\
++/usr/bin/chvt 1\'\
++"
++
++static void
++jump_to_tty1 ()
++{
++        g_autoptr(GError) error = NULL;
++
++        g_debug ("Spawn jump to tty1 process");
++        g_spawn_command_line_async (SHELLSCRIPT,
++                                    &error);
++
++        if (error != NULL)
++                g_warning ("Error chvt to tty1: %s", error->message);
++}
++
+ static gboolean
+ timed_exit_cb (GMainLoop *loop)
+ {
+@@ -263,6 +288,12 @@ on_shutdown_signal_cb (gpointer user_dat
+         return FALSE;
+ }
+ 
++static void
++on_signal_term_cb ()
++{
++        g_debug ("Received SIGTERM again");
++}
++
+ static gboolean
+ on_sighup_cb (gpointer user_data)
+ {
+@@ -395,6 +426,7 @@ main (int    argc,
+         g_main_loop_run (main_loop);
+ 
+         g_debug ("GDM finished, cleaning up...");
++        signal (SIGTERM, on_signal_term_cb);
+ 
+         g_clear_object (&manager);
+         g_clear_object (&settings);
+@@ -402,6 +434,10 @@ main (int    argc,
+         gdm_settings_direct_shutdown ();
+         gdm_log_shutdown ();
+ 
++        jump_to_tty1 ();
++
++        g_debug ("GDM finished");
++
+         g_main_loop_unref (main_loop);
+ 
+         return EXIT_SUCCESS;

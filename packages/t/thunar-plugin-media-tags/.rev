@@ -1,0 +1,124 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bbb9b2e10fcd34bc357c90dcc5e51727</srcmd5>
+    <version>0.1.2</version>
+    <time>1300435968</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64278 from user gberh
+</comment>
+    <requestid>64278</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ec2aebffae0444cfdb74e90d6eda6c8e</srcmd5>
+    <version>0.1.2</version>
+    <time>1300435979</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64278
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>01f889870ef578d543cd4a383713f335</srcmd5>
+    <version>0.1.2</version>
+    <time>1316618625</time>
+    <user>saschpe</user>
+    <comment>- fixed typo in thunar-plugin-media-tags.spec</comment>
+    <requestid>84055</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e9aa55bac0d50f373fe4e9cff7b6f26d</srcmd5>
+    <version>0.1.2</version>
+    <time>1318104228</time>
+    <user>lrupp</user>
+    <comment>- remove bogus dependency on xarchiver</comment>
+    <requestid>87120</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>e9aa55bac0d50f373fe4e9cff7b6f26d</srcmd5>
+    <version>0.1.2</version>
+    <time>1319182518</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2b1db0e0ba18607fafabcf994e4341d7</srcmd5>
+    <version>0.2.0</version>
+    <time>1322828579</time>
+    <user>coolo</user>
+    <comment>- update to version 0.2.0
+  - use thunarx-2 and exo-1 API
+  - call taglib_file_is_valid() for input audio files
+  - fix Gtk Warning of non-zero page size
+  - fix 1 second reloading
+  - fix a bunch of compiler warnings and build files
+  - translation updates
+- dropped obsolete
+  thunar-plugin-media-tags-0.1.2-port-to-thunarx-2.patch,
+  thunar-plugin-media-tags-0.1.2-port-to-exo-1.patch, and
+  thunar-plugin-media-tags-0.1.2-check-valid-audio.patch</comment>
+    <requestid>94867</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f33b054983d08ca24dc20856d292cd95</srcmd5>
+    <version>0.2.0</version>
+    <time>1323194905</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>397a4560b16b364e0240722df1bedc51</srcmd5>
+    <version>0.2.0</version>
+    <time>1334824851</time>
+    <user>coolo</user>
+    <comment>- added source URL
+
+- corrected URL
+- updated build dependencies
+- split off -lang subpackage</comment>
+    <requestid>112512</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>397a4560b16b364e0240722df1bedc51</srcmd5>
+    <version>0.2.0</version>
+    <time>1340184272</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>397a4560b16b364e0240722df1bedc51</srcmd5>
+    <version>0.2.0</version>
+    <time>1359110488</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>08264f5734213aadde5d5cec4408f230</srcmd5>
+    <version>0.2.1</version>
+    <time>1368453595</time>
+    <user>coolo</user>
+    <comment>- update to version 0.2.1
+  - automake updates
+  - translation updates</comment>
+    <requestid>175021</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>08264f5734213aadde5d5cec4408f230</srcmd5>
+    <version>0.2.1</version>
+    <time>1379664818</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>08264f5734213aadde5d5cec4408f230</srcmd5>
+    <version>0.2.1</version>
+    <time>1409303494</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fd2323b3c0f46e7c4abbe017a220055d</srcmd5>
+    <version>0.3.0</version>
+    <time>1529501098</time>
+    <user>maxlin_factory</user>
+    <comment>update to version 0.3.0 (forwarded request 617409 from seife)</comment>
+    <requestid>617419</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,24 @@
+diff -Burbp grub-0.97.orig/stage2/fsys_ext2fs.c grub-0.97/stage2/fsys_ext2fs.c
+--- grub-0.97.orig/stage2/fsys_ext2fs.c	2007-03-16 14:15:52.000000000 +0100
++++ grub-0.97/stage2/fsys_ext2fs.c	2007-03-16 16:25:19.000000000 +0100
+@@ -257,6 +257,8 @@ ext2fs_mount (void)
+   if ((((current_drive & 0x80) || (current_slice != 0))
+        && (current_slice != PC_SLICE_TYPE_EXT2FS)
+        && (current_slice != PC_SLICE_TYPE_LINUX_RAID)
++       && (current_slice != PC_SLICE_TYPE_ZEN)
++       && (current_slice != PC_SLICE_TYPE_ZEN_DISABLED)
+        && (! IS_PC_SLICE_TYPE_BSD_WITH_FS (current_slice, FS_EXT2FS))
+        && (! IS_PC_SLICE_TYPE_BSD_WITH_FS (current_slice, FS_OTHER)))
+       || part_length < (SBLOCK + (sizeof (struct ext2_super_block) / DEV_BSIZE))
+diff -Burbp grub-0.97.orig/stage2/pc_slice.h grub-0.97/stage2/pc_slice.h
+--- grub-0.97.orig/stage2/pc_slice.h	2003-07-09 13:45:53.000000000 +0200
++++ grub-0.97/stage2/pc_slice.h	2007-03-16 16:24:16.000000000 +0100
+@@ -114,6 +114,8 @@
+ #define PC_SLICE_TYPE_EXT2FS       	0x83
+ #define PC_SLICE_TYPE_LINUX_EXTENDED	0x85
+ #define PC_SLICE_TYPE_VSTAFS		0x9e
++#define PC_SLICE_TYPE_ZEN		0xbc
++#define PC_SLICE_TYPE_ZEN_DISABLED	0xbd
+ #define PC_SLICE_TYPE_DELL_UTIL		0xde
+ #define PC_SLICE_TYPE_LINUX_RAID	0xfd
+ 

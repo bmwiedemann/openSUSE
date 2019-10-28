@@ -1,0 +1,21 @@
+diff -up scala-2.10.0-RC3/src/compiler/scala/tools/ant/templates/tool-unix.tmpl.tool scala-2.10.0-RC3/src/compiler/scala/tools/ant/templates/tool-unix.tmpl
+--- scala-2.10.0-RC3/src/compiler/scala/tools/ant/templates/tool-unix.tmpl.tool	2012-11-21 17:01:54.000000000 +0100
++++ scala-2.10.0-RC3/src/compiler/scala/tools/ant/templates/tool-unix.tmpl	2012-11-25 14:55:22.583111734 +0100
+@@ -68,7 +68,16 @@ if uname | grep -q ^MINGW; then
+ fi
+ 
+ # Finding the root folder for this Scala distribution
+-SCALA_HOME="$(findScalaHome)"
++export JAVA_HOMe=/usr/share/jvm/java
++
++[ -r @@JAVADIR@@-utils/java-functions ] && . @@JAVADIR@@-utils/java-functions || exit 1
++
++set_javacmd || exit 3
++check_java_env || exit 4
++set_jvm_dirs || exit 5
++
++export SCALA_HOME=@@DATADIR@@/scala
++
+ SEP=":"
+ 
+ # Possible additional command line options

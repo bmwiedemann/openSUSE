@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Script
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           perl-Test-Script
-Version:        1.25
+Version:        1.26
 Release:        0
 %define cpan_name Test-Script
 Summary:        Basic cross-platform tests for scripts
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Test-Script/
+Url:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -44,6 +44,9 @@ The intent of this module is to provide a series of basic tests for 80% of
 the testing you will need to do for scripts in the _script_ (or _bin_ as is
 also commonly used) paths of your Perl distribution.
 
+It also provides similar functions for testing programs that are not Perl
+scripts.
+
 Further, it aims to provide this functionality with perfect
 platform-compatibility, and in a way that is as unobtrusive as possible.
 
@@ -60,13 +63,14 @@ platform safety, this module will err on the side of platform safety.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -name "*.sh" -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install

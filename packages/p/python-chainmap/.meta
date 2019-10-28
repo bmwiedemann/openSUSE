@@ -1,0 +1,5 @@
+<package name="python-chainmap" project="openSUSE:Factory">
+  <title>python-chainmap</title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-chainmap"/>
+</package>

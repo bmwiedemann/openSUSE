@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Mon Aug 28 20:43:35 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 0.2.11
+  * Fix use-after-free memory issue in callback handler.
+  * Fix docstring for get_output_latency().
+- Update to 0.2.10
+  * Release the GIL during PortAudio I/O calls to avoid potential deadlock.
+  * Add a few automated unit tests.
+- Update to PyAudio 0.2.9
+  * Fix overflow error handling logic for pa_read_stream.
+  * Fix IOError arguments.
+  * Python library surfaces issues with importing low-level C module.
+  * Code formatting update.
+  * Updates to examples for Python 3 compatibility.
+- Implement single-spec version
+- Fix source URL
+
+-------------------------------------------------------------------
+Mon Jul 14 15:30:37 UTC 2014 - toddrme2178@gmail.com
+
+- Update to 0.2.8
+  * bug fixes related to the Python GIL and device name encoding.
+
+-------------------------------------------------------------------
+Thu Oct 24 11:11:25 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Fri Nov  2 16:28:05 UTC 2012 - prusnak@opensuse.org
+
+- updated to 0.2.7
+
+-------------------------------------------------------------------
+Wed Oct  3 14:33:38 UTC 2012 - mvyskocil@suse.com
+
+- initial packaging of python-PyAudio for openSUSE
+

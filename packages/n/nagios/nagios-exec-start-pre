@@ -1,0 +1,79 @@
+#! /bin/sh
+# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany
+#
+# Original Author: Tim Hardeck
+# bases on the SUSE Icinga init script from Wolfgang Rosenauer, Lars Vogdt
+#
+CONFIG='/etc/nagios/nagios.cfg'
+
+# grab a config option
+get_var() {
+    if [ -n "$2" ]; then
+        set -- `grep ^$1 $2 | sed 's@=@ @' | tr -d '[:cntrl:]'`
+    else
+        set -- `grep ^$1 "$CONFIG" | sed 's@=@ @' | tr -d '[:cntrl:]'`
+    fi
+    shift # remove first ARG => search-string
+    echo $*
+}
+
+# get variables from config file
+check_result_path="$(get_var check_result_path)"
+command_file="$(get_var command_file)"
+lock_file="$(get_var lock_file)"
+log_file="$(get_var log_file)"
+nagios_user="$(get_var nagios_user)"
+nagios_group="$(get_var nagios_group)"
+nagios_cmdgrp="$(get_var nagios_cmdgrp)"
+resource_file="$(get_var resource_file)"
+state_retention_file="$(get_var state_retention_file)"
+status_file="$(get_var status_file)"
+temp_file="$(get_var temp_file)"
+temp_path="$(get_var temp_path)"
+
+# use default values if above check doesn't work
+: ${check_result_path:=/var/spool/nagios}
+: ${command_file:=/var/spool/nagios/nagios.cmd}
+: ${lock_file:=/var/run/nagios/nagios.pid}
+: ${log_file:=/var/log/nagios/nagios.log}
+: ${nagios_user:=nagios}
+: ${nagios_group:=nagios}
+: ${nagios_cmdgrp:=nagcmd}
+: ${resource_file:=/etc/nagios/resource.cfg}
+: ${state_retention_file:=/var/log/nagios/retention.dat}
+: ${status_file:=/var/log/nagios/status.dat}
+: ${temp_file:=/var/log/nagios/nagios.tmp}
+: ${temp_path:=/var/run/nagios/tmp}
+
+# remove some perhaps left over files
+for file in "$command_file" "$lock_file" "$status_file" "$temp_file"; do
+    test -f "$file" && rm -f "$file"
+done
+# set default access rights for files and directories
+for file in "$log_file" "$state_retention_file" "$status_file"; do
+    if [ ! -e "$file" ]; then
+        touch "$file"
+    fi
+    chown --no-dereference ${nagios_user}:${nagios_cmdgrp} "$file"
+done
+for dir in "$check_result_path" $(dirname "$status_file"); do
+    install -d -m755 -o${nagios_user} -g${nagios_cmdgrp} "$dir"
+done
+for dir in $(dirname "$lock_file") ; do
+	install -d -m755 -o${nagios_user} -g${nagios_group} "$dir"
+done
+case "$temp_path" in 
+	/)
+		echo "temp_path is set to $temp_path - aborting" >&2
+		exit 1
+	;;
+    /tmp)
+	;;
+	/var/tmp)
+	;;
+	*)
+		install -d -m755 -o${nagios_user} -g${nagios_group} "$dir"
+	;;
+esac
+chmod 660 "$resource_file"
+chown --no-dereference ${nagios_user}:${nagios_cmdgrp} "$resource_file"

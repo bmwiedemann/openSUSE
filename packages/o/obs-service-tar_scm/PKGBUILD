@@ -1,0 +1,19 @@
+pkgname=obs-service-tar_scm
+pkgver=0.10.10.1566390389.9f923f8
+pkgrel=0
+pkgdesc="Source Service for the OpenSUSE Build Service (OBS)"
+arch=('any')
+url="https://github.com/openSUSE/obs-service-tar_scm"
+license=('GPL3')
+groups=('base-devel')
+makedepends=('python' 'python-yaml' 'python-dateutil' 'python-lxml' 'python-mock' 'bzr' 'git' 'mercurial' 'subversion' )
+depends=('python' 'python-yaml' 'python-dateutil' 'python-argparse' 'cpio' 'git' 'bzr' 'mercurial' 'subversion' )
+source=("obs-service-tar_scm-${pkgver}.tar.gz")
+provides=('obs-service-tar')
+sha256sums=('SKIP')
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" PREFIX=/usr install
+}
+

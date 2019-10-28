@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c346b317e8bc6e3ca949b47cca9b869d</srcmd5>
+    <version>1.1</version>
+    <time>1327404026</time>
+    <user>coolo</user>
+    <comment>new perl package with bad license</comment>
+    <requestid>100161</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>c346b317e8bc6e3ca949b47cca9b869d</srcmd5>
+    <version>1.1</version>
+    <time>1340183866</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>c346b317e8bc6e3ca949b47cca9b869d</srcmd5>
+    <version>1.1</version>
+    <time>1359109717</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>c346b317e8bc6e3ca949b47cca9b869d</srcmd5>
+    <version>1.1</version>
+    <time>1379663726</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>c346b317e8bc6e3ca949b47cca9b869d</srcmd5>
+    <version>1.1</version>
+    <time>1409302351</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c96fd32896de87fda1b0360f1616d58c</srcmd5>
+    <version>1.11</version>
+    <time>1429107832</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296065</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b5e40fe3d412b61f2f0da211b45b3451</srcmd5>
+    <version>1.12</version>
+    <time>1436734355</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315367</requestid>
+  </revision>
+</revisionlist>

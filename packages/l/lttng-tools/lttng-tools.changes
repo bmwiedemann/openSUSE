@@ -1,0 +1,500 @@
+-------------------------------------------------------------------
+Wed Nov 14 12:28:56 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 2.10.5:
+  * Fix: missing context enum values in session xml schema.
+  * Tests: add session auto-loading test cases.
+  * Bash completion: ignore namespace for xmllint parsing.
+  * Typo in ust consumer log message (channek -> channel).
+  * Fix: use signed variable for refcounting of
+    consumer_relayd_sock_pair.
+  * Fix: warning due to hash_key_str() being not const-correct.
+  * Print consumerd32/64/kernel configuration.
+  * Fix: calling ht_{hash, match}_enum with wrong argument.
+  * Fix: probes should be compared strictly by events metadata.
+  * Fix: test_ust-dl is generated at configure-time.
+  * Fix: cmd line options overwrite env variable config options.
+  * Fix: perform the initialization memory barrier out of loop body.
+  * Port: fix format warnings on Cygwin.
+  * Add missing include for ssize_t on Cygwin.
+  * Fix: sessions with agent channels fail to load.
+  * Fix: don't wait for the load thread before serving client
+    commands.
+  * Fix: sessiond fails to launch on --without-ust configuration.
+  * Fix: agent thread poll set creation failure results in deadlock.
+  * Fix: test uses sizeof() on the wrong operand of strncpy.
+  * Fix: ret may be used uninitialized in sample_channel_positions().
+- Add gpl-2.0.txt and lgpl-2.1.txt to the library packages with the
+  %license tag.
+
+-------------------------------------------------------------------
+Sun Jun 17 18:47:02 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 2.10.4 (changes since 2.10.2):
+  * Fix: Set errno with value from SO_ERROR on error.
+  * Fix: Missing value handling for lttng_event_context_type.
+  * Fix: Use SOL_SOCKET level for SO_KEEPALIVE on all platform.
+  * Fix: Error out on leftover arguments.
+  * Fix: Reply to version check even on protocol mismatch.
+  * Fix: Error handling on relay version check.
+  * Document add-context limitation for started session.
+  * Fix: add-context cannot be performed after a session has been
+    started.
+  * Fix: Duplicated kernel consumer socket locking.
+  * Fix: Remove unused event types in MI XML schema.
+  * Tests: Cleanly exit from test apps on reception of SIGTERM.
+  * Document consumer socket locking assumptions.
+  * Fix: Consumer socket lock not held during snapshot record.
+  * Fix: set_relayd_for_snapshot does not acquire the consumer
+    socket lock.
+  * Fix: send_channel_monitor_pipe does not take the consumer
+    socket lock.
+  * Document the locking assumptions of consumerd-relayd socket
+    passing.
+  * Assert that the consumer lock is held while sending FDs to
+    consumerd.
+  * Assert that the consumer socket lock is taken during
+    communication.
+  * Tests: Refuse to run test suite if lttng processes are present.
+  * Fix: Metadata channel leak when using the snapshot tracing
+    mode.
+  * Fix build: in_git_repo is used before being set.
+  * Add DBG statement for TCP keep-alive options.
+  * Fix: Unprivilieged sessiond agent port clashes with root
+    sessiond.
+  * Fix: Erroneous use of extern keyword.
+  * Fix: Failure to launch agent thread is not reported.
+  * Fix: Agent may not be ready on launch.
+  * Fix: Checking for existing session daemon is done after
+    daemonising.
+  * Fix: lttng logs nanoseconds.
+  * Fix: stream_per_chan_id_ht should allow duplicates.
+  * Fix: relayd send_command() util not logging on failure.
+  * Fix: Create_output_path() relayd util is not
+    const-correct.
+  * Fix: Kernel snapshot handling of EAGAIN.
+  * Fix validate_trace_empty test check.
+  * Fix: Circular inclusion of lttng.h results in warning.
+  * Fix: Channel lock must be taken to check for pending
+    notifications.
+  * Fix: Quiet option is not set in sessiond-config.
+  * Fix: Hold consumer socket lock for consumer_send_msg.
+  * Fix: Use off_t type for lseek function return value to avoid
+    overflow.
+  * Fix: Double similar condition.
+- Use tarball signing.
+
+-------------------------------------------------------------------
+Thu Mar 15 16:19:49 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 2.10.2:
+  * Do not flag consumer as disabled on relayd comm failure.
+  * Cleanup inactive FDs in the consumer polling thread.
+  * man: Document dead-peer detection for lttng-relayd.
+  * lttng-relayd: Use the TCP keep-alive mechanism to detect a
+    dead-peer.
+  * Tests: race between consumer pause and trace start/stop.
+  * Fix notification thread being not notified of channel creation
+    on application error.
+  * Fix using putenv() and free()-ing the value is invalid.
+  * Fix unknown consumer type considered a libc error.
+  * Fix that consumerd(64/32)_lib_dir can be NULL.
+  * Fix a nonsensical message printed by lttng track/untrack.
+  * Fix O_CLOEXEC being erroneously used on pipe creation.
+  * Fix a wrong parameter to fcntl in pipe_set_flag.
+  * Use lttng_clock_gettime instead of clock_gettime.
+  * Close channel monitor pipe after killing the
+    metadata_timer_thread.
+  * Use file based synchronisation for python logging test.
+  * Test: Add file based synchronisation point for the Python test
+    application.
+  * Fix wrong use of the relay_streams_sent in snapshot.
+  * Fix the return code of lttcomm_send_unix_sock signed.
+  * Fix a src/bin/lttng/utils.c: cast incompatible pointer warning.
+  * Fix: src/common/pipe.h: include <sys/types.h> for ssize_t and
+    mode_t.
+  * Fix detect dlmopen() and disable corresponding tests if not
+    available.
+  * Use tmpdir for intermediary files.
+  * Fix include scripts for distribution.
+  * Fix a typo in lttng-consumerd file default.
+  * Fix missing NULL checks in logging statements.
+  * Test: Kernel testing for notification.
+  * Kernel consumerd sock paths need rundir substitution.
+  * Create lttng run dir regardless of user privilege.
+  * Make version.h generation work with dash.
+  * lttng-enable-event(1): filtering: Specify that `$ctx.cpu_id`
+    is available.
+  * Centralise sessiond config option handling.
+  * Fix buffer overflow warning in python bindings.
+  * Tests fix: BT2 does not output the metadata of a trace
+    collection.
+
+-------------------------------------------------------------------
+Sat Nov  4 10:10:46 UTC 2017 - sor.alexei@meowr.ru
+
+- Add lttng-tools-fix-pkgconfig.patch: Add missing dependencies to
+  lttng-ctl.pc.
+- Build for aarch64.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Sat Oct  7 23:43:33 UTC 2017 - jengelh@inai.de
+
+- Rectify RPM groups. Remove redundant %clean section.
+  Replace old RPM macros.
+
+-------------------------------------------------------------------
+Fri Oct  6 16:00:21 UTC 2017 - tonyj@suse.com
+
+- Fix typo in package summary
+
+-------------------------------------------------------------------
+Thu Aug 31 20:41:08 UTC 2017 - tonyj@suse.com
+
+- Update to version 3.10 for SLE15 (bsc#1055683)
+- Adhere to shared library policy (new lib: liblttng-ctl$sover)
+- Do not package static libraries
+
+-------------------------------------------------------------------
+Tue Aug  2 16:32:36 UTC 2016 - normand@linux.vnet.ibm.com
+
+- add ppc64/ppc64le in ExclusiveArch
+
+-------------------------------------------------------------------
+Thu Jan 28 17:53:26 UTC 2016 - tonyj@suse.com
+
+- Update to bugfix release 2.7.1 for SLE12SP2
+  Changelog:
+    http://git.lttng.org/?p=lttng-tools.git;a=blob_plain;f=ChangeLog;hb=v2.7.1 
+
+-------------------------------------------------------------------
+Mon Oct  5 17:23:09 UTC 2015 - tonyj@suse.com
+
+- Upgrade to release version 2.7.0 (FATE#319273)
+  http://git.lttng.org/?p=lttng-tools.git;a=blob_plain;f=ChangeLog;hb=v2.7.0
+  to view changelog from v2.7.0-rc1 to v2.7.0
+
+-------------------------------------------------------------------
+Tue Jul 28 22:42:00 UTC 2015 - tonyj@suse.com
+
+- Update to version 2.7.0-rc1 (FATE#319273)
+  Changelog for differences between 2.4.0 and this point may be found at:
+    http://git.lttng.org/?p=lttng-tools.git;a=blob_plain;f=ChangeLog;hb=1808007961cfaa7f915e44424f790e616219a361
+
+-------------------------------------------------------------------
+Tue Apr 15 17:39:30 UTC 2014 - tonyj@suse.com
+
+- Update to version 2.4.1
+  Changelog:
+    * Fix: don't delete stream from connection recv list
+    * Fix: use after free of a relayd stream
+    * Fix: don't print stream name in error message
+    * Fix: take session list lock when listing tp
+    * Fix: add consumer wake up pipe to avoid race
+    * Fix: don't spawn relayd if URL is provided
+    * Fix: don't ask data pending if session was not started
+    * Fix: missing test file in EXTRA dist
+    * Fix: allow empty URL for live session creation
+    * Fix: missing valid return code when adding an URI to consumer
+    * Fix: syntax error in lttng.1
+    * Fix: check relayd fd leak in lttng cmdline
+    * Fix: remove unused tp in high-throughput test
+    * Use autoconf AM_MAINTAINER_MODE.
+    * Fix: clang 'constant-out-of-range-compare' warning
+    * Fix: Unchecked session pointer when destroying a connection in relayd 
+    
+- Add dependancy on babeltrace and recommend kmps (bnc#872688)
+
+-------------------------------------------------------------------
+Fri Feb 28 21:45:30 UTC 2014 - tonyj@suse.com
+
+- Update to version 2.4.0. Changelog for changes between 2.3.0 and 2.4.0
+  may be found at: http://git.lttng.org/?p=lttng-tools.git;a=blob_plain;f=ChangeLog;hb=refs/heads/stable-2.4
+
+-------------------------------------------------------------------
+Mon Feb 10 18:26:45 UTC 2014 - tonyj@suse.com
+
+- Update to version 2.3.1
+
+-------------------------------------------------------------------
+Mon Mar 11 21:25:06 UTC 2013 - tonyj@suse.com
+
+- Upgrade to version 2.1.1 (FATE#314846)
+  Changelog 2.1.1:
+	* Fix: update next_net_seq_num after sending header
+	* Fix: wrong loop continuation in metadata thread
+	* Fix: lttng create session memleaks
+	* Fix: remove unused session id map
+	* Fix: wrong session id used on relayd lookup
+	* Fix: add missing UST abi header for make dist
+	* Fix: add missing rcu read side lock/unlock
+
+  Changelog 2.1.0:
+	* STABLE VERSION 2.1.0-stable - "Basse Messe"
+	* Multiple minor fixes
+	* Multiple memory and fd leaks
+	* Fix: Off by one in seq num for data pending command
+	* Fix: flag metadata stream on quiescent control cmd
+	* Fix: prioritize control socket communication in relayd
+	* Fix: poll and epoll fd set reallocation
+	* Fix: add missing goto pending if data is inflight
+	* Fix: remove ua_sess->started assert on stop trace
+	* Set classes of traffic in high_throughput_limit
+	* Fix: use the poll wait ret value when iterating on fd(s)
+	* Fix: force the poll() return value to be nb_fd
+	* Fix: Wrong check of node when cleaning up ht
+	* Fix: set started flag of ust app after ustctl
+	* Fix: memory leak in add relayd socket error path
+	* Fix: add packed attribute to filter structure
+	* Fix: Add missing health code update for consumer command
+	* Add LTTNG_PACKED macro
+	* Fix data pending for inflight streaming
+	* Map session id of relayd and sessiond in consumer
+	* Add the relayd create session command
+	* Make the consumer sends a ACK after each command
+	* Remove MSG_WAITALL on every recvmsg() socket typ
+	* Fix: Add missing relayd ht cleanup and ht destroy
+	* Fix: Relayd and sessiond version check
+	* Fix: protect consumer_find_channel with rcu locking
+	* Fix: don't steal key when adding a metadata stream
+	* Consumer hold stream mutex for add stream
+
+  Changelog 2.1.0-rc9:
+	* Fix: set the stream ht static in consumer file
+	* Update sessiond man page with new env var
+	* Update lttng.1 man page
+	* Fix: enable-consumer for all domains missing dir
+	* Fix: Add missing fct prototypes when disabling UST
+	* Fix a typo in lttng-probe-module name
+	* Assign values to enum lttcomm_sessiond_command
+	* Fix: run health test only if root
+	* Clarify empty string/NULL filter errors
+	* Fix: add missing padding for UST filter
+
+  Changelog 2.1.0-rc8:
+	* Fix: Uninit. variable in lttng view
+	* Add already enabled UST event error code
+	* lttng.h API update: set filter becomes enable event with filter
+	* Change the UST event hash table match function
+	* Pass lttng_event struct to the set_filter API call
+	* Adding context to an event is no longer possible
+	* Add UST overlap tests
+	* Add filter sequence number to UST
+	* Fix: Typo from a previous patch in an assert()
+	* Fix: Warn if session is running with lttng view
+	* Fix: Add bash requirement to README for make check
+	* Fix: add the notion of domain to lttng.1 man page
+	* Enable additional kernel probes
+	* Update CodingStyle
+	* Use the new functions for default subbuf sizes
+	* Add default subbuf sizes getter functions
+	* Add max() and min() macro in common
+
+  Changelog 2.1.0-rc7:
+	* Fix: Add pointer check when freeing poll events
+	* Fix: FD leak on thread error
+	* Fix: Wrong fd used by kernel_wait_quiescent
+	* Support new lttng-ust error code
+	* Fix: Don't set filter if enable event fails
+	* Fix: Wrong data port when listing session
+	* Fix: Enable event after start command
+	* Fix: Teardown of thread_manage_clients on failure of listen/create_poll
+	* Add a timeout to UST application socket
+	* Fix: Consumerd error socket connect race
+	* Fix: Set CLOEXEC flag on every created sockets
+	* Remove consumer poll timeout in data thread
+	* Fix: RCU hash table seed
+	* Fix: Do not install health tests helper libraries
+	* Fix: Create default channel on add-context if none
+	* Support new liblttng-ust-ctl error code
+	* Fix: Add EPIPE error handling on buffer splice
+	* Fix: Channel creation error return code was not set
+	* Fix: Wrong poll events on UST application socket
+	* Fix: Remove dependency to urcu-cds in tools tests
+	* Fix: Missing librt dependency in configure check for lttng-ust-ctl
+	* Fix: Don't append datetime to default session name
+	* Fix: Deny session creation name 'auto'
+	* Fix: Add space for stream name CPU number
+	* Fix: Add output option to enable-channel command
+
+  Changelog 2.1.0-rc6:
+	* Tests: Add filtering tests for uncovered cases
+	* Fix: Sync issue when deleting a data stream
+	* Rename data_available to data_pending
+	* Fix: consumer health state
+	* Fix: Add the ACCOUNTING flag to ht creation and set bucket size to 0
+	* Fix: Bad return error code handling
+	* Fix: Use after free() of the rundir string
+	* Fix: Cleanup UST app session on ustctl create session error
+	* Fix: add missing pthread_join in sessiond
+	* Fix: free running directory string
+	* Fix: UST app clean list node usage
+	* Add liblttng-ctl destructor to cleanup memory
+	* Fix: Cleanup URIs on teardown
+	* Fix: relayd memleaks
+	* Fix: Memory leaks of allocated URIs
+	* Fix: consumer output memory leak on creation
+	* Fix: missing addrlen initialization before accept(2)
+	* Fix: relayd trace file padding memleak
+	* Fix: Remove useless consumer subdir string concatenation
+	* Fix: lttng create allocated path memleak
+	* Fix: Cppcheck memleakOnRealloc mistake
+	* Fix: Synchronization issue for data available command
+	* Fix: consumer relayd cleanup on disconnect
+	* Fix: Handle the unary bitwise negation operator (~) in the XML printer
+	* Fix: Possible memory leaks when creating filter IR root node
+	* Fix: Delete stream on write error in consumer
+	* Fix: Error handling when sending relayd sockets to consumer
+	* Add stream lock comment for nesting
+	* Fix: Mutex and RCU lock nesting in consumer
+	* Fix: Uninitialized ret code
+	* Fix: Remove bad condition and fix overflow issue
+	* Fix: consumerd pthread error flow
+	* Fix: Set a single return point and mutex unlock
+	* Fix: Remove useless NULL and zero assignment
+	* Fix: segfault on create session with two URLs
+
+  Changelog 2.1.0-rc5:
+	* Fix: Remove network stream ID ABI calls
+	* Tests: Add filtering tests
+	* Wait for data availability when stopping a session
+	* Relayd data available command support
+	* Lib lttng-ctl data available command support
+	* Consumer daemon data available command support
+	* Add data structure for the data available command
+	* Change the metadata hash table node
+	* Make stream hash tables global to the consumer
+	* Move add data stream to the data thread
+	* Rename consumer threads and spawn them in daemon
+	* Fix: relayd close stream command was not working
+	* Fix: Relayd and consumerd socket leaks
+	* Fix: Missing -ENODATA handling in the consumer
+	* Fix: Empty metadata buffer(s) on HUP|ERR
+	* ABI with support for compat 32/64 bits
+	* Fix: Stream allocation and insertion consistency
+	* Fix: output number of bytes written by relayd
+	* Add hash table argument to helper functions
+	* Fix: Add missing call rcu and read side lock
+	* Tests: Fix LD_PRELOAD library lookup path for health tests
+	* Fix: Add arbitrary wait period for kernel streaming test
+	* Fix coding style and add/change debug statements
+	* Fix: Build out of src tree
+	* Tests: Add health check tests to configure
+	* Tests: Add health check thread stall test
+	* Tests: Add health check thread exit test
+	* Tests: Add a health check utility program
+	* Add testpoints in lttng-sessiond for each threads
+	* New testpoint mechanism to instrument binaries for testing
+	* Fix: off-by-one in comm proto between lttng-ctl and sessiond
+	* Fix: Metadata stream leak when received in consumer
+	* Fix: consumer_allocate_stream error handling
+	* Fix: consumer should await for initial streams
+	* Fix: Missing rcu read side lock in consumer
+
+  Changelog 2.1.0-rc4:
+	* Fix: Change sempahore to pthread conditions
+	* Fix: relayd relay_send_version: handle sscanf return code
+	* Fix relayd: NULL ptr deref
+	* Fix: relayd: possible NULL ptr deref, memory leak, accept fd leak
+	* Tests: add print bytecode to filter grammar test
+	* Cleanup: assign values to bytecode opcodes
+	* Fix: Filter: Fix allocation length error
+	* Fix: Filter: add missing ast free
+	* Tests: Add high throughput with bandwidth limits test
+	* Fix: Returned code when listing kernel channel
+	* Tests: Rename helper functions to have consistent names
+	* Tests: Cleanup redundant code and use printing helper functions
+	* Tests: Add helper functions for printing status and banner
+	* Tests: Add a check for color support when printing status
+	* Fix: Lib lttng-ctl on error returns lttng code
+	* Fix: lttng_set_event_filter() was returning bad error code
+	* Fix: printing [no write] on lttng list -uf
+	* Fix: Disable event on filter error with lttng
+	* Fix: Wrong returned error code on UST enable event
+	* Add consumer commands to lttng.1 man page
+	* Add lttng_health_check(3) man page
+	* Fix: Remove LPOLLNVAL from consumer metadata revents
+	* Fix: Mismatch of field name between ust and tools
+	* Add the written value when listing fields
+	* Fix: Consumer return value check after mmap/splice
+	* Don't send the subbuffer padding for streaming
+	* Fix: Returned error code in consumer on read buffer
+
+  Changelog 2.1.0-rc3:
+	* Fix: Relayd fix ret value when adding a connection
+	* Add new thread in consumer for metadata handling
+	* Fix: consumer recv command error path
+	* Fix filter: fix recent regressions
+	* Update lttng-ust-abi.h from upstream lttng-ust
+	* Fix: Accept bytecode of length 65536 bytes
+	* Fix: Generation of bytecode longer than 32768 bytes fails
+	* Fix: Filter bytecode alloc buffer size must be a power of 2
+	* Add lttng-ctl SWIG python bindings
+	* Add C++ support to API header files
+	* Librarify filter in liblttng-ctl and hide symbols
+	* Set hidden visibility for calls used in lttng-ctl
+	* Notify the user if a filter is already enabled
+	* Install lttng-error.h and include it in lttng.h
+	* Add lttng-error.h containing every API err. code
+	* Fix: missing hostname context
+
+  Changelog 2.1.0-rc2:
+	* Fix: put back 2.0 output text for lttng create cmd
+	* Fix: remove set subdir call that uses bad ptr
+	* Filter: Handle the unary bitwise not operator (~) with an unsupported
+	* Fix: missing mutex unlock on register consumer err
+	* Remove underscore from ifndef of lttng.h
+	* Remove unused define in lttng.h
+	* Standardize lttng command line usage text
+	* Merge duplicate code in consumer for destroy relayd
+	* Merge duplicate code in consumer for add relayd
+	* Fix: Possible buffer overflows in strncat() usage
+	* Move code out of main.c and fix some issues
+
+  Changelog 2.1.0-rc1:
+	* Feature: Network Streaming
+	* Add the lttng-relayd binary for network streaming
+	* Support user space tracer filtering
+	* Multiple fixes 
+
+-------------------------------------------------------------------
+Fri Jun 29 18:54:50 UTC 2012 - tonyj@suse.com
+
+- Update to release 2.0.3
+
+-------------------------------------------------------------------
+Thu Jun 21 19:02:15 UTC 2012 - tonyj@suse.com
+
+- Update to release 2.0.2
+
+-------------------------------------------------------------------
+Thu Jun 14 16:19:39 CEST 2012 - ro@suse.de
+
+- changed specfile license entry to GPL-2.0 and LGPL-2.1 
+
+-------------------------------------------------------------------
+Fri Apr 20 20:07:41 UTC 2012 - tonyj@suse.com
+
+- Update to release 2.0.1
+
+-------------------------------------------------------------------
+Wed Mar 21 23:34:25 UTC 2012 - tonyj@suse.com
+
+- Update to release 2.0.0
+
+-------------------------------------------------------------------
+Wed Mar 14 16:31:16 UTC 2012 - tonyj@suse.com
+
+- Update to version 2.0.0-rc2
+
+-------------------------------------------------------------------
+Mon Feb 27 22:45:58 UTC 2012 - tonyj@suse.com
+
+- Update to version 2.0.0-rc1
+
+-------------------------------------------------------------------
+Wed Jan  4 19:54:56 UTC 2012 - tonyj@suse.com
+
+- Update to version 2.0.pre16
+

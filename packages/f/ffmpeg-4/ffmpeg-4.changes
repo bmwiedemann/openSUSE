@@ -1,0 +1,1616 @@
+-------------------------------------------------------------------
+Wed Sep 18 20:08:06 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.2.1:
+  * Stable bug fix release, mainly codecs and format fixes.
+- Drop upstream fixed patch:
+  0001-avcodec-h2645_parse-zero-initialize-the-rbsp-buffer.patch
+
+-------------------------------------------------------------------
+Tue Sep 10 08:30:36 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-avcodec-h2645_parse-zero-initialize-the-rbsp-buffer.patch
+  [boo#1149839, CVE-2019-15942]
+
+-------------------------------------------------------------------
+Wed Sep  4 12:05:35 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Make ffmpeg-4.2-dlopen-fdk_aac.patch less verbose
+
+-------------------------------------------------------------------
+Thu Aug 22 08:45:17 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Rename ffmpeg-4.2-dlopen-faac-mp3lame-opencore-x264-x265-xvid.patch
+  to ffmpeg-4.2-dlopen-fdk_aac.patch since we need dlopen only
+  for fdk_aac and looks like some other parts of the patch is
+  buggy.
+
+-------------------------------------------------------------------
+Thu Aug 22 06:42:57 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Sync ffmpeg-4.2-dlopen-faac-mp3lame-opencore-x264-x265-xvid.patch
+  from upstream.
+
+-------------------------------------------------------------------
+Sun Aug 18 09:43:38 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable LTO for arm, fixes build.
+
+-------------------------------------------------------------------
+Wed Aug 14 15:39:22 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- avoid ppc64le build error upstream issue
+  https://trac.ffmpeg.org/ticket/7861
+  Add ffmpeg4_swscale_replace_illegal_vector_keyword.patch
+  Add ffmpeg4_swscale_fix_altivec_vsx_recent_gcc.patch
+
+-------------------------------------------------------------------
+Mon Aug 12 16:51:30 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add ffmpeg-prefer-dav1d-for-playback.patch: Prefer using dav1d
+  for av1 playback over libaom.
+
+-------------------------------------------------------------------
+Tue Aug  6 15:35:35 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to FFmpeg 4.2 "Ada"
+  * tpad filter
+  * AV1 decoding support through libdav1d
+  * dedot filter
+  * chromashift and rgbashift filters
+  * freezedetect filter
+  * truehd_core bitstream filter
+  * dhav demuxer
+  * PCM-DVD encoder
+  * GIF parser
+  * vividas demuxer
+  * hymt decoder
+  * anlmdn filter
+  * maskfun filter
+  * hcom demuxer and decoder
+  * ARBC decoder
+  * libaribb24 based ARIB STD-B24 caption support (profiles A and C)
+  * Support decoding of HEVC 4:4:4 content in nvdec and cuviddec
+  * removed libndi-newtek
+  * agm decoder
+  * KUX demuxer
+  * AV1 frame split bitstream filter
+  * lscr decoder
+  * lagfun filter
+  * asoftclip filter
+  * Support decoding of HEVC 4:4:4 content in vdpau
+  * colorhold filter
+  * xmedian filter
+  * asr filter
+  * showspatial multimedia filter
+  * VP4 video decoder
+  * IFV demuxer
+  * derain filter
+  * deesser filter
+  * mov muxer writes tracks with unspecified language instead
+    of English by default
+  * added support for using clang to compile CUDA kernels
+- Drop ffmpeg-avcodec-libdav1d-AV1-decoder-wrapper.patch, merged
+  upstream.
+- Rebase and rename
+  ffmpeg-4.1-dlopen-faac-mp3lame-opencore-x264-x265-xvid.patch
+  to
+  ffmpeg-4.2-dlopen-faac-mp3lame-opencore-x264-x265-xvid.patch
+- See /usr/share/doc/packages/ffmpeg-4/Changelog for the complete
+  changelog.
+
+-------------------------------------------------------------------
+Wed Jul 31 13:27:44 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 4.1.4
+  * See /usr/share/doc/packages/ffmpeg-4/Changelog for the complete
+    changelog.
+
+-------------------------------------------------------------------
+Sat Jul  6 21:43:04 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add pkgconfig(libva-drm), pkgconfig(libva-x11) BuildRequires: and
+  conditional pkgconfig(libmfx) BuildRequires: Build intel-mediasdk
+  support when possible.
+
+-------------------------------------------------------------------
+Tue Jul  2 09:04:55 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Add back pkgconfig(fdk-aac) BuildRequires since we still need
+  the headers at compile time.
+- Fix include paths in
+  ffmpeg-4.1-dlopen-faac-mp3lame-opencore-x264-x265-xvid.patch
+
+-------------------------------------------------------------------
+Tue Jun 11 11:12:43 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Add ffmpeg-4.1-dlopen-faac-mp3lame-opencore-x264-x265-xvid.patch
+  from OpenMandriva to optionally enable runtime enabling of
+  fdkaac/lame/x264/x265
+- Enable runtime enabling for fdkaac via --enable-libfdk-aac-dlopen
+- Rename bcond fdk_aac to fdk_aac_dlopen
+- Remove fdk-aac BuildRequires now it's only dlopen'd
+
+-------------------------------------------------------------------
+Tue May 14 11:38:01 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Enable LTO for all except i586 (boo#1133123).
+
+-------------------------------------------------------------------
+Sun May  5 19:54:07 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable LTO again, as it breaks build for i586 (boo#1133123).
+
+-------------------------------------------------------------------
+Fri May  3 10:08:30 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Throw out svt-av1. The build is unable to complete
+  in openSUSE:Factory.
+
+-------------------------------------------------------------------
+Thu May  2 09:38:47 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use %make_build in order to provide parallel build for tools/*.
+  And make output verbose.
+
+-------------------------------------------------------------------
+Thu May  2 08:00:42 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Enable LTO for new SUSE versions (boo#1133123).
+
+-------------------------------------------------------------------
+Tue Apr 30 22:05:35 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update patch 0001-Add-ability-for-ffmpeg-to-run-svt-av1.patch
+  from upstream
+
+-------------------------------------------------------------------
+Tue Apr 02 23:56:11 UTC 2019 - seanlew@opensuse.org
+
+- Update to version 4.1.3:
+  * Updates and bug fixes for codecs, filters and formats.
+    [boo#1133153, boo#1133155, CVE-2019-11338, CVE-2019-11339]
+
+-------------------------------------------------------------------
+Thu Mar 28 09:21:05 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.1.2:
+  * Updates and bug fixes for codecs, filters and formats.
+
+-------------------------------------------------------------------
+Sun Mar 17 22:38:39 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add ffmpeg-avcodec-libdav1d-AV1-decoder-wrapper.patch: Backport
+  dav1d decoder support for aom (av1) codec. Following this, add
+  conditional pkgconfig(dav1d) BuildRequires and pass conditional
+  --enable-libdav1d to configure. Also add libdav1d to
+  enable_decoders.
+
+-------------------------------------------------------------------
+Sat Mar  9 11:59:31 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add a new filter line to rpmlintrc
+  (addFilter("no-dependency-on ffmpeg-4-lib*")).
+
+-------------------------------------------------------------------
+Mon Mar  4 05:07:43 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add trivial encoder rawvideo, already enabled in decoders
+
+-------------------------------------------------------------------
+Sat Mar  2 07:38:50 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Unconditionalize bs2b, it exists in openSUSE 13.x too.
+
+-------------------------------------------------------------------
+Fri Mar  1 08:02:29 UTC 2019 - bjorn.lie@gmail.com
+
+- Drop ffmpeg-libcdio_cdda-pkgconfig.patch: It only adds comments
+  in it's current form, so serves no purpose at all anymore.
+- Refresh patches with refresh_patches service.
+- Rename rpmlintrc file to ffmpeg-4-rpmlintrc.
+
+-------------------------------------------------------------------
+Thu Feb 28 06:41:01 UTC 2019 - bjorn.lie@gmail.com
+
+- Add missing conditional configure option: --enable-libbs2b,
+  BuildRequires already in place.
+
+-------------------------------------------------------------------
+Sat Feb 16 13:21:11 UTC 2019 - bjorn.lie@gmail.com
+
+- Add aac to enabled_encoders and enabled_decoders. Build the
+  native aac support in ffmpeg. These do not support HE-AAC (v1/2)
+  protocols.
+
+-------------------------------------------------------------------
+Sat Feb 16 12:41:43 UTC 2019 - davejplater@gmail.com
+
+- Update 0001-Add-ability-for-ffmpeg-to-run-svt-av1.patch from git
+  To fix build with SVT-AV1.
+
+-------------------------------------------------------------------
+Tue Feb 12 08:58:56 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 4.1.1:
+  * Various filter and codec fixes and enhancements.
+  * configure: Add missing xlib dependency for VAAPI X11 code.
+  * For complete changelog, see
+    /usr/share/doc/packages/ffmpeg-4/Changelog
+
+-------------------------------------------------------------------
+Tue Feb  5 09:14:03 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- enable AV1 support on x86_64
+  * requires patch 0001-Add-ability-for-ffmpeg-to-run-svt-av1.patch
+- refreshed all patches
+
+-------------------------------------------------------------------
+Tue Jan 15 20:45:50 UTC 2019 - bjorn.lie@gmail.com
+
+- Add conditional pkgconfig(vo-amrwbenc) BuildRequires and
+  conditionally pass --enable-libvo-amrwbenc --enable-version3 to
+  configure: build amrwb encoder if dependency is present.
+
+-------------------------------------------------------------------
+Wed Dec  5 18:07:58 UTC 2018 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Enable encoding/decoding with nvcodec, the required headers are already
+  in TW (permissively licensed). The required NVidia libraries are dlopen'ed.
+- Enable ILBC decoder, ilbc is free and already packaged standalone.
+
+-------------------------------------------------------------------
+Tue Nov 06 01:39:11 UTC 2018 - sean@suspend.net
+
+- Update ffmpeg to 4.1
+  * Lots of filter updates as usual: deblock, tmix, aplify,
+    fftdnoiz, aderivative, aintegral, pal75bars, pal100bars,
+    adeclick, adeclip, lensfun (wrapper), colorconstancy, 1D LUT
+    filter (lut1d), cue, acue, transpose_npp, amultiply,
+    Block-Matching 3d (bm3d) denoising filter, acrossover filter,
+    audio denoiser as afftdn filter, sinc audio filter source,
+    chromahold, setparams, vibrance, xstack,
+    (a)graphmonitor filter yadif_cuda filter.
+  * AV1 parser
+  * Support for AV1 in MP4
+  * PCM VIDC decoder and encoder
+  * libtensorflow backend for DNN based filters like srcnn
+  * -- The following only enabled in third-party builds:
+  * ATRAC9 decoder
+  * AVS2 video decoder via libdavs2
+  * IMM4 video decoder
+  * Brooktree ProSumer video decoder
+  * MatchWare Screen Capture Codec decoder
+  * WinCam Motion Video decoder
+  * RemotelyAnywhere Screen Capture decoder
+  * AVS2 video encoder via libxavs2
+  * ILBC decoder
+  * SER demuxer
+  * Decoding S12M timecode in H264
+  * For complete changelog, see https://git.ffmpeg.org/gitweb/ffmpeg.git/shortlog/n4.1
+- Remove 0001-avcodec-libaom-fix-setting-amount-of-threads.patch
+  (fixed upstream (bsc#776cdd1), remove ffmpeg-CVE-2018-13305.patch,
+  remove 0001-avformat-flvenc-Check-audio-packet-size.patch,
+  remove cve-2017-17555.diff (fixed upstream).
+
+-------------------------------------------------------------------
+
+Sat Nov 03 14:48:35 UTC 2018 - sean@suspend.net
+
+- Remove 0001-avformat-fivenc-Check-audio-packet-size.patch (fixed upstream (bsc#8591d16)
+- Update ffmpeg to 4.0.3
+  * For complete changelog, see https://git.ffmpeg.org/gitweb/ffmpeg.git/shortlog/n4.0.3
+
+-------------------------------------------------------------------
+Tue Oct 23 06:05:42 UTC 2018 - qzheng@suse.com
+
+- Add ffmpeg-CVE-2018-13305.patch to add a missing check for
+  negative values of mqaunt variable (CVE-2018-13305,
+  bsc#1100345).
+
+-------------------------------------------------------------------
+Thu Sep 13 23:17:35 UTC 2018 - 9+suse@cirno.systems
+
+- Add 0001-avcodec-libaom-fix-setting-amount-of-threads.patch
+
+-------------------------------------------------------------------
+Fri Aug 24 07:19:30 UTC 2018 - jengelh@inai.de
+
+- Add 0001-avformat-flvenc-Check-audio-packet-size.patch
+  [CVE-2018-15822, boo#1105869]
+
+-------------------------------------------------------------------
+Mon Aug 13 18:07:13 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 4.0.2:
+  * CVE-2018-13300: out of array read (boo#1100348, CVE-2018-13300)
+  * Various bugfixes and a revert
+
+-------------------------------------------------------------------
+Sat Aug 11 08:28:47 UTC 2018 - carmen@carmenbianca.eu
+
+- bsc#1092241 Enable webvtt encoders and decoders.
+
+-------------------------------------------------------------------
+Tue Aug  7 22:28:52 UTC 2018 - bjorn.lie@gmail.com
+
+- Build codec2 encoder and decoder, add libcodec2 to
+  enable_decoders and enable_encoders.
+
+-------------------------------------------------------------------
+Mon Aug  6 07:40:15 UTC 2018 - davejplater@gmail.com
+
+- Enable mpeg 1 and 2 encoders.
+
+-------------------------------------------------------------------
+Sun Aug  5 12:56:17 UTC 2018 - bjorn.lie@gmail.com
+
+- Add conditional pkgconfig(aom) BuildRequires and pass
+  --enable-libaom to configure as well as add libaom and libaom_av1
+  to enable_decoders and enable_encoders: Build AOMedia Video 1
+  (AV1) support.
+
+-------------------------------------------------------------------
+Tue Jul 31 14:39:25 UTC 2018 - tchvatal@suse.com
+
+- bsc#1103064 attempt to allow migration from the unprefixed devel
+  packages cleanly
+
+-------------------------------------------------------------------
+Fri Jul 27 08:56:56 UTC 2018 - tchvatal@suse.com
+
+- Reduce the optional conditional for the SLE12 backports to
+  cover everything, most of the packages in old codestreams were
+  not really ready as they need additional baselibs/etc.
+  * Since these are new features user will simply wait or use TW
+
+-------------------------------------------------------------------
+Fri Jul 27 07:03:06 UTC 2018 - jengelh@inai.de
+
+- Enable "kmsgrab" input device
+
+-------------------------------------------------------------------
+Thu Jul 26 08:09:32 UTC 2018 - tchvatal@suse.com
+
+- Redo the nvidia condition based on review feeback
+
+-------------------------------------------------------------------
+Wed Jul 25 08:30:56 UTC 2018 - tchvatal@suse.com
+
+- Do not condition nvidia based on BUILD_ORIG all the support is in
+  TW only and not on different instances as such safeguard it with
+  version check only bsc#1102532
+
+-------------------------------------------------------------------
+Wed Jul 18 12:13:38 UTC 2018 - tchvatal@suse.com
+
+- Add new bconds to build on SLE12 backports project without
+  requiring extra packages:
+  * %bcond_without codec2
+  * %bcond_without bs2b
+  * %bcond_without lv2
+  * %bcond_without rubberband
+  * %bcond_without soxr
+  * %bcond_without zmq
+
+-------------------------------------------------------------------
+Fri Jul  6 10:54:14 UTC 2018 - tchvatal@suse.com
+
+- Fix typo in swresample name
+
+-------------------------------------------------------------------
+Wed Jul  4 12:08:40 UTC 2018 - tchvatal@suse.com
+
+- Conditionalize full build to be primary only on Leap15+
+
+-------------------------------------------------------------------
+Tue Jul  3 08:46:42 UTC 2018 - tchvatal@suse.com
+
+- Add macros to allow conflicting with all other devel projects
+  to ensure we always install only one specific ffmpeg
+
+-------------------------------------------------------------------
+Sat Jun 30 13:58:40 UTC 2018 - tchvatal@suse.com
+
+- Conditionalize the vidstab build to not pull it on old releases
+- Conditionalize srt support to not pull it on older releases
+
+ -------------------------------------------------------------------
+Fri Jun 29 22:03:53 UTC 2018 - 9+suse@cirno.systems
+
+- Enable ffnvcodec when building with NVIDIA support
+
+-------------------------------------------------------------------
+Fri Jun 29 21:59:52 UTC 2018 - bjorn.lie@gmail.com
+
+- Add pkgconfig(srt) BuildRequires and pass --enable-libsrt to
+  configure, enable srt support.
+- Refresh patches with quilt:
+  * cve-2017-17555.diff
+  * ffmpeg-codec-choice.diff
+  * ffmpeg-libcdio_cdda-pkgconfig.patch
+  * ffmpeg-new-coder-errors.diff
+
+-------------------------------------------------------------------
+Fri Jun 29 00:07:18 UTC 2018 - 9+suse@cirno.systems
+
+- Enable libxml2 (used by MPEG DASH demuxer)
+
+-------------------------------------------------------------------
+Wed Jun 27 23:15:36 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 4.0.1
+  * Fixed some integer overflows, undefined shifts, negative
+    shifts, division by 0, and a null pointer deref.
+
+-------------------------------------------------------------------
+Mon Jun 18 16:33:12 UTC 2018 - bjorn.lie@gmail.com
+
+- Enable pkgconfig(vidstab) BuildRequires unconditionally, now
+  available in openSUSE.
+
+-------------------------------------------------------------------
+Thu Jun 14 07:53:52 UTC 2018 - tchvatal@suse.com
+
+- Conditionalize openmpt build to be resolvable on Leap 42.3
+
+-------------------------------------------------------------------
+Thu Jun 14 07:50:26 UTC 2018 - tchvatal@suse.com
+
+- Conditionalize mysofa build to be resolvable on Leap 15
+
+-------------------------------------------------------------------
+Thu Jun 14 07:40:24 UTC 2018 - tchvatal@suse.com
+
+- Conditionalize zimg to build on Leap 42.3
+
+-------------------------------------------------------------------
+Thu Jun 14 07:30:16 UTC 2018 - tchvatal@suse.com
+
+- Use autopatch
+
+-------------------------------------------------------------------
+Wed Jun 13 17:25:28 UTC 2018 - tchvatal@suse.com
+
+- Provide ffmpeg symbol without version on main package too
+
+-------------------------------------------------------------------
+Wed Jun 13 17:22:41 UTC 2018 - tchvatal@suse.com
+
+- Prefix all the devel packages and conflict between releases
+  * Provide always the %version-%release of the respective build
+
+-------------------------------------------------------------------
+Wed Jun 13 17:10:22 UTC 2018 - tchvatal@suse.com
+
+- Fix setup call to enter to proper folder
+
+-------------------------------------------------------------------
+Wed Jun 13 17:05:09 UTC 2018 - tchvatal@suse.com
+
+- Conflict with other ffmpeg-devel packages, simply always pull
+  one of them
+
+-------------------------------------------------------------------
+Wed Jun 13 16:59:56 UTC 2018 - tchvatal@suse.com
+
+- Move license markings to the libs itself
+- Add condition to switch between full build and lib only one
+- Add provides/obsoletes on the ffmpeg private headers
+
+-------------------------------------------------------------------
+Sat Jun  2 11:51:05 UTC 2018 - 9+suse@cirno.systems
+
+- Reintroduce conditional libxvid support since FFmpeg’s
+  MPEG4-ASP encoder is not quite up to par
+
+-------------------------------------------------------------------
+Mon May 28 23:03:17 UTC 2018 - jengelh@inai.de
+
+- Avoid double-nesting BUILD_ORIG with %withs.
+  (Reintroduces with_opencore)
+
+-------------------------------------------------------------------
+Sun May 27 23:11:01 UTC 2018 - bjorn.lie@gmail.com
+
+- Drop long obsolete and unused vo_aacenc %bcond_with.
+- Add conditional --enable-librtmp in build_orig part of spec,
+  conditional BuildRequires already in place.
+- Drop opencore conditional, explicitly enable them for all
+  BUILD_ORIG builds.
+- Drop conditional xvid %bcond_with, libxvidcore-devel
+  BuildRequires and --enable-libxvid call to configure: ffmpeg have
+  a fully capable mpeg4 encoder and decoder, avoid external
+  dependency.
+- Minor spec cleanup.
+
+-------------------------------------------------------------------
+Fri Apr 27 07:22:18 UTC 2018 - 9+suse@cirno.systems
+
+- Enable libmysofa support (sofalizer HRTF filter)
+
+-------------------------------------------------------------------
+Wed Apr 25 05:55:35 UTC 2018 - 9+suse@cirno.systems
+
+- Remove superfluous __DATE__/__TIME__ replacement
+- Correct libvpx version dependency
+- Enable support for additional libraries:
+  * libbs2b
+  * libcodec2
+  * libfontconfig
+  * libfribidi (already in BuildRequires)
+  * libgme
+  * libjack (already in BuildRequires)
+  * libopenmpt
+  * librubberband
+  * libsoxr
+  * libssh
+  * libv4l2
+  * libzmq
+  * lv2
+
+-------------------------------------------------------------------
+Sat Apr 21 10:59:38 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 4.0
+  * New audio filters: mcompand, acontrast, lv2 wrapper, hilbert,
+    aiir, drmeter
+  * New video filters: mix, normalize, fillborders, setrange,
+    deconvolve, entropy, vfrdet
+  * OpenCL overlay filter
+  * VAAPI MJPEG and VP8 decoding
+  * VAAPI-accelerated ProcAmp (color balance), denoise and
+    sharpness filters
+  * Removed the ffserver program
+  * Removed the ffmenc and ffmdec muxer and demuxer
+  * codec2 en/decoding via libcodec2
+  * New bitstream filter: hapqa_extract, filter_units
+  * Fixed img2dec infinite loop [boo#1090826, CVE-2018-7751]
+- Remove 0001-opusenc-psy-disable-stereo-searches.patch
+
+-------------------------------------------------------------------
+Mon Apr 09 20:47:49 UTC 2018 - enzokiel@kabelmail.de
+
+- Enable build against libzimg.
+
+-------------------------------------------------------------------
+Tue Mar 27 16:04:57 UTC 2018 - jengelh@inai.de
+
+- Add 0001-opusenc-psy-disable-stereo-searches.patch
+  to fix a crash in the Opus encoder when outputting mono.
+- Enable FFmpeg Opus encoder as a selectable runtime alternative
+  to Xiph libopus.
+
+-------------------------------------------------------------------
+Fri Mar 23 10:54:48 UTC 2018 - alarrosa@suse.com
+
+- Create a new package ffmpeg-private-devel which contains some
+  headers under /usr/include/ffmpeg/private that were not installed
+  by upstream. Those headers are needed by the libav package in order
+  to build avconv and other tools using the libav* libraries generated
+  by ffmpeg instead of its own. No other package should require
+  ffmpeg-private-devel.
+
+-------------------------------------------------------------------
+Wed Mar 21 16:04:32 UTC 2018 - alarrosa@suse.com
+
+- Build and install also the sidxindex tool
+
+-------------------------------------------------------------------
+Tue Feb 20 21:27:19 UTC 2018 - bjorn.lie@gmail.com
+
+- Enable mpeg1video and mpeg2video in enable_decoders, and remove
+  it from disable-decoders call given to configure, mpeg2 now
+  available in openSUSE.
+
+-------------------------------------------------------------------
+Tue Feb 13 14:39:31 UTC 2018 - nico.kruber@gmail.com
+
+- enable video stabilization/deshaking via libvidstab (optional)
+
+-------------------------------------------------------------------
+Mon Feb 12 11:55:47 UTC 2018 - jengelh@inai.de
+
+- Update to new bugfix release 3.4.2
+  * Fix integer overflows, multiplication overflows, undefined
+    shifts, and verify buffer lengths.
+  * avfilter/vf_transpose: Fix used plane count
+    [boo#1078488, CVE-2018-6392]
+  * avcodec/utvideodec: Fix bytes left check in decode_frame()
+    [boo#1079368, CVE-2018-6621]
+- Enable use of libzvbi for displaying teletext subtitles.
+- Fixed a DoS in swri_audio_convert(), added cve-2017-17555.diff
+  [boo#1072366, CVE-2017-17555].
+
+-------------------------------------------------------------------
+Mon Dec 11 11:24:03 UTC 2017 - jengelh@inai.de
+
+- Update to new bugfix release 3.4.1
+  * Fixed integer overflows, division by zero, illegal bit shifts
+  * Fixed the gmc_mmx function which failed to validate width
+    and height [boo#1070762, CVE-2017-17081]
+  * Fixed out-of-bounds in VC-2 encoder [boo#1069407, CVE-2017-16840]
+  * ffplay: use SDL2 audio API
+- Removed 0001-avcodec-x86-mpegvideodsp-Fix-signedness-bug-in-need_.patch
+  (upstreamed).
+
+-------------------------------------------------------------------
+Fri Dec  1 10:55:08 UTC 2017 - jengelh@inai.de
+
+- Add 0001-avcodec-x86-mpegvideodsp-Fix-signedness-bug-in-need_.patch
+  [boo#1070762]
+
+-------------------------------------------------------------------
+Thu Nov 30 07:07:49 UTC 2017 - jslaby@suse.com
+
+- install also doc/ffserver.conf
+
+-------------------------------------------------------------------
+Tue Oct 31 17:35:25 UTC 2017 - jengelh@inai.de
+
+- Get rid of ffmpeg-pkgconfig-version.patch.
+
+-------------------------------------------------------------------
+Mon Oct 16 11:16:16 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 3.4
+  * New video filters: deflicker, doublewave, lumakey, pixscope,
+    oscilloscope, robterts, limiter, libvmaf, unpremultiply,
+    tlut2, floodifll, pseudocolor, despill, convolve, vmafmotion.
+  * New audio filters: afir, crossfeed, surround, headphone,
+    superequalizer, haas.
+  * Some video filters with several inputs now use a common set
+    of options: blend, libvmaf, lut3d, overlay, psnr, ssim. They
+    must always be used by name.
+  * librsvg support for svg rasterization
+  * spec-compliant VP9 muxing support in MP4
+  * Remove the libnut and libschroedinger muxer/demuxer wrappers
+  * drop deprecated qtkit input device (use avfoundation instead)
+  * SUP/PGS subtitle muxer
+  * VP9 tile threading support
+  * KMS screen grabber
+  * CUDA thumbnail filter
+  * V4L2 mem2mem HW assisted codecs
+  * Rockchip MPP hardware decoding
+  * (Not in openSUSE builds, only original ones:)
+  * Gremlin Digital Video demuxer and decoder
+  * Additional frame format support for Interplay MVE movies
+  * Dolby E decoder and SMPTE 337M demuxer
+  * raw G.726 muxer and demuxer, left- and right-justified
+  * NewTek NDI input/output device
+  * FITS demuxer, muxer, decoder and encoder
+- Fixed a double free in huffyuv [boo#1064577, CVE-2017-15186]
+- Fixed an out-of-bounds in ffv1dec [boo#1066428, CVE-2017-15672]
+- Fixed a denial of service in rtmppkt [boo#1082335, CVE-2017-11665]
+
+-------------------------------------------------------------------
+Tue Sep 12 10:57:37 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 3.3.4.
+  * avutil/pixdesc: fixed NULL deref in av_color_primaries_name
+    [CVE-2017-14225] [boo#1058018]
+  * avformat/asfdec: Fix DoS in asf_build_simple_index
+    [CVE-2017-14223] [boo#1058019]
+  * avformat/mov: Fix DoS in read_tfra
+    [CVE-2017-14222] [boo#1058020].
+- Dropped integrated patches:
+  D 0001-avformat-hls-Fix-DoS-due-to-infinite-loop.patch
+  D 0001-avformat-nsvdec-Fix-DoS-due-to-lack-of-eof-check-in-.patch
+  D 0002-avformat-asfdec-Fix-DoS-due-to-lack-of-eof-check.patch
+  D 0002-avformat-mxfdec-Fix-DoS-issues-in-mxf_read_index_ent.patch
+  D 0003-avformat-cinedec-Fix-DoS-due-to-lack-of-eof-check.patch
+  D 0003-avformat-mxfdec-Fix-Sign-error-in-mxf_read_primer_pa.patch
+  D 0004-avformat-rmdec-Fix-DoS-due-to-lack-of-eof-check.patch
+  D 0005-avformat-rl2-Fix-DoS-due-to-lack-of-eof-check.patch
+  D 0006-avformat-mvdec-Fix-DoS-due-to-lack-of-eof-check.patch
+
+-------------------------------------------------------------------
+Thu Sep  7 08:33:20 UTC 2017 - jengelh@inai.de
+
+- Add 0001-avformat-nsvdec-Fix-DoS-due-to-lack-of-eof-check-in-.patch
+  [CVE-2017-14171] [boo#1057539],
+  0002-avformat-mxfdec-Fix-DoS-issues-in-mxf_read_index_ent.patch
+  [CVE-2017-14170] [boo#1057537],
+  0003-avformat-mxfdec-Fix-Sign-error-in-mxf_read_primer_pa.patch
+  [CVE-2017-14169] [boo#1057536]
+
+-------------------------------------------------------------------
+Mon Sep  4 20:19:07 UTC 2017 - jengelh@inai.de
+
+- Add 0001-avformat-hls-Fix-DoS-due-to-infinite-loop.patch
+  [CVE-2017-14058] [boo#1056762],
+  0002-avformat-asfdec-Fix-DoS-due-to-lack-of-eof-check.patch
+  [CVE-2017-14057] [boo#1056761],
+  0003-avformat-cinedec-Fix-DoS-due-to-lack-of-eof-check.patch
+  [CVE-2017-14059] [boo#1056763],
+  0004-avformat-rmdec-Fix-DoS-due-to-lack-of-eof-check.patch
+  [CVE-2017-14054] [boo#1056765],
+  0005-avformat-rl2-Fix-DoS-due-to-lack-of-eof-check.patch
+  (code not enabled in openSUSE, though in packman)
+  [CVE-2017-14056] [boo#1056760],
+  0006-avformat-mvdec-Fix-DoS-due-to-lack-of-eof-check.patch
+  [CVE-2017-14055] [boo#1056766]
+
+-------------------------------------------------------------------
+Sat Aug 26 14:56:44 UTC 2017 - jengelh@inai.de
+
+- Unconditionalize celt, ass, openjpeg, webp, netcdf, libva, vdpau.
+
+-------------------------------------------------------------------
+Fri Aug 25 06:34:58 UTC 2017 - olaf@aepfle.de
+
+- Build unconditionally with lame and twolame
+
+-------------------------------------------------------------------
+Sun Jul 30 23:07:52 UTC 2017 - jengelh@inai.de
+
+- Update to maintenance release 3.3.3
+  * Various fixes for integer overflows, too-large bit shifts
+    and buffer length checks.
+- Drop 0001-avcodec-apedec-Fix-integer-overflow.patch
+  (included upstream)
+
+-------------------------------------------------------------------
+Tue Jul 18 08:47:03 UTC 2017 - jengelh@inai.de
+
+- Add 0001-avcodec-apedec-Fix-integer-overflow.patch
+  to address CVE-2017-11399 [boo#1049095]
+
+-------------------------------------------------------------------
+Fri Jun 23 12:14:07 UTC 2017 - davejplater@gmail.com
+
+- Enabled cuda and cuvid for unrestricted build.
+- Fixed typos in devel package descriptions.
+
+-------------------------------------------------------------------
+Wed Jun  7 10:48:54 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 3.3.2
+  * Various fixes for integer overflows and too-large bit shifts
+
+-------------------------------------------------------------------
+Wed May 31 11:41:10 UTC 2017 - davejplater@gmail.com
+
+- Disable cuda support to fix boo#1041794:
+  ffmpeg 3.3. enablement of cuda prevents H264/avc1.4d400d videos
+  from playing on Youtube
+- Refreshed patches: ffmpeg-codec-choice.diff
+  ffmpeg-libcdio_cdda-pkgconfig.patch
+  ffmpeg-pkgconfig-version.patch and ffmpeg-new-coder-errors.diff
+
+-------------------------------------------------------------------
+Wed May 31 00:18:31 UTC 2017 - jengelh@inai.de
+
+- Add additional checks to ensure MPEG is off
+
+-------------------------------------------------------------------
+Fri May 19 17:57:00 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 3.3.1
+  * Fix uninitialized variables, signed integer overflow,
+    excess shift operations. Add boundary checks.
+
+-------------------------------------------------------------------
+Tue Apr 18 13:43:51 UTC 2017 - jengelh@inai.de
+
+- Enable ac3 per request from idonmez
+
+-------------------------------------------------------------------
+Fri Apr 14 14:02:24 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 3.3
+  * EBU R128 implementation now within ffmpeg, not relying on
+    external library anymore
+  * New video filters "premultiply", "readeia608", "threshold",
+    "midequalizer"
+  * Support for spherical videos
+  * New decoders: 16.8 and 24.0 floating point PCM, XPM
+  * New demuxers: MIDI Sample Dump Standard, Sample Dump eXchange demuxer
+  * MJPEG encoding uses Optimal Huffman tables now
+  * Native Opus encoder
+  * Support .mov with multiple sample description tables
+  * Removed the legacy X11 screen grabber, use XCB instead
+  * Removed asyncts filter (use af_aresample instead)
+  * resolved CVE-2016-10190 [boo#1022920],
+    CVE-2016-10191 [boo#1022921], CVE-2016-10192 [boo#1022922],
+    CVE-2017-7859 [boo#1034183], CVE-2017-7862 [boo#1034181],
+    CVE-2017-7863 [boo#1034179], CVE-2017-7865 [boo#1034177],
+    CVE-2017-7866 [boo#1034176]
+
+-------------------------------------------------------------------
+Thu Apr 13 13:33:35 UTC 2017 - idonmez@suse.com
+
+- Enable mp3 decoding
+
+-------------------------------------------------------------------
+Sat Feb 18 14:22:15 UTC 2017 - dimstar@opensuse.org
+
+- Have libavcodec57 additionally provide libavcodec57(unrestricted)
+  when building unrestricted: allow third party packages to require
+  the unrestricted codec. The existing -full provides is not
+  suitable as it can be provided by multiple libavcodec* packages,
+  whereas we require a specific ABI version.
+
+-------------------------------------------------------------------
+Sat Feb 11 11:31:55 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 3.2.4
+  * lavf/mov.c: Avoid heap allocation wrap in mov_read_hdlr
+  * lavf/mov.c: Avoid OOB in mov_read_udta_string()
+  * lavf/mov.c: Avoid heap allocation wraps in mov_read_{senc,saiz}()
+
+-------------------------------------------------------------------
+Sat Feb 11 09:13:02 UTC 2017 - olaf@aepfle.de
+
+- Make sure each subpkg comes from the same src.rpm
+
+-------------------------------------------------------------------
+Tue Feb  7 13:47:05 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 3.2.3
+  * Maintenance release with bugfixes
+  * ffplay: fix sws_scale possible out of bounds array access
+- Drop version number from patch: ffmpeg-2.4.5-arm6l.patch ->
+  ffmpeg-arm6l.diff
+
+-------------------------------------------------------------------
+Tue Jan  3 11:04:12 UTC 2017 - olaf@aepfle.de
+
+- Wrap netcdf support in build condtional because it is a drop-in pkg
+
+-------------------------------------------------------------------
+Tue Dec 20 12:05:52 UTC 2016 - tchvatal@suse.com
+
+- Enable all muxers and demuxers as they are just descriptor of format
+  thus do not change the behaviour in any relevant way.
+  * The best user now gets is proper interpretation of the format and
+    failure to play it without proper de/encoder
+  * Recommended by vlc team to be done this way :)
+
+-------------------------------------------------------------------
+Tue Dec  6 11:52:10 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 3.2.2
+  * avformat/rtmppkt: Check for packet size mismatches
+  * avcodec/flacdec: Fix undefined shift in decode_subframe()
+  * avcodec/flacdec: Fix signed integer overflow in
+    decode_subframe_fixed()
+  * avcodec/flacdsp_template: Fix undefined shift in
+    flac_decorrelate_indep_c
+
+-------------------------------------------------------------------
+Sat Nov 26 07:30:28 UTC 2016 - aloisio@gmx.com
+
+- Update to version 3.2.1:
+  * avcodec/aac_adtstoasc_bsf: validate and forward extradata
+    if the stream is already ASC
+  * libopusdec: default to stereo for invalid number of
+    channels
+  * sbgdec: prevent NULL pointer access
+  * rmdec: validate block alignment
+  * smacker: limit recursion depth of smacker_decode_bigtree
+  * mxfdec: fix NULL pointer dereference in mxf_read_packet_old
+  * ffmdec: validate codec parameters
+  * avformat/mpeg: Adjust vid probe threshold to correct
+    mis-detection
+  * avcodec/avpacket: fix leak on realloc in
+    av_packet_add_side_data()
+  * avformat/apngenc: use the stream parameters extradata if
+    available
+  * ffprobe: fix crash in case -of is specified with an empty
+    string
+  * exr: fix out-of-bounds read
+  * libschroedingerdec: fix leaking of framewithpts
+  * filmstripdec: correctly check image dimensions
+  * icodec: fix leaking pkt on error
+  * dvbsubdec: fix division by zero in compute_default_clut
+  * escape124: reject codebook size 0
+  * mpegts: prevent division by zero
+  * matroskadec: fix NULL pointer dereference in
+    webm_dash_manifest_read_header
+  * mxfdec: fix NULL pointer dereference
+  * avcodec/mpeg4videodec: Workaround interlaced mpeg4 edge MC
+    bug
+  * avcodec/mpegvideo: Fix edge emu buffer overlap with
+    interlaced mpeg4
+  * avcodec/ituh263dec: Avoid spending a long time in slice
+    sync
+  * avcodec:  Check side data size before use
+  * avformat/flvdec: Fix regression losing streams
+
+-------------------------------------------------------------------
+Fri Oct 28 22:50:18 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 3.2
+* SDL2 output device and ffplay support
+* SDL1 output device and SDL1 support removed
+* New: libopenmpt demuxer, fifo muxer, True Audio (TTA) muxer
+* New filters: weave, gblur, avgblur, sobel, prewitt,
+  vaguedenoiser, yuvtestsrc, lut2, hysteresis, maskedclamp,
+  crystalizer, acrusher, bitplanenoise, sidedata, asidedata
+* Non-Local Means (nlmeans) denoising filter
+* 16-bit support in curves filter and selectivecolor filter
+* Added threads option per filter instance
+* The "curves" filter does not automatically insert points at x=0
+  and x=1 anymore
+* Matroska muxer now writes CRC32 elements by default in all
+  Level 1 elements
+* New "tee" protocol
+* VP8 in Ogg muxing
+* Floating point support in ALS decoder
+* Extended mov edit list support
+* Changed mapping of RTP MIME type G726 to codec g726le.
+- Drop ffmpeg-fix-CONFIG_VC1DSP-changes.patch
+  (no longer needed)
+
+-------------------------------------------------------------------
+Fri Oct 28 17:58:28 UTC 2016 - olaf@aepfle.de
+
+- Enable libfdk_aac if it is available at buildtime
+
+-------------------------------------------------------------------
+Sat Oct 22 07:46:27 UTC 2016 - aloisio@gmx.com
+
+- Update to version 3.1.5
+  * avformat/mxfdec: Check size to avoid integer overflow in
+    mxf_read_utf16_string()
+  * avcodec/mpegvideo_enc: Clear mmx state in
+    ff_mpv_reallocate_putbitbuffer()
+  * avcodec/utils: Clear MMX state before returning from
+    avcodec_default_execute*()
+  * libopenjpegenc: fix out-of-bounds reads when filling the
+    edges
+  * libopenjpegenc: stop reusing image data buffer for
+    openjpeg 2
+  * avformat/utils: Update codec_id before using it in the
+    parser init
+  * ffmpeg: remove unused and errorneous AVFrame timestamp
+    check
+  * Support for MIPS cpu P6600
+  * avutil/mips/generic_macros_msa: rename macro variable
+    which causes segfault for mips r6
+
+-------------------------------------------------------------------
+Sat Oct  1 11:00:20 UTC 2016 - aloisio@gmx.com
+
+- Update to version 3.1.4
+  * avformat/avidec: Check nb_streams in read_gab2_sub()
+  * avformat/avidec: Remove ancient assert
+  * avfilter/vf_colorspace: fix range for output colorspace
+    option
+  * lavc/mediacodecdec_h264: fix SODB escaping
+  * avcodec/nvenc: fix const options for hevc gpu setting
+  * avformat/avidec: Fix memleak with dv in avi
+  * lavc/movtextdec.c: Avoid infinite loop on invalid data.
+  * avcodec/ansi: Check dimensions
+  * avcodec/cavsdsp: use av_clip_uint8() for idct
+  * avformat/movenc: Check packet in mov_write_single_packet()
+    too
+  * avformat/movenc: Factor check_pkt() out
+  * avformat/utils: fix timebase error in avformat_seek_file()
+  * avcodec/g726: Add missing ADDB output mask
+  * avcodec/avpacket: clear side_data_elems
+  * avformat/movenc: Check first DTS similar to dts difference
+  * avcodec/ccaption_dec: Use simple array instead of AVBuffer
+  * avcodec/svq3: Reintroduce slice_type
+  * avformat/mov: Fix potential integer overflow in
+    mov_read_keys
+  * swscale/swscale_unscaled: Try to fix
+    Rgb16ToPlanarRgb16Wrapper() with slices
+  * swscale/swscale_unscaled: Fix packed_16bpc_bswap() with
+    slices
+  * avformat/avidec: Fix infinite loop in avi_read_nikon()
+  * lavf/utils: Avoid an overflow for huge negative durations.
+  * avformat/hls: Fix handling of EXT-X-BYTERANGE streams over
+    2GB
+  * lavc/avpacket: Fix undefined behaviour, do not pass a null
+    pointer to memcpy().
+  * lavc/mjpegdec: Do not skip reading quantization tables.
+  * cmdutils: fix implicit declaration of SetDllDirectory
+    function
+
+-------------------------------------------------------------------
+Mon Aug 29 00:36:30 UTC 2016 - stefan.bruens@rwth-aachen.de
+
+- Fix linking errors for arm and aarch64 builds, boo#995937
+  * Add ffmpeg-fix-CONFIG_VC1DSP-changes.patch
+
+-------------------------------------------------------------------
+Sat Aug 27 06:18:31 UTC 2016 - aloisio@gmx.com
+
+- Update to version 3.1.3
+  * examples/demuxing_decoding: convert to codecpar
+  * avcodec/exr: Check tile positions
+  * avcodec/aacenc: Tighter input checks
+  * avformat/wtvdec: Check pointer before use
+  * libavcodec/wmalosslessdec: Check the remaining bits
+  * avcodec/adpcm: Fix adpcm_ima_wav padding
+  * avcodec/svq3: fix slice size check
+  * avcodec/diracdec: Check numx/y
+  * avcodec/h2645_parse: fix nal size
+  * avcodec/h2645_parse: Use get_nalsize() in
+    ff_h2645_packet_split()
+  * h2645_parse: only read avc length code at the correct
+    position
+  * h2645_parse: don't overread AnnexB NALs within an avc
+    stream
+  * avcodec/h264_parser: Factor get_avc_nalsize() out
+  * avcodec/cfhd: Increase minimum band dimension to 3
+  * avcodec/indeo2: check ctab
+  * avformat/swfdec: Fix inflate() error code check
+  * avcodec/rawdec: Fix bits_per_coded_sample checks
+  * vcodec/h2645_parse: Clear buffer padding
+  * avcodec/h2645: Fix NAL unit padding
+  * avfilter/drawutils: Fix single plane with alpha
+  * cmdutils: check for SetDllDirectory() availability
+
+-------------------------------------------------------------------
+Tue Aug  9 07:34:10 UTC 2016 - aloisio@gmx.com
+
+- Update to version 3.1.2:
+  * avcodec/rawdec: Fix palette handling with changing
+    palettes
+  * avcodec/raw: Fix decoding of ilacetest.mov
+  * avformat/mov: Enable mp3 parsing if a packet needs it
+  * avformat/hls: Sync starting segment across variants on
+    live streams
+  * avformat/hls: Fix regression with ranged media segments
+  * avcodec/ffv1enc: Fix assertion failure with non zero
+    bits per sample
+  * avfilter/af_hdcd: small fix in af_hdcd.c where gain was
+    not being adjusted for "attenuate slowly"
+  * avformat/oggdec: Fix integer overflow with invalid pts
+  * libavcodec/dnxhd: Enable 12-bit DNxHR support.
+  * lavc/vaapi_encode_h26x: Fix a crash if "." is not the
+    decimal separator.
+  * avcodec/vp9_parser: Check the input frame sizes for
+    being consistent
+  * avformat/flvdec: parse keyframe before a/v stream was
+    created add_keyframes_index() when stream created or
+    keyframe parsed
+  * libavformat/rtpdec_asf: zero initialize the AVIOContext
+    struct
+  * libx264: Increase x264 opts character limit to 4096
+  * avcodec/h264_parser: Set sps/pps_ref
+  * librtmp: Avoid an infinite loop setting connection
+    arguments
+  * avformat/oggparsevp8: fix pts calculation on pages
+    ending with an invisible frame
+  * lavf/vplayerdec: Improve auto-detection.
+  * lavc/mediacodecdec_h264: properly convert extradata to
+    annex-b
+
+-------------------------------------------------------------------
+Fri Jul 29 09:25:52 UTC 2016 - jengelh@inai.de
+
+- Build with netcdf so as to enable af_sofalizer [boo#983398]
+
+-------------------------------------------------------------------
+Fri Jul  1 06:17:49 UTC 2016 - aloisio@gmx.com
+
+- Update to version 3.1.1
+  * doc/APIchanges: document the lavu/lavf field moves
+  * avformat/avformat: Move new field to the end of AVStream
+  * avformat/utils: update deprecated AVStream->codec when the context is updated
+  * avutil/frame: Move new field to the end of AVFrame
+  * libavcodec/exr : fix decoding piz float file.
+  * avformat/mov: Check sample size
+  * lavfi: Move new field to the end of AVFilterContext
+  * lavfi: Move new field to the end of AVFilterLink
+  * ffplay: Fix usage of private lavfi API
+  * lavc/mediacodecdec_h264: add missing NAL headers to SPS/PPS buffers
+  * lavc/pnm_parser: disable parsing for text based PNMs
+
+-------------------------------------------------------------------
+Mon Jun 27 06:20:03 UTC 2016 - aloisio@gmx.com
+
+- Update to version 3.1
+  * DXVA2-accelerated HEVC Main10 decoding
+  * fieldhint filter
+  * loop video filter and aloop audio filter
+  * Bob Weaver deinterlacing filter
+  * firequalizer filter
+  * datascope filter
+  * bench and abench filters
+  * ciescope filter
+  * protocol blacklisting API
+  * MediaCodec H264 decoding
+  * VC-2 HQ RTP payload format (draft v1) depacketizer and
+    packetizer
+  * VP9 RTP payload format (draft v2) packetizer
+  * AudioToolbox audio decoders
+  * AudioToolbox audio encoders
+  * coreimage filter (GPU based image filtering on OSX)
+  * libdcadec removed
+  * bitstream filter for extracting DTS core
+  * ADPCM IMA DAT4 decoder
+  * musx demuxer
+  * aix demuxer
+  * remap filter
+  * hash and framehash muxers
+  * colorspace filter
+  * hdcd filter
+  * readvitc filter
+  * VAAPI-accelerated format conversion and scaling
+  * libnpp/CUDA-accelerated format conversion and scaling
+  * Duck TrueMotion 2.0 Real Time decoder
+  * Wideband Single-bit Data (WSD) demuxer
+  * VAAPI-accelerated H.264/HEVC/MJPEG encoding
+  * DTS Express (LBR) decoder
+  * Generic OpenMAX IL encoder with support for Raspberry Pi
+  * IFF ANIM demuxer & decoder
+  * Direct Stream Transfer (DST) decoder
+  * loudnorm filter
+  * MTAF demuxer and decoder
+  * MagicYUV decoder
+  * OpenExr improvements (tile data and B44/B44A support)
+  * BitJazz SheerVideo decoder
+  * CUDA CUVID H264/HEVC decoder
+  * 10-bit depth support in native utvideo decoder
+  * libutvideo wrapper removed
+  * YUY2 Lossless Codec decoder
+
+- Added minimum requirement for libva (0.35.0, matched by
+  1.3.0 package)
+
+-------------------------------------------------------------------
+Tue May 31 08:31:36 UTC 2016 - robert.munteanu@gmail.com
+
+- Guard usage of opencore using bcond_with, boo#980542
+
+-------------------------------------------------------------------
+Thu Apr 28 06:29:57 UTC 2016 - aloisio@gmx.com
+
+- Update to version 3.0.2
+  * avcodec/ttaenc: Reallocate packet if its too small
+  * configure: build fix for P5600 with mips code restructuring
+  * mips: add support for R6
+  * pgssubdec: fix subpicture output colorspace and range
+  * avcodec/ac3dec: Reset SPX when switching from EAC3 to AC3
+  * avfilter/vf_drawtext: Check return code of load_glyph()
+  * avformat/mux: Check that deinit is set before calling it
+  * avcodec/takdec: add code that got somehow lost in process of
+    REing
+  * avcodec/apedec: fix decoding of stereo files with one
+    channel full of silence
+  * avcodec/avpacket: Fix off by 5 error
+  * avcodec/h264: Fix for H.264 configuration parsing
+  * avcodec/bmp_parser: Ensure remaining_size is not too small
+    in startcode packet crossing corner case
+  * avcodec/pngdec: Fix alpha detection with skip_frame
+  * Changelog: Make formating consistent
+  * avfilter/src_movie: fix how we check for overflows with
+    seek_point
+  * avcodec/j2kenc: Add attribution to OpenJPEG project:
+
+- Dropped dcadec (libdca was merged upstream)
+
+-------------------------------------------------------------------
+Mon Apr 25 06:39:32 UTC 2016 - jengelh@inai.de
+
+- Add ffmpeg-codec-choice.diff
+
+-------------------------------------------------------------------
+Sun Apr 17 22:13:21 UTC 2016 - olaf@aepfle.de
+
+- Remove ffmpeg-devel subpackage.
+  All users have been converted to pkgconfig
+  Add Provides/Obsoletes to libavdevice-devel
+
+-------------------------------------------------------------------
+Sun Apr 10 21:51:14 UTC 2016 - jengelh@inai.de
+
+- Add ffmpeg-new-coder-errors.diff
+
+-------------------------------------------------------------------
+Wed Apr  6 18:57:05 UTC 2016 - jengelh@inai.de
+
+- Another try at organizing the codec-enable list.
+  Enable video: AYUV, Dirac, MJPEG, rawvideo, Theora, VP8, VP9, WebP,
+  zlib
+  Enable audio: Celt, GSM, Opus, Speex, Vorbis
+  Enable subtitle: ASS/SSA text, SRT text, UTF-8 plaintext
+
+-------------------------------------------------------------------
+Wed Mar 30 00:47:30 UTC 2016 - jengelh@inai.de
+
+- Update to new maintenance release 3.0.1
+* vc2enc: fix use of uninitialized variables in the rate control
+  system
+* postproc: fix an unaligned access
+* lavc/hevc: Allow arbitrary garbage in bytestream as long as at
+  least one NAL unit is found.
+
+-------------------------------------------------------------------
+Tue Feb 16 16:36:09 UTC 2016 - olaf@aepfle.de
+
+- Update included pkgconfig files to require the exact version
+  of ffmpeg pc files, instead of any later version
+  ffmpeg-pkgconfig-version.patch
+
+-------------------------------------------------------------------
+Mon Feb 15 12:57:55 UTC 2016 - idonmez@suse.com
+
+- Remove the optional vo-aacenc dependency, upstream removed it.
+
+-------------------------------------------------------------------
+Mon Feb 15 11:54:46 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 3.0
+* New filters: extrastereo, ocr, alimiter, stereowiden, stereotools,
+  rubberband, tremolo, agate, chromakey, displace, and many more.
+* ffplay dynamic volume control
+* audio high-order multiband parametric equalizer
+* automatic bitstream filtering
+
+-------------------------------------------------------------------
+Tue Feb  2 18:24:15 UTC 2016 - aloisio@gmx.com
+
+- Update to version 2.8.6
+  * avcodec/jpeg2000dec: More completely check cdef
+  * avutil/opt: check for and handle errors in av_opt_set_dict2()
+  * avcodec/flacenc: fix calculation of bits required in case
+    of custom sample rate
+  * avformat: Document urls a bit
+  * avformat/libquvi: Set default demuxer and protocol
+    limitations
+  * avformat/concat: Check protocol prefix
+  * doc/demuxers: Document enable_drefs and use_absolute_path
+  * avcodec/mjpegdec: Check for end for both bytes in unescaping
+  * avcodec/mpegvideo_enc: Check for integer overflow in
+    ff_mpv_reallocate_putbitbuffer()
+  * avformat/avformat: Replace some references to filenames by
+    urls
+  * avcodec/wmaenc: Check ff_wma_init() for failure
+  * avcodec/mpeg12enc: Move high resolution thread check to
+    before initializing threads
+  * avformat/img2dec: Use AVOpenCallback
+  * avformat/avio: Limit url option parsing to the documented
+    cases
+  * avformat/img2dec: do not interpret the filename by default
+    if a IO context has been opened
+  * avcodec/ass_split: Fix null pointer dereference in
+    ff_ass_style_get()
+  * mov: Add an option to toggle dref opening
+  * avcodec/gif: Fix lzw buffer size
+  * avcodec/put_bits: Assert buf_ptr in flush_put_bits()
+  * avcodec/tiff: Check subsample & rps values more completely
+  * swscale/swscale: Add some sanity checks for srcSlice*
+    parameters
+  * swscale/x86/rgb2rgb_template: Fix planar2x() for short
+    width
+  * swscale/swscale_unscaled: Fix odd height inputs for
+    bayer_to_yv12_wrapper()
+  * swscale/swscale_unscaled: Fix odd height inputs for
+    bayer_to_rgb24_wrapper()
+  * avcodec/aacenc: Check both channels for finiteness
+  * asfdec_o: check for too small size in asf_read_unknown
+  * asfdec_o: break if EOF is reached after
+    asf_read_packet_header
+  * asfdec_o: make sure packet_size is non-zero before seeking
+  * asfdec_o: prevent overflow causing seekback
+  * asfdec_o: check avio_skip in asf_read_simple_index
+  * asfdec_o: reject size > INT64_MAX in asf_read_unknown
+  * asfdec_o: only set asf_pkt->data_size after sanity checks
+  * Merge commit '8375dc1dd101d51baa430f34c0bcadfa37873896'
+  * dca: fix misaligned access in avpriv_dca_convert_bitstream
+  * brstm: fix missing closing brace
+  * brstm: also allocate b->table in read_packet
+  * brstm: make sure an ADPC chunk was read for adpcm_thp
+  * vorbisdec: reject rangebits 0 with non-0 partitions
+  * vorbisdec: reject channel mapping with less than two
+    channels
+  * ffmdec: reset packet_end in case of failure
+  * avformat/ipmovie: put video decoding_map_size into packet
+    and use it in decoder
+  * avformat/brstm: fix overflow
+
+-------------------------------------------------------------------
+Sun Jan 17 09:45:29 UTC 2016 - idonmez@suse.com
+
+- Update to version 2.8.5
+* Fixes CVE-2016-1897 and CVE-2016-1898 [boo#961937]
+
+-------------------------------------------------------------------
+Mon Dec 28 13:51:18 UTC 2015 - idonmez@suse.com
+
+- Update to version 2.8.4
+* Many bugfixes, see the included Changelog for all the changes.
+* resolving CVE-2015-8661 [boo#960385], CVE-2015-8662 [boo#960384],
+  CVE-2015-8663 [boo#960383]
+- Drop ffmpeg-remove_some_unused_ctrl_id_mappings.patch, fixed
+  upstream.
+
+-------------------------------------------------------------------
+Tue Dec 22 09:14:58 UTC 2015 - olaf@aepfle.de
+
+- Obsolete ffmpeg-tools from packman
+
+-------------------------------------------------------------------
+Mon Dec 21 12:37:05 UTC 2015 - jengelh@inai.de
+
+- Add some provides to make it easier for firefox to recommend
+  this package for installation
+
+-------------------------------------------------------------------
+Sat Dec 19 13:05:31 UTC 2015 - joerg.lorenzen@ki.tng.de
+
+- Added patch ffmpeg-remove_some_unused_ctrl_id_mappings.patch to
+  successfully build against libvpx >= 1.5 (at least on PMBS).
+
+-------------------------------------------------------------------
+Thu Dec 17 07:04:14 UTC 2015 - olaf@aepfle.de
+
+- Add buildconditionals for libass,libva,vdpau to fix build in SLE_11
+
+-------------------------------------------------------------------
+Mon Dec 14 11:05:46 UTC 2015 - olaf@aepfle.de
+
+- Rename bcond dca to dcadec
+- Add more buildconditionals to get closer to removal of BUILD_ORIG
+
+-------------------------------------------------------------------
+Wed Dec  9 13:23:44 UTC 2015 - olaf@aepfle.de
+
+- Remove unused imlib2
+
+-------------------------------------------------------------------
+Mon Dec  7 12:18:36 UTC 2015 - idonmez@suse.com
+
+- Sync with packman changes
+  * All packman specific changes are protected with BUILD_ORIG
+- Added the following patches
+  * ffmpeg-2.4.5-arm6l.patch
+  * ffmpeg-libcdio_cdda-pkgconfig.patch
+
+-------------------------------------------------------------------
+Sun Nov 29 11:24:54 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream maintenance release 2.8.3
+* avformat/matroskadec: Check subtitle stream before dereferencing
+* avcodec/jpeg2000dec: Fix potential integer overflow with tile
+  dimensions
+* avcodec/jpeg2000dec: Check for duplicate SIZ marker
+* avcodec/jpeg2000: Change coord to 32bit to support larger than
+  32k width or height
+* avcodec/jpeg2000dec: Check SIZ dimensions to be within the
+  supported range
+* avcodec/jpeg2000: Check comp coords to be within the supported
+  size
+* dds: validate compressed source buffer size
+* dds: validate source buffer size before copying
+* softfloat: assert when the argument of av_sqrt_sf is negative
+- Fixes CVE-2015-8363 [bnc#957114], CVE-2015-8364 [bnc#957115],
+  CVE-2015-8365 [bnc#957116]
+
+-------------------------------------------------------------------
+Sat Nov 14 06:46:13 UTC 2015 - idonmez@suse.com
+
+- Update to new upstream release 2.8.2, containing fixes for the
+  following security issues:
+  * CVE-2015-8216 boo#955346
+  * CVE-2015-8217 boo#955347
+  * CVE-2015-8218 boo#955348
+  * CVE-2015-8219 boo#955350
+- Upstream changes:
+  * various fixes in the aac_fixed decoder
+  * various fixes in softfloat
+  * swresample/resample: increase precision for compensation
+  * lavf/mov: add support for sidx fragment indexes
+  * avformat/mxfenc: Only store user comment related tags when needed
+  * ffmpeg: Don't try and write sdp info if none of the outputs had an rtp format.
+  * apng: use correct size for output buffer
+  * jvdec: avoid unsigned overflow in comparison
+  * avcodec/jpeg2000dec: Clip all tile coordinates
+  * avcodec/microdvddec: Check for string end in 'P' case
+  * avcodec/dirac_parser: Fix undefined memcpy() use
+  * avformat/xmv: Discard remainder of packet on error
+  * avformat/xmv: factor return check out of if/else
+  * avcodec/mpeg12dec: Do not call show_bits() with invalid bits
+  * avcodec/faxcompr: Add missing runs check in decode_uncompressed()
+  * libavutil/channel_layout: Check strtol*() for failure
+  * avformat/mpegts: Only start probing data streams within probe_packets
+  * avcodec/hevc_ps: Check chroma_format_idc
+  * avcodec/ffv1dec: Check for 0 quant tables
+  * avcodec/mjpegdec: Reinitialize IDCT on BPP changes
+  * avcodec/mjpegdec: Check index in ljpeg_decode_yuv_scan() before using it
+  * avcodec/h264_slice: Disable slice threads if there are multiple access units in a packet
+  * avformat/hls: update cookies on setcookie response
+  * opusdec: Don't run vector_fmul_scalar on zero length arrays
+  * avcodec/opusdec: Fix extra samples read index
+  * avcodec/ffv1: Initialize vlc_state on allocation
+  * avcodec/ffv1dec: update progress in case of broken pointer chains
+  * avcodec/ffv1dec: Clear slice coordinates if they are invalid or slice header decoding fails for other reasons
+  * rtsp: Allow $ as interleaved packet indicator before a complete response header
+  * videodsp: don't overread edges in vfix3 emu_edge.
+  * avformat/mp3dec: improve junk skipping heuristic
+  * concatdec: fix file_start_time calculation regression
+  * avcodec: loongson optimize h264dsp idct and loop filter with mmi
+  * avcodec/jpeg2000dec: Clear properties in jpeg2000_dec_cleanup() too
+  * avformat/hls: add support for EXT-X-MAP
+  * avformat/hls: fix segment selection regression on track changes of live streams
+  * configure: Require libkvazaar < 0.7.
+  * avcodec/vp8: Do not use num_coeff_partitions in thread/buffer setup
+- Drop ffmpeg-mov-sidx-fragment.patch, fixed upstream.
+
+-------------------------------------------------------------------
+Sat Oct 31 11:00:43 UTC 2015 - idonmez@suse.com
+
+- Update to new upstream release 2.8.1
+  * Minor bugfix release
+  * Includes all changes from. Ffmpeg-mt,
+    libav master of 2015-08-28, libav 11 as of 2015-08-28
+- Add ffmpeg-mov-sidx-fragment.patch to add sidx fragment indexes.
+  Needed for new mpv release.
+
+-------------------------------------------------------------------
+Wed Sep  9 08:11:24 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 2.8
+* DirectDraw Surface image/texture decoder
+* Many improvements to the JPEG 2000 decoder
+* New video filters: colorkey, SSIM, showvolume, adrawgraph,
+  drawgraph, removegrain, erosion, dilation, deflate, inflate,
+  reverse, atadenoise, aphasemeter, showfreqs, vectorscope,
+  waveform, hstack, vstack, framerate
+* New audio filters: Dynamic Audio Normalizer as dynaudnorm
+  filter, areverse, random, deband, sidechaincompress,
+  acrossfade
+* allyuv and allrgb video sources
+* Switched default encoders for webm to VP9 and Opus
+* Removed experimental flag from the JPEG 2000 encoder
+
+-------------------------------------------------------------------
+Mon Jul 20 09:30:19 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 2.7.2
+- webp: fix infinite loop in webp_decode_frame
+- huffyuvdec: validate image size
+- avcodec/vp8: Check buffer size in vp8_decode_frame_header()
+- avcodec/vp8: Fix null pointer dereference in ff_vp8_decode_free()
+- avutil/fifo: Fix the case where func() returns less bytes than
+  requested in av_fifo_generic_write()
+- bytestream2: set the reader to the end when reading more than
+  available
+- oggparsedirac: check return value of init_get_bits
+- vp9/update_prob: prevent out of bounds table read
+- avcodec/pngdec: Check values before updating context in
+  decode_fctl_chunk()
+- avcodec/pngdec: Copy IHDR & plte state from last thread
+- avcodec/pngdec: Require a IHDR chunk before fctl
+- avcodec/pngdec: Only allow one IHDR chunk
+- ffmpeg: Do not use the data/size of a bitstream filter
+  after failure
+
+-------------------------------------------------------------------
+Thu Jun 25 20:11:32 UTC 2015 - jengelh@inai.de
+
+- Enable codecs for audio: PCM, Speex, CELT, FLAC, ILBC, Opus
+- Enable codecs for image: BMP/PCX/TGA, TIFF, Sun/SGI/X11 raster
+  raw Huff-compressed or uncompressed YUV
+- Update to new upstream release 2.7.1
+* postproc: fix unaligned access
+* avcodec/flacenc: Fix Invalid Rice order
+* tls_gnutls: fix hang on disconnection
+* avcodec/ffv1enc: fix bps for >8bit yuv when not explicitly set
+* avio: fix potential crashes when combining ffio_ensure_seekback + crc
+* ffmpeg_opt: Check for localtime() failure
+* configure: Disable VSX on unspecified / generic CPUs
+
+-------------------------------------------------------------------
+Thu Jun 25 17:48:19 UTC 2015 - develop7@develop7.info
+
+- Enabled 'bluray' protocol
+
+-------------------------------------------------------------------
+Wed Jun 10 22:41:20 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 2.7
+* New encoders: apng (PNG with alpha)
+* New decoders: TDSC (a JPEG/BGR24/zlib format)
+* New audio filters: chorus
+* New video filters: cover_rect, detelecine, fftfilt, find_rect
+- Enable codecs: 012v, ansi, apng, bmp, exr, ffv1, ffvhuff
+* unpack DivX-style packed B-frames in MPEG-4 bitstream filter
+* WebM Live Chunk Muxer
+* nvenc level and tier options
+- Canopus HQ/HQA decoder
+- Automatically rotate videos based on metadata in ffmpeg
+- improved Quickdraw compatibility
+- VP9 high bit-depth and extended colorspaces decoding support
+- WebPAnimEncoder API when available for encoding and muxing WebP
+- Direct3D11-accelerated decoding
+- Support Secure Transport
+- Multipart JPEG demuxer
+
+-------------------------------------------------------------------
+Sat May 23 21:33:34 UTC 2015 - robert.munteanu@gmail.com
+
+- Fix building with BUILD_ORIG
+
+-------------------------------------------------------------------
+Sun May 17 16:55:42 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 2.6.3
+* avcodec/libtheoraenc: Check for av_malloc failure
+* ffmpeg_opt: Fix -timestamp parsing
+* avcodec/cavsdec: Use ff_set_dimensions()
+* swr: fix alignment issue caused by 8ch sse functions
+* avcodec/mjpegdec: fix len computation in ff_mjpeg_decode_dqt()
+* avformat/matroskadec: Cleanup error handling for bz2 & zlib
+* avformat/matroskaenc: Check ff_vorbiscomment_length in
+  put_flac_codecpriv()
+* avcodec/mpeg12dec: use the correct dimensions for checking SAR
+* xcbgrab: Validate the capture area
+* xcbgrab: Do not assume the non shm image data is always available
+* avfilter/lavfutils: disable frame threads when decoding a single
+  image
+* ffmpeg: remove incorrect network deinit
+* OpenCL: Avoid potential buffer overflow in cmdutils_opencl.c
+* libvpxenc: only set noise reduction w/vp8
+* vp9: remove another optimization branch in iadst16 which causes
+  overflows.
+* network: Do not leave context locked on error
+* vp9: remove one optimization branch in iadst16 which causes
+  overflows.
+* swresample: Allow reinitialization without ever setting channel
+  layouts/counts
+* imgutils: initialize palette padding bytes in av_image_alloc
+* id3v2: catch avio_read errors in check_tag
+* avi: Validate sample_size
+* diracdec: avoid overflow of bytes*8 in decode_lowdelay
+* diracdec: prevent overflow in data_unit_size check
+* matroskadec: use uint64_t instead of int for index_scale
+* pngdec: don't use AV_PIX_FMT_MONOBLACK for apng
+* pngdec: return correct error code from decode_frame_common
+* swscale/ppc/swscale_altivec.c: POWER LE support in yuv2planeX_8()
+  delete macro GET_VF() it was wrong
+* matroskadec: export cover art correctly
+* mxfenc: don't try to write footer without header
+- Enable building avresample for extra API compat
+- Remove ffmpeg-pkgconfig-requires.diff: RPM's pkgconfigdeps.sh is
+  scanning Requires.private too.
+
+-------------------------------------------------------------------
+Mon May 11 07:28:10 UTC 2015 - dimstar@opensuse.org
+
+- Add baselibs.conf: provide -32bit libraries (used by xine-32bit).
+
+-------------------------------------------------------------------
+Mon Apr 13 08:18:11 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 2.6.2
+* avformat/utils: avoid discarded streams in
+  av_find_default_stream_index()
+* avutil/cpu: add missing check for mmxext to av_force_cpu_flags
+* avformat/http: replace cookies with updated values instead of
+  appending forever
+
+-------------------------------------------------------------------
+Thu Mar 19 17:58:35 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 2.6.1
+* Maintenance release with some bugfixes
+
+-------------------------------------------------------------------
+Sun Mar  8 09:17:15 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 2.6
+* The VP9 decoder is now usable on x86(-32) and pre-SSSE3 CPUs.
+* 10-bit support in the SPP video filter
+* New video filters: "colorlevels", "tblend", "palettegen",
+  "paletteuse". New audio filters: "dcshift".
+* The old libmpcodecs wrapper is finally gone
+* API changes: introduction of device inputs and outputs
+
+-------------------------------------------------------------------
+Tue Jan 27 22:22:42 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 2.5.3
+* AVFoundation screen-grabbing support, animated WebP decoding
+  support, and Animated PNG support. UDP-Lite support was added.
+
+-------------------------------------------------------------------
+Sun Jan  4 17:32:48 UTC 2015 - jengelh@inai.de
+
+- Initial package (version 2.5.3) for build.opensuse.org

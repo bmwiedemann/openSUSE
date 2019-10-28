@@ -1,0 +1,6 @@
+<package name="squashfs" project="openSUSE:Factory">
+  <title>A Read-Only File System with Efficient Compression</title>
+  <description>This package contains the userland utilities to create and read
+squashfs images.</description>
+  <devel project="filesystems" package="squashfs"/>
+</package>

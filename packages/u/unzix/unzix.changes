@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Sun Apr 12 13:18:56 UTC 2015 - mpluskal@suse.com
+
+- Update to 0.4.0
+ * Add portable endianness macros so that the code compiles on some
+   older platforms.
+- Cleanup spec file with spec-cleaner
+- Correct license
+
+-------------------------------------------------------------------
+Sat Jun 04 10:39:02 CET 2011 - pascal.bleser@opensuse.org
+
+- initial version (0.3.0)
+

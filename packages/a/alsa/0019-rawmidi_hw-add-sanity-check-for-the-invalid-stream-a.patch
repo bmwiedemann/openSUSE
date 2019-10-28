@@ -1,0 +1,27 @@
+From 6efa23f2837a6fa9982b4f34b837401a66941ee3 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 24 May 2019 20:45:26 +0200
+Subject: [PATCH 19/25] rawmidi_hw: add sanity check for the invalid stream
+ arguments (coverity)
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/rawmidi/rawmidi_hw.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/rawmidi/rawmidi_hw.c b/src/rawmidi/rawmidi_hw.c
+index 7cc8c0d1e7ec..eaa8a76de52f 100644
+--- a/src/rawmidi/rawmidi_hw.c
++++ b/src/rawmidi/rawmidi_hw.c
+@@ -186,6 +186,8 @@ int snd_rawmidi_hw_open(snd_rawmidi_t **inputp, snd_rawmidi_t **outputp,
+ 		*inputp = NULL;
+ 	if (outputp)
+ 		*outputp = NULL;
++	if (!inputp && !outputp)
++		return -EINVAL;
+ 	
+ 	if ((ret = snd_ctl_hw_open(&ctl, NULL, card, 0)) < 0)
+ 		return ret;
+-- 
+2.16.4
+

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct 28 08:22:43 UTC 2019 - wbauer@tmo.at
+
+- Update to 0.9.4
+  * Import and load a layout when Latte is running through its dbus
+    interface
+  * Expose the last active window colorscheme in order to be used
+    from applets. In upcoming Window AppMenu version the user will
+    be able to define the color scheme to be used for its app menus
+  * Fix advanced switch button when changing between different
+    states (kde#411624)
+  * Fix autostart option for some distros that did not work such as
+    Manjaro (kde#412612)
+
+-------------------------------------------------------------------
 Tue Oct  1 13:10:55 UTC 2019 - wbauer@tmo.at
 
 - Update to 0.9.3

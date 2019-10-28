@@ -1,0 +1,69 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3953838bf5beeb834c96345b78608bd0</srcmd5>
+    <version>0.92</version>
+    <time>1292763731</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54922 from user jnweiger
+</comment>
+    <requestid>54922</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c357cd2f985cf9609f03cfb7e8522142</srcmd5>
+    <version>0.92</version>
+    <time>1292763745</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54922
+</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>c357cd2f985cf9609f03cfb7e8522142</srcmd5>
+    <version>0.92</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>c357cd2f985cf9609f03cfb7e8522142</srcmd5>
+    <version>0.92</version>
+    <time>1319182268</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>1dcfb8826c374eb364fc5d0466055a5d</srcmd5>
+    <version>0.92</version>
+    <time>1336492890</time>
+    <user>coolo</user>
+    <comment>license update: GPL-1.0+ or Artistic-1.0
+SPDX format (http://www.spdx.org/licenses) (forwarded request 116748 from babelworx)</comment>
+    <requestid>116758</requestid>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>1dcfb8826c374eb364fc5d0466055a5d</srcmd5>
+    <version>0.92</version>
+    <time>1340183843</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="12">
+    <srcmd5>1dcfb8826c374eb364fc5d0466055a5d</srcmd5>
+    <version>0.92</version>
+    <time>1359109672</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="14">
+    <srcmd5>1dcfb8826c374eb364fc5d0466055a5d</srcmd5>
+    <version>0.92</version>
+    <time>1379663681</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="16">
+    <srcmd5>1dcfb8826c374eb364fc5d0466055a5d</srcmd5>
+    <version>0.92</version>
+    <time>1409302300</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

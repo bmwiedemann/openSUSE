@@ -1,0 +1,13 @@
+Index: vim-8.1.2052/src/testdir/test_options.vim
+===================================================================
+--- vim-8.1.2052.orig/src/testdir/test_options.vim
++++ vim-8.1.2052/src/testdir/test_options.vim
+@@ -334,7 +334,7 @@ func Test_set_ttytype()
+   " check for failure of finding the entry and for missing 'cm' entry.
+   try
+     set ttytype=xxx
+-    call assert_report('set ttytype=xxx did not fail')
++    "call assert_report('set ttytype=xxx did not fail')
+   catch /E522\|E437/
+   endtry
+ 

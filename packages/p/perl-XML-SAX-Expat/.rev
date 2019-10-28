@@ -1,0 +1,40 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>89bd88c99e3165476f441043e92106df</srcmd5>
+    <version>0.50</version>
+    <time>1370516307</time>
+    <user>coolo</user>
+    <comment>needed for XML::Simple</comment>
+    <requestid>177561</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>89bd88c99e3165476f441043e92106df</srcmd5>
+    <version>0.50</version>
+    <time>1379663923</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>30197ce115f29f4a24278a6009b65050</srcmd5>
+    <version>0.51</version>
+    <time>1395896929</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>227171</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>30197ce115f29f4a24278a6009b65050</srcmd5>
+    <version>0.51</version>
+    <time>1409302574</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>9fa7e61ca96fabe1c645f71beee02a52</srcmd5>
+    <version>0.51</version>
+    <time>1532774265</time>
+    <user>dimstar_suse</user>
+    <comment>- install the parser into ParserDetails.ini</comment>
+    <requestid>624065</requestid>
+  </revision>
+</revisionlist>

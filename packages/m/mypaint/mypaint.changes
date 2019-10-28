@@ -1,0 +1,281 @@
+-------------------------------------------------------------------
+Mon Oct 28 13:11:49 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire rsvg-convert instead of rsvg-view on TW: the
+  rsvg-view program has been dropped, leaving only the rsvg-convert
+  binary behind. For this reason, the package name was adjusted
+  to properly reflect its content.
+
+-------------------------------------------------------------------
+Sun Jun  9 08:50:30 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to sort file list to make build reproducible
+  (boo#1041090)
+
+-------------------------------------------------------------------
+Thu Sep 20 20:15:48 UTC 2018 - antoine.belvire@opensuse.org
+
+- Make mypaint work again (boo#1081099): Explicitely set
+  python_binary and python_config to python2.7(-config).
+- Spec file minor cleanup.
+
+-------------------------------------------------------------------
+Wed May  2 13:44:24 UTC 2018 - badshah400@gmail.com
+
+- Drop devel pkg: no one is using it and libmypaint-devel >= 1.3
+  obsoletes it.
+
+-------------------------------------------------------------------
+Mon Apr 30 16:16:57 UTC 2018 - jengelh@inai.de
+
+- Limit fdupes to one partition, /usr.
+- Remove unnecessary ldconfig calls; there are no shared libraries
+  in the standard search paths.
+- Use find -delete instead of the slower xargs.
+
+-------------------------------------------------------------------
+Sat Apr 28 16:25:40 UTC 2018 - badshah400@gmail.com
+
+- Updated standalone library libmypaint already provides its own
+  lang files; just strip mypaint-lang of all libmypaint.mo files
+  to avoid a file conflict between the libmypaint-lang and
+  mypaint-lang.
+- Recommend instead of requiring lang package.
+- Don't run desktop database and icon cache update scripts as part
+  of post(un) for openSUSE >=1500; these are taken care of by
+  rpm's file triggers.
+- Fix env-based hashbang in the main app binary.
+
+-------------------------------------------------------------------
+Sun Dec 10 13:30:29 UTC 2017 - i@marguerite.su
+
+- rework mypaint-scons-to-python3.patch
+  * fix more 'print' parentheses
+
+-------------------------------------------------------------------
+Fri Nov 24 13:25:51 UTC 2017 - badshah400@opensuse.org
+
+- Add mypaint-scons-to-python3.patch Convert SCons* to python3 for
+  compatibility with openSUSE > 1320 where scons is python3-based.
+
+-------------------------------------------------------------------
+Tue Jun 13 14:01:59 UTC 2017 - jengelh@inai.de
+
+- Trim filler wording from description and put something more
+  concrete in there.
+
+-------------------------------------------------------------------
+Sun Jun  4 00:57:46 UTC 2017 - plinnell@opensuse.org
+
+- Fix URL and download to correct location.
+
+-------------------------------------------------------------------
+Thu Mar 17 07:36:17 UTC 2016 - meissner@suse.com
+
+- revert to 1.1.0. 
+  1.2.0 needs the pygtk2compat layer that is not included in openSUSE :(
+  Go to a newer version once it is fully ported to Gtk3.
+
+-------------------------------------------------------------------
+Wed Mar 16 14:13:05 UTC 2016 - meissner@suse.com
+
+- updated to 1.2.0
+ -  New intuitive Inking tool for smooth strokes.
+ -  New Flood Fill tool.
+ -  Automated backups of your working docs, with recovery on startup.
+ -  Improved symmetry-setting and frame-setting modes.
+ -  New workspace UI: two sidebars, with dockable tabbed panels.
+ -  Smoother scrolling and panning.
+ -  New brush pack.
+ -  New brush and color history panel.
+ -  New layer trimming command in frame options.
+ -  Added layer groups.
+ -  New layer modes: several masking modes added.
+ -  Add display filters: greyscale, simulate dichromacy for trichromats.
+ -  New color wheel options: Red/Yellow/Blue, Red-Green/Blue-Yellow.
+ -  Uses dark theme variant by default.
+ -  Clearer icons, prettier freehand cursors.
+ -  Device prefs allow glitchy devices to be restricted.
+ -  Eraser mode no longer changes the size of the brush.
+ -  New vector layers, editable in an external app (Inkscape recommended).
+ -  New fallback layer types: non-PNG image, data.
+ -  More kinds of images now work as backgrounds.
+ -  Improved Windows support
+ -  Ported to GTK3.
+ -  Accelerator map editor has moved to preferences.
+ -  Many other bugfixes, translations, and code quality improvements.
+
+-------------------------------------------------------------------
+Fri Sep 18 02:30:10 UTC 2015 - malcolmlewis@opensuse.org
+
+- Fix spec file for aarch64 builds. 
+
+-------------------------------------------------------------------
+Thu Aug 21 18:51:20 UTC 2014 - malcolmlewis@opensuse.org
+
+- Fix spec file for ppc64le builds.
+
+-------------------------------------------------------------------
+Wed Feb  5 00:45:33 UTC 2014 - malcolmlewis@opensuse.org
+
+- Fix spec file for ppc64 builds.
+
+-------------------------------------------------------------------
+Thu Mar 14 17:27:01 UTC 2013 - gankov@opensuse.org
+
+- Requires updated to use python-numpy >= 1.7 for openSUSE 12.2+
+
+-------------------------------------------------------------------
+Sat Jan  5 16:20:47 UTC 2013 - zawertun@gmail.com
+
+- Updated to 1.1.0:
+  + Geometry tools: sequence of lines, curved lines, ellipses;
+  + New brush and layer blending modes; different layer merging;
+  + New color dialog: palette and gamut mapping;
+  + Improved document frame, can be resized on canvas;
+  + Symmetric drawing mode;
+  + Old color changer ("washed") from 0.6 is available again;
+  + Toolbar improvements, e.g. move layer mode, pan/zoom;
+  + Revised cursor and on-canvas color picker;
+  + Better separation of mypaint's brush library; json brush file
+    format;
+  + Translations, performance improvements, bugfixes, and more.
+
+-------------------------------------------------------------------
+Fri Dec 16 21:23:02 UTC 2011 - malcolmlewis@opensuse.org
+
+- Add icon_theme_cache macro as icon theme needs to be updated
+  (https://gna.org/bugs/?18460).
+
+-------------------------------------------------------------------
+Tue Dec 13 04:28:50 UTC 2011 - malcolmlewis@opensuse.org
+
+- Re add changelog history.
+- Fix incorrect icon sizes as per rpmlint report.
+- Fix incorrect file permissions, source has them as 0755.
+- Set correct library path for build arch.
+- Drop additional CFLAGS as now included in setup.py.
+- Add icon in /usr/share/pixmaps for desktop file.
+
+-------------------------------------------------------------------
+Mon Dec 12 12:55:07 UTC 2011 - idonmez@suse.com
+
+- spec file cleanup.
+
+-------------------------------------------------------------------
+Sun Nov 27 05:42:34 UTC 2011 - i@marguerite.su
+
+- Updated to version 1.0.0:
+  + Toolbar with color, brush selector and brush settings
+    dropdown.
+  + Tool windows can be docked instead of floating.
+  + Locked alpha brush mode.
+  + Basic layer compositing modes.
+  + New scratchpad area.
+  + Lots of other improvements (about 500 commits).
+
+-------------------------------------------------------------------
+Tue Jun 28 01:51:22 UTC 2011 - malcolmlewis@opensuse.org
+
+- Clean up spec file for 11.4 builds.
+- Add icon names in icon directories.
+- Update spec file Licence field from GPLv2 to GPL-2.0 to conform
+  with spdx.org identifier.
+
+-------------------------------------------------------------------
+Tue Mar 22 22:42:17 UTC 2011 - malcolmlewis@opensuse.org
+
+- Update to 0.9.1
+  * several fixes for non-ascii file names, directories, layer names
+  * workaround for tablets reporting invalid tilt values
+  * rotation: fix direction while mirrored, change steps to 22.5 degrees
+  * store freedesktop thumbnails also when saving (for preview in other apps)
+  * reduce the minimal cursor size
+  * brush selector: remember state of the expander at the bottom
+  * fix glitch when changing the brush/color with a different input device
+  * osx: fix compile error
+  * windows: use AppData folder for settings
+  * some other minor fixes
+- spec file clean up
+
+-------------------------------------------------------------------
+Wed Jan 12 21:36:38 UTC 2011 - malcolmlewis@opensuse.org
+
+- Requires updated to use scons >= 1.2 
+
+-------------------------------------------------------------------
+Tue Jan 11 19:01:47 UTC 2011 - malcolmlewis@opensuse.org
+
+- Fix spec file requires 
+
+-------------------------------------------------------------------
+Mon Jan 10 18:06:46 UTC 2011 - malcolmlewis@opensuse.org
+
+- Add python-numpy Requires >= 1.5 to avoid seg fault 
+
+-------------------------------------------------------------------
+Thu Nov 11 14:44:57 UTC 2010 - malcolmlewis@opensuse.org
+
+- New Version
+  + brush collection: updated better and smaller collection
+  + brushset import and export
+  + improvement for jaggy lines on Windows (might also fix saving problems)
+  + fixes for non-ascii brush- and filenames (for Windows mainly)
+  + sharper image for some zoom levels
+  + stylus tilt support
+  + persistence of selected brush and group
+  + file preview in open dialog
+  + configurable default save format and zoom level
+  + optimizations: faster startup, much faster saving
+  + lots of small improvements, bug fixes, optimizations
+  + updated translations: hu,es,ru,sv,nb,nn_NO,sl,ko,it
+  + improved exception dialog
+  + added GIMP-style subwindow toggle
+  + added GIMP-style cursor-menu
+  + usability improvements for brush selector and brush settings dialog
+  + added file->export action
+
+-------------------------------------------------------------------
+Tue Sep 14 14:06:14 UTC 2010 - malcolmlewis@opensuse.org
+
+- Further spec clean up 
+
+-------------------------------------------------------------------
+Wed Jun 30 00:00:00 CDT 2010 - malcolmlewis@opensuse.org
+
+- Spec clean up
+
+-------------------------------------------------------------------
+Wed Mar 31 00:00:00 CDT 2010 - coyoteuser@gmail.com
+
+- new version
+ + fix regression in 0.8.1 causing temporary layers to stick
+ + complain about unsupported pygtk version
+-------------------------------------------------------------------
+Mon Mar  1 00:00:00 CST 2010 - coyoteuser@gmail.com
+
+- new version 0.8.1
+ + fixed memory leak: layer data was never freed, eg. when opening a new image
+ + fixed loading of layer names
+ + respect layer visibility when saving to PNG
+ + fixed a freeze in the exception dialog
+ + added empty "favorites" brushgroup
+ + Korean translation
+ + some minor gui fixes
+-------------------------------------------------------------------
+Mon Feb  8 00:00:00 CST 2010 - coyoteuser@gmail.com
+
+- version bump
+- rpmlintrc added
+-------------------------------------------------------------------
+Mon Nov 23 00:00:00 CST 2009 - coyoteuser@gmail.com
+
+- readded to OBS
+- fixed spec for 1120 builds
+-------------------------------------------------------------------
+Thu Aug  6 00:00:00 CDT 2009 - coyoteuser@gmail.com
+
+- added Requires for python-numpy
+- added patch to remove CXX flags
+- added build requires gcc-c++ and update-desktop-files
+- initial build

@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Fri Mar 15 14:15:55 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * modello-cli-domasxpp3.patch
+    + allow setting on command-line the domAsXpp3 property that
+      modello-maven-plugin can set in pom.xml file
+
+-------------------------------------------------------------------
+Tue Mar 12 08:12:31 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of modello 1.9.1
+- Generate and customize ant build files

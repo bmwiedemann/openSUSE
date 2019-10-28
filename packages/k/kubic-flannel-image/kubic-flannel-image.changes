@@ -1,0 +1,150 @@
+-------------------------------------------------------------------
+Tue Jun 25 15:05:07 CEST 2019 - kukuk@suse.de
+
+- Adjust _service file
+
+-------------------------------------------------------------------
+Fri Jun 21 10:39:07 CEST 2019 - kukuk@suse.de
+
+- Sync with git project
+
+-------------------------------------------------------------------
+Thu Jun 13 11:04:56 CEST 2019 - kukuk@suse.de
+
+- Add additionaltags flag
+
+-------------------------------------------------------------------
+Fri Jun  7 09:04:15 CEST 2019 - kukuk@suse.de
+
+- Add labels and adjust for flannel 0.11.0
+
+-------------------------------------------------------------------
+Thu Jan 10 13:34:20 UTC 2019 - Containers Team <containers-bugowner@suse.de>
+
+- Commit 32945a3 by David Cassany dcassany@suse.de 
+
+  Update image names
+
+  This commit updates image names to match factory-auto review name policy.
+
+  Fixes #70
+
+-------------------------------------------------------------------
+Wed Jan  9 14:18:51 UTC 2019 - Containers Team <containers-bugowner@suse.de>
+
+- Commit 7b9e3cc by David Cassany dcassany@suse.de 
+
+  Update Tumbleweed base image reference
+
+  Tag of the latest build of Tumbleweed changed from `current` to
+  `latest`.
+
+-------------------------------------------------------------------
+Fri Dec 14 14:02:06 UTC 2018 - Containers Team <containers-bugowner@suse.de>
+
+- Commit 6649435 by David Cassany dcassany@suse.de 
+
+  Do not fail if no new change log entries are found
+
+  This commit makes pre_checkin.sh script to exit 0 if no new changelog 
+  entries are found (when using --mkchanges flag). This way the CI does not
+  report a failre when it is executed having nothing new to commit at OBS.
+
+- Commit 3dbfb55 by David Cassany dcassany@suse.de 
+
+  Distinguish between namespace and product
+
+  For caasp we started using namespaces like 'caasp/head' or 'caasp/vX'. The
+  slash is not an accepted character for 'name' attribute of <image> section.
+  The image name ends up to the filename, thus adding slashes is prohibited
+  there.
+
+- Commit 2278d29 by David Cassany dcassany@suse.de 
+
+  Updating the SLE15 base image tag
+
+  Current SLE15 image is published under 'latest' tag.
+
+- Commit c9f588f by David Cassany dcassany@suse.de 
+
+  Adding custom caasp namespaces
+
+  With this commit the caasp templates can be generated including a a caasp
+  suffix. For instance `./pre_checkin.sh caasp/v4` will generate the template
+  with image namespace of `caasp/v4`.
+
+- Commit 92c129f by David Cassany dcassany@suse.de 
+
+  Make pre_checkin.sh sript more usable
+
+  With this commit pre_checkin.sh script does no create the changes file by
+  default, so it can easily be used to recreate the KIWI files while testing
+  and debugging without requiring to commit anything. Also it only recreates
+  the KIWI files for the given product (caasp|kubic), kubic is the default if
+  none is given.
+
+- Commit ef1f101 by David Cassany dcassany@suse.de 
+
+  Add additional tags for images
+
+  With this commit images will be tagged with three different tags:
+  - <name>:<short_version>
+  - <name>:<long_version>
+  - <name>:<long_version>-<release>
+
+  With change there will be at least a unique tag per build and a semistable
+  tag, as the short_version is not expected to change within a distro release
+  cycle.
+
+- Commit 8e6eac7 by Michal Rostecki mrostecki@suse.de 
+
+  pre_checkin: Allow to define extra packages
+
+  This change allows to define extra packages per product (kubic, caasp) by
+  creating a file named `${product}-extra-packages` (i.e.
+  `kubic-extra-packages` or `caasp-extra-packages`). Kiwi template, in order
+  to support extra packages, has to contain
+  `_EXTRA_PACKAGES_` marker.
+
+  Signed-off-by: Michal Rostecki <mrostecki@suse.de>
+
+- Commit edee831 by David Cassany dcassany@suse.de 
+
+  Update pre_checkin.sh script
+
+  Now pre_checkin.sh script will ingore description generation for those
+  products missing changes file or new changelog entries.
+
+- Commit 995176f by David Cassany dcassany@suse.de 
+
+  Update pre_checkin.sh script
+
+  - Update caasp and kubic changes files
+  - The same changes format as for other kubic packages
+  - Exit on error: `set -e`
+
+- Commit 488929e by David Cassany dcassany@suse.de 
+
+  Generate *.changes file from git log in pre_checkin.sh script
+
+  With this commit a *.changes file is generated using the git-log tool 
+  formatted with the same template open build service tracks changes.
+
+- Commit 6d32f79 by David Cassany dcassany@suse.com 
+
+  Use correct image name and tag for SLE15 base image
+
+  With this commit the base image is set to suse/sle15:current for caasp
+  images, in line with SUSE:SLE-15:GA/sles15-image and bsc#1083671
+
+- Commit 95ca14f by David Cassany dcassany@suse.com 
+
+  Fix pre_checkin.sh typo
+
+- Commit 99dd9be by David Cassany dcassany@suse.com 
+
+  Bump images version and update README
+
+- Commit 37820d0 by David Cassany dcassany@suse.com 
+
+  update flannel-image to be a kubic/caasp template

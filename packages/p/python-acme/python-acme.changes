@@ -1,0 +1,402 @@
+-------------------------------------------------------------------
+Wed Oct  2 10:07:04 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.39.0
+  * Support for Python 3.8 was added to Certbot and all of its components.
+
+-------------------------------------------------------------------
+Wed Sep 11 12:28:33 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.38.0
+  * sync with main certbot package
+
+-------------------------------------------------------------------
+Mon Aug 26 10:39:42 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.37.2
+  * acme: Authz deactivation added to acme module.
+
+-------------------------------------------------------------------
+Wed Jul 17 13:34:45 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.36.0 (bsc#1141928)
+  * Added missing error types from RFC8555
+
+-------------------------------------------------------------------
+Tue Jun 18 09:35:25 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.35.1
+  * sync with main certbot package
+
+-------------------------------------------------------------------
+Mon May 27 13:53:06 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use the %pytest macro
+
+-------------------------------------------------------------------
+Sat May 18 23:13:13 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.34.2:
+  * sync with main certbot package
+
+-------------------------------------------------------------------
+Mon Mar 18 08:17:42 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.32.0
+  * Certbot and its acme module now depend on josepy>=1.1.0.
+  * An ACME CA server may return a "Retry-After" HTTP header on 
+    authorization polling, as specified in the ACME protocol, to 
+    indicate when the next polling should occur. Certbot now reads 
+    this header if set and respect its value.
+  * The acme module avoids sending the keyAuthorization field in 
+    the JWS payload when responding to a challenge as the field is 
+    not included in the current ACME protocol. To ease the migration 
+    path for ACME CA servers, Certbot and its acme module will first 
+    try the request without the keyAuthorization field but will 
+    temporarily retry the request with the field included if a 
+    malformed error is received. This fallback will be removed in 
+    version 0.34.0.
+
+-------------------------------------------------------------------
+Fri Feb  8 10:27:51 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.31.0
+  * Support for initiating (but not solving end-to-end) TLS-ALPN-01 
+    challenges with the acme module.
+  * Fixed accessing josepy contents through acme.jose when the full 
+    acme.jose path is used.
+  * Added the update_account subcommand for account management commands.
+
+-------------------------------------------------------------------
+Tue Jan 29 12:02:18 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop pytest-xdist dependency as it is not really needed
+
+-------------------------------------------------------------------
+Tue Jan 29 11:35:43 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.30.2:
+  * Remove josepy helpers that are no longer needed
+
+-------------------------------------------------------------------
+Sat Dec 15 07:02:55 UTC 2018 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 0.29.1:
+  * Release 0.29.1
+  * Release 0.29.0
+  * WIP External Account Binding (#6059)
+  * Implement POST-as-GET requests (#6522)
+  * ignore erroneously no-member lint error
+  * Revert acme/acme/client.py
+  * Bump version to 0.29.0
+  * remove unused six imports
+  * Remove module-level ignore::ResourceWarnings
+  * bring requests back down to 2.4.1 in setup and oldest constraints
+  * Requests no longer vendorizes urllib3
+  * Use a newer version of requests because of the upcoming Callable import
+    Deprecation in Python 3.8 that warns in Python 3.7
+  * Cover is run on 2.7, so mark 3-only lines as no cover
+  * Ignore ResourceWarnings in various modules in a 2-compatible way.
+  * ignore ResourceWarnings in acme tests
+  * s/assertEquals/assertEqual
+- Adjust Requires
+
+-------------------------------------------------------------------
+Fri Nov 16 16:48:27 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.28.0
+  * Use the ACMEv2 newNonce endpoint when a new nonce is needed, and 
+    newNonce is available in the directory.
+  * Warn when using deprecated acme.challenges.TLSSNI01
+
+-------------------------------------------------------------------
+Fri Sep 14 08:14:31 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.27.1
+  * acme client now raises an error when you try to create an ACME 
+    account with a key that has already been used
+  * you can now call query_registration without having to first 
+    call new_account
+
+-------------------------------------------------------------------
+Tue Aug 28 12:06:22 UTC 2018 - tchvatal@suse.com
+
+- Reflect reality in the dependencies
+- Run the tests
+
+-------------------------------------------------------------------
+Wed Jul 25 17:34:48 UTC 2018 - ecsos@opensuse.org
+
+- update to 0.26.1
+  - No changelog from upstream
+
+-------------------------------------------------------------------
+Mon Jul 16 14:37:48 UTC 2018 - ecsos@opensuse.org
+
+- update to 0.26.0
+  - No changelog from upstream
+
+-------------------------------------------------------------------
+Wed Jul  4 11:20:45 UTC 2018 - ecsos@opensuse.org
+
+- update to 0.25.1
+  - No changelog from upstream
+  
+-------------------------------------------------------------------
+Wed Jun 13 17:48:04 UTC 2018 - ecsos@opensuse.org
+
+- update to 0.25.0
+  - No changelog from upstream
+
+-------------------------------------------------------------------
+Thu May  3 15:01:41 UTC 2018 - ecsos@opensuse.org
+
+- update to 0.24.0
+  - No changelog from upstream
+
+-------------------------------------------------------------------
+Sat Apr 14 14:19:49 UTC 2018 - ecsos@opensuse.org
+
+- update to 0.23.0
+  - No changelog from upstream
+
+-------------------------------------------------------------------
+Thu Mar 22 23:16:22 UTC 2018 - ecsos@opensuse.org
+
+- update to 0.22.2
+  - No changelog from upstream
+
+-------------------------------------------------------------------
+Wed Mar 14 11:17:47 UTC 2018 - ecsos@opensuse.org
+
+- update to 0.22.0
+  - No changelog from upstream
+
+-------------------------------------------------------------------
+Sat Jan 27 09:53:41 UTC 2018 - ecsos@opensuse.org
+
+- update to 0.21.1
+  - No changelog from upstream
+
+-------------------------------------------------------------------
+Mon Dec 11 17:28:38 UTC 2017 - ecsos@opensuse.org
+
+- update to 0.20.0
+  - No changelog from upstream
+
+-------------------------------------------------------------------
+Sat Oct  7 10:08:12 UTC 2017 - ecsos@opensuse.org
+
+- update to 0.19.0
+  - No changelog from upstream
+
+-------------------------------------------------------------------
+Sat Sep 23 08:34:09 UTC 2017 - ecsos@opensuse.org
+
+- update to 0.18.2
+  - No changelog from upstream
+
+-------------------------------------------------------------------
+Wed Sep 20 10:58:11 UTC 2017 - ecsos@opensuse.org
+
+- Convert to singlespec
+
+-------------------------------------------------------------------
+Mon Sep 11 21:18:10 UTC 2017 - ecsos@opensuse.org
+
+- update to 0.18.1
+  - No changelog from upstream
+
+-------------------------------------------------------------------
+Fri Aug 11 15:49:23 UTC 2017 - ecsos@opensuse.org
+
+- update to 0.17.0
+  - No changelog from upstream
+
+-------------------------------------------------------------------
+Fri Jul  7 08:12:55 UTC 2017 - ecsos@opensuse.org
+
+- update to 0.16.0
+  - No changelog from upstream
+
+-------------------------------------------------------------------
+Sun Jun 11 08:48:15 UTC 2017 - ecsos@opensuse.org
+
+- update to 0.15.0
+  - No changelog from upstream
+
+-------------------------------------------------------------------
+Thu Jun  1 16:56:29 UTC 2017 - ecsos@opensuse.org
+
+- update to 0.14.2
+  - No changelog from upstream
+
+-------------------------------------------------------------------
+Wed May 17 16:17:36 UTC 2017 - ecsos@opensuse.org
+
+- update to 0.14.1
+  - No changelog from upstream
+
+-------------------------------------------------------------------
+Tue May 16 10:50:51 UTC 2017 - ecsos@opensuse.org
+
+- fix build error in Tumbleweed
+
+-------------------------------------------------------------------
+Mon May 15 10:51:46 UTC 2017 - ecsos@opensuse.org
+
+- update to 0.14.0
+  - No changelog provides by upstream
+
+-------------------------------------------------------------------
+Tue Apr 25 20:53:13 UTC 2017 - ecsos@opensuse.org
+
+- update to 0.13.0
+  - No changelog provides by upstream
+
+-------------------------------------------------------------------
+Mon Mar 27 06:54:03 UTC 2017 - ecsos@opensuse.org
+
+- insert BuildRequires: python-packaging to prevent build errors
+  for Leap 42.1
+
+-------------------------------------------------------------------
+Mon Mar  6 12:33:03 UTC 2017 - ecsos@opensuse.org
+
+- change require version to python-requests >= 2.10
+
+-------------------------------------------------------------------
+Fri Mar  3 19:33:20 UTC 2017 - ecsos@opensuse.org
+
+- update to 0.12.0
+  - No changelog provides by upstream
+  
+-------------------------------------------------------------------
+Wed Feb  8 23:22:26 UTC 2017 - ecsos@opensuse.org
+
+- update to 0.11.1
+  - No changelog provides by upstream
+
+-------------------------------------------------------------------
+Sat Jan 28 13:08:01 UTC 2017 - ecsos@opensuse.org
+
+- update to 0.10.2
+  - No changelog provides by upstream
+
+-------------------------------------------------------------------
+Tue Jan 17 16:14:52 UTC 2017 - ecsos@opensuse.org
+
+- update to 0.10.1
+  - No changelog provides by upstream
+
+-------------------------------------------------------------------
+Wed Jan 11 22:01:43 UTC 2017 - ecsos@opensuse.org
+
+- update to 0.10.0
+  - No changelog provides by upstream
+
+-------------------------------------------------------------------
+Thu Oct 20 16:40:54 UTC 2016 - ecsos@opensuse.org
+
+- update to 0.9.3
+  - No changelog provides by upstream
+
+-------------------------------------------------------------------
+Wed Oct  5 21:27:28 UTC 2016 - ecsos@opensuse.org
+
+- update to 0.9.0
+  - No changelog provides by upstream
+- drop patch acme-build-on-python-older-than-2_7.patch
+
+-------------------------------------------------------------------
+Sat Jun 18 15:04:14 UTC 2016 - ecsos@opensuse.org
+
+- update to 0.8.1
+  - No changelog provides by upstream
+
+-------------------------------------------------------------------
+Sun Jun  5 17:35:56 UTC 2016 - ecsos@opensuse.org
+
+- update to 0.8.0
+  - No changelog provided by upstream
+- Drop fix-AttributeError-on-mock-older-than_2.0.patch because
+  now in upstream
+
+-------------------------------------------------------------------
+Tue May 31 22:33:49 UTC 2016 - ecsos@opensuse.org
+
+- update to 0.7.0
+  - No changelog provided by upstream
+- add fix-AttributeError-on-mock-older-than_2.0.patch
+
+-------------------------------------------------------------------
+Fri May 13 18:47:17 UTC 2016 - ecsos@opensuse.org
+
+- update to 0.6.0
+  - No changelog provided by upstream
+- update Source with new pypi url
+
+-------------------------------------------------------------------
+Fri Apr  8 18:08:17 UTC 2016 - ecsos@opensuse.org
+
+- Update to version 0.5.0
+  - No changelog provided by upstream
+
+-------------------------------------------------------------------
+Thu Mar 31 21:41:29 UTC 2016 - ecsos@opensuse.org
+
+- add BuildRequires python-setuptools >= 1.0
+
+-------------------------------------------------------------------
+Mon Mar  7 15:40:43 UTC 2016 - ecsos@opensuse.org
+
+- Update to version 0.4.2
+  - No changelog provided by upstream
+
+-------------------------------------------------------------------
+Tue Mar  1 15:57:16 UTC 2016 - ecsos@opensuse.org
+
+- Update to version 0.4.1
+  - No changelog provided by upstream
+
+-------------------------------------------------------------------
+Thu Feb 11 11:34:35 UTC 2016 - jweberhofer@weberhofer.at
+
+- Updated to version 0.4.0
+  - No changelog provided by upstream
+- updated requirement: python-pyOpenSSL >= 0.13
+
+-------------------------------------------------------------------
+Fri Jan 29 15:28:18 UTC 2016 - jweberhofer@weberhofer.at
+
+- Updated to version 0.3.0
+  - No changelog provided by upstream
+
+-------------------------------------------------------------------
+Fri Jan 22 08:43:13 UTC 2016 - jweberhofer@weberhofer.at
+
+- Added python-mock requirement
+
+-------------------------------------------------------------------
+Fri Jan 15 07:30:29 UTC 2016 - jweberhofer@weberhofer.at
+
+- acme-build-on-python-older-than-2_7.patch allows building on 
+  python version < 2.7
+
+-------------------------------------------------------------------
+Fri Jan 15 05:48:37 UTC 2016 - jweberhofer@weberhofer.at
+
+- Updated to latest version 0.2.0
+  - No changelog provided by upstream
+
+-------------------------------------------------------------------
+Thu Dec 17 10:06:07 UTC 2015 - jweberhofer@weberhofer.at
+
+- Fixed description and url
+- Added group
+
+-------------------------------------------------------------------
+Thu Dec 17 08:01:47 UTC 2015 - jweberhofer@weberhofer.at
+
+- Initial version 0.1.1
+

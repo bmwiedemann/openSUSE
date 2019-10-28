@@ -1,0 +1,16 @@
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="url">https://bitbucket.org/jeunice/chainmap</param>
+    <param name="scm">hg</param>
+    <param name="revision">1.0.3</param>
+    <param name="package-meta">no</param>
+    <param name="filename">chainmap</param>
+    <param name="versionformat">1.0.3</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+</services>
+

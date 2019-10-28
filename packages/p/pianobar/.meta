@@ -1,0 +1,16 @@
+<package name="pianobar" project="openSUSE:Factory">
+  <title>Pandora Play</title>
+  <description>Pianobar is a console client for the personalized web radio pandora.
+
+Features:
+ * Play and manage (create, add more music, delete, rename, ...) your stations.
+ * Rate played songs and let pandora explain why they have been selected.
+ * Show upcoming songs/song history.
+ * Configure keybindings.
+ * Last.fm scrobbling support (external application).
+ * Proxy support for listeners outside the USA.
+
+</description>
+  <devel project="multimedia:apps" package="pianobar"/>
+  <url>https://6xq.net/pianobar</url>
+</package>

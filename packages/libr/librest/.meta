@@ -1,0 +1,14 @@
+<package name="librest" project="openSUSE:Factory">
+  <title>Library to access RESTful web services</title>
+  <description>This library was designed to make it easier to access web services that
+claim to be &quot;RESTful&quot;. A reasonable description is that a RESTful
+service should have urls that represent remote objects, which methods
+can then be called on.
+
+It is comprised of two parts:
+
+    * the first aims to make it easier to make requests by providing a
+      wrapper around libsoup.
+    * the second aids with XML parsing by wrapping libxml2.</description>
+  <devel project="GNOME:Apps" package="librest"/>
+</package>

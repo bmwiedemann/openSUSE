@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9ac128ea8c52ef2fbfdf8fce09a4e4e7</srcmd5>
+    <version>0.0.0+git20131204</version>
+    <time>1446208971</time>
+    <user>dimstar_suse</user>
+    <comment>Request to submit it after to Leap.
+</comment>
+    <requestid>339191</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>86423d1f553a809ff7fe1a47f66fa278</srcmd5>
+    <version>1.1.0+git20160124.6b33038</version>
+    <time>1464484355</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>397966</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b40474354e8b5cc5b0b4ced958e719c4</srcmd5>
+    <version>1.1.0+git20160124.6b33038</version>
+    <time>1484772177</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>449520</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d9cff4599fd52ab1546321a8af4241d2</srcmd5>
+    <version>1.1.1+git20160312.ffef7d0</version>
+    <time>1536327671</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>633563</requestid>
+  </revision>
+</revisionlist>

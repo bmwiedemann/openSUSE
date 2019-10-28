@@ -1,0 +1,1770 @@
+-------------------------------------------------------------------
+Sun Jun  2 12:48:38 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- updated to 2.5.23 release
+  - ptp2:
+    * Sony capture stability and speed improvements
+    * Canon EOS capture stability improvements, reduce partial read blobs from 5MB to 1MB
+    * Canon EOS M image format unpacking adjustments
+    * Olympus OMD: bulb capture added, trigger capture capable
+    * Panasonic GH5: added manualfocusdrive, capturetarget
+    * Canon PowerShot X work ... trying to support / improve stability of capture
+    * PTP string packing adjusted to standard (empty and null strings)
+    * New ids added:
+      * Sony Alpha A68, RX100M6, DSC-WX350
+      * Nikon Coolpix L100
+      * Canon PowerShot G7X, G9X Mark II
+      * Canon Rebel T6, EOS 2000D
+      * Fuji X-A2, GFX 50R, XT-30
+      * Ricoh WG-M2
+    * libmtp ids synced.
+  - pentax:
+    * synced smaller parts with pktriggercord
+  - translations:
+    * updated danish
+  - fuzzing:
+    * vusb and sample-afl now able to fuzz all USB cameras (even if slow)
+  - all:
+    * Various crashes fixed that were found during AFL fuzzing the USB drivers
+
+-------------------------------------------------------------------
+Tue Jan  1 16:57:19 UTC 2019 - meissner@suse.com
+
+- updated to 2.5.22 release
+  - ptp2:
+    * Canon EOS M / PowerShot capture problem solved
+    * Sony shutterspeed - provide a static list as the camera does not provide one, you can set also different values
+    * Canon SDRAM capture, try to support more than 500MB of images at once
+    * New USB Ids added:
+      * Canon EOS R, 800D
+      * Canon PowerShot SX600HS, SX740HS
+      * Sony DSC RX0, RX100-M5A
+      * Nikon DSC D3500
+
+  - generic:
+    * handle new "bind" udev event in udev rule generator.
+
+  - translations:
+    * updated polish, ukrainian
+
+
+-------------------------------------------------------------------
+Sat Dec  8 20:24:33 UTC 2018 - meissner@suse.com
+
+- updated to 2.5.21 release
+  ptp2:
+  * Nikon Z series support added
+  * New Canon Powershot SX / GX also support capture, ALPHA support added
+  * Canon EOS bugfixes
+  * imported IDs from libmtp
+  * Added:
+    * Nikon Z6, Z7
+    * Canon Powershot SX720HS, G5X
+    * Canon IXUS 185
+
+-------------------------------------------------------------------
+Sat Oct 27 16:22:24 UTC 2018 - meissner@suse.com
+
+- updated to 2.5.20 release
+  - ptp2:
+    * Canon EOS: fixed regression for some EOS series in OLC decoding
+    * Apple iPhone: disabled PTP Manifest reading again, as IOS seems not to follow the standard
+    * bugfixes
+    * new IDs added:
+      * Sony Alpha-RX10M4
+      * Canon EOS M50, 4000D
+      * Fuji XT-3
+      * synced new MTP ids from libmtp
+
+  - pentax:
+    * refreshed from pktriggercord
+
+  - translations:
+    * updated polish, ukrainian, swedish, danish
+
+-------------------------------------------------------------------
+Sun Jul 22 19:48:27 UTC 2018 - meissner@suse.com
+
+- updated to 2.5.19 release
+  - ptp2:
+    * Canon EOS: handle OLC versions of newer models, which gave incorrect aperture/shutterspeed values
+    * Fuji X series capture improvements.
+    * Fuji X series live view support added.
+    * Panasonic GH5 liveview and capture support. (Needs camera firmware 2.3 or newer)
+    * Olympus E-M5 Mark II and E-M1 Mark II liveview and capture support added.
+    * USB IDs added:
+      * Sony Alpha A99 M2, A7 III, A9
+      * Nikon Coolpix A900
+      * Panasonic GH5
+      * Olympus E-M1 Mark 2
+      * Fuji X-H1, X-M1, X70, X30
+
+  - all: various fixes for warnings from compilers and the coverity scanner
+
+-------------------------------------------------------------------
+Fri Jul 13 11:39:14 UTC 2018 - meissner@suse.com
+
+- updated to a 2.5.18.1 snapshot after Hackweek:
+  - newer EOS cameras better OLC information support
+  - better support for Fuji X series cameras, liveview and capture
+
+-------------------------------------------------------------------
+Sun May 13 17:07:02 UTC 2018 - meissner@suse.com
+
+- updated to 2.5.18 release (bsc#1091309)
+  - ptp2:
+    Canon EOS: Fixed file download on several EOS brands, broken by 2.5.17 release.
+
+  - pentax:
+    Added K01 and K70 models.
+
+-------------------------------------------------------------------
+Mon Apr 16 19:02:33 UTC 2018 - meissner@suse.com
+
+- updated to 2.5.17 release
+  - ptp2:
+    * Apple iOSX: handle root directory objects that have ParentObject==StorageID instead of 0
+    * implement PTP 1.1 Manifest reading and hook into filesystem. currently only supported by Apple iOS.
+    * Canon PowerShot CHDK live view support.
+    * Canon EOS: prepare capture needs to wait a bit on a crucial place to get all events.
+      might fix some PTP Device Busy reports.
+    * Canon EOS: split bulk downloads into pieces of partial downloads. This might cure the Error 70.
+    * Canon EOS: Improved EOS M capture
+    * Canon CHDK: live preview capture support added
+    * Added USB IDs:
+      * Sony A7r III
+      * Nikon CoolPix L430
+      * Nikon D850
+      * Canon EOS M2, M6, M100
+      * Canon EOS 6D Mark II
+      * Fuji Film X-Pro 2
+
+  - pentax:
+    * Code updates imported from pkremote
+
+  - libgphoto2:
+    * Report file changes via GP_EVENT_FILE_CHANGED (hooked up for Canon EOS currently)
+
+  - translations:
+    * updates spanish, chinese
+
+-------------------------------------------------------------------
+Mon Oct 16 11:49:07 UTC 2017 - meissner@suse.com
+
+- updated to 2.5.16 release
+  - ptp2: emergency bugfix as a previous bugfix broke some detection features
+
+-------------------------------------------------------------------
+Mon Oct  2 18:07:03 UTC 2017 - jengelh@inai.de
+
+- Avoid running fdupes across partitions. Replace old tar
+  options, old RPM shell variables by new constructs.
+  Rectify RPM groups. Make macro style consistent again.
+
+-------------------------------------------------------------------
+Mon Oct  2 16:38:09 UTC 2017 - meissner@suse.com
+
+- updated to 2.5.15 release
+  - ptp2:
+    * fuji: Fix cameras without new capture properties.
+    * Canon EOS: config aspectratio, highisonr
+    * Canon EOS: emit CAPTURECOMPLETE event
+    * Canon EOS: whitebalanaceadjustment is 32bit signed, not 16bit signed
+    * usb: better error feedback
+    * fixed some bugs found by AFL fuzzing
+    * Added USB ids:
+      * Sony: A6500, HX400V
+      * Nikon: D500, D7500
+      * Olympus: VR360
+      * Canon PowerShot: ELPH 350 HS
+      * Canon EOS: 200D, Rebel T7i
+      * Fuji: GFX 50 S
+      * Ricoh Theta S, Theta SC
+  - libgphoto2_port/vusb:
+    * now default disabled as it confused people, enable with --enable-vusb
+- libgphoto2-fix-fuji.patch: upstreamed
+
+-------------------------------------------------------------------
+Sun Jul 16 13:34:04 UTC 2017 - meissner@suse.com
+
+- libgphoto2-fix-fuji.patch: check before using a ptp property that
+  is only available in some updated Fuji cameras (bsc#1048853)
+
+-------------------------------------------------------------------
+Mon Jun  5 18:58:54 UTC 2017 - meissner@suse.com
+
+- updated to 2.5.14 release
+  * ptp2:
+    * Canon EOS M remote control / capture support (M3, M5, M10 ... but not the original EOS M currently)
+    * fix for Canon EOS camera crash bug introduced in 2.5.13.
+    * Fuji XT-2 capture support (firmware update needed, might work for other Fuji XT too)
+    * Canon EOS 77D added.
+    * various bugfixes
+    * added USB IDs:
+      * Sony DSC-RX10M3, DSC-HX90V
+      * Sony UMC-R10C
+      * Nikon D5600,
+      * Canon EOS 77D
+      * Fuji XT-20
+    * synced MTP device ids from libmtp
+    * more issues fixed that were found by the AFL fuzzer
+  * pentax:
+    * Added Pentax K5-II, Pentax K3-II
+  * libgphoto2_port:
+    * fixed gp_log_remove_func
+  * libgphoto2_port/vusb:
+    * support f-number, shutterspeed, and exposurebias in the virtual PTP camera
+  * all:
+    * several issues found by gcc 7 fixed
+  * translations:
+    * updated ukrainian, polish, vietnamese, french, swedish
+
+-------------------------------------------------------------------
+Sat Apr  8 15:52:34 UTC 2017 - meissner@suse.com
+
+- updated to 2.5.13 release
+  See below in 2.5.12.1 pre relase, also:
+  
+  pentax: 
+  * Now using the pktriggercord codebase
+  * lots of improvements
+  * Please report missing Pentax K USB ids that are supported by pktriggercord!
+
+-------------------------------------------------------------------
+Tue Mar 21 16:33:10 UTC 2017 - meissner@suse.com
+
+- updated to 2.5.12.1 temporary snapshot
+  ptp2:
+  * iPhone iOS 10.2 storage handling fixed, added dynamic storage handling
+  * Sony Alpha Live View support.
+  * Canon EOS M series capture enabled. (might not fully work yet)
+  * Various crashes and endless loops fixed that were found by the AFL fuzzer.
+  * Various bugfixes in Nikon, Canon capture
+  * New USB Ids:
+    * Sony: SLT A37, DSC-RX100M5
+    * Nikon KeyMission 360
+    * Canon PowerShot G16
+    * Canon EOS M5
+    * Fuji Fujifilm XT-2
+    * GoPro Hero 5 Black
+
+-------------------------------------------------------------------
+Thu Jan  5 17:15:43 UTC 2017 - meissner@suse.com
+
+- updated to 2.5.12 release
+
+  ptp2:
+  * Canon EOS: more fixes for Canon EOS 5D Mark IV and Canon EOS 80D.
+  * Parrot Sequoia support and property decoding
+  * Nikon 1: Fixed Nikon 1 capture
+  * Sony Alpha: various bugfixes.
+  * New USB IDs:
+    * Nikon Coolpix AW130
+    * Nikon DSC D3400
+    * Parrot Sequoia
+    * GoPro Hero, Hero4 Silver, Hero + 
+  * bugfixes and cleanups
+
+  canon:
+  * fixed zoom on some older Canon Powershots
+
+  translations:
+  * updated polish, ukrainian, vietnamese, danish, french, svensk
+
+-------------------------------------------------------------------
+Sun Nov 20 21:23:15 UTC 2016 - meissner@suse.com
+
+- updated to 2.5.11 release
+  * canon:
+    * not experimental anymore, for some years
+    * some bugfixes in configuration handling
+  * ptp2:
+    * canon: EOS capture improvements, also supporting new EOS
+    * sony: tethering and trigger capture implemented, capture stability improvements
+    * sony: exposure compensation setting fixed
+    * sony: capture and autofocus configurations, similar to eosremoterelease
+    * generic: fixed serialnumber retrieval
+    * nikon: "autofocus" config variable for global autofocus enable/disable (default on, default liveview off)
+    * various bugs fixed, stability improved
+    * ptpip: allow different event ports. --port ptpip:IP:dataport:eventport
+    * New ids reported:
+      - Sony Alpha 7, DSC-RX100M4, NEX-7, DSC-HX20V, Alpha 6300, A7S II, A7, 
+      - Nikon DSC Df, D7200, D5, D810A, 1 V3
+      - Canon EOS 1Dx Mark 3, 80D, 5D Mark IV
+      - Canon Digital IXUS 180
+      - various music players / android phones imported from libmtp 
+    
+  * libgphoto2:
+    * Speed up initial startup.
+    * Win32: store settings in the "User Profile\.gphoto\settings" and not in C:\\Windows anymore.
+    * gp_widget_changed() no longer clears the "changed" state to make this API more consistent.
+      Use gp_widget_set_changed(widget,FALSE) to do so.
+
+  * examples:
+    * sample-photobooth: a sample program handling tethering, SIGUSR1 driven capture and SIGUSR2
+      based configuration reading.
+    * sample-afl: code to inject afl fuzzing data
+    
+  * translations:
+    * updated swedish, ukrainian, polish, finnish, russian, danish, polish, brazilian, serbian, dutch, chinese
+- libgphoto2-newjpeg.patch: removed, upstream
+
+-------------------------------------------------------------------
+Tue Jul  5 20:12:20 UTC 2016 - toddrme2178@gmail.com
+
+- Fix Group tag.
+
+-------------------------------------------------------------------
+Thu Jun  9 14:29:12 UTC 2016 - meissner@suse.com
+
+- require: udev in the library package for the hwdb refresher
+  bsc#982339
+
+-------------------------------------------------------------------
+Thu Jun  9 13:55:38 UTC 2016 - meissner@suse.com
+
+- libgphoto2-newjpeg.patch: jpeg_mem_src gets a const buffer now
+  in new libjpeg-turbo.
+
+-------------------------------------------------------------------
+Wed Mar 23 21:12:13 UTC 2016 - meissner@suse.com
+
+- updated to 2.5.10 release
+  libgphoto2:
+  * added gp_camera_list_config, gp_camera_get_single_config, gp_camera_set_single_config
+    additional configuration APIs for faster access to single configuration values.
+  ptp2:
+  * allow generic opcode commands with parameters, config variable "opcode"
+  * fixed pretending that Nikon Coolpix S series is a Nikon 1 S.
+  * Nikon: fixed problem with SDRAM capture
+  * Canon EOS: handle "no focus" during capture
+  * Canon EOS: handle --new correctly
+  * Canon Powershot: handle lack of object protection setting
+  * Ricoh Theta: support shutterspeed configuration
+  * added size checking to PTP unpacking primitives
+  * various bugfixes
+  * New ids:
+    * Imported Media Players and Android phones from libmtp
+    * Sony Alpha A7S II, ILCE 7M2
+    * Kodak Z990
+    * Nikon Coolpix L840, S3600
+    * Leica SL
+    * Olympus TG-620, E-M5 Mark 2
+    * Canon EOS 1D C, 750D
+    * Canon IXUS 160
+    * Fuji Film X-T1, X-T10, A-610
+  pentax:
+  * fixed some crashes on non-existing config variables
+  * use portable directory api (helps Visual Studio)
+  libgphoto2_port/vusb:
+  * Implemented a virtual PTP camera for test purposes.
+  libgphoto2_port/disk:
+  * Support exfat fuse filesystems.
+  all:
+  * fixed various issues found by Coverity static analyzer
+  * removed unistd.h headers where not needed to help Visual Studio
+  translations:
+  * updated swedish, brazilian portuguese, danish, polish, ukrainian, vietnamese
+-------------------------------------------------------------------
+Tue Dec 29 21:09:48 UTC 2015 - stefan.bruens@rwth-aachen.de
+
+- Several changes/fixes to packaging:
+  * API documentation was packaged twice, once in the -devel package
+    and once in the main package (under different paths), split off
+    to separate libgphoto2-devel-doc package
+  * Use apidocs from source tar instead of using doxygen
+  * package user documentation in separate libgphoto2-doc package
+  * remove obsolete hotplug scripts
+
+-------------------------------------------------------------------
+Wed Nov 18 21:47:59 UTC 2015 - meissner@suse.com
+
+- updated to 2.5.9 release
+  Now maintained (source and issue tracker) in GIT at https://github.com/gphoto/libgphoto2
+  ptp2:
+  * PTP/IP: fixes to support Ricoh Theta and Sony Alpha over WLAN better
+  * unification of timeout with backoff handling
+  * Canon EOS: fixed a timeout bug on wait_event
+  * Canon EOS: report protection status correctly
+  * Canon EOS: unlock the ui on close
+  * Sony: bulb mode support (in manual mode, shutterspeed and bulb option)
+  * Hook up PTP OpenCapture opcode
+  * Nikon J5 support. Nikon now hides prop and opcodes even differently.
+  * Added USB IDs:
+    - Sony SLT A77V, A7R2, HDR-PJ260VE
+    - Nikon DSLR D5500
+    - Canon EOS 760D, 5Ds, 5Ds R
+    - Nikon Coolpix AW110, S6300, S6800, S3700, S2900
+    - Nikon 1 S2, J5  
+    - Ricoh Theta m15 (USB and WLAN)
+    - GoProp Hero 4
+  canon: readd old Canon IXUS 30.
+  translations: updated ukrainian, vietnamese, polish, italian
+
+-------------------------------------------------------------------
+Sun Sep 20 08:51:30 UTC 2015 - meissner@suse.com
+
+- add -devel to baselibs for use to build wine in 64bit environments
+
+-------------------------------------------------------------------
+Fri Aug  7 07:39:31 UTC 2015 - dimstar@opensuse.org
+
+- Change udev BuildRequires for pkgconfig(udev)
+- use pkg-config --modversion udev instead of querying the package
+  database. udev is often installed as udev-mini in OBS' build env,
+  which the rpm -q udev call could not find.
+
+-------------------------------------------------------------------
+Sun Jul  5 21:36:34 UTC 2015 - meissner@suse.com
+
+- updated to 2.5.8 release
+- all:
+  * Missing COPYRIGHT headers added.
+  * Bug fixes for issues detected by Coverity.
+
+- ptp2:
+  * Canon Powershot/IXUS CHDK support
+    Install the CHDK firmware and then use "gphoto2 --set-config chdk=On" to enable.
+  * Canon EOS: Implemented new capture method for new Canon EOS to avoid hangs.
+  * Canon EOS: New configuration variable: continuousaf
+  * Canon EOS: event output for focusinfo / focusmask
+  * Nikon DSLR: New configuration variables: movieiso, movieshutterspeed, moviehighisonr
+  * Nikon Coolpix A: also manually add override opcodes for capture (please report if it works)
+  * New USB ids:
+  Sony: DSC-HX60V, Alpha-A7S, Alpha-A77 M2, Alpha A5100
+  Panasonic: DMC-LS2
+  Canon EOS 7D Mark II, Canon EOS M3
+  Canon Powershot SX520 HS
+  Fuji Fujifilm X-E2
+  Samsung NX1
+  * Media Player IDs synced with the libmtp ID database.
+  * Lots of bugfixes.
+
+- libgphoto2_port/libusb1:
+  * Prefer libusb1 over libusb0 if both are present.
+  * Asynchronous interrupt handling, to avoid losing usb interrupts during other
+    operations.
+
+- libgphoto2.keyring: replaced by my new 4096 bit key
+
+-------------------------------------------------------------------
+Fri May  1 12:55:34 UTC 2015 - meissner@suse.com
+
+- disable libusb 0.1, as it is no longer needed and will cause 
+  hangs. bsc#926862
+
+-------------------------------------------------------------------
+Sun Jan 25 18:22:27 UTC 2015 - meissner@suse.com
+
+- remove all the .la files, improves startup time.
+
+-------------------------------------------------------------------
+Sun Jan 18 21:45:22 UTC 2015 - meissner@suse.com
+
+- 2.5.7 release
+  ptp2:
+  * Canon EOS focusinfo crash fixed (affected all config operations)
+  * wait_for_event sleep backoff increased (50 - 100 - 150 - 200ms)
+  * Nikon: fixes to make Nikon Coolpix S9700 over PTPIP work better
+  * Nikon: WLAN GUID setting
+  * Sony: tighten event loop to avoid loss of objectadded events
+  * New USB ids: Nikon Coolpix 9400, Nikon S9700, Pentax K3 (in PTP).
+
+  pentax:
+  * added Pentax K100Ds
+  * added raw capture support
+
+  packaging:
+  * fixed missing libexif in pkgconfig 
+
+  translations:
+  * updated ukrainian, vietnamese, french, polish
+
+-------------------------------------------------------------------
+Sun Dec 21 20:14:41 UTC 2014 - meissner@suse.com
+
+- 2.5.6 release 
+  ptp2:
+  * Nikon D3000/D3100/D3200: It hides the "good" capture opcodes from the
+    DeviceInfo. Override and add them. If you see capture bugs, please report
+    with debuglogfile.
+  * "exposurecompensation" now in correct size (-3.0 <-> 3.0 usually)
+  * Canon EOS: decode and report "focusinfo" variable that outputs the focus information of the camera.
+  * Canon EOS: autofocusdrive=0 and cancelautofocus=1 added to cancel autofocusing,
+    to avoid blocking the camera.
+  * Canon EOS: "eosviewfinder" renamed to "viewfinder"
+  * Sony SLT: Make property setting work for "iso", "exposurecompensation",
+    "f-number", "shutterspeed"
+  * Canon EOS: crash on 700D fixed
+  * Nikon DSLR: race condition on object addition handled better
+  * Nikon DSLR: make sure we make a pause a bit during polling after capture.
+  * IDs added:
+    Nikon: Coolpix P7800, S1, J4
+    Nikon: D3300, D610, D4s, D810, D750
+    Canon: IXUS 125HS, PowerShot Elph340HS
+    Leica M9
+  * various bugfixes
+
+  libgphoto2_port/usb1:
+  * fixed a memory leak
+  * api changed for gp_log_data to make smaller debuglogs possible
+
+-------------------------------------------------------------------
+Thu Sep 18 21:07:46 UTC 2014 - meissner@suse.com
+
+- 2.5.5.1 release
+  - regression with nikon coolpix s fixed
+  - canon eos has no zoom
+  - more fixes and translation updates
+
+-------------------------------------------------------------------
+Sun Aug 17 18:18:11 UTC 2014 - meissner@suse.com
+
+- 2.5.5 release
+- ptp2:
+  Nikon 1 support. Final fix to get it running by Raj Kumar of archive.org.
+  Nikon: liveview capture without autofocus enhanced, now also for card
+  Nikon: restart liveview after capture
+  Canon EOS: New property reporting method (OLC Info) implemented.
+  Print read-only values in configuration table lookup (for Canon EOS mostly)
+  Sony: Fixed Sony SLT-A900v capture
+  Fixed the various "datetime" hooks for PTP generic, Canon Powershot and Canon EOS
+  to hopefully work better. --set-config datetime=now sets the camera to the current time.
+  CHDK: some changes
+  New ids:
+  Nikon DSC D3x, D5300
+  Nikon Coolpix P330
+  Canon PowerShot S95, S120, SX260HS, SX280HS, SX160IS, A2500, A2600, Elph135, IXUS 300HS, IXUS 255HS
+  Canon EOS 1200D
+  Sony DSC-A900, Alpha 6000, DSC-HX5V
+  Casio EX-ZR700, 
+  Fuji FinePix AV-150, T200
+  Massive logging and error handling cleanup by Axel Waggershauser
+  cleanup of the USB data handling
+  Bugfixes
+- st2205:
+  add support for a new type of 240x320 picture frames
+- all:
+  Massive logging and error handling cleanup by Axel Waggershauser.
+  Various cleanups from David Berrange for mingw32 builds.
+  fixed libgd detection and linking.
+- print-camera-list
+  add a mode to print udev rules for the non-standard USB support (usbscsi/usbdisk),
+  needed additional to HWDB databases.
+- translations:
+  updated ukrainian, vietnamese, polish, french, finish, chinese, danish, dutch,
+
+-------------------------------------------------------------------
+Fri Jun 27 21:19:09 UTC 2014 - meissner@suse.com
+
+- updated to 2.5.4.1 snapshot 2014/06/27
+  - fixed generation of udev rules bnc#884514
+  - new D7100 configuration tables
+  - Nikon D5300 id added
+
+-------------------------------------------------------------------
+Fri Jun 13 13:42:01 UTC 2014 - meissner@suse.com
+
+- updated to 2.5.4.1 snapshot 2014/06/13
+  - Nikon 1 capture working
+  - various canon eos fixes and improvements
+  - readded PTP matcher rule to UDEV rules
+  - translation updates
+
+-------------------------------------------------------------------
+Sun Apr 27 18:52:40 UTC 2014 - meissner@suse.com
+
+- updated to 2.5.4.1 snapshot
+  - more nikon 1 fix work
+  - generate udev rules for /dev/sg* again
+
+-------------------------------------------------------------------
+Thu Apr 24 09:54:12 UTC 2014 - dmueller@suse.com
+
+- remove dependency on gpg-offline (blocks rebuilds and
+  tarball integrity is checked by source-validator anyway, plus
+  it was commented out)
+
+-------------------------------------------------------------------
+Sun Mar 23 18:23:52 UTC 2014 - meissner@suse.com
+
+- updated to 2.5.4 release
+  - sony slt support
+  - nikon bulb support
+  - other nikon, canon, olympus improvements
+  - lots of bugfixes and various new ids
+
+-------------------------------------------------------------------
+Mon Jan 13 08:13:00 UTC 2014 - meissner@suse.com
+
+- updated to 2.5.3.1 final hotfix
+  - fixed ptp matcher
+  - updated french, dutch, russian, ukrain translation
+
+-------------------------------------------------------------------
+Fri Jan 10 21:24:25 UTC 2014 - meissner@suse.com
+
+- updated to 2.5.3 final
+  - bugfixes, Coverity and other fixes
+  - new USB ids
+  - hwdb support fixed (bnc#852551)
+  - unified all names, especiall Canon S100 (bnc#856828)
+  - pentax updates
+- reenabled gpg checking
+
+-------------------------------------------------------------------
+Mon Sep 30 12:22:48 UTC 2013 - fcrozat@suse.com
+
+- Replace udev rules with udev hwdb for openSUSE 13.1 or later
+  (more efficient).
+- Fix udev hwdb installation and ensure udev hwdb is updated when
+  package is installed / updated / uninstalled.
+
+-------------------------------------------------------------------
+Mon Aug 19 14:57:20 UTC 2013 - meissner@suse.com
+
+- updated to 2.5.2.1 temporary snapshot
+  - new udev hwdb
+  - new Nikon capture functions for newer Nikons
+  - Olympus 3030 fixed
+  - several new USB ids
+  - translation updates
+  - lots of other bugfixes
+- disabled gpg key checking for snapshot
+
+-------------------------------------------------------------------
+Mon May  6 08:24:24 UTC 2013 - meissner@suse.com
+
+- buildrequire libxml2-devel for olympus e-series.
+
+-------------------------------------------------------------------
+Sun May  5 20:54:22 UTC 2013 - meissner@suse.com
+
+- Updated to 2.5.2
+  ptp2:
+  * Fixed Raspberry Pi and USB 3.0 "connect only once" problem.
+  * Experimental Olympus E-series (not Pen) remote control support. Try in "Control" mode.
+  * Nikon DSLR: real movie capture! (use --set-config movie=1/0 and --wait-event)
+  * New ids:
+    Sony: DSC-A900, SLT-A350, DSC-RX1, HX300, NEX-3N
+    Nikon Coolpix: P80, L820, S9500, S620, P520, S2500, S2600
+    Nikon Coolpix A
+    Nikon DSLR: D2Xs, D4, D7100
+    Nikon J2
+    Canon Powershot: S100, A1300IS, A2300IS, 
+    Canon EOS: 700D, 100D
+    Fuji FinePix: H20EXR, X20
+    Samsung: NX1000, EK-GC100
+    Also various MTP device ids merged from libmtp.
+  * ptpip: major/minor number was switched in init packet.
+  * Nikon DSLR: out of focus during capture fixed, various bugfixes
+  * Nikon "controlmode" config for unlocking the camera.
+  * Canon DSLR: "keepdeviceon" pinging in get_config, liveview
+  * Canon thumbnail retrieval fixed.
+  * Lots of work on getting Olympus E-series DSLRs in Control mode
+    to run.
+
+  canon:
+  * wait-for-event: handle when camera goes offline during waiting.
+  * fixed mtime 0 (Jan 1 1970) issue when downloading files and using --filename
+
+  sierra:
+  * Fixed the Nikon Coolpix 4300 and 2500 USB over SCSI capture mode.
+  * Ignore register 4 read errors after capture as Nikon does not supply them.
+  * added commented code on how to switch the Coolpix 2500 to RAW DIAG mode.
+
+  libgphoto2_port:
+  * gp_port_reset functionality to do a port reset.
+
+  libgphoto2_port/usbscsi:
+  * Use timeout supplied by driver, not hardcoded 1.5 seconds (fixes Nikon sierra capture).
+
+  translations:
+  * updated ukrainian, finish, dutch, polish, russian, french, vietnamese, german
+
+  build:
+  * specify lots of _BSD_SOURCE et.al. to make the strict MacOS ports
+    build happier. Might break non Linux platforms, please report this.
+  * libxml2 needed for Olympus E series capture support.
+  * cleaned up AM_CPPFLAGS/CPPFLAGS usage, do not use both of them together.
+
+-------------------------------------------------------------------
+Mon Apr 15 09:27:50 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Tue Jan 29 09:40:26 UTC 2013 - meissner@suse.com
+
+- updated to 2.5.1.1 bugfix version
+  - ptp2: fixed 32bit platforms
+  - ax301: fixed buffer overread
+
+-------------------------------------------------------------------
+Sun Jan 27 21:26:56 UTC 2013 - meissner@suse.com
+
+- updated to 2.5.1 final version
+  - more fixes in the wait-event, capture preview and
+    regular capture code for Canon and Nikon.
+  - some new camera ids added
+
+-------------------------------------------------------------------
+Wed Jan  9 14:07:32 UTC 2013 - meissner@suse.com
+
+- updated to 2.5.0.2 temp snapshot
+  - various new ids
+  - various bugfixes
+  - Canon driver fixes
+  - PTP driver fixes: Canon EOS thumbnail fixes
+  - translation updates
+
+-------------------------------------------------------------------
+Wed Oct 17 12:44:36 UTC 2012 - fcrozat@suse.com
+
+- fix build with new udev rules location
+
+-------------------------------------------------------------------
+Wed Oct  3 16:23:37 UTC 2012 - coolo@suse.com
+
+- fix previous change
+
+-------------------------------------------------------------------
+Sat Sep 22 16:54:39 UTC 2012 - meissner@suse.com
+
+- split to libgphoto2-6 to allow parallel installation
+  with old libgphoto2 (2.4) and to follow shared lib convention.
+
+-------------------------------------------------------------------
+Fri Sep 21 18:18:24 UTC 2012 - jengelh@inai.de
+
+- Parallel build with %_smp_mflags
+- .la files for plugins are useless - remove them
+
+-------------------------------------------------------------------
+Thu Sep 13 08:45:14 UTC 2012 - meissner@suse.com
+
+- Updated to major release 2.5.0
+  - more dynamic lists (no more fixed limits)
+  - libgphoto2 api adjustments to make it more sane, 
+    binary incompatible
+  - new .so version 6
+
+-------------------------------------------------------------------
+Wed Aug  1 12:31:43 UTC 2012 - meissner@suse.com
+
+- fixed one missed gp_devs = NULL which led to more crashes
+  bnc#771743
+
+-------------------------------------------------------------------
+Thu Jul 19 18:40:18 UTC 2012 - meissner@suse.com
+
+- added 2.4 branch fixes
+  - libusb1: do not crash immediately (avoid global context usage)
+  - canon: --wait-for-event append \0 to filename
+  - ptp2: new USB ids, fixed Canon EOS thumbnail retrieval
+
+-------------------------------------------------------------------
+Thu Jul 12 07:58:37 UTC 2012 - meissner@suse.com
+
+- generate v 175 udev rules (basically will use internal usb_id now)
+
+-------------------------------------------------------------------
+Sun Apr 15 23:15:29 CEST 2012 - meissner@suse.de
+
+- 2.4.14 release
+  - Canon EOS 5D Mark III support
+  - Samsung Galaxy support restored
+  - bugfixes
+
+-------------------------------------------------------------------
+Tue Feb 21 18:03:48 CET 2012 - meissner@suse.de
+
+- 2.4.12.1 temp snapshot
+  - various libusb 1.0 fixes (including last one merged)
+  - EOS fast directory listing
+
+-------------------------------------------------------------------
+Sat Feb 18 22:59:56 UTC 2012 - dimstar@opensuse.org
+
+- Add libgphoto2-libusb.patch: Fix initialization of libusb 1.0.
+  The initialization of libusb was not always done with the default
+  context and if not done with the default context, the right one
+  needs to be passed to subsequent calls.
+
+-------------------------------------------------------------------
+Wed Jan 25 10:37:10 UTC 2012 - meissner@suse.com
+
+- Updated to 2.4.12 final release. 
+  - libusb 1.0 support
+  - canon and nikon capture enhancements
+  - lots of bugs fixed
+  - lots of new devices
+  - updated translations
+
+-------------------------------------------------------------------
+Sun Dec 11 14:13:06 CET 2011 - meissner@suse.de
+
+- do not explicitly require libusb 0.1 in pkgconfig file
+- some more bugfixes
+
+-------------------------------------------------------------------
+Tue Nov 29 11:39:03 CET 2011 - meissner@suse.de
+
+- Updated to 2.4.11.2 temp snapshot
+  - libusb 1.0 support
+  - changed canon powershot event handling
+  - fixed several bugs
+  - added new devices
+
+-------------------------------------------------------------------
+Sat Nov 19 15:57:21 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Mon May 30 17:06:35 CEST 2011 - meissner@suse.de
+
+- disable hal support completely for 12.1 bnc#697024
+
+-------------------------------------------------------------------
+Tue Apr 19 15:09:27 CEST 2011 - meissner@suse.de
+
+- Updated to the 2.4.11 release
+  - lots of PTP fixes for Canon and Nikons.
+  - sierra mode now uses SCSI wrapping directly.
+  - fixes also in other drivers
+  - lots of new USB ids
+  - translations updates
+
+-------------------------------------------------------------------
+Tue Aug 31 09:50:22 UTC 2010 - aj@suse.de
+
+- Recommend instead of require lang package since it's not mandatory.
+
+-------------------------------------------------------------------
+Sun Aug 15 20:04:51 CEST 2010 - meissner@suse.de
+
+- Updated to 2.4.10 release
+  - lots of PTP and EOS related fixes
+  - shortcuts in UDEV rules
+  - new jl2005c driver for small cameras
+  - translation updates
+
+-------------------------------------------------------------------
+Mon Jun 21 16:43:41 CEST 2010 - meissner@suse.de
+
+- bump maximum file limit to 4096, as 2.5 is not ready yet bnc#439065
+- Fixed some bugs in the ptp2 drivers.
+
+-------------------------------------------------------------------
+Sat May  8 10:24:20 CEST 2010 - meissner@suse.de
+
+- build against lockdev-devel
+
+-------------------------------------------------------------------
+Tue Apr 27 08:54:31 CEST 2010 - meissner@suse.de
+
+- remove the major .la files
+
+-------------------------------------------------------------------
+Sun Apr 11 23:25:39 CEST 2010 - meissner@suse.de
+
+- Updated to 2.4.9 final release
+	- more EOS and other PTP fixes
+	- more picture frame fixes
+
+-------------------------------------------------------------------
+Thu Mar 25 09:48:06 CET 2010 - meissner@suse.de
+
+- disable hal inclusion
+- updated to temp snapshot 2.4.8.1
+	- new usbdiskdirect driver for certain picture frames
+	- new libgd dependency for picture frame
+	- new picture frame driver
+	- lots of PTP fixes and enhancements
+
+-------------------------------------------------------------------
+Mon Jan 25 11:21:22 CET 2010 - meissner@suse.de
+
+- updated to version 2.4.8
+	- Lots of improvements to EOS and Nikon capture support
+	- fuji s5 pro capture support
+	- several new ids
+	- stability fixes
+	- translation updates
+
+-------------------------------------------------------------------
+Tue Dec 22 19:03:10 CET 2009 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Sat Nov 21 19:42:05 CET 2009 - meissner@novell.com
+
+- 2.4.7.3 tempsnapshot
+
+-------------------------------------------------------------------
+Mon Oct 12 17:04:31 CEST 2009 - meissner@suse.de
+
+- tag mediaplayers correctly in the new style UDEV model.
+
+-------------------------------------------------------------------
+Sat Sep 26 11:34:46 CEST 2009 - meissner@suse.de
+
+- 2.4.7.1 temp snapshot
+	- directory bugfix to allow fileretrieval with unix fds
+	- translation updates
+	- various ptp stabilizing bug fixes
+
+-------------------------------------------------------------------
+Mon Aug 17 13:12:04 CEST 2009 - meissner@suse.de
+
+- 2.4.7 final release
+	- just small cleanups compared to last
+
+-------------------------------------------------------------------
+Tue Aug 11 18:25:34 CEST 2009 - meissner@suse.de
+
+- 2.4.6.6 temp snapshot
+	- fixed udev v 136 rule generation
+- 2.4.6.5 temp snapshot
+	- more ptp improvements
+- generate UDEV 3rd generation rules (for gudev)
+
+-------------------------------------------------------------------
+Mon Jul 27 11:41:52 CEST 2009 - meissner@suse.de
+
+- 2.4.6.4 temp snapshot
+	- lots of Canon EOS improvements in capture support
+	- New ids for PTP2
+	- lots of PTP2 bugfixes and improvements
+	- bugfixes
+
+-------------------------------------------------------------------
+Tue May 26 10:51:54 CEST 2009 - meissner@suse.de
+
+- updated to 2.4.6.1 temp snapshot
+	- various Canon EOS bug fixes/improvements
+	- new ids
+
+-------------------------------------------------------------------
+Sun May 17 22:53:28 CEST 2009 - meissner@suse.de
+
+- Updated to 2.4.6 final (just some small stuff)
+
+-------------------------------------------------------------------
+Mon May 11 12:52:50 CEST 2009 - meissner@suse.de
+
+- updated to 2.4.5.3 temp snapshot
+	- fixed Canon old EOS repeated capture
+	- added Canon new EOS LiveView in --capture-preview
+	- more Canon new EOS properties
+	- various bugfixes and new ids.
+
+-------------------------------------------------------------------
+Thu Apr  2 20:45:05 CEST 2009 - meissner@suse.de
+
+- updated to 2.4.5 release
+	- various EOS capture fixes
+	- varios Nikon capture fixes
+	- Nikon LiveView support
+
+-------------------------------------------------------------------
+Sat Mar 14 14:01:01 CET 2009 - meissner@suse.de
+
+- updated to temp snapsot 2.4.4.3
+	- various ptp2 driver bugfixes in capture areas
+	- gphoto filesystem rewritten to be dynamic and
+	  without LRU corruption
+
+-------------------------------------------------------------------
+Thu Jan 22 00:48:10 CET 2009 - meissner@suse.de
+
+- updated to 2.4.4 release
+	- minor bugfixes done for the release
+
+-------------------------------------------------------------------
+Tue Jan 20 23:17:52 CET 2009 - meissner@suse.de
+
+- updated to interim 2.4.3.3 branch snapshot
+  "all bugs fixed" :)
+  	- fixed a long standing LRU bug leading to memory corruptions
+	- fixed a canon capture to card bug.
+  	- more nikon props
+	- bugfixes
+
+-------------------------------------------------------------------
+Mon Jan 12 16:45:34 CET 2009 - meissner@suse.de
+
+- updated to interim 2.4.3.2 branch snapshot
+  - lots of changes in the ptp2 driver:
+	- new USB ids
+	- hidden nikon property support for newer DSLRs
+	- canon and nikon capture support enhanced
+	- bugfixes and speedups
+  - translation updates
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Oct 30 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Sun Oct 19 22:21:01 CEST 2008 - meissner@suse.de
+
+- updated to 2.4.3 final stable release
+	- Canon EOS tethered capture support
+	- lots of bugfixes
+	- new translations
+
+-------------------------------------------------------------------
+Mon Oct  6 17:45:57 CEST 2008 - meissner@suse.de
+
+- upgraded to intermittent svn snapshot
+	- ptp2 bugfixes and new ids
+	- moved more ids from canon to ptp2 driver
+	- backported fixes from trunk
+	- sierra storage info mode
+	- examples started
+
+-------------------------------------------------------------------
+Tue Sep  9 23:49:38 CEST 2008 - meissner@suse.de
+
+- upgraded to 2.4.2.1 stable snapshot
+	- lots of bugfixes and new ids
+	- disable some incorrect USB ids for Mass Storage Only devices
+	- merged ptp2 driver from TRUNK
+	- byteswapping using <endian.h>
+
+-------------------------------------------------------------------
+Tue Aug 19 16:45:35 CEST 2008 - lnussel@suse.de
+
+- remove resmgr from buildrequires
+
+-------------------------------------------------------------------
+Thu Jul 17 18:57:08 CEST 2008 - schwab@suse.de
+
+- Fix byteswap macros.
+
+-------------------------------------------------------------------
+Sun Jul 13 23:34:02 CEST 2008 - meissner@suse.de
+
+- upgraded to 2.4.2 stable release
+	- more ids, more bugfixes backmerged
+
+-------------------------------------------------------------------
+Sat Jul  5 08:30:08 CEST 2008 - meissner@suse.de
+
+- upgraded again to current svn state
+	- fixes in canon capture handling
+	- autoreconf for everything
+
+-------------------------------------------------------------------
+Sat Jun 28 10:04:02 CEST 2008 - meissner@suse.de
+
+- updated to current 2.4.1.3 branch state
+	- ptp2 driver backmerged
+	- bugfixes for new libtool/automake/autoconf
+	- bugfixes and translations
+
+-------------------------------------------------------------------
+Sun Apr 13 18:34:15 CEST 2008 - meissner@suse.de
+
+- fixed glibc 2.8 problem with re_compile_pattern.
+- fixed one topfield problem
+
+-------------------------------------------------------------------
+Fri Apr 11 13:41:22 CEST 2008 - meissner@suse.de
+
+- updated to current 2.4.1.2 branch state
+	- topfield pvr added
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Tue Apr  1 14:36:09 CEST 2008 - meissner@suse.de
+
+- updated to current 2.4 branch state
+	- large startup speedup
+	- Canon EOS capture mode fixes
+
+-------------------------------------------------------------------
+Fri Mar 28 22:28:03 CET 2008 - meissner@suse.de
+
+- updated to final 2.4.1 release
+	- small bugfixes
+	- translations updates
+
+-------------------------------------------------------------------
+Wed Mar 19 16:31:18 CET 2008 - meissner@suse.de
+
+- updated to current 2.4.0.99 BRANCH state
+	- ptp2 driver lots of bugfixes and lots of new ids
+	- canon driver timeout fix
+	- disk.so suppression of known network fs
+	- suppress Olympus mass storage id
+	- hal patch upstreamed
+
+-------------------------------------------------------------------
+Tue Mar 11 21:25:28 CET 2008 - schwab@suse.de
+
+- Fix configure script.
+
+-------------------------------------------------------------------
+Tue Mar  4 08:32:00 CET 2008 - meissner@suse.de
+
+- use info.subsystem in our FDI files.
+
+-------------------------------------------------------------------
+Fri Feb 29 16:54:38 CET 2008 - meissner@suse.de
+
+- fixed biarch problem introduced by last fix.
+
+-------------------------------------------------------------------
+Fri Feb 29 14:54:24 CET 2008 - meissner@suse.de
+
+- remove version checks for suse10.0, remove one line
+  that rpmlint does not like from a pkgconfig file.
+
+-------------------------------------------------------------------
+Thu Sep 13 09:53:25 CEST 2007 - stbinner@suse.de
+
+- don't package API documentation into main lib package (#310143)
+
+-------------------------------------------------------------------
+Tue Aug  7 20:43:01 CEST 2007 - maw@suse.de
+
+- Use %fdupes
+- Split off a -lang subpackage
+- s#%run_ldconfig#/sbin/ldconfig/ in %post and %postun.
+
+-------------------------------------------------------------------
+Mon Jul 30 08:47:46 CEST 2007 - meissner@suse.de
+
+- upgraded to 2.4.0 final
+	- only small fixes and some new USB ids
+
+-------------------------------------------------------------------
+Fri Jun 22 16:38:14 CEST 2007 - meissner@suse.de
+
+- upgraded to current trunk svn
+	- new driver ids
+	- PTP2 EOS 400D support enhancements
+	- fixed a max packetsize problem
+
+-------------------------------------------------------------------
+Mon Jun 11 15:41:48 CEST 2007 - meissner@suse.de
+
+- upgraded to current trunk svn
+	- various cleanups
+	- Canon EOS 400D capture support started.
+- make check now in %check, postun runs ldconfig
+
+-------------------------------------------------------------------
+Thu May 17 15:39:11 CEST 2007 - meissner@suse.de
+
+- upstream 2.3.1.4.trunk:
+  - lots of bugfixes coming from Coverity
+  - bugfixes
+  - new USB ids
+- adjusted requirements to libusb-devel
+
+-------------------------------------------------------------------
+Tue Feb 27 23:03:43 CET 2007 - dmueller@suse.de
+
+- adjust BuildRequires: libexif -> libexif-devel
+
+-------------------------------------------------------------------
+Wed Feb 21 10:44:27 CET 2007 - meissner@suse.de
+
+- Upgraded to current upstream SVN.
+	- lots of new ids
+	- several bugfixes
+- Disabled mDNSresponder stuff. Breaks for too much people
+  without large benefit (only 1 or 2 existing cameras can use it).
+
+-------------------------------------------------------------------
+Sat Jan 13 14:43:22 CET 2007 - meissner@suse.de
+
+- use upstream current SVN with last patch included
+- run make check
+
+-------------------------------------------------------------------
+Fri Jan 12 20:39:17 CET 2007 - dmueller@suse.de
+
+- fix pedantic header compile
+
+-------------------------------------------------------------------
+Mon Jan  8 20:32:45 CET 2007 - meissner@suse.de
+
+- fixed libdir problem.
+
+-------------------------------------------------------------------
+Mon Jan  8 16:40:31 CET 2007 - meissner@suse.de
+
+- upgraded to 2.3.1.3.trunk.
+	- large parts of PTP2 driver rewritten.
+	- possibility to download data without need
+	  to keep it in memory.
+
+-------------------------------------------------------------------
+Tue Dec  5 15:05:26 CET 2006 - meissner@suse.de
+
+- upgraded to 2.3.0 final.
+	- some new ids
+	- bugfixes
+
+-------------------------------------------------------------------
+Tue Nov 14 22:31:04 CET 2006 - meissner@suse.de
+
+- Some new ids added.
+- fixed broken canon driver (GP_LOG does not exist).
+- Fixed && -> &
+
+-------------------------------------------------------------------
+Thu Nov  9 11:10:34 CET 2006 - meissner@suse.de
+
+- updated to current SVN:
+	- lots of new PTP USB ids
+	- small bugfixes
+
+-------------------------------------------------------------------
+Mon Oct 30 18:08:45 CET 2006 - meissner@suse.de
+
+- include doxygen documentation
+- use correct types for portable_audio_player so we
+  get ACLs from hal-resmgr.
+
+-------------------------------------------------------------------
+Fri Oct 27 16:54:22 CEST 2006 - meissner@suse.de
+
+- split into libgphoto2 and libgphoto2-devel
+- updated to current TRUNK
+	- some bugfixes (strncat)
+	- some new USB ids.
+
+-------------------------------------------------------------------
+Fri Oct 27 14:59:35 CEST 2006 - ro@suse.de
+
+- provide libgphoto2-devel until/unless package is split 
+
+-------------------------------------------------------------------
+Tue Oct 17 13:41:33 CEST 2006 - meissner@suse.de
+
+- upgraded to current trunk.
+	- MTP playlist support.
+	- More MTP fixes.
+	- Lots of new ids.
+	- Fast CANON directory retrieval.
+
+-------------------------------------------------------------------
+Tue Sep  5 16:37:00 CEST 2006 - meissner@suse.de
+
+- dbus_connection_disconnect() -> dbus_connection_close()
+
+-------------------------------------------------------------------
+Tue Aug 29 14:22:41 CEST 2006 - meissner@suse.de
+
+- more bugfixes from trunk and split off C# bindings
+  package.
+
+-------------------------------------------------------------------
+Mon Aug 28 16:51:04 CEST 2006 - meissner@suse.de
+
+- upgraded to current trunk version.
+	- MTP fixes, including handling of Umlauts
+	- New device ids
+	- C# binding fixes
+- removed upstreamed patches.
+
+-------------------------------------------------------------------
+Tue Aug  1 02:07:44 CEST 2006 - dmueller@suse.de
+
+- add compiler warning fix for installed headers
+
+-------------------------------------------------------------------
+Mon Jun 19 13:27:03 CEST 2006 - meissner@suse.de
+
+- Upgraded to 2.2.0 release.
+	- More new USB ids.
+	- Lots of MTP fixes.
+	- wait_for_event handling.
+	- metadata handling for MTP.
+
+-------------------------------------------------------------------
+Wed Apr 26 11:25:56 CEST 2006 - meissner@suse.de
+
+- Readd names and "libgphoto2 support" tag for the MTP devices.
+- Mark the devices as "user" to get correct resmgr support.
+  (both reported by thoenig)
+
+-------------------------------------------------------------------
+Sat Apr 22 17:45:50 CEST 2006 - meissner@suse.de
+
+- Added 4 new PTP ids.
+
+-------------------------------------------------------------------
+Wed Apr  5 14:44:09 CEST 2006 - meissner@suse.de
+
+- Report MTP Music Players correctly via FDI (hackish solution) #163015
+- Some more new PTP ids.
+
+-------------------------------------------------------------------
+Mon Mar 27 13:22:34 CEST 2006 - meissner@suse.de
+
+- Merged some important fixes from CVS.
+- libgphoto2-map-mp3.patch: Map MP3 mimetypes correctly to PTP
+  ObjectFormat codes.
+- libgphoto2-mtp-fixes.patch: Fixed some read/write problems on PTP
+  compatible music complayers.
+- libgphoto2-new-usbids.patch: New USB IDs collected over the last
+  few weeks.
+
+-------------------------------------------------------------------
+Wed Feb 22 15:39:40 CET 2006 - stbinner@suse.de
+
+- don't require hal on 9.2 supplementary distributions
+
+-------------------------------------------------------------------
+Fri Jan 27 02:05:57 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 25 11:15:49 CET 2006 - meissner@suse.de
+
+- Ignore Olympus cameras with Sierra firmware, since
+  they also appear as storage devices. 
+- Prepare for adding "camera" to "info.capabilities".
+- Some bugfixes.
+
+-------------------------------------------------------------------
+Mon Jan 23 10:53:45 CET 2006 - meissner@suse.de
+
+- Upgraded to current CVS.
+	- More PTP / MTP bugfixes.
+
+-------------------------------------------------------------------
+Mon Jan 16 11:44:11 CET 2006 - meissner@suse.de
+
+- Upgraded to current CVS.
+	- Lots of MTP / PTP fixes.
+	- PTP configuration handling rewrite
+- use -fstack-protector only in SL > 10.0
+
+-------------------------------------------------------------------
+Thu Jan 12 18:39:05 CET 2006 - meissner@suse.de
+
+- Upgraded to current CVS.
+	- Lots of MTP and iRiver related fixes.
+
+-------------------------------------------------------------------
+Tue Jan 10 23:17:06 CET 2006 - meissner@suse.de
+
+- Upgraded to 2.1.99
+- Upgraded to current CVS.
+	- Various new ids.
+	- Various bugfixes in ptp driver.
+	- translation updates.
+
+-------------------------------------------------------------------
+Fri Dec 16 16:12:11 CET 2005 - meissner@suse.de
+
+- Upgraded to current CVS. (Some new ids, Ricoh R3 fixes).
+- Fixed build in PLUS.
+
+-------------------------------------------------------------------
+Mon Nov 28 17:48:59 CET 2005 - meissner@suse.de
+
+- Upgraded to current CVS (almost only new model ids).
+
+- Dropped last patch, I made fixes for this upstream, but parts
+  of the problem are actually on the gnome-volume-manager side.
+
+  The fdi file in this package only contains non-usb-storage accessible
+  cameras.
+
+-------------------------------------------------------------------
+Fri Nov 11 19:00:11 CET 2005 - fejj@suse.de
+
+- Revert fdi file fixes since they actually break them worse than before
+
+-------------------------------------------------------------------
+Mon Oct 10 17:22:01 CEST 2005 - meissner@suse.de
+
+- Newest CVS snapshot:
+	- Changed HAL fdi file according to upstream
+	  suggestion.
+
+-------------------------------------------------------------------
+Tue Sep 27 15:56:17 CEST 2005 - meissner@suse.de
+
+- Upgraded to latest CVS snapshot.
+	- reduce memory footprint when downloading images
+	- new ids
+
+-------------------------------------------------------------------
+Sat Aug 20 15:30:40 CEST 2005 - schwab@suse.de
+
+- Don't require hotplug.
+
+-------------------------------------------------------------------
+Thu Aug 18 09:16:21 CEST 2005 - meissner@suse.de
+
+- removed /etc/hotplug/usb/usbcam.usermap use. #105276
+
+-------------------------------------------------------------------
+Wed Aug 17 14:44:20 CEST 2005 - meissner@suse.de
+
+- Merged to current CVS.
+	- New "disk:" support to support mass storage cameras (written 
+	  by Marcus M.), changes in libgphoto2_port/disk/disk.c, libgphoto2/
+	  gphoto2-abilities-list.c and camlibs/directory/directory.c.
+
+	  Tested and working with gphoto2, f-spot, digikam, and KDE camera:/
+	- usb - suppress some unnecessary "usb:XXX,YYY" ports.
+	- escape & in HAL FDI maps.
+	- Some small bugfixes and new ids.
+
+-------------------------------------------------------------------
+Fri Aug 12 15:10:02 CEST 2005 - meissner@suse.de
+
+- Upgraded to current CVS.
+	- Some new ids
+	- Some bugfixes for PTP.
+- FDI patch is obsolete.
+
+-------------------------------------------------------------------
+Tue Aug  9 10:24:20 CEST 2005 - meissner@suse.de
+
+- Supply the libgphoto2 camera name in the FDI script.
+
+-------------------------------------------------------------------
+Tue Jul 19 13:17:05 CEST 2005 - meissner@suse.de
+
+- gphoto-desktopdev is no longer used at all, all done
+  via hal-resmgr.
+- Generate usbmap and fdimap on the fly during build,
+  no longer shipped seperately.
+- Create FDI map XML file and install into freedesktop
+  FDI space.
+
+-------------------------------------------------------------------
+Mon Jul 11 10:16:39 CEST 2005 - meissner@suse.de
+
+- Upgraded to latest development snapshot.
+	- buildsystem changes, now generates slightly
+	  different shared drivers
+	- disk backend with hal support
+	- PTP driver enhancements, especially for Nikon D70
+	- new HP Photosmart 215 driver
+
+-------------------------------------------------------------------
+Mon Jun 27 11:10:39 CEST 2005 - meissner@suse.de
+
+- upgraded to 2.1.6.
+	- added 3 more cameras, some final fixes.
+
+-------------------------------------------------------------------
+Fri Jun 10 12:09:01 CEST 2005 - meissner@suse.de
+
+- Upgraded to 2.1.6rc2.
+	- 2.6.12 kernel fixes
+	- libusb 0.10 fixes
+	- various new cameras and features.
+
+-------------------------------------------------------------------
+Mon Mar 21 16:33:51 CET 2005 - meissner@suse.de
+
+- Added Sea & Sea 5000G, reported missing by Gerald.
+
+-------------------------------------------------------------------
+Tue Mar  1 15:11:53 CET 2005 - meissner@suse.de
+
+- get rid of slashes in camera names.
+
+-------------------------------------------------------------------
+Tue Feb 22 10:47:27 CET 2005 - meissner@suse.de
+
+- last change (etc/dev.d/usb) is not necessary.
+
+-------------------------------------------------------------------
+Fri Feb 18 17:20:05 CET 2005 - meissner@suse.de
+
+- fixed directory lists.
+
+-------------------------------------------------------------------
+Fri Feb 18 14:20:47 CET 2005 - meissner@suse.de
+
+- Upgraded to current CVS.
+	- Nikon and Pentax Sierra mode support.
+	- bugfixes and some new models for existing drivers.
+
+- Move gphoto-desktop dev also to /etc/dev.d/usb/, since hotplug
+  is no longer used, but udev is.
+
+-------------------------------------------------------------------
+Fri Feb  4 15:49:00 CET 2005 - meissner@suse.de
+
+- Upgraded to current 2.1.6 development branch
+  version.
+
+-------------------------------------------------------------------
+Thu Dec 16 10:09:28 CET 2004 - meissner@suse.de
+
+- Upgraded to 2.1.5 release.
+
+-------------------------------------------------------------------
+Tue Nov 30 17:11:10 CET 2004 - meissner@suse.de
+
+- Upgraded to 2.1.5rc1.
+
+-------------------------------------------------------------------
+Tue Oct 19 11:41:50 CEST 2004 - meissner@suse.de
+
+- Upgraded to current CVS head versions.
+- no -> nb renamed.
+- Added starts of PTP configuration magic.
+
+-------------------------------------------------------------------
+Fri Sep 17 17:11:29 CEST 2004 - meissner@suse.de
+
+- Some new ids of new cameras extracted from HEAD branch.
+
+-------------------------------------------------------------------
+Mon Sep  6 10:32:51 CEST 2004 - meissner@suse.de
+
+- Upgraded to current CVS.
+	- PTP config handling improved.
+	- More cameras.
+
+-------------------------------------------------------------------
+Tue Aug 31 13:14:21 CEST 2004 - meissner@suse.de
+
+- Upgrade to current CVS.
+	- detach kernel drivers for stv680 and spca50x
+	  if used.
+	- PTP property handling.
+	- sq905 fixes.
+
+-------------------------------------------------------------------
+Thu Aug 19 13:58:07 CEST 2004 - meissner@suse.de
+
+- Updated to current HEAD development branch.
+	- lots of new PTP ids
+	- handling of multiple USB cameras at once.
+	- lots of fixes in other drivers.
+	- new drivers for newer small cameras.
+
+-------------------------------------------------------------------
+Mon Apr 19 14:19:03 CEST 2004 - meissner@suse.de
+
+- %jobs, fixed syntax aliasing problems.
+
+-------------------------------------------------------------------
+Wed Apr  7 10:36:31 CEST 2004 - meissner@suse.de
+
+- removed hotplug from neededforbuild.
+
+-------------------------------------------------------------------
+Tue Apr  6 07:51:55 CEST 2004 - adrian@suse.de
+
+- hardcode camera hotplug file name
+  (partly workarounds #37902)
+
+-------------------------------------------------------------------
+Mon Mar 22 11:06:31 CET 2004 - meissner@suse.de
+
+- updated from branch:
+	- canon: 2 critical bugfixes, 1 new id.
+	- ptp2:  better working capture code, new ids.
+	- agfa cl20: heaps of fixes
+	- misc: new camera ids for several drivers.
+- updated usbcam.usermap accordingly.
+
+-------------------------------------------------------------------
+Thu Mar 18 17:51:38 CET 2004 - adrian@suse.de
+
+- create icon and register device in resmgr via hotplug
+
+-------------------------------------------------------------------
+Mon Jan 19 15:46:16 CET 2004 - meissner@suse.de
+
+- Upgraded to final 2.1.4 version.
+
+-------------------------------------------------------------------
+Wed Jan  7 15:19:54 CET 2004 - meissner@suse.de
+
+- Upgraded to current CVS (head4):
+   - multiple cameras of same type at once support.
+   - several new camera ids, lots of bug fixes.
+
+-------------------------------------------------------------------
+Fri Nov 21 13:25:24 CET 2003 - meissner@suse.de
+
+- upgraded to current CVS head with all the Ricoh G3 fixes.
+
+-------------------------------------------------------------------
+Wed Oct 15 16:00:25 CEST 2003 - meissner@suse.de
+
+- do not build as root.
+
+-------------------------------------------------------------------
+Mon Oct 13 11:31:42 CEST 2003 - meissner@suse.de
+
+- Upgraded to current development snapshot.
+
+-------------------------------------------------------------------
+Wed Sep 17 13:36:01 CEST 2003 - meissner@suse.de
+
+- sierra driver: Do not stop a never started progress context.
+- ptp2 driver: Increase timeout for capture #30946
+
+-------------------------------------------------------------------
+Mon Sep 15 10:21:30 CEST 2003 - meissner@suse.de
+
+- added diff with bugfixes and new camera ids from current cvs.
+  - Fixes and new ids in PTP2 driver
+  - Fixes and new ids in Canon driver
+  - Make pdc640 driver recognize cameras at all.
+  - Fixes for soundvision driver, new camera model.
+
+-------------------------------------------------------------------
+Sun Aug 10 22:38:32 CEST 2003 - meissner@suse.de
+
+- Updated to 2.1.2 release.
+
+-------------------------------------------------------------------
+Mon Jun 16 12:56:12 CEST 2003 - meissner@suse.de
+
+- updated to 2.1.2 rc3 level (called dev11).
+
+-------------------------------------------------------------------
+Thu Jun 12 20:26:17 CEST 2003 - meissner@suse.de
+
+- fixed build, added %find_lang usage.
+
+-------------------------------------------------------------------
+Thu Jun 12 10:05:31 CEST 2003 - meissner@suse.de
+
+- added hotplug to neededforbuild due to missing directories.
+- added missing dir %_libdir/libgphoto2.
+
+-------------------------------------------------------------------
+Tue May 13 16:39:19 CEST 2003 - meissner@suse.de
+
+- %_lib fix.
+
+-------------------------------------------------------------------
+Tue May 13 15:12:15 CEST 2003 - meissner@suse.de
+
+- Upgraded to 2.1.2dev8 (current CVS):
+	- new ptp2 driver
+	- agfa cl20 driver
+	- spca50x drivers merged into one
+	- lots of bugs fixed.
+- fixed filelist (added manpages).
+
+-------------------------------------------------------------------
+Mon Feb 17 17:05:44 CET 2003 - meissner@suse.de
+
+- Drop our own usbcam hotplug script and use desktopdev from resmgr
+  instead.
+
+-------------------------------------------------------------------
+Mon Feb 17 15:20:34 CET 2003 - meissner@suse.de
+
+- Upgraded to current CVS: bugfixes, pdc640 driver fixed again.
+- Fixed serial device open if resmgr is not running.
+- Updated usbids.
+
+-------------------------------------------------------------------
+Thu Feb  6 15:13:27 CET 2003 - meissner@suse.de
+
+- Upgraded to current CVS.
+	- Fixed support for Typhoon Stylocam, some
+	  more stuff in pdc640 driver.
+- Fixed usbcam script now for real.
+
+-------------------------------------------------------------------
+Sat Jan 25 12:08:04 CET 2003 - meissner@suse.de
+
+- Upgraded to current CVS.
+	- New gcam300, pccam300, benq driver.
+	- Fixes in others.
+- Fixed usermap, and usbcam script.
+
+-------------------------------------------------------------------
+Thu Jan  9 10:47:46 CET 2003 - meissner@suse.de
+
+- Upgraded to current CVS version.
+	- New stv0674 camera driver.
+	- Fixes in sierra, ptp, casio, largan camlibs.
+	- More ids in others.
+- resmgr style locking for serial devices.
+
+-------------------------------------------------------------------
+Mon Dec  2 15:53:45 CET 2002 - meissner@suse.de
+
+- Final 2.1.1, translations complete, refreshed usbmap.
+
+-------------------------------------------------------------------
+Wed Nov 20 09:41:57 CET 2002 - meissner@suse.de
+
+- neededforbuild += resmgr
+
+-------------------------------------------------------------------
+Mon Nov 18 15:39:02 CET 2002 - meissner@suse.de
+
+- Updated to RC1 of libgphoto 2.1.1.
+	- spca504_flash camlib. 
+	- More PTP camera models, some PTP endianess problems fixed.
+- Fixed some 64bit bigendian and type punning problems with gcc 3.3.
+- Use new resmgr in usermap script if present.
+
+-------------------------------------------------------------------
+Thu Oct 31 05:52:43 PST 2002 - meissner@suse.de
+
+- Updated to latest upstream:
+	- SiPix Stylecam Blink driver added.
+	- More models for other cameras.
+	- Bugfixes.
+
+-------------------------------------------------------------------
+Thu Sep 26 06:12:12 PDT 2002 - meissner@suse.de
+
+- Updated to latest upstream:
+	- More Canon Models.
+	- New Drivers: Kodak DC210, Largan lMini, pccam600, Mustek GSmart,
+	               SX330Z.
+
+-------------------------------------------------------------------
+Fri Aug 23 14:15:32 CEST 2002 - meissner@suse.de
+
+- Do not cat into system files, use seperate files for USB usermaps.
+
+-------------------------------------------------------------------
+Tue Aug 20 10:50:11 CEST 2002 - meissner@suse.de
+
+- added prereq: hotplug /bin/cat
+
+-------------------------------------------------------------------
+Wed Jul 31 09:07:29 CEST 2002 - meissner@suse.de
+
+- dropped provides: gphoto
+
+-------------------------------------------------------------------
+Mon Jul 29 11:49:50 CEST 2002 - meissner@suse.de
+
+- splitted up from gphoto. 

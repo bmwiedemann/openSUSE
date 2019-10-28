@@ -1,0 +1,107 @@
+-------------------------------------------------------------------
+Wed Sep 16 15:13:49 UTC 2015 - vcizek@suse.com
+
+- ipcount: fix the use of + in the address range (boo#942108)
+  * added ipcount-invalid_chars_in_IP.patch
+  * added cpanspec.yml
+
+-------------------------------------------------------------------
+Fri Jul  3 08:33:55 UTC 2015 - tchvatal@suse.com
+
+- Cleanup the spec a bit to remove all not-needed parts
+- Use spec-cleaner
+
+-------------------------------------------------------------------
+Sat Jun  8 07:11:10 UTC 2013 - coolo@suse.com
+
+- updated to 1.26
+   - 81138 ip types
+   - 80164 hexip does not change when ip changes (fix: hexformat needs to be cleared by set)
+   - 4898 double compression
+   - 73232 invalid ipv6 1:2:3:4:5:6:7
+   - 73105 invalid ip 1:2
+   - 73104 expand 1::2::3
+   - 71042 ip_reverse 2001:4f8:3:36:0:0:0:235
+   - 45165 ip_range_to_prefix updated documentation
+   - 32232 excepts 61-217-102-8.hinet-ip.hinet.net as range
+
+-------------------------------------------------------------------
+Fri Nov 18 11:07:40 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:35 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:45 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Oct 19 08:38:50 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Thu Aug 21 16:31:55 CEST 2008 - anicka@suse.cz
+
+- fix undefined value (bnc#418946) 
+
+-------------------------------------------------------------------
+Fri Dec 14 16:03:57 CET 2007 - anicka@suse.cz
+
+- update to 1.25 
+ * Math::BigInt is now mandatory
+ * Several bugfixes done
+ * Bugfix in overlaps function
+ * Updated Makefile
+ * ran perltidy on the code
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:51 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Sep 28 22:13:51 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Sun Jul 31 16:24:13 CEST 2005 - cthiel@suse.de
+
+- update to version 1.23
+
+-------------------------------------------------------------------
+Fri Aug 22 15:23:28 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Fri Aug  1 01:49:18 CEST 2003 - ro@suse.de
+
+- update to 1.20 / package binaries 
+
+-------------------------------------------------------------------
+Mon Jul 28 11:32:22 CEST 2003 - ro@suse.de
+
+- install to vendor locations 
+
+-------------------------------------------------------------------
+Sun Jun 22 22:25:07 CEST 2003 - coolo@suse.de
+
+- package directories
+
+-------------------------------------------------------------------
+Tue Apr 22 14:57:17 CEST 2003 - schubi@suse.de
+
+- initial
+

@@ -1,0 +1,44 @@
+diff -Naur drbd-9.0.20~0rc3+git.9c642cce.orig/drbd/drbd-kernel-compat/gen_compat_patch.sh drbd-9.0.20~0rc3+git.9c642cce/drbd/drbd-kernel-compat/gen_compat_patch.sh
+--- drbd-9.0.20~0rc3+git.9c642cce.orig/drbd/drbd-kernel-compat/gen_compat_patch.sh	2019-10-09 15:10:24.932509799 +0800
++++ drbd-9.0.20~0rc3+git.9c642cce/drbd/drbd-kernel-compat/gen_compat_patch.sh	2019-10-10 17:51:46.280918975 +0800
+@@ -41,6 +41,15 @@
+ 		< drbd-kernel-compat/cocci/debugfs_compat_template.cocci.in \
+ 		>> $incdir/.compat.cocci;
+     done;
++
++    echo "  APPLIED_COCCI_FILES   ";
++    cat $incdir/applied_cocci_files.txt;
++    coccilibpath=$(rpm -ql coccinelle|grep standard.h|xargs dirname);
++    echo "  SPATCH_SOURCES: "$*;
++    echo "  COCCI_LIBPATH: "$coccilibpath;
++    echo "  GENCOCCIRULES .compat.cocci";
++    cat $incdir/.compat.cocci;
++
+     echo "  SPATCH   $chksum  "$K;
+     # Note: $* (or $@) is NOT make magic variable now, this is a shell script
+     # make $@, the target file, was passed as $1, and is now $compat_patch
+@@ -49,7 +58,8 @@
+     # argument away this is shell $@ respectively $* now.
+     # we know we don't have white-space in the argument list
+ 
+-    command="spatch --sp-file $incdir/.compat.cocci $* --macro-file drbd-kernel-compat/cocci_macros.h --very-quiet > $compat_patch.tmp 2> $incdir/.spatch.stderr;"
++    command="spatch --sp-file $incdir/.compat.cocci $* --macro-file drbd-kernel-compat/cocci_macros.h --macro-file-builtins $coccilibpath/standard.h --iso-file $coccilibpath/standard.iso --very-quiet > $compat_patch.tmp 2> $incdir/.spatch.stderr;"
++    echo "  SPATCH COMMAND $command  ";
+ 
+     if test -t 0; then
+ 	$SHELL -c "$command"
+@@ -59,6 +69,14 @@
+ 	# They may ignore INT and TERM; if you have to, use HUP.
+ 	</dev/null &> /dev/null script --append $incdir/.spatch.tty.out --return --quiet --command "$command"
+     fi
++
++    echo "  GENSPATCHFILE $compat_patch.tmp  ";
++    cat $compat_patch.tmp;
++    if [ -e $incdir/.spatch.stderr ]; then
++        echo "  GENSPATCHERR .spatch.stderr";
++        cat $incdir/.spatch.stderr;
++    fi
++
+     if [ -e $incdir/.compat.patch ]; then
+ 	cat $incdir/.compat.patch >> $compat_patch.tmp;
+     fi;

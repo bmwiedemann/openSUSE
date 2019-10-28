@@ -1,0 +1,8 @@
+<package name="fluidsynth" project="openSUSE:Factory">
+  <title>A Real-Time Software Synthesizer That Uses Soundfont(tm)</title>
+  <description>FluidSynth (formerly IIWU Synth) is based on the SoundFont(tm) 2
+specifications. It is a real-time &quot;software synthesizer&quot;. FluidSynth
+can read MIDI events from the MIDI input device and render them to the
+audio device. It can also play MIDI files.</description>
+  <devel project="multimedia:libs" package="fluidsynth"/>
+</package>

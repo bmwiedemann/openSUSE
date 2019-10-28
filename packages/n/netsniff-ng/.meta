@@ -1,0 +1,27 @@
+<package name="netsniff-ng" project="openSUSE:Factory">
+  <title>High Performance Network Sniffer for Packet Inspection</title>
+  <description>netsniff-ng is a high performance Linux network sniffer for packet inspection.
+Basically, it is similar to tcpdump, but it doesn't need syscalls for fetching
+packets. Instead, it uses an memory mapped area within kernel space for
+accessing packets without the need of copying them to userspace ('zero-copy'
+mechanism). It can be used for protocol analysis and reverse engineering,
+network debugging, measurement of performance throughput, or network statistics
+creation of incoming packets on central network nodes like routers or
+firewalls.
+
+The netsniff-ng toolkit consists of the following utilities: 
+
+* netsniff-ng, a fast zero-copy analyzer, pcap capturing and replaying tool
+* trafgen, a multithreaded low-level zero-copy network packet generator
+* mausezahn, high-level packet generator for HW/SW appliances with Cisco-CLI
+* bpfc, a Berkeley Packet Filter compiler, Linux BPF JIT disassembler
+* ifpps, a top-like kernel networking statistics tool
+* flowtop, a top-like netfilter connection tracking tool
+* curvetun, a lightweight curve25519-based IP tunnel
+* astraceroute, an autonomous system (AS) trace route utility
+
+
+</description>
+  <devel project="network:utilities" package="netsniff-ng"/>
+  <url>http://netsniff-ng.org/</url>
+</package>

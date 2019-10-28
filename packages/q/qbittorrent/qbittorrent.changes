@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 28 07:50:22 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.1.9
+  * BUGFIX: Preserve relative order when moving to top/bottom in
+    queue (Chocobo1)
+  * WEBUI: Bump Web API version
+
+- Spec cleanup. Use cmake() instead of pkgconfig() where possible
+
+-------------------------------------------------------------------
 Thu Sep 26 15:24:41 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.1.8

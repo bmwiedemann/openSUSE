@@ -24,15 +24,15 @@
 #
 
 Name:           rubygem-fog-libvirt
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 %define mod_name fog-libvirt
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby >= 2.0.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
+BuildRequires:  ruby-macros >= 5
 Url:            https://github.com/fog/fog-libvirt
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml

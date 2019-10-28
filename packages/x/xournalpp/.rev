@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aa6838a4f8868e844e6e966a780c9167</srcmd5>
+    <version>1.0.7</version>
+    <time>1549017878</time>
+    <user>dimstar_suse</user>
+    <comment>New package: xournalpp -- Notetaking software designed around a tablet</comment>
+    <requestid>669092</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>65cd784e8414a5c0fe48bbb79c1232a3</srcmd5>
+    <version>1.0.8</version>
+    <time>1551113735</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>678412</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>95308037cc0ac12963732de0467749ce</srcmd5>
+    <version>1.0.10</version>
+    <time>1560337743</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695366</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9d11f07a88430d92c625d3e4ed41541a</srcmd5>
+    <version>1.0.12</version>
+    <time>1560760478</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710207</requestid>
+  </revision>
+</revisionlist>

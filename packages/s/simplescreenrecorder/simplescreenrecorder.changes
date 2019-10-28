@@ -1,0 +1,211 @@
+-------------------------------------------------------------------
+Sun Jun 10 11:21:46 UTC 2018 - dap.darkness@gmail.com
+
+- Update to 0.3.11 (since 0.3.8):
+  * Fixed FFmpeg 4.0 compatibility.
+  * Fixed AAC codec (missing channel layout).
+  * Improved build system.
+  * Custom recording frame to replace QRubberBand (for Qt5).
+  * Improved build system.
+  * Switch to CMake build system.
+  * Add RGB24 support.
+  * Automatically add scroll bars.
+  * Improve PulseAudio latency handling of monitors.
+  * Add a separate checkbox to enable timestamps.
+  * All options are set to a sensible default value.
+  * Use base-10 units for bitrate for consistency with FFmpeg.
+  * Minor bugfixes.
+
+-------------------------------------------------------------------
+Tue Nov 15 17:08:12 UTC 2016 - dap.darkness@gmail.com
+
+- Update to 0.3.8 (since 0.3.7):
+  * Revert sample rate to 44.1 kHz for FLV container.
+
+-------------------------------------------------------------------
+Sun Oct 16 09:55:03 UTC 2016 - dap.darkness@gmail.com
+
+- Update to 0.3.7 (since 0.3.6):
+  * Added support for latest FFmpeg/libav.
+  * Make relaxed GLInject permissions actually work.
+  * The backend now supports fragmented recording,
+    but there is no GUI for this yet.
+  * The default audio sample rate is now 48 kHz.
+    This makes SSR compatible with Opus.
+  * System tray icon now indicates errors during recording.
+- Removed simplescreenrecorder-0.3.6-missing-include.diff
+  as already provided via upstream tarball.
+
+-------------------------------------------------------------------
+Fri Jun 17 16:22:18 UTC 2016 - dap.darkness@gmail.com
+
+- `spec-cleaner`
+- Added simplescreenrecorder-0.3.6-missing-include.diff
+  to resolve bnc#985369.
+- Tips from Packman's package.
+- Enabled verbose make build.
+
+-------------------------------------------------------------------
+Tue Nov  3 16:02:27 UTC 2015 - dap.darkness@gmail.com
+
+- Update to 0.3.6 (since 0.3.3):
+  * Fix bug in YUV420 fallback converter introduced by refactoring.
+  * Allow user to start recording with hotkey or systray even when
+    not on the recording page.
+  * Fixed JACK input bug that could cause deadlocks in rare cases.
+  * Added full support for NV12. If FFmpeg is compiled with NVENC
+    support, this will allow you to use it.
+  * Removed ssr-0.3.3-fix-disable-x86-asm.diff as merged.
+  * Removed ssr-0.3.3-ffmpeg-pkgconfig.diff as merged by upstream.
+- Qt4 → Qt5.
+
+-------------------------------------------------------------------
+Fri May  1 20:36:50 UTC 2015 - dap.darkness@gmail.com
+
+- baselibs.conf became mentioned in spec files as source
+  to pass factory-auto.
+
+-------------------------------------------------------------------
+Mon Apr 27 20:46:51 UTC 2015 - dap.darkness@gmail.com
+
+- Fixed up libssr-glinject subpackage description (request#303989).
+- Removed libssr-glinject static build (request#303989).
+- Let's only suggest libssr-glinject-32bit to not install 32bit
+  dependencies with default ssr installation.
+- Dropped openSUSE < 13.* support.
+
+-------------------------------------------------------------------
+Thu Apr 23 19:08:16 UTC 2015 - dap.darkness@gmail.com
+
+- Packman → OBS;
+- _service → tarball;
+- `spec-cleaner`.
+- Added ssr-0.3.3-ffmpeg-pkgconfig.diff
+  to make build against openSUSE' ffmpeg possible
+  ( https://github.com/MaartenBaert/ssr/commit/5929b ).
+
+-------------------------------------------------------------------
+Sat Jan 17 21:21:39 UTC 2015 - dap.darkness@gmail.com
+
+- Update to 0.3.3:
+  * Fixed mistake in configure.ac that was causing
+    libssr-glinject.so to be linked with unwanted libraries.
+- Added ssr-0.3.3-fix-disable-x86-asm.patch.diff
+  to fix --disable-x86-asm option
+  ( https://github.com/MaartenBaert/ssr/commit/8043 ).
+
+-------------------------------------------------------------------
+Mon Jan  5 17:22:56 UTC 2015 - dap.darkness@gmail.com
+
+- Update to 0.3.2:
+  * Added Qt5 support (optional, Qt4 is still the default).
+  * Added YUV422, YUV444 and RGB support
+    (YUV420 is still the default)
+  * Added pixelformat and sampleformat codec options.
+  * Added benchmark.
+  * Improved RTL support.
+  * Bugfixes.
+
+-------------------------------------------------------------------
+Fri Oct  3 16:14:56 UTC 2014 - dap.darkness@gmail.com
+
+- Update to 0.3.1:
+  * no upstream changelog.
+
+-------------------------------------------------------------------
+Thu Jul  3 14:34:04 UTC 2014 - dap.darkness@gmail.com
+
+- Update to 0.3.0:
+  * Added profile support.
+  * New, more flexible OpenGL recording system
+    (glinject-next branch merged).
+  * More robust sound notifications.
+  * Show progress dialog while flushing the encoders.
+  * Improved hotkey support using XInput2.
+  * Improved synchronizer.
+  * Native support for mono microphones (plughw no longer needed).
+  * Added source detection for ALSA.
+  * Partially rewritten output backend.
+  * Improved mouse following algorithm.
+  * New icon.
+  * Bugfixes.
+
+-------------------------------------------------------------------
+Tue Mar  4 18:36:15 UTC 2014 - dap.darkness@gmail.com
+
+- Update to 0.2.2:
+  * Fix bug in Synchronizer that caused throttling to fail,
+    resulting in excessive memory usage.
+- Switching back to _service.
+
+-------------------------------------------------------------------
+Sun Mar  2 09:02:44 UTC 2014 - dap.darkness@gmail.com
+
+- Update to 0.2.1+git.2014.03.02:
+  * Avoid build warning when assertions are disabled
+  * Make sure that the resampler is only created when audio is
+    enabled.
+- Update to 0.2.1:
+  * Correction to command-line help message.
+  * Fix minor bug in drift recalculation in Synchronizer.
+  * Bugfix: Don't stop the muxer before all packet queues
+    are empty.
+  * Make timestamps in file names Windows-compatible.
+  * Make sure the segment is complete before destroying the
+    synchronizer (shouldn't make a huge difference but let's do it
+    anyway).
+  * Add icons to distribution tarball.
+- desktop_database_post(un) & icon_theme_cache_post(un)
+  macros were added.
+- enable-jack configure option was deleted as default.
+- Temporary switching from _service to git tarball.
+
+-------------------------------------------------------------------
+Sat Feb 22 20:58:20 UTC 2014 - dap.darkness@gmail.com
+
+- Update to 0.2.0:
+  * no upstream changelog.
+- Switching back to _service.
+
+-------------------------------------------------------------------
+Wed Feb 12 16:32:29 UTC 2014 - dap.darkness@gmail.com
+
+- Update to 0.1.2+git.2014.02.09:
+  * Jack support;
+  * SoX Resampler became used;
+  * cmake became used;
+  * pkg-config became used;
+  * "[VideoEncoder::EncodeFrame] Error: Keyframe flag was not set!"
+    was fixed.
+- Temporary switching from _service to git tarball.
+
+-------------------------------------------------------------------
+Mon Oct 28 16:39:40 UTC 2013 - dap.darkness@gmail.com
+
+- Update to 0.1.2:
+  * no upstream changelog.
+- Switched to configure option using instead of CPPFLAGS modifying.
+
+-------------------------------------------------------------------
+Sat Oct 19 13:29:27 UTC 2013 - dap.darkness@gmail.com
+
+- Update to 0.1.1:
+  * no upstream changelog.
+- Not exclude arm but include x86* only.
+
+-------------------------------------------------------------------
+Wed Sep 25 05:02:35 UTC 2013 - dap.darkness@gmail.com
+
+- Update to 0.1.0:
+  * no upstream changelog.
+- libssr-glinject-32bit became built and recommended
+  to record x32 games at x64 hosts.
+- libssr-glinject can't be built for arm:
+  https://github.com/MaartenBaert/ssr/issues/30
+- Service source_validator was removed because of
+  https://bugs.links2linux.org/browse/PM-83
+
+-------------------------------------------------------------------
+Tue Jun 11 04:40:07 UTC 2013 - dap.darkness@gmail.com
+
+- Initial package.

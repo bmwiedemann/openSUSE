@@ -1,0 +1,48 @@
+.TH upgrade_nagios "8" "1 March 2014" "Lars Vogdt" "Nagios"
+.SH NAME
+Upgrade Nagios Configuration
+
+.SH SYNOPSIS
+.B upgrade_nagios [\-d] [\-h] [\-l] [\-p] [\-V] <main_config_file>
+.br
+
+.SH DESCRIPTION
+.B nagios_upgrade
+will upgrade your main nagios configuration file by adding/removing 
+configuration values.
+
+.SH OPTIONS
+.TP
+main_config_file
+The main configuration file. On openSUSE systems this defaults to
+\fB\/etc/nagios/nagios.cfg\fR
+.TP
+\fB\-h\fR
+A helpful usage message
+.TP
+\fB\-V\fR
+Prints version information about the script itself.
+.TP
+\fB\-d\fR
+Enables debug mode: nothing will be done in real - all commands will be 
+printed on STDOUT instead.
+.TP
+\fB\-l\fR
+Provide another path to the logfile. Default is /var/log/nagios/nagios_upgrade.log
+.TP
+\fB\-p\fR
+Provide another path to the Nagios lock file (default: /var/run/nagios/nagios.pid).
+
+.SH FILES
+.TP
+.IP /etc/nagios/nagios.cfg
+Default configuration file for Nagios.
+.IP /var/log/nagios/nagios_upgrade.log
+Logfile used by the nagios_upgrade script.
+.IP /var/run/nagios/nagios.pid
+Lock file of the running Nagios daemon.
+
+.SH AUTHOR
+Nagios is written and maintained by Ethan Galstad <nagios@nagios.org>.  This
+manual page was written by Lars Vogdt for the openSUSE operating system 
+(but it may be freely used, modified, and redistributed by others).

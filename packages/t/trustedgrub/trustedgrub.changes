@@ -1,0 +1,92 @@
+-------------------------------------------------------------------
+Sun Apr  2 20:55:14 UTC 2017 - meissner@suse.com
+
+- grub-no-pie.patch: disable PIE building.
+
+-------------------------------------------------------------------
+Fri Jul 26 10:56:20 UTC 2013 - tchvatal@suse.com
+
+- Fix build for rpm-4.11
+
+-------------------------------------------------------------------
+Fri Apr 26 08:18:49 UTC 2013 - mmeister@suse.com
+
+- Added makeinfo BuildRequire to fix build with new automake
+
+-------------------------------------------------------------------
+Mon Nov 12 09:10:36 UTC 2012 - meissner@suse.com
+
+- make it build, added ncurses-devel for x86_64 too
+
+-------------------------------------------------------------------
+Thu Jun 14 11:57:42 UTC 2012 - toganm@opensuse.org
+
+- Fix build with new automake 
+
+-------------------------------------------------------------------
+Fri Dec  2 16:45:47 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Apr 13 16:11:36 CEST 2010 - duwe@suse.de
+
+- really disable use of BSD-licensed code (bnc#427066)
+- fix minor triviality bnc#542463
+
+-------------------------------------------------------------------
+Sun Nov 15 17:00:06 CET 2009 - meissner@suse.de
+
+- refreshed all patches to fuzz=0
+
+-------------------------------------------------------------------
+Wed Jul 29 14:19:12 CEST 2009 - meissner@suse.de
+
+- fix build by returning 0 in the stub checker functions.
+
+-------------------------------------------------------------------
+Tue Dec  2 16:55:23 CET 2008 - duwe@suse.de
+
+- the string handling fix revealed other problems;
+  some device names won't fit into 16 chars.
+  Increase the size consistently, and fix bnc#450091
+
+
+-------------------------------------------------------------------
+Thu Nov 20 17:58:04 CET 2008 - duwe@suse.de
+
+- fix serious bug in "setup" command string handling
+
+-------------------------------------------------------------------
+Fri Nov  7 14:02:41 CET 2008 - duwe@suse.de
+
+- pull from grub package fixes for BNC#
+  386800,438236,408727,435958,422685
+- fix trustedgrub-specific bnc#425742, 433737
+
+-------------------------------------------------------------------
+Mon Oct 27 10:38:40 CET 2008 - kukuk@suse.de
+
+- disable unwind tables
+
+-------------------------------------------------------------------
+Tue Sep 23 12:23:59 CEST 2008 - dmueller@suse.de
+
+- strip build-id's from raw binaries
+
+-------------------------------------------------------------------
+Wed Sep 17 17:49:51 CEST 2008 - duwe@suse.de
+
+- fix ugliness found by RPM checker
+
+-------------------------------------------------------------------
+Tue Sep 16 01:31:40 CEST 2008 - ro@suse.de
+
+- copy buildfix from grub package 
+
+-------------------------------------------------------------------
+Fri Sep 12 15:24:03 CEST 2008 - duwe@suse.de
+
+- derived from STABLE grub, applied applicable patches ;)
+  FATE #303890,303672,303784
+

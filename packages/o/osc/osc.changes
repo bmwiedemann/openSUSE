@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Oct 24 10:05:06 UTC 2019 - Marco Strigl <marco.strigl@suse.com>
+
+- 0.166.0 (boo#1154972)
+  * New password handling backend. Supported password stores:
+      - Plaintext password
+      - Obfuscated password
+      - python-keyring (kwallet, secret store)
+      - gnome-keyring
+      - no store at all (ask for the password every time
+  * Refactor initial setup of osc (to select password store)
+  * fix decoding on osc lbl (boo#1137477)
+  * fix breakage of submitting complete branches back as an
+    submit request that contain packages without a change.
+  * fix error with plugins and osc -h
+  * various decoding improvements
+  * Transfer the name of the input file to vc instead of the content
+    (obs-build/vc will do the rest and open the file).
+  * support appimage builds
+  * new command browse. (opens a browser opening the project or package)
+  * new option --incoming for osc rq and osc review to only show only
+    incoming reqeusts for a project.
+- new Recommends for xdg-utils. osc-browse uses xdg-open to open
+  the url to the project/package in an internet browser 
+
+-------------------------------------------------------------------
 Mon Aug  5 06:51:32 UTC 2019 - Marco Strigl <marco.strigl@suse.com>
 
 - 0.165.4 (boo#1144211)

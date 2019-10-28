@@ -1,0 +1,15 @@
+Index: vim-8.1.1467/runtime/filetype.vim
+===================================================================
+--- vim-8.1.1467.orig/runtime/filetype.vim
++++ vim-8.1.1467/runtime/filetype.vim
+@@ -101,6 +101,10 @@ au BufNewFile,BufRead *.ino,*.pde		setf
+ au BufNewFile,BufRead .htaccess,*/etc/httpd/*.conf		setf apache
+ au BufNewFile,BufRead */etc/apache2/sites-*/*.com		setf apache
+ 
++" AppArmor
++au BufNewFile,BufRead */etc/apparmor.d/*       setf apparmor
++au BufNewFile,BufRead */etc/apparmor/profiles/*        setf apparmor
++
+ " XA65 MOS6510 cross assembler
+ au BufNewFile,BufRead *.a65			setf a65
+ 

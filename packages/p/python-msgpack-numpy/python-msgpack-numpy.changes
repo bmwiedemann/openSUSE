@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Tue Jul 23 20:28:38 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.4.4.3
+  * Configure contiguous integration with Travis.
+  * Move unit tests out of msgpack_numpy module.
+  * Add workaround for issue handling n-dim arrays on MacOS.
+
+-------------------------------------------------------------------
+Mon Jan 21 03:48:56 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Initial version

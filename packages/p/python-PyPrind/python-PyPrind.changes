@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Mon Oct 14 11:45:29 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Replace %fdupes -s with plain %fdupes; hardlinks are better.
+
+-------------------------------------------------------------------
+Wed Mar  6 09:17:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.11.2:
+  * Fixes issue where new lines are printed upon iterating over a completed progress bar object.
+- Run tests
+
+-------------------------------------------------------------------
+Fri Jul  7 09:41:54 UTC 2017 - aloisio@gmx.com
+
+- Initial package (2.11.1)

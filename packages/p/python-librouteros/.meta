@@ -1,0 +1,9 @@
+<package name="python-librouteros" project="openSUSE:Factory">
+  <title>Python implementation of MikroTik RouterOS API</title>
+  <description>Python implementation of MikroTik RouterOS API.
+http://wiki.mikrotik.com/wiki/API
+
+</description>
+  <devel project="devel:languages:python" package="python-librouteros"/>
+  <url>https://github.com/luqasz/librouteros</url>
+</package>

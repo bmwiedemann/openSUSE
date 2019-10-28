@@ -1,0 +1,6 @@
+<package name="hdjmod" project="openSUSE:Factory">
+  <title>Support for Hercules DJ Devices</title>
+  <description>This is the Hercules DJ Series Kernel Module, which supports Hercules DJ Devices.</description>
+  <devel project="hardware" package="hdjmod"/>
+  <url>http://ts.hercules.com/ger/index.php?pg=view_files&amp;gid=17&amp;fid=62&amp;pid=177&amp;cid=1</url>
+</package>

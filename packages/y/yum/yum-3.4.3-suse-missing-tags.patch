@@ -1,0 +1,120 @@
+--- a/yum/mdparser.py.orig	2014-03-13 11:04:20.753615026 +0000
++++ b/yum/mdparser.py	2014-03-13 11:04:51.698614971 +0000
+@@ -155,7 +155,8 @@ class PrimaryEntry(BaseEntry):
+                 p[name] = child.text
+ 
+             elif name in ('provides', 'requires', 'conflicts', 
+-                          'obsoletes'):
++                          'obsoletes',
++                          'suggests', 'enhances', 'recommends', 'supplements'):
+                 self.prco[name] = self.getPrco(child)
+ 
+             elif name == 'header-range':
+--- ./yum/packages.py.orig	2014-03-13 11:04:20.758615026 +0000
++++ ./yum/packages.py	2014-03-13 11:08:42.633614562 +0000
+@@ -412,6 +412,10 @@ class RpmBase(object):
+         self.prco['conflicts'] = [] # (name, flag, (e,v,r))
+         self.prco['requires'] = [] # (name, flag, (e,v,r))
+         self.prco['provides'] = [] # (name, flag, (e,v,r))
++        self.prco['suggests'] = [] # (name, flag, (e,v,r))
++        self.prco['enhances'] = [] # (name, flag, (e,v,r))
++        self.prco['recommends'] = [] # (name, flag, (e,v,r))
++        self.prco['supplements'] = [] # (name, flag, (e,v,r))
+         self.files = {}
+         self.files['file'] = []
+         self.files['dir'] = []
+@@ -615,6 +619,10 @@ class RpmBase(object):
+     provides = property(fget=lambda self: self.returnPrco('provides'))
+     obsoletes = property(fget=lambda self: self.returnPrco('obsoletes'))
+     conflicts = property(fget=lambda self: self.returnPrco('conflicts'))
++    suggests = property(fget=lambda self: self.returnPrco('suggests'))
++    enhances = property(fget=lambda self: self.returnPrco('enhances'))
++    recommends = property(fget=lambda self: self.returnPrco('recommends'))
++    supplements = property(fget=lambda self: self.returnPrco('supplements'))
+     provides_names = property(fget=lambda self: self.returnPrcoNames('provides'))
+     requires_names = property(fget=lambda self: self.returnPrcoNames('requires'))
+     conflicts_names = property(fget=lambda self: self.returnPrcoNames('conflicts'))
+@@ -1122,6 +1130,10 @@ class YumAvailablePackage(PackageObject,
+         msg += self._dump_requires()
+         msg += self._dump_pco('conflicts')         
+         msg += self._dump_pco('obsoletes')         
++        msg += self._dump_pco('suggests')
++        msg += self._dump_pco('enhances')
++        msg += self._dump_pco('recommends')
++        msg += self._dump_pco('supplements')
+         msg += self._dump_files(True)
+         if msg[-1] != '\n':
+             msg += """\n"""
+@@ -1358,13 +1370,35 @@ class YumHeaderPackage(YumAvailablePacka
+     def _get_hdr(self):
+         return self.hdr
+ 
++    def _populatePrcoFiltered(self, ds, prcotype, andmask, resmask):
++        name = [] 
++        flag = [] 
++        vers = [] 
++        for dsel in ds:
++           if ds.Flags() & andmask == resmask:
++               name.append(ds.N())
++               flag.append(ds.Flags())
++               vers.append(ds.EVR())
++        if name:
++            name = map(misc.share_data, name)
++            flag = map(rpmUtils.miscutils.flagToString, flag)
++            flag = map(misc.share_data, flag)
++            vers = map(rpmUtils.miscutils.stringToVersion, vers)
++            vers = map(lambda x: (misc.share_data(x[0]), misc.share_data(x[1]),
++                                  misc.share_data(x[2])), vers)
++            self.prco[prcotype] = map(misc.share_data, zip(name,flag,vers))
++
+     def _populatePrco(self):
+         "Populate the package object with the needed PRCO interface."
+ 
+-        tag2prco = { "OBSOLETE": misc.share_data("obsoletes"),
+-                     "CONFLICT": misc.share_data("conflicts"),
+-                     "REQUIRE":  misc.share_data("requires"),
+-                     "PROVIDE":  misc.share_data("provides") }
++        tag2prco = { "OBSOLETE":   misc.share_data("obsoletes"),
++                     "CONFLICT":   misc.share_data("conflicts"),
++                     "REQUIRE":    misc.share_data("requires"),
++                     "PROVIDE":    misc.share_data("provides"),
++                     "SUGGEST":    misc.share_data("suggests"),
++                     "ENHANCE":    misc.share_data("enhances"),
++                     "RECOMMEND":  misc.share_data("recommends"),
++                     "SUPPLEMENT": misc.share_data("supplements") }
+         hdr = self._get_hdr()
+         for tag in tag2prco:
+             name = hdr[getattr(rpm, 'RPMTAG_%sNAME' % tag)]
+@@ -1383,6 +1417,17 @@ class YumHeaderPackage(YumAvailablePacka
+ 
+             prcotype = tag2prco[tag]
+             self.prco[prcotype] = map(misc.share_data, zip(name,flag,vers))
++
++        if not self.prco["suggests"] and not self.prco["recommends"]:
++            ds = hdr.dsFromHeader(1156)
++            if ds:
++                self._populatePrcoFiltered(ds, misc.share_data("suggests"), 1 << 27, 0)
++                self._populatePrcoFiltered(ds, misc.share_data("recommends"), 1 << 27, 1 << 27)
++        if not self.prco["enhances"] and not self.prco["supplements"]:
++            ds = hdr.dsFromHeader(1159)
++            if ds:
++                self._populatePrcoFiltered(ds, misc.share_data("enhances"), 1 << 27, 0)
++                self._populatePrcoFiltered(ds, misc.share_data("supplements"), 1 << 27, 1 << 27)
+     
+     def tagByName(self, tag):
+         warnings.warn("tagByName() will go away in a furture version of Yum.\n",
+--- ./yum/sqlitesack.py.orig	2014-03-13 11:04:20.770615026 +0000
++++ ./yum/sqlitesack.py	2014-03-13 11:04:51.700614971 +0000
+@@ -179,7 +179,11 @@ class YumAvailablePackageSqlite(YumAvail
+         self.prco = { 'obsoletes': (),
+                       'conflicts': (),
+                       'requires': (),
+-                      'provides': () }
++                      'provides': (),
++                      'suggests': (),
++                      'enhances': (),
++                      'recommends': (),
++                      'supplements': () }
+         self.sack = repo.sack
+         self.repoid = repo.id
+         self.repo = repo

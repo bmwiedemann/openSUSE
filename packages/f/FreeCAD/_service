@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/FreeCAD/FreeCAD.git</param>
     <param name="scm">git</param>
-    <param name="revision">0.18.3</param>
+    <param name="revision">releases/FreeCAD-0-18</param>
     <param name="version">0.18.3</param>
   </service>
   <service name="set_version" mode="disabled"/>

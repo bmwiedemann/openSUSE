@@ -1,0 +1,91 @@
+#!/bin/bash
+#
+# This is not the original gnome-session but a start script
+# to install some preconfiguration for GNOME
+# and some variables to check.
+#
+# For feedback on this script please use
+# https://bugzilla.novell.com/
+#
+
+# Define directory that we use to store migration state
+if test "x$XDG_CONFIG_HOME" = "x"; then
+  XDG_CONFIG_HOME="$HOME/.config"
+fi
+SUSE_DIR="$XDG_CONFIG_HOME/suse"
+
+if test -e /usr/share/applications/YaST2/live-installer.desktop; then
+  IS_LIVE_IMAGE="yes"
+else
+  IS_LIVE_IMAGE="no"
+fi
+
+# Use gnome-applications.menu instead of applications.menu: its
+# structure is more appropriate.
+export XDG_MENU_PREFIX=gnome-
+
+# Some actions that are specific to the LiveCD
+if test "$IS_LIVE_IMAGE" = "yes" ; then
+  ## Make live installer icon more visible. Note that we can't simply put it on
+  ## the desktop, since the desktop is not managed by nautilus anymore (by
+  ## default)
+
+  if test -f /etc/xdg/menus/${XDG_MENU_PREFIX}applications.menu -a ! -f "${XDG_CONFIG_HOME}/menus/${XDG_MENU_PREFIX}applications.menu"; then
+    # Add live installer to the system tools menu (this is nice to have, and also
+    # required for the favorite app change below)
+    mkdir -p -m 0700 "${XDG_CONFIG_HOME}"
+    mkdir -p "${XDG_CONFIG_HOME}/menus"
+    cat > "${XDG_CONFIG_HOME}/menus/${XDG_MENU_PREFIX}applications.menu" << EOF
+<Menu>  
+  <Name>Applications</Name>
+  <MergeFile type="parent">/etc/xdg/menus/${XDG_MENU_PREFIX}applications.menu</MergeFile>
+  <Menu>  
+    <Name>System</Name>
+    <Include>
+      <Filename>YaST2-live-installer.desktop</Filename>
+    </Include>
+  </Menu>
+</Menu>
+EOF
+  fi
+
+  # Add live installer as favorite application to gnome-shell dash
+  FAVORITES=`gsettings get org.gnome.shell favorite-apps`
+  if test $? -eq 0; then
+    echo ${FAVORITES} | grep -q YaST2-live-installer.desktop
+    if test $? -ne 0; then
+      FAVORITES=`echo ${FAVORITES} | sed "s:^\[:\['YaST2-live-installer.desktop', :"`
+      gsettings set org.gnome.shell favorite-apps "${FAVORITES}"
+    fi
+  fi
+
+  # Add live installer to the top panel in fallback mode
+  if test -f /usr/share/gnome-panel/panel-default-layout.layout -a ! -f "${XDG_CONFIG_HOME}/gnome-panel/panel-default-layout.layout"; then
+    FIRST_TOPLEVEL=`grep --max-count=1  "\[Toplevel" /usr/share/gnome-panel/panel-default-layout.layout | sed "s:\[Toplevel *::g;s: *]::g"`
+    if test ! -z "${FIRST_TOPLEVEL}"; then
+      mkdir -p -m 0700 "${XDG_CONFIG_HOME}"
+      mkdir -p "${XDG_CONFIG_HOME}/gnome-panel"
+      cp /usr/share/gnome-panel/panel-default-layout.layout "${XDG_CONFIG_HOME}/gnome-panel/panel-default-layout.layout"
+      cat >> "${XDG_CONFIG_HOME}/gnome-panel/panel-default-layout.layout" << EOF
+[Object live-installer-launcher]
+object-iid=PanelInternalFactory::Launcher
+toplevel-id=top-panel
+pack-type=start
+pack-index=-1
+@instance-config/location="file:///usr/share/applications/YaST2/live-installer.desktop"
+EOF
+    fi
+  fi
+
+  ## Other tweaks
+
+  # setup session to not have a lock-enabled screensaver
+  gsettings set org.gnome.desktop.screensaver lock-enabled false
+  # setup session to not care about updates
+  gsettings set org.gnome.settings-daemon.plugins.updates active false
+fi
+
+# Uncomment after SLED12, remove after SLED14:
+#rm -f ~/.skel/gnome2-run ~/.skel/gnome2-run-9.2 ~/.skel/sled10-run
+
+exec /usr/bin/gnome-session ${session} $*

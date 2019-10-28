@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Tue Sep 12 15:54:42 UTC 2017 - jengelh@inai.de
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Thu Sep  7 20:05:58 UTC 2017 - toddrme2178@gmail.com
+
+- Update to version 1.0.0
+  * No changelog
+- Remove python-pyfeyn-fix-pyx-0.12-usage.patch
+  Included upstream
+- Implement single-spec version.
+
+-------------------------------------------------------------------
+Wed Dec  3 05:15:05 UTC 2014 - badshah400@gmail.com
+
+- Add python-pyfeyn-fix-pyx-0.12-usage.patch: Fix usage with
+  pyx >= 0.12; patch taken from upstream svn.
+- Add texlive-hepnames as Recommends to enable the usage of
+  particle names as labels.
+
+-------------------------------------------------------------------
+Fri Jul 18 09:55:44 UTC 2014 - badshah400@gmail.com
+
+- Initial build (version 0.3.4).

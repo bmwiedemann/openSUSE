@@ -17,7 +17,7 @@
 
 
 Name:           flatpak-builder
-Version:        1.0.8
+Version:        1.0.9
 Release:        0
 Summary:        Tool to build flatpaks from source
 License:        LGPL-2.1-or-later

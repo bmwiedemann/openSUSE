@@ -1,0 +1,5 @@
+<package name="python-pdd" project="openSUSE:Factory">
+  <title>python-pdd</title>
+  <description>pdd (Python3 Date Diff) is a small cmdline utility to calculate date and time difference. It can also be used as a timer.</description>
+  <devel project="devel:languages:python" package="python-pdd"/>
+</package>

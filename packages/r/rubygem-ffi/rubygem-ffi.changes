@@ -1,0 +1,359 @@
+-------------------------------------------------------------------
+Mon Jul  8 08:33:44 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.11.1
+
+  Changed:
+  * Raise required ruby version to >=2.0. #699, #700
+  * Fix a possible linker error on ruby < 2.3 on Linux.
+
+-------------------------------------------------------------------
+Mon May 20 12:26:14 UTC 2019 - Lukas Krause <lukas.krause@suse.com>
+
+- updated to version 1.11.0
+ see installed CHANGELOG.md
+
+  # Added
+  
+  * Add ability to disable or force use of system libffi. 
+    #669 Use like gem inst ffi -- --enable-system-libffi
+  * Add ability to call FFI callbacks from outside of FFI call frame. #584
+  * Add proper documentation to FFI::Generator and ::Task
+  * Add gemspec metadata. #696, #698
+
+  # Changed
+
+  * Fix stdcall on Win32. #649, #669
+  * Fix load paths for FFI::Generator::Task
+  * Fix FFI::Pointer#read_string(0) to return a binary String. #692
+  * Fix benchmark suite so that it runs on ruby-2.x
+  * Move FFI::Platform::CPU from C to Ruby. #663
+  * Move FFI::StructByReference to Ruby. #681
+  * Move FFI::DataConverter to Ruby (#661)
+  * Various cleanups and improvements of specs and benchmarks
+
+  # Removed
+
+  * Remove ruby-1.8 and 1.9 compatibility code. #683
+  * Remove unused spec files. #684
+
+-------------------------------------------------------------------
+Mon Jan 14 08:00:29 UTC 2019 - mschnitzer@suse.com
+
+- updated to version 1.10.0
+
+  Added:
+  * Add /opt/local/lib/ to ffi's fallback library search path. #638
+  * Add binary gem support for ruby-2.6 on Windows
+  * Add FreeBSD on AArch64 and ARM support. #644
+  * Add FFI::LastError.winapi_error on Windows native or Cygwin. #633
+
+  Changed:
+  * Update to rake-compiler-dock-0.7.0
+  * Use 64-bit inodes on FreeBSD >= 12. #644
+  * Switch time_t and suseconds_t types to long on FreeBSD. #627
+  * Make register_t long_long on 64-bit FreeBSD. #644
+  * Fix Pointer#write_array_of_type #637
+
+  Removed:
+  * Drop binary gem support for ruby-2.0 and 2.1 on Windows
+
+-------------------------------------------------------------------
+Sun Jun  3 23:06:36 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 1.9.25
+ see installed CHANGELOG.md
+
+  1.9.25 / 2018-06-03
+  -------------------
+  
+  Changed:
+  * Revert closures via libffi.
+    This re-adds ClosurePool and fixes compat with SELinux enabled systems. #621
+
+-------------------------------------------------------------------
+Sat Jun  2 15:04:54 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 1.9.24
+ see installed ChangeLog.v1
+
+-------------------------------------------------------------------
+Mon Feb 26 05:29:11 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 1.9.23
+ see installed ChangeLog.libffi
+
+-------------------------------------------------------------------
+Fri Feb 23 05:29:26 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 1.9.22
+ see installed ChangeLog.libffi
+
+-------------------------------------------------------------------
+Tue Feb  6 12:48:02 UTC 2018 - bgeuken@suse.com
+
+- Updated to version 1.9.21
+
+  No changelog found
+
+-------------------------------------------------------------------
+Sat Mar  4 05:42:10 UTC 2017 - coolo@suse.com
+
+- updated to version 1.9.18
+ see installed ChangeLog
+
+-------------------------------------------------------------------
+Sat Jan 14 05:31:31 UTC 2017 - coolo@suse.com
+
+- updated to version 1.9.17
+ see installed ChangeLog
+
+-------------------------------------------------------------------
+Tue Jul 12 04:28:48 UTC 2016 - coolo@suse.com
+
+- updated to version 1.9.14
+ see installed ChangeLog
+
+-------------------------------------------------------------------
+Thu Jul  7 04:29:55 UTC 2016 - coolo@suse.com
+
+- updated to version 1.9.13
+ see installed ChangeLog
+
+-------------------------------------------------------------------
+Wed Jul  6 04:30:36 UTC 2016 - coolo@suse.com
+
+- updated to version 1.9.12
+ see installed ChangeLog
+
+-------------------------------------------------------------------
+Wed Jul  1 04:29:51 UTC 2015 - coolo@suse.com
+
+- updated to version 1.9.10
+ see installed ChangeLog
+
+-------------------------------------------------------------------
+Sat Jun 27 04:30:12 UTC 2015 - coolo@suse.com
+
+- updated to version 1.9.9
+ see installed ChangeLog
+
+-------------------------------------------------------------------
+Wed Mar 18 15:35:36 UTC 2015 - coolo@suse.com
+
+- updated to version 1.9.8, no changelog
+
+-------------------------------------------------------------------
+Fri Nov 21 21:44:46 UTC 2014 - opensuse_buildservice@ojkastl.de
+
+- manual dependency libffi-devel and rpmlintrc now in gem2rpm.yml
+
+-------------------------------------------------------------------
+Fri Nov 21 21:18:30 UTC 2014 - opensuse_buildservice@ojkastl.de
+
+- adapted to new packaging scheme, regenerated spec with gem2rpm, readded libffi-devel 
+
+-------------------------------------------------------------------
+Fri Nov 21 21:10:45 UTC 2014 - opensuse_buildservice@ojkastl.de
+
+- update to version 1.9.6 
+
+-------------------------------------------------------------------
+Tue Jul 22 08:52:18 UTC 2014 - dmacvicar@suse.de
+
+- remove rdoc buildrequires to build with older
+  rubies including rdoc. It is still pulled otherwise
+
+-------------------------------------------------------------------
+Thu Feb  6 18:28:37 UTC 2014 - coolo@suse.com
+
+- updated to version 1.9.3
+
+-------------------------------------------------------------------
+Thu Oct 31 05:54:34 UTC 2013 - coolo@suse.com
+
+- updated to version 1.9.3, changed license to BSD
+
+-------------------------------------------------------------------
+Sat Jun 15 06:42:06 UTC 2013 - coolo@suse.com
+
+- updated to version 1.9.0, no changelog
+
+-------------------------------------------------------------------
+Wed Apr 24 05:53:06 UTC 2013 - coolo@suse.com
+
+- updated to version 1.8.1, no changelog
+
+-------------------------------------------------------------------
+Fri Apr 12 07:53:41 UTC 2013 - coolo@suse.com
+
+- updated to version 1.7.0
+
+-------------------------------------------------------------------
+Tue Mar 26 06:03:20 UTC 2013 - coolo@suse.com
+
+- remove rm, it's done by gem_cleanup now
+
+-------------------------------------------------------------------
+Sat Mar 23 08:03:31 UTC 2013 - coolo@suse.com
+
+- updated to version 1.5.0, no changelog
+
+-------------------------------------------------------------------
+Sun Mar  3 19:15:38 UTC 2013 - coolo@suse.com
+
+- updated to version 1.4.0
+
+-------------------------------------------------------------------
+Fri Jan 25 06:39:40 UTC 2013 - coolo@suse.com
+
+- updated to version 1.3.1
+
+-------------------------------------------------------------------
+Tue Jan  8 20:21:08 UTC 2013 - coolo@suse.com
+
+- updated to version 1.3.0
+
+-------------------------------------------------------------------
+Wed Nov 21 06:33:36 UTC 2012 - coolo@suse.com
+
+- updated to version 1.2.0
+
+-------------------------------------------------------------------
+Thu Aug  9 14:52:14 UTC 2012 - coolo@suse.com
+
+- updated to version 1.1.5
+
+-------------------------------------------------------------------
+Sat Aug  4 19:00:49 UTC 2012 - coolo@suse.com
+
+- updated to version 1.1.4, more updates for libffi
+
+-------------------------------------------------------------------
+Fri Aug  3 13:57:50 UTC 2012 - coolo@suse.com
+
+- updated to version 1.1.3, fix compilation
+
+-------------------------------------------------------------------
+Mon Jul 30 09:50:48 UTC 2012 - coolo@suse.com
+
+- update to 1.1.2 - fixes for arm
+
+-------------------------------------------------------------------
+Sat Jul 28 16:23:24 UTC 2012 - coolo@suse.com
+
+- updated to 1.1.1 - no changelog
+
+-------------------------------------------------------------------
+Sun Jul 22 15:15:19 UTC 2012 - coolo@suse.com
+
+- update to 1.1.0 - no changelog
+
+-------------------------------------------------------------------
+Fri Jun 29 08:48:45 UTC 2012 - cfarrell@suse.com
+
+- license update: LGPL-3.0
+  See https://github.com/ffi/ffi/blob/master/LICENSE
+
+-------------------------------------------------------------------
+Wed Apr  4 15:21:45 UTC 2012 - coolo@suse.com
+
+- update to 1.0.11 - no changelog
+
+-------------------------------------------------------------------
+Wed Mar 28 13:30:52 UTC 2012 - saschpe@suse.de
+
+- Spec file cleanup:
+  * Factory preparation
+
+-------------------------------------------------------------------
+Wed Aug 24 12:36:46 UTC 2011 - fcastelli@novell.com
+
+- fix license
+- add 'provides' macros
+
+-------------------------------------------------------------------
+Sun May 22 19:17:04 UTC 2011 - dmacvicar@suse.de
+
+- update to 1.0.9
+
+-------------------------------------------------------------------
+Fri Jun 11 16:41:02 UTC 2010 - mrueckert@suse.de
+
+- update to version 0.6.3
+
+-------------------------------------------------------------------
+Fri Jun 11 10:00:01 UTC 2010 - mrueckert@suse.de
+
+- use rubygems_requires macro
+
+-------------------------------------------------------------------
+Sun Feb 14 17:52:07 UTC 2010 - dmacvicar@novell.com
+
+- update to 0.6.0 
+
+-------------------------------------------------------------------
+Thu Dec 17 10:14:01 UTC 2009 - dmacvicar@novell.com
+
+- Update to 0.5.4
+  * bugfix in extconf.rb when appending to $CFLAGS
+- from 0.5.3
+  * fixes powerpc, cywin and FreeBSD installation/build 
+    problems
+- from 0.5.2
+  * Fedora fixes
+
+-------------------------------------------------------------------
+Tue Nov  3 23:36:51 UTC 2009 - dmacvicar@novell.com
+
+- Update to 0.5.1
+  * This is a bug fix release for variadic functions which return 
+    structures by value 
+
+-------------------------------------------------------------------
+Tue Oct 13 11:51:21 CEST 2009 - dmacvicar@novell.com
+
+- Update to 0.5.0
+  * Major improvements
+  * New Function class
+  * Structs can be passed and returned by value
+  * Implement a custom trampoline for x86_64, resulting in roughly 30% speedup
+  * Improve dispatch of functions which take (0..6) char/short/int/long/pointer arguments by between 50% and 200% on x86_64
+  * Callbacks are now approximately 100% faster on x86_64
+* Minor improvements
+  * Add support for MacOSX Snow Leopard
+  * Improve support for Windows releasing fat binaries on rubyforge
+  * Better introspection in structs:
+    * Add StructLayout::Field#type, size, offset, alignment and name
+      methods
+    * Add StructLayout#fields which returns an array of
+      StructLayout::Field objects
+  * Add automagic deducing of library name from module name.
+    Idea and prototype implementation from Matt Hulse
+  * Callback fields in structs can now be both read and written
+  * Add a bunch of new benchmarks
+  * Lots of refactoring
+* Experimental features
+  * blocking functions (i.e. native code that blocks the thread) support
+* Bug fixes
+  * Fix RUBY-FFI_43 (rake gem dependency) 
+
+-------------------------------------------------------------------
+Wed Aug 12 20:38:01 UTC 2009 - dmacvicar@novell.com
+
+- update to 0.4.0
+  * Add support for boolean types
+  * Add support for methods as callbacks
+  * Add FFI::IO.read as described in JRUBY-3636
+  * Add Pointer::NULL constant
+  * Add AbstractMemory#get_array_of_string()
+  * Implement Pointer.new(address) and Pointer.new(:type, address)
+  * Fix RUBY_FFI-38
+  * Fix build issues
+
+-------------------------------------------------------------------
+Mon Jul 27 01:35:38 CEST 2009 - dmacvicar@novell.com
+
+- initial package for 0.3.5
+ 
+

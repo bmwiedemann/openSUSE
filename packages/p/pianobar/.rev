@@ -1,0 +1,40 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0a5139d8cbb99694178b307483b8bdc1</srcmd5>
+    <version>2017.08.30</version>
+    <time>1523956610</time>
+    <user>dimstar_suse</user>
+    <comment>Brought over from Packman (2nd attempt)</comment>
+    <requestid>596558</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>45a287bea06e4800d6c5eec8b580c829</srcmd5>
+    <version>2017.08.30</version>
+    <time>1530866774</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621074</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>95ecac16a0b0546d662121029b0128f2</srcmd5>
+    <version>2018.06.22</version>
+    <time>1531135782</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2018.06.22
+  * Happy 10th birthday pianobar!
+  * Add network timeouts and retries
+  * Fix cross-thread memory access
+  * Misc UI and documentation improvements
+- Use ffmpeg4
+</comment>
+    <requestid>621562</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bb8d8d4003950b09dee1ef4f3f3424aa</srcmd5>
+    <version>2019.02.14</version>
+    <time>1550221353</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674972</requestid>
+  </revision>
+</revisionlist>

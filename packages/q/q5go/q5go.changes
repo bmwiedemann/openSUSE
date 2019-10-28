@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 20 13:04:36 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patches to build with older Qt versions:
+  * 0001-Disable-game-tree-header-with-Qt-5.10.patch
+  * 0001-Remove-PlaceholderText-colorroles-which-were-added-b.patch
+  * 0001-Add-missing-includes.patch
+
+-------------------------------------------------------------------
 Thu Sep 19 14:44:36 UTC 2019 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Add correct QT5Core requirement, as q5go requires some specific

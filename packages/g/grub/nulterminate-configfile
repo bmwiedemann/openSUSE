@@ -1,0 +1,16 @@
+--- grub-0.97/stage2/builtins.c.orig	2010-01-14 18:08:51.000000000 +0100
++++ grub-0.97/stage2/builtins.c	2010-01-14 18:11:45.000000000 +0100
+@@ -2126,8 +2126,11 @@
+       nul_terminate (config_filename);
+ 	
+       if (! is_stage1_5)
+-	/* If it is a Stage 2, just copy PTR to CONFIG_FILE_LOCATION.  */
+-	grub_strcpy (config_file_location, ptr);
++	{
++	  /* If it is a Stage 2, just copy PTR to CONFIG_FILE_LOCATION.  */
++	  grub_strcpy (config_file_location, ptr);
++	  nul_terminate (config_file_location);
++	}
+       else
+ 	{
+ 	  char *real_config;

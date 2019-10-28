@@ -1,0 +1,133 @@
+-------------------------------------------------------------------
+Tue Sep 24 09:30:42 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.43.8:
+  * Add two factor attributes on organizations (#1132) (a073168)
+  * Add Repository methods for pending invitations (#1159) (57af1e0)
+  * Adds get_issue_events to PullRequest object (#1154) (acd515a)
+  * Add invitee and inviter to Invitation (#1156) (0f2beac)
+  * Adding support for pending team invitations (#993) (edab176)
+  * Add support for custom base_url in GithubIntegration class (#1093) (6cd0d64)
+  * GithubIntegration: enable getting installation (#1135) (1818704)
+  * Add sorting capability to Organization.get_repos() (#1139) (ef6f009)
+  * Add new Organization.get_team_by_slug method (#1144) (4349bca)
+  * Add description field when creating a new team (#1125) (4a37860)
+  * Handle a path of / in Repository.get_contents() (#1070) (102c820)
+  * Add issue lock/unlock (#1107) (ec7bbcf)
+  * Fix bug in recursive repository contents example (#1166) (8b6b450)
+  * Allow name to be specified for upload_asset (#1151) (8d2a6b5)
+  * Fixes #1106 for GitHub Enterprise API (#1110) (5406579)
+
+-------------------------------------------------------------------
+Tue May 14 19:43:19 UTC 2019 - Gary Smith <GSmith@suse.com>
+
+- Update to 1.43.7:
+  * Exclude tests from PyPI distribution (#1031) (78d283b9)
+  * Add codecov badge (#1090) (4c0b54c0)
+- Update to 1.43.6:
+  * New features
+    o Add support for Python 3.7 (#1028) (6faa00ac)
+    o Adding HTTP retry functionality via urllib3 (#1002) (5ae7af55)
+    o Add new dismiss() method on PullRequestReview (#1053) (8ef71b1b)
+    o Add since and before to get_notifications (#1074) (7ee6c417)
+    o Add url parameter to include anonymous contributors in get_contributors (#1075) (293846be)
+    o Provide option to extend expiration of jwt token (#1068) (86a9d8e9)
+  * Bug Fixes & Improvements
+    o Fix the default parameter for PullRequest.create_review (#1058) (118def30)
+    o Fix get_access_token (#1042) (6a89eb64)
+    o Fix Organization.add_to_members role passing (#1039) (480f91cf)
+  * Deprecation
+    o Remove Status API (6efd6318)
+- Add patch fix-httpretty-dep.patch
+
+-------------------------------------------------------------------
+Wed Mar  6 08:55:14 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.43.5:
+  * Many actual changes to enumerate, mostly support of current
+    github api see changes.rst file
+
+-------------------------------------------------------------------
+Wed Dec 19 00:35:29 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary. Generalize description.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:52:15 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue Aug 15 18:52:21 UTC 2017 - sebix+novell.com@sebix.at
+
+- convert to singlespec
+- update to 1.35
+
+-------------------------------------------------------------------
+Mon May 11 15:48:45 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 1.25.2:
+  * Work around the GitHub API v3 returning null in some paginated
+    responses
+- additional changes from version 1.25.1
+  * Fix two-factor authentication header, thanks to tradej for the
+    pull request
+- additional changes from version 1.25.0
+  * Implement getting repos by id, thanks to tylertreat for the
+    pull request
+  * Add Gist.owner, thanks to dalejung for the pull request
+- additional changes from version 1.24.1
+  * Fix urlquoting in search, thanks to cro for the pull request
+- additional changes from version 1.24.0
+  * Implement search, thanks to thialfihar for the pull request
+- additional changes from version 1.23.0
+  * Fix all that is based on headers in Python 3 (pagination,
+    conditional request, rate_limit...), huge thanks to cwarren-mw
+    for finding the bug
+  * Accept strings for assignees and collaborators, thanks to farrd
+  * Ease two-factor authentication by adding ‘onetime_password’ to
+    AuthenticatedUser.create_authorization, thanks to cameronbwhite
+- additional changes from version 1.22.0
+  * Emojis, thanks to evolvelight
+  * Repository.stargazers_count, thanks to cameronbwhite
+  * User.get_teams, thanks to poulp
+- refresh PyGithub-drop-network-tests.patch
+- pass -q to test to avoid spamming the build log
+- change path of license files: moved upstream
+
+-------------------------------------------------------------------
+Wed Dec  4 09:47:50 UTC 2013 - speilicke@suse.com
+
+- Update to version 1.21.0:
+  + No changelog, but https://github.com/jacquev6/PyGithub/issues?milestone=33&state=closed
+- Add PyGithub-drop-network-tests.patch: Drop tests that need network access
+  during build
+
+-------------------------------------------------------------------
+Thu Oct 24 11:11:48 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Tue Apr 23 07:17:50 UTC 2013 - speilicke@suse.com
+
+- Add COPYING and COPYING.LESSER
+
+-------------------------------------------------------------------
+Thu Apr 11 06:51:48 UTC 2013 - cfarrell@suse.com
+
+- license update: LGPL-3.0+
+  See setup.py as well as all the source code files in the package itself
+  (and the COPYING.LESSER)
+
+-------------------------------------------------------------------
+Wed Apr 10 13:21:07 UTC 2013 - speilicke@suse.com
+
+- Fix spurious executable perms (README.rst)
+- Don't ship testsuite (scripts w/o sheban / fdupes warnings)
+
+-------------------------------------------------------------------
+Wed Apr 10 13:09:56 UTC 2013 - speilicke@suse.com
+
+- Initial version
+

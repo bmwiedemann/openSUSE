@@ -1,0 +1,5 @@
+<package name="python-magic-wormhole-transit-relay" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-magic-wormhole-transit-relay"/>
+</package>

@@ -7,4 +7,12 @@
     <comment>I'd like to submit rubygem-fog-libvirt to Factory, as I need it as a dependency for vagrant-libvirt.</comment>
     <requestid>709213</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8c884dc035d16fabe1c2234577eb6382</srcmd5>
+    <version>0.7.0</version>
+    <time>1572278381</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>743516</requestid>
+  </revision>
 </revisionlist>

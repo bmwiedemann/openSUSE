@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 28 11:47:54 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2019.10.1
+  * Improved technical tab widgets. Units (e.g. mm) are now
+    included in the display instead of the label, and blank or
+    multiple values are handled better.
+  * Several other bug fixes.
+
+-------------------------------------------------------------------
 Tue Oct 15 11:35:20 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2019.10.0

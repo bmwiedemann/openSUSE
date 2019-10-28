@@ -1,0 +1,15 @@
+<package name="mpd" project="openSUSE:Factory">
+  <title>Music Player Daemon</title>
+  <description>A daemon for playing music (mp3, ogg vorbis, flac, and wav).  Music is
+played through the server's audio device.  The daemon stores info
+about all available music, and this info can be easily searched and
+retrieved.  Player control, info retrieval, and playlist management
+can all be managed remotely. There a bunch of clients to control mpd:
+for Gnome, KDE, console and Apache (PHP).
+
+Please read README.mpd how to configure it.
+
+</description>
+  <devel project="multimedia:apps" package="mpd"/>
+  <url>http://www.musicpd.org/</url>
+</package>

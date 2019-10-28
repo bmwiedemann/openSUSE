@@ -1,0 +1,12 @@
+diff -urp libsoup-2.67.92.orig/tests/meson.build libsoup-2.67.92/tests/meson.build
+--- libsoup-2.67.92.orig/tests/meson.build	2019-08-20 08:06:39.000000000 -0500
++++ libsoup-2.67.92/tests/meson.build	2019-08-30 20:06:14.780598736 -0500
+@@ -24,8 +24,6 @@ tests = [
+   ['date', true, []],
+   ['forms', true, []],
+   ['header-parsing', true, []],
+-  ['hsts', true, []],
+-  ['hsts-db', true, []],
+   ['misc', true, []],
+   ['multipart', true, []],
+   ['no-ssl', true, []],

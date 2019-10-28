@@ -1158,4 +1158,32 @@ The actual python-keyring package is only available in the devel:languages:pytho
    * osc -h does not break anymore when using plugins</comment>
     <requestid>720984</requestid>
   </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>2cd391ffeca407616d9c8abd6e1542b0</srcmd5>
+    <version>0.166.0</version>
+    <time>1572278363</time>
+    <user>dimstar_suse</user>
+    <comment>- 0.166.0 (boo#1154972)
+  * New password handling backend. Supported password stores:
+      - Plaintext password
+      - Obfuscated password
+      - python-keyring (kwallet, secret store)
+      - gnome-keyring
+      - no store at all (ask for the password every time
+  * Refactor initial setup of osc (to select password store)
+  * fix decoding on osc lbl (boo#1137477)
+  * fix breakage of submitting complete branches back as an
+    submit request that contain packages without a change.
+  * fix error with plugins and osc -h
+  * various decoding improvements
+  * Transfer the name of the input file to vc instead of the content
+    (obs-build/vc will do the rest and open the file).
+  * support appimage builds
+  * new command browse. (opens a browser opening the project or package)
+  * new option --incoming for osc rq and osc review to only show only
+    incoming reqeusts for a project.
+- new Recommends for xdg-utils. osc-browse uses xdg-open to open
+  the url to the project/package in an internet browser</comment>
+    <requestid>743494</requestid>
+  </revision>
 </revisionlist>

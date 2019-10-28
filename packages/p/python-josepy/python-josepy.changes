@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Wed Jul 24 13:33:16 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.2.0
+  * Support for Python 2.6 and 3.3 has been removed.
+  * Known incompatibilities with Python 3.8 have been resolved.
+
+-------------------------------------------------------------------
+Tue Jan 29 12:31:18 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Really run tests
+- Disable docs building it is distributed by upstream and does not
+  work on older openSUSE releases
+
+-------------------------------------------------------------------
+Thu May  3 09:57:33 UTC 2018 - ecsos@opensuse.org
+
+- update to 1.1.0
+  - Deprecated support for Python 2.6 and 3.3.
+  - Use the sign and verify methods when they are available in 
+    cryptography instead of the deprecated methods signer and 
+    verifier.
+
+-------------------------------------------------------------------
+Tue Jan 30 22:15:57 UTC 2018 - jengelh@inai.de
+
+- Use Documentation/* as RPM group for -doc.
+
+-------------------------------------------------------------------
+Sat Jan 27 14:31:07 UTC 2018 - ecsos@opensuse.org
+
+- initial version 1.0.1

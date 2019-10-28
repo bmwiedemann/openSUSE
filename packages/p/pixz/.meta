@@ -1,0 +1,20 @@
+<package name="pixz" project="openSUSE:Factory">
+  <title>A Program for Compressing Files</title>
+  <description>The xz command is a very powerful program for compressing files.
+
+* Average compression ratio of LZMA is about 30% better than that of
+   gzip, and 15% better than that of bzip2.
+
+* Decompression speed is only little slower than that of gzip, being
+   two to five times faster than bzip2.
+
+* In fast mode, compresses faster than bzip2 with a comparable
+   compression ratio.
+
+* Achieving the best compression ratios takes four to even twelve
+   times longer than with bzip2. However. this doesn't affect
+   decompressing speed.
+
+* Very similar command line interface to what gzip and bzip2 have.</description>
+  <devel project="Archiving" package="pixz"/>
+</package>

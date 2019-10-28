@@ -27,12 +27,12 @@
 %define use_python python
 %endif
 
-%define version_unconverted 0.165.4
+%define version_unconverted 0.166.0
 %define osc_plugin_dir %{_prefix}/lib/osc-plugins
 %define macros_file macros.osc
 
 Name:           osc
-Version:        0.165.4
+Version:        0.166.0
 Release:        0
 Summary:        Open Build Service Commander
 License:        GPL-2.0-or-later
@@ -82,6 +82,7 @@ Recommends:     obs-service-verify_file
 Recommends:     obs-service-download_files
 Recommends:     obs-service-format_spec_file
 Recommends:     obs-service-source_validator
+Recommends:     xdg-utils
 %endif
 %endif
 # needed for storing credentials in kwallet/gnome-keyring

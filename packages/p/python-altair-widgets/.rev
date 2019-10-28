@@ -1,0 +1,14 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a1df4189b9531d5a10f69a87b711992e</srcmd5>
+    <version>0.1.2</version>
+    <time>1558516053</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename to to match python package naming guidelines.
+- Use %license tag
+- Add documentation and license
+- Initial version
+</comment>
+    <requestid>698405</requestid>
+  </revision>
+</revisionlist>

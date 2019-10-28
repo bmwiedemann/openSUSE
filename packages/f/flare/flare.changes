@@ -1,0 +1,269 @@
+-------------------------------------------------------------------
+Sun Jul 28 05:06:39 UTC 2019 - Max Mitschke <maxmitschke@fastmail.com>
+
+- Version update to 1.11 
+
+  Engine Features
+  * Players now have their own private stash in addition to the
+    shared stash.
+  * Expanded the 'no_stash' Item variable to account for having
+    multiple stashes.
+    
+  Engine Fixes
+  * Fix bug where items could be dragged from the vendor window and
+    dropped in the opposite vendor tab.
+  * Fix bug that caused item max_quantity to be reset when attempting
+    to append an item definition.
+  * Fix bug where Powers with 'replace_by_effect' would still use
+    properties from the parent power, such as animation state.
+    
+- Removed post/postun macros since they are no longer needed with 
+  Leap 42.3 going end-of-life.
+
+-------------------------------------------------------------------
+Sat May 18 12:57:53 UTC 2019 - Max Mitschke <maxmitschke@fastmail.com>
+
+- Version update to 1.10
+
+  Engine Features
+  * The configuration menu has been redesigned and is now used as the pause menu.
+  * The interface features from version 1.09 have been reverted due to being 
+    accessible from the pause menu.
+  * Added an Interface option to disable showing hidden entity markers.
+  * Support floating point values for loot drop chance values.
+  * Add ‘hide_timeout’ option to stat bar configuration to support auto-hiding.
+  * Added an Interface option to disable stat bar auto-hiding globally.
+  * Add ‘no_stash’ property to item definitions to prevent items from being 
+    placed in the stash.
+  * Add low HP notification system. (Leszek Cimała)
+  * Add ability to change the minimap zoom level by clicking on the minimap.
+
+  Engine Fixes
+  * Fixed event activation being tied to distance to the camera position. It is 
+    now correctly tied to distance from the player.
+  * Mouse movement and mouse aim now calculate direction relative to the player 
+    instead of relative to the screen.
+  * Fixed enemy AI so that enemies can now enter combat if a hero ally is in 
+    their proximity.
+  * Fix –data-path command line flag on Windows.
+  * Fixed dialog not being available if it lacked a topic.
+  * Fixed loot drop rate bonus having no effect when loot drop chance was too 
+    low.
+  * Fix bug where the wrong requirements were checked for passive powers that 
+    had been granted bonus points.
+  * Items that can’t be stashed are now dropped on the ground upon opening the 
+    stash.
+  * Prevent re-binding the primary Main1 binding, which could break many 
+    interactions.
+  * Removed the ability to re-bind the Ctrl, Shift, Alt, and Delete keys, since 
+    they correspond to specific keyboard keys.
+  * Fix crash when trying to load a mod that contained 
+    ‘engine/default_keybindings.txt’.
+  * Display XP stat bar value as relative to current level instead of total XP.
+  * Fix key bindings not working when switched to a non-US keyboard layout.
+  * Fix segfault when NPC filename is invalid.
+  * Fix inventory tooltips covering books when using no mouse.
+  * Fix navigation of dialog menu when using no mouse.
+  * Fix upgrading powers when using no mouse.
+  * When using the sdl_hardware renderer on Windows, OpenGL will now be used 
+    instead of Direct3D. This fixes the loss of some textures when resizing 
+    the window.
+  * Fixed the “level up” string to represent the ability to allocate multiple 
+    stat points. Also note if Power points can be allocated.
+  * Refactored ‘requires_hpmp_state’ for Powers to check against both stats at 
+    once. See the attribute reference for syntax changes.
+  * Greatly improved performance of loot tooltips.
+  * Fix bug where high item find chance prevented the player from finding 
+    currency.
+
+-------------------------------------------------------------------
+Mon Dec 17 04:12:26 UTC 2018 - maxmitschke@fastmail.com
+
+- Version update to 1.09.01
+  * Fixed assertion/crash when engaging in dialog.
+  * Updated Ukranian translations
+
+- Version update to 1.09
+  * Add ‘save_pos_onexit’ to engine/misc.txt for saving the 
+    player’s current position upon exiting.
+  * Add ‘toggle_fps’ to the developer console commands.
+  * Add a video setting to disable parallax layers.
+  * Add ability to use icons in books.
+  * Add item property ‘book_is_readable’ to control displaying 
+    ‘read’ vs ‘use’ in item tooltips.
+  * Add renderer support for batching calls to local pixel drawing. 
+    This speeds up the pre-render of the minimap.
+  * Add support for shadows on book text via ‘text_shadow’.
+  * Add tooltips to language list to show language codes.
+  * Added ‘colorblind_highlight_offset’ and listbox ‘text_margin’ 
+    to engine/widget_settings.txt.
+  * Added a 2x zoom mode for the mini-map.
+  * Added a compass to the minimap.
+  * Added Catalan translations
+  * Added support for dialog responses. For any line of dialog, a 
+    list of response topics can be given.
+  * Closing a book with the ‘Cancel’ key no longer closes all 
+    other menus.
+  * Dialog options are no longer shown in a separate menu, but are 
+    instead part of the main dialog window.
+  * Fix book open sound effect not being played in all cases.
+  * Fix buttons and checkboxes not handling clicks while the 
+    “Accept” key is pressed.
+  * Fix handling of disabled widgets when using keyboard navigation.
+  * Fix incorrect descriptions of controls on mobile devices.
+  * Fix potential memory leak when redefining images in books.
+  * Fixed a bug where looped map sounds wouldn’t play if the player 
+    entered the map with a sound volume of 0, but later raised 
+    the volume.
+  * Fixed shrinking tab widgets when widow was resized.
+  * Loot tooltips can now be hidden when entities are near pieces of 
+    loot. The setting “hide_radius” has been added to engine/loot.txt 
+    to control this.
+  * Make strings related to elements more translator-friendly.
+  * Missing items now maintain their stack quantity when moved around.
+  * Moved several interface options to the actionbar. Loot tooltips, 
+    combat text, statbar labels, and mini-map mode can be adjusted.
+  * Moved the interface option for automatically equipping items to 
+    the Inventory menu.
+  * New mouse movement options to swap the movement button and/or 
+    restrict the movement button to be movement-only.
+  * Overhead markers are now displayed for entities that are 
+    obscured by tall tiles.
+  * Redesigned mouse movement with better handling of non-melee attacks.
+  * Remove broken ‘font_fallback’ from engine/font_settings.txt.
+  * Updated translations for German, Scottish Gaelic, 
+    Brazilian Portueguese, Ukranian, Vietnamese
+  * Using consumables from the Inventory menu will now subtract from 
+    the stack that was clicked on.
+  * Widgets that use custom images can now fall back to the 
+    default image if the custom image is missing 
+    (instead of exiting in failure).
+
+- Updated location of flare-engine data directory to follow
+  packaging standards
+- Added more CMake build params to to have install process
+  follow packaging standards
+
+-------------------------------------------------------------------
+Tue Oct 23 00:24:20 UTC 2018 - maxmitschke@fastmail.com
+
+- Version update to 1.08
+  * Updated translations for German, French, Scottish Gaelic and
+    Italian
+  * Bugfixes
+
+-------------------------------------------------------------------
+Sun Jun 17 19:15:08 UTC 2018 - maxmitschke@fastmail.com
+
+- Version update to 1.06
+
+-------------------------------------------------------------------
+Wed Mar 14 20:22:26 UTC 2018 - jengelh@inai.de
+
+- Trim bias and filler wording from description.
+
+-------------------------------------------------------------------
+Wed Mar 14 15:07:31 UTC 2018 - tchvatal@suse.com
+
+- Version update to 1.0 release:
+  * No real upstream changelog but first non-alpha release supporting
+    big campaign mode.
+- Remove unused condition for license
+- Cleanup a bit
+
+-------------------------------------------------------------------
+Mon Jun 27 16:33:30 UTC 2016 - dap.darkness@gmail.com
+
+- Prevented openSUSE 13.1' error (invalid-license CC-BY-SA-4.0).
+
+-------------------------------------------------------------------
+Sun May 29 10:11:48 UTC 2016 - dap.darkness@gmail.com
+
+- Version bump to 0.20:
+  * no upstream changelog.
+- Tarball & spec for data subpackage.
+- License, *Requires, %description were fixed up.
+- RelWithDebInfo build type to provide debuginfo.
+- Verbose make.
+- Valid %post(un).
+
+-------------------------------------------------------------------
+Thu Nov 20 17:57:19 UTC 2014 - tchvatal@suse.com
+
+- Version bump to 0.19:
+  * Lots of various improvements. See ChangeLog
+- Remove _service and use rather tarball next to pkg with possiblity to
+  local service run of download_files
+- Use cmake macro and overall cleanup of .spec
+
+Sat Apr  6 09:30:24 UTC 2013 - dap.darkness@gmail.com
+
+- 0.18 release
+  * 10 Equipment Slots, up from 4 (and easily configurable)
+  * Starting "Class" choice (beginner's power/item kit)
+  * Environmental/Ambient Sounds on maps
+  * Much improved handling of Animations, Effects, and Sounds
+  * New Powers: Stealth, Traps, Thrown Weapons
+  * New Item Bonuses: XP gain, Gold Find, Item Find, and more
+  * Improved support for various input devices
+- Service source_validator was enabled.
+- Spec header was fixed up according to distro policy.
+- Sources were moved from GitHub to SourceForge.
+- Spec was fixed up via `spec-cleaner`.
+- Requires hicolor-icon-theme not to pack unnecessary dirs.
+- Python became recommended, not required.
+- xgettext.py & readme.txt might be executable.
+
+Tue Oct  2 23:25:40 UTC 2012 - dap.darkness@gmail.com
+
+- 0.17.1 release
+  * Instant-sell items now go to the vendor Buyback tab
+  * Disable New/Load buttons if there is no story mod loaded
+  * Prevent crash when binding higher number mouse buttons
+  * Prevent crash when loading a map with missing layers
+  * Add helpful tooltips when play buttons are disabled
+  * Removed -flto compiler flag from default build script
+
+Sun Sep 30 20:57:49 UTC 2012 - dap.darkness@gmail.com
+
+- 0.17 release
+  * All menus now easy to mod/reskin
+  * New Powers tree with traditional tabs and spendable points
+  * Shared Stash! Collect epics, hoard resist gear, or buff your new characters
+  * Warp Zone - fast-travel map to get around the alpha demo campaign
+- Clean section was removed.
+- Url was updated.
+
+Sun Jul  8 11:56:39 UTC 2012 - dap.darkness@gmail.com
+
+- 0.16 release
+  * Improved enemy pathfinding, including flying creatures
+  * Summon or transform into enemies!
+  * Config menu including keybindings, mods, and more
+  * Orthogonal map support
+
+Thu May 31 20:09:48 UTC 2012 - dap.darkness@gmail.com
+
+- git
+  * Configuration menu was implemented
+- Build improvements
+  * Cmake build type became "RelWithDebInfo"
+  * Cmake verbose makefile became "True"
+  * Binary path fixing patch was replaced by cmake option.
+  * Rpm optimisation flags were enabled.
+
+Wed Dec 25 00:00:00 UTC 2011 - dap.darkness@gmail.com
+
+- 0.15.1 release
+  * Fixes a couple issues (build flags, random enemy groups)
+
+Wed Dec 23 00:00:00 UTC 2011 - dap.darkness@gmail.com
+
+- 0.15 release
+  * Now using TTF for fonts
+  * All game data can be overwritten/added via mods
+  * Translation support for the core engine and mods
+  * New Grassland tileset
+  * New questing areas: Frontier and Living Bones
+  * Redesigned creatures are tougher and more varied
+

@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Sun Oct  7 15:40:27 UTC 2018 - meissner@suse.com
+
+- updated to 1.1
+  - Initial support for placed resources.
+  - MoltenVK support.
+  - Support for geometry shaders.
+
+-------------------------------------------------------------------
+Sun Jul 29 10:19:37 UTC 2018 - jengelh@inai.de
+
+- Fix RPM groups. Drop redundant ldconfig requires (they are
+  implicit).
+
+-------------------------------------------------------------------
+Sun Jun 17 10:06:49 UTC 2018 - meissner@suse.com
+
+- ininital vkd3d library, Direct3D 12 to Vulkan translation library

@@ -1,0 +1,162 @@
+From 3ab798004733ce65bd5c7a48d650de3465825210 Mon Sep 17 00:00:00 2001
+From: Vanitha Channaiah <vanitha.channaiah@in.bosch.com>
+Date: Wed, 15 May 2019 11:56:34 +0530
+Subject: [PATCH 03/25] pcm: dsnoop: Added "hw_ptr_alignment" option in
+ configuration for slave pointer alignment
+
+This change adapt the fix commit 6b058fda9dce
+("pcm: dmix: Add option to allow alignment of slave pointers")
+for dsnoop plugin
+
+Issue is that snd_pcm_wait() goes back to waiting because the hw_ptr
+is not period aligned. Therefore snd_pcm_wait() will block for a longer
+time as required.
+
+With these rcar driver changes the exact position of the dma is returned.
+During snd_pcm_start they read hw_ptr as reference, and this hw_ptr
+is now not period aligned, and is a little ahead over the period while it
+is read. Therefore when the avail is calculated during snd_pcm_wait(),
+it is missing the avail_min by a few frames.
+
+An additional option hw_ptr_alignment is provided to dsnoop configuration,
+to allow the user to configure the slave application and hw pointer
+alignment at startup
+
+Signed-off-by: Vanitha Channaiah <vanitha.channaiah@in.bosch.com>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ src/pcm/pcm_direct.c |  1 -
+ src/pcm/pcm_dmix.c   |  2 ++
+ src/pcm/pcm_dshare.c |  2 ++
+ src/pcm/pcm_dsnoop.c | 30 +++++++++++++++++++++++++++++-
+ 4 files changed, 33 insertions(+), 2 deletions(-)
+
+diff --git a/src/pcm/pcm_direct.c b/src/pcm/pcm_direct.c
+index 411a035b32ed..54d99005461b 100644
+--- a/src/pcm/pcm_direct.c
++++ b/src/pcm/pcm_direct.c
+@@ -2043,7 +2043,6 @@ int snd_pcm_direct_parse_open_conf(snd_config_t *root, snd_config_t *conf,
+ 
+ void snd_pcm_direct_reset_slave_ptr(snd_pcm_t *pcm, snd_pcm_direct_t *dmix)
+ {
+-	dmix->slave_appl_ptr = dmix->slave_hw_ptr = *dmix->spcm->hw.ptr;
+ 
+ 	if (dmix->hw_ptr_alignment == SND_PCM_HW_PTR_ALIGNMENT_ROUNDUP ||
+ 		(dmix->hw_ptr_alignment == SND_PCM_HW_PTR_ALIGNMENT_AUTO &&
+diff --git a/src/pcm/pcm_dmix.c b/src/pcm/pcm_dmix.c
+index dcde40d9976e..274726e47a7d 100644
+--- a/src/pcm/pcm_dmix.c
++++ b/src/pcm/pcm_dmix.c
+@@ -562,6 +562,7 @@ static int snd_pcm_dmix_reset(snd_pcm_t *pcm)
+ 	snd_pcm_direct_t *dmix = pcm->private_data;
+ 	dmix->hw_ptr %= pcm->period_size;
+ 	dmix->appl_ptr = dmix->last_appl_ptr = dmix->hw_ptr;
++	dmix->slave_appl_ptr = dmix->slave_hw_ptr = *dmix->spcm->hw.ptr;
+ 	snd_pcm_direct_reset_slave_ptr(pcm, dmix);
+ 	return 0;
+ }
+@@ -571,6 +572,7 @@ static int snd_pcm_dmix_start_timer(snd_pcm_t *pcm, snd_pcm_direct_t *dmix)
+ 	int err;
+ 
+ 	snd_pcm_hwsync(dmix->spcm);
++	dmix->slave_appl_ptr = dmix->slave_hw_ptr = *dmix->spcm->hw.ptr;
+ 	snd_pcm_direct_reset_slave_ptr(pcm, dmix);
+ 	err = snd_timer_start(dmix->timer);
+ 	if (err < 0)
+diff --git a/src/pcm/pcm_dshare.c b/src/pcm/pcm_dshare.c
+index cf8a8631dd5e..b75809c8aa06 100644
+--- a/src/pcm/pcm_dshare.c
++++ b/src/pcm/pcm_dshare.c
+@@ -333,6 +333,7 @@ static int snd_pcm_dshare_reset(snd_pcm_t *pcm)
+ 	snd_pcm_direct_t *dshare = pcm->private_data;
+ 	dshare->hw_ptr %= pcm->period_size;
+ 	dshare->appl_ptr = dshare->last_appl_ptr = dshare->hw_ptr;
++	dshare->slave_appl_ptr = dshare->slave_hw_ptr = *dshare->spcm->hw.ptr;
+ 	snd_pcm_direct_reset_slave_ptr(pcm, dshare);
+ 	return 0;
+ }
+@@ -342,6 +343,7 @@ static int snd_pcm_dshare_start_timer(snd_pcm_t *pcm, snd_pcm_direct_t *dshare)
+ 	int err;
+ 
+ 	snd_pcm_hwsync(dshare->spcm);
++	dshare->slave_appl_ptr = dshare->slave_hw_ptr = *dshare->spcm->hw.ptr;
+ 	snd_pcm_direct_reset_slave_ptr(pcm, dshare);
+ 	err = snd_timer_start(dshare->timer);
+ 	if (err < 0)
+diff --git a/src/pcm/pcm_dsnoop.c b/src/pcm/pcm_dsnoop.c
+index d08b6241ac19..58b1e5347836 100644
+--- a/src/pcm/pcm_dsnoop.c
++++ b/src/pcm/pcm_dsnoop.c
+@@ -278,6 +278,7 @@ static int snd_pcm_dsnoop_reset(snd_pcm_t *pcm)
+ 	dsnoop->hw_ptr %= pcm->period_size;
+ 	dsnoop->appl_ptr = dsnoop->hw_ptr;
+ 	dsnoop->slave_appl_ptr = dsnoop->slave_hw_ptr;
++	snd_pcm_direct_reset_slave_ptr(pcm, dsnoop);
+ 	return 0;
+ }
+ 
+@@ -285,12 +286,13 @@ static int snd_pcm_dsnoop_start(snd_pcm_t *pcm)
+ {
+ 	snd_pcm_direct_t *dsnoop = pcm->private_data;
+ 	int err;
+-	
++
+ 	if (dsnoop->state != SND_PCM_STATE_PREPARED)
+ 		return -EBADFD;
+ 	snd_pcm_hwsync(dsnoop->spcm);
+ 	snoop_timestamp(pcm);
+ 	dsnoop->slave_appl_ptr = dsnoop->slave_hw_ptr;
++	snd_pcm_direct_reset_slave_ptr(pcm, dsnoop);
+ 	err = snd_timer_start(dsnoop->timer);
+ 	if (err < 0)
+ 		return err;
+@@ -627,6 +629,7 @@ int snd_pcm_dsnoop_open(snd_pcm_t **pcmp, const char *name,
+ 	dsnoop->max_periods = opts->max_periods;
+ 	dsnoop->var_periodsize = opts->var_periodsize;
+ 	dsnoop->sync_ptr = snd_pcm_dsnoop_sync_ptr;
++	dsnoop->hw_ptr_alignment = opts->hw_ptr_alignment;
+ 
+  retry:
+ 	if (first_instance) {
+@@ -771,6 +774,12 @@ pcm.name {
+ 	ipc_key INT		# unique IPC key
+ 	ipc_key_add_uid BOOL	# add current uid to unique IPC key
+ 	ipc_perm INT		# IPC permissions (octal, default 0600)
++	hw_ptr_alignment STR	# Slave application and hw pointer alignment type
++		# STR can be one of the below strings :
++		# no
++		# roundup
++		# rounddown
++		# auto (default)
+ 	slave STR
+ 	# or
+ 	slave {			# Slave definition
+@@ -795,6 +804,25 @@ pcm.name {
+ }
+ \endcode
+ 
++<code>hw_ptr_alignment</code> specifies slave application and hw
++pointer alignment type. By default hw_ptr_alignment is auto. Below are
++the possible configurations:
++- no: minimal latency with minimal frames dropped at startup. But
++  wakeup of application (return from snd_pcm_wait() or poll()) can
++  take up to 2 * period.
++- roundup: It is guaranteed that all frames will be played at
++  startup. But the latency will increase upto period-1 frames.
++- rounddown: It is guaranteed that a wakeup will happen for each
++  period and frames can be written from application. But on startup
++  upto period-1 frames will be dropped.
++- auto: Selects the best approach depending on the used period and
++  buffer size.
++  If the application buffer size is < 2 * application period,
++  "roundup" will be selected to avoid over runs. If the slave_period
++  is < 10ms we could expect that there are low latency
++  requirements. Therefore "rounddown" will be chosen to avoid long
++  wakeup times. Else "no" will be chosen.
++
+ \subsection pcm_plugins_dsnoop_funcref Function reference
+ 
+ <UL>
+-- 
+2.16.4
+

@@ -1,0 +1,17 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>464e6a5eba16d6cdd25769c28ba5aab5</srcmd5>
+    <version>1.0</version>
+    <time>1391030458</time>
+    <user>coolo</user>
+    <comment>please add font for Sourashtra script; SUSE-GPL-3.0-with-font-exception seems to be missing from license.o.o</comment>
+    <requestid>214553</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>464e6a5eba16d6cdd25769c28ba5aab5</srcmd5>
+    <version>1.0</version>
+    <time>1409302093</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,109 @@
+Bart Martens <bartm@debian.org>
+Fixes manpage-has-bad-whatis-entry.
+
+Index: lib/Finance/Quote/AEX.pm
+===================================================================
+--- lib/Finance/Quote/AEX.pm.orig
++++ lib/Finance/Quote/AEX.pm
+@@ -170,7 +170,7 @@ sub aex {
+ 
+ =head1 NAME
+ 
+-Finance::Quote::AEX Obtain quotes from Amsterdam Euronext eXchange
++Finance::Quote::AEX - Obtain quotes from Amsterdam Euronext eXchange
+ 
+ =head1 SYNOPSIS
+ 
+Index: lib/Finance/Quote/AIAHK.pm
+===================================================================
+--- lib/Finance/Quote/AIAHK.pm.orig
++++ lib/Finance/Quote/AIAHK.pm
+@@ -139,7 +139,7 @@ sub aiahk {
+ 
+ =head1 NAME
+ 
+-Finance::Quote::AIAHK Obtain quotes from American International Assurance
++Finance::Quote::AIAHK - Obtain quotes from American International Assurance
+ 
+ =head1 SYNOPSIS
+ 
+Index: lib/Finance/Quote/ASEGR.pm
+===================================================================
+--- lib/Finance/Quote/ASEGR.pm.orig
++++ lib/Finance/Quote/ASEGR.pm
+@@ -111,7 +111,7 @@ sub asegr {
+ 
+ =head1 NAME
+ 
+-Finance::Quote::ASEGR Obtain quotes from Athens Stock Exchange.
++Finance::Quote::ASEGR - Obtain quotes from Athens Stock Exchange.
+ 
+ =head1 SYNOPSIS
+ 
+Index: lib/Finance/Quote/BMONesbittBurns.pm
+===================================================================
+--- lib/Finance/Quote/BMONesbittBurns.pm.orig
++++ lib/Finance/Quote/BMONesbittBurns.pm
+@@ -174,7 +174,7 @@ sub bmonesbittburns {
+ 
+ =head1 NAME
+ 
+-Finance::Quote::BMONesbittBurns Obtain quotes from the BMO NesbittBurns site
++Finance::Quote::BMONesbittBurns - Obtain quotes from the BMO NesbittBurns site
+ 
+ =head1 SYNOPSIS
+ 
+Index: lib/Finance/Quote/Bourso.pm
+===================================================================
+--- lib/Finance/Quote/Bourso.pm.orig
++++ lib/Finance/Quote/Bourso.pm
+@@ -322,7 +322,7 @@ sub bourso {
+ 
+ =head1 NAME
+ 
+-Finance::Quote::Bourso Obtain quotes from Boursorama.
++Finance::Quote::Bourso - Obtain quotes from Boursorama.
+ 
+ =head1 SYNOPSIS
+ 
+Index: lib/Finance/Quote/LeRevenu.pm
+===================================================================
+--- lib/Finance/Quote/LeRevenu.pm.orig
++++ lib/Finance/Quote/LeRevenu.pm
+@@ -411,7 +411,7 @@ sub lerevenu {
+ 
+ =head1 NAME
+ 
+-Finance::Quote::LeRevenu Obtain quotes from http://bourse.lerevenu.com.
++Finance::Quote::LeRevenu - Obtain quotes from http://bourse.lerevenu.com.
+ 
+ =head1 SYNOPSIS
+ 
+Index: lib/Finance/Quote/TSP.pm
+===================================================================
+--- lib/Finance/Quote/TSP.pm.orig
++++ lib/Finance/Quote/TSP.pm
+@@ -152,7 +152,7 @@ sub tsp {
+ 
+ =head1 NAME
+ 
+-Finance::Quote::TSP Obtain fund prices for US Federal Government Thrift Savings Plan
++Finance::Quote::TSP - Obtain fund prices for US Federal Government Thrift Savings Plan
+ 
+ =head1 SYNOPSIS
+ 
+Index: lib/Finance/Quote/USFedBonds.pm
+===================================================================
+--- lib/Finance/Quote/USFedBonds.pm.orig
++++ lib/Finance/Quote/USFedBonds.pm
+@@ -168,9 +168,7 @@ sub treasury {
+ 
+ =head1 NAME
+ 
+-Finance::Quote::USFedBonds
+-Get US Federal Bond redemption values directly from the treasury at
+-www.publicdebt.treas.gov/sav/savvalue.htm
++Finance::Quote::USFedBonds - Get US Federal Bond redemption values directly from the treasury at www.publicdebt.treas.gov/sav/savvalue.htm
+ 
+ =head1 SYNOPSIS
+ 

@@ -1,0 +1,135 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2bf54be95b459c846a947e3db4dfa1e0</srcmd5>
+    <version>1.9.1</version>
+    <time>1352908918</time>
+    <user>coolo</user>
+    <comment>Sawfish was introduced in opensuse-factory mailing-list
+http://lists.opensuse.org/opensuse-factory/2012-10/msg00311.html</comment>
+    <requestid>140908</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>efd67a2bd27274faa5b772238a7ee397</srcmd5>
+    <version>1.9.90</version>
+    <time>1357897568</time>
+    <user>coolo</user>
+    <comment>Remove non needed sawfish-1.9.0-no-pangox.patch (forwarded request 147757 from toganm)</comment>
+    <requestid>147759</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>efd67a2bd27274faa5b772238a7ee397</srcmd5>
+    <version>1.9.90</version>
+    <time>1359110367</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>72d08de5c44dc5b84cf73eca5477c16f</srcmd5>
+    <version>1.9.91</version>
+    <time>1368714093</time>
+    <user>coolo</user>
+    <comment>- Updated to 1.9.91
+ * Bug Fixes
+   - Always rebuild the list of marked windows in tabs when closing
+     a marked window.  [fuchur]
+   - In 'sawfish-config' fix the 'make-choice-item' to properly
+     support settings for the 'Crux' theme.  [Vedat Hallac]
+ * Removed Features
+   - Removed 'sawfish.wm.ext.expose' in favour of much more
+     advanced tiling-functions.  [Christopher Bratusek] 
+ * Miscellaneous Changes
+   - Updated 'ru' and 'pt_BR' translations via transifex. (forwarded request 175806 from toganm)</comment>
+    <requestid>175807</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>edfb7eb7bc396908984630ad2c212e3d</srcmd5>
+    <version>1.9.91</version>
+    <time>1372438674</time>
+    <user>coolo</user>
+    <comment>- Add sawfish-pager to recommends as it eases window navigation (forwarded request 181242 from toganm)</comment>
+    <requestid>181244</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>edfb7eb7bc396908984630ad2c212e3d</srcmd5>
+    <version>1.9.91</version>
+    <time>1379664612</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f4662dcd580699eabf27df837a3fd744</srcmd5>
+    <version>1.10</version>
+    <time>1380298869</time>
+    <user>coolo</user>
+    <comment>- Updated to 1.10 version. For more details see NEWS file
+  * bugfixes in tabs / SawfishConfig and more
+  * tiling. Thanks to the awesome work done by Jose A. Ortega Ruiz
+    Sawfish is now a stacking / tiling hybrid. The NEWS contains
+    example configuration.
+  * sawfish.wm.prg: integration of external applications into Sawfish
+    / SawfishConfig (trayer, xmobar, xmodmap, xsettingsd, xgamma,
+    fehlstart, pancake), see docs/AUTOSTART for more information
+    about them.
+  * compton integration. Thanks to fuchurs mind-reading
+    capatibilities the compton compositing manager now neatly
+    integrates with Sawfish /SawfishConfig, allowing you to 
+    change most options for compton directly from SawfishConfig. 
+- Spec file changes
+  * Create subpackage for the lisp sources 
+  * Change the Group tag for the package to User Interface/Desktop
+    as the System/GUI/Other is not valid anymore (forwarded request 201051 from toganm)</comment>
+    <requestid>201052</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>f4662dcd580699eabf27df837a3fd744</srcmd5>
+    <version>1.10</version>
+    <time>1409303313</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>773ae46cf907daec94a68bda5f05f584</srcmd5>
+    <version>1.10.99</version>
+    <time>1409761362</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.10.99 For more details see NEWS file
+  * tiling and tabbing work now much better together
+  * improved cabinet window switcher
+  * CTWM like interactive window placement
+  * faster StyleTab (default theme) 
+- Rebundle lisp sources and obsolete subpackage lisp (forwarded request 247066 from toganm)</comment>
+    <requestid>247067</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>78b6c8a7d4e30a80ee50a22d1e3857e1</srcmd5>
+    <version>1.11</version>
+    <time>1422790222</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.11 (forwarded request 283615 from sfalken)</comment>
+    <requestid>283621</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>4bcb7d904ca29c72a85f23cb69ba1b0d</srcmd5>
+    <version>1.11</version>
+    <time>1479503016</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440761</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6a4cfc0c9093646126452edf17ae8070</srcmd5>
+    <version>1.12.90</version>
+    <time>1562843277</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711152</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>4c22a57b003b1cf0cf87dcb4887e9727</srcmd5>
+    <version>1.12.90</version>
+    <time>1570800167</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>737445</requestid>
+  </revision>
+</revisionlist>

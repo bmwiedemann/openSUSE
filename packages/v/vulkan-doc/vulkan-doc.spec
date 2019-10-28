@@ -16,9 +16,8 @@
 #
 
 
-%define version_unconverted 1.1.123
 Name:           vulkan-doc
-Version:        1.1.123
+Version:        1.1.126
 Release:        0
 Summary:        Formal documentation of the Vulkan API
 License:        CC-BY-SA-4.0 AND Apache-2.0

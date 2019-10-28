@@ -1,0 +1,177 @@
+-------------------------------------------------------------------
+Thu Jun  7 10:02:22 UTC 2018 - Mathias.Homann@opensuse.org
+
+- Update to 3.13
+  * CTC corrections (Peter J. Jansen)
+  * ECPS:VM corrections (Bob Polmanter)
+  * SIE corrections (Ivan Warren)
+  * PCC,KM,KMCTR,CUxx,CSST corrections (Juergen Winkelmann)
+  * Miscellaneous bug fixes (Drew Derbyshire, Doug Wade, Peter Coghlan, Peter J. Jansen, Alexei Chmelev, Gert Caers)
+
+-------------------------------------------------------------------
+Sat Jan  7 18:38:49 UTC 2017 - mpluskal@suse.com
+
+- Update to version 3.12
+  * dasdload corrections and support for loading ASCII TEXT files
+  * comm3705_RU-size+unack_attn_delay patch
+  * CCKDDUMP/CCKDLOAD support for DSNTYPE=LARGE
+  * CMPSC corrections
+  * Miscellaneous bug fixes
+- Small packaging changes
+  * Cleanup spec file with spec-cleaner
+  * Make building more verbose
+- Drop unreferenced hercules-3.03-overflow.patch
+
+-------------------------------------------------------------------
+Sat Jan 17 19:23:46 UTC 2015 - p.drouand@gmail.com
+
+- Update to 3.11
+  * Floating-Point-Extension Facility
+  * Enhanced Channel-to-Channel Adapter via TCP/IP
+  * Load/Store-on-Condition Facility corrections
+  * LCS corrections
+  * Floating-Point-Extension Facility corrections
+  * CMPSC corrections
+  * Load sequential datasets from XMIT files
+  * Eliminate compiler warnings for Linux and Mac
+- Remove depreciated AUTHORS section
+
+-------------------------------------------------------------------
+Mon Jul  7 16:36:08 UTC 2014 - eich@suse.com
+
+-  Update to 3.10
+-  Obsoleted:
+      hercules-lib64.patch
+   Resolved slightly differently upstream.
+-  This release includes:
+  * Release 3.10 - Release date: 1 February 2014
+    Fix incorrect PSW IA in SIE mode with PER (Ian Worthington)
+    Corrections to build procedures (Mike Frysinger, Dan Horak)
+    Fixes for Mac OS X (Butch Anton, Adam Vandenberg, Enrico Sorichetti)
+    Configuration topology facility fixes (Paolo Giacobbis)
+    Convert BFP instructions to use SoftFloat package (Roger Bowler)
+    Preliminary support for 2GB page frames (Roger Bowler)
+    PFMF fixes (John P. Hartmann)
+    CMPSC corrections (Bernard van der Helm)
+    dasdls enhancements (Chris Cheney) 
+  * Release 3.09 - Release date: 15 July 2013
+    Allow regex replacement variables in HAO commands (Roger Bowler)
+    Prevent duplicate EQID (Gordon Bonorchis)
+    Permit concurrent read access to printer and punch files (Roger Bowler)
+    DFP zoned-conversion facility (Roger Bowler)
+    Execution-hint facility (Roger Bowler)
+    Miscellaneous-instruction-extensions facility (Roger Bowler)
+    Load-and-trap facility (Roger Bowler)
+    Fix for VSAM Extended Format (David "Fish" Trout)
+    APL\360 2741 patch (Max H. Parke)
+    Fix interval timer repeating interrupt (Ivan Warren, Kevin Leonard)
+    Corrections to build procedures (Mike Frysinger, Dan Horak)
+    Miscellaneous bug fixes (Roger Bowler) 
+  * Release 3.08 - Release date: 8 December 2012
+    1403 and 3211 FCB support (Enrico Sorichetti)
+    Shutdown on SIGTERM (Frans Pop)
+    Disable close-window button (Paul Gorlinsky)
+    Allow larger IPL text (Laddie Hanus)
+    Drop support for Cygwin, Win98, WinNT, Win2000 (Roger Bowler)
+    Windows shutdown handlers (Paul Gorlinsky)
+    Dynamically loadable instructions (Jan Jaeger)
+    Additional codepages (Kevin Leonard)
+    Load/Store-on-Condition Facility (Roger Bowler)
+    Distinct-Operands Facility (Roger Bowler)
+    Population-Count Facility (Roger Bowler)
+    High-Word Facility (Roger Bowler)
+    Message Security Assist Extensions 3 and 4 (Bernard van der Helm)
+    Interlocked-Access Facility (Roger Bowler)
+    CMPSC-Enhancement Facility (Bernard van der Helm)
+    Fast-BCR-Serialization Facility (Roger Bowler)
+    Reset-Reference-Bits-Multiple Facility (Jan Jaeger)
+    Access-Exception-Fetch/Store-Indication Facility (Roger Bowler)
+    Enhanced-Monitor Facility (Jan Jaeger)
+    Load-Program-Parameter Facility (Paul Gorlinsky)
+    IPTE-Range Facility (Jan Jaeger)
+    Enhanced-DAT Facility (Jan Jaeger)
+    Increase CKD_MAXFILES from 4 to 27 for 3390-27 and -54 (Paul Gorlinsky)
+    CKD read attention message command (Florian Bilek)
+    Support 128 CPUs on 64-bit Linux (Jan Jaeger)
+    Issue Hercules commands via HTTP (Robert Hodge)
+    Compression performance enhancements (Bernard van der Helm)
+    Compression bug fixes (Bernard van der Helm, John P. Hartmann)
+    Crypto bug fixes (Bernard van der Helm)
+    Hexadecimal floating-point bug fixes (Andy Polyakov)
+    SCSI tape enhancements and bug fixes (David "Fish" Trout)
+    3420 sense code corrections for MTS (Harold Grovesteen)
+    Prevent multiple instances opening same output file under Windows (David "Fish" Trout)
+    2703 and 3705 fixes and 3791 support (Max H. Parke, Juergen Winkelmann)
+    Enable GUI support as default for all platforms (Jacob Dekel)
+    Miscellaneous bug fixes (Paul Gorlinsky, Ivan Warren, David "Fish" Trout, Jan Jaeger, Bernard van der Helm, Roger Bowler, Kevin Leonard, Ian Shorter, John P. Hartmann) 
+
+-------------------------------------------------------------------
+Thu May 31 09:21:27 UTC 2012 - cfarrell@suse.com
+
+- license update: QPL-1.0
+  SPDX format (http://www.spdx.org/licenses)
+
+-------------------------------------------------------------------
+Mon Jul 11 17:30:23 UTC 2011 - cgardner@suse.com
+
+- Include sample configuration file
+- Use lib64 for x86_64 module path
+
+-------------------------------------------------------------------
+Mon May 30 15:52:03 CEST 2011 - uli@suse.de
+
+- update -> 3.07
+  see http://www.hercules-390.org/hercnew.html for changes
+
+-------------------------------------------------------------------
+Mon Apr  7 14:36:39 CEST 2008 - uli@suse.de
+
+- update to current CVS (runs SLES10 correctly, bug #366731)
+- fix module load path for 64-bit systems (bug #366731)
+
+-------------------------------------------------------------------
+Tue Feb 26 03:01:33 CET 2008 - crrodriguez@suse.de
+
+- use find_lang macro
+- update to version 3.05 
+
+-------------------------------------------------------------------
+Mon Apr  2 11:44:53 CEST 2007 - rguenther@suse.de
+
+- Add zlib-devel BuildRequires.
+
+-------------------------------------------------------------------
+Sat Mar 24 12:15:35 CET 2007 - aj@suse.de
+
+- Add libbz2-devel as BuildRequire.
+
+-------------------------------------------------------------------
+Thu Mar  2 16:18:25 CET 2006 - uli@suse.de
+
+- update -> 3.04
+- This update includes the fiollowing fixes:
+  - CCKD garbage collection fix (Greg Smith) 
+  - Reworked timing functions (Jan Jaeger) 
+  - Codepage 1047 conversion tables (Kevin Leonard) 
+  - Fixed off-by-one-day bug with SYSEPOCH other than 1900; added new config parameter, YROFFSET, and added warning if SYSEPOCH is not 1900 or 1960 (Jay Maynard, Jan Jaeger) 
+  - New 2305 CKD disk emulation (Jay Maynard) 
+  - Added floating point instructions CEGR, CDGR and CXGR (Bernard van der Helm) 
+  - Added support for cgi-bin dynamic modules (David "Fish" Trout) 
+  - Instruction fixes: PLO, CVB, CXFBR, CXGBR (Bernard van der Helm, David "Fish" Trout, Greg Smith, Pasi Pirhonen) 
+  - Fix for Windows ..\relative path dasd files (David "Fish" Trout) 
+
+-------------------------------------------------------------------
+Thu Feb 23 16:49:14 CET 2006 - uli@suse.de
+
+- added fix for cxgbr insn (bug #153105)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:26 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Dec 28 15:18:39 CET 2005 - uli@suse.de
+
+- new package
+

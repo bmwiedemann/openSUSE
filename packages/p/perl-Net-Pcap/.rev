@@ -1,0 +1,77 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cf590e6bedcd2764ce26ae360e20c161</srcmd5>
+    <version>0.16</version>
+    <time>1324458158</time>
+    <user>coolo</user>
+    <comment>This perl module is used by a app I want to push to factory</comment>
+    <requestid>96881</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>008fe6a33c8268cd1663d13129ff85a6</srcmd5>
+    <version>0.16</version>
+    <time>1329242711</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104449 from coolo)</comment>
+    <requestid>104642</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>008fe6a33c8268cd1663d13129ff85a6</srcmd5>
+    <version>0.16</version>
+    <time>1340183892</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>008fe6a33c8268cd1663d13129ff85a6</srcmd5>
+    <version>0.16</version>
+    <time>1359109763</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5ed4ab16bb7b1eb45f580eb2d15acff3</srcmd5>
+    <version>0.17</version>
+    <time>1375901411</time>
+    <user>coolo</user>
+    <comment>- updated to 0.17
+   - [BUGFIX] CPAN-RT#43308: Net::Pcap no longer enables immediate
+     (unsafe) signals delivery.
+   - [BUGFIX] Fix allocated size in pcap_open(), pcap_createsrcstr()
+     and pcap_parsesrcstr(). 
+   - [API] Now make the C-like API available by default. Added the
+     pcap_perl_settings() function and UNSAFE_SIGNALS pseudo-bloc.
+   - [CODE] Replaced all occurrences of safemalloc() with Newx().
+   - [CODE] Silenced some warnings.
+   - [DOC] Added a long note about Net::Pcap and signals delivery.
+   - [DOC] Improved README.
+   - [DOC] Mention Net::Pcap::Easy.
+   - [TESTS] Fixed t/17-lib_version.t to handle two digits versions.
+   - [TESTS] CPAN-RT#44448: Fixed t/17-lib_version.t to handle
+     versions from the CVS, thanks to Craig Davison.
+   - [TESTS] Refactored t/01-api.t and added checks for the new API.</comment>
+    <requestid>186017</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>5ed4ab16bb7b1eb45f580eb2d15acff3</srcmd5>
+    <version>0.17</version>
+    <time>1379663793</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>5ed4ab16bb7b1eb45f580eb2d15acff3</srcmd5>
+    <version>0.17</version>
+    <time>1409302429</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ed193d1dbac2ee3d007d4f2933851191</srcmd5>
+    <version>0.18</version>
+    <time>1542202975</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648751</requestid>
+  </revision>
+</revisionlist>

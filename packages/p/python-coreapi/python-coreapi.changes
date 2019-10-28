@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Wed Feb 27 14:47:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use same license string everywhere:
+  * same-bsd.patch
+
+-------------------------------------------------------------------
+Mon Feb 25 12:43:17 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Install doc and license
+
+-------------------------------------------------------------------
+Sun Feb 24 14:52:31 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add runtime dependency on coreschema
+
+-------------------------------------------------------------------
+Wed Feb 20 05:57:08 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v2.3.3
+  * Fix the encoding/decoding of Enum types
+  * Fix typos
+  * Update transport docs to add 'auth', and deprecate 'credentials'
+- Use GitHub tarball to activate test suite
+- Remove unnecessary build dependencies and add runtime dependencies
+
+-------------------------------------------------------------------
+Sat May 20 13:06:08 UTC 2017 - matwey.kornilov@gmail.com
+
+- Initial version for v2.3.0
+

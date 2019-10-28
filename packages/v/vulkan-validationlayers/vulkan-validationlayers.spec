@@ -16,17 +16,18 @@
 #
 
 
-%define version_unconverted 1.1.124
+%define version_unconverted 1.1.126
 
 Name:           vulkan-validationlayers
-Version:        1.1.124
+Version:        1.1.126
 Release:        0
 Summary:        Validation layers for Vulkan
 License:        Apache-2.0
-Group:          development vulkan
+Group:          Development/Tools/Other
 URL:            https://github.com/KhronosGroup/Vulkan-ValidationLayers
 
-Source:         https://github.com/KhronosGroup/Vulkan-ValidationLayers/archive/v%version.tar.gz
+#Source:         https://github.com/KhronosGroup/Vulkan-ValidationLayers/archive/v%version.tar.gz
+Source:         Vulkan-ValidationLayers-%version.tar.xz
 Source9:        %name-rpmlintrc
 BuildRequires:  cmake >= 3.4
 BuildRequires:  gcc-c++ >= 4.8

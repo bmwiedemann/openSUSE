@@ -1,0 +1,291 @@
+-------------------------------------------------------------------
+Wed Apr  5 05:46:10 UTC 2017 - coolo@suse.com
+
+- updated to 1.300031
+   see /usr/share/doc/packages/perl-Email-Sender/Changes
+
+  1.300031  2017-04-04 14:35:42-04:00 America/New_York
+          - EMAIL_SENDER_TRANSPORT did not properly handle the =-prefix case
+            Now: =Foo::Bar expands to Foo::Bar, Foo::Bar expands to Foo::Bar,
+            and FooBar expands to Email::Sender::Transport::FooBar, as intended.
+  
+            Previously, =Foo::Bar expanded to Email::Sender::Transport::Foo::Bar
+
+-------------------------------------------------------------------
+Wed Oct  5 05:24:49 UTC 2016 - coolo@suse.com
+
+- updated to 1.300030
+   see /usr/share/doc/packages/perl-Email-Sender/Changes
+
+  1.300030  2016-10-03 18:33:57-04:00 America/New_York
+          - no changes since 1.300029
+  
+  1.300029  2016-07-17 15:49:18-04:00 America/New_York (TRIAL RELEASE)
+          - bring localpart quoting more in line with RFC 821
+
+-------------------------------------------------------------------
+Mon May 23 11:46:53 UTC 2016 - coolo@suse.com
+
+- updated to 1.300028
+   see /usr/share/doc/packages/perl-Email-Sender/Changes
+
+  1.300028  2016-04-21 17:49:14+01:00 Europe/London
+          - make Email::Sender::Util->easy_transport public
+
+-------------------------------------------------------------------
+Tue Apr 12 13:32:30 UTC 2016 - coolo@suse.com
+
+- updated to 1.300027
+   see /usr/share/doc/packages/perl-Email-Sender/Changes
+
+  1.300027  2016-04-03 10:02:52-04:00 America/New_York
+          - no changes since 1.300026
+          - SMTP transport now uses Net::SMTP for SSL and STARTTLS support
+  
+  1.300026  2016-03-21 13:50:22-04:00 America/New_York (TRIAL RELEASE)
+          - another tweak to Net::SMTP and Test::MockObject, thanks to Matthew
+            Horsfall
+  
+  1.300025  2016-03-19 17:11:34-04:00 America/New_York (TRIAL RELEASE)
+          - tweak how we load Net::SMTP to avoid problems when testing with a
+            Test::MockObject-mocked SMTP client
+  
+  1.300024  2016-03-19 14:13:16-04:00 America/New_York (TRIAL RELEASE)
+          - Net::SMTP 3.07 is now required, both for SSL support and for a fix
+            to datasend implementation referenced in 1.300019 changes
+  
+  1.300023  2016-03-19 14:06:51-04:00 America/New_York (TRIAL RELEASE)
+          - Email::Sender::Transport::SMTP now uses Net::SMTP for SSL
+            connections, and for a STARTTLS implementation
+
+-------------------------------------------------------------------
+Fri Oct 16 09:09:05 UTC 2015 - coolo@suse.com
+
+- updated to 1.300021
+   see /usr/share/doc/packages/perl-Email-Sender/Changes
+
+  1.300021  2015-10-15 13:53:52-04:00 America/New_York
+          - when SMTP connection fails, include host and port in error
+
+-------------------------------------------------------------------
+Fri Sep  4 09:19:06 UTC 2015 - coolo@suse.com
+
+- updated to 1.300020
+   see /usr/share/doc/packages/perl-Email-Sender/Changes
+
+  1.300020  2015-09-03 14:00:04-04:00 America/New_York
+          - no changes since 1.300019
+  
+  1.300019  2015-08-10 15:48:02-04:00 America/New_York (TRIAL RELEASE)
+          - only work around Net::SMTP on broken (pre-3.07) versions
+          - avoid uninitialized warning when delivering to Maildir
+
+-------------------------------------------------------------------
+Sun Jun  7 08:29:52 UTC 2015 - coolo@suse.com
+
+- updated to 1.300018
+   see /usr/share/doc/packages/perl-Email-Sender/Changes
+
+  1.300018  2015-05-27 15:28:44-04:00 America/New_York
+          - stable release of changes from 1.300017
+  
+  1.300017  2015-05-14 13:17:39-04:00 America/New_York (TRIAL RELEASE)
+          - cope with a double-encoding but in Net::SMTP
+            for details, https://rt.cpan.org/Ticket/Display.html?id=104433
+
+-------------------------------------------------------------------
+Wed Apr 15 12:21:30 UTC 2015 - coolo@suse.com
+
+- updated to 1.300016
+   see /usr/share/doc/packages/perl-Email-Sender/Changes
+
+  1.300016  2014-10-10 22:54:00-04:00 America/New_York
+          - no changes since 1.300015, just made non-trial release
+  
+  1.300015  2014-09-12 22:01:37-04:00 America/New_York (TRIAL RELEASE)
+            [THIS MIGHT BREAK YOUR CODE]
+          - version 1.300008 was meant to rewrite line endings when sending to
+            sendmail, but the change was not effective; it has been fixed
+  
+  1.300014  2014-08-28 14:21:26-04:00 America/New_York
+          - do not try passing an empty string as a Failure message
+  
+  1.300013  2014-08-28 11:00:16-04:00 America/New_York
+          - sometimes, if no error is given and $smtp->message returns (),
+            the arguments to the Failure constructor were out of alignment and
+            the failure's error message would be "code"; this has been fixed
+  
+  1.300012  2014-07-10 09:55:35-04:00 America/New_York
+          - documentation fix: there's no Email::MIME->delete_header
+            (thanks, Kris Matthews)
+  
+  1.300011  2014-03-02 18:16:12-05:00 America/New_York
+          - run the sendmail program with -i by default (thanks, William Blunn)
+          - do not die when a race causes mkpath(Maildir/new) to fail because the
+            directory already exists
+  
+  1.300010  2014-01-11 14:15:13-05:00 America/New_York
+          - the SMTP transport now has a "debug" option
+  
+  1.300009  2013-09-01 12:03:06 America/New_York
+            see also 1.300008!
+  
+            switch to automatic determination of prereqs to improve accuracy
+  
+  1.300008  2013-09-01 09:39:13 America/New_York
+            [THIS MIGHT BREAK YOUR CODE]
+            at long last, Sendmail and Maildir transports replaces CRLF with CR
+            before piping
+  
+            [BUG FIXES]
+            fixes a bug where recipients beginning with a - would not work with
+            the Sendmail transport [rt.perl.org #66246]
+  
+            require Email-Abstract 3.006, to get Email-Simple 1.998, to get
+            Email::Simple->new(\$str), resolving [rt.perl.org #85926]
+  
+  1.300007  2013-03-19 14:58:27 America/New_York
+            when sending over SMTP, send DATA in hunks of 1 mebibyte or smaller
+  
+  1.300006  2013-03-17 17:23:21 America/New_York
+            re-fix the problem with attribute accessors and role methods
+            clashing, previously fixed in 0.102360
+  
+  1.300005  2013-02-14 11:37:09 America/New_York
+            add missing prereq, Sub::Exporter; thanks for report, Esteban
+            Manchado Velázquez
+  
+  1.300004  2013-02-09 10:09:02 America/New_York
+            bump required version of MooX::Types::MooseLike
+  
+  1.300003  2013-02-06 15:56:53 America/New_York
+            make Wrapper transports proxy is_simple and allow_partial_success to
+            the wrapped transport
+  
+            allow Wrapper transports to construct their own targets; useful for
+            configuring entire wrapper chain from the environment
+  
+  1.300002  2013-02-06 14:06:24 America/New_York
+            THIS IS A BIG DEAL:  see v1.300000
+  
+            this is the first non-trial release using Moo instead of Moose
+  
+            increase version of Moo to interoperate with ancient Mouse.pm
+  
+  1.300001  2013-01-07 21:38:31 America/New_York
+            increase required versions of Throwable and Moo
+  
+  1.300000  2013-01-02 22:42:58 America/New_York
+            THIS IS A BIG DEAL:
+  
+            use Moo instead of Moose (thanks to Justin Hunter and Christian
+            Walde!)
+  
+  0.120002  2012-09-11 14:43:07 America/New_York
+            added shift_deliveries to the Test transport, for treating the
+            sent messages like a queue of things to inspect
+  
+  0.120001  2012-07-19 16:28:01 America/Los_Angeles
+            no changes from 0.120000, just marked as stable release
+  
+  0.120000  2012-05-08 20:53:43 America/New_York
+            THIS IS A BIG DEAL:
+  
+            This release deprecates the scalar context behavior of:
+  
+            * Failure->recipients
+            * Failure::Multi->failures
+            * Failure::Multi->recipients
+            * Transport::Test->deliveries
+            * Transport::Failable->failure_conditions
+  
+            Until now, these methods returned a list in list context and
+            an array reference in scalar context.  This still works, but
+            scalar context calls will now generate a warning.  In one
+            year (2013-05), they will be become fatal.
+  
+  0.110005  2012-03-05 21:37:35 America/New_York
+            binmode output handle to avoid line ending munging in Mbox and
+            Maildir; thanks, Christian Walde!
+  
+  0.110004  2012-02-21 17:47:35 America/New_York
+            import the "Bcc" page from the (otherwise empty) github wiki; this
+            adds some information to the QuickStart page about why Bcc support
+            isn't there and why this isn't a bug
+  
+  0.110003  2012-02-01 15:09:52 America/New_York
+            add the add_lines_header and add_envelope_headers attributes to
+            Maildir transports
+  
+  0.110002  2012-01-31 17:02:35 America/New_York
+            Maildir deliveries now have a ->filename method to tell you just
+            where the mail was delivered
+
+-------------------------------------------------------------------
+Tue Nov  1 12:14:43 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.110001: no user-visible changes
+- added missing Requires: perl(Throwable)
+- enabled tests
+
+-------------------------------------------------------------------
+Fri Mar 18 09:50:32 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.110000:
+  * provide a much clearer and more fatal error when SASL authentication has
+    failed because Authen::SASL or MIME::Base64 is not available
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:51 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Wed Aug 25 14:17:29 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.102370:
+  * remove spurious prereq on Sys::Hostname::Long
+  * tweak some tests for truth/definedness in SMTP transport
+
+-------------------------------------------------------------------
+Tue Aug 24 14:09:08 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.102360:
+  * avoid the need to use "excludes" in role application; this silences
+    warnings with Moose 1.10
+
+-------------------------------------------------------------------
+Fri Jun 25 18:32:57 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.101760:
+  * fix sendmail.t with latest Capture::Tiny
+
+-------------------------------------------------------------------
+Sun Mar 14 02:20:42 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.100460:
+  * allow timeout option to SMTP transport
+  * Email::Sender::Failure is now a Throwable::Error
+  * now uses Try::Tiny for internal exception handling
+  * bump Moose prereq to 0.70
+  * allow uppercase env vars to set transport attributes
+  * add "message" attribute to successes returned by SMTP transports
+  * improve reliability of t/sendmail.t
+
+-------------------------------------------------------------------
+Sat Dec  5 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 0.093380
+
+-------------------------------------------------------------------
+Mon Nov  9 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 0.093110:
+  * allow uppercase env vars to set transport attributes (charsbar)
+  * add "message" attribute to successes returned by SMTP transports
+
+-------------------------------------------------------------------
+Thu Oct 29 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- initial package
+

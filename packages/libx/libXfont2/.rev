@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>667a9e2030842a1a252b92d907ce95cb</srcmd5>
+    <version>2.0.1</version>
+    <time>1474976600</time>
+    <user>dimstar_suse</user>
+    <comment>Submit the fixes to get through legal - having this only in the devel prj does not help us move along</comment>
+    <requestid>430535</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0ba2d4b2d7f1de07f44e4686e50eb41b</srcmd5>
+    <version>2.0.2</version>
+    <time>1508610026</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533541</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6e05e8186506766c65e607035baa350e</srcmd5>
+    <version>2.0.3</version>
+    <time>1512292124</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.3
+  * Open files with O_NOFOLLOW. (CVE-2017-16611)</comment>
+    <requestid>546294</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>9d1e84f93dbe8d584d13116570538362</srcmd5>
+    <version>2.0.3</version>
+    <time>1512547130</time>
+    <user>dimstar_suse</user>
+    <comment>  * Open files with O_NOFOLLOW. (CVE-2017-16611, bsc#1050459)</comment>
+    <requestid>548190</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f8fbaf136ba156241e13955d91b1861d</srcmd5>
+    <version>2.0.4</version>
+    <time>1569365549</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.4
+  * This minor maintenance release cleans up issues found by
+    Coverity and gcc, as well as additional hardening through
+    the use of APIs with stronger bounds checking.
+- tag COPYING as license</comment>
+    <requestid>731350</requestid>
+  </revision>
+</revisionlist>

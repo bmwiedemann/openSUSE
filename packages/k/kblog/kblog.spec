@@ -16,12 +16,12 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kblog
-Version:        19.08.1
+Version:        19.08.2
 Release:        0
 Summary:        Client-side support library for web application remote blogging APIs
 License:        LGPL-2.1-or-later
@@ -34,14 +34,14 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
-BuildRequires:  kcalcore-devel
-BuildRequires:  kcoreaddons-devel >= %{kf5_version}
 BuildRequires:  kf5-filesystem
-BuildRequires:  kio-devel >= %{kf5_version}
-BuildRequires:  kxmlrpcclient5-devel
-BuildRequires:  pkgconfig
-BuildRequires:  syndication-devel
-BuildRequires:  pkgconfig(Qt5Test) >= 5.4.0
+BuildRequires:  cmake(KF5CalendarCore)
+BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
+BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
+BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
+BuildRequires:  cmake(KF5Syndication)
+BuildRequires:  cmake(KF5XmlRpcClient)
+BuildRequires:  cmake(Qt5Test)
 
 %description
 KBlog is a library for calling functions on Blogger 1.0, MetaWeblog,
@@ -64,9 +64,9 @@ above.
 %package devel
 Summary:        Development files for KDE's web application remote blogging API library
 Group:          Development/Libraries/KDE
-Requires:       kcalcore-devel >= %{_kapp_version}
 Requires:       libKF5Blog5 = %{version}
-Requires:       syndication-devel
+Requires:       cmake(KF5CalendarCore)
+Requires:       cmake(KF5Syndication)
 Obsoletes:      kblog5-devel < %{version}
 Provides:       kblog5-devel = %{version}
 

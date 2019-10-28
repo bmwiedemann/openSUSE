@@ -1,0 +1,130 @@
+-------------------------------------------------------------------
+Fri Mar  1 10:55:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.14:
+  * Declared project as bugfix only from now on
+  * Support Python 3.7
+  * Fix important issues reported by static analysis
+  * Fix installation on non-UTF-8 locales on Python 3.5 and 3.6
+  * Added set_gso(), get_gro() and set_gro() functions
+  * Added installation instructions
+
+-------------------------------------------------------------------
+Wed Nov  1 15:20:02 UTC 2017 - mc@suse.com
+
+- provide tools for python3 only again
+
+-------------------------------------------------------------------
+Tue Oct 17 16:20:23 CEST 2017 - mantel@suse.de
+
+- use update_alternatives for different python versions
+
+-------------------------------------------------------------------
+Tue Oct 17 11:22:43 UTC 2017 - jengelh@inai.de
+
+- Update descriptions.
+
+-------------------------------------------------------------------
+Tue Oct 17 10:46:28 CEST 2017 - mantel@suse.de
+
+- update to version 0.13 for python3 support
+- fix build for python2 and python3
+- drop obsolete patch python-ethtool.patch
+
+-------------------------------------------------------------------
+Tue Mar  1 17:01:13 UTC 2016 - olaf@aepfle.de
+
+- add python-ethtool.patch to fix build
+
+-------------------------------------------------------------------
+Sat Nov 29 15:28:30 UTC 2014 - p.drouand@gmail.com
+
+- Clean-up specfile
+- Fix Group
+
+-------------------------------------------------------------------
+Fri Nov 14 10:13:47 UTC 2014 - cbosdonnat@suse.com
+
+- Updated to version 0.11
+
+-------------------------------------------------------------------
+Wed Sep  3 01:41:37 CEST 2014 - ro@suse.de
+
+- sanitize release line in specfile
+
+-------------------------------------------------------------------
+Fri Jan 17 17:37:59 CET 2014 - mc@suse.de
+
+- update to version 0.09
+  * drop sle10.patch - we do not build this for SLES10
+  * drop bug-806936_0001-pifconfig-Fix-listing-of-an-Interface.patch
+    upstream fixed it too
+- Make pifconfig respect interface arguments from the command line
+- pifethtool: Show IPv6 address information when available
+- Fix memory leaks in get_interfaces_info()
+- Support devices with multiple IPv4 addresses
+- Fix get_active_devices() for IPv6 only interfaces
+
+-------------------------------------------------------------------
+Mon Mar  4 11:46:07 CET 2013 - mc@suse.de
+
+- fix listing single network interfaces (bnc#806936)
+
+-------------------------------------------------------------------
+Fri May 18 18:04:12 CEST 2012 - mc@suse.de
+
+- add patch for sle10 to remove not existing function calles
+  for old libnl (bnc#763015)
+
+-------------------------------------------------------------------
+Fri Apr 20 17:22:00 CEST 2012 - mc@suse.de
+
+- update to version 0.7 (bnc#770389)
+  * fixes several memory leaks
+  * add man pages
+  * other bugfixes
+
+-------------------------------------------------------------------
+Sun Apr  3 18:45:09 CEST 2011 - mc@suse.de
+
+- update to version 0.6
+- added IPv6 support
+
+-------------------------------------------------------------------
+Wed Feb  2 15:22:09 CET 2011 - mc@suse.de
+
+- fix build on RH5 
+
+-------------------------------------------------------------------
+Thu Jan 29 00:00:00 CET 2009 - dbahi@novell.com
+
+- Packaging for suse flavors
+
+-------------------------------------------------------------------
+Tue Aug 26 00:00:00 CET 2008 - acme@redhat.com
+
+- Add get_flags method from the first python-ethtool contributor, yay
+- Add pifconfig command, that mimics the ifconfig tool using the
+  bindings available
+
+-------------------------------------------------------------------
+Wed Aug 20 00:00:00 CET 2008 - acme@redhat.com
+
+- Expand description and summary fields, as part of the fedora
+  review process.
+
+-------------------------------------------------------------------
+Tue Jun 10 00:00:00 CET 2008 - acme@redhat.com
+
+- add dist to the release tag
+
+-------------------------------------------------------------------
+Tue Dec 18 00:00:00 CET 2007 - acme@redhat.com
+
+- First build into MRG repo
+
+-------------------------------------------------------------------
+Tue Dec 18 00:00:00 CET 2007 - acme@redhat.com
+
+- Get ethtool code from rhpl 0.212
+

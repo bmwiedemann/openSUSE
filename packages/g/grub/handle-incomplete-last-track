@@ -1,0 +1,37 @@
+From: Alexander Graf <agraf@suse.de>
+Subject: [PATCH] Fix grub access to incomplete tracks
+Date: Wed, 14 Dec 2011 18:23:00 +0100
+
+When we have a disk in our system that has an LBA count that exceeds the track
+boundary limits, grub still tries to read all of the track into its buffer.
+
+This fails for obvious reasons, but can be easily circumvented: Just cap the
+amount of sectors we want to read to a sensible amount. That way we don't read
+beyond the end of the disk and the buffer is filled with sensible data up to
+the point where the higher layers should care about the data.
+
+Signed-off-by: Alexander Graf <agraf@suse.de>
+Signed-off-by: Balazs Kutil <bkutil@suse.cz>
+Acked-by: Torsten Duwe <duwe@suse.de>
+
+---
+ stage2/bios.c |    6 ++++++
+ 1 file changed, 6 insertions(+)
+
+Index: grub-0.97/stage2/bios.c
+===================================================================
+--- grub-0.97.orig/stage2/bios.c
++++ grub-0.97/stage2/bios.c
+@@ -70,6 +70,12 @@ biosdisk (int read, int drive, struct ge
+ 	return BIOSDISK_ERROR_GEOMETRY;
+ #endif /* NO_BUGGY_BIOS_IN_THE_WORLD */
+ 
++      /* For incomplete last tracks, just read as much as we can */
++      if ((sector < geometry->total_sectors) &&
++          (sector + nsec) > geometry->total_sectors) {
++          nsec = geometry->total_sectors - sector;
++      }
++
+       /* FIXME: sizeof (DAP) must be 0x10. Should assert that the compiler
+ 	 can't add any padding.  */
+       dap.length = sizeof (dap);

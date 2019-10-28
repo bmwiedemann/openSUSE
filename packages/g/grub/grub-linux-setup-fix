@@ -1,0 +1,14 @@
+Index: grub-0.97/stage2/builtins.c
+===================================================================
+--- grub-0.97.orig/stage2/builtins.c
++++ grub-0.97/stage2/builtins.c
+@@ -4067,6 +4067,9 @@ setup_func (char *arg, int flags)
+ 	}
+   }
+ 
++  /* force buffer cache invalidation after embedding */
++  buf_drive = -1;
++
+   /* Construct a string that is used by the command "install" as its
+      arguments.  */
+   sprint_device (installed_drive, installed_partition);

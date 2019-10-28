@@ -1,0 +1,68 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>439bf6c475abe434208d6bddc19d9bda</srcmd5>
+    <version>0.8</version>
+    <time>1316681918</time>
+    <user>saschpe</user>
+    <comment>I want to maintain xcalib in factory and would like to use multimedia:color_management as development base. rev2</comment>
+    <requestid>84293</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>439bf6c475abe434208d6bddc19d9bda</srcmd5>
+    <version>0.8</version>
+    <time>1319182579</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>ffced6eb9382c50f3a3ff0da3cc8b602</srcmd5>
+    <version>0.8</version>
+    <time>1323705594</time>
+    <user>coolo</user>
+    <comment>- this should be GPL-2.0+, GPL is not a license on spdx.org (forwarded request 95909 from coolo)</comment>
+    <requestid>96205</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>ffced6eb9382c50f3a3ff0da3cc8b602</srcmd5>
+    <version>0.8</version>
+    <time>1340184335</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>ffced6eb9382c50f3a3ff0da3cc8b602</srcmd5>
+    <version>0.8</version>
+    <time>1359110592</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>ffced6eb9382c50f3a3ff0da3cc8b602</srcmd5>
+    <version>0.8</version>
+    <time>1379664994</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="12">
+    <srcmd5>ffced6eb9382c50f3a3ff0da3cc8b602</srcmd5>
+    <version>0.8</version>
+    <time>1409303674</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>efcf6f968db72f478c0fed3c6f6a53ba</srcmd5>
+    <version>0.9.0</version>
+    <time>1485511544</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448410</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>18da90a3cb5283ebb1b813df0c972ea5</srcmd5>
+    <version>0.9.0</version>
+    <time>1512042322</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546322</requestid>
+  </revision>
+</revisionlist>

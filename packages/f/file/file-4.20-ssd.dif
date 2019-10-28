@@ -1,0 +1,15 @@
+--- magic/Localstuff
++++ magic/Localstuff	2013-09-30 00:00:00.000000000 +0000
+@@ -14,3 +14,12 @@
+ >33	string		>\0		(%s)
+ 2	string		\000\022	TeX font metric data
+ >33	string		>\0		(%s)
++
++# XXX some MS Structured Storage Documents such as Adobe PageMaker[tm]
++# files interfere with the Microsoft Office Document and the SSD starting
++# sequence \320\317\021\340\241\261\032\341. Anyone who knows
++# more details about the scheme of such SSDs and can help to extend this to all
++# type of SSD, please let us know. E.g. how is the offset to the `Root Entry'
++# determined?
++512	search/531	R\0o\0o\0t\0\ \0E\0n\0t\0r\0y	Structured Storage
++>&109	search/17	P\0a\0g\0e\0M\0a\0k\0e\0r	PageMaker

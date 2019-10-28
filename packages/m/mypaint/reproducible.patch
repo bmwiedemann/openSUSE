@@ -1,0 +1,31 @@
+https://github.com/mypaint/libmypaint/pull/108
+
+From 581de51c99cb50f4c553286e0233e49fbf1bbcb8 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Sat, 23 Sep 2017 08:14:29 +0200
+Subject: [PATCH] Sort input file list
+
+so that libmypaint builds in a reproducible way
+in spite of indeterministic filesystem readdir order
+
+because .c files become .o files that get linked into a .so
+and functions are ordered depending on that.
+
+See https://reproducible-builds.org/ for why this matters.
+
+Index: mypaint-1.1.0/brushlib/tests/SConscript
+===================================================================
+--- mypaint-1.1.0.orig/brushlib/tests/SConscript
++++ mypaint-1.1.0/brushlib/tests/SConscript
+@@ -10,8 +10,8 @@ def is_csource(fn):
+ def is_test(fn):
+     return fn.startswith('test-')
+ 
+-tests_sources = [fn for fn in os.listdir("./") if is_test(fn) and is_csource(fn)]
+-testlib_sources = [fn for fn in os.listdir("./") if not is_test(fn) and is_csource(fn)]
++tests_sources = [fn for fn in sorted(os.listdir("./")) if is_test(fn) and is_csource(fn)]
++testlib_sources = [fn for fn in sorted(os.listdir("./")) if not is_test(fn) and is_csource(fn)]
+ 
+ testlib_env.Append(LIBS=['mypaint'])
+ testlib_env.Append(CPPPATH=['../'], LIBPATH=['../..'])
+

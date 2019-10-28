@@ -1,0 +1,205 @@
+-------------------------------------------------------------------
+Fri Sep 27 22:21:50 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.0.8
+  * Returns ContentError when 2XX response but not JSON.
+
+-------------------------------------------------------------------
+Mon Sep 16 21:49:19 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.0.7
+  * Returns AllocationError when NetBox responds with a 204 to
+    Allocation requests
+  * Makes App object pickleable
+
+- Update to version 4.0.6
+  * Fixes behavior where appending an existing VLAN object id to
+    tagged_vlans would cause .save() to still trigger a PATCH
+    operation.
+- Run testsuite
+
+-------------------------------------------------------------------
+Sat Dec 15 20:47:40 UTC 2018 - mardnh@gmx.de
+
+- Update to version 4.0.5
+  * Fixes list comparison issue in Record._diff.
+  * Returns None from Endpoint.get() when no items are found instead
+    of empty list from .filter().
+
+- Update to version 4.0.4
+  * Fixes IndexError introduced by fix for #127 when field is empty
+    list.
+
+- Update to version 4.0.3
+  * Fixes __iter__ method on Record object so that it properly returns
+    lists of record objects. Like tagged_vlans on for Interfaces.
+
+-------------------------------------------------------------------
+Fri Dec  7 06:47:50 UTC 2018 - mardnh@gmx.de
+
+- Update to version 4.0.2
+  * Fixes TypeError when calling save on interfaces Record with
+    tagged_vlans.
+
+-------------------------------------------------------------------
+Thu Dec  6 18:46:11 UTC 2018 - mardnh@gmx.de
+
+- Update to version 4.0.1
+  * Adds missing authentication credentials for .choices().
+
+-------------------------------------------------------------------
+Wed Dec  5 19:10:36 UTC 2018 - mardnh@gmx.de
+
+- Update to version 4.0.0
+  Enhancements
+  * Added cable endpoint support coming in NetBox 2.5.
+  * Added some detail to the ValueError raised when .get() returns
+    more than one object.
+  * Added reserved kwargs to .get() and .filter() ("id", "pk",
+    "limit", "offset").
+  * Made RequestError more verbose when the NetBox API returns a
+    json response. Also added more details when a 404 is returned
+    (e.g. misspelled endpoints).
+
+  API Changes
+  * Switch to using PATCH instead of PUTs for updates. Also added
+    an .update() method to Response objects that takes a dictionary
+    to update multiple values on the object.
+  * Add basic support for the _choices endpoint on each app by adding
+    a choices() method to the App object.
+  * - Return Record objects from .create().
+
+  Bug Fixes
+  * Raise an exception now if .filter() is passed no kwargs.
+  * Fixes some miscellaneous issues related to converting certain
+    Record object's fields into netaddr.IPNetwork objects. That feature
+    has been removed and it simply return strings now.
+
+-------------------------------------------------------------------
+Sat Dec  1 11:52:19 UTC 2018 - mardnh@gmx.de
+
+- Update to versino 3.4.11
+  * Bugfix release
+
+-------------------------------------------------------------------
+Thu Nov 29 19:41:49 UTC 2018 - mardnh@gmx.de
+
+- Update to version 3.4.10
+  * Should actually fix idempotent tags (#94) now.
+
+-------------------------------------------------------------------
+Tue Nov 27 16:59:34 UTC 2018 - mardnh@gmx.de
+
+- Update to version 3.4.9
+  * Fixes #94 where users were unable to use .append() to add a tag.
+    This converts tag lists to a set and back to a list when
+    serialize() is called so we don't send an update when we append
+    a tag that's already there.
+
+-------------------------------------------------------------------
+Tue Nov 27 16:55:17 UTC 2018 - mardnh@gmx.de
+
+- Update to version 3.4.8
+  * Fixes #106 by adding a units DetailEndpoint onto the Racks object
+    that lets users get the devices in a rack.
+    Calling netbox.dcim.racks.get(x).units.list() will return a list
+    of RU objects that have a device attribute populated with a Record
+    object of the device in that RU.
+  * Fixes #110 in serializer that failed to handle tagged_vlans field
+    correctly. This also added the ability for objects stored in lists
+    to be turned into Record objects requested in #92
+
+-------------------------------------------------------------------
+Wed Oct 10 18:42:42 UTC 2018 - mardnh@gmx.de
+
+- Update to version 3.4.7
+  * Fixes memory leak in endpoints.filter() by getting rid of
+    unused CACHE variable.
+
+- Update to version 3.4.6
+  * Fixes issue with the values of data and config_context being
+    turned into Record objects instead of 
+
+- Update to version 3.4.5
+  * Fixes issue with IPRecord object throwing a ValueError when
+    trying to turn a string containing slashes in it into an IPNetwork
+    object.
+  * Adds custom IPRecord object for Circuit Terminations with a string
+    representation of the underlying circuit ID.
+
+-------------------------------------------------------------------
+Fri Jul 27 09:14:32 UTC 2018 - mardnh@gmx.de
+
+- Update to version 3.4.4
+  * Fixes issue with prefix and aggregate records not being
+    idempotent.
+  * Adds str and repr methods for Circuit Records so that .cid is
+    displayed by default.
+
+- Update to version 3.4.3
+  * Fixes issue with how non-ascii characters are handled in
+    NetBox return.
+
+- Update to version 3.4.2
+  * Fixes serialization issue with selection type custom fields
+  * Remove unused dependency.
+
+- Update to version 3.4.1
+  * Should fix issue introduced by switching to setuptools_scm
+    for versioning.
+
+- Update to version 3.4.0
+  * Adds the ability to toggle SSL verification.
+  * Sanitizes URL by removing a trailing front slash if it's present
+    in the url passed at instantiation.
+  * Moves to setuptools_scm for versioning.
+
+-------------------------------------------------------------------
+Thu Apr 26 16:15:09 UTC 2018 - mardnh@gmx.de
+
+- Update to version 3.3.1
+  * Fixes issue with special characters while building the URL.
+
+-------------------------------------------------------------------
+Fri Mar 30 07:46:40 UTC 2018 - mardnh@gmx.de
+
+- Update to version 3.3.0
+  * Adds support for napalm detail endpoint
+
+-------------------------------------------------------------------
+Fri Mar  9 16:35:48 UTC 2018 - mardnh@gmx.de
+
+- Update to version 3.2.0
+  * Adds VirtualMachines object that properly handles
+    primary_(ip|ip4|ip6) attributes.
+
+-------------------------------------------------------------------
+Wed Feb 28 19:42:08 UTC 2018 - mardnh@gmx.de
+
+- Update to version 3.1.0
+  * Adds proper support for virtual-chassis endpoint.
+  * Fixes issue with calling attributes with None value on Record
+    objects after .full_details() has run. (Issue #36)
+  * Adds example in docs for RequestError exceptions (Issue #28)
+
+-------------------------------------------------------------------
+Wed Feb  7 18:33:14 UTC 2018 - mardnh@gmx.de
+
+- Update to version 3.0.2
+  * fixed docstrings with old api style
+  * full_details doesn't add token
+
+-------------------------------------------------------------------
+Sun Nov 19 19:14:38 UTC 2017 - mardnh@gmx.de
+
+- Update to version 3.0.1
+  * Added python3 support
+  * Virtualization support was added
+  * Added available-ips as a property of Prefix objects
+  * available-prefixes was also added to Prefix objects,
+    and behaves similarly to available-ips
+
+-------------------------------------------------------------------
+Tue Oct 10 13:59:44 UTC 2017 - mardnh@gmx.de
+
+- Initial package, version 2.1.0

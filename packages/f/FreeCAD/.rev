@@ -168,4 +168,23 @@
     <comment></comment>
     <requestid>720109</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>8f7aa14a23dae1be324905dfde01131b</srcmd5>
+    <version>0.18.3</version>
+    <time>1572278157</time>
+    <user>dimstar_suse</user>
+    <comment>- update to current 0.18 branch, esp for Qt &gt;= 5.9 fixes
+  * [TD]Fix slow GC of QGIPrimPath
+  * [Spreadsheet] Excel File Import fix Py3 bug
+  * [Path] Fix xrange bug with Py3
+  * fix print preview function for &gt;= Qt 5.9
+  * Backport: startwb files restored in 0.18.3 to display thumbs correctly
+  * 0.18.x displays the example files within in the Start WB without their
+     respective thumbs. This PR restores that functionality
+  * Fixed problems with 'pythonopen'
+  * Correction of drill speed calculation
+  * Material: py2 fix in depreciated mat file parser (back port from 0.19)
+  * [TD]Fix #4017 Crash on bad hatch scale</comment>
+    <requestid>741676</requestid>
+  </revision>
 </revisionlist>

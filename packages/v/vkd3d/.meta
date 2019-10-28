@@ -1,0 +1,8 @@
+<package name="vkd3d" project="openSUSE:Factory">
+  <title>vkd3d adapter library</title>
+  <description>
+  Direct3D 12 to Vulkan translation library,
+  </description>
+  <devel project="graphics" package="vkd3d"/>
+  <url>https://winehq.org/</url>
+</package>

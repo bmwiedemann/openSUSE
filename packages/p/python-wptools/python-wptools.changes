@@ -1,0 +1,118 @@
+-------------------------------------------------------------------
+Mon Oct 14 14:50:13 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Replace %fdupes -s with plain %fdupes; hardlinks are better.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:56:07 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Mon Oct 22 14:09:27 UTC 2018 - badshah400@gmail.com
+
+- Update to version 0.4.17:
+  * Support proxy authentication (gh#siznax/wptools#130).
+  * Support page links continuations (gh#siznax/wptools#129).
+
+-------------------------------------------------------------------
+Wed Jul 18 07:27:54 UTC 2018 - badshah400@gmail.com
+
+- Update to version 0.4.16:
+  + Support for alternate API endpoint.
+
+-------------------------------------------------------------------
+Sat Jun  9 13:25:08 UTC 2018 - badshah400@gmail.com
+
+- Update to version 0.4.15:
+  + Include tests in distribution (nonetheless don't run checks
+    during specfile because tests need network connection).
+
+-------------------------------------------------------------------
+Fri May 25 16:34:44 UTC 2018 - badshah400@gmail.com
+
+- Update to version 0.4.14:
+  + Moved expensive backlinks request to page.get_more() and other
+    minor fixes.
+- Changes from version 0.4.13:
+  + Support getting backlinks with continuations, and more general
+    continuation support in wptools.core
+- Minor rebase of python-wptools-avoid-reading-readme.patch.
+- Drop %%check entirely, tests require network.
+- Fix up sed command to remove hashbang: check for a valid
+  hashbang on the first line of file only and delete a match.
+
+-------------------------------------------------------------------
+Mon Apr 30 19:10:36 UTC 2018 - badshah400@gmail.com
+
+- Update to version 0.4.12 [list of changes cumulated from version
+  0.4.9]:
+  * Respect silence (gh#siznax/wptools#118).
+  * Added more general infobox parsing alternative.
+  * Improved infobox parsing.
+
+-------------------------------------------------------------------
+Fri Jan 26 16:49:40 UTC 2018 - badshah400@gmail.com
+
+- Update to version 0.4.7:
+  * Fixed Wikidata pageid, image bugs and added Commons image
+    metadata.
+
+-------------------------------------------------------------------
+Sun Jan 14 18:36:17 UTC 2018 - badshah400@gmail.com
+
+- Update to version 0.4.7:
+  * Added support for non-value Wikidata snaktypes, and category
+    continuations.
+- Rebase python-wptools-avoid-reading-readme.patch.
+
+-------------------------------------------------------------------
+Tue Jan  9 16:16:21 UTC 2018 - badshah400@gmail.com
+
+- Update to version 0.4.6:
+  * Merged deleted Wikidata item PR (gh#siznax/wptools#97).
+- Rebase python-wptools-avoid-reading-readme.patch to apply
+  cleanly against updated sources.
+
+-------------------------------------------------------------------
+Tue Dec 19 09:55:52 UTC 2017 - badshah400@gmail.com
+
+- Update to version 0.4.5:
+  * Fixed TypeError on Windows 10 (gh#siznax/wptools#95)
+  * Fixed RESTBase LookupError on slash titles
+    (gh#siznax/wptools#94)
+  * Added boxterm param for more Infobox reach
+    (gh#siznax/wptools#91)
+  * Improved stress tests, wptool CLI script output
+  * Fixed get_imageinfo() issue (gh#siznax/wptools#93)
+  * Getting ALL Wikidata (gh#siznax/wptools#56)
+  * Surfaced redirects, disambiguation links
+    (gh#siznax/wptools#25)
+  * Increased test coverage to 95%, pylint score 10.0
+  * Added more page data, split off expensive queries
+  * Implemented basic category and site functionality
+  * Changed page._WIKIPROPS to wikidata.LABELS
+  * Refactored attributes to only cache, data, flags, params
+  * Unified Wikimedia APIs access pattern via wptools.core
+- Rebase python-wptools-avoid-reading-readme.patch to apply
+  cleanly against updated sources.
+- Run tests (BuildRequires: python3-unittest2); this only works
+  with py3 unittest module, so only enable tests conditionally.
+
+-------------------------------------------------------------------
+Wed Oct 25 07:47:36 UTC 2017 - aloisio@gmx.com
+
+- Update to version 0.4
+- Converted to single-spec
+- Refreshed python3-wptools-avoid-reading-readme.patch as
+  python-wptools-avoid-reading-readme.patch
+
+-------------------------------------------------------------------
+Tue Mar 14 02:00:28 UTC 2017 - badshah400@gmail.com
+
+- Initial package.
+- Add python3-wptools-avoid-reading-readme.patch: README.rst
+  contains numerous spurious characters that are not readable in
+  ascii, causing setup.py to fail. Skip reading this file in
+  setup.py and manually insert a long description text instead.
+

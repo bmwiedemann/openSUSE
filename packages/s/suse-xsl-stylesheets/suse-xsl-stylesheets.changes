@@ -1,0 +1,1224 @@
+-------------------------------------------------------------------
+Fri Aug 30 17:05:23 UTC 2019 - Stefan Knorr <sknorr@suse.com>
+
+Stable release of the SUSE XSL stylesheets 2.0.14:
+
+- HTML only:
+  - Improve text of Report Bug links
+  - Support inserting <link rel=canonical> via XSLT parameter
+    $canonical-url-base=https://some.example.org/doc
+
+-------------------------------------------------------------------
+Wed Apr 10 01:06:04 UTC 2019 - Stefan Knorr <sknorr@suse.com>
+
+- Tracker bug for stylesheet update: bsc#1132032
+
+-------------------------------------------------------------------
+Fri Nov 23 17:48:33 UTC 2018 - sknorr@suse.com
+
+Stable release of the SUSE XSL stylesheets 2.0.13:
+
+- HTML only:
+  - Add bypass blocks for accessibility (FATE#326549)
+  - Bug Report links: Added section names to Bugzilla bug title
+  - openSUSE2013 only: Fixed highlighting
+
+- PDF only:
+  - Fixed XML issue in XEP formatter configuration
+
+- PDF/HTML:
+  - Use reproducibly generated IDs (gh#openSUSE/daps#482)
+  - Don't try to use no-break space in Korean, our Korean fonts do
+    not support that
+  - Update Italian, Japanese, Arabic localizations
+
+-------------------------------------------------------------------
+Wed Jun 13 15:01:52 UTC 2018 - sknorr@suse.com
+
+Stable release of the SUSE XSL stylesheets 2.0.12:
+
+- HTML only:
+  - Add "Edit Source" link feature to draft mode documents
+
+- PDF/HTML:
+  - Fix "infinite" recursion issue in splitscreen template
+
+-------------------------------------------------------------------
+Tue Jun 12 13:31:26 UTC 2018 - sknorr@suse.com
+
+- 2.0.11 + commit 874a2ca: Fix "infinite" recursion
+
+-------------------------------------------------------------------
+Mon Jun 11 18:33:49 UTC 2018 - sknorr@suse.com
+
+Stable release of the SUSE XSL stylesheets 2.0.11:
+
+- HTML only:
+  - Fix label code for "Report Bug" links leading to GitHub
+
+- PDF/HTML
+  - Fix display of glosslists
+
+-------------------------------------------------------------------
+Tue Apr 17 12:11:12 UTC 2018 - sknorr@suse.com
+
+Stable release of the SUSE XSL stylesheets 2.0.10:
+
+- HTML only:
+  - Treat simpara in listitem like para in listitem
+  - Allow "Draft" watermark to shine through again
+
+-------------------------------------------------------------------
+Wed Feb 14 14:48:34 UTC 2018 - sknorr@suse.com
+
+Stable release of the SUSE XSL stylesheets 2.0.9:
+
+Find issues in our GitHub tracker at
+https://github.com/openSUSE/suse-xsl/issues/NUMBER
+
+HTML only:
+* Bug tracker PIs are now allowed in the info element which means they
+  can now be profiled properly
+* Update GitHub issues URL syntax to properly apply labels again
+
+PDF/HTML:
+* Support for intra xrefs to "section" and "sect5" elements
+
+Packaging:
+* Exclude env/ and *.tmp files from TAR ball
+* Remove dependency on aspell
+* Remove SUSE dictionary from this package: It does not belong here
+  (boo#1052970)
+
+Test cases:
+* Markup fixes for dapscompare tests
+* Use correct SCHEMA for dapscompare tests
+
+-------------------------------------------------------------------
+Mon Jan 29 11:17:00 UTC 2018 - sknorr@suse.com
+
+Project/Spec File:
+* Remove liberation2-fonts package from requirements (bsc#1077375)
+
+-------------------------------------------------------------------
+Thu Sep 28 08:12:14 UTC 2017 - thomas.schraitle@suse.com
+
+Stable release of the SUSE XSL stylesheets 2.0.8:
+
+Find issues in our GitHub tracker at
+https://github.com/openSUSE/suse-xsl/issues/NUMBER
+
+PDF only:
+* Support footnotes, requested by Stefan Quandt
+  (suse-xsl #313, suse-xsl #314)
+* No colons after type/number in languages other than English
+  (suse-xsl #334)
+
+HTML only:
+* Glossdiv Title: rendered in gray instead of green
+  (suse-xsl #350)
+
+PDF/HTML:
+* No more spaces at the end of titles in formalparas
+  (suse-xsl #288)
+* Intra xref to step doesn't work (suse-xsl #343)
+
+I18N:
+* ja: don't generate the word "book" in intra-xrefs (suse-xsl #323)
+* Correct German quotes (suse-xsl #324, suse-xsl #340)
+* glossseealso: "See Also" -> "See also" (suse-xsl #330)
+
+General:
+* Exclude drupal and db2mediawiki stylesheets as they are now
+  obsolete (suse-xsl #310, suse-xsl #312)
+* Check length of text content in screen (suse-xsl #328)
+* Validate stylesheets through Jing in Travis (suse-xsl #327,
+  suse-xsl #337, suse-xsl #342)
+
+Project/Spec File:
+* Use catalog.d mechanism and remove old XML catalog files, see
+  https://en.opensuse.org/openSUSE:Packaging_XML_Schemas_and_Stylesheets#Add_XML_Catalog_Support
+* Fix susexsl-fetch-source-git script:
+  * Set timeout for wget
+  * Distinguish between detect an archive and extract one
+  * Make extraction more robust
+
+
+-------------------------------------------------------------------
+Fri Jun 16 11:19:51 UTC 2017 - sknorr@suse.com
+
+- Fix liberation-fonts situation for openSUSE Leap 42.2
+  (bsc#1044521)
+
+-------------------------------------------------------------------
+Fri May 12 11:29:08 UTC 2017 - sknorr@suse.com
+
+Stable release 2.0.7.2:
+
+Find issues in our GitHub tracker at
+https://github.com/openSUSE/suse-xsl/issues/NUMBER
+
+* Fixes bsc#1016953 (see also suse-xsl# 270)
+
+* SUSE Word List for aspell
+  - Removed duplicate and invalid words
+
+* Stylesheets (common)
+  - Add a compact style for admonitions, enabled by role="compact"
+attribute
+    (suse-xsl #211)
+
+* Stylesheets (HTML)
+  - Fix superscript/subscript styles
+
+-------------------------------------------------------------------
+Thu Feb  9 13:07:40 UTC 2017 - sknorr@suse.com
+
+Stable release 2.0.7.1:
+
+Find issues in our GitHub tracker at
+https://github.com/openSUSE/suse-xsl/issues/NUMBER
+
+* Packaging
+  - On non-SLE platforms, require liberation2-fonts instead of
+    liberation-fonts (suse-xsl #298)
+
+* SUSE Word List for aspell
+  - Added more words from the SUSE Enterprise Storage and
+    SUSE OpenStack Cloud documentation, removed duplicates
+
+* Stylesheets (common)
+  - Fix zh_TW of "Procedure" in certain circumstances (further to
+    suse-xsl #292)
+
+-------------------------------------------------------------------
+Fri Jan 27 18:41:27 UTC 2017 - sknorr@suse.com
+
+Stable release 2.0.7:
+
+Find issues in our GitHub tracker at
+https://github.com/openSUSE/suse-xsl/issues/NUMBER
+
+* Packaging
+  - Fixed post/postun segments of spec file
+
+* SUSE Word List for aspell
+  - Added more words
+
+* Stylesheets (common)
+  - Translation fixes for zh_CN, zh_TW (suse-xsl #292)
+  - Support of performance="optional" in step (suse-xsl #245)
+  - Do not output empty paras (suse-xsl #270)
+  - Make links and xrefs within remarks readable (suse-xsl #266)
+
+* Stylesheets (PDF)
+  - Make sure procedures appear in qandasets (re: suse-xsl #200)
+  - Color commands in screens green for consistency with HTML version
+    (suse-xsl #216)
+  - Remove hyphenations from ToC and titles (suse-xsl #253)
+  - Use text scaling capabilities for all text
+  - Use sans font for intra-xrefs
+
+* Stylesheets (XHTML)
+  - Old "suse" stylesheets: fix breadcrumbs
+  - Add a caution icon to HTML
+
+-------------------------------------------------------------------
+Fri Sep 30 11:44:57 UTC 2016 - sknorr@suse.com
+
+Stable release 2.0.6.3 (tracked in bsc#1002224):
+
+Find issues in our GitHub tracker at
+https://github.com/openSUSE/suse-xsl/issues/NUMBER
+
+* Packaging
+  - Update post/postun segments of spec file to install the catalog
+
+* Catalog
+  - Remove mentions of NovDoc, as NovDoc is now part of a separate
+    package
+
+* Stylesheets (common)
+  - Updated translations for `suse2013` stylesheets
+
+-------------------------------------------------------------------
+Thu Sep 15 15:06:10 UTC 2016 - sknorr@suse.com
+
+Stable release 2.0.6.2 (tracked in bsc#999041):
+
+Find issues in our GitHub tracker at
+https://github.com/openSUSE/suse-xsl/issues/NUMBER
+
+* Packaging
+  - Fixed post/postun segments of spec file
+
+* SUSE Word List for aspell
+  - Added more words
+
+* Stylesheets (common)
+  - Added VERSION.xsl for suse2005 stylesheets
+
+* Stylesheets (PDF)
+  - Removed duplicate fo:markers that led to build errors with XEP
+    (suse-xsl #260)
+
+* Stylesheets (XHTML)
+  - Fixed embedded JavaScript, removed old Chrome/Android quirk
+  - Fixed embedding of branding CSS
+
+-------------------------------------------------------------------
+Thu Aug  4 18:37:24 UTC 2016 - sknorr@suse.com
+
+Stable release 2.0.6.1 (tracked in bsc#992221):
+
+Find issues in our GitHub tracker at
+https://github.com/openSUSE/suse-xsl/issues/NUMBER
+
+* Stylesheets (XHTML)
+  - Fixed style of <section><title> elements
+  - Turned off syntax highlighting in cases where it is unexpected
+  - Made syntax highlighting functional with openSUSE and DAPS
+    brandings
+
+-------------------------------------------------------------------
+Mon Aug  1 15:30:00 UTC 2016 - sknorr@suse.com
+
+Stable release 2.0.6:
+
+Find issues in our GitHub tracker at
+https://github.com/openSUSE/suse-xsl/issues/NUMBER
+
+* Schema
+  - Completely removed schemas from SUSE XSL Stylesheets: Schemas
+    can now be found at https://github.com/openSUSE/geekodoc
+
+* SUSE Word List for aspell
+  - Added more words, many of which were found in SUSE release
+    notes
+
+* Stylesheets (PDF)
+  - Allow disabling secondary branding (Geeko Tail) via parameter:
+    enable.secondary.branding=0
+
+* Stylesheets (XHTML)
+  - Added syntax highlighting for screens
+    - To enable, add language="..." to your screen
+    - Recognized languages are: bash, c++, css, diff, html, xml,
+      http, ini, json, java, javascript, makefile, nginx, php,
+      perl, python, ruby, sql, crmsh, dockerfile, lisp, yaml
+  - Report Bug Links: Fixed ampersands in Bugzilla URLs
+  - Report Bug Links: Fixed JavaScript responsible for GitHub labels
+
+* Common Stylesheet Changes
+  - Fixed a number of L10N issues in CJK and European languages
+    (suse-xsl #218, suse-xsl #51, suse-xsl #200, suse-xsl #82,
+    suse-xsl #87, suse-xsl #79)
+  - Reverted back to VERSION.xsl as used by upstream for
+    compatibility
+  - Improved screen trimming behavior to fix screens that contain
+    whitespace at beginning and end
+
+* Packaging
+  - Added more fonts to requires to avoid broken foreign-language
+    PDF builds in the build service
+  - Removed mentions of schemas from spec file (see top)
+
+
+-------------------------------------------------------------------
+Fri Apr 22 11:39:19 UTC 2016 - toms@opensuse.org
+
+Stable release 2.0.5:
+
+Find issues in our GitHub tracker at
+https://github.com/openSUSE/suse-xsl/issues/NUMBER
+
+* Schema
+  - Add flat SUSEDoc schema for RNC and RNG
+  - Fix NovDoc/DB4 incompatibility: Phrase is only allowed in
+    productname, but not in productnumber
+
+* Spelling
+  - Fix trailing whitespace
+
+* Stylesheets (PDF)
+  - Added missing procedure, itemizedlist, and orderedlist for
+    intra.title.markup mode (suse-xsl #162, ec0cb3d6)
+  - Fix Ulink/Link template for DB 5
+  - Specifically check for @role='abbrev'
+  - Fix for vertical spaces on nested lists (#221)
+  - Question and answers
+    - Make an answer closer to a question
+    - Make consistent use of sans-stack for questions
+    - Use all paras in question consistently
+    - Italic for question label and first para (#200)
+  - Clean up web links
+  - Specifically check for @role='abbrev'
+  - Fix Ulink/Link template for DB 5
+
+* Stylesheets (XHTML)
+  - Add GitHub URL in titlepage of book and article (suse-xsl #35)
+  - Fix functionality of "dm:version"
+  - xref handling
+    - Improve xref and is.xref.in.samebook template
+    - Fix xref resolution when $rootid is empty
+  - Implement vcs.url to fix, remove add.github.url and
+    bibliosource (suse-xsl #35)
+  - add actual book title to HTML pages again (suse-xsl #208)
+  - Fix formatting for intraxref (provides final fix suse-xsl #162)
+
+* Stylesheets (EPUB)
+  - Build EPUBs by default without comments
+
+* Common Stylesheet Changes
+  - allow intra xref linking for tables, figures, admons (suse-xsl #155)
+  - Added missing procedure, itemizedlist, and orderedlist for
+    intra.title.markup mode (suse-xsl #162)
+
+* Packaging
+  - Update Requires/Recommends (also fixes suse-xsl #220)
+  - suse_beta => suse2013
+  - Improve package description in Spec file
+
+
+-------------------------------------------------------------------
+Thu Dec  3 15:45:32 UTC 2015 - toms@opensuse.org
+
+Stable release 2.0.4 (tracked in bsc#962402):
+
+Find issues in our GitHub tracker at
+https://github.com/openSUSE/suse-xsl/issues/NUMBER
+
+* Schema
+  - Allow constant and see (inside `<indexterm>`); make db.all.blocks
+    zero or more (*) for question (fbebfb6)
+  - Remove XLinks from DB5 elements (suse-xsl #99)
+  - Disallow db.all.blocks in lists (suse-xsl #100)
+  - Remove `<menuchoice>` from guiinlines (Novdoc) (a049b85)
+  - Allow `<menuchoice>` in titles (Novdoc) (975b8d6)
+
+* Stylesheets (PDF)
+  - "unbolded" admonition titles (suse-xsl #46)
+  - Odd space in footer where `<productname>` used to be,
+    `<productname>` not displayed on book title page (suse-xsl #50)
+  - Fix style of `<sect5>` titles (suse-xsl #52, bsc#955663)
+  - FOP don't like empty `<fo:table-cell>`s (suse-xsl #97)
+  - Make `<remark>` handling a little more elegant
+  - Attribute sets: fix logic for replacing bold/italic in CJK
+    languages
+
+* Stylesheets (XHTML)
+  - Make Callouts "uncopyable" (suse-xsl #55)
+  - Don't link inline images (suse-xsl #65)
+  - Publication date is incorrectly capitalized (suse-xsl #70)
+  - Create better plain-text output via DAPS (suse-xsl #101)
+  - debug.filename-id: Use `xml:id` for metadata
+  - Various fixes for JS code for tracker
+
+* Common Stylesheet Changes
+  - Style for `<package>` (issue #49)
+  - xrefs to variablelists in another book is broken (suse-xsl #73)
+  - Trim spaces/newlines at beginning/end of verbatim elements
+    (suse-xsl #53)
+  - Fix bugtracker for db4 (suse-xsl #102)
+
+-------------------------------------------------------------------
+Fri Nov 13 14:38:28 UTC 2015 - sknorr@suse.com
+
+Stable release 2.0.3.2 (only for OBS):
+
+- Stylesheets:
+  . Fixed bsc#929630: (PDF) Wrong company name displayed in PDF builds
+  . Fixed suse-xsl#49: (PDF) Make sure that FOP does not cut off long
+    admonitions
+  . Fixed suse-xsl#70: (all) Make sure that the string "Publication
+    Date" is always capitalized
+  . Fixed suse-xsl#71: (all) Add Hungarian translation for "Publication
+    Date" string
+
+- Infrastructure:
+  . (NovDoc DTD) Allow menuchoice within titles
+  . (Package) Remove svn fetch script as it is now irrelevant
+
+-------------------------------------------------------------------
+Thu Oct 22 13:51:17 UTC 2015 - toms@suse.de
+
+Stable release 2.0.3.1 (only for OBS):
+(Fixes bsc#951717)
+
+- Stylesheets:
+  . Fixed #46: (PDF) Admonition titles with normal font weight
+  . Fixed #50: (PDF) Product name/version displayed on cover and in footer of
+    DocBook-5-generated books
+  . (PDF) Do not generate transparent text in CJK books
+  . Improved Fix for #36: (XHTML) Bugzilla links are only generated where
+    necessary
+  . Fixed #55: (XHTML) Make callouts uncopyable
+  . (XHTML) Fix display of screens and long commands in screen
+
+- Infrastructure:
+  . no changes
+
+-------------------------------------------------------------------
+Tue Aug 11 15:11:52 UTC 2015 - toms@opensuse.org
+
+Stable release 2.0.3 (only for OBS):
+
+- Schema:
+  . Fixed #41: Missing prompt element
+
+- Stylesheets:
+  . Fixed #18: Variablelist (with ID and Title) Lacks Permalink
+  . Fixed #31: not declared namespace prefix d
+  . Fixed #36: Fix Hard-Coded Bugzilla Link ("Report Bug")
+
+- Infrastructure:
+  . no changes
+
+-------------------------------------------------------------------
+Tue Jul  7 09:57:42 UTC 2015 - toms@opensuse.org
+
+Stable release 2.0.2
+
+- Fixed font issue for bsc#937209
+- Everything (incl. schemas) that is generated now goes to build/
+
+-------------------------------------------------------------------
+Mon Jul  6 11:02:01 UTC 2015 - toms@suse.de
+
+- Update package 2.0.1 for bsc#936253 (SLES12)
+
+-------------------------------------------------------------------
+Thu Jul  2 07:48:22 UTC 2015 - toms@opensuse.org
+
+Stable release 2.0.1
+
+- Schema
+  . Enabled subtitle and textobject (susedoc5.rnc)
+
+- Stylesheets
+  . Changed bugzilla component to 'Documentation' for SLERT
+    (suse2013/static/js/script.js)
+  . Added missing subtitle for articles
+    suse2013/fo/article.titlepage.templates.xsl
+
+- Infrastructure
+  . Trying to fix an undef value error (bin/xslns-build)
+
+-------------------------------------------------------------------
+Tue Jun 23 07:53:28 UTC 2015 - toms@suse.de
+
+- Update package for bsc#928012 (SLE12)
+
+-------------------------------------------------------------------
+Fri Jun 19 12:47:56 UTC 2015 - fsundermeyer@opensuse.org
+
+Stable release 2.0
+
+- added latest products to .js file to create correct Bugzilla
+  links in Draft mode
+
+-------------------------------------------------------------------
+Thu Jun 11 13:55:14 UTC 2015 - fsundermeyer@opensuse.org
+
+New release 2.0-rc6:
+
+* added SUSEdoc, a fully DocBook 5 compatible schema with a subset
+  of DocBook commands (like NovDoc for DocBook 4)
+* package now supports installation of different schema/DTD versions
+  in parallel
+* schemas are located at /usr/share/xml/suse/schema
+
+-------------------------------------------------------------------
+Mon Apr 27 12:00:09 UTC 2015 - fsundermeyer@opensuse.org
+
+- fix for rpm installation error
+
+-------------------------------------------------------------------
+Fri Apr 24 20:52:45 UTC 2015 - fsundermeyer@opensuse.org
+
+New release 2.0~rc5
+
+New Features:
+ * support for DocBook5 - the xsl-ns variants are located in the following
+   directories:
+   -  /usr/share/xml/docbook/stylesheet/daps2013-ns
+   -  /usr/share/xml/docbook/stylesheet/opensuse2013-ns
+   -  /usr/share/xml/docbook/stylesheet/suse-ns
+   -  /usr/share/xml/docbook/stylesheet/suse2013-ns
+ * the DocBook5 variants are automatically generated with a slghtly adopted
+   version of xslns-build from upstream
+ * SUSE aspell dictionary was moved from DAPS to this package; wordlist
+   was updated
+ * started a NovDoc version for DocBook 5: susedoc5
+
+Bugfixes:
+ * language fixes for Chinese, Korean, and Japanese
+ * Fixed issue #29: Make Parameter runinhead.default.title.end.punct
+   L10N Compatible
+ * Fixed sf-issue #246 Allow More Information in Side Regions When in Draft Mode
+ * Fixed sf-issue #243 Support Sorting of Acronym in Glossaries in HTML
+ * Fixed sf-issue #241:  Allow dir attribute in Novdoc DTD
+ * Fixed bold.replacement.color and italic.replacement.color parameter for XEP
+ * Fix for guimenus: Use 'inherit' instead of 'transparent' as this value
+   seems not supported by XEP.
+ * Novdoc: Missing remap for ulink added
+
+-------------------------------------------------------------------
+Thu Feb 19 13:38:13 UTC 2015 - toms@opensuse.org
+
+- Slightly adapted %post and %postun section to fix bsc#918565
+
+-------------------------------------------------------------------
+Thu Sep 25 08:34:11 UTC 2014 - toms@opensuse.org
+
+Version 2.0 RC4:
+- 2013 stylesheets:
+  + Added feedback from linguistic review (thanks Patrick!)
+  + Fixed intra book refs
+  + Fixed remarks in variablelists
+  + Fixed Korean: switched back to UnBatang instead of Nanum
+    (kerning problems)
+
+-------------------------------------------------------------------
+Tue Sep 23 12:24:12 UTC 2014 - toms@opensuse.org
+
+Version 2.0 RC3:
+- 2013 stylesheets
+ + Reverted static-dir in HTML
+ + Improved FO: guimenus for zh_*
+ + Improved FO: corrected font sizes for zh_TW
+
+
+-------------------------------------------------------------------
+Tue Aug 12 11:47:08 UTC 2014 - sknorr@suse.de
+
+- package fixes:
+  + quell RPM Lint warning about the Liberation font package being
+    an explicit library dependency
+  + require "docbook_4" instead of generic "docbook"
+
+-------------------------------------------------------------------
+Fri Jul 25 11:55:02 UTC 2014 - sknorr@suse.de
+
+Version 2.0 RC2:
+- 2013 stylesheets
+ + all: use simpler version.xsl file
+ + all: more useful output for ulinks that only have a space character
+   in them
+ + PDF output: allow manual page breaks via <?pdfpagebreak?>
+ + PDF output: left-align text in table of content and titles of formal
+   elements
+ + PDF output: unclutter tables of content a little by limiting
+   formatting
+ + PDF output: fix font scaling in xrefs
+ + PDF output: improve page-break behavior of lists
+ + PDF output: better overflow handling for the footer
+ + PDF output: mention all appendixes in the table of contents
+ + HTML output: use (correctly-scaled) Geeko as openSUSE logo
+- 2005 stylesheets
+ + all: add version.xsl file
+ + PDF output: allow manual page breaks via <?pdfpagebreak?>
+
+-------------------------------------------------------------------
+Wed Jul  2 15:46:13 UTC 2014 - SKnorr@novell.com
+
+- Update TAR archive to RC1
+- 2013 stylesheets
+  + PDF output: fix creator strings
+  + HTML output: fix vanishing TOC bubble in non-single HTML
+    articles
+  + HTML output: fix TOC bubble for articles with appendixes
+
+-------------------------------------------------------------------
+Tue Jul  1 18:46:59 UTC 2014 - SKnorr@novell.com
+
+- Update TAR archive to 2.0 beta 6 (r4127)
+- 2005 stylesheets
+- 2013 stylesheets
+  + PDF output: keep admonitions together
+  + PDF output: better display of <author/>s directly within
+    <articleinfo/>
+  + PDF output: allow <formalpara/> to use arch attributes, better
+    formatting for <formalpara/>
+  + PDF/HTML output: in <xref/>, print name of book only once
+  + PDF output: fix headline style in articles
+  + PDF output: fix table of contents to correctly display
+    <section/>s
+  + HTML output: use more independent variants of new stylesheets
+    that allow for separate styleroots
+  + HTML output: add an openSUSE style
+- Novdoc:
+  + add <releaseinfo/> tag
+
+-------------------------------------------------------------------
+Tue Jun 17 13:54:32 UTC 2014 - sknorr@suse.de
+
+- Update TAR archive to 2.0 beta 5
+- 2005 Stylesheets:
+  + HTML output: avoid copying too many graphics, use static
+    directory properly (bnc#882647)
+- 2013 Stylesheets:
+  + HTML output: improve font loading (again)
+  + HTML output: less clutter in TOCs
+  + HTML output: pure CSS fallback for bubble TOC
+  + HTML output: some smaller CSS fixes
+  + PDF output: avoid page breaks that only happen because of
+    (invisible) indexterms
+  + PDF output: improve article cover/TOC page
+  + PDF output: support arch profiling attribute
+  + PDF output: simpler admonitions
+
+-------------------------------------------------------------------
+Wed May 21 13:56:42 UTC 2014 - sknorr@suse.de
+
+Version 2.0~beta4:
+
+- 2013 Stylesheets:
+  + PDF output: support building from <sect1/> or <section/> root
+    ID
+  + HTML output: simplified CSS
+  + HTML output: support for <inlinemediaobject/>
+  + HTML output: make remarks more visible
+  + HTML output: some tweaks for layout of tables
+  + HTML output: fix Chromium web font issue
+  + HTML output: correct classes used for output of <prompt/>
+  + HTML output: add SUSE Manager 2.1 to products known to JS
+
+-------------------------------------------------------------------
+Tue Apr 15 11:14:36 UTC 2014 - rsalevsky@suse.com
+
+Version 2.0~beta3:
+
+- 2013 Stylesheets
+  * PDF output: Hyphenate URLs as workaround for FOP issue (daps#135)
+  * HTML output: When using --meta, output only one file name per
+    information box
+  * HTML output: Support for os="hidden"
+  * HTML output: light frames for figures
+
+- 2005 Stylesheets:
+  * HTML output: When using --meta, multiple file names would sometimes
+	erroneously be output in the information boxes
+
+- Novdoc:
+  * Add some basic missing attributes to uri element
+
+-------------------------------------------------------------------
+Tue Jan 14 13:28:22 UTC 2014 - fsundermeyer@opensuse.org
+
+Version 2.0~beta2:
+
+- Stylesheets 2013:
+  * Improvements for monospace handling in HTML and FO
+  * FO: use sans-serif font for formalpara titles
+  * FO: fixed ambigious template matches
+  * HTML: Improvements for print output
+  * Bugfixes:
+    o ticket #210: PDF Output of Articles: Publication Date Missing
+
+- Stylesheets 2005:
+  * fixed an issue that caused a recursion when building HTML
+
+- Nocdoc
+  * New elements:
+    o blockquote — A quotation set off from the main text
+    o email
+    o highlights — A summary of the main points of the discussed component
+    o literallayout — A block of text in which line breaks and white
+      space are to be reproduced faithfully
+    o uri — A Uniform Resource Identifier
+  * Changed Content Models
+    o article:
+      allow optional titleabbrev (useful for TOCs)
+      allow abstract or highlights after article "header"
+      allow optional simplelist after article header
+    o entry:
+      allow optional literallayout
+    o textobject
+      Added #PCDATA (normal text) in addition to phrase
+    o refmeta
+      added zero or more refmiscinfo
+    o refnamediv
+      Added uri
+    o prompt, systemitem, varname
+      allow replaceable
+  * Changed List of Attributes
+    o Mostly non-intrusive and optional role and remap attributes
+
+-------------------------------------------------------------------
+Fri Dec  6 20:03:53 UTC 2013 - fsundermeyer@opensuse.org
+
+Version 2.0~beta1:
+- Switch to the new layout as the default layout (release is
+  synchronized with the DAPS 2.0~beta1 release)
+  * new layout (default): suse/xslt2013
+    old layout:           suse/xslt2005
+  * major improvements for FO stylesheets, among them
+    - fixed hyphenation of verbatim areas in FOP output
+    - fixed spacing of paragraphs in calloutlists
+    - better separator for guimenu elements in menuchoice elements
+    - make sure section elements appear in table of contents
+    - create titlepage for article elements
+  * several improvements for HTML:
+    - now uses fonts hosted on static.opensuse.org
+    - draft mode gets a button for reporting bugs
+      (opens a pre-filled bug entry containing the headline and ID
+       of the part in the document on bugzilla.novell.com)
+    - adjustments for Chrome and mobile devices
+    - create valid XHTML 1.0 output in Qandasets
+
+- Bugfixes:
+  * ticket#151: Detect DocBook XSL Stylesheet Version in daps
+  * ticket#163: JSP Stylesheets fail with saxon6
+  * ticket #176 (Add DAPS "Advertisement")
+  * ticket #184 (xref pointing to an element that contains a URL)
+  * ticket#190: HTML: Hyphenation of Product Names
+  * ticket#196: EPUB does not build with saxon
+
+- novdoc:
+    - new attribute role="user|root" for screens
+    - disallow <productname> inside para
+    - first draft of a DocBook5 compatible novdoc schema
+
+-------------------------------------------------------------------
+Mon Sep  2 08:09:33 UTC 2013 - toms@opensuse.org
+
+Version 1.9.22:
+Added last important changes from new layout, both HTML and FO
+
+-------------------------------------------------------------------
+Wed May 29 09:41:08 UTC 2013 - toms@opensuse.org
+
+Version 1.9.21:
+- Fixed spec file, applied patch upstream, removed patch file
+
+-------------------------------------------------------------------
+Wed May 29 08:24:27 UTC 2013 - i@marguerite.su
+
+- fix fop replaces Chinese as "#" because of missing fonts.
+  * new patch: susexsl-fop-chinese.patch (remove next release)
+  * upstream just copyed xep settings. fop can't use alias.
+
+-------------------------------------------------------------------
+Tue May 28 08:42:57 UTC 2013 - toms@opensuse.org
+
+- Removed check for Korean language as it is unneccessary according
+  to some Korean linguists (last used revision: r3190)
+
+-------------------------------------------------------------------
+Thu May 23 13:59:14 UTC 2013 - toms@suse.de
+
+Version 1.9.20
+* HTML
+  - Updated releasenotes stylesheet
+  - Created special stylesheets for Drupal output
+  - Lots of updates for the new SUSE HTML layout
+
+* FO
+  - Fixed ticket#152; support <?dbtimestamp?> PI
+
+* Common
+  - Prepared Arabic localized text to fix [#153], not finished yet
+  - Corrected guimenustartquote and guimenuendquote for Japanese
+
+* EPUB
+  - Used revision 9739 from original stylesheet
+    See https://docbook.svn.sourceforge.net/svnroot/docbook/trunk/xsl/epub/docbook.xsl
+  - Changed preferred.mediaobject.role to "html"; added parameters for callouts
+
+* Novdoc
+  - Updated RNC from DTD
+
+* SPEC
+  - Added URL for source0 to fix https://en.opensuse.org/SourceUrls
+  - docbook-xsl-stylesheets >= 1.77 are required
+  - Added obsoletes for susedoc with version 4.3.99 (last version in Factory was 4.3.33)
+
+
+-------------------------------------------------------------------
+Thu May  2 12:13:36 UTC 2013 - toms@opensuse.org
+
+- Enhanced obsolete of susedoc with version < 4.3.99
+
+-------------------------------------------------------------------
+Tue Apr 30 13:25:33 UTC 2013 - toms@opensuse.org
+
+- Obsoletes susedoc
+
+-------------------------------------------------------------------
+Thu Mar 21 09:07:50 UTC 2013 - toms@opensuse.org
+
+Version 1.9.19:
+Fixed inconsistency in Novdoc DTD: added missing @role attribute in
+appendix, glossary, index, part, preface, refentry
+
+-------------------------------------------------------------------
+Wed Feb 13 14:08:02 UTC 2013 - toms@opensuse.org
+
+Version 1.9.18:
+* FO
+  - Fixed ticket#128 (NullPointerException in FOP when @id attribute
+    is missing) (flyer/component.xsl)
+  - Added citetitle template for title.markup mode (fo/inline.xsl)
+
+* HTML (new layout)
+  Lots of bugfixes in regards to abstract and highlight and FAQs
+
+-------------------------------------------------------------------
+Thu Jan 17 13:16:56 UTC 2013 - toms@opensuse.org
+
+Version 1.9.17:
+* FO:
+  - Fixed reference to qandaentrys or question (DocBook only)
+
+* Common:
+  - Added the word "Question"/"question" to all language files
+   (needed when linking to qandaentrys or questions elements)
+
+* SPEC file
+  Move Name and Version keywords before our attention block
+  (seems to be removed accidently)
+
+-------------------------------------------------------------------
+Wed Jan 16 12:40:25 UTC 2013 - toms@opensuse.org
+
+Version 1.9.16:
+* Updated Novdoc DTD again:
+  - Added id attribute in qandadiv and qandaentry
+  - Required title in qandadiv now (in previous version, title was
+    optional)
+* Adapted catalog files for suse_beta (contains new HTML layout)
+
+-------------------------------------------------------------------
+Tue Jan 16 08:45:00 UTC 2013 - toms@opensuse.org
+
+Version 1.9.15:
+* Schema
+  - qandaset are included in a section; that means, no title in qandaset
+    is useful
+  - qandadiv can still contain a title, but it contains only qandaentrys
+  - question must always start with a para; after this para other
+    elements are allowed
+  - qandaentry requires one question and one answer in this order
+
+SPEC file:
+* Used font requirements from daps.spec; see ticket#116
+* Added additional check for 12.1 to avoid the "have choice" error
+
+-------------------------------------------------------------------
+Tue Jan  8 08:02:14 UTC 2013 - toms@opensuse.org
+
+- Added BuildRequires xerces-j2 only for openSUSE 12.1
+
+-------------------------------------------------------------------
+Mon Jan  7 13:40:02 UTC 2013 - toms@opensuse.org
+
+Version 1.9.14:
+* Schema
+  added qandaset and its companion elements in our Novdoc DTD.
+  This was needed to correctly mark up FAQs in our books.
+* FO:
+  - Support PDF annotations for XEP
+  - Bugfix in book titlepage, productnumber not shown
+* XHTML (new layout):
+  - Lots of bugfixes
+
+-------------------------------------------------------------------
+Wed Sep 26 13:57:50 UTC 2012 - toms@opensuse.org
+
+Version 1.9.13:
+* FO:
+  - Fixed nasty bug in new TOC (toc.line.properties) regarding empty
+    font-size and font-weight attribute. Customized font-family
+    attribute. Thanks to Tanja! :)
+  - Added <?dbsuse-fo lines="yes" border="..." ?> PI for variablelist
+
+* (X)HTML:
+  Don't process @class in productname
+
+
+-------------------------------------------------------------------
+Wed Sep 19 12:01:05 UTC 2012 - toms@opensuse.org
+
+Version 1.9.12:
+* FO:
+ - Fixed bnc#778567
+
+* HTML:
+ - Fixed space problems between author name and contrib
+ - Fixed comma problem after author
+ - Used class.attribute mode to incorporate class attribute
+
+
+-------------------------------------------------------------------
+Wed Aug 29 08:57:45 UTC 2012 - toms@opensuse.org
+
+Version 1.9.11:
+* EPUB:
+  - Added correct 'msgset' context due to Ticket#84
+
+* XHTML:
+  - As $admon.style is "", the check should also didn't
+    allow to create a style attribute.
+    Found by Eugene, fixes bnc#775243
+
+* FO:
+  - Completely revamped toc appearance:
+    . No indendation anymore; this was needed to have a longer line for
+      language with long words (e.g. German)
+    . part and chapter titles are in bold
+    . make space before part titles bigger
+
+* Pocket:
+  - Revamped toc completely (see FO)
+  - Removed toc.*.{label-separation,distance-between-starts} parameters
+    as it's not needed anymore
+
+
+-------------------------------------------------------------------
+Tue Aug 14 11:29:01 UTC 2012 - toms@opensuse.org
+
+Version 1.9.10:
+* FO
+  - Fixed start-indent to margin-left to make FOP and XEP produce the same
+    result (indentation problem); Fixes ticket#92
+  - Enable hyphenate.verbatim (WIP)
+
+* XHTML
+  - Fixed bnc#775243 so navigation should work now correctly (thanks to Frank!)
+  - Disable user.header.content
+  - Fix user.footer.content and use ancestor-or-self axis instead of
+    absolute path
+
+* JSP
+  - Set html.stylesheet='' to fix bnc#775243
+
+* Drupal:
+  - Reworked titlepage structures for sect{1,2,3}
+
+
+-------------------------------------------------------------------
+Fri Aug  3 15:01:58 UTC 2012 - toms@opensuse.org
+
+Version 1.9.9.:
+Fixed navigation problems in JSP files
+
+-------------------------------------------------------------------
+Thu Jul 12 14:13:49 UTC 2012 - toms@opensuse.org
+
+Version 1.9.8:
+Fixed several bugs:
+- bnc#651894: replaceable element should go to variables
+- bnc#672065: Referencing varlistentry elements
+- bnc#677772: Incorrect syllabication in German PDFs
+- bnc#712599: Stylesheets: <command> in titles handled differently
+- bnc#735063: HTML output omits certain xrefs
+- bnc#736196: HTML output without Product Version
+- bnc#760507: SUSE Documentation: Current Year Missing on Legal Pages
+
+-------------------------------------------------------------------
+Thu Jul  5 15:13:24 UTC 2012 - toms@opensuse.org
+
+Version 1.9.7:
+- Fixed Ticket#84 about missing text when using @function in keycap
+- New stylesheets for Drupal import (work in progress)
+- Novdoc schema:
+  * Fixed Jing error "conflicting ID-types for attribute 'X'"
+    See also http://tech.groups.yahoo.com/group/rng-users/message/1205
+  * Added numeration attribute in orderedlist
+
+-------------------------------------------------------------------
+Tue Jun 12 07:44:37 UTC 2012 - toms@opensuse.org
+
+Version 1.9.6.4:
+- Added numeration attribute for novdoc
+
+-------------------------------------------------------------------
+Wed May 30 13:35:22 UTC 2012 - fsundermeyer@opensuse.org
+
+- Version 1.9.6.3
+  * new DTD/Schema novdocxi for validation of files containing
+    xi:includes
+  * webhelp.logo is now customizable
+  * booktitlepage.url for fo-builds is now customizable
+    (holds URl that is displayed on the titlepage)
+  * Fixed bug in catalog generation
+
+-------------------------------------------------------------------
+Fri May 11 13:02:23 UTC 2012 - fsundermeyer@opensuse.org
+
+- Adjusted rnc/rng generation in order to allow a custom novdocx.rng
+  that defines start tags allowed
+
+-------------------------------------------------------------------
+Fri May 11 08:20:00 UTC 2012 - toms@opensuse.org
+
+- Version 1.9.6.1:
+  Added new SUSE logo from Scott Corfield
+
+-------------------------------------------------------------------
+Thu May  3 07:11:08 UTC 2012 - toms@opensuse.org
+
+- Version 1.9.6:
+  - fo: Fixed xref to external target; use article title instead of book title
+  - fo: Make formal titles float, but don't indent screen (or other objects)
+    Removed test for xep.extensions and moved float=none and clear=both
+    attributes to fo/mode-object.title.markup.xsl
+    (only needed for XEP)
+
+-------------------------------------------------------------------
+Wed Apr 25 14:13:28 UTC 2012 - fsundermeyer@opensuse.org
+
+- Version 1.9.5:
+  - removes suse aspell wordlist
+  - package is norach again
+
+-------------------------------------------------------------------
+Tue Apr 24 15:15:47 UTC 2012 - toms@opensuse.org
+
+- Version 1.9.4:
+Fixed the following bugs:
+- Ticket#48: Replace Obsolete PI Mechanism for product names and numbers
+  Preliminary, need to test it
+- Added setinfo in set for Novdoc DTD
+
+-------------------------------------------------------------------
+Tue Apr 17 09:21:36 UTC 2012 - toms@opensuse.org
+
+Version 1.9.3:
+Fixed the following bugs:
+- Ticket#69: Improve Space Between Formal Titles and Verbatim Text
+- Ticket#58: SUSE Branding: Quick Start Layout (I)
+- Ticket#59: SUSE Branding: Quick Start Layout (II)
+- Ticket#34: SUSE Branding: Stylesheets produce invalid HTML 4.01
+             Transitional
+- bnc#703489: FOP: Problems with Tables (reported upstream)
+- bnc#706459: FOP: Distance Between Page Number and Left/Right Footer
+- bnc#706464: FOP: Space Between Figure/Procedure XYZ and Title
+- bnc#706475: FOP: Some Issues with Callouts
+- bnc#706479: FOP: Line Break in <ulink> Elements
+- bnc#708637: HTML: susedoc/daps stylesheets produce invalid HTML 4.01
+              Transitional (Moved to Ticket#68)
+
+-------------------------------------------------------------------
+Fri Mar 30 19:24:42 UTC 2012 - fsundermeyer@opensuse.org
+
+Version 1.9.2:
+
+* Bugfixes:
+  - fixed SGML catalog entry generation when updating the package
+  - fixed path to admon graphics in fo stylesheets
+  - added svg admonition graphics for fo builds
+  - Fixed empty fo:table-cell with fo:block to make FOP happy
+  - Added missing booktitlepage.color.logo parameter to fo
+    stylesheets
+  - Renamed obsolete dtdroot to styleroot in fo stylesheets
+  - fixed broken callout generation for XEP and FOP
+
+* Added more flexibilty to flyer layout: headline url can now
+    be set per suse-quickstart pi with attribute url
+
+-------------------------------------------------------------------
+Tue Mar 20 14:34:57 UTC 2012 - fsundermeyer@opensuse.org
+
+* Bugfix: fixed %postun routine, so catalog entries only get removed
+          on a real package installation
+
+-------------------------------------------------------------------
+Tue Mar 20 09:26:57 UTC 2012 - toms@opensuse.org
+
+- Improved webhelp
+- Fixed Ticket#55 (Toc in PDF)
+
+-------------------------------------------------------------------
+Thu Mar 15 21:35:47 UTC 2012 - fsundermeyer@opensuse.org
+
+* Installing aspell wordlist to libdir makes this package
+  architecture-specific
+
+-------------------------------------------------------------------
+Thu Mar 15 21:29:59 UTC 2012 - fsundermeyer@opensuse.org
+
+* Fixed installation procedure for aspell wordlist
+
+-------------------------------------------------------------------
+Wed Mar 14 14:36:00 UTC 2012 - fsundermeyer@opensuse.org
+
+Bugfix: - aspell wordlist is now installed in teh correct place
+        - fixed path to fo draft image in fo stylesheets
+
+-------------------------------------------------------------------
+Thu Mar  8 11:31:08 UTC 2012 - fsundermeyer@opensuse.org
+
+* aspell-en-huge only seems to be available on x86-64, making it
+a recommendation
+
+-------------------------------------------------------------------
+Tue Mar  6 10:03:40 UTC 2012 - fsundermeyer@opensuse.org
+
+* Moved suse-aspell wordlist from daps to this package
+
+-------------------------------------------------------------------
+Fri Feb 24 14:55:21 UTC 2012 - fsundermeyer@opensuse.org
+
+Bugfix: Moved images/admon/* and images/navig/* to images/
+        in order to restore compatability to the original
+        DocBook stylesheets
+
+-------------------------------------------------------------------
+Wed Feb 15 08:48:35 UTC 2012 - fsundermeyer@opensuse.org
+
+Bugfix: Use absolute images paths in .fo files
+
+-------------------------------------------------------------------
+Fri Feb 10 10:15:30 UTC 2012 - fsundermeyer@opensuse.org
+
+Bugfix: Added Catalog entries for the URI to
+        /etc/xml/suse-catalog.xml
+
+-------------------------------------------------------------------
+Fri Feb 10 09:18:58 UTC 2012 - fsundermeyer@opensuse.org
+
+Enhancement: Created general URI for SUSE XSLT Stylesheets
+             (ticket #39)
+
+-------------------------------------------------------------------
+Wed Feb  8 15:23:15 UTC 2012 - fsundermeyer@opensuse.org
+
+Bugfix: More path fixes
+
+-------------------------------------------------------------------
+Wed Feb  8 14:35:28 UTC 2012 - fsundermeyer@opensuse.org
+
+Bugfix:  Fixed import paths for flyer and pocket
+
+-------------------------------------------------------------------
+Wed Feb  8 14:15:51 UTC 2012 - fsundermeyer@opensuse.org
+
+Bugfix:  Created fo subdirectories for flyer and pocket
+
+-------------------------------------------------------------------
+Wed Feb  8 12:57:20 UTC 2012 - fsundermeyer@opensuse.org
+
+Bugfix: Includes must _not_ point to daps-xslt
+
+-------------------------------------------------------------------
+Wed Feb  8 12:40:10 UTC 2012 - fsundermeyer@opensuse.org
+
+Added missing profiling stylesheet
+
+-------------------------------------------------------------------
+Tue Feb  7 16:19:40 UTC 2012 - fsundermeyer@opensuse.org
+
+More Bugfixes: First stable version
+
+-------------------------------------------------------------------
+Tue Feb  7 15:55:49 UTC 2012 - fsundermeyer@opensuse.org
+
+Bugfix: Stylesheet files were not packed
+
+-------------------------------------------------------------------
+Tue Feb  7 14:26:16 UTC 2012 - fsundermeyer@opensuse.org
+
+Initial version of a seperate SUSE stylesheets package
+

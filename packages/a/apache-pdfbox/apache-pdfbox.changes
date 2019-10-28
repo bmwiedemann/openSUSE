@@ -1,0 +1,143 @@
+-------------------------------------------------------------------
+Mon Oct  8 07:30:50 UTC 2018 - Fabian Vogt <fvogt@suse.com>
+
+- Update to 1.8.16:
+  * [PDFBOX-4261] - Invalidated signature signing pdf twice
+  * [PDFBOX-4276] - Multiply blend mode not detected
+  * [PDFBOX-4283] - Allowing Rectangles with additional elements
+  * [PDFBOX-4298] - NullPointerException when doing overlay
+  * [PDFBOX-4316] - RemoveAllText does not delete all parameters with " operator
+  * [PDFBOX-4274] - Get rid of warning about prerequisites
+  * Improve skip duplicates (bsc#1111009, CVE-2018-11797)
+- Adjust fix-version.patch
+
+-------------------------------------------------------------------
+Mon Jul  2 09:00:09 UTC 2018 - fvogt@suse.com
+
+- Update to 1.8.15:
+  * [PDFBOX-4197] - PDStructureElement.getAttributes() ignores reference objects (CVE-2018-8036,bsc#1099721)
+- Update to 1.8.14:
+  * [PDFBOX-3625] - Use correct file encoding when saving fdf data
+  * [PDFBOX-3724] - Wrong size in rendering of some artifacts
+  * [PDFBOX-3733] - image added to pdf by tool AddImageToPDF is turn-overed
+  * [PDFBOX-3739] - ImageWriterIterator.next() and ImageReaderIterator.next() can return null
+  * [PDFBOX-3742] - Unknown dir object c='>' cInt=62 peek='>' peekInt=62
+  * [PDFBOX-3813] - PDF Box crash when using PDFToImage or PDFDebug
+  * [PDFBOX-3843] - Rect of Annotation contains indirect elements + Patch
+  * [PDFBOX-3889] - javax.crypto.BadPaddingException: Given final block not properly padded
+  * [PDFBOX-3909] - End of inline image not detected
+  * [PDFBOX-3919] - Infinite loop while parsing (2)
+  * [PDFBOX-3933] - PDFParser swallows a CR at the end of a stream
+  * [PDFBOX-3942] - ClassCastException in getOptionalContentGroups
+  * [PDFBOX-4005] - Incorrect use of PDNumberTreeNode in PDPageLabels
+  * [PDFBOX-4011] - BBox in signature forms has wrong order
+  * [PDFBOX-4027] - IndexOutOfBoundsException when XObject form matrix has only 5 elements
+  * [PDFBOX-4030] - ClassCastException when matrix array has indirect objects
+  * [PDFBOX-4064] - cm operator has 7 numbers
+  * [PDFBOX-4083] - Line annotation /LL, /LLE and /LLO have wrong default values
+  * [PDFBOX-4088] - Root/StructTreeRoot/K/S must be name, not string (merge)
+  * [PDFBOX-3635] - Remove workaround to avoid SSLHandshakeException
+  * [PDFBOX-4142] - Don't use md5 checksum due to changes to the release distribuition policy
+- Update to 1.8.13:
+  * [PDFBOX-2420] - DateConverter doesn't handle time zones outside -12 to +12 range properly
+  * [PDFBOX-2919] - org.apache.fontbox.cff.CFFParser.readEntry sometimes throws java.lang.IllegalArgumentException
+  * [PDFBOX-3315] - Dates falsely detected as different by preflight
+  * [PDFBOX-3335] - Issue while Merging PDF with Hidden Layers
+  * [PDFBOX-3341] - currentAccessPermission.setReadOnly() not set in StandardSecurityHandler
+  * [PDFBOX-3355] - PDPageLabels.getLabelsByPageIndices() returns Uppercase letters for style a
+  * [PDFBOX-3368] - ContainsKey don't work for the Map<String, Object> returned by PDStructureTreeRoot.getRoleMap
+  * [PDFBOX-3369] - Error expected floating point number actual='0.00-35095424'
+  * [PDFBOX-3409] - TextToPDF drops leading spaces
+  * [PDFBOX-3420] - Can't sign pdf with a particular attachment
+  * [PDFBOX-3446] - Infinite loop while parsing
+  * [PDFBOX-3448] - NullPointerException at org.apache.pdfbox.pdmodel.common.COSArrayList.convertFloatCOSArrayToList
+  * [PDFBOX-3450] - ArrayIndexOutOfBoundsException at org.apache.fontbox.cmap.CMapParser.increment
+  * [PDFBOX-3463] - XMPSchemaBasic.getLabel() always returns null
+  * [PDFBOX-3466] - Java 9 warnings
+  * [PDFBOX-3472] - NPE when PDF/A identification metadata does not contain ID
+  * [PDFBOX-3477] - CA and ca values should be clipped
+  * [PDFBOX-3481] - Localization in XRef generation results in unusable PDFs
+  * [PDFBOX-3487] - ClassCastException in COSWriter.write() when saving PDF
+  * [PDFBOX-3491] - NumberFormatException in CFFParser.readRealNumber
+  * [PDFBOX-3500] - Error expected floating point number actual='0.-262'
+  * [PDFBOX-3532] - Java 6 errors
+  * [PDFBOX-3546] - IOException over DataFormatException, "invalid stored block lengths" on a valid PDF
+  * [PDFBOX-3551] - CLI Decrypt broken, only allows 1 argument
+  * [PDFBOX-3555] - FlateFilter.decode cause native memory leaks
+  * [PDFBOX-3558] - NPE in JBig2Filter if BitsPerComponent is missing
+  * [PDFBOX-3570] - JDK-8054565 Java 8 close contract issue
+  * [PDFBOX-3571] - sRGB Color Space Profile is subject to 3rd party copyright
+  * [PDFBOX-3578] - java.lang.IllegalArgumentException: dash lengths all zero
+  * [PDFBOX-3590] - AccessPermission not applied
+  * [PDFBOX-3594] - Use PDOutlineItem#findDestinationPage() cannot get PDPage, return was null
+  * [PDFBOX-3609] - ClassCastException in PDCIDFont.readWidths()
+  * [PDFBOX-3410] - TextToPDF needs orientation control
+  * [PDFBOX-3352] - Calendar values are parsed with unknown timezones
+- Refresh pdfbox-1.8.12-bouncycastle.patch
+- Add patch to fix the version number:
+  * fix-version.patch
+- Use %license
+
+-------------------------------------------------------------------
+Tue May 15 13:31:52 UTC 2018 - fstrba@suse.com
+
+- Build with source and target 8 to prepare for a possible removal
+  of 1.6 compatibility
+
+-------------------------------------------------------------------
+Fri Sep 29 06:42:51 UTC 2017 - fstrba@suse.com
+
+- Don't condition the maven defines on release version, but on 
+  _maven_repository being defined
+
+-------------------------------------------------------------------
+Fri Sep 15 07:16:49 UTC 2017 - fstrba@suse.com
+
+- Added patches:
+  * pdfbox-1.8.12-bouncycastle.patch
+    + Fix build of javadoc against bouncycastle API >= 1.4.7
+  * pdfbox-1.8.12-sourcetarget.patch
+    + Make java source and target level ant properties
+    + Leave the default 1.5
+- Specify java source and target level 1.6 in order to allow
+  building with jdk9
+
+-------------------------------------------------------------------
+Fri May 19 10:09:40 UTC 2017 - pcervinka@suse.com
+
+- New build dependency: javapackages-local
+
+-------------------------------------------------------------------
+Mon Mar 20 15:07:35 UTC 2017 - sknorr@suse.com
+
+- Needed as a dependency for FOP 2.1 (FATE#322405)
+
+-------------------------------------------------------------------
+Mon Mar  6 10:06:14 UTC 2017 - sknorr@suse.com
+
+- Switch between maven-metadata/maven-fragments as appropriate
+  for SLE/openSUSE (FATE#322405)
+
+-------------------------------------------------------------------
+Thu Jun 16 08:43:53 UTC 2016 - fvogt@suse.com
+
+- Update to version 1.8.12
+  - CVE-2016-2175 (pdfbox only, which isn't build by this spec)
+
+-------------------------------------------------------------------
+Mon Mar  7 12:32:36 UTC 2016 - fvogt@suse.com
+
+- Drop junit and javapackages-tools Requires
+
+-------------------------------------------------------------------
+Mon Mar  7 09:11:36 UTC 2016 - fvogt@suse.com
+
+- Enable javadoc building and packaging
+
+-------------------------------------------------------------------
+Thu Mar  3 10:24:32 UTC 2016 - fvogt@suse.com
+
+- Initial package
+- Only fontbox and jempbox are built
+
+

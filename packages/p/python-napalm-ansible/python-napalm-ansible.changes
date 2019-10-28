@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Tue Oct  8 20:01:48 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.0
+  * Add support for ansible_network_os
+  * Fix minor documentation errors
+  * Expand filenames for *_file parameters
+  * Fix Ansible 2.8 backwards incompatible changes
+  * Removing support of legacy napalm_base
+  * Changing napalm_cli to cli_results; napalm_ping to ping_results
+  * Use yaml safe_load for tests
+- Use github source URL
+- Package license file
+- Run testsuite
+- Don't build for python2 anymore (modern ansible is python3 only)
+
+-------------------------------------------------------------------
+Thu Mar  7 16:43:38 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Update to 0.10.0 
+
+-------------------------------------------------------------------
+Fri Feb  9 21:34:44 UTC 2018 - daniel.molkentin@suse.com
+
+- Initial checkin

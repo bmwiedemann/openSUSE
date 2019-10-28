@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>87ac4207d18b4a74d4fa0aac4672b4f7</srcmd5>
+    <version>1.2.1</version>
+    <time>1489866653</time>
+    <user>dimstar_suse</user>
+    <comment>pylint dependency</comment>
+    <requestid>479723</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9d2ff7f050d028e003b3666c7badeaf1</srcmd5>
+    <version>1.2.1</version>
+    <time>1492714200</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>484264</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1466b1c90b78a0ea5350003a6c9dc45c</srcmd5>
+    <version>1.5</version>
+    <time>1524144058</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590727</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>558ff4e982eb63b41bd04476216880eb</srcmd5>
+    <version>1.5</version>
+    <time>1544094842</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653935</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>87c0285af557b9e3db946db1c740900e</srcmd5>
+    <version>1.5</version>
+    <time>1551468415</time>
+    <user>coolo</user>
+    <comment>- Do not generate docu using python2 there is online docu that
+  is good enough
+
+- Add missing LICENSE from sdist
+- Remove unnecessary build dependency pytest-runner
+- Move jaraco.packaging to be a Python 2 only doc dependency</comment>
+    <requestid>679939</requestid>
+  </revision>
+</revisionlist>

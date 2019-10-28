@@ -1,0 +1,26 @@
+Index: Makefile.am
+===================================================================
+--- Makefile.am.orig
++++ Makefile.am
+@@ -160,7 +160,7 @@ install-exec-hook:
+ 	mkdir -p $(DESTDIR)$(sysconfdir)/shared.tmp
+ 	chmod 755 $(DESTDIR)$(sysconfdir)/shared.tmp
+ 	mkdir -p $(DESTDIR)$(sysconfdir)/imapaccess
+-	chmod 755 $(DESTDIR)$(sysconfdir)/shared.tmp
++	chmod 755 $(DESTDIR)$(sysconfdir)/imapaccess
+ 
+ install-data-local: install-man
+ 	test -d $(DESTDIR)/etc/pam.d || exit 0 ; \
+Index: Makefile.in
+===================================================================
+--- Makefile.in.orig
++++ Makefile.in
+@@ -1449,7 +1449,7 @@ install-exec-hook:
+ 	mkdir -p $(DESTDIR)$(sysconfdir)/shared.tmp
+ 	chmod 755 $(DESTDIR)$(sysconfdir)/shared.tmp
+ 	mkdir -p $(DESTDIR)$(sysconfdir)/imapaccess
+-	chmod 755 $(DESTDIR)$(sysconfdir)/shared.tmp
++	chmod 755 $(DESTDIR)$(sysconfdir)/imapaccess
+ 
+ install-data-local: install-man
+ 	test -d $(DESTDIR)/etc/pam.d || exit 0 ; \

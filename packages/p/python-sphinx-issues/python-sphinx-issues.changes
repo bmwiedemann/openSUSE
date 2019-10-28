@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Thu Jun  6 14:23:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Reduce bit conditionals as it is not needed
+
+-------------------------------------------------------------------
+Fri Apr 26 13:05:20 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 1.2.0
+  1.?.?
+  * Add :commit: role for linking to commits.
+  * Add support for linking to external repos.
+  * Add :cve: role for linking to CVEs on https://cve.mitre.org.
+  * Add :pr: role. 
+  * Drop support for Python 3.4.
+  0.4.0
+  * Raise ValueError if neither issues_uri nor issues_github_path 
+    is set.
+  * Drop support for Python 2.6 and 3.3.
+- take GitHub tarball because of the tests
+
+-------------------------------------------------------------------
+Tue Dec  4 12:54:50 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sun Aug 27 20:39:13 UTC 2017 - jengelh@inai.de
+
+- Update descriptions.
+
+-------------------------------------------------------------------
+Sat Aug 19 09:34:43 UTC 2017 - sebix+novell.com@sebix.at
+
+- initial package

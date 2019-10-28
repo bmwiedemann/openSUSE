@@ -1,0 +1,268 @@
+-------------------------------------------------------------------
+Sat Jul 14 12:34:36 UTC 2018 - jengelh@inai.de
+
+- Trim bias from description.
+- Replace old RPM shell vars by macros.
+
+-------------------------------------------------------------------
+Sun Jul  8 12:07:13 UTC 2018 - schwab@linux-m68k.org
+
+- Rename from w3m-el to emacs-w3m
+- Update to current CVS head (version 1.4.631)
+  * Work for Emacs >= 26 in which the emacs-version variable no longer
+    includes the build number
+  * Refactor w3m-process-queue memory and redability
+  * Make progress messages more uniform and more useful
+  * Work for mailto urls
+  * Update faces for all navigation cases
+  * Fix two bugs in navigating the w3m-session-select popup window
+  * Bugfix for the creation of session pop-up window 
+  * Uniform error handling and message presentation
+  * Introduce w3m-display-mode
+  * Send a cached ETag to the remote server so as to check whether
+    the server responds with 304 meaning the cache is still up-to-date
+  * Delete about://cookie/ buffer when w3m-view-previous-page is performed
+  * Update selection buffer properly after deletion or renaming
+  * Fix cookies handling
+- Use %license for COPYING
+- Remove xemacs subpackage, not compatible with xemacs any more
+
+-------------------------------------------------------------------
+Fri Dec  9 20:36:36 UTC 2016 - schwab@linux-m68k.org
+
+- Update to current CVS head (version 1.4.567)
+  * make it work with emacs 26
+
+-------------------------------------------------------------------
+Mon Dec 17 10:34:13 CET 2012 - tiwai@suse.de
+
+- Remove the invalid leading URL from Source to make
+  source_validator happy
+- Remove obsolete flavour.patch
+
+-------------------------------------------------------------------
+Tue Dec  4 23:07:15 UTC 2012 - schwab@linux-m68k.org
+
+- Update to current CVS head
+- Use w3m-load in suse-start.el
+- Modernize specfile
+- Reduce build requires
+
+-------------------------------------------------------------------
+Mon Jul 16 15:25:56 CEST 2012 - tiwai@suse.de
+
+- Drop mule-ucs-xemacs dependency, too (bnc#771421)
+
+-------------------------------------------------------------------
+Mon Jul 16 12:51:53 CEST 2012 - tiwai@suse.de
+
+- Drop Mule-UCS dependency on openSUSE-12.2 (bnc#771421)
+
+-------------------------------------------------------------------
+Mon Jul  2 12:16:07 UTC 2012 - werner@suse.de
+
+- Make it build with emacs 24.1 
+
+-------------------------------------------------------------------
+Tue Nov 15 13:13:52 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Thu Jan 24 14:49:27 CET 2008 - mfabian@suse.de
+
+- proper fix for the problem in the last comment is now included
+  from upstream CVS.
+
+-------------------------------------------------------------------
+Tue Jan 08 16:39:39 CET 2008 - mfabian@suse.de
+
+-  add workaround for missing function on XEmacs
+   unencodable-char-position-does-not-exist-in-xemacs.patch
+   Patch taken from:
+   http://news.gmane.org/find-root.php?message_id=%3cb4mr6gu1h47.fsf%40jpl.org%3e
+
+-------------------------------------------------------------------
+Tue Jan 08 11:55:53 CET 2008 - mfabian@suse.de
+
+- update to 1.4.4.20080108 (CVS HEAD).
+  • Do not kill process when the buffer associated to it is alive
+
+-------------------------------------------------------------------
+Tue Dec 04 19:00:11 CET 2007 - mfabian@suse.de
+
+- remove openldap2 from BuildRequires.
+
+-------------------------------------------------------------------
+Wed Jul 18 11:47:26 CEST 2007 - mfabian@suse.de
+
+- update to 1.4.4.20070717 (CVS HEAD). Fixes the problem that
+  buttons in forms didn't work anymore, see
+  http://emacs-w3m.namazu.org/ml/msg09431.html
+
+-------------------------------------------------------------------
+Tue Jul 17 10:36:25 CEST 2007 - mfabian@suse.de
+
+- update to 1.4.4.20070704 (CVS HEAD).
+
+-------------------------------------------------------------------
+Mon Mar 26 12:55:55 CEST 2007 - mfabian@suse.de
+
+- update to 1.4.4.20070326 (CVS HEAD).
+- remove old patches w3m-el-1.3.1-expires-time.patch and
+  w3m-el-1.4.3-obsolete.patch.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:48:56 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri May  6 22:15:38 CEST 2005 - schwab@suse.de
+
+- Don't use obsolete functions.
+
+-------------------------------------------------------------------
+Sun Aug 29 19:51:57 CEST 2004 - schwab@suse.de
+
+- Update to emacs-w3m 1.4.3.
+
+-------------------------------------------------------------------
+Sun Jun 27 21:30:57 CEST 2004 - schwab@suse.de
+
+- Don't set w3m-mailto-url-function to compose-mail, it can't handle URLs.
+
+-------------------------------------------------------------------
+Tue Feb  3 11:06:48 CET 2004 - hmacht@suse.de
+
+- added option # norootforbuild in specfile
+
+-------------------------------------------------------------------
+Fri Aug 22 13:00:26 CEST 2003 - mfabian@suse.de
+
+- add xemacs-packagages and xemacs-packages-info to
+  "# neededforbuild".
+
+-------------------------------------------------------------------
+Tue Aug 12 17:55:29 CEST 2003 - mfabian@suse.de
+
+- w3m-el-xemacs needs its own %post and %preun for install-info.
+- don't just remove the %{buildroot} from the comments in the .elc
+  files, replace it with an equal amount of spaces in order not
+  to change the offsets used for the docstrings.
+
+-------------------------------------------------------------------
+Tue Aug 12 14:49:05 CEST 2003 - mfabian@suse.de
+
+- update to 1.3.6
+- remove %{buildroot} from comments in .elc files to make it
+  pass the build checks.
+- add info files.
+
+-------------------------------------------------------------------
+Fri Jun 13 22:46:02 CEST 2003 - mfabian@suse.de
+
+- fix "directory not owned by any package".
+
+-------------------------------------------------------------------
+Thu Mar  6 16:43:58 CET 2003 - ro@suse.de
+
+- removed cyrus-sasl from neededforbuild 
+
+-------------------------------------------------------------------
+Tue Jan 14 12:30:20 CET 2003 - mfabian@suse.de
+
+- update to 1.3.3
+- disable obsolete w3m-el-1.2.6-select.patch
+
+-------------------------------------------------------------------
+Wed Nov 13 15:23:51 CET 2002 - ro@suse.de
+
+- use x-devel-packages in neededforbuild
+
+-------------------------------------------------------------------
+Mon Aug 19 11:34:48 CEST 2002 - mfabian@suse.de
+
+- add (setq w3m-use-cookies t) to suse-start-w3m-el.el
+
+-------------------------------------------------------------------
+Sun Aug 18 00:59:09 CEST 2002 - mfabian@suse.de
+
+- fix parsing of cookie "expires" time string.
+
+-------------------------------------------------------------------
+Mon Aug 12 15:36:54 CEST 2002 - mfabian@suse.de
+
+- Update to version 1.3.1
+- rm config.cache before configuring for XEmacs.
+
+-------------------------------------------------------------------
+Mon Aug 12 13:10:14 CEST 2002 - ro@suse.de
+
+- added canna-libs to neededforbuild 
+
+-------------------------------------------------------------------
+Sun Jul  7 23:04:27 CEST 2002 - schwab@suse.de
+
+- Update to version 1.3.
+
+-------------------------------------------------------------------
+Tue Jun  4 21:39:57 CEST 2002 - schwab@suse.de
+
+- Fix requires.
+
+-------------------------------------------------------------------
+Thu Mar 21 22:50:32 CET 2002 - schwab@suse.de
+
+- Update to version 1.2.6.
+- Fix redisplay of checkboxes.
+- Improve handling of <SELECT MULTIPLE>.
+
+-------------------------------------------------------------------
+Wed Mar 20 20:46:28 CET 2002 - mfabian@suse.de
+
+- fix w3m-el-1.2.1-select.patch for XEmacs
+  (in XEmacs, 'replace-regexp-in-string' is called
+  'replace-in-string' and has a different order of parameters)
+
+-------------------------------------------------------------------
+Tue Mar 19 23:05:21 CET 2002 - schwab@suse.de
+
+- Normalize whitespace and decode entities in <OPTION> text.
+
+-------------------------------------------------------------------
+Mon Mar 11 17:19:30 CET 2002 - schwab@suse.de
+
+- Fix entities inside <AREA>.
+
+-------------------------------------------------------------------
+Tue Mar  5 20:08:47 CET 2002 - schwab@suse.de
+
+- Fix handling of <SELECT MULTIPLE>.
+
+-------------------------------------------------------------------
+Tue Feb 12 20:02:22 CET 2002 - mfabian@suse.de
+
+- merge w3m-el.spec and w3m-el-xemacs.spec (save a bit space
+  in the source rpms)
+- remove bogus suse-start.{el,elc}
+
+-------------------------------------------------------------------
+Tue Feb 12 16:32:15 CET 2002 - schwab@suse.de
+
+- Fix entities inside <textarea>.
+
+-------------------------------------------------------------------
+Fri Feb  1 01:28:57 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Sun Jan 27 21:24:17 CET 2002 - mfabian@suse.de
+
+- update to version 1.2.4
+
+-------------------------------------------------------------------
+Fri Nov 30 00:12:13 CET 2001 - mfabian@suse.de
+
+- new package: w3m-el, version 1.2.1

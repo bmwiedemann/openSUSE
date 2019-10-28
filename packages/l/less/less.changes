@@ -1,0 +1,922 @@
+-------------------------------------------------------------------
+Sat Sep 21 18:59:37 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- less 551:
+  * Add --mouse option
+  * Add --wheel-lines option
+  * Add --no-histdups option
+  * Add --save-marks option
+  * Support PCRE2 regular expression library
+  * Redraw screen on SIGWINCH even if screen size doesn't change
+  * Shell-escape filenames in history so they can be used again
+  * Ring bell if user enters invalid long option name
+  * Use PCRE_UTF8 flag for pcre regular expressions when in UTF-8 mode
+  * Don't count lines in initial screen if using -X with -F
+  * Fix bug in v command on empty file
+  * Fix bug in v command when filename contains shell metacharacters
+- refresh less-429-shell.patch
+
+-------------------------------------------------------------------
+Sun Apr 29 09:04:21 UTC 2018 - kstreitova@suse.com
+
+- update to version 530 [bsc#1091308]
+  * Don't output terminal init sequence if using -F and file fits
+    on one screen.
+  * When using -S, mark truncated lines with a special character.
+    The character can be changed or disabled via the new --rscroll
+    option.
+  * New command M marks the last line displayed on the screen.
+  * New command ESC-m removes a line mark.
+  * Status column (enabled via -J) now shows mark letters.
+  * Status column shows search matches even if highlighting is
+    disabled via -G.
+  * A second ESC-u command will clear search match markers in the
+    status column.
+  * Do same ANSI escape code filtering for tag matching that we do
+    for searching, to help when viewing syntax-highlighted code.
+  * Catch SIGTERM and clean up before exiting.
+  * Fix bug initializing default charset on Windows.
+  * Handle keypad ENTER key correctly if it sends something other
+    than newline.
+  * Fix buffering bug when using stdin with a LESSOPEN pipe.
+  * Update Unicode tables to 2017-03-08.
+  * Pass-thru Unicode formating chars (Cf type) instead of treating
+    them as binary chars. But treat them as binary if -U is set.
+  * Fix erroneous binary file warning when UTF-8 file contains ANSI
+    SGR sequences.
+  * Fix bugs when using LESSOPEN and switching between stdin and
+    other files.
+  * Fix some bugs handling filenames containing shell metacharacters
+  * Fix some memory leaks.
+  * Allow some debugging environment variables to be set in lesskey
+    file.
+  * Code improvements:
+    * Use ANSI prototypes in funcs.h declarations.
+    * Fix some const mismatches.
+    * Remove archaic "register" in variable declarations.
+- remove the following patches (applied upstream)
+  * less-429-strict_aliasing.patch
+  * less-429-terminate.patch
+- renumber patches
+- remove 'make mkhelp' from the specfile as mkhelp.pl is now
+  distributed in the tarball
+
+-------------------------------------------------------------------
+Tue Apr  3 14:12:06 CEST 2018 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Fri Oct 27 06:03:36 UTC 2017 - werner@suse.de
+
+- Let lessopen.sh also handle UTF-8 for (g)roff input, only apparmor
+  as breaker of /usr/bin/file re,mains as "file" is not allowed to
+  read files within the tool lessopen.sh
+
+-------------------------------------------------------------------
+Fri Apr 28 11:45:22 UTC 2017 - werner@suse.de
+
+- Extend lesskey with mappings for 8-bit controls key escape sequences 
+
+-------------------------------------------------------------------
+Tue Apr  4 09:22:05 UTC 2017 - kstreitova@suse.com
+
+- update to version 487
+  * New commands ESC-{ and ESC-} to shift to start/end of displayed
+    lines.
+  * Make search highlights work correctly when changing caselessness
+     with -i.
+  * New option -Da in Windows version to enable SGR mode.
+  * Fix "nothing to search" error when top or bottom line on screen
+    is empty.
+  * Fix bug when terminal has no "cm" termcap entry.
+  * Fix incorrect display when entering double-width chars in search
+    string.
+  * Fix bug in Unicode handling that missed some double width
+    characters.
+  * Update Unicode database to 9.0.0. 
+- remove less-429-widechars.patch that is no longer needed
+  (fixed upstream)
+- refresh less-429-shell.patch
+- get rid of %{name} macro from the patch names
+
+-------------------------------------------------------------------
+Sun Nov  1 17:38:36 UTC 2015 - astieger@suse.com
+
+- less 481:
+  * Don't overwrite history file; just append to it. This behaves
+    better when multiple sessions are running less simultaneously
+    and using the same history file.
+  * New command ESC-G goes to end of currently buffered data in a
+    pipe.
+  * Disable history feature when compiled with LESSHISTFILE set to
+    "-".
+  * In more-compatible mode, make the -p option apply to every file
+     opened, not just the first one.
+  * In more-compatible mode, change the -e option to work like -E,
+    not -EF.
+  * Treat multiple CRs before LF are like one CR (all the CRs are
+    hidden).
+  * Allow "extra" string in lesskey file to append to a multi-char
+    command (like a search pattern), without executing the command.
+  * Ignore -u/-U setting while viewing help file, so that underline
+    and bold chars are displayed correctly.
+  * Improve detection of "binary" files in UTF-8 mode.
+  * Fix bug with ++ commands.
+  * Fix bug where prompt was sometimes not displayed with +G.
+  * Fix possible memory corruption
+  * Fix bugs and improve performance in ampersand filtering.
+  * Allow %% escape sequence in LESSOPEN variable.
+  * Automate construction of Unicode tables from Unicode database. 
+- add keyring and verify source signature
+- drop upstream patches:
+  * less-458-out_of_bounds_read.patch
+  * less-fix_crash_in_hilite_line.patch
+
+-------------------------------------------------------------------
+Thu Jun 25 09:17:17 UTC 2015 - vcizek@suse.com
+
+- fix a crash in hilite_line (boo#915387)
+  * added less-fix_crash_in_hilite_line.patch 
+
+-------------------------------------------------------------------
+Fri Mar 13 16:10:30 UTC 2015 - kstreitova@suse.com
+
+- add less-458-out_of_bounds_read.patch to fix an "out of bounds
+  read access in the UTF-8" vulnerability (bnc#921719),
+  (CVE-2014-9488)
+
+-------------------------------------------------------------------
+Fri Dec 19 14:57:12 UTC 2014 - meissner@suse.com
+
+- build with PIE
+
+-------------------------------------------------------------------
+Mon Nov 24 16:35:20 UTC 2014 - tchvatal@suse.com
+
+- Spec-cleaner
+- Remove jless less-normal provides/obsoletes they are from 2000
+
+-------------------------------------------------------------------
+Tue Jul 29 14:06:26 UTC 2014 - pgajdos@suse.com
+
+- SuSE -> SUSE [bnc#889031] (internal)
+
+-------------------------------------------------------------------
+Wed Nov 13 11:23:59 CET 2013 - tiwai@suse.de
+
+- Fix lesspipe.sh for removing properly the leftover tmp files
+  when viewing patch files without colordiff (bnc#850225)
+
+-------------------------------------------------------------------
+Tue Jul 30 15:42:34 UTC 2013 - sweet_f_a@gmx.de
+
+- Update to version 458
+  * Fix Win32 attribute display bug.
+  * Fix display bug when using up/down arrow on the command line. 
+
+-------------------------------------------------------------------
+Mon May  6 20:20:03 UTC 2013 - sleep_walker@suse.cz
+
+- make sure that -R or --RAW-CONTROL-CHARS is set in LESS
+  environment variable
+
+-------------------------------------------------------------------
+Mon May  6 13:23:33 UTC 2013 - sleep_walker@suse.cz
+
+- add support for colordiff in lessopen.sh
+
+-------------------------------------------------------------------
+Wed Mar 20 16:31:12 UTC 2013 - idonmez@suse.com
+
+- Update to version 457
+  * Allow backslash escaping of metacharacters in LESS environment
+    variable if the --use-backslash option is set.
+  * Don't quit if syntax errors are found in command line options.
+  * Increase sizes of some internal buffers.
+  * Fix configure bug with --with-regex=none.
+  * Fix crash with "stty rows 0".
+
+-------------------------------------------------------------------
+Mon Nov 12 20:48:29 UTC 2012 - puzel@suse.com
+
+- Update to version 456 
+  * Yet another bugfix in option string parser
+
+-------------------------------------------------------------------
+Tue Nov  6 11:24:25 UTC 2012 - puzel@suse.com
+
+- Update to version 455 
+  * Bugfixes in buildsystem and option parser
+
+-------------------------------------------------------------------
+Sun Nov  4 21:06:26 UTC 2012 - puzel@suse.com
+
+- Update to version 453
+  * Allow backslash escaping of metacharacters in LESS environment
+    variable.
+  * Don't quit if syntax errors are found in command line options.
+  * Increase sizes of some internal buffers.
+  * Fix configure bug with --with-regex=none.
+  * Fix crash with "stty rows 0".
+
+-------------------------------------------------------------------
+Tue Sep 25 07:48:44 UTC 2012 - vdziewiecki@suse.com
+
+- Update to version 451
+    * Add ESC-F command to keep reading data until a pattern is
+    * found.
+
+    * Use exit code of LESSOPEN script if LESSOPEN starts with
+    * "||".
+
+    * When up/down arrow is used on the command line immediately
+    * after typing text, the next command starting with that text is
+      found.
+
+    * Add support for GNU regex.
+
+    * Add configure option --with-regex=none and fix compile
+    * errors when compiling with no regex library.
+
+    * Fix possible crashes caused by malformed LESSOPEN or 
+      LESSCLOSE variables.
+
+    * Fix bug highlighting text which is discontiguous in the
+    * file due to backspace processing.
+
+    * Fix bug in displaying status column when scrolling
+    * backwards with -J and -S in effect.
+- Remove speed patch.
+- Remove less-429-lessecho-man.patch
+
+-------------------------------------------------------------------
+Mon Dec  5 16:18:15 UTC 2011 - cfarrell@suse.com
+
+- license update: GPL-3.0+ or BSD-2-Clause
+  The less license is a choice of either GPL-3.0+ or BSD-2-Clause (less
+  license). Use SPDX format
+
+-------------------------------------------------------------------
+Wed Nov 30 09:48:45 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Fri Nov  4 09:56:02 UTC 2011 - puzel@suse.com
+
+- correctly recognize xz compressed data (bnc#728033)
+
+-------------------------------------------------------------------
+Thu Jun 16 08:26:41 UTC 2011 - idonmez@novell.com
+
+- Update to version 444
+  * Fix bug in unget handling that can cause strange effects 
+    on the command line.
+  * Remove vestiges of obsolete -l option that can cause a crash.
+
+-------------------------------------------------------------------
+Thu May 26 17:08:36 UTC 2011 - sweet_f_a@gmx.de
+
+- bump version 443
+  * Change search behavior such that when a search is given an explicit pattern,
+    the entire displayed screen is included in the search and not just the
+    portion after the target line.
+  * Add -A option to change search behavior to the old way: only the portion of
+    the screen after the target line is searched.
+  * Add %F formatting to prompt strings, replaced by the last component of the
+    input file.
+  * Control-G while editing a command exits the command.
+  * Less now exits with status 2 if control-C is pressed and -K is in effect.
+  * Fix "ungetc overflow" when passing long commands via the -p option.
+  * Fix bug in using line filtering via the & command in combination with -i and
+    -I.
+  * Fix bug in handling negative arguments to the -j option.
+  * Fix bug in handling %t in prompt strings.
+  * Improve handling of long option names.
+  * Improve percentage calculation for very large files.
+- remove mouse patch because
+  * conflicting short opt -A since version 443, see changes above
+  * was working for xterm only so probably nobody is using it
+
+-------------------------------------------------------------------
+Thu May 26 12:29:52 UTC 2011 - sweet_f_a@gmx.de
+
+- lessopen.sh, support xz compressed data
+
+-------------------------------------------------------------------
+Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
+
+- use %_smp_mflags
+
+-------------------------------------------------------------------
+Thu Oct  1 14:18:12 UTC 2009 - puzel@novell.com
+
+- add support for listing directories to lessopen.sh (bnc#537646)
+  - thanks to Dimitar Pashov for the patch
+
+-------------------------------------------------------------------
+Mon Jul 27 10:09:45 CEST 2009 - puzel@novell.com
+
+- bump version to less-436 (final)
+  * no code changed
+
+-------------------------------------------------------------------
+Fri Jul 10 10:24:54 CEST 2009 - puzel@novell.com
+
+- update to less-436beta
+  * Fixes a few search and filter bugs.
+
+-------------------------------------------------------------------
+Tue Jul  7 16:01:30 CEST 2009 - puzel@novell.com
+
+- update to less-434beta
+  * Don't pass "-" to non-pipe LESSOPEN unless it starts with "-".
+  * Allow a fraction as the argument to the -# (--shift) option.
+  * Fix highlight bug when underlined/overstruck text matches at end of line.
+  * Fix non-regex searches with ctrl-R.
+
+-------------------------------------------------------------------
+Wed Jun  3 15:46:47 CEST 2009 - puzel@suse.cz
+
+- update to less-429
+  * LESSOPEN pipe will now be used on standard input, if the LESSOPEN
+    environment variable begins with "|-".
+  * The -D option with one number now means use the normal background color.
+  * Fix non-ANSI-compliant code that caused problems with some compilers.
+  * Fix binary file detection in UTF-8 mode.
+  * Fix display problems with long lines on "ignaw" terminals.
+  * Fix problem interrupting the line number calculation for initial prompt.
+  * Fix SGR emulation when dealing with multiple attributes (eg. bold+underline).
+  * Fix highlight bug when searching for underlined/overstruck text.
+- drop fix-binfile-detection.patch (fixed upstream)
+- drop less-424b.patch (fixed upstream)
+
+-------------------------------------------------------------------
+Wed Dec 17 10:31:47 CET 2008 - puzel@suse.cz
+
+- add fix-binfile-detection.patch (bnc#446732)
+
+-------------------------------------------------------------------
+Thu Aug 28 15:16:05 CEST 2008 - anosek@suse.cz
+
+- updated to version 424b
+  * New "&" command allows filtering of lines based on a pattern.
+  * Status column now displays a search match, even if the matched
+    string is scrolled off screen because -S is in effect.
+  * Improve behavior of -F option.
+  * Allow CSI character (0x9B) to work in UTF-8 mode.
+  * Output carriage return at startup in case terminal doesn't default
+    to column 1.
+  * Fix bug in '' (quote, quote) command after G command.
+
+-------------------------------------------------------------------
+Sun Jul 20 20:19:27 CEST 2008 - crrodriguez@suse.de
+
+- fix build 
+
+-------------------------------------------------------------------
+Tue Jan 29 08:02:13 CET 2008 - anosek@suse.cz
+
+- updated to version 418  
+  * Fix search bug when using -R and text contains ANSI color escape sequences.
+  * Fix crash when using -r with UTF-8 text containing 0x9B bytes.
+  * Fix display bug when using ' command to move less than one page forward.
+  * Update GPL to version 3. 
+
+-------------------------------------------------------------------
+Thu Dec 20 09:07:33 CET 2007 - anosek@suse.cz
+
+- udpated to version 416
+  * New --follow-name option makes F command follow the name of a file
+    rather than the file descriptor if an open file is renamed.
+  * Make searching with -i/-I work correctly with non-ASCII text.
+  * Support CSI escape sequences, like SGR escape sequences.
+  * Fix bug which caused screen to fail to repaint when window is resized.
+  * Fix bug in using -i and -I flags with non-ASCII text.
+  * Fix crash when searching text containing certain invalid UTF-8 sequences.
+
+-------------------------------------------------------------------
+Thu Nov 15 12:42:33 CET 2007 - werner@suse.de
+
+- Avoid memory leaks in case of an error during saving history
+
+-------------------------------------------------------------------
+Wed Nov 14 19:10:18 CET 2007 - werner@suse.de
+
+- Speed up the history save by using a temorary file and make the
+  stream of that file a full buffered one.
+
+-------------------------------------------------------------------
+Wed Oct 31 15:53:34 CET 2007 - anosek@suse.cz
+
+- udpated to version 409
+  * fixed crash when searching text containing certain
+    invalid UTF-8 sequences.
+
+-------------------------------------------------------------------
+Wed Sep 12 13:44:01 CEST 2007 - anosek@suse.cz
+
+- fixed Less -l option conflicts with more -l [#307796] (more.patch)
+
+-------------------------------------------------------------------
+Fri Aug 17 10:23:08 CEST 2007 - anosek@suse.cz
+
+- fixed Incorrect behaviour of -r parameter [#244791]
+  (save_line_position.patch)
+
+-------------------------------------------------------------------
+Fri Jul 27 10:25:23 CEST 2007 - anosek@suse.cz
+
+- updated to version 406
+  * Allow decimal point in number for % (percent) command.
+  * Allow decimal point in number for -j option (fraction of screen height).
+  * Make n command fetch previous pattern from history file on first search.
+  * Don't rewrite history file if it has not changed.
+  * Don't move to bottom of screen on first page.
+  * Don't output extraneous newlines, so copy & pasting lines from the
+      output works better.
+  * The -c option has been made identical with the -C option.
+  * Allow "/dev/null" as synomym for "-" in LESSHISTFILE to indicate
+      that no history file should be used.
+  * Search can now find text which follows a null byte, if the PCRE
+      library is used, or if no-regex searching (ctrl-R) is used.
+  * Better compatibility with POSIX more specification.
+  * Make -f work for directories.
+  * Make "t" cmd traverse tags in the correct order.
+  * Allow a few binary characters in the input file before warning
+      that the file is binary.
+  * Don't warn that file is binary if it merely contains ANSI color sequences
+      and -R is in effect.
+  * Update Unicode character tables.
+  * Support DESTDIR in Makefile.
+  * Fix bug when filename contains certain shell metacharacters such as "$".
+  * Fix bug when resizing the window while waiting for input from a pipe.
+  * Fix configure bugs.
+
+-------------------------------------------------------------------
+Mon Mar 26 15:51:22 CEST 2007 - rguenther@suse.de
+
+- add ncurses-devel BuildRequires
+
+-------------------------------------------------------------------
+Fri Apr  7 12:55:52 CEST 2006 - mmarek@suse.cz
+
+- don't use $SHELL for running external commands to avoid
+  side-effects caused by $SHELL's startup scripts
+  [#158044, #164041] (shell.patch)
+
+-------------------------------------------------------------------
+Mon Feb  6 14:29:29 CET 2006 - mmarek@suse.cz
+
+- fix editing of wide characters in search prompt (regression
+  caused by dropping iso patch)
+  (widechars.patch)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:30:25 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 10 18:39:32 CET 2006 - mmarek@suse.cz
+
+- upated to version 394
+- removed iso patch, because vanilla less-394 is capable enough
+- removed patches 2-7
+- lessecho.1 included in upstream tarball
+- unpacked less-SuSE.tar.bz2
+
+-------------------------------------------------------------------
+Mon Jan  2 11:08:59 CET 2006 - mmarek@suse.cz
+
+- fix typo in previous fix
+
+-------------------------------------------------------------------
+Mon Dec 19 12:53:10 CET 2005 - mmarek@suse.cz
+
+- fixed lessopen man page
+  [#105865]
+- applied lessopen patches to less-SuSE.tar.bz2
+
+-------------------------------------------------------------------
+Fri Oct  7 13:59:41 CEST 2005 - dmueller@suse.de
+
+- add head of changelog to rpm listing 
+
+-------------------------------------------------------------------
+Wed Oct  5 09:56:20 CEST 2005 - mmarek@suse.cz
+
+- updated Japanese patch to less-382-iso258, fixing #64531
+    * renumbered patches in specfile
+    * fixed implicit function declaration warning
+
+-------------------------------------------------------------------
+Thu Sep 15 09:46:33 CEST 2005 - mmarek@suse.cz
+
+- make expand_linebuf() faster [#39724] 
+
+-------------------------------------------------------------------
+Tue Sep 13 17:39:46 CEST 2005 - mmarek@suse.cz
+
+- recognize .cab archives with new file(1) [#116779]
+
+-------------------------------------------------------------------
+Wed Sep 08 12:06:24 CEST 2004 - pmladek@suse.cz
+
+- fixed searching if the ANSI escape sequences are used in the text;
+  it still does not work for Japanese coding (see search_ansi_esc_seq.patch
+  for comments) [#44115]
+
+-------------------------------------------------------------------
+Fri May 14 21:44:27 CEST 2004 - pmladek@suse.cz
+
+- fixed UTF-8 support to do not consider all non-ASCII characters as wide
+  characters; they are detected correctly by the function internalize_utf8
+  if _XOPEN_SOURCE is enabled (fix added to the utf8.patch) [#29455]
+
+-------------------------------------------------------------------
+Thu May 13 11:32:38 CEST 2004 - pmladek@suse.cz
+
+- improved handling of SIGTERM to remove temporary files and clean up terminal
+  [#39273] (terminate.patch)
+- improved lessopen.sh [#39272] :
+    * removed potential tmp file race
+    * added w3m to preprocess HTML pages as an alternative for lynx;
+      w3m is preferred over lynx
+
+-------------------------------------------------------------------
+Wed Apr 14 13:46:08 CEST 2004 - pmladek@suse.cz
+
+- fixed search line to display correctly UTF-8 characters; solution based
+  on the Japanese patch [#19587]
+
+-------------------------------------------------------------------
+Tue Feb 24 11:47:38 CET 2004 - pmladek@suse.cz
+
+- updated to version 382:
+    * removed some old copyrighted code
+- fixed to work with Turkish locales, problems with functions like
+  isupper, many thanks to Björn Jacke for hint and patch [#29827]
+- added some missing braces in opttbl.c to mouse.patch and iso254.patch
+- fixed code violating strict aliasing rules
+- used norootforbuild
+
+-------------------------------------------------------------------
+Fri Nov 14 09:06:48 CET 2003 - pmladek@suse.cz
+
+- fixed lessopen.sh:
+    * added some missing quotes [#33058]
+    * the script adds ./ before a relative file name to enable preprocess
+      a file whose name begins with a "-" or "+" (inspiration got from RedHat)
+      [#33058]
+    * fixed detection of Debian's packages
+- merged mouse_test_for_xselection.patch into mouse.patch
+
+-------------------------------------------------------------------
+Wed Sep 10 16:12:49 CEST 2003 - pmladek@suse.cz
+
+- test the utility xselection only if the mouse support is enabled [#29612]
+
+-------------------------------------------------------------------
+Mon Aug 04 17:20:59 CEST 2003 - pmladek@suse.cz
+
+- updated to version 381 [#17201]:
+    * new -L option to disable LESSOPEN processing
+    * further support for large (64 bit) file addressing
+    * use only 7 spaces for line numbers in -N mode, if possible
+    * fix some nroff issues in the man page
+- removed obsolete patch for support for large file addressing (lfs.patch)
+- used autoreconf to rebuild autoconf stuff
+
+-------------------------------------------------------------------
+Mon Dec 30 16:52:53 CET 2002 - pmladek@suse.cz
+
+- updated to version 378:
+    * default buffer space is now 64K as documented
+    * search highlighting works properly when used with -R
+    * windows version works properly when input file contains carriage returns
+    * clean up some compiler warnings
+- merged less-378-iso254-bug.patch into the less-378-iso254.patch
+- removed unused CXXFLAGS setting from the spec file
+- fixed the patch for the mouse support (prefixes to a less commands were not
+  printed immediately in the searched string as yet) [#21320]
+
+-------------------------------------------------------------------
+Tue Aug 27 18:11:51 CEST 2002 - pmladek@suse.cz
+
+- removed code which is obsoleted by Japanese patch and make
+  problems with UTF-8 [#17592, #17593]
+
+-------------------------------------------------------------------
+Fri Aug 09 21:54:22 CEST 2002 - pmladek@suse.cz
+
+- updated to new stable version 376
+    * -x option can now specify multiple variable-width tab stops
+    * -X option no longer disables keypad initialization
+    * new option --no-keypad disables keypad initialization
+    * new commands t and T step through multiple tag matches
+    * new prompt style set by option -Pw
+    * system-wide lesskey file now defaults to sysless in etc directory 
+      instead of .sysless in bin directory
+    * pressing RightArrow or LeftArrow while entering a number now shifts
+      the display N columns rather than editing the number itself
+    * searching works better with ANSI (SGR) escape sequences
+    * improved performance in reading very large pipes
+    * eliminated some dependencies on file offets being 32 bits
+    * fixed problems when viewing files with very long lines
+    * fixed overstriking in UTF-8 mode, and overstriking tabs
+    * improved horizontal shifting of text using -R option with ANSI color
+    * improved handling of filenames containing shell metacharacters
+- fixed Japanese patch for this less version
+- iso247-bugs patch merged with Japanese patch
+- fixed bug in detection of xselection utillity
+
+-------------------------------------------------------------------
+Fri May 17 14:37:48 CEST 2002 - pmladek@suse.cz
+
+- added mouse support (inspired by vim-6.0):
+		* it is enabled by -A option
+		* works only in xterm
+		* contains support for mouse wheel [#9385]
+		* direct access to X selection by xselection utility
+- applied patches less preprocessor patches
+
+-------------------------------------------------------------------
+Thu Mar 21 15:37:11 CET 2002 - pmladek@suse.cz
+
+- improved detection for input conding from keyboard, proper input 
+  coding is detected by locales now [#15155]
+- changed default input coding from "japanese-iso7" to "iso8859"
+- user can still define his input conding by the environment
+  variable JLESSKEYCHARSET
+
+-------------------------------------------------------------------
+Tue Mar 12 15:38:06 CET 2002 - pmladek@suse.cz
+
+- changed meaning of the variable LESS_ADVANCED_PREPROCESSOR,
+  many binary formats are preprocessed always, the text
+  formats (ps, troff, html) are preprocessed only when
+  the variable LESS_ADVANCED_PREPROCESSOR=yes
+
+-------------------------------------------------------------------
+Thu Feb 21 14:36:14 CET 2002 - pmladek@suse.cz
+
+- added support for cab files into less preprocessor
+
+-------------------------------------------------------------------
+Mon Feb 18 11:59:36 CET 2002 - pmladek@suse.cz
+
+- fixed to do not install .orig files
+
+-------------------------------------------------------------------
+Fri Feb 15 19:06:05 CET 2002 - pmladek@suse.cz
+
+- error messages in lessopen.sh must be redirected to the standard 
+  error output
+- fixed Copyright in lessopen.sh and lessclose.sh
+
+-------------------------------------------------------------------
+Thu Feb 14 18:24:41 CET 2002 - pmladek@suse.cz
+
+- added man page for lessecho from the Debian GNU/Linux distribution
+  [#13275]
+- fixed usage of macro %suse_update_config
+
+-------------------------------------------------------------------
+Mon Nov  5 16:32:10 CET 2001 - mfabian@suse.de
+
+- add init_def_codesets.diff (fixes the problem that less
+  outputs ESC-A to set 'G1' to 'Right-hand Part of Latin
+  Alphabet No.1 ISO 8859/1, ECMA-94'. This works only with
+  xterm but fails with konsole, rxvt ...)
+  Thanks to Michael Schroeder <mls@suse.de>
+- add arabic.diff to fix typo in possible values of JLESSPLANESET
+  (alabic -> arabic).
+- remove %attr(644, -, -) in front of %doc, this gives 
+  wrong permissions to the directory /usr/share/doc/packages/less
+  use 'chmod 644 LICENSE COPYING NEWS' instead.
+
+-------------------------------------------------------------------
+Fri Sep 21 17:02:15 CEST 2001 - vinil@suse.cz
+
+- README.SuSE about LESS_ADVANCED_PREPROCESSOR added
+
+-------------------------------------------------------------------
+Tue Sep 11 02:55:03 CEST 2001 - mfabian@suse.de
+
+- include Japanese patch
+- rewrote utf8.diff. Together with the Japanese patch it almost
+  works now. German, Italian and Spanish man pages display fine
+  in an UTF-8 xterm. Czech is still broken, but that seems to
+  be the fault of groff rather than less.
+- add less-SuSE.patch to display Japanese roff files correctly
+
+-------------------------------------------------------------------
+Wed Sep  5 16:30:19 CEST 2001 - vinil@suse.cz
+
+- .zip handled by "unzip -v" (#10211)
+
+-------------------------------------------------------------------
+Tue Aug 28 18:35:29 CEST 2001 - vinil@suse.cz
+
+- LESS_ADVANCED_PREPROCESSOR used for handling more than compressed
+  files (#9287)
+
+-------------------------------------------------------------------
+Tue Aug 14 13:07:55 CEST 2001 - vinil@suse.cz
+
+- typo fixed (#9730)
+
+-------------------------------------------------------------------
+Tue Jul 17 13:58:57 CEST 2001 - vinil@suse.cz
+
+- can handle symlinks              \
+- can handle x and pm man pages    -- bug #9393
+
+-------------------------------------------------------------------
+Mon May 14 12:12:55 CEST 2001 - vinil@suse.cz
+
+- utf8.diff added: less can handle bold and underlined utf-8 chars
+  (needed especially for man)
+
+-------------------------------------------------------------------
+Sat May  5 20:57:22 CEST 2001 - schwab@suse.de
+
+- lessopen.sh: Create tempfiles securely; add quotes as necessary; make
+  sure we don't match the file type against the file name; don't leave
+  temporary files around.
+
+-------------------------------------------------------------------
+Fri May  4 15:51:43 CEST 2001 - schwab@suse.de
+
+- lessopen.sh: echo nothing if we have no alternate file (#7679).
+
+-------------------------------------------------------------------
+Fri May  4 10:18:06 CEST 2001 - schwab@suse.de
+
+- lessopen.sh: Use the first stage contents if the second stage has
+  nothing special.  Tighten the patterns that recognize compressed
+  data.  Just echo the original file name if the file is not readable.
+
+-------------------------------------------------------------------
+Tue May  1 13:48:55 CEST 2001 - schwab@suse.de
+
+- lessclose.sh: Only remove file if different from original file.
+
+-------------------------------------------------------------------
+Mon Apr 30 14:54:35 CEST 2001 - schwab@suse.de
+
+- lessopen.sh: Use original file name if no conversions were done (#7421).
+
+-------------------------------------------------------------------
+Fri Apr 27 14:13:58 CEST 2001 - vinil@suse.cz
+
+- lessing non-existing files now produce error message [bug #7320]
+
+-------------------------------------------------------------------
+Thu Apr 19 17:27:17 CEST 2001 - mfabian@suse.de
+
+- removed "LESSCHARSET=latin1" from /etc/lesskey
+  If LESSCHARSET is not set, latin1 is the default, unless
+  "UTF-8" is found in LC_ALL, LC_CTYPE or LANG, the the default
+  is utf-8. So setting "LESSCHARSET=latin1" is useless in
+  case of a iso-8859-x locale and bad in case of a UTF-8 locale.
+  If LESSCHARSET is set in /etc/lesskey, one cannot even override
+  it by setting the environment variable anymore.
+
+-------------------------------------------------------------------
+Fri Mar 16 16:25:55 CET 2001 - vinil@suse.cz
+
+- less piping completely rewritten (using 'file', now)
+  (bug #6256 fixed)
+
+-------------------------------------------------------------------
+Wed Jan 10 16:58:25 CET 2001 - smid@suse.cz
+
+- lesspipe.sh fixed 
+
+-------------------------------------------------------------------
+Tue Jan  9 19:14:31 CET 2001 - smid@suse.cz
+
+- lesspipe.sh fixed [#5003]
+
+-------------------------------------------------------------------
+Wed Dec 13 01:32:39 CET 2000 - mfabian@suse.de
+
+- added "Provides: normal-less". This enables the japanized
+  jless to use "Provides: less" and "Conflicts: normal-less".
+  (Suggestion by bjacke@suse.de)
+
+-------------------------------------------------------------------
+Mon Dec 11 10:41:16 CET 2000 - smid@suse.cz
+
+- added conflict with jless
+
+-------------------------------------------------------------------
+Fri Dec  1 13:18:05 CET 2000 - aj@suse.de
+
+- Compile with LFS support, fix CFLAGS/CXXFLAGS.
+
+-------------------------------------------------------------------
+Tue Nov 21 18:50:47 CET 2000 - werner@suse.de
+
+- Remove swapping of kp-separator/kp-decimal because it's
+  done in xkbd map for german keyboards
+
+-------------------------------------------------------------------
+Tue Nov 21 16:52:57 CET 2000 - werner@suse.de
+
+- Add some newer xterm escape sequences (oldFunctionsKeys)
+
+-------------------------------------------------------------------
+Tue Sep 26 01:05:22 CEST 2000 - ro@suse.de
+
+- make lesspipe executable again 
+
+-------------------------------------------------------------------
+Mon Sep 25 15:46:03 CEST 2000 - smid@suse.cz
+
+- upgrade to 358
+
+-------------------------------------------------------------------
+Mon May 22 12:39:21 MEST 2000 - smid@suse.cz
+
+- upgrade to 354
+- Copyright field fix
+- documentation added
+
+-------------------------------------------------------------------
+Thu Apr 13 11:05:40 CEST 2000 - smid@suse.cz
+
+- buildroot added
+- upgrade to 3.46
+
+-------------------------------------------------------------------
+Thu Feb 10 18:20:56 CET 2000 - kukuk@suse.de
+
+- Fill out Copyright and Group field
+
+-------------------------------------------------------------------
+Mon Jan 24 17:49:26 CET 2000 - kukuk@suse.de
+
+- Move /usr/man -> /usr/share/man
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Fri Jun 18 01:27:30 MEST 1999 - ro@suse.de
+
+- update to less-340 using jurix-dif
+- added [rs]pm to lesspipe-switch
+- added werners lesskey
+
+----------------------------------------------------------------------------
+Thu Sep  4 14:12:58 CEST 1997 - bs@suse.de
+
+- added *.as to lesspipe.sh
+
+
+----------------------------------------------------------------------------
+Wed May 28 16:47:38 MET DST 1997 - werner@suse.de
+
+- added new etc/lesskey and etc/lesskey.bin
+
+----------------------------------------------------------------------------
+Sat Apr 26 19:14:59 MEST 1997 - florian@suse.de
+
+
+- update to new version 332
+
+
+----------------------------------------------------------------------------
+Sun Apr 13 23:04:29 MEST 1997 - florian@suse.de
+
+
+- update to new version 330
+
+
+----------------------------------------------------------------------
+Sat Nov 16 10:29:43 CET 1996 - bs@suse.de
+
+added new etc/lesskey*
+
+----------------------------------------------------------------------------
+Wed Oct 23 15:09:12 MET DST 1996 - bs@suse.de
+
+lesskey from aaa_base inserted.
+
+----------------------------------------------------------------------------
+Thu Oct 17 02:02:49 MET DST 1996 - florian@suse.de
+
+
+- Neue Version 321.
+
+- Bug mit falschen Aufruf von free() behoben.
+
+- In /etc/profile wird global fuer alle Benutzer eine 'lesskey'-Datei
+  eingetragen. Braucht also nicht mehr im Home-Verzeichnis aller Benutzer
+  erstellt werden.

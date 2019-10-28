@@ -1,0 +1,28 @@
+From b5e2db003fe02d689d9e724a1d649d2c6d2919dd Mon Sep 17 00:00:00 2001
+From: Igor Gnatenko <ignatenkobrain@fedoraproject.org>
+Date: Sun, 18 Aug 2019 16:39:13 +0200
+Subject: [PATCH] Ignore Cargo.lock
+
+Fixes: https://pagure.io/fedora-rust/rust2rpm/issue/90
+
+Signed-off-by: Igor Gnatenko <ignatenkobrain@fedoraproject.org>
+---
+ data/macros.cargo | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/macros.cargo b/data/macros.cargo
+index 1182850..5f60111 100644
+--- a/data/macros.cargo
++++ b/data/macros.cargo
+@@ -90,7 +90,7 @@ if %__cargo_is_lib; then                                            \
+ # so that cargo doesn't fail resolving dependencies:                \
+ # https://github.com/rust-lang/cargo/pull/6729                      \
+   %{__awk} -i inplace -v INPLACE_SUFFIX=.deps '/^\\\[((.+\\\.)?((dev|build)-)?dependencies|features)/{f=1;next} /^\\\[/{f=0}; !f' Cargo.toml \
+-  %{__cargo} package -l | xargs -d '\\\n' %{__cp} --parents -a -t $REG_DIR \
++  %{__cargo} package -l | grep -w -v Cargo.lock | xargs -d '\\\n' %{__cp} --parents -a -t $REG_DIR \
+   %{__mv} Cargo.toml{.deps,}                                        \
+   %{__cp} -a Cargo.toml $REG_DIR/Cargo.toml                         \
+   %{__rm} -f $REG_DIR/Cargo.toml.{orig,deps}                        \
+-- 
+2.23.0
+

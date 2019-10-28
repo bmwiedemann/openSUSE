@@ -1,0 +1,12 @@
+<package name="health-check" project="openSUSE:Factory">
+  <title>Process monitoring tool</title>
+  <description>Health-check monitors processes and optionally their child
+processes and threads for a given amount of time.  At the end
+of the monitoring it will display the CPU time used, wakeup
+events generated and I/O operations of the given processes.
+It can be used to diagnose unhealthy bad processes.
+
+</description>
+  <devel project="server:monitoring" package="health-check"/>
+  <url>http://kernel.ubuntu.com/~cking/health-check</url>
+</package>

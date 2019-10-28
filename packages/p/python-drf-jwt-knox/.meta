@@ -1,0 +1,5 @@
+<package name="python-drf-jwt-knox" project="openSUSE:Factory">
+  <title></title>
+  <description>Django REST Framework JWT-based Authentication with Server-Side Tokens</description>
+  <devel project="devel:languages:python:django" package="python-drf-jwt-knox"/>
+</package>
