@@ -1,6 +1,0 @@
-<package name="perl-B-Utils" project="openSUSE:Factory">
-  <title>Helper functions for op tree manipulation</title>
-  <description>Helper functions for op tree manipulation</description>
-  <devel project="devel:languages:perl" package="perl-B-Utils"/>
-  <url>http://search.cpan.org/dist/B-Utils/</url>
-</package>
