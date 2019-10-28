@@ -1,0 +1,9 @@
+<package name="clpeak" project="openSUSE:Factory">
+  <title>Find peak OpenCL capacities like bandwidth &amp; compute</title>
+  <description>A tool which profiles OpenCL devices to find their peak capacities like
+bandwidth &amp; compute.
+
+</description>
+  <devel project="benchmark" package="clpeak"/>
+  <url>https://github.com/krrishnarraj/clpeak</url>
+</package>
