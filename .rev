@@ -1,0 +1,63 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1250477b5ad230994977a4acf308adbc</srcmd5>
+    <version>1.0.2</version>
+    <time>1466814080</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>403657</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>71dd46e910764871a2d2f8e224876248</srcmd5>
+    <version>1.1.0</version>
+    <time>1515876291</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0
+  * guiplayer accepts a single file argument in the command line:
+    mid, kar, wrk and ove
+  * documentation updated
+  Check the installed ChangeLog file for the complete changelog.
+- Drop gcc6-fix.patch. Merged upstream.
+</comment>
+    <requestid>558196</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>764146b2256380ed24ae7398e67a7fa6</srcmd5>
+    <version>1.1.1</version>
+    <time>1527583446</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.1
+- Split libdrumstick-rt from the main package.
+</comment>
+    <requestid>612218</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e5d5f895f48f16bc2ba13e94a33aa425</srcmd5>
+    <version>1.1.2</version>
+    <time>1545223908</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>659346</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f3ee4fc45a377a302fb2337dd10285eb</srcmd5>
+    <version>1.1.3</version>
+    <time>1571653890</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.3
+  * IPv6 support added
+  * Avoid endless loops on unexpected end of input.
+  * Generate SMFError when the parser finds unexpected end of input.
+  * general cleanups and bringing back the fluidsynth backend
+  * migration to full GNUInstallDirs support
+  * modernization started of the CMake build system
+  * Library includes reorganization
+  * Fixed drumstick-file unit test
+  * Custom commandline parser replaced by standard Qt5 QCommandLineParser
+  * fixed spurious error message for ALSA input
+- Drop Dont-use-QOverload.patch. No longer needed.
+- Update the libdrumstick-rt-plugins license tag, eassynth contains
+  Apache-2.0 files.</comment>
+    <requestid>741353</requestid>
+  </revision>
+</revisionlist>
