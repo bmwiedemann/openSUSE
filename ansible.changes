@@ -1,193 +1,52 @@
 -------------------------------------------------------------------
-Sat Jul 27 07:25:59 UTC 2019 - Johannes Kastl <kastl@b1-systems.de>
+Sun Oct 27 14:15:53 UTC 2019 - lars@linux-schulserver.de
 
-- Update to version 2.8.3
-  Full changelog is at /usr/share/doc/packages/ansible/changelogs
-  Bugfixes:
-  - Check when user does pass empty dict to sysprep. Fixes https://github.com/oVirt/ovirt-ansible-vm-infra/issues/104
-  - Do not assume None is equal as connection and become tools can have different unspecified defaults.
-  - Fix broken slxos_config due to changed backup options (https://github.com/ansible/ansible/pull/58804).
-  - Fix regression when including a role with a custom filter (https://github.com/ansible/ansible/issues/57351)
-  - Fixed disk already exists issue while cloning guest in vmware_guest module (https://github.com/ansible/ansible/issues/56861).
-  - Gather facts should use gather_subset config by default.
-  - Make max_connections parameter work again in vmware_guest module (https://github.com/ansible/ansible/pull/58061).
-  - To find specified interfaces, add a interface-type.
-  - To resolve NoneType error as it was missing NoneType check for l3protocol param in aci_l3out. (https://github.com/ansible/ansible/pull/58618).
-  - Use templated loop_var/index_var when looping include_* (https://github.com/ansible/ansible/issues/58820)
-  - Using neconf API to send cli commands is a bug, now fix it(https://github.com/ansible/ansible/pull/59071)
-  - aws_secret - Document region so the config manager can retrieve its value.
-  - ce_bfd_global - line284, 'data' tag of xpath should be removed. line498, add "self.existing == self.end_state" to compare the status and get 'changed'.
-  - ce_bfd_view - line287, line293, 'data' tag of a xpath should be removed to find a element.line500, running result judgment.
-  - ce_evpn_bd_vni - modify xml function to find data.(https://github.com/ansible/ansible/pull/58227)
-  - ce_evpn_bgp_rr - fix bugs,get wrong config, get wrong result.changed .(https://github.com/ansible/ansible/pull/58228)
-  - ce_interface - It is not a good way to find data from a xml tree by regular. lin379 line405.
-  - ce_interface - line 750,779 Some attributes of interfaces are missing, 'ifAdminStatus', 'ifDescr', 'isL2SwitchPort'.So add them when get interface status.
-  - ce_interface_ospf - remove the 'data' tag to fix a bug,.(https://github.com/ansible/ansible/pull/58229)
-  - ce_link_status - remove the 'data' tag to fix a bug,.(https://github.com/ansible/ansible/pull/58229)
-  - ce_netstream_aging - line318, Redundant regular. line326,line33, there may be out of array rang,some time.(https://github.com/ansible/ansible/pull/58231)
-  - ce_static_route The IPv6 binary system has a length of 128 bits and is grouped by 16 bits. Each group is separated by a colon ":" and can be divided into 8 groups, each group being represented by 4 hexadecimal. You can use a double colon "::" to represent a group of 0 or more consecutive 0s, but only once. Divisible compatible with Python2 and Python3. To find all elements, Data root node that is taged 'data' should be removed.(https://github.com/ansible/ansible/pull/58251)
-  - ce_vrrp - tag 'data' is the root node of data xml tree,remove 'data' tag to find all. line 700,747 "vrrp_group_info["adminIgnoreIfDown"]", value is string and lower case. line 1177,1240. Compare wrong! They should be same key of value to be compared.
-  - ce_vxlan_gateway - update the regular expression to match the more.(https://github.com/ansible/ansible/pull/58226)
-  - ce_vxlan_global - line 242 , bd_info is a string array,and it should be 'extend' operation. line 423, 'if' and 'else' should set a different value. if 'exist', that value is 'enable'. line 477, To get state of result, if it is changed or not.
-  - docker_* modules - behave better when requests errors are not caught by docker-py.
-  - docker_container - add support for nocopy mode for volumes.
-  - docker_image - validate tag option value.
-  - dzdo did not work with password authentication
-  - facts - handle situation where ansible_architecture may not be defined (https://github.com/ansible/ansible/issues/55400)
-  - fixed collection-based plugin loading in ansible-connection (eg networking plugins)
-  - gather_facts now correctly passes back the full output of modules on error and skipped, fixes
-  - group - properly detect duplicate GIDs when local=yes (https://github.com/ansible/ansible/issues/56481)
-  - ios_config - fixed issue where the "no macro" command was erroneously handled by edit_macro(). https://github.com/ansible/ansible/issues/55212
-  - machinectl become plugin - correct bugs which induced errors on plugin usage
-  - nagios module - Fix nagios module to recognize if cmdfile exists and is fifo pipe.
-  - nmcli - fixed regression caused by commit b7724fd, github issue
-  - openssl_privatekey - secp256r1 got accidentally forgotten in the curve list.
-  - os_quota - fix failure to set compute or network quota when volume service is not available
-  - ovirt add host retry example to documentation BZ(https://bugzilla.redhat.com/show_bug.cgi?id=1719271)
-  - ovirt migrate virtual machine with state present and not only running BZ(https://bugzilla.redhat.com/show_bug.cgi?id=1722403)
-  - ovirt update vm migration domunetation BZ(https://bugzilla.redhat.com/show_bug.cgi?id=1724535)
-  - ovirt vnic profile: remove duplication in readme
-  - ovirt_vm - fix for module failure on creation (https://github.com/ansible/ansible/issues/59385)
-  - postgresql_schema - Parameter ensure replaced by state in the drop schema example (https://github.com/ansible/ansible/pull/59342)
-  - setup (Windows) - prevent setup module failure if Get-MachineSid fails (https://github.com/ansible/ansible/issues/47813)
-  - user - omit incompatible options when operating in local mode (https://github.com/ansible/ansible/issues/48722)
-  - vmware_guest accepts 0 MB of memory reservation, fix regression introduced via 193f69064fb40a83e3e7d2112ef24868b45233b3 (https://github.com/ansible/ansible/issues/59190).
-  - win_domain_user - Do not hide error and stacktrace on failures
-  - win_get_url - Fix proxy_url not used correctly (https://github.com/ansible/ansible/issues/58691)
-  - win_reg_stat - fix issue when trying to check keys in HKU:\ - https://github.com/ansible/ansible/issues/59337
-  - yum - handle stale/invalid yum.pid lock file (https://github.com/ansible/ansible/issues/57189)
-
+- include the sha checksum file in the source, which allows to verify
+  the original sources
 
 -------------------------------------------------------------------
-Sat Jul 27 07:20:14 UTC 2019 - Johannes Kastl <kastl@b1-systems.de>
+Wed Oct 23 16:10:41 UTC 2019 -  <abergmann@suse.com>
 
-- Update to version 2.8.2
-  Full changelog is at /usr/share/doc/packages/ansible/changelogs
-  Bugfixes:
-  - Bug fixes to nios_member module
-  - Don't return nested information in ovirt_host_facts when fetch_nested is false
-  - Fix --diff to produce output when creating a new file (https://github.com/ansible/ansible/issues/57618)
-  - Fix foreman inventory plugin when inventory caching is disabled
-  - Fix in netconf plugin when data element is empty in xml response (https://github.com/ansible/ansible/pull/57981)
-  - Fix ios_facts ansible_net_model - https://github.com/ansible/ansible/pull/58159
-  - Fix iosxr netconf config diff and integration test failures (https://github.com/ansible/ansible/pull/57909)
-  - Fix issue in resetting the storage domain lease in ovirt_vm module.
-  - Fix issues in iosxr integration test (https://github.com/ansible/ansible/pull/57882)
-  - Fix junos integration test failures (https://github.com/ansible/ansible/pull/57309)
-  - Fix media type of RESTCONF requests.
-  - Fix nxapi local failures nxos_install_os (https://github.com/ansible/ansible/pull/55993).
-  - Fix python3 compat issue with network/common/config.py - https://github.com/ansible/ansible/pull/55223
-  - Fix python3 encoding issue with iosxr_config.
-  - Fix regression warning on jinja2 delimiters in when statements (https://github.com/ansible/ansible/issues/56830)
-  - Fix the issue that disk is not activated after its creation (https://github.com/ansible/ansible/issues/57412)
-  - Fixed ce_bgp,first the pattern to be searched is need to change, otherwise there is no data to be found.then after running a task with this module,it will not show 'changed' correctly.
-  - Fixed ce_bgp_af,'changed' of module run restult is not showed, however the module run correctly,and update coommands of result is not correct.
-  - Fixed ce_bgp_neighbor, find specify bgp as information, as number is necessary and so on.
-  - Fixed ce_bgp_neighbor_af,update commands should be showed correctly, and xml for filter and edit are also re-factor as the software version upgrade and update.
-  - Fixes the IOS_NTP integration TC failure, where TC was failing coz of missing configuration which needed to be set before firing the TC. - https://github.com/ansible/ansible/pull/57481.
-  - Fixes the IOS_SMOKE integration TC failure - https://github.com/ansible/ansible/pull/57665.
-  - Handle improper variable substitution that was happening in safe_eval, it was always meant to just do 'type enforcement' and have Jinja2 deal with all variable interpolation. Also see CVE-2019-10156
-  - Only warn for bare variables if they are not type boolean (https://github.com/ansible/ansible/issues/53428)
-  - Remove lingering ansible vault cipher (AES) after it beeing removed in
-  - TaskExecutor - Create new instance of the action plugin on each iteration when using until (https://github.com/ansible/ansible/issues/57886)
-  - This PR fixes the issue raised where idempotency was failing when DNS bypassing was set to False and also exception error faced in nios_host_reord - https://github.com/ansible/ansible/pull/57221.
-  - To fix the netvisor failure with network_cli connection - https://github.com/ansible/ansible/pull/57938
-  - Update lib/ansible/plugins/action/ce.py.Add some modules names that modules use network_cli to connect remote hosts when connection type is 'local'
-  - Update ovirt vnic profile module BZ(https://bugzilla.redhat.com/show_bug.cgi?id=1597537)
-  - When nic has only one vnic profile use it as default or raise error (https://github.com/ansible/ansible/pull/57945)
-  - ce_acl - tag named data of a xpath is unnecessay for old sotfware version to find a element from xml tree, but element can not be found with 'data' tag for new version, so remove.
-  - ce_acl_advance - remove 'data' tag, and fix a bug that the 'changed' of result is not correct.
-  - ce_acl_interface - Strict regularity can't find anything.
-  - ce_acl_interface - do not used 'get_config' to show specific configuration, and use display command directly.
-  - ce_dldp - tag named data of a xpath is unnecessay for old sotfware version to find a element from xml tree, but element can not be found with 'data' tag for new version, so remove.
-  - ce_dldp - tag named data of a xpath is unnecessay for old sotfware version to find a element from xml tree, but element can not be found with 'data' tag for new version, so remove.
-  - ce_dldp_interface - tag named data of a xpath is unnecessay for old sotfware version to find a element from xml tree, but element can not be found with 'data' tag for new version, so remove.
-  - ce_dldp_interface - tag named data of a xpath is unnecessay for old sotfware version to find a element from xml tree, but element can not be found with 'data' tag for new version, so remove.
-  - ce_snmp_community - it should be 'config' end of 'edit-config', not filter that is used to 'get-config'.As well the changed state is not correct.
-  - ce_snmp_contact - overwrite get_config,and fix array out of range bug(line173 line183)
-  - ce_snmp_location - overwrite get_config.
-  - ce_snmp_target_host - None has no 'lower()' attribute.
-  - ce_snmp_target_host -do not use netconf and network_cli together in one module.
-  - ce_snmp_traps - overwrite get_config;do not use netconf and network_cli together in one module.
-  - ce_snmp_user - do not use netconf and network_cli together in one module.
-  - ce_vxlan_arp - override 'get_config' to show specific configuration.
-  - ce_vxlan_arp - override 'get_config' to show specific configuration.
-  - ce_vxlan_gateway - override 'get_config' to show specific configuration.
-  - ce_vxlan_gateway - override 'get_config' to show specific configuration.
-  - ce_vxlan_global - Netwrok_cli and netconf should be not mixed together, otherwise something bad will happen. Function get_nc_config uses netconf and load_config uses network_cli.
-  - ce_vxlan_global - Netwrok_cli and netconf should be not mixed together, otherwise something bad will happen. Function get_nc_config uses netconf and load_config uses network_cli.
-  - ce_vxlan_tunnel - Netwrok_cli and netconf should be not mixed together, otherwise something bad will happen. Function get_nc_config uses netconf and load_config uses network_cli.
-  - ce_vxlan_tunnel - Netwrok_cli and netconf should be not mixed together, otherwise something bad will happen. Function get_nc_config uses netconf and load_config uses network_cli.
-  - ce_vxlan_vap - tag named data of a xpath is unnecessay for old sotfware version to find a element from xml tree, but element can not be found with 'data' tag for new version, so remove.
-  - ce_vxlan_vap - tag named data of a xpath is unnecessay for old sotfware version to find a element from xml tree, but element can not be found with 'data' tag for new version, so remove.
-  - crypto modules - improve error messages when required Python library is missing.
-  - dellos9_facts - Fix RuntimeError on Python 3.8.
-  - docker_* modules - improve error message when docker-py is missing / has wrong version.
-  - docker_* modules - improve robustness when not handled Docker errors occur.
-  - docker_container - switch to Config data source for images (API>=1.21).
-  - docker_swarm_service - fix resource lookup if mounts.source="".
-  - fact_cache - Define the first_order_merge method for the legacy FactCache.update(key, value).
-  - facts - Restore the minor version number for CentOS and Debian. Debian has a minor release number but doesn't put it in os-release. CentOS doesn't have a minor version number but users want to try to match CentOS versions to RHEL equivalents so we grab the RHEL version instead.
-  - fix bug - out of array index.There should be a judgement about array length before the value of the array is taken out.
-  - ftd_configuration - fix a bug with response parsing when the server returns a list of objects
-  - gather_facts - Clean up tmp files upon completion (https://github.com/ansible/ansible/issues/57248)
-  - gather_facts - Prevent gather_facts from being verbose, just like is done in the normal action plugin for setup (https://github.com/ansible/ansible/issues/58310)
-  - gcp_compute - Speed up dynamic invetory up to 30x.
-  - gitlab_runner - Fix idempotency when creating runner (https://github.com/ansible/ansible/issues/57759)
-  - handlers - Only notify a handler if the handler is an exact match by ensuring listen is a list of strings. (https://github.com/ansible/ansible/issues/55575)
-  - hostname - Readded support for Cumulus Linux which broke in v2.8.0 (https://github.com/ansible/ansible/pull/57493)
-  - hostname - make module work on CoreOS, Oracle Linux, Clear Linux, OpenSUSE Leap, ArchARM (https://github.com/ansible/ansible/issues/42726)
-  - inventory_hostnames lookup - use the same order for the returned hosts as the inventory manager
-  - ipaddr: prevent integer indices from being parsed as ip nets (https://github.com/ansible/ansible/issues/57895).
-  - kubevirt: fix regression when combining inline: yaml with module parameters
-  - lineinfile - fix a race / file descriptor leak when writing the file (https://github.com/ansible/ansible/issues/57327)
-  - lvg - Fixed warning shown when using default value for pesize about conversion from int to str.
-  - meraki_network - Restructure code execution so net_id parameter works in all situations.
-  - na_ontap_export_policy_rule - duplicate rules created if index was not set
-  - na_ontap_interface - was not checking for vserver
-  - na_ontap_portset - Fixed issue that portset did not allow you to add port when creating a portset
-  - na_ontap_quotas - Fix RuntimeError on Python 3.8.
-  - netbox - Fix missing implementation of groups option (https://github.com/ansible/ansible/issues/57688)
-  - netbox_ip_address - Fixed issue where it would create duplicate IP addresses when trying to serialize the IP address object which doesn't have the .serialize() method. This should also prevent future duplicate objects being created if they don't have the .serialize() method as well.
-  - netconf - Make netconf_get python3 compatible.
-  - nxos_logging facilties defaults (https://github.com/ansible/ansible/pull/57144).
-  - nxos_vlan fix broken purge behavior (https://github.com/ansible/ansible/pull/57229).
-  - openssh_keypair - The fingerprint return value was incorrectly returning a list of ssh-keygen output; it now returns just the fingerprint value as a string
-  - openssh_keypair - make regeneration of valid keypairs with the force option possible, add better handling for invalid files
-  - openssl_certificate - fix Subject Alternate Name comparison, which was broken for IPv6 addresses with PyOpenSSL, or with older cryptography versions (before 2.1).
-  - openvswitch_bridge - The module was not properly updating the vlan when updating a bridge. This is now fixed so vlans are properly updated and tests has been put in place to check that this doesn't break again.
-  - option is marked as required but specifies a default.(https://github.com/ansible/ansible/pull/57257)
-  - os_port - handle binding:vnic_type as optional (https://github.com/ansible/ansible/issues/55524, https://github.com/ansible/ansible/issues/55525)
-  - podman_image_info - do not fail if invalid or non-existant image name is provided (https://github.com/ansible/ansible/issues/57899)
-  - postgresql - move params mapping from main to connect_to_db() function (https://github.com/ansible/ansible/pull/55799)
-  - postgresql_membership - Remove debug print.
-  - postgresql_pg_hba - After splitting fields, merge authentication options back into a single field to prevent losing options beyond the first (https://github.com/ansible/ansible/issues/57505)
-  - postgresql_pg_hba - Fix TypeError after which pg_hba.conf is wiped (https://github.com/ansible/ansible/issues/56430)
-  - postgresql_pg_hba - Fix multiple options for local type connections
-  - postgresql_pg_hba - Fix sorting errors between local type connections that lack a src
-  - postgresql_privs - Fix incorrect views handling (https://github.com/ansible/ansible/issues/27327).
-  - postgresql_table - fix schema handling (https://github.com/ansible/ansible/pull/57391)
-  - purefa_pgsnap - handle exit correctly if selected remote volume or snapshot does not exist.
-  - rds_instance - Fixed EnablePerformanceInsights setting (https://github.com/ansible/ansible/issues/50081)
-  - rds_instance no longer fails when passing neither storage_type nor iops
-  - remove all temporary directories created by ansible-config (https://github.com/ansible/ansible/issues/56488)
-  - show host_vars in ansible-inventory's --graph option.
-  - ssh connection plugin - Ensure that debug messages are properly encoded as text
-  - suppress "default will change" warnings for TRANSFORM_INVALID_GROUP_CHARS setting when non-default option value is chosen
-  - update acl to fix bugs.(https://github.com/ansible/ansible/pull/57268)
-  - update ce_facts to fix array out of range bug(https://github.com/ansible/ansible/pull/57187).
-  - update info-center to fix bugs.(https://github.com/ansible/ansible/pull/57269 )
-  - update ospf modules to fix bugs as software version changes(https://github.com/ansible/ansible/pull/56974).
-  - update scmp to fix bugs(https://github.com/ansible/ansible/pull/57025).
-  - update scmp to fix bugs.(https://github.com/ansible/ansible/pull/57264)
-  - update vrf to fix bugs.(https://github.com/ansible/ansible/pull/57270 )
-  - vault - Fix traceback using Python2 if a vault contains non-ascii characters (https://github.com/ansible/ansible/issues/58351).
-  - win_chocolatey - Better support detecting multiple packages installed at different versions on newer Chocolatey releases
-  - win_chocolatey - Install the specific Chocolatey version if the version option is set.
-  - win_get_url - Fix handling of restricted headers as per (https://github.com/ansible/ansible/issues/57880)
-  - win_pagefile - not using testPath
-  - win_shell - Fix bug when setting args.executable to an executable with a space
+- Update to version 2.8.6:
+  Full changelog is packaged at /usr/share/doc/packages/ansible/changelogs/
+  and also available online at
+  https://github.com/ansible/ansible/blob/stable-2.8/changelogs/CHANGELOG-v2.8.rst
+  Included security fixes:
+  * CVE-2019-14846: Fixed secrets disclosure on logs due to display is hardcoded
+    to DEBUG level (bsc#1153452)
+  * CVE-2019-14856: Fixed insufficient fix for CVE-2019-10206 (bsc#1154232)
+  * CVE-2019-14858: Fixed data in the sub parameter fields that will not be masked
+    and will be displayed when run with increased verbosity (bsc#1154231) 
 
+-------------------------------------------------------------------
+Fri Sep 13 09:02:36 UTC 2019 - Lars Vogdt <lars@linux-schulserver.de>
+
+- Update to version 2.8.5:
+  Full changelog is packaged at /usr/share/doc/packages/ansible/changelogs/
+  and also available online at
+  https://github.com/ansible/ansible/blob/stable-2.8/changelogs/CHANGELOG-v2.8.rst
+- removed patches fixed upstream:
+  + CVE-2019-10206-data-disclosure.patch
+  + CVE-2019-10217-gcp-modules-sensitive-fields.patch
+
+-------------------------------------------------------------------
+Wed Aug  7 16:30:47 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to version 2.8.3:
+  Full changelog is packaged, but also at
+  https://github.com/ansible/ansible/blob/stable-2.8/changelogs/CHANGELOG-v2.8.rst
+- (bsc#1142690) Adds CVE-2019-10206-data-disclosure.patch fixing
+  CVE-2019-10206: ansible-playbook -k and ansible cli tools
+  prompt passwords by expanding them from templates as they could
+  contain special characters. Passwords should be wrapped to
+  prevent templates trigger and exposing them.
+- (bsc#1144453) Adds CVE-2019-10217-gcp-modules-sensitive-fields.patch
+  CVE-2019-10217: Fields managing sensitive data should be set as
+  such by no_log feature. Some of these fields in GCP modules are
+  not set properly. service_account_contents() which is common
+  class for all gcp modules is not setting no_log to True. Any
+  sensitive data managed by that function would be leak as an
+  output when running ansible playbooks.
 
 -------------------------------------------------------------------
 Sat Jun  8 16:33:53 UTC 2019 - Lars Vogdt <lars@linux-schulserver.de>

@@ -36,13 +36,14 @@
 BuildArch:      noarch
 %endif
 Name:           ansible
-Version:        2.8.3
+Version:        2.8.6
 Release:        0
 Summary:        Software automation engine
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
 Url:            https://ansible.com/
 Source:         https://releases.ansible.com/ansible/ansible-%{version}.tar.gz
+Source1:        ansible-%{version}.tar.gz.sha
 Source99:       ansible-rpmlintrc
 # SuSE/openSuSE
 %if 0%{?suse_version}
@@ -130,6 +131,7 @@ like zero downtime rolling updates with load balancers.
 
 %prep
 %setup -q -n ansible-%{version}
+
 find . -name .git_keep -delete
 find contrib/ -type f -exec chmod 644 {} +
 

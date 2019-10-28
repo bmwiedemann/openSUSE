@@ -584,4 +584,51 @@ numbers for further reference.
     <comment></comment>
     <requestid>723122</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>eb49266dead7a54fa435a314e2ef44de</srcmd5>
+    <version>2.8.6</version>
+    <time>1572278329</time>
+    <user>dimstar_suse</user>
+    <comment>=&gt; Reviewers: please note that we decided to shrink the changes file size 
+   by NOT including a &quot;copy and paste&quot; from the original changelog but instead
+   only mentioning the most important changes for our users. 
+   The original changelog is shipped together with the package for further 
+   reference anyway.
+
+
+----
+
+
+- include the sha checksum file in the source, which allows to verify
+  the original sources
+
+- Update to version 2.8.6:
+  Full changelog is packaged at /usr/share/doc/packages/ansible/changelogs/
+  and also available online at
+  https://github.com/ansible/ansible/blob/stable-2.8/changelogs/CHANGELOG-v2.8.rst
+  Included security fixes:
+  * CVE-2019-14846: Fixed secrets disclosure on logs due to display is hardcoded
+    to DEBUG level (bsc#1153452)
+  * CVE-2019-14856: Fixed insufficient fix for CVE-2019-10206 (bsc#1154232)
+  * CVE-2019-14858: Fixed data in the sub parameter fields that will not be masked
+    and will be displayed when run with increased verbosity (bsc#1154231) 
+- Update to version 2.8.5:
+  Full changelog is packaged at /usr/share/doc/packages/ansible/changelogs/
+  and also available online at
+  https://github.com/ansible/ansible/blob/stable-2.8/changelogs/CHANGELOG-v2.8.rst
+- removed patches fixed upstream:
+  + CVE-2019-10206-data-disclosure.patch
+  + CVE-2019-10217-gcp-modules-sensitive-fields.patch
+
+- Update to version 2.8.3:
+  Full changelog is packaged, but also at
+  https://github.com/ansible/ansible/blob/stable-2.8/changelogs/CHANGELOG-v2.8.rst
+- (bsc#1142690) Adds CVE-2019-10206-data-disclosure.patch fixing
+  CVE-2019-10206: ansible-playbook -k and ansible cli tools
+  prompt passwords by expanding them from templates as they could
+  contain special characters. Passwords should be wrapped to
+  prevent templates trigger and exposing them.
+- (bsc#1144453) Adds CVE-2019-10217-gcp-modules-sensitive-fields.patch</comment>
+    <requestid>743343</requestid>
+  </revision>
 </revisionlist>
