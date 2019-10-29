@@ -2214,6 +2214,7 @@
     <package name="libgudev-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libguess1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libguile-2_2-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="libgumbo1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
     <package name="libgupnp-1_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgupnp-av-1_0-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgupnp-dlna-2_0-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

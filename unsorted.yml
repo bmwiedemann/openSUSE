@@ -8962,7 +8962,6 @@ unsorted:
   - libguile17 
   - libguilereadline-v-17-17 
   - libgumbo-devel 
-  - libgumbo1 
   - libgupnp-1_2-0-32bit: [x86_64] 
   - libgupnp-av-devel 
   - libgupnp-devel 
@@ -13085,11 +13084,6 @@ unsorted:
   - molsketch 
   - molsketch-devel 
   - molsketch-doc 
-  - mongodb: [x86_64] 
-  - mongodb-mongoperf: [x86_64] 
-  - mongodb-mongos: [x86_64] 
-  - mongodb-server: [x86_64] 
-  - mongodb-shell: [x86_64] 
   - mongolian-fonts 
   - monitoring-plugins-all 
   - monitoring-plugins-apcupsd 
@@ -17261,7 +17255,6 @@ unsorted:
   - python2-Flask-Migrate 
   - python2-Flask-Paranoid 
   - python2-Flask-Principal 
-  - python2-Flask-PyMongo 
   - python2-Flask-RESTful 
   - python2-Flask-RSTPages 
   - python2-Flask-SQLAlchemy 
@@ -17784,6 +17777,7 @@ unsorted:
   - python2-cfscrape 
   - python2-cftime 
   - python2-chai 
+  - python2-chainmap 
   - python2-chardet 
   - python2-chart-studio 
   - python2-check-manifest 
@@ -18071,7 +18065,6 @@ unsorted:
   - python2-flaky 
   - python2-flasgger 
   - python2-flask-jwt-extended 
-  - python2-flask-mongoengine: [x86_64] 
   - python2-flask-peewee 
   - python2-flask-restplus 
   - python2-flatbuffers 
@@ -18358,6 +18351,7 @@ unsorted:
   - python2-libpreludedb 
   - python2-libqcow 
   - python2-librosa 
+  - python2-librouteros 
   - python2-libsass 
   - python2-libscca 
   - python2-libsigscan 
@@ -18468,6 +18462,9 @@ unsorted:
   - python2-mysql-connector-python 
   - python2-mysqlclient 
   - python2-nagiosplugin 
+  - python2-napalm 
+  - python2-napalm-asa 
+  - python2-napalm-procurve 
   - python2-natsort 
   - python2-nautilus 
   - python2-nautilus-devel 
@@ -18527,6 +18524,7 @@ unsorted:
   - python2-numpy_1_16_5-gnu-hpc-devel 
   - python2-numpydoc 
   - python2-nwdiag 
+  - python2-nxapi-plumbing 
   - python2-oauth2 
   - python2-oauth2client 
   - python2-oauth2client-flask 
@@ -18591,6 +18589,7 @@ unsorted:
   - python2-pako 
   - python2-palettable 
   - python2-pamqp 
+  - python2-pan-python 
   - python2-pandas 
   - python2-pandas-datareader 
   - python2-pandocfilters 
@@ -18672,6 +18671,7 @@ unsorted:
   - python2-pocketsphinx 
   - python2-pocketsphinx-python 
   - python2-podcastparser 
+  - python2-podman 
   - python2-polib 
   - python2-pony 
   - python2-pook 
@@ -18820,11 +18820,13 @@ unsorted:
   - python2-pynamodb 
   - python2-pynetbox 
   - python2-pyngus 
+  - python2-pynxos 
   - python2-pyodbc 
   - python2-pyosf 
   - python2-pyotp 
   - python2-pyparallel 
   - python2-pyperclip 
+  - python2-pyperf 
   - python2-pypiserver 
   - python2-pypng 
   - python2-pyprel 
@@ -19220,6 +19222,7 @@ unsorted:
   - python2-sqlalchemy-migrate 
   - python2-sqlitedict 
   - python2-sqlparse 
+  - python2-srcinfo 
   - python2-ssdeep 
   - python2-sshpubkeys 
   - python2-sshtunnel 
@@ -19545,7 +19548,6 @@ unsorted:
   - python3-Flask-Migrate 
   - python3-Flask-Paranoid 
   - python3-Flask-Principal 
-  - python3-Flask-PyMongo 
   - python3-Flask-RESTful 
   - python3-Flask-RSTPages 
   - python3-Flask-SQLAlchemy 
@@ -20095,6 +20097,7 @@ unsorted:
   - python3-cfscrape 
   - python3-cftime 
   - python3-chai 
+  - python3-chainmap 
   - python3-charset-normalizer 
   - python3-chart-studio 
   - python3-check-manifest 
@@ -20444,7 +20447,6 @@ unsorted:
   - python3-flaky 
   - python3-flasgger 
   - python3-flask-jwt-extended 
-  - python3-flask-mongoengine: [x86_64] 
   - python3-flask-peewee 
   - python3-flask-restplus 
   - python3-flatbuffers 
@@ -20787,6 +20789,7 @@ unsorted:
   - python3-libqcow 
   - python3-librepo 
   - python3-librosa 
+  - python3-librouteros 
   - python3-libsass 
   - python3-libscca 
   - python3-libsignon-glib 
@@ -20914,6 +20917,12 @@ unsorted:
   - python3-mygpoclient 
   - python3-mysql-connector-python 
   - python3-nagiosplugin 
+  - python3-napalm 
+  - python3-napalm-ansible 
+  - python3-napalm-asa 
+  - python3-napalm-digineo-procurve 
+  - python3-napalm-exos 
+  - python3-napalm-procurve 
   - python3-natsort 
   - python3-nautilus 
   - python3-nautilus-devel 
@@ -20978,6 +20987,7 @@ unsorted:
   - python3-numpy_1_17_1-gnu-hpc-devel 
   - python3-numpydoc 
   - python3-nwdiag 
+  - python3-nxapi-plumbing 
   - python3-oauth2 
   - python3-oauth2client 
   - python3-oauth2client-flask 
@@ -21052,6 +21062,7 @@ unsorted:
   - python3-palettable 
   - python3-pampy 
   - python3-pamqp 
+  - python3-pan-python 
   - python3-pandas 
   - python3-pandas-datareader 
   - python3-pandocfilters 
@@ -21133,6 +21144,7 @@ unsorted:
   - python3-pmw 
   - python3-pocketsphinx-python 
   - python3-podcastparser 
+  - python3-podman 
   - python3-podman-compose 
   - python3-polib 
   - python3-policycoreutils: [i586] 
@@ -21287,6 +21299,7 @@ unsorted:
   - python3-pynamodb 
   - python3-pynetbox 
   - python3-pyngus 
+  - python3-pynxos 
   - python3-pyo 
   - python3-pyocr 
   - python3-pyodbc 
@@ -21296,6 +21309,7 @@ unsorted:
   - python3-pyowm 
   - python3-pyparallel 
   - python3-pyperclip 
+  - python3-pyperf 
   - python3-pypet 
   - python3-pypiserver 
   - python3-pypng 
@@ -21315,6 +21329,7 @@ unsorted:
   - python3-pysaml2 
   - python3-pyscard 
   - python3-pysendfile 
+  - python3-pyshark 
   - python3-pyshould 
   - python3-pyshp 
   - python3-pyside2 
@@ -21722,6 +21737,7 @@ unsorted:
   - python3-sqlalchemy-migrate 
   - python3-sqlitedict 
   - python3-sqlparse 
+  - python3-srcinfo 
   - python3-ssdeep 
   - python3-sshpubkeys 
   - python3-sshtunnel 
