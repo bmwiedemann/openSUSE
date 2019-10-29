@@ -1596,13 +1596,12 @@ unsorted:
   - clang7-checker 
   - clang7-devel 
   - clang7-devel-32bit: [x86_64] 
+  - clang8 
+  - clang8-checker 
   - clang8-devel 
   - clang8-devel-32bit: [x86_64] 
-  - clang9 
-  - clang9-checker 
   - clang9-devel 
   - clang9-devel-32bit: [x86_64] 
-  - clang9-doc 
   - clanlib 
   - clanlib-devel 
   - clanlib-doc 
@@ -6925,15 +6924,15 @@ unsorted:
   - libLLVM6-32bit: [x86_64] 
   - libLLVM7 
   - libLLVM7-32bit: [x86_64] 
+  - libLLVM8 
   - libLLVM8-32bit: [x86_64] 
-  - libLLVM9 
   - libLLVM9-32bit: [x86_64] 
   - libLTO6 
   - libLTO6-32bit: [x86_64] 
   - libLTO7 
   - libLTO7-32bit: [x86_64] 
+  - libLTO8 
   - libLTO8-32bit: [x86_64] 
-  - libLTO9 
   - libLTO9-32bit: [x86_64] 
   - libLimeSuite19_04-1 
   - libMagick++-7_Q16HDRI4-32bit: [x86_64] 
@@ -7963,8 +7962,8 @@ unsorted:
   - libclang6-32bit: [x86_64] 
   - libclang7 
   - libclang7-32bit: [x86_64] 
+  - libclang8 
   - libclang8-32bit: [x86_64] 
-  - libclang9 
   - libclang9-32bit: [x86_64] 
   - libclastfm-devel 
   - libclaw-devel 
@@ -12215,9 +12214,9 @@ unsorted:
   - lldb7: [x86_64] 
   - lldb7-devel: [x86_64] 
   - lldb8: [x86_64] 
-  - lldb8-devel: [x86_64] # devel package of dvd:libLLVM8 
+  - lldb8-devel: [x86_64] 
   - lldb9: [x86_64] 
-  - lldb9-devel: [x86_64] 
+  - lldb9-devel: [x86_64] # devel package of dvd:libLLVM9 
   - lldpd 
   - lldpd-devel 
   - llmnrd 

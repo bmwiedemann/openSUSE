@@ -321,8 +321,9 @@
       <repopackage name="circuslinux"/>
       <repopackage name="ckermit"/>
       <repopackage name="clamav"/>
-      <repopackage name="clang8"/>
-      <repopackage name="clang8-checker"/>
+      <repopackage name="clang9"/>
+      <repopackage name="clang9-checker"/>
+      <repopackage name="clang9-doc"/>
       <repopackage name="claws-mail"/>
       <repopackage name="claws-mail-lang"/>
       <repopackage name="clazy"/>
@@ -1587,7 +1588,7 @@
       <repopackage name="libcholmod3"/>
       <repopackage name="libchromaprint1"/>
       <repopackage name="libclamav9"/>
-      <repopackage name="libclang8"/>
+      <repopackage name="libclang9"/>
       <repopackage name="libclastfm0"/>
       <repopackage name="libclucene-contribs-lib1"/>
       <repopackage name="libclucene-core1"/>
@@ -2251,7 +2252,7 @@
       <repopackage name="liblink-grammar5"/>
       <repopackage name="liblirc_client0"/>
       <repopackage name="libliveMedia66"/>
-      <repopackage name="libLLVM8"/>
+      <repopackage name="libLLVM9"/>
       <repopackage name="liblmdb-0_9_23"/>
       <repopackage name="libloader"/>
       <repopackage name="liblockdev1"/>
@@ -2263,7 +2264,7 @@
       <repopackage name="liblqr-1-0"/>
       <repopackage name="liblrdf2"/>
       <repopackage name="libltdl7"/>
-      <repopackage name="libLTO8"/>
+      <repopackage name="libLTO9"/>
       <repopackage name="liblua5_1-5"/>
       <repopackage name="liblua5_3-5"/>
       <repopackage name="liblvm2cmd2_03"/>
