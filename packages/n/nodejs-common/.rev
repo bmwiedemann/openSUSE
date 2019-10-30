@@ -31,4 +31,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>679505</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d9b97bfb681901bb946c595b3343d6bd</srcmd5>
+    <version>3.0</version>
+    <time>1572442865</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove extra -g from compiler command-line</comment>
+    <requestid>743470</requestid>
+  </revision>
 </revisionlist>

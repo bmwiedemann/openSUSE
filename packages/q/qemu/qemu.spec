@@ -145,46 +145,50 @@ Patch00019:     vhost-Fix-memory-region-section-comparis.patch
 Patch00020:     hw-arm-boot.c-Set-NSACR.-CP11-CP10-for-N.patch
 Patch00021:     s390-PCI-fix-IOMMU-region-init.patch
 Patch00022:     hw-core-loader-Fix-possible-crash-in-rom.patch
-Patch00023:     XXX-dont-dump-core-on-sigabort.patch
-Patch00024:     qemu-binfmt-conf-Modify-default-path.patch
-Patch00025:     qemu-cvs-gettimeofday.patch
-Patch00026:     qemu-cvs-ioctl_debug.patch
-Patch00027:     qemu-cvs-ioctl_nodirection.patch
-Patch00028:     linux-user-add-binfmt-wrapper-for-argv-0.patch
-Patch00029:     PPC-KVM-Disable-mmu-notifier-check.patch
-Patch00030:     linux-user-binfmt-support-host-binaries.patch
-Patch00031:     linux-user-Fake-proc-cpuinfo.patch
-Patch00032:     linux-user-use-target_ulong.patch
-Patch00033:     Make-char-muxer-more-robust-wrt-small-FI.patch
-Patch00034:     linux-user-lseek-explicitly-cast-non-set.patch
-Patch00035:     AIO-Reduce-number-of-threads-for-32bit-h.patch
-Patch00036:     xen_disk-Add-suse-specific-flush-disable.patch
-Patch00037:     qemu-bridge-helper-reduce-security-profi.patch
-Patch00038:     qemu-binfmt-conf-use-qemu-ARCH-binfmt.patch
-Patch00039:     linux-user-properly-test-for-infinite-ti.patch
-Patch00040:     roms-Makefile-pass-a-packaging-timestamp.patch
-Patch00041:     Raise-soft-address-space-limit-to-hard-l.patch
-Patch00042:     increase-x86_64-physical-bits-to-42.patch
-Patch00043:     vga-Raise-VRAM-to-16-MiB-for-pc-0.15-and.patch
-Patch00044:     i8254-Fix-migration-from-SLE11-SP2.patch
-Patch00045:     acpi_piix4-Fix-migration-from-SLE11-SP2.patch
-Patch00046:     Switch-order-of-libraries-for-mpath-supp.patch
-Patch00047:     Make-installed-scripts-explicitly-python.patch
-Patch00048:     hw-smbios-handle-both-file-formats-regar.patch
-Patch00049:     xen-add-block-resize-support-for-xen-dis.patch
-Patch00050:     tests-qemu-iotests-Triple-timeout-of-i-o.patch
-Patch00051:     tests-block-io-test-130-needs-some-delay.patch
-Patch00052:     xen-ignore-live-parameter-from-xen-save-.patch
-Patch00053:     Conditionalize-ui-bitmap-installation-be.patch
-Patch00054:     tests-change-error-message-in-test-162.patch
-Patch00055:     hw-usb-hcd-xhci-Fix-GCC-9-build-warning.patch
-Patch00056:     hw-usb-dev-mtp-Fix-GCC-9-build-warning.patch
-Patch00057:     hw-intc-exynos4210_gic-provide-more-room.patch
-Patch00058:     configure-only-populate-roms-if-softmmu.patch
-Patch00059:     pc-bios-s390-ccw-net-avoid-warning-about.patch
-Patch00060:     roms-change-cross-compiler-naming-to-be-.patch
-Patch00061:     roms-Makefile.edk2-don-t-invoke-git-sinc.patch
-Patch00062:     tests-Disable-some-block-tests-for-now.patch
+Patch00023:     make-release-pull-in-edk2-submodules-so-.patch
+Patch00024:     roms-Makefile.edk2-don-t-pull-in-submodu.patch
+Patch00025:     coroutine-Add-qemu_co_mutex_assert_locke.patch
+Patch00026:     qcow2-Fix-corruption-bug-in-qcow2_detect.patch
+Patch00027:     XXX-dont-dump-core-on-sigabort.patch
+Patch00028:     qemu-binfmt-conf-Modify-default-path.patch
+Patch00029:     qemu-cvs-gettimeofday.patch
+Patch00030:     qemu-cvs-ioctl_debug.patch
+Patch00031:     qemu-cvs-ioctl_nodirection.patch
+Patch00032:     linux-user-add-binfmt-wrapper-for-argv-0.patch
+Patch00033:     PPC-KVM-Disable-mmu-notifier-check.patch
+Patch00034:     linux-user-binfmt-support-host-binaries.patch
+Patch00035:     linux-user-Fake-proc-cpuinfo.patch
+Patch00036:     linux-user-use-target_ulong.patch
+Patch00037:     Make-char-muxer-more-robust-wrt-small-FI.patch
+Patch00038:     linux-user-lseek-explicitly-cast-non-set.patch
+Patch00039:     AIO-Reduce-number-of-threads-for-32bit-h.patch
+Patch00040:     xen_disk-Add-suse-specific-flush-disable.patch
+Patch00041:     qemu-bridge-helper-reduce-security-profi.patch
+Patch00042:     qemu-binfmt-conf-use-qemu-ARCH-binfmt.patch
+Patch00043:     linux-user-properly-test-for-infinite-ti.patch
+Patch00044:     roms-Makefile-pass-a-packaging-timestamp.patch
+Patch00045:     Raise-soft-address-space-limit-to-hard-l.patch
+Patch00046:     increase-x86_64-physical-bits-to-42.patch
+Patch00047:     vga-Raise-VRAM-to-16-MiB-for-pc-0.15-and.patch
+Patch00048:     i8254-Fix-migration-from-SLE11-SP2.patch
+Patch00049:     acpi_piix4-Fix-migration-from-SLE11-SP2.patch
+Patch00050:     Switch-order-of-libraries-for-mpath-supp.patch
+Patch00051:     Make-installed-scripts-explicitly-python.patch
+Patch00052:     hw-smbios-handle-both-file-formats-regar.patch
+Patch00053:     xen-add-block-resize-support-for-xen-dis.patch
+Patch00054:     tests-qemu-iotests-Triple-timeout-of-i-o.patch
+Patch00055:     tests-Fix-block-tests-to-be-compatible-w.patch
+Patch00056:     xen-ignore-live-parameter-from-xen-save-.patch
+Patch00057:     Conditionalize-ui-bitmap-installation-be.patch
+Patch00058:     tests-change-error-message-in-test-162.patch
+Patch00059:     hw-usb-hcd-xhci-Fix-GCC-9-build-warning.patch
+Patch00060:     hw-usb-dev-mtp-Fix-GCC-9-build-warning.patch
+Patch00061:     hw-intc-exynos4210_gic-provide-more-room.patch
+Patch00062:     configure-only-populate-roms-if-softmmu.patch
+Patch00063:     pc-bios-s390-ccw-net-avoid-warning-about.patch
+Patch00064:     roms-change-cross-compiler-naming-to-be-.patch
+Patch00065:     tests-Disable-some-block-tests-for-now.patch
+Patch00066:     test-add-mapping-from-arch-of-i686-to-qe.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
@@ -255,43 +259,19 @@ BuildRequires:  bluez-devel
 BuildRequires:  brlapi-devel
 %ifnarch %{ix86} aarch64
 BuildRequires:  cross-aarch64-binutils
-%if 0%{?is_opensuse}
-%ifarch riscv64
-BuildRequires:  cross-aarch64-gcc8
-%else
-BuildRequires:  cross-aarch64-gcc9
-%endif
-%else
-BuildRequires:  cross-aarch64-gcc7
-%endif
+BuildRequires:  cross-aarch64-gcc%gcc_version
 %endif
 %ifnarch %{ix86} armv7hl
 BuildRequires:  cross-arm-binutils
-%if 0%{?is_opensuse}
-%ifarch riscv64
-BuildRequires:  cross-arm-gcc8
-%else
-BuildRequires:  cross-arm-gcc9
-%endif
-%else
-BuildRequires:  cross-arm-gcc7
-%endif
+BuildRequires:  cross-arm-gcc%gcc_version
 %endif
 %if %{build_x86_firmware_from_source}
 %ifnarch %{ix86} x86_64
 # We must cross-compile on non-x86*
 BuildRequires:  cross-i386-binutils
-%if 0%{?is_opensuse}
-BuildRequires:  cross-i386-gcc9
-%else
-BuildRequires:  cross-i386-gcc7
-%endif
+BuildRequires:  cross-i386-gcc%gcc_version
 BuildRequires:  cross-x86_64-binutils
-%if 0%{?is_opensuse}
-BuildRequires:  cross-x86_64-gcc9
-%else
-BuildRequires:  cross-x86_64-gcc7
-%endif
+BuildRequires:  cross-x86_64-gcc%gcc_version
 %endif
 %endif
 BuildRequires:  curl-devel
@@ -961,6 +941,10 @@ This package provides a service file for starting and stopping KSM.
 %patch00060 -p1
 %patch00061 -p1
 %patch00062 -p1
+%patch00063 -p1
+%patch00064 -p1
+%patch00065 -p1
+%patch00066 -p1
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1
@@ -1428,10 +1412,18 @@ make %{?_smp_mflags} -C %{_builddir}/%buildsubdir/roms opensbi64-sifive_u CROSS_
 # ------------------------------------------------------------------------
 %if "%{name}" == "qemu-testsuite"
 
+# TODO: Some of these are actually overwritten during the following make's
 ln -s %_bindir/qemu-img qemu-img
 ln -s %_bindir/qemu-ga qemu-ga
 ln -s %_bindir/qemu-io qemu-io
-# And what about these binaries: qemu-nbd, elf2dmp, ivshmem-client, ivshmem-server, qemu-edid, qemu-keymap, qemu-pr-helper, virtfs-proxy-helper
+ln -s %_bindir/elf2map elf2map
+ln -s %_bindir/qemu-nbd qemu-nbd
+ln -s %_bindir/qemu-edid qemu-edid
+ln -s %_bindir/qemu-keymap qemu-keymap
+ln -s %_bindir/ivshmem-client ivshmem-client
+ln -s %_bindir/ivshmem-server ivshmem-server
+ln -s %_bindir/qemu-pr-helper scsi/qemu-pr-helper
+ln -s %_bindir/virtfs-proxy-helper fsdev/virtfs-proxy-helper
 
 for i in %firmware
 do
@@ -1453,7 +1445,7 @@ make %{?_smp_mflags} tests/qom-test %{?_smp_mflags} V=1
 # ... make comes in fresh and has lots of address space (needed for 32bit, bsc#957379)
 make %{?_smp_mflags} check-report.tap V=1
 
-%endif # qemu
+%endif # qemu-testsuite
 # ------------------------------------------------------------------------
 %if "%{name}" == "qemu-linux-user"
 

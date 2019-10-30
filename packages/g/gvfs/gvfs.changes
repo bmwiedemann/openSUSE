@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 21 07:45:59 UTC 2019 - QK ZHU <qkzhu@suse.com>
+
+- Rebase SLE patches gvfs-nds.patch and gvfs-nvvfs.patch for version
+  1.42.1:
+  + Add daemon/nds.mount.in.
+  + Add daemon/nvvfs.mount.in.
+  + meson porting fixes.
+
+-------------------------------------------------------------------
 Mon Oct 14 07:17:45 UTC 2019 - QK ZHU <qkzhu@suse.com>
 
 - Rebase SLE patches for version 1.42.1:

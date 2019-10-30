@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct 24 15:42:43 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.24.2:
+  + Gdk:
+    - Window::create_similar_surface(): Fix a memory leak.
+    - Suppress warnings from deprecated GTimeVal in
+      PixbufAnimation::get_iter() and
+      PixbufAnimationIter::advance().
+  + Gtk: Fix memory leaks in IconTheme::list_icons(),
+    IconView::get_selected_icons() and RecentManager::get_items().
+  + Documentation: Gtk::Builder: Describe how to use it together
+    with Glib::Property.
+  + Demos: Fix the source code listing.
+
+-------------------------------------------------------------------
 Wed Mar 20 23:11:56 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.24.1:

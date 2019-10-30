@@ -20,12 +20,12 @@
 %define so_ver -3_0-1
 %define _name gtkmm
 Name:           gtkmm3
-Version:        3.24.1
+Version:        3.24.2
 Release:        0
 Summary:        C++ Interface for GTK3 (a GUI Library for X)
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
-URL:            http://www.gtkmm.org/
+URL:            https://www.gtkmm.org/
 Source0:        https://download.gnome.org/sources/gtkmm/3.24/%{_name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
@@ -89,7 +89,7 @@ freely combined to quickly create complex user interfaces.
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

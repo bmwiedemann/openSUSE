@@ -25,7 +25,9 @@ Group:          Productivity/Text/Spell
 URL:            https://abiword.github.io/enchant/
 Source:         https://github.com/AbiWord/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
+%if 0%{?is_opensuse}
 BuildRequires:  aspell-devel
+%endif
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel
@@ -58,6 +60,7 @@ with different spell checking libraries.
 
 This package provides data/configuration files for libenchant.
 
+%if 0%{?is_opensuse}
 %package -n enchant-2-backend-aspell
 Summary:        Aspell backend for the Enchant spell checking library
 Group:          Productivity/Text/Spell
@@ -68,6 +71,7 @@ Provides:       enchant-2-backend
 Aspell plugin for enchant, a library providing an efficient
 extensible abstraction for dealing with different spell checking
 libraries.
+%endif
 
 %package -n enchant-2-backend-hunspell
 Summary:        Hunspell backend for the Enchant spell checking library
@@ -119,8 +123,12 @@ to develop applications that require these.
 
 %build
 %configure \
+%if 0%{?is_opensuse}
     --disable-static \
     --with-aspell
+%else
+    --disable-static
+%endif
 make %{?_smp_mflags}
 
 %install
@@ -142,9 +150,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/*.so.*
 %dir %{_libdir}/enchant-2
 
+%if 0%{?is_opensuse}
 %files -n enchant-2-backend-aspell
 %dir %{_libdir}/enchant-2
 %{_libdir}/enchant-2/enchant_aspell.so
+%endif
 
 %files -n enchant-2-backend-hunspell
 %dir %{_libdir}/enchant-2

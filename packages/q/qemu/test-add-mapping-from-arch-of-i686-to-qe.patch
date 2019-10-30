@@ -1,0 +1,25 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Sat, 5 Oct 2019 09:09:42 -0600
+Subject: test: add mapping from arch of i686 to qemu_arch=i386
+
+While we don't specifically set QEMU_PROG, the code which detects the
+host architecture needs a little help mapping the output of uname -m to
+what the qemu project uses to reference that architecture.
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ tests/qemu-iotests/common.config | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/qemu-iotests/common.config b/tests/qemu-iotests/common.config
+index 9bd1a5a6fc8367c336e9f51fe22f..e1c6ffa0cca3a8f14feeb38d6da8 100644
+--- a/tests/qemu-iotests/common.config
++++ b/tests/qemu-iotests/common.config
+@@ -24,6 +24,7 @@ PATH=".:$PATH"
+ HOSTOS=$(uname -s)
+ arch=$(uname -m)
+ [[ "$arch" =~ "ppc64" ]] && qemu_arch=ppc64 || qemu_arch="$arch"
++[[ "$arch" = "i686" ]] && qemu_arch=i386
+ 
+ # make sure we have a standard umask
+ umask 022

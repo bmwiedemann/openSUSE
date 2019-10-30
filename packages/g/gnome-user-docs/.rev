@@ -586,4 +586,14 @@
   + Updated translations.</comment>
     <requestid>739032</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>ab2056dc79c6b69329f0fb79572e7120</srcmd5>
+    <version>3.34.1</version>
+    <time>1572442831</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.34.1:
+  + Updates to GNOME Help.
+  + Updated translations. (forwarded request 743600 from iznogood)</comment>
+    <requestid>743768</requestid>
+  </revision>
 </revisionlist>

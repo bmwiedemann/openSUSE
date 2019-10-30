@@ -19,16 +19,16 @@
 
 # When updating the binary version, do not forget to also update baselibs.conf
 %define         gtk_binary_version 3.0.0
-%define _name   gtk+
+%define _name   gtk
 %bcond_without  broadway
 Name:           gtk3
-Version:        3.24.12
+Version:        3.24.12+32
 Release:        0
 Summary:        The GTK+ toolkit library (version 3)
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/X11
 URL:            https://www.gtk.org/
-Source0:        https://download.gnome.org/sources/gtk+/3.24/%{_name}-%{version}.tar.xz
+Source0:        %{_name}-%{version}.tar.xz
 Source1:        README.SUSE
 Source2:        settings.ini
 Source3:        macros.gtk3
@@ -37,11 +37,15 @@ Source99:       baselibs.conf
 Patch0:         gtk3-GTK_PATH64.patch
 # PATCH-FIX-OPENSUSE gtk3-revert-forced-xftdpi.patch fvogt@opensuse.org -- Revert very controversal commit on GTK3, forcing DPI to 96
 Patch1:         gtk3-revert-forced-xftdpi.patch
+
 BuildRequires:  cups-devel >= 1.7
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools-mini >= 0.19.7
+BuildRequires:  gtk-doc
 BuildRequires:  hicolor-icon-theme
+# libtool is needed since we are using a git checkout
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 BuildRequires:  xsltproc
@@ -351,7 +355,7 @@ This package enhances gettext with an International Tag Set for GTK+ 3
 %lang_package
 
 %prep
-%setup -q -n gtk+-%{version}
+%setup -q -n %{_name}-%{version}
 translation-update-upstream
 translation-update-upstream po-properties gtk30-properties
 # remove incomplete translations caused by translation-update-upstream (global LINGUAS file, two domains)
@@ -369,9 +373,10 @@ cp -a %{SOURCE1} .
 %patch1 -p1
 
 %build
-%define _lto_cflags %{nil}
+NOCONFIGURE=1 ./autogen.sh
 %configure \
         --disable-static \
+        --enable-gtk-doc \
         --enable-man \
         --enable-x11-backend \
         --enable-introspection \

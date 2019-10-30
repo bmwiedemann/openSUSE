@@ -1,7 +1,7 @@
-Index: sudo-1.8.14p3/plugins/sudoers/sudoers.in
+Index: sudo-1.8.28/plugins/sudoers/sudoers.in
 ===================================================================
---- sudo-1.8.14p3.orig/plugins/sudoers/sudoers.in
-+++ sudo-1.8.14p3/plugins/sudoers/sudoers.in
+--- sudo-1.8.28.orig/plugins/sudoers/sudoers.in	2019-10-14 17:00:02.176362373 +0200
++++ sudo-1.8.28/plugins/sudoers/sudoers.in	2019-10-14 17:00:04.688378325 +0200
 @@ -32,30 +32,23 @@
  ##
  ## Defaults specification
@@ -82,20 +82,20 @@ Index: sudo-1.8.14p3/plugins/sudoers/sudoers.in
  ## Read drop-in files from @sysconfdir@/sudoers.d
  ## (the '#' here does not indicate a comment)
  #includedir @sysconfdir@/sudoers.d
-Index: sudo-1.8.14p3/doc/sudoers.mdoc.in
+Index: sudo-1.8.28/doc/sudoers.mdoc.in
 ===================================================================
---- sudo-1.8.14p3.orig/doc/sudoers.mdoc.in
-+++ sudo-1.8.14p3/doc/sudoers.mdoc.in
-@@ -1711,7 +1711,7 @@ is present in the
+--- sudo-1.8.28.orig/doc/sudoers.mdoc.in	2019-10-14 17:00:02.176362373 +0200
++++ sudo-1.8.28/doc/sudoers.mdoc.in	2019-10-14 17:03:30.841685660 +0200
+@@ -1972,7 +1972,7 @@ is present in the
  .Em env_keep
- list.
+ list, both of which are strongly discouraged.
  This flag is
 -.Em off
 +.Em on
  by default.
  .It authenticate
  If set, users must authenticate themselves via a password (or other
-@@ -2027,7 +2027,7 @@ If set,
+@@ -2364,7 +2364,7 @@ If set,
  .Nm sudo
  will insult users when they enter an incorrect password.
  This flag is
@@ -104,7 +104,7 @@ Index: sudo-1.8.14p3/doc/sudoers.mdoc.in
  by default.
  .It log_host
  If set, the host name will be logged in the (non-syslog)
-@@ -2508,7 +2508,7 @@ database as an argument to the
+@@ -2941,7 +2941,7 @@ database as an argument to the
  .Fl u
  option.
  This flag is

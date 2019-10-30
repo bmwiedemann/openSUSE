@@ -378,4 +378,21 @@
     <comment>Scripted push from {project}</comment>
     <requestid>736549</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>43854de1f10e97475e7bbdb211b6aa39</srcmd5>
+    <version>3.34.1</version>
+    <time>1572442810</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.34.1:
+  + Restore MPRIS playlist support.
+  + Playlist fixes.
+  + Bring back loading notifications.
+  + Bugs fixed:
+    - Fix visual glitches.
+    - Use pkglibdir for gfmlibdir.
+    - Limit smartplaylist content to XDG Music dir.
+    - Crash when removing GOA account.
+  + Updated translations. (forwarded request 742981 from iznogood)</comment>
+    <requestid>743761</requestid>
+  </revision>
 </revisionlist>

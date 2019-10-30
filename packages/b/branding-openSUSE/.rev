@@ -978,4 +978,12 @@ update go git:
   librsvg was renamed accordingly. (forwarded request 738655 from dimstar)</comment>
     <requestid>738656</requestid>
   </revision>
+  <revision rev="111" vrev="3">
+    <srcmd5>a977afe4a173423efa9694a8412ef953</srcmd5>
+    <version>84.87.20191004</version>
+    <time>1572442845</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>743239</requestid>
+  </revision>
 </revisionlist>

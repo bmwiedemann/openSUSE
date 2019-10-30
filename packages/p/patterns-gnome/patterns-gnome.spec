@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-gnome
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -221,8 +221,6 @@ Suggests:       gnome-backgrounds
 # bnc#698250
 Suggests:       gnome-color-manager
 %else
-# This is NetworkManager-applet in tumbleweed
-Recommends:     NetworkManager-gnome
 Recommends:     NetworkManager-openconnect-gnome
 # bsc#1065148
 Recommends:     NetworkManager-openvpn-gnome
@@ -325,7 +323,6 @@ Recommends:     yelp
 %if 0%{is_opensuse}
 # bnc#430161
 Recommends:     NetworkManager
-Recommends:     NetworkManager-applet
 %endif
 %if 0%{is_opensuse}
 Recommends:     canberra-gtk-play

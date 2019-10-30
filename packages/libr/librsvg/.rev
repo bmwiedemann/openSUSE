@@ -745,4 +745,12 @@
     an exponential amount of CPU time. (forwarded request 738457 from iznogood)</comment>
     <requestid>738536</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>9650ac5b83b3ca396cab8f19f0b9a35c</srcmd5>
+    <version>2.46.3</version>
+    <time>1572442797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>742530</requestid>
+  </revision>
 </revisionlist>

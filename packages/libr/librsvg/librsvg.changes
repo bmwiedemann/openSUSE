@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 23 14:46:43 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.46.3:
+  + glgo#GNOME/librsvg#516: Fix inadvertent bump in the minimum
+    Rust version required. The string_cache crate is now pinned to
+    a version that still works on Rust 1.34.
+  + glgo#GNOME/librsvg#521: Compute geometries correctly if there
+    is a viewBox attribute.
+  + glgo#GNOME/librsvg#308: Fix stack exhaustion with circular
+    references in <use> elements.
+  + Consistently use the LGPL 2.1 wherever it is mentioned.
+- Drop COPYING, everything is covered by COPYING.LIB now.
+
+-------------------------------------------------------------------
 Mon Oct 14 17:06:58 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.46.2:

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 10 21:23:57 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Add fix-for-plasma.patch to add symlinks for cursors used by KDE
+  Plasma. This patch brings the DMZ theme on par with the breeze
+  cursor themes.
+
+-------------------------------------------------------------------
 Sun Jul  9 20:48:05 UTC 2017 - seife+obs@b1-systems.com
 
 - actually build and install the cursors, instead of random stuff

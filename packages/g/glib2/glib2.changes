@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct 21 17:28:20 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.62.2:
+  + Bugs fixed:
+    - glgo#GNOME/GLib#1896: Use after free when calling
+      g_dbus_connection_flush_sync() in a dedicated thread.
+    - glgo#GNOME/GLib!1154: Backport glgo#GNOME/GLib!1152
+      “gwinhttpvfs: Handle g_get_prgname() returning NULL” to
+      glib-2-62.
+    - glgo#GNOME/GLib!1156: Backport glgo#GNOME/GLib!1146 Solaris
+      fixes to glib-2-62.
+
+-------------------------------------------------------------------
 Fri Oct  4 12:12:46 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.62.1:

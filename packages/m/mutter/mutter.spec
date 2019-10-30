@@ -23,7 +23,7 @@
 %define api_minor 0
 %define libmutter libmutter-%{api_major}-%{api_minor}
 Name:           mutter
-Version:        3.34.1+21
+Version:        3.34.1+27
 Release:        0
 Summary:        Window and compositing manager based on Clutter
 License:        GPL-2.0-or-later
@@ -77,7 +77,7 @@ BuildRequires:  pkgconfig(sysprof-3)
 BuildRequires:  pkgconfig(sysprof-capture-3)
 %endif
 BuildRequires:  pkgconfig(upower-glib) >= 0.99.0
-BuildRequires:  pkgconfig(wayland-protocols) >= 1.10
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.18
 BuildRequires:  pkgconfig(wayland-server) >= 1.13.0
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)

@@ -310,4 +310,67 @@
     <comment></comment>
     <requestid>720711</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>0d5eab3f0a59f1bf771a0d65aca58f19</srcmd5>
+    <version>4.4</version>
+    <time>1572442877</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 4.4 - 2019-08-29:
+ * Reproducible builds, new compressors,
+   CVE fixes, security hardening and new options
+   for Mksquashfs/Unsquashfs.
+- Overall improvements:
+ * Mksquashfs now generates reproducible images by default.
+ * Mkfs time and file timestamps can also be specified.
+ * Support for the Zstandard (ZSTD) compression algorithm.
+ * CVE-2015-4645 and CVE-2015-4646 have been fixed.
+- Mksquashfs improvements and major bug fixes:
+ * Pseudo files now support symbolic links.
+ * New -mkfs-time option.
+ * New -all-time option.
+ * New -root-mode option.
+ * New -quiet option.
+ * New -noId option.
+ * New -offset option.
+ * Update lz4 wrapper to use new functions introduced
+   in 1.7.0.
+ * Bug fix, don't allow &quot;/&quot; pseudo filenames.
+ * Bug fix, allow quoting of pseudo files, to
+   better handle filenames with spaces.
+ * Fix compilation with glibc 2.25+.
+- Unsquashfs improvements and major bug fixes:
+ * CVE-2015-4645 and CVE-2015-4646 have been fixed.
+ * Unsquashfs has been further hardened against corrupted
+   filestems.
+ * Unsquashfs is now more strict about error handling.
+ * New -ignore-errors option.
+ * New -strict-errors option.
+ * New -lln[umeric] option.
+ * New -lc option.
+ * New -llc option.
+ * New -mkfs-time option.
+ * New -UTC option.
+ * New -offset option.
+ * New -quiet option.
+ * Update lz4 wrapper to use new functions introduced
+   in 1.7.0.
+ * Bug fix, fatal and non-fatal errors now set the exit
+   code to 1.
+ * Bug fix, fix time setting for symlinks.
+ * Bug fix, try to set sticky-bit when running as a
+   user process.
+ * Fix compilation with glibc 2.25+.
+- build changes:
+* re-created patches to fit squashfs 4.4
+* removed 0001-mksquashfs-fix-rare-race-in-fragment-waiting-in-file.patch
+  (new version includes this change)
+* removed 0002-Fix-2GB-limit-of-the-is_fragment-.-function.patch
+  (new version includes this change)
+* removed 0003-Add-offset-function-to-skip-n-bytes.patch
+  (new version includes this change)
+* removed sysmacros.patch
+  (new version includes this change)
+</comment>
+    <requestid>743375</requestid>
+  </revision>
 </revisionlist>

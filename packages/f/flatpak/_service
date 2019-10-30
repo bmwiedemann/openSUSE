@@ -3,7 +3,7 @@
     <param name="url">https://github.com/flatpak/flatpak.git</param>
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">refs/tags/1.4.2</param>
+    <param name="revision">refs/tags/1.4.3</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>

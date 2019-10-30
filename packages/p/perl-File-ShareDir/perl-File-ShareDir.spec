@@ -1,7 +1,7 @@
 #
 # spec file for package perl-File-ShareDir
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-File-ShareDir
-Version:        1.112
+Version:        1.116
 Release:        0
 %define cpan_name File-ShareDir
 Summary:        Locate per-dist and per-module shared files
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/File-ShareDir/
+Url:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RE/REHSACK/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -31,11 +31,17 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Class::Inspector) >= 1.12
-BuildRequires:  perl(Test::More) >= 0.9
+BuildRequires:  perl(File::Path) >= 2.080000
+BuildRequires:  perl(Test::More) >= 0.90
 Requires:       perl(Class::Inspector) >= 1.12
 Recommends:     perl(List::MoreUtils) >= 0.428
 Recommends:     perl(Params::Util) >= 1.07
 %{perl_requires}
+# MANUAL BEGIN
+# because File::ShareDir::Install is in inc/ it won't be seen as a
+# dependency by cpanspec
+BuildRequires:  perl(File::ShareDir::Install)
+# MANUAL END
 
 %description
 The intent of File::ShareDir is to provide a companion to Class::Inspector
@@ -80,14 +86,14 @@ of data.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -name "*.sh" -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install

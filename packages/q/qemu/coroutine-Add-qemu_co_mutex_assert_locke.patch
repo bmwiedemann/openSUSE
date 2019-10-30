@@ -1,0 +1,48 @@
+From: Kevin Wolf <kwolf@redhat.com>
+Date: Thu, 24 Oct 2019 16:26:57 +0200
+Subject: coroutine: Add qemu_co_mutex_assert_locked()
+
+Git-commit: 944f3d5dd216fcd8cb007eddd4f82dced0a15b3d
+
+Some functions require that the caller holds a certain CoMutex for them
+to operate correctly. Add a function so that they can assert the lock is
+really held.
+
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+Tested-by: Michael Weiser <michael.weiser@gmx.de>
+Reviewed-by: Michael Weiser <michael.weiser@gmx.de>
+Reviewed-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Reviewed-by: Denis V. Lunev <den@openvz.org>
+Reviewed-by: Max Reitz <mreitz@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ include/qemu/coroutine.h | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/include/qemu/coroutine.h b/include/qemu/coroutine.h
+index 9801e7f5a4978bf4a5a74d33aeb6..f4843b5f595eb0beb1ce2f3e4e39 100644
+--- a/include/qemu/coroutine.h
++++ b/include/qemu/coroutine.h
+@@ -167,6 +167,21 @@ void coroutine_fn qemu_co_mutex_lock(CoMutex *mutex);
+  */
+ void coroutine_fn qemu_co_mutex_unlock(CoMutex *mutex);
+ 
++/**
++ * Assert that the current coroutine holds @mutex.
++ */
++static inline coroutine_fn void qemu_co_mutex_assert_locked(CoMutex *mutex)
++{
++    /*
++     * mutex->holder doesn't need any synchronisation if the assertion holds
++     * true because the mutex protects it. If it doesn't hold true, we still
++     * don't mind if another thread takes or releases mutex behind our back,
++     * because the condition will be false no matter whether we read NULL or
++     * the pointer for any other coroutine.
++     */
++    assert(atomic_read(&mutex->locked) &&
++           mutex->holder == qemu_coroutine_self());
++}
+ 
+ /**
+  * CoQueues are a mechanism to queue coroutines in order to continue executing

@@ -1,6 +1,7 @@
---- squashfs4.3/squashfs-tools/mksquashfs.c.orig	2014-05-13 00:18:20.000000000 +0200
-+++ squashfs4.3/squashfs-tools/mksquashfs.c	2016-06-16 17:06:56.347792650 +0200
-@@ -4126,6 +4126,15 @@ void initialise_threads(int readq, int f
+diff -dupr squashfs4.4_orig/squashfs-tools/mksquashfs.c squashfs4.4/squashfs-tools/mksquashfs.c
+--- squashfs4.4_orig/squashfs-tools/mksquashfs.c	2019-10-21 15:36:52.002369471 +0200
++++ squashfs4.4/squashfs-tools/mksquashfs.c	2019-10-21 15:37:13.402549491 +0200
+@@ -4384,6 +4384,15 @@ void initialise_threads(int readq, int f
  		processors = sysconf(_SC_NPROCESSORS_ONLN);
  #endif
  	}

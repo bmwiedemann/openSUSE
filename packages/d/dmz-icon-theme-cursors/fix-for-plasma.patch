@@ -1,0 +1,182 @@
+diff -ur a/DMZ-Black/pngs/make.sh b/DMZ-Black/pngs/make.sh
+--- a/DMZ-Black/pngs/make.sh	2010-09-05 18:32:03.000000000 +0200
++++ b/DMZ-Black/pngs/make.sh	2019-09-10 23:15:07.927092661 +0200
+@@ -63,14 +63,21 @@
+ ln -sf    X_cursor			pirate
+ ln -sf    left_ptr_watch	08e8e1c95fe2fc01f976f1e063a24ccd
+ ln -sf    left_ptr_watch	3ecb610c1bf2410f44200f48c40d3599
++ln -sf    left_ptr_watch	half-busy
++ln -sf    left_ptr_watch    progress
+ ln -sf    left_ptr			arrow
+ ln -sf    left_ptr			top_left_arrow
++ln -sf    left_ptr          center_ptr
++ln -sf    left_ptr          context-menu
++ln -sf    left_ptr          default
++ln -sf    left_ptr          draft
+ ln -sf    right_ptr			draft_large
+ ln -sf    right_ptr			draft_small
+ ln -sf    move				4498f0e0c1937ffe01fd06f973665830
+ ln -sf    move				9081237383d90e509aa00f00170e968f
+ ln -sf    copy				1081e37283d90000800003c07f3ef6bf
+ ln -sf    copy				6407b0e94181790501fd1e167b474872
++ln -sf    copy              b66166c04f8c3109214a4fbd64a50fc8
+ ln -sf    cross				cross_reverse
+ ln -sf    cross				diamond_cross
+ ln -sf    hand2				9d800788f1b08800ae810202380a0822
+@@ -82,20 +89,65 @@
+ ln -sf    question_arrow	5c6cd98b3f3ebcb1f9c7f1c204630408
+ ln -sf    question_arrow	help
+ ln -sf    question_arrow	left_ptr_help
++ln -sf    question_arrow	whats_this
+ ln -sf    link				3085a0e285430894940527032f8b26df
+ ln -sf    link				640fb0e74195791501fd1ed57b41487f
++ln -sf    link              a2a266d0498c3104214a47bd64ab0fc8
++ln -sf    link              alias
+ ln -sf    crossed_circle	03b6e0fcb3499374a867c041f52298f0
++ln -sf    crossed_circle	not-allowed
+ ln -sf    fd_double_arrow	fcf1c3c7cd4491d801f1e1c78f100000
++ln -sf    fd_double_arrow	size-fdiag
++ln -sf    fd_double_arrow	size_fdiag
+ ln -sf    bd_double_arrow	c7088f0f3e6c8088236ef8e1e3e70000
++ln -sf    bd_double_arrow	size-bdiag
++ln -sf    bd_double_arrow	size_bdiag
+ #ln -sf    based_arrow_up	base_arrow_up
+ #ln -sf    based_arrow_down	base_arrow_down
+ ln -sf    sb_h_double_arrow h_double_arrow
+ ln -sf    sb_h_double_arrow	14fef782d02440884392942c11205230
++ln -sf    sb_h_double_arrow col-resize
++ln -sf    sb_h_double_arrow size-hor
++ln -sf    sb_h_double_arrow size_hor
++ln -sf    sb_h_double_arrow split_h
+ ln -sf    h_double_arrow	028006030e0e7ebffc7f7070c0600140
+ ln -sf    sb_v_double_arrow double_arrow
+ ln -sf    sb_v_double_arrow v_double_arrow
+ ln -sf    sb_v_double_arrow	2870a09082c103050810ffdffffe0204
++ln -sf    sb_v_double_arrow	row-resize
++ln -sf    sb_v_double_arrow	size-ver
++ln -sf    sb_v_double_arrow	size_ver
++ln -sf    sb_v_double_arrow	split_v
+ ln -sf    v_double_arrow	00008160000006810000408080010102
+ #ln -sf    center_ptr		centre_ptr
++ln -sf    progress          00000000000000020006000e7e9ffc3f
++ln -sf    fleur             all-scroll
++ln -sf    crosshair         cell
++ln -sf    dnd-move          closedhand
++ln -sf    dnd-move          fcf21c00b30f7e3f83fe0dfd12e71cff
++ln -sf    dnd-none          dnd-no-drop
++ln -sf    sb_down_arrow     down-arrow
++ln -sf    right_side        e-resize
++ln -sf    circle            forbidden
++ln -sf    circle            no-drop
++ln -sf    xterm             ibeam
++ln -sf    xterm             text
++ln -sf    sb_left_arrow     left-arrow
++ln -sf    top_right_corner  ne-resize
++ln -sf    top_side          n-resize
++ln -sf    top_left_corner   nw-resize
++ln -sf    hand1             openhand
++ln -sf    hand1             pointer
++ln -sf    hand1             pointing_hand
++ln -sf    sb_right_arrow    right-arrow
++ln -sf    bottom_right_corner se-resize
++ln -sf    fleur             size_all
++ln -sf    bottom_side       s-resize
++ln -sf    bottom_left_corner sw-resize
++ln -sf    sb_up_arrow       up-arrow
++ln -sf    watch             wait
++ln -sf    left_side         w-resize
++ln -sf    X_cursor          x-cursor
++
+ 
+ #cp -RPv * /usr/share/icons/dmz-aa/cursors/
+diff -ur a/DMZ-White/pngs/make.sh b/DMZ-White/pngs/make.sh
+--- a/DMZ-White/pngs/make.sh	2010-09-05 18:32:03.000000000 +0200
++++ b/DMZ-White/pngs/make.sh	2019-09-10 23:20:51.349824675 +0200
+@@ -63,14 +63,21 @@
+ ln -sf    X_cursor			pirate
+ ln -sf    left_ptr_watch	08e8e1c95fe2fc01f976f1e063a24ccd
+ ln -sf    left_ptr_watch	3ecb610c1bf2410f44200f48c40d3599
++ln -sf    left_ptr_watch	half-busy
++ln -sf    left_ptr_watch    progress
+ ln -sf    left_ptr			arrow
+ ln -sf    left_ptr			top_left_arrow
++ln -sf    left_ptr          center_ptr
++ln -sf    left_ptr          context-menu
++ln -sf    left_ptr          default
++ln -sf    left_ptr          draft
+ ln -sf    right_ptr			draft_large
+ ln -sf    right_ptr			draft_small
+ ln -sf    move				4498f0e0c1937ffe01fd06f973665830
+ ln -sf    move				9081237383d90e509aa00f00170e968f
+ ln -sf    copy				1081e37283d90000800003c07f3ef6bf
+ ln -sf    copy				6407b0e94181790501fd1e167b474872
++ln -sf    copy              b66166c04f8c3109214a4fbd64a50fc8
+ ln -sf    cross				cross_reverse
+ ln -sf    cross				diamond_cross
+ ln -sf    hand2				9d800788f1b08800ae810202380a0822
+@@ -82,20 +89,65 @@
+ ln -sf    question_arrow	5c6cd98b3f3ebcb1f9c7f1c204630408
+ ln -sf    question_arrow	help
+ ln -sf    question_arrow	left_ptr_help
++ln -sf    question_arrow	whats_this
+ ln -sf    link				3085a0e285430894940527032f8b26df
+ ln -sf    link				640fb0e74195791501fd1ed57b41487f
++ln -sf    link              a2a266d0498c3104214a47bd64ab0fc8
++ln -sf    link              alias
+ ln -sf    crossed_circle	03b6e0fcb3499374a867c041f52298f0
++ln -sf    crossed_circle	not-allowed
+ ln -sf    fd_double_arrow	fcf1c3c7cd4491d801f1e1c78f100000
++ln -sf    fd_double_arrow	size-fdiag
++ln -sf    fd_double_arrow	size_fdiag
+ ln -sf    bd_double_arrow	c7088f0f3e6c8088236ef8e1e3e70000
++ln -sf    bd_double_arrow	size-bdiag
++ln -sf    bd_double_arrow	size_bdiag
+ #ln -sf    based_arrow_up	base_arrow_up
+ #ln -sf    based_arrow_down	base_arrow_down
+ ln -sf    sb_h_double_arrow h_double_arrow
+ ln -sf    sb_h_double_arrow	14fef782d02440884392942c11205230
++ln -sf    sb_h_double_arrow col-resize
++ln -sf    sb_h_double_arrow size-hor
++ln -sf    sb_h_double_arrow size_hor
++ln -sf    sb_h_double_arrow split_h
+ ln -sf    h_double_arrow	028006030e0e7ebffc7f7070c0600140
+ ln -sf    sb_v_double_arrow double_arrow
+ ln -sf    sb_v_double_arrow v_double_arrow
+ ln -sf    sb_v_double_arrow	2870a09082c103050810ffdffffe0204
++ln -sf    sb_v_double_arrow	row-resize
++ln -sf    sb_v_double_arrow	size-ver
++ln -sf    sb_v_double_arrow	size_ver
++ln -sf    sb_v_double_arrow	split_v
+ ln -sf    v_double_arrow	00008160000006810000408080010102
+ #ln -sf    center_ptr		centre_ptr
++ln -sf    progress          00000000000000020006000e7e9ffc3f
++ln -sf    fleur             all-scroll
++ln -sf    crosshair         cell
++ln -sf    dnd-move          closedhand
++ln -sf    dnd-move          fcf21c00b30f7e3f83fe0dfd12e71cff
++ln -sf    dnd-none          dnd-no-drop
++ln -sf    sb_down_arrow     down-arrow
++ln -sf    right_side        e-resize
++ln -sf    circle            forbidden
++ln -sf    circle            no-drop
++ln -sf    xterm             ibeam
++ln -sf    xterm             text
++ln -sf    sb_left_arrow     left-arrow
++ln -sf    top_right_corner  ne-resize
++ln -sf    top_side          n-resize
++ln -sf    top_left_corner   nw-resize
++ln -sf    hand1             openhand
++ln -sf    hand1             pointer
++ln -sf    hand1             pointing_hand
++ln -sf    sb_right_arrow    right-arrow
++ln -sf    bottom_right_corner se-resize
++ln -sf    fleur             size_all
++ln -sf    bottom_side       s-resize
++ln -sf    bottom_left_corner sw-resize
++ln -sf    sb_up_arrow       up-arrow
++ln -sf    watch             wait
++ln -sf    left_side         w-resize
++ln -sf    X_cursor          x-cursor
++
+ 
+ #cp -RPv * /usr/share/icons/Vanilla-DMZ/cursors/

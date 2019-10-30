@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 17 09:30:20 UTC 2019 - Josef Möllers <josef.moellers@suse.com>
+
+- Fixed another instance where division by 0 may occur.
+  [bsc#1129403, bsc1129403-prevent-division-by-zero.patch]
+
+-------------------------------------------------------------------
 Thu Jun 13 06:39:36 UTC 2019 - josef.moellers@suse.com
 
 - Prevent division by zero by first checking if uncompressed size

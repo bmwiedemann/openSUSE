@@ -20,15 +20,14 @@
 %bcond_without python2
 %bcond_without python3
 Name:           libpeas
-Version:        1.24.0
+Version:        1.24.1
 Release:        0
 Summary:        GObject-based Plugin Engine
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/Libpeas
-# Source based on git _service
-Source:         https://download.gnome.org/sources/libpeas/1.24/%{name}-%{version}.tar.xz
-#Source:         http://download.gnome.org/sources/libpeas/1.20/%%{name}-%%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/libpeas/1.24/%{name}-%{version}.tar.xz
+
 BuildRequires:  gettext
 BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkgconfig
@@ -171,7 +170,7 @@ every application the chance to assume its own extensibility.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 translation-update-upstream po %{name}
 
 %build
@@ -216,7 +215,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %if %{with python2}
 %files loader-python
-%{_libdir}/libpeas-1.0/loaders/libpython2loader.so
+%{_libdir}/libpeas-1.0/loaders/libpythonloader.so
 %endif
 
 %if %{with python3}

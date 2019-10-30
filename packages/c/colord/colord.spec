@@ -17,21 +17,23 @@
 
 
 %define _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d
+
 Name:           colord
-Version:        1.4.3
+Version:        1.4.4
 Release:        0
 Summary:        System Daemon for Managing Color Devices
 License:        GPL-2.0-or-later
 Group:          System/Daemons
-URL:            http://colord.hughsie.com/
-Source0:        http://www.freedesktop.org/software/colord/releases/%{name}-%{version}.tar.xz
-Source1:        http://www.freedesktop.org/software/colord/releases/%{name}-%{version}.tar.xz.asc
+URL:            https://github.com/hughsie/colord/
+Source0:        https://www.freedesktop.org/software/colord/releases/%{name}-%{version}.tar.xz
+Source1:        https://www.freedesktop.org/software/colord/releases/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 # Apparmor profile
 Source3:        usr.lib.colord
 Source99:       baselibs.conf
+
 BuildRequires:  argyllcms
-BuildRequires:  docbook-utils-minimal
+BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
 BuildRequires:  meson

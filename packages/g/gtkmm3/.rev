@@ -345,4 +345,23 @@
     <comment></comment>
     <requestid>687767</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>cde2d7841b05875ad13494366cae2ef8</srcmd5>
+    <version>3.24.2</version>
+    <time>1572442802</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.24.2:
+  + Gdk:
+    - Window::create_similar_surface(): Fix a memory leak.
+    - Suppress warnings from deprecated GTimeVal in
+      PixbufAnimation::get_iter() and
+      PixbufAnimationIter::advance().
+  + Gtk: Fix memory leaks in IconTheme::list_icons(),
+    IconView::get_selected_icons() and RecentManager::get_items().
+  + Documentation: Gtk::Builder: Describe how to use it together
+    with Glib::Property.
+  + Demos: Fix the source code listing.
+</comment>
+    <requestid>743225</requestid>
+  </revision>
 </revisionlist>

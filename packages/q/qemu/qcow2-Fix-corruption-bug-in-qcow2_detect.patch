@@ -1,0 +1,68 @@
+From: Kevin Wolf <kwolf@redhat.com>
+Date: Thu, 24 Oct 2019 16:26:58 +0200
+Subject: qcow2: Fix corruption bug in qcow2_detect_metadata_preallocation()
+
+Git-commit: 5e9785505210e2477e590e61b1ab100d0ec22b01
+
+qcow2_detect_metadata_preallocation() calls qcow2_get_refcount() which
+requires s->lock to be taken to protect its accesses to the refcount
+table and refcount blocks. However, nothing in this code path actually
+took the lock. This could cause the same cache entry to be used by two
+requests at the same time, for different tables at different offsets,
+resulting in image corruption.
+
+As it would be preferable to base the detection on consistent data (even
+though it's just heuristics), let's take the lock not only around the
+qcow2_get_refcount() calls, but around the whole function.
+
+This patch takes the lock in qcow2_co_block_status() earlier and asserts
+in qcow2_detect_metadata_preallocation() that we hold the lock.
+
+Fixes: 69f47505ee66afaa513305de0c1895a224e52c45
+Cc: qemu-stable@nongnu.org
+Reported-by: Michael Weiser <michael.weiser@gmx.de>
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+Tested-by: Michael Weiser <michael.weiser@gmx.de>
+Reviewed-by: Michael Weiser <michael.weiser@gmx.de>
+Reviewed-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Reviewed-by: Max Reitz <mreitz@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ block/qcow2-refcount.c | 2 ++
+ block/qcow2.c          | 3 ++-
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/block/qcow2-refcount.c b/block/qcow2-refcount.c
+index ef965d78952637ed92d777db4e9a..0d64bf5a5e9c0359e5391185f6c5 100644
+--- a/block/qcow2-refcount.c
++++ b/block/qcow2-refcount.c
+@@ -3455,6 +3455,8 @@ int qcow2_detect_metadata_preallocation(BlockDriverState *bs)
+     int64_t i, end_cluster, cluster_count = 0, threshold;
+     int64_t file_length, real_allocation, real_clusters;
+ 
++    qemu_co_mutex_assert_locked(&s->lock);
++
+     file_length = bdrv_getlength(bs->file->bs);
+     if (file_length < 0) {
+         return file_length;
+diff --git a/block/qcow2.c b/block/qcow2.c
+index 865839682cd639d1b7aba0cc328f..c0f5439dc8f10d7f920d9b4a29b1 100644
+--- a/block/qcow2.c
++++ b/block/qcow2.c
+@@ -1899,6 +1899,8 @@ static int coroutine_fn qcow2_co_block_status(BlockDriverState *bs,
+     unsigned int bytes;
+     int status = 0;
+ 
++    qemu_co_mutex_lock(&s->lock);
++
+     if (!s->metadata_preallocation_checked) {
+         ret = qcow2_detect_metadata_preallocation(bs);
+         s->metadata_preallocation = (ret == 1);
+@@ -1906,7 +1908,6 @@ static int coroutine_fn qcow2_co_block_status(BlockDriverState *bs,
+     }
+ 
+     bytes = MIN(INT_MAX, count);
+-    qemu_co_mutex_lock(&s->lock);
+     ret = qcow2_get_cluster_offset(bs, offset, &bytes, &cluster_offset);
+     qemu_co_mutex_unlock(&s->lock);
+     if (ret < 0) {

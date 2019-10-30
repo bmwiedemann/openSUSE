@@ -1,0 +1,134 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Tue, 15 Oct 2019 11:16:14 -0600
+Subject: tests: Fix block tests to be compatible with membarrier configuration
+
+The use of membarriers collides with the block test's practice of
+SIGKILLing test vm's. Have them quit politely. Tests: 130, 153, 161
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ tests/qemu-iotests/130     | 6 ++++--
+ tests/qemu-iotests/130.out | 2 ++
+ tests/qemu-iotests/153     | 6 ++++--
+ tests/qemu-iotests/153.out | 4 ++++
+ tests/qemu-iotests/161     | 3 +++
+ 5 files changed, 17 insertions(+), 4 deletions(-)
+
+diff --git a/tests/qemu-iotests/130 b/tests/qemu-iotests/130
+index 77ad2aa13a06094f26d2c8991e48..fd84a4c77d192e15ee961b07994b 100755
+--- a/tests/qemu-iotests/130
++++ b/tests/qemu-iotests/130
+@@ -64,7 +64,8 @@ echo
+ _launch_qemu -drive id=testdisk,file="$TEST_IMG",backing.file.filename="$TEST_IMG.base"
+ _send_qemu_cmd $QEMU_HANDLE "commit testdisk" "(qemu)"
+ _send_qemu_cmd $QEMU_HANDLE '' '(qemu)'
+-_cleanup_qemu
++_send_qemu_cmd $QEMU_HANDLE 'quit' ''
++wait=1 _cleanup_qemu
+ _img_info | _filter_img_info
+ 
+ # Make sure that if there was a backing file that was just overridden on the
+@@ -73,7 +74,8 @@ _make_test_img -F raw -b "$TEST_IMG.orig" 64M
+ _launch_qemu -drive id=testdisk,file="$TEST_IMG",backing.file.filename="$TEST_IMG.base",backing.driver=$IMGFMT
+ _send_qemu_cmd $QEMU_HANDLE "commit testdisk" "(qemu)"
+ _send_qemu_cmd $QEMU_HANDLE '' '(qemu)'
+-_cleanup_qemu
++_send_qemu_cmd $QEMU_HANDLE 'quit' ''
++wait=1 _cleanup_qemu
+ _img_info | _filter_img_info
+ 
+ echo
+diff --git a/tests/qemu-iotests/130.out b/tests/qemu-iotests/130.out
+index e45285ccc311522481ac1b27ba99..7168bdf70c3eb32d4de0d28bb947 100644
+--- a/tests/qemu-iotests/130.out
++++ b/tests/qemu-iotests/130.out
+@@ -11,6 +11,7 @@ virtual size: 64 MiB (67108864 bytes)
+ QEMU X.Y.Z monitor - type 'help' for more information
+ (qemu) commit testdisk
+ (qemu) 
++(qemu) quit
+ image: TEST_DIR/t.IMGFMT
+ file format: IMGFMT
+ virtual size: 64 MiB (67108864 bytes)
+@@ -18,6 +19,7 @@ Formatting 'TEST_DIR/t.IMGFMT', fmt=IMGFMT size=67108864 backing_file=TEST_DIR/t
+ QEMU X.Y.Z monitor - type 'help' for more information
+ (qemu) commit testdisk
+ (qemu) 
++(qemu) quit
+ image: TEST_DIR/t.IMGFMT
+ file format: IMGFMT
+ virtual size: 64 MiB (67108864 bytes)
+diff --git a/tests/qemu-iotests/153 b/tests/qemu-iotests/153
+index c969a1a16ff8382b9bb69252f6de..39d6da725bff3932a7cb88acff8e 100755
+--- a/tests/qemu-iotests/153
++++ b/tests/qemu-iotests/153
+@@ -206,7 +206,8 @@ _send_qemu_cmd $QEMU_HANDLE \
+     'return'
+ _run_cmd $QEMU_IMG commit -b "${TEST_IMG}.b" "${TEST_IMG}.c"
+ 
+-_cleanup_qemu
++_send_qemu_cmd $QEMU_HANDLE "{ 'execute': 'quit' }" ''
++wait=1 _cleanup_qemu
+ 
+ _launch_qemu
+ 
+@@ -258,7 +259,8 @@ _send_qemu_cmd $QEMU_HANDLE \
+ 
+ _run_cmd $QEMU_IO "${TEST_IMG}" -c 'write 0 512'
+ 
+-_cleanup_qemu
++_send_qemu_cmd $QEMU_HANDLE "{ 'execute': 'quit' }" ''
++wait=1 _cleanup_qemu
+ 
+ echo
+ echo "== Detecting -U and force-share conflicts =="
+diff --git a/tests/qemu-iotests/153.out b/tests/qemu-iotests/153.out
+index e9694200066280fa0637292de3ef..177b08b7e3e6606db552d7e54c8e 100644
+--- a/tests/qemu-iotests/153.out
++++ b/tests/qemu-iotests/153.out
+@@ -416,6 +416,8 @@ Is another process using the image [TEST_DIR/t.qcow2]?
+ 
+ _qemu_img_wrapper commit -b TEST_DIR/t.qcow2.b TEST_DIR/t.qcow2.c
+ {"return": {}}
++{"timestamp": {"seconds":  TIMESTAMP, "microseconds":  TIMESTAMP}, "event": "SHUTDOWN", "data": {"guest": false, "reason": "host-qmp-quit"}}
++{"return": {}}
+ Adding drive
+ {"return": "OKrn"}
+ 
+@@ -443,6 +445,8 @@ Closing the other
+ {"return": ""}
+ 
+ _qemu_io_wrapper TEST_DIR/t.qcow2 -c write 0 512
++{"return": {}}
++{"timestamp": {"seconds":  TIMESTAMP, "microseconds":  TIMESTAMP}, "event": "SHUTDOWN", "data": {"guest": false, "reason": "host-qmp-quit"}}
+ 
+ == Detecting -U and force-share conflicts ==
+ 
+diff --git a/tests/qemu-iotests/161 b/tests/qemu-iotests/161
+index 456a4bd8c4cb54c9c0d295f83bed..990af8a412d72fd522068490638b 100755
+--- a/tests/qemu-iotests/161
++++ b/tests/qemu-iotests/161
+@@ -68,6 +68,7 @@ _send_qemu_cmd $QEMU_HANDLE \
+                       'qemu-io none0 \"reopen -o backing.detect-zeroes=on\"' } }" \
+     "return"
+ 
++_send_qemu_cmd $QEMU_HANDLE "{ 'execute': 'quit' }" ''
+ _cleanup_qemu
+ 
+ # Second test: stream $TEST_IMG.base into $TEST_IMG.int and then
+@@ -96,6 +97,7 @@ _send_qemu_cmd $QEMU_HANDLE \
+                       'qemu-io none0 \"reopen -o backing.detect-zeroes=on\"' } }" \
+     "return"
+ 
++_send_qemu_cmd $QEMU_HANDLE "{ 'execute': 'quit' }" ''
+ _cleanup_qemu
+ 
+ # Third test: commit $TEST_IMG.int into $TEST_IMG.base and then reopen
+@@ -129,6 +131,7 @@ _send_qemu_cmd $QEMU_HANDLE \
+                       'qemu-io none0 \"reopen -o backing.detect-zeroes=on\"' } }" \
+     "return"
+ 
++_send_qemu_cmd $QEMU_HANDLE "{ 'execute': 'quit' }" ''
+ _cleanup_qemu
+ 
+ # success, all done

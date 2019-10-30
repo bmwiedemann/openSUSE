@@ -1,7 +1,7 @@
 #
 # spec file for package transmission
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global WITH_APPINDICATOR 1
 Name:           transmission
 Version:        2.94
@@ -25,7 +26,6 @@ Group:          Productivity/Networking/Other
 Url:            https://www.transmissionbt.com/
 Source0:        https://github.com/%{name}/%{name}-releases/raw/master/%{name}-%{version}.tar.xz
 Source1:        transmission-qt.desktop
-Source2:        transmission-daemon-systemd
 Source3:        README.openSUSE
 # PATCH-FIX-UPSTREAM transmission-appdata.patch badshah400@gmail.com -- Add and install appdata files for both gtk and qt applications; enable translations for the gtk metainfo
 Patch0:         transmission-appdata.patch
@@ -129,10 +129,7 @@ Discovery, DHT, µTP, PEX and magnet links.
 %lang_package -n %{name}-qt
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 cp %{SOURCE3} .
 # required by patch2
 mv third-party/libnatpmp third-party/natpmp
@@ -148,12 +145,16 @@ export CXXFLAGS="%{optflags} -fPIC"
         -DENABLE_QT=ON \
         -DUSE_QT5=ON \
         -DUSE_SYSTEM_B64=ON \
-        -DENABLE_CLI=ON
+        -DENABLE_CLI=ON \
+        -DENABLE_DAEMON=ON \
+        -DWITH_SYSTEMD=ON
 make %{?_smp_mflags}
 
 %install
 %cmake_install
-install -D -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/transmission-daemon.service
+mkdir -p %{buildroot}%{_unitdir}
+install -m0644 daemon/transmission-daemon.service  %{buildroot}%{_unitdir}/
+mkdir -p %{buildroot}%{_sharedstatedir}/transmission
 install -d %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rctransmission-daemon
 mkdir -p %{buildroot}%{_localstatedir}/lib/transmission

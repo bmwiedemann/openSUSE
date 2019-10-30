@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 23 18:14:18 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.34.1+27:
+  + wayland/surface: Reset buffer_destroy_handler_id.
+  + window-actor: Add a missing NULL-check.
+  + monitor-manager: check for underscan setting validity upfront.
+  + clutter/stage: Actually set key focus to an actor on key focus.
+  + clutter/actor: Save key-focus state and unset it before
+    destruction.
+  + dbus-session-watcher: Chain up to parent finalize().
+
+-------------------------------------------------------------------
 Thu Oct 17 08:03:06 UTC 2019 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Rebase patches:

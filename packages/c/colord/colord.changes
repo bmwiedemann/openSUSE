@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Oct 23 19:30:25 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.4.4:
+  + New Features:
+    - Actually install the installed tests.
+    - Allow building without the daemon.
+  + Bugfixes:
+    - Consistently search for spotread in $PATH.
+    - Don't hard-require spotread to build argyll sensor.
+    - Fix linker argument checks.
+    - Include C header in Colorhug-1.0.gir.
+    - Pass -DCD_COMPILATION to gir compiler.
+    - Port manpages to xsltproc and DocBook 5.
+- Replace docbook-utils-minimal with docbook5-xsl-stylesheets
+  BuildRequires following upstreams port.
+- Add _constraints file, avoid random buildfails for i586 and other
+  arches.
+
+-------------------------------------------------------------------
 Tue Oct  8 19:42:53 UTC 2019 - Christian Boltz <suse-beta@cboltz.de>
 
 - Also allow /var/lib/colord/icc/ in AppArmor profile (boo#1112230)

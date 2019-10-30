@@ -645,4 +645,12 @@ Note this warning (not new), should we care?
     <comment>Scripted push from {project}</comment>
     <requestid>736499</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>a68b89f8490b1a06fb1635bfcb2f5b4d</srcmd5>
+    <version>1.4.4</version>
+    <time>1572442741</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>742522</requestid>
+  </revision>
 </revisionlist>

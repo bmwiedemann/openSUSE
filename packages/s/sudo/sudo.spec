@@ -17,7 +17,7 @@
 
 
 Name:           sudo
-Version:        1.8.27
+Version:        1.8.28p1
 Release:        0
 Summary:        Execute some commands as root
 License:        ISC
@@ -173,9 +173,10 @@ chmod 0440 %{_sysconfdir}/sudoers
 %dir %{_libexecdir}/%{name}
 %{_libexecdir}/%{name}/sesh
 %{_libexecdir}/%{name}/sudo_noexec.so
-%{_libexecdir}/%{name}/sudoers.so
-%{_libexecdir}/%{name}/group_file.so
-%{_libexecdir}/%{name}/system_group.so
+%dir %{_libexecdir}/%{name}/%{name}
+%{_libexecdir}/%{name}/%{name}/sudoers.so
+%{_libexecdir}/%{name}/%{name}/group_file.so
+%{_libexecdir}/%{name}/%{name}/system_group.so
 %{_libexecdir}/%{name}/libsudo_util.so.*
 %attr(0711,root,root) %dir %ghost %{_localstatedir}/lib/%{name}
 %attr(0700,root,root) %dir %ghost %{_localstatedir}/lib/%{name}/ts
@@ -187,6 +188,7 @@ chmod 0440 %{_sysconfdir}/sudoers
 %{_includedir}/sudo_plugin.h
 %{_mandir}/man8/sudo_plugin.8%{?ext_man}
 %attr(0644,root,root) %{_libexecdir}/%{name}/libsudo_util.so
+%{_libexecdir}/%{name}/sudo/*.la
 %{_libexecdir}/%{name}/*.la
 
 %files test

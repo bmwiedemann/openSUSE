@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct 28 18:12:12 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.24.1:
+  + Fix missing access to peas_gettext() in public ABI.
+  + Fix loading of python2 plugin loader.
+  + Fix use of -export-dynamic with Clang.
+  + Various macOS build fixes.
+  + Fixes for libpeas-gtk pkg-config generation.
+  + Add support for GInitiallyUnowned with PeasExtension.
+  + Updated translations.
+- Drop leftover _service and _servicedata files, package have been
+  switched back to tarball releases in last unstable cycle.
+
+-------------------------------------------------------------------
 Fri Oct  4 13:20:19 UTC 2019 - Michael Gorse <mgorse@suse.com>
 
 - Require gettext, rather than gettext-runtime-mini. 

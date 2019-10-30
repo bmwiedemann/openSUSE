@@ -1,0 +1,58 @@
+From: Michael Roth <mdroth@linux.vnet.ibm.com>
+Date: Thu, 12 Sep 2019 18:12:01 -0500
+Subject: make-release: pull in edk2 submodules so we can build it from
+ tarballs
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: 45c61c6c23918e3b05ed9ecac5b2328ebae5f774
+
+The `make efi` target added by 536d2173 is built from the roms/edk2
+submodule, which in turn relies on additional submodules nested under
+roms/edk2.
+
+The make-release script currently only pulls in top-level submodules,
+so these nested submodules are missing in the resulting tarball.
+
+We could try to address this situation more generally by recursively
+pulling in all submodules, but this doesn't necessarily ensure the
+end-result will build properly (this case also required other changes).
+
+Additionally, due to the nature of submodules, we may not always have
+control over how these sorts of things are dealt with, so for now we
+continue to handle it on a case-by-case in the make-release script.
+
+Cc: Laszlo Ersek <lersek@redhat.com>
+Cc: Bruce Rogers <brogers@suse.com>
+Cc: qemu-stable@nongnu.org # v4.1.0
+Reported-by: Bruce Rogers <brogers@suse.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Signed-off-by: Michael Roth <mdroth@linux.vnet.ibm.com>
+Message-Id: <20190912231202.12327-2-mdroth@linux.vnet.ibm.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ scripts/make-release | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/scripts/make-release b/scripts/make-release
+index b4af9c9e5202cb5c4f092d67ea51..a2a8cda33c0e0da3caa1f8641515 100755
+--- a/scripts/make-release
++++ b/scripts/make-release
+@@ -20,6 +20,14 @@ git checkout "v${version}"
+ git submodule update --init
+ (cd roms/seabios && git describe --tags --long --dirty > .version)
+ (cd roms/skiboot && ./make_version.sh > .version)
++# Fetch edk2 submodule's submodules, since it won't have access to them via
++# the tarball later.
++#
++# A more uniform way to handle this sort of situation would be nice, but we
++# don't necessarily have much control over how a submodule handles its
++# submodule dependencies, so we continue to handle these on a case-by-case
++# basis for now.
++(cd roms/edk2 && git submodule update --init)
+ popd
+ tar --exclude=.git -cjf ${destination}.tar.bz2 ${destination}
+ rm -rf ${destination}

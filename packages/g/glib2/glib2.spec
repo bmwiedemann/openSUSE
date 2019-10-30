@@ -19,7 +19,7 @@
 # systemtap is only offered as build-option, but not enabled, as it causes a build cycle
 %bcond_with     systemtap
 Name:           glib2
-Version:        2.62.1
+Version:        2.62.2
 Release:        0
 Summary:        General-Purpose Utility Library
 License:        LGPL-2.1-or-later

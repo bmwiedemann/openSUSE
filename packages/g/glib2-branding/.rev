@@ -57,4 +57,13 @@
   org.gnome.Evince.desktop with GNOME 3.30. (forwarded request 647312 from iznogood)</comment>
     <requestid>647326</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>30233ab0b6d534bcfa94c159ba11d0d9</srcmd5>
+    <version>15</version>
+    <time>1572442821</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix keyassignment for help: the schema was changed to array of
+  strings, as multiple keys can now be bound. (forwarded request 743418 from dimstar)</comment>
+    <requestid>743765</requestid>
+  </revision>
 </revisionlist>

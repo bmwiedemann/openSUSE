@@ -68,7 +68,7 @@ sleep-inactive-battery-type = "suspend"
 disabled-gtk-modules = [ "pk-gtk-module" ]
 
 [org.gnome.settings-daemon.plugins.media-keys]
-help = "Help"
+help = ['Help']
 
 [org.gnome.shell]
 ## Default apps shown in the gnome-shell dash

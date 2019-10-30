@@ -17,7 +17,7 @@
 
 
 Name:           squashfs
-Version:        4.3
+Version:        4.4
 Release:        0
 Summary:        A Read-Only File System with Efficient Compression
 License:        GPL-2.0-or-later
@@ -25,15 +25,7 @@ Group:          System/Filesystems
 Url:            http://squashfs.sourceforge.net/
 Source0:        http://sourceforge.net/projects/squashfs/files/squashfs/%{name}%{version}/%{name}%{version}.tar.gz
 Patch0:         squashfs-64k.patch
-# PATCH-FIX-UPSTREAM 0001-mksquashfs-fix-rare-race-in-fragment-waiting-in-file.patch boo#953723
-Patch1:         0001-mksquashfs-fix-rare-race-in-fragment-waiting-in-file.patch
-# PATCH-FIX-UPSTREAM 0002-Fix-2GB-limit-of-the-is_fragment-.-function.patch boo#953723
-Patch2:         0002-Fix-2GB-limit-of-the-is_fragment-.-function.patch
-Patch3:         squashfs-thread-limit
-# PATCH-FIX-UPSTREAM Include <sys/sysmacros.h> for major/minor/makedev
-Patch4:         sysmacros.patch
-# PATCH-FIX_UPSTREAM add -offset function to skip n bytes
-Patch5:         0003-Add-offset-function-to-skip-n-bytes.patch
+Patch1:         squashfs-thread-limit
 %if %{?suse_version} > 1315
 BuildRequires:  liblz4-devel
 %endif
@@ -51,10 +43,6 @@ squashfs images.
 %setup -q -n squashfs%{version}
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
 
 %build
 %define _lto_cflags %{nil}
@@ -70,7 +58,7 @@ install -m 755 squashfs-tools/{un,mk}squashfs %{buildroot}%{_bindir}
 
 %files
 %defattr(-,root,root)
-%doc README README-%{version} PERFORMANCE.README CHANGES
+%doc README-%{version} ACKNOWLEDGEMENTS CHANGES COPYING USAGE
 %{_bindir}/*squashfs
 
 %changelog

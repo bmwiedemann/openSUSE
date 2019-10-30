@@ -32,7 +32,7 @@
 
 %define libname libflatpak0
 Name:           flatpak
-Version:        1.4.2
+Version:        1.4.3
 Release:        0
 Summary:        OSTree based application bundles management
 License:        LGPL-2.1-or-later

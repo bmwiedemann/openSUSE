@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 26 19:37:41 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Don't set the theme on install/uninstall
+
+-------------------------------------------------------------------
+Thu Oct 17 14:55:33 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
 Tue Oct 15 15:32:39 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequires rsvg-convert instead of rsvg-view on suse_version

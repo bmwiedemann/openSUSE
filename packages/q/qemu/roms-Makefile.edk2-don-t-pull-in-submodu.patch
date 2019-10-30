@@ -1,0 +1,52 @@
+From: Michael Roth <mdroth@linux.vnet.ibm.com>
+Date: Thu, 12 Sep 2019 18:12:02 -0500
+Subject: roms/Makefile.edk2: don't pull in submodules when building from
+ tarball
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: f3e330e3c319160ac04954399b5a10afc965098c
+
+Currently the `make efi` target pulls submodules nested under the
+roms/edk2 submodule as dependencies. However, when we attempt to build
+from a tarball this fails since we are no longer in a git tree.
+
+A preceding patch will pre-populate these submodules in the tarball,
+so assume this build dependency is only needed when building from a
+git tree.
+
+Cc: Laszlo Ersek <lersek@redhat.com>
+Cc: Bruce Rogers <brogers@suse.com>
+Cc: qemu-stable@nongnu.org # v4.1.0
+Reported-by: Bruce Rogers <brogers@suse.com>
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Signed-off-by: Michael Roth <mdroth@linux.vnet.ibm.com>
+Message-Id: <20190912231202.12327-3-mdroth@linux.vnet.ibm.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ roms/Makefile.edk2 | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/roms/Makefile.edk2 b/roms/Makefile.edk2
+index c2f2ff59d5b1d8b3fa394ed42c8d..33a074d3a4c21b5460d98bbc7d4a 100644
+--- a/roms/Makefile.edk2
++++ b/roms/Makefile.edk2
+@@ -46,8 +46,13 @@ all: $(foreach flashdev,$(flashdevs),../pc-bios/edk2-$(flashdev).fd.bz2) \
+ # files.
+ .INTERMEDIATE: $(foreach flashdev,$(flashdevs),../pc-bios/edk2-$(flashdev).fd)
+ 
++# Fetch edk2 submodule's submodules. If it is not in a git tree, assume
++# we're building from a tarball and that they've already been fetched by
++# make-release/tarball scripts.
+ submodules:
+-	cd edk2 && git submodule update --init --force
++	if test -d edk2/.git; then \
++		cd edk2 && git submodule update --init --force; \
++	fi
+ 
+ # See notes on the ".NOTPARALLEL" target and the "+" indicator in
+ # "tests/uefi-test-tools/Makefile".

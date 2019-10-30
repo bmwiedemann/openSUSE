@@ -1,6 +1,7 @@
---- squashfs4.3/squashfs-tools/mksquashfs.c.orig	2014-05-13 00:18:20.000000000 +0200
-+++ squashfs4.3/squashfs-tools/mksquashfs.c	2014-05-16 14:59:30.802144932 +0200
-@@ -4674,9 +4674,9 @@ void write_filesystem_tables(struct squa
+diff -dupr squashfs4.4/squashfs-tools/mksquashfs.c squashfs4.4_new/squashfs-tools/mksquashfs.c
+--- squashfs4.4/squashfs-tools/mksquashfs.c	2019-08-29 03:58:04.000000000 +0200
++++ squashfs4.4/squashfs-tools/mksquashfs.c	2019-10-21 15:34:39.393253955 +0200
+@@ -4948,9 +4948,9 @@ void write_filesystem_tables(struct squa
  	SQUASHFS_INSWAP_SUPER_BLOCK(sBlk); 
  	write_destination(fd, SQUASHFS_START, sizeof(*sBlk), sBlk);
  
@@ -13,9 +14,9 @@
  	}
  
  	close(fd);
-@@ -5309,7 +5309,7 @@ printOptions:
- 			ERROR("-force-uid uid\t\tset all file uids to uid\n");
- 			ERROR("-force-gid gid\t\tset all file gids to gid\n");
+@@ -5898,7 +5898,7 @@ printOptions:
+ 			ERROR("-force-uid <uid>\tset all file uids to <uid>\n");
+ 			ERROR("-force-gid <gid>\tset all file gids to <gid>\n");
  			ERROR("-nopad\t\t\tdo not pad filesystem to a multiple "
 -				"of 4K\n");
 +				"of 64K\n");

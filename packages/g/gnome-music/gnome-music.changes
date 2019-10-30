@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 25 16:57:47 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Restore MPRIS playlist support.
+  + Playlist fixes.
+  + Bring back loading notifications.
+  + Bugs fixed:
+    - Fix visual glitches.
+    - Use pkglibdir for gfmlibdir.
+    - Limit smartplaylist content to XDG Music dir.
+    - Crash when removing GOA account.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Sep 10 09:58:19 CST 2019 - qkzhu@suse.com
 
 - Update to version 3.34.0:

@@ -20,7 +20,7 @@
 %define librsvg_sover 2
 
 Name:           librsvg
-Version:        2.46.2
+Version:        2.46.3
 Release:        0
 Summary:        A Library for Rendering SVG Data
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later AND Apache-2.0 AND MIT
@@ -171,12 +171,10 @@ rm -rf %{buildroot}%{_datadir}/doc/%{name}
 %{_libdir}/gdk-pixbuf-2.0/*/loaders/libpixbufloader-svg.so
 
 %files -n rsvg-convert
-%license COPYING
 %{_bindir}/rsvg-convert
 %{_mandir}/man1/rsvg-convert.1%{?ext_man}
 
 %files -n rsvg-thumbnailer
-%license COPYING
 %dir %{_datadir}/thumbnailers
 %{_datadir}/thumbnailers/librsvg.thumbnailer
 

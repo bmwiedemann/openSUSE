@@ -4,19 +4,18 @@
 
 # The next few VARIABLES may be edited (or uncommented) as required:
 
-# The commit upon which our patchqueue gets rebased. The special value LATEST
-# may be used to "automatically" track the upstream development tree in the
-# master branch
+# The following specifies the upstream tag or commit upon which our patchqueue
+# gets rebased. The special value LATEST may be used to "automatically" track
+# the upstream development tree in the master branch
 GIT_UPSTREAM_COMMIT_ISH=v4.1.0
-if [ "$GIT_UPSTREAM_COMMIT_ISH" = "LATEST" ]; then
-    echo "Using LATEST upstream commit as base for tarball and patch queue"
-    GIT_BRANCH=master
+if [[ "$GIT_UPSTREAM_COMMIT_ISH" != "LATEST" ]]; then 
+    # This is the git branch used (otherwise it is computed)
+    GIT_BRANCH=opensuse-4.1
 fi
-# otherwise we specify the branch to use, eg:
 # WARNING: If transitioning from using LATEST to not, MANUALLY re-set the
-# tarball present
-GIT_BRANCH=opensuse-4.1
-# This is used for the automated development branch tracking
+# tarball present. If transitioning TO LATEST, make sure that
+# NEXT_RELEASE_IS_MAJOR is set correctly
+# This is used to choose the version number when LATEST processing is active
 NEXT_RELEASE_IS_MAJOR=0
 
 # The shared openSUSE specific git repo, on which $GIT_LOCAL_TREE is based

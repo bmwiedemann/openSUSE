@@ -35,7 +35,6 @@ Version:        84.87.%{date}
 Release:        0
 Summary:        %{theme_name} %{theme_version_clean} Brand File
 License:        BSD-3-Clause AND CC-BY-SA-3.0 AND GPL-2.0-or-later
-Group:          System/Fhs
 URL:            https://github.com/openSUSE/branding
 Source0:        branding-%{theme_version}.zip
 BuildRequires:  GraphicsMagick
@@ -67,7 +66,6 @@ a trigger for installation of correct vendor brand packages.
 %package -n wallpaper-branding-%{theme_name}
 Summary:        %{theme_name} %{theme_version_clean} default wallpapers
 License:        BSD-3-Clause
-Group:          System/Fhs
 Requires(post):     update-alternatives
 Requires(postun):   update-alternatives
 Conflicts:      wallpaper-branding
@@ -80,7 +78,6 @@ BuildArch:      noarch
 %package -n libreoffice-branding-%{theme_name}
 Summary:        %{theme_name} %{theme_version_clean} branding for LibreOffice
 License:        BSD-3-Clause
-Group:          Productivity/Office/Suite
 Supplements:    (libreoffice and branding-%{theme_name})
 Conflicts:      libreoffice-branding
 Provides:       libreoffice-branding = %{version}
@@ -92,10 +89,9 @@ BuildArch:      noarch
 %package -n yast2-qt-branding-%{theme_name}
 Summary:        %{theme_name} %{theme_version_clean} branding for YaST2 Qt
 License:        BSD-3-Clause
-Group:          System/Fhs
 Requires:       adobe-sourcesanspro-fonts
-Requires:       google-opensans-fonts
 Requires:       distribution-logos
+Requires:       google-opensans-fonts
 Supplements:    (libyui-qt and branding-%{theme_name})
 Conflicts:      yast2-qt-branding
 Provides:       yast2-qt-branding = %{version}
@@ -107,7 +103,6 @@ BuildArch:      noarch
 %package -n icewm-theme-yast-installation
 Summary:        %{theme_name} %{theme_version_clean} branding for IceWM during the installation
 License:        BSD-3-Clause AND CC-BY-SA-3.0 AND GPL-2.0-or-later
-Group:          System/Fhs
 Supplements:    ((yast-installation and icewm) and branding-%{theme_name})
 Conflicts:      icewm-theme-branding
 BuildArch:      noarch
@@ -119,7 +114,6 @@ process using YaST2
 %package -n systemd-icon-branding-%{theme_name}
 Summary:        %{theme_name} %{theme_version_clean} icons for systemd
 License:        CC-BY-SA-3.0
-Group:          System/Fhs
 Requires:       distribution-logos
 Supplements:    (systemd and branding-%{theme_name})
 Provides:       systemd-icon-branding = %{version}
@@ -134,7 +128,6 @@ LOGO variable
 %package -n grub2-branding-%{theme_name}
 Summary:        %{theme_name} %{theme_version_clean} branding for GRUB2
 License:        CC-BY-SA-3.0
-Group:          System/Fhs
 Requires:       grub2
 BuildRequires:  grub2
 Supplements:    (grub2 and branding-%{theme_name})
@@ -153,7 +146,6 @@ BuildArch:      noarch
 %package -n gfxboot-branding-%{theme_name}
 Summary:        %{theme_name} %{theme_version_clean} branding for gfxboot
 License:        BSD-3-Clause
-Group:          System/Boot
 BuildRequires:  gfxboot-devel
 PreReq:         gfxboot >= 4
 Requires(post):     gfxboot >= 4
@@ -170,15 +162,11 @@ BuildArch:      noarch
 %package -n plymouth-branding-%{theme_name}
 Summary:        %{theme_name} %{theme_version_clean} branding for Plymouth bootsplash
 License:        GPL-2.0-or-later
-Group:          System/Fhs
 BuildRequires:  plymouth-theme-bgrt
-Requires:       plymouth-theme-bgrt
 Requires:       distribution-logos
+Requires:       plymouth-theme-bgrt
 PreReq:         plymouth-theme-bgrt
 PreReq:         plymouth-scripts
-Requires(post):     plymouth-scripts
-Requires(postun):   plymouth-scripts
-Requires(post):     plymouth-theme-bgrt
 Supplements:    (plymouth and branding-%{theme_name})
 Conflicts:      plymouth-branding
 Provides:       plymouth-branding = %{version}
@@ -274,28 +262,6 @@ fi
 %post -n gfxboot-branding-%{theme_name}
 gfxboot --update-theme %{theme_name}
 %endif
-
-%post -n plymouth-branding-%{theme_name}
-OTHEME="$(%{_sbindir}/plymouth-set-default-theme)"
-if [ "$OTHEME" = "text" -o "$OTHEME" = "bgrt" ]; then
-   if [ ! -e /.buildenv ]; then
-     %{_sbindir}/plymouth-set-default-theme bgrt
-     %{?regenerate_initrd_post}
-   else
-     %{_sbindir}/plymouth-set-default-theme bgrt
-   fi
-fi
-
-%postun -n plymouth-branding-%{theme_name}
-if [ $1 -eq 0 ]; then
-    if [ "$(%{_sbindir}/plymouth-set-default-theme)" = "bgrt" ]; then
-        %{_sbindir}/plymouth-set-default-theme --reset
-        %{?regenerate_initrd_post}
-    fi
-fi
-
-%posttrans -n plymouth-branding-%{theme_name}
-%{?regenerate_initrd_posttrans}
 
 %files
 %license LICENSE

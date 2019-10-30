@@ -48,7 +48,7 @@ while retaining the same codestream version.
 %prep
 %build
 cp %{S:2} .
-gcc ${RPM_OPT_FLAGS} -g -o node %{S:1}
+gcc ${RPM_OPT_FLAGS} -o node %{S:1}
 
 %install
 install -D -m 0755 node %{buildroot}%{_bindir}/node

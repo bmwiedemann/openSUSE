@@ -17,7 +17,7 @@
 
 
 Name:           perl-Scalar-List-Utils
-Version:        1.52
+Version:        1.53
 Release:        0
 %define cpan_name Scalar-List-Utils
 Summary:        Common Scalar and List utility subroutines
@@ -36,7 +36,7 @@ Common Scalar and List utility subroutines
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -name "*.sh" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"

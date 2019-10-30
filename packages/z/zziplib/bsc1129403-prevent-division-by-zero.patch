@@ -2,7 +2,27 @@ Index: zziplib-0.13.69/bins/unzip-mem.c
 ===================================================================
 --- zziplib-0.13.69.orig/bins/unzip-mem.c
 +++ zziplib-0.13.69/bins/unzip-mem.c
-@@ -231,9 +231,12 @@ static void zzip_mem_entry_direntry(ZZIP
+@@ -186,6 +186,7 @@ static void zzip_mem_entry_direntry_star
+ static void zzip_mem_entry_direntry_done (void)
+ {
+     char exp = ' ';
++    long percentage;
+     if (sum_usize / 1024 > 1024*1024*1024) { exp = 'G';
+ 	sum_usize /= 1024*1024*1024; sum_usize /= 1024*1024*1024; }
+     if (sum_usize > 1024*1024*1024) { exp = 'M';
+@@ -199,9 +200,10 @@ static void zzip_mem_entry_direntry_done
+     return;
+  verbose:
+     printf("--------  ------  ------- -----                           ----\n");
++    percentage = sum_usize ? (L (100 - (sum_csize*100/sum_usize))) : 0; /* 0% if file size is 0 */
+     printf("%8li%c       %8li%c %3li%%                     %8li %s\n",
+ 	   L sum_usize, exp, L sum_csize, exp, 
+-	   L (100 - (sum_csize*100/sum_usize)), L sum_files, 
++	   percentage, L sum_files,
+ 	   sum_files == 1 ? "file" : "files");
+ }
+ 
+@@ -231,9 +233,12 @@ static void zzip_mem_entry_direntry(ZZIP
      if (*name == '\n') name++;
  
      if (option_verbose) {

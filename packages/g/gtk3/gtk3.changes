@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Oct 23 10:06:55 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.24.12+32:
+  + gdk: Do not change the windowing selection when cancelling
+    source
+  + Revert "gdk: Do not call gdk_selection_owner_set() internally
+    to the backend"
+  + gtkwidget: Ensure to run key controllers in the bubble phase
+  + keycontroller: Fix ::key-released signal argument
+  + key controller: Don't eat modifier events
+  + gdk: Do not call gdk_selection_owner_set() internally to the
+    backend
+  + gdk: Shuffle the situations where a selection is unset
+  + gtkwidget: Forward unhandled scroll events through controllers
+- Switch to gitcheckout of stable branch, needed to get fixes for
+  copy/paste between Xwayland and wayland programs.
+- Following the above, add gtk-doc and libtool BuildRequires and
+  pass autogen.sh to bootstrap and --enable-gtk-doc to configure.
+- No longer disable LTO, current versions of gtk3 builds fine with
+  it enabled.
+
+-------------------------------------------------------------------
 Fri Oct  4 11:03:57 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.24.12:

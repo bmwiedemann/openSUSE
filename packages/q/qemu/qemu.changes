@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Oct 26 03:07:00 UTC 2019 - Bruce Rogers <brogers@suse.com>
+
+- Address potential corruption when using qcow2 images
+  coroutine-Add-qemu_co_mutex_assert_locke.patch
+  qcow2-Fix-corruption-bug-in-qcow2_detect.patch
+- Include more tweaks to our packaging workflow scripts - this will
+  continue as we refine the scripts
+- Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-4.1
+
+-------------------------------------------------------------------
+Thu Oct 17 09:15:07 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- use %gcc_version for cross compilers (boo#1153703)
+
+-------------------------------------------------------------------
+Tue Oct 15 20:13:27 UTC 2019 - Bruce Rogers <brogers@suse.com>
+
+- Add upstream edk2 submodule fix for creating tarball
+- Switch to upstream patch for avoiding git ref in edk2 makefile
+- Fix failing block tests which aren't compatible with the configure
+  option --enable-membarrier
+* Patches dropped:
+  roms-Makefile.edk2-don-t-invoke-git-sinc.patch
+  tests-block-io-test-130-needs-some-delay.patch
+* Patches added:
+  make-release-pull-in-edk2-submodules-so-.patch
+  roms-Makefile.edk2-don-t-pull-in-submodu.patch
+  tests-Fix-block-tests-to-be-compatible-w.patch
+- Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-4.1
+
+-------------------------------------------------------------------
+Thu Oct 10 01:42:04 UTC 2019 - Bruce Rogers <brogers@suse.com>
+
+- Reduce the cross compiler versions we rely on
+- Fix some qemu-testsuite issues, reducing known error cases
+  test-add-mapping-from-arch-of-i686-to-qe.patch
+- Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-4.1
+
+-------------------------------------------------------------------
 Wed Oct  2 15:52:16 UTC 2019 - Bruce Rogers <brogers@suse.com>
 
 - Since our spec file has bashisms, include the following in the

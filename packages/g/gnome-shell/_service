@@ -2,8 +2,9 @@
   <service name="obs_scm" mode="disabled" >
     <param name="url">https://gitlab.gnome.org/GNOME/gnome-shell.git</param>
     <param name="scm">git</param>
-    <param name="revision">refs/tags/3.34.1</param>
-    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="revision">gnome-3-34</param>
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
+    <param name="changesgenerate">enable</param>
   </service>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">

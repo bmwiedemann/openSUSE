@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Oct 22 16:28:24 UTC 2019 - Tina Mueller <tina.mueller@suse.com>
+
+- Add manual dependency File::ShareDir::Install
+   * The module delivers a version of this in inc/, but doesn't use this
+     in the tests. cpanspec won't detect this as a dependency
+
+-------------------------------------------------------------------
+Wed Apr  3 06:58:00 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.116
+   see /usr/share/doc/packages/perl-File-ShareDir/Changes
+
+  1.116	2018-06-24
+      - fix fail-test which incorrectly read without permission
+        ==> introduce new CI test proving this (Thanks to Ville
+            Skyttä <ville.skytta@iki.fi>)
+      - spelling fixes (Thanks to Ville Skyttä <ville.skytta@iki.fi>)
+      - fix author tests when run without recommended dependencies
+        (reported by Mohammed Anwar & Wesley Schwengle)
+      - add a test proving and reporting dependencies
+  
+  1.114	2018-06-21
+      - be more expressive regarding to prerequisites
+      - improve detection for situations where no permission test
+        can be done
+      - fix edge case for 5.8
+
+-------------------------------------------------------------------
 Tue Jun 19 05:22:48 UTC 2018 - coolo@suse.com
 
 - updated to 1.112
