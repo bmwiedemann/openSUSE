@@ -19,7 +19,7 @@
 %global __requires_exclude typelib\\(Meta\\)
 
 Name:           gnome-shell
-Version:        3.34.1
+Version:        3.34.1+6
 Release:        0
 Summary:        GNOME Shell
 License:        GPL-2.0-or-later

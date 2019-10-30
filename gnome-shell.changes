@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 23 18:16:39 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.34.1+6:
+  + shell-screenshots: Do not pass a clip for window screenshots.
+  + workspace: Sort windows in overview grid using cached center.
+  + screenShield: Compute lock timeout fade duration using
+    animation settings.
+  + environment: Only disable unredirection of ongoing transitions.
+  + js: Replace Tweener time leftovers with ease duration.
+  + animation: Finish porting to clutter transitions.
+
+-------------------------------------------------------------------
 Wed Oct  9 10:26:03 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.1:
