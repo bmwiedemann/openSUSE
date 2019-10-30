@@ -59,6 +59,10 @@ buildignore cyrus-sasl
 # Moved here from list-common.sh. Needed by createrepo_c, which is needed for libzypp-plugin-appdata
 buildignore deltarpm
 
+# Too big and not really useful here
+buildignore Mesa-dri-nouveau
+buildignore libvdpau_nouveau
+
 # Previously required by rest_cd_x11
 install patterns-xfce-xfce_basis
 installPattern xfce_basis

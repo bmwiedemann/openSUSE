@@ -503,6 +503,10 @@
     <ignore name="cyrus-sasl"/>
     <package name="aaa_base" replaces="deltarpm"/>
     <ignore name="deltarpm"/>
+    <package name="aaa_base" replaces="Mesa-dri-nouveau"/>
+    <ignore name="Mesa-dri-nouveau"/>
+    <package name="aaa_base" replaces="libvdpau_nouveau"/>
+    <ignore name="libvdpau_nouveau"/>
     <package name="patterns-xfce-xfce_basis"/>
     <namedCollection name="xfce_basis"/>
     <package name="evince"/>

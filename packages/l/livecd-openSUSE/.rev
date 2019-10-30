@@ -667,4 +667,12 @@
 - Only install opensuse-welcome on TW</comment>
     <requestid>742152</requestid>
   </revision>
+  <revision rev="79" vrev="79">
+    <srcmd5>5f30b9fc7071b9b37c34da7e8af41d8f</srcmd5>
+    <version>unknown</version>
+    <time>1572431736</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>744079</requestid>
+  </revision>
 </revisionlist>

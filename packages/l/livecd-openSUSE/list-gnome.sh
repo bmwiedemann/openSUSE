@@ -75,6 +75,9 @@ buildignore vinagre-lang
 buildignore gedit-lang
 buildignore fwupd-lang
 
+# There's eog, enough for live
+buildignore gnome-photos
+
 # Moved here from list-common.sh. cyrus-sasl is needed by Pidgin in Xfce Live CD
 buildignore cyrus-sasl
 

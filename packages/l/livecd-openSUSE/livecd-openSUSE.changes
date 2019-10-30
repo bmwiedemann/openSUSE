@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 30 09:53:50 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- list-x11: Blacklist nouveau Mesa+vdpau drivers
+- list-installer: Drop ipa-gothic-fonts, too big
+- list-gnome: Ignore gnome-photos, eog is enough
+
+-------------------------------------------------------------------
 Wed Oct 23 13:39:39 UTC 2019 - Fabian Vogt <fvogt@suse.com>
 
 - It's Leap-release on Leap now for some reason
