@@ -1,7 +1,8 @@
-Index: gvfs-1.42.1/daemon/gvfsbackendnds.c
-===================================================================
+diff --git a/daemon/gvfsbackendnds.c b/daemon/gvfsbackendnds.c
+new file mode 100644
+index 0000000..960d457
 --- /dev/null
-+++ gvfs-1.42.1/daemon/gvfsbackendnds.c
++++ b/daemon/gvfsbackendnds.c
 @@ -0,0 +1,747 @@
 +/* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode; nil; -*- */
 +/* GIO - GLib Input, Output and Streaming Library
@@ -750,11 +751,11 @@ Index: gvfs-1.42.1/daemon/gvfsbackendnds.c
 +{
 +  g_set_application_name (_("Displaying Embedded Objects"));
 +}
-
-Index: gvfs-1.42.1/daemon/gvfsbackendnds.h
-===================================================================
+diff --git a/daemon/gvfsbackendnds.h b/daemon/gvfsbackendnds.h
+new file mode 100644
+index 0000000..0b48ad6
 --- /dev/null
-+++ gvfs-1.42.1/daemon/gvfsbackendnds.h
++++ b/daemon/gvfsbackendnds.h
 @@ -0,0 +1,53 @@
 +/* GIO - GLib Input, Output and Streaming Library
 + *
@@ -809,24 +810,48 @@ Index: gvfs-1.42.1/daemon/gvfsbackendnds.h
 +G_END_DECLS
 +
 +#endif /* __G_VFS_BACKEND_NDS_H__ */
-
-Index: gvfs-1.42.1/meson_options.txt
-===================================================================
---- gvfs-1.42.1.orig/meson_options.txt
-+++ gvfs-1.42.1/meson_options.txt
-@@ -12,6 +12,7 @@ option('google', type: 'boolean', value:
- option('gphoto2', type: 'boolean', value: true, description: 'build with gphoto2 backend and volume monitor')
- option('http', type: 'boolean', value: true, description: 'build with http/dav backends')
- option('mtp', type: 'boolean', value: true, description: 'build with mtp backend and volume monitor')
-+option('nds', type: 'boolean', value: true, description: 'build with nds backend')
- option('nfs', type: 'boolean', value: true, description: 'build with nfs backend')
- option('sftp', type: 'boolean', value: true, description: 'build with sftp backend')
- option('smb', type: 'boolean', value: true, description: 'build with smb backends')
-
-Index: gvfs-1.42.1/meson.build
-===================================================================
---- gvfs-1.42.1.orig/meson.build
-+++ gvfs-1.42.1/meson.build
+diff --git a/daemon/meson.build b/daemon/meson.build
+index dffeef3..dabdcb2 100644
+--- a/daemon/meson.build
++++ b/daemon/meson.build
+@@ -530,6 +530,22 @@ if enable_afp
+   mounts += ['afp-browse']
+ endif
+ 
++if enable_nds
++  sources = daemon_main_sources + files('gvfsbackendnds.c')
++
++  deps = [libdl_dep]
++
++  cflags = [
++      '-DBACKEND_HEADER=gvfsbackendnds.h',
++      '-DDEFAULT_BACKEND_TYPE=nds',
++      '-DBACKEND_TYPES="nds", G_VFS_TYPE_BACKEND_NDS,',
++      '-DMAX_JOB_THREADS=1',
++  ]
++
++  programs += [['gvfsd-nds', {'sources': sources, 'dependencies': deps, 'c_args': cflags}]]
++  mounts += ['nds']
++endif
++
+ if enable_nfs
+   cflags = [
+     '-DBACKEND_HEADER=gvfsbackendnfs.h',
+diff --git a/daemon/nds.mount.in b/daemon/nds.mount.in
+new file mode 100644
+index 0000000..1068344
+--- /dev/null
++++ b/daemon/nds.mount.in
+@@ -0,0 +1,5 @@
++[Mount]
++Type=nds
++Exec=@libexecdir@/gvfsd-nds
++AutoMount=false
++Scheme=nds
+diff --git a/meson.build b/meson.build
+index 080637b..6525b79 100644
+--- a/meson.build
++++ b/meson.build
 @@ -449,6 +449,12 @@ config_h.set('HAVE_LIBMTP', enable_mtp)
  # *** AFP backend ***
  enable_afp = get_option('afp')
@@ -840,31 +865,23 @@ Index: gvfs-1.42.1/meson.build
  # *** NFS backend ***
  enable_nfs = get_option('nfs')
  if enable_nfs
-
-Index: gvfs-1.42.1/daemon/meson.build
-===================================================================
---- gvfs-1.42.1.orig/daemon/meson.build
-+++ gvfs-1.42.1/daemon/meson.build
-@@ -530,6 +530,22 @@ if enable_afp
-   mounts += ['afp-browse']
- endif
- 
-+if enable_nds
-+  sources = daemon_main_sources + files('gvfsbackendnds.c')
-+
-+  deps = [libdl_dep]
-+
-+  cflags = [
-+      '-DBACKEND_HEADER=gvfsbackendnds.h',
-+      '-DDEFAULT_BACKEND_TYPE=nds',
-+      '-DBACKEND_TYPES="nds", G_VFS_TYPE_BACKEND_NDS',
-+      '-DMAX_JOB_THREADS=1'
-+  ]
-+
-+  programs += [['gvfsd-nds', sources, deps, cflags]]
-+  mounts += ['nds']
-+endif
-+
- if enable_nfs
-   cflags = [
-     '-DBACKEND_HEADER=gvfsbackendnfs.h',
+@@ -507,6 +513,7 @@ output += '  google: ' + enable_google.to_string() + '\n'
+ output += '  gphoto2: ' + enable_gphoto2.to_string() + '\n'
+ output += '  http: ' + enable_http.to_string() + '\n'
+ output += '  mtp: ' + enable_mtp.to_string() + '\n'
++output += '  nds: ' + enable_nds.to_string() + '\n'
+ output += '  nfs: ' + enable_nfs.to_string() + '\n'
+ output += '  sftp: ' + enable_sftp.to_string() + '\n'
+ output += '  smb: ' + enable_samba.to_string() + '\n'
+diff --git a/meson_options.txt b/meson_options.txt
+index 32f10d4..dced004 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -12,6 +12,7 @@ option('google', type: 'boolean', value: true, description: 'build with google b
+ option('gphoto2', type: 'boolean', value: true, description: 'build with gphoto2 backend and volume monitor')
+ option('http', type: 'boolean', value: true, description: 'build with http/dav backends')
+ option('mtp', type: 'boolean', value: true, description: 'build with mtp backend and volume monitor')
++option('nds', type: 'boolean', value: true, description: 'build with nds backend')
+ option('nfs', type: 'boolean', value: true, description: 'build with nfs backend')
+ option('sftp', type: 'boolean', value: true, description: 'build with sftp backend')
+ option('smb', type: 'boolean', value: true, description: 'build with smb backends')

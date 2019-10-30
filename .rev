@@ -1226,4 +1226,12 @@ Also wanted for 13.1</comment>
     <comment> (forwarded request 738193 from dimstar)</comment>
     <requestid>738532</requestid>
   </revision>
+  <revision rev="161" vrev="2">
+    <srcmd5>f1198b475958647bf772f6ee365dffbf</srcmd5>
+    <version>1.42.1</version>
+    <time>1572442724</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>742519</requestid>
+  </revision>
 </revisionlist>
