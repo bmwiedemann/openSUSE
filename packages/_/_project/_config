@@ -1005,6 +1005,7 @@ Prefer: java-1_8_0-openjdk java-1_8_0-openjdk-devel java-1_8_0-openjdk-javadoc j
 Prefer: java-1_7_0-openjdk java-1_7_0-openjdk-devel java-1_7_0-openjdk-javadoc java-1_7_0-openjdk-headless
 # And then fall back to java 7 bootstrap if needed
 Prefer: java-1_7_0-bootstrap java-1_7_0-bootstrap-devel java-1_7_0-bootstrap-javadoc java-1_7_0-bootstrap-headless
+Prefer: -java-12-openjdk java-12-openjdk-devel java-12-openjdk-javadoc java-12-openjdk-headless
 Substitute: java2-devel-packages java-devel
 
 %ifarch x86_64 ppc64 s390x sparc64
