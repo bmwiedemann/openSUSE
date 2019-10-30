@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  3 04:22:38 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- update _constraints for ppc64 for 22GB disk
+  to avoid out of disk space build error.
+
+-------------------------------------------------------------------
 Wed Aug 28 12:41:02 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - Update to version 12.14.1. (jsc#SLE-8513)

@@ -10,4 +10,14 @@
       <size unit="G">7</size>
     </physicalmemory>
   </hardware>
+  <overwrite>
+    <conditions>
+      <arch>ppc64</arch>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">22</size>
+      </disk>
+    </hardware>
+  </overwrite>
 </constraints>
