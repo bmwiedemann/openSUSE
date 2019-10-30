@@ -167,6 +167,7 @@ unsorted:
   - QtAV-players 
   - QtAV-qml 
   - QtDMM 
+  - QtPass 
   - R-BH 
   - R-KernSmooth 
   - R-MASS 
@@ -12386,6 +12387,7 @@ unsorted:
   - lua51-luv-devel 
   - lua51-messagepack 
   - lua51-mpack 
+  - lua51-say 
   - lua51-zlib 
   - lua53-compat-5.3 
   - lua53-devel 
@@ -12411,6 +12413,7 @@ unsorted:
   - lua53-luv-devel 
   - lua53-messagepack 
   - lua53-mpack 
+  - lua53-say 
   - lua53-zlib 
   - luabind-devel 
   - luaposix-doc 
@@ -17940,7 +17943,6 @@ unsorted:
   - python2-django-js-asset 
   - python2-django-json-widget 
   - python2-django-jsonfield 
-  - python2-django-minio-storage 
   - python2-django-model-utils 
   - python2-django-nine 
   - python2-django-nose 
@@ -20280,6 +20282,7 @@ unsorted:
   - python3-django-formtools 
   - python3-django-grappelli 
   - python3-django-guardian 
+  - python3-django-health-check 
   - python3-django-invitations 
   - python3-django-jinja 
   - python3-django-js-asset 
