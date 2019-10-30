@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 29 09:13:41 CET 2019 - kukuk@suse.de
+
+- Create default dhcpd.conf/dhcpd6.conf files if they don't exist
+
+-------------------------------------------------------------------
 Wed Oct 23 19:35:07 CEST 2019 - kukuk@suse.de
 
 - Fix default argument and handling of entrypoint.sh

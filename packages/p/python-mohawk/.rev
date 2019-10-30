@@ -42,4 +42,15 @@
     `mohawk.exc.MissingContent` instead of `ValueError`.</comment>
     <requestid>664544</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>16ee6956c3c38c4e36ad57b409f236f7</srcmd5>
+    <version>1.1.0</version>
+    <time>1572442989</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0:
+  * Support passing file-like objects (those implementing .read(n))
+    as the content parameter for Resources. See mohawk.Sender for
+    details.</comment>
+    <requestid>743605</requestid>
+  </revision>
 </revisionlist>

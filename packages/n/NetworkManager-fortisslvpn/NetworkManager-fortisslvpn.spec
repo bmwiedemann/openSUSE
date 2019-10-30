@@ -35,6 +35,8 @@ BuildRequires:  pkgconfig(libnm) >= 1.2.0
 BuildRequires:  pkgconfig(libnma) >= 1.2.0
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18
 
+Requires:       openfortivpn
+
 %description
 This package contains software for integrating Fortinet compatible
 SSLVPN server VPN capabilities with with NetworkManager.

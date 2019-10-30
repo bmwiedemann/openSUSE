@@ -1186,4 +1186,16 @@ The actual python-keyring package is only available in the devel:languages:pytho
   the url to the project/package in an internet browser</comment>
     <requestid>743494</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>7075d55d16f25c25c077fcf0276bba4c</srcmd5>
+    <version>0.166.1</version>
+    <time>1572443157</time>
+    <user>dimstar_suse</user>
+    <comment>- 0.166.1
+  * emergency fix for credentials handling:
+      - in case of an old passx entry in oscrc
+        osc did not work at all. Now we check in
+        the compat code if we have an passx entry.</comment>
+    <requestid>743821</requestid>
+  </revision>
 </revisionlist>

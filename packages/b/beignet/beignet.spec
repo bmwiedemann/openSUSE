@@ -38,8 +38,11 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(ice)
+BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(ocl-icd)
 BuildRequires:  pkgconfig(zlib)
+BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xfixes)
 # exclusive to Intel GPU
 ExclusiveArch:  %{ix86} x86_64
 %if 0%{?suse_version} >= 1550

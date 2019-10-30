@@ -1,7 +1,7 @@
 #
 # spec file for package xfig
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -44,7 +44,7 @@ Requires:       netpbm
 Requires:       transfig
 Requires:       xorg-x11-fonts
 Requires:       xorg-x11-fonts-core
-Version:        3.2.7a
+Version:        3.2.7b
 Release:        0
 Summary:        Facility for Interactive Generation of Figures under the X Window System
 #  www.xfig.org is dead
@@ -148,7 +148,7 @@ PKG_CONFIG_PATH=/usr/share/pkgconfig:/usr/lib/pkgconfig:${PWD}
 export PKG_CONFIG_PATH
 %endif
 CC=gcc
-CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing -w -D_GNU_SOURCE -std=gnu99"
+CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing -w -D_GNU_SOURCE -std=gnu99 -DUSE_XPM -DUSE_SPLASH"
 CFLAGS="$CFLAGS -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64"
 CFLAGS="$CFLAGS -DMAXNUMPTS=50000"
 CFLAGS="$CFLAGS -DBSDLPR"
@@ -158,14 +158,16 @@ chmod 755 configure
 %configure \
     --docdir=%{_defaultdocdir}/%{name} \
     --enable-cache-size=512 \
-    --enable-xpm-splash \
     --enable-tablet \
     --with-x \
     --with-xaw3d1_5e \
     --with-xaw3d
+touch src/splash.xbm
+touch src/splash.xpm
 make %{?_smp_mflags} CCOPTIONS="$CFLAGS"
 
 %install
+find -name '*.bak' -exec rm -vf '{}' \+
 make DESTDIR=%{buildroot} install
 mv %{buildroot}%{_mandir}/man1/xfig.1 %{buildroot}%{_mandir}/man1/xfig.1x
 gzip -9 %{buildroot}%{_mandir}/man1/xfig.1x

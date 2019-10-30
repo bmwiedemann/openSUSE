@@ -31,4 +31,12 @@
     <comment>- Disable tests as they fail with gcc9</comment>
     <requestid>736403</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>d0f517314465a7e7962fb75d4e305145</srcmd5>
+    <version>0.6.0</version>
+    <time>1572443320</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>744096</requestid>
+  </revision>
 </revisionlist>

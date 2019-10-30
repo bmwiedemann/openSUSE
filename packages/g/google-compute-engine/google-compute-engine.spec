@@ -38,6 +38,8 @@ Patch4:         gcei-link-boost_regex.patch
 # see: https://github.com/GoogleCloudPlatform/compute-image-packages/issues/831
 Patch5:         gcei-normalize-python-version.patch
 Patch6:         gcei_disableipv6.patch
+# see: https://github.com/GoogleCloudPlatform/compute-image-packages/issues/862
+Patch7:         gcei-waitlimit-dns.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -103,6 +105,7 @@ Google Compute Engine. Modifies sshd, nsswitch, and sshd_pam configurations.
 %endif
 %patch5 -p1
 %patch6 -p1
+%patch7
 find -name "*.py" | xargs sed -i 'sm#!/usr/bin/pythonmm'
 cp %{SOURCE9} google-optimize-local-ssd.service
 cp %{SOURCE10} google-set-multiqueue.service

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 28 11:01:45 UTC 2019 - Yan Gao <ygao@suse.com>
+
+- Update to version 1.4.0+20190919.2758632:
+- sbd.8.pod and -h help text add -vvv description
+- sbd-md: add a warning log if failed to open/read device on startup (bsc#1150429)
+- agent: log detailed errors for monitor failures (bsc#1148236)
+- sbd-md: list/dump failures go to stderr (bsc#1148236)
+- avoid deprecated names for g_main-loop-functions
+- sbd-pacemaker: check for shutdown attribute on every cib-diff
+
+-------------------------------------------------------------------
 Tue Jul 02 15:26:03 UTC 2019 - Yan Gao <ygao@suse.com>
 
 - Update to version 1.4.0+20190612.398628b:

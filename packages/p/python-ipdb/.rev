@@ -29,4 +29,13 @@
     <comment></comment>
     <requestid>722246</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>36b70cf742f50dfb8c4a808a95ae2b7e</srcmd5>
+    <version>0.12.2</version>
+    <time>1572443023</time>
+    <user>dimstar_suse</user>
+    <comment>- runtime dependency on python-ipython added
+- Skip the bin install commands if the flavor is not being built</comment>
+    <requestid>743635</requestid>
+  </revision>
 </revisionlist>

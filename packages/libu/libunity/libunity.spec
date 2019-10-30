@@ -1,7 +1,7 @@
 #
 # spec file for package libunity
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -31,6 +31,8 @@ Source:         https://launchpad.net/ubuntu/+archive/primary/+files/%{name}_%{_
 Source1:        baselibs.conf
 # PATCH-FIX-OPENSUSE libunity-protocol-private-install.patch i@marguerite.su -- Unity can't find /usr/lib(64)/libunity/.
 Patch0:         libunity-protocol-private-install.patch
+# PATCH-FIX-UPSTREAM 0001-Fix-FTB-with-recent-vala-requiring-non-public-abstra.patch vala 0.46.1+ doesn't allow creation method of abstract class to be public
+Patch1:         0001-Fix-FTB-with-recent-vala-requiring-non-public-abstra.patch
 BuildRequires:  fdupes
 BuildRequires:  gnome-common
 BuildRequires:  pkgconfig
@@ -122,6 +124,7 @@ This package provides development headers for libunity.
 %prep
 %setup -q -c
 %patch0 -p1
+%patch1 -p1
 
 %build
 NOCONFIGURE=1 gnome-autogen.sh

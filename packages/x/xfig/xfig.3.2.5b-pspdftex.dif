@@ -13,7 +13,7 @@
  
  			/* make it suitable for pdftex. */
  			strsub(prcmd, "ps", "pdf", tmpcmd, 0);
-@@ -694,7 +694,7 @@ build_layer_list(char *layers)
+@@ -697,7 +697,7 @@ build_layer_list(char *layers)
  {
  	char	list[PATH_MAX], notlist[PATH_MAX], num[10];
  	int	layer, len, notlen;

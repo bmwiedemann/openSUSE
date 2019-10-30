@@ -415,7 +415,6 @@
     <package name="yast2-trans-stats"/>
     <package name="patterns-xfce-xfce"/>
     <namedCollection name="xfce"/>
-    <package name="openSUSE-release-livecd-xfce"/>
     <package name="aaa_base" replaces="gnome-themes-accessibility"/>
     <ignore name="gnome-themes-accessibility"/>
     <package name="aaa_base" replaces="xlockmore"/>

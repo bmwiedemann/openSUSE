@@ -1,7 +1,7 @@
 #
 # spec file for package glom
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2010 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,14 +13,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define api    1.32
 %define apiRPM 1_32
 Name:           glom
-Version:        1.31.6
+Version:        1.32.0
 Release:        0
 Summary:        Database designer and user interface
 # This is indeed GPL-3.0+, see http://git.gnome.org/browse/glom/commit/?id=6b16a90f8ea902d91db85656cc11c6a951d42ced
@@ -28,7 +28,7 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Databases/Clients
 URL:            http://www.glom.org/
 # FIXME: once bnc#793882 is fixed, re-enable %%check section
-Source:         http://download.gnome.org/sources/glom/1.31/%{name}-%{version}.tar.xz
+Source:         http://download.gnome.org/sources/glom/%{api}/%{name}-%{version}.tar.xz
 BuildRequires:  gcc-c++
 BuildRequires:  gdbm-devel
 BuildRequires:  intltool
@@ -47,13 +47,13 @@ BuildRequires:  pkgconfig(giomm-2.4) >= 2.47.4
 BuildRequires:  pkgconfig(glibmm-2.4) > 2.47.4
 BuildRequires:  pkgconfig(goocanvas-2.0) >= 2.0.1
 BuildRequires:  pkgconfig(goocanvasmm-2.0) >= 1.90.11
-BuildRequires:  pkgconfig(gtkmm-3.0) >= 3.18.0
+BuildRequires:  pkgconfig(gtkmm-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(gtksourceviewmm-3.0) >= 3.18.0
 BuildRequires:  pkgconfig(libarchive) >= 3.0
 BuildRequires:  pkgconfig(libepc-1.0) >= 0.4.0
-BuildRequires:  pkgconfig(libgda-5.0) >= 5.2.1
+BuildRequires:  pkgconfig(libgda-5.0) >= 5.2.9
 BuildRequires:  pkgconfig(libgda-mysql-5.0)
-BuildRequires:  pkgconfig(libgda-postgres-5.0)
+BuildRequires:  pkgconfig(libgda-postgres-5.0) >= 5.2.9
 BuildRequires:  pkgconfig(libgdamm-5.0) >= 4.99.10
 BuildRequires:  pkgconfig(libxml++-3.0) >= 2.24.0
 BuildRequires:  pkgconfig(libxslt) >= 1.1.10
@@ -155,19 +155,19 @@ interface.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
-          PYTHON_VERSION="%{python3_version}" \
-          PYTHON=python3 \
-          --disable-static \
-          --disable-dependency-tracking \
-          --disable-update-mime-database \
-          --disable-documentation \
-          --enable-ui-tests \
-          --with-postgres-utils=%{_bindir}
-make %{?_smp_mflags}
+	PYTHON_VERSION="%{python3_version}" \
+	PYTHON=python3 \
+	--disable-static \
+	--disable-dependency-tracking \
+	--disable-update-mime-database \
+	--disable-documentation \
+	--enable-ui-tests \
+	--with-postgres-utils=%{_bindir}
+%make_build
 
 %install
 %make_install
@@ -180,16 +180,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %check
 make %{?_smp_mflags} check
 %endif
-
-%post
-%desktop_database_post
-%icon_theme_cache_post
-%mime_database_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%mime_database_postun
 
 %post -n lib%{name}-%{apiRPM}-0 -p /sbin/ldconfig
 %postun -n lib%{name}-%{apiRPM}-0 -p /sbin/ldconfig

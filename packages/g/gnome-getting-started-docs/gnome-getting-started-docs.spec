@@ -17,7 +17,7 @@
 
 
 Name:           gnome-getting-started-docs
-Version:        3.34.0
+Version:        3.34.1
 Release:        0
 Summary:        Getting started with GNOME - Documentation
 License:        CC-BY-SA-3.0

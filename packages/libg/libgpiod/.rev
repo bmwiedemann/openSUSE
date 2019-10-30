@@ -98,4 +98,21 @@
 </comment>
     <requestid>709751</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e95d89f962a17d5f5d16c4b31ff94607</srcmd5>
+    <version>1.4.1</version>
+    <time>1572443281</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.4.1 (Bug fixes release):
+  * fix GCC8 warnings when building python bindings
+  * fix a bug in gpioinfo where lines used by the kernel without any consumer
+    string were reported as unused
+  * fix a bug in line::event_get_fd() in C++ bindings where the exception
+    wouldn't be throws in error cases due to a missing 'throw' keyword
+  * fix a couple bugs in the test-suite
+  * disable a failing assertion in the test-suite that stopped working after
+  linux v5.2.7
+</comment>
+    <requestid>743965</requestid>
+  </revision>
 </revisionlist>

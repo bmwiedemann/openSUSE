@@ -1,7 +1,7 @@
 #
 # spec file for package chemical-mime-data
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,10 +20,10 @@ Name:           chemical-mime-data
 Version:        0.1.94
 Release:        0
 Summary:        A collection of data files for various chemical MIME types
-License:        LGPL-2.0+
+License:        LGPL-2.0-or-later
 Group:          System/Base
-Url:            http://chemical-mime.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/chemical-mime/%{name}-%{version}.tar.bz2
+Url:            http://www.ch.ic.ac.uk/chemime/
+Source0:        %{name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
 # PATCH-FIX-UPSTREAM -- ToDo
 Patch0:         reproducible.patch
@@ -31,19 +31,12 @@ BuildRequires:  ImageMagick
 BuildRequires:  fdupes
 BuildRequires:  gettext-runtime
 BuildRequires:  intltool
-BuildRequires:  libxslt-devel
-BuildRequires:  perl-XML-Parser
 BuildRequires:  pkgconfig
-BuildRequires:  python
-BuildRequires:  rsvg-view
 BuildRequires:  shared-mime-info
-Requires:       ImageMagick
+BuildRequires:  xsltproc
 Requires:       hicolor-icon-theme
-Requires:       pkgconfig
-Requires:       rsvg-view
 Requires:       shared-mime-info
 Recommends:     gnome-icon-theme
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -72,18 +65,20 @@ make %{?_smp_mflags}
 %find_lang %{name}
 %fdupes %{buildroot}/%{_prefix}
 
+%if 0%{?suse_version} < 1330
 %post
 %mime_database_post
 
 %postun
 %mime_database_postun
+%endif
 
 %files -f %{name}.lang
 %defattr (-, root, root)
 %doc %{_defaultdocdir}/%{name}
-%doc AUTHORS ChangeLog COPYING HACKING NEWS README THANKS TODO
-%{_datadir}/icons/hicolor/*/mimetypes/gnome-mime-chemical.png
-%{_datadir}/icons/hicolor/scalable/mimetypes/gnome-mime-chemical.svgz
+%license COPYING
+%doc AUTHORS ChangeLog HACKING NEWS README THANKS TODO
+%{_datadir}/icons/hicolor/
 %{_datadir}/pixmaps/chemistry.png
 %{_datadir}/pixmaps/gnome-mime-chemical.png
 %{_datadir}/mime/packages/chemical-mime-data.xml

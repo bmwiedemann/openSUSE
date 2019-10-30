@@ -144,4 +144,16 @@
     <comment></comment>
     <requestid>627483</requestid>
   </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>96790860890a7d2e9601c653bda73a17</srcmd5>
+    <version>17.05</version>
+    <time>1572442969</time>
+    <user>dimstar_suse</user>
+    <comment>fix build:
+
+- switch desktop file categories to Education;Math;Languages; to 
+  get it building in Factory again
+- mark COPYING as license file</comment>
+    <requestid>743352</requestid>
+  </revision>
 </revisionlist>

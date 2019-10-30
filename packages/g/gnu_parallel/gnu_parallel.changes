@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 28 12:51:56 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to new release 20191022
+  * --nice is now inherited by the nice level that GNU Parallel is
+    started at. So 'nice -n10 parallel' will also cause remote jobs to be
+    run at nice level 10.
+  * --delay is now accurate to within 5 ms.
+  * --tee will use --output-error=warn-nopipe if supported by tee.
+- Refresh parallel-remove-nag-screen.patch
+
+-------------------------------------------------------------------
 Sun Sep  1 06:50:27 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new release 20190822

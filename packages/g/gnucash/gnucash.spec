@@ -121,6 +121,8 @@ a personal finance manager.
 %autosetup -p1
 
 %build
+export CFLAGS="-Wno-error"
+export CXXFLAGS="-Wno-error"
 %define _lto_cflags %{nil}
 %cmake \
     -DCMAKE_SKIP_RPATH=OFF \

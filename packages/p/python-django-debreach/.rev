@@ -25,4 +25,14 @@
     <comment></comment>
     <requestid>741203</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dd5b339b3d62262b0f064a6f5553c686</srcmd5>
+    <version>2.0.1</version>
+    <time>1572443340</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.1:
+  * Drop python2 support upstream
+  * Various tests and description fixes</comment>
+    <requestid>744147</requestid>
+  </revision>
 </revisionlist>

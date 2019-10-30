@@ -193,4 +193,12 @@ This package is included in Debian.
   * Fixed build failure on Solaris systems (#1554)</comment>
     <requestid>733687</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>1e57695fd383da2339f95ecc237bc9a4</srcmd5>
+    <version>6.2.0</version>
+    <time>1572443238</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>743902</requestid>
+  </revision>
 </revisionlist>

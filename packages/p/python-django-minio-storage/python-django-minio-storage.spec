@@ -12,34 +12,35 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
-%bcond_with test
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_with test
+%define skip_python2 1
 Name:           python-django-minio-storage
-Version:        0.2.2
+Version:        0.3.4
 Release:        0
-License:        MIT or Apache-2.0
 Summary:        Django file storage using minio
-Url:            https://github.com/py-pa/django-minio-storage
-Group:          Development/Languages/Python
+License:        MIT OR Apache-2.0
+URL:            https://github.com/py-pa/django-minio-storage
 Source:         https://files.pythonhosted.org/packages/source/d/django-minio-storage/django-minio-storage-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-Django >= 1.11
+Requires:       python-minio >= 4.0.21
+BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module Django >= 1.8}
-BuildRequires:  %{python_module minio >= 4.0.3}
-BuildRequires:  %{python_module pytest-django >= 3.1.2}
+BuildRequires:  %{python_module Django >= 1.11}
+BuildRequires:  %{python_module minio >= 4.0.21}
+BuildRequires:  %{python_module pytest-django >= 3.5.1}
 BuildRequires:  %{python_module pytest-pythonpath}
 BuildRequires:  %{python_module requests}
 BuildRequires:  minio
 %endif
-BuildRequires:  fdupes
-Requires:       python-Django >= 1.8
-Requires:       python-minio >= 4.0.3
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -66,7 +67,7 @@ minio server $HOME/minio_export &
 export MINIO_STORAGE_ENDPOINT=localhost:9000
 export MINIO_STORAGE_ACCESS_KEY=$MINIO_ACCESS_KEY
 export MINIO_STORAGE_SECRET_KEY=$MINIO_SECRET_KEY
-%python_exec -m pytest
+%pytest
 %endif
 
 %files %{python_files}

@@ -12,11 +12,11 @@ Subject: [PATCH] Enable mojo with VDA2 on Linux
  media/mojo/services/gpu_mojo_media_client.cc |  4 ++--
  6 files changed, 29 insertions(+), 14 deletions(-)
 
-Index: chromium-76.0.3806.1/chrome/browser/about_flags.cc
+Index: chromium-78.0.3904.44/chrome/browser/about_flags.cc
 ===================================================================
---- chromium-76.0.3806.1.orig/chrome/browser/about_flags.cc
-+++ chromium-76.0.3806.1/chrome/browser/about_flags.cc
-@@ -1634,14 +1634,14 @@ const FeatureEntry kFeatureEntries[] = {
+--- chromium-78.0.3904.44.orig/chrome/browser/about_flags.cc
++++ chromium-78.0.3904.44/chrome/browser/about_flags.cc
+@@ -1738,14 +1738,14 @@ const FeatureEntry kFeatureEntries[] = {
          "disable-accelerated-video-decode",
          flag_descriptions::kAcceleratedVideoDecodeName,
          flag_descriptions::kAcceleratedVideoDecodeDescription,
@@ -33,7 +33,7 @@ Index: chromium-76.0.3806.1/chrome/browser/about_flags.cc
          SINGLE_DISABLE_VALUE_TYPE(switches::kDisableAcceleratedVideoEncode),
      },
      {"enable-history-favicons-google-server-query",
-@@ -2115,10 +2115,10 @@ const FeatureEntry kFeatureEntries[] = {
+@@ -2216,10 +2216,10 @@ const FeatureEntry kFeatureEntries[] = {
       FEATURE_VALUE_TYPE(service_manager::features::kXRSandbox)},
  #endif  // !defined(OS_ANDROID)
  #endif  // ENABLE_VR
@@ -46,11 +46,11 @@ Index: chromium-76.0.3806.1/chrome/browser/about_flags.cc
       SINGLE_DISABLE_VALUE_TYPE(switches::kDisableAcceleratedMjpegDecode)},
  #endif  // OS_CHROMEOS
      {"system-keyboard-lock", flag_descriptions::kSystemKeyboardLockName,
-Index: chromium-76.0.3806.1/chrome/browser/flag_descriptions.cc
+Index: chromium-78.0.3904.44/chrome/browser/flag_descriptions.cc
 ===================================================================
---- chromium-76.0.3806.1.orig/chrome/browser/flag_descriptions.cc
-+++ chromium-76.0.3806.1/chrome/browser/flag_descriptions.cc
-@@ -2969,15 +2969,20 @@ const char kMacSystemMediaPermissionsInf
+--- chromium-78.0.3904.44.orig/chrome/browser/flag_descriptions.cc
++++ chromium-78.0.3904.44/chrome/browser/flag_descriptions.cc
+@@ -3064,15 +3064,20 @@ const char kMacSystemMediaPermissionsInf
  
  #endif
  
@@ -71,13 +71,13 @@ Index: chromium-76.0.3806.1/chrome/browser/flag_descriptions.cc
 +
 +#if defined(OS_CHROMEOS)
  
- const char kAppServiceAshName[] = "App Service Ash";
- const char kAppServiceAshDescription[] =
-Index: chromium-76.0.3806.1/chrome/browser/flag_descriptions.h
+ const char kAggregatedMlAppRankingName[] = "Rank suggested apps with ML.";
+ const char kAggregatedMlAppRankingDescription[] =
+Index: chromium-78.0.3904.44/chrome/browser/flag_descriptions.h
 ===================================================================
---- chromium-76.0.3806.1.orig/chrome/browser/flag_descriptions.h
-+++ chromium-76.0.3806.1/chrome/browser/flag_descriptions.h
-@@ -1766,11 +1766,15 @@ extern const char kPermissionPromptPersi
+--- chromium-78.0.3904.44.orig/chrome/browser/flag_descriptions.h
++++ chromium-78.0.3904.44/chrome/browser/flag_descriptions.h
+@@ -1821,11 +1821,15 @@ extern const char kPermissionPromptPersi
  
  // Chrome OS ------------------------------------------------------------------
  
@@ -91,13 +91,13 @@ Index: chromium-76.0.3806.1/chrome/browser/flag_descriptions.h
 +
 +#if defined(OS_CHROMEOS)
 +
- extern const char kAppServiceAshName[];
- extern const char kAppServiceAshDescription[];
+ extern const char kAggregatedMlAppRankingName[];
+ extern const char kAggregatedMlAppRankingDescription[];
  
-Index: chromium-76.0.3806.1/gpu/config/software_rendering_list.json
+Index: chromium-78.0.3904.44/gpu/config/software_rendering_list.json
 ===================================================================
---- chromium-76.0.3806.1.orig/gpu/config/software_rendering_list.json
-+++ chromium-76.0.3806.1/gpu/config/software_rendering_list.json
+--- chromium-78.0.3904.44.orig/gpu/config/software_rendering_list.json
++++ chromium-78.0.3904.44/gpu/config/software_rendering_list.json
 @@ -334,11 +334,12 @@
      },
      {

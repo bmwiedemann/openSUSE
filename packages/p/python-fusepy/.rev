@@ -24,4 +24,13 @@ benefits:
   * no upstream changelog (forwarded request 704922 from pgajdos)</comment>
     <requestid>704953</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e41a1787f66e847725d7bfbfe1eeb7d0</srcmd5>
+    <version>3.0.1</version>
+    <time>1572443297</time>
+    <user>dimstar_suse</user>
+    <comment>- Sort out the deps a bit and add missing libfuse2 dependency
+  to make the plugin actually work</comment>
+    <requestid>743984</requestid>
+  </revision>
 </revisionlist>

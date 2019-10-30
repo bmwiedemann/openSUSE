@@ -19,17 +19,16 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-s3fs
-Version:        0.3.3
+Version:        0.3.5
 Release:        0
 Summary:        Python filesystem interface over S3
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/dask/s3fs/
 Source:         https://files.pythonhosted.org/packages/source/s/s3fs/s3fs-%{version}.tar.gz
 BuildRequires:  %{python_module boto3 >= 1.9.91}
 BuildRequires:  %{python_module botocore >= 1.12.91}
 BuildRequires:  %{python_module fsspec >= 0.2.2}
-BuildRequires:  %{python_module moto >= 1.3.7}
+BuildRequires:  %{python_module moto >= 1.3.12}
 BuildRequires:  %{python_module pytest >= 4.2.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

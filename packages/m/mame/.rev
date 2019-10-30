@@ -135,4 +135,15 @@
     <comment></comment>
     <requestid>732030</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>316b0e9891244e2d9964384dd4f70bc1</srcmd5>
+    <version>0.211</version>
+    <time>1572443249</time>
+    <user>dimstar_suse</user>
+    <comment>- Increase disk space requirement in build constraints due to lto.
+- Make LTO flags match the number of make threads to fix link time
+  build failures.
+</comment>
+    <requestid>743908</requestid>
+  </revision>
 </revisionlist>

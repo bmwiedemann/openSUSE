@@ -4,7 +4,7 @@
 
 --- src/d_text.c
 +++ src/d_text.c	2016-09-22 08:46:29.848945840 +0000
-@@ -1968,7 +1968,10 @@ xim_initialize(Widget w)
+@@ -1971,7 +1971,10 @@ xim_initialize(Widget w)
        if (xim_style == 0) xim_style = style_root;
      }
    }

@@ -371,4 +371,12 @@ A intel-speed-select_remove_DATE_TIME.patch
 M rapl_monitor.patch</comment>
     <requestid>716264</requestid>
   </revision>
+  <revision rev="43" vrev="5">
+    <srcmd5>401ff4352c4e18cf8734ce664f44db70</srcmd5>
+    <version>5.1</version>
+    <time>1572443211</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>743865</requestid>
+  </revision>
 </revisionlist>

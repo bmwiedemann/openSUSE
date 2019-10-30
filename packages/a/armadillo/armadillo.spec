@@ -18,7 +18,7 @@
 
 %define soname libarmadillo9
 Name:           armadillo
-Version:        9.700.2
+Version:        9.800.1
 Release:        0
 Summary:        C++ matrix library with interfaces to LAPACK and ATLAS
 License:        Apache-2.0

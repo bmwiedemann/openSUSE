@@ -17,26 +17,24 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-
 Name:           python-fusepy
 Version:        3.0.1
 Release:        0
 Summary:        A python module that provides a simple interface to FUSE
 License:        ISC
-Group:          Development/Libraries/Python
-Url:            https://github.com/terencehonles/fusepy
+URL:            https://github.com/fusepy/fusepy
 Source:         https://files.pythonhosted.org/packages/source/f/fusepy/fusepy-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  fuse-devel
-BuildRequires:  pkg-config
-# required for older SUSE versions w/o python single-spec support
+BuildRequires:  libfuse2
+BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
+# this is not really fuse3 compatible
+Requires:       libfuse2
+# both projects use the same python package name
+Conflicts:      python-fuse
 # fusepy interfaces via ctypes to libfuse, so no arch dependent elements
 # should be in the package
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-# both projects use the same python package name
-Conflicts:      python-fuse
 %python_subpackages
 
 %description
@@ -57,7 +55,6 @@ possible.
 # no upstream tests
 
 %files %{python_files}
-%defattr(-,root,root)
 %{python_sitelib}/*
 %doc README.rst
 

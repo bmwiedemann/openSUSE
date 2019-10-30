@@ -19,9 +19,9 @@ set -euxo pipefail
 exec | tee /var/log/config.log
 exec 2>&1
 
-pl=$(rpmqpack | grep openSUSE-release-livecd-)
+pl=$(rpmqpack | grep release-livecd-)
 
-# Get the flavor from the installed openSUSE-release-livecd- RPM
+# Get the flavor from the installed (openSUSE|Leap)-release-livecd- RPM
 # as <censored> kiwi does not make the flavor accessible
 desktop=$(echo "$pl" | awk -F- '{ print $4 }' | tr A-Z a-z)
 

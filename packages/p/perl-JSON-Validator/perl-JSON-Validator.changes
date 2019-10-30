@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 29 09:41:31 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 3.16
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+  3.16 2019-10-28T13:59:47+0900
+   - Add generate_definitions_path() #175 #177
+     Contributor: Henrik Andersen, Jan Henning Thorsen
+
+-------------------------------------------------------------------
 Fri Sep 27 08:43:15 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 3.15

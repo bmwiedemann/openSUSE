@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 28 20:05:08 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.1.0:
+  * Support passing file-like objects (those implementing .read(n))
+    as the content parameter for Resources. See mohawk.Sender for
+    details.
+
+-------------------------------------------------------------------
 Fri Jan 11 06:41:11 UTC 2019 - antoine.belvire@opensuse.org
 
 - Update to version 1.0.0:

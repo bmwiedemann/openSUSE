@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Fri Oct 25 10:50:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Disable LTO for now as it consumes ~20GB of RAM, we will reenable
+  the feature later when some memory consumption fixes land in
+  GCC
+
+-------------------------------------------------------------------
+Thu Oct 24 12:43:15 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Adjust LDFLAGS settings for LTO to take memory-constraints into
+  consideration
+
+-------------------------------------------------------------------
+Wed Oct 23 12:53:22 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 78.0.3904.70 bsc#1154806:
+  * CVE-2019-13699: Use-after-free in media
+  * CVE-2019-13700: Buffer overrun in Blink
+  * CVE-2019-13701: URL spoof in navigation
+  * CVE-2019-13702: Privilege elevation in Installer
+  * CVE-2019-13703: URL bar spoofing
+  * CVE-2019-13704: CSP bypass
+  * CVE-2019-13705: Extension permission bypass
+  * CVE-2019-13706: Out-of-bounds read in PDFium
+  * CVE-2019-13707: File storage disclosure
+  * CVE-2019-13708: HTTP authentication spoof
+  * CVE-2019-13709: File download protection bypass
+  * CVE-2019-13710: File download protection bypass
+  * CVE-2019-13711: Cross-context information leak
+  * CVE-2019-15903: Buffer overflow in expat
+  * CVE-2019-13713: Cross-origin data leak
+  * CVE-2019-13714: CSS injection
+  * CVE-2019-13715: Address bar spoofing
+  * CVE-2019-13716: Service worker state error
+  * CVE-2019-13717: Notification obscured
+  * CVE-2019-13718: IDN spoof
+  * CVE-2019-13719: Notification obscured
+  * Various fixes from internal audits, fuzzing and other initiatives
+- Add patches:
+  * chromium-78-gcc-enum-range.patch
+  * chromium-78-gcc-noexcept.patch
+  * chromium-78-gcc-std-vector.patch
+  * chromium-78-icon.patch
+  * chromium-78-include.patch
+  * chromium-78-noexcept.patch
+  * chromium-78-pm-crash.patch
+  * chromium-78-protobuf-export.patch
+- Remove patches:
+  * chromium-77-blink-include.patch
+  * chromium-77-fix-gn-gen.patch
+  * chromium-77-gcc-abstract.patch
+  * chromium-77-gcc-include.patch
+  * chromium-77-gcc-no-opt-safe-math.patch
+  * chromium-77-no-cups.patch
+  * chromium-77-std-string.patch
+  * chromium-77-system-hb.patch
+  * chromium-77.0.3865.120.tar.xz
+  * chromium-77.0.3865.75-certificate-transparency.patch
+- Rebase patches:
+  * chromium-system-icu.patch
+  * chromium-unbundle-zlib.patch
+  * chromium-vaapi-fix.patch
+  * chromium-vaapi.patch
+  * old-libva.patch
+At revision 0ad55cb9e188d5926db26003b443eec9.
+
+
+
+-------------------------------------------------------------------
+Fri Oct 18 09:37:21 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Use internal resources for icon and appdata
+
+-------------------------------------------------------------------
+Fri Oct 11 08:05:49 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 77.0.3865.120 bsc#1153660:
+  * CVE-2019-13693: Use-after-free in IndexedDB
+  * CVE-2019-13694: Use-after-free in WebRTC
+  * CVE-2019-13695: Use-after-free in audio
+  * CVE-2019-13696: Use-after-free in V8
+  * CVE-2019-13697: Cross-origin size leak. 
+  * Various fixes from internal audits, fuzzing and other initiatives
+
+-------------------------------------------------------------------
 Thu Sep 19 12:55:15 UTC 2019 - Jan Ritzerfeld <suse@bugs.jan.ritzerfeld.org>
 
 - Added patch chromium-vaapi-fix.patch again to fix boo#1146219

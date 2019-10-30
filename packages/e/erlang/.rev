@@ -736,4 +736,12 @@ erlang 17.0 is ready for factory, now. See changes in .changes</comment>
     <comment></comment>
     <requestid>742510</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>ffb0957b787d085739905a71768c6ece</srcmd5>
+    <version>22.1.5</version>
+    <time>1572443288</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>743974</requestid>
+  </revision>
 </revisionlist>

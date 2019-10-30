@@ -27,6 +27,8 @@ URL:            http://concurrencykit.org/
 Source:         http://concurrencykit.org/releases/ck-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/concurrencykit/ck/issues/141
 Patch0:         ck-fix-j1.patch
+# PATCH-FIX-UPSTREAM https://github.com/concurrencykit/ck/issues/147
+Patch1:         ck-fix-gettid-glibc-clash.patch
 BuildRequires:  pkgconfig
 ExcludeArch:    s390 s390x
 
@@ -59,6 +61,7 @@ This package holds the development files.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 # not a normal autotool configure, can't use configure macro
@@ -90,13 +93,7 @@ export CFLAGS="%{optflags}"
 rm -rv %{buildroot}%{_libdir}/libck.a
 
 %check
-# disable tests due to their issues with gcc9
-# regressions/ck_array/validate:
-# In file included from serial.c:6:
-# ../../common.h:272:1: error: static declaration of 'gettid' follows non-static declaration
-#   272 | gettid(void)
-#       | ^~~~~~
-#make %{?_smp_mflags} check
+make %{?_smp_mflags} check
 
 %post   -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig

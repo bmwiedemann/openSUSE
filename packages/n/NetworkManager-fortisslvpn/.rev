@@ -7,4 +7,13 @@
     <comment>New package</comment>
     <requestid>687896</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ec502f2f210f3156606a2cc4a228743f</srcmd5>
+    <version>1.2.10</version>
+    <time>1572443050</time>
+    <user>dimstar_suse</user>
+    <comment>- Add openfortivpn to Requires
+If openfortivpn is not installed, vpn can not be started. (forwarded request 743353 from cges30901)</comment>
+    <requestid>743763</requestid>
+  </revision>
 </revisionlist>

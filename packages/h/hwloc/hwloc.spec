@@ -18,13 +18,13 @@
 
 %global lname libhwloc15
 Name:           hwloc
-Version:        2.0.4
+Version:        2.1.0
 Release:        0
 Summary:        Portable Hardware Locality
 License:        BSD-3-Clause
 Group:          Productivity/Clustering/Computing
 Url:            http://www.open-mpi.org/projects/hwloc/
-Source0:        https://download.open-mpi.org/release/hwloc/v2.0/%{name}-%{version}.tar.bz2
+Source0:        https://download.open-mpi.org/release/hwloc/v2.1/%{name}-%{version}.tar.bz2
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
@@ -155,6 +155,7 @@ make %{?_smp_mflags} check || :
 %{_bindir}/hwloc*
 %{_bindir}/lstopo*
 %{_datadir}/applications/*.desktop
+%{_sysconfdir}/bash_completion.d/hwloc-completion.bash
 %ifarch %{ix86} x86_64
 %attr(0755,root,root) %{_sbindir}/hwloc-dump-hwdata
 %{_libexecdir}/systemd/system/hwloc-dump-hwdata.service
@@ -175,10 +176,12 @@ make %{?_smp_mflags} check || :
 %files data
 %defattr(-, root, root, -)
 %dir %{_datadir}/hwloc
+%dir %{_datadir}/hwloc/hwloc-ps.www
 %{_datadir}/hwloc/hwloc.dtd
 %{_datadir}/hwloc/hwloc2-diff.dtd
 %{_datadir}/hwloc/hwloc2.dtd
 %{_datadir}/hwloc/hwloc-valgrind.supp
+%{_datadir}/hwloc/hwloc-ps.www/*
 
 %files doc
 %defattr(-, root, root, -)

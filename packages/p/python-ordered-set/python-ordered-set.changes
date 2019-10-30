@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 17 09:01:30 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to multibuild and make sure we build without setuptools
+  in order to avoid buildcycle
+
+-------------------------------------------------------------------
 Wed May 22 14:21:24 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 3.1.1

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct 28 18:42:44 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.32.0:
+  + Require libgda 5.2.9, to support newer postgresql versions.
+  + Require Python 3.
+  + Require at least gtkmm 3.22.
+  + Use some more modern C++ code.
+  + Avoid some compiler warnings.
+  + Correct build errors when srcdir != builddir.
+- Drop post(un) handling of desktop_database_post(un),
+  icon_theme_cache_post(un) and mime_database_post(un), no longer
+  needed for any supported version of openSUSE.
+
+-------------------------------------------------------------------
 Wed Feb 28 16:26:51 UTC 2018 - dimstar@opensuse.org
 
 - Modernize spec-file by calling spec-cleaner

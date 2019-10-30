@@ -1,0 +1,384 @@
+-------------------------------------------------------------------
+Sun Oct  6 09:06:09 UTC 2019 - ecsos@opensuse.org
+
+- Rename all to package_naming_guidelines.
+
+-------------------------------------------------------------------
+Sat Oct  5 18:52:36 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Remove superfluous entry for password-store from Recommends as
+  it's already stated in Requires
+- Add hicolor-icon-theme to BuildRequires
+
+-------------------------------------------------------------------
+Wed Oct  2 14:51:50 UTC 2019 - ecsos@opensuse.org
+
+- Update to 1.3.1
+  - Renaming password #463 #469
+  - Edit main title field #446
+  - Add missing finishedShow() signal connection in PasswordDialog
+    constructor (fixes the "Edit password" function) #473
+  - Build dependency fixes #467 #479
+  - Additional lines (notes) shown again #474
+  - Running but no GUI #451
+  - Correct font color with Dark themes #340 #476
+  - Add missing overrides #478
+  - Sorted profiles dropdown as in #404 #472
+  - Fix missing app ID and icon on Wayland. #468
+
+-------------------------------------------------------------------
+Sat Aug 24 18:48:36 UTC 2019 - ecsos@opensuse.org
+
+- Update to 1.3.0
+  Some of the many changes, please resort to the CHANGELOG for 
+  a more complete listing.
+  - Add otp (two factor authentication) support #327
+  - Use key fingerprint as ID instead of “long” ID. #452
+  - Typo: dialouge to dialogue. #444
+  - Scripts and logic specific to Windows Store releases #439
+  - For config check, check that the selected binary is available.
+    #438
+  - Fix character encoding issues for non-UTF-8 locales. #435
+  - Fixes and improvments for config dialog #432
+  - Support for using WSL binaries on Windows #431
+  - Bugfixes and Windows compatibility improvements #430
+  - Semi-automatic code cleanup #425
+  - Update to prevent the installer requesting admin #424
+  - Display passwords as QR codes #421
+  - Tested working on Mac Os HS with pinentry-mac #419
+  - Bugfixes #413
+  - pwgen: fix inverted "Generate ... less secure passwords" 
+    checkbox #409
+  - Continuing refactoring #407
+  - #390 make box cheched when opening a folder users panel #403
+  - Windows sigsev issues #326
+  - Access to the / (root) directory form within the application 
+    window on MacOS #302
+  - Context menu on transparent fields is transparent too . . #227
+  - Various issues with Info.plist file on macOS #457
+  - Problem with GNUpg not found on MacOS #362
+  - Unable to see main application window (applicationn runs 
+    minimized to tray only) #286
+
+-------------------------------------------------------------------
+Sat Oct 13 19:35:38 UTC 2018 - Herbert Graeber <herbert@graeber-clan.de>
+
+- For reprodicibilty QT_HASH_SEED has to be set to 0
+
+-------------------------------------------------------------------
+Mon Jul  9 21:14:00 UTC 2018 - herbert@graeber-clan.de
+
+- Make RCC calls reproducible
+
+-------------------------------------------------------------------
+Tue Jun  5 16:04:12 UTC 2018 - ecsos@opensuse.org
+
+- update to 1.2.3
+  - Add support for OTP code generation on Linux as requested in 
+    #327 #394 (Noettore)
+  - Revert scroll bar changes #393 (destanyol)
+  - Fix High Dpi Support. Works now under Windows and KDE/Plasma. 
+    #392 (hgraeber)
+  - Duplicate prefix in installation of tests directory in v1.2.2.
+    #389
+  - Compilation error on FreeBSD member access into incomplete type
+    #388
+- remove patch qtpass-highdpi.patch because now in upstream
+
+-------------------------------------------------------------------
+Wed May  9 22:14:08 UTC 2018 - herbert@graeber-clan.de
+
+- Remove the qtpass-highdpi.patch, merged upstream
+
+-------------------------------------------------------------------
+Wed May  9 06:06:55 UTC 2018 - ecsos@opensuse.org
+
+- update to 1.2.2
+  - Clipboard clearing timer is not reset when new passwords are 
+    copied to the clipboard #309
+  - Removal of files outside of password-store #300 #363
+  - Lots of fixes and refactoring. #364 #376 #378 #381 #382 #384 
+    #386
+  - Fix & make clearClipboard more robust #359
+  - Multiple question marks while trying to delete password #385
+  - No button icons and text in "menu bar" #383
+  - Entire program is huge on High DPI screen on Linux #369
+  - Parallel make issue in qtpass-1.2.1: ld: cannot find -lqtpass
+    #350
+  - No password entry prompt #343
+  - Can't install on OS X Sierra #337
+  - No icon on MacOS #333
+  - Font and spacing used for URL links on right in main window 
+    absurdly large #329
+  - QtPass don't display all lines with templates #273 #358
+  - Update CONTRIBUTING.md #354 and add two entries in FAQ about
+    the language #353
+  - Fix nested template argument list compile error #346
+  - Honor PREFIX during tests install #345
+
+-------------------------------------------------------------------
+Wed Feb 28 20:54:39 UTC 2018 - herbert@graeber-clan.de
+
+- Convert to license to SPDX-3.0
+- Use %license
+
+-------------------------------------------------------------------
+Thu Jan  4 18:30:45 UTC 2018 - avindra@opensuse.org
+
+- update to 1.2.1
+  * All passwords that have been generated with QtPass prior to
+    1.2.1 should be regenerated and changed.
+  * Version 1.2.0 leaks passwords
+  * When importing settings from 1.1.5 or older, clipboard
+    settings revert to No Clipboard
+  * Add Catalan translation
+
+-------------------------------------------------------------------
+Wed Nov 15 22:35:52 UTC 2017 - herbert@graeber-clan.de
+
+- Fix HighDPI
+
+-------------------------------------------------------------------
+Thu Nov  9 18:51:03 UTC 2017 - aavindraa@gmail.com
+
+- update to 1.2.0
+  * Many UX improvements
+  * Improved process management
+  * Extraction of library and main function
+  * Added sftp, ftps, webdav and webdavs as supported links
+  * PRNG issues on Windows fixed
+- cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Sun Feb 26 14:27:04 UTC 2017 - herbert@graeber-clan.de
+
+- Install rudimentary manual page provided as part of the tarball
+
+-------------------------------------------------------------------
+Sun Feb 26 13:51:25 UTC 2017 - herbert@graeber-clan.de
+
+- Cleanup recommends
+  * Add recommend for password-store, but leave the recommends for
+    gpg2 and pwgen for the case password-store is not installed
+  * Recommend git-core instead of git, because the latter pulls
+    other unneeded packages like git-cvs and git-svn
+
+-------------------------------------------------------------------
+Sun Feb 26 12:09:24 UTC 2017 - herbert@graeber-clan.de
+
+- Switch to Qt5
+
+-------------------------------------------------------------------
+Fri Dec  2 15:04:30 UTC 2016 - mardnh@gmx.de
+
+- update to 1.1.6
+ - Better seeder for qrand() as noted in #238 this is not a proper 
+   fix. Use of the build-in fallback password generator is 
+   discouraged.
+ - Short fullname would hang QtPass keypair generation process for 
+   infinite time #202
+ - keygendialog email and name validition (issue 202) #203
+ - Lookup validity field to check if keys are valid #201
+ - view box is trimming whitespace #210
+ - QtPass starts by searching for -psn_0_12345 on macOS #213
+ - Allow ssh links #211
+ - Increase maximum password length to 255 #209
+ - Updated German Translation #206
+ - Better seeder for qrand() as noted in #238
+ - Italian translation #204
+ - Translated for Simplified Chinese. #208
+
+-------------------------------------------------------------------
+Thu Oct 20 16:02:16 UTC 2016 - ecsos@opensuse.org
+
+- update to 1.1.5
+  - Allow ssh:// links #211
+  - View box no longer trims whitespace #210
+  - Increase maximum password length to 255 #209
+  - Full translation to Simplified Chinese. #208
+  - Password generation options and templates #207 #98
+  - Updated German Translation #206
+  - Italian translation #204
+  - KeygenDialog email and name validation #202 #203
+  - Lookup validity field to check if keys are valid #201
+  - Fixed a spelling error #200
+  - Windows build with Qt 5.7 (almost half the size now)
+
+-------------------------------------------------------------------
+Tue Sep 27 20:56:21 UTC 2016 - ecsos@opensuse.org
+
+- update to 1.1.4
+  - PREFIX is now really a prefix #185
+  - Encoding issues #192, #131, #101 and #91 fixed in #198 and #199
+  - Re-assign permissions when adding users #161
+  - French translations
+    https://www.transifex.com/ijhack/qtpass/
+  - Completed Dutch and German translations
+
+-------------------------------------------------------------------
+Sat Jun 11 22:49:16 UTC 2016 - ecsos@opensuse.org
+
+- update to 1.1.3
+  - Clipboard now cleared when quitting or killing application #171
+  - Wait till processes done on edit #177
+  - Hide content now works when using templates #160
+  - Added warning started work on #161 #150
+
+- changes from 1.1.2
+  - Fix build issues with MSVC2015 on Windows #175
+  - Deletion of empty folders when using git fixed #181
+  - Trimming of values in templates #182
+  - Updated translations, completed Dutch and German
+
+-------------------------------------------------------------------
+Tue Apr  5 15:43:26 UTC 2016 - ecsos@opensuse.org
+
+- update to 1.1.1
+  - Same name for file and folder #159 (fixed up-stream)
+  - Use --secure for pwgen and more configurable options #168
+  - Some UI tweaks #158
+  - Some translation updates #162
+  - Remove Debian packaging #166
+  - Clear text input: use system icon instead of x #84
+  - Bind a key to the clear action #142
+  - Flat icon bd742d6 for more modern look
+  - Minor cleanup and FAQ changes
+
+-------------------------------------------------------------------
+Sun Feb 21 14:46:14 UTC 2016 - mardnh@gmx.de
+
+- install desktop file and icon
+
+-------------------------------------------------------------------
+Fri Jan 29 20:02:25 UTC 2016 - ecsos@opensuse.org
+
+- update to 1.1.0
+  - Fixed qrand initialisation (used to generate predictable 
+    passwords) #129
+  - System Icons on Buttons #124
+  - Doubleclick on treeView #124
+  - Updated config layout #124
+  - Good (fallback) icons #143
+  - Translation fixes and additions
+
+-------------------------------------------------------------------
+Sun Jan  3 13:27:24 UTC 2016 - mardnh@gmx.de
+
+- update to 1.0.6
+  - Updated german translation #125 #126 #134
+  - Fixed qrand always generating the same sequence of passwords 
+    #129
+  - Fixed deleted record can be retrieved bug #117
+  - On-demand copy to clipboard feature #119
+  - Always on top feature #118
+  - Fixed timer issue #122 (introduced in #119)
+- use proper CXXFLAGS
+- ran spec-cleaner
+
+-------------------------------------------------------------------
+Thu Nov 19 15:52:54 UTC 2015 - ecsos@opensuse.org
+
+- update to 1.0.5
+  - Auto hiding of content doesn't need clipboard 76dacca
+  - Auto content hiding timer gets stopped when starting new task 
+    1fa596d a8fa7b2
+  - Remove template widgets when starting new task 4e7ac13
+  - Using pwgen won't add a carriage return to password anymore 
+    #115
+  - Output of git commands won't (always) show in red anymore #111
+  - Tab order of templated fields is correctly set 2f9c6f7
+  - SingleApplication communication problem workaround 3fc1dc7
+  - Translation building system updated and further removal of 
+    duplicate and unneeded bits
+  - Use example template format from passff as default 107dbff 
+    5ec97c7
+  - CI building windows installer 
+    https://ci.appveyor.com/project/annejan/qtpass/build/artifacts
+
+-------------------------------------------------------------------
+Thu Nov  5 14:11:35 UTC 2015 - ecsos@opensuse.org
+
+- update to 1.0.4
+  - Support for RightToLeft languages #108
+  - FreeBSD fixes 2ed0093 7c26329
+  - Windows "hidden" folder fix #63
+  - Minor cleanup work 4302cc0 f6d68f4 8b6a533
+  - Some work on the language creation/update mechanics 741c4b7 and 
+    other minor tweaks.
+
+-------------------------------------------------------------------
+Sun Oct 25 11:45:37 UTC 2015 - ecsos@opensuse.org
+
+- update to 1.0.3
+  - Spanish translations added #103
+  - Use pass show password instead of unsafe fallback 
+    pass password #105
+  - Get PREFIX variable from qmake or env #106
+  - Templating skips parsing colon in urls unless specifically 
+    added prefix to template.
+
+-------------------------------------------------------------------
+Fri Sep 25 22:31:11 UTC 2015 - ecsos@opensuse.org
+
+- update to 1.0.2
+  - Fixed modulus zero exception in password generation #102
+  - Installation prefix selection #100
+  - Made IP urls clickable by simplifying regex #97
+  - Added trailing newline if missing #93
+
+-------------------------------------------------------------------
+Tue Aug 11 22:23:36 UTC 2015 - ecsos@opensuse.org
+
+- update to 1.0.1
+  - Correct focussing of filter input #89
+  - Templates for password input
+  - Show password title in in input window
+  - Clear the text field(s) after X seconds #86
+  - User list look and colour scheme #82
+  - Auto push/pull options for git #83
+  - Commit deletes to git #81
+  - Git init of repositories #72
+  - Yubikey Neo linux info added to FAQ #73
+
+-------------------------------------------------------------------
+Wed Aug  5 08:39:18 UTC 2015 - ecsos@opensuse.org
+
+- update to 1.0.0
+  - Chinese translations
+  - Hungarian translations
+  - German translations
+
+-------------------------------------------------------------------
+Fri Jul 31 17:23:20 UTC 2015 - ecsos@opensuse.org
+
+- update to 0.9.2
+  - Filter expired keys and show creation and expiry date of 
+    keys #70
+  - Fixed stupid sigsev on empty profile names found by @sigio
+  - Minor tweaks for usability
+
+- changes from 0.9.1
+  - pwgen and git options not available when not applicable
+  - git removal of files (when applicable) #57
+  - filtering of unusable keys in user dialog
+
+-------------------------------------------------------------------
+Sun Jul 19 07:14:53 UTC 2015 - ecsos@opensuse.org
+
+- update to 0.9.0
+  - Fixed first run order issues
+  - Dutch translation updated
+  - Interface margins redefined
+
+- changes from 0.8.6
+  - Now compiling with older C++ compilers 
+    (removed C++11 dependency)
+  - Now working with Qt 4.4+ (removed Qt 5.2 dependency)
+  - pwgen integration #68
+  - minor clipboard related fix
+
+-------------------------------------------------------------------
+Mon Jul 13 16:08:02 UTC 2015 - ecsos@opensuse.org
+
+- initial version 0.8.5.1
+

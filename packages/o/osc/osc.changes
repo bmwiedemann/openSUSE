@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 29 10:18:24 UTC 2019 - Marco Strigl <marco.strigl@suse.com>
+
+- 0.166.1
+  * emergency fix for credentials handling:
+      - in case of an old passx entry in oscrc
+        osc did not work at all. Now we check in
+        the compat code if we have an passx entry. 
+
+-------------------------------------------------------------------
 Thu Oct 24 10:05:06 UTC 2019 - Marco Strigl <marco.strigl@suse.com>
 
 - 0.166.0 (boo#1154972)

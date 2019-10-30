@@ -1,6 +1,6 @@
 --- src/main.c
 +++ src/main.c	2013-12-10 13:40:27.062735528 +0000
-@@ -328,8 +328,36 @@ static XtResource application_resources[
+@@ -329,8 +329,36 @@ static XtResource application_resources[
         XtOffset(appresPtr, always_use_fontset), XtRBoolean, (caddr_t) & false},
      {"fixedFontSet", "FontSet", XtRFontSet, sizeof(XFontSet),
         XtOffset(appresPtr, fixed_fontset), XtRString,

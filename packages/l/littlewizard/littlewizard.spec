@@ -22,10 +22,13 @@ Release:        0
 Summary:        Development Environment for Children
 License:        GPL-2.0-or-later
 Group:          Development/Tools/IDE
-Url:            http://littlewizard.sourceforge.net/
+Url:            https://littlewizard.sourceforge.net/
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        littlewizard.1
+Source2:        littlewizard.xpm
 Patch0:         littlewizard-1.2.2-do-not-override-toolbar-style.patch
+Patch1:         littlewizard-desktop-file.patch
+Patch2:         littlewizard-reproducible_build.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
 BuildRequires:  gnome-icon-theme
@@ -59,6 +62,8 @@ littlewizard developing.
 %prep
 %setup -q
 %patch0
+%patch1 -p1
+%patch2 -p1
 
 %build
 %configure --disable-static
@@ -67,7 +72,7 @@ make %{?_smp_mflags}
 %install
 %make_install
 
-%suse_update_desktop_file -r littlewizard Education Teaching
+%suse_update_desktop_file -u littlewizard
 
 # removing useless files
 rm -rf %{buildroot}%{_bindir}/littlewizardtest
@@ -78,6 +83,8 @@ rm -rf %{buildroot}%{_libdir}/*.*a
 mkdir -p %{buildroot}%{_mandir}/man1
 install -m644 %{SOURCE1} %{buildroot}%{_mandir}/man1
 
+# desktop icon
+install -Dm644 %{SOURCE2} %{buildroot}%{_datadir}/pixmaps/littlewizard.xpm
 %find_lang %{name}
 
 %post
@@ -108,6 +115,7 @@ install -m644 %{SOURCE1} %{buildroot}%{_mandir}/man1
 %{_datadir}/icons/gnome/scalable/mimetypes/gnome-mime-application-x-littlewizard.svg
 %{_datadir}/mime/packages/littlewizard.xml
 %{_datadir}/pixmaps/littlewizard
+%{_datadir}/pixmaps/littlewizard.xpm
 %{_libdir}/liblanguage.so.*
 %{_libdir}/liblw.so.*
 %{_mandir}/man1/littlewizard.1%{?ext_man}

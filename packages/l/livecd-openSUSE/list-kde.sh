@@ -12,7 +12,6 @@ buildignore akregator
 buildignore ImageMagick
 install patterns-kde-kde
 installPattern kde
-install openSUSE-release-livecd-kde
 install plasma5-workspace-branding-openSUSE
 install baloo5-tools
 install NetworkManager

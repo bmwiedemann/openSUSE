@@ -19,18 +19,16 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-debreach
-Version:        1.5.2
+Version:        2.0.1
 Release:        0
 Summary:        Middleware to protect against the BREACH attack in Django
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
-URL:            http://github.com/lpomfrey/django-debreach
+URL:            https://github.com/lpomfrey/django-debreach
 Source:         https://files.pythonhosted.org/packages/source/d/django-debreach/django-debreach-%{version}.tar.gz
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python python3
 Requires:       python-Django
 BuildArch:      noarch
 %python_subpackages

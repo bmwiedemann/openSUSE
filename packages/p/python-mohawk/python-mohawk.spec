@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without test
 Name:           python-mohawk
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Library for Hawk HTTP authorization
 License:        MPL-2.0

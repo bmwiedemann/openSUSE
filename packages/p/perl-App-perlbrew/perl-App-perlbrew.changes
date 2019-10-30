@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct 28 10:45:36 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 0.87
+   see /usr/share/doc/packages/perl-App-perlbrew/Changes
+
+  0.87
+  	- Released at 2019-10-25T22:55:40+0900
+  	- Thanks to our contributors: Branislav Zahradník, Christopher Chavez, Jon Jacobson, Konstantin S. Uvarin, Pali, Shoichi Kaji, Tomasz Konojacki, jkjacobson, rage311
+  	- Use the new official repo url for fetching perl blead. Github issue #677
+  	- Add `--min` and `--max` options to `exec` command. Github PR #656
+  	- Fix "ERROR: Cannot find the tarball for perl-$version". Github PR #669
+  	- Fix calling patchperl on readonly files. Github PR #674
+          - Fix installation from local tarbal files. See https://rt.cpan.org/Ticket/Display.html?id=129871
+          - Internal refactoring. Github PR #667, #662
+  	- Various corrections of documentation. Github PR #676, #660
+
+-------------------------------------------------------------------
 Sat Jan 19 06:02:04 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.86

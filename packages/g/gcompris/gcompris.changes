@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 27 14:42:35 UTC 2019 - lars@linux-schulserver.de
+
+- switch desktop file categories to Education;Math;Languages; to 
+  get it building in Factory again
+- mark COPYING as license file
+
+-------------------------------------------------------------------
 Fri Aug  3 20:21:01 UTC 2018 - bwiedemann@suse.com
 
 - Update gcompris-13.11-remove_build_date.patch to change configure.ac

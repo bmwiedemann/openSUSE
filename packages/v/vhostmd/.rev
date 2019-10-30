@@ -254,4 +254,13 @@ regression introduced by the last update. See bsc#1152803 for details.
   bsc#1152803</comment>
     <requestid>736725</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>2ee4766e4796e4324b36725fdadc6b29</srcmd5>
+    <version>1.1</version>
+    <time>1572442999</time>
+    <user>dimstar_suse</user>
+    <comment>- spec: Don't replace user-modified dtd in /etc/vhostmd/
+  bsc#1154838</comment>
+    <requestid>743614</requestid>
+  </revision>
 </revisionlist>

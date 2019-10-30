@@ -155,6 +155,10 @@ sed -i "s@\. -s@\. %{myoptflags}@" 3rdparty/genie/build/gmake.linux/genie.make
 
 %build
 %limit_build -m 1800
+echo $_threads
+
+export _lto_cflags="-flto=$_threads"
+%define  _lto_cflags $_lto_cflags
 # Memory mapped files occupy the limited 32bit address space
 %ifarch %ix86 %arm
 export LDFLAGS="${LDFLAGS} -Wl,-v -fuse-ld=gold -Wl,--no-keep-files-mapped -Wl,--no-map-whole-files -Wl,--no-mmap-output-file %{?_lto_cflags}"

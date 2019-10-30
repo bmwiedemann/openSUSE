@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 17 11:30:55 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not pull in zeep dependency as zeep is borked and on the
+  way from TW (subreg plugin no longer available)
+
+-------------------------------------------------------------------
 Fri Sep 13 08:42:44 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.3.3:

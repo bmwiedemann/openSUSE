@@ -20,7 +20,7 @@
 # Use this as version when things are in mainline kernel
 %define version %(rpm -q --qf '%{VERSION}' kernel-source)
 
-%define tsversion      19.03.20
+%define tsversion      19.08.31
 %define pbversion      17.05.11
 %define ssversion      1.0
 

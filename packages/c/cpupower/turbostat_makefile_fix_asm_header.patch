@@ -1,15 +1,17 @@
-Index: turbostat-19.03.20/Makefile
+Index: turbostat-19.08.31/Makefile
 ===================================================================
---- turbostat-19.03.20.orig/Makefile	2019-04-08 16:09:47.094469287 +0200
-+++ turbostat-19.03.20/Makefile	2019-04-08 16:10:18.490470979 +0200
-@@ -10,8 +10,8 @@ endif
+--- turbostat-19.08.31.orig/Makefile	2019-10-29 15:23:56.962276473 +0100
++++ turbostat-19.08.31/Makefile	2019-10-29 16:12:52.926434670 +0100
+@@ -9,9 +9,9 @@ ifeq ("$(origin O)", "command line")
+ endif
  
  turbostat : turbostat.c
- override CFLAGS +=	-Wall
+-override CFLAGS +=	-O2 -Wall -I../../../include
 -override CFLAGS +=	-DMSRHEADER='"../../../../arch/x86/include/asm/msr-index.h"'
 -override CFLAGS +=	-DINTEL_FAMILY_HEADER='"../../../../arch/x86/include/asm/intel-family.h"'
++override CFLAGS +=	-O2 -Wall -I ./include
 +override CFLAGS +=	-DMSRHEADER='"msr-index.h"'
 +override CFLAGS +=	-DINTEL_FAMILY_HEADER='"intel-family.h"'
+ override CFLAGS +=	-D_FORTIFY_SOURCE=2
  
  %: %.c
- 	@mkdir -p $(BUILD_OUTPUT)

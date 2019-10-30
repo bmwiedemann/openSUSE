@@ -12,8 +12,8 @@ Index: chromium-76.0.3800.0/third_party/blink/renderer/platform/text/character_p
  // Freezed trie tree, see character_property_data_generator.cc.
  extern const int32_t kSerializedCharacterDataSize;
 
-diff --git a/build/linux/unbundle/icu.gn b/build/linux/unbundle/icu.gn
-index 4450e40..9ca36dd 100644
+Index: chromium-76.0.3800.0/build/linux/unbundle/icu.gn
+===================================================================
 --- a/build/linux/unbundle/icu.gn
 +++ b/build/linux/unbundle/icu.gn
 @@ -96,6 +96,7 @@ shim_headers("icui18n_shim") {

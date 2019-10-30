@@ -56,4 +56,20 @@
     <comment>update to 2.4.0 (forwarded request 725421 from stroeder)</comment>
     <requestid>725544</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e7b00395be218f50a00d9e6f8a258b72</srcmd5>
+    <version>2.4.0.3</version>
+    <time>1572443348</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0.3
+Security
+  * improve validation of the post-logout URL parameter on logout;
+    thanks AIMOTO Norihito; closes #449
+    [bsc#1153666], [CVE-2019-14857]
+Bugfixes
+  * changed storing POST params from localStorage to sessionStorage
+    due to some issue of losing data in localStorage in Firefox
+    (private mode); fixes #447 #441 (forwarded request 744137 from kstreitova)</comment>
+    <requestid>744159</requestid>
+  </revision>
 </revisionlist>

@@ -35,4 +35,17 @@
     <comment>- Test only with pytest 3, newer releases not compatible</comment>
     <requestid>731305</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>18362614f2f40e8567bfc9fda450eefa</srcmd5>
+    <version>1.8.0</version>
+    <time>1572443344</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.0:
+  * Update to support new django releases
+  * Numerous improvements to bootstrap4 template pack
+- Remove patches:
+  * django-21.patch
+  * django-20.patch</comment>
+    <requestid>744151</requestid>
+  </revision>
 </revisionlist>

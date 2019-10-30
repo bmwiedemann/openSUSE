@@ -17,7 +17,7 @@
 
 
 Name:           perl-App-perlbrew
-Version:        0.86
+Version:        0.87
 Release:        0
 %define cpan_name App-perlbrew
 Summary:        Manage perl installations in your C<$HOME>
@@ -30,10 +30,10 @@ BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(CPAN::Perl::Releases) >= 3.66
+BuildRequires:  perl(CPAN::Perl::Releases) >= 4.12
 BuildRequires:  perl(Capture::Tiny) >= 0.36
-BuildRequires:  perl(Devel::PatchPerl) >= 1.52
-BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.86
+BuildRequires:  perl(Devel::PatchPerl) >= 1.54
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 7.22
 BuildRequires:  perl(File::Temp) >= 0.2304
 BuildRequires:  perl(File::Which) >= 1.21
 BuildRequires:  perl(IO::All) >= 0.51
@@ -50,10 +50,10 @@ BuildRequires:  perl(Test::Simple) >= 1.001002
 BuildRequires:  perl(Test::Spec) >= 0.47
 BuildRequires:  perl(Test::TempDir::Tiny) >= 0.016
 BuildRequires:  perl(local::lib) >= 2.000014
-Requires:       perl(CPAN::Perl::Releases) >= 3.66
+Requires:       perl(CPAN::Perl::Releases) >= 4.12
 Requires:       perl(Capture::Tiny) >= 0.36
-Requires:       perl(Devel::PatchPerl) >= 1.52
-Requires:       perl(ExtUtils::MakeMaker) >= 6.86
+Requires:       perl(Devel::PatchPerl) >= 1.54
+Requires:       perl(ExtUtils::MakeMaker) >= 7.22
 Requires:       perl(File::Temp) >= 0.2304
 Requires:       perl(JSON::PP)
 Requires:       perl(Pod::Parser) >= 1.63

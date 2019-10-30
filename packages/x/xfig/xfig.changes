@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Oct 29 08:56:06 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Update to xfig 3.2.7 Patchlevel 7b (Oct 2019)
+  o New drawings in Electronic/Schematic library. Thanks to Niko Sauer.
+  Ticket numbers refer to https://sourceforge.net/p/mcj/tickets/#.
+  o When exiting, cleanly pull down all windows. Ticket #54.
+  o Adding and deleting arrows to arcs works, ticket #46.
+  o Allow more than 100 comment lines, ticket #47.
+  o Make `xfig -update' work again, would segfault.
+  o Correctly draw interpolated splines, ticket #35.
+  o Position points on grid, if appres.userspacing unequal 1. Ticket #31.
+- Correct hunk offsets of the patches
+  * xfig.3.2.3d-international-std-fonts.dif
+  * xfig.3.2.5-xim.dif
+  * xfig.3.2.5b-locale.dif
+  * xfig.3.2.5b-null.dif
+  * xfig.3.2.5b-pspdftex.dif
+
+-------------------------------------------------------------------
 Mon Sep 10 10:31:03 UTC 2018 - sndirsch@suse.com
 
 - also require mkfontdir, so fonts-config can create the appropriate

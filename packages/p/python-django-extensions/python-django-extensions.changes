@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 30 12:02:11 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.2.5:
+  * RandomCharField, Support unique_together
+  * export_emails, add settings for overriding queryset fields, order_by and the full_name function
+
+-------------------------------------------------------------------
 Mon Oct  7 13:10:59 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.2.3:

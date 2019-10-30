@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Oct 29 08:30:11 UTC 2019 - XLiang@suse.com
+
+- Update to version 4.1.0+git.1572337494.6f2c8ea9:
+  * Doc: ui_node: do_maintenance: ask to remove maintenance attr from primitives
+  * Test: ui_node: do_maintenance: ask to remove maintenance attr from primitives
+  * Dev: ui_node: do_maintenance: ask to remove maintenance attr from primitives
+
+-------------------------------------------------------------------
+Mon Oct 28 08:44:50 UTC 2019 - XLiang@suse.com
+
+- Update to version 4.1.0+git.1572251962.bc706121:
+  * unittest: add unittest for corosync.add_node_ucast
+  * Fix: corosync: reject append ipaddress to config file if already have(bsc#1127095, 1127096)
+
+-------------------------------------------------------------------
+Mon Oct 21 08:09:02 UTC 2019 - dakechi@suse.com
+
+- Update to version 4.1.0+git.1571645029.57177c5d:
+  * Test: ui_resource: ask about ALL primitives when overriding attributes
+  * Dev: ui_resource: ask about ALL primitives when overriding attributes
+
+-------------------------------------------------------------------
 Fri Sep 27 14:09:17 UTC 2019 - dakechi@suse.com
 
 - Update to version 4.1.0+git.1569593219.e357a9b9:

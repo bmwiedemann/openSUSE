@@ -64,4 +64,13 @@
     headers kwarg</comment>
     <requestid>735854</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ed682cc38fbc31e4d055cd95cf939215</srcmd5>
+    <version>3.24.1</version>
+    <time>1572443326</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.24.1:
+  * Fixes a bug where missing JWTs were not being handled gracefully</comment>
+    <requestid>744105</requestid>
+  </revision>
 </revisionlist>

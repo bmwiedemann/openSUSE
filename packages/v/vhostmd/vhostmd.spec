@@ -132,8 +132,8 @@ ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvhostmd
 %{_sbindir}/rcvhostmd
 %{_datadir}/vhostmd/scripts/pagerate.pl
 %config(noreplace) /etc/vhostmd/vhostmd.conf
-%config /etc/vhostmd/vhostmd.dtd
-%config /etc/vhostmd/metric.dtd
+%config(noreplace) /etc/vhostmd/vhostmd.dtd
+%config(noreplace) /etc/vhostmd/metric.dtd
 %{_unitdir}/vhostmd.service
 %{_datadir}/doc/vhostmd/vhostmd.dtd
 %{_datadir}/doc/vhostmd/metric.dtd

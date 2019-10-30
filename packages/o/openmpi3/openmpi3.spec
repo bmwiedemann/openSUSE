@@ -435,6 +435,7 @@ export HOSTNAME=OBS
            --with-verbs \
            --enable-mpi-thread-multiple \
            --disable-wrapper-rpath \
+           --with-slurm \
 %if 0%{?with_ucx}
            --with-ucx \
            --with-ucx-libdir=/usr/%_lib \

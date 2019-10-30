@@ -7,19 +7,16 @@ Subject: [PATCH] update zlib
  third_party/perfetto/gn/BUILD.gn | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/third_party/perfetto/gn/BUILD.gn b/third_party/perfetto/gn/BUILD.gn
-index c951f5f..297eee3 100644
---- a/third_party/perfetto/gn/BUILD.gn
-+++ b/third_party/perfetto/gn/BUILD.gn
-@@ -200,7 +200,7 @@ group("zlib") {
-       "//buildtools:zlib",
-     ]
-   } else if (build_with_chromium) {
--    public_configs = [ "//third_party/zlib:zlib_config" ]
-+    public_configs = [ "//third_party/zlib:system_zlib" ]
-     public_deps = [
-       "//third_party/zlib",
-     ]
--- 
-2.21.0
-
+Index: chromium-78.0.3904.44/third_party/perfetto/gn/BUILD.gn
+===================================================================
+--- chromium-78.0.3904.44.orig/third_party/perfetto/gn/BUILD.gn
++++ chromium-78.0.3904.44/third_party/perfetto/gn/BUILD.gn
+@@ -276,7 +276,7 @@ if (enable_perfetto_trace_processor || e
+         "//buildtools:zlib",
+       ]
+     } else {
+-      public_configs = [ "//third_party/zlib:zlib_config" ]
++      public_configs = [ "//third_party/zlib:system_zlib" ]
+       public_deps = [
+         "//third_party/zlib",
+       ]

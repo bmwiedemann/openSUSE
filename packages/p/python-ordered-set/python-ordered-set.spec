@@ -20,19 +20,30 @@
 %global short_name ordered-set
 %global dir_name ordered_set
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 Name:           python-%{short_name}
 Version:        3.1.1
 Release:        0
 Summary:        Custom MutableSet that remembers its order
 License:        MIT
-Group:          Development/Libraries/Python
 URL:            https://github.com/LuminosoInsight/ordered-set
 Source0:        https://pypi.python.org/packages/source/o/%{short_name}/%{short_name}-%{version}.tar.gz
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+# this package is build dependency of setuptools
+BuildRequires:  %{python_module base}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+%if %{with test}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
+%endif
 %python_subpackages
 
 %description
@@ -40,23 +51,35 @@ An OrderedSet is a custom MutableSet that remembers its order, so that every
 entry has an index that can be looked up.
 
 %prep
-%autosetup -n %{short_name}-%{version} -p1
+%setup -q -n %{short_name}-%{version}
+# we are build dep of setuptools
+sed -i -e 's:from setuptools :from distutils.core :g' setup.py
 
 %build
 %python_build
 
 %install
+%if !%{with test}
 %python_install
+# ensure egg-info is a directory
+%{python_expand rm -rf %{buildroot}%{$python_sitelib}/*.egg-info
+cp -r ordered_set.egg-info %{buildroot}%{$python_sitelib}/ordered_set-%{version}-py%{$python_version}.egg-info
+}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
+%if %{with test}
 %pytest test.py
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %license MIT-LICENSE
 %doc README.md
 %{python_sitelib}/%{dir_name}-*
 %{python_sitelib}/%{dir_name}.py*
 %pycache_only %{python3_sitelib}/__pycache__/%{dir_name}.*
+%endif
 
 %changelog

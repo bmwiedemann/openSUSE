@@ -89,8 +89,11 @@ function export_turbostat() {
     fi
     TURBOSTAT_VERSION=$(echo "-$TURBOSTAT_VERSION")
     mv tools/power/x86/turbostat turbostat${TURBOSTAT_VERSION}
+    git checkout $GIT_TAG include/linux/bits.h
     git checkout $GIT_TAG arch/x86/include/asm/msr-index.h
     git checkout $GIT_TAG arch/x86/include/asm/intel-family.h
+    mkdir -p turbostat${TURBOSTAT_VERSION}/include/linux
+    cp include/linux/bits.h turbostat${TURBOSTAT_VERSION}/include/linux/bits.h
     cp arch/x86/include/asm/intel-family.h turbostat${TURBOSTAT_VERSION}
     cp arch/x86/include/asm/msr-index.h turbostat${TURBOSTAT_VERSION}
     tar -cvjf turbostat${TURBOSTAT_VERSION}.tar.bz2 turbostat${TURBOSTAT_VERSION}

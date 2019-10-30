@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 29 12:38:13 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20191029.330f0b1b:
+  * Use python3 in shebang to not pull in python2 dependency
+
+-------------------------------------------------------------------
 Mon Oct 28 07:01:20 UTC 2019 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20191028.3162cc5b:

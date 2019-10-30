@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 29 23:03:03 UTC 2019 - Luke Jones <luke@ljones.dev>
+
+- Increase disk space requirement in build constraints due to lto.
+
+-------------------------------------------------------------------
+Sun Oct 27 09:04:08 UTC 2019 - Dave Plater <davejplater@gmail.com>
+
+- Make LTO flags match the number of make threads to fix link time
+  build failures.
+
+-------------------------------------------------------------------
 Thu Sep 19 11:56:56 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add LTO flags to LDFLAGS, avoids failing builds due to timeouts

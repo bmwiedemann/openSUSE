@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Fri Oct 25 11:17:32 UTC 2019 - wbauer@tmo.at
+
+- Update to version 2.7.0
+- New features:
+  * Allow to move objects (drag&drop) to different folders in the
+    project explorer
+  * [spreadsheet] allow to insert multiple rows and columns in one
+    step
+  * [spreadsheet] improved the handling of calculated columns
+    (values calculated via a formula):
+    + Allow to automatically update the calculated column on data
+      changes in the variable columns
+    + Invalidate the calculated column if one of the variable
+      columns was deleted
+    + In "Functions Values" dialog highlight the variable column
+      combobox red if the variable column was deleted in the
+      project
+    + In "Functions Values" dialog don't allow to select columns to
+      be calculated as variable columns (avoid circular
+      dependencies)
+    + In "Used in" context menu of a column show all other
+      calculated columns where this column is used as a variable
+  * [spreadsheet] when pasting data into empty columns,
+    automatically convert their type to the type of the data to be
+    pasted
+  * support für directory structures in ROOT files (kde#406805)
+  * Automatically update curves if a data column deleted before was
+    re-added again (during the import or manually)
+  * When auto-scaling in the plot take also the error bars into
+    account, if available
+  * For live data sources allow to save the relative path to the
+    data source
+
+- UX improvements:
+  * in the "Import Data" dialog show the history of the recently
+    imported files
+  * Improved the selection of curves in the plot that are near to
+    or behind each other
+  * Allow to use DEL to delete cells in spreadsheet and matrix
+    (kde#408529)
+  * Allow to insert multiple rows and columns in the spreadsheet in
+    one step (kde#408537)
+  * Added translations to Windows and macOS packages
+  * Allow to stop the current selection in the plot with ESC
+  * Seed the random number generator with the current time in order
+    not to generate repetitive numbers in the spreadsheet
+    (kde#410855)
+
+- Performance:
+  * Increased the plotting speed for curves with many data points
+    by removing points which are shown on the same pixel in the
+    scene
+
+- Bug fixes:
+  * Disable autoscale when zooming, otherwise wrong (= auto scaled)
+    data region is shown after project save&open
+  * [macOS] fix determining number of lines of data files
+  * correctly show error bars for data source columns having NANs
+    (kde#408530)
+  * fixed the broken project import (kde#407847)
+  * fixed missing option for the resolution of PNG files in the
+    export dialog (kde#411122)
+  * [data fitting] handle weighted fitting with zero errors
+    correctly
+  * [data fitting] allow weighted fitting with data source from
+    curve
+  * [data fitting] fix function for calculating bounded values
+  * [nsl] fix memory leak in line simplification (Douglas Peuker
+    variant)
+  * [nsl] fix bug in calculating Bessel polynomials on Windows
+    (used in Bessel filter)
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Sat Jun  1 21:01:22 UTC 2019 - wbauer@tmo.at
 
 - Update to version 2.6.0

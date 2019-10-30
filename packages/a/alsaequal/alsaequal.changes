@@ -1,22 +1,4 @@
 -------------------------------------------------------------------
-Sun Oct 27 06:28:53 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
-
-- Update to version 0.7.1
-  * Corrected a few style errors and a memory leak found by
-    cppcheck.
-    Also inspired from
-    "https://bugs.gentoo.org/attachment.cgi?id=554834&action=diff"
-    and used types from stdint.h in ladspa_utils.h
-  version 0.7:
-  * Changed LIBDIR default assignment
-  version 0.6.1:
-  * From @raedwulf at github.com/raedwulf/alsaequal master
-
-- Dropped lib64.patch (set variable with sed instead)
-
-- Switched to maintained fork
-
--------------------------------------------------------------------
 Thu Apr 25 09:37:12 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Add config /etc/alsa/conf.d/99-equal.conf (boo#1133432)

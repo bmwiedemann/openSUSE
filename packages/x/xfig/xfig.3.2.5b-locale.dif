@@ -5,7 +5,7 @@
 
 --- src/main.c
 +++ src/main.c	2018-09-06 11:16:21.842867881 +0000
-@@ -59,11 +59,13 @@
+@@ -60,11 +60,13 @@
  
  /* input extensions for an input tablet */
  #ifdef USE_TAB
@@ -20,7 +20,7 @@
  #endif  /* I18N */
  
  #include <X11/IntrinsicP.h>
-@@ -781,11 +783,6 @@ void main(int argc, char **argv)
+@@ -782,11 +784,6 @@ void main(int argc, char **argv)
  	}
      }
  
@@ -32,7 +32,7 @@
      /*
       * save the command line arguments
       */
-@@ -890,6 +887,10 @@ void main(int argc, char **argv)
+@@ -891,6 +888,10 @@ void main(int argc, char **argv)
  		setup_icons_big();
  
  #ifdef I18N
@@ -43,7 +43,7 @@
      /************************************************************/
      /* if the international option has been set, set the locale */
      /************************************************************/
-@@ -1612,6 +1613,11 @@ setup_visual(int *argc_p, char **argv, A
+@@ -1611,6 +1612,11 @@ setup_visual(int *argc_p, char **argv, A
  	 */
  	tool = XtAppInitialize (&tool_app, "Fig", options, XtNumber (options), argc_p, argv,
  			       (String *) NULL, args, 0);

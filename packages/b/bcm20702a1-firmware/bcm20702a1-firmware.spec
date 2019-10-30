@@ -1,7 +1,7 @@
 #
 # spec file for package bcm20702a1-firmware
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,19 +21,17 @@ Version:        1201650
 Release:        0
 Summary:        Firmware for BCM20702A1 based devices
 License:        MIT
-Group:          Hardware/Wifi
-Url:            https://www.asus.com/Networking/USBBT400/
+URL:            https://www.asus.com/Networking/USBBT400/
 BuildRequires:  kernel-firmware
 Requires:       kernel-firmware
 Requires(post): bluez
 Requires(post): coreutils
 Requires(post): unzip
 Requires(post): wget
-# Expand with more hardware if found
-Supplements:    modalias(usb:v0A5Cp21E6d0112dcFFdsc01dp01icFFisc*ip*in*)
 # Another variant: bsc#1087996
 Supplements:    modalias(usb:v0A5Cp21E6d*dcFFdsc01dp01icFFisc*ip*in*)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+# Expand with more hardware if found
+Supplements:    modalias(usb:v0A5Cp21E6d0112dcFFdsc01dp01icFFisc*ip*in*)
 BuildArch:      noarch
 
 %description
@@ -52,7 +50,7 @@ laptops always over usb bridge.
 %post
 OUT="$(mktemp -d)"
 cd "$OUT"
-wget -q http://dlcdnet.asus.com/pub/ASUS/misc/BT/Bluetooth_V%{version}_WHQL_Win10.zip || :
+wget -q https://dlcdnet.asus.com/pub/ASUS/misc/BT/Bluetooth_V%{version}_WHQL_Win10.zip || :
 if [ ! -f Bluetooth_V%{version}_WHQL_Win10.zip ]; then
     echo "Fatal error in obtaining the Windows bluetooth driver: Bluetooth_V%{version}_WHQL_Win10.zip"
 else
@@ -91,7 +89,6 @@ rm -f /lib/firmware/brcm/BCM20702A1-0a5c-21e8.hcd
 exit 0
 
 %files
-%defattr(-,root,root)
 %ghost /lib/firmware/brcm/BCM20702A1-0b05-17cb.hcd
 %ghost /lib/firmware/brcm/BCM20702A1-0b05-17cf.hcd
 %ghost /lib/firmware/brcm/BCM20702A1-05ac-21e1.hcd

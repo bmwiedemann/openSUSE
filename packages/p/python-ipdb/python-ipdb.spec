@@ -31,6 +31,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+Requires:       python-ipython >= 5.1
 Provides:       python-jupyter_ipdb = %{version}
 Obsoletes:      python-jupyter_ipdb < %{version}
 BuildArch:      noarch
@@ -53,8 +54,12 @@ introspection with the same interface as the `pdb` module.
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%if 0%{?have_python2} && ! 0%{?skip_python2}
 mv -v %{buildroot}%{_bindir}/ipdb{,-%{python2_bin_suffix}}
+%endif
+%if 0%{?have_python3} && ! 0%{?skip_python3}
 mv -v %{buildroot}%{_bindir}/ipdb{3,-%{python3_bin_suffix}}
+%endif
 %prepare_alternative ipdb
 
 %post

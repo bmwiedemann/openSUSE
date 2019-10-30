@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct 28 07:35:25 MDT 2019 - carnold@suse.com
+
+- bsc#1155197 - [xen][virt-manager] Fail to boot up installed
+  sles15sp2 PV guest
+  virtinst-pvgrub2-bootloader.patch
+  virtinst-change-location-for-grub_xen.patch
+- Upstream bug fixes (bsc#1027942)
+  9465da41-urlfetcher-Deal-with-file-in-_LocalURLFetcher.patch
+  651e5b6d-devices-video-Simplify-model-hvm-check.patch
+  d9736db9-addhardware-Add-bochs-display-to-the-video-list.patch
+  8f4c53ea-video-Prefer-bochs-when-its-supported..patch
+
+-------------------------------------------------------------------
 Tue Aug 27 13:54:23 MDT 2019 - carnold@suse.com
 
 - Upstream bug fixes (bsc#1027942)

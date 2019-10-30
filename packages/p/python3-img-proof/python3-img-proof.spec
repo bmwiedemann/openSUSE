@@ -18,7 +18,7 @@
 
 %bcond_without test
 Name:           python3-img-proof
-Version:        4.5.0
+Version:        4.5.1
 Release:        0
 Summary:        Command line and API for testing custom images
 License:        GPL-3.0-or-later

@@ -23,7 +23,7 @@
 %endif
 
 Name:           sbd
-Version:        1.4.0+20190612.398628b
+Version:        1.4.0+20190919.2758632
 Release:        0
 Summary:        Storage-based death
 License:        GPL-2.0-or-later

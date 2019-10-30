@@ -93,4 +93,13 @@
   * Add DirectAdmin Provider (#418) * Add provider skeleton for DirectAdmin</comment>
     <requestid>730635</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>339f19ca7892454877add1610e32c5d3</srcmd5>
+    <version>3.3.3</version>
+    <time>1572443292</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not pull in zeep dependency as zeep is borked and on the
+  way from TW (subreg plugin no longer available)</comment>
+    <requestid>743980</requestid>
+  </revision>
 </revisionlist>

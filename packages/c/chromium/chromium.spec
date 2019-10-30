@@ -46,7 +46,7 @@
 %endif
 %ifarch x86_64
 %if %{?suse_version} > 1500
-%bcond_without lto
+%bcond_with lto
 %else
 %bcond_with lto
 %endif
@@ -57,21 +57,18 @@
 %bcond_with clang
 %bcond_with wayland
 Name:           chromium
-Version:        77.0.3865.90
+Version:        78.0.3904.70
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
-Group:          Productivity/Networking/Web/Browsers
 URL:            https://www.chromium.org/
 Source0:        https://commondatastorage.googleapis.com/chromium-browser-official/%{rname}-%{version}.tar.xz
+# Toolchain definitions
 Source30:       master_preferences
 Source100:      chromium-browser.sh
 Source101:      chromium-browser.desktop
 Source102:      chromium-browser.xml
 Source103:      chromium.default
-Source104:      chromium-icons.tar.bz2
-# PATCH-FEATURE-UPSTREAM https://bugs.chromium.org/p/chromium/issues/detail?id=654190
-Source105:      chromium-browser.appdata.xml
 Patch0:         chromium-libusb_interrupt_event_handler.patch
 # PATCH-FIX-OPENSUSE Make the 1-click-install ymp file always download [bnc#836059]
 Patch1:         exclude_ymp.patch
@@ -85,18 +82,17 @@ Patch6:         chromium-drm.patch
 Patch7:         chromium-sandbox-pie.patch
 Patch8:         chromium-system-icu.patch
 Patch9:         chromium-system-libusb.patch
-Patch13:        gcc-enable-lto.patch
-Patch14:        chromium-77-fix-gn-gen.patch
-Patch15:        chromium-unbundle-zlib.patch
-Patch16:        chromium-77-gcc-include.patch
-Patch17:        chromium-77-gcc-abstract.patch
-Patch18:        chromium-77-system-hb.patch
-Patch19:        chromium-77-blink-include.patch
+Patch10:        gcc-enable-lto.patch
+Patch11:        chromium-unbundle-zlib.patch
+Patch12:        chromium-78-noexcept.patch
+Patch13:        chromium-78-gcc-enum-range.patch
+Patch14:        chromium-78-gcc-noexcept.patch
+Patch15:        chromium-78-gcc-std-vector.patch
+Patch16:        chromium-78-icon.patch
+Patch17:        chromium-78-include.patch
+Patch18:        chromium-78-pm-crash.patch
+Patch19:        chromium-78-protobuf-export.patch
 Patch20:        chromium-77-clang.patch
-Patch21:        chromium-77-gcc-no-opt-safe-math.patch
-Patch22:        chromium-77-no-cups.patch
-Patch23:        chromium-77-std-string.patch
-Patch24:        chromium-77.0.3865.75-certificate-transparency.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches
@@ -239,7 +235,7 @@ BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libtcmalloc)
 %endif
 %if %{with system_harfbuzz}
-BuildRequires:  pkgconfig(harfbuzz) > 2.4.0
+BuildRequires:  pkgconfig(harfbuzz) > 2.3.0
 %endif
 %if %{with system_libxml}
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.5
@@ -277,7 +273,6 @@ Chromium is the open-source project behind Google Chrome. We invite you to join 
 %package -n chromedriver
 Summary:        WebDriver for Google Chrome/Chromium
 License:        BSD-3-Clause
-Group:          Development/Tools/Other
 Requires:       %{name} = %{version}
 
 %description -n chromedriver
@@ -294,7 +289,7 @@ ln -s %{_bindir}/node third_party/node/linux/node-linux-x64/bin/node
 # Remove bundled libs
 keeplibs=(
     base/third_party/cityhash
-    base/third_party/dmg_fp
+    base/third_party/double_conversion
     base/third_party/dynamic_annotations
     base/third_party/nspr
     base/third_party/icu
@@ -344,6 +339,8 @@ keeplibs=(
     third_party/catapult/common/py_vulcanize/third_party/rjsmin
     third_party/catapult/third_party/beautifulsoup4
     third_party/catapult/third_party/html5lib-python
+    third_party/catapult/third_party/beautifulsoup4
+    third_party/catapult/third_party/html5lib-python
     third_party/catapult/third_party/polymer
     third_party/catapult/third_party/six
     third_party/catapult/tracing/third_party/d3
@@ -363,6 +360,8 @@ keeplibs=(
     third_party/cros_system_api
     third_party/dav1d
     third_party/dawn
+    third_party/depot_tools
+    third_party/depot_tools/third_party/six
     third_party/devscripts
     third_party/dom_distiller_js
     third_party/emoji-segmenter
@@ -426,6 +425,7 @@ keeplibs=(
     third_party/pffft
     third_party/ply
     third_party/polymer
+    third_party/private-join-and-compute
     third_party/protobuf
     third_party/protobuf/third_party/six
     third_party/pyjson5
@@ -433,6 +433,7 @@ keeplibs=(
     third_party/rnnoise
     third_party/s2cellid
     third_party/sfntly
+    third_party/simplejson
     third_party/skia
     third_party/skia/third_party/gif
     third_party/skia/third_party/skcms
@@ -467,6 +468,7 @@ keeplibs=(
     third_party/widevine
     third_party/woff2
     third_party/zlib/google
+    tools/grit/third_party/six
     url/third_party/mozilla
     v8/src/third_party/siphash
     v8/src/third_party/valgrind
@@ -519,16 +521,12 @@ rm -rf third_party/libusb/src/libusb/libusb.h
 cp -a %{_includedir}/libusb-1.0/libusb.h third_party/libusb/src/libusb/libusb.h
 
 %build
-# GN sets lto on its own and we need just ldflag options, not cflags
-%if %{with lto}
-export LDFLAGS="%{_lto_cflags}"
-%endif
-%define _lto_cflags %{nil}
 %if %{with clang}
 export CC=clang
 export CXX=clang++
 %else
 # REDUCE DEBUG as it gets TOO large
+%define _lto_cflags %{nil}
 ARCH_FLAGS="`echo %{optflags} | sed -e 's/^-g / /g' -e 's/ -g / /g' -e 's/ -g$//g'`"
 export CXXFLAGS="${ARCH_FLAGS} -fpermissive -Wno-return-type"
 # extra flags to reduce warnings that aren't very useful
@@ -558,6 +556,9 @@ export PATH="$HOME/bin/:$PATH"
 %endif
 # do not eat all memory
 %limit_build -m 2600
+%if %{with lto}
+export LDFLAGS="-flto=%{jobs}"
+%endif
 
 # Set system libraries to be used
 gn_system_libraries=(
@@ -762,17 +763,21 @@ cp -a resources.pak %{buildroot}%{_libdir}/chromium/
 cp -a chrome %{buildroot}%{_libdir}/chromium/chromium
 popd
 
-mkdir -p %{buildroot}%{_datadir}/icons/
-pushd %{buildroot}%{_datadir}/icons/
-tar -xjf %{SOURCE104}
-mv oxygen hicolor
-popd
+mkdir -p %{buildroot}%{_datadir}/icons/hicolor/256x256/apps
+cp -a chrome/app/theme/chromium/product_logo_256.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/chromium-browser.png
+mkdir -p %{buildroot}%{_datadir}/icons/hicolor/128x128/apps
+cp -a chrome/app/theme/chromium/product_logo_128.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/chromium-browser.png
+mkdir -p %{buildroot}%{_datadir}/icons/hicolor/64x64/apps
+cp -a chrome/app/theme/chromium/product_logo_64.png %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/chromium-browser.png
+mkdir -p %{buildroot}%{_datadir}/icons/hicolor/48x48/apps
+cp -a chrome/app/theme/chromium/product_logo_48.png %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/chromium-browser.png
+mkdir -p %{buildroot}%{_datadir}/icons/hicolor/24x24/apps
+cp -a chrome/app/theme/chromium/product_logo_24.png %{buildroot}%{_datadir}/icons/hicolor/24x24/apps/chromium-browser.png
 
 mkdir -p %{buildroot}%{_datadir}/applications/
 desktop-file-install --dir %{buildroot}%{_datadir}/applications %{SOURCE101}
 
-mkdir -p %{buildroot}%{_datadir}/appdata/
-cp -a %{SOURCE105} %{buildroot}%{_datadir}/appdata/
+install -D -m0644 chrome/installer/linux/common/chromium-browser/chromium-browser.appdata.xml %{buildroot}%{_datadir}/metainfo/chromium-browser.appdata.xml
 
 mkdir -p %{buildroot}%{_datadir}/gnome-control-center/default-apps/
 cp -a %{SOURCE102} %{buildroot}%{_datadir}/gnome-control-center/default-apps/
@@ -827,8 +832,8 @@ sed -i "s|@@MENUNAME@@|Chromium|g" %{buildroot}%{_mandir}/man1/chromium.1
 %{_libdir}/chromium/swiftshader/*.so
 %endif
 %{_datadir}/applications/*.desktop
-%dir %{_datadir}/appdata/
-%{_datadir}/appdata/chromium-browser.appdata.xml
+%dir %{_datadir}/metainfo/
+%{_datadir}/metainfo/chromium-browser.appdata.xml
 %{_datadir}/gnome-control-center/default-apps/chromium-browser.xml
 %{_datadir}/icons/hicolor/
 %{_libexecdir}/chrome_sandbox

@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-django-extensions
-Version:        2.2.3
+Version:        2.2.5
 Release:        0
 Summary:        Extensions for Django
 License:        BSD-3-Clause

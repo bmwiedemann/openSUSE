@@ -440,4 +440,26 @@ SPDX compliant license short name. MIT chosen as majority of files are under thi
     <comment></comment>
     <requestid>634755</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>7c8311d5e31181e38d9f33558dbbe07a</srcmd5>
+    <version>3.2.7b</version>
+    <time>1572443125</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to xfig 3.2.7 Patchlevel 7b (Oct 2019)
+  o New drawings in Electronic/Schematic library. Thanks to Niko Sauer.
+  Ticket numbers refer to https://sourceforge.net/p/mcj/tickets/#.
+  o When exiting, cleanly pull down all windows. Ticket #54.
+  o Adding and deleting arrows to arcs works, ticket #46.
+  o Allow more than 100 comment lines, ticket #47.
+  o Make `xfig -update' work again, would segfault.
+  o Correctly draw interpolated splines, ticket #35.
+  o Position points on grid, if appres.userspacing unequal 1. Ticket #31.
+- Correct hunk offsets of the patches
+  * xfig.3.2.3d-international-std-fonts.dif
+  * xfig.3.2.5-xim.dif
+  * xfig.3.2.5b-locale.dif
+  * xfig.3.2.5b-null.dif
+  * xfig.3.2.5b-pspdftex.dif</comment>
+    <requestid>743818</requestid>
+  </revision>
 </revisionlist>

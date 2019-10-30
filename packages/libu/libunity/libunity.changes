@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 29 04:36:27 UTC 2019 - Marguerite Su <i@marguerite.su>
+
+- Add 0001-Fix-FTB-with-recent-vala-requiring-non-public-abstra.patch
+  * vala 0.46.1+ doesn't allow creation method of abstract class
+    to be public
+
+-------------------------------------------------------------------
 Tue Apr 23 10:07:34 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Avoid em dashes in summaries. Fix RPM groups.

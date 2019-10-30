@@ -2587,4 +2587,41 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
     <comment></comment>
     <requestid>732044</requestid>
   </revision>
+  <revision rev="233" vrev="1">
+    <srcmd5>4f7a50aa748b395895d4a00a3557038c</srcmd5>
+    <version>78.0.3904.70</version>
+    <time>1572443071</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable LTO for now as it consumes ~20GB of RAM, we will reenable
+  the feature later when some memory consumption fixes land in
+  GCC
+
+- Adjust LDFLAGS settings for LTO to take memory-constraints into
+  consideration
+
+- Update to 78.0.3904.70 bsc#1154806:
+  * CVE-2019-13699: Use-after-free in media
+  * CVE-2019-13700: Buffer overrun in Blink
+  * CVE-2019-13701: URL spoof in navigation
+  * CVE-2019-13702: Privilege elevation in Installer
+  * CVE-2019-13703: URL bar spoofing
+  * CVE-2019-13704: CSP bypass
+  * CVE-2019-13705: Extension permission bypass
+  * CVE-2019-13706: Out-of-bounds read in PDFium
+  * CVE-2019-13707: File storage disclosure
+  * CVE-2019-13708: HTTP authentication spoof
+  * CVE-2019-13709: File download protection bypass
+  * CVE-2019-13710: File download protection bypass
+  * CVE-2019-13711: Cross-context information leak
+  * CVE-2019-15903: Buffer overflow in expat
+  * CVE-2019-13713: Cross-origin data leak
+  * CVE-2019-13714: CSS injection
+  * CVE-2019-13715: Address bar spoofing
+  * CVE-2019-13716: Service worker state error
+  * CVE-2019-13717: Notification obscured
+  * CVE-2019-13718: IDN spoof
+  * CVE-2019-13719: Notification obscured
+  * Various fixes from internal audits, fuzzing and other initiatives</comment>
+    <requestid>743815</requestid>
+  </revision>
 </revisionlist>

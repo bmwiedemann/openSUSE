@@ -1,7 +1,7 @@
 #
 # spec file for package gcompris
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -408,7 +408,7 @@ if [ ! -f %{buildroot}%{_datadir}/pixmaps/gcompris.png ]; then
 	rm -rf %{buildroot}/%{_datadir}/pixmaps
 fi
 
-%suse_update_desktop_file -n -N GCompris -G "Educational suite GCompris" gcompris Education Teaching
+%suse_update_desktop_file -n -N GCompris -G "Educational suite GCompris" gcompris Education Math Languages
 %suse_update_desktop_file -n -N GCompris -G "GCompris Administration" gcompris-edit System SystemSetup
 # remove old menu entry
 rm -rf %{buildroot}/%{_libexecdir}/menu/gcompris
@@ -427,7 +427,8 @@ fi
 %postun -p /sbin/ldconfig
 
 %files -f %{name}.lang
-%doc AUTHORS COPYING ChangeLog NEWS README
+%doc AUTHORS ChangeLog NEWS README
+%license COPYING
 %doc %{_mandir}/man6/gcompris*
 %dir %{_libdir}/gcompris
 %dir %{_datadir}/gcompris

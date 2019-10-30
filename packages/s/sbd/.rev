@@ -318,4 +318,18 @@ the sources.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>720707</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>80abab01c8084adc62c0557eb458c542</srcmd5>
+    <version>1.4.0+20190919.2758632</version>
+    <time>1572443067</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.0+20190919.2758632:
+- sbd.8.pod and -h help text add -vvv description
+- sbd-md: add a warning log if failed to open/read device on startup (bsc#1150429)
+- agent: log detailed errors for monitor failures (bsc#1148236)
+- sbd-md: list/dump failures go to stderr (bsc#1148236)
+- avoid deprecated names for g_main-loop-functions
+- sbd-pacemaker: check for shutdown attribute on every cib-diff (forwarded request 743777 from yan_gao)</comment>
+    <requestid>743778</requestid>
+  </revision>
 </revisionlist>

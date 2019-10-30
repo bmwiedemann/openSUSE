@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 30 09:43:40 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 9.800.1:
+  * Faster solve() in default operation; iterative refinement is
+    no longer applied by default; use solve_opts::refine to
+    explicitly enable refinement.
+  * Faster expmat().
+  * Faster handling of triangular matrices by rcond().
+  * Added .front() and .back().
+  * Added .is_trimatu() and .is_trimatl().
+  * Added .is_diagmat().
+
+-------------------------------------------------------------------
 Thu Sep  5 09:35:57 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 9.700.2:

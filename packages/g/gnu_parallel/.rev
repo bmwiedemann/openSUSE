@@ -437,4 +437,12 @@
     <comment>- Update to new release 20190822</comment>
     <requestid>727568</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>2e8b6b57e693f887de5636a932ac7412</srcmd5>
+    <version>20191022</version>
+    <time>1572443202</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>743849</requestid>
+  </revision>
 </revisionlist>

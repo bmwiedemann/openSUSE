@@ -31,7 +31,7 @@
 %endif
 
 Name:           matomo
-Version:        3.11.0
+Version:        3.12.0
 Release:        0
 Summary:        Web analytics platform
 License:        GPL-3.0-or-later
@@ -94,6 +94,12 @@ find . -type f "(" -name .htaccess -o -name .travis.sh ")" -delete
 find . -type f "(" -name "*.c" -o -name "*.h" -o -name "*.js.orig" ")" -delete
 # env-script-interpreter
 find . -type f -exec sed -i -e 's|\/usr\/bin\/env php|\/usr\/bin\/php|g' {} +
+
+#
+# disable the auto updater, it can't work properly with the new, more secure permissions and is a bad idea on a RPM based setup anyways.
+#
+sed -i '/enable_auto_update/s/1$/0/' config/global.ini.php
+
 #
 # Fix integrity check triggered from fix of rpmlint errors.
 # Drop moved files
@@ -102,7 +108,7 @@ do
   sed -i "/\W\"${i}\"\W/d" config/manifest.inc.php
 done
 # Insert new hashes for chanded files
-for file in console 'vendor/leafo/lessphp/plessc' 'vendor/tecnickcom/tcpdf/tools/tcpdf_addfont.php'
+for file in console 'vendor/leafo/lessphp/plessc' 'vendor/tecnickcom/tcpdf/tools/tcpdf_addfont.php' 'config/global.ini.php'
 do
   size=$(ls -l $file | awk '{ print $5 }')
   checksum=$(md5sum $file  | awk '{ print $1 }')
@@ -116,6 +122,7 @@ done
 %install
 # make directories
 install -d -m0755 %{buildroot}/%{ap_serverroot}/%{name}
+install -d -m0755 %{buildroot}/%{ap_serverroot}/%{name}/tmp
 install -d -m0755 %{buildroot}/%{_sysconfdir}/%{name}
 install -d -m0755 %{buildroot}/%{_defaultdocdir}/%{name}
 # copy src from build to buildroot
@@ -152,7 +159,8 @@ install -D -m0644 %{SOURCE13} %{buildroot}/%{_sysconfdir}/my.cnf.d/%{name}.my.cn
 %service_add_pre matomo-archive.timer matomo-archive.service
 
 %post
-chown -R %{ap_usr}:%{ap_grp} %{ap_serverroot}/%{name}
+# BSC#1154324
+# # # chown -R %{ap_usr}:%{ap_grp} %{ap_serverroot}/%{name}
 %service_add_post matomo-archive.timer matomo-archive.service apache2.service
 # Update matomo if this is an upgrade $1 == 2
 echo "matomo: Update matomo:core..."
@@ -184,11 +192,19 @@ fi
 %{_unitdir}/%{name}-archive.timer
 %dir %attr(0750,%{ap_usr},%{ap_grp}) %{_sysconfdir}/%{name}
 %dir %attr(0750,%{ap_usr},%{ap_grp}) %{_sysconfdir}/%{name}/environment
-%defattr(640,%{ap_usr},%{ap_grp},750)
+%attr(0640,%{ap_usr},%{ap_grp}) %{_sysconfdir}/%{name}/*.php
+%attr(0640,%{ap_usr},%{ap_grp}) %{_sysconfdir}/%{name}/environment/*.php
+%defattr(644,root,root,755)
 %dir %{ap_serverroot}/%{name}
-%dir /var/log/%{name}
+%dir %attr(0750,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/js
+%dir %attr(0750,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/misc
+%dir %attr(0750,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/plugins
+%dir %attr(0750,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/tmp
+%dir %attr(0750,%{ap_usr},%{ap_grp}) /var/log/%{name}
 %config(noreplace)  %attr(600,%{ap_usr},%{ap_grp}) %{_sysconfdir}/%{name}/*php
 %{_sysconfdir}/%{name}/environment/*php
+%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/matomo.js
+%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/piwik.js
 %attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/console
 %attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/misc/cron/archive.sh
 %attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/misc/log-analytics/import_logs.py

@@ -23,4 +23,18 @@
     <comment>1</comment>
     <requestid>535766</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>2722a8318b022292e6d1c9f4d511af19</srcmd5>
+    <version>0.1.94</version>
+    <time>1572443194</time>
+    <user>dimstar_suse</user>
+    <comment>- Some more cleanup of build and runtime requires, drop unneeded ones
+  (libxsltproc-devel, python).
+- Adjust URL - canonical upstream URL is defunct, but the historical
+  https://www.ch.ic.ac.uk/chemime/ still works and has useful links.
+- Drop rsvg-view BuildRequires and requires: none of the binaries
+  provided by this package are referenced in the tarball.
+</comment>
+    <requestid>743842</requestid>
+  </revision>
 </revisionlist>

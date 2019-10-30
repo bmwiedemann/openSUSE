@@ -63,4 +63,14 @@
 - Disable py2 package due to unsattisfied dependencies</comment>
     <requestid>735849</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fe3213f18d4a1355c7007407ce0e3849</srcmd5>
+    <version>2.2.5</version>
+    <time>1572443335</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.5:
+  * RandomCharField, Support unique_together
+  * export_emails, add settings for overriding queryset fields, order_by and the full_name function</comment>
+    <requestid>744146</requestid>
+  </revision>
 </revisionlist>

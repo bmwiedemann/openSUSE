@@ -3,7 +3,6 @@ buildignore samba-libs
 install yast2-trans-stats
 install patterns-xfce-xfce
 installPattern xfce
-install openSUSE-release-livecd-xfce
 buildignore gnome-themes-accessibility
 buildignore xlockmore
 buildignore unzip-doc

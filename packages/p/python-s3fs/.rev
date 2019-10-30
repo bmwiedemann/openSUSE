@@ -30,4 +30,14 @@
   * Various fixes all around (forwarded request 724495 from scarabeus_iv)</comment>
     <requestid>724496</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7d9e666f2af3678a3ffd905575706dd1</srcmd5>
+    <version>0.3.5</version>
+    <time>1572443271</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.5:
+  * Test expansion
+  * Minor bugfixes</comment>
+    <requestid>743964</requestid>
+  </revision>
 </revisionlist>

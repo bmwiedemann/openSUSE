@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 29 21:46:30 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add explicit BuildRequires: pkgconfig(libdrm,xext,xfixes), required on TW.
+
+-------------------------------------------------------------------
 Sun Jul 14 20:17:48 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use LLVM 7 on Tumbleweed, which is the last supported version for

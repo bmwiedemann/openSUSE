@@ -80,4 +80,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>705925</requestid>
   </revision>
+  <revision rev="12" vrev="17">
+    <srcmd5>17b12cf987cc3c816c0546e578b75ae4</srcmd5>
+    <version>1.2.2</version>
+    <time>1572443040</time>
+    <user>dimstar_suse</user>
+    <comment>=&gt; fixes build for openSUSE:Factory
+
+- added littlewizard-reproducible_build.patch from Reiner Herrmann
+- added littlewizard.xpm for desktop file from Debian
+- patch the existing desktop file: added littlewizard-desktop-file.patch 
+
+- use X-KDE-Edu-Teaching as desktop category
+- use SSL for Url</comment>
+    <requestid>743752</requestid>
+  </revision>
 </revisionlist>

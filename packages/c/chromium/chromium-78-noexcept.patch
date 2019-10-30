@@ -1,0 +1,1547 @@
+From 7ba3a62268448e1687a2d2a41856fd3d82154678 Mon Sep 17 00:00:00 2001
+From: Zinovy Nis <zynis@yandex-team.ru>
+Date: Fri, 27 Sep 2019 10:59:26 +0000
+Subject: [PATCH] Revert "[clang-tidy] add noexcept for move ctors and
+ operator= in blink"
+
+This reverts commit 8f3eea10fe63a64ac67dc21542ebee6b896156a3.
+
+Reason for revert: code bloating
+Please see for the details:
+    https://groups.google.com/a/chromium.org/d/msg/cxx/TsBWKMJWMAs/jbAs2c5OAAAJ
+
+Original change's description:
+> [clang-tidy] add noexcept for move ctors and operator= in blink
+>
+> Bug: 994915
+> Change-Id: I2e1bcf286a2d2fa6613e18b5268098a0d258fb2e
+> Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/1759163
+> Commit-Queue: Zinovy Nis <zynis@yandex-team.ru>
+> Reviewed-by: Jeremy Roman <jbroman@chromium.org>
+> Reviewed-by: Mike West <mkwst@chromium.org>
+> Cr-Commit-Position: refs/heads/master@{#688676}
+
+TBR=jbroman@chromium.org,foolip@chromium.org,mkwst@chromium.org,zynis@yandex-team.ru
+
+# Not skipping CQ checks because original CL landed > 1 day ago.
+
+Bug: 994915
+Change-Id: I12b3ecc1186e27809082dc399c6d6864109ce307
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/1804481
+Commit-Queue: Zinovy Nis <zynis@yandex-team.ru>
+Reviewed-by: Mike West <mkwst@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#700656}
+---
+ .../blink/common/indexeddb/indexeddb_key_path.cc   |  6 +++---
+ .../blink/common/indexeddb/indexeddb_metadata.cc   | 14 +++++++-------
+ .../blink/common/mediastream/media_devices.cc      |  7 +++----
+ .../blink/common/messaging/cloneable_message.cc    |  5 ++---
+ .../blink/common/messaging/transferable_message.cc |  5 ++---
+ .../public/common/indexeddb/indexeddb_key_path.h   |  4 ++--
+ .../public/common/indexeddb/indexeddb_metadata.h   | 14 ++++++--------
+ .../public/common/mediastream/media_devices.h      |  4 ++--
+ .../public/common/messaging/cloneable_message.h    |  4 ++--
+ .../public/common/messaging/transferable_message.h |  4 ++--
+ .../scheduler/web_scoped_virtual_time_pauser.h     |  5 ++---
+ third_party/blink/public/platform/web_string.h     |  4 ++--
+ .../mediastream/media_stream_constraints_util.h    |  8 ++++----
+ .../media_stream_constraints_util_sets.h           |  4 ++--
+ .../mediastream/media_stream_video_source.h        |  4 ++--
+ .../renderer/core/animation/interpolation_value.h  |  4 ++--
+ .../core/animation/pairwise_interpolation_value.h  |  2 +-
+ .../blink/renderer/core/css/css_selector_list.h    |  5 ++---
+ .../core/display_lock/display_lock_context.cc      |  2 +-
+ .../core/display_lock/display_lock_context.h       |  2 +-
+ .../renderer/core/editing/layout_selection.cc      |  5 ++---
+ .../core/frame/local_frame_ukm_aggregator.cc       |  2 +-
+ .../core/frame/local_frame_ukm_aggregator.h        |  2 +-
+ .../ng/inline/ng_line_box_fragment_builder.h       |  2 +-
+ .../renderer/core/layout/ng/ng_constraint_space.h  |  4 ++--
+ .../core/messaging/blink_cloneable_message.cc      |  5 ++---
+ .../core/messaging/blink_cloneable_message.h       |  4 ++--
+ .../core/messaging/blink_transferable_message.cc   |  6 +++---
+ .../core/messaging/blink_transferable_message.h    |  4 ++--
+ .../imagecapture/image_capture_frame_grabber.h     |  4 ++--
+ .../blink/renderer/modules/indexeddb/idb_request.h |  4 ++--
+ .../renderer/modules/indexeddb/idb_request_test.cc |  5 ++---
+ .../mediastream/media_stream_constraints_util.cc   | 12 ++++++------
+ .../media_stream_constraints_util_video_device.cc  |  8 ++++----
+ .../media_stream_constraints_util_video_device.h   | 10 ++++------
+ .../mediastream/media_stream_video_source.cc       |  4 ++--
+ .../renderer/platform/bindings/dom_data_store.h    |  5 ++---
+ .../blink/renderer/platform/exported/web_string.cc |  4 ++--
+ .../platform/graphics/contiguous_container.cc      |  4 ++--
+ .../platform/graphics/contiguous_container.h       |  8 ++++----
+ .../platform/graphics/gpu/image_layer_bridge.cc    |  6 +++---
+ .../platform/graphics/gpu/image_layer_bridge.h     |  4 ++--
+ .../platform/graphics/paint/display_item_list.h    |  4 ++--
+ .../blink/renderer/platform/heap/heap_test.cc      |  2 +-
+ .../platform/image-decoders/segment_stream.cc      |  4 ++--
+ .../platform/image-decoders/segment_stream.h       |  4 ++--
+ .../platform/mojo/revocable_interface_ptr.h        |  4 ++--
+ .../renderer/platform/network/encoded_form_data.cc |  5 ++---
+ .../renderer/platform/network/encoded_form_data.h  |  4 ++--
+ .../scheduler/common/frame_or_worker_scheduler.cc  |  5 ++---
+ .../scheduler/common/post_cancellable_task.cc      |  4 ++--
+ .../main_thread/web_scoped_virtual_time_pauser.cc  |  4 ++--
+ .../scheduler/public/frame_or_worker_scheduler.h   |  5 ++---
+ .../scheduler/public/post_cancellable_task.h       |  4 ++--
+ .../platform/weborigin/origin_access_entry.cc      |  3 +--
+ .../platform/weborigin/origin_access_entry.h       |  2 +-
+ third_party/blink/renderer/platform/wtf/deque.h    |  8 ++++----
+ .../blink/renderer/platform/wtf/functional.h       | 13 +++++--------
+ third_party/blink/renderer/platform/wtf/hash_map.h |  4 ++--
+ third_party/blink/renderer/platform/wtf/hash_set.h |  4 ++--
+ .../blink/renderer/platform/wtf/hash_table.h       |  8 ++++----
+ .../blink/renderer/platform/wtf/linked_hash_set.h  | 12 ++++++------
+ .../blink/renderer/platform/wtf/list_hash_set.h    |  9 ++++-----
+ .../renderer/platform/wtf/type_traits_test.cc      |  6 +++---
+ .../wtf/typed_arrays/array_buffer_contents.h       |  4 ++--
+ third_party/blink/renderer/platform/wtf/vector.h   |  8 ++++----
+ .../blink/renderer/platform/wtf/vector_test.cc     |  4 ++--
+ .../blink/renderer/platform/wtf/wtf_test_helper.h  |  8 ++++----
+ 68 files changed, 170 insertions(+), 191 deletions(-)
+
+Index: chromium-78.0.3904.70/third_party/blink/common/indexeddb/indexeddb_key_path.cc
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/common/indexeddb/indexeddb_key_path.cc
++++ chromium-78.0.3904.70/third_party/blink/common/indexeddb/indexeddb_key_path.cc
+@@ -18,12 +18,12 @@ IndexedDBKeyPath::IndexedDBKeyPath(const
+     : type_(mojom::IDBKeyPathType::Array), array_(array) {}
+ 
+ IndexedDBKeyPath::IndexedDBKeyPath(const IndexedDBKeyPath& other) = default;
+-IndexedDBKeyPath::IndexedDBKeyPath(IndexedDBKeyPath&& other) noexcept = default;
++IndexedDBKeyPath::IndexedDBKeyPath(IndexedDBKeyPath&& other) = default;
+ IndexedDBKeyPath::~IndexedDBKeyPath() = default;
+ IndexedDBKeyPath& IndexedDBKeyPath::operator=(const IndexedDBKeyPath& other) =
+     default;
+-IndexedDBKeyPath& IndexedDBKeyPath::operator=(
+-    IndexedDBKeyPath&& other) noexcept = default;
++IndexedDBKeyPath& IndexedDBKeyPath::operator=(IndexedDBKeyPath&& other) =
++    default;
+ 
+ const std::vector<base::string16>& IndexedDBKeyPath::array() const {
+   DCHECK(type_ == blink::mojom::IDBKeyPathType::Array);
+Index: chromium-78.0.3904.70/third_party/blink/common/indexeddb/indexeddb_metadata.cc
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/common/indexeddb/indexeddb_metadata.cc
++++ chromium-78.0.3904.70/third_party/blink/common/indexeddb/indexeddb_metadata.cc
+@@ -23,15 +23,15 @@ IndexedDBIndexMetadata::IndexedDBIndexMe
+ 
+ IndexedDBIndexMetadata::IndexedDBIndexMetadata(
+     const IndexedDBIndexMetadata& other) = default;
+-IndexedDBIndexMetadata::IndexedDBIndexMetadata(
+-    IndexedDBIndexMetadata&& other) noexcept = default;
++IndexedDBIndexMetadata::IndexedDBIndexMetadata(IndexedDBIndexMetadata&& other) =
++    default;
+ 
+ IndexedDBIndexMetadata::~IndexedDBIndexMetadata() = default;
+ 
+ IndexedDBIndexMetadata& IndexedDBIndexMetadata::operator=(
+     const IndexedDBIndexMetadata& other) = default;
+ IndexedDBIndexMetadata& IndexedDBIndexMetadata::operator=(
+-    IndexedDBIndexMetadata&& other) noexcept = default;
++    IndexedDBIndexMetadata&& other) = default;
+ 
+ bool IndexedDBIndexMetadata::operator==(
+     const IndexedDBIndexMetadata& other) const {
+@@ -56,14 +56,14 @@ IndexedDBObjectStoreMetadata::IndexedDBO
+ IndexedDBObjectStoreMetadata::IndexedDBObjectStoreMetadata(
+     const IndexedDBObjectStoreMetadata& other) = default;
+ IndexedDBObjectStoreMetadata::IndexedDBObjectStoreMetadata(
+-    IndexedDBObjectStoreMetadata&& other) noexcept = default;
++    IndexedDBObjectStoreMetadata&& other) = default;
+ 
+ IndexedDBObjectStoreMetadata::~IndexedDBObjectStoreMetadata() = default;
+ 
+ IndexedDBObjectStoreMetadata& IndexedDBObjectStoreMetadata::operator=(
+     const IndexedDBObjectStoreMetadata& other) = default;
+ IndexedDBObjectStoreMetadata& IndexedDBObjectStoreMetadata::operator=(
+-    IndexedDBObjectStoreMetadata&& other) noexcept = default;
++    IndexedDBObjectStoreMetadata&& other) = default;
+ 
+ bool IndexedDBObjectStoreMetadata::operator==(
+     const IndexedDBObjectStoreMetadata& other) const {
+@@ -87,14 +87,14 @@ IndexedDBDatabaseMetadata::IndexedDBData
+ IndexedDBDatabaseMetadata::IndexedDBDatabaseMetadata(
+     const IndexedDBDatabaseMetadata& other) = default;
+ IndexedDBDatabaseMetadata::IndexedDBDatabaseMetadata(
+-    IndexedDBDatabaseMetadata&& other) noexcept = default;
++    IndexedDBDatabaseMetadata&& other) = default;
+ 
+ IndexedDBDatabaseMetadata::~IndexedDBDatabaseMetadata() = default;
+ 
+ IndexedDBDatabaseMetadata& IndexedDBDatabaseMetadata::operator=(
+     const IndexedDBDatabaseMetadata& other) = default;
+ IndexedDBDatabaseMetadata& IndexedDBDatabaseMetadata::operator=(
+-    IndexedDBDatabaseMetadata&& other) noexcept = default;
++    IndexedDBDatabaseMetadata&& other) = default;
+ 
+ bool IndexedDBDatabaseMetadata::operator==(
+     const IndexedDBDatabaseMetadata& other) const {
+Index: chromium-78.0.3904.70/third_party/blink/common/mediastream/media_devices.cc
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/common/mediastream/media_devices.cc
++++ chromium-78.0.3904.70/third_party/blink/common/mediastream/media_devices.cc
+@@ -13,8 +13,7 @@ WebMediaDeviceInfo::WebMediaDeviceInfo()
+ WebMediaDeviceInfo::WebMediaDeviceInfo(const WebMediaDeviceInfo& other) =
+     default;
+ 
+-WebMediaDeviceInfo::WebMediaDeviceInfo(WebMediaDeviceInfo&& other) noexcept =
+-    default;
++WebMediaDeviceInfo::WebMediaDeviceInfo(WebMediaDeviceInfo&& other) = default;
+ 
+ WebMediaDeviceInfo::WebMediaDeviceInfo(const std::string& device_id,
+                                        const std::string& label,
+@@ -36,8 +35,8 @@ WebMediaDeviceInfo::~WebMediaDeviceInfo(
+ WebMediaDeviceInfo& WebMediaDeviceInfo::operator=(
+     const WebMediaDeviceInfo& other) = default;
+ 
+-WebMediaDeviceInfo& WebMediaDeviceInfo::operator=(
+-    WebMediaDeviceInfo&& other) noexcept = default;
++WebMediaDeviceInfo& WebMediaDeviceInfo::operator=(WebMediaDeviceInfo&& other) =
++    default;
+ 
+ bool operator==(const WebMediaDeviceInfo& first,
+                 const WebMediaDeviceInfo& second) {
+Index: chromium-78.0.3904.70/third_party/blink/common/messaging/cloneable_message.cc
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/common/messaging/cloneable_message.cc
++++ chromium-78.0.3904.70/third_party/blink/common/messaging/cloneable_message.cc
+@@ -10,9 +10,8 @@
+ namespace blink {
+ 
+ CloneableMessage::CloneableMessage() = default;
+-CloneableMessage::CloneableMessage(CloneableMessage&&) noexcept = default;
+-CloneableMessage& CloneableMessage::operator=(CloneableMessage&&) noexcept =
+-    default;
++CloneableMessage::CloneableMessage(CloneableMessage&&) = default;
++CloneableMessage& CloneableMessage::operator=(CloneableMessage&&) = default;
+ CloneableMessage::~CloneableMessage() = default;
+ 
+ CloneableMessage CloneableMessage::ShallowClone() const {
+Index: chromium-78.0.3904.70/third_party/blink/common/messaging/transferable_message.cc
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/common/messaging/transferable_message.cc
++++ chromium-78.0.3904.70/third_party/blink/common/messaging/transferable_message.cc
+@@ -9,10 +9,9 @@
+ namespace blink {
+ 
+ TransferableMessage::TransferableMessage() = default;
+-TransferableMessage::TransferableMessage(TransferableMessage&&) noexcept =
++TransferableMessage::TransferableMessage(TransferableMessage&&) = default;
++TransferableMessage& TransferableMessage::operator=(TransferableMessage&&) =
+     default;
+-TransferableMessage& TransferableMessage::operator=(
+-    TransferableMessage&&) noexcept = default;
+ TransferableMessage::~TransferableMessage() = default;
+ 
+ }  // namespace blink
+Index: chromium-78.0.3904.70/third_party/blink/public/common/indexeddb/indexeddb_key_path.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/public/common/indexeddb/indexeddb_key_path.h
++++ chromium-78.0.3904.70/third_party/blink/public/common/indexeddb/indexeddb_key_path.h
+@@ -22,10 +22,10 @@ class BLINK_COMMON_EXPORT IndexedDBKeyPa
+   explicit IndexedDBKeyPath(const base::string16&);
+   explicit IndexedDBKeyPath(const std::vector<base::string16>&);
+   IndexedDBKeyPath(const IndexedDBKeyPath& other);
+-  IndexedDBKeyPath(IndexedDBKeyPath&& other) noexcept;
++  IndexedDBKeyPath(IndexedDBKeyPath&& other);
+   ~IndexedDBKeyPath();
+   IndexedDBKeyPath& operator=(const IndexedDBKeyPath& other);
+-  IndexedDBKeyPath& operator=(IndexedDBKeyPath&& other) noexcept;
++  IndexedDBKeyPath& operator=(IndexedDBKeyPath&& other);
+ 
+   bool IsNull() const { return type_ == blink::mojom::IDBKeyPathType::Null; }
+   bool operator==(const IndexedDBKeyPath& other) const;
+Index: chromium-78.0.3904.70/third_party/blink/public/common/indexeddb/indexeddb_metadata.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/public/common/indexeddb/indexeddb_metadata.h
++++ chromium-78.0.3904.70/third_party/blink/public/common/indexeddb/indexeddb_metadata.h
+@@ -26,10 +26,10 @@ struct BLINK_COMMON_EXPORT IndexedDBInde
+                          bool unique,
+                          bool multi_entry);
+   IndexedDBIndexMetadata(const IndexedDBIndexMetadata& other);
+-  IndexedDBIndexMetadata(IndexedDBIndexMetadata&& other) noexcept;
++  IndexedDBIndexMetadata(IndexedDBIndexMetadata&& other);
+   ~IndexedDBIndexMetadata();
+   IndexedDBIndexMetadata& operator=(const IndexedDBIndexMetadata& other);
+-  IndexedDBIndexMetadata& operator=(IndexedDBIndexMetadata&& other) noexcept;
++  IndexedDBIndexMetadata& operator=(IndexedDBIndexMetadata&& other);
+   bool operator==(const IndexedDBIndexMetadata& other) const;
+ 
+   base::string16 name;
+@@ -50,12 +50,11 @@ struct BLINK_COMMON_EXPORT IndexedDBObje
+                                bool auto_increment,
+                                int64_t max_index_id);
+   IndexedDBObjectStoreMetadata(const IndexedDBObjectStoreMetadata& other);
+-  IndexedDBObjectStoreMetadata(IndexedDBObjectStoreMetadata&& other) noexcept;
++  IndexedDBObjectStoreMetadata(IndexedDBObjectStoreMetadata&& other);
+   ~IndexedDBObjectStoreMetadata();
+   IndexedDBObjectStoreMetadata& operator=(
+       const IndexedDBObjectStoreMetadata& other);
+-  IndexedDBObjectStoreMetadata& operator=(
+-      IndexedDBObjectStoreMetadata&& other) noexcept;
++  IndexedDBObjectStoreMetadata& operator=(IndexedDBObjectStoreMetadata&& other);
+   bool operator==(const IndexedDBObjectStoreMetadata& other) const;
+ 
+   base::string16 name;
+@@ -77,11 +76,10 @@ struct BLINK_COMMON_EXPORT IndexedDBData
+                             int64_t version,
+                             int64_t max_object_store_id);
+   IndexedDBDatabaseMetadata(const IndexedDBDatabaseMetadata& other);
+-  IndexedDBDatabaseMetadata(IndexedDBDatabaseMetadata&& other) noexcept;
++  IndexedDBDatabaseMetadata(IndexedDBDatabaseMetadata&& other);
+   ~IndexedDBDatabaseMetadata();
+   IndexedDBDatabaseMetadata& operator=(const IndexedDBDatabaseMetadata& other);
+-  IndexedDBDatabaseMetadata& operator=(
+-      IndexedDBDatabaseMetadata&& other) noexcept;
++  IndexedDBDatabaseMetadata& operator=(IndexedDBDatabaseMetadata&& other);
+   bool operator==(const IndexedDBDatabaseMetadata& other) const;
+ 
+   base::string16 name;
+Index: chromium-78.0.3904.70/third_party/blink/public/common/mediastream/media_devices.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/public/common/mediastream/media_devices.h
++++ chromium-78.0.3904.70/third_party/blink/public/common/mediastream/media_devices.h
+@@ -27,7 +27,7 @@ enum MediaDeviceType {
+ struct BLINK_COMMON_EXPORT WebMediaDeviceInfo {
+   WebMediaDeviceInfo();
+   WebMediaDeviceInfo(const WebMediaDeviceInfo& other);
+-  WebMediaDeviceInfo(WebMediaDeviceInfo&& other) noexcept;
++  WebMediaDeviceInfo(WebMediaDeviceInfo&& other);
+   WebMediaDeviceInfo(
+       const std::string& device_id,
+       const std::string& label,
+@@ -37,7 +37,7 @@ struct BLINK_COMMON_EXPORT WebMediaDevic
+       const media::VideoCaptureDeviceDescriptor& descriptor);
+   ~WebMediaDeviceInfo();
+   WebMediaDeviceInfo& operator=(const WebMediaDeviceInfo& other);
+-  WebMediaDeviceInfo& operator=(WebMediaDeviceInfo&& other) noexcept;
++  WebMediaDeviceInfo& operator=(WebMediaDeviceInfo&& other);
+ 
+   std::string device_id;
+   std::string label;
+Index: chromium-78.0.3904.70/third_party/blink/public/common/messaging/cloneable_message.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/public/common/messaging/cloneable_message.h
++++ chromium-78.0.3904.70/third_party/blink/public/common/messaging/cloneable_message.h
+@@ -21,8 +21,8 @@ namespace blink {
+ // This type can be serialized as a blink::mojom::CloneableMessage struct.
+ struct BLINK_COMMON_EXPORT CloneableMessage {
+   CloneableMessage();
+-  CloneableMessage(CloneableMessage&&) noexcept;
+-  CloneableMessage& operator=(CloneableMessage&&) noexcept;
++  CloneableMessage(CloneableMessage&&);
++  CloneableMessage& operator=(CloneableMessage&&);
+   ~CloneableMessage();
+ 
+   // Returns a shallow clone of this message. |encoded_message| in the clone
+Index: chromium-78.0.3904.70/third_party/blink/public/common/messaging/transferable_message.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/public/common/messaging/transferable_message.h
++++ chromium-78.0.3904.70/third_party/blink/public/common/messaging/transferable_message.h
+@@ -22,8 +22,8 @@ namespace blink {
+ // type can be serialized as a blink::mojom::TransferableMessage struct.
+ struct BLINK_COMMON_EXPORT TransferableMessage : public CloneableMessage {
+   TransferableMessage();
+-  TransferableMessage(TransferableMessage&&) noexcept;
+-  TransferableMessage& operator=(TransferableMessage&&) noexcept;
++  TransferableMessage(TransferableMessage&&);
++  TransferableMessage& operator=(TransferableMessage&&);
+   ~TransferableMessage();
+ 
+   // Any ports being transferred as part of this message.
+Index: chromium-78.0.3904.70/third_party/blink/public/platform/scheduler/web_scoped_virtual_time_pauser.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/public/platform/scheduler/web_scoped_virtual_time_pauser.h
++++ chromium-78.0.3904.70/third_party/blink/public/platform/scheduler/web_scoped_virtual_time_pauser.h
+@@ -42,9 +42,8 @@ class BLINK_PLATFORM_EXPORT WebScopedVir
+   WebScopedVirtualTimePauser();
+   ~WebScopedVirtualTimePauser();
+ 
+-  WebScopedVirtualTimePauser(WebScopedVirtualTimePauser&& other) noexcept;
+-  WebScopedVirtualTimePauser& operator=(
+-      WebScopedVirtualTimePauser&& other) noexcept;
++  WebScopedVirtualTimePauser(WebScopedVirtualTimePauser&& other);
++  WebScopedVirtualTimePauser& operator=(WebScopedVirtualTimePauser&& other);
+ 
+   WebScopedVirtualTimePauser(const WebScopedVirtualTimePauser&) = delete;
+   WebScopedVirtualTimePauser& operator=(const WebScopedVirtualTimePauser&) =
+Index: chromium-78.0.3904.70/third_party/blink/public/platform/web_string.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/public/platform/web_string.h
++++ chromium-78.0.3904.70/third_party/blink/public/platform/web_string.h
+@@ -102,10 +102,10 @@ class WebString {
+   BLINK_PLATFORM_EXPORT WebString(const WebUChar* data, size_t len);
+ 
+   BLINK_PLATFORM_EXPORT WebString(const WebString&);
+-  BLINK_PLATFORM_EXPORT WebString(WebString&&) noexcept;
++  BLINK_PLATFORM_EXPORT WebString(WebString&&);
+ 
+   BLINK_PLATFORM_EXPORT WebString& operator=(const WebString&);
+-  BLINK_PLATFORM_EXPORT WebString& operator=(WebString&&) noexcept;
++  BLINK_PLATFORM_EXPORT WebString& operator=(WebString&&);
+ 
+   BLINK_PLATFORM_EXPORT void Reset();
+ 
+Index: chromium-78.0.3904.70/third_party/blink/public/web/modules/mediastream/media_stream_constraints_util.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/public/web/modules/mediastream/media_stream_constraints_util.h
++++ chromium-78.0.3904.70/third_party/blink/public/web/modules/mediastream/media_stream_constraints_util.h
+@@ -73,8 +73,8 @@ class BLINK_MODULES_EXPORT VideoCaptureS
+ 
+   VideoCaptureSettings(const VideoCaptureSettings& other);
+   VideoCaptureSettings& operator=(const VideoCaptureSettings& other);
+-  VideoCaptureSettings(VideoCaptureSettings&& other) noexcept;
+-  VideoCaptureSettings& operator=(VideoCaptureSettings&& other) noexcept;
++  VideoCaptureSettings(VideoCaptureSettings&& other);
++  VideoCaptureSettings& operator=(VideoCaptureSettings&& other);
+   ~VideoCaptureSettings();
+ 
+   bool HasValue() const { return !failed_constraint_name_; }
+@@ -193,8 +193,8 @@ class BLINK_MODULES_EXPORT AudioCaptureS
+       const AudioProcessingProperties& audio_processing_properties);
+   AudioCaptureSettings(const AudioCaptureSettings& other);
+   AudioCaptureSettings& operator=(const AudioCaptureSettings& other);
+-  AudioCaptureSettings(AudioCaptureSettings&& other) noexcept;
+-  AudioCaptureSettings& operator=(AudioCaptureSettings&& other) noexcept;
++  AudioCaptureSettings(AudioCaptureSettings&& other);
++  AudioCaptureSettings& operator=(AudioCaptureSettings&& other);
+ 
+   bool HasValue() const { return !failed_constraint_name_; }
+ 
+Index: chromium-78.0.3904.70/third_party/blink/public/web/modules/mediastream/media_stream_constraints_util_sets.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/public/web/modules/mediastream/media_stream_constraints_util_sets.h
++++ chromium-78.0.3904.70/third_party/blink/public/web/modules/mediastream/media_stream_constraints_util_sets.h
+@@ -159,8 +159,8 @@ class DiscreteSet {
+ 
+   DiscreteSet(const DiscreteSet& other) = default;
+   DiscreteSet& operator=(const DiscreteSet& other) = default;
+-  DiscreteSet(DiscreteSet&& other) noexcept = default;
+-  DiscreteSet& operator=(DiscreteSet&& other) noexcept = default;
++  DiscreteSet(DiscreteSet&& other) = default;
++  DiscreteSet& operator=(DiscreteSet&& other) = default;
+   ~DiscreteSet() = default;
+ 
+   bool Contains(const T& value) const {
+Index: chromium-78.0.3904.70/third_party/blink/public/web/modules/mediastream/media_stream_video_source.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/public/web/modules/mediastream/media_stream_video_source.h
++++ chromium-78.0.3904.70/third_party/blink/public/web/modules/mediastream/media_stream_video_source.h
+@@ -285,8 +285,8 @@ class BLINK_MODULES_EXPORT MediaStreamVi
+         const VideoTrackFormatCallback& format_callback,
+         std::unique_ptr<VideoTrackAdapterSettings> adapter_settings,
+         const ConstraintsCallback& callback);
+-    PendingTrackInfo(PendingTrackInfo&& other) noexcept;
+-    PendingTrackInfo& operator=(PendingTrackInfo&& other) noexcept;
++    PendingTrackInfo(PendingTrackInfo&& other);
++    PendingTrackInfo& operator=(PendingTrackInfo&& other);
+     ~PendingTrackInfo();
+ 
+     MediaStreamVideoTrack* track;
+Index: chromium-78.0.3904.70/third_party/blink/renderer/core/animation/interpolation_value.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/core/animation/interpolation_value.h
++++ chromium-78.0.3904.70/third_party/blink/renderer/core/animation/interpolation_value.h
+@@ -27,11 +27,11 @@ struct InterpolationValue {
+ 
+   InterpolationValue(std::nullptr_t) {}
+ 
+-  InterpolationValue(InterpolationValue&& other) noexcept
++  InterpolationValue(InterpolationValue&& other)
+       : interpolable_value(std::move(other.interpolable_value)),
+         non_interpolable_value(std::move(other.non_interpolable_value)) {}
+ 
+-  void operator=(InterpolationValue&& other) noexcept {
++  void operator=(InterpolationValue&& other) {
+     interpolable_value = std::move(other.interpolable_value);
+     non_interpolable_value = std::move(other.non_interpolable_value);
+   }
+Index: chromium-78.0.3904.70/third_party/blink/renderer/core/animation/pairwise_interpolation_value.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/core/animation/pairwise_interpolation_value.h
++++ chromium-78.0.3904.70/third_party/blink/renderer/core/animation/pairwise_interpolation_value.h
+@@ -28,7 +28,7 @@ struct PairwiseInterpolationValue {
+ 
+   PairwiseInterpolationValue(std::nullptr_t) {}
+ 
+-  PairwiseInterpolationValue(PairwiseInterpolationValue&& other) noexcept
++  PairwiseInterpolationValue(PairwiseInterpolationValue&& other)
+       : start_interpolable_value(std::move(other.start_interpolable_value)),
+         end_interpolable_value(std::move(other.end_interpolable_value)),
+         non_interpolable_value(std::move(other.non_interpolable_value)) {}
+Index: chromium-78.0.3904.70/third_party/blink/renderer/core/css/css_selector_list.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/core/css/css_selector_list.h
++++ chromium-78.0.3904.70/third_party/blink/renderer/core/css/css_selector_list.h
+@@ -67,8 +67,7 @@ class CORE_EXPORT CSSSelectorList {
+  public:
+   CSSSelectorList() : selector_array_(nullptr) {}
+ 
+-  CSSSelectorList(CSSSelectorList&& o) noexcept
+-      : selector_array_(o.selector_array_) {
++  CSSSelectorList(CSSSelectorList&& o) : selector_array_(o.selector_array_) {
+     o.selector_array_ = nullptr;
+   }
+ 
+@@ -82,7 +81,7 @@ class CORE_EXPORT CSSSelectorList {
+   bool HasPseudoWhere() const;
+   bool RequiresExpansion() const;
+ 
+-  CSSSelectorList& operator=(CSSSelectorList&& o) noexcept {
++  CSSSelectorList& operator=(CSSSelectorList&& o) {
+     DCHECK(this != &o);
+     DeleteSelectorsIfNeeded();
+     selector_array_ = o.selector_array_;
+Index: chromium-78.0.3904.70/third_party/blink/renderer/core/display_lock/display_lock_context.cc
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/core/display_lock/display_lock_context.cc
++++ chromium-78.0.3904.70/third_party/blink/renderer/core/display_lock/display_lock_context.cc
+@@ -1033,7 +1033,7 @@ DisplayLockContext::ScopedForcedUpdate::
+     : context_(context) {}
+ 
+ DisplayLockContext::ScopedForcedUpdate::ScopedForcedUpdate(
+-    ScopedForcedUpdate&& other) noexcept
++    ScopedForcedUpdate&& other)
+     : context_(other.context_) {
+   other.context_ = nullptr;
+ }
+Index: chromium-78.0.3904.70/third_party/blink/renderer/core/display_lock/display_lock_context.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/core/display_lock/display_lock_context.h
++++ chromium-78.0.3904.70/third_party/blink/renderer/core/display_lock/display_lock_context.h
+@@ -75,7 +75,7 @@ class CORE_EXPORT DisplayLockContext fin
+     DISALLOW_NEW();
+ 
+    public:
+-    ScopedForcedUpdate(ScopedForcedUpdate&&) noexcept;
++    ScopedForcedUpdate(ScopedForcedUpdate&&);
+     ~ScopedForcedUpdate();
+ 
+    private:
+Index: chromium-78.0.3904.70/third_party/blink/renderer/core/editing/layout_selection.cc
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/core/editing/layout_selection.cc
++++ chromium-78.0.3904.70/third_party/blink/renderer/core/editing/layout_selection.cc
+@@ -178,7 +178,7 @@ struct OldSelectedNodes {
+  public:
+   OldSelectedNodes()
+       : paint_range(MakeGarbageCollected<SelectionPaintRange>()) {}
+-  OldSelectedNodes(OldSelectedNodes&& other) noexcept {
++  OldSelectedNodes(OldSelectedNodes&& other) {
+     paint_range = other.paint_range;
+     selected_map = std::move(other.selected_map);
+   }
+@@ -205,8 +205,7 @@ struct NewPaintRangeAndSelectedNodes {
+       HeapHashSet<Member<const Node>>&& passed_selected_objects)
+       : paint_range(passed_paint_range),
+         selected_objects(std::move(passed_selected_objects)) {}
+-  NewPaintRangeAndSelectedNodes(
+-      NewPaintRangeAndSelectedNodes&& other) noexcept {
++  NewPaintRangeAndSelectedNodes(NewPaintRangeAndSelectedNodes&& other) {
+     paint_range = other.paint_range;
+     selected_objects = std::move(other.selected_objects);
+   }
+Index: chromium-78.0.3904.70/third_party/blink/renderer/core/frame/local_frame_ukm_aggregator.cc
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/core/frame/local_frame_ukm_aggregator.cc
++++ chromium-78.0.3904.70/third_party/blink/renderer/core/frame/local_frame_ukm_aggregator.cc
+@@ -24,7 +24,7 @@ LocalFrameUkmAggregator::ScopedUkmHierar
+       start_time_(clock_->NowTicks()) {}
+ 
+ LocalFrameUkmAggregator::ScopedUkmHierarchicalTimer::ScopedUkmHierarchicalTimer(
+-    ScopedUkmHierarchicalTimer&& other) noexcept
++    ScopedUkmHierarchicalTimer&& other)
+     : aggregator_(other.aggregator_),
+       metric_index_(other.metric_index_),
+       clock_(other.clock_),
+Index: chromium-78.0.3904.70/third_party/blink/renderer/core/frame/local_frame_ukm_aggregator.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/core/frame/local_frame_ukm_aggregator.h
++++ chromium-78.0.3904.70/third_party/blink/renderer/core/frame/local_frame_ukm_aggregator.h
+@@ -195,7 +195,7 @@ class CORE_EXPORT LocalFrameUkmAggregato
+     STACK_ALLOCATED();
+ 
+    public:
+-    ScopedUkmHierarchicalTimer(ScopedUkmHierarchicalTimer&&) noexcept;
++    ScopedUkmHierarchicalTimer(ScopedUkmHierarchicalTimer&&);
+     ~ScopedUkmHierarchicalTimer();
+ 
+    private:
+Index: chromium-78.0.3904.70/third_party/blink/renderer/core/layout/ng/inline/ng_line_box_fragment_builder.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/core/layout/ng/inline/ng_line_box_fragment_builder.h
++++ chromium-78.0.3904.70/third_party/blink/renderer/core/layout/ng/inline/ng_line_box_fragment_builder.h
+@@ -195,7 +195,7 @@ class CORE_EXPORT NGLineBoxFragmentBuild
+ 
+    public:
+     ChildList() = default;
+-    void operator=(ChildList&& other) noexcept {
++    void operator=(ChildList&& other) {
+       children_ = std::move(other.children_);
+     }
+ 
+Index: chromium-78.0.3904.70/third_party/blink/renderer/core/layout/ng/ng_constraint_space.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/core/layout/ng/ng_constraint_space.h
++++ chromium-78.0.3904.70/third_party/blink/renderer/core/layout/ng/ng_constraint_space.h
+@@ -86,7 +86,7 @@ class CORE_EXPORT NGConstraintSpace fina
+     else
+       bfc_offset_ = other.bfc_offset_;
+   }
+-  NGConstraintSpace(NGConstraintSpace&& other) noexcept
++  NGConstraintSpace(NGConstraintSpace&& other)
+       : available_size_(other.available_size_),
+         exclusion_space_(std::move(other.exclusion_space_)),
+         bitfields_(other.bitfields_) {
+@@ -110,7 +110,7 @@ class CORE_EXPORT NGConstraintSpace fina
+     bitfields_ = other.bitfields_;
+     return *this;
+   }
+-  NGConstraintSpace& operator=(NGConstraintSpace&& other) noexcept {
++  NGConstraintSpace& operator=(NGConstraintSpace&& other) {
+     available_size_ = other.available_size_;
+     if (HasRareData())
+       delete rare_data_;
+Index: chromium-78.0.3904.70/third_party/blink/renderer/core/messaging/blink_cloneable_message.cc
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/core/messaging/blink_cloneable_message.cc
++++ chromium-78.0.3904.70/third_party/blink/renderer/core/messaging/blink_cloneable_message.cc
+@@ -9,9 +9,8 @@ namespace blink {
+ BlinkCloneableMessage::BlinkCloneableMessage() = default;
+ BlinkCloneableMessage::~BlinkCloneableMessage() = default;
+ 
+-BlinkCloneableMessage::BlinkCloneableMessage(BlinkCloneableMessage&&) noexcept =
+-    default;
++BlinkCloneableMessage::BlinkCloneableMessage(BlinkCloneableMessage&&) = default;
+ BlinkCloneableMessage& BlinkCloneableMessage::operator=(
+-    BlinkCloneableMessage&&) noexcept = default;
++    BlinkCloneableMessage&&) = default;
+ 
+ }  // namespace blink
+Index: chromium-78.0.3904.70/third_party/blink/renderer/core/messaging/blink_cloneable_message.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/core/messaging/blink_cloneable_message.h
++++ chromium-78.0.3904.70/third_party/blink/renderer/core/messaging/blink_cloneable_message.h
+@@ -21,8 +21,8 @@ struct CORE_EXPORT BlinkCloneableMessage
+   BlinkCloneableMessage();
+   ~BlinkCloneableMessage();
+ 
+-  BlinkCloneableMessage(BlinkCloneableMessage&&) noexcept;
+-  BlinkCloneableMessage& operator=(BlinkCloneableMessage&&) noexcept;
++  BlinkCloneableMessage(BlinkCloneableMessage&&);
++  BlinkCloneableMessage& operator=(BlinkCloneableMessage&&);
+ 
+   scoped_refptr<blink::SerializedScriptValue> message;
+   v8_inspector::V8StackTraceId sender_stack_trace_id;
+Index: chromium-78.0.3904.70/third_party/blink/renderer/core/messaging/blink_transferable_message.cc
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/core/messaging/blink_transferable_message.cc
++++ chromium-78.0.3904.70/third_party/blink/renderer/core/messaging/blink_transferable_message.cc
+@@ -15,10 +15,10 @@ namespace blink {
+ BlinkTransferableMessage::BlinkTransferableMessage() = default;
+ BlinkTransferableMessage::~BlinkTransferableMessage() = default;
+ 
+-BlinkTransferableMessage::BlinkTransferableMessage(
+-    BlinkTransferableMessage&&) noexcept = default;
++BlinkTransferableMessage::BlinkTransferableMessage(BlinkTransferableMessage&&) =
++    default;
+ BlinkTransferableMessage& BlinkTransferableMessage::operator=(
+-    BlinkTransferableMessage&&) noexcept = default;
++    BlinkTransferableMessage&&) = default;
+ 
+ scoped_refptr<blink::StaticBitmapImage> ToStaticBitmapImage(
+     const SkBitmap& sk_bitmap) {
+Index: chromium-78.0.3904.70/third_party/blink/renderer/core/messaging/blink_transferable_message.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/core/messaging/blink_transferable_message.h
++++ chromium-78.0.3904.70/third_party/blink/renderer/core/messaging/blink_transferable_message.h
+@@ -24,8 +24,8 @@ struct CORE_EXPORT BlinkTransferableMess
+   BlinkTransferableMessage();
+   ~BlinkTransferableMessage();
+ 
+-  BlinkTransferableMessage(BlinkTransferableMessage&&) noexcept;
+-  BlinkTransferableMessage& operator=(BlinkTransferableMessage&&) noexcept;
++  BlinkTransferableMessage(BlinkTransferableMessage&&);
++  BlinkTransferableMessage& operator=(BlinkTransferableMessage&&);
+ 
+   Vector<MessagePortChannel> ports;
+ 
+Index: chromium-78.0.3904.70/third_party/blink/renderer/modules/imagecapture/image_capture_frame_grabber.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/modules/imagecapture/image_capture_frame_grabber.h
++++ chromium-78.0.3904.70/third_party/blink/renderer/modules/imagecapture/image_capture_frame_grabber.h
+@@ -92,10 +92,10 @@ class ScopedWebCallbacks {
+       std::move(destruction_callback_).Run(std::move(callbacks_));
+   }
+ 
+-  ScopedWebCallbacks(ScopedWebCallbacks&& other) noexcept = default;
++  ScopedWebCallbacks(ScopedWebCallbacks&& other) = default;
+   ScopedWebCallbacks(const ScopedWebCallbacks& other) = delete;
+ 
+-  ScopedWebCallbacks& operator=(ScopedWebCallbacks&& other) noexcept = default;
++  ScopedWebCallbacks& operator=(ScopedWebCallbacks&& other) = default;
+   ScopedWebCallbacks& operator=(const ScopedWebCallbacks& other) = delete;
+ 
+   std::unique_ptr<CallbacksType> PassCallbacks() {
+Index: chromium-78.0.3904.70/third_party/blink/renderer/modules/indexeddb/idb_request.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/modules/indexeddb/idb_request.h
++++ chromium-78.0.3904.70/third_party/blink/renderer/modules/indexeddb/idb_request.h
+@@ -110,13 +110,13 @@ class MODULES_EXPORT IDBRequest : public
+     ~AsyncTraceState();
+ 
+     // Used to transfer the trace end event state to an IDBRequest.
+-    AsyncTraceState(AsyncTraceState&& other) noexcept {
++    AsyncTraceState(AsyncTraceState&& other) {
+       DCHECK(IsEmpty());
+       this->trace_event_name_ = other.trace_event_name_;
+       this->id_ = other.id_;
+       other.trace_event_name_ = nullptr;
+     }
+-    AsyncTraceState& operator=(AsyncTraceState&& rhs) noexcept {
++    AsyncTraceState& operator=(AsyncTraceState&& rhs) {
+       DCHECK(IsEmpty());
+       this->trace_event_name_ = rhs.trace_event_name_;
+       this->id_ = rhs.id_;
+Index: chromium-78.0.3904.70/third_party/blink/renderer/modules/indexeddb/idb_request_test.cc
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/modules/indexeddb/idb_request_test.cc
++++ chromium-78.0.3904.70/third_party/blink/renderer/modules/indexeddb/idb_request_test.cc
+@@ -435,10 +435,9 @@ TEST_F(IDBRequestTest, ConnectionsAfterS
+ class AsyncTraceStateForTesting : public IDBRequest::AsyncTraceState {
+  public:
+   AsyncTraceStateForTesting() : IDBRequest::AsyncTraceState() {}
+-  AsyncTraceStateForTesting(AsyncTraceStateForTesting&& other) noexcept
++  AsyncTraceStateForTesting(AsyncTraceStateForTesting&& other)
+       : IDBRequest::AsyncTraceState(std::move(other)) {}
+-  AsyncTraceStateForTesting& operator=(
+-      AsyncTraceStateForTesting&& rhs) noexcept {
++  AsyncTraceStateForTesting& operator=(AsyncTraceStateForTesting&& rhs) {
+     AsyncTraceState::operator=(std::move(rhs));
+     return *this;
+   }
+Index: chromium-78.0.3904.70/third_party/blink/renderer/modules/mediastream/media_stream_constraints_util.cc
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/modules/mediastream/media_stream_constraints_util.cc
++++ chromium-78.0.3904.70/third_party/blink/renderer/modules/mediastream/media_stream_constraints_util.cc
+@@ -134,13 +134,13 @@ VideoCaptureSettings::VideoCaptureSettin
+ 
+ VideoCaptureSettings::VideoCaptureSettings(const VideoCaptureSettings& other) =
+     default;
+-VideoCaptureSettings::VideoCaptureSettings(
+-    VideoCaptureSettings&& other) noexcept = default;
++VideoCaptureSettings::VideoCaptureSettings(VideoCaptureSettings&& other) =
++    default;
+ VideoCaptureSettings::~VideoCaptureSettings() = default;
+ VideoCaptureSettings& VideoCaptureSettings::operator=(
+     const VideoCaptureSettings& other) = default;
+ VideoCaptureSettings& VideoCaptureSettings::operator=(
+-    VideoCaptureSettings&& other) noexcept = default;
++    VideoCaptureSettings&& other) = default;
+ 
+ AudioCaptureSettings::AudioCaptureSettings() : AudioCaptureSettings("") {}
+ 
+@@ -166,10 +166,10 @@ AudioCaptureSettings::AudioCaptureSettin
+     default;
+ AudioCaptureSettings& AudioCaptureSettings::operator=(
+     const AudioCaptureSettings& other) = default;
+-AudioCaptureSettings::AudioCaptureSettings(
+-    AudioCaptureSettings&& other) noexcept = default;
++AudioCaptureSettings::AudioCaptureSettings(AudioCaptureSettings&& other) =
++    default;
+ AudioCaptureSettings& AudioCaptureSettings::operator=(
+-    AudioCaptureSettings&& other) noexcept = default;
++    AudioCaptureSettings&& other) = default;
+ 
+ bool GetConstraintValueAsBoolean(
+     const WebMediaConstraints& constraints,
+Index: chromium-78.0.3904.70/third_party/blink/renderer/modules/mediastream/media_stream_constraints_util_video_device.cc
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/modules/mediastream/media_stream_constraints_util_video_device.cc
++++ chromium-78.0.3904.70/third_party/blink/renderer/modules/mediastream/media_stream_constraints_util_video_device.cc
+@@ -529,9 +529,9 @@ VideoInputDeviceCapabilities::VideoInput
+       facing_mode(facing_mode) {}
+ 
+ VideoInputDeviceCapabilities::VideoInputDeviceCapabilities(
+-    VideoInputDeviceCapabilities&& other) noexcept = default;
++    VideoInputDeviceCapabilities&& other) = default;
+ VideoInputDeviceCapabilities& VideoInputDeviceCapabilities::operator=(
+-    VideoInputDeviceCapabilities&& other) noexcept = default;
++    VideoInputDeviceCapabilities&& other) = default;
+ 
+ VideoInputDeviceCapabilities::~VideoInputDeviceCapabilities() = default;
+ 
+@@ -557,10 +557,10 @@ WebMediaStreamTrack::FacingMode ToWebFac
+ 
+ VideoDeviceCaptureCapabilities::VideoDeviceCaptureCapabilities() = default;
+ VideoDeviceCaptureCapabilities::VideoDeviceCaptureCapabilities(
+-    VideoDeviceCaptureCapabilities&& other) noexcept = default;
++    VideoDeviceCaptureCapabilities&& other) = default;
+ VideoDeviceCaptureCapabilities::~VideoDeviceCaptureCapabilities() = default;
+ VideoDeviceCaptureCapabilities& VideoDeviceCaptureCapabilities::operator=(
+-    VideoDeviceCaptureCapabilities&& other) noexcept = default;
++    VideoDeviceCaptureCapabilities&& other) = default;
+ 
+ VideoCaptureSettings SelectSettingsVideoDeviceCapture(
+     const VideoDeviceCaptureCapabilities& capabilities,
+Index: chromium-78.0.3904.70/third_party/blink/renderer/modules/mediastream/media_stream_constraints_util_video_device.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/modules/mediastream/media_stream_constraints_util_video_device.h
++++ chromium-78.0.3904.70/third_party/blink/renderer/modules/mediastream/media_stream_constraints_util_video_device.h
+@@ -34,9 +34,8 @@ struct MODULES_EXPORT VideoInputDeviceCa
+                                Vector<media::VideoCaptureFormat> formats,
+                                media::VideoFacingMode facing_mode);
+   VideoInputDeviceCapabilities();
+-  VideoInputDeviceCapabilities(VideoInputDeviceCapabilities&& other) noexcept;
+-  VideoInputDeviceCapabilities& operator=(
+-      VideoInputDeviceCapabilities&& other) noexcept;
++  VideoInputDeviceCapabilities(VideoInputDeviceCapabilities&& other);
++  VideoInputDeviceCapabilities& operator=(VideoInputDeviceCapabilities&& other);
+   ~VideoInputDeviceCapabilities();
+ 
+   String device_id;
+@@ -47,11 +46,10 @@ struct MODULES_EXPORT VideoInputDeviceCa
+ 
+ struct MODULES_EXPORT VideoDeviceCaptureCapabilities {
+   VideoDeviceCaptureCapabilities();
+-  VideoDeviceCaptureCapabilities(
+-      VideoDeviceCaptureCapabilities&& other) noexcept;
++  VideoDeviceCaptureCapabilities(VideoDeviceCaptureCapabilities&& other);
+   ~VideoDeviceCaptureCapabilities();
+   VideoDeviceCaptureCapabilities& operator=(
+-      VideoDeviceCaptureCapabilities&& other) noexcept;
++      VideoDeviceCaptureCapabilities&& other);
+ 
+   // Each capabilities field is independent of each other.
+   // TODO(crbug.com/704136): Replace VideoInputDeviceCapabilities in the
+Index: chromium-78.0.3904.70/third_party/blink/renderer/modules/mediastream/media_stream_video_source.cc
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/modules/mediastream/media_stream_video_source.cc
++++ chromium-78.0.3904.70/third_party/blink/renderer/modules/mediastream/media_stream_video_source.cc
+@@ -461,10 +461,10 @@ MediaStreamVideoSource::PendingTrackInfo
+       callback(callback) {}
+ 
+ MediaStreamVideoSource::PendingTrackInfo::PendingTrackInfo(
+-    PendingTrackInfo&& other) noexcept = default;
++    PendingTrackInfo&& other) = default;
+ MediaStreamVideoSource::PendingTrackInfo&
+ MediaStreamVideoSource::PendingTrackInfo::operator=(
+-    MediaStreamVideoSource::PendingTrackInfo&& other) noexcept = default;
++    MediaStreamVideoSource::PendingTrackInfo&& other) = default;
+ 
+ MediaStreamVideoSource::PendingTrackInfo::~PendingTrackInfo() {}
+ 
+Index: chromium-78.0.3904.70/third_party/blink/renderer/platform/bindings/dom_data_store.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/platform/bindings/dom_data_store.h
++++ chromium-78.0.3904.70/third_party/blink/renderer/platform/bindings/dom_data_store.h
+@@ -230,12 +230,11 @@ class DOMDataStore {
+         : TraceWrapperV8Reference(isolate, handle) {}
+ 
+     // Move support without write barrier.
+-    DOMWorldWrapperReference(DOMWorldWrapperReference&& other) noexcept
++    DOMWorldWrapperReference(DOMWorldWrapperReference&& other)
+         : TraceWrapperV8Reference() {
+       handle_ = std::move(other.handle_);
+     }
+-    DOMWorldWrapperReference& operator=(
+-        DOMWorldWrapperReference&& rhs) noexcept {
++    DOMWorldWrapperReference& operator=(DOMWorldWrapperReference&& rhs) {
+       handle_ = std::move(rhs.handle_);
+       return *this;
+     }
+Index: chromium-78.0.3904.70/third_party/blink/renderer/platform/exported/web_string.cc
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/platform/exported/web_string.cc
++++ chromium-78.0.3904.70/third_party/blink/renderer/platform/exported/web_string.cc
+@@ -51,9 +51,9 @@ namespace blink {
+ WebString::~WebString() = default;
+ WebString::WebString() = default;
+ WebString::WebString(const WebString&) = default;
+-WebString::WebString(WebString&&) noexcept = default;
++WebString::WebString(WebString&&) = default;
+ WebString& WebString::operator=(const WebString&) = default;
+-WebString& WebString::operator=(WebString&&) noexcept = default;
++WebString& WebString::operator=(WebString&&) = default;
+ 
+ WebString::WebString(const WebUChar* data, size_t len)
+     : impl_(StringImpl::Create8BitIfPossible(data, len)) {}
+Index: chromium-78.0.3904.70/third_party/blink/renderer/platform/graphics/contiguous_container.cc
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/platform/graphics/contiguous_container.cc
++++ chromium-78.0.3904.70/third_party/blink/renderer/platform/graphics/contiguous_container.cc
+@@ -69,7 +69,7 @@ ContiguousContainerBase::ContiguousConta
+     : end_index_(0), max_object_size_(max_object_size) {}
+ 
+ ContiguousContainerBase::ContiguousContainerBase(
+-    ContiguousContainerBase&& source) noexcept
++    ContiguousContainerBase&& source)
+     : ContiguousContainerBase(source.max_object_size_) {
+   Swap(source);
+ }
+@@ -77,7 +77,7 @@ ContiguousContainerBase::ContiguousConta
+ ContiguousContainerBase::~ContiguousContainerBase() = default;
+ 
+ ContiguousContainerBase& ContiguousContainerBase::operator=(
+-    ContiguousContainerBase&& source) noexcept {
++    ContiguousContainerBase&& source) {
+   Swap(source);
+   return *this;
+ }
+Index: chromium-78.0.3904.70/third_party/blink/renderer/platform/graphics/contiguous_container.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/platform/graphics/contiguous_container.h
++++ chromium-78.0.3904.70/third_party/blink/renderer/platform/graphics/contiguous_container.h
+@@ -42,10 +42,10 @@ class PLATFORM_EXPORT ContiguousContaine
+ 
+  protected:
+   explicit ContiguousContainerBase(size_t max_object_size);
+-  ContiguousContainerBase(ContiguousContainerBase&&) noexcept;
++  ContiguousContainerBase(ContiguousContainerBase&&);
+   ~ContiguousContainerBase();
+ 
+-  ContiguousContainerBase& operator=(ContiguousContainerBase&&) noexcept;
++  ContiguousContainerBase& operator=(ContiguousContainerBase&&);
+ 
+   size_t size() const { return elements_.size(); }
+   bool IsEmpty() const { return !size(); }
+@@ -147,7 +147,7 @@ class ContiguousContainer : public Conti
+                            WTF_HEAP_PROFILER_TYPE_NAME(BaseElementType));
+   }
+ 
+-  ContiguousContainer(ContiguousContainer&& source) noexcept
++  ContiguousContainer(ContiguousContainer&& source)
+       : ContiguousContainerBase(std::move(source)) {}
+ 
+   ~ContiguousContainer() {
+@@ -157,7 +157,7 @@ class ContiguousContainer : public Conti
+     }
+   }
+ 
+-  ContiguousContainer& operator=(ContiguousContainer&& source) noexcept {
++  ContiguousContainer& operator=(ContiguousContainer&& source) {
+     // Must clear in the derived class to ensure that element destructors
+     // care called.
+     Clear();
+Index: chromium-78.0.3904.70/third_party/blink/renderer/platform/graphics/gpu/image_layer_bridge.cc
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/platform/graphics/gpu/image_layer_bridge.cc
++++ chromium-78.0.3904.70/third_party/blink/renderer/platform/graphics/gpu/image_layer_bridge.cc
+@@ -242,9 +242,9 @@ cc::Layer* ImageLayerBridge::CcLayer() c
+ }
+ 
+ ImageLayerBridge::RegisteredBitmap::RegisteredBitmap() = default;
+-ImageLayerBridge::RegisteredBitmap::RegisteredBitmap(
+-    RegisteredBitmap&& other) noexcept = default;
++ImageLayerBridge::RegisteredBitmap::RegisteredBitmap(RegisteredBitmap&& other) =
++    default;
+ ImageLayerBridge::RegisteredBitmap& ImageLayerBridge::RegisteredBitmap::
+-operator=(RegisteredBitmap&& other) noexcept = default;
++operator=(RegisteredBitmap&& other) = default;
+ 
+ }  // namespace blink
+Index: chromium-78.0.3904.70/third_party/blink/renderer/platform/graphics/gpu/image_layer_bridge.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/platform/graphics/gpu/image_layer_bridge.h
++++ chromium-78.0.3904.70/third_party/blink/renderer/platform/graphics/gpu/image_layer_bridge.h
+@@ -65,8 +65,8 @@ class PLATFORM_EXPORT ImageLayerBridge
+   // only with software compositing.
+   struct RegisteredBitmap {
+     RegisteredBitmap();
+-    RegisteredBitmap(RegisteredBitmap&& other) noexcept;
+-    RegisteredBitmap& operator=(RegisteredBitmap&& other) noexcept;
++    RegisteredBitmap(RegisteredBitmap&& other);
++    RegisteredBitmap& operator=(RegisteredBitmap&& other);
+ 
+     scoped_refptr<cc::CrossThreadSharedBitmap> bitmap;
+     cc::SharedBitmapIdRegistration registration;
+Index: chromium-78.0.3904.70/third_party/blink/renderer/platform/graphics/paint/display_item_list.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/platform/graphics/paint/display_item_list.h
++++ chromium-78.0.3904.70/third_party/blink/renderer/platform/graphics/paint/display_item_list.h
+@@ -28,10 +28,10 @@ class PLATFORM_EXPORT DisplayItemList
+  public:
+   DisplayItemList(size_t initial_size_bytes)
+       : ContiguousContainer(kMaximumDisplayItemSize, initial_size_bytes) {}
+-  DisplayItemList(DisplayItemList&& source) noexcept
++  DisplayItemList(DisplayItemList&& source)
+       : ContiguousContainer(std::move(source)) {}
+ 
+-  DisplayItemList& operator=(DisplayItemList&& source) noexcept {
++  DisplayItemList& operator=(DisplayItemList&& source) {
+     ContiguousContainer::operator=(std::move(source));
+     return *this;
+   }
+Index: chromium-78.0.3904.70/third_party/blink/renderer/platform/heap/heap_test.cc
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/platform/heap/heap_test.cc
++++ chromium-78.0.3904.70/third_party/blink/renderer/platform/heap/heap_test.cc
+@@ -145,7 +145,7 @@ class KeyWithCopyingMoveConstructor fina
+   }
+   KeyWithCopyingMoveConstructor(const KeyWithCopyingMoveConstructor&) = default;
+   // The move constructor delegates to the copy constructor intentionally.
+-  KeyWithCopyingMoveConstructor(KeyWithCopyingMoveConstructor&& x) noexcept
++  KeyWithCopyingMoveConstructor(KeyWithCopyingMoveConstructor&& x)
+       : KeyWithCopyingMoveConstructor(x) {}
+   KeyWithCopyingMoveConstructor& operator=(
+       const KeyWithCopyingMoveConstructor&) = default;
+Index: chromium-78.0.3904.70/third_party/blink/renderer/platform/image-decoders/segment_stream.cc
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/platform/image-decoders/segment_stream.cc
++++ chromium-78.0.3904.70/third_party/blink/renderer/platform/image-decoders/segment_stream.cc
+@@ -10,10 +10,10 @@ namespace blink {
+ 
+ SegmentStream::SegmentStream() = default;
+ 
+-SegmentStream::SegmentStream(SegmentStream&& rhs) noexcept
++SegmentStream::SegmentStream(SegmentStream&& rhs)
+     : reader_(std::move(rhs.reader_)), position_(rhs.position_) {}
+ 
+-SegmentStream& SegmentStream::operator=(SegmentStream&& rhs) noexcept {
++SegmentStream& SegmentStream::operator=(SegmentStream&& rhs) {
+   reader_ = std::move(rhs.reader_);
+   position_ = rhs.position_;
+ 
+Index: chromium-78.0.3904.70/third_party/blink/renderer/platform/image-decoders/segment_stream.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/platform/image-decoders/segment_stream.h
++++ chromium-78.0.3904.70/third_party/blink/renderer/platform/image-decoders/segment_stream.h
+@@ -19,8 +19,8 @@ class PLATFORM_EXPORT SegmentStream : pu
+   SegmentStream();
+   SegmentStream(const SegmentStream&) = delete;
+   SegmentStream& operator=(const SegmentStream&) = delete;
+-  SegmentStream(SegmentStream&&) noexcept;
+-  SegmentStream& operator=(SegmentStream&&) noexcept;
++  SegmentStream(SegmentStream&&);
++  SegmentStream& operator=(SegmentStream&&);
+ 
+   ~SegmentStream() override;
+ 
+Index: chromium-78.0.3904.70/third_party/blink/renderer/platform/mojo/revocable_interface_ptr.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/platform/mojo/revocable_interface_ptr.h
++++ chromium-78.0.3904.70/third_party/blink/renderer/platform/mojo/revocable_interface_ptr.h
+@@ -41,7 +41,7 @@ class RevocableInterfacePtr : public Int
+   RevocableInterfacePtr(std::nullptr_t) {}
+ 
+   // Takes over the binding of another RevocableInterfacePtr.
+-  RevocableInterfacePtr(RevocableInterfacePtr&& other) noexcept {
++  RevocableInterfacePtr(RevocableInterfacePtr&& other) {
+     interface_ptr_ = std::move(other.interface_ptr_);
+     SetInvalidator(other.invalidator_.get());
+     // Reset the other interface ptr to remove it as an observer of the
+@@ -58,7 +58,7 @@ class RevocableInterfacePtr : public Int
+ 
+   // Takes over the binding of another RevocableInterfacePtr, and closes any
+   // message pipe already bound to this pointer.
+-  RevocableInterfacePtr& operator=(RevocableInterfacePtr&& other) noexcept {
++  RevocableInterfacePtr& operator=(RevocableInterfacePtr&& other) {
+     reset();
+     interface_ptr_ = std::move(other.interface_ptr_);
+     SetInvalidator(other.invalidator_.get());
+Index: chromium-78.0.3904.70/third_party/blink/renderer/platform/network/encoded_form_data.cc
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/platform/network/encoded_form_data.cc
++++ chromium-78.0.3904.70/third_party/blink/renderer/platform/network/encoded_form_data.cc
+@@ -59,11 +59,10 @@ FormDataElement::FormDataElement(
+     : type_(kDataPipe), data_pipe_getter_(std::move(data_pipe_getter)) {}
+ 
+ FormDataElement::FormDataElement(const FormDataElement&) = default;
+-FormDataElement::FormDataElement(FormDataElement&&) noexcept = default;
++FormDataElement::FormDataElement(FormDataElement&&) = default;
+ FormDataElement::~FormDataElement() = default;
+ FormDataElement& FormDataElement::operator=(const FormDataElement&) = default;
+-FormDataElement& FormDataElement::operator=(FormDataElement&&) noexcept =
+-    default;
++FormDataElement& FormDataElement::operator=(FormDataElement&&) = default;
+ 
+ bool operator==(const FormDataElement& a, const FormDataElement& b) {
+   if (&a == &b)
+Index: chromium-78.0.3904.70/third_party/blink/renderer/platform/network/encoded_form_data.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/platform/network/encoded_form_data.h
++++ chromium-78.0.3904.70/third_party/blink/renderer/platform/network/encoded_form_data.h
+@@ -62,12 +62,12 @@ class PLATFORM_EXPORT FormDataElement fi
+   explicit FormDataElement(scoped_refptr<WrappedDataPipeGetter>);
+ 
+   FormDataElement(const FormDataElement&);
+-  FormDataElement(FormDataElement&&) noexcept;
++  FormDataElement(FormDataElement&&);
+ 
+   ~FormDataElement();
+ 
+   FormDataElement& operator=(const FormDataElement&);
+-  FormDataElement& operator=(FormDataElement&&) noexcept;
++  FormDataElement& operator=(FormDataElement&&);
+ 
+   bool IsSafeToSendToAnotherThread() const;
+ 
+Index: chromium-78.0.3904.70/third_party/blink/renderer/platform/scheduler/common/frame_or_worker_scheduler.cc
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/platform/scheduler/common/frame_or_worker_scheduler.cc
++++ chromium-78.0.3904.70/third_party/blink/renderer/platform/scheduler/common/frame_or_worker_scheduler.cc
+@@ -28,15 +28,14 @@ FrameOrWorkerScheduler::SchedulingAffect
+ }
+ 
+ FrameOrWorkerScheduler::SchedulingAffectingFeatureHandle::
+-    SchedulingAffectingFeatureHandle(
+-        SchedulingAffectingFeatureHandle&& other) noexcept
++    SchedulingAffectingFeatureHandle(SchedulingAffectingFeatureHandle&& other)
+     : feature_(other.feature_), scheduler_(std::move(other.scheduler_)) {
+   other.scheduler_ = nullptr;
+ }
+ 
+ FrameOrWorkerScheduler::SchedulingAffectingFeatureHandle&
+ FrameOrWorkerScheduler::SchedulingAffectingFeatureHandle::operator=(
+-    SchedulingAffectingFeatureHandle&& other) noexcept {
++    SchedulingAffectingFeatureHandle&& other) {
+   feature_ = other.feature_;
+   policy_ = std::move(other.policy_);
+   scheduler_ = std::move(other.scheduler_);
+Index: chromium-78.0.3904.70/third_party/blink/renderer/platform/scheduler/common/post_cancellable_task.cc
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/platform/scheduler/common/post_cancellable_task.cc
++++ chromium-78.0.3904.70/third_party/blink/renderer/platform/scheduler/common/post_cancellable_task.cc
+@@ -103,9 +103,9 @@ TaskHandle::~TaskHandle() {
+   Cancel();
+ }
+ 
+-TaskHandle::TaskHandle(TaskHandle&&) noexcept = default;
++TaskHandle::TaskHandle(TaskHandle&&) = default;
+ 
+-TaskHandle& TaskHandle::operator=(TaskHandle&& other) noexcept {
++TaskHandle& TaskHandle::operator=(TaskHandle&& other) {
+   TaskHandle tmp(std::move(other));
+   runner_.swap(tmp.runner_);
+   return *this;
+Index: chromium-78.0.3904.70/third_party/blink/renderer/platform/scheduler/main_thread/web_scoped_virtual_time_pauser.cc
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/platform/scheduler/main_thread/web_scoped_virtual_time_pauser.cc
++++ chromium-78.0.3904.70/third_party/blink/renderer/platform/scheduler/main_thread/web_scoped_virtual_time_pauser.cc
+@@ -28,7 +28,7 @@ WebScopedVirtualTimePauser::~WebScopedVi
+ }
+ 
+ WebScopedVirtualTimePauser::WebScopedVirtualTimePauser(
+-    WebScopedVirtualTimePauser&& other) noexcept {
++    WebScopedVirtualTimePauser&& other) {
+   virtual_time_when_paused_ = other.virtual_time_when_paused_;
+   paused_ = other.paused_;
+   duration_ = other.duration_;
+@@ -39,7 +39,7 @@ WebScopedVirtualTimePauser::WebScopedVir
+ }
+ 
+ WebScopedVirtualTimePauser& WebScopedVirtualTimePauser::operator=(
+-    WebScopedVirtualTimePauser&& other) noexcept {
++    WebScopedVirtualTimePauser&& other) {
+   if (scheduler_ && paused_)
+     DecrementVirtualTimePauseCount();
+   virtual_time_when_paused_ = other.virtual_time_when_paused_;
+Index: chromium-78.0.3904.70/third_party/blink/renderer/platform/scheduler/public/frame_or_worker_scheduler.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/platform/scheduler/public/frame_or_worker_scheduler.h
++++ chromium-78.0.3904.70/third_party/blink/renderer/platform/scheduler/public/frame_or_worker_scheduler.h
+@@ -57,12 +57,11 @@ class PLATFORM_EXPORT FrameOrWorkerSched
+ 
+    public:
+     SchedulingAffectingFeatureHandle() = default;
+-    SchedulingAffectingFeatureHandle(
+-        SchedulingAffectingFeatureHandle&&) noexcept;
++    SchedulingAffectingFeatureHandle(SchedulingAffectingFeatureHandle&&);
+     inline ~SchedulingAffectingFeatureHandle() { reset(); }
+ 
+     SchedulingAffectingFeatureHandle& operator=(
+-        SchedulingAffectingFeatureHandle&&) noexcept;
++        SchedulingAffectingFeatureHandle&&);
+ 
+     inline void reset() {
+       if (scheduler_)
+Index: chromium-78.0.3904.70/third_party/blink/renderer/platform/scheduler/public/post_cancellable_task.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/platform/scheduler/public/post_cancellable_task.h
++++ chromium-78.0.3904.70/third_party/blink/renderer/platform/scheduler/public/post_cancellable_task.h
+@@ -28,8 +28,8 @@ class PLATFORM_EXPORT TaskHandle {
+   TaskHandle();
+   ~TaskHandle();
+ 
+-  TaskHandle(TaskHandle&&) noexcept;
+-  TaskHandle& operator=(TaskHandle&&) noexcept;
++  TaskHandle(TaskHandle&&);
++  TaskHandle& operator=(TaskHandle&&);
+ 
+   // Returns true if the task will run later. Returns false if the task is
+   // cancelled or the task is run already.
+Index: chromium-78.0.3904.70/third_party/blink/renderer/platform/weborigin/origin_access_entry.cc
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/platform/weborigin/origin_access_entry.cc
++++ chromium-78.0.3904.70/third_party/blink/renderer/platform/weborigin/origin_access_entry.cc
+@@ -59,8 +59,7 @@ OriginAccessEntry::OriginAccessEntry(
+                network::mojom::CorsPortMatchMode::kAllowOnlySpecifiedPort,
+                priority) {}
+ 
+-OriginAccessEntry::OriginAccessEntry(OriginAccessEntry&& from) noexcept =
+-    default;
++OriginAccessEntry::OriginAccessEntry(OriginAccessEntry&& from) = default;
+ 
+ network::cors::OriginAccessEntry::MatchResult OriginAccessEntry::MatchesOrigin(
+     const SecurityOrigin& origin) const {
+Index: chromium-78.0.3904.70/third_party/blink/renderer/platform/weborigin/origin_access_entry.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/platform/weborigin/origin_access_entry.h
++++ chromium-78.0.3904.70/third_party/blink/renderer/platform/weborigin/origin_access_entry.h
+@@ -58,7 +58,7 @@ class PLATFORM_EXPORT OriginAccessEntry
+       network::mojom::CorsDomainMatchMode,
+       network::mojom::CorsOriginAccessMatchPriority priority =
+           network::mojom::CorsOriginAccessMatchPriority::kDefaultPriority);
+-  OriginAccessEntry(OriginAccessEntry&& from) noexcept;
++  OriginAccessEntry(OriginAccessEntry&& from);
+ 
+   network::cors::OriginAccessEntry::MatchResult MatchesOrigin(
+       const SecurityOrigin&) const;
+Index: chromium-78.0.3904.70/third_party/blink/renderer/platform/wtf/deque.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/platform/wtf/deque.h
++++ chromium-78.0.3904.70/third_party/blink/renderer/platform/wtf/deque.h
+@@ -64,8 +64,8 @@ class Deque {
+   Deque();
+   Deque(const Deque&);
+   Deque& operator=(const Deque&);
+-  Deque(Deque&&) noexcept;
+-  Deque& operator=(Deque&&) noexcept;
++  Deque(Deque&&);
++  Deque& operator=(Deque&&);
+   ~Deque();
+ 
+   void FinalizeGarbageCollectedObject() { NOTREACHED(); }
+@@ -342,14 +342,14 @@ Deque<T, inlineCapacity, Allocator>::ope
+ }
+ 
+ template <typename T, wtf_size_t inlineCapacity, typename Allocator>
+-inline Deque<T, inlineCapacity, Allocator>::Deque(Deque&& other) noexcept
++inline Deque<T, inlineCapacity, Allocator>::Deque(Deque&& other)
+     : start_(0), end_(0) {
+   Swap(other);
+ }
+ 
+ template <typename T, wtf_size_t inlineCapacity, typename Allocator>
+ inline Deque<T, inlineCapacity, Allocator>&
+-Deque<T, inlineCapacity, Allocator>::operator=(Deque&& other) noexcept {
++Deque<T, inlineCapacity, Allocator>::operator=(Deque&& other) {
+   Swap(other);
+   return *this;
+ }
+Index: chromium-78.0.3904.70/third_party/blink/renderer/platform/wtf/functional.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/platform/wtf/functional.h
++++ chromium-78.0.3904.70/third_party/blink/renderer/platform/wtf/functional.h
+@@ -117,8 +117,7 @@ template <typename T>
+ class PassedWrapper final {
+  public:
+   explicit PassedWrapper(T&& scoper) : scoper_(std::move(scoper)) {}
+-  PassedWrapper(PassedWrapper&& other) noexcept
+-      : scoper_(std::move(other.scoper_)) {}
++  PassedWrapper(PassedWrapper&& other) : scoper_(std::move(other.scoper_)) {}
+   T MoveOut() const { return std::move(scoper_); }
+ 
+  private:
+@@ -319,9 +318,8 @@ class CrossThreadFunction<R(Args...)> {
+   CrossThreadFunction(const CrossThreadFunction&) = delete;
+   CrossThreadFunction& operator=(const CrossThreadFunction&) = delete;
+ 
+-  CrossThreadFunction(CrossThreadFunction&& other) noexcept = default;
+-  CrossThreadFunction& operator=(CrossThreadFunction&& other) noexcept =
+-      default;
++  CrossThreadFunction(CrossThreadFunction&& other) = default;
++  CrossThreadFunction& operator=(CrossThreadFunction&& other) = default;
+ 
+   R Run(Args... args) const & {
+     return callback_.Run(std::forward<Args>(args)...);
+@@ -356,9 +354,8 @@ class CrossThreadOnceFunction<R(Args...)
+   CrossThreadOnceFunction(const CrossThreadOnceFunction&) = delete;
+   CrossThreadOnceFunction& operator=(const CrossThreadOnceFunction&) = delete;
+ 
+-  CrossThreadOnceFunction(CrossThreadOnceFunction&& other) noexcept = default;
+-  CrossThreadOnceFunction& operator=(CrossThreadOnceFunction&& other) noexcept =
+-      default;
++  CrossThreadOnceFunction(CrossThreadOnceFunction&& other) = default;
++  CrossThreadOnceFunction& operator=(CrossThreadOnceFunction&& other) = default;
+ 
+   R Run(Args... args) && {
+     return std::move(callback_).Run(std::forward<Args>(args)...);
+Index: chromium-78.0.3904.70/third_party/blink/renderer/platform/wtf/hash_map.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/platform/wtf/hash_map.h
++++ chromium-78.0.3904.70/third_party/blink/renderer/platform/wtf/hash_map.h
+@@ -106,8 +106,8 @@ class HashMap {
+ #endif
+   HashMap(const HashMap&) = default;
+   HashMap& operator=(const HashMap&) = default;
+-  HashMap(HashMap&&) noexcept = default;
+-  HashMap& operator=(HashMap&&) noexcept = default;
++  HashMap(HashMap&&) = default;
++  HashMap& operator=(HashMap&&) = default;
+ 
+   // For example, HashMap<int, int>({{1, 11}, {2, 22}, {3, 33}}) will give you
+   // a HashMap containing a mapping {1 -> 11, 2 -> 22, 3 -> 33}.
+Index: chromium-78.0.3904.70/third_party/blink/renderer/platform/wtf/hash_set.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/platform/wtf/hash_set.h
++++ chromium-78.0.3904.70/third_party/blink/renderer/platform/wtf/hash_set.h
+@@ -74,8 +74,8 @@ class HashSet {
+   }
+   HashSet(const HashSet&) = default;
+   HashSet& operator=(const HashSet&) = default;
+-  HashSet(HashSet&&) noexcept = default;
+-  HashSet& operator=(HashSet&&) noexcept = default;
++  HashSet(HashSet&&) = default;
++  HashSet& operator=(HashSet&&) = default;
+ 
+   HashSet(std::initializer_list<ValueType> elements);
+   HashSet& operator=(std::initializer_list<ValueType> elements);
+Index: chromium-78.0.3904.70/third_party/blink/renderer/platform/wtf/hash_table.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/platform/wtf/hash_table.h
++++ chromium-78.0.3904.70/third_party/blink/renderer/platform/wtf/hash_table.h
+@@ -742,10 +742,10 @@ class HashTable final {
+   }
+ 
+   HashTable(const HashTable&);
+-  HashTable(HashTable&&) noexcept;
++  HashTable(HashTable&&);
+   void swap(HashTable&);
+   HashTable& operator=(const HashTable&);
+-  HashTable& operator=(HashTable&&) noexcept;
++  HashTable& operator=(HashTable&&);
+ 
+   // When the hash table is empty, just return the same iterator for end as
+   // for begin.  This is more efficient because we don't have to skip all the
+@@ -1924,7 +1924,7 @@ template <typename Key,
+           typename KeyTraits,
+           typename Allocator>
+ HashTable<Key, Value, Extractor, HashFunctions, Traits, KeyTraits, Allocator>::
+-    HashTable(HashTable&& other) noexcept
++    HashTable(HashTable&& other)
+     : table_(nullptr),
+       table_size_(0),
+       key_count_(0),
+@@ -2003,7 +2003,7 @@ template <typename Key,
+           typename Allocator>
+ HashTable<Key, Value, Extractor, HashFunctions, Traits, KeyTraits, Allocator>&
+ HashTable<Key, Value, Extractor, HashFunctions, Traits, KeyTraits, Allocator>::
+-operator=(HashTable&& other) noexcept {
++operator=(HashTable&& other) {
+   swap(other);
+   return *this;
+ }
+Index: chromium-78.0.3904.70/third_party/blink/renderer/platform/wtf/linked_hash_set.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/platform/wtf/linked_hash_set.h
++++ chromium-78.0.3904.70/third_party/blink/renderer/platform/wtf/linked_hash_set.h
+@@ -121,7 +121,7 @@ class LinkedHashSetNodeBase {
+   LinkedHashSetNodeBase(const LinkedHashSetNodeBase& other)
+       : prev_(nullptr), next_(nullptr) {}
+ 
+-  LinkedHashSetNodeBase(LinkedHashSetNodeBase&& other) noexcept
++  LinkedHashSetNodeBase(LinkedHashSetNodeBase&& other)
+       : prev_(other.prev_), next_(other.next_) {
+     other.prev_ = nullptr;
+     other.next_ = nullptr;
+@@ -151,7 +151,7 @@ class LinkedHashSetNode : public LinkedH
+                     LinkedHashSetNodeBase* next)
+       : LinkedHashSetNodeBase(prev, next), value_(std::move(value)) {}
+ 
+-  LinkedHashSetNode(LinkedHashSetNode&& other) noexcept
++  LinkedHashSetNode(LinkedHashSetNode&& other)
+       : LinkedHashSetNodeBase(std::move(other)),
+         value_(std::move(other.value_)) {}
+ 
+@@ -214,9 +214,9 @@ class LinkedHashSet {
+ 
+   LinkedHashSet();
+   LinkedHashSet(const LinkedHashSet&);
+-  LinkedHashSet(LinkedHashSet&&) noexcept;
++  LinkedHashSet(LinkedHashSet&&);
+   LinkedHashSet& operator=(const LinkedHashSet&);
+-  LinkedHashSet& operator=(LinkedHashSet&&) noexcept;
++  LinkedHashSet& operator=(LinkedHashSet&&);
+ 
+   // Needs finalization. The anchor needs to unlink itself from the chain.
+   ~LinkedHashSet();
+@@ -748,7 +748,7 @@ inline LinkedHashSet<T, U, V, W>::Linked
+ }
+ 
+ template <typename T, typename U, typename V, typename W>
+-inline LinkedHashSet<T, U, V, W>::LinkedHashSet(LinkedHashSet&& other) noexcept
++inline LinkedHashSet<T, U, V, W>::LinkedHashSet(LinkedHashSet&& other)
+     : anchor_() {
+   Swap(other);
+ }
+@@ -763,7 +763,7 @@ inline LinkedHashSet<T, U, V, W>& Linked
+ 
+ template <typename T, typename U, typename V, typename W>
+ inline LinkedHashSet<T, U, V, W>& LinkedHashSet<T, U, V, W>::operator=(
+-    LinkedHashSet&& other) noexcept {
++    LinkedHashSet&& other) {
+   Swap(other);
+   return *this;
+ }
+Index: chromium-78.0.3904.70/third_party/blink/renderer/platform/wtf/list_hash_set.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/platform/wtf/list_hash_set.h
++++ chromium-78.0.3904.70/third_party/blink/renderer/platform/wtf/list_hash_set.h
+@@ -145,9 +145,9 @@ class ListHashSet {
+ 
+   ListHashSet();
+   ListHashSet(const ListHashSet&);
+-  ListHashSet(ListHashSet&&) noexcept;
++  ListHashSet(ListHashSet&&);
+   ListHashSet& operator=(const ListHashSet&);
+-  ListHashSet& operator=(ListHashSet&&) noexcept;
++  ListHashSet& operator=(ListHashSet&&);
+   ~ListHashSet();
+ 
+   void Swap(ListHashSet&);
+@@ -776,8 +776,7 @@ inline ListHashSet<T, inlineCapacity, U,
+ }
+ 
+ template <typename T, size_t inlineCapacity, typename U, typename V>
+-inline ListHashSet<T, inlineCapacity, U, V>::ListHashSet(
+-    ListHashSet&& other) noexcept
++inline ListHashSet<T, inlineCapacity, U, V>::ListHashSet(ListHashSet&& other)
+     : head_(nullptr), tail_(nullptr) {
+   Swap(other);
+ }
+@@ -792,7 +791,7 @@ ListHashSet<T, inlineCapacity, U, V>::op
+ 
+ template <typename T, size_t inlineCapacity, typename U, typename V>
+ inline ListHashSet<T, inlineCapacity, U, V>&
+-ListHashSet<T, inlineCapacity, U, V>::operator=(ListHashSet&& other) noexcept {
++ListHashSet<T, inlineCapacity, U, V>::operator=(ListHashSet&& other) {
+   Swap(other);
+   return *this;
+ }
+Index: chromium-78.0.3904.70/third_party/blink/renderer/platform/wtf/type_traits_test.cc
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/platform/wtf/type_traits_test.cc
++++ chromium-78.0.3904.70/third_party/blink/renderer/platform/wtf/type_traits_test.cc
+@@ -158,7 +158,7 @@ class CopyAssignmentDeleted final {
+   STACK_ALLOCATED();
+ 
+  public:
+-  CopyAssignmentDeleted& operator=(CopyAssignmentDeleted&&) noexcept;
++  CopyAssignmentDeleted& operator=(CopyAssignmentDeleted&&);
+ 
+  private:
+   CopyAssignmentDeleted& operator=(const CopyAssignmentDeleted&) = delete;
+@@ -173,7 +173,7 @@ class CopyAssignmentPrivate final {
+   STACK_ALLOCATED();
+ 
+  public:
+-  CopyAssignmentPrivate& operator=(CopyAssignmentPrivate&&) noexcept;
++  CopyAssignmentPrivate& operator=(CopyAssignmentPrivate&&);
+ 
+  private:
+   CopyAssignmentPrivate& operator=(const CopyAssignmentPrivate&);
+@@ -188,7 +188,7 @@ class CopyAssignmentUndeclared final {
+   STACK_ALLOCATED();
+ 
+  public:
+-  CopyAssignmentUndeclared& operator=(CopyAssignmentUndeclared&&) noexcept;
++  CopyAssignmentUndeclared& operator=(CopyAssignmentUndeclared&&);
+ };
+ 
+ static_assert(!std::is_copy_assignable<CopyAssignmentUndeclared>::value,
+Index: chromium-78.0.3904.70/third_party/blink/renderer/platform/wtf/typed_arrays/array_buffer_contents.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/platform/wtf/typed_arrays/array_buffer_contents.h
++++ chromium-78.0.3904.70/third_party/blink/renderer/platform/wtf/typed_arrays/array_buffer_contents.h
+@@ -68,7 +68,7 @@ class WTF_EXPORT ArrayBufferContents {
+           deleter_(deleter),
+           deleter_info_(deleter_info) {}
+     // Move constructor
+-    DataHandle(DataHandle&& other) noexcept { *this = std::move(other); }
++    DataHandle(DataHandle&& other) { *this = std::move(other); }
+     ~DataHandle() {
+       if (!data_)
+         return;
+Index: chromium-78.0.3904.70/third_party/blink/renderer/platform/wtf/vector.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/platform/wtf/vector.h
++++ chromium-78.0.3904.70/third_party/blink/renderer/platform/wtf/vector.h
+@@ -1013,8 +1013,8 @@ class Vector : private VectorBuffer<T, I
+   Vector& operator=(const Vector<T, otherCapacity, Allocator>&);
+ 
+   // Moving.
+-  Vector(Vector&&) noexcept;
+-  Vector& operator=(Vector&&) noexcept;
++  Vector(Vector&&);
++  Vector& operator=(Vector&&);
+ 
+   // Construct with an initializer list. You can do e.g.
+   //     Vector<int> v({1, 2, 3});
+@@ -1464,7 +1464,7 @@ operator=(const Vector<T, otherCapacity,
+ 
+ template <typename T, wtf_size_t inlineCapacity, typename Allocator>
+ Vector<T, inlineCapacity, Allocator>::Vector(
+-    Vector<T, inlineCapacity, Allocator>&& other) noexcept {
++    Vector<T, inlineCapacity, Allocator>&& other) {
+   size_ = 0;
+   // It's a little weird to implement a move constructor using swap but this
+   // way we don't have to add a move constructor to VectorBuffer.
+@@ -1473,7 +1473,7 @@ Vector<T, inlineCapacity, Allocator>::Ve
+ 
+ template <typename T, wtf_size_t inlineCapacity, typename Allocator>
+ Vector<T, inlineCapacity, Allocator>& Vector<T, inlineCapacity, Allocator>::
+-operator=(Vector<T, inlineCapacity, Allocator>&& other) noexcept {
++operator=(Vector<T, inlineCapacity, Allocator>&& other) {
+   swap(other);
+   return *this;
+ }
+Index: chromium-78.0.3904.70/third_party/blink/renderer/platform/wtf/vector_test.cc
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/platform/wtf/vector_test.cc
++++ chromium-78.0.3904.70/third_party/blink/renderer/platform/wtf/vector_test.cc
+@@ -420,8 +420,8 @@ TEST(VectorTest, AppendFirst) {
+ class MojoMoveOnlyType final {
+  public:
+   MojoMoveOnlyType();
+-  MojoMoveOnlyType(MojoMoveOnlyType&&) noexcept;
+-  MojoMoveOnlyType& operator=(MojoMoveOnlyType&&) noexcept;
++  MojoMoveOnlyType(MojoMoveOnlyType&&);
++  MojoMoveOnlyType& operator=(MojoMoveOnlyType&&);
+   ~MojoMoveOnlyType();
+ 
+  private:
+Index: chromium-78.0.3904.70/third_party/blink/renderer/platform/wtf/wtf_test_helper.h
+===================================================================
+--- chromium-78.0.3904.70.orig/third_party/blink/renderer/platform/wtf/wtf_test_helper.h
++++ chromium-78.0.3904.70/third_party/blink/renderer/platform/wtf/wtf_test_helper.h
+@@ -36,9 +36,9 @@ class MoveOnly {
+  public:
+   explicit MoveOnly(int i = 0) : i_(i) {}
+ 
+-  MoveOnly(MoveOnly&& other) noexcept : i_(other.i_) { other.i_ = 0; }
++  MoveOnly(MoveOnly&& other) : i_(other.i_) { other.i_ = 0; }
+ 
+-  MoveOnly& operator=(MoveOnly&& other) noexcept {
++  MoveOnly& operator=(MoveOnly&& other) {
+     if (this != &other) {
+       i_ = other.i_;
+       other.i_ = 0;
+@@ -62,12 +62,12 @@ class MoveOnlyHashValue {
+ 
+   explicit MoveOnlyHashValue(int value = kEmpty, int id = 0)
+       : value_(value), id_(id) {}
+-  MoveOnlyHashValue(MoveOnlyHashValue&& other) noexcept
++  MoveOnlyHashValue(MoveOnlyHashValue&& other)
+       : value_(other.value_), id_(other.id_) {
+     other.value_ = kMovedOut;
+     other.id_ = 0;
+   }
+-  MoveOnlyHashValue& operator=(MoveOnlyHashValue&& other) noexcept {
++  MoveOnlyHashValue& operator=(MoveOnlyHashValue&& other) {
+     value_ = other.value_;
+     id_ = other.id_;
+     other.value_ = kMovedOut;

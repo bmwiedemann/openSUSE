@@ -32,7 +32,9 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  sqlite3
 BuildRequires:  unzip
+%if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(gtest)
+%endif
 BuildRequires:  pkgconfig(sqlite3) >= 3.7
 Provides:       libproj = %{version}
 
@@ -67,7 +69,9 @@ unzip -o %{SOURCE1}
 
 %build
 %configure \
+%if 0%{?suse_version} > 1500
   --with-external-gtest \
+%endif
   --disable-static
 %make_build
 

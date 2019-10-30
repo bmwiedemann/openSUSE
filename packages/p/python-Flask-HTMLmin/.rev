@@ -15,4 +15,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>646172</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b788633862f5675d25564fb6ee929d25</srcmd5>
+    <version>1.5.2</version>
+    <time>1572443329</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.2:
+  * Fix setup.py issues
+  * Update setup.py categories
+  * Fix tests
+  * Change MINIFY_PAGE to MINIFY_HTML
+  * Add deprecation warning for old config</comment>
+    <requestid>744110</requestid>
+  </revision>
 </revisionlist>

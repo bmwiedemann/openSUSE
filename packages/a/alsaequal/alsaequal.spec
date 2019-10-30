@@ -17,23 +17,26 @@
 
 
 Name:           alsaequal
-Version:        0.7.1
+Version:        0.6
 Release:        0
 Summary:        Equalizer plugin for ALSA
 License:        LGPL-2.1-only
-Group:          System/Libraries
-URL:            https://web.archive.org/web/20161105202833/http://thedigitalmachine.net/alsaequal.html
-Source0:        https://github.com/bassdr/alsaequal/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/bassdr/alsaequal
+Source0:        %{name}-%{version}.tar.xz
 Source1:        99-equal.conf
+Patch0:         lib64.patch
 BuildRequires:  alsa-devel
-BuildRequires:  ladspa-devel
+BuildRequires:  gcc
+BuildRequires:  ladspa-caps
 
 %description
 Alsaequal is a real-time adjustable equalizer plugin for ALSA
 
 %prep
-%setup -q
-sed -i '/^LIBDIR/s/lib/%{_lib}/' Makefile
+%setup -q -n %{name}
+%if %{?_lib} == lib64
+%patch0 -p1
+%endif
 
 %build
 make %{?_smp_mflags} CFLAGS="%{optflags} -funroll-loops -ffast-math -fPIC -DPIC"
@@ -46,7 +49,7 @@ mkdir -p %{buildroot}%{_libdir}/alsa-lib
 
 %files
 %license COPYING
-%doc README.md
+%doc README
 %dir %{_sysconfdir}/alsa
 %dir %{_sysconfdir}/alsa/conf.d
 %config(noreplace) %{_sysconfdir}/alsa/conf.d/*.conf

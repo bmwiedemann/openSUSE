@@ -1,7 +1,7 @@
 #
 # spec file for package labplot-kf5
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,16 +20,14 @@
 # it's not defined in Leap 42.1, so define it appropriately in that case
 %define _kf5_appstreamdir %{_kf5_sharedir}/appdata
 %endif
-
 Name:           labplot-kf5
-Version:        2.6.0
+Version:        2.7.0
 Release:        0
 Summary:        KDE Framework 5 data analysis and visualization application
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Other
-Url:            https://labplot.kde.org/
+URL:            https://labplot.kde.org/
 Source:         https://download.kde.org/stable/labplot/%{version}/labplot-%{version}.tar.xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bison
 BuildRequires:  cantor-devel
 BuildRequires:  extra-cmake-modules
@@ -37,6 +35,7 @@ BuildRequires:  fdupes
 BuildRequires:  hdf5-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  kf5-filesystem
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Completion)
@@ -47,6 +46,7 @@ BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5Parts)
 BuildRequires:  cmake(KF5Service)
@@ -69,6 +69,7 @@ BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(netcdf)
+BuildRequires:  pkgconfig(poppler-qt5)
 BuildRequires:  pkgconfig(shared-mime-info)
 BuildRequires:  pkgconfig(zlib)
 Provides:       labplot = %{version}
@@ -86,7 +87,7 @@ exported to several pixmap and vector graphic formats.
 This version is based on KDE Frameworks 5
 
 %prep
-%setup -q -n labplot-%(echo %{version} | cut -d . -f -2)
+%setup -q -n labplot-%{version}
 
 %build
 %cmake_kf5 -d build
@@ -112,8 +113,8 @@ This version is based on KDE Frameworks 5
 %mime_database_postun
 
 %files
-%defattr(-,root,root,-)
-%doc AUTHORS ChangeLog COPYING README.md
+%license COPYING
+%doc AUTHORS ChangeLog README.md
 %{_kf5_bindir}/labplot2
 %{_kf5_appsdir}/labplot2/
 %{_kf5_applicationsdir}/org.kde.labplot2.desktop
@@ -130,7 +131,6 @@ This version is based on KDE Frameworks 5
 %{_kf5_mandir}/man1/labplot2.1%{?ext_man}
 
 %files lang -f labplot2.lang
-%defattr(-,root,root,-)
 %{_kf5_htmldir}/*/labplot2/
 ## These belong in the main package
 %exclude %{_kf5_htmldir}/en/labplot2/

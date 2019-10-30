@@ -27,12 +27,12 @@
 %define use_python python
 %endif
 
-%define version_unconverted 0.166.0
+%define version_unconverted 0.166.1
 %define osc_plugin_dir %{_prefix}/lib/osc-plugins
 %define macros_file macros.osc
 
 Name:           osc
-Version:        0.166.0
+Version:        0.166.1
 Release:        0
 Summary:        Open Build Service Commander
 License:        GPL-2.0-or-later

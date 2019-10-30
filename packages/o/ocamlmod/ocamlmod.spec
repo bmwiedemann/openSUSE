@@ -17,7 +17,7 @@
 
 
 Name:           ocamlmod
-Version:        0.0.8
+Version:        0.0.10
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Generate OCaml modules
@@ -26,7 +26,7 @@ Group:          Development/Languages/OCaml
 
 Url:            http://forge.ocamlcore.org/projects/ocamlmod/
 Source0:        %{name}-%{version}.tar.xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Patch0:         ocamlmod.patch
 
 BuildRequires:  ocaml
 BuildRequires:  ocaml-findlib
@@ -39,7 +39,7 @@ BuildRequires:  ocamlfind(str)
 Generate OCaml modules from source files
 
 %prep
-%setup
+%autosetup -p1
 
 %build
 %ocaml_oasis_configure --enable-docs
@@ -50,7 +50,6 @@ Generate OCaml modules from source files
 %ocaml_oasis_findlib_install
 
 %files
-%defattr(-,root,root,-)
 %{_bindir}/*
 
 %changelog

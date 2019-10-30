@@ -435,7 +435,6 @@
     <ignore name="ImageMagick"/>
     <package name="patterns-kde-kde"/>
     <namedCollection name="kde"/>
-    <package name="openSUSE-release-livecd-kde"/>
     <package name="plasma5-workspace-branding-openSUSE"/>
     <package name="baloo5-tools"/>
     <package name="NetworkManager"/>

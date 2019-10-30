@@ -19,18 +19,16 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define mod_name django-crispy-forms
 Name:           python-%{mod_name}
-Version:        1.7.2
+Version:        1.8.0
 Release:        0
 Summary:        Django DRY Forms
 License:        MIT
 Group:          Development/Languages/Python
 URL:            http://github.com/maraujop/django-crispy-forms
 Source:         https://files.pythonhosted.org/packages/source/d/%{mod_name}/%{mod_name}-%{version}.tar.gz
-Patch0:         django-20.patch
-Patch1:         django-21.patch
 BuildRequires:  %{python_module Django}
-BuildRequires:  %{python_module pytest < 4.0}
 BuildRequires:  %{python_module pytest-django}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -46,16 +44,13 @@ Django.
 
 %prep
 %setup -q -n %{mod_name}-%{version}
-%autopatch -p1
-
-# Remove not needed files
-find . -name '*.pyc' -delete
 
 %build
 %python_build
 
 %check
-%python_expand PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=crispy_forms.tests.test_settings py.test-%{$python_version} crispy_forms/tests
+export DJANGO_SETTINGS_MODULE=crispy_forms.tests.test_settings
+%pytest
 
 %install
 %python_install

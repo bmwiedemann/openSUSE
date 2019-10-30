@@ -1,26 +1,26 @@
-Index: parallel-20190422/src/parallel
+Index: parallel-20191022/src/parallel
 ===================================================================
---- parallel-20190422.orig/src/parallel
-+++ parallel-20190422/src/parallel
-@@ -1609,7 +1609,7 @@ sub parse_options(@) {
+--- parallel-20191022.orig/src/parallel
++++ parallel-20191022/src/parallel
+@@ -1949,7 +1949,7 @@ sub parse_options(@) {
      #
-     # If you are an honest person please read the above before
-     # changing this line.
+     # If you want GNU Parallel to be maintained in the future keep
+     # this line.
 -    citation_notice();
-+    # citation_notice();
- 
-     parse_halt();
- 
-Index: parallel-20190422/src/sem
++    #citation_notice();
+     # Seriously: YOU will be harming free software by removing the
+     # notice.  You make it harder to justify spending time developing
+     # it. If you *do* remove the line, please email
+Index: parallel-20191022/src/sem
 ===================================================================
---- parallel-20190422.orig/src/sem
-+++ parallel-20190422/src/sem
-@@ -1609,7 +1609,7 @@ sub parse_options(@) {
+--- parallel-20191022.orig/src/sem
++++ parallel-20191022/src/sem
+@@ -1949,7 +1949,7 @@ sub parse_options(@) {
      #
-     # If you are an honest person please read the above before
-     # changing this line.
+     # If you want GNU Parallel to be maintained in the future keep
+     # this line.
 -    citation_notice();
-+    # citation_notice();
- 
-     parse_halt();
- 
++    #citation_notice();
+     # Seriously: YOU will be harming free software by removing the
+     # notice.  You make it harder to justify spending time developing
+     # it. If you *do* remove the line, please email

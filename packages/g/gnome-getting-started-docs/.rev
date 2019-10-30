@@ -175,4 +175,13 @@
     <comment>Scripted push from {project}</comment>
     <requestid>736541</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>567bb3277fc63ae14288d2149a2b61ea</srcmd5>
+    <version>3.34.1</version>
+    <time>1572443053</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.34.1:
+  + Updated translations. (forwarded request 743599 from iznogood)</comment>
+    <requestid>743770</requestid>
+  </revision>
 </revisionlist>

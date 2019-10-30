@@ -43,7 +43,7 @@
 %define         modname synapse
 %define         pkgname matrix-synapse
 Name:           %{pkgname}
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -90,6 +90,7 @@ Requires:       python-signedjson >= 1.0.0
 Requires:       python-six >= 1.10
 Requires:       python-sortedcontainers >= 1.4.4
 Requires:       python-treq >= 15.1
+Requires:       python-typing_extensions >= 3.7.4
 Requires:       python-unpaddedbase64 >= 1.1.0
 # Specify all CONDITIONAL_REQUIREMENTS (we Require them to avoid no-recommends
 # breaking very commonly-used bits of matrix-synapse such as postgresql).

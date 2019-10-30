@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
@@ -37,6 +37,10 @@ Patch2:         0c223ab2-guest-Dont-set-default-uefi-if-firmware-is-set.patch
 Patch3:         414ffa5e-virt-install-Use-minutes-instead-of-seconds-on-get_time_string.patch
 Patch4:         53245827-urlfetcher-Force-a-flush-after-writing-to-a-file.patch
 Patch5:         3009888a-urlfetcher-Dont-override-fullurl-when-its-explicitly-set.patch
+Patch6:         9465da41-urlfetcher-Deal-with-file-in-_LocalURLFetcher.patch
+Patch7:         651e5b6d-devices-video-Simplify-model-hvm-check.patch
+Patch8:         d9736db9-addhardware-Add-bochs-display-to-the-video-list.patch
+Patch9:         8f4c53ea-video-Prefer-bochs-when-its-supported..patch
 # SUSE Only
 Patch70:        virtman-desktop.patch
 Patch71:        virtman-kvm.patch
@@ -174,6 +178,10 @@ machine).
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
 # SUSE Only
 %patch70 -p1
 %patch71 -p1

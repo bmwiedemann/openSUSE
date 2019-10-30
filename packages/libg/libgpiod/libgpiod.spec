@@ -28,7 +28,7 @@
 %endif
 
 Name:           libgpiod
-Version:        1.4
+Version:        1.4.1
 Release:        0
 Summary:        Tools for interacting with the linux GPIO character device
 License:        LGPL-2.1-or-later
