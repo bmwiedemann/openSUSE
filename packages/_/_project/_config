@@ -1086,6 +1086,9 @@ Macros:
 %is_opensuse 1
 %skelcd_compat 0
 
+# trim binary changelogs back to Jan 01 2018
+%_changelog_trimtime 1514764800
+
 %build_ldflags %{?_lto_cflags}
 
 %insserv_prereq insserv sed
