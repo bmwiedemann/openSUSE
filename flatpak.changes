@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Oct 21 19:10:42 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.4.3:
+  + Fix crash in revokefs.
+  + Handle 'versions' extension key (in addition to 'version') when
+    checking for local extensions, which was causing us to
+    uninstall some actually used extensions with uninstall
+    --unused.
+  + The 'required-flatpak' metadata key now supports listing
+    multiple versions to support backported features.
+  + Fix crash with older versions of polkit.
+  + Fix installation of bundles.
+  + Fix crash on deploy error.
+  + Support building bundles of apps installed from a remote.
+  + OCI: Fix handling of locally cached icons.
+  + Fix crash when listing unconfigured remotes.
+  + Ignore differences in trailing slashes for repo uris.
+
+-------------------------------------------------------------------
 Mon Jul  8 12:53:30 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add system-user-flatpak.conf: generate a flatpak user for the
