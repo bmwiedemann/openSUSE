@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Oct 24 09:43:57 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.0:
+  + Bugs fixed: glgo#GNOME/gnome-documents!27: Use Files GOA
+    provider feature.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Oct 20 15:54:35 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.33.90+9:
+  + lokview: be robust to LibreOfficeKit not being available
+  + search: use files GOA provider feature
+  + lib: fix compiler warnings
+  + utils: factor out function to replace file
+  + application: fix fallout from Lang.bind() removal
+  + Updated translations.
+- Switch to gitcheckout via source services, upstream is lacking in
+  releases.
+
+-------------------------------------------------------------------
 Thu Sep  5 20:18:57 NZST 2019 - luke@ljones.dev
 
 - Update to version 3.33.90:

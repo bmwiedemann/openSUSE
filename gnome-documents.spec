@@ -21,13 +21,13 @@
 %global __requires_exclude typelib\\(LOKDocView\\)
 %endif
 Name:           gnome-documents
-Version:        3.33.90
+Version:        3.34.0
 Release:        0
 Summary:        Document Manager for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://wiki.gnome.org/Apps/Documents
-Source0:        http://download.gnome.org/sources/gnome-documents/3.33/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
