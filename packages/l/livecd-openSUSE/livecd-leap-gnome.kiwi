@@ -514,6 +514,7 @@
     <ignore name="gnome-photos"/>
     <package name="aaa_base" replaces="cyrus-sasl"/>
     <ignore name="cyrus-sasl"/>
+    <package name="NetworkManager-applet"/>
     <package name="xf86-video-vmware" arch="i686,x86_64"/>
     <package name="alsa-firmware"/>
     <namedCollection name="apparmor"/>

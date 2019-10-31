@@ -81,6 +81,9 @@ buildignore gnome-photos
 # Moved here from list-common.sh. cyrus-sasl is needed by Pidgin in Xfce Live CD
 buildignore cyrus-sasl
 
+# Was part of the gnome pattern
+install NetworkManager-applet
+
 # Moved here from list-common.sh, too big for x11
 install xf86-video-vmware i686,x86_64
 

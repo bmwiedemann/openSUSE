@@ -683,4 +683,13 @@
     <comment>- More adjustments for Leap-release-*</comment>
     <requestid>744089</requestid>
   </revision>
+  <revision rev="81" vrev="81">
+    <srcmd5>92937b18edcfda06769e9e6bb47e146d</srcmd5>
+    <version>unknown</version>
+    <time>1572509753</time>
+    <user>dimstar_suse</user>
+    <comment>- list-gnome: explicitly list NetworkManager-applet (otherwise:
+  have choice for NetworkManager-client needed by NetworkManager:
+  NetworkManager-applet plasma-nm5).</comment>
+  </revision>
 </revisionlist>
