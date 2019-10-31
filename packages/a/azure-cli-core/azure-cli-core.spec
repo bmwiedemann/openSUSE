@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-core
-Version:        2.0.64
+Version:        2.0.75
 Release:        0
 Summary:        Microsoft Azure CLI Core Module
 License:        MIT
@@ -25,8 +25,6 @@ Group:          System/Management
 Url:            https://github.com/Azure/azure-cli
 Source:         https://files.pythonhosted.org/packages/source/a/azure-cli-core/azure-cli-core-%{version}.tar.gz
 Source1:        LICENSE.txt
-Patch1:         acc_drop-compatible-releases-operator.patch
-Patch2:         acc_relax-requires-versions.patch
 BuildRequires:  azure-cli-nspkg
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -36,26 +34,27 @@ Requires:       azure-cli-nspkg
 Requires:       azure-cli-telemetry
 Requires:       python3-PyJWT
 Requires:       python3-PyYAML
-Requires:       python3-adal >= 1.2.0
-Requires:       python3-argcomplete >= 1.8.0
-Requires:       python3-azure-mgmt-resource >= 2.1.0
+Requires:       python3-adal < 2.0
+Requires:       python3-adal >= 1.2
+Requires:       python3-argcomplete < 2.0
+Requires:       python3-argcomplete >= 1.8
+Requires:       python3-azure-mgmt-resource < 5.0
+Requires:       python3-azure-mgmt-resource >= 4.0
 Requires:       python3-azure-nspkg >= 3.0.0
 Requires:       python3-colorama >= 0.3.9
+Requires:       python3-humanfriendly < 5.0
 Requires:       python3-humanfriendly >= 4.7
 Requires:       python3-jmespath
 Requires:       python3-knack < 1.0.0
-Requires:       python3-knack >= 0.6.1
+Requires:       python3-knack >= 0.6.2
 Requires:       python3-msrest >= 0.4.4
-Requires:       python3-msrestazure >= 0.4.25
+Requires:       python3-msrestazure >= 0.6.2
+Requires:       python3-paramiko < 3.0.0
 Requires:       python3-paramiko >= 2.0.8
 Requires:       python3-pip
-Requires:       python3-psutil >= 5.6.1
 Requires:       python3-pyOpenSSL >= 17.1.0
-Requires:       python3-pygments
-Requires:       python3-pyperclip >= 1.7.0
 Requires:       python3-requests >= 2.20.0
 Requires:       python3-six
-Requires:       python3-tabulate >= 0.7.7
 Requires:       python3-wheel >= 0.30.0
 %if %{python3_version_nodots} < 34
 Requires:       python-enum34 >= 1.0.4
@@ -69,8 +68,6 @@ Microsoft Azure CLI Core Module
 
 %prep
 %setup -q -n azure-cli-core-%{version}
-%patch1 -p1
-%patch2 -p1
 
 %build
 install -m 644 %{SOURCE1} %{_builddir}/azure-cli-core-%{version}

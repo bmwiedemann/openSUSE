@@ -98,4 +98,12 @@
   * Support for Python 3.8 was added to Certbot and all of its components.</comment>
     <requestid>734568</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>52af46be1f8ca6a7acaa46eca59c6f8d</srcmd5>
+    <version>0.39.0</version>
+    <time>1572542046</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>739158</requestid>
+  </revision>
 </revisionlist>

@@ -22,7 +22,6 @@ Version:        0.39.0
 Release:        0
 Summary:        Nginx plugin for Certbot
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/letsencrypt/letsencrypt
 Source:         https://files.pythonhosted.org/packages/source/c/certbot-nginx/certbot-nginx-%{version}.tar.gz
 BuildRequires:  %{python_module certbot >= 0.34.0}

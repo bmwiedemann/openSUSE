@@ -1,0 +1,16 @@
+Only in b: .coverage
+Only in b: .eggs
+Only in b/pyramid_chameleon: __pycache__
+Only in b/pyramid_chameleon/tests: __pycache__
+diff -rup a/pyramid_chameleon/tests/test_renderers.py b/pyramid_chameleon/tests/test_renderers.py
+--- a/pyramid_chameleon/tests/test_renderers.py	2017-09-17 09:26:59.449311092 +0200
++++ b/pyramid_chameleon/tests/test_renderers.py	2017-09-17 09:37:10.335808532 +0200
+@@ -258,7 +258,7 @@ class TestChameleonRendererLookup(unitte
+         self.assertRaises(ValueError, lookup.__call__, info)
+ 
+     def test___call__spec_alreadyregistered(self):
+-        from pyramid import tests
++        from pyramid_chameleon import tests
+         module_name = tests.__name__
+         relpath = 'test_renderers.py'
+         spec = '%s:%s' % (module_name, relpath)

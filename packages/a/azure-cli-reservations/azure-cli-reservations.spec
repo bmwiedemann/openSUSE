@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-reservations
-Version:        0.4.1
+Version:        0.4.3
 Release:        0
 Summary:        Microsoft Azure CLI 'reservations' Command Module
 License:        MIT

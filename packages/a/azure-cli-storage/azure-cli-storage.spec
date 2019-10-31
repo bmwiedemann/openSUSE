@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-storage
-Version:        2.3.1
+Version:        2.4.3
 Release:        0
 Summary:        Microsoft Azure CLI 'storage' Command Module
 License:        MIT
@@ -33,8 +33,8 @@ BuildRequires:  python3-setuptools
 Requires:       azure-cli-command-modules-nspkg
 Requires:       azure-cli-core
 Requires:       azure-cli-nspkg
-Requires:       python3-azure-mgmt-storage >= 3.1.1
-Requires:       python3-azure-multiapi-storage >= 0.2.2
+Requires:       python3-azure-mgmt-storage >= 3.3.0
+Requires:       python3-azure-multiapi-storage >= 0.2.3
 Requires:       python3-azure-nspkg >= 3.0.0
 Conflicts:      azure-cli < 2.0.0
 

@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-servicefabric
-Version:        0.1.12
+Version:        0.1.20
 Release:        0
 Summary:        Microsoft Azure CLI Service Fabric Module
 License:        MIT
@@ -33,13 +33,13 @@ BuildRequires:  python3-setuptools
 Requires:       azure-cli-command-modules-nspkg
 Requires:       azure-cli-core
 Requires:       azure-cli-nspkg
-Requires:       python3-azure-graphrbac >= 0.53.0
+Requires:       python3-azure-graphrbac >= 0.60.0
 Requires:       python3-azure-keyvault >= 1.1.0
-Requires:       python3-azure-mgmt-compute >= 4.4.0
+Requires:       python3-azure-mgmt-compute >= 5.0.0
 Requires:       python3-azure-mgmt-keyvault >= 1.1.0
-Requires:       python3-azure-mgmt-network >= 2.4.0
+Requires:       python3-azure-mgmt-network >= 3.0.0
 Requires:       python3-azure-mgmt-servicefabric >= 0.2.0
-Requires:       python3-azure-mgmt-storage >= 3.1.1
+Requires:       python3-azure-mgmt-storage >= 3.3.0
 Requires:       python3-azure-nspkg >= 3.0.0
 Requires:       python3-pyOpenSSL
 Conflicts:      azure-cli < 2.0.0

@@ -32,7 +32,7 @@ Name:           azure-cli
 Name:           azure-cli%{?name_ext}
 %endif
 %define         short_name azure-cli
-Version:        2.0.58
+Version:        2.0.75
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -47,62 +47,66 @@ BuildRequires:  %{short_name} = %{version}
 BuildRequires:  fdupes
 BuildRequires:  python3-azure-nspkg >= 3.0.0
 BuildRequires:  python3-setuptools
-Requires:       azure-cli-acr >= 2.2.0
-Requires:       azure-cli-acs >= 2.3.17
-Requires:       azure-cli-advisor >= 2.0.0
-Requires:       azure-cli-ams >= 0.4.1
-Requires:       azure-cli-appservice >= 0.2.13
-Requires:       azure-cli-backup >= 1.2.1
-Requires:       azure-cli-batch >= 3.4.1
-Requires:       azure-cli-batchai >= 0.4.7
-Requires:       azure-cli-billing >= 0.2.0
-Requires:       azure-cli-botservice >= 0.1.6
-Requires:       azure-cli-cdn >= 0.2.0
-Requires:       azure-cli-cloud >= 2.1.0
-Requires:       azure-cli-cognitiveservices >= 0.2.4
-Requires:       azure-cli-command-modules-nspkg >= 2.0.2
-Requires:       azure-cli-configure >= 2.0.20
-Requires:       azure-cli-consumption >= 0.4.2
-Requires:       azure-cli-container >= 0.3.13
-Requires:       azure-cli-core >= 2.0.58
-Requires:       azure-cli-cosmosdb >= 0.2.7
-Requires:       azure-cli-dla >= 0.2.4
-Requires:       azure-cli-dls >= 0.1.8
-Requires:       azure-cli-dms >= 0.1.2
-Requires:       azure-cli-eventgrid >= 0.2.1
-Requires:       azure-cli-eventhubs >= 0.3.3
-Requires:       azure-cli-extension >= 0.2.3
-Requires:       azure-cli-feedback >= 2.1.4
-Requires:       azure-cli-find >= 0.2.13
-Requires:       azure-cli-hdinsight >= 0.3.0
-Requires:       azure-cli-interactive >= 0.4.1
-Requires:       azure-cli-iot >= 0.3.6
-Requires:       azure-cli-iotcentral >= 0.1.6
-Requires:       azure-cli-keyvault >= 2.2.11
-Requires:       azure-cli-kusto >= 0.1.0
-Requires:       azure-cli-lab >= 0.1.5
-Requires:       azure-cli-maps >= 0.3.3
-Requires:       azure-cli-monitor >= 0.2.10
-Requires:       azure-cli-network >= 2.3.2
-Requires:       azure-cli-nspkg >= 3.0.3
-Requires:       azure-cli-policyinsights >= 0.1.1
-Requires:       azure-cli-profile >= 2.1.3
-Requires:       azure-cli-rdbms >= 0.3.7
-Requires:       azure-cli-redis >= 0.4.0
-Requires:       azure-cli-relay >= 0.1.3
-Requires:       azure-cli-reservations >= 0.4.1
-Requires:       azure-cli-resource >= 2.1.10
-Requires:       azure-cli-role >= 2.4.0
-Requires:       azure-cli-search >= 0.1.1
-Requires:       azure-cli-security >= 0.1.0
-Requires:       azure-cli-servicebus >= 0.3.3
-Requires:       azure-cli-servicefabric >= 0.1.12
-Requires:       azure-cli-signalr >= 1.0.0
-Requires:       azure-cli-sql >= 2.1.9
-Requires:       azure-cli-sqlvm >= 0.1.0
-Requires:       azure-cli-storage >= 2.3.1
-Requires:       azure-cli-telemetry >= 1.0.1
-Requires:       azure-cli-vm >= 2.2.15
+Requires:       azure-cli-acr >= 2.2.9
+Requires:       azure-cli-acs >= 2.4.4
+Requires:       azure-cli-advisor >= 2.0.1
+Requires:       azure-cli-ams >= 0.4.7
+Requires:       azure-cli-appservice >= 0.2.21
+Requires:       azure-cli-backup >= 1.2.5
+Requires:       azure-cli-batch >= 4.0.3
+Requires:       azure-cli-batchai >= 0.4.10
+Requires:       azure-cli-billing >= 0.2.2
+Requires:       azure-cli-botservice >= 0.2.2
+Requires:       azure-cli-cdn >= 0.2.4
+Requires:       azure-cli-cloud >= 2.1.1
+Requires:       azure-cli-cognitiveservices >= 0.2.6
+Requires:       azure-cli-command-modules-nspkg >= 2.0.3
+Requires:       azure-cli-component >= 2.0.8
+Requires:       azure-cli-configure >= 2.0.24
+Requires:       azure-cli-consumption >= 0.4.4
+Requires:       azure-cli-container >= 0.3.18
+Requires:       azure-cli-core >= 2.0.75
+Requires:       azure-cli-cosmosdb >= 0.2.11
+Requires:       azure-cli-deploymentmanager >= 0.1.1
+Requires:       azure-cli-dla >= 0.2.6
+Requires:       azure-cli-dls >= 0.1.10
+Requires:       azure-cli-dms >= 0.1.4
+Requires:       azure-cli-eventgrid >= 0.2.4
+Requires:       azure-cli-eventhubs >= 0.3.7
+Requires:       azure-cli-extension >= 0.2.5
+Requires:       azure-cli-feedback >= 2.2.1
+Requires:       azure-cli-find >= 0.3.4
+Requires:       azure-cli-hdinsight >= 0.3.5
+Requires:       azure-cli-interactive >= 0.4.5
+Requires:       azure-cli-iot >= 0.3.11
+Requires:       azure-cli-iotcentral >= 0.1.7
+Requires:       azure-cli-keyvault >= 2.2.16
+Requires:       azure-cli-kusto >= 0.2.3
+Requires:       azure-cli-lab >= 0.1.8
+Requires:       azure-cli-maps >= 0.3.5
+Requires:       azure-cli-monitor >= 0.2.15
+Requires:       azure-cli-natgateway >= 0.1.1
+Requires:       azure-cli-network >= 2.5.2
+Requires:       azure-cli-nspkg >= 3.0.4
+Requires:       azure-cli-policyinsights >= 0.1.4
+Requires:       azure-cli-privatedns >= 1.0.2
+Requires:       azure-cli-profile >= 2.1.5
+Requires:       azure-cli-rdbms >= 0.3.12
+Requires:       azure-cli-redis >= 0.4.4
+Requires:       azure-cli-relay >= 0.1.5
+Requires:       azure-cli-reservations >= 0.4.3
+Requires:       azure-cli-resource >= 2.1.16
+Requires:       azure-cli-role >= 2.6.4
+Requires:       azure-cli-search >= 0.1.2
+Requires:       azure-cli-security >= 0.1.2
+Requires:       azure-cli-servicebus >= 0.3.6
+Requires:       azure-cli-servicefabric >= 0.1.20
+Requires:       azure-cli-signalr >= 1.0.1
+Requires:       azure-cli-sql >= 2.2.5
+Requires:       azure-cli-sqlvm >= 0.2.0
+Requires:       azure-cli-storage >= 2.4.3
+Requires:       azure-cli-telemetry >= 1.0.4
+Requires:       azure-cli-vm >= 2.2.23
 Requires:       python3-azure-nspkg >= 3.0.0
 Conflicts:      azure-cli < 2.0.0
 
@@ -138,6 +142,7 @@ python3 setup.py build
 python3 setup.py install --root=%{buildroot} --prefix=%{_prefix} --install-lib=%{python3_sitelib}
 install -DTm644 %{buildroot}%{_bindir}/az.completion.sh %{buildroot}%{_datadir}/bash-completion/completions/az.completion.sh
 %fdupes %{buildroot}%{python3_sitelib}
+rm -rf %{buildroot}%{python3_sitelib}/azure/cli/command_modules
 rm -rf %{buildroot}%{python3_sitelib}/azure/cli/__init__.*
 rm -rf %{buildroot}%{python3_sitelib}/azure/cli/__pycache__
 rm -rf %{buildroot}%{python3_sitelib}/azure/__init__.*

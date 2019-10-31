@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-acr
-Version:        2.2.0
+Version:        2.2.9
 Release:        0
 Summary:        Microsoft Azure CLI 'acr' Command Module
 License:        MIT
@@ -33,8 +33,8 @@ BuildRequires:  python3-setuptools
 Requires:       azure-cli-command-modules-nspkg
 Requires:       azure-cli-core
 Requires:       azure-cli-nspkg
-Requires:       python3-azure-mgmt-containerregistry >= 2.6.0
-Requires:       python3-azure-mgmt-storage >= 3.1.1
+Requires:       python3-azure-mgmt-containerregistry >= 2.8.0
+Requires:       python3-azure-mgmt-storage >= 3.3.0
 Requires:       python3-azure-nspkg >= 3.0.0
 Requires:       python3-azure-storage-blob >= 1.3.1
 Conflicts:      azure-cli < 2.0.0

@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-botservice
-Version:        0.1.6
+Version:        0.2.2
 Release:        0
 Summary:        Microsoft Azure CLI 'bot service' Command Module
 License:        MIT
@@ -34,7 +34,7 @@ Requires:       azure-cli-command-modules-nspkg
 Requires:       azure-cli-core
 Requires:       azure-cli-nspkg
 Requires:       python3-azure-mgmt-botservice
-Requires:       python3-azure-mgmt-web >= 0.40.0
+Requires:       python3-azure-mgmt-web >= 0.42.0
 Requires:       python3-azure-nspkg >= 3.0.0
 Requires:       python3-cryptography
 Requires:       python3-requests

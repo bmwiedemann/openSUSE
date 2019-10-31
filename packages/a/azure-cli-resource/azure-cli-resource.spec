@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-resource
-Version:        2.1.10
+Version:        2.1.16
 Release:        0
 Summary:        Microsoft Azure CLI 'resource' Command Module
 License:        MIT

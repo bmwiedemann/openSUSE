@@ -144,4 +144,14 @@
   - xmldiff-0.6.7-clean-tmp.patch (not needed)</comment>
     <requestid>697133</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2af6e028f6b42b123d95a7579442c99a</srcmd5>
+    <version>2.4</version>
+    <time>1572542290</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4:
+  * Added an option to pass pairs of (element, attr) as unique
+    attributes for tree matching.</comment>
+    <requestid>744160</requestid>
+  </revision>
 </revisionlist>

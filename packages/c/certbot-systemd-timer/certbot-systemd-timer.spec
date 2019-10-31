@@ -1,7 +1,7 @@
 #
 # spec file for package certbot-systemd-timer
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,6 @@ Version:        0.0
 Release:        0
 Summary:        systemd timer unit to renew certbot certificates
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/agross/systemd-certbot-renew
 Source10:       certbot-renew-systemd.service
 Source11:       certbot-renew-systemd.timer

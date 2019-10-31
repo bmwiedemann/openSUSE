@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-signalr
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Microsoft Azure CLI 'signalr' Command Module
 License:        MIT

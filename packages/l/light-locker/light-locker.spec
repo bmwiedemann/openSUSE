@@ -1,7 +1,7 @@
 #
 # spec file for package light-locker
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           light-locker
-Version:        1.8.0
+Version:        1.9.0
 Release:        0
 Summary:        A simple locker using LightDM
 License:        GPL-2.0-or-later
-Group:          System/X11/Utilities
 URL:            https://github.com/the-cavalry/light-locker
-Source:         https://github.com/the-cavalry/light-locker/releases/download/v%{version}/%{name}-%{version}.tar.bz2
+Source:         https://github.com/the-cavalry/light-locker/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  intltool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  xfce4-dev-tools >= 4.7.2
 BuildRequires:  pkgconfig(dbus-glib-1) >= 0.30
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.25.6
 BuildRequires:  pkgconfig(gtk+-3.0)
@@ -49,29 +49,23 @@ It relies on LightDM for locking and unlocking your session via systemd.
 %prep
 %setup -q
 
+[ $(readlink README) != README.md ]
+rm README && ln -s README.md README
+
 %build
-xdt-autogen
-%configure \
-  --with-dpms-ext      \
-  --with-mit-ext       \
-  --with-xf86gamma-ext
-make %{?_smp_mflags} V=1
+%meson \
+  -Ddpms-ext=true      \
+  -Dmit-ext=true       \
+  -Dxf86gamma-ext=true
+%meson_build
 
 %install
-%make_install
+%meson_install
 %find_lang %{name}
 
-%if 0%{?suse_version} < 1500
-%post
-%glib2_gsettings_schema_post
-
-%postun
-%glib2_gsettings_schema_postun
-%endif
-
 %files
-%license COPYING COPYING.LIB
-%doc AUTHORS NEWS README
+%license COPYING
+%doc AUTHORS NEWS README.md
 %{_bindir}/%{name}
 %{_bindir}/%{name}-command
 %{_datadir}/glib-2.0/schemas/*%{name}.gschema.xml

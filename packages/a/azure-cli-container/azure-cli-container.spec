@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-container
-Version:        0.3.13
+Version:        0.3.18
 Release:        0
 Summary:        Microsoft Azure CLI 'container' Command Module
 License:        MIT
@@ -37,7 +37,7 @@ Requires:       python3-PyYAML >= 4.2b1
 Requires:       python3-azure-mgmt-authorization >= 0.50.0
 Requires:       python3-azure-mgmt-containerinstance >= 1.4.0
 Requires:       python3-azure-mgmt-loganalytics >= 0.2.0
-Requires:       python3-azure-mgmt-network >= 2.4.0
+Requires:       python3-azure-mgmt-network >= 3.0.0
 Requires:       python3-azure-nspkg >= 3.0.0
 Requires:       python3-colorama
 Requires:       python3-websocket-client

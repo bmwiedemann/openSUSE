@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-servicebus
-Version:        0.3.3
+Version:        0.3.6
 Release:        0
 Summary:        Microsoft Azure CLI 'servicebus' Command Module
 License:        MIT
@@ -33,7 +33,7 @@ BuildRequires:  python3-setuptools
 Requires:       azure-cli-command-modules-nspkg
 Requires:       azure-cli-core
 Requires:       azure-cli-nspkg
-Requires:       python3-azure-mgmt-servicebus >= 0.5.3
+Requires:       python3-azure-mgmt-servicebus >= 0.6.0
 Requires:       python3-azure-nspkg >= 3.0.0
 Requires:       python3-six
 Conflicts:      azure-cli < 2.0.0

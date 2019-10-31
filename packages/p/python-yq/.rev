@@ -31,4 +31,16 @@
     <comment></comment>
     <requestid>704699</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>10e03dff3470e2cfb1005b9f86e0ddc3</srcmd5>
+    <version>2.8.1</version>
+    <time>1572542283</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.8.1:
+  * Filter out -C and separate commingled yq and jq short options
+  * Set default block sequence indentation to 2 spaces, –indentless for 0
+  * Make main body of yq callable as a library function
+  * Test and release infrastructure updates</comment>
+    <requestid>744155</requestid>
+  </revision>
 </revisionlist>

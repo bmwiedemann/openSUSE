@@ -22,7 +22,6 @@ Version:        0.39.0
 Release:        0
 Summary:        NS1 Authenticator plugin for Certbot
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/certbot/certbot
 Source:         https://files.pythonhosted.org/packages/source/c/certbot-dns-nsone/certbot-dns-nsone-%{version}.tar.gz
 BuildRequires:  %{python_module certbot >= 0.34.0}

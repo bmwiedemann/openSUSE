@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-rdbms
-Version:        0.3.7
+Version:        0.3.12
 Release:        0
 Summary:        Microsoft Azure CLI 'MySQL and PostgreSQL' Command Module
 License:        MIT
@@ -33,7 +33,7 @@ BuildRequires:  python3-setuptools
 Requires:       azure-cli-command-modules-nspkg
 Requires:       azure-cli-core
 Requires:       azure-cli-nspkg
-Requires:       python3-azure-mgmt-rdbms >= 1.5.0
+Requires:       python3-azure-mgmt-rdbms >= 1.8.0
 Requires:       python3-azure-nspkg >= 3.0.0
 Requires:       python3-six
 Conflicts:      azure-cli < 2.0.0

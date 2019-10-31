@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-acs
-Version:        2.3.17
+Version:        2.4.4
 Release:        0
 Summary:        Microsoft Azure CLI 'acs' Command Module
 License:        MIT
@@ -34,11 +34,12 @@ Requires:       azure-cli-command-modules-nspkg
 Requires:       azure-cli-core
 Requires:       azure-cli-nspkg
 Requires:       python3-PyYAML >= 4.2b1
-Requires:       python3-azure-graphrbac >= 0.53.0
+Requires:       python3-azure-graphrbac >= 0.60.0
 Requires:       python3-azure-mgmt-authorization >= 0.50.0
-Requires:       python3-azure-mgmt-compute >= 4.4.0
-Requires:       python3-azure-mgmt-containerservice >= 4.4.0
+Requires:       python3-azure-mgmt-compute >= 5.0.0
+Requires:       python3-azure-mgmt-containerservice >= 5.2.0
 Requires:       python3-azure-nspkg >= 3.0.0
+Requires:       python3-paramiko < 3.0.0
 Requires:       python3-paramiko >= 2.0.8
 Requires:       python3-scp
 Requires:       python3-six

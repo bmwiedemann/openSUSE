@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-configure
-Version:        2.0.20
+Version:        2.0.24
 Release:        0
 Summary:        Microsoft Azure CLI 'configure' Command Module
 License:        MIT

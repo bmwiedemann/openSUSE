@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-nspkg
-Version:        3.0.3
+Version:        3.0.4
 Release:        0
 Summary:        Microsoft Azure CLI Namespace Package
 License:        MIT

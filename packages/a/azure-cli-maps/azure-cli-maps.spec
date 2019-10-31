@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-maps
-Version:        0.3.3
+Version:        0.3.5
 Release:        0
 Summary:        Microsoft Azure CLI 'maps' Command Module
 License:        MIT

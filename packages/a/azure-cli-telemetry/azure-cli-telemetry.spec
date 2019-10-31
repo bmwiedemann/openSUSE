@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-telemetry
-Version:        1.0.1
+Version:        1.0.4
 Release:        0
 Summary:        Microsoft Azure CLI Telemetry Package
 License:        MIT
@@ -25,15 +25,16 @@ Group:          System/Management
 Url:            https://github.com/Azure/azure-cli
 Source:         https://files.pythonhosted.org/packages/source/a/azure-cli-telemetry/azure-cli-telemetry-%{version}.tar.gz
 Source1:        LICENSE.txt
-Patch0:         act_relax-requires-versions.patch
 BuildRequires:  azure-cli-nspkg
 BuildRequires:  fdupes
 BuildRequires:  python3-azure-nspkg >= 3.0.0
 BuildRequires:  python3-setuptools
 Requires:       azure-cli-nspkg
+Requires:       python3-applicationinsights < 0.12
 Requires:       python3-applicationinsights >= 0.11.1
 Requires:       python3-azure-nspkg >= 3.0.0
-Requires:       python3-portalocker >= 1.2.1
+Requires:       python3-portalocker < 2.0
+Requires:       python3-portalocker >= 1.2
 Conflicts:      azure-cli < 2.0.0
 
 BuildArch:      noarch
@@ -49,7 +50,6 @@ This package includes:
 
 %prep
 %setup -q -n azure-cli-telemetry-%{version}
-%patch0 -p1
 
 %build
 install -m 644 %{SOURCE1} %{_builddir}/azure-cli-telemetry-%{version}

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-yamllint
-Version:        1.17.0
+Version:        1.18.0
 Release:        0
 Summary:        A linter for YAML files
 License:        GPL-3.0-only
@@ -34,9 +34,6 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module pathspec >= 0.5.3}
-# nose is optional, used only to exclude a failing test caused by PyYAML
-# deprecation warnings.
-BuildRequires:  %{python_module nose}
 # /SECTION
 %python_subpackages
 
@@ -58,7 +55,7 @@ indentation, etc.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m nose -e test_run_auto_output_without_tty_output
+%python_exec -m unittest discover
 
 %files %{python_files}
 %doc README.rst

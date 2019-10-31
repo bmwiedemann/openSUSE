@@ -17,10 +17,10 @@
 
 
 Name:           nnn
-Version:        2.6
+Version:        2.7
 Release:        0
 Summary:        Terminal based file browser
-License:        GPL-2.0-or-later
+License:        BSD-2-Clause
 Group:          Productivity/File utilities
 Url:            https://github.com/jarun/nnn#nnn
 Source0:        https://github.com/jarun/nnn/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz

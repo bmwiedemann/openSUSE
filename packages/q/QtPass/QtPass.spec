@@ -17,7 +17,7 @@
 
 
 Name:           QtPass
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        A multi-platform gui for pass
 License:        GPL-3.0-only

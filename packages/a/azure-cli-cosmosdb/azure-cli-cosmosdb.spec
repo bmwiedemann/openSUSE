@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-cosmosdb
-Version:        0.2.7
+Version:        0.2.11
 Release:        0
 Summary:        Microsoft Azure CLI 'cosmosdb' Command Module
 License:        MIT
@@ -33,9 +33,9 @@ BuildRequires:  python3-setuptools
 Requires:       azure-cli-command-modules-nspkg
 Requires:       azure-cli-core
 Requires:       azure-cli-nspkg
-Requires:       python3-azure-mgmt-cosmosdb >= 0.5.2
+Requires:       python-azure-cosmos >= 3.0.2
+Requires:       python3-azure-mgmt-cosmosdb >= 0.6.1
 Requires:       python3-azure-nspkg >= 3.0.0
-Requires:       python3-pydocumentdb >= 2.0.1
 Conflicts:      azure-cli < 2.0.0
 
 BuildArch:      noarch

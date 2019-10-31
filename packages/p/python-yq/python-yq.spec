@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-yq
-Version:        2.7.2
+Version:        2.8.1
 Release:        0
 Summary:        Command-line YAML processor - jq wrapper for YAML documents
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/kislyuk/yq
 Source:         https://files.pythonhosted.org/packages/source/y/yq/yq-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -69,7 +68,7 @@ yq: Command-line YAML processor - jq wrapper for YAML documents
 
 %check
 export LANG=en_US.UTF-8
-PYTHONPATH=%{buildroot}%{python3_sitelib} python3 test/test.py -v
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python test/test.py -v
 
 %files %{python_files}
 %license LICENSE

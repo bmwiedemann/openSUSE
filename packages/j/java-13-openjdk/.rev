@@ -7,4 +7,12 @@
     <comment>bsc#1115375</comment>
     <requestid>736265</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>847320c0ac1ad7184eb679fa0ae6e232</srcmd5>
+    <version>13.0.1.0</version>
+    <time>1572542274</time>
+    <user>dimstar_suse</user>
+    <comment>October 2019 CPU</comment>
+    <requestid>742826</requestid>
+  </revision>
 </revisionlist>

@@ -31,4 +31,21 @@
   * Remove some 3.8 invalid escape warnings</comment>
     <requestid>734940</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>494972443ca92f5fefe38718e2eaeb86</srcmd5>
+    <version>4.1.1</version>
+    <time>1572542291</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.1:
+  * Fix unmarshaling 3.4+ object_ref bugs. A big thanks to Armin Rigo of the PyPy team.
+  * Add Pypy 3.6+ disassembly, e.g. pypy3.6-7.1.0 and pypy3.6-7.1.1
+  * Add Python 3.7.5, 2.7.16, 2.7.17rc1, and 2.7.15candidate1 as a valid releases
+  * convert unmarshal if .. elif code to a dictionary lookup with function entries
+  * Handle newer Python importlib - thanks to laike9m
+  * Add early bytecodes: 1.0, 1.1, 1.2, and 1.6. Going off of pycdc bytecode since this is the only bytecode for these versions I know of
+  * Fix bug in Python 3.x decompiling 2.x that contains strings with non-ascii characters
+  * More generally, better handling of non-ascii Python 2 strings in both input and output in Python 3
+  * pypy 3.6-7.1.0 tolerance</comment>
+    <requestid>744161</requestid>
+  </revision>
 </revisionlist>

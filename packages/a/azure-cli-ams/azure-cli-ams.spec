@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-ams
-Version:        0.4.1
+Version:        0.4.7
 Release:        0
 Summary:        Microsoft Azure CLI 'ams' Command Module
 License:        MIT
@@ -33,8 +33,8 @@ BuildRequires:  python3-setuptools
 Requires:       azure-cli-command-modules-nspkg
 Requires:       azure-cli-core
 Requires:       azure-cli-nspkg
-Requires:       python3-azure-graphrbac >= 0.53.0
-Requires:       python3-azure-mgmt-media >= 1.0.1
+Requires:       python3-azure-graphrbac >= 0.60.0
+Requires:       python3-azure-mgmt-media >= 1.1.1
 Requires:       python3-azure-nspkg >= 3.0.0
 Conflicts:      azure-cli < 2.0.0
 

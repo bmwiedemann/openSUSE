@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-relay
-Version:        0.1.3
+Version:        0.1.5
 Release:        0
 Summary:        Microsoft Azure CLI 'relay' Command Module
 License:        MIT

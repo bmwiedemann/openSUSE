@@ -1,0 +1,5 @@
+<package name="python-pyramid-mako" project="openSUSE:Factory">
+  <title>python-pyramid-mako</title>
+  <description>Mako template bindings for the Pyramid web framework</description>
+  <devel project="devel:languages:python" package="python-pyramid-mako"/>
+</package>

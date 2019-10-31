@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-feedback
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        Microsoft Azure CLI 'feedback' Command Module
 License:        MIT

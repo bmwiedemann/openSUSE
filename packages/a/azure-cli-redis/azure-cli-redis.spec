@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-redis
-Version:        0.4.0
+Version:        0.4.4
 Release:        0
 Summary:        Microsoft Azure CLI 'redis' Command Module
 License:        MIT

@@ -50,4 +50,17 @@
   * Make YAML file extensions configurable</comment>
     <requestid>724508</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a4f7286f07c8fa21ed0ba3fe09022218</srcmd5>
+    <version>1.18.0</version>
+    <time>1572542285</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.18.0:
+  * Lint .yamllint config file by default
+  * Also read config from .yamllint.yml and .yamllint.yaml
+  * Improve documentation for yaml-files
+  * Update documentation for pre-commit
+  * Explicitly disable empty-values and octal-values rules</comment>
+    <requestid>744156</requestid>
+  </revision>
 </revisionlist>

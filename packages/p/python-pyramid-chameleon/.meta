@@ -1,0 +1,6 @@
+<package name="python-pyramid-chameleon" project="openSUSE:Factory">
+  <title>python-pyramid-chameleon</title>
+  <description>These are bindings for the Chameleon templating system for the Pyramid_ web framework.
+http://pagetemplates.org/</description>
+  <devel project="devel:languages:python" package="python-pyramid-chameleon"/>
+</package>

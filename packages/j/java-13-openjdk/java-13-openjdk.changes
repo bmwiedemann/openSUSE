@@ -1,4 +1,149 @@
 -------------------------------------------------------------------
+Fri Oct 25 07:31:08 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream tag jdk-13.0.1-9 (October 2019 CPU,
+  bsc#1154212)
+  * Security fixes:
+    + S8209901: Canonical file handling
+    + S8213429, CVE-2019-2933: Windows file handling redux
+    + S8218573, CVE-2019-2945: Better socket support
+    + S8218877: Help transform transformers
+    + S8220186: Improve use of font temporary files
+    + S8220302, CVE-2019-2949: Better Kerberos ccache handling
+    + S8221497: Optional Panes in Swing
+    + S8221858, CVE-2019-2958: Build Better Processes
+    + S8222684, CVE-2019-2964: Better support for patterns
+    + S8222690, CVE-2019-2962: Better Glyph Images
+    + S8223163: Better pattern recognition
+    + S8223505, CVE-2019-2973: Better pattern compilation
+    + S8223518, CVE-2019-2975: Unexpected exception in jjs
+    + S8223886: Add in font table referene
+    + S8223892, CVE-2019-2978: Improved handling of jar files
+    + S8224025: Fix for JDK-8220302 is not complete
+    + S8224062, CVE-2019-2977: Improve String index handling
+    + S8224532, CVE-2019-2981: Better Path supports
+    + S8224915, CVE-2019-2983: Better serial attributes
+    + S8225286, CVE-2019-2987: Better rendering of native glyphs
+    + S8225292, CVE-2019-2988: Better Graphics2D drawing
+    + S8225298, CVE-2019-2989: Improve TLS connection support
+    + S8225597, CVE-2019-2992: Enhance font glyph mapping
+    + S8226765, CVE-2019-2999: Commentary on Javadoc comments
+    + S8227601: Better collection of references
+    + S8228825, CVE-2019-2894: Enhance ECDSA operations
+  * Other fixes:
+    + S8185898: setRequestProperty(key, null) results in HTTP 
+      header without colon in request
+    + S8191521: handle long relative path specified in 
+      -Xbootclasspath/a on windows
+    + S8209790: SA tools not providing option to connect to debug 
+      server
+    + S8212328: Exceptional throw cases
+    + S8212970: TZ database in "vanguard" format support
+    + S8213431: Improve file protocol handling
+    + S8213432: Better copies of CopiesList
+    + S8215367: Better Collection of References
+    + S8216381: More limited privilege usage
+    + S8217563: Improve realm maintenance
+    + S8217676: Upgrade libpng to 1.6.37
+    + S8218863: Better endpoint checks
+    + S8218873: Improve JSSE endpoint checking
+    + S8218876: Improve PNG support options
+    + S8219082: jdk/jfr/event/runtime/TestShutdownEvent.java failed 
+      in validateStackTrace()
+    + S8219775: Certificate validation improvements
+    + S8220517: Enhanced GIF support
+    + S8221345: Better Poly1305 support
+    + S8221518: Normalize normalization
+    + S8222108: Reduce minRefreshTime for updating remote printer 
+      list on Windows
+    + S8222678: Improve TLS negotiation
+    + S8222751: closed/test/jdk/sun/security/util/
+	  /DerIndefLenConverter/IndefBerPkcs12.java fail
+    + S8222968: ByteArrayPublisher is not thread-safe resulting in 
+      broken re-use of HttpRequests
+    + S8223326: Regression introduced by CPU sync: 
+      java.security.AccessControlException: access denied 
+      ("java.net.NetPermission" "setSocketImpl")
+    + S8223869: Problem list 
+      java/awt/FontMetrics/MaxAdvanceIsMax.java on more platforms
+    + S8224505: TestQuotedLogOutput failure after ProcessBuilder 
+      changes
+    + S8225146: Accessibility issues in 
+      javax/swing/plaf/nimbus/doc-files/properties.html
+    + S8225425: java.lang.UnsatisfiedLinkError: net.dll: Can't find 
+      dependent libraries
+    + S8225505: ctrl-F1 does not show the tooltip of a menu item 
+      (JMenuItems)
+    + S8226468: [aix] loadquery failed error message displayed
+    + S8226530: ZipFile reads wrong entry size from ZIP64 entries
+    + S8226543: Reduce GC pressure during message digest 
+      calculations in password-based encryption
+    + S8227171: provide function names in native stack trace on aix 
+      with xlc16
+    + S8227201: Bump version string for 13.0.1
+    + S8227230: Backout JDK-8215367 from update releases
+    + S8227435: Perf::attach() should not throw a 
+      java.lang.Exception
+    + S8227594: sadebugd/DebugdConnectTest.java fails due to 
+      "java.rmi.NotBoundException: SARemoteDebugger"
+    + S8227662: freetype seeks to index at the end of the font data
+    + S8228469: (tz) Upgrade time-zone data to tzdata2019b
+    + S8228485: JVM crashes when bootstrap method for condy 
+      triggers loading of class whose static initializer throws exception
+    + S8228649: [PPC64] SA reads wrong slots from interpreter frames
+    + S8228711: Path rendered incorrectly when it goes outside the 
+      clipping region
+    + S8229002: Shenandoah: Missing node types in 
+      ShenandoahLoadReferenceBarrier::needs_barrier_impl()
+    + S8229118: [TESTBUG] serviceability/sa/ClhsdbFindPC fails on 
+      AArch64
+    + S8229182: runtime/containers/docker/TestMemoryAwareness.java 
+      test fails on SLES12
+    + S8229242: JDK 13.0.1 L10n resource files update msgdrop 10
+    + S8229284: jdk/internal/platform/cgroup/TestCgroupMetrics.java 
+      fails for - memory:getMemoryUsage
+    + S8229706: java/net/MulticastSocket/NoLoopbackPackets.java 
+      fails on some AIX machines
+    + S8229773: Resolve permissions for code source URLs lazily
+    + S8229800: WindowsServerCore 1809 does not provide d2d1.dll 
+      library required by awt.dll
+    + S8229872: (fs) Increase buffer size used with getmntent
+    + S8229887: (zipfs) zip file corruption when replacing an 
+      existing STORED entry
+    + S8229925: [s390, PPC64] Exception check missing in interpreter
+    + S8230110: TestLinkageErrorInGenerateOopMap times out
+    + S8230115: Problemlist JFR TestNetworkUtilization test
+    + S8230303: JDB hangs when running monitor command
+    + S8230425: Shenandoah forces +UseNUMAInterleaving even after 
+      explicitly disabled
+    + S8230565: ZGC: Redesign C2 load barrier to expand on the 
+      MachNode level
+    + S8230646: Epsilon does not extend TLABs to max size
+    + S8230666: Exclude 
+      serviceability/sa/TestInstanceKlassSize.java on linuxppc64 and 
+      linuxppc64le
+    + S8230728: Thin stroked shapes are not rendered if affine 
+      transform has flip bit
+    + S8230782: Robot.createScreenCapture() fails if 
+      "awt.robot.gtk" is set to false
+    + S8230850: Test sun/tools/jcmd/TestProcessHelper.java fails 
+      intermittently
+    + S8230943: False deadlock detection with 
+      -XX:+CIPrintCompileQueue after JDK-8163511
+    + S8231098: (tz) Upgrade time-zone data to tzdata2019c
+    + S8231197: Shenandoah: JVMTI heap walking cleanup crashes with 
+      NULL forwardee
+    + S8231405: [Shenandoah] guarantee(d != NULL) failed: Null 
+      dominator info
+    + S8231583: Shenandoah: Fix register clash in 
+      SBSA::resolve_forwarding_pointer() borrowing
+    + S8231770: Test java/util/zip/FlaterTest.java fails with 
+      -Xcheck:jni
+    + S8231885: Fix/remove malformed assert in os_windows.cpp
+    + S8231887: ComodoCA.java fails because certificate was revoked
+    + S8231930: Windows build fails after JDK-8191521
+
+-------------------------------------------------------------------
 Tue Oct  8 15:31:56 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Do not fail installation when the manpages are not present

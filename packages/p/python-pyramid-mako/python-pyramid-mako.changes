@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Thu Sep 12 15:04:17 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix license
+
+-------------------------------------------------------------------
+Wed Sep 11 01:21:23 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Rename to python-pyramid-mako and integrate doc subpackage
+- Update to v1.1.0
+  * Add support for Python 3.5, 3.6, 3.7
+  * Require ``mako >= 1.1.0``
+  * Add config option preprocessor_wants_settings. If set to true,
+    the preprocessor will be wrapped in a function that invokes the 
+    preprocessor with pyramid's config settings as the second argument
+
+-------------------------------------------------------------------
+Mon May 28 14:32:42 UTC 2018 - bruno@ioda-net.ch
+
+- Cleanup again with spec-cleaner (date,url,%license) 
+
+-------------------------------------------------------------------
+Thu Sep 14 13:52:02 UTC 2017 - bruno@ioda-net.ch
+
+- Move to singlespec (also documentation)
+- Adapt Copyright year
+
+-------------------------------------------------------------------
+Tue Feb 14 21:30:20 UTC 2017 - hpj@urpla.net
+
+- Add BuildRoot to fix build on less forgiving targets
+
+-------------------------------------------------------------------
+Mon Jun 13 14:55:00 UTC 2016 - toddrme2178@gmail.com
+
+- Split documentation into subpackage to speed up build.
+
+-------------------------------------------------------------------
+Sun May  8 07:13:35 UTC 2016 - arun@gmx.de
+
+- specfile:
+  * updated source url to files.pythonhosted.org
+
+-------------------------------------------------------------------
+Fri Aug 28 08:28:25 UTC 2015 - bruno@ioda-net.ch
+
+- Add packaging for python3
+- Removed unexistant orderreddict deps for build
+
+-------------------------------------------------------------------
+Sun Aug  9 15:27:55 UTC 2015 - hpj@urpla.net
+
+- build and package docs separately 
+
+-------------------------------------------------------------------
+Mon Jul 13 13:12:38 UTC 2015 - toddrme2178@gmail.com
+
+- Fix building on SLES 11
+
+-------------------------------------------------------------------
+Fri Feb  6 16:03:16 UTC 2015 - hpj@urpla.net
+
+- cleanup dependencies
+- allow building with python 2.6 and ancient distributions
+
+-------------------------------------------------------------------
+Mon Dec 29 21:56:37 UTC 2014 - mardnh@gmx.de
+
+- initial package, version 1.0.2
+

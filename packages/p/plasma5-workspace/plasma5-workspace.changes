@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 29 20:45:53 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.2.php
+- Changes since 5.17.1:
+  * [wallpapers/image] Randomise new batches of images in the slideshow (kde#413463)
+  * [wallpapers/image] Seed random number generator
+  * [Lock Screen] Don't use black shadows with black text (kde#413537)
+  * clear the cells before relayouting the items (kde#413019)
+
+-------------------------------------------------------------------
 Tue Oct 22 16:44:45 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.1

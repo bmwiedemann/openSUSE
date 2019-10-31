@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 30 12:39:55 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.1.1:
+  * Fix unmarshaling 3.4+ object_ref bugs. A big thanks to Armin Rigo of the PyPy team.
+  * Add Pypy 3.6+ disassembly, e.g. pypy3.6-7.1.0 and pypy3.6-7.1.1
+  * Add Python 3.7.5, 2.7.16, 2.7.17rc1, and 2.7.15candidate1 as a valid releases
+  * convert unmarshal if .. elif code to a dictionary lookup with function entries
+  * Handle newer Python importlib - thanks to laike9m
+  * Add early bytecodes: 1.0, 1.1, 1.2, and 1.6. Going off of pycdc bytecode since this is the only bytecode for these versions I know of
+  * Fix bug in Python 3.x decompiling 2.x that contains strings with non-ascii characters
+  * More generally, better handling of non-ascii Python 2 strings in both input and output in Python 3
+  * pypy 3.6-7.1.0 tolerance
+
+-------------------------------------------------------------------
 Fri Oct  4 08:29:23 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 4.0.4:

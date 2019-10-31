@@ -23,7 +23,6 @@ Version:        0.39.0
 Release:        0
 Summary:        Python library for the ACME protocol
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/certbot/certbot
 Source0:        https://files.pythonhosted.org/packages/source/a/%{libname}/%{libname}-%{version}.tar.gz
 Source1:        https://files.pythonhosted.org/packages/source/a/%{libname}/%{libname}-%{version}.tar.gz.asc

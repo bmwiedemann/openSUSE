@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pip-api
-Version:        0.0.12
+Version:        0.0.13
 Release:        0
 Summary:        The official unofficial pip API
 License:        Apache-2.0

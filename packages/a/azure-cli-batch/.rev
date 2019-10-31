@@ -47,4 +47,12 @@
     <comment>- Fix Azure CLI build on SLE-12 (forwarded request 707474 from glaubitz)</comment>
     <requestid>707536</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8478d908d52f0fbf2ccb311767f35cbd</srcmd5>
+    <version>4.0.3</version>
+    <time>1572542113</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Azure CLI to latest version (boo#1154393) (forwarded request 742548 from glaubitz)</comment>
+    <requestid>742673</requestid>
+  </revision>
 </revisionlist>

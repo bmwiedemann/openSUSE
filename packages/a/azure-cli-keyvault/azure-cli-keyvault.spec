@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-keyvault
-Version:        2.2.11
+Version:        2.2.16
 Release:        0
 Summary:        Microsoft Azure CLI 'keyvault' Command Module
 License:        MIT
@@ -33,7 +33,7 @@ BuildRequires:  python3-setuptools
 Requires:       azure-cli-command-modules-nspkg
 Requires:       azure-cli-core
 Requires:       azure-cli-nspkg
-Requires:       python3-azure-graphrbac >= 0.53.0
+Requires:       python3-azure-graphrbac >= 0.60.0
 Requires:       python3-azure-keyvault >= 1.1.0
 Requires:       python3-azure-mgmt-keyvault >= 1.1.0
 Requires:       python3-azure-nspkg >= 3.0.0

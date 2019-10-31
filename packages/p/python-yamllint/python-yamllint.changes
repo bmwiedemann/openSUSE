@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 30 12:21:46 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.18.0:
+  * Lint .yamllint config file by default
+  * Also read config from .yamllint.yml and .yamllint.yaml
+  * Improve documentation for yaml-files
+  * Update documentation for pre-commit
+  * Explicitly disable empty-values and octal-values rules
+
+-------------------------------------------------------------------
 Mon Aug 19 08:43:21 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.17.0:

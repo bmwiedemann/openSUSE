@@ -1,0 +1,5 @@
+<package name="python-pyuv" project="openSUSE:Factory">
+  <title>python-pyuv</title>
+  <description>Python interface for libuv</description>
+  <devel project="devel:languages:python" package="python-pyuv"/>
+</package>

@@ -1,0 +1,12 @@
+<package name="python-nodeenv" project="openSUSE:Factory">
+  <title>Nodejs virtual environment builder</title>
+  <description>Tool to create isolated node.js environments, with its own
+installation directories, that doesn't share libraries with
+other node.js virtual environments.
+
+These environments can be integrated with ones created by
+Python's virtualenv.
+
+</description>
+  <devel project="devel:languages:python" package="python-nodeenv"/>
+</package>

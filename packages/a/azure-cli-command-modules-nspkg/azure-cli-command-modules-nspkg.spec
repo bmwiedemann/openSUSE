@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-command-modules-nspkg
-Version:        2.0.2
+Version:        2.0.3
 Release:        0
 Summary:        Microsoft Azure CLI Command modules Namespace Package
 License:        MIT

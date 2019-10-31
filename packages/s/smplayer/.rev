@@ -279,4 +279,12 @@
     <comment>- Update to version 19.5.0.</comment>
     <requestid>705431</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>3413f6e224d96c1927b7bf473fcf701b</srcmd5>
+    <version>19.10.0</version>
+    <time>1572542315</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>744195</requestid>
+  </revision>
 </revisionlist>

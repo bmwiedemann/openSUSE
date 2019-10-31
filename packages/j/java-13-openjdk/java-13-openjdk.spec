@@ -32,13 +32,13 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      13
 %global interimver      0
-%global updatever       0
+%global updatever       1
 %global patchver        0
-%global datever         2019-09-17
-%global buildver        33
+%global datever         2019-10-15
+%global buildver        9
 %global hg_project      jdk-updates
 %global hg_repository   jdk13u
-%global hg_revision     9c250a7600e1
+%global hg_revision     8d03d066c4e8
 %global icedtea_sound_version 1.0.1
 %global java_atk_wrapper_version 0.33.2
 # JavaEE modules

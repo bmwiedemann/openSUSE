@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-extension
-Version:        0.2.3
+Version:        0.2.5
 Release:        0
 Summary:        Microsoft Azure CLI 'extension' Command Module
 License:        MIT

@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-dms
-Version:        0.1.2
+Version:        0.1.4
 Release:        0
 Summary:        Microsoft Azure CLI 'Database Migration Service' Command Module
 License:        MIT

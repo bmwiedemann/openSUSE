@@ -37,6 +37,8 @@ Source2:        frameworks.keyring
 Source99:       baselibs.conf
 # PATCH-MISFEATURE-OPENSUSE - Disliked by the security team (boo#1033055)
 Patch1:         0001-Disable-KAuth-integration.patch
+# PATCH-FIX-UPSTREAM - fix crash (kde#413474)
+Patch2:         0001-fix-crash-in-variableexpansionhelpers.patch
 BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes

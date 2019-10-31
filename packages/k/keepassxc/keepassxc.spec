@@ -17,7 +17,7 @@
 
 
 Name:           keepassxc
-Version:        2.4.3
+Version:        2.5.0
 Release:        0
 Summary:        Qt5-based Password Manager
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -46,6 +46,7 @@ BuildRequires:  libykpers-devel
 BuildRequires:  ykpers-devel
 %endif
 BuildRequires:  libyubikey-devel
+BuildRequires:  readline-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core)
@@ -152,12 +153,13 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor >/dev/null 2>/dev/null || :
 
 %files
 %license COPYING LICENSE*
-%doc CHANGELOG README.md
+%doc CHANGELOG.md README.md
 %doc docs/*
 %{_bindir}/%{name}
 %{_bindir}/%{name}-cli
 %{_bindir}/%{name}-proxy
 %dir %{_datadir}/%{name}
+%{_datadir}/%{name}/docs/
 %{_datadir}/%{name}/icons/
 %{_datadir}/%{name}/wizard/
 %{_datadir}/%{name}/wordlists/
@@ -168,6 +170,7 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor >/dev/null 2>/dev/null || :
 %{_datadir}/mime/packages/%{name}.xml
 %dir %{_libdir}/%{name}
 %{_libdir}/keepassxc/libkeepassx-autotype-xcb.so
+%{_mandir}/man1/%{name}.1*
 %{_mandir}/man1/%{name}-cli.1*
 
 %if 0%{?suse_version}

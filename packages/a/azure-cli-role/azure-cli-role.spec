@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-role
-Version:        2.4.0
+Version:        2.6.4
 Release:        0
 Summary:        Microsoft Azure CLI 'role' Command Module for Role-Based Access Control (RBAC)
 License:        MIT
@@ -33,7 +33,7 @@ BuildRequires:  python3-setuptools
 Requires:       azure-cli-command-modules-nspkg
 Requires:       azure-cli-core
 Requires:       azure-cli-nspkg
-Requires:       python3-azure-graphrbac >= 0.53.0
+Requires:       python3-azure-graphrbac >= 0.60.0
 Requires:       python3-azure-keyvault >= 1.1.0
 Requires:       python3-azure-mgmt-authorization >= 0.50.0
 Requires:       python3-azure-mgmt-monitor >= 0.5.2

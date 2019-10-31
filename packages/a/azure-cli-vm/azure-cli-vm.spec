@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-vm
-Version:        2.2.15
+Version:        2.2.23
 Release:        0
 Summary:        Microsoft Azure CLI 'vm' Command Module
 License:        MIT
@@ -35,12 +35,13 @@ Requires:       azure-cli-core
 Requires:       azure-cli-nspkg
 Requires:       python3-azure-keyvault >= 1.1.0
 Requires:       python3-azure-mgmt-authorization >= 0.50.0
-Requires:       python3-azure-mgmt-compute >= 4.4.0
+Requires:       python3-azure-mgmt-compute >= 5.0.0
+Requires:       python3-azure-mgmt-imagebuilder >= 0.2.1
 Requires:       python3-azure-mgmt-keyvault >= 1.1.0
 Requires:       python3-azure-mgmt-marketplaceordering >= 0.1.0
 Requires:       python3-azure-mgmt-msi >= 0.2.0
-Requires:       python3-azure-mgmt-network >= 2.4.0
-Requires:       python3-azure-multiapi-storage >= 0.2.2
+Requires:       python3-azure-mgmt-network >= 3.0.0
+Requires:       python3-azure-multiapi-storage >= 0.2.3
 Requires:       python3-azure-nspkg >= 3.0.0
 Conflicts:      azure-cli < 2.0.0
 

@@ -222,4 +222,13 @@
     <comment></comment>
     <requestid>729244</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f96fe22892d2c404732353d5990e208a</srcmd5>
+    <version>2.5.0</version>
+    <time>1572542281</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5.0
+  https://github.com/keepassxreboot/keepassxc/releases/tag/2.5.0</comment>
+    <requestid>743245</requestid>
+  </revision>
 </revisionlist>

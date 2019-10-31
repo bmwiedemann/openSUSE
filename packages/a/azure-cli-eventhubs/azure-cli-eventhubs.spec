@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-eventhubs
-Version:        0.3.3
+Version:        0.3.7
 Release:        0
 Summary:        Microsoft Azure CLI 'eventhubs' Command Module
 License:        MIT
@@ -33,7 +33,7 @@ BuildRequires:  python3-setuptools
 Requires:       azure-cli-command-modules-nspkg
 Requires:       azure-cli-core
 Requires:       azure-cli-nspkg
-Requires:       python3-azure-mgmt-eventhub >= 2.2.0
+Requires:       python3-azure-mgmt-eventhub >= 2.6.0
 Requires:       python3-azure-nspkg >= 3.0.0
 Requires:       python3-six
 Conflicts:      azure-cli < 2.0.0

@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-cognitiveservices
-Version:        0.2.4
+Version:        0.2.6
 Release:        0
 Summary:        Microsoft Azure CLI 'cognitiveservices' Command Module
 License:        MIT

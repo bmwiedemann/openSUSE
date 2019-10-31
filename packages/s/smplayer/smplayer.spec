@@ -17,7 +17,7 @@
 
 
 Name:           smplayer
-Version:        19.5.0
+Version:        19.10.0
 Release:        0
 Summary:        Complete frontend for MPV
 License:        GPL-2.0-or-later

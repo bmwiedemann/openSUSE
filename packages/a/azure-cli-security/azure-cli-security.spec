@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-security
-Version:        0.1.0
+Version:        0.1.2
 Release:        0
 Summary:        Microsoft Azure CLI 'Security' Command Module
 License:        MIT

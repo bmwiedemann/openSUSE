@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-backup
-Version:        1.2.3
+Version:        1.2.5
 Release:        0
 Summary:        Microsoft Azure CLI 'backup' Command Module
 License:        MIT
@@ -25,7 +25,6 @@ Group:          System/Management
 Url:            https://github.com/Azure/azure-cli
 Source:         https://files.pythonhosted.org/packages/source/a/azure-cli-backup/azure-cli-backup-%{version}.tar.gz
 Source1:        LICENSE.txt
-Patch1:         acb_drop-compatible-releases-operator.patch
 BuildRequires:  azure-cli-command-modules-nspkg
 BuildRequires:  azure-cli-nspkg
 BuildRequires:  fdupes
@@ -34,8 +33,8 @@ BuildRequires:  python3-setuptools
 Requires:       azure-cli-command-modules-nspkg
 Requires:       azure-cli-core
 Requires:       azure-cli-nspkg
-Requires:       python3-azure-mgmt-recoveryservices >= 0.1.0
-Requires:       python3-azure-mgmt-recoveryservicesbackup >= 0.1.1
+Requires:       python3-azure-mgmt-recoveryservices >= 0.1.1
+Requires:       python3-azure-mgmt-recoveryservicesbackup >= 0.1.2
 Requires:       python3-azure-nspkg >= 3.0.0
 Conflicts:      azure-cli < 2.0.0
 
@@ -49,7 +48,6 @@ i.e. 'az backup'
 
 %prep
 %setup -q -n azure-cli-backup-%{version}
-%patch1 -p1
 
 %build
 install -m 644 %{SOURCE1} %{_builddir}/azure-cli-backup-%{version}

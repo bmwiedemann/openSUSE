@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-iot
-Version:        0.3.6
+Version:        0.3.11
 Release:        0
 Summary:        Microsoft Azure CLI 'iot' Command Module
 License:        MIT
@@ -33,7 +33,7 @@ BuildRequires:  python3-setuptools
 Requires:       azure-cli-command-modules-nspkg
 Requires:       azure-cli-core
 Requires:       azure-cli-nspkg
-Requires:       python3-azure-mgmt-iothub >= 0.7.0
+Requires:       python3-azure-mgmt-iothub >= 0.8.2
 Requires:       python3-azure-mgmt-iothubprovisioningservices >= 0.2.0
 Requires:       python3-azure-nspkg >= 3.0.0
 Requires:       python3-pyOpenSSL

@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-profile
-Version:        2.1.3
+Version:        2.1.5
 Release:        0
 Summary:        Microsoft Azure CLI 'profile' Command Module
 License:        MIT

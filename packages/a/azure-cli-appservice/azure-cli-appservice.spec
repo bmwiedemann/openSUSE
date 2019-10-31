@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-appservice
-Version:        0.2.13
+Version:        0.2.21
 Release:        0
 Summary:        Microsoft Azure CLI 'appservice' Command Module
 License:        MIT
@@ -34,14 +34,17 @@ Requires:       azure-cli-command-modules-nspkg
 Requires:       azure-cli-core
 Requires:       azure-cli-nspkg
 Requires:       python3-Fabric >= 2.4
+Requires:       python3-azure-functions-devops-build >= 0.0.22
 Requires:       python3-azure-mgmt-applicationinsights >= 0.1.1
-Requires:       python3-azure-mgmt-containerregistry >= 2.6.0
-Requires:       python3-azure-mgmt-storage >= 3.1.1
-Requires:       python3-azure-mgmt-web >= 0.40.0
+Requires:       python3-azure-mgmt-containerregistry >= 2.8.0
+Requires:       python3-azure-mgmt-storage >= 3.3.0
+Requires:       python3-azure-mgmt-web >= 0.42.0
 Requires:       python3-azure-nspkg >= 3.0.0
+Requires:       python3-cryptography
 Requires:       python3-pyOpenSSL
 Requires:       python3-six
 Requires:       python3-urllib3 >= 1.18
+Requires:       python3-vsts-cd-manager < 1.1.0
 Requires:       python3-xmltodict
 Conflicts:      azure-cli < 2.0.0
 

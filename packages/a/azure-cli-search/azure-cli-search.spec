@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-search
-Version:        0.1.1
+Version:        0.1.2
 Release:        0
 Summary:        Microsoft Azure CLI 'search' Command Module
 License:        MIT

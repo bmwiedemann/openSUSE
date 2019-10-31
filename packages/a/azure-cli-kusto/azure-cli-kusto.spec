@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-kusto
-Version:        0.1.0
+Version:        0.2.3
 Release:        0
 Summary:        Microsoft Azure CLI 'KUSTO' Command Module
 License:        MIT
@@ -33,7 +33,7 @@ BuildRequires:  python3-setuptools
 Requires:       azure-cli-command-modules-nspkg
 Requires:       azure-cli-core
 Requires:       azure-cli-nspkg
-Requires:       python3-azure-mgmt-kusto >= 0.2.0
+Requires:       python3-azure-mgmt-kusto >= 0.3.0
 Requires:       python3-azure-nspkg >= 3.0.0
 Requires:       python3-six
 Conflicts:      azure-cli < 2.0.0

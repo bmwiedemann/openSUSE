@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-network
-Version:        2.3.2
+Version:        2.5.2
 Release:        0
 Summary:        Microsoft Azure CLI 'network' Command Module
 License:        MIT
@@ -34,7 +34,7 @@ Requires:       azure-cli-command-modules-nspkg
 Requires:       azure-cli-core
 Requires:       azure-cli-nspkg
 Requires:       python3-azure-mgmt-dns >= 2.1.0
-Requires:       python3-azure-mgmt-network >= 2.4.0
+Requires:       python3-azure-mgmt-network >= 3.0.0
 Requires:       python3-azure-mgmt-trafficmanager >= 0.51.0
 Requires:       python3-azure-nspkg >= 3.0.0
 Conflicts:      azure-cli < 2.0.0

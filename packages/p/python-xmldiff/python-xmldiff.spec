@@ -19,11 +19,10 @@
 %define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-xmldiff
-Version:        2.3
+Version:        2.4
 Release:        0
 Summary:        Tree to tree correction between XML documents
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/Shoobx/xmldiff
 Source:         https://files.pythonhosted.org/packages/source/x/xmldiff/xmldiff-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}

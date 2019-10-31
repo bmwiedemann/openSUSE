@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-find
-Version:        0.2.13
+Version:        0.3.4
 Release:        0
 Summary:        Microsoft Azure CLI 'find' Command Module
 License:        MIT

@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-advisor
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        Microsoft Azure CLI 'advisor' Command Module
 License:        MIT

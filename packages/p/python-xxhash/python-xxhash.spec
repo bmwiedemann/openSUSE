@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-xxhash
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Python binding for xxHash
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/ifduyue/python-xxhash
 Source:         https://files.pythonhosted.org/packages/source/x/xxhash/xxhash-%{version}.tar.gz
 BuildRequires:  %{python_module devel}

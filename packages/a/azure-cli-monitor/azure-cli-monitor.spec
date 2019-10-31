@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-monitor
-Version:        0.2.10
+Version:        0.2.15
 Release:        0
 Summary:        Microsoft Azure CLI 'Monitor' Command Module
 License:        MIT

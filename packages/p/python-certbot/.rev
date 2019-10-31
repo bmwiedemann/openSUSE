@@ -170,4 +170,12 @@
   * Don't send OCSP requests for expired certificates</comment>
     <requestid>734565</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>908a6a3d79e52513c4e3b6b9125937f1</srcmd5>
+    <version>0.39.0</version>
+    <time>1572542038</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>739155</requestid>
+  </revision>
 </revisionlist>

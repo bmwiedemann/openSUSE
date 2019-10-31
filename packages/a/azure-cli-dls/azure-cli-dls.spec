@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-dls
-Version:        0.1.8
+Version:        0.1.10
 Release:        0
 Summary:        Microsoft Azure CLI 'data lake store' Command Module
 License:        MIT

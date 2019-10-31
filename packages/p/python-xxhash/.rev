@@ -31,4 +31,13 @@
     <comment></comment>
     <requestid>729092</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>498e6f2455a8c8e3234f20341cf39fa9</srcmd5>
+    <version>1.4.2</version>
+    <time>1572542288</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.2:
+  * Fixed: setup.py fails when reading README.rst and the default encoding is not UTF-8</comment>
+    <requestid>744157</requestid>
+  </revision>
 </revisionlist>
