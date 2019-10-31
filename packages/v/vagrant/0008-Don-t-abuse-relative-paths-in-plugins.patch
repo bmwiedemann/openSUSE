@@ -1,7 +1,7 @@
-From 461907e06abd3f2f4ca426edae7a8f90cc9fcd8e Mon Sep 17 00:00:00 2001
+From 6cabd408fd06b60b0b0c74c93da9fea05e8b0339 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Fri, 11 Jan 2019 12:32:28 +0100
-Subject: [PATCH 08/15] Don't abuse relative paths in plugins
+Subject: [PATCH 08/14] Don't abuse relative paths in plugins
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -64,5 +64,5 @@ index 7bc8ceca0..e938305e7 100644
  require_relative "../installer"
  
 -- 
-2.22.1
+2.23.0
 

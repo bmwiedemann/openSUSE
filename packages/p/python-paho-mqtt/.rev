@@ -41,4 +41,37 @@
     <comment>- Fix fdupes call</comment>
     <requestid>656853</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>46395869c8e4d344210fa359691903d1</srcmd5>
+    <version>1.5.0</version>
+    <time>1572557350</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.0:
+  * Add support for clean_session on subscribe helper
+    (gh#eclipse/paho.mqtt.python#219).
+  * Add support for non-standard bridge connection
+    (gh#eclipse/paho.mqtt.python#282).
+  * Fix hang with QoS 2 message and clean_session = False. The fix
+    replace hang with message DROP. See README for known
+    limitation (gh#eclipse/paho.mqtt.python#284,
+    gh#eclipse/paho.mqtt.python#286).
+  * Fix connection establishement timeout
+    (gh#eclipse/paho.mqtt.python#291,
+    gh#eclipse/paho.mqtt.python#288).
+  * Add support for connecting through a proxy
+    (gh#eclipse/paho.mqtt.python#315).
+  * Add MQTT v5 support (gh#eclipse/paho.mqtt.python#334).
+  * Improve error message when sending queue is full
+    (gh#eclipse/paho.mqtt.python#378).
+  * Improve error handling during initialization on edge case
+    (gh#eclipse/paho.mqtt.python#387,
+    gh#eclipse/paho.mqtt.python#388).
+  * Allow to specify local client port used (similar to
+    bind_address) (gh#eclipse/paho.mqtt.python#390).
+  * Add method is_connected to know if MQTT connection is
+    established (gh#eclipse/paho.mqtt.python#414).
+  * Set connection timeout to keepalive
+    (gh#eclipse/paho.mqtt.python#425).</comment>
+    <requestid>744374</requestid>
+  </revision>
 </revisionlist>

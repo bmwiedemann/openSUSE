@@ -1,7 +1,7 @@
-From 2a34db55059236e16d62a85c9dbceed7b5ce28b2 Mon Sep 17 00:00:00 2001
+From 7784ec13f12752f5b73ddec371cb73b6dd97615a Mon Sep 17 00:00:00 2001
 From: Pavel Valena <pvalena@redhat.com>
 Date: Mon, 1 Jul 2019 17:44:54 +0200
-Subject: [PATCH 12/15] Do not list / load dependencies if `vagrant` spec is
+Subject: [PATCH 12/14] Do not list / load dependencies if `vagrant` spec is
  not loaded
 
 in `vagrant_internal_specs` as this fails, due to `find` returning `nil`.
@@ -26,5 +26,5 @@ index 7ba48435f..c0fabdcea 100644
        list = {}
        directories = [Gem::Specification.default_specifications_dir]
 -- 
-2.22.1
+2.23.0
 

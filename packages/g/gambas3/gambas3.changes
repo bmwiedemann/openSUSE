@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Oct 30 16:23:23 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 3.14.1:
+  * Fix exponent sign printed twice in float to string
+    conversion.
+  * Some fixes in Drag & drop frame management.
+  * Prevent possible flickering of drag & drop frame.
+  * Form editor: Draw the control frame as soon as the Drag event
+    is raised, to try to workaround a dnd bug.
+  * Fix drag & drop frame management.
+  * Update project configuration files.
+  * Redraw the 'menu' and 'new-dir' icon.
+  * Fix mouse wheel zoom and paper size refresh.
+  * DocumentView: Some little design changes.
+  * Paint.TextHeight is a new property that returns the height of
+    one line of text, and Paint.FontScale is now "transparent".
+  * Fix highlighting of long lines and comments.
+  * Remove a useless global variable.
+  * Message boxes now correctly handle multi-line text in
+    buttons.
+  * Apply Paint.FontScale only when Paint.Font is assigned. Not
+    when one of the Paint.Font properties changes.
+  * Merge branch 'master' into 'master'
+  * [GB.QT5] BUG: Workaround "Setting a QCompleter on
+    non-editable QComboBox is not allowed" message
+  * Do not imbricate focus events.
+  * Do JIT compilation after class loading. Otherwise the JIT
+    compiler may want to load the class that triggers the compilation
+    again.
+  * Windows whose Utility property is set now use
+    '_NET_WM_WINDOW_TYPE_DIALOG' instead of
+    '_NET_WM_WINDOW_TYPE_DIALOG'.
+  * Correctly generate metadata file for events so that there is
+    no spurious ByRef arguments anymore.
+  * Forgot to commit common header files.
+  * System.Trace is a new property that toggles the dump of the
+    position of each executed line.
+  * Project property dialog: Fix deletion in argument list when
+    pressing Backspace.
+  * Disable qt4 webkit component.
+  * Floating-point number to string conversion is now 1.7 times
+    faster.
+  * Add a '-t' option that dumps to the standard error the
+    position of each executed line of code.
+  * Update Gambas 16 px size font. Make it less round and fix
+    many characters.
+  * Fix support of read-only arrays.
+
+-------------------------------------------------------------------
 Mon Sep 23 16:33:02 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 3.14.0:

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 30 16:06:43 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- Update to final 0.18.4
+  * pre-select name filter in import/export file dialog
+
+-------------------------------------------------------------------
 Tue Oct 22 06:46:22 UTC 2019 - Adrian Schröter <adrian@suse.de>
 
 - update to current 0.18 branch, esp for Qt >= 5.9 fixes

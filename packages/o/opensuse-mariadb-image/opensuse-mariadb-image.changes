@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 30 15:01:07 CET 2019 - kukuk@suse.de
+
+- Read environmenn files before switching to mariadb user
+
+-------------------------------------------------------------------
 Tue Oct 22 13:37:53 CEST 2019 - kukuk@suse.de
 
 - Update README file

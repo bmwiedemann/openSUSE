@@ -16,6 +16,9 @@
 #
 
 
+# perf does not link with LTO
+%define _lto_cflags %{nil}
+
 Name:           perf
 %define version %(rpm -q --qf '%%{VERSION}' kernel-source)
 Version:        %{version}
@@ -32,6 +35,7 @@ BuildRequires:  gtk2-devel
 BuildRequires:  kernel-source >= 2.6.31
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
+BuildRequires:  libzstd-devel
 BuildRequires:  xz-devel
 BuildRequires:  rubygem(asciidoctor)
 %ifarch aarch64 ia64 x86_64 ppc64 ppc64le ppc %sparc
@@ -68,6 +72,9 @@ counters of the underlying cpu architecture (if supported).
 # copy necessary files from kernel-source since we need to modify them
 (cd /usr/src/linux ; tar -cf - COPYING CREDITS README tools include scripts Kbuild Makefile arch/*/{include,lib,Makefile} lib) | tar -xf - 
 chmod +x tools/perf/util/generate-cmdlist.sh
+
+# don't error out on deprecated definitions in gtk2.h
+sed -i 's@ignored "-Wstrict-prototypes"@&\n#pragma GCC diagnostic ignored "-Wdeprecated-declarations"@' tools/build/feature/test-gtk2.c
 
 %build
 cd tools/perf

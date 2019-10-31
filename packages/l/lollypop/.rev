@@ -1071,4 +1071,20 @@
   * Bug fixes.</comment>
     <requestid>743081</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>4509bc312c8d6452b60e85fab5af3da7</srcmd5>
+    <version>1.2.3</version>
+    <time>1572556994</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.3:
+  * Improve style of playback time (glgo#World/lollypop#2079).
+  * Fix a crash when adding a playlist section
+    (glgo#World/lollypop#2080).
+  * Fix several crashes in artist view (glgo#World/lollypop#2084,
+    glgo#World/lollypop#2095).
+  * Fix minor issues in radio view (glgo#World/lollypop#2089).
+  * Fix an issue with automatic playback
+    (glgo#World/lollypop#2092).</comment>
+    <requestid>744299</requestid>
+  </revision>
 </revisionlist>

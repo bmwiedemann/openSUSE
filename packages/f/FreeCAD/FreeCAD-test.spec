@@ -17,7 +17,7 @@
 
 
 Name:           FreeCAD-test
-Version:        0.18.3
+Version:        0.18.4
 Release:        0
 Summary:        Meta source package that runs the FreeCAD testsuite when built
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later

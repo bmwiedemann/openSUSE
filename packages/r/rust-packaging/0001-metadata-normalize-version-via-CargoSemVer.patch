@@ -1,0 +1,31 @@
+From 23e807d8ce571da4500f66075e08bfa412177972 Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Wed, 30 Oct 2019 17:28:32 +0100
+Subject: [PATCH] metadata: normalize version via CargoSemVer
+
+---
+ rust2rpm/metadata.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/rust2rpm/metadata.py b/rust2rpm/metadata.py
+index 6dd8bb0..99debf3 100644
+--- a/rust2rpm/metadata.py
++++ b/rust2rpm/metadata.py
+@@ -220,10 +220,10 @@ class Metadata:
+     def __init__(self, name, version):
+         self.name = name
+         self._version = version
+-        version_normalized = Dependency._normalize_req(f"={self._version}")
+-        if len(version_normalized) != 1:
+-            raise Exception(f"Incorrect version: {self._version}")
+-        self.version = version_normalized[0][1]
++        version_normalized = CargoSemVer.unparse_version(
++            CargoSemVer.coerce(
++                CargoSemVer.parse_version(self._version)))
++        self.version = version_normalized
+         self.license = None
+         self.license_file = None
+         self.readme = None
+-- 
+2.21.0
+

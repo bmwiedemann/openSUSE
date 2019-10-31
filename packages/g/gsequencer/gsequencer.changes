@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 28 17:18:20 UTC 2019 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v2.3.15 improved ags_sound_resource_read_wave() to
+  deal with different samplerates.
+
+-------------------------------------------------------------------
 Sun Oct 13 21:31:30 UTC 2019 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v2.3.13 minor bug-fixes.

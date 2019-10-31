@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Tue Oct 22 08:30:24 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Rebased patches:
+
+  - 0001-bin-vagrant-silence-warning-about-installer.patch
+  - 0002-Use-a-private-temporary-dir.patch
+  - 0003-linux-cap-halt-don-t-wait-for-shutdown-h-now-to-fini.patch
+  - 0004-plugins-don-t-abuse-require_relative.patch.patch
+  - 0005-fix-vbox-package-boo-1044087-added-by-robert.muntean.patch
+  - 0006-do-not-depend-on-wdm.patch
+  - 0007-do-not-abuse-relative-paths-in-docker-plugin-to-make.patch
+  - 0008-Don-t-abuse-relative-paths-in-plugins.patch
+  - 0009-Fix-unit-tests-for-GuestLinux-Cap-Halt.patch
+  - 0010-Skip-failing-tests.patch
+  - 0011-Bump-rspec-its-dependency.patch
+  - 0012-Do-not-list-load-dependencies-if-vagrant-spec-is-not.patch
+
+  Dropped (integrated upstream or made obsolete by upstream fixes):
+  - 0013-Only-return-interfaces-where-addr-is-not-nil.patch
+  - 0014-Skip-docker-networking-test.patch
+
+  Removed:
+  - 0015-ARM-only-Disable-Subprocess-unit-test.patch
+
+  Added:
+  - 0013-Catch-NetworkNoInterfaces-error-in-docker-prepare_ne.patch
+  - 0014-ARM-only-Disable-Subprocess-unit-test.patch
+
+  This update fixes boo#1150592
+
+-------------------------------------------------------------------
+Fri Oct 18 06:31:22 UTC 2019 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.2.6
+  - dropped patch 0013-Only-return-interfaces-where-addr-is-not-nil.patch that has been included upstream
+  - set vagrant_cloud dependency to >= 2.0.3
+  
+  FEATURES:
+    core/provisioners: Introduce new Provisioner options: before and after [GH-11043]
+    guest/alpine: Integrate the vagrant-alpine plugin into Vagrant core [GH-10975]
+
+  IMPROVEMENTS:
+    command/box/prune: Allow prompt skip while preserving actively in use boxes [GH-10908]
+    command/cloud: Support providing checksum information with boxes [GH-11101]
+    dev: Fixed Vagrantfile for Vagrant development [GH-11012]
+    guest/alt: Improve handling for using network tools when setting hostname [GH-11000]
+    guest/suse: Add ipv6 network config templates for SUSE based distributions [GH-11013]
+    guest/windows: Retry on connection timeout errors for the reboot capability [GH-11093]
+    host/bsd: Use host resolve path capability to modify local paths if requird [GH-11108]
+    host/darwin: Add host resolve path capability to provide real paths for firmlinks [GH-11108]
+    provisioners/chef: Update pkg install flags for chef on FreeBSD guests [GH-11075]
+    provider/hyperv: Improve error message when VMMS is not running [GH-10978]
+    provider/virtualbox: Raise additional errors for incomplete virtualbox installation on usable check [GH-10938]
+    util/filechecksum: Add support for more checksum types [GH-11101]
+
+  BUG FIXES:
+    command/rsync-auto: Fix path watcher bug so that all subdirectories are synced when changed [GH-11089]
+    command/snapshot/save: Ensure VM id is passed to list snapshots for hyper-v provider [GH-11097]
+    core: Ensure proper paths are shown in config loading exceptions [GH-11056]
+    guest/suse: Use hostnamectl instead of hostname to set the hostname under SUSE [GH-11100]
+    provider/docker: Fix default provider validation if password is used [GH-11053]
+    provider/docker: Fix Docker providers usable? check [GH-11068]
+    provisioner/ansible_local: Ensure pip_install_cmd is finalized to emptry string [GH-11098]
+    provisioner/file: Ensure relative path for file provisioner source is relative to guest machines cwd [GH-11099]
+    provider/docker: Ensure docker build_args option is properly set in docker compose config yaml [GH-11106]
+    guest/suse: Update nfs & service daemon names for suse based hosts and guests [GH-11076]
+    provider/docker: Determine ip address prefix workaround for docker public networks [GH-11111]
+    provider/docker: Only return interfaces where addr is not nil for networks [GH-11116]
+ 
+
+-------------------------------------------------------------------
 Wed Aug 28 11:58:06 UTC 2019 - Dan Čermák <dcermak@suse.com>
 
 - Rebase vagrant patches:

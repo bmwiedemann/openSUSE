@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 30 22:34:38 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Fix version normalization via CargoSemVer
+  + 0001-metadata-normalize-version-via-CargoSemVer.patch
+
+-------------------------------------------------------------------
 Mon Oct 28 11:26:33 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
 
 - Replace semantic_version dependency with custom CargoVersion parser

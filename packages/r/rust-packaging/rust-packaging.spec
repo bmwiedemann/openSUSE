@@ -35,6 +35,8 @@ Patch0001:      0001-macros-Remove-Cargo.toml.orig.patch
 Patch0002:      0001-Ignore-Cargo.lock.patch
 # PATCH-FIX-UPSTREAM 0001-metadata-replace-semantic-version-with-a-custom-pars.patch -- https://pagure.io/fedora-rust/rust2rpm/c/fcbf95a78efdb310f918363e69706e1a98d93a9f
 Patch0003:      0001-metadata-replace-semantic-version-with-a-custom-pars.patch
+# PATCH-FIX-UPSTREAM 0001-metadata-normalize-version-via-CargoSemVer.patch -- https://pagure.io/fedora-rust/rust2rpm/c/23e807d8ce571da4500f66075e08bfa412177972
+Patch0004:      0001-metadata-normalize-version-via-CargoSemVer.patch
 BuildArch:      noarch
 ExclusiveArch:  %{rust_arches} noarch
 

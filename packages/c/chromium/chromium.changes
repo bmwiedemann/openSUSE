@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 30 12:51:06 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Enable LTO again with disabled parallel LTO WPA streaming.
+
+-------------------------------------------------------------------
 Fri Oct 25 10:50:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Disable LTO for now as it consumes ~20GB of RAM, we will reenable

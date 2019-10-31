@@ -15,6 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+# Required for the "highly experimental" object visualizer plugin, only VTK 7.1 supported
+%bcond_with     vtk
 
 %define tarname GammaRay
 Name:           gammaray
@@ -31,7 +33,6 @@ BuildRequires:  binutils-devel
 BuildRequires:  cmake >= 3.1
 BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  graphviz-devel
 BuildRequires:  graphviz-gnome
 # include this so the icon folders don't need to be owned by the package
 BuildRequires:  hicolor-icon-theme
@@ -45,9 +46,6 @@ BuildRequires:  libqt5-qtbase-doc >= 5.5.0
 BuildRequires:  libqt5-qtdeclarative-private-headers-devel >= 5.5.0
 BuildRequires:  libqt5-qttools >= 5.5.0
 BuildRequires:  update-desktop-files
-BuildRequires:  vtk-devel
-BuildRequires:  vtk-java
-BuildRequires:  vtk-qt
 BuildRequires:  wayland-devel
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(Qt5Bluetooth) >= 5.5.0
@@ -66,6 +64,9 @@ BuildRequires:  cmake(Qt5Svg) >= 5.5.0
 BuildRequires:  cmake(Qt5Test) >= 5.5.0
 BuildRequires:  cmake(Qt5WebEngineWidgets) >= 5.5.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.5.0
+%if %{with vtk}
+BuildRequires:  cmake(VTK) = 7.1.0
+%endif
 # Needed to build the user manual
 BuildRequires:  libqt5-qtdoc-devel
 #

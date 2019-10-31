@@ -37,7 +37,7 @@
 %endif
 %endif
 Name:           gambas3
-Version:        3.14.0
+Version:        3.14.1
 Release:        0
 Summary:        BASIC interpreter under Linux
 License:        GPL-2.0-or-later

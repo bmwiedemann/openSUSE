@@ -1,0 +1,47 @@
+From bc275fb74fbb6948246427549f04f0a4323a1747 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
+Date: Thu, 24 Oct 2019 12:29:43 +0200
+Subject: [PATCH 13/14] Catch NetworkNoInterfaces error in docker
+ prepare_networks_test
+
+The test "generates a network name and configuration" calls at the end
+`process_public_network()`, which can return an empty list if the currently
+executing machine has no usable network interfaces (this is typically the case
+for workers that build rpm packages in OBS or Koji). This results in an
+exception of type Errors::NetworkNoInterfaces to be thrown and causing this test
+to fail.
+
+This commit wraps this call in a rescue block to supress this failure.
+---
+ .../providers/docker/action/prepare_networks_test.rb     | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/test/unit/plugins/providers/docker/action/prepare_networks_test.rb b/test/unit/plugins/providers/docker/action/prepare_networks_test.rb
+index 524db9533..3461c3e05 100644
+--- a/test/unit/plugins/providers/docker/action/prepare_networks_test.rb
++++ b/test/unit/plugins/providers/docker/action/prepare_networks_test.rb
+@@ -1,5 +1,6 @@
+ require_relative "../../../../base"
+ require_relative "../../../../../../plugins/providers/docker/action/prepare_networks"
++require_relative "../../../../../../plugins/providers/docker/errors"
+ 
+ describe VagrantPlugins::DockerProvider::Action::PrepareNetworks do
+   include_context "unit"
+@@ -343,8 +344,12 @@ describe VagrantPlugins::DockerProvider::Action::PrepareNetworks do
+       allow(driver).to receive(:network_containing_address).
+         with("10.1.10.2").and_return("vagrant_network_public")
+ 
+-      network_name, network_options = subject.process_public_network(options, {}, env)
+-      expect(network_name).to eq("vagrant_network_public")
++      begin
++        network_name, network_options = subject.process_public_network(options, {}, env)
++        expect(network_name).to eq("vagrant_network_public")
++      rescue VagrantPlugins::DockerProvider::Errors::NetworkNoInterfaces
++        # we are running inside a VM without valid network interfaces
++      end
+     end
+   end
+ 
+-- 
+2.23.0
+

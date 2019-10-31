@@ -51,4 +51,12 @@
     <comment>Resub, even if I disagree that keeping it building for stable version is fruitful as long as the same version is in those releases already. (forwarded request 581955 from iznogood)</comment>
     <requestid>582656</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>05a8733d1c0bdfd4186666eb844b0c18</srcmd5>
+    <version>1.6</version>
+    <time>1572556714</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>744266</requestid>
+  </revision>
 </revisionlist>

@@ -187,4 +187,13 @@
   * [TD]Fix #4017 Crash on bad hatch scale</comment>
     <requestid>741676</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3dd606ddc1c7171b68a6c22525f00583</srcmd5>
+    <version>0.18.4</version>
+    <time>1572556756</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to final 0.18.4
+  * pre-select name filter in import/export file dialog</comment>
+    <requestid>744271</requestid>
+  </revision>
 </revisionlist>

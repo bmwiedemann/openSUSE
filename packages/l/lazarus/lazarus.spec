@@ -18,7 +18,7 @@
 
 %define sover   1
 Name:           lazarus
-Version:        2.0.4
+Version:        2.0.6
 Release:        0
 # Please note that the LGPL is modified and this is not multi-licensed, but each component has a separate license chosen.
 Summary:        FreePascal RAD IDE and Component Library

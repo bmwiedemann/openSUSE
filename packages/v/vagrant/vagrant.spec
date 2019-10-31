@@ -26,12 +26,12 @@
 
 
 Name:           vagrant
-Version:        2.2.5
+Version:        2.2.6
 Release:        0
 Summary:        Tool for building and distributing virtualized development environments
 License:        MIT
 Group:          Development/Languages/Ruby
-Url:            https://github.com/hashicorp/vagrant
+URL:            https://github.com/hashicorp/vagrant
 Source0:        %{URL}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source11:       vagrant.1
 Source93:       vagrant_transfiletriggerin.rb
@@ -62,10 +62,8 @@ Patch10:        0010-Skip-failing-tests.patch
 Patch11:        0011-Bump-rspec-its-dependency.patch
 # https://github.com/hashicorp/vagrant/pull/10945
 Patch12:        0012-Do-not-list-load-dependencies-if-vagrant-spec-is-not.patch
-# https://github.com/hashicorp/vagrant/pull/10993
-Patch13:        0013-Only-return-interfaces-where-addr-is-not-nil.patch
-Patch14:        0014-Skip-docker-networking-test.patch
-Patch15:        0015-ARM-only-Disable-Subprocess-unit-test.patch
+Patch13:        0013-Catch-NetworkNoInterfaces-error-in-docker-prepare_ne.patch
+Patch14:        0014-ARM-only-Disable-Subprocess-unit-test.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -85,9 +83,9 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # Build dependencies
 #===============================================================================
 
-#  s.required_ruby_version     = "~> 2.2", "< 2.7"
+#  s.required_ruby_version     = "~> 2.4", "< 2.7"
 BuildRequires:  %{ruby < 2.7}
-BuildRequires:  %{ruby:2 >= 2.2}
+BuildRequires:  %{ruby:2 >= 2.4}
 #
 #
 #
@@ -130,8 +128,8 @@ BuildRequires:  %{rubygem winrm:2 >= 2.1 }
 BuildRequires:  %{rubygem winrm-fs:1 }
 #  s.add_dependency "winrm-elevated", "~> 1.1"
 BuildRequires:  %{rubygem winrm-elevated:1 >= 1.1 }
-#  s.add_dependency "vagrant_cloud", "~> 2.0.2"
-BuildRequires:  %{rubygem vagrant_cloud:2.0 >= 2.0.2 }
+#  s.add_dependency "vagrant_cloud", "~> 2.0.3"
+BuildRequires:  %{rubygem vagrant_cloud:2.0 >= 2.0.3 }
 
 # devel dependencies:
 #  s.add_development_dependency "rake", "~> 12.0.0"
@@ -212,8 +210,8 @@ Requires:       %{rubygem winrm:2 >= 2.1}
 Requires:       %{rubygem winrm-fs:1}
 #  s.add_dependency "winrm-elevated", "~> 1.1"
 Requires:       %{rubygem winrm-elevated:1 >= 1.1}
-#  s.add_dependency "vagrant_cloud", "~> 2.0.2"
-Requires:       %{rubygem vagrant_cloud:2.0 >= 2.0.2}
+#  s.add_dependency "vagrant_cloud", "~> 2.0.3"
+Requires:       %{rubygem vagrant_cloud:2.0 >= 2.0.3}
 #  s.add_dependency "ruby_dep", "<= 1.3.1"
 Requires:       %{rubygem ruby_dep <= 1.3.1 }
 
@@ -289,10 +287,9 @@ Optional dependency offering bash completion for vagrant
 %patch11 -p 1
 %patch12 -p 1
 %patch13 -p 1
-%patch14 -p 1
 # disable the subprocess test only on ARM
-%ifarch %{arm}
-%patch15 -p 1
+%ifarch %{arm} aarch64
+%patch14 -p 1
 %endif
 
 cp %{SOURCE98} .

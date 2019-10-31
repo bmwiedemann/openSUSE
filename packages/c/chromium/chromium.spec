@@ -46,7 +46,7 @@
 %endif
 %ifarch x86_64
 %if %{?suse_version} > 1500
-%bcond_with lto
+%bcond_without lto
 %else
 %bcond_with lto
 %endif
@@ -557,7 +557,7 @@ export PATH="$HOME/bin/:$PATH"
 # do not eat all memory
 %limit_build -m 2600
 %if %{with lto}
-export LDFLAGS="-flto=%{jobs}"
+export LDFLAGS="-flto=%{jobs} --param lto-max-streaming-parallelism=1"
 %endif
 
 # Set system libraries to be used

@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Wed Oct 30 08:58:50 UTC 2019 - Boris Manojlovic <boris@steki.net>
+
+- updated to latest release 4.0.14
+- New Features and Improvements
+  + ZBXNEXT-5481 Added support of {trigger.id} macro in trigger tags
+  + ZBXNEXT-4746 Added "template server cisco ucs snmpv2" template
+  + ZBXNEXT-5422 Quoted numbers are now accepted by jsonpath aggregate functions 
+- Bug Fixes
+  + ZBX-16605 Fixed accessibility of localstorage identifier if cookies are
+    made unaccessible for client side scripts
+  + ZBX-16754 Fixed trigger not firing for first collected value if it's timestamp is in future
+  + ZBX-15211 Added key 'tests' for bootstrap.sh when working with cmocka tests
+  + ZBX-16542 Fixed incorrect displaying of unacknowledged and resolved
+    recent problematic triggers in trigger overview and dashboard widget
+  + ZBX-16749 Improved performance and memory consumption of script.getscriptsbyhosts() method
+  + ZBX-16725 Fixed detection of fping minimal interval
+  + ZBX-16562 Fixed configuration.export method in api improperly formatting
+    "application" property within "httptests" when exporting in json format
+  + ZBX-15222 Fixed housekeeper to cleanup history not only for current item
+    type of information but also for other previously selected types
+  + ZBX-16481 Fixed spelling issues in the code
+  + ZBX-15675 Added support for more than 64 cpus in windows agent
+  + ZBX-16770 Fixed value mapping in template net hp comware hh3c snmp
+  + ZBX-16534 Fixed stdout and stderr redirection after external log rotation
+  + ZBX-16368 Fixed fping double call
+  + ZBX-16317 Fixed log.h is not self-sufficient
+  + ZBX-16711 Ensuring errbuf is emptied before every curl_easy_perform request
+  + ZBX-16664 Fixed ipmi poller skips processing if one of the elements is missing information
+  + ZBX-16671 Fixed server crashing when linking web scenario template
+  + ZBX-16750 Fixed broken validation of peer certificate issuer
+    and subject strings in tls connect, fixed logging
+  + ZBX-16002 Added new macro event.recovery.name to display
+    recovery event name in recovery alerts
+  + ZBX-16512 Fixed false item insertion into the queue after maintenance
+  + ZBX-15685 Fixed zabbix_sender failing to report the error due to closed connection
+  + ZBX-16702 Fixed error in the elastic search clearing history
+  + ZBX-10805 Fixed log items graphs drawing with numeric values like trapper items
+  + ZBX-16604 Fixed occurrence of an undefined index in discovered graph configuration
+  + ZBX-16611 Fixed memory and performance leaks in gtlc.js library
+  + ZBX-15135 Fixed incorrect triggers being displayed in
+    availability report when filtering by template
+  + ZBX-16681 Fixed displaying of "acknowledge" menu option
+    for "not classified" problems in the trigger overview page
+  + ZBX-16428 Fixed sigbus crash when mmap memory is not accessible
+  + ZBX-16680 Fixed freeing locked resources when zabbix agent
+    cannot be started and has to exit with failure
+  + ZBX-16666 Fixed trailing slash being set in cookie path
+  + ZBX-16612 Fixed possibility of high cpu usage on windows
+  + ZBX-16683 Fixed race condition between history syncer
+    and escalator that caused recovery operations being delayed by step duration
+  + ZBX-16383 Adjusted timer sleeping period to process maintenances each minute at 00 seconds
+  + ZBX-16575 Getting disk controller type from linked controller label value
+  + ZBX-16561 Fixed jsonpath parsing for comma characters inside quoted string
+  + ZBX-16677 Fixed empty sql query dbexecute_overflowed_sql call during host availability update
+  + ZBX-15897 Fixed overall health check in template hp ilo snmpv2
+
+-------------------------------------------------------------------
 Thu Aug 29 08:46:12 UTC 2019 - Boris Manojlovic <boris@steki.net>
 
 - updated to latest release 4.0.11

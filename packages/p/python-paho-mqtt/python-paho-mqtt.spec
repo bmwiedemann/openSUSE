@@ -1,7 +1,7 @@
 #
 # spec file for package python-paho-mqtt
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-paho-mqtt
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        MQTT version 3.11 client class
 License:        EPL-1.0
@@ -55,7 +55,7 @@ Paho is an Eclipse Foundation project.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%files %python_files
+%files %{python_files}
 %doc README.rst
 %license LICENSE.txt
 %{python_sitelib}/*

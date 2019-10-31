@@ -19,7 +19,7 @@
 
 %define majorver 4.6
 Name:           proteus
-Version:        %{majorver}.7
+Version:        %{majorver}.8
 Release:        0
 Summary:        A library to access Tryton's modules like a client
 License:        GPL-3.0-or-later

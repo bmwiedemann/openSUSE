@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 30 18:03:16 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.2.3:
+  * Improve style of playback time (glgo#World/lollypop#2079).
+  * Fix a crash when adding a playlist section
+    (glgo#World/lollypop#2080).
+  * Fix several crashes in artist view (glgo#World/lollypop#2084,
+    glgo#World/lollypop#2095).
+  * Fix minor issues in radio view (glgo#World/lollypop#2089).
+  * Fix an issue with automatic playback
+    (glgo#World/lollypop#2092).
+
+-------------------------------------------------------------------
 Sat Oct 26 06:49:50 UTC 2019 - antoine.belvire@opensuse.org
 
 - Update to version 1.2.2:
