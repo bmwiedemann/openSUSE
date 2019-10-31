@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 30 09:55:44 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints file for ppc64le with 4GB disk space
+  to avoid build error.
+
+-------------------------------------------------------------------
 Mon Oct 14 11:58:37 CEST 2019 - kukuk@suse.de
 
 - Add glibc-locale and man

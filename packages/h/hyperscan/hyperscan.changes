@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Oct 30 09:57:00 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.2.1
+  - Fix compile issue when `BUILD_SHARED_LIBS` is on in
+    release mode.
+
+- Update to version 5.2.0
+  - Literal API: add new API `hs_compile_lit()` and
+    `hs_compile_lit_multi()` to process pure literal rule sets.
+    The 2 literal APIs treat each expression text in a literal
+    sense without recognizing any regular grammers.
+  - Logical combination: add support for purely negative
+    combinations, which report match at EOD in case of no
+    sub-expressions matched.
+  - Fix uninitialized use of `scatter_unit_uX` due to padding.
+  - Fix numerical result out of range error.
+  - Avoid corruption of pending combination report in streaming mode.
+  - Fix scratch free issue when memory allocation fails.
+
+- Builds are broken with LTO - disable for for now
+
+-------------------------------------------------------------------
 Wed Apr 10 10:22:03 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.1.1

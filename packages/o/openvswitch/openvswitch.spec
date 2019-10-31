@@ -22,7 +22,7 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-%define lname libopenvswitch-2_11-0
+%define lname libopenvswitch-2_12-0
 %ifarch aarch64 x86_64
 %if 0%{?suse_version}
 # DPDK enabled only SUSE/openSUSE
@@ -41,7 +41,7 @@
 # Disable building the external kernel datapath by default
 %bcond_with kmp
 Name:           openvswitch
-Version:        2.11.1
+Version:        2.12.0
 Release:        0
 Summary:        A multilayer virtual network switch
 # All code is Apache-2.0 except
@@ -55,10 +55,6 @@ Source1:        preamble
 Source89:       Module.supported.updates
 # PATCH-FIX-OPENSUSE: Use-strongswan-for-openvswitch-ipsec-service.patch
 Patch0:         0001-Use-strongswan-for-openvswitch-ipsec-service.patch
-# PATCH-FIX-UPSTREAM: 0001-rhel-secure-openvswitch-useropts.patch
-Patch1:         0001-rhel-secure-openvswitch-useropts.patch
-# PATCH-FIX-UPSTREAM: 0002-rhel-let-ctl-handle-runtime-directory.patch
-Patch2:         0002-rhel-let-ctl-handle-runtime-directory.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  graphviz
@@ -118,9 +114,9 @@ Suggests:       openvswitch-kmp
 %if %{with dpdk}
 # We need to be a bit strict with the dpdk version since
 # it's very possible for DPDK to change it's API between
-# releases. This version currently requires 18.11.
+# releases. This version currently requires 18.11.2.
 BuildRequires:  dpdk-devel < 18.12
-BuildRequires:  dpdk-devel >= 18.11
+BuildRequires:  dpdk-devel >= 18.11.2
 BuildRequires:  libmnl-devel
 BuildRequires:  libnuma-devel
 BuildRequires:  libpcap-devel
@@ -343,8 +339,6 @@ performance and connectivity issues in Open vSwitch setup.
 %prep
 %setup -q -n openvswitch-%{version}
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %build
 set -- * .travis* .mailmap .cirrus.yml

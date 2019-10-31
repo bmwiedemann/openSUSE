@@ -1,0 +1,48 @@
+diff -ruN Spice-up-1.8.2.orig/src/Tests/ColorItem/MockedCanvasItem.vala Spice-up-1.8.2/src/Tests/ColorItem/MockedCanvasItem.vala
+--- Spice-up-1.8.2.orig/src/Tests/ColorItem/MockedCanvasItem.vala	2019-05-06 07:03:55.000000000 +0300
++++ Spice-up-1.8.2/src/Tests/ColorItem/MockedCanvasItem.vala	2019-10-31 03:31:12.211950979 +0300
+@@ -6,7 +6,7 @@
+     public Canvas canvas { get; set; }
+     protected Gtk.Grid? grid = null;
+ 
+-    public CanvasItem (Canvas canvas, Json.Object save_data) {
++    protected CanvasItem (Canvas canvas, Json.Object save_data) {
+         Object (canvas: _canvas, save_data: _save_data);
+     }
+ 
+diff -ruN Spice-up-1.8.2.orig/src/Tests/ImageItem/MockedCanvasItem.vala Spice-up-1.8.2/src/Tests/ImageItem/MockedCanvasItem.vala
+--- Spice-up-1.8.2.orig/src/Tests/ImageItem/MockedCanvasItem.vala	2019-05-06 07:03:55.000000000 +0300
++++ Spice-up-1.8.2/src/Tests/ImageItem/MockedCanvasItem.vala	2019-10-31 03:37:19.686485914 +0300
+@@ -6,7 +6,7 @@
+     public Canvas canvas { get; set; }
+     protected Gtk.Grid? grid = null;
+ 
+-    public CanvasItem (Canvas canvas, Json.Object save_data) {
++    protected CanvasItem (Canvas canvas, Json.Object save_data) {
+         Object (canvas: _canvas, save_data: _save_data);
+     }
+ 
+diff -ruN Spice-up-1.8.2.orig/src/Tests/TextItem/MockedCanvasItem.vala Spice-up-1.8.2/src/Tests/TextItem/MockedCanvasItem.vala
+--- Spice-up-1.8.2.orig/src/Tests/TextItem/MockedCanvasItem.vala	2019-05-06 07:03:55.000000000 +0300
++++ Spice-up-1.8.2/src/Tests/TextItem/MockedCanvasItem.vala	2019-10-31 03:45:12.886906317 +0300
+@@ -6,7 +6,7 @@
+     public Canvas canvas { get; set; }
+     protected Gtk.Grid? grid = null;
+ 
+-    public CanvasItem (Canvas canvas, Json.Object save_data) {
++    protected CanvasItem (Canvas canvas, Json.Object save_data) {
+         Object (canvas: _canvas, save_data: _save_data);
+     }
+ 
+diff -ruN Spice-up-1.8.2.orig/src/Widgets/CanvasItems/CanvasItem.vala Spice-up-1.8.2/src/Widgets/CanvasItems/CanvasItem.vala
+--- Spice-up-1.8.2.orig/src/Widgets/CanvasItems/CanvasItem.vala	2019-05-06 07:03:55.000000000 +0300
++++ Spice-up-1.8.2/src/Widgets/CanvasItems/CanvasItem.vala	2019-10-31 03:25:28.626395498 +0300
+@@ -86,7 +86,7 @@
+ 
+     public unowned Canvas? canvas { protected get; construct; }
+ 
+-    public CanvasItem (Spice.Canvas? _canvas, Json.Object _save_data) {
++    protected CanvasItem (Spice.Canvas? _canvas, Json.Object _save_data) {
+         Object (canvas: _canvas, save_data: _save_data);
+     }
+ 

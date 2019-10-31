@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 31 09:41:10 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Rename python-libgpiod to python3-gpiod
+
+-------------------------------------------------------------------
 Wed Oct 30 07:44:00 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to v1.4.1 (Bug fixes release):

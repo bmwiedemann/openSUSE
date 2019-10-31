@@ -26,6 +26,8 @@ URL:            https://github.com/spheras/desktopfolder/
 Source:         https://github.com/spheras/desktopfolder/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM -- Fix compilation issues with vala 0.44
 Patch0:         desktopfolder-1.1.1-vala-0.44.patch
+# PATCH-FIX-UPSTREAM -- Fix compilation issues with vala 0.46
+Patch1:         desktopfolder-1.1.1-vala-0.46.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
@@ -58,6 +60,7 @@ A program with which the desktop can be organized with panels that hold things.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %meson

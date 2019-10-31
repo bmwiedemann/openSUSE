@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-md2workflow
-Version:        1.4.8
+Version:        1.4.9
 Release:        0
 Summary:        Tool to create a JIRA or other Workflow from markdown files
 License:        GPL-3.0-only
@@ -27,6 +27,8 @@ URL:            https://github.com/lkocman/md2workflow.git
 Source:         https://files.pythonhosted.org/packages/source/m/md2workflow/md2workflow-%{version}.tar.gz
 Source1:        suse-prod.conf
 Source2:        suse-devel.conf
+Source3:        suse-staging.conf
+Source4:        suse-lutoslawski.conf
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -58,7 +60,7 @@ Configuration and examples for md2workflow
 
 %setup -q -n md2workflow-%{version}
 echo `pwd`
-cp %{_sourcedir}/{suse-prod,suse-devel}.conf  config/
+cp %{_sourcedir}/{suse-prod,suse-devel,suse-staging,suse-lutoslawski}.conf  config/
 
 %build
 %python_build

@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-hdinsight
-Version:        0.3.0
+Version:        0.3.5
 Release:        0
 Summary:        Microsoft Azure CLI 'hdinsight' Command Module
 License:        MIT
@@ -33,9 +33,9 @@ BuildRequires:  python3-setuptools
 Requires:       azure-cli-command-modules-nspkg
 Requires:       azure-cli-core
 Requires:       azure-cli-nspkg
-Requires:       python3-azure-mgmt-hdinsight >= 0.2.0
-Requires:       python3-azure-mgmt-network >= 2.4.0
-Requires:       python3-azure-mgmt-storage >= 3.1.1
+Requires:       python3-azure-mgmt-hdinsight >= 0.2.1
+Requires:       python3-azure-mgmt-network >= 3.0.0
+Requires:       python3-azure-mgmt-storage >= 3.3.0
 Requires:       python3-azure-nspkg >= 3.0.0
 Conflicts:      azure-cli < 2.0.0
 

@@ -1,7 +1,7 @@
-From 6aca005f17aecf003da9a85f8dd099baef771572 Mon Sep 17 00:00:00 2001
+From f786cf97880bdf1ebed65db2f560ff15f1f29413 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jaime=20Caama=C3=B1o=20Ruiz?= <jcaamano@suse.com>
-Date: Fri, 26 Apr 2019 15:27:05 +0200
-Subject: [PATCH 1/6] Use strongswan for openvswitch-ipsec service
+Date: Mon, 28 Oct 2019 15:14:19 +0100
+Subject: [PATCH] Use strongswan for openvswitch-ipsec service
 
 Since libreswan is not packaged for Leap/SLES, use strongswan for the
 time being.
@@ -10,12 +10,12 @@ time being.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/rhel/usr_lib_systemd_system_openvswitch-ipsec.service b/rhel/usr_lib_systemd_system_openvswitch-ipsec.service
-index 6e309aa57..34e3f4c90 100644
+index d8f47af68..3c4a40138 100644
 --- a/rhel/usr_lib_systemd_system_openvswitch-ipsec.service
 +++ b/rhel/usr_lib_systemd_system_openvswitch-ipsec.service
-@@ -6,7 +6,7 @@ After=openvswitch.service
- [Service]
+@@ -7,7 +7,7 @@ After=openvswitch.service
  Type=forking
+ PIDFile=/var/run/openvswitch/ovs-monitor-ipsec.pid
  ExecStart=/usr/share/openvswitch/scripts/ovs-ctl \
 -                    --ike-daemon=libreswan start-ovs-ipsec
 +                    --ike-daemon=strongswan start-ovs-ipsec

@@ -20,7 +20,7 @@ Added:
 Fri Jul 13 07:39:53 UTC 2018 - dimstar@opensuse.org
 
 - Add baselibs.conf: build -32bit packages, which are needed by
-  zeromq's -32bit implementation.
+  zeromq's -32bit implementation. [bsc#1146257]
 
 -------------------------------------------------------------------
 Tue Mar 27 11:49:58 CEST 2018 - kukuk@suse.de

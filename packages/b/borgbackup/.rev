@@ -235,4 +235,13 @@
     <comment></comment>
     <requestid>704976</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>61244fae41f2ee49d64e01a4a5104743</srcmd5>
+    <version>1.1.10</version>
+    <time>1572558238</time>
+    <user>dimstar_suse</user>
+    <comment>- Require python3-setuptools since it's needed when running borg
+  to find the entry point (boo#1134650) (forwarded request 744452 from alarrosa)</comment>
+    <requestid>744498</requestid>
+  </revision>
 </revisionlist>

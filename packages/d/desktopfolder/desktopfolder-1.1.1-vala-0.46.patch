@@ -1,0 +1,13 @@
+diff --git a/desktopfolder-1.1.1.orig/src/utils/animation/GtkAnimation.vala b/desktopfolder-1.1.1/src/utils/animation/GtkAnimation.vala
+index a1cd56c..6f77d6a 100644
+--- a/src/utils/animation/GtkAnimation.vala
++++ b/src/utils/animation/GtkAnimation.vala
+@@ -51,7 +51,7 @@ namespace DesktopFolder.UtilGtkAnimation  {
+          * @param {double} duration the duration of the animation
+          * @param {AnimateFn} animation_fn the animation function
+          */
+-        public WidgetAnimation (Gtk.Widget widget, double duration, AnimateFn animation_fn) {
++        protected WidgetAnimation (Gtk.Widget widget, double duration, AnimateFn animation_fn) {
+             this._widget       = widget;
+             this._animation_fn = animation_fn;
+             this._duration     = duration;

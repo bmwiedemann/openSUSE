@@ -15,4 +15,12 @@
     <comment>- Fix Azure CLI build on SLE-12 (forwarded request 707497 from glaubitz)</comment>
     <requestid>707559</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>12d98c23768206aaee2fa6cdcf1a75e9</srcmd5>
+    <version>0.3.5</version>
+    <time>1572557817</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>744456</requestid>
+  </revision>
 </revisionlist>

@@ -24,6 +24,8 @@ License:        GPL-3.0-only
 Group:          Productivity/Office/Other
 URL:            https://github.com/Philip-Scott/Spice-up
 Source:         https://github.com/Philip-Scott/Spice-up/archive/%{version}.tar.gz#/Spice-up-%{version}.tar.gz
+# PATCH-FIX_UPSTREAM -- Make constructors of abstract classes protected (vala >= 0.46)
+Patch0:         spice-up-1.8.2-vala-0.46.patch
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -49,6 +51,7 @@ based upon SpiceOfDesign's presentation concept.
 
 %prep
 %setup -q -n Spice-up-%{version}
+%patch0 -p1
 
 %build
 %cmake \

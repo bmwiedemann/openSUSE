@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 31 11:20:34 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
+
+- Require python3-setuptools since it's needed when running borg
+  to find the entry point (boo#1134650)
+
+-------------------------------------------------------------------
 Thu May 23 09:40:02 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to version 1.1.10 (2019-05-16)

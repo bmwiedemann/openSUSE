@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug 27 00:46:55 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 20190607:
+  + List of changes unavailable from upstream.
+- Drop Fix-qch-build.patch: incorporate upstream.
+- Add a build script missed by upstream tarball
+  (preprocess_qch.py).
+- New build dependency: python3-premailer.
+
+-------------------------------------------------------------------
 Tue Apr  9 12:53:45 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add Fix-qch-build.patch to fix the qch generation.

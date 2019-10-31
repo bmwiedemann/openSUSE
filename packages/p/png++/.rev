@@ -7,4 +7,15 @@
     <comment>Clean SPEC file</comment>
     <requestid>451325</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>842266c9af58a5625890b1e92f6c65f2</srcmd5>
+    <version>0.2.10</version>
+    <time>1572558069</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.10
+  + fix compilation issue in png::solid_pixel_buffer template
+- Spec cleanup
+- Removed Group entry from spec file</comment>
+    <requestid>744476</requestid>
+  </revision>
 </revisionlist>

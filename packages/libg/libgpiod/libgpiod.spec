@@ -106,11 +106,13 @@ GPIO sysfs interface in Linux 4.8.
 
 Devel files part.
 
-%package -n python-%{name}
+%package -n python3-gpiod
 Summary:        Python binding for libgpiod
 Group:          Development/Languages/Python
+Provides:       python-libgpiod
+Obsoletes:      python-libgpiod
 
-%description -n python-%{name}
+%description -n python3-gpiod
 The libgpiod library encapsulates the ioctl calls and data structures
 of the GPIO character devices, the latter of which superseded the
 GPIO sysfs interface in Linux 4.8.
@@ -161,7 +163,7 @@ rm -rf %{buildroot}%{python3_sitearch}/*.{a,la}
 %{_libdir}/pkgconfig/libgpiod.pc
 %{_libdir}/pkgconfig/libgpiodcxx.pc
 
-%files -n python-%{name}
+%files -n python3-gpiod
 %{python3_sitearch}/*.so
 
 %changelog

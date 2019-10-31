@@ -115,4 +115,12 @@
 </comment>
     <requestid>743965</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>36eb187b4b95675e28b7c311e6a70290</srcmd5>
+    <version>1.4.1</version>
+    <time>1572557650</time>
+    <user>dimstar_suse</user>
+    <comment>Rename python package</comment>
+    <requestid>744438</requestid>
+  </revision>
 </revisionlist>

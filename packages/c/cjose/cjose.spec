@@ -25,6 +25,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/cisco/cjose
 Source:         https://github.com/cisco/cjose/archive/%{version}.tar.gz
 Patch0:         cjose-ck_assert_bin_eq.patch
+Patch1:         cjose-0.6.1-concatkdf.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(check) >= 0.9.4
@@ -63,10 +64,7 @@ make %{?_smp_mflags}
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-# the tests fail on s390
-%ifnarch s390 s390x
 make %{?_smp_mflags} check
-%endif
 
 %post -n libcjose0 -p /sbin/ldconfig
 %postun -n libcjose0 -p /sbin/ldconfig

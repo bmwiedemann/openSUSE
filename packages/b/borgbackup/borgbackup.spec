@@ -77,7 +77,7 @@ BuildRequires:  python3-guzzle_sphinx_theme
 BuildRequires:  python3-pytest
 %endif
 
-# weak dependencies
+Requires:       python3-setuptools
 Recommends:     python3-llfuse
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 

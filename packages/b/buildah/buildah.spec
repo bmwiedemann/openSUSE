@@ -22,7 +22,7 @@
 %define with_libostree 1
 %endif
 Name:           buildah
-Version:        1.11.3
+Version:        1.11.4
 Release:        0
 Summary:        Tool for building OCI containers
 License:        Apache-2.0

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 30 13:07:43 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.2.10
+  + fix compilation issue in png::solid_pixel_buffer template
+- Spec cleanup
+- Removed Group entry from spec file
+
+-------------------------------------------------------------------
 Thu Jan 19 09:21:48 UTC 2017 - guoyunhebrave@gmail.com
 
 - Clean SPEC file 

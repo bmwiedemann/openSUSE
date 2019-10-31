@@ -62,4 +62,13 @@ Added:
     <comment></comment>
     <requestid>725291</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>9d215f39c9ba4f3b82cba862e352bc81</srcmd5>
+    <version>5.2.122</version>
+    <time>1572557775</time>
+    <user>dimstar_suse</user>
+    <comment>Add missing bugnumber to the .changes file to sync
+changes file with SLE</comment>
+    <requestid>744451</requestid>
+  </revision>
 </revisionlist>

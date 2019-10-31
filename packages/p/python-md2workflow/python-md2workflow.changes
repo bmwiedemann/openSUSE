@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Oct 31 10:39:58 UTC 2019 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Update to 1.4.9
+
+ * Improve bold highlighting in JIRA text
+   https://github.com/openSUSE/md2workflow/issues/8 
+
+-------------------------------------------------------------------
+Thu Oct 31 10:16:07 UTC 2019 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Support all jira*.suse.de instances
+  
+* Add suse-staging.conf
+* Change suse-devel from lutoslawski to jira-devel.suse.de
+* lutoslawski moved to a separate file suse-lutoslawski.conf
+* Update states on prod, stage, devel https://github.com/openSUSE/md2workflow/issues/5
+ 
+
+-------------------------------------------------------------------
 Sat Aug 24 16:25:27 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase in summary. Use longer description from upstream.
