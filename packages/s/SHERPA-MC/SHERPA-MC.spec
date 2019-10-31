@@ -42,7 +42,6 @@ BuildRequires:  fastjet-plugin-siscone-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++ >= 6
 BuildRequires:  gcc-fortran >= 6
-BuildRequires:  openmpi-devel
 BuildRequires:  pkg-config
 BuildRequires:  pythia-devel
 BuildRequires:  python-devel

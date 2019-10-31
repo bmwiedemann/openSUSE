@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 20 02:54:52 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove unnecessary dependency on python-devel
+- Remove runtime code for Darwin, FreeBSD and Windows
+- Remove test suite from runtime package
+- Run spec-cleaner
+- Activate test suite
+
+-------------------------------------------------------------------
 Thu Sep  7 21:36:37 UTC 2017 - toddrme2178@gmail.com
 
 - Implement single-spec version

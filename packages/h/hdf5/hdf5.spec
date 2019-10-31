@@ -51,7 +51,7 @@ ExclusiveArch:  do_not_build
 %bcond_with hpc
 %endif
 
-%if "%{flavor}" == "openmpi"
+%if "%{flavor}" == "openmpi1"
 %{?DisOMPI1}
 %global mpi_flavor openmpi
 %define mpi_vers 1
@@ -173,9 +173,7 @@ ExclusiveArch:  do_not_build
 %{?with_mpi:%{!?mpi_flavor:error "No MPI family specified!"}}
 
 # For compatibility package names
-%if "%{mpi_flavor}" != "openmpi" || "%{mpi_vers}" != "1"
 %define mpi_ext %{?mpi_vers}
-%endif
 
 %if %{with hpc}
 %{hpc_init -c %compiler_family %{?with_mpi:-m %mpi_flavor} %{?c_f_ver:-v %{c_f_ver}} %{?mpi_vers:-V %{mpi_vers}} %{?ext:-e %{ext}}}

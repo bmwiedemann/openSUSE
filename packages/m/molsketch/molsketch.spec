@@ -1,7 +1,7 @@
 #
 # spec file for package molsketch
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@ Name:           molsketch
 Version:        0.5.1
 Release:        0
 Summary:        2D molecular structures editor
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Chemistry
 Url:            https://molsketch.sourceforge.net
 Source0:        https://downloads.sourceforge.net/molsketch/Molsketch-%{version}-src.tar.gz
@@ -33,16 +33,20 @@ BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
+%if 0%{suse_version} >= 1550
+BuildRequires:  rsvg-convert
+%else
 BuildRequires:  rsvg-view
-BuildRequires:  pkgconfig(openbabel-2.0)
+%endif
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Core) >= 5.2.0
 BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Network)
+BuildRequires:  pkgconfig(openbabel-2.0)
 
 %description
 The purpose of this editor to help drawing molecules.

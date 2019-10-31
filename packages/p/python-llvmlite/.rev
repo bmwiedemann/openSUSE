@@ -128,4 +128,12 @@ This version works with llvm 4.</comment>
     <comment></comment>
     <requestid>741414</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>593156edb1dc4ef8e06ce46154fddbb3</srcmd5>
+    <version>0.30.0</version>
+    <time>1572558490</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>744527</requestid>
+  </revision>
 </revisionlist>

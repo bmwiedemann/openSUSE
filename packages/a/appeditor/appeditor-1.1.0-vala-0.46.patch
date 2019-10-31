@@ -1,0 +1,21 @@
+diff -ruN appeditor-1.1.0.orig/src/DesktopApp.vala appeditor-1.1.0/src/DesktopApp.vala
+--- appeditor-1.1.0.orig/src/DesktopApp.vala	2018-08-11 03:36:15.000000000 +0300
++++ appeditor-1.1.0/src/DesktopApp.vala	2019-10-31 18:28:16.429914184 +0300
+@@ -130,7 +130,7 @@
+ 
+     public unowned string get_path () {
+         if (path == null) {
+-            unowned string _path = info.get_string (KeyFileDesktop.KEY_PATH);
++            string _path = info.get_string (KeyFileDesktop.KEY_PATH);
+             if (_path == null) {
+                 _path = "";
+             }
+@@ -150,7 +150,7 @@
+     }
+ 
+     public bool get_should_show () {
+-        return info.should_show () && !get_terminal (); 
++        return info.should_show () && !get_terminal ();
+     }
+ 
+     public string[] get_categories () {

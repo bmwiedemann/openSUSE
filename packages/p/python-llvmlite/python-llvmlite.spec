@@ -21,7 +21,7 @@
 %ifarch ppc64 ppc64le
 %define         llvm_major 7
 %else
-%define         llvm_major 8
+%define         llvm_major 9
 %endif
 Name:           python-llvmlite
 Version:        0.30.0
@@ -30,6 +30,7 @@ Summary:        Lightweight wrapper around basic LLVM functionality
 License:        BSD-2-Clause
 URL:            http://llvmlite.pydata.org
 Source:         https://github.com/numba/llvmlite/archive/v%{version}.tar.gz#/llvmlite-%{version}.tar.gz
+Patch1:         support-clang9.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  clang%{llvm_major}-devel
@@ -68,6 +69,9 @@ following approach:
 
 %prep
 %setup -q -n %{modname}-%{version}
+%if %{pkg_vcmp llvm%{llvm_major}-devel >= 9.0}
+%patch1 -p1
+%endif
 
 %build
 export CXX="clang++ -fPIC"

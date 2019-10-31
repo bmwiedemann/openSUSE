@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 10 07:16:23 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Remove unused BuildRequires to openmpi
+
+-------------------------------------------------------------------
 Thu Sep  5 13:07:17 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Disable link-time-optimization to prevent build failures.
