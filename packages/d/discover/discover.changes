@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Oct 29 20:45:50 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.2.php
+- Changes since 5.17.1:
+  * notifier: make it possible to replace the instance
+  * app delegate: improve on narrow windows (kde#411828)
+  * flatpak: oops
+  * pk: notify about problems regarding file listing
+  * appstream: support more formats of appstream urls (kde#408419)
+  * notifier: don't autostart outside of Plasma (kde#413235)
+  * snap: fix cancelling (kde#404358)
+  * pk: readability
+  * pk: Make action buttons translatable
+  * notifier: Make action buttons translatable
+  * pk: don't show redundant packages on updates
+
+-------------------------------------------------------------------
 Tue Oct 22 16:44:42 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.1

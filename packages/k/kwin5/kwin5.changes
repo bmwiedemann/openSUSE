@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct 29 20:45:51 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.2.php
+- Changes since 5.17.1:
+  * Dmabuf recovery on EGL reset (kde#411980)
+  * [kcmkwin/kwindecoration] Fix default window size in KCMShell This also fixes a binding loop. (kde#413557)
+  * [kcmkwin/desktop] Elide "Show animation when switching" checkbox text (kde#403151)
+  * [kcmkwin/kwinvirtualdesktops] Improve default window size when opened in kcmshell
+  * [scripting] Provide conversion functions for AbstractClient (kde#413044)
+  * Don't use MESA_EGL_NO_X11_HEADERS
+  * [kcmkwin/kwindecoration] Elide "theme default border size" CheckBox
+
+-------------------------------------------------------------------
 Tue Oct 22 16:44:44 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.1

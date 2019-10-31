@@ -600,4 +600,12 @@
     <comment>Plasma 5.17.1</comment>
     <requestid>742070</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>883b1d0cd77b5a98e8f8190616682335</srcmd5>
+    <version>5.17.2</version>
+    <time>1572541955</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.17.2 (forwarded request 744043 from Vogtinator)</comment>
+    <requestid>744244</requestid>
+  </revision>
 </revisionlist>
