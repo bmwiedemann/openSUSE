@@ -20,7 +20,7 @@
 %define majorver 4.6
 %define base_name tryton
 Name:           trytond
-Version:        %{majorver}.20
+Version:        %{majorver}.21
 Release:        0
 
 Summary:        An Enterprise Resource Planning (ERP) system
@@ -110,7 +110,7 @@ EOF
 
 getent group tryton > /dev/null || %{_sbindir}/groupadd -r tryton || :
 getent passwd tryton > /dev/null || %{_sbindir}/useradd -r -g tryton \
-       -d %{_localstatedir}/lib/%{name} -s /sbin/nologin \
+       -d %{_localstatedir}/lib/tryton -s /sbin/nologin \
 	-c 'Tryton ERP' tryton || :
 %service_add_pre trytond.service
 
