@@ -228,4 +228,25 @@
     <comment>- Upgrade to version 1.5.0 (bsc#1153301):</comment>
     <requestid>736086</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>59c972393726515f7870e7eb1585d674</srcmd5>
+    <version>1.5.1</version>
+    <time>1572617609</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.1: 
+  * Numerous assorted bugfixes
+  * Add a new fdt_create_with_flags() function, and a
+    FDT_CREATE_FLAG_NO_NAME_DEDUP flag which improves speed at the
+    cost of tree size by not deduplicating property names in the
+    strings section
+  * Run tests against shared library, so it will catch the common
+    mistake of not adding new symbols to the versioning script
+  * Add a number of missing symbols to versioning script
+  * Use Python3 by default for pylibfdt
+  * New fdt_append_addrrange() function in libfdt
+- remove dtc-license.patch (upstream)
+
+- Enable YAML output format</comment>
+    <requestid>744186</requestid>
+  </revision>
 </revisionlist>

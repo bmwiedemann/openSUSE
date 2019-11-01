@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 28 17:28:34 UTC 2019 - Lee Duncan <lduncan@suse.com>
+
+- Updated SPEC file %_lto_cflags definition so that it does not
+  cause recursion.
+
+-------------------------------------------------------------------
 Wed Oct 23 08:08:55 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Move back "%global _lto_cflags ..." line as it's needed

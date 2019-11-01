@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Thu Oct 31 13:16:21 UTC 2019 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#676
+- handle is_permanent() in possible_mount_bys() (bsc#1155566)
+- simplified code
+- 4.2.19
+
+--------------------------------------------------------------------
+Mon Oct 28 14:20:38 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Estonian) (bsc#1149754)
+- 4.2.18
+
+--------------------------------------------------------------------
 Fri Oct 18 11:07:38 UTC 2019 - ancor@suse.de
 
 - merge gh#openSUSE/libstorage-ng#675

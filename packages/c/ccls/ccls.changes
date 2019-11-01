@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 29 08:53:30 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Update to release 0.20190823.4
+
+  Add 0001-Fix-builds-for-LLVM-9-for-LLVM-build-without-BUILD_S.patch
+  (fixes builds with LLVM 9 that was build without the unsuported flag
+   BUILD_SHARED_LIBS=ON, see boo#1155416)
+
+-------------------------------------------------------------------
 Mon Sep 30 12:01:59 UTC 2019 - Dan Čermák <dcermak@suse.com>
 
 - Update to release 0.20190823.3

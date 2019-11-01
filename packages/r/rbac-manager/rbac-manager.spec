@@ -18,7 +18,7 @@
 
 
 Name:           rbac-manager
-Version:        0.8.3
+Version:        0.8.4
 Release:        0
 Summary:        Kubernetes operator for easier RBAC management
 License:        Apache-2.0
@@ -57,7 +57,7 @@ install -D -m 0755 rbac-manager %{buildroot}%{_sbindir}/
 # Install provided yaml file to download and run the rbac-manager
 mkdir -p %{buildroot}%{_datadir}/k8s-yaml/rbac-manager
 install -m 0644 deploy/all.yaml %{buildroot}%{_datadir}/k8s-yaml/rbac-manager
-sed -i -e 's|image: "quay.io/reactiveops/rbac-manager:.*|image: "devel/kubic/containers/container/kubic/rbac-manager:%{version}"|g' %{buildroot}%{_datadir}/k8s-yaml/rbac-manager/all.yaml
+sed -i -e 's|image: "quay.io/reactiveops/rbac-manager:.*|image: "kubic/rbac-manager:%{version}"|g' %{buildroot}%{_datadir}/k8s-yaml/rbac-manager/all.yaml
 
 %files
 %license LICENSE

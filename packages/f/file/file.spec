@@ -20,7 +20,7 @@
 %define libname libmagic%{somajor}
 
 Name:           file
-BuildRequires:  findutils
+BuildRequires:  bash >= 4.0
 BuildRequires:  libtool
 BuildRequires:  zlib-devel
 Url:            http://www.darwinsys.com/file/
@@ -81,9 +81,7 @@ Summary:        Database for libmagic to help identify files
 Group:          Productivity/File utilities
 Obsoletes:      libmagic-data < %{version}
 Provides:       libmagic-data = %{version}
-%if 0%{?suse_version} >= 1200
 BuildArch:      noarch
-%endif
 
 %description magic
 This package contains the basic magic files that libmagic reads and uses
@@ -162,11 +160,16 @@ echo '#     global magic file is %{_miscdir}/magic(.mgc)'	>> %{buildroot}%{_sysc
 %if %{with decore}
 install -s dcore %{buildroot}%{_bindir}
 %endif
+
 # Check out that the binary does not bail out:
 LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 export LD_LIBRARY_PATH
-find %{buildroot}%{_bindir}/file %{_bindir}/ /%{_lib}/ %{_libdir}/ | \
+%{buildroot}%{_bindir}/file -m %{buildroot}%{_miscdir}/magic %{buildroot}%{_bindir}/file
+shopt -s globstar
+for dir in %{_bindir} /%{_lib} %{_libdir} ; do
+	echo $dir/** | \
 	xargs %{buildroot}%{_bindir}/file -m %{buildroot}%{_miscdir}/magic
+done
 unset LD_LIBRARY_PATH
 rm -f %{buildroot}%{_libdir}/*.la
 

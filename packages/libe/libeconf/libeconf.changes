@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 28 12:11:12 UTC 2019 - iforster@suse.com
+
+- Update to version 0.3.3+git20191028.3ac14ce:
+  * Release version 0.3.3
+  * Reset *key_file to NULL after free
+
+-------------------------------------------------------------------
 Thu Sep 26 17:43:54 UTC 2019 - kukuk@suse.com
 
 - Update to version 0.3.2+git20190926.fea4a03:

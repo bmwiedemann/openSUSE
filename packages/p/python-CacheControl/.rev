@@ -47,4 +47,13 @@
   this package</comment>
     <requestid>732618</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>f35d9f97ca13ed943cfabe64cc528f45</srcmd5>
+    <version>0.12.5</version>
+    <time>1572617646</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to work with new pytest:
+  * pytest4.patch</comment>
+    <requestid>744702</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Thu Oct 31 13:56:17 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.3.11
+  * Fixed lots of possible crashes in the IT, XM, S3M, STM, STX,
+    AMF, IMF, GDM and MED module loaders.
+  * Fixed a possible endless loop in the IT loader with
+    malformed files.
+  * Fixed signed integer overflow leading to crashes in the
+    sample loader.
+  * Fixed a possible crash in MMCMP depacker with malformed
+    files.
+  * Fixed the broken fixed-line comment reader which might
+    possibly lead to crashes, and also badly translated several
+    song messages. The new code is adapted from libopenmpt.
+  * Support for building the Windows version using Open Watcom
+    compiler.
+  * A few minor OS/2 fixes.
+  * CMake updates.
+  * Other minor fixes/tidy-ups.
+  version 3.3.10:
+  * Fixed windows builds when UNICODE is defined. (Thanks S.
+    Michel).
+  version 3.3.9:
+  * Amiga, AHI driver: Fixed a crash upon driver shutdown.
+  * Amiga: Updates. Added standalone makefiles with cross-build
+    support.
+  * RAW file writer: Changed to use ansi stdio functions instead
+    of posix unistd, for better portability.
+  * Playercode: Allocate the right channel reverb buffers only
+    if the mixer is setup for stereo mode. (Helps with ports to
+    memory-tight platforms. Patch from Andrew Rossignol.)
+  * Fixed access to uninitialized memory in the simpleplayMEM
+    example program.
+  * Added a configuration option to exclude the hqmixer (off by
+    default.)
+  * Using locale-insensitive ctype.h and casecmp functions in
+    library.
+  * Configury: New --disable-alldrv option to disable all of the
+    audio output drivers.  If additional --enable-xxx options are
+    given, the specified drivers will be enabled.
+  version 3.3.8:
+  * Handle the FastTracker2 pattern loop (E60) bug. Modules
+    abusing this bug (roadblas.xm) should play correctly now.
+    Thanks to Eugene Toder.
+  * AMF loader: Fixed segmentation fault in case of bad sample
+    offsets in broken files. (sf.net bug #26, thanks to 'Saga'
+    of OpenMPT project for the report and analysis.)
+  * AMF loader: Fixed loading of v10 files where sample loop
+    start and end values must be read as 32 bits, not 16 bits.
+    (Tested with Maelcum's "the tribal zone" and "the way its
+    gonna b". Noticed in OpenMPT source)
+  * Fixed a possible undefined behavior in the XM loader.
+  * Support for MMCMP, Amiga PP20 (PowerPack), STC (Stone
+    Cracker S404) and XPK compressed module formats, based on
+    public domain code from libmodplug and libxmp.
+  * Support for OpenBSD sndio.
+  * Fixed SDL output driver, so that it doesn't crash upon
+    resetting.
+  * Disabled the gt2 loader until it is completed properly. (It
+    has been always non-functional since its introduction in
+    v3.2.0.)
+  * Updated configury. The aix, hpux, bsd/sunaudio and sgi audio
+    drivers are now configurable and not built unconditionally.
+    Haiku support thanks to Jérôme Duval.
+  * Documentation update.
+  * Update DOS build for the new djgpp-2.05 release.
+  * Minor fix/tidy-ups.
+
+- Spec cleanup
+
+-------------------------------------------------------------------
 Tue Feb 10 18:42:24 UTC 2015 - p.drouand@gmail.com
 
 - Update to version 3.3.7

@@ -1,7 +1,7 @@
 #
 # spec file for package rkward
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,7 +20,7 @@ Name:           rkward
 Version:        0.7.0b
 Release:        0
 Summary:        Graphical frontend for R language
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Scientific/Math
 Summary(fr):    Interface graphique pour le langage R 
 
@@ -39,12 +39,12 @@ BuildRequires:  R-base-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-fortran
 BuildRequires:  gettext
-BuildRequires:  kf5-filesystem
 BuildRequires:  kconfig-devel
 BuildRequires:  kcoreaddons-devel
 BuildRequires:  kcrash-devel
 BuildRequires:  kdewebkit-devel
 BuildRequires:  kdoctools-devel
+BuildRequires:  kf5-filesystem
 BuildRequires:  ki18n-devel
 BuildRequires:  knotifications-devel
 BuildRequires:  kparts-devel
@@ -52,6 +52,7 @@ BuildRequires:  ktexteditor-devel
 BuildRequires:  kwidgetsaddons-devel
 BuildRequires:  kwindowsystem-devel
 BuildRequires:  kxmlgui-devel
+BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5PrintSupport)
@@ -59,7 +60,6 @@ BuildRequires:  cmake(Qt5Script)
 BuildRequires:  cmake(Qt5WebKitWidgets)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
-BuildRequires:  update-desktop-files
 # rkward needs the R-base version it was compiled with - boo#993268
 %requires_eq    R-base
 
@@ -94,13 +94,14 @@ cd build
 
 %files -f build/%{name}.lang
 %defattr(-,root,root,-)
-%doc README COPYING TODO AUTHORS
+%doc README TODO AUTHORS
 %doc %{_kf5_mandir}/man1/rkward.1.gz
 %dir %{_kf5_sharedir}/doc/HTML/en/rkwardplugins
 %doc %{_kf5_sharedir}/doc/HTML/en/rkwardplugins/index.cache.bz2
 %doc %{_kf5_sharedir}/doc/HTML/en/rkwardplugins/index.docbook
 %doc %{_kf5_sharedir}/doc/HTML/en/rkwardplugins/menu_hierarchy_example.png
 %doc %{_kf5_sharedir}/doc/HTML/en/rkwardplugins/t_test_plugin_example.png
+%license COPYING
 %{_libdir}/R/library/rkward/
 %{_libdir}/R/library/rkwardtests/
 %{_kf5_applicationsdir}/org.kde.rkward.desktop

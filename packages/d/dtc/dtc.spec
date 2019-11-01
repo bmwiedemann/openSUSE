@@ -18,18 +18,16 @@
 
 %define         sover 1
 Name:           dtc
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        Device-tree compiler
 License:        GPL-2.0-or-later
-Group:          Development/Tools/Building
-Url:            https://github.com/dgibson/dtc
+URL:            https://github.com/dgibson/dtc
 Source0:        https://mirrors.edge.kernel.org/pub/software/utils/dtc/dtc-%{version}.tar.gz
 Source1:        baselibs.conf
-Patch3:         dtc-license.patch
 BuildRequires:  bison
 BuildRequires:  flex
-BuildRequires:  valgrind-devel
+BuildRequires:  libyaml-devel
 
 %description
 PowerPC kernels are moving towards requiring a small Open
@@ -42,7 +40,6 @@ available via a git tree: git://ozlabs.org/srv/projects/dtc/dtc.git
 
 %package -n libfdt%{sover}
 Summary:        Device tree library
-Group:          Development/Libraries/C and C++
 
 %description -n libfdt%{sover}
 libfdt is a library to process Open Firmware style device trees on various
@@ -50,7 +47,6 @@ architectures.
 
 %package -n libfdt-devel
 Summary:        Development headers for device tree library
-Group:          Development/Libraries/C and C++
 Requires:       libfdt%{sover} = %{version}-%{release}
 # Provide previously used incorrectly named devel package
 Provides:       libfdt1-devel = %{version}-%{release}
@@ -61,7 +57,6 @@ This package provides development files for libfdt
 
 %prep
 %setup -q
-%patch3
 
 %build
 make %{?_smp_mflags} V=1
@@ -75,8 +70,8 @@ rm -f %{buildroot}/%{_libdir}/*.a
 make %{?_smp_mflags} check
 
 %files
-%defattr(-,root,root)
-%doc README.license Documentation/manual.txt
+%license README.license
+%doc Documentation/manual.txt
 %{_bindir}/convert-dtsv0
 %{_bindir}/dtc
 %{_bindir}/dtdiff
@@ -89,13 +84,10 @@ make %{?_smp_mflags} check
 %postun -n libfdt%{sover} -p /sbin/ldconfig
 
 %files -n libfdt%{sover}
-%defattr(-,root,root,-)
-%doc GPL
-%{_libdir}/libfdt-%{version}.so
+%{_libdir}/libfdt-1.5.0.so
 %{_libdir}/libfdt.so.*
 
 %files -n libfdt-devel
-%defattr(-,root,root,-)
 %{_libdir}/libfdt.so
 %{_includedir}/*
 

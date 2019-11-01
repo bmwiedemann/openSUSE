@@ -25,6 +25,7 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/ionrock/cachecontrol
 Source:         https://github.com/ionrock/cachecontrol/archive/v0.12.5.tar.gz#/CacheControl-%{version}.tar.gz
+Patch0:         pytest4.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -39,7 +40,7 @@ BuildRequires:  python3-CherryPy
 BuildRequires:  python3-lockfile >= 0.9
 BuildRequires:  python3-mock
 BuildRequires:  python3-msgpack
-BuildRequires:  python3-pytest < 4
+BuildRequires:  python3-pytest
 BuildRequires:  python3-redis >= 2.10.5
 BuildRequires:  python3-requests
 # /SECTION
@@ -51,6 +52,7 @@ requests session object.
 
 %prep
 %setup -q -n cachecontrol-%{version}
+%patch0 -p1
 
 %build
 %python_build

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  1 09:31:12 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to work with new pytest:
+  * pytest4.patch
+
+-------------------------------------------------------------------
 Wed Sep 18 09:15:22 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Restrict pytest to 3.x as newer released do not work with

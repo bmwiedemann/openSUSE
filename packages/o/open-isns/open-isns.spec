@@ -57,7 +57,7 @@ Files to develop an application using the open-isns library.
 %setup -n %{name}-%{version}
 
 %build
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+%global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 autoconf
 autoheader
 %configure

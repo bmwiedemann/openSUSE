@@ -23,7 +23,6 @@ Version:        4.5
 Release:        0
 Summary:        An interactive HTML debugger for Pyramid application development
 License:        BSD-4-Clause AND ZPL-2.1 AND MIT
-Group:          Development/Languages/Python
 URL:            https://docs.pylonsproject.org
 Source:         https://files.pythonhosted.org/packages/source/p/pyramid_debugtoolbar/pyramid_debugtoolbar-%{version}.tar.gz
 BuildRequires:  %{python_module Pygments}
@@ -58,7 +57,6 @@ Werkzeug debugger code by Armin Ronacher and team.
 
 %package -n %{name}-doc
 Summary:        Documentation files for %{name}
-Group:          Documentation/Other
 Requires:       %{name} = %{version}
 
 %description -n %{name}-doc
@@ -73,7 +71,7 @@ rm -r demo/.gitignore demo/debugtoolbar_demo.egg-info
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 #Fix spurious executable bit on js/css files
 %python_expand find %{buildroot}%{$python_sitelib} -type f -exec chmod 0644 {} \;
 

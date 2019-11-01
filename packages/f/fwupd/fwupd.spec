@@ -246,14 +246,16 @@ fi
 %dir %{_datadir}/%{name}/metainfo
 %dir %{_datadir}/%{name}/quirks.d
 %dir %{_datadir}/%{name}/remotes.d
-%dir %{_datadir}/%{name}/remotes.d/dell-esrt
 %dir %{_datadir}/%{name}/remotes.d/vendor
 %dir %{_datadir}/%{name}/remotes.d/vendor/firmware
+%ifarch %{ix86} x86_64
+%dir %{_datadir}/%{name}/remotes.d/dell-esrt
+%{_datadir}/%{name}/remotes.d/dell-esrt/metadata.xml
+%endif
 %{_datadir}/%{name}/firmware-packager
 %{_datadir}/%{name}/metainfo/org.freedesktop.fwupd.remotes.lvfs-testing.metainfo.xml
 %{_datadir}/%{name}/metainfo/org.freedesktop.fwupd.remotes.lvfs.metainfo.xml
 %{_datadir}/%{name}/quirks.d/*.quirk
-%{_datadir}/%{name}/remotes.d/dell-esrt/metadata.xml
 %{_datadir}/%{name}/remotes.d/vendor/firmware/README.md
 %{_mandir}/man1/fwupdmgr.1%{?ext_man}
 %{_datadir}/polkit-1/actions/org.freedesktop.fwupd.policy

@@ -23,7 +23,6 @@ Version:        0.3
 Release:        0
 Summary:        Pyramid Chameleon integration
 License:        BSD-3-Clause AND ZPL-2.1 AND MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/Pylons/pyramid_chameleon
 Source:         https://files.pythonhosted.org/packages/source/p/pyramid_chameleon/pyramid_chameleon-%{version}.tar.gz
 Patch0:         fix-test___call__spec_alreadyregistered.patch
@@ -33,7 +32,6 @@ BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module plaster-pastedeploy}
 BuildRequires:  %{python_module plaster}
 BuildRequires:  %{python_module pyramid} >= 1.4
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module virtualenv}
 BuildRequires:  fdupes
@@ -58,7 +56,7 @@ rm -rf docs/
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py test

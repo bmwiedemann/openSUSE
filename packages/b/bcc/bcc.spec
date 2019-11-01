@@ -37,6 +37,7 @@ Group:          Development/Tools/Other
 Url:            https://github.com/iovisor/bcc
 Source:         https://github.com/iovisor/bcc/archive/v%{version}.tar.gz
 Source1:        https://github.com/libbpf/libbpf/archive/v%{libbpf_version}.tar.gz
+Patch1:         support-clang9.patch
 ExcludeArch:    ppc s390
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8.7
@@ -147,7 +148,11 @@ Group:          Documentation/Other
 Documentation on how to write programs with the BPF Compiler Collection.
 
 %prep
-%setup -D -n %{name}-%{version}
+%setup -q -D -n %{name}-%{version}
+%if %{pkg_vcmp llvm-devel >= 9.0}
+%patch1 -p1
+%endif
+
 pushd src/cc/libbpf
 tar xf %{SOURCE1} --strip 1
 popd
@@ -195,7 +200,7 @@ find tools/ examples/ -type f -exec \
 find tools/ examples/ -type f -exec \
 	sed -Ei '1s|^#!/usr/bin/env bcc-lua|#!/usr/bin/bcc-lua|' {} +
 find tools/ examples/ -type f -exec \
-	sed -Ei 's|"python"|"python3"|g' {} +
+	sed -i '1s|/bin/python|/bin/python3|g' {} +
 
 %install
 pushd build

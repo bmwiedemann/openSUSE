@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 31 17:42:21 CET 2019 - ro@suse.de
+
+- add patch libcompizconfig-configure-retval.patch
+  fix configure check for posix compatible scandir function
+  that always failed due to -Werror=return-type 
+
+-------------------------------------------------------------------
 Sun Nov 11 18:15:12 UTC 2018 - sor.alexei@meowr.ru
 
 - Update to version 0.8.16:

@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="version">0.3.2</param>
-    <param name="versionformat">0.3.2+git%cd.%h</param>
+    <param name="version">0.3.3</param>
+    <param name="versionformat">0.3.3+git%cd.%h</param>
     <param name="url">git://github.com/openSUSE/libeconf.git</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>

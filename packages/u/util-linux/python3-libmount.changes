@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct  8 14:48:15 CEST 2019 - kukuk@suse.de
+
+- libeconf.patch: fix a long int error on 32bit
+
+-------------------------------------------------------------------
+Tue Oct  1 13:19:42 CEST 2019 - kukuk@suse.de
+
+- libeconf.patch: Add support for libeconf
+- Move /etc/pam.d/* to /usr/etc/pam.d
+- Remove migration code for su from coreutils to util-linux, not
+  needed anymore
+
+-------------------------------------------------------------------
 Thu Sep 19 11:54:29 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
 
 - Do not recommend lang package. The lang package already has a

@@ -22,6 +22,12 @@
 %bcond_with     enable_last
 %endif
 
+%if ! %{defined _distconfdir}
+%define _distconfdir %{_sysconfdir}
+%else
+%define no_config 1
+%endif
+
 Name:           python3-libmount
 %define _name   util-linux
 # WARNING: Never edit this file!!! Edit util-linux.spec and call pre_checkin.sh to update spec files:
@@ -79,6 +85,7 @@ BuildRequires:  binutils-devel
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  libcap-ng-devel
+BuildRequires:  libeconf-devel
 BuildRequires:  libselinux-devel
 BuildRequires:  libsepol-devel
 BuildRequires:  libtool
@@ -139,6 +146,7 @@ Source51:       blkid.conf
 Patch0:         make-sure-sbin-resp-usr-sbin-are-in-PATH.diff
 Patch1:         libmount-print-a-blacklist-hint-for-unknown-filesyst.patch
 Patch2:         Add-documentation-on-blacklisted-modules-to-mount-8-.patch
+Patch3:         libeconf.patch
 Patch813:       e3bb9bfb76c17b1d05814436ced62c05c4011f48.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #
@@ -404,6 +412,7 @@ cp -a %{S:2} .
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 %patch813 -p1
 
 %build
@@ -568,6 +577,7 @@ AUTOPOINT=true autoreconf -vfi
 %else
   --without-python \
 %endif
+  --enable-vendordir=%{_distconfdir}
 
 #
 # Safety check: HAVE_UUIDD should be always 1:
@@ -610,17 +620,17 @@ exit "$result"
 
 %install
 %if %build_util_linux
-mkdir -p %{buildroot}{%{_sysconfdir}/{pam.d,default},%{_mandir}/man{1,8},/bin,/sbin,%{_bindir},%{_sbindir},%{_infodir},%{_sysconfdir}/issue.d}
+mkdir -p %{buildroot}{%{_distconfdir}/{pam.d,default},%{_mandir}/man{1,8},/bin,/sbin,%{_bindir},%{_sbindir},%{_infodir},%{_sysconfdir}/issue.d}
 install -m 644 %{SOURCE51} %{buildroot}%{_sysconfdir}/blkid.conf
-install -m 644 %{SOURCE8} %{buildroot}%{_sysconfdir}/pam.d/login
-install -m 644 %{SOURCE9} %{buildroot}%{_sysconfdir}/pam.d/remote
-install -m 644 %{SOURCE14} %{buildroot}%{_sysconfdir}/pam.d/runuser
-install -m 644 %{SOURCE15} %{buildroot}%{_sysconfdir}/pam.d/runuser-l
-install -m 644 %{SOURCE10} %{buildroot}%{_sysconfdir}/pam.d/su
-install -m 644 %{SOURCE16} %{buildroot}%{_sysconfdir}/pam.d/su-l
-install -m 644 %{SOURCE11} %{buildroot}%{_sysconfdir}/default/su
+install -m 644 %{SOURCE8} %{buildroot}%{_distconfdir}/pam.d/login
+install -m 644 %{SOURCE9} %{buildroot}%{_distconfdir}/pam.d/remote
+install -m 644 %{SOURCE14} %{buildroot}%{_distconfdir}/pam.d/runuser
+install -m 644 %{SOURCE15} %{buildroot}%{_distconfdir}/pam.d/runuser-l
+install -m 644 %{SOURCE10} %{buildroot}%{_distconfdir}/pam.d/su
+install -m 644 %{SOURCE16} %{buildroot}%{_distconfdir}/pam.d/su-l
+install -m 644 %{SOURCE11} %{buildroot}%{_distconfdir}/default/su
 sed 's/\bsu\b/runuser/g' <%{SOURCE11} >runuser.default
-install -m 644 runuser.default %{buildroot}%{_sysconfdir}/default/runuser
+install -m 644 runuser.default %{buildroot}%{_distconfdir}/default/runuser
 %endif
 #
 # util-linux install
@@ -745,29 +755,15 @@ ln -sf /sbin/service %{buildroot}/usr/sbin/rcfstrim
 %if %build_util_linux
 %pre
 %service_add_pre raw.service
+# move outdated pam.d/*.rpmsave files away
+for i in login remote runuser runuser-l su su-l ; do
+    test -f /etc/pam.d/${i}.rpmsave && mv -v /etc/pam.d/${i}.rpmsave /etc/pam.d/${i}.rpmsave.old ||:
+done
 
 %post
 %service_add_post raw.service
 %set_permissions %{_bindir}/wall %{_bindir}/write %{_bindir}/mount %{_bindir}/umount
 %set_permissions %{_bindir}/su
-#
-# Safely migrate PAM files from coreutils to util-linux
-# (openSUSE 12.3->13.1, SLE11->SLE12)
-#
-# coreutils with su were upgraded (and su removed) before util-linux
-# with su was installed (see the Conflicts above). If the admin edited
-# the PAM file, the seemingly no more used modified file was saved as
-# .rpmsave and the new clean file was installed. As we want
-# "noreplace" upgrade, and the contents of the clean file contents has
-# no changes, we should restore admin modification, and rename the
-# clean file to .rpmnew, as it would happen if the file was not moved
-# from one package to another.
-for PAM_FILE in su su-l ; do
-	if test -f %{_sysconfdir}/pam.d/$PAM_FILE.rpmsave ; then
-		mv %{_sysconfdir}/pam.d/$PAM_FILE %{_sysconfdir}/pam.d/$PAM_FILE.rpmnew
-		mv %{_sysconfdir}/pam.d/$PAM_FILE.rpmsave %{_sysconfdir}/pam.d/$PAM_FILE
-	fi
-done
 #
 # If outdated PAM file is detected, issue a warning.
 for PAM_FILE in login remote runuser runuser-l su su-l ; do
@@ -792,6 +788,12 @@ if ! grep -q "^# /etc/default/su is an override" %{_sysconfdir}/default/su ; the
 		echo "Please edit %{_sysconfdir}/login.defs or %{_sysconfdir}/default/su to restore your customization." >&2
 	fi
 fi
+
+%posttrans
+# Migration to /usr/etc.
+for i in  login remote runuser runuser-l su su-l; do
+  test -f /etc/pam.d/${i}.rpmsave && mv -v /etc/pam.d/${i}.rpmsave /etc/pam.d/${i} ||:
+done
 
 %preun
 %service_del_preun raw.service
@@ -890,6 +892,17 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %config(noreplace) %attr(644,root,root) %{_sysconfdir}/raw
 %config(noreplace) %{_sysconfdir}/filesystems
 %config(noreplace) %{_sysconfdir}/blkid.conf
+%if %{defined no_config}
+%{_distconfdir}/pam.d/login
+%{_distconfdir}/pam.d/remote
+%{_distconfdir}/pam.d/runuser
+%{_distconfdir}/pam.d/runuser-l
+%{_distconfdir}/pam.d/su
+%{_distconfdir}/pam.d/su-l
+%{_distconfdir}/default
+%{_distconfdir}/default/runuser
+%{_distconfdir}/default/su
+%else
 %config(noreplace) %{_sysconfdir}/pam.d/login
 %config(noreplace) %{_sysconfdir}/pam.d/remote
 %config(noreplace) %{_sysconfdir}/pam.d/runuser
@@ -898,6 +911,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %config(noreplace) %{_sysconfdir}/pam.d/su-l
 %config(noreplace) %{_sysconfdir}/default/runuser
 %config(noreplace) %{_sysconfdir}/default/su
+%endif
 %config %dir %{_sysconfdir}/issue.d
 #UsrMerge
 /bin/kill

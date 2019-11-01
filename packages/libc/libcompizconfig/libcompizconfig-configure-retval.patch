@@ -1,0 +1,10 @@
+--- libcompizconfig-0.8.16/configure.ac	2019/10/31 16:41:02	1.1
++++ libcompizconfig-0.8.16/configure.ac	2019/10/31 16:41:36
+@@ -111,6 +111,7 @@
+ 	  # include <dirent.h>
+ 	  int func (const char *d, dirent ***list, void *sort) {
+ 	    int n = scandir(d, list, 0, (int(*)(const dirent **, const dirent **))sort);
++	    return 0;
+ 	  }
+ 	],[
+ 	], ac_cv_cxx_scandir_posix=yes, ac_cv_cxx_scandir_posix=no)

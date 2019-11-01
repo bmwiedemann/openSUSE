@@ -1,0 +1,41 @@
+From 2b886af2a3d0271bf5598ba3917e39395bb8f4b5 Mon Sep 17 00:00:00 2001
+From: TheJokr <leo@dashsec.com>
+Date: Fri, 25 Jan 2019 21:53:53 +0100
+Subject: [PATCH] Removed cherrypy.server from pytest namespace
+
+pytest_namespace was removed in pytest version 4.0.
+The fixture now points directly to cherrypy.server.
+---
+ tests/conftest.py | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index f9701cf..c581c0d 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -107,7 +107,7 @@ def __call__(self, env, start_response):
+ 
+ @pytest.fixture(scope="session")
+ def server():
+-    return pytest.server
++    return cherrypy.server
+ 
+ 
+ @pytest.fixture()
+@@ -124,7 +124,7 @@ def get_free_port():
+     return ip, port
+ 
+ 
+-def pytest_namespace():
++def pytest_configure(config):
+     cherrypy.tree.graft(SimpleApp(), "/")
+ 
+     ip, port = get_free_port()
+@@ -136,7 +136,6 @@ def pytest_namespace():
+     logger.removeHandler(logger.handlers[0])
+ 
+     cherrypy.server.start()
+-    return {"server": cherrypy.server}
+ 
+ 
+ def pytest_unconfigure(config):

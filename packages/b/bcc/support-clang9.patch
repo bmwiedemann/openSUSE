@@ -1,0 +1,58 @@
+Index: bcc-0.11.0/CMakeLists.txt
+===================================================================
+--- bcc-0.11.0.orig/CMakeLists.txt
++++ bcc-0.11.0/CMakeLists.txt
+@@ -42,20 +42,8 @@ find_package(LibElf REQUIRED)
+ # clang is linked as a library, but the library path searching is
+ # primitively supported, unlike libLLVM
+ set(CLANG_SEARCH "/opt/local/llvm/lib;/usr/lib/llvm-3.7/lib;${LLVM_LIBRARY_DIRS}")
+-find_library(libclangAnalysis NAMES clangAnalysis HINTS ${CLANG_SEARCH})
+-find_library(libclangAST NAMES clangAST HINTS ${CLANG_SEARCH})
+-find_library(libclangBasic NAMES clangBasic HINTS ${CLANG_SEARCH})
+-find_library(libclangCodeGen NAMES clangCodeGen HINTS ${CLANG_SEARCH})
+-find_library(libclangDriver NAMES clangDriver HINTS ${CLANG_SEARCH})
+-find_library(libclangEdit NAMES clangEdit HINTS ${CLANG_SEARCH})
+-find_library(libclangFrontend NAMES clangFrontend HINTS ${CLANG_SEARCH})
+-find_library(libclangLex NAMES clangLex HINTS ${CLANG_SEARCH})
+-find_library(libclangParse NAMES clangParse HINTS ${CLANG_SEARCH})
+-find_library(libclangRewrite NAMES clangRewrite HINTS ${CLANG_SEARCH})
+-find_library(libclangSema NAMES clangSema HINTS ${CLANG_SEARCH})
+-find_library(libclangSerialization NAMES clangSerialization HINTS ${CLANG_SEARCH})
+-find_library(libclangASTMatchers NAMES clangASTMatchers HINTS ${CLANG_SEARCH})
+-if(libclangBasic STREQUAL "libclangBasic-NOTFOUND")
++find_library(libclang-cpp NAMES clang-cpp HINTS ${CLANG_SEARCH})
++if(libclang-cpp STREQUAL "libclang-cpp-NOTFOUND")
+   message(FATAL_ERROR "Unable to find clang libraries")
+ endif()
+ FOREACH(DIR ${LLVM_INCLUDE_DIRS})
+Index: bcc-0.11.0/cmake/clang_libs.cmake
+===================================================================
+--- bcc-0.11.0.orig/cmake/clang_libs.cmake
++++ bcc-0.11.0/cmake/clang_libs.cmake
+@@ -23,25 +23,7 @@ llvm_expand_dependencies(llvm_libs ${_ll
+ endif()
+ 
+ # order is important
+-set(clang_libs
+-  ${libclangFrontend}
+-  ${libclangSerialization}
+-  ${libclangDriver})
+-
+-if (${LLVM_PACKAGE_VERSION} VERSION_EQUAL 8 OR ${LLVM_PACKAGE_VERSION} VERSION_GREATER 8)
+-  list(APPEND clang_libs ${libclangASTMatchers})
+-endif()
+-
+-list(APPEND clang_libs
+-  ${libclangParse}
+-  ${libclangSema}
+-  ${libclangCodeGen}
+-  ${libclangAnalysis}
+-  ${libclangRewrite}
+-  ${libclangEdit}
+-  ${libclangAST}
+-  ${libclangLex}
+-  ${libclangBasic})
++set(clang_libs ${libclang-cpp})
+ 
+ # prune unused llvm static library stuff when linking into the new .so
+ set(_exclude_flags)

@@ -134,7 +134,7 @@ ExcludeArch:    s390 s390x
 %bcond_with hpc
 %endif
 
-%if "%{flavor}" == "openmpi"
+%if "%{flavor}" == "openmpi1"
 %{?DisOMPI1}
 %define mpi_flavor openmpi
 %define mpi_ver 1
@@ -164,9 +164,7 @@ ExclusiveArch:  do_not_build
 %{?with_mpi:%{!?mpi_flavor:error "No MPI family specified!"}}
 
 # For compatibility package names
-%if "%{mpi_flavor}" != "openmpi" || "%{mpi_ver}" != "1"
 %define mpi_ext %{?mpi_ver}
-%endif
 
 %if %{with hpc}
 %{hpc_init -c %compiler_family %{?c_f_ver:-v %{c_f_ver}} %{?with_mpi:-m {%mpi_flavor}} %{?mpi_ver:-V %{mpi_ver}} %{?ext:-e %{ext}}}
@@ -197,6 +195,12 @@ ExclusiveArch:  do_not_build
 %endif
 %define p_suffix %{?with_mpi:-%{mpi_flavor}%{?mpi_ext}}
 %define hdf5_module_file %{?with_mpi:p}hdf5
+
+%define purpose_compiler %{?nil:%{!?with_hpc:.}
+%{?with_hpc:built for the %{compiler_family} compiler%{?c_f_ver: version %c_f_ver}.}
+}
+
+%define purpose() This package contains %{?with_mpi:the %{mpi_flavor}%{?mpi_ver} version of }%{**}%{purpose_compiler}
 
 Name:           %{package_name}
 Summary:        Command-line programs for the NetCDF scientific data format
@@ -245,12 +249,7 @@ NetCDF is a set of software libraries and self-describing,
 machine-independent data formats that support the creation, access,
 and sharing of array-oriented scientific data.
 
-%if %{without mpi}
-This package contains utility functions for working with NetCDF files.
-%else
-This package contains the %{mpi_flavor}%{?mpi_ver} version of utility functions for
-working with NetCDF files.
-%endif
+%{purpose utility functions for working with NetCDF files}
 
 %{?with_hpc:%{hpc_master_package}}
 
@@ -305,12 +304,7 @@ NetCDF data is:
    - Sharable:  One writer and multiple readers may simultaneously
      access the same NetCDF file.
 
-%if %{without mpi}
-This package contains the NetCDF runtime libraries.
-%else
-This package contains the %{mpi_flavor}%{?mpi_ver} versuib if the NetCDF runtime
-libraries.
-%endif
+%{purpose the NetCDF runtime libraries}
 
 %{?with_hpc:%{hpc_master_package -L -l}}
 
@@ -339,7 +333,7 @@ Requires:       zlib-devel >= 1.2.5
 %if %{without hpc}
 Requires:       hdf5%{p_suffix}-devel >= 1.8.8
 %{?with_mpi:Requires:       %{mpi_flavor}%{?mpi_ext}-devel}
-  %if "%{flavor}" == "openmpi"
+  %if "%{flavor}" == "openmpi1"
 Requires:       parallel-netcdf-%{mpi_flavor}%{?mpi_ext}-devel
   %endif
 %else
@@ -352,12 +346,7 @@ NetCDF is a set of software libraries and self-describing,
 machine-independent data formats that support the creation, access,
 and sharing of array-oriented scientific data.
 
-%if %{with mpi}
-This package contains all files needed to create projects that use NetCDF.
-%else
-This package contains all files needed to create projects that use
-the %{mpi_flavor}%{?mpi_ver} version of NetCDF.
-%endif
+%{purpose all files needed to create projects that use NetCDF}
 
 %{?with_hpc:%{hpc_master_package devel}}
 
@@ -377,12 +366,7 @@ NetCDF is a set of software libraries and self-describing,
 machine-independent data formats that support the creation, access,
 and sharing of array-oriented scientific data.
 
-%if %{without mpi}
-This package contains the static libraries for NetCDF.
-%else
-This package contains the %{mpi_flavor}%{?mpi_ver} versions of the static libraries 
-for NetCDF.
-%endif
+%{purpose the static libraries for NetCDF}
 
 %prep
 %{?with_hpc:%hpc_debug}

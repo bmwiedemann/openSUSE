@@ -1,0 +1,74 @@
+From 97c5d6c7ad23122495943021423f034ef5c461f6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
+Date: Fri, 1 Nov 2019 10:02:57 +0100
+Subject: [PATCH] Fix builds for LLVM 9 (for LLVM build without
+ BUILD_SHARED_LIBS=ON)
+
+LLVM 9 officially ships the C++ libraries as a single library
+libclang-cpp.so. This makes ccls fail to link as the individual libraries
+libclangIndex, libclangFormat, etc. are no longer present.
+
+We instead try to find the clang-cpp library and if it is found we link against
+it instead of the individual libraries. If it is not found, then we proceed as
+previously.
+---
+ CMakeLists.txt | 43 +++++++++++++++++++++++++++----------------
+ 1 file changed, 27 insertions(+), 16 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 278e0735..919b2460 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -69,22 +69,33 @@ endif()
+ ### Libraries
+ 
+ find_package(Clang REQUIRED)
+-
+-target_link_libraries(ccls PRIVATE
+-  clangIndex
+-  clangFormat
+-  clangTooling
+-  clangToolingInclusions
+-  clangToolingCore
+-  clangFrontend
+-  clangParse
+-  clangSerialization
+-  clangSema
+-  clangAST
+-  clangLex
+-  clangDriver
+-  clangBasic
+-)
++# LLVM >= 9 ships the C++ libraries by default in a single library libclang-cpp,
++# but this is not universally enabled on all distributions.
++# Try to find libclang-cpp and if we find it, link against it, otherwise link
++# against the individual clang libraries.
++find_library(LIBCLANG_CPP clang-cpp)
++
++if(LIBCLANG_CPP STREQUAL LIBCLANG_CPP-NOTFOUND)
++  target_link_libraries(ccls PRIVATE
++    clangIndex
++    clangFormat
++    clangTooling
++    clangToolingInclusions
++    clangToolingCore
++    clangFrontend
++    clangParse
++    clangSerialization
++    clangSema
++    clangAST
++    clangLex
++    clangDriver
++    clangBasic
++    )
++else()
++  target_link_libraries(ccls PRIVATE
++    "${LIBCLANG_CPP}"
++    )
++endif()
+ 
+ if(LLVM_LINK_LLVM_DYLIB)
+   target_link_libraries(ccls PRIVATE LLVM)
+-- 
+2.23.0
+
