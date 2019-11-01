@@ -102,4 +102,16 @@
 - update correct-revision.patch</comment>
     <requestid>714711</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d5499132f856ea5e2d0295df556dcdba</srcmd5>
+    <version>3.3.0</version>
+    <time>1572617639</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.0:
+  This is a major update with new functions. For details see the
+  announcement: https://musescore.org/en/3.3
+- Update correct-revision.patch to latest revision number
+</comment>
+    <requestid>744668</requestid>
+  </revision>
 </revisionlist>
