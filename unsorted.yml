@@ -7211,6 +7211,7 @@ unsorted:
   - libSDL_sound-1_0-1-32bit: [x86_64] 
   - libSDL_sound-devel 
   - libSDL_sound-devel-32bit: [x86_64] 
+  - libSDL_ttf-2_0-0 
   - libSDL_ttf-2_0-0-32bit: [x86_64] 
   - libSDL_ttf-devel 
   - libSDL_ttf-devel-32bit: [x86_64] 
@@ -9937,8 +9938,8 @@ unsorted:
   - libnetcdf-gnu-openmpi3-hpc 
   - libnetcdf15 
   - libnetcdf15-32bit: [x86_64] 
-  - libnetcdf15-openmpi 
-  - libnetcdf15-openmpi-32bit: [x86_64] 
+  - libnetcdf15-openmpi1 
+  - libnetcdf15-openmpi1-32bit: [x86_64] 
   - libnetcdf15-openmpi2 
   - libnetcdf15-openmpi2-32bit: [x86_64] 
   - libnetcdf_4_7_0-gnu-hpc 
@@ -10440,6 +10441,7 @@ unsorted:
   - libpoppler91-32bit: [x86_64] 
   - libportaudio2-32bit: [x86_64] 
   - libportaudiocpp0 
+  - libportmidi0 
   - libpostproc55-32bit: [x86_64] 
   - libpq5-32bit: [x86_64] 
   - libpqos-devel 
@@ -13776,9 +13778,9 @@ unsorted:
   - netcdf-gnu-openmpi2-hpc-devel 
   - netcdf-gnu-openmpi3-hpc 
   - netcdf-gnu-openmpi3-hpc-devel 
-  - netcdf-openmpi 
-  - netcdf-openmpi-devel 
-  - netcdf-openmpi-devel-static 
+  - netcdf-openmpi1 
+  - netcdf-openmpi1-devel 
+  - netcdf-openmpi1-devel-static 
   - netcdf-openmpi2 
   - netcdf-openmpi2-devel 
   - netcdf-openmpi2-devel-static 
@@ -18801,6 +18803,7 @@ unsorted:
   - python2-pyftpdlib 
   - python2-pygal 
   - python2-pygaljs 
+  - python2-pygame 
   - python2-pygame-devel 
   - python2-pygerrit2 
   - python2-pyghmi 
@@ -23789,6 +23792,7 @@ unsorted:
   - solarus-quest-editor 
   - solarus-quest-editor-assets 
   - solarus-quest-editor-lang 
+  - solarwolf 
   - solarwolf_we 
   - solfege 
   - solid-devel 
