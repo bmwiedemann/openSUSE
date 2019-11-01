@@ -5031,10 +5031,10 @@ unsorted:
   - hdf5-mvapich2-devel 
   - hdf5-mvapich2-devel-32bit: [x86_64] 
   - hdf5-mvapich2-devel-static 
-  - hdf5-openmpi 
-  - hdf5-openmpi-devel 
-  - hdf5-openmpi-devel-32bit: [x86_64] 
-  - hdf5-openmpi-devel-static 
+  - hdf5-openmpi1 
+  - hdf5-openmpi1-devel 
+  - hdf5-openmpi1-devel-32bit: [x86_64] 
+  - hdf5-openmpi1-devel-static 
   - hdf5-openmpi2 
   - hdf5-openmpi2-devel 
   - hdf5-openmpi2-devel-32bit: [x86_64] 
@@ -9029,8 +9029,8 @@ unsorted:
   - libhdf5-103-32bit: [x86_64] 
   - libhdf5-103-mvapich2 
   - libhdf5-103-mvapich2-32bit: [x86_64] 
-  - libhdf5-103-openmpi 
-  - libhdf5-103-openmpi-32bit: [x86_64] 
+  - libhdf5-103-openmpi1 
+  - libhdf5-103-openmpi1-32bit: [x86_64] 
   - libhdf5-103-openmpi2 
   - libhdf5-103-openmpi2-32bit: [x86_64] 
   - libhdf5-103-openmpi3 
@@ -9057,8 +9057,8 @@ unsorted:
   - libhdf5_cpp103-32bit: [x86_64] 
   - libhdf5_cpp103-mvapich2 
   - libhdf5_cpp103-mvapich2-32bit: [x86_64] 
-  - libhdf5_cpp103-openmpi 
-  - libhdf5_cpp103-openmpi-32bit: [x86_64] 
+  - libhdf5_cpp103-openmpi1 
+  - libhdf5_cpp103-openmpi1-32bit: [x86_64] 
   - libhdf5_cpp103-openmpi2 
   - libhdf5_cpp103-openmpi2-32bit: [x86_64] 
   - libhdf5_cpp103-openmpi3 
@@ -9077,7 +9077,7 @@ unsorted:
   - libhdf5_fortran-gnu-openmpi3-hpc 
   - libhdf5_fortran102 
   - libhdf5_fortran102-mvapich2 
-  - libhdf5_fortran102-openmpi 
+  - libhdf5_fortran102-openmpi1 
   - libhdf5_fortran102-openmpi2 
   - libhdf5_fortran102-openmpi3 
   - libhdf5_fortran_1_10_5-gnu-hpc 
@@ -9096,8 +9096,8 @@ unsorted:
   - libhdf5_hl100-32bit: [x86_64] 
   - libhdf5_hl100-mvapich2 
   - libhdf5_hl100-mvapich2-32bit: [x86_64] 
-  - libhdf5_hl100-openmpi 
-  - libhdf5_hl100-openmpi-32bit: [x86_64] 
+  - libhdf5_hl100-openmpi1 
+  - libhdf5_hl100-openmpi1-32bit: [x86_64] 
   - libhdf5_hl100-openmpi2 
   - libhdf5_hl100-openmpi2-32bit: [x86_64] 
   - libhdf5_hl100-openmpi3 
@@ -9118,8 +9118,8 @@ unsorted:
   - libhdf5_hl_cpp100-32bit: [x86_64] 
   - libhdf5_hl_cpp100-mvapich2 
   - libhdf5_hl_cpp100-mvapich2-32bit: [x86_64] 
-  - libhdf5_hl_cpp100-openmpi 
-  - libhdf5_hl_cpp100-openmpi-32bit: [x86_64] 
+  - libhdf5_hl_cpp100-openmpi1 
+  - libhdf5_hl_cpp100-openmpi1-32bit: [x86_64] 
   - libhdf5_hl_cpp100-openmpi2 
   - libhdf5_hl_cpp100-openmpi2-32bit: [x86_64] 
   - libhdf5_hl_cpp100-openmpi3 
@@ -9140,8 +9140,8 @@ unsorted:
   - libhdf5hl_fortran100-32bit: [x86_64] 
   - libhdf5hl_fortran100-mvapich2 
   - libhdf5hl_fortran100-mvapich2-32bit: [x86_64] 
-  - libhdf5hl_fortran100-openmpi 
-  - libhdf5hl_fortran100-openmpi-32bit: [x86_64] 
+  - libhdf5hl_fortran100-openmpi1 
+  - libhdf5hl_fortran100-openmpi1-32bit: [x86_64] 
   - libhdf5hl_fortran100-openmpi2 
   - libhdf5hl_fortran100-openmpi2-32bit: [x86_64] 
   - libhdf5hl_fortran100-openmpi3 
@@ -10163,7 +10163,7 @@ unsorted:
   - libopensync-tools 
   - libopentracing-cpp1 
   - libopenvdb6_1 
-  - libopenvswitch-2_11-0 
+  - libopenvswitch-2_12-0 
   - liboping-devel 
   - liboping-devel-32bit: [x86_64] 
   - liboping0 
@@ -17055,7 +17055,6 @@ unsorted:
   - python-libevtx 
   - python-libexe 
   - python-libfwsi 
-  - python-libgpiod 
   - python-libkdumpfile 
   - python-libkolabxml1 
   - python-liblnk 
@@ -17567,6 +17566,7 @@ unsorted:
   - python2-azure-cosmos 
   - python2-azure-datalake-store 
   - python2-azure-eventgrid 
+  - python2-azure-functions-devops-build 
   - python2-azure-graphrbac 
   - python2-azure-keyvault 
   - python2-azure-keyvault-certificates 
@@ -19418,6 +19418,8 @@ unsorted:
   - python2-vobject 
   - python2-voila 
   - python2-voluptuous 
+  - python2-vsts 
+  - python2-vsts-cd-manager 
   - python2-vulkan 
   - python2-vulture 
   - python2-w3lib 
@@ -19892,6 +19894,7 @@ unsorted:
   - python3-azure-cosmos 
   - python3-azure-datalake-store 
   - python3-azure-eventgrid 
+  - python3-azure-functions-devops-build 
   - python3-azure-graphrbac 
   - python3-azure-keyvault 
   - python3-azure-keyvault-certificates 
@@ -20561,6 +20564,7 @@ unsorted:
   - python3-gpg 
   - python3-gpgme 
   - python3-gphoto2 
+  - python3-gpiod 
   - python3-gprof2dot 
   - python3-gpsd 
   - python3-gpxpy 
@@ -21958,6 +21962,8 @@ unsorted:
   - python3-voila 
   - python3-voluptuous 
   - python3-voluptuous-serialize 
+  - python3-vsts 
+  - python3-vsts-cd-manager 
   - python3-vtk 
   - python3-vtk-openmpi 
   - python3-vtk-openmpi2 
