@@ -1670,7 +1670,6 @@
     <package name="libSDL_gfx15" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libSDL_image-1_2-0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libSDL_mixer-1_2-0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libSDL_ttf-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libSM-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libSM6" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libSoundTouch1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2567,7 +2566,6 @@
     <package name="libpoppler91" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpopt0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libportaudio2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libportmidi0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libpostproc55" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpotrace0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-technical_writing -->
     <package name="libpowerman0" supportstatus="unsupported"/> <!-- reason: dvd:nut -->
@@ -4085,7 +4083,6 @@
     <package name="python2-pycryptodome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python2-pycups" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python2-pycurl" supportstatus="unsupported"/> <!-- reason: dvd:createrepo -->
-    <package name="python2-pygame" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python2-pyliblzma" supportstatus="unsupported"/> <!-- reason: dvd:createrepo -->
     <package name="python2-pyparsing" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="python2-python-dateutil" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4857,7 +4854,6 @@
     <package name="snapper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="snapper-zypp-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="snmp-mibs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="solarwolf" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="solid-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="solid-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="sonar-icon-theme" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
