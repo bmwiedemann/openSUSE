@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Nov  1 17:07:44 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Use %pkg_vcmp macro instead of llvm-config to detect LLVM 9.
+
+-------------------------------------------------------------------
+Fri Oct 25 19:35:23 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 19.2.2
+  * assortment of fixes in this release, notably a bunch of work
+    to get Solaris and illumos working with mesa, as well as more
+    work fixing issues in the migration of package-config and
+    headers being handled by libglvnd instead of mesa when mesa
+    is built with support for glvnd.
+    There's  bunch of other changes here, with radv and intel
+    leading the pack, otherwise just a few things here and there.
+- n_add-Mesa-headers-again.patch
+  * add Mesa headers again despite of building it against libglvnd;
+    those headers turned out not to be usable; in addition packaging
+    headers with libglvnd make dependancies problematic ...
+
+-------------------------------------------------------------------
 Mon Oct 14 10:23:51 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - let Mesa-libEGL-devel require libX11 devel via "pkgconfig(x11)"

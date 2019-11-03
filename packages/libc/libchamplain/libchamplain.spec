@@ -17,13 +17,13 @@
 
 
 Name:           libchamplain
-Version:        0.12.19
+Version:        0.12.20
 Release:        0
 Summary:        Library to display maps
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
-URL:            http://projects.gnome.org/libchamplain/
-Source0:        http://download.gnome.org/sources/libchamplain/0.12/%{name}-%{version}.tar.xz
+URL:            https://wiki.gnome.org/Projects/libchamplain
+Source0:        https://download.gnome.org/sources/libchamplain/0.12/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
@@ -107,7 +107,7 @@ OpenAerialMap and Maps for free.
 
 %files -n libchamplain-0_12-0
 %license COPYING
-%doc AUTHORS ChangeLog NEWS
+%doc AUTHORS NEWS README.md
 %{_libdir}/libchamplain-0.12.so.*
 %{_libdir}/libchamplain-gtk-0.12.so.*
 

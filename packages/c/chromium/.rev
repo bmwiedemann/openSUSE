@@ -2632,4 +2632,14 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
     <comment></comment>
     <requestid>744368</requestid>
   </revision>
+  <revision rev="235" vrev="1">
+    <srcmd5>2dcfc5ba69ef6fe2eaa9ce712f58c8f4</srcmd5>
+    <version>78.0.3904.87</version>
+    <time>1572779353</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 78.0.3904.87 bsc#1155643:
+  * CVE-2019-13721: Use-after-free in PDFium
+  * CVE-2019-13720: Use-after-free in audio</comment>
+    <requestid>744734</requestid>
+  </revision>
 </revisionlist>

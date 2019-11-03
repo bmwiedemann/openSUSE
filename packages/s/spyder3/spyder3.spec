@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %ifarch x86_64 aarch64 ppc64le %{arm} %{ix86} %{ppc}
 %bcond_without  test
 %else
@@ -27,9 +28,9 @@ Release:        0
 Url:            https://www.spyder-ide.org/
 Summary:        The Scientific Python Development Environment
 License:        MIT
-Group:          Development/Languages/Python
 Source:         https://github.com/spyder-ide/spyder/archive/v%{version}.tar.gz#/spyder-%{version}.tar.gz
 Source1:        spyder3-rpmlintrc
+Patch0:         pytest41.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Pygments >= 2.0
@@ -62,7 +63,7 @@ BuildRequires:  python3-keyring
 BuildRequires:  python3-matplotlib
 BuildRequires:  python3-opengl
 BuildRequires:  python3-pandas
-BuildRequires:  python3-pytest < 4.1
+BuildRequires:  python3-pytest < 5
 BuildRequires:  python3-pytest-cov
 BuildRequires:  python3-pytest-mock
 BuildRequires:  python3-pytest-qt
@@ -127,7 +128,6 @@ full plugin support.
 
 %package breakpoints
 Summary:        Breakpoint plugin for the Spyder IDE
-Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 
 %description breakpoints
@@ -139,7 +139,6 @@ breakpoints.
 
 %package dicom
 Summary:        DICOM I/O plugin for the Spyder IDE
-Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 Requires:       python3-pydicom
 
@@ -152,7 +151,6 @@ DICOM files.
 
 %package hdf5
 Summary:        HDF5 I/O plugin for the Spyder IDE
-Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 Requires:       python3-h5py
 
@@ -165,7 +163,6 @@ HDF5 files.
 
 %package profiler
 Summary:        Profiler plugin for the Spyder IDE
-Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 
 %description profiler
@@ -177,7 +174,6 @@ Python code.
 
 %package pylint
 Summary:        Pylint plugin for the Spyder IDE
-Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 Requires:       python3-pylint
 
@@ -190,7 +186,6 @@ inline pylint code analysis and warnings.
 
 %package doc
 Summary:        Documentation for the Spyder IDE
-Group:          Development/Languages/Python
 Recommends:     %{name} = %{version}
 
 %description doc
@@ -206,6 +201,7 @@ Documentation and help files for Spyder and its plugins.
 
 %prep
 %setup -q -n spyder-%{version}
+%patch0 -p1
 # Fix wrong-file-end-of-line-encoding RPMLint warning
 sed -i 's/\r$//' spyder/app/restart.py
 sed -i 's/\r$//' LICENSE.txt CHANGELOG.md

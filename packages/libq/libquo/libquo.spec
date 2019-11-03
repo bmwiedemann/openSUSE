@@ -16,6 +16,20 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+# Build with OpenMPI
+%if 0%{?sle_version} == 0
+%define mpiver  openmpi2
+%else
+%if 0%{?sle_version} <= 120300
+%define mpiver  openmpi
+%else
+  %if 0%{?sle_version} <= 150000
+  %define mpiver  openmpi2
+  %else
+  %define mpiver  openmpi3
+  %endif
+%endif
+%endif
 
 Name:           libquo
 Version:        1.3
@@ -29,7 +43,8 @@ Source:         http://lanl.github.io/libquo/dists/%{name}-%{version}.tar.gz
 Patch0:         https://patch-diff.githubusercontent.com/raw/lanl/libquo/pull/29.patch
 BuildRequires:  hwloc
 BuildRequires:  numactl
-BuildRequires:  openmpi-devel
+BuildRequires:  %{mpiver}
+BuildRequires:  %{mpiver}-devel
 BuildRequires:  pkgconfig
 
 %description
@@ -70,7 +85,7 @@ This package contains development headers and libraries for libquo.
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-source %{_libdir}/mpi/gcc/openmpi/bin/mpivars.sh
+source %{_libdir}/mpi/gcc/%{mpiver}/bin/mpivars.sh
 
 DATE=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%H:%%M:%%S')
 %configure --disable-silent-rules --enable-shared CC=mpicc USER="Opensuse-builder" HOSTNAME="Opensuse" DATE="$DATE"

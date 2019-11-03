@@ -1,0 +1,19 @@
+diff -u -r mesa-19.2.2.orig/include/meson.build mesa-19.2.2/include/meson.build
+--- mesa-19.2.2.orig/include/meson.build	2019-10-25 21:55:51.441084000 +0200
++++ mesa-19.2.2/include/meson.build	2019-10-25 21:58:07.781272000 +0200
+@@ -22,7 +22,6 @@
+ inc_d3d9 = include_directories('D3D9')
+ inc_haikugl = include_directories('HaikuGL')
+ 
+-if not glvnd_has_headers_and_pc_files
+   if with_gles1 or with_gles2 or with_opengl or with_egl
+     install_headers('KHR/khrplatform.h', subdir : 'KHR')
+   endif
+@@ -78,7 +77,6 @@
+       subdir : 'EGL',
+     )
+   endif
+-endif
+ 
+ # Non-upstream headers
+ if with_egl

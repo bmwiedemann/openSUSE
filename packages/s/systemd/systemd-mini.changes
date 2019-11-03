@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Thu Oct 31 07:38:55 UTC 2019 - Franck Bui <fbui@suse.com>
+
+- Drop 0001-compat-rules-escape-when-used-for-shell-expansion.patch
+
+  It's part of the previous import.
+
+-------------------------------------------------------------------
+Thu Oct 31 07:32:47 UTC 2019 - Franck Bui <fbui@suse.com>
+
+- Import commit b7467b7b553d6d0d6f92758d966b69f1a88b6b42
+
+  441f44f371 fileio: introduce read_full_virtual_file() for reading virtual files in sysfs, procfs (bsc#1133495)
+  8a1bb5c66b swap: do not make swap units wanted by its device unit anymore
+
+-------------------------------------------------------------------
+Tue Oct 29 10:35:03 UTC 2019 - Franck Bui <fbui@suse.com>
+
+- Import commit 5df9000899ef7d45ddbcacd0fdf73afa07a40f6b
+
+  f0ed7237e4 udev/cdrom_id: Do not open CD-rom in exclusive mode. (bsc#1154256)
+  b37054aa5a compat-rules: escape '$' when used for shell expansion
+
+  Changes from the v243-stable:
+
+  ef677436aa test: Pass personality test even when i686 userland runs on x86_64 kernel
+  3f6398c450 docs: fix inadvertent change in uid range
+  25bb377a73 cgroup: fix typo in BPF firewall support warning message
+  6d97aca0d5 fix build with compilers with default stack-protector enabled
+  fbad077cec nspawn: surrender controlling terminal to PID2 when using the PID1 stub
+  0553c3c668 pid1: fix DefaultTasksMax initialization
+  f406a691a7 src/core/automount: use DirectoryMode when calling mkdir -p
+  20438f96c3 udevadm trigger: do not propagate EACCES and ENODEV
+  6480630bc3 hwdb: Correct WWWW Pattern In Documentation Comment
+  9d8e889810 nspawn: consistenly fail if parsing the environment fails
+  40e169b304 nspawn: default to unified hierarchy if --as-pid2 is used
+  b5df1037a0 cgroup: Mark memory protections as explicitly set in transient units
+  f14e3e02cc cgroup: Respect DefaultMemoryMin when setting memory.min
+  ea248e53bf cgroup: Check ancestor memory min for unified memory config
+  de1d25a506 cgroup: docs: memory.high doc fixups
+  2ab45f38d8 cgroup: docs: Mention unbounded protection for memory.{low,min}
+  19a43dc38a Consider smb3 as remote filesystem
+  5c0224c7bf Handle d_type == DT_UNKNOWN correctly
+  8282bc61df util-lib: Don't propagate EACCES from find_binary PATH lookup to caller
+  9d0ae987a6 network: drop noisy log message
+  f67f0e4ec4 Updated log message when the timesync happens for the first time (#13624)
+  e151bf4674 units: make systemd-binfmt.service easier to work with no autofs
+  2b8e574d82 Corect man page reference in systemd-nologin.conf comments
+  a0577353f1 man: Add a missing space in machinectl(1)
+  693e983988 log: Add missing "%" in "%m" log format strings
+  ea7151b8c4 pid1: do not warn if /run/systemd/relabel-extra.d/ doesn't exist
+  b90549290e man: fix typo
+
+-------------------------------------------------------------------
+Tue Oct 22 22:25:34 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove intltool BuildRequires, not needed since v237
+- Use python3-base BuildRequires instead of full python3
+
+-------------------------------------------------------------------
 Mon Oct 21 10:33:27 UTC 2019 - Franck Bui <fbui@suse.com>
 
 - Add 0001-compat-rules-escape-when-used-for-shell-expansion.patch (bsc#1153648)

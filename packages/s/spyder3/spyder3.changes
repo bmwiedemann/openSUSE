@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  1 11:33:59 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- add pytest41.patch - fix tests with pytest-4+ 
+
+-------------------------------------------------------------------
 Fri Sep 13 14:22:39 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Fix desktop file categories.

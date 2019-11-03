@@ -286,4 +286,12 @@ Fixed sources as requested.</comment>
     <comment></comment>
     <requestid>730762</requestid>
   </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>e65e1bd9e081ce1eaa9767a891037d15</srcmd5>
+    <version>3.3.6</version>
+    <time>1572779435</time>
+    <user>dimstar_suse</user>
+    <comment>- add pytest41.patch - fix tests with pytest-4+</comment>
+    <requestid>744739</requestid>
+  </revision>
 </revisionlist>

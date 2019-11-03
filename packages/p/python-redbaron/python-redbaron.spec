@@ -25,7 +25,7 @@ License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/PyCQA/redbaron
 Source:         https://files.pythonhosted.org/packages/source/r/redbaron/redbaron-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+Patch0:         pytest4.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -33,7 +33,7 @@ Requires:       python-baron >= 0.7
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module baron >= 0.7}
-BuildRequires:  %{python_module pytest < 4}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -45,6 +45,7 @@ IPython.
 
 %prep
 %setup -q -n redbaron-%{version}
+%autopatch -p1
 
 %build
 %python_build

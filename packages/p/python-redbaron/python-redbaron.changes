@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  1 12:53:22 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add pytest4.patch to make testsuite pass even with pytest 4
+  (gh#PyCQA/redbaron#179)
+
+-------------------------------------------------------------------
 Thu Sep  5 13:40:10 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Set pytest maximum version.

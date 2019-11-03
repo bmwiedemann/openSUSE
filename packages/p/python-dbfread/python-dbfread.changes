@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  1 13:49:17 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add pytest4.patch from gh#olemb/dbfread#33 which makes the test
+  suite to pass with PyTest 4.
+
+-------------------------------------------------------------------
 Thu Aug 22 14:02:42 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Restrict to pytest3 as newer need major test tweaks

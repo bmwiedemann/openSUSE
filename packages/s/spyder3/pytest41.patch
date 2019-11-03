@@ -1,0 +1,77 @@
+Index: spyder-3.3.6/spyder/app/tests/test_mainwindow.py
+===================================================================
+--- spyder-3.3.6.orig/spyder/app/tests/test_mainwindow.py
++++ spyder-3.3.6/spyder/app/tests/test_mainwindow.py
+@@ -151,7 +151,7 @@ def main_window(request):
+ 
+     # Check if we need to use introspection in a given test
+     # (it's faster and less memory consuming not to use it!)
+-    use_introspection = request.node.get_marker('use_introspection')
++    use_introspection = request.node.get_closest_marker('use_introspection')
+     if use_introspection:
+         os.environ['SPY_TEST_USE_INTROSPECTION'] = 'True'
+     else:
+@@ -161,7 +161,7 @@ def main_window(request):
+             pass
+ 
+     # Only use single_instance mode for tests that require it
+-    single_instance = request.node.get_marker('single_instance')
++    single_instance = request.node.get_closest_marker('single_instance')
+     if single_instance:
+         CONF.set('main', 'single_instance', True)
+     else:
+Index: spyder-3.3.6/spyder/plugins/tests/test_ipythonconsole.py
+===================================================================
+--- spyder-3.3.6.orig/spyder/plugins/tests/test_ipythonconsole.py
++++ spyder-3.3.6/spyder/plugins/tests/test_ipythonconsole.py
+@@ -92,21 +92,21 @@ def ipyconsole(qtbot, request):
+     CONF.set('ipython_console', 'pylab/backend', 0)
+ 
+     # Test the console with a non-ascii temp dir
+-    non_ascii_dir = request.node.get_marker('non_ascii_dir')
++    non_ascii_dir = request.node.get_closest_marker('non_ascii_dir')
+     if non_ascii_dir:
+         test_dir = NON_ASCII_DIR
+     else:
+         test_dir = None
+ 
+     # Instruct the console to not use a stderr file
+-    no_stderr_file = request.node.get_marker('no_stderr_file')
++    no_stderr_file = request.node.get_closest_marker('no_stderr_file')
+     if no_stderr_file:
+         test_no_stderr = True
+     else:
+         test_no_stderr = False
+ 
+     # Use the automatic backend if requested
+-    auto_backend = request.node.get_marker('auto_backend')
++    auto_backend = request.node.get_closest_marker('auto_backend')
+     if auto_backend:
+         CONF.set('ipython_console', 'pylab/backend', 1)
+ 
+Index: spyder-3.3.6/spyder/widgets/projects/tests/test_project_explorer.py
+===================================================================
+--- spyder-3.3.6.orig/spyder/widgets/projects/tests/test_project_explorer.py
++++ spyder-3.3.6/spyder/widgets/projects/tests/test_project_explorer.py
+@@ -22,7 +22,7 @@ from spyder.py3compat import to_text_str
+ @pytest.fixture
+ def project_explorer(qtbot, request, tmpdir):
+     """Setup Project Explorer widget."""
+-    directory = request.node.get_marker('change_directory')
++    directory = request.node.get_closest_marker('change_directory')
+     if directory:
+         project_dir = to_text_string(tmpdir.mkdir('project'))
+     else:
+Index: spyder-3.3.6/spyder/widgets/tests/test_save.py
+===================================================================
+--- spyder-3.3.6.orig/spyder/widgets/tests/test_save.py
++++ spyder-3.3.6/spyder/widgets/tests/test_save.py
+@@ -57,7 +57,7 @@ def editor_bot(base_editor_bot, request)
+     """
+     editor_stack, qtbot = base_editor_bot
+ 
+-    show_save_dialog = request.node.get_marker('show_save_dialog')
++    show_save_dialog = request.node.get_closest_marker('show_save_dialog')
+     if show_save_dialog:
+         editor_stack.save_dialog_on_tests = True
+ 

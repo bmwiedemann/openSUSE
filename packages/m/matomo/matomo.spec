@@ -203,8 +203,9 @@ fi
 %dir %attr(0750,%{ap_usr},%{ap_grp}) /var/log/%{name}
 %config(noreplace)  %attr(600,%{ap_usr},%{ap_grp}) %{_sysconfdir}/%{name}/*php
 %{_sysconfdir}/%{name}/environment/*php
-%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/matomo.js
-%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/piwik.js
+%attr(0644,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/matomo.js
+%attr(0644,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/piwik.js
+%attr(0644,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/js/piwik.min.js
 %attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/console
 %attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/misc/cron/archive.sh
 %attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/misc/log-analytics/import_logs.py

@@ -25,4 +25,13 @@ https://build.opensuse.org/request/show/605896</comment>
     <comment>- Restrict to pytest3 as newer need major test tweaks</comment>
     <requestid>725333</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>43ee50e74456334abcee7f77e9defea0</srcmd5>
+    <version>2.0.7</version>
+    <time>1572779519</time>
+    <user>dimstar_suse</user>
+    <comment>- Add pytest4.patch from gh#olemb/dbfread#33 which makes the test
+  suite to pass with PyTest 4.</comment>
+    <requestid>744751</requestid>
+  </revision>
 </revisionlist>

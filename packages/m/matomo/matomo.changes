@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 31 09:47:25 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- js folder needs to be RW for the tag manager plugin
+
+-------------------------------------------------------------------
+Wed Oct 30 14:39:51 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- Fixed unsafe permissions for directory js
+- Fixed permissions for piwik.js, matomo.js and js/piwik.min.js
+
+-------------------------------------------------------------------
 Wed Oct 30 11:42:55 UTC 2019 - ecsos@opensuse.org
 
 - Fix wrong permission for directory js.

@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>728519</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>897cc16bd9d906efe3001a2ea68c09cb</srcmd5>
+    <version>0.9.2</version>
+    <time>1572779603</time>
+    <user>dimstar_suse</user>
+    <comment>- Add pytest4.patch to make testsuite pass even with pytest 4
+  (gh#PyCQA/redbaron#179)</comment>
+    <requestid>744754</requestid>
+  </revision>
 </revisionlist>

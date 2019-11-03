@@ -146,4 +146,13 @@
     <comment></comment>
     <requestid>724135</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>c916f72a6c71434c04eea9cd9db59e3a</srcmd5>
+    <version>20180807</version>
+    <time>1572779688</time>
+    <user>dimstar_suse</user>
+    <comment>- generify used mpi version
+</comment>
+    <requestid>744757</requestid>
+  </revision>
 </revisionlist>

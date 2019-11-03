@@ -24,7 +24,7 @@
 %define bootstrap 0
 %define mini %nil
 %define min_kernel_version 4.5
-%define suse_version +suse.91.g428b937f91
+%define suse_version +suse.126.gb7467b7b55
 
 %bcond_with     gnuefi
 %if 0%{?bootstrap}
@@ -67,7 +67,7 @@ BuildRequires:  libgcrypt-devel
 BuildRequires:  libxslt-tools
 BuildRequires:  polkit
 # python is only required for generating systemd.directives.xml
-BuildRequires:  python3
+BuildRequires:  python3-base
 BuildRequires:  python3-lxml
 BuildRequires:  pkgconfig(libcryptsetup) >= 1.6.0
 BuildRequires:  pkgconfig(libdw)
@@ -82,7 +82,6 @@ BuildRequires:  pkgconfig(libseccomp) >= 2.3.1
 %endif
 BuildRequires:  fdupes
 BuildRequires:  gperf
-BuildRequires:  intltool
 BuildRequires:  libacl-devel
 BuildRequires:  libcap-devel
 BuildRequires:  libmount-devel >= 2.27.1
@@ -165,7 +164,6 @@ Source200:      scripts-udev-convert-lib-udev-path.sh
 # broken in upstream and need an urgent fix. Even in this case, the
 # patches are temporary and should be removed as soon as a fix is
 # merged by upstream.
-Patch1:         0001-compat-rules-escape-when-used-for-shell-expansion.patch
 Patch2:         0001-logind-keep-backward-compatibility-with-UserTasksMax.patch
 
 %description

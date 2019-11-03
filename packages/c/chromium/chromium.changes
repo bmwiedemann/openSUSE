@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  1 10:55:52 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 78.0.3904.87 bsc#1155643:
+  * CVE-2019-13721: Use-after-free in PDFium
+  * CVE-2019-13720: Use-after-free in audio
+
+-------------------------------------------------------------------
 Wed Oct 30 12:51:06 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Enable LTO again with disabled parallel LTO WPA streaming.

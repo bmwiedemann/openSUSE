@@ -26,8 +26,7 @@ Group:          Productivity/Publishing/HTML/Tools
 URL:            http://hevea.inria.fr/
 Source0:        http://hevea.inria.fr/distri/%{name}-%{version}.tar.gz
 Source1:        http://hevea.inria.fr/distri/%{name}-%{version}-manual.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}
-BuildRequires:  ocaml >= 3.12
+BuildRequires:  ocaml(ocaml.opt)
 BuildRequires:  ocaml-ocamlbuild
 
 %description

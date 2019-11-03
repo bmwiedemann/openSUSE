@@ -16,4 +16,12 @@
     <comment>- Restrict pytest 4+ as it is not compatible with current release</comment>
     <requestid>725255</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b6177cbf22dcabbb694f365cd347442b</srcmd5>
+    <version>2019.1.8</version>
+    <time>1572779735</time>
+    <user>dimstar_suse</user>
+    <comment>- unrestric pytest4, use pytest-forked to separate tests</comment>
+    <requestid>744760</requestid>
+  </revision>
 </revisionlist>

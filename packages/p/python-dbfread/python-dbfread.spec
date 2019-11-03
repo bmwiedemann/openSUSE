@@ -25,7 +25,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/olemb/dbfread
 Source:         https://files.pythonhosted.org/packages/source/d/dbfread/dbfread-%{version}.tar.gz
-BuildRequires:  %{python_module pytest < 4}
+# gh#olemb/dbfread#33
+Patch0:         pytest4.patch
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -39,7 +41,7 @@ Python data types for further processing. It is primarily intended for
 batch jobs and one-off scripts.
 
 %prep
-%setup -q -n dbfread-%{version}
+%autosetup -p1 -n dbfread-%{version}
 
 %build
 %python_build
