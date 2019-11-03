@@ -21,13 +21,13 @@
 
 
 Name:           sonic-visualiser
-Version:        3.2.1
+Version:        4.0
 Release:        0
 Summary:        A program for viewing and analysing contents of audio files
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            http://www.sonicvisualiser.org/
-Source:         https://code.soundsoftware.ac.uk/attachments/download/2434/%{name}-%{version}.tar.gz
+Source:         https://code.soundsoftware.ac.uk/attachments/download/2580/%{name}-%{version}.tar.gz
 Source2:        %{name}.xml
 # PATCH-FIX-OPENSUSE sonic-visualiser-system-dataquay.patch aloisio@gmx.com -- force use of system libdataquay
 Patch2:         sonic-visualiser-system-dataquay.patch
@@ -70,6 +70,7 @@ BuildRequires:  pkgconfig(lrdf)
 BuildRequires:  pkgconfig(mad)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(oggz) >= 0.9.5
+BuildRequires:  pkgconfig(opusfile)
 BuildRequires:  pkgconfig(raptor2) >= 2.0.4
 BuildRequires:  pkgconfig(rasqal)
 BuildRequires:  pkgconfig(redland) >= 1.0.14
@@ -136,6 +137,9 @@ make %{?_smp_mflags}
 
 %install
 make INSTALL_ROOT=%{buildroot} install
+
+# fix executable bit for helper programs
+chmod +x %{buildroot}%{_bindir}/*vamp-*
 
 # plugin dir
 install -dm 755 %{buildroot}%{_libdir}/vamp
