@@ -16,6 +16,21 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
+# Build with OpenMPI
+%if 0%{?sle_version} == 0
+%define mpiver  openmpi2
+%else
+%if 0%{?sle_version} <= 120300
+%define mpiver  openmpi
+%else
+  %if 0%{?sle_version} <= 150000
+  %define mpiver  openmpi2
+  %else
+  %define mpiver  openmpi3
+  %endif
+%endif
+%endif
+
 Name:           lammps
 Version:        20180807
 %define         uversion stable_7Aug2019
@@ -32,7 +47,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  libpng-devel
 BuildRequires:  libjpeg-devel
-BuildRequires:  openmpi-devel
+BuildRequires:  %{mpiver}
+BuildRequires:  %{mpiver}-devel
 BuildRequires:  python-devel
 BuildRequires:  fftw3-devel
 BuildRequires:  voro++-devel
@@ -144,7 +160,7 @@ This subpackage contains LAMMPS's potential files
 %setup -a 1 -q -n %{name}-%{uversion}
 
 %build
-source %{_libdir}/mpi/gcc/openmpi/bin/mpivars.sh
+source %{_libdir}/mpi/gcc/%{mpiver}/bin/mpivars.sh
 
 %{cmake} \
   -C ../cmake/presets/all_on.cmake \
@@ -164,7 +180,7 @@ source %{_libdir}/mpi/gcc/openmpi/bin/mpivars.sh
 %cmake_install
 
 %check
-LD_LIBRARY_PATH='%{buildroot}/%{_libdir}:%{_libdir}/mpi/gcc/openmpi/%{_lib}' make -C build %{?_smp_mflags} test CTEST_OUTPUT_ON_FAILURE=1
+LD_LIBRARY_PATH='%{buildroot}/%{_libdir}:%{_libdir}/mpi/gcc/%{mpiver}/%{_lib}' make -C build %{?_smp_mflags} test CTEST_OUTPUT_ON_FAILURE=1
 
 %post -n liblammps0 -p /sbin/ldconfig
 %postun -n liblammps0 -p /sbin/ldconfig
