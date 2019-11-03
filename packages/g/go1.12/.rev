@@ -1221,4 +1221,14 @@ http://weekly.golang.org/doc/devel/weekly.html#2012-02-07
 - Own the gdbinit.d directory, avoid the build dependency on gdb. (forwarded request 741580 from StefanBruens)</comment>
     <requestid>741602</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>8a7dc0aa018f1c7e686b3f2eb83bc714</srcmd5>
+    <version>1.12.12</version>
+    <time>1572776553</time>
+    <user>dimstar_suse</user>
+    <comment>- Add %ifarch %arm aarch64 BuildRequires: binutils-gold to fix
+  /usr/lib64/go/{version}/pkg/tool/linux_arm64/link: running gcc failed: exit status 1
+  collect2: fatal error: cannot find 'ld'- (forwarded request 743948 from jfkw)</comment>
+    <requestid>743949</requestid>
+  </revision>
 </revisionlist>

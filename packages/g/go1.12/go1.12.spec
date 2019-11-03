@@ -159,6 +159,11 @@ BuildRequires:  gcc-c++
 %endif
 #BNC#818502 debug edit tool of rpm fails on i586 builds
 BuildRequires:  rpm >= 4.11.1
+# Needed on arm aarch64 to avoid
+# collect2: fatal error: cannot find 'ld'-
+%ifarch %arm aarch64
+BuildRequires:  binutils-gold
+%endif
 Requires(post):	update-alternatives
 Requires(postun):	update-alternatives
 Requires:       gcc

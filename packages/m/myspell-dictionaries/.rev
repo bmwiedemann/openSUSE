@@ -491,4 +491,17 @@
   * Update Galician dictionary</comment>
     <requestid>697124</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>309411d8f084b153795b5b5f7501489a</srcmd5>
+    <version>20191016</version>
+    <time>1572776929</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20191016:
+  * Updated Slovenian thesaurus
+  * Update the da_DK dictionary
+  * Remove abbreviations from Thai hunspell dictionary
+  * Updated the English dictionaries: GB
+  * Fix logo management for &quot;ca&quot;</comment>
+    <requestid>743962</requestid>
+  </revision>
 </revisionlist>

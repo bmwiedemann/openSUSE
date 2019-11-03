@@ -1872,4 +1872,12 @@ pretty much the same. The main user visible changes are
     <comment>Revert, https://bugzilla.opensuse.org/show_bug.cgi?id=1154809</comment>
     <requestid>741989</requestid>
   </revision>
+  <revision rev="212" vrev="2">
+    <srcmd5>06954643a74e92738381a048bcdf9df2</srcmd5>
+    <version>2.04</version>
+    <time>1572776680</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>743954</requestid>
+  </revision>
 </revisionlist>

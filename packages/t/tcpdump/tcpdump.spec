@@ -22,8 +22,7 @@ Version:        4.9.3
 Release:        0
 Summary:        A Packet Sniffer
 License:        BSD-3-Clause
-Group:          Productivity/Networking/Diagnostic
-Url:            https://www.tcpdump.org/
+URL:            https://www.tcpdump.org/
 Source:         https://www.tcpdump.org/release/%{name}-%{version}.tar.gz
 Source1:        tcpdump-qeth
 Source2:        https://www.tcpdump.org/release/%{name}-%{version}.tar.gz.sig
@@ -44,10 +43,11 @@ ethernet. It can be used to debug specific network problems.
 %patch0 -p1
 
 %build
-export CFLAGS="%{optflags} -Wall -DGUESS_TSO -fstack-protector -fno-strict-aliasing"
+# guessing TSO needed in print-ip.c
+export CFLAGS="%{optflags} -DGUESS_TSO"
 %configure \
   --enable-ipv6
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

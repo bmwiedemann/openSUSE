@@ -334,4 +334,12 @@
     <comment></comment>
     <requestid>734985</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>216394901534ea12a54a3e627691bd0a</srcmd5>
+    <version>4.9.3</version>
+    <time>1572776805</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim CFLAGS</comment>
+    <requestid>743961</requestid>
+  </revision>
 </revisionlist>

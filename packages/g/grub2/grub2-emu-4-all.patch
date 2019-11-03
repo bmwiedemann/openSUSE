@@ -5,12 +5,12 @@
  grub-core/osdep/unix/emuconsole.c |    5 +++--
  4 files changed, 14 insertions(+), 16 deletions(-)
 
-Index: grub-2.02~rc1/Makefile.util.def
+Index: grub-2.04~rc1/Makefile.util.def
 ===================================================================
---- grub-2.02~rc1.orig/Makefile.util.def
-+++ grub-2.02~rc1/Makefile.util.def
-@@ -352,7 +352,7 @@ program = {
-   ldadd = grub-core/gnulib/libgnu.a;
+--- grub-2.04~rc1.orig/Makefile.util.def
++++ grub-2.04~rc1/Makefile.util.def
+@@ -362,7 +362,7 @@ program = {
+   ldadd = grub-core/lib/gnulib/libgnu.a;
    ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBUTIL) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
    cppflags = '-DGRUB_SETUP_FUNC=grub_util_bios_setup';
 -  emu_condition = COND_NOT_s390x;
@@ -18,8 +18,8 @@ Index: grub-2.02~rc1/Makefile.util.def
  };
  
  program = {
-@@ -373,7 +373,7 @@ program = {
-   ldadd = grub-core/gnulib/libgnu.a;
+@@ -383,7 +383,7 @@ program = {
+   ldadd = grub-core/lib/gnulib/libgnu.a;
    ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBUTIL) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
    cppflags = '-DGRUB_SETUP_FUNC=grub_util_sparc_setup';
 -  emu_condition = COND_NOT_s390x;
@@ -27,38 +27,38 @@ Index: grub-2.02~rc1/Makefile.util.def
  };
  
  program = {
-@@ -389,7 +389,7 @@ program = {
+@@ -399,7 +399,7 @@ program = {
    ldadd = libgrubkern.a;
-   ldadd = grub-core/gnulib/libgnu.a;
+   ldadd = grub-core/lib/gnulib/libgnu.a;
    ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBUTIL) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
 -  emu_condition = COND_NOT_s390x;
 +  emu_condition = COND_NOT_emu;
  };
  
  program = {
-@@ -420,7 +420,7 @@ program = {
+@@ -430,7 +430,7 @@ program = {
    ldadd = libgrubkern.a;
-   ldadd = grub-core/gnulib/libgnu.a;
+   ldadd = grub-core/lib/gnulib/libgnu.a;
    ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBUTIL) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
 -  emu_condition = COND_NOT_s390x;
 +  emu_condition = COND_NOT_emu;
  };
  
  data = {
-@@ -1345,7 +1345,7 @@ program = {
+@@ -1361,7 +1361,7 @@ program = {
    ldadd = libgrubkern.a;
-   ldadd = grub-core/gnulib/libgnu.a;
+   ldadd = grub-core/lib/gnulib/libgnu.a;
    ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
 -  emu_condition = COND_NOT_s390x;
 +  emu_condition = COND_NOT_emu;
  };
  
  program = {
-Index: grub-2.02~rc1/grub-core/Makefile.core.def
+Index: grub-2.04~rc1/grub-core/Makefile.core.def
 ===================================================================
---- grub-2.02~rc1.orig/grub-core/Makefile.core.def
-+++ grub-2.02~rc1/grub-core/Makefile.core.def
-@@ -1057,7 +1057,7 @@ module = {
+--- grub-2.04~rc1.orig/grub-core/Makefile.core.def
++++ grub-2.04~rc1/grub-core/Makefile.core.def
+@@ -1139,7 +1139,7 @@ module = {
  module = {
    name = videotest;
    common = commands/videotest.c;
@@ -67,7 +67,7 @@ Index: grub-2.02~rc1/grub-core/Makefile.core.def
  };
  
  module = {
-@@ -1470,7 +1470,7 @@ module = {
+@@ -1572,7 +1572,7 @@ module = {
    common = gfxmenu/gui_progress_bar.c;
    common = gfxmenu/gui_util.c;
    common = gfxmenu/gui_string_util.c;
@@ -76,7 +76,7 @@ Index: grub-2.02~rc1/grub-core/Makefile.core.def
  };
  
  module = {
-@@ -1886,13 +1886,13 @@ module = {
+@@ -2008,13 +2008,13 @@ module = {
    name = gfxterm;
    common = term/gfxterm.c;
    enable = videomodules;
@@ -92,8 +92,8 @@ Index: grub-2.02~rc1/grub-core/Makefile.core.def
  };
  
  module = {
-@@ -2005,9 +2005,7 @@ module = {
-   enable = i386_pc;
+@@ -2133,9 +2133,7 @@ module = {
+   enable = i386_xen_pvh;
    enable = i386_efi;
    enable = x86_64_efi;
 -  enable = emu;
@@ -102,7 +102,7 @@ Index: grub-2.02~rc1/grub-core/Makefile.core.def
  };
  
  module = {
-@@ -2054,7 +2052,7 @@ module = {
+@@ -2182,7 +2180,7 @@ module = {
  module = {
    name = gfxterm_menu;
    common = tests/gfxterm_menu.c;
@@ -111,8 +111,8 @@ Index: grub-2.02~rc1/grub-core/Makefile.core.def
  };
  
  module = {
-@@ -2205,9 +2203,7 @@ module = {
-   enable = i386_pc;
+@@ -2334,9 +2332,7 @@ module = {
+   enable = i386_xen_pvh;
    enable = i386_efi;
    enable = x86_64_efi;
 -  enable = emu;
@@ -121,11 +121,11 @@ Index: grub-2.02~rc1/grub-core/Makefile.core.def
  };
  
  module = {
-Index: grub-2.02~rc1/configure.ac
+Index: grub-2.04~rc1/configure.ac
 ===================================================================
---- grub-2.02~rc1.orig/configure.ac
-+++ grub-2.02~rc1/configure.ac
-@@ -1884,6 +1884,7 @@ AC_SUBST(BUILD_LIBM)
+--- grub-2.04~rc1.orig/configure.ac
++++ grub-2.04~rc1/configure.ac
+@@ -1911,6 +1911,7 @@ AC_SUBST(BUILD_LIBM)
  
  AM_CONDITIONAL([COND_real_platform], [test x$platform != xnone])
  AM_CONDITIONAL([COND_emu], [test x$platform = xemu])
@@ -133,10 +133,10 @@ Index: grub-2.02~rc1/configure.ac
  AM_CONDITIONAL([COND_i386_pc], [test x$target_cpu = xi386 -a x$platform = xpc])
  AM_CONDITIONAL([COND_i386_efi], [test x$target_cpu = xi386 -a x$platform = xefi])
  AM_CONDITIONAL([COND_ia64_efi], [test x$target_cpu = xia64 -a x$platform = xefi])
-Index: grub-2.02~rc1/grub-core/osdep/unix/emuconsole.c
+Index: grub-2.04~rc1/grub-core/osdep/unix/emuconsole.c
 ===================================================================
---- grub-2.02~rc1.orig/grub-core/osdep/unix/emuconsole.c
-+++ grub-2.02~rc1/grub-core/osdep/unix/emuconsole.c
+--- grub-2.04~rc1.orig/grub-core/osdep/unix/emuconsole.c
++++ grub-2.04~rc1/grub-core/osdep/unix/emuconsole.c
 @@ -50,13 +50,12 @@ static struct termios new_tty;
  static int console_mode = 0;
  

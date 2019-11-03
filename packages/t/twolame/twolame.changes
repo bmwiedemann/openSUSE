@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Oct 28 15:50:40 CET 2019 - tiwai@suse.de
+
+- Drop sourceforge download URL that doesn't work any longer...
+
+-------------------------------------------------------------------
+Sat Oct 26 16:13:04 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.4.0
+  * Added free format encoding (now up to 450 kbps)
+  * Added DAB utility methods for ScF-CRC handling
+  * Added `twolame_get_original()` and `twolame_set_original()`
+  * Added `twolame_get_extension()` and `twolame_set_extension()`
+  * Bundled .spec file in tarball for building RPM for twolame
+  * Make libsndfile dependency (and therefore the frontend)
+    optional
+  * Fixed VBR encoding
+  * Fixed setting for error protection flag
+  * New check for invalid bitrate/channel encoder settings
+  * New checks against failed memory allocations
+  * Fixed padding policy (now adding an empty slot)
+  * Fixed build when maintainer mode is disabled
+  * Fixed scaling of floating point input source through
+    libsndfile
+  * Removed `slotinfo` global variables to fix thread safety bug
+  * Switched to handling reading from STDIN using libsndfile
+  * Fix for potential buffer overrun relating to `MAX_NAME_SIZE`
+    in CLI tool
+  * Install AUTHORS, COPYING, README, NEWS in
+    `$prefix/share/doc/twolame/`
+  * Zero the whole of the data structure when calling
+    `twolame_init()`
+  * Prefixed all global symbols with `twolame_` to prevent
+    symbol conflicts
+  * Fix for `twolame_get_framelength()` returning the correct
+    frame size when padding is enabled
+  * Fix progress counter in twolame CLI
+  * Fix compilation on mingw or mxe cross compiler
+  * Fix symbols visibility on Windows
+  * Add `-no-undefined` for compilation on Windows
+  * Added `win32-dll` option to `LT_INIT`
+  * Compiler and Valgrind warning fixes
+  * Various other minor fixes
+
+- Spec cleanup
+
+-------------------------------------------------------------------
 Thu May 25 12:13:16 UTC 2017 - zaitor@opensuse.org
 
 - Tweak spec to align more with openSUSE standards.

@@ -1,8 +1,8 @@
 #
 # spec file for package twolame
 #
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2006-2008 oc2pus
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,23 +13,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           twolame
-Version:        0.3.13
 %define sonum   0
+Name:           twolame
+Version:        0.4.0
 Release:        0
 Summary:        An optimised MPEG Audio Layer 2 (MP2) encoder
-License:        LGPL-2.1
-Group:          Productivity/Multimedia/Sound/Utilities
-Url:            http://www.twolame.org/
-Source0:        http://prdownloads.sourceforge.net/twolame/%{name}-%{version}.tar.gz
+License:        LGPL-2.1-only
+URL:            http://www.twolame.org/
+Source0:        %{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(sndfile) >= 1.0.0
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 TwoLAME is an optimised MPEG Audio Layer 2 (MP2) encoder based on
@@ -39,7 +37,6 @@ thread-safe shared library with an API very similar to LAME's.
 
 %package -n lib%{name}%{sonum}
 Summary:        Shared libraries for TwoLame
-Group:          System/Libraries
 
 %description -n lib%{name}%{sonum}
 TwoLAME is an optimised MPEG Audio Layer 2 (MP2) encoder based on
@@ -51,7 +48,6 @@ This package contains the shared libraries for TwoLame.
 
 %package -n lib%{name}-devel
 Summary:        Include Files and Libraries mandatory for Development
-Group:          Development/Libraries/C and C++
 Requires:       lib%{name}%{sonum} = %{version}
 Provides:       %{name}-devel = 0.3.10
 Obsoletes:      %{name}-devel < 0.3.10
@@ -63,11 +59,7 @@ to develop applications that require these.
 %prep
 %setup -q
 
-sed -i 's|\r||g' doc/html/*.html
-chmod 644        doc/html/*.html
-
 %build
-export CFLAGS="%optflags  -fno-strict-aliasing"
 %configure --disable-static
 make %{?_smp_mflags}
 
@@ -76,28 +68,26 @@ make %{?_smp_mflags}
 
 install -dm 755 %{buildroot}%{_docdir}
 mv %{buildroot}%{_datadir}/doc/%{name} \
-    %{buildroot}%{_docdir}/%{name}-devel
+    %{buildroot}%{_docdir}/lib%{name}-devel
+rm %{buildroot}%{_docdir}/lib%{name}-devel/COPYING
 
-find %{buildroot}%{_libdir} -name '*.la' -type f -delete -print
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n lib%{name}%{sonum} -p /sbin/ldconfig
 %postun -n lib%{name}%{sonum} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1*
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %files -n lib%{name}%{sonum}
-%defattr(-,root,root)
 %{_libdir}/lib%{name}.so.%{sonum}*
 %{_libdir}/lib%{name}.so.%{sonum}
 
 %files -n lib%{name}-devel
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog README TODO
-%doc %{_docdir}/%{name}-devel
+%doc ChangeLog
+%doc %{_docdir}/lib%{name}-devel
 %{_includedir}/*
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc

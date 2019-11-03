@@ -51,6 +51,8 @@ V18:
  * dracut-zipl-refresh.sh.in: initial submission.  [bsc#1127293]
  * dracut-grub2.sh: try to call zipl-refresh on failed kexec and drop
    to an emergency shell otherwise
+V19:
+ * dracut-grub2.sh: use 'grep -P' instead of '-E'.  [bsc#1136970]
 
 ---
  Makefile.util.def                      |   46 +++
@@ -69,41 +71,43 @@ V18:
  util/s390x/zipl2grub.pl.in             |  423 +++++++++++++++++++++++++++++++++
  14 files changed, 908 insertions(+), 3 deletions(-)
 
---- a/Makefile.util.def
-+++ b/Makefile.util.def
-@@ -352,6 +352,7 @@ program = {
-   ldadd = grub-core/gnulib/libgnu.a;
+Index: grub-2.04~rc1/Makefile.util.def
+===================================================================
+--- grub-2.04~rc1.orig/Makefile.util.def
++++ grub-2.04~rc1/Makefile.util.def
+@@ -362,6 +362,7 @@ program = {
+   ldadd = grub-core/lib/gnulib/libgnu.a;
    ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBUTIL) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
    cppflags = '-DGRUB_SETUP_FUNC=grub_util_bios_setup';
 +  emu_condition = COND_NOT_s390x;
  };
  
  program = {
-@@ -372,6 +373,7 @@ program = {
-   ldadd = grub-core/gnulib/libgnu.a;
+@@ -382,6 +383,7 @@ program = {
+   ldadd = grub-core/lib/gnulib/libgnu.a;
    ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBUTIL) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
    cppflags = '-DGRUB_SETUP_FUNC=grub_util_sparc_setup';
 +  emu_condition = COND_NOT_s390x;
  };
  
  program = {
-@@ -387,6 +389,7 @@ program = {
+@@ -397,6 +399,7 @@ program = {
    ldadd = libgrubkern.a;
-   ldadd = grub-core/gnulib/libgnu.a;
+   ldadd = grub-core/lib/gnulib/libgnu.a;
    ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBUTIL) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
 +  emu_condition = COND_NOT_s390x;
  };
  
  program = {
-@@ -417,6 +420,7 @@ program = {
+@@ -427,6 +430,7 @@ program = {
    ldadd = libgrubkern.a;
-   ldadd = grub-core/gnulib/libgnu.a;
+   ldadd = grub-core/lib/gnulib/libgnu.a;
    ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBUTIL) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
 +  emu_condition = COND_NOT_s390x;
  };
  
  data = {
-@@ -628,6 +632,7 @@ program = {
+@@ -638,6 +642,7 @@ program = {
    common = grub-core/disk/host.c;
  
    common = util/resolve.c;
@@ -111,7 +115,7 @@ V18:
    common = grub-core/kern/emu/argp_common.c;
    common = grub-core/osdep/init.c;
  
-@@ -697,6 +702,46 @@ script = {
+@@ -707,6 +712,46 @@ script = {
  };
  
  script = {
@@ -158,17 +162,19 @@ V18:
    name = grub-mkconfig_lib;
    common = util/grub-mkconfig_lib.in;
    installdir = noinst;
-@@ -1308,6 +1353,7 @@ program = {
+@@ -1324,6 +1369,7 @@ program = {
    ldadd = libgrubkern.a;
-   ldadd = grub-core/gnulib/libgnu.a;
+   ldadd = grub-core/lib/gnulib/libgnu.a;
    ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
 +  emu_condition = COND_NOT_s390x;
  };
  
  program = {
---- a/configure.ac
-+++ b/configure.ac
-@@ -181,9 +181,9 @@ if test x$platform != xemu ; then
+Index: grub-2.04~rc1/configure.ac
+===================================================================
+--- grub-2.04~rc1.orig/configure.ac
++++ grub-2.04~rc1/configure.ac
+@@ -197,9 +197,9 @@ if test x$platform != xemu ; then
     esac
  fi
  
@@ -181,19 +187,21 @@ V18:
  
  case "$target_os" in
    windows* | mingw32*) target_os=cygwin ;;
-@@ -1908,6 +1908,9 @@ AM_CONDITIONAL([COND_arm_uboot], [test x
- AM_CONDITIONAL([COND_arm_efi], [test x$target_cpu = xarm -a x$platform = xefi])
- AM_CONDITIONAL([COND_arm64], [test x$target_cpu = xarm64 ])
- AM_CONDITIONAL([COND_arm64_efi], [test x$target_cpu = xarm64 -a x$platform = xefi])
+@@ -1941,6 +1941,9 @@ AM_CONDITIONAL([COND_riscv32], [test x$t
+ AM_CONDITIONAL([COND_riscv64], [test x$target_cpu = xriscv64 ])
+ AM_CONDITIONAL([COND_riscv32_efi], [test x$target_cpu = xriscv32 -a x$platform = xefi])
+ AM_CONDITIONAL([COND_riscv64_efi], [test x$target_cpu = xriscv64 -a x$platform = xefi])
 +AM_CONDITIONAL([COND_s390x], [test x$target_cpu = xs390x ])
 +AM_CONDITIONAL([COND_NOT_s390x], [test x$target_cpu != xs390x ])
 +AM_CONDITIONAL([COND_s390x_emu], [test x$target_cpu = xs390x -a x$platform = xemu])
  
  AM_CONDITIONAL([COND_HOST_HURD], [test x$host_kernel = xhurd])
  AM_CONDITIONAL([COND_HOST_LINUX], [test x$host_kernel = xlinux])
---- a/grub-core/Makefile.core.def
-+++ b/grub-core/Makefile.core.def
-@@ -1057,6 +1057,7 @@ module = {
+Index: grub-2.04~rc1/grub-core/Makefile.core.def
+===================================================================
+--- grub-2.04~rc1.orig/grub-core/Makefile.core.def
++++ grub-2.04~rc1/grub-core/Makefile.core.def
+@@ -1139,6 +1139,7 @@ module = {
  module = {
    name = videotest;
    common = commands/videotest.c;
@@ -201,7 +209,7 @@ V18:
  };
  
  module = {
-@@ -1469,6 +1470,7 @@ module = {
+@@ -1571,6 +1572,7 @@ module = {
    common = gfxmenu/gui_progress_bar.c;
    common = gfxmenu/gui_util.c;
    common = gfxmenu/gui_string_util.c;
@@ -209,7 +217,7 @@ V18:
  };
  
  module = {
-@@ -1884,11 +1886,13 @@ module = {
+@@ -2006,11 +2008,13 @@ module = {
    name = gfxterm;
    common = term/gfxterm.c;
    enable = videomodules;
@@ -223,7 +231,7 @@ V18:
  };
  
  module = {
-@@ -2003,6 +2007,7 @@ module = {
+@@ -2131,6 +2135,7 @@ module = {
    enable = x86_64_efi;
    enable = emu;
    enable = xen;
@@ -231,7 +239,7 @@ V18:
  };
  
  module = {
-@@ -2049,6 +2054,7 @@ module = {
+@@ -2177,6 +2182,7 @@ module = {
  module = {
    name = gfxterm_menu;
    common = tests/gfxterm_menu.c;
@@ -239,7 +247,7 @@ V18:
  };
  
  module = {
-@@ -2201,6 +2207,7 @@ module = {
+@@ -2330,6 +2336,7 @@ module = {
    enable = x86_64_efi;
    enable = emu;
    enable = xen;
@@ -247,8 +255,10 @@ V18:
  };
  
  module = {
---- a/grub-core/osdep/basic/no_platform.c
-+++ b/grub-core/osdep/basic/no_platform.c
+Index: grub-2.04~rc1/grub-core/osdep/basic/no_platform.c
+===================================================================
+--- grub-2.04~rc1.orig/grub-core/osdep/basic/no_platform.c
++++ grub-2.04~rc1/grub-core/osdep/basic/no_platform.c
 @@ -44,3 +44,10 @@ grub_install_sgi_setup (const char *inst
  {
    grub_util_error ("%s", _("no SGI routines are available for your platform"));
@@ -260,9 +270,11 @@ V18:
 +  grub_util_error ("%s", _("no zIPL routines are available for your platform"));
 +}
 +
---- a/grub-core/osdep/unix/platform.c
-+++ b/grub-core/osdep/unix/platform.c
-@@ -233,3 +233,14 @@ grub_install_sgi_setup (const char *inst
+Index: grub-2.04~rc1/grub-core/osdep/unix/platform.c
+===================================================================
+--- grub-2.04~rc1.orig/grub-core/osdep/unix/platform.c
++++ grub-2.04~rc1/grub-core/osdep/unix/platform.c
+@@ -239,3 +239,14 @@ grub_install_sgi_setup (const char *inst
  	imgfile, destname, NULL });
    grub_util_warn ("%s", _("You will have to set `SystemPartition' and `OSLoader' manually."));
  }
@@ -277,9 +289,11 @@ V18:
 +	"-z", dest, NULL }))
 +    grub_util_error (_("`%s' failed.\n"), PACKAGE"-zipl-setup");
 +}
---- a/grub-core/osdep/windows/platform.c
-+++ b/grub-core/osdep/windows/platform.c
-@@ -422,3 +422,9 @@ grub_install_sgi_setup (const char *inst
+Index: grub-2.04~rc1/grub-core/osdep/windows/platform.c
+===================================================================
+--- grub-2.04~rc1.orig/grub-core/osdep/windows/platform.c
++++ grub-2.04~rc1/grub-core/osdep/windows/platform.c
+@@ -424,3 +424,9 @@ grub_install_sgi_setup (const char *inst
  {
    grub_util_error ("%s", _("no SGI routines are available for your platform"));
  }
@@ -289,17 +303,19 @@ V18:
 +{
 +  grub_util_error ("%s", _("no zIPL routines are available for your platform"));
 +}
---- a/include/grub/util/install.h
-+++ b/include/grub/util/install.h
-@@ -99,6 +99,7 @@ enum grub_install_plat
-     GRUB_INSTALL_PLATFORM_I386_XEN,
-     GRUB_INSTALL_PLATFORM_X86_64_XEN,
-     GRUB_INSTALL_PLATFORM_ARM64_EFI,
+Index: grub-2.04~rc1/include/grub/util/install.h
+===================================================================
+--- grub-2.04~rc1.orig/include/grub/util/install.h
++++ grub-2.04~rc1/include/grub/util/install.h
+@@ -105,6 +105,7 @@ enum grub_install_plat
+     GRUB_INSTALL_PLATFORM_ARM_COREBOOT,
+     GRUB_INSTALL_PLATFORM_RISCV32_EFI,
+     GRUB_INSTALL_PLATFORM_RISCV64_EFI,
 +    GRUB_INSTALL_PLATFORM_S390X_EMU,
      GRUB_INSTALL_PLATFORM_MAX
    };
  
-@@ -219,6 +220,9 @@ void
+@@ -229,6 +230,9 @@ void
  grub_install_sgi_setup (const char *install_device,
  			const char *imgfile, const char *destname);
  
@@ -309,18 +325,22 @@ V18:
  int 
  grub_install_compress_gzip (const char *src, const char *dest);
  int 
---- a/util/grub-install-common.c
-+++ b/util/grub-install-common.c
-@@ -666,6 +666,7 @@ static struct
-     [GRUB_INSTALL_PLATFORM_ARM_EFI] =          { "arm",     "efi"       },
-     [GRUB_INSTALL_PLATFORM_ARM64_EFI] =        { "arm64",   "efi"       },
-     [GRUB_INSTALL_PLATFORM_ARM_UBOOT] =        { "arm",     "uboot"     },
+Index: grub-2.04~rc1/util/grub-install-common.c
+===================================================================
+--- grub-2.04~rc1.orig/util/grub-install-common.c
++++ grub-2.04~rc1/util/grub-install-common.c
+@@ -737,6 +737,7 @@ static struct
+     [GRUB_INSTALL_PLATFORM_ARM_COREBOOT] =     { "arm",     "coreboot"  },
+     [GRUB_INSTALL_PLATFORM_RISCV32_EFI] =      { "riscv32", "efi"       },
+     [GRUB_INSTALL_PLATFORM_RISCV64_EFI] =      { "riscv64", "efi"       },
 +    [GRUB_INSTALL_PLATFORM_S390X_EMU] =        { "s390x",   "emu"       },
    }; 
  
  char *
---- a/util/grub-install.c
-+++ b/util/grub-install.c
+Index: grub-2.04~rc1/util/grub-install.c
+===================================================================
+--- grub-2.04~rc1.orig/util/grub-install.c
++++ grub-2.04~rc1/util/grub-install.c
 @@ -66,6 +66,7 @@ static int force_file_id = 0;
  static char *disk_module = NULL;
  static char *efidir = NULL;
@@ -367,32 +387,32 @@ V18:
  #else
     return NULL;
  #endif
-@@ -495,6 +506,8 @@ have_bootdev (enum grub_install_plat pl)
- 
+@@ -499,6 +510,8 @@ have_bootdev (enum grub_install_plat pl)
      case GRUB_INSTALL_PLATFORM_I386_XEN:
      case GRUB_INSTALL_PLATFORM_X86_64_XEN:
+     case GRUB_INSTALL_PLATFORM_I386_XEN_PVH:
 +
 +    case GRUB_INSTALL_PLATFORM_S390X_EMU:
        return 0;
  
        /* pacify warning.  */
-@@ -907,6 +920,7 @@ main (int argc, char *argv[])
-     case GRUB_INSTALL_PLATFORM_ARM_UBOOT:
+@@ -914,6 +927,7 @@ main (int argc, char *argv[])
      case GRUB_INSTALL_PLATFORM_I386_XEN:
      case GRUB_INSTALL_PLATFORM_X86_64_XEN:
+     case GRUB_INSTALL_PLATFORM_I386_XEN_PVH:
 +    case GRUB_INSTALL_PLATFORM_S390X_EMU:
        break;
  
      case GRUB_INSTALL_PLATFORM_I386_QEMU:
-@@ -952,6 +966,7 @@ main (int argc, char *argv[])
-     case GRUB_INSTALL_PLATFORM_MIPS_QEMU_MIPS:
+@@ -964,6 +978,7 @@ main (int argc, char *argv[])
      case GRUB_INSTALL_PLATFORM_I386_XEN:
      case GRUB_INSTALL_PLATFORM_X86_64_XEN:
+     case GRUB_INSTALL_PLATFORM_I386_XEN_PVH:
 +    case GRUB_INSTALL_PLATFORM_S390X_EMU:
        free (install_device);
        install_device = NULL;
        break;
-@@ -1213,6 +1228,20 @@ main (int argc, char *argv[])
+@@ -1239,6 +1254,20 @@ main (int argc, char *argv[])
  	}
      }
  
@@ -413,15 +433,15 @@ V18:
    grub_install_copy_files (grub_install_source_directory,
  			   grubdir, platform);
  
-@@ -1458,6 +1487,7 @@ main (int argc, char *argv[])
- 		  case GRUB_INSTALL_PLATFORM_ARM_UBOOT:
+@@ -1488,6 +1517,7 @@ main (int argc, char *argv[])
  		  case GRUB_INSTALL_PLATFORM_I386_XEN:
  		  case GRUB_INSTALL_PLATFORM_X86_64_XEN:
+ 		  case GRUB_INSTALL_PLATFORM_I386_XEN_PVH:
 +		  case GRUB_INSTALL_PLATFORM_S390X_EMU:
  		    grub_util_warn ("%s", _("no hints available for your platform. Expect reduced performance"));
  		    break;
  		    /* pacify warning.  */
-@@ -1570,6 +1600,10 @@ main (int argc, char *argv[])
+@@ -1605,6 +1635,10 @@ main (int argc, char *argv[])
        strcpy (mkimage_target, "sparc64-ieee1275-raw");
        core_name = "core.img";
        break;
@@ -432,7 +452,7 @@ V18:
        /* pacify warning.  */
      case GRUB_INSTALL_PLATFORM_MAX:
        break;
-@@ -1585,6 +1619,7 @@ main (int argc, char *argv[])
+@@ -1620,6 +1654,7 @@ main (int argc, char *argv[])
  				       core_name);
    char *prefix = xasprintf ("%s%s", prefix_drive ? : "",
  			    relative_grubdir);
@@ -440,7 +460,7 @@ V18:
    grub_install_make_image_wrap (/* source dir  */ grub_install_source_directory,
  				/*prefix */ prefix,
  				/* output */ imgfile,
-@@ -1623,6 +1658,10 @@ main (int argc, char *argv[])
+@@ -1658,6 +1693,10 @@ main (int argc, char *argv[])
  				       /* image target */ mkimage_target, 0);
        }
        break;
@@ -450,8 +470,8 @@ V18:
 +
      case GRUB_INSTALL_PLATFORM_ARM_EFI:
      case GRUB_INSTALL_PLATFORM_ARM64_EFI:
-     case GRUB_INSTALL_PLATFORM_IA64_EFI:
-@@ -1885,6 +1924,10 @@ main (int argc, char *argv[])
+     case GRUB_INSTALL_PLATFORM_RISCV32_EFI:
+@@ -1934,6 +1973,10 @@ main (int argc, char *argv[])
  	}
        break;
  
@@ -462,8 +482,10 @@ V18:
      case GRUB_INSTALL_PLATFORM_MIPSEL_LOONGSON:
      case GRUB_INSTALL_PLATFORM_MIPSEL_QEMU_MIPS:
      case GRUB_INSTALL_PLATFORM_MIPS_QEMU_MIPS:
+Index: grub-2.04~rc1/util/s390x/dracut-grub2.sh.in
+===================================================================
 --- /dev/null
-+++ b/util/s390x/dracut-grub2.sh.in
++++ grub-2.04~rc1/util/s390x/dracut-grub2.sh.in
 @@ -0,0 +1,126 @@
 +#!/bin/sh
 +# -*- mode: shell-script; indent-tabs-mode: nil; sh-basic-offset: 4; -*-
@@ -494,7 +516,7 @@ V18:
 +  checksnap() {
 +    if [ -e /sysroot/.snapshots/grub-snapshot.cfg ]; then
 +      echo true
-+    elif grep  -qE '^[^#\s]+\s+/.snapshots\s+' /sysroot/etc/fstab; then
++    elif grep  -qP '^[^#\s]+\s+/.snapshots\s+' /sysroot/etc/fstab; then
 +      echo false
 +    else
 +      echo true
@@ -560,8 +582,8 @@ V18:
 +    debug "Trying grub2-emu (ro=$grub2rofs, TERM=$TERM, ctty=$_ctty)..."
 +    setsid $CTTY -- chroot /sysroot $bindir/grub2-emu -X -X 0<>$_ctty 1>&0 2>&0
 +
-+    if [ -x /sysroot/usr/share/grub2/zipl-refresh ]; then
-+	setsid $CTTY -- /sysroot/usr/share/grub2/zipl-refresh 0<>$_ctty 1>&0 2>&0
++    if [ -x /sysroot@libdir@/grub2/zipl-refresh ]; then
++	setsid $CTTY -- /sysroot@libdir@/grub2/zipl-refresh 0<>$_ctty 1>&0 2>&0
 +	if [ $? != 0 ]; then
 +	    warn "Not continuing"
 +	    emergency_shell -n grub2-emu-zipl-refresh
@@ -591,8 +613,10 @@ V18:
 +  fi
 +fi
 +
+Index: grub-2.04~rc1/util/s390x/dracut-module-setup.sh.in
+===================================================================
 --- /dev/null
-+++ b/util/s390x/dracut-module-setup.sh.in
++++ grub-2.04~rc1/util/s390x/dracut-module-setup.sh.in
 @@ -0,0 +1,19 @@
 +#!/bin/bash
 +# -*- mode: shell-script; indent-tabs-mode: nil; sh-basic-offset: 4; -*-
@@ -613,8 +637,10 @@ V18:
 +    #inst_multiple grub2-emu kexec
 +}
 +
+Index: grub-2.04~rc1/util/s390x/zipl2grub.conf.in
+===================================================================
 --- /dev/null
-+++ b/util/s390x/zipl2grub.conf.in
++++ grub-2.04~rc1/util/s390x/zipl2grub.conf.in
 @@ -0,0 +1,26 @@
 +## This is the template for '@zipldir@/config' and is subject to
 +## rpm's %config file handling in case of grub2-s390x-emu package update.
@@ -642,8 +668,10 @@ V18:
 +    1 = grub2
 +    2 = skip-grub2
 +
+Index: grub-2.04~rc1/util/s390x/zipl2grub.pl.in
+===================================================================
 --- /dev/null
-+++ b/util/s390x/zipl2grub.pl.in
++++ grub-2.04~rc1/util/s390x/zipl2grub.pl.in
 @@ -0,0 +1,423 @@
 +#!/usr/bin/perl
 +use strict;
@@ -1068,14 +1096,16 @@ V18:
 +System( @C);
 +exit( $miss);
 +
+Index: grub-2.04~rc1/util/s390x/dracut-zipl-refresh.sh.in
+===================================================================
 --- /dev/null
-+++ b/util/s390x/dracut-zipl-refresh.sh.in
++++ grub-2.04~rc1/util/s390x/dracut-zipl-refresh.sh.in
 @@ -0,0 +1,183 @@
 +#!/bin/bash
 +# ex: ts=8 sw=4 sts=4 et filetype=sh syntax=off
 +
 +debug=false
-+TIMEOUT=60
++TIMEOUT=300
 +[ -n "$SYSROOT" ] ||
 +SYSROOT=/sysroot
 +[ -d $SYSROOT/boot ] || SYSROOT=
@@ -1157,7 +1187,7 @@ V18:
 +  to be made writable, then 'grub2-install --force' needs to be run,
 +  and, on success, a 'reboot' will be initiated.
 +
-+  Press 'c[Enter]' to interrupt... "
++  Press 'c[Enter]' to interrupt, any other input will proceed... "
 +
 +trap interrupted=1 INT
 +interrupted=0

@@ -201,7 +201,7 @@ check-setup()
 {
 	local WANT="$VMLINUZ-$1"
 
-	[ -n "$GRUB_SETUP" ] || return
+	[ -n "$GRUB_SETUP" ] || return 0
 	# implementation below is s390x-only (for now)
 	echo "INFO: check-setup \"$WANT\" .."
 	HAVE="/boot/zipl/$VMLINUZ"

@@ -1,4 +1,114 @@
 -------------------------------------------------------------------
+Wed Oct 30 06:26:33 UTC 2019 - Michael Chang <mchang@suse.com>
+
+- Disable btrfs zstd support for i386-pc to workaround core.img too large to be
+  embedded in btrfs bootloader area or MBR gap (boo#1154809)
+  * 0001-btrfs-disable-zstd-support-for-i386-pc.patch 
+
+-------------------------------------------------------------------
+Mon Oct 28 11:52:19 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Fix grub2.sleep to load old kernel after hibernation (boo#1154783)
+
+-------------------------------------------------------------------
+Tue Oct 22 08:05:19 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- Enable support for riscv64
+- Backports from upstream:
+  * risc-v-fix-computation-of-pc-relative-relocation-offset.patch
+  * risc-v-add-clzdi2-symbol.patch
+  * grub-install-define-default-platform-for-risc-v.patch
+
+-------------------------------------------------------------------
+Thu Oct 17 06:34:52 UTC 2019 - Michael Chang <mchang@suse.com>
+
+- Version bump to 2.04
+  * removed
+    - translations-20170427.tar.xz
+  * grub2.spec
+    - Make signed grub-tpm.efi specific to x86_64-efi build, the platform
+      currently shipped with tpm module from upstream codebase
+    - Add shim_lock to signed grub.efi in x86_64-efi build
+    - x86_64: linuxefi now depends on linux, both will verify kernel via
+      shim_lock
+    - Remove translation tarball and po file hacks as it's been included in
+      upstream tarball
+  * rediff
+    - grub2-setup-try-fs-embed-if-mbr-gap-too-small.patch
+    - grub2-commands-introduce-read_file-subcommand.patch
+    - grub2-secureboot-add-linuxefi.patch
+    - 0001-add-support-for-UEFI-network-protocols.patch
+    - grub2-efi-HP-workaround.patch
+    - grub2-secureboot-install-signed-grub.patch
+    - grub2-linux.patch
+    - use-grub2-as-a-package-name.patch
+    - grub2-pass-corret-root-for-nfsroot.patch
+    - grub2-secureboot-use-linuxefi-on-uefi.patch
+    - grub2-secureboot-no-insmod-on-sb.patch
+    - grub2-secureboot-provide-linuxefi-config.patch
+    - grub2-secureboot-chainloader.patch
+    - grub2-s390x-01-Changes-made-and-files-added-in-order-to-allow-s390x.patch
+    - grub2-s390x-02-kexec-module-added-to-emu.patch
+    - grub2-s390x-04-grub2-install.patch
+    - grub2-btrfs-01-add-ability-to-boot-from-subvolumes.patch
+    - grub2-efi-chainloader-root.patch
+    - grub2-ppc64le-disable-video.patch
+    - grub2-ppc64-cas-reboot-support.patch
+    - grub2-Fix-incorrect-netmask-on-ppc64.patch
+    - 0003-bootp-New-net_bootp6-command.patch
+    - 0006-bootp-Add-processing-DHCPACK-packet-from-HTTP-Boot.patch
+    - 0012-tpm-Build-tpm-as-module.patch
+    - grub2-emu-4-all.patch
+    - grub2-btrfs-09-get-default-subvolume.patch
+    - grub2-ppc64le-memory-map.patch
+    - grub2-ppc64-cas-fix-double-free.patch
+    - 0008-efinet-Setting-DNS-server-from-UEFI-protocol.patch
+  * drop upstream patches
+    - grub2-fix-locale-en.mo.gz-not-found-error-message.patch
+    - grub2-fix-build-with-flex-2.6.4.patch
+    - grub2-accept-empty-module.patch
+    - 0001-Fix-packed-not-aligned-error-on-GCC-8.patch
+    - 0001-Fix-PCIe-LER-when-GRUB2-accesses-non-enabled-MMIO-da.patch
+    - unix-exec-avoid-atexit-handlers-when-child-exits.patch
+    - 0001-xfs-Accept-filesystem-with-sparse-inodes.patch
+    - grub2-binutils2.31.patch
+    - grub2-msdos-fix-overflow.patch
+    - 0001-tsc-Change-default-tsc-calibration-method-to-pmtimer.patch
+    - grub2-efi-Move-grub_reboot-into-kernel.patch
+    - grub2-efi-Free-malloc-regions-on-exit.patch
+    - grub2-move-initrd-upper.patch
+    - 0002-Add-Virtual-LAN-support.patch
+    - 0001-ofnet-Initialize-structs-in-bootpath-parser.patch
+    - 0001-misc-fix-invalid-character-recongition-in-strto-l.patch
+    - 0001-tpm-Core-TPM-support.patch
+    - 0002-tpm-Measure-kernel-initrd.patch
+    - 0003-tpm-Add-BIOS-boot-measurement.patch
+    - 0004-tpm-Rework-linux-command.patch
+    - 0005-tpm-Rework-linux16-command.patch
+    - 0006-tpm-Measure-kernel-and-initrd-on-BIOS-systems.patch
+    - 0007-tpm-Measure-the-kernel-commandline.patch
+    - 0008-tpm-Measure-commands.patch
+    - 0009-tpm-Measure-multiboot-images-and-modules.patch
+    - 0010-tpm-Fix-boot-when-there-s-no-TPM.patch
+    - 0011-tpm-Fix-build-error.patch
+    - 0013-tpm-i386-pc-diskboot-img.patch
+    - grub2-freetype-pkgconfig.patch
+    - 0001-cpio-Disable-gcc9-Waddress-of-packed-member.patch
+    - 0002-jfs-Disable-gcc9-Waddress-of-packed-member.patch
+    - 0003-hfs-Fix-gcc9-error-Waddress-of-packed-member.patch
+    - 0004-hfsplus-Fix-gcc9-error-with-Waddress-of-packed-membe.patch
+    - 0005-acpi-Fix-gcc9-error-Waddress-of-packed-member.patch
+    - 0006-usbtest-Disable-gcc9-Waddress-of-packed-member.patch
+    - 0007-chainloader-Fix-gcc9-error-Waddress-of-packed-member.patch
+    - 0008-efi-Fix-gcc9-error-Waddress-of-packed-member.patch
+
+-------------------------------------------------------------------
+Tue Oct 15 13:29:14 UTC 2019 - rw@suse.com
+
+- Consistently find btrfs snapshots on s390x.  (bsc#1136970)
+  * grub2-s390x-04-grub2-install.patch
+
+-------------------------------------------------------------------
 Fri Aug 16 04:51:16 UTC 2019 - Michael Chang <mchang@suse.com>
 
 - Fix fallback embed doesn't work when no post mbr gap at all (boo#1142229)
@@ -33,7 +143,7 @@ Mon Jun 17 09:45:49 UTC 2019 - mchang@suse.com
 -------------------------------------------------------------------
 Fri Jun 14 06:13:58 UTC 2019 - mchang@suse.com
 
-- Avoid high resolution when trying to keep current mode (bsc#1133842) 
+- Avoid high resolution when trying to keep current mode (bsc#1133842)
   * grub2-video-limit-the-resolution-for-fixed-bimap-font.patch
 - Make GRUB_SAVEDEFAULT working with btrfs (bsc#1128592)
   * grub2-grubenv-in-btrfs-header.patch

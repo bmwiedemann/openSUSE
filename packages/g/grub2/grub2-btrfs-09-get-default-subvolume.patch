@@ -1,8 +1,8 @@
-Index: grub-2.02/grub-core/fs/btrfs.c
+Index: grub-2.04~rc1/grub-core/fs/btrfs.c
 ===================================================================
---- grub-2.02.orig/grub-core/fs/btrfs.c
-+++ grub-2.02/grub-core/fs/btrfs.c
-@@ -2446,6 +2446,242 @@ out:
+--- grub-2.04~rc1.orig/grub-core/fs/btrfs.c
++++ grub-2.04~rc1/grub-core/fs/btrfs.c
+@@ -2867,6 +2867,242 @@ out:
    return 0;
  }
  
@@ -244,8 +244,8 @@ Index: grub-2.02/grub-core/fs/btrfs.c
 +
  static struct grub_fs grub_btrfs_fs = {
    .name = "btrfs",
-   .dir = grub_btrfs_dir,
-@@ -2464,6 +2700,7 @@ static struct grub_fs grub_btrfs_fs = {
+   .fs_dir = grub_btrfs_dir,
+@@ -2885,6 +3121,7 @@ static struct grub_fs grub_btrfs_fs = {
  static grub_command_t cmd_info;
  static grub_command_t cmd_mount_subvol;
  static grub_extcmd_t cmd_list_subvols;
@@ -253,7 +253,7 @@ Index: grub-2.02/grub-core/fs/btrfs.c
  
  static char *
  subvolid_set_env (struct grub_env_var *var __attribute__ ((unused)),
-@@ -2534,6 +2771,11 @@ GRUB_MOD_INIT (btrfs)
+@@ -2955,6 +3192,11 @@ GRUB_MOD_INIT (btrfs)
  					 "[-p|-n] [-o var] DEVICE",
  					 "Print list of BtrFS subvolumes on "
  					 "DEVICE.", options);

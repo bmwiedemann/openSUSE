@@ -101,11 +101,17 @@ BuildRequires:  update-bootloader-rpm-macros
 %define only_efi 1
 %endif
 
+%ifarch riscv64
+%define grubcpu riscv64
+%define platform efi
+%define only_efi 1
+%endif
+
 %define grubarch %{grubcpu}-%{platform}
 
 # build efi bootloader on some platforms only:
 %if ! 0%{?efi:1}
-%global efi %{ix86} x86_64 ia64 aarch64 %{arm}
+%global efi %{ix86} x86_64 ia64 aarch64 %{arm} riscv64
 %endif
 
 %ifarch %{efi}
@@ -142,19 +148,16 @@ BuildRequires:  update-bootloader-rpm-macros
 %define only_x86_64 %{nil}
 %endif
 
-Version:        2.02
+Version:        2.04
 Release:        0
 Summary:        Bootloader with support for Linux, Multiboot and more
 License:        GPL-3.0-or-later
 Group:          System/Boot
 Url:            http://www.gnu.org/software/grub/
-%define rev 20120622
-Source0:        grub-%{version}.tar.xz
+Source0:        https://ftp.gnu.org/gnu/grub/grub-%{version}.tar.xz
 Source1:        90_persistent
 Source2:        grub.default
 Source4:        grub2.rpmlintrc
-# rsync -Lrtvz  translationproject.org::tp/latest/grub/ po
-Source5:        translations-20170427.tar.xz
 Source6:        grub2-once
 Source7:        20_memtest86+
 Source8:        README.ibm3215
@@ -176,11 +179,9 @@ Patch6:         grub2-iterate-and-hook-for-extended-partition.patch
 Patch8:         grub2-ppc-terminfo.patch
 Patch9:         grub2-GRUB_CMDLINE_LINUX_RECOVERY-for-recovery-mode.patch
 Patch10:        grub2-fix-error-terminal-gfxterm-isn-t-found.patch
-Patch11:        grub2-fix-build-with-flex-2.6.4.patch
 Patch12:        grub2-fix-menu-in-xen-host-server.patch
 Patch15:        not-display-menu-when-boot-once.patch
 Patch17:        grub2-pass-corret-root-for-nfsroot.patch
-Patch18:        grub2-fix-locale-en.mo.gz-not-found-error-message.patch
 Patch19:        grub2-efi-HP-workaround.patch
 Patch21:        grub2-secureboot-add-linuxefi.patch
 Patch22:        grub2-secureboot-use-linuxefi-on-uefi.patch
@@ -208,7 +209,6 @@ Patch65:        grub2-mkconfig-aarch64.patch
 Patch70:        grub2-default-distributor.patch
 Patch71:        grub2-menu-unrestricted.patch
 Patch72:        grub2-mkconfig-arm.patch
-Patch74:        grub2-accept-empty-module.patch
 Patch75:        grub2-s390x-06-loadparm.patch
 Patch76:        grub2-s390x-07-add-image-param-for-zipl-setup.patch
 Patch77:        grub2-s390x-08-workaround-part-to-disk.patch
@@ -220,15 +220,8 @@ Patch82:        grub2-diskfilter-support-pv-without-metadatacopies.patch
 Patch83:        grub2-efi-uga-64bit-fb.patch
 Patch84:        grub2-s390x-09-improve-zipl-setup.patch
 Patch85:        grub2-getroot-scan-disk-pv.patch
-Patch86:        0001-Fix-packed-not-aligned-error-on-GCC-8.patch
-Patch87:        0001-Fix-PCIe-LER-when-GRUB2-accesses-non-enabled-MMIO-da.patch
-Patch88:        unix-exec-avoid-atexit-handlers-when-child-exits.patch
-Patch89:        0001-xfs-Accept-filesystem-with-sparse-inodes.patch
-Patch90:        grub2-binutils2.31.patch
-Patch91:        grub2-msdos-fix-overflow.patch
 Patch92:        grub2-util-30_os-prober-multiple-initrd.patch
 Patch93:        grub2-getroot-support-nvdimm.patch
-Patch94:        0001-tsc-Change-default-tsc-calibration-method-to-pmtimer.patch
 # Btrfs snapshot booting related patches
 Patch101:       grub2-btrfs-01-add-ability-to-boot-from-subvolumes.patch
 Patch102:       grub2-btrfs-02-export-subvolume-envvars.patch
@@ -240,6 +233,7 @@ Patch107:       grub2-btrfs-07-subvol-fallback.patch
 Patch108:       grub2-btrfs-08-workaround-snapshot-menu-default-entry.patch
 Patch109:       grub2-btrfs-09-get-default-subvolume.patch
 Patch110:       grub2-btrfs-10-config-directory.patch
+Patch111:       0001-btrfs-disable-zstd-support-for-i386-pc.patch
 # Support EFI xen loader
 Patch120:       grub2-efi-xen-chainload.patch
 Patch121:       grub2-efi-chainloader-root.patch
@@ -249,30 +243,22 @@ Patch124:       grub2-efi-xen-removable.patch
 # Hidden menu entry and hotkey "t" for text console
 Patch140:       grub2-Add-hidden-menu-entries.patch
 Patch141:       grub2-SUSE-Add-the-t-hotkey.patch
-# EFI free memory on exit fix (bsc#980739)
-Patch150:       grub2-efi-Move-grub_reboot-into-kernel.patch
-Patch151:       grub2-efi-Free-malloc-regions-on-exit.patch
 # Linux root device related patches
 Patch163:       grub2-zipl-setup-fix-btrfs-multipledev.patch
 Patch164:       grub2-suse-remove-linux-root-param.patch
-# ARM patches - boo#1123350
-Patch180:       grub2-move-initrd-upper.patch
 # PPC64 LE support
 Patch205:       grub2-ppc64le-disable-video.patch
 Patch207:       grub2-ppc64le-memory-map.patch
 # PPC 
-Patch210:       0002-Add-Virtual-LAN-support.patch 
 Patch211:       grub2-ppc64-cas-reboot-support.patch
 Patch212:       grub2-install-remove-useless-check-PReP-partition-is-empty.patch
 Patch213:       grub2-Fix-incorrect-netmask-on-ppc64.patch
 Patch215:       grub2-ppc64-cas-new-scope.patch
-Patch216:       0001-ofnet-Initialize-structs-in-bootpath-parser.patch
 Patch218:       grub2-ppc64-cas-fix-double-free.patch
 Patch233:       grub2-use-stat-instead-of-udevadm-for-partition-lookup.patch
 Patch234:       fix-grub2-use-stat-instead-of-udevadm-for-partition-lookup-with-new-glibc.patch
 Patch236:       grub2-efi_gop-avoid-low-resolution.patch
 # Support HTTP Boot IPv4 and IPv6 (fate#320129)
-Patch280:       0001-misc-fix-invalid-character-recongition-in-strto-l.patch
 Patch281:       0002-net-read-bracketed-ipv6-addrs-and-port-numbers.patch
 Patch282:       0003-bootp-New-net_bootp6-command.patch
 Patch283:       0004-efinet-UEFI-IPv6-PXE-support.patch
@@ -283,19 +269,7 @@ Patch287:       0008-efinet-Setting-DNS-server-from-UEFI-protocol.patch
 # Fix GOP BLT support (FATE#322332)
 Patch311:       grub2-efi-gop-add-blt.patch
 # TPM Support (FATE#315831)
-Patch400:       0001-tpm-Core-TPM-support.patch
-Patch401:       0002-tpm-Measure-kernel-initrd.patch
-Patch402:       0003-tpm-Add-BIOS-boot-measurement.patch
-Patch403:       0004-tpm-Rework-linux-command.patch
-Patch404:       0005-tpm-Rework-linux16-command.patch
-Patch405:       0006-tpm-Measure-kernel-and-initrd-on-BIOS-systems.patch
-Patch406:       0007-tpm-Measure-the-kernel-commandline.patch
-Patch407:       0008-tpm-Measure-commands.patch
-Patch408:       0009-tpm-Measure-multiboot-images-and-modules.patch
-Patch409:       0010-tpm-Fix-boot-when-there-s-no-TPM.patch
-Patch410:       0011-tpm-Fix-build-error.patch
 Patch411:       0012-tpm-Build-tpm-as-module.patch
-Patch412:       0013-tpm-i386-pc-diskboot-img.patch
 # UEFI HTTP and related network protocol support (FATE#320130)
 Patch420:       0001-add-support-for-UEFI-network-protocols.patch
 Patch421:       0002-AUDIT-0-http-boot-tracker-bug.patch
@@ -305,22 +279,15 @@ Patch430:       grub2-mkconfig-default-entry-correction.patch
 Patch431:       grub2-s390x-10-keep-network-at-kexec.patch
 # Support for UEFI Secure Boot on AArch64 (FATE#326541)
 Patch450:       grub2-secureboot-install-signed-grub.patch
-# Use pkg-config to find Freetype2
-Patch500:       grub2-freetype-pkgconfig.patch
 Patch501:       grub2-btrfs-help-on-snapper-rollback.patch
 # Improved hiDPI device support (FATE#326680)
 Patch510:       grub2-video-limit-the-resolution-for-fixed-bimap-font.patch
 # Support long menuentries (FATE#325760)
 Patch511:       grub2-gfxmenu-support-scrolling-menu-entry-s-text.patch
-# Fix GCC 9 build failure (bsc#1121208)
-Patch520:       0001-cpio-Disable-gcc9-Waddress-of-packed-member.patch
-Patch521:       0002-jfs-Disable-gcc9-Waddress-of-packed-member.patch
-Patch522:       0003-hfs-Fix-gcc9-error-Waddress-of-packed-member.patch
-Patch523:       0004-hfsplus-Fix-gcc9-error-with-Waddress-of-packed-membe.patch
-Patch524:       0005-acpi-Fix-gcc9-error-Waddress-of-packed-member.patch
-Patch525:       0006-usbtest-Disable-gcc9-Waddress-of-packed-member.patch
-Patch526:       0007-chainloader-Fix-gcc9-error-Waddress-of-packed-member.patch
-Patch527:       0008-efi-Fix-gcc9-error-Waddress-of-packed-member.patch
+# RISC-V fixes
+Patch601:       risc-v-fix-computation-of-pc-relative-relocation-offset.patch
+Patch602:       risc-v-add-clzdi2-symbol.patch
+Patch603:       grub-install-define-default-platform-for-risc-v.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
@@ -354,7 +321,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?only_x86_64:1}
 ExclusiveArch:  x86_64
 %else
-ExclusiveArch:  %{ix86} x86_64 ppc ppc64 ppc64le s390x aarch64 %{arm}
+ExclusiveArch:  %{ix86} x86_64 ppc ppc64 ppc64le s390x aarch64 %{arm} riscv64
 %endif
 
 %description
@@ -415,10 +382,10 @@ provides support for %{platform} systems.
 %package %{grubefiarch}
 
 Summary:        Bootloader with support for Linux, Multiboot and more
-# Require efibootmgr
-# Without it grub-install is broken so break the package as well if unavailable
 Group:          System/Boot
 BuildArch:      noarch
+# Require efibootmgr
+# Without it grub-install is broken so break the package as well if unavailable
 Requires:       efibootmgr
 Requires(post): efibootmgr
 Requires:       %{name} = %{version}
@@ -487,8 +454,7 @@ swap partition while in resuming
 
 %prep
 # We create (if we build for efi) two copies of the sources in the Builddir
-%setup -q -n grub-%{version} -a 5
-(cd po && ls *.po | cut -d. -f1 | xargs) >po/LINGUAS
+%setup -q -n grub-%{version}
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
@@ -497,11 +463,9 @@ swap partition while in resuming
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
-%patch11 -p1
 %patch12 -p1
 %patch15 -p1
 %patch17 -p1
-%patch18 -p1
 %patch19 -p1
 %patch21 -p1
 %patch22 -p1
@@ -529,7 +493,6 @@ swap partition while in resuming
 %patch70 -p1
 %patch71 -p1
 %patch72 -p1
-%patch74 -p1
 %patch75 -p1
 %patch76 -p1
 %patch77 -p1
@@ -541,15 +504,8 @@ swap partition while in resuming
 %patch83 -p1
 %patch84 -p1
 %patch85 -p1
-%patch86 -p1
-%patch87 -p1
-%patch88 -p1
-%patch89 -p1
-%patch90 -p1
-%patch91 -p1
 %patch92 -p1
 %patch93 -p1
-%patch94 -p1
 %patch101 -p1
 %patch102 -p1
 %patch103 -p1
@@ -560,6 +516,7 @@ swap partition while in resuming
 %patch108 -p1
 %patch109 -p1
 %patch110 -p1
+%patch111 -p1
 %patch120 -p1
 %patch121 -p1
 %patch122 -p1
@@ -567,24 +524,18 @@ swap partition while in resuming
 %patch124 -p1
 %patch140 -p1
 %patch141 -p1
-%patch150 -p1
-%patch151 -p1
 %patch163 -p1
 %patch164 -p1
-%patch180 -p1
 %patch205 -p1
 %patch207 -p1
-%patch210 -p1
 %patch211 -p1
 %patch212 -p1
 %patch213 -p1
 %patch215 -p1
-%patch216 -p1
 %patch218 -p1
 %patch233 -p1
 %patch234 -p1
 %patch236 -p1
-%patch280 -p1
 %patch281 -p1
 %patch282 -p1
 %patch283 -p1
@@ -593,36 +544,18 @@ swap partition while in resuming
 %patch286 -p1
 %patch287 -p1
 %patch311 -p1
-%patch400 -p1
-%patch401 -p1
-%patch402 -p1
-%patch403 -p1
-%patch404 -p1
-%patch405 -p1
-%patch406 -p1
-%patch407 -p1
-%patch408 -p1
-%patch409 -p1
-%patch410 -p1
 %patch411 -p1
-%patch412 -p1
 %patch420 -p1
 %patch421 -p1
 %patch430 -p1
 %patch431 -p1
 %patch450 -p1
-%patch500 -p1
 %patch501 -p1
 %patch510 -p1
 %patch511 -p1
-%patch520 -p1
-%patch521 -p1
-%patch522 -p1
-%patch523 -p1
-%patch524 -p1
-%patch525 -p1
-%patch526 -p1
-%patch527 -p1
+%patch601 -p1
+%patch602 -p1
+%patch603 -p1
 
 %build
 # collect evidence to debug spurious build failure on SLE15
@@ -636,14 +569,6 @@ ulimit -a
 # This simplifies patch handling without need to use git to create patch
 # that renames file
 mv docs/grub.texi docs/grub2.texi
-# This avoids attempt to rebuild potfiles which fails because necessary
-# sources are not included in tarball
-mv po/grub.pot po/%{name}.pot
-
-# Generate po/LINGUAS for message catalogs ...
-./linguas.sh
-# ... and make sure new catalogs are actually created
-rm -f po/stamp-po
 
 cp %{SOURCE8} .
 mkdir build
@@ -736,7 +661,7 @@ PXE_MODULES="efinet tftp http"
 CRYPTO_MODULES="luks gcry_rijndael gcry_sha1 gcry_sha256"
 
 %ifarch x86_64
-CD_MODULES="${CD_MODULES} linuxefi" 
+CD_MODULES="${CD_MODULES} shim_lock linuxefi" 
 %else
 CD_MODULES="${CD_MODULES} linux" 
 %endif
@@ -744,8 +669,10 @@ CD_MODULES="${CD_MODULES} linux"
 GRUB_MODULES="${CD_MODULES} ${FS_MODULES} ${PXE_MODULES} ${CRYPTO_MODULES} mdraid09 mdraid1x lvm serial"
 ./grub-mkimage -O %{grubefiarch} -o grub.efi --prefix= \
 		-d grub-core ${GRUB_MODULES}
+%ifarch x86_64
 ./grub-mkimage -O %{grubefiarch} -o grub-tpm.efi --prefix= \
 		-d grub-core ${GRUB_MODULES} tpm
+%endif
 
 %ifarch x86_64 aarch64
 %if 0%{?suse_version} >= 1230 || 0%{?suse_version} == 1110
@@ -824,7 +751,10 @@ cd ..
 %ifarch %{efi}
 cd build-efi
 %make_install
-install -m 644 grub.efi grub-tpm.efi %{buildroot}/%{_datadir}/%{name}/%{grubefiarch}/.
+install -m 644 grub.efi %{buildroot}/%{_datadir}/%{name}/%{grubefiarch}/.
+%ifarch x86_64
+install -m 644 grub-tpm.efi %{buildroot}/%{_datadir}/%{name}/%{grubefiarch}/.
+%endif
 
 # Create grub.efi link to system efi directory
 # This is for tools like kiwi not fiddling with the path
@@ -845,7 +775,10 @@ EoM
 
 %ifarch x86_64 aarch64
 %if 0%{?suse_version} >= 1230 || 0%{?suse_version} == 1110
-export BRP_PESIGN_FILES="%{_datadir}/%{name}/%{grubefiarch}/grub.efi %{_datadir}/%{name}/%{grubefiarch}/grub-tpm.efi"
+export BRP_PESIGN_FILES="%{_datadir}/%{name}/%{grubefiarch}/grub.efi"
+%ifarch x86_64
+BRP_PESIGN_FILES="${BRP_PESIGN_FILES} %{_datadir}/%{name}/%{grubefiarch}/grub-tpm.efi"
+%endif
 install -m 444 grub.der %{buildroot}/%{sysefidir}/
 %endif
 %endif
@@ -1252,7 +1185,9 @@ fi
 %defattr(-,root,root,-)
 %dir %{_datadir}/%{name}/%{grubefiarch}
 %{_datadir}/%{name}/%{grubefiarch}/grub.efi
+%ifarch x86_64
 %{_datadir}/%{name}/%{grubefiarch}/grub-tpm.efi
+%endif
 %{_datadir}/%{name}/%{grubefiarch}/*.img
 %{_datadir}/%{name}/%{grubefiarch}/*.lst
 %{_datadir}/%{name}/%{grubefiarch}/*.mod

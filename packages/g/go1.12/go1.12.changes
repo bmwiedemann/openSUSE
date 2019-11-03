@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 29 19:37:12 UTC 2019 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Add %ifarch %arm aarch64 BuildRequires: binutils-gold to fix
+  /usr/lib64/go/{version}/pkg/tool/linux_arm64/link: running gcc failed: exit status 1
+  collect2: fatal error: cannot find 'ld'-
+
+-------------------------------------------------------------------
 Mon Oct 21 14:05:35 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix broken go_api evaluation (1.12 < 1.5, when evaluated as floats),
