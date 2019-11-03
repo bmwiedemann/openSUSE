@@ -28,6 +28,8 @@ License:        Apache-2.0
 Group:          Productivity/Networking/Other
 Url:            http://www.freerdp.com/
 Source0:        https://github.com/FreeRDP/FreeRDP/archive/%{version_file}.tar.gz#/FreeRDP-%{version_file}.tar.gz
+# PATCH-FIX-UPSTREAM freerdp-Fix-realloc-return-handling.patch boo#1153163 boo#1153164 gh#FreeRDP/FreeRDP#5645 - fezhang@suse.com -- Fix realloc return handling that results in memory leaks
+Patch1:         freerdp-Fix-realloc-return-handling.patch
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 2.8
 BuildRequires:  cups-devel
@@ -151,6 +153,8 @@ use the uwac library.
 
 %prep
 %setup -q -n FreeRDP-%{version_file}
+
+%patch1 -p1
 
 %build
 if [ -z "$SOURCE_DATE_EPOCH" ]; then

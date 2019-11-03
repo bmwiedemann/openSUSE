@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct 28 11:01:38 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 2.001004
+   see /usr/share/doc/packages/perl-Role-Tiny/Changes
+
+  2.001004 - 2019-10-25
+    - fix methods being excluded from composition if they previously existed in
+      the composing role (RT#130811)
+    - fix role application overwriting subs that are not considered methods
+    - fix helper subs created by a Role::Tiny extension (like Moo::Role)
+      sometimes being teated as methods
+
+-------------------------------------------------------------------
 Thu Oct 10 08:58:45 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 2.001003
