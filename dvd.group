@@ -1614,8 +1614,8 @@
     <package name="libLLVM9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libLTO9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libMagick++-7_Q16HDRI4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-technical_writing -->
-    <package name="libMagickCore-7_Q16HDRI6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libMagickWand-7_Q16HDRI6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libMagickCore-7_Q16HDRI7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libMagickWand-7_Q16HDRI7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libOkteta3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libOpenColorIO1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libQt5Bluetooth5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
