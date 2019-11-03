@@ -7,4 +7,12 @@
     <comment>Re-submission of the Tumbleweed vagrant box, now with a simpler name matching the Leap images, too.</comment>
     <requestid>733652</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>154353a0a2b339dccf015e3357626920</srcmd5>
+    <version>1.0</version>
+    <time>1572776176</time>
+    <user>dimstar_suse</user>
+    <comment>Add bootstrap package openSUSE-release-appliance-vagrant</comment>
+    <requestid>743851</requestid>
+  </revision>
 </revisionlist>

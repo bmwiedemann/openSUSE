@@ -1,0 +1,16 @@
+--- a/m4/python_devel.m4
++++ b/m4/python_devel.m4
+@@ -24,7 +24,12 @@ AS_IF([test x"$pyconfig" = x"no"], [
+     dnl If python-config is found use it
+     CPPFLAGS="$CFLAGS `$PYTHON-config --cflags`"
+     LDFLAGS="$LDFLAGS `$PYTHON-config --ldflags`"
+-    LIBS="$LIBS `$PYTHON-config --libs`"
++    if $PYTHON-config --libs --embed >/dev/null 2>&1 ; then
++    PYLIBS="$($PYTHON-config --libs --embed)"
++    else
++    PYLIBS="$($PYTHON-config --libs)"
++    fi
++    LIBS="$LIBS $PYLIBS"
+ ])
+ 
+ AC_CHECK_HEADER([Python.h], [],

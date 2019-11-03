@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 # needssslcertforbuild
 
@@ -207,6 +207,9 @@ Patch621:       xen.build-compare.doc_html.patch
 Patch623:       ipxe-no-error-logical-not-parentheses.patch
 Patch624:       ipxe-use-rpm-opt-flags.patch
 # Build patches
+# PATCH-FIX-UPSTREAM python38-build.patch mcepl@suse.com
+# Make package buildable with python3.8
+Patch99995:     python38-build.patch
 Patch99996:     xen.stubdom.newlib.patch
 Patch99998:     tmp_build.patch
 Patch99999:     reproducible.patch
@@ -401,6 +404,7 @@ Authors:
 %patch623 -p1
 %patch624 -p1
 # Build patches
+%patch99995 -p1
 %patch99996 -p1
 %patch99998 -p1
 %patch99999 -p1

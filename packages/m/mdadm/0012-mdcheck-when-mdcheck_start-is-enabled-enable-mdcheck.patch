@@ -1,0 +1,44 @@
+From 751090e03c584ae2e4badd8823bd68d8d0c4c298 Mon Sep 17 00:00:00 2001
+From: NeilBrown <neilb@suse.de>
+Date: Fri, 18 Oct 2019 11:10:34 +1100
+Subject: [PATCH] mdcheck: when mdcheck_start is enabled, enable
+ mdcheck_continue too.
+
+mdcheck_continue continues a regular array scan that was started by
+mdcheck_start.
+mdcheck_start will ensure that mdcheck_continue is active.
+Howver if you reboot after a check has started, but before it finishes,
+then mdcheck_continue won't cause it to continue, because nothing
+starts it on boot.
+
+So add an install option for mdcheck_contine, and make sure it
+gets enabled when mdcheck_start is enabled.
+
+Signed-off-by: NeilBrown <neilb@suse.de>
+---
+ systemd/mdcheck_continue.timer | 2 ++
+ systemd/mdcheck_start.timer    | 1 +
+ 2 files changed, 3 insertions(+)
+
+diff --git a/systemd/mdcheck_continue.timer b/systemd/mdcheck_continue.timer
+index 3ccfd7858a3f..dba1074c1f44 100644
+--- a/systemd/mdcheck_continue.timer
++++ b/systemd/mdcheck_continue.timer
+@@ -11,3 +11,5 @@ Description=MD array scrubbing - continuation
+ [Timer]
+ OnCalendar= 1:05:00
+ 
++[Install]
++WantedBy= mdmonitor.service
+diff --git a/systemd/mdcheck_start.timer b/systemd/mdcheck_start.timer
+index 64807362d649..9e7e02ab7333 100644
+--- a/systemd/mdcheck_start.timer
++++ b/systemd/mdcheck_start.timer
+@@ -13,3 +13,4 @@ OnCalendar=Sun *-*-1..7 1:00:00
+ 
+ [Install]
+ WantedBy= mdmonitor.service
++Also= mdcheck_continue.timer
+-- 
+2.23.0
+

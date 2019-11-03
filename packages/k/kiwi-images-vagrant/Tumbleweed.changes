@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 29 14:35:59 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Add bootstrap package openSUSE-release-appliance-vagrant
+
+-------------------------------------------------------------------
+Tue Oct 22 08:23:00 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Drop removed package openSUSE-release-dvd
+
+-------------------------------------------------------------------
 Thu Sep 26 10:18:38 UTC 2019 - Dan Čermák <dcermak@suse.com>
 
 - Change names of the openSUSE images to be less verbose

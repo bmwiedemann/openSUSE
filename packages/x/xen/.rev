@@ -2355,4 +2355,12 @@
     <comment>Update to Xen version 4.13.0 RC1</comment>
     <requestid>741160</requestid>
   </revision>
+  <revision rev="274" vrev="2">
+    <srcmd5>55eaf5694dd4c9e78bfb2a8495c63b65</srcmd5>
+    <version>4.13.0_01</version>
+    <time>1572776301</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>743878</requestid>
+  </revision>
 </revisionlist>

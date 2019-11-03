@@ -1172,4 +1172,15 @@ which haven't landed upstream yet
   0011-mdmon-don-t-attempt-to-manage-new-arrays-when-termin.patch (forwarded request 689520 from colyli)</comment>
     <requestid>689523</requestid>
   </revision>
+  <revision rev="119" vrev="4">
+    <srcmd5>9a6fb82991939e240092cc03c67c4257</srcmd5>
+    <version>4.1</version>
+    <time>1572776429</time>
+    <user>dimstar_suse</user>
+    <comment>- 0012-mdcheck-when-mdcheck_start-is-enabled-enable-mdcheck.patch
+  0013-mdcheck-use-to-pass-variable-to-mdcheck.patch
+  0014-SUSE-mdadm_env.sh-handle-MDADM_CHECK_DURATION.patch
+ Improve mdcheck (bsc#1153258)</comment>
+    <requestid>743911</requestid>
+  </revision>
 </revisionlist>

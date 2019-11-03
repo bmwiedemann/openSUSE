@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 30 00:10:38 UTC 2019 - Neil Brown <nfbrown@suse.com>
+
+- 0012-mdcheck-when-mdcheck_start-is-enabled-enable-mdcheck.patch
+  0013-mdcheck-use-to-pass-variable-to-mdcheck.patch
+  0014-SUSE-mdadm_env.sh-handle-MDADM_CHECK_DURATION.patch
+ Improve mdcheck (bsc#1153258)
+
+-------------------------------------------------------------------
 Thu Mar 28 11:43:38 UTC 2019 - colyli@suse.com
 
 - imsm: finish recovery when drive with rebuild fails (bsc#1126975)

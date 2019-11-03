@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 29 14:27:13 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add python38-build.patch fixing build with Python 3.8 (add
+  --embed to python-config call)
+
+-------------------------------------------------------------------
 Mon Oct 14 09:01:47 MDT 2019 - carnold@suse.com
 
 - Update to Xen 4.13.0 RC1 release

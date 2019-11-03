@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -53,6 +53,9 @@ Patch18:        0008-policy.c-prevent-NULL-pointer-referencing.patch
 Patch19:        0009-Detail.c-do-not-skip-first-character-when-calling-xs.patch
 Patch20:        0010-imsm-finish-recovery-when-drive-with-rebuild-fails.patch
 Patch21:        0011-mdmon-don-t-attempt-to-manage-new-arrays-when-termin.patch
+Patch22:        0012-mdcheck-when-mdcheck_start-is-enabled-enable-mdcheck.patch
+Patch23:        0013-mdcheck-use-to-pass-variable-to-mdcheck.patch
+Patch24:        0014-SUSE-mdadm_env.sh-handle-MDADM_CHECK_DURATION.patch
 Patch1001:      1001-display-timeout-status.patch
 %define _udevdir %(pkg-config --variable=udevdir udev)
 %define _systemdshutdowndir %{_unitdir}/../system-shutdown
@@ -74,6 +77,9 @@ mdadm is a program that can be used to control Linux md devices.
 %patch19 -p1
 %patch20 -p1
 %patch21 -p1
+%patch22 -p1
+%patch23 -p1
+%patch24 -p1
 %patch1001 -p1
 
 %build
