@@ -1427,4 +1427,14 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
   * gdb-rhbz1704406-disable-style-log-output-2of3.patch</comment>
     <requestid>734351</requestid>
   </revision>
+  <revision rev="132" vrev="2">
+    <srcmd5>0083bd0b6cfb3b4dedee86e84fb9c3c1</srcmd5>
+    <version>8.3.1</version>
+    <time>1572778060</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport 2nd part of fix for swo#23657.
+  [bsc#1142772, swo#23657, CVE-2019-1010180]
+  * gdb-dwarf-reader-reject-sections-with-invalid-sizes.patch (forwarded request 743950 from tomdevries)</comment>
+    <requestid>744189</requestid>
+  </revision>
 </revisionlist>

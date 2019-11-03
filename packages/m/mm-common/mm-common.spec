@@ -18,14 +18,15 @@
 
 
 Name:           mm-common
-Version:        0.9.12
+Version:        1.0.0
 Release:        0
 Summary:        Common build files of the GNOME C++ bindings
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://gtkmm.org
-Source:         http://download.gnome.org/sources/%{name}/0.9/%{name}-%{version}.tar.xz
+Source:         http://download.gnome.org/sources/%{name}/1.0/%{name}-%{version}.tar.xz
 Source99:       mm-common-rpmlintrc
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildArch:      noarch
 
@@ -44,19 +45,21 @@ Package contains short documentation for %{name} and example skeleton module,
 which could be used as a base for new mm module.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%configure
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %files
 %license COPYING
-%doc NEWS AUTHORS
+%doc NEWS AUTHORS README
+%{_bindir}/mm-common-get
 %{_bindir}/mm-common-prepare
+%{_mandir}/man1/mm-common-get.1%{?ext_man}
 %{_mandir}/man1/mm-common-prepare.1%{?ext_man}
 %dir %{_datadir}/aclocal
 %{_datadir}/aclocal/mm-*.m4

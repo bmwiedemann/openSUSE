@@ -66,4 +66,12 @@
   strings, as multiple keys can now be bound. (forwarded request 743418 from dimstar)</comment>
     <requestid>743765</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>169b9e18629e3ad1226a0e90f8cea65f</srcmd5>
+    <version>15</version>
+    <time>1572778314</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>744267</requestid>
+  </revision>
 </revisionlist>

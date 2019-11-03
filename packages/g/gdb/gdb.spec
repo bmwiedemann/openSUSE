@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -243,7 +243,9 @@ Patch2004:      gdb-testsuite-add-missing-initial-prompt-read-in-multidictionary
 Patch2005:      gdb-testsuite-pie-no-pie.patch
 Patch2007:      gdb-testsuite-read1-fixes.patch
 Patch2008:      gdb-testsuite-i386-pkru-exp.patch
-Patch2500:      gdb-fix-heap-use-after-free-in-typename-concat.patch
+Patch2009:      gdb-s390-handle-arch13.diff
+Patch2010:      gdb-fix-heap-use-after-free-in-typename-concat.patch
+Patch2011:      gdb-dwarf-reader-reject-sections-with-invalid-sizes.patch
 
 # Testsuite patches
 Patch2600:      gdb-testsuite-8.3-kfail-xfail-unsupported.patch
@@ -585,8 +587,9 @@ find -name "*.info*"|xargs rm -f
 %patch2005 -p1
 %patch2007 -p1
 %patch2008 -p1
-
-%patch2500 -p1
+%patch2009 -p1
+%patch2010 -p1
+%patch2011 -p1
 
 %patch2600 -p1
 

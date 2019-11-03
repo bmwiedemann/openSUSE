@@ -1409,4 +1409,13 @@ Man pages are disabled for this build, upstream disabled them for this release. 
   * bug fixes</comment>
     <requestid>713239</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>ac303ac527fd6d0ad60a2fcf86383464</srcmd5>
+    <version>2.4.100</version>
+    <time>1572777811</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.100
+  * bugfixes (boo#1155382)</comment>
+    <requestid>744167</requestid>
+  </revision>
 </revisionlist>

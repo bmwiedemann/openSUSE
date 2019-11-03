@@ -15,6 +15,7 @@
         <profile name="MS-HyperV" description="JeOS for Hyper-V" arch="x86_64"/>
         <profile name="OpenStack-Cloud" description="JeOS for OpenStack Cloud" arch="x86_64"/>
         <profile name="RaspberryPi" description="JeOS for the Raspberry Pi" arch="aarch64"/>
+        <profile name="RaspberryPi4" description="JeOS for the Raspberry Pi4" arch="aarch64"/>
     </profiles>
     <preferences profiles="kvm-and-xen">
         <version>15.1.0</version>
@@ -261,6 +262,51 @@
         </type>
     </preferences>
 
+    <preferences profiles="RaspberryPi4">
+        <version>15.1.0</version>
+        <packagemanager>zypper</packagemanager>
+        <bootsplash-theme>openSUSE</bootsplash-theme>
+        <bootloader-theme>openSUSE</bootloader-theme>
+    <!-- those settings are applied by suseConfig in config.sh
+        <locale>en_US</locale>
+        <keytable>us.map.gz</keytable>
+        <timezone>Europe/Berlin</timezone>
+        <hwclock>utc</hwclock>
+    -->
+        <rpm-excludedocs>true</rpm-excludedocs>
+        <type
+            image="oem"
+            initrd_system="dracut"
+            filesystem="btrfs"
+            fsmountoptions="noatime,compress=lzo"
+            bootloader="grub2"
+            firmware="efi"
+            kernelcmdline="plymouth.enable=0 cma=64M console=ttyS0,115200 modprobe.blacklist=vc4"
+            bootpartition="false"
+            devicepersistency="by-uuid"
+            btrfs_quota_groups="true"
+            btrfs_root_is_snapshot="true"
+            efipartsize="16"
+            editbootinstall="editbootinstall_rpi.sh"
+        >
+            <systemdisk>
+                <volume name="home"/>
+                <volume name="root"/>
+                <volume name="tmp"/>
+                <volume name="opt"/>
+                <volume name="srv"/>
+                <volume name="boot/grub2/arm64-efi" mountpoint="boot/grub2/arm64-efi"/>
+                <volume name="usr/local"/>
+                <volume name="var" copy_on_write="false"/>
+            </systemdisk>
+            <oemconfig>
+              <oem-swap>true</oem-swap>
+              <oem-swapsize>1000</oem-swapsize>
+              <oem-skip-verify>true</oem-skip-verify>
+            </oemconfig>
+        </type>
+    </preferences>
+
     <repository type="rpm-md" >
         <source path='obsrepositories:/'/>
     </repository>
@@ -309,7 +355,7 @@
     </packages>
 
     <!-- Not needed in OpenStack as it uses XFS and cloud-init -->
-    <packages type="image" profiles="kvm-and-xen,XEN,VMware,MS-HyperV,RaspberryPi">
+    <packages type="image" profiles="kvm-and-xen,XEN,VMware,MS-HyperV,RaspberryPi,RaspberryPi4">
         <!-- Only for btrfs -->
         <package name="btrfsprogs"/>
         <package name="btrfsmaintenance"/>
@@ -347,17 +393,22 @@
         <package name="kernel-default-base"/>
         <!--<package name="python-azure-agent"/> disabled until bsc#1061584 is fixed -->
     </packages>
-    <packages type="image" profiles="RaspberryPi">
+    <packages type="image" profiles="RaspberryPi,RaspberryPi4">
         <package name="raspberrypi-firmware" arch="aarch64"/>
         <package name="raspberrypi-firmware-config" arch="aarch64"/>
         <package name="raspberrypi-firmware-dt" arch="aarch64"/>
-        <package name="u-boot-rpi3" arch="aarch64"/>
         <package name="dracut-kiwi-oem-repart"/>
         <package name="kernel-default"/>
         <!-- For WiFi: -->
         <package name="jeos-firstboot-rpiwifi"/>
         <package name="bcm43xx-firmware"/>
         <package name="kernel-firmware"/><!-- Fix choice between kernel-firmware and kernel-firmware-all -->
+    </packages>
+    <packages type="image" profiles="RaspberryPi">
+       <package name="u-boot-rpi3" arch="aarch64"/>
+    </packages>
+    <packages type="image" profiles="RaspberryPi4">
+       <package name="u-boot-rpi4" arch="aarch64"/>
     </packages>
 
 <!-- TW does not have those release packages
