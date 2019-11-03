@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.3
-%define patchversion 5.3.7
+%define patchversion 5.3.8
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -64,9 +64,9 @@ Name:           kernel-debug
 Summary:        A Debug Version of the Kernel
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.3.7
+Version:        5.3.8
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g3eea5a9
+Release:        <RELEASE>.gea4c828
 %else
 Release:        0
 %endif
@@ -171,10 +171,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-3eea5a9f9638401a970874028a5e22774128d7ed
-Provides:       kernel-srchash-3eea5a9f9638401a970874028a5e22774128d7ed
+Provides:       kernel-%build_flavor-base-srchash-ea4c828eff871b1903070b31debe0ff5f7a3065c
+Provides:       kernel-srchash-ea4c828eff871b1903070b31debe0ff5f7a3065c
 # END COMMON DEPS
-Provides:       %name-srchash-3eea5a9f9638401a970874028a5e22774128d7ed
+Provides:       %name-srchash-ea4c828eff871b1903070b31debe0ff5f7a3065c
 %ifarch ppc64
 Provides:       kernel-kdump = 2.6.28
 Obsoletes:      kernel-kdump <= 2.6.28
@@ -975,6 +975,10 @@ if [ %CONFIG_MODULES = y ]; then
 fi
 
 rm -rf %{buildroot}/lib/firmware
+if [ %CONFIG_MODULES = y ]; then
+	# file contains number of CPUs, making builds hard to reproduce
+	find %{buildroot}/usr/src/linux-*-obj/ -name .kernel-binary.spec.buildenv -delete
+fi
 
 add_dirs_to_filelist() {
     sed -rn '
@@ -1236,8 +1240,10 @@ Requires:       %{patch_package}-%(echo %{version}-%{source_rel} | sed 'y/\./_/'
 Provides:	kernel-default-kgraft = %version
 Provides:	kernel-xen-kgraft = %version
 Provides:       multiversion(kernel)
+%if "%livepatch" != "kgraft"
 Obsoletes:	kernel-default-kgraft < %version
 Obsoletes:	kernel-xen-kgraft < %version
+%endif
 
 %description %{livepatch}
 This is a metapackage that pulls in the matching %patch_package package for a

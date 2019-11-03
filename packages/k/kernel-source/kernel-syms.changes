@@ -1,4 +1,412 @@
 -------------------------------------------------------------------
+Wed Oct 30 08:12:05 CET 2019 - jslaby@suse.cz
+
+- Refresh
+  patches.suse/stacktrace-don-t-skip-first-entry-on-noncurrent-task.patch.
+  v3 of the patch
+- commit ea4c828
+
+-------------------------------------------------------------------
+Tue Oct 29 10:02:07 CET 2019 - jslaby@suse.cz
+
+- Linux 5.3.8 (bnc#1151927).
+- drm: Free the writeback_job when it with an empty fb
+  (bnc#1151927).
+- drm: Clear the fence pointer when writeback job signaled
+  (bnc#1151927).
+- clk: ti: dra7: Fix mcasp8 clock bits (bnc#1151927).
+- ARM: dts: Fix wrong clocks for dra7 mcasp (bnc#1151927).
+- nvme-pci: Fix a race in controller removal (bnc#1151927).
+- scsi: ufs: skip shutdown if hba is not powered (bnc#1151927).
+- scsi: megaraid: disable device when probe failed after enabled
+  device (bnc#1151927).
+- scsi: qla2xxx: Silence fwdump template message (bnc#1151927).
+- scsi: qla2xxx: Fix unbound sleep in fcport delete path
+  (bnc#1151927).
+- scsi: qla2xxx: Fix stale mem access on driver unload
+  (bnc#1151927).
+- scsi: qla2xxx: Fix N2N link reset (bnc#1151927).
+- scsi: qla2xxx: Fix N2N link up fail (bnc#1151927).
+- ARM: dts: Fix gpio0 flags for am335x-icev2 (bnc#1151927).
+- ARM: OMAP2+: Fix missing reset done flag for am3 and am43
+  (bnc#1151927).
+- ARM: OMAP2+: Add missing LCDC midlemode for am335x
+  (bnc#1151927).
+- ARM: OMAP2+: Fix warnings with broken omap2_set_init_voltage()
+  (bnc#1151927).
+- nvme-tcp: fix wrong stop condition in io_work (bnc#1151927).
+- nvme-pci: Save PCI state before putting drive into deepest state
+  (bnc#1151927).
+- nvme: fix an error code in nvme_init_subsystem() (bnc#1151927).
+- nvme-rdma: Fix max_hw_sectors calculation (bnc#1151927).
+- Added QUIRKs for ADATA XPG SX8200 Pro 512GB (bnc#1151927).
+- nvme: Add quirk for Kingston NVME SSD running FW E8FK11.T
+  (bnc#1151927).
+- nvme: allow 64-bit results in passthru commands (bnc#1151927).
+- drm/komeda: prevent memory leak in komeda_wb_connector_add
+  (bnc#1151927).
+- nvme-rdma: fix possible use-after-free in connect timeout
+  (bnc#1151927).
+- blk-mq: honor IO scheduler for multiqueue devices (bnc#1151927).
+- ieee802154: ca8210: prevent memory leak (bnc#1151927).
+- ARM: dts: am4372: Set memory bandwidth limit for DISPC
+  (bnc#1151927).
+- net: dsa: qca8k: Use up to 7 ports for all operations
+  (bnc#1151927).
+- MIPS: dts: ar9331: fix interrupt-controller size (bnc#1151927).
+- xen/efi: Set nonblocking callbacks (bnc#1151927).
+- loop: change queue block size to match when using DIO
+  (bnc#1151927).
+- nl80211: fix null pointer dereference (bnc#1151927).
+- mac80211: fix txq null pointer dereference (bnc#1151927).
+- netfilter: nft_connlimit: disable bh on garbage collection
+  (bnc#1151927).
+- net: mscc: ocelot: add missing of_node_put after calling
+  of_get_child_by_name (bnc#1151927).
+- net: dsa: rtl8366rb: add missing of_node_put after calling
+  of_get_child_by_name (bnc#1151927).
+- net: stmmac: xgmac: Not all Unicast addresses may be available
+  (bnc#1151927).
+- net: stmmac: dwmac4: Always update the MAC Hash Filter
+  (bnc#1151927).
+- net: stmmac: Correctly take timestamp for PTPv2 (bnc#1151927).
+- net: stmmac: Do not stop PHY if WoL is enabled (bnc#1151927).
+- net: ag71xx: fix mdio subnode support (bnc#1151927).
+- RISC-V: Clear load reservations while restoring hart contexts
+  (bnc#1151927).
+- riscv: Fix memblock reservation for device tree blob
+  (bnc#1151927).
+- drm/amdgpu: fix multiple memory leaks in acp_hw_init
+  (bnc#1151927).
+- drm/amd/display: memory leak (bnc#1151927).
+- mips: Loongson: Fix the link time qualifier of 'serial_exit()'
+  (bnc#1151927).
+- net: hisilicon: Fix usage of uninitialized variable in function
+  mdio_sc_cfg_reg_write() (bnc#1151927).
+- net: stmmac: Avoid deadlock on suspend/resume (bnc#1151927).
+- selftests: kvm: Fix libkvm build error (bnc#1151927).
+- lib: textsearch: fix escapes in example code (bnc#1151927).
+- s390/mm: fix -Wunused-but-set-variable warnings (bnc#1151927).
+- r8152: Set macpassthru in reset_resume callback (bnc#1151927).
+- net: phy: allow for reset line to be tied to a sleepy GPIO
+  controller (bnc#1151927).
+- net: phy: fix write to mii-ctrl1000 register (bnc#1151927).
+- namespace: fix namespace.pl script to support relative paths
+  (bnc#1151927).
+- Convert filldir[64]() from __put_user() to unsafe_put_user()
+  (bnc#1151927).
+- elf: don't use MAP_FIXED_NOREPLACE for elf executable mappings
+  (bnc#1151927).
+- Make filldir[64]() verify the directory entry filename is valid
+  (bnc#1151927).
+- uaccess: implement a proper unsafe_copy_to_user() and switch
+  filldir over to it (bnc#1151927).
+- filldir[64]: remove WARN_ON_ONCE() for bad directory entries
+  (bnc#1151927).
+- net_sched: fix backward compatibility for TCA_KIND
+  (bnc#1151927).
+- net_sched: fix backward compatibility for TCA_ACT_KIND
+  (bnc#1151927).
+- libata/ahci: Fix PCS quirk application (bnc#1151927).
+- md/raid0: fix warning message for parameter default_layout
+  (bnc#1151927).
+- Revert "drm/radeon: Fix EEH during kexec" (bnc#1151927).
+- ocfs2: fix panic due to ocfs2_wq is null (bnc#1151927).
+- nvme-pci: Set the prp2 correctly when using more than 4k page
+  (bnc#1151927).
+- ipv4: fix race condition between route lookup and invalidation
+  (bnc#1151927).
+- ipv4: Return -ENETUNREACH if we can't create route but saddr
+  is valid (bnc#1151927).
+- net: avoid potential infinite loop in tc_ctl_action()
+  (bnc#1151927).
+- net: bcmgenet: Fix RGMII_MODE_EN value for GENET v1/2/3
+  (bnc#1151927).
+- net: bcmgenet: Set phydev->dev_flags only for internal PHYs
+  (bnc#1151927).
+- net: i82596: fix dma_alloc_attr for sni_82596 (bnc#1151927).
+- net/ibmvnic: Fix EOI when running in XIVE mode (bnc#1151927).
+- net: ipv6: fix listify ip6_rcv_finish in case of forwarding
+  (bnc#1151927).
+- net: stmmac: disable/enable ptp_ref_clk in suspend/resume flow
+  (bnc#1151927).
+- rxrpc: Fix possible NULL pointer access in ICMP handling
+  (bnc#1151927).
+- sched: etf: Fix ordering of packets with same txtime
+  (bnc#1151927).
+- sctp: change sctp_prot .no_autobind with true (bnc#1151927).
+- net: aquantia: temperature retrieval fix (bnc#1151927).
+- net: aquantia: when cleaning hw cache it should be toggled
+  (bnc#1151927).
+- net: aquantia: do not pass lro session with invalid tcp checksum
+  (bnc#1151927).
+- net: aquantia: correctly handle macvlan and multicast
+  coexistence (bnc#1151927).
+- net: phy: micrel: Discern KSZ8051 and KSZ8795 PHYs
+  (bnc#1151927).
+- net: phy: micrel: Update KSZ87xx PHY name (bnc#1151927).
+- net: avoid errors when trying to pop MLPS header on non-MPLS
+  packets (bnc#1151927).
+- net/sched: fix corrupted L2 header with MPLS 'push' and 'pop'
+  actions (bnc#1151927).
+- netdevsim: Fix error handling in nsim_fib_init and nsim_fib_exit
+  (bnc#1151927).
+- net: ethernet: broadcom: have drivers select DIMLIB as needed
+  (bnc#1151927).
+- net: phy: Fix "link partner" information disappear issue
+  (bnc#1151927).
+- LSM: SafeSetID: Stop releasing uninitialized ruleset
+  (bnc#1151927).
+- rxrpc: use rcu protection while reading sk->sk_user_data
+  (bnc#1151927).
+- io_uring: fix bad inflight accounting for
+  SETUP_IOPOLL|SETUP_SQTHREAD (bnc#1151927).
+- io_uring: Fix corrupted user_data (bnc#1151927).
+- USB: legousbtower: fix memleak on disconnect (bnc#1151927).
+- ALSA: hda/realtek - Add support for ALC711 (bnc#1151927).
+- ALSA: hda/realtek - Enable headset mic on Asus MJ401TA
+  (bnc#1151927).
+- ALSA: usb-audio: Disable quirks for BOSS Katana amplifiers
+  (bnc#1151927).
+- ALSA: hda - Force runtime PM on Nvidia HDMI codecs
+  (bnc#1151927).
+- usb: udc: lpc32xx: fix bad bit shift operation (bnc#1151927).
+- USB: serial: ti_usb_3410_5052: fix port-close races
+  (bnc#1151927).
+- USB: ldusb: fix memleak on disconnect (bnc#1151927).
+- USB: usblp: fix use-after-free on disconnect (bnc#1151927).
+- USB: ldusb: fix read info leaks (bnc#1151927).
+- binder: Don't modify VMA bounds in ->mmap handler (bnc#1151927).
+- MIPS: tlbex: Fix build_restore_pagemask KScratch restore
+  (bnc#1151927).
+- staging: wlan-ng: fix exit return when sme->key_idx >=
+  NUM_WEPKEYS (bnc#1151927).
+- scsi: zfcp: fix reaction on bit error threshold notification
+  (bnc#1151927).
+- scsi: sd: Ignore a failure to sync cache due to lack of
+  authorization (bnc#1151927).
+- scsi: core: save/restore command resid for error handling
+  (bnc#1151927).
+- scsi: core: try to get module before removing device
+  (bnc#1151927).
+- scsi: ch: Make it possible to open a ch device multiple times
+  again (bnc#1151927).
+- Revert "Input: elantech - enable SMBus on new (2018+) systems"
+  (bnc#1151927).
+- Input: da9063 - fix capability and drop KEY_SLEEP (bnc#1151927).
+- Input: synaptics-rmi4 - avoid processing unknown IRQs
+  (bnc#1151927).
+- Input: st1232 - fix reporting multitouch coordinates
+  (bnc#1151927).
+- ASoC: rsnd: Reinitialize bit clock inversion flag for every
+  format setting (bnc#1151927).
+- ACPI: CPPC: Set pcc_data[pcc_ss_id] to NULL in
+  acpi_cppc_processor_exit() (bnc#1151927).
+- ACPI: NFIT: Fix unlock on error in scrub_show() (bnc#1151927).
+- iwlwifi: pcie: change qu with jf devices to use qu configuration
+  (bnc#1151927).
+- mac80211: Reject malformed SSID elements (bnc#1151927).
+- drm/edid: Add 6 bpc quirk for SDC panel in Lenovo G50
+  (bnc#1151927).
+- drm/ttm: Restore ttm prefaulting (bnc#1151927).
+- drm/panfrost: Handle resetting on timeout better (bnc#1151927).
+- drm/amdgpu: Bail earlier when amdgpu.cik_/si_support is not
+  set to 1 (bnc#1151927).
+- drm/amdgpu/sdma5: fix mask value of POLL_REGMEM packet for
+  pipe sync (bnc#1151927).
+- drm/i915/userptr: Never allow userptr into the mappable GGTT
+  (bnc#1151927).
+- drm/i915: Favor last VBT child device with conflicting AUX
+  ch/DDC pin (bnc#1151927 bnc#1152971 fdo#112028).
+- drm/amdgpu/vce: fix allocation size in enc ring test
+  (bnc#1151927).
+- drm/amdgpu/vcn: fix allocation size in enc ring test
+  (bnc#1151927).
+- drm/amdgpu/uvd6: fix allocation size in enc ring test (v2)
+  (bnc#1151927).
+- drm/amdgpu/uvd7: fix allocation size in enc ring test (v2)
+  (bnc#1151927).
+- drm/amdgpu: user pages array memory leak fix (bnc#1151927).
+- drivers/base/memory.c: don't access uninitialized memmaps in
+  soft_offline_page_store() (bnc#1151927).
+- fs/proc/page.c: don't access uninitialized memmaps in
+  fs/proc/page.c (bnc#1151927).
+- io_uring: Fix broken links with offloading (bnc#1151927).
+- io_uring: Fix race for sqes with userspace (bnc#1151927).
+- io_uring: used cached copies of sq->dropped and cq->overflow
+  (bnc#1151927).
+- mmc: mxs: fix flags passed to dmaengine_prep_slave_sg
+  (bnc#1151927).
+- mmc: cqhci: Commit descriptors before setting the doorbell
+  (bnc#1151927).
+- mmc: sdhci-omap: Fix Tuning procedure for temperatures < -20C
+  (bnc#1151927).
+- mm/memory-failure.c: don't access uninitialized memmaps in
+  memory_failure() (bnc#1151927).
+- mm/slub: fix a deadlock in show_slab_objects() (bnc#1151927).
+- mm/page_owner: don't access uninitialized memmaps when reading
+  /proc/pagetypeinfo (bnc#1151927).
+- mm/memunmap: don't access uninitialized memmap in
+  memunmap_pages() (bnc#1151927).
+- mm: memcg/slab: fix panic in __free_slab() caused by premature
+  memcg pointer release (bnc#1151927).
+- mm, compaction: fix wrong pfn handling in
+  __reset_isolation_pfn() (bnc#1151927).
+- mm: memcg: get number of pages on the LRU list in memcgroup
+  base on lru_zone_size (bnc#1151927).
+- mm: memblock: do not enforce current limit for memblock_phys*
+  family (bnc#1151927).
+- hugetlbfs: don't access uninitialized memmaps in
+  pfn_range_valid_gigantic() (bnc#1151927).
+- mm/memory-failure: poison read receives SIGKILL instead of
+  SIGBUS if mmaped more than once (bnc#1151927).
+- zram: fix race between backing_dev_show and backing_dev_store
+  (bnc#1151927).
+- xtensa: drop EXPORT_SYMBOL for outs*/ins* (bnc#1151927).
+- xtensa: fix change_bit in exclusive access option (bnc#1151927).
+- s390/zcrypt: fix memleak at release (bnc#1151927).
+- s390/kaslr: add support for R_390_GLOB_DAT relocation type
+  (bnc#1151927).
+- lib/vdso: Make clock_getres() POSIX compliant again
+  (bnc#1151927).
+- parisc: Fix vmap memory leak in ioremap()/iounmap()
+  (bnc#1151927).
+- EDAC/ghes: Fix Use after free in ghes_edac remove path
+  (bnc#1151927).
+- arm64: KVM: Trap VM ops when ARM64_WORKAROUND_CAVIUM_TX2_219_TVM
+  is set (bnc#1151927).
+- arm64: Avoid Cavium TX2 erratum 219 when switching TTBR
+  (bnc#1151927).
+- arm64: Enable workaround for Cavium TX2 erratum 219 when
+  running SMT (bnc#1151927).
+- arm64: Allow CAVIUM_TX2_ERRATUM_219 to be selected
+  (bnc#1151927).
+- CIFS: avoid using MID 0xFFFF (bnc#1151927).
+- cifs: Fix missed free operations (bnc#1151927).
+- CIFS: Fix use after free of file info structures (bnc#1151927).
+- perf/aux: Fix AUX output stopping (bnc#1151927).
+- tracing: Fix race in perf_trace_buf initialization
+  (bnc#1151927).
+- fs/dax: Fix pmd vs pte conflict detection (bnc#1151927).
+- dm cache: fix bugs when a GFP_NOWAIT allocation fails
+  (bnc#1151927).
+- irqchip/sifive-plic: Switch to fasteoi flow (bnc#1151927).
+- x86/apic/x2apic: Fix a NULL pointer deref when handling a
+  dying cpu (bnc#1151927).
+- x86/hyperv: Make vapic support x2apic mode (bnc#1151927).
+- pinctrl: cherryview: restore Strago DMI workaround for all
+  versions (bnc#1151927).
+- pinctrl: armada-37xx: fix control of pins 32 and up
+  (bnc#1151927).
+- pinctrl: armada-37xx: swap polarity on LED group (bnc#1151927).
+- btrfs: block-group: Fix a memory leak due to missing
+  btrfs_put_block_group() (bnc#1151927).
+- Btrfs: add missing extents release on file extent cluster
+  relocation error (bnc#1151927).
+- btrfs: don't needlessly create extent-refs kernel thread
+  (bnc#1151927).
+- Btrfs: fix qgroup double free after failure to reserve metadata
+  for delalloc (bnc#1151927).
+- Btrfs: check for the full sync flag while holding the inode
+  lock during fsync (bnc#1151927).
+- btrfs: tracepoints: Fix wrong parameter order for qgroup events
+  (bnc#1151927).
+- btrfs: tracepoints: Fix bad entry members of qgroup events
+  (bnc#1151927).
+- KVM: PPC: Book3S HV: XIVE: Ensure VP isn't already in use
+  (bnc#1151927).
+- memstick: jmb38x_ms: Fix an error handling path in
+  'jmb38x_ms_probe()' (bnc#1151927).
+- cpufreq: Avoid cpufreq_suspend() deadlock on system shutdown
+  (bnc#1151927).
+- ceph: just skip unrecognized info in ceph_reply_info_extra
+  (bnc#1151927).
+- xen/netback: fix error path of xenvif_connect_data()
+  (bnc#1151927).
+- PCI: PM: Fix pci_power_up() (bnc#1151927).
+- opp: of: drop incorrect lockdep_assert_held() (bnc#1151927).
+- of: reserved_mem: add missing of_node_put() for proper
+  ref-counting (bnc#1151927).
+- blk-rq-qos: fix first node deletion of rq_qos_del()
+  (bnc#1151927).
+- RDMA/cxgb4: Do not dma memory off of the stack (bnc#1151927).
+- Delete
+  patches.suse/Revert-drm-i915-bios-make-child-device-order-the-pri.patch.
+- Update config files.
+  CAVIUM_TX2_ERRATUM_219=y (default)
+- commit f0ffcb7
+
+-------------------------------------------------------------------
+Tue Oct 29 09:45:57 CET 2019 - jslaby@suse.cz
+
+- x86/boot/64: Make level2_kernel_pgt pages invalid outside
+  kernel area (bnc#1153969).
+- x86/boot/64: Round memory hole size up to next PMD page
+  (bnc#1153969).
+- commit 3501dc2
+
+-------------------------------------------------------------------
+Mon Oct 28 11:19:05 CET 2019 - tiwai@suse.de
+
+- drm/amdgpu: Add DC feature mask to disable fractional pwm
+  (bsc#1154010).
+- commit 6ffba6e
+
+-------------------------------------------------------------------
+Fri Oct 25 08:50:31 CEST 2019 - jslaby@suse.cz
+
+- stacktrace: don't skip first entry on noncurrent tasks
+  (bnc#1154866).
+- commit 387f2bb
+
+-------------------------------------------------------------------
+Tue Oct 22 11:25:46 CEST 2019 - msuchanek@suse.de
+
+- kernel-binary.spec.in: Fix build of non-modular kernels (boo#1154578).
+- commit 7f1e881
+
+-------------------------------------------------------------------
+Tue Oct 22 10:03:24 CEST 2019 - clin@suse.com
+
+- ARM: 8904/1: skip nomap memblocks while finding the
+  lowmem/highmem boundary (bsc#1122614).
+- commit 9f59038
+
+-------------------------------------------------------------------
+Tue Oct 22 09:21:56 CEST 2019 - acho@suse.com
+
+- rtlwifi: Fix potential overflow on P2P code (bsc#1154372
+  CVE-2019-17666).
+- cfg80211: wext: avoid copying malformed SSIDs (bsc#1153158
+  CVE-2019-17133).
+- commit e229e3d
+
+-------------------------------------------------------------------
+Mon Oct 21 18:11:29 CEST 2019 - tiwai@suse.de
+
+- libertas: fix a potential NULL pointer dereference
+  (CVE-2019-16232,bsc#1150465).
+- iwlwifi: pcie: fix rb_allocator workqueue allocation
+  (CVE-2019-16234,bsc#1150452).
+- commit 23c6b73
+
+-------------------------------------------------------------------
+Mon Oct 21 16:00:22 CEST 2019 - msuchanek@suse.de
+
+- kernel-binary.spec.in: Obsolete kgraft packages only when not building
+  them.
+- commit 25f7690
+
+-------------------------------------------------------------------
+Mon Oct 21 15:21:10 CEST 2019 - msuchanek@suse.de
+
+- kernel-subpackage-build: create zero size ghost for uncompressed vmlinux
+  (bsc#1154354).
+  It is not strictly necessary to uncompress it so maybe the ghost file
+  can be 0 size in this case.
+- commit 4bf73c8
+
+-------------------------------------------------------------------
 Fri Oct 18 18:59:45 CEST 2019 - jslaby@suse.cz
 
 - Linux 5.3.7 (bnc#1151927).
@@ -3619,6 +4027,17 @@ Sun Aug  4 17:14:38 CEST 2019 - jslaby@suse.cz
 - ceph: hold i_ceph_lock when removing caps for freeing inode
   (bnc#1012628).
 - commit 187170c
+
+-------------------------------------------------------------------
+Fri Aug  2 10:19:16 CEST 2019 - bwiedemann@suse.de
+
+- kernel-binary: Drop .kernel-binary.spec.buildenv (boo#1154578).
+  Without this patch,
+  /usr/src/linux-@VERSION@-@RELEASE_SHORT@-obj/x86_64/vanilla/.kernel-binary.spec.buildenv
+  contained rpm %_smp_mflags in a line like
+  export MAKE_ARGS=" --output-sync -j4"
+  This made it hard to produce bit-identical builds.
+- commit 789d131
 
 -------------------------------------------------------------------
 Thu Aug  1 07:07:43 CEST 2019 - mkubecek@suse.cz
@@ -20274,7 +20693,7 @@ Wed Aug 29 20:56:44 CEST 2018 - mkubecek@suse.cz
   instead.
   For now, install bzImage under the name image-* until we know grub2 and our
   grub2 scripts can handle correct name.
-- commit d7ccf81
+- commit 92b52c6
 
 -------------------------------------------------------------------
 Tue Aug 28 16:19:05 CEST 2018 - jbeulich@suse.com

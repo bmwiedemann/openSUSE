@@ -4860,4 +4860,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.3.7 &amp; intel VGA fix &amp; disable RT_GROUP_SCHED</comment>
     <requestid>741409</requestid>
   </revision>
+  <revision rev="512" vrev="1">
+    <srcmd5>464cd494ff601b94bbbb275881b06f96</srcmd5>
+    <version>5.3.8</version>
+    <time>1572775744</time>
+    <user>dimstar_suse</user>
+    <comment>5.3.8 &amp; CVE fixes &amp; stacktrace fix</comment>
+    <requestid>743956</requestid>
+  </revision>
 </revisionlist>
