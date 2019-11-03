@@ -1158,4 +1158,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>732926</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>a1e9006b09df64908485d3b772357d63</srcmd5>
+    <version>9.18.29</version>
+    <time>1572775201</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.18.28 → 9.18.29
+
+- Update Host/Image support matrix
+  Update documentation about the Host vs. Image support and
+  compatibility matrix with regards to the SLES target.
+
+- Add default /etc/kiwi.yml file
+  Provide a comment only etc/kiwi.yml file that contains all
+  parameters we support so far including a short description
+  This Fixes #1232
+
+- Bump version: 9.18.27 → 9.18.28
+
+- Delete left over print statement from unit test
+
+- Enable BLS configuration if is supported
+  Fedora now uses a BLS configuration by default, but this is not supported
+  by all distributions. So check if is supported by the grub2-mkconfig tool
+  and only enable the option if that's the case.
+  Fixes: #1248
+
+- Bump Fedora x86 build test to Fedora30
+
+- Bump version: 9.18.26 → 9.18.27
+
+- Fix btrfs_root_is_snapshot
+  This commit makes sure the chrooted operations of over a loop device
+  including btrfs subvolumes and root as an snapshot include the
+  `/.snapshots` subvolume mount. This is necessary for certain operations
+  that depend on the layout, e.g. grub configuration using `grub2-mkconfig`.</comment>
+    <requestid>743848</requestid>
+  </revision>
 </revisionlist>

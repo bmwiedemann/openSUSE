@@ -1,4 +1,633 @@
 -------------------------------------------------------------------
+Tue Oct 29 10:06:36 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.18.28 → 9.18.29
+
+-------------------------------------------------------------------
+Tue Oct 29 10:03:46 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Update Host/Image support matrix
+
+  Update documentation about the Host vs. Image support and
+  compatibility matrix with regards to the SLES target.
+
+-------------------------------------------------------------------
+Mon Oct 28 16:38:00 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Add default /etc/kiwi.yml file
+
+  Provide a comment only etc/kiwi.yml file that contains all
+  parameters we support so far including a short description
+  This Fixes #1232
+
+-------------------------------------------------------------------
+Mon Oct 28 10:15:46 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.18.27 → 9.18.28
+
+-------------------------------------------------------------------
+Fri Oct 25 15:10:42 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Delete left over print statement from unit test
+
+-------------------------------------------------------------------
+Fri Oct 25 14:24:36 CEST 2019 - Javier Martinez Canillas <javierm@redhat.com>
+
+- Enable BLS configuration if is supported
+
+  Fedora now uses a BLS configuration by default, but this is not supported
+  by all distributions. So check if is supported by the grub2-mkconfig tool
+  and only enable the option if that's the case.
+
+  Fixes: #1248
+
+-------------------------------------------------------------------
+Fri Oct 25 10:38:09 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Bump Fedora x86 build test to Fedora30
+
+-------------------------------------------------------------------
+Fri Oct 25 09:33:06 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.18.26 → 9.18.27
+
+-------------------------------------------------------------------
+Thu Oct 24 22:06:33 CEST 2019 - David Cassany <dcassany@suse.com>
+
+- Fix btrfs_root_is_snapshot
+
+  This commit makes sure the chrooted operations of over a loop device
+  including btrfs subvolumes and root as an snapshot include the
+  `/.snapshots` subvolume mount. This is necessary for certain operations
+  that depend on the layout, e.g. grub configuration using `grub2-mkconfig`.
+
+-------------------------------------------------------------------
+Thu Oct 24 11:35:48 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Skip isolinux ui setup on serial terminal config
+
+  If the attribute bootloader_console="serial" is set, the
+  expectation that there is no graphics hardware available is
+  valid. Thus the isolinux setup should not contain any ui
+  configuration instructions because that leads to run the
+  graphics initialization which blocks the system if not
+  present. Please note the bootloader_console allows for
+  multiple console configuration. In mixed setup the ui
+  configuration still applies. This Fixes #1153
+
+-------------------------------------------------------------------
+Thu Oct 24 10:36:43 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Added helper script to test status of test builds
+
+  build_status fetches information from obs about the status
+  of the integration test builds. It also allows an easy refresh
+  of the tests regarding content changes on git when called
+  with the refresh parameter: build_status refresh
+
+-------------------------------------------------------------------
+Wed Oct 23 17:59:31 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Update development documentation
+
+  With the latest change to the logger kiwi can now be better
+  used as an api in other python programs
+
+-------------------------------------------------------------------
+Wed Oct 23 16:01:27 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Fixed install_devel_packages helper
+
+  Missing libffi and enchant devel packages. Also deleted
+  trang since it's not provided by default in the distro
+  and optional
+
+-------------------------------------------------------------------
+Wed Oct 23 12:22:51 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.18.25 → 9.18.26
+
+-------------------------------------------------------------------
+Wed Oct 23 12:22:14 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Update documentation
+
+  Link paths to the integration tests has changed
+
+-------------------------------------------------------------------
+Wed Oct 23 12:07:26 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Fixed package list for arm test builds
+
+-------------------------------------------------------------------
+Wed Oct 23 12:05:32 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Move arm build tests to obsrepositories
+
+-------------------------------------------------------------------
+Wed Oct 23 11:46:23 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Move s390 build tests to obsrepositories
+
+-------------------------------------------------------------------
+Wed Oct 23 10:17:59 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Reorganize build tests
+
+  We build images against different distributions. In order to
+  do that in obs we should be able to handle one prj config per
+  distribution. Thus the tests move from a flat tree to a distro
+  structured tree here and in obs
+
+-------------------------------------------------------------------
+Wed Oct 23 10:03:08 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Move suse tests to obsrepositories
+
+  Changes on the obs backend made this change necessary.
+  The chain of process decisions is different if a repo is
+  added to the prj config compared to if the repo is added
+  to the kiwi XML file. It seems the preferred solution
+  is the obs prj config and I'm tired running into problems
+  again and again
+
+-------------------------------------------------------------------
+Tue Oct 22 11:40:16 CEST 2019 - David Cassany <dcassany@suse.com>
+
+- Make home attribute optional on users definition
+
+  This commit makes home attribute of users definition optional. This way
+  the home directory is created according to the distribution defaults.
+  Note that `-m` option is passed to user add, thus the home directory is
+  requested to be created even without having an explicit home path
+  defined.
+
+  Fixes #1025
+
+-------------------------------------------------------------------
+Mon Oct 21 17:28:30 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Refactor use of logging facility
+
+  Use getLogger method instead of a global log object
+  Also use caplog fixture to capture log messages in
+  unit tests. This Fixes #1244
+
+-------------------------------------------------------------------
+Mon Oct 21 11:28:23 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Version 2.29.24 fixes the pattern problem
+
+  and avoids the recursion bug
+
+-------------------------------------------------------------------
+Mon Oct 21 10:39:05 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Fixed oem resize message and invokation
+
+  The oem resize should only start if there is unallocated
+  space on the disk available. If it starts the message in
+  case of a not applicable resize should be more meaningful
+  This commit addresses both issues and Fixes #1102
+
+-------------------------------------------------------------------
+Fri Oct 18 08:52:50 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- nothing provides yast2-registration
+
+  With the move of the tests to the TW repo this package was
+  no longer provided
+
+-------------------------------------------------------------------
+Fri Oct 18 08:37:01 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Deleted openSUSE-release-dvd from test images
+
+  For whatever reason the Tumbleweed repo does not provide
+  this package anymore
+
+-------------------------------------------------------------------
+Fri Oct 18 08:18:33 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Update integration tests
+
+  OBS has changed the repo paths. openSUSE:Factory/snapshot is
+  empty which resulted in any suse test to fail. This commit
+  changes the repo to openSUSE:Tumbleweed/standard
+
+-------------------------------------------------------------------
+Thu Oct 17 16:40:23 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.18.24 → 9.18.25
+
+-------------------------------------------------------------------
+Thu Oct 17 15:49:39 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Fixed grub mkconfig call for read-only root
+
+  In case of an overlay root system via overlayroot="true" all parts
+  of the rootfs are read-only by squashfs except for the extra boot
+  partition. However tools like grub's mkconfig creates temporary
+  files at call time and therefore /tmp needs to be writable during
+  the call time of the tools. Related to Issue #1194
+
+-------------------------------------------------------------------
+Thu Oct 17 15:13:30 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.18.23 → 9.18.24
+
+-------------------------------------------------------------------
+Thu Oct 17 13:04:18 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Fixed method header of write_meta_data
+
+  Interface class and implementation class has to use the
+  same header definitions.
+
+-------------------------------------------------------------------
+Thu Oct 17 12:15:04 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Lookup grub mkconfig tool
+
+  In the same way as we need to lookup the name for the mkimage
+  tool we also have to lookup the name of the config tool.
+  That's because distributions do not handle that consistently
+
+-------------------------------------------------------------------
+Thu Oct 17 11:46:37 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.18.22 → 9.18.23
+
+-------------------------------------------------------------------
+Thu Oct 17 11:45:59 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Fixed EFI path creation
+
+  Only copy files to the EFI path on prior creation of that path
+
+-------------------------------------------------------------------
+Thu Oct 17 11:07:09 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.18.21 → 9.18.22
+
+-------------------------------------------------------------------
+Thu Oct 17 10:25:39 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Fixed fallback copy of grub config file
+
+  For ISO images that are EFI bootable as well as for EFI
+  secure boot configurations that are not based on shim-install
+  kiwi provides a fallback code that copies the grub config file
+  to the efi/efi-vendor boot path. This fallback code was broken
+  because of the recent change to let grub2 mkconfig create the
+  config file. The call of grub2 mkconfig happens at a later
+  stage which required an adaption of the fallback mechanism.
+  This is related to Issue #1194
+
+-------------------------------------------------------------------
+Thu Oct 17 08:18:08 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.18.20 → 9.18.21
+
+-------------------------------------------------------------------
+Thu Oct 17 08:14:50 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Fixed use of config_file before assignment
+
+-------------------------------------------------------------------
+Wed Oct 16 16:47:35 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.18.19 → 9.18.20
+
+-------------------------------------------------------------------
+Wed Oct 16 15:44:24 CEST 2019 - David Cassany <dcassany@suse.com>
+
+- Re-structure unit tests folders
+
+  This commit relocates unit tests to a folder structure that matches
+  the source code structure.
+
+  Fixes #1128
+
+-------------------------------------------------------------------
+Wed Oct 16 12:08:38 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Delete unused template data
+
+  With the move to grub2 mkconfig some static template data
+  became obsolete. This commit removes the unused data
+
+-------------------------------------------------------------------
+Tue Oct 15 15:56:04 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Adapted handling of initrd boot names
+
+  Due to the change of using grub2-mkconfig the way custom kiwi
+  initrd file names are handled doesn't work anymore. grub2-mkconfig
+  is not able to cope with the names kiwi used when creating custom
+  kiwi initrd's (initrd.vmx). Thus the same naming code as used
+  for the dracut initrd system has to apply for the custom kiwi
+  initrd code as well. This commit moves the name handling into
+  the baseclass because the same naming schema now applies to
+  both initrd systems.
+
+-------------------------------------------------------------------
+Tue Oct 15 14:42:20 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Fixed install image setup for kiwi initrd system
+
+  If the kiwi initrd system is used the eltorito image was
+  not found because searched in the wrong place
+
+-------------------------------------------------------------------
+Mon Oct 14 15:16:38 CEST 2019 - David Cassany <dcassany@suse.com>
+
+- Change kiwi-ng-3 binary references to kiwi-ng
+
+  This commit changes from kiwi-ng-3 or kiwi to kiwi-ng the console script used
+  in command line examples.
+
+-------------------------------------------------------------------
+Fri Oct 11 17:37:43 CEST 2019 - David Cassany <dcassany@suse.com>
+
+- Add INFO message for primary group
+
+  This commit adds an INFO message if the primary group is set according
+  to the groups attribute in description file.
+
+  Fixes #1059
+
+-------------------------------------------------------------------
+Fri Oct 11 15:24:18 CEST 2019 - David Cassany <dcassany@suse.com>
+
+- Use kiwi-ng and kiwicompat as console_scripts
+
+  This commit instead of installing kiwi-ng-3 and kiwicompat-3 as
+  console_scripts it makes use of kiwi-ng and kiwicompat. Then all others
+  are created as symlinks at rpm level in spec.
+
+  Fixes #1226
+
+-------------------------------------------------------------------
+Thu Oct 10 11:33:46 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.18.18 → 9.18.19
+
+-------------------------------------------------------------------
+Tue Oct 08 17:19:00 CEST 2019 - David Cassany <dcassany@suse.com>
+
+- Upadate xml_parser autogenerated code
+
+  This commit updates xml_parser.py autogenerated code using a newer
+  generateDS version. The previous generateDS version is not properly
+  handling the regular expressions of some element's content.
+
+  Fixes #1217
+
+-------------------------------------------------------------------
+Tue Oct 08 13:43:54 CEST 2019 - David Cassany <dcassany@suse.com>
+
+- Remove universal flag
+
+  kiwi is no longer an universal python module, since it does not support
+  python 2 anymore. This will prevent to install future versions on
+  python2 environments using pip.
+
+  Related with #1226
+
+-------------------------------------------------------------------
+Fri Oct 04 14:34:08 CEST 2019 - David Cassany <dcassany@suse.com>
+
+- Refactor patch_open use in builder's tests
+
+  This commit removes the use of @patch_open decorator
+  in favor of directly patching 'builtins.open' and use
+  mock.mock_open utility to mock the context manager.
+
+  Related to #1128
+
+-------------------------------------------------------------------
+Fri Oct 04 10:39:21 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Flexible use of linuxefi module
+
+  Not all distributions provides the grub linuxefi module anymore.
+  This means a static list for building an efi grub image if needed
+  is no longer appropriate. This patch changes the module handling
+  at the following places
+
+  1. Use linuxefi for building custom efi modules only if present
+  on the host system
+
+  2. Use linuxefi related grub2-mkconfig variables only if the
+  host grub2-mkconfig implementation supports it
+
+  3. Prevent building custom efi image on Fedora by extending
+  the search path for the distro provided efi image and also
+  adapt the spec file accordingly
+
+-------------------------------------------------------------------
+Thu Oct 03 21:14:14 CEST 2019 - David Cassany <dcassany@suse.com>
+
+- Fix the sha256 generated file content
+
+  This commit makes sure the generated sha256 file in a 'kiwi result
+  bundle' call includes the filename with the correct extension. For
+  compressed files it was omiting the suffix that included during the
+  compression.
+
+  Fixes #1223 and related to bsc#1139915
+
+-------------------------------------------------------------------
+Wed Oct 02 11:32:43 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Fixed rpmdb compat link setup
+
+  On older versions of zypper the path /var/lib/rpm was hardcoded
+  and not used from the rpm macro definition. For such systems and
+  to support them properly on hosts that have the rpm database
+  already moved a compat link was created. However if the host has
+  the rpm database at /var/lib/rpm the link doesn't make sense.
+  This patch fixes this and therefore bsc#1150190
+
+-------------------------------------------------------------------
+Tue Oct 01 11:02:21 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Complete dracut setup for luks boot
+
+  An image that is configured with an encrypted root including /boot
+  includes a /.root.keyfile in initrd to let dracut/systemd decrypt
+  the root and mount it without asking the password. On rebuild of
+  the initrd, dracut has no configuration that tells it to include
+  the /.root.keyfile again. This patch adds that configuration and
+  Fixes #1192
+
+-------------------------------------------------------------------
+Mon Sep 30 16:39:16 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Follow up patch for SourceType info
+
+  The message that display the selected source type was
+  using the former metalink text which is wrong. This
+  patch corrects the message and only display it if a
+  sourcetype was specified
+
+-------------------------------------------------------------------
+Mon Sep 30 16:19:50 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Update contributing chapter
+
+  Simplify the setup of a development environment and
+  update the documentation appropriately
+
+-------------------------------------------------------------------
+Mon Sep 30 12:00:29 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Support specifying the source type of repos
+
+  Repository source paths can be more than just a baseurl.
+  There is also the opportunity to point to a metalink
+  file or a mirrorlist. In both cases the packagemanager
+  needs to know the type of this target. Therefore a new
+  attribute called sourcetype exists which allows to
+  specify the type the repo path uri is associated with.
+  Currently the dnf repository class is the only one that
+  makes use of the information. This change is required to
+  support Fedora >= 30 images. I also expect this concept
+  to be used by other distributions in the future
+
+-------------------------------------------------------------------
+Mon Sep 30 11:54:39 CEST 2019 - David Cassany <dcassany@suse.com>
+
+- Using the correct Tumbleweed base image
+
+-------------------------------------------------------------------
+Fri Sep 27 11:20:38 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Refactor use of raises in unit tests
+
+  Use raises as context manager instead of a method decorator.
+  This clearly identifies which code part is expected to raise
+  an exception. Related to Issue #1128
+
+-------------------------------------------------------------------
+Thu Sep 26 11:30:47 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Refactor repository unit tests
+
+  Refactor repository unit tests as described in Issue #1128
+
+-------------------------------------------------------------------
+Wed Sep 25 15:28:35 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.18.17 → 9.18.18
+
+-------------------------------------------------------------------
+Wed Sep 25 15:19:24 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Fixed typo in message text
+
+  Systen -> System
+
+-------------------------------------------------------------------
+Wed Sep 25 11:48:35 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Fixed return code validation of check_filesystem
+
+  Usually the return code from the filesystem check tools is
+  simple: Non zero exit code means an error occurred. However
+  in case of the extX filesystem this does not apply. This
+  commit documents the possible error conditions and supplies
+  a tool specific check condition. This Fixes #1209
+
+-------------------------------------------------------------------
+Wed Sep 25 10:48:45 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Update dracut caller options
+
+  No need to pass the --force option and added --verbose option
+  as it provides useful information in the image log file
+
+-------------------------------------------------------------------
+Tue Sep 24 17:48:39 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Fixed kiwi-live module setup
+
+  The installation of the checkmedia tool is optional and
+  and not mandatory. In addition activate the media check
+  verification also through the upstream used rd.live.check
+  kernel parameter. This is related to Issue #1158
+
+-------------------------------------------------------------------
+Mon Sep 23 16:26:34 CEST 2019 - David Cassany <dcassany@suse.com>
+
+- Update documentation to the PXE install file names
+
+-------------------------------------------------------------------
+Mon Sep 23 15:14:33 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Update kiwi live ISO chapter
+
+  Compare overlay vs.dmsquash live ISO modules by their
+  features to allow customers a proper selection of the
+  module. This Fixes #1158
+
+-------------------------------------------------------------------
+Mon Sep 23 15:06:49 CEST 2019 - David Cassany <dcassany@suse.com>
+
+- Add information in PXE install files
+
+  This commmit adds additional information for the image and pxeboot files
+  that are part of the install tarball in OEM PXE deployments. This way all
+  files inside the install tarball include the following pattern
+
+  <image-name>.<arch>-<version>
+
+  at the same time anyfile prefix and suffix remains unchanged.
+
+  Fixes #1147
+
+-------------------------------------------------------------------
+Fri Sep 20 10:08:19 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.18.16 → 9.18.17
+
+-------------------------------------------------------------------
+Wed Sep 18 17:36:51 CEST 2019 - David Cassany <dcassany@suse.com>
+
+- Make kiwi-overlay module compatible with kiwi-repart
+
+  This commit makes the modules provided by dracut-kiwi-overlay and
+  dracut-kiwi-oem-repart compatible. The main idea of this commit
+  is forcing the preparation of the overlay rootfs write partition
+  after kiwi-repart gets into the play. Since kiwi-overlay mounts the
+  write partitiontition it has to be executed after the kiwi-repart.
+
+  For that instead of doing the job using an initqueue event added by a
+  udev rule we just add the very same logic in pre-mount hook that happens
+  after the kiwi-repart pre-mount hook thanks to lower priority.
+
+  Fixes #1184
+
+-------------------------------------------------------------------
+Wed Sep 18 17:18:22 CEST 2019 - Oluf Lorenzen <49054986+lorenzen-b1@users.noreply.github.com>
+
+- fix docu following schema: profile inheritance
+
+  following the schema the "requires" element needs an attribute "profile"
+
+-------------------------------------------------------------------
+Tue Sep 17 15:00:27 CEST 2019 - Marcus Schäfer <ms@suse.de>
+
+- Use grub2-mkconfig for writing grub config
+
+  Instead of creating a template based grub config file, use
+  grub2-mkconfig to create the config file during the build
+  process. This commit changes from config template to grub2
+  tooling for the disk based image types vmx and oem
+  This Fixes #1194
+
+-------------------------------------------------------------------
 Tue Sep 17 13:32:32 CEST 2019 - Marcus Schäfer <ms@suse.de>
 
 - Bump version: 9.18.15 → 9.18.16

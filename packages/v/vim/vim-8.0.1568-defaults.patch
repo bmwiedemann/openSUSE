@@ -1,18 +1,26 @@
-Index: vim-8.0.1568/runtime/defaults.vim
+Index: vim-8.1.2233/runtime/defaults.vim
 ===================================================================
---- vim-8.0.1568.orig/runtime/defaults.vim
-+++ vim-8.0.1568/runtime/defaults.vim
-@@ -75,9 +75,11 @@ inoremap <C-U> <C-G>u<C-U>
- 
- " In many terminal emulators the mouse works just fine.  By enabling it you
+--- vim-8.1.2233.orig/runtime/defaults.vim
++++ vim-8.1.2233/runtime/defaults.vim
+@@ -77,13 +77,15 @@ inoremap <C-U> <C-G>u<C-U>
  " can position the cursor, Visually select and scroll with the mouse.
+ " Only xterm can grab the mouse events when using the shift key, for other
+ " terminals use ":", select text and press Esc.
 -if has('mouse')
--  set mouse=a
+-  if &term =~ 'xterm'
+-    set mouse=a
+-  else
+-    set mouse=nvi
+-  endif
 -endif
-+" disabled in (open)SUSE to make copy&paste work as most people
-+" expect it bsc#1079185
++" disabled in (open)SUSE to make copy&pase work as most people
++" except it boo#1079185
 +"if has('mouse')
-+"  set mouse=a
++"  if &term =~ 'xterm'
++"    set mouse=a
++"  else
++"    set mouse=nvi
++"  endif
 +"endif
  
  " Switch syntax highlighting on when the terminal has colors or when using the

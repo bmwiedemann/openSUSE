@@ -43,7 +43,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        9.18.16
+Version:        9.18.29
 Provides:       kiwi-schema = 7.1
 Release:        0
 Url:            https://github.com/SUSE/kiwi
@@ -110,6 +110,9 @@ Requires:       squashfs
 Requires:       gptfdisk
 %endif
 %if 0%{?fedora} || 0%{?rhel}
+%ifarch x86_64
+Requires:       grub2-efi-x64
+%endif
 Requires:         chkconfig
 Requires(post):   chkconfig
 Requires(postun): chkconfig
@@ -370,8 +373,8 @@ make buildroot=%{buildroot}/ docdir=%{_defaultdocdir}/ install_package_docs
 
 # Create symlinks for correct binaries
 ln -sr %{buildroot}%{_bindir}/kiwi-ng %{buildroot}%{_bindir}/kiwi
-ln -sr %{buildroot}%{_bindir}/kiwi-ng-3 %{buildroot}%{_bindir}/kiwi-ng
-ln -sr %{buildroot}%{_bindir}/kiwicompat-3 %{buildroot}%{_bindir}/kiwicompat
+ln -sr %{buildroot}%{_bindir}/kiwi-ng %{buildroot}%{_bindir}/kiwi-ng-3
+ln -sr %{buildroot}%{_bindir}/kiwicompat %{buildroot}%{_bindir}/kiwicompat-3
 
 %if %{_vendor} != "debbuild"
 # kiwi pxeboot directory structure to be packed in kiwi-pxeboot
@@ -415,6 +418,7 @@ fi
 %{_defaultdocdir}/python-kiwi/LICENSE
 %{_defaultdocdir}/python-kiwi/README
 %config %_sysconfdir/bash_completion.d/kiwi-ng.sh
+%config %_sysconfdir/kiwi.yml
 %doc %{_mandir}/man8/*
 
 %files -n kiwi-tools

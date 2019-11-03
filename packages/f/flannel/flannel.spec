@@ -20,6 +20,9 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
+# Use Tumbleweed Kubic containers
+%define flannel_container_path registry.opensuse.org/kubic/flannel
+
 Name:           flannel
 Version:        0.11.0
 Release:        0
@@ -84,7 +87,7 @@ rm -rf %{buildroot}/%{_libdir}/go/contrib
 mkdir -p %{buildroot}%{_datadir}/k8s-yaml/flannel
 #install -m 0644 Documentation/kube-flannel.yml %{buildroot}%{_datadir}/k8s-yaml/flannel/kube-flannel.yaml
 install -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/k8s-yaml/flannel/kube-flannel.yaml
-sed -i -e 's|image: quay.io/coreos/flannel:.*|image: registry.opensuse.org/devel/kubic/containers/container/kubic/flannel:%{version}|g' %{buildroot}%{_datadir}/k8s-yaml/flannel/kube-flannel.yaml
+sed -i -e 's|image: quay.io/coreos/flannel:.*|image: %{flannel_container_path}:%{version}|g' %{buildroot}%{_datadir}/k8s-yaml/flannel/kube-flannel.yaml
 sed -i -e 's|/opt/bin/flanneld|/usr/sbin/flanneld|g' %{buildroot}%{_datadir}/k8s-yaml/flannel/kube-flannel.yaml
 
 # Move

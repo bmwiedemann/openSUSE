@@ -16,7 +16,7 @@
  #include "pi.h"
  
  #include "fig2dev.h"	/* includes "bool.h" */
-@@ -842,8 +843,9 @@ genps_start(F_compound *objects)
+@@ -844,8 +845,9 @@ genps_start(F_compound *objects)
  		fprintf(tfp, "%s\n", SPLINE_PS);
  #ifdef I18N
  	if (support_i18n && iso_text_exist(objects)) {
@@ -27,7 +27,7 @@
  		FILE *fp;
  		libdir = getenv("FIG2DEV_LIBDIR");
  #ifdef I18N_DATADIR
-@@ -851,18 +853,35 @@ genps_start(F_compound *objects)
+@@ -853,18 +855,35 @@ genps_start(F_compound *objects)
  			libdir = I18N_DATADIR;
  #endif
  		locale = setlocale(LC_CTYPE, NULL);

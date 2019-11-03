@@ -397,4 +397,41 @@
   to fix bsc#1143650 with CVE-2019-14275</comment>
     <requestid>723457</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>0c547603ddff501c78bcee24c5bd1635</srcmd5>
+    <version>3.2.7b</version>
+    <time>1572774701</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to fig2dev version 3.2.7 (Patchlevel 7b (Oct 2019)
+  o A X color database is not needed, but can be provided. The location of
+    the database can be given at compile time, default /etc/X11/rgb.txt.
+  Ticket numbers refer to https://sourceforge.net/p/mcj/tickets/#.
+  Debian bug numbers refer to https://bugs.debian.org/#.
+  o Do not clip objects with line-thickness 0 having arrows. Ticket #53.
+  o Do not segfault on circle/half circle arrowheads with a magnification
+    larger 42. Always draw circle arrowheads with 40 points. Ticket #52.
+  o Allow circles or ellipses with negative radii. Ticket #49.
+  o Avoid &quot;dimension too large error&quot; with tikz output by avoiding
+    coordinate values smaller than -16383.
+  o Make tests (test1.c) work with -fsanitize=address compiler option.
+  o Obey join-style of lines in tikz output.
+  o Pass utf8-strings to svg output, escape some chars (&lt;&gt;&amp;).
+  o Accept inclined boxes and change them to polygons. Fixes ticket #43.
+  o Make tests #27 and #33 work on Mac Darwin, failed due to whitespace
+    formatting differences. From Hanspeter Niederstrasser. Ticket #40.
+  o Use only latex, neither etex or tex, to test tikz output. Usage of
+    etex, after hint from Roland Rosenfeld, closed debian bug 920368.
+  o For tikz output, do not draw arrows on a single point line.
+  o Omit spurious showpage when including jpg-file. From Rainer Buchty.
+  o Correct a few memory leaks and corruptions. See commit d1c54f6.
+  o Change negative color numbers to default color. Fixes ticket #30.
+  o A spline with one point would cause segfault. Fixed, see ticket #29.
+  o Allow one char without newline in the last line of an input file.
+    Fixes ticket #28.
+  o Harden input, mainly against files in which an incomplete object would
+    be created and freeing the object would violate memory, i.e, it may
+    cause segfault. See, e.g., ticket #27.
+  o Properly initalize line storage when reading fig files version 1.3.</comment>
+    <requestid>743820</requestid>
+  </revision>
 </revisionlist>

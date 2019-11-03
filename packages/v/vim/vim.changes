@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Tue Oct 29 12:32:18 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.1.2233, fixes the following problems
+- dropped python38-config.patch (upstream merged)
+- refreshed  disable-unreliable-tests.patch and vim-8.0.1568-defaults.patch
+  * No test for right click extending Visual area.
+  * Crash when running out of memory very early.
+  * No test for 'ttymouse' set from xterm version response.
+  * State test is a bit flaky.
+  * Combining text property and syntax highlight is wrong. (Nick Jensen)
+  * Quickfix window height wrong when there is a tabline. (Daniel Hahler)
+  * In a terminal window 'cursorlineopt' does not work properly.
+  * First character after Tab is not highlighted.
+  * Libvterm source files missing from distribution.
+  * Terminal attributes missing in Terminal-normal mode.
+  * Some mappings are listed twice.
+  * Cannot build with +syntax but without +terminal.
+  * Mapping test fails.
+  * Popup resize test is flaky. (Christian Brabandt)
+  * Cannot build with +spell but without +syntax.
+  * Stuck when using "j" in a popupwin with popup_filter_menu if a line wraps.
+  * Rubyeval() not tested as a method.
+  * Mapping test fails on MS-Windows.
+  * Heredoc assignment not skipped in if block.
+  * Terminal flags are never reset.
+  * Cannot build without the +termresponse feature.
+  * Mouse support not always available.
+  * Spell highlight is wrong at start of the line.
+  * Searchit() has too many arguments.
+  * Screen not recognized as supporting "sgr" mouse codes.
+  * Meson files are not recognized.
+  * Syntax attributes not combined with Visual highlighting. (Arseny Nasokin)
+  * Dart files are not recognized.
+  * Accessing uninitialized memory in test.
+  * Pressing "q" at the more prompt doesn't stop Python output. (Daniel Hahler)
+  * Error E303 is not useful when 'directory' is empty.
+  * Highlighting wrong when item follows tab.
+  * Test42 seen as binary by git diff.
+  * Running a test is a bit verbose.
+  * Option context is not copied when splitting a window. (Daniel Hahler)
+  * Syntax test fails.
+  * Cannot build without the +eval feature.
+  * Error for bad regexp even though regexp is not used when writing a
+  file. (Arseny Nasokin)
+  * Build error for missing define.
+  * Syntax highlighting wrong for tab.
+  * Syntax test fails on Mac.
+  * When using modifyOtherKeys CTRL-X mode may not work.
+  * Cannot easily fill the info popup asynchronously.
+  * Popup_setoptions(popup_getoptions()) does not work.
+  * ModifyOtherKeys is not enabled by default.
+  * Vim does not exit when closing a terminal window and it is the last window.
+  * ExitPre autocommand may cause accessing freed memory.
+  * Crash when using :center in autocommand.
+  * Build failure when using normal features without GUI and EXITFREE defined.
+  * Crash when memory allocation fails.
+  * Cannot build with dynamically linked Python 3.8.
+  * Running libvterm tests without the +terminal feature.
+  * Crash on exit when closing terminals. (Corey Hickey)
+  * Sign entry structure has confusing name.
+  * No test for fixed issue #3893.
+  * "gn" doesn't work quite right. (Jaehwang Jerry Jung)
+  * Unix: Tabs in output might be expanded to spaces.
+  * LF in escape codes may be expanded to CR-LF.
+  * Using negative offset for popup_create() does not work.
+  * Listener callback "added" argument is not the total. (Andy Massimino)
+  * Cannot see the selection type in :reg output. (Ayberk Aydın)
+  * Popup_textprop tests fail.
+  * Too much is redrawn when 'cursorline' is set.
+  * Unreachable code in adjusting text prop columns.
+  * Text property in wrong place after :substitute.
+  * Compiler warning for unused variable.
+  * "gN" is off by one in Visual mode.
+  * No autocommand for open window with terminal.
+  * :cfile does not abort like other quickfix commands.
+  * Cannot filter :disp output.
+  * Accessing invalid memory. (Dominique Pelle)
+  * Cannot see what buffer an ml_get error is for.
+  * Cannot build Amiga version.
+  * The "last used" info of a buffer is under used.
+  * Cannot use system copy/paste in non-xterm terminals.
+  * Layout wrong if 'lines' changes while cmdline window is open.
+  * screenpos() returns wrong values when 'number' is set. (Ben Jackson)
+  * Cannot color number column above/below cursor differently.
+  * Not easy to move to the middle of a text line.
+  * Cannot get the Vim command line arguments.
+
+-------------------------------------------------------------------
 Wed Oct 23 12:35:39 CEST 2019 - Matej Cepl <mcepl@suse.com>
 
 - Add python38-config.patch to make vim buildable with new Python 3.8.

@@ -292,6 +292,13 @@ VALGRIND_LIB=$PWD/.in_place VALGRIND_LIB_INNER=$PWD/.in_place ./coregrind/valgri
 %{_libdir}/valgrind/s390x-linux64.xml
 %{_libdir}/valgrind/s390x-vx-linux-valgrind.xml
 %{_libdir}/valgrind/s390x-vx-linux.xml
+# See https://bugzilla.suse.com/show_bug.cgi?id=1147071#c0
+%{_libdir}/valgrind/s390-acr-valgrind-s*.xml
+%{_libdir}/valgrind/s390-acr.xml
+%{_libdir}/valgrind/s390-fpr-valgrind-s*.xml
+%{_libdir}/valgrind/s390-fpr.xml
+%{_libdir}/valgrind/s390-vx-valgrind-s*.xml
+%{_libdir}/valgrind/s390-vx.xml
 
 %ifarch x86_64 ppc64 s390x
 %files 32bit
@@ -302,12 +309,6 @@ VALGRIND_LIB=$PWD/.in_place VALGRIND_LIB_INNER=$PWD/.in_place ./coregrind/valgri
 %ifarch ppc ppc64
 %{_libdir}/valgrind/*-ppc32-linux
 %endif
-%{_libdir}/valgrind/s390-acr-valgrind-s*.xml
-%{_libdir}/valgrind/s390-acr.xml
-%{_libdir}/valgrind/s390-fpr-valgrind-s*.xml
-%{_libdir}/valgrind/s390-fpr.xml
-%{_libdir}/valgrind/s390-vx-valgrind-s*.xml
-%{_libdir}/valgrind/s390-vx.xml
 %{_libdir}/valgrind/mips-cp0-valgrind-s*.xml
 %{_libdir}/valgrind/mips-cp0.xml
 %{_libdir}/valgrind/mips-cpu-valgrind-s*.xml

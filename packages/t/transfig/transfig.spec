@@ -45,7 +45,7 @@ Requires:       ghostscript-fonts-std
 Requires:       ghostscript-library
 Requires:       netpbm
 Requires:       texlive-epstopdf
-Version:        3.2.7a
+Version:        3.2.7b
 Release:        0
 Summary:        Graphic Converter
 #Source:        http://sourceforge.net/projects/mcj/files/fig2dev-%{version}.tar.xz/download#/fig2dev-%{version}.tar.xz
@@ -56,12 +56,9 @@ Patch0:         transfig-3.2.6.dif
 Patch2:         transfig.3.2.5-binderman.dif
 Patch3:         transfig.3.2.5d-mediaboxrealnb.dif
 Patch4:         transfig-fix-afl.patch
-Patch5:         transfig-e0c4b024.patch
-Patch6:         transfig-03ea4578.patch
 Patch43:        fig2dev-3.2.6-fig2mpdf.patch
 Patch44:        fig2dev-3.2.6-fig2mpdf-doc.patch
 Patch45:        fig2dev-3.2.6a-RGBFILE.patch
-Patch46:        fig2dev-3.2.6a-man-typo.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{expand: %%global _exec_prefix %(type -p pkg-config &>/dev/null && pkg-config --variable prefix x11 || echo /usr/X11R6)}
 %if "%_exec_prefix" == "/usr/X11R6"
@@ -102,12 +99,9 @@ find -type f | xargs -r chmod a-x,go-w
 %patch2 -p0 -b .bm
 %patch3 -p0 -b .mbox
 %patch4 -p1 -b .afl
-%patch5 -p0 -b .e0c4b024
-%patch6 -p0 -b .03ea4578
 %patch43 -p2 -b .mpdf
 %patch44 -p1 -b .mpdfdoc
 %patch45 -p1 -b .p45
-%patch46 -p1 -b .p46
 
 %build
 CC=gcc

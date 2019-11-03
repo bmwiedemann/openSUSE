@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Tue Oct 29 11:07:12 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Update to fig2dev version 3.2.7 (Patchlevel 7b (Oct 2019)
+  o A X color database is not needed, but can be provided. The location of
+    the database can be given at compile time, default /etc/X11/rgb.txt.
+  Ticket numbers refer to https://sourceforge.net/p/mcj/tickets/#.
+  Debian bug numbers refer to https://bugs.debian.org/#.
+  o Do not clip objects with line-thickness 0 having arrows. Ticket #53.
+  o Do not segfault on circle/half circle arrowheads with a magnification
+    larger 42. Always draw circle arrowheads with 40 points. Ticket #52.
+  o Allow circles or ellipses with negative radii. Ticket #49.
+  o Avoid "dimension too large error" with tikz output by avoiding
+    coordinate values smaller than -16383.
+  o Make tests (test1.c) work with -fsanitize=address compiler option.
+  o Obey join-style of lines in tikz output.
+  o Pass utf8-strings to svg output, escape some chars (<>&).
+  o Accept inclined boxes and change them to polygons. Fixes ticket #43.
+  o Make tests #27 and #33 work on Mac Darwin, failed due to whitespace
+    formatting differences. From Hanspeter Niederstrasser. Ticket #40.
+  o Use only latex, neither etex or tex, to test tikz output. Usage of
+    etex, after hint from Roland Rosenfeld, closed debian bug 920368.
+  o For tikz output, do not draw arrows on a single point line.
+  o Omit spurious showpage when including jpg-file. From Rainer Buchty.
+  o Correct a few memory leaks and corruptions. See commit d1c54f6.
+  o Change negative color numbers to default color. Fixes ticket #30.
+  o A spline with one point would cause segfault. Fixed, see ticket #29.
+  o Allow one char without newline in the last line of an input file.
+    Fixes ticket #28.
+  o Harden input, mainly against files in which an incomplete object would
+    be created and freeing the object would violate memory, i.e, it may
+    cause segfault. See, e.g., ticket #27.
+  o Properly initalize line storage when reading fig files version 1.3.
+    Would segfault when reading incomplete line and trying to free it.
+    Fixes ticket #26, debian bug 906743.
+  o Silently ignore the hundred-first and more comment lines. This
+    fixes ticket #25 and debian bug 906740.
+  o Use SetFigFont, not SetFigFontNFSS in pictex output. Fixes
+    https://bugs.launchpad.net/ubuntu/+source/transfig/+bug/1359485 .
+  o Accept blanks in color names (e.g., fig2dev -L eps -g"Misty Rose"..).
+  o Correct typos in man-pages, debian 30_man_typo.patch.
+- Remove patches now upstream
+  * fig2dev-3.2.6a-man-typo.patch
+  * transfig-03ea4578.patch
+  * transfig-e0c4b024.patch
+- Port patches to new version
+  * transfig-3.2.6.dif
+  * transfig-fix-afl.patch
+  * fig2dev-3.2.6-fig2mpdf.patch
+  * fig2dev-3.2.6a-RGBFILE.patch
+
+-------------------------------------------------------------------
 Thu Aug 15 07:21:49 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch transfig-03ea4578.patch from upstream commit 03ea4578

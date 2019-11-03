@@ -17,7 +17,7 @@
 
 
 %define pkg_version 8.1
-%define patchlevel 2148
+%define patchlevel 2233
 %define patchlevel_compact %{patchlevel}
 %define VIM_SUBDIR vim81
 %define site_runtimepath %{_datadir}/vim/site
@@ -69,8 +69,6 @@ Patch100:       vim73-no-static-libpython.patch
 Patch101:       vim-8.0.1568-defaults.patch
 # https://github.com/vim/vim/issues/3348 - problem more probadly in buildenv than in test
 Patch102:       vim-8.1.0297-dump3.patch
-# https://github.com/vim/vim/issues/4080
-Patch103:       python38-config.patch
 BuildRequires:  autoconf
 BuildRequires:  db-devel
 BuildRequires:  fdupes
@@ -177,7 +175,6 @@ cp %{SOURCE23} runtime/syntax/apparmor.vim
 %patch100 -p1
 %patch101 -p1
 %patch102 -p1
-%patch103 -p1
 cp %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE8} %{SOURCE10} .
 
 # Unreliable tests

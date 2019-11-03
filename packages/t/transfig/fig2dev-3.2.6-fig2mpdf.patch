@@ -13,8 +13,8 @@ Origin: http://p3f.gmxhome.de/fig2mpdf/fig2mpdf.html
  man/fig2dev.1.in       |   69 +++++
  7 files changed, 1311 insertions(+), 2 deletions(-)
 
---- a/fig2dev-3.2.6a/fig2dev/dev/genpstex.c
-+++ b/fig2dev-3.2.6a/fig2dev/dev/genpstex.c	2018-05-07 10:01:03.485164209 +0000
+--- a/fig2dev-3.2.7b/fig2dev/dev/genpstex.c
++++ b/fig2dev-3.2.7b/fig2dev/dev/genpstex.c
 @@ -48,9 +48,12 @@
  #include <string.h>
  #include <ctype.h>
@@ -337,7 +337,7 @@ Origin: http://p3f.gmxhome.de/fig2mpdf/fig2mpdf.html
  void
  genpstex_t_option(char opt, char *optarg)
  {
-@@ -132,6 +437,32 @@ genpstex_option(char opt, char *optarg)
+@@ -128,6 +433,32 @@ genpstex_option(char opt, char *optarg)
  	   genlatex_option(opt, optarg);
  }
  
@@ -370,9 +370,9 @@ Origin: http://p3f.gmxhome.de/fig2mpdf/fig2mpdf.html
  struct driver dev_pstex_t = {
  	genpstex_t_option,
  	genpstex_t_start,
---- a/fig2dev-3.2.6a/fig2dev/drivers.h
-+++ b/fig2dev-3.2.6a/fig2dev/drivers.h	2018-05-07 10:00:19.621980757 +0000
-@@ -33,8 +33,10 @@ extern struct driver dev_eps;
+--- a/fig2dev-3.2.7b/fig2dev/drivers.h
++++ b/fig2dev-3.2.7b/fig2dev/drivers.h
+@@ -36,8 +36,10 @@ extern struct driver dev_eps;
  extern struct driver dev_pdf;
  extern struct driver dev_pdftex;
  extern struct driver dev_pdftex_t;
@@ -383,7 +383,7 @@ Origin: http://p3f.gmxhome.de/fig2mpdf/fig2mpdf.html
  extern struct driver dev_pstricks;
  extern struct driver dev_textyl;
  extern struct driver dev_tk;
-@@ -78,6 +80,7 @@ struct {
+@@ -81,6 +83,7 @@ struct {
  	{"pdf",		&dev_pdf},
  	{"pdftex",	&dev_pdftex},
  	{"pdftex_t",	&dev_pdftex_t},
@@ -391,7 +391,7 @@ Origin: http://p3f.gmxhome.de/fig2mpdf/fig2mpdf.html
  	{"pic",		&dev_pic},
  	{"pict2e",	&dev_pict2e},
  	{"pictex",	&dev_pictex},
-@@ -86,6 +89,7 @@ struct {
+@@ -89,6 +92,7 @@ struct {
  	{"ps",		&dev_ps},
  	{"pstex",	&dev_pstex},
  	{"pstex_t",	&dev_pstex_t},
@@ -399,9 +399,9 @@ Origin: http://p3f.gmxhome.de/fig2mpdf/fig2mpdf.html
  	{"pstricks",	&dev_pstricks},
  	{"ptk",		&dev_ptk},
  	{"shape",	&dev_shape},
---- a/fig2dev-3.2.6a/fig2dev/fig2dev.c
-+++ b/fig2dev-3.2.6a/fig2dev/fig2dev.c	2018-05-07 10:00:19.621980757 +0000
-@@ -823,6 +823,23 @@ help_msg(void)
+--- a/fig2dev-3.2.7b/fig2dev/fig2dev.c
++++ b/fig2dev-3.2.7b/fig2dev/fig2dev.c
+@@ -821,6 +821,23 @@ help_msg(void)
  			);
  		}
  
@@ -425,9 +425,9 @@ Origin: http://p3f.gmxhome.de/fig2mpdf/fig2mpdf.html
  		if (dev == NULL || !strcmp(lang, "shape")) {
  			puts(
  "SHAPE (ShapePar driver) Options:\n"
-@@ -1008,6 +1025,12 @@ gendev_objects(F_compound *objects, stru
- 
- int rec_comp(struct obj_rec *r1, struct obj_rec *r2)
+@@ -968,6 +985,12 @@ static int compound_dump(F_compound *com
+ static int
+ rec_comp(struct obj_rec *r1, struct obj_rec *r2)
  {
 +	if (r2->depth == r1->depth)
 +	{
@@ -438,8 +438,8 @@ Origin: http://p3f.gmxhome.de/fig2mpdf/fig2mpdf.html
  	return (r2->depth - r1->depth);
  }
  
---- a/fig2dev-3.2.6a/fig2mpdf/copyright.txt
-+++ b/fig2dev-3.2.6a/fig2mpdf/copyright.txt	2018-05-07 10:00:19.625980684 +0000
+--- a/fig2dev-3.2.7b/fig2mpdf/copyright.txt
++++ b/fig2dev-3.2.7b/fig2mpdf/copyright.txt
 @@ -0,0 +1,25 @@
 +The following files contain copyright and license info for
 +the code they contain:
@@ -466,8 +466,8 @@ Origin: http://p3f.gmxhome.de/fig2mpdf/fig2mpdf.html
 +
 +    (Author's note: the license is in the file gpl.txt, which is included
 +     in the archive.)
---- a/fig2dev-3.2.6a/fig2mpdf/fig2mpdf.1
-+++ b/fig2dev-3.2.6a/fig2mpdf/fig2mpdf.1	2018-05-07 10:00:19.625980684 +0000
+--- a/fig2dev-3.2.7b/fig2mpdf/fig2mpdf.1
++++ b/fig2dev-3.2.7b/fig2mpdf/fig2mpdf.1
 @@ -0,0 +1,208 @@
 +.TH fig2mpdf 1 "Jun 2006" "" "Including xfig figures into LaTeX documents"
 +.SH NAME
@@ -677,8 +677,8 @@ Origin: http://p3f.gmxhome.de/fig2mpdf/fig2mpdf.html
 +.IR pdflatex(1)
 +.IR latex(1)
 +.IR dvips(1)
---- a/fig2dev-3.2.6a/fig2mpdf/fig2mpdf
-+++ b/fig2dev-3.2.6a/fig2mpdf/fig2mpdf	2018-05-07 10:00:19.625980684 +0000
+--- a/fig2dev-3.2.7b/fig2mpdf/fig2mpdf
++++ b/fig2dev-3.2.7b/fig2mpdf/fig2mpdf
 @@ -0,0 +1,653 @@
 +#!/bin/sh
 +
@@ -1333,8 +1333,8 @@ Origin: http://p3f.gmxhome.de/fig2mpdf/fig2mpdf.html
 +}
 +' -- $*
 +
---- a/fig2dev-3.2.6a/man/fig2dev.1.in
-+++ b/fig2dev-3.2.6a/man/fig2dev.1.in	2018-05-07 10:15:07.453476364 +0000
+--- a/fig2dev-3.2.7b/man/fig2dev.1.in
++++ b/fig2dev-3.2.7b/man/fig2dev.1.in
 @@ -64,8 +64,8 @@ Set the output graphics language.
  Valid languages are
  \fBbox, cgm, dxf, epic, eepic, eepicemu, emf, eps, gbx (Gerber beta

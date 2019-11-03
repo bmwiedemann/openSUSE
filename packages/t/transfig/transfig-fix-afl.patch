@@ -1,12 +1,12 @@
 ---
- fig2dev-3.2.7a/fig2dev/alloc.h |   20 ++++++++++----------
+ fig2dev-3.2.7b/fig2dev/alloc.h |   20 ++++++++++----------
  1 file changed, 10 insertions(+), 10 deletions(-)
 
---- fig2dev-3.2.7a/fig2dev/alloc.h
-+++ fig2dev-3.2.7a/fig2dev/alloc.h	2018-05-07 08:49:32.048501663 +0000
-@@ -16,15 +16,15 @@
-  *
-  */
+--- fig2dev-3.2.7b/fig2dev/alloc.h
++++ fig2dev-3.2.7b/fig2dev/alloc.h	2019-10-29 10:49:00.939061663 +0000
+@@ -19,16 +19,16 @@
+ #ifndef ALLOC_H
+ #define ALLOC_H
  
 -#define		Line_malloc(z)		z = malloc(LINOBJ_SIZE)
 -#define		Pic_malloc(z)		z = malloc(PIC_SIZE)
@@ -30,3 +30,4 @@
 +#define		Arrow_malloc(z)		z = calloc(ARROW_SIZE,1)
  
  extern char	Err_mem[];
+ 

@@ -1078,4 +1078,12 @@ See https://bugs.kde.org/show_bug.cgi?id=290719 (forwarded request 115750 from w
     <comment></comment>
     <requestid>741124</requestid>
   </revision>
+  <revision rev="119" vrev="4">
+    <srcmd5>90d68905d7c95bf7d2d98d1e4ab69a72</srcmd5>
+    <version>3.15.0</version>
+    <time>1572775075</time>
+    <user>dimstar_suse</user>
+    <comment>- move s390-*xml files to main package (bsc#1147071)</comment>
+    <requestid>743847</requestid>
+  </revision>
 </revisionlist>

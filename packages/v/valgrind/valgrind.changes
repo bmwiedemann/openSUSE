@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 29 12:10:39 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- move s390-*xml files to main package (bsc#1147071)
+
+-------------------------------------------------------------------
 Thu Oct 17 22:43:21 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Move the BSD-style licensed client headers to a subpackage.
