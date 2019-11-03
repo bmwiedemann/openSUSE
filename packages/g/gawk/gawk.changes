@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 22 11:30:29 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Fix typo in Summary
+- Stop overriding %_libexecdir with %_libdir
+
+-------------------------------------------------------------------
+Tue Oct 22 05:56:27 UTC 2019 - Igor Gnatenko <i.gnatenko.brain@gmail.com>
+
+- Fix the backward compatibility of the inplace extension:
+  * Add gawk-inplace-namespace-part1.patch
+  * Add gawk-inplace-namespace-part2.patch
+  * Add gawk-inplace-namespace-part3.patch
+- Run autoreconf as part of the build process
+
+-------------------------------------------------------------------
 Tue Aug 27 06:51:05 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Upgrade descriptions.

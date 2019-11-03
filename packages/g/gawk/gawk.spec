@@ -19,7 +19,7 @@
 Name:           gawk
 Version:        5.0.1
 Release:        0
-Summary:        Domain-specificl anguage for text processing
+Summary:        Domain-specific language for text processing
 License:        GPL-3.0-or-later
 Group:          Productivity/Text/Utilities
 URL:            https://www.gnu.org/software/gawk/
@@ -27,6 +27,15 @@ Source:         http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz
 Source2:        http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
 Source3:        http://savannah.gnu.org/people/viewgpg.php?user_id=80653#/gawk.keyring
 Source4:        gawk.rpmlintrc
+Patch1:         gawk-inplace-namespace-part1.patch
+Patch2:         gawk-inplace-namespace-part2.patch
+#Parts of the patch dealing with .info files, were removed, some parts of documentation might be broken
+Patch3:         gawk-inplace-namespace-part3.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
+BuildRequires:  make
+BuildRequires:  makeinfo
 BuildRequires:  update-alternatives
 Requires(post): %{install_info_prereq}
 Requires(post): update-alternatives
@@ -42,10 +51,11 @@ GNU awk is upwardly compatible with the System V Release 4 awk.  It is
 almost completely POSIX 1003.2 compliant.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%configure --libexecdir=%{_libdir}
+autoreconf -fiv
+%configure
 make %{?_smp_mflags}
 
 %check
@@ -99,7 +109,7 @@ fi
 /bin/gawk
 #EndUsrMerge
 %{_bindir}/gawk
-%{_libdir}/awk
+%{_libexecdir}/awk
 %{_libdir}/gawk
 %{_datadir}/awk
 %{_includedir}/gawkapi.h

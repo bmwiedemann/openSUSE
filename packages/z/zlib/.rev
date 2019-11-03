@@ -636,4 +636,13 @@ Passed the spec file through spec cleaner (forwarded request 116645 from worldci
   * zlib-no-version-check.patch</comment>
     <requestid>741412</requestid>
   </revision>
+  <revision rev="75" vrev="12">
+    <srcmd5>6f927b5d6d845f83b8f515aead0633ad</srcmd5>
+    <version>1.2.11</version>
+    <time>1572774450</time>
+    <user>dimstar_suse</user>
+    <comment>- Update the zlib-no-version-check.patch to be even more forgiving
+  with the versions on the zlib to allow updates without rebuilds</comment>
+    <requestid>743812</requestid>
+  </revision>
 </revisionlist>
