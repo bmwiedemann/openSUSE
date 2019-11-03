@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov  1 11:38:56 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.31:
+  * Fix issue with handling CID 0 context identifier.
+  * Fix issue with handling detach state and running LTE.
+  * Fix issue with handling SIM states and Quectel modems.
+
+-------------------------------------------------------------------
 Tue Aug 13 14:06:50 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.30:

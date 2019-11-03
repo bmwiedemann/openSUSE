@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Wed Oct 30 14:45:16 UTC 2019 - kukuk@suse.com
+
+- Add mariadb files
+- Update to version 0.0+git20191030.b2f919f:
+  * Fix typo, mention which variable adjusts secrets path for mariadb
+  * Add environment variables and files to initialize mariadb at first startup
+  * Enhance documentation
+  * Add first mariadb service and sysconfig file
+  * Mention dhcp6-server
+
+-------------------------------------------------------------------
+Tue Oct 29 08:18:14 UTC 2019 - kukuk@suse.com
+
+- Update to version 0.0+git20191029.39ca697:
+  * Provide dhcpd4 and dhcpd6 service files
+
+-------------------------------------------------------------------
+Mon Oct 28 15:58:40 UTC 2019 - kukuk@suse.com
+
+- Update to version 0.0+git20191028.2cbfdca:
+  * Add sysconfig and service file for dhcp-server container image
+
+-------------------------------------------------------------------
+Sat Oct 26 05:29:47 UTC 2019 - kukuk@suse.com
+
+- Update to version 0.0+git20191026.e3a4918:
+  * Add service and sysconfig file for bind container
+

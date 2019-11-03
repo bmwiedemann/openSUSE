@@ -40,6 +40,7 @@ BuildRequires:  pkgconfig(liblo)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(sdl)
 BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xpm)
 
 %description

@@ -1,7 +1,7 @@
-diff -ru sonic-visualiser-3.2.1.orig/base.pri sonic-visualiser-3.2.1/base.pri
---- sonic-visualiser-3.2.1.orig/base.pri	2019-01-08 23:32:16.000000000 +1000
-+++ sonic-visualiser-3.2.1/base.pri	2019-01-29 16:54:56.629040014 +1000
-@@ -10,8 +10,6 @@
+diff -up sonic-visualiser-4.0/base.pri.orig sonic-visualiser-4.0/base.pri
+--- sonic-visualiser-4.0/base.pri.orig	2019-10-25 15:33:19.000000000 +0200
++++ sonic-visualiser-4.0/base.pri	2019-10-31 20:53:54.332216673 +0100
+@@ -13,8 +13,6 @@ SV_INCLUDEPATH = \
  	piper-vamp-cpp \
  	checker \
  	checker/checker \
@@ -10,19 +10,19 @@ diff -ru sonic-visualiser-3.2.1.orig/base.pri sonic-visualiser-3.2.1/base.pri
  	svcore \
  	svcore/data \
  	svcore/plugin/api/alsa \
-@@ -37,5 +35,7 @@
- linux*:   DEFINES += USE_PTHREADS
- macx*:    DEFINES += USE_PTHREADS
+@@ -34,4 +32,7 @@ solaris*: DEFINES += __RTMIDI_DUMMY_ONLY
+ # Defines for Dataquay
+ DEFINES += USE_SORD
  
 -CONFIG += qt thread warn_on stl rtti exceptions
 +CONFIG += qt thread warn_on stl rtti exceptions link_pkgconfig
 +PKGCONFIG += dataquay
 +
- 
-diff -ru sonic-visualiser-3.2.1.orig/base.pro sonic-visualiser-3.2.1/base.pro
---- sonic-visualiser-3.2.1.orig/base.pro	2019-01-08 23:32:16.000000000 +1000
-+++ sonic-visualiser-3.2.1/base.pro	2019-01-29 16:55:41.372963481 +1000
-@@ -29,9 +29,6 @@
++
+diff -up sonic-visualiser-4.0/base.pro.orig sonic-visualiser-4.0/base.pro
+--- sonic-visualiser-4.0/base.pro.orig	2019-10-25 15:33:19.000000000 +0200
++++ sonic-visualiser-4.0/base.pro	2019-10-31 20:55:24.020542156 +0100
+@@ -29,9 +29,6 @@ include(vamp-plugin-sdk-files.pri)
  include(svcore/files.pri)
  include(capnp-regen.pri)
  
@@ -32,7 +32,7 @@ diff -ru sonic-visualiser-3.2.1.orig/base.pro sonic-visualiser-3.2.1/base.pro
  CHECKER_SOURCES=$$fromfile(checker/checker.pri, SOURCES)
  CHECKER_HEADERS=$$fromfile(checker/checker.pri, HEADERS)
                   
-@@ -43,9 +40,6 @@
+@@ -43,9 +40,6 @@ for (file, BQ_HEADERS)       { HEADERS +
  for (file, VAMP_SOURCES)     { SOURCES += $$file }
  for (file, VAMP_HEADERS)     { HEADERS += $$file }
  

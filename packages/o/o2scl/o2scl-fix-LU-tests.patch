@@ -1,0 +1,37 @@
+From 8ec947675d4c6e27c06e2fbf8fa541c7e0df4860 Mon Sep 17 00:00:00 2001
+From: "Andrew W. Steiner" <awsteiner@mykolab.com>
+Date: Tue, 15 Oct 2019 11:00:36 -0400
+Subject: [PATCH] Improved conditioning of lu_ts matrix test.
+
+---
+ src/linalg/lu_ts.cpp | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+
+Index: o2scl-0.923/src/linalg/lu_ts.cpp
+===================================================================
+--- o2scl-0.923.orig/src/linalg/lu_ts.cpp
++++ o2scl-0.923/src/linalg/lu_ts.cpp
+@@ -69,9 +69,12 @@ int main(void) {
+ 
+       for(size_t i=0;i<5;i++) {
+ 	for(size_t j=0;j<5;j++) {
+-	  gsl_matrix_set(gm1,i,j,1.0+sin(((double)ki))+
++	  double diag=0.0;
++	  if (i==j) diag+=3.0;
++	  gsl_matrix_set(gm1,i,j,1.0+diag+sin(((double)ki))+
+ 			 sin((double)(i))+tan(((double)(j))));
+-	  om1(i,j)=1.0+sin(((double)ki))+sin((double)(i))+tan(((double)(j)));
++	  om1(i,j)=1.0+diag+sin(((double)ki))+sin((double)(i))+
++	    tan(((double)(j)));
+ 	}
+       }
+ 
+@@ -165,7 +168,7 @@ int main(void) {
+       LU_decomp(5,om1,op1,sig);
+       LU_invert<ubmatrix,ubmatrix,ubmatrix_column>(5,om1,op1,om2);
+     
+-      t.test_rel_mat(5,5,om2,gsl_matrix_wrap(gm2),1.0e-12,
++      t.test_rel_mat(5,5,om2,gsl_matrix_wrap(gm2),1.0e-7,
+ 		     "LU invert 1 (paren)");
+ 
+     }

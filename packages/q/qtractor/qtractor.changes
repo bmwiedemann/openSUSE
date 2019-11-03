@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Nov  2 07:43:26 UTC 2019 - Dave Plater <davejplater@gmail.com>
+
+- Update to version 0.9.10
+- Upstream changes:
+  *Fixed the potential crash-effect in switching MIDI
+   output buses on tracks that are set to show audio
+   output monitoring meters.
+  *Fixed initial session tempo override when importing
+   a standard MIDI file (as reported on issue #230).
+  *An alternate time-signature/meter option is being
+   served to the MIDI clip editor (aka. piano-roll)
+   and allowing for some poly-rythm/meter scenarios
+   on a per MIDI clip basis.
+  *Fixed MIDI "overdub" recording on offset clips.
+  *MIDI bank and program settings now propagating to
+   all MIDI track's clips resp.
+  *Fixed MIDI file format default setting other than
+   SMF Format 0.
+  *Escape key may now be used to reset time and tempo
+   /time-sgnature spin-box controls.
+  *Play-head time and tempo/time-signature controls
+   are now featured in MIDI clip editor toolbars (aka.
+   piano-roll); time display format is also separated
+   from the tracks main application view and defaults
+   to BBT as being most convenient.
+  *All items in the MIDI clip editor's event list are
+   now enabled, selectable and editable, no matter the
+   filter settings for the event views.
+  *Added alternate yet non-official CMake build option.
+  *Improved MIDI clip editor (aka. piano-roll) position
+   and size persistence across session state.
+  *Fix HiDPI display screen effective support (Qt >= 5.6).
+  *Mixer, Connections and MIDI clip editor top-level
+   windows shall have no parent, unless when set as
+   always-on-top tool windows. (REGRESSION)
+  *Make sure compiler flags comply to c++11 as standard.
+
+-------------------------------------------------------------------
 Sat Sep 29 12:43:22 UTC 2018 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.9.2

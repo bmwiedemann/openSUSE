@@ -23,4 +23,12 @@
     <comment>libconfini 1.10.4 (forwarded request 741232 from AndreasStieger)</comment>
     <requestid>741233</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>43d88b74db37267e5c7013743584de91</srcmd5>
+    <version>1.11.0</version>
+    <time>1572780029</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>744830</requestid>
+  </revision>
 </revisionlist>

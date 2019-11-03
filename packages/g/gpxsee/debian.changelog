@@ -1,3 +1,19 @@
+gpxsee (7.17) stable; urgency=low
+
+  * Fixed program crash on empty GPX segment.
+  * Fixed broken DEM value reading on S/W coordinates.
+  * Various GPI parser fixes & improvements.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sat, 02 Nov 2019 10:10:33 +0100
+
+gpxsee (7.16) stable; urgency=low
+
+  * Added support for Garmin GPI files.
+  * Hyperlink + copy&paste enabled tool tips.
+  * Various minor bug fixes in data loading.
+
+ -- Martin Tuma <tumic@cbox.cz>  Mon, 28 Oct 2019 22:34:24 +0100
+
 gpxsee (7.15) stable; urgency=low
 
   * Fixed broken align of zoom level 0 with tiles of a different

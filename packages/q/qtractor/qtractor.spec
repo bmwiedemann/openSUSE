@@ -1,7 +1,7 @@
 #
 # spec file for package qtractor
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,13 @@
 
 
 Name:           qtractor
-Version:        0.9.2
+Version:        0.9.10
 Release:        0
 Summary:        An Audio/MIDI multi-track sequencer
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
 Url:            http://qtractor.org/
+#https://github.com/rncbc/qtractor/archive/qtractor_0_9_10.zip
 Source0:        https://downloads.sourceforge.net/project/qtractor/qtractor/%{version}/qtractor-%{version}.tar.gz
 # PATCH-{FIX}-{OPENSUSE} qtractor-powerpc.patch dvaleev@suse.com -- Fix build on ppc
 Patch2:         qtractor-powerpc.patch
@@ -70,6 +71,7 @@ make %{?_smp_mflags}
 
 %install
 %make_install
+mv %{buildroot}%{_libdir}/qtractor/qtractor_plugin_scan %{buildroot}%{_bindir}
 
 %if 0%{?suse_version} < 1500
 %post

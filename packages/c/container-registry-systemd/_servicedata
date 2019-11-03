@@ -1,6 +1,6 @@
 <servicedata>
   <service name="tar_scm">
     <param name="url">git://github.com/thkukuk/container-registry-systemd.git</param>
-    <param name="changesrevision">f65282ea5c2dbfe3f905dca8702db4a76aca451b</param>
+    <param name="changesrevision">b2b9ebfbd4eac8445698775ee349392ce49cb6db</param>
  </service>
 </servicedata>

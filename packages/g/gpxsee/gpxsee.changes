@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Nov  2 10:03:40 CET 2019 - tumic@cbox.cz
+
+- Update to version 7.17
+  * Fixed program crash on empty GPX segment.
+  * Fixed broken DEM value reading on S/W coordinates.
+  * Various GPI parser fixes & improvements.
+
+-------------------------------------------------------------------
+Mon Oct 28 22:26:16 CET 2019 - tumic@cbox.cz
+
+- Update to version 7.16
+  * Added support for Garmin GPI files.
+  * Hyperlink + copy&paste enabled tool tips.
+  * Various minor bug fixes in data loading.
+
+-------------------------------------------------------------------
 Sat Oct  5 19:03:32 CEST 2019 - tumic@cbox.cz
 
 - Update to version 7.15

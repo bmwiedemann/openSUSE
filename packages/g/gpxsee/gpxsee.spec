@@ -19,7 +19,7 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           gpxsee
-Version:        7.15
+Version:        7.17
 Release:        1
 Summary:        GPS log file visualization and analysis tool
 License:        GPL-3.0-only
@@ -29,7 +29,10 @@ Source0:        GPXSee-%{version}.tar.gz
 
 BuildRequires:  gcc-c++
 BuildRequires:  make
-%if 0%{?fedora_version}
+%if 0%{?centos_version} >= 800
+BuildRequires:  gdb-headless
+%endif
+%if 0%{?fedora_version} || 0%{?centos_version} >= 800
 BuildRequires:  qt5-qtbase
 BuildRequires:  qt5-qtbase-gui
 BuildRequires:  qt5-qtbase-devel
@@ -51,7 +54,7 @@ Recommends: libQt5Sql5-sqlite
 Recommends: libqt5-qtimageformats
 Recommends: libqt5-qtpbfimageformat
 %else
-%if 0%{?rhel_version} || 0%{?centos_version}
+%if (0%{?rhel_version} && 0%{?rhel_version} < 800) || (0%{?centos_version} && 0%{?centos_version} < 800)
 BuildRequires:  libqt4-devel
 %else
 # Mageia
@@ -84,11 +87,11 @@ JPEG files.
 lrelease-qt5 gpxsee.pro
 %{qmake5} gpxsee.pro
 %else
-%if 0%{?fedora_version}
+%if 0%{?fedora_version} || 0%{?centos_version} >= 800
 lrelease-qt5 gpxsee.pro
 %{qmake_qt5} gpxsee.pro
 %else
-%if 0%{?rhel_version} || 0%{?centos_version}
+%if (0%{?rhel_version} && 0%{?rhel_version} < 800) || (0%{?centos_version} && 0%{?centos_version} < 800)
 lrelease-qt4 gpxsee.pro
 qmake-qt4 PREFIX=/usr gpxsee.pro
 %else

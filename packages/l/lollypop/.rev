@@ -1087,4 +1087,18 @@
     (glgo#World/lollypop#2092).</comment>
     <requestid>744299</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>c58c047996684b31477426c4209751ec</srcmd5>
+    <version>1.2.4</version>
+    <time>1572779777</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.4:
+  * Fix network unavailable message in lyrics view
+    (glgo#World/lollypop#2100).
+  * Fix a crash when updating music database after moving files
+    (glgo#World/lollypop#2102).
+  * Fix a crash upon drag and drop (glgo#World/lollypop#2101).
+  * Don't display empty discs (glgo#World/lollypop#2099).</comment>
+    <requestid>744774</requestid>
+  </revision>
 </revisionlist>

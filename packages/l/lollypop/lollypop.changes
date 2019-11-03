@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov 01 15:18:51 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.2.4:
+  * Fix network unavailable message in lyrics view
+    (glgo#World/lollypop#2100).
+  * Fix a crash when updating music database after moving files
+    (glgo#World/lollypop#2102).
+  * Fix a crash upon drag and drop (glgo#World/lollypop#2101).
+  * Don't display empty discs (glgo#World/lollypop#2099).
+
+-------------------------------------------------------------------
 Wed Oct 30 18:03:16 UTC 2019 - antoine.belvire@opensuse.org
 
 - Update to version 1.2.3:

@@ -1,0 +1,5 @@
+# This files needs to be empty be default
+addFilter("zero-length /etc/mariadb-secrets/MYSQL_.*")
+# We don't install /sbin/service to build the package
+addFilter("dangling-symlink /usr/sbin/rccontainer-.*")
+

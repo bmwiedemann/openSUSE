@@ -178,4 +178,13 @@
     <comment>- Update to new upstream release 2.1.1</comment>
     <requestid>707487</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>645ba0d80adcf80607e5375e03bb90ea</srcmd5>
+    <version>2.1.1</version>
+    <time>1572779986</time>
+    <user>dimstar_suse</user>
+    <comment>- Previous implicit dependency on xxf86vm is now added
+  as an explicit BuildRequires.</comment>
+    <requestid>744828</requestid>
+  </revision>
 </revisionlist>

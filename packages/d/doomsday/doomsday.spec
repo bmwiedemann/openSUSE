@@ -58,6 +58,7 @@ BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xrandr)
+BuildRequires:  pkgconfig(xxf86vm)
 BuildRequires:  pkgconfig(zzip-zlib-config)
 # Doomsday uses a modified version of assimp, so no pkgconfig(assimp) here :-(
 Provides:       bundled(assimp) = 3.1.1

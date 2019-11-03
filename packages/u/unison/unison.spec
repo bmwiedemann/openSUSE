@@ -30,7 +30,7 @@ Source2:        %{name}.desktop
 Source3:        %{name}.png
 BuildRequires:  gtk2-devel
 BuildRequires:  ncurses-devel
-BuildRequires:  ocaml-lablgtk2-devel
+BuildRequires:  ocaml-lablgtk2-devel < 2.18.8
 BuildRequires:  ocaml-rpm-macros >= 4.03.0
 BuildRequires:  update-desktop-files
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

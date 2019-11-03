@@ -1,7 +1,41 @@
 -------------------------------------------------------------------
+Thu Oct 31 19:43:38 UTC 2019 - Edgar Aichinger <edogawa@aon.at>
+
+- Update to version 4.0
+ * Add Box annotation layer type, typically used for time-frequency boxes 
+   to be annotated over a spectrogram. Because this introduces a new layer 
+   type into the session file format, the major version number has been 
+   bumped to v4.0. Sessions saved from v4.0 can still be opened in earlier 
+   versions of Sonic Visualiser, but any Box layers will not be loaded
+ * Fix behaviour of auto-align layers on top of waveform: they can now be 
+   aligned in the vertical scale, if they have a unit of V and the waveform 
+   is of a single channel in linear or dB mode
+ * Make the UI more readable in macOS "dark mode"
+ * Fix sluggishness in starting and stopping playback when using PulseAudio
+   v13.0+
+ Changes in version 3.3
+ * Add support for reading the Opus audio codec on all platforms
+ * Add support for WMA and AAC formats on 64-bit Windows. (AAC was already 
+   supported on macOS.) Note that AAC support on Windows does not support 
+   "gapless" import, i.e. removing the encoder gaps at start and end of 
+   the stream
+ * Add ability to choose the field separator when importing CSV and 
+   CSV-like files, if more than one possible candidate separator is 
+   found in the file
+ * Fix crash when closing session or starting a new session while 
+   calculating alignment of multiple audio files
+ * Fix crash when running certain plugins that call for frequency-domain 
+   input at non-power-of-two block sizes
+ * Fix wandering left edge of measure-tool rectangle while dragging out 
+   the area
+ * Ensure that plugin stderr debug output is logged to the SV log file
+ 
+- Refreshed sonic-visualiser-system-dataquay.patch
+
+-------------------------------------------------------------------
 Wed Jan 30 07:02:28 UTC 2019 - Konstantin Voinov <kill_it@mail.ru>
 
-- Update to version  3.2.1
+- Update to version 3.2.1
  * Fix failure to record from built-in microphone on macOS 10.14
    (caused by lack of microphone permission request text)
  * Fix crash when closing SV or starting a new session during recording

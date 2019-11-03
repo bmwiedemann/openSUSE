@@ -1,7 +1,7 @@
 #
 # spec file for package dosemu
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -42,7 +42,7 @@ ExclusiveArch:  %ix86 x86_64
 Version:        1.4.0.1.r2065
 Release:        0
 Summary:        The DOS Emulator
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Emulators/PC
 Source:         %name-%version.tgz
 Source1:        dosemu-freedos-bin.tgz
@@ -103,6 +103,7 @@ users.
 %patch4 -p1
 %patch5 -p1
 %build
+%global _lto_cflags %{_lto_cflags} -flto-partition=one
 autoreconf -fiv
 export CFLAGS="%optflags -fgnu89-inline"
 %configure --sysconfdir=%{_sysconfdir}/%{name} --with-docdir=%{_docdir}/dosemu \
