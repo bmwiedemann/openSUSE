@@ -7,87 +7,89 @@
 .\" NCSA Open Source License as specified in the file LICENSE.TXT that
 .\" comes with the software.
 .\"
-.TH include-what-you-use 1 "2019-05-25" include-what-you-use "User Manuals"
+.TH INCLUDE-WHAT-YOU-USE 1 "2019-11-02" include-what-you-use "User Commands"
 .SH NAME
-include-what-you-use \- Analyze includes in C and C++ source files.
+include-what-you-use \- analyze includes in C and C++ source files.
 .SH SYNOPSIS
-.B include-what-you-use
-.RB [ -Xiwyu
-.IR option ]...
-.RI [ clang-options ]
-.I file
+.SY include-what-you-use
+.RB [ \-Xiwyu
+.IR option "]\&.\|.\|. [" clang-options "] " file
+.YS
 .SH DESCRIPTION
-`Include what you use' means this: for every symbol (type, function variable,
-or macro) that you use in
+\(lqInclude what you use\(rq means this: for every symbol (type, function,
+variable, or macro) that you use in
 .IR foo.cpp ,
 either
 .IR foo.cpp " or " foo.h
 should include a header file that exports the declaration of that symbol.
 .B include-what-you-use
-is a tool to analyze includes of source files to find `include-what-you-use'
-violations, and suggest fixes for them.
+is a tool to analyze includes of source files to find
+\(lqinclude-what-you-use\(rq violations, and suggest fixes for them.
 .PP
 The main goal of
 .B include-what-you-use
-is to remove superfluous includes. It does this both by figuring out what
-includes are not actually needed for this file (for both source and header
-files), and by replacing includes with forward declarations when possible.
+is to remove superfluous includes.
+It does this both by figuring out what includes are not actually needed for this
+file (for both source and header files), and by replacing includes with forward
+declarations when possible.
 .SH OPTIONS
 Options for
 .B include-what-you-use
 have to be preceded with
-.BR -Xiwyu .
+.BR \-Xiwyu .
 All other options are interpreted as
 .BR clang (1)
 compiler options.
 .TP
-.BI --check_also= glob
-Print `include-what-you-use'-violation info for all files matching the given
-glob pattern (in addition to the default of reporting for the input source file
-and associated header files).
+.BI \-\-check_also= glob
+Print \(lqinclude-what-you-use\(rq-violation info for all files matching the
+given glob pattern (in addition to the default of reporting for the input
+source file and associated header files).
 This flag may be specified multiple times to specify multiple glob patterns.
 .TP
-.B --cxx17ns
+.B \-\-cxx17ns
 Suggest the more concise syntax for nested namespaces introduced in C++17.
 .TP
-.BI --keep= glob
+.BI \-\-keep= glob
 Always keep the includes matched by
 .IR glob .
 This flag may be used multiple times to specify more than one glob pattern.
 .TP
-.BI --mapping_file= filename
+.BI \-\-mapping_file= filename
 Use the given mapping file.
 .TP
-.B --max_line_length
+.B \-\-max_line_length
 Maximum line length for includes.
 Note that this only affects the comments and their alignment, the maximum line
 length can still be exceeded with long filenames (default: 80).
 .TP
-.B --no_comments
+.B \-\-no_comments
 Do not add comments after includes about which symbols the header was required
 for.
 .TP
-.B --no_default_mappings
+.B \-\-no_default_mappings
 Do not use the default mappings.
 .TP
-.B --no_fwd_decls
+.B \-\-no_fwd_decls
 Do not use forward declarations, and instead always include the required header.
 .TP
-.B --pch_in_code
+.B \-\-pch_in_code
 Mark the first include in a translation unit as a precompiled header. Use
-.B --pch_in_code
+.B \-\-pch_in_code
 to prevent removal of necessary PCH includes. Although
 .BR clang (1)
 forces PCHs to be listed as prefix headers, the PCH-in-code pattern can be used
 with
 .BR gcc (1).
 .TP
-.BI --prefix_header_includes= value
+.BI \-\-prefix_header_includes= value
 Controls how includes and forward declarations involving prefix headers should
-be handled. Prefix headers are files included via the command-line option
+be handled.
+Prefix headers are files included via the command-line option
 .BR -include .
 This option specifies what to do if a prefix header makes includes or forward
-declarations obsolete. The following
+declarations obsolete.
+The following
 .IR value s
 are allowed:
 .RS
@@ -102,27 +104,28 @@ No new includes are added, existing ones are kept intact.
 No new includes are added, existing ones are removed.
 .RE
 .TP
-.B --quoted_includes_first
-When sorting includes, place quoted ones first.
+.B \-\-quoted_includes_first
+When sorting includes, place quoted includes first.
 .TP
-.B --transitive_includes_only
+.B \-\-transitive_includes_only
 Do not suggest that a file should add
 .IR foo.h " unless " foo.h
 is already visible in the file's transitive includes.
 .TP
-.BI --verbose= level
+.BI \-\-verbose= level
 Set verbosity. At the highest level, this will dump the AST of the source file
 and explain all decisions.
 .SH EXIT STATUS
 .B include-what-you-use
-always returns with an error to make usage with
+always returns with a nonzero status code to make usage with
 .BR make (1)
 feasible.
 .SH MAPPING FILES
-Sometimes headers are not meant to be included directly, and sometimes headers
-are guaranteed to include other headers. Since this is hard to tell from the
-source code alone, these relationships have to be provided via mapping files.
-
+Sometimes headers are not meant to be included directly,
+and sometimes headers are guaranteed to include other headers.
+Since this is hard to tell from the source code alone,
+these relationships have to be provided via mapping files or pragma comments.
+.PP
 A mapping file consists of a comma-separated list of rules enclosed by square
 brackets
 .BR [] .
@@ -131,8 +134,9 @@ A rule can be any of the following:
 .BI "{ include: [" header ", " header "] }"
 Declares that instead of the first
 .I header
-the second can be used. A header can appear on the left-hand side in multiple
-rules, meaning that any of the right-hand side headers can be used instead.
+the second can be used.
+A header can appear on the left-hand side in multiple rules,
+meaning that any of the right-hand side headers can be used instead.
 .TP
 .BI "{ symbol: [" symbol ", " header "] }"
 Declares that to use a
@@ -154,8 +158,9 @@ specifies the header file and
 .I visibility
 specifies whether the header is
 .BR public " or " private .
-Private headers are not allowed to be included directly. So every private
-header file should appear on the left-hand side of a mapping at least once.
+Private headers are not allowed to be included directly.
+So every private header file should appear on the left-hand side of a mapping
+at least once.
 The visibility of a header file has to be the same for all rules it appears in!
 .TP
 .IB "include-spec\fR := " < system-header-file > \
@@ -163,6 +168,7 @@ The visibility of a header file has to be the same for all rules it appears in!
 How the header is
 .BR #include d
 in a source file.
+Quotation marks need to be escaped.
 .TP
 .IB "symbol\fR := " \(dq symbol-name "\(dq, " visibility
 Describes a symbol, for example a type, function or macro. The
@@ -174,6 +180,58 @@ is used.
 Lines starting with
 .B #
 are treated as comments.
+.SH PRAGMA COMMENTS
+Pragma comments provide information about the relations between source and
+header files and allow to whitelist or blacklist
+.BR #include s
+and forward declarations.
+.PP
+All arguments should be enclosed in quotation marks.
+.TP
+.B // IWYU pragma: keep
+Used after
+.B #include
+directives or forward declarations it ensures that they won't be removed.
+.TP
+.B // IWYU pragma: export
+Used after an
+.B #include
+directive it indicates that the current file is considered to be a provider of
+the included file.
+.TP
+.BR "// IWYU pragma: begin_exports" , " // IWYU pragma: end_exports"
+Has the same effect as the previous pragma comment, but applies to a range of
+.BR #include s
+instead of a single line.
+.TP
+.BR "// IWYU pragma: private" [ ", include \fIheader" ]
+Indicates that the current file is considered private,
+and (optionally) that any symbol will be provided by
+.IR header .
+.TP
+.BI "// IWYU pragma: no_include " header
+States that
+.I header
+should not be suggested for inclusion.
+.TP
+.BI "// IWYU pragma: no_forward_declare "symbol
+States that
+.I symbol
+should not be forward-declared.
+.TP
+.BI "// IWYU pragma: friend " regex
+Used in a private header, this indicates that all files matching
+.I regex
+are allowed to
+.B #include
+it.
+.TP
+.B // IWYU pragma: associated
+Used in a source file after an
+.B #include
+directive, this marks the header as associated to the source file.
+This is required if source and header filename differ in more than their ending.
+Includes from an associated header are assumed in the source file.
 .SH FILES
 .I /usr/share/include-what-you-use
 .RS
@@ -191,7 +249,7 @@ over your codebase is to run
 .PP
 .RS
 .EX
-make -k CC=include-what-you-use CXX=include-what-you-use
+make \-k CC=include-what-you-use CXX=include-what-you-use
 .EE
 .RE
 .PP
@@ -200,11 +258,11 @@ didn't build an object file. Hence the need for
 .BR -k .
 It only analyzes source files built by
 .BR make (1)
-along with their corresponding header files. If a project has a header file
-with no corresponding source file,
+along with their corresponding header files.
+If a project has a header file with no corresponding source file,
 .B include-what-you-use
 will ignore it unless you use the
-.B --check_also
+.B \-\-check_also
 option to add it for analysis together with a source file.
 .PP
 CMake has built-in support for
@@ -215,7 +273,7 @@ option, CMake runs it on every source file after compilation:
 .PP
 .RS
 .EX
-cmake -DCMAKE_CXX_INCLUDE_WHAT_YOU_USE="include-what-you-use <args>" ..
+cmake \-DCMAKE_CXX_INCLUDE_WHAT_YOU_USE="include-what-you-use <args>" ..
 .EE
 .RE
 .PP

@@ -2,7 +2,7 @@
 # spec file for package include-what-you-use
 #
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2018 Aaron Puchert.
+# Copyright (c) 2019 Aaron Puchert.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           include-what-you-use
-Version:        0.12
+Version:        0.13
 Release:        0
 Summary:        A tool to analyze #includes in C and C++ source files
 License:        NCSA
@@ -29,14 +29,12 @@ Source1:        %{name}.1
 Patch1:         fix-shebang.patch
 Patch2:         iwyu_include_picker.patch
 Patch3:         remove-x86-specific-code.patch
-BuildRequires:  clang8
-BuildRequires:  clang8-devel
+Patch4:         link-llvm9.patch
+BuildRequires:  clang9
+BuildRequires:  clang9-devel
 BuildRequires:  cmake
-%if 0%{?sle_version} && 0%{?sle_version} <= 130000 && !0%{?is_opensuse}
-BuildRequires:  gcc6
-BuildRequires:  gcc6-c++
-%endif
-BuildRequires:  llvm8-devel
+BuildRequires:  libstdc++-devel
+BuildRequires:  llvm9-devel
 BuildRequires:  python
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -68,24 +66,33 @@ refactoring tool.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
-%define _lto_cflags %{nil}
+# Make _lto_cflags compatible with Clang.
+%define _lto_cflags "-flto=thin"
 
 # Remove obsolete files - this is now hardcoded into iwyu_include_picker.cc.
 rm gcc.libc.imp gcc.symbols.imp gcc.stl.headers.imp stl.c.headers.imp
 # This also obsoletes iwyu.gcc.imp.
 rm iwyu.gcc.imp
 
-# Since Clang is built using Clang, use it here too. Except for SLES, where we
-# need to use GCC 6 for some reason. (Otherwise there are segfaults.)
-%if 0%{?sle_version} && 0%{?sle_version} <= 130000 && !0%{?is_opensuse}
-export CC=gcc-6 CXX=g++-6
-%else
-export CC=clang CXX=clang++
-%endif
-%cmake -DIWYU_LLVM_ROOT_PATH=%{_libdir} ..
+# Since Clang is built using Clang, use it here too.
+%cmake \
+    -DCMAKE_C_COMPILER=clang \
+    -DCMAKE_CXX_COMPILER=clang++ \
+    -DCMAKE_AR=%{_bindir}/llvm-ar \
+    -DCMAKE_RANLIB=%{_bindir}/llvm-ranlib \
+    -DIWYU_LLVM_ROOT_PATH=%{_libdir} \
+    ..
+
+# ThinLTO uses multiple threads from the linker process for optimizations, which
+# causes an extremely high lock contention on allocations due to MALLOC_CHECK_,
+# so we deactivate it for compilation. The tests will have it activated again.
+MALLOC_CHECK_BACK=$MALLOC_CHECK_
+unset MALLOC_CHECK_
 %make_jobs
+MALLOC_CHECK_=$MALLOC_CHECK_BACK
 
 %install
 %cmake_install

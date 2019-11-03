@@ -19,11 +19,10 @@
 %define php_name    php7
 %define pkg_name    redis
 Name:           %{php_name}-%{pkg_name}
-Version:        5.0.2
+Version:        5.1.0
 Release:        0
 Summary:        API for communicating with Redis servers
 License:        PHP-3.01
-Group:          Productivity/Networking/Web/Servers
 URL:            https://pecl.php.net/package/%{pkg_name}
 Source0:        https://pecl.php.net/get/%{pkg_name}-%{version}.tgz
 Source1:        %{pkg_name}.ini
@@ -56,7 +55,6 @@ mkdir -p %{buildroot}%{_sysconfdir}/%{php_name}/conf.d
 install -m644 %{SOURCE1} %{buildroot}%{_sysconfdir}/%{php_name}/conf.d/%{pkg_name}.ini
 
 %files
-%defattr(0644,root,root,-)
 %license COPYING
 %doc CREDITS README.markdown
 %config(noreplace) %{_sysconfdir}/%{php_name}/conf.d/%{pkg_name}.ini

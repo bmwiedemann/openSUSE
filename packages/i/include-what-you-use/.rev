@@ -63,4 +63,25 @@
 </comment>
     <requestid>714306</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9a05f0dc3ddb93977a28585509246612</srcmd5>
+    <version>0.13</version>
+    <time>1572780448</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.13, update LLVM/Clang to version 9.
+  * Improved handling of relative includes in mappings and pragmas
+  * Path normalization now collapses ..
+  * Improve --no_fwd_decls not to remove required forward declarations
+  * Improved handling of builtin templates
+  * Don't mark forward declarations final
+  * Tolerate using declarations in precompiled header
+  * Add script to generate Qt mappings, and new mappings for Qt 5.11
+  * Use directory from compilation database if available
+  * Numerous documentation and build improvements
+- Add section about pragma comments to man page.
+- Add link-llvm9.patch to adapt to packaging changes in LLVM.
+- Enable ThinLTO where possible.
+- Drop support for SLE12.</comment>
+    <requestid>744930</requestid>
+  </revision>
 </revisionlist>
