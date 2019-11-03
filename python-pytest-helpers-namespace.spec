@@ -28,10 +28,11 @@ Source:         https://github.com/saltstack/pytest-helpers-namespace/archive/v2
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pytest < 4
+Requires:       python-pytest <  5
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pytest < 4}
+BuildRequires:  %{python_module pytest < 5}
+BuildRequires:  %{python_module pytest-forked}
 # /SECTION
 %python_subpackages
 
@@ -49,7 +50,7 @@ PyTest Helpers Namespace.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m pytest
+%pytest -ra --forked 
 
 %files %{python_files}
 %doc README.rst

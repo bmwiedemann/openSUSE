@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  1 14:01:47 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- unrestric pytest4, use pytest-forked to separate tests 
+
+-------------------------------------------------------------------
 Thu Aug 22 08:56:49 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Restrict pytest 4+ as it is not compatible with current release
