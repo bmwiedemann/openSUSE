@@ -44,4 +44,16 @@
     all namespaces. (#455).</comment>
     <requestid>725027</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2f00b50d788406eb38d4b10de9786249</srcmd5>
+    <version>0.8.2</version>
+    <time>1572777308</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.2
+  - Fix layer2 node selection when healthy and unhealthy replicas
+    are colocated on a single node. (#474)
+  - Drop support for helm chart installation
+- Refresh vendor.tar.gz</comment>
+    <requestid>744083</requestid>
+  </revision>
 </revisionlist>

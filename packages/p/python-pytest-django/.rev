@@ -80,4 +80,14 @@ See request 531880 : https://build.opensuse.org/request/show/531880</comment>
     <comment>- Simplify the deps</comment>
     <requestid>725344</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d26ca5d5ba0718d7e800c9bb33148de6</srcmd5>
+    <version>3.6.0</version>
+    <time>1572777561</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.6.0:
+  * Rename test databases when running parallel Tox (#678, #680)
+  * Django unittests: restore &quot;debug&quot; function (#769, #771)</comment>
+    <requestid>744143</requestid>
+  </revision>
 </revisionlist>

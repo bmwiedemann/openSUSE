@@ -63,4 +63,22 @@
     <comment>- Dynamic determine and use guile version in spec file</comment>
     <requestid>652824</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9d37ea0a414ac492b2c780a769670bb9</srcmd5>
+    <version>3.7</version>
+    <time>1572777435</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.7
+- enable python3 instead of python2
+ * Support for the new mailbox format - dotmail
+ * Improve automatic mailbox format detection
+ * Rewrite mailcap (RFC1524) support
+ * imap4d: SEARCH command
+ * Improved SEARCH BODY and SEARCH TEXT commands
+ * Fixes in the 'mail' utility
+ * New mailbox notation @
+ * Sender addresses in message sets
+ * Fixes in IMAP client library (forwarded request 744078 from mimi_vx)</comment>
+    <requestid>744091</requestid>
+  </revision>
 </revisionlist>

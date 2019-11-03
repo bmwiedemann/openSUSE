@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-django
-Version:        3.5.1
+Version:        3.6.0
 Release:        0
 Summary:        A Django plugin for py.test
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/pytest-django
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-django/pytest-django-%{version}.tar.gz
 BuildRequires:  %{python_module Django}

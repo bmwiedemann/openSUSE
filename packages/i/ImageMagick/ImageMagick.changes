@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 30 09:51:39 UTC 2019 - pgajdos@suse.com
+
+- version update to 7.0.9.1
+  * Fixed numerous issues  posted to GitHub (reference
+    https://github.com/ImageMagick/ImageMagick/issues).
+  * Support trim:background-color define for -trim option.
+- modified sources
+  % baselibs.conf
+
+-------------------------------------------------------------------
 Mon Oct  7 10:17:14 UTC 2019 - pgajdos@suse.com
 
 - version update to 7.0.8.68

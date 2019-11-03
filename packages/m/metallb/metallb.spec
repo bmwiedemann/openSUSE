@@ -14,13 +14,10 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-# nodebuginfo
 
 
-# Project name when using go tooling.
-%define project go.universe.tf/metallb
 Name:           metallb
-Version:        0.8.1
+Version:        0.8.2
 Release:        0
 Summary:        Load Balancer for bare metal Kubernetes clusters
 License:        Apache-2.0

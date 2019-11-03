@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct 30 11:49:14 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Fix multibuild building. For baselibs.conf and _multibuild to
+  work correctly, we need to define all possible %package in the
+  spec file irrespective of the "flavor". Packages are not generated
+  if they do not have a %files section
+
+-------------------------------------------------------------------
+Wed Oct 30 02:37:57 UTC 2019 - Yifan Jiang <yfjiang@suse.com>
+
+- Add pkgconfig(libical) BuildRequires: pkg-config 0.29.2 is not
+  able to generate libical-glib pkgconfig dependency without
+  libical.pc.
+
+-------------------------------------------------------------------
 Wed Oct 16 10:45:43 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix glib-devel dependencies on the typelib files after they were

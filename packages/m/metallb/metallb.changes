@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 30 10:35:06 UTC 2019 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.8.2
+  - Fix layer2 node selection when healthy and unhealthy replicas
+    are colocated on a single node. (#474)
+  - Drop support for helm chart installation
+- Refresh vendor.tar.gz
+
+-------------------------------------------------------------------
 Wed Aug 21 14:00:28 CEST 2019 - kukuk@suse.de
 
 - Update to version 0.8.1

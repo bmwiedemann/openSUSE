@@ -1,7 +1,7 @@
 #
 # spec file for package mailutils
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,14 +24,14 @@
 %define somajor 5
 
 Name:           mailutils
-Version:        3.5
+Version:        3.7
 Release:        0
 Summary:        GNU Mailutils
 License:        LGPL-3.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Networking/Email/Clients
 Url:            https://mailutils.org/
 Source:         ftp://ftp.gnu.org/gnu/mailutils/%{name}-%{version}.tar.xz
-Source1:        %{name}-%{version}-guile-2.0.tar.xz
+Source1:        %{name}-3.5-guile-2.0.tar.xz
 Source2:        %{name}-rpmlintrc
 Patch0:         lisp-load-silent.patch
 Patch2:         silent-rpmlint-with_initgroups.patch
@@ -61,15 +61,11 @@ BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(krb5-gssapi)
 BuildRequires:  pkgconfig(kyotocabinet)
 BuildRequires:  pkgconfig(libgsasl)
-%if 0
 # Does not compile due API changes
-BuildRequires:  pkgconfig(python3)
-%else
-BuildRequires:  pkgconfig(python)
-%endif
 BuildRequires:  readline-devel
 BuildRequires:  tcpd-devel
 BuildRequires:  update-alternatives
+BuildRequires:  pkgconfig(python3)
 Requires:       guile = %(rpm -q --queryformat '%%{VERSION}' guile-devel)
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
@@ -399,11 +395,12 @@ fi
 %{_libexecdir}/mailutils/mailutils-*
 %dir %{_libexecdir}/python*/site-packages/mailutils/
 %{_libexecdir}/python*/site-packages/mailutils/*.p*
+%dir %{_libexecdir}/python*/site-packages/mailutils/__pycache__/
+%{_libexecdir}/python*/site-packages/mailutils/__pycache__/*
 %dir %{_libdir}/mailutils/
 %{_libdir}/mailutils/*.so
 %dir %{_libdir}/python*/site-packages/mailutils/
 %{_libdir}/python*/site-packages/mailutils/c_api.so
-
 %files mh
 %defattr(-,root,root)
 %dir %{_bindir}/mu-mh/

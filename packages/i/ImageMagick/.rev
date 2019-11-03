@@ -2329,4 +2329,17 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     https://github.com/ImageMagick/ImageMagick/issues/1704).</comment>
     <requestid>736250</requestid>
   </revision>
+  <revision rev="189" vrev="1">
+    <srcmd5>4309aa809a9692d5535d23d33b8a7d9e</srcmd5>
+    <version>7.0.9.1</version>
+    <time>1572777181</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.9.1
+  * Fixed numerous issues  posted to GitHub (reference
+    https://github.com/ImageMagick/ImageMagick/issues).
+  * Support trim:background-color define for -trim option.
+- modified sources
+  % baselibs.conf</comment>
+    <requestid>744072</requestid>
+  </revision>
 </revisionlist>

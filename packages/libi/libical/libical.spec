@@ -56,86 +56,84 @@ BuildRequires:  vala
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(libical)
 BuildRequires:  pkgconfig(libxml-2.0)
 %endif
 
 %if %{without glib}
-%description
+%description -n libical
 Libical is an implementation of the IETF's iCalendar
 calendaring and scheduling protocols (RFC 2445, 2446, and 2447). It
 parses iCal components and provides a C API for manipulating the
 component properties, parameters, and subcomponents.
 %else
-%description
+%description -n libical-glib
 This package provides a GObject wrapper for libical library with support
 for GObject Introspection.
 %endif
 
-%if %{without glib}
-%package -n %{name}%{sonum}
+%package -n libical%{sonum}
 Summary:        An Implementation of Basic iCAL Protocols
 Group:          System/Libraries
-Provides:       %{name} = %{version}
-Obsoletes:      %{name} < %{version}
+Provides:       libical = %{version}
+Obsoletes:      libical < %{version}
 
-%description -n %{name}%{sonum}
+%description -n libical%{sonum}
 Libical is an implementation of the IETF's iCalendar
 calendaring and scheduling protocols (RFC 2445, 2446, and 2447). It
 parses iCal components and provides a C API for manipulating the
 component properties, parameters, and subcomponents.
 
-%package devel
+%package -n libical-devel
 Summary:        Development files for libical, an implementation of basic iCAL protocols
 Group:          Development/Libraries/C and C++
-Requires:       %{name}%{sonum} = %{version}
+Requires:       libical%{sonum} = %{version}
 # Typelib should be required, but might create a build cycle
-# Requires:      typelib-1_0-libical%{sonum} = %%{version}
+# Requires:      typelib-1_0-libical%%{sonum} = %%{version}
 
-%description devel
+%description -n libical-devel
 Libical is an implementation of the IETF's iCalendar
 Calendaring and Scheduling protocols. (RFC 2445, 2446, and 2447). It
 parses iCal components and provides a C API for manipulating the
 component properties, parameters, and subcomponents.
 
-%package doc
+%package -n libical-doc
 Summary:        Example source code for programs to use libical
 Group:          Documentation/Other
 BuildArch:      noarch
 
-%description doc
+%description -n libical-doc
 Libical is an implementation of the IETF's iCalendar
 calendaring and scheduling protocols (RFC 2445, 2446, and 2447). It
 parses iCal components and provides a C API for manipulating the
 component properties, parameters, and subcomponents.
 
-%else
-%package -n %{name}%{sonum}
+%package -n libical-glib%{sonum}
 Summary:        GObject wrapper for libical library
 Group:          System/Libraries
-Provides:       %{name} = %{version}
-Obsoletes:      %{name} < %{version}
+Provides:       libical-glib = %{version}
+Obsoletes:      libical-glib < %{version}
 
-%description -n %{name}%{sonum}
+%description -n libical-glib%{sonum}
 This package provides a GObject wrapper for libical library with support
 for GObject Introspection.
 
-%package devel
-Summary:        Development files for building against %{name}
+%package -n libical-glib-devel
+Summary:        Development files for building against libical-glib
 Group:          Development/Libraries/C and C++
-Requires:       %{name} = %{version}
-Requires:       libical%{sonum} = %{version}
+Requires:       libical-glib%{sonum} = %{version}
 Requires:       typelib-1_0-ICal-3_0 = %{version}
 Requires:       typelib-1_0-ICalGLib-3_0 = %{version}
 
-%description devel
-Development files for building against %{name}%{sonum}
+%description -n libical-glib-devel
+Development files for building against libical-glib%{sonum}
 
-%package doc
-Summary:        Documentation files for %{name}%{sonum}
+%package -n libical-glib-doc
+Summary:        Documentation files for libical-glib%{sonum}
 Group:          Documentation/Other
 BuildArch:      noarch
 
-%description doc
+%description -n libical-glib-doc
 Documentation files for %{name}%{sonum}
 
 %package -n typelib-1_0-ICal-3_0
@@ -151,7 +149,6 @@ Group:          Development/Libraries/C and C++
 
 %description -n typelib-1_0-ICalGLib-3_0
 This package provides the gobject-introspection bindings for libical-glib.
-%endif
 
 %prep
 %autosetup -p1 -n libical-%{version}
