@@ -1800,6 +1800,7 @@ unsorted:
   - containerd-ctr 
   - containerd-kubic 
   - containerd-kubic-ctr 
+  - containers-systemd 
   - contractor 
   - converseen 
   - converseen-lang 
@@ -6954,8 +6955,8 @@ unsorted:
   - libMagick++-7_Q16HDRI4-32bit: [x86_64] 
   - libMagick++-devel 
   - libMagick++-devel-32bit: [x86_64] 
-  - libMagickCore-7_Q16HDRI6-32bit: [x86_64] 
-  - libMagickWand-7_Q16HDRI6-32bit: [x86_64] 
+  - libMagickCore-7_Q16HDRI7-32bit: [x86_64] 
+  - libMagickWand-7_Q16HDRI7-32bit: [x86_64] 
   - libMathMLSolver0_3 
   - libMrm4 
   - libMrm4-32bit: [x86_64] 
@@ -13053,6 +13054,7 @@ unsorted:
   - mirisdr 
   - mirisdr-udev 
   - mirror 
+  - mirror-registry: [x86_64] 
   - mirrormagic 
   - mjpg-streamer 
   - mk-configure 
