@@ -7,41 +7,6 @@ devname="$2"
 loopname="${devname%*p2}"
 loopdev=/dev/${loopname#/dev/mapper/*}
 
-## Preparation for replacebootconfig.sh
-root=/tmp/kiwi_mount_manager.asdf
-mkdir ${root}
-mount ${devname} ${root}
-for i in proc dev sys; do mount --bind /${i} ${root}/${i}; done
-for i in tmp var boot/writable; do mount -o subvol=@/${i} ${devname} ${root}/${i}; done
-findmnt ||:
-# END
-
-## Same as replacebootconfig.sh
-echo "Recreating the bootloader config"
-
-# This is fragile, but better fail hard than silently
-root="$(echo /tmp/kiwi_mount_manager.*/usr)"
-root=${root%/usr}
-rootdev=$(findmnt -nrvo SOURCE "${root}")
-
-# Needed by the snapper integration
-mount -osubvol=@/.snapshots "${rootdev}" "${root}/.snapshots"
-
-# KIWI does not escape the variable
-sed -i 's/ $ig/ \\$ig/g' "${root}/etc/default/grub"
-
-# Make sure the link exists
-ln -s "${rootdev}" "/dev/disk/by-uuid/$(chroot "${root}" grub2-probe / --target=fs_uuid)"
-
-chroot "${root}" grub2-mkconfig -o /boot/grub2/grub.cfg
-
-umount "${root}/.snapshots"
-## END Same as replacebootconfig.sh
-
-## Clean up after preparations
-for i in boot/writable proc dev sys tmp var .; do umount ${root}/$i; done
-# END
-
 #==========================================
 # The GPT spans the first 33 sectors, but we need to write our
 # at sector 16. Shrink the GPT to only span 5 sectors

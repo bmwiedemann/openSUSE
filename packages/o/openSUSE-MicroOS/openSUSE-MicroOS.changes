@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  4 09:19:06 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- New kiwi uses grub2-mkconfig now, so drop the hack in replacebootconfig.sh
+  and editbootinstall_*.sh
+- Now the kernel cmdline can be escaped properly as well
+
+-------------------------------------------------------------------
 Wed Oct  2 09:46:13 UTC 2019 - Fabian Vogt <fvogt@suse.com>
 
 - Drop "rd.neednet=0" as dracut bug fixed now
