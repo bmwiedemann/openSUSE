@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 25 07:39:55 UTC 2019 - pgajdos@suse.com
+
+- tcp.7: correct documentation of tcp_fack, document tcp_recovery
+- added patches
+  [bsc#1154701]
+  + man-pages-tcp_fack.patch
+
+-------------------------------------------------------------------
 Mon Oct 14 06:47:17 UTC 2019 - pgajdos@suse.com
 
 - version update to 5.03
