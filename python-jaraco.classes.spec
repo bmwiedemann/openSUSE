@@ -22,8 +22,7 @@ Version:        2.0
 Release:        0
 Summary:        Tools to work with classes
 License:        MIT
-Group:          Development/Languages/Python
-Url:            https://github.com/jaraco/jaraco.classes
+URL:            https://github.com/jaraco/jaraco.classes
 Source0:        https://files.pythonhosted.org/packages/source/j/jaraco.classes/jaraco.classes-%{version}.tar.gz
 BuildRequires:  %{python_module jaraco.base >= 6.1}
 BuildRequires:  %{python_module pytest}
@@ -35,7 +34,6 @@ BuildRequires:  python-rpm-macros
 Requires:       python-jaraco.base >= 6.1
 Requires:       python-six
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -53,7 +51,7 @@ sed -i 's/--flake8//' pytest.ini
 # We will package the namespace __init__.py separately
 %{python_expand rm %{buildroot}%{$python_sitelib}/jaraco/__init__.py*
 rm -rf %{buildroot}%{$python_sitelib}/jaraco/__pycache__/
-%fdupes -s %{buildroot}%{$python_sitelib}
+%fdupes %{buildroot}%{$python_sitelib}
 }
 
 %check
