@@ -379,5 +379,4 @@ testing: '20191103'
 fallback-group: 'origin-reviewers'
     </value>
   </attribute>
-  <attribute namespace="OSRT" name="OriginUpdateSkip"/>
 </attributes>
