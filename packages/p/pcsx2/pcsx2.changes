@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Sun Oct 27 16:13:28 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20191027:
+  * gsdx-hw: Add Persona 3 to automatic mipmapping (basic level).
+
+-------------------------------------------------------------------
+Wed Oct 23 18:25:56 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20191023:
+  * ci:appveyor: Add VS2019 and remove VS2015
+  * pcsx2: Remove special case from pointer patch command parsing (#3135)
+  * gsdx-d3d11: Fetch the texture PSM format rather than the context format in texture sampler.
+
+-------------------------------------------------------------------
+Mon Oct 21 19:54:51 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20191021:
+  * gsdx-hw: Adjust GSC_Bully crc hack.
+
+-------------------------------------------------------------------
+Wed Oct 16 18:15:50 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20191012:
+  * common: Silence -Wunused-function clang warnings. (#3127)
+  * gsdx-hw: Purge impact screen crc hack for Burnout Revenge.
+
+-------------------------------------------------------------------
+Wed Oct 09 20:57:23 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20191008:
+  * Onepad: Update to latest controller database.
+  * spu2-x: Fix crash with an invalid output module. (#3125)
+  * cmake: Change FreeBSD wx-config path
+  * pcsx2|utilities: Remove ambiguous wxString-related overloads
+  * utilities: Split thread internal callback function
+  * GameDB: Asobo VU Rounding mode fixes (#3129)
+
+-------------------------------------------------------------------
+Sat Oct 05 10:53:35 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20191005:
+  * GameDB: Fahrenheit asylum crashing fixes. (#3109)
+  * gsdx-ogl: Hit unsafe instead of safe path for sw fbmask when there is no alpha blending. (#3100)
+
+-------------------------------------------------------------------
+Thu Oct 03 12:06:19 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190930:
+  * gsdx_legacy: Silence very verbose clang warnings. (#3126)
+  * Set F4's AlsoApplyToGui to false to avoid a hang when spammed.
+  * common: Fix build error with clang 9. (#3123)
+
+-------------------------------------------------------------------
+Sun Sep 29 17:31:59 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190929:
+  * pcsx2: Partially fix IPU PACK command
+
+-------------------------------------------------------------------
+Mon Sep 23 20:48:59 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20190922:
+  * Onepad: Update to latest controller database.
+  * cmake: Fix build with cmake-3.5.2. (#3117)
+  * cdvdgigaherz: Prevent potential infinite loop on ini read
+  * pcsx2: Fix parsing error in pointer patch command (#3112)
+  * gsdx-gui: Fix FXAA Shader checkbox not working properly.
+  * Gamedb: Remove Dakar 2 gamefix patches.
+  * GSdx-d3d11: Make TFX shader more similar to OGL's.
+  * GSdx-d3d11: Reorganize TFX shader to match OGL's.
+
+-------------------------------------------------------------------
 Sat Sep 21 14:12:37 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
 
 - Use "ExclusiveArch: i586" to disable x86_64 build

@@ -1101,4 +1101,14 @@
   * Don't display empty discs (glgo#World/lollypop#2099).</comment>
     <requestid>744774</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>30e4a5444a39396576413b8f07bad70b</srcmd5>
+    <version>1.2.5</version>
+    <time>1572884137</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.5:
+  * Fix a crash when selecting a song from a playlist
+    (glgo#World/lollypop#2106).</comment>
+    <requestid>745033</requestid>
+  </revision>
 </revisionlist>

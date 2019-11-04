@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  1 09:31:46 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Generate tarball using source services
+- Take the LICENSE file from the git repository and LICENSE-2.0
+  from Apache
+
+-------------------------------------------------------------------
 Wed Oct  2 20:34:06 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Avoid version ranges for dependencies

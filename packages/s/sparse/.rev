@@ -360,4 +360,20 @@ Spec file licenses are written in SPDX compatible format. Where there is no shor
   * and more...</comment>
     <requestid>736791</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>d95c9a75a5606810e66b136238676f1d</srcmd5>
+    <version>0.6.1+20191101</version>
+    <time>1572884167</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.1+20191101:
+  * .gitignore: alphasort the patterns
+  * Add '__' prefix and suffix to all __attribute__ #defines
+  * options: add support for -mcmodel
+  * options: add support for -fpic, -fPIC, -fpie &amp; -fPIE
+  * Sparse v0.6.1
+  * doc: fix typo in binops' description
+  * &quot;graph&quot; segfaults on top-level asm
+  * llvm: fix sparsec breakage on recent cygwin version</comment>
+    <requestid>745101</requestid>
+  </revision>
 </revisionlist>

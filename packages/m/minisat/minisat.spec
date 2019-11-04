@@ -1,7 +1,7 @@
 #
 # spec file for package minisat
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           minisat
 Url:            http://minisat.se/MiniSat.html
-Version:        2.2.0+20130925
+Version:        2.2.1+20180702
 Release:        0
 Summary:        SAT solver
 License:        MIT
 Group:          Development/Tools/Other
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         Makefile_lib_rule.patch
-Patch1:         friend-declaration.patch
+Patch0:         0001-CMakeLists-support-different-lib-dirs.patch
+Patch1:         0001-CMakeLists-make-static-lib-optional.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  ninja
 BuildRequires:  zlib-devel
 
 %description
@@ -62,27 +64,15 @@ Requires:       zlib-devel
 Headers and libraries for the minisat package.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
-export CXXFLAGS="%optflags"
-make %{?_smp_mflags} sh lsh \
-	MINISAT_REL="-D NDEBUG" \
-	VERB=
+%define __builder ninja
+%cmake -DSTATIC_BINARIES=OFF
+%make_jobs
 
 %install
-make DESTDIR=%{buildroot} prefix=%{_prefix} install-headers
-
-# lib
-install -d %{buildroot}/%{_libdir}
-# links
-cp -dp build/dynamic/lib/libminisat.so* %{buildroot}/%{_libdir}/
-
-# binaries
-install -d %{buildroot}/%{_bindir}
-install -m 0755 build/dynamic/bin/%{name} %{buildroot}/%{_bindir}/%{name}
+%cmake_install
 
 %post   -n libminisat2 -p /sbin/ldconfig
 %postun -n libminisat2 -p /sbin/ldconfig
@@ -91,6 +81,7 @@ install -m 0755 build/dynamic/bin/%{name} %{buildroot}/%{_bindir}/%{name}
 %defattr(-,root,root)
 %doc LICENSE README
 %{_bindir}/%{name}
+%{_bindir}/%{name}_core
 
 %files -n libminisat2
 %defattr(-,root,root)

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Nov  3 11:18:28 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Manual optimizations in spec-file: add %make_build macro.
+
+-------------------------------------------------------------------
 Thu Apr 25 09:37:12 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Add config /etc/alsa/conf.d/99-equal.conf (boo#1133432)

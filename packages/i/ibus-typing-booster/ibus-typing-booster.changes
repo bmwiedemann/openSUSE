@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Oct 31 09:55:51 UTC 2019 - maiku.fabian@gmail.com
+
+- Update to 2.7.1
+- Update Chinese (Simplified) translations from Weblate (13.5% translated)
+- Update Spanish translations from Weblate (92.2% translated)
+- Update Catalan translations from Weblate (12.4% translated)
+- Add Hebrew translation from Weblate (67.4% translated)
+- Add Arabic translation from Weblate (28.0% translated)
+- Update Ukrainian translations from Weblate (100.0% translated)
+- Update German translations from Weblate (100.0% translated)
+- Update Japanese translations from Weblate (35.2% translated)
+- Update French translations from Weblate (93.8% translated)
+- Add Hungarian translation from Weblate (58.0% translated)
+- Add Odia translations from Weblate (2.6% translated)
+- Improve compose file parsing to get results containing \" correct
+- More test cases for compose sequences
+- Change README.md to refer to Weblate for translations instead of Zanata
+- Fix display of code points in emoji-picker when running in or_IN.UTF-8 locale
+
+-------------------------------------------------------------------
 Fri Oct 18 12:49:48 UTC 2019 - maiku.fabian@gmail.com
 
 - Update to 2.7.0

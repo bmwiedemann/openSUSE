@@ -60,4 +60,33 @@
 </comment>
     <requestid>673295</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>116c3edc96e5c798ceb9a9b690a5b486</srcmd5>
+    <version>20191028+git773e0c19</version>
+    <time>1572884170</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20191028:
+  * rosenberg: initialization and struct assignments don't fill holes
+  * rosenberg: add snd_timer_append_to_tqueue() and __send_signal()
+  * rosenberg: add skb_put() to the list of copy functions
+  * extra: it's not a dereference if we're just getting the address
+  * helper: improve getting_address()
+  * parse_call_math: don't return constant allocation sizes
+  * extra: limit get_other_name_sym_helper() some more
+  * hooks: add EXPR_HOOK_AFTER
+  * Makefile: rebuild smatch_*.o files when smatch.h changes
+  * Makefile: build quietly again
+  * Makefile: organize the smatch_*.o objects better
+  * Makefile: allow CC to be a shell variable
+  * function_ptr: save pointers to pointers
+  * function_ptrs: save function return assignments
+  * ranges: silence Smatch warning (uninitialized variable)
+  * db: fix an off by one bug
+  * check_deref/deref_check: warn about likely/unlikely() conditions as well
+  * readl_infinite_loops: silence a GCC warning by adding a cast
+  * integer_overflow: fix uninitialized variable bug
+  * ranges: add casts to silence compile warnings
+  * and many more...</comment>
+    <requestid>745111</requestid>
+  </revision>
 </revisionlist>

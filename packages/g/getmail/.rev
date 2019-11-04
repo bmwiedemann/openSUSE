@@ -269,4 +269,12 @@ update to 4.22.2: fix an error when logging a bad response to an IMAP SELECT com
     <comment></comment>
     <requestid>681637</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>4f73a8c6d5983e43dd822d6e84eb1529</srcmd5>
+    <version>5.14</version>
+    <time>1572884133</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>745026</requestid>
+  </revision>
 </revisionlist>

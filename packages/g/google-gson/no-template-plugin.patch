@@ -1,0 +1,46 @@
+--- gson-gson-parent-2.8.5/gson/src/main/java/com/google/gson/Gson.java	2018-11-21 09:00:13.754469522 +0100
++++ gson-gson-parent-2.8.5/gson/src/main/java/com/google/gson/Gson.java	2018-11-21 09:02:58.267295026 +0100
+@@ -37,7 +37,6 @@
+ 
+ import com.google.gson.internal.ConstructorConstructor;
+ import com.google.gson.internal.Excluder;
+-import com.google.gson.internal.GsonBuildConfig;
+ import com.google.gson.internal.Primitives;
+ import com.google.gson.internal.Streams;
+ import com.google.gson.internal.bind.ArrayTypeAdapter;
+@@ -462,7 +461,7 @@
+           return candidate;
+         }
+       }
+-      throw new IllegalArgumentException("GSON (" + GsonBuildConfig.VERSION + ") cannot handle " + type);
++      throw new IllegalArgumentException("GSON cannot handle " + type);
+     } finally {
+       threadCalls.remove(type);
+ 
+@@ -704,8 +703,6 @@
+       ((TypeAdapter<Object>) adapter).write(writer, src);
+     } catch (IOException e) {
+       throw new JsonIOException(e);
+-    } catch (AssertionError e) {
+-      throw new AssertionError("AssertionError (GSON " + GsonBuildConfig.VERSION + "): " + e.getMessage(), e);
+     } finally {
+       writer.setLenient(oldLenient);
+       writer.setHtmlSafe(oldHtmlSafe);
+@@ -782,8 +779,6 @@
+       Streams.write(jsonElement, writer);
+     } catch (IOException e) {
+       throw new JsonIOException(e);
+-    } catch (AssertionError e) {
+-      throw new AssertionError("AssertionError (GSON " + GsonBuildConfig.VERSION + "): " + e.getMessage(), e);
+     } finally {
+       writer.setLenient(oldLenient);
+       writer.setHtmlSafe(oldHtmlSafe);
+@@ -940,8 +935,6 @@
+     } catch (IOException e) {
+       // TODO(inder): Figure out whether it is indeed right to rethrow this as JsonSyntaxException
+       throw new JsonSyntaxException(e);
+-    } catch (AssertionError e) {
+-      throw new AssertionError("AssertionError (GSON " + GsonBuildConfig.VERSION + "): " + e.getMessage(), e);
+     } finally {
+       reader.setLenient(oldLenient);
+     }

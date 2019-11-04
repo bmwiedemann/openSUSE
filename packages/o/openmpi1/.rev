@@ -7,4 +7,12 @@
     <comment>Add openmpi1 (to replace openmpi)</comment>
     <requestid>736811</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8d468001115844b2df27e5ac5e4ed798</srcmd5>
+    <version>1.10.7</version>
+    <time>1572884155</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>745092</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package arpack-ng
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,10 +20,12 @@
 %define plibname libparpack2
 %define major 	3
 %define minor 	0
+%define ompi_ver openmpi2
+
 %if 0%{?sles_version}
-%define _mpi openmpi mvapich2
+%define _mpi %ompi_ver mvapich2
 %else
-%define _mpi openmpi
+%define _mpi %ompi_ver
 %endif
 Name:           arpack-ng
 Version:        3.5.0
@@ -34,12 +36,12 @@ Group:          System/Libraries
 Url:            https://github.com/opencollab/arpack-ng
 Source0:        https://github.com/opencollab/arpack-ng/archive/%{version}.tar.gz
 Source1:        baselibs.conf
+BuildRequires:  %{ompi_ver}-devel
 BuildRequires:  autoconf
 BuildRequires:  blas-devel
 BuildRequires:  gcc-fortran
 BuildRequires:  lapack-devel
 BuildRequires:  libtool
-BuildRequires:  openmpi-devel
 BuildRequires:  pkg-config
 Obsoletes:      arpack < %{version}
 Provides:       arpack = %{version}
@@ -109,6 +111,7 @@ Summary:        Files needed for developing arpack based applications
 Group:          System/Libraries
 Provides:       %{plibname}_%{major}_%{minor} = %{version}
 Obsoletes:      %{plibname}_%{major}_%{minor} < %{version}
+Requires:       %{ompi_ver}-libs
 
 %description -n %{plibname}-openmpi
 ARPACK is a collection of Fortran77 subroutines designed to solve
@@ -120,6 +123,7 @@ library links used for building arpack based applications.
 Summary:        Development files for %{name}
 Group:          Development/Libraries/Parallel
 Requires:       %{plibname}-mvapich2 = %{version}
+Requires:       mvapich2
 
 %description     -n parpack-mvapich2
 ARPACK is a collection of Fortran77 subroutines designed to solve
@@ -257,18 +261,18 @@ done
 
 %files -n parpack-openmpi
 %defattr(-,root,root,-)
-%{_libdir}/mpi/gcc/openmpi/bin/p??drv?
+%{_libdir}/mpi/gcc/%{ompi_ver}/bin/p??drv?
 
 %files -n %{plibname}-openmpi
 %defattr(-,root,root,-)
-%{_libdir}/mpi/gcc/openmpi/%{_lib}/lib*arpack.so.*
+%{_libdir}/mpi/gcc/%{ompi_ver}/%{_lib}/lib*arpack.so.*
 
 %files -n parpack-openmpi-devel
 %defattr(-,root,root,-)
-%{_libdir}/mpi/gcc/openmpi/%{_lib}/libparpack.so
-%{_libdir}/mpi/gcc/openmpi/%{_lib}/libparpack.la
-%dir %{_libdir}/mpi/gcc/openmpi/%{_lib}/pkgconfig
-%{_libdir}/mpi/gcc/openmpi/%{_lib}/pkgconfig/*.pc
+%{_libdir}/mpi/gcc/%{ompi_ver}/%{_lib}/libparpack.so
+%{_libdir}/mpi/gcc/%{ompi_ver}/%{_lib}/libparpack.la
+%dir %{_libdir}/mpi/gcc/%{ompi_ver}/%{_lib}/pkgconfig
+%{_libdir}/mpi/gcc/%{ompi_ver}/%{_lib}/pkgconfig/*.pc
 
 %if 0%{?sles_version}
 %files -n parpack-mvapich2
@@ -283,7 +287,7 @@ done
 %defattr(-,root,root,-)
 %{_libdir}/mpi/gcc/mvapich2/%{_lib}/libparpack.so
 %{_libdir}/mpi/gcc/mvapich2/%{_lib}/libparpack.la
-%dir %{_libdir}/mpi/gcc/openmpi/%{_lib}/pkgconfig
+%dir %{_libdir}/mpi/gcc/%{ompi_ver}/%{_lib}/pkgconfig
 %{_libdir}/mpi/gcc/mvapich2/%{_lib}/pkgconfig/*.pc
 %endif
 

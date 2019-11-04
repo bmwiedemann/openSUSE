@@ -1,0 +1,126 @@
+From bd202a98e44947aaed2345278955a86ca8f42f8c Mon Sep 17 00:00:00 2001
+From: Felix Yan <felixonmars@archlinux.org>
+Date: Tue, 6 Jun 2017 19:16:36 +0800
+Subject: [PATCH] Allow to build with shared brotli
+
+It would be nice to allow building with shared brotli since we have one
+in the repositories. This commit would not break the default
+installation.
+---
+ .travis.yml         |  8 +++++-
+ setup.py            | 67 ++++++++++++++++++++++++---------------------
+ src/brotli/build.py |  8 +++++-
+ 3 files changed, 50 insertions(+), 33 deletions(-)
+
+Index: brotlipy-0.7.0/setup.py
+===================================================================
+--- brotlipy-0.7.0.orig/setup.py
++++ brotlipy-0.7.0/setup.py
+@@ -1,41 +1,15 @@
+ #!/usr/bin/env python
++import os
+ from setuptools import find_packages, setup
+ 
+ long_description = (
+     open("README.rst").read() + '\n\n' + open("HISTORY.rst").read()
+ )
+ 
+-
+-setup(
+-    name="brotlipy",
+-    version="0.7.0",
+-
+-    description="Python binding to the Brotli library",
+-    long_description=long_description,
+-    url="https://github.com/python-hyper/brotlipy/",
+-    license="MIT",
+-
+-    author="Cory Benfield",
+-    author_email="cory@lukasa.co.uk",
+-
+-    setup_requires=[
+-        "cffi>=1.0.0",
+-    ],
+-    install_requires=[
+-        "cffi>=1.0.0",
+-    ],
+-    extras_require={
+-        ':python_version == "2.7" or python_version == "3.3"': ['enum34>=1.0.4, <2'],
+-    },
+-
+-    cffi_modules=["src/brotli/build.py:ffi"],
+-
+-    packages=find_packages('src'),
+-    package_dir={'': 'src'},
+-
+-    ext_package="brotli",
+-
+-    libraries=[
++libraries = []
++USE_SHARED_BROTLI = os.environ.get("USE_SHARED_BROTLI")
++if USE_SHARED_BROTLI != "1":
++    libraries = [
+         ("libbrotli", {
+             "include_dirs": [
+                 "libbrotli/include",
+@@ -67,7 +41,38 @@ setup(
+                 'libbrotli/enc/entropy_encode.c'
+             ]
+         }),
++    ]
++
++setup(
++    name="brotlipy",
++    version="0.7.0",
++
++    description="Python binding to the Brotli library",
++    long_description=long_description,
++    url="https://github.com/python-hyper/brotlipy/",
++    license="MIT",
++
++    author="Cory Benfield",
++    author_email="cory@lukasa.co.uk",
++
++    setup_requires=[
++        "cffi>=1.0.0",
+     ],
++    install_requires=[
++        "cffi>=1.0.0",
++    ],
++    extras_require={
++        ':python_version == "2.7" or python_version == "3.3"': ['enum34>=1.0.4, <2'],
++    },
++
++    cffi_modules=["src/brotli/build.py:ffi"],
++
++    packages=find_packages('src'),
++    package_dir={'': 'src'},
++
++    ext_package="brotli",
++
++    libraries=libraries,
+ 
+     zip_safe=False,
+ 
+Index: brotlipy-0.7.0/src/brotli/build.py
+===================================================================
+--- brotlipy-0.7.0.orig/src/brotli/build.py
++++ brotlipy-0.7.0/src/brotli/build.py
+@@ -1,10 +1,16 @@
+ # -*- coding: utf-8 -*-
++import os
+ import sys
+ 
+ from cffi import FFI
+ ffi = FFI()
+ 
+-libraries = ['libbrotli']
++USE_SHARED_BROTLI = os.environ.get("USE_SHARED_BROTLI")
++if USE_SHARED_BROTLI != "1":
++    libraries = ['libbrotli']
++else:
++    libraries = ['brotlienc', 'brotlidec']
++
+ if 'win32' not in str(sys.platform).lower():
+     libraries.append('stdc++')
+ 

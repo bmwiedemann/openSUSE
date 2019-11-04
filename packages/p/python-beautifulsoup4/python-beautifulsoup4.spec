@@ -18,15 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-beautifulsoup4
-Version:        4.8.0
+Version:        4.8.1
 Release:        0
 Summary:        HTML/XML Parser for Quick-Turnaround Applications Like Screen-Scraping
 License:        MIT
-Group:          Development/Libraries/Python
 URL:            https://www.crummy.com/software/BeautifulSoup/
 Source:         https://files.pythonhosted.org/packages/source/b/beautifulsoup4/beautifulsoup4-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM speilicke@suse.com -- Backport of https://code.launchpad.net/~saschpe/beautifulsoup/beautifulsoup/+merge/200849
-Patch0:         beautifulsoup4-lxml-fixes.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module soupsieve}
@@ -68,7 +65,6 @@ Beautiful Soup.
 
 %package -n python-beautifulsoup4-doc
 Summary:        Documentation for %{name}
-Group:          Development/Libraries/Python
 Recommends:     %{name} = %{version}
 Obsoletes:      python2-beautifulsoup4-doc
 Obsoletes:      python3-beautifulsoup4-doc
@@ -78,7 +74,6 @@ Documentation and help files for %{name}
 
 %prep
 %setup -q -n beautifulsoup4-%{version}
-%patch0 -p1
 
 %build
 %python_build
@@ -86,12 +81,12 @@ pushd doc && make html && rm build/html/.buildinfo build/html/objects.inv &&  po
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
 export PYTHONDONTWRITEBYTECODE=1
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} %{buildroot}%{$python_sitelib}/bs4/tests
+%pytest %{buildroot}%{$python_sitelib}/bs4/tests
 
 %files %{python_files}
 %license COPYING.txt

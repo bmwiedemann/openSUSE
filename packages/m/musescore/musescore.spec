@@ -56,6 +56,8 @@ BuildRequires:  portaudio-devel
 BuildRequires:  portmidi-devel
 BuildRequires:  update-desktop-files
 Requires:       %{name}-fonts = %{version}-%{release}
+Requires:       libqt5-qtgraphicaleffects
+Requires:       libqt5-qtquickcontrols2
 
 %description
 MuseScore is a graphical music typesetter. It allows for note entry on a

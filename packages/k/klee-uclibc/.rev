@@ -109,4 +109,12 @@
   * Fix compilation when __STDIO_HAS_OPENLIST is undefined</comment>
     <requestid>734973</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>294f77d7582a8ebf7c26b88019e7e383</srcmd5>
+    <version>1.0.0+git.20190816</version>
+    <time>1572884146</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to llvm 9</comment>
+    <requestid>745087</requestid>
+  </revision>
 </revisionlist>

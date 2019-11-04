@@ -1,0 +1,15 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/javaee/javaee-jsp-api</param>
+		<param name="revision">javax.servlet.jsp-api-2.3.3</param>
+		<param name="versionformat">2.3.3</param>
+		<param name="subdir">api</param>
+		<param name="filename">javax.servlet.jsp-api</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

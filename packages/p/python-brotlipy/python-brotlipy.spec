@@ -28,13 +28,15 @@ Source0:        https://pypi.io/packages/source/b/brotlipy/brotlipy-%{version}.t
 # Copy of https://github.com/google/brotli/tree/46c1a881b41bb638c76247558aa04b1591af3aa7/tests/testdata
 Source1:        testdata.tgz
 Source2:        https://raw.githubusercontent.com/python-hyper/brotlipy/master/test/conftest.py
+Patch0:         merged_pr_94.patch
+Patch1:         pr_154-brotli-v1.patch
 BuildRequires:  %{python_module cffi >= 1.0.0}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+BuildRequires:  libbrotli-devel
 BuildRequires:  python-enum34
 BuildRequires:  python-rpm-macros
 Requires:       python-cffi >= 1.0.0
@@ -51,7 +53,11 @@ directly from Python code.
 
 %prep
 %setup -q -n brotlipy-%{version}
-mv libbrotli/LICENSE LICENSE.libbrotli
+%autopatch -p1
+# Remove unnecessary dependency on stdc++
+# See https://github.com/python-hyper/brotlipy/pull/151
+sed -i 's/libraries.append.*stdc++.*$/pass/' src/brotli/build.py
+
 cp %{SOURCE2} test/
 cd libbrotli
 mkdir -p tests
@@ -60,21 +66,23 @@ tar -xzf %{SOURCE1}
 
 %build
 export CFLAGS="%{optflags}"
-export CXXFLAGS="%{optflags}"
+export USE_SHARED_BROTLI=1
 %python_build
 
 %install
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
+%{python_expand rm -f %{buildroot}%{$python_sitearch}/brotli/build.py* %{buildroot}%{$python_sitearch}/brotli/__pycache__/build.*
+%fdupes %{buildroot}%{$python_sitearch}
+}
 
 %check
 # the skipped tests are benchmarks which can be flaky in OBS
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m pytest -k 'not (test_streaming_compression or test_streaming_compression_flush)'
 
 %files %{python_files}
-%license LICENSE LICENSE.libbrotli
+%license LICENSE
 %doc README.rst
 %{python_sitearch}/brotli
-%{python_sitearch}/brotlipy-%{version}-py%{py_ver}.egg-info
+%{python_sitearch}/brotlipy-%{version}-py*.egg-info
 
 %changelog

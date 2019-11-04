@@ -31,4 +31,12 @@
     <comment>- Skip failing tests in OBS due to the speed of CPUs there</comment>
     <requestid>687646</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>2ac56a6012d5293b7c1f2e6e98ad18f0</srcmd5>
+    <version>0.7.0</version>
+    <time>1572884072</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>744883</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Nov 04 06:50:43 UTC 2019 - jslaby@suse.com
+
+- switch to llvm 9
+- Update to version 2.0+20191031:
+  * Executor: fix missing default case in switch instruction
+  * enable testing for LLVM 9.0
+  * LLVM 9.0: fourth parameter for @llvm.objectsize()
+  * klee-libc: add bcmp
+  * support compilation against LLVM 9.0
+  * [klee-replay] Fix relative executable paths
+  * ExecutorTimers: refactor and move to support lib
+  * ExecutorTimers: remove signalling, fix endless looping fork
+  * Executor.h: remove defined functions without implementation
+  * test/Expr/Evaluate2.kquery: add link to issue
+  * fix: make llvm 7.1 known
+  * test/Feature/SolverTimeout.c: re-enable for Z3
+  * test/lit.cfg: test if current version is known
+  * test/lit.cfg: use lit_config instead of lit
+  * Do not use klee_range() in regression/2014-09-13-debug-info.c test, as it is incompatible with klee_prefer_cex. Fixes https://github.com/klee/klee/issues/1161
+
+-------------------------------------------------------------------
 Fri Oct 04 10:39:23 UTC 2019 - jslaby@suse.com
 
 - Update to version 2.0+20190920:

@@ -1,7 +1,7 @@
 #
 # spec file for package lua-luasec
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,31 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define flavor @BUILD_FLAVOR@
-%define mod_name luasec
-Version:        0.6
+%define modname luasec
+Version:        0.9
 Release:        0
 Summary:        A Lua binding for OpenSSL
 License:        MIT
-Group:          Productivity/Networking/Other
-Url:            https://github.com/brunoos/luasec
-Source:         https://github.com/brunoos/luasec/archive/%{mod_name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM build with openssl 1.1.0 (taken from Fedora)
-Patch0:         lua-sec-0.6-openssl_110.patch
+URL:            https://github.com/brunoos/luasec
+Source:         https://github.com/brunoos/%{modname}/archive/v%{version}/%{modname}-%{version}.tar.gz
 BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-luasocket
 BuildRequires:  libopenssl-devel
 Requires:       %{flavor}
 Requires:       %{flavor}-luasocket
 %if "%{flavor}" == ""
-Name:           lua-%{mod_name}
+Name:           lua-%{modname}
 ExclusiveArch:  do_not_build
 %else
-Name:           %{flavor}-%{mod_name}
+Name:           %{flavor}-%{modname}
 %endif
 
 %description
@@ -45,8 +42,7 @@ It takes an already established TCP connection and creates a secure
 session between the peers.
 
 %prep
-%setup -q -n luasec-luasec-%{version}
-%patch0 -p1
+%setup -q -n %{modname}-%{version}
 
 %build
 make %{?_smp_mflags} linux \
@@ -56,7 +52,8 @@ make %{?_smp_mflags} linux \
 %make_install LUAPATH=%{lua_noarchdir} LUACPATH=%{lua_archdir}
 
 %files
-%doc CHANGELOG LICENSE README.md
+%license LICENSE
+%doc CHANGELOG README.md
 %{lua_archdir}/ssl.so
 %{lua_noarchdir}/ssl.lua
 %{lua_noarchdir}/ssl/

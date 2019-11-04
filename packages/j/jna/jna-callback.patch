@@ -1,0 +1,74 @@
+--- jna-5.4.0/native/testlib.c	2019-07-19 21:22:03.000000000 +0200
++++ jna-5.4.0/native/testlib.c	2019-10-10 18:45:58.780052342 +0200
+@@ -804,8 +804,8 @@
+ }
+ 
+ EXPORT callback_t
+-callCallbackWithCallback(cb_callback_t cb) {
+-  return (*cb)((callback_t)(void*)cb);
++callCallbackWithCallback(cb_callback_t cb, callback_t arg) {
++  return (*cb)(arg);
+ }
+ 
+ static int32_t 
+--- jna-5.4.0/test/com/sun/jna/CallbacksTest.java	2019-07-19 21:22:03.000000000 +0200
++++ jna-5.4.0/test/com/sun/jna/CallbacksTest.java	2019-10-10 18:43:51.679371223 +0200
+@@ -194,9 +194,9 @@
+         int callCallbackWithByReferenceArgument(CopyArgToByReference cb, int arg, IntByReference result);
+         TestStructure.ByValue callCallbackWithStructByValue(TestStructure.TestCallback callback, TestStructure.ByValue cbstruct);
+         interface CbCallback extends Callback {
+-            CbCallback callback(CbCallback arg);
++            Callback callback(Callback arg);
+         }
+-        CbCallback callCallbackWithCallback(CbCallback cb);
++        Callback callCallbackWithCallback(CbCallback cb, Callback arg);
+ 
+         interface Int32CallbackX extends Callback {
+             public int callback(int arg);
+@@ -843,7 +843,7 @@
+                 return arg;
+             }
+         };
+-        TestLibrary.CbCallback cb2 = lib.callCallbackWithCallback(cb);
++        TestLibrary.Callback cb2 = lib.callCallbackWithCallback(cb, cb);
+         assertEquals("Callback reference should be reused", cb, cb2);
+     }
+ 
+@@ -859,7 +859,7 @@
+                     throw ERROR;
+                 }
+             };
+-            TestLibrary.CbCallback cb2 = lib.callCallbackWithCallback(cb);
++            TestLibrary.Callback cb2 = lib.callCallbackWithCallback(cb, cb);
+             String output = s.toString();
+             assertTrue("Default handler not called", output.length() > 0);
+         }
+@@ -890,7 +890,7 @@
+                     throw ERROR;
+                 }
+             };
+-            TestLibrary.CbCallback cb2 = lib.callCallbackWithCallback(cb);
++            TestLibrary.Callback cb2 = lib.callCallbackWithCallback(cb, cb);
+             assertNotNull("Exception handler not called", CALLBACK[0]);
+             assertEquals("Wrong callback argument to handler", cb, CALLBACK[0]);
+             assertEquals("Wrong exception passed to handler",
+@@ -935,7 +935,7 @@
+                 }
+             };
+             TestLibrary.CbCallback cb = new TestProxy();
+-            TestLibrary.CbCallback cb2 = lib.callCallbackWithCallback(cb);
++            TestLibrary.CbCallback cb2 = lib.callCallbackWithCallback(cb, cb);
+             assertNotNull("Exception handler not called", CALLBACK[0]);
+             assertEquals("Wrong callback argument to handler", cb, CALLBACK[0]);
+             assertEquals("Wrong exception passed to handler",
+--- jna-5.4.0/test/com/sun/jna/DirectCallbacksTest.java	2019-07-19 21:22:03.000000000 +0200
++++ jna-5.4.0/test/com/sun/jna/DirectCallbacksTest.java	2019-10-10 18:43:51.675371201 +0200
+@@ -65,7 +65,7 @@
+         @Override
+         public native TestStructure.ByValue callCallbackWithStructByValue(TestStructure.TestCallback callback, TestStructure.ByValue cbstruct);
+         @Override
+-        public native CbCallback callCallbackWithCallback(CbCallback cb);
++        public native Callback callCallbackWithCallback(CbCallback cb, Callback arg);
+         @Override
+         public native Int32CallbackX returnCallback();
+         @Override

@@ -1,7 +1,7 @@
 #
 # spec file for package smatch
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           smatch
-Version:        20181114
+Version:        20191028+git773e0c19
 Release:        0
 Summary:        Static analysis tool for C
 License:        GPL-2.0-only
@@ -39,19 +39,20 @@ kernel. Please write checks for your project. It's fun and easy!
 %setup -q
 
 %build
-make %{?_smp_mflags} CFLAGS="%{optflags}" INSTALL_PREFIX=%{_prefix} LIBDIR=%{_libdir} \
-	PKGCONFIGDIR=%{_datadir}/pkgconfig
+make %{?_smp_mflags} V=1 CFLAGS="%{optflags}" \
+	INSTALL_PREFIX=%{_prefix} \
+	LIBDIR=%{_libdir} \
+	PKGCONFIGDIR=%{_datadir}/pkgconfig \
+	smatch
 
 %install
-%{makeinstall} INSTALL_PREFIX=%{_prefix} LIBDIR=%{_libdir} \
-	PKGCONFIGDIR=%{_datadir}/pkgconfig
+install -d %{buildroot}/%{_bindir} %{buildroot}/%{_datadir}/%{name}
+install -t %{buildroot}/%{_bindir} smatch
+cp -ar smatch_data smatch_scripts %{buildroot}/%{_datadir}/%{name}/
 
-# sparse stuff
-rm -rf %{buildroot}/%{_bindir}/cgcc
-rm -rf %{buildroot}/%{_includedir}/sparse
-rm -rf %{buildroot}/%{_libdir}/*a
-rm -rf %{buildroot}/%{_mandir}/man*/{sparse,cgcc}*
-rm -rf %{buildroot}/%{_datadir}/pkgconfig
+# empty files
+rm -f %{buildroot}/%{_datadir}/%{name}/smatch_data/db/fixup_smatch_generic.sh
+rm -f %{buildroot}/%{_datadir}/%{name}/smatch_data/kernel.allocation_funcs.remove
 
 %files
 %defattr(-,root,root)

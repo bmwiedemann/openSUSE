@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 27 12:00:00 UTC 2019 - cunix@mail.de
+
+- Update to 5.14
+  * Remove socket setblocking() calls which should be no longer
+    needed, and which may have caused hangup.
+  * Correct version number string in error message.
+
+-------------------------------------------------------------------
 Sun Feb 24 06:06:14 UTC 2019 - seanlew@opensuse.org
 
 - Version bump to 5.13

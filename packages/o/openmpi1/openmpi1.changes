@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 31 16:57:51 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Link against libnuma (bsc#1155120)
+
+-------------------------------------------------------------------
 Thu Oct 10 07:38:39 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Unify spec file with openmpi[23]

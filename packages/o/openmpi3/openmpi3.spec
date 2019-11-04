@@ -183,6 +183,7 @@ BuildRequires:  libfabric-devel
 %endif
 
 %ifarch x86_64
+BuildRequires:  libnuma-devel
 BuildRequires:  libpsm2-devel
 BuildRequires:  numactl
 %endif

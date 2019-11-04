@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov  1 14:19:32 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix file list from previous change: use /%{ompi_ver}/ as the
+  openmpi directory instead of the no longer existing /openmpi/.
+
+-------------------------------------------------------------------
+Thu Oct 10 07:01:12 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Replace openmpi(1) by newer openmpi2
+- Add explicit dependency to MPI library as multiple ones 
+  may provide the same symbols
+
+-------------------------------------------------------------------
 Sun Jul  9 12:06:49 UTC 2017 - badshah400@gmail.com
 
 - Update to version 3.5.0:

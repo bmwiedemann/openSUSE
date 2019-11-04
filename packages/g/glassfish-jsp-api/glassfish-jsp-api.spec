@@ -25,11 +25,9 @@ License:        (CDDL-1.1 OR GPL-2.0-only WITH Classpath-exception-2.0) AND Apac
 Group:          Development/Libraries/Java
 URL:            http://java.net/jira/browse/JSP
 Source0:        %{artifactId}-%{version}.tar.xz
-# Generate API tarball from a git tag
-Source1:        generate_tarball.sh
-Source2:        http://www.apache.org/licenses/LICENSE-2.0.txt
-Source3:        https://javaee.github.io/glassfish/LICENSE.html
-Source4:        %{name}-build.xml
+Source1:        https://raw.githubusercontent.com/javaee/javaee-jsp-api/%{artifactId}-%{version}/LICENSE
+Source2:        http://www.apache.org/licenses/LICENSE-2.0
+Source3:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  glassfish-el-api
@@ -55,9 +53,9 @@ BuildArch:      noarch
 %prep
 %setup -q -n %{artifactId}-%{version}
 
-cp -p %{SOURCE2} LICENSE-ASL-2.0.txt
-cp -p %{SOURCE3} LICENSE-CDDL+GPLv2.html
-cp -p %{SOURCE4} build.xml
+cp -p %{SOURCE1} .
+cp -p %{SOURCE2} .
+cp -p %{SOURCE3} build.xml
 
 # Submited upstream: http://java.net/jira/browse/JSP-31
 sed -i "/<bundle.symbolicName>/s/-api//" pom.xml
@@ -91,10 +89,10 @@ cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
-%license LICENSE-ASL-2.0.txt LICENSE-CDDL+GPLv2.html
+%license LICENSE LICENSE-2.0
 
 %files javadoc
-%license LICENSE-ASL-2.0.txt LICENSE-CDDL+GPLv2.html
+%license LICENSE LICENSE-2.0
 %{_javadocdir}/%{name}
 
 %changelog

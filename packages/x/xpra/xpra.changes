@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sun Nov  3 10:42:55 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.0.1
+  * fix clipboard synchronization failures with MS Windows
+    clients
+  * fix window cleanup errors preventing a clean exit
+  * fix launcher error if sharing flag is unset
+  * fix window states wrongly getting reset
+  * fix SSH password dialog lockups on MS Windows
+  * fix authentication module errors (multifile, python3)
+  * fix radio buttons on start server dialog (python3)
+  * fix error in encoding selection fallback (python3)
+  * fix logging error in cups printing backend (python3)
+  * fix null bytes in X11 error text (notifications errors)
+  * fix keyboard debug logging error
+  * fix error querying X11 properties under pure wayland client
+  * fix unresponsive appindicator system tray
+  * fix GDK window scaling setting wrongly propagated to the
+    server
+  * fix compilation on Ubuntu Eoan Ermine
+  * fix file download failures on MS Windows due to invalid
+    characters
+  * fix handling of file download errors
+  * fix Debian bin path warnings
+  * fix error handling in 'xpra top'
+  * fix pyobjc API compatibility in OpenGL transparency shim
+  * fix out of date PKG OS version requirements
+  * fix PKG compatibility with MacOS 10.15 Catalina
+  * fix window border color parsing failures causing errors
+  * fix OpenGL window paint errors with some drivers
+  * make it easier to launch test tools
+  * update Python to 3.7.5 on MacOS
+  * bump revision to override broken Fedora packaging
+  * show Python version in MacOS packages
+  * re-enable tooltips on MS Windows
+  * update to xxhash 0.7.2
+  * consistent use of quotes in endpoint logging
+
+- Spec cleanup
+
+-------------------------------------------------------------------
 Wed Oct  2 06:12:07 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.0

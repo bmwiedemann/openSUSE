@@ -3307,4 +3307,17 @@
 - updated staging to 4.18</comment>
     <requestid>741205</requestid>
   </revision>
+  <revision rev="289" vrev="1">
+    <srcmd5>ed69efa0a76c7dffdc09f1f3f14337b8</srcmd5>
+    <version>4.19</version>
+    <time>1572884124</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 4.19 development release
+  - A number of additional VBScript features.
+  - More stateblock support in WineD3D.
+  - Some fixes for ARM64 support.
+  - Various bug fixes.
+- updated staging to 4.19</comment>
+    <requestid>745022</requestid>
+  </revision>
 </revisionlist>

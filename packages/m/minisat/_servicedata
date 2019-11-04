@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">git://github.com/stp/minisat.git</param>
+              <param name="changesrevision">1aa1e871aad1fe2f80510b42e93f28d4fb1286a0</param></service></servicedata>

@@ -18,17 +18,17 @@
 
 
 Name:           enigmail
-Version:        2.1.2
+Version:        2.1.3
 Release:        0
 Summary:        OpenPGP addon for Mozilla Thunderbird
 License:        MPL-2.0
-Group:          Productivity/Networking/Email/Clients
 URL:            https://www.enigmail.net/
 # git clone git://git.code.sf.net/p/enigmail/source enigmail
 Source0:        https://www.enigmail.net/download/source/%{name}-%{version}.tar.gz
 Source1:        https://www.enigmail.net/download/source/%{name}-%{version}.tar.gz.asc
 # https://www.enigmail.net/documentation/pgp-key.php
 Source2:        enigmail.keyring
+BuildRequires:  fdupes
 BuildRequires:  perl >= 5
 BuildRequires:  python >= 2.7
 BuildRequires:  unzip
@@ -43,18 +43,16 @@ This package contains the Enigmail OpenPGP Addon for Mozilla Thunderbird.
 %setup -q -n enigmail
 
 %build
-# FIXME: you should use the %%configure macro
-./configure \
-	CFLAGS="%{optflags}"
-# parallel build not supported
-make # %{?_smp_mflags}
+%configure
+make %{?_smp_mflags}
 
 %install
 # Thunderbird location
 _enig_dir=%{buildroot}%{_libdir}/mozilla/extensions/\{3550f703-e582-4d05-9a08-453d09bdfdc6\}/\{847b3a00-7ab1-11d4-8f02-006008948af5\}
 mkdir -p $_enig_dir
-(cd $_enig_dir; unzip $RPM_BUILD_DIR/enigmail/build/enigmail-*.xpi)
+(cd $_enig_dir; unzip $RPM_BUILD_DIR/enigmail/build-tb/enigmail-*.xpi)
 #rm $_enig_dir/*.xpi
+%fdupes %{buildroot}
 
 mkdir -p %{buildroot}%{_datadir}/appdata/
 install -m644 public/thunderbird-enigmail.metainfo.xml %{buildroot}%{_datadir}/appdata/enigmail.appdata.xml

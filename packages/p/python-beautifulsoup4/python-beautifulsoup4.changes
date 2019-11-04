@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Nov  1 08:59:57 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.8.1:
+  * When the html.parser or html5lib parsers are in use, Beautiful Soup
+    will, by default, record the position in the original document where
+    each tag was encountered.
+  * Fixed the definition of the default XML namespace when using
+    lxml 4.4.
+  * Avoid a crash when unpickling certain parse trees generated
+    using html5lib on Python 3.
+  * Avoid a crash when trying to detect the declared encoding of a
+    Unicode document.
+- Drop patch beautifulsoup4-lxml-fixes.patch as it seems not needed
+
+-------------------------------------------------------------------
+Mon Oct 14 11:41:52 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Replace %fdupes -s with plain %fdupes; hardlinks are better.
+
+-------------------------------------------------------------------
 Mon Jul 22 16:18:23 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 4.8.0

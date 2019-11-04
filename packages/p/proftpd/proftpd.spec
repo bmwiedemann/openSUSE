@@ -45,6 +45,8 @@ Patch102:       %{name}-ftpasswd.patch
 Patch103:       %{name}-strip.patch
 #PATCH-FIX-openSUSE: file-contains-date-and-time
 Patch104:       %{name}-no_BuildDate.patch
+#PATCH-CVE-Backport: CVE-2019-12815 (bpo#4372)
+Patch106:       %{name}-CVE-2019-12815.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #BuildRequires:  gpg-offline
 BuildRequires:  fdupes
@@ -63,7 +65,6 @@ BuildRequires:  sqlite3-devel
 BuildRequires:  unixODBC-devel
 BuildRequires:  pkgconfig(libssl) < 1.1
 Requires:       logrotate
-
 %if 0%{?lang_package:1} > 0
 Recommends:     %{name}-lang
 %endif
@@ -74,6 +75,10 @@ BuildRequires:  systemd-rpm-macros
 %define has_systemd 1
 %else
 Requires(pre):  %insserv_prereq
+%endif
+%if 0%{?suse_version} >= 1330
+Requires(pre):  group(ftp)
+Requires(pre):  user(ftp)
 %endif
 
 %description
@@ -148,6 +153,7 @@ rm README.AIX
 %patch102
 %patch103
 %patch104
+%patch106
 
 %build
 rm contrib/mod_wrap.c

@@ -1,0 +1,163 @@
+commit b2c5c4a0216408a1f3c74246f2334ed35827a55d
+Author: John Vandenberg <jayvdb@gmail.com>
+Date:   Fri Nov 1 18:31:50 2019 +0700
+
+    Update brotli to v1.0.7
+    
+    Removes decommissioned custom dictionary functionality
+    which was removed from libbrotli.
+    
+    Closes https://github.com/python-hyper/brotlipy/issues/129
+
+diff --git a/src/brotli/brotli.py b/src/brotli/brotli.py
+index a9cfa39..cc08000 100644
+--- a/src/brotli/brotli.py
++++ b/src/brotli/brotli.py
+@@ -95,8 +95,7 @@ def compress(data,
+              mode=DEFAULT_MODE,
+              quality=lib.BROTLI_DEFAULT_QUALITY,
+              lgwin=lib.BROTLI_DEFAULT_WINDOW,
+-             lgblock=0,
+-             dictionary=b''):
++             lgblock=0):
+     """
+     Compress a string using Brotli.
+ 
+@@ -142,7 +141,6 @@ def compress(data,
+         quality=quality,
+         lgwin=lgwin,
+         lgblock=lgblock,
+-        dictionary=dictionary
+     )
+     compressed_data = compressor._compress(data, lib.BROTLI_OPERATION_FINISH)
+     assert lib.BrotliEncoderIsFinished(compressor._encoder) == lib.BROTLI_TRUE
+@@ -242,21 +240,13 @@ class Compressor(object):
+         range of this value is 16 to 24. If set to 0, the value will be set
+         based on ``quality``.
+     :type lgblock: ``int``
+-
+-    :param dictionary: A pre-set dictionary for LZ77. Please use this with
+-        caution: if a dictionary is used for compression, the same dictionary
+-        **must** be used for decompression!
+-    :type dictionary: ``bytes``
+     """
+-    _dictionary = None
+-    _dictionary_size = None
+ 
+     def __init__(self,
+                  mode=DEFAULT_MODE,
+                  quality=lib.BROTLI_DEFAULT_QUALITY,
+                  lgwin=lib.BROTLI_DEFAULT_WINDOW,
+-                 lgblock=0,
+-                 dictionary=b''):
++                 lgblock=0):
+         enc = lib.BrotliEncoderCreateInstance(
+             ffi.NULL, ffi.NULL, ffi.NULL
+         )
+@@ -271,13 +261,6 @@ class Compressor(object):
+         _set_parameter(enc, lib.BROTLI_PARAM_LGWIN, "lgwin", lgwin)
+         _set_parameter(enc, lib.BROTLI_PARAM_LGBLOCK, "lgblock", lgblock)
+ 
+-        if dictionary:
+-            self._dictionary = ffi.new("uint8_t []", dictionary)
+-            self._dictionary_size = len(dictionary)
+-            lib.BrotliEncoderSetCustomDictionary(
+-                enc, self._dictionary_size, self._dictionary
+-            )
+-
+         self._encoder = enc
+ 
+     def _compress(self, data, operation):
+@@ -358,31 +341,12 @@ class Decompressor(object):
+     """
+     An object that allows for streaming decompression of Brotli-compressed
+     data.
+-
+-    .. versionchanged:: 0.5.0
+-       Added ``dictionary`` parameter.
+-
+-    :param dictionary: A pre-set dictionary for LZ77. Please use this with
+-        caution: if a dictionary is used for compression, the same dictionary
+-        **must** be used for decompression!
+-    :type dictionary: ``bytes``
+     """
+-    _dictionary = None
+-    _dictionary_size = None
+ 
+-    def __init__(self, dictionary=b''):
++    def __init__(self):
+         dec = lib.BrotliDecoderCreateInstance(ffi.NULL, ffi.NULL, ffi.NULL)
+         self._decoder = ffi.gc(dec, lib.BrotliDecoderDestroyInstance)
+ 
+-        if dictionary:
+-            self._dictionary = ffi.new("uint8_t []", dictionary)
+-            self._dictionary_size = len(dictionary)
+-            lib.BrotliDecoderSetCustomDictionary(
+-                self._decoder,
+-                self._dictionary_size,
+-                self._dictionary
+-            )
+-
+     def decompress(self, data):
+         """
+         Decompress part of a complete Brotli-compressed string.
+diff --git a/src/brotli/build.py b/src/brotli/build.py
+index 0e1bb80..f93d312 100644
+--- a/src/brotli/build.py
++++ b/src/brotli/build.py
+@@ -93,20 +93,6 @@ ffi.cdef("""
+                                                       uint8_t** next_out,
+                                                       size_t* total_out);
+ 
+-    /* Fills the new state with a dictionary for LZ77, warming up the
+-       ringbuffer, e.g. for custom static dictionaries for data formats.
+-       Not to be confused with the built-in transformable dictionary of Brotli.
+-       |size| should be less or equal to 2^24 (16MiB), otherwise the dictionary
+-       will be ignored. The dictionary must exist in memory until decoding is
+-       done and is owned by the caller. To use:
+-        1) Allocate and initialize state with BrotliCreateInstance
+-        2) Use BrotliSetCustomDictionary
+-        3) Use BrotliDecompressStream
+-        4) Clean up and free state with BrotliDestroyState
+-    */
+-    void BrotliDecoderSetCustomDictionary(
+-        BrotliDecoderState* s, size_t size, const uint8_t* dict);
+-
+     /* Returns true, if decoder has some unconsumed output.
+        Otherwise returns false. */
+     BROTLI_BOOL BrotliDecoderHasMoreOutput(const BrotliDecoderState* s);
+@@ -205,15 +191,6 @@ ffi.cdef("""
+                                           BrotliEncoderParameter p,
+                                           uint32_t value);
+ 
+-    /* Fills the new state with a dictionary for LZ77, warming up the
+-       ringbuffer, e.g. for custom static dictionaries for data formats.
+-       Not to be confused with the built-in transformable dictionary of Brotli.
+-       To decode, use BrotliSetCustomDictionary() of the decoder with the same
+-       dictionary. */
+-    void BrotliEncoderSetCustomDictionary(BrotliEncoderState* state,
+-                                          size_t size,
+-                                          const uint8_t* dict);
+-
+     /* Check if encoder is in "finished" state, i.e. no more input is
+        acceptable and no more output will be produced.
+        Works only with BrotliEncoderCompressStream workflow.
+diff --git a/test/test_simple_compression.py b/test/test_simple_compression.py
+index b9921eb..e189f74 100644
+--- a/test/test_simple_compression.py
++++ b/test/test_simple_compression.py
+@@ -106,14 +106,6 @@ def test_compressed_data_roundtrips(s):
+     assert brotli.decompress(brotli.compress(s)) == s
+ 
+ 
+-@given(binary(), binary())
+-def test_compressed_data_with_dictionaries(s, dictionary):
+-    d = brotli.Decompressor(dictionary)
+-    compressed = brotli.compress(s, dictionary=dictionary)
+-    uncompressed = d.decompress(compressed)
+-    assert uncompressed == s
+-
+-
+ @pytest.mark.parametrize(
+     "params",
+     [

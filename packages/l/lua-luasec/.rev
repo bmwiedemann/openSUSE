@@ -15,4 +15,15 @@
     <comment>drop lua5.2 from multibuild</comment>
     <requestid>537631</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>905d8e7fe9860fd2d3027781a420db63</srcmd5>
+    <version>0.9</version>
+    <time>1572884181</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to luasec 0.9. Too many changes to enlist here,
+  CHANGELOG file is included in the package.
+- Patch lua-sec-0.6-openssl_110.patch has been removed as it is
+  fully included upstream.</comment>
+    <requestid>745186</requestid>
+  </revision>
 </revisionlist>

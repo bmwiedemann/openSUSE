@@ -1,7 +1,7 @@
 #
 # spec file for package pcsx2
 #
-# Copyright (c) 2018 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,15 +12,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.links2linux.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           pcsx2
-Version:        1.5.0~git20190911
+Version:        1.5.0~git20191027
 Release:        0
 Summary:        Sony PlayStation 2 Emulator
+License:        LGPL-3.0-only
 Group:          System/Emulators/Other
-License:        LGPL-3.0
 URL:            http://pcsx2.net/
 Source:         %{name}-%{version}.tar.xz
 
@@ -28,21 +29,21 @@ ExclusiveArch:  i586
 
 #Build Dependencies:
 BuildRequires:  cmake
-BuildRequires:  gcc-c++
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++
 
 #Misc
 BuildRequires:  libaio-devel
-BuildRequires:  pkgconfig(libxml-2.0) 
-BuildRequires:  pkgconfig(liblzma)
-BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(libpcap)
 BuildRequires:  libpcap-devel-static
+BuildRequires:  pkgconfig(liblzma)
+BuildRequires:  pkgconfig(libpcap)
+BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(libxml-2.0) 
 
 #Graphics
+BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(libpng16)
-BuildRequires:  pkgconfig(freetype2)
 
 #Display
 BuildRequires:  wxWidgets-3_0-devel
@@ -51,10 +52,9 @@ BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(x11)
 
 #Audio
+BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(soundtouch)
-BuildRequires:  pkgconfig(alsa)
-
 
 %description
 Sony PlayStation 2 emulator. Requires a BIOS image in %{_libdir}/%{name}/bios

@@ -20,7 +20,7 @@
 %define source_dir openSUSE-release-tools
 %define announcer_filename factory-package-news
 Name:           openSUSE-release-tools
-Version:        20191029.330f0b1b
+Version:        20191104.3d0d7312
 Release:        0
 Summary:        Tools to aid in staging and release work for openSUSE/SUSE
 License:        GPL-2.0-or-later AND MIT

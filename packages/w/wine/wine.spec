@@ -29,8 +29,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 4.18
-Version:        4.18
+%define realver 4.19
+Version:        4.19
 Release:        0
 
 %if "%{flavor}" != ""
@@ -147,7 +147,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc %arm aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 4.18
+%define staging_version 4.19
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel

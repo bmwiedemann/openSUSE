@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Nov  2 15:30:38 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 1.50.1
+  * Bug Fixes
+    - hash: Fix accidentally changed hash names for DropboxHash and CRC-32 (Nick Craig-Wood)
+    - fshttp: Fix error reporting on tpslimit token bucket errors (Nick Craig-Wood)
+    - fshttp: Don’t print token bucket errors on context cancelled (Nick Craig-Wood)
+  * Local
+    - Fix listings of . on Windows (Nick Craig-Wood)
+  * Onedrive
+    - Fix DirMove/Move after Onedrive change (Xiaoxing Ye)
+
+-------------------------------------------------------------------
 Sat Oct 26 16:11:50 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 1.50.0

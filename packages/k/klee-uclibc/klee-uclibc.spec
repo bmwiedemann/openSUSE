@@ -16,7 +16,7 @@
 #
 
 
-%define llvm_version 8
+%define llvm_version 9
 
 %define version_unconverted 1.0.0+git.20190816
 

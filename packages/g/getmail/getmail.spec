@@ -17,7 +17,7 @@
 
 
 Name:           getmail
-Version:        5.13
+Version:        5.14
 Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Url:            http://pyropus.ca/software/getmail/

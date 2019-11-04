@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov  1 20:40:38 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- updated to 4.19 development release
+  - A number of additional VBScript features.
+  - More stateblock support in WineD3D.
+  - Some fixes for ARM64 support.
+  - Various bug fixes.
+- updated staging to 4.19
+
+-------------------------------------------------------------------
 Sat Oct 19 06:37:25 UTC 2019 - Marcus Meissner <meissner@suse.com>
 
 - updated to 4.18 development release

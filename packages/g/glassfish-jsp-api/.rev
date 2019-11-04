@@ -15,4 +15,12 @@
     <comment>Avoid version ranges in maven dependencies</comment>
     <requestid>734748</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>36674bf0fbe81cd81eb37127a04d79e5</srcmd5>
+    <version>2.3.3</version>
+    <time>1572884105</time>
+    <user>dimstar_suse</user>
+    <comment>Use source services + LICENSE from the repository</comment>
+    <requestid>744772</requestid>
+  </revision>
 </revisionlist>

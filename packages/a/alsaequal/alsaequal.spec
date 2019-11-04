@@ -39,7 +39,7 @@ Alsaequal is a real-time adjustable equalizer plugin for ALSA
 %endif
 
 %build
-make %{?_smp_mflags} CFLAGS="%{optflags} -funroll-loops -ffast-math -fPIC -DPIC"
+%make_build
 
 %install
 install -d %{buildroot}%{_sysconfdir}/alsa/conf.d

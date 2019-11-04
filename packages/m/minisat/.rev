@@ -15,4 +15,22 @@
     <comment></comment>
     <requestid>719993</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4446b457d7e9744335279eaf83b16c7a</srcmd5>
+    <version>2.2.1+20180702</version>
+    <time>1572884178</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.1+20180702:
+  * fixed GCC 6.3 warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+  * Specify default argument in the declaration not the friend declaration
+  * Fix declaration of Minisat::memUsedPeak for non-Linux systems
+  * Remove illegal (and not neccesary) friend definition to fix compilation under clang.
+  * Fixing problems with compilation with C++11 compilers
+- switch to cmake
+  * add 0001-CMakeLists-support-different-lib-dirs.patch
+  * add 0001-CMakeLists-make-static-lib-optional.patch
+- remove friend-declaration.patch (in upstream now)
+- remove Makefile_lib_rule.patch (not needed -- cmake)</comment>
+    <requestid>745123</requestid>
+  </revision>
 </revisionlist>

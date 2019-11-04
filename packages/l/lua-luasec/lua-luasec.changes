@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov  3 16:48:48 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to luasec 0.9. Too many changes to enlist here,
+  CHANGELOG file is included in the package.
+- Patch lua-sec-0.6-openssl_110.patch has been removed as it is
+  fully included upstream.
+
+-------------------------------------------------------------------
 Mon Oct 30 14:45:32 UTC 2017 - jmatejek@suse.com
 
 - do not build for Lua 5.2

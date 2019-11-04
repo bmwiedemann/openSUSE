@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">smatch</param>
-    <param name="versionformat">%ad</param>
+    <param name="versionformat">%ad+git%h</param>
   </service>
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>
