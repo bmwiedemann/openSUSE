@@ -84,4 +84,12 @@
 - Add missing requirements found by tests</comment>
     <requestid>682100</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>07ad5866bcbc350407db0ec24e009a58</srcmd5>
+    <version>0.4.6</version>
+    <time>1572884014</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pytest and skip one failing test</comment>
+    <requestid>744511</requestid>
+  </revision>
 </revisionlist>

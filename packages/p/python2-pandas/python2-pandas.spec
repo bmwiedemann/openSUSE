@@ -38,6 +38,7 @@ BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy-devel >= 1.15.0}
 BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.5}
 BuildRequires:  %{python_module pytz >= 2011k}
@@ -46,6 +47,7 @@ BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module xlrd}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  memory-constraints
 BuildRequires:  python-rpm-macros
 BuildRequires:  xvfb-run
 Requires:       python2-Cython >= 0.28.2
@@ -107,8 +109,11 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
+# Limit parallelism
+%limit_build -m 1500
 # skip test that tries to compile stuff in buildroot test_oo_optimizable
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} xvfb-run py.test-%{$python_version} -v %{buildroot}%{$python_sitearch}/pandas/tests -k 'not test_oo_optimizable'
+# test_null_byte_char: fails to find null, test patched in newer upstream releases
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} xvfb-run py.test-%{$python_version} -n %jobs -v %{buildroot}%{$python_sitearch}/pandas/tests -k 'not test_oo_optimizable and not test_null_byte_char'
 
 %files %{python_files}
 %license LICENSE

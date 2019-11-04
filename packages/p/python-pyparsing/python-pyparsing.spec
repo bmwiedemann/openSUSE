@@ -32,26 +32,15 @@ Version:        2.4.2
 Release:        0
 Summary:        Grammar Parser Library for Python
 License:        MIT AND GPL-2.0-or-later AND GPL-3.0-or-later
-Group:          Development/Languages/Python
 URL:            https://github.com/pyparsing/pyparsing/
-# Upstream tarball from the master branch with gh#pyparsing/pyparsing#47
 Source:         https://files.pythonhosted.org/packages/source/p/pyparsing/pyparsing-%{version}.tar.gz
-# Source:         pyparsing-%{version}.tar.xz
 BuildRequires:  %{python_module base}
-BuildRequires:  %{python_module setuptools}
-%if "%{flavor}" == "test"
-# Not necessary for python3, but tests fail with the standard unittest
-# and python 2.7
-BuildRequires:  %{python_module unittest2}
-%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-#!BuildIgnore:  python2-pyparsing
-#!BuildIgnore:  python3-pyparsing
-# do not add dependencies on setuptools and ideally not even full "python";
-# this is now a dependency of setuptools
-Requires:       python-base
 BuildArch:      noarch
+%if %{with test}
+BuildRequires:  %{python_module unittest2}
+%endif
 %ifpython2
 Provides:       %{oldpython}-parsing = %{version}
 Obsoletes:      %{oldpython}-parsing < %{version}
@@ -66,6 +55,9 @@ code uses to construct the grammar directly in Python code.
 
 %prep
 %setup -q -n %{modname}-%{version}
+# do not require setuptools
+# https://github.com/pyparsing/pyparsing/pull/133
+sed -i -e 's:from setuptools :from distutils.core :g' setup.py
 
 %build
 %python_build

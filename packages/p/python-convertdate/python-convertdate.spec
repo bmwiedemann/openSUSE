@@ -46,15 +46,16 @@ Hebrew, Indian Civil, Islamic, ISO, Julian, Mayan and Persian.
 %setup -q -n convertdate-%{version}
 
 %build
-export LANG="en_US.UTF8"
+export LC_ALL="en_US.UTF8"
 %python_build
 
 %install
-export LANG="en_US.UTF8"
+export LC_ALL="en_US.UTF8"
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+export LC_ALL="en_US.UTF8"
 %python_exec setup.py test
 
 %files %{python_files}

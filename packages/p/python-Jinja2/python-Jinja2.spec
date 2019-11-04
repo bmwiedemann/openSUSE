@@ -19,17 +19,16 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-Jinja2
-Version:        2.10.1
+Version:        2.10.3
 Release:        0
 Summary:        A template engine written in pure Python
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
-URL:            http://jinja.pocoo.org/
+URL:            https://github.com/pallets/jinja
 Source:         https://files.pythonhosted.org/packages/source/J/Jinja2/Jinja2-%{version}.tar.gz
-Patch0:         python38.patch
 BuildRequires:  %{python_module MarkupSafe >= 0.23}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Babel >= 0.8
@@ -44,24 +43,13 @@ Obsoletes:      %{oldpython}-jinja2 < %{version}
 %description
 Jinja2 is a template engine written in pure Python.  It provides a Django
 inspired non-XML syntax but supports inline expressions and an optional
-sandboxed environment.  Here a small example of a Jinja template:
-
-    {%% extends 'base.html' %%}
-    {%% block title %%}Memberlist{%% endblock %%}
-    {%% block content %%}
-      <ul>
-      {%% for user in users %%}
-        <li><a href="{{ user.url }}">{{ user.username }}</a></li>
-      {%% endfor %%}
-      </ul>
-    {%% endblock %%}
+sandboxed environment.
 
 %package -n python-Jinja2-vim
 Summary:        Jinja2 syntax files for Vim
 License:        BSD-3-Clause
-Group:          Productivity/Text/Editors
 Requires:       %{name} = %{version}
-%if 0%{?suse_version} >= 1000 || 0%{?fedora_version} >= 24
+%if 0%{?suse_version} || 0%{?fedora_version} >= 24
 Recommends:     vim
 %endif
 
@@ -71,9 +59,8 @@ Vim syntax highlighting scheme for Jinja2 templates.
 %package -n python-Jinja2-emacs
 Summary:        Jinja2 syntax files for Emacs
 License:        GPL-2.0-or-later
-Group:          Productivity/Text/Editors
 Requires:       %{name} = %{version}
-%if 0%{?suse_version} >= 1000 || 0%{?fedora_version} >= 24
+%if 0%{?suse_version} || 0%{?fedora_version} >= 24
 Recommends:     emacs
 %endif
 
@@ -82,8 +69,7 @@ Emacs syntax highlighting scheme for Jinja2 templates.
 
 %prep
 %setup -q -n Jinja2-%{version}
-%patch0 -p1
-sed -i 's/\r$//' LICENSE # Fix wrong EOL encoding
+dos2unix LICENSE.rst # Fix wrong EOL encoding
 
 %build
 %python_build
@@ -98,8 +84,8 @@ install -Dm644 ext/jinja.el %{buildroot}%{_datadir}/emacs/site-lisp/jinja.el # I
 %pytest
 
 %files %{python_files}
-%license LICENSE
-%doc AUTHORS README.rst CHANGES.rst artwork examples
+%license LICENSE.rst
+%doc README.rst CHANGES.rst artwork examples
 %{python_sitelib}/jinja2
 %{python_sitelib}/Jinja2-%{version}-py%{python_version}.egg-info
 

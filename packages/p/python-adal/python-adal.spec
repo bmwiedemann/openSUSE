@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-adal
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Azure Active Directory library
 License:        MIT

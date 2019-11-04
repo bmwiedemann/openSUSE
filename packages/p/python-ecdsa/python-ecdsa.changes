@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 14 21:41:55 UTC 2019 - Robert Schweikert <rjschwei@suse.com>
+
+- updated to 0.13.3 (bsc#1153165)
+  + CVE-2019-14853 DOS atack during signature decoding
+  + CVE-2019-14859 signature malleability caused by insufficient checks
+    of DER encoding
+
+-------------------------------------------------------------------
 Tue May 14 07:17:24 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.13.2
@@ -12,6 +20,11 @@ Tue Dec  4 12:47:34 UTC 2018 - Matej Cepl <mcepl@suse.com>
 - Remove superfluous devel dependency for noarch package
 
 -------------------------------------------------------------------
+Fri Sep 21 12:51:24 UTC 2018 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Include in SLE-12 (fate#323875, bsc#1054413)
+
+-------------------------------------------------------------------
 Fri Apr 28 11:52:09 UTC 2017 - pousaduarte@gmail.com
 
 - Convert to singlespec
@@ -20,7 +33,7 @@ Fri Apr 28 11:52:09 UTC 2017 - pousaduarte@gmail.com
 -------------------------------------------------------------------
 Sat Feb 21 01:31:36 UTC 2015 - prusnak@opensuse.org
 
-- update to 0.13
+- update to 0.13 (bsc#962291)
 
   Fix the argument order for Curve constructor (put openssl_name= at the end,
   with a default value) to unbreak compatibility with external callers who used

@@ -17,13 +17,15 @@
 
 
 Name:           python-openstackdocstheme
-Version:        1.29.2
+Version:        1.31.1
 Release:        0
 Summary:        OpenStack Docs Theme
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/%{sname}
-Source0:        https://files.pythonhosted.org/packages/source/o/openstackdocstheme/openstackdocstheme-1.29.2.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/openstackdocstheme/openstackdocstheme-1.31.1.tar.gz
+# https://review.opendev.org/677868
+Patch0:         0001-Catch-any-exception-when-trying-to-call-git.patch
 BuildRequires:  openstack-macros
 BuildRequires:  python2-Sphinx
 BuildRequires:  python2-dulwich >= 0.15.0
@@ -51,7 +53,7 @@ Theme and extension support for Sphinx documentation that is published
 to docs.openstack.org. Intended for use by OpenStack projects.
 
 %prep
-%autosetup -p1 -n openstackdocstheme-1.29.2
+%autosetup -p1 -n openstackdocstheme-1.31.1
 
 # we dont need hacking
 sed -i '/^hacking.*/d' test-requirements.txt
@@ -62,14 +64,15 @@ sed -i '/^hacking.*/d' test-requirements.txt
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/docstheme-build-pdf
 %python_clone -a %{buildroot}%{_bindir}/docstheme-build-translated.sh
 %python_clone -a %{buildroot}%{_bindir}/docstheme-lang-display-name.py
 
 %post
-%{python_install_alternative docstheme-build-translated.sh docstheme-lang-display-name.py}
+%{python_install_alternative docstheme-build-pdf docstheme-build-translated.sh docstheme-lang-display-name.py}
 
 %postun
-%python_uninstall_alternative docstheme-build-translated.sh
+%python_uninstall_alternative docstheme-build-pdf
 
 %check
 %{python_expand rm -rf .testrepository
@@ -79,6 +82,7 @@ $python setup.py test
 %files %{python_files}
 %license LICENSE
 %doc README.rst
+%python_alternative %{_bindir}/docstheme-build-pdf
 %python_alternative %{_bindir}/docstheme-build-translated.sh
 %python_alternative %{_bindir}/docstheme-lang-display-name.py
 %exclude %{_sysconfdir}/alternatives/*.pyc

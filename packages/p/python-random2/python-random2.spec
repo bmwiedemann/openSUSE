@@ -1,7 +1,7 @@
 #
 # spec file for package python-random2
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,14 +23,12 @@ Version:        1.0.1
 Release:        0
 Summary:        A Session and Caching library with WSGI Middleware
 License:        Python-2.0
-Group:          Development/Languages/Python
-Url:            http://pypi.python.org/pypi/random2
+URL:            https://pypi.python.org/pypi/random2
 Source:         https://files.pythonhosted.org/packages/source/r/random2/random2-%{version}.zip
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %python_subpackages
 
@@ -54,13 +52,12 @@ adjusted. This package fixes that.
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py test
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc CHANGES.txt README.txt PKG-INFO
 %{python_sitelib}/*
 

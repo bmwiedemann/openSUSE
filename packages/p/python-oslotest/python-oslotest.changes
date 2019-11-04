@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct  9 12:33:48 UTC 2019 - cloud-devel@suse.de
+
+- removed 0001-Stop-testing-mock-functionality.patch
+- update to version 3.8.1
+  - Stop testing mock functionality
+  - Add Python 3 Train unit tests
+  - Dropping the py35 testing
+  - OpenDev Migration Patch
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Sync Sphinx requirement
+  - Update master for stable/stein
+  - Replace openstack.org git:// URLs with https://
+
+-------------------------------------------------------------------
 Mon Aug  5 14:48:03 UTC 2019 - cloud-devel@suse.de
 
 - added 0001-Stop-testing-mock-functionality.patch

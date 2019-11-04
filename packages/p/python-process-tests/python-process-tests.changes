@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 14 14:14:12 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Replace %fdupes -s with plain %fdupes; hardlinks are better.
+
+-------------------------------------------------------------------
 Wed Feb 13 11:58:24 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.0.2:

@@ -22,7 +22,6 @@ Version:        2.9.45
 Release:        0
 Summary:        A declarative parser/builder for binary data
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/construct/construct
 Source:         https://github.com/construct/construct/archive/v%{version}.tar.gz
 Patch0:         split_debug.patch
@@ -31,15 +30,15 @@ BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
-Requires:       python-arrow
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
 BuildRequires:  python2-enum34
+Requires:       python-arrow
+Requires:       python-six
+BuildArch:      noarch
 %ifpython2
 Requires:       python-enum34
 %endif
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -63,10 +62,10 @@ rm -rf tests/deprecated_gallery
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix}
+%pytest
 
 %files %{python_files}
 %license LICENSE

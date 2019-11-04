@@ -22,8 +22,7 @@ Version:        1.0.0+post1
 Release:        0
 Summary:        Shared ruamel routines
 License:        MIT
-Group:          Development/Languages/Python
-Url:            https://bitbucket.org/ruamel/base
+URL:            https://bitbucket.org/ruamel/base
 Source:         https://files.pythonhosted.org/packages/source/r/ruamel.base/ruamel.base-1.0.0.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -49,7 +48,7 @@ sed -i '/namespace_packages=/d' setup.py
 %install
 export RUAMEL_NO_PIP_INSTALL_CHECK=1
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.rst

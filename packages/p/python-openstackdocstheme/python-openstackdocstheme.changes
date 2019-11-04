@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Oct  9 12:54:28 UTC 2019 - cloud-devel@suse.de
+
+- added 0001-Catch-any-exception-when-trying-to-call-git.patch
+- update to version 1.31.1
+  - js: Remove dead or unused JS
+  - Fix version dropdown
+  - Make 'docstheme-build-pdf' executable
+  - Add missing fonts for pdf build in Sphinx 2.0
+  - Update for OpenDev change
+  - Remove a heap of dead CSS rules
+  - css: Use https links (StarlingX)
+  - css: Don't use bold text in titles (StarlingX)
+  - css: General cleanup
+  - Add missing 'role="main"' attribute
+  - Update api-ref location
+  - Allow to override build date with SOURCE_DATE_EPOCH
+  - OpenDev Migration Patch
+  - Prevent InvocationError on non-existent files
+  - Add 'docstheme-build-pdf' script
+  - Add reno for recent CSS cleanups
+  - Add table styling
+  - css: Use ellipsis for long titles in sidebar (StarlingX)
+  - Update API sidebar
+  - css: Add symlinks for openstack logos
+  - Note External Link Helper is not compatible with project only master brach
+  - Removed 'combined.css' for 'starlingxdocs' theme
+  - css: Move bootstrap modifications to 'combined.css' (StarlingX)
+  - setup.cfg: Remove remanents of 'build_sphinx' usage
+  - js: Fix some comments
+  - Reference OpenStack logo in openstackdocstheme
+
+-------------------------------------------------------------------
 Mon Apr  8 14:01:46 UTC 2019 - cloud-devel@suse.de
 
 - update to version 1.29.2

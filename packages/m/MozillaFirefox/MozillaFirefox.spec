@@ -18,14 +18,14 @@
 
 
 # changed with every update
-%define major          69
-%define mainver        %major.0.3
-%define orig_version   69.0.3
+%define major          70
+%define mainver        %major.0.1
+%define orig_version   70.0.1
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
 %define devpkg         1
-%define releasedate    20191009172106
+%define releasedate    20191030021342
 
 # always build with GCC as SUSE Security Team requires that
 %define clang_build 0
@@ -73,7 +73,7 @@ BuildRequires:  gcc7-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-BuildRequires:  cargo >= 1.35
+BuildRequires:  cargo >= 1.36
 BuildRequires:  libXcomposite-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libidl-devel
@@ -81,15 +81,15 @@ BuildRequires:  libiw-devel
 BuildRequires:  libnotify-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
-BuildRequires:  mozilla-nspr-devel >= 4.21
-BuildRequires:  mozilla-nss-devel >= 3.45
+BuildRequires:  mozilla-nspr-devel >= 4.22
+BuildRequires:  mozilla-nss-devel >= 3.46.1
 BuildRequires:  nasm >= 2.13
 BuildRequires:  nodejs8 >= 8.11
 BuildRequires:  python-devel
 BuildRequires:  python2-xml
 BuildRequires:  python3 >= 3.5
-BuildRequires:  rust >= 1.35
-BuildRequires:  rust-cbindgen >= 0.9.0
+BuildRequires:  rust >= 1.36
+BuildRequires:  rust-cbindgen >= 0.9.1
 BuildRequires:  startup-notification-devel
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
@@ -179,15 +179,14 @@ Patch12:        mozilla-reduce-rust-debuginfo.patch
 Patch13:        mozilla-ppc-altivec_static_inline.patch
 Patch14:        mozilla-bmo1005535.patch
 Patch15:        mozilla-bmo1568145.patch
-Patch16:        mozilla-bmo1573381.patch
-Patch17:        mozilla-bmo1504834-part1.patch
-Patch18:        mozilla-bmo1504834-part2.patch
-Patch19:        mozilla-bmo1504834-part3.patch
-Patch20:        mozilla-bmo1511604.patch
-Patch21:        mozilla-bmo1554971.patch
-Patch22:        mozilla-nestegg-big-endian.patch
-Patch23:        mozilla-bmo1512162.patch
-Patch24:        mozilla-fix-top-level-asm.patch
+Patch16:        mozilla-bmo1504834-part1.patch
+Patch17:        mozilla-bmo1504834-part2.patch
+Patch18:        mozilla-bmo1504834-part3.patch
+Patch19:        mozilla-bmo1511604.patch
+Patch20:        mozilla-bmo1554971.patch
+Patch21:        mozilla-bmo1512162.patch
+Patch22:        mozilla-fix-top-level-asm.patch
+Patch23:        mozilla-bmo1504834-part4.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
@@ -324,7 +323,6 @@ cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 %patch21 -p1
 %patch22 -p1
 %patch23 -p1
-%patch24 -p1
 # Firefox
 %patch101 -p1
 %patch102 -p1
@@ -346,6 +344,7 @@ fi
 source %{SOURCE5}
 %endif # only_print_mozconfig
 
+export CARGO_HOME=${RPM_BUILD_DIR}/%{srcname}-%{orig_version}/.cargo
 export MOZ_SOURCE_CHANGESET=$REV
 export SOURCE_REPO=$REPO
 export source_repo=$REPO
@@ -501,7 +500,7 @@ mkdir -p %{buildroot}%{progdir}/browser/defaults/preferences/
 # renaming executables (for regular vs. ESR)
 %if "%{srcname}" != "%{progname}"
 mv %{buildroot}%{progdir}/%{srcname} %{buildroot}%{progdir}/%{progname}
-mv %{buildroot}%{progdir}/%{srcname}-bin %{buildroot}%{progdir}/%{progname}
+mv %{buildroot}%{progdir}/%{srcname}-bin %{buildroot}%{progdir}/%{progname}-bin
 %endif
 # install gre prefs
 install -m 644 %{SOURCE13} %{buildroot}%{progdir}/defaults/pref/

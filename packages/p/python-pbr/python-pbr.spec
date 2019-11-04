@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-pbr%{psuffix}
-Version:        5.4.2
+Version:        5.4.3
 Release:        0
 Summary:        Python Build Reasonableness
 License:        Apache-2.0
@@ -36,8 +36,6 @@ Source:         https://files.pythonhosted.org/packages/source/p/pbr/pbr-%{versi
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-#!BuildIgnore:  python2-pyparsing
-#!BuildIgnore:  python3-pyparsing 
 Requires:       python-setuptools
 Recommends:     git-core
 Recommends:     python-reno >= 2.5.0

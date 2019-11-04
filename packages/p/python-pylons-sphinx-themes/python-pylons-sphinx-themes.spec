@@ -24,7 +24,6 @@ Version:        1.0.10
 Release:        0
 Summary:        Pylons Sphinx themes for documentation styling
 License:        SUSE-Repoze
-Group:          Development/Languages/Python
 URL:            https://github.com/Pylons/pylons-sphinx-themes
 Source:         https://files.pythonhosted.org/packages/source/p/pylons-sphinx-themes/pylons-sphinx-themes-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -60,7 +59,7 @@ To use a theme in your Sphinx documentation, follow the guide in README.md.
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license LICENSE.txt

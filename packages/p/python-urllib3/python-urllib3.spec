@@ -47,7 +47,7 @@ Requires:       python-certifi
 Requires:       python-cryptography >= 1.3.4
 Requires:       python-idna >= 2.0.0
 Requires:       python-pyOpenSSL
-Requires:       python-six
+Requires:       python-six >= 1.12.0
 BuildArch:      noarch
 # for SSL module on older distros
 %if 0%{?suse_version} < 1500
@@ -69,7 +69,7 @@ BuildRequires:  %{python_module idna >= 2.0.0}
 BuildRequires:  %{python_module mock >= 1.3.0}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module six >= 1.12.0}
 BuildRequires:  %{python_module tornado < 6}
 BuildRequires:  %{python_module urllib3 >= %{version}}
 %endif

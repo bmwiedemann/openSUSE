@@ -22,8 +22,7 @@ Version:        1.1.0
 Release:        0
 Summary:        The new features in unittest for Python 2.7 backported to Python 2.3+
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
-URL:            http://pypi.python.org/pypi/unittest2
+URL:            https://pypi.python.org/pypi/unittest2
 Source:         https://files.pythonhosted.org/packages/source/u/unittest2/unittest2-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE relax-argparse.patch
 Patch1:         relax-argparse.patch
@@ -32,8 +31,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module traceback2}
 BuildRequires:  python-rpm-macros
-#!BuildIgnore:  python2-pyparsing
-#!BuildIgnore:  python3-pyparsing
 Requires:       python-six
 Requires:       python-traceback2
 Requires(post): update-alternatives

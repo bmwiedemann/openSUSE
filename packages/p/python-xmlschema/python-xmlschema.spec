@@ -18,25 +18,24 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-xmlschema
-Version:        1.0.14
+Version:        1.0.15
 Release:        0
 Summary:        An XML Schema validator and decoder
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/brunato/xmlschema
 Source:         https://files.pythonhosted.org/packages/source/x/xmlschema/xmlschema-%{version}.tar.gz
-BuildRequires:  %{python_module elementpath >= 1.2.0}
+BuildRequires:  %{python_module elementpath >= 1.3.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-elementpath >= 1.2.0
+Requires:       python-elementpath >= 1.3.0
 BuildArch:      noarch
 %python_subpackages
 
 %description
 The *xmlschema* library is an implementation of `XML Schema <http://www.w3.org/2001/XMLSchema>`_
-for Python (supports Python 2.7 and Python 3.5+).
+for Python.
 
 %prep
 %setup -q -n xmlschema-%{version}

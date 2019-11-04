@@ -96,4 +96,12 @@ New packages, see: http://lists.opensuse.org/opensuse-factory/2013-07/msg00135.h
 - Use github tarball in order to be able to run tests</comment>
     <requestid>664590</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>636aab01dd938206ae184acbfa5f16e2</srcmd5>
+    <version>2.9.45</version>
+    <time>1572883815</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>743979</requestid>
+  </revision>
 </revisionlist>

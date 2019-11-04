@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-pylint
-Version:        2.4.2
+Version:        2.4.3
 Release:        0
 Summary:        Syntax and style checker for Python code
 License:        GPL-2.0-or-later

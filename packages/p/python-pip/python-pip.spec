@@ -26,13 +26,12 @@
 %bcond_with test
 %endif
 Name:           python-pip%{psuffix}
-Version:        19.2.2
+Version:        19.3.1
 Release:        0
 Summary:        A Python package management system
 License:        MIT
-Group:          Development/Languages/Python
 URL:            http://www.pip-installer.org
-Source:         pip-%{version}.tar.xz
+Source:         https://github.com/pypa/pip/archive/%{version}.tar.gz
 Patch0:         pip-shipped-requests-cabundle.patch
 Patch1:         pytest5.patch
 BuildRequires:  %{python_module setuptools}
@@ -52,6 +51,7 @@ BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pip = %{version}}
 BuildRequires:  %{python_module pretend}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scripttest >= 1.3}
@@ -61,8 +61,6 @@ BuildRequires:  git
 BuildRequires:  subversion
 %endif
 %python_subpackages
-
-%define upversion %(echo %{version} |cut -d+ -f 1)
 
 %description
 Pip is a replacement for easy_install. It uses mostly the same techniques for
@@ -117,7 +115,7 @@ PRIO=$(echo %{python_version} | tr -d .)
 %python2_only %{_bindir}/pip2
 %python3_only %{_bindir}/pip3
 %ghost %{_sysconfdir}/alternatives/pip
-%{python_sitelib}/pip-%{upversion}-py%{python_version}.egg-info
+%{python_sitelib}/pip-%{version}-py%{python_version}.egg-info
 %{python_sitelib}/pip
 %endif
 

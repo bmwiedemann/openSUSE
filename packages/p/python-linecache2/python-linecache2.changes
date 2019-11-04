@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 17 11:53:11 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove pyparsing buildignore as the cycle was solved
+
+-------------------------------------------------------------------
+Mon Oct 14 13:59:51 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Replace %fdupes -s with plain %fdupes; hardlinks are better.
+
+-------------------------------------------------------------------
 Thu Jan 17 15:56:06 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildIgnore python[23]-pyparsing: python-packaging requires it

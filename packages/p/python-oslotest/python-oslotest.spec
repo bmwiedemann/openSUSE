@@ -17,17 +17,14 @@
 
 
 Name:           python-oslotest
-Version:        3.7.1
+Version:        3.8.1
 Release:        0
 Summary:        OpenStack test framework
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslotest
-Source0:        https://files.pythonhosted.org/packages/source/o/oslotest/oslotest-3.7.1.tar.gz
-# https://review.opendev.org/#/c/672522/
-Patch0:         0001-Stop-testing-mock-functionality.patch
+Source0:        https://files.pythonhosted.org/packages/source/o/oslotest/oslotest-3.8.1.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python-devel
 BuildRequires:  python2-debtcollector >= 1.2.0
 BuildRequires:  python2-fixtures >= 3.0.0
 BuildRequires:  python2-mock >= 2.0.0
@@ -38,7 +35,6 @@ BuildRequires:  python2-six >= 1.10.0
 BuildRequires:  python2-stestr >= 2.0.0
 BuildRequires:  python2-testtools >= 2.2.0
 BuildRequires:  python3-debtcollector >= 1.2.0
-BuildRequires:  python3-devel
 BuildRequires:  python3-fixtures >= 3.0.0
 BuildRequires:  python3-mock >= 2.0.0
 BuildRequires:  python3-mox3 >= 0.20.0

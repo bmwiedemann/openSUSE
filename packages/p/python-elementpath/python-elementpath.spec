@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-elementpath
-Version:        1.2.1
+Version:        1.3.1
 Release:        0
 Summary:        XPath 1.0/20 parsers and selectors for ElementTree and lxml
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/sissaschool/elementpath
 Source:         https://github.com/sissaschool/elementpath/archive/v%{version}.tar.gz
+BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

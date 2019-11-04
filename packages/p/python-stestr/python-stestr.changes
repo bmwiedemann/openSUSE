@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 30 13:17:37 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- fix build for anything older than Tumbleweed by explicitly setting
+  utf8 locale
+
+-------------------------------------------------------------------
 Tue Sep 10 09:51:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.5.1:

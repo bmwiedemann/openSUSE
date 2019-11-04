@@ -138,4 +138,12 @@
 - Skip flaky test test_static_analysis</comment>
     <requestid>730454</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>e45a3e74397c008b111fc9afae6f42bc</srcmd5>
+    <version>0.15.1</version>
+    <time>1572883737</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip TestSetupReadline.test_import because of gh#davidhalter/jedi#1429</comment>
+    <requestid>742710</requestid>
+  </revision>
 </revisionlist>

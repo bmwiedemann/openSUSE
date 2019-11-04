@@ -1,7 +1,7 @@
 #
 # spec file for package python-testresources
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,6 @@ Version:        2.0.1
 Release:        0
 Summary:        A pyunit extension for managing expensive test resources
 License:        (Apache-2.0 OR BSD-3-Clause) AND GPL-2.0-or-later
-Group:          Development/Languages/Python
 URL:            https://github.com/testing-cabal/testresources
 Source:         https://files.pythonhosted.org/packages/source/t/testresources/testresources-%{version}.tar.gz
 Patch0:         testresources-flaky-tests.patch
@@ -49,7 +48,7 @@ of resources by test cases.
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py test

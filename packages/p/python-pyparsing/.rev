@@ -395,4 +395,12 @@ but keep them in examples dir
     which may give rise to noisy user warnings for existing parsers.</comment>
     <requestid>721168</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>d43937db64dca827987d0b8e1cee4b2c</srcmd5>
+    <version>2.4.2</version>
+    <time>1572883862</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not pull in setuptools dependency at all to avoid cycles</comment>
+    <requestid>743993</requestid>
+  </revision>
 </revisionlist>

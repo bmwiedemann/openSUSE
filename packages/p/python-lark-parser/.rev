@@ -59,4 +59,12 @@
   * Bugfixes for the transformer interface, for the custom lexer, for grammar imports, and many more</comment>
     <requestid>730144</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>da2f4dbac5954789d7dd33f2d471adf8</srcmd5>
+    <version>0.7.7</version>
+    <time>1572883757</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>743738</requestid>
+  </revision>
 </revisionlist>

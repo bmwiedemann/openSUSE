@@ -23,7 +23,6 @@ Version:        3.0.12
 Release:        0
 Summary:        Platform Independent File Lock in Python
 License:        Unlicense
-Group:          Development/Languages/Python
 URL:            https://github.com/benediktschmitt/py-filelock
 Source:         https://github.com/benediktschmitt/py-filelock/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
@@ -46,7 +45,7 @@ inter-process communication.
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}/%{$python_sitelib}
+%python_expand %fdupes %{buildroot}/%{$python_sitelib}
 
 %check
 %pytest test.py

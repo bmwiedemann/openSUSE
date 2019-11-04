@@ -19,11 +19,10 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-CherryPy
-Version:        18.2.0
+Version:        18.3.0
 Release:        0
 Summary:        Object-Oriented HTTP framework
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            http://www.cherrypy.org
 Source:         https://files.pythonhosted.org/packages/source/C/CherryPy/CherryPy-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools_scm}
@@ -77,12 +76,14 @@ sed -i -e '/addopts/d' pytest.ini
 
 %install
 %python_install
-%python_expand rm -r %{buildroot}%{$python_sitelib}/cherrypy/test
+# Do not remove the tests as other project use them for self validation
+#%%python_expand rm -r %{buildroot}%{$python_sitelib}/cherrypy/test
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/cherryd
 
 %check
-%pytest -k 'not test_null_bytes'
+# test_HTTP11_Timeout_after_request https://github.com/cherrypy/cherrypy/issues/1817
+%pytest -k 'not test_null_bytes and not test_HTTP11_Timeout_after_request'
 
 %post
 %python_install_alternative cherryd

@@ -18,18 +18,16 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Arpeggio
-Version:        1.9.0
+Version:        1.9.2
 Release:        0
 Summary:        Packrat parser interpreter
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/textX/Arpeggio/
-Source:         https://github.com/textX/Arpeggio/archive/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM imp-to-importlib.patch gh#textX/Arpeggio#54 mcepl@suse.com
-# Replace use of imp library with importlib.
-Patch0:         imp-to-importlib.patch
+Source:         https://github.com/textX/Arpeggio/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # https://github.com/textX/Arpeggio/issues/57
 BuildRequires:  %{python_module pytest < 5.0}
+BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -55,10 +53,10 @@ Arpeggio) see textX
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest tests/unit
+%pytest arpeggio/tests
 
 %files %{python_files}
-%doc README.rst CHANGELOG AUTHORS.md
+%doc README.rst CHANGELOG.md AUTHORS.md
 %license LICENSE
 %{python_sitelib}/*
 

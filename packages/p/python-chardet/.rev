@@ -202,4 +202,12 @@
   * pytest4.patch</comment>
     <requestid>713178</requestid>
   </revision>
+  <revision rev="27" vrev="8">
+    <srcmd5>1b42e984b778ae18fd624615fbdc2626</srcmd5>
+    <version>3.0.4</version>
+    <time>1572883809</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>743978</requestid>
+  </revision>
 </revisionlist>

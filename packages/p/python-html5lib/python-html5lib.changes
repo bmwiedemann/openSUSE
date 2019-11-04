@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov  1 11:50:36 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add pytest4-mhroncok.patch by Miro Hroncok from
+  gh#html5lib/html5lib-python#414 to make testsuite passing under
+  pytest4+.
+
+-------------------------------------------------------------------
+Mon Oct 14 13:39:22 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Replace %fdupes with plain %fdupes; hardlinks are better.
+
+-------------------------------------------------------------------
 Fri Jul 19 12:28:28 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Restrict pytest4 for now as upstream supports only 3 series

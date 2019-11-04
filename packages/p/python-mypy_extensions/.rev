@@ -16,4 +16,13 @@
     <comment>- update to version 0.4.1, no upstream changelog available</comment>
     <requestid>631752</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>66914ebfc7073fe4f8abbd7e495f6bfb</srcmd5>
+    <version>0.4.3</version>
+    <time>1572883648</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.3
+- removed redudant LICENSE file</comment>
+    <requestid>741142</requestid>
+  </revision>
 </revisionlist>

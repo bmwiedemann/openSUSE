@@ -162,4 +162,12 @@
     <comment>- Fix fdupes and test calls</comment>
     <requestid>682408</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>8a9471784aeb586f714cad478f848b7f</srcmd5>
+    <version>1.7.1</version>
+    <time>1572883658</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>741201</requestid>
+  </revision>
 </revisionlist>

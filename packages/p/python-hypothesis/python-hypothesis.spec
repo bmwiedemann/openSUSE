@@ -28,22 +28,21 @@
 %endif
 %bcond_without python2
 Name:           python-hypothesis%{psuffix}
-Version:        4.34.0
+Version:        4.40.2
 Release:        0
 Summary:        A library for property based testing
 License:        MPL-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/HypothesisWorks/hypothesis-python
 Source:         https://github.com/HypothesisWorks/hypothesis/archive/hypothesis-python-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools >= 36}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-attrs >= 16.0.0
+Requires:       python-attrs >= 19.2.0
 Recommends:     python-Django >= 1.11
 Recommends:     python-lark-parser >= 0.6.5
 Recommends:     python-numpy >= 1.9.0
 Recommends:     python-pandas
-Recommends:     python-pytest >= 3.0.0
+Recommends:     python-pytest >= 4.3.0
 Recommends:     python-python-dateutil
 Recommends:     python-pytz >= 2014.1
 BuildArch:      noarch
@@ -53,14 +52,15 @@ Recommends:     python-dpcontracts
 %if %{with test}
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= 1.11}
-BuildRequires:  %{python_module attrs >= 16.0.0}
+BuildRequires:  %{python_module attrs >= 19.2.0}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module hypothesis >= %{version}}
 BuildRequires:  %{python_module lark-parser >= 0.6.5}
 BuildRequires:  %{python_module lark-parser}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module numpy >= 1.9.0}
-BuildRequires:  %{python_module pytest >= 3.0.0}
+BuildRequires:  %{python_module pexpect >= 4.7.0}
+BuildRequires:  %{python_module pytest >= 4.3.0}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module pytz >= 2014.1}
 BuildRequires:  python3-dpcontracts
@@ -112,7 +112,7 @@ $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/hy
 %check
 %if %{with test}
 # test_prints_statistics_given_option_under_xdist - wrong xdist opts
-%python_expand PYTHONPATH=%{$python_sitelib} py.test-%{$python_bin_suffix} -v tests -k 'not test_prints_statistics_given_option_under_xdist'
+%pytest tests -k "not test_prints_statistics_given_option_under_xdist"
 %endif
 
 %if !%{with test}

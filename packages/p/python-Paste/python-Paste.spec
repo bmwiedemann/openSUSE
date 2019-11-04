@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-Paste
-Version:        3.2.0
+Version:        3.2.1
 Release:        0
 Summary:        Tools for using a Web Server Gateway Interface stack
 License:        MIT

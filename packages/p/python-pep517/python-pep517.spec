@@ -18,22 +18,21 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pep517
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        Wrappers to build Python packages using PEP 517 hooks
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/takluyver/pep517
 Source:         https://files.pythonhosted.org/packages/source/p/pep517/pep517-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-BuildArch:      noarch
-Requires:       python-pytoml
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytoml}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testpath}
+BuildRequires:  %{python_module toml}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-toml
+BuildArch:      noarch
 %python_subpackages
 
 %description

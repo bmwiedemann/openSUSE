@@ -31,7 +31,6 @@ Version:        2.8.0
 Release:        0
 Summary:        A Python Datetime Library
 License:        BSD-3-Clause OR Apache-2.0
-Group:          Development/Libraries/Python
 URL:            https://dateutil.readthedocs.org/en/latest/
 Source0:        https://files.pythonhosted.org/packages/source/p/python-dateutil/python-dateutil-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools >= 18.0.1}
@@ -98,7 +97,7 @@ rm -f setup.cfg
 %install
 %if !%{with test}
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
 %if %{with test}

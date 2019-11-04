@@ -40,4 +40,12 @@
   * No upstream changelog provided</comment>
     <requestid>674519</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>76ea637e18d4c95cbe657c874bc6f8f8</srcmd5>
+    <version>2.0.2</version>
+    <time>1572883857</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>743992</requestid>
+  </revision>
 </revisionlist>

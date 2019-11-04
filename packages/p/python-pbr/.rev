@@ -562,4 +562,15 @@
   * Add Python 3 Train unit tests</comment>
     <requestid>721839</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>3983f638d6690372164eaa19a15041e5</srcmd5>
+    <version>5.4.3</version>
+    <time>1572883609</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.4.3
+  *  Use more verbose logging for test failure
+
+- Remove buildignores on pyparsing as the cycle is now sorted</comment>
+    <requestid>740979</requestid>
+  </revision>
 </revisionlist>

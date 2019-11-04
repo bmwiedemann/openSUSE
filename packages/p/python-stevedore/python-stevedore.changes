@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct  9 12:44:45 UTC 2019 - cloud-devel@suse.de
+
+- update to version 1.31.0
+  - add python 3.7 unit test job
+  - Dropping the py35 testing
+  - Delete repeated param description.
+  - Update master for stable/stein
+  - Add local bindep.txt
+  - update git.openstack.org to opendev
+  - OpenDev Migration Patch
+  - Add Python 3 Train unit tests
+  - Cap Bandit below 1.6.0 and update Sphinx requirement
+
+-------------------------------------------------------------------
 Mon Apr  8 14:03:43 UTC 2019 - cloud-devel@suse.de
 
 - update to version 1.30.1

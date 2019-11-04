@@ -1,7 +1,7 @@
 #
 # spec file for package python-termstyle
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,12 @@ Release:        0
 Summary:        Console colouring for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            http://github.com/gfxmonk/termstyle
+URL:            https://github.com/gfxmonk/termstyle
 Source:         https://files.pythonhosted.org/packages/source/t/termstyle/termstyle-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 %ifpython2
 Obsoletes:      %{oldpython}-python-termstyle < %{version}
 Provides:       %{oldpython}-python-termstyle = %{version}
@@ -37,7 +38,6 @@ Provides:       %{oldpython}-python-termstyle = %{version}
 Provides:       python3-python-termstyle = %{version}
 Obsoletes:      python3-python-termstyle < %{version}
 %endif
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -54,7 +54,7 @@ sed -i '1s/^#!.*//' termstyle.py
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 #%%check
 #export LANG=C.UTF-8

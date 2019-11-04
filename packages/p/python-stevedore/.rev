@@ -355,4 +355,21 @@
   - import zuul job settings from project-config</comment>
     <requestid>692879</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>cc9b85b1971aa12c17bca9dd5b9a5854</srcmd5>
+    <version>1.31.0</version>
+    <time>1572883488</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.31.0
+  - add python 3.7 unit test job
+  - Dropping the py35 testing
+  - Delete repeated param description.
+  - Update master for stable/stein
+  - Add local bindep.txt
+  - update git.openstack.org to opendev
+  - OpenDev Migration Patch
+  - Add Python 3 Train unit tests
+  - Cap Bandit below 1.6.0 and update Sphinx requirement</comment>
+    <requestid>736629</requestid>
+  </revision>
 </revisionlist>

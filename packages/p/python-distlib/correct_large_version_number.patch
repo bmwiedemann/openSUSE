@@ -1,0 +1,90 @@
+# HG changeset patch
+# User Vinay Sajip <vinay_sajip@yahoo.co.uk>
+# Date 1571520730 -3600
+# Node ID 84ab17abcd54c6ce62fcb7a5137dfd821682f5ad
+# Parent  bdef4258f1e2e08685aa5f3abac03483cbfa0ea0
+Change Python version handling to cope with a version like 3.10.
+
+--- a/distlib/_backport/sysconfig.py
++++ b/distlib/_backport/sysconfig.py
+@@ -119,11 +119,9 @@ def _expand_globals(config):
+ 
+ #_expand_globals(_SCHEMES)
+ 
+- # FIXME don't rely on sys.version here, its format is an implementation detail
+- # of CPython, use sys.version_info or sys.hexversion
+-_PY_VERSION = sys.version.split()[0]
+-_PY_VERSION_SHORT = sys.version[:3]
+-_PY_VERSION_SHORT_NO_DOT = _PY_VERSION[0] + _PY_VERSION[2]
++_PY_VERSION = '%s.%s.%s' % sys.version_info[:3]
++_PY_VERSION_SHORT = '%s.%s' % sys.version_info[:2]
++_PY_VERSION_SHORT_NO_DOT = '%s%s' % sys.version_info[:2]
+ _PREFIX = os.path.normpath(sys.prefix)
+ _EXEC_PREFIX = os.path.normpath(sys.exec_prefix)
+ _CONFIG_VARS = None
+--- a/distlib/scripts.py
++++ b/distlib/scripts.py
+@@ -285,9 +285,10 @@ class ScriptMaker(object):
+         if '' in self.variants:
+             scriptnames.add(name)
+         if 'X' in self.variants:
+-            scriptnames.add('%s%s' % (name, sys.version[0]))
++            scriptnames.add('%s%s' % (name, sys.version_info[0]))
+         if 'X.Y' in self.variants:
+-            scriptnames.add('%s-%s' % (name, sys.version[:3]))
++            scriptnames.add('%s-%s.%s' % (name, sys.version_info[0],
++                            sys.version_info[1]))
+         if options and options.get('gui', False):
+             ext = 'pyw'
+         else:
+--- a/distlib/wheel.py
++++ b/distlib/wheel.py
+@@ -684,7 +684,7 @@ class Wheel(object):
+         if cache is None:
+             # Use native string to avoid issues on 2.x: see Python #20140.
+             base = os.path.join(get_cache_base(), str('dylib-cache'),
+-                                sys.version[:3])
++                                '%s.%s' % sys.version_info[:2])
+             cache = Cache(base)
+         return cache
+ 
+--- a/tests/test_scripts.py
++++ b/tests/test_scripts.py
+@@ -152,9 +152,12 @@ class ScriptTestCase(unittest.TestCase):
+                     else:
+                         ext = 'py'
+                     expected = set(['foo.%s' % ext,
+-                                    'foo-%s.%s' % (sys.version[:3], ext)])
++                                    'foo-%s.%s.%s' % (sys.version_info[0],
++                                                      sys.version_info[1],
++                                                      ext)])
+                 else:
+-                    expected = set(['foo', 'foo-%s' % sys.version[:3]])
++                    expected = set(['foo', 'foo-%s.%s' % (sys.version_info[0],
++                                    sys.version_info[1])])
+                 self.assertEqual(actual, expected)
+                 self.assertEqual(d, self.maker.target_dir)
+                 for fn in files:
+@@ -264,7 +267,7 @@ class ScriptTestCase(unittest.TestCase):
+         files = self.maker.make('foo = foo:main', {'gui': True})
+         self.assertEqual(len(files), 2)
+         filenames = set([os.path.basename(f) for f in files])
+-        specific = sys.version[:3]
++        specific = '%s.%s' % sys.version_info[:2]
+         self.assertEqual(filenames, set(('foo.exe', 'foo-%s.exe' % specific)))
+         for fn in files:
+             with open(fn, 'rb') as f:
+--- a/tests/test_wheel.py
++++ b/tests/test_wheel.py
+@@ -474,7 +474,10 @@ class WheelTestCase(unittest.TestCase):
+         parts = ['cp', pyver]
+         if sysconfig.get_config_var('Py_DEBUG'):
+             parts.append('d')
+-        if sysconfig.get_config_var('WITH_PYMALLOC'):
++        # Starting with 3.8, the SOABI doesn't append m when WITH_PYMALLOC is
++        # defined (see bpo-36707)
++        if (sys.version_info[:2] < (3, 8) and
++            sysconfig.get_config_var('WITH_PYMALLOC')):
+             parts.append('m')
+         if sysconfig.get_config_var('Py_UNICODE_SIZE') == 4:
+             parts.append('u')

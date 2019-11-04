@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-lark-parser
-Version:        0.7.5
+Version:        0.7.7
 Release:        0
 Summary:        A parsing library for Python
 License:        MIT
 Group:          Development/Languages/Python
-URL:            https://github.com/erezsh/lark
-Source:         https://github.com/lark-parser/lark/archive/%{version}.tar.gz#/lark-parser-%{version}.tar.gz
+URL:            https://github.com/lark-parser
+Source:         https://github.com/lark-parser/lark/archive/%{version}.tar.gz#/lark-%{version}.tar.gz
 # extracted test gramars from nearley -> https://github.com/kach/nearley
 Source1:        testdata.tar.gz
 BuildRequires:  %{python_module Js2Py}

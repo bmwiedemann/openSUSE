@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 18 09:41:48 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Re-add License, required in Factory.
+
+-------------------------------------------------------------------
+Mon Oct 14 14:45:01 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Replace %fdupes -s with plain %fdupes; hardlinks are better.
+
+-------------------------------------------------------------------
 Tue Dec  4 12:55:08 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package

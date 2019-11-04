@@ -35,6 +35,8 @@ URL:            http://python-requests.org/
 Source:         https://files.pythonhosted.org/packages/source/r/requests/requests-%{version}.tar.gz
 # PATCH-FIX-SUSE: do not hardcode versions in setup.py/requirements
 Patch0:         requests-no-hardcoded-version.patch
+Patch1:         pr_5251-pytest5.patch
+Patch2:         merged_pr_5049.patch
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module urllib3 >= 1.21.1}
@@ -66,9 +68,9 @@ BuildRequires:  %{python_module PySocks >= 1.5.6}
 BuildRequires:  %{python_module brotlipy}
 BuildRequires:  %{python_module chardet >= 3.0.2}
 BuildRequires:  %{python_module idna >= 2.5}
-BuildRequires:  %{python_module pytest < 4.0}
 BuildRequires:  %{python_module pytest-httpbin >= 0.0.7}
 BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= %{version}}
 %endif
 %python_subpackages
@@ -93,7 +95,7 @@ Features of Requests:
 
 %prep
 %setup -q -n requests-%{version}
-%patch0 -p1
+%autopatch -p1
 
 # drop shebang from certs.py
 sed -i '1s/^#!.*$//' requests/certs.py

@@ -1,0 +1,22 @@
+--- a/tests/test_future/test_urllib2.py	2019-10-14 12:22:14.230684473 +1100
++++ b/tests/test_future/test_urllib2.py	2019-10-14 12:35:31.722438625 +1100
+@@ -691,6 +691,10 @@
+         h = NullFTPHandler(data)
+         h.parent = MockOpener()
+ 
++        # MIME guessing works in Python 3.8!
++        guessed_mime = None
++        if sys.hexversion >= 0x03080000:
++            guessed_mime = "image/gif"
+         for url, host, port, user, passwd, type_, dirs, filename, mimetype in [
+             ("ftp://localhost/foo/bar/baz.html",
+              "localhost", ftplib.FTP_PORT, "", "", "I",
+@@ -709,7 +714,7 @@
+              ["foo", "bar"], "", None),
+             ("ftp://localhost/baz.gif;type=a",
+              "localhost", ftplib.FTP_PORT, "", "", "A",
+-             [], "baz.gif", None),  # XXX really this should guess image/gif
++             [], "baz.gif", guessed_mime),
+             ]:
+             req = Request(url)
+             req.timeout = None

@@ -1,7 +1,7 @@
 #
 # spec file for package python-fixtures
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        3.0.0
 Release:        0
 Summary:        Fixtures, reusable state for writing clean tests and more
 License:        Apache-2.0 OR BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-fixtures
 Source:         https://files.pythonhosted.org/packages/source/f/fixtures/fixtures-%{version}.tar.gz
 BuildRequires:  %{python_module extras}
@@ -54,7 +53,7 @@ compatible test cases easy and straight forward.
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec -m testtools.run fixtures.test_suite

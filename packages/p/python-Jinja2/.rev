@@ -358,4 +358,17 @@
   * python38.patch</comment>
     <requestid>732915</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e6f47b314cd9061a9f90908750ed5711</srcmd5>
+    <version>2.10.3</version>
+    <time>1572883462</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.10.3:
+  * Fix Python 3.7 deprecation warnings.
+  * Using range in the sandboxed environment uses xrange on Python 2 to avoid memory use. :issue:`933`
+  * Use Python 3.7's better traceback support to avoid a core dump when using debug builds of Python 3.7. :issue:`1050`
+  * Fix a typo in Babel entry point in setup.py that was preventing installation.
+- Remove merged python38.patch</comment>
+    <requestid>735867</requestid>
+  </revision>
 </revisionlist>

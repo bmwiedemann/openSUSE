@@ -22,4 +22,12 @@
     <comment> (forwarded request 506709 from alois)</comment>
     <requestid>506975</requestid>
   </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>23133b2cbb8caf530c7e270d0be461c2</srcmd5>
+    <version>1.0.1</version>
+    <time>1572883872</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>743995</requestid>
+  </revision>
 </revisionlist>

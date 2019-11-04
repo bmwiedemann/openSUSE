@@ -31,10 +31,12 @@ BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.10.0}
+BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  xvfb-run
 Requires:       python-six >= 1.10.0
+Requires:       xorg-x11-server
 BuildArch:      noarch
 %ifpython2
 Provides:       %{oldpython}-xlib = %{version}
@@ -52,6 +54,8 @@ library for Python programs.
 
 %prep
 %setup -q -n python-xlib-%{version}
+rm Xlib/ChangeLog
+dos2unix CHANGELOG.md README.rst TODO examples/*.py
 
 %build
 %python_build
@@ -65,7 +69,7 @@ library for Python programs.
 
 %files %{python_files}
 %license LICENSE
-%doc CHANGELOG.md README.rst TODO
+%doc CHANGELOG.md README.rst TODO examples/
 %{python_sitelib}/Xlib/
 %{python_sitelib}/python_xlib-*
 

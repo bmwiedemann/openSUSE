@@ -1,7 +1,7 @@
 #
 # spec file for package python-mypy_extensions
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-mypy_extensions
-Version:        0.4.1
+Version:        0.4.3
 Release:        0
 Summary:        Experimental type system extensions for programs checked with mypy typechecker
 License:        MIT
 Group:          Development/Languages/Python
 Url:            http://www.mypy-lang.org/
 Source:         https://files.pythonhosted.org/packages/source/m/mypy_extensions/mypy_extensions-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/python/mypy/release-0.560/extensions/LICENSE
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -39,7 +38,6 @@ standard "typing" module that are supported by the mypy typechecker.
 
 %prep
 %setup -q -n mypy_extensions-%{version}
-cp %{SOURCE1} .
 
 %build
 %python_build

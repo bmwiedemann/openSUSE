@@ -1,4 +1,150 @@
 -------------------------------------------------------------------
+Mon Oct 14 11:35:21 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Version update to 1.12.248
+  * api-change:``greengrass``: Update greengrass client to latest version
+- from version 1.12.247
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``lex-runtime``: Update lex-runtime client to latest version
+  * api-change:``fms``: Update fms client to latest version
+  * api-change:``iotanalytics``: Update iotanalytics client to latest version
+- from version 1.12.246
+  * api-change:``kafka``: Update kafka client to latest version
+  * api-change:``elasticache``: Update elasticache client to latest version
+  * api-change:``mediaconvert``: Update mediaconvert client to latest version
+- from version 1.12.245
+  * api-change:``organizations``: Update organizations client to latest version
+  * api-change:``events``: Update events client to latest version
+  * api-change:``firehose``: Update firehose client to latest version
+  * api-change:``datasync``: Update datasync client to latest version
+- from version 1.12.244
+  * api-change:``snowball``: Update snowball client to latest version
+  * api-change:``directconnect``: Update directconnect client to latest version
+  * api-change:``firehose``: Update firehose client to latest version
+  * api-change:``pinpoint``: Update pinpoint client to latest version
+  * api-change:``glue``: Update glue client to latest version
+  * api-change:``pinpoint-email``: Update pinpoint-email client to latest version
+- from version 1.12.243
+  * api-change:``cognito-idp``: Update cognito-idp client to latest version
+  * api-change:``mediapackage``: Update mediapackage client to latest version
+  * api-change:``ssm``: Update ssm client to latest version
+- from version 1.12.242
+  * api-change:``es``: Update es client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``application-autoscaling``: Update
+    application-autoscaling client to latest version
+  * api-change:``devicefarm``: Update devicefarm client to latest version
+- from version 1.12.241
+  * api-change:``lightsail``: Update lightsail client to latest version
+- from version 1.12.240
+  * api-change:``docdb``: Update docdb client to latest version
+- from version 1.12.239
+  * api-change:``waf``: Update waf client to latest version
+  * api-change:``rds``: Update rds client to latest version
+  * api-change:``mq``: Update mq client to latest version
+- from version 1.12.238
+  * api-change:``amplify``: Update amplify client to latest version
+  * api-change:``ecs``: Update ecs client to latest version
+- from version 1.12.237
+  * api-change:``ssm``: Update ssm client to latest version
+  * api-change:``codepipeline``: Update codepipeline client to latest version
+- from version 1.12.236
+  * api-change:``globalaccelerator``: Update globalaccelerator client to latest version
+  * api-change:``dms``: Update dms client to latest version
+  * api-change:``sagemaker``: Update sagemaker client to latest version
+- from version 1.12.235
+  * api-change:``transcribe``: Update transcribe client to latest version
+  * api-change:``comprehendmedical``: Update comprehendmedical client to latest version
+  * api-change:``datasync``: Update datasync client to latest version
+- from version 1.12.234
+  * api-change:``rds-data``: Update rds-data client to latest version
+  * api-change:``redshift``: Update redshift client to latest version
+- from version 1.12.233
+  * api-change:``workspaces``: Update workspaces client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``greengrass``: Update greengrass client to latest version
+  * api-change:``rds``: Update rds client to latest version
+- from version 1.12.232
+  * api-change:``mediaconnect``: Update mediaconnect client to latest version
+  * api-change:``glue``: Update glue client to latest version
+  * api-change:``ecs``: Update ecs client to latest version
+- from version 1.12.231
+  * api-change:``ram``: Update ram client to latest version
+  * api-change:``waf-regional``: Update waf-regional client to latest version
+  * api-change:``apigateway``: Update apigateway client to latest version
+- from version 1.12.230
+  * api-change:``iam``: Update iam client to latest version
+  * api-change:``athena``: Update athena client to latest version
+  * api-change:``personalize``: Update personalize client to latest version
+- from version 1.12.229
+  * api-change:``eks``: Update eks client to latest version
+  * api-change:``mediaconvert``: Update mediaconvert client to latest version
+- from version 1.12.228
+  * api-change:``elbv2``: Update elbv2 client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``workmailmessageflow``: Update workmailmessageflow client to latest version
+  * api-change:``medialive``: Update medialive client to latest version
+- from version 1.12.227
+  * api-change:``stepfunctions``: Update stepfunctions client to latest version
+  * api-change:``rds``: Update rds client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``mediaconnect``: Update mediaconnect client to latest version
+  * api-change:``ses``: Update ses client to latest version
+  * api-change:``config``: Update config client to latest version
+- from version 1.12.226
+  * api-change:``storagegateway``: Update storagegateway client to latest version
+- from version 1.12.225
+  * api-change:``qldb``: Update qldb client to latest version
+  * api-change:``marketplacecommerceanalytics``: Update
+    marketplacecommerceanalytics client to latest version
+  * api-change:``appstream``: Update appstream client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``robomaker``: Update robomaker client to latest version
+  * api-change:``appmesh``: Update appmesh client to latest version
+  * api-change:``qldb-session``: Update qldb-session client to latest version
+- from version 1.12.224
+  * api-change:``kinesisanalytics``: Update kinesisanalytics client to latest version
+- from version 1.12.223
+  * api-change:``config``: Update config client to latest version
+- from version 1.12.222
+  * api-change:``stepfunctions``: Update stepfunctions client to latest version
+  * api-change:``transcribe``: Update transcribe client to latest version
+  * api-change:``eks``: Update eks client to latest version
+- from version 1.12.221
+  * api-change:``ecs``: Update ecs client to latest version
+  * api-change:``resourcegroupstaggingapi``: Update
+    resourcegroupstaggingapi client to latest version
+  * api-change:``gamelift``: Update gamelift client to latest version
+- from version 1.12.220
+  * api-change:``mq``: Update mq client to latest version
+  * api-change:``apigatewaymanagementapi``: Update
+    apigatewaymanagementapi client to latest version
+  * api-change:``ecs``: Update ecs client to latest version
+- from version 1.12.219
+  * api-change:``codepipeline``: Update codepipeline client to latest version
+  * api-change:``application-autoscaling``: Update
+    application-autoscaling client to latest version
+  * api-change:``elasticache``: Update elasticache client to latest version
+  * api-change:``lambda``: Update lambda client to latest version
+  * api-change:``ecs``: Update ecs client to latest version
+- from version 1.12.218
+  * api-change:``sqs``: Update sqs client to latest version
+  * api-change:``globalaccelerator``: Update globalaccelerator client to latest version
+  * api-change:``mediaconvert``: Update mediaconvert client to latest version
+- from version 1.12.217
+  * api-change:``organizations``: Update organizations client to latest version
+- from version 1.12.216
+  * api-change:``ssm``: Update ssm client to latest version
+  * api-change:``securityhub``: Update securityhub client to latest version
+- from version 1.12.215
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``mediapackage-vod``: Update mediapackage-vod client to latest version
+  * api-change:``transcribe``: Update transcribe client to latest version
+- from version 1.12.214
+  * api-change:``datasync``: Update datasync client to latest version
+  * api-change:``rds``: Update rds client to latest version
+
+-------------------------------------------------------------------
 Thu Aug 22 13:02:51 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Version update to 1.12.213 (bsc#1146853, bsc#1146854)

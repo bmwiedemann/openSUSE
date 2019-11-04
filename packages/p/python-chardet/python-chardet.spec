@@ -30,7 +30,6 @@ Version:        3.0.4
 Release:        0
 Summary:        Universal encoding detector
 License:        LGPL-2.1-or-later
-Group:          Development/Languages/Python
 URL:            https://github.com/chardet/chardet
 Source0:        https://files.pythonhosted.org/packages/source/c/chardet/chardet-%{version}.tar.gz
 Source1:        python-chardet-rpmlintrc
@@ -87,7 +86,7 @@ or more files::
 %if !%{with test}
 %{python_expand %$python_install
 mv %{buildroot}%{_bindir}/chardetect %{buildroot}%{_bindir}/chardetect-%{$python_bin_suffix}
-%fdupes -s %{buildroot}%{$python_sitelib}
+%fdupes %{buildroot}%{$python_sitelib}
 }
 %prepare_alternative chardetect
 %endif

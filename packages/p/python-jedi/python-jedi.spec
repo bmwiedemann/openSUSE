@@ -69,7 +69,8 @@ export LANG="en_US.UTF-8"
 # in OBS venv isn't working and builtin completion tests dont work with unbundled typeshed
 # test_static_analysis is flaky
 # test_os_path_join is time based
-%pytest -k "not (test_venv_and_pths or test_completion or test_builtin_details or test_static_analysis or test_os_path_join)"
+# test_import gh#davidhalter/jedi#1429
+%pytest -k "not (test_venv_and_pths or test_completion or test_builtin_details or test_static_analysis or test_os_path_join or test_import)"
 
 %files %{python_files}
 %doc AUTHORS.txt CHANGELOG.rst README.rst

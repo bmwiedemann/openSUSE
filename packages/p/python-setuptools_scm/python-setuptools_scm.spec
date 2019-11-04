@@ -30,7 +30,6 @@ Version:        3.3.3
 Release:        0
 Summary:        Python setuptools handler for SCM tags
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/pypa/setuptools_scm
 Source:         https://files.pythonhosted.org/packages/source/s/setuptools_scm/setuptools_scm-%{version}.tar.gz
 Patch0:         add-rpmfail-pytest-markers.patch
@@ -42,7 +41,7 @@ BuildArch:      noarch
 %if %{with test}
 # Testing requirements
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest < 4.0}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm = %{version}}
 BuildRequires:  git-core
 %endif
@@ -70,7 +69,7 @@ in SCM metadata. It also handles file finders for the supperted SCMs.
 
 %if %{with test}
 %check
-%python_expand PYTHONPATH=%{$python_sitelib} py.test-%{$python_bin_suffix} -v -k 'not (rpmfail_github_connect or test_mercurial or hg)'
+%pytest -k 'not (test_mercurial or hg)'
 %endif
 
 %if !%{with test}

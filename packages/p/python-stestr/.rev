@@ -165,4 +165,13 @@
   * various bugfixes</comment>
     <requestid>729756</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>0d1c33616adb6682f1a323c9ca3fdd16</srcmd5>
+    <version>2.5.1</version>
+    <time>1572883971</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build for anything older than Tumbleweed by explicitly setting
+  utf8 locale</comment>
+    <requestid>744175</requestid>
+  </revision>
 </revisionlist>

@@ -71,4 +71,14 @@ This version fixes the conflict with the &quot;cmark&quot; package.</comment>
     <comment></comment>
     <requestid>704960</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3949ca90cc44ac40abd8b722b830f274</srcmd5>
+    <version>0.9.1</version>
+    <time>1572883455</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.1:
+  * Require newer future package
+  * minor fixes</comment>
+    <requestid>735863</requestid>
+  </revision>
 </revisionlist>

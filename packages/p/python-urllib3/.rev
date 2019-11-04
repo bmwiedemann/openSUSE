@@ -375,4 +375,12 @@
   * Fix issue where tilde (~) characters were incorrectly percent-encoded in the path. (Pull #1692)</comment>
     <requestid>734610</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>2d39f0683a73e5c61285648155cc6042</srcmd5>
+    <version>1.25.6</version>
+    <time>1572883566</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>738592</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           python
-Version:        2.7.16
+Version:        2.7.17
 Release:        0
 Summary:        Python Interpreter
 License:        Python-2.0
@@ -77,23 +77,8 @@ Patch49:        CVE-2019-5010-null-defer-x509-cert-DOS.patch
 # PATCH-FIX-UPSTREAM bpo36160-init-sysconfig_vars.patch gh#python/cpython#12131 mcepl@suse.com
 # Initialize sysconfig variables in test_site.
 Patch50:        bpo36160-init-sysconfig_vars.patch
-# PATCH-FIX-UPSTREAM CVE-2019-9636-netloc-no-decompose-characters.patch bsc#1129346 mcepl@suse.com
-# https://bugs.python.org/issue36216
-Patch51:        CVE-2019-9636-netloc-no-decompose-characters.patch
-# PATCH-FIX-UPSTREAM CVE-2019-9948-avoid_local-file.patch bsc#1130847 mcepl@suse.com
-# removing unnecessary (and potentially harmful) URL scheme local-file://
-Patch52:        CVE-2019-9948-avoid_local-file.patch
-# PATCH-FIX-UPSTREAM CVE-2019-9947-no-ctrl-char-http.patch bsc#1130840 mcepl@suse.com
-# bpo#30458: Disallow control chars in http URLs.
-Patch53:        CVE-2019-9947-no-ctrl-char-http.patch
-# PATCH-FIX-UPSTREAM CVE-2018-20852-cookie-domain-check.patch bsc#1141853 mcepl@suse.com
-# http.cookiejar.DefaultPolicy.domain_return_ok does not correctly validate the domain
-Patch54:        CVE-2018-20852-cookie-domain-check.patch
 # PATCH-FIX-UPSTREAM https://github.com/python/cpython/pull/12341
 Patch55:        bpo36302-sort-module-sources.patch
-# PATCH-FIX-UPSTREAM CVE-2019-16935-xmlrpc-doc-server_title.patch bsc#1153238 mcepl@suse.com
-# XSS vulnerability in the documentation XML-RPC server in server_title field
-Patch56:        CVE-2019-16935-xmlrpc-doc-server_title.patch
 # COMMON-PATCH-END
 BuildRequires:  automake
 BuildRequires:  db-devel
@@ -251,12 +236,7 @@ that rely on earlier non-verification behavior.
 %patch48 -p1
 %patch49 -p1
 %patch50 -p1
-%patch51 -p1
-%patch52 -p1
-%patch53 -p1
-%patch54 -p1
 %patch55 -p1
-%patch56 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^version_required/dnl version_required/' configure.ac

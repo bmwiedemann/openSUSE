@@ -134,4 +134,16 @@
   at the moment</comment>
     <requestid>717081</requestid>
   </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>fde4f00a92cde60af5087e15f1a03656</srcmd5>
+    <version>1.0.1</version>
+    <time>1572884055</time>
+    <user>dimstar_suse</user>
+    <comment>- Add pytest4-mhroncok.patch by Miro Hroncok from
+  gh#html5lib/html5lib-python#414 to make testsuite passing under
+  pytest4+.
+
+- Replace %fdupes with plain %fdupes; hardlinks are better.</comment>
+    <requestid>744731</requestid>
+  </revision>
 </revisionlist>

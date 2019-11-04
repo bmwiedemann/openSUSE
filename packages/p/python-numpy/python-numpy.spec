@@ -81,8 +81,6 @@ Source99:       python-numpy-rpmlintrc
 Patch0:         numpy-buildfix.patch
 # PATCH-FIX-OPENSUSE numpy-1.9.0-remove-__declspec.patch -- fix for spurious compiler warnings that cause build failure
 Patch1:         numpy-1.9.0-remove-__declspec.patch
-# PATCH-FIX-UPSTREAM riscv.patch -- Add support for RISC-V
-Patch2:         riscv.patch
 # # PATCH-FIX-SLE fix-py34-tests.patch -- python 3.4 support
 Patch3:         fix-py34-tests.patch
 Patch4:         s390x.patch
@@ -156,7 +154,6 @@ This package contains files for developing applications using numpy.
 %setup -q -n numpy-%{version}
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 %patch3 -p1
 %ifarch s390x
 %patch4 -p1

@@ -285,4 +285,21 @@
     <comment>- added 0001-Stop-testing-mock-functionality.patch</comment>
     <requestid>721086</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f8d063797fbcda0eba95016de888c409</srcmd5>
+    <version>3.8.1</version>
+    <time>1572883494</time>
+    <user>dimstar_suse</user>
+    <comment>- removed 0001-Stop-testing-mock-functionality.patch
+- update to version 3.8.1
+  - Stop testing mock functionality
+  - Add Python 3 Train unit tests
+  - Dropping the py35 testing
+  - OpenDev Migration Patch
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Sync Sphinx requirement
+  - Update master for stable/stein
+  - Replace openstack.org git:// URLs with https://</comment>
+    <requestid>736631</requestid>
+  </revision>
 </revisionlist>

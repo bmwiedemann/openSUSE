@@ -28,7 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/r/responses/respo
 # test requirements
 BuildRequires:  %{python_module cookies}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pytest < 4.0}
+BuildRequires:  %{python_module pytest < 5.0}
 BuildRequires:  %{python_module pytest-localserver}
 BuildRequires:  %{python_module requests >= 2.0}
 BuildRequires:  %{python_module setuptools}

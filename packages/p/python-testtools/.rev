@@ -252,4 +252,12 @@
 </comment>
     <requestid>628734</requestid>
   </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>c0a7829ecf380c09b487fc411cf7b23f</srcmd5>
+    <version>2.3.0</version>
+    <time>1572883577</time>
+    <user>dimstar_suse</user>
+    <comment>superseding as discussed with dimstar</comment>
+    <requestid>739072</requestid>
+  </revision>
 </revisionlist>

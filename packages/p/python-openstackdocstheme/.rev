@@ -197,4 +197,39 @@
   - The theme is openstackdocs</comment>
     <requestid>692846</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>de0e9ea95058b8b99c705c9eff6eef76</srcmd5>
+    <version>1.31.1</version>
+    <time>1572883499</time>
+    <user>dimstar_suse</user>
+    <comment>- added 0001-Catch-any-exception-when-trying-to-call-git.patch
+- update to version 1.31.1
+  - js: Remove dead or unused JS
+  - Fix version dropdown
+  - Make 'docstheme-build-pdf' executable
+  - Add missing fonts for pdf build in Sphinx 2.0
+  - Update for OpenDev change
+  - Remove a heap of dead CSS rules
+  - css: Use https links (StarlingX)
+  - css: Don't use bold text in titles (StarlingX)
+  - css: General cleanup
+  - Add missing 'role=&quot;main&quot;' attribute
+  - Update api-ref location
+  - Allow to override build date with SOURCE_DATE_EPOCH
+  - OpenDev Migration Patch
+  - Prevent InvocationError on non-existent files
+  - Add 'docstheme-build-pdf' script
+  - Add reno for recent CSS cleanups
+  - Add table styling
+  - css: Use ellipsis for long titles in sidebar (StarlingX)
+  - Update API sidebar
+  - css: Add symlinks for openstack logos
+  - Note External Link Helper is not compatible with project only master brach
+  - Removed 'combined.css' for 'starlingxdocs' theme
+  - css: Move bootstrap modifications to 'combined.css' (StarlingX)
+  - setup.cfg: Remove remanents of 'build_sphinx' usage
+  - js: Fix some comments
+  - Reference OpenStack logo in openstackdocstheme</comment>
+    <requestid>736643</requestid>
+  </revision>
 </revisionlist>

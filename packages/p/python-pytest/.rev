@@ -721,4 +721,16 @@
   * #5819: Windows: Fix regression with conftest whose qualified name contains uppercase characters</comment>
     <requestid>732742</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>d856c167bebf9e6562ab20bf28033cbc</srcmd5>
+    <version>5.2.1</version>
+    <time>1572883506</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.1:
+  * #5902: Fix warnings about deprecated cmp attribute in attrs&gt;=19.2.
+  * #1682: Passing arguments to pytest.fixture() as positional arguments is deprecated - pass them as a keyword argument instead.
+  * #1682: The scope parameter of @pytest.fixture can now be a callable that receives the fixture name and the config object as keyword-only parameters. See the docs for more information.
+  * #5764: New behavior of the --pastebin option: failures to connect to the pastebin server are reported, without failing the pytest run</comment>
+    <requestid>736696</requestid>
+  </revision>
 </revisionlist>

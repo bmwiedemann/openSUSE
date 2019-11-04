@@ -23,7 +23,6 @@ Version:        2.0.2
 Release:        0
 Summary:        Tools for testing processes
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/ionelmc/python-process-tests
 Source:         https://files.pythonhosted.org/packages/source/p/process-tests/process-tests-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -45,7 +44,7 @@ dos2unix LICENSE src/process_tests.egg-info/dependency_links.txt
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license LICENSE

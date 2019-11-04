@@ -22,7 +22,7 @@
 %define skip_python3 1
 %endif
 Name:           python-Django1
-Version:        1.11.24
+Version:        1.11.25
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause

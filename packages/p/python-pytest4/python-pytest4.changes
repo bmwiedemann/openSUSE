@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct 14 08:07:27 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 4.6.6
+- drop importlib-py38.patch and attrs.patch
+ * Fixed using multiple short options together in the command-line
+ * Fix "lexer" being used when uploading to bpaste.net from --pastebin to text
+ * python version checks (detected by flake8-2020) in case python4 becomes thing
+ * Fix warnings about deprecated cmp attribute in attrs>=19.2
+ * Replace importlib_metadata backport with importlib.metadata on Py3.8
+
+-------------------------------------------------------------------
+Thu Oct 10 14:27:20 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- add attrs.patch based on gh#5902 Fix warnings with attrs 19.2
+    and fix object assertions
+
+-------------------------------------------------------------------
 Wed Sep 25 09:34:48 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update more the py38 compat patchset by taking more commits from

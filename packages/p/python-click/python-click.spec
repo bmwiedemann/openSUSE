@@ -23,8 +23,8 @@ Release:        0
 Summary:        A wrapper around optparse for command line utilities
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            http://github.com/mitsuhiko/click
-Source:         https://files.pythonhosted.org/packages/source/c/click/Click-%{version}.tar.gz
+URL:            https://github.com/mitsuhiko/click
+Source:         https://files.pythonhosted.org/packages/source/C/Click/Click-%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -46,7 +46,7 @@ defaults out of the box.
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8

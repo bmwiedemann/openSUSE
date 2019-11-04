@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 14 16:46:45 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Replace %fdupes -s with plain %fdupes; hardlinks are better.
+
+-------------------------------------------------------------------
 Sat Aug 11 08:04:56 UTC 2018 - tchvatal@suse.com
 
 - Really run the tests

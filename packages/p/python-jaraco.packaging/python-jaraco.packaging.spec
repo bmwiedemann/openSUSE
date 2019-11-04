@@ -22,8 +22,7 @@ Version:        6.1
 Release:        0
 Summary:        Supplement packaging Python releases
 License:        MIT
-Group:          Development/Languages/Python
-Url:            https://github.com/jaraco/jaraco.packaging
+URL:            https://github.com/jaraco/jaraco.packaging
 Source:         https://files.pythonhosted.org/packages/source/j/jaraco.packaging/jaraco.packaging-%{version}.tar.gz
 BuildRequires:  %{python_module jaraco.base >= 6.1}
 BuildRequires:  %{python_module pytest}
@@ -53,7 +52,7 @@ rm -rf jaraco.packaging.egg-info
 # We will package the namespace __init__.py separately
 %{python_expand rm %{buildroot}%{$python_sitelib}/jaraco/__init__.py*
 rm -rf %{buildroot}%{$python_sitelib}/jaraco/__pycache__/
-%fdupes -s %{buildroot}%{$python_sitelib}
+%fdupes %{buildroot}%{$python_sitelib}
 }
 
 %python_clone -a %{buildroot}%{_bindir}/dependency-tree

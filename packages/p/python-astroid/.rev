@@ -194,4 +194,14 @@ python-logilab-common is in openSUSE:Factory so this builds now.</comment>
   * ...and more.</comment>
     <requestid>734939</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e0d0f436a3a063d98c642ae8d736371b</srcmd5>
+    <version>2.3.2</version>
+    <time>1572884031</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.2:
+  * All type comments have as parent the corresponding `astroid` node
+  * Pass an inference context to `metaclass()` when inferring an object type</comment>
+    <requestid>744674</requestid>
+  </revision>
 </revisionlist>

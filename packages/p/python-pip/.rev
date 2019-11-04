@@ -541,4 +541,12 @@
   * Simplify the handling of &quot;typing.cast&quot;</comment>
     <requestid>723012</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>5533a035af6399a200e4880ed9ffcd58</srcmd5>
+    <version>19.3.1</version>
+    <time>1572883636</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>741067</requestid>
+  </revision>
 </revisionlist>

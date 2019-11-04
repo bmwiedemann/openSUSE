@@ -1,7 +1,7 @@
 #
 # spec file for package python-rdflib
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,6 @@ Version:        4.2.2
 Release:        0
 Summary:        A Python library for working with RDF
 License:        BSD-3-Clause
-Group:          Development/Libraries/Python
 URL:            http://rdflib.net/
 Source:         https://files.pythonhosted.org/packages/source/r/rdflib/rdflib-%{version}.tar.gz
 BuildRequires:  %{python_module html5lib}
@@ -58,7 +57,6 @@ The library also contains both in-memory and persistent Graph backends.
 
 %package -n %{name}-doc
 Summary:        A Python library for working with RDF
-Group:          Documentation/Other
 Provides:       %{python_module rdflib-doc = %{version}}
 
 %description -n %{name}-doc
@@ -85,7 +83,7 @@ popd
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%fdupes -s docs/_build/html
+%fdupes docs/_build/html
 
 %if %{with tests}
 %check

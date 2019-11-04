@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct  9 14:13:11 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 5.2.1:
+  * #5902: Fix warnings about deprecated cmp attribute in attrs>=19.2.
+  * #1682: Passing arguments to pytest.fixture() as positional arguments is deprecated - pass them as a keyword argument instead.
+  * #1682: The scope parameter of @pytest.fixture can now be a callable that receives the fixture name and the config object as keyword-only parameters. See the docs for more information.
+  * #5764: New behavior of the --pastebin option: failures to connect to the pastebin server are reported, without failing the pytest run
+
+-------------------------------------------------------------------
 Mon Sep 23 12:30:16 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 5.1.3:

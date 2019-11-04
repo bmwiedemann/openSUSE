@@ -25,7 +25,6 @@ Version:        3.0.2
 Release:        0
 Summary:        An implementation of JSON-Schema validation for Python
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/Julian/jsonschema
 Source:         https://files.pythonhosted.org/packages/source/j/jsonschema/jsonschema-%{version}.tar.gz
 BuildRequires:  %{python_module Twisted}
@@ -70,7 +69,7 @@ for Python (supporting 2.6+ including Python 3).
 %python_install
 # Remove benchmark tests
 %{python_expand rm -r %{buildroot}%{$python_sitelib}/jsonschema/benchmarks %{buildroot}%{$python_sitelib}/jsonschema/tests
-%fdupes -s %{buildroot}%{$python_sitelib}
+%fdupes %{buildroot}%{$python_sitelib}
 }
 
 # Prepare for update-alternatives usage

@@ -4104,4 +4104,41 @@
 - devel package build can easily be disabled now</comment>
     <requestid>738119</requestid>
   </revision>
+  <revision rev="299" vrev="1">
+    <srcmd5>d3a4f9414446e2eb88c34887010b6a84</srcmd5>
+    <version>70.0.1</version>
+    <time>1572883370</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 70.0.1
+  * Fix for an issue that caused some websites or page elements using
+    dynamic JavaScript to fail to load. (bmo#1592136)
+  * Title bar no longer shows in full screen view (bmo#1588747)
+- added mozilla-bmo1504834-part4.patch to fix some visual issues on
+  big endian platforms
+
+- Mozilla Firefox 70.0
+  * more privacy protections from Enhanced Tracking Protection
+  * Firefox Lockwise passwordmanager
+  * Improvements to core engine components, for better browsing on more sites
+  * Improved privacy and security indicators
+  MFSA 2019-34
+  * CVE-2018-6156 (bmo#1480088)
+    Heap buffer overflow in FEC processing in WebRTC
+  * CVE-2019-15903 (bmo#1584907)
+    Heap overflow in expat library in XML_GetCurrentLineNumber
+  * CVE-2019-11757 (bmo#1577107)
+    Use-after-free when creating index updates in IndexedDB
+  * CVE-2019-11759 (bmo#1577953)
+    Stack buffer overflow in HKDF output
+  * CVE-2019-11760 (bmo#1577719)
+    Stack buffer overflow in WebRTC networking
+  * CVE-2019-11761 (bmo#1561502)
+    Unintended access to a privileged JSONView object
+  * CVE-2019-11762 (bmo#1582857)
+    document.domain-based origin isolation has same-origin-property violation
+  * CVE-2019-11763 (bmo#1584216)
+    Incorrect HTML parsing results in XSS bypass technique
+  * CVE-2019-11765 (bmo#1562582)</comment>
+    <requestid>744799</requestid>
+  </revision>
 </revisionlist>

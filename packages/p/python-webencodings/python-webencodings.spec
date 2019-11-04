@@ -1,7 +1,7 @@
 #
 # spec file for package python-webencodings
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        0.5.1
 Release:        0
 Summary:        Character encoding aliases for legacy web content
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/SimonSapin/python-webencodings
 Source:         https://files.pythonhosted.org/packages/source/w/webencodings/webencodings-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/gsnedders/python-webencodings/v%{version}/LICENSE
@@ -56,7 +55,7 @@ cp %{SOURCE1} ./
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license LICENSE

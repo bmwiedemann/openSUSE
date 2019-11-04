@@ -189,4 +189,14 @@
   * pypi-url-update.patch</comment>
     <requestid>730637</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>3d9601781bb6269bb7be0ff54696f197</srcmd5>
+    <version>0.2.9.post0</version>
+    <time>1572883744</time>
+    <user>dimstar_suse</user>
+    <comment>- Add correct_large_version_number.patch fixing bt#pypa/distlib#129
+
+- Skip test_abi tests. bt#pypa/distlib#129</comment>
+    <requestid>742772</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 23 13:38:06 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 8.2.1
+  * Deprecated use of negative timeouts as alias for infinite timeouts in ThreadPool.stop.
+  * For OPTION requests, bypass URI as path if it does not appear absolute.
+  * Workers are now request-based, addressing the long-standing issue with keep-alive connections
+  * Remove custom setup.cfg parser handling, allowing the project (including sdist) 
+    to build/run on setuptools 41.4. Now building cheroot requires setuptools 30.3 or later 
+    (for declarative config support) and preferably 34.4 or later (as indicated in pyproject.toml).
+
+-------------------------------------------------------------------
 Fri Oct  4 11:09:50 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 7.0.0

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 18 11:28:38 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 19.3.1
+  * Document Python 3.8 support.
+  * Fix bug that prevented installation of PEP 517 packages without setup.py.
+  * Remove undocumented support for un-prefixed URL requirements pointing to SVN repositories.
+  * Remove the deprecated --venv option from pip config.
+  * Make pip show warn about packages not found.
+  * Abort installation if any archive contains a file which would be placed outside the extraction location.
+  * pip's CLI completion code no longer prints a Traceback if it is interrupted.
+  * Ignore errors copying socket files for local source installs (in Python 3).
+  * Skip copying .tox and .nox directories to temporary build directories
+  * Ignore "require_virtualenv" in pip config
+
+-------------------------------------------------------------------
 Tue Aug 13 08:19:21 UTC 2019 - mimi.vx@gmail.com
 
 - Update to version 19.2.2:

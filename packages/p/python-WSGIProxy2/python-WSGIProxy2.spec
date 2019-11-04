@@ -30,7 +30,6 @@ Version:        0.4.6
 Release:        0
 Summary:        WSGI Proxy Implementation
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/gawel/WSGIProxy2/
 Source:         https://files.pythonhosted.org/packages/source/W/WSGIProxy2/WSGIProxy2-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -45,6 +44,7 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module WebOb}
 BuildRequires:  %{python_module WebTest}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module urllib3}
@@ -68,7 +68,8 @@ Proxy support for WebOb or classic WSGI applications
 
 %check
 %if %{with test}
-%python_exec setup.py test
+# test_quoted_utf8_url: randomly fails
+%pytest -k 'not test_quoted_utf8_url'
 %endif
 
 %if !%{with test}

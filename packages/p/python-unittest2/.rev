@@ -152,4 +152,12 @@
     <comment></comment>
     <requestid>666821</requestid>
   </revision>
+  <revision rev="21" vrev="9">
+    <srcmd5>d56c454365e1a3ebb7428cddc57ad350</srcmd5>
+    <version>1.1.0</version>
+    <time>1572883787</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove pyparsing buildignore as the cycle was solved</comment>
+    <requestid>743973</requestid>
+  </revision>
 </revisionlist>

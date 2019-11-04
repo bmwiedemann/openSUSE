@@ -39,4 +39,12 @@
   * Fixes for python 3.7</comment>
     <requestid>632157</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0d3dbd44b53cf6cb0f26b0347a353973</srcmd5>
+    <version>1.5.1</version>
+    <time>1572883519</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>738122</requestid>
+  </revision>
 </revisionlist>

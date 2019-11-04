@@ -52,4 +52,29 @@
     <comment>- Restrict the pytest5 for now, issue reported upstream</comment>
     <requestid>717017</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>78c06af961c2ac1ad2c1ae85f3d14e50</srcmd5>
+    <version>1.9.2</version>
+    <time>1572883439</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.9.2:
+ - Added explicit Python versions in setup.py classifiers ([#65])
+ - Removed pytest version constraint and fixed tests to work with both 5.x and
+   older versions. ([#57])
+ -  https://github.com/textX/Arpeggio/issues/65
+ -  https://github.com/textX/Arpeggio/issues/57
+- update to version 1.9.1:
+ - Lowered the required pytest version for running tests as we'll still support
+   Python 2.7 until its EOL.
+ - Fixed problem with `OrderedChoice` which hasn't maintained `skipws/ws`
+   state. [#61]
+   Reported at https://github.com/textX/textX/issues/205
+ - Various fixes in the docs, docstrings and examples. Thanks mcepl@GitHub and
+   zetaraku@GitHub.
+ - docs support for different versions thanks to
+   [mike](https://github.com/jimporter/mike)
+ - https://github.com/textX/Arpeggio/issues/61
+- remvove imp-to-importlib.patch, integrated upstream</comment>
+    <requestid>735856</requestid>
+  </revision>
 </revisionlist>

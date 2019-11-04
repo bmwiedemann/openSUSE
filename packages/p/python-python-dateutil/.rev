@@ -92,4 +92,12 @@
       specific errors instead of a standard ValueError if certain</comment>
     <requestid>678904</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>861d697cec75d949ab0a9e358c0d69c4</srcmd5>
+    <version>2.8.0</version>
+    <time>1572883920</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>744004</requestid>
+  </revision>
 </revisionlist>

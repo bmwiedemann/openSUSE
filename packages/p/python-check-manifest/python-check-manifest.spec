@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-check-manifest
-Version:        0.39
+Version:        0.40
 Release:        0
 Summary:        Tool to check Python source package MANIFEST.in for completeness
 License:        MIT

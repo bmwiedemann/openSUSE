@@ -245,4 +245,13 @@
     <comment></comment>
     <requestid>700339</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>57d72030b5eeae69f6e969075aaee8ef</srcmd5>
+    <version>1.13.0</version>
+    <time>1572883557</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.13.0:
+  * No changelog provided upstream</comment>
+    <requestid>738589</requestid>
+  </revision>
 </revisionlist>

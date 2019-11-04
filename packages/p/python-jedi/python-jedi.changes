@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 24 20:07:37 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Skip TestSetupReadline.test_import because of gh#davidhalter/jedi#1429
+
+-------------------------------------------------------------------
 Thu Sep 12 17:43:32 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip another time based test test_os_path_join

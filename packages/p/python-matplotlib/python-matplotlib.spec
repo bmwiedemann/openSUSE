@@ -19,8 +19,8 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         oldpython python
 %define         skip_python2 1
-# No Qt4 plugin on > Leap 15
-%if 0%{?suse_version} > 1500
+# No Qt4 plugin on > Leap 15.1
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150100
 %bcond_with qt4
 %else
 %bcond_without qt4

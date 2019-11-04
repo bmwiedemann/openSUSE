@@ -22,16 +22,18 @@ Version:        1.0.1
 Release:        0
 Summary:        HTML parser based on the WHAT-WG Web Applications 1
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/html5lib/html5lib-python
 Source:         https://files.pythonhosted.org/packages/source/h/html5lib/html5lib-%{version}.tar.gz
+# PATCH-{FIX|FEATURE}-{OPENSUSE|SLE|UPSTREAM} name-of-file.patch gh#html5lib/html5lib-python#414 mcepl@suse.com
+# This patch makes testsuite pass with pytest4
+Patch0:         pytest4-mhroncok.patch
 BuildRequires:  %{python_module Genshi}
 BuildRequires:  %{python_module datrie}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pytest-expect}
 # https://github.com/html5lib/html5lib-python/issues/411
-BuildRequires:  %{python_module pytest < 4.0}
+BuildRequires:  %{python_module pytest-expect}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 18.5}
 BuildRequires:  %{python_module six >= 1.9}
 BuildRequires:  %{python_module webencodings}
@@ -56,16 +58,17 @@ simple custom format
 
 %prep
 %setup -q -n html5lib-%{version}
+%autopatch -p1
 
 %build
 %python_build
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand %python_exec %{_bindir}/py.test --tb=short
+%pytest --tb=short
 
 %files %{python_files}
 %license LICENSE

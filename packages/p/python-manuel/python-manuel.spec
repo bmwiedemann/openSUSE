@@ -23,7 +23,6 @@ Version:        1.10.1
 Release:        0
 Summary:        Python module to build tested documentation
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://pypi.org/project/manuel/
 Source:         https://files.pythonhosted.org/packages/source/m/manuel/manuel-%{version}.tar.gz
 # add fixed sphinx config <hpj@urpla.net>
@@ -47,7 +46,6 @@ with the -doc package and at http://packages.python.org/manuel/.
 
 %package        doc
 Summary:        Build tested documentation
-Group:          Development/Languages/Python
 
 %description    doc
 This package contains documentation files for %{name}.
@@ -63,7 +61,7 @@ python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py -q test

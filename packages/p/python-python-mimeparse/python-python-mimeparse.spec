@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-mimeparse
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,6 @@ Version:        1.6.0
 Release:        0
 Summary:        Basic functions for parsing and matching mime-type names
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/dbtsai/python-mimeparse
 Source:         https://files.pythonhosted.org/packages/source/p/python-mimeparse/python-mimeparse-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -49,7 +48,7 @@ the HTTP specification [RFC 2616] for a complete explanation.
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec mimeparse_test.py

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-botocore
-Version:        1.12.213
+Version:        1.12.248
 Release:        0
 Summary:        Python interface for AWS
 License:        Apache-2.0

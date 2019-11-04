@@ -22,14 +22,12 @@ Version:        4.7
 Release:        0
 Summary:        Zope testing helpers
 License:        ZPL-2.1
-Group:          Development/Languages/Python
-Url:            https://pypi.python.org/pypi/zope.testing
+URL:            https://pypi.python.org/pypi/zope.testing
 Source:         https://files.pythonhosted.org/packages/source/z/zope.testing/zope.testing-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 # Test requirements:
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %python_subpackages
 
@@ -91,14 +89,14 @@ wait
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py test
 
 %files %{python_files}
-%defattr(-,root,root,-)
-%doc COPYRIGHT.txt LICENSE.txt README.rst
+%license LICENSE.txt
+%doc COPYRIGHT.txt README.rst
 %{python_sitelib}/*
 
 %changelog

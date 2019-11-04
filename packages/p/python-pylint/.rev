@@ -134,4 +134,20 @@
   (gh#PyCQA/pylint#3171)</comment>
     <requestid>736468</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a8c4cf09da502f01038937a5f64a33af</srcmd5>
+    <version>2.4.3</version>
+    <time>1572883750</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.3:
+  * Fix an issue with ``unnecessary-comprehension`` in comprehensions with additional repacking of elements.
+  * ``import-outside-toplevel`` is emitted for ``ImportFrom`` nodes as well.
+  * Do not emit ``no-method-argument`` for functions using positional only args.
+  * ``consider-using-sys-exit`` is no longer emitted when `exit` is imported in the local scope.
+  * `invalid-overridden-method` takes `abc.abstractproperty` in account
+  * Fixed ``missing-yield-type-doc`` getting incorrectly raised when
+  a generator does not document a yield type but has a type annotation.
+  * ``typing.overload`` functions are exempted from ``too-many-function-args``</comment>
+    <requestid>743455</requestid>
+  </revision>
 </revisionlist>

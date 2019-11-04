@@ -650,4 +650,12 @@
   with newer versions (they pinned the release)</comment>
     <requestid>717463</requestid>
   </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>8b39a06de5e5c5262387b3d950b28eb5</srcmd5>
+    <version>2.22.0</version>
+    <time>1572884019</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>744659</requestid>
+  </revision>
 </revisionlist>

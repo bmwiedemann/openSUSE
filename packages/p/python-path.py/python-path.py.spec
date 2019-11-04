@@ -25,17 +25,15 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
 %define skip_python2 1
-
 Name:           python-path.py%{psuffix}
 Version:        12.0.1
 Release:        0
 Summary:        A module wrapper for os.path
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/jaraco/path.py
 Source:         https://files.pythonhosted.org/packages/source/p/path.py/path.py-%{version}.tar.gz
+Patch0:         pytest5.patch
 BuildRequires:  %{python_module setuptools_scm >= 1.15.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -45,8 +43,7 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module importlib-metadata >= 0.5}
 BuildRequires:  %{python_module path.py >= %{version}}
-# https://github.com/jaraco/path.py/issues/167
-BuildRequires:  %{python_module pytest < 5.0}
+BuildRequires:  %{python_module pytest}
 %endif
 %python_subpackages
 
@@ -57,6 +54,7 @@ on those path objects directly.
 
 %prep
 %setup -q -n path.py-%{version}
+%patch0 -p1
 rm -rf path.py.egg-info
 # no need to pull in flake
 rm -f pytest.ini

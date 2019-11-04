@@ -3,7 +3,7 @@
 # Date 1559294891 -7200
 #      Fri May 31 11:28:11 2019 +0200
 # Node ID c2aa7198fb925e7fde96abf65b6f68b9b755f112
-# Parent  85e4798b74da9c377f84cf8f5dd59a7f952d92eb
+# Parent  86d7ace0b36abf542e56fbb702a5f9b308b9bf77
 Description: Add KDE integration to Firefox (toolkit parts)
 Author: Wolfgang Rosenauer <wolfgang@rosenauer.org>
 Author: Lubos Lunak <lunak@suse.com>
@@ -13,7 +13,7 @@ Bug: https://bugzilla.mozilla.org/show_bug.cgi?id=140751
 diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
 --- a/modules/libpref/Preferences.cpp
 +++ b/modules/libpref/Preferences.cpp
-@@ -83,16 +83,17 @@
+@@ -88,16 +88,17 @@
  #include "nsXPCOM.h"
  #include "nsXULAppAPI.h"
  #include "nsZipArchive.h"
@@ -31,7 +31,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  #ifdef MOZ_MEMORY
  #  include "mozmemory.h"
  #endif
-@@ -4623,25 +4624,37 @@ Result<Ok, const char*> Preferences::Ini
+@@ -4542,25 +4543,37 @@ nsresult Preferences::InitInitialObjects
    // application pref files for backwards compatibility.
    static const char* specialFiles[] = {
  #if defined(XP_MACOSX)
@@ -69,7 +69,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  
    // Load jar:$app/omni.jar!/defaults/preferences/*.js
    // or jar:$gre/omni.jar!/defaults/preferences/*.js.
-@@ -4688,17 +4701,17 @@ Result<Ok, const char*> Preferences::Ini
+@@ -4606,17 +4619,17 @@ nsresult Preferences::InitInitialObjects
        }
  
        nsCOMPtr<nsIFile> path = do_QueryInterface(elem);
@@ -91,9 +91,9 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
 diff --git a/modules/libpref/moz.build b/modules/libpref/moz.build
 --- a/modules/libpref/moz.build
 +++ b/modules/libpref/moz.build
-@@ -31,16 +31,20 @@ EXPORTS.mozilla += [
-     'StaticPrefs.h',
+@@ -110,16 +110,20 @@ EXPORTS.mozilla += [
  ]
+ EXPORTS.mozilla += sorted(['!' + g for g in gen_h])
  
  UNIFIED_SOURCES += [
      'Preferences.cpp',
@@ -104,13 +104,13 @@ diff --git a/modules/libpref/moz.build b/modules/libpref/moz.build
 +    '/toolkit/xre'
 +]
 +
- XPCOM_MANIFESTS += [
-     'components.conf',
- ]
+ gen_all_tuple = tuple(gen_h + gen_cpp + gen_rs)
  
- include('/ipc/chromium/chromium-config.mozbuild')
+ GENERATED_FILES += [gen_all_tuple]
  
- FINAL_LIBRARY = 'xul'
+ static_pref_list = GENERATED_FILES[gen_all_tuple]
+ static_pref_list.script = 'init/generate_static_pref_list.py:emit_code'
+ static_pref_list.inputs = ['init/StaticPrefList.yaml']
  
 diff --git a/python/mozbuild/mozpack/chrome/flags.py b/python/mozbuild/mozpack/chrome/flags.py
 --- a/python/mozbuild/mozpack/chrome/flags.py
@@ -175,7 +175,7 @@ diff --git a/toolkit/components/downloads/moz.build b/toolkit/components/downloa
 diff --git a/toolkit/mozapps/downloads/HelperAppDlg.jsm b/toolkit/mozapps/downloads/HelperAppDlg.jsm
 --- a/toolkit/mozapps/downloads/HelperAppDlg.jsm
 +++ b/toolkit/mozapps/downloads/HelperAppDlg.jsm
-@@ -1204,36 +1204,66 @@ nsUnknownContentTypeDialog.prototype = {
+@@ -1199,36 +1199,66 @@ nsUnknownContentTypeDialog.prototype = {
          params.handlerApp &&
          params.handlerApp.executable &&
          params.handlerApp.executable.isFile()
@@ -302,7 +302,7 @@ diff --git a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp b/toolkit/sy
  nsUnixSystemProxySettings::GetMainThreadOnly(bool* aMainThreadOnly) {
    // dbus prevents us from being threadsafe, but this routine should not block
    // anyhow
-@@ -382,21 +385,50 @@ nsresult nsUnixSystemProxySettings::GetP
+@@ -381,21 +384,50 @@ nsresult nsUnixSystemProxySettings::GetP
    return NS_OK;
  }
  
@@ -356,7 +356,7 @@ diff --git a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp b/toolkit/sy
 diff --git a/toolkit/xre/moz.build b/toolkit/xre/moz.build
 --- a/toolkit/xre/moz.build
 +++ b/toolkit/xre/moz.build
-@@ -83,17 +83,19 @@ elif CONFIG['MOZ_WIDGET_TOOLKIT'] == 'co
+@@ -85,17 +85,19 @@ elif CONFIG['MOZ_WIDGET_TOOLKIT'] == 'co
          '../components/printingui',
      ]
  elif CONFIG['MOZ_WIDGET_TOOLKIT'] == 'uikit':
@@ -364,7 +364,7 @@ diff --git a/toolkit/xre/moz.build b/toolkit/xre/moz.build
          'nsNativeAppSupportDefault.cpp',
          'UIKitDirProvider.mm',
      ]
- elif 'gtk' in CONFIG['MOZ_WIDGET_TOOLKIT']:
+ elif CONFIG['MOZ_WIDGET_TOOLKIT'] == 'gtk':
 +    EXPORTS += ['nsKDEUtils.h']
      UNIFIED_SOURCES += [
 +        'nsKDEUtils.cpp',
@@ -781,7 +781,7 @@ new file mode 100644
 diff --git a/uriloader/exthandler/HandlerServiceParent.cpp b/uriloader/exthandler/HandlerServiceParent.cpp
 --- a/uriloader/exthandler/HandlerServiceParent.cpp
 +++ b/uriloader/exthandler/HandlerServiceParent.cpp
-@@ -1,17 +1,17 @@
+@@ -7,17 +7,17 @@
  #include "mozilla/ipc/ProtocolUtils.h"
  #include "mozilla/Logging.h"
  #include "HandlerServiceParent.h"
@@ -800,7 +800,7 @@ diff --git a/uriloader/exthandler/HandlerServiceParent.cpp b/uriloader/exthandle
  using mozilla::dom::RemoteHandlerApp;
  
  namespace {
-@@ -282,17 +282,17 @@ mozilla::ipc::IPCResult HandlerServicePa
+@@ -288,17 +288,17 @@ mozilla::ipc::IPCResult HandlerServicePa
  mozilla::ipc::IPCResult HandlerServiceParent::RecvExistsForProtocolOS(
      const nsCString& aProtocolScheme, bool* aHandlerExists) {
    if (aProtocolScheme.Length() > MAX_SCHEME_LENGTH) {
@@ -819,7 +819,7 @@ diff --git a/uriloader/exthandler/HandlerServiceParent.cpp b/uriloader/exthandle
  
  /*
   * Check if a handler exists for the provided protocol. Check the datastore
-@@ -311,17 +311,17 @@ mozilla::ipc::IPCResult HandlerServicePa
+@@ -317,17 +317,17 @@ mozilla::ipc::IPCResult HandlerServicePa
    nsCOMPtr<nsIExternalProtocolService> protoSvc =
        do_GetService(NS_EXTERNALPROTOCOLSERVICE_CONTRACTID, &rv);
    if (NS_WARN_IF(NS_FAILED(rv))) {
@@ -848,7 +848,7 @@ diff --git a/uriloader/exthandler/moz.build b/uriloader/exthandler/moz.build
      if CONFIG['CC_TYPE'] in ('clang', 'gcc'):
          CXXFLAGS += ['-Wno-error=shadow']
  
- if 'gtk' in CONFIG['MOZ_WIDGET_TOOLKIT']:
+ if CONFIG['MOZ_WIDGET_TOOLKIT'] == 'gtk':
      UNIFIED_SOURCES += [
 +        'unix/nsCommonRegistry.cpp',
          'unix/nsGNOMERegistry.cpp',
@@ -877,7 +877,7 @@ diff --git a/uriloader/exthandler/moz.build b/uriloader/exthandler/moz.build
      CXXFLAGS += CONFIG['TK_CFLAGS']
      CXXFLAGS += CONFIG['MOZ_DBUS_CFLAGS']
  
- if CONFIG['MOZ_WIDGET_TOOLKIT'] == 'gtk3':
+ if CONFIG['MOZ_WIDGET_TOOLKIT'] == 'gtk':
      CXXFLAGS += CONFIG['TK_CFLAGS']
 diff --git a/uriloader/exthandler/unix/nsCommonRegistry.cpp b/uriloader/exthandler/unix/nsCommonRegistry.cpp
 new file mode 100644
@@ -1826,7 +1826,7 @@ diff --git a/xpcom/components/moz.build b/xpcom/components/moz.build
 +    '/toolkit/xre',
  ]
  
- if 'gtk' in CONFIG['MOZ_WIDGET_TOOLKIT']:
+ if CONFIG['MOZ_WIDGET_TOOLKIT'] == 'gtk':
      CXXFLAGS += CONFIG['TK_CFLAGS']
  
  if CONFIG['MOZ_LAYOUT_DEBUGGER']:

@@ -78,14 +78,17 @@ and has examples.
 rm stestr/tests/repository/test_sql.py
 
 %build
+export LC_ALL="en_US.UTF8"
 %python_build
 
 %install
+export LC_ALL="en_US.UTF8"
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/stestr
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+export LC_ALL="en_US.UTF8"
 # test_empty_with_pretty_out - edge case not triggered in OBS
 %{python_expand mkdir build/bin
 for filepath in %{buildroot}/%{_bindir}/stestr*-%{$python_bin_suffix}; do

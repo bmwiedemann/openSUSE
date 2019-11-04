@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Oct 27 08:30:00 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- Update to 2.4.3:
+  * Fix an issue with ``unnecessary-comprehension`` in comprehensions with additional repacking of elements.
+  * ``import-outside-toplevel`` is emitted for ``ImportFrom`` nodes as well.
+  * Do not emit ``no-method-argument`` for functions using positional only args.
+  * ``consider-using-sys-exit`` is no longer emitted when `exit` is imported in the local scope.
+  * `invalid-overridden-method` takes `abc.abstractproperty` in account
+  * Fixed ``missing-yield-type-doc`` getting incorrectly raised when
+  a generator does not document a yield type but has a type annotation.
+  * ``typing.overload`` functions are exempted from ``too-many-function-args``
+
+-------------------------------------------------------------------
 Wed Oct  9 11:27:15 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.4.2:

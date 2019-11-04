@@ -16,19 +16,18 @@
 #
 
 
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 # Selenium and memcached are not operational
 %bcond_with selenium
 %bcond_with memcached
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-Django
 # We want support LTS versions of Django - odd numbered 2.2 -> 2.4 -> 2.6 -> 3.0 etc
-Version:        2.2.5
+Version:        2.2.6
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
-URL:            http://www.djangoproject.com
+URL:            https://www.djangoproject.com
 Source:         https://www.djangoproject.com/m/releases/2.2/Django-%{version}.tar.gz
 Source1:        https://www.djangoproject.com/m/pgp/Django-%{version}.checksum.txt#/Django-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
@@ -50,19 +49,6 @@ BuildRequires:  %{python_module sqlparse}
 BuildRequires:  %{python_module tblib}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %{with memcached}
-BuildRequires:  %{python_module pylibmc}
-BuildRequires:  %{python_module python-memcached >= 1.59}
-%endif
-%if %{with selenium}
-# python-selenium is supported only on the Intel architecture.
-# Additionally chromedriver is only available on x86_64.
-%ifarch %{ix86} x86_64
-BuildRequires:  %{python_module selenium}
-BuildRequires:  chromedriver
-BuildRequires:  xvfb-run
-%endif
-%endif
 Requires:       python-Pillow
 Requires:       python-argon2-cffi >= 16.1.0
 Requires:       python-pytz
@@ -82,6 +68,19 @@ Obsoletes:      python3-django < %{version}
 Provides:       python3-South = %{version}
 Obsoletes:      python3-South < %{version}
 BuildArch:      noarch
+%if %{with memcached}
+BuildRequires:  %{python_module pylibmc}
+BuildRequires:  %{python_module python-memcached >= 1.59}
+%endif
+%if %{with selenium}
+# python-selenium is supported only on the Intel architecture.
+# Additionally chromedriver is only available on x86_64.
+%ifarch %{ix86} x86_64
+BuildRequires:  %{python_module selenium}
+BuildRequires:  chromedriver
+BuildRequires:  xvfb-run
+%endif
+%endif
 %python_subpackages
 
 %description
@@ -124,7 +123,7 @@ export PYTHONDONTWRITEBYTECODE=1
 export PATH=%{_libdir}/chromium:$PATH
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} xvfb-run $python tests/runtests.py -v 2 --selenium=chome
 %else
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python tests/runtests.py 
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python tests/runtests.py
 %endif
 
 %post

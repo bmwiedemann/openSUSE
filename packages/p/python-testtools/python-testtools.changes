@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 14 16:47:02 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Replace %fdupes -s with plain %fdupes; hardlinks are better.
+
+-------------------------------------------------------------------
 Fri Aug 10 11:27:08 UTC 2018 - tchvatal@suse.com
 
 - Add patch to build with python 3.7:

@@ -230,4 +230,13 @@
   and will be solved with next release</comment>
     <requestid>716844</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>ed05592657005ff7c1b3f3f1871321c6</srcmd5>
+    <version>3.3.3</version>
+    <time>1572884037</time>
+    <user>dimstar_suse</user>
+    <comment>- Update the add-rpmfail-pytest-markers.patch to not have
+  pin on old pytest</comment>
+    <requestid>744684</requestid>
+  </revision>
 </revisionlist>

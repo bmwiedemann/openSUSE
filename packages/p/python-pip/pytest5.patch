@@ -1,7 +1,7 @@
-Index: pip-19.1.1+git.1557777841.63878672/tests/unit/test_wheel.py
+Index: pip-19.1.1/tests/unit/test_wheel.py
 ===================================================================
---- pip-19.1.1+git.1557777841.63878672.orig/tests/unit/test_wheel.py
-+++ pip-19.1.1+git.1557777841.63878672/tests/unit/test_wheel.py
+--- pip-19.1.1.orig/tests/unit/test_wheel.py
++++ pip-19.1.1/tests/unit/test_wheel.py
 @@ -378,7 +378,7 @@ def test_check_compatibility():
      # test raises with correct error
      with pytest.raises(UnsupportedWheel) as e:

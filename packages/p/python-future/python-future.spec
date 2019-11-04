@@ -12,25 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-future
-Version:        0.17.1
+Version:        0.18.0
 Release:        0
 Summary:        Single-source support for Python 3 and 2
-# See https://github.com/PythonCharmers/python-future/issues/242 for PSF licensing
 License:        MIT AND Python-2.0
-URL:            https://python-future.org
+# See https://github.com/PythonCharmers/python-future/issues/242 for PSF licensing
+Url:            https://python-future.org
 Source0:        https://files.pythonhosted.org/packages/source/f/future/future-%{version}.tar.gz
 Source100:      python-future-rpmlintrc
-# PATCH-FIX-UPSTREAM python38-compat.patch gh#PythonCharmers/python-future#447 mcepl@suse.com
-# Python 3.8 removed urllib.request.splitattr
-Patch0:         python38-compat.patch
 # PATCH-FIX-UPSTREAM python38-pow.patch gh#PythonCharmers/python-future#474 mcepl@suse.com
-Patch1:         python38-pow.patch
+Patch0:         python38-pow.patch
+# UPSTREAM ISSUE https://github.com/PythonCharmers/python-future/issues/508
+Patch1:         future-correct-mimetype.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

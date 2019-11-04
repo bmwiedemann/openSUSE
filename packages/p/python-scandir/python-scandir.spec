@@ -22,7 +22,6 @@ Version:        1.10.0
 Release:        0
 Summary:        Scandir, a better directory iterator and faster oswalk
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/benhoyt/scandir
 Source:         https://files.pythonhosted.org/packages/source/s/scandir/scandir-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
@@ -75,7 +74,7 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitearch}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 export LANG=en_US.UTF-8

@@ -26,14 +26,13 @@
 %bcond_with test
 %endif
 Name:           python-pytest4%{psuffix}
-Version:        4.6.5
+Version:        4.6.6
 Release:        0
 Summary:        Python testing tool with autodiscovery and detailed asserts
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/pytest
 Source:         https://files.pythonhosted.org/packages/source/p/pytest/pytest-%{version}.tar.gz
-Patch0:         importlib-py38.patch
 BuildRequires:  %{python_module setuptools >= 40.0}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  fdupes
@@ -86,7 +85,6 @@ pytest is a cross-project Python testing tool. It provides:
 
 %prep
 %setup -q -n pytest-%{version}
-%patch0 -p1
 
 %build
 %python_build

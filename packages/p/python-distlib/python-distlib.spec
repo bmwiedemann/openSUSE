@@ -26,6 +26,9 @@ Group:          Development/Languages/Python
 URL:            https://bitbucket.org/pypa/distlib
 Source:         https://files.pythonhosted.org/packages/source/d/distlib/distlib-%{version}.zip
 Patch0:         remove-backports.patch
+# PATCH-FIX-UPSTREAM correct_large_version_number.patch bt#pypa/distlib#129 mcepl@suse.com
+# Change Python version handling to cope with a version like 3.10
+Patch1:         correct_large_version_number.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -39,7 +42,7 @@ Python distribution utilities.
 
 %prep
 %setup -q -n distlib-%{version}
-%patch0 -p1
+%autopatch -p1
 
 rm -r tests/unittest2
 

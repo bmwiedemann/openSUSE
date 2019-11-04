@@ -25,6 +25,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/progrium/pyjwt
 Source:         https://files.pythonhosted.org/packages/source/P/PyJWT/PyJWT-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/jpadilla/pyjwt/pull/448.patch
+Patch0:         0001-Catch-BadSignatureError-raised-by-ecdsa-0.13.3.patch
 BuildRequires:  %{python_module cryptography >= 1.4}
 BuildRequires:  %{python_module ecdsa}
 BuildRequires:  %{python_module pytest}
@@ -44,6 +46,7 @@ A Python implementation of JSON Web Token draft 01.
 
 %prep
 %setup -q -n PyJWT-%{version}
+%patch0 -p1
 
 %build
 %python_build

@@ -24,15 +24,12 @@ Summary:        Backports of the linecache module
 # This is a backport of code taken from the Python codebase,
 # and such is under the same license as Python as a whole.
 License:        Python-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/testing-cabal/linecache2
-Source:         https://pypi.io/packages/source/l/linecache2/linecache2-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/l/linecache2/linecache2-%{version}.tar.gz
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-#!BuildIgnore:  python2-pyparsing
-#!BuildIgnore:  python3-pyparsing
 Requires:       python-pbr
 BuildArch:      noarch
 %python_subpackages
@@ -48,13 +45,12 @@ A backport of linecache to older supported Pythons.
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst AUTHORS ChangeLog
 # Contains the license
-%doc setup.cfg
+%license setup.cfg
 %{python_sitelib}/linecache2
 %{python_sitelib}/linecache2-%{version}-py*.egg-info
 

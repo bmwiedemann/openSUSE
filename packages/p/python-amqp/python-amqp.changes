@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct  9 08:40:24 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.5.2:
+  - Ignore all methods except Close and Close-OK when channel/connection is closing
+  - Fix faulty ssl sni intiation parameters (#283) 
+  - Undeprecate auto_delete flag for exchanges. (#287) 
+  - Improved tests and testing environments
+
+-------------------------------------------------------------------
 Wed Sep 11 13:18:08 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.5.1:

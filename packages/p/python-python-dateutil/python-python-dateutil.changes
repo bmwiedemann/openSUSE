@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 14 14:36:03 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Replace %fdupes -s with plain %fdupes; hardlinks are better.
+
+-------------------------------------------------------------------
 Mon Feb 25 12:05:09 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Switch to _multibuild to not create buildcycle

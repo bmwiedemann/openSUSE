@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  1 07:57:29 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add two patches only updating test logic to remove pytest 3 pin
+  - merged_pr_5049.patch
+  - pr_5251-pytest5.patch
+
+-------------------------------------------------------------------
 Mon Jul 22 07:57:59 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Hardcode pytest 3.x series as upstream even in git does not work

@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-CommonMark
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        Python parser for the CommonMark Markdown spec
 License:        BSD-3-Clause
@@ -28,14 +28,14 @@ URL:            https://github.com/rtfd/CommonMark-py
 Source:         https://files.pythonhosted.org/packages/source/c/commonmark/commonmark-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-future
+BuildRequires:  python-future >= 0.14.0
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Provides:       python-commonmark = %{version}
 Obsoletes:      python-commonmark < %{version}
 BuildArch:      noarch
 %ifpython2
-Requires:       python-future
+Requires:       python-future >= 0.14.0
 Obsoletes:      %{oldpython}-commonmark < %{version}
 Provides:       %{oldpython}-commonmark = %{version}
 %endif

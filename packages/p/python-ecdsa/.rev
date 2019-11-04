@@ -74,4 +74,12 @@
  * python packaging fixes</comment>
     <requestid>702768</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1f0ce90cfb3543983a0f492066cac5f1</srcmd5>
+    <version>0.13.3</version>
+    <time>1572883720</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>742539</requestid>
+  </revision>
 </revisionlist>

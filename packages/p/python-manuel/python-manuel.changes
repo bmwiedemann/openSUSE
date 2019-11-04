@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 14 14:00:08 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Replace %fdupes -s with plain %fdupes; hardlinks are better.
+
+-------------------------------------------------------------------
 Wed Jan  9 22:20:27 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase in summary. Drop unnecessary Require.

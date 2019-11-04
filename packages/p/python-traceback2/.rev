@@ -41,4 +41,14 @@ This should fix the license issues.</comment>
     <comment></comment>
     <requestid>666820</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>9003b22ccb89ae57f0cb8b55bac07bf2</srcmd5>
+    <version>1.4.0</version>
+    <time>1572883793</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove pyparsing buildignore as the cycle was solved
+
+- Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>743975</requestid>
+  </revision>
 </revisionlist>

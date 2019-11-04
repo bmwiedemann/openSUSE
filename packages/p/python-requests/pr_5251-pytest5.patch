@@ -1,0 +1,94 @@
+From 9da8a963868c1019fb02691c54c493ca1549e6bb Mon Sep 17 00:00:00 2001
+From: John Vandenberg <jayvdb@gmail.com>
+Date: Fri, 1 Nov 2019 14:04:43 +0700
+Subject: [PATCH 1/2] test_requests: Support pytest assert rewriting
+
+The real exception has moved to e.value, when pytest
+wraps the exception, however it wasnt wrapped in one
+case for pytest 3, so add backwards compatibility.
+---
+ tests/test_requests.py | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/tests/test_requests.py b/tests/test_requests.py
+index 7d4a4eb51..75366d10b 100644
+--- a/tests/test_requests.py
++++ b/tests/test_requests.py
+@@ -1692,7 +1692,7 @@ def __iter__(self):
+         with pytest.raises(UnrewindableBodyError) as e:
+             requests.utils.rewind_body(prep)
+ 
+-        assert 'Unable to rewind request body' in str(e)
++        assert 'Unable to rewind request body' in str(e.value)
+ 
+     def test_rewind_body_failed_seek(self):
+         class BadFileObj:
+@@ -1715,7 +1715,7 @@ def __iter__(self):
+         with pytest.raises(UnrewindableBodyError) as e:
+             requests.utils.rewind_body(prep)
+ 
+-        assert 'error occurred when rewinding request body' in str(e)
++        assert 'error occurred when rewinding request body' in str(e.value)
+ 
+     def test_rewind_body_failed_tell(self):
+         class BadFileObj:
+@@ -1735,7 +1735,7 @@ def __iter__(self):
+         with pytest.raises(UnrewindableBodyError) as e:
+             requests.utils.rewind_body(prep)
+ 
+-        assert 'Unable to rewind request body' in str(e)
++        assert 'Unable to rewind request body' in str(e.value)
+ 
+     def _patch_adapter_gzipped_redirect(self, session, url):
+         adapter = session.get_adapter(url=url)
+@@ -2155,7 +2155,7 @@ def test_stream_timeout(self, httpbin):
+     def test_invalid_timeout(self, httpbin, timeout, error_text):
+         with pytest.raises(ValueError) as e:
+             requests.get(httpbin('get'), timeout=timeout)
+-        assert error_text in str(e)
++        assert error_text in str(e.value)
+ 
+     @pytest.mark.parametrize(
+         'timeout', (
+@@ -2374,7 +2374,9 @@ def test_urllib3_pool_connection_closed(httpbin):
+     try:
+         s.get(httpbin('status/200'))
+     except ConnectionError as e:
+-        assert u"Pool is closed." in str(e)
++        # pytest only sometimes wraps this exception
++        real_exception = e.value if hasattr(e, 'value') else e
++        assert u"Pool is closed." in str(real_exception)
+ 
+ 
+ class TestPreparingURLs(object):
+
+From 119735dfef516ae33c89a9230653f91968444aa9 Mon Sep 17 00:00:00 2001
+From: John Vandenberg <jayvdb@gmail.com>
+Date: Fri, 1 Nov 2019 13:16:34 +0700
+Subject: [PATCH 2/2] test_conflicting_post_params: Update pytest.raises
+
+Move logic out of string passed to pytest.raises, into
+the context of pytest.raises, as pytest no longer
+supports pytest.raises execution of strings.
+---
+ tests/test_requests.py | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test_requests.py b/tests/test_requests.py
+index 75366d10b..9554f39af 100644
+--- a/tests/test_requests.py
++++ b/tests/test_requests.py
+@@ -774,8 +774,11 @@ def __len__(self):
+     def test_conflicting_post_params(self, httpbin):
+         url = httpbin('post')
+         with open('Pipfile') as f:
+-            pytest.raises(ValueError, "requests.post(url, data='[{\"some\": \"data\"}]', files={'some': f})")
+-            pytest.raises(ValueError, "requests.post(url, data=u('[{\"some\": \"data\"}]'), files={'some': f})")
++            with pytest.raises(ValueError):
++                requests.post(url, data='[{\"some\": \"data\"}]', files={'some': f})
++
++            with pytest.raises(ValueError):
++                requests.post(url, data=u('[{\"some\": \"data\"}]'), files={'some': f})
+ 
+     def test_request_ok_set(self, httpbin):
+         r = requests.get(httpbin('status', '404'))

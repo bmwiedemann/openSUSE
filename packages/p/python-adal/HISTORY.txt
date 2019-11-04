@@ -1,3 +1,57 @@
+ADAL Python 1.2.2
+
+    Adjust the public cert input to accept a pem-format content with or without those -----BEGIN CERTIFICATE----- tag lines. (#199, #207)
+    Change the default logging level from INFO to DEBUG (#197, #200, #122). There is also a canonical way to customize python logging, documented in our wiki now.
+
+ADAL Python 1.2.1
+
+    Enhancement: Added support for WSS SAML1.1 and 2 token types (#186, #187 )
+    Updated requirements.txt to pick up the vulnerability fix included in requests 2.20.0 (#179 )
+
+ADAL Python 1.2.0
+
+    Enhancement: Added support for Subject Name / Issuer authentication (#173)
+
+ADAL Python 1.1.0
+
+    Enhancement: Added whitelisted domains for dSTS (#164)
+
+ADAL Python 1.0.2
+
+    Fixes incorrect cache operation in authorization code flow (#161). The issue was observed in previous version 0.6.0, 0.7.0, 1.0.0, 1.0.1.
+
+ADAL Python 1.0.1
+
+    Relaxed authority url check (#156,#157)
+    We discovered and fixed an incorrect cache behavior in 0.6.0, 0.7.0, 1.0.0, 1.0.1. Please upgrade to 1.0.2 or later.
+
+ADAL Python 1.0.0
+
+    This release includes a breaking change which we have planned for more than 1 year.
+    The default value of api_version parameter in the AuthenticationContext constructor has been changed from "1.0" to None. You can still explicitly set it to "1.0" to maintain the old behavior, if needed. (See details in #137)
+    This release is otherwise exactly the same as 0.7.0. If you do not want this new behavior, you can pin your environment with 0.7.0. Going forward, new development will happen in 1.x series.
+    We discovered and fixed an incorrect cache behavior in 0.6.0, 0.7.0, 1.0.0, 1.0.1. Please upgrade to 1.0.2 or later.
+
+ADAL Python 0.7.0
+
+    Enhancement: Added authorization code flow support for public clients (#149)
+    Enhancement: Added Proof Key for Code Exchange (PKCE) support in authorization code flow for public clients (#150)
+    Enhancement: Raises a value error when the authority url is not in the expected format (#126, #151)
+    We discovered and fixed an incorrect cache behavior in 0.6.0, 0.7.0, 1.0.0, 1.0.1. Please upgrade to 1.0.2 or later.
+
+ADAL Python 0.6.0
+
+    Enhancement: Added token cache support for auth code flow (#138 )
+    Enhancement: Added parameters to AuthenticationContext to support ssl verification and proxies (#142 )
+    We discovered and fixed an incorrect cache behavior in 0.6.0, 0.7.0, 1.0.0, 1.0.1. Please upgrade to 1.0.2 or later.
+
+ADAL Python 0.5.1
+
+    Enhancement: Add a new parameter in the AuthenticationContext to turn on Personally Identifiable Information (PII) in logs. (#124)
+    Enhancement: Acquiring token via WSTrust will also have timeout behavior now. (#121, #125)
+    Bugfix: Previously ADAL Python had some issue when the Azure AD tenant is federated with an on-prem AD. Now fixed. (#80, #120)
+    Enhancement: Handle rare multithread racing issue observed when using profiler (#123, #128)
+
 ADAL Python 0.5.0
 
     Enhancement: Add a new parameter in the AuthenticationContext to pass requests (connect,read) timeout parameters. (#112)

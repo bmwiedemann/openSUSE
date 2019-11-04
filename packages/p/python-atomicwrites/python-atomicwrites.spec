@@ -50,7 +50,7 @@ rm -rf atomicwrites.egg-info
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %defattr(-,root,root,-)

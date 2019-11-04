@@ -53,4 +53,12 @@
     <comment>- Use %license to install License file</comment>
     <requestid>629183</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>390a9efefd2dbbfbbfd38c2c7f1742dd</srcmd5>
+    <version>1.6.0</version>
+    <time>1572883914</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>744003</requestid>
+  </revision>
 </revisionlist>

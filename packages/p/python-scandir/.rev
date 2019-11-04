@@ -59,4 +59,12 @@
   * remove support for pyton 2.6 and &lt;3.3</comment>
     <requestid>683894</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>1ab8962082380c2e382c0ad6e33357ec</srcmd5>
+    <version>1.10.0</version>
+    <time>1572883903</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>744001</requestid>
+  </revision>
 </revisionlist>

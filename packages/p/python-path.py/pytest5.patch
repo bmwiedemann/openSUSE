@@ -1,0 +1,23 @@
+From 02eb16f0eb2cdc0015972ce963357aaa1cd0b84b Mon Sep 17 00:00:00 2001
+From: "Jason R. Coombs" <jaraco@jaraco.com>
+Date: Sat, 20 Jul 2019 12:57:18 -0400
+Subject: [PATCH] Correct usage of exception resolution from exception info
+ context. Fixes #167.
+
+---
+ test_path.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test_path.py b/test_path.py
+index f2640c1..8ef2bd6 100644
+--- a/test_path.py
++++ b/test_path.py
+@@ -1097,7 +1097,7 @@ def test_exception_in_context(self, tmpdir):
+             with doc.in_place() as (reader, writer):
+                 writer.write(self.alternate_content)
+                 raise RuntimeError("some error")
+-        assert "some error" in str(exc)
++        assert "some error" in str(exc.value)
+         with doc.open() as stream:
+             data = stream.read()
+         assert 'Lorem' not in data

@@ -18,4 +18,13 @@
   * Fixed import paths for VcsSupport on pip&gt;19.1.1. #28</comment>
     <requestid>717859</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5e0981cf1b81a8369af4300e1b6d265f</srcmd5>
+    <version>0.3.3</version>
+    <time>1572884009</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable tests as they break with almost each pip release
+  and do not really cover if the tool works</comment>
+    <requestid>744402</requestid>
+  </revision>
 </revisionlist>

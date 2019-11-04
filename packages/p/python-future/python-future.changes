@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 14 07:17:21 UTC 2019 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.18.0.
+- Remove python38-compat.patch, already included.
+- Add future-correct-mimetype.patch, since Python 3.8 is able to detect
+  the MIME type now.
+
+-------------------------------------------------------------------
 Wed Oct  2 14:56:02 CEST 2019 - Matej Cepl <mcepl@suse.com>
 
 - Add python38-compat.patch to fix compatibility with Python 3.8

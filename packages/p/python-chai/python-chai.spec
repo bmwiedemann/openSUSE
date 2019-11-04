@@ -1,7 +1,7 @@
 #
 # spec file for package python-chai
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        1.1.2
 Release:        0
 Summary:        Mocking/stub framework for Python
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/agoragames/chai
 Source:         https://files.pythonhosted.org/packages/source/c/chai/chai-%{version}.tar.gz
 BuildRequires:  %{python_module nose}
@@ -44,7 +43,7 @@ rm -rf chai.egg-info
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec %{_bindir}/nosetests

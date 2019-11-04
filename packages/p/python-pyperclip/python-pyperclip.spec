@@ -22,22 +22,20 @@ Version:        1.7.0
 Release:        0
 Summary:        A clipboard module for Python
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
-Url:            https://github.com/asweigart/pyperclip
-Source0:        https://pypi.io/packages/source/p/pyperclip/pyperclip-%{version}.tar.gz
+URL:            https://github.com/asweigart/pyperclip
+Source0:        https://files.pythonhosted.org/packages/source/p/pyperclip/pyperclip-%{version}.tar.gz
 # https://github.com/asweigart/pyperclip/issues/17
 Source1:        https://raw.githubusercontent.com/asweigart/pyperclip/master/LICENSE.txt
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
+Requires:       xclip
+Requires:       xsel
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
-Requires:       xclip
-Requires:       xsel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -52,13 +50,12 @@ cp %{SOURCE1} .
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %license LICENSE.txt
 %{python_sitelib}/pyperclip
 %{python_sitelib}/pyperclip-%{version}-py%{py_ver}.egg-info

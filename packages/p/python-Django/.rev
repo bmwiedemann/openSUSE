@@ -622,4 +622,17 @@
   * Fixed a race condition in loading URLconf module that could cause a crash of auto-reloader on Python 3.5 and below (#30500).</comment>
     <requestid>731244</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>27ddb3c065de961c4a722dd05fbc95ac</srcmd5>
+    <version>2.2.6</version>
+    <time>1572883430</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.6:
+  * Fixed migrations crash on SQLite when altering a model
+    containing partial indexes (#30754).
+  * Fixed a regression in Django 2.2.4 that caused a crash when
+    filtering with a Subquery() annotation of a queryset containing
+    JSONField or HStoreField (#30769).</comment>
+    <requestid>735855</requestid>
+  </revision>
 </revisionlist>

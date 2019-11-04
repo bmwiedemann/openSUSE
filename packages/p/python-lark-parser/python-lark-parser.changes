@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct 27 14:28:26 UTC 2019 - Lars Vogdt <lars@linux-schulserver.de>
+
+- Update to 0.7.7:
+  * Fixed a bug in Earley where running it from different threads 
+    produced bad results
+  * Improved error reporting when using LALR
+  * Added 'edit_terminals' option, to allow programmatical manipulation
+    of terminals, for example to support keywords in different languages.
+
+-------------------------------------------------------------------
 Wed Sep 11 13:06:32 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.7.5:

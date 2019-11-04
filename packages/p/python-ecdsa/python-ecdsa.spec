@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ecdsa
-Version:        0.13.2
+Version:        0.13.3
 Release:        0
 Summary:        ECDSA cryptographic signature library (pure python)
 License:        MIT

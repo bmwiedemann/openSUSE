@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  1 08:54:02 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update the add-rpmfail-pytest-markers.patch to not have
+  pin on old pytest
+
+-------------------------------------------------------------------
 Thu Jul 18 09:21:17 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Pin pytest3 for now, pytest4 and 5 work fine in upstream git

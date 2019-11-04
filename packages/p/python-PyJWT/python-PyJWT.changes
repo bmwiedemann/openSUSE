@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 18 20:24:47 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with ecdsa >= 0.13.3, #447
+  * 0001-Catch-BadSignatureError-raised-by-ecdsa-0.13.3.patch
+
+-------------------------------------------------------------------
 Thu Mar  7 11:13:38 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix fdupes and test calls

@@ -92,4 +92,12 @@
   * Add ``case_sensitive=False`` as an option to Choice.</comment>
     <requestid>662313</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>6a797ea0e524852ff648ad78091e8ed5</srcmd5>
+    <version>7.0</version>
+    <time>1572883597</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>740898</requestid>
+  </revision>
 </revisionlist>

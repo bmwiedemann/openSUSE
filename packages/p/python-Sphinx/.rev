@@ -555,4 +555,14 @@
   * #6419: sphinx-build: give reasons why rebuilded</comment>
     <requestid>730123</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>9f923e8866033f81c3ad64fd7801ca0c</srcmd5>
+    <version>2.2.1</version>
+    <time>1572884026</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.1:
+  * #6641: LaTeX: Undefined control sequence \sphinxmaketitle
+  * #6710: LaTeX not well configured for Greek language as main language</comment>
+    <requestid>744660</requestid>
+  </revision>
 </revisionlist>

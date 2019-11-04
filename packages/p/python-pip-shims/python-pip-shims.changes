@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 31 09:08:38 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Disable tests as they break with almost each pip release
+  and do not really cover if the tool works
+
+-------------------------------------------------------------------
 Tue Jul 23 11:25:17 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.3.3:

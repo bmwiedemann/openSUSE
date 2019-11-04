@@ -89,4 +89,41 @@
     <comment>- Switch to multibuild to enable tests</comment>
     <requestid>722713</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fee468c76549b026f61ba93f12d404cb</srcmd5>
+    <version>19.3.0</version>
+    <time>1572883686</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 19.3.0
+ * Fixed auto_attribs usage when default values cannot be compared directly
+     with ==, such as numpy arrays.
+
+- update to version 19.2.0:
+  * Backward-incompatible Changes
+    + Removed deprecated &quot;Attribute&quot; attribute &quot;convert&quot; per scheduled
+      removal on 2019/1.  This planned deprecation is tracked in issue
+      `#307 &lt;https://github.com/python-attrs/attrs/issues/307&gt;`_.
+      `#504 &lt;https://github.com/python-attrs/attrs/issues/504&gt;`_
+    + &quot;__lt__&quot;, &quot;__le__&quot;, &quot;__gt__&quot;, and &quot;__ge__&quot; do not consider
+      subclasses comparable anymore.  This has been deprecated since
+      18.2.0 and was raising a &quot;DeprecationWarning&quot; for over a year.
+      `#570 &lt;https://github.com/python-attrs/attrs/issues/570&gt;`_
+  * Deprecations
+    + The &quot;cmp&quot; argument to &quot;attr.s()&quot; and &quot;attr.ib()&quot; is now
+      deprecated.  Please use &quot;eq&quot; to add equality methods (&quot;__eq__&quot;
+      and &quot;__ne__&quot;) and &quot;order&quot; to add ordering methods (&quot;__lt__&quot;,
+      &quot;__le__&quot;, &quot;__gt__&quot;, and &quot;__ge__&quot;) instead – just like with
+      `dataclasses
+      &lt;https://docs.python.org/3/library/dataclasses.html&gt;`_.  Both
+      are effectively &quot;True&quot; by default but it's enough to set
+      &quot;eq=False&quot; to disable both at once.  Passing &quot;eq=False,
+      order=True&quot; explicitly will raise a &quot;ValueError&quot; though.  Since
+      this is arguably a deeper backward-compatibility break, it will
+      have an extended deprecation period until 2021-06-01.  After
+      that day, the &quot;cmp&quot; argument will be removed.  &quot;attr.Attribute&quot;
+      also isn't orderable anymore.  `#574
+      &lt;https://github.com/python-attrs/attrs/issues/574&gt;`_
+  * Changes</comment>
+    <requestid>741439</requestid>
+  </revision>
 </revisionlist>

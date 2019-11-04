@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 24 14:40:39 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2.7.17:
+  - a bug fix release in the Python 2.7.x series. It is expected
+    to be the penultimate release for Python 2.7.
+- Removed patches included upstream:
+  - CVE-2018-20852-cookie-domain-check.patch
+  - CVE-2019-16935-xmlrpc-doc-server_title.patch
+  - CVE-2019-9636-netloc-no-decompose-characters.patch
+  - CVE-2019-9947-no-ctrl-char-http.patch
+  - CVE-2019-9948-avoid_local-file.patch
+
+-------------------------------------------------------------------
 Tue Oct  8 19:46:52 CEST 2019 - Matej Cepl <mcepl@suse.com>
 
 - Add CVE-2019-16935-xmlrpc-doc-server_title.patch fixing

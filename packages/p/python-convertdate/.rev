@@ -15,4 +15,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>732665</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3d50f0d005829a6ce324fe6117270c4b</srcmd5>
+    <version>2.1.3</version>
+    <time>1572883602</time>
+    <user>dimstar_suse</user>
+    <comment>- fix execution of tests on anything older than Tumbleweed</comment>
+    <requestid>740976</requestid>
+  </revision>
 </revisionlist>

@@ -263,4 +263,16 @@
   - Improved tests and testing environments</comment>
     <requestid>730145</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>843290cad879ed3e06673a004cef985e</srcmd5>
+    <version>2.5.2</version>
+    <time>1572883477</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.2:
+  - Ignore all methods except Close and Close-OK when channel/connection is closing
+  - Fix faulty ssl sni intiation parameters (#283) 
+  - Undeprecate auto_delete flag for exchanges. (#287) 
+  - Improved tests and testing environments</comment>
+    <requestid>736422</requestid>
+  </revision>
 </revisionlist>

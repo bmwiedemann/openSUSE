@@ -22,9 +22,8 @@ Version:        2.5.2
 Release:        0
 Summary:        A MessagePack serializer and deserializer
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/vsergeev/u-msgpack-python
-Source:         https://pypi.io/packages/source/u/u-msgpack-python/u-msgpack-python-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/u/u-msgpack-python/u-msgpack-python-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -47,14 +46,13 @@ UTF-8 string, and application-defined extended types.
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
 %python_exec test_umsgpack.py
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %license LICENSE
 %pycache_only %{python_sitelib}/__pycache__
 %{python_sitelib}/umsgpack.py*
