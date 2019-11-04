@@ -23,19 +23,17 @@ Version:        0.46
 Release:        0
 Summary:        Python package to read and write Microsoft OLE2 files
 License:        BSD-2-Clause AND HPND
-Group:          Development/Languages/Python
-Url:            https://github.com/decalage2/olefile
+URL:            https://github.com/decalage2/olefile
 Source:         https://files.pythonhosted.org/packages/source/o/olefile/olefile-%{version}.zip
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
+BuildArch:      noarch
 %ifpython2
 Provides:       %{oldpython}-OleFileIO_PL = %{version}
 Obsoletes:      %{oldpython}-OleFileIO_PL <= 0.26
 %endif
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -56,7 +54,7 @@ sed -i 's/\r$//' doc/License.rst
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py test
