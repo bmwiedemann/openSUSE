@@ -16,7 +16,7 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
@@ -32,53 +32,51 @@ Source:         https://download.kde.org/stable/applications/%{version}/src/%{na
 Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  akonadi-calendar-devel >= %{_kapp_version}
-BuildRequires:  akonadi-contact-devel >= %{_kapp_version}
-BuildRequires:  akonadi-mime-devel >= %{_kapp_version}
-BuildRequires:  akonadi-notes-devel >= %{_kapp_version}
+BuildRequires:  cyrus-sasl-devel
 BuildRequires:  extra-cmake-modules
-BuildRequires:  kalarmcal-devel >= %{_kapp_version}
-BuildRequires:  kcalcore-devel >= %{_kapp_version}
-BuildRequires:  kcalutils-devel >= %{_kapp_version}
-BuildRequires:  kcodecs-devel >= %{kf5_version}
-BuildRequires:  kconfig-devel >= %{kf5_version}
-BuildRequires:  kcontacts-devel >= %{_kf5_version}
-BuildRequires:  kdav-devel >= %{_kapp_version}
-BuildRequires:  kdelibs4support-devel >= %{kf5_version}
 BuildRequires:  kf5-filesystem
-BuildRequires:  kidentitymanagement-devel >= %{_kapp_version}
-BuildRequires:  kimap-devel >= %{_kapp_version}
-BuildRequires:  kio-devel >= %{kf5_version}
-BuildRequires:  kitemmodels-devel >= %{kf5_version}
-BuildRequires:  kmailtransport-devel >= %{_kapp_version}
-BuildRequires:  kmbox-devel >= %{_kapp_version}
-BuildRequires:  kmime-devel >= %{_kapp_version}
-BuildRequires:  knewstuff-devel >= %{kf5_version}
-BuildRequires:  knotifyconfig-devel >= %{kf5_version}
-BuildRequires:  ktextwidgets-devel >= %{kf5_version}
-BuildRequires:  kwallet-devel >= %{kf5_version}
-BuildRequires:  kwidgetsaddons-devel >= %{kf5_version}
-BuildRequires:  libkgapi-devel >= 1.9.81
 BuildRequires:  libkolabxml-devel >= 1.1
-BuildRequires:  libxerces-c-devel
 BuildRequires:  libxslt-devel
-# broken KF5::AkonadiContact, phonon is in interface includes, but private link library
-BuildRequires:  phonon4qt5-devel
-BuildRequires:  pimcommon-devel >= %{_kapp_version}
-BuildRequires:  pkgconfig
 BuildRequires:  shared-mime-info
-BuildRequires:  syndication-devel
-BuildRequires:  xz
 BuildRequires:  cmake(KF5Akonadi)
+BuildRequires:  cmake(KF5AkonadiCalendar)
+BuildRequires:  cmake(KF5AkonadiContact)
+BuildRequires:  cmake(KF5AkonadiMime)
+BuildRequires:  cmake(KF5AkonadiNotes)
+BuildRequires:  cmake(KF5AlarmCalendar)
+BuildRequires:  cmake(KF5CalendarCore) >= %{kf5_version}
+BuildRequires:  cmake(KF5CalendarUtils)
+BuildRequires:  cmake(KF5Codecs) >= %{kf5_version}
+BuildRequires:  cmake(KF5Config) >= %{kf5_version}
+BuildRequires:  cmake(KF5ConfigWidgets) >= %{kf5_version}
+BuildRequires:  cmake(KF5Contacts)
+BuildRequires:  cmake(KF5DBusAddons) >= %{kf5_version}
+BuildRequires:  cmake(KF5DocTools) >= %{kf5_version}
+BuildRequires:  cmake(KF5Holidays) >= %{kf5_version}
+BuildRequires:  cmake(KF5IMAP)
+BuildRequires:  cmake(KF5IconThemes) >= %{kf5_version}
+BuildRequires:  cmake(KF5IdentityManagement)
+BuildRequires:  cmake(KF5ItemModels) >= %{kf5_version}
+BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
+BuildRequires:  cmake(KF5MailTransport)
+BuildRequires:  cmake(KF5Mbox)
+BuildRequires:  cmake(KF5Mime)
+BuildRequires:  cmake(KF5Notifications) >= %{kf5_version}
+BuildRequires:  cmake(KF5NotifyConfig) >= %{kf5_version}
+BuildRequires:  cmake(KF5PimCommon)
+BuildRequires:  cmake(KF5TextWidgets) >= %{kf5_version}
+BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
+BuildRequires:  cmake(KPimGAPI)
+BuildRequires:  cmake(KPimKDAV)
 BuildRequires:  cmake(Qca-qt5)
-BuildRequires:  pkgconfig(Qt5DBus) >= 5.5.0
-BuildRequires:  pkgconfig(Qt5NetworkAuth) >= 5.10.0
-BuildRequires:  pkgconfig(Qt5Test) >= 5.5.0
-BuildRequires:  pkgconfig(Qt5TextToSpeech) >= 5.7.0
-BuildRequires:  pkgconfig(Qt5UiTools) >= 5.5.0
-BuildRequires:  pkgconfig(Qt5WebEngine) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.5.0
-BuildRequires:  pkgconfig(Qt5XmlPatterns) >= 5.5.0
+BuildRequires:  cmake(Qt5DBus) >= 5.11.0
+BuildRequires:  cmake(Qt5Network) >= 5.11.0
+BuildRequires:  cmake(Qt5NetworkAuth) >= 5.11.0
+BuildRequires:  cmake(Qt5Test) >= 5.11.0
+BuildRequires:  cmake(Qt5TextToSpeech) >= 5.11.0
+BuildRequires:  cmake(Qt5WebEngineWidgets) >= 5.11.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.11.0
+BuildRequires:  cmake(Qt5XmlPatterns) >= 5.11.0
 Requires:       akonadi-plugin-calendar
 Requires:       akonadi-plugin-contacts
 Requires:       akonadi-plugin-kalarmcal
@@ -91,13 +89,6 @@ Obsoletes:      kdepim4-runtime < %{version}
 Obsoletes:      kio-pimlibs < %{version}
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_program_options-devel
-BuildRequires:  libboost_system-devel
-BuildRequires:  libboost_thread-devel
-%else
-BuildRequires:  boost-devel
-%endif
 
 %description
 This package contains the Akonadi resources, agents and plugins needed to

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTTP-Cookies
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-HTTP-Cookies
-Version:        6.04
+Version:        6.05
 Release:        0
 %define cpan_name HTTP-Cookies
 Summary:        HTTP cookie jars
-License:        Artistic-1.0 or GPL-1.0+
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/HTTP-Cookies/
+Url:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -47,10 +47,10 @@ about.
 
 Cookies are a general mechanism which server side connections can use to
 both store and retrieve information on the client side of the connection.
-For more information about cookies refer to
-<URL:http://curl.haxx.se/rfc/cookie_spec.html> and
-<URL:http://www.cookiecentral.com/>. This module also implements the new
-style cookies described in at https://tools.ietf.org/html/rfc2965. The two
+For more information about cookies refer to at
+http://curl.haxx.se/rfc/cookie_spec.html and at
+http://www.cookiecentral.com. This module also implements the new style
+cookies described in at https://tools.ietf.org/html/rfc2965. The two
 variants of cookies are supposed to be able to coexist happily.
 
 Instances of the class _HTTP::Cookies_ are able to store a collection of
@@ -62,11 +62,11 @@ _HTTP::Cookies_ object can be saved in and restored from files.
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install

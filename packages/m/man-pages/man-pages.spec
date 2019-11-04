@@ -30,6 +30,8 @@ Patch0:         %{name}.eal3.diff
 Patch1:         %{name}-remove-ioctl_list-reference.patch
 Patch3:         %{name}_gai.conf-reference.patch
 Patch5:         %{name}-tty_ioctl.patch
+# [bsc#1154701]
+Patch6:         man-pages-tcp_fack.patch
 BuildRequires:  fdupes
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
@@ -51,6 +53,7 @@ only).
 %patch1 -p1
 %patch3
 %patch5 -p1
+%patch6 -p1
 find -name "*.orig" | xargs rm -fv
 
 %build

@@ -759,4 +759,14 @@
 +-------------------------------------------------------------------</comment>
     <requestid>735834</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>66d428e289e4c420069bf46a0ab1ed11</srcmd5>
+    <version>7.3.11</version>
+    <time>1572883245</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.3.11: This is a security release which also
+  contains several bug fixes.
+  See https://www.php.net/ChangeLog-7.php#7.3.11</comment>
+    <requestid>742824</requestid>
+  </revision>
 </revisionlist>

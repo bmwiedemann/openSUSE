@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Tue May 28 11:55:30 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
-- Update to version 2.2.0:
+- Update to version 2.2.0 CVE-2019-12290 bsc#1154884:
   * Perform A-Label roundtrip for lookup functions by default
   * Stricter check of input to punycode decoder
   * Fix punycode decoding with no ASCII chars but given delimiter
@@ -13,7 +13,7 @@ Tue May 28 11:55:30 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 -------------------------------------------------------------------
 Wed Feb 20 21:50:06 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- updat to 2.1.1:
+- update to 2.1.1 CVE-2019-18224 bsc#1154887:
   * Revert SONAME bump from release 2.1.0
   * Fix NULL dereference in idn2_register_u8() and
     idn2_register_ul()

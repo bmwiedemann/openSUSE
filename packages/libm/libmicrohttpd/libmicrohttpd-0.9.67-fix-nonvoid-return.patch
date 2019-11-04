@@ -1,0 +1,25 @@
+From 093c83c2270e18294811f394c9af87a2cb56ea20 Mon Sep 17 00:00:00 2001
+From: Christian Grothoff <christian@grothoff.org>
+Date: Thu, 17 Oct 2019 23:10:34 +0200
+Subject: fix missing ret, thanks, Markus
+
+---
+ src/microhttpd/mhd_sockets.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/microhttpd/mhd_sockets.c b/src/microhttpd/mhd_sockets.c
+index 7929c07a..ad2f91bc 100644
+--- a/src/microhttpd/mhd_sockets.c
++++ b/src/microhttpd/mhd_sockets.c
+@@ -530,6 +530,8 @@ MHD_socket_cork_ (MHD_socket sock,
+       return 0; /* even force flush failed!? */
+     return 1; /* success */
+   }
++#else
++  return 1; /* success */
+ #endif
+ #else
+   /* do not have MHD_TCP_CORK_NOPUSH at all */
+-- 
+cgit v1.2.1
+

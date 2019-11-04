@@ -603,4 +603,16 @@ require it nevertheless
     <comment></comment>
     <requestid>720546</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>13124f69fb61c7d000e9d519b16eb72b</srcmd5>
+    <version>4.22</version>
+    <time>1572883270</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.22
+  * added support for the ARC architecture
+  * removed support for the following platforms:
+    OSF1/Tru64, DGUX, IRIX, Symbian, BeOS
+  * correctness and build fixes</comment>
+    <requestid>742854</requestid>
+  </revision>
 </revisionlist>

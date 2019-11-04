@@ -112,7 +112,6 @@ BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_test-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  rust
-BuildRequires:  rust-std
 BuildRequires:  wxWidgets-any-devel
 # csharp is not on s390 machines
 %ifnarch s390x

@@ -2594,4 +2594,15 @@ Petr</comment>
 - Let the test suite run on ppc64le and disable the failing tests.</comment>
     <requestid>741035</requestid>
   </revision>
+  <revision rev="190" vrev="1">
+    <srcmd5>1419f0bf89e3583ea6d2ac48d711b12a</srcmd5>
+    <version>6.3.3.2</version>
+    <time>1572883326</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop disable-kde4 switch as it is no longer known by configure
+
+- Update to 6.3.3.2 jsc#SLE-8705:
+  * 6.3.3 stable release</comment>
+    <requestid>744644</requestid>
+  </revision>
 </revisionlist>

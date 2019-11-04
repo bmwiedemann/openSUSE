@@ -17,14 +17,14 @@
 #
 
 
-%global nss_softokn_fips_version 3.45
-%define NSPR_min_version 4.21
+%global nss_softokn_fips_version 3.46
+%define NSPR_min_version 4.22
 %define nspr_ver %(rpm -q --queryformat '%%{VERSION}' mozilla-nspr)
 %define nssdbdir %{_sysconfdir}/pki/nssdb
 Name:           mozilla-nss
-Version:        3.45
+Version:        3.46.1
 Release:        0
-%define underscore_version 3_45
+%define underscore_version 3_46_1
 Summary:        Network Security Services
 License:        MPL-2.0
 Group:          System/Libraries

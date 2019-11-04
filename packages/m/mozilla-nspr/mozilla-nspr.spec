@@ -18,7 +18,7 @@
 
 
 Name:           mozilla-nspr
-Version:        4.21
+Version:        4.22
 Release:        0
 Summary:        Netscape Portable Runtime
 License:        MPL-2.0
@@ -31,8 +31,7 @@ BuildRequires:  pkg-config
 Obsoletes:      mozilla-nspr-64bit
 %endif
 #
-#Source:         https://ftp.mozilla.org/pub/nspr/releases/v%{version}/src/nspr-%{version}.tar.gz
-Source:         nspr-%{version}.tar.gz
+Source:         https://ftp.mozilla.org/pub/nspr/releases/v%{version}/src/nspr-%{version}.tar.gz
 Source1:        baselibs.conf
 Source99:       %{name}.changes
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

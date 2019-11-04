@@ -87,4 +87,13 @@
     <comment></comment>
     <requestid>705958</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>d1335a55755b161b861755260b3930b3</srcmd5>
+    <version>2.2.0</version>
+    <time>1572883209</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0 CVE-2019-12290 bsc#1154884:
+- update to 2.1.1 CVE-2019-18224 bsc#1154887:</comment>
+    <requestid>742496</requestid>
+  </revision>
 </revisionlist>

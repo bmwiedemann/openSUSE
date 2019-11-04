@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct 25 09:44:16 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 6.05
+   see /usr/share/doc/packages/perl-HTTP-Cookies/Changes
+
+  6.05      2019-10-24 02:21:51Z
+      - Fix GH#32 by checking for " as well as ; when splitting. (GH#49) (colinnewell)
+      - Fix GH#48 update documentation about $version (GH#55) (Dave Menninger)
+      - Fix broken README badge (GH#54) (Alex Peters)
+      - Whenever possible, use an absolute four digit year for Time::Local (GH#52) (Olaf Alders)
+      - Add test case for Issue #26 (GH#45) (George-NG)
+      - Long numbers (GH#47) (pludlamCVL)
+      - Cookies.pm: die if close on $fh in ->save fails (GH#46) (MCRayRay)
+      - Replace "use vars" with "our" (GH#43) (James Raspass)
+      - Fixed minor typo in the pod for HTTP::Cookies. (GH#39) (Mohammad S Anwar)
+
+-------------------------------------------------------------------
 Fri Aug  4 05:41:54 UTC 2017 - coolo@suse.com
 
 - updated to 6.04

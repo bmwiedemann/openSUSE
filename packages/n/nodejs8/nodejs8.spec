@@ -26,7 +26,7 @@
 ###########################################################
 
 Name:           nodejs8
-Version:        8.16.1
+Version:        8.16.2
 Release:        0
 
 %define node_version_number 8
@@ -42,6 +42,7 @@ Release:        0
 %endif
 
 %bcond_with    valgrind_tests
+%bcond_without nodejs_lto
 
 %if 0%{?suse_version} == 1110
 %define _libexecdir %{_exec_prefix}/lib
@@ -122,6 +123,7 @@ Patch7:         manual_configure.patch
 Patch12:        openssl_1_1_1.patch
 
 Patch31:        CVE-2019-13173.patch
+Patch32:        fix_build_with_openssl_1.1.1d.patch
 
 ## Patches specific to SUSE and openSUSE
 # PATCH-FIX-OPENSUSE -- set correct path for dtrace if it is built
@@ -145,6 +147,8 @@ Patch200:       versioned.patch
 %if 0%{with binutils_gold}
 BuildRequires:  binutils-gold
 %endif
+
+BuildRequires:  pkg-config
 
 # Node.js 4/6/7 requires GCC 4.8.5+.
 #
@@ -179,7 +183,6 @@ BuildRequires:  gcc-c++
 %endif
 
 BuildRequires:  fdupes
-BuildRequires:  pkg-config
 BuildRequires:  procps
 BuildRequires:  xz
 BuildRequires:  zlib-devel
@@ -322,6 +325,7 @@ tar Jxvf %{SOURCE11}
 %endif
 %patch12 -p1
 %patch31 -p1
+%patch32 -p1
 %patch101 -p1
 %patch102 -p1
 # Add check_output to configure script (not part of Python 2.6 in SLE11).
@@ -333,8 +337,11 @@ tar Jxvf %{SOURCE11}
 %patch120 -p1
 %patch200 -p1
 
+# remove backup files, if any
+find -name \*~ -print0 -delete
+
 # abnormalities from patching
-find -name configure.js.orig -delete
+find \( -name \*.js.orig -or -name \*.md.orig \) -delete
 
 %build
 # normalize shebang
@@ -360,10 +367,6 @@ find deps/cares -name *.[ch] -delete
 
 find deps/zlib -name *.[ch] -delete
 
-# Annoying, over-repetitive patch updated just because lines in
-# documentation changes every version.
-find -name *.md.orig -delete
-
 # percent-configure pulls in something that confuses node's configure
 # script, so we'll do it thus:
 export CFLAGS="%{optflags}"
@@ -379,7 +382,7 @@ export CXX=%{?cpp_exec}
 
 ./configure \
     --prefix=%{_prefix} \
-%if %{node_version_number} >= 12
+%if 0%{?with nodejs_lto} && %{node_version_number} >= 12
     --enable-lto \
 %endif
 %if ! 0%{with intree_openssl}

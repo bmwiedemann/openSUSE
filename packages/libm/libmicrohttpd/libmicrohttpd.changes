@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 24 19:45:52 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.9.67:
+  * improvements that eliminate system and C library calls
+- drop libmicrohttpd-0.9.66-fix-gnutls-dependency.patch, upstream
+- add libmicrohttpd-0.9.67-fix-nonvoid-return.patch from upstream
+
+-------------------------------------------------------------------
 Fri Aug  2 13:53:59 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix build with SLE 12 with older GnuTLS:

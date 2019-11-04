@@ -131,4 +131,12 @@
 - Now the kernel cmdline can be escaped properly as well</comment>
     <requestid>745120</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>59c9651ea498e8cc3c039e1744bfe828</srcmd5>
+    <version>16.0.0</version>
+    <time>1572883043</time>
+    <user>dimstar_suse</user>
+    <comment>Reverting, together with kiwi, which breaks live images</comment>
+    <requestid>745221</requestid>
+  </revision>
 </revisionlist>

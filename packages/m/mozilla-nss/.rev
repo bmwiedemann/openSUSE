@@ -1866,4 +1866,26 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>733663</requestid>
   </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>46a83b254663108cc30797dd84a5dc4f</srcmd5>
+    <version>3.46.1</version>
+    <time>1572883275</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.46.1
+  * required by Firefox 70.0
+  Notable changes in 3.46
+  * The following CA certificates were Removed:
+    expired Class 2 Primary root certificate
+    expired UTN-USERFirst-Client root certificate
+    expired Deutsche Telekom Root CA 2 root certificate
+    Swisscom Root CA 2 root certificate
+  * Significant improvements to AES-GCM performance on ARM
+  Many bugfixes
+  Bug fixes in 3.46.1
+  * Soft token MAC verification not constant time (bmo#1582343)
+  * Remove arbitrary HKDF output limit by allocating space as needed
+    (bmo#1577953)
+- requires NSPR 4.22</comment>
+    <requestid>742855</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Oct 24 14:34:22 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- New upstream LTS release 8.16.2:
+  * deps: update OpenSSL to 1.0.2s
+
+-------------------------------------------------------------------
+Wed Oct  2 10:13:11 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints for aarch64 & ppc64le to avoid build error
+
+-------------------------------------------------------------------
+Wed Sep 18 13:44:55 UTC 2019 - Vítězslav Čížek <vcizek@suse.com>
+
+- Fix build with OpenSSL 1.1.1d (bsc#1149792)
+  * https://github.com/nodejs/node/pull/29550
+  * add fix_build_with_openssl_1.1.1d.patch
+
+-------------------------------------------------------------------
 Fri Aug 16 14:33:44 UTC 2019 - Adam Majer <adam.majer@suse.de>
 
 - Update to 8.16.1:

@@ -1,8 +1,0 @@
-<package name="cyrus-imapd" project="openSUSE:Factory">
-  <title>The Cyrus IMAP and POP Mail Server</title>
-  <description>Cyrus is a highly scalable enterprise mail system designed for use in
-enterprise environments of various sizes using standards based
-technologies. Cyrus technologies scale from independent use in email
-departments to a system centrally managed in a large enterprise.</description>
-  <devel project="server:mail" package="cyrus-imapd"/>
-</package>

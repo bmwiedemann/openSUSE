@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 30 11:37:48 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop disable-kde4 switch as it is no longer known by configure
+
+-------------------------------------------------------------------
+Thu Oct 24 11:30:53 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 6.3.3.2 jsc#SLE-8705:
+  * 6.3.3 stable release
+
+-------------------------------------------------------------------
 Fri Oct 18 09:56:13 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add mssing krasa_jaga_svg icons to filelist

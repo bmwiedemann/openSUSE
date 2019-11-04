@@ -255,4 +255,12 @@
     <comment>July 2019 CPU</comment>
     <requestid>716026</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>cdb2ceab67b445fc3016ae7d2304aac3</srcmd5>
+    <version>11.0.5.0</version>
+    <time>1572883312</time>
+    <user>dimstar_suse</user>
+    <comment>October 2019 CPU</comment>
+    <requestid>743294</requestid>
+  </revision>
 </revisionlist>

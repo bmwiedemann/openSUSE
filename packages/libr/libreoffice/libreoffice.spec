@@ -50,7 +50,7 @@
 %bcond_with system_gpgme
 %endif
 Name:           libreoffice
-Version:        6.3.3.1
+Version:        6.3.3.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -1086,7 +1086,6 @@ export NOCONFIGURE=yes
         --with-help=html \
         --without-export-validation \
         --enable-odk \
-        --disable-kde4 \
 %if %{with system_gpgme}
         --with-system-gpgmepp \
 %else

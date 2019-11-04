@@ -22,7 +22,6 @@ Version:        2.2.0
 Release:        0
 Summary:        Support for Internationalized Domain Names (IDN) based on IDNA2008
 License:        GPL-3.0-or-later
-Group:          Development/Libraries/C and C++
 URL:            https://www.gnu.org/software/libidn/#libidn2
 Source0:        https://ftp.gnu.org/gnu/libidn/%{name}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/libidn/%{name}-%{version}.tar.gz.sig
@@ -35,7 +34,6 @@ An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
 
 %package tools
 Summary:        Command line utility to convert Int. Domain Names
-Group:          Productivity/Networking/DNS/Utilities
 Requires(post): %{install_info_prereq}
 
 %description tools
@@ -43,7 +41,6 @@ An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
 
 %package -n %{lname}
 Summary:        Support for Internationalized Domain Names (IDN)
-Group:          System/Libraries
 Recommends:     %{name}-lang = %{version}
 # for lang package
 Provides:       %{name} = %{version}
@@ -53,7 +50,6 @@ An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
 
 %package devel
 Summary:        Include Files and Libraries mandatory for Development
-Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
 %description devel

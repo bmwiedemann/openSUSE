@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 24 09:39:45 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
+
+- Do not buildrequires rust-std, it is already required by rust.
+
+-------------------------------------------------------------------
 Mon Oct 21 11:26:06 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
 
 - Do not buildrequires mono(csharp) or mono-core on SLE.

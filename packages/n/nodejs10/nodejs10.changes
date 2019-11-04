@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Oct 24 13:37:11 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- New upstream LTS version 10.17.0:
+  * crypto:
+    + add support for chacha20-poly1305 for AEAD
+    + increase maxmem range from 32 to 53 bits
+  * deps:
+    + update npm to 6.11.3
+    + upgrade openssl sources to 1.1.1d
+  * dns: remove dns.promises experimental warning
+  * fs: remove experimental warning for fs.promises
+  * http: makes response.writeHead return the response
+  * http2: makes response.writeHead return the response
+  * n-api:
+    + make func argument of napi_create_threadsafe_function optional
+    + mark version 5 N-APIs as stable
+    + implement date object
+  * process: add --unhandled-rejections flag
+  * stream:
+    + implement Readable.from async iterator utility
+    + make Symbol.asyncIterator support stable
+
+- CVE-2019-13173.patch: dropped, no longer in upstream npm
+- fix_build_with_openssl_1.1.1d.patch: upstreamed
+- node-gyp-addon-gypi.patch, versioned.patch: refreshed
+
+-------------------------------------------------------------------
+Wed Sep 18 13:44:55 UTC 2019 - Vítězslav Čížek <vcizek@suse.com>
+
+- Fix build with OpenSSL 1.1.1d (bsc#1149792)
+  * https://github.com/nodejs/node/pull/29550
+  * add fix_build_with_openssl_1.1.1d.patch
+
+-------------------------------------------------------------------
 Fri Aug 16 14:33:44 UTC 2019 - Adam Majer <adam.majer@suse.de>
 
 - Update to 10.16.3:

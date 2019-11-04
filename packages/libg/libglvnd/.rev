@@ -192,4 +192,20 @@
     let it build again.</comment>
     <requestid>735975</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>78053af6a2babd004f60c11f1f831a5f</srcmd5>
+    <version>1.2.0</version>
+    <time>1572883301</time>
+    <user>dimstar_suse</user>
+    <comment>- 0001-include-install-GL-headers-when-GL-is-enabled.patch
+  * A typo made it depend on EGL instead.
+- 0002-Add-a-configure-option-to-disable-glesv1-or-glesv2.patch
+  * Because mesa can be built without glesv1 so it breaks 
+    autodetection. Fixes: https://bugs.archlinux.org/task/64032 
+    ('mesa-demos doesn't build, unable to find GLES/gl.h')
+- 0003-egl-Sync-with-Khronos.patch
+  * Reserve enums 0x34A0..0x34AF for ANGLE project. (#93)
+    Closes: https://gitlab.freedesktop.org/glvnd/libglvnd/issues/193</comment>
+    <requestid>743020</requestid>
+  </revision>
 </revisionlist>
