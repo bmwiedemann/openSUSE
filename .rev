@@ -114,4 +114,13 @@
 </comment>
     <requestid>744668</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>3cc197f72101684698b3d9da37ce8367</srcmd5>
+    <version>3.3.0</version>
+    <time>1572884162</time>
+    <user>dimstar_suse</user>
+    <comment>- Add libqt5-qtgraphicaleffects and libqt5-qtquickcontrols2 as
+  requires (boo#1155704)</comment>
+    <requestid>745097</requestid>
+  </revision>
 </revisionlist>
