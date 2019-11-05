@@ -92,5 +92,7 @@ sub load_ignores()
 # main
 load_ignores;
 mkdir $outdir;
-find(\&wanted, $indir);
+my $finddir=$indir;
+$finddir .= "/".$ENV{PKG} if $ENV{PKG};
+find(\&wanted, $finddir);
 foreach(@list) {process($_)}
