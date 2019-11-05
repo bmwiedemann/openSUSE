@@ -4,6 +4,7 @@ import json
 import os
 import subprocess
 import sys
+import time
 
 obsbase='https://build.opensuse.org'
 outdir='packages'
@@ -31,6 +32,7 @@ for line in sys.stdin:
         info += change['comment']
     info += '\n'
     print(info);
+    time.sleep(10)
     subprocess.call(["tail", "-10", "/mounts/work/SRC/openSUSE:Factory/"+package+"/.rev"], shell=False);
     subprocess.call(["lockfile", "-l", "600", ".pkglock"], shell=False)
     subprocess.call(["scripts/syncone", package], shell=False)
