@@ -167,7 +167,36 @@
       <repopackage name="kdump" arch="x86_64"/>
       <repopackage name="kernel-default"/>
       <repopackage name="kernel-default-base" arch="x86_64"/>
-      <repopackage name="kernel-firmware" arch="x86_64"/>
+      <repopackage name="kernel-firmware-all" arch="x86_64"/>
+      <repopackage name="kernel-firmware-amdgpu" arch="x86_64"/>
+      <repopackage name="kernel-firmware-ath10k" arch="x86_64"/>
+      <repopackage name="kernel-firmware-atheros" arch="x86_64"/>
+      <repopackage name="kernel-firmware-bluetooth" arch="x86_64"/>
+      <repopackage name="kernel-firmware-bnx2" arch="x86_64"/>
+      <repopackage name="kernel-firmware-brcm" arch="x86_64"/>
+      <repopackage name="kernel-firmware-chelsio" arch="x86_64"/>
+      <repopackage name="kernel-firmware-dpaa2" arch="x86_64"/>
+      <repopackage name="kernel-firmware-i915" arch="x86_64"/>
+      <repopackage name="kernel-firmware-intel" arch="x86_64"/>
+      <repopackage name="kernel-firmware-iwlwifi" arch="x86_64"/>
+      <repopackage name="kernel-firmware-liquidio" arch="x86_64"/>
+      <repopackage name="kernel-firmware-marvell" arch="x86_64"/>
+      <repopackage name="kernel-firmware-media" arch="x86_64"/>
+      <repopackage name="kernel-firmware-mediatek" arch="x86_64"/>
+      <repopackage name="kernel-firmware-mellanox" arch="x86_64"/>
+      <repopackage name="kernel-firmware-mwifiex" arch="x86_64"/>
+      <repopackage name="kernel-firmware-network" arch="x86_64"/>
+      <repopackage name="kernel-firmware-nfp" arch="x86_64"/>
+      <repopackage name="kernel-firmware-nvidia" arch="x86_64"/>
+      <repopackage name="kernel-firmware-platform" arch="x86_64"/>
+      <repopackage name="kernel-firmware-qlogic" arch="x86_64"/>
+      <repopackage name="kernel-firmware-radeon" arch="x86_64"/>
+      <repopackage name="kernel-firmware-realtek" arch="x86_64"/>
+      <repopackage name="kernel-firmware-serial" arch="x86_64"/>
+      <repopackage name="kernel-firmware-sound" arch="x86_64"/>
+      <repopackage name="kernel-firmware-ti" arch="x86_64"/>
+      <repopackage name="kernel-firmware-ueagle" arch="x86_64"/>
+      <repopackage name="kernel-firmware-usb-network" arch="x86_64"/>
       <repopackage name="kexec-tools" arch="x86_64"/>
       <repopackage name="keyutils" arch="x86_64"/>
       <repopackage name="kmod"/>
@@ -405,12 +434,15 @@
       <repopackage name="openSUSE-build-key" arch="x86_64"/>
       <repopackage name="openSUSE-MicroOS-release"/>
       <repopackage name="openSUSE-MicroOS-release-appliance"/>
+      <repopackage name="openSUSE-release" arch="x86_64"/>
+      <repopackage name="openSUSE-release-appliance" arch="x86_64"/>
       <repopackage name="p11-kit" arch="x86_64"/>
       <repopackage name="p11-kit-tools" arch="x86_64"/>
       <repopackage name="pam"/>
       <repopackage name="pam-config"/>
       <repopackage name="parted" arch="x86_64"/>
       <repopackage name="patterns-base-apparmor" arch="x86_64"/>
+      <repopackage name="patterns-base-basesystem" arch="x86_64"/>
       <repopackage name="patterns-base-minimal_base" arch="x86_64"/>
       <repopackage name="patterns-containers-container_runtime" arch="x86_64"/>
       <repopackage name="patterns-containers-container_runtime_kubernetes" arch="x86_64"/>

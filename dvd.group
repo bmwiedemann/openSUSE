@@ -179,7 +179,6 @@
     <package name="at-spi2-atk-gtk2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="at-spi2-core" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="at-spi2-core-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="atftp" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="atk-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="atmel-firmware" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="attica-qt5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1224,7 +1223,36 @@
     <package name="kernel-default-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_kernel -->
     <package name="kernel-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_kernel -->
     <package name="kernel-docs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kernel-firmware" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="kernel-firmware-all" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="kernel-firmware-amdgpu" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="kernel-firmware-ath10k" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="kernel-firmware-atheros" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="kernel-firmware-bluetooth" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="kernel-firmware-bnx2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="kernel-firmware-brcm" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="kernel-firmware-chelsio" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="kernel-firmware-dpaa2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="kernel-firmware-i915" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="kernel-firmware-intel" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="kernel-firmware-iwlwifi" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="kernel-firmware-liquidio" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="kernel-firmware-marvell" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="kernel-firmware-media" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="kernel-firmware-mediatek" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="kernel-firmware-mellanox" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="kernel-firmware-mwifiex" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="kernel-firmware-network" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="kernel-firmware-nfp" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="kernel-firmware-nvidia" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="kernel-firmware-platform" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="kernel-firmware-qlogic" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="kernel-firmware-radeon" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="kernel-firmware-realtek" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="kernel-firmware-serial" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="kernel-firmware-sound" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="kernel-firmware-ti" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="kernel-firmware-ueagle" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="kernel-firmware-usb-network" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="kernel-macros" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_kernel -->
     <package name="kernel-source" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_kernel -->
     <package name="kexec-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
@@ -3157,8 +3185,8 @@
     <package name="mariadb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="mariadb-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="mariadb-errormessages" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="mate-calc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
-    <package name="mate-calc-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
+    <package name="mate-calc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="mate-calc-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="mbimcli-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="mbox-importer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="mbox-importer-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3968,7 +3996,7 @@
     <package name="poppler-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="popt-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="posix_cc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-C-C++-devel_C_C++ -->
-    <package name="postfix" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="postfix" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis -->
     <package name="postfix-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="postgresql" supportstatus="unsupported"/> <!-- reason: dvd:postgresql -->
     <package name="postgresql-contrib" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
