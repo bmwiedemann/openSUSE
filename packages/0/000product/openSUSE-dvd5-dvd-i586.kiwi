@@ -178,7 +178,6 @@
       <repopackage name="at-spi2-atk-gtk2"/>
       <repopackage name="at-spi2-core"/>
       <repopackage name="at-spi2-core-lang"/>
-      <repopackage name="atftp"/>
       <repopackage name="atk-lang"/>
       <repopackage name="atmel-firmware"/>
       <repopackage name="attica-qt5"/>
@@ -1232,7 +1231,36 @@
       <repopackage name="kernel-default-devel"/>
       <repopackage name="kernel-devel"/>
       <repopackage name="kernel-docs"/>
-      <repopackage name="kernel-firmware"/>
+      <repopackage name="kernel-firmware-all"/>
+      <repopackage name="kernel-firmware-amdgpu"/>
+      <repopackage name="kernel-firmware-ath10k"/>
+      <repopackage name="kernel-firmware-atheros"/>
+      <repopackage name="kernel-firmware-bluetooth"/>
+      <repopackage name="kernel-firmware-bnx2"/>
+      <repopackage name="kernel-firmware-brcm"/>
+      <repopackage name="kernel-firmware-chelsio"/>
+      <repopackage name="kernel-firmware-dpaa2"/>
+      <repopackage name="kernel-firmware-i915"/>
+      <repopackage name="kernel-firmware-intel"/>
+      <repopackage name="kernel-firmware-iwlwifi"/>
+      <repopackage name="kernel-firmware-liquidio"/>
+      <repopackage name="kernel-firmware-marvell"/>
+      <repopackage name="kernel-firmware-media"/>
+      <repopackage name="kernel-firmware-mediatek"/>
+      <repopackage name="kernel-firmware-mellanox"/>
+      <repopackage name="kernel-firmware-mwifiex"/>
+      <repopackage name="kernel-firmware-network"/>
+      <repopackage name="kernel-firmware-nfp"/>
+      <repopackage name="kernel-firmware-nvidia"/>
+      <repopackage name="kernel-firmware-platform"/>
+      <repopackage name="kernel-firmware-qlogic"/>
+      <repopackage name="kernel-firmware-radeon"/>
+      <repopackage name="kernel-firmware-realtek"/>
+      <repopackage name="kernel-firmware-serial"/>
+      <repopackage name="kernel-firmware-sound"/>
+      <repopackage name="kernel-firmware-ti"/>
+      <repopackage name="kernel-firmware-ueagle"/>
+      <repopackage name="kernel-firmware-usb-network"/>
       <repopackage name="kernel-macros"/>
       <repopackage name="kernel-pae" arch="i586,i686" onlyarch="i686"/>
       <repopackage name="kernel-pae-devel" arch="i586,i686" onlyarch="i686"/>
