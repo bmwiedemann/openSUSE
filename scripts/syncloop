@@ -1,5 +1,5 @@
 #!/bin/sh
-while sleep 9m ; do
+while sleep 59m ; do
   time scripts/sync
   echo sync is done. sleeping...
 done
