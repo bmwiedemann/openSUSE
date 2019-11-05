@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 # use opensuserabbit.py | rabbithandle.py
 import json
+import os
 import subprocess
 import sys
 
@@ -31,7 +32,12 @@ for line in sys.stdin:
     info += '\n'
     print(info);
     subprocess.call(["tail", "-10", "/mounts/work/SRC/openSUSE:Factory/"+package+"/.rev"], shell=False);
+    subprocess.call(["lockfile", "-l", "600", ".pkglock"], shell=False)
     subprocess.call(["scripts/syncone", package], shell=False)
     subprocess.call(["git", "add", pkgmap(package)], shell=False)
     process = subprocess.Popen(["git", "commit", "-F", "-"], stdin=subprocess.PIPE)
     process.communicate(info.encode('utf-8'))
+    try:
+        os.unlink(".pkglock")
+    except:
+        pass
