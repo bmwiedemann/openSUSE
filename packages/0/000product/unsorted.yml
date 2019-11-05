@@ -2033,10 +2033,6 @@ unsorted:
   - cyreal-marko-horobchyk-fonts 
   - cyreal-marmelad-fonts 
   - cyreal-wire-fonts 
-  - cyrus-imapd-devel 
-  - cyrus-imapd-snmp 
-  - cyrus-imapd-snmp-mibs 
-  - cyrus-imapd-utils 
   - cyrus-sasl-32bit: [x86_64] 
   - cyrus-sasl-crammd5-32bit: [x86_64] 
   - cyrus-sasl-devel-32bit: [x86_64] 
@@ -4217,8 +4213,10 @@ unsorted:
   - glassfish-el 
   - glassfish-el-api 
   - glassfish-el-javadoc 
+  - glassfish-jsp 
   - glassfish-jsp-api 
   - glassfish-jsp-api-javadoc 
+  - glassfish-jsp-javadoc 
   - glassfish-master-pom 
   - glassfish-servlet-api-javadoc 
   - glava 
@@ -4544,6 +4542,8 @@ unsorted:
   - google-compute-engine-oslogin 
   - google-compute-engine-oslogin-32bit: [x86_64] 
   - google-exo-fonts 
+  - google-gson 
+  - google-gson-javadoc 
   - google-guice 
   - google-guice-javadoc 
   - google-inconsolata-fonts 
@@ -5584,14 +5584,6 @@ unsorted:
   - java-11-openjdk-javadoc 
   - java-11-openjdk-jmods 
   - java-11-openjdk-src 
-  - java-12-openjdk 
-  - java-12-openjdk-accessibility 
-  - java-12-openjdk-demo 
-  - java-12-openjdk-devel 
-  - java-12-openjdk-headless 
-  - java-12-openjdk-javadoc 
-  - java-12-openjdk-jmods 
-  - java-12-openjdk-src 
   - java-13-openjdk 
   - java-13-openjdk-accessibility 
   - java-13-openjdk-demo 
@@ -5625,6 +5617,8 @@ unsorted:
   - javacc-maven-plugin 
   - javacc-maven-plugin-javadoc 
   - javadoc 
+  - javaewah 
+  - javaewah-javadoc 
   - javahelp2 
   - javahelp2-javadoc 
   - javahelp2-manual 
@@ -5742,6 +5736,7 @@ unsorted:
   - jmock-javadoc 
   - jmol 
   - jna 
+  - jna-contrib 
   - jna-javadoc 
   - jo 
   - joda-convert 
@@ -8898,7 +8893,7 @@ unsorted:
   - libgsm-utils 
   - libgsm1-32bit: [x86_64] 
   - libgsmsd8 
-  - libgsoap-2_8_93 
+  - libgsoap-2_8_94 
   - libgssdp-1_2-0-32bit: [x86_64] 
   - libgssdp-devel 
   - libgssglue1-32bit: [x86_64] 
@@ -17041,7 +17036,6 @@ unsorted:
   - python-ironic-inspector-client 
   - python-ironicclient-doc 
   - python-jaraco.stream-doc 
-  - python-jrnl 
   - python-k8sclient 
   - python-k8sclient-doc 
   - python-katedj 
@@ -18677,7 +18671,6 @@ unsorted:
   - python2-pip-shims 
   - python2-pip-tools 
   - python2-pipdeptree 
-  - python2-pipenv 
   - python2-pipreqs 
   - python2-pivy 
   - python2-pkgconfig 
@@ -19385,7 +19378,6 @@ unsorted:
   - python2-unidiff 
   - python2-unify 
   - python2-uniseg 
-  - python2-units 
   - python2-unittest-mixins 
   - python2-unittest-xml-reporting 
   - python2-unittest2 
@@ -19500,7 +19492,6 @@ unsorted:
   - python2-zc.customdoctests 
   - python2-zc.lockfile 
   - python2-zdaemon 
-  - python2-zeep 
   - python2-zetup 
   - python2-zhon 
   - python2-zict 
@@ -21164,7 +21155,6 @@ unsorted:
   - python3-pip-shims 
   - python3-pip-tools 
   - python3-pipdeptree 
-  - python3-pipenv 
   - python3-pipreqs 
   - python3-pivy 
   - python3-pkgconfig 
@@ -21926,7 +21916,6 @@ unsorted:
   - python3-unidiff 
   - python3-unify 
   - python3-uniseg 
-  - python3-units 
   - python3-unittest-mixins 
   - python3-unittest-xml-reporting 
   - python3-unittest2 
@@ -22058,7 +22047,6 @@ unsorted:
   - python3-zc.customdoctests 
   - python3-zc.lockfile 
   - python3-zdaemon 
-  - python3-zeep 
   - python3-zeroconf 
   - python3-zetup 
   - python3-zhon 
@@ -32935,6 +32923,8 @@ unsorted:
   - xml-commons-which-bootstrap 
   - xml-im-exporter 
   - xml-im-exporter-javadoc 
+  - xml-maven-plugin 
+  - xml-maven-plugin-javadoc 
   - xml-security-c-bin 
   - xml2po 
   - xml2po-devel 
