@@ -4514,6 +4514,8 @@ Provides: weakremover(xen-xend-tools)
 Provides: weakremover(openmpi_2_1_3-gnu-hpc-testsuite)
 Provides: weakremover(python2-hp3parclient)
 Provides: weakremover(python3-hp3parclient)
+Provides: weakremover(systemd-mini-container-mini)
+Provides: weakremover(systemd-mini-coredump-mini)
 Provides: weakremover(tftpboot-installation-openSUSE-Leap-15.0-x86_64)
 %ifarch x86_64
 Provides: weakremover(libLimeSuite18_04-1)
@@ -4538,8 +4540,6 @@ Provides: weakremover(openmpi_2_1_3-gnu-hpc-devel)
 Provides: weakremover(openmpi_2_1_3-gnu-hpc-devel-static)
 Provides: weakremover(openmpi_2_1_3-gnu-hpc-docs)
 Provides: weakremover(openmpi_2_1_3-gnu-hpc-macros-devel)
-Provides: weakremover(systemd-mini-container-mini)
-Provides: weakremover(systemd-mini-coredump-mini)
 Provides: weakremover(vulkan-devel-32bit)
 %endif
 # 15.0:non-oss
