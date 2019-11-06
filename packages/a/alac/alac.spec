@@ -1,7 +1,7 @@
 #
 # spec file for package alac
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,6 @@ Version:        0.0+git.20160511
 Release:        0
 Summary:        Apple Lossless Audio Codec
 License:        Apache-2.0
-Group:          Productivity/Multimedia/Sound/Editors and Convertors
 Url:            https://macosforge.github.io/alac/
 Source:         %{name}-%{version}.tar.xz
 Patch1:         libalac-makefile.patch
@@ -43,7 +42,6 @@ This package contains a command-line utility to convert the ALAC format.
 
 %package -n lib%{name}%{sover}
 Summary:        Apple Lossless Audio Codec
-Group:          System/Libraries
 
 %description -n lib%{name}%{sover}
 The Apple Lossless Audio Codec (ALAC) is an audio codec developed by Apple and
@@ -54,7 +52,6 @@ uncompressed audio file.
 
 %package devel
 Summary:        Apple Lossless Audio Codec
-Group:          Development/Libraries/C and C++
 Requires:       lib%{name}%{sover} = %{version}
 Provides:       lib%{name}-devel = %{version}
 Obsoletes:      lib%{name}-devel < %{version}

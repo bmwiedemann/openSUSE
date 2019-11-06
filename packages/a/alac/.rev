@@ -28,4 +28,12 @@
     <comment>- Fix obvious typo where we had missing % in provides/obsoletes (forwarded request 506970 from scarabeus_iv)</comment>
     <requestid>506971</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>1a6138f3beefec53c32faf678b5a5c39</srcmd5>
+    <version>0.0+git.20160511</version>
+    <time>1573044669</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>739461</requestid>
+  </revision>
 </revisionlist>
