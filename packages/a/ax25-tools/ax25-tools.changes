@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 17 14:02:39 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
 Fri May  5 07:16:52 UTC 2017 - mpluskal@suse.com
 
 - Cleanup spec file with spec-cleaner

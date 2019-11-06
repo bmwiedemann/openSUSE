@@ -1,7 +1,7 @@
 #
 # spec file for package ax25-tools
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,16 +20,15 @@ Name:           ax25-tools
 Version:        0.0.10rc4_87
 Release:        0
 Summary:        AX.25 tools
-License:        GPL-2.0
-Group:          Productivity/Hamradio/Packet
+License:        GPL-2.0-only
 Url:            http://www.linux-ax25.org
 Source:         ax25-tools-%{version}.tar.xz
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  libax25-devel
 BuildRequires:  libtool
-BuildRequires:  automake
-BuildRequires:  autoconf
-BuildRequires:  zlib-devel
 BuildRequires:  ncurses-devel
+BuildRequires:  zlib-devel
 
 %description
 These are the support utilities required to make use of the internal
