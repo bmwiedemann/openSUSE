@@ -1,7 +1,7 @@
 #
 # spec file for package avfs
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,8 +20,7 @@ Name:           avfs
 Version:        1.0.5
 Release:        0
 Summary:        AVFS - an archive look-inside filesystem
-License:        GPL-2.0+ AND LGPL-2.1+
-Group:          Productivity/Archiving/Compression
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            http://avf.sourceforge.net/
 Source0:        https://downloads.sf.net/avf/%{name}-%{version}.tar.bz2
 Source1:        https://downloads.sf.net/avf/%{name}-%{version}.tar.bz2.asc
@@ -48,7 +47,6 @@ or changing the kernel.
 
 %package devel
 Summary:        Development files for AVFS, an archive look-inside filesystem
-Group:          Development/Libraries/C and C++
 Requires:       libavfs0 = %{version}
 
 %description devel
@@ -59,7 +57,6 @@ or changing the kernel.
 
 %package -n libavfs0
 Summary:        Shared library for AVFS, an archive look-inside filesystem
-Group:          System/Libraries
 
 %description -n libavfs0
 This package includes the runtime shared library for the package avfs.
