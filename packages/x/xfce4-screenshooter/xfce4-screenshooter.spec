@@ -22,7 +22,7 @@
 %bcond_with git
 
 Name:           xfce4-screenshooter
-Version:        1.9.6
+Version:        1.9.7
 Release:        0
 Summary:        Screenshot Tool for the Xfce Desktop
 License:        GPL-2.0-or-later
