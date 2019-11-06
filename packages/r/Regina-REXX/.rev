@@ -33,4 +33,12 @@
     <comment></comment>
     <requestid>685947</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>97a7e6b0a0140c3283252b139ebb1dd5</srcmd5>
+    <version>3.9.1</version>
+    <time>1573044616</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete Groups tag (fate#326485)</comment>
+    <requestid>739340</requestid>
+  </revision>
 </revisionlist>

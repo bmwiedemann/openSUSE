@@ -23,7 +23,6 @@ Version:        3.9.1
 Release:        0
 Summary:        Mark Hessling's implementation of the REXX Interpreter
 License:        GFDL-1.1-only AND LGPL-2.1-or-later
-Group:          Development/Languages/Other
 URL:            http://regina-rexx.sourceforge.net/
 Source:         http://downloads.sourceforge.net/project/regina-rexx/regina-rexx/%{version}/Regina-REXX-%{version}.tar.gz
 Source1:        http://sourceforge.net/projects/regina-rexx/files/regina-documentation/%{version}/regina.pdf#/Regina-REXX-%{version}-doc.pdf
@@ -44,7 +43,6 @@ Mark Hessling's implementation of the REXX language interpreter.
 
 %package devel
 Summary:        Header files for the REXX interpreter
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}-%{release}
 Requires:       %{name} = %{version}-%{release}
 Provides:       regina-devel = %{version}-%{release}
@@ -56,7 +54,6 @@ to develop applications that require Regina-REXX.
 
 %package -n %{libname}
 Summary:        The regina shared library
-Group:          System/Libraries
 
 %description -n %{libname}
 This package provides the shared library for Mark Hessling's implementation
@@ -64,7 +61,6 @@ of the REXX Interpreter.
 
 %package doc
 Summary:        Documentation for the Regina REXX interpreter
-Group:          Documentation/Other
 
 %description doc
 Documentation for both the Regina REXX interpreter and the REXX Utility
