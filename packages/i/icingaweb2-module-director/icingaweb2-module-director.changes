@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Nov  5 18:07:53 UTC 2019 - ecsos@opensuse.org
+
+- Update to 1.7.2
+  * Fixed issues
+    - You can find issues and feature requests related to this 
+      release on our roadmap
+  * DB Schema
+    - FIX: Rolling out new installations on MySQL v5.6 fails 
+      (#1993)
+  * Icinga Configuration
+    - FIX: Render service_name for Notifications (#2006)
+  * User Interface
+    - FIX: Cloning Import Sources failed since v1.7.0 (#1997)
+  * CLI
+    - FIX: Importing Import Sources failed since v1.7.0 (#2005)
+  * Automation
+    - FIX: Fixing linux install script version check (#2008)
+    - FIX: Windows Kickstart Script - $GlobalZones was empty 
+      (#2002)
+  * Documentation
+    - FIX: Missing single quote in mysql example bug (#2003)
+
+-------------------------------------------------------------------
 Wed Oct 16 15:20:16 UTC 2019 - ecsos@opensuse.org
 
 - Update to 1.7.1
