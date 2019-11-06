@@ -33,4 +33,13 @@
     <comment></comment>
     <requestid>741437</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>ae9939146d6ed54bd1609e6726f05163</srcmd5>
+    <version>3.0.0</version>
+    <time>1573045578</time>
+    <user>dimstar_suse</user>
+    <comment>- Say goodbye to tests as they require pytest 3 only and
+  we want to remove that (upstream master still needs pytest3)</comment>
+    <requestid>745434</requestid>
+  </revision>
 </revisionlist>

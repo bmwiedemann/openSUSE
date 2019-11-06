@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  5 10:45:24 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Say goodbye to tests as they require pytest 3 only and
+  we want to remove that (upstream master still needs pytest3)
+
+-------------------------------------------------------------------
 Mon Oct 21 07:14:55 UTC 2019 - Petr Cervinka <petr@cervinka.net>
 
 - Fix test execution
