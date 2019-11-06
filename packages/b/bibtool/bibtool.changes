@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 17 14:35:50 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
 Mon Aug 15 07:47:01 UTC 2016 - mpluskal@suse.com
 
 - Drop -doc subpackage as building it is getting more and more

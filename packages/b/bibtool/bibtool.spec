@@ -1,7 +1,7 @@
 #
 # spec file for package bibtool
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2011 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,8 +21,7 @@ Name:           bibtool
 Version:        2.63
 Release:        0
 Summary:        Tool for Manipulating BibTeX Databases
-License:        GPL-1.0+ and CC-BY-SA-3.0
-Group:          Productivity/Publishing/TeX/Utilities
+License:        GPL-1.0-or-later AND CC-BY-SA-3.0
 Url:            http://www.gerd-neugebauer.de/software/TeX/BibTool/index.en.html
 Source0:        http://www.gerd-neugebauer.de/software/TeX/BibTool/BibTool-%{version}.tar.gz
 Source1:        http://www.gerd-neugebauer.de/software/TeX/BibTool/BibTool-%{version}.tar.gz.asc
