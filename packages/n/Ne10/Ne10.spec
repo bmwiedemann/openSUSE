@@ -1,7 +1,7 @@
 #
 # spec file for package Ne10
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,12 +22,10 @@ Version:        1.2.1
 Release:        0
 Summary:        A library of common math and DSP functions optimized for ARM NEON
 License:        BSD-3-Clause
-Group:          Development/Libraries/C and C++
-Url:            http://projectne10.github.com/Ne10/
+URL:            https://projectne10.github.com/Ne10/
 Source:         https://github.com/projectNe10/Ne10/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  armv7hl aarch64
 
 %description
@@ -38,7 +36,6 @@ and physics functions.
 
 %package -n libNE10-%{sover}
 Summary:        A library of common math and DSP functions optimized for ARM NEON
-Group:          Development/Libraries/C and C++
 
 %description -n libNE10-%{sover}
 Ne10 is a library of common functions that have been
@@ -53,7 +50,6 @@ This package contains the shared library.
 
 %package -n libNE10_test%{sover}
 Summary:        A library of common math and DSP functions optimized for ARM NEON
-Group:          Development/Libraries/C and C++
 
 %description -n libNE10_test%{sover}
 The library provides some of the fastest implementations of key
@@ -65,7 +61,6 @@ This package contains the shared library with tests.
 
 %package devel
 Summary:        Development files for Ne10, a math/DSP library for ARM NEON
-Group:          Development/Libraries/C and C++
 Requires:       libNE10-%{sover} = %{version}
 Requires:       libNE10_test%{sover} = %{version}
 
@@ -82,16 +77,15 @@ This package contains the development files.
 
 %build
 %cmake \
-  -DNE10_BUILD_STATIC=OFF \
-  -DNE10_BUILD_SHARED=ON  \
-  -DGNULINUX_PLATFORM=ON  \
   %ifarch aarch64
   -DNE10_LINUX_TARGET_ARCH=aarch64 \
   %else
   -DNE10_LINUX_TARGET_ARCH=armv7 \
   %endif
-  -DCMAKE_BUILD_TYPE=RelWithDebInfo
-make %{?_smp_mflags}
+  -DNE10_BUILD_STATIC=OFF \
+  -DNE10_BUILD_SHARED=ON \
+  -DGNULINUX_PLATFORM=ON
+%cmake_build
 
 %install
 for i in inc/*.h; do
@@ -109,18 +103,14 @@ done
 %postun -n libNE10_test%{sover} -p /sbin/ldconfig
 
 %files -n libNE10-%{sover}
-%defattr(-,root,root)
-%doc LICENSE
+%license LICENSE
 %{_libdir}/libNE10.so.%{sover}*
 
 %files -n libNE10_test%{sover}
-%defattr(-,root,root)
-%doc LICENSE
+%license LICENSE
 %{_libdir}/libNE10_test.so.%{sover}*
 
 %files devel
-%defattr(-,root,root)
-%doc LICENSE
 %{_includedir}/*.h
 %{_libdir}/libNE10.so
 %{_libdir}/libNE10_test.so

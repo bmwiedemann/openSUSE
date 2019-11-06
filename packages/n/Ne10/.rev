@@ -15,4 +15,14 @@
     <comment>1</comment>
     <requestid>441326</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8b981b59b569a868350316e3a379f267</srcmd5>
+    <version>1.2.1</version>
+    <time>1573047317</time>
+    <user>dimstar_suse</user>
+    <comment>- Use modern macros for building
+
+- Remove obsolete Groups tag (fate#326485)</comment>
+    <requestid>745496</requestid>
+  </revision>
 </revisionlist>
