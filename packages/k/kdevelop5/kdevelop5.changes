@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov  5 10:12:18 UTC 2019 - wbauer@tmo.at
+
+- Update to 5.4.4
+  * Fix copyright date display in About KDevelop/KDevPlatform
+    dialogs (kde#413390)
+  * FindClang.cmake: also search LLVM version 9
+  * Clang: Workaround for empty problem ranges at start of document
+
+-------------------------------------------------------------------
 Tue Oct 22 10:54:49 UTC 2019 - wbauer@tmo.at
 
 - Update to 5.4.3
