@@ -1,7 +1,7 @@
 #
 # spec file for package aespipe
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,8 +20,7 @@ Name:           aespipe
 Version:        2.4e
 Release:        0
 Summary:        AES Encrypting/Decrypting Pipe
-License:        GPL-2.0
-Group:          Productivity/Security
+License:        GPL-2.0-only
 Url:            http://loop-aes.sourceforge.net/
 Source:         http://loop-aes.sourceforge.net/aespipe/%{name}-v%{version}.tar.bz2#/%{name}-%{version}.tar.bz2
 BuildRequires:  autoconf
