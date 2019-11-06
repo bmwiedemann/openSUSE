@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- OBS-ExclusiveArch: aarch64 x86_64 -->
-<!-- 
-		This file is generated, 
-		don't manually modify this file, 
-		please check README 
+<!--
+		This file is generated,
+		don't manually modify this file,
+		please check README
 -->
 <image xmlns:suse_label_helper="com.suse.label_helper" schemaversion="6.9" name="rook-ceph-image">
   <description type="system">
@@ -13,7 +13,7 @@
   </description>
   <preferences>
     <type image="docker" derived_from="obsrepositories:/opensuse/tumbleweed">
-      <containerconfig tag="latest" additionaltags="%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%,%PKG_VERSION%.%PKG_COMMIT_NUM%" maintainer="SUSE Storage Team &lt;jfajerski@suse.com&gt;" name="opensuse/rook/ceph">
+      <containerconfig tag="latest" additionaltags="%PKG_VERSION%,%PKG_VERSION%.%PKG_COMMIT_NUM%,%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%" maintainer="SUSE Storage Team &lt;jfajerski@suse.com&gt;" name="opensuse/rook/ceph">
         <entrypoint execute="/tini">
           <argument name="--"/>
           <argument name="/usr/bin/rook"/>
@@ -22,15 +22,15 @@
           <suse_label_helper:add_prefix prefix="org.opensuse.rook-ceph">
             <label name="org.opencontainers.image.title" value="Rook container for Ceph"/>
             <label name="org.opencontainers.image.description" value="Rook container for Ceph"/>
-            <label name="org.opencontainers.image.version" value="%PKG_VERSION%.%PKG_COMMIT_NUM%"/>
+            <label name="org.opencontainers.image.version" value="%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%"/>
             <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
             <label name="org.opencontainers.image.vendor" value="SUSE LLC"/>
-            <label name="org.opencontainers.image.url" value="registry.opensuse.org/opensuse/rook/ceph:%PKG_VERSION%.%PKG_COMMIT_NUM%"/>
+            <label name="org.opencontainers.image.url" value="https://registry.opensuse.org/opensuse/rook/ceph:%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%"/>
             <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
-            <label name="org.opensuse.reference" value="opensuse/rook/ceph:%PKG_VERSION%.%PKG_COMMIT_NUM%"/>
+            <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/rook/ceph:%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%"/>
           </suse_label_helper:add_prefix>
         </labels>
-        <history author="Denis Kondratenko &lt;denis.kondratenko@suse.com&gt;">Derive the image</history>
+        <history author="Denis Kondratenko &lt;denis.kondratenko@suse.com&gt;">Update container history (SES-922)</history>
       </containerconfig>
     </type>
     <version>1.0.0</version>

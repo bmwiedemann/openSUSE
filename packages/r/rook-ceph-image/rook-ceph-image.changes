@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 29 09:53:09 UTC 2019 - Kristoffer Gronlund <kgronlund@suse.com>
+
+- Update container history (SES-922)
+  * Add pre-checkin.sh
+- Add release number to label versions
+
+-------------------------------------------------------------------
 Mon Aug 13 11:00:17 UTC 2019 - Denis Kondratenko <denis.kondratenko@suse.com>
 
 - Tech preview release for containers (bsc#1145433)

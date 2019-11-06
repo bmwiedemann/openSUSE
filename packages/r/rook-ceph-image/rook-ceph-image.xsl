@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:param name="history" select="'Derive the image'"/>
 <xsl:output method="xml" encoding="UTF-8" indent="yes"/>
 <xsl:template match="/">
 <xsl:comment> OBS-ExclusiveArch: aarch64 x86_64 </xsl:comment>
-<xsl:comment> 
-		This file is generated, 
-		don't manually modify this file, 
-		please check README 
+<xsl:comment>
+		This file is generated,
+		don't manually modify this file,
+		please check README
 </xsl:comment>
 <image schemaversion="6.9" name="rook-ceph-image" xmlns:suse_label_helper="com.suse.label_helper">
 
@@ -23,7 +24,7 @@
       </xsl:attribute>
       <containerconfig
         tag="latest"
-        additionaltags="%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%,%PKG_VERSION%.%PKG_COMMIT_NUM%"
+        additionaltags="%PKG_VERSION%,%PKG_VERSION%.%PKG_COMMIT_NUM%,%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%"
         maintainer="SUSE Storage Team &lt;jfajerski@suse.com&gt;">
         <xsl:attribute name="name">
           <xsl:value-of select="param/name" />
@@ -48,7 +49,7 @@
             </label>
 
             <label name="org.opencontainers.image.description" value="Rook container for Ceph"/>
-            <label name="org.opencontainers.image.version" value="%PKG_VERSION%.%PKG_COMMIT_NUM%"/>
+            <label name="org.opencontainers.image.version" value="%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%"/>
             <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
             <label name="org.opencontainers.image.vendor" value="SUSE LLC"/>
 
@@ -56,7 +57,7 @@
               <xsl:attribute name="value">
                 <xsl:value-of select="param/url" />
               </xsl:attribute>
-            </label>            
+            </label>
 
             <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
 
@@ -64,8 +65,8 @@
               <xsl:attribute name="value">
                 <xsl:value-of select="param/reference" />
               </xsl:attribute>
-            </label> 
-          
+            </label>
+
           </suse_label_helper:add_prefix>
 
           <xsl:for-each select="param/labels/label">
@@ -81,7 +82,7 @@
 
         </labels>
 
-        <history author="Denis Kondratenko &lt;denis.kondratenko@suse.com&gt;">Derive the image</history>
+        <history author="Denis Kondratenko &lt;denis.kondratenko@suse.com&gt;"><xsl:value-of select="$history"/></history>
      </containerconfig>
     </type>
     <version>1.0.0</version>
@@ -134,4 +135,4 @@
 
 </xsl:template>
 
-</xsl:stylesheet> 
+</xsl:stylesheet>

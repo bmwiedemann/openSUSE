@@ -4,8 +4,8 @@
   <name>opensuse/rook/ceph</name>
   <prefix>org.opensuse.rook-ceph</prefix>
   <title>Rook container for Ceph</title>
-  <url>registry.opensuse.org/opensuse/rook/ceph:%PKG_VERSION%.%PKG_COMMIT_NUM%</url>
-  <reference>opensuse/rook/ceph:%PKG_VERSION%.%PKG_COMMIT_NUM%</reference>
+  <url>https://registry.opensuse.org/opensuse/rook/ceph:%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%</url>
+  <reference>registry.opensuse.org/opensuse/rook/ceph:%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%</reference>
   <packages_image>
     <package>
       <name>openSUSE-build-key</name>
