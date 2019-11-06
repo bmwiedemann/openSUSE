@@ -18,18 +18,21 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-APScheduler
-Version:        3.6.1
+Version:        3.6.2
 Release:        0
 Summary:        In-process task scheduler with Cron-like capabilities
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/agronholm/apscheduler
 Source:         https://files.pythonhosted.org/packages/source/A/APScheduler/APScheduler-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM compat-pytest4+.patch gh#agronholm/apscheduler#401 mcepl@suse.com
+# fix the test suite to be compatible with pytest4+
+Patch0:         compat-pytest4+.patch
 BuildRequires:  %{python_module SQLAlchemy >= 0.8}
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module pytest-tornado}
-BuildRequires:  %{python_module pytest < 4}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools >= 0.7}
 BuildRequires:  %{python_module setuptools_scm}
@@ -84,6 +87,8 @@ APscheduler provides multiple job stores.
 
 %prep
 %setup -q -n APScheduler-%{version}
+%autopatch -p1
+
 # we don't want the tweaked pytest config options
 rm setup.cfg
 
@@ -95,7 +100,7 @@ rm setup.cfg
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -v
+%pytest
 
 %files %{python_files}
 %license LICENSE.txt

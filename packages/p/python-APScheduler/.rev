@@ -100,4 +100,17 @@
     <comment></comment>
     <requestid>728512</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>00c0fe2544faded6027ecb0c760f1a0f</srcmd5>
+    <version>3.6.2</version>
+    <time>1573045471</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.6.2, which fixes (together with the patch
+  compat-pytest4+.patch, which replaces pytest4.patch)
+  incompatibility with pytest 4+. gh#agronholm/apscheduler#401
+
+- Add pytest4.patch to make test suite work even with pytest 4.
+  gh#agronholm/apscheduler#401</comment>
+    <requestid>745282</requestid>
+  </revision>
 </revisionlist>

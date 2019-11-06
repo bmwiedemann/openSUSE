@@ -1,0 +1,69 @@
+From 9f123913c89d3cec143dd3da985854a2835eda22 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Alex=20Gr=C3=B6nholm?= <alex.gronholm@nextday.fi>
+Date: Mon, 4 Nov 2019 23:51:12 +0200
+Subject: [PATCH] Fixed compatibility with pytest 4+
+
+Fixes #401.
+---
+ setup.py           |  2 +-
+ tests/test_util.py | 30 +++++++++++++-----------------
+ 2 files changed, 14 insertions(+), 18 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 6988f74..f195542 100644
+--- a/setup.py
++++ b/setup.py
+@@ -55,7 +55,7 @@
+         'twisted': ['twisted'],
+         'zookeeper': ['kazoo'],
+         'testing': [
+-            'pytest < 3.7',
++            'pytest',
+             'pytest-cov',
+             'pytest-tornado5'
+         ],
+diff --git a/tests/test_util.py b/tests/test_util.py
+index f1f07e6..57a322a 100644
+--- a/tests/test_util.py
++++ b/tests/test_util.py
+@@ -220,27 +220,23 @@ def nested():
+         assert str(exc.value) == 'Cannot create a reference to a nested function'
+ 
+     @pytest.mark.parametrize('input,expected', [
+-        pytest.mark.skipif(sys.version_info[:2] == (3, 2),
+-                           reason="Unbound methods can't be resolved on Python 3.2")(
+-            (DummyClass.meth, 'tests.test_util:DummyClass.meth')
+-        ),
++        (DummyClass.meth, 'tests.test_util:DummyClass.meth'),
+         (DummyClass.classmeth, 'tests.test_util:DummyClass.classmeth'),
+-        pytest.mark.skipif(sys.version_info < (3, 3),
+-                           reason="Requires __qualname__ (Python 3.3+)")(
+-            (DummyClass.InnerDummyClass.innerclassmeth,
+-             'tests.test_util:DummyClass.InnerDummyClass.innerclassmeth')
+-        ),
+-        pytest.mark.skipif(sys.version_info < (3, 3),
+-                           reason="Requires __qualname__ (Python 3.3+)")(
+-            (DummyClass.staticmeth, 'tests.test_util:DummyClass.staticmeth')
++        pytest.param(
++            DummyClass.InnerDummyClass.innerclassmeth,
++            'tests.test_util:DummyClass.InnerDummyClass.innerclassmeth',
++            marks=[pytest.mark.skipif(sys.version_info < (3, 3),
++                                      reason="Requires __qualname__ (Python 3.3+)")]
+         ),
+-        pytest.mark.skipif(sys.version_info >= (3, 2),
+-                           reason="Unbound methods (Python 3.2) and __qualname__ (Python 3.3+)")(
+-            (InheritedDummyClass.pause, 'tests.test_util:InheritedDummyClass.pause')
++        pytest.param(
++            DummyClass.staticmeth,
++            'tests.test_util:DummyClass.staticmeth',
++            marks=[pytest.mark.skipif(sys.version_info < (3, 3),
++                                      reason="Requires __qualname__ (Python 3.3+)")]
+         ),
+         (timedelta, 'datetime:timedelta'),
+-    ], ids=['unbound method', 'class method', 'inner class method', 'static method',
+-            'inherited class method', 'timedelta'])
++    ], ids=['class method', 'inner class method', 'static method', 'inherited class method',
++            'timedelta'])
+     def test_valid_refs(self, input, expected):
+         assert obj_to_ref(input) == expected
+ 
