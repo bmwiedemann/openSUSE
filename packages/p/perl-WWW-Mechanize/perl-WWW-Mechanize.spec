@@ -17,7 +17,7 @@
 
 
 Name:           perl-WWW-Mechanize
-Version:        1.94
+Version:        1.95
 Release:        0
 %define cpan_name WWW-Mechanize
 Summary:        Handy web browsing in a Perl object
@@ -87,7 +87,7 @@ content and use that as input to a test call.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -name "*.sh" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
