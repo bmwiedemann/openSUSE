@@ -1596,4 +1596,12 @@ WANTED for 13.1 - BLUEZ5 FIX (forwarded request 203010 from Zaitor)</comment>
     <comment>New stable rel. NOT buildtested, wait for build. And yes, we will need to rebase in GN.... (forwarded request 736708 from iznogood)</comment>
     <requestid>736805</requestid>
   </revision>
+  <revision rev="202" vrev="2">
+    <srcmd5>18ab29d1502aa284e178af5cbe34d297</srcmd5>
+    <version>1.18.4</version>
+    <time>1573049696</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>744681</requestid>
+  </revision>
 </revisionlist>

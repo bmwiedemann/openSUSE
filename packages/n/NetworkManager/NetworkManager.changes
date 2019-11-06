@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 31 08:31:22 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop NetworkNanager-client recommends: this is no longer needed,
+  as NM itself ships a frontend by now (nmtui). If a DE has a
+  better way to manage NM (by means of applets or other way of
+  integration) it is up to the DE to depend on the applets.
+
+-------------------------------------------------------------------
 Wed Oct  9 15:26:34 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.18.4:
