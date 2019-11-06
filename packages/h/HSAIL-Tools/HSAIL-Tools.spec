@@ -21,7 +21,6 @@ Version:        0+git20180830.6514deb
 Release:        0
 Summary:        Parse and (dis)assemble HSA Intermediate Language
 License:        NCSA
-Group:          Development/Tools/Building
 URL:            https://github.com/HSAFoundation/HSAIL-Tools
 Source:         %{name}-%{version}.tar.xz
 Patch1:         warning.patch

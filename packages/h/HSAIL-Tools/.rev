@@ -43,4 +43,12 @@
     <comment>- Small package modernisation</comment>
     <requestid>733366</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>86a78768688b952c44c3f1ea6f7d698c</srcmd5>
+    <version>0+git20180830.6514deb</version>
+    <time>1573044566</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>739248</requestid>
+  </revision>
 </revisionlist>
