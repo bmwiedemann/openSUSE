@@ -18,12 +18,11 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-datadir
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
-Summary:        pytest plugin for test data directories and files
+Summary:        Plugin for test data directories and files
 License:        MIT
-Group:          Development/Languages/Python
-URL:            http://github.com/gabrielcnr/pytest-datadir
+URL:            https://github.com/gabrielcnr/pytest-datadir
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-datadir/pytest-datadir-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
@@ -50,10 +49,10 @@ pytest plugin for test data directories and files.
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-rm %{buildroot}/usr/LICENSE
+rm %{buildroot}%{_prefix}/LICENSE
 
 %check
-%python_exec setup.py pytest
+%pytest
 
 %files %{python_files}
 %doc AUTHORS CHANGELOG.rst README.md
