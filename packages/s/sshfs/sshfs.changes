@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Nov  3 09:56:36 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 3.6.0
+  * Added "-o direct_io" option.
+    This option disables the use of page cache in kernel.
+    This is useful for example if the file size is not known before reading it.
+    For example if you mount /proc dir from a remote host without the direct_io
+    option, the read always will return zero bytes instead of actual data.
+  * Added --verbose option.
+  * Fixed a number of compiler warnings.
+  * Improved performance under OS X.
+
+-------------------------------------------------------------------
 Wed Apr 17 07:52:42 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.5.2

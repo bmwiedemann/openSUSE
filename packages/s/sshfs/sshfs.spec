@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           sshfs
-Version:        3.5.2
+Version:        3.6.0
 Release:        0
 Summary:        Filesystem client based on SSH file transfer protocol
 License:        GPL-2.0-or-later
