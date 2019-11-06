@@ -23,7 +23,6 @@ Version:        20190916
 Release:        0
 Summary:        An SSL/TLS protocol implementation
 License:        OpenSSL
-Group:          Development/Libraries/C and C++
 URL:            https://boringssl.googlesource.com/boringssl/
 Source:         %{name}-%{version}.tar.xz
 Patch0:         add-soversion-option.patch
@@ -41,7 +40,6 @@ Transport Layer Security (TLS) protocols, derived from OpenSSL.
 
 %package -n %{libname}
 Summary:        An SSL/TLS protocol implementation
-Group:          Productivity/Networking/Security
 Recommends:     ca-certificates-mozilla
 
 %description -n %{libname}
@@ -50,7 +48,6 @@ Transport Layer Security (TLS) protocols, derived from OpenSSL.
 
 %package devel
 Summary:        Development files for BoringSSL
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 
 %description devel

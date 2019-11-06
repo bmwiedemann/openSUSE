@@ -323,4 +323,12 @@
   * Replace addc64,subc64,mul64 in SIKE Go code with functions from math/bits</comment>
     <requestid>738259</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>a625d55235e868fd5440794c79a0f422</srcmd5>
+    <version>20190916</version>
+    <time>1573044894</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>740085</requestid>
+  </revision>
 </revisionlist>
