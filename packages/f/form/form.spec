@@ -12,12 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 # Documentation building fails due to LaTeX errors; disable for now
 %define with_doc 0
+
+%define omp_ver openmpi2
 
 %define reldate 20190212
 Name:           form
@@ -29,6 +31,7 @@ Group:          Productivity/Scientific/Math
 Url:            https://github.com/vermaseren/form/
 Source0:        https://github.com/vermaseren/form/archive/v%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
+BuildRequires:  %{omp_ver}-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
@@ -37,7 +40,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  git
 BuildRequires:  gmp-devel
 BuildRequires:  libtool
-BuildRequires:  openmpi-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
 %if %{with_doc}
@@ -97,8 +99,8 @@ sed -i "s/PRODUCTIONDATE __DATE__/PRODUCTIONDATE %{reldate}/" sources/form3.h
 sed -i "s/PRODUCTIONDATE __DATE__/PRODUCTIONDATE %{reldate}/" configure.ac
 
 %build
-if [ -f %{_libdir}/mpi/gcc/openmpi/bin/mpivars.sh ]; then
-  source %{_libdir}/mpi/gcc/openmpi/bin/mpivars.sh
+if [ -f %{_libdir}/mpi/gcc/%{omp_ver}/bin/mpivars.sh ]; then
+  source %{_libdir}/mpi/gcc/%{omp_ver}/bin/mpivars.sh
 fi
 
 sed -i "s|-march=native||g" configure.ac

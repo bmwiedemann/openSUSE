@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  1 14:03:58 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Switch to using the newer openmpi2 instead of openmpi(1).
+
+-------------------------------------------------------------------
 Fri Mar 15 14:44:09 UTC 2019 - Atri B <badshah400@gmail.com>
 
 - Update to version 4.2.1:
