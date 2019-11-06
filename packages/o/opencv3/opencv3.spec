@@ -33,7 +33,7 @@
 %bcond_without openblas
 
 Name:           opencv3
-Version:        3.4.6
+Version:        3.4.7
 Release:        0
 Summary:        Collection of algorithms for computer vision
 # GPL-2.0 AND Apache-2.0 files are in 3rdparty/ittnotify which is not build
@@ -49,8 +49,8 @@ Patch0:         opencv-gles.patch
 Patch1:         opencv-build-compare.patch
 # PATCH-FIX-OPENSUSE 0001-Do-not-include-glx.h-when-using-GLES.patch -- Fix build error on 32bit ARM, due to incompatible pointer types, https://github.com/opencv/opencv/issues/9171
 Patch2:         0001-Do-not-include-glx.h-when-using-GLES.patch
-# PATCH-FIX-UPSTREAM fix_processor_detection_for_32bit_on_64bit.patch -- Fix CPU detection for 32bit build on qemu-system-aarch64
-Patch3:         fix_processor_detection_for_32bit_on_64bit.patch
+# PATCH-FIX-UPSTREAM CVE-2019-15939.patch boo#1149742 mgorse@suse.com -- add input check in HOG detector.
+Patch3:         CVE-2019-15939.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  libeigen3-devel

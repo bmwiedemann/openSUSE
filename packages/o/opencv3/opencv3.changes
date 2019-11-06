@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 17 16:34:57 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Update to 3.4.7
+  Maintenance release, no changelog provided
+  * Security fixes: CVE-2019-14491 (boo#1144352), CVE-2019-14492
+    (boo#1144348).
+- Drop fix_processor_detection_for_32bit_on_64bit.patch: fixed
+  upstream.
+- Add CVE-2019-15939.patch: add input check in HOG detector
+  (boo#1149742 CVE-2019-15939). 
+
+-------------------------------------------------------------------
 Fri Sep 13 10:11:25 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Disable LTO on ppc64le for now, as it fails to build when enabled
