@@ -23,7 +23,6 @@ Version:        2.14
 Release:        0
 Summary:        ANSI Terminal Escape Code Converter
 License:        GPL-3.0-or-later
-Group:          Development/Tools/Other
 Url:            http://www.andre-simon.de/
 Source:         http://www.andre-simon.de/zip/ansifilter-%{version}.tar.bz2
 Source2:        http://www.andre-simon.de/zip/ansifilter-%{version}.tar.bz2.asc
@@ -38,7 +37,6 @@ output (HTML, RTF, TeX, LaTeX, BBCode).
 %if %{with gui}
 %package gui
 Summary:        ANSI Terminal Escape Code Converter - Qt GUI
-Group:          Development/Tools/Other
 BuildRequires:  libqt5-qtbase-devel
 Requires:       %{name} = %{version}
 %if 0%{?suse_version} < 1330

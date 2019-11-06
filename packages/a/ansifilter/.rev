@@ -81,4 +81,12 @@ Created in 2007 and actively maintained and enhanced since then.</comment>
   * Added SVG output option (gl#saalen/ansifilter#20).</comment>
     <requestid>697301</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>452897870dd6cc8f22c307b25b11736f</srcmd5>
+    <version>2.14</version>
+    <time>1573044742</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>739502</requestid>
+  </revision>
 </revisionlist>
