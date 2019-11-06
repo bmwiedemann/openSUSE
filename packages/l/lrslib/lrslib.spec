@@ -16,10 +16,11 @@
 #
 
 
-%define dullver	070
-%define lname   liblrs-7_0-0
+%define dullver	070a
+%define dullver2 070
+%define lname   liblrs-7_0a0
 Name:           lrslib
-Version:        7.0
+Version:        7.0a
 Release:        0
 Summary:        Reverse Search Vertex Enumeration program
 License:        GPL-2.0-or-later
@@ -70,7 +71,7 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of lrslib.
 
 %prep
-%autosetup -n %name-%dullver -p1
+%autosetup -n %name-%dullver2 -p1
 
 %build
 make CFLAGS="%optflags" CXXFLAGS="%optflags" \

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov  4 13:03:41 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.0a
+  * Misplaced leaf test degraded performance and has been fixed.
+  * Bug in volume computation in mplrs fixed.
+  * Default cache limit set back to 10 to allow large parallel
+    runs with low memory.
+  * Reintroduced buffer for removing most duplicates when
+    allbases option is set.
+  * lrs1/2 on overflow no longer gives core dump.
+
+-------------------------------------------------------------------
 Sat Mar 16 12:28:58 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to upstream rerelease 7.0

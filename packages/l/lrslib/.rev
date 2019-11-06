@@ -23,4 +23,12 @@
     <comment>- Update to upstream rerelease 7.0</comment>
     <requestid>685609</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b0e0f070168ecacd35cd1bc0c55b505d</srcmd5>
+    <version>7.0a</version>
+    <time>1573045059</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 7.0a</comment>
+    <requestid>745211</requestid>
+  </revision>
 </revisionlist>
