@@ -21,7 +21,6 @@ Version:        0.5.2
 Release:        0
 Summary:        SoundFont Utilities for SB AWE32/64 and Emu10k1 Drivers
 License:        GPL-2.0-or-later
-Group:          Productivity/Multimedia/Sound/Midi
 Url:            https://github.com/tiwai/awesfx
 Source:         awesfx-%{version}.tar.gz
 Patch:          awesfx-0.5.1e-fix-bashisms.patch

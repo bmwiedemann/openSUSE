@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 17 14:01:08 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
 Thu Sep  5 14:10:09 CEST 2019 - tiwai@suse.de
 
 - Fix the build error and warning:
