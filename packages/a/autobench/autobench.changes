@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 17 13:55:17 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
 Thu Feb  4 20:58:46 UTC 2016 - mpluskal@suse.com
 
 - Use optflags when building
