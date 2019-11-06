@@ -29,14 +29,17 @@ Release:        0
 Summary:        A library passing all socket communications trough Unix sockets
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            http://cwrap.org/
+Url:            https://cwrap.org/
+#
 Source0:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz
-Source1:        %{name}-rpmlintrc
-Source2:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz.asc
-Source3:        socket_wrapper.keyring
+Source1:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz.asc
+Source2:        socket_wrapper.keyring
+Source3:        %{name}-rpmlintrc
+#
 BuildRequires:  cmake
 BuildRequires:  libcmocka-devel
 BuildRequires:  pkg-config
+#
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 Recommends:     cmake
@@ -54,7 +57,7 @@ LD_PRELOAD=libsocket_wrapper.so
 SOCKET_WRAPPER_DIR=/path/to/swrap_dir
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %cmake \

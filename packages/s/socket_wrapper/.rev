@@ -121,4 +121,14 @@
     <comment>Change Requires to Recommends for cmake and pkgconf</comment>
     <requestid>724990</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>29f4b27817733f7650d0e082487af129</srcmd5>
+    <version>1.2.3</version>
+    <time>1573044488</time>
+    <user>dimstar_suse</user>
+    <comment>- Some spec file cleanups
+
+Note: socket_wrapper fails if built on 'lamb'</comment>
+    <requestid>744487</requestid>
+  </revision>
 </revisionlist>
