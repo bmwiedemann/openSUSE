@@ -61,4 +61,12 @@
     <comment>- Update to new upstream release 0.11.3:</comment>
     <requestid>561021</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>81bb96382eb7511ca95d3b0448ef35b9</srcmd5>
+    <version>0.12.1</version>
+    <time>1573045022</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.1</comment>
+    <requestid>745193</requestid>
+  </revision>
 </revisionlist>

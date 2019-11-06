@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Nov  1 10:48:12 UTC 2019 - Markus S <kamikazow@opensuse.org>
+
+- Update to 0.12.1
+  * The manual is now rendered as PDF.
+  * Final Doom compatibility de-emphasized. Where it creates
+    conflicts with Doom II mods or texture definitions, the the
+    Doom II side of things gets preferred. Final Doom-specific
+    maps and mods may never look completely right in Freedoom, as
+    a result.
+  * Phase 1 received a lot of mapping changes with improved
+    difficulty levels. There is a new C3M5.
+  * Phase 2 MAP01 received an overhaul, simplifying its design in
+    significant ways to improve the flow around the level.
+  * Two maps in Phase 2 were replaced due to being recreations of
+    Doom II maps.
+  * Maps in Phase 2 in general have had some slight
+    re-arrangement based on difficulty levels and themes. A new
+    MAP06 is included, while the old one took the MAP18 slot.
+  * All levels are now guaranteed to have co-op and deathmatch starts.
+  * New sprites for power-ups (stealth, overdrive, and ultra-overdrive)
+    and Arch Vile.
+  * Some weapon and ammo sprites have been tweaked and improved.
+  * Completed and enhanced set of Evilution and Plutonia textures.
+  * New skull-switches by MissLav.
+  * New SKY4 based on an astronomy photograph.
+  * Tweaked player sprites and HUD face.
+  * New music tracks in C1M2, C2M3, C2M8, MAP03, MAP12, MAP22,
+    MAP25, MAP26, MAP27, DM03, DM06, DM09, DM17, DM24, DM31, and
+    DM32.
+  * Metainfo (formerly appdata) and desktop files have been
+    brought up to the latest standard specifications and
+    recommendations, using reverse-DNS for the project
+    identifier, and a self-evaluated content rating.
+  * Phase 2’s internal DEMO1 has been replaced, thanks to some
+    odd vanilla quirks that could cause it to desync in some (but
+    not all) conditions.
+  * The sailor monster type is formally banished from Freedoom’s
+    own levels, and remaining uses of it were removed.
+
+-------------------------------------------------------------------
 Mon Jan  1 07:50:41 UTC 2018 - avindra@opensuse.org
 
 - Update to new upstream release 0.11.3:

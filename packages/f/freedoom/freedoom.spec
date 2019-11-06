@@ -1,7 +1,7 @@
 #
 # spec file for package freedoom
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           freedoom
-Version:        0.11.3
+Version:        0.12.1
 Release:        0
 Summary:        Replacement game files for Doom game engines
 License:        BSD-3-Clause
@@ -27,16 +27,14 @@ Url:            https://freedoom.github.io/
 #Git-Web:       http://github.com/freedoom/freedoom
 #Git-Clone:     git://github.com/freedoom/freedoom
 Source:         https://github.com/freedoom/freedoom/releases/download/v%version/freedoom-%version.zip
-Source2:        https://github.com/freedoom/freedoom/releases/download/v%version/freedoom-%version.zip.asc
-Source9:        %name.keyring
 BuildArch:      noarch
 BuildRequires:  unzip
 
 %description
 Though the Doom engine source code is libre, the original game data
 (graphics, maps, etc.) is not. Freedoom is an alternate game data set
-that can be used with a Doom engine, such as prboom-plus or
-chocolate-doom, to form a free Doom-based game.
+that can be used with a Doom engine, such as prboom-plus,
+chocolate-doom or gzdoom, to form a free Doom-based game.
 
 %prep
 %setup -q
@@ -52,7 +50,7 @@ install -Dpm0644 freedoom2.wad %buildroot/%_datadir/doom/freedoom2.wad
 echo "NOTE: FreeDoom WAD files are no longer named doom.wad/doom2.wad, and you may need to explicitly specify them now when starting a Doom engine."
 
 %files
-%doc COPYING.txt CREDITS.txt README.html
+%doc COPYING.txt CREDITS.txt freedoom-manual.pdf README.html
 %_datadir/doom/
 
 %changelog
