@@ -164,7 +164,7 @@ BuildRequires:  libtasn1-devel >= 3.8
 %else
 %define	build_make_smp_mflags %{?jobs:-j%jobs}
 %endif
-Version:        4.11.0+git.95.c88b5f2c0c6
+Version:        4.11.2+git.99.f93cc798f2e
 Release:        0
 Url:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}

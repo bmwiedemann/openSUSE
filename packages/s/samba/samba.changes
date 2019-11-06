@@ -1,3 +1,43 @@
+Tue Oct 29 17:22:30 UTC 2019 - Jim McDonough <jmcdonough@suse.com>
+
+- Update to samba 4.11.2
+  + CVE-2019-10218: Client code can return filenames containing
+    path separators; (bsc#1144902); (bso#14071).
+  + CVE-2019-14833: Samba AD DC check password script does not
+    receive the full password; (bso#12438).
+  + CVE-2019-14847: User with "get changes" permission can crash
+    AD DC LDAP server via dirsync; (bso#14040).
+- Fixes from 4.11.1
+  + Overlinking libreplace against librt and pthread against every
+    binary or library causes issues; (bso#14140);
+  + kpasswd fails when built with MIT Kerberos; (bso#14155);
+  + Fix spnego fallback from kerberos to ntlmssp in smbd server;
+    (bso#14106);
+  + Stale file handle error when using mkstemp on a share; (bso#14137);
+  + non-AES schannel broken; (bso#14134);
+  + Joining Active Directory should not use SAMR to set the password;
+    (bso#13884);
+  + smbclient can blunder into the SMB1 specific cli_RNetShareEnum()
+    call on an SMB2 connection; (bso#14152);
+  + Deleted records can be resurrected during recovery; (bso#14147);
+  + getpwnam and getpwuid need to return data for ID_TYPE_BOTH group;
+    (bso#14141);
+  + winbind does not list forest trusts with additional trust
+    attributes; (bso#14130);
+  + fault report points to outdated documentation; (bso#14139);
+  + pam_winbind with krb5_auth or wbinfo -K doesn't work for users of
+    trusted domains/forests; (bso#14124);
+  + classicupgrade results in uncaught exception - a bytes-like object
+    is required, not 'str'; (bso#14136);
+  + pod2man is not longer required, stop checking at build time;
+    (bso#14131);
+  + Exit code of ctdb nodestatus should not be influenced by deleted
+    nodes; (bso#14129);
+  + username/password authentication doesn't work with CUPS and
+    smbspool; (bso#14128);
+  + smbc_readdirplus() is incompatible with smbc_telldir() and
+    smbc_lseekdir(); (bso#14094);
+
 -------------------------------------------------------------------
 Sat Oct  5 14:20:06 UTC 2019 - James McDonough <jmcdonough@suse.com>
 
