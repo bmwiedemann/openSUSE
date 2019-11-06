@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  4 12:50:50 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.7
+  * Azimuth in Horizontal Coordinates is now computed with South as
+    reference.
+
+-------------------------------------------------------------------
 Tue Oct 30 10:55:47 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 1.6

@@ -1,7 +1,7 @@
 #
 # spec file for package wxEphe
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wxEphe
-Version:        1.6
+Version:        1.7
 Release:        0
 Summary:        Astronomical ephemeris for the Sun, Moon and solar system planets
 License:        GPL-3.0-only
@@ -25,7 +25,6 @@ Group:          Productivity/Scientific/Astronomy
 Url:            http://www.jpmr.org/
 #Freshcode-URL:	https://freshcode.club/projects/wxephe
 Source:         https://downloads.sf.net/wxephe/wxEphe-%version.tar.xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  wxWidgets-devel >= 3
@@ -48,7 +47,7 @@ make %{?_smp_mflags}
 
 %files -f %name.lang
 %defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %_bindir/wxEphe
 %_datadir/applications/*
 %_datadir/pixmaps/*
