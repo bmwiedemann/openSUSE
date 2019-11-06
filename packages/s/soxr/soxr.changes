@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  1 11:45:29 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO (boo#1155011) for ARM targets.
+
+-------------------------------------------------------------------
 Tue Mar 13 06:24:29 UTC 2018 - davejplater@gmail.com
 
 - Update to 0.1.3

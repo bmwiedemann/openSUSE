@@ -1,7 +1,7 @@
 #
 # spec file for package soxr
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Name:           soxr
 Version:        0.1.3
 Release:        0
 Summary:        The SoX Resampler library
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          System/Libraries
 Url:            http://soxr.sourceforge.net/
 Source:         http://downloads.sf.net/%{name}/%{name}-%{version}-Source.tar.xz#/%{name}-%{version}.tar.xz
@@ -68,6 +68,11 @@ application which will use libsoxr/libsoxr-lsr.
 %setup -q -n %{name}-%{version}-Source
 
 %build
+
+%ifarch %arm
+%define _lto_cflags %{nil}
+%endif
+
 %cmake \
   -DDOC_INSTALL_DIR=%{_docdir}/%{name}
 make %{?_smp_mflags}
