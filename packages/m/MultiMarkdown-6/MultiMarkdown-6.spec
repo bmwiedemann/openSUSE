@@ -21,8 +21,7 @@ Version:        6.4.0
 Release:        0
 Summary:        Reference implementation of MultiMarkdown
 License:        MIT
-Group:          Productivity/Publishing/Other
-URL:            http://fletcherpenney.net/multimarkdown
+URL:            https://fletcherpenney.net/multimarkdown
 # We have to use tarball generated via _service as released ones are
 # missing submodules that are necessary for building
 Source:         %{name}-%{version}.tar.xz
@@ -47,7 +46,7 @@ to convert plain text into LaTeX in addition to HTML.
 
 %build
 %cmake
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
