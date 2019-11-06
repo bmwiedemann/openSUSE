@@ -21,7 +21,6 @@ Version:        1.1.0
 Release:        0
 Summary:        Bash Automated Testing System
 License:        MIT
-Group:          Development/Tools/Other
 URL:            https://github.com/bats-core/bats-core/
 Source:         https://github.com/bats-core/bats-core/archive/v%{version}.tar.gz
 BuildRequires:  ncurses-utils
