@@ -17,15 +17,14 @@
 
 
 Name:           python-osc-lib
-Version:        1.12.1
+Version:        1.14.1
 Release:        0
 Summary:        OpenStackClient Library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/developer/osc-lib
-Source0:        https://files.pythonhosted.org/packages/source/o/osc-lib/osc-lib-1.12.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/osc-lib/osc-lib-1.14.1.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python-devel
 BuildRequires:  python2-Babel >= 2.3.4
 BuildRequires:  python2-cliff >= 2.8.0
 BuildRequires:  python2-fixtures
@@ -45,7 +44,6 @@ BuildRequires:  python2-stevedore >= 1.20.0
 BuildRequires:  python2-testtools
 BuildRequires:  python3-Babel >= 2.3.4
 BuildRequires:  python3-cliff >= 2.8.0
-BuildRequires:  python3-devel
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-keystoneauth1 >= 3.7.0
 BuildRequires:  python3-mock
@@ -81,16 +79,16 @@ is a package of common support modules for writing OSC plugins.
 %package -n python-osc-lib-doc
 Summary:        Documentation for the OpenStack client library
 Group:          Development/Languages/Python
-BuildRequires:  python-Sphinx
-BuildRequires:  python-openstackdocstheme
-BuildRequires:  python-reno
-BuildRequires:  python-sphinxcontrib-apidoc
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
+BuildRequires:  python3-reno
+BuildRequires:  python3-sphinxcontrib-apidoc
 
 %description -n python-osc-lib-doc
 Documentation for the OpenStack client library.
 
 %prep
-%autosetup -p1 -n osc-lib-1.12.1
+%autosetup -p1 -n osc-lib-1.14.1
 %py_req_cleanup
 
 %build
@@ -100,7 +98,7 @@ Documentation for the OpenStack client library.
 %{python_install}
 
 # generate html docs
-PBR_VERSION=%version PYTHONPATH=. sphinx-build -a -E -d doc/build/doctrees -b html doc/source doc/build/html
+PBR_VERSION=%{version} PYTHONPATH=. %sphinx_build -a -E -d doc/build/doctrees -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 

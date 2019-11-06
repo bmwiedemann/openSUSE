@@ -169,4 +169,26 @@
 - remove 0001-Fix-formatter-handling-for-python-3.7.patch (upstream)</comment>
     <requestid>692851</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b58e50d7253271aed2c3539a24054fc2</srcmd5>
+    <version>1.14.1</version>
+    <time>1573045573</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.14.1
+  - Corrent using auth_type=none in clouds.yaml
+  - Add Python 3 Train unit tests
+  - Add error message when occurrence Forbidden error
+  - Dropping the py35 testing
+  - format_dict() returns no value for None
+  - Updates for OpenDev transition
+  - Fix usage of NotFound exception
+  - Handle nested dicts in format_dict()
+  - Add FakeModule from OSC
+  - Final switch to stestr
+  - Move the _tag module from OSC to osc-lib
+  - Cleanups to prepare for OSC 4 release
+  - Update master for stable/stein
+  - OpenDev Migration Patch</comment>
+    <requestid>745413</requestid>
+  </revision>
 </revisionlist>
