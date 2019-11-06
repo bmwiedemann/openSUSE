@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,7 +21,6 @@ Version:        0.7.1
 Release:        0
 Summary:        Deduplicating block based backup software
 License:        LGPL-3.0-only
-Group:          Productivity/Archiving/Backup
 URL:            https://benji-backup.me/
 Source0:        https://github.com/elemental-lf/benji/archive/v%{version}.tar.gz
 BuildRequires:  python3-devel >= 3.6.5
