@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Nov  3 14:09:22 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.2
+  * The memory allocation expands geometrically while reading
+    polynomials from files; this improves performance on large
+    files but memory overhead is increased during the read.
+  * The argument index is initialized at run time, allowing
+    RISC OS and ARM Tube OS users to re-invoke CRC RevEng from
+    memory using *Go.
+  * Replaced getopt library.
+  * Removed underscores from system calls.
+  * Updated documentation.
+
+-------------------------------------------------------------------
+Sat May 11 10:21:24 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.1
+  * Improved robustness of reveng()
+
+-------------------------------------------------------------------
 Mon May  6 17:56:07 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.0

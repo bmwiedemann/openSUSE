@@ -18,13 +18,13 @@
 
 
 Name:           reveng
-Version:        2.0.0
+Version:        2.0.2
 Release:        0
 Summary:        An arbitrary-precision CRC calculator and algorithm finder
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Other
 URL:            http://reveng.sourceforge.net/
-Source:         http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.xz
+Source:         https://sourceforge.net/projects/%{name}/files/%{version}/%{name}-%{version}.tar.xz
 Patch0:         reveng-dont-strip.patch
 Patch1:         reveng-obey-cflags.patch
 Patch2:         reveng-presets_x86_64.patch
@@ -48,7 +48,7 @@ algorithms.
 %ifarch x86_64
 %patch2 -p1
 %endif
-%ifarch %ix86
+%ifarch %{ix86}
 %patch3 -p1
 %endif
 
@@ -57,8 +57,8 @@ algorithms.
 export CFLAGS="%{optflags}"
 make %{?_smp_mflags}
 %else
-gcc %{optflags} -Wall -ansi -c bmpbit.c cli.c model.c poly.c preset.c reveng.c
-gcc %{optflags} -o reveng bmpbit.o cli.o model.o poly.o preset.o reveng.o
+cc %{optflags} -Wall -ansi -c bmpbit.c cli.c model.c poly.c preset.c reveng.c
+cc %{optflags} -o reveng bmpbit.o cli.o model.o poly.o preset.o reveng.o
 %endif
 
 %install
