@@ -1,7 +1,7 @@
 #
 # spec file for package aseqview
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,8 +22,7 @@ BuildRequires:  automake
 BuildRequires:  gtk2-devel
 BuildRequires:  update-desktop-files
 Summary:        ALSA Sequencer Event Viewer
-License:        GPL-2.0
-Group:          Productivity/Multimedia/Sound/Midi
+License:        GPL-2.0-only
 Version:        0.2.8
 Release:        0
 Source:         %{name}-%{version}.tar.xz
