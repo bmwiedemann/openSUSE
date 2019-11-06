@@ -1,6 +1,7 @@
 #
 # spec file for package adlmidi
 #
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,12 +16,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           adlmidi
 Version:        1.2.6.2
 Release:        0
 Summary:        A MIDI player that uses OPL3 emulation
 License:        GPL-3.0-only AND GPL-2.0-or-later
-Group:          Productivity/Multimedia/Sound/Players
 URL:            https://bisqwit.iki.fi/source/adlmidi.html
 #Git-Clone:     https://github.com/bisqwit/adlmidi.git
 Source:         https://bisqwit.iki.fi/src/arch/%{name}-%{version}.tar.bz2
