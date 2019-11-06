@@ -1,7 +1,7 @@
 #
 # spec file for package converseen
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           converseen
-Version:        0.9.7.2
+Version:        0.9.8.0
 Release:        0
 Summary:        Batch Image Conversion Tool
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Convertors
 URL:            http://converseen.fasterland.net/
-Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
+Source0:        https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
 BuildRequires:  ImageMagick
 BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
