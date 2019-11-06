@@ -687,4 +687,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>733764</requestid>
   </revision>
+  <revision rev="57" vrev="60">
+    <srcmd5>23130c63320fd11786894a7a2414942d</srcmd5>
+    <version>unknown</version>
+    <time>1573044476</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch source-fix-axohelp.patch for bsc#1155411
+  * CVE-2019-18604: improper use of sprintf
+
+- Add 0001-Updated-tests-after-U-C-upgrade-changed-sortinit-hashes.patch
+  from upstream (with context modifications to apply correctly) to update
+  biber tests after the Unicode::Collate upgrade from 1.25 to 1.27
+  changed sortinit hashes with (at least) perl 5.26, while using
+  perl 5.28 seems to work fine (boo#1152776)</comment>
+    <requestid>744485</requestid>
+  </revision>
 </revisionlist>

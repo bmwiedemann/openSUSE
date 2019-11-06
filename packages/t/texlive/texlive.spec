@@ -19,7 +19,7 @@
 %define texlive_version  2019
 %define texlive_previous 2018
 %define texlive_release  20190407
-%define texlive_noarch   161
+%define texlive_noarch   168
 %define texlive_source   texlive-20190407-source
 
 %define __perl_requires		%{nil}
@@ -273,6 +273,10 @@ Patch56:        source-poppler-use-std_string.patch
 Patch57:        source-poppler-fix-dict-memleak.patch
 # PATCH-FIX-TEXLIVE
 Patch58:        source-poppler0.79.0.patch
+# PATCH-FIX-UPSTREAM Updated tests after Unicode::Collate upgrade from 1.25 to 1.27 changed sortinit hashes
+Patch59:        0001-Updated-tests-after-U-C-upgrade-changed-sortinit-hashes.patch
+# PATCH-FIX-UPSTREAM Bug bsc#1155411 - (CVE-2019-18604) VUL-1: CVE-2019-18604: texlive: improper use of sprintf
+Patch60:        source-fix-axohelp.patch
 Prefix:         %{_bindir}
 Provides:       pdfjam = %{version}
 Obsoletes:      pdfjam < %{version}
@@ -3648,6 +3652,9 @@ pushd ../*biber-*/
 %if 0%{perl_versnum} < 5200
 %patch47 -p0 -b .518
 %endif
+%if %{?pkg_vcmp:%{pkg_vcmp perl < 5.28.0}}%{!?pkg_vcmp:1}
+%patch59 -p1
+%endif
 rm -vf bin/biber.noica
 rm -vf t/*.fastsort
 popd
@@ -3671,6 +3678,7 @@ pver=$(pkg-config --modversion poppler)
 %if %{?pkg_vcmp:%{pkg_vcmp libpoppler-devel >= 0.79.0}}%{!?pkg_vcmp:0}
 cp ./texk/web2c/pdftexdir/pdftoepdf-poppler0.75.0.cc ./texk/web2c/pdftexdir/pdftoepdf-poppler${pver}.cc
 %endif
+%patch60 -p0
 
 if pkg-config --atleast-version=0.59 poppler
 then
