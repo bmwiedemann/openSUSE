@@ -18,21 +18,18 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-lazy-fixture
-Version:        0.5.2
+Version:        0.6.1
 Release:        0
 Summary:        Helper to use fixtures in pytest.markparametrize
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/tvorog/pytest-lazy-fixture
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-lazy-fixture/pytest-lazy-fixture-%{version}.tar.gz
+BuildRequires:  %{python_module pytest >= 3.2.5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pytest >= 2.9.2
+Requires:       python-pytest >= 3.2.5
 BuildArch:      noarch
-# SECTION test requirements
-BuildRequires:  %{python_module pytest >= 2.9.2}
-# /SECTION
 %python_subpackages
 
 %description
@@ -49,7 +46,7 @@ Helper to use fixtures in pytest.mark.parametrize.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m pytest
+%pytest
 
 %files %{python_files}
 %license LICENSE
