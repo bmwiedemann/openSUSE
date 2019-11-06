@@ -23,7 +23,6 @@ Version:        2.9.3
 Release:        0
 Summary:        Front-end program to a number of utilities for encoding a CD to files
 License:        GPL-2.0-or-later
-Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://abcde.einval.com/
 Source0:        https://abcde.einval.com/download/%{name}-%{version}.tar.gz
 Source1:        https://abcde.einval.com/download/%{name}-%{version}.tar.gz.sign

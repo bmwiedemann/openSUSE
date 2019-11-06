@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 17 12:47:27 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
 Tue Apr  2 14:24:18 UTC 2019 - Martin Wilck <mwilck@suse.com>
 
 - Re-enabled musicbrainz, as both perl(MusicBrainz::DiscID) and
