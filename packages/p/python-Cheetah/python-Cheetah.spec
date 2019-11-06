@@ -1,7 +1,7 @@
 #
 # spec file for package python-Cheetah
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,8 +21,7 @@ Version:        2.4.4
 Release:        0
 Summary:        Cheetah is a template engine and code generation tool
 License:        MIT
-Group:          Development/Languages/Python
-Url:            http://www.cheetahtemplate.org/
+URL:            http://www.cheetahtemplate.org/
 Source:         https://files.pythonhosted.org/packages/source/C/Cheetah/Cheetah-%{version}.tar.gz
 Patch0:         shebang.patch
 BuildRequires:  fdupes
@@ -53,7 +52,8 @@ python setup.py install --prefix=%{_prefix} --root=%{buildroot}
 %fdupes %{buildroot}
 
 %files
-%doc CHANGES LICENSE README.markdown TODO
+%license LICENSE
+%doc CHANGES README.markdown TODO
 %{_bindir}/cheetah*
 %{python_sitearch}/*
 
