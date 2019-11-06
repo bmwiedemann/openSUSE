@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Nov  4 23:38:40 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2019.11.05
+  * tv2dk: Add extractor
+  * yahoo: restore support for cbs suffixed URLs
+  * mixcloud: fix cloudcast data extraction
+  * daum: fix VOD and Clip extracton
+  * wistia: reduce embed extraction false positives and support
+    inline embeds
+  * bellmedia: add support for marilyn.ca videos
+  * mediaset: extract unprotected M3U and MPD manifests
+  * jamendo: restore track url modification
+  * myspass: fix video URL extraction and improve metadata
+    extraction
+  * msn: add support for Vidible and AOL embeds
+
+-------------------------------------------------------------------
+Tue Oct 29 11:01:08 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2019.10.29
+  * globo: handle alternative hash signing method
+  * facebook: extract subtitles
+  * odnoklassniki: add support for Schemeless embed extraction
+  * discoverynetworks: add support for dplay.co.uk
+  * mtv: add support for mtvjapan.com
+  * go: Add support for abc.com and freeform.com
+
+-------------------------------------------------------------------
 Mon Oct 21 18:19:17 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2019.10.22

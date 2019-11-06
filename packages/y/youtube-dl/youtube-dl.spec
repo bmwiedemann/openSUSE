@@ -17,7 +17,7 @@
 
 
 Name:           youtube-dl
-Version:        2019.10.22
+Version:        2019.11.05
 Release:        0
 Summary:        A tool for downloading from video sites for offline watching
 License:        SUSE-Public-Domain AND CC-BY-SA-3.0
