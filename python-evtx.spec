@@ -22,12 +22,14 @@ Version:        0.6.1
 Release:        0
 Summary:        Windows Event Log files parser
 License:        Apache-2.0
-Group:          Development/Libraries/Python
 URL:            https://github.com/williballenthin/python-evtx
 Source:         https://github.com/williballenthin/python-evtx/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM pytest4.patch gh#williballenthin/python-evtx#66 mcepl@suse.com
+# make the test suite pass under pytest 4
+Patch0:         pytest4.patch
 BuildRequires:  %{python_module hexdump}
 BuildRequires:  %{python_module lxml}
-BuildRequires:  %{python_module pytest < 4}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -48,6 +50,8 @@ inspired by the work of Andreas Schuster and his Perl implementation
 
 %prep
 %setup -q
+%autopatch -p1
+
 find Evtx -name "*.py" | xargs sed -i '1 { /^#!/ d }'
 
 %build
