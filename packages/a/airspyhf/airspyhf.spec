@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,7 +25,6 @@ Version:        1.1.5
 Release:        0
 Summary:        Support programs for Airspy HF+ SDR
 License:        BSD-3-Clause
-Group:          Productivity/Hamradio/Other
 Url:            http://www.airspy.com/airspy-hf-plus
 #Git-Clone:     https://github.com/airspy/airspyhf.git
 Source:         https://github.com/airspy/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -42,7 +41,6 @@ for the HF and VHF bands.
 
 %package -n %{libname}
 Summary:        Driver for Airspy HF+
-Group:          System/Libraries
 Requires:       %{name}-udev
 
 %description -n %{libname}
@@ -50,7 +48,6 @@ Library to run Airspy HF+ SDR receiver.
 
 %package udev
 Summary:        Udev rules for Airspy HF+ SDR
-Group:          Hardware/Other
 Requires(pre):  shadow
 
 %description udev
@@ -58,7 +55,6 @@ Udev rules for Airspy HF+ SDR.
 
 %package devel
 Summary:        Development files for Airspy HF+
-Group:          Development/Libraries/Other
 Requires:       %{libname} = %{version}
 
 %description devel
