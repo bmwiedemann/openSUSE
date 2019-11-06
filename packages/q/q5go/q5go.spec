@@ -17,16 +17,14 @@
 
 
 Name:           q5go
-Version:        0.9
+Version:        1.0
 Release:        0
 Summary:        A Go board including an editor and analysis frontend
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Other
 URL:            https://github.com/bernds/q5go
 Source0:        https://github.com/bernds/%{name}/archive/%{name}-%{version}.tar.gz
-Patch0:         0001-Disable-game-tree-header-with-Qt-5.10.patch
-Patch1:         0001-Remove-PlaceholderText-colorroles-which-were-added-b.patch
-Patch2:         0001-Add-missing-includes.patch
+Patch0:         0001-Add-missing-includes.patch
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files

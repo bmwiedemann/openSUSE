@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Nov  5 10:53:02 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.0
+  * A greeter dialog was added, similar to the ones used by cgoban or gGo.
+  * There is now a "Learn Go" button that brings up beginner tutorials
+    in a slideshow view.
+  * Engine configuration in the preferences is a little more friendly.
+  * Edit mode works differently. Depending on the situation, an edited
+    position can be appended to or inserted before the current node,
+    or replace a previous edit.
+  * The board window now has menu items for undo/redo.
+  * When playing on IGS, the comments box now allows chatting even after
+    a match has completed, making it unnecessary to find the opponent's talk tab.
+  * Corrected a bug when parsing nmatch preferences on IGS.
+- Drop patches, now upstream:
+  * 0001-Disable-game-tree-header-with-Qt-5.10.patch
+  * 0001-Remove-PlaceholderText-colorroles-which-were-added-b.patch
+
+-------------------------------------------------------------------
 Sun Oct 20 13:04:36 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patches to build with older Qt versions:

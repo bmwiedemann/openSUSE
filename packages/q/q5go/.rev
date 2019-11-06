@@ -31,4 +31,26 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>743354</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2a7e87101fbc35e67bf7ec22da55716e</srcmd5>
+    <version>1.0</version>
+    <time>1573045604</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0
+  * A greeter dialog was added, similar to the ones used by cgoban or gGo.
+  * There is now a &quot;Learn Go&quot; button that brings up beginner tutorials
+    in a slideshow view.
+  * Engine configuration in the preferences is a little more friendly.
+  * Edit mode works differently. Depending on the situation, an edited
+    position can be appended to or inserted before the current node,
+    or replace a previous edit.
+  * The board window now has menu items for undo/redo.
+  * When playing on IGS, the comments box now allows chatting even after
+    a match has completed, making it unnecessary to find the opponent's talk tab.
+  * Corrected a bug when parsing nmatch preferences on IGS.
+- Drop patches, now upstream:
+  * 0001-Disable-game-tree-header-with-Qt-5.10.patch
+  * 0001-Remove-PlaceholderText-colorroles-which-were-added-b.patch</comment>
+    <requestid>745456</requestid>
+  </revision>
 </revisionlist>
