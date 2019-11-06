@@ -1,7 +1,7 @@
 #
 # spec file for package airspy
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2014 Wojciech Kazubski, wk@ire.pw.edu.pl
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,8 +24,7 @@ Name:           airspy
 Version:        1.0.9
 Release:        0
 Summary:        Support programs for Airspy
-License:        GPL-2.0+
-Group:          Productivity/Hamradio/Other
+License:        GPL-2.0-or-later
 Url:            http://www.airspy.com
 #Git-Clone:     https://github.com/airspy/airspyone_host.git
 Source:         https://github.com/airspy/airspyone_host/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -40,7 +39,6 @@ A tiny and efficient software defined radio.
 
 %package -n %{libname}
 Summary:        Driver for Airspy
-Group:          System/Libraries
 Requires:       %{name}-udev
 
 %description -n %{libname}
@@ -48,7 +46,6 @@ Library to run Airspy SDR receiver.
 
 %package udev
 Summary:        Udev rules for Airspy SDR
-Group:          Hardware/Other
 Requires(pre):  shadow
 
 %description udev
@@ -56,7 +53,6 @@ Udev rules for Airspy SDR
 
 %package devel
 Summary:        Development files for airspy
-Group:          Development/Libraries/Other
 Requires:       %{libname} = %{version}
 
 %description devel
