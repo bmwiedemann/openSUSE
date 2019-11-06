@@ -1,7 +1,7 @@
 #
 # spec file for package bbe
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,6 @@ Version:        0.2.2
 Release:        0
 Summary:        Binary Block Editor
 License:        GPL-2.0-or-later
-Group:          Development/Tools/Other
 URL:            https://sourceforge.net/projects/bbe-/
 Source0:        https://sourceforge.net/projects/bbe-/files/bbe/%{version}/bbe-%{version}.tar.gz
 Requires:       info
@@ -34,11 +33,11 @@ lines as sed, bbe reads arbitrary blocks from an input stream and performs
 byte-related transformations on found blocks.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
