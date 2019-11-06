@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 17 12:31:47 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
 Wed Oct  2 10:48:16 UTC 2013 - max@suse.com
 
 - Avoid an unneeded explicit dependency on a certain version of
