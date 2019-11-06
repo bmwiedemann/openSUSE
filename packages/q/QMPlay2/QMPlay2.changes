@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 17 12:33:04 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
 Wed Sep  4 06:14:16 UTC 2019 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - Removed QMPlay2-desktop-warnings.diff (no warnings any more)
