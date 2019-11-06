@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
@@ -60,10 +60,6 @@ Patch8:         PackageKit-zypp-get-updates-dup-or-up.patch
 # PATCH-FIX-UPSTREAM PackageKit-zypp-dont-set-upgrade-mode-on-updating-specific-packages.patch gh#hughsie/PackageKit#345 sckang@suse.com -- zypp: Don't set upgrade mode in update-packages
 Patch9:         PackageKit-zypp-dont-set-upgrade-mode-on-updating-specific-packages.patch
 Patch10:        zypp-perform-actions-disallowed-by-update-in-upgrade-mode.patch
-# PATCH-FIX-UPSTREAM PackageKit-zypp-reset-upgrade-mode-when-not-needed.patch gh#hughsie/PackageKit/commit/57e846f0 sckang@suse.com -- zypp: Reset upgrade mode to FALSE when not needed
-Patch11:        PackageKit-zypp-reset-upgrade-mode-when-not-needed.patch
-# PATCH-FIX-UPSTREAM PackageKit-zypp-promt-installing-already-installed-packages.patch gh#hughsie/PackageKit/commit/c45e0f22 sckang@suse.com -- zypp: Promt users when installing already installed packages
-Patch12:        PackageKit-zypp-promt-installing-already-installed-packages.patch
 
 BuildRequires:  autoconf-archive
 BuildRequires:  fdupes
