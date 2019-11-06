@@ -17,7 +17,7 @@
 
 
 Name:           cozy
-Version:        0.6.8
+Version:        0.6.9
 Release:        0
 Summary:        Audio Book Player
 License:        GPL-3.0-only

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  4 14:36:34 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 0.6.9:
+  * Remove app_menu completely
+  * Version bump
+  * Fix black box in icon background
+
+-------------------------------------------------------------------
 Tue Sep 17 12:53:48 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Fix error when packaging: no translations found for cozy
