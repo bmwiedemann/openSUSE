@@ -23,7 +23,6 @@ Version:        0.1.3
 Release:        0
 Summary:        Language recognition library
 License:        GPL-3.0-or-later
-Group:          Development/Libraries/C and C++
 URL:            https://linphone.org/
 Source:         https://linphone.org/releases/sources/%{name}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
@@ -40,7 +39,6 @@ ABNF grammar, such as the protocols standardised at IETF.
 
 %package -n %{soname}%{sover}
 Summary:        Language recognition library
-Group:          System/Libraries
 
 %description -n %{soname}%{sover}
 Belr parses input formatted according to a language defined by an
@@ -48,7 +46,6 @@ ABNF grammar, such as the protocols standardised at IETF.
 
 %package devel
 Summary:        Headers and libraries for the belr library
-Group:          Development/Libraries/C and C++
 Requires:       %{soname}%{sover} = %{version}
 
 %description devel
