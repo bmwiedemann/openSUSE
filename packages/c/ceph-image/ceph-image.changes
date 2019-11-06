@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov  3 15:12:50 UTC 2019 - Kristoffer Gronlund <kgronlund@suse.com>
+
+- Generate container history (SES-922)
+- Add release number to version labels
+
+-------------------------------------------------------------------
 Mon Aug 13 11:00:17 UTC 2019 - Denis Kondratenko <denis.kondratenko@suse.com>
 
 - Tech preview release for containers (bsc#1145433)

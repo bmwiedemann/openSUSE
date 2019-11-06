@@ -4,8 +4,8 @@
   <name>opensuse/ceph/ceph</name>
   <prefix>org.opensuse.ceph</prefix>
   <title>Ceph container image</title>
-  <url>registry.opensuse.org/opensuse/ceph/ceph:%PKG_VERSION%</url>
-  <reference>opensuse/ceph/ceph:%PKG_VERSION%</reference>
+  <url>https://registry.opensuse.org/opensuse/ceph/ceph:%PKG_VERSION%.%RELEASE%</url>
+  <reference>registry.opensuse.org/opensuse/ceph/ceph:%PKG_VERSION%.%RELEASE%</reference>
   <packages_image>
     <package>
       <name>patterns-ceph-containers-ceph_base</name>
