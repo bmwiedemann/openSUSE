@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Archive-Zip
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define cpan_name Archive-Zip
 Name:           perl-Archive-Zip
-Version:        1.64
+Version:        1.67
 Release:        0
+%define cpan_name Archive-Zip
 Summary:        Provide an interface to ZIP archive files
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/pod/Archive::Zip
+Url:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PH/PHRED/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+BuildArch:      noarch
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Compress::Raw::Zlib) >= 2.017
 BuildRequires:  perl(Test::MockModule)
 BuildRequires:  perl(Test::More) >= 0.88
 Requires:       perl(Compress::Raw::Zlib) >= 2.017
-BuildArch:      noarch
 %{perl_requires}
 
 %description
@@ -65,7 +66,7 @@ perl Makefile.PL INSTALLDIRS=vendor
 make %{?_smp_mflags}
 
 %check
-make %{?_smp_mflags} test
+make test
 
 %install
 %perl_make_install

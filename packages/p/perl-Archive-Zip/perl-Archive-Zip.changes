@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Mon Oct  7 09:05:51 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update to 1.67
+   see /usr/share/doc/packages/perl-Archive-Zip/Changes
+
+  1.67 Sun 06 Oct 2019
+      - Fixed compatibility issues with zip64 format (defined-or, pack)
+      - Fixed hard-coded version fields introduced in version 1.66
+      - Fixed merge glitch with tests 26 and 27
+      - Fixed merge glitch with bzip passthrough
+      - Updated bzip test file to avoid zip bomb detection
+
+-------------------------------------------------------------------
+Wed Sep 18 08:15:38 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.66
+   see /usr/share/doc/packages/perl-Archive-Zip/Changes
+
+  1.66 Mon 16 Sep 2019
+      - Refactored low-level methods for reading and writing zip files
+        in zip64 format.  Added new parameters and return values to
+        most of these.  Extended constants in Archive::Zip to cover
+        zip64 formats and lengths.
+      - Added public APIs
+          Archive::Zip::Archive::zip64
+          Archive::Zip::Archive::desiredZip64Mode
+          Archive::Zip::Archive::versionMadeBy
+          Archive::Zip::Archive::versionNeededToExtract
+          Archive::Zip::Member::zip64
+          Archive::Zip::Member::desiredZip64Mode
+        and constants
+          Archive::Zip::ZIP64_AS_NEEDED
+          Archive::Zip::ZIP64_EOCD
+          Archive::Zip::ZIP64_HEADERS
+        plus POD on these.
+      - Added tests for zip64 format in t/21_zip64.t and more test zip
+        files below t/data.  Extended tests in t/02_main.t to perform
+        all existing tests in all possible desired zip64 modes.
+      - Extended methods
+          Archive::Zip::Member::localExtraField
+          Archive::Zip::Member::cdExtraField
+        to perform format checks when called as setters and to reject
+        any zip64 extended information extra fields passed by the user.
+        Extended POD and tests in t/02_main.t accordingly.
+      - Setting {'compressedSize'} after writing central directory
+        header.
+      - Added new optional parameter $noFormatError to method
+        Archive::Zip::_readSignature to silence any format errros when
+        testing for signatures.
+      - Added error handling for potentially failed object conversion
+        after calling method Archive::Zip::Member::_become.  Factored
+        in method Archive::Zip::Member::_becomeDirectoryIfNecessary
+        into caller.
+      - Changed methods
+          Archive::Zip::Archive::contents
+          Archive::Zip::Member::contents
+        (and all inheriting from these) to consistently return a pair
+        ($contents, $status) when called in list context and a scalar
+        $contents when called in scalar context.  Extended tests in
+        t/02_main.t accordingly.
+      - Changed method Archive::Zip::Member::extractToFileHandle to
+        accept a file name instead of a file handle when extracting
+        symbolic links.  Changed lower-level and higher-level methods
+        to use that feature.  Cleaned up code related to the handling
+        of symbolic links.  Added creation of intermediate directories
+        in method Archive::Zip::Member::extractToFileNamed for symbolic
+        links as well.  Reporting errors from symlink call as AZ-error.
+        Added POD and test zip file t/data/symlink.zip and tests in
+        t/26_symlinks.t for these changes.
+      - Cleaned up code and added comment related to that highly
+        dubious (?) {'wasWritten'} logic.
+
+-------------------------------------------------------------------
+Tue Sep 10 09:02:19 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.65
+   see /usr/share/doc/packages/perl-Archive-Zip/Changes
+
+  1.65 Sat 7 Sep 2019
+      - Fix for members using bzip compression [github/pmqs]
+      - NetBSD doesn't mind empty zips [github/pmqs]
+      - Solaris test failure, Add diag to failing test to collect data [github/pmqs]
+      - Test for presence of Test::MockModule [github/pmqs]
+      - Fix skip line for Windows [github/pmqs]
+      - Skip tests that assume /tmp on Windows [github/pmqs]
+
+-------------------------------------------------------------------
 Mon Sep 24 08:40:02 UTC 2018 - pmonrealgonzalez@suse.com
 
 - updated to 1.64
