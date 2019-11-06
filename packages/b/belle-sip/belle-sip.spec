@@ -24,7 +24,6 @@ Version:        1.6.3
 Release:        0
 Summary:        C object-oriented SIP Stack
 License:        GPL-2.0-or-later
-Group:          Development/Libraries/C and C++
 URL:            https://linphone.org/technical-corner/belle-sip/overview
 Source:         https://linphone.org/releases/sources/%{name}/%{name}-%{version}.tar.gz
 Source1:        http://antlr3.org/download/antlr-3.4-complete.jar
@@ -49,7 +48,6 @@ object-oriented API.
 
 %package -n %{soname}%{sover}
 Summary:        C object-oriented SIP Stack
-Group:          System/Libraries
 
 %description -n %{soname}%{sover}
 Belle-sip is a SIP (RFC3261) implementation written in C, with an
@@ -57,7 +55,6 @@ object-oriented API.
 
 %package devel
 Summary:        Headers and libraries for the belle-sip library
-Group:          Development/Libraries/C and C++
 Requires:       %{soname}%{sover} = %{version}
 Requires:       pkgconfig(bctoolbox)
 Requires:       pkgconfig(zlib)
