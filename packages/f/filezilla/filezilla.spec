@@ -17,7 +17,7 @@
 
 
 Name:           filezilla
-Version:        3.44.2
+Version:        3.45.1
 Release:        0
 Summary:        A GUI FTP and SFTP Client
 License:        GPL-2.0-or-later
@@ -39,7 +39,7 @@ BuildRequires:  xdg-utils
 BuildRequires:  pkgconfig(cppunit)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gtk+-2.0)
-BuildRequires:  pkgconfig(libfilezilla) >= 0.18.0
+BuildRequires:  pkgconfig(libfilezilla) >= 0.18.2
 BuildRequires:  pkgconfig(libidn)
 BuildRequires:  pkgconfig(nettle) >= 3.1
 # filezilla-team use BuildRequires:  pkgconfig(sqlite3) >= 3.11.1
