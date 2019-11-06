@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,7 +21,6 @@ Version:        1.42_bld144
 Release:        0
 Summary:        Macro Assembler AS
 License:        GPL-2.0-or-later
-Group:          Development/Languages/Other
 Url:            http://john.ccac.rwth-aachen.de:8000/as/
 Source:         http://john.ccac.rwth-aachen.de:8000/ftp/as/source/c_version/asl-current-142-bld115.tar.bz2
 Patch0:         asl-buildfixes.patch
