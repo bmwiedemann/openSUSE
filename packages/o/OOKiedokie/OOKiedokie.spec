@@ -22,7 +22,6 @@ Version:        0.0.0+git.20151230
 Release:        0
 Summary:        A tool for transmitting and receiving OOK-modulated data with SDRs
 License:        MIT
-Group:          Productivity/Hamradio/Other
 Url:            https://github.com/jynik/OOKiedokie
 Source:         %{name}-%{version}.tar.xz
 Patch0:         OOKiedokie-fix-missing-return-type.patch
