@@ -69,7 +69,7 @@ Source2:        handle.linux
 Source3:        README.devel
 Source4:        ncurses-rpmlintrc
 # Latest tack can be found at ftp://ftp.invisible-island.net/pub/ncurses/current/
-Source5:        ftp://ftp.invisible-island.net/pub/ncurses/current/tack-1.08-20170818.tgz
+Source5:        ftp://ftp.invisible-island.net/pub/ncurses/current/tack-1.08-20190721.tgz
 Source6:        edit.sed
 Source7:        baselibs.conf
 Patch0:         ncurses-6.1.dif

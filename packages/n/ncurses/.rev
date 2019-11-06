@@ -2628,4 +2628,36 @@
     overlooked in changes to eliminate strcpy (cf: 20001007).</comment>
     <requestid>741817</requestid>
   </revision>
+  <revision rev="163" vrev="23">
+    <srcmd5>332ca7c3d6d0f2fee3f0d8cf2b6a3d4f</srcmd5>
+    <version>6.1</version>
+    <time>1573049678</time>
+    <user>dimstar_suse</user>
+    <comment>- Add tack patch 1.08-20190721
+  * tack.c, edit.c, tack.h: gcc-8.x-warnings
+  * init.c, edit.c: gcc 4.x warning
+  * charset.c: update copyright
+  * charset.c: rewrite of set_attr resulted in off-by-one loop limit
+  * aclocal.m4:
+    add CF_CURSES_TERM_H to get proper ifdef's for the boolnames arrays
+  * configure.in: add CF_CURSES_TERM_H
+  * aclocal.m4: add CF_TERMIOS_TYPES, from xterm
+  * sysdep.c: use termios types such as tcflag_t
+  * configure.in: use CF_TERMIOS_TYPES
+  * tack.h: update copyright
+  * aclocal.m4: resync with my-autoconf
+  * package/debian/changelog, package/tack.spec, tack.h: bump
+  * config.sub: 2019-06-30
+  * config.guess: 2019-06-10
+
+- Add ncurses patch 20191026
+  + add a note in man/curs_add_wch.3x about Unicode terminology for the
+    line-drawing characters (report by Nick Black).
+  + improve comment in lib_tgoto.c regarding the use of \200 where a
+    \0 would be intended by the caller (report by &quot;64 bit&quot;, cf: 20000923).
+  + modify linux-16color to accommodate Linux console driver change in
+    early 2018 (report by Dino Petrucci).
+- Correct offsets of hunks of patch ncurses-6.1.dif for misc/terminfo.src</comment>
+    <requestid>744202</requestid>
+  </revision>
 </revisionlist>

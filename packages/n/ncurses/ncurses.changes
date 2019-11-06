@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Oct 30 14:17:20 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Add tack patch 1.08-20190721
+  * tack.c, edit.c, tack.h: gcc-8.x-warnings
+  * init.c, edit.c: gcc 4.x warning
+  * charset.c: update copyright
+  * charset.c: rewrite of set_attr resulted in off-by-one loop limit
+  * aclocal.m4:
+    add CF_CURSES_TERM_H to get proper ifdef's for the boolnames arrays
+  * configure.in: add CF_CURSES_TERM_H
+  * aclocal.m4: add CF_TERMIOS_TYPES, from xterm
+  * sysdep.c: use termios types such as tcflag_t
+  * configure.in: use CF_TERMIOS_TYPES
+  * tack.h: update copyright
+  * aclocal.m4: resync with my-autoconf
+  * package/debian/changelog, package/tack.spec, tack.h: bump
+  * config.sub: 2019-06-30
+  * config.guess: 2019-06-10
+
+-------------------------------------------------------------------
+Mon Oct 28 09:05:18 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20191026
+  + add a note in man/curs_add_wch.3x about Unicode terminology for the
+    line-drawing characters (report by Nick Black).
+  + improve comment in lib_tgoto.c regarding the use of \200 where a
+    \0 would be intended by the caller (report by "64 bit", cf: 20000923).
+  + modify linux-16color to accommodate Linux console driver change in
+    early 2018 (report by Dino Petrucci).
+- Correct offsets of hunks of patch ncurses-6.1.dif for misc/terminfo.src
+
+-------------------------------------------------------------------
 Mon Oct 21 09:33:41 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20191019
