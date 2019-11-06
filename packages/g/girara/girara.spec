@@ -19,13 +19,14 @@
 %define libname libgirara-gtk3
 %define so_ver  3
 Name:           girara
-Version:        0.3.2
+Version:        0.3.3
 Release:        0
 Summary:        Graphical user interface library
 License:        Zlib
-Group:          Development/Libraries/C and C++
 URL:            http://pwmt.org/projects/girara
-Source0:        http://pwmt.org/projects/girara/download/%{name}-%{version}.tar.xz
+Source0:        https://git.pwmt.org/pwmt/girara/-/archive/%{version}/%{name}-%{version}.tar.gz
+# Main homepage looks dead :(
+#Source0:        http://pwmt.org/projects/girara/download/%{name}-%{version}.tar.xz
 BuildRequires:  doxygen
 BuildRequires:  gettext
 BuildRequires:  libxml2-tools
@@ -36,6 +37,7 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.50
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
 BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libnotify)
+BuildRequires:  pkgconfig(pango) >= 1.14
 
 %description
 girara is a library that implements a user interface that focuses on
@@ -51,7 +53,6 @@ features that those applications share.
 
 %package -n %{libname}-%{so_ver}
 Summary:        A graphical user interface library
-Group:          System/Libraries
 
 %description -n %{libname}-%{so_ver}
 girara is a library that implements a user interface that focuses on
@@ -67,7 +68,6 @@ features that those applications share.
 
 %package devel
 Summary:        Header files for the girara library
-Group:          Development/Libraries/C and C++
 Requires:       %{libname}-%{so_ver} = %{version}-%{release}
 
 %description devel
