@@ -7,4 +7,12 @@
     <comment>new package, for modern people who use vulkan</comment>
     <requestid>708947</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a07e2f8efc73c92e267e77671bddc40b</srcmd5>
+    <version>2017.08+git.20180530</version>
+    <time>1573045514</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not try to build on 32 bit architectures</comment>
+    <requestid>745333</requestid>
+  </revision>
 </revisionlist>
