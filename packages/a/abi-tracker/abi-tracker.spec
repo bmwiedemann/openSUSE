@@ -1,7 +1,7 @@
 #
 # spec file for package abi-tracker
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,8 +20,7 @@ Name:           abi-tracker
 Version:        1.11
 Release:        0
 Summary:        Visualize ABI changes timeline of a C/C++ software library
-License:        GPL-2.0+ or LGPL-2.1+
-Group:          Development/Tools/Other
+License:        GPL-2.0-or-later OR LGPL-2.1-or-later
 Url:            https://abi-laboratory.pro/tracker/
 Source:         https://github.com/lvc/abi-tracker/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  help2man
