@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-djvulibre
-Version:        0.8.4
+Version:        0.8.5
 Release:        0
 Summary:        Python Support for the DjVu Image Format
 License:        GPL-2.0-only
@@ -61,8 +61,6 @@ This package contains technical documentation.
 %prep
 %setup -q
 chmod -x examples/*
-# https://github.com/jwilk/python-djvulibre/pull/11
-sed -i "s/'python'/sys.executable/" setup.py
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
