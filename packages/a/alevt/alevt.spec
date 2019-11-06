@@ -1,7 +1,7 @@
 #
 # spec file for package alevt
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -29,8 +29,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(x11)
 Url:            http://www.goron.de/~froese/
 Summary:        Teletext and Videotext Decoder for the BTTV Driver
-License:        GPL-2.0+
-Group:          Hardware/TV
+License:        GPL-2.0-or-later
 Version:        1.6.2
 Release:        0
 Source0:        alevt-%version.tar.bz2
