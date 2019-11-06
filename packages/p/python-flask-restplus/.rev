@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>731414</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>5428ad4768253e168a3f7e71045b321b</srcmd5>
+    <version>0.13.0</version>
+    <time>1573045576</time>
+    <user>dimstar_suse</user>
+    <comment>- Build with newer pytest:
+  * pytest4.patch</comment>
+    <requestid>745429</requestid>
+  </revision>
 </revisionlist>

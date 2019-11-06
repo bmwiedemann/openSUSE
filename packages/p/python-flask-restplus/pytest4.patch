@@ -1,0 +1,33 @@
+From 87f08f1f19103c0000c45f1ea821230d6a6fb55f Mon Sep 17 00:00:00 2001
+From: Axel Haustant <noirbizarre@gmail.com>
+Date: Tue, 13 Aug 2019 10:09:45 +0200
+Subject: [PATCH] Update tooling
+
+---
+ tests/conftest.py        |  6 +++---
+ 4 files changed, 18 insertions(+), 18 deletions(-)
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 753801c..2d21c0a 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -38,7 +38,7 @@ def app():
+ 
+ @pytest.fixture
+ def api(request, app):
+-    marker = request.keywords.get('api')
++    marker = request.node.get_closest_marker('api')
+     bpkwargs = {}
+     kwargs = {}
+     if marker:
+@@ -55,8 +55,8 @@ def api(request, app):
+ 
+ @pytest.fixture(autouse=True)
+ def _push_custom_request_context(request):
+-    app = request.getfuncargvalue('app')
+-    options = request.keywords.get('request_context')
++    app = request.getfixturevalue('app')
++    options = request.node.get_closest_marker('request_context')
+ 
+     if options is None:
+         return

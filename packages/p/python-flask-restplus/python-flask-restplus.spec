@@ -26,6 +26,7 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/noirbizarre/flask-restplus
 Source:         https://github.com/noirbizarre/flask-restplus/archive/%{version}.tar.gz
+Patch0:         pytest4.patch
 BuildRequires:  %{python_module Flask >= 0.8}
 BuildRequires:  %{python_module aniso8601 >= 0.82}
 BuildRequires:  %{python_module jsonschema}
@@ -46,10 +47,10 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Faker >= 0.7.3}
 BuildRequires:  %{python_module blinker}
 BuildRequires:  %{python_module mock >= 2.0.0}
-BuildRequires:  %{python_module pytest < 4.0}
 BuildRequires:  %{python_module pytest-benchmark >= 3.1.1}
 BuildRequires:  %{python_module pytest-flask >= 0.10.0}
 BuildRequires:  %{python_module pytest-mock >= 1.6.3}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tzlocal}
 %endif
 %ifpython2
@@ -65,6 +66,7 @@ to describe APIs and to expose their documentation using Swagger.
 
 %prep
 %setup -q -n flask-restplus-%{version}
+%patch0 -p1
 
 %build
 %python_build
