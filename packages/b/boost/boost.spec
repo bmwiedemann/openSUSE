@@ -105,18 +105,6 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %endif
 %endif
 
-# Build with OpenMPI
-%if 0%{?suse_version} >= 1330
-  # OpenMPI >= 2 is not available on ppc64be
-  %ifarch ppc ppc64
-    %define mpi_implem openmpi
-  %else
-    %define mpi_implem openmpi2
-  %endif
-%else
-  # Keep OpenMPI1 for older releases where OpenMPI2 is not available
-  %define mpi_implem openmpi
-%endif
 %ifarch ia64 hppa
 %bcond_with  build_mpi
 %else
@@ -226,9 +214,6 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-numpy-devel
 %endif # numpy3
 %endif # python3
-%if %{with build_mpi}
-BuildRequires:  %{mpi_implem}-devel
-%endif
 %if %{with build_docs}
 BuildRequires:  docbook
 BuildRequires:  docbook-xsl-stylesheets
@@ -246,6 +231,10 @@ BuildRequires:  suse-hpc
 %if %{with mpi}
 BuildRequires:  %{mpi_flavor}%{?mpi_vers}-%{compiler_family}%{?c_f_ver}-hpc-macros-devel
 Requires:       %{mpi_flavor}%{?mpi_vers}-%{compiler_family}%{?c_f_ver}-hpc
+%endif
+%else
+%if %{with build_mpi}
+BuildRequires:  openmpi-macros-devel
 %endif
 %endif
 
@@ -716,7 +705,9 @@ This package contains the Boost.MPI runtime library.
 %package     -n libboost_mpi%{library_version}-devel
 Summary:        Development headers for Boost.MPI library
 Group:          Development/Libraries/C and C++
-Requires:       %{mpi_implem}-devel
+%if %{with build_mpi}
+%{?openmpi_devel_requires}
+%endif
 Requires:       libboost_graph%{library_version}-devel
 Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_mpi%{library_version} = %{version}
@@ -1284,7 +1275,7 @@ EOF
 %if %{with hpc}
 module load gnu %mpi_flavor
 %else
-. %{package_libdir}/mpi/gcc/%{mpi_implem}/bin/mpivars.sh
+%setup_openmpi
 %endif
 %endif
 
@@ -1437,7 +1428,7 @@ cd doc
 %if %{with hpc}
 module load gnu %mpi_flavor
 %else
-. %{package_libdir}/mpi/gcc/%{mpi_implem}/bin/mpivars.sh
+%setup_openmpi
 %endif
 %endif
 
