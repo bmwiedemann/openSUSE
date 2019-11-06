@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 04 18:12:57 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20191104.75836fec:
+  * Start searchd in api container
+  * Add a dummy user/password to the openSUSE:Factory section
+  * Make exceptions easier to debug in OBSLocal
+
+-------------------------------------------------------------------
 Mon Nov 04 08:54:45 UTC 2019 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20191104.3d0d7312:
