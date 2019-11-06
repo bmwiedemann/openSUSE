@@ -4,8 +4,8 @@
   <name>cephcsi/cephcsi</name>
   <prefix>org.opensuse.cephcsi</prefix>
   <title>Ceph CSI driver container</title>
-  <url>registry.opensuse.org/cephcsi/cephcsi:%PKG_VERSION%.%PKG_COMMIT_NUM%</url>
-  <reference>cephcsi/cephcsi:%PKG_VERSION%.%PKG_COMMIT_NUM%</reference>
+  <url>https://registry.opensuse.org/cephcsi/cephcsi:%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%</url>
+  <reference>registry.opensuse.org/cephcsi/cephcsi:%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%</reference>
   <packages_image>
     <package>
       <name>openSUSE-build-key</name>

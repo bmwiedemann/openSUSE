@@ -13,21 +13,21 @@
   </description>
   <preferences>
     <type image="docker" derived_from="obsrepositories:/opensuse/tumbleweed">
-      <containerconfig tag="latest" additionaltags="%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%,%PKG_VERSION%.%PKG_COMMIT_NUM%" maintainer="SUSE Storage Team &lt;bgardner@suse.com&gt;" name="opensuse/cephcsi/cephcsi">
+      <containerconfig tag="latest" additionaltags="%PKG_VERSION%,%PKG_VERSION%.%PKG_COMMIT_NUM%,%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%" maintainer="SUSE Storage Team &lt;bgardner@suse.com&gt;" name="opensuse/cephcsi/cephcsi">
         <entrypoint execute="/usr/bin/cephcsi"/>
         <labels>
           <suse_label_helper:add_prefix prefix="org.opensuse.cephcsi">
             <label name="org.opencontainers.image.title" value="Ceph CSI driver container"/>
             <label name="org.opencontainers.image.description" value="Ceph CSI driver"/>
-            <label name="org.opencontainers.image.version" value="%PKG_VERSION%.%PKG_COMMIT_NUM%"/>
+            <label name="org.opencontainers.image.version" value="%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%"/>
             <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
             <label name="org.opencontainers.image.vendor" value="SUSE LLC"/>
-            <label name="org.opencontainers.image.url" value="registry.opensuse.org/opensuse/cephcsi/cephcsi:%PKG_VERSION%.%PKG_COMMIT_NUM%"/>
+            <label name="org.opencontainers.image.url" value="https://registry.opensuse.org/opensuse/cephcsi/cephcsi:%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%"/>
             <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
-            <label name="org.opensuse.reference" value="opensuse/cephcsi/cephcsi:%PKG_VERSION%.%PKG_COMMIT_NUM%"/>
+            <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/cephcsi/cephcsi:%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%"/>
           </suse_label_helper:add_prefix>
         </labels>
-        <history author="Denis Kondratenko &lt;denis.kondratenko@suse.com&gt;">New Ceph CSI image</history>
+        <history author="Denis Kondratenko &lt;denis.kondratenko@suse.com&gt;">Generate container history (SES-922)</history>
       </containerconfig>
     </type>
     <version>1.0.0</version>
