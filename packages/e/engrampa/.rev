@@ -158,4 +158,12 @@
     <comment>I have really no idea, why libxml2-python ended up here at all.</comment>
     <requestid>733386</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3c711905b005c61d60b59ca1d8f6959e</srcmd5>
+    <version>1.23.1</version>
+    <time>1573044996</time>
+    <user>dimstar_suse</user>
+    <comment>Makes the build green again :)</comment>
+    <requestid>745164</requestid>
+  </revision>
 </revisionlist>

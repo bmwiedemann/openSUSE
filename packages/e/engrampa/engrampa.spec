@@ -18,7 +18,7 @@
 
 %define _version 1.23
 Name:           engrampa
-Version:        1.23.0
+Version:        1.23.1
 Release:        0
 Summary:        MATE Desktop archive manager
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
