@@ -21,7 +21,6 @@ Version:        1.2.1
 Release:        0
 Summary:        Backup tool for Linux inspired by the "flyback project"
 License:        GPL-2.0-or-later
-Group:          Productivity/Archiving/Backup
 Url:            https://github.com/bit-team/backintime
 Source0:        https://github.com/bit-team/backintime/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/bit-team/backintime/releases/download/v%{version}/%{name}-%{version}.tar.gz.asc
@@ -61,7 +60,6 @@ You only need to specify 3 things:
 
 %package qt
 Summary:        Back In Time Qt5 GUI
-Group:          Productivity/Archiving/Backup
 Requires:       %{name} = %{version}
 Requires:       dbus-1-python3
 Requires:       polkit

@@ -169,4 +169,12 @@ Fix usage of deprecated unix-process polkit authorization subject opens a race c
     <comment></comment>
     <requestid>727094</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>c2f659715b370c4515fc33e77f502d0b</srcmd5>
+    <version>1.2.1</version>
+    <time>1573044818</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>739884</requestid>
+  </revision>
 </revisionlist>
