@@ -1,7 +1,7 @@
 #
 # spec file for package bam
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,7 +21,6 @@ Version:        0.5.1
 Release:        0
 Summary:        Lua-based build system
 License:        Zlib
-Group:          Development/Tools/Building
 Url:            http://matricks.github.com/bam/
 Source:         https://github.com/matricks/bam/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM bam-0.5.1-fix-compilation-order.patch -- https://github.com/matricks/bam/issues/116
