@@ -1,0 +1,27 @@
+? bonnie2
+Index: Bonnie.c
+===================================================================
+RCS file: /share/MD0_DATA/cvsroot/C/bonnie/Bonnie.c,v
+retrieving revision 1.5
+retrieving revision 1.6
+diff -u -p -r1.5 -r1.6
+--- Bonnie.c	17 Feb 2016 13:09:47 -0000	1.5
++++ Bonnie.c	23 Nov 2018 09:45:08 -0000	1.6
+@@ -64,7 +64,7 @@
+  *  or consequential damage, loss, costs or fees or expenses of any
+  *  nature or kind.
+  */
+-/* $Id: Bonnie.c,v 1.5 2016/02/17 13:09:47 garloff Exp $ */
++/* $Id: Bonnie.c,v 1.6 2018/11/23 09:45:08 garloff Exp $ */
+ 
+ #include <unistd.h>
+ #include <stdio.h>
+@@ -449,7 +449,7 @@ int main(
+ 
+   /* read them all back with getc() */
+   for(volcnt = 0; volcnt < volumes; volcnt++)
+-    newfile(name, &fd[volcnt], &stream[volcnt], 0, volcnt, o_direct);
++    newfile(name, &fd[volcnt], &stream[volcnt], 0, volcnt, 0/*+o_direct*/);
+   for (words = 0; words < 256; words++)
+     chars[words] = 0;
+   off_t gsz = size/8;

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Nov  5 08:10:10 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Do not use download url anymore
+
+-------------------------------------------------------------------
+Thu Oct 17 14:50:53 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
+Fri Jan 11 11:17:49 CET 2019 - kurt@garloff.de
+
+- bonnie-fix-o_direct.diff: Don't use O_DIRECT for character input,
+  as newer kernels don't allow this.
+
+-------------------------------------------------------------------
+Fri Jan 11 11:17:02 CET 2019 - kurt@garloff.de
+
+- Update to bonnie-1.6:
+  * Use 16 threads by default
+  * Smaller 4k reads (seeking)
+  * Larger blocks in intelligent read/write
+  * Smaller I/O size for char in/out
+  * More digits for formatting.
+
+-------------------------------------------------------------------
 Thu Jun 30 13:21:33 UTC 2016 - mpluskal@suse.com
 
 - Use url for source

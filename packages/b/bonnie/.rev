@@ -151,4 +151,24 @@
 - Tiny spec file cleanups</comment>
     <requestid>405686</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>24543d58653dad756d27171ff3542e3c</srcmd5>
+    <version>1.6</version>
+    <time>1573045520</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not use download url anymore
+
+- Remove obsolete Groups tag (fate#326485)
+
+- bonnie-fix-o_direct.diff: Don't use O_DIRECT for character input,
+  as newer kernels don't allow this.
+
+- Update to bonnie-1.6:
+  * Use 16 threads by default
+  * Smaller 4k reads (seeking)
+  * Larger blocks in intelligent read/write
+  * Smaller I/O size for char in/out
+  * More digits for formatting.</comment>
+    <requestid>745342</requestid>
+  </revision>
 </revisionlist>
