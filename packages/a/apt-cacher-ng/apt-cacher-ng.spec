@@ -22,7 +22,6 @@ Version:        3.1
 Release:        0
 Summary:        A caching proxy specialized for Linux distribution packages
 License:        BSD-4-Clause AND MIT
-Group:          Productivity/Networking/Web/Proxy
 Url:            http://www.unix-ag.uni-kl.de/~bloch/acng/
 Source0:        http://ftp.debian.org/debian/pool/main/a/apt-cacher-ng/%{name}_%{version}.orig.tar.xz
 Source1:        http://ftp.debian.org/debian/pool/main/a/apt-cacher-ng/%{name}_%{version}-%{debian_release}.debian.tar.xz
