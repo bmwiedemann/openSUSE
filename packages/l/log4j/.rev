@@ -206,4 +206,12 @@
     <comment>upgrade to 2.11.1 (API change) + replace in rings by log4j12/log4j12-mini</comment>
     <requestid>734363</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>f6c9bdc55bd96e18625086b299310a08</srcmd5>
+    <version>2.11.1</version>
+    <time>1573045036</time>
+    <user>dimstar_suse</user>
+    <comment>fdupes</comment>
+    <requestid>745198</requestid>
+  </revision>
 </revisionlist>

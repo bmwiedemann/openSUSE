@@ -240,6 +240,7 @@ rm log4j-api/src/main/java/org/apache/logging/log4j/util/Activator.java
 
 %install
 %mvn_install
+%fdupes -s %{buildroot}%{_javadocdir}
 
 %if %{with extras}
 %jpackage_script org.apache.logging.log4j.jmx.gui.ClientGUI '' '' %{name}/%{name}-jmx-gui:%{name}/%{name}-core %{name}-jmx false
