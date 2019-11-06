@@ -34,27 +34,48 @@ Source0:        https://github.com/musescore/MuseScore/archive/v%{version_lesser
 Source1:        %{rname}.desktop
 # PATCH-FIX-UPSTREAM: see https://github.com/musescore/MuseScore/releases
 Patch0:         correct-revision.patch
-BuildRequires:  alsa-devel
-BuildRequires:  cmake >= 3.0
+BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++
-BuildRequires:  hicolor-icon-theme
-BuildRequires:  jack-devel
-BuildRequires:  libQt5WebKitWidgets-devel
+BuildRequires:  libQt5Help5
+BuildRequires:  libQt5QuickTemplates2-devel
 BuildRequires:  libmp3lame-devel
-BuildRequires:  libpulse-devel
 BuildRequires:  libqt5-linguist-devel
-BuildRequires:  libqt5-qtbase-devel
-BuildRequires:  libqt5-qtsvg-devel
-BuildRequires:  libqt5-qttools-devel
-BuildRequires:  libqt5-qtwebengine-devel
-BuildRequires:  libqt5-qtxmlpatterns-devel
-BuildRequires:  libsndfile-devel
-BuildRequires:  libvorbis-devel
-BuildRequires:  portaudio-devel
+BuildRequires:  pkgconfig
 BuildRequires:  portmidi-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(Qt5Concurrent)
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Designer)
+BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Help)
+BuildRequires:  pkgconfig(Qt5Network)
+BuildRequires:  pkgconfig(Qt5OpenGL)
+BuildRequires:  pkgconfig(Qt5PrintSupport)
+BuildRequires:  pkgconfig(Qt5QuickControls2)
+BuildRequires:  pkgconfig(Qt5Sql)
+BuildRequires:  pkgconfig(Qt5Svg)
+BuildRequires:  pkgconfig(Qt5Test)
+BuildRequires:  pkgconfig(Qt5UiTools)
+# TODO: why does it fail with qtwebengine?
+#BuildRequires:  pkgconfig(Qt5WebEngine)
+#BuildRequires:  pkgconfig(Qt5WebEngineCore)
+#BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  pkgconfig(Qt5XmlPatterns)
+BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(jack)
+BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(libpulse-mainloop-glib)
+BuildRequires:  pkgconfig(libpulse-simple)
+BuildRequires:  pkgconfig(portaudio-2.0)
+BuildRequires:  pkgconfig(portaudiocpp)
+BuildRequires:  pkgconfig(sndfile)
+BuildRequires:  pkgconfig(vorbis)
+BuildRequires:  pkgconfig(vorbisenc)
+BuildRequires:  pkgconfig(vorbisfile)
 Requires:       %{name}-fonts = %{version}-%{release}
 Requires:       libqt5-qtgraphicaleffects
 Requires:       libqt5-qtquickcontrols2
@@ -99,9 +120,9 @@ chmod -x fonts/gootville/readme.txt
 %build
 %define __builddir build.release
 %cmake \
+       -DCMAKE_BUILD_TYPE=RELEASE \
        -DUSE_SYSTEM_FREETYPE="ON" \
-       -DBUILD_WEBENGINE="OFF" \
-       -DBUILD_CRASH_REPORTER="OFF"
+       -DBUILD_WEBENGINE="OFF"
 %make_jobs lrelease all
 
 # Put the desktop file in place for the packaging
