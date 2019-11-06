@@ -17,7 +17,7 @@
 
 
 Name:           signify
-Version:        26
+Version:        27
 Release:        0
 Summary:        OpenBSD tool to sign and verify signatures on files (portable version)
 License:        BSD-3-Clause
