@@ -21,7 +21,6 @@ Version:        1.4.0
 Release:        0
 Summary:        Task Switcher
 License:        GPL-3.0-only
-Group:          System/X11/Utilities
 URL:            https://github.com/sagb/alttab
 Source:         https://github.com/sagb/alttab/archive/v%{version}.tar.gz
 BuildRequires:  autoconf
@@ -31,8 +30,8 @@ BuildRequires:  libXpm-devel
 BuildRequires:  libXrandr-devel
 BuildRequires:  libXrender-devel
 BuildRequires:  libpng-devel
-BuildRequires:  rubygem(ronn)
 BuildRequires:  uthash-devel
+BuildRequires:  rubygem(ronn)
 
 %description
 alttab is a X11 window switcher designed for minimalistic window managers or standalone X11 session.
