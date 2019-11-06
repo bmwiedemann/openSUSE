@@ -38,4 +38,31 @@ Add strip-nondeterminism-0.029-zipfix.patch
 - Drop upstream strip-nondeterminism-0.029-zipfix.patch</comment>
     <requestid>658688</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7ee9b651b6b2d94226795d8ab2634b00</srcmd5>
+    <version>1.6.1</version>
+    <time>1573044450</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.1:
+  + Parallelise dh_strip_nondeterminism script.
+  + Correct indentation level of .zip file field format comment.
+  + dh_strip_nondeterminism: Deduplicate hardlinks via stat(2) to
+    avoid issues.
+  + Call file(1) with the &quot;--&quot; argument placeholder to fix
+    normalisation of files.
+  + Check the return status from Archive::Zip when writing file to
+    disk.
+  + Workaround Archive::Zip's incorrect handling of the
+    localExtraField field.
+  + Support timestamp clamping of &quot;tIME&quot; chunks in .png files.
+  + Drop the t/fixtures/zip/bug_803503.zip test fixtures as they
+    are no longer compatible with Archive::Zip &gt;= 1.66.
+- Drop strip-nondeterminism-0.029-fix-apk.patch: test suite passes
+  without this.
+- BuildRequire perl(Sub::Override): new dependency.
+- Drop _service file: it only has a download_url defined, which is
+  also transparently extracted from the spec file. So this service
+  essentially serves no purpose.</comment>
+    <requestid>744407</requestid>
+  </revision>
 </revisionlist>

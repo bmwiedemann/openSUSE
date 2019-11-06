@@ -1,7 +1,7 @@
 #
 # spec file for package strip-nondeterminism
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           strip-nondeterminism
-Version:        1.0.0
+Version:        1.6.1
 Release:        0
 Summary:        A tool for stripping non-deterministic information
 License:        GPL-3.0-or-later
@@ -28,16 +28,16 @@ Source1:        https://reproducible-builds.org/_lfs/releases/strip-nondetermini
 Source2:        rpmmacros
 Source3:        strip-all-nondeterminism
 Source4:        %{name}.keyring
-# PATCH-FIX-OPENSUSE - apk files misdetected as OOXML
-Patch0:         strip-nondeterminism-0.029-fix-apk.patch
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl-base
 BuildRequires:  perl-macros
 BuildRequires:  perl(Archive::Cpio)
 BuildRequires:  perl(Archive::Zip)
+BuildRequires:  perl(Sub::Override) 
 Requires:       perl-base
 Requires:       perl(Archive::Zip)
+Requires:       perl(Sub::Override) 
 Recommends:     perl(Archive::Cpio)
 %{perl_requires}
 

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Oct 29 11:54:17 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.6.1:
+  + Parallelise dh_strip_nondeterminism script.
+  + Correct indentation level of .zip file field format comment.
+  + dh_strip_nondeterminism: Deduplicate hardlinks via stat(2) to
+    avoid issues.
+  + Call file(1) with the "--" argument placeholder to fix
+    normalisation of files.
+  + Check the return status from Archive::Zip when writing file to
+    disk.
+  + Workaround Archive::Zip's incorrect handling of the
+    localExtraField field.
+  + Support timestamp clamping of "tIME" chunks in .png files.
+  + Drop the t/fixtures/zip/bug_803503.zip test fixtures as they
+    are no longer compatible with Archive::Zip >= 1.66.
+- Drop strip-nondeterminism-0.029-fix-apk.patch: test suite passes
+  without this.
+- BuildRequire perl(Sub::Override): new dependency.
+- Drop _service file: it only has a download_url defined, which is
+  also transparently extracted from the spec file. So this service
+  essentially serves no purpose.
+
+-------------------------------------------------------------------
 Sat Dec 15 19:45:06 UTC 2018 - bwiedemann@suse.com
 
 - Update to version 1.0.0
@@ -11,7 +35,7 @@ Mon Jul 10 02:49:15 UTC 2017 - bwiedemann@suse.com
 
 - Add strip-all-nondeterminism script to make this easier to use correctly
 - Add strip-nondeterminism-0.029-zipfix.patch
-  to handle files without permissions in .zip files 
+  to handle files without permissions in .zip files
 
 -------------------------------------------------------------------
 Sun May  7 09:47:22 UTC 2017 - bwiedemann@suse.com
