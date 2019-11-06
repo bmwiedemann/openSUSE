@@ -1,7 +1,7 @@
 #
 # spec file for package 4pane
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2016 Packman Team <packman@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,15 +13,15 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           4pane
 Version:        5.0
 Release:        0
 Summary:        A multi-pane detailed-list file manager
-License:        GPL-3.0
-Group:          Productivity/File utilities
+License:        GPL-3.0-only
 Url:            http://www.4pane.co.uk/
 Source0:        https://sourceforge.net/projects/fourpane/files/%{version}/%{name}-%{version}.tar.gz
 %if 0%{?is_opensuse}
@@ -56,7 +56,6 @@ sed -i -e "s|/usr/doc/4Pane/|%{_docdir}/4Pane/|g" Configure.cpp
 %build
 %configure
 make %{?_smp_mflags}
-
 
 %install
 make %{?_smp_mflags} DESTDIR=%{buildroot} install
