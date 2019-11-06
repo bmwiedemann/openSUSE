@@ -5,16 +5,8 @@
     <!-- build uses 20GB in maintenance projects currently 201502 -->
 	<size unit="G">13</size>
     </disk>
+    <memory>
+      <size unit="M">3000</size>
+    </memory>
   </hardware>
-  <overwrite>
-    <conditions>
-      <arch>i586</arch>
-      <arch>x86_64</arch>
-    </conditions>
-    <hardware>
-      <memory>
-        <size unit="M">2500</size>
-      </memory>
-    </hardware>
-  </overwrite>
 </constraints>
