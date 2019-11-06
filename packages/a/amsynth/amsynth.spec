@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,7 +21,6 @@ Version:        1.9.0
 Release:        0
 Summary:        Analog modelling (a.k.a virtual analog) software synthesizer
 License:        GPL-2.0-or-later
-Group:          Productivity/Multimedia/Sound/Midi
 URL:            http://amsynth.github.io/
 Source:         https://github.com/amsynth/amsynth/releases/download/release-%{version}/%{name}-%{version}.tar.bz2
 BuildRequires:  fdupes
@@ -62,7 +61,6 @@ There are currently several different ways to run amsynth:
 
 %package plugin-dssi
 Summary:        Analog modelling (a.k.a virtual analog) software synthesizer
-Group:          Productivity/Multimedia/Sound/Midi
 Requires:       %{name} = %{version}
 Requires:       dssi
 
@@ -91,7 +89,6 @@ This package includes the DSSI implementation of the synthesizer.
 
 %package plugin-lv2
 Summary:        Analog modelling (a.k.a virtual analog) software synthesizer
-Group:          Productivity/Multimedia/Sound/Midi
 Requires:       %{name} = %{version}
 
 %description plugin-lv2
@@ -119,7 +116,6 @@ This package includes the LV2 implementation of the synthesizer.
 
 %package plugin-vst
 Summary:        Analog modelling (a.k.a virtual analog) software synthesizer
-Group:          Productivity/Multimedia/Sound/Midi
 Requires:       %{name} = %{version}
 
 %description plugin-vst
