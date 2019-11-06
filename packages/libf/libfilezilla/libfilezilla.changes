@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  4 16:55:19 UTC 2019 - ecsos@opensuse.org
+
+- Update to 0.18.2
+  * New features:
+    - Added operator== and != to fz::uri
+
+-------------------------------------------------------------------
 Sun Aug 25 08:01:22 UTC 2019 - ecsos@opensuse.org
 
 - Update to 0.18.1
