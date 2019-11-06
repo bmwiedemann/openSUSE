@@ -30,6 +30,7 @@ BuildRequires:  fdupes
 BuildRequires:  java-devel
 BuildRequires:  javapackages-local
 BuildRequires:  jna
+BuildRequires:  jna-contrib
 BuildRequires:  jsch
 BuildRequires:  trilead-ssh2
 BuildArch:      noarch

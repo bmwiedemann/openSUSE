@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>713946</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9f0b196835a943126fe8516fb99f4659</srcmd5>
+    <version>0.0.7</version>
+    <time>1573049952</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build against the new layout of jna package</comment>
+    <requestid>745229</requestid>
+  </revision>
 </revisionlist>

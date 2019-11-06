@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 10 21:06:23 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- BuildRequire the new jna-contrib package
+
+-------------------------------------------------------------------
 Sun Jul  7 22:05:12 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim bias and conjecture from descriptions.
