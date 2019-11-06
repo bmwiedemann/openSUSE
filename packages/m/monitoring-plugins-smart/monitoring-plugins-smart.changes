@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Oct 31 15:11:06 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.4
+  - Allow detection of more than 26 devices / issue #5 (rev 5.3)
+  - Different ATA vs. SCSI lookup (rev 5.4)
+  - Allow script to run outside of nagios plugins dir / wiki url
+    update (rev 5.5)
+  - Change syntax of -g parameter (regex is now awaited from
+    input) (rev 5.6)
+  - Fix Use of uninitialized value $device (rev 5.7)
+  - Allow multiple devices for interface type megaraid,
+    e.g. "megaraid,[1-5]" (rev 5.8)
+  - allow type "auto" (rev 5.9)
+  - Check selftest log for errors using new parameter -s (rev 5.10)
+  - Add exclude list (-e) to ignore certain attributes (5.11)
+  - Fix 'Use of uninitialized value' warnings (5.11.1)
+  - Add raw check list (-r) and warning thresholds (-w) (6.0)
+  - Allow using pseudo bus device /dev/bus/N (6.1)
+  - Add device model and serial number in output (6.2)
+  - Allow exclusion from perfdata as well (-E) and by attribute
+    number (6.3)
+  - Remove dependency on utils.pm, add quiet parameter (6.4)
+- Drop not longer needed patch:
+  * enable_auto_interface.patch (obsolete, type auto was added
+    upstream in v5.9).
+
+-------------------------------------------------------------------
 Tue Mar  3 12:44:32 UTC 2015 - lars@linux-schulserver.de
 
 - include <abstractions/user-tmp> in apparmor profile
