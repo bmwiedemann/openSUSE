@@ -22,7 +22,6 @@ Version:        20010113
 Release:        0
 Summary:        a2ps Support for Korean PostScript Filter (Python Version)
 License:        GPL-2.0-or-later
-Group:          Hardware/Printing
 Source0:        a2ps-h.py
 Source1:        a2ps-h-font.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

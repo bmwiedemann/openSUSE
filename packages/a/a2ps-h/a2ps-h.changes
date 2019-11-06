@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 17 12:46:40 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
 Sun Mar 17 09:54:44 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove old tags/sections from specfile.
