@@ -17,7 +17,7 @@
 
 
 Name:           perl-Mojolicious
-Version:        8.25
+Version:        8.26
 Release:        0
 %define cpan_name Mojolicious
 Summary:        Real-time web framework
@@ -51,7 +51,7 @@ Take a look at our excellent documentation in Mojolicious::Guides!
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -name "*.sh" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

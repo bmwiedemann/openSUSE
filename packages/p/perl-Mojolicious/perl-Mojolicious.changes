@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov  4 11:22:18 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 8.26
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  8.26  2019-11-02
+    - Removed deprecated slice method from Mojo::Collection.
+    - Moved HTML entities from Mojo::Util into a separate file. (rage311)
+    - Changed how the state of the event loop is determined in Mojo::Reactor::EV
+      to be more consistent with Mojo::Reactor::Poll.
+
+-------------------------------------------------------------------
 Mon Sep 30 10:44:01 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 8.25
