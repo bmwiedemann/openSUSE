@@ -332,4 +332,24 @@ the sources.</comment>
 - sbd-pacemaker: check for shutdown attribute on every cib-diff (forwarded request 743777 from yan_gao)</comment>
     <requestid>743778</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>bd776b8d2ba6a44ca75982c81af5626c</srcmd5>
+    <version>1.4.0+20191029.695f9ca</version>
+    <time>1573045000</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.0+20191029.695f9ca:
+- tests: add regression-tests using preload-library
+- tests: added preload-library for reboot interception
+
+- Update to version 1.4.0+20191028.3f01a1d:
+- spec: add devel package
+
+- Update to version 1.4.0+20191028.d937f9d:
+- sbd-inquisitor: use crashdump timeout
+- Build: switch back to serial test-harness
+- Doc: mention crashdump message in usage note
+- defaults: make 15s timeout default for s390 consistently
+- cmdline: just use SBD_DEVICE if no devs from cmdline (forwarded request 745167 from yan_gao)</comment>
+    <requestid>745168</requestid>
+  </revision>
 </revisionlist>

@@ -23,7 +23,7 @@
 %endif
 
 Name:           sbd
-Version:        1.4.0+20190919.2758632
+Version:        1.4.0+20191029.695f9ca
 Release:        0
 Summary:        Storage-based death
 License:        GPL-2.0-or-later
@@ -52,23 +52,43 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %description
 This package contains the storage-based death functionality.
 
+%package devel
+Summary:        Storage-based death environment for regression tests
+Group:          Productivity/Clustering/HA
+Requires:       %{name} = %{version}-%{release}
+
+%description devel
+This package provides an environment + testscripts for
+regression-testing sbd.
+
 %prep
 %autosetup -n %{name}-%{version} -p1
 
+%ifarch s390x s390
+sed -i src/sbd.sysconfig -e "s/Default: 5/Default: 15/"
+sed -i src/sbd.sysconfig -e "s/SBD_WATCHDOG_TIMEOUT=5/SBD_WATCHDOG_TIMEOUT=15/"
+%endif
+
 %build
-autoreconf -fvi
+./autogen.sh
+
 %configure
 make %{?_smp_mflags}
 
 %install
 %make_install LIBDIR=%{_libdir}
 install -D -m 0755 src/sbd.sh %{buildroot}%{_datadir}/sbd/sbd.sh
+install -D -m 0755 tests/regressions.sh %{buildroot}%{_datadir}/sbd/regressions.sh
 install -D -m 0644 src/sbd.service %{buildroot}/%{_unitdir}/sbd.service
 install -D -m 0644 src/sbd_remote.service %{buildroot}/%{_unitdir}/sbd_remote.service
 ln -s service %{buildroot}%{_sbindir}/rcsbd
 ln -s service %{buildroot}%{_sbindir}/rcsbd_remote
 mkdir -p %{buildroot}%{_fillupdir}
 install -m 0644 src/sbd.sysconfig %{buildroot}%{_fillupdir}/sysconfig.sbd
+
+# Don't package static libs
+find %{buildroot} -type f -name "*.a" -delete -print
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post
 %service_add_post sbd.service sbd_remote.service
@@ -86,6 +106,9 @@ fi
 %postun
 %service_del_postun -n sbd.service sbd_remote.service
 
+%post devel -p /sbin/ldconfig
+%postun devel -p /sbin/ldconfig
+
 %files
 %defattr(-,root,root)
 %{_libdir}/stonith/
@@ -93,10 +116,18 @@ fi
 %{_sbindir}/rcsbd
 %{_sbindir}/rcsbd_remote
 %{_datadir}/sbd
+%exclude %{_datadir}/sbd/regressions.sh
 %{_mandir}/man8/sbd*
 %{_unitdir}/sbd.service
 %{_unitdir}/sbd_remote.service
 %{_fillupdir}/sysconfig.sbd
+%doc COPYING
+
+%files devel
+%defattr(-,root,root)
+%dir %{_datadir}/sbd
+%{_datadir}/sbd/regressions.sh
+%{_libdir}/libsbdtestbed*
 %doc COPYING
 
 %changelog
