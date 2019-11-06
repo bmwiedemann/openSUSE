@@ -96,8 +96,13 @@ Some of the features that seaborn offers are:
 # See https://github.com/mwaskom/seaborn/issues/1571
 # Tests fail due to unicode issues in test suite on python 2.7
 # See: https://github.com/mwaskom/seaborn/issues/1675
+# Exclude TestDendrogram.test_dendrogram_rotate and
+# TestHeatmap.test_heatmap_axes,
+# which fail in matplotlib 3.1.1 due to matplotlib bugs.
+# This should be fixed in the next matplotlib release.
+# See: https://github.com/mwaskom/seaborn/issues/1773
 export PYTHONPATH="%{buildroot}%{python3_sitelib}"
-pytest-%{python3_bin_suffix} seaborn -k "not test_cbar_ticks"
+pytest-%{python3_bin_suffix} seaborn -k "not test_cbar_ticks and not test_dendrogram_rotate and not test_heatmap_axes"
 
 %files %{python_files}
 %license LICENSE
