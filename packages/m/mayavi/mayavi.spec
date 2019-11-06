@@ -18,7 +18,7 @@
 
 %define         X_display  ":98"
 Name:           mayavi
-Version:        4.6.2
+Version:        4.7.1
 Release:        0
 Summary:        3D visualization of scientific data in Python
 License:        BSD-3-Clause AND EPL-1.0 AND LGPL-2.0-or-later AND LGPL-3.0-or-later
@@ -27,7 +27,6 @@ URL:            https://github.com/enthought/mayavi
 Source0:        https://files.pythonhosted.org/packages/source/m/mayavi/mayavi-%{version}.tar.bz2
 Source1:        mayavi.desktop
 Source2:        tvtk_doc.desktop
-Patch0:         catch_gen_docs_errors.patch
 # PATCH-FIX-OPENSUSE no_vtk_require.patch -- VTK detection in setuptools fails due to a lack of .egg-info
 Patch1:         no_vtk_require.patch
 BuildRequires:  R-base-devel
@@ -56,6 +55,7 @@ Requires:       python3-qt5
 Requires:       python3-setuptools
 Requires:       python3-tvtk = %{version}
 Provides:       python3-mayavi = %{version}
+Recommends:     %{name}-jupyter
 # SECTION test requirements
 BuildRequires:  xorg-x11-server
 # /SECTION
@@ -68,7 +68,7 @@ Mayavi provides interactive visualization of 3-D data. It offers:
  * A scripting interface in Python, including
    one-liners, or an object-oriented programming interface. Mayavi
    integrates with numpy and scipy for 3D plotting and can
-   even be used in IPython interactively, similarly to Matplotlib.
+   be used in IPython interactively, similarly to Matplotlib.
  * Use of the the VTK toolkit.
 
 Additionally, Mayavi is a reusable tool that can be embedded in
@@ -100,7 +100,7 @@ Mayavi to interact with visualizations or create applications.
 It is part of the Enthought Tool Suite (ETS).
 
 %package        doc
-Summary:        Documentation for %{name}
+Summary:        Documentation for mayavi
 Group:          Documentation/HTML
 Requires:       %{name} = %{version}
 
@@ -115,9 +115,22 @@ Requires:       python3-tvtk = %{version}
 %description -n python3-tvtk-doc
 Documentation files for the python3-tvtk package.
 
+%package        jupyter
+Summary:        Jupyter notebook backend for mayavi
+Requires:       jupyter-notebook
+Requires:       jupyter-ipywidgets
+Requires:       jupyter-ipyevents
+Requires:       %{name} = %{version}
+
+%description    jupyter
+Interface to allow plotting with mayavi in Jupyter
+notebooks.
+
+This package pulls in the dependencies needed to
+run mayavi in a Jupyter notebook.
+
 %prep
 %setup -q -n mayavi-%{version}
-%patch0 -p1
 %patch1 -p1
 rm -r mayavi.egg-info
 
@@ -126,6 +139,13 @@ sed -i 's|\r||' examples/mayavi/data/room_vis.wrl
 
 # spurious-executable-perm
 chmod -x mayavi/tests/data/cellsnd.ascii.inp
+
+# non-executable-script
+sed -i -e '/^#!\//, 1d' integrationtests/mayavi/*.py
+sed -i -e '/^#!\//, 1d' mayavi/tests/*.py
+sed -i -e '/^#!\//, 1d' mayavi/tests/csv_files/csv_2_py
+sed -i -e '/^#!\//, 1d' mayavi/scripts/*.py
+sed -i -e '/^#!\//, 1d' tvtk/setup.py
 
 # env-script-interpreter
 find . -name \*.py -exec \
@@ -169,7 +189,7 @@ find %{buildroot}%{python3_sitearch}/mayavi/html/_downloads -name \*.py \
 %endif
 
 mkdir -p %{buildroot}/%{_mandir}/man1/
-mv docs/mayavi2.man %{buildroot}/%{_mandir}/man1/%{name}.1
+mv docs/mayavi2.man %{buildroot}/%{_mandir}/man1/mayavi2.1
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/
 install -p -m 644 ./docs/source/mayavi/images/mayavi2-48x48.png \
    %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/mayavi2.png
@@ -200,56 +220,57 @@ chmod a-x %{buildroot}%{python3_sitearch}/tvtk/setup.py
 %suse_update_desktop_file -i mayavi
 %suse_update_desktop_file -i tvtk_doc
 
-mkdir -p %{buildroot}%{_docdir}/%{name}
-mkdir -p %{buildroot}%{_docdir}/python3-tvtk
-cp -r docs/build/mayavi/html %{buildroot}%{_docdir}/%{name}/
+mkdir -p %{buildroot}%{_docdir}/mayavi/
+mkdir -p %{buildroot}%{_docdir}/python3-tvtk/
+cp -r docs/build/mayavi/html %{buildroot}%{_docdir}/mayavi/
 cp -r docs/build/tvtk/html %{buildroot}%{_docdir}/python3-tvtk/
 
-%fdupes %{buildroot}%{_docdir}/%{name}/
+%fdupes %{buildroot}%{_docdir}/mayavi/
 %fdupes %{buildroot}%{_docdir}/python3-tvtk/
-%fdupes %{buildroot}%{python3_sitearch}/mayavi
+%fdupes %{buildroot}%{python3_sitearch}/mayavi/
 %fdupes %{buildroot}%{python3_sitearch}/mayavi-%{version}-py*.egg-info
-%fdupes %{buildroot}%{python3_sitearch}/tvtk
+%fdupes %{buildroot}%{python3_sitearch}/tvtk/
 %fdupes %{buildroot}%{_datadir}/icons/
 
 sed -i "s|\r||g" %{buildroot}%{_docdir}/python3-tvtk/html/objects.inv
 rm -r %{buildroot}%{python3_sitearch}/{tvtk,mayavi}/html/.buildinfo
 rm -r %{buildroot}%{_docdir}/{python3-tvtk,mayavi}/html/.buildinfo
 
-python3    -m compileall -d %{python3_sitearch} %{buildroot}%{python3_sitearch}/mayavi
-python3 -O -m compileall -d %{python3_sitearch} %{buildroot}%{python3_sitearch}/mayavi
-python3    -m compileall -d %{python3_sitearch} %{buildroot}%{python3_sitearch}/tvtk
-python3 -O -m compileall -d %{python3_sitearch} %{buildroot}%{python3_sitearch}/tvtk
-%fdupes %{buildroot}%{python3_sitearch}/mayavi
-%fdupes %{buildroot}%{python3_sitearch}/tvtk
+python3    -m compileall -d %{python3_sitearch} %{buildroot}%{python3_sitearch}/mayavi/
+python3 -O -m compileall -d %{python3_sitearch} %{buildroot}%{python3_sitearch}/mayavi/
+python3    -m compileall -d %{python3_sitearch} %{buildroot}%{python3_sitearch}/tvtk/
+python3 -O -m compileall -d %{python3_sitearch} %{buildroot}%{python3_sitearch}/tvtk/
+%fdupes %{buildroot}%{python3_sitearch}/mayavi/
+%fdupes %{buildroot}%{python3_sitearch}/tvtk/
 
 %files
 %doc README*.*
 %license LICENSE*.txt image_LICENSE*.txt
 %{_bindir}/mayavi2
-%{_mandir}/man1/%{name}.1%{?ext_man}
+%{_mandir}/man1/mayavi2.1%{?ext_man}
 %{_datadir}/applications/mayavi.desktop
 %{python3_sitearch}/mayavi/
 %{python3_sitearch}/mayavi-%{version}-py*.egg-info
-%exclude %{_docdir}/%{name}/html/
+%exclude %{_docdir}/mayavi/html/
 
 %files -n python3-tvtk
 %doc README*.*
 %license LICENSE*.txt image_LICENSE*.txt
 %{_bindir}/tvtk_doc
 %{_datadir}/applications/tvtk_doc.desktop
-%{_datadir}/icons/hicolor
+%{_datadir}/icons/hicolor/
 %{python3_sitearch}/tvtk/
 %exclude %{_docdir}/python3-tvtk/html/
 
 %files doc
-%doc README*.*
 %license LICENSE*.txt image_LICENSE*.txt
-%{_docdir}/%{name}/html/
+%{_docdir}/mayavi/html/
 
 %files -n python3-tvtk-doc
-%doc README*.*
 %license LICENSE*.txt image_LICENSE*.txt
 %{_docdir}/python3-tvtk/html/
+
+%files jupyter
+%license LICENSE*.txt image_LICENSE*.txt
 
 %changelog

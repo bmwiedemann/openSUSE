@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Wed Oct 30 19:34:42 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Fix tvtk doc .desktop file name.
+- Make mayavi man file name match executable file name.
+- Clean up some spec file formatting.
+
+-------------------------------------------------------------------
+Fri Sep 13 14:50:46 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to Mayavi 4.7.1
+  + Fixes
+   * Fix old pipeline errors in image actor.
+   * Use the decorator for classmethod
+     Instead of explicitly calling it in the class definition
+   * Misc bug fixes
+     Fixes 3 issues that affect the new release due to changes in traits, pyface etc.
+     > Fix issue with CTF editor not showing.
+     > Fix issue with lut editor not launching.
+     > Fix issue with cut/pasting tree nodes and drag drop onto shell.
+- Update to Mayavi 4.7.0
+  + Enhancements
+   * New Jupyter notebook 'ipy' backend which is now the default and
+     requires that VTK's offscreen support work correctly. This backend
+     requires ipywidgets and ipyevents. It allows complete interactivity and
+     behaves almost exactly like a normal UI backend but inside a notebook.
+     Note that this will still require an xserver or windowing toolkit unless
+     VTK is compiled to be able to work without those.
+   * Improve offscreen window creation.
+     Creating a renderwindow in some configurations can actually make UI
+     calls.  So if EGL is available we try that.  Also, when we are using
+     offscreen rendering we only need a GenericRenderWindowInteractor.
+     Also add a convenient set method so one can set a different interactor if needed.
+   * ENH: Feature to disable automatic updates.
+     This can be very handy at times when the automatic updates can trigger
+     several changes that are not desirable.  For example on certain VTK
+     calls, internal ModifiedEvents may be fired which will automatically
+     call the update_traits method which can be wired to other events
+     triggering problems.  In these cases one can use the
+     `global_disable_update` function to temporarily disable updates.
+  + Fixes
+   * Test against ETS packages from source using travis cron jobs.
+   * Use xenial linux instead of trusty
+   * add fix for str conversion from bad bytes array
+   * Fix issue that arises in a few of the mlab sources where when we reset to a
+     polydata with a smaller number of points.
+   * FIX: Fix nose leftovers in tests.
+   * FIX: Escape chars in code.
+   * Also catch exceptions in generating documentation
+   * Some UI fixes for ivtk.
+     This fixes `#734 <https://github.com/enthought/mayavi/issues/734>`_.
+   * FIX: Fix set_range causing lookup table errors.
+   * FIX: Fix type check
+   * FIX: Fix for VTKNoneArray
+   * If OSMesa is available and user requests an offscreen window, use an
+     OSOpenGLRenderWindow, this will not require X and can be safely used on
+     a remote server.
+   * Fix bug related to SurfaceSource.scalars This bug manifests when the
+     SurfaceSource object in question does not have a scalars attribute and
+     many of them do not have this.
+   * Fix pip installs failing.
+   * Fix detection of color transfer function.
+     The original code was written for very old VTK versions but ever since
+     5.x we have a get_node_value method that actually provides the values of
+     the nodes given an index.  We now use this instead of the earlier hack.
+- Remove upstream-included catch_gen_docs_errors.patch
+
+-------------------------------------------------------------------
 Tue Apr 23 15:28:48 CEST 2019 - Matej Cepl <mcepl@suse.com>
 
 - Clean up SPEC file

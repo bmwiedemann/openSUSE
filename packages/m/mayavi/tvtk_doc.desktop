@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Mayavi
+Name=TVTK Documentation
 Comment=TVTK Documentation
 GenericName=TVTK Documentation
 Exec=tvtk_doc %U
@@ -7,4 +7,4 @@ StartupNotify=true
 Terminal=false
 Type=Application
 Icon=tvtk_doc
-Categories=GNOME;Education;3DGraphics;X-Science,X-DataVisualization;
+Categories=Education;Graphics;3DGraphics;Science;DataVisualization;
