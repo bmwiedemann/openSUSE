@@ -21,7 +21,6 @@ Version:        1.5.0
 Release:        0
 Summary:        Qt based network video browser
 License:        GPL-3.0-only
-Group:          Productivity/Multimedia/Video/Players
 URL:            http://omega.gg/MotionBox
 Source0:        https://github.com/omega-gg/MotionBox/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/omega-gg/Sky/archive/%{version}.tar.gz#/Sky-%{version}.tar.gz
