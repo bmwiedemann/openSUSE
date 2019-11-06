@@ -47,7 +47,7 @@ Name:           hawk2
 Summary:        HA Web Konsole
 License:        GPL-2.0-only
 Group:          %{pkg_group}
-Version:        2.1.0+git.1562924574.34a87ad7
+Version:        2.1.0+git.1572008730.896e9784
 Release:        0
 Url:            http://www.clusterlabs.org/wiki/Hawk
 Source:         %{name}-%{version}.tar.bz2
@@ -82,7 +82,12 @@ BuildRequires:  systemd-rpm-macros
 Requires:       iproute
 %endif
 
+%if 0%{?is_opensuse} &&  0%{?suse_version} > 1500
+BuildRequires:  openSUSE-release
+%else
 BuildRequires:  distribution-release
+%endif
+
 BuildRequires:  timezone
 
 BuildRequires:  %{rubygem bundler}
@@ -117,7 +122,7 @@ BuildRequires:  %{rubygem tilt >= 2}
 #/Help OBS scheduler
 
 BuildRequires:  git
-BuildRequires:  nodejs >= 6
+BuildRequires:  nodejs10
 BuildRequires:  pam-devel
 
 %description

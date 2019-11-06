@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 28 12:27:00 UTC 2019 - abelarbi@suse.de
+
+- Update to version 2.1.0+git.1572008730.896e9784:
+  * Remove Number Precision since it's handled by sassc-rails
+  * Fix mime type issue in MS windows (bsc#1098637)
+
+-------------------------------------------------------------------
 Fri Jul 12 11:46:22 UTC 2019 - abelarbi@suse.de
 
 - Update to version 2.1.0+git.1562924574.34a87ad7:
