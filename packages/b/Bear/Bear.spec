@@ -27,7 +27,6 @@ Version:        2.4.2
 Release:        0
 Summary:        Tool to generate compilation database for clang tooling
 License:        GPL-3.0-or-later
-Group:          Development/Tools/Other
 URL:            https://github.com/rizsotto/Bear
 Source:         %{URL}/archive/%{version}.tar.gz
 BuildRequires:  bash-completion
