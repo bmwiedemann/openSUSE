@@ -349,4 +349,14 @@
   Add jasper-CVE-2018-19541.patch: Check number of lutents</comment>
     <requestid>708034</requestid>
   </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>feedd5bba1a74a6b29688a74897136d4</srcmd5>
+    <version>2.0.16</version>
+    <time>1573049968</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1117507 CVE-2018-19541: Properly fix heap based overread
+  in jas_image_depalettize. Original fix caused segfaults.
+  Update jasper-CVE-2018-19541.patch</comment>
+    <requestid>745234</requestid>
+  </revision>
 </revisionlist>

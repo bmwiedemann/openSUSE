@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  4 17:10:14 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- bsc#1117507 CVE-2018-19541: Properly fix heap based overread
+  in jas_image_depalettize. Original fix caused segfaults.
+  Update jasper-CVE-2018-19541.patch
+
+-------------------------------------------------------------------
 Thu Jun  6 07:43:02 UTC 2019 - mvetter@suse.com
 
 - bsc#1117508 CVE-2018-19540: Fix heap based overflow in jas_icctxtdesc_input
