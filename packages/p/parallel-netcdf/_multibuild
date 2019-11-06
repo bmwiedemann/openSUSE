@@ -1,0 +1,5 @@
+<multibuild>
+  <package>mvapich2</package>
+  <package>openmpi1</package>
+  <package>openmpi2</package>
+</multibuild>

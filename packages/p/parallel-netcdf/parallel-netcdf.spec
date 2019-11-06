@@ -16,25 +16,39 @@
 #
 
 
-%if 0%{?sles_version}
-%define _mvapich2 1
-%endif
-%if 0%{?suse_version}
-%define _openmpi 1
-%endif
+%global flavor @BUILD_FLAVOR@%{nil}
 
-%define _mpi %{?_openmpi:openmpi} %{?_mvapich2:mvapich2}
-
-Name:           parallel-netcdf
+%define pname parallel-netcdf
+%define sonum 1
 %define libname libpnetcdf
+
+%if "%{flavor}" == ""
+ExclusiveArch: do_not_build
+%endif
+
+%if "%{flavor}" == "openmpi1" && 0%{?suse_version} < 1550
+%define mpi_flavor  openmpi
+%else
+%define mpi_flavor  %{flavor}
+%endif
+
+%if "%{?mpi_flavor}" != ""
+%define my_suffix  -%{mpi_flavor}
+%define mpiprefix %{_libdir}/mpi/gcc/%{mpi_flavor}
+%define my_prefix %{mpiprefix}
+%define my_bindir %{mpiprefix}/bin
+%define my_libdir %{mpiprefix}/%{_lib}
+%define my_includedir %{mpiprefix}/include
+%endif
+
+Name:           %{pname}%{?my_suffix}
 Version:        1.7.0
 Release:        0
-%define sonum   1
 Summary:        High-performance parallel I/O with the NetCDF scientific data format
 License:        NetCDF
 Group:          Productivity/Scientific/Other
 Url:            http://cucis.ece.northwestern.edu/projects/PnetCDF/index.html
-Source0:        http://cucis.ece.northwestern.edu/projects/PnetCDF/Release/%{name}-%{version}.tar.bz2
+Source0:        http://cucis.ece.northwestern.edu/projects/PnetCDF/Release/%{pname}-%{version}.tar.bz2
 # PATCH-FIX-OPENSUSE parallel-netcdf-1.6.1-destdir.patch Fix install directories
 Patch0:         parallel-netcdf-1.6.1-destdir.patch
 BuildRequires:  bison
@@ -42,13 +56,9 @@ BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  pkg-config
-%if 0%{?_openmpi}
-BuildRequires:  openmpi-devel
-%endif
-%if 0%{?_mvapich2}
-BuildRequires:  mvapich2-devel
-%endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  %{mpi_flavor}-devel
+Requires:       %{mpi_flavor}
+Requires:       %{libname}%{sonum}%{?my_suffix} = %{version}
 
 %description
 NetCDF is a set of software libraries and self-describing, 
@@ -58,264 +68,141 @@ and sharing of array-oriented scientific data.
 Parallel netCDF (PnetCDF) is a library providing high-performance I/O while
 still maintaining file-format compatibility with Unidata's NetCDF.
 
-%package openmpi
-Summary:        High-performance parallel I/O with the NetCDF scientific data format
-Group:          Productivity/Scientific/Other
-Requires:       %{libname}%{sonum}-openmpi = %{version}
-
-%description openmpi
-NetCDF is a set of software libraries and self-describing, 
-machine-independent data formats that support the creation, access,
-and sharing of array-oriented scientific data.
-
-This package contains the openmpi version of utility functions for
+This package contains the %{mpi_flavor} version of utility functions for
 working with NetCDF files.
 
-%package mvapich2
+%package -n %{libname}%{sonum}%{my_suffix}
 Summary:        High-performance parallel I/O with the NetCDF scientific data format
-Group:          Productivity/Scientific/Other
-Requires:       %{libname}%{sonum}-mvapich2 = %{version}
+Group:          System/Libraries
 
-%description mvapich2
-NetCDF is a set of software libraries and self-describing, 
-machine-independent data formats that support the creation, access,
-and sharing of array-oriented scientific data.
+%description -n %{libname}%{sonum}%{my_suffix}
+NetCDF is a set of software libraries and data formats for array-oriented
+scientific data.
 
-Parallel netCDF (PnetCDF) is a library providing high-performance I/O while
-still maintaining file-format compatibility with Unidata's NetCDF.
+Parallel netCDF (PnetCDF) maintains file-format compatibility with NetCDF.
 
-This package contains the mvapich2 version of utility functions for
-working with NetCDF files.
-
-%package -n %{libname}%{sonum}-openmpi
-Summary:        High-performance parallel I/O with the NetCDF scientific data format
-Group:          Productivity/Scientific/Other
-Provides:       %{libname}-openmpi = %{version}
-
-%description -n %{libname}%{sonum}-openmpi
-NetCDF is a set of software libraries and self-describing, 
-machine-independent data formats that support the creation, access,
-and sharing of array-oriented scientific data.
-
-Parallel netCDF (PnetCDF) is a library providing high-performance I/O while
-still maintaining file-format compatibility with Unidata's NetCDF.
-
-This package contains the openmpi version of the PnetCDF runtime
+This package contains the %{mpi_flavor} version of the PnetCDF runtime
 libraries.
 
-%package -n %{libname}%{sonum}-mvapich2
-Summary:        High-performance parallel I/O with the NetCDF scientific data format
-Group:          Productivity/Scientific/Other
-Provides:       %{libname}-mvapich2 = %{version}
-
-%description -n %{libname}%{sonum}-mvapich2
-NetCDF is a set of software libraries and self-describing, 
-machine-independent data formats that support the creation, access,
-and sharing of array-oriented scientific data.
-
-Parallel netCDF (PnetCDF) is a library providing high-performance I/O while
-still maintaining file-format compatibility with Unidata's NetCDF.
-
-This package contains the mvapich2 version of the PnetCDF runtime
-libraries.
-
-%package devel-data
+%package -n %{pname}-devel-data
 Summary:        Development data files for %{name}
 Group:          Development/Libraries/Parallel
+BuildArch:      noarch
 
-%description devel-data
-NetCDF is a set of software libraries and self-describing, 
-machine-independent data formats that support the creation, access,
-and sharing of array-oriented scientific data.
+%description -n %{pname}-devel-data
+NetCDF is a set of software libraries and data formats for array-oriented
+scientific data.
 
-Parallel netCDF (PnetCDF) is a library providing high-performance I/O while
-still maintaining file-format compatibility with Unidata's NetCDF.
+Parallel netCDF (PnetCDF) maintains file-format compatibility with NetCDF.
 
 This package contains generic files needed to create projects that use
 any version of PnetCDF.
 
-%package openmpi-devel
-Summary:        Development files for %{name}-openmpi
+%package devel
+Summary:        Development files for %{name}%{?my_suffix}
 Group:          Development/Libraries/Parallel
-Requires:       %{libname}%{sonum}-openmpi = %{version}
-Requires:       openmpi-devel
+Requires:       %{libname}%{sonum}%{?my_suffix} = %{version}
+Requires:       %{mpi_flavor}-devel
+Requires:       %{pname}-devel-data
 
-%description openmpi-devel
-NetCDF is a set of software libraries and self-describing, 
-machine-independent data formats that support the creation, access,
-and sharing of array-oriented scientific data.
+%description devel
+NetCDF is a set of software libraries and data formats for array-oriented
+scientific data.
 
-Parallel netCDF (PnetCDF) is a library providing high-performance I/O while
-still maintaining file-format compatibility with Unidata's NetCDF.
+Parallel netCDF (PnetCDF) maintains file-format compatibility with NetCDF.
 
 This package contains all files needed to create projects that use
-the openmpi version of PnetCDF.
+the %{mpi_flavor} version of PnetCDF.
 
-%package mvapich2-devel
-Summary:        Development files for %{name}-mvapich2
+%package devel-static
+Summary:        Static development files for %{name}
 Group:          Development/Libraries/Parallel
-Requires:       %{libname}%{sonum}-mvapich2 = %{version}
-Requires:       mvapich2-devel
+Requires:       %{name}-devel = %{version}
 
-%description mvapich2-devel
-NetCDF is a set of software libraries and self-describing, 
-machine-independent data formats that support the creation, access,
-and sharing of array-oriented scientific data.
+%description devel-static
+NetCDF is a set of software libraries and data formats for array-oriented
+scientific data.
 
-Parallel netCDF (PnetCDF) is a library providing high-performance I/O while
-still maintaining file-format compatibility with Unidata's NetCDF.
+Parallel netCDF (PnetCDF) maintains file-format compatibility with NetCDF.
 
-This package contains all files needed to create projects that use
-the mvapich2 version of PnetCDF.
-
-%package openmpi-devel-static
-Summary:        Static development files for %{name}-openmpi
-Group:          Development/Libraries/Parallel
-Requires:       %{name}-openmpi-devel = %{version}
-
-%description openmpi-devel-static
-NetCDF is a set of software libraries and self-describing, 
-machine-independent data formats that support the creation, access,
-and sharing of array-oriented scientific data.
-
-Parallel netCDF (PnetCDF) is a library providing high-performance I/O while
-still maintaining file-format compatibility with Unidata's NetCDF.
-
-This package contains the openmpi versions of the static libraries 
-for PnetCDF.
-
-%package mvapich2-devel-static
-Summary:        Static development files for %{name}-mvapich2
-Group:          Development/Libraries/Parallel
-Requires:       %{name}-mvapich2-devel = %{version}
-
-%description mvapich2-devel-static
-NetCDF is a set of software libraries and self-describing, 
-machine-independent data formats that support the creation, access,
-and sharing of array-oriented scientific data.
-
-Parallel netCDF (PnetCDF) is a library providing high-performance I/O while
-still maintaining file-format compatibility with Unidata's NetCDF.
-
-This package contains the mvapich2 versions of the static libraries 
+This package contains the %{mpi_flavor} versions of the static libraries 
 for PnetCDF.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n %{pname}-%{version}
 %patch0 -p1
 
-set -- *
-for mpi in %_mpi; do
- mkdir $mpi
- mkdir $mpi/shared
- cp -ap "$@" $mpi
-done
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-for mpi in %_mpi; do
-pushd $mpi
-%configure --prefix=%{_libdir}/mpi/gcc/$mpi \
-           --libdir=%{_libdir}/mpi/gcc/$mpi/%{_lib} \
-           --with-mpi=%{_libdir}/mpi/gcc/$mpi
+%configure --prefix=%{my_prefix} \
+           --libdir=%{my_libdir} \
+           --with-mpi=%{my_prefix}
 make
 
+mkdir shared
 pushd shared
-%{_libdir}/mpi/gcc/$mpi/bin/mpif77 -shared -Wl,-soname=libpnetcdf.so.%{sonum} -o ../libpnetcdf.so.%{version}
+%{my_bindir}/mpif77 -shared -Wl,-soname=%{libname}.so.%{sonum} -o ../%{libname}.so.%{version}
 popd
 
-popd
-done
 
 %install
-for mpi in %_mpi; do
-pushd $mpi
 %make_install
 
 %if %{_lib} != lib
-mv %{buildroot}%{_libdir}/mpi/gcc/$mpi/lib %{buildroot}%{_libdir}/mpi/gcc/$mpi/%{_lib}
+mv %{buildroot}%{my_prefix}/lib %{buildroot}%{my_libdir}
 %endif
 
-install -m 755 libpnetcdf.so.%{version} %{buildroot}%{_libdir}/mpi/gcc/$mpi/%{_lib}
-pushd %{buildroot}%{_libdir}/mpi/gcc/$mpi/%_lib
-ln -s libpnetcdf.so.%{version} libpnetcdf.so.%{sonum}
-ln -s libpnetcdf.so.%{version} libpnetcdf.so
+install -m 755 %{libname}.so.%{version} %{buildroot}%{my_libdir}
+pushd %{buildroot}%{my_libdir}
+ln -s %{libname}.so.%{version} %{libname}.so.%{sonum}
+ln -s %{libname}.so.%{version} %{libname}.so
 popd
 
 find %{buildroot} -name '*.la' -delete
-popd
-done
 
+%if "%{flavor}" == "openmpi1"
 # rpm macro for version checking
-mkdir -p %{buildroot}%{_sysconfdir}/rpm
-cat > %{buildroot}%{_sysconfdir}/rpm/macros.pnetcdf <<EOF
+mkdir -p %{buildroot}%{_rpmmacrodir}
+cat > %{buildroot}%{_rpmmacrodir}/macros.pnetcdf <<EOF
 #
 # RPM macros for hdf5 packaging
 #
 %_pnetcdf_sonum  %{sonum}
 %_pnetcdf_version  %{version}
 EOF
-
-%if 0%{?_openmpi}
-%post -n libpnetcdf1-openmpi -p /sbin/ldconfig
-%postun -n libpnetcdf1-openmpi -p /sbin/ldconfig
 %endif
 
-%if 0%{?_mvapich2}
-%post -n libpnetcdf1-mvapich2 -p /sbin/ldconfig
-%postun -n libpnetcdf1-mvapich2 -p /sbin/ldconfig
+%post -n %{libname}%{sonum}%{?my_suffix} -p /sbin/ldconfig
+%postun -n %{libname}%{sonum}%{?my_suffix} -p /sbin/ldconfig
+
+%if "%{flavor}" == "openmpi1"
+%files -n %{pname}-devel-data
+%defattr(-,root,root)
+%{_rpmmacrodir}/macros.pnetcdf
 %endif
 
-%files devel-data
+%files
 %defattr(-,root,root)
-%{_sysconfdir}/rpm/macros.pnetcdf
+%{my_bindir}/*
+%dir %{my_prefix}/man/
+%{my_prefix}/man/*
 
-%if 0%{?_openmpi}
-%files openmpi
+%files -n %{libname}%{sonum}%{?my_suffix}
 %defattr(-,root,root)
-%{_libdir}/mpi/gcc/openmpi/bin/*
-%dir %{_libdir}/mpi/gcc/openmpi/man/
-%{_libdir}/mpi/gcc/openmpi/man/*
-
-%files -n %{libname}%{sonum}-openmpi
-%defattr(-,root,root)
-%doc COPYRIGHT CREDITS RELEASE_NOTES
+%license COPYRIGHT
+%doc CREDITS RELEASE_NOTES
 %doc README README.LINUX README.large_files 
-%{_libdir}/mpi/gcc/openmpi/%{_lib}/*.so.*
+%{my_libdir}/*.so.*
 
-%files openmpi-devel
+%files devel
 %defattr(-,root,root)
-%{_libdir}/mpi/gcc/openmpi/include/*
-%{_libdir}/mpi/gcc/openmpi/%{_lib}/*.so
-%{_libdir}/mpi/gcc/openmpi/%{_lib}/pkgconfig/pnetcdf.pc
+%{my_includedir}/*
+%{my_libdir}/*.so
+%{my_libdir}/pkgconfig/pnetcdf.pc
 
-%files openmpi-devel-static
+%files devel-static
 %defattr(-,root,root)
-%{_libdir}/mpi/gcc/openmpi/%{_lib}/*.a
-%endif
-
-%if 0%{?_mvapich2}
-%files mvapich2
-%defattr(-,root,root)
-%{_libdir}/mpi/gcc/mvapich2/bin/*
-%dir %{_libdir}/mpi/gcc/mvapich2/man/
-%{_libdir}/mpi/gcc/mvapich2/man/*
-
-%files -n %{libname}%{sonum}-mvapich2
-%defattr(-,root,root,-)
-%doc COPYRIGHT CREDITS RELEASE_NOTES
-%doc README README.LINUX README.large_files 
-%{_libdir}/mpi/gcc/mvapich2/%{_lib}/*.so.*
-
-%files mvapich2-devel
-%defattr(-,root,root,-)
-%{_libdir}/mpi/gcc/mvapich2/include/*
-%{_libdir}/mpi/gcc/mvapich2/%{_lib}/*.so
-%{_libdir}/mpi/gcc/mvapich2/%{_lib}/pkgconfig/pnetcdf.pc
-
-%files mvapich2-devel-static
-%defattr(-,root,root,-)
-%{_libdir}/mpi/gcc/mvapich2/%{_lib}/*.a
-%endif
+%{my_libdir}/*.a
 
 %changelog

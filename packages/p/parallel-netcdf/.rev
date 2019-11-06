@@ -25,4 +25,14 @@ This version fixes the license</comment>
     <comment></comment>
     <requestid>729862</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>c2b356060048973caef9d8c3a531bccf</srcmd5>
+    <version>1.7.0</version>
+    <time>1573047339</time>
+    <user>dimstar_suse</user>
+    <comment>- Build MPI pacakges as multibuild flavors, add openmpi2
+- Adapt to openmpi -&gt; openmpi1 rename on Tumbleweed
+</comment>
+    <requestid>745539</requestid>
+  </revision>
 </revisionlist>
