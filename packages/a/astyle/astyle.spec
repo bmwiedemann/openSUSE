@@ -1,7 +1,7 @@
 #
 # spec file for package astyle
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,7 +21,6 @@ Version:        3.1
 Release:        0
 Summary:        Source Code Indenter, Formatter, and Beautifier for C, C++, C# and Java
 License:        MIT
-Group:          Development/Tools/Other
 Url:            http://astyle.sourceforge.net/
 Source:         http://downloads.sourceforge.net/project/%{name}/%{name}/%{name}%20%{version}/%{name}_%{version}_linux.tar.gz
 BuildRequires:  gcc-c++
@@ -35,7 +34,6 @@ line, or it can be incorporated as classes in another C++ program.
 
 %package -n lib%{name}j3
 Summary:        Java bindings for %{name}
-Group:          Development/Languages/Java
 
 %description -n lib%{name}j3
 This package contains Java bindings for %{name}.
