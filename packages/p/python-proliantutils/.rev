@@ -86,4 +86,37 @@
   * Redfish: Adds \`create\_raid\_configuration\` API to create raid</comment>
     <requestid>682177</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c9741508de41ad52849dd714d0754f7f</srcmd5>
+    <version>2.9.1</version>
+    <time>1573045049</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.9.1:
+  * Follow-up patch for UEFI iSCSI boot nic adapter fix
+  * Fixed problem with UEFI iSCSI boot for adapters
+  * Enable session based authentication used by sushy
+  * Fixes the storage capabilities
+  * Cache the IloClient object creation
+  * Adds support to get disk types
+  * Removes filter on the bios settings
+  * OOB disk-erase for ilo5 based Proliant Servers
+  * iLO firmware update fails with 'update\_firmware\_sum'
+  * Remove checked in copy of the ChangeLog
+  * Changing warning to debug
+  * Switch to the new tox constraints file usage and location
+  * Use six.moves for reloading a module
+  * Add unit tests for python 3.6/3.7
+  * Remove checked in version of AUTHORS
+  * Finish conversion to stestr
+  * Add a .gitreview file to point to the gerrit instance
+
+- update to 2.8.4:
+  * Updates ChangeLog for proliantutils release 2.8.4
+  * Adding changes for tox failure
+  * Adding fix for nic\_capacity calculation
+  * jsonschema3.0.1: Uncap jsonschema
+  * Jsonschema 3.0.1: Binds the raid schema to draft-04
+- switch to singlespec</comment>
+    <requestid>745207</requestid>
+  </revision>
 </revisionlist>

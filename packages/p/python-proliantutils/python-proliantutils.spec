@@ -16,35 +16,33 @@
 #
 
 
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-proliantutils
-Version:        2.8.2
+Version:        2.9.1
 Release:        0
 Summary:        Client Library for interfacing with various devices in HP Proliant Servers
 License:        Apache-2.0
 Group:          Development/Languages/Python
 Url:            https://github.com/openstack/proliantutils
 Source:         https://files.pythonhosted.org/packages/source/p/proliantutils/proliantutils-%{version}.tar.gz
+BuildRequires:  %{python_module ddt}
+BuildRequires:  %{python_module jsonschema}
+BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module oslo.concurrency}
+BuildRequires:  %{python_module oslo.serialization}
+BuildRequires:  %{python_module oslo.utils}
+BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module pysnmp}
+BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module retrying}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module stestr}
+BuildRequires:  %{python_module sushy}
+BuildRequires:  %{python_module testtools}
 BuildRequires:  fdupes
 BuildRequires:  openstack-macros
-BuildRequires:  python-ddt
-BuildRequires:  python-devel
-BuildRequires:  python-jsonschema
-BuildRequires:  python-mock
-BuildRequires:  python-os-testr
-BuildRequires:  python-oslo.concurrency
-BuildRequires:  python-oslo.serialization
-BuildRequires:  python-oslo.utils
-BuildRequires:  python-pbr
-BuildRequires:  python-pysnmp
-BuildRequires:  python-requests
-BuildRequires:  python-retrying
-BuildRequires:  python-rpm-macros
-BuildRequires:  python-setuptools
-BuildRequires:  python-six
-BuildRequires:  python-sushy
-BuildRequires:  python-testrepository
-BuildRequires:  python-testtools
-Requires:       python-jsonschema >= 2.0.0
+Requires:       python-jsonschema >= 2.6.0
 Requires:       python-oslo.concurrency >= 3.8.0
 Requires:       python-oslo.serialization >= 1.10.0
 Requires:       python-oslo.utils >= 3.20.0
@@ -54,6 +52,7 @@ Requires:       python-retrying >= 1.2.3
 Requires:       python-six >= 1.9.0
 Requires:       python-sushy >= 1.8.0
 BuildArch:      noarch
+%python_subpackages
 
 %description
 proliantutils is a set of utility libraries for interfacing and managing
@@ -68,16 +67,16 @@ questions.
 %setup -q -n proliantutils-%{version}
 
 %build
-%py2_build
+%python_build
 
 %install
-%py2_install
+%python_install
 %fdupes %{buildroot}%{python_sitelib}
 
 %check
-%{__python2} setup.py testr
+%python_exec -m stestr.cli run
 
-%files
+%files %{python_files}
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/*
