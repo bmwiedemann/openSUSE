@@ -631,4 +631,12 @@ numbers for further reference.
 - (bsc#1144453) Adds CVE-2019-10217-gcp-modules-sensitive-fields.patch</comment>
     <requestid>743343</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>5e230b87a1dc594d80bb7f36e2c4b0db</srcmd5>
+    <version>2.9.0</version>
+    <time>1573045463</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>745267</requestid>
+  </revision>
 </revisionlist>

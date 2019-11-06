@@ -36,7 +36,7 @@
 BuildArch:      noarch
 %endif
 Name:           ansible
-Version:        2.8.6
+Version:        2.9.0
 Release:        0
 Summary:        Software automation engine
 License:        GPL-3.0-or-later
@@ -168,6 +168,7 @@ mkdir -p %{buildroot}/%{_datadir}/ansible
 %{_bindir}/ansible-inventory
 %{_bindir}/ansible-playbook
 %{_bindir}/ansible-pull
+%{_bindir}/ansible-test
 %{_bindir}/ansible-vault
 %if %{with python3}
 %{python3_sitelib}/*
