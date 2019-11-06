@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 30 16:26:16 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.26:
+  * Fix issue with memory leak and TLS certificates.
+  * Fix issue with buffer size and TLS PRF handling.
+  * Add support for D-Bus non-root ObjectManager.
+- Changes from version 0.25:
+  * Fix issue with stopping DHCP client and owner notification.
+  * Fix issue with time calculation overflow and DHCP.
+- Changes from version 0.24:
+  * Add support for extended groups in settings files.
+
+-------------------------------------------------------------------
 Fri Sep 20 11:50:31 UTC 2019 - Xaver Hellauer <xaver@hellauer.bayern>
 
 - ver 0.23:
