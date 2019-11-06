@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 31 17:02:57 CET 2019 - ro@suse.de
+
+- fix specfile to account for removed brp-65-lib64-linux
+
+-------------------------------------------------------------------
+Wed Oct 16 12:48:51 UTC 2019 - ro@suse.com
+
+- Update to version 84.87+git20191016.914fe67:
+  * add Teaching and X-KDE-Teaching to Education (#27)
+  * Remove brp-65-lib64-linux
+  * Remove brp-35-rpath.
+  * Remove brp-55-boot-scripts.
+
+-------------------------------------------------------------------
 Wed Aug 07 14:06:17 UTC 2019 - mliska@suse.cz
 
 - Update to version 84.87+git20190807.d5563f2:
@@ -38,6 +52,9 @@ Tue Apr 23 11:23:58 UTC 2019 - Martin Liška <mliska@suse.cz>
 - Update to version 84.87+git20190423.d0bda31:
   * Strip LTO bytecode from static libraries.
   * Don't treat Adwaita specially
+    - merges https://github.com/openSUSE/brp-check-suse/pull/11
+    - drop adwaita from the exception list of icon themes,
+      only hicolor is used as generic fallback
 
 -------------------------------------------------------------------
 Wed Feb 13 14:25:09 UTC 2019 - opensuse-packaging@opensuse.org

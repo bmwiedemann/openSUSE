@@ -502,4 +502,22 @@ Lets break everything :)
     <comment></comment>
     <requestid>721541</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>e497fb37800a060407e33e338b72327e</srcmd5>
+    <version>84.87+git20191016.914fe67</version>
+    <time>1573049684</time>
+    <user>dimstar_suse</user>
+    <comment>- fix specfile to account for removed brp-65-lib64-linux
+
+- Update to version 84.87+git20191016.914fe67:
+  * add Teaching and X-KDE-Teaching to Education (#27)
+  * Remove brp-65-lib64-linux
+  * Remove brp-35-rpath.
+  * Remove brp-55-boot-scripts.
+
+    - merges https://github.com/openSUSE/brp-check-suse/pull/11
+    - drop adwaita from the exception list of icon themes,
+      only hicolor is used as generic fallback</comment>
+    <requestid>744540</requestid>
+  </revision>
 </revisionlist>
