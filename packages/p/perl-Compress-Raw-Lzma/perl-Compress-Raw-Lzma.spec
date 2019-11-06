@@ -17,7 +17,7 @@
 
 
 Name:           perl-Compress-Raw-Lzma
-Version:        2.087
+Version:        2.089
 Release:        0
 %define cpan_name Compress-Raw-Lzma
 Summary:        Low-Level Interface to lzma compression library
@@ -53,7 +53,7 @@ when you create the compression/decompression object.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -name "*.sh" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
