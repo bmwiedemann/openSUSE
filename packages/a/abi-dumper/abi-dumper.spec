@@ -21,7 +21,6 @@ Version:        1.1
 Release:        0
 Summary:        Tool to dump ABI of an ELF object containing DWARF debug info
 License:        LGPL-2.1-or-later
-Group:          Development/Tools/Other
 Url:            https://github.com/lvc/abi-dumper
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # FIXME: drop these patches on the next upstream release
