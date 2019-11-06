@@ -1,7 +1,7 @@
 #
 # spec file for package lua-luaterm
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,8 +22,7 @@ Version:        0.07
 Release:        0
 Summary:        Terminal operations for Lua
 License:        MIT
-Group:          Development/Libraries/Other
-Url:            http://github.com/hoelzro/lua-term
+URL:            https://github.com/hoelzro/lua-term
 Source:         https://github.com/hoelzro/lua-term/archive/%{version}.tar.gz#$/%{mod_name}-%{version}.tar.gz
 BuildRequires:  %{flavor}-devel
 Requires:       %{flavor}

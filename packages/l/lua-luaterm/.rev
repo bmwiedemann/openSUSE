@@ -27,4 +27,12 @@
     <comment>drop lua5.2 from multibuild</comment>
     <requestid>537633</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>cf5f763492d20fa3b69deefeb4d5ef22</srcmd5>
+    <version>0.07</version>
+    <time>1573049961</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>745232</requestid>
+  </revision>
 </revisionlist>
