@@ -20,4 +20,12 @@
 - singlespec auto-conversion</comment>
     <requestid>607031</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>921d398ae5d8936346212f286ae10775</srcmd5>
+    <version>0.5.2</version>
+    <time>1573045542</time>
+    <user>dimstar_suse</user>
+    <comment>- Format with spec-cleaner</comment>
+    <requestid>745376</requestid>
+  </revision>
 </revisionlist>
