@@ -7,4 +7,12 @@
     <comment>arcanist is the command line tool for Phabricator</comment>
     <requestid>734561</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ff95f587050b64994e2e7d7552a2ff91</srcmd5>
+    <version>0.0~git.20190905T053100~3cdfe1ff</version>
+    <time>1573044759</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>739619</requestid>
+  </revision>
 </revisionlist>
