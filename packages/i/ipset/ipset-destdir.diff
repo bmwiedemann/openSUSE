@@ -16,16 +16,16 @@ Skip these two steps from Makefile.am altogether.
  Makefile.am |    2 --
  1 file changed, 2 deletions(-)
 
-Index: ipset-6.29/Makefile.am
+Index: ipset-7.4/Makefile.am
 ===================================================================
---- ipset-6.29.orig/Makefile.am
-+++ ipset-6.29/Makefile.am
+--- ipset-7.4.orig/Makefile.am
++++ ipset-7.4/Makefile.am
 @@ -72,8 +72,6 @@ modules_install:
  if WITH_KMOD
  	${MAKE} -C $(KBUILD_OUTPUT) M=$$PWD/kernel/net \
  			KDIR=$$PWD/kernel modules_install
 -	@modinfo -b ${INSTALL_MOD_PATH} ip_set_hash_ip | ${GREP} /extra/ >/dev/null || echo "$$DEPMOD_WARNING"
--	@lsmod | ${GREP} '^ip_set' >/dev/null && echo "$$MODULE_WARNING"
+-	@lsmod | ${GREP} '^ip_set' >/dev/null && echo "$$MODULE_WARNING"; true
  else
  	@echo Skipping kernel modules due to --with-kmod=no
  endif

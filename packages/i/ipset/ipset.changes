@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  1 17:06:36 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.4
+  * Wildcard support for the "hash:net,iface" type.
+
+-------------------------------------------------------------------
 Mon Aug 19 12:53:22 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 7.3
