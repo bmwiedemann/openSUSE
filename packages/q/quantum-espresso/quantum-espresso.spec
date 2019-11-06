@@ -1,7 +1,7 @@
 #
 # spec file for package quantum-espresso
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,13 +23,15 @@
 %define _openmpi 1
 %endif
 
-%define _mpi %{?_openmpi:openmpi} %{?_mvapich2:mvapich2}
+%define omp_ver 1
+
+%define _mpi %{?_openmpi:openmpi}%{omp_ver} %{?_mvapich2:mvapich2}
 
 Name:           quantum-espresso
 Version:        5.1.2
 Release:        0
 Summary:        A suite for electronic-structure calculations and materials modeling
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Scientific/Physics
 Url:            http://www.quantum-espresso.org
 Source0:        http://qe-forge.org/gf/download/frsrelease/185/753/espresso-%{version}.tar.gz
@@ -48,7 +50,7 @@ BuildRequires:  fftw3-devel
 BuildRequires:  gcc-fortran
 BuildRequires:  lapack-devel
 %if 0%{?_openmpi}
-BuildRequires:  openmpi-devel
+BuildRequires:  openmpi%{omp_ver}-devel
 %endif
 %if 0%{?_mvapich2}
 BuildRequires:  mvapich2-devel
@@ -156,7 +158,7 @@ done
 %files openmpi
 %defattr(-,root,root)
 %doc License README
-%{_libdir}/mpi/gcc/openmpi/bin/*.x
+%{_libdir}/mpi/gcc/openmpi%{omp_ver}/bin/*.x
 
 %if 0%{?sles_version}
 %files mvapich2

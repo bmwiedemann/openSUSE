@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  1 14:35:58 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- openmpi has been renamed to openmpi1; adapt BuildRequires and
+  file list accordingly.
+
+-------------------------------------------------------------------
 Thu Aug  6 17:37:51 UTC 2015 - normand@linux.vnet.ibm.com
 
 - Two new patches to build ppc64/ppc64le archi
