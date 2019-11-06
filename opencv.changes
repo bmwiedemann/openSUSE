@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov  3 19:50:04 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Limit build parallelism with limit_build, some ARM and PPC workers
+  have a high SMP/memory ratio and run out of memory otherwise.
+- Apply memory constraints (3GB) to all architectures, avoid being
+  scheduled on very weak workers.
+
+-------------------------------------------------------------------
 Sat Oct 12 23:12:21 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 4.1.2
@@ -41,6 +49,7 @@ Sat Oct 12 23:12:21 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
       up code of samples/tutorials
   * Breaking changes:
     + fixed values thresholding accuracy in calcHist()
+  * Security fixes: CVE-2019-15939 (boo#1149742).
 - Enable Graph API (G-API)
 - Minor spec file cleanup
 
@@ -76,6 +85,8 @@ Fri Aug  9 19:56:24 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
   * Performance improvements
   * Added IPPE method for planar pose estimation in solvePnP
   * Added solvePnPRefineLM and solvePnPRefineVVS
+  * Security fixes: CVE-2019-14491 (boo#1144352), CVE-2019-14492
+    (boo#1144348).
 - Check https://github.com/opencv/opencv/wiki/ChangeLog#version411 for the
   complete list of changes.
 
@@ -172,6 +183,7 @@ Mon May 28 11:04:23 UTC 2018 - fvogt@suse.com
   * OpenCV is now able to use Intel DL inference engine as DNN
     acceleration backend
   * Added AVX-512 acceleration to the performance-critical kernels
+  * Fix cmake mapping of RelWithDebInfo (boo#1154091).
   * For more information, read
     https://github.com/opencv/opencv/wiki/ChangeLog#version341
 - Update contrib modules to 3.4.1:
