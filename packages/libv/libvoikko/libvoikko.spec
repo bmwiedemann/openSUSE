@@ -17,7 +17,7 @@
 
 
 Name:           libvoikko
-Version:        4.2
+Version:        4.3
 Release:        0
 Summary:        Library of free natural language processing tools
 License:        GPL-2.0-or-later

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 31 11:32:09 UTC 2019 - Timo Jyrinki <tjyrinki@suse.com>
+
+- Update to version 4.3
+  * New API function voikkoGetAttributeValues to list possible values for an analysis attribute.
+  * Improved spelling correction for Finnish words containing a hyphen.
+  * Improvements for Common Lisp interface.
+  * Fix compilation of JavaScript port on MacOS and with latest Emscripten.
+
+-------------------------------------------------------------------
 Wed Feb 27 07:38:46 UTC 2019 - Timo Jyrinki <tjyrinki@suse.com>
 
 - Update to version 4.2

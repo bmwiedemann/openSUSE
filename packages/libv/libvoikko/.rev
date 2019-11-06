@@ -242,4 +242,17 @@
 - Drop libvoikko-hfst-namespace.patch</comment>
     <requestid>681669</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>dc96e638b2dbc8e1800b3776e3539631</srcmd5>
+    <version>4.3</version>
+    <time>1573049690</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.3
+  * New API function voikkoGetAttributeValues to list possible values for an analysis attribute.
+  * Improved spelling correction for Finnish words containing a hyphen.
+  * Improvements for Common Lisp interface.
+  * Fix compilation of JavaScript port on MacOS and with latest Emscripten.
+</comment>
+    <requestid>744648</requestid>
+  </revision>
 </revisionlist>
