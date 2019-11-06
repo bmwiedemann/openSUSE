@@ -26,11 +26,11 @@
 # major 69
 # mainver %major.99
 %define major           68
-%define mainver         %major.2.0
-%define orig_version    68.2.0
+%define mainver         %major.2.1
+%define orig_version    68.2.1
 %define orig_suffix     %{nil}
 %define update_channel  release
-%define releasedate     20191021120853
+%define releasedate     20191030212137
 %define source_prefix   thunderbird-%{mainver}
 
 # always build with GCC as SUSE Security Team requires that
@@ -172,6 +172,7 @@ Patch20:        mozilla-bmo1511604.patch
 Patch21:        mozilla-bmo1554971.patch
 Patch22:        mozilla-nestegg-big-endian.patch
 Patch24:        mozilla-fix-top-level-asm.patch
+Patch25:        mozilla-bmo1504834-part4.patch
 Patch100:       thunderbird-broken-locales-build.patch
 %endif # only_print_mozconfig
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -267,6 +268,7 @@ fi
 %patch21 -p1
 %patch22 -p1
 %patch24 -p1
+%patch25 -p1
 # Thunderbird
 %patch100 -p1
 %endif # only_print_mozconfig

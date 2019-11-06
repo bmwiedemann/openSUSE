@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Nov  1 11:16:39 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 68.2.1
+  * A language for the user interface can now be chosen in the
+    advanced settings (multilingual UI)
+  * Fixed problem with Google authentication (OAuth2)
+  * Selected or unread messages were not shown in the correct color
+    in the thread pane (message list) under some circumstances
+  * When using a language pack, names of standard folders weren't
+    localized (boo#1149126)
+  * Address book default startup directory in preferences panel was
+    not persisted
+  * Chat: Extended context menu on Instant messaging status dialog
+    (Show Accounts)
+- added mozilla-bmo1504834-part4.patch to fix some visual issues on
+  big endian platforms
+
+-------------------------------------------------------------------
 Tue Oct 22 06:43:32 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 68.2.0

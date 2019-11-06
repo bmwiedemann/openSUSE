@@ -2980,4 +2980,25 @@ But as always there are semi-relevant changes from the Gecko 60.4 baseline. Many
     mozilla-bmo1512162.patch</comment>
     <requestid>742150</requestid>
   </revision>
+  <revision rev="220" vrev="1">
+    <srcmd5>dead8f8b7d9033bea75d10aa9eb18899</srcmd5>
+    <version>68.2.1</version>
+    <time>1573049738</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 68.2.1
+  * A language for the user interface can now be chosen in the
+    advanced settings (multilingual UI)
+  * Fixed problem with Google authentication (OAuth2)
+  * Selected or unread messages were not shown in the correct color
+    in the thread pane (message list) under some circumstances
+  * When using a language pack, names of standard folders weren't
+    localized (boo#1149126)
+  * Address book default startup directory in preferences panel was
+    not persisted
+  * Chat: Extended context menu on Instant messaging status dialog
+    (Show Accounts)
+- added mozilla-bmo1504834-part4.patch to fix some visual issues on
+  big endian platforms</comment>
+    <requestid>744761</requestid>
+  </revision>
 </revisionlist>
