@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  5 13:40:22 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Use more modern macros for building
+- Do not rely on inaccessible source url anymore
+
+-------------------------------------------------------------------
 Sun Sep 20 16:28:33 UTC 2015 - mpluskal@suse.com
 
 - Use url for source
