@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov  5 12:40:12 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 3.2.1
+ * Use --no-fehbg option in ~/.fehbg
+ * Fix TOCTTOU when setting the file mode of ~/.fehbg
+ * Fix insufficient error handling when updating ~/.fehbg
+ * Reload current image(s) when receiving SIGUSR1 or SIGUSR2 
+
+-------------------------------------------------------------------
 Mon Feb 18 05:38:11 UTC 2019 - seanlew@opensuse.org
 
 - update to 3.1.3

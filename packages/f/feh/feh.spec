@@ -17,11 +17,10 @@
 
 
 Name:           feh
-Version:        3.1.3
+Version:        3.2.1
 Release:        0
 Summary:        X11 image viewer
 License:        MIT AND LGPL-2.0-or-later
-Group:          Productivity/Graphics/Viewers
 URL:            https://feh.finalrewind.org/
 Source:         https://feh.finalrewind.org/%{name}-%{version}.tar.bz2
 Source1:        https://feh.finalrewind.org/%{name}-%{version}.tar.bz2.asc

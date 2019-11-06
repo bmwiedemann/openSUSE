@@ -378,4 +378,16 @@
     <comment></comment>
     <requestid>677523</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>fbae4279babf9697a6fda98aa3ec6f7d</srcmd5>
+    <version>3.2.1</version>
+    <time>1573047310</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.1
+ * Use --no-fehbg option in ~/.fehbg
+ * Fix TOCTTOU when setting the file mode of ~/.fehbg
+ * Fix insufficient error handling when updating ~/.fehbg
+ * Reload current image(s) when receiving SIGUSR1 or SIGUSR2</comment>
+    <requestid>745482</requestid>
+  </revision>
 </revisionlist>
