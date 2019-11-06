@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,6 @@ Version:        3.2.2+git20180710
 Release:        0
 Summary:        Subtitle editor
 License:        BSD-3-Clause
-Group:          Productivity/Multimedia/Video/Editors and Convertors
 Url:            http://www.aegisub.org/
 Source0:        https://github.com/Aegisub/Aegisub/archive/%{_rev}.tar.gz#/aegisub-%{version}.tar.gz
 Source99:       changelog.txt
@@ -72,13 +71,14 @@ effects in the subtitles, apart from just basic timed text.
 %prep
 %setup -q -n %{gitname}-%{_rev}
 %autopatch -p1
+
+%build
 FAKE_BUILDDATE=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%b %%e %%Y')
 sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/" src/version.cpp
 FAKE_BUILDTIME=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%H:%%M:%%S')
 sed -i "s/__TIME__/\"$FAKE_BUILDTIME\"/" src/version.cpp
 cp %{SOURCE99} .
 
-%build
 ./autogen.sh
 #autoreconf -fvi
 %configure \
