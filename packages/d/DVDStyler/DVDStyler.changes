@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 17 12:13:16 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
 Sun Apr  7 12:37:40 UTC 2019 - plater <davejplater@gmail.com>
 
 - Require specific version of wxsvg that DVDStyler was built

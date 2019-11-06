@@ -16,7 +16,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -26,7 +26,6 @@ Version:        3.0.4
 Release:        0
 Summary:        GUI frontend for dvdauthor and other related tools
 License:        GPL-3.0-or-later
-Group:          Productivity/Multimedia/Video/Editors and Convertors
 Url:            https://www.dvdstyler.org
 Source:         https://sourceforge.net/projects/dvdstyler/files/dvdstyler/%{version}/%{name}-%{version}.tar.bz2
 Source1:        gpl-3.0.txt
