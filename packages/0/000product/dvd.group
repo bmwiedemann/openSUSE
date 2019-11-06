@@ -25,10 +25,10 @@
     <package name="MozillaThunderbird" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="MozillaThunderbird-translations-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="NetworkManager" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="NetworkManager-applet" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="NetworkManager-applet-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="NetworkManager-applet" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
+    <package name="NetworkManager-applet-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
     <package name="NetworkManager-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="NetworkManager-connection-editor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="NetworkManager-connection-editor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
     <package name="NetworkManager-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="NetworkManager-openconnect" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="NetworkManager-openconnect-gnome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3219,7 +3219,7 @@
     <package name="mkisofs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="mlocate" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="mlocate-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="mobile-broadband-provider-info" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="mobile-broadband-provider-info" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="mobipocket" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="monapo-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="monitoring-plugins" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->

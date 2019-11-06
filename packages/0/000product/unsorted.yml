@@ -1795,7 +1795,6 @@ unsorted:
   - conntrackd 
   - console-setup 
   - container-diff 
-  - container-feeder 
   - container-registry-systemd 
   - containerd 
   - containerd-ctr 
@@ -4214,6 +4213,8 @@ unsorted:
   - glassfish-el 
   - glassfish-el-api 
   - glassfish-el-javadoc 
+  - glassfish-jax-rs-api 
+  - glassfish-jax-rs-api-javadoc 
   - glassfish-jsp 
   - glassfish-jsp-api 
   - glassfish-jsp-api-javadoc 
@@ -4601,6 +4602,7 @@ unsorted:
   - gq 
   - gr-fcdproplus 
   - gr-fcdproplus-devel-doc 
+  - gr-iqbal-devel-doc 
   - gr-osmosdr 
   - gr-osmosdr-devel 
   - gr-osmosdr-devel-doc 
@@ -5773,6 +5775,8 @@ unsorted:
   - json-glib-devel 
   - json-table 
   - jsoncpp-devel 
+  - jsonp 
+  - jsonp-javadoc 
   - jsonrpc-glib-devel 
   - jsoup 
   - jsoup-javadoc 
@@ -8777,8 +8781,8 @@ unsorted:
   - libgnuradio-3_8_0 
   - libgnuradio-fcdproplus-devel 
   - libgnuradio-fcdproplus3_8_0 
-  - libgnuradio-iqbalance 
   - libgnuradio-iqbalance-devel 
+  - libgnuradio-iqbalance0_37_2git 
   - libgnuradio-osmosdr-0_1_5git0_0_0 
   - libgnutls-dane-devel 
   - libgnutls-dane0: [i586] 
@@ -9304,7 +9308,6 @@ unsorted:
   - libjbig2dec0-32bit: [x86_64] 
   - libjd0 
   - libjim0_75 
-  - libjnidispatch 
   - libjpeg62 
   - libjpeg62-32bit: [x86_64] 
   - libjpeg62-devel 
@@ -9566,7 +9569,7 @@ unsorted:
   - liblqr-devel 
   - liblrdf-devel 
   - liblrdf2-32bit: [x86_64] 
-  - liblrs-7_0-0 
+  - liblrs-7_0a0 
   - liblsan0-gcc7: [x86_64] 
   - liblscp-devel 
   - liblscp6 
@@ -10380,7 +10383,9 @@ unsorted:
   - libpmempool-devel: [x86_64] # devel package of dvd:pmdk 
   - libpmempool1: [x86_64] 
   - libpmi0 
-  - libpnetcdf1-openmpi 
+  - libpnetcdf1-mvapich2 
+  - libpnetcdf1-openmpi1 
+  - libpnetcdf1-openmpi2 
   - libpng12-0 
   - libpng12-0-32bit: [x86_64] 
   - libpng12-compat-devel 
@@ -12870,6 +12875,7 @@ unsorted:
   - maxima-xmaxima 
   - mayavi 
   - mayavi-doc 
+  - mayavi-jupyter 
   - mbedtls-devel 
   - mbuffer 
   - mcabber 
@@ -13068,6 +13074,8 @@ unsorted:
   - moe 
   - moinmoin-wiki 
   - mojave-gtk-theme 
+  - mojo-executor 
+  - mojo-executor-javadoc 
   - mojo-parent 
   - moka-icon-theme 
   - molsketch 
@@ -15010,9 +15018,15 @@ unsorted:
   - paps 
   - par2cmdline 
   - parallel-netcdf-devel-data 
-  - parallel-netcdf-openmpi 
-  - parallel-netcdf-openmpi-devel 
-  - parallel-netcdf-openmpi-devel-static 
+  - parallel-netcdf-mvapich2 
+  - parallel-netcdf-mvapich2-devel 
+  - parallel-netcdf-mvapich2-devel-static 
+  - parallel-netcdf-openmpi1 
+  - parallel-netcdf-openmpi1-devel 
+  - parallel-netcdf-openmpi1-devel-static 
+  - parallel-netcdf-openmpi2 
+  - parallel-netcdf-openmpi2-devel 
+  - parallel-netcdf-openmpi2-devel-static 
   - paraview: [x86_64] 
   - paraview-devel: [x86_64] 
   - paraviewdata 
@@ -16986,7 +17000,6 @@ unsorted:
   - python-gobject-common-devel 
   - python-gobject2-devel 
   - python-gr-fcdproplus 
-  - python-gr-iqbal 
   - python-gr-osmosdr 
   - python-gtk-devel 
   - python-gtk-doc 
@@ -17107,7 +17120,6 @@ unsorted:
   - python-praatio-doc 
   - python-presage 
   - python-presagemate 
-  - python-proliantutils 
   - python-pssh 
   - python-py2pack-doc 
   - python-pybind11-devel 
@@ -17827,6 +17839,7 @@ unsorted:
   - python2-construct 
   - python2-contexter 
   - python2-contextlib2 
+  - python2-control 
   - python2-convertdate 
   - python2-cookies 
   - python2-cooldict 
@@ -18684,6 +18697,7 @@ unsorted:
   - python2-proglog 
   - python2-progress 
   - python2-progressbar 
+  - python2-proliantutils 
   - python2-prometheus_client 
   - python2-promise 
   - python2-prompt_toolkit 
@@ -18821,7 +18835,6 @@ unsorted:
   - python2-pypng 
   - python2-pyprel 
   - python2-pyprimes 
-  - python2-pyproj 
   - python2-pypsexec 
   - python2-pypuppetdb 
   - python2-pyqtgraph 
@@ -18932,7 +18945,6 @@ unsorted:
   - python2-python-crfsuite 
   - python2-python-crontab 
   - python2-python-daemon 
-  - python2-python-datamatrix 
   - python2-python-dbusmock 
   - python2-python-docs-theme 
   - python2-python-dotenv 
@@ -19217,6 +19229,7 @@ unsorted:
   - python2-sqlalchemy-migrate 
   - python2-sqlitedict 
   - python2-sqlparse 
+  - python2-sqlsoup 
   - python2-srcinfo 
   - python2-ssdeep 
   - python2-sshpubkeys 
@@ -20156,6 +20169,7 @@ unsorted:
   - python3-contexter 
   - python3-contextlib2 
   - python3-contextvars 
+  - python3-control 
   - python3-convertdate 
   - python3-cookies 
   - python3-cooldict 
@@ -20536,6 +20550,7 @@ unsorted:
   - python3-gprof2dot 
   - python3-gpsd 
   - python3-gpxpy 
+  - python3-gr-iqbal 
   - python3-grab 
   - python3-graphviz 
   - python3-greenlet-devel 
@@ -21171,6 +21186,7 @@ unsorted:
   - python3-process-tests 
   - python3-proglog 
   - python3-progress 
+  - python3-proliantutils 
   - python3-prometheus_client 
   - python3-promise 
   - python3-prompt_toolkit 
@@ -21741,6 +21757,7 @@ unsorted:
   - python3-sqlalchemy-migrate 
   - python3-sqlitedict 
   - python3-sqlparse 
+  - python3-sqlsoup 
   - python3-srcinfo 
   - python3-ssdeep 
   - python3-sshpubkeys 
@@ -23332,6 +23349,7 @@ unsorted:
   - sbc-devel 
   - sbcl 
   - sbd 
+  - sbd-devel 
   - sbiload 
   - sbl-orca 
   - sblim-cim-client2 
@@ -23953,6 +23971,8 @@ unsorted:
   - stress-ng 
   - stress-ng-bash-completion 
   - stressapptest 
+  - string-template-maven-plugin 
+  - string-template-maven-plugin-javadoc 
   - stringtemplate 
   - stringtemplate-javadoc 
   - stringtemplate4 
@@ -32443,7 +32463,7 @@ unsorted:
   - vkd3d-devel 
   - vkd3d-devel-32bit: [x86_64] 
   - vkeybd 
-  - vkmark 
+  - vkmark: [x86_64] 
   - vkquake 
   - vlc-devel 
   - vlc-jack 
