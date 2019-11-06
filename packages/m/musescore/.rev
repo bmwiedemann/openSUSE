@@ -123,4 +123,17 @@
   requires (boo#1155704)</comment>
     <requestid>745097</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>0bdab292240ba583db093897dc874950</srcmd5>
+    <version>3.3.0</version>
+    <time>1573045614</time>
+    <user>dimstar_suse</user>
+    <comment>- -DCMAKE_BUILD_TYPE=RELEASE need to be set explicitly
+  (boo#1155809)
+- Convert BuildRequires to pkgconfig style and updated them according
+  to recommendations of upstream. It solves a couple of cmake errors
+- Added reminder to look into qtwebengine support, which is not
+  essential but nice to have. Enabling it gives a build error</comment>
+    <requestid>745467</requestid>
+  </revision>
 </revisionlist>
