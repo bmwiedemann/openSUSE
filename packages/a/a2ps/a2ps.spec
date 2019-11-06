@@ -21,7 +21,6 @@ Version:        4.14
 Release:        0
 Summary:        Tool to convert ASCII/Latin Text into PostScript
 License:        GPL-3.0-or-later
-Group:          Productivity/Publishing/PS
 Url:            http://www.gnu.org/software/a2ps/a2ps.html
 Source0:        http://ftp.gnu.org/gnu/a2ps/%{name}-%{version}.tar.gz
 Source1:        http://ftp.gnu.org/gnu/a2ps/%{name}-%{version}.tar.gz.sig
@@ -93,14 +92,12 @@ Latin encodings are supported.
 
 %package -n liba2ps1
 Summary:        Library to convert ASCII/Latin text into PostScript
-Group:          System/Libraries
 
 %description -n liba2ps1
 liba2ps converts ASCII text into PostScript.
 
 %package     -n a2ps-devel
 Summary:        Library and header file for the interface of a2ps
-Group:          Development/Libraries/Other
 Requires:       glibc-devel
 Requires:       liba2ps1 = %{version}
 
