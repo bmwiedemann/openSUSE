@@ -23,7 +23,7 @@
 %bcond_with bootstrap
 %endif
 %global base_name stringtemplate4
-Version:        4.0.8
+Version:        4.2
 Release:        0
 Summary:        A Java template engine
 License:        BSD-3-Clause
@@ -33,7 +33,6 @@ Source0:        https://github.com/antlr/%{base_name}/archive/%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(antlr:antlr)
-BuildRequires:  mvn(junit:junit)
 BuildRequires:  mvn(org.antlr:antlr-runtime) >= 3.5.2
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 BuildArch:      noarch
@@ -70,10 +69,6 @@ This package contains javadoc for %{name}.
 %pom_remove_plugin :antlr3-maven-plugin
 %endif
 
-%pom_remove_plugin :findbugs-maven-plugin
-%pom_remove_plugin :maven-gpg-plugin
-%pom_remove_plugin :maven-shade-plugin
-
 %pom_add_dep antlr:antlr:runtime:
 
 # Bug, should be reported upstream
@@ -96,7 +91,7 @@ rm -r test/org/stringtemplate/v4/test/TestEarlyEvaluation.java
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
-%doc CHANGES.txt contributors.txt README.txt
+%doc CHANGES.txt contributors.txt README.md
 %license LICENSE.txt
 
 %if %{without bootstrap}
