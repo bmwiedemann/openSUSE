@@ -1,0 +1,7 @@
+suse-start-xslide.el is no longer installed by default, and thus, xslide
+does not start automatically because xslide now sometimes conflicts with
+shipped Emacs modes such as css-mode.el.  If you want to continue using
+suse-start-xslide.el copy it to the site-lisp directory:
+
+    cp /usr/share/doc/packages/psgml/suse-start-xslide.el \
+        /usr/share/emacs/site-lisp/
