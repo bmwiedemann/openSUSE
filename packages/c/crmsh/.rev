@@ -1889,4 +1889,12 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>743824</requestid>
   </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>da42c6f6cd9f021ebcaaf0dfe96f7576</srcmd5>
+    <version>4.1.0+git.1572504697.472361c5</version>
+    <time>1573045006</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>745170</requestid>
+  </revision>
 </revisionlist>

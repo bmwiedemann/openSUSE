@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Oct 31 06:57:08 UTC 2019 - XLiang@suse.com
+
+- Update to version 4.1.0+git.1572504697.472361c5:
+  * Doc: ui_configure: do_property: ask to remove maintenance from resources and nodes
+  * Test: ui_configure: do_property: ask to remove maintenance from resources and nodes
+  * Dev: ui_configure: do_property: ask to remove maintenance from resources and nodes
+
+-------------------------------------------------------------------
+Tue Oct 29 21:57:47 UTC 2019 - XLiang@suse.com
+
+- Update to version 4.1.0+git.1572385946.69f4f51b:
+  * Low: unittest: test init_ssh and init_ssh_remote in bootstrap.py
+  * Low: bootstrap: create authorized_keys file if not exists
+  * Low: bootstrap: add "--no-overwrite-sshkey" option to avoid SSH key be overwritten
+  * Low: bootstrap: don't overwrite ssh key if already exists
+
+-------------------------------------------------------------------
 Tue Oct 29 08:30:11 UTC 2019 - XLiang@suse.com
 
 - Update to version 4.1.0+git.1572337494.6f2c8ea9:
