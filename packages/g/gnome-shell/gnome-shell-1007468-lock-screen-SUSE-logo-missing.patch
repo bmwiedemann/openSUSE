@@ -1,6 +1,7 @@
-diff -urp gnome-shell-3.33.91.orig/data/gnome-shell-theme.gresource.xml gnome-shell-3.33.91/data/gnome-shell-theme.gresource.xml
---- gnome-shell-3.33.91.orig/data/gnome-shell-theme.gresource.xml	2019-08-21 15:00:39.000000000 -0500
-+++ gnome-shell-3.33.91/data/gnome-shell-theme.gresource.xml	2019-09-04 15:20:19.511263425 -0500
+Index: gnome-shell-3.34.1+7/data/gnome-shell-theme.gresource.xml
+===================================================================
+--- gnome-shell-3.34.1+7.orig/data/gnome-shell-theme.gresource.xml
++++ gnome-shell-3.34.1+7/data/gnome-shell-theme.gresource.xml
 @@ -31,5 +31,6 @@
      <file>toggle-on.svg</file>
      <file>toggle-on-dark.svg</file>
@@ -8,10 +9,11 @@ diff -urp gnome-shell-3.33.91.orig/data/gnome-shell-theme.gresource.xml gnome-sh
 +    <file>sle-background.png</file>
    </gresource>
  </gresources>
-diff -urp gnome-shell-3.33.91.orig/data/theme/gnome-shell-sass/_common.scss gnome-shell-3.33.91/data/theme/gnome-shell-sass/_common.scss
---- gnome-shell-3.33.91.orig/data/theme/gnome-shell-sass/_common.scss	2019-08-21 15:00:39.000000000 -0500
-+++ gnome-shell-3.33.91/data/theme/gnome-shell-sass/_common.scss	2019-09-04 15:22:50.500063729 -0500
-@@ -1912,6 +1912,9 @@ StScrollBar {
+Index: gnome-shell-3.34.1+7/data/theme/gnome-shell-sass/_common.scss
+===================================================================
+--- gnome-shell-3.34.1+7.orig/data/theme/gnome-shell-sass/_common.scss
++++ gnome-shell-3.34.1+7/data/theme/gnome-shell-sass/_common.scss
+@@ -1919,6 +1919,9 @@ StScrollBar {
    max-width: 23em;
  }
  
@@ -21,14 +23,15 @@ diff -urp gnome-shell-3.33.91.orig/data/theme/gnome-shell-sass/_common.scss gnom
  .login-dialog {
    //reset
    border: none;
-diff -urp gnome-shell-3.33.91.orig/js/ui/unlockDialog.js gnome-shell-3.33.91/js/ui/unlockDialog.js
---- gnome-shell-3.33.91.orig/js/ui/unlockDialog.js	2019-08-21 15:00:39.000000000 -0500
-+++ gnome-shell-3.33.91/js/ui/unlockDialog.js	2019-09-04 15:24:01.072437800 -0500
-@@ -20,6 +20,7 @@ var UnlockDialog = class {
-                                      layout_manager: new Clutter.BoxLayout(),
-                                      visible: false });
+Index: gnome-shell-3.34.1+7/js/ui/unlockDialog.js
+===================================================================
+--- gnome-shell-3.34.1+7.orig/js/ui/unlockDialog.js
++++ gnome-shell-3.34.1+7/js/ui/unlockDialog.js
+@@ -23,6 +23,7 @@ var UnlockDialog = GObject.registerClass
+             visible: false,
+         });
  
-+        this.actor.add_style_class_name('login-dialog-sle');
-         this.actor.add_constraint(new Layout.MonitorConstraint({ primary: true }));
-         parentActor.add_child(this.actor);
++        this.add_style_class_name('login-dialog-sle');
+         this.add_constraint(new Layout.MonitorConstraint({ primary: true }));
+         parentActor.add_child(this);
  

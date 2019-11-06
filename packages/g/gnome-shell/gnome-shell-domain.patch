@@ -1,6 +1,7 @@
-diff -urNp gnome-shell-3.33.91.orig/js/gdm/domain.js gnome-shell-3.33.91/js/gdm/domain.js
---- gnome-shell-3.33.91.orig/js/gdm/domain.js	1969-12-31 18:00:00.000000000 -0600
-+++ gnome-shell-3.33.91/js/gdm/domain.js	2019-09-04 10:22:42.476273775 -0500
+Index: gnome-shell-3.34.1+7/js/gdm/domain.js
+===================================================================
+--- /dev/null
++++ gnome-shell-3.34.1+7/js/gdm/domain.js
 @@ -0,0 +1,243 @@
 +// -*- mode: js; js-indent-level: 4; indent-tabs-mode: nil -*-
 +/*
@@ -245,9 +246,10 @@ diff -urNp gnome-shell-3.33.91.orig/js/gdm/domain.js gnome-shell-3.33.91/js/gdm/
 +    }
 +});
 +Signals.addSignalMethods(DomainMenuButton.prototype);
-diff -urNp gnome-shell-3.33.91.orig/js/gdm/loginDialog.js gnome-shell-3.33.91/js/gdm/loginDialog.js
---- gnome-shell-3.33.91.orig/js/gdm/loginDialog.js	2019-09-04 10:05:51.598915194 -0500
-+++ gnome-shell-3.33.91/js/gdm/loginDialog.js	2019-09-04 12:52:15.396169384 -0500
+Index: gnome-shell-3.34.1+7/js/gdm/loginDialog.js
+===================================================================
+--- gnome-shell-3.34.1+7.orig/js/gdm/loginDialog.js
++++ gnome-shell-3.34.1+7/js/gdm/loginDialog.js
 @@ -22,6 +22,7 @@ const { AccountsService, Atk, Clutter, G
  const Signals = imports.signals;
  
@@ -335,7 +337,7 @@ diff -urNp gnome-shell-3.33.91.orig/js/gdm/loginDialog.js gnome-shell-3.33.91/js
 +
      _startSession(serviceName) {
          this._bindOpacity();
-         this.actor.ease({
+         this.ease({
 @@ -1099,6 +1153,11 @@ var LoginDialog = GObject.registerClass(
          this._askForUsernameAndBeginVerification();
      }
@@ -358,9 +360,10 @@ diff -urNp gnome-shell-3.33.91.orig/js/gdm/loginDialog.js gnome-shell-3.33.91/js
          if (!Main.screenShield.locked)
              this._userList.actor.grab_key_focus();
      }
-diff -urNp gnome-shell-3.33.91.orig/js/js-resources.gresource.xml gnome-shell-3.33.91/js/js-resources.gresource.xml
---- gnome-shell-3.33.91.orig/js/js-resources.gresource.xml	2019-09-04 10:21:23.651855885 -0500
-+++ gnome-shell-3.33.91/js/js-resources.gresource.xml	2019-09-04 12:52:22.840208842 -0500
+Index: gnome-shell-3.34.1+7/js/js-resources.gresource.xml
+===================================================================
+--- gnome-shell-3.34.1+7.orig/js/js-resources.gresource.xml
++++ gnome-shell-3.34.1+7/js/js-resources.gresource.xml
 @@ -2,6 +2,7 @@
  <gresources>
    <gresource prefix="/org/gnome/shell">
@@ -369,9 +372,10 @@ diff -urNp gnome-shell-3.33.91.orig/js/js-resources.gresource.xml gnome-shell-3.
      <file>gdm/batch.js</file>
      <file>gdm/fingerprint.js</file>
      <file>gdm/loginDialog.js</file>
-diff -urNp gnome-shell-3.33.91.orig/po/POTFILES.in gnome-shell-3.33.91/po/POTFILES.in
---- gnome-shell-3.33.91.orig/po/POTFILES.in	2019-08-21 15:00:39.000000000 -0500
-+++ gnome-shell-3.33.91/po/POTFILES.in	2019-09-04 12:52:22.840208842 -0500
+Index: gnome-shell-3.34.1+7/po/POTFILES.in
+===================================================================
+--- gnome-shell-3.34.1+7.orig/po/POTFILES.in
++++ gnome-shell-3.34.1+7/po/POTFILES.in
 @@ -7,6 +7,7 @@ data/org.gnome.shell.gschema.xml.in
  data/org.gnome.Shell.PortalHelper.desktop.in.in
  js/extensionPrefs/main.js

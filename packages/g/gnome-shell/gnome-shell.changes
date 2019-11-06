@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov  1 08:03:00 UTC 2019 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Rebase patch gnome-shell-domain.patch and
+  gnome-shell-1007468-lock-screen-SUSE-logo-missing.patch. 
+
+-------------------------------------------------------------------
+Wed Oct 30 15:41:25 UTC 2019 - dimstar@opensuse.org
+
+- Update to version 3.34.1+7:
+  * dnd: Skip drag target when its acceptDrop() throws an exception
+
+-------------------------------------------------------------------
 Wed Oct 23 18:16:39 UTC 2019 - bjorn.lie@gmail.com
 
 - Update to version 3.34.1+6:
