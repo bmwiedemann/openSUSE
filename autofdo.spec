@@ -21,7 +21,6 @@ Version:        0.18
 Release:        0
 Summary:        A tool to convert perf.data profile to AutoFDO profile
 License:        Apache-2.0
-Group:          Development/Tools/Other
 URL:            https://github.com/google/autofdo
 Source:         https://github.com/google/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  automake
