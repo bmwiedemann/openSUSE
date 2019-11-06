@@ -45,4 +45,18 @@
     build configuration improvements and janitorial cleanups.</comment>
     <requestid>303783</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b06721d80a957adeaaa2f98daf42da49</srcmd5>
+    <version>1.0.5</version>
+    <time>1573044975</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.5
+  * xkbprint(1): Some (typographical) corrections to the manual 
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * autogen: add default patch prefix
+  * autogen.sh: use quoted string variables
+  * autogen.sh: use exec instead of waiting for configure to finish</comment>
+    <requestid>745133</requestid>
+  </revision>
 </revisionlist>
