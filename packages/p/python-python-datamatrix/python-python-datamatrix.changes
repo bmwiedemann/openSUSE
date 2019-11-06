@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Oct 30 19:33:32 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Use noun statement for summary.
+- Make summary more descriptive.
+- Make description more objective.
+- Fix rpmlint issue.
+
+-------------------------------------------------------------------
+Fri Sep 13 15:15:58 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.10.12
+  * Fix setting by DataMatrix for NumericColumn
+  * Fix deprecated Index objects after unpickling
+  * convert.to_dataframe(): don't crash on numeric column names
+  * Add BOM data for unit tests
+  * Enable universal newlines mode in Python 3
+  * io.readtxt(): strip BOMs from column names
+  * Gracefully accept any iterable object
+- Drop python2 support because dependencies dropped python2 support
+
+-------------------------------------------------------------------
 Wed Mar 20 05:32:07 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Convert to single spec
