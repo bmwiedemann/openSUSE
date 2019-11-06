@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,6 @@ Version:        8.14.5
 Release:        0
 Summary:        A program to typeset abc tunes into Postscript
 License:        LGPL-3.0-or-later
-Group:          Productivity/Publishing/Other
 Summary(de):    Ein Werkzeug um ABC-Notationen in Postscript zu drucken
 URL:            https://github.com/leesavide/abcm2ps/
 Source0:        https://github.com/leesavide/abcm2ps/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
