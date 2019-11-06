@@ -16,22 +16,24 @@
 #
 
 
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyproj
-Version:        2.2.0
+Version:        2.4.0
 Release:        0
-Summary:        Python interface to PROJ4 library
+Summary:        Python interface to PROJ library
 License:        SUSE-Public-Domain AND X11
 Group:          Development/Languages/Python
-URL:            https://github.com/jswhit/pyproj
+URL:            https://github.com/pyproj4/pyproj
 Source:         https://files.pythonhosted.org/packages/source/p/pyproj/pyproj-%{version}.tar.gz
 BuildRequires:  %{python_module Cython} >= 0.23.5
+BuildRequires:  %{python_module Shapely}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  proj
-BuildRequires:  proj-devel >= 6.1.0
+BuildRequires:  proj-devel >= 6.2.0
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy
 %if %{python3_version_nodots} < 36
@@ -70,7 +72,7 @@ Input coordinates can be given as python arrays, lists/tuples, scalars or
 numpy/Numeric/numarray arrays. Optimized for objects that support the Python
 buffer protocol (regular python and numpy array objects).
 
-This project has a git repository https://github.com/jswhit/pyproj
+This project has a git repository https://github.com/pyproj4/pyproj
 where you may access the most up-to-date source.
 
 %prep

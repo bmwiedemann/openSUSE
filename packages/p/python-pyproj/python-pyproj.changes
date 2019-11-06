@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Mon Nov  4 07:53:06 UTC 2019 - Libor Pechacek <lpechacek@suse.com>
+
+- Packaging: build only for Python 3 (requirement since v2.2.3), update package
+  description and upstream URL, require Shapely, require PROJ >= 6.2.0
+- Update to 2.4.0
+  * Minimum PROJ version is 6.2.0 (issue #411)
+  * Removed global pyproj context (issue #418)
+  * Added support for PROJ JSON in pyproj.crs objects and pyproj.Transformer
+    (pull #432)
+  * Moved doctests code out of pyproj.__init__ (issue #417)
+  * Added version information to python -m pyproj (pull #429)
+  * Added scope & remarks to pyproj.crs objects and pyproj.Transformer
+    (issue #441)
+  * Added operations to pyproj.crs.CoordinateOperation objects and
+    pyproj.Transformer (issue #441)
+  * Added pyproj.get_authorities() and pyproj.get_codes() (issue #440)
+  * Release gil in core cython/PROJ code (issue #386)
+  * BUG: Added checks for unititialized pyproj.crs objects to prevent core
+    dumping (issue #433)
+  * BUG: Added fix for get_transform_crs when checking type (pull #439)
+  * DOC: Build docs with python3 (pull #428)
+- Update to 2.3.1
+  * Added cleanup for internal PROJ errors (issue #184)
+  * Delay checking for pyproj data directory until importing pyproj (issue #415)
+  * Address issue where PROJ core dumps on proj_create with +init= when global
+    context does not have data directory set (issue #415 & issue #368)
+- Update to 2.2.3
+  * Minimum supported Python version 3.5 (issue #331)
+  + New pyproj.geod.Geod additions:
+      * Added support for calculating geodesic area
+        (Geod.polygon_area_perimeter())
+      * and added interface to calculate total length of a line
+      * (Geod.line_length() & Geod.line_lengths()) (issue #210).
+      * Added support for calculating geodesic area and line lemgths with
+        shapely geometries (Geod.geometry_area_perimeter() &
+        Geod.geometry_length()) (pull #366)
+  + New pyproj.transformer additions:
+      * Added pyproj.transformer.TransformerGroup to make all transformations
+        available (issue #381)
+      * Added option for area_of_interest for Transformer.from_crs(),
+      * Transformer.from_proj() and pyproj.transformer.TransformerGroup
+      * Added Transformer.area_of_use (issue #385)
+  * Added pyproj.crs.CoordinateOperation.area_of_use (issue #385)
+  * Updated to only have one PJ_CONTEXT per pyproj session (issue #374)
+  * Always return latlon with Proj (issue #356)
+  * Remove aenum dependency (issue #339)
+  * Removed deprecated functions/properties Proj.proj_version, CRS.is_valid,
+    and CRS.to_geodetic() (pull #371)
+  * Search on sys.prefix for the PROJ data directory (issue #387)
+- Update to 2.2.2
+  * Update wheels to PROJ 6.1.1
+  * Add deprecation warning when using +init= syntax (pull #358)
+  * Added pyproj.crs.is_proj() (pull #359)
+  * Fixed case in CRS.to_dict() with CRS.to_proj4() returning None (pull #359)
+  * Keep no_defs in input PROJ string as it does not hurt/help anything in
+    current code (pull #359)
+  * Made public properties on C classes readonly (pull #359)
+  * Update data dir exception handling to prevent ignoring errors (pull #361)
+  * CRS.to_cf() export transverse mercator parameters for UTM zones (pull #362)
+- Update to 2.2.1
+  * Added pyproj.show_versions() (issue #334)
+  * Added fix for whitepace around ‘=’ in PROJ strings (issue #345)
+  * Update version check in setup.py (issue #323)
+  * Add “stable” doc site pointing to latest release (issue #347, pull #348)
+  * Depreate Proj.proj_version (pull #337)
+  * Test fixes (pull #333, pull #335)
+
+-------------------------------------------------------------------
 Wed Jun 12 20:41:02 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 2.2.0
