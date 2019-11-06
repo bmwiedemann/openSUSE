@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  4 23:43:56 UTC 2019 - Lee Duncan <lduncan@suse.com>
+
+- Change install of systemd generatos to /usr/lib/systemd/...
+  instead of /usr/libexec/systemd/..., which does not yet exist,
+  to fix build issue
+
+-------------------------------------------------------------------
 Sun Oct 06 14:42:22 UTC 2019 - lduncan@suse.com
 
 - Update to version 1.62_release:

@@ -80,7 +80,7 @@ through to user-space daemons.
 
 %build
 make MHVTL_HOME_PATH=%{mhvtl_home_dir} VERSION=%{version}_release \
-	SYSTEMD_GENERATOR_DIR=%{_libexecdir}/systemd/system-generators
+	SYSTEMD_GENERATOR_DIR=/usr/lib/systemd/system-generators
 %if 0%{buildkmp} == 1
 for flavor in %flavors_to_build; do
 	rm -rf obj/$flavor
@@ -94,7 +94,7 @@ done
 %install
 %make_install \
 	MHVTL_HOME_PATH=%{mhvtl_home_dir} VERSION=%{version}_release LIBDIR=%{_libdir} \
-	SYSTEMD_GENERATOR_DIR=%{_libexecdir}/systemd/system-generators
+	SYSTEMD_GENERATOR_DIR=/usr/lib/systemd/system-generators
 %if 0%{buildkmp} == 1
 export INSTALL_MOD_PATH=%{buildroot}
 export INSTALL_MOD_DIR=updates
