@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  4 13:02:21 UTC 2019 - Gabriele Santomaggio <gsantomaggio@gmail.com>
+
+- Update to RabbitMQ version 3.7.21
+- Full release notes: https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.7.21
+- RabbitMQ 3.7.21 is a maintenance release that focuses on bug fixes.
+- RabbitMQ 3.7.x series is supported through March 2020.
+
+-------------------------------------------------------------------
 Tue Oct 29 09:42:32 UTC 2019 - Gabriele Santomaggio <gsantomaggio@suse.com>
 
 - Update to RabbitMQ version 3.7.20
