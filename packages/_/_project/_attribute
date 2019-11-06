@@ -375,7 +375,10 @@ testing: '20191104'
 - &lt;devel&gt;:
     additional_reviews:
     - &lt;config:review-team&gt;
+    # enable to replace factory-maintainer
     automatic_updates: false
+    automatic_updates_delay: 3600
+    automatic_updates_frequency: 86400
 fallback-group: 'origin-reviewers'
     </value>
   </attribute>
