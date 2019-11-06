@@ -21,7 +21,6 @@ Version:        1.1
 Release:        0
 Summary:        Filesystem Benchmark
 License:        ISC
-Group:          System/Benchmark
 URL:            https://www.pureftpd.org/project/blogbench
 Source0:        https://download.pureftpd.org/pub/%{name}/%{name}-%{version}.tar.bz2
 Source1:        https://download.pureftpd.org/pub/%{name}/%{name}-%{version}.tar.bz2.sig
@@ -39,7 +38,7 @@ realistic idea of the scalability and the concurrency a system can handle.
 %patch1 -p1
 
 %build
-%configure --with-largefile
+%configure --enable-dependency-tracking --with-largefile
 make %{?_smp_mflags}
 
 %install
