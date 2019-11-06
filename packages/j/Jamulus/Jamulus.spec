@@ -22,7 +22,6 @@ Version:        3.4.3
 Release:        0
 Summary:        Low-latency internet connection tool for real-time jam sessions
 License:        GPL-2.0-or-later
-Group:          Productivity/Multimedia/Sound/Utilities
 URL:            http://llcon.sourceforge.net/index.html
 Source0:        https://sourceforge.net/projects/llcon/files/Jamulus/%{version}/Jamulus-%{version}.tar.gz
 Source1:        %{name}.png
