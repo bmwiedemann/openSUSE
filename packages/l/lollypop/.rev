@@ -1111,4 +1111,14 @@
     (glgo#World/lollypop#2106).</comment>
     <requestid>745033</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>d9f28bd1090709ccc1b7639ffddc1108</srcmd5>
+    <version>1.2.6</version>
+    <time>1573047360</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.6:
+  * Make ReplayGain option visible (glgo#World/lollypop#2105).
+  * Bug fixes.</comment>
+    <requestid>745553</requestid>
+  </revision>
 </revisionlist>
