@@ -16,4 +16,16 @@
   * minor fixes only</comment>
     <requestid>730638</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>abbd6d4aae6c24e79fb4253b722f931b</srcmd5>
+    <version>0.1.17</version>
+    <time>1573044930</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing dependency on requests
+
+- Update to v0.1.17
+  - Use existing python with the same desired major.minor version
+  - Add fallback ensurepip</comment>
+    <requestid>742843</requestid>
+  </revision>
 </revisionlist>

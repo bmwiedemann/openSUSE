@@ -19,11 +19,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-dephell-venvs
-Version:        0.1.16
+Version:        0.1.17
 Release:        0
 Summary:        Dephell plugin to manage virtual environments
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/dephell/dephell_venvs
 Source:         https://files.pythonhosted.org/packages/source/d/dephell_venvs/dephell_venvs-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -31,11 +30,13 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs
 Requires:       python-dephell-pythons
+Requires:       python-requests
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module dephell-pythons}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests}
 # /SECTION
 %python_subpackages
 
