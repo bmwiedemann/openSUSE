@@ -21,7 +21,6 @@ Version:        2.52c
 Release:        0
 Summary:        American fuzzy lop is a security-oriented fuzzer
 License:        Apache-2.0
-Group:          Development/Tools/Debuggers
 Url:            http://lcamtuf.coredump.cx/afl/
 Source:         https://github.com/vanhauser-thc/AFLplusplus/archive/%{version}.tar.gz
 Source1:        afl-rpmlintrc

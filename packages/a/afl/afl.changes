@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 17 12:58:02 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
 Sun Jun 23 17:44:06 UTC 2019 - Marcus Meissner <meissner@suse.com>
 
 - updated to afl++ 2.52c version, community fork. It integrates 
