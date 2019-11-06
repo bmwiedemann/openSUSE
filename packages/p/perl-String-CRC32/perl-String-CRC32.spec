@@ -1,7 +1,7 @@
 #
 # spec file for package perl-String-CRC32
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-String-CRC32
-Version:        1.7
+Version:        1.8
 Release:        0
-#Upstream: SUSE-Public-Domain
 %define cpan_name String-CRC32
 Summary:        Perl interface for cyclic redundancy check generation
 License:        SUSE-Public-Domain
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/String-CRC32/
+Url:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/L/LE/LEEJO/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -33,8 +32,8 @@ BuildRequires:  perl-macros
 %{perl_requires}
 
 %description
-The *CRC32* module calculates CRC sums of 32 bit lengths. It generates the
-same CRC values as ZMODEM, PKZIP, PICCHECK and many others.
+The *CRC32* module calculates CRC sums of 32 bit lengths as integers. It
+generates the same CRC values as ZMODEM, PKZIP, PICCHECK and many others.
 
 Despite its name, this module is able to compute the checksum of files as
 well as strings.
@@ -43,11 +42,11 @@ well as strings.
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
