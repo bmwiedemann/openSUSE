@@ -1,0 +1,23 @@
+From 5286020560aeef2c7ef48972a42ed6ee0c111326 Mon Sep 17 00:00:00 2001
+From: Guido Aulisi <guido.aulisi@gmail.com>
+Date: Thu, 10 Oct 2019 14:56:21 +0200
+Subject: [PATCH] Fix compilation on ARM
+
+size_t i is needed if HAVE_EXECINFO_H is defined
+---
+ dbus/sigsegv.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/dbus/sigsegv.c b/dbus/sigsegv.c
+index de316429..10ddd0ac 100644
+--- a/dbus/sigsegv.c
++++ b/dbus/sigsegv.c
+@@ -64,7 +64,7 @@ static void signal_segv(int signum, siginfo_t* info, void*ptr) {
+     const char *si_code_str;
+     ucontext_t *ucontext = (ucontext_t*)ptr;
+ 
+-#if defined(HAVE_UCONTEXT) && defined(HAVE_NGREG)
++#if (defined(HAVE_UCONTEXT) && defined(HAVE_NGREG)) || defined(HAVE_EXECINFO_H)
+     size_t i;
+ #endif
+ #if defined(SIGSEGV_STACK_X86) || defined(SIGSEGV_STACK_IA64)

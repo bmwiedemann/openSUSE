@@ -23,7 +23,7 @@
 %define sonum 0
 BuildRequires:  pkgconfig(libffado) >= 2.0.1.2040
 Name:           jack
-Version:        1.9.12
+Version:        1.9.13
 Release:        0
 #to_be_filled_by_service
 Summary:        Jack-Audio Connection Kit
@@ -32,9 +32,7 @@ Group:          System/Sound Daemons
 Url:            http://jackaudio.org/
 Source0:        https://github.com/jackaudio/jack2/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-Patch0:         jack-waf2.patch
-Patch1:         fix-mmap-return-value-check.patch
-Patch2:         0001-Make-jack_control-python2-3-compatible.patch
+Patch0:         0001-fix-complation-on-arm.patch
 BuildRequires:  dos2unix
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -172,15 +170,13 @@ mkdir -p %{buildroot}%{_docdir}/%{name}
 mv %{buildroot}%{_datadir}/jack-audio-connection-kit %{buildroot}%{_docdir}
 %endif
 
-dos2unix -k ChangeLog
-dos2unix -k README
-dos2unix -k TODO
-cp ChangeLog README* TODO %{buildroot}%{_docdir}/%{name}/
+dos2unix -k ChangeLog.rst
+dos2unix -k README.rst
+cp ChangeLog.rst README* %{buildroot}%{_docdir}/%{name}/
 
 # Fix wrong-file-end-of-line-encoding
-dos2unix -k %{buildroot}%{_docdir}/%{name}/ChangeLog
-dos2unix -k %{buildroot}%{_docdir}/%{name}/README
-dos2unix -k %{buildroot}%{_docdir}/%{name}/TODO
+dos2unix -k %{buildroot}%{_docdir}/%{name}/ChangeLog.rst
+dos2unix -k %{buildroot}%{_docdir}/%{name}/README.rst
 %fdupes -s %{_docdir}/jack-audio-connection-kit/
 
 %post -n libjack%{sonum} -p /sbin/ldconfig
@@ -195,9 +191,8 @@ dos2unix -k %{buildroot}%{_docdir}/%{name}/TODO
 %files
 %defattr(-,root,root)
 %doc %dir %{_docdir}/%{name}
-%doc %{_docdir}/%{name}/ChangeLog
+%doc %{_docdir}/%{name}/ChangeLog.rst
 %doc %{_docdir}/%{name}/README*
-%doc %{_docdir}/%{name}/TODO
 %license windows/Setup/src/COPYING
 %{_mandir}/man1/*
 %{_bindir}/*

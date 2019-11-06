@@ -521,4 +521,27 @@ Update the waf code to the 2.0 series in order to work under python3.7 taken fro
     <comment></comment>
     <requestid>718138</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>2d73031957e29e3dd21f739080f1acde</srcmd5>
+    <version>1.9.13</version>
+    <time>1573044420</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.13
+  * Meta-data API implementation. (and a few tools updated with support for it)
+  * Correct GPL licence to LGPL for files needed to build libjack.
+  * Remove FreeBoB backend (superseded by FFADO).
+  * define JACK_LIB_EXPORT, useful for internal clients.
+  * Mark jack_midi_reset_buffer as deprecated.
+  * Add example systemd unit file
+  * Signal to systemd when jackd is ready.
+  * Set &quot;seq&quot; alsa midi driver to maximum resolution possible.
+  * Fix loading internal clients from another internal client.
+- Delete the following patches, as they were fixed upstream:
+  * 0001-Make-jack_control-python2-3-compatible.patch
+  * fix-mmap-return-value-check.patch
+  * jack-waf2.patch
+- Add 0001-fix-complation-on-arm.patch
+</comment>
+    <requestid>744376</requestid>
+  </revision>
 </revisionlist>
