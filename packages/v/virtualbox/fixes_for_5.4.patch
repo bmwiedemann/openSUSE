@@ -2,11 +2,22 @@ Index: VirtualBox-6.0.14/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.
 ===================================================================
 --- VirtualBox-6.0.14.orig/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.c
 +++ VirtualBox-6.0.14/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.c
-@@ -924,8 +924,13 @@ static void vboxNetFltLinuxSkBufToSG(PVB
+@@ -73,6 +73,10 @@
+ #define VBOXNETFLT_OS_SPECFIC 1
+ #include "../VBoxNetFltInternal.h"
+ 
++# if CONFIG_SUSE_VERSION == 15 && CONFIG_SUSE_PATCHLEVEL == 2
++#  define OPENSUSE_152
++# endif
++
+ typedef struct VBOXNETFLTNOTIFIER {
+     struct notifier_block Notifier;
+     PVBOXNETFLTINS pThis;
+@@ -924,8 +928,13 @@ static void vboxNetFltLinuxSkBufToSG(PVB
      for (i = 0; i < skb_shinfo(pBuf)->nr_frags; i++)
      {
          skb_frag_t *pFrag = &skb_shinfo(pBuf)->frags[i];
-+#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 4, 0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 4, 0) || defined(OPENSUSE_152)
 +        pSG->aSegs[iSeg].cb = pFrag->bv_len;
 +        pSG->aSegs[iSeg].pv = VBOX_SKB_KMAP_FRAG(pFrag) + pFrag->bv_offset;
 +#else
@@ -16,11 +27,11 @@ Index: VirtualBox-6.0.14/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.
          Log6((" %p", pSG->aSegs[iSeg].pv));
          pSG->aSegs[iSeg++].Phys = NIL_RTHCPHYS;
          Assert(iSeg <= pSG->cSegsAlloc);
-@@ -940,8 +945,13 @@ static void vboxNetFltLinuxSkBufToSG(PVB
+@@ -940,8 +949,13 @@ static void vboxNetFltLinuxSkBufToSG(PVB
          for (i = 0; i < skb_shinfo(pFragBuf)->nr_frags; i++)
          {
              skb_frag_t *pFrag = &skb_shinfo(pFragBuf)->frags[i];
-+#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 4, 0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 4, 0) || defined(OPENSUSE_152)
 +            pSG->aSegs[iSeg].cb = pFrag->bv_len;
 +            pSG->aSegs[iSeg].pv = VBOX_SKB_KMAP_FRAG(pFrag) + pFrag->bv_offset;
 +#else

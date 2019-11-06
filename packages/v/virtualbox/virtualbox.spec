@@ -60,7 +60,9 @@ Url:            http://www.virtualbox.org/
 #%%(bash %%{_sourcedir}/virtualbox-patch-source.sh VirtualBox-%%{version}.tar.bz2)
 Source0:        VirtualBox-%{version}-patched.tar.bz2
 Source1:        UserManual.pdf
+%if 0%{?sle_version} != 120300 
 Source2:        VirtualBox.appdata.xml
+%endif
 Source3:        %{name}-60-vboxguest.rules
 Source4:        %{name}-default.virtualbox
 Source5:        %{name}-kmp-files
@@ -176,7 +178,7 @@ BuildRequires:  glibc-devel-static
 BuildRequires:  gsoap-devel >= 2.8.50
 BuildRequires:  java-devel >= 1.6.0
 BuildRequires:  kbuild >= 0.1.9998svn3101
-#BuildRequires:  kernel-syms
+BuildRequires:  kernel-syms
 BuildRequires:  libcap-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libelf-devel
@@ -444,6 +446,7 @@ as an "extpack" for VirtualBox. The implementation is licensed under GPL.
 %patch123 -p1
 %patch125 -p1
 %patch128 -p1
+echo "sle_version " %{?sle_version}", is_opensuse " %{?is_opensuse}", suse_version " %{?suse_version}
 # Adjustments that are version dependent
 %if 0%{?sle_version} == 120300 && 0%{?is_opensuse} 
 # Patch for Leap 42.3
@@ -589,7 +592,9 @@ install -d -m 755 %{buildroot}%{_bindir}
 install -d -m 755 %{buildroot}%{_sbindir}
 install -d -m 755 %{buildroot}%{_datadir}/virtualbox/nls
 install -d -m 755 %{buildroot}%{_datadir}/pixmaps
+%if 0%{?sle_version} != 120300 
 install -d -m 755 %{buildroot}%{_datadir}/metainfo
+%endif
 install -d -m 755 %{buildroot}%{_datadir}/applications
 install -d -m 755 %{buildroot}%{_vbox_instdir}/sdk/bindings/xpcom
 install -d -m 755 %{buildroot}%{_vbox_instdir}/components
@@ -711,9 +716,11 @@ popd
 install -m 644 out/linux.*/release/bin/virtualbox.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
 %suse_update_desktop_file			%{buildroot}%{_datadir}/applications/%{name}.desktop 'System Emulator'
 
+%if 0%{?sle_version} != 120300 
 # install appstream file
 mkdir -p %{buildroot}%{_datadir}/metainfo
 install -m 644 %{SOURCE2}			%{buildroot}%{_datadir}/metainfo/%{name}.appdata.xml
+%endif
 
 # create a menu entry
 mkdir -p %{buildroot}%{_datadir}/pixmaps
@@ -1028,7 +1035,9 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_vbox_instdir}/VBoxSharedClipboard.so
 %{_datadir}/pixmaps/virtualbox.png
 %{_datadir}/applications/%{name}.desktop
+%if 0%{?sle_version} != 120300 
 %{_datadir}/metainfo/%{name}.appdata.xml
+%endif
 %{_udevrulesdir}/60-vboxdrv.rules
 
 %files guest-x11

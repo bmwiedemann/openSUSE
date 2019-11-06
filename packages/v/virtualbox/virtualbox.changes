@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov  5 14:44:08 UTC 2019 - Larry Finger <Larry.Finger@gmail.com>
+
+- Try to fix unresolvable kernel version in Leap 15.2.
+
+-------------------------------------------------------------------
+Sat Nov  2 00:58:22 UTC 2019 - Larry Finger <Larry.Finger@gmail.com>
+
+- Fix build errors in Leap 42.3
+
+-------------------------------------------------------------------
+Thu Oct 31 18:55:37 UTC 2019 - Larry Finger <Larry.Finger@gmail.com>
+
+- Update "fixes_for_5.4.patch" for kernel API backport in openSUSE 15.2 
+
+-------------------------------------------------------------------
 Tue Oct 22 06:44:20 UTC 2019 - Larry Finger <Larry.Finger@gmail.com>
 
 - Tweak file setup for appstream.
