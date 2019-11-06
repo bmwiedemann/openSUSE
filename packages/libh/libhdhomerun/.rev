@@ -72,4 +72,12 @@
   * Report original network ID in scan results</comment>
     <requestid>631706</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>725f59067bce4bf7db25ddac1ac63131</srcmd5>
+    <version>20190621</version>
+    <time>1573045522</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>745351</requestid>
+  </revision>
 </revisionlist>
