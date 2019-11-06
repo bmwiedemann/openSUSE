@@ -1,7 +1,7 @@
 #
 # spec file for package OpenLP
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,8 +20,7 @@ Name:           OpenLP
 Version:        2.4.6
 Release:        0
 Summary:        Open source Church presentation and lyrics projection application
-License:        GPL-2.0
-Group:          Productivity/Multimedia/Other
+License:        GPL-2.0-only
 Url:            http://openlp.org
 Source0:        https://get.openlp.org/%{version}/%{name}-%{version}.tar.gz
 Source1:        OpenLP-rpmlintrc
