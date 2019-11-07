@@ -34,6 +34,7 @@ Source6:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.
 Source7:        leafnode.keyring
 Source8:        leafnode.socket
 Patch0:         leafnode-1.11.6-spooldir-permissions.diff
+Patch1:         fix_overflow.diff
 BuildRequires:  cron
 BuildRequires:  pcre-devel >= 2.06
 BuildRequires:  systemd-rpm-macros
@@ -55,6 +56,7 @@ ISP's news server.
 %prep
 %setup -q
 %patch0
+%patch1 -p1
 
 %build
 %configure\

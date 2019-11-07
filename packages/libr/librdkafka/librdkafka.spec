@@ -16,6 +16,12 @@
 #
 
 
+# lto breaks crc32 detection in configure script
+# See https://github.com/edenhill/librdkafka/issues/2426
+%ifnarch x86_64
+%define _lto_cflags %{nil}
+%endif
+
 %define libname %{name}1
 Name:           librdkafka
 Version:        1.1.0

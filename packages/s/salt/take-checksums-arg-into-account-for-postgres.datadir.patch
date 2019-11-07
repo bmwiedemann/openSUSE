@@ -1,0 +1,41 @@
+From 7ed3e99a4979a13c7142ed5ba73c09a282e03147 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Thu, 26 Sep 2019 15:57:58 +0100
+Subject: [PATCH] Take checksums arg into account for
+ postgres.datadir_init (bsc#1151650)
+
+Update unit test for postgres.datadir_init
+---
+ salt/modules/postgres.py            | 1 +
+ tests/unit/modules/test_postgres.py | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/salt/modules/postgres.py b/salt/modules/postgres.py
+index b6f7cbe5d4..f0d1b034b9 100644
+--- a/salt/modules/postgres.py
++++ b/salt/modules/postgres.py
+@@ -3151,6 +3151,7 @@ def datadir_init(name,
+         password=password,
+         encoding=encoding,
+         locale=locale,
++        checksums=checksums,
+         runas=runas)
+     return ret['retcode'] == 0
+ 
+diff --git a/tests/unit/modules/test_postgres.py b/tests/unit/modules/test_postgres.py
+index 03fb7fddfd..6f10fcf2e0 100644
+--- a/tests/unit/modules/test_postgres.py
++++ b/tests/unit/modules/test_postgres.py
+@@ -1467,6 +1467,7 @@ class PostgresTestCase(TestCase, LoaderModuleMockMixin):
+                     locale=None,
+                     password='test',
+                     runas='postgres',
++                    checksums=False,
+                     user='postgres',
+                 )
+                 self.assertTrue(ret)
+-- 
+2.22.0
+
+

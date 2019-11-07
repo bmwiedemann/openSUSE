@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  6 12:01:55 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 5.4.0:
+  * Fix a bug where browser.reload() would not follow redirects or raise exceptions for bad HTTP statuses. See issue 75.
+  * Add Python 3.8 support. See issue 80.
+
+-------------------------------------------------------------------
 Mon Jul 22 10:57:47 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 5.3.3:

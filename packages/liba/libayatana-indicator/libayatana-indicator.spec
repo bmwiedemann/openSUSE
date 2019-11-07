@@ -29,6 +29,8 @@ URL:            https://github.com/AyatanaIndicators/libayatana-indicator
 Source:         https://github.com/AyatanaIndicators/libayatana-indicator/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE libayatana-indicator-disable-werror.patch hrvoje.senjan@gmail.com -- Disable -Werror.
 Patch0:         libayatana-indicator-disable-werror.patch
+# PATCH-FIX-UPSTREAM libayatana-indicator-Wno-error-deprecated-declarations-for-tests.patch
+Patch1:         libayatana-indicator-Wno-error-deprecated-declarations-for-tests.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -79,8 +81,7 @@ This package provides the development files required to build
 indicators and to go into the indicator applet.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %global _configure ../configure

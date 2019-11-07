@@ -40,6 +40,9 @@ Tue Jul 02 15:26:03 UTC 2019 - Yan Gao <ygao@suse.com>
 - sbd-pacemaker: assume graceful exit if leftovers are unmanged
 - sbd-common: query rt-budget > 0 otherwise try moving to root-slice (bsc#1143064)
 
+- Rebase:
+  * bsc#1140065-Fix-sbd-cluster-exit-if-cmap-is-disconnected.patch
+
 -------------------------------------------------------------------
 Tue Jul  2 14:38:08 UTC 2019 - jtomasiak@suse.com
 

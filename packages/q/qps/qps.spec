@@ -26,8 +26,8 @@ URL:            https://github.com/lxqt/qps/
 Source0:        https://github.com/lxqt/qps/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  gcc-c++
-BuildRequires:  glibc >= 2.30
-BuildRequires:  glibc-devel >= 2.30
+BuildRequires:  glibc
+BuildRequires:  glibc-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  lxqt-build-tools-devel >= 0.6.0
 BuildRequires:  pkgconfig

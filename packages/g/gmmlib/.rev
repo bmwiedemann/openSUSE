@@ -33,4 +33,13 @@
   * bug fixes</comment>
     <requestid>727791</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cb4606745837612c0652a5c48fe48d7e</srcmd5>
+    <version>19.3.3</version>
+    <time>1573165108</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 19.3.3
+  * Intel Graphics Memory Management Library 2019 Q3 Release 3</comment>
+    <requestid>746014</requestid>
+  </revision>
 </revisionlist>

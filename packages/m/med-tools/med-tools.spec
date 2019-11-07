@@ -26,8 +26,8 @@ License:        LGPL-3.0
 Group:          Productivity/Graphics/Other
 Version:        4.0.0
 Release:        0
-Url:            http://www.salome-platform.org/downloads/current-version
-Source0:        med-%{version}.tar.gz
+Url:            https://www.salome-platform.org/downloads/current-version
+Source0:        https://files.salome-platform.org/Salome/other/med-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE
 Patch0:         fix-cmakefiles.patch
 # PATCH-FIX-OPENSUSE
@@ -40,6 +40,8 @@ Patch3:         0003-Avoid-format-warnings-on-64-bit.patch
 Patch4:         0004-Fix-allocation-for-MEDfileName-consider-trailing-nul.patch
 # PATCH-FIX-OPENSUSE
 Patch5:         0005-Respect-DESTDIR-when-byte-compiling-python-code.patch
+# PATCH-FIX-OPENSUSE
+Patch6:         use_installed_python_modules_for_tests.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc
@@ -147,6 +149,7 @@ It uses the HDF5 file format to store the data.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 
 %build
@@ -179,8 +182,9 @@ ln -sf xmdump3 %{buildroot}/usr/bin/xmdump
 %check
 cd build
 export LC_ALL=C.utf8
-export LD_LIBRARY_PATH=$PWD/src/
-make test
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{_libdir}
+export PYTHONPATH=$PYTHONPATH:%{buildroot}%{python3_sitearch}
+make test ARGS="--output-on-failure"
 
 %fdupes -s %{buildroot}
 

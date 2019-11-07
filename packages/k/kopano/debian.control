@@ -12,7 +12,7 @@ Build-Depends:
  devscripts,
  dh-systemd (>= 1.5),
  fakeroot,
- g++ (>= 4.8),
+ g++ (>= 6),
  gettext,
  gsoap (>= 2.8.49),
  libcurl4-openssl-dev,
@@ -24,6 +24,7 @@ Build-Depends:
  libkrb5-dev,
  libldap2-dev,
  libmariadbclient-dev | libmysqlclient-dev,
+ libmicrohttpd-dev (>= 0.9.30),
  libncurses5-dev,
  libncursesw5-dev,
  libpam0g-dev,
@@ -37,10 +38,12 @@ Build-Depends:
  lsb-release,
  m4,
  openssl,
- php-dev | php7.2-dev | php7.1-dev | php7.0-dev | php5-dev,
+ php-dev | php7.3-dev | php7.2-dev | php7.1-dev | php7.0-dev | php5-dev,
  pkg-config (>= 0.18),
  python3-dev,
  python3-setuptools,
+ python-dev,
+ python-setuptools,
  swig,
  systemd,
  tidy-html5-dev,
@@ -51,7 +54,8 @@ Standards-Version: 3.7.3
 
 Package: kopano-archiver
 Architecture: any
-Depends: python3-kopano (= ${binary:Version}), ${python3:Depends}, ${shlibs:Depends}, libkcarchiver0 (= ${binary:Version})
+Depends: ${shlibs:Depends}, libkcarchiver0 (= ${binary:Version})
+Recommends: kopano-python-utils-UV (= ${source:Upstream-Version})
 Description: Hierarchial Storage Management for the Kopano Core platform
  The Kopano Archiver provides a Hierarchical Storage Management (HSM)
  solution for Kopano Core.
@@ -72,11 +76,18 @@ Description: bash TAB completion for Kopano Core command-line utilities
 Package: kopano-client
 Architecture: any
 Depends: ${shlibs:Depends}, kopano-lang
-Breaks: zarafa-client
+Replaces: kopano-contacts, kopano-utils
+Breaks: zarafa-client, kopano-contacts, kopano-utils
+Provides: kopano-client-UV (= ${source:Upstream-Version})
 Description: Kopano MAPI provider library
- Library which provides the main MAPI service to interface
- with a Kopano server. This package is required by all
- Kopano client programs.
+ The Kopano client-side programs and plugins.
+ .
+ * Command-line clients to control and check the Kopano server, server
+   database, and mailbox settings.
+ * Plugin which provides the main MAPI service that will interface
+   with a Kopano server.
+ * Additional MAPI provider which finds all contact folders of a user
+   and adds the contents transparently into the MAPI addrbook.
 
 Package: kopano-common
 Architecture: any
@@ -85,7 +96,8 @@ Replaces: libkchl0, libkcmapi0, libkcservice0, libkcsoapclient0,
  libkcsoapserver0, libkcssl0, libkcsync0,
  kopano-core-common (<< ${binary:Version})
 Breaks: kopano-core-common (<< ${binary:Version})
-Provides: kopano-core-common (= ${binary:Version})
+Provides: kopano-core-common (= ${binary:Version}),
+ kopano-common-UV (= ${source:Upstream-Version})
 Description: Shared files for Kopano services
  Global:
  * Definition for system user and group "kopano"
@@ -94,22 +106,11 @@ Description: Shared files for Kopano services
  * Logrotate definitions
  * Apparmor definitions
 
-# Shares /etc/mapi/*.inf files and therefore breaks/conflicts
-Package: kopano-contacts
-Architecture: any
-Depends: ${shlibs:Depends}, locales, kopano-client (= ${binary:Version})
-Breaks: zarafa-contacts
-Description: MAPI provider adding contact folders in the addressbook
- An additional MAPI provider which finds all contact folders of a user
- and adds the contents transparently into the MAPI addressbook.
- Used mainly by Kopano Webapp.
-
 Package: kopano-dagent
 Architecture: any
-Depends: ${shlibs:Depends}, kopano-common (= ${binary:Version}),
- kopano-client (= ${binary:Version}), libkcpyplug0 (= ${binary:Version}),
- python3-kopano-utils (= ${binary:Version})
-Recommends: kopano-dagent-pytils (= ${binary:Version})
+Depends: ${shlibs:Depends}, kopano-client (= ${binary:Version}),
+ kopano-common (= ${binary:Version}), libkcpyplug0 (= ${binary:Version})
+Recommends: kopano-dagent-pytils-UV (= ${source:Upstream-Version})
 Breaks: kopano-server (<< 8.6.0)
 Description: E-Mail Delivery Agent for Kopano Core
  Delivers incoming e-mail from your SMTP server to stores
@@ -140,7 +141,8 @@ Description: C++ Development files for Kopano Core
 
 Package: kopano-gateway
 Architecture: any
-Depends: ${shlibs:Depends}, kopano-common (= ${binary:Version}), kopano-client (= ${binary:Version})
+Depends: ${shlibs:Depends}, kopano-client (= ${binary:Version}),
+ kopano-common (= ${binary:Version})
 Description: POP3 and IMAP Gateway for Kopano Core
  The gateway enables other e-mail clients to connect
  through POP3 or IMAP to the Kopano server to read their
@@ -150,18 +152,12 @@ Description: POP3 and IMAP Gateway for Kopano Core
 
 Package: kopano-ical
 Architecture: any
-Depends: ${shlibs:Depends}, kopano-common (= ${binary:Version}), kopano-client (= ${binary:Version})
+Depends: ${shlibs:Depends}, kopano-client (= ${binary:Version}),
+ kopano-common (= ${binary:Version})
 Description: ICal and CalDAV Gateway for Kopano Core
  The iCal/CalDAV gateway enables users to retrieve their calendar
  using iCalendar compliant clients. The iCal/CalDAV gateway can be
  configured to listen for HTTP and HTTPS requests.
-
-Package: kopano-indexer
-Architecture: all
-Description: Fulltext indexer service for Kopano Core
- kopano-indexd offers the fulltext indexing of libkcindex over the
- network. kopano-server can make use of this service or the libkcindex
- library to offload search queries from the SQL database.
 
 Package: kopano-lang
 Architecture: all
@@ -181,17 +177,19 @@ Description: Utility to migrate between IMAP mailboxes
 
 Package: kopano-monitor
 Architecture: any
-Depends: ${shlibs:Depends}, kopano-common (= ${binary:Version}), kopano-client (= ${binary:Version})
+Depends: ${shlibs:Depends}, kopano-client (= ${binary:Version}),
+ kopano-common (= ${binary:Version})
 Description: Quota Monitor for Kopano Core
  Regularly checks stores for total usage. If a quota limit has been
  exceeded, an e-mail will be internally sent to this account.
 
 Package: kopano-server
 Architecture: any
-Depends: ${shlibs:Depends}, kopano-common (= ${binary:Version}),
- kopano-utils (= ${binary:Version}), libtcmalloc-minimal4, libs3-4
-Breaks: kopano-common (<< 8.7.80)
-Suggests: kopano-python-utils (= ${binary:Version})
+Depends: ${shlibs:Depends}, kopano-client (= ${binary:Version}),
+ kopano-common (= ${binary:Version}), libtcmalloc-minimal4, libs3-4
+Breaks: kopano-utils
+Obsoletes: kopano-utils
+Replaces: kopano-utils
 Description: Server component for Kopano Core
  This package provides the key component of Kopano Core, providing the
  server to which Kopano clients connect. The server requires a MySQL
@@ -200,17 +198,16 @@ Description: Server component for Kopano Core
 Package: kopano-server-packages
 Architecture: all
 Depends:
- kopano-backup (= ${binary:Version}),
- kopano-dagent (= ${binary:Version}),
- kopano-dagent-pytils (= ${binary:Version}),
- kopano-gateway (= ${binary:Version}),
- kopano-ical (= ${binary:Version}),
- kopano-monitor (= ${binary:Version}),
- kopano-python-utils (= ${binary:Version}),
- kopano-search (= ${binary:Version}),
- kopano-server (= ${binary:Version}),
- kopano-spooler (= ${binary:Version}),
- kopano-utils (= ${binary:Version})
+ kopano-backup,
+ kopano-dagent,
+ kopano-dagent-pytils,
+ kopano-gateway,
+ kopano-ical,
+ kopano-monitor,
+ kopano-python-utils,
+ kopano-search,
+ kopano-server,
+ kopano-spooler
 Breaks: kopano-core
 Replaces: kopano-core
 Description: Metapackage to install the entire Kopano Core stack
@@ -231,25 +228,19 @@ Description: Statistics aggregator for Kopano Core services
 
 Package: kopano-spooler
 Architecture: any
-Depends: ${shlibs:Depends}, kopano-common (= ${binary:Version}),
- kopano-client (= ${binary:Version}), libkcpyplug0 (= ${binary:Version}),
+Depends: ${shlibs:Depends}, kopano-client (= ${binary:Version}),
+ kopano-common (= ${binary:Version}), libkcpyplug0 (= ${binary:Version}),
  python3-mapi (= ${binary:Version})
-Suggests: kopano-dagent-pytils (= ${binary:Version})
+Recommends: kopano-dagent-pytils-UV (= ${source:Upstream-Version})
 Description: E-mail Spooler for Kopano Core
  The outgoing e-mail spooler. This service makes
  sure that e-mails sent by clients are converted to
  Internet e-mail and forwarded to an SMTP server.
 
-Package: kopano-utils
-Architecture: any
-Depends: ${shlibs:Depends}, kopano-client (= ${binary:Version})
-Description: Admin command-line utils for Kopano Core
- Common command-line utilities for use with Kopano Core.
-
 Package: php-mapi
 Architecture: any
 Section: php
-Depends: ${shlibs:Depends}, ${php:Depends}, kopano-client (= ${binary:Version}), kopano-contacts (= ${binary:Version})
+Depends: ${shlibs:Depends}, ${php:Depends}, kopano-client (= ${binary:Version})
 Provides: php-other-mapi
 Replaces: php-other-mapi
 Conflicts: php-other-mapi
@@ -257,12 +248,25 @@ Description: PHP bindings for MAPI
  Using this module, you can create PHP programs which use MAPI calls
  to interact with Kopano.
 
+Package: python-mapi
+Architecture: any
+Section: python
+Depends: ${shlibs:Depends}, kopano-client (= ${binary:Version})
+Replaces: libkcpyconv0, libkcpydirector0, python2-mapi
+Breaks: libkcpyconv0, libkcpydirector0, python2-mapi
+Provides: python-mapi-UV (= ${source:Upstream-Version})
+Description: Python 2 bindings for MAPI
+ Low-level (SWIG-generated) Python 2 bindings for MAPI. Using this
+ module, you can create Python 2 programs which use MAPI calls to
+ interact with Kopano.
+
 Package: python3-mapi
 Architecture: any
 Section: python
 Depends: ${shlibs:Depends}, kopano-client (= ${binary:Version})
 Replaces: libkcpyconv0, libkcpydirector0
 Breaks: libkcpyconv0, libkcpydirector0
+Provides: python3-mapi-UV (= ${source:Upstream-Version})
 Description: Python 3 bindings for MAPI
  Low-level (SWIG-generated) Python 3 bindings for MAPI. Using this
  module, you can create Python 3 programs which use MAPI calls to
@@ -291,16 +295,6 @@ Architecture: any
 Depends: ${shlibs:Depends}
 Description: iCal interface for MAPI
  Provides an interface between iCal and MAPI.
-
-Package: libkcindex0
-Architecture: any
-Depends: ${shlibs:Depends}
-Description: Fulltext indexing API for Kopano Core
- This library implements a Xapian-based fulltext search index for
- messages and attachments. kopano-server can load this library into
- its memory space to access this indexer API through shared memory,
- saving the round-trip latency between kopano-server and a separate
- kopano-indexd instance.
 
 Package: libkcinetmapi0
 Architecture: any
@@ -351,6 +345,7 @@ Package: libkcutil0
 Architecture: any
 Depends: ${shlibs:Depends}
 Replaces: kopano-libs
+Breaks: kopano-libs
 Obsoletes: kopano-libs
 Description: Miscellaneous utility functions for Kopano Core
  A lot of utility functions used from all over Kopano Core.

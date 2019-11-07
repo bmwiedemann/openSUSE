@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov  5 20:24:48 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Switch from custom patch to upstream fix:
+  Drop 0001-Fix-builds-for-LLVM-9-for-LLVM-build-without-BUILD_S.patch
+  (rejected upstream)
+  Add 0001-cmake-support-CLANG_LINK_CLANG_DYLIB.patch
+  (upstream fix: https://github.com/MaskRay/ccls/pull/519)
+
+-------------------------------------------------------------------
 Tue Oct 29 08:53:30 UTC 2019 - Dan Čermák <dcermak@suse.com>
 
 - Update to release 0.20190823.4

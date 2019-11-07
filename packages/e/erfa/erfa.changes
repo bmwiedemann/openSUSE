@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 30 08:25:52 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.6.0:
+  * Based on SOFA version 20190722.
+- Running bootstrap.sh before configure is no longer needed; also
+  drop automake, autoconf, and libtool BuildRequires.
+
+-------------------------------------------------------------------
 Wed Sep 11 08:19:37 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.5.0:

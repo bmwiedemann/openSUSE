@@ -1,0 +1,194 @@
+diff -up chromium-78.0.3904.70/chrome/common/media_router/media_sink.cc.el7-noexcept chromium-78.0.3904.70/chrome/common/media_router/media_sink.cc
+--- chromium-78.0.3904.70/chrome/common/media_router/media_sink.cc.el7-noexcept	2019-10-21 15:06:26.000000000 -0400
++++ chromium-78.0.3904.70/chrome/common/media_router/media_sink.cc	2019-10-30 09:26:51.339057055 -0400
+@@ -19,12 +19,12 @@ MediaSink::MediaSink(const MediaSink::Id
+       provider_id_(provider_id) {}
+ 
+ MediaSink::MediaSink(const MediaSink& other) = default;
+-MediaSink::MediaSink(MediaSink&& other) noexcept = default;
++MediaSink::MediaSink(MediaSink&& other) = default;
+ MediaSink::MediaSink() = default;
+ MediaSink::~MediaSink() = default;
+ 
+ MediaSink& MediaSink::operator=(const MediaSink& other) = default;
+-MediaSink& MediaSink::operator=(MediaSink&& other) noexcept = default;
++MediaSink& MediaSink::operator=(MediaSink&& other) = default;
+ 
+ bool MediaSink::IsMaybeCloudSink() const {
+   switch (icon_type_) {
+diff -up chromium-78.0.3904.70/components/history/core/browser/history_types.cc.el7-noexcept chromium-78.0.3904.70/components/history/core/browser/history_types.cc
+--- chromium-78.0.3904.70/components/history/core/browser/history_types.cc.el7-noexcept	2019-10-21 15:06:29.000000000 -0400
++++ chromium-78.0.3904.70/components/history/core/browser/history_types.cc	2019-10-30 09:26:51.358056614 -0400
+@@ -42,7 +42,7 @@ QueryResults::QueryResults(QueryResults&
+   Swap(&other);
+ }
+ 
+-QueryResults& QueryResults::operator=(QueryResults&& other) noexcept {
++QueryResults& QueryResults::operator=(QueryResults&& other) {
+   Swap(&other);
+   return *this;
+ }
+@@ -186,7 +186,7 @@ QueryURLResult::QueryURLResult(QueryURLR
+ 
+ QueryURLResult& QueryURLResult::operator=(const QueryURLResult&) = default;
+ 
+-QueryURLResult& QueryURLResult::operator=(QueryURLResult&&) noexcept = default;
++QueryURLResult& QueryURLResult::operator=(QueryURLResult&&) = default;
+ 
+ // MostVisitedURL --------------------------------------------------------------
+ 
+diff -up chromium-78.0.3904.70/components/history/core/browser/history_types.h.el7-noexcept chromium-78.0.3904.70/components/history/core/browser/history_types.h
+--- chromium-78.0.3904.70/components/history/core/browser/history_types.h.el7-noexcept	2019-10-21 15:06:29.000000000 -0400
++++ chromium-78.0.3904.70/components/history/core/browser/history_types.h	2019-10-30 09:26:51.623050465 -0400
+@@ -143,7 +143,7 @@ class QueryResults {
+   ~QueryResults();
+ 
+   QueryResults(QueryResults&& other) noexcept;
+-  QueryResults& operator=(QueryResults&& other) noexcept;
++  QueryResults& operator=(QueryResults&& other);
+ 
+   void set_reached_beginning(bool reached) { reached_beginning_ = reached; }
+   bool reached_beginning() { return reached_beginning_; }
+@@ -278,7 +278,7 @@ struct QueryURLResult {
+   QueryURLResult(const QueryURLResult&);
+   QueryURLResult(QueryURLResult&&) noexcept;
+   QueryURLResult& operator=(const QueryURLResult&);
+-  QueryURLResult& operator=(QueryURLResult&&) noexcept;
++  QueryURLResult& operator=(QueryURLResult&&);
+   ~QueryURLResult();
+ 
+   // Indicates whether the call to HistoryBackend::QueryURL was successfull
+diff -up chromium-78.0.3904.70/components/history/core/browser/url_row.cc.el7-noexcept chromium-78.0.3904.70/components/history/core/browser/url_row.cc
+--- chromium-78.0.3904.70/components/history/core/browser/url_row.cc.el7-noexcept	2019-10-21 15:06:29.000000000 -0400
++++ chromium-78.0.3904.70/components/history/core/browser/url_row.cc	2019-10-30 09:26:51.625050418 -0400
+@@ -26,7 +26,7 @@ URLRow::~URLRow() {
+ }
+ 
+ URLRow& URLRow::operator=(const URLRow& other) = default;
+-URLRow& URLRow::operator=(URLRow&& other) noexcept = default;
++URLRow& URLRow::operator=(URLRow&& other) = default;
+ 
+ void URLRow::Swap(URLRow* other) {
+   std::swap(id_, other->id_);
+diff -up chromium-78.0.3904.70/components/omnibox/browser/suggestion_answer.cc.el7-noexcept chromium-78.0.3904.70/components/omnibox/browser/suggestion_answer.cc
+--- chromium-78.0.3904.70/components/omnibox/browser/suggestion_answer.cc.el7-noexcept	2019-10-21 15:06:29.000000000 -0400
++++ chromium-78.0.3904.70/components/omnibox/browser/suggestion_answer.cc	2019-10-30 09:26:51.627050372 -0400
+@@ -60,7 +60,7 @@ SuggestionAnswer::TextField::TextField(T
+ SuggestionAnswer::TextField& SuggestionAnswer::TextField::operator=(
+     const TextField&) = default;
+ SuggestionAnswer::TextField& SuggestionAnswer::TextField::operator=(
+-    TextField&&) noexcept = default;
++    TextField&&) = default;
+ 
+ // static
+ bool SuggestionAnswer::TextField::ParseTextField(const base::Value& field_json,
+diff -up chromium-78.0.3904.70/components/policy/core/common/policy_map.cc.el7-noexcept chromium-78.0.3904.70/components/policy/core/common/policy_map.cc
+--- chromium-78.0.3904.70/components/policy/core/common/policy_map.cc.el7-noexcept	2019-10-21 15:06:29.000000000 -0400
++++ chromium-78.0.3904.70/components/policy/core/common/policy_map.cc	2019-10-30 09:26:51.628050349 -0400
+@@ -52,7 +52,7 @@ PolicyMap::Entry::Entry(
+ PolicyMap::Entry::~Entry() = default;
+ 
+ PolicyMap::Entry::Entry(Entry&&) noexcept = default;
+-PolicyMap::Entry& PolicyMap::Entry::operator=(Entry&&) noexcept = default;
++PolicyMap::Entry& PolicyMap::Entry::operator=(Entry&&) = default;
+ 
+ PolicyMap::Entry PolicyMap::Entry::DeepCopy() const {
+   Entry copy;
+diff -up chromium-78.0.3904.70/components/search_provider_logos/logo_common.cc.el7-noexcept chromium-78.0.3904.70/components/search_provider_logos/logo_common.cc
+--- chromium-78.0.3904.70/components/search_provider_logos/logo_common.cc.el7-noexcept	2019-10-30 09:27:30.773143557 -0400
++++ chromium-78.0.3904.70/components/search_provider_logos/logo_common.cc	2019-10-30 13:09:43.872691009 -0400
+@@ -14,14 +14,14 @@ LogoMetadata::LogoMetadata() = default;
+ LogoMetadata::LogoMetadata(const LogoMetadata&) = default;
+ LogoMetadata::LogoMetadata(LogoMetadata&&) noexcept = default;
+ LogoMetadata& LogoMetadata::operator=(const LogoMetadata&) = default;
+-LogoMetadata& LogoMetadata::operator=(LogoMetadata&&) noexcept = default;
++LogoMetadata& LogoMetadata::operator=(LogoMetadata&&) = default;
+ LogoMetadata::~LogoMetadata() = default;
+ 
+ EncodedLogo::EncodedLogo() = default;
+ EncodedLogo::EncodedLogo(const EncodedLogo&) = default;
+ EncodedLogo::EncodedLogo(EncodedLogo&&) noexcept = default;
+ EncodedLogo& EncodedLogo::operator=(const EncodedLogo&) = default;
+-EncodedLogo& EncodedLogo::operator=(EncodedLogo&&) noexcept = default;
++EncodedLogo& EncodedLogo::operator=(EncodedLogo&&) = default;
+ EncodedLogo::~EncodedLogo() = default;
+ 
+ Logo::Logo() = default;
+@@ -29,7 +29,7 @@ Logo::~Logo() = default;
+ 
+ LogoCallbacks::LogoCallbacks() = default;
+ LogoCallbacks::LogoCallbacks(LogoCallbacks&&) noexcept = default;
+-LogoCallbacks& LogoCallbacks::operator=(LogoCallbacks&&) noexcept = default;
++LogoCallbacks& LogoCallbacks::operator=(LogoCallbacks&&) = default;
+ LogoCallbacks::~LogoCallbacks() = default;
+ 
+ }  // namespace search_provider_logos
+diff -up chromium-78.0.3904.70/components/signin/public/identity_manager/account_info.cc.el7-noexcept chromium-78.0.3904.70/components/signin/public/identity_manager/account_info.cc
+--- chromium-78.0.3904.70/components/signin/public/identity_manager/account_info.cc.el7-noexcept	2019-10-21 15:06:30.000000000 -0400
++++ chromium-78.0.3904.70/components/signin/public/identity_manager/account_info.cc	2019-10-30 09:26:51.629050326 -0400
+@@ -57,7 +57,7 @@ CoreAccountInfo::CoreAccountInfo(CoreAcc
+ CoreAccountInfo& CoreAccountInfo::operator=(const CoreAccountInfo& other) =
+     default;
+ 
+-CoreAccountInfo& CoreAccountInfo::operator=(CoreAccountInfo&& other) noexcept =
++CoreAccountInfo& CoreAccountInfo::operator=(CoreAccountInfo&& other) =
+     default;
+ 
+ bool CoreAccountInfo::IsEmpty() const {
+@@ -74,7 +74,7 @@ AccountInfo::AccountInfo(AccountInfo&& o
+ 
+ AccountInfo& AccountInfo::operator=(const AccountInfo& other) = default;
+ 
+-AccountInfo& AccountInfo::operator=(AccountInfo&& other) noexcept = default;
++AccountInfo& AccountInfo::operator=(AccountInfo&& other) = default;
+ 
+ bool AccountInfo::IsEmpty() const {
+   return CoreAccountInfo::IsEmpty() && hosted_domain.empty() &&
+diff -up chromium-78.0.3904.70/google_apis/gaia/core_account_id.cc.el7-noexcept chromium-78.0.3904.70/google_apis/gaia/core_account_id.cc
+--- chromium-78.0.3904.70/google_apis/gaia/core_account_id.cc.el7-noexcept	2019-10-21 15:06:34.000000000 -0400
++++ chromium-78.0.3904.70/google_apis/gaia/core_account_id.cc	2019-10-30 09:26:51.630050302 -0400
+@@ -14,7 +14,7 @@ CoreAccountId::~CoreAccountId() = defaul
+ 
+ CoreAccountId& CoreAccountId::operator=(const CoreAccountId&) = default;
+ 
+-CoreAccountId& CoreAccountId::operator=(CoreAccountId&&) noexcept = default;
++CoreAccountId& CoreAccountId::operator=(CoreAccountId&&) = default;
+ 
+ CoreAccountId::CoreAccountId(const char* id) : id(id) {}
+ 
+diff -up chromium-78.0.3904.70/google_apis/gaia/core_account_id.h.el7-noexcept chromium-78.0.3904.70/google_apis/gaia/core_account_id.h
+--- chromium-78.0.3904.70/google_apis/gaia/core_account_id.h.el7-noexcept	2019-10-21 15:06:34.000000000 -0400
++++ chromium-78.0.3904.70/google_apis/gaia/core_account_id.h	2019-10-30 09:26:51.631050279 -0400
+@@ -20,7 +20,7 @@ struct CoreAccountId {
+   ~CoreAccountId();
+ 
+   CoreAccountId& operator=(const CoreAccountId&);
+-  CoreAccountId& operator=(CoreAccountId&&) noexcept;
++  CoreAccountId& operator=(CoreAccountId&&);
+ 
+   // Those implicit constructor and conversion operator allow to
+   // progressively migrate the code to use this struct. Removing
+diff -up chromium-78.0.3904.70/gpu/config/gpu_info.cc.el7-noexcept chromium-78.0.3904.70/gpu/config/gpu_info.cc
+--- chromium-78.0.3904.70/gpu/config/gpu_info.cc.el7-noexcept	2019-10-21 15:06:35.000000000 -0400
++++ chromium-78.0.3904.70/gpu/config/gpu_info.cc	2019-10-30 09:26:51.633050233 -0400
+@@ -169,7 +169,7 @@ GPUInfo::GPUDevice& GPUInfo::GPUDevice::
+     const GPUInfo::GPUDevice& other) = default;
+ 
+ GPUInfo::GPUDevice& GPUInfo::GPUDevice::operator=(
+-    GPUInfo::GPUDevice&& other) noexcept = default;
++    GPUInfo::GPUDevice&& other) = default;
+ 
+ GPUInfo::GPUInfo()
+     : optimus(false),
+diff -up chromium-78.0.3904.70/third_party/openscreen/src/osp/public/service_info.h.el7-noexcept chromium-78.0.3904.70/third_party/openscreen/src/osp/public/service_info.h
+--- chromium-78.0.3904.70/third_party/openscreen/src/osp/public/service_info.h.el7-noexcept	2019-10-21 15:09:14.000000000 -0400
++++ chromium-78.0.3904.70/third_party/openscreen/src/osp/public/service_info.h	2019-10-30 09:26:51.634050210 -0400
+@@ -21,7 +21,7 @@ struct ServiceInfo {
+   ServiceInfo(ServiceInfo&&) MAYBE_NOEXCEPT = default;
+   ServiceInfo(const ServiceInfo&) MAYBE_NOEXCEPT = default;
+ 
+-  ServiceInfo& operator=(ServiceInfo&&) MAYBE_NOEXCEPT = default;
++  ServiceInfo& operator=(ServiceInfo&&) = default;
+   ServiceInfo& operator=(const ServiceInfo&) MAYBE_NOEXCEPT = default;
+ 
+   bool operator==(const ServiceInfo& other) const;

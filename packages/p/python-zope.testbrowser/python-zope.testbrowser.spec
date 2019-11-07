@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-zope.testbrowser
-Version:        5.3.3
+Version:        5.4.0
 Release:        0
 Summary:        Programmable browser for functional black-box tests
 License:        ZPL-2.1
-Group:          Development/Languages/Python
 URL:            https://github.com/zopefoundation/zope.testbrowser
 Source:         https://files.pythonhosted.org/packages/source/z/zope.testbrowser/zope.testbrowser-%{version}.tar.gz
 Patch0:         zope.testbrowser-remove-bad-test.patch

@@ -21,7 +21,7 @@
 %define texlive_version  2019
 %define texlive_previous 2018
 %define texlive_release  20190407
-%define texlive_noarch   167
+%define texlive_noarch   168
 
 #!BuildIgnore:          texlive
 
@@ -59,7 +59,7 @@ BuildRequires:  texlive-filesystem
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for f
-License:        BSD-3-Clause AND GFDL-1.2-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND LPPL-1.0 AND LPPL-1.3c AND OFL-1.1 AND SUSE-Public-Domain AND SUSE-TeX
+License:        BSD-3-Clause and GFDL-1.2 and GPL-2.0+ and LGPL-2.1+ and LPPL-1.0 and LPPL-1.3c and OFL-1.1 and SUSE-Public-Domain and SUSE-TeX
 Group:          Productivity/Publishing/TeX/Base
 Url:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Source0:        texlive-specs-f-rpmlintrc
@@ -90,6 +90,7 @@ Requires:       tex(book.cls)
 Requires:       tex(bookmark.sty)
 Requires:       tex(color.sty)
 Requires:       tex(fancyhdr.sty)
+Requires:       tex(geometry.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(index.sty)
 Requires:       tex(kvoptions-patch.sty)
@@ -7719,10 +7720,12 @@ Recommends:     texlive-contracard-doc >= %{texlive_version}
 Provides:       tex(contracard.cls)
 Provides:       tex(contracard.sty)
 Requires:       tex(calc.sty)
+Requires:       tex(geometry.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(imakeidx.sty)
 Requires:       tex(intcalc.sty)
 Requires:       tex(textcomp.sty)
+Requires:       tex(titlesec.sty)
 Requires:       tex(tocloft.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -8023,6 +8026,12 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-cooking-units-doc >= %{texlive_version}
 Provides:       tex(cooking-units.sty)
+Requires:       tex(expl3.sty)
+Requires:       tex(fmtcount.sty)
+Requires:       tex(l3keys2e.sty)
+Requires:       tex(translations.sty)
+Requires:       tex(xfrac.sty)
+Requires:       tex(xparse.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source89:       cooking-units.tar.xz
@@ -8428,6 +8437,7 @@ Requires:       tex(hyperref.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(letltxmacro.sty)
+Requires:       tex(ntheorem.sty)
 Requires:       tex(scrbase.sty)
 Requires:       tex(xargs.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
@@ -11495,6 +11505,10 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-cqubeamer-doc >= %{texlive_version}
 Provides:       tex(cqubeamer.sty)
+Requires:       tex(bookmark.sty)
+Requires:       tex(etoolbox.sty)
+Requires:       tex(hyperref.sty)
+Requires:       tex(perpage.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source132:      cqubeamer.tar.xz
@@ -11596,6 +11610,7 @@ Requires:       tex(changepage.sty)
 Requires:       tex(courier.sty)
 Requires:       tex(ctexbook.cls)
 Requires:       tex(diagbox.sty)
+Requires:       tex(dirtree.sty)
 Requires:       tex(enumitem.sty)
 Requires:       tex(environ.sty)
 Requires:       tex(etoolbox.sty)
@@ -16978,14 +16993,17 @@ Provides:       tex(csbulletin.cls)
 Provides:       tex(csbulobalka.cls)
 Provides:       tex(csbulobalka.sty)
 Provides:       tex(csbulv1.cls)
+Requires:       tex(array.sty)
 Requires:       tex(article.cls)
 Requires:       tex(babel.sty)
 Requires:       tex(color.sty)
+Requires:       tex(fancyvrb.sty)
 Requires:       tex(fontenc.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(lmodern.sty)
 Requires:       tex(mflogo.sty)
+Requires:       tex(verbatim.sty)
 Requires:       tex(zwpagelayout.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -17655,6 +17673,7 @@ Provides:       tex(csquotes.cfg)
 Provides:       tex(csquotes.def)
 Provides:       tex(csquotes.sty)
 Requires:       tex(etoolbox.sty)
+Requires:       tex(inputenc.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -18842,6 +18861,7 @@ Requires:       tex(fancyhdr.sty)
 Requires:       tex(fancyvrb-ex.sty)
 Requires:       tex(fix-cm.sty)
 Requires:       tex(geometry.sty)
+Requires:       tex(hyperref.sty)
 Requires:       tex(l3doc.cls)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(makecell.sty)
@@ -19813,6 +19833,8 @@ Recommends:     texlive-curve2e-doc >= %{texlive_version}
 Provides:       tex(curve2e-v161.sty)
 Provides:       tex(curve2e.sty)
 Requires:       tex(color.sty)
+Requires:       tex(pict2e.sty)
+Requires:       tex(xfp.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407

@@ -22,4 +22,24 @@ trim changes file</comment>
 - Package also *.js</comment>
     <requestid>737404</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5710116b990c1559f45e17c68bbef3f8</srcmd5>
+    <version>20191101</version>
+    <time>1573164851</time>
+    <user>dimstar_suse</user>
+    <comment>- Moved ocaml-findlib.rpm.prov_req.attr.sh from ocaml to provide
+  ocamlfind() in ocaml itself
+- Handle license separately because sed w truncates output
+- Document individual file extensions
+- Move cmxs and so files to devel packages because they are not
+  used at runtime. Also, cmxs dependencies in main pkg are
+  not covered by ocaml-find-requires.sh (bsc#1154874)
+- Set VERSION unconditionally for each patch, sometimes dune picks it up
+- Pass --for-release-of-packages to dune via dune_release_pkgs=
+- Print potential BuildRequires during build
+- Package sml for camlp5
+- SLE_12 has still no license macro, package as doc instead
+- Use _smp_mflags instead of nproc for parallel build</comment>
+    <requestid>745385</requestid>
+  </revision>
 </revisionlist>

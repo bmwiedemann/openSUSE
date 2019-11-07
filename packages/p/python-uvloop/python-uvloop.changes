@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  6 10:54:23 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.14.0:
+  - Add support for Python 3.8
+  - numerous bug fixes
+
+-------------------------------------------------------------------
 Tue Sep 10 09:29:15 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.13.0:

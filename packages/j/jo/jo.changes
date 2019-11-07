@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov  6 19:10:31 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.3
+  * FIX: Escaped @ ("\@") is treated as "@"
+  * NEW: Support reading JSON array elements
+  * UPD: Add home and removable-media interfaces to snap
+  * FIX: fix unlikely crash after malloc fail when base64 encoding.
+  * NEW: Support reading nested data from pipes
+- Add new subpackage for bash-completion
+
+-------------------------------------------------------------------
 Sun Mar  3 22:05:24 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Run spec-cleaner

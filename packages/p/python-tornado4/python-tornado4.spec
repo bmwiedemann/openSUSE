@@ -16,19 +16,18 @@
 #
 
 
-%bcond_without python2
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if %python3_version_nodots >= 38
+%if %{python3_version_nodots} >= 38
 %define         skip_python3 1
 %endif
 %define         oldpython python
+%bcond_without python2
 Name:           python-tornado4
 Version:        4.5.3
 Release:        0
 Summary:        Open source version of scalable, non-blocking web server that power FriendFeed
 License:        Apache-2.0
-Group:          Development/Languages/Python
-Url:            http://www.tornadoweb.org
+URL:            http://www.tornadoweb.org
 Source:         https://files.pythonhosted.org/packages/source/t/tornado/tornado-%{version}.tar.gz
 Patch1:         tornado-testsuite_timeout.patch
 # meshed from upstream and local changes (Tornado 5 update blocked by salt)
@@ -43,6 +42,12 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python
 Requires:       python-simplejson
+Conflicts:      python-tornado-impl
+Provides:       python-tornado = %{version}
+Provides:       python-tornado-impl = %{version}
+%ifpython2
+Provides:       %{oldpython}-tornado = %{version}
+%endif
 %if 0%{?suse_version} || 0%{?fedora_version} || 0%{?rhel} >= 8
 Recommends:     python-Twisted
 Recommends:     python-pycares
@@ -74,15 +79,6 @@ Requires:       python-singledispatch
 %if 0%{?suse_version} || 0%{?fedora_version} || 0%{?rhel} >= 8
 Recommends:     python-futures
 %endif
-%endif
-Provides:       python-tornado-impl = %{version}
-Provides:       python-tornado = %{version}
-%ifpython2
-Provides:       %{oldpython}-tornado = %{version}
-Conflicts:      otherproviders(python2-tornado-impl)
-%endif
-%ifpython3
-Conflicts:      otherproviders(python3-tornado-impl)
 %endif
 %python_subpackages
 
@@ -122,7 +118,8 @@ fi
 
 %install
 %python_install
-%fdupes -s demos
+%fdupes demos
+%python_expand rm -r %{buildroot}%{$python_sitearch}/tornado/test
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check

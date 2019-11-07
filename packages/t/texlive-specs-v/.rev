@@ -415,4 +415,12 @@ Adding the LPPL as many files are licensed under this license (forwarded request
     <comment>Add updmap-map_roboto.dif to update encoding mappings (boo#1143065)</comment>
     <requestid>725617</requestid>
   </revision>
+  <revision rev="43" vrev="46">
+    <srcmd5>94218b49cbedd871d611d5a171b50e2b</srcmd5>
+    <version>unknown</version>
+    <time>1573164699</time>
+    <user>dimstar_suse</user>
+    <comment>Enhance spec file generator to catch more required style files e.g. readarray.sty for verbatimbox.sty as reported in boo#1155752</comment>
+    <requestid>745627</requestid>
+  </revision>
 </revisionlist>

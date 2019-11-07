@@ -21,7 +21,7 @@
 %define texlive_version  2019
 %define texlive_previous 2018
 %define texlive_release  20190407
-%define texlive_noarch   167
+%define texlive_noarch   168
 
 #!BuildIgnore:          texlive
 
@@ -59,7 +59,7 @@ BuildRequires:  texlive-filesystem
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for j
-License:        BSD-3-Clause AND GFDL-1.2-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND LPPL-1.0 AND OFL-1.1 AND SUSE-Public-Domain AND SUSE-TeX
+License:        BSD-3-Clause and GFDL-1.2 and GPL-2.0+ and LGPL-2.1+ and LPPL-1.0 and OFL-1.1 and SUSE-Public-Domain and SUSE-TeX
 Group:          Productivity/Publishing/TeX/Base
 Url:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Source0:        texlive-specs-j-rpmlintrc
@@ -1134,6 +1134,7 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-fnpct-doc >= %{texlive_version}
 Provides:       tex(fnpct.sty)
 Requires:       tex(l3keys2e.sty)
+Requires:       tex(scrextend.sty)
 Requires:       tex(scrlfile.sty)
 Requires:       tex(translations.sty)
 Requires:       tex(xparse.sty)
@@ -2095,6 +2096,7 @@ Provides:       tex(fontawesometwo.enc)
 Provides:       tex(ufontawesomeone.fd)
 Provides:       tex(ufontawesomethree.fd)
 Provides:       tex(ufontawesometwo.fd)
+Requires:       tex(fontspec.sty)
 Requires:       tex(ifluatex.sty)
 Requires:       tex(ifxetex.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
@@ -2665,6 +2667,7 @@ Provides:       tex(multislot.sty)
 Provides:       tex(osf2x.tex)
 Provides:       tex(xfntinst.sty)
 Requires:       tex(amstext.sty)
+Requires:       tex(color.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source53:       fontinst.tar.xz
@@ -2888,6 +2891,7 @@ Requires(posttrans): texlive >= %{texlive_version}
 Requires:       texlive-fontmfizz-fonts >= %{texlive_version}
 Recommends:     texlive-fontmfizz-doc >= %{texlive_version}
 Provides:       tex(fontmfizz.sty)
+Requires:       tex(fontspec.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source55:       fontmfizz.tar.xz
@@ -4368,6 +4372,10 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-fontwrap-doc >= %{texlive_version}
 Provides:       tex(fontwrap.sty)
+Requires:       tex(fontspec.sty)
+Requires:       tex(perltex.sty)
+Requires:       tex(xltxtra.sty)
+Requires:       tex(xunicode.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source70:       fontwrap.tar.xz
@@ -7702,6 +7710,7 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-frege-doc >= %{texlive_version}
 Provides:       tex(frege.sty)
 Requires:       tex(amssymb.sty)
+Requires:       tex(bguq.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -7946,6 +7955,8 @@ Requires:       tex(environ.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(ifxetex.sty)
+Requires:       tex(inputenc.sty)
+Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source135:      frontespizio.tar.xz
@@ -8987,7 +8998,12 @@ Provides:       tex(g-brief.cls)
 Provides:       tex(g-brief.sty)
 Provides:       tex(g-brief2.cls)
 Provides:       tex(g-brief2.sty)
+Requires:       tex(babel.sty)
+Requires:       tex(eurosym.sty)
+Requires:       tex(ifthen.sty)
+Requires:       tex(inputenc.sty)
 Requires:       tex(letter.cls)
+Requires:       tex(marvosym.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source160:      g-brief.tar.xz
@@ -11537,6 +11553,7 @@ Provides:       tex(gentombow.sty)
 Provides:       tex(pxgentombow.sty)
 Requires:       tex(atbegshi.sty)
 Requires:       tex(etoolbox.sty)
+Requires:       tex(pxatbegshi.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source209:      gentombow.tar.xz
@@ -12109,6 +12126,7 @@ Requires:       tex(amssymb.sty)
 Requires:       tex(boxedminipage.sty)
 Requires:       tex(etextools.sty)
 Requires:       tex(ltxnew.sty)
+Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407

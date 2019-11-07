@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  7 02:53:22 UTC 2019 - malcolmlewis@opensuse.org
+
+- Add gobject-introspection to build requires to ensure typelibs
+  are pulled in on install.
+- Run spec-cleaner.
+
+-------------------------------------------------------------------
 Sat Sep 21 10:34:00 UTC 2019 - martin@winter-rosenheim.de
 
 - Add frombytes.patch to use Image.frombytes instead of Image.fromstring
@@ -29,4 +36,3 @@ Mon Feb 27 20:36:35 UTC 2017 - aloisio@gmx.com
 Fri Aug 15 22:18:42 UTC 2014 - toganm@opensuse.org
 
 - Initial Packaging
-

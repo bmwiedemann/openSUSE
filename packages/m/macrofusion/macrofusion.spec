@@ -21,17 +21,16 @@ Version:        0.7.4
 Release:        0
 Summary:        GUI to combine photos to get deeper DOF or HDR
 License:        GPL-3.0-only
-Group:          Productivity/Graphics/Other
-Url:            http://sourceforge.net/projects/macrofusion/
+URL:            https://sourceforge.net/projects/macrofusion/
 Source:         https://sourceforge.net/projects/macrofusion/files/%{name}-%{version}/%{name}_%{version}.orig.tar.gz
 Patch0:         frombytes.patch
+BuildRequires:  gobject-introspection
 BuildRequires:  update-desktop-files
 Requires:       enblend-enfuse >= 4.0
 Requires:       hugin
 Requires:       python3-Pillow
 Requires:       python3-cairo
 Requires:       python3-gobject-Gdk
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -80,8 +79,8 @@ if (update-desktop-database -v &> /dev/null); then
 fi
 
 %files
-%defattr(-,root,root)
-%doc CHANGELOG LICENSE README TODO
+%license LICENSE
+%doc CHANGELOG README TODO
 # files should be path to installed files
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png

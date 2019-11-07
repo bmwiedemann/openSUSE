@@ -245,4 +245,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>744747</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>960dd5bf0ac6feb0431ed1a289f65204</srcmd5>
+    <version>10.17.0</version>
+    <time>1573164903</time>
+    <user>dimstar_suse</user>
+    <comment>- skip_no_console.patch: skip tests on build platforms where console
+  is set to a dumb terminal</comment>
+    <requestid>745498</requestid>
+  </revision>
 </revisionlist>

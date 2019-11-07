@@ -1,0 +1,20 @@
+--- tornado-5.1.1/tornado/test/testing_test.py	2018/03/16 13:18:44	1.1
++++ tornado-5.1.1/tornado/test/testing_test.py	2018/03/16 13:18:56
+@@ -68,7 +68,7 @@
+         self.io_loop.add_timeout(self.io_loop.time() + 0.00, self.stop)
+         self.wait(timeout=0.02)
+         self.io_loop.add_timeout(self.io_loop.time() + 0.03, self.stop)
+-        self.wait(timeout=0.15)
++        self.wait(timeout=0.25)
+
+     def test_multiple_errors(self):
+         with ignore_deprecation():
+@@ -255,7 +255,7 @@
+         self.finished = True
+ 
+     def test_timeout_environment_variable(self):
+-        @gen_test(timeout=0.5)
++        @gen_test(timeout=0.9)
+         def test_long_timeout(self):
+             yield gen.sleep(0.25)
+ 

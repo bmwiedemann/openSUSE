@@ -79,4 +79,14 @@
   * Make address validation faster in udp.sendto().</comment>
     <requestid>729740</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e6f39d6b56eea30db5d6b0eb8fce52f5</srcmd5>
+    <version>0.14.0</version>
+    <time>1573165019</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.0:
+  - Add support for Python 3.8
+  - numerous bug fixes</comment>
+    <requestid>745889</requestid>
+  </revision>
 </revisionlist>

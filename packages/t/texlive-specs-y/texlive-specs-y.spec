@@ -21,7 +21,7 @@
 %define texlive_version  2019
 %define texlive_previous 2018
 %define texlive_release  20190407
-%define texlive_noarch   167
+%define texlive_noarch   168
 
 #!BuildIgnore:          texlive
 
@@ -59,7 +59,7 @@ BuildRequires:  texlive-filesystem
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for y
-License:        Apache-1.0 AND Artistic-1.0 AND BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later AND LPPL-1.0 AND LPPL-1.3c AND OFL-1.1 AND SUSE-Public-Domain AND SUSE-TeX
+License:        Apache-1.0 and Artistic-1.0 and BSD-3-Clause and GPL-2.0+ and LGPL-2.1+ and LPPL-1.0 and LPPL-1.3c and OFL-1.1 and SUSE-Public-Domain and SUSE-TeX
 Group:          Productivity/Publishing/TeX/Base
 Url:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Source0:        texlive-specs-y-rpmlintrc
@@ -459,7 +459,10 @@ Provides:       tex(uninames.dat)
 Provides:       tex(utf8x.def)
 Provides:       tex(xscmr.fd)
 Provides:       tex(xsenc.def)
+Requires:       tex(graphicx.sty)
 Requires:       tex(hyperref.sty)
+Requires:       tex(inputenc.sty)
+Requires:       tex(keyval.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source5:        ucs.tar.xz
@@ -998,12 +1001,36 @@ Provides:       tex(udesoftec-bst.sty)
 Provides:       tex(udesoftec-extra.sty)
 Provides:       tex(udesoftec.cls)
 Requires:       tex(babel.sty)
+Requires:       tex(chngcntr.sty)
 Requires:       tex(csquotes.sty)
+Requires:       tex(datetime2.sty)
+Requires:       tex(enumitem.sty)
+Requires:       tex(fontenc.sty)
+Requires:       tex(footmisc.sty)
+Requires:       tex(geometry.sty)
+Requires:       tex(glossaries.sty)
+Requires:       tex(graphicx.sty)
+Requires:       tex(hypcap.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(hyphenat.sty)
+Requires:       tex(inputenc.sty)
+Requires:       tex(libertine.sty)
+Requires:       tex(listings.sty)
+Requires:       tex(marginnote.sty)
+Requires:       tex(mdframed.sty)
+Requires:       tex(microtype.sty)
+Requires:       tex(multicol.sty)
 Requires:       tex(nag.sty)
+Requires:       tex(natbib.sty)
+Requires:       tex(placeins.sty)
+Requires:       tex(ragged2e.sty)
 Requires:       tex(regexpatch.sty)
 Requires:       tex(scrbook.cls)
+Requires:       tex(scrlayer-scrpage.sty)
+Requires:       tex(tabularx.sty)
+Requires:       tex(tikz.sty)
+Requires:       tex(wallpaper.sty)
+Requires:       tex(xcolor.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -8385,6 +8412,7 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(fontenc.sty)
 Requires:       tex(fontspec.sty)
 Requires:       tex(graphicx.sty)
+Requires:       tex(hyperref.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(memoir.cls)
 Requires:       tex(natbib.sty)
@@ -9451,6 +9479,8 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-underscore-doc >= %{texlive_version}
 Provides:       tex(underscore.sty)
+Requires:       tex(chicago.sty)
+Requires:       tex(fontenc.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source56:       underscore.tar.xz
@@ -11319,12 +11349,16 @@ Requires:       tex(datetime2.sty)
 Requires:       tex(doclicense.sty)
 Requires:       tex(enumitem.sty)
 Requires:       tex(etoc.sty)
+Requires:       tex(fontenc.sty)
 Requires:       tex(fontspec.sty)
 Requires:       tex(geometry.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(helvet.sty)
 Requires:       tex(hyperref.sty)
+Requires:       tex(inputenc.sty)
 Requires:       tex(lastpage.sty)
+Requires:       tex(mathpazo.sty)
+Requires:       tex(mathptmx.sty)
 Requires:       tex(microtype.sty)
 Requires:       tex(multirow.sty)
 Requires:       tex(pdfpages.sty)
@@ -11334,6 +11368,7 @@ Requires:       tex(refcount.sty)
 Requires:       tex(scalefnt.sty)
 Requires:       tex(scrartcl.cls)
 Requires:       tex(scrlayer-scrpage.sty)
+Requires:       tex(setspace.sty)
 Requires:       tex(textcase.sty)
 Requires:       tex(translations.sty)
 Requires:       tex(translator.sty)
@@ -11713,6 +11748,7 @@ Provides:       tex(UoWthesis.cls)
 Requires:       tex(fancyhdr.sty)
 Requires:       tex(geometry.sty)
 Requires:       tex(graphicx.sty)
+Requires:       tex(hyperref.sty)
 Requires:       tex(nextpage.sty)
 Requires:       tex(report.cls)
 Requires:       tex(setspace.sty)
@@ -12071,6 +12107,7 @@ Provides:       tex(utsize10.clo)
 Provides:       tex(utsize11.clo)
 Provides:       tex(utsize12.clo)
 Requires:       tex(plext.sty)
+Requires:       tex(ptrace.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source102:      uplatex.tar.xz
@@ -13937,7 +13974,18 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-uspatent-doc >= %{texlive_version}
 Provides:       tex(uspatent.cls)
+Requires:       tex(acronym.sty)
+Requires:       tex(amsmath.sty)
+Requires:       tex(babel.sty)
+Requires:       tex(enumitem.sty)
+Requires:       tex(fontenc.sty)
+Requires:       tex(graphicx.sty)
+Requires:       tex(lmodern.sty)
+Requires:       tex(memhfixc.sty)
 Requires:       tex(memoir.cls)
+Requires:       tex(prettyref.sty)
+Requires:       tex(tikz.sty)
+Requires:       tex(xspace.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source133:      uspatent.tar.xz
@@ -14494,6 +14542,7 @@ Recommends:     texlive-uwmslide-doc >= %{texlive_version}
 Provides:       tex(uwmslide.cls)
 Requires:       tex(article.cls)
 Requires:       tex(epsfig.sty)
+Requires:       tex(times.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source143:      uwmslide.tar.xz
@@ -14577,6 +14626,7 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-uwthesis-doc >= %{texlive_version}
 Provides:       tex(uwthesis.cls)
 Requires:       tex(book.cls)
+Requires:       tex(natbib.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source145:      uwthesis.tar.xz
@@ -14821,6 +14871,8 @@ Provides:       tex(t1vlmtt.fd)
 Provides:       tex(t1vlmvtt.fd)
 Provides:       tex(ts1vlmr.fd)
 Provides:       tex(variablelm.sty)
+Requires:       tex(amsmath.sty)
+Requires:       tex(fontenc.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -17808,6 +17860,8 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-verbatimbox-doc >= %{texlive_version}
 Provides:       tex(verbatimbox.sty)
+Requires:       tex(readarray.sty)
+Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source177:      verbatimbox.tar.xz
@@ -19376,9 +19430,12 @@ Provides:       tex(vntt9.tfm)
 Provides:       tex(vnu10.tfm)
 Provides:       tex(vnvtt10.tfm)
 Provides:       tex(vps.def)
+Requires:       tex(cmap.sty)
 Requires:       tex(fontenc.sty)
+Requires:       tex(ifpdf.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(inputenc.sty)
+Requires:       tex(ucs.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source205:      vntex.tar.xz
@@ -20118,6 +20175,16 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-vocaltract-doc >= %{texlive_version}
 Provides:       tex(VocalTract.sty)
+Requires:       tex(animate.sty)
+Requires:       tex(arrayjob.sty)
+Requires:       tex(color.sty)
+Requires:       tex(fltpoint.sty)
+Requires:       tex(fp.sty)
+Requires:       tex(ifthen.sty)
+Requires:       tex(multido.sty)
+Requires:       tex(multimedia.sty)
+Requires:       tex(pst-coil.sty)
+Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source207:      vocaltract.tar.xz
@@ -20204,6 +20271,7 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-volumes-doc >= %{texlive_version}
 Provides:       tex(nowtoaux.sty)
 Provides:       tex(volumes.sty)
+Requires:       tex(scrlfile.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source209:      volumes.tar.xz
@@ -24297,6 +24365,7 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-widetable-doc >= %{texlive_version}
 Provides:       tex(widetable.sty)
+Requires:       tex(array.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -24375,6 +24444,8 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-widows-and-orphans-doc >= %{texlive_version}
 Provides:       tex(widows-and-orphans.sty)
+Requires:       tex(l3keys2e.sty)
+Requires:       tex(xparse.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source242:      widows-and-orphans.tar.xz
@@ -24708,6 +24779,8 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-witharrows-doc >= %{texlive_version}
 Provides:       tex(witharrows.sty)
 Requires:       tex(expl3.sty)
+Requires:       tex(footnote.sty)
+Requires:       tex(footnotehyper.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <param>
-  <image>obsrepositories:/opensuse/tumbleweed</image>
+  <image>obsrepositories:/opensuse/ceph/ceph#tumbleweed.nautilus</image>
+  <tags>tumbleweed.nautilus</tags>
   <name>opensuse/cephcsi/cephcsi</name>
   <prefix>org.opensuse.cephcsi</prefix>
   <title>Ceph CSI driver container</title>

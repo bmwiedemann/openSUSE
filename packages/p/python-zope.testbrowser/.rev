@@ -79,4 +79,14 @@
   * Fix another incompatibility with BeautifulSoup4 &gt;= 4.7 that could result in a SyntaxError from browser.getLink(). See issue 61.</comment>
     <requestid>717543</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>859d453a8fbc0b623ae9f2a209f37e14</srcmd5>
+    <version>5.4.0</version>
+    <time>1573165032</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.4.0:
+  * Fix a bug where browser.reload() would not follow redirects or raise exceptions for bad HTTP statuses. See issue 75.
+  * Add Python 3.8 support. See issue 80.</comment>
+    <requestid>745975</requestid>
+  </revision>
 </revisionlist>

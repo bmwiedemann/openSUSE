@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov  5 12:29:04 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.4.4
+* Various fixes
+* better location for zsh completion
+* new fish completion
+
+-------------------------------------------------------------------
+Wed Oct 23 17:28:57 CEST 2019 - ro@suse.de
+
+- fix build-requires for factory/tumbleweed
+  rsvg-convert tool is now in rsvg-convert package 
+
+-------------------------------------------------------------------
 Fri Apr 26 22:25:40 UTC 2019 - Xaver Hellauer <xaver@hellauer.bayern>
 
 - Resolve shell completion via "Supplements:", i.e. bash/zsh completion are recommends if and only if the shells are installed as well.

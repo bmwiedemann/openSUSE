@@ -74,4 +74,13 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="11" vrev="16">
+    <srcmd5>9ec8b95c1f62adb975073caa1ee5524b</srcmd5>
+    <version>1.0.0</version>
+    <time>1573164994</time>
+    <user>dimstar_suse</user>
+    <comment>Build .a files with -ffat-lto-objects to make them useful
+This also fixes the rpmlint error in Factory (forwarded request 745529 from bmwiedemann)</comment>
+    <requestid>745731</requestid>
+  </revision>
 </revisionlist>

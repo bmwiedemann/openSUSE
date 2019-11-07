@@ -12,8 +12,8 @@
     <specification>Rook container for Ceph</specification>
   </description>
   <preferences>
-    <type image="docker" derived_from="obsrepositories:/opensuse/tumbleweed">
-      <containerconfig tag="latest" additionaltags="%PKG_VERSION%,%PKG_VERSION%.%PKG_COMMIT_NUM%,%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%" maintainer="SUSE Storage Team &lt;jfajerski@suse.com&gt;" name="opensuse/rook/ceph">
+    <type image="docker" derived_from="obsrepositories:/opensuse/ceph/ceph#tumbleweed.nautilus">
+      <containerconfig tag="latest" maintainer="SUSE Storage Team &lt;jfajerski@suse.com&gt;" additionaltags="tumbleweed.nautilus,%PKG_VERSION%,%PKG_VERSION%.%PKG_COMMIT_NUM%,%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%" name="opensuse/rook/ceph">
         <entrypoint execute="/tini">
           <argument name="--"/>
           <argument name="/usr/bin/rook"/>
@@ -30,7 +30,7 @@
             <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/rook/ceph:%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%"/>
           </suse_label_helper:add_prefix>
         </labels>
-        <history author="Denis Kondratenko &lt;denis.kondratenko@suse.com&gt;">Update container history (SES-922)</history>
+        <history author="Denis Kondratenko &lt;denis.kondratenko@suse.com&gt;">Derive from ceph-image (SES-636)</history>
       </containerconfig>
     </type>
     <version>1.0.0</version>

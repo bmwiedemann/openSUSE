@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,10 +22,10 @@ Version:        1.3.8
 Release:        0
 Summary:        Recursive Hasher
 License:        MIT
-Group:          Productivity/File utilities
 URL:            https://github.com/rhash/RHash
-Source0:        RHash-%{version}.tar.gz
-Recommends:     %{name}-lang
+Source0:        https://github.com/rhash/RHash/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(openssl)
 
 %description
 RHash (Recurcive Hasher) is a console utility for computing and
@@ -45,7 +45,6 @@ Program features:
 
 %package -n librhash%{major}
 Summary:        LibRHash Shared Library
-Group:          System/Libraries
 
 %description -n librhash%{major}
 LibRHash is a professional, portable, thread-safe C library for
@@ -57,7 +56,6 @@ data for a long-term storing or transferring.
 
 %package devel
 Summary:        Headers and Static Library for LibRHash
-Group:          Development/Libraries/C and C++
 Requires:       librhash%{major} = %{version}
 Provides:       librhash-devel = %{version}
 Obsoletes:      librhash-devel < 1.3.1
@@ -78,32 +76,26 @@ This package includes LibRHash development files.
 %setup -q -n RHash-%{version}
 
 %build
-export CFLAGS="%{optflags}"
-export CXXFLAGS="%{optflags}"
-%{_configure} --prefix=%{_prefix} \
---exec-prefix=%{_prefix} \
---bindir=%{_bindir} \
---sysconfdir=%{_sysconfdir} \
---libdir=%{_libdir} \
---mandir=%{_mandir} \
---enable-lib-shared \
---enable-gettext
-
-# Parallel make_build fails on older versions
-# Use OPTLDFLAGS="" not to strip binaries.
-make ADDCFLAGS="-rdynamic" OPTLDFLAGS=""
+# repleace unwanted fomit-frame pointer with desirable optflags
+sed -i "s|-fomit-frame-pointer|%{optflags}|g" configure
+# not a autotools configure
+./configure \
+  --prefix=%{_prefix} \
+  --exec-prefix=%{_prefix} \
+  --bindir=%{_bindir} \
+  --sysconfdir=%{_sysconfdir} \
+  --libdir=%{_libdir} \
+  --mandir=%{_mandir} \
+  --enable-lib-shared \
+  --enable-gettext
+%make_build
 
 %install
 %make_install install-lib-so-link install-lib-headers install-gmo
 %find_lang %{name} %{?no_lang_C}
 
 %check
-make \
-    OPTFLAGS="%{optflags}" \
-    ADDCFLAGS="-DUSE_OPENSSL -DOPENSSL_RUNTIME -rdynamic" \
-    ADDLDFLAGS="-ldl" \
-    LD_LIBRARY_PATH="../librhash" \
-    test
+make %{?_smp_mflags} test
 
 %post -n librhash%{major} -p /sbin/ldconfig
 %postun -n librhash%{major} -p /sbin/ldconfig

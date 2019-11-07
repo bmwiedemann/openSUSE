@@ -1,0 +1,9 @@
+# 
+# Nextcloud CronJob every 15 minutes.
+#
+# Uncomment to enable it.
+
+SHELL=/bin/sh
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+
+#*/15 * * * * wwwrun /usr/bin/php -f /srv/www/htdocs/nextcloud/cron.php /dev/null 2>&1

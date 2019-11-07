@@ -9,4 +9,29 @@
 This is the python-tornado version 4 package. This is will stop working with python 3.8, so it automatically disables python 3 builds for that version.</comment>
     <requestid>722055</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3947ff6941958dfefbd482d49ea42bcf</srcmd5>
+    <version>4.5.3</version>
+    <time>1573164747</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace %fdupes -s with plain %fdupes; hardlinks are better.
+
+- Provide versioned python-tornado symbol, making this package a
+  full option in case the meta package is not applicable.
+
+- Per discussion with RM switch back to python-tornado&lt;version&gt;
+  system with python-tornado standing in as a metapkg
+
+- Provide also python-tornado symbol not just py2/py3-tornado
+
+- Add tornado-impl provide to fix the collision for OBS resolver
+  in dlpy before new python-torando containing version 6 is included
+  in openSUSE TW
+
+- Switch to pytest like approach for tornado
+- Do not install tests
+
+- Reduce the conflicts even more</comment>
+    <requestid>739041</requestid>
+  </revision>
 </revisionlist>

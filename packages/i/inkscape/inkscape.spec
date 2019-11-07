@@ -45,6 +45,8 @@ Patch5:         mr_568_extensions_python3_compatibility.patch
 Patch6:         f5e0ea893f34_extensions_python3_compatibility.patch
 # PATCH-FIX-UPSTREAM https://gitlab.com/inkscape/inkscape/merge_requests/582.patch -- fixed in 0.92.5
 Patch7:         mr_582_extensions_python3_compatibility.patch
+# PATCH-FIX-UPSTREAM inkscape-fix-for-poppler-0.82.patch -- Fix build poppler 0.82
+Patch8:         inkscape-fix-for-poppler-0.82.patch
 
 BuildRequires:  gtkspell-devel
 %if 0%{?suse_version} > 1325
@@ -235,14 +237,6 @@ rm %{name}.man-lang.tmp
 install -D -m 0644 inkscape.appdata.xml %{buildroot}%{_datadir}/metainfo/inkscape.appdata.xml
 
 %fdupes %{buildroot}
-
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
 
 # We can't really move the localized manpages to the lang package, since they'd
 # create a conflict between the lang subpackage and bundles

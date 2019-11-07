@@ -17,7 +17,7 @@
 
 
 Name:           gfxboot
-Version:        4.5.54
+Version:        4.5.55
 Release:        0
 Summary:        Graphical Boot Logo for GRUB, LILO and SYSLINUX
 License:        GPL-2.0+

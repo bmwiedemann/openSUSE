@@ -1121,4 +1121,16 @@
   * Bug fixes.</comment>
     <requestid>745553</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>e92397a1fc3ae8c20326f3ed36ca8af9</srcmd5>
+    <version>1.2.7</version>
+    <time>1573165159</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.7:
+  * Fix a crash when adding a new playlist
+    (glgo#World/lollypop#2112).
+  * Limit navigation items kept in memory to 4 views in order to
+    try to reduce memory usage (glgo#World/lollypop#2111).</comment>
+    <requestid>746082</requestid>
+  </revision>
 </revisionlist>

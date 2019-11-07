@@ -26,6 +26,7 @@
 %define mvebu_spl 0
 %define x_loader 0
 %define rockchip_spl 0
+%define rockchip_idb 0
 %define sunxi_spl 0
 %define arndale_spl 0
 %define origen_spl 0
@@ -65,13 +66,18 @@
 %endif
 %endif
 %if "%target" == "rock64-rk3328"
-%define is_armv8 1
 %define is_rk3328 1
-%define soc_name "rk3328"
+%define is_armv8 1
+%define rockchip_idb 1
 %define rockchip_spl 1
-%define rkimages rksd
+%define rkimages $()
 %endif
-%if "%target" == "evb-rk3399" || "%target" == "firefly-rk3399" || "%target" == "puma-rk3399" || "%target" == "rock960-rk3399"
+%if "%target" == "evb-rk3399" || "%target" == "firefly-rk3399" || "%target" == "rock-pi-4-rk3399"
+%define is_rk3399 1
+%define is_armv8 1
+%define rockchip_idb 1
+%endif
+%if "%target" == "puma-rk3399" || "%target" == "rock960-rk3399"
 %define is_rk3399 1
 %define is_armv8 1
 %endif
@@ -408,7 +414,7 @@ for f in u-boot u-boot.bin u-boot.dtb u-boot-dtb.bin; do
 done
 %else
 install -D -m 0644 u-boot%{binext} %{buildroot}%{uboot_dir}/u-boot%{binext}
-%if ("%{name}" == "u-boot-rock64-rk3328" || "%{name}" == "u-boot-evb-rk3399" || "%{name}" == "u-boot-firefly-rk3399") && %{with uboot_atf}
+%if ("%{name}" == "u-boot-rock64-rk3328" || "%{name}" == "u-boot-evb-rk3399" || "%{name}" == "u-boot-firefly-rk3399" || "%{name}" == "u-boot-rock-pi-4-rk3399") && %{with uboot_atf}
 install -D -m 0644 u-boot.itb %{buildroot}%{uboot_dir}/u-boot.itb
 %endif
 %if "%{name}" == "u-boot-qemu-ppce500"
@@ -434,6 +440,9 @@ install -D -m 0644 spl/u-boot-spl.bin %{buildroot}%{uboot_dir}/u-boot-spl.bin
 for t in %{rkimages}; do
     install -D -m 0644 u-boot-spl.$t %{buildroot}%{uboot_dir}/u-boot-spl.$t
 done
+%endif
+%if %rockchip_idb == 1
+install -D -m 0644 idbloader.img %{buildroot}%{uboot_dir}/idbloader.img
 %endif
 %if %sunxi_spl == 1
 install -D -m 0644 spl/sunxi-spl.bin %{buildroot}%{uboot_dir}/sunxi-spl.bin

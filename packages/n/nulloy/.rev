@@ -64,4 +64,12 @@ Fixed plugin directory (problem mentioned in SR 342476).</comment>
     <comment></comment>
     <requestid>731385</requestid>
   </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>2f0220514f3193d04a533b5e82676af1</srcmd5>
+    <version>0.8.2.pre61qt5</version>
+    <time>1573165198</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>746150</requestid>
+  </revision>
 </revisionlist>

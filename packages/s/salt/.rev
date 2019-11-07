@@ -1107,4 +1107,41 @@ let build start it or we will get libvirt errors.
   * fix-memory-leak-produced-by-batch-async-find_jobs-me.patch</comment>
     <requestid>733437</requestid>
   </revision>
+  <revision rev="94" vrev="13">
+    <srcmd5>9b4910a0146a834061b6d8955405c652</srcmd5>
+    <version>2019.2.0</version>
+    <time>1573164753</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix for aptpkg test with older mock modules
+- Added:
+  * fix-for-older-mock-module.patch
+
+- Remove wrong tests for core grain and improve debug logging
+- Use rich RPM deps to get a compatible version of tornado into the
+  buildroot.
+- Added:
+  * fix-a-wrong-rebase-in-test_core.py-180.patch
+
+- core.py: ignore wrong product_name files
+- zypperpkg: understand product type
+- Added:
+  * accumulated-changes-from-yomi-167.patch
+
+- Enable usage of downloadonly parameter for apt module
+- Added:
+  * adds-the-possibility-to-also-use-downloadonly-in-kwa.patch
+
+- Add missing 'fun' on events coming from salt-ssh wfunc executions (bsc#1151947)
+- Added:
+  * add-missing-fun-for-returns-from-wfunc-executions.patch
+
+- Fix failing unit tests for batch async
+- Added:
+  * fix-failing-unit-tests-for-batch-async.patch
+
+- Fix memory consumption problem on BatchAsync (bsc#1137642)
+- Added:
+  * use-current-ioloop-for-the-localclient-instance-of-b.patch</comment>
+    <requestid>742964</requestid>
+  </revision>
 </revisionlist>

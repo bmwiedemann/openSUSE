@@ -17,21 +17,23 @@
 
 
 Name:           zathura
-Version:        0.4.3
+Version:        0.4.4
 Release:        0
 Summary:        A customizable document viewer
 License:        Zlib
-Group:          Productivity/Office/Other
 URL:            http://pwmt.org/projects/zathura/
-Source:         http://pwmt.org/projects/zathura/download/%{name}-%{version}.tar.xz
+# main homepage looks dead
+#Source:         http://pwmt.org/projects/zathura/download/%{name}-%{version}.tar.xz
+Source:         https://git.pwmt.org/pwmt/zathura/-/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  file-devel
+BuildRequires:  fish
 BuildRequires:  libseccomp-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
-BuildRequires:  rsvg-view
+BuildRequires:  zsh
 BuildRequires:  pkgconfig(check)
 BuildRequires:  pkgconfig(girara-gtk3) >= 0.3.2
 BuildRequires:  pkgconfig(sqlite3)
@@ -40,6 +42,11 @@ Recommends:     zathura-pdf-poppler-plugin
 Suggests:       zathura-cb-plugin
 Suggests:       zathura-djvu-plugin
 Suggests:       zathura-ps-plugin
+%if 0%{?suse_version} >= 1550
+BuildRequires:  rsvg-convert
+%else
+BuildRequires:  rsvg-view
+%endif
 %if 0%{?suse_version} >= 1330
 BuildRequires:  pkgconfig(synctex)
 %endif
@@ -50,7 +57,6 @@ and space-saving interface as well as a keyboard-centric interaction.
 
 %package devel
 Summary:        Development files for zathura
-Group:          Development/Libraries/GNOME
 Requires:       %{name} = %{version}
 
 %description devel
@@ -58,23 +64,30 @@ Development and header files for the zathura package.
 
 %package bash-completion
 Summary:        Zathura Bash completion
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Requires:       bash-completion
-Supplements:    packageand(%{name}:bash)
+Supplements:    (%{name} and bash)
 
 %description bash-completion
 Optional dependency offering bash completion for zathura
 
 %package zsh-completion
 Summary:        Zathura zsh completion
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Requires:       zsh
-Supplements:    packageand(%{name}:zsh)
+Supplements:    (%{name} and zsh)
 
 %description zsh-completion
 Optional dependency offering zsh completion for zathura
+
+%package fish-completion
+Summary:        Zathura fish completion
+Requires:       %{name} = %{version}
+Requires:       fish
+Supplements:    (%{name} and fish)
+
+%description fish-completion
+Optional dependency offering fish completion for zathura
 
 %lang_package
 
@@ -85,6 +98,9 @@ Optional dependency offering zsh completion for zathura
 export CFLAGS="%{optflags}"
 %meson
 %meson_build
+
+%check
+%meson_test
 
 %install
 %meson_install
@@ -113,8 +129,10 @@ export CFLAGS="%{optflags}"
 %{_datadir}/bash-completion/completions/zathura
 
 %files zsh-completion
-%dir %{_datadir}/zsh/vendor-completions
-%{_datadir}/zsh/vendor-completions/_zathura
+%{_datadir}/zsh/site-functions/_zathura
+
+%files fish-completion
+%{_datadir}/fish/completions/zathura.fish
 
 %files lang -f %{name}.lang
 

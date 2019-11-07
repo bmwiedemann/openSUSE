@@ -1,6 +1,7 @@
 #
 # spec file for package asn1c
 #
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2014, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,15 +13,15 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           asn1c
 Version:        0.9.28
 Release:        0
 Summary:        ASN.1 Compiler
 License:        BSD-2-Clause
-Group:          Development/Libraries/C and C++
 URL:            http://lionet.info/asn1c/
 #Git-Clone:     https://github.com/vlm/asn1c.git
 Source:         https://github.com/vlm/asn1c/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz

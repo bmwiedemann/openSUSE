@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov  6 10:16:06 UTC 2019 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Kwin package name was fixed (kwin => kwin5)
+- Fixed previous changelog entry.
+
+-------------------------------------------------------------------
+Fri Nov  1 06:21:44 UTC 2019 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Leap 15.2-15.3 may become resolvable:
+  there will be no gcc >= 8 out of box at any Leap 15.*.
+
+-------------------------------------------------------------------
 Mon May 27 11:17:01 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use GCC >= 8 for suse_version > 1500 (i.e. Tumbleweed and

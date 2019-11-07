@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov  6 13:38:15 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip py2 build as we want to remove python2 only spyder
+
+-------------------------------------------------------------------
 Thu Aug 16 08:07:02 UTC 2018 - jengelh@inai.de
 
 - Trim filler wording and adjust grammar.

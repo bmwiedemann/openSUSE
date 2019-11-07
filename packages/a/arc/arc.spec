@@ -21,7 +21,6 @@ Version:        5.21q
 Release:        0
 Summary:        Archiving tool for arc achives
 License:        GPL-2.0-only
-Group:          Productivity/Archiving/Compression
 URL:            https://github.com/ani6al/arc
 Source:         https://github.com/ani6al/arc/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         arc-5.21p-directory-traversel.patch

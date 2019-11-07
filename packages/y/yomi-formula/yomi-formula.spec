@@ -137,7 +137,7 @@ done
 %dir %attr(0755, root, salt) %{fdir}/
 %dir %attr(0755, root, salt) %{fdir}/states/
 %dir %attr(0755, root, salt) %{fdir}/metadata/
-%dir %attr(0755, root, salt) %{_datadir}/%{fname}
+%dir %attr(0755, root, root) %{_datadir}/%{fname}
 %{fdir}/states/
 %{fdir}/metadata/
 %{_datadir}/%{fname}

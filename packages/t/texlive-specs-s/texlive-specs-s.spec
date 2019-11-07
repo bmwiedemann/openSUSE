@@ -21,7 +21,7 @@
 %define texlive_version  2019
 %define texlive_previous 2018
 %define texlive_release  20190407
-%define texlive_noarch   167
+%define texlive_noarch   168
 
 #!BuildIgnore:          texlive
 
@@ -59,7 +59,7 @@ BuildRequires:  texlive-filesystem
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for s
-License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later AND LPPL-1.0 AND LPPL-1.3c AND OFL-1.1 AND SUSE-Public-Domain
+License:        BSD-3-Clause and GPL-2.0+ and LGPL-2.1+ and LPPL-1.0 and LPPL-1.3c and OFL-1.1 and SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 Url:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Source0:        texlive-specs-s-rpmlintrc
@@ -302,9 +302,12 @@ Provides:       tex(treport.sty)
 Provides:       tex(tsize10.clo)
 Provides:       tex(tsize11.clo)
 Provides:       tex(tsize12.clo)
+Requires:       tex(fltrace.sty)
+Requires:       tex(latexrelease.sty)
 Requires:       tex(ltxdoc.cls)
 Requires:       tex(oldlfont.sty)
 Requires:       tex(shortvrb.sty)
+Requires:       tex(tracefnt.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source5:        platex.tar.xz
@@ -477,8 +480,11 @@ Requires:       tex(array.sty)
 Requires:       tex(atbegshi.sty)
 Requires:       tex(delarray.sty)
 Requires:       tex(everysel.sty)
+Requires:       tex(everyshi.sty)
 Requires:       tex(ftnright.sty)
+Requires:       tex(multicol.sty)
 Requires:       tex(plext.sty)
+Requires:       tex(ptrace.sty)
 Requires:       tex(uptrace.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -650,16 +656,23 @@ Provides:       tex(plextcolortbl.sty)
 Provides:       tex(plsiunitx.sty)
 Provides:       tex(pxpdfpages.sty)
 Provides:       tex(pxpgfrcs.sty)
+Requires:       tex(array.sty)
 Requires:       tex(arydshln.sty)
+Requires:       tex(colortbl.sty)
+Requires:       tex(delarray.sty)
 Requires:       tex(doc.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(filehook.sty)
+Requires:       tex(pdfpages.sty)
 Requires:       tex(pgfrcs.sty)
 Requires:       tex(plarray.sty)
 Requires:       tex(plext.sty)
 Requires:       tex(plextarray.sty)
+Requires:       tex(plextdelarray.sty)
 Requires:       tex(pxatbegshi.sty)
 Requires:       tex(pxeveryshi.sty)
+Requires:       tex(pxmulticol.sty)
+Requires:       tex(siunitx.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source10:       plautopatch.tar.xz
@@ -4830,6 +4843,11 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-pm-isomath-doc >= %{texlive_version}
 Provides:       tex(pm-isomath.sty)
+Requires:       tex(alphabeta.sty)
+Requires:       tex(amsmath.sty)
+Requires:       tex(etoolbox.sty)
+Requires:       tex(iftex.sty)
+Requires:       tex(xparse.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source28:       pm-isomath.tar.xz
@@ -8652,9 +8670,11 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-pracjourn-doc >= %{texlive_version}
 Provides:       tex(pracjourn.cls)
 Requires:       tex(color.sty)
+Requires:       tex(fontenc.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(lmodern.sty)
+Requires:       tex(mathpazo.sty)
 Requires:       tex(microtype.sty)
 Requires:       tex(textcomp.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
@@ -9871,6 +9891,7 @@ Provides:       tex(prshowbox.def)
 Provides:       tex(prshowlabels.def)
 Provides:       tex(prtightpage.def)
 Provides:       tex(prtracingall.def)
+Requires:       tex(luatex85.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source87:       preview.tar.xz
@@ -11088,6 +11109,7 @@ Provides:       tex(proposal.cls)
 Provides:       tex(reporting.cls)
 Requires:       tex(amssymb.sty)
 Requires:       tex(array.sty)
+Requires:       tex(babel.sty)
 Requires:       tex(biblatex.sty)
 Requires:       tex(boxedminipage.sty)
 Requires:       tex(chngcntr.sty)
@@ -11098,12 +11120,14 @@ Requires:       tex(ed.sty)
 Requires:       tex(eurosym.sty)
 Requires:       tex(fancyhdr.sty)
 Requires:       tex(geometry.sty)
+Requires:       tex(gitinfo2.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(helvet.sty)
 Requires:       tex(longtable.sty)
 Requires:       tex(mdframed.sty)
 Requires:       tex(paralist.sty)
 Requires:       tex(rotating.sty)
+Requires:       tex(svninfo.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(url.sty)
@@ -11286,6 +11310,7 @@ Requires:       tex(mathpazo.sty)
 Requires:       tex(multido.sty)
 Requires:       tex(palatino.sty)
 Requires:       tex(pst-grad.sty)
+Requires:       tex(pst-slpe.sty)
 Requires:       tex(semhelv.sty)
 Requires:       tex(seminar.cls)
 Requires:       tex(times.sty)
@@ -11615,7 +11640,9 @@ Recommends:     texlive-przechlewski-book-doc >= %{texlive_version}
 Provides:       tex(upmgr.cls)
 Provides:       tex(wkmgr.cls)
 Requires:       tex(caption.sty)
+Requires:       tex(graphicx.sty)
 Requires:       tex(polski.sty)
+Requires:       tex(prelim2e.sty)
 Requires:       tex(report.cls)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -12081,6 +12108,7 @@ Recommends:     texlive-psfragx-doc >= %{texlive_version}
 Provides:       tex(psfragx.cfg)
 Provides:       tex(psfragx.sty)
 Requires:       tex(graphicx.sty)
+Requires:       tex(overpic.sty)
 Requires:       tex(psfrag.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407

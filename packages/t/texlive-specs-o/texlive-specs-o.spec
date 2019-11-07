@@ -21,7 +21,7 @@
 %define texlive_version  2019
 %define texlive_previous 2018
 %define texlive_release  20190407
-%define texlive_noarch   167
+%define texlive_noarch   168
 
 #!BuildIgnore:          texlive
 
@@ -59,7 +59,7 @@ BuildRequires:  texlive-filesystem
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for o
-License:        BSD-3-Clause AND GFDL-1.2-only AND GPL-2.0-or-later AND LPPL-1.0 AND OFL-1.1 AND SUSE-Public-Domain AND SUSE-TeX
+License:        BSD-3-Clause and GFDL-1.2 and GPL-2.0+ and LPPL-1.0 and OFL-1.1 and SUSE-Public-Domain and SUSE-TeX
 Group:          Productivity/Publishing/TeX/Base
 Url:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Source0:        texlive-specs-o-rpmlintrc
@@ -1602,6 +1602,7 @@ Requires:       tex(beton.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(euler.sty)
 Requires:       tex(graphicx.sty)
+Requires:       tex(ifthen.sty)
 Requires:       tex(letter.cls)
 Requires:       tex(makeidx.sty)
 Requires:       tex(minitoc.sty)
@@ -1759,6 +1760,7 @@ Provides:       tex(ltxtools-trace.sty)
 Provides:       tex(ltxtools.sty)
 Requires:       tex(atveryend.sty)
 Requires:       tex(catoptions.sty)
+Requires:       tex(fp.sty)
 Requires:       tex(ltxkeys.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -3302,6 +3304,7 @@ Provides:       tex(lualatex-math.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(filehook.sty)
+Requires:       tex(luatexbase.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source64:       lualatex-math.tar.xz
@@ -3384,6 +3387,7 @@ Recommends:     texlive-lualatex-truncate-doc >= %{texlive_version}
 Provides:       tex(lualatex-truncate.sty)
 Requires:       tex(iftex.sty)
 Requires:       tex(letltxmacro.sty)
+Requires:       tex(truncate.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source66:       lualatex-truncate.tar.xz
@@ -4591,6 +4595,7 @@ Provides:       tex(luatexja.sty)
 Requires:       tex(array.sty)
 Requires:       tex(atbegshi.sty)
 Requires:       tex(etoolbox.sty)
+Requires:       tex(everyhook.sty)
 Requires:       tex(everysel.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(filehook.sty)
@@ -4796,6 +4801,7 @@ Requires:       tex(everysel.sty)
 Requires:       tex(fontspec.sty)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(kolabels-utf.sty)
+Requires:       tex(konames-utf.sty)
 Requires:       tex(luaotfload.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -5668,6 +5674,7 @@ Requires:       tex(expl3.sty)
 Requires:       tex(filecontents.sty)
 Requires:       tex(float.sty)
 Requires:       tex(fontenc.sty)
+Requires:       tex(fontspec.sty)
 Requires:       tex(footnote.sty)
 Requires:       tex(geometry.sty)
 Requires:       tex(gettitlestring.sty)
@@ -5687,6 +5694,7 @@ Requires:       tex(makeidx.sty)
 Requires:       tex(manyfoot.sty)
 Requires:       tex(metalogo.sty)
 Requires:       tex(microtype.sty)
+Requires:       tex(mtcoff.sty)
 Requires:       tex(multicol.sty)
 Requires:       tex(musicography.sty)
 Requires:       tex(nccfoots.sty)
@@ -6800,6 +6808,7 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-m-tx-doc >= %{texlive_version}
 Provides:       tex(mtx.tex)
 Provides:       tex(mtxlatex.sty)
+Requires:       tex(etex.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source110:      m-tx.tar.xz
@@ -8822,6 +8831,7 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-manuscript-doc >= %{texlive_version}
 Provides:       tex(manuscript.sty)
 Requires:       tex(fontenc.sty)
+Requires:       tex(fullpage.sty)
 Requires:       tex(ragged2e.sty)
 Requires:       tex(setspace.sty)
 Requires:       tex(soul.sty)
@@ -13952,6 +13962,7 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-mathfont-doc >= %{texlive_version}
 Provides:       tex(mathfont.sty)
+Requires:       tex(fontspec.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source199:      mathfont.tar.xz
@@ -14435,6 +14446,7 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-mathspec-doc >= %{texlive_version}
 Provides:       tex(mathspec.sty)
+Requires:       tex(MnSymbol.sty)
 Requires:       tex(amstext.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(fontspec.sty)
@@ -15826,9 +15838,11 @@ Provides:       tex(mdsymbol-e.enc)
 Provides:       tex(mdsymbol-f.enc)
 Provides:       tex(mdsymbol.map)
 Provides:       tex(mdsymbol.sty)
+Requires:       tex(amsmath.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(fltpoint.sty)
+Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -16176,6 +16190,7 @@ Requires:       tex(expl3.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(ocgbase.sty)
 Requires:       tex(pdftexcmds.sty)
+Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -16599,6 +16614,8 @@ Provides:       tex(memoir.cls)
 Requires:       tex(array.sty)
 Requires:       tex(dcolumn.sty)
 Requires:       tex(delarray.sty)
+Requires:       tex(etex.sty)
+Requires:       tex(fontenc.sty)
 Requires:       tex(ifetex.sty)
 Requires:       tex(ifluatex.sty)
 Requires:       tex(ifpdf.sty)
@@ -16939,6 +16956,7 @@ Requires:       tex(array.sty)
 Requires:       tex(article.cls)
 Requires:       tex(datetime2-calc.sty)
 Requires:       tex(datetime2.sty)
+Requires:       tex(geometry.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(lmodern.sty)
 Requires:       tex(textcomp.sty)

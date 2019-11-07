@@ -1,0 +1,88 @@
+From f9e7ace2f7c56a7fb4df60a048131dbd6887340b Mon Sep 17 00:00:00 2001
+From: Jochen Breuer <jbreuer@suse.de>
+Date: Fri, 27 Sep 2019 11:33:47 +0200
+Subject: [PATCH] Adds the possibility to also use downloadonly in kwargs
+
+The download_only parameter in the apt module is not in line with
+the yum and zypper modules. Both of them use downloadonly without
+the underline.
+
+With this change apt now additionally supports the downloadonly
+parameter.
+
+Fixes #54790
+---
+ salt/modules/aptpkg.py            |  7 ++++---
+ tests/unit/modules/test_aptpkg.py | 30 ++++++++++++++++++++++++++++++
+ 2 files changed, 34 insertions(+), 3 deletions(-)
+
+diff --git a/salt/modules/aptpkg.py b/salt/modules/aptpkg.py
+index a11bb51c16..1a60255a1d 100644
+--- a/salt/modules/aptpkg.py
++++ b/salt/modules/aptpkg.py
+@@ -1054,8 +1054,9 @@ def upgrade(refresh=True, dist_upgrade=False, **kwargs):
+         Skip refreshing the package database if refresh has already occurred within
+         <value> seconds
+ 
+-    download_only
+-        Only download the packages, don't unpack or install them
++    download_only (or downloadonly)
++        Only download the packages, don't unpack or install them. Use
++        downloadonly to be in line with yum and zypper module.
+ 
+         .. versionadded:: 2018.3.0
+ 
+@@ -1086,7 +1087,7 @@ def upgrade(refresh=True, dist_upgrade=False, **kwargs):
+         cmd.append('--force-yes')
+     if kwargs.get('skip_verify', False):
+         cmd.append('--allow-unauthenticated')
+-    if kwargs.get('download_only', False):
++    if kwargs.get('download_only', False) or kwargs.get('downloadonly', False):
+         cmd.append('--download-only')
+ 
+     cmd.append('dist-upgrade' if dist_upgrade else 'upgrade')
+diff --git a/tests/unit/modules/test_aptpkg.py b/tests/unit/modules/test_aptpkg.py
+index 85360da181..d3fac5902a 100644
+--- a/tests/unit/modules/test_aptpkg.py
++++ b/tests/unit/modules/test_aptpkg.py
+@@ -393,6 +393,36 @@ class AptPkgTestCase(TestCase, LoaderModuleMockMixin):
+                 with patch.multiple(aptpkg, **patch_kwargs):
+                     self.assertEqual(aptpkg.upgrade(), dict())
+ 
++    def test_upgrade_downloadonly(self):
++        '''
++        Tests the download-only options for upgrade.
++        '''
++        with patch('salt.utils.pkg.clear_rtag', MagicMock()):
++            with patch('salt.modules.aptpkg.list_pkgs',
++                       MagicMock(return_value=UNINSTALL)):
++                mock_cmd = MagicMock(return_value={
++                    'retcode': 0,
++                    'stdout': UPGRADE
++                })
++                patch_kwargs = {
++                    '__salt__': {
++                        'config.get': MagicMock(return_value=True),
++                        'cmd.run_all': mock_cmd
++                    },
++                }
++                with patch.multiple(aptpkg, **patch_kwargs):
++                    aptpkg.upgrade()
++                    args_matching = [True for args in patch_kwargs['__salt__']['cmd.run_all'].call_args.args if "--download-only" in args]
++                    self.assertFalse(any(args_matching))
++
++                    aptpkg.upgrade(downloadonly=True)
++                    args_matching = [True for args in patch_kwargs['__salt__']['cmd.run_all'].call_args.args if "--download-only" in args]
++                    self.assertTrue(any(args_matching))
++
++                    aptpkg.upgrade(download_only=True)
++                    args_matching = [True for args in patch_kwargs['__salt__']['cmd.run_all'].call_args.args if "--download-only" in args]
++                    self.assertTrue(any(args_matching))
++
+     def test_show(self):
+         '''
+         Test that the pkg.show function properly parses apt-cache show output.
+-- 
+2.16.4
+
+

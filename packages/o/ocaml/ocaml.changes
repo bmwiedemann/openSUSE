@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Nov  1 12:34:56 UTC 2019 - ohering@suse.de
+
+- Use ocaml-rpm-macros to decide about native or bytecode build
+- Move ocaml-findlib.rpm.prov_req.attr.sh to ocaml-rpm-macros
+- Provide META files for ocamlfind() provides, which are now
+  created via ocaml-rpm-macros
+- Provide baseversion in ocaml(compiler)/ocaml(ocaml.opt)
+- Preserve fomit-frame-pointer again on ix86
+- Remove usage of USE_INTERP_RESULT, nothing seems to check for it
+- Use results from pkgconfig(x11) for CFLAGS/LDFLAGS
+- Use make_build/make_install, no parallel build yet
+- Remove BYTECCRPATH, NATIVECCRPATH and MKSHAREDLIBRPATH
+- Remove dead code which checked for libasmrun_pic.a (#7595)
+- Remove code that populated compiler-libs
+
+-------------------------------------------------------------------
 Mon Sep 30 12:34:56 UTC 2019 - ohering@suse.de
 
 - moved ocaml-rpm-macros from ocaml.spec to separate pkg

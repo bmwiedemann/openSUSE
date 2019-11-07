@@ -21,7 +21,7 @@
 %define texlive_version  2019
 %define texlive_previous 2018
 %define texlive_release  20190407
-%define texlive_noarch   167
+%define texlive_noarch   168
 
 #!BuildIgnore:          texlive
 
@@ -59,7 +59,7 @@ BuildRequires:  texlive-filesystem
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for t
-License:        Apache-1.0 AND BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later AND LPPL-1.0 AND OFL-1.1 AND SUSE-Public-Domain AND SUSE-TeX
+License:        Apache-1.0 and BSD-3-Clause and GPL-2.0+ and LGPL-2.1+ and LPPL-1.0 and OFL-1.1 and SUSE-Public-Domain and SUSE-TeX
 Group:          Productivity/Publishing/TeX/Base
 Url:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Source0:        texlive-specs-t-rpmlintrc
@@ -796,6 +796,8 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-pst-qtree-doc >= %{texlive_version}
 Provides:       tex(pst-qtree.sty)
 Provides:       tex(pst-qtree.tex)
+Requires:       tex(pst-node.sty)
+Requires:       tex(pst-tree.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source17:       pst-qtree.tar.xz
@@ -3078,6 +3080,7 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-pstool-doc >= %{texlive_version}
 Provides:       tex(pstool.sty)
+Requires:       tex(preview.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source68:       pstool.tar.xz
@@ -3293,13 +3296,16 @@ Requires:       tex(fancyvrb.sty)
 Requires:       tex(filecontents.sty)
 Requires:       tex(fontenc.sty)
 Requires:       tex(footmisc.sty)
+Requires:       tex(geometry.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(ifluatex.sty)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(iftex.sty)
 Requires:       tex(ifxetex.sty)
+Requires:       tex(libertinus-otf.sty)
 Requires:       tex(lscape.sty)
 Requires:       tex(makeidx.sty)
+Requires:       tex(manfnt.sty)
 Requires:       tex(multido.sty)
 Requires:       tex(nameref.sty)
 Requires:       tex(paralist.sty)
@@ -3325,6 +3331,7 @@ Requires:       tex(showexpl.sty)
 Requires:       tex(subfig.sty)
 Requires:       tex(tabularx.sty)
 Requires:       tex(textcomp.sty)
+Requires:       tex(unicode-math.sty)
 Requires:       tex(varioref.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
@@ -5642,6 +5649,8 @@ Provides:       tex(pxbsjc.def)
 Provides:       tex(pxbsjc1.def)
 Provides:       tex(pxjsfenc.def)
 Provides:       tex(upkcat.sty)
+Requires:       tex(babel.sty)
+Requires:       tex(bxbase.sty)
 Requires:       tex(ifptex.sty)
 Requires:       tex(ifuptex.sty)
 Requires:       tex(rlbabel.def)
@@ -6553,6 +6562,7 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-pxjodel-doc >= %{texlive_version}
 Provides:       tex(pxjodel.sty)
 Requires:       tex(ifuptex.sty)
+Requires:       tex(otf.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -8426,10 +8436,13 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-pythontex-doc >= %{texlive_version}
 Provides:       tex(pythontex.sty)
+Requires:       tex(currfile.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(fvextra.sty)
 Requires:       tex(newfloat.sty)
 Requires:       tex(pgfopts.sty)
+Requires:       tex(upquote.sty)
+Requires:       tex(xcolor.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -8532,6 +8545,7 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-qcircuit-doc >= %{texlive_version}
 Provides:       tex(qcircuit.sty)
+Requires:       tex(ifpdf.sty)
 Requires:       tex(xy.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -8998,6 +9012,8 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-qsharp-doc >= %{texlive_version}
 Provides:       tex(qsharp.sty)
+Requires:       tex(listings.sty)
+Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source146:      qsharp.tar.xz
@@ -9161,6 +9177,7 @@ Provides:       tex(qsymbols.sty)
 Requires:       tex(amsbsy.sty)
 Requires:       tex(amssymb.sty)
 Requires:       tex(stmaryrd.sty)
+Requires:       tex(xy.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source150:      qsymbols.tar.xz
@@ -13428,6 +13445,9 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-rec-thy-doc >= %{texlive_version}
 Provides:       tex(rec-thy.sty)
+Requires:       tex(amsfonts.sty)
+Requires:       tex(amsmath.sty)
+Requires:       tex(amssymb.sty)
 Requires:       tex(enumitem.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(hyperref.sty)
@@ -13435,7 +13455,11 @@ Requires:       tex(ifmtarg.sty)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(ltxcmds.sty)
+Requires:       tex(mathbbol.sty)
+Requires:       tex(mathrsfs.sty)
+Requires:       tex(mathtools.sty)
 Requires:       tex(suffix.sty)
+Requires:       tex(unicode-math.sty)
 Requires:       tex(xifthen.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xparse.sty)
@@ -14543,6 +14567,7 @@ Requires:       tex(calc.sty)
 Requires:       tex(float.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(ifthen.sty)
+Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source228:      register.tar.xz
@@ -14626,6 +14651,7 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-regstats-doc >= %{texlive_version}
 Provides:       tex(regstats.sty)
 Requires:       tex(atveryend.sty)
+Requires:       tex(etex.sty)
 Requires:       tex(ifluatex.sty)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(intcalc.sty)
@@ -14709,6 +14735,7 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-reledmac-doc >= %{texlive_version}
 Provides:       tex(reledmac.sty)
 Provides:       tex(reledpar.sty)
+Requires:       tex(etex.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(ifluatex.sty)
 Requires:       tex(ifxetex.sty)
@@ -15000,6 +15027,7 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-relsize-doc >= %{texlive_version}
 Provides:       tex(relsize.sty)
+Requires:       tex(type1cm.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source236:      relsize.tar.xz
@@ -15777,8 +15805,11 @@ Requires:       tex(babel.sty)
 Requires:       tex(braket.sty)
 Requires:       tex(color.sty)
 Requires:       tex(etoolbox.sty)
+Requires:       tex(fontspec.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(hyperref.sty)
+Requires:       tex(iftex.sty)
+Requires:       tex(ifthen.sty)
 Requires:       tex(letltxmacro.sty)
 Requires:       tex(listings.sty)
 Requires:       tex(mathpazo.sty)
@@ -15889,6 +15920,7 @@ Provides:       tex(revtex4-1.cls)
 Provides:       tex(revtex4-2.cls)
 Provides:       tex(sor4-2.rtx)
 Requires:       tex(fleqn.clo)
+Requires:       tex(hyperref.sty)
 Requires:       tex(lineno.sty)
 Requires:       tex(natbib.sty)
 Requires:       tex(shortvrb.sty)
@@ -16046,6 +16078,7 @@ Provides:       tex(aps.rtx)
 Provides:       tex(revsymb.sty)
 Provides:       tex(revtex4.cls)
 Provides:       tex(rmp.rtx)
+Requires:       tex(hyperref.sty)
 Requires:       tex(natbib.sty)
 Requires:       tex(url.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
@@ -16556,6 +16589,15 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-rmpage-doc >= %{texlive_version}
 Provides:       tex(rmpage.sty)
 Provides:       tex(rmpgen.cfg)
+Requires:       tex(avant.sty)
+Requires:       tex(beton.sty)
+Requires:       tex(bookman.sty)
+Requires:       tex(chancery.sty)
+Requires:       tex(helvet.sty)
+Requires:       tex(newcent.sty)
+Requires:       tex(palatino.sty)
+Requires:       tex(times.sty)
+Requires:       tex(utopia.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source271:      rmpage.tar.xz

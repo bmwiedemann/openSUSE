@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  5 08:38:31 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- skip_no_console.patch: skip tests on build platforms where console
+  is set to a dumb terminal
+
+-------------------------------------------------------------------
 Thu Oct 24 13:37:11 UTC 2019 - Adam Majer <adam.majer@suse.de>
 
 - New upstream LTS version 10.17.0:

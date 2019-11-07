@@ -1,0 +1,15 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/eclipse/jetty.toolchain.git</param>
+		<param name="revision">jetty-schemas-4.0.3</param>
+		<param name="versionformat">4.0.3</param>
+		<param name="subdir">jetty-schemas</param>
+		<param name="filename">jetty-schemas</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

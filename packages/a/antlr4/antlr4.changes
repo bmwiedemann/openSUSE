@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Nov  2 21:55:47 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Added Java build
+  * antlr4-java -> Java runtime package
+  * antlr4-tool -> antlr4 grammar compiler
+  * antlr4-maven-plugin -> plugin to generate antlr4 parsers in
+    maven build
+  * antlr4-javadoc -> documentation
+
+-------------------------------------------------------------------
+Thu Oct 17 13:11:57 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
 Sun Jun  2 18:10:24 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Avoid name repetition in summaries.

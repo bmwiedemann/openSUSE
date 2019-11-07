@@ -22,7 +22,6 @@ Version:        0.39.0
 Release:        0
 Summary:        Commandline Tool for Managing File Archives of various Types
 License:        GPL-2.0-or-later
-Group:          Productivity/Archiving/Compression
 URL:            http://www.nongnu.org/atool/
 Source0:        http://download-mirror.savannah.gnu.org/releases/atool/atool-%{version}.tar.gz
 Source1:        http://download-mirror.savannah.gnu.org/releases/atool/atool-%{version}.tar.gz.sig

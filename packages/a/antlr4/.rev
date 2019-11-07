@@ -7,4 +7,19 @@
     <comment>.</comment>
     <requestid>707026</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ec2b472750d8e8b2da487dcd84fd53dc</srcmd5>
+    <version>4.7.2</version>
+    <time>1573165182</time>
+    <user>dimstar_suse</user>
+    <comment>- Added Java build
+  * antlr4-java -&gt; Java runtime package
+  * antlr4-tool -&gt; antlr4 grammar compiler
+  * antlr4-maven-plugin -&gt; plugin to generate antlr4 parsers in
+    maven build
+  * antlr4-javadoc -&gt; documentation
+
+- Remove obsolete Groups tag (fate#326485)</comment>
+    <requestid>746117</requestid>
+  </revision>
 </revisionlist>

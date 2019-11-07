@@ -17,10 +17,11 @@
 
 
 Name:           QMPlay2
-Version:        19.09.03
+Version:        19.11.06
 Release:        0
 Summary:        A Qt based media player, streamer and downloader
 License:        LGPL-3.0-or-later
+Group:          Productivity/Multimedia/Video/Players
 URL:            https://github.com/zaps166/QMPlay2
 Source:         https://github.com/zaps166/QMPlay2/releases/download/%{version}/QMPlay2-src-%{version}.tar.xz
 %if 0%{?suse_version} > 1320
@@ -41,7 +42,7 @@ BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(libass)
-BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavcodec) >= 58.18.100
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
@@ -72,6 +73,7 @@ browser.
 
 %package        devel
 Summary:        %{name} development files
+Group:          Development/Libraries/Other
 Requires:       %{name} = %{version}
 
 %description    devel
@@ -87,7 +89,7 @@ test -x "$(type -p gcc-7)" && export CC="$_"
 test -x "$(type -p g++-7)" && export CXX="$_"
 %cmake \
   -DUSE_PROSTOPLEER=OFF \
-  -DSOLID_ACTIONS_INSTALL_PATH="/usr/share/solid/actions" \
+  -DSOLID_ACTIONS_INSTALL_PATH="/usr/share/solid/actions"
 %make_jobs
 
 %install
@@ -114,7 +116,8 @@ gunzip -S svgz %{buildroot}/%{_datadir}/icons/hicolor/scalable/apps/%{name}.svgz
 %mime_database_postun
 
 %files
-%doc LICENSE README.md
+%doc README.md
+%license LICENSE
 %{_bindir}/%{name}
 %{_libdir}/qmplay2
 %{_libdir}/libqmplay2.so

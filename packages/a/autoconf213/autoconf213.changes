@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 17 13:56:04 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
 Thu Feb  9 12:16:15 UTC 2017 - dimstar@opensuse.org
 
 - Explicitly BuildRequire m4: do not rely on the build system to

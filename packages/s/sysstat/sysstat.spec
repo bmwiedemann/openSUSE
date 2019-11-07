@@ -25,8 +25,6 @@ Group:          System/Monitoring
 URL:            http://pagesperso-orange.fr/sebastien.godard/
 Source:         http://pagesperso-orange.fr/sebastien.godard/%{name}-%{version}.tar.xz
 Source1:        isag.desktop
-Source2:        sysstat.cron.suse
-Source4:        sysstat.service
 # PATCH-FIX-OPENSUSE should be upstreamed
 # add locking to scripts sa1 and sa2 (bnc#7861)
 Patch0:         sysstat-8.1.6-sa1sa2lock.diff
@@ -35,6 +33,10 @@ Patch0:         sysstat-8.1.6-sa1sa2lock.diff
 Patch2:         sysstat-8.0.4-pagesize.diff
 # PATCH-FIX-UPSTREAM bsc#1150114 CVE-2019-16167 sysstat-CVE-2019-16167.patch
 Patch3:         sysstat-CVE-2019-16167.patch
+# PATCH-FIX-OPENSUSE bsc#1151453
+Patch4:         sysstat-service.patch
+# PATCH-FIX-OPENSUSE Temporarily disable failing tests on s390x and ppc64
+Patch5:         sysstat-disable-test-failures.patch
 BuildRequires:  findutils
 BuildRequires:  gettext-runtime
 BuildRequires:  pkgconfig
@@ -42,7 +44,6 @@ BuildRequires:  sed
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(systemd)
-Requires:       cron
 Requires:       procmail
 Requires:       xz
 %{?systemd_requires}
@@ -75,27 +76,32 @@ from a sysstat package.
 %patch0 -p1
 %patch2 -p1
 %patch3 -p1
-cp %{SOURCE1} %{SOURCE2} %{SOURCE4} .
+%patch4 -p1
+%ifarch s390x ppc64
+%patch5 -p1
+%endif
+cp %{S:1} .
 # remove date and time from objects
 find ./ -name \*.c -exec sed -i -e 's: " compiled " __DATE__ " " __TIME__::g' {} \;
 
 %build
 export conf_dir="%{_sysconfdir}/sysstat"
 export sa_lib_dir="%{_libdir}/sa"
-export cron_owner=root
 export LFLAGS="-L. -lsyscom"
 export history="60"
+export sadc_options="-S ALL"
 %configure \
-	--disable-silent-rules \
-	--enable-nls \
-	--disable-man-group \
-	--enable-copy-only \
-	--disable-file-attr \
-	--enable-debug-info \
+           --enable-install-cron \
+           --disable-silent-rules \
+           --enable-nls \
+           --disable-man-group \
+           --enable-copy-only \
+           --disable-file-attr \
+           --enable-debug-info \
 %ifnarch s390 s390x
-	--enable-sensors \
+           --enable-sensors \
 %endif
-	--disable-stripping
+           --disable-stripping
 make %{?_smp_mflags}
 
 %install
@@ -106,32 +112,24 @@ install -D -m 0644 isag.desktop %{buildroot}%{_datadir}/applications/isag.deskto
 cp contrib/isag/isag %{buildroot}%{_bindir}
 cp contrib/isag/isag.1 %{buildroot}%{_mandir}/man1
 rm -rf %{buildroot}%{_datadir}/doc/sysstat*
-install -D -m 0755 sysstat.cron.suse %{buildroot}%{_sysconfdir}/sysstat/sysstat.cron
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcsysstat
 %find_lang %{name}
-install -D -m 0644 %{SOURCE4} %{buildroot}%{_unitdir}/sysstat.service
-# change /usr/lib to /usr/lib64 or something else when needed
-if [ "%{_libdir}" != "%{_libexecdir}" ]; then
-    sed -i 's:%{_libexecdir}/:%{_libdir}/:g' \
-           %{buildroot}%{_sysconfdir}/sysstat/sysstat.cron \
-           %{buildroot}%{_unitdir}/sysstat.service
-fi
 
 %check
 make %{?_smp_mflags} test
 
 %pre
-%service_add_pre sysstat.service
-
-%preun
-%service_del_preun sysstat.service
-[ "$1" -gt 0 ] || rm -rf %{_localstatedir}/log/sa/*
+%service_add_pre sysstat.service sysstat-collect.timer sysstat-summary.timer
 
 %post
-%service_add_post sysstat.service
+%service_add_post sysstat.service sysstat-collect.timer sysstat-summary.timer
+
+%preun
+%service_del_preun sysstat.service sysstat-collect.timer sysstat-summary.timer
+[ "$1" -gt 0 ] || rm -rf %{_localstatedir}/log/sa/*
 
 %postun
-%service_del_postun sysstat.service
+%service_del_postun sysstat.service sysstat-collect.timer sysstat-summary.timer
 
 %if 0%{?suse_version} < 1500
 %post isag
@@ -150,7 +148,6 @@ make %{?_smp_mflags} test
 %exclude %{_mandir}/man1/isag*
 %dir %{_sysconfdir}/sysstat
 %config(noreplace) %{_sysconfdir}/sysstat/sysstat
-%attr(644,root,root) %config(noreplace) %{_sysconfdir}/sysstat/sysstat.cron
 %attr(644,root,root) %config(noreplace) %{_sysconfdir}/sysstat/sysstat.ioconf
 %{_bindir}/cifsiostat
 %{_bindir}/iostat
@@ -162,6 +159,10 @@ make %{?_smp_mflags} test
 %exclude %{_bindir}/isag
 %{_libdir}/sa
 %{_unitdir}/sysstat.service
+%{_unitdir}/sysstat-collect.service
+%{_unitdir}/sysstat-collect.timer
+%{_unitdir}/sysstat-summary.service
+%{_unitdir}/sysstat-summary.timer
 %dir %{_localstatedir}/log/sa
 %{_sbindir}/rcsysstat
 

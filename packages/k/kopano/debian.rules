@@ -15,9 +15,11 @@ INSTDIR = debian/tmp
 
 override_dh_auto_configure:
 	autoreconf -fi
+	dh_auto_configure -Bpy2 -- ${CONFFLAGS} PYTHON="$$(which python2)" PYTHON_CFLAGS="$$(pkg-config python2 --cflags)" PYTHON_LIBS="$$(pkg-config python2 --libs)"
 	dh_auto_configure -Bpy3 -- ${CONFFLAGS} PYTHON="$$(which python3)" PYTHON_CFLAGS="$$(pkg-config python3 --cflags)" PYTHON_LIBS="$$(pkg-config python3 --libs)"
 
 override_dh_auto_build:
+	dh_auto_build -Bpy2 -- V=1
 	dh_auto_build -Bpy3 -- V=1
 
 override_dh_systemd_start:
@@ -32,6 +34,7 @@ override_dh_systemd_enable:
 	dh_systemd_enable
 
 override_dh_auto_install:
+	dh_auto_install -Bpy2 -- -j1 PHP_SYSCONF_DIR=/usr/share/kopano/php/mapi
 	dh_auto_install -Bpy3 -- -j1 PHP_SYSCONF_DIR=/usr/share/kopano/php/mapi
 	mkdir -p ${INSTDIR}/var/lib/kopano/autorespond
 	mkdir -p ${INSTDIR}/var/lib/kopano/rrd
@@ -54,12 +57,6 @@ override_dh_auto_install:
 	fi
 	mkdir -p ${INSTDIR}/usr/share/doc/kopano-common
 	gzip -c <RELNOTES.txt >${INSTDIR}/usr/share/doc/kopano-common/changelog.gz
-
-    # Kopano Search needs to run with Python 2 on Debian 8 because of non-existing python3-xapian.
-	if [ "${DEB_RELEASE_CODE}" = "jessie" ]; then \
-		sed -i "1 c #!/usr/bin/python" ${INSTDIR}/usr/sbin/kopano-search; \
-		sed -i "1 c #!/usr/bin/python" ${INSTDIR}/usr/sbin/kopano-search-xapian-compact.py; \
-	fi
 
 %:
 	dh $@ --parallel --with python3,systemd

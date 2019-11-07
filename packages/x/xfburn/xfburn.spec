@@ -1,7 +1,7 @@
 #
 # spec file for package xfburn
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,33 +12,31 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           xfburn
-Version:        0.5.5
+Version:        0.6.1
 Release:        0
 Summary:        Simple CD/DVD Burning Application
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/CD/Record
-Url:            http://goodies.xfce.org/projects/applications/xfburn
-Source:         http://archive.xfce.org/src/apps/xfburn/0.5/%{name}-%{version}.tar.bz2
-BuildRequires:  ed
+URL:            https://goodies.xfce.org/projects/applications/xfburn
+Source:         https://archive.xfce.org/src/apps/xfburn/0.6/%{name}-%{version}.tar.bz2
 BuildRequires:  intltool
-BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(exo-1)
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(exo-2)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-pbutils-1.0)
 BuildRequires:  pkgconfig(gthread-2.0)
-BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(libburn-1)
 BuildRequires:  pkgconfig(libisofs-1)
-BuildRequires:  pkgconfig(libxfce4ui-1)
+BuildRequires:  pkgconfig(libxfce4ui-2)
 Recommends:     %{name}-lang = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Xfburn is a simple CD/DVD burning application based on the libburnia libraries.
@@ -48,33 +46,23 @@ compositions of data to either CD or DVD.
 %lang_package
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
-%suse_update_desktop_file %{name}
-
 %find_lang %{name} %{?no_lang_C}
 
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-
 %files
-%defattr(-,root,root)
-%doc README ChangeLog COPYING AUTHORS NEWS TODO
+%license COPYING
+%doc README AUTHORS NEWS TODO
 %{_bindir}/xfburn
 %{_datadir}/applications/xfburn.desktop
-%{_mandir}/man1/xfburn.1*
+%{_mandir}/man1/xfburn.1%{?ext_man}
 %{_datadir}/xfburn
 %{_datadir}/icons/hicolor/*/*/*/*xfburn*
 %dir %{_datadir}/Thunar

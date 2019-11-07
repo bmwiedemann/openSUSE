@@ -21,7 +21,7 @@
 %define texlive_version  2019
 %define texlive_previous 2018
 %define texlive_release  20190407
-%define texlive_noarch   167
+%define texlive_noarch   168
 
 #!BuildIgnore:          texlive
 
@@ -59,7 +59,7 @@ BuildRequires:  texlive-filesystem
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for e
-License:        Apache-1.0 AND BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later AND LPPL-1.0 AND OFL-1.1 AND SUSE-Public-Domain AND SUSE-TeX
+License:        Apache-1.0 and BSD-3-Clause and GPL-2.0+ and LGPL-2.1+ and LPPL-1.0 and OFL-1.1 and SUSE-Public-Domain and SUSE-TeX
 Group:          Productivity/Publishing/TeX/Base
 Url:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Source0:        texlive-specs-e-rpmlintrc
@@ -1489,6 +1489,7 @@ Requires:       tex(chemgreek.sty)
 Requires:       tex(environ.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(expl3.sty)
+Requires:       tex(ghsystem.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(mathtools.sty)
 Requires:       tex(scrlfile.sty)
@@ -1497,6 +1498,7 @@ Requires:       tex(tikz.sty)
 Requires:       tex(translations.sty)
 Requires:       tex(xfrac.sty)
 Requires:       tex(xparse.sty)
+Requires:       tex(xspace.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source30:       chemmacros.tar.xz
@@ -2475,7 +2477,22 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-chet-doc >= %{texlive_version}
 Provides:       tex(chet.sty)
+Requires:       tex(amsmath.sty)
+Requires:       tex(caption.sty)
+Requires:       tex(cite.sty)
+Requires:       tex(collref.sty)
+Requires:       tex(color.sty)
+Requires:       tex(datetime.sty)
+Requires:       tex(filecontents.sty)
+Requires:       tex(footmisc.sty)
+Requires:       tex(geometry.sty)
+Requires:       tex(hyperref.sty)
 Requires:       tex(kvoptions.sty)
+Requires:       tex(manyfoot.sty)
+Requires:       tex(microtype.sty)
+Requires:       tex(tocloft.sty)
+Requires:       tex(xparse.sty)
+Requires:       tex(xspace.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source50:       chet.tar.xz
@@ -4007,6 +4024,7 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-chscite-doc >= %{texlive_version}
 Provides:       tex(chscite.sty)
 Requires:       tex(ifthen.sty)
+Requires:       tex(url.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source79:       chscite.tar.xz
@@ -4934,6 +4952,9 @@ Provides:       tex(cje.cls)
 Provides:       tex(cjenatbib.sty)
 Provides:       tex(cjeupmath.sty)
 Requires:       tex(amsbsy.sty)
+Requires:       tex(amssymb.sty)
+Requires:       tex(lineno.sty)
+Requires:       tex(natbib.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source95:       cje.tar.xz
@@ -5324,6 +5345,7 @@ Provides:       tex(pshan.sty)
 Provides:       tex(ruby.sty)
 Provides:       tex(standard.enc)
 Provides:       tex(thaicjk.ldf)
+Requires:       tex(fontenc.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(inputenc.sty)
@@ -6263,6 +6285,7 @@ Requires:       tex(ifpdf.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(kvoptions.sty)
+Requires:       tex(listings.sty)
 Requires:       tex(mathpazo.sty)
 Requires:       tex(microtype.sty)
 Requires:       tex(mparhack.sty)
@@ -7428,6 +7451,7 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-clrscode-doc >= %{texlive_version}
 Provides:       tex(clrscode.sty)
+Requires:       tex(latexsym.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source131:      clrscode.tar.xz
@@ -13940,6 +13964,7 @@ Requires:       tex(droidsans.sty)
 Requires:       tex(droidserif.sty)
 Requires:       tex(fancyhdr.sty)
 Requires:       tex(fontenc.sty)
+Requires:       tex(fourier.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(ifthen.sty)
@@ -13947,6 +13972,7 @@ Requires:       tex(natbib.sty)
 Requires:       tex(newtxmath.sty)
 Requires:       tex(newtxtext.sty)
 Requires:       tex(textcomp.sty)
+Requires:       tex(txfonts.sty)
 Requires:       tex(url.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -15122,6 +15148,7 @@ Requires:       tex(fontenc.sty)
 Requires:       tex(fontspec.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(hyperref.sty)
+Requires:       tex(ifpdf.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(makeidx.sty)
 Requires:       tex(mathptmx.sty)
@@ -15237,9 +15264,12 @@ Requires:       tex(accsupp.sty)
 Requires:       tex(adjustbox.sty)
 Requires:       tex(alphabetic.bbx)
 Requires:       tex(alphabetic.cbx)
+Requires:       tex(beramono.sty)
 Requires:       tex(catchfile.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(fnpct.sty)
+Requires:       tex(fontenc.sty)
+Requires:       tex(fontspec.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(idxcmds.sty)
 Requires:       tex(ifluatex.sty)
@@ -15250,6 +15280,7 @@ Requires:       tex(listings.sty)
 Requires:       tex(ltxcmds.sty)
 Requires:       tex(marginnote.sty)
 Requires:       tex(mdframed.sty)
+Requires:       tex(microtype.sty)
 Requires:       tex(multicol.sty)
 Requires:       tex(pdftexcmds.sty)
 Requires:       tex(pgfopts.sty)
@@ -16855,6 +16886,7 @@ Provides:       tex(zcochmia.vf)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(fontaxes.sty)
 Requires:       tex(fontenc.sty)
+Requires:       tex(mweights.sty)
 Requires:       tex(ntxbexb.tfm)
 Requires:       tex(ntxbmi.tfm)
 Requires:       tex(ntxexb.tfm)
@@ -20041,6 +20073,8 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-colordoc-doc >= %{texlive_version}
 Provides:       tex(colordoc.sty)
+Requires:       tex(color.sty)
+Requires:       tex(fixltx2e.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source205:      colordoc.tar.xz
@@ -20396,6 +20430,7 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-colorspace-doc >= %{texlive_version}
 Provides:       tex(colorspace.sty)
+Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source214:      colorspace.tar.xz
@@ -20940,7 +20975,9 @@ Provides:       tex(combcite.sty)
 Provides:       tex(combine.cls)
 Provides:       tex(combinet.sty)
 Provides:       tex(combnat.sty)
+Requires:       tex(cite.sty)
 Requires:       tex(keyval.sty)
+Requires:       tex(natbib.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source228:      combine.tar.xz
@@ -22608,8 +22645,10 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-commedit-doc >= %{texlive_version}
 Provides:       tex(commedit.sty)
+Requires:       tex(changepage.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(everyshi.sty)
+Requires:       tex(graphicx.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source244:      commedit.tar.xz
@@ -23379,6 +23418,9 @@ Provides:       tex(omxccex.fd)
 Provides:       tex(ot1ccr.fd)
 Provides:       tex(ucca.fd)
 Provides:       tex(uccb.fd)
+Requires:       tex(amsfonts.sty)
+Requires:       tex(amssymb.sty)
+Requires:       tex(exscale.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source259:      concmath.tar.xz
@@ -23620,6 +23662,7 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-concprog-doc >= %{texlive_version}
 Provides:       tex(ConcProg.cls)
 Requires:       tex(article.cls)
+Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source263:      concprog.tar.xz

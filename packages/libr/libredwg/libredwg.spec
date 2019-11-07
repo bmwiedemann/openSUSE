@@ -17,7 +17,7 @@
 
 
 Name:           libredwg
-Version:        0.8
+Version:        0.9.1
 Release:        0
 Summary:        A library to handle DWG files
 License:        GPL-3.0-or-later
@@ -70,9 +70,12 @@ OpenDWG libraries. DWG is the native file format of AutoCAD.
 %setup -q
 
 %build
+# No management of SO version despite ABI breaking changes:
+# Force-add some symvers so RPM can produce meaningful deps.
+echo 'V_%version { global: *; };' >src/sv.sym
 %configure \
 	--disable-static
-make %{?_smp_mflags}
+make %{?_smp_mflags} libredwg_la_LDFLAGS=-Wl,-version-script,sv.sym libredwg_la_LIBADD=-lm
 
 %install
 %make_install
@@ -90,12 +93,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files tools
 %license COPYING
 %{_bindir}/dwg*
+%{_bindir}/dxf*
 %{_mandir}/man?/*.1%{?ext_man}
 %{_infodir}/LibreDWG.info%{?ext_info}
 
 %files devel
 %license COPYING
-%doc AUTHORS ChangeLog README README-alpha TODO
+%doc AUTHORS ChangeLog NEWS README README-alpha TODO
 %{_includedir}/*.h
 %{_libdir}/libredwg.so
 %{_libdir}/pkgconfig/libredwg.pc

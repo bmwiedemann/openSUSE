@@ -9,9 +9,9 @@ Index: src/crontab.c
 -#define NHEADER_LINES 0
 +#define NHEADER_LINES 3
  
- enum opt_t {opt_unknown, opt_list, opt_delete, opt_edit, opt_replace, opt_hostset, opt_hostget};
- 
-@@ -485,7 +485,7 @@ static void edit_cmd(void) {
+ #define COMMENT_COLOR  "\x1B[34m"
+ #define RESET_COLOR "\033[0m"
+@@ -500,7 +500,7 @@ static void edit_cmd(void) {
  	char n[MAX_FNAME], q[MAX_TEMPSTR];
  	const char *editor;
  	FILE *f;
@@ -20,7 +20,7 @@ Index: src/crontab.c
  	struct stat statbuf;
  	struct utimbuf utimebuf;
  	WAIT_T waiter;
-@@ -537,13 +537,25 @@ static void edit_cmd(void) {
+@@ -552,13 +552,25 @@ static void edit_cmd(void) {
  	}
  
  	Set_LineNum(1)
@@ -53,7 +53,7 @@ Index: src/crontab.c
  		while (EOF != (ch = get_char(f)))
  			putc(ch, NewCrontab);
  
-@@ -751,6 +763,7 @@ static int replace_cmd(void) {
+@@ -766,6 +778,7 @@ static int replace_cmd(void) {
  	int error = 0;
  	entry *e;
  	uid_t file_owner;
@@ -61,7 +61,7 @@ Index: src/crontab.c
  	char **envp;
  	char *safename;
  	int envs = 0, entries = 0;
-@@ -781,10 +794,10 @@ static int replace_cmd(void) {
+@@ -796,10 +809,10 @@ static int replace_cmd(void) {
  	 *
  	 * VERY IMPORTANT: make sure NHEADER_LINES agrees with this code.
  	 */

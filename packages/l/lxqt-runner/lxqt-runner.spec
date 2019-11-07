@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-runner
-Version:        0.14.0
+Version:        0.14.1
 Release:        0
 Summary:        LXQt application launcher
 License:        LGPL-2.1-or-later

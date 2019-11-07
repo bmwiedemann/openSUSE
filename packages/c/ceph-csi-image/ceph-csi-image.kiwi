@@ -12,8 +12,8 @@
     <specification>Ceph CSI driver container</specification>
   </description>
   <preferences>
-    <type image="docker" derived_from="obsrepositories:/opensuse/tumbleweed">
-      <containerconfig tag="latest" additionaltags="%PKG_VERSION%,%PKG_VERSION%.%PKG_COMMIT_NUM%,%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%" maintainer="SUSE Storage Team &lt;bgardner@suse.com&gt;" name="opensuse/cephcsi/cephcsi">
+    <type image="docker" derived_from="obsrepositories:/opensuse/ceph/ceph#tumbleweed.nautilus">
+      <containerconfig tag="latest" maintainer="SUSE Storage Team &lt;bgardner@suse.com&gt;" additionaltags="tumbleweed.nautilus,%PKG_VERSION%,%PKG_VERSION%.%PKG_COMMIT_NUM%,%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%" name="opensuse/cephcsi/cephcsi">
         <entrypoint execute="/usr/bin/cephcsi"/>
         <labels>
           <suse_label_helper:add_prefix prefix="org.opensuse.cephcsi">
@@ -27,7 +27,7 @@
             <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/cephcsi/cephcsi:%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%"/>
           </suse_label_helper:add_prefix>
         </labels>
-        <history author="Denis Kondratenko &lt;denis.kondratenko@suse.com&gt;">Generate container history (SES-922)</history>
+        <history author="Denis Kondratenko &lt;denis.kondratenko@suse.com&gt;">Derive from ceph-image (SES-636)</history>
       </containerconfig>
     </type>
     <version>1.0.0</version>

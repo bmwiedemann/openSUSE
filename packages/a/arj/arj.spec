@@ -1,7 +1,7 @@
 #
 # spec file for package arj
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,8 +20,7 @@ Name:           arj
 Version:        3.10.22
 Release:        0
 Summary:        Archiver for .arj files
-License:        GPL-2.0+
-Group:          Productivity/Archiving/Compression
+License:        GPL-2.0-or-later
 URL:            http://arj.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 # unarj.* from Debian
@@ -54,7 +53,6 @@ unaffiliated, ARJ Software Russia.
 for i in debian/patches/00*.patch; do
   patch -p1 < $i
 done
-
 
 %build
 pushd gnu

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Nov  1 17:10:22 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
+
+- update to 1.5.5
+  * Avoid warning for strncat.
+  * crontab: fsync to check for full disk
+  * crontab: Add Y/N to retry prompt
+  * entries: Explicitly validate upper ranges and steps
+  * crond: report missing newline before EOF
+  * do not log carriage return
+  * skip directories when given as crontabs
+  * crontab -l colors comment lines in a different color
+  * getdtablesize() can return very high values in containers
+  * Power supply name not detected correctly.
+  * Revert "Avoid creating pid files when crond doesn't fork"
+  * anacron: fix types in comparisons
+  * mics: stop using plain integer as NULL pointer
+  * cron: fix type in comparison and  variable shadowing
+  * cron: mark signal number arguments in signal handlers unused
+  * Move allowed() and related function to security.c
+  * cronnext: optionally select jobs by substring
+  * crond: Do not abort loading crontab prematurely in case of error
+- refresh cronie-nheader_lines.diff
+- remove cronie-1.5.4-dont_abort_loading_crontab.patch and
+  cronie-1.5.4-always_create_pid_file.patch (applied upstream)
+
+-------------------------------------------------------------------
 Tue Aug 27 12:24:27 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
 
 - refresh cronie-pam_config.diff to integrate pam_keyinit pam

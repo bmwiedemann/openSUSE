@@ -21,7 +21,7 @@
 %define texlive_version  2019
 %define texlive_previous 2018
 %define texlive_release  20190407
-%define texlive_noarch   167
+%define texlive_noarch   168
 
 #!BuildIgnore:          texlive
 
@@ -59,7 +59,7 @@ BuildRequires:  texlive-filesystem
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for g
-License:        Artistic-1.0 AND GFDL-1.2-only AND GPL-2.0-or-later AND LPPL-1.0 AND OFL-1.1 AND SUSE-Public-Domain
+License:        Artistic-1.0 and GFDL-1.2 and GPL-2.0+ and LPPL-1.0 and OFL-1.1 and SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 Url:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Source0:        texlive-specs-g-rpmlintrc
@@ -3430,6 +3430,7 @@ Requires:       tex(atbegshi.sty)
 Requires:       tex(babel.sty)
 Requires:       tex(booktabs.sty)
 Requires:       tex(calc.sty)
+Requires:       tex(color.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(fontenc.sty)
 Requires:       tex(fontspec.sty)
@@ -3443,6 +3444,7 @@ Requires:       tex(newtxmath.sty)
 Requires:       tex(newtxtext.sty)
 Requires:       tex(tgheros.sty)
 Requires:       tex(titlesec.sty)
+Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source85:       dccpaper.tar.xz
@@ -5838,6 +5840,7 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-dhua-doc >= %{texlive_version}
 Provides:       tex(dhua.cfg)
 Provides:       tex(dhua.sty)
+Requires:       tex(xspace.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source113:      dhua.tar.xz
@@ -6119,6 +6122,7 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-diagmac2-doc >= %{texlive_version}
 Provides:       tex(diagmac2.sty)
+Requires:       tex(pict2e.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source119:      diagmac2.tar.xz
@@ -6431,6 +6435,8 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-dichokey-doc >= %{texlive_version}
 Provides:       tex(dichokey.sty)
+Requires:       tex(calc.sty)
+Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source127:      dichokey.tar.xz
@@ -7676,10 +7682,17 @@ Provides:       tex(gost732.cls)
 Provides:       tex(master.rtx)
 Provides:       tex(specialist.rtx)
 Provides:       tex(titledefs.rtx)
+Requires:       tex(caption.sty)
+Requires:       tex(cmap.sty)
+Requires:       tex(color.sty)
 Requires:       tex(exscale.sty)
+Requires:       tex(graphicx.sty)
+Requires:       tex(hyperref.sty)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(kvoptions.sty)
+Requires:       tex(natbib.sty)
+Requires:       tex(subcaption.sty)
 Requires:       tex(textcase.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -8596,9 +8609,12 @@ Provides:       tex(doclicense-portuguese.ldf)
 Provides:       tex(doclicense-russian.ldf)
 Provides:       tex(doclicense-spanish.ldf)
 Provides:       tex(doclicense.sty)
+Requires:       tex(ccicons.sty)
 Requires:       tex(csquotes.sty)
 Requires:       tex(enumitem.sty)
 Requires:       tex(etoolbox.sty)
+Requires:       tex(graphicx.sty)
+Requires:       tex(hyperref.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(ragged2e.sty)
 Requires:       tex(verbatim.sty)
@@ -8941,9 +8957,20 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-doctools-doc >= %{texlive_version}
 Provides:       tex(doctools.sty)
+Requires:       tex(bookmark.sty)
+Requires:       tex(cmap.sty)
+Requires:       tex(etoolbox.sty)
+Requires:       tex(fontenc.sty)
 Requires:       tex(kvoptions-patch.sty)
 Requires:       tex(kvoptions.sty)
+Requires:       tex(kvsetkeys.sty)
+Requires:       tex(listings.sty)
 Requires:       tex(pdftexcmds.sty)
+Requires:       tex(textcomp.sty)
+Requires:       tex(url.sty)
+Requires:       tex(xcolor.sty)
+Requires:       tex(xspace.sty)
+Requires:       tex(xstring.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source175:      doctools.tar.xz
@@ -9166,6 +9193,7 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-doipubmed-doc >= %{texlive_version}
 Provides:       tex(doipubmed.sty)
+Requires:       tex(url.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source181:      doipubmed.tar.xz
@@ -16266,6 +16294,7 @@ Recommends:     texlive-duckuments-doc >= %{texlive_version}
 Provides:       tex(duckuments.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(letltxmacro.sty)
+Requires:       tex(tikzducks.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -16526,6 +16555,8 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-duotenzor-doc >= %{texlive_version}
 Provides:       tex(duotenzor.sty)
+Requires:       tex(tikz.sty)
+Requires:       tex(xspace.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source254:      duotenzor.tar.xz

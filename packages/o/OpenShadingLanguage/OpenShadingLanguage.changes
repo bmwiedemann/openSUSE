@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Nov  6 15:45:59 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Properly rebase 0001-Generalize-lookup-of-stdosl.h-in-install-directory-a.patch
+  avoid workarounds in the spec file.
+- Remove conditional code for Leap 42.x
+- Reflect required versions of OpenIIO and Clang in the spec file.
+
+-------------------------------------------------------------------
+Wed Nov  6 11:38:51 UTC 2019 - Dave Plater <davejplater@gmail.com>
+
+- Update to release 1.10.7 which fixes build with new llvm.
+- Rebased:
+  0001-Generalize-lookup-of-stdosl.h-in-install-directory-a.patch
+- Recent upstream changes:
+  *Adjust for deprecated material in more recent Qt releases. #1043
+  *Fixes for MinGW compiler. #1047
+  *Texture "missingalpha" optional parameter generated incorrect
+   code and crashed. #1044
+  *Fix incorrect optimizations surrounding 'exit()' calls in the
+   middle of certain shader code blocks. #1051
+  *LLVM 9 / clang 9 compatibility. #1058
+  *Fixes to Travis CI system to keep up with OIIO master recently
+   upgrading its minimum required CMake. #1065
+
+-------------------------------------------------------------------
 Sun Jan 13 02:21:24 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix lookup of stdosl.h from oslc (bnc#1123254):

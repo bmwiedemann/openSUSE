@@ -21,7 +21,7 @@
 %define texlive_version  2019
 %define texlive_previous 2018
 %define texlive_release  20190407
-%define texlive_noarch   167
+%define texlive_noarch   168
 
 #!BuildIgnore:          texlive
 
@@ -59,7 +59,7 @@ BuildRequires:  texlive-filesystem
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for r
-License:        BSD-3-Clause AND GPL-2.0-or-later AND LPPL-1.0 AND OFL-1.1 AND SUSE-Public-Domain AND SUSE-TeX
+License:        BSD-3-Clause and GPL-2.0+ and LPPL-1.0 and OFL-1.1 and SUSE-Public-Domain and SUSE-TeX
 Group:          Productivity/Publishing/TeX/Base
 Url:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Source0:        texlive-specs-r-rpmlintrc
@@ -1010,6 +1010,7 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-pagenote-doc >= %{texlive_version}
 Provides:       tex(pagenote.sty)
+Requires:       tex(ifmtarg.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source17:       pagenote.tar.xz
@@ -1084,6 +1085,8 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-pagerange-doc >= %{texlive_version}
 Provides:       tex(pagerange-guide.cfg)
 Provides:       tex(pagerange.sty)
+Requires:       tex(lastpage.sty)
+Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source19:       pagerange.tar.xz
@@ -4205,6 +4208,7 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-parrun-doc >= %{texlive_version}
 Provides:       tex(parrun.sty)
 Requires:       tex(calc.sty)
+Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source46:       parrun.tar.xz
@@ -4430,11 +4434,17 @@ Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-pas-cours-doc >= %{texlive_version}
+Provides:       tex(pas-cours.sty)
+Requires:       tex(amssymb.sty)
+Requires:       tex(enumitem.sty)
+Requires:       tex(fancyvrb.sty)
 Provides:       tex(macro-calculs.tex)
 Provides:       tex(macro-patrons.tex)
 Provides:       tex(macro-solides.tex)
 Provides:       tex(macro-styles.tex)
-Provides:       tex(pas-cours.sty)
+Requires:       tex(tikz.sty)
+Requires:       tex(xkeyval.sty)
+Requires:       tex(xstring.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source52:       pas-cours.tar.xz
@@ -4519,7 +4529,11 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-pas-crosswords-doc >= %{texlive_version}
 Provides:       tex(pas-crosswords.sty)
+Requires:       tex(fp.sty)
+Requires:       tex(multido.sty)
+Requires:       tex(tikz.sty)
 Requires:       tex(xkeyval.sty)
+Requires:       tex(xstring.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source54:       pas-crosswords.tar.xz
@@ -4828,20 +4842,25 @@ Requires:       tex(amssymb.sty)
 Requires:       tex(array.sty)
 Requires:       tex(bm.sty)
 Requires:       tex(color.sty)
+Requires:       tex(eucal.sty)
+Requires:       tex(fontenc.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(longtable.sty)
 Requires:       tex(marvosym.sty)
+Requires:       tex(multicol.sty)
 Requires:       tex(nameref.sty)
 Requires:       tex(pifont.sty)
 Requires:       tex(rotating.sty)
+Requires:       tex(stmaryrd.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(times.sty)
 Requires:       tex(tipa.sty)
 Requires:       tex(tone.sty)
 Requires:       tex(ulem.sty)
 Requires:       tex(url.sty)
+Requires:       tex(wasysym.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source60:       passivetex.tar.xz
@@ -5725,18 +5744,23 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-pbsheet-doc >= %{texlive_version}
 Provides:       tex(pbsheet.cls)
+Requires:       tex(aeguill.sty)
 Requires:       tex(amsfonts.sty)
 Requires:       tex(amsmath.sty)
 Requires:       tex(amssymb.sty)
 Requires:       tex(amsthm.sty)
 Requires:       tex(babel.sty)
 Requires:       tex(color.sty)
+Requires:       tex(fontenc.sty)
 Requires:       tex(geometry.sty)
+Requires:       tex(graphicx.sty)
+Requires:       tex(hyperref.sty)
 Requires:       tex(inputenc.sty)
 Requires:       tex(latexsym.sty)
 Requires:       tex(listings.sty)
 Requires:       tex(moreverb.sty)
 Requires:       tex(rotating.sty)
+Requires:       tex(url.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -6174,8 +6198,10 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-pdfcprot-doc >= %{texlive_version}
 Provides:       tex(pdfcprot.sty)
+Requires:       tex(fontenc.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(keyval.sty)
+Requires:       tex(textcomp.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source90:       pdfcprot.tar.xz
@@ -6895,6 +6921,7 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-pdfpc-movie-doc >= %{texlive_version}
 Provides:       tex(pdfpc-movie.sty)
 Requires:       tex(etoolbox.sty)
+Requires:       tex(hyperref.sty)
 Requires:       tex(pgfkeys.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -7054,6 +7081,7 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-pdfreview-doc >= %{texlive_version}
 Provides:       tex(pdfreview.sty)
 Requires:       tex(bookmark.sty)
+Requires:       tex(geometry.sty)
 Requires:       tex(grffile.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(ulem.sty)
@@ -7977,6 +8005,7 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-pdftricks2-doc >= %{texlive_version}
 Provides:       tex(pdftricks2.sty)
+Requires:       tex(geometry.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(ifplatform.sty)
@@ -8061,6 +8090,7 @@ Requires:       tex(amssymb.sty)
 Requires:       tex(color.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(keyval.sty)
+Requires:       tex(truncate.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source128:      pdfwin.tar.xz
@@ -9195,6 +9225,9 @@ Provides:       tex(pnets.tex)
 Provides:       tex(pntext.sty)
 Provides:       tex(pntext.tex)
 Provides:       tex(pnversion.tex)
+Requires:       tex(amsfonts.sty)
+Requires:       tex(graphicx.sty)
+Requires:       tex(ifpdf.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source152:      petri-nets.tar.xz
@@ -11827,6 +11860,7 @@ Requires:       tex(array.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(listings.sty)
+Requires:       tex(luatexbase.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -12258,6 +12292,7 @@ Requires:       tex(microtype.sty)
 Requires:       tex(opensans.sty)
 Requires:       tex(sectsty.sty)
 Requires:       tex(setspace.sty)
+Requires:       tex(tcolorbox.sty)
 Requires:       tex(url.sty)
 Requires:       tex(verbdef.sty)
 Requires:       tex(xcolor.sty)
@@ -12955,12 +12990,15 @@ Requires:       tex(article.cls)
 Requires:       tex(color.sty)
 Requires:       tex(courier.sty)
 Requires:       tex(fancyhdr.sty)
+Requires:       tex(flushend.sty)
 Requires:       tex(fontenc.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(helvet.sty)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(mathpazo.sty)
+Requires:       tex(microtype.sty)
 Requires:       tex(textcomp.sty)
+Requires:       tex(trajan.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source204:      philosophersimprint.tar.xz
@@ -13504,6 +13542,9 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-piano-doc >= %{texlive_version}
 Provides:       tex(piano.sty)
+Requires:       tex(color.sty)
+Requires:       tex(ifthen.sty)
+Requires:       tex(xargs.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source216:      piano.tar.xz
@@ -14460,6 +14501,7 @@ Provides:       tex(pitetd10.clo)
 Provides:       tex(pitetd11.clo)
 Provides:       tex(pitetd12.clo)
 Provides:       tex(pittetd.cls)
+Requires:       tex(hyperref.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source236:      pittetd.tar.xz
@@ -14906,6 +14948,7 @@ Requires:       tex(enumitem.sty)
 Requires:       tex(fancyhdr.sty)
 Requires:       tex(geometry.sty)
 Requires:       tex(graphicx.sty)
+Requires:       tex(hyperref.sty)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(keyval.sty)
@@ -16659,10 +16702,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
     tar --use-compress-program=xz -xf %{S:52} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:53} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/pas-cours/macro-patrons.tex %{buildroot}%{_texmfdistdir}/tex/latex/pas-cours/macro-patrons.tex
-    mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/pas-cours/macro-calculs.tex %{buildroot}%{_texmfdistdir}/tex/latex/pas-cours/macro-calculs.tex
-    mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/pas-cours/macro-solides.tex %{buildroot}%{_texmfdistdir}/tex/latex/pas-cours/macro-solides.tex
     mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/pas-cours/macro-styles.tex %{buildroot}%{_texmfdistdir}/tex/latex/pas-cours/macro-styles.tex
+    mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/pas-cours/macro-calculs.tex %{buildroot}%{_texmfdistdir}/tex/latex/pas-cours/macro-calculs.tex
+    mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/pas-cours/macro-patrons.tex %{buildroot}%{_texmfdistdir}/tex/latex/pas-cours/macro-patrons.tex
+    mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/pas-cours/macro-solides.tex %{buildroot}%{_texmfdistdir}/tex/latex/pas-cours/macro-solides.tex
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-pas-crosswords-%{texlive_version}.%{texlive_noarch}.1.03svn32313-%{release}-zypper

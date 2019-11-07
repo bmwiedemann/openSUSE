@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 06 18:04:24 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.2.7:
+  * Fix a crash when adding a new playlist
+    (glgo#World/lollypop#2112).
+  * Limit navigation items kept in memory to 4 views in order to
+    try to reduce memory usage (glgo#World/lollypop#2111).
+
+-------------------------------------------------------------------
 Tue Nov 05 18:24:18 UTC 2019 - antoine.belvire@opensuse.org
 
 - Update to version 1.2.6:

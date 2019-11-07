@@ -1,0 +1,13 @@
+Index: leafnode-1.11.11/miscutil.c
+===================================================================
+--- leafnode-1.11.11.orig/miscutil.c
++++ leafnode-1.11.11/miscutil.c
+@@ -84,7 +84,7 @@ createmsgiddir(void) {
+ 	    t = de->d_name;
+ 	    if (isdigit((unsigned char)*t)) {
+ 		u = strtoul(t, &e, 10);
+-		if (e > t)
++		if (e > t && u < 1000)
+ 		    havedir[u] = 1;
+ 	    }
+ 	}

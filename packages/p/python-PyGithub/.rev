@@ -122,4 +122,19 @@
   * Fixes #1106 for GitHub Enterprise API (#1110) (5406579)</comment>
     <requestid>732892</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4cff10ddfc00a58b883e68121c11a4ad</srcmd5>
+    <version>1.44.1</version>
+    <time>1573165179</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.44.1:
+  * Too many changes to enumerate.
+- Drop PyGithub-drop-network-tests.patch, the test in question no longer
+  requires network access.
+- Drop fix-httpretty-dep.patch, the httpretty requirement has been relaxed
+  upstream.
+- Use %python_expand to run the test suite, it works fine on Python 3 now.
+- Add mock and parameterized to BuildRequires, the test suite requires them.</comment>
+    <requestid>746113</requestid>
+  </revision>
 </revisionlist>

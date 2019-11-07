@@ -366,4 +366,13 @@
     <comment></comment>
     <requestid>739371</requestid>
   </revision>
+  <revision rev="48" vrev="13">
+    <srcmd5>019d3b62341bb93a15eec59d16811d46</srcmd5>
+    <version>4.14</version>
+    <time>1573165246</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch a2ps-4.14-texinfo-6.7.patch to let it build with
+  texinfo-6.7 as well</comment>
+    <requestid>746204</requestid>
+  </revision>
 </revisionlist>

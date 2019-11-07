@@ -18,6 +18,13 @@
 
 %define octave_args --no-window-system --norc
 %define libname libmgl
+
+%if 0%{?suse_version} >= 1550
+%define omp_ver 1
+%else
+%define omp_ver %{nil}
+%endif
+
 # oct_version must be x.y.z
 %define oct_version %{version}
 %define somajor 7.5.0
@@ -62,7 +69,7 @@ BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  libtool
 BuildRequires:  lua51-devel
-BuildRequires:  openmpi-devel
+BuildRequires:  openmpi%{omp_ver}-devel
 BuildRequires:  python-devel
 BuildRequires:  python-numpy-devel
 BuildRequires:  swig
@@ -399,8 +406,8 @@ sed -i 's/\r$//' AUTHORS README
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-if [ -f %{_libdir}/mpi/gcc/openmpi/bin/mpivars.sh ]; then
-  source %{_libdir}/mpi/gcc/openmpi/bin/mpivars.sh
+if [ -f %{_libdir}/mpi/gcc/openmpi%{omp_ver}/bin/mpivars.sh ]; then
+  source %{_libdir}/mpi/gcc/openmpi%{omp_ver}/bin/mpivars.sh
 fi
 
 cmake \

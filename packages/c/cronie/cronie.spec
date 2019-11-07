@@ -23,7 +23,7 @@
 
 %define cron_configs %{_sysconfdir}/pam.d/crond %{_sysconfdir}/crontab %{_sysconfdir}/cron.deny
 Name:           cronie
-Version:        1.5.4
+Version:        1.5.5
 Release:        0
 Summary:        Cron Daemon
 License:        BSD-3-Clause AND GPL-2.0-only AND MIT
@@ -51,8 +51,6 @@ Patch12:        cronie-piddir.patch
 # PATCH-FIX-SUSE the first occurance of "/etc/anacrontab" was replaced by "/etc/crontab"
 # in manpage file because the /etc/crontab is still used in SUSE.
 Patch13:        fix-manpage-replace-anacrontab-with-crontab.patch
-Patch14:        cronie-1.5.4-dont_abort_loading_crontab.patch
-Patch15:        cronie-1.5.4-always_create_pid_file.patch
 BuildRequires:  audit-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -113,8 +111,6 @@ overloaded in settings.
 cp %{SOURCE7} ./cron_to_cronie.README
 %patch12 -p1
 %patch13 -p1
-%patch14 -p1
-%patch15 -p1
 
 %build
 # fill macro CRON_VERSION it is used in top three lines of crontab file,should be reworked

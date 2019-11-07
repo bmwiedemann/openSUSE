@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 17 13:40:21 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
 Tue Feb 20 11:23:13 UTC 2018 - mardnh@gmx.de
 
 - Mention asn1c.rpmlintrc

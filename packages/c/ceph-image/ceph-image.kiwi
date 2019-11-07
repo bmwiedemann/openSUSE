@@ -13,7 +13,7 @@
   </description>
   <preferences>
     <type image="docker" derived_from="obsrepositories:/opensuse/tumbleweed">
-      <containerconfig tag="latest" additionaltags="%PKG_VERSION%,%PKG_VERSION%.%RELEASE%" maintainer="Sebastian Wagner &lt;swagner@suse.com&gt;" name="opensuse/ceph/ceph">
+      <containerconfig tag="latest" maintainer="Sebastian Wagner &lt;swagner@suse.com&gt;" additionaltags="tumbleweed.nautilus,%PKG_VERSION%,%PKG_VERSION%.%RELEASE%" name="opensuse/ceph/ceph">
         <subcommand execute="/bin/bash">
           <argument name="--login"/>
         </subcommand>
@@ -32,7 +32,7 @@
             <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/ceph/ceph:%PKG_VERSION%.%RELEASE%"/>
           </suse_label_helper:add_prefix>
         </labels>
-        <history author="Denis Kondratenko &lt;denis.kondratenko@suse.com&gt;">Generate container history (SES-922)</history>
+        <history author="Denis Kondratenko &lt;denis.kondratenko@suse.com&gt;">Add nautilus tag to image (SES-636)</history>
       </containerconfig>
     </type>
     <version>1.0.0</version>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov  5 04:17:22 UTC 2019 - Linnaea Lavia <obs@lavia.moe>
+
+- Enable Kerberos support
+- Version update to 1.1.20:
+  * Default TDS protocol version is now "auto"
+  * Improved UTF-8 performances
+  * TDS Pool Server is enabled
+  * MARS support is enabled
+  * NTLMv2 is enabled
+  * See NEWS and ChangeLog for a complete list of changes
+
+-------------------------------------------------------------------
 Mon Jul 15 04:44:34 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Add configure-return-void-fix.patch in order to fix wrong

@@ -23,7 +23,6 @@ Version:        1.5.0
 Release:        0
 Summary:        A microbenchmark support library
 License:        Apache-2.0
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/google/benchmark
 Source:         https://github.com/google/benchmark/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 3.5.1
@@ -38,14 +37,12 @@ A library to support the benchmarking of functions, similar to unit-tests.
 
 %package -n %{soname}%{sover}
 Summary:        Shared library for google benchmark
-Group:          System/Libraries
 
 %description -n %{soname}%{sover}
 A library to support the benchmarking of functions, similar to unit-tests.
 
 %package devel
 Summary:        Development files for google benchmark
-Group:          Development/Languages/C and C++
 Requires:       %{soname}%{sover} = %{version}
 
 %description devel

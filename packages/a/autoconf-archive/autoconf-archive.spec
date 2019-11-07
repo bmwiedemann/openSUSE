@@ -21,7 +21,6 @@ Version:        2019.01.06
 Release:        0
 Summary:        A Collection of macros for GNU autoconf
 License:        GPL-3.0+ WITH Autoconf-exception-3.0
-Group:          Development/Tools/Building
 URL:            https://savannah.gnu.org/projects/autoconf-archive
 Source0:        https://ftp.gnu.org/pub/gnu/autoconf-archive/%{name}-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/pub/gnu/autoconf-archive/%{name}-%{version}.tar.xz.sig

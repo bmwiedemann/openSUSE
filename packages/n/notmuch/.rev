@@ -203,4 +203,12 @@ From the NEWS file, this version reports the following:
     <comment></comment>
     <requestid>738579</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>da8e0445b4b333f54fa7cf034e55566a</srcmd5>
+    <version>0.29.2</version>
+    <time>1573165271</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>746279</requestid>
+  </revision>
 </revisionlist>

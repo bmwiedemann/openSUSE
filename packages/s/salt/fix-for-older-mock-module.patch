@@ -1,0 +1,37 @@
+From 7e4c53ab89927b6b700603a74131da318c93b957 Mon Sep 17 00:00:00 2001
+From: Jochen Breuer <jbreuer@suse.de>
+Date: Fri, 25 Oct 2019 16:18:58 +0200
+Subject: [PATCH] Fix for older mock module
+
+Seems like args is not working with older mock modules.
+---
+ tests/unit/modules/test_aptpkg.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/tests/unit/modules/test_aptpkg.py b/tests/unit/modules/test_aptpkg.py
+index d3fac5902a..bc6b610d86 100644
+--- a/tests/unit/modules/test_aptpkg.py
++++ b/tests/unit/modules/test_aptpkg.py
+@@ -412,15 +412,15 @@ class AptPkgTestCase(TestCase, LoaderModuleMockMixin):
+                 }
+                 with patch.multiple(aptpkg, **patch_kwargs):
+                     aptpkg.upgrade()
+-                    args_matching = [True for args in patch_kwargs['__salt__']['cmd.run_all'].call_args.args if "--download-only" in args]
++                    args_matching = [True for args in patch_kwargs['__salt__']['cmd.run_all'].call_args[0] if "--download-only" in args]
+                     self.assertFalse(any(args_matching))
+ 
+                     aptpkg.upgrade(downloadonly=True)
+-                    args_matching = [True for args in patch_kwargs['__salt__']['cmd.run_all'].call_args.args if "--download-only" in args]
++                    args_matching = [True for args in patch_kwargs['__salt__']['cmd.run_all'].call_args[0] if "--download-only" in args]
+                     self.assertTrue(any(args_matching))
+ 
+                     aptpkg.upgrade(download_only=True)
+-                    args_matching = [True for args in patch_kwargs['__salt__']['cmd.run_all'].call_args.args if "--download-only" in args]
++                    args_matching = [True for args in patch_kwargs['__salt__']['cmd.run_all'].call_args[0] if "--download-only" in args]
+                     self.assertTrue(any(args_matching))
+ 
+     def test_show(self):
+-- 
+2.16.4
+
+

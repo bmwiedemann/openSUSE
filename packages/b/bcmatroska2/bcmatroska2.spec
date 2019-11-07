@@ -1,7 +1,7 @@
 #
 # spec file for package bcmatroska2
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,9 +21,8 @@ Name:           bcmatroska2
 Version:        0.23
 Release:        0
 Summary:        C Library to Deal with Matroska Files
-License:        BSD-3-Clause AND Zlib AND GPL-2.0+
-Group:          Development/Libraries/C and C++
-Url:            https://linphone.org/
+License:        BSD-3-Clause AND Zlib AND GPL-2.0-or-later
+URL:            https://linphone.org/
 Source:         https://linphone.org/releases/sources/%{name}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 # PATCH-FIX-OPENSUSE bcmatroska2-include-subdir.patch sor.alexei@meowr.ru -- Resolve a conflict with libebml and libmatroska.
@@ -35,14 +34,12 @@ Bcmatroska2 is a C library to parse Matroska files (.mkv and .mka).
 
 %package -n lib%{name}-%{sover}
 Summary:        C Library to Deal with Matroska Files
-Group:          System/Libraries
 
 %description -n lib%{name}-%{sover}
 Bcmatroska2 is a C library to parse Matroska files (.mkv and .mka).
 
 %package devel
 Summary:        Development files for bcmatroska2
-Group:          Development/Libraries/C and C++
 Requires:       lib%{name}-%{sover} = %{version}
 
 %description devel
@@ -57,13 +54,12 @@ applications which will use libbcmatroska2.
 %cmake \
   -DENABLE_STATIC=OFF \
   -DENABLE_STRICT=OFF
-make %{?_smp_mflags} V=1
+%make_jobs
 
 %install
 %cmake_install
 
 %post -n lib%{name}-%{sover} -p /sbin/ldconfig
-
 %postun -n lib%{name}-%{sover} -p /sbin/ldconfig
 
 %files -n lib%{name}-%{sover}

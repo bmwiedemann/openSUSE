@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov  2 11:46:16 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add backported inkscape-fix-for-poppler-0.82.patch: Fix build
+  with poppler 0.82 and newer.
+- Stop post(un) handling of desktop_database_post(un) and
+  icon_theme_cache_post(un) macros, no longer needed for any
+  supported version of openSUSE.
+
+-------------------------------------------------------------------
 Tue Jul 30 16:18:54 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Change Python dependencies to Python 3 as Python 2 will be EOL in 2020.

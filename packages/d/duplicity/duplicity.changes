@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Nov  6 20:39:48 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.8.06: 
+  + Merged in translation updates
+  + Removed file() call in swiftbackend.  It's been deprecated
+    since py2.
+  + Revisited bug #1848783 - par2+webdav raises TypeError on Python 3
+    - Fixed so bytes filenames were compared as unicode in re.match()
+  + Fixed bug #1849661 with patch from Graham Cobb
+    - The problem is that b2backend uses 'quote_plus' on the
+      destination URL without specifying the 'safe' argument as
+      '/'. Note that 'quote' defaults 'safe' to '/', but
+      'quote_plus' does not!
+  + Added additional fsdecode's to uses of local_path.name and
+    source_path.name in b2backend's _get() and _put.  See bug
+    #1847885 for more details.
+  + Fixed bug #1848166 - Swift backend fails on string concat
+    - added util.fsdecode() where needed
+  + Fixed bug #1848783 with patch from Jacob Middag
+    - Don't use byte strings in regex
+  + Fixed bug #1626061 with patch from Michael Apozyan
+    - While doing multipart upload to s3 we need to report the
+      total size of uploaded data, and not the size of each part
+      individually.  So we need to keep track of all parts
+      uploaded so far and sum it up on the fly.
+  + Fixed bug #1848203 with patch from Michael Apozyan
+    - convert to integer division
+  + Updated b2 backend to work with both v0 and v1 of b2sdk
+  + Fixed bug #1847885 - B2 fails on string concatenation.
+    - use util.fsdecode() to get a string not bytes.
+      - Partially fixed in bug #1843995, this applies same fix to
+      remaining instances of the problem
+  + Fixed Resouce warnings when using paramiko.  It turns out
+    that duplicity's ssh_paramiko_backend.py was not handling
+    warning suppression and ended up clearing all warnings,
+    including those that default to off.
+
+-------------------------------------------------------------------
 Tue Oct  8 16:08:03 UTC 2019 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 0.8.05: 

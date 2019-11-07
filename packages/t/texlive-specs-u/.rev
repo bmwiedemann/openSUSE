@@ -361,4 +361,12 @@ Reflect all of the licenses of the various components in the spec file license (
     <comment>Add updmap-map_roboto.dif to update encoding mappings (boo#1143065)</comment>
     <requestid>725616</requestid>
   </revision>
+  <revision rev="39" vrev="42">
+    <srcmd5>a70dc3822bca6922533f030f4b131680</srcmd5>
+    <version>unknown</version>
+    <time>1573164694</time>
+    <user>dimstar_suse</user>
+    <comment>Enhance spec file generator to catch more required style files e.g. readarray.sty for verbatimbox.sty as reported in boo#1155752</comment>
+    <requestid>745626</requestid>
+  </revision>
 </revisionlist>

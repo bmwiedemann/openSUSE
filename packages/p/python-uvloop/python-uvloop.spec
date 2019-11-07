@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-uvloop
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        An asyncio event loop on top of libuv
 License:        MIT AND Apache-2.0

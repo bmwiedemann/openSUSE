@@ -389,4 +389,12 @@ Otherwise compilation fails with hard to understand error that opj_codec_set is 
   devel</comment>
     <requestid>736829</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>6a3df1e4ca67dd9c273ca4c9e3e75162</srcmd5>
+    <version>3.0.2</version>
+    <time>1573165162</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>746088</requestid>
+  </revision>
 </revisionlist>

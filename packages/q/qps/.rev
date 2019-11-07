@@ -141,4 +141,12 @@
     - Fixed table size and scrollbars</comment>
     <requestid>737572</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>f3523ae89d4df12b01d5c14b9e03f07e</srcmd5>
+    <version>2.0.0</version>
+    <time>1573165261</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't require glibc &gt;= 2.30, it works actually without it</comment>
+    <requestid>746244</requestid>
+  </revision>
 </revisionlist>

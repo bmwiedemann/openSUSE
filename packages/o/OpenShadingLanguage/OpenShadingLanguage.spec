@@ -15,16 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 # The library soname versions follow the package version major and minor numbers.
 %define sover %(echo %{version} | cut -d . -f 1,2)
 %define sufx %(echo %{sover}|tr . _)
 
-#NOTE: This package was created for blender, blender doesn't build against
-# the 1.10.x ABI. If there is the need to update to such a version please consult me
-# first davejplater@gmail.com or suffix the package with a 110 or something.
-
 Name:           OpenShadingLanguage
-Version:        1.9.13
+Version:        1.10.7
 Release:        0
 Summary:        A language for programmable shading
 License:        BSD-3-Clause
@@ -38,27 +35,15 @@ Patch0:         0001-Generalize-lookup-of-stdosl.h-in-install-directory-a.patch
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  cmake(pugixml)
-%if 0%{suse_version} >= 1500
-BuildRequires:  clang-devel
-%else
-BuildRequires:  llvm-clang-devel >= 3.8
-BuildRequires:  ncurses-devel
-%endif
+BuildRequires:  clang-devel >= 4
 BuildRequires:  flex
 BuildRequires:  gcc-c++
-%if 0%{suse_version} >= 1500
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libboost_wave-devel
-%else
-# The default 1.54 is to old, 1.61 has unresolvable
-# symbols in boost::wave (C++ ABI issue?)
-BuildRequires:  boost-devel >= 1.55.0
-BuildConflicts: boost-devel >= 1.61.0
-%endif
-BuildRequires:  OpenImageIO-devel
 BuildRequires:  OpenEXR-devel
+BuildRequires:  OpenImageIO-devel >= 1.8
 BuildRequires:  python
 Requires:       %{name}-common-headers = %{version}
 Recommends:     %{name}-doc = %{version}
@@ -85,6 +70,7 @@ This package contains documentation.
 
 %package MaterialX-shaders-source
 Summary:        MaterialX shader nodes
+License:        BSD-3-Clause
 Group:          Development/Languages/Other
 Requires:       %{name} = %{version}
 Requires:       %{name}-common-headers
@@ -98,6 +84,7 @@ This package contains the code for the MaterialX shader nodes.
 
 %package example-shaders-source
 Summary:        OSL shader examples
+License:        BSD-3-Clause
 Group:          Development/Languages/Other
 Requires:       %{name} = %{version}
 Requires:       %{name}-common-headers
@@ -111,6 +98,7 @@ This package contains some OSL example shaders.
 
 %package common-headers
 Summary:        OSL standard library and auxiliary headers
+License:        BSD-3-Clause
 Group:          Development/Languages/Other
 Requires:       %{name} = %{version}
 
@@ -124,6 +112,7 @@ as some additional headers useful for writing shaders.
 
 %package -n liboslcomp%{sufx}
 Summary:        OpenShadingLanguage's compiler component library
+License:        BSD-3-Clause
 Group:          System/Libraries
 
 %description -n liboslcomp%{sufx}
@@ -133,6 +122,7 @@ materials, lights, displacement, and pattern generation.
 
 %package -n liboslexec%{sufx}
 Summary:        OpenShadingLanguage's execution component library
+License:        BSD-3-Clause
 Group:          System/Libraries
 
 %description -n liboslexec%{sufx}
@@ -142,6 +132,7 @@ materials, lights, displacement, and pattern generation.
 
 %package -n liboslnoise%{sufx}
 Summary:        OpenShadingLanguage's image noise generation library
+License:        BSD-3-Clause
 Group:          System/Libraries
 
 %description -n liboslnoise%{sufx}
@@ -151,6 +142,7 @@ materials, lights, displacement, and pattern generation.
 
 %package -n liboslquery%{sufx}
 Summary:        Osl library
+License:        BSD-3-Clause
 Group:          System/Libraries
 
 %description -n liboslquery%{sufx}
@@ -160,6 +152,7 @@ materials, lights, displacement, and pattern generation.
 
 %package -n libtestshade%{sufx}
 Summary:        Osl library
+License:        BSD-3-Clause
 Group:          System/Libraries
 
 %description -n libtestshade%{sufx}
@@ -169,6 +162,7 @@ materials, lights, displacement, and pattern generation.
 
 %package -n osl.imageio%{sufx}
 Summary:        Shader interface to OpenImageIO functions
+License:        BSD-3-Clause
 Group:          System/Libraries
 
 %description -n osl.imageio%{sufx}
@@ -178,6 +172,7 @@ materials, lights, displacement, and pattern generation.
 
 %package        devel
 Summary:        Development files for %{name}
+License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       liboslcomp%{sufx} = %{version}
@@ -196,15 +191,7 @@ developing applications that use %{name}.
 %patch0 -p1
 
 %build
-# We use a combined LLVM on 15.0/TW, so libLLVMMCJIT is neither available nor needed
-# On 42.3., we have to collect the split libraries ourselfs,
-# as the supplied FindLLVM.cmake is broken
-%if 0%{suse_version} < 1500
-%define llvm_libs %(llvm-config --libfiles | tr ' ' ';')
-%endif
 %cmake \
-      %{?llvm_libs:-DLLVM_LIBRARY="%{llvm_libs}"} \
-      -DLLVM_MCJIT_LIBRARY="" \
       -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name} \
       -DOSL_INSTALL_SHADERDIR:PATH=%{_datadir}/%{name}
 
@@ -235,7 +222,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n osl.imageio%{sufx} -p /sbin/ldconfig
 %postun -n osl.imageio%{sufx} -p /sbin/ldconfig
-
 
 %files
 %{_bindir}/*

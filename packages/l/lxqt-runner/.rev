@@ -237,4 +237,19 @@
 </comment>
     <requestid>670394</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7649a898da92e5351cef90aabf89f0b8</srcmd5>
+    <version>0.14.1</version>
+    <time>1573165268</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove old files:
+  * lxqt-runner-0.14.0.tar.xz
+  * lxqt-runner-0.14.0.tar.xz.asc
+
+- Update to 0.14.1:
+  * MathItem: Use documented API of muparser and check for possible ArgSep()
+    and DecSep() conflict. Also do not use grouping for output values.
+  * Updated translations</comment>
+    <requestid>746277</requestid>
+  </revision>
 </revisionlist>

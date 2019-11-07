@@ -42,4 +42,24 @@
   * Add example whitelist defaults.</comment>
     <requestid>724261</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3f94ce7c4ece780e81fb9143cdfbc720</srcmd5>
+    <version>19+git20191104.5dfb982</version>
+    <time>1573164915</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 19+git20191104.5dfb982:
+  * v19
+  * Fixed signedness.
+
+- Update to version 18+git20191028.83201e8:
+  * v18
+  * Hide unwanted firewalld-cmd error messages.
+  * v17
+  * Add firewalld support
+  * Fix command order in tallow.conf man page
+  * Add json-c to travis.
+  * make older compilers a bit happier
+  * add dovecot as postfix auth backend parsing</comment>
+    <requestid>745515</requestid>
+  </revision>
 </revisionlist>

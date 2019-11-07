@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov  7 09:48:06 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- New version 3.4.2, this release addresses the following issues:
+    - Sets workable permissions on OCI -> sandbox rootless builds
+    - Fallback correctly to user namespace for non setuid installation
+    - Correctly handle the starter-suid binary for non-root installs
+    - Creates CACHEDIR if it doesn't exist
+    - Set apex loglevel for umoci to match singularity loglevel
+
+-------------------------------------------------------------------
 Tue Sep 24 16:51:53 UTC 2019 - Egbert Eich <eich@suse.com>
 
 - New version 3.4.1

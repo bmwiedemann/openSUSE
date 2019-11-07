@@ -1,0 +1,517 @@
+-------------------------------------------------------------------
+Mon Sep 16 17:47:08 UTC 2019 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Make build with otr configurable
+
+-------------------------------------------------------------------
+Wed Sep  4 09:28:44 UTC 2019 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- De-duplicate sample-data
+
+-------------------------------------------------------------------
+Wed Jul 24 08:08:44 UTC 2019 - Nicolas Rochard <nrochard@gmail.com>
+
+- Update to latest version 3.8.1 (monthly bugfix)
+
+-------------------------------------------------------------------
+Tue Jul  9 15:14:16 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Adapt GRASS_PREFIX7 to changes in grass.
+- Remove unused clang dependency.
+- Disable LTO for now because static library doesn't link.
+
+-------------------------------------------------------------------
+Sat Jul  6 20:47:20 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure that descriptions are neutral and free of redundancies.
+- Plugins do not need ldconfig, so remove those scriptlets.
+
+-------------------------------------------------------------------
+Wed Jul  3 12:01:31 UTC 2019 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Update to 3.8.0
+
+-------------------------------------------------------------------
+Wed Jul  3 11:48:45 UTC 2019 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- add ef8f06330f57882f740cfe7f8f3659b54b1bb1fb.patch to build qith QT >5.13
+
+-------------------------------------------------------------------
+Sat Apr  6 20:00:18 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to bugfix 3.6.1 version
+- Update URL to https
+- Remove postgresql-server-devel build require, add
+  -DPOSTGRES_INCLUDE_DIR=%{_includedir}/pgsql to enable libpq
+- Force proj6 usage (gdal 2.4.1 and grass 7.6.1 are proj6 ready)
+  + Remove all proj5 dependencies 
+
+-------------------------------------------------------------------
+Thu Apr  4 08:23:55 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix the build requirements for the Tumbleweed repo, pg_config
+  is now in postgresqlXX-server-devel (bsc#1131494)
+
+-------------------------------------------------------------------
+Fri Mar 22 08:01:47 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Force usage of proj5 as proj (version 6) is not supported yet
+
+-------------------------------------------------------------------
+Wed Feb 27 21:02:18 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to 3.6.0 version 
+- Cleanup of spec and history
+- Added libexiv2-devel as new BuildRequires
+- Fix python3-GDAL new name
+
+-------------------------------------------------------------------
+Mon Jan 21 07:38:53 UTC 2019 - Nicolas Rochard <nrochard@gmail.com>
+
+- Update to 3.4.4
+
+-------------------------------------------------------------------
+Fri Dec 21 14:27:25 UTC 2018 - Nicolas Rochard <nrochard@gmail.com>
+
+- Update to 3.4.3
+
+-------------------------------------------------------------------
+Wed Nov 28 17:01:27 UTC 2018 - Nicolas Rochard <nrochard@gmail.com>
+
+- Update to 3.4.2
+
+-------------------------------------------------------------------
+Mon Nov  5 12:09:35 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 3.4.1
+
+-------------------------------------------------------------------
+Tue Oct 30 13:47:09 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable openCL
+
+-------------------------------------------------------------------
+Tue Oct 30 13:38:20 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 3.4.0
+- Remove qgis.desktop source as it is provided by qgis sources now
+
+-------------------------------------------------------------------
+Fri Oct 19 14:46:55 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix version in qgis.desktop
+
+-------------------------------------------------------------------
+Mon Sep 17 16:10:56 UTC 2018 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to version 3.2.3 (monthy bug fix release) 
+
+-------------------------------------------------------------------
+Tue Aug 21 13:13:39 UTC 2018 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to 3.2.2 (monthly bug fix release) 
+- Packaging
+  + Add the 3 main database component to buildrequires and requires
+    So future version can open auth db and others without cryptic
+    debuging by end user. sqlite3, mysql, postgresql
+  + Add new BuildRequires libQt5Sql-private-headers-devel
+
+-------------------------------------------------------------------
+Tue Jul 24 10:00:42 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Add missing qwt6-devel build dep
+
+-------------------------------------------------------------------
+Mon Jul 23 17:12:22 UTC 2018 - nrochard@gmail.com
+
+- Update to 3.2.1 (monthly bug fix release)
+
+-------------------------------------------------------------------
+Tue Jul 17 07:11:33 UTC 2018 - bruno@ioda-net.ch
+
+- Update to 3.2.0 release
+- Packaging:
+  + Remove merged upstream patch fix_3d_qt511.patch
+  + Fix %file list
+  + Reactivate sed env interpreter line
+  + spec-cleaner minimal (date, licence)
+
+-------------------------------------------------------------------
+Mon Jun 11 14:24:54 UTC 2018 - bruno@ioda-net.ch
+
+- Added patch fix_grass_qt511.patch fix_3d_qt511.patch 
+  to fix build with QT5 > 5.11 
+
+-------------------------------------------------------------------
+Fri Jun  8 11:49:08 UTC 2018 - ernst@pleiszenburg.de
+
+- Update to 3.0.3
+- Fixed name and version in desktop-file
+
+-------------------------------------------------------------------
+Tue Mar 27 17:05:33 UTC 2018 - wbauer@tmo.at
+
+- Update to 3.0.1
+- There's no point to recommend libqca2-plugin-*, those are for the
+  Qt4 version of QCA and cannot be used by qca-qt5
+- Don't disable QtWebKit anymore, the Qt5 version is available and
+  maintained
+- No need to BuildIgnore libopenssl-1_0_0-devel any more
+
+-------------------------------------------------------------------
+Fri Mar  9 07:43:51 UTC 2018 - guillaume@opensuse.org
+
+- Add _constraints to get a worker able to build qgis
+
+-------------------------------------------------------------------
+Mon Feb 26 09:00:27 UTC 2018 - guillaume@opensuse.org
+
+- Update to 3.0.0
+
+-------------------------------------------------------------------
+Thu Jan 25 09:10:07 UTC 2018 - guillaume@opensuse.org
+
+- Update to 2.18.16
+
+-------------------------------------------------------------------
+Thu Jan  4 12:36:16 UTC 2018 - wbauer@tmo.at
+
+- Build without QtWebKit on Tumbleweed and SLE/Leap 15,
+  libQtWebKit4 is about to be dropped soon
+
+-------------------------------------------------------------------
+Wed Jan  3 12:27:30 UTC 2018 - fabian@ritter-vogt.de
+
+- Don't reference the removed Qt3-based qca
+
+-------------------------------------------------------------------
+Wed Dec 13 15:39:27 UTC 2017 - mpluskal@suse.com
+
+- Use cmake macros
+- Cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Tue Dec 12 19:43:32 UTC 2017 - nrochard@gmail.com
+
+- Update to 2.18.15 
+
+-------------------------------------------------------------------
+Mon Nov 13 20:11:24 UTC 2017 - bruno@ioda-net.ch
+
+- Update to 2.8.14 (Qgis 2.8 will become the new ltr soon) 
+
+-------------------------------------------------------------------
+Thu Oct 26 13:14:38 UTC 2017 - bruno@ioda-net.ch
+
+- Remove obsolete BuildRequires qca-devel (qca 1.x has been removed
+  in Tumbleweed)
+  We've been already using libqca2-devel
+  Fix boo@1065257
+
+-------------------------------------------------------------------
+Wed Sep 20 11:28:25 UTC 2017 - dassau@gbd-consult.de
+
+- Update to 2.18.13 
+
+-------------------------------------------------------------------
+Thu Aug 24 16:10:15 UTC 2017 - nrochard@gmail.com
+
+- Update to 2.18.12 
+
+-------------------------------------------------------------------
+Fri Jul 28 09:43:11 UTC 2017 - nrochard@gmail.com
+
+- Update to 2.18.11 
+
+-------------------------------------------------------------------
+Tue Jun 27 06:49:30 UTC 2017 - nrochard@gmail.com
+
+- Fix error package name python-Pygments and python-Jinja2
+
+-------------------------------------------------------------------
+Fri Jun 23 13:06:44 UTC 2017 - nrochard@gmail.com
+
+- Update to 2.18.10
+- Packaging
+  + Add python2-Pygments and python2-Jinja2 need by MetaSearch
+    Catalogue Client plugin
+
+-------------------------------------------------------------------
+Mon Jun 19 14:19:20 UTC 2017 - bruno@ioda-net.ch
+
+- Packaging 
+  + Remove non existent requires only python-qscintilla is needed, 
+    the qt4 and qt5 variant will requires the right -sip subpackage
+  + Move python-qt4-devel to -devel package
+
+-------------------------------------------------------------------
+Tue May 30 12:43:39 UTC 2017 - nrochard@gmail.com
+
+- Update to 2.18.9 
+
+-------------------------------------------------------------------
+Tue Apr 25 07:08:24 UTC 2017 - nrochard@gmail.com
+
+- Update to 2.18.7
+
+-------------------------------------------------------------------
+Tue Apr 11 19:06:09 UTC 2017 - bruno@ioda-net.ch
+
+- Update to 2.18.6
+- Packaging: 
+  + remove merged upstream-85a0db2-additionnal-fix-sip.patch
+  + Add full source url + md5
+
+-------------------------------------------------------------------
+Thu Mar  2 07:51:52 UTC 2017 - bruno@ioda-net.ch
+
+- Packaging: 
+  + Add upstream-85a0db2-additionnal-fix-sip.patch for sip 4.19.1
+    exclusively applied for TW
+
+-------------------------------------------------------------------
+Mon Feb 27 12:52:57 UTC 2017 - nrochard@gmail.com
+
+- Update to 2.18.4
+
+-------------------------------------------------------------------
+Wed Jan 18 10:32:58 UTC 2017 - nrochard@gmail.com
+
+- Update to 2.18.3
+- Packaging : 
+  + added upstream-2c43568-qt_bug.patch to fix build errors on Leap
+
+-------------------------------------------------------------------
+Thu Jan  5 09:12:22 UTC 2017 - guillaume@opensuse.org
+
+- Fix build for non-x86 64-bit arch (aarch64 ppc64 ppc64le)
+
+-------------------------------------------------------------------
+Wed Dec 21 15:38:15 UTC 2016 - nrochard@gmail.com
+
+- Update to 2.18.2
+
+-------------------------------------------------------------------
+Wed Dec  7 10:26:24 UTC 2016 - nrochard@gmail.com
+
+- Update to 2.18.1
+
+-------------------------------------------------------------------
+Sun Oct 23 08:49:07 UTC 2016 - dassau@gbd-consult.de
+
+- Update to 2.18.0
+
+-------------------------------------------------------------------
+Tue Sep 27 10:49:07 UTC 2016 - nrochard@gmail.com
+
+- Update to 2.16.3
+
+-------------------------------------------------------------------
+Thu Sep  8 11:45:09 UTC 2016 - nrochard@gmail.com
+
+- Update to 2.16.2
+
+-------------------------------------------------------------------
+Mon Aug  1 07:44:09 UTC 2016 - dassau@gbd-consult.de
+
+- Update to 2.16.1 
+
+-------------------------------------------------------------------
+Mon Jul 11 12:16:18 UTC 2016 - dassau@gbd-consult.de
+
+- Update to 2.16.0 
+
+-------------------------------------------------------------------
+Mon May 23 07:06:36 UTC 2016 - nrochard@gmail.com
+
+- Update to 2.14.3
+
+-------------------------------------------------------------------
+Mon May  2 13:54:53 UTC 2016 - nrochard@gmail.com
+
+- Update to 2.14.2
+
+-------------------------------------------------------------------
+Tue Mar 29 09:03:21 UTC 2016 - dassau@gbd-consult.de
+
+- Update to 2.14.1 
+
+-------------------------------------------------------------------
+Mon Mar 21 10:10:54 UTC 2016 - nrochard@gmail.com
+
+- Fix Desktop shortcut to 2.14.0 "Essen"
+
+-------------------------------------------------------------------
+Wed Mar 16 15:27:38 UTC 2016 - dassau@gbd-consult.de
+
+- Update to 2.14.0 
+
+-------------------------------------------------------------------
+Fri Jan 15 13:51:27 UTC 2016 - nrochard@gmail.com
+
+- Update to 2.12.3
+
+-------------------------------------------------------------------
+Mon Dec 28 14:46:39 UTC 2015 - nrochard@gmail.com
+
+- Update to 2.12.2
+
+-------------------------------------------------------------------
+Sun Dec 27 13:43:00 UTC 2015 - tzotsos@opensuse.org
+
+- Update to libspatialindex4
+
+-------------------------------------------------------------------
+Tue Dec  1 07:56:38 UTC 2015 - nrochard@gmail.com
+
+- Update to 2.12.1
+
+-------------------------------------------------------------------
+Mon Nov  2 09:54:37 UTC 2015 - dassau@gbd-consult.de
+
+- New QGIS release 2.12.0 
+
+-------------------------------------------------------------------
+Sat Aug 01 14:07:00 UTC 2015 - tzotsos@opensuse.org
+
+- back to using grass package
+
+------------------------------------------------------------------
+Fri Jul 27 13:10:55 UTC 2015 - dassau@gbd-consult.de
+
+- New QGIS release 2.10.1
+
+------------------------------------------------------------------
+Fri Jun 26 13:10:55 UTC 2015 - dassau@gbd-consult.de
+
+- New QGIS release 2.10.0
+
+-------------------------------------------------------------------
+Wed Jun 24 09:42:29 UTC 2015 - dassau@gbd-consult.de
+
+- obsolete qgis2-plugin-grass 
+
+-------------------------------------------------------------------
+Tue Jun 16 14:31:54 UTC 2015 - dassau@gbd-consult.de
+
+- update to build with grass7 support instead of grass 6
+
+-------------------------------------------------------------------
+Thu Jun 11 14:26:33 UTC 2015 - dassau@gbd-consult.de
+
+- change cmake parameters to build with qgis server again
+
+-------------------------------------------------------------------
+Thu Jun 11 13:48:08 UTC 2015 - dassau@gbd-consult.de
+
+- change dependency order
+
+-------------------------------------------------------------------
+Tue May 19 07:45:39 UTC 2015 - dassau@gbd-consult.de
+
+- small update desktop file 
+
+-------------------------------------------------------------------
+Mon May 11 07:10:47 UTC 2015 - dassau@gbd-consult.de
+
+- Minor QGIS release 2.8.2
+
+-------------------------------------------------------------------
+Thu Feb 26 20:00:00 UTC 2015 - tzotsos@opensuse.org
+
+- Minor QGIS release 2.8.1
+
+-------------------------------------------------------------------
+Sun Feb 22 13:00:00 UTC 2015 - tzotsos@opensuse.org
+
+- New QGIS release 2.8.0
+
+-------------------------------------------------------------------
+Wed Jan 14 03:06:00 UTC 2015 - tzotsos@opensuse.org
+
+- Do not obsolete grass7 unless grass-plugin is used
+- Removed requirements (OBS resolves requirements automatically)
+
+-------------------------------------------------------------------
+Sun Nov 30 01:45:00 UTC 2014 - tzotsos@opensuse.org
+
+- New QGIS release 2.6.1
+
+-------------------------------------------------------------------
+Wed Nov  5 08:45:59 UTC 2014 - dassau@gbd-consult.de
+
+- obsolet grass7 - use grass stable package instead 
+
+-------------------------------------------------------------------
+Wed Nov  5 08:35:24 UTC 2014 - dassau@gbd-consult.de
+
+- added python-wxWidgets as dependency 
+
+-------------------------------------------------------------------
+Wed Nov  5 08:24:51 UTC 2014 - dassau@gbd-consult.de
+
+- added libqscintilla dependencies 
+
+-------------------------------------------------------------------
+Wed Nov  5 07:57:41 UTC 2014 - dassau@gbd-consult.de
+
+- New QGIS release 2.6 
+
+-------------------------------------------------------------------
+Tue Jul  1 07:51:00 UTC 2014 - dassau@gbd-consult.de
+
+- New QGIS release 2.4 
+
+-------------------------------------------------------------------
+Sat Feb 22 10:23:16 UTC 2014 - dassau@gbd-consult.de
+
+- New QGIS release 2.2  
+
+-------------------------------------------------------------------
+Thu Jan  9 11:00:22 UTC 2014 - nrochard@gmail.com
+
+- fix spatialite support for python plugin 
+
+-------------------------------------------------------------------
+Sat Nov 30 00:39:24 UTC 2013 - hpj@urpla.net
+
+- add sample data as separate package
+- more spec cleanup
+
+-------------------------------------------------------------------
+Thu Nov 28 01:11:39 UTC 2013 - hpj@urpla.net
+
+- add missing private declarations for python sip bindings
+- fix qgis.spec file: add missing %dirs, cleanup
+
+-------------------------------------------------------------------
+Tue Nov  5 08:25:46 UTC 2013 - tzotsos@opensuse.org
+
+- Added python-psycopg2 as requirement 
+
+-------------------------------------------------------------------
+Mon Nov  4 17:31:59 UTC 2013 - dassau@gbd-consult.de
+
+- clean up  
+
+-------------------------------------------------------------------
+Mon Nov  4 11:24:24 UTC 2013 - dassau@gbd-consult.de
+
+- added python-qscintilla as requirement
+
+-------------------------------------------------------------------
+Wed Sep 25 15:34:20 UTC 2013 - dassau@gbd-consult.de
+
+- added python-matplotlib as requirement 
+
+-------------------------------------------------------------------
+Wed Sep 11 08:05:44 UTC 2013 - dassau@gbd-consult.de
+
+- update to version 2.0.1, because of swisstopo acknowledgement for 
+  the splash screen and small bug fixes 
+
+-------------------------------------------------------------------
+Mon Sep  9 14:18:59 UTC 2013 - dassau@gbd-consult.de
+
+- start building qgis packages for version 2.x 
+

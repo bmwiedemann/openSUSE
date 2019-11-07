@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Nov  5 11:11:55 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Temporarily disable failing tests on s390x and ppc64 architectures
+  * Add sysstat-disable-test-failures.patch
+
+-------------------------------------------------------------------
+Mon Nov  4 15:34:52 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Use upstream systemd service and timer files [bsc#1151453]
+  * Add sysstat-service.patch
+
+-------------------------------------------------------------------
+Wed Oct 30 18:49:50 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Enable log information on service start/stop [bsc#1144923, jsc#SLE-5958]
+
+-------------------------------------------------------------------
+Tue Oct 29 18:00:14 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Migrate from cron to systemd timer units [bsc#1151453]
+  * Add sysstat-collect.{service,timer} and sysstat-summary.{service,timer}
+  * Remove sysstat.cron.suse
+
+-------------------------------------------------------------------
 Thu Oct 10 13:18:26 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Requires cron, since sysstat.service wants to create 

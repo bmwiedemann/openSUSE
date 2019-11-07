@@ -1,0 +1,3 @@
+This package should always depend on the preferred numbered
+version of tornado, so "python-tornadoX" where "X" is the
+major version number.

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <param>
-  <image>obsrepositories:/opensuse/tumbleweed</image>
+  <image>obsrepositories:/opensuse/ceph/ceph#tumbleweed.nautilus</image>
+  <tags>tumbleweed.nautilus</tags>
   <name>opensuse/rook/ceph</name>
   <prefix>org.opensuse.rook-ceph</prefix>
   <title>Rook container for Ceph</title>

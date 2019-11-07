@@ -21,7 +21,7 @@
 %define texlive_version  2019
 %define texlive_previous 2018
 %define texlive_release  20190407
-%define texlive_noarch   167
+%define texlive_noarch   168
 
 #!BuildIgnore:          texlive
 
@@ -59,7 +59,7 @@ BuildRequires:  texlive-filesystem
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for b
-License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND LPPL-1.0 AND OFL-1.1 AND SUSE-Public-Domain
+License:        BSD-3-Clause and GPL-2.0+ and LGPL-3.0+ and LPPL-1.0 and OFL-1.1 and SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 Url:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Source0:        texlive-specs-b-rpmlintrc
@@ -3703,7 +3703,10 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-ascelike-doc >= %{texlive_version}
 Provides:       tex(ascelike.cls)
 Requires:       tex(article.cls)
+Requires:       tex(endfloat.sty)
 Requires:       tex(ifthen.sty)
+Requires:       tex(lineno.sty)
+Requires:       tex(setspace.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source20:       ascelike.tar.xz
@@ -4895,6 +4898,7 @@ Provides:       tex(colo-asy.tex)
 Provides:       tex(ocg.sty)
 Requires:       tex(catchfile.sty)
 Requires:       tex(color.sty)
+Requires:       tex(everypage.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(ifthen.sty)
@@ -5858,6 +5862,7 @@ Recommends:     texlive-attachfile-doc >= %{texlive_version}
 Provides:       tex(attachfile.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(color.sty)
+Requires:       tex(hyperref.sty)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
@@ -7446,6 +7451,7 @@ Requires:       tex(ifpdf.sty)
 Requires:       tex(ifplatform.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(keyval.sty)
+Requires:       tex(psfrag.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source82:       autopdf.tar.xz
@@ -8732,6 +8738,7 @@ Provides:       tex(ukraineb.sty)
 Provides:       tex(usorbian.sty)
 Provides:       tex(welsh.sty)
 Provides:       tex(xebabel.def)
+Requires:       tex(fontspec.sty)
 Requires:       tex(luatexbase.sty)
 Requires:       tex(rlbabel.def)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
@@ -14003,6 +14010,10 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-background-doc >= %{texlive_version}
 Provides:       tex(background.sty)
+Requires:       tex(afterpage.sty)
+Requires:       tex(everypage.sty)
+Requires:       tex(tikz.sty)
+Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source214:      background.tar.xz
@@ -14366,6 +14377,8 @@ Requires:       tex(indentfirst.sty)
 Requires:       tex(inputenc.sty)
 Requires:       tex(isodate.sty)
 Requires:       tex(microtype.sty)
+Requires:       tex(newtxmath.sty)
+Requires:       tex(newtxtext.sty)
 Requires:       tex(parskip.sty)
 Requires:       tex(report.cls)
 Requires:       tex(setspace.sty)
@@ -14870,11 +14883,17 @@ Provides:       tex(bardiag.sty)
 Provides:       tex(pstfp.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(fp-snap.sty)
+Requires:       tex(geometry.sty)
+Requires:       tex(graphicx.sty)
 Requires:       tex(ifthen.sty)
+Requires:       tex(listings.sty)
+Requires:       tex(makeidx.sty)
 Requires:       tex(multido.sty)
 Requires:       tex(pst-grad.sty)
 Requires:       tex(pstcol.sty)
 Requires:       tex(pstricks.sty)
+Requires:       tex(subfigure.sty)
+Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source232:      bardiag.tar.xz
@@ -16160,6 +16179,7 @@ Provides:       tex(zbvmi.vf)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(fontaxes.sty)
 Requires:       tex(fontenc.sty)
+Requires:       tex(mweights.sty)
 Requires:       tex(ntxbmi.tfm)
 Requires:       tex(ntxmi.tfm)
 Requires:       tex(textcomp.sty)
@@ -17381,6 +17401,7 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(fontaxes.sty)
 Requires:       tex(fontenc.sty)
 Requires:       tex(ifthen.sty)
+Requires:       tex(mweights.sty)
 Requires:       tex(ntxbmi.tfm)
 Requires:       tex(ntxmi.tfm)
 Requires:       tex(rtxbmi.tfm)

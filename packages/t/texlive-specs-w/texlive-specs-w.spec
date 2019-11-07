@@ -21,7 +21,7 @@
 %define texlive_version  2019
 %define texlive_previous 2018
 %define texlive_release  20190407
-%define texlive_noarch   167
+%define texlive_noarch   168
 
 #!BuildIgnore:          texlive
 
@@ -59,7 +59,7 @@ BuildRequires:  texlive-filesystem
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for w
-License:        Artistic-1.0 AND BSD-3-Clause AND GFDL-1.2-only AND GPL-2.0-or-later AND LPPL-1.0 AND LPPL-1.3c AND SUSE-Public-Domain AND SUSE-TeX
+License:        Artistic-1.0 and BSD-3-Clause and GFDL-1.2 and GPL-2.0+ and LPPL-1.0 and LPPL-1.3c and SUSE-Public-Domain and SUSE-TeX
 Group:          Productivity/Publishing/TeX/Base
 Url:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Source0:        texlive-specs-w-rpmlintrc
@@ -163,11 +163,15 @@ Recommends:     texlive-tablor-doc >= %{texlive_version}
 Provides:       tex(tablor-xetex.sty)
 Provides:       tex(tablor.cfg)
 Provides:       tex(tablor.sty)
+Requires:       tex(babel.sty)
 Requires:       tex(fancyvrb.sty)
 Requires:       tex(filecontents.sty)
+Requires:       tex(fontenc.sty)
+Requires:       tex(graphicx.sty)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(ifxetex.sty)
+Requires:       tex(pst-eps.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source3:        tablor.tar.xz
@@ -786,6 +790,7 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-tabu-doc >= %{texlive_version}
 Provides:       tex(tabu.sty)
 Requires:       tex(array.sty)
+Requires:       tex(delarray.sty)
 Requires:       tex(linegoal.sty)
 Requires:       tex(varwidth.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
@@ -2557,6 +2562,7 @@ Provides:       tex(tclldoc.sty)
 Requires:       tex(article.cls)
 Requires:       tex(docidx2e.sty)
 Requires:       tex(rtkinenc.sty)
+Requires:       tex(xdoc2.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source46:       tcldoc.tar.xz
@@ -2954,6 +2960,7 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-tdsfrmath-doc >= %{texlive_version}
 Provides:       tex(tdsfrmath.sty)
 Requires:       tex(amsmath.sty)
+Requires:       tex(amssymb.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(stmaryrd.sty)
 Requires:       tex(suffix.sty)
@@ -3039,6 +3046,16 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-technics-doc >= %{texlive_version}
 Provides:       tex(technics.sty)
+Requires:       tex(a4wide.sty)
+Requires:       tex(calc.sty)
+Requires:       tex(fancyhdr.sty)
+Requires:       tex(fontenc.sty)
+Requires:       tex(graphics.sty)
+Requires:       tex(hyperref.sty)
+Requires:       tex(inputenc.sty)
+Requires:       tex(multicol.sty)
+Requires:       tex(setspace.sty)
+Requires:       tex(times.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source55:       technics.tar.xz
@@ -3121,6 +3138,7 @@ Provides:       tex(technionThesis.cls)
 Provides:       tex(technionThesisSetup.sty)
 Requires:       tex(IEEEtrantools.sty)
 Requires:       tex(accents.sty)
+Requires:       tex(algorithm2e.sty)
 Requires:       tex(amssymb.sty)
 Requires:       tex(amsthm.sty)
 Requires:       tex(atbegshi.sty)
@@ -3138,6 +3156,7 @@ Requires:       tex(fontspec.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(hebrewcal.sty)
 Requires:       tex(hyperref.sty)
+Requires:       tex(indentfirst.sty)
 Requires:       tex(libertine.sty)
 Requires:       tex(longtable.sty)
 Requires:       tex(mathtools.sty)
@@ -3146,6 +3165,7 @@ Requires:       tex(metalogo.sty)
 Requires:       tex(multirow.sty)
 Requires:       tex(newtxmath.sty)
 Requires:       tex(pgfplots.sty)
+Requires:       tex(polyglossia.sty)
 Requires:       tex(stackrel.sty)
 Requires:       tex(subfig.sty)
 Requires:       tex(tabto.sty)
@@ -4387,6 +4407,7 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-termcal-de-doc >= %{texlive_version}
 Provides:       tex(termcal-de.sty)
+Requires:       tex(datetime2.sty)
 Requires:       tex(pgfkeys.sty)
 Requires:       tex(pgfopts.sty)
 Requires:       tex(termcal.sty)
@@ -5130,6 +5151,7 @@ Requires:       tex(exscale.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(iftex.sty)
 Requires:       tex(ifthen.sty)
+Requires:       tex(textalpha.sty)
 Requires:       tex(trace.sty)
 Requires:       tex(type1ec.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
@@ -7588,9 +7610,11 @@ Requires:       tex(CJKutf8.sty)
 Requires:       tex(datetime2.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(fontenc.sty)
+Requires:       tex(fontspec.sty)
 Requires:       tex(ifluatex.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(inputenc.sty)
+Requires:       tex(pinyin.sty)
 Requires:       tex(texosquery.sty)
 Requires:       tex(tracklang-scripts.sty)
 Requires:       tex(tracklang.sty)
@@ -16703,6 +16727,7 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-texshade-doc >= %{texlive_version}
 Provides:       tex(texshade.def)
 Provides:       tex(texshade.sty)
+Requires:       tex(amssymb.sty)
 Requires:       tex(color.sty)
 Requires:       tex(graphics.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
@@ -17195,6 +17220,7 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-textglos-doc >= %{texlive_version}
 Provides:       tex(textglos.sty)
+Requires:       tex(graphicx.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source173:      textglos.tar.xz
@@ -17425,6 +17451,7 @@ Provides:       tex(textopo.def)
 Provides:       tex(textopo.sty)
 Requires:       tex(color.sty)
 Requires:       tex(graphics.sty)
+Requires:       tex(texshade.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source179:      textopo.tar.xz
@@ -18512,6 +18539,7 @@ Requires:       tex(amsmath.sty)
 Requires:       tex(amssymb.sty)
 Requires:       tex(amsthm.sty)
 Requires:       tex(bm.sty)
+Requires:       tex(cleveref.sty)
 Requires:       tex(color.sty)
 Requires:       tex(fancyhdr.sty)
 Requires:       tex(float.sty)
@@ -19671,8 +19699,11 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-thumbs-doc >= %{texlive_version}
 Provides:       tex(thumbs.sty)
 Requires:       tex(alphalph.sty)
+Requires:       tex(amsfonts.sty)
 Requires:       tex(atbegshi.sty)
 Requires:       tex(atveryend.sty)
+Requires:       tex(cellspace.sty)
+Requires:       tex(fontenc.sty)
 Requires:       tex(infwarerr.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(ltxcmds.sty)
@@ -20093,8 +20124,15 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-ticollege-doc >= %{texlive_version}
 Provides:       tex(ticollege.sty)
+Requires:       tex(amssymb.sty)
+Requires:       tex(ifthen.sty)
+Requires:       tex(mathtools.sty)
+Requires:       tex(multido.sty)
+Requires:       tex(multirow.sty)
 Requires:       tex(newtxtt.sty)
+Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
+Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source237:      ticollege.tar.xz

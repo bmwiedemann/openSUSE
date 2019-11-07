@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Nov  7 02:20:31 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- new BR pkgconfig(libnftnl) to fix nftables support
+
+-------------------------------------------------------------------
+Thu Nov  7 02:03:15 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.0.19
+  Fix minor IPVS features support. Extend BFD to support more than
+  one BFD instance with a neighnour. Extend nftable support. Script
+  timeout extension. Properly filter IGMP/MLD packets on VMAC
+  interface. Refer to ChangeLog for more infos.
+
+  https://keepalived.org/changelog.html
+- changes from 2.0.18
+  Add support to IPVS new GUE tunnel type. New feature 'weight
+  reverse' available in all trackers. Resolve all outstanding
+  coverity issues. Some fixes and performance extensions. Refer to
+  ChangeLog for more infos.
+
+  https://keepalived.org/changelog.html
+
+-------------------------------------------------------------------
 Tue Jul 23 17:30:04 UTC 2019 - chris@computersalat.de
 
 - Update to 2.0.17 (2019-06-25)

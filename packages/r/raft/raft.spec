@@ -18,11 +18,10 @@
 
 %bcond_without libuv
 Name:           raft
-Version:        0.9.6
+Version:        0.9.9
 Release:        0
 Summary:        Fully asynchronous C implementation of the Raft consensus protocol
 License:        Apache-2.0
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/canonical/raft
 Source:         https://github.com/canonical/raft/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
@@ -46,7 +45,6 @@ A stock implementation of the I/O interface based on libuv is included.
 
 %package -n libraft0
 Summary:        Library implementing the Raft consensus protocol
-Group:          System/Libraries
 
 %description -n libraft0
 This library is a fully asynchronous C implementation of the Raft consensus protocol.
@@ -61,7 +59,6 @@ A stock implementation of the I/O interface based on libuv is included.
 
 %package devel
 Summary:        Development files for the Raft library implementation of the consensus protocol
-Group:          Development/Libraries/C and C++
 Requires:       libraft0 = %{version}
 %if !%{without libuv}
 Requires:       pkgconfig(libuv) >= 1.8.0

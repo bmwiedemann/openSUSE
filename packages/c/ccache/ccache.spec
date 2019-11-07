@@ -17,11 +17,10 @@
 
 
 Name:           ccache
-Version:        3.7.4
+Version:        3.7.5
 Release:        0
 Summary:        A Fast C/C++ Compiler Cache
 License:        GPL-3.0-or-later
-Group:          Development/Languages/C and C++
 URL:            https://ccache.dev/
 Source0:        https://github.com/ccache/ccache/releases/download/v%{version}/ccache-%{version}.tar.xz#/%{name}-%{version}.tar.xz
 Source1:        https://github.com/ccache/ccache/releases/download/v%{version}/ccache-%{version}.tar.xz.asc#/%{name}-%{version}.tar.xz.asc

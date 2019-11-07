@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov  4 13:27:37 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.1.0
+  * GTK3 Port
+  * React to panel "mode," not "orientation" (bxo#15840)
+  * Make time out plugin respect panel icon size (bxo#15839)
+  * Allow compilation with panel 4.15
+  * Make build less verbose
+  * Translation Updates
+
+-------------------------------------------------------------------
 Tue Aug 20 08:24:19 UTC 2019 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Fix provides/obsoletes: in the past, this plugin was called

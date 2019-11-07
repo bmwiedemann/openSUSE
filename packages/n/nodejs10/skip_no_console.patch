@@ -1,0 +1,185 @@
+Index: node-v10.17.0/test/parallel/test-console-clear.js
+===================================================================
+--- node-v10.17.0.orig/test/parallel/test-console-clear.js
++++ node-v10.17.0/test/parallel/test-console-clear.js
+@@ -18,5 +18,6 @@ function doTest(isTTY, check) {
+ }
+ 
+ // Fake TTY
+-doTest(true, check);
++if (process.env.TERM !== 'dumb')
++	doTest(true, check);
+ doTest(false, '');
+Index: node-v10.17.0/test/parallel/test-readline-position.js
+===================================================================
+--- node-v10.17.0.orig/test/parallel/test-readline-position.js
++++ node-v10.17.0/test/parallel/test-readline-position.js
+@@ -1,11 +1,17 @@
+ 'use strict';
+-require('../common');
++const common = require('../common');
+ const { PassThrough } = require('stream');
+ const readline = require('readline');
+ const assert = require('assert');
+ 
+ const ctrlU = { ctrl: true, name: 'u' };
+ 
++if (process.env.TERM == 'dumb')
++{
++  common.skip('Skipping test - dumb console');
++  return;
++}
++
+ {
+   const input = new PassThrough();
+   const rl = readline.createInterface({
+Index: node-v10.17.0/test/parallel/test-readline-interface.js
+===================================================================
+--- node-v10.17.0.orig/test/parallel/test-readline-interface.js
++++ node-v10.17.0/test/parallel/test-readline-interface.js
+@@ -29,6 +29,12 @@ const internalReadline = require('intern
+ const EventEmitter = require('events').EventEmitter;
+ const { Writable, Readable } = require('stream');
+ 
++if (process.env.TERM == 'dumb')
++{
++  common.skip('Skipping test - dumb console');
++  return;
++}
++
+ class FakeInput extends EventEmitter {
+   resume() {}
+   pause() {}
+Index: node-v10.17.0/test/parallel/test-readline-undefined-columns.js
+===================================================================
+--- node-v10.17.0.orig/test/parallel/test-readline-undefined-columns.js
++++ node-v10.17.0/test/parallel/test-readline-undefined-columns.js
+@@ -11,6 +11,12 @@ const readline = require('readline');
+ const iStream = new PassThrough();
+ const oStream = new PassThrough();
+ 
++if (process.env.TERM == 'dumb')
++{
++  common.skip('Skipping test - dumb console');
++  return;
++}
++
+ readline.createInterface({
+   terminal: true,
+   input: iStream,
+Index: node-v10.17.0/test/parallel/test-readline.js
+===================================================================
+--- node-v10.17.0.orig/test/parallel/test-readline.js
++++ node-v10.17.0/test/parallel/test-readline.js
+@@ -4,6 +4,13 @@ const { PassThrough } = require('stream'
+ const readline = require('readline');
+ const assert = require('assert');
+ 
++if (process.env.TERM == 'dumb')
++{
++  common.skip('Skipping test - dumb console');
++  return;
++}
++
++
+ {
+   const input = new PassThrough();
+   const rl = readline.createInterface({
+Index: node-v10.17.0/test/parallel/test-repl-editor.js
+===================================================================
+--- node-v10.17.0.orig/test/parallel/test-repl-editor.js
++++ node-v10.17.0/test/parallel/test-repl-editor.js
+@@ -1,6 +1,6 @@
+ 'use strict';
+ 
+-require('../common');
++const common = require('../common');
+ const assert = require('assert');
+ const repl = require('repl');
+ const ArrayStream = require('../common/arraystream');
+@@ -11,6 +11,12 @@ const ArrayStream = require('../common/a
+ const terminalCode = '\u001b[1G\u001b[0J> \u001b[3G';
+ const terminalCodeRegex = new RegExp(terminalCode.replace(/\[/g, '\\['), 'g');
+ 
++if (process.env.TERM == 'dumb')
++{
++  common.skip('Skipping test - dumb console');
++  return;
++}
++
+ function run({ input, output, event, checkTerminalCodes = true }) {
+   const stream = new ArrayStream();
+   let found = '';
+Index: node-v10.17.0/test/parallel/test-repl-eval-scope.js
+===================================================================
+--- node-v10.17.0.orig/test/parallel/test-repl-eval-scope.js
++++ node-v10.17.0/test/parallel/test-repl-eval-scope.js
+@@ -4,6 +4,12 @@ const ArrayStream = require('../common/a
+ const assert = require('assert');
+ const repl = require('repl');
+ 
++if (process.env.TERM == 'dumb')
++{
++  common.skip('Skipping test - dumb console');
++  return;
++}
++
+ {
+   const stream = new ArrayStream();
+   const options = {
+Index: node-v10.17.0/test/parallel/test-repl-history-navigation.js
+===================================================================
+--- node-v10.17.0.orig/test/parallel/test-repl-history-navigation.js
++++ node-v10.17.0/test/parallel/test-repl-history-navigation.js
+@@ -9,6 +9,12 @@ const assert = require('assert');
+ const fs = require('fs');
+ const path = require('path');
+ 
++if (process.env.TERM == 'dumb')
++{
++  common.skip('Skipping test - dumb console');
++  return;
++}
++
+ const tmpdir = require('../common/tmpdir');
+ tmpdir.refresh();
+ 
+Index: node-v10.17.0/test/parallel/test-repl-load-multiline.js
+===================================================================
+--- node-v10.17.0.orig/test/parallel/test-repl-load-multiline.js
++++ node-v10.17.0/test/parallel/test-repl-load-multiline.js
+@@ -1,10 +1,16 @@
+ 'use strict';
+-require('../common');
++const common = require('../common');
+ const ArrayStream = require('../common/arraystream');
+ const fixtures = require('../common/fixtures');
+ const assert = require('assert');
+ const repl = require('repl');
+ 
++if (process.env.TERM == 'dumb')
++{
++  common.skip('Skipping test - dumb console');
++  return;
++}
++
+ const command = `.load ${fixtures.path('repl-load-multiline.js')}`;
+ const terminalCode = '\u001b[1G\u001b[0J \u001b[1G';
+ const terminalCodeRegex = new RegExp(terminalCode.replace(/\[/g, '\\['), 'g');
+Index: node-v10.17.0/test/parallel/test-repl-persistent-history.js
+===================================================================
+--- node-v10.17.0.orig/test/parallel/test-repl-persistent-history.js
++++ node-v10.17.0/test/parallel/test-repl-persistent-history.js
+@@ -11,6 +11,12 @@ const fs = require('fs');
+ const path = require('path');
+ const os = require('os');
+ 
++if (process.env.TERM == 'dumb')
++{
++  common.skip('Skipping test - dumb console');
++  return;
++}
++
+ const tmpdir = require('../common/tmpdir');
+ tmpdir.refresh();
+ 

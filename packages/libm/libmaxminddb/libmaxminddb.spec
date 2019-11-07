@@ -1,7 +1,7 @@
 #
 # spec file for package libmaxminddb
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define lname	libmaxminddb0
 Name:           libmaxminddb
-Version:        1.3.2
+Version:        1.4.2
 Release:        0
 Summary:        C library for the MaxMind DB file format
 License:        Apache-2.0
-Group:          Development/Libraries/C and C++
 URL:            https://dev.maxmind.com/
 Source:         https://github.com/maxmind/libmaxminddb/releases/download/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
@@ -38,7 +37,6 @@ data associated with an address.
 
 %package -n %{lname}
 Summary:        C library for the MaxMind DB file format
-Group:          System/Libraries
 
 %description -n %{lname}
 The libmaxminddb library provides a C library for reading MaxMind DB
@@ -49,7 +47,6 @@ data associated with an address.
 
 %package -n mmdblookup
 Summary:        An utility to look up an IP address in a MaxMind DB file
-Group:          Productivity/Networking/Other
 
 %description -n mmdblookup
 The libmaxminddb library provides a C library for reading MaxMind DB
@@ -62,7 +59,6 @@ This package contains the mmdblookup binary.
 
 %package devel
 Summary:        Development files for the MaxMind DB file format library
-Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
 %description devel
@@ -107,7 +103,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_includedir}/*
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
-%{_mandir}/man3/%{name}.*
-%{_mandir}/man3/MMDB_*.*
+%{_mandir}/man3/*
 
 %changelog

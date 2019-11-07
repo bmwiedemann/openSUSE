@@ -1,7 +1,7 @@
 #
 # spec file for package bcunit
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,8 +22,7 @@ Name:           bcunit
 Version:        3.0.2
 Release:        0
 Summary:        Provide C programmers basic testing functionality
-License:        LGPL-2.0+
-Group:          Development/Libraries/C and C++
+License:        LGPL-2.0-or-later
 Url:            https://linphone.org/
 Source:         https://linphone.org/releases/sources/%{name}/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
@@ -46,7 +45,6 @@ which are registered with the framework for running.
 
 %package devel
 Summary:        BCUnit development files
-Group:          Development/Libraries/C and C++
 Requires:       %{soname}%{sover} = %{version}
 Requires:       ncurses-devel
 Recommends:     %{name}-doc = %{version}
@@ -57,7 +55,6 @@ This package installs the BCUnit development files.
 
 %package doc
 Summary:        BCUnit documentation
-Group:          Documentation/Man
 Requires:       %{soname}%{sover} = %{version}
 
 %description doc
@@ -66,7 +63,6 @@ This package installs the BCUnit documentation files.
 
 %package -n %{soname}%{sover}
 Summary:        BCUnit shared library
-Group:          System/Libraries
 
 %description  -n %{soname}%{sover}
 BCUnit is a unit testing framework for C.

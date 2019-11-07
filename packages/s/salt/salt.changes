@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Fri Oct 25 14:39:23 UTC 2019 - Jochen Breuer <jbreuer@suse.de>
+
+- Fix for aptpkg test with older mock modules
+
+- Added:
+  * fix-for-older-mock-module.patch
+
+-------------------------------------------------------------------
+Fri Oct 25 13:52:01 UTC 2019 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Remove wrong tests for core grain and improve debug logging
+- Use rich RPM deps to get a compatible version of tornado into the
+  buildroot.
+
+- Added:
+  * fix-a-wrong-rebase-in-test_core.py-180.patch
+
+-------------------------------------------------------------------
+Tue Oct 22 09:29:19 UTC 2019 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- core.py: ignore wrong product_name files
+- zypperpkg: understand product type
+
+- Added:
+  * accumulated-changes-from-yomi-167.patch
+
+-------------------------------------------------------------------
+Mon Oct 21 15:10:37 UTC 2019 - Jochen Breuer <jbreuer@suse.de>
+
+- Enable usage of downloadonly parameter for apt module
+
+- Added:
+  * adds-the-possibility-to-also-use-downloadonly-in-kwa.patch
+
+-------------------------------------------------------------------
+Wed Oct  9 12:40:33 UTC 2019 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Add missing 'fun' on events coming from salt-ssh wfunc executions (bsc#1151947)
+
+- Added:
+  * add-missing-fun-for-returns-from-wfunc-executions.patch
+
+-------------------------------------------------------------------
+Fri Oct  4 14:35:10 UTC 2019 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix failing unit tests for batch async
+
+- Added:
+  * fix-failing-unit-tests-for-batch-async.patch
+
+-------------------------------------------------------------------
+Thu Oct  3 14:50:41 UTC 2019 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix memory consumption problem on BatchAsync (bsc#1137642)
+
+- Added:
+  * use-current-ioloop-for-the-localclient-instance-of-b.patch
+
+-------------------------------------------------------------------
+Tue Oct  1 13:17:58 UTC 2019 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix dependencies for RHEL 8
+
+-------------------------------------------------------------------
+Mon Sep 30 11:15:32 UTC 2019 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Prevent systemd-run description issue when running aptpkg (bsc#1152366)
+
+- Added:
+  * prevent-systemd-run-description-issue-when-running-a.patch
+
+-------------------------------------------------------------------
+Thu Sep 26 15:17:59 UTC 2019 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Take checksums arg into account for postgres.datadir_init (bsc#1151650)
+
+- Added:
+  * take-checksums-arg-into-account-for-postgres.datadir.patch
+
+-------------------------------------------------------------------
 Thu Sep 26 10:23:39 UTC 2019 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Improve batch_async to release consumed memory (bsc#1140912)

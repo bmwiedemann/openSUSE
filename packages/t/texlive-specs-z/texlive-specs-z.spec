@@ -21,7 +21,7 @@
 %define texlive_version  2019
 %define texlive_previous 2018
 %define texlive_release  20190407
-%define texlive_noarch   167
+%define texlive_noarch   168
 
 #!BuildIgnore:          texlive
 
@@ -59,7 +59,7 @@ BuildRequires:  texlive-filesystem
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for z
-License:        Apache-1.0 AND BSD-3-Clause AND GPL-2.0-or-later AND LPPL-1.0 AND OFL-1.1 AND SUSE-Public-Domain
+License:        Apache-1.0 and BSD-3-Clause and GPL-2.0+ and LPPL-1.0 and OFL-1.1 and SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 Url:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Source0:        texlive-specs-z-rpmlintrc
@@ -1714,6 +1714,7 @@ Provides:       tex(zchmia.vf)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(fontaxes.sty)
 Requires:       tex(fontenc.sty)
+Requires:       tex(mweights.sty)
 Requires:       tex(ntxbexb.tfm)
 Requires:       tex(ntxbmi.tfm)
 Requires:       tex(ntxexb.tfm)
@@ -3404,6 +3405,8 @@ Recommends:     texlive-xcolor-doc >= %{texlive_version}
 Provides:       tex(svgnam.def)
 Provides:       tex(x11nam.def)
 Provides:       tex(xcolor.sty)
+Requires:       tex(colortbl.sty)
+Requires:       tex(pdfcolmk.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source23:       xcolor.tar.xz
@@ -4399,6 +4402,7 @@ Provides:       tex(xeCJK.sty)
 Provides:       tex(xeCJKfntef.sty)
 Provides:       tex(xunicode-addon.sty)
 Provides:       tex(xunicode-extra.def)
+Requires:       tex(CJKfntef.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(fontspec.sty)
 Requires:       tex(l3keys2e.sty)
@@ -5167,8 +5171,11 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-xespotcolor-doc >= %{texlive_version}
 Provides:       tex(xespotcolor.sty)
+Requires:       tex(color.sty)
 Requires:       tex(everypage.sty)
+Requires:       tex(graphics.sty)
 Requires:       tex(ifxetex.sty)
+Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source59:       xespotcolor.tar.xz
@@ -5910,6 +5917,7 @@ Provides:       tex(xetexko-vertical.sty)
 Provides:       tex(xetexko.sty)
 Requires:       tex(fontspec.sty)
 Requires:       tex(kolabels-utf.sty)
+Requires:       tex(konames-utf.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source74:       xetexko.tar.xz
@@ -6287,6 +6295,7 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-xgreek-doc >= %{texlive_version}
 Provides:       tex(xgreek.sty)
+Requires:       tex(luahyphenrules.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source83:       xgreek.tar.xz
@@ -9291,6 +9300,7 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-xwatermark-doc >= %{texlive_version}
 Provides:       tex(xwatermark.sty)
 Requires:       tex(catoptions.sty)
+Requires:       tex(hyperref.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source146:      xwatermark.tar.xz
@@ -10281,6 +10291,7 @@ Provides:       tex(yagusylo.cfg)
 Provides:       tex(yagusylo.sty)
 Requires:       tex(suffix.sty)
 Requires:       tex(xargs.sty)
+Requires:       tex(xcolor.sty)
 Requires:       tex(xifthen.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -22758,6 +22769,7 @@ Provides:       tex(t5zlmvtt.fd)
 Provides:       tex(ts1zlmtt.fd)
 Provides:       tex(ts1zlmvtt.fd)
 Provides:       tex(zlmtt.sty)
+Requires:       tex(mweights.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -23008,6 +23020,8 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-zwpagelayout-doc >= %{texlive_version}
 Provides:       tex(zwpagelayout.sty)
+Requires:       tex(ifpdf.sty)
+Requires:       tex(ifxetex.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407

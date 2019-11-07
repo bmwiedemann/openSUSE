@@ -484,4 +484,15 @@ This package now depends on the current preferred version.
 This is tornado4 until things settle down.</comment>
     <requestid>723325</requestid>
   </revision>
+  <revision rev="55" vrev="12">
+    <srcmd5>236e05657580389d3ffed94666600db3</srcmd5>
+    <version>unknown</version>
+    <time>1573164734</time>
+    <user>dimstar_suse</user>
+    <comment>- Require tornado5 for py2 and tornado6 for py3 as they
+  are in different versions
+- Also switch from singlespec to explicit writeup for the obvious
+  distinction between different versions of 2 and 3 variant</comment>
+    <requestid>734615</requestid>
+  </revision>
 </revisionlist>

@@ -162,4 +162,12 @@
     - fix_flags_order.patch (forwarded request 733022 from eeich)</comment>
     <requestid>733023</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f3cfe88d12055cce8c5dd7afb8c7ff48</srcmd5>
+    <version>3.4.2</version>
+    <time>1573165250</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>746206</requestid>
+  </revision>
 </revisionlist>

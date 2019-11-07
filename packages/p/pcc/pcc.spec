@@ -16,6 +16,7 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 
 Name:           pcc
 Version:        1.0.0
@@ -74,9 +75,10 @@ make
 
 %install
 cd pcc-libs-%{version}
-%make_install strip=no
+%makeinstall strip=no
 cd ..
-%make_install strip=no
+%makeinstall strip=no
+
 # avoid conflicts with gcc
 ln -s %{_libexecdir}/%{name}/cpp \
     %{buildroot}%{_bindir}/pcc-cpp

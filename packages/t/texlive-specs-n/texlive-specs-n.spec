@@ -21,7 +21,7 @@
 %define texlive_version  2019
 %define texlive_previous 2018
 %define texlive_release  20190407
-%define texlive_noarch   167
+%define texlive_noarch   168
 
 #!BuildIgnore:          texlive
 
@@ -59,7 +59,7 @@ BuildRequires:  texlive-filesystem
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for n
-License:        BSD-3-Clause AND GFDL-1.2-only AND GPL-2.0-or-later AND LPPL-1.0 AND LPPL-1.3c AND OFL-1.1 AND SUSE-Public-Domain
+License:        BSD-3-Clause and GFDL-1.2 and GPL-2.0+ and LPPL-1.0 and LPPL-1.3c and OFL-1.1 and SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 Url:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Source0:        texlive-specs-n-rpmlintrc
@@ -522,6 +522,7 @@ Provides:       tex(latex2man.cfg)
 Provides:       tex(latex2man.sty)
 Requires:       tex(fancyhdr.sty)
 Requires:       tex(fancyheadings.sty)
+Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source5:        latex2man.tar.xz
@@ -6856,6 +6857,7 @@ Requires:       tex(article.cls)
 Requires:       tex(etex.sty)
 Requires:       tex(everyshi.sty)
 Requires:       tex(graphicx.sty)
+Requires:       tex(pifont.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source65:       leaflet.tar.xz
@@ -9176,6 +9178,8 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-lhelp-doc >= %{texlive_version}
 Provides:       tex(lhelp.sty)
+Requires:       tex(color.sty)
+Requires:       tex(graphics.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source98:       lhelp.tar.xz
@@ -20536,6 +20540,8 @@ Provides:       tex(lineno.sty)
 Provides:       tex(vplref.sty)
 Requires:       tex(finstrut.sty)
 Requires:       tex(longtable.sty)
+Requires:       tex(ltabptch.sty)
+Requires:       tex(varioref.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source136:      lineno.tar.xz
@@ -21327,8 +21333,14 @@ Provides:       tex(lstlang1.sty)
 Provides:       tex(lstlang2.sty)
 Provides:       tex(lstlang3.sty)
 Provides:       tex(lstmisc.sty)
+Requires:       tex(algorithmic.sty)
+Requires:       tex(color.sty)
+Requires:       tex(fancyvrb.sty)
+Requires:       tex(hyperref.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(nameref.sty)
+Requires:       tex(textcomp.sty)
+Requires:       tex(upquote.sty)
 Requires:       tex(url.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -21771,6 +21783,9 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-listofsymbols-doc >= %{texlive_version}
 Provides:       tex(listofsymbols.sty)
 Requires:       tex(calc.sty)
+Requires:       tex(ifthen.sty)
+Requires:       tex(nomencl.sty)
+Requires:       tex(xspace.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source164:      listofsymbols.tar.xz
@@ -24570,6 +24585,7 @@ Requires:       tex(fontenc.sty)
 Requires:       tex(fontspec.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(grffile.sty)
+Requires:       tex(hypcap.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(hyphsubst.sty)
 Requires:       tex(iftex.sty)
@@ -25866,6 +25882,7 @@ Recommends:     texlive-longfbox-doc >= %{texlive_version}
 Provides:       tex(longbox.sty)
 Provides:       tex(longfbox.sty)
 Requires:       tex(ellipse.sty)
+Requires:       tex(footnote.sty)
 Requires:       tex(options.sty)
 Requires:       tex(pict2e.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
@@ -26019,6 +26036,7 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-longnamefilelist-doc >= %{texlive_version}
 Provides:       tex(longnamefilelist.sty)
+Requires:       tex(myfilist.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source208:      longnamefilelist.tar.xz
@@ -26096,6 +26114,7 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-loops-doc >= %{texlive_version}
 Provides:       tex(loops.sty)
+Requires:       tex(skeyval.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source210:      loops.tar.xz
@@ -26170,6 +26189,7 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-lpform-doc >= %{texlive_version}
 Provides:       tex(lpform.sty)
+Requires:       tex(xifthen.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source212:      lpform.tar.xz

@@ -191,4 +191,12 @@ Use SUSE- proprietary extension until license accepted upstream. autoconf-archiv
     <comment></comment>
     <requestid>666137</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>dde72a0b51e28bf04f7ebe91ffe82ce1</srcmd5>
+    <version>2019.01.06</version>
+    <time>1573164792</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>739898</requestid>
+  </revision>
 </revisionlist>

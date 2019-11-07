@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -27,7 +27,6 @@ Group:          Development/Languages/OCaml
 
 Url:            https://github.com/ocaml/ocamlfind
 Source0:        findlib-%{version}.tar.xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #
 Requires:       ocaml-compiler-libs
 Requires:       ocaml-runtime
@@ -37,10 +36,9 @@ Provides:       ocamlfind = %{version}
 BuildRequires:  m4
 BuildRequires:  ncurses-devel
 BuildRequires:  ocaml
-BuildRequires:  ocaml-camlp4-devel
 BuildRequires:  ocaml-ocamlbuild
 BuildRequires:  ocaml-ocamldoc
-BuildRequires:  ocaml-rpm-macros >= 20190930
+BuildRequires:  ocaml-rpm-macros >= 20191101
 
 %description
 Findlib is a library manager for Objective Caml. It provides a
@@ -49,28 +47,22 @@ describe the properties of libraries. There is also a tool (ocamlfind)
 for interpreting the META files, so that it is very easy to use
 libraries in programs and scripts.
 
-
 %package        devel
 Summary:        Development files for ocaml-findlib
 Group:          Development/Languages/OCaml
 Requires:       %{name} = %{version}
+Provides:       %{name}-camlp4 = %{version}-%{release}
+Obsoletes:      %{name}-camlp4 < %{version}-%{release}
 
 %description    devel
 The ocaml-findlib-devel package contains libraries and signature files
 for developing applications that use ocaml-findlib.
 
-%package camlp4
-Summary:        Development files for ocaml-findlib
-Group:          Development/Languages/OCaml
-Requires:       ocaml-camlp4-devel
-
-%description camlp4
-The ocaml-findlib-camlp4 contains signature files for developing applications that use camlp4
-
 %prep
 %autosetup -p1 -n findlib-%{version}
 
 %build
+rm -rfv site-lib-src
 (cd tools/extract_args && make)
 tools/extract_args/extract_args -o src/findlib/ocaml_args.ml ocamlc ocamlcp ocamlmktop ocamlopt ocamldep ocamldoc ||:
 ./configure -config %{_libdir}/ocaml/ocamlfind.conf \
@@ -89,26 +81,7 @@ make install prefix=%{buildroot}
 rm -rfv %{buildroot}%{_libdir}/ocaml/ocamlbuild
 %ocaml_create_file_list
 
-# camlp4 support nee
-sed -i~ '
-/\/camlp4/ {
-w %{name}.files.camlp4
-d
-}
-/\/findlib/ {
-b
-}
-/\/num-top/ {
-b
-}
-w %{name}.files.x
-d
-' %{name}.files.devel
-diff -u "$_"~ "$_" && exit 2
-tee -a %{name}.files < %{name}.files.x
-
 %files -f %{name}.files
-%license LICENSE
 %{_libdir}/ocaml/ocamlfind.conf
 %{_libdir}/ocaml/topfind
 %{_bindir}/*
@@ -117,7 +90,5 @@ tee -a %{name}.files < %{name}.files.x
 
 %files devel -f %{name}.files.devel
 %{_libdir}/ocaml/*/Makefile.config
-
-%files camlp4 -f %{name}.files.camlp4
 
 %changelog

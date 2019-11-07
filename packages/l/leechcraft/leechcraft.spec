@@ -58,7 +58,7 @@ Source9:        lc_plugin_wrapper-qt5.1
 BuildRequires:  cmake >= 3.8
 BuildRequires:  fdupes
 BuildRequires:  file-devel
-%if 0%{?sle_version} > 150100 || 0%{?suse_version} > 1500
+%if 0%{?sle_version} > 150300 || 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++ >= 8
 %else
 BuildRequires:  gcc8-c++
@@ -135,7 +135,7 @@ BuildRequires:  pkgconfig(libpcre)
 %if %{with ffmpeg}
 BuildRequires:  pkgconfig(libpostproc)
 %endif
-%if 0%{?sle_version} > 150100 || 0%{?suse_version} > 1500
+%if 0%{?sle_version} > 150300 || 0%{?suse_version} > 1500
 %ifarch %ix86 x86_64 ppc64 ppc64le
 BuildRequires:  pkgconfig(libprojectM) >= 3
 %endif
@@ -1023,7 +1023,7 @@ Group:          Productivity/Networking/Other
 BuildArch:      noarch
 Provides:       %{name}-fenet-wm = %{version}
 Requires:       %{name}-fenet = %{version}
-Requires:       kwin
+Requires:       kwin5
 
 %description fenet-kwin
 This package allows to start Leechcraft as a Desktop Environment with
@@ -1419,7 +1419,7 @@ Requires:       %{name}-lmp = %{version}
 This package allows to synchronize with MTP devices via LeechCraft.
 
 
-%if 0%{?sle_version} > 150100 || 0%{?suse_version} > 1500
+%if 0%{?sle_version} > 150300 || 0%{?suse_version} > 1500
 %ifarch %ix86 x86_64 ppc64 ppc64le
 %package lmp-potorchu
 Summary:        LeechCraft Visualization Effects Module
@@ -2282,7 +2282,7 @@ cmake ../src \
         -DCMAKE_CXX_FLAGS="${tmpflags} -Doverride=" \
         -DCMAKE_INSTALL_PREFIX=%{_prefix} \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-%if 0%{?sle_version} <= 150100 && 0%{?suse_version} < 1550
+%if 0%{?sle_version} <= 150300 && 0%{?suse_version} < 1550
         -DCMAKE_C_COMPILER=/usr/bin/gcc-8 \
         -DCMAKE_CXX_COMPILER=/usr/bin/g++-8 \
 %endif
@@ -2367,7 +2367,7 @@ cmake ../src \
                 -DENABLE_LMP_LIBGUESS=True \
                 -DENABLE_LMP_MPRIS=True \
                 -DENABLE_LMP_MTPSYNC=True \
-%if 0%{?sle_version} > 150100 || 0%{?suse_version} > 1500
+%if 0%{?sle_version} > 150300 || 0%{?suse_version} > 1500
 %ifarch %ix86 x86_64 ppc64 ppc64le
                 -DENABLE_LMP_POTORCHU=True \
 %else
@@ -3052,7 +3052,7 @@ ctest --output-on-failure
 %defattr(-,root,root)
 %{plugin_dir}/*craft_lmp_mtpsync.so
 
-%if 0%{?sle_version} > 150100 || 0%{?suse_version} > 1500
+%if 0%{?sle_version} > 150300 || 0%{?suse_version} > 1500
 %ifarch %ix86 x86_64 ppc64 ppc64le
 %files lmp-potorchu
 %defattr(-,root,root)

@@ -21,7 +21,7 @@
 %define texlive_version  2019
 %define texlive_previous 2018
 %define texlive_release  20190407
-%define texlive_noarch   167
+%define texlive_noarch   168
 
 #!BuildIgnore:          texlive
 
@@ -59,7 +59,7 @@ BuildRequires:  texlive-filesystem
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for l
-License:        GFDL-1.2-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND LPPL-1.0 AND OFL-1.1 AND SUSE-Public-Domain AND SUSE-TeX
+License:        GFDL-1.2 and GPL-2.0+ and LGPL-2.1+ and LPPL-1.0 and OFL-1.1 and SUSE-Public-Domain and SUSE-TeX
 Group:          Productivity/Publishing/TeX/Base
 Url:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Source0:        texlive-specs-l-rpmlintrc
@@ -104,6 +104,7 @@ Requires:       tex(optional.sty)
 Requires:       tex(paralist.sty)
 Requires:       tex(txfonts.sty)
 Requires:       tex(xcolor.sty)
+Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source1:        hrlatex.tar.xz
@@ -663,6 +664,7 @@ Provides:       tex(hypdvips.sty)
 Requires:       tex(atveryend.sty)
 Requires:       tex(bookmark.sty)
 Requires:       tex(hypcap.sty)
+Requires:       tex(hyperref.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
@@ -1066,6 +1068,7 @@ Requires:       tex(kvoptions.sty)
 Requires:       tex(kvsetkeys.sty)
 Requires:       tex(letltxmacro.sty)
 Requires:       tex(ltxcmds.sty)
+Requires:       tex(memhfixc.sty)
 Requires:       tex(pdfescape.sty)
 Requires:       tex(pdftexcmds.sty)
 Requires:       tex(refcount.sty)
@@ -7672,6 +7675,9 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-ieeepes-doc >= %{texlive_version}
 Provides:       tex(ieeepes.sty)
+Requires:       tex(graphicx.sty)
+Requires:       tex(mathptm.sty)
+Requires:       tex(times.sty)
 Requires:       tex(vmargin.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -8046,6 +8052,7 @@ Provides:       tex(ifmslide.sty)
 Requires:       tex(amsbsy.sty)
 Requires:       tex(amssymb.sty)
 Requires:       tex(calc.sty)
+Requires:       tex(color.sty)
 Requires:       tex(fixseminar.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(hyperref.sty)
@@ -9329,6 +9336,9 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-imac-doc >= %{texlive_version}
 Provides:       tex(imac.sty)
+Requires:       tex(amsmath.sty)
+Requires:       tex(cite.sty)
+Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source147:      imac.tar.xz
@@ -10325,6 +10335,7 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-imtekda-doc >= %{texlive_version}
 Provides:       tex(IMTEKda.cls)
 Requires:       tex(calc.sty)
+Requires:       tex(graphicx.sty)
 Requires:       tex(scrbook.cls)
 Requires:       tex(textpos.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
@@ -10761,6 +10772,7 @@ Provides:       tex(ts1zi4.fd)
 Provides:       tex(zi4.map)
 Provides:       tex(zi4.sty)
 Requires:       tex(textcomp.sty)
+Requires:       tex(upquote.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -12791,6 +12803,7 @@ Provides:       tex(inriaserif_yeotsr.enc)
 Provides:       tex(inriaserif_yl5fy2.enc)
 Requires:       tex(fontaxes.sty)
 Requires:       tex(fontenc.sty)
+Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
@@ -14161,6 +14174,7 @@ Provides:       tex(interfaces.sty)
 Requires:       tex(auxhook.sty)
 Requires:       tex(etex.sty)
 Requires:       tex(etoolbox.sty)
+Requires:       tex(fp.sty)
 Requires:       tex(gettitlestring.sty)
 Requires:       tex(infwarerr.sty)
 Requires:       tex(ltxcmds.sty)
@@ -14918,11 +14932,14 @@ Requires:       tex(auxhook.sty)
 Requires:       tex(babel.sty)
 Requires:       tex(blindtext.sty)
 Requires:       tex(booktabs.sty)
+Requires:       tex(caption.sty)
 Requires:       tex(csquotes.sty)
 Requires:       tex(etoolbox.sty)
+Requires:       tex(geometry.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(lipsum.sty)
+Requires:       tex(listings.sty)
 Requires:       tex(lmodern.sty)
 Requires:       tex(mathtools.sty)
 Requires:       tex(microtype.sty)
@@ -14930,9 +14947,11 @@ Requires:       tex(pgfopts.sty)
 Requires:       tex(scrhack.sty)
 Requires:       tex(scrlfile.sty)
 Requires:       tex(setspace.sty)
+Requires:       tex(siunitx.sty)
 Requires:       tex(tabularx.sty)
 Requires:       tex(tcolorbox.sty)
 Requires:       tex(totalcount.sty)
+Requires:       tex(xcolor.sty)
 Requires:       tex(xpatch.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/

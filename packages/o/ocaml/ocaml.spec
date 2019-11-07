@@ -25,32 +25,6 @@
 %global __ocaml_requires_opts -c -f "%{buildroot}%{_bindir}/ocamlrun %{buildroot}%{_bindir}/ocamlobjinfo.byte"
 %global __ocaml_provides_opts -f "%{buildroot}%{_bindir}/ocamlrun %{buildroot}%{_bindir}/ocamlobjinfo.byte"
 
-###
-# Changes in the block below must be mirrored to ocaml-rpm-macros
-%define do_opt 0
-# macros to be set in prjconf:
-#Macros:
-#_with_ocaml_force_enable_ocaml_opt 1
-#_with_ocaml_force_disable_ocaml_opt 1
-#_with_ocaml_make_testsuite 1
-#:Macros
-%bcond_with ocaml_force_enable_ocaml_opt
-%bcond_with ocaml_force_disable_ocaml_opt
-%bcond_with ocaml_make_testsuite
-%if %{with ocaml_force_enable_ocaml_opt}
-%define do_opt 1
-%endif
-%if %{without ocaml_force_enable_ocaml_opt}
-%ifarch %{arm} aarch64 %{ix86} ppc ppc64 ppc64le s390x x86_64
-%define do_opt 1
-%endif
-%endif
-#
-%if %{with ocaml_force_disable_ocaml_opt}
-%define do_opt 0
-%endif
-###
-#
 Name:           ocaml
 Version:        4.05.0
 Release:        0
@@ -59,7 +33,6 @@ License:        QPL-1.0 AND SUSE-LGPL-2.0-with-linking-exception
 Group:          Development/Languages/OCaml
 Url:            http://www.ocaml.org
 Source0:        http://caml.inria.fr/pub/distrib/ocaml-%{ocaml_base_version}/ocaml-%{version}.tar.xz
-Source1:        ocaml-findlib.rpm.prov_req.attr.sh
 Source2:        rpmlintrc
 Patch1:         ocamldoc-man-th.patch
 # FIX-UPSTREAM pass RPM_OPT_FLAGS to build
@@ -74,13 +47,14 @@ BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
+BuildRequires:  ocaml-rpm-macros >= 20191101
 Requires:       ocaml(runtime) = %{version}-%{release}
 Obsoletes:      ocaml-docs
-Provides:       ocaml(compiler) = %{version}
+Provides:       ocaml(compiler) = %{ocaml_base_version}
 Provides:       ocaml(ocaml_base_version) = %{ocaml_base_version}
-%if %{do_opt}
+%if %{ocaml_native_compiler}
 Requires:       gcc
-Provides:       ocaml(ocaml.opt) = %{version}
+Provides:       ocaml(ocaml.opt) = %{ocaml_base_version}
 %endif
 
 %description
@@ -166,58 +140,48 @@ This package contains libraries and signature files for developing
 applications that use Ocaml.
 
 %prep
-: do_opt %{do_opt}
+: do_opt %{ocaml_native_compiler}
 %autosetup -p1
 
 %build
-%ifarch %{ix86}
-# Default OPT flags for these architectures use -fomit-frame-pointer,
-# which gets in the way of some of the profiling done within.
-OUR_OPT_FLAGS="`echo '%{optflags}' | sed 's/-fomit-frame-pointer//g'`"
+echo %{version} > VERSION
+%if %{ocaml_native_compiler}
+make_target='world.opt'
 %else
-OUR_OPT_FLAGS="%{optflags}"
+make_target='world'
 %endif
-
-CFLAGS="$OUR_OPT_FLAGS -DUSE_INTERP_RESULT" \
 ./configure -bindir %{_bindir} \
             -libdir %{_libdir}/ocaml \
             -no-cplugins \
-            -mandir %{_mandir} \
-            -x11include %{_includedir} \
-            -x11lib %{_libdir}
+            -mandir %{_mandir}
 
-%if %{do_opt}
-# build using native-code compilers (equivalent to `make world opt opt.opt`)
-make world.opt \
-%else
-# build bytecode compiler
-make world \
-%endif
-	BYTECCRPATH= \
-	NATIVECCRPATH= \
-	MKSHAREDLIBRPATH=
+make_target+=" -j1"
+%make_build ${make_target}
+#
+pushd testsuite
+tee checker.sh <<'_EOF_'
+#!/bin/bash
+t=${0%%.*}
+if $DIFF -u "${t}.reference" "${t}.result"
+then
+  exit 0
+fi
+ls -l "${t}.reference" "${t}.result"
+head -n 1234 "${t}.reference" "${t}.result"
+_EOF_
+chmod -v 555 checker.sh
+c=$PWD/checker.sh
+for i in `find tests -name "*.reference" -type f`
+do
+	test -e ${i%%.reference}.checker || ln -sfvbn "$c" ${i%%.reference}.checker
+done
+popd
 
 %install
-make install \
-     DESTDIR=%{buildroot}
-
-if test -f %{buildroot}%{_libdir}/ocaml/libasmrun_pic.a
-then
-	cp -av \
-	--remove-destination \
-	%{buildroot}%{_libdir}/ocaml/libasmrun_pic.a \
-	%{buildroot}%{_libdir}/ocaml/libasmrun.a
-fi
-
+%make_install
+%fdupes %{buildroot}
 export EXCLUDE_FROM_STRIP="ocamldebug ocamlbrowser"
 
-# Install the compiler libs
-install -d %{buildroot}%{_libdir}/ocaml/compiler-libs
-cp -a typing/ utils/ parsing/ %{buildroot}%{_libdir}/ocaml/compiler-libs
-%fdupes %{buildroot}
-
-# rpmlint ...
-chmod -v a+x %{buildroot}%{_libdir}/ocaml/camlheader
 # preserve .cmxs and .so
 find %{buildroot} \( \
 	-name '*.a' -o \
@@ -238,27 +202,234 @@ find %{buildroot} \( \
 	-name '*.mly' -o \
 	-name '*.o' -o \
 	-name '*.sml' \
-	\) -type f -exec chmod -v a-x "{}" \;
+	\) -type f -exec chmod a-x "{}" \;
 
-tag="ocamlfind"
-mkdir -vp %{buildroot}%{_rpmconfigdir}/fileattrs
-tee %{buildroot}%{_rpmconfigdir}/fileattrs/${tag}.attr <<_EOF_
-%__${tag}_provides %%{_rpmconfigdir}/${tag}.sh -prov
-%__${tag}_requires %%{_rpmconfigdir}/${tag}.sh -req
-%__${tag}_path     ^%%{_libdir}/ocaml/.*/META$|^%%{_libdir}/ocaml/META$
-_EOF_
+mkdir META
+pushd "$_"
+tee bigarray <<_META_
+requires = "unix"
+version = "OCaml %{version}"
+description = "Large statically allocated arrays"
+directory = "^"
+browse_interfaces = " Unit name: Bigarray "
+archive(byte) = "bigarray.cma"
+archive(native) = "bigarray.cmxa"
+plugin(byte) = "bigarray.cma"
+plugin(native) = "bigarray.cmxs"
+linkopts = ""
+_META_
 #
-tee %{buildroot}%{_rpmconfigdir}/${tag}.sh < %{SOURCE1}
+tee bytes <<_META_
+name="bytes"
+version = "OCaml %{version}"
+description="dummy backward-compatibility package for mutable strings"
+requires=""
+_META_
+#
+tee compiler-libs <<_META_
+# The compiler itself
+requires = ""
+version = "OCaml %{version}"
+description = "compiler-libs support library"
+directory= "+compiler-libs"
 
-%files
+package "common" (
+  requires = "compiler-libs"
+  version = "OCaml %{version}"
+  description = "Common compiler routines"
+  archive(byte) = "ocamlcommon.cma"
+  archive(native) = "ocamlcommon.cmxa"
+)
+
+package "bytecomp" (
+  requires = "compiler-libs.common"
+  version = "OCaml %{version}"
+  description = "Bytecode compiler"
+  archive(byte) = "ocamlbytecomp.cma"
+  archive(native) = "ocamlbytecomp.cmxa"
+)
+
+package "optcomp" (
+  requires = "compiler-libs.common"
+  version = "OCaml %{version}"
+  description = "Native-code compiler"
+  archive(byte) = "ocamloptcomp.cma"
+  archive(native) = "ocamloptcomp.cmxa"
+  exists_if = "ocamloptcomp.cma"
+)
+
+package "toplevel" (
+  requires = "compiler-libs.bytecomp"
+  version = "OCaml %{version}"
+  description = "Toplevel interactions"
+  archive(byte) = "ocamltoplevel.cma"
+  archive(native) = "ocamltoplevel.cmxa"
+)
+_META_
+#
+tee dynlink <<_META_
+requires = ""
+version = "OCaml %{version}"
+description = "Dynamic loading and linking of object files"
+directory = "^"
+browse_interfaces = " Unit name: Dynlink Unit name: Dynlinkaux "
+archive(byte) = "dynlink.cma"
+archive(native) = "dynlink.cmxa"
+_META_
+#
+tee graphics <<_META_
+# Specifications for the "graphics" library:
+requires = ""
+version = "OCaml %{version}"
+description = "Portable drawing primitives"
+directory = "^"
+browse_interfaces = " Unit name: Graphics Unit name: GraphicsX11 "
+archive(byte) = "graphics.cma"
+archive(native) = "graphics.cmxa"
+plugin(byte) = "graphics.cma"
+plugin(native) = "graphics.cmxs"
+_META_
+tee num <<_META_
+requires = "num.core"
+requires(toploop) = "num.core"
+version = "OCaml %{version}"
+description = "Arbitrary-precision rational arithmetic"
+package "core" (
+  version = "OCaml %{version}"
+  directory = "^"
+  browse_interfaces = " Unit name: Arith_flags Unit name: Arith_status Unit name: Big_int Unit name: Int_misc Unit name: Nat Unit name: Num Unit name: Ratio "
+  archive(byte) = "nums.cma"
+  archive(native) = "nums.cmxa"
+  plugin(byte) = "nums.cma"
+  plugin(native) = "nums.cmxs"
+)
+_META_
+#
+tee ocamldoc <<_META_
+requires = "compiler-libs"
+version = "OCaml %{version}"
+description = "ocamldoc plugin interface"
+directory= "^ocamldoc"
+_META_
+#
+tee raw_spacetime <<_META_
+requires = ""
+description = "Support library for the spacetime profiler"
+version = "OCaml %{version}"
+directory = "^"
+browse_interfaces = ""
+archive(byte) = "raw_spacetime_lib.cma"
+archive(native) = "raw_spacetime_lib.cmxa"
+plugin(byte) = "raw_spacetime_lib.cma"
+plugin(native) = "raw_spacetime_lib.cmxs"
+_META_
+#
+tee stdlib <<_META_
+requires = ""
+description = "Standard library"
+version = "OCaml %{version}"
+directory = "^"
+browse_interfaces = " Unit name: Arg Unit name: Array Unit name: ArrayLabels Unit name: Buffer Unit name: Bytes Unit name: BytesLabels Unit name: Callback Unit name: CamlinternalFormat Unit name: CamlinternalFormatBasics Unit name: CamlinternalLazy Unit name: CamlinternalMod Unit name: CamlinternalOO Unit name: Char Unit name: Complex Unit name: Digest Unit name: Filename Unit name: Format Unit name: Gc Unit name: Genlex Unit name: Hashtbl Unit name: Int32 Unit name: Int64 Unit name: Lazy Unit name: Lexing Unit name: List Unit name: ListLabels Unit name: Map Unit name: Marshal Unit name: MoreLabels Unit name: Nativeint Unit name: Obj Unit name: Oo Unit name: Parsing Unit name: Pervasives Unit name: Printexc Unit name: Printf Unit name: Queue Unit name: Random Unit name: Scanf Unit name: Set Unit name: Sort Unit name: Stack Unit name: StdLabels Unit name: Stream Unit name: String Unit name: StringLabels Unit name: Sys Unit name: Weak "
+_META_
+#
+tee str <<_META_
+requires = ""
+description = "Regular expressions and string processing"
+version = "OCaml %{version}"
+directory = "^"
+browse_interfaces = " Unit name: Str "
+archive(byte) = "str.cma"
+archive(native) = "str.cmxa"
+plugin(byte) = "str.cma"
+plugin(native) = "str.cmxs"
+_META_
+#
+tee threads <<_META_
+version = "OCaml %{version}"
+description = "Multi-threading"
+requires(mt,mt_vm) = "threads.vm"
+requires(mt,mt_posix) = "threads.posix"
+directory = "^"
+type_of_threads = "posix"
+browse_interfaces = " Unit name: Condition Unit name: Event Unit name: Mutex Unit name: Thread Unit name: ThreadUnix "
+warning(-mt) = "Linking problems may arise because of the missing -thread or -vmthread switch"
+warning(-mt_vm,-mt_posix) = "Linking problems may arise because of the missing -thread or -vmthread switch"
+package "vm" (
+  # --- Bytecode-only threads:
+  requires = "unix"
+  directory = "+vmthreads"
+  exists_if = "threads.cma"
+  archive(byte,mt,mt_vm) = "threads.cma"
+  version = "OCaml %{version}"
+)
+
+package "posix" (
+  # --- POSIX-threads:
+  requires = "unix"
+  directory = "+threads"
+  exists_if = "threads.cma"
+  archive(byte,mt,mt_posix) = "threads.cma"
+  archive(native,mt,mt_posix) = "threads.cmxa"
+  version = "OCaml %{version}"
+)
+package "none" (
+  error = "threading is not supported on this platform"
+  version = "OCaml %{version}"
+)
+_META_
+#
+tee uchar <<_META_
+description = "Unicode characters."
+version = "OCaml %{version}"
+directory = "^"
+_META_
+#
+tee unix <<_META_
+requires = ""
+description = "Unix system calls"
+version = "OCaml %{version}"
+directory = "^"
+browse_interfaces = " Unit name: Unix Unit name: UnixLabels "
+archive(byte) = "unix.cma"
+archive(native) = "unix.cmxa"
+archive(byte,mt_vm) = "vmthreads/unix.cma"
+plugin(byte) = "unix.cma"
+plugin(native) = "unix.cmxs"
+plugin(byte,mt_vm) = "vmthreads/unix.cma"
+_META_
+#
+popd
+for META in META/*
+do
+	ocamlfind=${META##*/}
+	case "${ocamlfind}" in
+	graphics)
+	files='files.ocaml.META'
+	;;
+	ocamldoc)
+	files='files.ocamldoc.META'
+	;;
+	*)
+	files='files.compiler-libs.META'
+	;;
+	esac
+	d=%{_libdir}/ocaml/${ocamlfind}
+	f=${d}/META
+	mkdir -vp %{buildroot}${d}
+	mv "${META}" %{buildroot}${f}
+	tee -a "${files}" <<_EOF_
+%%dir ${d}
+${f}
+_EOF_
+done
+
+%files -f files.ocaml.META
 %doc Changes
 %license LICENSE
-%{_rpmconfigdir}/fileattrs
-%attr(755,root,root) %{_rpmconfigdir}/*.sh
 %{_bindir}/*
 %{_mandir}/*/*
 %{_libdir}/ocaml/*.a
-%if %{do_opt}
+%if %{ocaml_native_compiler}
 %{_libdir}/ocaml/*.cmxs
 %{_libdir}/ocaml/*.cmxa
 %{_libdir}/ocaml/*.cmx
@@ -266,12 +437,12 @@ tee %{buildroot}%{_rpmconfigdir}/${tag}.sh < %{SOURCE1}
 %endif
 %{_libdir}/ocaml/*.mli
 %{_libdir}/ocaml/libcamlrun_shared.so
-%if %{do_opt}
+%if %{ocaml_native_compiler}
 %{_libdir}/ocaml/libasmrun_shared.so
 %endif
 %{_libdir}/ocaml/vmthreads/*.mli
 %{_libdir}/ocaml/vmthreads/*.a
-%if %{do_opt}
+%if %{ocaml_native_compiler}
 %{_libdir}/ocaml/threads/*.a
 %{_libdir}/ocaml/threads/*.cmxa
 %{_libdir}/ocaml/threads/*.cmx
@@ -318,35 +489,29 @@ tee %{buildroot}%{_rpmconfigdir}/${tag}.sh < %{SOURCE1}
 %files source
 %{_libdir}/ocaml/*.ml
 
-%files ocamldoc
+%files ocamldoc -f files.ocamldoc.META
 %{_bindir}/ocamldoc*
 %{_libdir}/ocaml/ocamldoc
 %doc ocamldoc/Changes.txt
 
-%files compiler-libs
+%files compiler-libs -f files.compiler-libs.META
 %license LICENSE
-%{_libdir}/ocaml/compiler-libs
-%if %{do_opt}
-%exclude %{_libdir}/ocaml/compiler-libs/*.cmx
-%exclude %{_libdir}/ocaml/compiler-libs/*.o
-%exclude %{_libdir}/ocaml/compiler-libs/*/*.cmx
-%exclude %{_libdir}/ocaml/compiler-libs/*/*.o
-%endif
-%exclude %{_libdir}/ocaml/compiler-libs/*.mli
-%exclude %{_libdir}/ocaml/compiler-libs/*/*.mli
-%exclude %{_libdir}/ocaml/compiler-libs/*/*.ml
+%dir %{_libdir}/ocaml
 
 %files compiler-libs-devel
-%license LICENSE
-%if %{do_opt}
-%{_libdir}/ocaml/compiler-libs/*.cmx
+%dir %{_libdir}/ocaml/compiler-libs
+%if %{ocaml_native_compiler}
+%{_libdir}/ocaml/compiler-libs/*.a
 %{_libdir}/ocaml/compiler-libs/*.o
-%{_libdir}/ocaml/compiler-libs/*/*.cmx
-%{_libdir}/ocaml/compiler-libs/*/*.o
+%{_libdir}/ocaml/compiler-libs/*.cmx
+%{_libdir}/ocaml/compiler-libs/*.cmxa
 %endif
+%{_libdir}/ocaml/compiler-libs/*.cma
+%{_libdir}/ocaml/compiler-libs/*.cmi
+%{_libdir}/ocaml/compiler-libs/*.cmo
+%{_libdir}/ocaml/compiler-libs/*.cmt
+%{_libdir}/ocaml/compiler-libs/*.cmti
 %{_libdir}/ocaml/compiler-libs/*.mli
-%{_libdir}/ocaml/compiler-libs/*/*.ml
-%{_libdir}/ocaml/compiler-libs/*/*.mli
 
 %if %{with ocaml_make_testsuite}
 %check

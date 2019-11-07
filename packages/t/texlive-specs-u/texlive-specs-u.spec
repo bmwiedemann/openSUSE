@@ -21,7 +21,7 @@
 %define texlive_version  2019
 %define texlive_previous 2018
 %define texlive_release  20190407
-%define texlive_noarch   167
+%define texlive_noarch   168
 
 #!BuildIgnore:          texlive
 
@@ -59,7 +59,7 @@ BuildRequires:  texlive-filesystem
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for u
-License:        Apache-1.0 AND BSD-3-Clause AND GPL-2.0-or-later AND LPPL-1.0 AND OFL-1.1 AND SUSE-Public-Domain
+License:        Apache-1.0 and BSD-3-Clause and GPL-2.0+ and LPPL-1.0 and OFL-1.1 and SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 Url:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Source0:        texlive-specs-u-rpmlintrc
@@ -1105,6 +1105,7 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-rotfloat-doc >= %{texlive_version}
 Provides:       tex(rotfloat.sty)
 Requires:       tex(float.sty)
+Requires:       tex(rotating.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source16:       rotfloat.tar.xz
@@ -2819,6 +2820,8 @@ Requires:       tex(book.cls)
 Requires:       tex(bookmark.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(fancyhdr.sty)
+Requires:       tex(float.sty)
+Requires:       tex(glossaries.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(multicol.sty)
@@ -2982,8 +2985,11 @@ Recommends:     texlive-sageep-doc >= %{texlive_version}
 Provides:       tex(sageep.cls)
 Requires:       tex(article.cls)
 Requires:       tex(caption.sty)
+Requires:       tex(courier.sty)
 Requires:       tex(geometry.sty)
+Requires:       tex(helvet.sty)
 Requires:       tex(indentfirst.sty)
+Requires:       tex(mathptmx.sty)
 Requires:       tex(natbib.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -5455,6 +5461,9 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-scalerel-doc >= %{texlive_version}
 Provides:       tex(scalerel.sty)
+Requires:       tex(calc.sty)
+Requires:       tex(etoolbox.sty)
+Requires:       tex(graphicx.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source89:       scalerel.tar.xz
@@ -5892,6 +5901,7 @@ Requires:       tex(adjustbox.sty)
 Requires:       tex(amsmath.sty)
 Requires:       tex(amssymb.sty)
 Requires:       tex(babel.sty)
+Requires:       tex(biblatex.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(cancel.sty)
 Requires:       tex(ccicons.sty)
@@ -5921,12 +5931,15 @@ Requires:       tex(ragged2e.sty)
 Requires:       tex(rotating.sty)
 Requires:       tex(scrartcl.cls)
 Requires:       tex(scrpage2.sty)
+Requires:       tex(silence.sty)
 Requires:       tex(struktex.sty)
 Requires:       tex(svn-multi.sty)
 Requires:       tex(tabularx.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(units.sty)
+Requires:       tex(varwidth.sty)
+Requires:       tex(warning.sty)
 Requires:       tex(wrapfig.sty)
 Requires:       tex(xargs.sty)
 Requires:       tex(xcolor.sty)
@@ -7923,6 +7936,10 @@ Provides:       tex(wevasbsl14.tfm)
 Provides:       tex(wevasl14.tfm)
 Provides:       tex(wevaub14.tfm)
 Provides:       tex(wevaubsl14.tfm)
+Requires:       tex(color.sty)
+Requires:       tex(eepic.sty)
+Requires:       tex(ifthen.sty)
+Requires:       tex(latexsym.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source99:       schulschriften.tar.xz
@@ -8687,6 +8704,13 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-scratchx-doc >= %{texlive_version}
 Provides:       tex(ScratchX.sty)
+Requires:       tex(calc.sty)
+Requires:       tex(fp.sty)
+Requires:       tex(ifsym.sty)
+Requires:       tex(ifthen.sty)
+Requires:       tex(multido.sty)
+Requires:       tex(xargs.sty)
+Requires:       tex(xstring.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source113:      scratchx.tar.xz
@@ -8849,6 +8873,7 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-screenplay-pkg-doc >= %{texlive_version}
 Provides:       tex(screenplay-pkg.sty)
 Requires:       tex(ifthen.sty)
+Requires:       tex(setspace.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source117:      screenplay-pkg.tar.xz
@@ -8928,6 +8953,8 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-scrjrnl-doc >= %{texlive_version}
 Provides:       tex(scrjrnl.cls)
+Requires:       tex(babel.sty)
+Requires:       tex(datetime.sty)
 Requires:       tex(fancytabs.sty)
 Requires:       tex(titlesec.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
@@ -9080,6 +9107,7 @@ Provides:       tex(scsnowman-normal.def)
 Provides:       tex(scsnowman.sty)
 Provides:       tex(sctkzsym-base.sty)
 Requires:       tex(keyval.sty)
+Requires:       tex(pxeveryshi.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -11950,6 +11978,30 @@ Recommends:     texlive-sexam-doc >= %{texlive_version}
 Provides:       tex(bacex.sty)
 Provides:       tex(sexam.sty)
 Provides:       tex(wexam.sty)
+Requires:       tex(amsfonts.sty)
+Requires:       tex(amsmath.sty)
+Requires:       tex(amssymb.sty)
+Requires:       tex(background.sty)
+Requires:       tex(bclogo.sty)
+Requires:       tex(ean13isbn.sty)
+Requires:       tex(etoolbox.sty)
+Requires:       tex(fancybox.sty)
+Requires:       tex(fmtcount.sty)
+Requires:       tex(fouriernc.sty)
+Requires:       tex(geometry.sty)
+Requires:       tex(listings.sty)
+Requires:       tex(mathpple.sty)
+Requires:       tex(mathrsfs.sty)
+Requires:       tex(mathtools.sty)
+Requires:       tex(moreenum.sty)
+Requires:       tex(multicol.sty)
+Requires:       tex(pifont.sty)
+Requires:       tex(polyglossia.sty)
+Requires:       tex(setspace.sty)
+Requires:       tex(tikz.sty)
+Requires:       tex(ulem.sty)
+Requires:       tex(wasysym.sty)
+Requires:       tex(yagusylo.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source184:      sexam.tar.xz
@@ -12043,6 +12095,9 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-sf298-doc >= %{texlive_version}
 Provides:       tex(sf298.sty)
+Requires:       tex(fancyhdr.sty)
+Requires:       tex(multicol.sty)
+Requires:       tex(totpages.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source186:      sf298.tar.xz
@@ -12123,6 +12178,7 @@ Provides:       tex(sffms.cls)
 Provides:       tex(sffsmart.sty)
 Requires:       tex(fancyhdr.sty)
 Requires:       tex(fontenc.sty)
+Requires:       tex(geometry.sty)
 Requires:       tex(report.cls)
 Requires:       tex(setspace.sty)
 Requires:       tex(ulem.sty)
@@ -14125,6 +14181,7 @@ Recommends:     texlive-sidenotes-doc >= %{texlive_version}
 Provides:       tex(caesar_book.cls)
 Provides:       tex(sidenotes.sty)
 Requires:       tex(amsmath.sty)
+Requires:       tex(beramono.sty)
 Requires:       tex(caption.sty)
 Requires:       tex(changepage.sty)
 Requires:       tex(color.sty)
@@ -14133,10 +14190,12 @@ Requires:       tex(fancyhdr.sty)
 Requires:       tex(fontenc.sty)
 Requires:       tex(fontspec.sty)
 Requires:       tex(geometry.sty)
+Requires:       tex(helvet.sty)
 Requires:       tex(ifluatex.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(marginfix.sty)
 Requires:       tex(marginnote.sty)
+Requires:       tex(mathpazo.sty)
 Requires:       tex(mhchem.sty)
 Requires:       tex(microtype.sty)
 Requires:       tex(morefloats.sty)

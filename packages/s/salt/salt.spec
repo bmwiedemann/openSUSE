@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
+%global debug_package %{nil}
 
 %if 0%{?suse_version} >= 1320
 # SLE15
@@ -243,8 +244,27 @@ Patch82:       virt.volume_infos-silence-libvirt-error-message-175.patch
 Patch83:       fix-virt.full_info-176.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/commit/002543df392f65d95dbc127dc058ac897f2035ed
 Patch84:       improve-batch_async-to-release-consumed-memory-bsc-1.patch
+# PATCH_FIX_UPSTREAM: https://github.com/saltstack/salt/pull/54770
+Patch85:       take-checksums-arg-into-account-for-postgres.datadir.patch
+# PATCH_FIX_UPSTREAM: https://github.com/saltstack/salt/pull/54077
+# PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/commit/44a91c2ce6df78d93ce0ef659dedb0e41b1c2e04
+Patch86:       prevent-systemd-run-description-issue-when-running-a.patch
+# PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/commit/55d8a777d6a9b19c959e14a4060e5579e92cd106
+Patch87:       use-current-ioloop-for-the-localclient-instance-of-b.patch
+# PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/commit/8378bb24a5a53973e8dba7658b8b3465d967329f
+Patch88:       fix-failing-unit-tests-for-batch-async.patch
+# PATCH_FIX_UPSTREAM: https://github.com/saltstack/salt/pull/54935
+Patch89:       add-missing-fun-for-returns-from-wfunc-executions.patch
+# PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/179
+Patch90:       adds-the-possibility-to-also-use-downloadonly-in-kwa.patch
+# PATCH_FIX_UPSTREAM: https://github.com/saltstack/salt/pull/53326
+# PATCH_FIX_UPSTREAM: https://github.com/saltstack/salt/pull/54954
+Patch91:       accumulated-changes-from-yomi-167.patch
+# PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/180
+Patch92:       fix-a-wrong-rebase-in-test_core.py-180.patch
+# PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/181
+Patch93:       fix-for-older-mock-module.patch
 
-# BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  logrotate
 %if 0%{?suse_version} > 1020
@@ -340,9 +360,15 @@ BuildRequires:  python-futures >= 2.0
 BuildRequires:  python-msgpack-python > 0.3
 BuildRequires:  python-psutil
 BuildRequires:  python-requests >= 1.0.0
+%if 0%{?suse_version} >= 1500 || 0%{?rhel} >= 8
+# We can't cope with tornado 5.x and newer (boo#1101780); this is only relevant for SLE >= 15 and TW
+# where tornado exists in multiple versions
+BuildRequires: (python-tornado >= 4.2.1 with python-tornado < 5)
+%else
 BuildRequires:  python-tornado >= 4.2.1
 # We can't cope with tornado 5.x and newer (boo#1101780)
 BuildConflicts: python3-tornado >= 5
+%endif
 
 # requirements/zeromq.txt
 BuildRequires:  python-pycrypto >= 2.6.1
@@ -424,21 +450,31 @@ BuildRequires:  python3-devel
 # requirements/base.txt
 %if 0%{?rhel}
 BuildRequires:  python3-jinja2
+BuildRequires:  python3-markupsafe
+BuildRequires:  python3-msgpack > 0.3
+BuildRequires:  python3-zmq >= 2.2.0
+BuildRequires:  python3-m2crypto
 %else
 BuildRequires:  python3-Jinja2
-%endif
 BuildRequires:  python3-MarkupSafe
-BuildRequires:  python3-PyYAML
 BuildRequires:  python3-msgpack-python > 0.3
+BuildRequires:  python3-pyzmq >= 2.2.0
+BuildRequires:  python3-pycrypto >= 2.6.1
+%endif
+BuildRequires:  python3-PyYAML
 BuildRequires:  python3-psutil
 BuildRequires:  python3-requests >= 1.0.0
+%if 0%{?suse_version} >= 1500 || 0%{?rhel} >= 8
+# We can't cope with tornado 5.x and newer (boo#1101780); this is only relevant for SLE >= 15 and TW,
+# where tornado exists in multiple versions
+BuildRequires: (python3-tornado >= 4.2.1 with python3-tornado < 5)
+%else
 BuildRequires:  python3-tornado >= 4.2.1
 # We can't cope with tornado 5.x and newer (boo#1101780)
 BuildConflicts: python3-tornado >= 5
+%endif
 
 # requirements/zeromq.txt
-BuildRequires:  python3-pycrypto >= 2.6.1
-BuildRequires:  python3-pyzmq >= 2.2.0
 %if %{with test}
 # requirements/dev_python27.txt
 BuildRequires:  python3-boto >= 2.32.1
@@ -461,15 +497,24 @@ Requires:       python3-certifi
 %if 0%{?rhel}
 Requires:       python3-jinja2
 Requires:       yum
+Requires:       python3-markupsafe
+Requires:       python3-msgpack > 0.3
+Requires:       python3-m2crypto
+Requires:       python3-zmq >= 2.2.0
+%if 0%{?rhel} == 8
+Requires:       dnf
+%endif
 %if 0%{?rhel} == 6
 Requires:       yum-plugin-security
 %endif
 %else
 Requires:       python3-Jinja2
-%endif
 Requires:       python3-MarkupSafe
-Requires:       python3-PyYAML
 Requires:       python3-msgpack-python > 0.3
+Requires:       python3-pycrypto >= 2.6.1
+Requires:       python3-pyzmq >= 2.2.0
+%endif
+Requires:       python3-PyYAML
 Requires:       python3-psutil
 Requires:       python3-requests >= 1.0.0
 Requires:       python3-tornado >= 4.2.1
@@ -486,8 +531,6 @@ Suggests:       python3-timelib
 Suggests:       python3-gnupg
 # requirements/zeromq.txt
 %endif
-Requires:       python3-pycrypto >= 2.6.1
-Requires:       python3-pyzmq >= 2.2.0
 #
 %if 0%{?suse_version}
 # python-xml is part of python-base in all rhel versions
@@ -805,6 +848,15 @@ cp %{S:5} ./.travis.yml
 %patch82 -p1
 %patch83 -p1
 %patch84 -p1
+%patch85 -p1
+%patch86 -p1
+%patch87 -p1
+%patch88 -p1
+%patch89 -p1
+%patch90 -p1
+%patch91 -p1
+%patch92 -p1
+%patch93 -p1
 
 %build
 %if 0%{?build_py2}
@@ -1311,10 +1363,12 @@ fi
 %endif
 %endif
 
+%if 0%{?build_py2}
 %posttrans -n python2-salt
 # force re-generate a new thin.tgz
 rm -f %{_localstatedir}/cache/salt/master/thin/version
 rm -f %{_localstatedir}/cache/salt/minion/thin/version
+%endif
 
 %if 0%{?build_py3}
 %posttrans -n python3-salt
@@ -1345,10 +1399,8 @@ rm -f %{_localstatedir}/cache/salt/minion/thin/version
 %config(noreplace) %attr(0640, root, salt) %{_sysconfdir}/salt/cloud.providers
 %dir               %attr(0750, root, salt) %{_localstatedir}/cache/salt/cloud
 %if 0%{?default_py3}
-%{python3_sitelib}/salt/cloud/deploy/bootstrap-salt.sh
 %attr(755,root,root)%{python3_sitelib}/salt/cloud/deploy/bootstrap-salt.sh
 %else
-%{python_sitelib}/salt/cloud/deploy/bootstrap-salt.sh
 %attr(755,root,root)%{python_sitelib}/salt/cloud/deploy/bootstrap-salt.sh
 %endif
 %{_mandir}/man1/salt-cloud.1.*
@@ -1378,7 +1430,6 @@ rm -f %{_localstatedir}/cache/salt/minion/thin/version
 %dir               %attr(0750, root, root) %{_sysconfdir}/salt/minion.d/
 %dir               %attr(0750, root, root) %{_sysconfdir}/salt/pki/minion/
 %dir               %attr(0750, root, root) %{_localstatedir}/cache/salt/minion/
-#%dir %ghost        %attr(0750, root, salt) %{_localstatedir}/run/salt/minion
 %{_sbindir}/rcsalt-minion
 
 # Install plugin only on SUSE machines
@@ -1450,7 +1501,6 @@ rm -f %{_localstatedir}/cache/salt/minion/thin/version
 %dir               %attr(0750, salt, salt) %{_localstatedir}/cache/salt/master/roots/
 %dir               %attr(0750, salt, salt) %{_localstatedir}/cache/salt/master/syndics/
 %dir               %attr(0750, salt, salt) %{_localstatedir}/cache/salt/master/tokens/
-#%dir %ghost        %attr(0750, salt, salt) %{_localstatedir}/run/salt/master/
 
 %files
 %defattr(-,root,root,-)
@@ -1473,7 +1523,6 @@ rm -f %{_localstatedir}/cache/salt/minion/thin/version
 %dir        %attr(0750, root, salt) %{_sysconfdir}/salt/pki
 %dir        %attr(0750, salt, salt) %{_localstatedir}/log/salt
 %dir        %attr(0750, root, salt) %{_localstatedir}/cache/salt
-#%dir %ghost %attr(0750, root, salt) %{_localstatedir}/run/salt
 %dir        %attr(0750, root, salt) /srv/spm
 %if %{with systemd}
 /usr/lib/tmpfiles.d/salt.conf

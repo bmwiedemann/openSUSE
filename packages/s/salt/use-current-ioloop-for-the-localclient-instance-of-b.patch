@@ -1,0 +1,36 @@
+From 55d8a777d6a9b19c959e14a4060e5579e92cd106 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Thu, 3 Oct 2019 15:19:02 +0100
+Subject: [PATCH] Use current IOLoop for the LocalClient instance of
+ BatchAsync (bsc#1137642)
+
+---
+ salt/cli/batch_async.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/salt/cli/batch_async.py b/salt/cli/batch_async.py
+index 2bb50459c8..f9e736f804 100644
+--- a/salt/cli/batch_async.py
++++ b/salt/cli/batch_async.py
+@@ -52,7 +52,7 @@ class BatchAsync(object):
+     '''
+     def __init__(self, parent_opts, jid_gen, clear_load):
+         ioloop = tornado.ioloop.IOLoop.current()
+-        self.local = salt.client.get_local_client(parent_opts['conf_file'])
++        self.local = salt.client.get_local_client(parent_opts['conf_file'], io_loop=ioloop)
+         if 'gather_job_timeout' in clear_load['kwargs']:
+             clear_load['gather_job_timeout'] = clear_load['kwargs'].pop('gather_job_timeout')
+         else:
+@@ -266,6 +266,7 @@ class BatchAsync(object):
+         yield
+ 
+     def __del__(self):
++        self.local = None
+         self.event = None
+         self.ioloop = None
+         gc.collect()
+-- 
+2.22.0
+
+

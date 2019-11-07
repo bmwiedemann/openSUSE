@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Nov 05 14:41:02 UTC 2019 - kukuk@suse.de
+
+- Update to version 19+git20191104.5dfb982:
+  * v19
+  * Fixed signedness.
+
+-------------------------------------------------------------------
+Tue Oct 29 10:41:22 UTC 2019 - kukuk@suse.de
+
+- Update to version 18+git20191028.83201e8:
+  * v18
+  * Hide unwanted firewalld-cmd error messages.
+  * v17
+  * Add firewalld support
+  * Fix command order in tallow.conf man page
+  * Add json-c to travis.
+  * make older compilers a bit happier
+  * add dovecot as postfix auth backend parsing
+
+-------------------------------------------------------------------
 Sat Aug 17 12:47:00 UTC 2019 - kukuk@suse.de
 
 - Update to version 16+git20190425.e4b3977:

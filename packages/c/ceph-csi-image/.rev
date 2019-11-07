@@ -33,4 +33,12 @@
     <comment></comment>
     <requestid>745143</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>ecb54e5f4487ed53aa5dfcc5c33cf6db</srcmd5>
+    <version>1.0.0</version>
+    <time>1573165225</time>
+    <user>dimstar_suse</user>
+    <comment>- Derive from ceph-image (SES-636)</comment>
+    <requestid>746184</requestid>
+  </revision>
 </revisionlist>

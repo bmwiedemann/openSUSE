@@ -21,7 +21,7 @@
 %define texlive_version  2019
 %define texlive_previous 2018
 %define texlive_release  20190407
-%define texlive_noarch   167
+%define texlive_noarch   168
 
 #!BuildIgnore:          texlive
 
@@ -59,7 +59,7 @@ BuildRequires:  texlive-filesystem
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for a
-License:        Apache-1.0 AND BSD-3-Clause AND GFDL-1.2-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND LPPL-1.0 AND LPPL-1.3c AND OFL-1.1 AND SUSE-Public-Domain AND SUSE-TeX
+License:        Apache-1.0 and BSD-3-Clause and GFDL-1.2 and GPL-2.0+ and LGPL-2.1+ and LPPL-1.0 and LPPL-1.3c and OFL-1.1 and SUSE-Public-Domain and SUSE-TeX
 Group:          Productivity/Publishing/TeX/Base
 Url:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Source0:        texlive-specs-a-rpmlintrc
@@ -828,6 +828,7 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-IEEEtran-doc >= %{texlive_version}
 Provides:       tex(IEEEtran.cls)
 Provides:       tex(IEEEtrantools.sty)
+Requires:       tex(newtxmath.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source16:       IEEEtran.tar.xz
@@ -1601,9 +1602,16 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-aastex-doc >= %{texlive_version}
 Provides:       tex(aastex62.cls)
 Requires:       tex(amssymb.sty)
+Requires:       tex(array.sty)
 Requires:       tex(epsf.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(latexsym.sty)
+Requires:       tex(lineno.sty)
+Requires:       tex(longtable.sty)
+Requires:       tex(times.sty)
+Requires:       tex(ulem.sty)
+Requires:       tex(url.sty)
+Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source34:       aastex.tar.xz
@@ -1771,6 +1779,7 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(ifluatex.sty)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(keyval.sty)
+Requires:       tex(shellesc.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -1862,6 +1871,7 @@ Requires:       tex(geometry.sty)
 Requires:       tex(newfloat.sty)
 Requires:       tex(scrlayer-scrpage.sty)
 Requires:       tex(setspace.sty)
+Requires:       tex(tocbasic.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source40:       abnt.tar.xz
@@ -1940,6 +1950,7 @@ Provides:       tex(abntex2abrev.sty)
 Provides:       tex(abntex2cite.sty)
 Requires:       tex(babel.sty)
 Requires:       tex(bookmark.sty)
+Requires:       tex(breakurl.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(enumitem.sty)
 Requires:       tex(hyperref.sty)
@@ -1947,6 +1958,7 @@ Requires:       tex(ifpdf.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(memoir.cls)
+Requires:       tex(relsize.sty)
 Requires:       tex(setspace.sty)
 Requires:       tex(textcase.sty)
 Requires:       tex(url.sty)
@@ -3244,6 +3256,7 @@ Requires:       tex(l3keys2e.sty)
 Requires:       tex(pdfcomment.sty)
 Requires:       tex(translations.sty)
 Requires:       tex(xparse.sty)
+Requires:       tex(xspace.sty)
 Requires:       tex(xtemplate.sty)
 Requires:       tex(zref-abspage.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
@@ -3893,6 +3906,7 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-adfathesis-doc >= %{texlive_version}
 Provides:       tex(adfathesis.cls)
+Requires:       tex(harvard.sty)
 Requires:       tex(report.cls)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -4505,6 +4519,9 @@ Requires:       tex(calc.sty)
 Requires:       tex(collectbox.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(ifoddpage.sty)
+Requires:       tex(pgf.sty)
+Requires:       tex(pgfmath.sty)
+Requires:       tex(varwidth.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -12351,6 +12368,7 @@ Provides:       tex(zal_xnjnii.enc)
 Provides:       tex(zal_ys7y36.enc)
 Requires:       tex(fontaxes.sty)
 Requires:       tex(fontenc.sty)
+Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
@@ -12578,6 +12596,7 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-algorithm2e-doc >= %{texlive_version}
 Provides:       tex(algorithm2e.sty)
+Requires:       tex(color.sty)
 Requires:       tex(endfloat.sty)
 Requires:       tex(ifoddpage.sty)
 Requires:       tex(ifthen.sty)
@@ -14256,6 +14275,7 @@ Provides:       tex(altfont.cfg)
 Provides:       tex(altfont.sty)
 Provides:       tex(psfont.cfg)
 Provides:       tex(psfont.sty)
+Requires:       tex(fontenc.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source153:      altfont.tar.xz
@@ -14334,6 +14354,22 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-ametsoc-doc >= %{texlive_version}
 Provides:       tex(ametsoc.cls)
+Requires:       tex(amsfonts.sty)
+Requires:       tex(amsmath.sty)
+Requires:       tex(amssymb.sty)
+Requires:       tex(bm.sty)
+Requires:       tex(endfloat.sty)
+Requires:       tex(graphicx.sty)
+Requires:       tex(helvet.sty)
+Requires:       tex(ifthen.sty)
+Requires:       tex(indentfirst.sty)
+Requires:       tex(lineno.sty)
+Requires:       tex(mathptmx.sty)
+Requires:       tex(multicol.sty)
+Requires:       tex(natbib.sty)
+Requires:       tex(rotating.sty)
+Requires:       tex(url.sty)
+Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source155:      ametsoc.tar.xz
@@ -18787,10 +18823,15 @@ Provides:       tex(apa.cls)
 Requires:       tex(apacite.sty)
 Requires:       tex(article.cls)
 Requires:       tex(babel.sty)
+Requires:       tex(bm.sty)
 Requires:       tex(endfloat.sty)
 Requires:       tex(endnotes.sty)
+Requires:       tex(flushend.sty)
 Requires:       tex(ftnright.sty)
 Requires:       tex(longtable.sty)
+Requires:       tex(mathptm.sty)
+Requires:       tex(pslatex.sty)
+Requires:       tex(times.sty)
 Requires:       tex(txfonts.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -18888,6 +18929,7 @@ Requires:       tex(array.sty)
 Requires:       tex(article.cls)
 Requires:       tex(babel.sty)
 Requires:       tex(biblatex.sty)
+Requires:       tex(bm.sty)
 Requires:       tex(booktabs.sty)
 Requires:       tex(caption.sty)
 Requires:       tex(draftwatermark.sty)
@@ -18895,14 +18937,18 @@ Requires:       tex(endfloat.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(fancyhdr.sty)
 Requires:       tex(float.sty)
+Requires:       tex(flushend.sty)
 Requires:       tex(fontenc.sty)
 Requires:       tex(ftnright.sty)
 Requires:       tex(geometry.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(lmodern.sty)
 Requires:       tex(longtable.sty)
+Requires:       tex(mathptm.sty)
+Requires:       tex(pslatex.sty)
 Requires:       tex(substr.sty)
 Requires:       tex(threeparttable.sty)
+Requires:       tex(times.sty)
 Requires:       tex(txfonts.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -19954,6 +20000,7 @@ Provides:       tex(translit.sty)
 Requires:       tex(amssymb.sty)
 Requires:       tex(babel.sty)
 Requires:       tex(fp.sty)
+Requires:       tex(ifthen.sty)
 Requires:       tex(multido.sty)
 Requires:       tex(pifont.sty)
 Requires:       tex(pst-3d.sty)
@@ -20315,6 +20362,7 @@ Requires:       tex(bookmark.sty)
 Requires:       tex(datatool.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(ifthen.sty)
+Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source224:      arabi-add.tar.xz
@@ -20396,6 +20444,7 @@ Requires:       tex(fontspec.sty)
 Requires:       tex(ifluatex.sty)
 Requires:       tex(luacode.sty)
 Requires:       tex(luacolor.sty)
+Requires:       tex(scrextend.sty)
 Requires:       tex(ulem.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
@@ -22464,6 +22513,7 @@ Provides:       tex(artmsl10.tfm)
 Provides:       tex(ot6cmr.fd)
 Provides:       tex(ot6cmss.fd)
 Provides:       tex(ot6enc.def)
+Requires:       tex(fontenc.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407

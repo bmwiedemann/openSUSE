@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <param>
   <image>obsrepositories:/opensuse/leap#15.1</image>
+  <tags>leap15.1.nautilus</tags>
   <name>ceph/ceph</name>
   <prefix>org.opensuse.ceph</prefix>
   <title>Ceph container image</title>

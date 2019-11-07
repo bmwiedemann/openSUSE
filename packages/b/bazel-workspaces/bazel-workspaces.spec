@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           bazel-workspaces
-Version:        20191011
+Version:        20191105
 Release:        0
 Summary:        Bazel workspaces for libraries packaged in openSUSE
 License:        Apache-2.0
@@ -47,4 +47,3 @@ rm -f %{buildroot}%{_datadir}/%{name}/{LICENSE,README.md}
 %{_datadir}/%{name}
 
 %changelog
-

@@ -17,7 +17,7 @@
 
 
 Name:           raspberrypi-firmware
-Version:        2019.09.30
+Version:        2019.11.06
 Release:        0
 Summary:        Binary bootloader and firmware files for Raspberry Pi
 License:        SUSE-Firmware

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct  1 13:36:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Require tornado5 for py2 and tornado6 for py3 as they
+  are in different versions
+- Also switch from singlespec to explicit writeup for the obvious
+  distinction between different versions of 2 and 3 variant
+
+-------------------------------------------------------------------
 Wed Aug 14 15:09:36 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Switch to tornado 4 temporarily.

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  5 19:10:30 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix failing python tests due to different filesystem layout of built
+  and installed modules, add use_installed_python_modules_for_tests.patch
+
+-------------------------------------------------------------------
 Wed Feb 20 14:46:55 UTC 2019 - Adrian Schröter <adrian@suse.de>
 
 - drop hdf5-devel 1.8 deps

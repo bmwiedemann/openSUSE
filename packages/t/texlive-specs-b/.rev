@@ -379,4 +379,12 @@
     <comment>Add updmap-map_roboto.dif to update encoding mappings (boo#1143065)</comment>
     <requestid>725594</requestid>
   </revision>
+  <revision rev="39" vrev="42">
+    <srcmd5>60d6ddc38e1c9698dff612227ff59ded</srcmd5>
+    <version>unknown</version>
+    <time>1573164583</time>
+    <user>dimstar_suse</user>
+    <comment>Enhance spec file generator to catch more required style files e.g. readarray.sty for verbatimbox.sty as reported in boo#1155752</comment>
+    <requestid>745607</requestid>
+  </revision>
 </revisionlist>

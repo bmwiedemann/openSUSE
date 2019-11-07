@@ -21,7 +21,7 @@
 %define texlive_version  2019
 %define texlive_previous 2018
 %define texlive_release  20190407
-%define texlive_noarch   167
+%define texlive_noarch   168
 
 #!BuildIgnore:          texlive
 
@@ -59,7 +59,7 @@ BuildRequires:  texlive-filesystem
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for p
-License:        Artistic-1.0 AND BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later AND LPPL-1.0 AND OFL-1.1 AND SUSE-Public-Domain AND SUSE-TeX
+License:        Artistic-1.0 and BSD-3-Clause and GPL-2.0+ and LGPL-2.1+ and LPPL-1.0 and OFL-1.1 and SUSE-Public-Domain and SUSE-TeX
 Group:          Productivity/Publishing/TeX/Base
 Url:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Source0:        texlive-specs-p-rpmlintrc
@@ -3126,6 +3126,7 @@ Recommends:     texlive-mfpic-doc >= %{texlive_version}
 Provides:       tex(mfpic.sty)
 Provides:       tex(mfpic.tex)
 Provides:       tex(mfpicdef.tex)
+Requires:       tex(graphics.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source49:       mfpic.tar.xz
@@ -3310,7 +3311,9 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-mftinc-doc >= %{texlive_version}
 Provides:       tex(mftinc.sty)
+Requires:       tex(chngpage.sty)
 Requires:       tex(keyval.sty)
+Requires:       tex(lineno.sty)
 Requires:       tex(rawfonts.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -5563,7 +5566,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(lineno.sty)
+Requires:       tex(newfloat.sty)
 Requires:       tex(pdftexcmds.sty)
+Requires:       tex(shellesc.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
@@ -7421,6 +7426,11 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-mla-paper-doc >= %{texlive_version}
 Provides:       tex(mla.sty)
+Requires:       tex(color.sty)
+Requires:       tex(fancyhdr.sty)
+Requires:       tex(graphicx.sty)
+Requires:       tex(thumbpdf.sty)
+Requires:       tex(times.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source110:      mla-paper.tar.xz
@@ -7921,6 +7931,11 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-mnras-doc >= %{texlive_version}
 Provides:       tex(mnras.cls)
+Requires:       tex(dcolumn.sty)
+Requires:       tex(fixltx2e.sty)
+Requires:       tex(geometry.sty)
+Requires:       tex(hyperref.sty)
+Requires:       tex(natbib.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source120:      mnras.tar.xz
@@ -8120,6 +8135,9 @@ Provides:       tex(MnSymbolS6.tfm)
 Provides:       tex(MnSymbolS7.tfm)
 Provides:       tex(MnSymbolS8.tfm)
 Provides:       tex(MnSymbolS9.tfm)
+Requires:       tex(amsmath.sty)
+Requires:       tex(eufrak.sty)
+Requires:       tex(textcomp.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source122:      mnsymbol.tar.xz
@@ -8655,6 +8673,7 @@ Provides:       tex(moderncvstyleoldstyle.sty)
 Provides:       tex(tweaklist.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(changepage.sty)
+Requires:       tex(ebgaramond.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(fancyhdr.sty)
 Requires:       tex(fontawesome.sty)
@@ -8664,6 +8683,8 @@ Requires:       tex(hyperref.sty)
 Requires:       tex(ifluatex.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(ifxetex.sty)
+Requires:       tex(kurier.sty)
+Requires:       tex(lmodern.sty)
 Requires:       tex(microtype.sty)
 Requires:       tex(tgpagella.sty)
 Requires:       tex(tikz.sty)
@@ -14078,6 +14099,7 @@ Provides:       tex(zmo_z64ahx.enc)
 Provides:       tex(zmo_zfphbh.enc)
 Requires:       tex(fontaxes.sty)
 Requires:       tex(fontenc.sty)
+Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
@@ -18690,6 +18712,7 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-moreverb-doc >= %{texlive_version}
 Provides:       tex(moreverb.sty)
+Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source160:      moreverb.tar.xz
@@ -20503,6 +20526,7 @@ Requires:       tex(pdfx.sty)
 Requires:       tex(scrartcl.cls)
 Requires:       tex(scrbase.sty)
 Requires:       tex(scrlayer-scrpage.sty)
+Requires:       tex(txfonts.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -20584,6 +20608,7 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-mugsthesis-doc >= %{texlive_version}
 Provides:       tex(mugsthesis.cls)
 Requires:       tex(etoolbox.sty)
+Requires:       tex(indentfirst.sty)
 Requires:       tex(memoir.cls)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -21229,6 +21254,7 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-multidef-doc >= %{texlive_version}
 Provides:       tex(multidef.sty)
+Requires:       tex(trimspaces.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -23050,12 +23076,19 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-musuos-doc >= %{texlive_version}
 Provides:       tex(musuos.cls)
 Requires:       tex(csquotes.sty)
+Requires:       tex(dblfnote.sty)
 Requires:       tex(environ.sty)
 Requires:       tex(etoolbox.sty)
+Requires:       tex(float.sty)
 Requires:       tex(geometry.sty)
+Requires:       tex(helvet.sty)
+Requires:       tex(kpfonts.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(scrartcl.cls)
+Requires:       tex(setspace.sty)
+Requires:       tex(tgheros.sty)
 Requires:       tex(titletoc.sty)
+Requires:       tex(txfonts.sty)
 Requires:       tex(verse.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
@@ -23134,8 +23167,10 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-muthesis-doc >= %{texlive_version}
 Provides:       tex(muthesis.cls)
 Provides:       tex(third-rep.cls)
+Requires:       tex(graphicx.sty)
 Requires:       tex(report.cls)
 Requires:       tex(setspace.sty)
+Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source248:      muthesis.tar.xz

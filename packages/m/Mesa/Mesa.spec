@@ -689,7 +689,6 @@ Summary:        Mesa's Vulkan development files
 Group:          Development/Libraries/C and C++
 Requires:       libvulkan_intel = %{version}
 Requires:       libvulkan_radeon = %{version}
-Conflicts:      vulkan-devel
 
 %description -n Mesa-libVulkan-devel
 This package contains the development files for Mesa's Vulkan implementation.

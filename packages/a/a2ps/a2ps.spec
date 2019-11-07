@@ -48,6 +48,8 @@ Patch15:        a2ps-4.14-gperf.patch
 Patch16:        a2ps-4.14-bnc955194.patch
 Patch17:        a2ps-buildcompare.patch
 Patch18:        reproducible.patch
+# PATCH-FIX-SUSE New texinfo 6.7 does not like KOI8-R endcoded characters within UTF-8 environment
+Patch19:        a2ps-4.14-texinfo-6.7.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -132,6 +134,7 @@ touch -r configure.in .ref
 %patch17 -p1
 %patch0   -b .p0
 %patch18 -p1
+%patch19 -p0 -b .p19
 cp -f %{SOURCE3} po/ko.po
 find -type f | grep -vE '(parseppd|parsessh).y' | xargs \
 sed -ri 's/59 Temple Place(,| -) Suite 330/51 Franklin Street, Fifth Floor/;s/02111-1307/02110-1301/'

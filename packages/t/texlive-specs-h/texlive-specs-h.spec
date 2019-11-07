@@ -21,7 +21,7 @@
 %define texlive_version  2019
 %define texlive_previous 2018
 %define texlive_release  20190407
-%define texlive_noarch   167
+%define texlive_noarch   168
 
 #!BuildIgnore:          texlive
 
@@ -59,7 +59,7 @@ BuildRequires:  texlive-filesystem
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for h
-License:        Apache-1.0 AND BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later AND LPPL-1.0 AND OFL-1.1 AND SUSE-Public-Domain
+License:        Apache-1.0 and BSD-3-Clause and GPL-2.0+ and LGPL-2.1+ and LPPL-1.0 and OFL-1.1 and SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 Url:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Source0:        texlive-specs-h-rpmlintrc
@@ -5358,6 +5358,9 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-ebook-doc >= %{texlive_version}
 Provides:       tex(ebook.sty)
+Requires:       tex(graphicx.sty)
+Requires:       tex(hyperref.sty)
+Requires:       tex(moreverb.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source58:       ebook.tar.xz
@@ -9707,6 +9710,7 @@ Provides:       tex(worlddev.cls)
 Requires:       tex(amsmath.sty)
 Requires:       tex(babel.sty)
 Requires:       tex(bm.sty)
+Requires:       tex(caption.sty)
 Requires:       tex(courier.sty)
 Requires:       tex(endfloat.sty)
 Requires:       tex(endnotes.sty)
@@ -14575,6 +14579,7 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-eledmac-doc >= %{texlive_version}
 Provides:       tex(eledmac.sty)
 Provides:       tex(eledpar.sty)
+Requires:       tex(etex.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(ifluatex.sty)
 Requires:       tex(ifxetex.sty)
@@ -14753,6 +14758,7 @@ Requires:       tex(multicol.sty)
 Requires:       tex(natbib.sty)
 Requires:       tex(newtxmath.sty)
 Requires:       tex(newtxtext.sty)
+Requires:       tex(pgfornament.sty)
 Requires:       tex(pifont.sty)
 Requires:       tex(setspace.sty)
 Requires:       tex(tcolorbox.sty)
@@ -14868,6 +14874,7 @@ Requires:       tex(ifxetex.sty)
 Requires:       tex(indentfirst.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(listings.sty)
+Requires:       tex(microtype.sty)
 Requires:       tex(natbib.sty)
 Requires:       tex(newtxmath.sty)
 Requires:       tex(newtxtext.sty)
@@ -15072,6 +15079,7 @@ Provides:       tex(elements_names_english.def)
 Provides:       tex(elements_names_french.def)
 Provides:       tex(elements_names_german.def)
 Provides:       tex(elements_names_spanish.def)
+Requires:       tex(etoolbox.sty)
 Requires:       tex(translations.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -15448,9 +15456,12 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-elpres-doc >= %{texlive_version}
 Provides:       tex(elpres.cls)
 Requires:       tex(article.cls)
+Requires:       tex(courier.sty)
 Requires:       tex(fancyhdr.sty)
 Requires:       tex(geometry.sty)
+Requires:       tex(helvet.sty)
 Requires:       tex(ifthen.sty)
+Requires:       tex(mathptmx.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source142:      elpres.tar.xz
@@ -15543,6 +15554,7 @@ Requires:       tex(fontenc.sty)
 Requires:       tex(footmisc.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(hyperref.sty)
+Requires:       tex(inconsolata.sty)
 Requires:       tex(makecell.sty)
 Requires:       tex(moreverb.sty)
 Requires:       tex(multirow.sty)
@@ -15656,10 +15668,13 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-elsarticle-doc >= %{texlive_version}
 Provides:       tex(elsarticle.cls)
 Requires:       tex(article.cls)
+Requires:       tex(endfloat.sty)
 Requires:       tex(fleqn.clo)
 Requires:       tex(geometry.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(natbib.sty)
+Requires:       tex(times.sty)
+Requires:       tex(txfonts.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source146:      elsarticle.tar.xz
@@ -16426,11 +16441,13 @@ Requires:       tex(doclicense.sty)
 Requires:       tex(environ.sty)
 Requires:       tex(eso-pic.sty)
 Requires:       tex(etoolbox.sty)
+Requires:       tex(fixltx2e.sty)
 Requires:       tex(float.sty)
 Requires:       tex(fontenc.sty)
 Requires:       tex(geometry.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(inputenc.sty)
+Requires:       tex(latexrelease.sty)
 Requires:       tex(listings.sty)
 Requires:       tex(microtype.sty)
 Requires:       tex(newtxmath.sty)
@@ -17319,6 +17336,8 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-endnotesj-doc >= %{texlive_version}
 Provides:       tex(endnotesj.sty)
 Requires:       tex(endnotes.sty)
+Requires:       tex(luatexja-otf.sty)
+Requires:       tex(otf.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source184:      endnotesj.tar.xz
@@ -17472,6 +17491,7 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-engpron-doc >= %{texlive_version}
 Provides:       tex(engpron-tools.sty)
 Provides:       tex(engpron.sty)
+Requires:       tex(drac.sty)
 Requires:       tex(fancyvrb.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(tipa.sty)
@@ -17562,6 +17582,7 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-engrec-doc >= %{texlive_version}
 Provides:       tex(engrec.sty)
 Requires:       tex(amstext.sty)
+Requires:       tex(upgreek.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source190:      engrec.tar.xz
@@ -20236,6 +20257,7 @@ Provides:       tex(erdc.cls)
 Requires:       tex(amsmath.sty)
 Requires:       tex(caption.sty)
 Requires:       tex(color.sty)
+Requires:       tex(courier.sty)
 Requires:       tex(dcolumn.sty)
 Requires:       tex(fancyhdr.sty)
 Requires:       tex(graphicx.sty)
@@ -21162,6 +21184,7 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(fontaxes.sty)
 Requires:       tex(fontenc.sty)
 Requires:       tex(ifthen.sty)
+Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
@@ -22339,6 +22362,20 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-esami-doc >= %{texlive_version}
 Provides:       tex(esami.sty)
+Requires:       tex(amssymb.sty)
+Requires:       tex(array.sty)
+Requires:       tex(auto-pst-pdf.sty)
+Requires:       tex(currfile.sty)
+Requires:       tex(enumerate.sty)
+Requires:       tex(environ.sty)
+Requires:       tex(fp.sty)
+Requires:       tex(graphicx.sty)
+Requires:       tex(ifthen.sty)
+Requires:       tex(multicol.sty)
+Requires:       tex(pstricks-add.sty)
+Requires:       tex(pstricks.sty)
+Requires:       tex(xargs.sty)
+Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source256:      esami.tar.xz

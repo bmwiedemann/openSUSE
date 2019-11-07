@@ -108,4 +108,18 @@
     <comment></comment>
     <requestid>699735</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ac8f154d9a29b90e530068d1d964985f</srcmd5>
+    <version>0.4.4</version>
+    <time>1573164963</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.4
+* Various fixes
+* better location for zsh completion
+* new fish completion
+
+- fix build-requires for factory/tumbleweed
+  rsvg-convert tool is now in rsvg-convert package</comment>
+    <requestid>745480</requestid>
+  </revision>
 </revisionlist>

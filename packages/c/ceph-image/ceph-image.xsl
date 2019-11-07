@@ -27,8 +27,8 @@
       </xsl:attribute>
       <containerconfig
         tag="latest"
-        additionaltags="%PKG_VERSION%,%PKG_VERSION%.%RELEASE%"
         maintainer="Sebastian Wagner &lt;swagner@suse.com&gt;">
+        <xsl:attribute name="additionaltags"><xsl:value-of select="param/tags" />,%PKG_VERSION%,%PKG_VERSION%.%RELEASE%</xsl:attribute>
         <xsl:attribute name="name">
           <xsl:value-of select="param/name" />
         </xsl:attribute>

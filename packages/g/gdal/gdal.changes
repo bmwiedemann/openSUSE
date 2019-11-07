@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov  6 12:58:46 UTC 2019 - Libor Pechacek <lpechacek@gmx.com>
+
+- update to 3.0.2
+  Full changelogs:
+  https://trac.osgeo.org/gdal/wiki/Release/3.0.2-News
+- Refreshed patches:
+  0001-Replace-SWIG-Python-obj0-swig_obj-0-with-version-agn.patch
+
+-------------------------------------------------------------------
 Thu Oct 10 08:26:00 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Spec file cleanups

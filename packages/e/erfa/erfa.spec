@@ -18,16 +18,13 @@
 
 %define lname	liberfa1
 Name:           erfa
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        Essential Routines for Fundamental Astronomy
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Other
 URL:            https://github.com/liberfa/erfa
 Source:         https://github.com/liberfa/erfa/releases/download/v%{version}/erfa-%{version}.tar.gz
-BuildRequires:  autoconf >= 2.68
-BuildRequires:  automake
-BuildRequires:  libtool
 BuildRequires:  pkgconfig
 
 %description
@@ -72,7 +69,6 @@ applications that link statically to %{name}.
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-./bootstrap.sh
 %configure
 make %{?_smp_mflags}
 

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Nov  7 12:20:42 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Remove old files:
+  * lxqt-runner-0.14.0.tar.xz
+  * lxqt-runner-0.14.0.tar.xz.asc
+
+-------------------------------------------------------------------
+Mon Feb 25 10:21:01 UTC 2019 - mvetter@suse.com
+
+- Update to 0.14.1:
+  * MathItem: Use documented API of muparser and check for possible ArgSep()
+    and DecSep() conflict. Also do not use grouping for output values.
+  * Updated translations
+
+-------------------------------------------------------------------
 Thu Jan 31 10:23:52 UTC 2019 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.14.0:

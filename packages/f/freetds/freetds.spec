@@ -17,13 +17,13 @@
 
 
 Name:           freetds
-Version:        1.00.83
+Version:        1.1.20
 Release:        0
 Summary:        A free re-implementation of the TDS (Tabular Data Stream) protocol
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 Group:          Productivity/Databases/Clients
 Url:            http://www.freetds.org/
-Source:         ftp://ftp.freetds.org/pub/freetds/stable/%{name}-%{version}.tar.gz
+Source:         ftp://ftp.freetds.org/pub/freetds/stable/%{name}-%{version}.tar.bz2
 Patch0:         configure-return-void-fix.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -31,6 +31,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  unixODBC-devel
 BuildRequires:  pkgconfig(gnutls)
+BuildRequires:  pkgconfig(krb5-gssapi)
 BuildRequires:  pkgconfig(nettle)
 Requires:       glibc-locale
 
@@ -133,8 +134,9 @@ and can be installed even if FreeTDS main package is not installed
 %configure \
   --with-unixodbc=%{_prefix} \
   --enable-threadsafe \
+  --enable-krb5 \
   --sysconfdir=%{_sysconfdir} \
-  --with-tdsver=4.2 \
+  --with-tdsver=auto \
   --disable-static \
 %if 0%{?suse_version} >= 1310
   --with-gnutls \

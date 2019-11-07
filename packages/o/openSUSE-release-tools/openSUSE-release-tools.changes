@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Wed Nov 06 17:27:01 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20191106.547e954a:
+  * osclib/origin: origin_update_pending() utilize project_remote_prefixed().
+  * osclib/core: provide project_remote_prefixed().
+
+-------------------------------------------------------------------
+Tue Nov 05 15:17:39 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20191105.9f80ea19:
+  * origin-manager: origin_maintainer_review_ensure(): check for devel meta.
+
+-------------------------------------------------------------------
+Tue Nov 05 15:08:16 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20191105.931b7604:
+  * osclib/origin_listener: consume package deletes.
+  * tests/origin_tests: provide test for new package submission.
+  * osc-origin: osrt_origin_update(): include potential new packages.
+  * osclib/origin_listener: update packages that do not exist in target project.
+  * osclib/origin: provide origin_updatable_initial().
+  * osclib/origin: origin_update(): support initial submissions.
+  * osclib/origin: provide automatic_updates_initial origin config option.
+  * osclib/core: request_create_submit(): provide ignore_if_any_request.
+
+-------------------------------------------------------------------
+Tue Nov 05 11:32:37 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20191105.bfaa89d7:
+  * requestfinder: ConfigParser has been renamed to configparser in python3
+
+-------------------------------------------------------------------
+Tue Nov 05 10:52:45 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20191105.7e560478:
+  * Remove dependency from cache to config
+  * Remove old python2 code from cache
+
+-------------------------------------------------------------------
+Tue Nov 05 10:38:36 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20191105.efee5429:
+  * Fix conflicts/obsoletes while picking dependencies
+
+-------------------------------------------------------------------
+Mon Nov 04 20:57:57 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20191104.de4ff14a:
+  * tests/origin_tests: provide split product origin tests.
+  * tests/origin_tests: provide devel origin tests.
+  * tests/origin_tests: provide harness and basic tests.
+  * tests/OBSLocal: provide randomString() for ensuring tools not name dependent.
+  * tests/OBSLocal: provide assertReviewBot() for review script workflows.
+  * tests/OBSLocal: submit_package(): provide optional project argument.
+  * tests/OBSLocal: StagingWorkflow: provide and utilize remote_config_set().
+  * tests/OBSLocal: Request: extract change_state() from revoke.
+  * tests/OBSLocal: tearDown(): ensure user is Admin before cleanup.
+  * tests/OBSLocal: StagingWorkflow: stop hiding valid errors.
+  * tests/OBSLocal: correct python 3 port attempt for subprocess output handling.
+  * tests/OBSLocal: provide osc_user_pop() to make user switching cleaner.
+  * tests/OBSLocal: osc_user(): indicate when switching user.
+  * tests/OBSLocal: disable request cache during testing.
+  * osclib/origin_listener: ultilize origin_updatable_map() include_self option.
+  * osclib/origin: origin_updatable_map(): provide include_self option.
+  * osclib/origin: origin_update() generate change_devel requests.
+  * origin-manager: handle change_devel request review.
+  * origin-manager: when appropriate simulate devel project during source change review.
+  * origin-manager: provide devel_project_simulate_check().
+  * origin-manager: provide devel_project_simulate_check_command().
+  * origin-manager: provide and utilize origin_maintainer_review_ensure().
+  * osclib/origin: policy_input_calculate(): handle change from None origin.
+  * osclib/origin: allow for identical source if origin changed.
+  * osclib/origin: provide and utilize origin_devel_projects().
+  * osclib/origin: provide origin_devel_project() and utlize.
+  * osclib/origin: provide origin_devel_project_requests().
+  * osclib/origin: provide devel_project_simulate enterable.
+  * osclib/origin: require origin key in origin_annotation_load().
+  * osclib/origin: provide origin_workaround_strip().
+  * osclib/core: provide request_state_change() and utilize.
+  * osclib/core: provide request_create_change_devel() RequestFuture.
+  * osclib/core: provide package_role_expand() to expand package role to users.
+  * osclib/core: provide project_role_expand() to expand project role to users.
+  * osclib/core: provide meta_role_expand() to expand a role to users given meta.
+  * osclib/core: break apart request_age() to provide request_created().
+  * osclib/cache: provide osrt.cache.disable config option to disable cache.
+  * dist/ci/flake-extra: include origin_listener in product check.
+  * ReviewBot: include request description in search for comment commands.
+  * ReviewBot: rework override check to operate on actions.
+  * osclib/comments: provide request description as comment.
+
+-------------------------------------------------------------------
 Mon Nov 04 18:12:57 UTC 2019 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20191104.75836fec:

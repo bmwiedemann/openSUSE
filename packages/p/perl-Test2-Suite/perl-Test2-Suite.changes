@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov  1 10:34:14 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 0.000127
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000127  2019-10-30 21:25:29-07:00 America/Los_Angeles
+  
+      - Fix srand toggling
+
+-------------------------------------------------------------------
 Thu Aug 29 05:42:22 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.000126

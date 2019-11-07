@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  6 13:24:51 UTC 2019 - matthias.gerstner@suse.com
+
+- add patch fix_overflow.diff: fixes potential stack buffer overflow if
+  unexpected directories with high numbers as a prefix appear. This is only a
+  hardening.
+
+-------------------------------------------------------------------
 Tue Aug 20 11:44:25 CEST 2019 - kukuk@suse.de
 
 - BuildRequire cron since it contains now the cron directories

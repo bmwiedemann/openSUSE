@@ -61,4 +61,12 @@
   * add support for Idempotent Producer, providing exactly-once</comment>
     <requestid>728486</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>154989af2c1881cbcb9e6c73b548207d</srcmd5>
+    <version>1.1.0</version>
+    <time>1573165285</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>746377</requestid>
+  </revision>
 </revisionlist>

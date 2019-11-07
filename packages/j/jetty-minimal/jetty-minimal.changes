@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Tue Nov  5 15:39:31 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of a minimal version of jetty 9.4.19.v20190610
+  * This version is light on dependencies

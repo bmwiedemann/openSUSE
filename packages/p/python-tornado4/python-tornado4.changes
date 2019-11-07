@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Oct 14 14:46:11 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Replace %fdupes -s with plain %fdupes; hardlinks are better.
+
+-------------------------------------------------------------------
+Thu Oct 10 14:04:50 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Provide versioned python-tornado symbol, making this package a
+  full option in case the meta package is not applicable.
+
+-------------------------------------------------------------------
+Tue Oct  1 13:21:22 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Per discussion with RM switch back to python-tornado<version>
+  system with python-tornado standing in as a metapkg
+
+-------------------------------------------------------------------
+Wed Sep 18 12:46:42 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Provide also python-tornado symbol not just py2/py3-tornado
+
+-------------------------------------------------------------------
+Wed Sep 18 09:28:16 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add tornado-impl provide to fix the collision for OBS resolver
+  in dlpy before new python-torando containing version 6 is included
+  in openSUSE TW
+
+-------------------------------------------------------------------
+Wed Sep 18 08:08:55 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to pytest like approach for tornado
+- Do not install tests
+
+-------------------------------------------------------------------
+Tue Sep 17 11:03:20 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Reduce the conflicts even more
+
+-------------------------------------------------------------------
 Fri Aug  9 17:26:02 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Conflicts fixes

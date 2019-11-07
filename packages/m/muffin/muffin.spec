@@ -30,6 +30,8 @@ URL:            https://github.com/linuxmint/muffin
 Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE muffin-svid-default-source.patch marguerite@opensuse.org -- Change _SVID_SOURCE to _DEFAULT_SOURCE.
 Patch0:         %{name}-svid-default-source.patch
+# PATCH-FIX-UPSTREAM 0001-fix-warnings-when-compiling.patch leigh123linux@googlemail.com -- don't treat Gi warnings as error
+Patch1:         0001-fix-warnings-when-compiling.patch
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake

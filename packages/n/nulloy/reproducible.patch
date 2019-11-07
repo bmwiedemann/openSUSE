@@ -1,0 +1,24 @@
+https://github.com/nulloy/nulloy/pull/149
+
+commit c6d8e5cf2774da57be2fe02aca3f004be0be7744
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   Thu May 9 12:28:07 2019 +0200
+
+    skins: Do not save extra file attributes in .zip
+    
+    to make it easier to make a reproducible build
+    See https://reproducible-builds.org/ for why this is good.
+
+Index: nulloy-0.8.2/src/skins/skins.pri
+===================================================================
+--- nulloy-0.8.2.orig/src/skins/skins.pri
++++ nulloy-0.8.2/src/skins/skins.pri
+@@ -4,7 +4,7 @@ win32:SKIN_DEST_DIR = $$SRC_DIR/../Skins
+ system($$QMAKE_MKDIR $$fixSlashes($$SKIN_DEST_DIR))
+ 
+ unix {
+-    ZIP_ADD_CMD = zip -j
++    ZIP_ADD_CMD = zip -j -X
+     ZIP_DEL_CMD = zip -d
+ }
+ win32 {

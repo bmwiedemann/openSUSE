@@ -348,4 +348,12 @@
     <comment></comment>
     <requestid>739294</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>5c8b43386deca99b7a48cf7b361b5f48</srcmd5>
+    <version>19.11.06</version>
+    <time>1573165216</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 19.11.06 and fix Leap:15.2 build failure.</comment>
+    <requestid>746182</requestid>
+  </revision>
 </revisionlist>

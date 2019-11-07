@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 31 10:33:44 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- lto breaks crc32 detection in configure script, so disable it
+  for non x86_64 architectures.
+  Reported upstream: https://github.com/edenhill/librdkafka/issues/2426
+
+-------------------------------------------------------------------
 Thu Sep  5 11:47:36 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
 
 - update to 1.1.0:

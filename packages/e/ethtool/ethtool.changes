@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov  3 09:27:22 UTC 2019 - Michal Kubecek <mkubecek@suse.cz>
+
+- Update to new upstream release 5.3
+  * igb: dump RR2DCDELAY register
+  * support for dumping nested registers (e.g. CPU port)
+
+-------------------------------------------------------------------
 Fri Jul 26 05:15:35 UTC 2019 - Michal Kubecek <mkubecek@suse.cz>
 
 - Update to new upstream release 5.2

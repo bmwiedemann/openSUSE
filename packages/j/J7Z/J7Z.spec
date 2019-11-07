@@ -1,7 +1,7 @@
 #
 # spec file for package J7Z
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,8 +23,7 @@ Name:           J7Z
 Version:        1.4.2
 Release:        0
 Summary:        Java-based P7Zip GUI for data compression and backup
-License:        LGPL-3.0+
-Group:          Productivity/Archiving/Compression
+License:        LGPL-3.0-or-later
 Url:            http://j7z.xavion.name
 Source:         https://downloads.sourceforge.net/project/k7z/J7Z%%20%%28All%%29/%{version}/J7Z-%{version}-src.tar.bz2
 BuildRequires:  ImageMagick
@@ -54,7 +53,6 @@ archives. It allows using archiving profiles and lists.
 %if %{with kf5}
 %package kf5
 Summary:        KF5 service menu for J7Z
-Group:          Productivity/Archiving/Compression
 Requires:       J7Z
 
 %description kf5

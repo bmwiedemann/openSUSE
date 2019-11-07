@@ -609,4 +609,23 @@ Use SPDX format (http://www.spdx.org/licenses). Where there is no suitable short
     <comment>- moved ocaml-rpm-macros from ocaml.spec to separate pkg</comment>
     <requestid>734127</requestid>
   </revision>
+  <revision rev="72" vrev="12">
+    <srcmd5>e83582b86235bf9be95283b9c7addb36</srcmd5>
+    <version>4.05.0</version>
+    <time>1573164858</time>
+    <user>dimstar_suse</user>
+    <comment>- Use ocaml-rpm-macros to decide about native or bytecode build
+- Move ocaml-findlib.rpm.prov_req.attr.sh to ocaml-rpm-macros
+- Provide META files for ocamlfind() provides, which are now
+  created via ocaml-rpm-macros
+- Provide baseversion in ocaml(compiler)/ocaml(ocaml.opt)
+- Preserve fomit-frame-pointer again on ix86
+- Remove usage of USE_INTERP_RESULT, nothing seems to check for it
+- Use results from pkgconfig(x11) for CFLAGS/LDFLAGS
+- Use make_build/make_install, no parallel build yet
+- Remove BYTECCRPATH, NATIVECCRPATH and MKSHAREDLIBRPATH
+- Remove dead code which checked for libasmrun_pic.a (#7595)
+- Remove code that populated compiler-libs</comment>
+    <requestid>745386</requestid>
+  </revision>
 </revisionlist>

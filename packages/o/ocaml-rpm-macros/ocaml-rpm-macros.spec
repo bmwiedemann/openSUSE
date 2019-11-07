@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 Name:           ocaml-rpm-macros
-Version:        20191009
+Version:        20191101
 Release:        0
 Summary:        RPM macros for building OCaml source packages
 License:        GPL-2.0-only
 Group:          Development/Languages/OCaml
 Url:            https://build.opensuse.org/project/show/devel:languages:ocaml
-#
-# keep the following macros in sync with ocaml.spec:
+Source1:        ocaml-findlib.rpm.prov_req.attr.sh
+
 %define do_opt 0
 # macros to be set in prjconf:
 #Macros:
@@ -60,6 +60,17 @@ in ocaml spec files.
 %build
 
 %install
+# map findlib names to rpm Provides/Requires
+tag="ocamlfind"
+mkdir -vp %{buildroot}%{_rpmconfigdir}/fileattrs
+tee %{buildroot}%{_rpmconfigdir}/fileattrs/${tag}.attr <<_EOF_
+%__${tag}_provides %%{_rpmconfigdir}/${tag}.sh -prov
+%__${tag}_requires %%{_rpmconfigdir}/${tag}.sh -req
+%__${tag}_path     ^%%{_libdir}/ocaml/.*/META$|^%%{_libdir}/ocaml/META$
+_EOF_
+#
+tee %{buildroot}%{_rpmconfigdir}/${tag}.sh < %{SOURCE1}
+
 # install OCaml macros
 mkdir -vp %{buildroot}%{_rpmmacrodir}
 tee %{buildroot}%{_rpmmacrodir}/macros.%{name} <<'_EOF_'
@@ -91,8 +102,9 @@ tee %{buildroot}%{_rpmmacrodir}/macros.%{name} <<'_EOF_'
 	> %%{name}.files ;\
 	> %%{name}.files.devel ;\
 	> %%{name}.files.ldsoconf ;\
+	> %%{name}.files.license ;\
 	> %%{name}.files.unhandled ;\
-	for i in \\\
+	for license in \\\
 	COPYING \\\
 	COPYING.txt \\\
 	COPYRIGHT \\\
@@ -103,50 +115,87 @@ tee %{buildroot}%{_rpmmacrodir}/macros.%{name} <<'_EOF_'
 	LICENSE.txt \\\
 	;\
 	do\
-	  test -f "$i" && echo "%%%%license $i" >> %%{name}.files ;\
+%if 0%{?suse_version} > 1315
+	license_macro='license' ;\
+%else
+	license_macro='doc' ;\
+%endif
+	  test -f "${license}" && echo "%%%%${license_macro} ${license}" >> '%%{name}.files.license' ;\
 	done ;\
 	find %%{buildroot}$(ocamlc -where) | sed -ne '\
 	s@^%%{buildroot}@@\
-	/\\/\\(META\\|dune-package\\|opam\\)$/{\
-	w %%{name}.files.devel\
-	s@\\/[^/]\\+$@@\
-	s@^@%%dir @\
-	w %%{name}.files.devel\
-	s@\\/[^/]\\+$@@\
-	w %%{name}.files.devel\
-	d\
-	}\
-	/\\/[^/]\\+\\.\\(a\\|annot\\|cmx\\|cmxa\\|cma\\|cmi\\|cmo\\|cmt\\|cmti\\|exe\\|h\\|js\\|ml\\|mli\\|o\\)$/{\
-	w %%{name}.files.devel\
-	s@\\/[^/]\\+$@@\
-	s@^@%%dir @\
-	w %%{name}.files.devel\
-	s@\\/[^/]\\+$@@\
-	w %%{name}.files.devel\
-	d\
-	}\
-	/\\/[^/]\\+\\.\\(so\\|so.owner\\)$/{\
-	w %%{name}.files\
-	s@\\/[^/]\\+$@@\
-	w %%{name}.files.ldsoconf\
-	s@^@%%dir @\
-	w %%{name}.files\
-	s@\\/[^/]\\+$@@\
-	w %%{name}.files\
-	d\
-	}\
-	/\\/[^/]\\+\\.\\(cmxs\\)$/{\
-	w %%{name}.files\
-	s@\\/[^/]\\+$@@\
-	s@^@%%dir @\
-	w %%{name}.files\
-	s@\\/[^/]\\+$@@\
-	w %%{name}.files\
-	d\
-	}\
+	#\
+	# for findlib, describing a package\
+	/\\/META$/{ b files_devel }\
+	# stub ELF library\
+	/\\/[^/]\\+\\.so$/{       b files_ldsoconf }\
+	# stub ELF library\
+	/\\/[^/]\\+\\.so.owner$/{ b files_ldsoconf }\
+	# ELF archive with object files\
+	/\\/[^/]\\+\\.a$/{     b files_devel }\
+	# OCaml legacy source code annotations, produced via -annot\
+	/\\/[^/]\\+\\.annot$/{ b files_devel }\
+	# OCaml library file with bytecode\
+	/\\/[^/]\\+\\.cma$/{   b files_devel }\
+	# OCaml compiled header file\
+	/\\/[^/]\\+\\.cmi$/{   b files_devel }\
+	# OCaml object file with bytecode\
+	/\\/[^/]\\+\\.cmo$/{   b files_devel }\
+	# OCaml source code annotations, produced via -bin-annot from source files\
+	/\\/[^/]\\+\\.cmt$/{   b files_devel }\
+	# OCaml source code annotations, produced via -bin-annot from header files\
+	/\\/[^/]\\+\\.cmti$/{  b files_devel }\
+	# OCaml object file with native code\
+	/\\/[^/]\\+\\.cmx$/{   b files_devel }\
+	# OCaml library file with native code\
+	/\\/[^/]\\+\\.cmxa$/{  b files_devel }\
+	# ELF shared library with native code\
+	/\\/[^/]\\+\\.cmxs$/{  b files_devel }\
+	# Some helper binary\
+	/\\/[^/]\\+\\.exe$/{   b files_devel }\
+	# C header\
+	/\\/[^/]\\+\\.h$/{     b files_devel }\
+	#\
+	/\\/[^/]\\+\\.js$/{    b files_devel }\
+	# OCaml source code, source file\
+	/\\/[^/]\\+\\.ml$/{    b files_devel }\
+	# OCaml source code, header file\
+	/\\/[^/]\\+\\.mli$/{   b files_devel }\
+	# ELF object file\
+	/\\/[^/]\\+\\.o$/{     b files_devel }\
+	#\
+	/\\/[^/]\\+\\.sml$/{   b files_devel }\
+	#\
+	/\\/dune-package$/{    b files_devel }\
+	#\
+	/\\/opam$/{            b files_devel }\
+	#\
+	# record unknown paths\
 	w %%{name}.files.unhandled\
 	d\
+	#\
+	: files_devel\
+	# full path for file\
+	w %%{name}.files.devel\
+	# tag + dirname\
+	s@\\/[^/]\\+$@@\
+	: tag_dirname\
+	s@^@%%dir @\
+	w %%{name}.files.devel\
+	# parent directory\
+	s@\\/[^/]\\+$@@\
+	w %%{name}.files.devel\
+	d\
+	#\
+	: files_ldsoconf\
+	# full path for file\
+	w %%{name}.files.devel\
+	# dirname for ld.so.conf\
+	s@\\/[^/]\\+$@@\
+	w %%{name}.files.ldsoconf\
+	b tag_dirname\
 	' ;\
+	cat '%%{name}.files.license' >> '%%{name}.files' ; \
 	for i in \\\
 	%%{name}.files \\\
 	%%{name}.files.devel \\\
@@ -238,17 +287,55 @@ ocaml setup.ml -configure \\\
 %ifarch ppc64 ppc64le
 	ulimit -s $((1024 * 64)) ; \
 %endif
+	echo '%%{version}' | tee VERSION ; \
+	dune_for_release= ; \
+	: dune_release_pkgs \
+	if test -n "${dune_release_pkgs}" ; \
+	then \
+		echo "${dune_release_pkgs}" > dune_release_pkgs-%%{name}-%%{version}-%%{release} ; \
+		dune_for_release="--for-release-of-packages=${dune_release_pkgs}" ; \
+	fi ; \
 	dune installed-libraries $OCAML_DUNE_INSTALLED_LIBRARIES_ARGS ; \
-	dune external-lib-deps @install $OCAML_DUNE_EXTERNAL_LIB_DEPS_ARGS ; \
-	dune external-lib-deps @runtest $OCAML_DUNE_EXTERNAL_LIB_DEPS_ARGS ; \
+	dune external-lib-deps \\\
+		${dune_for_release} \\\
+		'@install' \\\
+		$OCAML_DUNE_EXTERNAL_LIB_DEPS_ARGS ; \
+	dune external-lib-deps \\\
+		${dune_for_release} \\\
+		'@runtest' \\\
+		$OCAML_DUNE_EXTERNAL_LIB_DEPS_ARGS ; \
+	dune external-lib-deps \\\
+		${dune_for_release} \\\
+		'@install' '@runtest' \\\
+		$OCAML_DUNE_EXTERNAL_LIB_DEPS_ARGS \\\
+		| awk '/^-[[:blank:]]/{ printf "BuildRequires:  ocamlfind(%%s)\\n", $2}' | sort -u ; \
 	%%{nil}
 %%ocaml_dune_build \
-	dune build --verbose @install $OCAML_DUNE_BUILD_INSTALL_ARGS
+	dune build \\\
+		--verbose \\\
+		${dune_for_release} \\\
+		%%{?_smp_mflags} \\\
+		'@install' \\\
+		$OCAML_DUNE_BUILD_INSTALL_ARGS
 %%ocaml_dune_install \
 %ifarch ppc64 ppc64le
 	ulimit -s $((1024 * 64)) ; \
 %endif
-	dune install --verbose --destdir=%%{buildroot} $OCAML_DUNE_INSTALL_ARGS ; \
+	dune_for_release= ; \
+	if test -f dune_release_pkgs-%%{name}-%%{version}-%%{release} ; \
+	then \
+		read dune_release_pkgs < dune_release_pkgs-%%{name}-%%{version}-%%{release} ; \
+		dune_for_release="--for-release-of-packages=${dune_release_pkgs}" ; \
+	fi ; \
+	dune install \\\
+		--verbose \\\
+		${dune_for_release} \\\
+		%%{?_smp_mflags} \\\
+		--prefix=%%{_prefix} \\\
+		--libdir=$(ocamlc -where) \\\
+		--destdir=%%{buildroot} \\\
+		${dune_release_pkgs//,/ } \\\
+		$OCAML_DUNE_INSTALL_ARGS ; \
 	rm -rfv %%{buildroot}%%{_prefix}/doc ; \
 	if test -d %%{buildroot}%%{_prefix}/man ; then \
 		mkdir -vp %%{buildroot}%%{_datadir} ; \
@@ -258,12 +345,36 @@ ocaml setup.ml -configure \\\
 %ifarch ppc64 ppc64le
 	ulimit -s $((1024 * 64)) ; \
 %endif
-	dune runtest --verbose $OCAML_DUNE_RUNTEST_ARGS
+	dune_for_release= ; \
+	if test -f dune_release_pkgs-%%{name}-%%{version}-%%{release} ; \
+	then \
+		read dune_release_pkgs < dune_release_pkgs-%%{name}-%%{version}-%%{release} ; \
+		dune_for_release="--for-release-of-packages=${dune_release_pkgs}" ; \
+	fi ; \
+	if dune runtest \\\
+		--verbose \\\
+		${dune_for_release} \\\
+		$OCAML_DUNE_RUNTEST_ARGS ; \
+	then \
+		echo "dune runtest succeeded" ; \
+	else \
+		echo "dune runtest failed" ; \
+		if test -n "${dune_test_tolerate_fail}" ; \
+		then \
+			echo "ignored" ; \
+		else \
+			echo "aborting" ; \
+			exit 1 ; \
+		fi ; \
+	fi
+
 #
 #
 _EOF_
 
 %files
 %{_rpmmacrodir}/*
+%{_rpmconfigdir}/fileattrs
+%attr(755,root,root) %{_rpmconfigdir}/*.sh
 
 %changelog

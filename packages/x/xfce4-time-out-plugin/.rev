@@ -7,4 +7,12 @@
     <comment>Fix upgrade issues</comment>
     <requestid>724716</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5a89f87149f71e191b7add9ba70f12fc</srcmd5>
+    <version>1.1.0</version>
+    <time>1573164989</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>745583</requestid>
+  </revision>
 </revisionlist>

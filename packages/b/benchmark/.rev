@@ -110,4 +110,12 @@
 - Disable gtest part of tests untill new gtest is available</comment>
     <requestid>711652</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>4280a1b7094e36dd5ae157549d3226ca</srcmd5>
+    <version>1.5.0</version>
+    <time>1573164816</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>739945</requestid>
+  </revision>
 </revisionlist>

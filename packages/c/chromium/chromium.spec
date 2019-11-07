@@ -93,6 +93,7 @@ Patch17:        chromium-78-include.patch
 Patch18:        chromium-78-pm-crash.patch
 Patch19:        chromium-78-protobuf-export.patch
 Patch20:        chromium-77-clang.patch
+Patch21:        chromium-old-glibc-noexcept.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches
@@ -281,6 +282,11 @@ WebDriver is an open source tool for automated testing of webapps across many br
 %prep
 %setup -q -n %{rname}-%{version}
 %autopatch -p1
+
+# unpatch the system zlib on old systems
+%if %{with sle_bundles}
+%patch11 -p1 -R
+%endif
 
 # Fix the path to nodejs binary
 mkdir -p third_party/node/linux/node-linux-x64/bin
@@ -573,7 +579,6 @@ gn_system_libraries=(
     opus
     re2
     snappy
-    zlib
 )
 %if %{with system_harfbuzz}
 gn_system_libraries+=(
@@ -585,6 +590,7 @@ gn_system_libraries+=(
 gn_system_libraries+=(
     libwebp
     yasm
+    zlib
 )
 %endif
 %if %{with system_icu}
@@ -659,8 +665,6 @@ myconf_gn+=" rtc_use_pipewire=true rtc_link_pipewire=true"
 # ozone stuff
 %if %{with wayland}
 myconf_gn+=" use_ozone=true use_xkbcommon=true use_system_minigbm=true use_v4lplugin=true use_v4l2_codec=true use_linux_v4l2_only=true"
-%else
-myconf_gn+=" use_vaapi=true"
 %endif
 %if %{with clang}
 myconf_gn+=" is_clang=true clang_base_path=\"/usr\" clang_use_chrome_plugins=false"

@@ -285,7 +285,7 @@ install -d -m 0755 %{buildroot}%{_bindir}
 # sense in that case. So use link to avoid the profile.
 ln -s %{_sbindir}/murmurd %{buildroot}%{_bindir}/murmurd
 install -D -m 0644 scripts/murmur.conf %{buildroot}%{_sysconfdir}/dbus-1/system.d/mumble-server.conf
-install -D -m 0644 scripts/murmur.ini %{buildroot}%{_sysconfdir}/mumble-server.ini
+install -D -m 0640 scripts/murmur.ini %{buildroot}%{_sysconfdir}/mumble-server.ini
 # fix up config file
 sed -i -e 's/^dbus=session/dbus=system/' \
         -e 's/#uname=/uname=mumble-server/' \

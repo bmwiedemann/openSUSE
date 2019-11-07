@@ -18,7 +18,7 @@
 
 
 Name:           mpclient
-Version:        0.32
+Version:        0.33
 Release:        0
 Summary:        A minimalist command line interface to MPD
 License:        GPL-2.0-or-later
@@ -46,7 +46,6 @@ so can be easily used in scripts.
 %meson_install
 install -m 0755 contrib/mpd-pls-handler.sh %{buildroot}%{_bindir}/mpd-pls-handler
 install -m 0755 contrib/mpd-m3u-handler.sh %{buildroot}%{_bindir}/mpd-m3u-handler
-
 install -Dm 0644 contrib/mpc-completion.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
 rm -r %{buildroot}%{_datadir}/doc
 

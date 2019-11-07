@@ -39,8 +39,13 @@
 %endif
 
 %if "%{flavor}" == "openmpi"
+%if 0%{?suse_version} >= 1550
+%define my_suffix  -openmpi1
+%define mpi_flavor  openmpi1
+%else
 %define my_suffix  -openmpi
 %define mpi_flavor  openmpi
+%endif
 %define mpiprefix %{_libdir}/mpi/gcc/%{mpi_flavor}
 %endif
 
@@ -136,16 +141,10 @@ BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(jsoncpp)
-%if 0%{?suse_version} < 1500
-# libav pulls in a conflicting libnetcdf version
-BuildConflicts: libnetcdf7
-BuildConflicts: libavfilter6
-%else
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
-%endif
 BuildRequires:  pkgconfig(libiodbc)
 BuildRequires:  pkgconfig(liblz4) >= 1.7.3
 BuildRequires:  pkgconfig(libpng)
@@ -155,7 +154,7 @@ BuildRequires:  pkgconfig(netcdf)
 %if %{with mpi}
 BuildRequires:  netcdf-%{mpi_flavor}-devel
 %endif
-BuildRequires:  pkgconfig(proj)
+BuildRequires:  pkgconfig(proj) >= 5.0.0
 %if %{with pugixml}
 BuildRequires:  pkgconfig(pugixml)
 %endif
@@ -165,16 +164,12 @@ BuildRequires:  pkgconfig(theora)
 BuildRequires:  pkgconfig(tk)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(zlib)
-%if 0%{?suse_version} >= 1500
 BuildRequires:  libboost_graph-devel
 BuildRequires:  libboost_graph_parallel-devel
 %if %{with mpi}
 BuildRequires:  libboost_mpi-devel
 %endif
 BuildRequires:  libboost_serialization-devel
-%else
-BuildRequires:  boost-devel
-%endif
 
 %description
 VTK is a software system for image processing, 3D graphics, volume
@@ -342,9 +337,7 @@ languages.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
-%if 0%{?suse_version} > 1500
 %patch6 -p1
-%endif
 
 # Replace relative path ../../../../VTKData with %%{_datadir}/vtkdata
 # otherwise it will break on symlinks.

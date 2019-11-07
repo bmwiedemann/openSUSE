@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Nov  6 12:54:09 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.7.85
+  * daemons: support "%xxx"-style interface identifiers in bindspecs
+    (the "server_listen" or similarly-named directives in
+    .cfg files)
+  * client: send fewer logoff calls [KC-1590]
+  * daemons: AF_LOCAL sockets were erroneously owned by root
+    rather than run_as_user [KC-1616]
+  * pyko: avoid circular strong reference from notification
+    to store [KC-1572]
+  * php: add missing successful return value for
+    zif_mapi_vcfstomapi [KC-1487]
+  * client: unbreak translation of newly created store
+    folder names [KC-1607]
+  * dagent: the server_bind_intf option is removed in favor of %xxx
+  * search: put back the old value for limit_results=1000
+
+-------------------------------------------------------------------
 Sun Oct  6 21:21:57 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 8.7.84

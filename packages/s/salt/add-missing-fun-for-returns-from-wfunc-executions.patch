@@ -1,0 +1,36 @@
+From fa957bcb842a29a340a980a03cd8e54b06e7e21b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Wed, 9 Oct 2019 13:03:33 +0100
+Subject: [PATCH] Add missing 'fun' for returns from wfunc executions
+
+---
+ salt/client/ssh/__init__.py | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/salt/client/ssh/__init__.py b/salt/client/ssh/__init__.py
+index 1453430e73..0df918d634 100644
+--- a/salt/client/ssh/__init__.py
++++ b/salt/client/ssh/__init__.py
+@@ -682,6 +682,8 @@ class SSH(object):
+                     data = {'return': data}
+                 if 'id' not in data:
+                     data['id'] = id_
++                if 'fun' not in data:
++                    data['fun'] = fun
+                 data['jid'] = jid  # make the jid in the payload the same as the jid in the tag
+                 self.event.fire_event(
+                     data,
+@@ -797,6 +799,8 @@ class SSH(object):
+                     data = {'return': data}
+                 if 'id' not in data:
+                     data['id'] = id_
++                if 'fun' not in data:
++                    data['fun'] = fun
+                 data['jid'] = jid  # make the jid in the payload the same as the jid in the tag
+                 self.event.fire_event(
+                     data,
+-- 
+2.22.0
+
+

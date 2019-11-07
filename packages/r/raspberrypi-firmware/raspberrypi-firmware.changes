@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Nov  6 13:51:12 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 8e688a443 (2019-11-06):
+  * firmware: Unicam: Request frequency of 250MHz when running camera use cases
+  * firmware: arm_loader: Fix UART unmapping
+  * firmware: uart1: Revert to the old core-frequency-locking method
+    See: #1267
+  * firmware: arm_loader: Provide a sensible device_tree_end default
+    See: #1259
+  * firmware: mmal_ril: Fix size reported on ENOSPC error
+    See: #1269
+  * firmware: hvs: Trigger the EOLn timer at the field rate when interlaced
+    See: #1227
+  * firmware: bootloader_state: Add support for a custom TFTP prefix parameter
+  * firmware: arm_loader: GIC stub => 2711 stu
+    See: #1255
+  * firmware: arm_loader: Add os_prefix option
+    See: raspberrypi/linux#3237
+  * firmware: Add support for arbitrary memory specification
+  * firmware: arm_loader: Fix explicit kernel name handling
+    See: #1277
+  * firmware: Added a new display power mailbox call
+  * firmware: Update display_power gencmd with optional display id
+    See: raspberrypi/linux#3050
+  * firmware: Remove legacy pkgconfig to avoid Mesa conflicts
+    See: raspberrypi/userland#585
+  * firmware: Update display_power gencmd with optional display id
+  * firmware: sysman: Fix unsafe check for h264 being enabled
+    See: popcornmix/omxplayer#749
+  * firmware: platform: Reduce absolute microvolts threshold to 500000
+  * firmware: Loop to init hotplug
+
+-------------------------------------------------------------------
 Fri Oct  4 15:26:53 UTC 2019 - Matthias Brugger <mbrugger@suse.com>
 
 - add RPi4 config options

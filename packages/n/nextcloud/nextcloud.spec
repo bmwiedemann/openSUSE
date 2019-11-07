@@ -49,7 +49,7 @@
 %endif
 
 Name:           nextcloud
-Version:        17.0.0
+Version:        17.0.1
 Release:        0
 Summary:        File hosting service
 License:        AGPL-3.0-only
@@ -61,17 +61,22 @@ Source2:        README
 Source3:        README.SELinux
 Source4:        README.SUSE
 Source5:        robots.txt
+Source10:       %{name}-cron
+Source11:       %{name}-cron.service
+Source12:       %{name}-cron.timer
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %if 0%{?suse_version}
 BuildRequires:  apache2 >= 2.4
+BuildRequires:  cron
 %if 0%{?suse_version} > 1020
 BuildRequires:  fdupes
 %endif
 BuildRequires:  unzip
 %endif
 #
+Requires:       cron
 Requires:       curl
 Requires:       libxml2-2
 Requires:       mysql
@@ -110,6 +115,7 @@ Requires:       php-xmlwriter
 Requires:       php-zip
 Requires:       php-zlib
 Recommends:     sqlite3
+%{?systemd_requires}
 %endif
 # Database connectors:
 Recommends:     php-sqlite
@@ -184,7 +190,16 @@ rm -f ${idir}/indie.json
 %fdupes -s $RPM_BUILD_ROOT/%{apache_serverroot}/%{name}
 %endif
 
+# CronJob
+install -d -m 0755 %{buildroot}%{_sysconfdir}/cron.d
+install -D -m 0644 %{SOURCE10} %{buildroot}%{_sysconfdir}/cron.d/%{name}
+install -D -m 0644 %{SOURCE11} %{buildroot}%{_unitdir}/%{name}-cron.service
+install -D -m 0644 %{SOURCE12} %{buildroot}%{_unitdir}/%{name}-cron.timer
+mkdir -p %{buildroot}%{_sbindir}
+ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}-cron
+
 %pre
+%service_add_pre %{name}-cron.timer %{name}-cron.service
 # avoid fatal php errors, while we are changing files
 # https://github.com/nextcloud
 #
@@ -226,6 +241,7 @@ if [ -x %{ocphp_bin}/php -a -f %{oc_dir}/occ ]; then
 fi
 
 %post
+%service_add_post %{name}-cron.timer %{name}-cron.service
 if [ $1 -eq 1 ]; then
     echo "%{name} First install complete"
 else
@@ -272,12 +288,22 @@ fi
 rm -f %{statedir}/apache_stopped_during_nextcloud_install
 rm -f %{statedir}/occ_maintenance_mode_during_nextcloud_install
 
+%preun
+%service_del_preun %{name}-cron.timer %{name}-cron.service
+
+%postun
+%service_del_postun %{name}-cron.timer %{name}-cron.service
+
 %files
 %defattr(644,root,root,755)
 %exclude %{apache_serverroot}/%{name}/README
 %exclude %{apache_serverroot}/%{name}/README.SUSE
 %exclude %{apache_serverroot}/%{name}/README.SELinux
 %doc README README.SUSE README.SELinux
+%config(noreplace) %{_sysconfdir}/cron.d/%{name}
+%{_sbindir}/rc%{name}-cron
+%{_unitdir}/%{name}-cron.service
+%{_unitdir}/%{name}-cron.timer
 %{apache_serverroot}/%{name}
 %attr(-,wwwrun,www) %{apache_serverroot}/%{name}/occ
 %config(noreplace) %{apache_confdir}/nextcloud.conf

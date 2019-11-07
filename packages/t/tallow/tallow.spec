@@ -17,7 +17,7 @@
 
 
 Name:           tallow
-Version:        16+git20190425.e4b3977
+Version:        19+git20191104.5dfb982
 Release:        0
 Summary:        Temporary IP address ban issuance daemon
 License:        GPL-3.0-or-later

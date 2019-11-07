@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <param>
   <image>obsrepositories:/opensuse/tumbleweed</image>
+  <tags>tumbleweed.nautilus</tags>
   <name>opensuse/ceph/ceph</name>
   <prefix>org.opensuse.ceph</prefix>
   <title>Ceph container image</title>

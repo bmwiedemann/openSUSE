@@ -17,10 +17,10 @@
 #
 
 
-%define version_unconverted 8.7.84
+%define version_unconverted 8.7.85
 
 Name:           kopano
-Version:        8.7.84
+Version:        8.7.85
 Release:        0
 Summary:        Groupware server suite
 License:        AGPL-3.0-only
@@ -67,7 +67,7 @@ BuildRequires:  pkgconfig(xapian-core)
 %if 0%{?suse_version}
 BuildRequires:  fdupes
 %endif
-%if 0%{?fedora_version} || 0%{?centos_version} || 0%{?rhel_version}
+%if 0%{?fedora_version} || 0%{?centos_version}
 BuildRequires:  mysql-devel >= 4.1
 %endif
 %if 0%{?suse_version}
@@ -83,7 +83,7 @@ BuildRequires:  pwdutils
 %if !0%{?kc_phpconfig:1}
 	%define kc_phpconfig php-config
 %endif
-%define phpextdir	%(%kc_phpconfig --extension-dir)
+%define phpextdir %(%kc_phpconfig --extension-dir)
 
 %description
 Kopano provides email storage on the server side and brings its own
@@ -98,6 +98,9 @@ management) can be handled by the software as well.
 Summary:        Hierarchial Storage Management for the Kopano Core platform
 Group:          Productivity/Networking/Email/Servers
 Requires:       kopano-lang = %version
+%if 0%{?suse_version} || 0%{?fedora_version}
+Recommends:     kopano-python-utils = %version
+%endif
 
 %description archiver
 The Kopano Archiver provides a Hierarchical Storage Management (HSM)
@@ -119,15 +122,24 @@ Some kopano commands offer bash completion, but it is an optional
 feature.
 
 %package client
-Summary:        Kopano MAPI provider library
+Summary:        Kopano client utilities and MAPI provider plugins
 Group:          Productivity/Networking/Email/Servers
-Requires:       kopano-common = %version
+Requires(pre):  kopano-common = %version
 Requires:       kopano-lang = %version
+Provides:       kopano-contacts = %version-%release
+Obsoletes:      kopano-contacts < %version-%release
+Provides:       kopano-utils = %version-%release
+Obsoletes:      kopano-utils < %version-%release
 
 %description client
-Library which provides the main MAPI service to interface with a
-Kopano server. This package is required by all Kopano client
-programs.
+The Kopano client-side programs and plugins.
+
+* Command-line clients to control and check the Kopano server, server
+  database, and mailbox settings.
+* Plugin which provides the main MAPI service that will interface
+  with a Kopano server.
+* Additional MAPI provider which finds all contact folders of a user
+  and adds the contents transparently into the MAPI addrbook.
 
 %package common
 Summary:        Shared files for Kopano Core services
@@ -141,8 +153,10 @@ Requires:       logrotate
 Requires(pre):  %_sbindir/groupadd
 Requires(pre):  %_sbindir/useradd
 %if 0%{?distro_without_intelligent_package_manager}
+Obsoletes:      libkcarchivercore0
 Obsoletes:      libkchl0
 Obsoletes:      libkcmapi0
+Obsoletes:      libkcrosie0
 Obsoletes:      libkcservice0
 Obsoletes:      libkcsoapclient0
 Obsoletes:      libkcsoapserver0
@@ -160,20 +174,10 @@ Kopano Groupware Core:
 * Logrotate definitions for GWC daemons
 * Apparmor definitions for GWC daemons
 
-%package contacts
-Summary:        MAPI provider adding contact folders in the addressbook
-Group:          Productivity/Networking/Email/Servers
-Requires:       kopano-client = %version
-Requires:       kopano-common = %version
-
-%description contacts
-An additional MAPI provider which finds all contact folders of a user
-and adds the contents transparently into the MAPI addrbook.
-
 %package dagent
 Summary:        E-Mail Delivery Agent for the Kopano platform
 Group:          Productivity/Networking/Email/Servers
-Requires:       kopano-common
+Requires(pre):  kopano-common = %version
 Requires:       kopano-dagent-pytils >= 8.7.80.997
 Requires:       kopano-lang = %version
 %if 0%{?suse_version} || 0%{?fedora_version}
@@ -190,11 +194,9 @@ Summary:        C++ development files for Kopano Core
 Group:          Development/Libraries/C and C++
 Requires:       kopano-common = %version
 Requires:       libkcarchiver0 = %version-%release
-Requires:       libkcarchivercore0 = %version-%release
 Requires:       libkcfreebusy0 = %version-%release
 Requires:       libkcicalmapi0 = %version-%release
 Requires:       libkcinetmapi0 = %version-%release
-Requires:       libkcrosie0 = %version-%release
 Requires:       libkcserver0 = %version-%release
 Requires:       libkcsoap0 = %version-%release
 Requires:       libkcutil0 = %version-%release
@@ -206,7 +208,7 @@ Development files to create programs for use with Kopano Core.
 %package gateway
 Summary:        POP3 and IMAP Gateway for Kopano Core
 Group:          Productivity/Networking/Email/Servers
-Requires:       kopano-common
+Requires(pre):  kopano-common = %version
 
 %description gateway
 The gateway enables other e-mail clients to connect through POP3 or
@@ -218,7 +220,7 @@ IMAPS.
 %package ical
 Summary:        ICal and CalDAV Gateway for Kopano Core
 Group:          Productivity/Networking/Email/Servers
-Requires:       kopano-common
+Requires(pre):  kopano-common = %version
 
 %description ical
 The iCal/CalDAV gateway enables users to retrieve their calendar
@@ -284,7 +286,7 @@ between IMAP mailboxes (including Kopano).
 %package monitor
 Summary:        Quota monitor for Kopano Core
 Group:          Productivity/Networking/Email/Servers
-Requires:       kopano-common
+Requires(pre):  kopano-common = %version
 
 %description monitor
 Regularly checks stores for total usage. If a quota limit has been
@@ -293,7 +295,7 @@ exceeded, an e-mail will be internally sent to this account.
 %package server
 Summary:        Server component for Kopano Core
 Group:          Productivity/Networking/Email/Servers
-Requires:       kopano-common = %version
+Requires(pre):  kopano-common = %version
 # Needed for createstore scripts' functionality
 Requires:       kopano-utils
 # dlopened:
@@ -307,12 +309,12 @@ server to use for storage.
 %package spooler
 Summary:        E-mail Spooler for Kopano Core
 Group:          Productivity/Networking/Email/Servers
-Requires:       kopano-common
+Requires(pre):  kopano-common = %version
 Requires:       kopano-dagent-pytils >= 8.7.80.997
 Requires:       kopano-lang = %version
 %if 0%{?suse_version} || 0%{?fedora_version}
 # kcpyplug is dlopened
-Requires:       libkcpyplug0 = %version
+Recommends:     libkcpyplug0 = %version
 %endif
 
 %description spooler
@@ -330,25 +332,11 @@ statistics submissions from kopano-dagent, kopano-spooler and
 kopano-server and stores them in a round-robin database from which
 graphs can be created at a later time with rrdgraph(1).
 
-%package utils
-Summary:        Admin command-line utils for Kopano Core
-Group:          Productivity/Networking/Email/Servers
-
-%description utils
-Command-line clients to control and check the Kopano server.
-
 %package -n libkcarchiver0
 Summary:        Library with shared Kopano archiver functionality
 Group:          System/Libraries
 
 %description -n libkcarchiver0
-Library with shared archiver functionality for Kopano Core.
-
-%package -n libkcarchivercore0
-Summary:        Library with shared Kopano archiver functionality
-Group:          System/Libraries
-
-%description -n libkcarchivercore0
 Library with shared archiver functionality for Kopano Core.
 
 %package -n libkcfreebusy0
@@ -396,15 +384,6 @@ dagent/spooler. It is controlled via the "plugin_enable" directive in
 the dagent/spooler config file. Multithreading will be turned OFF
 when using this plugin.
 
-%package -n libkcrosie0
-Summary:        Kopano HTML sanitizer interface
-Group:          System/Libraries
-
-%description -n libkcrosie0
-This library contains the API to filter HTML mail using libtidy;
-specifically, it contains the definitions which tags and attributes
-to retain.
-
 %package -n libkcserver0
 Summary:        The Kopano Server library
 Group:          System/Libraries
@@ -445,10 +424,8 @@ with certain messaging servers.
 
 %package -n php-mapi
 Summary:        PHP bindings for MAPI
-# php-ext is the one thing that can also request the "ZCONTACTS" provider
 Group:          Development/Languages/PHP
 Requires:       kopano-client = %version
-Requires:       kopano-contacts = %version
 Obsoletes:      php5-mapi
 Provides:       php5-mapi
 
@@ -511,15 +488,6 @@ cp -a RELNOTES.txt "$b/%_docdir/kopano/"
 rm -Rfv "$b/%_libdir/libkcpyconv.so" "$b/%_libdir/libkcpydirector.so" "$b/%_libdir/libkcpyplug.so"
 rm -Rfv "$b/%_libdir/libkcindex.so"
 
-%if "%_repository" == "RHEL_7_PHP_56"
-mkdir -p "$b/%_prefix/lib/systemd/system/kopano-dagent.service.d"
-cat >"$b/%_prefix/lib/systemd/system/kopano-dagent.service.d/scl.conf" <<-EOF
-	[Service]
-	Environment=X_SCLS=rh-php56
-	Environment=LD_LIBRARY_PATH=/opt/rh/rh-php56/root/usr/lib64
-	Environment=PATH=/usr/local/sbin:/usr/local/bin:/opt/rh/rh-php56/root/usr/sbin:/opt/rh/rh-php56/root/usr/bin:/usr/sbin:/usr/bin
-EOF
-%endif
 %if "%_repository" == "RHEL_7_PHP_70"
 mkdir -p "$b/%_prefix/lib/systemd/system/kopano-dagent.service.d"
 cat >"$b/%_prefix/lib/systemd/system/kopano-dagent.service.d/scl.conf" <<-EOF
@@ -583,9 +551,6 @@ if [ ! -e "%_sysconfdir/sysconfig/kopano" -a \
 	mv -v "%_sysconfdir/sysconfig/kopano.rpmsave" \
 		"%_sysconfdir/sysconfig/kopano"
 fi
-
-%post   contacts -p /sbin/ldconfig
-%postun contacts -p /sbin/ldconfig
 
 %pre dagent
 %{?_unitdir:%{?suse_version:%service_add_pre kopano-dagent.service}}
@@ -824,8 +789,6 @@ chown -Rh kopano:kopano /var/log/kopano 2>/dev/null || :
 
 %post   -n libkcarchiver0 -p /sbin/ldconfig
 %postun -n libkcarchiver0 -p /sbin/ldconfig
-%post   -n libkcarchivercore0 -p /sbin/ldconfig
-%postun -n libkcarchivercore0 -p /sbin/ldconfig
 %post   -n libkcfreebusy0 -p /sbin/ldconfig
 %postun -n libkcfreebusy0 -p /sbin/ldconfig
 %post   -n libkcicalmapi0 -p /sbin/ldconfig
@@ -834,8 +797,6 @@ chown -Rh kopano:kopano /var/log/kopano 2>/dev/null || :
 %postun -n libkcinetmapi0 -p /sbin/ldconfig
 %post   -n libkcpyplug0 -p /sbin/ldconfig
 %postun -n libkcpyplug0 -p /sbin/ldconfig
-%post   -n libkcrosie0 -p /sbin/ldconfig
-%postun -n libkcrosie0 -p /sbin/ldconfig
 %post   -n libkcserver0 -p /sbin/ldconfig
 %postun -n libkcserver0 -p /sbin/ldconfig
 %post   -n libkcsoap0 -p /sbin/ldconfig
@@ -866,185 +827,15 @@ fi
 %_sbindir/kopano-archiver
 %_mandir/man5/kopano-archiver.cfg.5*
 %_mandir/man8/kopano-archiver.8*
-%dir %_docdir/kopano
-%dir %_docdir/kopano/example-config
+%dir %_docdir/kopano/
+%dir %_docdir/kopano/example-config/
 %_docdir/kopano/example-config/archiver.cfg
 
 %files bash-completion
 %defattr(-,root,root)
 %_datadir/bash-completion/
 
-%files client -f kopano.lang
-%defattr(-,root,root)
-%dir %_prefix/lib/mapi.d
-%_prefix/lib/mapi.d/kopano.inf
-%exclude %_datadir/locale
-%dir %_libdir/kopano
-%_libdir/kopano/libkcclient.so
-
-%files common
-%defattr(-,root,root)
-%config(noreplace) %_sysconfdir/logrotate.d/*
-%doc AGPL-3
-%dir %_prefix/lib/systemd/
-%dir %_prefix/lib/systemd/system/
-%_prefix/lib/sysusers.d/
-%_prefix/lib/tmpfiles.d/
-%_mandir/man5/kopano-coredump.5*
-%_mandir/man7/kopano.7*
-%_mandir/man7/mapi.7*
-%attr(0750,kopano,kopano) %dir %_localstatedir/lib/kopano
-%attr(0750,kopano,kopano) %dir %_localstatedir/lib/kopano/empty
-%attr(0750,kopano,kopano) %dir %_localstatedir/log/kopano/
-%dir %_docdir/kopano
-%_docdir/kopano/RELNOTES.txt
-%dir %_docdir/kopano/example-config
-%dir %_docdir/kopano/example-config/apparmor.d/
-%_docdir/kopano/example-config/apparmor.d/*.aa
-
-%files contacts
-%defattr(-,root,root)
-%dir %_prefix/lib/mapi.d
-%_prefix/lib/mapi.d/zcontacts.inf
-%dir %_libdir/kopano
-%_libdir/kopano/libkccontacts.so
-
-%files dagent
-%defattr(-,root,root)
-%_sbindir/kopano-dagent
-%_prefix/lib/systemd/system/kopano-dagent.service
-%if "%_repository" == "RHEL_7_PHP_56" || "%_repository" == "RHEL_7_PHP_70" || "%_repository" == "RHEL_7_PHP_71"
-%_prefix/lib/systemd/system/kopano-dagent.service.d/
-%endif
-%_mandir/man*/kopano-dagent.*
-%attr(0750,kopano,kopano) %dir %_localstatedir/lib/kopano/
-%attr(0750,kopano,kopano) %_localstatedir/lib/kopano/autorespond/
-%attr(0750,kopano,kopano) %dir %_localstatedir/log/kopano/
-%dir %_docdir/kopano
-%dir %_docdir/kopano/example-config
-%_docdir/kopano/example-config/autorespond
-%_docdir/kopano/example-config/dagent.cfg
-%dir %_docdir/kopano/example-config/apparmor.d/
-%_docdir/kopano/example-config/apparmor.d/usr.sbin.kopano-dagent
-
-%files devel
-%defattr(-,root,root)
-%_includedir/*
-%_libdir/libkcfreebusy.so
-%_libdir/libkcicalmapi.so
-%_libdir/libkcinetmapi.so
-%_libdir/libmapi.so
-%_libdir/libkcarchivercore.so
-%_libdir/libkcarchiver.so
-%_libdir/libkcrosie.so
-%_libdir/libkcserver.so
-%_libdir/libkcsoap.so
-%_libdir/libkcutil.so
-%_libdir/pkgconfig/*
-%_datadir/gdb/
-
-%files gateway
-%defattr(-,root,root)
-%_sbindir/kopano-gateway
-%_prefix/lib/systemd/system/kopano-gateway.service
-%_mandir/man*/kopano-gateway.*
-%attr(0750,kopano,kopano) %dir %_localstatedir/log/kopano/
-%dir %_docdir/kopano
-%dir %_docdir/kopano/example-config
-%_docdir/kopano/example-config/gateway.cfg
-
-%files ical
-%defattr(-,root,root)
-%_sbindir/kopano-ical
-%_prefix/lib/systemd/system/kopano-ical.service
-%_mandir/man*/kopano-ical.*
-%attr(0750,kopano,kopano) %dir %_localstatedir/log/kopano/
-%dir %_docdir/kopano
-%dir %_docdir/kopano/example-config
-%_docdir/kopano/example-config/ical.cfg
-
-%files indexer
-%defattr(-,root,root)
-%dir %_libexecdir/kopano
-%_libexecdir/kopano/kopano-indexd
-%_mandir/man8/kopano-indexd.8*
-
-%files lang -f kopano.lang
-%defattr(-,root,root)
-
-%files migration-imap
-%defattr(-,root,root)
-%_bindir/kopano-migration-imap
-
-%files monitor
-%defattr(-,root,root)
-%dir %_sysconfdir/kopano
-%config %_sysconfdir/kopano/quotamail
-%_sbindir/kopano-monitor
-%_prefix/lib/systemd/system/kopano-monitor.service
-%_mandir/man*/kopano-monitor.*
-%attr(0750,kopano,kopano) %dir %_localstatedir/log/kopano/
-%dir %_docdir/kopano
-%dir %_docdir/kopano/example-config
-%_docdir/kopano/example-config/monitor.cfg
-
-%files server
-%defattr(-,root,root)
-%dir %_prefix/lib/kopano/
-%_prefix/lib/kopano/userscripts/
-%dir %_libexecdir/kopano/
-%_libexecdir/kopano/kscriptrun
-%_sbindir/kopano-server
-%dir %_libdir/kopano
-%_libdir/kopano/libkcserver-[a-z]*.so
-%_prefix/lib/systemd/system/kopano-server.service
-%_mandir/man*/kopano-server.*
-%_mandir/man*/kopano-ldap.cfg.*
-%_mandir/man*/kopano-unix.cfg.*
-%attr(0750,kopano,kopano) %dir %_localstatedir/lib/kopano/
-%attr(0750,kopano,kopano) %dir %_localstatedir/log/kopano/
-%dir %_datadir/kopano
-%_datadir/kopano/ldap.active-directory.cfg
-%_datadir/kopano/ldap.openldap.cfg
-%_datadir/kopano/ldap.propmap.cfg
-%dir %_docdir/kopano
-%_docdir/kopano/audit-parse.pl
-%_docdir/kopano/createuser.dotforward
-%_docdir/kopano/db-calc-storesize
-%_docdir/kopano/db-convert-attachments-to-files
-%_docdir/kopano/db-remove-orphaned-attachments
-%dir %_docdir/kopano/example-config
-%_docdir/kopano/example-config/ldap.cfg
-%_docdir/kopano/example-config/server.cfg
-%_docdir/kopano/example-config/unix.cfg
-%_docdir/kopano/ldap-switch-sendas.pl
-%_docdir/kopano/ssl-certificates.sh
-%_docdir/kopano/kopano.ldif
-%_docdir/kopano/kopano.schema
-%dir %_docdir/kopano/example-config/apparmor.d/
-%_docdir/kopano/example-config/apparmor.d/usr.sbin.kopano-server
-
-%files spooler
-%defattr(-,root,root)
-%_sbindir/kopano-spooler
-%_prefix/lib/systemd/system/kopano-spooler.service
-%_mandir/man*/kopano-spooler.*
-%attr(0750,kopano,kopano) %dir %_localstatedir/lib/kopano/
-%attr(0750,kopano,kopano) %dir %_localstatedir/log/kopano/
-%dir %_docdir/kopano
-%dir %_docdir/kopano/example-config
-%_docdir/kopano/example-config/spooler.cfg
-
-%files statsd
-%_prefix/lib/systemd/system/kopano-statsd.service
-%dir %_libexecdir/kopano/
-%_libexecdir/kopano/kopano-statsd
-%_mandir/man*/kopano-statsd.*
-%dir %_docdir/kopano
-%dir %_docdir/kopano/example-config
-%_docdir/kopano/example-config/statsd.cfg
-
-%files utils
+%files client
 %defattr(-,root,root)
 %_bindir/kopano-fsck
 %_bindir/kopano-ibrule
@@ -1065,19 +856,174 @@ fi
 %_mandir/man*/kopano-srvadm.*
 %_mandir/man*/kopano-stats.*
 %_mandir/man*/kopano-storeadm.*
-%dir %_libexecdir/kopano
+%dir %_libexecdir/kopano/
+%_libexecdir/kopano/eidprint
 %_libexecdir/kopano/mapitime
-%dir %_docdir/kopano
-%dir %_docdir/kopano/example-config
+%dir %_docdir/kopano/
+%dir %_docdir/kopano/example-config/
 %_docdir/kopano/example-config/admin.cfg
+%dir %_prefix/lib/mapi.d/
+%_prefix/lib/mapi.d/kopano.inf
+%_prefix/lib/mapi.d/zcontacts.inf
+%exclude %_datadir/locale/
+%dir %_libdir/kopano/
+%_libdir/kopano/libkcclient.so
+%_libdir/kopano/libkccontacts.so
+
+%files common
+%defattr(-,root,root)
+%config(noreplace) %_sysconfdir/logrotate.d/*
+%doc AGPL-3
+%dir %_prefix/lib/systemd/
+%dir %_prefix/lib/systemd/system/
+%_prefix/lib/sysusers.d/
+%_prefix/lib/tmpfiles.d/
+%_mandir/man5/kopano-coredump.5*
+%_mandir/man7/kopano.7*
+%_mandir/man7/mapi.7*
+%attr(0750,kopano,kopano) %dir %_localstatedir/lib/kopano/
+%attr(0750,kopano,kopano) %dir %_localstatedir/log/kopano/
+%dir %_docdir/kopano/
+%_docdir/kopano/RELNOTES.txt
+%dir %_docdir/kopano/example-config/
+%dir %_docdir/kopano/example-config/apparmor.d/
+%_docdir/kopano/example-config/apparmor.d/*.aa
+
+%files dagent
+%defattr(-,root,root)
+%_sbindir/kopano-dagent
+%_prefix/lib/systemd/system/kopano-dagent.service
+%if "%_repository" == "RHEL_7_PHP_56" || "%_repository" == "RHEL_7_PHP_70" || "%_repository" == "RHEL_7_PHP_71"
+%_prefix/lib/systemd/system/kopano-dagent.service.d/
+%endif
+%_mandir/man*/kopano-dagent.*
+%attr(0750,kopano,kopano) %dir %_localstatedir/lib/kopano/
+%attr(0750,kopano,kopano) %_localstatedir/lib/kopano/autorespond/
+%attr(0750,kopano,kopano) %dir %_localstatedir/log/kopano/
+%dir %_docdir/kopano/
+%dir %_docdir/kopano/example-config/
+%_docdir/kopano/example-config/autorespond
+%_docdir/kopano/example-config/dagent.cfg
+%dir %_docdir/kopano/example-config/apparmor.d/
+%_docdir/kopano/example-config/apparmor.d/usr.sbin.kopano-dagent
+
+%files devel
+%defattr(-,root,root)
+%_includedir/*
+%_libdir/libkcfreebusy.so
+%_libdir/libkcicalmapi.so
+%_libdir/libkcinetmapi.so
+%_libdir/libmapi.so
+%_libdir/libkcarchiver.so
+%_libdir/libkcserver.so
+%_libdir/libkcsoap.so
+%_libdir/libkcutil.so
+%_libdir/pkgconfig/*
+%_datadir/gdb/
+
+%files gateway
+%defattr(-,root,root)
+%_sbindir/kopano-gateway
+%_prefix/lib/systemd/system/kopano-gateway.service
+%_mandir/man*/kopano-gateway.*
+%attr(0750,kopano,kopano) %dir %_localstatedir/log/kopano/
+%dir %_docdir/kopano/
+%dir %_docdir/kopano/example-config/
+%_docdir/kopano/example-config/gateway.cfg
+
+%files ical
+%defattr(-,root,root)
+%_sbindir/kopano-ical
+%_prefix/lib/systemd/system/kopano-ical.service
+%_mandir/man*/kopano-ical.*
+%attr(0750,kopano,kopano) %dir %_localstatedir/log/kopano/
+%dir %_docdir/kopano/
+%dir %_docdir/kopano/example-config/
+%_docdir/kopano/example-config/ical.cfg
+
+%files indexer
+%defattr(-,root,root)
+%dir %_libexecdir/kopano/
+%_libexecdir/kopano/kopano-indexd
+%_mandir/man8/kopano-indexd.8*
+
+%files lang -f kopano.lang
+%defattr(-,root,root)
+
+%files migration-imap
+%defattr(-,root,root)
+%_bindir/kopano-migration-imap
+
+%files monitor
+%defattr(-,root,root)
+%dir %_sysconfdir/kopano/
+%config %_sysconfdir/kopano/quotamail
+%_sbindir/kopano-monitor
+%_prefix/lib/systemd/system/kopano-monitor.service
+%_mandir/man*/kopano-monitor.*
+%attr(0750,kopano,kopano) %dir %_localstatedir/log/kopano/
+%dir %_docdir/kopano/
+%dir %_docdir/kopano/example-config/
+%_docdir/kopano/example-config/monitor.cfg
+
+%files server
+%defattr(-,root,root)
+%dir %_prefix/lib/kopano/
+%_prefix/lib/kopano/userscripts/
+%dir %_libexecdir/kopano/
+%_libexecdir/kopano/kscriptrun
+%_sbindir/kopano-server
+%dir %_libdir/kopano/
+%_libdir/kopano/libkcserver-[a-z]*.so
+%_prefix/lib/systemd/system/kopano-server.service
+%_mandir/man*/kopano-server.*
+%_mandir/man*/kopano-ldap.cfg.*
+%_mandir/man*/kopano-unix.cfg.*
+%attr(0750,kopano,kopano) %dir %_localstatedir/lib/kopano/
+%attr(0750,kopano,kopano) %dir %_localstatedir/log/kopano/
+%dir %_datadir/kopano/
+%_datadir/kopano/ldap.active-directory.cfg
+%_datadir/kopano/ldap.openldap.cfg
+%_datadir/kopano/ldap.propmap.cfg
+%dir %_docdir/kopano/
+%_docdir/kopano/audit-parse.pl
+%_docdir/kopano/createuser.dotforward
+%_docdir/kopano/db-calc-storesize
+%_docdir/kopano/db-convert-attachments-to-files
+%_docdir/kopano/db-remove-orphaned-attachments
+%dir %_docdir/kopano/example-config/
+%_docdir/kopano/example-config/ldap.cfg
+%_docdir/kopano/example-config/server.cfg
+%_docdir/kopano/example-config/unix.cfg
+%_docdir/kopano/ldap-switch-sendas.pl
+%_docdir/kopano/ssl-certificates.sh
+%_docdir/kopano/kopano.ldif
+%_docdir/kopano/kopano.schema
+%dir %_docdir/kopano/example-config/apparmor.d/
+%_docdir/kopano/example-config/apparmor.d/usr.sbin.kopano-server
+
+%files spooler
+%defattr(-,root,root)
+%_sbindir/kopano-spooler
+%_prefix/lib/systemd/system/kopano-spooler.service
+%_mandir/man*/kopano-spooler.*
+%attr(0750,kopano,kopano) %dir %_localstatedir/log/kopano/
+%dir %_docdir/kopano/
+%dir %_docdir/kopano/example-config/
+%_docdir/kopano/example-config/spooler.cfg
+
+%files statsd
+%_prefix/lib/systemd/system/kopano-statsd.service
+%dir %_libexecdir/kopano/
+%_libexecdir/kopano/kopano-statsd
+%_mandir/man*/kopano-statsd.*
+%dir %_docdir/kopano/
+%dir %_docdir/kopano/example-config/
+%_docdir/kopano/example-config/statsd.cfg
 
 %files -n libkcarchiver0
 %defattr(-,root,root)
 %_libdir/libkcarchiver.so.0*
-
-%files -n libkcarchivercore0
-%defattr(-,root,root)
-%_libdir/libkcarchivercore.so.0*
 
 %files -n libkcfreebusy0
 %defattr(-,root,root)
@@ -1101,10 +1047,6 @@ fi
 %_libdir/libkcpyplug.so.0*
 %endif
 
-%files -n libkcrosie0
-%defattr(-,root,root)
-%_libdir/libkcrosie.so.0*
-
 %files -n libkcserver0
 %defattr(-,root,root)
 %_libdir/libkcserver.so.0*
@@ -1123,35 +1065,24 @@ fi
 
 %files -n php-mapi
 %defattr(-,root,root)
-%if 0%{?fedora_version} || 0%{?centos_version} || 0%{?rhel_version}
-%if "%_repository" == "RHEL_6_PHP_56" || "%_repository" == "RHEL_7_PHP_56"
-%dir /etc/opt/rh/rh-php56/php.d
-%config(noreplace) /etc/opt/rh/rh-php56/php.d/mapi.ini
-%else
+%if 0%{?fedora_version} || 0%{?centos_version}
 %if "%_repository" == "RHEL_6_PHP_70" || "%_repository" == "RHEL_7_PHP_70"
-%dir /etc/opt/rh/rh-php70/php.d
+%dir /etc/opt/rh/rh-php70/php.d/
 %config(noreplace) /etc/opt/rh/rh-php70/php.d/mapi.ini
 %else
 %if "%_repository" == "RHEL_7_PHP_71"
-%dir /etc/opt/rh/rh-php71/php.d
+%dir /etc/opt/rh/rh-php71/php.d/
 %config(noreplace) /etc/opt/rh/rh-php71/php.d/mapi.ini
 %else
-%dir %_sysconfdir/php.d
+%dir %_sysconfdir/php.d/
 %config(noreplace) %_sysconfdir/php.d/mapi.ini
 %endif
 %endif
 %endif
-%endif
-%if 0%{?suse_version}
 %if 0%{?suse_version} >= 1330 || "%_repository" == "SLE_12_PHP7" || "%_repository" == "openSUSE_Leap_42.3"
-%dir %_sysconfdir/php7
-%dir %_sysconfdir/php7/conf.d
+%dir %_sysconfdir/php7/
+%dir %_sysconfdir/php7/conf.d/
 %config(noreplace) %_sysconfdir/php7/conf.d/mapi.ini
-%else
-%dir %_sysconfdir/php5
-%dir %_sysconfdir/php5/conf.d
-%config(noreplace) %_sysconfdir/php5/conf.d/mapi.ini
-%endif
 %endif
 %phpextdir/mapi*
 %dir %_datadir/kopano/
@@ -1171,7 +1102,7 @@ fi
 %python3_sitearch/*icalmapi.*
 %python3_sitearch/*inetmapi.*
 %python3_sitearch/*libfreebusy.*
-%if 0%{?fedora_version}
+%if 0%{?fedora_version} || 0%{?centos_version}
 %python3_sitelib/__*/MAPICore.*
 %python3_sitelib/__*/icalmapi.*
 %python3_sitelib/__*/inetmapi.*

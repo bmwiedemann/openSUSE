@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <param>
-  <image>obsrepositories:/suse/sle15#15.1</image>
+  <image>obsrepositories:/ses/6/ceph/ceph#sle15.1.nautilus</image>
+  <tags>sle15.1.nautilus</tags>
   <name>ses/6/rook/ceph</name>
   <prefix>com.suse.ses</prefix>
   <title>SUSE Enterprise Storage 6.0</title>

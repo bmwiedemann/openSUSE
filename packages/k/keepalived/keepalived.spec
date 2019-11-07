@@ -43,7 +43,7 @@
 %bcond_without json
 
 Name:           keepalived
-Version:        2.0.17
+Version:        2.0.19
 Release:        0
 Summary:        A keepalive facility for Linux
 License:        GPL-2.0-or-later
@@ -73,6 +73,7 @@ BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libnfnetlink)
 %if %{with keepalived_nftables}
 BuildRequires:  pkgconfig(libnftables)
+BuildRequires:  pkgconfig(libnftnl)
 %endif
 BuildRequires:  pkgconfig(popt)
 BuildRequires:  pkgconfig(xtables)
@@ -134,16 +135,16 @@ export CFLAGS="%optflags -DOPENSSL_NO_SSL_INTERN"
   --with-init=systemd \
   --with-systemdsystemunitdir="%{_unitdir}" \
   %endif
-  --enable-snmp-checker \
-  --enable-snmp-rfc \
-  --enable-snmp-rfcv2 \
-  --enable-snmp-rfcv3 \
   --enable-sha1 \
   --enable-routes \
+  --enable-iptables \
+  --enable-dynamic-linking \
   --enable-libiptc \
+  --enable-libiptc-dynamic \
   --enable-libipset \
-  --disable-libipset-dynamic \
+  --enable-libipset-dynamic \
   --enable-libnl \
+  --enable-libnl-dynamic \
   --enable-stacktrace \
   --enable-json
 make %{?_smp_mflags}

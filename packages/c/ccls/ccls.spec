@@ -27,9 +27,9 @@ Group:          Development/Tools/IDE
 
 URL:            https://github.com/MaskRay/ccls
 Source0:        %{URL}/archive/%{version}/%{name}-%{version}.tar.gz
-# FIXME: drop this patch on the next release after
-# https://github.com/MaskRay/ccls/pull/518 gets merged
-Patch0:         0001-Fix-builds-for-LLVM-9-for-LLVM-build-without-BUILD_S.patch
+# FIXME: drop this patch on the next release after 0.20190823.4
+# cherry picked from: https://github.com/MaskRay/ccls/pull/519
+Patch0:         0001-cmake-support-CLANG_LINK_CLANG_DYLIB.patch
 
 BuildRequires:  clang-devel >= 7.0
 BuildRequires:  cmake >= 3.8
@@ -70,7 +70,7 @@ rm -rf third_party/rapidjson
 
 %build
 pushd .
-%cmake -DUSE_SYSTEM_RAPIDJSON=ON
+%cmake -DUSE_SYSTEM_RAPIDJSON=ON -DCLANG_LINK_CLANG_DYLIB=on
 
 # ccls currently consumes ~1GB of memory during compilation per thread
 %limit_build -m 1500

@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="version">4</param>
-    <param name="versionformat">16+git%cd.%h</param>
+    <param name="version">18</param>
+    <param name="versionformat">19+git%cd.%h</param>
     <param name="url">git://github.com/clearlinux/tallow.git</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>

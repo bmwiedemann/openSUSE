@@ -137,6 +137,7 @@ Patch103:       nodejs-sle11-python26-check_output.patch
 # instead of /usr
 Patch104:       npm_search_paths.patch
 Patch105:       skip_test_on_lowmem.patch
+Patch106:       skip_no_console.patch
 
 Patch120:       flaky_test_rerun.patch
 
@@ -331,6 +332,7 @@ tar Jxvf %{SOURCE11}
 %endif
 %patch104 -p1
 %patch105 -p1
+%patch106 -p1
 %patch120 -p1
 %patch200 -p1
 

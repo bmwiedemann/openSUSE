@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov  3 10:01:00 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 3.8.0
+  * Added support for FUSE_LSEEK operation which can be used to
+    report holes in sparse files.
+
+-------------------------------------------------------------------
 Tue Jul  9 12:47:17 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 3.6.2

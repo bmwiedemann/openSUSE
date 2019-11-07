@@ -29,6 +29,7 @@ Source:         https://github.com/nulloy/nulloy/archive/%{rev}.tar.gz#/%{name}-
 Patch0:         0001-configurable-library-directory.patch
 Patch1:         0001-vlc-phonon-plugins-update.patch
 Patch2:         0001-pkg_check_lib-fix.patch
+Patch3:         reproducible.patch
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libQt5Gui-private-headers-devel

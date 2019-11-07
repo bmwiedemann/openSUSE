@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov  5 16:00:07 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Build .a files with -ffat-lto-objects to make them useful
+
+-------------------------------------------------------------------
 Sun Feb 26 15:59:53 CET 2012 - dmueller@suse.de
 
 - disable build on platforms not supported 

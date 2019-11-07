@@ -2642,4 +2642,17 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
   * CVE-2019-13720: Use-after-free in audio</comment>
     <requestid>744734</requestid>
   </revision>
+  <revision rev="236" vrev="2">
+    <srcmd5>ca65950bb0f4d583dc691d6272112537</srcmd5>
+    <version>78.0.3904.87</version>
+    <time>1573165048</time>
+    <user>dimstar_suse</user>
+    <comment>- Keep just one conditional for vaapi enablement
+
+- Add more magic for zlib handling for SLE12 build
+
+- Add patch trying to build on SLE12:
+  * chromium-old-glibc-noexcept.patch</comment>
+    <requestid>745998</requestid>
+  </revision>
 </revisionlist>

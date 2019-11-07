@@ -21,7 +21,7 @@
 %define texlive_version  2019
 %define texlive_previous 2018
 %define texlive_release  20190407
-%define texlive_noarch   167
+%define texlive_noarch   168
 
 #!BuildIgnore:          texlive
 
@@ -59,7 +59,7 @@ BuildRequires:  texlive-filesystem
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for c
-License:        Artistic-2.0 AND GPL-1.0-or-later AND BSD-3-Clause AND GPL-2.0-or-later AND LPPL-1.0 AND SUSE-Public-Domain AND SUSE-TeX
+License:        Artistic-2.0 and GPL-1.0+ and BSD-3-Clause and GPL-2.0+ and LPPL-1.0 and SUSE-Public-Domain and SUSE-TeX
 Group:          Productivity/Publishing/TeX/Base
 Url:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Source0:        texlive-specs-c-rpmlintrc
@@ -697,6 +697,8 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-bchart-doc >= %{texlive_version}
 Provides:       tex(bchart.sty)
+Requires:       tex(ifthen.sty)
+Requires:       tex(tikz.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source12:       bchart.tar.xz
@@ -1125,8 +1127,10 @@ Requires:       tex(hyperref.sty)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(inputenc.sty)
 Requires:       tex(keyval.sty)
+Requires:       tex(paralist.sty)
 Requires:       tex(pgf.sty)
 Requires:       tex(pgfcore.sty)
+Requires:       tex(sansmathaccent.sty)
 Requires:       tex(translator.sty)
 Requires:       tex(ucs.sty)
 Requires:       tex(xcolor.sty)
@@ -2541,6 +2545,7 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-beamertheme-epyt-doc >= %{texlive_version}
 Provides:       tex(beamerthemeepyt.sty)
+Requires:       tex(arev.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -2895,8 +2900,19 @@ Provides:       tex(beamercolorthemeNPBT_SC.sty)
 Provides:       tex(beamerouterthemeNPBT_FOM.sty)
 Provides:       tex(beamerouterthemeNPBT_FOM_ifes.sty)
 Provides:       tex(beamerthemeNPBT.sty)
+Requires:       tex(array.sty)
+Requires:       tex(eurosym.sty)
+Requires:       tex(fontenc.sty)
 Requires:       tex(ifthen.sty)
+Requires:       tex(lmodern.sty)
 Requires:       tex(multicol.sty)
+Requires:       tex(pgfplots.sty)
+Requires:       tex(ragged2e.sty)
+Requires:       tex(textcomp.sty)
+Requires:       tex(tikz.sty)
+Requires:       tex(xltxtra.sty)
+Requires:       tex(xspace.sty)
+Requires:       tex(xstring.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source50:       beamertheme-npbt.tar.xz
@@ -3298,6 +3314,7 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-beamerthemenirma-doc >= %{texlive_version}
 Provides:       tex(beamerthemenirma.sty)
+Requires:       tex(beamerbasethemes.sty)
 Requires:       tex(pgf.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -3480,6 +3497,7 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-begingreek-doc >= %{texlive_version}
 Provides:       tex(begingreek.sty)
+Requires:       tex(iftex.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source62:       begingreek.tar.xz
@@ -3649,6 +3667,8 @@ Requires:       tex(longtable.sty)
 Requires:       tex(mathptmx.sty)
 Requires:       tex(multicol.sty)
 Requires:       tex(natbib.sty)
+Requires:       tex(ragged2e.sty)
+Requires:       tex(setspace.sty)
 Requires:       tex(tabularx.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(url.sty)
@@ -10449,6 +10469,7 @@ Requires:       tex(authoryear-icomp.bbx)
 Requires:       tex(authoryear-icomp.cbx)
 Requires:       tex(authoryear.bbx)
 Requires:       tex(authoryear.cbx)
+Requires:       tex(biblatex.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(kvoptions.sty)
@@ -11205,6 +11226,7 @@ Provides:       tex(ijsra.bbx)
 Provides:       tex(ijsra.cbx)
 Requires:       tex(authoryear.bbx)
 Requires:       tex(authoryear.cbx)
+Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source158:      biblatex-ijsra.tar.xz
@@ -12265,6 +12287,8 @@ Provides:       tex(nottsclassic-english.lbx)
 Provides:       tex(nottsclassic.bbx)
 Provides:       tex(nottsclassic.cbx)
 Requires:       tex(authoryear.bbx)
+Requires:       tex(british.sty)
+Requires:       tex(csquotes.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source182:      biblatex-nottsclassic.tar.xz
@@ -13484,6 +13508,7 @@ Provides:       tex(biblatex-swiss-legal-longarticle.bbx)
 Provides:       tex(biblatex-swiss-legal-longarticle.cbx)
 Provides:       tex(biblatex-swiss-legal-shortarticle.bbx)
 Provides:       tex(biblatex-swiss-legal-shortarticle.cbx)
+Requires:       tex(amssymb.sty)
 Requires:       tex(french.lbx)
 Requires:       tex(ngerman.lbx)
 Requires:       tex(xstring.sty)
