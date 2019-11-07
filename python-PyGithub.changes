@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov  7 01:54:08 UTC 2019 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.44.1:
+  * Too many changes to enumerate.
+- Drop PyGithub-drop-network-tests.patch, the test in question no longer
+  requires network access.
+- Drop fix-httpretty-dep.patch, the httpretty requirement has been relaxed
+  upstream.
+- Use %python_expand to run the test suite, it works fine on Python 3 now.
+- Add mock and parameterized to BuildRequires, the test suite requires them.
+
+-------------------------------------------------------------------
 Tue Sep 24 09:30:42 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.43.8:

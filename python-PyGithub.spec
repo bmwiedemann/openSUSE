@@ -18,19 +18,18 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PyGithub
-Version:        1.43.8
+Version:        1.44.1
 Release:        0
 Summary:        Python library to use the GitHub API v3
 License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/PyGithub/PyGithub
 Source:         https://github.com/PyGithub/PyGithub/archive/v%{version}.tar.gz
-# PATCH-FIX-OPENSUSE sebix+novell.com@sebix.at -- Remove test that needs network access
-Patch0:         PyGithub-drop-network-tests.patch
-Patch1:         fix-httpretty-dep.patch
 BuildRequires:  %{python_module Deprecated}
 BuildRequires:  %{python_module PyJWT}
 BuildRequires:  %{python_module httpretty >= 0.9.6}
+BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module parameterized == 0.7.0}
 BuildRequires:  %{python_module requests >= 2.14.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -59,8 +58,7 @@ etc.) can be managed with this.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# When python3 support was added, none of the tests were made python3-compliant
-python setup.py test
+%python_expand $python setup.py test
 
 %files %{python_files}
 %license COPYING COPYING.LESSER
