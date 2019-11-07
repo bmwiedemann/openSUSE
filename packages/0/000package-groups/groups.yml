@@ -21,6 +21,11 @@ OUTPUT:
 
 dvd:
   - kernel-default
+  - kernel-vanilla-base: [locked]
+  - kernel-kvmsmall-base: [locked]
+  - kernel-vanilla: [locked]
+  - kernel-kvmsmall: [locked]
+  - kernel-debug: [locked]
   - dummy-release: [locked]
   - openSUSE-MicroOS-release: [locked]
   - patterns-microos-basesystem: [locked]
