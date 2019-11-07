@@ -768,7 +768,6 @@ unsorted:
   - at-spi2-atk-devel 
   - at-spi2-core-devel 
   - at-spi2-core-devel-32bit: [x86_64] 
-  - atftp 
   - atheme 
   - atheme-devel 
   - atinject 
@@ -6066,7 +6065,7 @@ unsorted:
   - kernel-pae-devel: [i586] 
   - kernel-source-vanilla 
   - kernel-syms: [i586] 
-  - kernel-vanilla: [i586] 
+  - kernel-vanilla 
   - kernel-vanilla-devel 
   - ketchup 
   - kexi 
@@ -14513,7 +14512,7 @@ unsorted:
   - openSUSE-appdata-extra 
   - openSUSE-appstream-process 
   - openSUSE-driverupdate 
-  - openSUSE-release-appliance: [i586] 
+  - openSUSE-release-appliance 
   - openSUSE-release-appliance-docker 
   - openSUSE-release-appliance-hyperv 
   - openSUSE-release-appliance-kvm 

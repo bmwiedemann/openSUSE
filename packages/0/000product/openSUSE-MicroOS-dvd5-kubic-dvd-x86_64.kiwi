@@ -434,15 +434,12 @@
       <repopackage name="openSUSE-build-key" arch="x86_64"/>
       <repopackage name="openSUSE-MicroOS-release"/>
       <repopackage name="openSUSE-MicroOS-release-appliance"/>
-      <repopackage name="openSUSE-release" arch="x86_64"/>
-      <repopackage name="openSUSE-release-appliance" arch="x86_64"/>
       <repopackage name="p11-kit" arch="x86_64"/>
       <repopackage name="p11-kit-tools" arch="x86_64"/>
       <repopackage name="pam"/>
       <repopackage name="pam-config"/>
       <repopackage name="parted" arch="x86_64"/>
       <repopackage name="patterns-base-apparmor" arch="x86_64"/>
-      <repopackage name="patterns-base-basesystem" arch="x86_64"/>
       <repopackage name="patterns-base-minimal_base" arch="x86_64"/>
       <repopackage name="patterns-containers-container_runtime" arch="x86_64"/>
       <repopackage name="patterns-containers-container_runtime_kubernetes" arch="x86_64"/>
@@ -584,7 +581,6 @@
       <repopackage name="systemd"/>
       <repopackage name="systemd-logger" arch="x86_64"/>
       <repopackage name="systemd-presets-branding-MicroOS"/>
-      <repopackage name="systemd-presets-branding-openSUSE" arch="x86_64"/>
       <repopackage name="systemd-presets-common-SUSE"/>
       <repopackage name="systemd-sysvinit"/>
       <repopackage name="sysuser-shadow"/>
