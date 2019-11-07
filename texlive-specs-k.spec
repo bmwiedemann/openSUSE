@@ -21,7 +21,7 @@
 %define texlive_version  2019
 %define texlive_previous 2018
 %define texlive_release  20190407
-%define texlive_noarch   167
+%define texlive_noarch   168
 
 #!BuildIgnore:          texlive
 
@@ -59,7 +59,7 @@ BuildRequires:  texlive-filesystem
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for k
-License:        Apache-1.0 AND GPL-2.0-or-later AND LGPL-2.1-or-later AND LPPL-1.0 AND OFL-1.1 AND SUSE-Public-Domain
+License:        Apache-1.0 and GPL-2.0+ and LGPL-2.1+ and LPPL-1.0 and OFL-1.1 and SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 Url:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Source0:        texlive-specs-k-rpmlintrc
@@ -1324,6 +1324,7 @@ Provides:       tex(glossary-bookindex.sty)
 Provides:       tex(glossary-longextra.sty)
 Provides:       tex(glossary-topic.sty)
 Requires:       tex(etoolbox.sty)
+Requires:       tex(glossaries-accsupp.sty)
 Requires:       tex(glossaries.sty)
 Requires:       tex(glossary-inline.sty)
 Requires:       tex(glossary-list.sty)
@@ -2350,6 +2351,7 @@ Requires:       tex(gmverb.sty)
 Requires:       tex(lmodern.sty)
 Requires:       tex(makeidx.sty)
 Requires:       tex(multicol.sty)
+Requires:       tex(tikz.sty)
 Requires:       tex(trace.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
@@ -2778,6 +2780,7 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-gmverb-doc >= %{texlive_version}
 Provides:       tex(gmverb.sty)
+Requires:       tex(eufrak.sty)
 Requires:       tex(gmcommand.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
@@ -4634,7 +4637,37 @@ Provides:       tex(grant-nrl.cls)
 Provides:       tex(grant-nsf.cls)
 Provides:       tex(grant-onr.cls)
 Provides:       tex(grant.cls)
+Requires:       tex(amsmath.sty)
+Requires:       tex(babel.sty)
+Requires:       tex(biblatex.sty)
 Requires:       tex(book.cls)
+Requires:       tex(booktabs.sty)
+Requires:       tex(caption.sty)
+Requires:       tex(chappg.sty)
+Requires:       tex(csquotes.sty)
+Requires:       tex(enumitem.sty)
+Requires:       tex(etoolbox.sty)
+Requires:       tex(fancyhdr.sty)
+Requires:       tex(fontenc.sty)
+Requires:       tex(geometry.sty)
+Requires:       tex(graphicx.sty)
+Requires:       tex(hyperref.sty)
+Requires:       tex(hyphenat.sty)
+Requires:       tex(inputenc.sty)
+Requires:       tex(lineno.sty)
+Requires:       tex(longtable.sty)
+Requires:       tex(ltxtable.sty)
+Requires:       tex(multicol.sty)
+Requires:       tex(paralist.sty)
+Requires:       tex(pdfcomment.sty)
+Requires:       tex(pdfpages.sty)
+Requires:       tex(placeins.sty)
+Requires:       tex(setspace.sty)
+Requires:       tex(soul.sty)
+Requires:       tex(tabularx.sty)
+Requires:       tex(titlesec.sty)
+Requires:       tex(ulem.sty)
+Requires:       tex(wrapfig.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source88:       grant.tar.xz
@@ -5521,6 +5554,7 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-graphviz-doc >= %{texlive_version}
 Provides:       tex(graphviz.sty)
 Requires:       tex(graphicx.sty)
+Requires:       tex(psfrag.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source108:      graphviz.tar.xz
@@ -6626,6 +6660,7 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-gridset-doc >= %{texlive_version}
 Provides:       tex(gridset.sty)
+Requires:       tex(blindtext.sty)
 Requires:       tex(docstrip.tex)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
@@ -7045,10 +7080,26 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-gsemthesis-doc >= %{texlive_version}
 Provides:       tex(gsemthesis.cls)
+Requires:       tex(amsfonts.sty)
+Requires:       tex(amsmath.sty)
+Requires:       tex(amssymb.sty)
+Requires:       tex(babel.sty)
 Requires:       tex(book.cls)
+Requires:       tex(csquotes.sty)
+Requires:       tex(datetime.sty)
+Requires:       tex(etoolbox.sty)
+Requires:       tex(fancyhdr.sty)
+Requires:       tex(float.sty)
+Requires:       tex(fontenc.sty)
 Requires:       tex(geometry.sty)
+Requires:       tex(graphicx.sty)
 Requires:       tex(hyperref.sty)
+Requires:       tex(inputenc.sty)
+Requires:       tex(lmodern.sty)
+Requires:       tex(setspace.sty)
+Requires:       tex(subfigure.sty)
 Requires:       tex(url.sty)
+Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source140:      gsemthesis.tar.xz
@@ -8485,7 +8536,13 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-h2020proposal-doc >= %{texlive_version}
 Provides:       tex(h2020proposal.cls)
+Requires:       tex(colortbl.sty)
+Requires:       tex(coolstr.sty)
+Requires:       tex(longtable.sty)
 Requires:       tex(memoir.cls)
+Requires:       tex(morewrites.sty)
+Requires:       tex(rotating.sty)
+Requires:       tex(showkeys.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source167:      h2020proposal.tar.xz
@@ -8589,6 +8646,7 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-hackthefootline-doc >= %{texlive_version}
 Provides:       tex(hackthefootline.sty)
+Requires:       tex(appendixnumberbeamer.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(ifthen.sty)
@@ -8885,17 +8943,21 @@ Provides:       tex(hgbmath.sty)
 Provides:       tex(hgbreport.cls)
 Provides:       tex(hgbthesis.cls)
 Requires:       tex(abstract.sty)
+Requires:       tex(algorithm.sty)
 Requires:       tex(algpseudocode.sty)
 Requires:       tex(amsbsy.sty)
 Requires:       tex(amsfonts.sty)
 Requires:       tex(amsmath.sty)
 Requires:       tex(amssymb.sty)
 Requires:       tex(article.cls)
+Requires:       tex(babel.sty)
+Requires:       tex(biblatex.sty)
 Requires:       tex(book.cls)
 Requires:       tex(breakurl.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(caption.sty)
 Requires:       tex(cmap.sty)
+Requires:       tex(csquotes.sty)
 Requires:       tex(datetime.sty)
 Requires:       tex(enumitem.sty)
 Requires:       tex(epstopdf.sty)
@@ -9214,7 +9276,21 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-handin-doc >= %{texlive_version}
 Provides:       tex(handin.sty)
+Requires:       tex(amsmath.sty)
+Requires:       tex(bm.sty)
+Requires:       tex(esint.sty)
+Requires:       tex(etoolbox.sty)
+Requires:       tex(fancyhdr.sty)
+Requires:       tex(fontenc.sty)
+Requires:       tex(geometry.sty)
+Requires:       tex(graphicx.sty)
+Requires:       tex(iflang.sty)
+Requires:       tex(inputenc.sty)
+Requires:       tex(lastpage.sty)
+Requires:       tex(mathtools.sty)
+Requires:       tex(pgfkeys.sty)
 Requires:       tex(pgfopts.sty)
+Requires:       tex(scrextend.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source177:      handin.tar.xz
@@ -9955,6 +10031,16 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-harnon-cv-doc >= %{texlive_version}
 Provides:       tex(harnon-cv.cls)
 Requires:       tex(article.cls)
+Requires:       tex(cantarell.sty)
+Requires:       tex(etoolbox.sty)
+Requires:       tex(fontenc.sty)
+Requires:       tex(framed.sty)
+Requires:       tex(geometry.sty)
+Requires:       tex(graphicx.sty)
+Requires:       tex(hyperref.sty)
+Requires:       tex(nopageno.sty)
+Requires:       tex(tabularx.sty)
+Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source194:      harnon-cv.tar.xz
@@ -10419,20 +10505,28 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-hausarbeit-jura-doc >= %{texlive_version}
 Provides:       tex(hausarbeit-jura.cls)
 Requires:       tex(babel.sty)
+Requires:       tex(courier.sty)
 Requires:       tex(csquotes.sty)
 Requires:       tex(ellipsis.sty)
 Requires:       tex(eurosym.sty)
 Requires:       tex(fontenc.sty)
 Requires:       tex(fontspec.sty)
 Requires:       tex(geometry.sty)
+Requires:       tex(helvet.sty)
 Requires:       tex(iftex.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(indentfirst.sty)
 Requires:       tex(inputenc.sty)
 Requires:       tex(jurabib.sty)
 Requires:       tex(jurabook.cls)
+Requires:       tex(latexrelease.sty)
+Requires:       tex(mathptmx.sty)
 Requires:       tex(microtype.sty)
 Requires:       tex(textcomp.sty)
+Requires:       tex(tgcursor.sty)
+Requires:       tex(tgheros.sty)
+Requires:       tex(tgtermes.sty)
+Requires:       tex(varioref.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source206:      hausarbeit-jura.tar.xz
@@ -11782,6 +11876,7 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-hepthesis-doc >= %{texlive_version}
 Provides:       tex(hepthesis.cls)
+Requires:       tex(a4wide.sty)
 Requires:       tex(afterpage.sty)
 Requires:       tex(amsmath.sty)
 Requires:       tex(booktabs.sty)
@@ -11793,8 +11888,10 @@ Requires:       tex(draftcopy.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(fancyhdr.sty)
 Requires:       tex(fontenc.sty)
+Requires:       tex(hep.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(lineno.sty)
+Requires:       tex(makeidx.sty)
 Requires:       tex(microtype.sty)
 Requires:       tex(rotating.sty)
 Requires:       tex(scrbook.cls)
@@ -12296,6 +12393,7 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(fontaxes.sty)
 Requires:       tex(fontenc.sty)
 Requires:       tex(ifthen.sty)
+Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
@@ -15241,6 +15339,7 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(fancyhdr.sty)
 Requires:       tex(flafter.sty)
 Requires:       tex(footmisc.sty)
+Requires:       tex(geometry.sty)
 Requires:       tex(glossaries.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(hyperref.sty)
@@ -15267,6 +15366,7 @@ Requires:       tex(siunitx.sty)
 Requires:       tex(splitidx.sty)
 Requires:       tex(subfigure.sty)
 Requires:       tex(tabularx.sty)
+Requires:       tex(tikz.sty)
 Requires:       tex(varwidth.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xltxtra.sty)
@@ -15379,6 +15479,7 @@ Provides:       tex(hletg.clo)
 Provides:       tex(hletter.cls)
 Provides:       tex(hsetup.sty)
 Provides:       tex(mergeh.sty)
+Requires:       tex(babel.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
@@ -15792,6 +15893,7 @@ Recommends:     texlive-horoscop-doc >= %{texlive_version}
 Provides:       tex(horoscop.sty)
 Requires:       tex(marvosym.sty)
 Requires:       tex(pict2e.sty)
+Requires:       tex(starfont.sty)
 Requires:       tex(trig.sty)
 Requires:       tex(wasysym.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
