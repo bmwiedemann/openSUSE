@@ -186,6 +186,7 @@
       <repopackage name="at-spi2-atk-gtk2"/>
       <repopackage name="at-spi2-core"/>
       <repopackage name="at-spi2-core-lang"/>
+      <repopackage name="atftp"/>
       <repopackage name="atk-lang"/>
       <repopackage name="atmel-firmware"/>
       <repopackage name="attica-qt5"/>
@@ -1294,7 +1295,6 @@
       <repopackage name="kernel-macros"/>
       <repopackage name="kernel-source"/>
       <repopackage name="kernel-syms" arch="x86_64"/>
-      <repopackage name="kernel-vanilla" arch="x86_64"/>
       <repopackage name="kexec-tools"/>
       <repopackage name="keyutils"/>
       <repopackage name="kf5-kcm-fcitx"/>

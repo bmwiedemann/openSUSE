@@ -179,6 +179,7 @@
     <package name="at-spi2-atk-gtk2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="at-spi2-core" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="at-spi2-core-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="atftp" supportstatus="unsupported"/> <!-- reason: dvd:atftp -->
     <package name="atk-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="atmel-firmware" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="attica-qt5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -5677,7 +5678,6 @@
     <package name="guestfs-data" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ibus-gtk-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="kernel-syms" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_kernel -->
-    <package name="kernel-vanilla" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="kmozillahelper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="krb5-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="ldmtool" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->

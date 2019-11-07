@@ -8,7 +8,7 @@
     <package name="coreutils" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="cpio" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="cracklib" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
-    <package name="cracklib-dict-full" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-container_runtime_kubernetes -->
+    <package name="cracklib-dict-full" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="dbus-1" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="diffutils" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="dracut" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
@@ -415,8 +415,6 @@
     <package name="open-lldp" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="open-vm-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="openSUSE-build-key" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
-    <package name="openSUSE-release" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-container_runtime_kubernetes -->
-    <package name="openSUSE-release-appliance" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-container_runtime_kubernetes -->
     <package name="openssh" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="openssl" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="openssl-1_1" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
@@ -424,7 +422,6 @@
     <package name="p11-kit-tools" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="parted" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="patterns-base-apparmor" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
-    <package name="patterns-base-basesystem" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-container_runtime_kubernetes -->
     <package name="patterns-base-minimal_base" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="patterns-containers-container_runtime" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-container_runtime -->
     <package name="patterns-containers-container_runtime_kubernetes" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-container_runtime_kubernetes -->
@@ -549,7 +546,6 @@
     <package name="system-user-daemon" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="system-user-nobody" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="systemd-logger" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-defaults -->
-    <package name="systemd-presets-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-container_runtime_kubernetes -->
     <package name="tallow" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="tar" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="terminfo" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
