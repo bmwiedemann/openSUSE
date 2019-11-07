@@ -21,7 +21,7 @@
 %define texlive_version  2019
 %define texlive_previous 2018
 %define texlive_release  20190407
-%define texlive_noarch   167
+%define texlive_noarch   168
 
 #!BuildIgnore:          texlive
 
@@ -59,7 +59,7 @@ BuildRequires:  texlive-filesystem
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for d
-License:        Apache-1.0 AND BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later AND LPPL-1.0 AND OFL-1.1 AND SUSE-Public-Domain
+License:        Apache-1.0 and BSD-3-Clause and GPL-2.0+ and LGPL-2.1+ and LPPL-1.0 and OFL-1.1 and SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 Url:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Source0:        texlive-specs-d-rpmlintrc
@@ -574,6 +574,8 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-blkarray-doc >= %{texlive_version}
 Provides:       tex(blkarray.sty)
+Requires:       tex(article.sty)
+Requires:       tex(doc.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source13:       blkarray.tar.xz
@@ -654,6 +656,12 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-blochsphere-doc >= %{texlive_version}
 Provides:       tex(blochsphere.sty)
+Requires:       tex(environ.sty)
+Requires:       tex(etoolbox.sty)
+Requires:       tex(ifthen.sty)
+Requires:       tex(kvoptions.sty)
+Requires:       tex(kvsetkeys.sty)
+Requires:       tex(tikz.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source15:       blochsphere.tar.xz
@@ -889,6 +897,7 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-bloques-doc >= %{texlive_version}
 Provides:       tex(bloques.sty)
+Requires:       tex(tikz.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source21:       bloques.tar.xz
@@ -4450,6 +4459,7 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-boxhandler-doc >= %{texlive_version}
 Provides:       tex(boxhandler.sty)
 Requires:       tex(ifthen.sty)
+Requires:       tex(pbox.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source74:       boxhandler.tar.xz
@@ -4773,6 +4783,10 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-bracketkey-doc >= %{texlive_version}
 Provides:       tex(bracketkey.sty)
+Requires:       tex(calc.sty)
+Requires:       tex(coolstr.sty)
+Requires:       tex(hyperref.sty)
+Requires:       tex(xifthen.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source82:       bracketkey.tar.xz
@@ -6814,6 +6828,7 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-bxeepic-doc >= %{texlive_version}
 Provides:       tex(bxdpxp2e.def)
 Provides:       tex(bxeepic.sty)
+Requires:       tex(pict2e.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source128:      bxeepic.tar.xz
@@ -7215,6 +7230,7 @@ Provides:       tex(bxjsslide.cls)
 Requires:       tex(bxwareki.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(fixltx2e.sty)
+Requires:       tex(geometry.sty)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(inputenc.sty)
 Requires:       tex(jslogo.sty)
@@ -7624,6 +7640,7 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-bxtexlogo-doc >= %{texlive_version}
 Provides:       tex(bxtexlogo.sty)
+Requires:       tex(hologo.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source148:      bxtexlogo.tar.xz
@@ -19272,6 +19289,8 @@ Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-censor-doc >= %{texlive_version}
 Provides:       tex(censor.sty)
+Requires:       tex(ifnextok.sty)
+Requires:       tex(pbox.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source252:      censor.tar.xz
@@ -21628,7 +21647,14 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-changelog-doc >= %{texlive_version}
 Provides:       tex(changelog-doc.sty)
 Provides:       tex(changelog.sty)
+Requires:       tex(changepage.sty)
+Requires:       tex(hypdoc.sty)
+Requires:       tex(lstdoc.sty)
+Requires:       tex(mdframed.sty)
+Requires:       tex(textcomp.sty)
 Requires:       tex(xcolor.sty)
+Requires:       tex(xkeyval.sty)
+Requires:       tex(xparse.sty)
 # Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
 # from 20190407
 Source264:      changelog.tar.xz
@@ -21786,7 +21812,9 @@ Requires(posttrans): texlive >= %{texlive_version}
 Recommends:     texlive-changes-doc >= %{texlive_version}
 Provides:       tex(changes.sty)
 Requires:       tex(pdfcolmk.sty)
+Requires:       tex(todonotes.sty)
 Requires:       tex(truncate.sty)
+Requires:       tex(ulem.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xifthen.sty)
 Requires:       tex(xkeyval.sty)
