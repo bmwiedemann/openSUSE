@@ -654,4 +654,12 @@ remove obsolete _opt patterns</comment>
     <comment>additional flavors</comment>
     <requestid>737163</requestid>
   </revision>
+  <revision rev="92" vrev="90">
+    <srcmd5>c9534b022b971d9e0b5cce4c38dcbd7b</srcmd5>
+    <version>unknown</version>
+    <time>1573122635</time>
+    <user>dimstar_suse</user>
+    <comment>make some choices clearer</comment>
+    <requestid>745352</requestid>
+  </revision>
 </revisionlist>

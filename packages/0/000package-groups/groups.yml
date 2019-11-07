@@ -310,6 +310,7 @@ dvd:
 
   # additional packages not picked
   - apache-parent
+  - atftp
   - bcm20702a1-firmware
   - bcm43xx-firmware
   - elilo
@@ -362,6 +363,8 @@ dvd:
 
 opensuse_microos:
   - dummy-release: [locked]
+  - openSUSE-release: [locked]
+  - patterns-base-basesystem: [locked]
   # we need a global flag, not there yet
   - kernel-vanilla-base: [locked]
   - kernel-kvmsmall-base: [locked]
