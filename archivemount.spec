@@ -1,7 +1,7 @@
 #
 # spec file for package archivemount
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,8 +20,7 @@ Name:           archivemount
 Version:        0.8.7
 Release:        0
 Summary:        Mounts an archive for access as a file system
-License:        LGPL-2.1+ AND BSD-2-Clause
-Group:          Productivity/Archiving/Compression
+License:        LGPL-2.1-or-later AND BSD-2-Clause
 Url:            http://www.cybernoia.de/software/archivemount/
 Source:         http://www.cybernoia.de/software/archivemount/%{name}-%{version}.tar.gz
 Patch0:         archivemount.dif
