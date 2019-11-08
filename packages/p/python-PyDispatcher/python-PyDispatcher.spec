@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyDispatcher
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,7 @@ Version:        2.0.5
 Release:        0
 Summary:        Multi-producer-multi-consumer signal dispatching mechanism
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
-Url:            http://pydispatcher.sourceforge.net
+URL:            http://pydispatcher.sourceforge.net
 Source:         https://files.pythonhosted.org/packages/source/P/PyDispatcher/PyDispatcher-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -53,7 +52,7 @@ to reference instance methods using weak-references.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%doc license.txt
+%license license.txt
 %{python_sitelib}/*
 
 %changelog
