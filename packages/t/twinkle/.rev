@@ -311,4 +311,13 @@
     <comment></comment>
     <requestid>714183</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>90b2ae16713bc3cbf5b119b5b8439ca6</srcmd5>
+    <version>1.10.2</version>
+    <time>1573223326</time>
+    <user>dimstar_suse</user>
+    <comment>- enable G.729 support (with libbcg729)
+- specfile cleanup</comment>
+    <requestid>746583</requestid>
+  </revision>
 </revisionlist>
