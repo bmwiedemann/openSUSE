@@ -1,7 +1,7 @@
 #
 # spec file for package bogofilter
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,8 +20,7 @@ Name:           bogofilter
 Version:        1.2.4
 Release:        0
 Summary:        Fast Anti-Spam Filtering by Bayesian Statistical Analysis
-License:        GPL-2.0+
-Group:          Productivity/Networking/Email/Utilities
+License:        GPL-2.0-or-later
 Url:            http://bogofilter.sourceforge.net/
 Source:         http://downloads.sourceforge.net/bogofilter/bogofilter-%{version}.tar.bz2
 Source10:       README.SUSE
@@ -52,7 +51,6 @@ process a lot of mail.
 
 %package common
 Summary:        Fast Anti-Spam Filtering by Bayesian Statistical Analysis
-Group:          Productivity/Networking/Email/Utilities
 Requires:       %{name}-backend = %{version}
 BuildArch:      noarch
 
@@ -69,7 +67,6 @@ This package contains shared files for various %{name} backends
 
 %package doc
 Summary:        Bogofilter documentation
-Group:          Documentation/Other
 BuildArch:      noarch
 
 %description doc
@@ -78,7 +75,6 @@ This package contains the documentation of %{name}
 %if 0%{?suse_version} > 1320
 %package kyotocabinet
 Summary:        Bogofilter kyotocabinet backend
-Group:          Productivity/Networking/Email/Utilities
 Requires:       %{name}-common = %{version}
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -93,7 +89,6 @@ This package contains %{name} build with the tokyocabinet backend.
 
 %package sqlite3
 Summary:        Bogofilter sqlite3 backend
-Group:          Productivity/Networking/Email/Utilities
 Requires:       %{name}-common = %{version}
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -107,7 +102,6 @@ This package contains %{name} build with the sqlite3 backend.
 
 %package db
 Summary:        Bogofilter libdb backend
-Group:          Productivity/Networking/Email/Utilities
 Requires:       %{name}-common = %{version}
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
