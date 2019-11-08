@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>657224</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7761df241a2038b17eb01029a8aed8bc</srcmd5>
+    <version>1.0.2</version>
+    <time>1573223203</time>
+    <user>dimstar_suse</user>
+    <comment>- Run through spec-cleaner</comment>
+    <requestid>746350</requestid>
+  </revision>
 </revisionlist>

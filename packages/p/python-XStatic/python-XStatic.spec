@@ -1,7 +1,7 @@
 #
 # spec file for package python-XStatic
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,11 @@ Version:        1.0.2
 Release:        0
 Summary:        XStatic base package with minimal support code
 License:        MIT
-Group:          Development/Languages/Python
-Url:            https://github.com/xstatic-py/xstatic
+URL:            https://github.com/xstatic-py/xstatic
 Source:         https://files.pythonhosted.org/packages/source/X/XStatic/XStatic-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
