@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Fri Nov  8 06:42:02 UTC 2019 - ecsos@opensuse.org
+
+- Update to 4.3.0
+  New features
+  - Viewer: Halve the time taken to prepare large EPUB files for
+    first open
+  - Viewer: Add an optional toolbar with common actions turn it on
+    under Preferences->Miscellaneous
+  - Viewer: Change the default color scheme to "System" which 
+    matches the colors used by the rest of calibre/the operating 
+    system. Also means the colors change automatically when the 
+    system color theme changes.
+  - Viewer: Add a keyboard shortcut ; to go to a book location or
+    position
+  - Viewer: Add a control to easily reset the interface to 
+    defaults
+  - Viewer: Allow also using --open-at with book positions
+  - Viewer: Add command line option to force reloading of books
+  Bug fixes
+  - Content server: Fix conversion of comics not working.
+  - Book details: Allow right click to copy author links and 
+    identifiers
+  - Book details: Fix removal of identifiers via right click not
+    working
+  - Book details: Fix clicking on tags etc not generating exact 
+    match searches
+  - Viewer: When resizing and the resizing back to the old size 
+    ensure we return to the same page in paged mode.
+  - Duplicates dialog: Sort sub-list of matching books already in 
+    calibre by author for easier inspection.
+  - PDF Output: Fix links that go to destinations in the same file 
+    not working.
+  - Viewer: Fix changes to keyboard shortcuts not being applied 
+    until viewer is restarted.
+  - DOCX Input: Fix AlternateContent blocks rendering both choice 
+    and fallback sections.
+  - macOS: Fix unable to re-arrange entries in the CSV catalog list.
+  - Windows: fix UTF-16/truncated output when reporting unhandled 
+    exceptions
+  - Viewer: Fix mouse wheel not working when mouse is over page 
+    margins.
+  - Linux: Install bash completions as individual files for each 
+    calibre binary
+  - Content server: Fix download button not working with non-ebook 
+    formats.
+  - Fix a crash in popup completion lists if the mouse is over the 
+    list and list is scrolled with the keyboard
+  - Viewer: Fix rare exception when navigating to a CFI.
+  - Viewer: Ignore failures printing console message when the viewer
+    is launched with broken stderr.
+  - Amazon metadata: Fix failure to get published date from audible
+    book pages.
+  - Viewer: Fix shortcuts preferences not being translated
+  - Tag browser: Fix incorrect text color when using dark theme 
+    for hovered item
+  - Fix crash if canceling the icon theme download while covers are
+    downloading
+  - Viewer: Fix non-ASCII content in stylesheets not being 
+    interpreted correctly.
+  - Viewer/Content server: Fix history for completion popups such 
+    as search bars not being stored correctly.
+  - PDF Output: When a link with a fragment points to a 
+    non-existent anchor link to the top of the file instead of not 
+    linking at all
+  - PDF Output: Fix standard svg fullscreen image markup not 
+    working
+  - PDF Output: Fix some books with full screen images failing to 
+    convert.
+  Improved recipes
+  - Clarin
+  - Various Polish news sources
+
+-------------------------------------------------------------------
 Fri Oct 18 09:07:56 UTC 2019 - ecsos@opensuse.org
 
 - Update to 4.2.0

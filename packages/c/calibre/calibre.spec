@@ -17,7 +17,7 @@
 
 
 Name:           calibre
-Version:        4.2.0
+Version:        4.3.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -291,7 +291,9 @@ end
 %{_libdir}/%{name}/
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/%{name}-gui.appdata.xml
-%{_datadir}/bash-completion/completions/%{name}
+%{_datadir}/bash-completion/completions/%{name}*
+%{_datadir}/bash-completion/completions/*ebook*
+%{_datadir}/bash-completion/completions/lrf*
 %{python_sitelib}/init_calibre.py
 
 %changelog
