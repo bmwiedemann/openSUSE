@@ -208,4 +208,14 @@
     Closes: https://gitlab.freedesktop.org/glvnd/libglvnd/issues/193</comment>
     <requestid>743020</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>a74e4891f1e31a01fa14a96a5e816b62</srcmd5>
+    <version>1.2.0</version>
+    <time>1573223345</time>
+    <user>dimstar_suse</user>
+    <comment>- This release is needed for latest Mesa update in order to
+  support latest GPUs including Intel (jsc#SLE-7962, jsc#SLE-8024,
+  jsc#SLE-8022, jsc#SLE-10182)</comment>
+    <requestid>746613</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  7 11:45:05 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- This release is needed for latest Mesa update in order to
+  support latest GPUs including Intel (jsc#SLE-7962, jsc#SLE-8024,
+  jsc#SLE-8022, jsc#SLE-10182)
+
+-------------------------------------------------------------------
 Fri Oct 25 19:13:21 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - 0001-include-install-GL-headers-when-GL-is-enabled.patch
