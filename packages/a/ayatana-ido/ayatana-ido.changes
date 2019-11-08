@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Nov  8 03:40:02 UTC 2019 - Marguerite Su <i@marguerite.su>
+
+- add ayatana-ido-glib-2.58.patch
+  * g_type_class_add_private was deprecated since glib 2.58
+    get rid of it and self-defined *_GET_PRIVATE() functions,
+    use G_DEFINE_TYPE_* and auto-generated *_get_instance_private()
+    instead.
+
+-------------------------------------------------------------------
+Thu Oct 17 14:03:14 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
 Sat Aug 18 17:46:36 UTC 2018 - sor.alexei@meowr.ru
 
 - Update to version 0.4.4 (changes since 0.4.2):

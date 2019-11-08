@@ -1,7 +1,7 @@
 #
 # spec file for package ayatana-ido
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,10 +25,11 @@ Version:        0.4.4
 Release:        0
 Summary:        Ayatana Indicator Display Objects
 License:        GPL-3.0-only AND LGPL-3.0-only AND LGPL-2.1-only
-Group:          System/GUI/Other
 URL:            https://github.com/AyatanaIndicators/ayatana-ido
 Source:         https://github.com/AyatanaIndicators/ayatana-ido/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
+#PATCH-FIX-UPSTREAM ayatana-ido-glib-2.58.patch g_type_class_add_private was deprecated since glib 2.58
+Patch:          ayatana-ido-glib-2.58.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gtk-doc
 BuildRequires:  mate-common
@@ -45,7 +46,6 @@ Widgets and other objects used for indicators.
 
 %package -n %{lname}
 Summary:        Shared library providing extra GTK+ menu items in system indicators
-Group:          System/Libraries
 
 %description -n %{lname}
 Shared library providing extra GTK+ menu items for display in
@@ -55,7 +55,6 @@ This package contains shared libraries.
 
 %package -n %{typelib}
 Summary:        Ayatana Indicator Display Objects typelib
-Group:          System/Libraries
 
 %description -n %{typelib}
 Shared library providing extra GTK+ menu items for display in
@@ -66,7 +65,6 @@ Ayatana Ido.
 
 %package devel
 Summary:        Development files for Ayatana Indicator Display Objects
-Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 Requires:       %{typelib} = %{version}
 Requires:       pkgconfig(gio-2.0) >= 2.37.0
@@ -81,7 +79,7 @@ system indicators.
 This package contains the development files for Ido.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 NOCONFIGURE=1 mate-autogen
