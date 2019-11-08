@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyBrowserID
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2017-2018 The openSUSE Project.
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,8 +24,7 @@ Version:        0.14.0
 Release:        0
 Summary:        Python library for the BrowserID Protocol
 License:        MPL-2.0
-Group:          Development/Languages/Python
-Url:            https://github.com/mozilla/PyBrowserID
+URL:            https://github.com/mozilla/PyBrowserID
 Source:         https://files.pythonhosted.org/packages/source/P/PyBrowserID/PyBrowserID-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
