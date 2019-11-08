@@ -800,4 +800,12 @@
     <comment>Update to version 3.8.7.1</comment>
     <requestid>735513</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>7b17f825e2a42781bad0b55800abf254</srcmd5>
+    <version>3.8.8.1</version>
+    <time>1573223312</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 3.8.8.1</comment>
+    <requestid>746576</requestid>
+  </revision>
 </revisionlist>

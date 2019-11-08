@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Nov 07 21:18:10 UTC 2019 - obs-packaging@displaycal.net
+
+- Update to 3.8.8.1:
+  * [Moderate] Work-around failure to launch if wxPython 3.0 /
+    wxWidgets 3.0 release number do not match (using wxPython 3.0
+    is deprecated).
+
+-------------------------------------------------------------------
+Wed Nov 06 23:13:10 UTC 2019 - obs-packaging@displaycal.net
+
+- Update to 3.8.8:
+  * [Enhancement] Detect and warn about malformed colorimeter
+    corrections (e.g. from non-official sources). Move them to the
+    trash automatically if they were previously (manually)
+    installed.
+  * [Enhancement] Always enumerate instruments on application
+    startup if more than one instrument was detected the last time
+    the application was used (cross-platform consistency).
+  * [Enhancement] When prompting for instrument calibration,
+    display the just now detected instrument name instead of the
+    previously enumerated name (the latter might be stale if you
+    forgot to refresh after changing connected instruments).
+  * [Enhancement] Use a slightly improved smoothing method when
+    creating high resolution PCS to device tables.
+  * [Enhancement] Increase automatic PCS to device table resolution
+    for L*a*b* LUT profiles to 45x45x45 if using smoothing.
+  * [Enhancement] [UI] Only auto-close profile/3D LUT installation
+    dialog after a successful installation.
+  * [Enhancement] Don't auto-close madTPG after 3D LUT
+    installation.
+  * [Minor] madVR 3D LUT generation: Always write D65 white to 3D
+    LUT input primaries metadata so madVR does not attempt to
+    correct whitepoint differences on its own when using a custom
+    whitepoint (the 3D LUT itself will map the custom whitepoint
+    correctly).
+  * [Minor] madVR 3D LUT installation: Don't attempt to install 3D
+    LUTs with unsupported input primaries metadata (i.e. not Rec.
+    709, SMPTE C, EBU/PAL, Rec. 2020 or DCI P3) as madVR will
+    overwrite the metadata depending on the 3D LUT install slot.
+    Such 3D LUTs should only be assigned manually in madVR instead.
+  * [Trivial] [UI] When loading settings, always enable the 3D LUT
+    tab if the display is virtual (consistent with display
+    selection behavior).
+  * [Trivial] Also apply black point correction when creating a
+    matrix profile without black point compensation (consistency).
+  * [Trivial] Do not create swapped matrix fallback tags for XYZ
+    LUT profiles when using the alternate forward profiler and the
+    used ArgyllCMS version is >= 2.1 (be consistent with
+    ArgyllCMS).
+  * [Trivial] madVR 3D LUT generation: Accept negative values for
+    input primaries metadata.
+
+-------------------------------------------------------------------
 Tue Oct 01 20:52:33 UTC 2019 - obs-packaging@displaycal.net
 
 - Update to 3.8.7.1:

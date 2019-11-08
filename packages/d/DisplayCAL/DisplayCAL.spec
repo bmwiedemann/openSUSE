@@ -30,7 +30,7 @@ Summary:        Display calibration and profiling with a focus on accuracy and v
 License:        GPL-3.0+
 Group:          Productivity/Graphics/Other
 Name:           DisplayCAL
-Version:        3.8.7.1
+Version:        3.8.8.1
 Release:        0
 Source0:        http://displaycal.net/download/%{name}-%version.tar.gz
 Url:            https://displaycal.net/
