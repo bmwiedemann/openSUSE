@@ -24,4 +24,12 @@
 - Require python 3.6 or newer (print syntax)</comment>
     <requestid>632119</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>efe647eb6af5fe7faf2d3db4c342181e</srcmd5>
+    <version>0.2</version>
+    <time>1573223151</time>
+    <user>dimstar_suse</user>
+    <comment>- Run through spec-cleaner</comment>
+    <requestid>746330</requestid>
+  </revision>
 </revisionlist>
