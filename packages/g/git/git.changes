@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Nov  4 10:45:32 UTC 2019 - Andreas Schwab <schwab@linux-m68k.org>
+
+- 0001-DOC-Move-to-DocBook-5-when-using-asciidoctor.patch: Don't remove
+  "-x manpage.xsl" option
+- BuildRequire docbook5-xsl-stylesheets
+
+-------------------------------------------------------------------
+Mon Nov  4 09:28:56 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- git 2.24.0
+  * The command line parser learned "--end-of-options" notation.
+  * A mechanism to affect the default setting for a (related) group of
+    configuration variables is introduced.
+  * "git fetch" learned "--set-upstream" option to help those who first
+    clone from their private fork they intend to push to, add the true
+    upstream via "git remote add" and then "git fetch" from it.
+  * fixes and improvements to UI, workflow and features, bash completion fixes
+- modified patch 0001-DOC-Move-to-DocBook-5-when-using-asciidoctor.patch
+  * part of it merged upstream
+  * the Makefile attempted to download some documentation, banned
+
+-------------------------------------------------------------------
 Mon Oct  7 11:58:26 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Complete (but maybe a bit too generous) fix of bsc#1112230

@@ -2062,4 +2062,26 @@ git 2.12.3
     <comment></comment>
     <requestid>735832</requestid>
   </revision>
+  <revision rev="240" vrev="1">
+    <srcmd5>bc316050335388fa530e0ab9c9782c23</srcmd5>
+    <version>2.24.0</version>
+    <time>1573222918</time>
+    <user>dimstar_suse</user>
+    <comment>- 0001-DOC-Move-to-DocBook-5-when-using-asciidoctor.patch: Don't remove
+  &quot;-x manpage.xsl&quot; option
+- BuildRequire docbook5-xsl-stylesheets
+- git 2.24.0
+  * The command line parser learned &quot;--end-of-options&quot; notation.
+  * A mechanism to affect the default setting for a (related) group of
+    configuration variables is introduced.
+  * &quot;git fetch&quot; learned &quot;--set-upstream&quot; option to help those who first
+    clone from their private fork they intend to push to, add the true
+    upstream via &quot;git remote add&quot; and then &quot;git fetch&quot; from it.
+  * fixes and improvements to UI, workflow and features, bash completion fixes
+- modified patch 0001-DOC-Move-to-DocBook-5-when-using-asciidoctor.patch
+  * part of it merged upstream
+  * the Makefile attempted to download some documentation, banned
+</comment>
+    <requestid>745173</requestid>
+  </revision>
 </revisionlist>

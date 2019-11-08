@@ -29,7 +29,7 @@
 %bcond_without git_libsecret
 %bcond_without docs
 Name:           git
-Version:        2.23.0
+Version:        2.24.0
 Release:        0
 Summary:        Fast, scalable, distributed revision control system
 License:        GPL-2.0-only
@@ -82,6 +82,7 @@ Suggests:       git-web
 %if %{with docs}
 %if 0%{?suse_version} > 1320
 BuildRequires:  rubygem(asciidoctor)
+BuildRequires:  docbook5-xsl-stylesheets
 %else
 BuildRequires:  asciidoc
 %endif
