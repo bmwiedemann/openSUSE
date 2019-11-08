@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 31 23:14:04 UTC 2019 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Add otb-6.6.1-reproducible.patch: Make build more reproducible.
+
+-------------------------------------------------------------------
 Mon Aug 12 20:56:16 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use openCV <= 3.x, otb is not yet compatible with openCV 4

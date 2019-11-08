@@ -38,6 +38,8 @@ Source10:       temporalgapfilling-4fc4a71.tar.xz
 Patch0:         otb-fix_lib64_handling.patch
 # PATCH-FIX-UPSTREAM - otb-fix_VERSION_file_install.patch: fix install path of VERSION
 Patch1:         otb-fix_VERSION_file_install.patch
+# PATCH-FIX-UPSTREAM https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb/merge_requests/625
+Patch2:         otb-6.6.1-reproducible.patch
 # PATCH-FIX-OPENSUSE cmake file wants to clone the GIT repo. We are offline, so patch cmake file to be able to use our tarball instead of git clone
 Patch10:        fix_non_git_usage.patch
 BuildRequires:  boost-devel
@@ -227,6 +229,7 @@ ORFEO Toolbox Python 3 API for applications.
 %setup -q -n %{tarname}-release-%{filerelease}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 %patch10 -p0
 %if %{with enable_remote_module}
 mv ../temporalgapfilling/ Modules/Remote/OTBTemporalGapFilling

@@ -1,0 +1,31 @@
+From 42bac4b29633d1122d9f5ef12552583fc2a38178 Mon Sep 17 00:00:00 2001
+From: Antoine Belvire <antoine.belvire@opensuse.org>
+Date: Fri, 1 Nov 2019 00:04:17 +0100
+Subject: [PATCH] Sort application names to get a sorted algs.txt
+
+Application descriptions are written for each application in
+OTB_APPLICATIONS_NAME_LIST. This list is unsorted, which results in
+descriptions written in random order in algs.txt.
+
+In order to get a deterministic output in algs.txt and thus a more
+reproducible build, make sure to iterate over a sorted list of application
+names.
+---
+ Modules/Wrappers/QGIS/src/CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Modules/Wrappers/QGIS/src/CMakeLists.txt b/Modules/Wrappers/QGIS/src/CMakeLists.txt
+index 167f57d3ed..0d2010d29d 100644
+--- a/Modules/Wrappers/QGIS/src/CMakeLists.txt
++++ b/Modules/Wrappers/QGIS/src/CMakeLists.txt
+@@ -33,6 +33,7 @@ set(app_names ${OTB_APPLICATIONS_NAME_LIST})
+ list(REMOVE_ITEM app_names "TestApplication")
+ list(REMOVE_ITEM app_names "ApplicationExample")
+ list(REMOVE_DUPLICATES app_names)
++list(SORT app_names)
+ set(dfiles)
+ set(generate_descriptor_cmd "$<TARGET_FILE:otbQgisDescriptor>")
+ #debian does not use RPATH and build is failing
+-- 
+2.23.0
+
