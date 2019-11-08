@@ -1,7 +1,7 @@
 #
 # spec file for package cpptasks
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -30,6 +30,7 @@ BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  jpackage-utils
 BuildRequires:  junit
+BuildRequires:  xerces-j2
 Requires:       ant
 Requires:       java >= 1.8
 BuildArch:      noarch
@@ -52,7 +53,7 @@ Javadoc documentation for %{summary}.
 find . -name '*.jar' -type f -delete -print
 
 %build
-export OPT_JAR_LIST="ant/ant-junit junit"
+export OPT_JAR_LIST="ant/ant-junit junit xerces-j2"
 export CLASSPATH=""
 %{ant} \
      -Djavac.source=8 -Djavac.target=8 \

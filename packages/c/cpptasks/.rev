@@ -39,4 +39,12 @@ http://lists.opensuse.org/opensuse-factory/2014-04/msg00309.html</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>620785</requestid>
   </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>e042aeb7c9c048e4d94b287c62950ffa</srcmd5>
+    <version>1.0b5</version>
+    <time>1573223315</time>
+    <user>dimstar_suse</user>
+    <comment>BuildRequire xerces-j2</comment>
+    <requestid>746578</requestid>
+  </revision>
 </revisionlist>
