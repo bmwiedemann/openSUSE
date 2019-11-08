@@ -2,16 +2,12 @@
 
 # config.sh:
 
-# The next few VARIABLES may be edited (or uncommented) as required:
+# The next few VARIABLES are to be edited as required:
 
 # The following specifies the upstream tag or commit upon which our patchqueue
 # gets rebased. The special value LATEST may be used to "automatically" track
 # the upstream development tree in the master branch
 GIT_UPSTREAM_COMMIT_ISH=v4.1.0
-if [[ "$GIT_UPSTREAM_COMMIT_ISH" != "LATEST" ]]; then 
-    # This is the git branch used (otherwise it is computed)
-    GIT_BRANCH=opensuse-4.1
-fi
 # WARNING: If transitioning from using LATEST to not, MANUALLY re-set the
 # tarball present. If transitioning TO LATEST, make sure that
 # NEXT_RELEASE_IS_MAJOR is set correctly

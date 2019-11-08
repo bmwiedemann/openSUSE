@@ -1,0 +1,174 @@
+From: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Date: Tue, 4 Jun 2019 19:15:03 +0300
+Subject: util/iov: introduce qemu_iovec_init_extended
+
+Git-commit: d953169d4840f312d3b9a54952f4a7ccfcb3b311
+
+Introduce new initialization API, to create requests with padding. Will
+be used in the following patch. New API uses qemu_iovec_init_buf if
+resulting io vector has only one element, to avoid extra allocations.
+So, we need to update qemu_iovec_destroy to support destroying such
+QIOVs.
+
+Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Acked-by: Stefan Hajnoczi <stefanha@redhat.com>
+Message-id: 20190604161514.262241-2-vsementsov@virtuozzo.com
+Message-Id: <20190604161514.262241-2-vsementsov@virtuozzo.com>
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ include/qemu/iov.h |   7 +++
+ util/iov.c         | 112 +++++++++++++++++++++++++++++++++++++++++++--
+ 2 files changed, 114 insertions(+), 5 deletions(-)
+
+diff --git a/include/qemu/iov.h b/include/qemu/iov.h
+index 48b45987b70ea28879af7989c31f..f3787a0cf768bd0ea1031913a038 100644
+--- a/include/qemu/iov.h
++++ b/include/qemu/iov.h
+@@ -199,6 +199,13 @@ static inline void *qemu_iovec_buf(QEMUIOVector *qiov)
+ 
+ void qemu_iovec_init(QEMUIOVector *qiov, int alloc_hint);
+ void qemu_iovec_init_external(QEMUIOVector *qiov, struct iovec *iov, int niov);
++void qemu_iovec_init_extended(
++        QEMUIOVector *qiov,
++        void *head_buf, size_t head_len,
++        QEMUIOVector *mid_qiov, size_t mid_offset, size_t mid_len,
++        void *tail_buf, size_t tail_len);
++void qemu_iovec_init_slice(QEMUIOVector *qiov, QEMUIOVector *source,
++                           size_t offset, size_t len);
+ void qemu_iovec_add(QEMUIOVector *qiov, void *base, size_t len);
+ void qemu_iovec_concat(QEMUIOVector *dst,
+                        QEMUIOVector *src, size_t soffset, size_t sbytes);
+diff --git a/util/iov.c b/util/iov.c
+index 74e6ca8ed7298c833e52257923c1..366ff9cdd1dee06c5d62712cb5ef 100644
+--- a/util/iov.c
++++ b/util/iov.c
+@@ -353,6 +353,103 @@ void qemu_iovec_concat(QEMUIOVector *dst,
+     qemu_iovec_concat_iov(dst, src->iov, src->niov, soffset, sbytes);
+ }
+ 
++/*
++ * qiov_find_iov
++ *
++ * Return pointer to iovec structure, where byte at @offset in original vector
++ * @iov exactly is.
++ * Set @remaining_offset to be offset inside that iovec to the same byte.
++ */
++static struct iovec *iov_skip_offset(struct iovec *iov, size_t offset,
++                                     size_t *remaining_offset)
++{
++    while (offset > 0 && offset >= iov->iov_len) {
++        offset -= iov->iov_len;
++        iov++;
++    }
++    *remaining_offset = offset;
++
++    return iov;
++}
++
++/*
++ * qiov_slice
++ *
++ * Find subarray of iovec's, containing requested range. @head would
++ * be offset in first iov (returned by the function), @tail would be
++ * count of extra bytes in last iovec (returned iov + @niov - 1).
++ */
++static struct iovec *qiov_slice(QEMUIOVector *qiov,
++                                size_t offset, size_t len,
++                                size_t *head, size_t *tail, int *niov)
++{
++    struct iovec *iov, *end_iov;
++
++    assert(offset + len <= qiov->size);
++
++    iov = iov_skip_offset(qiov->iov, offset, head);
++    end_iov = iov_skip_offset(iov, *head + len, tail);
++
++    if (*tail > 0) {
++        assert(*tail < end_iov->iov_len);
++        *tail = end_iov->iov_len - *tail;
++        end_iov++;
++    }
++
++    *niov = end_iov - iov;
++
++    return iov;
++}
++
++/*
++ * Compile new iovec, combining @head_buf buffer, sub-qiov of @mid_qiov,
++ * and @tail_buf buffer into new qiov.
++ */
++void qemu_iovec_init_extended(
++        QEMUIOVector *qiov,
++        void *head_buf, size_t head_len,
++        QEMUIOVector *mid_qiov, size_t mid_offset, size_t mid_len,
++        void *tail_buf, size_t tail_len)
++{
++    size_t mid_head, mid_tail;
++    int total_niov, mid_niov = 0;
++    struct iovec *p, *mid_iov;
++
++    if (mid_len) {
++        mid_iov = qiov_slice(mid_qiov, mid_offset, mid_len,
++                             &mid_head, &mid_tail, &mid_niov);
++    }
++
++    total_niov = !!head_len + mid_niov + !!tail_len;
++    if (total_niov == 1) {
++        qemu_iovec_init_buf(qiov, NULL, 0);
++        p = &qiov->local_iov;
++    } else {
++        qiov->niov = qiov->nalloc = total_niov;
++        qiov->size = head_len + mid_len + tail_len;
++        p = qiov->iov = g_new(struct iovec, qiov->niov);
++    }
++
++    if (head_len) {
++        p->iov_base = head_buf;
++        p->iov_len = head_len;
++        p++;
++    }
++
++    if (mid_len) {
++        memcpy(p, mid_iov, mid_niov * sizeof(*p));
++        p[0].iov_base = (uint8_t *)p[0].iov_base + mid_head;
++        p[0].iov_len -= mid_head;
++        p[mid_niov - 1].iov_len -= mid_tail;
++        p += mid_niov;
++    }
++
++    if (tail_len) {
++        p->iov_base = tail_buf;
++        p->iov_len = tail_len;
++    }
++}
++
+ /*
+  * Check if the contents of the iovecs are all zero
+  */
+@@ -374,14 +471,19 @@ bool qemu_iovec_is_zero(QEMUIOVector *qiov)
+     return true;
+ }
+ 
++void qemu_iovec_init_slice(QEMUIOVector *qiov, QEMUIOVector *source,
++                           size_t offset, size_t len)
++{
++    qemu_iovec_init_extended(qiov, NULL, 0, source, offset, len, NULL, 0);
++}
++
+ void qemu_iovec_destroy(QEMUIOVector *qiov)
+ {
+-    assert(qiov->nalloc != -1);
++    if (qiov->nalloc != -1) {
++        g_free(qiov->iov);
++    }
+ 
+-    qemu_iovec_reset(qiov);
+-    g_free(qiov->iov);
+-    qiov->nalloc = 0;
+-    qiov->iov = NULL;
++    memset(qiov, 0, sizeof(*qiov));
+ }
+ 
+ void qemu_iovec_reset(QEMUIOVector *qiov)

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Nov  7 19:02:39 UTC 2019 - Bruce Rogers <brogers@suse.com>
+
+- Fix two issues with qcow2 image processing which could affect
+  disk integrity
+  qcow2-Fix-QCOW2_COMPRESSED_SECTOR_MASK.patch
+  qcow2-bitmap-Fix-uint64_t-left-shift-ove.patch
+
+-------------------------------------------------------------------
+Wed Nov  6 20:43:48 UTC 2019 - Bruce Rogers <brogers@suse.com>
+
+- Work around a host kernel xfs bug which can result in qcow2 image
+  corruption
+  block-io-refactor-padding.patch
+  util-iov-introduce-qemu_iovec_init_exten.patch
+  block-Make-wait-mark-serialising-request.patch
+  block-Add-bdrv_co_get_self_request.patch
+  block-file-posix-Let-post-EOF-fallocate-.patch
+- Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-4.1
+
+-------------------------------------------------------------------
+Mon Nov  4 13:47:02 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Correct package names in _constraints after switch to multibuild.
+
+-------------------------------------------------------------------
 Sat Oct 26 03:07:00 UTC 2019 - Bruce Rogers <brogers@suse.com>
 
 - Address potential corruption when using qcow2 images

@@ -3,8 +3,8 @@
   <overwrite>
     <conditions>
       <package>qemu</package>
-      <package>qemu-linux-user</package>
-      <package>qemu-testsuite</package>
+      <package>qemu:linux-user</package>
+      <package>qemu:testsuite</package>
     </conditions>
     <hardware>
       <disk>
@@ -30,7 +30,7 @@
       <arch>i586</arch>
       <arch>x86_64</arch>
       <arch>ppc64le</arch>
-      <package>qemu-testsuite</package>
+      <package>qemu:testsuite</package>
     </conditions>
     <hardware>
       <memory>
@@ -42,7 +42,7 @@
   <overwrite>
     <conditions>
       <arch>ppc64</arch>
-      <package>qemu-testsuite</package>
+      <package>qemu:testsuite</package>
     </conditions>
     <hardware>
       <memory>

@@ -1570,4 +1570,12 @@ Address python compatibility issue.</comment>
     <comment></comment>
     <requestid>743387</requestid>
   </revision>
+  <revision rev="162" vrev="3">
+    <srcmd5>efbee5c100198be5b30856bfa796c041</srcmd5>
+    <version>4.1.0</version>
+    <time>1573223036</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>746405</requestid>
+  </revision>
 </revisionlist>
