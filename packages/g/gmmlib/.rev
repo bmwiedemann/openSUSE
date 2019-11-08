@@ -42,4 +42,13 @@
   * Intel Graphics Memory Management Library 2019 Q3 Release 3</comment>
     <requestid>746014</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3cf30df918c7e431f35fa4752f934c8a</srcmd5>
+    <version>19.3.3</version>
+    <time>1573223331</time>
+    <user>dimstar_suse</user>
+    <comment>- This release fullfills requirements for jsc#SLE-8726
+- Bump soname to 11</comment>
+    <requestid>746610</requestid>
+  </revision>
 </revisionlist>
