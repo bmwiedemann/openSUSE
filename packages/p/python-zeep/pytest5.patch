@@ -1,0 +1,45 @@
+From ba7edd6bf2b31023b31e8f17c161e1d6d5af3d29 Mon Sep 17 00:00:00 2001
+From: Jonathan Ringer <jonringer117@gmail.com>
+Date: Fri, 13 Sep 2019 08:49:34 -0700
+Subject: [PATCH] Make tests compatible with pytest5
+
+---
+ tests/test_xsd_parse.py      | 2 +-
+ tests/test_xsd_validation.py | 4 ++--
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/tests/test_xsd_parse.py b/tests/test_xsd_parse.py
+index 08285342..5478ede7 100644
+--- a/tests/test_xsd_parse.py
++++ b/tests/test_xsd_parse.py
+@@ -587,7 +587,7 @@ def test_xsd_choice_with_references():
+ 
+     with pytest.raises(exceptions.XMLParseError) as exc:
+         result = elm.parse(xml, schema)
+-    assert "BAD_ELEMENT" in str(exc)
++    assert "BAD_ELEMENT" in str(exc.value)
+ 
+     xml = load_xml(
+         b"""
+diff --git a/tests/test_xsd_validation.py b/tests/test_xsd_validation.py
+index 60c4bc1c..85a95720 100644
+--- a/tests/test_xsd_validation.py
++++ b/tests/test_xsd_validation.py
+@@ -39,7 +39,7 @@ def test_validate_element_value():
+ 
+     with pytest.raises(exceptions.ValidationError) as exc:
+         result = render_node(container_elm, obj)
+-    assert "Missing element item (container.item)" in str(exc)
++    assert "Missing element item (container.item)" in str(exc.value)
+ 
+     obj.item = "bar"
+     result = render_node(container_elm, obj)
+@@ -82,7 +82,7 @@ def test_validate_required_attribute():
+     with pytest.raises(exceptions.ValidationError) as exc:
+         result = render_node(container_elm, obj)
+     assert "The attribute item is not valid: Value is required (container.item)" in str(
+-        exc
++        exc.value
+     )
+ 
+     obj.item = "bar"

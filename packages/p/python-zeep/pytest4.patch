@@ -1,0 +1,23 @@
+From d8b162ec931246e4d4b2a6aadf036b444fa00dbb Mon Sep 17 00:00:00 2001
+From: Felix Yan <felixonmars@archlinux.org>
+Date: Sat, 9 Mar 2019 14:45:55 +0800
+Subject: [PATCH] Update test requirements
+
+Tests pass here with the updated versions.
+---
+ tests/conftest.py |  2 +-
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
+Index: zeep-3.4.0/tests/conftest.py
+===================================================================
+--- zeep-3.4.0.orig/tests/conftest.py
++++ zeep-3.4.0/tests/conftest.py
+@@ -11,7 +11,7 @@ pytest.register_assert_rewrite("tests.ut
+ 
+ @pytest.fixture(autouse=True)
+ def no_requests(request, monkeypatch):
+-    if request.node.get_marker("requests"):
++    if request.node.get_closest_marker('requests'):
+         return
+ 
+     def func(*args, **kwargs):
