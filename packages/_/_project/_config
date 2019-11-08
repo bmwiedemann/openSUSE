@@ -380,7 +380,7 @@ Prefer: php5-zip
 Prefer: go
 
 # python-tornado exists in multiple versions, the meta-package python-tornado defines the system default
-Prefer: python2-tornado python3-tornado
+Prefer: python2-tornado python3-tornado -python3-tornado4
 
 # There is python[23]-prompt_toolkit and also python[23]-prompt_toolkit1 for compat. Use the unversioned one by default
 Prefer: python3-prompt_toolkit python2-prompt_toolkit
