@@ -18,7 +18,7 @@
 
 %define libname libopenconnect5
 Name:           openconnect
-Version:        8.03
+Version:        8.05
 Release:        0
 Summary:        Open client for Cisco AnyConnect VPN
 License:        LGPL-2.1-or-later
@@ -31,9 +31,8 @@ Source99:       %{name}.keyring
 BuildRequires:  groff-full
 BuildRequires:  libtomcrypt-devel
 BuildRequires:  pkgconfig
-# needed for www generating and not py3 compatible
-BuildRequires:  python2-base
-BuildRequires:  python2-xml
+BuildRequires:  python3-base
+BuildRequires:  python3-xml
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gnutls) >= 3.2.10
 BuildRequires:  pkgconfig(krb5)
@@ -113,6 +112,8 @@ make %{?_smp_mflags}
 
 %install
 %make_install
+# do not install androit script
+rm %{buildroot}%{_libexecdir}/%{name}/*android.sh
 install -D -m0644 %{SOURCE1} %{buildroot}/%{_sysconfdir}/openconnect/vpnc-script
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name}

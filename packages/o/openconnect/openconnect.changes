@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Nov  4 07:58:33 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- No need to ship hipreport-android.sh as it is intented for
+  android systems only
+
+-------------------------------------------------------------------
+Tue Oct 29 12:01:09 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 8.0.5:
+  * Minor fixes to build on specific platforms
+
+-------------------------------------------------------------------
+Tue Oct 29 11:58:48 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use python3 to generate the web data as now it is supported
+  by upstream
+
+-------------------------------------------------------------------
 Sun May 19 13:53:58 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 8.0.3:

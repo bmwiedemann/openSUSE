@@ -304,4 +304,19 @@ No LGPL-2.1 &quot;only&quot; licenses found. Fedora also uses LGPL-2.1 &quot;or 
     <comment></comment>
     <requestid>704146</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>8419905fe74ce3270456b2f9e552da53</srcmd5>
+    <version>8.05</version>
+    <time>1573222865</time>
+    <user>dimstar_suse</user>
+    <comment>- No need to ship hipreport-android.sh as it is intented for
+  android systems only
+
+- Update to 8.0.5:
+  * Minor fixes to build on specific platforms
+
+- Use python3 to generate the web data as now it is supported
+  by upstream</comment>
+    <requestid>745098</requestid>
+  </revision>
 </revisionlist>
