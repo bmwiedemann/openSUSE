@@ -1,7 +1,7 @@
 #
 # spec file for package python-Trololio
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2018 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,8 +23,7 @@ Version:        1.0
 Release:        0
 Summary:        Trollius and asyncio compatibility library
 License:        MIT
-Group:          Development/Libraries/Python
-URL:            http://github.com/ThinkChaos/Trololio
+URL:            https://github.com/ThinkChaos/Trololio
 Source:         https://files.pythonhosted.org/packages/source/T/Trololio/Trololio-%{version}.zip
 # License file from source repository
 Source1:        https://raw.githubusercontent.com/ThinkChaos/Trololio/master/LICENSE
