@@ -27,6 +27,7 @@ URL:            https://github.com/getsentry/raven-python
 Source:         https://files.pythonhosted.org/packages/source/r/raven/raven-%{version}.tar.gz
 # https://github.com/getsentry/raven-python/issues/1284
 Patch0:         remove-unittest2.patch
+Patch1:         pytest4.patch
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module Flask >= 0.8}
 BuildRequires:  %{python_module Flask-Login >= 0.2.0}
@@ -42,10 +43,10 @@ BuildRequires:  %{python_module celery >= 2.5}
 BuildRequires:  %{python_module exam >= 0.5.2}
 BuildRequires:  %{python_module kombu}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pytest < 4}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest-pythonpath}
 BuildRequires:  %{python_module pytest-timeout >= 0.4}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
@@ -67,6 +68,7 @@ support for any WSGI-compatible web application.
 %prep
 %setup -q -n raven-%{version}
 %autopatch -p1
+
 rm -f setup.cfg tox.ini pytest.ini
 
 %build

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  4 14:32:37 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add pytest4.patch allowing the test suite to pass with pytest 4
+
+-------------------------------------------------------------------
 Mon Sep 23 16:56:47 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Undo tornado version change causing package to break
