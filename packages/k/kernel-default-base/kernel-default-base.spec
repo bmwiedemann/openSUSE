@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 # needssslcertforbuild
 
@@ -25,7 +25,7 @@
 %define extrasummary base modules
 %define extradescription This package contains only the base modules, required in all installs.
 
-%define misc_modules button edd iscsi_ibft i6300esb
+%define misc_modules button edd iscsi_ibft i6300esb efivarfs
 
 %define virtio_modules virtio virtio_.* virtio-.*
 
@@ -40,7 +40,7 @@ hv_vmbus hyperv-keyboard hv_netvsc hv_storvsc scsi_transport_fc hyperv_fb
 
 %define scsi_modules scsi_transport_iscsi sd_mod sg sr_mod st scsi_mod
 
-%define block_drivers loop dm-mod ahci ata_piix mptsas mptspi BusLogic sym53c8xx aam53c974
+%define block_drivers loop dm-mod ahci ata_piix mptsas mptspi BusLogic sym53c8xx aam53c974 rbd
 
 %define usb_modules usb-common usbcore ehci-hcd ehci-pci ohci-hcd ohci-pci uhci-hcd \
 xhci-hcd xhci-pci typec_ucsi ucsi_acpi typec ums-alauda ums-cypress ums-datafab \
@@ -48,7 +48,7 @@ ums-eneub6250 ums-freecom ums-isd200 ums-jumpshot ums-karma ums-onetouch \
 ums-realtek ums-sddr09 ums-sddr55 ums-usbat usb-storage
 
 %define filesystems autofs4 btrfs ext4 vfat isofs jbd2 mbcache nfsv2 nfsv3 nfsv4 overlay xfs \
-        nls_cp437 nls_iso8859-1
+        nls_cp437 nls_iso8859-1 ceph
 
 %define networking \
 af_packet arptable_filter arp_tables arpt_mangle bpfilter bridge br_netfilter    \

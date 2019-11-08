@@ -57,4 +57,12 @@
     <comment>- Fix wildcard for ip6t_.*</comment>
     <requestid>723536</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>14baacfca0b1be41ad0acec5f52f8d3a</srcmd5>
+    <version>MACRO</version>
+    <time>1573222991</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>745513</requestid>
+  </revision>
 </revisionlist>
