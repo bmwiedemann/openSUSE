@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Nov  1 06:37:54 UTC 2019 - Jiri Slaby <jslaby@suse.com>
+
+- update to 1.4.962
+  * Update Psi+ Emoji Pack (#485)
+  * FSM: Favor urls from clipboard and then other stuff
+  * Fixed displaying of own files with webkit
+  * Started work on shares streaming for QNAM
+  * iris relinked.
+  * Changed some default toolbar and notification options
+  * Fixed some share downloader caching and image rendering bugs
+  * Allow SIMS for images
+  * Fixed downloaded shares caching
+  * relink qite
+  * Fixed amplitudes diagram for audio messages
+  * Added Content-Length header to ranged requests too
+  * Make voice messages over jingle working
+  * wip: proxying shares via http
+  * linkify shared urls
+  * Fixed crash on startup for all-in-one mode after previous commit
+  * Work with tabs (#483)
+  * Fixed opt_application (#481)
+  * and more...
+
+-------------------------------------------------------------------
 Fri Sep 27 07:05:18 UTC 2019 - Jiri Slaby <jslaby@suse.com>
 
 - update to 1.4.885
