@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 04 10:10:58 UTC 2019 - mcepl@cepl.eu
+
+- Update to version 20191104.08e6493:
+  * %pyproject_install macro should include --no-compile.
+  * Recognise the _ for the macro arguments too
+
+-------------------------------------------------------------------
 Mon Jun 10 11:34:32 UTC 2019 - mcepl@cepl.eu
 
 - Update to version 20190610.2ee3233:

@@ -246,4 +246,14 @@ prerequisite for new python submission</comment>
   * Add the first draft of pyproject_wheel and pyproject_install macros.</comment>
     <requestid>708959</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>283d9d60acea5020f3fa3fddba4d55d0</srcmd5>
+    <version>20191104.08e6493</version>
+    <time>1573222902</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20191104.08e6493:
+  * %pyproject_install macro should include --no-compile.
+  * Recognise the _ for the macro arguments too</comment>
+    <requestid>745134</requestid>
+  </revision>
 </revisionlist>
