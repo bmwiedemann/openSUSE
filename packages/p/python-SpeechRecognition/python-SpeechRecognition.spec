@@ -1,7 +1,7 @@
 #
 # spec file for package python-SpeechRecognition
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,6 @@ Summary:        Library for performing speech recognition, with support for seve
 # We remove all those before building so it's not installed in the
 # generated packages.
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/Uberi/speech_recognition#readme
 Source:         https://github.com/Uberi/speech_recognition/archive/%{version}.tar.gz
 Patch0:         fix-readme.patch
@@ -51,7 +50,6 @@ IBM Speech to Text
 
 %package -n python-SpeechRecognition-common-en-US
 Summary:        Common files for en-US language model support in python-speech_recognition
-Group:          Development/Languages/Python
 
 %description -n python-SpeechRecognition-common-en-US
 SpeechRecognition Library for performing speech recognition, with support for
