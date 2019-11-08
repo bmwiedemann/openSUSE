@@ -1088,7 +1088,10 @@ Macros:
 %skelcd_compat 0
 
 # trim binary changelogs back to Jan 01 2018
-%_changelog_trimtime 1514764800
+# maxnum,cuttime,minnum
+# 2018/01/01
+%_binarychangelogtrim 0,1514764800,10
+#  %_changelog_trimtime 1514764800
 
 %build_ldflags %{?_lto_cflags}
 
