@@ -177,7 +177,7 @@ splitter-whitelist = B C D E F G H I J
 # now just for testing
 source_projects_expand = devel:languages:haskell
 
-devel-whitelist = Virtualization:WSL server:monitoring:zabbix network:vpn:wireguard KDE:Qt:5.14
+devel-whitelist = Virtualization:WSL server:monitoring:zabbix network:vpn:wireguard KDE:Qt:5.14 network:messaging:kafka
  
 # packagelist generator related configuration
 pkglistgen-archs = i586 x86_64
@@ -365,7 +365,7 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20191106'
 published: '20191104'
 publishing: '20191104'
 testing: '20191106'
