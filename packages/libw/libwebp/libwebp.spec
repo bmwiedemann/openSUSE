@@ -131,6 +131,11 @@ images more efficiently.
 %autosetup -p1
 
 %build
+
+%ifarch %arm
+%define _lto_cflags %{nil}
+%endif
+
 %configure --disable-static \
 	--enable-libwebpmux --enable-libwebpdemux \
 	--enable-libwebpdecoder --enable-libwebpextras
