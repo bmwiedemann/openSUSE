@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov  4 02:34:19 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add openmp-export-fini.patch: Export termination function for
+  libomp.so, solves boo#1155108.
+- Remove flaky test case in libcxx.
+
+-------------------------------------------------------------------
+Wed Oct 30 08:44:49 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Fix typo, BOLL -> BOOL
+
+-------------------------------------------------------------------
 Sat Oct 19 11:12:03 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Let new {llvm,clang}*-doc packages "Conflict" with older devel

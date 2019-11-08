@@ -18,4 +18,15 @@
 </comment>
     <requestid>741231</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>92af08e1a2fd8240ce869e9d254f57b3</srcmd5>
+    <version>9.0.0</version>
+    <time>1573222889</time>
+    <user>dimstar_suse</user>
+    <comment>- Add openmp-export-fini.patch: Export termination function for
+  libomp.so, solves boo#1155108.
+- Remove flaky test case in libcxx.
+- Fix typo, BOLL -&gt; BOOL</comment>
+    <requestid>745131</requestid>
+  </revision>
 </revisionlist>

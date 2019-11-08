@@ -115,6 +115,8 @@ Patch21:        tests-use-python3.patch
 Patch22:        llvm-better-detect-64bit-atomics-support.patch
 Patch24:        opt-viewer-Find-style-css-in-usr-share.patch
 Patch26:        clang-fix-powerpc-triplet.patch
+# PATCH-FIX-UPSTREAM openmp-export-fini.patch -- Export termination function for libomp.so (boo#1155108)
+Patch27:        openmp-export-fini.patch
 BuildRequires:  binutils-devel >= 2.21.90
 %if %{with gold}
 BuildRequires:  binutils-gold
@@ -589,6 +591,7 @@ popd
 
 %if %{with libcxx}
 pushd libcxx-%{_relver}.src
+rm test/libcxx/thread/thread.threads/thread.thread.this/sleep_for.pass.cpp
 rm test/std/localization/locale.categories/category.time/locale.time.get.byname/get_monthname.pass.cpp
 rm test/std/localization/locale.categories/category.time/locale.time.get.byname/get_monthname_wide.pass.cpp
 
@@ -596,6 +599,10 @@ rm test/std/localization/locale.categories/category.time/locale.time.get.byname/
 rm -rf test/std/thread/
 popd
 %endif
+
+pushd openmp-%{_relver}.src
+%patch27 -p2
+popd
 
 # Move into right place
 mv cfe-%{_relver}.src tools/clang
@@ -699,7 +706,7 @@ fi
     -DLLVM_BUILD_UTILS:BOOL=OFF \
     -DLLVM_BUILD_EXAMPLES:BOOL=OFF \
     -DLLVM_BUILD_TESTS:BOOL=OFF \
-    -DLLVM_POLLY_BUILD:BOLL=OFF \
+    -DLLVM_POLLY_BUILD:BOOL=OFF \
     -DLLVM_TOOL_CLANG_TOOLS_EXTRA_BUILD:BOOL=OFF \
     -DLLVM_INCLUDE_TESTS:BOOL=OFF \
     -DLLVM_ENABLE_ASSERTIONS=OFF \

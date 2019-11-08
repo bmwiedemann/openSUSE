@@ -1,0 +1,16 @@
+diff --git a/openmp/runtime/src/exports_so.txt b/openmp/runtime/src/exports_so.txt
+index f7de5fd6474..6ba2b5c725e 100644
+--- a/openmp/runtime/src/exports_so.txt
++++ b/openmp/runtime/src/exports_so.txt
+@@ -54,6 +54,11 @@ VERSION {
+         ___kmp_free;
+         __kmp_thread_pool;
+ 
++        #
++        # Internal function used as termination function.
++        #
++        __kmp_internal_end_fini;
++
+ 	__kmp_reset_stats;
+ 
+ #if USE_ITT_BUILD
