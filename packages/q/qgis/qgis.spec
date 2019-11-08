@@ -19,7 +19,7 @@
 %bcond_with    otb
 
 Name:           qgis
-Version:        3.8.2
+Version:        3.8.3
 Release:        0
 Summary:        A Geographic Information System (GIS)
 License:        GPL-2.0-only
@@ -33,7 +33,8 @@ Source3:        qgis_sample_data.zip
 Patch0:         fix_grass_qt511.patch
 # PATCH-FIX-UPSTREAM Missing include https://github.com/qgis/QGIS/issues/30316
 Patch1:         ef8f06330f57882f740cfe7f8f3659b54b1bb1fb.patch
-BuildRequires:  -post-build-checks
+# PATCH-FIX-UPSTREAM fix randomness in desktop file translations
+Patch2:         qgis-3.8.3-reproducible.patch
 BuildRequires:  FastCGI-devel
 BuildRequires:  bison >= 2.4
 BuildRequires:  cmake >= 3.0.0
@@ -41,7 +42,6 @@ BuildRequires:  fdupes
 BuildRequires:  filesystem
 BuildRequires:  flex >= 2.5.6
 BuildRequires:  geos-devel >= 3.4
-BuildRequires:  gpsbabel
 %if %{with grass}
 BuildRequires:  grass-devel >= 7.2
 %endif
@@ -142,9 +142,9 @@ Requires:       python3-termcolor
 Recommends:     %{name}-sample-data
 Recommends:     apache2-mod_fcgid
 Recommends:     gpsbabel
+Conflicts:      qgis-ltr
+Conflicts:      qgis-master
 Obsoletes:      qgis2
-Obsoletes:      qgis-master
-Obsoletes:      qgis-ltr
 
 %package devel
 Summary:        Development Libraries for QGIS
@@ -169,6 +169,7 @@ GRASS plugin for QGIS required to interface with GRASS system.
 %define sampledir sample-data
 Summary:        QGIS sample data
 Group:          Productivity/Graphics/Visualization/Other
+BuildArch:      noarch
 
 %description
 QGIS is a Geographic Information System (GIS). QGIS supports vector,
@@ -187,6 +188,7 @@ QGIS sample data with raster, vector, gps files and a GRASS location from the Al
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 # Remove bad env and python version in grass plugin
 sed -i 's,^#!%{_bindir}/env python$,#!%{_bindir}/python3,g' src/plugins/grass/scripts/*.py
 sed -i 's,^#!%{_bindir}/env python3$,#!%{_bindir}/python3,g' src/plugins/grass/scripts/*.py
@@ -240,7 +242,6 @@ ln -s ../qgis/images/icons/qgis-icon-512x512.png %{buildroot}/%{_datadir}/pixmap
 # Rename .desktop file
 mv %{buildroot}%{_datadir}/applications/org.qgis.qgis.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
 
-
 # Install sample data
 pushd %{buildroot}%{_datadir}/qgis
 unzip %{SOURCE3}
@@ -255,9 +256,19 @@ popd
 %{_libdir}/libqgis*so*
 %{_libdir}/qt5/plugins/sqldrivers/libqsqlspatialite.so
 %{_mandir}/man1/*
-%{_datadir}/qgis/*
+%{_datadir}/qgis
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/qgis.png
+# Own directories for icon size not provided by hicolor-icon-theme
+%dir %{_datadir}/icons/hicolor/42x42
+%dir %{_datadir}/icons/hicolor/42x42/apps
+%dir %{_datadir}/icons/hicolor/42x42/mimetypes
+%dir %{_datadir}/icons/hicolor/80x80
+%dir %{_datadir}/icons/hicolor/80x80/apps
+%dir %{_datadir}/icons/hicolor/80x80/mimetypes
+%dir %{_datadir}/icons/hicolor/8x8
+%dir %{_datadir}/icons/hicolor/8x8/apps
+%dir %{_datadir}/icons/hicolor/8x8/mimetypes
 %{_datadir}/icons/hicolor/*/apps/*.png
 %{_datadir}/icons/hicolor/*/apps/*.svg
 %{_datadir}/icons/hicolor/*/mimetypes/*.png
@@ -292,6 +303,7 @@ popd
 %endif
 
 %files sample-data
+%dir %{_datadir}/qgis
 %{_datadir}/qgis/%{sampledir}
 
 %post -p /sbin/ldconfig

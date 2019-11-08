@@ -1,0 +1,27 @@
+From 1719c04f014cb47284be50b335e9835d687c7dff Mon Sep 17 00:00:00 2001
+From: Antoine Belvire <antoine.belvire@opensuse.org>
+Date: Sat, 12 Oct 2019 11:00:10 +0200
+Subject: [PATCH] Sort translations in desktop file
+
+Randomness is introduced by usage of Python's glob. Let's sort the result to
+get a more reproducible build.
+---
+ scripts/ts2appinfo.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/ts2appinfo.py b/scripts/ts2appinfo.py
+index 5fadd30e30..a9018a26c3 100644
+--- a/scripts/ts2appinfo.py
++++ b/scripts/ts2appinfo.py
+@@ -57,7 +57,7 @@ except AttributeError:
+ 
+ app = QCoreApplication(argvb)
+ 
+-for qm in glob(sys.argv[1] + "/output/i18n/qgis_*.qm"):
++for qm in sorted(glob(sys.argv[1] + "/output/i18n/qgis_*.qm")):
+     translator = QTranslator()
+     translator.load(qm)
+ 
+-- 
+2.23.0
+

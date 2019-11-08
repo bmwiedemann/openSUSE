@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Oct 16 06:15:34 UTC 2019 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Remove gpsbabel from build requirements: It's only recommended
+  at runtime. This fixes build on ppc64(le) for which gpsbabel is
+  not available.
+- Remove obsolete filters in qgis.rpmlintrc.
+
+-------------------------------------------------------------------
+Fri Oct 11 05:50:41 UTC 2019 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Add qgis-3.8.3-reproducible.patch: Sort desktop file content to
+  get a more reproducible build.
+- Fix unowned directory issues.
+- Stop disabling post-build-checks.
+
+-------------------------------------------------------------------
+Mon Sep 30 17:00:13 UTC 2019 - Nicolas Rochard <nrochard@gmail.com>
+
+- Update to latest version 3.8.3 (monthly bugfix)
+
+-------------------------------------------------------------------
+Thu Sep 19 19:03:47 UTC 2019 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Conflict with qgis-ltr and qgis-master rather than obsolete them.
+- Make sample-data subpackage noarch.
+
+-------------------------------------------------------------------
 Mon Sep 16 17:47:08 UTC 2019 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - Make build with otr configurable
