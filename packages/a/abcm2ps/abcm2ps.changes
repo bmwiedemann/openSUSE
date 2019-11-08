@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Nov  8 10:52:12 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update compiler_flags.patch
+
+-------------------------------------------------------------------
+Fri Nov  8 10:43:50 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 8.14.6:
+  * bad voice combine '3' when 3 voices and unison
+  * don't separate the accents from the notes by tuplets
+  * clash of tuplet numbers with accents
+  * bad time signature when C or C| and more value(s)
+  * warnings from clang static analysis
+  * bad music font selection when not defined by 'url(..)'
+  * bad vertical offset of "%%multicol new" when W: and %%begintext
+  * bad handling of fonts
+  * Add option flatbeamgracing that applies flat beams to grace notes only
+  * put the upper tuplets a bit closer to the notes
+
+-------------------------------------------------------------------
 Thu Oct 17 12:47:35 UTC 2019 - Richard Brown <rbrown@suse.com>
 
 - Remove obsolete Groups tag (fate#326485)

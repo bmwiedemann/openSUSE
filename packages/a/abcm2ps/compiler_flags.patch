@@ -1,8 +1,8 @@
-diff -urEbw abcm2ps-8.14.5/configure abcm2ps-8.14.5.new/configure
---- abcm2ps-8.14.5/configure	2019-07-17 09:44:10.000000000 +0200
-+++ abcm2ps-8.14.5.new/configure	2019-07-18 15:01:30.465812774 +0200
+diff -urEbw abcm2ps-8.14.6/configure abcm2ps-8.14.6.new/configure
+--- abcm2ps-8.14.6/configure	2019-11-05 14:02:00.000000000 +0100
++++ abcm2ps-8.14.6.new/configure	2019-11-08 11:51:14.147405009 +0100
 @@ -5,7 +5,7 @@
- VDATE=2019-07-17
+ VDATE=2019-11-05
  
  CC=gcc
 -CFLAGS="-g -O2 -Wall -pipe"
