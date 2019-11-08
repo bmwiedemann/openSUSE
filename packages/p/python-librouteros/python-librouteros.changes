@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Nov  7 19:51:02 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.0
+  * Introduce query support.
+  * Path object for easy query and common operations.
+  * yield each item instead of returning tuple of items. Greatly
+    reduces memory usage.
+  * Drop pre python 3.6 support.
+  * Replace pylava with pylint.
+  * Add yapf formatter.
+  * Replace py.path with builtin pathlib.
+  * connect() accepts only one login_method parameter.
+  * Drop socker exceptions wrapping.
+  * Remove ConnectionError exception.
+  * Renamed LibError to LibRouterosError.
+  * Changed exceptions inheritance.
+  * Removed joinPath()
+- Do not longer build against python2 (upstream dropped support)
+
+-------------------------------------------------------------------
 Sat Oct 12 08:26:33 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4.0
