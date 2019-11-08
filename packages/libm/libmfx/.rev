@@ -39,4 +39,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>729910</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>bb3d483b459a75cfdc6f437d14fadf0b</srcmd5>
+    <version>19.2.1</version>
+    <time>1573223356</time>
+    <user>dimstar_suse</user>
+    <comment>- This release fullfills requirements for jsc#SLE-8841</comment>
+    <requestid>746614</requestid>
+  </revision>
 </revisionlist>
