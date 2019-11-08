@@ -37,6 +37,7 @@ Source2:        %{sname}.keyring
 Source100:      baselibs.conf
 Patch0:         sysmacros.patch
 Patch1:         use_system_v4l_for_qv4l.patch
+Patch2:         v4l-utils-32bitfix.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig
@@ -198,6 +199,7 @@ qv4l2 is a test control and streaming test application for video4linux.
 %setup -q -n %{sname}-%{version}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %if "%{flavor}" == "qv4l2"

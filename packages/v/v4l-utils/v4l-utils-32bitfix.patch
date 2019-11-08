@@ -1,0 +1,24 @@
+Index: b/lib/libdvbv5/dvb-file.c
+===================================================================
+--- a/lib/libdvbv5/dvb-file.c
++++ b/lib/libdvbv5/dvb-file.c
+@@ -589,7 +589,8 @@ static int fill_entry(struct dvb_entry *
+ 		n_prop = entry->n_props;
+ 		entry->props[n_prop].cmd = i;
+ 		if (!attr_name || !*attr_name)
+-			entry->props[n_prop].u.data = atol(value);
++			/* some put stream_id=4294967295 (-1) which is more than LONG_MAX on 32bit... */
++			entry->props[n_prop].u.data = (uint32_t)atoll(value);
+ 		else {
+ 			for (j = 0; attr_name[j]; j++)
+ 				if (!strcasecmp(value, attr_name[j]))
+@@ -708,7 +709,8 @@ static int fill_entry(struct dvb_entry *
+ 		/* FIXME: this works only for integer values */
+ 		n_prop = entry->n_props;
+ 		entry->props[n_prop].cmd = cmd;
+-		entry->props[n_prop].u.data = atol(value);
++		/* some put stream_id=4294967295 (-1) which is more than LONG_MAX on 32bit... */
++		entry->props[n_prop].u.data = (uint32_t)atoll(value);
+ 		entry->n_props++;
+ 
+ 		return 0;
