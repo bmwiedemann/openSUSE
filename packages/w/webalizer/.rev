@@ -230,4 +230,12 @@
     <comment>1</comment>
     <requestid>491725</requestid>
   </revision>
+  <revision rev="32" vrev="24">
+    <srcmd5>21764429c660acab8e3d7319c97a01c0</srcmd5>
+    <version>2.23</version>
+    <time>1573223242</time>
+    <user>dimstar_suse</user>
+    <comment>- remove GeoIP support [bsc#1156197]</comment>
+    <requestid>746482</requestid>
+  </revision>
 </revisionlist>

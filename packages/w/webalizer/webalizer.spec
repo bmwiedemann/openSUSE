@@ -1,7 +1,7 @@
 #
 # spec file for package webalizer
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,7 +21,7 @@
 
 Name:           webalizer
 Summary:        A Web Server Log File Analysis Program
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Utilities
 Version:        2.23
 Release:        0
@@ -47,7 +47,6 @@ BuildRequires:  apache2-devel
 BuildRequires:  autoconf
 BuildRequires:  db-devel
 BuildRequires:  gd-devel
-BuildRequires:  libGeoIP-devel
 BuildRequires:  libapr-util1-devel
 BuildRequires:  libbz2-devel
 BuildRequires:  libjpeg-devel

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  8 06:41:45 UTC 2019 - pgajdos@suse.com
+
+- remove GeoIP support [bsc#1156197]
+
+-------------------------------------------------------------------
 Thu Apr 27 22:51:04 UTC 2017 - chris@computersalat.de
 
 - update flags pkg
