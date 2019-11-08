@@ -1,5 +1,11 @@
 -------------------------------------------------------------------
-Wed Aug 21 21:55:43 UTC 2019 - Aaron Stern <ukbeast89@protonmail.com>
+Thu Nov  7 12:49:29 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- This release is needed for latest intel-media-driver update
+  (jsc#SLE-8838)
+
+-------------------------------------------------------------------
+Wed Aug 21 22:07:32 UTC 2019 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to version 2.5.0:
   * Correct the comment of color_range.
