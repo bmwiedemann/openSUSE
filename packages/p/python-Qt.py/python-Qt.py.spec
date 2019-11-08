@@ -1,7 +1,7 @@
 #
 # spec file for package python-Qt.py
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,6 @@ Version:        1.1.0
 Release:        0
 Summary:        Python compat-wrapper around all Qt bindings
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/mottosso/Qt
 Source:         https://files.pythonhosted.org/packages/source/Q/Qt.py/Qt.py-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}

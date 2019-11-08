@@ -16,4 +16,12 @@
 </comment>
     <requestid>659351</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e0d1f36f547707b5a4af3aaa8616b811</srcmd5>
+    <version>1.1.0</version>
+    <time>1573223148</time>
+    <user>dimstar_suse</user>
+    <comment>- Run through spec-cleaner</comment>
+    <requestid>746329</requestid>
+  </revision>
 </revisionlist>
