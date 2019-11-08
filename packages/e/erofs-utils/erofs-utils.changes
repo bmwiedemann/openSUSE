@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Nov  8 08:00:40 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0
+  * list available compressors for help command
+  * introduce long parameter option
+  * introduce shared xattr support
+  * introduce inline xattr support
+  * fix old kernel compatibility for non-lz4 compression
+  * introduce fixed UNIX timestamp
+  * complete extended inode support
+  * support 64-bit internal buffer cache
+  * keep up with in-kernel ondisk format naming
+  * resize image to the correct size
+  * complete special file support
+- Drop long.patch (merged upstream)
+
+-------------------------------------------------------------------
 Sun Sep  8 14:26:05 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20190826
