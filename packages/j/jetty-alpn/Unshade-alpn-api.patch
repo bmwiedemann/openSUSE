@@ -1,0 +1,14 @@
+--- jetty-alpn-alpn-project-8.1.13.v20181017/alpn-boot/pom.xml	2018-10-17 11:30:07.000000000 +0200
++++ jetty-alpn-alpn-project-8.1.13.v20181017/alpn-boot/pom.xml	2019-01-08 08:27:21.433696932 +0100
+@@ -56,9 +56,9 @@
+             <configuration>
+               <instructions>
+                 <Export-Package>
+-                  org.eclipse.jetty.alpn;sun.security.ssl;version="${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}"
++                  sun.security.ssl;version="${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}"
+                 </Export-Package>
+-                <Import-Package>!sun.*,</Import-Package>
++                <Import-Package>!sun.*,org.eclipse.jetty.alpn</Import-Package>
+                 <_nouses>true</_nouses>
+               </instructions>
+             </configuration>
