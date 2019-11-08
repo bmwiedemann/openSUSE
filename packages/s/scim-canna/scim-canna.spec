@@ -1,7 +1,7 @@
 #
 # spec file for package scim-canna
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,7 +20,7 @@ Name:           scim-canna
 Version:        1.0.1
 Release:        0
 Summary:        Canna Input Method Engine for SCIM
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/I18n/Japanese
 Url:            http://sourceforge.jp/projects/scim-imengine/
 Source:         http://iij.dl.sourceforge.jp/scim-imengine/29155/%{name}-%{version}.tar.gz
@@ -30,6 +30,7 @@ Patch1:         gtk-2.12+-gtktooltips-migration.patch
 Patch2:         gtk-2.4+-combobox-migration.patch
 BuildRequires:  canna-devel
 BuildRequires:  gcc-c++
+BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  scim-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -43,6 +44,7 @@ Canna Input Method Engine for SCIM
 %patch2 -p1
 
 %build
+autoreconf -fiv
 CXXFLAGS="%{optflags}"
 %configure \
     --disable-static \
