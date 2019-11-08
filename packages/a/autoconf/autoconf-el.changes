@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov  5 23:07:29 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix testsuite with Bash 5, add port-tests-to-bash-5.patch
+
+-------------------------------------------------------------------
+Wed Oct 30 17:01:32 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Require perl-base instead of perl, none of the additional modules
+  are required.
+
+-------------------------------------------------------------------
+Thu Oct 17 13:55:31 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
 Mon Aug  6 09:59:34 UTC 2018 - schwab@suse.de
 
 - ac-header-major.patch: port AC_HEADER_MAJOR to glibc 2.25
