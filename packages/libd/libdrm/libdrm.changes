@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  7 11:37:12 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- This release includes support for latest Intel GPUs 
+  (jsc#SLE-7962, jsc#SLE-8024, jsc#SLE-8022, jsc#SLE-10182, 
+   jsc#SLE-4989, jsc#SLE-4983, bsc#1137515)
+
+-------------------------------------------------------------------
 Wed Oct 30 11:51:37 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 2.4.100

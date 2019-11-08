@@ -1418,4 +1418,14 @@ Man pages are disabled for this build, upstream disabled them for this release. 
   * bugfixes (boo#1155382)</comment>
     <requestid>744167</requestid>
   </revision>
+  <revision rev="147" vrev="2">
+    <srcmd5>f1b3acd1bc26bc6b0f24a5bc9cf30889</srcmd5>
+    <version>2.4.100</version>
+    <time>1573223338</time>
+    <user>dimstar_suse</user>
+    <comment>- This release includes support for latest Intel GPUs 
+  (jsc#SLE-7962, jsc#SLE-8024, jsc#SLE-8022, jsc#SLE-10182, 
+   jsc#SLE-4989, jsc#SLE-4983, bsc#1137515)</comment>
+    <requestid>746612</requestid>
+  </revision>
 </revisionlist>
