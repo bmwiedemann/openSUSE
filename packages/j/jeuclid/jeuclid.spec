@@ -156,7 +156,7 @@ touch -r NOTICE NOTICE.unix;
 mv NOTICE.unix NOTICE
 
 mkdir lib
-build-jar-repository -s -p lib jcip-annotations commons-logging xmlgraphics-commons batik-all xmlgraphics-fop.jar commons-cli commons-lang3
+build-jar-repository -s -p lib jcip-annotations commons-logging xmlgraphics-commons batik-all xmlgraphics-fop.jar commons-cli commons-lang3 xml-apis
 
 %patch0 -p1
 %patch1 -p1
