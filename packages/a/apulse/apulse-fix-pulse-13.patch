@@ -1,0 +1,378 @@
+Index: b/src/apulse-context.c
+===================================================================
+--- a/src/apulse-context.c
++++ b/src/apulse-context.c
+@@ -80,7 +80,7 @@ pa_context_disconnect(pa_context *c)
+ 
+ APULSE_EXPORT
+ int
+-pa_context_errno(pa_context *c)
++pa_context_errno(const pa_context *c)
+ {
+     trace_info_z("Z %s c=%p\n", __func__, c);
+ 
+@@ -89,7 +89,7 @@ pa_context_errno(pa_context *c)
+ 
+ APULSE_EXPORT
+ uint32_t
+-pa_context_get_protocol_version(pa_context *c)
++pa_context_get_protocol_version(const pa_context *c)
+ {
+     trace_info_f("F %s c=%p\n", __func__, c);
+     return PA_PROTOCOL_VERSION;
+@@ -143,7 +143,7 @@ pa_context_get_server_info(pa_context *c
+ 
+ APULSE_EXPORT
+ uint32_t
+-pa_context_get_server_protocol_version(pa_context *c)
++pa_context_get_server_protocol_version(const pa_context *c)
+ {
+     trace_info_f("F %s c=%p\n", __func__, c);
+     return 8;  // PA headers say "8" is the protocol version used in PulseAudio
+@@ -514,7 +514,7 @@ pa_context_get_sink_input_info(pa_contex
+ 
+ APULSE_EXPORT
+ pa_context_state_t
+-pa_context_get_state(pa_context *c)
++pa_context_get_state(const pa_context *c)
+ {
+     trace_info_f("F %s c=%p\n", __func__, c);
+ 
+@@ -536,7 +536,7 @@ pa_context_new(pa_mainloop_api *mainloop
+ APULSE_EXPORT
+ pa_context *
+ pa_context_new_with_proplist(pa_mainloop_api *mainloop_api, const char *name,
+-                             pa_proplist *proplist)
++                             const pa_proplist *proplist)
+ {
+     trace_info_f("F %s mainloop_api=%p, name=%s, proplist=%p\n", __func__,
+                  mainloop_api, name, proplist);
+@@ -569,7 +569,7 @@ pa_context_ref(pa_context *c)
+ 
+ APULSE_EXPORT
+ pa_time_event *
+-pa_context_rttime_new(pa_context *c, pa_usec_t usec, pa_time_event_cb_t cb,
++pa_context_rttime_new(const pa_context *c, pa_usec_t usec, pa_time_event_cb_t cb,
+                       void *userdata)
+ {
+     trace_info_f("F %s c=%p, usec=%" PRIu64 " cb=%p, userdata=%p\n", __func__,
+@@ -1240,7 +1240,7 @@ pa_context_set_default_source(pa_context
+ 
+ APULSE_EXPORT
+ int
+-pa_context_is_local(pa_context *c)
++pa_context_is_local(const pa_context *c)
+ {
+     trace_info_z("Z %s\n", __func__);
+     return 0;
+@@ -1257,7 +1257,7 @@ pa_context_set_name(pa_context *c, const
+ 
+ APULSE_EXPORT
+ const char *
+-pa_context_get_server(pa_context *c)
++pa_context_get_server(const pa_context *c)
+ {
+     trace_info_z("Z %s\n", __func__);
+     return NULL;
+@@ -1265,7 +1265,7 @@ pa_context_get_server(pa_context *c)
+ 
+ APULSE_EXPORT
+ pa_operation *
+-pa_context_proplist_update(pa_context *c, pa_update_mode_t mode, pa_proplist *p,
++pa_context_proplist_update(pa_context *c, pa_update_mode_t mode, const pa_proplist *p,
+                            pa_context_success_cb_t cb, void *userdata)
+ {
+     trace_info_z("Z %s\n", __func__);
+@@ -1283,7 +1283,7 @@ pa_context_proplist_remove(pa_context *c
+ 
+ APULSE_EXPORT
+ uint32_t
+-pa_context_get_index(pa_context *s)
++pa_context_get_index(const pa_context *s)
+ {
+     trace_info_z("Z %s\n", __func__);
+     return 0;
+@@ -1291,14 +1291,14 @@ pa_context_get_index(pa_context *s)
+ 
+ APULSE_EXPORT
+ void
+-pa_context_rttime_restart(pa_context *c, pa_time_event *e, pa_usec_t usec)
++pa_context_rttime_restart(const pa_context *c, pa_time_event *e, pa_usec_t usec)
+ {
+     trace_info_z("Z %s\n", __func__);
+ }
+ 
+ APULSE_EXPORT
+ size_t
+-pa_context_get_tile_size(pa_context *c, const pa_sample_spec *ss)
++pa_context_get_tile_size(const pa_context *c, const pa_sample_spec *ss)
+ {
+     gchar *s_ss = trace_pa_sample_spec_as_string(ss);
+     trace_info_z("Z %s c=%p, ss=%s\n", __func__, c, s_ss);
+@@ -1325,7 +1325,7 @@ pa_context_set_event_callback(pa_context
+ 
+ APULSE_EXPORT
+ int
+-pa_context_is_pending(pa_context *c)
++pa_context_is_pending(const pa_context *c)
+ {
+     trace_info_z("Z %s\n", __func__);
+     return 0;
+@@ -1345,7 +1345,7 @@ APULSE_EXPORT
+ pa_operation *
+ pa_context_play_sample_with_proplist(pa_context *c, const char *name,
+                                      const char *dev, pa_volume_t volume,
+-                                     pa_proplist *proplist,
++                                     const pa_proplist *proplist,
+                                      pa_context_play_sample_cb_t cb,
+                                      void *userdata)
+ {
+Index: b/src/apulse-mainloop.c
+===================================================================
+--- a/src/apulse-mainloop.c
++++ b/src/apulse-mainloop.c
+@@ -386,7 +386,7 @@ pa_mainloop_get_api(pa_mainloop *m)
+ 
+ APULSE_EXPORT
+ int
+-pa_mainloop_get_retval(pa_mainloop *m)
++pa_mainloop_get_retval(const pa_mainloop *m)
+ {
+     trace_info_f("F %s m=%p\n", __func__, m);
+ 
+Index: b/src/apulse-operation.c
+===================================================================
+--- a/src/apulse-operation.c
++++ b/src/apulse-operation.c
+@@ -67,7 +67,7 @@ pa_operation_cancel(pa_operation *o)
+ 
+ APULSE_EXPORT
+ pa_operation_state_t
+-pa_operation_get_state(pa_operation *o)
++pa_operation_get_state(const pa_operation *o)
+ {
+     trace_info_f("F %s o=%p\n", __func__, o);
+     if (!o) {
+Index: b/src/apulse-proplist.c
+===================================================================
+--- a/src/apulse-proplist.c
++++ b/src/apulse-proplist.c
+@@ -119,7 +119,7 @@ pa_proplist_update(pa_proplist *p, pa_up
+ 
+ APULSE_EXPORT
+ int
+-pa_proplist_contains(pa_proplist *p, const char *key)
++pa_proplist_contains(const pa_proplist *p, const char *key)
+ {
+     trace_info_f("F %s p=%p, key=%s\n", __func__, p, key);
+ 
+@@ -128,7 +128,7 @@ pa_proplist_contains(pa_proplist *p, con
+ 
+ APULSE_EXPORT
+ const char *
+-pa_proplist_gets(pa_proplist *p, const char *key)
++pa_proplist_gets(const pa_proplist *p, const char *key)
+ {
+     trace_info_f("F %s p=%p, key=%s\n", __func__, p, key);
+ 
+@@ -156,7 +156,7 @@ pa_proplist_copy(const pa_proplist *p)
+ 
+ APULSE_EXPORT
+ unsigned
+-pa_proplist_size(pa_proplist *p)
++pa_proplist_size(const pa_proplist *p)
+ {
+     trace_info_z("Z %s\n", __func__);
+     return 0;
+@@ -164,7 +164,7 @@ pa_proplist_size(pa_proplist *p)
+ 
+ APULSE_EXPORT
+ int
+-pa_proplist_isempty(pa_proplist *p)
++pa_proplist_isempty(const pa_proplist *p)
+ {
+     trace_info_z("Z %s\n", __func__);
+     return 0;
+@@ -172,7 +172,7 @@ pa_proplist_isempty(pa_proplist *p)
+ 
+ APULSE_EXPORT
+ int
+-pa_proplist_equal(pa_proplist *a, pa_proplist *b)
++pa_proplist_equal(const pa_proplist *a, const pa_proplist *b)
+ {
+     trace_info_z("Z %s\n", __func__);
+     return 0;
+@@ -204,7 +204,7 @@ pa_proplist_setf(pa_proplist *p, const c
+ 
+ APULSE_EXPORT
+ int
+-pa_proplist_get(pa_proplist *p, const char *key, const void **data,
++pa_proplist_get(const pa_proplist *p, const char *key, const void **data,
+                 size_t *nbytes)
+ {
+     trace_info_z("Z %s\n", __func__);
+@@ -229,7 +229,7 @@ pa_proplist_unset_many(pa_proplist *p, c
+ 
+ APULSE_EXPORT
+ const char *
+-pa_proplist_iterate(pa_proplist *p, void **state)
++pa_proplist_iterate(const pa_proplist *p, void **state)
+ {
+     trace_info_z("Z %s\n", __func__);
+     return NULL;
+@@ -237,7 +237,7 @@ pa_proplist_iterate(pa_proplist *p, void
+ 
+ APULSE_EXPORT
+ char *
+-pa_proplist_to_string(pa_proplist *p)
++pa_proplist_to_string(const pa_proplist *p)
+ {
+     trace_info_z("Z %s\n", __func__);
+     return NULL;
+@@ -245,7 +245,7 @@ pa_proplist_to_string(pa_proplist *p)
+ 
+ APULSE_EXPORT
+ char *
+-pa_proplist_to_string_sep(pa_proplist *p, const char *sep)
++pa_proplist_to_string_sep(const pa_proplist *p, const char *sep)
+ {
+     trace_info_z("Z %s\n", __func__);
+     return NULL;
+Index: b/src/apulse-stream.c
+===================================================================
+--- a/src/apulse-stream.c
++++ b/src/apulse-stream.c
+@@ -714,7 +714,7 @@ pa_stream_flush(pa_stream *s, pa_stream_
+ 
+ APULSE_EXPORT
+ uint32_t
+-pa_stream_get_index(pa_stream *s)
++pa_stream_get_index(const pa_stream *s)
+ {
+     trace_info_f("F %s s=%p\n", __func__, s);
+ 
+@@ -750,7 +750,7 @@ pa_stream_get_sample_spec(pa_stream *s)
+ 
+ APULSE_EXPORT
+ pa_stream_state_t
+-pa_stream_get_state(pa_stream *s)
++pa_stream_get_state(const pa_stream *s)
+ {
+     trace_info_f("F %s s=%p\n", __func__, s);
+ 
+@@ -790,7 +790,7 @@ pa_stream_get_timing_info(pa_stream *s)
+ 
+ APULSE_EXPORT
+ int
+-pa_stream_is_corked(pa_stream *s)
++pa_stream_is_corked(const pa_stream *s)
+ {
+     trace_info_f("F %s s=%p\n", __func__, s);
+     return g_atomic_int_get(&s->paused);
+@@ -798,7 +798,7 @@ pa_stream_is_corked(pa_stream *s)
+ 
+ APULSE_EXPORT
+ int
+-pa_stream_is_suspended(pa_stream *s)
++pa_stream_is_suspended(const pa_stream *s)
+ {
+     trace_info_f("F %s s=%p\n", __func__, s);
+     // ALSA sink is never suspended
+@@ -1058,7 +1058,7 @@ pa_stream_update_timing_info(pa_stream *
+ 
+ APULSE_EXPORT
+ size_t
+-pa_stream_writable_size(pa_stream *s)
++pa_stream_writable_size(const pa_stream *s)
+ {
+     trace_info_f("F %s s=%p\n", __func__, s);
+ 
+@@ -1081,7 +1081,7 @@ pa_stream_writable_size(pa_stream *s)
+ 
+ APULSE_EXPORT
+ size_t
+-pa_stream_readable_size(pa_stream *s)
++pa_stream_readable_size(const pa_stream *s)
+ {
+     trace_info_f("F %s s=%p\n", __func__, s);
+ 
+@@ -1162,7 +1162,7 @@ pa_stream_get_buffer_attr(pa_stream *s)
+ 
+ APULSE_EXPORT
+ uint32_t
+-pa_stream_get_device_index(pa_stream *s)
++pa_stream_get_device_index(const pa_stream *s)
+ {
+     trace_info_f("F %s s=%p\n", __func__, s);
+ 
+@@ -1172,7 +1172,7 @@ pa_stream_get_device_index(pa_stream *s)
+ 
+ APULSE_EXPORT
+ const char *
+-pa_stream_get_device_name(pa_stream *s)
++pa_stream_get_device_name(const pa_stream *s)
+ {
+     trace_info_f("F %s s=%p\n", __func__, s);
+     return "apulse";
+@@ -1220,7 +1220,7 @@ pa_stream_set_underflow_callback(pa_stre
+ 
+ APULSE_EXPORT
+ pa_context *
+-pa_stream_get_context(pa_stream *p)
++pa_stream_get_context(const pa_stream *p)
+ {
+     trace_info_z("Z %s\n", __func__);
+     return NULL;
+@@ -1236,7 +1236,7 @@ pa_stream_set_overflow_callback(pa_strea
+ 
+ APULSE_EXPORT
+ int64_t
+-pa_stream_get_underflow_index(pa_stream *p)
++pa_stream_get_underflow_index(const pa_stream *p)
+ {
+     trace_info_z("Z %s\n", __func__);
+     return 0;
+@@ -1300,7 +1300,7 @@ pa_stream_get_channel_map(pa_stream *s)
+ 
+ APULSE_EXPORT
+ const pa_format_info *
+-pa_stream_get_format_info(pa_stream *s)
++pa_stream_get_format_info(const pa_stream *s)
+ {
+     trace_info_z("Z %s\n", __func__);
+     return NULL;
+@@ -1352,7 +1352,7 @@ pa_stream_set_monitor_stream(pa_stream *
+ 
+ APULSE_EXPORT
+ uint32_t
+-pa_stream_get_monitor_stream(pa_stream *s)
++pa_stream_get_monitor_stream(const pa_stream *s)
+ {
+     trace_info_z("Z %s\n", __func__);
+     return 0;
+Index: b/src/apulse-threaded-mainloop.c
+===================================================================
+--- a/src/apulse-threaded-mainloop.c
++++ b/src/apulse-threaded-mainloop.c
+@@ -179,7 +179,7 @@ pa_threaded_mainloop_accept(pa_threaded_
+ 
+ APULSE_EXPORT
+ int
+-pa_threaded_mainloop_get_retval(pa_threaded_mainloop *m)
++pa_threaded_mainloop_get_retval(const pa_threaded_mainloop *m)
+ {
+     trace_info_z("Z %s\n", __func__);
+     return 0;
+Index: b/src/apulse-volume.c
+===================================================================
+--- a/src/apulse-volume.c
++++ b/src/apulse-volume.c
+@@ -311,7 +311,7 @@ pa_cvolume_set_position(pa_cvolume *cv,
+ 
+ APULSE_EXPORT
+ pa_volume_t
+-pa_cvolume_get_position(pa_cvolume *cv, const pa_channel_map *map,
++pa_cvolume_get_position(const pa_cvolume *cv, const pa_channel_map *map,
+                         pa_channel_position_t t)
+ {
+     gchar *s_map = trace_pa_channel_map_as_string(map);

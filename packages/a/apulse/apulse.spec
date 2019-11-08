@@ -1,7 +1,7 @@
 #
 # spec file for package apulse
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,9 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+# integer of major pulse version
+%define pulse_major %(sed -n '/^#define.*PA_MAJOR/{s/^.* //;p}' /usr/include/pulse/version.h)
 
 %define __provides_exclude_from ^%{_libdir}/apulse/.*.so.*$
 Name:           apulse
@@ -22,7 +25,6 @@ Version:        0.1.12
 Release:        0
 Summary:        PulseAudio emulation for ALSA
 License:        MIT
-Group:          System/Libraries
 URL:            https://github.com/i-rinat/apulse
 Source0:        https://github.com/i-rinat/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
@@ -31,6 +33,10 @@ Source3:        %{name}.conf
 # PATCH-FIX-OPENSUSE apulse-fix-pulse-12.patch sor.alexei@meowr.ru -- Fix PulseAudio 12+ compatibility.
 Patch0:         apulse-fix-pulse-12.patch
 Patch1:         apulse-alsa.patch
+%if %{pulse_major} > 12
+# PATCH-FIX-OPENSUSE apulse-fix-pulse-13.patch seife+obs@b1-systems.com -- fix pulse 13+ compatibility.
+Patch2:         apulse-fix-pulse-13.patch
+%endif
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
