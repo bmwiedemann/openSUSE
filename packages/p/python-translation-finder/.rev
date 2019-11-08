@@ -56,4 +56,16 @@
     <comment>- Update to 1.6 bsc#1142582:</comment>
     <requestid>718091</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>06a5fbb6a97f2cfc763aaadf779c39da</srcmd5>
+    <version>1.7</version>
+    <time>1573223269</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7 bsc#1142582:
+  * Improved handling of invalid JSON files.
+  * Improved detection of flat JSON files.
+  * Improved compatibility with OSX.
+  * Improved detection of new base with gettext PO files.</comment>
+    <requestid>746494</requestid>
+  </revision>
 </revisionlist>

@@ -20,11 +20,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname translation-finder
 Name:           python-translation-finder
-Version:        1.6
+Version:        1.7
 Release:        0
 Summary:        Translation Files Finder
 License:        GPL-3.0-or-later
-Group:          Development/Languages/Python
 URL:            https://github.com/WeblateOrg/translation-finder
 # test_data/linked has to be symlink, hance using github tar ball
 Source:         https://github.com/WeblateOrg/translation-finder/archive/%{version}.tar.gz
