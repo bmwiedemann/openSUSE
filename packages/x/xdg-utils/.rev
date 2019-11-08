@@ -409,4 +409,13 @@ https://build.opensuse.org/request/show/121743 (forwarded request 121894 from va
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>735812</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>a3cc2d620b907150c501efc419a9ba5d</srcmd5>
+    <version>1.1.3+20190413</version>
+    <time>1573222884</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Don-t-run-kreadconfig-if-KDE_SESSION_VERSION-is-5.patch
+  to read the KDE Frameworks config file if necessary (boo#1155462)</comment>
+    <requestid>745125</requestid>
+  </revision>
 </revisionlist>

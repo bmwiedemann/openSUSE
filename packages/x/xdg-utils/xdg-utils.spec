@@ -27,6 +27,8 @@ Url:            https://www.freedesktop.org/wiki/Software/xdg-utils/
 Source:         xdg-utils-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE install-some-more-scripts.diff jslaby@suse.cz
 Patch0:         install-some-more-scripts.diff
+# PATCH-FIX-UPSTREAM 0001-Don-t-run-kreadconfig-if-KDE_SESSION_VERSION-is-5.patch
+Patch1:         0001-Don-t-run-kreadconfig-if-KDE_SESSION_VERSION-is-5.patch
 BuildRequires:  make
 # for xmlto to be able to generate text from html
 BuildRequires:  w3m
@@ -55,8 +57,7 @@ This means that:
    environment.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 %configure

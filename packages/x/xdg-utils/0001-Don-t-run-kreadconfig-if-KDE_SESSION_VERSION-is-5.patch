@@ -1,0 +1,40 @@
+From e47c61cb3c780cd091038c8b580eca6e10679a11 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Wed, 30 Oct 2019 17:11:08 +0100
+Subject: [PATCH] Don't run 'kreadconfig' if KDE_SESSION_VERSION is >= 5.
+
+'kreadconfig' is a KDE4 executable. The program is called 'kreadconfig5' in
+KDE Frameworks 5.xx.
+---
+ scripts/xdg-terminal.in | 15 ++++++++++++++-
+ 1 file changed, 14 insertions(+), 1 deletion(-)
+
+diff --git a/scripts/xdg-terminal.in b/scripts/xdg-terminal.in
+index 36a9833..05a3c44 100644
+--- a/scripts/xdg-terminal.in
++++ b/scripts/xdg-terminal.in
+@@ -30,7 +30,20 @@ _USAGE
+ 
+ terminal_kde()
+ {
+-    terminal=`kreadconfig --file kdeglobals --group General --key TerminalApplication --default konsole`
++    if [ -n "$KDE_SESSION_VERSION" ] && [ "$KDE_SESSION_VERSION" -ge 5 ]; then
++        local kreadconfig=kreadconfig$KDE_SESSION_VERSION
++    else
++        local kreadconfig=kreadconfig
++    fi
++
++    if which $kreadconfig >/dev/null 2>&1; then
++        local terminal=$($kreadconfig --file kdeglobals \
++                                      --group General \
++                                      --key TerminalApplication \
++                                      --default konsole)
++    else
++        exit_failure_operation_impossible "'$kreadconfig' was not found or is not executable"
++    fi
+ 
+     terminal_exec=`which $terminal 2>/dev/null`
+ 
+-- 
+2.23.0
+
