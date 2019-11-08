@@ -12,23 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PyMeta3
 Version:        0.5.1
 Release:        0
-License:        MIT
 Summary:        Pattern-matching language based on OMeta for Python 3 and 2
-Url:            https://github.com/wbond/pymeta3
-Group:          Development/Languages/Python
-Source:         https://files.pythonhosted.org/packages/source/p/pymeta3/PyMeta3-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+License:        MIT
+URL:            https://github.com/wbond/pymeta3
+Source:         https://files.pythonhosted.org/packages/source/P/PyMeta3/PyMeta3-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
 %python_subpackages
 
 %description

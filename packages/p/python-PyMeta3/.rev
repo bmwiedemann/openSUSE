@@ -8,4 +8,12 @@
 </comment>
     <requestid>669842</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>68370fa6db055133b9f48882b0ff829f</srcmd5>
+    <version>0.5.1</version>
+    <time>1573223110</time>
+    <user>dimstar_suse</user>
+    <comment>- Run through spec-cleaner</comment>
+    <requestid>746318</requestid>
+  </revision>
 </revisionlist>
