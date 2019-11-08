@@ -335,4 +335,17 @@
   connections (boo#1123805) (forwarded request 679156 from zhangxiaofei)</comment>
     <requestid>679220</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>e56ef479f71f5cb3cd7bc4629a87e185</srcmd5>
+    <version>0.9.12</version>
+    <time>1573222910</time>
+    <user>dimstar_suse</user>
+    <comment>- turn the test suite on
+
+- security update
+- added patches
+  CVE-2019-15681 [bsc#1155419]
+  + LibVNCServer-CVE-2019-15681.patch</comment>
+    <requestid>745157</requestid>
+  </revision>
 </revisionlist>

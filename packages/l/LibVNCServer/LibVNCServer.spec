@@ -32,6 +32,8 @@ Patch0:         redef-keysym.patch
 # https://github.com/LibVNC/libvncserver/issues/281
 Patch1:         cmake-libdir.patch
 Patch2:         LibVNCServer-CVE-2018-20749.patch
+# CVE-2019-15681 [bsc#1155419]
+Patch3:         LibVNCServer-CVE-2019-15681.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libavahi-devel
@@ -100,6 +102,7 @@ files for LibVNCServer.
 %setup -q -n libvncserver-%{name}-%{version}
 %patch0 -p1
 %patch1 -p1
+%patch3 -p1
 #%patch2 -p1
 # fix encoding
 for file in ChangeLog ; do
@@ -113,6 +116,8 @@ done
 make %{?_smp_mflags}
 
 %check 
+pushd build
+export LD_LIBRARY_PATH="$(pwd)"
 make test
 
 %install
