@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  3 12:23:32 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints for ppc64/ppc64le as build failed with 3.5G disk
+
+-------------------------------------------------------------------
 Fri Sep 27 11:25:30 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire python2-libxml2 instead of python-libxml2: follow
