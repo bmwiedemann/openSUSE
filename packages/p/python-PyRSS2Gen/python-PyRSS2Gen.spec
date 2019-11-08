@@ -12,7 +12,8 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
@@ -20,20 +21,18 @@
 Name:           python-PyRSS2Gen
 Version:        1.1
 Release:        0
-License:        BSD-3-Clause
 Summary:        Generate RSS2 using a Python data structure
-Url:            http://dalkescientific.com/Python/PyRSS2Gen.html
-Group:          Development/Languages/Python
+License:        BSD-3-Clause
+URL:            http://dalkescientific.com/Python/PyRSS2Gen.html
 Source:         http://dalkescientific.com/Python/PyRSS2Gen-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module feedparser}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildArch:      noarch
-Provides:       %oldpython-pyrss2gen = 1.1
+BuildRequires:  python-rpm-macros
+Provides:       %{oldpython}-pyrss2gen = 1.1
 #NOTE(saschpe): Change back to "<" after next version update:
-Obsoletes:      %oldpython-pyrss2gen <= 1.1
-
+Obsoletes:      %{oldpython}-pyrss2gen <= 1.1
+BuildArch:      noarch
 %python_subpackages
 
 %description
