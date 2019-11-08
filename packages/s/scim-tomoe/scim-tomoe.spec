@@ -29,6 +29,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  gtk2-devel
 BuildRequires:  gucharmap-devel
 BuildRequires:  intltool
+BuildRequires:  libtool
 BuildRequires:  scim-devel
 BuildRequires:  tomoe-devel
 BuildRequires:  tomoe-gtk-devel
@@ -42,6 +43,7 @@ Tomoe Input Method Engine for SCIM
 %patch3 -p1
 
 %build
+autoreconf -fiv
 CXXFLAGS="%{optflags}"
 %configure \
     --disable-static \
