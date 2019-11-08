@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyPrint
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,21 +23,19 @@ Version:        0.2.6
 Release:        0
 Summary:        A printer library for Python
 License:        GPL-3.0-only
-Group:          Development/Languages/Python
-Url:            https://gitlab.com/coala/PyPrint/
+URL:            https://gitlab.com/coala/PyPrint/
 Source:         https://files.pythonhosted.org/packages/source/P/PyPrint/PyPrint-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-colorama >= 0.3.7
+Requires:       python-termcolor >= 1.1.0
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module colorama >= 0.3.7}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module termcolor >= 1.1.0}
 # /SECTION
-Requires:       python-colorama >= 0.3.7
-Requires:       python-termcolor >= 1.1.0
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -62,7 +60,6 @@ export LANG=en_US.UTF-8
 %endif
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/*
