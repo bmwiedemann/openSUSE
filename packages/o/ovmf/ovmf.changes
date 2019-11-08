@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Nov  8 04:09:48 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Use the same x86 4MB firmware names as the ones in the previous
+  version (< stable201905) for backward compatibility
+
+-------------------------------------------------------------------
+Wed Nov  6 06:28:25 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Disable TLS for IA32(i586) to avoid exceeding the size limitation
+  while using the tool chain from SLE15-SP2/openSUSE Leap 15.2
+
+-------------------------------------------------------------------
+Mon Nov  4 06:44:03 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add ovmf-bsc1153072-fix-invalid-https-cert.patch to reject the
+  invalid server certificates for HTTPS Boot
+  (bsc#1153072, CVE-2019-14553)
+
+-------------------------------------------------------------------
 Thu Oct 17 06:25:01 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add the firmware descriptors for QEMU

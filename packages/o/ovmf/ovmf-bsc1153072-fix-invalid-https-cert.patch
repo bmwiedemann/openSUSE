@@ -1,0 +1,1129 @@
+From 6f3ccbd7e33eed52eae7bcead755afd801e5ac4b Mon Sep 17 00:00:00 2001
+From: "Wu, Jiaxin" <jiaxin.wu@intel.com>
+Date: Fri, 27 Sep 2019 11:44:38 +0800
+Subject: [PATCH 1/8] MdePkg/Include/Protocol/Tls.h: Add the data type of
+ EfiTlsVerifyHost (CVE-2019-14553)
+
+REF: https://bugzilla.tianocore.org/show_bug.cgi?id=960
+CVE: CVE-2019-14553
+In the patch, we add the new data type named "EfiTlsVerifyHost" and
+the EFI_TLS_VERIFY_HOST_FLAG for the TLS protocol consumer (HTTP)
+to enable the host name check so as to avoid the potential
+Man-In-The-Middle attack.
+
+Signed-off-by: Wu Jiaxin <jiaxin.wu@intel.com>
+Reviewed-by: Ye Ting <ting.ye@intel.com>
+Reviewed-by: Long Qin <qin.long@intel.com>
+Reviewed-by: Fu Siyuan <siyuan.fu@intel.com>
+Acked-by: Laszlo Ersek <lersek@redhat.com>
+Message-Id: <20190927034441.3096-2-Jiaxin.wu@intel.com>
+Cc: David Woodhouse <dwmw2@infradead.org>
+Cc: Jian J Wang <jian.j.wang@intel.com>
+Cc: Jiaxin Wu <jiaxin.wu@intel.com>
+Cc: Sivaraman Nainar <sivaramann@amiindia.co.in>
+Cc: Xiaoyu Lu <xiaoyux.lu@intel.com>
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Reviewed-by: Liming Gao <liming.gao@intel.com>
+(cherry picked from commit 31efec82796cb950e99d1622aa9c0eb8380613a0)
+---
+ MdePkg/Include/Protocol/Tls.h | 68 +++++++++++++++++++++++++++++------
+ 1 file changed, 57 insertions(+), 11 deletions(-)
+
+diff --git a/MdePkg/Include/Protocol/Tls.h b/MdePkg/Include/Protocol/Tls.h
+index bf1b6727a1e9..af524ae2a60e 100644
+--- a/MdePkg/Include/Protocol/Tls.h
++++ b/MdePkg/Include/Protocol/Tls.h
+@@ -41,10 +41,6 @@ typedef struct _EFI_TLS_PROTOCOL EFI_TLS_PROTOCOL;
+ /// EFI_TLS_SESSION_DATA_TYPE
+ ///
+ typedef enum {
+-  ///
+-  /// Session Configuration
+-  ///
+-
+   ///
+   /// TLS session Version. The corresponding Data is of type EFI_TLS_VERSION.
+   ///
+@@ -86,11 +82,6 @@ typedef enum {
+   /// The corresponding Data is of type EFI_TLS_SESSION_STATE.
+   ///
+   EfiTlsSessionState,
+-
+-  ///
+-  /// Session information
+-  ///
+-
+   ///
+   /// TLS session data client random.
+   /// The corresponding Data is of type EFI_TLS_RANDOM.
+@@ -106,9 +97,15 @@ typedef enum {
+   /// The corresponding Data is of type EFI_TLS_MASTER_SECRET.
+   ///
+   EfiTlsKeyMaterial,
++  ///
++  /// TLS session hostname for validation which is used to verify whether the name
++  /// within the peer certificate matches a given host name.
++  /// This parameter is invalid when EfiTlsVerifyMethod is EFI_TLS_VERIFY_NONE.
++  /// The corresponding Data is of type EFI_TLS_VERIFY_HOST.
++  ///
++  EfiTlsVerifyHost,
+ 
+   EfiTlsSessionDataTypeMaximum
+-
+ } EFI_TLS_SESSION_DATA_TYPE;
+ 
+ ///
+@@ -178,7 +175,8 @@ typedef UINT32  EFI_TLS_VERIFY;
+ ///
+ #define EFI_TLS_VERIFY_PEER                  0x1
+ ///
+-/// TLS session will fail peer certificate is absent.
++/// EFI_TLS_VERIFY_FAIL_IF_NO_PEER_CERT is only meaningful in the server mode.
++/// TLS session will fail if client certificate is absent.
+ ///
+ #define EFI_TLS_VERIFY_FAIL_IF_NO_PEER_CERT  0x2
+ ///
+@@ -187,6 +185,54 @@ typedef UINT32  EFI_TLS_VERIFY;
+ ///
+ #define EFI_TLS_VERIFY_CLIENT_ONCE           0x4
+ 
++///
++/// EFI_TLS_VERIFY_HOST_FLAG
++///
++typedef UINT32 EFI_TLS_VERIFY_HOST_FLAG;
++///
++/// There is no additional flags set for hostname validation.
++/// Wildcards are supported and they match only in the left-most label.
++///
++#define EFI_TLS_VERIFY_FLAG_NONE                    0x00
++///
++/// Always check the Subject Distinguished Name (DN) in the peer certificate even if the
++/// certificate contains Subject Alternative Name (SAN).
++///
++#define EFI_TLS_VERIFY_FLAG_ALWAYS_CHECK_SUBJECT    0x01
++///
++/// Disable the match of all wildcards.
++///
++#define EFI_TLS_VERIFY_FLAG_NO_WILDCARDS            0x02
++///
++/// Disable the "*" as wildcard in labels that have a prefix or suffix (e.g. "www*" or "*www").
++///
++#define EFI_TLS_VERIFY_FLAG_NO_PARTIAL_WILDCARDS    0x04
++///
++/// Allow the "*" to match more than one labels. Otherwise, only matches a single label.
++///
++#define EFI_TLS_VERIFY_FLAG_MULTI_LABEL_WILDCARDS   0x08
++///
++/// Restrict to only match direct child sub-domains which start with ".".
++/// For example, a name of ".example.com" would match "www.example.com" with this flag,
++/// but would not match "www.sub.example.com".
++///
++#define EFI_TLS_VERIFY_FLAG_SINGLE_LABEL_SUBDOMAINS 0x10
++///
++/// Never check the Subject Distinguished Name (DN) even there is no
++/// Subject Alternative Name (SAN) in the certificate.
++///
++#define EFI_TLS_VERIFY_FLAG_NEVER_CHECK_SUBJECT     0x20
++
++///
++/// EFI_TLS_VERIFY_HOST
++///
++#pragma pack (1)
++typedef struct {
++  EFI_TLS_VERIFY_HOST_FLAG Flags;
++  CHAR8                    *HostName;
++} EFI_TLS_VERIFY_HOST;
++#pragma pack ()
++
+ ///
+ /// EFI_TLS_RANDOM
+ /// Note: The definition of EFI_TLS_RANDOM is from "RFC 5246 A.4.1.
+-- 
+2.23.0
+
+
+From bfcc2c7f833088e0ae3d7fdff0d3f4945cedf321 Mon Sep 17 00:00:00 2001
+From: "Wu, Jiaxin" <jiaxin.wu@intel.com>
+Date: Fri, 27 Sep 2019 11:44:39 +0800
+Subject: [PATCH 2/8] CryptoPkg/TlsLib: Add the new API "TlsSetVerifyHost"
+ (CVE-2019-14553)
+
+REF: https://bugzilla.tianocore.org/show_bug.cgi?id=960
+CVE: CVE-2019-14553
+In the patch, we add the new API "TlsSetVerifyHost" for the TLS
+protocol to set the specified host name that need to be verified.
+
+Signed-off-by: Wu Jiaxin <jiaxin.wu@intel.com>
+Reviewed-by: Ye Ting <ting.ye@intel.com>
+Reviewed-by: Long Qin <qin.long@intel.com>
+Reviewed-by: Fu Siyuan <siyuan.fu@intel.com>
+Acked-by: Laszlo Ersek <lersek@redhat.com>
+Message-Id: <20190927034441.3096-3-Jiaxin.wu@intel.com>
+Cc: David Woodhouse <dwmw2@infradead.org>
+Cc: Jian J Wang <jian.j.wang@intel.com>
+Cc: Jiaxin Wu <jiaxin.wu@intel.com>
+Cc: Sivaraman Nainar <sivaramann@amiindia.co.in>
+Cc: Xiaoyu Lu <xiaoyux.lu@intel.com>
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Reviewed-by: Philippe Mathieu-Daude <philmd@redhat.com>
+Reviewed-by: Jian J Wang <jian.j.wang@intel.com>
+(cherry picked from commit 2ca74e1a175232cc201798e27437700adc7fb07e)
+---
+ CryptoPkg/Include/Library/TlsLib.h   | 20 +++++++++++++++
+ CryptoPkg/Library/TlsLib/TlsConfig.c | 38 +++++++++++++++++++++++++++-
+ 2 files changed, 57 insertions(+), 1 deletion(-)
+
+diff --git a/CryptoPkg/Include/Library/TlsLib.h b/CryptoPkg/Include/Library/TlsLib.h
+index 9875cb6e746b..3af7d4bc095e 100644
+--- a/CryptoPkg/Include/Library/TlsLib.h
++++ b/CryptoPkg/Include/Library/TlsLib.h
+@@ -396,6 +396,26 @@ TlsSetVerify (
+   IN     UINT32                   VerifyMode
+   );
+ 
++/**
++  Set the specified host name to be verified.
++
++  @param[in]  Tls           Pointer to the TLS object.
++  @param[in]  Flags         The setting flags during the validation.
++  @param[in]  HostName      The specified host name to be verified.
++
++  @retval  EFI_SUCCESS           The HostName setting was set successfully.
++  @retval  EFI_INVALID_PARAMETER The parameter is invalid.
++  @retval  EFI_ABORTED           Invalid HostName setting.
++
++**/
++EFI_STATUS
++EFIAPI
++TlsSetVerifyHost (
++  IN     VOID                     *Tls,
++  IN     UINT32                   Flags,
++  IN     CHAR8                    *HostName
++  );
++
+ /**
+   Sets a TLS/SSL session ID to be used during TLS/SSL connect.
+ 
+diff --git a/CryptoPkg/Library/TlsLib/TlsConfig.c b/CryptoPkg/Library/TlsLib/TlsConfig.c
+index 74b577d60ee3..2bf5aee7c093 100644
+--- a/CryptoPkg/Library/TlsLib/TlsConfig.c
++++ b/CryptoPkg/Library/TlsLib/TlsConfig.c
+@@ -1,7 +1,7 @@
+ /** @file
+   SSL/TLS Configuration Library Wrapper Implementation over OpenSSL.
+ 
+-Copyright (c) 2016 - 2017, Intel Corporation. All rights reserved.<BR>
++Copyright (c) 2016 - 2018, Intel Corporation. All rights reserved.<BR>
+ (C) Copyright 2016 Hewlett Packard Enterprise Development LP<BR>
+ SPDX-License-Identifier: BSD-2-Clause-Patent
+ 
+@@ -497,6 +497,42 @@ TlsSetVerify (
+   SSL_set_verify (TlsConn->Ssl, VerifyMode, NULL);
+ }
+ 
++/**
++  Set the specified host name to be verified.
++
++  @param[in]  Tls           Pointer to the TLS object.
++  @param[in]  Flags         The setting flags during the validation.
++  @param[in]  HostName      The specified host name to be verified.
++
++  @retval  EFI_SUCCESS           The HostName setting was set successfully.
++  @retval  EFI_INVALID_PARAMETER The parameter is invalid.
++  @retval  EFI_ABORTED           Invalid HostName setting.
++
++**/
++EFI_STATUS
++EFIAPI
++TlsSetVerifyHost (
++  IN     VOID                     *Tls,
++  IN     UINT32                   Flags,
++  IN     CHAR8                    *HostName
++  )
++{
++  TLS_CONNECTION  *TlsConn;
++
++  TlsConn = (TLS_CONNECTION *) Tls;
++  if (TlsConn == NULL || TlsConn->Ssl == NULL || HostName == NULL) {
++     return EFI_INVALID_PARAMETER;
++  }
++
++  SSL_set_hostflags(TlsConn->Ssl, Flags);
++
++  if (SSL_set1_host(TlsConn->Ssl, HostName) == 0) {
++    return EFI_ABORTED;
++  }
++
++  return EFI_SUCCESS;
++}
++
+ /**
+   Sets a TLS/SSL session ID to be used during TLS/SSL connect.
+ 
+-- 
+2.23.0
+
+
+From 4ab41496b6fc776d38dc2efd035b421eddc12ed8 Mon Sep 17 00:00:00 2001
+From: Laszlo Ersek <lersek@redhat.com>
+Date: Thu, 24 Oct 2019 16:44:08 +0200
+Subject: [PATCH 3/8] CryptoPkg/Crt: turn strchr() into a function
+ (CVE-2019-14553)
+
+According to the ISO C standard, strchr() is a function. We #define it as
+a macro. Unfortunately, our macro evaluates the first argument ("str")
+twice. If the expression passed for "str" has side effects, the behavior
+may be undefined.
+
+In a later patch in this series, we're going to resurrect "inet_pton.c"
+(originally from the StdLib package), which calls strchr() just like that:
+
+  strchr((xdigits = xdigits_l), ch)
+  strchr((xdigits = xdigits_u), ch)
+
+To enable this kind of function call, turn strchr() into a function.
+
+Cc: David Woodhouse <dwmw2@infradead.org>
+Cc: Jian J Wang <jian.j.wang@intel.com>
+Cc: Jiaxin Wu <jiaxin.wu@intel.com>
+Cc: Sivaraman Nainar <sivaramann@amiindia.co.in>
+Cc: Xiaoyu Lu <xiaoyux.lu@intel.com>
+Ref: https://bugzilla.tianocore.org/show_bug.cgi?id=960
+CVE: CVE-2019-14553
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Reviewed-by: Philippe Mathieu-Daude <philmd@redhat.com>
+Reviewed-by: Jian J Wang <jian.j.wang@intel.com>
+Reviewed-by: Jiaxin Wu <jiaxin.wu@intel.com>
+(cherry picked from commit eb520d94dba7369d1886cd5522d5a2c36fb02209)
+---
+ CryptoPkg/Library/BaseCryptLib/SysCall/CrtWrapper.c | 5 +++++
+ CryptoPkg/Library/Include/CrtLibSupport.h           | 2 +-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/CryptoPkg/Library/BaseCryptLib/SysCall/CrtWrapper.c b/CryptoPkg/Library/BaseCryptLib/SysCall/CrtWrapper.c
+index 71a2ef34ed2b..42235ab96ac3 100644
+--- a/CryptoPkg/Library/BaseCryptLib/SysCall/CrtWrapper.c
++++ b/CryptoPkg/Library/BaseCryptLib/SysCall/CrtWrapper.c
+@@ -115,6 +115,11 @@ QuickSortWorker (
+ // -- String Manipulation Routines --
+ //
+ 
++char *strchr(const char *str, int ch)
++{
++  return ScanMem8 (str, AsciiStrSize (str), (UINT8)ch);
++}
++
+ /* Scan a string for the last occurrence of a character */
+ char *strrchr (const char *str, int c)
+ {
+diff --git a/CryptoPkg/Library/Include/CrtLibSupport.h b/CryptoPkg/Library/Include/CrtLibSupport.h
+index 5806f50f7485..b90da20ff7e7 100644
+--- a/CryptoPkg/Library/Include/CrtLibSupport.h
++++ b/CryptoPkg/Library/Include/CrtLibSupport.h
+@@ -147,6 +147,7 @@ int            isupper     (int);
+ int            tolower     (int);
+ int            strcmp      (const char *, const char *);
+ int            strncasecmp (const char *, const char *, size_t);
++char           *strchr     (const char *, int);
+ char           *strrchr    (const char *, int);
+ unsigned long  strtoul     (const char *, char **, int);
+ long           strtol      (const char *, char **, int);
+@@ -188,7 +189,6 @@ void           abort       (void);
+ #define strcpy(strDest,strSource)         AsciiStrCpyS(strDest,MAX_STRING_SIZE,strSource)
+ #define strncpy(strDest,strSource,count)  AsciiStrnCpyS(strDest,MAX_STRING_SIZE,strSource,(UINTN)count)
+ #define strcat(strDest,strSource)         AsciiStrCatS(strDest,MAX_STRING_SIZE,strSource)
+-#define strchr(str,ch)                    ScanMem8((VOID *)(str),AsciiStrSize(str),(UINT8)ch)
+ #define strncmp(string1,string2,count)    (int)(AsciiStrnCmp(string1,string2,(UINTN)(count)))
+ #define strcasecmp(str1,str2)             (int)AsciiStriCmp(str1,str2)
+ #define sprintf(buf,...)                  AsciiSPrint(buf,MAX_STRING_SIZE,__VA_ARGS__)
+-- 
+2.23.0
+
+
+From 080fb9817552c244349426202e0bcdc245c7ab4b Mon Sep 17 00:00:00 2001
+From: Laszlo Ersek <lersek@redhat.com>
+Date: Thu, 24 Oct 2019 17:03:57 +0200
+Subject: [PATCH 4/8] CryptoPkg/Crt: satisfy "inet_pton.c" dependencies
+ (CVE-2019-14553)
+
+In a later patch in this series, we're going to resurrect "inet_pton.c"
+(originally from the StdLib package). That source file has a number of
+standard C and BSD socket dependencies. Provide those dependencies here:
+
+- The header files below will simply #include <CrtLibSupport.h>:
+
+  - arpa/inet.h
+  - arpa/nameser.h
+  - netinet/in.h
+  - sys/param.h
+  - sys/socket.h
+
+- EAFNOSUPPORT comes from "StdLib/Include/errno.h", at commit
+  e2d3a25f1a31; which is the commit immediately preceding the removal of
+  StdLib from edk2 (964f432b9b0a).
+
+  Note that the other error macro, which we alread #define, namely EINVAL,
+  has a value (22) that also matches "StdLib/Include/errno.h".
+
+- The AF_INET and AF_INET6 address family macros come from
+  "StdLib/Include/sys/socket.h".
+
+- The NS_INT16SZ, NS_INADDRSZ and NS_IN6ADDRSZ macros come from
+  "StdLib/Include/arpa/nameser.h".
+
+- The "u_int" and "u_char" types come from "StdLib/Include/sys/types.h".
+
+Cc: David Woodhouse <dwmw2@infradead.org>
+Cc: Jian J Wang <jian.j.wang@intel.com>
+Cc: Jiaxin Wu <jiaxin.wu@intel.com>
+Cc: Sivaraman Nainar <sivaramann@amiindia.co.in>
+Cc: Xiaoyu Lu <xiaoyux.lu@intel.com>
+Ref: https://bugzilla.tianocore.org/show_bug.cgi?id=960
+CVE: CVE-2019-14553
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Reviewed-by: Jian J Wang <jian.j.wang@intel.com>
+Reviewed-by: Jiaxin Wu <jiaxin.wu@intel.com>
+(cherry picked from commit 2ac41c12c0d4b3d3ee8f905ab80da019e784de00)
+---
+ CryptoPkg/Library/Include/CrtLibSupport.h | 16 ++++++++++++++++
+ CryptoPkg/Library/Include/arpa/inet.h     |  9 +++++++++
+ CryptoPkg/Library/Include/arpa/nameser.h  |  9 +++++++++
+ CryptoPkg/Library/Include/netinet/in.h    |  9 +++++++++
+ CryptoPkg/Library/Include/sys/param.h     |  9 +++++++++
+ CryptoPkg/Library/Include/sys/socket.h    |  9 +++++++++
+ 6 files changed, 61 insertions(+)
+ create mode 100644 CryptoPkg/Library/Include/arpa/inet.h
+ create mode 100644 CryptoPkg/Library/Include/arpa/nameser.h
+ create mode 100644 CryptoPkg/Library/Include/netinet/in.h
+ create mode 100644 CryptoPkg/Library/Include/sys/param.h
+ create mode 100644 CryptoPkg/Library/Include/sys/socket.h
+
+diff --git a/CryptoPkg/Library/Include/CrtLibSupport.h b/CryptoPkg/Library/Include/CrtLibSupport.h
+index b90da20ff7e7..e603fad763f9 100644
+--- a/CryptoPkg/Library/Include/CrtLibSupport.h
++++ b/CryptoPkg/Library/Include/CrtLibSupport.h
+@@ -74,20 +74,36 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
+ // Definitions for global constants used by CRT library routines
+ //
+ #define EINVAL       22               /* Invalid argument */
++#define EAFNOSUPPORT 47               /* Address family not supported by protocol family */
+ #define INT_MAX      0x7FFFFFFF       /* Maximum (signed) int value */
+ #define LONG_MAX     0X7FFFFFFFL      /* max value for a long */
+ #define LONG_MIN     (-LONG_MAX-1)    /* min value for a long */
+ #define ULONG_MAX    0xFFFFFFFF       /* Maximum unsigned long value */
+ #define CHAR_BIT     8                /* Number of bits in a char */
+ 
++//
++// Address families.
++//
++#define AF_INET   2     /* internetwork: UDP, TCP, etc. */
++#define AF_INET6  24    /* IP version 6 */
++
++//
++// Define constants based on RFC0883, RFC1034, RFC 1035
++//
++#define NS_INT16SZ    2   /*%< #/bytes of data in a u_int16_t */
++#define NS_INADDRSZ   4   /*%< IPv4 T_A */
++#define NS_IN6ADDRSZ  16  /*%< IPv6 T_AAAA */
++
+ //
+ // Basic types mapping
+ //
+ typedef UINTN          size_t;
++typedef UINTN          u_int;
+ typedef INTN           ssize_t;
+ typedef INT32          time_t;
+ typedef UINT8          __uint8_t;
+ typedef UINT8          sa_family_t;
++typedef UINT8          u_char;
+ typedef UINT32         uid_t;
+ typedef UINT32         gid_t;
+ 
+diff --git a/CryptoPkg/Library/Include/arpa/inet.h b/CryptoPkg/Library/Include/arpa/inet.h
+new file mode 100644
+index 000000000000..988e4e0a73e3
+--- /dev/null
++++ b/CryptoPkg/Library/Include/arpa/inet.h
+@@ -0,0 +1,9 @@
++/** @file
++  Include file to support building third-party standard C / BSD sockets code.
++
++  Copyright (C) 2019, Red Hat, Inc.
++
++  SPDX-License-Identifier: BSD-2-Clause-Patent
++**/
++
++#include <CrtLibSupport.h>
+diff --git a/CryptoPkg/Library/Include/arpa/nameser.h b/CryptoPkg/Library/Include/arpa/nameser.h
+new file mode 100644
+index 000000000000..988e4e0a73e3
+--- /dev/null
++++ b/CryptoPkg/Library/Include/arpa/nameser.h
+@@ -0,0 +1,9 @@
++/** @file
++  Include file to support building third-party standard C / BSD sockets code.
++
++  Copyright (C) 2019, Red Hat, Inc.
++
++  SPDX-License-Identifier: BSD-2-Clause-Patent
++**/
++
++#include <CrtLibSupport.h>
+diff --git a/CryptoPkg/Library/Include/netinet/in.h b/CryptoPkg/Library/Include/netinet/in.h
+new file mode 100644
+index 000000000000..988e4e0a73e3
+--- /dev/null
++++ b/CryptoPkg/Library/Include/netinet/in.h
+@@ -0,0 +1,9 @@
++/** @file
++  Include file to support building third-party standard C / BSD sockets code.
++
++  Copyright (C) 2019, Red Hat, Inc.
++
++  SPDX-License-Identifier: BSD-2-Clause-Patent
++**/
++
++#include <CrtLibSupport.h>
+diff --git a/CryptoPkg/Library/Include/sys/param.h b/CryptoPkg/Library/Include/sys/param.h
+new file mode 100644
+index 000000000000..988e4e0a73e3
+--- /dev/null
++++ b/CryptoPkg/Library/Include/sys/param.h
+@@ -0,0 +1,9 @@
++/** @file
++  Include file to support building third-party standard C / BSD sockets code.
++
++  Copyright (C) 2019, Red Hat, Inc.
++
++  SPDX-License-Identifier: BSD-2-Clause-Patent
++**/
++
++#include <CrtLibSupport.h>
+diff --git a/CryptoPkg/Library/Include/sys/socket.h b/CryptoPkg/Library/Include/sys/socket.h
+new file mode 100644
+index 000000000000..988e4e0a73e3
+--- /dev/null
++++ b/CryptoPkg/Library/Include/sys/socket.h
+@@ -0,0 +1,9 @@
++/** @file
++  Include file to support building third-party standard C / BSD sockets code.
++
++  Copyright (C) 2019, Red Hat, Inc.
++
++  SPDX-License-Identifier: BSD-2-Clause-Patent
++**/
++
++#include <CrtLibSupport.h>
+-- 
+2.23.0
+
+
+From 41a12a4de73356d47592dfdefe060b6d9ac9b549 Mon Sep 17 00:00:00 2001
+From: Laszlo Ersek <lersek@redhat.com>
+Date: Thu, 24 Oct 2019 15:20:18 +0200
+Subject: [PATCH 5/8] CryptoPkg/Crt: import "inet_pton.c" (CVE-2019-14553)
+
+For TianoCore BZ#1734, StdLib has been moved from the edk2 project to the
+edk2-libc project, in commit 964f432b9b0a ("edk2: Remove AppPkg, StdLib,
+StdLibPrivateInternalFiles", 2019-04-29).
+
+We'd like to use the inet_pton() function in CryptoPkg. Resurrect the
+"inet_pton.c" file from just before the StdLib removal, as follows:
+
+  $ git show \
+      964f432b9b0a^:StdLib/BsdSocketLib/inet_pton.c \
+      > CryptoPkg/Library/BaseCryptLib/SysCall/inet_pton.c
+
+The inet_pton() function is only intended for the DXE phase at this time,
+therefore only the "BaseCryptLib" instance INF file receives the new file.
+
+Cc: David Woodhouse <dwmw2@infradead.org>
+Cc: Jian J Wang <jian.j.wang@intel.com>
+Cc: Jiaxin Wu <jiaxin.wu@intel.com>
+Cc: Sivaraman Nainar <sivaramann@amiindia.co.in>
+Cc: Xiaoyu Lu <xiaoyux.lu@intel.com>
+Ref: https://bugzilla.tianocore.org/show_bug.cgi?id=960
+CVE: CVE-2019-14553
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Reviewed-by: Jian J Wang <jian.j.wang@intel.com>
+Reviewed-by: Jiaxin Wu <jiaxin.wu@intel.com>
+(cherry picked from commit 8d16ef8269b2ff373d8da674e59992adfdc032d3)
+---
+ .../Library/BaseCryptLib/BaseCryptLib.inf     |   1 +
+ .../Library/BaseCryptLib/SysCall/inet_pton.c  | 257 ++++++++++++++++++
+ CryptoPkg/Library/Include/CrtLibSupport.h     |   1 +
+ 3 files changed, 259 insertions(+)
+ create mode 100644 CryptoPkg/Library/BaseCryptLib/SysCall/inet_pton.c
+
+diff --git a/CryptoPkg/Library/BaseCryptLib/BaseCryptLib.inf b/CryptoPkg/Library/BaseCryptLib/BaseCryptLib.inf
+index 8d4988e8c6b4..b5cfd8b00c83 100644
+--- a/CryptoPkg/Library/BaseCryptLib/BaseCryptLib.inf
++++ b/CryptoPkg/Library/BaseCryptLib/BaseCryptLib.inf
+@@ -58,6 +58,7 @@ [Sources]
+   SysCall/CrtWrapper.c
+   SysCall/TimerWrapper.c
+   SysCall/BaseMemAllocation.c
++  SysCall/inet_pton.c
+ 
+ [Sources.Ia32]
+   Rand/CryptRandTsc.c
+diff --git a/CryptoPkg/Library/BaseCryptLib/SysCall/inet_pton.c b/CryptoPkg/Library/BaseCryptLib/SysCall/inet_pton.c
+new file mode 100644
+index 000000000000..32e1ab8690e6
+--- /dev/null
++++ b/CryptoPkg/Library/BaseCryptLib/SysCall/inet_pton.c
+@@ -0,0 +1,257 @@
++/* Copyright (c) 1996 by Internet Software Consortium.
++ *
++ * Permission to use, copy, modify, and distribute this software for any
++ * purpose with or without fee is hereby granted, provided that the above
++ * copyright notice and this permission notice appear in all copies.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS" AND INTERNET SOFTWARE CONSORTIUM DISCLAIMS
++ * ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES
++ * OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL INTERNET SOFTWARE
++ * CONSORTIUM BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
++ * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
++ * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS
++ * ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
++ * SOFTWARE.
++ */
++
++/*
++ * Portions copyright (c) 1999, 2000
++ * Intel Corporation.
++ * All rights reserved.
++ * 
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions
++ * are met:
++ * 
++ * 1. Redistributions of source code must retain the above copyright
++ *    notice, this list of conditions and the following disclaimer.
++ * 
++ * 2. Redistributions in binary form must reproduce the above copyright
++ *    notice, this list of conditions and the following disclaimer in the
++ *    documentation and/or other materials provided with the distribution.
++ * 
++ * 3. All advertising materials mentioning features or use of this software
++ *    must display the following acknowledgement:
++ * 
++ *    This product includes software developed by Intel Corporation and
++ *    its contributors.
++ * 
++ * 4. Neither the name of Intel Corporation or its contributors may be
++ *    used to endorse or promote products derived from this software
++ *    without specific prior written permission.
++ * 
++ * THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION AND CONTRIBUTORS ``AS IS''
++ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
++ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
++ * ARE DISCLAIMED.  IN NO EVENT SHALL INTEL CORPORATION OR CONTRIBUTORS BE
++ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
++ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
++ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
++ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
++ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
++ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
++ * THE POSSIBILITY OF SUCH DAMAGE.
++ * 
++ */
++
++#if defined(LIBC_SCCS) && !defined(lint)
++static char rcsid[] = "$Id: inet_pton.c,v 1.1.1.1 2003/11/19 01:51:30 kyu3 Exp $";
++#endif /* LIBC_SCCS and not lint */
++
++#include <sys/param.h>
++#include <sys/types.h>
++#include <sys/socket.h>
++#include <netinet/in.h>
++#include <arpa/inet.h>
++#include <arpa/nameser.h>
++#include <string.h>
++#include <errno.h>
++
++/*
++ * WARNING: Don't even consider trying to compile this on a system where
++ * sizeof(int) < 4.  sizeof(int) > 4 is fine; all the world's not a VAX.
++ */
++
++static int	inet_pton4 (const char *src, u_char *dst);
++static int	inet_pton6 (const char *src, u_char *dst);
++
++/* int
++ * inet_pton(af, src, dst)
++ *	convert from presentation format (which usually means ASCII printable)
++ *	to network format (which is usually some kind of binary format).
++ * return:
++ *	1 if the address was valid for the specified address family
++ *	0 if the address wasn't valid (`dst' is untouched in this case)
++ *	-1 if some other error occurred (`dst' is untouched in this case, too)
++ * author:
++ *	Paul Vixie, 1996.
++ */
++int
++inet_pton(
++	int af,
++	const char *src,
++	void *dst
++	)
++{
++	switch (af) {
++	case AF_INET:
++		return (inet_pton4(src, dst));
++	case AF_INET6:
++		return (inet_pton6(src, dst));
++	default:
++		errno = EAFNOSUPPORT;
++		return (-1);
++	}
++	/* NOTREACHED */
++}
++
++/* int
++ * inet_pton4(src, dst)
++ *	like inet_aton() but without all the hexadecimal and shorthand.
++ * return:
++ *	1 if `src' is a valid dotted quad, else 0.
++ * notice:
++ *	does not touch `dst' unless it's returning 1.
++ * author:
++ *	Paul Vixie, 1996.
++ */
++static int
++inet_pton4(
++	const char *src,
++	u_char *dst
++	)
++{
++	static const char digits[] = "0123456789";
++	int saw_digit, octets, ch;
++	u_char tmp[NS_INADDRSZ], *tp;
++
++	saw_digit = 0;
++	octets = 0;
++	*(tp = tmp) = 0;
++	while ((ch = *src++) != '\0') {
++		const char *pch;
++
++		if ((pch = strchr(digits, ch)) != NULL) {
++			u_int new = *tp * 10 + (u_int)(pch - digits);
++
++			if (new > 255)
++				return (0);
++			*tp = (u_char)new;
++			if (! saw_digit) {
++				if (++octets > 4)
++					return (0);
++				saw_digit = 1;
++			}
++		} else if (ch == '.' && saw_digit) {
++			if (octets == 4)
++				return (0);
++			*++tp = 0;
++			saw_digit = 0;
++		} else
++			return (0);
++	}
++	if (octets < 4)
++		return (0);
++
++	memcpy(dst, tmp, NS_INADDRSZ);
++	return (1);
++}
++
++/* int
++ * inet_pton6(src, dst)
++ *	convert presentation level address to network order binary form.
++ * return:
++ *	1 if `src' is a valid [RFC1884 2.2] address, else 0.
++ * notice:
++ *	(1) does not touch `dst' unless it's returning 1.
++ *	(2) :: in a full address is silently ignored.
++ * credit:
++ *	inspired by Mark Andrews.
++ * author:
++ *	Paul Vixie, 1996.
++ */
++static int
++inet_pton6(
++	const char *src,
++	u_char *dst
++	)
++{
++	static const char xdigits_l[] = "0123456789abcdef",
++			  xdigits_u[] = "0123456789ABCDEF";
++	u_char tmp[NS_IN6ADDRSZ], *tp, *endp, *colonp;
++	const char *xdigits, *curtok;
++	int ch, saw_xdigit;
++	u_int val;
++
++	memset((tp = tmp), '\0', NS_IN6ADDRSZ);
++	endp = tp + NS_IN6ADDRSZ;
++	colonp = NULL;
++	/* Leading :: requires some special handling. */
++	if (*src == ':')
++		if (*++src != ':')
++			return (0);
++	curtok = src;
++	saw_xdigit = 0;
++	val = 0;
++	while ((ch = *src++) != '\0') {
++		const char *pch;
++
++		if ((pch = strchr((xdigits = xdigits_l), ch)) == NULL)
++			pch = strchr((xdigits = xdigits_u), ch);
++		if (pch != NULL) {
++			val <<= 4;
++			val |= (pch - xdigits);
++			if (val > 0xffff)
++				return (0);
++			saw_xdigit = 1;
++			continue;
++		}
++		if (ch == ':') {
++			curtok = src;
++			if (!saw_xdigit) {
++				if (colonp)
++					return (0);
++				colonp = tp;
++				continue;
++			}
++			if (tp + NS_INT16SZ > endp)
++				return (0);
++			*tp++ = (u_char) (val >> 8) & 0xff;
++			*tp++ = (u_char) val & 0xff;
++			saw_xdigit = 0;
++			val = 0;
++			continue;
++		}
++		if (ch == '.' && ((tp + NS_INADDRSZ) <= endp) &&
++		    inet_pton4(curtok, tp) > 0) {
++			tp += NS_INADDRSZ;
++			saw_xdigit = 0;
++			break;	/* '\0' was seen by inet_pton4(). */
++		}
++		return (0);
++	}
++	if (saw_xdigit) {
++		if (tp + NS_INT16SZ > endp)
++			return (0);
++		*tp++ = (u_char) (val >> 8) & 0xff;
++		*tp++ = (u_char) val & 0xff;
++	}
++	if (colonp != NULL) {
++		/*
++		 * Since some memmove()'s erroneously fail to handle
++		 * overlapping regions, we'll do the shift by hand.
++		 */
++		const int n = (int)(tp - colonp);
++		int i;
++
++		for (i = 1; i <= n; i++) {
++			endp[- i] = colonp[n - i];
++			colonp[n - i] = 0;
++		}
++		tp = endp;
++	}
++	if (tp != endp)
++		return (0);
++	memcpy(dst, tmp, NS_IN6ADDRSZ);
++	return (1);
++}
+diff --git a/CryptoPkg/Library/Include/CrtLibSupport.h b/CryptoPkg/Library/Include/CrtLibSupport.h
+index e603fad763f9..5a20ba636fff 100644
+--- a/CryptoPkg/Library/Include/CrtLibSupport.h
++++ b/CryptoPkg/Library/Include/CrtLibSupport.h
+@@ -192,6 +192,7 @@ void           abort       (void) __attribute__((__noreturn__));
+ #else
+ void           abort       (void);
+ #endif
++int            inet_pton   (int, const char *, void *);
+ 
+ //
+ // Macros that directly map functions to BaseLib, BaseMemoryLib, and DebugLib functions
+-- 
+2.23.0
+
+
+From 1dda3aab58302e0627b28b29a2f3dc9b70aa95f6 Mon Sep 17 00:00:00 2001
+From: Laszlo Ersek <lersek@redhat.com>
+Date: Thu, 24 Oct 2019 21:17:36 +0200
+Subject: [PATCH 6/8] CryptoPkg/TlsLib: TlsSetVerifyHost: parse IP address
+ literals as such (CVE-2019-14553)
+
+Using the inet_pton() function that we imported in the previous patches,
+recognize if "HostName" is an IP address literal, and then parse it into
+binary representation. Passing the latter to OpenSSL for server
+certificate validation is important, per RFC-2818
+<https://tools.ietf.org/html/rfc2818#section-3.1>:
+
+> In some cases, the URI is specified as an IP address rather than a
+> hostname. In this case, the iPAddress subjectAltName must be present in
+> the certificate and must exactly match the IP in the URI.
+
+Note: we cannot use X509_VERIFY_PARAM_set1_ip_asc() because in the OpenSSL
+version that is currently consumed by edk2, said function depends on
+sscanf() for parsing IPv4 literals. In
+"CryptoPkg/Library/BaseCryptLib/SysCall/CrtWrapper.c", we only provide an
+empty -- always failing -- stub for sscanf(), however.
+
+Cc: David Woodhouse <dwmw2@infradead.org>
+Cc: Jian J Wang <jian.j.wang@intel.com>
+Cc: Jiaxin Wu <jiaxin.wu@intel.com>
+Cc: Sivaraman Nainar <sivaramann@amiindia.co.in>
+Cc: Xiaoyu Lu <xiaoyux.lu@intel.com>
+Ref: https://bugzilla.tianocore.org/show_bug.cgi?id=960
+CVE: CVE-2019-14553
+Suggested-by: David Woodhouse <dwmw2@infradead.org>
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Acked-by: Jian J Wang <jian.j.wang@intel.com>
+Reviewed-by: Jiaxin Wu <jiaxin.wu@intel.com>
+(cherry picked from commit 1e72b1fb2ec597caedb5170079bb213f6d67f32a)
+---
+ CryptoPkg/Library/TlsLib/TlsConfig.c | 28 ++++++++++++++++++++++++----
+ 1 file changed, 24 insertions(+), 4 deletions(-)
+
+diff --git a/CryptoPkg/Library/TlsLib/TlsConfig.c b/CryptoPkg/Library/TlsLib/TlsConfig.c
+index 2bf5aee7c093..307eb57896dc 100644
+--- a/CryptoPkg/Library/TlsLib/TlsConfig.c
++++ b/CryptoPkg/Library/TlsLib/TlsConfig.c
+@@ -517,7 +517,11 @@ TlsSetVerifyHost (
+   IN     CHAR8                    *HostName
+   )
+ {
+-  TLS_CONNECTION  *TlsConn;
++  TLS_CONNECTION    *TlsConn;
++  X509_VERIFY_PARAM *VerifyParam;
++  UINTN             BinaryAddressSize;
++  UINT8             BinaryAddress[MAX (NS_INADDRSZ, NS_IN6ADDRSZ)];
++  INTN              ParamStatus;
+ 
+   TlsConn = (TLS_CONNECTION *) Tls;
+   if (TlsConn == NULL || TlsConn->Ssl == NULL || HostName == NULL) {
+@@ -526,11 +530,27 @@ TlsSetVerifyHost (
+ 
+   SSL_set_hostflags(TlsConn->Ssl, Flags);
+ 
+-  if (SSL_set1_host(TlsConn->Ssl, HostName) == 0) {
+-    return EFI_ABORTED;
++  VerifyParam = SSL_get0_param (TlsConn->Ssl);
++  ASSERT (VerifyParam != NULL);
++
++  BinaryAddressSize = 0;
++  if (inet_pton (AF_INET6, HostName, BinaryAddress) == 1) {
++    BinaryAddressSize = NS_IN6ADDRSZ;
++  } else if (inet_pton (AF_INET, HostName, BinaryAddress) == 1) {
++    BinaryAddressSize = NS_INADDRSZ;
+   }
+ 
+-  return EFI_SUCCESS;
++  if (BinaryAddressSize > 0) {
++    DEBUG ((DEBUG_VERBOSE, "%a:%a: parsed \"%a\" as an IPv%c address "
++      "literal\n", gEfiCallerBaseName, __FUNCTION__, HostName,
++      (UINTN)((BinaryAddressSize == NS_IN6ADDRSZ) ? '6' : '4')));
++    ParamStatus = X509_VERIFY_PARAM_set1_ip (VerifyParam, BinaryAddress,
++                    BinaryAddressSize);
++  } else {
++    ParamStatus = X509_VERIFY_PARAM_set1_host (VerifyParam, HostName, 0);
++  }
++
++  return (ParamStatus == 1) ? EFI_SUCCESS : EFI_ABORTED;
+ }
+ 
+ /**
+-- 
+2.23.0
+
+
+From 855ba1e726fd0404e2d6bbdf635f18afb36450a1 Mon Sep 17 00:00:00 2001
+From: "Wu, Jiaxin" <jiaxin.wu@intel.com>
+Date: Fri, 27 Sep 2019 11:44:40 +0800
+Subject: [PATCH 7/8] NetworkPkg/TlsDxe: Add the support of host validation to
+ TlsDxe driver (CVE-2019-14553)
+
+REF: https://bugzilla.tianocore.org/show_bug.cgi?id=960
+CVE: CVE-2019-14553
+The new data type named "EfiTlsVerifyHost" and the
+EFI_TLS_VERIFY_HOST_FLAG are supported in TLS protocol.
+
+Signed-off-by: Wu Jiaxin <jiaxin.wu@intel.com>
+Reviewed-by: Ye Ting <ting.ye@intel.com>
+Reviewed-by: Long Qin <qin.long@intel.com>
+Reviewed-by: Fu Siyuan <siyuan.fu@intel.com>
+Acked-by: Laszlo Ersek <lersek@redhat.com>
+Message-Id: <20190927034441.3096-4-Jiaxin.wu@intel.com>
+Cc: David Woodhouse <dwmw2@infradead.org>
+Cc: Jian J Wang <jian.j.wang@intel.com>
+Cc: Jiaxin Wu <jiaxin.wu@intel.com>
+Cc: Sivaraman Nainar <sivaramann@amiindia.co.in>
+Cc: Xiaoyu Lu <xiaoyux.lu@intel.com>
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+(cherry picked from commit 703e7ab21ff8fda9ababf7751d59bd28ad5da947)
+---
+ NetworkPkg/TlsDxe/TlsProtocol.c | 44 ++++++++++++++++++++++++++++++---
+ 1 file changed, 41 insertions(+), 3 deletions(-)
+
+diff --git a/NetworkPkg/TlsDxe/TlsProtocol.c b/NetworkPkg/TlsDxe/TlsProtocol.c
+index a7a993fc6fc5..001e5400d00f 100644
+--- a/NetworkPkg/TlsDxe/TlsProtocol.c
++++ b/NetworkPkg/TlsDxe/TlsProtocol.c
+@@ -1,7 +1,7 @@
+ /** @file
+   Implementation of EFI TLS Protocol Interfaces.
+ 
+-  Copyright (c) 2016 - 2017, Intel Corporation. All rights reserved.<BR>
++  Copyright (c) 2016 - 2018, Intel Corporation. All rights reserved.<BR>
+ 
+   SPDX-License-Identifier: BSD-2-Clause-Patent
+ 
+@@ -56,12 +56,16 @@ TlsSetSessionData (
+   UINT16                    *CipherId;
+   CONST EFI_TLS_CIPHER      *TlsCipherList;
+   UINTN                     CipherCount;
++  CONST EFI_TLS_VERIFY_HOST *TlsVerifyHost;
++  EFI_TLS_VERIFY            VerifyMethod;
++  UINTN                     VerifyMethodSize;
+   UINTN                     Index;
+ 
+   EFI_TPL                   OldTpl;
+ 
+-  Status = EFI_SUCCESS;
+-  CipherId = NULL;
++  Status           = EFI_SUCCESS;
++  CipherId         = NULL;
++  VerifyMethodSize = sizeof (EFI_TLS_VERIFY);
+ 
+   if (This == NULL || Data == NULL || DataSize == 0) {
+     return EFI_INVALID_PARAMETER;
+@@ -148,6 +152,40 @@ TlsSetSessionData (
+     }
+ 
+     TlsSetVerify (Instance->TlsConn, *((UINT32 *) Data));
++    break;
++  case EfiTlsVerifyHost:
++    if (DataSize != sizeof (EFI_TLS_VERIFY_HOST)) {
++      Status = EFI_INVALID_PARAMETER;
++      goto ON_EXIT;
++    }
++
++    TlsVerifyHost = (CONST EFI_TLS_VERIFY_HOST *) Data;
++
++    if ((TlsVerifyHost->Flags & EFI_TLS_VERIFY_FLAG_ALWAYS_CHECK_SUBJECT) != 0 &&
++        (TlsVerifyHost->Flags & EFI_TLS_VERIFY_FLAG_NEVER_CHECK_SUBJECT) != 0) {
++      Status = EFI_INVALID_PARAMETER;
++      goto ON_EXIT;
++    }
++
++    if ((TlsVerifyHost->Flags & EFI_TLS_VERIFY_FLAG_NO_WILDCARDS) != 0 &&
++        ((TlsVerifyHost->Flags & EFI_TLS_VERIFY_FLAG_NO_PARTIAL_WILDCARDS) != 0 ||
++         (TlsVerifyHost->Flags & EFI_TLS_VERIFY_FLAG_MULTI_LABEL_WILDCARDS) != 0)) {
++      Status = EFI_INVALID_PARAMETER;
++      goto ON_EXIT;
++    }
++
++    Status = This->GetSessionData (This, EfiTlsVerifyMethod, &VerifyMethod, &VerifyMethodSize);
++    if (EFI_ERROR (Status)) {
++      goto ON_EXIT;
++    }
++
++    if ((VerifyMethod & EFI_TLS_VERIFY_PEER) == 0) {
++      Status = EFI_INVALID_PARAMETER;
++      goto ON_EXIT;
++    }
++
++    Status = TlsSetVerifyHost (Instance->TlsConn, TlsVerifyHost->Flags, TlsVerifyHost->HostName);
++
+     break;
+   case EfiTlsSessionID:
+     if (DataSize != sizeof (EFI_TLS_SESSION_ID)) {
+-- 
+2.23.0
+
+
+From bd7283cb1dc1ee91623a639f0b734204d57b7000 Mon Sep 17 00:00:00 2001
+From: "Wu, Jiaxin" <jiaxin.wu@intel.com>
+Date: Fri, 27 Sep 2019 11:44:41 +0800
+Subject: [PATCH 8/8] NetworkPkg/HttpDxe: Set the HostName for the verification
+ (CVE-2019-14553)
+
+REF: https://bugzilla.tianocore.org/show_bug.cgi?id=960
+CVE: CVE-2019-14553
+Set the HostName by consuming TLS protocol to enable the host name
+check so as to avoid the potential Man-In-The-Middle attack.
+
+Signed-off-by: Wu Jiaxin <jiaxin.wu@intel.com>
+Reviewed-by: Ye Ting <ting.ye@intel.com>
+Reviewed-by: Long Qin <qin.long@intel.com>
+Reviewed-by: Fu Siyuan <siyuan.fu@intel.com>
+Acked-by: Laszlo Ersek <lersek@redhat.com>
+Message-Id: <20190927034441.3096-5-Jiaxin.wu@intel.com>
+Cc: David Woodhouse <dwmw2@infradead.org>
+Cc: Jian J Wang <jian.j.wang@intel.com>
+Cc: Jiaxin Wu <jiaxin.wu@intel.com>
+Cc: Sivaraman Nainar <sivaramann@amiindia.co.in>
+Cc: Xiaoyu Lu <xiaoyux.lu@intel.com>
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+(cherry picked from commit e2fc50812895b17e8b23f5a9c43cde29531b200f)
+---
+ NetworkPkg/HttpDxe/HttpProto.h    |  1 +
+ NetworkPkg/HttpDxe/HttpsSupport.c | 21 +++++++++++++++++----
+ 2 files changed, 18 insertions(+), 4 deletions(-)
+
+diff --git a/NetworkPkg/HttpDxe/HttpProto.h b/NetworkPkg/HttpDxe/HttpProto.h
+index 6e1f51748a73..34308e016d3e 100644
+--- a/NetworkPkg/HttpDxe/HttpProto.h
++++ b/NetworkPkg/HttpDxe/HttpProto.h
+@@ -82,6 +82,7 @@ typedef struct {
+   EFI_TLS_VERSION               Version;
+   EFI_TLS_CONNECTION_END        ConnectionEnd;
+   EFI_TLS_VERIFY                VerifyMethod;
++  EFI_TLS_VERIFY_HOST           VerifyHost;
+   EFI_TLS_SESSION_STATE         SessionState;
+ } TLS_CONFIG_DATA;
+ 
+diff --git a/NetworkPkg/HttpDxe/HttpsSupport.c b/NetworkPkg/HttpDxe/HttpsSupport.c
+index 988bbcbce7d8..5dfb13bd6021 100644
+--- a/NetworkPkg/HttpDxe/HttpsSupport.c
++++ b/NetworkPkg/HttpDxe/HttpsSupport.c
+@@ -623,13 +623,16 @@ TlsConfigureSession (
+   //
+   // TlsConfigData initialization
+   //
+-  HttpInstance->TlsConfigData.ConnectionEnd = EfiTlsClient;
+-  HttpInstance->TlsConfigData.VerifyMethod = EFI_TLS_VERIFY_PEER;
+-  HttpInstance->TlsConfigData.SessionState = EfiTlsSessionNotStarted;
++  HttpInstance->TlsConfigData.ConnectionEnd       = EfiTlsClient;
++  HttpInstance->TlsConfigData.VerifyMethod        = EFI_TLS_VERIFY_PEER;
++  HttpInstance->TlsConfigData.VerifyHost.Flags    = EFI_TLS_VERIFY_FLAG_NO_WILDCARDS;
++  HttpInstance->TlsConfigData.VerifyHost.HostName = HttpInstance->RemoteHost;
++  HttpInstance->TlsConfigData.SessionState        = EfiTlsSessionNotStarted;
+ 
+   //
+   // EfiTlsConnectionEnd,
+-  // EfiTlsVerifyMethod
++  // EfiTlsVerifyMethod,
++  // EfiTlsVerifyHost,
+   // EfiTlsSessionState
+   //
+   Status = HttpInstance->Tls->SetSessionData (
+@@ -652,6 +655,16 @@ TlsConfigureSession (
+     return Status;
+   }
+ 
++  Status = HttpInstance->Tls->SetSessionData (
++                                HttpInstance->Tls,
++                                EfiTlsVerifyHost,
++                                &HttpInstance->TlsConfigData.VerifyHost,
++                                sizeof (EFI_TLS_VERIFY_HOST)
++                                );
++  if (EFI_ERROR (Status)) {
++    return Status;
++  }
++
+   Status = HttpInstance->Tls->SetSessionData (
+                                 HttpInstance->Tls,
+                                 EfiTlsSessionState,
+-- 
+2.23.0
+

@@ -49,6 +49,7 @@ Patch2:         %{name}-gdb-symbols.patch
 Patch3:         %{name}-pie.patch
 Patch4:         %{name}-disable-ia32-firmware-piepic.patch
 Patch5:         %{name}-set-fixed-enroll-time.patch
+Patch6:         %{name}-bsc1153072-fix-invalid-https-cert.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bc
 BuildRequires:  fdupes
@@ -171,6 +172,7 @@ rm -rf $PKG_TO_REMOVE
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl
@@ -208,7 +210,7 @@ TOOL_CHAIN_TAG=GCC$(gcc -dumpversion|sed 's/\([0-9]\)\.\([0-9]\).*/\1\2/')
 	FLAVORS=("ovmf-ia32")
 	BUILD_ARCH="IA32"
 
-	OVMF_FLAGS="$OVMF_FLAGS -D NETWORK_TLS_ENABLE -D FD_SIZE_2MB"
+	OVMF_FLAGS="$OVMF_FLAGS -D FD_SIZE_2MB"
 	BUILD_OPTIONS="$OVMF_FLAGS -a IA32 -p OvmfPkg/OvmfPkgIa32.dsc -b DEBUG -t $TOOL_CHAIN_TAG"
 	make -C BaseTools
 %else
@@ -460,6 +462,16 @@ for flavor in ${FLAVORS[@]}; do
 			"${PKKEK[$key]}" "${KEY_ISO_FILES[$key]}"
 	done
 done
+
+%ifarch x86_64
+# Rename the x86_64 4MB firmware
+#  We use ovmf-x86_64-$key-4m instead of ovmf-x86_64-4m-$key in the
+#  version < stable201905. Rename the 4MB firmware files for backward
+#  compatibility.
+for key in ${KEY_SOURCES[@]}; do
+	rename "4m-$key" "$key-4m" *"4m-$key"*.bin
+done
+%endif #x86_64
 
 %endif #secureboot_archs
 
