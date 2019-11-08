@@ -21,8 +21,7 @@ Version:        20190801
 Release:        0
 Summary:        A Font Editor
 License:        GPL-3.0-or-later
-Group:          Productivity/Graphics/Vector Editors
-Url:            http://fontforge.org/
+URL:            http://fontforge.org/
 #       Source: https://github.com/fontforge/fontforge/archive/%{version}.tar.gz
 #           see bug 926061, fontforge-*-repacked.tar.xz does not contain fontforge-*/win/gold/libX11-*.noarch.rpm
 Source0:        fontforge-%{version}-repacked.tar.xz
@@ -30,6 +29,8 @@ Source1:        get-source.sh
 # workardound for bug 930076, imho upstream should fix this
 # https://github.com/fontforge/fontforge/issues/2270
 Patch0:         fontforge-version.patch
+# fix for build with python38
+Patch1:         python38_config.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cairo-devel
@@ -54,7 +55,6 @@ BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xft)
 BuildRequires:  pkgconfig(xi)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?suse_version} > 1210
 BuildRequires:  libspiro-devel
 %endif
@@ -67,7 +67,6 @@ some Type 0s), TrueType, OpenType (Type2), and CID-keyed fonts.
 
 %package doc
 Summary:        Documentation for FontForge
-Group:          Documentation/HTML
 %if 0%{?suse_version} >= 1230
 BuildArch:      noarch
 %endif
@@ -81,7 +80,6 @@ This subpackage contains the documentation to FontForge.
 
 %package devel
 Summary:        Include Files and Libraries mandatory for Development
-Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       freetype2-devel
 
@@ -96,6 +94,9 @@ to develop applications that use FontForge libraries.
 %prep
 %setup -q
 %patch0 -p1
+%if 0%{?python3_version_nodots} >= 38
+%patch1 -p1
+%endif
 sed -i 's/\r$//' doc/html/{Big5.txt,corpchar.txt}
 
 %build
@@ -108,21 +109,19 @@ sed -i 's/\r$//' doc/html/{Big5.txt,corpchar.txt}
 make %{?_smp_mflags}
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 %suse_update_desktop_file -i org.fontforge.FontForge VectorGraphics
 %find_lang FontForge
 find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes -s %{buildroot}%{_datadir}/%{name}
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %files -f FontForge.lang
-%defattr(-,root,root)
-%doc LICENSE COPYING.gplv3
+%license LICENSE COPYING.gplv3
 %exclude %{_docdir}/%{name}/html
-%{_mandir}/man1/*.1*
+%{_mandir}/man1/*.1%{?ext_man}
 %{_bindir}/*
 %{_libdir}/lib*.so.*
 %{_datadir}/fontforge/
@@ -134,14 +133,14 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/metainfo/org.fontforge.FontForge.*.xml
 %{_datadir}/pixmaps/org.fontforge.FontForge.*
 %{_datadir}/mime/packages/%{name}.xml
+%dir %{_docdir}/fontforge
 
 %files doc
-%defattr(-,root,root)
-%doc AUTHORS LICENSE README.md
+%license LICENSE
+%doc AUTHORS README.md
 %doc %{_docdir}/%{name}/html
 
 %files devel
-%defattr(-, root, root)
 %doc CONTRIBUTING.md
 %{_includedir}/fontforge/
 %{_libdir}/pkgconfig/*.pc
