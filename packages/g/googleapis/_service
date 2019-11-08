@@ -5,7 +5,7 @@
     <param name="changesgenerate">enable</param>
     <param name="filename">googleapis</param>
     <param name="versionformat">%cd</param>
-    <param name="revision">d642131a6e6582fc226caf9893cb7fe7885b3411</param>
+    <param name="revision">be480e391cc88a75cf2a81960ef79c80d5012068</param>
   </service>
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>

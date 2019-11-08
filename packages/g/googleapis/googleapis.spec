@@ -19,15 +19,14 @@
 %define src_install_dir /usr/src/%{name}
 
 Name:           googleapis
-Version:        20180523
+Version:        20190724
 Release:        0
 Summary:        Public interface and protobuf definitions of Google APIs
 License:        Apache-2.0
 Group:          Development/Libraries/Cross
 Url:            https://github.com/googleapis/googleapis
 Source0:        %{name}-%{version}.tar.xz
-Source1:        BUILD
-Source2:        %{name}-rpmlintrc
+Source1:        %{name}-rpmlintrc
 BuildRequires:  fdupes
 
 %description
@@ -47,7 +46,6 @@ This package contains source code for googleapis.
 
 %prep
 %setup -q
-cp %{SOURCE1} .
 
 %build
 # TODO: If anyone will be interested in compiled googleapis protobufs for C++
