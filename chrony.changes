@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 26 10:39:29 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
+
+- Change to BuildRequires: rubygem(asciidoctor) and remove conditional
+  (is available in SLE12-SP4 and SLE15* as well)
+- Fix typo in %install
+
+-------------------------------------------------------------------
 Tue Oct 22 21:18:58 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
 
 - Fix asciidoc in Tumbleweed

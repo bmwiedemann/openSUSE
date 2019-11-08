@@ -58,18 +58,12 @@ BuildRequires:  pps-tools-devel
 # removed if the call to make check is ever deleted.
 BuildRequires:  timezone
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  rubygem(asciidoctor)
 Requires:       logrotate
 Requires(post): %fillup_prereq
 Requires(pre):  %{_sbindir}/groupadd
 Requires(pre):  %{_sbindir}/useradd
 Provides:       ntp-daemon
-# asciidoctor to create html docs, only available on Leap 15.0 ++
-%if 0%{?suse_version} == 1500 && 0%{?is_opensuse} && !0%{?is_backports}
-BuildRequires:  ruby2.5-rubygem-asciidoctor
-%endif
-%if %{?suse_version} >= 1550
-BuildRequires:  ruby2.6-rubygem-asciidoctor
-%endif
 %ifarch s390 s390x ppc64le
 BuildRequires:  libseccomp-devel >= 2.2.0
 %else
@@ -168,7 +162,7 @@ install -Dpm 0644 %{SOURCE6} \
 install -Dpm 0644 %{SOURCE11} \
   %{buildroot}%{_tmpfilesdir}/%{name}.conf
 
-install -d %{buildroot}%{sbindir}
+install -d %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcchronyd
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcchrony-wait
 
