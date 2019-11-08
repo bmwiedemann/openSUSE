@@ -1,0 +1,53 @@
+From 0b2a289c98e5cd953e7c239327e96891b511532e Mon Sep 17 00:00:00 2001
+From: Michal Rostecki <mrostecki@opensuse.org>
+Date: Tue, 5 Nov 2019 01:33:28 +0100
+Subject: [PATCH] bazel: Replace boringssl with openssl
+
+Signed-off-by: Michal Rostecki <mrostecki@opensuse.org>
+---
+ bazel/grpc_deps.bzl | 22 ++++++++++++++--------
+ 1 file changed, 14 insertions(+), 8 deletions(-)
+
+diff --git a/bazel/grpc_deps.bzl b/bazel/grpc_deps.bzl
+index cce2f88fe8..ebcafed427 100644
+--- a/bazel/grpc_deps.bzl
++++ b/bazel/grpc_deps.bzl
+@@ -28,7 +28,7 @@ def grpc_deps():
+ 
+     native.bind(
+         name = "libssl",
+-        actual = "@boringssl//:ssl",
++        actual = "@openssl//:openssl-lib",
+     )
+ 
+     native.bind(
+@@ -101,13 +101,19 @@ def grpc_deps():
+         actual = "@io_opencensus_cpp//opencensus/stats:test_utils",
+     )
+ 
+-    if "boringssl" not in native.existing_rules():
+-        http_archive(
+-            name = "boringssl",
+-            # on the chromium-stable-with-bazel branch
+-            # NOTE: This URL generates a tarball containing dynamic date
+-            # information, so the sha256 is not consistent.
+-            url = "https://boringssl.googlesource.com/boringssl/+archive/afc30d43eef92979b05776ec0963c9cede5fb80f.tar.gz",
++    if "openssl" not in native.existing_rules():
++        native.new_local_repository(
++            name = "openssl",
++            path = "%LIBDIR%",
++            build_file_content = """cc_library(
++    name = "openssl-lib",
++    srcs = [
++        "libssl.so.1.1",
++        "libcrypto.so.1.1",
++    ],
++    visibility = ["//visibility:public"],
++    linkstatic = False,
++)""",
+         )
+ 
+     if "zlib" not in native.existing_rules():
+-- 
+2.16.4
+

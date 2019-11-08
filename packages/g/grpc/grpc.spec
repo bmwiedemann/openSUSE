@@ -31,6 +31,7 @@ URL:            https://grpc.io/
 Source0:        https://github.com/grpc/grpc/archive/v%rver.tar.gz
 Source1:        %{name}-rpmlintrc
 Patch1:         gettid.patch
+Patch2:         0001-bazel-Replace-boringssl-with-openssl.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
@@ -114,6 +115,7 @@ This subpackage contains the python3 bindings.
 
 %prep
 %autosetup -n grpc-%rver -p1
+sed -i -e "s|%%LIBDIR%%|%{_libdir}|" bazel/grpc_deps.bzl
 
 %build
 %define _lto_cflags %nil
