@@ -282,4 +282,12 @@
 - Add openmpi_prefix macro to openmpi-macros-devel</comment>
     <requestid>736812</requestid>
   </revision>
+  <revision rev="30" vrev="8">
+    <srcmd5>bbd5aeee56bf55955b3b48e2e9c64706</srcmd5>
+    <version>2.1.6</version>
+    <time>1573222858</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>745093</requestid>
+  </revision>
 </revisionlist>
