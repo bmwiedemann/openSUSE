@@ -1,7 +1,7 @@
 #
 # spec file for package python-TermRecord
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,20 +22,18 @@ Version:        1.2.5
 Release:        0
 Summary:        A terminal session recorder with HTML output
 License:        MIT
-Group:          Development/Languages/Python
-Url:            http://github.com/theonewolf/TermRecord
-Source:         https://pypi.python.org/packages/source/T/TermRecord/TermRecord-%{version}.tar.gz
+URL:            https://github.com/theonewolf/TermRecord
+Source:         https://files.pythonhosted.org/packages/source/T/TermRecord/TermRecord-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Jinja2 >= 2.6
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2 >= 2.6}
 # /SECTION
-Requires:       python-Jinja2 >= 2.6
-BuildArch:      noarch
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
-
 %python_subpackages
 
 %description
