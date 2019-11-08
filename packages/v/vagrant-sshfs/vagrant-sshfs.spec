@@ -1,7 +1,7 @@
 #
 # spec file for package vagrant-sshfs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,15 +21,14 @@
 %global rb_build_versions %rb_default_ruby
 %global rb_build_abi %rb_default_build_abi
 
-# don't substitute the name for %%vagrant_plugin_name, obs-service-format_spec
-# otherwise messes up the spec's header
-Name:           vagrant-sshfs
+Name:           %{vagrant_plugin_name}
 Version:        1.3.1
 Release:        0
 %define mod_name %{vagrant_plugin_name}
 %define mod_full_name %{vagrant_plugin_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
+Requires:       sshfs
 Requires:       vagrant
 BuildRequires:  vagrant
 
