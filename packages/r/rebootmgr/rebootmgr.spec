@@ -24,7 +24,7 @@
 %endif
 
 Name:           rebootmgr
-Version:        0.20
+Version:        0.20.1
 Release:        0
 Summary:        Automatic controlled reboot during a maintenance window
 License:        GPL-2.0-only AND LGPL-2.1-or-later

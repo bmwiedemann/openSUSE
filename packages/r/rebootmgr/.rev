@@ -109,4 +109,13 @@
   - use libeconf for /usr/etc move</comment>
     <requestid>731261</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e2ce1df127ffddf2e716e1a144ea978e</srcmd5>
+    <version>0.20.1</version>
+    <time>1573222962</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.20.1
+  - added a memory allocation check</comment>
+    <requestid>745204</requestid>
+  </revision>
 </revisionlist>
