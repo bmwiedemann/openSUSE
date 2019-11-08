@@ -75,4 +75,12 @@
     <comment>Add Provides: python2-WebError (to allow function of Pylons)</comment>
     <requestid>619593</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>c8e26d93abce4ab2406d14d650cfcfd4</srcmd5>
+    <version>0.13.1</version>
+    <time>1573223200</time>
+    <user>dimstar_suse</user>
+    <comment>- Run through spec-cleaner</comment>
+    <requestid>746345</requestid>
+  </revision>
 </revisionlist>
