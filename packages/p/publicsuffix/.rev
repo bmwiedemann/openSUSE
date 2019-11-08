@@ -537,4 +537,12 @@ Now with build cycle removed.</comment>
   * Add cloudera.site (#829)</comment>
     <requestid>723100</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>66b319f962143b6e644411a6d636ab3a</srcmd5>
+    <version>20191025</version>
+    <time>1573222931</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>745176</requestid>
+  </revision>
 </revisionlist>

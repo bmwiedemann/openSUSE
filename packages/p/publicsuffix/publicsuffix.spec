@@ -18,11 +18,10 @@
 
 
 Name:           publicsuffix
-Version:        20190808
+Version:        20191025
 Release:        0
 Summary:        Cross-vendor public domain suffix database
 License:        MPL-2.0
-Group:          Productivity/Networking/Other
 URL:            https://publicsuffix.org/
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  psl-make-dafsa
