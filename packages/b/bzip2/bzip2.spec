@@ -30,7 +30,8 @@ Source2:        bznew.1.gz
 Source3:        baselibs.conf
 Source100:      bzip2-rpmlintrc
 # PATCH-FEATURE-OPENSUSE bzip2-1.0.6-autoconfiscated.patch sbrabec@suse.cz -- Convert to a standard autoconf based package.
-Patch0:         ftp://ftp.suse.com/pub/people/sbrabec/bzip2/for_downstream/bzip2-1.0.6.2-autoconfiscated.patch
+#Patch0:         ftp://ftp.suse.com/pub/people/sbrabec/bzip2/for_downstream/bzip2-1.0.6.2-autoconfiscated.patch
+Patch0:         bzip2-1.0.6.2-autoconfiscated.patch
 Patch3:         bzip2-point-to-doc-pkg.patch
 Patch4:         bzip2-ocloexec.patch
 BuildRequires:  autoconf >= 2.57
