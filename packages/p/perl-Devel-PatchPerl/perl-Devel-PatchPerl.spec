@@ -17,7 +17,7 @@
 
 
 Name:           perl-Devel-PatchPerl
-Version:        1.64
+Version:        1.66
 Release:        0
 %define cpan_name Devel-PatchPerl
 Summary:        Patch perl source a la Devel::PPPort's buildperl.pl
