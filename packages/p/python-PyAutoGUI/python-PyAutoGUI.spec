@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyAutoGUI
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,7 @@ Version:        0.9.36
 Release:        0
 Summary:        A Python module for GUI automation that can control the keyboard and mouse
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
-Url:            https://github.com/asweigart/pyautogui
+URL:            https://github.com/asweigart/pyautogui
 Source:         https://files.pythonhosted.org/packages/source/P/PyAutoGUI/PyAutoGUI-%{version}.tar.gz
 Source99:       https://raw.githubusercontent.com/asweigart/pyautogui/master/LICENSE.txt
 BuildRequires:  %{python_module python-xlib}
@@ -37,7 +36,6 @@ Requires:       python-PyScreeze
 Requires:       python-PyTweening >= 1.0.1
 Requires:       python-python-xlib
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -46,7 +44,7 @@ programmatically control the mouse and keyboard.
 
 %prep
 %setup -q -n PyAutoGUI-%{version}
-cp %{S:99} .
+cp %{SOURCE99} .
 # pyautogui can't be imported without a DISPLAY, so we force the version on setup.py
 sed -i -e "s/version=__import__('pyautogui').__version__,/version='%{version}',/" setup.py
 dos2unix README.md
