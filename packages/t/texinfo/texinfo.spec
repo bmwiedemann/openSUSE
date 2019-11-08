@@ -19,11 +19,10 @@
 # perl modules are not installed in global path
 %global __provides_exclude ^(libtool|perl)\\(
 Name:           texinfo
-Version:        6.6
+Version:        6.7
 Release:        0
 Summary:        Tools for creating documentation from texinfo sources
 License:        GPL-3.0-or-later
-Group:          Productivity/Publishing/Texinfo
 URL:            https://www.gnu.org/software/texinfo/
 Source0:        https://ftp.gnu.org/pub/gnu/texinfo/texinfo-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/pub/gnu/texinfo/texinfo-%{version}.tar.xz.sig
@@ -65,7 +64,6 @@ makeinfo tool.
 
 %package     -n info
 Summary:        A Stand-Alone Terminal-Based Info Browser
-Group:          Productivity/Publishing/Texinfo
 Requires:       gzip
 
 %description -n info
@@ -76,8 +74,7 @@ reader" to read the manuals.
 
 %package     -n info-std
 Summary:        The info pages of the Info Browser
-Group:          Productivity/Publishing/Texinfo
-Supplements:    packageand(info:patterns-base-documentation)
+Supplements:    (info and patterns-base-documentation)
 BuildArch:      noarch
 
 %description -n info-std
@@ -89,7 +86,6 @@ reader" to read the manuals.
 %package     -n makeinfo
 Summary:        Translator for converting texinfo documents to info format
 # /usr/share/texinfo/Texinfo/Convert/NodeNameNormalization.pm uses Text::Unidecode
-Group:          Productivity/Publishing/Texinfo
 Requires:       perl(Text::Unidecode)
 %requires_eq    perl
 Suggests:       texinfo
@@ -157,7 +153,7 @@ end
 file = rpm.next_file()
 while file do
     if string.match(file, "%%.info%%.gz$") then
-	execute("/usr/bin/install-info", "--info-dir=%{_infodir}", file)
+	execute("%{_bindir}/install-info", "--info-dir=%{_infodir}", file)
     end
     file = rpm.next_file()
 end
@@ -180,7 +176,7 @@ end
 file = rpm.next_file()
 while file do
     if string.match(file, "%%.info%%.gz$") then
-	execute("/usr/bin/install-info", "--quiet", "--delete", "--info-dir=%{_infodir}", file)
+	execute("%{_bindir}/install-info", "--quiet", "--delete", "--info-dir=%{_infodir}", file)
     end
     file = rpm.next_file()
 end

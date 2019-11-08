@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct 26 07:48:33 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 6.7:
+  * support of index subentries and sub-subentries with @subentry
+  * new commands @seeentry and @seealso in index entries
+  * UTF-8 is the default input encoding
+  * updates to HTML output of texi2any
+  * support of noderename.cnf files has been removed
+  * INPUT_PERL_ENCODING, INPUT_ENCODING_NAME, NODE_FILE_EXTENSION,
+    NODE_FILENAMES, SHORTEXTN and TOP_NODE_FILE removed as
+    customization variables
+  * TOP_NODE_FILE_TARGET now contains the extension
+  * texi2dvi: unconditionally run in --batch mode, ignore TeX errors
+  * info: for a tree search (with M-/), '}' and '{' work as well
+    as 'M-}' and 'M-{' to go through the results
+
+-------------------------------------------------------------------
 Thu Oct 17 07:30:27 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Delete info-dir as not required anymore 
