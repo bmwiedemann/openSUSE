@@ -1,0 +1,35 @@
+diff --git a/examples/regressions.ml b/examples/regressions.ml
+index fd5c873..d0c189f 100644
+--- a/examples/regressions.ml
++++ b/examples/regressions.ml
+@@ -57,8 +57,6 @@ let test new_l (name, old_l) =
+     compare name old_l (List.assoc name new_l)
+ 
+ let () =
+-  if (Unicode_old.version,Sedlex_ppx.Unicode.version) <> test_versions then
+-    failwith (Printf.sprintf "Test written for versions: %s => %s\n%!" Unicode_old.version Sedlex_ppx.Unicode.version);
+   Printf.printf "Testing Unicode regression: %s => %s\n%!" Unicode_old.version Sedlex_ppx.Unicode.version;
+   List.iter (test Sedlex_ppx.Unicode.Categories.list) Unicode_old.Categories.list;
+   List.iter (test Sedlex_ppx.Unicode.Properties.list) Unicode_old.Properties.list
+diff --git a/src/generator/data/dune b/src/generator/data/dune
+index 785db95..666a776 100644
+--- a/src/generator/data/dune
++++ b/src/generator/data/dune
+@@ -1,14 +1,14 @@
+ (rule
+   (targets DerivedCoreProperties.txt)
+   (deps    base_url)
+-  (action  (run curl -L -s %{read:base_url}/ucd/DerivedCoreProperties.txt -o DerivedCoreProperties.txt)))
++  (action  (run cp /usr/share/unicode/ucd/DerivedCoreProperties.txt DerivedCoreProperties.txt)))
+ 
+ (rule
+   (targets DerivedGeneralCategory.txt)
+   (deps    base_url)
+-  (action  (run curl -L -s %{read:base_url}/ucd/extracted/DerivedGeneralCategory.txt -o DerivedGeneralCategory.txt)))
++  (action  (run cp /usr/share/unicode/ucd/extracted/DerivedGeneralCategory.txt DerivedGeneralCategory.txt)))
+ 
+ (rule
+   (targets PropList.txt)
+   (deps    base_url)
+-  (action  (run curl -L -s %{read:base_url}/ucd/PropList.txt -o PropList.txt)))
++  (action  (run cp /usr/share/unicode/ucd/PropList.txt PropList.txt)))

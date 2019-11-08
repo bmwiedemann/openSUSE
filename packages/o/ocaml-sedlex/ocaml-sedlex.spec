@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-sedlex
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           ocaml-sedlex
-Version:        1.99.4
+Version:        2.1
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Unicode-friendly lexer generator
@@ -28,17 +28,18 @@ URL:            https://github.com/alainfrisch/sedlex
 Source0:        https://github.com/alainfrisch/sedlex/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
-# https://github.com/ocaml-community/sedlex/issues/64#issuecomment-433198249
-Patch0:         ppx_tools_versioned-521.patch
+# Use unicode data files from unicode-ucd
+Patch0:         unicode-data.diff
 
 BuildRequires:  ocaml
+BuildRequires:  ocaml-dune
 BuildRequires:  ocaml-findlib
 BuildRequires:  ocaml-gen-devel
 BuildRequires:  ocaml-migrate-parsetree-devel
-BuildRequires:  ocaml-ocamldoc
 BuildRequires:  ocaml-ppx_tools_versioned-devel
 BuildRequires:  ocaml-result-devel
-BuildRequires:  ocaml-rpm-macros
+BuildRequires:  ocaml-rpm-macros >= 20190930
+BuildRequires:  unicode-ucd
 
 %description
 A lexer generator for OCaml, similar to ocamllex, but supporting Unicode.
@@ -61,50 +62,20 @@ developing applications that use %{name}.
 %patch0 -p1
 
 %build
-make %{?_smp_mflags}
-
-%if 0%{?ocaml_native_compiler}
-make %{?_smp_mflags} opt
-%endif
+%ocaml_dune_setup
+%ocaml_dune_build
 
 %install
-export DESTDIR=$RPM_BUILD_ROOT
-export OCAMLFIND_DESTDIR=$RPM_BUILD_ROOT%{_libdir}/ocaml
-mkdir -p $OCAMLFIND_DESTDIR
+%ocaml_dune_install
+%ocaml_create_file_list
 
-# don't use make_install macro since it passes INSTALL,
-# which is used differently in the Makefile
-%if 0%{?ocaml_native_compiler}
-make install
-%else
-make install_byteonly
-%endif
+%check
+%ocaml_dune_test
 
-%files
-%defattr(-,root,root,-)
+%files -f %{name}.files
 %doc README.md CHANGES
 %license LICENSE
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*/
-%{_libdir}/ocaml/*/ppx_sedlex
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.cmxs
-%{_libdir}/ocaml/*/ppx_sedlex.opt
-%endif
 
-%files devel
-%defattr(-,root,root,-)
-%doc README.md CHANGES
-%license LICENSE
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*/
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.a
-%{_libdir}/ocaml/*/*.cmx
-%{_libdir}/ocaml/*/*.cmxa
-%endif
-%{_libdir}/ocaml/*/*.cma
-%{_libdir}/ocaml/*/*.cmi
-%{_libdir}/ocaml/*/META
+%files devel -f %{name}.files.devel
 
 %changelog

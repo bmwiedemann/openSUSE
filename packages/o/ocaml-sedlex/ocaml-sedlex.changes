@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct 29 04:46:58 UTC 2019 - Andy Li <andy@onthewings.net>
+
+- New upstream version.
+  + Auto-generate unicode data.
+  + Switch to dune for building.
+  + Switch from int codepoints to Uchar.t codepoints.
+  + Track lexing position.
+- Remove ppx_tools_versioned-521.patch.
+- Add unicode-data.diff to use unicode data files from unicode-ucd.
+
+-------------------------------------------------------------------
+Fri Feb  8 03:01:27 UTC 2019 - andy@onthewings.net
+
+- Remove make parallel build. 
+
+-------------------------------------------------------------------
 Fri Dec 21 06:44:38 UTC 2018 - andy@onthewings.net
 
 - Add ppx_tools_versioned-521.patch that fixes compatibility with

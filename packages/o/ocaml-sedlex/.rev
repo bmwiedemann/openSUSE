@@ -18,4 +18,20 @@ It is a dependency of the next version of Haxe(4.0.0).</comment>
 </comment>
     <requestid>664426</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>388fa462d5e09c67ebedffb49dde2c5d</srcmd5>
+    <version>2.1</version>
+    <time>1573223053</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream version.
+  + Auto-generate unicode data.
+  + Switch to dune for building.
+  + Switch from int codepoints to Uchar.t codepoints.
+  + Track lexing position.
+- Remove ppx_tools_versioned-521.patch.
+- Add unicode-data.diff to use unicode data files from unicode-ucd.
+- Remove make parallel build. 
+</comment>
+    <requestid>743636</requestid>
+  </revision>
 </revisionlist>
