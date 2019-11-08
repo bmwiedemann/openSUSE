@@ -1,7 +1,7 @@
 #
 # spec file for package python-Trolly
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,18 +23,16 @@ Version:        0.2.2
 Release:        0
 Summary:        Trello api
 License:        MIT
-Group:          Development/Languages/Python
-Url:            https://github.com/plish/Trolly
+URL:            https://github.com/plish/Trolly
 Source:         https://files.pythonhosted.org/packages/source/T/Trolly/Trolly-%{version}.zip
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
+BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module httplib2}
 %endif
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -63,7 +61,6 @@ initial work.
 %endif
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %{python_sitelib}/*
 
 %changelog
