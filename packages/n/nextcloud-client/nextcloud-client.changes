@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Nov  9 12:30:21 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- Update to 2.6.1
+  * desktop#1032 Changed max GUI bandwidth limits
+  * desktop#1039 Add sync date next to "Synchronized with local folder"
+  * desktop#1149 Slideshow buttons
+  * desktop#1214 Fix qt warning about registering a URL sheme first.
+  * desktop#1231 Issue #1216: added sync-exclude entry for emacs recovery files
+  * desktop#1240 Race condition in the remote size loading logic
+  * desktop#1409 Review of msvc/gcc warnings -> code cleanup, prevention of implicit casts, variadic macros
+  * desktop#1414 Fix double slashes
+  * desktop#1420 Fixing E2E CSR transmission failure for new connections
+  * desktop#1441 Fixed missing 'translatable' exclusions, added missing window titles
+  * desktop#1461 Checks if exclude file is empty before creating the regular expressions.
+  * desktop#1465 Add server info to menu
+  * desktop#1474 Fixed grammar
+  * desktop#1477 Prevent jumping of tray menu
+  * desktop#1478 Don't run connection wizard when quitting the application
+  * desktop#1481 Avoiding copying in range-based loops
+  * desktop#1495 Add a 'Content-Length: 0' header to initial POST requests
+  * desktop#1504 Remote wipe.
+  * desktop#1520 Pick from upstream: Update qtmacgoodies for an OSX crash fix #6930
+  * desktop#1522 * fix for issue no. #1351
+  * desktop#1523 Merge the list of ignored files/symlinks into one Activity notification.
+  * desktop#1527 Update submodules for Qt 5.12.5 (qtmacgoodies)
+  * desktop#1554 Fix duplicate items in Apps menu (a bug introduced in #1477)
+  * desktop#1573 Fix #1182
+  * desktop#1579 Fix remote wipe when a proxy is configured.
+  * desktop#1580 Fix updater message: Download link instead of "use the system's update
+
+-------------------------------------------------------------------
+Fri Nov  8 19:17:41 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Rename 100-nextcloud-client-sync-inotify.conf to
+  99-nextcloud-client-sync-inotify.conf (boo#1155457).
+
+-------------------------------------------------------------------
 Thu Oct 10 11:54:47 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not BuildRequire python: this is python2, but in other places

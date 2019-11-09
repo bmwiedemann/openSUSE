@@ -19,7 +19,7 @@
 %define soname  libnextcloudsync
 %define sover   0
 Name:           nextcloud-client
-Version:        2.6.0
+Version:        2.6.1
 Release:        0
 Summary:        Nextcloud desktop synchronisation client
 License:        GPL-2.0-or-later AND LGPL-3.0-or-later
@@ -193,7 +193,7 @@ done
 
 # A workaround for gh#owncloud/client#4107
 install -Dpm 0644 sysctl-sync-inotify.conf \
-  %{buildroot}%{_sysconfdir}/sysctl.d/100-%{name}-sync-inotify.conf
+  %{buildroot}%{_sysconfdir}/sysctl.d/99-%{name}-sync-inotify.conf
 
 %suse_update_desktop_file nextcloud
 %fdupes %{buildroot}%{_datadir}/
@@ -205,7 +205,7 @@ install -Dpm 0644 sysctl-sync-inotify.conf \
 %files
 %license COPYING*
 %config %{_sysconfdir}/Nextcloud/
-%config %{_sysconfdir}/sysctl.d/100-%{name}-sync-inotify.conf
+%config %{_sysconfdir}/sysctl.d/99-%{name}-sync-inotify.conf
 %{_bindir}/nextcloud*
 %dir %{_datadir}/nextcloud/
 %{_datadir}/applications/nextcloud.desktop
@@ -238,7 +238,6 @@ install -Dpm 0644 sysctl-sync-inotify.conf \
 %dir %{_datadir}/nautilus-python/extensions/__pycache__
 %{_datadir}/nautilus-python/extensions/syncstate-Nextcloud.py*
 %{_datadir}/nautilus-python/extensions/__pycache__/syncstate-Nextcloud*
-
 
 %if 0%{?is_opensuse}
 %files -n caja-extension-nextcloud
