@@ -80,7 +80,7 @@ through to user-space daemons.
 
 %build
 make MHVTL_HOME_PATH=%{mhvtl_home_dir} VERSION=%{version}_release \
-	SYSTEMD_GENERATOR_DIR=/usr/lib/systemd/system-generators
+	SYSTEMD_GENERATOR_DIR=%{_systemdgeneratordir}
 %if 0%{buildkmp} == 1
 for flavor in %flavors_to_build; do
 	rm -rf obj/$flavor
@@ -94,7 +94,7 @@ done
 %install
 %make_install \
 	MHVTL_HOME_PATH=%{mhvtl_home_dir} VERSION=%{version}_release LIBDIR=%{_libdir} \
-	SYSTEMD_GENERATOR_DIR=/usr/lib/systemd/system-generators
+	SYSTEMD_GENERATOR_DIR=%{_systemdgeneratordir}
 %if 0%{buildkmp} == 1
 export INSTALL_MOD_PATH=%{buildroot}
 export INSTALL_MOD_DIR=updates
@@ -142,7 +142,7 @@ install -d -m 755 %{buildroot}/var/lib/%{name}
 %config %{_sysconfdir}/mhvtl/device.conf
 %config %{_sysconfdir}/mhvtl/library_contents.10
 %config %{_sysconfdir}/mhvtl/library_contents.30
-%{_libexecdir}/systemd/system-generators/
+%{_systemdgeneratordir}/
 %{_unitdir}/mhvtl-load-modules.service
 %{_unitdir}/mhvtl.target
 %{_unitdir}/vtltape@.service
