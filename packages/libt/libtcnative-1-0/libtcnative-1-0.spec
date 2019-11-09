@@ -25,6 +25,8 @@ Group:          Productivity/Networking/Web/Servers
 Url:            https://tomcat.apache.org/tomcat-7.0-doc/apr.html
 Source0:        https://www.apache.org/dist/tomcat/tomcat-connectors/native/%{version}/source/tomcat-native-%{version}-src.tar.gz
 Source1:        https://www.apache.org/dist/tomcat/tomcat-connectors/native/%{version}/source/tomcat-native-%{version}-src.tar.gz.asc
+# https://www.apache.org/dist/tomcat/tomcat-connectors/KEYS
+Source2:        %{name}.keyring
 BuildRequires:  fdupes
 BuildRequires:  java-devel
 BuildRequires:  javapackages-tools
