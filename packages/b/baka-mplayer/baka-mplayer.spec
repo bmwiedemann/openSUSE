@@ -1,7 +1,7 @@
 #
 # spec file for package baka-mplayer
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,6 @@ Version:        2.0.4
 Release:        0
 Summary:        A media player with UI using libmpv
 License:        GPL-2.0-or-later AND Apache-2.0
-Group:          Productivity/Multimedia/Video/Players
 URL:            http://bakamplayer.u8sand.net/
 Source0:        https://github.com/u8sand/Baka-MPlayer/archive/v%{version}.tar.gz#/Baka-MPlayer-%{version}.tar.gz
 Patch0:         ceil.patch
