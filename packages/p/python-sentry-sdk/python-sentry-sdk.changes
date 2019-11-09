@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  8 23:09:33 UTC 2019 - Jimmy Berry <jberry@suse.com>
+
+- Update to 0.13.2
+  - Fix a bug in APM that would cause wrong durations to be
+    displayed on non-UTC servers.
+
+-------------------------------------------------------------------
 Fri Oct 25 14:53:43 UTC 2019 - Jimmy Berry <jberry@suse.com>
 
 - Update to 0.13.1
