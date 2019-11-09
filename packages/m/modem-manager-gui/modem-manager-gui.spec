@@ -33,6 +33,9 @@ Source:         http://download.tuxfamily.org/gsf/source/modem-manager-gui-%{ver
 # Alternatively, if the file should not be executed, then ensure that it is not
 # marked as executable or don't install it in a path that is reserved for executables.
 Patch0:         95-mmgui-timestamp-notifier.diff
+# PATCH-FIX-OPENSUSE bnc#1154301 Fix memory corruption because of wrong strsep()
+# usage. Fix segfault in strftime_l() because of timestamps from future.
+Patch1:         fix-crash.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gdbm-devel
@@ -66,6 +69,7 @@ Current features:
 %prep
 %setup -q
 %patch0
+%patch1 -p1
 
 %build
 %configure
