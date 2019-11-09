@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1571832236.5391548d
+Version:        4.6.1573214011.87166a81
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -74,14 +74,14 @@ This package contains openvswitch support for os-autoinst.
 
 %prep
 %setup -q
-sed -e 's,/bin/env python,/bin/python,' -i crop.py
+sed -e 's,/bin/env python,/bin/python3,' -i crop.py
 # Replace version number from git to what's reported by the package
 sed  -i 's/ my $thisversion = qx{git.*rev-parse HEAD}.*;/ my $thisversion = "%{version}";/' isotovideo
 
 # don't require qemu within OBS
 # and exclude known flaky tests in OBS check
 # https://progress.opensuse.org/issues/52652
-for i in 18-qemu-options 18-backend-qemu 99-full-stack 13-osutils; do
+for i in 13-osutils 14-isotovideo 18-qemu-options 18-backend-qemu 99-full-stack; do
     rm t/$i.t
     sed -i "s/ \?$i\.t//g" t/Makefile.am
 done
