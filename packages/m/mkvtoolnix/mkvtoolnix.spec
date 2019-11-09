@@ -17,11 +17,10 @@
 
 
 Name:           mkvtoolnix
-Version:        38.0.0
+Version:        40.0.0
 Release:        0
 Summary:        Tools to Create, Alter, and Inspect Matroska Files
 License:        GPL-2.0-or-later
-Group:          Productivity/Multimedia/Other
 URL:            http://bunkus.org/videotools/mkvtoolnix/
 #Git:           http://github.com/mbunkus/mkvtoolnix
 Source0:        https://mkvtoolnix.download/sources/mkvtoolnix-%{version}.tar.xz
@@ -34,18 +33,30 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  file-devel
+BuildRequires:  gcc-c++
 BuildRequires:  gettext-tools
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libqt5-qtbase-devel >= 5.4.0
+BuildRequires:  libboost_date_time-devel >= 1.60.0
+BuildRequires:  libboost_filesystem-devel >= 1.60.0
+BuildRequires:  libboost_headers-devel >= 1.60.0
+BuildRequires:  libboost_regex-devel >= 1.60.0
+BuildRequires:  libboost_system-devel >= 1.60.0
 BuildRequires:  libxslt-tools
+BuildRequires:  nlohmann_json-devel
 BuildRequires:  pkgconfig
 BuildRequires:  po4a
 BuildRequires:  pugixml-devel
 BuildRequires:  ruby >= 1.9
 BuildRequires:  shared-mime-info
-BuildRequires:  pkgconfig(Qt5DBus) >= 5.4.0
-BuildRequires:  pkgconfig(Qt5Multimedia) >= 5.4.0
+BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.9.0
+BuildRequires:  pkgconfig(Qt5Core) >= 5.9.0
+BuildRequires:  pkgconfig(Qt5DBus) >= 5.9.0
+BuildRequires:  pkgconfig(Qt5Gui) >= 5.9.0
+BuildRequires:  pkgconfig(Qt5Multimedia) >= 5.9.0
+BuildRequires:  pkgconfig(Qt5Network) >= 5.9.0
+BuildRequires:  pkgconfig(Qt5Widgets) >= 5.9.0
 BuildRequires:  pkgconfig(flac)
+BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(libcmark)
 BuildRequires:  pkgconfig(libebml) >= 1.3.7
 BuildRequires:  pkgconfig(libmatroska) >= 1.5.0
@@ -53,24 +64,9 @@ BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  rubygem(rake)
-%if 0%{?suse_version} > 1320
-BuildRequires:  gcc-c++
-BuildRequires:  libboost_date_time-devel
-BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_headers-devel
-BuildRequires:  libboost_regex-devel
-BuildRequires:  libboost_system-devel
-%if 0%{?suse_version} > 1500
-BuildRequires:  pkgconfig(fmt)
-%endif
-%else
-BuildRequires:  boost-devel >= 1.49
-BuildRequires:  gcc7-c++
-%endif
 
 %package gui
 Summary:        Graphical user interface for mkvtoolnix utils
-Group:          Productivity/Multimedia/Other
 Requires:       %{name} = %{version}
 
 %description
@@ -85,17 +81,9 @@ This package contains the graphical user interface for the mkvtoolnix utils.
 %setup -q
 %patch0 -p1
 # Make sure to use system libs:
-rm -rf lib/{boost,libebml,libmatroska,pugixml}
-%if 0%{?suse_version} > 1500
-rm -rf lib/fmt
-%endif
+rm -rf lib/{boost,libebml,libmatroska,nlohmann-json,pugixml,fmt}
 
 %build
-%if 0%{?suse_version} <= 1320
-# Leap 42.3 is using gcc48 by default (which does not support full c++11)
-export CC=gcc-7
-export CXX=g++-7
-%endif
 %configure --disable-update-check --enable-debug --enable-optimization
 rake --verbose %{?_smp_mflags} V=1
 
@@ -108,18 +96,6 @@ rake --verbose DESTDIR=%{buildroot} install
 %find_lang mkvinfo --with-man
 %find_lang mkvtoolnix-gui --with-man
 %fdupes %{buildroot}/%{_prefix}
-
-%if 0%{?suse_version} < 1330
-%post gui
-%icon_theme_cache_post
-%mime_database_post
-%desktop_database_post
-
-%postun gui
-%desktop_database_postun
-%mime_database_postun
-%icon_theme_cache_postun
-%endif
 
 %files -f %{name}.lang -f mkvpropedit.lang -f mkvextract.lang -f mkvmerge.lang -f mkvinfo.lang
 %license COPYING
@@ -134,6 +110,8 @@ rake --verbose DESTDIR=%{buildroot} install
 %{_mandir}/man1/mkvextract.1%{ext_man}
 %{_mandir}/man1/mkvmerge.1%{ext_man}
 %{_mandir}/man1/mkvpropedit.1%{ext_man}
+%doc %lang(bg) %dir %{_mandir}/bg
+%doc %lang(bg) %dir %{_mandir}/bg/man1
 %doc %lang(ko) %dir %{_mandir}/ko
 %doc %lang(ko) %dir %{_mandir}/ko/man1
 %doc %lang(uk) %dir %{_mandir}/uk
@@ -141,10 +119,6 @@ rake --verbose DESTDIR=%{buildroot} install
 
 %files gui -f mkvtoolnix-gui.lang
 %{_bindir}/mkvtoolnix-gui
-# Not included in 42.3
-%if 0%{?sle_version} == 120300 && 0%{?is_opensuse}
-%dir %{_datadir}/metainfo
-%endif
 %{_datadir}/metainfo/org.bunkus.mkvtoolnix-gui.appdata.xml
 %{_datadir}/mime/packages/org.bunkus.mkvtoolnix-gui.xml
 %{_datadir}/%{name}/sounds

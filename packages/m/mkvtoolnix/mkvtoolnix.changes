@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Sat Nov  9 13:38:39 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 40.0.0
+  New features and enhancements:
+  * mkvmerge: MP4 reader: added support for BMP covert art
+    images.
+  * MKVToolNix GUI: multiplexer: added an option to disable
+    deriving the destination file name from the file title.
+    Implements #2648.
+  * MKVToolNix GUI: multiplexer: the content of the
+    "stereoscopy" combo box has been simplified making the box's
+    minimum width much smaller, allowing the user to resize the
+    GUI's whole window to a much smaller width.
+  * MKVToolNix GUI: multiplexer: whenever the user changes the
+    "aspect ratio" or "display dimensions" controls, the
+    corresponding radio button will be activated automatically.
+    Implements #2651.
+  * MKVToolNix GUI: Windows: added a setting in the preferences
+    to disable the GUI's dark color mode even if Windows's app
+    color mode is set to dark. Implements #2646.
+  * MKVToolNix GUI: Windows: replaced the dark mode introduced
+    in v39 with another dark mode that's less wasteful with
+    space between widgets.
+  Bug fixes:
+  * mkvmerge: MP4 reader: mkvmerge was reading eight bytes too
+    many for cover art images. This could cause file
+    identification to fail when the cover art was located at the
+    end of the MP4 file. Even if it succeeded, this meant too
+    much data present in the attachment. Fixes #2650.
+  * mkvmerge: MP4 reader: covert art images with unknown image
+    types will be skipped instead of treated as JPEG images.
+  Build system changes:
+  * Qt 5.9.0 or newer is now required for building MKVToolNix
+    GUI.
+
+-------------------------------------------------------------------
+Tue Nov  5 08:20:29 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 39.0.0
+  New features and enhancements:
+  * mkvmerge: Blu-ray: when reading an MPLS playlist mkvmerge
+    will look up and use chapter names from the Blu-ray's
+    "track/chapter names" meta data if it exists. Part of the
+    implementation of 2486.
+  * mkvmerge: MP4 reader: if present, cover art images (the
+    `meta.udta.ilist.covr` atom) will be converted into
+    attachments.
+  * MKVToolNix GUI: multiplexer: when adding a playlist from a
+    Blu-ray disc, the disc library meta data will be parsed, and
+    the biggest thumbnail, if present, will be added as a new
+    attachment with name `cover.jpg` (extension depends on
+    thumbnail's extension). Implements #2644.
+  * MKVToolNix GUI: multiplexer: when adding a playlist from a
+    Blu-ray disc, the title from the disc library meta data will
+    be set as the new file title if the disc library meta data
+    contains one & no title has been set yet.
+  * MKVToolNix GUI: multiplexer: the automatically generated
+    destination file name will now be based on the file title if
+    one is set at that point. This works in conjunction with the
+    title being said from the Blu-ray disc library meta data.
+  * MKVToolNix GUI: chapter editor: when reading chapters from
+    an MPLS playlist the GUI will look up and use chapter names
+    from the Blu-ray's "track/chapter names" meta data if it
+    exists. Part of the implementation of 2486.
+  * MKVToolNix GUI: Windows: added a dark mode that's enabled
+    when Windows 10's dark mode is turned on.
+  * translations: added a Bulgarian translation of the programs
+    & the man pages by Симеон Цветков (see `AUTHORS`).
+  Bug fixes:
+  * mkvmerge: attachments without a file name won't be ignored
+    anymore. Part of the fix of #2642.
+  * MKVToolNix GUI: header editor: attachments with an empty
+    name element will be shown as `<unnamed>` as originally
+    intended. Part of the fix of #2642.
+  * Linux AppImage: the AppImage will no longer change
+    directories before running the desired executable allow the
+    use of relative file names. Fixes #2632.
+  Build system changes:
+  * MKVToolNix now requires a C++ compiler that supports the
+    following features of the C++17 standard: "`[[maybe_unused]]`
+    attribute", "nested namespace definition",
+    "structured bindings". For the GNU Compiler Collection (gcc)
+    this means v7 or newer; for clang it means v4 or newer.
+  * Boost 1.60.0 or newer is now required.
+
+- Use system nlohmann-json
+
+- Spec cleanup
+
+-------------------------------------------------------------------
 Sun Oct  6 13:53:57 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 38.0.0
