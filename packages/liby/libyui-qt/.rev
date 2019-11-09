@@ -513,4 +513,11 @@
     <comment>submit new version 2.51.3</comment>
     <requestid>746235</requestid>
   </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>15f4f2980570997f0b83c6ffc1c15592</srcmd5>
+    <version>2.51.1</version>
+    <time>1573337965</time>
+    <user>dimstar_suse</user>
+    <comment>osc copypac from project:openSUSE:Factory package:libyui-qt revision:62, using expand</comment>
+  </revision>
 </revisionlist>
