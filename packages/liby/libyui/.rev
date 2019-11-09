@@ -382,4 +382,11 @@ build/package/libyui.spec:Version:        3.0.13</comment>
     <comment>submit new version 3.8.4</comment>
     <requestid>746292</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>0a0f3303a20f7a2965cb52226b1cd113</srcmd5>
+    <version>3.8.2</version>
+    <time>1573337928</time>
+    <user>dimstar_suse</user>
+    <comment>osc copypac from project:openSUSE:Factory package:libyui revision:43, using expand</comment>
+  </revision>
 </revisionlist>
