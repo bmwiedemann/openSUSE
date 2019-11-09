@@ -107,7 +107,6 @@ single page document formats like PDF and Postscript.
 %package devel
 Summary:        X-Apps Document Reader development files
 Group:          Development/Libraries/C and C++
-Requires:       %{name}-backends = %{version}
 Requires:       %{typelib1} = %{version}
 Requires:       %{typelib2} = %{version}
 

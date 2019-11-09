@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov  9 08:42:53 UTC 2019 - Marguerite Su <i@marguerite.su>
+
+- Remove Requires: xreader-backends from xreader-devel
+
+-------------------------------------------------------------------
 Sun Aug 18 12:20:40 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 -  Restore backend subpackages accidentally removed by previous Jul 8

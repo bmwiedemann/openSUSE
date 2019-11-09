@@ -175,4 +175,12 @@
     <comment>restore accidentally removed subpackages</comment>
     <requestid>724898</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>dfa68c5b0e0f14cfde91316a8f219574</srcmd5>
+    <version>2.2.2</version>
+    <time>1573339563</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>746773</requestid>
+  </revision>
 </revisionlist>
