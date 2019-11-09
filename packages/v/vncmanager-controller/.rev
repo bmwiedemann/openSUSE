@@ -44,4 +44,14 @@ Session manager for VNC. It listens on VNC port and spawns Xvnc processes for in
     <comment></comment>
     <requestid>623315</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>b80d26ab7357105d76fa13ff746cb914</srcmd5>
+    <version>1.0.1</version>
+    <time>1573338788</time>
+    <user>dimstar_suse</user>
+    <comment>- patch U_vncmanager-controller-Declare-gnome-shell-versions-3.10-to-3.26-as-supported.patch 
+  mentioned in previous changelog enty also covers the fix for
+  bsc#1102080 (same issue)</comment>
+    <requestid>746607</requestid>
+  </revision>
 </revisionlist>
