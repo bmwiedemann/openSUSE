@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov  6 13:42:24 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not pull in Brownie as it is not needed
+
+-------------------------------------------------------------------
 Mon Nov 19 13:00:25 UTC 2018 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.8.3

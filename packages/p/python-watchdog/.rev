@@ -32,4 +32,12 @@
     <comment></comment>
     <requestid>650294</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>70862eba7b3eaaeb28b2019760762603</srcmd5>
+    <version>0.9.0</version>
+    <time>1573338364</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not pull in Brownie as it is not needed</comment>
+    <requestid>746007</requestid>
+  </revision>
 </revisionlist>

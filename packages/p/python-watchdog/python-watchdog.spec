@@ -1,7 +1,7 @@
 #
 # spec file for package python-watchdog
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,10 @@ Version:        0.9.0
 Release:        0
 Summary:        Filesystem events monitoring
 License:        Apache-2.0
-Group:          Development/Languages/Python
-URL:            http://github.com/gorakhargosh/watchdog
+URL:            https://github.com/gorakhargosh/watchdog
 Source:         https://files.pythonhosted.org/packages/source/w/watchdog/watchdog-%{version}.tar.gz
 Patch0:         add-missing-conftest.patch
 BuildRequires:  %{python_module pathtools}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-timeout >= 0.3}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -38,9 +36,6 @@ Requires:       python-PyYAML
 Requires:       python-argh
 Requires:       python-pathtools
 BuildArch:      noarch
-%ifpython2
-Requires:       python-Brownie
-%endif
 %python_subpackages
 
 %description
@@ -48,7 +43,6 @@ Python API and shell utilities to monitor file system events.
 
 %package doc
 Summary:        Documentation and examples for %{name}
-Group:          Documentation/HTML
 
 %description doc
 This package contains documentation and examples for %{name}.
@@ -69,7 +63,7 @@ cd docs && make html && rm -r build/html/.buildinfo build/html/objects.inv # Bui
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_version}
+%pytest
 
 %files %{python_files}
 %license COPYING LICENSE
