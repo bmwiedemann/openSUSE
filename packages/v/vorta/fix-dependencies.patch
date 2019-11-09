@@ -1,8 +1,8 @@
-Index: vorta-0.6.5/setup.cfg
+Index: vorta-0.6.22/setup.cfg
 ===================================================================
---- vorta-0.6.5.orig/setup.cfg
-+++ vorta-0.6.5/setup.cfg
-@@ -27,13 +27,11 @@ license_file = LICENSE.txt
+--- vorta-0.6.22.orig/setup.cfg 2019-10-02 13:56:41.802128281 +0200
++++ vorta-0.6.22/setup.cfg      2019-10-02 13:58:08.574175337 +0200
+@@ -27,13 +27,11 @@
  [options]
  python_requires = >= 3.6
  setup_requires =
@@ -15,4 +15,5 @@ Index: vorta-0.6.5/setup.cfg
 -  pyqt5
    peewee
    python-dateutil
-   keyring
+   apscheduler
+

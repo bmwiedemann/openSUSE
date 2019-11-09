@@ -1,7 +1,7 @@
-Index: vorta-0.6.10/src/vorta/assets/UI/archivetab.ui
+Index: vorta-0.6.22/src/vorta/assets/UI/archivetab.ui
 ===================================================================
---- vorta-0.6.10.orig/src/vorta/assets/UI/archivetab.ui
-+++ vorta-0.6.10/src/vorta/assets/UI/archivetab.ui
+--- vorta-0.6.22.orig/src/vorta/assets/UI/archivetab.ui 2019-10-02 13:56:41.806128284 +0200
++++ vorta-0.6.22/src/vorta/assets/UI/archivetab.ui      2019-10-02 14:01:39.886291863 +0200
 @@ -28,11 +28,6 @@
         <bold>false</bold>
        </font>
@@ -14,10 +14,10 @@ Index: vorta-0.6.10/src/vorta/assets/UI/archivetab.ui
       <property name="currentIndex">
        <number>0</number>
       </property>
-Index: vorta-0.6.10/src/vorta/assets/UI/scheduletab.ui
+Index: vorta-0.6.22/src/vorta/assets/UI/scheduletab.ui
 ===================================================================
---- vorta-0.6.10.orig/src/vorta/assets/UI/scheduletab.ui
-+++ vorta-0.6.10/src/vorta/assets/UI/scheduletab.ui
+--- vorta-0.6.22.orig/src/vorta/assets/UI/scheduletab.ui        2019-10-02 13:56:41.806128284 +0200
++++ vorta-0.6.22/src/vorta/assets/UI/scheduletab.ui     2019-10-02 14:01:39.886291863 +0200
 @@ -25,11 +25,6 @@
         <bold>false</bold>
        </font>
@@ -30,3 +30,8 @@ Index: vorta-0.6.10/src/vorta/assets/UI/scheduletab.ui
       <property name="currentIndex">
        <number>3</number>
       </property>
+
+
+
+
+

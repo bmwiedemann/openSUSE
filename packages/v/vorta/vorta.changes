@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Wed Oct  2 11:21:25 UTC 2019 - Frederik Möllers <frederik@die-sinlosen.de>
+
+- Update to version 0.6.22
+  * Remove keyring dependency and refactor keyrings
+  * Allow for extra borg arguments per-repo
+  * Reduce memory usage by removing main window from memory when closed
+  * Prevent KeyError when reading KnownNetworks on macOS
+  * Expand user path in python before setting BORG_RSH
+  * Catch Keyboard interrupt when running in foreground mode
+  * Make autostart for Linux more stable
+  * Avoid duplicate files in Extract dialog, avoid passing None to shlex when parsing extra args
+  * Changes vorta's default tray icon to white on GNOME
+  * Workaround for jeepney DBus-lib and asyncio event loop.
+    Fixes gh#borgbase/vorta#234
+  * Fall back to saving passwords in the database, when no Gnome-Keyring is installed
+  * Implement QtSingleApplication
+    Implements gh#borgbase/vorta#243
+  * Remove non-ASCII em-dash from Manifest.in
+  * Re-enable mounting of whole repo
+  * Get borg version and path on startup. Link to log folder
+    Implements gh#borgbase/vorta#247
+  * Add helper class to manage Borg version and supported features
+    Implements gh#borgbase/vorta#250
+  * Correctly set environment encoding (pyinstaller issue)
+    Fixes gh#borgbase/vorta#220
+  * Fix default white icon behaviour for Ubuntu GNOME
+  * Don't delete item from sources if item==None
+  * Fix issue when Borg binary is missing
+    Fixes gh#borgbase/vorta#258
+  * Add date-based log rotation
+    Partially fixes last part of gh#borgbase/vorta#121
+  * Remove unique constraint from Archive ID
+    Fixes gh#borgbase/vorta#253
+  * Adress an issue with sqlite when the archive table to be migrated is very large
+  * Handle OSError 6 when trying to read a socket in .ssh
+  * Pre-backup command runs before repository checks
+  * Implement --version
+    Fixes gh#borgbase/vorta#260
+  * If BORG_PASSCOMMAND is found, unset BORG_PASSPHRASE
+    Fixes gh#borgbase/vorta#272
+  * Raise meaningful error when Borg version found is too old
+    Fixes Fixes gh#borgbase/vorta#283
+  * Ignore Python processes owned by other users when finding mount points
+  * Implement borg diff
+  * Include more links into appdata
+  * Default opt-in for enable_notifications_success
+  * Rename background-option to daemonize
+  * Implement close-question for DEs without system tray
+  * Fix autostart icon
+  * Allow is_system_tray_available to be called with running event loop
+  * Add option for starting Vorta in foreground
+
+-------------------------------------------------------------------
 Mon Feb 25 17:08:42 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add fix-qtoolbox-titles.patch to fix a problem with QToolBox tab
