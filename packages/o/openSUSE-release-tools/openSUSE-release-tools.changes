@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 08 19:51:40 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20191108.c7e1800d:
+  * origin-manager: indicate the decision may be overridden via command.
+
+-------------------------------------------------------------------
+Fri Nov 08 08:38:58 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20191108.558e9d65:
+  * userscript/origin: handle HTTP failure.
+
+-------------------------------------------------------------------
 Thu Nov 07 16:47:53 UTC 2019 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20191107.9503a04b:
