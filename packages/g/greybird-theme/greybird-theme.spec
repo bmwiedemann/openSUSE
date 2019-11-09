@@ -19,19 +19,18 @@
 %define _name Greybird
 
 Name:           greybird-theme
-Version:        3.22.10~git3.c0b8881
+Version:        3.22.10+git15.acede86
 Release:        0
 Url:            https://github.com/shimmerproject/Greybird
 Summary:        A grey theme for GNOME, XFCE, GTK+ 2 and 3
 License:        GPL-2.0-or-later OR CC-BY-SA-3.0
 Group:          System/GUI/GNOME
-Source:         %{name}-%{version}.tar.bz2
-BuildRequires:  autoconf
-BuildRequires:  automake
+Source:         %{_name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  gdk-pixbuf-devel
 BuildRequires:  gdk-pixbuf-loader-rsvg
 BuildRequires:  glib2-devel
+BuildRequires:  meson
 BuildRequires:  sassc
 BuildArch:      noarch
 
@@ -82,47 +81,47 @@ neutral grey-ish look.
 This package provides the GTK+ 3 support of Greybird.
 
 %prep
-%autosetup
+%setup -q -n %{_name}-%{version}
 
 %build
-./autogen.sh
-%configure
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 # remove stuff that's unlikely to be used
-rm -r %{buildroot}%{_datadir}/themes/%{_name}/unity
-rm -r %{buildroot}%{_datadir}/themes/%{_name}/plank
-rm    %{buildroot}%{_datadir}/themes/%{_name}/ubiquity-panel-bg.png
+rm -r %{buildroot}%{_datadir}/themes/%{_name}{,-dark}/unity
+rm -r %{buildroot}%{_datadir}/themes/%{_name}{,-dark}/plank
+
 # the convulted fdupes call is necessary, else a gtk-2.0 icon will be linked to gtk-3.0
 # which will not work if only one subpackage is installed.
 %fdupes -s %{buildroot}/%{_datadir}/themes/%{_name}*/{[^g]*,gtk-3.0}
+%fdupes -s %{buildroot}/%{_datadir}/themes/%{_name}*/gtk-2.0/*
 
 %files -n metatheme-greybird-common
-%doc README.md 
+%doc README.md
 %license LICENSE.CC LICENSE.GPL
-%dir %{_datadir}/themes/%{_name}/
-%{_datadir}/themes/%{_name}/metacity-1
+%dir %{_datadir}/themes/%{_name}{,-dark}/
+%{_datadir}/themes/%{_name}{,-dark}/metacity-1
 %{_datadir}/themes/%{_name}/xfce-notify-4.0
-%{_datadir}/themes/%{_name}/xfwm4
-%{_datadir}/themes/%{_name}/Greybird.emerald
-%{_datadir}/themes/%{_name}/index.theme
+%{_datadir}/themes/%{_name}{,-dark}/xfwm4
+%{_datadir}/themes/%{_name}{,-dark}/*.emerald
+%{_datadir}/themes/%{_name}{,-dark}/index.theme
 %dir %{_datadir}/themes/%{_name}-accessibility
 %{_datadir}/themes/%{_name}-accessibility/xfwm4
 %dir %{_datadir}/themes/%{_name}-compact
 %{_datadir}/themes/%{_name}-compact/xfwm4
 %dir %{_datadir}/themes/%{_name}-bright
 %{_datadir}/themes/%{_name}-bright/xfce-notify-4.0
-%dir %{_datadir}/themes/%{_name}/gnome-shell
-%{_datadir}/themes/%{_name}/gnome-shell/gnome-shell.css
+%dir %{_datadir}/themes/%{_name}{,-dark}/gnome-shell
+%{_datadir}/themes/%{_name}{,-dark}/gnome-shell/gnome-shell.css
 
 %files -n gtk2-metatheme-greybird
-%{_datadir}/themes/%{_name}/gtk-2.0
+%{_datadir}/themes/%{_name}{,-dark}/gtk-2.0
 
 %if 0%{?suse_version} >= 1210
 %files -n gtk3-metatheme-greybird
-%{_datadir}/themes/%{_name}/gtk-3.0
+%{_datadir}/themes/%{_name}{,-dark}/gtk-3.0
 %endif
 
 %changelog

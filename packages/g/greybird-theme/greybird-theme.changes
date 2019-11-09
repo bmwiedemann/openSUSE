@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Nov 06 16:02:22 UTC 2019 - tux93@opensuse.org
+
+- Update to version 3.22.10+git15.acede86:
+  * Make use of symlinks cleanup unused files
+
+-------------------------------------------------------------------
+Mon Nov 04 16:02:12 UTC 2019 - tux93@opensuse.org
+
+- Update to version 3.22.10+git14.e467f4b:
+  * Add single-user installation instructions
+  * Fix notification theme paths
+  * Include meson as dependency in README.md
+  * various small fixes
+  * Buildsystem ported to meson and added dark theme
+
+-------------------------------------------------------------------
+Thu Oct 24 14:38:17 UTC 2019 - maurizio.galli@gmail.com
+
+- Update to version 3.22.10~git8.99f40ce:
+  * Add minimal size to header bar button's label
+  * Revert "Fix size of linked button with images in header bar"
+  * xfdesktop: Highlight selected icons
+  * Fix size of linked button with images in header bar
+  * xfce4-panel: Add drop-target style
+  * Improve button sizing
+  * Make error and warning entry text more readable
+  * Also set backdrop color for print dialog (Fixes #243)
+  * Re-apply xfwm4 tabwin sizing improvement (Issue #224)
+  * Improve the print dialog's style (Fixes #238)
+  
+-------------------------------------------------------------------
 Fri May 10 04:30:52 UTC 2019 - maurizio.galli@gmail.com
 
 - Update to version 3.22.10~git3.c0b8881:
