@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Nov 08 23:07:57 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.49.3:
+  * Release v3.49.3
+  * Warn about pushing to branches named "production" (#870)
+  * Add a @todo to follow up on #868 if/when possible
+  * Hide worker containers on enterprise (#868)
+  * Remove drush-aliases SSH calls to find the absolute app root (#869)
+  * Disallow . in Drush alias names (replace with -)
+  * Fix cases using the default argument incorrectly
+  * Fix choosing default option
+  * Allow --app option to correct select application
+
+-------------------------------------------------------------------
 Mon Oct 28 00:01:19 UTC 2019 - jimmy@boombatower.com
 
 - Update to version 3.49.2:
