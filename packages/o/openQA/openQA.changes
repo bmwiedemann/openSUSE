@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Nov 08 14:26:56 UTC 2019 - coolo@suse.com
+
+- Update to version 4.6.1573206130.f1d227eff:
+  * Preserve GIT_ASKPASS between jobs in CircleCI
+  * Unset PERL5OPT when executing isotovideo
+  * Test/Coverage: Monkeypatch B::Deparse
+  * docs: Clarify that the cache service needs full read permission in CACHEDIRECTORY
+  * docs: Use consistent 'enable --now' parameter on all applicable systemd calls
+  * openqa-bootstrap: Rely on service dependencies instead of explicit starts
+  * Fix bug that cannot update job group using load_template
+  * Fix URLs for needles in subdirectories (POO #58959)
+  * full-stack.t: Add sleep before sending first command
+  * spec: Use more common '>=' rather than '=>'
+  * Remove fedmsg plugin
+  * Makefile: Delete obsolete reference to deleted 'check_coverage'
+  * Fix retry logic in make test
+  * Prevent errors for requests to unknown resources in cache service
+  * setup_workers should be part of the public API
+  * Add controller and another model to cache service and remove some dead code
+  * Turn cache service into a full Mojolicious app
+  * Calculate cache dir size if it is a symlink
+  * Deal with the error message when create/update job group
+  * Updates in CircleCI testing environment
+  * Move cache service into OpenQA::CacheService namespace
+  * Use `croak` in OpenQA::Utils::log_fatal
+  * Only log if test schedule has really changed
+  * Enable regex search in 'Medium types' table
+  * Pass PRJDIR to os-autoinst
+  * OBS: Skip tests which are failing/flaky in OBS
+  * Update spec: os-autoinst >= 4.6
+  * Update .circleci/autoinst.sha
+  * Use a new file to exchange status with isotovideo
+  * Fix OPENQA_CACHE_DIR environment variable
+  * Remove dead code and make client a little easier to read
+  * Remove circular reference and fix request encapsulation
+  * Push documentation nightly to openqabot fork
+  * Schema Profiler: override print method with log_debug
+  * Do not waste resources to create unnecessary OpenQA::Worker::Cache::Request objects
+
+-------------------------------------------------------------------
 Thu Oct 24 09:07:31 UTC 2019 - coolo@suse.com
 
 - Update to version 4.6.1571860277.da2de85d9:

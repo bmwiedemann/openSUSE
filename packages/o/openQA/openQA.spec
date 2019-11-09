@@ -45,10 +45,10 @@
 %else
 %define python_scripts_requires %{nil}
 %endif
-%define assetpack_requires perl(Mojolicious::Plugin::AssetPack) => 1.36, perl(CSS::Minifier::XS) perl(JavaScript::Minifier::XS)
-%define common_requires perl(Config::IniFiles) perl(Cpanel::JSON::XS) perl(Cwd) perl(Data::Dump) perl(Data::Dumper) perl(Digest::MD5) perl(Getopt::Long) perl(Minion) => 9.09, perl(Mojolicious) >= 7.92, perl(Try::Tiny) perl(Regexp::Common), perl(Storable)
+%define assetpack_requires perl(Mojolicious::Plugin::AssetPack) >= 1.36, perl(CSS::Minifier::XS) perl(JavaScript::Minifier::XS)
+%define common_requires perl(Config::IniFiles) perl(Cpanel::JSON::XS) perl(Cwd) perl(Data::Dump) perl(Data::Dumper) perl(Digest::MD5) perl(Getopt::Long) perl(Minion) >= 9.09, perl(Mojolicious) >= 7.92, perl(Try::Tiny) perl(Regexp::Common), perl(Storable)
 # runtime requirements for the main package that are not required by other sub-packages
-%define main_requires %assetpack_requires git-core perl(Carp::Always) perl(Date::Format) perl(DateTime::Format::Pg) perl(DBD::Pg) >= 3.7.4, perl(DBI) >= 1.632, perl(DBIx::Class) => 0.082801, perl(DBIx::Class::DeploymentHandler) perl(DBIx::Class::DynamicDefault) perl(DBIx::Class::Schema::Config) perl(DBIx::Class::Storage::Statistics) perl(DBIx::Class::OptimisticLocking) perl(File::Copy::Recursive) perl(Net::OpenID::Consumer) perl(Module::Pluggable) perl(aliased) perl(Config::Tiny) perl(Text::Diff) perl(CommonMark) perl(JSON::Validator) perl(IPC::Run) perl(Archive::Extract) perl(Time::ParseDate) perl(Sort::Versions) perl(BSD::Resource) perl(Pod::POM) perl(Mojo::Pg) perl(Mojo::RabbitMQ::Client) => 0.2, perl(SQL::Translator) perl(YAML::XS) perl(LWP::UserAgent)
+%define main_requires %assetpack_requires git-core perl(Carp::Always) perl(Date::Format) perl(DateTime::Format::Pg) perl(DBD::Pg) >= 3.7.4, perl(DBI) >= 1.632, perl(DBIx::Class) >= 0.082801, perl(DBIx::Class::DeploymentHandler) perl(DBIx::Class::DynamicDefault) perl(DBIx::Class::Schema::Config) perl(DBIx::Class::Storage::Statistics) perl(DBIx::Class::OptimisticLocking) perl(File::Copy::Recursive) perl(Net::OpenID::Consumer) perl(Module::Pluggable) perl(aliased) perl(Config::Tiny) perl(Text::Diff) perl(CommonMark) perl(JSON::Validator) perl(IPC::Run) perl(Archive::Extract) perl(Time::ParseDate) perl(Sort::Versions) perl(BSD::Resource) perl(Pod::POM) perl(Mojo::Pg) perl(Mojo::RabbitMQ::Client) >= 0.2, perl(SQL::Translator) perl(YAML::XS) perl(LWP::UserAgent)
 %define client_requires git-core perl(IO::Socket::SSL) >= 2.009, perl(LWP::UserAgent) perl(IPC::Run)
 %define worker_requires os-autoinst < 5, perl(Mojo::IOLoop::ReadWriteProcess) > 0.19, perl(Minion::Backend::SQLite) perl(Mojo::SQLite) openQA-client optipng
 %define build_requires rubygem(sass) %assetpack_requires
@@ -65,7 +65,7 @@
 %define devel_requires %build_requires %test_requires rsync curl postgresql-devel %qemu tar xorg-x11-fonts sudo perl(Devel::Cover) perl(Devel::Cover::Report::Codecov) perl(Perl::Tidy)
 
 Name:           openQA
-Version:        4.6.1571860277.da2de85d9
+Version:        4.6.1573206130.f1d227eff
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -148,7 +148,7 @@ Requires:       %{worker_requires_including_uncovered_in_tests}
 # FIXME: use proper Requires(pre/post/preun/...)
 PreReq:         openQA-common = %{version}
 Requires(post): coreutils
-Requires(post): os-autoinst >= 4.4
+Requires(post): os-autoinst >= 4.6
 Recommends:     qemu
 # Needed for caching - not required if caching not used...
 Recommends:     rsync
@@ -228,7 +228,13 @@ rm -f t/00-tidy.t
 #make test
 rm -rf %{buildroot}/DB
 export LC_ALL=en_US.UTF-8
-make test-with-database OBS_RUN=1 PROVE_ARGS='-l -r -v' TEST_PG_PATH=%{buildroot}/DB || true
+# Skip tests not working currently, or flaky, and Selenium tests
+# https://progress.opensuse.org/issues/19652
+rm \
+    t/25-cache-service.t \
+    t/ui/*.t
+
+make test-with-database OBS_RUN=1 PROVE_ARGS='-l -r -v' TEST_PG_PATH=%{buildroot}/DB
 rm -rf %{buildroot}/DB
 %endif
 
