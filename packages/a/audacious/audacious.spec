@@ -1,7 +1,7 @@
 #
 # spec file for package audacious
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,6 @@ Version:        3.10.1
 Release:        0
 Summary:        Audio player with graphical UI and library functionality
 License:        BSD-2-Clause
-Group:          Productivity/Multimedia/Sound/Players
 URL:            https://audacious-media-player.org/
 Source:         https://distfiles.audacious-media-player.org/%{name}-%{version}.tar.bz2
 BuildRequires:  autoconf
@@ -62,7 +61,6 @@ fork of a fork of XMMS.
 
 %package -n libaudcore%{core_soname}
 Summary:        Main functionality library of Audacious
-Group:          System/Libraries
 Provides:       libaudcore%{?_isa} = %{version}
 
 %description -n libaudcore%{core_soname}
@@ -70,7 +68,6 @@ Library from the Audacious audio player.
 
 %package -n libaudqt%{qt_soname}
 Summary:        QT GUI implementation of Audacious
-Group:          System/Libraries
 Requires:       libaudcore%{core_soname} >= %{version}
 
 %description -n libaudqt%{qt_soname}
@@ -78,7 +75,6 @@ Library from the Audacious audio player.
 
 %package -n libaudgui%{gui_soname}
 Summary:        GTK GUI implementation of Audacious
-Group:          System/Libraries
 Requires:       libaudcore%{core_soname} >= %{version}
 
 %description -n libaudgui%{gui_soname}
@@ -86,7 +82,6 @@ Library from the Audacious audio player.
 
 %package -n libaudtag%{tag_soname}
 Summary:        ID3 and APE metadata support for Audacious
-Group:          System/Libraries
 Requires:       libaudcore%{core_soname} >= %{version}
 
 %description -n libaudtag%{tag_soname}
@@ -94,7 +89,6 @@ Library from the Audacious audio player.
 
 %package devel
 Summary:        Development files for Audacious
-Group:          Development/Libraries/C and C++
 Requires:       libaudcore%{core_soname} = %{version}
 Requires:       libaudgui%{gui_soname} = %{version}
 Requires:       libaudqt%{qt_soname} = %{version}
