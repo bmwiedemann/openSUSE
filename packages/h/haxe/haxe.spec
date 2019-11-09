@@ -15,12 +15,11 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
-
-%global commit_ocamllibs 2502c82e45d2cfca6dfe6ecb558f56104d0c43f9
-%global commit_haxelib a494d8be523e26fcf875e2c33915808dc221e17a
+%global commit_haxelib c994dc451635a84d7a3d53cc9b2e517d50bf0140
+%global commit_hx3compat f1f18201e5c0479cb5adf5f6028788b37f37b730
 
 Name:           haxe
-Version:        3.4.7
+Version:        4.0.1
 Release:        0
 Summary:        Multiplatform programming language
 License:        GPL-2.0+ and MIT
@@ -30,20 +29,24 @@ Group:          Development/Languages/Other
 #   * The Haxe Standard Library - MIT
 Url:            https://haxe.org/
 Source0:        https://github.com/HaxeFoundation/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        https://github.com/HaxeFoundation/ocamllibs/archive/%{commit_ocamllibs}.tar.gz#/ocamllibs-%{commit_ocamllibs}.tar.gz
-Source2:        https://github.com/HaxeFoundation/haxelib/archive/%{commit_haxelib}.tar.gz#/haxelib-%{commit_haxelib}.tar.gz
-Patch0:         527acc3ce0bb881aafe14d7919447075774519f7.patch
-Patch1:         9bc4999af40324af5e48ed0e3087a4b76f84d9b8.patch
+Source1:        https://github.com/HaxeFoundation/haxelib/archive/%{commit_haxelib}.tar.gz#/haxelib-%{commit_haxelib}.tar.gz
+Source2:        https://github.com/HaxeFoundation/hx3compat/archive/%{commit_hx3compat}.tar.gz#/hx3compat-%{commit_hx3compat}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  help2man
-BuildRequires:  neko-devel >= 2.2.0
-BuildRequires:  neko >= 2.2.0
+BuildRequires:  neko-devel >= 2.3.0
+BuildRequires:  neko >= 2.3.0
 BuildRequires:  ocaml >= 4.02.3
+BuildRequires:  ocaml-findlib
 BuildRequires:  ocaml-camlp5-devel
+BuildRequires:  ocaml-sedlex-devel >= 2.0
+BuildRequires:  ocaml-xml-light-devel
+BuildRequires:  ocaml-extlib-devel
+BuildRequires:  ocaml-ptmap-devel
+BuildRequires:  ocaml-sha-devel
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pcre-devel-static
 BuildRequires:  cmake
-Requires:       neko >= 2.2.0
+Requires:       neko >= 2.3.0
 
 %description
 Haxe is a high-level multiplatform programming language and compiler
@@ -56,17 +59,14 @@ C++, PHP, C#, Java, Python, Lua, and Neko VM binary files.
 %autosetup -p1
 
 %build
-pushd libs && tar -xf %{SOURCE1} --strip-components=1 && popd
-pushd extra/haxelib_src && tar -xf %{SOURCE2} --strip-components=1 && popd
+pushd extra/haxelib_src && tar -xf %{SOURCE1} --strip-components=1 && popd
+pushd extra/haxelib_src/hx3compat && tar -xf %{SOURCE2} --strip-components=1 && popd
 
 # note that the Makefile does not support parallel building
 
-# Haxe 3.4.* is not safe-string compatible.
-export OCAMLPARAM="safe-string=0,_"
-
 # Check to see if ocamlopt exists. If not, bytecompile everything.
 # It is because ocamlopt may be missing in some architectures.
-command -v ocamlopt && make libs haxe || make libs haxe BYTECODE=1
+command -v ocamlopt && make || make BYTECODE=1
 
 # Compile haxelib
 pushd extra/haxelib_src && \

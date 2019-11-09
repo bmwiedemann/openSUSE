@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Nov  4 21:55:48 UTC 2019 - Andy Li <andy@onthewings.net>
+
+- Update to 4.0.1
+  * haxelib : Fixed git dependencies in haxelib.json.
+  * jvm : Fixed compilation failure caused by a specific usage of
+    Array<Dynamic>.
+  * Fixed compiler crash on loops with continue in all branches of
+    the body.
+  * Fixed erasing typedef in AST on field access to forwarded
+    abstract fields. 
+
+-------------------------------------------------------------------
+Sat Nov  2 02:58:18 UTC 2019 - Andy Li <andy@onthewings.net>
+
+- Update to 4.0.0
+  * New features: https://github.com/HaxeFoundation/haxe/wiki/
+    What's-new-in-Haxe-4
+  * Breaking changes: https://github.com/HaxeFoundation/haxe/wiki/
+    Breaking-changes-in-Haxe-4.0.0
+  * Remove unneeded patches:
+    527acc3ce0bb881aafe14d7919447075774519f7.patch
+    9bc4999af40324af5e48ed0e3087a4b76f84d9b8.patch
+
+-------------------------------------------------------------------
 Wed Oct 23 11:12:13 UTC 2019 - olaf@aepfle.de
 
 - build with camlp5, use --unsafe-strings
