@@ -20,7 +20,6 @@
 %bcond_without perl_bingings
 %bcond_without python_bindings
 %bcond_without ocaml_bindings
-%define _lto_cflags %{nil}
 
 Name:           hivex
 BuildRequires:  autoconf
@@ -35,7 +34,6 @@ Requires:       perl(Win::Hivex)
 Requires:       perl(Win::Hivex::Regedit)
 Recommends:     %name-lang
 Url:            http://libguestfs.org/hivex.3.html
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Windows "Registry Hive" extraction library
 License:        LGPL-2.1 and GPL-2.0
 Group:          Development/Libraries/C and C++
@@ -101,8 +99,10 @@ Hivex is a Windows Registry Hive extraction library.
 
 %if %{with ocaml_bindings}
 %package -n ocaml-hivex
+%{?ocaml_preserve_bytecode}
 BuildRequires:  ocaml
 BuildRequires:  ocaml-findlib
+BuildRequires:  ocaml-rpm-macros
 
 Summary:        OCAML bindings for libhivex
 Group:          Development/Languages/OCaml
@@ -162,24 +162,20 @@ touch %name.lang
 %postun -n libhivex0 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %doc README
 %_bindir/*
 %_mandir/*/*
 
 %files devel
-%defattr(-,root,root)
 %_libdir/pkgconfig/*
 %_includedir/*
 %_libdir/*.so
 
 %files -n libhivex0
-%defattr(-,root,root)
 %_libdir/*.so.*
 
 %if %{with python_bindings}
 %files -n python-hivex
-%defattr(-,root,root)
 %_libdir/python%pyver/site-packages/*
 %endif
 
@@ -189,13 +185,11 @@ touch %name.lang
 %postun -n perl-Win-Hivex -p /sbin/ldconfig
 
 %files -n perl-Win-Hivex -f %name.files
-%defattr(-,root,root)
 %endif
 #
 
 %if %{with ocaml_bindings}
 %files -n ocaml-hivex
-%defattr(-,root,root)
 %dir %{_libdir}/ocaml/hivex
 %{_libdir}/ocaml/hivex/META
 %{_libdir}/ocaml/hivex/hivex.cmi
@@ -203,9 +197,10 @@ touch %name.lang
 %{_libdir}/ocaml/stublibs/*hivex.so*
 
 %files -n ocaml-hivex-devel
-%defattr(-,root,root)
 %{_libdir}/ocaml/hivex/*hivex.a
+%if %{ocaml_native_compiler}
 %{_libdir}/ocaml/hivex/*hivex.cmx*
+%endif
 %{_libdir}/ocaml/hivex/hivex.mli
 %endif
 

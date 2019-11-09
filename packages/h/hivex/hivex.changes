@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  1 18:44:08 UTC 2019 - ohering@suse.de
+
+- Fix bytecode build
+- Remove defattr and BuildRoot
+- disablement of lto comes via ocaml macros
+
+-------------------------------------------------------------------
 Thu Aug  8 08:09:37 UTC 2019 - ohering@suse.de
 
 - disable lto
