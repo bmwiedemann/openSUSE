@@ -1651,6 +1651,8 @@ unsorted:
   - clutter-gtk-devel 
   - clzip 
   - cmake 
+  - cmake-fedora 
+  - cmake-fedora-modules 
   - cmake-gui 
   - cmake-man 
   - cmark 
@@ -5692,10 +5694,17 @@ unsorted:
   - jeos-firstboot-rpiwifi 
   - jettison 
   - jettison-javadoc 
+  - jetty-alpn 
+  - jetty-alpn-api 
+  - jetty-alpn-api-javadoc 
+  - jetty-alpn-javadoc 
   - jetty-annotations 
   - jetty-artifact-remote-resources 
+  - jetty-build-support 
+  - jetty-build-support-javadoc 
   - jetty-client 
   - jetty-continuation 
+  - jetty-distribution-remote-resources 
   - jetty-http 
   - jetty-io 
   - jetty-jaas 
@@ -5712,6 +5721,8 @@ unsorted:
   - jetty-servlet 
   - jetty-toolchain 
   - jetty-util 
+  - jetty-version-maven-plugin 
+  - jetty-version-maven-plugin-javadoc 
   - jetty-webapp 
   - jetty-xml 
   - jeuclid 
@@ -8488,7 +8499,6 @@ unsorted:
   - libfdisk-devel-static 
   - libfdt-devel 
   - libfdt-devel-32bit: [x86_64] 
-  - libfdt1 
   - libfdt1-32bit: [x86_64] 
   - libfec3 
   - libffado-devel 
@@ -18386,7 +18396,6 @@ unsorted:
   - python2-libpreludedb 
   - python2-libqcow 
   - python2-librosa 
-  - python2-librouteros 
   - python2-libsass 
   - python2-libscca 
   - python2-libsigscan 
@@ -19512,6 +19521,7 @@ unsorted:
   - python2-zc.customdoctests 
   - python2-zc.lockfile 
   - python2-zdaemon 
+  - python2-zeep 
   - python2-zetup 
   - python2-zhon 
   - python2-zict 
@@ -21735,6 +21745,7 @@ unsorted:
   - python3-slycot 
   - python3-smartypants 
   - python3-smbprotocol 
+  - python3-smbus 
   - python3-smmap 
   - python3-smmap2 
   - python3-sniffio 
@@ -22076,6 +22087,7 @@ unsorted:
   - python3-zc.customdoctests 
   - python3-zc.lockfile 
   - python3-zdaemon 
+  - python3-zeep 
   - python3-zeroconf 
   - python3-zetup 
   - python3-zhon 
