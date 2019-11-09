@@ -241,4 +241,12 @@
     <comment>This is an input module for ibus that should be included</comment>
     <requestid>74102</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b932ad5da0255062648d2a418717cb66</srcmd5>
+    <version>1.6.1</version>
+    <time>1573338489</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 746449 from hillwood)</comment>
+    <requestid>746450</requestid>
+  </revision>
 </revisionlist>
