@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov  7 10:18:04 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update to version 0.12: 
+  - ch-docker2squash renamed to dh-builder2squash
+  - new binary ch-test, not shipped in the package for now
+  - Full changelog at https://groups.io/g/charliecloud/message/98
+- Add recommends on buildah
+
+-------------------------------------------------------------------
 Mon Sep 23 10:28:26 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - Update to version 0.11: 
@@ -7,6 +16,7 @@ Mon Sep 23 10:28:26 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
   - build now does not infinite loop if no Python installed
   - miscellaneous bug fixes, and documentation and test suite 
     improvements
+  - Full changelog at https://groups.io/g/charliecloud/message/97
 
 -------------------------------------------------------------------
 Fri Aug  2 12:45:33 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
