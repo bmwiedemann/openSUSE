@@ -1,7 +1,7 @@
 #
 # spec file for package audacious-plugins
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,6 @@ Version:        3.10.1
 Release:        0
 Summary:        Plugins for Audacious
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-only AND MIT AND BSD-2-Clause
-Group:          Productivity/Multimedia/Sound/Players
 Url:            https://audacious-media-player.org/
 Source:         https://distfiles.audacious-media-player.org/%{name}-%{version}.tar.bz2
 BuildRequires:  autoconf
@@ -98,7 +97,6 @@ Plugins for the Audacious audio player.
 %package extra
 Summary:        Extra plugins for Audacious
 License:        GPL-2.0-or-later AND MIT AND BSD-2-Clause
-Group:          Productivity/Multimedia/Sound/Players
 Requires:       %{name} = %{version}
 
 %description extra
