@@ -18,19 +18,17 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-
 %define skip_python2 1
-
 %define modname onionshare
 Name:           python-%{modname}
-Version:        2.1
+Version:        2.2
 Release:        0
 Summary:        Self-hosting Tor Onion Service based file sharing
 License:        GPL-3.0-or-later
-Group:          Development/Languages/Python
 URL:            https://github.com/micahflee/onionshare
 Source0:        https://github.com/micahflee/onionshare/archive/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 Source1:        %{modname}.desktop
+BuildRequires:  %{python_module Flask-HTTPAuth}
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module PySocks}
 BuildRequires:  %{python_module nautilus}
@@ -44,6 +42,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  update-desktop-files
 Requires:       python-Flask
+Requires:       python-Flask-HTTPAuth
+Requires:       python-pycrypto
 Requires:       python-pytest
 Requires:       python-qt5
 Requires:       python-stem
@@ -62,7 +62,7 @@ Tor Browser to download the file.
 
 %prep
 %setup -q -n %{modname}-%{version}
-cp %{S:1} .
+cp %{SOURCE1} .
 
 %build
 %python_build
@@ -70,13 +70,16 @@ cp %{S:1} .
 %install
 %python_install
 
+mkdir -p %{buildroot}%{_datadir}/pixmaps
+cp install/%{modname}80.xpm %{buildroot}%{_datadir}/pixmaps/%{modname}80.xpm
+
 desktop-file-install --dir %{buildroot}%{_datadir}/applications/ %{modname}.desktop
 %suse_update_desktop_file %{modname}
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} tests
+%pytest tests
 
 %files %{python_files}
 %python3_only %{_bindir}/%{modname}*

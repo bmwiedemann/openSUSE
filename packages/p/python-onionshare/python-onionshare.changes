@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Nov  6 16:13:36 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- Version 2.2
+  * fix for desktop icon installation
+  * New feature: Website mode, which allows publishing a static HTML website as an onion service
+  * Allow individual files to be viewed or downloaded in Share mode, including the ability to browse into subdirectories and use breadcrumbs to navigate back
+  * Show a counter when individual files or pages are viewed
+  * Better History items including colors and status codes to differentiate between successful and failed requests
+  * Swap out the random /slug suffix for HTTP basic authentication (when in non-public mode)
+  * Hide the Tor connection settings if the ONIONSHARE_HIDE_TOR_SETTINGS environment variable is set (Tails compatibility)
+  * Remove the NoScript XSS warning in Receive Mode now that the NoScript/Tor Browser bug is fixed. The ajax upload method still exists when javascript is enabled.
+  * Better support for DragonFly BSD
+  * Updated various dependencies, including Flask, Werkzeug, urllib3, requests, and PyQt5
+  * Updated Tor to 0.4.1.5
+  * Other minor bug fixes
+  * New translations:
+        Arabic (العربية)
+        Dutch (Nederlands)
+        Persian (فارسی)
+        Romanian (Română)
+        Serbian latin (Srpska (latinica))
+  * Removed translations with fewer than 90% of strings translated:
+        Finnish (Suomi)
+
+-------------------------------------------------------------------
 Tue Aug 13 07:50:48 UTC 2019 - Axel Braun <axel.braun@gmx.de>
 
 - Version 2.1
