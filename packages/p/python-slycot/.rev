@@ -31,4 +31,15 @@
     <comment></comment>
     <requestid>732528</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>42d7270ea3b6adf2b416f1da130fa61d</srcmd5>
+    <version>0.3.5.0</version>
+    <time>1573339186</time>
+    <user>dimstar_suse</user>
+    <comment>- fix unittests to pass on all architectures 
+  * fix-test-sg03ad.patch see upstream PR#82
+  * fix-test-td04ad.patch see upstream PR#83  
+</comment>
+    <requestid>746657</requestid>
+  </revision>
 </revisionlist>

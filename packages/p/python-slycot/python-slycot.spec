@@ -25,6 +25,8 @@ License:        GPL-2.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/python-control/Slycot
 Source:         https://files.pythonhosted.org/packages/source/s/slycot/slycot-%{version}.tar.gz
+Patch0:         fix-test-td04ad.patch
+Patch1:         fix-test-sg03ad.patch
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module nose}
@@ -49,6 +51,8 @@ Slycot is a wrapper for the SLICOT control and systems library.
 
 %prep
 %setup -q -n slycot-%{version}
+%patch0 -p1
+%patch1 -p1
 
 %build
 export CFLAGS="%{optflags}"
