@@ -1,17 +1,16 @@
 <?xml version="1.0"?>
 <services>
-  <service name="obs_scm" mode="disabled">
+  <service name="obs_scm" mode="localonly">
     <param name="url">https://github.com/shimmerproject/elementary-xfce.git</param>
     <param name="scm">git</param>
-    <param name="filename">elementary-xfce-icon-theme</param>
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
     <param name="changesgenerate">enable</param>
-    <param name="changesauthor">maurizio.galli@gmail.com</param>
+    <param name="changesauthor">tux93@opensuse.org</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>
-  <service name="set_version" mode="disabled"/>
-  <service name="tar" mode="buildtime"/>
-  <service name="recompress" mode="buildtime">
+  <service name="set_version" mode="localonly"/>
+  <service name="tar" mode="localonly"/>
+  <service name="recompress" mode="localonly">
     <param name="compression">xz</param>
     <param name="file">*.tar</param>
   </service>
