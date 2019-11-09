@@ -735,4 +735,32 @@ from the squid 3.x changelog</comment>
 - old_nettle_compat.patch: Update to actually use older version</comment>
     <requestid>721533</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>888c6647c14f31bb911ab25a3706c3b7</srcmd5>
+    <version>4.9</version>
+    <time>1573339227</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to squid 4.9:
+  * fixes multiple Cross-Site Scripting issues in cachemgr.cgi
+    (CVE-2019-13345, bsc#1140738)
+  * fixes heap overflow in URN processing
+    (CVE-2019-12526, bsc#1156326)
+  * fixes multiple issues in URI processing
+    (CVE-2019-12523, CVE-2019-18676, bsc#1156329)
+  * fixes Cross-Site Request Forgery in HTTP Request processing
+    (CVE-2019-18677, bsc#1156328)
+  * fixes HTTP Request Splitting in HTTP message processing
+    (CVE-2019-18678, bsc#1156323)
+  * fixes information disclosure in HTTP Digest Authentication
+    (CVE-2019-18679, bsc#1156324)
+  * lower cache_peer hostname - this showed up as DNS failures
+    if peer name was configured with any upper case characters
+  * TLS: Multiple SSL-Bump fixes
+  * TLS: Fix expiration of self-signed generated certs to be 3 years
+  * TLS: Fix on_unsupported_protocol tunnel action
+  * Fix several rock cache_dir corruption issues
+- fix_configuration_error.patch: upstreamed
+- old_nettle_compat.patch: refreshed</comment>
+    <requestid>746661</requestid>
+  </revision>
 </revisionlist>

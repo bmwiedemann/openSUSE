@@ -19,7 +19,7 @@
 %define         squidlibdir %{_libdir}/squid
 %define         squidconfdir %{_sysconfdir}/squid
 Name:           squid
-Version:        4.8
+Version:        4.9
 Release:        0
 Summary:        Caching and forwarding HTTP web proxy
 License:        GPL-2.0-or-later
@@ -40,7 +40,6 @@ Source16:       initialize_cache_if_needed.sh
 Source17:       tmpfilesdir.squid.conf
 Patch1:         missing_installs.patch
 Patch2:         old_nettle_compat.patch
-Patch3:         fix_configuration_error.patch
 BuildRequires:  cppunit-devel
 BuildRequires:  db-devel
 BuildRequires:  ed
@@ -93,7 +92,6 @@ perl -p -i -e 's|%{_prefix}/local/bin/perl|%{_bindir}/perl|' `find -name "*.pl"`
 %if %{suse_version} < 1500
 %patch2 -p1
 %endif
-%patch3 -p1
 
 %build
 %define _lto_cflags %{nil}

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Nov  8 15:24:15 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Update to squid 4.9:
+  * fixes multiple Cross-Site Scripting issues in cachemgr.cgi
+    (CVE-2019-13345, bsc#1140738)
+  * fixes heap overflow in URN processing
+    (CVE-2019-12526, bsc#1156326)
+  * fixes multiple issues in URI processing
+    (CVE-2019-12523, CVE-2019-18676, bsc#1156329)
+  * fixes Cross-Site Request Forgery in HTTP Request processing
+    (CVE-2019-18677, bsc#1156328)
+  * fixes HTTP Request Splitting in HTTP message processing
+    (CVE-2019-18678, bsc#1156323)
+  * fixes information disclosure in HTTP Digest Authentication
+    (CVE-2019-18679, bsc#1156324)
+  * lower cache_peer hostname - this showed up as DNS failures
+    if peer name was configured with any upper case characters
+  * TLS: Multiple SSL-Bump fixes
+  * TLS: Fix expiration of self-signed generated certs to be 3 years
+  * TLS: Fix on_unsupported_protocol tunnel action
+  * Fix several rock cache_dir corruption issues
+
+- fix_configuration_error.patch: upstreamed
+- old_nettle_compat.patch: refreshed
+
+-------------------------------------------------------------------
 Tue Aug  6 13:05:58 UTC 2019 - Adam Majer <adam.majer@suse.de>
 
 - fix_configuration_error.patch: Fix compilation with -Wreturn-type
