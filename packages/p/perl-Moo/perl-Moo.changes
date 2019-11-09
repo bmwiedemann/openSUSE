@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Oct 28 10:57:48 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 2.003006
+   see /usr/share/doc/packages/perl-Moo/Changes
+
+  2.003006 - 2019-10-25
+    - update Role::Tiny prerequisite to 2.001004 to fix issues with re-importing
+      Moo::Role
+  
+  2.003_005 - 2019-10-18
+    - always exclude helper subs (has, with, etc) from the list of methods, even
+      if they are installed later or wrapped with a modifier
+    - drop Devel::GlobalDestruction prerequisite unless using perl < 5.14
+    - fix preserving full accuracy of numbers in non-ref defaults
+    - fix tracking of stubs and constants as methods to be consistent and work
+      properly with unusual ways of storing subs (RT#130050)
+    - fix test for modules broken by newer Moo versions when new enough
+      CPAN::Meta version is not available
+    - fix undeferring subs before wrapping with a method modifier when subs to
+      wrap are given as a list or array ref
+    - fix error reporting locations from Carp calls in DEMOLISH (RT#124845)
+    - fix extending attributes (has +) to allow overriding a default with a
+      builder (RT#130361)
+    - fix re-throwing Moose inflation exceptions when examining exception
+      objects on older Moose or Devel::StackTrace versions
+    - reorganized documentation related to Moose to improve clarity
+    - improved documentation of usage with namespace::clean
+    - various documentation tweaks
+
+-------------------------------------------------------------------
 Thu Dec  7 06:39:25 UTC 2017 - coolo@suse.com
 
 - updated to 2.003004

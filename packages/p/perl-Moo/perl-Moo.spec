@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Moo
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,38 +12,36 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-Moo
-Version:        2.003004
+Version:        2.003006
 Release:        0
 %define cpan_name Moo
 Summary:        Minimalist Object Orientation (with Moose compatibility)
-License:        Artistic-1.0 or GPL-1.0+
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Moo/
+Url:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/H/HA/HAARG/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Class::Method::Modifiers) >= 1.1
-BuildRequires:  perl(Devel::GlobalDestruction) >= 0.11
+BuildRequires:  perl(Class::Method::Modifiers) >= 1.10
 BuildRequires:  perl(Module::Runtime) >= 0.014
-BuildRequires:  perl(Role::Tiny) >= 2.000004
-BuildRequires:  perl(Sub::Defer) >= 2.003001
-BuildRequires:  perl(Sub::Quote) >= 2.003001
+BuildRequires:  perl(Role::Tiny) >= 2.001004
+BuildRequires:  perl(Sub::Defer) >= 2.006006
+BuildRequires:  perl(Sub::Quote) >= 2.006006
 BuildRequires:  perl(Test::Fatal) >= 0.003
 BuildRequires:  perl(Test::More) >= 0.94
-Requires:       perl(Class::Method::Modifiers) >= 1.1
-Requires:       perl(Devel::GlobalDestruction) >= 0.11
+Requires:       perl(Class::Method::Modifiers) >= 1.10
 Requires:       perl(Module::Runtime) >= 0.014
-Requires:       perl(Role::Tiny) >= 2.000004
-Requires:       perl(Sub::Defer) >= 2.003001
-Requires:       perl(Sub::Quote) >= 2.003001
+Requires:       perl(Role::Tiny) >= 2.001004
+Requires:       perl(Sub::Defer) >= 2.006006
+Requires:       perl(Sub::Quote) >= 2.006006
 Recommends:     perl(Class::XSAccessor) >= 1.18
 Recommends:     perl(strictures) >= 2
 Recommends:     perl(Sub::Name) >= 0.08
@@ -57,7 +55,8 @@ is optimised for rapid startup.
 
 'Moo' avoids depending on any XS modules to allow for simple deployments.
 The name 'Moo' is based on the idea that it provides almost -- but not
-quite -- two thirds of Moose.
+quite -- two thirds of Moose. As such, the Moose::Manual can serve as an
+effective guide to 'Moo' aside from the MOP and Types sections.
 
 Unlike Mouse this module does not aim at full compatibility with Moose's
 surface syntax, preferring instead to provide full interoperability via the
@@ -70,11 +69,11 @@ syntax, see INCOMPATIBILITIES WITH MOOSE.
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -84,5 +83,6 @@ syntax, see INCOMPATIBILITIES WITH MOOSE.
 %files -f %{name}.files
 %defattr(-,root,root,755)
 %doc Changes README
+%license LICENSE
 
 %changelog
