@@ -211,20 +211,7 @@ rm -rf extern/libopenjpeg
 for i in `grep -rl "/usr/bin/env python3"`;do sed -i '1s@^#!.*@#!/usr/bin/python3@' ${i} ;done
 
 %build
-%limit_build -m 2500
-#The limit_build macro fails to give the same value to -flto= as it gives to -j
-#resulting in link time crashes
-echo $_threads
-
-export _smp_mflags=%{_smp_mflags}
-if test "$_threads" -gt 3;
-then \
-export _lto_cflags="-flto=$_threads"
-else \
-export _lto_cflags=""
-export _smp_mflags=""
-fi
-%define  _lto_cflags $_lto_cflags
+%limit_build -m 1000
 
 echo %{optflags}
 # sse options only on supported archs

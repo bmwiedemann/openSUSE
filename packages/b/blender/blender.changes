@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov  7 16:41:39 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Set proper memory constraints. About 5.5G are required on 
+  x86_64, which has more features like embree (and builds on
+  e.g. build32/build33 with 2.2+2G recurrently failed).
+- Remove LTO mangling, it did not reduce the memory required for
+  linking, and disabling LTO altogether dependent on available
+  memory makes the build unreproducible.
+
+-------------------------------------------------------------------
 Tue Oct 15 12:53:43 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Don't remove 0-length files 

@@ -10,4 +10,16 @@
       <size unit="G">4</size>
    </memory>
   </hardware>
+  
+  <overwrite>
+  <!-- x86_64 has extra features like embree -->
+    <conditions>
+      <arch>x86_64</arch>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="M">5500</size>
+      </memory>
+    </hardware>
+  </overwrite>
 </constraints>
