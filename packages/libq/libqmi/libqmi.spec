@@ -18,8 +18,9 @@
 
 
 %define _soname libqmi-glib5
+
 Name:           libqmi
-Version:        1.22.6
+Version:        1.24.0
 Release:        0
 # NOTE: The file headers state LESSER GPL, which is a mistake. The upstream intended license is LIBRARY GPL 2.0+
 Summary:        Library to control QMI devices
@@ -80,7 +81,7 @@ This package contains files required to link sources against libqmi.
 sed -i "s|env python|python3|g" build-aux/qmi-codegen/*
 %configure \
   --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
