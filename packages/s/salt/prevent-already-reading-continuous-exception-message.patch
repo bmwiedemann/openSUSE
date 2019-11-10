@@ -1,0 +1,27 @@
+From 6c84612b52b5f14e74a1c44f03d78a85c6f0c5dc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Tue, 29 Oct 2019 09:08:52 +0000
+Subject: [PATCH] Prevent 'Already reading' continuous exception message
+ (bsc#1137642)
+
+---
+ salt/transport/ipc.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/salt/transport/ipc.py b/salt/transport/ipc.py
+index 8235f104ef..0ed0baeec2 100644
+--- a/salt/transport/ipc.py
++++ b/salt/transport/ipc.py
+@@ -770,6 +770,7 @@ class IPCMessageSubscriber(IPCClient):
+                 break
+             except Exception as exc:
+                 log.error('Exception occurred while Subscriber handling stream: %s', exc)
++                yield tornado.gen.sleep(1)
+ 
+     def __run_callbacks(self, raw):
+         for callback in self.callbacks:
+-- 
+2.23.0
+
+

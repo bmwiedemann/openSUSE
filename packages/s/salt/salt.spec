@@ -264,6 +264,12 @@ Patch91:       accumulated-changes-from-yomi-167.patch
 Patch92:       fix-a-wrong-rebase-in-test_core.py-180.patch
 # PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/181
 Patch93:       fix-for-older-mock-module.patch
+# PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/commit/6c84612b52b5f14e74a1c44f03d78a85c6f0c5dc
+Patch94:       prevent-already-reading-continuous-exception-message.patch
+# PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/182
+Patch95:       remove-unnecessary-yield-causing-badyielderror-bsc-1.patch
+# PATCH_FIX_UPSTREAM: https://github.com/saltstack/salt/pull/54475
+Patch96:       remove-virt.pool_delete-fast-parameter-178.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  logrotate
@@ -857,6 +863,9 @@ cp %{S:5} ./.travis.yml
 %patch91 -p1
 %patch92 -p1
 %patch93 -p1
+%patch94 -p1
+%patch95 -p1
+%patch96 -p1
 
 %build
 %if 0%{?build_py2}

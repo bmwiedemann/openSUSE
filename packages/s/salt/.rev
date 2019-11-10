@@ -1144,4 +1144,24 @@ let build start it or we will get libvirt errors.
   * use-current-ioloop-for-the-localclient-instance-of-b.patch</comment>
     <requestid>742964</requestid>
   </revision>
+  <revision rev="95" vrev="14">
+    <srcmd5>09b404fcd20092c807fd0ad067dad92f</srcmd5>
+    <version>2019.2.0</version>
+    <time>1573420892</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove virt.pool_delete fast parameter (U#54474)
+- Added:
+  * remove-virt.pool_delete-fast-parameter-178.patch
+
+- Remove unnecessary yield causing BadYieldError (bsc#1154620)
+- Added:
+  * remove-unnecessary-yield-causing-badyielderror-bsc-1.patch
+
+- Prevent 'Already reading' continuous exception message (bsc#1137642)
+- Added:
+  * prevent-already-reading-continuous-exception-message.patch
+
+- Add new &quot;salt-standalone-formulas-configuration&quot; package (fate#327791)</comment>
+    <requestid>746516</requestid>
+  </revision>
 </revisionlist>

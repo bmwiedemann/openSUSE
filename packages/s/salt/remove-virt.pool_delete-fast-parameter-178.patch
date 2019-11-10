@@ -1,0 +1,76 @@
+From 6dfe6e1370f330c0d300bf0effd7e6cf8a28c734 Mon Sep 17 00:00:00 2001
+From: Cedric Bosdonnat <cbosdonnat@suse.com>
+Date: Wed, 30 Oct 2019 12:18:51 +0100
+Subject: [PATCH] Remove virt.pool_delete fast parameter (#178)
+
+There are two reasons to remove this parameter without deprecating it:
+ * the meaning has been mistakenly inversed
+ * fast=True will raise an exception for every libvirt storage backend
+since that flag has never been implemented in any of those.
+
+Fixes issue #54474
+---
+ salt/modules/virt.py            |  9 ++-------
+ tests/unit/modules/test_virt.py | 17 +++++++++++++++++
+ 2 files changed, 19 insertions(+), 7 deletions(-)
+
+diff --git a/salt/modules/virt.py b/salt/modules/virt.py
+index d01b6c3f1e..3abc140a00 100644
+--- a/salt/modules/virt.py
++++ b/salt/modules/virt.py
+@@ -4885,13 +4885,11 @@ def pool_undefine(name, **kwargs):
+         conn.close()
+ 
+ 
+-def pool_delete(name, fast=True, **kwargs):
++def pool_delete(name, **kwargs):
+     '''
+     Delete the resources of a defined libvirt storage pool.
+ 
+     :param name: libvirt storage pool name
+-    :param fast: if set to False, zeroes out all the data.
+-                 Default value is True.
+     :param connection: libvirt connection URI, overriding defaults
+     :param username: username to connect with, overriding defaults
+     :param password: password to connect with, overriding defaults
+@@ -4907,10 +4905,7 @@ def pool_delete(name, fast=True, **kwargs):
+     conn = __get_conn(**kwargs)
+     try:
+         pool = conn.storagePoolLookupByName(name)
+-        flags = libvirt.VIR_STORAGE_POOL_DELETE_NORMAL
+-        if fast:
+-            flags = libvirt.VIR_STORAGE_POOL_DELETE_ZEROED
+-        return not bool(pool.delete(flags))
++        return not bool(pool.delete(libvirt.VIR_STORAGE_POOL_DELETE_NORMAL))
+     finally:
+         conn.close()
+ 
+diff --git a/tests/unit/modules/test_virt.py b/tests/unit/modules/test_virt.py
+index 4d20e998d8..b95f51807f 100644
+--- a/tests/unit/modules/test_virt.py
++++ b/tests/unit/modules/test_virt.py
+@@ -3006,3 +3006,20 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+         self.assertEqual('vnc', graphics['type'])
+         self.assertEqual('5900', graphics['port'])
+         self.assertEqual('0.0.0.0', graphics['listen'])
++
++    def test_pool_delete(self):
++        '''
++        Test virt.pool_delete function
++        '''
++        mock_pool = MagicMock()
++        mock_pool.delete = MagicMock(return_value=0)
++        self.mock_conn.storagePoolLookupByName = MagicMock(return_value=mock_pool)
++
++        res = virt.pool_delete('test-pool')
++        self.assertTrue(res)
++
++        self.mock_conn.storagePoolLookupByName.assert_called_once_with('test-pool')
++
++        # Shouldn't be called with another parameter so far since those are not implemented
++        # and thus throwing exceptions.
++        mock_pool.delete.assert_called_once_with(self.mock_libvirt.VIR_STORAGE_POOL_DELETE_NORMAL)
+-- 
+2.23.0
+
+

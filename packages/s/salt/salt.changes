@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Oct 30 11:23:05 UTC 2019 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Remove virt.pool_delete fast parameter (U#54474)
+
+- Added:
+  * remove-virt.pool_delete-fast-parameter-178.patch
+
+-------------------------------------------------------------------
+Wed Oct 30 10:22:18 UTC 2019 - Mihai Dincă <mihai.dinca@suse.com>
+
+- Remove unnecessary yield causing BadYieldError (bsc#1154620)
+
+- Added:
+  * remove-unnecessary-yield-causing-badyielderror-bsc-1.patch
+
+-------------------------------------------------------------------
+Tue Oct 29 09:14:07 UTC 2019 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Prevent 'Already reading' continuous exception message (bsc#1137642)
+
+- Added:
+  * prevent-already-reading-continuous-exception-message.patch
+
+-------------------------------------------------------------------
 Fri Oct 25 14:39:23 UTC 2019 - Jochen Breuer <jbreuer@suse.de>
 
 - Fix for aptpkg test with older mock modules
@@ -281,7 +305,7 @@ Fri May 24 16:03:09 UTC 2019 - psuarezhernandez@suse.com
 -------------------------------------------------------------------
 Thu May 23 08:27:52 UTC 2019 - psuarezhernandez@suse.com
 
-- Add new "salt-standalone-formulas-configuration" package
+- Add new "salt-standalone-formulas-configuration" package (fate#327791)
 
 - Added:
   * add-standalone-configuration-file-for-enabling-packa.patch
