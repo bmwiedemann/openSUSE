@@ -114,7 +114,6 @@ Recommends:     %{name}-immodule-inuktitut = %{version}
 Recommends:     %{name}-immodule-thai = %{version}
 Recommends:     %{name}-immodule-tigrigna = %{version}
 Recommends:     %{name}-immodule-vietnamese = %{version}
-Recommends:     %{name}-lang
 Recommends:     gvfs
 # Provide %%{name} to make the lang and immodules packages installable
 Provides:       %{name} = %{version}

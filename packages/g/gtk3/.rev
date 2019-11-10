@@ -1303,4 +1303,12 @@ Still we will be working in upstream with more easily &quot;merge-able&quot; imp
     <comment></comment>
     <requestid>742528</requestid>
   </revision>
+  <revision rev="150" vrev="2">
+    <srcmd5>989060f203fb9ed8ac3a985e34c5348e</srcmd5>
+    <version>3.24.12+32</version>
+    <time>1573418920</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't recommend -lang subpackage (forwarded request 744802 from namtrac)</comment>
+    <requestid>746218</requestid>
+  </revision>
 </revisionlist>
