@@ -21,10 +21,10 @@ Before=mail-transfer-agent.target
 
 [Service]
 Type=forking
-PIDFile=/var/run/spamd.pid
+PIDFile=/run/spamd.pid
 ExecStartPre=/bin/bash -c "sa-update || true"
 EnvironmentFile=-/etc/sysconfig/spamd
-ExecStart=/usr/sbin/spamd $SPAMD_ARGS -r /var/run/spamd.pid
+ExecStart=/usr/sbin/spamd $SPAMD_ARGS -r /run/spamd.pid
 ExecReload=/usr/bin/kill -HUP $MAINPID
 
 [Install]

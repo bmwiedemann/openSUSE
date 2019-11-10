@@ -1,3 +1,23 @@
+----------------------------------------------------------
+Sun Oct 27 12:36:31 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
+
+- update spampd to 2.53
+  * Fix LMTP delivery with multiple recipients
+  * Fix Warning for "Use of uninitialized value in string"
+  update spampd to 2.52
+  * Override Net::Server's HUP handling, just restart children
+  * Add --version option to print information about SpamPD,
+    Net::Server, SpamAssassin, and Perl.
+  * Add warnings about using deprecated options.
+  * Documentation updates and code cosmetics.
+- Update download links (add for spampd and iXhash2 sources)
+- Add source verification (add spamassassin.keyring)
+- Add %{perl_requires} for perl-Mail-SpamAssassin
+- Fix "PIDFile= references a path below legacy directory /var/run/"
+  (change /var/run/ -> /run/)
+- Don't package README.SuSE which documents an init script that
+  was never bundled
+
 -------------------------------------------------------------------
 Tue Jun 11 12:33:05 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 

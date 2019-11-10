@@ -22,8 +22,9 @@
 %endif
 
 %define ix_version 2.05
-%define spd_version 2.51
-# https://github.com/mpaperno/spampd/releases
+%define spd_version 2.53
+%define sa_version 3.4.2
+%define rules_revision 1840640
 
 %define IXHASH iXhash2-%{ix_version}
 %define SPAMPD spampd-%{spd_version}
@@ -32,15 +33,13 @@ Name:           spamassassin
 Summary:        Extensible email filter which is used to identify spam
 License:        Apache-2.0
 Group:          Productivity/Networking/Email/Utilities
-Version:        3.4.2
+Version:        %{sa_version}
 Release:        0
-%define sa_version 3.4.2
-%define rules_revision 1840640
-Url:            http://spamassassin.org/
-Source:         http://apache.mirrors.hoobly.com/spamassassin/source/Mail-SpamAssassin-%{version}.tar.bz2
-Source1:        http://apache.mirrors.hoobly.com/spamassassin/source/Mail-SpamAssassin-rules-%{version}.r%{rules_revision}.tgz
-Source2:        %{IXHASH}.tar.gz
-Source3:        %{SPAMPD}.tar.gz
+Url:            https://spamassassin.apache.org/
+Source:         https://archive.apache.org/dist/spamassassin/source/Mail-SpamAssassin-%{sa_version}.tar.bz2
+Source1:        https://archive.apache.org/dist/spamassassin/source/Mail-SpamAssassin-rules-%{sa_version}.r%{rules_revision}.tgz
+Source2:        https://mailfud.org/iXhash2/%{IXHASH}.tar.gz
+Source3:        https://github.com/mpaperno/spampd/archive/%{spd_version}.tar.gz#/%{SPAMPD}.tar.gz
 Source10:       local.cf
 Source12:       sysconfig.spamd
 Source14:       sysconfig.spampd
@@ -49,6 +48,10 @@ Source16:       spamd.service
 Source17:       spampd.service
 Source18:       sa-update.service
 Source19:       sa-update.timer
+Source100:      https://archive.apache.org/dist/spamassassin/source/Mail-SpamAssassin-%{sa_version}.tar.bz2.asc
+Source101:      https://archive.apache.org/dist/spamassassin/source/Mail-SpamAssassin-rules-%{sa_version}.r%{rules_revision}.tgz.asc
+# Keyring downloaded from https://www.apache.org/dist/spamassassin/KEYS
+Source102:      spamassassin.keyring
 Patch1:         patch-PgSQL
 Patch2:         patch-URIDNSBL
 Patch3:         patch-SQL_ASCII_SORT
@@ -140,8 +143,9 @@ Recommends:     perl(IO::Socket::INET6)
 Recommends:     perl(IO::Socket::SSL)
 Recommends:     perl(DBI)
 Recommends:     perl(Encode::Detect)
-Provides:       perl-spamassassin = %version
-Obsoletes:      perl-spamassassin < %version
+Provides:       perl-spamassassin = %{sa_version}
+Obsoletes:      perl-spamassassin < %{sa_version}
+%{perl_requires}
 
 %description -n perl-Mail-SpamAssassin
 This package contains the perl modules for the spamassassin, including
@@ -151,7 +155,7 @@ the filter rules. This package is required for the package
 %package -n perl-Mail-SpamAssassin-Plugin-iXhash2
 Summary:        The iXhash plugin for SpamAssassin
 Group:          Development/Libraries/Perl
-Requires:       perl-Mail-SpamAssassin = %version
+Requires:       perl-Mail-SpamAssassin = %{sa_version}
 Requires:       perl(Digest::MD5)
 Version:        %{ix_version}
 Release:        0
@@ -254,7 +258,7 @@ install -D -m 644 %{S:19} %{buildroot}/%{_unitdir}
 
 %files
 %defattr(-,root,root)
-%doc spamd/README* spamd/PROTOCOL
+%doc spamd/README spamd/README.vpopmail spamd/PROTOCOL
 %doc %{_mandir}/man1/*
 %{_bindir}/*
 %{_sbindir}/*
