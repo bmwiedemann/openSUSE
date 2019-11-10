@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov  8 11:05:25 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Add latest patch sets from Debian:
+  * patch set 27 replaces procmail-3.22-CVE-2014-3618.patch
+  * patch set 28 does fix off-by-one error that makes procmail to
+    segfault on certain .procmailrc files
+  * patch set 29 does fix formail memory corruption
+  * patch set 30 replaces procmail-formisc.c.patch for CVE-2017-16844
+- Remove obsolate patches
+  * procmail-3.22-CVE-2014-3618.patch
+  * procmail-formisc.c.patch
+
+-------------------------------------------------------------------
 Fri Jul 12 11:40:29 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Add procmail-fix-Werror=return-type.patch in order to fix

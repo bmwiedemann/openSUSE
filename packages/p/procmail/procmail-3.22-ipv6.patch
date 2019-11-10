@@ -9,7 +9,7 @@
  #Ok	#define endprotoent()
  #	#define h_0addr_list h_addr
  #Ok	#define NOpw_passwd
-@@ -896,7 +894,7 @@
+@@ -897,7 +895,7 @@
   {uid_t vuid_t;i+=vuid_t=1;}
   {gid_t vgid_t;i+=vgid_t=1;}
  #ifndef NO_COMSAT
@@ -18,7 +18,7 @@
  #endif
  #ifndef NOuname
   {struct utsname vutsname;i+=!(*vutsname.nodename='\0');}
-@@ -917,8 +915,6 @@
+@@ -918,8 +916,6 @@
    test -z "$i3" && grepfor mode_t 'typedef int mode_t;' && i3=I
    test -z "$i4" && grepfor uid_t 'typedef int uid_t;' && i4=I
    test -z "$i5" && grepfor gid_t 'typedef int gid_t;' && i5=I
@@ -27,7 +27,7 @@
    test -z "$i6" && grepfor member '#define h_0addr_list h_addr' && i6=I
    test -z "$i7" && grepfor utsname "#define NOuname			      \
  /* <sys/utsname.h> is there, but empty */" && i7=I
-@@ -1048,8 +1044,12 @@
+@@ -1073,8 +1069,12 @@
   {struct utsname b;uname(&b);}
  #endif
  #ifndef NO_COMSAT
@@ -42,7 +42,7 @@
  #endif
   _exit(0);
   return 0;}
-@@ -1103,14 +1103,9 @@
+@@ -1128,14 +1128,9 @@
  /* <sys/utsname.h> defines it, the libraries don't */"
  grepfor endpwent '#define endpwent()'
  grepfor endgrent '#define endgrent()'
@@ -58,7 +58,7 @@
  fi
  grepfor strstr '#define SLOWstrstr' ||
   grepfor clock '#define SLOWstrstr'
-@@ -1239,39 +1234,9 @@
+@@ -1264,39 +1259,9 @@
  	printf("/* Insufficient memory to perform the benchmark! */\n");
  #endif /* SLOWstrstr */
  #ifndef NO_COMSAT

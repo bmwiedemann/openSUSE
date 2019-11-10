@@ -228,4 +228,20 @@
   -Werror=return-type errors. (forwarded request 714856 from marxin)</comment>
     <requestid>714861</requestid>
   </revision>
+  <revision rev="32" vrev="274">
+    <srcmd5>e5adff09b93ebdbc136fb98bca6c9238</srcmd5>
+    <version>3.22</version>
+    <time>1573421142</time>
+    <user>dimstar_suse</user>
+    <comment>- Add latest patch sets from Debian:
+  * patch set 27 replaces procmail-3.22-CVE-2014-3618.patch
+  * patch set 28 does fix off-by-one error that makes procmail to
+    segfault on certain .procmailrc files
+  * patch set 29 does fix formail memory corruption
+  * patch set 30 replaces procmail-formisc.c.patch for CVE-2017-16844
+- Remove obsolate patches
+  * procmail-3.22-CVE-2014-3618.patch
+  * procmail-formisc.c.patch</comment>
+    <requestid>746559</requestid>
+  </revision>
 </revisionlist>

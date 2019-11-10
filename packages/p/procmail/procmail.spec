@@ -32,12 +32,8 @@ Patch3:         procmail-%{version}-headerconcat.dif
 Patch4:         procmail-%{version}-owl-truncate.dif
 Patch5:         procmail-%{version}-autoconf.dif
 Patch6:         procmail-%{version}-ipv6.patch
-# PATCH-FIX-SUSE Heap-overflow in procmail's formail utility when processing specially-crafted email headers (bnc#894999)
-Patch7:         procmail-%{version}-CVE-2014-3618.patch
 # PATCH-FIX-SUSE bmwiedemann -- make build reproducible
 Patch8:         reproducible.patch
-# PATCH-FIX-SUSE Patch for Bug 1068648 aka CVE-2017-16844
-Patch9:         procmail-formisc.c.patch
 Patch10:        procmail-fix-Werror=return-type.patch
 BuildRequires:  pcre-devel
 BuildRequires:  postfix
@@ -63,9 +59,7 @@ done
 %patch4 -p0
 %patch5 -p0
 %patch6 -p1
-%patch7 -p0
 %patch8 -p1
-%patch9 -p1
 %patch10 -p1
 sed -ri '\@^/\*@,\@\*/@{ s@^(/\*[^*]*)(/\*)@\1\*/ \2@; }' config.h
 sed -ri '\@^/\*@,\@\*/@{ s@^(/\*[^*]*)(/\*)@\1\*/ \2@; }' src/includes.h
