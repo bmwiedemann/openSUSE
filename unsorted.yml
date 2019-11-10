@@ -4229,6 +4229,8 @@ unsorted:
   - glassfish-servlet-api-javadoc 
   - glassfish-transaction-api 
   - glassfish-transaction-api-javadoc 
+  - glassfish-websocket-api 
+  - glassfish-websocket-api-javadoc 
   - glava 
   - glew 
   - glew-devel 
@@ -4674,6 +4676,7 @@ unsorted:
   - groovy18-javadoc 
   - groovy18-lib 
   - growpart: [i586] 
+  - growpart-generator 
   - growpart-rootgrow 
   - grpc-devel 
   - grpc-httpjson-transcoding-devel: [x86_64] 
@@ -5249,6 +5252,7 @@ unsorted:
   - ibus-anthy 
   - ibus-anthy-devel 
   - ibus-cangjie 
+  - ibus-chewing 
   - ibus-devel 
   - ibus-gtk3-32bit: [x86_64] 
   - ibus-hangul 
@@ -5657,6 +5661,9 @@ unsorted:
   - jbigkit 
   - jboss-interceptors-1.2-api 
   - jboss-interceptors-1.2-api-javadoc 
+  - jboss-parent 
+  - jboss-websocket-1.0-api 
+  - jboss-websocket-1.0-api-javadoc 
   - jcifs 
   - jcifs-demo 
   - jcifs-javadoc 
@@ -5791,6 +5798,8 @@ unsorted:
   - jomolhari-fonts 
   - jondo 
   - jondofox 
+  - jopt-simple 
+  - jopt-simple-javadoc 
   - jp 
   - jp2a 
   - jpegoptim 
@@ -16402,6 +16411,8 @@ unsorted:
   - picard-lang 
   - picmi 
   - picmi-lang 
+  - picocli 
+  - picocli-javadoc 
   - picocom 
   - picojson-devel 
   - pidentd 
@@ -19675,6 +19686,7 @@ unsorted:
   - python3-PyInstaller 
   - python3-PyJWT: [i586] 
   - python3-PyKMIP 
+  - python3-PyLaTeX 
   - python3-PyMeta3 
   - python3-PyMsgBox 
   - python3-PyMuPDF 
@@ -24354,6 +24366,8 @@ unsorted:
   - terraform: [x86_64] 
   - terraform-provider-openstack 
   - teseq 
+  - tesla-polyglot-common 
+  - tesla-polyglot-common-javadoc 
   - tesseract 
   - tesseract-data 
   - tesseract-ocr 

@@ -997,7 +997,6 @@
     <package name="iagno" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="iagno-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ibus" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="ibus-chewing" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ibus-gtk" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ibus-gtk3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ibus-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
