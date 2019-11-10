@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov  7 07:51:06 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Add patches to fix coloring of symbolic icons (glgo#GNOME/librsvg#525):
+  * 0001-croco.rs-Add-struct-definition-for-CRSimpleSel.patch
+  * 0002-Compute-the-specificity-of-CSS-selectors.patch
+  * 0003-525-Consider-specificity-when-applying-CSS-selector-.patch
+
+-------------------------------------------------------------------
+Wed Nov  6 01:24:01 UTC 2019 - Yifan Jiang <yfjiang@suse.com>
+
+- Remove BuildRequires rust-std. The replacement rust-std-static
+  is already required by rust.
+
+-------------------------------------------------------------------
 Wed Oct 23 14:46:43 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.46.3:

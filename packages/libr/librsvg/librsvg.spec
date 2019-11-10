@@ -28,12 +28,14 @@ Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/LibRsvg
 Source0:        https://download.gnome.org/sources/librsvg/2.46/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-
+# PATCH-FIX-UPSTREAM https://gitlab.gnome.org/GNOME/librsvg/issues/525
+Patch1:         0001-croco.rs-Add-struct-definition-for-CRSimpleSel.patch
+Patch2:         0002-Compute-the-specificity-of-CSS-selectors.patch
+Patch3:         0003-525-Consider-specificity-when-applying-CSS-selector-.patch
 BuildRequires:  cargo
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  pkgconfig
 BuildRequires:  rust >= 1.34
-BuildRequires:  rust-std
 BuildRequires:  vala
 BuildRequires:  pkgconfig(cairo) >= 1.16.0
 BuildRequires:  pkgconfig(cairo-png) >= 1.2.0

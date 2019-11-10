@@ -753,4 +753,15 @@
     <comment></comment>
     <requestid>742530</requestid>
   </revision>
+  <revision rev="95" vrev="2">
+    <srcmd5>7be6ee41bdaaf1807a648135748780f9</srcmd5>
+    <version>2.46.3</version>
+    <time>1573419942</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patches to fix coloring of symbolic icons (glgo#GNOME/librsvg#525):
+  * 0001-croco.rs-Add-struct-definition-for-CRSimpleSel.patch
+  * 0002-Compute-the-specificity-of-CSS-selectors.patch
+  * 0003-525-Consider-specificity-when-applying-CSS-selector-.patch (forwarded request 746179 from favogt)</comment>
+    <requestid>746227</requestid>
+  </revision>
 </revisionlist>
