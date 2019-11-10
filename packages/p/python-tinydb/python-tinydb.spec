@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-tinydb
-Version:        3.15.0
+Version:        3.15.1
 Release:        0
 Summary:        A document-oriented database
 License:        MIT
