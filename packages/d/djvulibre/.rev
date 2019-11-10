@@ -292,4 +292,15 @@
   + djvulibre-always-assume-that-cpuid-works-on-x86_64.patch</comment>
     <requestid>741427</requestid>
   </revision>
+  <revision rev="39" vrev="6">
+    <srcmd5>78f40b034b3deb066e1a20ca12220b7b</srcmd5>
+    <version>3.5.27</version>
+    <time>1573421017</time>
+    <user>dimstar_suse</user>
+    <comment>- security update
+- added patches
+  CVE-2019-18804 [bsc#1156188]
+  + djvulibre-CVE-2019-18804.patch</comment>
+    <requestid>746558</requestid>
+  </revision>
 </revisionlist>

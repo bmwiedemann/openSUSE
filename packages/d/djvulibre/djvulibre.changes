@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov  8 11:15:02 UTC 2019 - pgajdos@suse.com
+
+- security update
+- added patches
+  CVE-2019-18804 [bsc#1156188]
+  + djvulibre-CVE-2019-18804.patch
+
+-------------------------------------------------------------------
 Fri Oct 18 08:33:20 UTC 2019 - pgajdos@suse.com
 
 - do not segfault when mmx enabled [bsc#1154401]

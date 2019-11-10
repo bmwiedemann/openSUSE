@@ -41,6 +41,8 @@ Patch4:         djvulibre-CVE-2019-15142.patch
 Patch5:         djvulibre-invalid-tiff.patch
 # https://sourceforge.net/p/djvu/bugs/293/
 Patch6:         djvulibre-always-assume-that-cpuid-works-on-x86_64.patch
+# CVE-2019-18804 [bsc#1156188]
+Patch7:         djvulibre-CVE-2019-18804.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -101,6 +103,7 @@ This package contains the documentation.
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 %build
 %configure \
