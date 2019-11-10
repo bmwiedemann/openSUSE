@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov  6 21:55:06 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Drop gtk3 BuildRequires, only used by gconf-sanity-check,
+  removed in version 3.2.6.
+- Only Require python3-base for gsettings-schema-convert, which
+  provides xml/etree.
+- Remove huge Changelog (commit log), the NEWS file is sufficient.
+
+-------------------------------------------------------------------
 Tue Jun 11 16:16:53 UTC 2019 - mgorse@suse.com
 
 - Run gsettings-schema-convert through 2to3, and adjust to use

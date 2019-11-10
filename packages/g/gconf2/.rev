@@ -525,4 +525,16 @@
 </comment>
     <requestid>709247</requestid>
   </revision>
+  <revision rev="73" vrev="15">
+    <srcmd5>74b88ee07fe00a7694f1b64a8a58a8b5</srcmd5>
+    <version>3.2.6</version>
+    <time>1573419813</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop gtk3 BuildRequires, only used by gconf-sanity-check,
+  removed in version 3.2.6.
+- Only Require python3-base for gsettings-schema-convert, which
+  provides xml/etree.
+- Remove huge Changelog (commit log), the NEWS file is sufficient. (forwarded request 746101 from StefanBruens)</comment>
+    <requestid>746226</requestid>
+  </revision>
 </revisionlist>

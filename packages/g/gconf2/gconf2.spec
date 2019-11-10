@@ -44,7 +44,6 @@ Patch6:         gconf2-pass-warning-to-caller.patch
 Patch7:         gconf2-fdatasync.patch
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  gobject-introspection-devel
-BuildRequires:  gtk3-devel
 BuildRequires:  intltool
 BuildRequires:  libidl-devel
 BuildRequires:  libxml2-devel
@@ -84,8 +83,8 @@ system-wide defaults from a user session.
 Summary:        Include files and libraries mandatory for development
 Group:          Development/Libraries/GNOME
 Requires:       %{name} = %{version}
-# For gsettings-schema-convert:
-Requires:       python3
+# For gsettings-schema-convert (xml/etree):
+Requires:       python3-base
 Provides:       gconf2-doc = %{version}
 Obsoletes:      gconf2-doc < %{version}
 
@@ -112,15 +111,12 @@ cp -a %{SOURCE1} %{SOURCE2} .
 %configure --with-pic\
 	--libexecdir=%{_libexecdir}/GConf/2\
 	--disable-static \
-        --with-gtk=3.0 \
+        --disable-gtk \
         --disable-orbit
 make %{?_smp_mflags}
 
 %install
 %make_install
-%if 0%{?suse_version} <= 1120
-rm %{buildroot}%{_datadir}/locale/en@shaw/LC_MESSAGES/*
-%endif
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{_name}2
 %suse_update_desktop_file gsettings-data-convert
@@ -180,7 +176,7 @@ fi
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS NEWS README
 %{_bindir}/gconf-merge-tree
 %{_bindir}/gconftool-2
 %{_bindir}/gconftool-rebuild
