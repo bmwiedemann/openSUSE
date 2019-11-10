@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-mpv
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,12 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-mpv
-Version:        0.3.9
+Version:        0.3.10
 Release:        0
 Summary:        Python interface to the mpv media player
 License:        AGPL-3.0-or-later
-Group:          Development/Languages/Python
-Url:            https://github.com/jaseg/python-mpv
+URL:            https://github.com/jaseg/python-mpv
 Source0:        https://files.pythonhosted.org/packages/source/p/python-mpv/python-mpv-%{version}.tar.gz
 Source99:       %{name}-rpmlintrc
 BuildRequires:  %{python_module setuptools}
