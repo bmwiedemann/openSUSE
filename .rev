@@ -12368,4 +12368,18 @@
     <user>staging-bot</user>
     <comment>Automatic update</comment>
   </revision>
+  <revision rev="1768" vrev="1768">
+    <srcmd5>0fcdc7b2a4ca019c2b78553a18cd36bd</srcmd5>
+    <version>unknown</version>
+    <time>1573423024</time>
+    <user>dimstar_suse</user>
+    <comment>Update version</comment>
+  </revision>
+  <revision rev="1769" vrev="1769">
+    <srcmd5>740495d520d9f5bb6d70a20b37a760c1</srcmd5>
+    <version>unknown</version>
+    <time>1573423044</time>
+    <user>dimstar_suse</user>
+    <comment>Update version</comment>
+  </revision>
 </revisionlist>
