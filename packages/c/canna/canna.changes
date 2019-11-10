@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov  9 03:07:27 UTC 2019 - Marguerite Su <i@marguerite.su>
+
+- ran spec-cleaner
+- do not install static archive into -devel package
+- put devel file lib*.so in -devel package
+
+-------------------------------------------------------------------
 Mon Feb 19 20:09:03 UTC 2018 - crrodriguez@opensuse.org
 
 - BuildRequires imake not xorg-x11-devel
