@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov  5 20:12:37 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Re-enable systemtap, and require systemtap-headers and
+  systemtap-dtrace, rather than systemtap-sdt-devel, to avoid build
+  cycle (boo#1145438).
+- Own /usr/share/systemtap{|tapset} directories, since we no
+  longer have systemtap-sdt-devel in BuildRequires.
+- Disable lto if systemtap is enabled: build fails otherwise.
+
+-------------------------------------------------------------------
 Mon Oct 21 17:28:20 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.62.2:

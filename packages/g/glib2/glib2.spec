@@ -16,8 +16,7 @@
 #
 
 
-# systemtap is only offered as build-option, but not enabled, as it causes a build cycle
-%bcond_with     systemtap
+%bcond_without     systemtap
 Name:           glib2
 Version:        2.62.2
 Release:        0
@@ -71,7 +70,8 @@ BuildRequires:  pkgconfig(zlib)
 # gtk-doc requires glib2-devel, but we will only be building this here; break up a cycle
 #!BuildIgnore:  glib2-devel
 %if %{with systemtap}
-BuildRequires:  systemtap-sdt-devel
+BuildRequires:  systemtap-dtrace
+BuildRequires:  systemtap-headers
 %endif
 
 %description
@@ -262,7 +262,11 @@ cp -a %{SOURCE4} gnome_defaults.conf
 grep "%{_bindir}/env @PYTHON@" . -rl | xargs sed -i "s|%{_bindir}/env @PYTHON@|%{_bindir}/python3|g"
 
 %build
+%if %{with systemtap}
+%global _lto_cflags %{nil}
+%else
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+%endif
 %meson \
 	--default-library=both \
 	-Dselinux=enabled \
@@ -490,6 +494,8 @@ done
 %{_datadir}/gtk-doc/html/gobject
 %{_datadir}/gdb/auto-load/%{_libdir}/*-gdb.py
 %if %{with systemtap}
+%dir %{_datadir}/systemtap
+%dir %{_datadir}/systemtap/tapset
 %dir %{_datadir}/systemtap/tapset/*
 %{_datadir}/systemtap/tapset/*/libgio-*.so.*.stp
 %{_datadir}/systemtap/tapset/*/libglib-*.so.*.stp
