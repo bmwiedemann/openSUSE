@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov  1 14:13:04 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Disable RfSpace module (default with next upstream release),
+  deprecated in favor of the separate soapy-netsdr module.
+  Circumvents build/linking failures.
+  * Add soapy_osmosdr_rfspace_disable.patch
+- Drop no longer required soap-osmo-fix-pthread-linking-issue.patch
+
+-------------------------------------------------------------------
 Sat Nov 10 12:31:35 UTC 2018 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update soapy-module version 0.6 -> 0.7

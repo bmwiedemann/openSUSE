@@ -1,7 +1,7 @@
 #
 # spec file for package soapy-osmo
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -28,23 +28,20 @@ Group:          Hardware/Other
 URL:            https://github.com/pothosware/SoapyOsmo/wiki
 #Git-Clone:     https://github.com/pothosware/SoapyOsmo.git
 Source:         https://github.com/pothosware/SoapyOsmo/archive/%{name}-%{version}.tar.gz
-Patch0:         soap-osmo-fix-pthread-linking-issue.patch
+# PATCH-FIX-UPSTREAM
+Patch0:         soapy_osmosdr_rfspace_disable.patch
 BuildRequires:  cmake
 BuildRequires:  freesrp-devel
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(SoapySDR)
-BuildRequires:  pkgconfig(libmirisdr)
-BuildRequires:  pkgconfig(libosmosdr)
-%if 0%{?suse_version} > 1325
 BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_chrono-devel
 BuildRequires:  libboost_date_time-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
-%else
-BuildRequires:  boost-devel
-%endif
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(SoapySDR)
+BuildRequires:  pkgconfig(libmirisdr)
+BuildRequires:  pkgconfig(libosmosdr)
 
 %description
 Soapy Osmo - Osmo SDR module
@@ -82,14 +79,6 @@ Group:          System/Libraries
 %description -n soapysdr%{soapy_modver}-module-osmosdr
 Soapy OsmoSDR - OsmoSDR device support for Soapy SDR.
 A Soapy module that supports OsmoSDR devices within the Soapy API.
-
-%package -n soapysdr%{soapy_modver}-module-rfspace
-Summary:        RFSpace osmosdr module
-Group:          System/Libraries
-
-%description -n soapysdr%{soapy_modver}-module-rfspace
-Soapy RFSpace - RFSpace device support for Soapy SDR.
-A Soapy module that supports RFSpace devices within the Soapy API.
 
 %package -n soapysdr%{soapy_modver}-module-freesrp
 Summary:        FreeSRP osmosdr module
@@ -130,11 +119,6 @@ make VERBOSE=1 %{?_smp_mflags}
 %dir %{_libdir}/SoapySDR
 %dir %{_libdir}/SoapySDR/modules%{soapy_modver}
 %{_libdir}/SoapySDR/modules%{soapy_modver}/libosmosdrSupport.so
-
-%files -n soapysdr%{soapy_modver}-module-rfspace
-%dir %{_libdir}/SoapySDR
-%dir %{_libdir}/SoapySDR/modules%{soapy_modver}
-%{_libdir}/SoapySDR/modules%{soapy_modver}/librfspaceSupport.so
 
 %files -n soapysdr%{soapy_modver}-module-freesrp
 %dir %{_libdir}/SoapySDR
