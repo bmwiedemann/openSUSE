@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Nov  3 22:25:28 UTC 2019 - chris@computersalat.de
+
+- update to 1.3.6b
+  * Fixed pre-authentication remote denial-of-service issue (Issue #846).
+  * Backported fix for building mod_sql_mysql using MySQL 8 (Issue #824).
+- update to 1.3.6a
+  * Fixed symlink navigation (Bug#4332).
+  * Fixed building of mod_sftp using OpenSSL 1.1.x releases (Issue#674).
+  * Fixed SITE COPY honoring of <Limit> restrictions (Bug#4372).
+  * Fixed segfault on login when using mod_sftp + mod_sftp_pam (Issue#656).
+  * Fixed restarts when using mod_facl as a static module
+- remove obsolete proftpd-CVE-2019-12815.patch
+  * included in 1.3.6a (Bug#4372)
+- add proftpd_env-script-interpreter.patch
+  * RPMLINT fix for env-script-interpreter (Badness: 9)
+
+-------------------------------------------------------------------
 Sat Nov  2 18:12:51 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Add missing Requires(pre): group(ftp) for Leap 15 and Tumbleweed

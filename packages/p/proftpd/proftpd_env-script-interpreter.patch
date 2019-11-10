@@ -1,0 +1,40 @@
+Index: contrib/ftpasswd
+===================================================================
+--- contrib/ftpasswd.orig
++++ contrib/ftpasswd
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl
++#!/usr/bin/perl
+ # ---------------------------------------------------------------------------
+ # Copyright (C) 2000-2015 TJ Saunders <tj@castaglia.org>
+ #
+Index: contrib/ftpmail
+===================================================================
+--- contrib/ftpmail.orig
++++ contrib/ftpmail
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl
++#!/usr/bin/perl
+ # ---------------------------------------------------------------------------
+ # Copyright (C) 2008-2013 TJ Saunders <tj@castaglia.org>
+ #
+Index: contrib/ftpquota
+===================================================================
+--- contrib/ftpquota.orig
++++ contrib/ftpquota
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl
++#!/usr/bin/perl
+ # -------------------------------------------------------------------------
+ # Copyright (C) 2000-2017 TJ Saunders <tj@castaglia.org>
+ #
+Index: src/prxs.in
+===================================================================
+--- src/prxs.in.orig
++++ src/prxs.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl
++#!/usr/bin/perl
+ 
+ # ---------------------------------------------------------------------------
+ # Copyright (C) 2008-2012 TJ Saunders <tj@castaglia.org>
