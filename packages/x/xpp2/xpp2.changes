@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  8 12:01:16 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- BuildRequire xerces-j2, because it is not automatically pulled
+  by ant anymore
+
+-------------------------------------------------------------------
 Mon Sep 11 16:45:34 UTC 2017 - fstrba@suse.com
 
 - Modified patch:

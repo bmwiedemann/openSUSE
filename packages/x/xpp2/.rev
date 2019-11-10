@@ -117,4 +117,12 @@
     <comment>Fix build with java 9</comment>
     <requestid>523325</requestid>
   </revision>
+  <revision rev="18" vrev="28">
+    <srcmd5>6c7deacec75bf6aae683f3c3a507d2db</srcmd5>
+    <version>2.1.10</version>
+    <time>1573421268</time>
+    <user>dimstar_suse</user>
+    <comment>BuildRequire xerces-j2</comment>
+    <requestid>746580</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package xpp2
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -32,6 +32,7 @@ BuildRequires:  ant-junit >= 1.6
 BuildRequires:  fdupes
 BuildRequires:  javapackages-tools
 BuildRequires:  junit
+BuildRequires:  xerces-j2
 BuildRequires:  xml-commons-apis
 Requires:       xml-commons-apis
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -79,7 +80,7 @@ find . -name "*.jar" -exec rm -f {} \;
 
 %build
 export OPT_JAR_LIST="ant/ant-junit junit"
-export CLASSPATH=$(build-classpath xml-commons-apis)
+export CLASSPATH=$(build-classpath xml-commons-apis xerces-j2)
 ant all api api.impl
 CLASSPATH=$CLASSPATH:$(build-classpath junit):build/tests:build/lib/PullParser-2.1.10.jar
 java AllTests
