@@ -698,4 +698,20 @@
     <comment></comment>
     <requestid>733518</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>a93ff2711747dc1682914190c8636688</srcmd5>
+    <version>2.26.2</version>
+    <time>1573419433</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.26.2:
+  + Improve performance of querying system fallback fonts.
+  + Don't use prgname in dbus-proxy socket path.
+  + Fix thread-safety issues in image decoders.
+  + Fix the build with WebDriver disabled.
+  + Disable accelerated compositing when we fail to initialize the
+    EGL dispaly under Wayland.
+  + Fill the objects category in emoji picker.
+  + Fix several crashes and rendering issues. (forwarded request 746047 from iznogood)</comment>
+    <requestid>746222</requestid>
+  </revision>
 </revisionlist>

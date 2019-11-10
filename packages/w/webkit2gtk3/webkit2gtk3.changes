@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov  6 16:26:43 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.26.2:
+  + Improve performance of querying system fallback fonts.
+  + Don't use prgname in dbus-proxy socket path.
+  + Fix thread-safety issues in image decoders.
+  + Fix the build with WebDriver disabled.
+  + Disable accelerated compositing when we fail to initialize the
+    EGL dispaly under Wayland.
+  + Fill the objects category in emoji picker.
+  + Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
 Thu Sep 26 10:03:59 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Enable sandbox again (pass -DENABLE_BUBBLEWRAP_SANDBOX=ON to
