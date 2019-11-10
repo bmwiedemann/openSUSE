@@ -42,6 +42,7 @@ GNOME keyboard library and utility.
 Summary:        GNOME Keyboard tools
 Group:          System/GUI/GNOME
 Recommends:     %{name}-lang
+Conflicts:      %{name} < 3.26.1
 
 %description -n gnomekbd-tools
 GNOME keyboard library and utility.
@@ -51,8 +52,8 @@ libgnomekbd.
 
 %package -n libgnomekbd%{sover}
 Summary:        GNOME Keyboard Library
-Group:          System/Libraries
 # Make -lang package installable, and ease upgrade path
+Group:          System/Libraries
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
 
@@ -64,6 +65,7 @@ This package provides the shared library of libgnomekbd.
 %package -n typelib-1_0-Gkbd-3_0
 Summary:        Introspection bindings for libgnomekbd
 Group:          System/Libraries
+Conflicts:      %{name} < 3.26.1
 
 %description -n typelib-1_0-Gkbd-3_0
 GNOME keyboard library and utility.
