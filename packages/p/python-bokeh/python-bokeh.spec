@@ -21,11 +21,10 @@
 # and building the JS from source doesn't work
 %bcond_with     tests
 Name:           python-bokeh
-Version:        1.3.4
+Version:        1.4.0
 Release:        0
 Summary:        Statistical interactive HTML plots for Python
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/bokeh/bokeh/
 Source:         https://files.pythonhosted.org/packages/source/b/bokeh/bokeh-%{version}.tar.gz
 BuildRequires:  %{python_module Jinja2 >= 2.7}
