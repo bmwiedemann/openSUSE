@@ -16,35 +16,36 @@
 #
 
 
+%ifarch ppc64
+%bcond_with    luajit
+%else
+%bcond_without luajit
+%endif
+
 Name:           gegl
-Version:        0.4.16
+Version:        0.4.18
 Release:        0
 Summary:        Generic Graphics Library
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            http://gegl.org/
-Source0:        https://download.gimp.org/pub/gegl/0.4/%{name}-%{version}.tar.bz2
+Source0:        https://download.gimp.org/pub/gegl/0.4/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-# PATCH-FIX-OPENSUSE -- install bundled documentation even if enscript is not installed
-Patch0:         fix_doc_installation.patch
-# PATCH-FIX-UPSTREAM -- glgo#GNOME/gegl!184 1/3
-Patch1:         0001-Extend-configure-checks-with-checks-for-SDL2.patch
-# PATCH-FIX-UPSTREAM -- glgo#GNOME/gegl!184 2/3
-Patch2:         0002-Port-sdl-display-to-SDL2.patch
-# PATCH-FIX-UPSTREAM -- glgo#GNOME/gegl!184 3/3
-Patch3:         0003-Port-sdl-draw-example-to-SDL2.patch
+# PATCH-FIX-OPENSUSE -- allow building on architectures without CPU optimizations
+Patch:          gegl-0.4.18_allow_unknown_arch.patch
 
 BuildRequires:  ImageMagick
-# Needed for patches 1-3
-BuildRequires:  autoconf
+BuildRequires:  asciidoc
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection-devel >= 1.32.0
+BuildRequires:  gtk-doc
 BuildRequires:  libSDL2-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libspiro-devel
 BuildRequires:  libstdc++-devel
-BuildRequires:  libtool
+BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
+BuildRequires:  ruby
 BuildRequires:  suitesparse-devel
 BuildRequires:  pkgconfig(OpenEXR) >= 1.6.1
 BuildRequires:  pkgconfig(babl) >= 0.1.62
@@ -59,8 +60,10 @@ BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(lcms2) >= 2.8
+BuildRequires:  pkgconfig(lensfun)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavutil) >= 55.92.100
 BuildRequires:  pkgconfig(libpng) >= 1.6.0
 BuildRequires:  pkgconfig(libraw) >= 0.15.4
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.40.6
@@ -68,10 +71,14 @@ BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libtiff-4) >= 4.0.0
 BuildRequires:  pkgconfig(libv4l2) >= 1.0.1
 BuildRequires:  pkgconfig(libwebp) >= 0.5.0
-BuildRequires:  pkgconfig(lua) >= 5.1.0
+%if %{with luajit}
+BuildRequires:  pkgconfig(luajit)
+%endif
+# TODO: BuildRequires:  pkgconfig(mrg)
 BuildRequires:  pkgconfig(pango) >= 1.38.0
 BuildRequires:  pkgconfig(pangocairo) >= 1.38.0
 BuildRequires:  pkgconfig(poppler-glib) >= 0.71.0
+BuildRequires:  pkgconfig(pygobject-3.0)
 BuildRequires:  pkgconfig(vapigen) >= 0.20.0
 # since version 0.3.5, we no longer provide an orig-addon package, as ffmpeg/libav
 # exists in Tumbleweed and we use it to build
@@ -151,14 +158,19 @@ input and output.
 %autosetup -p1
 
 %build
-NOCONFIGURE=1 ./autogen.sh
-%configure \
-	--disable-static \
+%meson \
+	-Dmrg=disabled \
+	%if ! %{with luajit}
+	-Dlua=disabled \
+	%endif
+	-Dworkshop=true \
+	-Djasper=disabled \
+	-Ddocs=true \
 	%{nil}
-%make_build
+%meson_build
 
 %install
-%make_install
+%meson_install
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name}-0.4 %{?no_lang_C}
 
@@ -171,7 +183,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files
 %{_bindir}/gegl
 %{_bindir}/gegl-imgcmp
-%{_bindir}/gcut
 
 %files -n %{name}-0_4
 %dir %{_libdir}/gegl-0.4/
@@ -180,6 +191,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libgegl-sc-0.4.so
 %{_libdir}/libgegl-npd-0.4.so
 %{_libdir}/gegl-0.4/grey2.json
+%if %{with luajit}
+# lua files
+%dir %{_datadir}/gegl-0.4/
+%{_datadir}/gegl-0.4/lua/
+%endif
 
 %files -n libgegl-0_4-0
 %license COPYING COPYING.LESSER
@@ -200,7 +216,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/vala/vapi/gegl-0.4.vapi
 
 %files doc
-%doc AUTHORS ChangeLog NEWS
+%doc AUTHORS docs/ChangeLog docs/NEWS.txt
 %doc %{_datadir}/gtk-doc/html/gegl/
 
 %files -n %{name}-0_4-lang -f %{name}-0.4.lang
