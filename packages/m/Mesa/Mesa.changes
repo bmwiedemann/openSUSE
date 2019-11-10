@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov  7 11:20:41 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 19.2.3
+  In this release: iris, meson, radv, anv, turnip, 965, svga,
+  utils, core mesa, glsl, etanviv, and gallium/rbug
+- This Mesa release includes support for latest GPUs including Intel 
+  (jsc#SLE-7962, jsc#SLE-8024, jsc#SLE-8022, jsc#SLE-10182, jsc#SLE-4983, 
+   bsc#1137515) and fixes for boo#1127672, bsc#1117365
+
+-------------------------------------------------------------------
 Tue Nov  5 07:45:37 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Dont conflict with vulkan-devel anymore as there is no file

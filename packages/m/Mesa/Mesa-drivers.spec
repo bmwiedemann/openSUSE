@@ -42,7 +42,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 19.2.2
+%define _version 19.2.3
 %define with_opencl 0
 %define with_vulkan 0
 %define with_llvm 0
@@ -110,7 +110,7 @@
 %endif
 
 Name:           Mesa-drivers
-Version:        19.2.2
+Version:        19.2.3
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -690,7 +690,6 @@ Summary:        Mesa's Vulkan development files
 Group:          Development/Libraries/C and C++
 Requires:       libvulkan_intel = %{version}
 Requires:       libvulkan_radeon = %{version}
-Conflicts:      vulkan-devel
 
 %description -n Mesa-libVulkan-devel
 This package contains the development files for Mesa's Vulkan implementation.
