@@ -803,7 +803,8 @@ rm %{buildroot}/%{sysconfdir}/*.test
 
 %files -f filelist
 %defattr(-,root,root)
-%doc INSTALL READM* LICENSE ABOUT_APACHE CHANGES
+%doc INSTALL READM* ABOUT_APACHE CHANGES
+%license LICENSE
 %doc support/SHA1
 %{_mandir}/man?/apachectl.?.*
 %{_mandir}/man?/apache2ctl.?.*

@@ -1611,4 +1611,12 @@ In apache2-vhost.template, we recommend users to create custom logs like `/var/l
   + apache2-load-private-keys-from-pkcs11.patch</comment>
     <requestid>741682</requestid>
   </revision>
+  <revision rev="162" vrev="5">
+    <srcmd5>88b2480f063237f75191a808e0b97256</srcmd5>
+    <version>2.4.41</version>
+    <time>1573420768</time>
+    <user>dimstar_suse</user>
+    <comment>- use %license [bsc#1156171]</comment>
+    <requestid>746513</requestid>
+  </revision>
 </revisionlist>
