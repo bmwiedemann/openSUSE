@@ -17,34 +17,33 @@
 
 
 Name:           opam
-Version:        2.0.3
+Version:        2.0.5
 Release:        0
 Summary:        Source-based package manager for OCaml
 License:        LGPL-2.1-only WITH OCaml-LGPL-linking-exception
 Group:          System/Packages
 URL:            https://opam.ocaml.org/
-Source:         https://github.com/ocaml/opam/archive/%{version}/%{name}-%{version}.tar.gz
-
-BuildRequires:  curl
+Source:         %{name}-%{version}.tar.xz
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  gcc-c++
-BuildRequires:  ocaml >= 4.02.3
+BuildRequires:  ocaml
+BuildRequires:  ocaml-cppo
 BuildRequires:  ocaml-dune
-BuildRequires:  ocamlfind
-BuildRequires:  ocaml(Ocamlbuild)
-BuildRequires:  ocaml(Odoc)
+BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocamlfind(bigarray)
 BuildRequires:  ocamlfind(cmdliner)
-BuildRequires:  ocamlfind(cppo)
 BuildRequires:  ocamlfind(cudf)
-BuildRequires:  ocamlfind(dose3)
-BuildRequires:  ocamlfind(extlib)
+BuildRequires:  ocamlfind(dose3.algo)
+BuildRequires:  ocamlfind(mccs)
 BuildRequires:  ocamlfind(ocamlgraph)
 BuildRequires:  ocamlfind(opam-file-format)
 BuildRequires:  ocamlfind(re)
+BuildRequires:  ocamlfind(unix)
 
 Requires:       %{name}-installer%{?_isa} = %{version}-%{release}
 
 Requires:       bubblewrap
-Requires:       mccs
 
 # https://cygwin.com/ml/cygwin/2018-01/msg00079.html
 Requires:       bzip2
@@ -70,36 +69,49 @@ Git-friendly development workflow.
 %package installer
 Summary:        Standalone tool for opam install files
 Group:          System/Packages
+Requires:       %{name} = %{version}-%{release}
 
 %description installer
 Handles (un)installation of package files following instructions from
 OPAM *.install files.
 
+%package        devel
+Summary:        Development files for %{name}
+Group:          Development/Languages/OCaml
+Requires:       %{name} = %{version}
+
+%description    devel
+The %{name}-devel package contains libraries and signature files for
+developing applications that use %{name}.
+
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup -p1
 
 %build
+# wipe bogus FETCH
+sed -i~ '/FETCH/d;232,+7d' configure.ac
+diff -u "$_"~ "$_" && exit 1
+export DUNE=$(type -P dune)
+export CPPO=$(type -P cppo)
+export PATCH=$(type -P false)
+export BUNZIP2=$(type -P false)
+autoreconf -fi
 %configure
-make all man
+dune_release_pkgs='opam,opam-client,opam-core,opam-format,opam-installer,opam-repository,opam-solver,opam-state'
+%ocaml_dune_setup
+%ocaml_dune_build
 
 %install
-%make_install LIBINSTALL_DIR=%{buildroot}%{_libdir}/ocaml
-# Prevent installation of doc files in wrong directory
-rm -r %{buildroot}%{_prefix}/doc
+%ocaml_dune_install
+%ocaml_create_file_list
 
-%files
-%doc AUTHORS CHANGES CONTRIBUTING.md README.md
-%license LICENSE
+%files -f %{name}.files
+%doc CHANGES
 %{_bindir}/opam
-%{_mandir}/man1/*.1%{?ext_man}
+
+%files devel -f %{name}.files.devel
 
 %files installer
-%license LICENSE
 %{_bindir}/opam-installer
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/opam-installer/
-%{_libdir}/ocaml/opam-installer/opam
-%{_libdir}/ocaml/opam-installer/META
-%{_libdir}/ocaml/opam-installer/dune-package
 
 %changelog
