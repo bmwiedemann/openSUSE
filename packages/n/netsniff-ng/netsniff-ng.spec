@@ -31,7 +31,6 @@ BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc
 BuildRequires:  glibc-devel
-BuildRequires:  libGeoIP-devel
 BuildRequires:  libcli-devel
 BuildRequires:  libnet-devel
 BuildRequires:  libnetfilter_conntrack-devel
@@ -73,7 +72,7 @@ The netsniff-ng toolkit consists of the following utilities:
 %build
 export NACL_LIB=sodium
 export NACL_INC_DIR=/usr/include/sodium
-./configure
+./configure --disable-geoip
 make %{?_smp_mflags} ETCDIR=%{_sysconfdir} Q= STRIP=: CFLAGS="%{optflags}"
 
 %install
