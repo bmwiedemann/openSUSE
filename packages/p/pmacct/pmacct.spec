@@ -51,7 +51,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel
 BuildRequires:  sqlite-devel >= 3.0.0
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  pkgconfig(geoip)
 BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(libmaxminddb)
 BuildRequires:  pkgconfig(libzmq)
@@ -92,7 +91,7 @@ export CFLAGS="%{optflags} -Wno-return-type -D_FORTIFY_SOURCE=0"
     %if %{with ndpi}
     --enable-ndpi \
     %endif
-    --enable-geoip \
+    --enable-geoipv2 \
     %if 0%{?suse_version} >= 1310 && 0%{?is_opensuse} == 1
     --enable-jansson \
     %endif
