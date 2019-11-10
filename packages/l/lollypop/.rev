@@ -1133,4 +1133,20 @@
     try to reduce memory usage (glgo#World/lollypop#2111).</comment>
     <requestid>746082</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>55452cf41fa7bec373328fe4514617ac</srcmd5>
+    <version>1.2.9</version>
+    <time>1573422854</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.9:
+  * Update translations and AppData.
+- Update to version 1.2.8:
+  * Fix a playback order issue (glgo#World/lollypop#2114).
+  * Rework search view bottom buttons (glgo#World/lollypop#2094).
+  * Fix search through lists, such as the genre or artist lists
+    (glgo#World/lollypop#2103).
+  * Rework sizing for phones (glgo#World/lollypop#2113).
+  * Fix some memory leaks.</comment>
+    <requestid>747227</requestid>
+  </revision>
 </revisionlist>

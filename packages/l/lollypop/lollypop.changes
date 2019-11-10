@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Nov 10 15:20:16 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.2.9:
+  * Update translations and AppData.
+- Update to version 1.2.8:
+  * Fix a playback order issue (glgo#World/lollypop#2114).
+  * Rework search view bottom buttons (glgo#World/lollypop#2094).
+  * Fix search through lists, such as the genre or artist lists
+    (glgo#World/lollypop#2103).
+  * Rework sizing for phones (glgo#World/lollypop#2113).
+  * Fix some memory leaks.
+
+-------------------------------------------------------------------
 Wed Nov 06 18:04:24 UTC 2019 - antoine.belvire@opensuse.org
 
 - Update to version 1.2.7:
