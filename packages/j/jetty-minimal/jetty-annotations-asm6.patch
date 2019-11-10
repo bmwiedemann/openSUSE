@@ -1,6 +1,6 @@
---- jetty.project-jetty-9.4.19.v20190610/jetty-annotations/src/main/java/org/eclipse/jetty/annotations/AnnotationParser.java	2019-06-10 18:17:56.000000000 +0200
-+++ jetty.project-jetty-9.4.19.v20190610/jetty-annotations/src/main/java/org/eclipse/jetty/annotations/AnnotationParser.java	2019-10-04 15:08:54.874014725 +0200
-@@ -69,8 +69,8 @@
+--- jetty.project-jetty-9.4.22.v20191022/jetty-annotations/src/main/java/org/eclipse/jetty/annotations/AnnotationParser.java	2019-10-22 15:20:50.000000000 +0200
++++ jetty.project-jetty-9.4.22.v20191022/jetty-annotations/src/main/java/org/eclipse/jetty/annotations/AnnotationParser.java	2019-11-07 17:07:33.334457334 +0100
+@@ -71,8 +71,8 @@
  public class AnnotationParser
  {
      private static final Logger LOG = Log.getLogger(AnnotationParser.class);
@@ -8,10 +8,10 @@
 -    private static final String ASM_OPCODE_VERSION_STR = "ASM7";
 +    private static final int ASM_OPCODE_VERSION = Opcodes.ASM6; //compatibility of api
 +    private static final String ASM_OPCODE_VERSION_STR = "ASM6";
-     
+ 
      /**
       * Map of classnames scanned and the first location from which scan occurred
-@@ -115,11 +115,6 @@
+@@ -118,11 +118,6 @@
                          asmVersion = Opcodes.ASM6;
                          break;
                      }

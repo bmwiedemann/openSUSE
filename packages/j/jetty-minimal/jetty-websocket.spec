@@ -19,33 +19,38 @@
 
 %global base_name jetty
 %global addver  .v20191022
-Name:           %{base_name}-minimal
+Name:           %{base_name}-websocket
 Version:        9.4.22
 Release:        0
-Summary:        Java Webserver and Servlet Container
+Summary:        The websocket modules for Jetty
 License:        Apache-2.0 OR EPL-1.0
 URL:            https://www.eclipse.org/jetty/
 Source0:        https://github.com/eclipse/%{base_name}.project/archive/%{base_name}-%{version}%{addver}.tar.gz
 Patch0:         jetty-annotations-asm6.patch
 BuildRequires:  fdupes
+# Multiple providers, chose the 1.0 one over 1.1, since
+# the relevant artifacts assume the API version 1.0
+BuildRequires:  jboss-websocket-1.0-api
 BuildRequires:  maven-local
-BuildRequires:  mvn(javax.annotation:javax.annotation-api)
 BuildRequires:  mvn(javax.servlet:javax.servlet-api)
-BuildRequires:  mvn(javax.transaction:javax.transaction-api)
+BuildRequires:  mvn(javax.websocket:javax.websocket-api)
+BuildRequires:  mvn(javax.websocket:javax.websocket-client-api)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-shade-plugin)
-BuildRequires:  mvn(org.apache.tomcat:tomcat-jasper)
-BuildRequires:  mvn(org.apache.tomcat:tomcat-util-scan)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
-BuildRequires:  mvn(org.eclipse.jetty.toolchain:jetty-schemas)
-BuildRequires:  mvn(org.ow2.asm:asm)
-BuildRequires:  mvn(org.ow2.asm:asm-commons)
-BuildRequires:  mvn(org.slf4j:slf4j-api)
+BuildRequires:  mvn(org.eclipse.jetty:jetty-annotations) >= %{version}
+BuildRequires:  mvn(org.eclipse.jetty:jetty-client) >= %{version}
+BuildRequires:  mvn(org.eclipse.jetty:jetty-http) >= %{version}
+BuildRequires:  mvn(org.eclipse.jetty:jetty-io) >= %{version}
+BuildRequires:  mvn(org.eclipse.jetty:jetty-server) >= %{version}
+BuildRequires:  mvn(org.eclipse.jetty:jetty-servlet) >= %{version}
+BuildRequires:  mvn(org.eclipse.jetty:jetty-util) >= %{version}
+BuildRequires:  mvn(org.eclipse.jetty:jetty-xml) >= %{version}
+Requires:       jboss-websocket-1.0-api
 BuildArch:      noarch
+# jp_minimal doesn't have main package
 
 %description
-
-%global desc \
 Jetty is a 100% Java HTTP Server and Servlet Container. This means that you\
 do not need to configure and run a separate web server (like Apache) in order\
 to use Java, servlets and JSPs to generate dynamic content. Jetty is a fully\
@@ -55,130 +60,49 @@ application run in the same process, without interconnection overheads\
 and complications. Furthermore, as a pure java component, Jetty can be simply\
 included in your application for demonstration, distribution or deployment.\
 Jetty is available on all Java supported platforms.
-%global extdesc %{desc}\
-\
-This package contains
-%{desc}
 
-%package        -n %{base_name}-annotations
-Summary:        The annotations module for Jetty
+This package contains the websocket modules for Jetty
 
-%description    -n %{base_name}-annotations
+%package        -n %{base_name}-websocket-api
+Summary:        The websocket-api module for Jetty
+
+%description    -n %{base_name}-websocket-api
 %{extdesc} %{summary}.
 
-%package        -n %{base_name}-client
-Summary:        The client module for Jetty
+%package        -n %{base_name}-websocket-client
+Summary:        The The websocket-client module for Jetty
 
-%description    -n %{base_name}-client
+%description    -n %{base_name}-websocket-client
 %{extdesc} %{summary}.
 
-%package        -n %{base_name}-continuation
-Summary:        The continuation module for Jetty
+%package        -n %{base_name}-websocket-common
+Summary:        The websocket-common module for Jetty
 
-%description    -n %{base_name}-continuation
+%description    -n %{base_name}-websocket-common
 %{extdesc} %{summary}.
 
-%package        -n %{base_name}-http
-Summary:        The http module for Jetty
+%package        -n %{base_name}-websocket-server
+Summary:        The websocket-server module for Jetty
 
-%description    -n %{base_name}-http
+%description    -n %{base_name}-websocket-server
 %{extdesc} %{summary}.
 
-%package        -n %{base_name}-http-spi
-Summary:        The http-spi module for Jetty
+%package        -n %{base_name}-websocket-servlet
+Summary:        The websocket-servlet module for Jetty
 
-%description    -n %{base_name}-http-spi
+%description    -n %{base_name}-websocket-servlet
 %{extdesc} %{summary}.
 
-%package        -n %{base_name}-io
-Summary:        The io module for Jetty
+%package        -n %{base_name}-javax-websocket-client-impl
+Summary:        The javax-websocket-client-impl module for Jetty
 
-%description    -n %{base_name}-io
+%description    -n %{base_name}-javax-websocket-client-impl
 %{extdesc} %{summary}.
 
-%package        -n %{base_name}-jaas
-Summary:        The jaas module for Jetty
+%package        -n %{base_name}-javax-websocket-server-impl
+Summary:        The javax-websocket-server-impl module for Jetty
 
-%description    -n %{base_name}-jaas
-%{extdesc} %{summary}.
-
-%package        -n %{base_name}-jndi
-Summary:        The jndi module for Jetty
-
-%description    -n %{base_name}-jndi
-%{extdesc} %{summary}.
-
-%package        -n %{base_name}-jsp
-Summary:        The jsp module for Jetty
-Requires:       glassfish-el
-
-%description    -n %{base_name}-jsp
-%{extdesc} %{summary}.
-
-%package        -n %{base_name}-security
-Summary:        The security module for Jetty
-
-%description    -n %{base_name}-security
-%{extdesc} %{summary}.
-
-%package        -n %{base_name}-openid
-Summary:        The openid module for Jetty
-
-%description    -n %{base_name}-openid
-%{extdesc} %{summary}.
-
-%package        -n %{base_name}-server
-Summary:        The server module for Jetty
-
-%description    -n %{base_name}-server
-%{extdesc} %{summary}.
-
-%package        -n %{base_name}-servlet
-Summary:        The servlet module for Jetty
-
-%description    -n %{base_name}-servlet
-%{extdesc} %{summary}.
-
-%package        -n %{base_name}-util
-Summary:        The util module for Jetty
-
-%description    -n %{base_name}-util
-%{extdesc} %{summary}.
-
-%package        -n %{base_name}-util-ajax
-Summary:        The util-ajax module for Jetty
-
-%description    -n %{base_name}-util-ajax
-%{extdesc} %{summary}.
-
-%package        -n %{base_name}-webapp
-Summary:        The webapp module for Jetty
-
-%description    -n %{base_name}-webapp
-%{extdesc} %{summary}.
-
-%package        -n %{base_name}-jmx
-Summary:        The jmx module for Jetty
-
-%description    -n %{base_name}-jmx
-%{extdesc} %{summary}.
-
-%package        -n %{base_name}-xml
-Summary:        The xml module for Jetty
-
-%description    -n %{base_name}-xml
-%{extdesc} %{summary}.
-
-%package        -n %{base_name}-plus
-Summary:        The plus module for Jetty
-
-%description    -n %{base_name}-plus
-%{extdesc} %{summary}.
-
-%package        -n %{base_name}-proxy
-Summary:        The proxy module for Jetty
-
-%description    -n %{base_name}-proxy
+%description    -n %{base_name}-javax-websocket-server-impl
 %{extdesc} %{summary}.
 
 %package        javadoc
@@ -256,7 +180,7 @@ sed -i '/^\s*\*.*<script>/d' jetty-util/src/main/java/org/eclipse/jetty/util/res
 # TODO remove when jetty-setuid is packaged
 %pom_xpath_remove "pom:execution[pom:id[text()='copy-setuid-deps']]" jetty-home/pom.xml
 
-# We don't have gcloud-java-datastore
+# We don't have gcloud-java-datastore in Fedora
 %pom_disable_module jetty-gcloud
 %pom_disable_module test-gcloud-sessions tests/test-sessions
 %pom_remove_dep :jetty-gcloud-session-manager jetty-home
@@ -266,12 +190,12 @@ sed -i '/^\s*\*.*<script>/d' jetty-util/src/main/java/org/eclipse/jetty/util/res
 %pom_disable_module test-memcached-sessions tests/test-sessions
 %pom_remove_dep :jetty-memcached-sessions jetty-home
 
-# We don't have hazelcast
+# Hazelcast in Fedora is too old to build against
 %pom_disable_module jetty-hazelcast
 %pom_disable_module test-hazelcast-sessions tests/test-sessions
 %pom_remove_dep :jetty-hazelcast jetty-home
 
-# We don't have infinispan
+# Infinispan in Fedora is too old to build against
 %pom_disable_module jetty-infinispan
 %pom_disable_module test-infinispan-sessions tests/test-sessions
 %pom_remove_dep :infinispan-embedded jetty-home
@@ -295,7 +219,7 @@ rm -fr examples/embedded/src/main/java/org/eclipse/jetty/embedded/ManyConnectors
 
 # the default location is not allowed by SELinux
 sed -i '/<SystemProperty name="jetty.state"/d' \
-    jetty-home/src/main/resources/etc/jetty-started.xml
+    jetty-home/src/main/resources%{_sysconfdir}/jetty-started.xml
 
 # remote-resources only copies about.html
 %pom_remove_plugin :maven-remote-resources-plugin
@@ -304,10 +228,10 @@ sed -i '/<SystemProperty name="jetty.state"/d' \
 # only useful when tests are enabled (copies test deps)
 %pom_remove_plugin :maven-dependency-plugin jetty-client
 
+# all modules besides the current jetty-websocket
 %pom_disable_module jetty-ant
 %pom_disable_module jetty-http2
 %pom_disable_module jetty-fcgi
-%pom_disable_module jetty-websocket
 %pom_disable_module jetty-servlets
 %pom_disable_module apache-jstl
 %pom_disable_module jetty-maven-plugin
@@ -328,6 +252,27 @@ sed -i '/<SystemProperty name="jetty.state"/d' \
 %pom_disable_module jetty-http-spi
 %pom_disable_module jetty-alpn
 %pom_disable_module jetty-home
+
+# minimal modules built in jetty-minimal package
+%pom_disable_module jetty-annotations
+%pom_disable_module jetty-client
+%pom_disable_module jetty-continuation
+%pom_disable_module jetty-http
+%pom_disable_module jetty-io
+%pom_disable_module jetty-jaas
+%pom_disable_module jetty-jmx
+%pom_disable_module jetty-jndi
+%pom_disable_module apache-jsp
+%pom_disable_module jetty-openid
+%pom_disable_module jetty-plus
+%pom_disable_module jetty-proxy
+%pom_disable_module jetty-security
+%pom_disable_module jetty-server
+%pom_disable_module jetty-servlet
+%pom_disable_module jetty-util
+%pom_disable_module jetty-util-ajax
+%pom_disable_module jetty-xml
+%pom_disable_module jetty-webapp
 
 %mvn_file :{*} %{base_name}/@1
 
@@ -369,43 +314,19 @@ sed -i '/<SystemProperty name="jetty.state"/d' \
 %mvn_install
 %fdupes -s %{buildroot}%{_javadocdir}
 
-%files -n %{base_name}-annotations -f .mfiles-jetty-annotations
+%files -n %{base_name}-websocket-api -f .mfiles-websocket-api
 
-%files -n %{base_name}-client -f .mfiles-jetty-client
+%files -n %{base_name}-websocket-client -f .mfiles-websocket-client
 
-%files -n %{base_name}-continuation -f .mfiles-jetty-continuation
+%files -n %{base_name}-websocket-common -f .mfiles-websocket-common
 
-%files -n %{base_name}-jaas -f .mfiles-jetty-jaas
+%files -n %{base_name}-websocket-server -f .mfiles-websocket-server
 
-%files -n %{base_name}-jndi -f .mfiles-jetty-jndi
+%files -n %{base_name}-websocket-servlet -f .mfiles-websocket-servlet
 
-%files -n %{base_name}-jsp -f .mfiles-jetty-jsp
+%files -n %{base_name}-javax-websocket-client-impl -f .mfiles-javax-websocket-client-impl
 
-%files -n %{base_name}-io -f .mfiles-jetty-io
-
-%files -n %{base_name}-openid -f .mfiles-jetty-openid
-
-%files -n %{base_name}-server -f .mfiles-jetty-server
-
-%files -n %{base_name}-servlet -f .mfiles-jetty-servlet
-
-%files -n %{base_name}-util -f .mfiles-jetty-util
-
-%files -n %{base_name}-util-ajax -f .mfiles-jetty-util-ajax
-
-%files -n %{base_name}-webapp -f .mfiles-jetty-webapp
-
-%files -n %{base_name}-jmx -f .mfiles-jetty-jmx
-
-%files -n %{base_name}-xml -f .mfiles-jetty-xml
-
-%files -n %{base_name}-http -f .mfiles-jetty-http
-
-%files -n %{base_name}-security -f .mfiles-jetty-security
-
-%files -n %{base_name}-proxy -f .mfiles-jetty-proxy
-
-%files -n %{base_name}-plus -f .mfiles-jetty-plus
+%files -n %{base_name}-javax-websocket-server-impl -f .mfiles-javax-websocket-server-impl
 
 %files javadoc -f .mfiles-javadoc
 %license LICENSE NOTICE.txt
