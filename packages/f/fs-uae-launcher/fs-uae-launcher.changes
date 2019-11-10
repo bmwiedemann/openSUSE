@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov  6 20:20:41 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.2
+  * Another fix for global WHDLoad quit key.
+  * Fixed a misleading warning when cyberstorm ROM was not found
+- Update to version 3.0.1
+  * Scanner bug prevented Conquests of the Longbow WHDLoad to be
+    recognized.
+  * The correct kickstart wasn’t always loaded.
+  * Cloanto ROMs were not always decrypted.
+  * Fix for global WHDLoad quit key.
+
+-------------------------------------------------------------------
 Wed Jul  3 16:36:22 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to version 3.0.0
