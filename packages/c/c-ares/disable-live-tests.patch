@@ -1,19 +1,20 @@
-Index: c-ares-1.15.0/test/Makefile.inc
+Index: c-ares-1.15.0-20191108/test/Makefile.inc
 ===================================================================
---- c-ares-1.15.0.orig/test/Makefile.inc
-+++ c-ares-1.15.0/test/Makefile.inc
-@@ -13,7 +13,6 @@ TESTSOURCES = ares-test-main.cc	\
+--- c-ares-1.15.0-20191108.orig/test/Makefile.inc
++++ c-ares-1.15.0-20191108/test/Makefile.inc
+@@ -13,8 +13,6 @@ TESTSOURCES = ares-test-main.cc	\
    ares-test-parse-srv.cc		\
    ares-test-parse-txt.cc		\
    ares-test-misc.cc			\
 -  ares-test-live.cc			\
+-  ares-test-live-ai.cc			\
    ares-test-mock.cc			\
+   ares-test-mock-ai.cc			\
    ares-test-internal.cc		\
-   dns-proto.cc				\
-Index: c-ares-1.15.0/test/ares-test-misc.cc
+Index: c-ares-1.15.0-20191108/test/ares-test-misc.cc
 ===================================================================
---- c-ares-1.15.0.orig/test/ares-test-misc.cc
-+++ c-ares-1.15.0/test/ares-test-misc.cc
+--- c-ares-1.15.0-20191108.orig/test/ares-test-misc.cc
++++ c-ares-1.15.0-20191108/test/ares-test-misc.cc
 @@ -47,10 +47,12 @@ TEST_F(DefaultChannelTest, SetServers) {
    EXPECT_EQ(expected, GetNameServers(channel_));
  
