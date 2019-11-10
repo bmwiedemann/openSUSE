@@ -17,15 +17,16 @@
 
 
 Name:           python-pynag
-Version:        0.9.1
+Version:        1.1.2
 Release:        0
 Summary:        Python modules for Nagios plugins and configuration
 License:        GPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            http://pynag.org/
-Source:         https://github.com/pynag/pynag/archive/pynag-%{version}-1_.tar.gz
+Source:         https://github.com/pynag/pynag/archive/pynag-%{version}-1.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  git-core
+BuildRequires:  python2-chardet
 BuildRequires:  python2-mock
 BuildRequires:  python2-pytest
 BuildRequires:  python2-rpm-macros
@@ -38,7 +39,7 @@ Python modules and utilities for pragmatically handling Nagios configuration
 file maintenance, status information, log file parsing and plug-in development.
 
 %prep
-%setup -q -n pynag-pynag-%{version}-1_
+%setup -q -n pynag-pynag-%{version}-1
 sed -i -e '/^#!\//, 1d' pynag/Utils/importer.py
 
 %build
