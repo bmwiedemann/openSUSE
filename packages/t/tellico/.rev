@@ -587,4 +587,12 @@
     <comment>Fix build with Qt 5.13</comment>
     <requestid>722627</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>534568a630dc95030a9549e8e0ae5975</srcmd5>
+    <version>3.2.2</version>
+    <time>1573422338</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>747165</requestid>
+  </revision>
 </revisionlist>

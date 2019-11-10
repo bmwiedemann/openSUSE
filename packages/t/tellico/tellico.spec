@@ -17,14 +17,13 @@
 
 
 Name:           tellico
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        A Collection Manager
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
-URL:            http://tellico-project.org/
-Source0:        http://tellico-project.org/files/%{name}-%{version}.tar.xz
-Patch0:         Fix-build-with-Qt-5_13.patch
+URL:            https://tellico-project.org/
+Source0:        https://tellico-project.org/files/%{name}-%{version}.tar.xz
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  libcdio-devel
@@ -80,7 +79,7 @@ stamps, trading cards, comic books, and wines.
 %lang_package
 
 %prep
-%autosetup -p1
+%setup -q
 
 %build
 %cmake_kf5 "-DENABLE_WEBCAM=true" -d build

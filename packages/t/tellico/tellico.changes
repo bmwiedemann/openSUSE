@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Nov 10 08:40:10 UTC 2019 - wbauer@tmo.at
+
+- Update to 3.2.2:
+  Features:
+  * Added importer for LibraryThing.com JSON collection files
+    (kde#411095).
+  Bug Fixes:
+  * Fixed bug with calculating relative file links (kde#410551).
+  * Fixed bug to revert to behavior of selecting newly added
+    entries (kde#413217).
+  * Fixed compilation on KF 5.61 and Qt 5.13.
+- Drop Fix-build-with-Qt-5_13.patch, merged upstream
+
+-------------------------------------------------------------------
 Mon Aug 12 09:07:26 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add Fix-build-with-Qt-5_13.patch
