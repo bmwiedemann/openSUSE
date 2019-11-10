@@ -1,7 +1,7 @@
 #
 # spec file for package libtommath
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2009 Exata T.I., Maringa, PR, Brasil.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,16 +13,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libtommath
 %define libsoname %{name}1
-Version:        1.0
+Version:        1.2.0
 Release:        0
 Summary:        Routines For a Integer Based Number Theoretic Applications
-License:        WTFPL
+License:        Unlicense
 Group:          System/Libraries
 Url:            https://github.com/libtom/libtommath
 Source:         https://github.com/libtom/libtommath/releases/download/v%{version}/ltm-%{version}.tar.xz
@@ -32,6 +32,7 @@ Source4:        baselibs.conf
 Source5:        libtommath-rpmlintrc
 BuildRequires:  dos2unix
 BuildRequires:  libtool
+BuildRequires:  pkg-config
 BuildRequires:  xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -98,18 +99,13 @@ make %{?_smp_mflags} LIBPATH=%{_libdir} -f makefile.shared
 %check
 make %{?_smp_mflags} test_standalone
 ./test
-rm -rf demo/demo.o
+rm -f demo/*.o
 
 %install
 dos2unix etc/timer.asm
-make DESTDIR=%{buildroot} LIBPATH=%{_libdir} %{?_smp_mflags} -f makefile.shared install
+make DESTDIR=%{buildroot} LIBPATH=%{_libdir} INCPATH=%{_includedir} %{?_smp_mflags} -f makefile.shared install
 # we don't want to ship any static libraries or .la files
 find %{buildroot} -type f \( -name '*.a' -o -name '*.la' \) -delete -print
-chmod 644 LICENSE changes.txt
-for d in tombc demo etc mtest pre_gen; do
-    chmod 755 "$d"
-    chmod 644 "$d"/*
-done
 
 %post -n %{libsoname} -p /sbin/ldconfig
 
@@ -117,13 +113,19 @@ done
 
 %files -n %{libsoname}
 %defattr(-,root,root)
-%doc LICENSE changes.txt tombc
+%if (0%{?suse_version} >= 1500) || (0%{?sle_version} >= 120300)
+%license LICENSE
+%else
+%doc LICENSE
+%endif
+%doc changes.txt
 %{_libdir}/libtommath.so.*
 
 %files devel
 %defattr(-,root,root)
 %attr(0644,root,root) %{_includedir}/tommath*.h
 %{_libdir}/libtommath.so
+%{_libdir}/pkgconfig/libtommath.pc
 
 %files examples
 %defattr(-,root,root)

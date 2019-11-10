@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Nov  8 13:11:54 UTC 2019 - Michal Kubeček <mkubecek@suse.cz>
+
+- update License tag in specfile (project relicensed to Unlicense
+  in upstream v1.1.0-rc1)
+
+-------------------------------------------------------------------
+Thu Oct 24 11:31:49 UTC 2019 - Michal Kubeček <mkubecek@suse.cz>
+
+- upgrade to version 1.2.0
+  * API refactoring, some functions marked as deprecated
+  * functions returning a value marked with "warn on unused result"
+  * FIPS 186.4 complient prime checking
+  * two's complement functions and mp_{set,get}_double()
+  * mp_rand() has multiple native random provider implementations
+  * add mp_decr(), mp_incr() and mp_log_u32()
+  * various improvements
+  * provide pkgconfig file
+- adjust build and install section to match upstream changes
+
+-------------------------------------------------------------------
 Tue Jul  5 12:59:18 UTC 2016 - mpluskal@suse.com
 
 - Run internal testsuite
