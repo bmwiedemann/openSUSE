@@ -49,7 +49,7 @@ Patch50:        cloud-init-noresolv-merge-no-dns-data.diff
 Patch51:        cloud-init-after-wicked.patch
 # FIXME (lp#1849296)
 Patch52:        cloud-init-break-resolv-symlink.patch
-# FIXME (lp#1849378)
+# FIXME (lp#1849378) expected in 19.3
 Patch53:        cloud-init-renderer-detect.patch
 
 BuildRequires:  fdupes
