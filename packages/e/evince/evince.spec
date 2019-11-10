@@ -27,6 +27,13 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://wiki.gnome.org/Apps/Evince
 Source0:        %{name}-%{version}.tar.xz
+# PATCH-FIX-SLE alarrosa@suse.com - Reverse upstream bump of synctex required version to build with texlive 2017
+Patch0:         0001-reversed-synctex-Move-_GNU_SOURCE-to-the-top-of-the-source-code.patch
+Patch1:         0002-reversed-synctex-Remove-unused-labels.patch
+Patch2:         0003-reversed-synctex-Silence-error-when-no-synctex-file-is-present.patch
+Patch3:         0004-reversed-synctex-Annotate-functions-that-wrap-vfprintf.patch
+Patch4:         0005-reversed-synctex-Fix-compilation.patch
+Patch5:         0006-reversed-synctex-Update-from-version-1.18-to-1.21.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
@@ -61,7 +68,7 @@ BuildRequires:  pkgconfig(libspectre) >= 0.2.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.5.0
 BuildRequires:  pkgconfig(poppler-glib) >= 0.76.0
 BuildRequires:  pkgconfig(sm) >= 1.0.0
-BuildRequires:  pkgconfig(synctex) >= 1.19
+BuildRequires:  pkgconfig(synctex) >= 1.18
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(zlib)
 # Disable the browser plugin and package, and make main package provide-obsolete plugin package for upgrade; see bgo#738270
@@ -201,7 +208,15 @@ A plugin for Evince to read XPS documents.
 %lang_package
 
 %prep
-%autosetup -p1
+%setup
+%if %{pkg_vcmp pkgconfig(synctex) < 1.19}
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%endif
 translation-update-upstream po %{name}
 
 %build

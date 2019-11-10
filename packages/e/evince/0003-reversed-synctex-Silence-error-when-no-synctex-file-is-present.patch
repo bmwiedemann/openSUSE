@@ -1,0 +1,10 @@
+--- b/cut-n-paste/synctex/synctex_parser.c
++++ a/cut-n-paste/synctex/synctex_parser.c
+@@ -6030,6 +6030,7 @@
+     if ((scanner->reader = synctex_reader_init_with_output_file(scanner->reader, output, build_directory))) {
+         return parse? synctex_scanner_parse(scanner):scanner;
+     }
++    _synctex_error("No file?");
+     return NULL;
+ }
+ 

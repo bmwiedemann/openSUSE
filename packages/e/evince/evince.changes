@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov  5 15:26:27 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patches to reverse the upstream requirement of at least
+  synctex 1.19 since that requires texlive 2019 and we have 2017 in
+  SLE 15. The patches are only applied when building evince with
+  synctex < 1.19:
+  * 0001-reversed-synctex-Move-_GNU_SOURCE-to-the-top-of-the-source-code.patch
+  * 0002-reversed-synctex-Remove-unused-labels.patch
+  * 0003-reversed-synctex-Silence-error-when-no-synctex-file-is-present.patch
+  * 0004-reversed-synctex-Annotate-functions-that-wrap-vfprintf.patch
+  * 0005-reversed-synctex-Fix-compilation.patch
+  * 0006-reversed-synctex-Update-from-version-1.18-to-1.21.patch
+
+-------------------------------------------------------------------
 Mon Oct  7 20:05:48 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.1:
