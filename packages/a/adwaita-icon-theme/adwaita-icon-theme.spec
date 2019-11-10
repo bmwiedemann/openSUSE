@@ -17,7 +17,7 @@
 
 
 Name:           adwaita-icon-theme
-Version:        3.34.0+13
+Version:        3.34.1
 Release:        0
 Summary:        GNOME Icon Theme
 License:        LGPL-3.0-or-later OR CC-BY-SA-3.0

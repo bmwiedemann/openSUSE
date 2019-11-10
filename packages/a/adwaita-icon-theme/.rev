@@ -167,4 +167,20 @@
     <comment></comment>
     <requestid>737893</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>bad79cd3f49d06c7f17f304cc54bcf29</srcmd5>
+    <version>3.34.1</version>
+    <time>1573419052</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.34.1:
+  + Symbolic:
+    - propegate the checkmark refinements.
+    - slightly smaller media-eject.
+    - centre alignment for go-next/previous.
+    - add ! to battery level 0.
+    - missing classes for battery icons.
+
+    - refine clear icons; retire brush metaphor for clear-all (forwarded request 745272 from iznogood)</comment>
+    <requestid>746219</requestid>
+  </revision>
 </revisionlist>

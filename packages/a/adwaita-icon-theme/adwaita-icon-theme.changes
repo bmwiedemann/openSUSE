@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov  4 21:20:34 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Symbolic:
+    - propegate the checkmark refinements.
+    - slightly smaller media-eject.
+    - centre alignment for go-next/previous.
+    - add ! to battery level 0.
+    - missing classes for battery icons.
+
+-------------------------------------------------------------------
 Sat Oct 12 11:00:10 UTC 2019 - bjorn.lie@gmail.com
 
 - Update to version 3.34.0+13:
@@ -8,8 +19,7 @@ Sat Oct 12 11:00:10 UTC 2019 - bjorn.lie@gmail.com
     - fix missized copy icon; fix stroke in folder-new
     - view-more use circles
     - be less clever in the document icons
-    - symbolic: refine clear icons; retire brush metaphor for
-      clear-all
+    - refine clear icons; retire brush metaphor for clear-all
     - refine alarm shape
 - Switch to git checkout, explicit commit from master branch.
   Following this, add libtool BuildRequires and pass autogen.sh,
