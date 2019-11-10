@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-plotly
-Version:        4.1.1
+Version:        4.2.1
 Release:        0
 Summary:        Library for collaborative, interactive, publication-quality graphs
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/plotly/plotly.py
 Source:         https://files.pythonhosted.org/packages/source/p/plotly/plotly-%{version}.tar.gz
 Source100:      python-plotly-rpmlintrc
@@ -60,7 +59,6 @@ always accessible from the graph.
 
 %package        jupyter
 Summary:        Jupyter notebook integration for %{name}
-Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 Requires:       jupyter-plotly = %{version}
 Requires:       python-ipython
@@ -84,7 +82,6 @@ This package provides Jupyter Notebook integration and widgets.
 
 %package     -n jupyter-plotly
 Summary:        Jupyter notebook integration for %{name}
-Group:          Development/Languages/Python
 Requires:       jupyter-ipython
 Requires:       jupyter-ipywidgets
 Requires:       jupyter-nbformat >= 4.2
@@ -110,7 +107,7 @@ This package provides Jupyter Notebook integration and widgets.
 
 %install
 %python_install
-%{jupyter_move_config}
+%jupyter_move_config
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %fdupes %{buildroot}%{jupyter_prefix}
 
