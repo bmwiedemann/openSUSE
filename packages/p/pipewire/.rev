@@ -39,4 +39,20 @@
     <comment>Update to 0.2.6 (forwarded request 704834 from dimstar)</comment>
     <requestid>705212</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b57dce4ffba412a2580eaad6b772b7fd</srcmd5>
+    <version>0.2.7</version>
+    <time>1573419308</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.7:
+  + Add support for alsa-lib 1.1.9 which changed the include path
+  + Improve error checking and reporting in the protocol
+  + deviceprovider: fix probing without starting
+  + add sentinel to some functions
+  + compiler fixes for musl
+  + Revert object tree permission checks that broke things, this is
+    probably not a good idea (and the tree of objects is going to
+    be removed later) (forwarded request 745986 from favogt)</comment>
+    <requestid>746221</requestid>
+  </revision>
 </revisionlist>

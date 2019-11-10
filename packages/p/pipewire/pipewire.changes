@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov  6 12:29:43 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 0.2.7:
+  + Add support for alsa-lib 1.1.9 which changed the include path
+  + Improve error checking and reporting in the protocol
+  + deviceprovider: fix probing without starting
+  + add sentinel to some functions
+  + compiler fixes for musl
+  + Revert object tree permission checks that broke things, this is
+    probably not a good idea (and the tree of objects is going to
+    be removed later)
+
+-------------------------------------------------------------------
 Wed May 22 16:33:08 UTC 2019 - Markus S <kamikazow@opensuse.org>
 
 - Update to version 0.2.6:

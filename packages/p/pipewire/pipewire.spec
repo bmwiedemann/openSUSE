@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@
 %define spa_ver 0.1
 
 Name:           pipewire
-Version:        0.2.6
+Version:        0.2.7
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        LGPL-2.1-or-later
