@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Nov 10 15:06:32 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.10.10
+  * stress-ipsec-mb: rename IPSEC to IPSec
+  * stress-ipsec-mb: add helper function to get and memset the next job
+  * stress-ipsec-mb: increment jobs count in stress_job_check_status
+  * stress-ipsec-mb: check that jobs are complete as soon as possible
+  * stress-funcret: rename counter ii to i
+  * README: Fix typo in requests
+  * README: Add contributing information
+
+-------------------------------------------------------------------
 Wed Nov  6 06:41:11 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.10.09
