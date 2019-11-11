@@ -26,10 +26,11 @@ License:        GPL-3.0-only
 Group:          Productivity/Office/Management
 Url:            http://health.gnu.org/
 Source:         https://files.pythonhosted.org/packages/source/g/%{name}/%{name}-%{version}.tar.gz
-Source1:        ftp://ftp.gnu.org/gnu/health/plugins/gnuhealth_plugin_camera-latest.tar.gz
-Source2:        ftp://ftp.gnu.org/gnu/health/plugins/gnuhealth_plugin_crypto-latest.tar.gz
-Source3:        ftp://ftp.gnu.org/gnu/health/plugins/gnuhealth_plugin_frl-latest.tar.gz
+Source1:        ftp://ftp.gnu.org/gnu/health/plugins/gnuhealth_plugin_camera-3.4.0.tar.gz
+Source2:        ftp://ftp.gnu.org/gnu/health/plugins/gnuhealth_plugin_crypto-3.4.1.tar.gz
+Source3:        ftp://ftp.gnu.org/gnu/health/plugins/gnuhealth_plugin_frl-3.4.1.tar.gz
 Source4:        %{name}.desktop
+Patch0:         camera.diff
 BuildRequires:  fdupes
 BuildRequires:  python-Babel
 BuildRequires:  python-Sphinx
@@ -74,6 +75,8 @@ cd tryton/plugins/
 tar  -xzvf %{SOURCE1}
 tar  -xzvf %{SOURCE2}
 tar  -xzvf %{SOURCE3}
+
+%patch0 -p1
 
 %build
 :

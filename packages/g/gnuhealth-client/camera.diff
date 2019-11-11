@@ -1,0 +1,17 @@
+diff -U 3 -dHrN -- b/gnuhealth_camera/__init__.py a/gnuhealth_camera/__init__.py
+--- b/gnuhealth_camera/__init__.py	2018-11-27 00:07:32.000000000 +0100
++++ a/gnuhealth_camera/__init__.py	2019-11-11 19:46:58.148898162 +0100
+@@ -166,7 +166,12 @@
+             set_attachment(data, frame)
+             break            
+ 
+-        if keypressed == ord('q'):
++        # Cleanup / Destroy window when q key is pressed or when closing
++        # the window via alt+f4
++        if (keypressed == ord('q')):
++            break
++
++        if (cv2.getWindowProperty('== GNU Health Camera ==', cv2.WND_PROP_VISIBLE) < 1):            
+             break
+ 
+         if  keypressed == ord('h'):
