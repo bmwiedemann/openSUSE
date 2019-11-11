@@ -17,7 +17,7 @@
 
 
 Name:           perl-Selenium-Remote-Driver
-Version:        1.35
+Version:        1.36
 Release:        0
 %define cpan_name Selenium-Remote-Driver
 Summary:        Perl Client for Selenium Remote Driver
@@ -91,7 +91,7 @@ and started the Selenium Server (Selenium Server is a Java application).
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -name "*.sh" -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -name "*.sh" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 # MANUAL BEGIN
 sed -i -e 's,!/bin/env perl,/usr/bin/perl,' driver-example.pl
 # MANUAL END

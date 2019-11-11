@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Nov  9 10:27:41 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.36
+   see /usr/share/doc/packages/perl-Selenium-Remote-Driver/Changes
+
+  1.36  10-21-2019 TEODESIAN
+          [BUG FIXES]
+          - Adjust handling of chrome due to it implementing WC3 mostly correctly now
+          - Fix browser detection logic in screenshot()
+          - Actually apply the fix from 1.35 in the right place, heh
+
+-------------------------------------------------------------------
 Tue Oct 22 17:09:26 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 1.35
