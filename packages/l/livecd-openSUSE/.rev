@@ -692,4 +692,12 @@
   have choice for NetworkManager-client needed by NetworkManager:
   NetworkManager-applet plasma-nm5).</comment>
   </revision>
+  <revision rev="82" vrev="82">
+    <srcmd5>f26e9e8a7156d2ff01bf87c6d5d68afb</srcmd5>
+    <version>unknown</version>
+    <time>1573473685</time>
+    <user>dimstar_suse</user>
+    <comment>- Comment Leap-release change out again, as reverted in 000package-groups</comment>
+    <requestid>747301</requestid>
+  </revision>
 </revisionlist>

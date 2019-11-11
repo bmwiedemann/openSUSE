@@ -37,7 +37,8 @@ for distro in leap tumbleweed; do
 	if [ "${distro}" = "leap" ]; then
 		distroname="openSUSE Leap %OS_VERSION_ID%"
 		bootsplash="openSUSE"
-		releaseprefix="Leap"
+		# This changes every few weeks, apparently.
+		#releaseprefix="Leap"
 	fi
 
 	for flavor in gnome kde xfce x11; do

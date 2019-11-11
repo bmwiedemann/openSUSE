@@ -542,8 +542,8 @@
   </packages>
   <packages type="bootstrap">
     <package name="filesystem"/>
-    <package name="Leap-release"/>
-    <package name="Leap-release-livecd-gnome"/>
+    <package name="openSUSE-release"/>
+    <package name="openSUSE-release-livecd-gnome"/>
     <package name="branding-openSUSE"/>
   </packages>
   <repository type="rpm-md">

@@ -497,8 +497,8 @@
   </packages>
   <packages type="bootstrap">
     <package name="filesystem"/>
-    <package name="Leap-release"/>
-    <package name="Leap-release-livecd-kde"/>
+    <package name="openSUSE-release"/>
+    <package name="openSUSE-release-livecd-kde"/>
     <package name="branding-openSUSE"/>
   </packages>
   <repository type="rpm-md">
