@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -26,7 +26,7 @@
 %define src_install_dir /usr/src/%{name}
 
 Name:           opencensus-proto
-Version:        20180523
+Version:        0.2.1
 Release:        0
 Summary:        Protocol buffers for OpenCensus
 License:        Apache-2.0
@@ -70,4 +70,3 @@ tar -xJf %{SOURCE0} --strip-components=1 -C %{buildroot}%{src_install_dir}
 %{src_install_dir}
 
 %changelog
-
