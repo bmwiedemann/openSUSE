@@ -1203,4 +1203,40 @@
     <comment>Reverting, breaks live image boot on uefi: https://openqa.opensuse.org/tests/1075724#step/bootloader_uefi/3</comment>
     <requestid>745220</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>c6edbabbf4f3046e15c3b0ae12fea769</srcmd5>
+    <version>9.18.31</version>
+    <time>1573473616</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.18.30 → 9.18.31
+
+- Fix gitlab CI pipeline
+  Ensure the gitlab CI includes make package for docs generation
+
+- Ensure grub.cfg is copied in EFI/BOOT folder
+  This commit fixes the live images in efi mode. Grub configuration file
+  is copied to the correct location in &lt;boot_dir&gt;/EFI/BOOT.
+  Fixes bsc#1155815
+
+- Bump version: 9.18.29 → 9.18.30
+
+- fix kernel module handling for xz compressed modules
+  and firmware files to fix issue #1256
+
+- Bump version: 9.18.28 → 9.18.29
+
+- Update Host/Image support matrix
+  Update documentation about the Host vs. Image support and
+  compatibility matrix with regards to the SLES target.
+
+- Add default /etc/kiwi.yml file
+  Provide a comment only etc/kiwi.yml file that contains all
+  parameters we support so far including a short description
+  This Fixes #1232
+
+- Bump version: 9.18.27 → 9.18.28
+
+- Delete left over print statement from unit test</comment>
+    <requestid>746311</requestid>
+  </revision>
 </revisionlist>
