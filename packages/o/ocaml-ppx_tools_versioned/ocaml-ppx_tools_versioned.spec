@@ -27,7 +27,7 @@ Url:            https://github.com/ocaml-ppx/ppx_tools_versioned
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20190930
+BuildRequires:  ocaml-rpm-macros >= 20191101
 BuildRequires:  ocamlfind(ocaml-migrate-parsetree)
 
 %description
@@ -46,6 +46,7 @@ developing applications that use %{name}.
 %autosetup -p1
 
 %build
+dune_release_pkgs='ppx_tools_versioned'
 %ocaml_dune_setup
 %ocaml_dune_build
 
@@ -57,7 +58,6 @@ developing applications that use %{name}.
 %ocaml_dune_test
 
 %files -f %{name}.files
-%license LICENSE
 %doc README.md
 
 %files devel -f %{name}.files.devel
