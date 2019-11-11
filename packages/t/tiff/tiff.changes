@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov  6 12:00:35 UTC 2019 - pgajdos@suse.com
+
+- version update to 4.1.0
+  * fixes several CVEs mentioned below and more,
+    see ChangeLog
+- deleted patches
+  - tiff-CVE-2018-12900.patch (upstreamed)
+  - tiff-CVE-2018-17000,19210.patch (upstreamed)
+  - tiff-CVE-2019-6128.patch (upstreamed)
+  - tiff-CVE-2019-7663.patch (upstreamed)
+
+-------------------------------------------------------------------
 Tue Feb 12 15:36:02 UTC 2019 - mvetter@suse.com
 
 - security update

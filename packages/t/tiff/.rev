@@ -690,4 +690,12 @@ D    tiff-4.0.3-test-jpeg-turbo.patch</comment>
   [bsc#1099257]</comment>
     <requestid>674138</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>3b95142542d2b302b951027b53019424</srcmd5>
+    <version>4.1.0</version>
+    <time>1573473479</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>745991</requestid>
+  </revision>
 </revisionlist>

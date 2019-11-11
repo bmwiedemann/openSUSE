@@ -12,14 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define asan_build 0
 %define debug_build 0
 Name:           tiff
-Version:        4.0.10
+Version:        4.1.0
 Release:        0
 Summary:        Tools for Converting from and to the Tagged Image File Format
 License:        HPND
@@ -31,17 +31,6 @@ Source3:        baselibs.conf
 Patch0:         tiff-4.0.3-seek.patch
 # http://bugzilla.maptools.org/show_bug.cgi?id=2442
 Patch1:         tiff-4.0.3-compress-warning.patch
-# http://bugzilla.maptools.org/show_bug.cgi?id=2798
-# https://gitlab.com/libtiff/libtiff/merge_requests/44
-Patch2:         tiff-CVE-2018-12900.patch
-Patch3:         tiff-CVE-2018-17000,19210.patch
-# http://bugzilla.maptools.org/show_bug.cgi?id=2836
-# https://gitlab.com/libtiff/libtiff/merge_requests/50
-Patch4:         tiff-CVE-2019-6128.patch
-# http://bugzilla.maptools.org/show_bug.cgi?id=2833
-# https://gitlab.com/libtiff/libtiff/merge_requests/54
-# https://gitlab.com/libtiff/libtiff/merge_requests/60
-Patch5:         tiff-CVE-2019-7663.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libjbig-devel
 BuildRequires:  libjpeg-devel
@@ -80,10 +69,6 @@ the libtiff library.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
 
 %build
 CFLAGS="%{optflags} -fPIE"
