@@ -12,24 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 %define _name   uutf
 Name:           ocaml-uutf
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Non-blocking streaming Unicode codec for OCaml
 License:        ISC
 Group:          Development/Languages/OCaml
 Url:            http://erratique.ch/software/uutf
-Source:         http://erratique.ch/software/uutf/releases/uutf-%{version}.tbz
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
-BuildRequires:  ocaml-oasis
-BuildRequires:  ocaml-ocamldoc
-BuildRequires:  ocaml-rpm-macros >= 4.03
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  ocaml-dune
+BuildRequires:  ocaml-rpm-macros >= 20191101
 
 %description
 Uutf is a non-blocking streaming codec to decode and encode the UTF-8,
@@ -51,67 +49,22 @@ The %{name}-devel package contains libraries and signature files for
 developing applications that use %{name}.
 
 %prep
-%setup -q -n uutf-%{version}
+%autosetup -p1
 
 %build
-rm -fv setup.ml myocamlbuild.ml META* _* */_* 
-# obs service changes every ^Version line ...
-sh -c "sed 's/^Version.*/Version: %{version}/' | tee _oasis" <<_EOF_
-OASISFormat: 0.4
-Name:        uutf
-Version:     0
-Synopsis:    Non-blocking streaming Unicode codec
-Authors:     Daniel Bünzli <daniel.buenzl i@erratique.ch>
-License:     %{license}
-LicenseFile: LICENSE.md
-Plugins:     META(`oasis version`)
-BuildTools:  ocamlbuild
-
-Library uutf
- Path: src
- Install: true
- Modules: Uutf
-
-Document uutf
- Title:                API reference for uutf
- Type:                 ocamlbuild
- BuildTools+:          ocamldoc
- InstallDir:           \$htmldir
- Install:              true
- XOCamlbuildPath:      .
- XOCamlbuildLibraries: uutf
-_EOF_
-%oasis_setup
-%ocaml_oasis_configure --enable-docs
-%ocaml_oasis_build
-%ocaml_oasis_doc
+dune_release_pkgs='uutf'
+%ocaml_dune_setup
+%ocaml_dune_build
 
 %install
-%ocaml_oasis_findlib_install
+%ocaml_dune_install
+%ocaml_create_file_list
 
-%files
-%defattr(-,root,root)
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.cmxs
-%endif
+%check
+%ocaml_dune_test
 
-%files devel
-%defattr(-,root,root,-)
-%{oasis_docdir_html}
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.a
-%{_libdir}/ocaml/*/*.cmx
-%{_libdir}/ocaml/*/*.cmxa
-%endif
-%{_libdir}/ocaml/*/*.annot
-%{_libdir}/ocaml/*/*.cma
-%{_libdir}/ocaml/*/*.cmi
-%{_libdir}/ocaml/*/*.cmt
-%{_libdir}/ocaml/*/*.cmti
-%{_libdir}/ocaml/*/*.mli
-%{_libdir}/ocaml/*/META
+%files -f %{name}.files
+
+%files devel -f %{name}.files.devel
 
 %changelog

@@ -9,4 +9,12 @@
 It is part of the dependency tree of opam.</comment>
     <requestid>599185</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>989019160aebfbb877518418885cb28f</srcmd5>
+    <version>1.0.2</version>
+    <time>1573504267</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>746715</requestid>
+  </revision>
 </revisionlist>
