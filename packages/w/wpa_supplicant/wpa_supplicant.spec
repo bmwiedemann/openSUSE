@@ -17,11 +17,10 @@
 
 
 Name:           wpa_supplicant
-Version:        2.6
+Version:        2.9
 Release:        0
 Summary:        WPA supplicant implementation
 License:        BSD-3-Clause AND GPL-2.0-or-later
-Group:          Productivity/Networking/Other
 URL:            https://w1.fi/wpa_supplicant
 Source0:        https://w1.fi/releases/%{name}-%{version}.tar.gz
 Source1:        config
@@ -40,22 +39,6 @@ Patch2:         wpa_supplicant-sigusr1-changes-debuglevel.patch
 Patch3:         wpa_supplicant-alloc_size.patch
 Patch4:         wpa_supplicant-getrandom.patch
 Patch5:         wpa_supplicant-dump-certificate-as-PEM-in-debug-mode.diff
-Patch10:        rebased-v2.6-0001-hostapd-Avoid-key-reinstallation-in-FT-handshake.patch
-Patch11:        rebased-v2.6-0002-Prevent-reinstallation-of-an-already-in-use-group-ke.patch
-Patch12:        rebased-v2.6-0003-Extend-protection-of-GTK-IGTK-reinstallation-of-WNM-.patch
-Patch13:        rebased-v2.6-0004-Prevent-installation-of-an-all-zero-TK.patch
-Patch14:        rebased-v2.6-0005-Fix-PTK-rekeying-to-generate-a-new-ANonce.patch
-Patch15:        rebased-v2.6-0006-TDLS-Reject-TPK-TK-reconfiguration.patch
-Patch16:        rebased-v2.6-0007-WNM-Ignore-WNM-Sleep-Mode-Response-without-pending-r.patch
-Patch17:        rebased-v2.6-0008-FT-Do-not-allow-multiple-Reassociation-Response-fram.patch
-Patch18:        wpa_supplicant-bnc-1099835-fix-private-key-password.patch
-Patch19:        wpa_supplicant-bnc-1099835-clear-default_passwd_cb.patch
-Patch20:        rebased-v2.6-0009-WPA-Ignore-unauthenticated-encrypted-EAPOL-Key-data.patch
-Patch21:        wpa_supplicant-log-file-permission.patch
-Patch22:        wpa_supplicant-log-file-cloexec.patch
-Patch23:        wpa_supplicant-git-fa67debf4c6ddbc881a212b175faa6d5d0d90c8c.patch
-Patch24:        wpa_supplicant-git-f5b74b966c942feb95a8ddbb7d130540b15b796d.patch
-BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros
@@ -64,6 +47,7 @@ BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(libnl-3.0)
+BuildRequires:  pkgconfig(openssl)
 Requires:       logrotate
 
 %description
@@ -74,7 +58,6 @@ IEEE 802.11 authentication/association of the wlan driver.
 
 %package gui
 Summary:        WPA supplicant graphical front-end
-Group:          System/Monitoring
 Requires:       wpa_supplicant
 
 %description gui

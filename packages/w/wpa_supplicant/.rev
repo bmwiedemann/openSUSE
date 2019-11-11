@@ -614,4 +614,12 @@
 - Changed service-files for start after network (systemd-networkd).</comment>
     <requestid>719803</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>968368fe6f7f93931e85ca75c5104ceb</srcmd5>
+    <version>2.9</version>
+    <time>1573473457</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>745943</requestid>
+  </revision>
 </revisionlist>

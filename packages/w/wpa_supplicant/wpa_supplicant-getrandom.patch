@@ -1,5 +1,7 @@
---- wpa_supplicant-2.4.orig/src/utils/os_unix.c
-+++ wpa_supplicant-2.4/src/utils/os_unix.c
+Index: wpa_supplicant-2.9/src/utils/os_unix.c
+===================================================================
+--- wpa_supplicant-2.9.orig/src/utils/os_unix.c
++++ wpa_supplicant-2.9/src/utils/os_unix.c
 @@ -6,11 +6,15 @@
   * See README for more details.
   */
@@ -17,28 +19,28 @@
  #ifdef ANDROID
  #include <sys/capability.h>
  #include <sys/prctl.h>
-@@ -223,6 +227,10 @@ void os_daemonize_terminate(const char *
- 
- int os_get_random(unsigned char *buf, size_t len)
- {
+@@ -257,6 +261,10 @@ int os_get_random(unsigned char *buf, si
+ 		buf[i] = i & 0xff;
+ 	return 0;
+ #else /* TEST_FUZZ */
 +#ifdef SYS_getrandom
 +    int gr = TEMP_FAILURE_RETRY(syscall(SYS_getrandom, buf, len, 0));
 +    return (gr != -1 && gr == len) ? 0 : -1;
-+#else
++#else /* SYS_getrandom */
  	FILE *f;
  	size_t rc;
  
-@@ -232,10 +240,13 @@ int os_get_random(unsigned char *buf, si
+@@ -269,10 +277,13 @@ int os_get_random(unsigned char *buf, si
  		return -1;
  	}
  
-+    setbuf(f, NULL);
++	setbuf(f, NULL);
 +
  	rc = fread(buf, 1, len, f);
  	fclose(f);
  
  	return rc != len ? -1 : 0;
-+#endif
++#endif /* SYS_getrandom */
+ #endif /* TEST_FUZZ */
  }
- 
  
