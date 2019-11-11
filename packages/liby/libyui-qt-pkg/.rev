@@ -385,4 +385,12 @@
     <comment>submit new version 2.46.7</comment>
     <requestid>728989</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>21e7e7bbedb2551263978c5279140665</srcmd5>
+    <version>2.46.9</version>
+    <time>1573473484</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.46.9</comment>
+    <requestid>745999</requestid>
+  </revision>
 </revisionlist>
