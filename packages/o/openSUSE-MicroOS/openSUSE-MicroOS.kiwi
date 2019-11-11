@@ -100,14 +100,13 @@
             bootloader="grub2"
             bootloader_console="gfxterm"
             firmware="uefi"
-            kernelcmdline="plymouth.enable=0 console=ttyS0,115200 console=tty0 net.ifnames=0 $ignition_firstboot ignition.platform.id=qemu"
+            kernelcmdline="plymouth.enable=0 console=ttyS0,115200 console=tty0 net.ifnames=0 \$ignition_firstboot ignition.platform.id=qemu"
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"
             btrfs_root_is_snapshot="true"
             btrfs_root_is_readonly_snapshot="true"
             btrfs_quota_groups="false"
-            editbootinstall="replacebootconfig.sh"
         >
             <systemdisk>
                 <volume name="home"/>
@@ -137,14 +136,13 @@
             bootloader="grub2"
             bootloader_console="gfxterm"
             firmware="uefi"
-            kernelcmdline="plymouth.enable=0 console=ttyS0,115200 console=tty0 $ignition_firstboot ignition.platform.id=vmware"
+            kernelcmdline="plymouth.enable=0 console=ttyS0,115200 console=tty0 \$ignition_firstboot ignition.platform.id=vmware"
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"
             btrfs_root_is_snapshot="true"
             btrfs_root_is_readonly_snapshot="true"
             btrfs_quota_groups="false"
-            editbootinstall="replacebootconfig.sh"
         >
             <systemdisk>
                 <volume name="home"/>
@@ -175,14 +173,13 @@
             bootloader="grub2"
             bootloader_console="gfxterm"
             firmware="uefi"
-            kernelcmdline="plymouth.enable=0 console=ttyS0,115200 console=tty0 net.ifnames=0 $ignition_firstboot ignition.platform.id=openstack"
+            kernelcmdline="plymouth.enable=0 console=ttyS0,115200 console=tty0 net.ifnames=0 \$ignition_firstboot ignition.platform.id=openstack"
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"
             btrfs_root_is_snapshot="true"
             btrfs_root_is_readonly_snapshot="true"
             btrfs_quota_groups="false"
-            editbootinstall="replacebootconfig.sh"
         >
             <systemdisk>
                 <volume name="home"/>
@@ -213,14 +210,13 @@
             bootloader="grub2"
             bootloader_console="gfxterm"
             firmware="uefi"
-            kernelcmdline="plymouth.enable=0 rootdelay=300 console=ttyS0,115200 console=tty0 earlyprintk=ttyS0,115200 $ignition_firstboot ignition.platform.id=metal"
+            kernelcmdline="plymouth.enable=0 rootdelay=300 console=ttyS0,115200 console=tty0 earlyprintk=ttyS0,115200 \$ignition_firstboot ignition.platform.id=metal"
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"
             btrfs_root_is_snapshot="true"
             btrfs_root_is_readonly_snapshot="true"
             btrfs_quota_groups="false"
-            editbootinstall="replacebootconfig.sh"
         >
             <systemdisk>
                 <volume name="home"/>
@@ -251,7 +247,7 @@
             fsmountoptions="noatime,compress=lzo"
             bootloader="grub2"
             firmware="efi"
-            kernelcmdline="loglevel=3 splash=silent plymouth.enable=0 console=ttyS0,115200n8 $ignition_firstboot ignition.platform.id=metal"
+            kernelcmdline="loglevel=3 splash=silent plymouth.enable=0 console=ttyS0,115200n8 \$ignition_firstboot ignition.platform.id=metal"
             bootpartition="false"
             devicepersistency="by-uuid"
             btrfs_root_is_snapshot="true"
@@ -287,7 +283,7 @@
             bootloader="grub2"
             bootloader_console="gfxterm"
             firmware="efi"
-            kernelcmdline="plymouth.enable=0 swiotlb=512 cma=64M console=ttyS0,115200n8 console=tty $ignition_firstboot ignition.platform.id=metal"
+            kernelcmdline="plymouth.enable=0 swiotlb=512 cma=64M console=ttyS0,115200n8 console=tty \$ignition_firstboot ignition.platform.id=metal"
             bootpartition="false"
             devicepersistency="by-uuid"
             btrfs_root_is_snapshot="true"
@@ -323,7 +319,7 @@
             bootloader="grub2"
             bootloader_console="gfxterm"
             firmware="efi"
-            kernelcmdline="plymouth.enable=0 swiotlb=512 cma=64M console=ttyS0,115200n8 console=tty $ignition_firstboot ignition.platform.id=metal"
+            kernelcmdline="plymouth.enable=0 swiotlb=512 cma=64M console=ttyS0,115200n8 console=tty \$ignition_firstboot ignition.platform.id=metal"
             bootpartition="false"
             devicepersistency="by-uuid"
             btrfs_root_is_snapshot="true"
@@ -358,14 +354,13 @@
             bootloader="grub2"
             bootloader_console="gfxterm"
             firmware="uefi"
-            kernelcmdline="plymouth.enable=0 console=ttyS0,115200 console=tty0 net.ifnames=0 $ignition_firstboot ignition.platform.id=metal"
+            kernelcmdline="plymouth.enable=0 console=ttyS0,115200 console=tty0 net.ifnames=0 \$ignition_firstboot ignition.platform.id=metal"
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"
             btrfs_root_is_snapshot="true"
             btrfs_root_is_readonly_snapshot="true"
             btrfs_quota_groups="false"
-            editbootinstall="replacebootconfig.sh"
         >
             <systemdisk>
                 <volume name="home"/>
@@ -396,14 +391,13 @@
             bootloader="grub2"
             bootloader_console="gfxterm"
             firmware="uefi"
-            kernelcmdline="plymouth.enable=0 console=ttyS0,115200 console=tty0 $ignition_firstboot ignition.platform.id=metal"
+            kernelcmdline="plymouth.enable=0 console=ttyS0,115200 console=tty0 \$ignition_firstboot ignition.platform.id=metal"
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"
             btrfs_root_is_snapshot="true"
             btrfs_root_is_readonly_snapshot="true"
             btrfs_quota_groups="false"
-            editbootinstall="replacebootconfig.sh"
         >
             <systemdisk>
                 <volume name="home"/>

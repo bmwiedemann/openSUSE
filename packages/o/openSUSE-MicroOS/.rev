@@ -139,4 +139,14 @@
     <comment>Reverting, together with kiwi, which breaks live images</comment>
     <requestid>745221</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>35952d3917ea2b10ebb26ccef18ab61e</srcmd5>
+    <version>16.0.0</version>
+    <time>1573504648</time>
+    <user>dimstar_suse</user>
+    <comment>- New kiwi uses grub2-mkconfig now, so drop the hack in replacebootconfig.sh
+  and editbootinstall_*.sh
+- Now the kernel cmdline can be escaped properly as well</comment>
+    <requestid>747371</requestid>
+  </revision>
 </revisionlist>
