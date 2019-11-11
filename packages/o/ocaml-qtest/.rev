@@ -36,4 +36,12 @@ It is a dependency of ptmap, which in turn is a dependency of the next version o
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>735918</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>9a1c0b51afcd92789ddce8d9f661882e</srcmd5>
+    <version>2.9</version>
+    <time>1573504143</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>746710</requestid>
+  </revision>
 </revisionlist>

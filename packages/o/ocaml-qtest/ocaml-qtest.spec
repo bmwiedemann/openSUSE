@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,13 +23,12 @@ Release:        0
 Summary:        Inline (Unit) Tests for OCaml
 License:        GPL-3.0-or-later
 Group:          Development/Languages/OCaml
-
 URL:            https://github.com/vincent-hugot/qtest
 Source0:        %{name}-%{version}.tar.xz
-
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20190930
+BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocamlfind(bytes)
 BuildRequires:  ocamlfind(qcheck)
 
 %description
@@ -37,7 +36,6 @@ qtest extracts inline unit tests written using a special syntax in
 comments. Those tests are then run using the oUnit framework and the
 qcheck library. The possibilities range from trivial tests
 to sophisticated random generation of test cases.
-
 
 %package        devel
 Summary:        Development files for %{name}
@@ -48,11 +46,11 @@ Requires:       %{name} = %{version}
 The %{name}-devel package contains libraries and signature files for
 developing applications that use %{name}.
 
-
 %prep
 %autosetup -p1
 
 %build
+dune_release_pkgs='qtest'
 %ocaml_dune_setup
 %ocaml_dune_build
 
@@ -64,7 +62,6 @@ developing applications that use %{name}.
 %ocaml_dune_test
 
 %files -f %{name}.files
-%license LICENSE
 %doc README.adoc
 %{_bindir}/*
 
