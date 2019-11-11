@@ -19,7 +19,7 @@
 %global base_name text
 %global short_name commons-%{base_name}
 Name:           apache-%{short_name}
-Version:        1.6
+Version:        1.8
 Release:        0
 Summary:        A library focused on algorithms working on strings
 License:        Apache-2.0
@@ -46,8 +46,6 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q -n commons-text-%{version}-src
-
-%pom_remove_dep :junit-bom
 
 %build
 %{mvn_build} -f -- -Dsource=8
