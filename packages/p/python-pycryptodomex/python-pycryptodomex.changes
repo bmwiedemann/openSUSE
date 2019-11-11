@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Nov 10 16:54:21 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 3.9.2 (10 November 2019):
+  + New features
+    * Add Python 3.8 wheels for Mac.
+  + Resolved issues
+    * GH#308: Avoid allocating arrays of __m128i on the stack, to
+      cope with buggy compilers.
+    * GH#322: Remove blanket -O3 optimization for gcc and clang, to
+      cope with buggy compilers.
+    * GH#337: Fix typing stubs for signatures.
+    * GH#338: Deal with gcc installations that don't have
+      x86intrin.h.
+
+- Update to version 3.9.1 (1 November 2019):
+  + New features
+    * Add Python 3.8 wheels for Linux and Windows.
+  + Resolved issues
+    * GH#328: minor speed-up when importing RSA.
+
+- sync spec file with python-pycryptodome
+
+-------------------------------------------------------------------
 Wed Sep 11 12:23:49 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
 
 - Add export LC_ALL=en_US.UTF-8 to %build, %install and %check to

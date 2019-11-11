@@ -19,21 +19,23 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-pycryptodomex
-Version:        3.9.0
+Version:        3.9.2
 Release:        0
 Summary:        Cryptographic library for Python
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://www.pycryptodome.org
-Source:         https://files.pythonhosted.org/packages/source/p/pycryptodome/pycryptodome-%{version}.tar.gz
+Source:         https://github.com/Legrandin/pycryptodome/archive/v%{version}x.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if !0%{?_no_weakdeps}
 # PyCryptodomex uses gmp via cffi as runtime optimization
 # would be better, if libgmp* would provide gmp
 Suggests:       libgmp10
 Suggests:       python-cffi
+%endif
 %python_subpackages
 
 %description
@@ -73,7 +75,7 @@ Python. Only the pieces that are extremely critical to performance
 (e.g. block ciphers) are implemented as C extensions.
 
 %prep
-%setup -q -n pycryptodome-%{version}
+%setup -q -n pycryptodome-%{version}x
 touch .separate_namespace
 
 %build

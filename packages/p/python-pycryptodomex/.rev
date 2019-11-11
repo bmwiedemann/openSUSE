@@ -218,4 +218,12 @@
   fix the build on older distros</comment>
     <requestid>730127</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f8bd09c0bc91260bf66682d358fb6568</srcmd5>
+    <version>3.9.2</version>
+    <time>1573473705</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>747324</requestid>
+  </revision>
 </revisionlist>
