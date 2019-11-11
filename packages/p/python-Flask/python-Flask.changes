@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  8 05:29:38 UTC 2019 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add python38-exception-test.patch to fix test failures under Python 3.8
+
+-------------------------------------------------------------------
 Fri Jul 19 12:22:54 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.1.1:

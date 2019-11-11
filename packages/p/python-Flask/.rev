@@ -265,4 +265,12 @@
       object in the request context copy. This prevents &quot;session&quot;</comment>
     <requestid>717080</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>e87c1afdf7ebf235eda1e9f14ba851b1</srcmd5>
+    <version>1.1.1</version>
+    <time>1573473630</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python38-exception-test.patch to fix test failures under Python 3.8</comment>
+    <requestid>746453</requestid>
+  </revision>
 </revisionlist>

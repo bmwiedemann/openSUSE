@@ -1,0 +1,42 @@
+From c367a86cc5be70da4928b276d0218f98df6e854d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fernanda=20Guimar=C3=A3es?= <fernandaguimaraes28@gmail.com>
+Date: Mon, 28 Oct 2019 21:37:25 -0300
+Subject: [PATCH] Test test_send_from_directory_bad_request no longer fails in
+ Python 3.8.
+
+---
+ tests/test_helpers.py | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test_helpers.py b/tests/test_helpers.py
+index 78a562213..21735af12 100644
+--- a/tests/test_helpers.py
++++ b/tests/test_helpers.py
+@@ -11,6 +11,7 @@
+ import datetime
+ import io
+ import os
++import sys
+ import uuid
+ 
+ import pytest
+@@ -780,12 +781,17 @@ def test_send_from_directory_pathlike(self, app, req_ctx):
+         assert rv.data.strip() == b"Hello Subdomain"
+         rv.close()
+ 
+-    def test_send_from_directory_bad_request(self, app, req_ctx):
++    def test_send_from_directory_null_character(self, app, req_ctx):
+         app.root_path = os.path.join(
+             os.path.dirname(__file__), "test_apps", "subdomaintestmodule"
+         )
+ 
+-        with pytest.raises(BadRequest):
++        if sys.version_info >= (3, 8):
++            exception = NotFound
++        else:
++            exception = BadRequest
++
++        with pytest.raises(exception):
+             flask.send_from_directory("static", "bad\x00")
+ 
+ 

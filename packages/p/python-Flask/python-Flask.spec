@@ -26,6 +26,7 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            http://github.com/mitsuhiko/flask/
 Source:         https://files.pythonhosted.org/packages/source/F/Flask/Flask-%{version}.tar.gz
+Patch0:         python38-exception-test.patch
 BuildRequires:  %{python_module Jinja2 >= 2.4}
 BuildRequires:  %{python_module Werkzeug >= 0.15}
 BuildRequires:  %{python_module click >= 5.1}
@@ -60,6 +61,7 @@ reference for python-Flask.
 
 %prep
 %setup -q -n Flask-%{version}
+%autopatch -p1
 
 %build
 %python_build
