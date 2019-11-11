@@ -1,7 +1,7 @@
 #
 # spec file for package vala-panel
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define _rev    7a37f54f0eee17de4f9094c1033967bd
+%define _rev    741b80c641591494e9f0ccc4cd19b0cd
+%define cmake_vala_git_revision 1bce300
 Name:           vala-panel
-Version:        0.4.61
+Version:        0.4.91
 Release:        0
 Summary:        A Gtk3 desktop panel based on Vala
 License:        GPL-3.0-or-later
 Group:          System/GUI/Other
 URL:            https://gitlab.com/vala-panel-project/vala-panel
-Source:         https://gitlab.com/vala-panel-project/vala-panel/uploads/%{_rev}/%{name}-%{version}.tar.gz
+Source:         https://gitlab.com/vala-panel-project/vala-panel/uploads/%{_rev}/%{name}-%{version}.tar.xz
+Source1:        cmake-vala-1bce300.tar.gz
+#PATCH-FIX-UPSTREAM marguerite@opensuse.org - fix linking with libm
+Patch:          vala-panel-0.4.91-libm.patch
 BuildRequires:  cmake >= 3.3
 BuildRequires:  fdupes
 BuildRequires:  gettext
@@ -96,8 +100,26 @@ Vala Panel is a desktop panel written in Vala and Gtk3.
 This package contains X11 plugins for vala-panel: tasklist,
 system tray, and others.
 
+%package -n vala-cmake-modules
+Summary:        Vala CMake modules
+Group:          Development/Tools/Other
+Version:        %{cmake_vala_git_revision}
+Release:        0
+
+%description -n vala-cmake-modules
+This package provides Vala CMake Modules for vala-panel and vala-panel-appmenu.
+
 %prep
-%setup -q
+%autosetup -p1
+mv cmake/FallbackVersion.cmake .
+rm -rf cmake
+tar -xf %{S:1} -C .
+mv cmake-vala-%{cmake_vala_git_revision} cmake
+mv FallbackVersion.cmake cmake
+pushd cmake
+cmake -DCMAKE_INSTALL_PREFIX=%{buildroot}%{_prefix} .
+make %{?_smp_mflags} V=1
+popd
 
 %build
 %if 0%{?suse_version} <= 1320
@@ -110,6 +132,9 @@ export CFLAGS="%{optflags} -std=gnu99"
 make %{?_smp_mflags} V=1
 
 %install
+pushd cmake
+make install
+popd
 %cmake_install
 %find_lang %{name}
 %fdupes %{buildroot}%{_datadir}/
@@ -186,13 +211,14 @@ make %{?_smp_mflags} V=1
 
 %files plugins-wnck
 %{_datadir}/glib-2.0/schemas/org.valapanel.X.gschema.xml
-%{_libdir}/vala-panel/applets/libxembed.so
 %{_libdir}/vala-panel/applets/libdeskno.so
-%{_libdir}/vala-panel/applets/libtasklist.so
 %{_libdir}/vala-panel/applets/libtasklist-xfce.so
 %{_libdir}/vala-panel/applets/libwincmd.so
 %{_libdir}/vala-panel/applets/libpager.so
 %{_libdir}/vala-panel/applets/libbuttons.so
-%{_libdir}/vala-panel/applets/libicontasks.so
+%{_libdir}/vala-panel/applets/libnetmon.so
+
+%files -n vala-cmake-modules
+%{_datadir}/VCM
 
 %changelog

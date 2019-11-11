@@ -1,0 +1,39 @@
+Index: vala-panel-0.4.91/applets/wnck/tasklist/CMakeLists.txt
+===================================================================
+--- vala-panel-0.4.91.orig/applets/wnck/tasklist/CMakeLists.txt
++++ vala-panel-0.4.91/applets/wnck/tasklist/CMakeLists.txt
+@@ -15,7 +15,7 @@ add_library (${PLUGIN_NAME} MODULE
+     ${RESOURCES}
+ )
+ 
+-target_link_libraries (${PLUGIN_NAME} WNCK::WNCK valapanel)
++target_link_libraries (${PLUGIN_NAME} WNCK::WNCK valapanel m)
+ target_include_directories (${PLUGIN_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+ add_custom_target(vala-ide-${PLUGIN_NAME} SOURCES ${VALA_FILES})
+ 
+Index: vala-panel-0.4.91/ui/CMakeLists.txt
+===================================================================
+--- vala-panel-0.4.91.orig/ui/CMakeLists.txt
++++ vala-panel-0.4.91/ui/CMakeLists.txt
+@@ -47,7 +47,7 @@ add_library (${LIBNAME} SHARED
+     applet-manager.h
+ )
+ 
+-target_link_libraries (${LIBNAME} util-gtk)
++target_link_libraries (${LIBNAME} util-gtk m)
+ target_include_directories(${LIBNAME} PRIVATE ${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR} ${CMAKE_SOURCE_DIR}/util; ${CMAKE_SOURCE_DIR}/ui ${CMAKE_SOURCE_DIR}/util/gtk ${CMAKE_BINARY_DIR}/ui)
+ 
+ set_target_properties (${LIBNAME} PROPERTIES
+Index: vala-panel-0.4.91/util/gtk/CMakeLists.txt
+===================================================================
+--- vala-panel-0.4.91.orig/util/gtk/CMakeLists.txt
++++ vala-panel-0.4.91/util/gtk/CMakeLists.txt
+@@ -25,7 +25,7 @@ add_library (util-gtk STATIC
+     ${GLIB_RESOURCES_LIB}
+ )
+ set_property(TARGET util-gtk PROPERTY POSITION_INDEPENDENT_CODE ON)
+-target_link_libraries (util-gtk util GTK3::GTK GTK3::GDK)
++target_link_libraries (util-gtk util GTK3::GTK GTK3::GDK m)
+ target_include_directories(util-gtk PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${CORE_INCLUDE_DIRS} ${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR}/util ${CMAKE_SOURCE_DIR}/util)
+ 
+ set_target_properties (util-gtk PROPERTIES

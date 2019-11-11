@@ -47,4 +47,18 @@
     <comment></comment>
     <requestid>632009</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>8db711c0d35bc3b3c8900d1f29471b23</srcmd5>
+    <version>unknown</version>
+    <time>1573504856</time>
+    <user>dimstar_suse</user>
+    <comment>- Add vala-panel-0.4.91-libm.patch
+  * fix linking with libm by vala-panel-0.4.91-libm.patch
+
+- Update to version 0.4.91:
+  * Fixes for hide and updated tasklist
+- New subpackage: vala-cmake-modules
+  * needed by vala-panel-appmenu</comment>
+    <requestid>747385</requestid>
+  </revision>
 </revisionlist>
