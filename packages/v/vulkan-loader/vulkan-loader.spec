@@ -18,7 +18,7 @@
 
 Name:           vulkan-loader
 %define lname	libvulkan1
-Version:        1.1.126
+Version:        1.1.127
 Release:        0
 Summary:        Reference ICD loader for Vulkan
 License:        Apache-2.0
