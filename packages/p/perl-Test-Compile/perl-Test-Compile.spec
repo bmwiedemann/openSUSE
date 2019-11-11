@@ -17,7 +17,7 @@
 
 
 Name:           perl-Test-Compile
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 %define cpan_name Test-Compile
 Summary:        Check whether Perl files compile correctly
