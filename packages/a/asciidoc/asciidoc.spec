@@ -1,7 +1,7 @@
 #
 # spec file for package asciidoc
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,8 +20,7 @@ Name:           asciidoc
 Version:        8.6.10
 Release:        0
 Summary:        Text-Based Document Generation
-License:        GPL-2.0+
-Group:          Development/Tools/Doc Generators
+License:        GPL-2.0-or-later
 Url:            http://asciidoc.org
 Source0:        https://github.com/%{name}/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         asciidoc.version.patch
@@ -45,7 +44,6 @@ to HTML and DocBook markups using the asciidoc command.
 
 %package examples
 Summary:        Examples and Documents for asciidoc
-Group:          Development/Tools/Doc Generators
 
 %description examples
 This package contains examples and documents of asciidoc.
