@@ -20,7 +20,7 @@
 %define srcname libvirt-python
 Name:           python-libvirt-python
 Url:            https://libvirt.org/
-Version:        5.8.0
+Version:        5.9.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
