@@ -1,4 +1,126 @@
 -------------------------------------------------------------------
+Wed Nov  6 15:52:24 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Wed Nov  6 09:36:43 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update to 7.67.0
+  * Changes:
+    - curl: added --no-progress-meter
+    - setopt: CURLMOPT_MAX_CONCURRENT_STREAMS is new
+    - urlapi: CURLU_NO_AUTHORITY allows empty authority/host part 
+  * Bugfixes:
+    - BINDINGS: five new bindings addded
+    - CURLOPT_TIMEOUT.3: Clarify transfer timeout time includes queue time
+    - CURLOPT_TIMEOUT.3: remove the mention of "minutes"
+    - ESNI: initial build/setup support
+    - FTP: FTPFILE_NOCWD: avoid redundant CWDs
+    - FTP: allow "rubbish" prepended to the SIZE response
+    - FTP: remove trailing slash from path for LIST/MLSD
+    - FTP: skip CWD to entry dir when target is absolute
+    - FTP: url-decode path before evaluation
+    - HTTP3.md: move -p for mkdir, remove -j for make
+    - HTTP3: fix invalid use of sendto for connected UDP socket
+    - HTTP3: fix prefix parameter for ngtcp2 build
+    - HTTP3: show an --alt-svc using example too
+    - INSTALL: add missing space for configure commands
+    - INSTALL: add vcpkg installation instructions
+    - altsvc: accept quoted ma and persist values
+    - altsvc: both backends run h3-23 now
+    - appveyor: Add MSVC ARM64 build
+    - appveyor: Use two parallel compilation on appveyor with CMake
+    - appveyor: add --disable-proxy autotools build
+    - appveyor: publish artifacts on appveyor
+    - appveyor: upgrade VS2017 to VS2019
+    - asyn-thread: make use of Curl_socketpair() where available
+    - asyn-thread: s/AF_LOCAL/AF_UNIX for Solaris
+    - build: Remove unused HAVE_LIBSSL and HAVE_LIBCRYPTO defines
+    - checksrc: fix uninitialized variable warning
+    - chunked-encoding: stop hiding the CURLE_BAD_CONTENT_ENCODING error
+    - cirrus: Switch the FreeBSD 11.x build to 11.3 and add a 13.0 build
+    - cirrus: switch off blackhole status on the freebsd CI machines
+    - cleanups: 21 various PVS-Studio warnings
+    - configure: only say ipv6 enabled when the variable is set
+    - configure: remove all cyassl references
+    - conn-reuse: requests wanting NTLM can reuse non-NTLM connections
+    - connect: return CURLE_OPERATION_TIMEDOUT for errno == ETIMEDOUT
+    - connect: silence sign-compare warning
+    - cookie: avoid harmless use after free
+    - cookie: pass in the correct cookie amount to qsort()
+    - cookies: change argument type for Curl_flush_cookies
+    - cookies: using a share with cookies shouldn't enable the cookie engine
+    - copyrights: update copyright notices to 2019
+    - curl: create easy handles on-demand and not ahead of time
+    - curl: ensure HTTP 429 triggers --retry
+    - curl: exit the create_transfers loop on errors
+    - curl: fix memory leaked by parse_metalink()
+    - curl: load large files with -d @ much faster
+    - docs/HTTP3: fix `--with-ssl` ngtcp2 configure flag
+    - docs: added multi-event.c example
+    - docs: disambiguate CURLUPART_HOST is for host name (ie no port)
+    - docs: note on failed handles not being counted by curl_multi_perform
+    - doh: allow only http and https in debug mode
+    - doh: avoid truncating DNS QTYPE to lower octet
+    - doh: clean up dangling DOH memory on easy close
+    - doh: fix (harmless) buffer overrun
+    - doh: fix undefined behaviour and open up for gcc and clang optimization
+    - doh: return early if there is no time left
+    - examples/sslbackend: fix -Wchar-subscripts warning
+    - gnutls: make gnutls_bye() not wait for response on shutdown
+    - http2: expire a timeout at end of stream
+    - http2: prevent dup'ed handles to send dummy PRIORITY frames
+    - http2: relax verification of :authority in push promise requests
+    - http2_recv: a closed stream trumps pause state
+    - http: lowercase headernames for HTTP/2 and HTTP/3
+    - ldap: Stop using wide char version of ldapp_err2string
+    - ldap: fix OOM error on missing query string
+    - mbedtls: add error message for cert validity starting in the future
+    - mime: when disabled, avoid C99 macro
+    - ngtcp2: adapt to API change
+    - ngtcp2: compile with latest ngtcp2 + nghttp3 draft-23
+    - ngtcp2: remove fprintf() calls
+    - openssl: close_notify on the FTP data connection doesn't mean closure
+    - openssl: use strerror on SSL_ERROR_SYSCALL
+    - os400: getpeername() and getsockname() return ebcdic AF_UNIX sockaddr
+    - parsedate: fix date parsing disabled builds
+    - quiche: don't close connection at end of stream
+    - quiche: persist connection details (fixes -I with --http3)
+    - quiche: set 'drain' when returning without having drained the queues
+    - quiche: update HTTP/3 config creation to new API
+    - redirect: handle redirects to absolute URLs containing spaces
+    - runtests: get textaware info from curl instead of perl
+    - schannel: reverse the order of certinfo insertions
+    - schannel_verify: Fix concurrent openings of CA file
+    - security: silence conversion warning
+    - setopt: handle ALTSVC set to NULL
+    - setopt: make it easier to add new enum values
+    - setopt: store CURLOPT_RTSP_SERVER_CSEQ correctly
+    - smb: check for full size message before reading message details
+    - smbserver: fix Python 3 compatibility
+    - socks: Fix destination host shown on SOCKS5 error
+    - test1162: disable MSYS2's POSIX path conversion
+    - test1591: fix spelling of http feature
+    - tests: add 'connect to non-listen' keywords
+    - tests: fix narrowing conversion warnings
+    - tests: fix the test 3001 cert failures
+    - tests: makes tests succeed when using --disable-proxy
+    - tests: use %FILE_PWD for file:// URLs
+    - tests: use port 2 instead of 60000 for a safer non-listening port
+    - tool_operate: Fix retry sleep time shown to user when Retry-After
+    - url: Curl_free_request_state() should also free doh handles
+    - url: don't set appconnect time for non-ssl/non-ssh connections
+    - url: fix the NULL hostname compiler warning
+    - url: normalize CURLINFO_EFFECTIVE_URL
+    - url: only reuse TLS connections with matching pinning
+    - urlapi: avoid index underflow for short ipv6 hostnames
+    - urlapi: fix URL encoding when setting a full URL
+    - urlapi: question mark within fragment is still fragment
+    - urldata: use 'bool' for the bit type on MSVC compilers
+    - vtls: fix narrowing conversion warnings
+
+-------------------------------------------------------------------
 Wed Sep 11 08:17:06 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Update to 7.66.0 [bsc#1149496, CVE-2019-5482][bsc#1149495, CVE-2019-5481]

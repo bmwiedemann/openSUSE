@@ -29,12 +29,11 @@
 # need ssl always for python-pycurl
 %bcond_without openssl
 Name:           curl-mini
-Version:        7.66.0
+Version:        7.67.0
 Release:        0
 Summary:        A Tool for Transferring Data from URLs
 License:        curl
-Group:          Productivity/Networking/Web/Utilities
-Url:            https://curl.haxx.se/
+URL:            https://curl.haxx.se/
 Source:         https://curl.haxx.se/download/curl-%{version}.tar.xz
 Source2:        https://curl.haxx.se/download/curl-%{version}.tar.xz.asc
 Source3:        baselibs.conf
@@ -51,10 +50,10 @@ BuildRequires:  pkgconfig
 Requires:       libcurl4%{?mini} = %{version}
 %if !0%{?bootstrap}
 BuildRequires:  groff
-BuildRequires:  krb5-mini-devel
-BuildRequires:  libidn2-devel
 BuildRequires:  lzma
 BuildRequires:  openldap2-devel
+BuildRequires:  pkgconfig(krb5)
+BuildRequires:  pkgconfig(libidn2)
 BuildRequires:  pkgconfig(libmetalink)
 BuildRequires:  pkgconfig(libnghttp2)
 BuildRequires:  pkgconfig(libpsl)
@@ -88,11 +87,10 @@ without user interaction or any kind of interactivity.
 
 %package -n libcurl4%{?mini}
 Summary:        Library for transferring data from URLs
-Group:          Productivity/Networking/Web/Utilities
 %if 0%{?bootstrap}
-Provides:       libcurl4 = %{version}
 Requires:       this-is-only-for-build-envs
 Conflicts:      libcurl4
+Provides:       libcurl4 = %{version}
 %endif
 
 %description -n libcurl4%{?mini}
@@ -101,7 +99,6 @@ network protocols.
 
 %package -n libcurl%{?mini}-devel
 Summary:        Development files for the curl library
-Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       libcurl4%{?mini} = %{version}
 # curl-devel (v 7.15.5) was last used in 10.2
@@ -210,7 +207,7 @@ popd
 %doc docs/{BUGS,FAQ,FEATURES,RESOURCES,TODO,TheArtOfHttpScripting}
 %{_bindir}/curl
 %{_datadir}/zsh/site-functions/_curl
-%{_mandir}/man1/curl.1%{ext_man}
+%{_mandir}/man1/curl.1%{?ext_man}
 %dir %{_datadir}/zsh
 %dir %{_datadir}/zsh/site-functions
 %dir %{_datadir}/fish/
@@ -228,7 +225,7 @@ popd
 %{_datadir}/aclocal/libcurl.m4
 %{_libdir}/libcurl.so
 %{_libdir}/pkgconfig/libcurl.pc
-%{_mandir}/man1/curl-config.1%{ext_man}
+%{_mandir}/man1/curl-config.1%{?ext_man}
 %{_mandir}/man3/*
 %doc docs/libcurl/symbols-in-versions
 
