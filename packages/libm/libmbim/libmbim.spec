@@ -18,7 +18,7 @@
 
 
 Name:           libmbim
-Version:        1.20.0
+Version:        1.20.2
 Release:        0
 Summary:        Mobile Broadband Interface Model (MBIM) protocol
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
