@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Nov 11 11:22:05 UTC 2019 - Gabriele Santomaggio <gsantomaggio@gmail.com>
+
+- Changes for 22.1.7
+  * http://erlang.org/download/OTP-22.1.7.README
+  * compiler: Fixed a performance bug that caused repeated matches of
+    large records to take a very long time to compile. 
+  * erts: A literal area could prematurely be released before all
+    uses of it had been removed. This occurred either when
+    a terminating process had a complex exit reason
+    referring to a literal that concurrently was removed,
+    or when a terminating process continued executing a
+    dirty NIF accessing a literal (via the heap) that
+    concurrently was removed.
+  * erts:  Fix bug causing VM crash due to memory corruption of
+    distribution entry. Probability of crash increases if
+    Erlang distribution is frequently disconnected and
+    reestablished towards same node names. Bug exists since
+    OTP-21.0.
+  * erts: Fixed bug causing crash of VM built with configuration
+    --enable--sharing-preserving. Provoked when a sent
+    message contains both a bit string and the heap binary
+    (< 65 bytes) which the bit string was matched from. Bug
+    exists since OTP-19.0 but has seen to be easier to
+    provoke since OTP-22.1. 
+
+- Changes for 22.1.6
+  * http://erlang.org/download/OTP-22.1.6.README
+  * compiler, erts: The compiler could do an unsafe optimization of
+    receives, which would cause a receive to only scan part
+    of the message queue.
+  * crypto: The AEAD tag was not previously checked on decrypt with
+    chacha20_poly1305
+  * erts:Fix bug where the receive marker used by the runtime to
+    do the receive queue optimization could be incorrectly
+    set. The symptom of this would be that a message that
+    should match in a receive never matches.
+  * snmp: Agent discovery cleanup. If there is no receiver of
+    INFORM then #state.reqs in snmpa_net_if keeps on
+    growing for DISCOVERY.
+
+-------------------------------------------------------------------
 Tue Oct 29 12:29:00 UTC 2019 - Gabriele Santomaggio <gsantomaggio@suse.de>
 
 - Changes for 22.1.5
