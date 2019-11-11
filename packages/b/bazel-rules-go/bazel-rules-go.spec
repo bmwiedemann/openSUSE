@@ -12,14 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
 %define src_install_dir /usr/src/%{name}
 
 Name:           bazel-rules-go
-Version:        0.16.5
+Version:        0.18.5
 Release:        0
 Summary:        Go rules for Bazel
 License:        Apache-2.0
@@ -27,6 +27,9 @@ Group:          Development/Tools/Building
 Url:            https://github.com/bazelbuild/rules_go
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
+# PATCH-FIX-OPENSUSE -- Use http_archive instead of git_repository in Bazel.
+# git_repository makes it impossible to pre-fetch or override dependencies.
+Patch0:         0001-bazel-Use-http_archive-instead-of-git_repository.patch
 BuildRequires:  fdupes
 
 %description
@@ -60,12 +63,13 @@ This package contains source code of bazel-rules-go.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 
 %install
 mkdir -p %{buildroot}%{src_install_dir}
-tar -xJf %{SOURCE0} --strip-components=1 -C %{buildroot}%{src_install_dir}
+cp -R * %{buildroot}%{src_install_dir}
 # Fix hidden-dile-or-dir warning.
 find %{buildroot}%{src_install_dir} -name ".*" -exec rm -rf "{}" +
 # Fix env-script-interpreter error.
