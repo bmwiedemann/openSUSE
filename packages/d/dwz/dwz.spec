@@ -74,6 +74,7 @@ NoSource:       0
 %endif
 
 Patch1:         dwz-update-version-copyright-message.patch
+Patch2:         dwz-fix-die-no-multifile-propagation.patch
 
 %if %{build_main}
 %description
@@ -103,6 +104,7 @@ This package contains the testsuite results from DWZ.
 %prep
 %setup -q -n dwz
 %patch1 -p1
+%patch2 -p1
 
 %build
 make %{?_smp_mflags} CFLAGS="%{optflags}"

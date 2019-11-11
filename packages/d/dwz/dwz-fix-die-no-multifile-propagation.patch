@@ -1,0 +1,485 @@
+- Add iterators.h
+- Fix die_no_multifile propagation
+------------------------------------------------------------
+Add iterators.h
+
+[ Backport of master commit 61c225a. ]
+
+Add FOREACH_* iterators that iterate over CUs.
+
+Add two iterator functions next_die and next_toplevel die.  Using these
+functions, we can describe actions for all (toplevel) DIEs without having to
+write a recursive function.
+
+Add FOREACH_* iterators that iterate over DIEs using these functions.
+
+Add FOREACH_* iterators that combine the previous two kinds of FOREACH_*
+iterators to iterate over CUs and their DIEs.
+
+2019-11-04  Tom de Vries  <tdevries@suse.de>
+
+	* iterators.h: New file.
+	* dwz.c: Include iterators.h.
+
+------------------------------------------------------------
+Fix die_no_multifile propagation
+
+[ Backport of master commit 172afd9. ]
+
+I. Terminology
+
+A pseudo-reference from DIE A to DIE B is a reference related to an attribute
+of DIE A of class exprloc (or by extension, loclistptr) containing a DWARF
+operator (DW_OP_GNU_variable_value, DW_OP_GNU_implicit_pointer,
+DW_OP_call_ref) that contains a reference to DIE B.
+
+This in contrast to a regular reference, related to an attribute of
+reference class.
+
+II. Assert
+
+When running the test-case from PR25109, we run into an assert:
+...
+$ cp StartGui.so 1
+$ cp 1 2
+$ dwz -m 3 1 2
+dwz: dwz.c:9310: write_die: \
+  Assertion `value && refdcu->cu_kind != CU_ALT' failed.
+Aborted (core dumped)
+...
+
+The assert is a regression due to commit 5f3ba3a "Mark
+DW_OP_GNU_variable_value-referenced DIEs with die_no_multifile".
+
+III. Revisit commit 5f3ba3a
+
+To reiterate the problem fixed by that commit, the issue is that for DIEs
+A and B with a pseudo-reference from A to B:
+...
+(A) --pr--> (B)
+...
+we have the situation that B ends up in the multifile, and A not, and we end
+up in finalize_multifile trying to rewrite the pseudo-reference from A to the
+copy of B in the multifile.
+
+It's good to note that for a regular reference, this wouldn't be a problem.
+We would simply rewrite the reference in A using DW_FORM_GNU_ref_alt.  But for
+the DWARF operators used in pseudo-references, that's not an option because
+there are no _alt variants.
+
+The committed fix is to forbid B to move to the multifile, by setting
+die_no_multifile to 1.
+
+[ Alternatively, it might be possible to fix this by still allowing B to be
+copied to the multifile, and when in finalize_multifile, not rewrite
+the pseudo-reference and keep a copy of B in addition to the one in the
+multifile. ]
+
+[ It might be possible for both A and B to move to the multifile.  But the
+current implementation makes decisions to move individual DIEs to the
+multifile or not, and doesn't consider clusters of DIEs, so we have to take a
+conservative approach. ]
+
+IV. Assert analysis
+
+The situation when we run into the assert is as follows:
+- we have two duplicate chains: {A, B} and {C, D, E, F}
+- each duplicate chain has a representant: A' and C'
+- there's a pseudo-ref from Z to C
+
+Schematically this looks like this:
+...
+(A') --------d-------> (A) --------d-------> (B)
+ |                      |                     |
+ r                      r                     r
+ |                      |                     |
+ v                      v                     v
+(C') --d--> (C) --d--> (D) --d--> (E) --d--> (F)
+             ^
+             |
+             pr
+             |
+            (Z)
+...
+
+The assert happens in write_multifile, when we're trying to write out A' to the
+aggregate file (the collection of debug sections in temporary files), due
+to die_no_multifile == 0, and finding out that we can't rewrite the reference
+from A' to C' because C' is not written out to the candidate multifile, due to
+die_no_multifile == 1.  And C' has die_no_multifile == 1 due to C having
+die_no_multifile == 1, which is due to the fix from commit 5f3ba3a.
+
+The problem can be formulated as insufficient propagation of the
+die_no_multifile property.  That is: the property on C did propagate to C',
+as it should, but failed to propagate to A'.
+
+V. Property die_no_multifile propagation
+
+The die_no_multifile property propagation is done in 4 phases:
+1. The DIEs are seeded with the property, and the property is propagated
+upward towards the toplevel DIEs.
+2. The property is propagated backward over regular references.
+3. The property is propagated from the duplicate chain to the representant.
+4. The property is propagated from the representant back into the duplicate
+chain, but in an inverse manner: If the property on the representant is false,
+the property is set to true on the duplicate chain.  Which is a way of saying:
+if we are going to write the representant to the multifile, there's no need to
+write any of the members of the duplicate chain to the multifile.
+
+In a way the propagation proper is phases 1-3, and phase 4 is a seperate thing
+that we might call inverse propagation, and which AFAICT is not relevant to the
+problem at hand.
+
+Implementationwise, phase 1 takes place during checksum_die, phase 2 during
+checksum_ref_die, and phase 3 and 4 during check_multifile.
+
+VI. Propagation analysis
+
+Now we can break down how propagation is done for the situation described at
+IV:
+- During phase 1, C is seeded with the property, on account of the
+  pseudo-reference Z -> C.
+- During phase 2, the property state is propagated back from D to A and from F
+  to B, but since the property is false on D and F, that doesn't change
+  anything.
+- During phase 3, the property is propagated from C to C'.
+
+What seems to be missing is a propagation before phase 2 from C to fellow
+duplicate chain members D, E and F.  [ However, in order to do this
+propagation, we need the duplicate chains, which are only available after
+we're done with checksum_ref_die, which is where phase 2 is done. ]
+
+VII. Program invariant
+
+So why did the propagation work up until now?  The answer is that there's an
+AFAIK undocumented program invariant that states that if a DIE has the
+property set, all fellow members in the duplicate chain will also have it set
+(even before the duplicate chains are known).  This invariant held right up
+until commit 5f3ba3a broke it.
+
+VIII. Fix
+
+The fix for the assert implemented in this patch, is to add a
+propagate_multifile function called before phase 3, which adds the missing
+propagation.  It consists of two parts:
+- propagate_multifile_duplicate_chain
+- propagate_multifile_refs_backward
+where the first adds what was described as missing in VI, and the second is a
+copy of phase 2 that doesn't piggyback on checksum_ref_die.
+The two are called iteratively until fixed point is reached.
+
+2019-11-02  Tom de Vries  <tdevries@suse.de>
+
+	PR dwz/25109
+	* dwz.c	(propagate_multifile_duplicate_chain):
+	(propagate_multifile_refs_backward, propagate_multifile): New function.
+	(write_multifile): Call propagate_multifile.
+
+------------------------------------------------------------
+diff --git a/dwz.c b/dwz.c
+index 727314f..308957e 100644
+--- a/dwz.c
++++ b/dwz.c
+@@ -794,6 +794,8 @@ struct dw_die
+   dw_die_ref die_nextdup;
+ };
+ 
++#include "iterators.h"
++
+ /* Return CU structure pointer for a DIE.  In order to save memory,
+    individual DIEs don't have a dw_cu_ref field, and the pointer can
+    be only found by overriding the die_parent pointer in a
+diff --git a/iterators.h b/iterators.h
+new file mode 100644
+index 0000000..8672ccf
+--- /dev/null
++++ b/iterators.h
+@@ -0,0 +1,126 @@
++/* Various iterators.
++
++   Copyright (C) 2019 SUSE LLC.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 2, or (at your option)
++   any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program; see the file COPYING.  If not, write to
++   the Free Software Foundation, 51 Franklin Street - Fifth Floor,
++   Boston, MA 02110-1301, USA.  */
++
++
++/* CU iterators.  */
++
++#define FOREACH_CU(CU)				\
++  for (CU = first_cu; CU; CU = CU->cu_next)
++
++#define FOREACH_CU_PU(CU)						\
++  for (CU = first_cu; CU && CU->cu_kind == CU_PU; CU = CU->cu_next)
++
++#define FOREACH_CU_NORMAL(CU)						\
++  for (CU = first_cu; CU && CU->cu_kind != CU_TYPES; CU = CU->cu_next)	\
++    if (CU->cu_kind == CU_NORMAL)
++
++#define FOREACH_CU_TYPES(CU)			\
++  for (CU = first_cu; CU; CU = CU->cu_next)	\
++    if (CU->cu_kind == CU_TYPES)		\
++
++/* Function that describes a depth-first traversal path visiting all dies.  */
++
++static inline dw_die_ref FORCE_INLINE
++next_die (dw_die_ref die)
++{
++  if (die->die_child != NULL)
++    return die->die_child;
++
++  while (1)
++    {
++      if (die->die_sib != NULL)
++	return die->die_sib;
++
++      if (die->die_root)
++	return NULL;
++
++      die = die->die_parent;
++    }
++}
++
++/* Function that describes a depth-first traversal path visiting all toplevel
++   dies.  */
++
++static inline dw_die_ref FORCE_INLINE
++next_toplevel_die (dw_die_ref die)
++{
++  if (die->die_child != NULL && die->die_child->die_toplevel)
++    return die->die_child;
++
++  while (1)
++    {
++      if (die->die_sib != NULL && die->die_sib->die_toplevel)
++	return die->die_sib;
++
++      if (die->die_root)
++	return NULL;
++
++      die = die->die_parent;
++    }
++}
++
++/* DIE_IN_CU iterators.  */
++
++#define FOREACH_DIE_IN_CU(DIE, CU)			\
++  for (DIE = CU->cu_die; DIE; DIE = next_die (DIE))
++
++#define FOREACH_TOPLEVEL_DIE_IN_CU(DIE, CU)			\
++  for (DIE = CU->cu_die; DIE; DIE = next_toplevel_die (DIE))
++
++#define FOREACH_LOW_TOPLEVEL_DIE_IN_CU(DIE, CU)		\
++  FOREACH_TOPLEVEL_DIE_IN_CU (DIE, CU)			\
++    if (!(die->die_root || die->die_named_namespace))
++
++/* DIE iterators.  */
++
++#define FOREACH_DIE(CU, DIE)			\
++  FOREACH_CU (CU)				\
++    FOREACH_DIE_IN_CU (DIE, CU)
++
++#define FOREACH_TOPLEVEL_DIE(CU, DIE)		\
++  FOREACH_CU (CU)				\
++    FOREACH_TOPLEVEL_DIE_IN_CU (DIE, CU)
++
++#define FOREACH_LOW_TOPLEVEL_DIE(CU, DIE)	\
++  FOREACH_CU (CU)				\
++    FOREACH_LOW_TOPLEVEL_DIE_IN_CU (DIE, CU)
++
++#define FOREACH_CU_PU_TOPLEVEL_DIE(CU, DIE)	\
++  FOREACH_CU_PU (CU)				\
++    FOREACH_TOPLEVEL_DIE_IN_CU (DIE, CU)
++
++#define FOREACH_CU_NORMAL_TOPLEVEL_DIE(CU, DIE)	\
++  FOREACH_CU_NORMAL (CU)			\
++    FOREACH_TOPLEVEL_DIE_IN_CU (DIE, CU)
++
++#define FOREACH_CU_TYPES_TOPLEVEL_DIE(CU, DIE)	\
++  FOREACH_CU_TYPES (CU)				\
++    FOREACH_TOPLEVEL_DIE_IN_CU (DIE, CU)
++
++#define FOREACH_CU_PU_LOW_TOPLEVEL_DIE(CU, DIE)	\
++  FOREACH_CU_PU (CU)				\
++    FOREACH_LOW_TOPLEVEL_DIE_IN_CU (DIE, CU)
++
++#define FOREACH_CU_NORMAL_LOW_TOPLEVEL_DIE(CU, DIE)	\
++  FOREACH_CU_NORMAL (CU)				\
++    FOREACH_LOW_TOPLEVEL_DIE_IN_CU (DIE, CU)
++
++#define FOREACH_CU_TYPES_LOW_TOPLEVEL_DIE(CU, DIE)	\
++  FOREACH_CU_TYPES (CU)					\
++    FOREACH_LOW_TOPLEVEL_DIE_IN_CU (DIE, CU)
+diff --git a/dwz.c b/dwz.c
+index 308957e..7c7b401 100644
+--- a/dwz.c
++++ b/dwz.c
+@@ -11007,6 +11007,149 @@ cleanup (void)
+   max_line_id = 0;
+ }
+ 
++/* Propagate the die_no_multifile property along the duplicate chain of which
++   DIE is a member.  If the property was changed on any die, set *CHANGED to
++   true.  */
++static void
++propagate_multifile_duplicate_chain (dw_die_ref die, bool *changed)
++{
++  dw_die_ref dup = first_dup (die);
++  if (!dup)
++    return;
++
++  while (dup && dup->die_offset == -1U)
++    dup = dup->die_nextdup;
++  if (dup != die)
++    return;
++
++  bool any_no_multifile = false;
++  bool any_multifile = false;
++  bool prop_needed = false;
++  dw_die_ref d;
++  for (d = dup; d && !prop_needed; d = d->die_nextdup)
++    {
++      if (d->die_no_multifile)
++	any_no_multifile = true;
++      else
++	any_multifile = true;
++      prop_needed = any_no_multifile && any_multifile;
++    }
++  if (!prop_needed)
++    return;
++
++  *changed = true;
++
++  for (d = dup; d; d = d->die_nextdup)
++    d->die_no_multifile = 1;
++}
++
++/* Propagate the die_no_multifile property backwards along the outgoing
++   references of DIE, which is a member of CU and of the subtree of lower
++   toplevel die TOP_DIE.  If the property was changed on any die, set *CHANGED
++   to true.  */
++static void
++propagate_multifile_refs_backward (dw_cu_ref cu, dw_die_ref top_die,
++				   dw_die_ref die, bool *changed)
++{
++  struct abbrev_tag *t = die->die_abbrev;
++  unsigned int i;
++  unsigned char *ptr;
++  dw_die_ref child;
++
++  if (die->die_offset == -1U)
++    return;
++
++  ptr = debug_sections[DEBUG_INFO].data + die->die_offset;
++  read_uleb128 (ptr);
++  for (i = 0; i < t->nattr; ++i)
++    {
++      uint32_t form = t->attr[i].form;
++      uint64_t value;
++      dw_die_ref ref, reft;
++
++      while (form == DW_FORM_indirect)
++	form = read_uleb128 (ptr);
++
++      switch (form)
++	{
++	case DW_FORM_ref_addr:
++	  value = read_size (ptr, cu->cu_version == 2 ? ptr_size : 4);
++	  ptr += cu->cu_version == 2 ? ptr_size : 4;
++	  ref = off_htab_lookup (cu, value);
++	  goto finish_ref;
++	  break;
++	case DW_FORM_ref_udata:
++	case DW_FORM_ref1:
++	case DW_FORM_ref2:
++	case DW_FORM_ref4:
++	case DW_FORM_ref8:
++	  switch (form)
++	    {
++	    case DW_FORM_ref_udata: value = read_uleb128 (ptr); break;
++	    case DW_FORM_ref1: value = read_8 (ptr); break;
++	    case DW_FORM_ref2: value = read_16 (ptr); break;
++	    case DW_FORM_ref4: value = read_32 (ptr); break;
++	    case DW_FORM_ref8: value = read_64 (ptr); break;
++	    default: abort ();
++	    }
++	  if (t->attr[i].attr == DW_AT_sibling)
++	    break;
++	  ref = off_htab_lookup (cu, cu->cu_offset + value);
++	finish_ref:
++	  reft = ref;
++	  while (!reft->die_root
++		 && reft->die_parent->die_tag != DW_TAG_compile_unit
++		 && reft->die_parent->die_tag != DW_TAG_partial_unit
++		 && !reft->die_parent->die_named_namespace)
++	    reft = reft->die_parent;
++	  if (reft->die_root)
++	    ;
++	  else if (reft->die_ck_state == CK_KNOWN
++		   && !top_die->die_no_multifile && reft->die_no_multifile)
++	    {
++	      top_die->die_no_multifile = 1;
++	      *changed = true;
++	    }
++	  break;
++	default:
++	  ptr = skip_attr_no_dw_form_indirect (cu, form, ptr);
++	}
++    }
++
++  for (child = die->die_child; child; child = child->die_sib)
++    propagate_multifile_refs_backward (cu, top_die, child, changed);
++}
++
++/* Do propagation of the die_no_multifile property that was not covered in
++   checksum_die and checksum_ref_die.  */
++static void
++propagate_multifile (void)
++{
++  bool changed;
++  dw_cu_ref cu;
++  dw_die_ref die;
++
++  changed = false;
++
++  FOREACH_CU_NORMAL_LOW_TOPLEVEL_DIE (cu, die)
++    propagate_multifile_duplicate_chain (die, &changed);
++
++  if (!changed)
++    return;
++
++  do
++    {
++      changed = false;
++
++      FOREACH_CU_NORMAL_LOW_TOPLEVEL_DIE (cu, die)
++	propagate_multifile_refs_backward (cu, die, die, &changed);
++
++      FOREACH_CU_NORMAL_LOW_TOPLEVEL_DIE (cu, die)
++	propagate_multifile_duplicate_chain (die, &changed);
++    }
++  while (changed);
++}
++
+ /* Returns true if DIE contains any toplevel children that can be
+    potentially shared between different executables or shared libraries.  */
+ static bool
+@@ -11347,6 +11490,7 @@ write_multifile (DSO *dso)
+       debug_sections[i].new_data = NULL;
+       debug_sections[i].new_size = debug_sections[i].size;
+     }
++  propagate_multifile ();
+   for (cu = first_cu; cu && cu->cu_kind != CU_TYPES; cu = cu->cu_next)
+     {
+       cu->u1.cu_new_abbrev_owner = NULL;

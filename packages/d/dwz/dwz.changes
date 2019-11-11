@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  5 09:55:50 UTC 2019 - Tom de Vries <tdevries@suse.com>
+
+- Fix die_no_multifile propagation [swo#25109].
+  * dwz-fix-die-no-multifile-propagation.patch
+
+-------------------------------------------------------------------
 Wed Aug 28 12:47:09 UTC 2019 - Tom de Vries <tdevries@suse.com>
 
 - Disable dwz:testsuite if %{with ringdisabled}
