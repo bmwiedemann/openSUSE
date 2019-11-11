@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -27,7 +27,7 @@ Url:            https://github.com/janestreet/sexplib0
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20191009
+BuildRequires:  ocaml-rpm-macros >= 20191101
 
 %description
 Library containing the definition of S-expressions and some base converters.
@@ -45,10 +45,7 @@ developing applications that use %{name}.
 %autosetup -p1
 
 %build
-args='--for-release-of-packages=sexplib0'
-OCAML_DUNE_INSTALLED_LIBRARIES_ARGS=''
-OCAML_DUNE_EXTERNAL_LIB_DEPS_ARGS="${args}"
-OCAML_DUNE_BUILD_INSTALL_ARGS="${args}"
+dune_release_pkgs='sexplib0'
 %ocaml_dune_setup
 %ocaml_dune_build
 

@@ -7,4 +7,12 @@
     <comment>dependency of ocaml-base, which became a dependency of ocaml-pcre</comment>
     <requestid>736825</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2c411e4961db35984a9af6ff6e75a156</srcmd5>
+    <version>0.12.0</version>
+    <time>1573504184</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>746713</requestid>
+  </revision>
 </revisionlist>
