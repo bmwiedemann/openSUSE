@@ -5715,10 +5715,13 @@ unsorted:
   - jetty-http 
   - jetty-io 
   - jetty-jaas 
+  - jetty-javax-websocket-client-impl 
+  - jetty-javax-websocket-server-impl 
   - jetty-jmx 
   - jetty-jndi 
   - jetty-jsp 
   - jetty-minimal-javadoc 
+  - jetty-openid 
   - jetty-parent 
   - jetty-plus 
   - jetty-proxy 
@@ -5728,9 +5731,16 @@ unsorted:
   - jetty-servlet 
   - jetty-toolchain 
   - jetty-util 
+  - jetty-util-ajax 
   - jetty-version-maven-plugin 
   - jetty-version-maven-plugin-javadoc 
   - jetty-webapp 
+  - jetty-websocket-api 
+  - jetty-websocket-client 
+  - jetty-websocket-common 
+  - jetty-websocket-javadoc 
+  - jetty-websocket-server 
+  - jetty-websocket-servlet 
   - jetty-xml 
   - jeuclid 
   - jeuclid-cli 
@@ -9628,7 +9638,6 @@ unsorted:
   - liblua5_1-5-32bit: [x86_64] 
   - liblua5_3-5-32bit: [x86_64] 
   - libluabind0_9_1 
-  - libluajit-5_1-2 
   - libluajit-5_1-2-32bit: [x86_64] 
   - liblucene++0 
   - liblur3 
@@ -14529,6 +14538,7 @@ unsorted:
   - opae-ase: [x86_64] 
   - opae-devel: [x86_64] 
   - opam 
+  - opam-devel 
   - opam-file-format-devel 
   - opam-installer 
   - open-iscsi-devel 
@@ -23818,7 +23828,6 @@ unsorted:
   - soapysdr0.7-module-mirisdr 
   - soapysdr0.7-module-osmosdr 
   - soapysdr0.7-module-remote 
-  - soapysdr0.7-module-rfspace 
   - soapysdr0.7-module-rtlsdr 
   - soapysdr0.7-module-uhd 
   - soapysdr0.7-module-xtrx 
