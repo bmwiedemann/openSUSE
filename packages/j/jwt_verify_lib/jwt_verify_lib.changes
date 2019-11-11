@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Sep 20 13:06:47 UTC 2019 - mrostecki@opensuse.org
+
+- Update to version 20190909:
+  * bazel: Update protobuf to 3.9.1
+  * Fixed code formatting
+  * Exposing struct_utils for accessing custom JWT fields
+  * Implement RS384/RS512 token verification
+  * Add tests for RS384 and RS512 tokens
+  * Harden JwkRSA verification code
+  * Reduce fuzz truncate case
+  * Fix verify_time_test
+  * one more uint64
+  * one more uint64_t
+
+-------------------------------------------------------------------
 Thu Aug 01 11:20:17 UTC 2019 - mrostecki@opensuse.org
 
 - Use OpenSSL instead of BoringSSL.

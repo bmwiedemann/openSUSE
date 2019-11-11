@@ -5,7 +5,7 @@
     <param name="changesgenerate">enable</param>
     <param name="filename">jwt_verify_lib</param>
     <param name="versionformat">%cd</param>
-    <param name="revision">0f14d43f20381cfae0469cb2309b2e220c0f0ea3</param>
+    <param name="revision">2866385faa2508a11071d075f788172b3f3bd27f</param>
   </service>
   <service mode="disabled" name="tar_scm">
     <param name="url">https://github.com/Maistra/jwt-verify-lib-openssl</param>
@@ -13,11 +13,10 @@
     <param name="changesgenerate">disable</param>
     <param name="filename">jwt-verify-lib-openssl</param>
     <param name="versionformat">%cd</param>
-    <param name="revision">55dba200857b7c50d82336d38d556be5807d39b6</param>
+    <param name="revision">maistra-1.1</param>
   </service>
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service mode="disabled" name="set_version"/>
 </services>

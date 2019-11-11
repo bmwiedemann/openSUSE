@@ -57,4 +57,12 @@
   * bazel-unbundle-dependencies.patch</comment>
     <requestid>721261</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0c9c064204a7fa7a9f3fcb6724d20226</srcmd5>
+    <version>20190909</version>
+    <time>1573503892</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>746425</requestid>
+  </revision>
 </revisionlist>

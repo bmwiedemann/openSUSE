@@ -19,10 +19,10 @@
 %define sover 0
 %define libname lib%{name}%{sover}
 %define maistra_name jwt-verify-lib-openssl
-%define maistra_version 20190723
+%define maistra_version 20190806
 
 Name:           jwt_verify_lib
-Version:        20190708
+Version:        20190909
 Release:        0
 Summary:        JSON Web Tokens verification library for C++
 License:        Apache-2.0
@@ -30,17 +30,13 @@ Group:          Development/Libraries/C and C++
 Url:            https://github.com/google/%{name}
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{maistra_name}-%{maistra_version}.tar.xz
-Source100:      WORKSPACE
-Source101:      BUILD
-Source200:      abseil_strings.BUILD
-Source201:      abseil_time.BUILD
-Source202:      bsslwrapper.BUILD
-Source203:      googletest.BUILD
-Source204:      opensslcbs.BUILD
-Source205:      zlib.BUILD
-BuildRequires:  abseil-cpp-devel
+BuildRequires:  abseil-cpp-source
+BuildRequires:  bazel-rules-cc-source
+BuildRequires:  bazel-rules-java-source
+BuildRequires:  bazel-rules-proto-source
 BuildRequires:  bazel-skylib-source
-BuildRequires:  bazel0.19
+BuildRequires:  bazel-workspaces
+BuildRequires:  bazel0.29
 BuildRequires:  bssl_wrapper-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gmock
@@ -79,22 +75,16 @@ This package contains development files for jwt_verify_lib.
 
 %prep
 %setup -q -D -b 1 -n %{maistra_name}-%{maistra_version}
-
 %setup -q
 pushd ../%{maistra_name}-%{maistra_version}
+sed -i "s|\"src/struct_utils.h\"|\"jwt_verify_lib/struct_utils.h\"|g" src/jwks.cc
+sed -i "s|\"src/struct_utils.h\"|\"jwt_verify_lib/struct_utils.h\"|g" src/jwt.cc
 ./openssl.sh ../%{name}-%{version} SSL
 popd
-cp %{SOURCE100} .
-cp %{SOURCE101} .
-cp %{SOURCE200} .
-cp %{SOURCE201} .
-cp %{SOURCE202} .
-cp %{SOURCE203} .
-cp %{SOURCE204} .
-cp %{SOURCE205} .
 
 %build
 # TODO(mrostecki): Create a macro in bazel package.
+TARGETS=$(bazel query '//... except kind(.*test, //...)')
 bazel build \
     -c dbg \
     --color=no \
@@ -104,10 +94,17 @@ bazel build \
     --genrule_strategy=standalone \
     --host_javabase=@local_jdk//:jdk \
     --linkopt="-Wl,-soname,libjwt_verify_lib.so.%{sover}" \
+    --override_repository="bazel_skylib=/usr/src/bazel-skylib" \
+    --override_repository="com_google_absl=/usr/src/abseil-cpp" \
+    --override_repository="com_google_protobuf=/usr/src/protobuf" \
+    --override_repository="googletest_git=%{_datadir}/bazel-workspaces/googletest" \
+    --override_repository="rules_cc=/usr/src/bazel-rules-cc" \
+    --override_repository="rules_java=/usr/src/bazel-rules-java" \
+    --override_repository="rules_proto=/usr/src/bazel-rules-proto" \
     --spawn_strategy=standalone \
     --strip=never \
     --verbose_failures \
-    //...
+    ${TARGETS}
 bazel shutdown
 
 %install
