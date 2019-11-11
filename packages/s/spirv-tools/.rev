@@ -119,4 +119,12 @@
     <comment>- Update to new snapshot 2019.5~git11</comment>
     <requestid>724964</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4e23ccfe0df885ae516fb7ebfd9df00a</srcmd5>
+    <version>2019.5~git157</version>
+    <time>1573473589</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 2019.5~git157</comment>
+    <requestid>746189</requestid>
+  </revision>
 </revisionlist>

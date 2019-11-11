@@ -3,7 +3,7 @@
  		<param name="scm">git</param>
 		<param name="url">https://github.com/KhronosGroup/SPIRV-Tools</param>
 		<param name="filename">spirv-tools</param>
-		<param name="revision">0cbdc7a2</param>
+		<param name="revision">dc59b4b0</param>
 		<param name="parent-tag">22ce39c8</param>
 		<param name="versionformat">2019.5~git@TAG_OFFSET@</param>
 	</service>
