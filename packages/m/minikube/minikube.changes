@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Nov 11 14:01:25 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.5.2:
+  * Fix node InternalIP not matching host-only address #5427
+  * Add helm-tiller addon #5363
+  * Add ingress-dns addon #5507
+  * Add validation checking for minikube profile #5624
+  * add ability to override autoupdating drivers #5640
+  * Add option to configure dnsDomain in kubeAdm #5566
+  * Added flags to purge configuration with minikube delete #5548
+  * Upgrade Buildroot to 2019.02 and VirtualBox to 5.2 #5609
+  * Add libmachine debug logs back #5574
+  * Add JSON output for addons list #5601
+  * Update default Kubernetes version to 1.16.1 #5593
+  * Upgrade nginx ingress controller to 0.26.1 #5514
+  * Initial translations for fr, es, de, ja, and zh-CN #5466
+  * PL translation #5491
+  * Warn if incompatible kubectl version is in use #5596
+  * Fix crash when deleting the cluster but it doesn't exist #4980
+  * Add json output for profile list #5554
+  * Allow addon enabling and disabling when minikube is not running #5565
+  * Added option to delete all profiles #4780
+  * Replace registry-creds addon ReplicationController with Deployment #5586
+  * Performance and security enhancement for ingress-dns addon #5614
+  * Add addons flag to 'minikube start' in order to enable specified addons #5543
+  * Warn when a user tries to set a profile name that is unlikely to be valid #4999
+  * Make error message more human readable #5563
+  * Adjusted Terminal Style Detection #5508
+  * Fixes image repository flags when using CRI-O and containerd runtime #5447
+  * fix "minikube update-context" command fail #5626
+  * Fix pods not being scheduled when ingress deployment is patched #5519
+  * Fix order of parameters to CurrentContext funcs #5439
+  * Add solution for VERR_VMX_MSR_ALL_VMX_DISABLED #5460
+  * fr: fix translations of environment & existent #5483
+  * optimizing Chinese translation #5201
+  * Change systemd unit files perm to 644 #5492
+  * Default to best-available local hypervisor rather than VirtualBox #5700
+  * Update default Kubernetes version to v1.16.2 #5731
+  * Add json output for status #5611
+  * gvisor: Use chroot instead of LD_LIBRARY_PATH #5735
+  * Hide innocuous viper ConfigFileNotFoundError #5732
+  * Set Docker open-files limit ( 'ulimit -n') to be consistent with other runtimes #5761
+  * Use fixed uid/gid for the default user account #5767
+  * Set --wait=false to default but still wait for apiserver #5757
+  * kubelet: Pass --config to use kubeadm generated configuration #5697
+  * Refactor to remove opening browser and just return url(s) #5718
+  * service: fix --url mode #5790
+  * Refactor command runner interface, allow stdin writes #5530
+  * macOS install docs: minikube is a normal Homebrew formula now #5750
+  * Allow CPU count check to be disabled using --force #5803
+  * Make network validation friendlier, especially to corp networks
+
+-------------------------------------------------------------------
 Mon Sep 30 14:32:15 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
 
 - Update to 1.4.0
