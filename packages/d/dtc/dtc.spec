@@ -24,10 +24,14 @@ Summary:        Device-tree compiler
 License:        GPL-2.0-or-later
 URL:            https://github.com/dgibson/dtc
 Source0:        https://mirrors.edge.kernel.org/pub/software/utils/dtc/dtc-%{version}.tar.gz
-Source1:        baselibs.conf
+Source1:        https://mirrors.edge.kernel.org/pub/software/utils/dtc/dtc-%{version}.tar.sign
+Source2:        baselibs.conf
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  libyaml-devel
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
+BuildRequires:  swig
 
 %description
 PowerPC kernels are moving towards requiring a small Open
@@ -55,16 +59,31 @@ Obsoletes:      libfdt1-devel < %{version}-%{release}
 %description -n libfdt-devel
 This package provides development files for libfdt
 
+
+%package -n python3-libfdt
+Summary:        Python binding for Device Tree
+
+%description -n python3-libfdt
+libfdt is a library to process Open Firmware style device trees on various
+architectures.
+
+Python binding part.
+
 %prep
 %setup -q
 
 %build
-make %{?_smp_mflags} V=1
+make %{?_smp_mflags} V=1 NO_PYTHON=1
+cd pylibfdt
+python3 setup.py build_ext
+%py3_build
 
 %install
-%make_install PREFIX=%{_prefix} LIBDIR=%{_libdir}
+%make_install PREFIX=%{_prefix} LIBDIR=%{_libdir} NO_PYTHON=1
 install -p -m 644 libfdt/libfdt_env.h %{buildroot}/%{_includedir}
 rm -f %{buildroot}/%{_libdir}/*.a
+cd pylibfdt
+%python3_install
 
 %check
 make %{?_smp_mflags} check
@@ -90,5 +109,11 @@ make %{?_smp_mflags} check
 %files -n libfdt-devel
 %{_libdir}/libfdt.so
 %{_includedir}/*
+
+%files -n python3-libfdt
+%{python3_sitearch}/*.so
+%{python3_sitearch}/*.egg-info
+%{python3_sitearch}/__pycache__/*.pyc
+%{python3_sitearch}/libfdt.py
 
 %changelog

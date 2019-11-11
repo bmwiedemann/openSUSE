@@ -1,7 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 30 15:38:12 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- switch to building python3 bindings using setuptools to avoid
+  patching
+
+-------------------------------------------------------------------
+Wed Oct 30 13:24:05 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable python3 binding in python3-libfdt
+
+-------------------------------------------------------------------
 Wed Oct 30 13:23:32 UTC 2019 - Dirk Mueller <dmueller@suse.com>
 
-- update to 1.5.1: 
+- update to 1.5.1:
   * Numerous assorted bugfixes
   * Add a new fdt_create_with_flags() function, and a
     FDT_CREATE_FLAG_NO_NAME_DEDUP flag which improves speed at the

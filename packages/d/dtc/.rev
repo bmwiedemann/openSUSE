@@ -249,4 +249,17 @@
 - Enable YAML output format</comment>
     <requestid>744186</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>b05ac137996ce2b5e0d69389c19612b3</srcmd5>
+    <version>1.5.1</version>
+    <time>1573473474</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to building python3 bindings using setuptools to avoid
+  patching
+
+- Enable python3 binding in python3-libfdt
+
+- update to 1.5.1:</comment>
+    <requestid>745990</requestid>
+  </revision>
 </revisionlist>
