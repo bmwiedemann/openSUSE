@@ -1587,4 +1587,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>723794</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>76f35fbcc6cc5c548929233f9a374f1a</srcmd5>
+    <version>2.0.2+20191106.eef56dcd6</version>
+    <time>1573473622</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.2+20191106.eef56dcd6:
+- libcrmcommon: Make sure to free the --output-as description.
+- libcrmcommon: Rename formatted output cmdline options.
+- libcrmcommon: Group all output options together.
+
+- Update to version 2.0.2+20191031.1d695899e:
+- scheduler: clarify message about when watchdog will be used
+- scheduler: properly detect whether guest node is fenceable
+- scheduler: initialize unfencing digests to null
+- scheduler: improve graph synapse logging
+
+- Update to version 2.0.2+20191023.7a12ccbe4:
+- tools: Explain TIMESPEC in crm_mon help output.
+- tools: crm_mon --interval should understand more formats.
+- libcrmservice: don't close descriptors above current limit
+- rpm: pacemaker-cts requires pacemaker
+- tools: restore ability to show groups in crm_mon console mode
+- tools: Deprecated old-style output options in crm_mon.
+- cts-scheduler: test &quot;year-2038&quot; only runs for 64bit systems
+- fencer: clarify more messages
+- tools: don't ignore cib_new() errors in crm_mon
+- tools: avoid memory leak in crm_mon when displaying nodes
+- libpe_status: avoid memory leak when outputting resources
+- libcrmcommon: avoid memory leak when IPC compression fails
+- Security: introduce restrictive usage libxslt's security framework
+- libcrmservice: try not to spam close() file descriptors
+- tools: Support &quot;crm_mon --as-html=&amp;lt;filename&amp;gt;&quot;.
+- tools: Don't output nodes if they don't have failures.
+- tools: Update checks around crm_mon --daemonize.
+- libpe_status: Use CSS to style messages. (forwarded request 746348 from yan_gao)</comment>
+    <requestid>746349</requestid>
+  </revision>
 </revisionlist>

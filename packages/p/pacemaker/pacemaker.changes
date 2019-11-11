@@ -1,4 +1,170 @@
 -------------------------------------------------------------------
+Thu Nov 07 10:57:29 UTC 2019 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.2+20191106.eef56dcd6:
+- libcrmcommon: Make sure to free the --output-as description.
+- libcrmcommon: Rename formatted output cmdline options.
+- libcrmcommon: Group all output options together.
+
+-------------------------------------------------------------------
+Mon Nov 04 11:08:36 UTC 2019 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.2+20191031.1d695899e:
+- scheduler: clarify message about when watchdog will be used
+- scheduler: properly detect whether guest node is fenceable
+- scheduler: initialize unfencing digests to null
+- scheduler: improve graph synapse logging
+
+-------------------------------------------------------------------
+Tue Oct 29 15:18:03 UTC 2019 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.2+20191023.7a12ccbe4:
+- tools: Explain TIMESPEC in crm_mon help output.
+- tools: crm_mon --interval should understand more formats.
+- libcrmservice: don't close descriptors above current limit
+- rpm: pacemaker-cts requires pacemaker
+- tools: restore ability to show groups in crm_mon console mode
+- tools: Deprecated old-style output options in crm_mon.
+- cts-scheduler: test "year-2038" only runs for 64bit systems
+- fencer: clarify more messages
+- tools: don't ignore cib_new() errors in crm_mon
+- tools: avoid memory leak in crm_mon when displaying nodes
+- libpe_status: avoid memory leak when outputting resources
+- libcrmcommon: avoid memory leak when IPC compression fails
+- Security: introduce restrictive usage libxslt's security framework
+- libcrmservice: try not to spam close() file descriptors
+- tools: Support "crm_mon --as-html=<filename>".
+- tools: Don't output nodes if they don't have failures.
+- tools: Update checks around crm_mon --daemonize.
+- libpe_status: Use CSS to style messages.
+- tools: Add formatted output messages for resource history.
+- tools: Add output messages for operations history.
+- tools: Add full output to node messages.
+- xml: Add a schema for new crm_mon output.
+- tools: Use formatted output for nodes and their attrs.
+- tools: Enable formatted output in crm_mon.
+- tools: Use formatted output for failed actions.
+- tools: Use formatted output for bans and tickets.
+- tools: Use formatted output for cluster summary.
+- tools: Use formatted output for stonith messages.
+- tools: Add cluster summary messages.
+
+- Rebase:
+  * bug-806256_pacemaker-log-level-notice.patch
+
+-------------------------------------------------------------------
+Wed Oct 16 12:34:13 UTC 2019 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.2+20191014.09114c357:
+- fencer: improved log messages regarding fencing actions (bsc#1151007)
+- cts: ComponentFail: killed corosync doesn't respawn immediatelly.
+- fencer: no need to check the length of a non-empty list for pending fencing actions (bsc#1151007)
+- tools: crm_attribute should skip attrd if CIB is file
+- controller: improve throttle mode messages
+- libcrmcommon: improve messages when waiting for child processes
+- scheduler: greatly improve efficiency of interval-origin
+- tools: improve crm_resource --cleanup/--refresh help text
+- fencer: Indicate fencing target in the logs when scheduling and executing fencing command (bsc#1151007)
+- fencer: Make sure concurrent fencing commands get triggered to execute (bsc#1151007)
+- fencer: Don't let a fencing command with a long delay block any other commands pending on the device (bsc#1151007)
+- scheduler: de-duplicate inputs even if not adding to transition graph
+- scheduler: check for invalid orderings when applying orderings
+- scheduler: improve messages when adding actions to transition graph
+- tools: new tool to compare crm_simulate profiling output
+- tools: add crm_simulate option to repeat profiling tests
+- tools: Use glib for cmdline handling in crm_node.
+- fencing: Do not block concurrent fencing actions on a device (bsc#1151007)
+- fencing: handle fence meta-data errors better
+- libcrmcommon: avoid buffer overflows when converting date to string
+- executor: handle remote server socket consistently
+- tools: improve help text for crm_resource --validate
+
+- Rebase:
+  * bug-728579_pacemaker-stonith-dev-id.patch
+
+-------------------------------------------------------------------
+Tue Oct 08 08:40:40 UTC 2019 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.2+20190930.7fd98a2c5:
+- controller: allow more cluster properties to take ISO 8601 specification
+- scheduler: allow failure-timeout to take ISO 8601 interval
+- libcrmcommon,tools: handle NULL values better in time handling
+- libcrmcommon: allow 24:00:00 time as equivalent to next day's 00:00:00
+- libcrmcommon: allow ISO 8601 strings of form "<date>T<time> <offset>"
+- libcrmcommon: always mark durations appropriately
+- libcrmcommon: look for magic string "epoch" correctly
+- libcrmcommon: improve ISO 8601 error handling
+- tools: print correct variable in iso8601 error messages
+- tools: improve iso8601 error handling
+- tools: improve stonith_admin error message
+- CIB: improve message when handling op with CIB_file
+- tools: correct iso8601 help for -D/-E
+- libcrmcommon:  Allow spaces in forced output cmdline args.
+- libcrmcommon:  Be more lenient when freeing private data.
+- libpe_status: Don't output empty lists in clone sets.
+- tools: crm_mon --output-as html should default to stdout.
+- tools: Examples in crm_mon should reference new args.
+- Pacemaker Remote: allow environment variable file for PID 1
+- controller: use dynamic cluster recheck interval
+- controller: allow full interval specs for relevant cluster properties
+- scheduler: track "recheck by" for nvpair blocks with date/time rules
+- scheduler: track "recheck by" for location constraints with date/time rules
+- scheduler: add ability to track when date expression evaluation will next change
+- scheduler: improve configuration validation for date expressions
+- libcrmcommon: improve error messages when parsing date strings
+- libpe_status: track "recheck by" for failure timeouts
+- libcrmcommon: Accept a single dash on the command line.
+- libpe_status: improve messages for expired failures
+- libpe_status: check for parameter changes for any unexpired operation
+- libpe_status: match last failures more exactly
+- libpe_status: warn if user specified negative migration-threshold
+- SysInfo: Add support for other units (K, T and P) in SysInfo_megabytes function
+- libcrmcommon: Allow printing blank lines with the info message.
+- libpe_status: Fix segfaults in pe__bundle_*.
+- tools: crm_mon -L does not require an argument.
+- all: avoid Year 2038 issues
+- libcrmcommon: add XML getter for epoch time values
+- libcrmcommon,libcrmcluster: improve usage of timeval with XML
+- libcrmcommon: add XML getter and setter for long long values
+- libcrmcommon: improve error-checking when parsing integers from XML
+- CIB: formally deprecate last-run in operation history XML
+
+-------------------------------------------------------------------
+Tue Oct 08 08:30:40 UTC 2019 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.2+20190910.f1b697557:
+- tools: Re-enable verbosity in crm_mon.
+- tools: Don't add extra newlines to curses lists.
+- tools: Fix crm_mon -t.
+- tools: Don't output two asterisks in curses lists.
+- libcrmcommon: Don't output two asterisks in text lists.
+- crm_resource: inherit resource attributes
+
+-------------------------------------------------------------------
+Wed Sep 11 08:24:34 UTC 2019 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.2+20190909.d4e0fef91:
+- systemd: use correct name for unit directory variable
+- configure: add --with-runstatedir option
+- crm_mon: Displays completed fault actions as processed.
+- libstonithd: Changing the log level.
+- libcrmcommon: reword output options header
+- logrotate: use correct name for bundle logs
+- Pacemaker Remote: tell systemd not to respawn after fatal failure
+- Pacemaker Remote: correctly detect bind/listen failure
+- Pacemaker Remote: allow user to specify listen address
+- tools: re-enable verbosity in stonith_admin
+- rpm: add soft dependency on tar and bzip2
+- add truly noarch indirection towards pacemaker schemas
+- all: restrict XML children loops to XML elements where appropriate
+- libcrmcommon: handle pcmk_strerror(INT_MIN)
+- tools: avoid memory leak in crm_mon when displaying help
+- pacemakerd: tweak messages for checking for existing instance
+- pacemakerd: log a better warning if unable to create /var/run/crm
+- libcrmcommon:  Support old-style XML output.
+- tools: Add a curses formatter to crm_mon.
+
+-------------------------------------------------------------------
 Thu Aug 08 11:10:39 UTC 2019 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.0.2+20190801.122c32115:
@@ -50,6 +216,9 @@ Mon Jul 15 09:35:42 UTC 2019 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.0.2+20190712.662793aac:
 - scheduler: wait for probe actions to complete to prevent unnecessary restart/re-promote of dependent resources (bsc#1130122, bsc#1032511)
+- Merge:
+  * bsc#1130122-0001-Fix-scheduler-wait-for-probe-actions-to-complete-to-.patch
+  * bsc#1130122-0002-Test-scheduler-wait-for-probe-actions-to-complete-to.patch
 
 -------------------------------------------------------------------
 Fri Jul 12 13:54:03 UTC 2019 - Yan Gao <ygao@suse.com>
@@ -124,12 +293,28 @@ Fri Jun 07 10:39:45 UTC 2019 - Yan Gao <ygao@suse.com>
 - libpe_status: offer compile-time option to change concurrent-fencing default
 - libstonithd: return proper error code for async stonith action
 - various: improve fencer connection messages
+
 - stonith_admin --help: specify the usage of --cleanup (bsc#1135317)
+- Merge:
+  * bsc#1135317-0001-Low-stonith_admin-help-specify-the-usage-of-cleanup.patch
+
 - pacemaker.service: Add option that does not restart Pacemaker if Corosync stops
+
 - controller: confirm cancel of failed monitors (bsc#1133866)
+- Merge:
+  * bsc#1133866-0001-Fix-controller-confirm-cancel-of-failed-monitors.patch
+
 - libcrmcommon: return error when applying XML diffs containing unknown operations (bsc#1127716)
+- Merge:
+  * bsc#1127716-0003-Fix-libcrmcommon-return-error-when-applying-XML-diff.patch
+
 - libcrmcommon: avoid possible use-of-NULL when applying XML diffs (bsc#1127716)
+- Merge:
+  * bsc#1127716-0002-Fix-libcrmcommon-avoid-possible-use-of-NULL-when-app.patch
+
 - libcrmcommon: correctly apply XML diffs with multiple move/create changes (bsc#1127716)
+- Merge:
+  * bsc#1127716-0001-Fix-libcrmcommon-correctly-apply-XML-diffs-with-mult.patch
 
 -------------------------------------------------------------------
 Fri Jun 07 10:36:55 UTC 2019 - Yan Gao <ygao@suse.com>
@@ -164,13 +349,22 @@ Wed May 01 07:22:56 UTC 2019 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.0.1+20190430.8e851b084:
 - controller: avoid memory leak when duplicate monitor is scheduled
+- Merge:
+  * 0001-Low-controller-avoid-memory-leak-when-duplicate-moni.patch
+
 - libcrmcommon: return proper code if testing pid is denied (bsc#1131353, bsc#1131356)
+- Merge:
+  * bsc#1131353-bsc#1131356-0001-Low-libcrmcommon-return-proper-code-if-testing-pid-i.patch
 
 -------------------------------------------------------------------
 Tue Apr 30 13:17:22 UTC 2019 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.0.1+20190424.a365fc58d:
+
 - libcrmcommon: avoid use-of-NULL when checking whether process is active (bsc#1131353, bsc#1131356)
+- Merge:
+  * bsc#1131353-bsc#1131356-0001-Fix-libcrmcommon-avoid-use-of-NULL-when-checking-whe.patch
+
 - daemons: make start-up log messages consistent across all daemons
 - executor: downgrade disappeared remote client message to notice
 - remote: include channel name in IPC proxy failure message
@@ -704,7 +898,7 @@ Wed May  9 10:48:06 UTC 2018 - ygao@suse.com
 
 - Update to version 1.1.18+20180504.70fe3d6e9:
 - all: take advantage of new libqb features
-- contoller,scheduler: guard hash table deletes
+- contoller,scheduler: guard hash table deletes (bsc#1136712)
 - controller: don't abort after delay if we're no longer DC
 - libcrmcommon,pacemakerd: kernel task name is at most 15 characters
 - cts: install dummy systemd daemon via helper script

@@ -30,6 +30,8 @@
 ## Where to install Pacemaker documentation
 %global pcmk_docdir %{_docdir}/%{name}
 
+%define _rundir /run
+
 ## Path to Python interpreter (leave commented to auto-detect,
 ## or uncomment and edit to use a specific version)
 %global python_path /usr/bin/python%{python3_version}
@@ -74,7 +76,7 @@
 %endif
 
 Name:           pacemaker
-Version:        2.0.2+20190801.122c32115
+Version:        2.0.2+20191106.eef56dcd6
 Release:        0
 Summary:        Scalable High-Availability cluster resource manager
 # AGPL-3.0 licensed extra/clustermon.sh is not present in the binary
@@ -192,6 +194,9 @@ Requires:       perl-TimeDate
 Requires:       procps
 Requires:       psmisc
 Requires(post): coreutils
+# For crm_report
+Recommends:     tar
+Recommends:     bzip2
 
 %description cli
 Pacemaker is an advanced, scalable High-Availability cluster resource
@@ -277,7 +282,7 @@ for developing tools for Pacemaker.
 %package       cts
 Summary:        Test framework for cluster-related technologies
 Group:          Productivity/Clustering/HA
-Requires:       libpacemaker3 = %{version}-%{release}
+Requires:       %{name} = %{version}-%{release}
 Requires:       procps
 Requires:       psmisc
 Requires:       python3
@@ -313,7 +318,7 @@ manager.
 
 %build
 
-export systemdunitdir=%{?_unitdir}%{!?_unitdir:no}
+export systemdsystemunitdir=%{?_unitdir}%{!?_unitdir:no}
 
 %if %{with hardening}
 # prefer distro-provided hardening flags in case they are defined
@@ -350,6 +355,7 @@ autoreconf -fvi
         %{?with_coverage:      --with-coverage}        \
         %{!?with_doc:          --with-brand=}          \
         --with-initdir=%{_initddir}                    \
+        --with-runstatedir=%{_rundir}                  \
         --localstatedir=%{_var}                        \
         --with-version=%{version}-%{release}
 
@@ -549,6 +555,7 @@ fi
 %exclude %{_datadir}/pacemaker/alerts
 %exclude %{_datadir}/pacemaker/tests
 %{_datadir}/pacemaker
+%{_datadir}/pkgconfig/pacemaker-schemas.pc
 %{_datadir}/snmp/mibs/PCMK-MIB.txt
 
 %exclude %{_libexecdir}/ocf/resource.d/pacemaker/controld

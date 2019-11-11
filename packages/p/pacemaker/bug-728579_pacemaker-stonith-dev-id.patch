@@ -4,11 +4,11 @@ Date:   Thu Sep 6 15:14:58 2012 +0800
 
     Medium: stonith: Expose IDs of stonith resources to stonith agents through "$CRM_meta_st_device_id" environment variable
 
-Index: pacemaker-2.0.2+20190614.9f18a420a/daemons/fenced/fenced_commands.c
+Index: pacemaker-2.0.2+20191014.81d51216d/daemons/fenced/fenced_commands.c
 ===================================================================
---- pacemaker-2.0.2+20190614.9f18a420a.orig/daemons/fenced/fenced_commands.c
-+++ pacemaker-2.0.2+20190614.9f18a420a/daemons/fenced/fenced_commands.c
-@@ -878,6 +878,7 @@ build_device_from_xml(xmlNode * msg)
+--- pacemaker-2.0.2+20191014.81d51216d.orig/daemons/fenced/fenced_commands.c
++++ pacemaker-2.0.2+20191014.81d51216d/daemons/fenced/fenced_commands.c
+@@ -905,6 +905,7 @@ build_device_from_xml(xmlNode * msg)
                   device->id, device->on_target_actions);
      }
  
@@ -16,11 +16,11 @@ Index: pacemaker-2.0.2+20190614.9f18a420a/daemons/fenced/fenced_commands.c
      device->work = mainloop_add_trigger(G_PRIORITY_HIGH, stonith_device_dispatch, device);
      /* TODO: Hook up priority */
  
-Index: pacemaker-2.0.2+20190614.9f18a420a/lib/fencing/st_client.c
+Index: pacemaker-2.0.2+20191014.81d51216d/lib/fencing/st_client.c
 ===================================================================
---- pacemaker-2.0.2+20190614.9f18a420a.orig/lib/fencing/st_client.c
-+++ pacemaker-2.0.2+20190614.9f18a420a/lib/fencing/st_client.c
-@@ -40,6 +40,7 @@ struct stonith_action_s {
+--- pacemaker-2.0.2+20191014.81d51216d.orig/lib/fencing/st_client.c
++++ pacemaker-2.0.2+20191014.81d51216d/lib/fencing/st_client.c
+@@ -42,6 +42,7 @@ struct stonith_action_s {
      char *action;
      char *victim;
      GHashTable *args;
@@ -28,7 +28,7 @@ Index: pacemaker-2.0.2+20190614.9f18a420a/lib/fencing/st_client.c
      int timeout;
      int async;
      void *userdata;
-@@ -561,6 +562,7 @@ stonith__destroy_action(stonith_action_t
+@@ -600,6 +601,7 @@ stonith__destroy_action(stonith_action_t
          }
          free(action->output);
          free(action->error);
@@ -36,7 +36,7 @@ Index: pacemaker-2.0.2+20190614.9f18a420a/lib/fencing/st_client.c
          free(action);
      }
  }
-@@ -630,6 +632,8 @@ stonith_action_create(const char *agent,
+@@ -669,6 +671,8 @@ stonith_action_create(const char *agent,
      if (device_args) {
          char buffer[512];
          const char *value = NULL;
@@ -45,7 +45,7 @@ Index: pacemaker-2.0.2+20190614.9f18a420a/lib/fencing/st_client.c
  
          snprintf(buffer, sizeof(buffer), "pcmk_%s_retries", _action);
          value = g_hash_table_lookup(device_args, buffer);
-@@ -637,6 +641,11 @@ stonith_action_create(const char *agent,
+@@ -676,6 +680,11 @@ stonith_action_create(const char *agent,
          if (value) {
              action->max_retries = atoi(value);
          }
@@ -57,9 +57,9 @@ Index: pacemaker-2.0.2+20190614.9f18a420a/lib/fencing/st_client.c
      }
  
      return action;
-@@ -773,6 +782,10 @@ internal_stonith_action_execute(stonith_
-     svc_action->params = action->args;
+@@ -813,6 +822,10 @@ internal_stonith_action_execute(stonith_
      svc_action->cb_data = (void *) action;
+     set_bit(svc_action->flags, SVC_ACTION_NON_BLOCKED);
  
 +    if (action->dev_id) {
 +        svc_action->rsc = strdup(action->dev_id);
@@ -68,10 +68,10 @@ Index: pacemaker-2.0.2+20190614.9f18a420a/lib/fencing/st_client.c
      /* keep retries from executing out of control and free previous results */
      if (is_retry) {
          free(action->output);
-Index: pacemaker-2.0.2+20190614.9f18a420a/lib/services/services_linux.c
+Index: pacemaker-2.0.2+20191014.81d51216d/lib/services/services_linux.c
 ===================================================================
---- pacemaker-2.0.2+20190614.9f18a420a.orig/lib/services/services_linux.c
-+++ pacemaker-2.0.2+20190614.9f18a420a/lib/services/services_linux.c
+--- pacemaker-2.0.2+20191014.81d51216d.orig/lib/services/services_linux.c
++++ pacemaker-2.0.2+20191014.81d51216d/lib/services/services_linux.c
 @@ -30,6 +30,9 @@
  #include "crm/common/mainloop.h"
  #include "crm/services.h"
