@@ -50,6 +50,9 @@ perl Build.PL installdirs=vendor
 ./Build build flags=%{?_smp_mflags}
 
 %check
+# https://github.com/mudler/Mojo-IOLoop-ReadWriteProcess/issues/4
+# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=939460
+rm t/10_cgroupv?.t
 ./Build test
 
 %install
