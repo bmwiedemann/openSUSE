@@ -3,9 +3,9 @@
  		<param name="scm">git</param>
 		<param name="url">https://github.com/KhronosGroup/glslang</param>
 		<!-- minor part also in glslang/Include/revision.h (and sometimes out of date too) -->
-		<param name="revision">7.12.3352</param>
-		<param name="parent-tag">7.12.3352</param>
-		<param name="versionformat">7.12.3352</param>
+		<param name="revision">7.13.3496</param>
+		<param name="parent-tag">7.13.3496</param>
+		<param name="versionformat">7.13.3496</param>
 	</service>
 	<service name="recompress" mode="disabled">
 		<param name="file">*.tar</param>

@@ -146,4 +146,12 @@
   [boo#1153950]</comment>
     <requestid>738488</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>acdcc5a5be3ab33a8773a5ddfdbc2bcf</srcmd5>
+    <version>7.13.3496</version>
+    <time>1573473611</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 7.13.3496</comment>
+    <requestid>746193</requestid>
+  </revision>
 </revisionlist>

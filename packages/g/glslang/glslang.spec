@@ -17,11 +17,11 @@
 
 
 # lname needs a bump for every change in commit (_service)
-%define version_unconverted 7.12.3352
-%define lname libglslang-suse7
+%define version_unconverted 7.13.3496
+%define lname libglslang-suse8
 
 Name:           glslang
-Version:        7.12.3352
+Version:        7.13.3496
 Release:        0
 Summary:        OpenGL and OpenGL ES shader front end and validator
 License:        BSD-3-Clause
@@ -34,6 +34,7 @@ Patch1:         ver.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python3-base
 
@@ -94,18 +95,20 @@ cp build/StandAlone/libglslang-default-resource-limits.so "$b/%_libdir/"
 # so satisfy them under our shared build.
 ln -s libglslang.so "$b/%_libdir/libOGLCompiler.so"
 ln -s libglslang.so "$b/%_libdir/libOSDependent.so"
+%fdupes %buildroot/%_prefix
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
 %defattr(-,root,root)
-%_libdir/*.so.suse7*
+%_libdir/*.so.suse8*
 
 %files devel
 %defattr(-,root,root)
 %_bindir/gls*
 %_bindir/spirv*
+%_prefix/lib/cmake/
 %_libdir/*resource*.so
 %_libdir/libHLSL.so
 %_libdir/libOGLCompiler.so

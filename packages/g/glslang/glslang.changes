@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov  7 08:25:53 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.13.3496
+  * GL_NV_integer_cooperative_matrix support
+  * Add support for GL_ARB_explicit_uniform_location
+  * SPV 1.5: Switch to the 1.5 header, for SPIR-V 1.5.
+  * Add GL_EXT_shader_subgroup_extended_types support
+  * SPV_KHR_physical_storage_buffer/SPV:
+    Add GL_EXT_buffer_reference_uvec2
+  * Emit SPV_EXT_physical_storage_buffer, not the KHR form.
+  * Promote SPV_EXT_physical_storage_buffer to KHR when required.
+
+-------------------------------------------------------------------
 Mon Oct 14 21:01:23 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop unused static libraries, functions of libOGLCompilerDLL and
