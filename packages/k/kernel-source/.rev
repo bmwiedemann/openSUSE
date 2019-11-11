@@ -4868,4 +4868,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.3.8 &amp; CVE fixes &amp; stacktrace fix</comment>
     <requestid>743956</requestid>
   </revision>
+  <revision rev="513" vrev="1">
+    <srcmd5>48c0b9b75be33b83be4c7532da024f3a</srcmd5>
+    <version>5.3.9</version>
+    <time>1573473554</time>
+    <user>dimstar_suse</user>
+    <comment>5.3.9 &amp; ata fix &amp; alsa fix</comment>
+    <requestid>746155</requestid>
+  </revision>
 </revisionlist>

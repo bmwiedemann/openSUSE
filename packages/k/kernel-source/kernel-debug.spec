@@ -18,10 +18,11 @@
 
 
 %define srcversion 5.3
-%define patchversion 5.3.8
+%define patchversion 5.3.9
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
+%define compress_vmlinux gz
 %define livepatch livepatch%{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -64,9 +65,9 @@ Name:           kernel-debug
 Summary:        A Debug Version of the Kernel
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.3.8
+Version:        5.3.9
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gea4c828
+Release:        <RELEASE>.gb0d4923
 %else
 Release:        0
 %endif
@@ -171,10 +172,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-ea4c828eff871b1903070b31debe0ff5f7a3065c
-Provides:       kernel-srchash-ea4c828eff871b1903070b31debe0ff5f7a3065c
+Provides:       kernel-%build_flavor-base-srchash-b0d4923f79b9b666ca0e0769939dd46ac7e6c382
+Provides:       kernel-srchash-b0d4923f79b9b666ca0e0769939dd46ac7e6c382
 # END COMMON DEPS
-Provides:       %name-srchash-ea4c828eff871b1903070b31debe0ff5f7a3065c
+Provides:       %name-srchash-b0d4923f79b9b666ca0e0769939dd46ac7e6c382
 %ifarch ppc64
 Provides:       kernel-kdump = 2.6.28
 Obsoletes:      kernel-kdump <= 2.6.28
@@ -664,7 +665,7 @@ add_vmlinux()
         # avoid using the gzip -n option to make kdump happy (bnc#880848#c20)
         ts="$(head -n1 %_sourcedir/source-timestamp)"
         touch -d "$ts" %buildroot/$vmlinux
-        touch %buildroot/$vmlinux.gz
+        touch %buildroot/$vmlinux.%{compress_vmlinux}
 %if 0%{?__debug_package:1}
         # compress the vmlinux image after find-debuginfo.sh has processed it
 %global __debug_install_post %__debug_install_post \
@@ -1018,7 +1019,7 @@ done | add_dirs_to_filelist >%my_builddir/kernel-devel.files
             echo "%%ghost /$f"
             continue
             ;;
-        boot/vmlinux-*.gz)
+        boot/vmlinux-*.%{compress_vmlinux})
             ;;
         boot/vmlinux-*)
             if $ghost_vmlinux; then

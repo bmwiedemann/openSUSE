@@ -1,4 +1,308 @@
 -------------------------------------------------------------------
+Thu Nov  7 08:06:36 CET 2019 - jslaby@suse.cz
+
+- Linux 5.3.9 (bnc#11519).
+- io_uring: fix up O_NONBLOCK handling for sockets (bnc#1151927).
+- dm snapshot: introduce account_start_copy() and
+  account_end_copy() (bnc#1151927).
+- dm snapshot: rework COW throttling to fix deadlock
+  (bnc#1151927).
+- Btrfs: fix inode cache block reserve leak on failure to allocate
+  data space (bnc#1151927).
+- btrfs: qgroup: Always free PREALLOC META reserve in
+  btrfs_delalloc_release_extents() (bnc#1151927).
+- iio: adc: meson_saradc: Fix memory allocation order
+  (bnc#1151927).
+- iio: fix center temperature of bmc150-accel-core (bnc#1151927).
+- libsubcmd: Make _FORTIFY_SOURCE defines dependent on the feature
+  (bnc#1151927).
+- perf tests: Avoid raising SEGV using an obvious NULL dereference
+  (bnc#1151927).
+- perf map: Fix overlapped map handling (bnc#1151927).
+- perf script brstackinsn: Fix recovery from LBR/binary mismatch
+  (bnc#1151927).
+- perf jevents: Fix period for Intel fixed counters (bnc#1151927).
+- perf tools: Propagate get_cpuid() error (bnc#1151927).
+- perf annotate: Propagate perf_env__arch() error (bnc#1151927).
+- perf annotate: Fix the signedness of failure returns
+  (bnc#1151927).
+- perf annotate: Propagate the symbol__annotate() error return
+  (bnc#1151927).
+- perf annotate: Fix arch specific ->init() failure errors
+  (bnc#1151927).
+- perf annotate: Return appropriate error code for allocation
+  failures (bnc#1151927).
+- perf annotate: Don't return -1 for error when doing BPF
+  disassembly (bnc#1151927).
+- staging: rtl8188eu: fix null dereference when kzalloc fails
+  (bnc#1151927).
+- RDMA/siw: Fix serialization issue in write_space()
+  (bnc#1151927).
+- RDMA/hfi1: Prevent memory leak in sdma_init (bnc#1151927).
+- RDMA/iw_cxgb4: fix SRQ access from dump_qp() (bnc#1151927).
+- RDMA/iwcm: Fix a lock inversion issue (bnc#1151927).
+- HID: hyperv: Use in-place iterator API in the channel callback
+  (bnc#1151927).
+- kselftest: exclude failed TARGETS from runlist (bnc#1151927).
+- selftests/kselftest/runner.sh: Add 45 second timeout per test
+  (bnc#1151927).
+- nfs: Fix nfsi->nrequests count error on nfs_inode_remove_request
+  (bnc#1151927).
+- arm64: cpufeature: Effectively expose FRINT capability to
+  userspace (bnc#1151927).
+- arm64: Fix incorrect irqflag restore for priority masking for
+  compat (bnc#1151927).
+- arm64: ftrace: Ensure synchronisation in PLT setup for
+  Neoverse-N1 #1542419 (bnc#1151927).
+- tty: serial: owl: Fix the link time qualifier of
+  'owl_uart_exit()' (bnc#1151927).
+- tty: serial: rda: Fix the link time qualifier of
+  'rda_uart_exit()' (bnc#1151927).
+- serial/sifive: select SERIAL_EARLYCON (bnc#1151927).
+- tty: n_hdlc: fix build on SPARC (bnc#1151927).
+- misc: fastrpc: prevent memory leak in fastrpc_dma_buf_attach
+  (bnc#1151927).
+- RDMA/core: Fix an error handling path in 'res_get_common_doit()'
+  (bnc#1151927).
+- RDMA/cm: Fix memory leak in cm_add/remove_one (bnc#1151927).
+- RDMA/nldev: Reshuffle the code to avoid need to rebind QP in
+  error path (bnc#1151927).
+- RDMA/mlx5: Do not allow rereg of a ODP MR (bnc#1151927).
+- RDMA/mlx5: Order num_pending_prefetch properly with
+  synchronize_srcu (bnc#1151927).
+- RDMA/mlx5: Add missing synchronize_srcu() for MW cases
+  (bnc#1151927).
+- gpio: max77620: Use correct unit for debounce times
+  (bnc#1151927).
+- fs: cifs: mute -Wunused-const-variable message (bnc#1151927).
+- arm64: vdso32: Fix broken compat vDSO build warnings
+  (bnc#1151927).
+- arm64: vdso32: Detect binutils support for dmb ishld
+  (bnc#1151927).
+- serial: mctrl_gpio: Check for NULL pointer (bnc#1151927).
+- serial: 8250_omap: Fix gpio check for auto RTS/CTS
+  (bnc#1151927).
+- arm64: Default to building compat vDSO with clang when
+  CONFIG_CC_IS_CLANG (bnc#1151927).
+- arm64: vdso32: Don't use KBUILD_CPPFLAGS unconditionally
+  (bnc#1151927).
+- efi/cper: Fix endianness of PCIe class code (bnc#1151927).
+- efi/x86: Do not clean dummy variable in kexec path
+  (bnc#1151927).
+- MIPS: include: Mark __cmpxchg as __always_inline (bnc#1151927).
+- riscv: avoid kernel hangs when trapped in BUG() (bnc#1151927).
+- riscv: avoid sending a SIGTRAP to a user thread trapped in
+  WARN() (bnc#1151927).
+- riscv: Correct the handling of unexpected ebreak in
+  do_trap_break() (bnc#1151927).
+- x86/xen: Return from panic notifier (bnc#1151927).
+- ocfs2: clear zero in unaligned direct IO (bnc#1151927).
+- fs: ocfs2: fix possible null-pointer dereferences in
+  ocfs2_xa_prepare_entry() (bnc#1151927).
+- fs: ocfs2: fix a possible null-pointer dereference in
+  ocfs2_write_end_nolock() (bnc#1151927).
+- fs: ocfs2: fix a possible null-pointer dereference in
+  ocfs2_info_scan_inode_alloc() (bnc#1151927).
+- btrfs: silence maybe-uninitialized warning in clone_range
+  (bnc#1151927).
+- arm64: armv8_deprecated: Checking return value for memory
+  allocation (bnc#1151927).
+- x86/cpu: Add Comet Lake to the Intel CPU models header
+  (bnc#1151927).
+- sched/fair: Scale bandwidth quota and period without losing
+  quota/period ratio precision (bnc#1151927).
+- sched/vtime: Fix guest/system mis-accounting on task switch
+  (bnc#1151927).
+- perf/core: Rework memory accounting in perf_mmap()
+  (bnc#1151927).
+- perf/core: Fix corner case in perf_rotate_context()
+  (bnc#1151927).
+- perf/x86/amd: Change/fix NMI latency mitigation to use a
+  timestamp (bnc#1151927).
+- drm/amdgpu: fix memory leak (bnc#1151927).
+- iio: imu: adis16400: release allocated memory on failure
+  (bnc#1151927).
+- iio: imu: adis16400: fix memory leak (bnc#1151927).
+- iio: imu: st_lsm6dsx: fix waitime for st_lsm6dsx i2c controller
+  (bnc#1151927).
+- MIPS: include: Mark __xchg as __always_inline (bnc#1151927).
+- MIPS: fw: sni: Fix out of bounds init of o32 stack
+  (bnc#1151927).
+- s390/cio: fix virtio-ccw DMA without PV (bnc#1151927).
+- virt: vbox: fix memory leak in hgcm_call_preprocess_linaddr
+  (bnc#1151927).
+- nbd: fix possible sysfs duplicate warning (bnc#1151927).
+- NFSv4: Fix leak of clp->cl_acceptor string (bnc#1151927).
+- SUNRPC: fix race to sk_err after xs_error_report (bnc#1151927).
+- s390/uaccess: avoid (false positive) compiler warnings
+  (bnc#1151927).
+- tracing: Initialize iter->seq after zeroing in
+  tracing_read_pipe() (bnc#1151927).
+- perf annotate: Fix multiple memory and file descriptor leaks
+  (bnc#1151927).
+- perf/aux: Fix tracking of auxiliary trace buffer allocation
+  (bnc#1151927).
+- USB: legousbtower: fix a signedness bug in tower_probe()
+  (bnc#1151927).
+- nbd: verify socket is supported during setup (bnc#1151927).
+- arm64: dts: qcom: Add Lenovo Miix 630 (bnc#1151927).
+- arm64: dts: qcom: Add HP Envy x2 (bnc#1151927).
+- arm64: dts: qcom: Add Asus NovaGo TP370QL (bnc#1151927).
+- rtw88: Fix misuse of GENMASK macro (bnc#1151927).
+- s390/pci: fix MSI message data (bnc#1151927).
+- thunderbolt: Correct path indices for PCIe tunnel (bnc#1151927).
+- thunderbolt: Use 32-bit writes when writing ring
+  producer/consumer (bnc#1151927).
+- fuse: flush dirty data/metadata before non-truncate setattr
+  (bnc#1151927).
+- fuse: truncate pending writes on O_TRUNC (bnc#1151927).
+- ALSA: bebob: Fix prototype of helper function to return negative
+  value (bnc#1151927).
+- ALSA: timer: Fix mutex deadlock at releasing card (bnc#1151927).
+- ALSA: hda/realtek - Fix 2 front mics of codec 0x623
+  (bnc#1151927).
+- ALSA: hda/realtek - Add support for ALC623 (bnc#1151927).
+- ath10k: fix latency issue for QCA988x (bnc#1151927).
+- UAS: Revert commit 3ae62a42090f ("UAS: fix alignment of
+  scatter/gather segments") (bnc#1151927).
+- nl80211: fix validation of mesh path nexthop (bnc#1151927).
+- USB: gadget: Reject endpoints with 0 maxpacket value
+  (bnc#1151927).
+- usb-storage: Revert commit 747668dbc061 ("usb-storage: Set
+  virt_boundary_mask to avoid SG overflows") (bnc#1151927).
+- USB: ldusb: fix ring-buffer locking (bnc#1151927).
+- USB: ldusb: fix control-message timeout (bnc#1151927).
+- usb: xhci: fix Immediate Data Transfer endianness (bnc#1151927).
+- usb: xhci: fix __le32/__le64 accessors in debugfs code
+  (bnc#1151927).
+- USB: serial: whiteheat: fix potential slab corruption
+  (bnc#1151927).
+- USB: serial: whiteheat: fix line-speed endianness (bnc#1151927).
+- xhci: Fix use-after-free regression in xhci clear hub TT
+  implementation (bnc#1151927).
+- scsi: qla2xxx: Fix partial flash write of MBI (bnc#1151927).
+- scsi: target: cxgbit: Fix cxgbit_fw4_ack() (bnc#1151927).
+- HID: i2c-hid: add Trekstor Primebook C11B to descriptor override
+  (bnc#1151927).
+- HID: Fix assumption that devices have inputs (bnc#1151927).
+- HID: fix error message in hid_open_report() (bnc#1151927).
+- HID: logitech-hidpp: split g920_get_config() (bnc#1151927).
+- HID: logitech-hidpp: rework device validation (bnc#1151927).
+- HID: logitech-hidpp: do all FF cleanup in hidpp_ff_destroy()
+  (bnc#1151927).
+- um-ubd: Entrust re-queue to the upper layers (bnc#1151927).
+- s390/unwind: fix mixing regs and sp (bnc#1151927).
+- s390/cmm: fix information leak in cmm_timeout_handler()
+  (bnc#1151927).
+- s390/idle: fix cpu idle time calculation (bnc#1151927).
+- ARC: perf: Accommodate big-endian CPU (bnc#1151927).
+- IB/hfi1: Avoid excessive retry for TID RDMA READ request
+  (bnc#1151927).
+- arm64: Ensure VM_WRITE|VM_SHARED ptes are clean by default
+  (bnc#1151927).
+- arm64: cpufeature: Enable Qualcomm Falkor/Kryo errata 1003
+  (bnc#1151927).
+- virtio_ring: fix stalls for packed rings (bnc#1151927).
+- rtlwifi: rtl_pci: Fix problem of too small skb->len
+  (bnc#1151927).
+- KVM: vmx, svm: always run with EFER.NXE=1 when shadow paging
+  is active (bnc#1151927).
+- dmaengine: qcom: bam_dma: Fix resource leak (bnc#1151927).
+- dmaengine: tegra210-adma: fix transfer failure (bnc#1151927).
+- dmaengine: imx-sdma: fix size check for sdma script_number
+  (bnc#1151927).
+- dmaengine: cppi41: Fix cppi41_dma_prep_slave_sg() when idle
+  (bnc#1151927).
+- drm/amdgpu/gmc10: properly set BANK_SELECT and FRAGMENT_SIZE
+  (bnc#1151927).
+- drm/i915: Fix PCH reference clock for FDI on HSW/BDW
+  (bnc#1151927).
+- drm/amdgpu/gfx10: update gfx golden settings (bnc#1151927).
+- drm/amdgpu/powerplay/vega10: allow undervolting in p7
+  (bnc#1151927).
+- drm/amdgpu: Fix SDMA hang when performing VKexample test
+  (bnc#1151927).
+- NFS: Fix an RCU lock leak in nfs4_refresh_delegation_stateid()
+  (bnc#1151927).
+- io_uring: ensure we clear io_kiocb->result before each issue
+  (bnc#1151927).
+- iommu/vt-d: Fix panic after kexec -p for kdump (bnc#1151927).
+- batman-adv: Avoid free/alloc race when handling OGM buffer
+  (bnc#1151927).
+- llc: fix sk_buff leak in llc_sap_state_process() (bnc#1151927).
+- llc: fix sk_buff leak in llc_conn_service() (bnc#1151927).
+- rxrpc: Fix call ref leak (bnc#1151927).
+- rxrpc: rxrpc_peer needs to hold a ref on the rxrpc_local record
+  (bnc#1151927).
+- rxrpc: Fix trace-after-put looking at the put peer record
+  (bnc#1151927).
+- NFC: pn533: fix use-after-free and memleaks (bnc#1151927).
+- bonding: fix potential NULL deref in bond_update_slave_arr
+  (bnc#1151927).
+- netfilter: conntrack: avoid possible false sharing
+  (bnc#1151927).
+- net: usb: sr9800: fix uninitialized local variable
+  (bnc#1151927).
+- sch_netem: fix rcu splat in netem_enqueue() (bnc#1151927).
+- net: sched: sch_sfb: don't call qdisc_put() while holding tree
+  lock (bnc#1151927).
+- iwlwifi: exclude GEO SAR support for 3168 (bnc#1151927).
+- sched/fair: Fix low cpu usage with high throttling by removing
+  expiration of cpu-local slices (bnc#1151927).
+- ALSA: usb-audio: DSD auto-detection for Playback Designs
+  (bnc#1151927).
+- ALSA: usb-audio: Update DSD support quirks for Oppo and Rotel
+  (bnc#1151927).
+- ALSA: usb-audio: Add DSD support for Gustard U16/X26 USB
+  Interface (bnc#1151927).
+- RDMA/mlx5: Use irq xarray locking for mkey_table (bnc#1151927).
+- sched/fair: Fix -Wunused-but-set-variable warnings
+  (bnc#1151927).
+- powerpc/powernv: Fix CPU idle to be called with IRQs disabled
+  (bnc#1151927).
+- Revert "nvme: allow 64-bit results in passthru commands"
+  (bnc#1151927).
+- Revert "ALSA: hda: Flush interrupts on disabling" (bnc#1151927).
+- commit b0d4923
+
+-------------------------------------------------------------------
+Wed Nov  6 11:07:07 CET 2019 - jslaby@suse.cz
+
+- rpm/kernel-binary.spec.in: add COMPRESS_VMLINUX (bnc#1155921)
+  Let COMPRESS_VMLINUX determine the compression used for vmlinux. By
+  default (historically), it is gz.
+- commit c8b2d9f
+
+-------------------------------------------------------------------
+Tue Nov  5 14:55:44 CET 2019 - tiwai@suse.de
+
+- ALSA: hda/ca0132 - Fix possible workqueue stall (bsc#1155836).
+- commit 98ead79
+
+-------------------------------------------------------------------
+Tue Nov  5 09:02:35 CET 2019 - jslaby@suse.cz
+
+- stacktrace: Don't skip first entry on noncurrent tasks
+  (bnc#1154866).
+  Update upstream status.
+- commit f4d9b5e
+
+-------------------------------------------------------------------
+Mon Nov  4 14:29:51 CET 2019 - msuchanek@suse.de
+
+- rpm/kernel-subpackage-spec: Mention debuginfo in the subpackage
+  description (bsc#1149119).
+- commit 525ec92
+
+-------------------------------------------------------------------
+Mon Nov  4 10:45:31 CET 2019 - jslaby@suse.cz
+
+- ata: make qc_prep return ata_completion_errors (bnc#1110252).
+- ata: define AC_ERR_OK (bnc#1110252).
+- ata: sata_mv, avoid trigerrable BUG_ON (bnc#1110252).
+- commit 8bf663b
+
+-------------------------------------------------------------------
 Wed Oct 30 08:12:05 CET 2019 - jslaby@suse.cz
 
 - Refresh
