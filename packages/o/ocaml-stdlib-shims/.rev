@@ -7,4 +7,12 @@
     <comment>stdlib-shims became a BuildRequires for other ocaml packages.</comment>
     <requestid>735313</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>accaa862dbaaf34afc9db4ac87b8b856</srcmd5>
+    <version>0.1.0</version>
+    <time>1573504226</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>746714</requestid>
+  </revision>
 </revisionlist>

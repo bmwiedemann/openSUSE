@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -27,7 +27,7 @@ Url:            https://github.com/ocaml/stdlib-shims
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20191004
+BuildRequires:  ocaml-rpm-macros >= 20191101
 
 %description
 Compiling against this library allows replacing uses of Pervasives
@@ -48,6 +48,7 @@ developing applications that use %{name}.
 %autosetup -p1
 
 %build
+dune_release_pkgs='stdlib-shims'
 %ocaml_dune_setup
 %ocaml_dune_build
 
@@ -56,7 +57,7 @@ developing applications that use %{name}.
 %ocaml_create_file_list
 
 %check
-%ocaml_dune_test || : make check failed
+%ocaml_dune_test
 
 %files -f %{name}.files
 
