@@ -26,10 +26,10 @@ Name:           suitesparse
 Summary:        A collection of sparse matrix libraries
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Version:        5.4.0
+Version:        5.6.0
 Release:        0
-Url:            http://faculty.cse.tamu.edu/davis/SuiteSparse/
-Source:         http://faculty.cse.tamu.edu/davis/SuiteSparse/SuiteSparse-%{version}.tar.gz
+URL:            http://faculty.cse.tamu.edu/davis/suitesparse.html
+Source0:        https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v%{version}.tar.gz#/SuiteSparse-%{version}.tar.gz
 Source2:        %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE build_csparse_shared.patch -- Build CSparse as a shared library
 Patch1:         build_csparse_shared.patch
@@ -59,7 +59,7 @@ BuildRequires:  openblas-devel
 %define colamdver    2.9.6
 %define csparsever   3.2.0
 %define cxsparsever  3.2.0
-%define graphblasver 2.2.2
+%define graphblasver 3.1.1
 %define kluver       1.3.9
 %define ldlver       2.2.6
 %define mongoosever  2.0.3
@@ -68,7 +68,7 @@ BuildRequires:  openblas-devel
 %define umfpackver   5.7.8
 # Your need define even it's just the same as main package
 # or the %%build loop will override %%version with umfpack's version.
-%define configver    5.4.0
+%define configver    5.6.0
 %define csparsemajor %(echo "%{csparsever}" | cut -d "." -f1)
 %define amdlib       %(echo "libamd%{amdver}"                  | cut -d "." -f1)
 %define btflib       %(echo "libbtf%{btfver}"                  | cut -d "." -f1)
@@ -149,8 +149,8 @@ Provides:       libcsparse-devel           = %{csparsever}
 Obsoletes:      libcsparse-devel           < %{csparsever}
 Provides:       libcxsparse-devel          = %{cxsparsever}
 Obsoletes:      libcxsparse-devel          < %{cxsparsever}
-Provides:       libgraphblas-devel         = %{umfpackver}
-Obsoletes:      libgraphblas-devel         < %{umfpackver}
+Provides:       libgraphblas-devel         = %{graphblasver}
+Obsoletes:      libgraphblas-devel         < %{graphblasver}
 Provides:       libklu-devel               = %{kluver}
 Obsoletes:      libklu-devel               < %{kluver}
 Provides:       libldl-devel               = %{ldlver}
@@ -553,7 +553,7 @@ into a C application).
 SuiteSparse_config is part of the SuiteSparse sparse matrix suite.
 
 %prep
-%setup -q -n SuiteSparse
+%setup -q -n SuiteSparse-%{version}
 %patch1 -p1
 sed 's/^CHOLMOD_CONFIG =.*/CHOLMOD_CONFIG = -DNPARTITION/' -i SuiteSparse_config/SuiteSparse_config.mk
 %if %{without openblas}
@@ -612,10 +612,6 @@ cp -Pt %{buildroot}%{_libdir} Mongoose/build/lib/*.so.*
 cp -Pt %{buildroot}%{_includedir}/%{name} include/*
 cp -Pt %{buildroot}%{_includedir}/%{name} GraphBLAS/Include/*.h
 cp -Prt %{buildroot}%{_docdir} share/doc/*
-
-%if 0%{?sle_version} > 120300
-cp -Pt %{buildroot}%{_libdir} GraphBLAS/build/*.a
-%endif
 
 %check
 amd_test_symbol="amd_postorder"
@@ -771,7 +767,7 @@ popd
 %{_libdir}/libcxsparse.so.*
 
 %files -n %{graphblaslib}
-%doc GraphBLAS/README.txt
+%doc GraphBLAS/README.md
 %doc GraphBLAS/Doc/GraphBLAS_UserGuide.pdf
 %license GraphBLAS/Doc/ChangeLog GraphBLAS/Doc/License.txt
 %{_libdir}/libgraphblas.so.*
@@ -782,7 +778,7 @@ popd
 %license KLU/Doc/License.txt KLU/Doc/lesser.txt
 %{_libdir}/libklu.so.*
 
-%files -n libldl-doc
+%files -n libklu-doc
 %doc KLU/Doc/KLU_UserGuide.pdf
 
 %files -n %{ldllib}
