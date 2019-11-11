@@ -1437,4 +1437,15 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
   * gdb-dwarf-reader-reject-sections-with-invalid-sizes.patch (forwarded request 743950 from tomdevries)</comment>
     <requestid>744189</requestid>
   </revision>
+  <revision rev="133" vrev="3">
+    <srcmd5>d619f8b843dff33a14ba0bf17f8cc1a4</srcmd5>
+    <version>8.3.1</version>
+    <time>1573473577</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix for bsc#1146475 [bsc#1146475, swo#24971 ]
+  * gdb-symtab-prefer-var-def-over-decl.patch
+- Fix for bsc#1146167 [bsc#1146167, swo#24956]
+  * gdb-only-force-interp_console-ui_out-for-breakpoint-commands-in-mi-mode.patch (forwarded request 746178 from tomdevries)</comment>
+    <requestid>746186</requestid>
+  </revision>
 </revisionlist>
