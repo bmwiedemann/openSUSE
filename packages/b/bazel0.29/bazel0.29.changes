@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Tue Oct 15 14:44:54 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Add patch which fixes build on ppc64le architecture:
+  * 0001-fix-build-for-Power.patch
+
+-------------------------------------------------------------------
+Tue Oct 15 11:17:15 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Fix collision between grpc's gettid and glibc's gettid
+
+-------------------------------------------------------------------
+Wed Sep 11 16:42:29 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Initial release
