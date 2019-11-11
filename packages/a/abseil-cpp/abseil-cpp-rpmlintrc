@@ -1,0 +1,5 @@
+# This is a source package and /usr/src, warnings below are not important in
+# that case.
+addFilter("abseil-cpp-source.* suse-filelist-forbidden-fhs23")
+addFilter("abseil-cpp-source.* hidden-file-or-dir")
+addFilter("abseil-cpp-source.* non-executable-script")

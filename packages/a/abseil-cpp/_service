@@ -5,6 +5,7 @@
     <param name="changesgenerate">enable</param>
     <param name="filename">abseil-cpp</param>
     <param name="versionformat">%cd</param>
+    <param name="revision">61c9bf3e3e1c28a4aa6d7f1be4b37fd473bb5529</param>
   </service>
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>
