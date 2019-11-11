@@ -34,6 +34,7 @@ Source102:      abseil_time.BUILD
 Source103:      bsslwrapper.BUILD
 BuildRequires:  abseil-cpp-devel
 BuildRequires:  bazel
+BuildRequires:  bazel-rules-cc-source
 BuildRequires:  bssl_wrapper-devel
 BuildRequires:  gcc-c++
 BuildRequires:  openssl-devel
@@ -85,6 +86,7 @@ bazel build \
     --genrule_strategy=standalone \
     --host_javabase=@local_jdk//:jdk \
     --linkopt="-Wl,-soname,%{libname}.so.%{sover}" \
+    --override_repository="rules_cc=/usr/src/bazel-rules-cc" \
     --spawn_strategy=standalone \
     --strip=never \
     --verbose_failures \
