@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 06 06:17:48 UTC 2019 - XLiang@suse.com
+
+- Update to version 4.1.0+git.1573020742.a0b88227:
+  * Test: unittest: test Parallax class
+  * Dev: parallax: create class Parallax to simplify using parallax
+
+-------------------------------------------------------------------
 Thu Oct 31 06:57:08 UTC 2019 - XLiang@suse.com
 
 - Update to version 4.1.0+git.1572504697.472361c5:
