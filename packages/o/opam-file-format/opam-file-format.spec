@@ -27,7 +27,8 @@ Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
-BuildRequires:  ocaml-rpm-macros
+BuildRequires:  ocaml-dune
+BuildRequires:  ocaml-rpm-macros >= 20191101
 
 %description
 This is a parser and a printer for the opam file syntax.
@@ -35,6 +36,7 @@ This is a parser and a printer for the opam file syntax.
 %package devel
 Summary:        Development files for the opam file syntax parser
 Group:          Development/Languages/OCaml
+Requires:       %{name} = %{version}
 
 %description devel
 This is a parser and a printer for the opam file syntax.
@@ -42,42 +44,22 @@ This is a parser and a printer for the opam file syntax.
 This package contains development files for package %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%if 0%{?ocaml_native_compiler}
-make all
-%else
-make byte
-%endif
+dune_release_pkgs='opam-file-format'
+%ocaml_dune_setup
+%ocaml_dune_build
 
 %install
-export PREFIX=%{_prefix}
-export LIBDIR=%{_libdir}/ocaml
-%make_install
+%ocaml_dune_install
+%ocaml_create_file_list
 
-%files devel
-%license LICENSE
-%dir %{_libdir}/ocaml/opam-file-format
-%{_libdir}/ocaml/opam-file-format/META
-%{_libdir}/ocaml/opam-file-format/opam-file-format.cma
-%{_libdir}/ocaml/opam-file-format/opamBaseParser.cmi
-%{_libdir}/ocaml/opam-file-format/opamBaseParser.cmo
-%{_libdir}/ocaml/opam-file-format/opamLexer.cmi
-%{_libdir}/ocaml/opam-file-format/opamLexer.cmo
-%{_libdir}/ocaml/opam-file-format/opamParser.cmi
-%{_libdir}/ocaml/opam-file-format/opamParser.cmo
-%{_libdir}/ocaml/opam-file-format/opamParserTypes.cmi
-%{_libdir}/ocaml/opam-file-format/opamPrinter.cmi
-%{_libdir}/ocaml/opam-file-format/opamPrinter.cmo
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/opam-file-format/opam-file-format.a
-%{_libdir}/ocaml/opam-file-format/opam-file-format.cmxa
-%{_libdir}/ocaml/opam-file-format/opam-file-format.cmxs
-%{_libdir}/ocaml/opam-file-format/opamBaseParser.cmx
-%{_libdir}/ocaml/opam-file-format/opamLexer.cmx
-%{_libdir}/ocaml/opam-file-format/opamParser.cmx
-%{_libdir}/ocaml/opam-file-format/opamPrinter.cmx
-%endif
+%check
+%ocaml_dune_test
+
+%files -f %{name}.files
+
+%files devel -f %{name}.files.devel
 
 %changelog
