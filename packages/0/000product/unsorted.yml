@@ -282,6 +282,7 @@ unsorted:
   - abook-lang 
   - abootimg 
   - abseil-cpp-devel: [x86_64] 
+  - abseil-cpp-source: [x86_64] 
   - abxtest 
   - acars-examples 
   - acarsdec 
@@ -999,6 +1000,7 @@ unsorted:
   - bazel0.24: [x86_64] 
   - bazel0.25: [x86_64] 
   - bazel0.26: [x86_64] 
+  - bazel0.29: [x86_64] 
   - bb 
   - bbe 
   - bbswitch 
@@ -2530,6 +2532,8 @@ unsorted:
   - entangle-plugin-photobox 
   - entangle-plugin-shooter 
   - entr 
+  - envoy-protoc-gen-validate 
+  - envoy-protoc-gen-validate-source 
   - envoy-proxy: [x86_64] 
   - envy24control 
   - eog-devel 
@@ -11247,6 +11251,7 @@ unsorted:
   - libspread-sheet-widget0 
   - libsqlcipher-3_27_2-0 
   - libsqlite3-0-32bit: [x86_64] 
+  - libsqlparser1 
   - libsratom-0-0-32bit: [x86_64] 
   - libsrecord0 
   - libsrt1-32bit: [x86_64] 
@@ -19330,7 +19335,6 @@ unsorted:
   - python2-sybil 
   - python2-sympy 
   - python2-systemd 
-  - python2-tables 
   - python2-tablib 
   - python2-tabulate 
   - python2-tagpy 
@@ -23957,6 +23961,7 @@ unsorted:
   - spyder3-pylint-lang 
   - spyder3-terminal 
   - spyder3-unittest 
+  - sql-parser-devel 
   - sqlcipher 
   - sqlcipher-devel 
   - sqlite3-devel 
@@ -32395,6 +32400,7 @@ unsorted:
   - vagrant-sshfs-doc 
   - vagrant-sshfs-testsuite 
   - vagrant-vim 
+  - vala-cmake-modules 
   - vala-panel 
   - vala-panel-appmenu-lang 
   - vala-panel-devel 
