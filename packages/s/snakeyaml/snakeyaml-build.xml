@@ -12,7 +12,7 @@
   <property name="project.description" value="YAML 1.1 parser and emitter for Java"/>
   <property name="project.groupId" value="org.yaml"/>
   <property name="project.artifactId" value="snakeyaml"/>
-  <property name="project.version" value="1.17"/>
+  <property name="project.version" value="1.25"/>
   <property name="bundle.version" value="${project.version}.0"/>
   
   <property name="compiler.source" value="1.6"/>

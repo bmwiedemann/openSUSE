@@ -16,26 +16,29 @@
 #
 
 
-%global vertag 70abb5efa4c0
+%global vertag 8450addf3473
 %bcond_with tests
 Name:           snakeyaml
-Version:        1.17
+Version:        1.25
 Release:        0
 Summary:        YAML parser and emitter for the Java programming language
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://bitbucket.org/asomov/snakeyaml/
-Source0:        https://bitbucket.org/asomov/snakeyaml/get/v%{version}.tar.bz2#/%{name}-%{version}.tar.bz2
+Source0:        https://bitbucket.org/asomov/snakeyaml/get/%{name}-%{version}.tar.bz2
 Source1:        %{name}-build.xml
 # Upstream has forked gdata-java and base64 and refuses [1] to
 # consider replacing them by external dependencies.  Bundled libraries
 # need to be removed and their use replaced by system libraries.
 # See rhbz#875777 and http://code.google.com/p/snakeyaml/issues/detail?id=175
 #
-# Remove use of bundled Base64 implementation
-Patch0:         0001-Replace-bundled-base64-implementation.patch
-# We don't have gdata-java in Fedora any longer, use commons-codec instead
+# Replace use of bundled Base64 implementation with java.util.Base64
+Patch0:         0001-replace-bundled-base64coder-with-java.util.Base64.patch
+# We don't have gdata-java, use commons-codec instead
 Patch1:         0002-Replace-bundled-gdata-java-client-classes-with-commo.patch
+# Fix a broken test, change backported from upstream:
+# https://bitbucket.org/asomov/snakeyaml/commits/345408c
+Patch2:         0003-fix-broken-test.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-codec
 BuildRequires:  base64coder
@@ -81,6 +84,7 @@ This package contains %{summary}.
 cp %{SOURCE1} build.xml
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %pom_remove_plugin :cobertura-maven-plugin
 %pom_remove_plugin :maven-changes-plugin

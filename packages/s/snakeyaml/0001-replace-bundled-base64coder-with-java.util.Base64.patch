@@ -1,31 +1,47 @@
-From 7eb4cceb36eff9d863abe45bafa6d94c6e7e9270 Mon Sep 17 00:00:00 2001
-From: Michal Srb <msrb@redhat.com>
-Date: Wed, 24 Apr 2013 11:25:52 +0200
-Subject: [PATCH 1/2] Replace bundled base64 implementation
+From 82e728f896dffcd88c7cb86e8d9cbebd1a04d29e Mon Sep 17 00:00:00 2001
+From: Fabio Valentini <decathorpe@gmail.com>
+Date: Tue, 10 Sep 2019 13:38:15 +0200
+Subject: [PATCH] replace bundled base64coder with java.util.Base64
 
 ---
- .../snakeyaml/constructor/SafeConstructor.java     |   2 +-
- .../external/biz/base64Coder/Base64Coder.java      | 305 ---------------------
- .../snakeyaml/representer/SafeRepresenter.java     |   2 +-
- .../source_code/base64Coder/Base64CoderTest.java   |  73 -----
- .../snakeyaml/issues/issue99/YamlBase64Test.java   |   2 +-
- 5 files changed, 3 insertions(+), 381 deletions(-)
+ pom.xml                                       |   4 +-
+ .../constructor/SafeConstructor.java          |   4 +-
+ .../external/biz/base64Coder/Base64Coder.java | 305 ------------------
+ .../representer/SafeRepresenter.java          |   6 +-
+ .../base64Coder/Base64CoderTest.java          |  73 -----
+ .../issues/issue99/YamlBase64Test.java        |   6 +-
+ 6 files changed, 10 insertions(+), 388 deletions(-)
  delete mode 100644 src/main/java/org/yaml/snakeyaml/external/biz/base64Coder/Base64Coder.java
  delete mode 100644 src/test/java/biz/source_code/base64Coder/Base64CoderTest.java
 
+diff --git a/pom.xml b/pom.xml
+index 8112370..ae308c7 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -10,8 +10,8 @@
+         <project.scm.id>bitbucket</project.scm.id>
+         <release.repo.url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</release.repo.url>
+         <snapshot.repo.url>https://oss.sonatype.org/content/repositories/snapshots/</snapshot.repo.url>
+-        <maven.compiler.source>7</maven.compiler.source>
+-        <maven.compiler.target>7</maven.compiler.target>
++        <maven.compiler.source>8</maven.compiler.source>
++        <maven.compiler.target>8</maven.compiler.target>
+         <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
+         <spring.version>3.2.17.RELEASE</spring.version>
+         <maven-bundle-plugin.version>3.5.0</maven-bundle-plugin.version>
 diff --git a/src/main/java/org/yaml/snakeyaml/constructor/SafeConstructor.java b/src/main/java/org/yaml/snakeyaml/constructor/SafeConstructor.java
-index b5572ea..190384e 100644
+index bd022cc..217835d 100644
 --- a/src/main/java/org/yaml/snakeyaml/constructor/SafeConstructor.java
 +++ b/src/main/java/org/yaml/snakeyaml/constructor/SafeConstructor.java
-@@ -15,6 +15,7 @@
-  */
- package org.yaml.snakeyaml.constructor;
+@@ -17,6 +17,7 @@ package org.yaml.snakeyaml.constructor;
  
-+import biz.source_code.base64Coder.Base64Coder;
  import java.math.BigInteger;
- import java.text.NumberFormat;
- import java.text.ParseException;
-@@ -32,7 +33,6 @@ import java.util.regex.Matcher;
+ import java.util.ArrayList;
++import java.util.Base64;
+ import java.util.Calendar;
+ import java.util.HashMap;
+ import java.util.Iterator;
+@@ -30,7 +31,6 @@ import java.util.regex.Matcher;
  import java.util.regex.Pattern;
  
  import org.yaml.snakeyaml.error.YAMLException;
@@ -33,6 +49,15 @@ index b5572ea..190384e 100644
  import org.yaml.snakeyaml.nodes.MappingNode;
  import org.yaml.snakeyaml.nodes.Node;
  import org.yaml.snakeyaml.nodes.NodeId;
+@@ -313,7 +313,7 @@ public class SafeConstructor extends BaseConstructor {
+             // Ignore white spaces for base64 encoded scalar
+             String noWhiteSpaces = constructScalar((ScalarNode) node).toString().replaceAll("\\s",
+                     "");
+-            byte[] decoded = Base64Coder.decode(noWhiteSpaces.toCharArray());
++            byte[] decoded = Base64.getDecoder().decode(noWhiteSpaces);
+             return decoded;
+         }
+     }
 diff --git a/src/main/java/org/yaml/snakeyaml/external/biz/base64Coder/Base64Coder.java b/src/main/java/org/yaml/snakeyaml/external/biz/base64Coder/Base64Coder.java
 deleted file mode 100644
 index 65923b6..0000000
@@ -345,25 +370,43 @@ index 65923b6..0000000
 -
 -} // end class Base64Coder
 diff --git a/src/main/java/org/yaml/snakeyaml/representer/SafeRepresenter.java b/src/main/java/org/yaml/snakeyaml/representer/SafeRepresenter.java
-index 147e3af..b8dd4e0 100644
+index 2cc15d9..e5ac480 100644
 --- a/src/main/java/org/yaml/snakeyaml/representer/SafeRepresenter.java
 +++ b/src/main/java/org/yaml/snakeyaml/representer/SafeRepresenter.java
-@@ -15,6 +15,7 @@
-  */
- package org.yaml.snakeyaml.representer;
- 
-+import biz.source_code.base64Coder.Base64Coder;
- import java.io.UnsupportedEncodingException;
+@@ -19,6 +19,7 @@ import java.io.UnsupportedEncodingException;
  import java.math.BigInteger;
  import java.util.ArrayList;
-@@ -32,7 +33,6 @@ import java.util.UUID;
- import java.util.regex.Pattern;
+ import java.util.Arrays;
++import java.util.Base64;
+ import java.util.Calendar;
+ import java.util.Date;
+ import java.util.HashMap;
+@@ -33,7 +34,6 @@ import java.util.regex.Pattern;
  
+ import org.yaml.snakeyaml.DumperOptions;
  import org.yaml.snakeyaml.error.YAMLException;
 -import org.yaml.snakeyaml.external.biz.base64Coder.Base64Coder;
  import org.yaml.snakeyaml.nodes.Node;
  import org.yaml.snakeyaml.nodes.Tag;
  import org.yaml.snakeyaml.reader.StreamReader;
+@@ -131,7 +131,7 @@ class SafeRepresenter extends BaseRepresenter {
+                     if (!checkValue.equals(value)) {
+                         throw new YAMLException("invalid string value has occurred");
+                     }
+-                    binary = Base64Coder.encode(bytes);
++                    binary = Base64.getEncoder().encodeToString(bytes).toCharArray();
+                 } catch (UnsupportedEncodingException e) {
+                     throw new YAMLException(e);
+                 }
+@@ -433,7 +433,7 @@ class SafeRepresenter extends BaseRepresenter {
+ 
+     protected class RepresentByteArray implements Represent {
+         public Node representData(Object data) {
+-            char[] binary = Base64Coder.encode((byte[]) data);
++            char[] binary = Base64.getEncoder().encodeToString((byte[]) data).toCharArray();
+             return representScalar(Tag.BINARY, String.valueOf(binary), DumperOptions.ScalarStyle.LITERAL);
+         }
+     }
 diff --git a/src/test/java/biz/source_code/base64Coder/Base64CoderTest.java b/src/test/java/biz/source_code/base64Coder/Base64CoderTest.java
 deleted file mode 100644
 index 60f6d84..0000000
@@ -444,17 +487,17 @@ index 60f6d84..0000000
 -    }
 -}
 diff --git a/src/test/java/org/yaml/snakeyaml/issues/issue99/YamlBase64Test.java b/src/test/java/org/yaml/snakeyaml/issues/issue99/YamlBase64Test.java
-index 32e7eef..3275c7e 100644
+index e425f25..a0c4f6a 100644
 --- a/src/test/java/org/yaml/snakeyaml/issues/issue99/YamlBase64Test.java
 +++ b/src/test/java/org/yaml/snakeyaml/issues/issue99/YamlBase64Test.java
-@@ -15,6 +15,7 @@
-  */
- package org.yaml.snakeyaml.issues.issue99;
- 
-+import biz.source_code.base64Coder.Base64Coder;
+@@ -18,6 +18,7 @@ package org.yaml.snakeyaml.issues.issue99;
  import java.io.BufferedInputStream;
  import java.io.IOException;
  import java.io.InputStream;
++import java.util.Base64;
+ import java.util.Map;
+ 
+ import junit.framework.TestCase;
 @@ -27,7 +28,6 @@ import org.yaml.snakeyaml.Yaml;
  import org.yaml.snakeyaml.YamlDocument;
  import org.yaml.snakeyaml.constructor.AbstractConstruct;
@@ -463,6 +506,24 @@ index 32e7eef..3275c7e 100644
  import org.yaml.snakeyaml.nodes.Node;
  import org.yaml.snakeyaml.nodes.ScalarNode;
  import org.yaml.snakeyaml.nodes.Tag;
+@@ -50,7 +50,7 @@ public class YamlBase64Test extends TestCase {
+             all = all + lines[i].trim();
+         }
+         // System.out.println(all);
+-        byte[] decoded = Base64Coder.decode(all.toCharArray());
++        byte[] decoded = Base64.getDecoder().decode(all);
+         assertEquals(3737, decoded.length);
+         checkBytes(decoded);
+     }
+@@ -122,7 +122,7 @@ public class YamlBase64Test extends TestCase {
+             public Object construct(Node node) {
+                 String contentWithNewLines = constructScalar((ScalarNode) node).toString();
+                 String noNewLines = contentWithNewLines.replaceAll("\\s", "");
+-                byte[] decoded = Base64Coder.decode(noNewLines.toCharArray());
++                byte[] decoded = Base64.getDecoder().decode(noNewLines);
+                 return decoded;
+             }
+         }
 -- 
-2.7.4
+2.21.0
 

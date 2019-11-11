@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Nov 10 05:55:34 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream release 1.25
+- Removed patch: 
+  * 0001-Replace-bundled-base64-implementation.patch
+    + replaced by other implementation
+- Modified patch:
+  * 0002-Replace-bundled-gdata-java-client-classes-with-commo.patch
+	+ Rediff to changed context
+- Added patches:
+  * 0001-replace-bundled-base64coder-with-java.util.Base64.patch
+    + Replace with internal jdk8+ implementation
+  * 0003-fix-broken-test.patch
+    + fix a broken test
+
+-------------------------------------------------------------------
 Fri Mar  1 06:32:02 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of snakeyaml 1.17 based on Fedora package

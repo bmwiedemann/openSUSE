@@ -5,11 +5,11 @@ Subject: [PATCH 2/2] Replace bundled gdata-java-client classes with
  commons-codec
 
 ---
- .../com/google/gdata/util/common/base/Escaper.java |  97 ----
- .../gdata/util/common/base/PercentEscaper.java     | 281 ------------
- .../gdata/util/common/base/UnicodeEscaper.java     | 506 ---------------------
- .../java/org/yaml/snakeyaml/util/UriEncoder.java   |  37 +-
- 4 files changed, 29 insertions(+), 892 deletions(-)
+ .../gdata/util/common/base/Escaper.java       |  97 ----
+ .../util/common/base/PercentEscaper.java      | 281 ----------
+ .../util/common/base/UnicodeEscaper.java      | 506 ------------------
+ .../org/yaml/snakeyaml/util/UriEncoder.java   |  37 +-
+ 4 files changed, 28 insertions(+), 893 deletions(-)
  delete mode 100644 src/main/java/org/yaml/snakeyaml/external/com/google/gdata/util/common/base/Escaper.java
  delete mode 100644 src/main/java/org/yaml/snakeyaml/external/com/google/gdata/util/common/base/PercentEscaper.java
  delete mode 100644 src/main/java/org/yaml/snakeyaml/external/com/google/gdata/util/common/base/UnicodeEscaper.java
@@ -917,20 +917,20 @@ index 5403185..0000000
 -    };
 -}
 diff --git a/src/main/java/org/yaml/snakeyaml/util/UriEncoder.java b/src/main/java/org/yaml/snakeyaml/util/UriEncoder.java
-index e23904f..f266387 100644
+index 4cc18b4..b6a1992 100644
 --- a/src/main/java/org/yaml/snakeyaml/util/UriEncoder.java
 +++ b/src/main/java/org/yaml/snakeyaml/util/UriEncoder.java
-@@ -23,25 +23,46 @@ import java.nio.charset.CharacterCodingException;
+@@ -23,27 +23,46 @@ import java.nio.charset.CharacterCodingException;
  import java.nio.charset.Charset;
  import java.nio.charset.CharsetDecoder;
  import java.nio.charset.CodingErrorAction;
+-
 +import java.util.BitSet;
- 
++ 
 +import org.apache.commons.codec.net.URLCodec;
  import org.yaml.snakeyaml.error.YAMLException;
 -import org.yaml.snakeyaml.external.com.google.gdata.util.common.base.Escaper;
 -import org.yaml.snakeyaml.external.com.google.gdata.util.common.base.PercentEscaper;
-+
  
  public abstract class UriEncoder {
      private static final CharsetDecoder UTF8Decoder = Charset.forName("UTF-8").newDecoder()
@@ -940,8 +940,8 @@ index e23904f..f266387 100644
 -    // http://yaml.org/spec/1.1/#escaping%20in%20URI/
 -    private static final String SAFE_CHARS = PercentEscaper.SAFEPATHCHARS_URLENCODER + "[]/";
 -    private static final Escaper escaper = new PercentEscaper(SAFE_CHARS, false);
-+
-+    // default safe characters which can appear within URI and shouldn't be escaped
+ 
++	// default safe characters which can appear within URI and shouldn't be escaped
 +    private static final BitSet allowedCharacters = new BitSet(256);
 +
 +    static {
@@ -959,9 +959,10 @@ index e23904f..f266387 100644
 +            allowedCharacters.set(c);
 +        }
 +    }
- 
      /**
       * Escape special characters with '%'
+      * @param uri URI to be escaped
+      * @return encoded URI
       */
      public static String encode(String uri) {
 -        return escaper.escape(uri);
@@ -976,5 +977,5 @@ index e23904f..f266387 100644
  
      /**
 -- 
-2.7.4
+2.20.1
 

@@ -7,4 +7,12 @@
     <comment>New package</comment>
     <requestid>680349</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2d353d4c8d3d650937f5a1dcdde8c59f</srcmd5>
+    <version>1.25</version>
+    <time>1573473652</time>
+    <user>dimstar_suse</user>
+    <comment>upgrade to 1.25</comment>
+    <requestid>747255</requestid>
+  </revision>
 </revisionlist>
