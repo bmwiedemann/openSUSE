@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  4 15:53:41 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
+
+- add cpio-2.12-CVE-2019-14866.patch to fix a security issue where
+  cpio does not properly validate the values written in the header
+  of a TAR file through the to_oct() function [bsc#1155199] 
+  [CVE-2019-14866] 
+
+-------------------------------------------------------------------
 Thu Sep 19 11:50:42 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
 
 - Do not recommend lang package. The lang package already has a

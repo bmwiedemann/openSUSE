@@ -44,6 +44,7 @@ Patch24:        cpio-check_for_symlinks.patch
 Patch25:        cpio-fix_truncation_check.patch
 Patch26:        cpio-2.12-util.c_no_return_in_nonvoid_fnc.patch
 Patch27:        cpio-2.12-out_of_bounds_write.patch
+Patch28:        cpio-2.12-CVE-2019-14866.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 Requires(post): %{install_info_prereq}
@@ -86,6 +87,7 @@ This package includes the 'mt', a local tape drive control program.
 %patch25 -p1
 %patch26 -p1
 %patch27 -p1
+%patch28 -p1
 
 %build
 gettextize -f --no-changelog
