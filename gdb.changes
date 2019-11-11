@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  6 21:18:46 UTC 2019 - Tom de Vries <tdevries@suse.com>
+
+- Fix for bsc#1146475 [bsc#1146475, swo#24971 ]
+  * gdb-symtab-prefer-var-def-over-decl.patch
+- Fix for bsc#1146167 [bsc#1146167, swo#24956]
+  * gdb-only-force-interp_console-ui_out-for-breakpoint-commands-in-mi-mode.patch
+
+-------------------------------------------------------------------
 Tue Oct 29 09:32:42 UTC 2019 - Tom de Vries <tdevries@suse.com>
 
 - Backport 2nd part of fix for swo#23657.

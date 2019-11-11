@@ -247,6 +247,12 @@ Patch2009:      gdb-s390-handle-arch13.diff
 Patch2010:      gdb-fix-heap-use-after-free-in-typename-concat.patch
 Patch2011:      gdb-dwarf-reader-reject-sections-with-invalid-sizes.patch
 
+# Proposed patch for PR symtab/24971
+Patch2500:      gdb-symtab-prefer-var-def-over-decl.patch
+
+# Proposed patch for PR gdb/24956
+Patch2501:      gdb-only-force-interp_console-ui_out-for-breakpoint-commands-in-mi-mode.patch
+
 # Testsuite patches
 Patch2600:      gdb-testsuite-8.3-kfail-xfail-unsupported.patch
 
@@ -590,6 +596,9 @@ find -name "*.info*"|xargs rm -f
 %patch2009 -p1
 %patch2010 -p1
 %patch2011 -p1
+
+%patch2500 -p1
+%patch2501 -p1
 
 %patch2600 -p1
 

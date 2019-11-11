@@ -1,0 +1,178 @@
+[gdb] Only force INTERP_CONSOLE ui_out for breakpoint commands in MI mode
+
+The problem reported in PR mi/25055 is that the output of the backtrace
+command, when executed as breakpoint command does not show when executing
+using the MI interpreter:
+...
+$ gdb a.out
+Reading symbols from a.out...
+(gdb) break main
+Breakpoint 1 at 0x4003c0: file test.c, line 19.
+(gdb) commands
+Type commands for breakpoint(s) 1, one per line.
+End with a line saying just "end".
+>bt
+>end
+(gdb) interpreter-exec mi "-exec-run"
+^done
+
+Breakpoint 1, main () at test.c:19
+19        return foo (4);
+(gdb)
+...
+
+Interestingly, the function print_frame is called twice during -exec-run:
+- once during tui_on_normal_stop where the ui_out is temporarily set to
+  tui->interp_ui_out (), resulting in the part after the comma in
+  "Breakpoint 1, main () at test.c:19"
+- once during execute_control_command, where the ui_out is the default for the
+  current interpreter: mi_ui_out, which ignores calls to output text.
+
+The commit 3a87ae656c2 "Use console uiout when executing breakpoint commands"
+fixes the problem by temporarily switching to the ui_out of INTERP_CONSOLE in
+execute_control_command.
+
+This however caused a regression in redirection (escaping '#' using '\' for
+git commit message convenience):
+...
+$ rm -f gdb.txt; gdb a.out
+Reading symbols from a.out...
+(gdb) break main
+Breakpoint 1 at 0x4003c0: file test.c, line 19.
+(gdb) commands
+Type commands for breakpoint(s) 1, one per line.
+End with a line saying just "end".
+>bt
+>end
+(gdb) set logging redirect on
+(gdb) set logging on
+Redirecting output to gdb.txt.
+Copying debug output to gdb.txt.
+(gdb) run
+\#0  main () at test.c:19
+(gdb) q
+A debugging session is active.
+
+        Inferior 1 [process 22428] will be killed.
+
+Quit anyway? (y or n) y
+$ cat gdb.txt
+Starting program: /data/gdb_versions/devel/a.out
+
+Breakpoint 1, main () at test.c:19
+19        return foo (4);
+...
+
+The problem is that the '#0  main () at test.c:19' ends up in the gdb output
+output rather than in gdb.txt.  This is due to the fact that the redirect is
+setup for the current ui_out (which is tui->interp_ui_out ()), while the
+backtrace output is printed to the INTERP_CONSOLE ui_out.
+
+Fix this by limiting switching to INTERP_CONSOLE ui_out to when INTERP_MI is
+active.
+
+Tested on x86_64-linux.
+
+gdb/ChangeLog:
+
+2019-10-02  Tom de Vries  <tdevries@suse.de>
+
+	PR gdb/24956
+	* cli/cli-script.c (execute_control_command): Only switch to
+	INTERP_CONSOLE's ui_out when INTERP_MI is active.
+
+gdb/testsuite/ChangeLog:
+
+2019-10-02  Tom de Vries  <tdevries@suse.de>
+
+	PR gdb/24956
+	* gdb.base/ui-redirect.exp: Test output of user-defined command.
+
+Change-Id: Id1771e7fcc9496a7d97ec2b2ea6b1487596f1ef7
+
+---
+ gdb/cli/cli-script.c                   |  3 +++
+ gdb/testsuite/gdb.base/ui-redirect.exp | 47 +++++++++++++++++++++++++++++++++-
+ 2 files changed, 49 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/cli/cli-script.c b/gdb/cli/cli-script.c
+index 85f00c75b3f..4d216f15dae 100644
+--- a/gdb/cli/cli-script.c
++++ b/gdb/cli/cli-script.c
+@@ -697,6 +697,9 @@ execute_control_command_1 (struct command_line *cmd, int from_tty)
+ enum command_control_type
+ execute_control_command (struct command_line *cmd, int from_tty)
+ {
++  if (!current_uiout->is_mi_like_p ())
++    return execute_control_command_1 (cmd, from_tty);
++
+   /* Make sure we use the console uiout.  It's possible that we are executing
+      breakpoint commands while running the MI interpreter.  */
+   interp *console = interp_lookup (current_ui, INTERP_CONSOLE);
+diff --git a/gdb/testsuite/gdb.base/ui-redirect.exp b/gdb/testsuite/gdb.base/ui-redirect.exp
+index 1ebff790e57..ab85eb059a0 100644
+--- a/gdb/testsuite/gdb.base/ui-redirect.exp
++++ b/gdb/testsuite/gdb.base/ui-redirect.exp
+@@ -17,7 +17,10 @@ if { [prepare_for_testing "failed to prepare" ui-redirect start.c] } {
+     return -1
+ }
+ 
+-gdb_breakpoint main
++if ![runto_main] {
++    fail "can't run to main"
++    return -1
++}
+ 
+ set test "commands"
+ gdb_test_multiple $test $test {
+@@ -34,8 +37,50 @@ gdb_test_multiple $test $test {
+ }
+ gdb_test_no_output "end"
+ 
++with_test_prefix "userdefined" {
++    set test "define userdefined"
++    gdb_test_multiple $test $test {
++	-re "End with a line saying just \"end\"\\.\r\n>$" {
++	    pass $test
++	}
++    }
++
++    set test "bt"
++    gdb_test_multiple $test $test {
++	-re "\r\n>$" {
++	    pass $test
++	}
++    }
++
++    gdb_test_no_output "end"
++}
++
+ gdb_test_no_output "set logging file /dev/null"
+ gdb_test "set logging on" "Copying output to /dev/null\\."
+ gdb_test "save breakpoints /dev/null" "Saved to file '/dev/null'\\."
++gdb_test "userdefined" "#0  main ().*"
+ gdb_test "set logging off" "Done logging to /dev/null\\."
+ gdb_test "help" "List of classes of commands:.*"
++
++with_test_prefix "redirect" {
++    gdb_test "set logging redirect on"
++    gdb_test "set logging on" \
++    "Redirecting output to /dev/null\\."
++    gdb_test_no_output "save breakpoints /dev/null" "Saved to file '/dev/null'\\."
++    gdb_test_no_output "userdefined"
++    gdb_test "set logging off" "Done logging to /dev/null\\."
++    gdb_test "help" "List of classes of commands:.*"
++}
++
++with_test_prefix "redirect while already logging" {
++    gdb_test_no_output "set logging redirect off"
++    gdb_test "set logging on" \
++    "Copying output to /dev/null\\."
++    gdb_test "set logging redirect on" \
++    ".*warning: Currently logging .*Turn the logging off and on to make the new setting effective.*"
++    gdb_test "save breakpoints /dev/null" "Saved to file '/dev/null'\\."
++    gdb_test "userdefined" "#0  main ().*"
++    gdb_test "set logging off" "Done logging to /dev/null\\."
++    gdb_test "help" "List of classes of commands:.*"
++    gdb_test_no_output "set logging redirect off"
++}
