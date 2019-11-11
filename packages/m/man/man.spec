@@ -37,10 +37,10 @@ BuildRequires:  libzio-devel
 BuildRequires:  man-pages
 BuildRequires:  pkg-config
 BuildRequires:  po4a
-BuildRequires:  pkgconfig(systemd)
 BuildRequires:  update-alternatives
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(systemd)
 Version:        2.8.4
 Release:        0
 Summary:        A Program for Displaying man Pages
@@ -87,7 +87,7 @@ Patch11:        man-MAN_POSIXLY_CORRECT-man1.dif
 Patch12:        reproducible.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %global         _sysconfdir /etc
-%global         _has_tmpfiled  %(rpm -q -f /usr/lib/tmpfiles.d | grep -c filesystem)
+%global         _has_tmpfiled  %(rpm -q -f %{_prefix}/lib/tmpfiles.d | grep -c filesystem)
 
 %description
 A program for displaying man pages on the screen or sending them to a
@@ -326,7 +326,7 @@ fi
 %endif
 
 %posttrans
-%{?tmpfiles_create:%tmpfiles_create %{_libexecdir}/tmpfiles.d/man-db.conf}
+%{?tmpfiles_create:%tmpfiles_create %{_prefix}/lib/tmpfiles.d/man-db.conf}
 if test -d %{_localstatedir}/cache/man
 then
   mandb --quiet --create || :
@@ -368,9 +368,9 @@ fi
 %{_libdir}/libman*.so
 %{_libexecdir}/man-db/zsoelim
 %if 0%{?_has_tmpfiled} == 0
-%dir %{_libexecdir}/tmpfiles.d
+%dir %{_prefix}/lib/tmpfiles.d
 %endif
-%{_libexecdir}/tmpfiles.d/man-db.conf
+%{_prefix}/lib/tmpfiles.d/man-db.conf
 %if %{with sdtimer}
 %{_unitdir}/man-db-create.service
 %if 0%{suse_version} >= 1500

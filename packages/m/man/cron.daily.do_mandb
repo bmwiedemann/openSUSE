@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 #
 # do_mandb. This script was split off cron.daily.
@@ -10,7 +10,7 @@
 #
 # please send bugfixes or comments to feedback@suse.de.
 #
-# Author: Werner Fink <feedback@suse.de>, 2008
+# Author: Werner Fink <feedback@suse.de>, 2008, 2019
 #         Burchard Steinbild <feedback@suse.de>, 1996
 #         Florian La Roche <feedback@suse.de>, 1996
 #
@@ -49,8 +49,8 @@ if test "$REINIT_MANDB" = yes ; then
 	    test -d "${cp}" || continue
 	    db=${cp}/index.db
 	    if test -e ${db} ; then
-		find $mp -follow -newer $db | read -t 1 line
-		test $? -eq 0 || continue
+		path="$(find $mp -follow -newer $db 2>/dev/null)"
+		test -n "$path" || continue
 	    fi
 	    nice -n 5 ionice -c 3 mandb -qs ${mp} > /dev/null 2>&1 || let errors++
 	done
