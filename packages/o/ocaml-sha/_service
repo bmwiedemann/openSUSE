@@ -1,0 +1,16 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="filename">ocaml-sha</param>
+    <!-- v1.12 -->
+    <param name="revision">cd6d9c7dbda41dcab0057e052f7fc88df186042b</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/djs55/ocaml-sha.git</param>
+    <param name="versionformat">1.12</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>
