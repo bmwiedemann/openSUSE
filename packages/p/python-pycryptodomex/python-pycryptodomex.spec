@@ -25,7 +25,7 @@ Summary:        Cryptographic library for Python
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://www.pycryptodome.org
-Source:         https://github.com/Legrandin/pycryptodome/archive/v%{version}x.tar.gz
+Source:         https://github.com/Legrandin/pycryptodome/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -75,7 +75,7 @@ Python. Only the pieces that are extremely critical to performance
 (e.g. block ciphers) are implemented as C extensions.
 
 %prep
-%setup -q -n pycryptodome-%{version}x
+%setup -q -n pycryptodome-%{version}
 touch .separate_namespace
 
 %build
