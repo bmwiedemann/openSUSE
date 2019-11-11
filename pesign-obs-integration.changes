@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov  6 09:58:34 UTC 2019 - Jiri Slaby <jslaby@suse.com>
+
+- 0001-brp-99-compress-vmlinux-support-xz-compressed-vmlinu.patch
+  to support xz-compressed vmlinux (bnc#1155921)
+
+-------------------------------------------------------------------
+Wed Nov  6 03:52:16 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
+
+- 0001-Keep-the-files-in-the-OTHER-directory.patch to keep the
+  files in the OTHER directory (boo#1155474)
+
+-------------------------------------------------------------------
 Thu Aug  1 02:41:28 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add 0001-Initialize-compress-variable.patch to initialize

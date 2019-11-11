@@ -35,6 +35,8 @@ Source:         %{name}_%{version}.tar.gz
 Patch1:         0001-Passthrough-license-tag.patch
 Patch2:         0001-Add-support-for-kernel-module-compression.patch
 Patch3:         0001-Initialize-compress-variable.patch
+Patch4:         0001-Keep-the-files-in-the-OTHER-directory.patch
+Patch5:         0001-brp-99-compress-vmlinux-support-xz-compressed-vmlinu.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # suse-module-tools <= 15.0.10 contains modsign-verify
 Requires:       suse-module-tools >= 15.0.10
@@ -48,6 +50,8 @@ boot loader, kernel and kernel modules in the openSUSE Buildservice.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
+%patch5 -p1
 
 %build
 
