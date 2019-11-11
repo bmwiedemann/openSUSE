@@ -23,23 +23,19 @@ Release:        0
 Summary:        Library for conversion between different OCaml parsetrees versions
 License:        LGPL-2.1-only WITH OCaml-LGPL-linking-exception
 Group:          Development/Languages/OCaml
-
 URL:            https://github.com/ocaml-ppx/ocaml-migrate-parsetree
-Source0:        https://github.com/ocaml-ppx/ocaml-migrate-parsetree/archive/v%{version}/%{name}-%{version}.tar.gz
-
+Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20190930
+BuildRequires:  ocaml-rpm-macros >= 20191101
 BuildRequires:  ocamlfind(compiler-libs.common)
 BuildRequires:  ocamlfind(ppx_derivers)
 BuildRequires:  ocamlfind(result)
-
 
 %description
 This library converts between parsetrees of different OCaml versions.
 For each version, there is a snapshot of the parsetree and conversion
 functions to the next and/or previous version.
-
 
 %package        devel
 Summary:        Development files for %{name}
@@ -50,11 +46,11 @@ Requires:       %{name} = %{version}
 The %{name}-devel package contains libraries and signature files for
 developing applications that use %{name}.
 
-
 %prep
 %autosetup -p1
 
 %build
+dune_release_pkgs='ocaml-migrate-parsetree'
 %ocaml_dune_setup
 %ocaml_dune_build
 
@@ -66,7 +62,6 @@ developing applications that use %{name}.
 %ocaml_dune_test
 
 %files -f %{name}.files
-%license LICENSE.md
 %doc README.md MANUAL.md
 
 %files devel -f %{name}.files.devel
