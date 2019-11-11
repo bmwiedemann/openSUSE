@@ -19,13 +19,13 @@
 %define major 1
 %define libname lib%{name}%{major}
 Name:           zstd
-Version:        %{major}.4.3
+Version:        %{major}.4.4
 Release:        0
 Summary:        Zstandard compression tools
 License:        BSD-3-Clause AND GPL-2.0-only
 Group:          Productivity/Archiving/Compression
 URL:            https://github.com/facebook/zstd
-Source0:        https://github.com/facebook/zstd/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source0:        https://github.com/facebook/zstd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
 Patch1:         pzstd.1.patch
 BuildRequires:  gcc
