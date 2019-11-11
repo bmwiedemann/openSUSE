@@ -29,6 +29,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-blockdiag >= 1.5.0
+Requires:       python-setuptools
 Suggests:       python-reportlab
 Suggests:       python-docutils
 Suggests:       python-nose

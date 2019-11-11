@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov 10 18:11:35 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Add python-setuptools to Requires
+  * pkg_resources is a runtime dependency
+
+-------------------------------------------------------------------
 Sun Jun  2 18:04:56 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Avoid name repetition in summary.
