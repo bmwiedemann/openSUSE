@@ -16,4 +16,13 @@
   - print additional architecture information</comment>
     <requestid>729420</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ee859d976e4e34efb4edf8ce9c0c18a2</srcmd5>
+    <version>1.2</version>
+    <time>1573473572</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2
+  - use official openSUSE container image</comment>
+    <requestid>746180</requestid>
+  </revision>
 </revisionlist>

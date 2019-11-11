@@ -17,7 +17,7 @@
 
 
 Name:           hello-kubic
-Version:        1.1
+Version:        1.2
 Release:        0
 Summary:        A mini webserver showing a hello kubic page
 License:        Apache-2.0
