@@ -1,8 +1,19 @@
-To update the package:
+# Packaging rook
+
+## Dependencies
+
+- go
+  Requires go 1.12+ and GOPATH set correctly
+- dep
+  go get -u github.com/golang/dep/cmd/dep
+- git
+- curl
+
+## Updating the package
 
 - run update-tarball.sh to create a new tarball
 - update rook.changes
+- remove the old tarballs
+- osc ar
 - osc commit
 
-The update-tarball.sh script requires a go installation, the go dependency tool
-dep and git to run.

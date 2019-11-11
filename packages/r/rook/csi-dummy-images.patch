@@ -1,34 +1,25 @@
+From e602b3efe0bf57924b28884f584661d7563a92ee Mon Sep 17 00:00:00 2001
+From: Kristoffer Gronlund <kgronlund@suse.com>
+Date: Tue, 5 Nov 2019 16:30:46 +0000
+Subject: [PATCH] Replace cephcsi image path with dummy value
+
+---
+ pkg/operator/ceph/csi/spec.go | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
 diff --git a/pkg/operator/ceph/csi/spec.go b/pkg/operator/ceph/csi/spec.go
-index 81491fde..327bd139 100644
+index e139c2b1..09f5e16c 100644
 --- a/pkg/operator/ceph/csi/spec.go
 +++ b/pkg/operator/ceph/csi/spec.go
-@@ -66,17 +66,23 @@ var (
- 	ConfigKey  = "csi-cluster-config-json"
- )
-
--const (
--	KubeMinMajor              = "1"
--	KubeMinMinor              = "13"
--	provDeploymentSuppVersion = "14"
--
-+// Specify default images as var instead of const so that they can be overridden with the Go
-+// linker's -X flag. This allows users to easily build images with a different opinionated set of
-+// images without having to specify them manually in charts/manifests which can make upgrades more
-+// manually challenging.
-+var (
+@@ -80,7 +80,7 @@ var (
+ // manually challenging.
+ var (
  	// image names
--	DefaultCSIPluginImage   = "quay.io/cephcsi/cephcsi:v1.2.0"
+-	DefaultCSIPluginImage   = "quay.io/cephcsi/cephcsi:v1.2.1"
 +	DefaultCSIPluginImage   = "dummy-value-that-should-be-replaced-at-link-time"
  	DefaultRegistrarImage   = "quay.io/k8scsi/csi-node-driver-registrar:v1.1.0"
  	DefaultProvisionerImage = "quay.io/k8scsi/csi-provisioner:v1.3.0"
  	DefaultAttacherImage    = "quay.io/k8scsi/csi-attacher:v1.2.0"
- 	DefaultSnapshotterImage = "quay.io/k8scsi/csi-snapshotter:v1.2.0"
-+)
-+
-+const (
-+	KubeMinMajor              = "1"
-+	KubeMinMinor              = "13"
-+	provDeploymentSuppVersion = "14"
+-- 
+2.16.4
 
- 	// kubelet directory path
- 	DefaultKubeletDirPath = "/var/lib/kubelet"

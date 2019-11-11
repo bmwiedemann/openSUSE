@@ -2,6 +2,9 @@
 
 set -xEeuo pipefail
 
+ROOK_REPO="github.com/rook/rook"
+ROOK_REV="v1.1.6"
+
 if ! command -V go;
 then
     echo "ERROR: could not find go binary"
@@ -39,8 +42,6 @@ function on_err {
 }
 trap on_err ERR
 
-ROOK_REPO="github.com/SUSE/rook"
-ROOK_REV="v1.1.1"
 cat <<EOF
 
 tar-ing Rook $ROOK_REPO at revision '$ROOK_REV'

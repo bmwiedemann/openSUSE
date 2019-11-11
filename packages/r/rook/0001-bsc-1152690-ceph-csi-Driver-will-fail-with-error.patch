@@ -1,25 +1,23 @@
-From 2e3c909f525cffe9dd2c81bdc27b00fc95c71cac Mon Sep 17 00:00:00 2001
+From 90f8e99adca70716b91491d736fa6417cc9ba8cd Mon Sep 17 00:00:00 2001
 From: Stefan Haas <shaas@suse.com>
-Date: Wed, 2 Oct 2019 10:42:57 +0200
+Date: Tue, 5 Nov 2019 19:32:45 +0000
 Subject: [PATCH] bsc#1152690 - ceph-csi: Driver will fail with error
 
-Signed-off-by: Stefan Haas <shaas@suse.com>
-(cherry picked from commit 5d52d65915eb73c94a8b2ad922b97ce609ca2d37)
 ---
- .../csi/template/cephfs/csi-cephfsplugin-provisioner-dep.yaml   | 2 ++
- .../csi/template/cephfs/csi-cephfsplugin-provisioner-sts.yaml   | 2 ++
- .../kubernetes/ceph/csi/template/cephfs/csi-cephfsplugin.yaml   | 2 ++
- .../ceph/csi/template/rbd/csi-rbdplugin-provisioner-dep.yaml    | 2 ++
- .../ceph/csi/template/rbd/csi-rbdplugin-provisioner-sts.yaml    | 2 ++
- .../kubernetes/ceph/csi/template/rbd/csi-rbdplugin.yaml         | 2 ++
+ .../ceph/csi/template/cephfs/csi-cephfsplugin-provisioner-dep.yaml      | 2 ++
+ .../ceph/csi/template/cephfs/csi-cephfsplugin-provisioner-sts.yaml      | 2 ++
+ .../examples/kubernetes/ceph/csi/template/cephfs/csi-cephfsplugin.yaml  | 2 ++
+ .../kubernetes/ceph/csi/template/rbd/csi-rbdplugin-provisioner-dep.yaml | 2 ++
+ .../kubernetes/ceph/csi/template/rbd/csi-rbdplugin-provisioner-sts.yaml | 2 ++
+ cluster/examples/kubernetes/ceph/csi/template/rbd/csi-rbdplugin.yaml    | 2 ++
  6 files changed, 12 insertions(+)
 
 diff --git a/cluster/examples/kubernetes/ceph/csi/template/cephfs/csi-cephfsplugin-provisioner-dep.yaml b/cluster/examples/kubernetes/ceph/csi/template/cephfs/csi-cephfsplugin-provisioner-dep.yaml
-index fdba6063..85a7f987 100644
+index 27988be9..a27f0fec 100644
 --- a/cluster/examples/kubernetes/ceph/csi/template/cephfs/csi-cephfsplugin-provisioner-dep.yaml
 +++ b/cluster/examples/kubernetes/ceph/csi/template/cephfs/csi-cephfsplugin-provisioner-dep.yaml
 @@ -67,6 +67,7 @@ spec:
-             - "--metricsport=9091"
+             - "--metricsport={{ .CephFSGRPCMetricsPort }}"
              - "--metricspath=/metrics"
              - "--enablegrpcmetrics={{ .EnableCSIGRPCMetrics }}"
 +            - "--forcecephkernelclient=true"
@@ -35,11 +33,11 @@ index fdba6063..85a7f987 100644
              - name: CSI_ENDPOINT
                value: unix:///csi/csi-provisioner.sock
 diff --git a/cluster/examples/kubernetes/ceph/csi/template/cephfs/csi-cephfsplugin-provisioner-sts.yaml b/cluster/examples/kubernetes/ceph/csi/template/cephfs/csi-cephfsplugin-provisioner-sts.yaml
-index 9bef3f6d..9e72f044 100644
+index 374835e7..9d7de9c5 100644
 --- a/cluster/examples/kubernetes/ceph/csi/template/cephfs/csi-cephfsplugin-provisioner-sts.yaml
 +++ b/cluster/examples/kubernetes/ceph/csi/template/cephfs/csi-cephfsplugin-provisioner-sts.yaml
 @@ -62,6 +62,7 @@ spec:
-             - "--metricsport=9091"
+             - "--metricsport={{ .CephFSGRPCMetricsPort }}"
              - "--metricspath=/metrics"
              - "--enablegrpcmetrics={{ .EnableCSIGRPCMetrics }}"
 +            - "--forcecephkernelclient=true"
@@ -55,11 +53,11 @@ index 9bef3f6d..9e72f044 100644
              - name: CSI_ENDPOINT
                value: unix:///csi/csi-provisioner.sock
 diff --git a/cluster/examples/kubernetes/ceph/csi/template/cephfs/csi-cephfsplugin.yaml b/cluster/examples/kubernetes/ceph/csi/template/cephfs/csi-cephfsplugin.yaml
-index e6b2f168..f80195e4 100644
+index 114ed0d5..b8927ccd 100644
 --- a/cluster/examples/kubernetes/ceph/csi/template/cephfs/csi-cephfsplugin.yaml
 +++ b/cluster/examples/kubernetes/ceph/csi/template/cephfs/csi-cephfsplugin.yaml
 @@ -59,6 +59,7 @@ spec:
-             - "--metricsport=9091"
+             - "--metricsport={{ .CephFSGRPCMetricsPort }}"
              - "--metricspath=/metrics"
              - "--enablegrpcmetrics={{ .EnableCSIGRPCMetrics }}"
 +            - "--forcecephkernelclient=true"
@@ -75,18 +73,18 @@ index e6b2f168..f80195e4 100644
              - name: CSI_ENDPOINT
                value: unix:///csi/csi.sock
 diff --git a/cluster/examples/kubernetes/ceph/csi/template/rbd/csi-rbdplugin-provisioner-dep.yaml b/cluster/examples/kubernetes/ceph/csi/template/rbd/csi-rbdplugin-provisioner-dep.yaml
-index a49d86f7..b9d2bf8e 100644
+index e48c6b22..e1a47530 100644
 --- a/cluster/examples/kubernetes/ceph/csi/template/rbd/csi-rbdplugin-provisioner-dep.yaml
 +++ b/cluster/examples/kubernetes/ceph/csi/template/rbd/csi-rbdplugin-provisioner-dep.yaml
-@@ -84,6 +84,7 @@ spec:
-             - "--metricsport=9090"
+@@ -83,6 +83,7 @@ spec:
+             - "--metricsport={{ .RBDGRPCMetricsPort }}"
              - "--metricspath=/metrics"
              - "--enablegrpcmetrics={{ .EnableCSIGRPCMetrics }}"
 +            - "--forcecephkernelclient=true"
            env:
              - name: POD_IP
                valueFrom:
-@@ -127,6 +128,7 @@ spec:
+@@ -122,6 +123,7 @@ spec:
              - "--metricspath=/metrics"
              - "--polltime=60s"
              - "--timeout=3s"
@@ -95,18 +93,18 @@ index a49d86f7..b9d2bf8e 100644
              - name: CSI_ENDPOINT
                value: unix:///csi/csi-provisioner.sock
 diff --git a/cluster/examples/kubernetes/ceph/csi/template/rbd/csi-rbdplugin-provisioner-sts.yaml b/cluster/examples/kubernetes/ceph/csi/template/rbd/csi-rbdplugin-provisioner-sts.yaml
-index 83cdb64d..06a2b185 100644
+index 5079eae2..a571a9b3 100644
 --- a/cluster/examples/kubernetes/ceph/csi/template/rbd/csi-rbdplugin-provisioner-sts.yaml
 +++ b/cluster/examples/kubernetes/ceph/csi/template/rbd/csi-rbdplugin-provisioner-sts.yaml
-@@ -77,6 +77,7 @@ spec:
-             - "--metricsport=9090"
+@@ -76,6 +76,7 @@ spec:
+             - "--metricsport={{ .RBDGRPCMetricsPort }}"
              - "--metricspath=/metrics"
              - "--enablegrpcmetrics={{ .EnableCSIGRPCMetrics }}"
 +            - "--forcecephkernelclient=true"
            env:
              - name: POD_IP
                valueFrom:
-@@ -120,6 +121,7 @@ spec:
+@@ -115,6 +116,7 @@ spec:
              - "--metricspath=/metrics"
              - "--polltime=60s"
              - "--timeout=3s"
@@ -115,18 +113,18 @@ index 83cdb64d..06a2b185 100644
              - name: CSI_ENDPOINT
                value: unix:///csi/csi-provisioner.sock
 diff --git a/cluster/examples/kubernetes/ceph/csi/template/rbd/csi-rbdplugin.yaml b/cluster/examples/kubernetes/ceph/csi/template/rbd/csi-rbdplugin.yaml
-index 932c2b18..4af4ff83 100644
+index 8f7b7aed..44867370 100644
 --- a/cluster/examples/kubernetes/ceph/csi/template/rbd/csi-rbdplugin.yaml
 +++ b/cluster/examples/kubernetes/ceph/csi/template/rbd/csi-rbdplugin.yaml
 @@ -59,6 +59,7 @@ spec:
-             - "--metricsport=9090"
+             - "--metricsport={{ .RBDGRPCMetricsPort }}"
              - "--metricspath=/metrics"
              - "--enablegrpcmetrics={{ .EnableCSIGRPCMetrics }}"
 +            - "--forcecephkernelclient=true"
            env:
              - name: POD_IP
                valueFrom:
-@@ -108,6 +109,7 @@ spec:
+@@ -104,6 +105,7 @@ spec:
              - "--metricspath=/metrics"
              - "--polltime=60s"
              - "--timeout=3s"
@@ -135,5 +133,5 @@ index 932c2b18..4af4ff83 100644
              - name: CSI_ENDPOINT
                value: unix:///csi/csi.sock
 -- 
-2.23.0
+2.16.4
 

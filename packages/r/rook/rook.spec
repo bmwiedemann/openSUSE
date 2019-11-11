@@ -17,7 +17,7 @@
 
 
 Name:           rook
-Version:        1.1.1+git0.g9a2641a6
+Version:        1.1.6+git0.g91d6f635
 Release:        0
 Summary:        Orchestrator for distributed storage systems in cloud-native environments
 License:        Apache-2.0
@@ -143,13 +143,13 @@ argument to [-test.run]. All Ceph test suites can be run with the argument
 
 # determine image names to use in manifests depending on the base os type
 # %CEPH_VERSION% is replaced at build time by the _service
-%global rook_container_version 1.1.1.0  # this is udpated by update-tarball.sh
+%global rook_container_version 1.1.6.0  # this is updated by update-tarball.sh
 %if 0%{?is_opensuse}
-%global rook_image     registry.opensuse.org/opensuse/rook/ceph:%{rook_container_version}
+%global rook_image     registry.opensuse.org/opensuse/rook/ceph:%{rook_container_version}.%{release}
 %global ceph_image     registry.opensuse.org/opensuse/ceph/ceph:%CEPH_VERSION%
 %global ceph_csi_image registry.opensuse.org/opensuse/cephcsi/cephcsi:%CSI_VERSION%.%CSI_OFFSET%
 %else # is SES
-%global rook_image     registry.suse.com/ses/6/rook/ceph:%{rook_container_version}
+%global rook_image     registry.suse.com/ses/6/rook/ceph:%{rook_container_version}.%{release}
 %global ceph_image     registry.suse.com/ses/6/ceph/ceph:%CEPH_VERSION%
 %global ceph_csi_image registry.suse.com/ses/6/cephcsi/cephcsi:%CSI_VERSION%.%CSI_OFFSET%
 %endif

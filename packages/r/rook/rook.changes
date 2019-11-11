@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Nov  6 09:11:01 UTC 2019 - Kristoffer Gronlund <kgronlund@suse.com>
+
+- Update rook to v1.1.6:
+  * Flex driver should not allow attach before detach on a different node (#3582)
+  * Properly set the ceph-mgr annotations (#4195)
+  * Only trigger an orchestration if the cluster CR changed (#4252)
+  * Fix setting rbdGrpcMetricsPort in the helm chart (#4202)
+  * Document all helm chart settings (#4202)
+  * Support all layers of CRUSH map with node labels (#4236)
+  * Skip orchestration restart on device config map update for osd on pvc (#4124)
+  * Deduplicate tolerations collected for the drain canary pods (#4220)
+  * Role bindings are missing for pod security policies (#3851)
+  * Continue with orchestration if a single mon pod fails to start (#4146)
+  * OSDs cannot call 'restorecon' when selinux is enabled (#4214)
+  * Use the rook image for drain canary pods (#4213)
+  * Allow setting of osd prepare resource limits (#4182)
+  * Documentation for object bucket provisioning (#3882)
+
+-------------------------------------------------------------------
+Tue Nov  5 16:10:12 UTC 2019 - Kristoffer Gronlund <kgronlund@suse.com>
+
+- Update rook to v1.1.4:
+  * OSD config overrides were ignored for some upgraded OSDs (#4161)
+  * Enable restoring a cluster after disaster recovery (#4021)
+  * Enable upgrade of OSDs configured on PVCs (#3996)
+  * Automatically removing OSDs requires setting: removeOSDsIfOutAndSafeToRemove(#4116)
+  * Rework csi keys and secrets to use minimal privileges (#4086)
+  * Expose OSD prepare pod resource limits (#4083)
+  * Minimum K8s version for running OSDs on PVCs is 1.13 (#4009)
+  * Add 'rgw.buckets.non-ec' to list of RGW metadataPools (#4087)
+  * Hide wrong error for clusterdisruption controller (#4094)
+  * Multiple integration test fixes to improve CI stability (#4098)
+  * Detect mount fstype more accurately in the flex driver (#4109)
+  * Do not override mgr annotations (#4110)
+  * Add OSDs to proper buckets in crush hierarchy with topology awareness (#4099)
+  * More robust removal of cluster finalizer (#4090)
+  * Take activeStandby into account for the CephFileSystem disruption budget (#4075)
+  * Update the CSI CephFS registration directory name (#4070)
+  * Fix incorrect Ceph CSI doc links (#4081)
+  * Remove decimal places for osdMemoryTargetValue monitoring setting (#4046)
+  * Relax pre-requisites for external cluster to allow connections to Luminous (#4025)
+  * Avoid nodes getting stuck in OrchestrationStatusStarting during OSD config (#3817)
+  * Make metrics and liveness port configurable (#4005)
+  * Correct system namespace for CSI driver settings during upgrade (#4040)
+
+- Update csi-dummy-images.patch
+- Update csi-template-paths.patch
+- Update 0001-bsc-1152690-ceph-csi-Driver-will-fail-with-error.patch
+
+-------------------------------------------------------------------
 Wed Oct  2 09:03:08 UTC 2019 - Kristoffer Gronlund <kgronlund@suse.com>
 
 - Force use of ceph kernel client driver (bsc#1152690)

@@ -1,8 +1,17 @@
+From d48b3a9ee97c89c2b1f550af0ec91b5dac391193 Mon Sep 17 00:00:00 2001
+From: Kristoffer Gronlund <kgronlund@suse.com>
+Date: Tue, 5 Nov 2019 16:49:49 +0000
+Subject: [PATCH] Update template paths
+
+---
+ pkg/operator/ceph/csi/spec.go | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
 diff --git a/pkg/operator/ceph/csi/spec.go b/pkg/operator/ceph/csi/spec.go
-index 44f07f7e..9bad585d 100644
+index 09f5e16c..d08ea948 100644
 --- a/pkg/operator/ceph/csi/spec.go
 +++ b/pkg/operator/ceph/csi/spec.go
-@@ -82,15 +82,15 @@ const (
+@@ -102,15 +102,15 @@ const (
  	DefaultKubeletDirPath = "/var/lib/kubelet"
  
  	// template
@@ -24,6 +33,9 @@ index 44f07f7e..9bad585d 100644
 +	DefaultCephFSProvisionerSTSTemplatePath = "/usr/share/k8s-yaml/rook/ceph/csi/template/cephfs/csi-cephfsplugin-provisioner-sts.yaml"
 +	DefaultCephFSProvisionerDepTemplatePath = "/usr/share/k8s-yaml/rook/ceph/csi/template/cephfs/csi-cephfsplugin-provisioner-dep.yaml"
 +	DefaultCephFSPluginServiceTemplatePath  = "/usr/share/k8s-yaml/rook/ceph/csi/template/cephfs/csi-cephfsplugin-svc.yaml"
- )
  
- func CSIEnabled() bool {
+ 	// grpc metrics and liveness port for cephfs  and rbd
+ 	DefaultCephFSGRPCMerticsPort     uint16 = 9091
+-- 
+2.16.4
+
