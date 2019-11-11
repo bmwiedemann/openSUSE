@@ -17,7 +17,7 @@
 
 
 Name:           perl-HTML-Clean
-Version:        1.2
+Version:        1.4
 Release:        0
 %define cpan_name HTML-Clean
 Summary:        Cleans up HTML code for web browsers, not humans
