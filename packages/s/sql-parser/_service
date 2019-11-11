@@ -1,0 +1,16 @@
+<services>
+  <service mode="disabled" name="obs_scm">
+    <param name="url">https://github.com/envoyproxy/sql-parser</param>
+    <param name="scm">git</param>
+    <param name="filename">sql-parser</param>
+    <param name="versionformat">@PARENT_TAG@+git%cd</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="revision">5f50c68bdf5f107692bb027d1c568f67597f4d7f</param>
+  </service>
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+</services>
