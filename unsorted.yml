@@ -7253,8 +7253,8 @@ unsorted:
   - libSHERPA-MC0-config 
   - libSM-devel-32bit: [x86_64] 
   - libSM6-32bit: [x86_64] 
-  - libSPIRV-Tools-suse13 
-  - libSPIRV-Tools-suse13-32bit: [x86_64] 
+  - libSPIRV-Tools-suse14 
+  - libSPIRV-Tools-suse14-32bit: [x86_64] 
   - libSampleICC-devel 
   - libSampleICC1 
   - libSavitar-devel 
@@ -8799,7 +8799,7 @@ unsorted:
   - libgloox17 
   - libgloox17-32bit: [x86_64] 
   - libglpk40 
-  - libglslang-suse7 
+  - libglslang-suse8 
   - libgltf-0_1-1 
   - libgltf-devel 
   - libglue-devel 
@@ -8894,7 +8894,7 @@ unsorted:
   - libgrail6 
   - libgrail6-32bit: [x86_64] 
   - libgranite5 
-  - libgraphblas2 
+  - libgraphblas3 
   - libgraphene-1_0-0-32bit: [x86_64] 
   - libgraphene-devel 
   - libgravatar-devel 
@@ -9458,6 +9458,7 @@ unsorted:
   - libkleo-devel 
   - libklfbackend4 
   - libklftools4 
+  - libklu-doc 
   - libklu1 
   - libkmahjongg-devel 
   - libkmod-devel 
@@ -14539,6 +14540,7 @@ unsorted:
   - opae-devel: [x86_64] 
   - opam 
   - opam-devel 
+  - opam-file-format 
   - opam-file-format-devel 
   - opam-installer 
   - open-iscsi-devel 
@@ -20853,6 +20855,7 @@ unsorted:
   - python3-libcomps 
   - python3-libdnf 
   - python3-libewf 
+  - python3-libfdt 
   - python3-libfsntfs 
   - python3-libftdi1 
   - python3-libfvde 
