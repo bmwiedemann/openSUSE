@@ -23,17 +23,12 @@ Release:        0
 Summary:        Package build system for OCaml
 License:        BSD-2-Clause
 Group:          Development/Languages/OCaml
-
 URL:            https://github.com/ocaml-obuild/obuild
-Source0:        https://github.com/ocaml-obuild/obuild/archive/obuild-v%{version}/%{name}-%{version}.tar.gz
-
+Source0:        %{name}-%{version}.tar.xz
 # Enable reproducible builds. Already applied upstream.
 Patch0:         https://github.com/ocaml-obuild/obuild/commit/b40c69380f724933c462ede4b926e3c4f4182d09.patch
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
 BuildRequires:  help2man
-BuildRequires:  ocaml
+BuildRequires:  ocaml(ocaml.opt)
 BuildRequires:  ocaml-rpm-macros
 
 %description
@@ -45,8 +40,7 @@ way of working, adapting parts where necessary to fully support OCaml.
 
 
 %prep
-%setup -q -n obuild-obuild-v%{version}
-%patch0 -p1
+%autosetup -p1
 
 %build
 ./bootstrap
@@ -72,7 +66,6 @@ help2man \
     dist/build/obuild-simple/obuild-simple
 
 %files
-%defattr(-,root,root,-)
 %doc README.md OBUILD_SPEC.md DESIGN.md
 %license LICENSE
 %{_bindir}/*

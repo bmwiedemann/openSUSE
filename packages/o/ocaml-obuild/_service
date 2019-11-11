@@ -1,0 +1,16 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="filename">ocaml-obuild</param>
+    <!-- v0.1.10 -->
+    <param name="revision">6d2eb3ce5a7e7622920a14c75b9db08c8b3da8bd</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/ocaml-obuild/obuild.git</param>
+    <param name="versionformat">0.1.10</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>
