@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov  7 07:59:11 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.127
+  * layers: Update ValidateShaderStageInputOutputLimits to
+    new spec rules
+  * cmake: Restore creation of standard validation JSON
+    file [boo#1155932]
+  * layers: Add RT shader group validation
+
+-------------------------------------------------------------------
 Sat Oct 26 11:45:44 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.1.126
