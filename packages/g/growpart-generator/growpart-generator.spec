@@ -25,6 +25,7 @@ Group:          System/Management
 Url:            https://build.opensuse.org/package/show/devel:kubic/growpart-generator
 Source1:        growpart-generator.sh
 Source2:        gpl-3.0.txt
+BuildRequires:  systemd-rpm-macros
 Requires:       growpart
 Requires:       systemd
 BuildArch:      noarch
@@ -41,13 +42,12 @@ cp %{SOURCE2} .
 %build
 
 %install
-install -Dm0755 -t %{buildroot}%{_libexecdir}/systemd/system-generators %{SOURCE1}
+install -Dm0755 -t %{buildroot}%{_systemdgeneratordir} %{SOURCE1}
 
 %files
 %license gpl-3.0.txt
 # Dir ownership to avoid the systemd BuildRequires
-%dir %{_libexecdir}/systemd/
-%dir %{_libexecdir}/systemd/system-generators/
-%{_libexecdir}/systemd/system-generators/growpart-generator.sh
+%dir %{_systemdgeneratordir}
+%{_systemdgeneratordir}/growpart-generator.sh
 
 %changelog
