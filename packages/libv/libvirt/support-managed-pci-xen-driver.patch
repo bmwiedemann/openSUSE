@@ -8,11 +8,11 @@ Subject: [PATCH] support managed pci devices in xen driver
  src/xenxs/xen_xm.c   |   28 +++++++++++++++++++++++++++-
  2 files changed, 35 insertions(+), 15 deletions(-)
 
-Index: libvirt-5.8.0/src/libxl/xen_common.c
+Index: libvirt-5.9.0/src/libxl/xen_common.c
 ===================================================================
---- libvirt-5.8.0.orig/src/libxl/xen_common.c
-+++ libvirt-5.8.0/src/libxl/xen_common.c
-@@ -388,12 +388,19 @@ xenParsePCI(char *entry)
+--- libvirt-5.9.0.orig/src/libxl/xen_common.c
++++ libvirt-5.9.0/src/libxl/xen_common.c
+@@ -383,12 +383,19 @@ xenParsePCI(char *entry)
      int busID;
      int slotID;
      int funcID;
@@ -32,7 +32,7 @@ Index: libvirt-5.8.0/src/libxl/xen_common.c
      if (!(nextkey = strchr(key, ':')))
          return NULL;
      if (virStrncpy(domain, key, (nextkey - key), sizeof(domain)) < 0) {
-@@ -438,10 +445,30 @@ xenParsePCI(char *entry)
+@@ -433,10 +440,30 @@ xenParsePCI(char *entry)
      if (virStrToLong_i(func, NULL, 16, &funcID) < 0)
          return NULL;
  

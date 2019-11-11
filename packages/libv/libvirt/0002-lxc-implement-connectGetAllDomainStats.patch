@@ -9,10 +9,10 @@ them using the existing API.
  src/lxc/lxc_driver.c | 138 +++++++++++++++++++++++++++++++++++++++++++++++++++
  1 file changed, 138 insertions(+)
 
-Index: libvirt-5.8.0/src/lxc/lxc_driver.c
+Index: libvirt-5.9.0/src/lxc/lxc_driver.c
 ===================================================================
---- libvirt-5.8.0.orig/src/lxc/lxc_driver.c
-+++ libvirt-5.8.0/src/lxc/lxc_driver.c
+--- libvirt-5.9.0.orig/src/lxc/lxc_driver.c
++++ libvirt-5.9.0/src/lxc/lxc_driver.c
 @@ -75,6 +75,7 @@
  #include "viraccessapichecklxc.h"
  #include "virhostdev.h"
@@ -21,7 +21,7 @@ Index: libvirt-5.8.0/src/lxc/lxc_driver.c
  
  #define VIR_FROM_THIS VIR_FROM_LXC
  
-@@ -5404,6 +5405,135 @@ lxcDomainHasManagedSaveImage(virDomainPt
+@@ -5394,6 +5395,135 @@ lxcDomainHasManagedSaveImage(virDomainPt
      return ret;
  }
  
@@ -56,8 +56,8 @@ Index: libvirt-5.8.0/src/lxc/lxc_driver.c
 +                  unsigned int stats,
 +                  virDomainStatsRecordPtr *record)
 +{
-+    VIR_AUTOFREE(virDomainStatsRecordPtr) tmp = NULL;
-+    VIR_AUTOPTR(virTypedParamList) params = NULL;
++    g_autofree virDomainStatsRecordPtr tmp = NULL;
++    g_autoptr(virTypedParamList) params = NULL;
 +    size_t i;
 +
 +    if (VIR_ALLOC(params) < 0)
@@ -78,7 +78,7 @@ Index: libvirt-5.8.0/src/lxc/lxc_driver.c
 +        return -1;
 +
 +    tmp->nparams = virTypedParamListStealParams(params, &tmp->params);
-+    VIR_STEAL_PTR(*record, tmp);
++    *record = g_steal_pointer(&tmp);
 +    return 0;
 +}
 +
@@ -157,7 +157,7 @@ Index: libvirt-5.8.0/src/lxc/lxc_driver.c
  
  /* Function Tables */
  static virHypervisorDriver lxcHypervisorDriver = {
-@@ -5499,6 +5629,7 @@ static virHypervisorDriver lxcHypervisor
+@@ -5489,6 +5619,7 @@ static virHypervisorDriver lxcHypervisor
      .nodeGetFreePages = lxcNodeGetFreePages, /* 1.2.6 */
      .nodeAllocPages = lxcNodeAllocPages, /* 1.2.9 */
      .domainHasManagedSaveImage = lxcDomainHasManagedSaveImage, /* 1.2.13 */

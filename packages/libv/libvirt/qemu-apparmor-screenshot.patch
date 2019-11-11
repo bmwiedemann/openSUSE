@@ -1,7 +1,7 @@
-Index: libvirt-5.8.0/src/security/apparmor/libvirt-qemu
+Index: libvirt-5.9.0/src/security/apparmor/libvirt-qemu
 ===================================================================
---- libvirt-5.8.0.orig/src/security/apparmor/libvirt-qemu
-+++ libvirt-5.8.0/src/security/apparmor/libvirt-qemu
+--- libvirt-5.9.0.orig/src/security/apparmor/libvirt-qemu
++++ libvirt-5.9.0/src/security/apparmor/libvirt-qemu
 @@ -228,3 +228,6 @@
    # required for sasl GSSAPI plugin
    /etc/gss/mech.d/ r,

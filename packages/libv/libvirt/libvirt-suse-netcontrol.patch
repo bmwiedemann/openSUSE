@@ -1,8 +1,8 @@
-Index: libvirt-5.8.0/configure.ac
+Index: libvirt-5.9.0/configure.ac
 ===================================================================
---- libvirt-5.8.0.orig/configure.ac
-+++ libvirt-5.8.0/configure.ac
-@@ -285,6 +285,7 @@ LIBVIRT_ARG_LIBSSH
+--- libvirt-5.9.0.orig/configure.ac
++++ libvirt-5.9.0/configure.ac
+@@ -279,6 +279,7 @@ LIBVIRT_ARG_LIBSSH
  LIBVIRT_ARG_LIBXML
  LIBVIRT_ARG_MACVTAP
  LIBVIRT_ARG_NETCF
@@ -10,7 +10,7 @@ Index: libvirt-5.8.0/configure.ac
  LIBVIRT_ARG_NLS
  LIBVIRT_ARG_NSS
  LIBVIRT_ARG_NUMACTL
-@@ -328,6 +329,7 @@ LIBVIRT_CHECK_LIBSSH
+@@ -323,6 +324,7 @@ LIBVIRT_CHECK_LIBSSH
  LIBVIRT_CHECK_LIBXML
  LIBVIRT_CHECK_MACVTAP
  LIBVIRT_CHECK_NETCF
@@ -18,7 +18,7 @@ Index: libvirt-5.8.0/configure.ac
  LIBVIRT_CHECK_NLS
  LIBVIRT_CHECK_NUMACTL
  LIBVIRT_CHECK_NWFILTER
-@@ -1018,6 +1020,7 @@ LIBVIRT_RESULT_LIBXL
+@@ -1003,6 +1005,7 @@ LIBVIRT_RESULT_LIBXL
  LIBVIRT_RESULT_LIBXML
  LIBVIRT_RESULT_MACVTAP
  LIBVIRT_RESULT_NETCF
@@ -26,11 +26,11 @@ Index: libvirt-5.8.0/configure.ac
  LIBVIRT_RESULT_NLS
  LIBVIRT_RESULT_NSS
  LIBVIRT_RESULT_NUMACTL
-Index: libvirt-5.8.0/tools/virsh.c
+Index: libvirt-5.9.0/tools/virsh.c
 ===================================================================
---- libvirt-5.8.0.orig/tools/virsh.c
-+++ libvirt-5.8.0/tools/virsh.c
-@@ -558,6 +558,8 @@ virshShowVersion(vshControl *ctl ATTRIBU
+--- libvirt-5.9.0.orig/tools/virsh.c
++++ libvirt-5.9.0/tools/virsh.c
+@@ -555,6 +555,8 @@ virshShowVersion(vshControl *ctl G_GNUC_
      vshPrint(ctl, " Interface");
  # if defined(WITH_NETCF)
      vshPrint(ctl, " netcf");
@@ -39,10 +39,10 @@ Index: libvirt-5.8.0/tools/virsh.c
  # elif defined(WITH_UDEV)
      vshPrint(ctl, " udev");
  # endif
-Index: libvirt-5.8.0/src/interface/interface_backend_netcf.c
+Index: libvirt-5.9.0/src/interface/interface_backend_netcf.c
 ===================================================================
---- libvirt-5.8.0.orig/src/interface/interface_backend_netcf.c
-+++ libvirt-5.8.0/src/interface/interface_backend_netcf.c
+--- libvirt-5.9.0.orig/src/interface/interface_backend_netcf.c
++++ libvirt-5.9.0/src/interface/interface_backend_netcf.c
 @@ -21,7 +21,12 @@
  
  #include <config.h>
@@ -106,7 +106,35 @@ Index: libvirt-5.8.0/src/interface/interface_backend_netcf.c
      /* open netcf */
      if (ncf_init(&driver->netcf, NULL) != 0) {
          virReportError(VIR_ERR_INTERNAL_ERROR, "%s",
-@@ -1251,6 +1291,19 @@ static virStateDriver interfaceStateDriv
+@@ -1117,6 +1157,7 @@ static int netcfInterfaceIsActive(virInt
+     return ret;
+ }
+ 
++#ifdef HAVE_NETCF_TRANSACTIONS
+ static int netcfInterfaceChangeBegin(virConnectPtr conn, unsigned int flags)
+ {
+     int ret;
+@@ -1191,6 +1232,7 @@ static int netcfInterfaceChangeRollback(
+     virObjectUnlock(driver);
+     return ret;
+ }
++#endif /* HAVE_NETCF_TRANSACTIONS */
+ 
+ static virInterfaceDriver interfaceDriver = {
+     .name = INTERFACE_DRIVER_NAME,
+@@ -1207,9 +1249,11 @@ static virInterfaceDriver interfaceDrive
+     .interfaceCreate = netcfInterfaceCreate, /* 0.7.0 */
+     .interfaceDestroy = netcfInterfaceDestroy, /* 0.7.0 */
+     .interfaceIsActive = netcfInterfaceIsActive, /* 0.7.3 */
++#ifdef HAVE_NETCF_TRANSACTIONS
+     .interfaceChangeBegin = netcfInterfaceChangeBegin, /* 0.9.2 */
+     .interfaceChangeCommit = netcfInterfaceChangeCommit, /* 0.9.2 */
+     .interfaceChangeRollback = netcfInterfaceChangeRollback, /* 0.9.2 */
++#endif /* HAVE_NETCF_TRANSACTIONS */
+ };
+ 
+ 
+@@ -1240,6 +1284,19 @@ static virStateDriver interfaceStateDriv
  
  int netcfIfaceRegister(void)
  {
@@ -126,10 +154,10 @@ Index: libvirt-5.8.0/src/interface/interface_backend_netcf.c
      if (virRegisterConnectDriver(&interfaceConnectDriver, false) < 0)
          return -1;
      if (virSetSharedInterfaceDriver(&interfaceDriver) < 0)
-Index: libvirt-5.8.0/src/interface/interface_driver.c
+Index: libvirt-5.9.0/src/interface/interface_driver.c
 ===================================================================
---- libvirt-5.8.0.orig/src/interface/interface_driver.c
-+++ libvirt-5.8.0/src/interface/interface_driver.c
+--- libvirt-5.9.0.orig/src/interface/interface_driver.c
++++ libvirt-5.9.0/src/interface/interface_driver.c
 @@ -30,8 +30,15 @@ interfaceRegister(void)
      if (netcfIfaceRegister() == 0)
          return 0;
@@ -147,10 +175,10 @@ Index: libvirt-5.8.0/src/interface/interface_driver.c
      if (udevIfaceRegister() == 0)
          return 0;
  #endif /* WITH_UDEV */
-Index: libvirt-5.8.0/m4/virt-netcontrol.m4
+Index: libvirt-5.9.0/m4/virt-netcontrol.m4
 ===================================================================
 --- /dev/null
-+++ libvirt-5.8.0/m4/virt-netcontrol.m4
++++ libvirt-5.9.0/m4/virt-netcontrol.m4
 @@ -0,0 +1,39 @@
 +dnl The libnetcontrol library
 +dnl
@@ -191,10 +219,10 @@ Index: libvirt-5.8.0/m4/virt-netcontrol.m4
 +AC_DEFUN([LIBVIRT_RESULT_NETCONTROL],[
 +  LIBVIRT_RESULT_LIB([NETCONTROL])
 +])
-Index: libvirt-5.8.0/src/interface/Makefile.inc.am
+Index: libvirt-5.9.0/src/interface/Makefile.inc.am
 ===================================================================
---- libvirt-5.8.0.orig/src/interface/Makefile.inc.am
-+++ libvirt-5.8.0/src/interface/Makefile.inc.am
+--- libvirt-5.9.0.orig/src/interface/Makefile.inc.am
++++ libvirt-5.9.0/src/interface/Makefile.inc.am
 @@ -6,6 +6,7 @@ INTERFACE_DRIVER_SOURCES = \
  	$(NULL)
  
@@ -203,7 +231,7 @@ Index: libvirt-5.8.0/src/interface/Makefile.inc.am
  INTERFACE_DRIVER_UDEV_SOURCES = interface/interface_backend_udev.c
  
  DRIVER_SOURCE_FILES += $(INTERFACE_DRIVER_SOURCES)
-@@ -35,6 +36,11 @@ libvirt_driver_interface_la_CFLAGS += $(
+@@ -36,6 +37,11 @@ libvirt_driver_interface_la_CFLAGS += $(
  libvirt_driver_interface_la_LIBADD += $(NETCF_LIBS)
  libvirt_driver_interface_la_SOURCES += $(INTERFACE_DRIVER_NETCF_SOURCES)
  endif WITH_NETCF
