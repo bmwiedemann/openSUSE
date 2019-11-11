@@ -135,6 +135,7 @@ Patch103:       nodejs-sle11-python26-check_output.patch
 # PATCH-FIX-OPENSUSE -- install user global npm packages to /usr/local
 # instead of /usr
 Patch104:       npm_search_paths.patch
+Patch106:       skip_no_console.patch
 
 Patch120:       flaky_test_rerun.patch
 
@@ -144,6 +145,8 @@ Patch200:       versioned.patch
 %if 0%{with binutils_gold}
 BuildRequires:  binutils-gold
 %endif
+
+BuildRequires:  pkg-config
 
 # Node.js 4/6/7 requires GCC 4.8.5+.
 #
@@ -325,8 +328,12 @@ tar Jxvf %{SOURCE11}
 %patch103 -p1
 %endif
 %patch104 -p1
+%patch106 -p1
 %patch120 -p1
 %patch200 -p1
+
+# remove backup files, if any
+find -name \*~ -print0 -delete
 
 # abnormalities from patching
 find \( -name \*.js.orig -or -name \*.md.orig \) -delete

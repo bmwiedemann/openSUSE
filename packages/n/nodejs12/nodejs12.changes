@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  5 08:27:58 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- skip_no_console.patch: skip tests with dumb console
+- versioned.patch: fix symlinks
+
+-------------------------------------------------------------------
 Mon Oct 21 12:27:14 UTC 2019 - Adam Majer <adam.majer@suse.de>
 
 - Update to LTS release 12.13.0 (jira#SLE-8947):

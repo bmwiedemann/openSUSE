@@ -25,17 +25,25 @@ Index: node-v12.13.0/tools/install.py
 ===================================================================
 --- node-v12.13.0.orig/tools/install.py
 +++ node-v12.13.0/tools/install.py
-@@ -81,7 +81,7 @@ def uninstall(paths, dst):
+@@ -81,34 +81,34 @@ def uninstall(paths, dst):
      try_remove(path, dst)
  
  def npm_files(action):
 -  target_path = sysconfig.get_config_var("LIB") + '/node_modules/npm/'
-+  target_path = sysconfig.get_config_var("LIB") + '/node_modules/npm12/'
++  target_path = sysconfig.get_config_var("LIBDIR") + '/node_modules/npm12/'
  
    # don't install npm if the target path is a symlink, it probably means
    # that a dev version of npm is installed there
-@@ -95,20 +95,20 @@ def npm_files(action):
-     action(paths, target_path + dirname[9:] + '/')
+-  if os.path.islink(abspath(install_path, target_path)): return
++  if os.path.islink(abspath(install_path, '..', target_path)): return
+ 
+   # npm has a *lot* of files and it'd be a pain to maintain a fixed list here
+   # so we walk its source directory instead...
+   for dirname, subdirs, basenames in os.walk('deps/npm', topdown=True):
+     subdirs[:] = [subdir for subdir in subdirs if subdir != 'test']
+     paths = [os.path.join(dirname, basename) for basename in basenames]
+-    action(paths, target_path + dirname[9:] + '/')
++    action(paths, install_path + '/..' + target_path + dirname[9:] + '/')
  
    # create/remove symlink
 -  link_path = abspath(install_path, 'bin/npm')
@@ -45,7 +53,7 @@ Index: node-v12.13.0/tools/install.py
 +    action([link_path], 'bin/npm12')
    elif action == install:
 -    try_symlink("../" + sysconfig.get_config_var("LIB") + '/node_modules/npm/bin/npm-cli.js',link_path)
-+    try_symlink("../" + sysconfig.get_config_var("LIB") + '/node_modules/npm12/bin/npm-cli.js',link_path)
++    try_symlink(sysconfig.get_config_var("LIBDIR") + '/node_modules/npm12/bin/npm-cli.js',link_path)
    else:
      assert 0  # unhandled action type
  
@@ -57,7 +65,7 @@ Index: node-v12.13.0/tools/install.py
 +    action([link_path], 'bin/npx12')
    elif action == install:
 -    try_symlink('../' + sysconfig.get_config_var("LIB") + '/node_modules/npm/bin/npx-cli.js', link_path)
-+    try_symlink('../' + sysconfig.get_config_var("LIB") + '/node_modules/npm12/bin/npx-cli.js', link_path)
++    try_symlink(sysconfig.get_config_var("LIBDIR") + '/node_modules/npm12/bin/npx-cli.js', link_path)
    else:
      assert 0 # unhandled action type
  
@@ -70,8 +78,12 @@ Index: node-v12.13.0/tools/install.py
    output_prefix = 'out/Release/'
  
    if 'false' == variables.get('node_shared'):
-@@ -147,7 +147,7 @@ def files(action):
-     action(['out/Release/node.d'], sysconfig.get_config_var("LIB") + '/dtrace/node.d')
+@@ -144,10 +144,10 @@ def files(action):
+     action([output_prefix + output_file], 'lib/' + output_file)
+ 
+   if 'true' == variables.get('node_use_dtrace'):
+-    action(['out/Release/node.d'], sysconfig.get_config_var("LIB") + '/dtrace/node.d')
++    action(['out/Release/node.d'], sysconfig.get_config_var("LIBDIR") + '/dtrace/node.d')
  
    # behave similarly for systemtap
 -  action(['src/node.stp'], 'share/systemtap/tapset/')
