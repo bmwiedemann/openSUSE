@@ -1,0 +1,16 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="filename">ocaml-result</param>
+    <!-- 1.4 -->
+    <param name="revision">5f7f1a4423ca3b9db4b4048d561f31fd6bfd9ab0</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/janestreet/result.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

@@ -16,7 +16,6 @@
 #
 
 
-%define _name   result
 Name:           ocaml-result
 Version:        1.4
 Release:        0
@@ -25,10 +24,10 @@ Summary:        Compatibility OCaml Result module
 License:        BSD-3-Clause
 Group:          Development/Languages/OCaml
 Url:            https://github.com/janestreet/result
-Source0:        %{url}/archive/%{version}/%{_name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20190930
+BuildRequires:  ocaml-rpm-macros >= 20191101
 
 %description
 Projects that want to use the new result type defined in OCaml >= 4.03 while
@@ -48,9 +47,10 @@ defined in this library.
 This package contains development files for %{name}.
 
 %prep
-%setup -q -n %{_name}-%{version}
+%autosetup -p1
 
 %build
+dune_release_pkgs='result'
 %ocaml_dune_setup
 %ocaml_dune_build
 
@@ -59,11 +59,9 @@ This package contains development files for %{name}.
 %ocaml_create_file_list
 
 %check
-%ocaml_dune_test || : make check failed
+%ocaml_dune_test
 
 %files -f %{name}.files
-%license LICENSE.md
-%doc README.md
 
 %files devel -f %{name}.files.devel
 
