@@ -1,0 +1,15 @@
+<services>
+  <service mode="disabled" name="obs_scm">
+    <param name="url">https://github.com/envoyproxy/protoc-gen-validate</param>
+    <param name="scm">git</param>
+    <param name="filename">envoy-protoc-gen-validate</param>
+    <param name="versionformat">%cd</param>
+    <param name="revision">26db5cb7c01a67c6a2e21a832106406185530b2f</param>
+  </service>
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+</services>

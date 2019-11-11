@@ -1,0 +1,9 @@
+# This is a source package and /usr/src is a correct path to install files.
+# We disable couple of our checks as well.
+addFilter("envoy-protoc-gen-validate-source.* suse-filelist-forbidden-fhs23")
+addFilter("envoy-protoc-gen-validate-source.* pem-certificate")
+addFilter("envoy-protoc-gen-validate-source.* script-without-shebang")
+addFilter("envoy-protoc-gen-validate-source.* env-script-interpreter")
+addFilter("envoy-protoc-gen-validate-source.* zero-length")
+addFilter("envoy-protoc-gen-validate-source.* non-executable-script")
+addFilter("envoy-protoc-gen-validate-source.* hidden-file-or-dir")
