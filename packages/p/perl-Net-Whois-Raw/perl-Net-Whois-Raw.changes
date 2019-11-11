@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Oct 28 10:59:36 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 2.99026
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  2.99026  Oct 25 2019 Alexander Nalobin
+      - Change whois.rightside.co whois server to whois.donuts.co
+
+-------------------------------------------------------------------
+Fri Oct 25 09:46:42 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 2.99025
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  2.99025  Oct 24 2019 Eugeny Subachev
+      - Fixed 'not found' pattern for whois.nic.so
+      - New tld .NET.SO
+
+-------------------------------------------------------------------
 Fri Oct 11 09:01:37 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 2.99024
