@@ -53,4 +53,14 @@
 - Use official kubic image in k8s.yaml file</comment>
     <requestid>743519</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>77141211a7be56a314bdc8a7b8dbf3c0</srcmd5>
+    <version>0.9.0</version>
+    <time>1573473462</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.0
+  - You can now specify service account image pull secrets
+  - Versioning now happens automagically.</comment>
+    <requestid>745962</requestid>
+  </revision>
 </revisionlist>

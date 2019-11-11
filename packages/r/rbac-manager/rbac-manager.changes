@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  6 11:31:23 UTC 2019 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.9.0
+  - You can now specify service account image pull secrets
+  - Versioning now happens automagically.
+
+-------------------------------------------------------------------
 Sun Oct 27 17:18:39 UTC 2019 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.8.4
