@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 11 14:39:28 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
+
+- Update to 1.1.6 bsc#1099674:
+  * Do not remove groups by default. Now, groups are kept untouched
+    by default. Introduce a new option '--remove-groups' that
+    removes Group tags from the specfile. Remove '--preserve_groups'
+    option.
+  * Say goodbye to setup.py test usage as it is deprecated
+  * Update the copyring and SUSE header string wrt #264
+  * Ignore hpc_configure macro from bracketing
+
+-------------------------------------------------------------------
 Thu Sep 26 12:47:05 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
 
 - Update to 1.1.5 bsc#1099674:
