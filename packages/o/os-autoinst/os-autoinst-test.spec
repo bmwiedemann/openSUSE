@@ -1,7 +1,7 @@
 #
 # spec file for package os
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define name_ext -test
 %define         short_name os-autoinst
 Name:           %{short_name}%{?name_ext}
-Version:        4.6.1573214011.87166a81
+Version:        4.6.1573405893.c5877f02
 Release:        0
 Summary:        test package for os-autoinst
 #BuildRequires:  %{short_name} == %{version}
@@ -42,8 +42,7 @@ echo '1;' > main.pm
 mkdir needles
 cat - > vars.json <<EOF
 {
-    "CASEDIR": "/tmp",
-    "PRJDIR": "/tmp"
+    "CASEDIR": "/tmp"
 }
 EOF
 isotovideo -d casedir=$(pwd -P) productdir=$(pwd -P) |& tee isotovideo.log ||:

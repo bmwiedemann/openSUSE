@@ -1,7 +1,7 @@
 #
 # spec file for package os-autoinst
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1573214011.87166a81
+Version:        4.6.1573405893.c5877f02
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
-Url:            https://github.com/os-autoinst/os-autoinst
+URL:            https://github.com/os-autoinst/os-autoinst
 Source0:        %{name}-%{version}.tar.xz
 # Force OBS to resolve choices on opencv-devel
 #!BuildIgnore: opencv3-devel
