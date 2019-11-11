@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -32,7 +32,9 @@ Summary:        Fork of protoc-gen-go - Go support for Google's protocol buffers
 License:        Apache-2.0
 Group:          Development/Languages/Golang
 Url:            https://github.com/gogo/protobuf
-Source:         %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
+Source100:      BUILD
+Source101:      WORKSPACE
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 %{go_provides}
@@ -54,6 +56,8 @@ This package contains source code for protoc-gen-go.
 
 %prep
 %setup -q
+cp %{SOURCE100} .
+cp %{SOURCE101} .
 
 %build
 %goprep %{provider_prefix}
@@ -64,7 +68,7 @@ This package contains source code for protoc-gen-go.
 
 # Install sources
 mkdir -p %{buildroot}%{src_install_dir}
-tar -xJf %{SOURCE0} --strip-components=1 -C %{buildroot}%{src_install_dir}
+cp -R * %{buildroot}%{src_install_dir}
 # Fix env-script-interpreter rpmlint error
 find %{buildroot}%{src_install_dir} -type f -name "*.sh" -exec sed -i 's|#!.*/usr/bin/env bash|#!/bin/bash|' "{}" +
 
@@ -79,4 +83,3 @@ find %{buildroot}%{src_install_dir} -type f -name "*.sh" -exec sed -i 's|#!.*/us
 %{src_install_dir}
 
 %changelog
-
