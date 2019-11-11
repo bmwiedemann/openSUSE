@@ -147,7 +147,7 @@ cp -r build/artifacts/jdk1.5/javadoc/* %{buildroot}%{_javadocdir}/%{name}/
 {
   # Rebuild the list of security providers in classpath.security
   suffix=security/classpath.security
-  secfiles="%{_libexecdir}/$suffix %{_libdir}/$suffix"
+  secfiles="%{_prefix}/lib/$suffix %{_prefix}/lib64/$suffix"
 
   for secfile in $secfiles
   do
@@ -171,7 +171,7 @@ if [ $1 -eq 0 ] ; then
   {
     # Rebuild the list of security providers in classpath.security
     suffix=security/classpath.security
-    secfiles="%{_libexecdir}/$suffix %{_libdir}/$suffix"
+    secfiles="%{_prefix}/lib/$suffix %{_prefix}/lib64/$suffix"
 
     for secfile in $secfiles
     do

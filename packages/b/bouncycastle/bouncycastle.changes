@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov  6 18:11:54 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Fix arch dependent macros in noarch package [bsc#1109539]
+
+-------------------------------------------------------------------
 Sat Oct 12 17:27:09 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Update pom files with those from Maven repository.
