@@ -1,7 +1,7 @@
 #
 # spec file for package openQA
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,12 +65,12 @@
 %define devel_requires %build_requires %test_requires rsync curl postgresql-devel %qemu tar xorg-x11-fonts sudo perl(Devel::Cover) perl(Devel::Cover::Report::Codecov) perl(Perl::Tidy)
 
 Name:           openQA
-Version:        4.6.1573206130.f1d227eff
+Version:        4.6.1573412318.f4760c78f
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
-Url:            http://os-autoinst.github.io/openQA/
+URL:            http://os-autoinst.github.io/openQA/
 Source0:        %{name}-%{version}.tar.xz
 # a workaround for set_version looking at random files (so we can't name it .tar.xz)
 # use update-cache to update it
