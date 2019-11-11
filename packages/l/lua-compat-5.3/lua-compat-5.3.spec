@@ -26,6 +26,7 @@ Group:          Development/Libraries/Other
 URL:            https://github.com/keplerproject/lua-compat-5.3
 Source:         https://github.com/keplerproject/lua-compat-5.3/archive/v%{version}.tar.gz#$/%{mod_name}-%{version}.tar.gz
 BuildRequires:  %{flavor}-devel
+BuildRequires:  lua-macros
 BuildRequires:  pkgconfig
 Requires:       %{flavor}
 %if "%{flavor}" == ""
@@ -48,7 +49,6 @@ if [ "x${EXTERNAL:-}" = xtrue ]; then
 fi
 ${CC} ${CFLAGS} -Iinclude ${DEF} -shared -o testmod.so tests/testmod.c ${SRC}
 gcc ${CFLAGS} -Iinclude ${DEF} -shared -o compat53.so ltablib.c lutf8lib.c lstrlib.c ${SRC}
-
 
 %install
 install -v -m 0644 -D -p -t %{buildroot}%{lua_incdir}/c-api/ c-api/*
