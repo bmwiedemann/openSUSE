@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-tables
-Version:        3.5.2
+Version:        3.6.1
 Release:        0
 Summary:        Hierarchical datasets for Python
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/PyTables/PyTables
 Source0:        https://files.pythonhosted.org/packages/source/t/tables/tables-%{version}.tar.gz
 Patch0:         Never-use-the-msse2-flag-explicitly.patch
@@ -30,10 +30,9 @@ BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 # Python 3 version needs mock too for some reason
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module numexpr >= 2.5.2}
-BuildRequires:  %{python_module numpy-devel >= 1.8.1}
+BuildRequires:  %{python_module numexpr >= 2.6.2}
+BuildRequires:  %{python_module numpy-devel >= 1.9.3}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.9.0}
 BuildRequires:  blosc-devel >= 1.4.1
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -45,9 +44,8 @@ BuildRequires:  python3-Sphinx >= 1.1
 BuildRequires:  python3-jupyter_ipython
 BuildRequires:  python3-numpydoc
 BuildRequires:  python3-sphinx_rtd_theme
-Requires:       python-numexpr >= 2.5.2
-Requires:       python-numpy >= 1.8.1
-Requires:       python-six >= 1.9.0
+Requires:       python-numexpr >= 2.6.2
+Requires:       python-numpy >= 1.9.3
 Recommends:     bzip2
 Recommends:     lzo
 %python_subpackages
@@ -63,7 +61,6 @@ interactively save and retrieve large amounts of data.
 
 %package -n %{name}-doc
 Summary:        Documentation for %{name}
-Group:          Development/Languages/Python
 Provides:       %{python_module tables-doc = %{version}}
 
 %description -n %{name}-doc
