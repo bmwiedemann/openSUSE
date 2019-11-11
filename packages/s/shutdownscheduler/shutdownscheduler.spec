@@ -17,7 +17,7 @@
 
 
 Name:           shutdownscheduler
-Version:        1.6.1
+Version:        1.6.3
 Release:        0
 Summary:        Shutdown Scheduler
 License:        GPL-3.0-or-later
