@@ -1,0 +1,18 @@
+Index: black-19.10b0/tests/test_black.py
+===================================================================
+--- black-19.10b0.orig/tests/test_black.py
++++ black-19.10b0/tests/test_black.py
+@@ -20,10 +20,11 @@ from click.testing import CliRunner
+ import black
+ from black import Feature, TargetVersion
+ 
++from aiohttp.test_utils import AioHTTPTestCase, unittest_run_loop
++from aiohttp import web
++
+ try:
+     import blackd
+-    from aiohttp.test_utils import AioHTTPTestCase, unittest_run_loop
+-    from aiohttp import web
+ except ImportError:
+     has_blackd_deps = False
+ else:

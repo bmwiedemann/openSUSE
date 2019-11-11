@@ -32,4 +32,15 @@
     <comment>- Skip randomly failing test (only in OBS)</comment>
     <requestid>707610</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>439dca98113d97b64715db4d4756a39d</srcmd5>
+    <version>19.10b0</version>
+    <time>1573504524</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 19.10b0
+- add fix-tests.patch to avoid problem during test collection
+- dont distribute 'blackd' as missing deps
+ * no obvious changelog</comment>
+    <requestid>747363</requestid>
+  </revision>
 </revisionlist>

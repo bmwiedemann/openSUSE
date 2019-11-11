@@ -19,28 +19,42 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-black
-Version:        19.3b0
+Version:        19.10b0
 Release:        0
 Summary:        A code formatter written in, and written for Python
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/ambv/black
 Source:         https://files.pythonhosted.org/packages/source/b/black/black-%{version}.tar.gz
+Patch0:         fix-tests.patch
 BuildRequires:  %{python_module aiohttp >= 3.3.2}
+# TODO: needed for blackf
+#BuildRequires:  %{python_module aiohttp-cors}
 BuildRequires:  %{python_module appdirs}
 BuildRequires:  %{python_module attrs >= 18.1.0}
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module click >= 6.5}
+BuildRequires:  %{python_module mypy_extensions}
+BuildRequires:  %{python_module pathspec}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module regex}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toml >= 0.9.4}
+BuildRequires:  %{python_module typed-ast}
+BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-aiohttp >= 3.3.2
+# TODO: needed for blackd
+#Requires:       python-aiohttp-cors
 Requires:       python-appdirs
 Requires:       python-attrs >= 18.1.0
 Requires:       python-click >= 6.5
+Requires:       python-mypy_extensions
+Requires:       python-regex
 Requires:       python-toml >= 0.9.4
+Requires:       python-typed-ast
+Requires:       python-typing_extensions
 BuildArch:      noarch
 %python_subpackages
 
@@ -57,6 +71,7 @@ also recognizes YAPF's block comments to the same effect.
 
 %prep
 %setup -q -n black-%{version}
+%patch0 -p1
 rm -rf %{pypi_name}.egg-info
 
 %build
@@ -65,6 +80,8 @@ rm -rf %{pypi_name}.egg-info
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+# TODO: missing aiohttp-cors (not in distribution and tests failing)
+rm %{buildroot}/%{_bindir}/blackd
 
 %check
 # test_expression_diff - sometimes fails on async timing in OBS
@@ -73,7 +90,7 @@ rm -rf %{pypi_name}.egg-info
 %files %{python_files}
 %doc README.md
 %python3_only %{_bindir}/black
-%python3_only %{_bindir}/blackd
+#%%python3_only %%{_bindir}/blackd
 %license LICENSE
 %{python_sitelib}/*
 

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 11 14:14:38 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 19.10b0
+- add fix-tests.patch to avoid problem during test collection
+- dont distribute 'blackd' as missing deps
+ * no obvious changelog
+
+-------------------------------------------------------------------
 Tue Jun  4 13:53:31 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip randomly failing test (only in OBS)
