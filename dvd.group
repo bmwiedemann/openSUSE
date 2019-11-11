@@ -1452,7 +1452,7 @@
     <package name="lame" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="latex2html-pngicons" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="leafpad" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
-    <package name="lensfun-data" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="lensfun-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="less" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="lftp" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="lhasa" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -2374,7 +2374,7 @@
     <package name="libldap-data" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libldapcpp1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libldb2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="liblensfun1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="liblensfun1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblhasa0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="liblightdm-gobject-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblilv-0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2394,6 +2394,7 @@
     <package name="libltdl7" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="liblua5_1-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
     <package name="liblua5_3-5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libluajit-5_1-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblvm2cmd2_03" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="liblwres160" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblxpanel0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
