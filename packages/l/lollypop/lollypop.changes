@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 11 14:31:07 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.2.12:
+  * Fix a crash in album banner (glgo#World/lollypop#2117).
+- Changes from version 1.2.11:
+  * Fix banners when artwork is empty.
+- Changes from version 1.2.10:
+  * Fix a regression in lazy loading.
+
+-------------------------------------------------------------------
 Sun Nov 10 15:20:16 UTC 2019 - antoine.belvire@opensuse.org
 
 - Update to version 1.2.9:

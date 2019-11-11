@@ -1149,4 +1149,17 @@
   * Fix some memory leaks.</comment>
     <requestid>747227</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>bd6372bf43728c7ddea8e0efcf4b19d2</srcmd5>
+    <version>1.2.12</version>
+    <time>1573504606</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.12:
+  * Fix a crash in album banner (glgo#World/lollypop#2117).
+- Changes from version 1.2.11:
+  * Fix banners when artwork is empty.
+- Changes from version 1.2.10:
+  * Fix a regression in lazy loading.</comment>
+    <requestid>747368</requestid>
+  </revision>
 </revisionlist>
