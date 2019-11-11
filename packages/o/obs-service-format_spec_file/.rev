@@ -653,4 +653,15 @@
   * Update SPDX license list</comment>
     <requestid>693192</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>a74467b8e4c16a9183588d15dcd5e3df</srcmd5>
+    <version>20191106</version>
+    <time>1573473469</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20191106:
+  * treat %global like %define (handle issue#17) (#38)
+  * change copyright entry to SUSE LLC (handle issue#35) (#36)
+  * reformat url as uppercase URL (handle issue#24) (#37)</comment>
+    <requestid>745988</requestid>
+  </revision>
 </revisionlist>

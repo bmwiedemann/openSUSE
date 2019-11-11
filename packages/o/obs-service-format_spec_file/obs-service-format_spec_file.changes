@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 06 12:38:13 UTC 2019 - coolo@suse.com
+
+- Update to version 20191106:
+  * treat %global like %define (handle issue#17) (#38)
+  * change copyright entry to SUSE LLC (handle issue#35) (#36)
+  * reformat url as uppercase URL (handle issue#24) (#37)
+
+-------------------------------------------------------------------
 Thu Apr 11 10:59:47 UTC 2019 - coolo@suse.com
 
 - Update to version 20190411:
