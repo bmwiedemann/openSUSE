@@ -18,7 +18,7 @@
 
 
 Name:           libratbag
-Version:        0.10
+Version:        0.11
 Release:        0
 Summary:        Configuration library for gaming mice
 License:        MIT

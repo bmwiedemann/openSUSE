@@ -98,4 +98,18 @@ Matthias</comment>
   * Renamed Devices</comment>
     <requestid>720731</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d7ce985634f4079c1601fbc94753c22c</srcmd5>
+    <version>0.11</version>
+    <time>1573556173</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.11:
+  * Added and improved devices:
+    + Logitech MX Master, MX Master 3, MX Master AMZ
+    + Logitech G305
+    + Logitech G502 Hero wireless
+    + Logitech G602, G604
+    + Steelseries Kinzu v3</comment>
+    <requestid>747443</requestid>
+  </revision>
 </revisionlist>
