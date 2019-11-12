@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-calendar
-Version:        19.08.2
+Version:        19.08.3
 Release:        0
 Summary:        Akonadi calendar integration
 License:        LGPL-2.1-or-later
@@ -75,11 +75,11 @@ Summary:        KDE PIM Libraries: Build Environment
 Group:          Development/Libraries/KDE
 Obsoletes:      akonadi5-calendar-devel < %{version}
 Provides:       akonadi5-calendar-devel = %{version}
+Requires:       libKF5AkonadiCalendar5 = %{version}
 Requires:       cmake(KF5Akonadi)
 Requires:       cmake(KF5CalendarCore)
 Requires:       cmake(KF5I18n)
 Requires:       cmake(KF5WidgetsAddons)
-Requires:       libKF5AkonadiCalendar5 = %{version}
 
 %description devel
 Development package for akonadi-calendar.
