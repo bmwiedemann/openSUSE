@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Nov  3 15:47:14 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.64.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.64.0.php
+- Changes since 5.63.0:
+  * Theses methods were adding in qt5.15
+  * Make it compile against qt5.15 without deprecated method
+  * KService: fix kded compilation with -DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x053f00
+  * Use ECMGenerateExportHeader to manage deprecated API better
+
+-------------------------------------------------------------------
 Sun Oct  6 13:26:55 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.63.0
