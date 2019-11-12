@@ -1,27 +1,100 @@
-From 0b2a289c98e5cd953e7c239327e96891b511532e Mon Sep 17 00:00:00 2001
+From aeccd4691acdba64bcb2622be45d80735b0c61be Mon Sep 17 00:00:00 2001
 From: Michal Rostecki <mrostecki@opensuse.org>
 Date: Tue, 5 Nov 2019 01:33:28 +0100
 Subject: [PATCH] bazel: Replace boringssl with openssl
 
 Signed-off-by: Michal Rostecki <mrostecki@opensuse.org>
 ---
- bazel/grpc_deps.bzl | 22 ++++++++++++++--------
- 1 file changed, 14 insertions(+), 8 deletions(-)
+ BUILD               |  8 ++------
+ WORKSPACE           | 18 ++++++++++++++++++
+ bazel/grpc_deps.bzl | 14 --------------
+ 3 files changed, 20 insertions(+), 20 deletions(-)
 
+diff --git a/BUILD b/BUILD
+index 2e03ed86c0..4c6c0f4dd2 100644
+--- a/BUILD
++++ b/BUILD
+@@ -1886,15 +1886,13 @@ grpc_cc_library(
+         "src/core/tsi/alts/zero_copy_frame_protector/alts_zero_copy_grpc_protector.h",
+         "src/core/tsi/transport_security_grpc.h",
+     ],
+-    external_deps = [
+-        "libssl",
+-    ],
+     language = "c++",
+     deps = [
+         "gpr",
+         "grpc_base",
+         "grpc_shadow_boringssl",
+         "tsi_interface",
++        "@openssl//:openssl-lib",
+     ],
+ )
+ 
+@@ -1978,9 +1976,6 @@ grpc_cc_library(
+         "src/core/tsi/ssl_types.h",
+         "src/core/tsi/transport_security_grpc.h",
+     ],
+-    external_deps = [
+-        "libssl",
+-    ],
+     language = "c++",
+     deps = [
+         "alts_frame_protector",
+@@ -1990,6 +1985,7 @@ grpc_cc_library(
+         "grpc_shadow_boringssl",
+         "grpc_transport_chttp2_client_insecure",
+         "tsi_interface",
++        "@openssl//:openssl-lib",
+     ],
+ )
+ 
+diff --git a/WORKSPACE b/WORKSPACE
+index 6cfa9d67b7..7258626215 100644
+--- a/WORKSPACE
++++ b/WORKSPACE
+@@ -4,6 +4,24 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+ load("//bazel:grpc_deps.bzl", "grpc_deps", "grpc_test_only_deps")
+ load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+ 
++GRPC_BUILD_CONTENT = """
++cc_library(
++    name = "openssl-lib",
++    srcs = [
++        "libssl.so.1.1",
++        "libcrypto.so.1.1",
++    ],
++    visibility = ["//visibility:public"],
++    linkstatic = False,
++)
++"""
++
++new_local_repository(
++    name = "openssl",
++    path = "%LIBDIR%",
++    build_file_content = GRPC_BUILD_CONTENT,
++)
++
+ grpc_deps()
+ 
+ grpc_test_only_deps()
 diff --git a/bazel/grpc_deps.bzl b/bazel/grpc_deps.bzl
-index cce2f88fe8..ebcafed427 100644
+index cce2f88fe8..2465a223e7 100644
 --- a/bazel/grpc_deps.bzl
 +++ b/bazel/grpc_deps.bzl
-@@ -28,7 +28,7 @@ def grpc_deps():
- 
-     native.bind(
-         name = "libssl",
--        actual = "@boringssl//:ssl",
-+        actual = "@openssl//:openssl-lib",
+@@ -26,11 +26,6 @@ def grpc_deps():
+         actual = "@com_google_absl//absl/time:time",
      )
  
+-    native.bind(
+-        name = "libssl",
+-        actual = "@boringssl//:ssl",
+-    )
+-
      native.bind(
-@@ -101,13 +101,19 @@ def grpc_deps():
+         name = "madler_zlib",
+         actual = "@zlib//:zlib",
+@@ -101,15 +96,6 @@ def grpc_deps():
          actual = "@io_opencensus_cpp//opencensus/stats:test_utils",
      )
  
@@ -32,22 +105,11 @@ index cce2f88fe8..ebcafed427 100644
 -            # NOTE: This URL generates a tarball containing dynamic date
 -            # information, so the sha256 is not consistent.
 -            url = "https://boringssl.googlesource.com/boringssl/+archive/afc30d43eef92979b05776ec0963c9cede5fb80f.tar.gz",
-+    if "openssl" not in native.existing_rules():
-+        native.new_local_repository(
-+            name = "openssl",
-+            path = "%LIBDIR%",
-+            build_file_content = """cc_library(
-+    name = "openssl-lib",
-+    srcs = [
-+        "libssl.so.1.1",
-+        "libcrypto.so.1.1",
-+    ],
-+    visibility = ["//visibility:public"],
-+    linkstatic = False,
-+)""",
-         )
- 
+-        )
+-
      if "zlib" not in native.existing_rules():
+         http_archive(
+             name = "zlib",
 -- 
 2.16.4
 
