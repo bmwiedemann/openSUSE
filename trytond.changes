@@ -1,8 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 11 17:59:05 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- Version 4.6.22 - Bugfix Release
+
+-------------------------------------------------------------------
 Thu Oct 24 06:50:06 UTC 2019 - Axel Braun <axel.braun@gmx.de>
 
 - Version 4.6.21 - Bugfix Release
-  home directory of tryton user corrected
+  home directory of tryton user corrected (boo #1155685)
 
 -------------------------------------------------------------------
 Sun Sep 15 16:38:13 UTC 2019 - Axel Braun <axel.braun@gmx.de>

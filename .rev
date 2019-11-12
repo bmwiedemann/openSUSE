@@ -293,4 +293,12 @@
     <comment>new release</comment>
     <requestid>744379</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>d082cc2fe45e6e47a242a5f8dfd8561a</srcmd5>
+    <version>4.6.22</version>
+    <time>1573556152</time>
+    <user>dimstar_suse</user>
+    <comment>boo#1156476</comment>
+    <requestid>747418</requestid>
+  </revision>
 </revisionlist>
