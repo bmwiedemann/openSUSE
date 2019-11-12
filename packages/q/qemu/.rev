@@ -1578,4 +1578,12 @@ Address python compatibility issue.</comment>
     <comment></comment>
     <requestid>746405</requestid>
   </revision>
+  <revision rev="163" vrev="4">
+    <srcmd5>5af3a027c30e32cb13ad331aaf0b1ee6</srcmd5>
+    <version>4.1.0</version>
+    <time>1573556212</time>
+    <user>dimstar_suse</user>
+    <comment>Fix %arm builds</comment>
+    <requestid>747534</requestid>
+  </revision>
 </revisionlist>

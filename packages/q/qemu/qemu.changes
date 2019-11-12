@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  8 15:02:16 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix %arm builds
+
+-------------------------------------------------------------------
 Thu Nov  7 19:02:39 UTC 2019 - Bruce Rogers <brogers@suse.com>
 
 - Fix two issues with qcow2 image processing which could affect

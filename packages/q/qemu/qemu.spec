@@ -264,11 +264,11 @@ BuildRequires:  binutils-devel
 BuildRequires:  bison
 BuildRequires:  bluez-devel
 BuildRequires:  brlapi-devel
-%ifnarch %{ix86} aarch64
+%ifnarch %{ix86} aarch64 %arm
 BuildRequires:  cross-aarch64-binutils
 BuildRequires:  cross-aarch64-gcc%gcc_version
 %endif
-%ifnarch %{ix86} armv7hl
+%ifnarch %{ix86} %arm
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%gcc_version
 %endif
