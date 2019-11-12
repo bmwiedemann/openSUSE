@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov  7 23:13:06 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.3.php
+- Changes since 19.08.2:
+  * Fix Bug 412895 - Attachment detector should not trigger while saving as draft (kde#412895)
+
+-------------------------------------------------------------------
 Fri Oct 11 07:42:56 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.2
