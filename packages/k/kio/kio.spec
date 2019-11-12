@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.63
+%define _tar_path 5.64
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kio
-Version:        5.63.0
+Version:        5.64.0
 Release:        0
 Summary:        Network transparent access to files and data
 License:        LGPL-2.1-or-later
@@ -37,8 +37,6 @@ Source2:        frameworks.keyring
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE kio_help-fallback-to-kde4-docs.patch -- allow kio_help to see into kde4 documentation, needed especially for khelpcenter5
 Patch0:         kio_help-fallback-to-kde4-docs.patch
-# PATCH-FIX-UPSTREAM kio-5.63.0-fix-depth-with-kdav.patch kde#413316 -- content of nextcloud calendars not visible
-Patch1:         kio-5.63.0-fix-depth-with-kdav.patch
 BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
