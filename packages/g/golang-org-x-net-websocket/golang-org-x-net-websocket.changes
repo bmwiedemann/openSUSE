@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 05 11:10:41 UTC 2019 - mrostecki@opensuse.org
+
+- Update to version 1.12+git20190812.cdfb69a:
+  * [release-branch.go1.12] http2: limit number of control frames in server send queue
+  * http2/h2demo: fix the HTTP/1-vs-HTTP/2 demo after HSTS breakage
+  * html: update inSelectIM and inSelectInTableIM for the latest spec
+  * html: make (*nodeStack)contains distinguish namespace
+  * http2: Revert a closed stream cannot receive data
+  * trace: tighten the check for duplicate registration
+  * route: update package docs
+  * route: fix TestRouteMessage
+  * proxy: support socks5h scheme in proxy URL
+  * ipv4, ipv6: directly initialize ctlOpts and sockOpts
+
+-------------------------------------------------------------------
 Fri Jun  2 08:09:38 UTC 2017 - thipp@suse.de
 
 - Use full tarball and include %doc section 
