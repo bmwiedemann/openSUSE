@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Nov  3 15:47:21 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.64.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.64.0.php
+- Changes since 5.63.0:
+  * map disabledTextColor to ColorScope
+  * add DisabledTextColor to Theme
+  * [PC3/button] Elide text always
+  * Improve panel options menu entries
+  * edit mode action
+  * Use ECMGenerateExportHeader to manage deprecated API better
+  * [icons/media.svg] Add 16 & 32px icons, update style
+  * [PlasmaComponents3] Fix checkable toolbutton background
+
+-------------------------------------------------------------------
 Sun Oct  6 13:27:04 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.63.0
