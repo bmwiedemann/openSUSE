@@ -1,10 +1,10 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="url">git://git.annexia.org/git/ocaml-libvirt.git</param>
-    <param name="scm">git</param>
-    <param name="versionformat">0.6.1.4.%cd.%h</param>
-    <param name="revision">master</param>
     <param name="filename">ocaml-libvirt</param>
+    <param name="revision">dune</param>
+    <param name="scm">git</param>
+    <param name="url">https://github.com/olafhering/ocaml-libvirt.git</param>
+    <param name="versionformat">0.6.1.5</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>
