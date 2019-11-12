@@ -1,9 +1,10 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="url">git://github.com/dbuenzli/cmdliner.git</param>
+    <param name="url">https://github.com/dbuenzli/cmdliner.git</param>
     <param name="scm">git</param>
-    <param name="versionformat">1.0.0.%cd.%h</param>
-    <param name="revision">master</param>
+    <param name="versionformat">1.0.4</param>
+    <!-- v1.0.4 -->
+    <param name="revision">93ee8854625a312d9ce69f83398bbc1e8443402f</param>
     <param name="filename">ocaml-cmdliner</param>
   </service>
   <service name="recompress" mode="disabled">
