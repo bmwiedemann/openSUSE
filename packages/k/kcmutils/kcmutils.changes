@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Nov  3 15:46:50 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.64.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.64.0.php
+- Changes since 5.63.0:
+  * Conditionally show navigation buttons in the header for multi-page KCMs
+  * don't use a custom header height (kde#404396)
+  * Port away from deprecated SmallIcon method
+  * add extra include
+  * Fix memory leak of KQuickAddons::ConfigModule objects (kde#412998)
+  * [KCModuleLoader] Show error when QML fails to load
+
+-------------------------------------------------------------------
 Sun Oct  6 13:26:18 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.63.0
