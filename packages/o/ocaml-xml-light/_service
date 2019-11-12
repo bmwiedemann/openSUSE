@@ -1,10 +1,10 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="url">git://github.com/gasche/xml-light.git</param>
+    <param name="filename">ocaml-xml-light</param>
+    <param name="revision">dune</param>
     <param name="scm">git</param>
+    <param name="url">https://github.com/olafhering/ocaml-xml-light.git</param>
     <param name="versionformat">2.4.%cd.%h</param>
-    <param name="revision">break-cycles</param>
-    <param name="filename">xml-light</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>
