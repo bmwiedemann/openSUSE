@@ -606,4 +606,12 @@
     <comment>KDE Frameworks 5.63.0</comment>
     <requestid>738072</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>ad646e08d2d09c9107e93012133b2fbc</srcmd5>
+    <version>5.64.0</version>
+    <time>1573555946</time>
+    <user>dimstar_suse</user>
+    <comment>5.64.0</comment>
+    <requestid>747154</requestid>
+  </revision>
 </revisionlist>
