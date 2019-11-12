@@ -278,4 +278,12 @@
     <comment>Scripted push from {project}</comment>
     <requestid>736573</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>c4b3642dc2007349d01c95be596c45b3</srcmd5>
+    <version>3.34.0</version>
+    <time>1573571514</time>
+    <user>dimstar_suse</user>
+    <comment>- Stop using arch-specific libdir again (boo#1109687). (forwarded request 746359 from mgorse)</comment>
+    <requestid>747634</requestid>
+  </revision>
 </revisionlist>

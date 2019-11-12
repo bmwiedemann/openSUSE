@@ -67,6 +67,7 @@ search results from GNOME Weather.
 
 %build
 %meson \
+	--libdir=/usr/unused-in-noarch \
 	%{nil}
 %meson_build
 
