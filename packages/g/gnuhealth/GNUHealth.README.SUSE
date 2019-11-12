@@ -77,10 +77,18 @@ go to 'manage profiles' -> add -> name it 'localhost' -> Host: localhost
 DONE. (now really)
 
 Upgrade
--------
+=======
 
-  * openSUSE supports online upgrade (zypper dup) between releases. In case you
-    are updating your installation from openSUSE Leap 42.2 to 42.3, the following message will appear:
+  * openSUSE supports online upgrade (zypper dup) between releases. 
+
+  * In case you upgrade from a previous GNU Health make sure you apply the 
+    upgrade procedures described in /usr/share/doc/packages/gnuhealth/upgrade.
+  
+    Afterwards, as user tryton, run tryton-admin to update your installation:
+
+    > /usr/bin/trytond-admin -c /etc/tryton/trytond.conf --all -d mydb
+      
+  * In case you are updating your installation from openSUSE Leap 42.2 to 42.3, the following message will appear:
     
     Problem: gnuhealth-3.2.0-12.1.noarch requires python3-PyWebDAV3-GNUHealth, but this requirement cannot be provided
     uninstallable providers: python3-PyWebDAV3-GNUHealth-0.10.1-1.1.noarch[repo-oss]
@@ -91,13 +99,6 @@ Upgrade
     This message is somewhat misleading, as the new python3-PyWebDAV3-GNUHealth conflicts with python-PyWebDAV. 
     Go for Solution 2
 
-  * In case you upgrade from a previous GNU Health make sure you apply the 
-    upgrade procedures described in /usr/share/doc/packages/gnuhealth/upgrade.
-
-    As user tryton, run tryton-admin:
-
-    > /usr/bin/trytond-admin -c /etc/tryton/trytond.conf --all -d mydb
-    
   * GNU_Health 3.0 on openSUSE delivered 2 modules, which are not (yet) in 3.2
     anymore: pdq and hl7. You need to delete them first
 
@@ -185,4 +186,4 @@ Have fun and keep the neighborhood well and fit!
 [4] https://github.com/mbehrle/tryton/blob/wiki/InstallationonopenSUSE.md
 
 
- -- Axel Braun <axel.braun@gmx.de>  Fri Dec  7 18:21:20 UTC 2018
+ -- Axel Braun <axel.braun@gmx.de>  Wed Oct 30 11:11:20 UTC 2019

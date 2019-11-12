@@ -40,6 +40,7 @@ Source3:        gnuhealth.service
 Source4:        gnuhealth-webdav@.service
 Source5:        openSUSE-gnuhealth-setup
 Source6:        gnuhealth
+Patch0:         demo.diff
 
 BuildArch:      noarch
 
@@ -94,7 +95,7 @@ You would need the GNU Health Client as well, on the same or a different machine
 
 %prep
 %setup -q -n %{name}-%{version}
-#%patch0 -p1
+%patch0 -p1
 cp %{S:1} .
 cp %{S:2} .
 
@@ -116,6 +117,10 @@ mkdir -p -m 755 %{buildroot}%{_bindir}
 install -p -m 755 gnuhealth-control %{buildroot}%{_bindir}/gnuhealth-control
 install -p -m 755 %{S:5} %{buildroot}%{_bindir}/openSUSE-gnuhealth-setup
 install -p -m 755 %{S:6} %{buildroot}%{_bindir}/gnuhealth
+install -p -m 755 scripts/demo/install_demo_database.sh %{buildroot}%{_bindir}/install_demo_database.sh
+
+#delete empty demo directory
+rm -rf scripts/demo
 
 mkdir -p $RPM_BUILD_ROOT%{_unitdir}
 install -p -m 644 %{SOURCE3} $RPM_BUILD_ROOT%{_unitdir}/%{name}.service
@@ -159,6 +164,7 @@ EOF
 %defattr(744,root,root)
 %{_bindir}/gnuhealth-control
 %{_bindir}/openSUSE-gnuhealth-setup
+%{_bindir}/install_demo_database.sh
 %{_unitdir}/%{name}.service
 %{_unitdir}/%{name}-webdav@.service
 %defattr(-,root,root)
