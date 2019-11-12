@@ -47,4 +47,13 @@
     <comment></comment>
     <requestid>728236</requestid>
   </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>c4d39ddf7c278e99957c11041891515e</srcmd5>
+    <version>4.0.0</version>
+    <time>1573571520</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove BuildRequires: rust-std, rust is enough and it conflicts
+  when building on SLE 15 SPx. (forwarded request 746608 from fcrozat)</comment>
+    <requestid>747644</requestid>
+  </revision>
 </revisionlist>

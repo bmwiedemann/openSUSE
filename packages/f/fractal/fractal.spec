@@ -32,7 +32,6 @@ BuildRequires:  gmp-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  rust
-BuildRequires:  rust-std
 BuildRequires:  pkgconfig(atk) >= 2.4
 BuildRequires:  pkgconfig(cairo) >= 1.10
 BuildRequires:  pkgconfig(dbus-1)
