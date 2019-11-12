@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           korganizer
-Version:        19.08.2
+Version:        19.08.3
 Release:        0
 Summary:        Personal Organizer
 License:        GPL-2.0-only
