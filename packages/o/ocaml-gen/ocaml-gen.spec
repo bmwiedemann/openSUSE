@@ -23,16 +23,14 @@ Release:        0
 Summary:        Simple, efficient iterators for OCaml
 License:        BSD-2-Clause
 Group:          Development/Languages/OCaml
-
 URL:            https://github.com/c-cube/gen
-Source0:        https://github.com/c-cube/gen/archive/%{version}/%{name}-%{version}.tar.gz
-
+Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20190930
+BuildRequires:  ocaml-rpm-macros >= 20191101
 BuildRequires:  ocamlfind(bytes)
-BuildRequires:  ocamlfind(qtest.lib)
 BuildRequires:  ocamlfind(qcheck)
+BuildRequires:  ocamlfind(qtest)
 BuildRequires:  ocamlfind(oUnit)
 
 %description
@@ -51,9 +49,10 @@ developing applications that use %{name}.
 
 
 %prep
-%autosetup -p1 -n gen-%{version}
+%autosetup -p1
 
 %build
+dune_release_pkgs='gen'
 %ocaml_dune_setup
 %ocaml_dune_build
 
@@ -62,10 +61,9 @@ developing applications that use %{name}.
 %ocaml_create_file_list
 
 %check
-%ocaml_dune_test || : make check failed
+%ocaml_dune_test
 
 %files -f %{name}.files
-%license LICENSE
 %doc README.md
 
 %files devel -f %{name}.files.devel

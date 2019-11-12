@@ -30,4 +30,12 @@ update: fixed license ID (used wrong casing)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>735912</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>5df2a6349e61cc5b370a8033334ac93c</srcmd5>
+    <version>0.5.2</version>
+    <time>1573571530</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>747692</requestid>
+  </revision>
 </revisionlist>
