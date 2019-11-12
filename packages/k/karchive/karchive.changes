@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Nov  3 15:46:48 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.64.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.64.0.php
+- Changes since 5.63.0:
+  * Fix memory leak in KXzFilter::init
+  * Fix null pointer reference when extraction fails
+  * decodeBCJ2: Fix assert with broken files
+  * KXzFilter::Private: remove unused props
+  * K7Zip: Fix memory use in readAndDecodePackedStreams
+  * Use ECMGenerateExportHeader to manage deprecated API better
+
+-------------------------------------------------------------------
 Sun Oct  6 13:26:16 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.63.0
