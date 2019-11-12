@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Nov  3 15:46:47 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.64.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.64.0.php
+- Changes since 5.63.0:
+  * tests: fix macos build failure
+  * Windows MSVC compile fix
+  * Add a utility accessor to get a QUrl from a ResultSet::Result
+
+-------------------------------------------------------------------
 Sun Oct  6 13:26:14 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.63.0
