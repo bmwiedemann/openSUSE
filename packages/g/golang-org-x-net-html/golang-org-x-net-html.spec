@@ -1,7 +1,7 @@
 #
 # spec file for package golang
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@
 %global import_path     golang.org/x/net
 
 Name:           golang-org-x-%{repo}-html
-Version:        0.0.0+git20170424.da118f7
+Version:        1.12+git20190812.cdfb69a
 Release:        0
 Summary:        Package html implements an HTML5-compliant tokenizer and parser
 License:        BSD-3-Clause
@@ -62,6 +62,6 @@ rm -rf html/charset
 
 %files -f file.lst
 %defattr(-,root,root,-)
-%doc AUTHORS CONTRIBUTORS LICENSE PATENTS README
+%doc AUTHORS CONTRIBUTORS LICENSE PATENTS README.md
 
 %changelog
