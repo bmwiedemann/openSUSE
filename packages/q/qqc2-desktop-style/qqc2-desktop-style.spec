@@ -16,11 +16,11 @@
 #
 
 
-%define _tar_path 5.63
+%define _tar_path 5.64
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           qqc2-desktop-style
-Version:        5.63.0
+Version:        5.64.0
 Release:        0
 Summary:        A Qt Quick Controls 2 Style for Desktop UIs
 License:        GPL-2.0-or-later
@@ -44,7 +44,9 @@ BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5QuickControls2)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
-Requires:       libqt5-qtquickcontrols2
+# Make sure the required libqt5-qtquickcontrols2 package is usable
+# See https://bugs.kde.org/413829#c3
+%requires_eq    libqt5-qtquickcontrols2
 # plasma5-workspace sets up the env variables so that this theme
 # is picked by default. It still works fine without it (no requires),
 # but looks better with it. By itself plasma5-workspace does not use
