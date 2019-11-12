@@ -75,8 +75,8 @@ install -p -m 0755 bin/haproxycfg %{buildroot}%{_bindir}
 install -d -p %{buildroot}%{_sbindir}
 install -p -m 0755 bin/kubicd %{buildroot}%{_sbindir}
 ln -s /sbin/service %{buildroot}%{_sbindir}/rckubicd
-mkdir -p %{buildroot}%{_datadir}/defaults/kubicd/
-cp -av etc/kubicd/* %{buildroot}%{_datadir}/defaults/kubicd
+mkdir -p %{buildroot}%{_distconfdir}/kubicd/
+cp -av etc/kubicd/* %{buildroot}%{_distconfdir}/kubicd
 mkdir -p %{buildroot}%{_sysconfdir}/kubicd/pki
 mkdir -p %{buildroot}%{_prefix}/lib/systemd/system
 cp -av systemd/* %{buildroot}%{_prefix}/lib/systemd/system
@@ -97,10 +97,9 @@ cp -av systemd/* %{buildroot}%{_prefix}/lib/systemd/system
 %license LICENSE
 %dir %{_sysconfdir}/kubicd
 %dir %{_sysconfdir}/kubicd/pki
-%dir %{_datadir}/defaults
-%dir %{_datadir}/defaults/kubicd
-%{_datadir}/defaults/kubicd/kubicd.conf
-%{_datadir}/defaults/kubicd/rbac.conf
+%dir %{_distconfdir}/kubicd
+%{_distconfdir}/kubicd/kubicd.conf
+%{_distconfdir}/kubicd/rbac.conf
 %{_sbindir}/kubicd
 %{_sbindir}/rckubicd
 %{_prefix}/lib/systemd/system/*

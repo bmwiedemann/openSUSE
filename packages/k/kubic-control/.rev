@@ -130,4 +130,12 @@
 - Add kubic-haproxycfg sub-package</comment>
     <requestid>735396</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>642c358308ce99c3a96ca0ea34905c4e</srcmd5>
+    <version>0.9.0</version>
+    <time>1573556080</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix path of /usr/etc/kubicd</comment>
+    <requestid>744917</requestid>
+  </revision>
 </revisionlist>
