@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           eventviews
-Version:        19.08.2
+Version:        19.08.3
 Release:        0
 Summary:        Eventviews Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -32,8 +32,6 @@ Source:         https://download.kde.org/stable/applications/%{version}/src/%{na
 Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-month-monthscene.cpp-remove-comma-in-year-in-the-tit.patch
 BuildRequires:  akonadi-calendar-devel >= %{_kapp_version}
 BuildRequires:  akonadi-server-devel
 BuildRequires:  calendarsupport-devel
