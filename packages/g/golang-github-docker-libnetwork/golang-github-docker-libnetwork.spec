@@ -29,14 +29,14 @@
 %endif
 
 # MANUAL: Update the git_version and git_revision
-%define git_version 45c710223c5fbf04dc3028b9a90b51892e36ca7f
-%define git_short   45c710223c5f
+%define git_version 3eb39382bfa6a3c42f83674ab080ae13b0e34e5d
+%define git_short   3eb39382bfa6
 # How to get the git_revision
 # git clone https://github.com/docker/libnetwork.git libnetwork
 # cd libnetwork
 # git checkout $git_version
 # git_revision=r$(git rev-list HEAD | wc -l)
-%define git_revision r2874
+%define git_revision r2877
 
 %global provider        github
 %global provider_tld    com
