@@ -33,4 +33,12 @@
 </comment>
     <requestid>664365</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>367beb34d1e3c86947350ec20282134c</srcmd5>
+    <version>4.6.2</version>
+    <time>1573556162</time>
+    <user>dimstar_suse</user>
+    <comment>boo#1156476</comment>
+    <requestid>747420</requestid>
+  </revision>
 </revisionlist>
