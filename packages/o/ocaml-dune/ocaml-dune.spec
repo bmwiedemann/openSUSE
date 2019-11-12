@@ -28,10 +28,8 @@ Conflicts:      ocaml-jbuilder
 Conflicts:      ocaml-jbuilder-debuginfo
 Conflicts:      ocaml-jbuilder-debugsource
 Source:         %{name}-%{version}.tar.xz
-Requires:       ocaml-findlib
-BuildRequires:  ocaml
-BuildRequires:  ocaml-rpm-macros >= 20191004
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  ocaml(ocaml_base_version) < 4.06
+BuildRequires:  ocaml-rpm-macros >= 20191101
 
 %description
 A composable build system for OCaml
@@ -49,19 +47,19 @@ developing applications that use %{name}.
 %autosetup -p1
 
 %build
+ocaml configure.ml --libdir=$(ocamlc -where)
 %make_build
 
 %install
 #make_install PREFIX='%{_prefix}' LIBDIR="$(ocamlc -where)"
-./_boot/default/bin/main/main_dune.exe install \
-	--prefix '%{_prefix}' \
-	--destdir '%{buildroot}' \
-	--libdir "$(ocamlc -where)" \
-	dune --build-dir _boot
-find '%{buildroot}' -ls
-rm -rfv %{buildroot}%{_prefix}/doc
-mkdir -vp %{buildroot}%{_mandir}
-mv %{buildroot}%{_prefix}/man %{buildroot}%{_datadir}
+if pushd _boot/default/bin/main
+then
+  ln -svb main_dune.exe dune
+  export PATH="`readlink -f \"$PWD\"`:$PATH"
+  popd
+fi
+OCAML_DUNE_INSTALL_ARGS='dune --build-dir _boot'
+%ocaml_dune_install
 %ocaml_create_file_list
 
 %files -f %{name}.files
