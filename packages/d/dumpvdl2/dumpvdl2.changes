@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Nov 11 18:53:00 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.1
+  * Fixed an issue where a truncated or corrupted ICAO APDU could
+    cause a crash in ASN.1 decoder.
+  * Fixed an issue where NULL characters in XID attribute values
+    could cause them do be printed partially. Any non-printable
+    characters in octet strings printed as text are now replaced
+    with periods.
+
+-------------------------------------------------------------------
+Mon Aug 26 20:43:04 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.0
+  * Complete overhaul of output generation code.
+  * Significant enhancements to CLNP, COTP and IDRP decoders.
+    Most if not all protocol headers are now decoded and included
+    in the output.
+  * Added a decoder for X.225 Session Protocol SPDUs.
+  * Added a decoder for VDL SNDCF error reports.
+  * XID: improved decoding of XID sequencing, Frequency support
+    and System mask attributes.
+  * X.25: improved decoding of facility fields, call clearing
+    causes and diagnostic codes.
+  * Minor bug fixes.
+
+-------------------------------------------------------------------
 Fri Jan 18 23:54:00 UTC 2019 - mardnh@gmx.de
 
 - Update to version 1.6.0

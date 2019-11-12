@@ -13,12 +13,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           dumpvdl2
-Version:        1.6.0
+Version:        1.7.1
 Release:        0
 Summary:        A VDL Mode 2 message decoder and protocol analyzer
 License:        GPL-3.0-only
@@ -30,7 +30,7 @@ BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SoapySDR)
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(libacars)
+BuildRequires:  pkgconfig(libacars) >= 1.3.0
 BuildRequires:  pkgconfig(librtlsdr)
 
 %description
