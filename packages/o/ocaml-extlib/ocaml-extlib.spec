@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,12 +25,11 @@ Summary:        OCaml ExtLib additions to the standard library
 License:        LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception
 Group:          Development/Languages/OCaml
 Url:            https://github.com/ygrek/ocaml-extlib
-Source0:        https://github.com/ygrek/ocaml-extlib/archive/%{version}/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
-BuildRequires:  ocaml-ocamldoc
-BuildRequires:  ocaml-rpm-macros >= 4.03
-BuildRequires:  ocamlfind(cppo_ocamlbuild)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  ocaml-cppo
+BuildRequires:  ocaml-dune
+BuildRequires:  ocaml-rpm-macros >= 20191101
 
 %description
 ExtLib is a project aiming at providing a complete - yet small -
@@ -50,43 +49,23 @@ The %{name}-devel package contains libraries and signature files for
 developing applications that use %{name}.
 
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup -p1
 
 %build
-make build doc -j1
+dune_release_pkgs='extlib'
+%ocaml_dune_setup
+%ocaml_dune_build
 
 %install
-export DESTDIR=$RPM_BUILD_ROOT
-export OCAMLFIND_DESTDIR=$RPM_BUILD_ROOT%{_libdir}/ocaml
-mkdir -p $OCAMLFIND_DESTDIR
-make install -j1
+%ocaml_dune_install
+%ocaml_create_file_list
 
-%files
-%defattr(-,root,root,-)
-%doc CHANGES README.md
-%license LICENSE
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.cmxs
-%endif
+%check
+%ocaml_dune_test
 
-%files devel
-%defattr(-,root,root,-)
-%doc CHANGES README.md src/doc/*
-%license LICENSE
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.a
-%{_libdir}/ocaml/*/*.cmx
-%{_libdir}/ocaml/*/*.cmxa
-%endif
-%{_libdir}/ocaml/*/*.cma
-%{_libdir}/ocaml/*/*.cmi
-%{_libdir}/ocaml/*/*.cmt
-%{_libdir}/ocaml/*/*.cmti
-%{_libdir}/ocaml/*/*.mli
-%{_libdir}/ocaml/*/META
+%files -f %{name}.files
+%doc README.md
+
+%files devel -f %{name}.files.devel
 
 %changelog
