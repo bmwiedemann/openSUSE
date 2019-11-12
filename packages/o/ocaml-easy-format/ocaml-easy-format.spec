@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -29,9 +29,7 @@ Source0:        %{name}-%{version}.tar.xz
 Patch0:         %{name}.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-findlib
-BuildRequires:  ocaml-rpm-macros >= 20190930
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  ocaml-rpm-macros >= 20191101
 
 %description
 This module offers a high-level and functional interface to the Format module
@@ -63,6 +61,7 @@ developing applications that use %{name}.
 %autosetup -p1
 
 %build
+dune_release_pkgs='easy-format'
 %ocaml_dune_setup
 %ocaml_dune_build
 
@@ -71,11 +70,9 @@ developing applications that use %{name}.
 %ocaml_create_file_list
 
 %check
-%ocaml_dune_test || : make check failed
+%ocaml_dune_test
 
 %files -f %{name}.files
-%license LICENSE
-%doc README.md
 
 %files devel -f %{name}.files.devel
 
