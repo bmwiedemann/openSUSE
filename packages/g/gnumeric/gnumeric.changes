@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Nov  8 08:09:02 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.12.46:
+  + Fix format import from ODF.
+  + Fix charts size in XLS format.
+  + Fix loading string from arrays in charts.
+  + Implement wrapping of rotated text.
+  + Fix over-eager guessing of dates in csv.
+  + Fix Mac build problem.
+  + Fix inter-process paste crash.
+  + Fix problem saving cell protection to xlsx.
+  + Look for python3 before python.
+  + Fix SUMIF (etc) problem with blank criteria.
+  + Improve editing of percentages.
+  + Improve html import.
+  + Command line export of graphs.
+- Replace python-devel with disabled python3-devel BuildRequires,
+  python3 is not yet supported.
+- Disable pkgconfig(gobject-introspection-1.0) BuildRequires, we
+  are currently not building the introspection support.
+
+-------------------------------------------------------------------
 Fri Jun  7 17:53:33 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.12.45:

@@ -17,7 +17,7 @@
 
 
 Name:           gnumeric
-Version:        1.12.45
+Version:        1.12.46
 Release:        0
 Summary:        Spreadsheet Application
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -33,18 +33,20 @@ BuildRequires:  itstool
 BuildRequires:  libgsf-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  python-devel
+# Disable python3-devel BR for now, not supported yet.
+#BuildRequires:  python3-devel
 BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(gio-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.38.0
-BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.0.0
+# Introspection disabled, need to pass --enable-introspection to configure if we want it.
+#BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.0.0
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.8.7
 BuildRequires:  pkgconfig(libgda-5.0) >= 5.0.0
 BuildRequires:  pkgconfig(libgda-ui-5.0) >= 5.0.0
-BuildRequires:  pkgconfig(libgoffice-0.10) >= 0.10.43
+BuildRequires:  pkgconfig(libgoffice-0.10) >= 0.10.46
 BuildRequires:  pkgconfig(libgsf-1) >= 1.14.33
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.12
 BuildRequires:  pkgconfig(pango) >= 1.24.0
@@ -144,10 +146,11 @@ done
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 autoreconf -fiv
-%configure\
-	--disable-static
-#	--enable-pdfdocs
-make %{?_smp_mflags}
+%configure \
+	--disable-static \
+#	--enable-pdfdocs \
+	%{nil}
+%make_build
 
 %install
 %make_install
@@ -174,9 +177,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %dir %{_libdir}/gnumeric/*/plugins/*
 %{_libdir}/gnumeric/*/plugins/*/*.so
 %{_libdir}/gnumeric/*/plugins/*/*.xml
-%{_libdir}/gnumeric/*/plugins/*/*.py
+#%%{_libdir}/gnumeric/*/plugins/*/*.py
 %{_libdir}/gnumeric/*/plugins/*/*.pl
-%{_libdir}/gnumeric/*/plugins/gnome-glossary/glossary-po-header
+#%%{_libdir}/gnumeric/*/plugins/gnome-glossary/glossary-po-header
 %{_libdir}/goffice/*/plugins/gnumeric/
 %{_datadir}/applications/gnumeric.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.gnumeric.dialogs.gschema.xml

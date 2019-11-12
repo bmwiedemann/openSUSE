@@ -946,4 +946,12 @@
     <comment></comment>
     <requestid>709078</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>2bf41c8321423f85c3563c47eb9ce96b</srcmd5>
+    <version>1.12.46</version>
+    <time>1573571522</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream rel, yet a resub... (forwarded request 746662 from iznogood)</comment>
+    <requestid>747645</requestid>
+  </revision>
 </revisionlist>
