@@ -451,4 +451,12 @@
   * Fixed a scheduler panic on PodAffinity</comment>
     <requestid>738890</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>1f6ce8e6e58085f74f72ffb723b55e1b</srcmd5>
+    <version>1.16.2</version>
+    <time>1573556025</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>742611</requestid>
+  </revision>
 </revisionlist>

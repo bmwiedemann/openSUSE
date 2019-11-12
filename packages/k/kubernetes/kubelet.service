@@ -5,6 +5,7 @@ After=network.target network-online.target
 Wants=docker.service crio.service
 
 [Service]
+ExecStartPre=/bin/bash -c "findmnt -t bpf --mountpoint /sys/fs/bpf || mount bpffs /sys/fs/bpf -t bpf"
 ExecStart=/usr/bin/kubelet
 Restart=always
 StartLimitInterval=0
