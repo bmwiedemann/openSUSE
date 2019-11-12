@@ -1,7 +1,5 @@
-diff --git a/Makefile b/Makefile
-index 60bd6c9f..722a7a56 100644
---- a/Makefile
-+++ b/Makefile
+--- weave-2.6.0/Makefile.orig	2019-11-05 16:12:30.000000000 +0000
++++ weave-2.6.0/Makefile	2019-11-06 15:08:09.303969059 +0000
 @@ -3,7 +3,7 @@
  
  # If you can use docker without being root, you can do "make SUDO="
@@ -11,7 +9,7 @@ index 60bd6c9f..722a7a56 100644
  RM=--rm
  RUN_FLAGS=-ti
  COVERAGE=
-@@ -122,7 +122,7 @@ TEST_TLS_EXE=test/tls/tls
+@@ -142,7 +142,7 @@
  NETWORKTESTER_EXE=test/images/network-tester/webserver
  
  # All binaries together in a list
@@ -20,12 +18,12 @@ index 60bd6c9f..722a7a56 100644
  
  # These stamp files are used to mark the current state of the build; whether an image has been built or not
  BUILD_UPTODATE=.build.uptodate
-@@ -167,7 +167,7 @@ NETGO_CHECK=@strings $@ | grep cgo_stub\\\.go >/dev/null || { \
- # The flags we are passing to go build. -extldflags -static for making a static binary, 
- # -linkmode external for linking external C libraries into the binary, -X main.version for telling the
- # Go binary which version it is, -tags netgo for enforcing the native Go DNS resolver
--BUILD_FLAGS=-i -ldflags "-linkmode external -extldflags -static -X main.version=$(WEAVE_VERSION)" -tags netgo
-+BUILD_FLAGS=-mod vendor -v -buildmode=pie -ldflags "-linkmode external -X main.version=$(WEAVE_VERSION)" -tags netgo
+@@ -180,7 +180,7 @@
+ # -X main.version for telling the Go binary which version it is,
+ # -s -w drop symbol tables used by debuggers (not Go's internal symbol info)
+ # -tags "osusergo netgo" to use native Go UID and DNS implementations
+-BUILD_FLAGS=-ldflags "-extldflags -static -X main.version=$(WEAVE_VERSION) -s -w" -tags "osusergo netgo"
++BUILD_FLAGS=-mod vendor -v -buildmode=pie -ldflags "-X main.version=$(WEAVE_VERSION)" -tags "osusergo netgo"
  
  PACKAGE_BASE=$(shell go list -e ./)
  

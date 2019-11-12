@@ -17,7 +17,7 @@
 
 
 Name:           weave
-Version:        2.5.2
+Version:        2.6.0
 Release:        0
 Summary:        Pod Network Add-On
 License:        Apache-2.0
@@ -25,12 +25,13 @@ Group:          System/Management
 URL:            https://github.com/weaveworks/weave
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Source2:        weave-k8s-1.15.yaml
+Source2:        weave-k8s-1.16.yaml
 # This package contains the content of a container image, so yes,
 # this includes the home directory and the database.
 Source3:        weave-rpmlintrc
 Patch0:         Makefile.diff
 #BuildRequires:  golang-packaging
+BuildRequires:  binutils-gold
 BuildRequires:  libpcap-devel
 BuildRequires:  golang(API) >= 1.12
 ExcludeArch:    s390 %{ix86}

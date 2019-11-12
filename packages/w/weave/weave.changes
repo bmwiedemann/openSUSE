@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Nov  6 15:35:00 UTC 2019 - kukuk@suse.de
+
+- Update weave to 2.6.0
+  - Fix a race condition in Kubernetes addon when reclaiming IP addresses after node deletion #3724, #3716
+  - Buffer events so Docker won't drop them, and Weave Net can clean up after dead containers #3432, #3705
+  - Weave reconnect occasionally fails after network interface disconnect #3666, #3669, #3676
+  - Ingress NetworkPolicy would accepts all traffic when specifying both IPBlock and port #3653, #3654
+  - Support both podSelector and namespaceSelector in NetworkPolicy #3312, #3647
+  - Only add default-drop egress rule if network policies are in use #3639
+  - Manifests use 'apps/v1' rather than deprecated 'apps/v1beta1' #3660
+  - Avoid Weave Net pods being evicted by setting priorityClassName: system-node-critical #3697
+  - Manifests use recommended DNS policy ClusterFirstWithHostNet #3692
+  - Weave Net now tolerates 'NoExecute' taint #3655
+  - Allow extra arguments to NetworkPolicy controller to be set in an environment variable #3683
+  - Stop reporting a failure to connect to self #3454, #3585
+  - Minor reduction in log noise when reclaiming IPs #3710
+
+-------------------------------------------------------------------
+Sat Nov  2 20:28:23 CET 2019 - kukuk@suse.de
+
+- Update weave.yaml for kubernetes 1.16
+
+-------------------------------------------------------------------
 Fri Jul 26 13:24:07 CEST 2019 - kukuk@suse.de
 
 - Adjust registry path to the official images
