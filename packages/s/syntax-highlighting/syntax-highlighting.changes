@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Nov  3 15:47:24 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.64.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.64.0.php
+- Changes since 5.63.0:
+  * VHDL: all keywords are insensitive (kde#413409)
+  * Add string escape characters to PowerShell syntax.
+  * Modelines: fix end of comment
+  * Meson: more built-in functions and add built-in member functions
+  * debchangelog: add Focal Fossa
+  * Updates from CMake 3.16
+  * use the new ECM provided clang-format target
+  * Meson: Add a comment section for comment/uncomment with Kate
+  * TypeScript: update grammar and fixes
+
+-------------------------------------------------------------------
 Sun Oct  6 13:27:10 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.63.0
