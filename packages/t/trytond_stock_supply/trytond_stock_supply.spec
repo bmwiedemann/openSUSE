@@ -19,7 +19,7 @@
 
 %define 		majorver 4.6
 Name:           trytond_stock_supply
-Version:        %{majorver}.3
+Version:        %{majorver}.4
 Release:        0
 Summary:        The Stock Supply module for the Tryton ERP system
 License:        GPL-3.0-only
