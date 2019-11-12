@@ -572,4 +572,12 @@
     * [PICARD-1602] - Tests should not be included in the sdist package (forwarded request 738102 from jaimeMF)</comment>
     <requestid>738115</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>4d2a20cf482020d9324c36f312ff448c</srcmd5>
+    <version>2.2.3</version>
+    <time>1573556204</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>747515</requestid>
+  </revision>
 </revisionlist>
