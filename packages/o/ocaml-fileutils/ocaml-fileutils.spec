@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -27,8 +27,9 @@ Url:            https://github.com/gildor478/ocaml-fileutils
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20190930
-BuildRequires:  ocamlfind(bigarray)
+BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocamlfind(bytes)
+BuildRequires:  ocamlfind(oUnit)
 BuildRequires:  ocamlfind(stdlib-shims)
 BuildRequires:  ocamlfind(str)
 BuildRequires:  ocamlfind(unix)
@@ -56,6 +57,7 @@ developing applications that use %{name}.
 %autosetup -p1
 
 %build
+dune_release_pkgs='fileutils'
 %ocaml_dune_setup
 %ocaml_dune_build
 
@@ -64,10 +66,9 @@ developing applications that use %{name}.
 %ocaml_create_file_list
 
 %check
-%ocaml_dune_test || : make check failed
+%ocaml_dune_test
 
 %files -f %{name}.files
-%license LICENSE.txt
 %doc README.md
 
 %files devel -f %{name}.files.devel
