@@ -32,4 +32,12 @@
 </comment>
     <requestid>664370</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c7af1e423e60a07432eb33c8b9010091</srcmd5>
+    <version>4.6.1</version>
+    <time>1573556166</time>
+    <user>dimstar_suse</user>
+    <comment>boo#1156476</comment>
+    <requestid>747421</requestid>
+  </revision>
 </revisionlist>
