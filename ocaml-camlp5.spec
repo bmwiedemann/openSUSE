@@ -28,7 +28,7 @@ Group:          Development/Languages/OCaml
 URL:            https://camlp5.github.io/
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
-BuildRequires:  ocaml-rpm-macros >= 4.02.1
+BuildRequires:  ocaml-rpm-macros >= 20191101
 
 %description
 Camlp5 is a preprocessor-pretty-printer of OCaml, parsing a source file and printing some result on standard output.
@@ -58,47 +58,13 @@ make %{?_smp_mflags} world.opt
 %install
 %make_install
 cp -Lavit %{buildroot}%{_libdir}/ocaml/camlp5 etc/META
+%ocaml_create_file_list
 
-%files
-%license LICENSE
+%files -f %{name}.files
 %doc CHANGES DEVEL UPGRADING
-%{_bindir}/camlp5
-%{_bindir}/camlp5o
-%{_bindir}/camlp5r
-%{_bindir}/camlp5sch
-%{_bindir}/mkcamlp5
-%{_bindir}/ocpp5
-%if 0%{?ocaml_native_compiler}
-%{_bindir}/camlp5o.opt
-%{_bindir}/camlp5r.opt
-%{_bindir}/mkcamlp5.opt
-%endif
-%{_mandir}/man1/camlp5.1%{ext_man}
-%{_mandir}/man1/camlp5o.1%{ext_man}
-%{_mandir}/man1/camlp5r.1%{ext_man}
-%{_mandir}/man1/camlp5sch.1%{ext_man}
-%{_mandir}/man1/mkcamlp5.1%{ext_man}
-%{_mandir}/man1/ocpp5.1%{ext_man}
-%if 0%{?ocaml_native_compiler}
-%{_mandir}/man1/camlp5o.opt.1%{ext_man}
-%{_mandir}/man1/camlp5r.opt.1%{ext_man}
-%{_mandir}/man1/mkcamlp5.opt.1%{ext_man}
-%endif
+%{_bindir}/*
+%{_mandir}/*/*
 
-%files devel
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/camlp5
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/camlp5/*.a
-%{_libdir}/ocaml/camlp5/*.cmx
-%{_libdir}/ocaml/camlp5/*.cmxa
-%{_libdir}/ocaml/camlp5/*.o
-%endif
-%{_libdir}/ocaml/camlp5/*.cma
-%{_libdir}/ocaml/camlp5/*.cmi
-%{_libdir}/ocaml/camlp5/*.cmo
-%{_libdir}/ocaml/camlp5/*.mli
-%{_libdir}/ocaml/camlp5/*.sml
-%{_libdir}/ocaml/camlp5/META
+%files devel -f %{name}.files.devel
 
 %changelog
