@@ -14,7 +14,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -29,8 +29,7 @@ Url:            https://github.com/ocaml-community/cppo
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20191009
-BuildRequires:  ocamlfind(easy-format)
+BuildRequires:  ocaml-rpm-macros >= 20191101
 BuildRequires:  ocamlfind(ocamlbuild)
 BuildRequires:  ocamlfind(str)
 BuildRequires:  ocamlfind(unix)
@@ -61,6 +60,7 @@ developing applications that use %{name}.
 %autosetup -p1
 
 %build
+dune_release_pkgs='cppo,cppo_ocamlbuild'
 %ocaml_dune_setup
 %ocaml_dune_build
 
