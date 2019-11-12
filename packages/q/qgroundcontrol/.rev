@@ -162,4 +162,15 @@
   * no release notes, bugfix release</comment>
     <requestid>724576</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d7ab7054540451205f72a479c275d662</srcmd5>
+    <version>3.6.0~pre.1570775458.0d1bb4844</version>
+    <time>1573556108</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.6 pre-release to fix factory builds
+  * fixes build for factory
+  * dropping obsolete use_system_qwt.patch
+  * require Qt 5.11 or higher</comment>
+    <requestid>737405</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           qgroundcontrol
-Version:        3.5.4
+Version:        3.6.0~pre.1570775458.0d1bb4844
 Release:        0
 Summary:        An operator control unit / ground control software for micro air vehicles
 License:        GPL-3.0-only
@@ -27,7 +27,6 @@ Group:          Other
 Url:            http://www.qgroundcontrol.org/
 Source0:        qgroundcontrol-%{version}.tar.xz
 Patch2:         fix-install.patch
-Patch3:         use_system_qwt.patch
 # ModemManager has the broken design to grab any serial port first
 # as background daemon. this breaks any other app which needs to access the device
 # on boot up (for firmware update here)
@@ -41,7 +40,7 @@ BuildRequires:  libudev-devel
 %endif
 
 BuildRequires:  pkgconfig(Qt5Charts)
-BuildRequires:  pkgconfig(Qt5Core) >= 5.7
+BuildRequires:  pkgconfig(Qt5Core) >= 5.11
 BuildRequires:  pkgconfig(Qt5MultimediaWidgets)
 BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(Qt5Positioning)
@@ -81,9 +80,6 @@ MAV types/autopilot projects.
 %prep
 %setup -q
 %patch2 -p1
-%if 0%{?suse_version} >= 1500
-%patch3 -p1
-%endif
 mkdir build
 
 %build
