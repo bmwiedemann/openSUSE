@@ -34,4 +34,12 @@
   Remove ocaml-camomile.bytecode.patch</comment>
     <requestid>738548</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>fd502fb483b6bb4684bd6c2aef458d12</srcmd5>
+    <version>1.0.2</version>
+    <time>1573571494</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>746692</requestid>
+  </revision>
 </revisionlist>
