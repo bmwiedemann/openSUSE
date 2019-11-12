@@ -73,7 +73,9 @@ mkdir -pv $HOME/go/src/%{kata_agent_project}
 cp -avr ../agent-%{version}/* $HOME/go/src/%{kata_agent_project}
 
 kata_kmodules=(9p 9pnet 9pnet_virtio)
-[ "%{kernel_flavor}" != "kvmsmall" ] && kata_kmodules+=( \
+
+%if 0%{?suse_version} <= 1500 || %{kernel_flavor} != "kvmsmall"
+kata_kmodules+=( \
 virtio \
 virtio_balloon \
 virtio_blk \
@@ -86,6 +88,7 @@ virtio_scsi \
 vmw_vsock_virtio_transport \
 vmw_vsock_virtio_transport_common \
 )
+%endif
 
 # Minimal set of kernel modules to allow starting containers
 echo "drivers=\"${kata_kmodules[@]}\"" > dracut/dracut.conf.d/10-drivers.conf
