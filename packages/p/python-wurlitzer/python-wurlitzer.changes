@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  6 12:18:11 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.0:
+  * use selectors instead of select.poll #34
+
+-------------------------------------------------------------------
 Mon Jul 22 11:35:41 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.0.3:

@@ -18,21 +18,22 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-wurlitzer
-Version:        1.0.3
+Version:        2.0.0
 Release:        0
 Summary:        Python package to capture C-level output in context managers
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/minrk/wurlitzer
 Source:         https://files.pythonhosted.org/packages/source/w/wurlitzer/wurlitzer-%{version}.tar.gz
+BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  python-selectors2
 BuildArch:      noarch
-# SECTION test requirements
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pytest}
-# /SECTION
+%ifpython2
+Requires:       python-selectors2
+%endif
 %python_subpackages
 
 %description

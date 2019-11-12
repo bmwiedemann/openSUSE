@@ -16,4 +16,13 @@
   * no upstream changelog</comment>
     <requestid>717551</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9a0852f23b926d07c71c7b9c5f74d62b</srcmd5>
+    <version>2.0.0</version>
+    <time>1573571463</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0:
+  * use selectors instead of select.poll #34</comment>
+    <requestid>745984</requestid>
+  </revision>
 </revisionlist>
