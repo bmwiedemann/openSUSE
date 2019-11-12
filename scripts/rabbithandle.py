@@ -39,6 +39,8 @@ for line in sys.stdin:
     subprocess.call(["git", "add", pkgmap(package)], shell=False)
     process = subprocess.Popen(["git", "commit", "-F", "-"], stdin=subprocess.PIPE)
     process.communicate(info.encode('utf-8'))
+    if os.environ.get('SSH_AUTH_SOCK'):
+        subprocess.call(["git", "push"])
     try:
         os.unlink(".pkglock")
     except:
