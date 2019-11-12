@@ -7,4 +7,12 @@
     <comment>new dependency for ocaml-pcre</comment>
     <requestid>736826</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a7ab844d671629b0b9e7d09038684bb6</srcmd5>
+    <version>0.12.2</version>
+    <time>1573571476</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>746689</requestid>
+  </revision>
 </revisionlist>
