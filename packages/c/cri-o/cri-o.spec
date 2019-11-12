@@ -31,7 +31,6 @@ Version:        1.15.2
 Release:        0
 Summary:        OCI-based implementation of Kubernetes Container Runtime Interface
 License:        Apache-2.0
-Group:          System/Management
 Url:            https://github.com/cri-o/cri-o
 ExcludeArch:    i586
 Source0:        %{name}-%{version}.tar.xz
@@ -76,7 +75,6 @@ the scope of the CRI.
 
 %package kubeadm-criconfig
 Summary:        CRI-O container runtime configuration for kubeadm
-Group:          System/Management
 Requires:       kubernetes-kubeadm
 Requires(post): %fillup_prereq
 Supplements:    cri-o
