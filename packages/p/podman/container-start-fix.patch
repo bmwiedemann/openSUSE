@@ -1,0 +1,101 @@
+From 2e3f46da4f874f0c50c6b630fb6badbb052a31f2 Mon Sep 17 00:00:00 2001
+From: Valentin Rothberg <rothberg@redhat.com>
+Date: Thu, 31 Oct 2019 13:03:08 +0100
+Subject: [PATCH] container start: fix regression when using name
+
+When starting a container by using its name as a reference, we should
+print the name instead of the ID.  We regressed on this behaviour
+with commit b4124485ae7e which made it into Podman v1.6.2.
+
+Kudos to openSUSE testing for catching it.  To prevent future
+regressions, extend the e2e tests to check the printed container
+name/ID.
+
+Reported-by: @sysrich
+Signed-off-by: Valentin Rothberg <rothberg@redhat.com>
+---
+ pkg/adapter/containers.go | 29 +++++++++++++++++------------
+ test/e2e/start_test.go    | 18 ++++++++++++++++--
+ 2 files changed, 33 insertions(+), 14 deletions(-)
+
+diff --git a/pkg/adapter/containers.go b/pkg/adapter/containers.go
+index 430b6925..207cf5c6 100644
+--- a/pkg/adapter/containers.go
++++ b/pkg/adapter/containers.go
+@@ -656,20 +656,25 @@ func (r *LocalRuntime) Start(ctx context.Context, c *cliconfig.StartValues, sigP
+ 
+ 			return exitCode, nil
+ 		}
+-		if ctrRunning {
+-			fmt.Println(ctr.ID())
+-			continue
+-		}
+-		// Handle non-attach start
+-		// If the container is in a pod, also set to recursively start dependencies
+-		if err := ctr.Start(ctx, ctr.PodID() != ""); err != nil {
+-			if lastError != nil {
+-				fmt.Fprintln(os.Stderr, lastError)
++		// Start the container if it's not running already.
++		if !ctrRunning {
++			// Handle non-attach start
++			// If the container is in a pod, also set to recursively start dependencies
++			if err := ctr.Start(ctx, ctr.PodID() != ""); err != nil {
++				if lastError != nil {
++					fmt.Fprintln(os.Stderr, lastError)
++				}
++				lastError = errors.Wrapf(err, "unable to start container %q", container)
++				continue
+ 			}
+-			lastError = errors.Wrapf(err, "unable to start container %q", container)
+-			continue
+ 		}
+-		fmt.Println(ctr.ID())
++		// Check if the container is referenced by ID or by name and print
++		// it accordingly.
++		if strings.HasPrefix(ctr.ID(), container) {
++			fmt.Println(ctr.ID())
++		} else {
++			fmt.Println(container)
++		}
+ 	}
+ 	return exitCode, lastError
+ }
+diff --git a/test/e2e/start_test.go b/test/e2e/start_test.go
+index da581f15..09b8d201 100644
+--- a/test/e2e/start_test.go
++++ b/test/e2e/start_test.go
+@@ -57,15 +57,29 @@ var _ = Describe("Podman start", func() {
+ 		session = podmanTest.Podman([]string{"container", "start", cid})
+ 		session.WaitWithDefaultTimeout()
+ 		Expect(session.ExitCode()).To(Equal(0))
++		Expect(session.OutputToString()).To(Equal(cid))
++	})
++
++	It("podman container start single container by short id", func() {
++		session := podmanTest.Podman([]string{"container", "create", "-d", ALPINE, "ls"})
++		session.WaitWithDefaultTimeout()
++		Expect(session.ExitCode()).To(Equal(0))
++		cid := session.OutputToString()
++		session = podmanTest.Podman([]string{"container", "start", cid[0:10]})
++		session.WaitWithDefaultTimeout()
++		Expect(session.ExitCode()).To(Equal(0))
++		Expect(session.OutputToString()).To(Equal(cid))
+ 	})
+ 
+ 	It("podman start single container by name", func() {
+-		session := podmanTest.Podman([]string{"create", "-d", "--name", "foobar99", ALPINE, "ls"})
++		name := "foobar99"
++		session := podmanTest.Podman([]string{"create", "-d", "--name", name, ALPINE, "ls"})
+ 		session.WaitWithDefaultTimeout()
+ 		Expect(session.ExitCode()).To(Equal(0))
+-		session = podmanTest.Podman([]string{"start", "foobar99"})
++		session = podmanTest.Podman([]string{"start", name})
+ 		session.WaitWithDefaultTimeout()
+ 		Expect(session.ExitCode()).To(Equal(0))
++		Expect(session.OutputToString()).To(Equal(name))
+ 	})
+ 
+ 	It("podman start multiple containers", func() {
+-- 
+2.23.0
+
