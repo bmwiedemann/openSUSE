@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kalarmcal
-Version:        19.08.2
+Version:        19.08.3
 Release:        0
 Summary:        Library for handling kalarm calendar data
 License:        LGPL-2.1-or-later
@@ -67,11 +67,11 @@ This package provides plugins for KDE PIM needed to read and write calendar-rela
 %package devel
 Summary:        Development files for kalarmcal
 Group:          Development/Libraries/KDE
+Requires:       libKF5AlarmCalendar5 = %{version}
 Requires:       cmake(KF5Akonadi)
 Requires:       cmake(KF5CalendarCore)
 Requires:       cmake(KF5Holidays)
 Requires:       cmake(KF5IdentityManagement)
-Requires:       libKF5AlarmCalendar5 = %{version}
 
 %description devel
 This package contains necessary include files and libraries needed
