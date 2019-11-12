@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 05 11:59:40 UTC 2019 - mrostecki@opensuse.org
+
+- Update to version 20190920:
+  * Changed return of ByteCount() to use plain int64_t.
+  * Relax Base64 Decoding Strict decoding breaks Base64 MIME encodings, which place newlines after a certain number of spaces. MIME encoding is commonly used by Java Clients.
+  * Update googleapis and protobuf
+  * Run clang-format
+  * Make path matcher utility compilable with gcc 4.9
+  * Replace std::set with std::unordered_set in path matcher utility
+  * Make path_matcher.h compile with gcc 4.9
+  * Replace std::set with std::unordered_set in path matcher
+  * Replace a single character string literal with a character
+- Add patch which fixes the build with newer googleapis:
+  * 0001-bazel-Update-googleapis-and-do-not-define-custom-BUI.patch
+
+-------------------------------------------------------------------
 Mon Mar 18 11:36:32 UTC 2019 - Michal Rostecki <mrostecki@opensuse.org>
 
 - Add source package, which is needed to fix envoy-proxy.
