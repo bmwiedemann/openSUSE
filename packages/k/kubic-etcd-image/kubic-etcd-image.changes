@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov  8 22:09:48 UTC 2019 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add LICENSE file
+
+-------------------------------------------------------------------
+Sat Nov  2 20:24:08 CET 2019 - kukuk@suse.de
+
+- Adjust %PKG_VERSION%-0 tagging to be compatible with future
+  kubernetes versions
+
+-------------------------------------------------------------------
 Thu Oct 10 12:47:55 UTC 2019 - Richard Brown <rbrown@suse.com>
 
 - add %PKG_VERSION%-0 tag to work with hardcoded kubernetes tag requirements 

@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>736911</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8f1b4052cbaf130df4bd699eaaeb3521</srcmd5>
+    <version>1.0.0</version>
+    <time>1573556094</time>
+    <user>dimstar_suse</user>
+    <comment>- Add LICENSE file
+
+- Adjust %PKG_VERSION%-0 tagging to be compatible with future
+  kubernetes versions</comment>
+    <requestid>746687</requestid>
+  </revision>
 </revisionlist>
