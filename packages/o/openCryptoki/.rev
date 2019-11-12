@@ -503,4 +503,28 @@
     <comment></comment>
     <requestid>728363</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>223149ac7e12cace1d963149d7845499</srcmd5>
+    <version>3.12.0</version>
+    <time>1573556188</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgraded to version 3.12.0 (jsc#SLE-7647, jsc#SLE-7915, jsc#SLE-7918)
+  * Update token pin and data store encryption for soft,ica,cca and ep11
+  * EP11: Allow importing of compressed EC public keys
+  * EP11: Add support for the CMAC mechanisms
+  * EP11: Add support for the IBM-SHA3 mechanisms
+  * SOFT: Add AES-CMAC and 3DES-CMAC support to the soft token
+  * ICA: Add AES-CMAC and 3DES-CMAC support to the ICA token
+  * EP11: Add config option USE_PRANDOM
+  * CCA: Use Random Number Generate Long for token_specific_rng()
+  * Common rng function: Prefer /dev/prandom over /dev/urandom
+  * ICA: add SHA*_RSA_PKCS_PSS mechanisms
+  * Bug fixes
+- Removed obsolete ocki-3.11.1-EP11-Support-tolerated-new-crypto-cards.patch
+- Added ocki-3.11.1-EP11-Support-tolerated-new-crypto-cards.patch
+  (bsc#1152015)
+  Add support for new IBM crypto card.
+</comment>
+    <requestid>747496</requestid>
+  </revision>
 </revisionlist>

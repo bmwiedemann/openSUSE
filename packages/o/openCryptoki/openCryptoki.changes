@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Nov 12 04:26:21 UTC 2019 - Mark Post <mpost@suse.com>
+
+- Upgraded to version 3.12.0 (jsc#SLE-7647, jsc#SLE-7915, jsc#SLE-7918)
+  * Update token pin and data store encryption for soft,ica,cca and ep11
+  * EP11: Allow importing of compressed EC public keys
+  * EP11: Add support for the CMAC mechanisms
+  * EP11: Add support for the IBM-SHA3 mechanisms
+  * SOFT: Add AES-CMAC and 3DES-CMAC support to the soft token
+  * ICA: Add AES-CMAC and 3DES-CMAC support to the ICA token
+  * EP11: Add config option USE_PRANDOM
+  * CCA: Use Random Number Generate Long for token_specific_rng()
+  * Common rng function: Prefer /dev/prandom over /dev/urandom
+  * ICA: add SHA*_RSA_PKCS_PSS mechanisms
+  * Bug fixes
+- Removed obsolete ocki-3.11.1-EP11-Support-tolerated-new-crypto-cards.patch
+
+-------------------------------------------------------------------
+Thu Oct 10 14:56:01 UTC 2019 - Mark Post <mpost@suse.com>
+
+- Added ocki-3.11.1-EP11-Support-tolerated-new-crypto-cards.patch
+  (bsc#1152015)
+  Add support for new IBM crypto card.
+
+-------------------------------------------------------------------
 Tue Sep  3 23:02:38 UTC 2019 - Mark Post <mpost@suse.com>
 
 - Upgraded to version 3.11.1 (Fate#327837)

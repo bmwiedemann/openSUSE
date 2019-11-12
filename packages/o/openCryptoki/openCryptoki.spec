@@ -26,7 +26,7 @@
 %define oc_cvs_tag opencryptoki
 
 Name:           openCryptoki
-Version:        3.11.1
+Version:        3.12.0
 Release:        0
 Summary:        An Implementation of PKCS#11 (Cryptoki) v2.11 for IBM Cryptographic Hardware
 License:        CPL-1.0
