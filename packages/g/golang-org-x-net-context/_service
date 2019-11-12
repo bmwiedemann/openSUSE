@@ -3,8 +3,8 @@
     <param name="url">https://github.com/golang/net</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="versionformat">1.11+git%cd.%h</param>
-    <param name="revision">release-branch.go1.11</param>
+    <param name="versionformat">1.12+git%cd.%h</param>
+    <param name="revision">release-branch.go1.12</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="recompress" mode="disabled">

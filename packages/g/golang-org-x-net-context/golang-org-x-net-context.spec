@@ -24,7 +24,7 @@
 %global import_path     golang.org/x/net
 
 Name:           golang-org-x-%{repo}-context
-Version:        1.11+git20190403.48a9fcb
+Version:        1.12+git20190812.cdfb69a
 Release:        0
 Summary:        Context defines the Context type
 License:        BSD-3-Clause
