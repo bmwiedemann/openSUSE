@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kio-extras5
-Version:        19.08.2
+Version:        19.08.3
 Release:        0
 Summary:        Additional KIO slaves for KDE applications
 License:        GPL-2.0-or-later
@@ -34,6 +34,8 @@ Source1:        https://download.kde.org/stable/applications/%{version}/src/%{rn
 Source2:        applications.keyring
 %endif
 Source99:       %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-make-the-libssh-finder-ensure-the-new-ssh-target-is-.patch
 BuildRequires:  OpenEXR-devel
 BuildRequires:  flac-devel
 BuildRequires:  gperf
@@ -106,6 +108,8 @@ This is the development package for libkioarchive
 
 %prep
 %setup -q -n %{rname}-%{version}
+%autopatch -p1
+
 sed -i '/^add_subdirectory( doc )/d' CMakeLists.txt
 
 %build

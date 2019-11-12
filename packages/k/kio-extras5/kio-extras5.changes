@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov  7 23:13:01 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.3.php
+- Changes since 19.08.2:
+  * fix password error condition handling of smb mount
+  * improve error reporting for when kpasswdserver is unreachable
+- Add upstream patch to support building with newer libssh:
+  * 0001-make-the-libssh-finder-ensure-the-new-ssh-target-is-.patch
+
+-------------------------------------------------------------------
 Fri Oct 11 07:47:20 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.2
@@ -15,7 +28,7 @@ Thu Sep  5 14:00:35 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
   * For more details please see:
   * https://www.kde.org/announcements/announce-applications-19.08.1.php
 - Changes since 19.08.0:
-  * Fixing implementation of FileJob interface in smb/sftp slaves 
+  * Fixing implementation of FileJob interface in smb/sftp slaves
   * Fixing bug where MTP slave does not return error in stat()/mimetype()
 
 -------------------------------------------------------------------
