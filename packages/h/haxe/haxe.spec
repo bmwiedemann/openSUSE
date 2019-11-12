@@ -15,11 +15,11 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
-%global commit_haxelib c994dc451635a84d7a3d53cc9b2e517d50bf0140
+%global commit_haxelib 4b27f91d8a4ff279d9903091680fee2c93a0d574
 %global commit_hx3compat f1f18201e5c0479cb5adf5f6028788b37f37b730
 
 Name:           haxe
-Version:        4.0.1
+Version:        4.0.2
 Release:        0
 Summary:        Multiplatform programming language
 License:        GPL-2.0+ and MIT

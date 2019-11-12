@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 12 04:10:09 UTC 2019 - Andy Li <andy@onthewings.net>
+
+- Update to 4.0.2
+  * php: Improved performance of haxe.io.Bytes and enum-related
+    methods in Type class of standard library.
+  * haxelib: Fixed too strict requirements to haxelib.json data
+    for private libs.
+  * Fixed @:using static extensions on Null<SomeType>.
+  * php: Fixed static methods with the same name in parent and
+    child classes.
+
+-------------------------------------------------------------------
 Mon Nov  4 21:55:48 UTC 2019 - Andy Li <andy@onthewings.net>
 
 - Update to 4.0.1
