@@ -932,4 +932,13 @@ delete request for docker-image-migrator was submitted in parallel.</comment>
   /usr/share/doc/packages/docker/CHANGELOG.md. bsc#1153367</comment>
     <requestid>736409</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>1f0d21b9084e2a5cf360bea146a4beb1</srcmd5>
+    <version>19.03.4_ce</version>
+    <time>1573556040</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Docker 19.03.4-ce. See upstream changelog in the packaged
+  /usr/share/doc/packages/docker/CHANGELOG.md.</comment>
+    <requestid>742814</requestid>
+  </revision>
 </revisionlist>

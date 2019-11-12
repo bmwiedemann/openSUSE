@@ -42,17 +42,17 @@
 # helpfully injects into our build environment from the changelog). If you want
 # to generate a new git_commit_epoch, use this:
 #  $ date --date="$(git show --format=fuller --date=iso $COMMIT_ID | grep -oP '(?<=^CommitDate: ).*')" '+%s'
-%define git_version a872fc2f86c0
-%define git_commit_epoch 1570493609
+%define git_version 9013bf583a21
+%define git_commit_epoch 1571353729
 
 # These are the git commits required. We verify them against the source to make
 # sure we didn't miss anything important when doing upgrades.
 %define required_containerd b34a5c8af56e510852c35414db4c1f4fa6172339
 %define required_dockerrunc 3e425f80a8c931f88e6d94a8c831b9d5aa481657
-%define required_libnetwork 45c710223c5fbf04dc3028b9a90b51892e36ca7f
+%define required_libnetwork 3eb39382bfa6a3c42f83674ab080ae13b0e34e5d
 
 Name:           %{realname}%{name_suffix}
-Version:        19.03.3_ce
+Version:        19.03.4_ce
 Release:        0
 Summary:        The Moby-project Linux container runtime
 License:        Apache-2.0
