@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Nov  3 15:46:45 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.64.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.64.0.php
+- Too many changes since 5.63.0, only listing bugfixes:
+  * Center-align the non-square 64px audio mimetype icons (kde#393550)
+  * Move colorful 32px help-about icon into actions (kde#396626)
+  * Improve draw icons (kde#399665)
+  * Use a more correct and appropriate visual metaphor for
+    "get hot new stuff" icon (kde#400500)
+  * Add edit-opacity icons (kde#408283)
+  * Icons for windy weather (kde#412718)
+
+-------------------------------------------------------------------
 Sun Oct  6 13:26:11 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.63.0
