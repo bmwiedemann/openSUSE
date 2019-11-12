@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov  6 20:06:12 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Don't use arch-specific libdir (boo#1109687). 
+
+-------------------------------------------------------------------
 Wed Sep 18 16:01:23 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.0:

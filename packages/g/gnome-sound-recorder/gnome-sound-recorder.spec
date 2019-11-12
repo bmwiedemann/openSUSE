@@ -52,6 +52,7 @@ A simple, modern sound recorder.
 
 %build
 %meson \
+	--libdir=/usr/unused-in-noarch
 	%{nil}
 %meson_build
 
