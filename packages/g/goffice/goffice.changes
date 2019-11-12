@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov  8 11:42:17 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.10.46:
+  + Fix equations edition inside charts.
+  + Fix legend contents for contour plots.
+  + Add more functions to inspect formats.
+  + Fix UTF-8 problem with format "mmmmm".
+
+-------------------------------------------------------------------
 Fri Jun  7 17:45:04 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.10.45:
