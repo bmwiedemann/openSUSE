@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kontact
-Version:        19.08.2
+Version:        19.08.3
 Release:        0
 Summary:        Personal Information Manager
 License:        GPL-2.0-or-later
