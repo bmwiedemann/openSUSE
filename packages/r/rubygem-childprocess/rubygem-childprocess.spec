@@ -24,12 +24,12 @@
 #
 
 Name:           rubygem-childprocess
-Version:        2.0.0
+Version:        3.0.0
 Release:        0
 %define mod_name childprocess
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{rubydevel >= 2.3.0}
+BuildRequires:  %{ruby >= 2.3.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 Url:            http://github.com/enkessler/childprocess
@@ -51,7 +51,6 @@ programs running in the background on any Ruby / OS combination.
 %gem_install \
   --doc-files="CHANGELOG.md LICENSE README.md" \
   -f
-%gem_cleanup
 
 %gem_packages
 

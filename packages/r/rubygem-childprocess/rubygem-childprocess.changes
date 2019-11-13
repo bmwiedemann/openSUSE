@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 12 16:40:34 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 3.0.0
+
+  * [#156](https://github.com/enkessler/childprocess/pull/156): Remove unused `rubyforge_project` from gemspec
+  * [#160](https://github.com/enkessler/childprocess/pull/160): Remove extension to conditionally install `ffi` gem on Windows platforms
+  * [#160](https://github.com/enkessler/childprocess/pull/160): Remove runtime dependency on `rake` gem
+
+-------------------------------------------------------------------
 Fri Jul 19 09:01:12 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to version 2.0.0
