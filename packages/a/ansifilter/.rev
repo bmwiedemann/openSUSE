@@ -97,4 +97,15 @@ Created in 2007 and actively maintained and enhanced since then.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>745997</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f728dd036590ef59f535d0dd0e8144a6</srcmd5>
+    <version>2.15</version>
+    <time>1573648143</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.15:
+  * Added optional argument to --ignore-clear, the default setting
+    is now true.
+  * CLI: fixed -e argument description.</comment>
+    <requestid>748009</requestid>
+  </revision>
 </revisionlist>

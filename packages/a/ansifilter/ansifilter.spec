@@ -1,7 +1,7 @@
 #
 # spec file for package ansifilter
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 # Copyright (c) 2013 Pascal Bleser.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,12 +19,12 @@
 
 %bcond_without gui
 Name:           ansifilter
-Version:        2.14
+Version:        2.15
 Release:        0
 Summary:        ANSI Terminal Escape Code Converter
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Other
-Url:            http://www.andre-simon.de/
+URL:            http://www.andre-simon.de/
 Source:         http://www.andre-simon.de/zip/ansifilter-%{version}.tar.bz2
 Source2:        http://www.andre-simon.de/zip/ansifilter-%{version}.tar.bz2.asc
 Source99:       ansifilter.keyring
