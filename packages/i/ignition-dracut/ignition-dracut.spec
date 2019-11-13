@@ -17,7 +17,7 @@
 
 
 Name:           ignition-dracut
-Version:        0.0+git20191001.cefb71c
+Version:        0.0+git20191107.d9e8a63
 Release:        0
 Summary:        Dracut scripts for ignition
 License:        BSD-2-Clause
@@ -26,13 +26,14 @@ BuildArch:      noarch
 URL:            https://github.com/dustymabe/ignition-dracut
 Source:         %{name}-%{version}.tar.xz
 Source1:        ignition-mount-initrd-fstab.service
-Source2:        ignition-userconfig-timeout.conf
 Source3:        ignition-suse-generator
 Source4:        module-setup.sh
 Source5:        01_suse_set_ignition
 Source6:        change-ignition-firstboot-path.conf
 Source7:        README.SUSE
 Source8:        ignition-setup-user-suse.sh
+Source20:       ignition-userconfig-timeout.conf
+Source21:       ignition-userconfig-timeout-arm.conf
 Patch2:         0002-Support-different-flagfile-location.patch
 Patch3:         0003-Disable-resetting-UUID.patch
 BuildRequires:  suse-module-tools
@@ -59,7 +60,12 @@ This package contains the dracut scripts for this.
 %patch3 -p1
 mkdir dracut/30ignition-microos
 chmod +x %{SOURCE3} %{SOURCE4} %{SOURCE8}
-cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE8} dracut/30ignition-microos/
+cp %{SOURCE1} %{SOURCE3} %{SOURCE4} %{SOURCE8} dracut/30ignition-microos/
+%ifarch aarch64 %{arm}
+cp %{SOURCE21} dracut/30ignition-microos/
+%else
+cp %{SOURCE20} dracut/30ignition-microos/
+%endif
 cp %{SOURCE5} grub/
 cp %{SOURCE6} systemd/
 cp %{SOURCE7} .

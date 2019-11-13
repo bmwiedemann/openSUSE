@@ -9,12 +9,14 @@ Before=initrd-switch-root.target
 After=initrd-root-fs.target
 After=ignition-remount-sysroot.service
 
-# Allow Ignition to overwrite automatic mounts
+# Run only after Ignition's mount stage - mount points configured by Ignition
+# itself will be skipped below, just mount the rest.
 Requires=ignition-mount.service
-Before=ignition-mount.service
+After=ignition-mount.service
+Before=ignition-files.service
 
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/bin/sh -c 'eval $(awk '"'"'$4 ~ /x-initrd.mount/ {print "mount -t " $3 " -o " $4 " " $1 " /sysroot" $2 "; sleep 5; " }'"'"' /sysroot/etc/fstab)'
+ExecStart=/bin/sh -c 'eval $(awk '"'"'$4 ~ /x-initrd.mount/ {print "if ! findmnt /sysroot" $2 " >/dev/null; then mount -t " $3 " -o " $4 " " $1 " /sysroot" $2 "; fi;" }'"'"' /sysroot/etc/fstab)'
 ExecStop=/usr/bin/umount -a -O "x-initrd.mount"

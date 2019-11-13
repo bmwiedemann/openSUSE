@@ -67,4 +67,20 @@ Required to implement boo#1138725.</comment>
 </comment>
     <requestid>735290</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9434105e2746726e050771d377e49794</srcmd5>
+    <version>0.0+git20191107.d9e8a63</version>
+    <time>1573648005</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20191107.d9e8a63:
+  * firstboot-complete: tell zipl to run
+  * coreos-gpt-setup: workaround old lsblk not having PTUUID
+  * Add `ignition-subsequent.target` for non-Ignition boots
+  * ignition-firstboot-complete.service: Run as part of basic.target
+- Increase timeout for 'ignition' device on ARM
+- Prefer Ignition configuration if a mount point is both configured in Ignition and fstab (x-initrd.mount flag)
+- Explicitly add awk as initrd dependency
+</comment>
+    <requestid>747795</requestid>
+  </revision>
 </revisionlist>

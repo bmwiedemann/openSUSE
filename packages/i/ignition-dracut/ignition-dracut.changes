@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov 11 16:25:37 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.0+git20191107.d9e8a63:
+  * 30ignition/ignition-setup-user: mount /boot partition ro
+  * firstboot-complete: tell zipl to run
+  * coreos-gpt-setup: workaround old lsblk not having PTUUID
+  * Add `ignition-subsequent.target` for non-Ignition boots
+  * ignition-firstboot-complete.service: Run as part of basic.target
+- Increase timeout for 'ignition' device on ARM
+- Prefer Ignition configuration if a mount point is both configured
+  in Ignition and fstab (x-initrd.mount flag)
+- Explicitly add awk as initrd dependency
+
+-------------------------------------------------------------------
 Fri Oct  4 13:56:50 UTC 2019 - Ignaz Forster <iforster@suse.com>
 
 - Fix missing executable permission for ignition-setup-user-suse.sh

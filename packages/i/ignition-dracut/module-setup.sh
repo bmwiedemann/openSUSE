@@ -15,6 +15,7 @@ install() {
         "$systemdutildir/system-generators/ignition-suse-generator"
     inst_script "$moddir/ignition-setup-user-suse.sh" \
         "/usr/sbin/ignition-setup-user-suse"
+    inst_multiple awk
 }
 
 installkernel() {
