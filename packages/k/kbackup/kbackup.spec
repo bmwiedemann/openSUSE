@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kbackup
-Version:        19.08.2
+Version:        19.08.3
 Release:        0
 Summary:        Backup program based on KDE Frameworks 5
 License:        GPL-2.0-only
