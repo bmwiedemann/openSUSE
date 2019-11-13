@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov  7 23:12:53 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.3.php
+- Changes since 19.08.2:
+  * [pocreator] Avoid divide by 0 (kde#412585)
+
+-------------------------------------------------------------------
 Fri Oct 11 07:42:43 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.2
