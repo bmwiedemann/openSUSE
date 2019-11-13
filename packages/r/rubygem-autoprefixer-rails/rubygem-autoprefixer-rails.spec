@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-autoprefixer-rails
-Version:        9.6.1
+Version:        9.7.1
 Release:        0
 %define mod_name autoprefixer-rails
 %define mod_full_name %{mod_name}-%{version}

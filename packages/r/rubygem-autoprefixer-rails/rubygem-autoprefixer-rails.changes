@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 12 16:43:38 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 9.7.1
+
+  * Avoid unnecessary transitions in prefixed selectors (by Andrey Alexandrov).
+  * Fix `fit-content` for Firefox.
+
+-------------------------------------------------------------------
 Mon Jul  8 07:04:11 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 9.6.1
