@@ -74,6 +74,9 @@ Patch7:         abstractions-ssl-certbot-paths.diff
 # allow reading /usr/etc/pam.d/* and some other authentification-related files (submitted upstream 2019-10-07 https://gitlab.com/apparmor/apparmor/merge_requests/426)
 Patch8:         usr-etc-abstractions-authentification.diff
 
+# fix building libapparmor python bindings with python 3.8. Based on https://gitlab.com/apparmor/apparmor/merge_requests/430 but patching configure directly to avoid needing BuildRequires: aclocal
+Patch9:         libapparmor-python3.8.diff
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define apparmor_bin_prefix /lib/apparmor
@@ -365,6 +368,7 @@ SubDomain.
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 
 %build
 %define _lto_cflags %{nil}

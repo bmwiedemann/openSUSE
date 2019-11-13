@@ -1,0 +1,56 @@
+From ccbf1e0bf1bf5c3bbab47029fbbc5415ef73bac1 Mon Sep 17 00:00:00 2001
+From: intrigeri <intrigeri@boum.org>
+Date: Tue, 29 Oct 2019 17:53:11 +0000
+Subject: [PATCH] Fix a Python 3.8 autoconf check
+
+Bug-Debian: https://bugs.debian.org/943657
+
+Author: Matthias Klose <doko@debian.org>
+---
+ libraries/libapparmor/m4/ac_python_devel.m4 | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+#Index: libraries/libapparmor/m4/ac_python_devel.m4
+#===================================================================
+#--- a/libraries/libapparmor/m4/ac_python_devel.m4.orig	2019-06-18 01:55:38.000000000 +0200
+#+++ b/libraries/libapparmor/m4/ac_python_devel.m4	2019-11-02 23:18:39.461818181 +0100
+#@@ -139,7 +139,7 @@ sys.stdout.write('%s\n' % distutils.sysc
+#         if test -z "$PYTHON_EXTRA_LIBS"; then
+#            PYTHON_EXTRA_LIBS=`$PYTHON -c "import sys; import distutils.sysconfig; \
+# conf = distutils.sysconfig.get_config_var; \
+#-sys.stdout.write('%s %s\n' % (conf('LOCALMODLIBS'), conf('LIBS')))"`
+#+sys.stdout.write('%s %s %s\n' % (conf('BLDLIBRARY'), conf('LOCALMODLIBS'), conf('LIBS')))"`
+#         fi
+#         AC_MSG_RESULT([$PYTHON_EXTRA_LIBS])
+#         AC_SUBST(PYTHON_EXTRA_LIBS)
+#@@ -164,7 +164,7 @@ sys.stdout.write('%s\n' % conf('LINKFORS
+#         # save current global flags
+#         ac_save_LIBS="$LIBS"
+#         ac_save_CPPFLAGS="$CPPFLAGS"
+#-        LIBS="$ac_save_LIBS $PYTHON_LDFLAGS"
+#+        LIBS="$ac_save_LIBS $PYTHON_LDFLAGS $PYTHON_EXTRA_LIBS"
+#         CPPFLAGS="$ac_save_CPPFLAGS $PYTHON_CPPFLAGS"
+#         AC_TRY_LINK([
+#                 #include <Python.h>
+Index: libraries/libapparmor/configure
+===================================================================
+--- a/libraries/libapparmor/configure.orig	2019-06-18 01:57:46.000000000 +0200
++++ b/libraries/libapparmor/configure	2019-11-02 23:19:48.225634333 +0100
+@@ -4756,7 +4756,7 @@ $as_echo_n "checking python extra librar
+         if test -z "$PYTHON_EXTRA_LIBS"; then
+            PYTHON_EXTRA_LIBS=`$PYTHON -c "import sys; import distutils.sysconfig; \
+ conf = distutils.sysconfig.get_config_var; \
+-sys.stdout.write('%s %s\n' % (conf('LOCALMODLIBS'), conf('LIBS')))"`
++sys.stdout.write('%s %s %s\n' % (conf('BLDLIBRARY'), conf('LOCALMODLIBS'), conf('LIBS')))"`
+         fi
+         { $as_echo "$as_me:${as_lineno-$LINENO}: result: $PYTHON_EXTRA_LIBS" >&5
+ $as_echo "$PYTHON_EXTRA_LIBS" >&6; }
+@@ -4790,7 +4790,7 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
+         # save current global flags
+         ac_save_LIBS="$LIBS"
+         ac_save_CPPFLAGS="$CPPFLAGS"
+-        LIBS="$ac_save_LIBS $PYTHON_LDFLAGS"
++        LIBS="$ac_save_LIBS $PYTHON_LDFLAGS $PYTHON_EXTRA_LIBS"
+         CPPFLAGS="$ac_save_CPPFLAGS $PYTHON_CPPFLAGS"
+         cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */

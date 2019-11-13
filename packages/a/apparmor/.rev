@@ -1796,4 +1796,15 @@ libapparmor:
   /usr/etc/pam.d/* and some other authentification-related files (boo#1153162) (forwarded request 735944 from cboltz)</comment>
     <requestid>735945</requestid>
   </revision>
+  <revision rev="132" vrev="4">
+    <srcmd5>9bbeebecf353777157a62b72bc27b3f8</srcmd5>
+    <version>2.13.3</version>
+    <time>1573647169</time>
+    <user>dimstar_suse</user>
+    <comment>- add libapparmor-python3.8.diff to fix building the libapparmor python
+  bindings (deb#943657)
+
+Note: the build with python 3.8 will still fail because of boo#1155839 - but at least we get a different build failure now ;-)</comment>
+    <requestid>746670</requestid>
+  </revision>
 </revisionlist>
