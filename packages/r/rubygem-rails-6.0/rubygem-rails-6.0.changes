@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 12 13:18:09 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 6.0.1
+
+  * Changelogs are in Rails's modules
+  https://github.com/rails/rails/releases/tag/v6.0.1
+
+-------------------------------------------------------------------
 Sat Aug 17 20:56:30 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 6.0.0
