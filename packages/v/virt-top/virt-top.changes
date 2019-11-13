@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov  1 12:34:56 UTC 2019 - olaf@aepfle.de
+
+- Require current dune macros
+- Update to version 1.0.9, via _service file
+- Remove virt-top-aarch64.patch
+- Remove virt-top-no-immutable-warning.patch
+- Remove virt-top.bytecode.patch
+
+-------------------------------------------------------------------
 Tue May  9 15:50:45 UTC 2017 - olaf@aepfle.de
 
 - Install also bytecode with virt-top.bytecode.patch (bsc#1031359)
