@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kblog
-Version:        19.08.2
+Version:        19.08.3
 Release:        0
 Summary:        Client-side support library for web application remote blogging APIs
 License:        LGPL-2.1-or-later
