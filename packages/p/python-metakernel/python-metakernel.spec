@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-metakernel
-Version:        0.24.2
+Version:        0.24.3
 Release:        0
 Summary:        Metakernel for Jupyter
 License:        BSD-3-Clause
