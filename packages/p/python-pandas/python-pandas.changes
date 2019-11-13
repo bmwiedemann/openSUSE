@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Nov 11 01:59:25 UTC 2019 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to version 0.25.3
+  + Support Python 3.8
+  + Bug fixes
+    > Indexing
+      * Fix regression in DataFrame.reindex() not following the limit argument
+      * Fix regression in RangeIndex.get_indexer() for decreasing RangeIndex
+        where target values may be improperly identified as missing/present
+    > I/O
+      * Fix regression in notebook display where <th> tags were missing for
+        DataFrame.index values
+      * Regression in to_csv() where writing a Series or DataFrame indexed by
+        an IntervalIndex would incorrectly raise a TypeError
+      * Fix to_csv() with ExtensionArray with list-like values
+    > Groupby/resample/rolling
+      * Bug incorrectly raising an IndexError when passing a list of quantiles
+        to pandas.core.groupby.DataFrameGroupBy.quantile()
+      * Bug in pandas.core.groupby.GroupBy.shift(),
+        pandas.core.groupby.GroupBy.bfill() and
+        pandas.core.groupby.GroupBy.ffill() where timezone information would
+        be dropped
+      * Bug in DataFrameGroupBy.quantile() where NA values in the grouping
+        could cause segfaults or incorrect results
+
+-------------------------------------------------------------------
 Fri Sep 20 09:40:08 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Use xdist to run tests in threads, it takes ages otherwise
