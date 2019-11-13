@@ -1,0 +1,16 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/gildor478/ocaml-gettext.git</param>
+    <param name="scm">git</param>
+    <param name="versionformat">0.4.1</param>
+    <!-- v0.4.1 -->
+    <param name="revision">a74be839b4e1305a538e2838f5700b5a7907a197</param>
+    <param name="filename">ocaml-gettext</param>
+    <param name="exclude">patches</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

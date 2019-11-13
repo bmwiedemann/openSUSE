@@ -27,4 +27,12 @@
 - Remove autodeps for pre openSUSE 12.1 releases</comment>
     <requestid>512527</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d6a82aa4592e05838f9f505bbe2720af</srcmd5>
+    <version>0.4.1</version>
+    <time>1573647300</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>746701</requestid>
+  </revision>
 </revisionlist>
