@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 12 10:45:42 UTC 2019 - Max Lin <mlin@suse.com>
+
+- p7zip/p7zip-full change regard to 7z command has been done in
+  SLE15-SP2/Leap 15.2 as well
+
+-------------------------------------------------------------------
 Mon Jul  2 17:33:12 UTC 2018 - kstreitova@suse.com
 
 - BuildRequires p7zip-full for TW as 7z binary needed for
