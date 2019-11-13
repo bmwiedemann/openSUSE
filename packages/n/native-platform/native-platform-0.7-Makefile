@@ -1,0 +1,87 @@
+#  Description: Use make as buildsystem instead of Gradle to
+#  avoid a circular dependencies between gradle and native-platform.
+#  This is very minimalistic Makefile so it will only work for
+#  Debian use case for now.
+#  Author: Damien Raude-Morvan <drazzib@debian.org>
+#  Adapted for Fedora by: gil cattaneo <puntogil@libero.it>
+CXX=g++
+STRIP=strip
+# which is the best solution?
+JOPT_JAR=$(shell build-classpath jopt-simple)
+#JOPT_JAR=$(shell locate jopt-simple.jar)
+IDIR=src/shared/headers
+SRCDIR=src/main/cpp
+#SRCSHAREDIR=src/shared/cpp
+#SRCCURSESDIR=src/curses/cpp
+JSRCDIR=src/main/java
+BUILD=build
+IGEN=$(BUILD)/headers
+JCLASSESDIR=$(BUILD)/classes
+JDOCDIR=$(BUILD)/docs/javadoc
+ODIR=$(BUILD)/binaries
+JAR=$(BUILD)/native-platform.jar
+known_os_archs := 
+JAR_ARCH=$(BUILD)/native-platform-linux.jar
+
+JTARGET=1.6
+JSOURCE=1.6
+
+INCLUDE=-I$(IDIR) -I$(IGEN) -I/usr/include -I$(JAVA_HOME)/include -I$(JAVA_HOME)/include/linux
+LDLIBS=-lncurses
+
+_OBJ_STD = generic.o generic_posix.o linux.o osx.o posix.o win.o unix_strings.o
+_OBJ_CURSES = generic.o generic_posix.o curses.o unix_strings.o
+OBJ_STD = $(patsubst %,$(ODIR)/%,$(_OBJ_STD))
+OBJ_CURSES = $(patsubst %,$(ODIR)/%,$(_OBJ_CURSES))
+_JAVA = $(shell find $(JSRCDIR) -name "*.java" -print)
+
+.PHONY: clean jar javadoc
+
+build: $(ODIR)/libnative-platform.so $(ODIR)/libnative-platform-curses.so jar javadoc arch-jar
+
+$(ODIR)/libnative-platform.so: $(OBJ_STD)
+	$(CXX) -shared -fPIC $(CFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(LDFLAGS) -o $@ $^
+	$(STRIP) $@
+
+$(ODIR)/libnative-platform-curses.so: $(OBJ_CURSES)
+	$(CXX) $(CFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(LDFLAGS) $(LDLIBS) -shared -fPIC -o $@ $^ $(LDLIBS)
+	$(STRIP) $@
+
+$(JCLASSESDIR)/%.class: javafiles-list
+	mkdir -p $(JCLASSESDIR)
+	mkdir -p $(IGEN)
+	$(JAVA_HOME)/bin/javac -source $(JTARGET) -target $(JSOURCE) -d $(JCLASSESDIR) -h $(IGEN) -classpath $(JOPT_JAR) @javafiles-list
+
+javafiles-list: $(_JAVA)
+	echo $^ > javafiles-list
+
+javadoc: javafiles-list
+	mkdir -p $(JDOCDIR)
+	$(JAVA_HOME)/bin/javadoc -d $(JDOCDIR) -classpath $(JOPT_JAR) @javafiles-list
+
+jar: $(JCLASSESDIR)/%.class
+	mkdir -p $(JDOCDIR)
+	(cd $(JCLASSESDIR) ; $(JAVA_HOME)/bin/jar cf ../../$(JAR) .)
+
+arch-jar: $(ODIR)/libnative-platform.so $(ODIR)/libnative-platform-curses.so
+	(cd $(ODIR) ; $(JAVA_HOME)/bin/jar cf ../../$(JAR_ARCH) *.so)
+
+$(ODIR)/%.o: $(SRCDIR)/%.cpp $(IGEN)/native.h
+	mkdir -p $(ODIR)
+	$(CXX) $(CFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(LDFLAGS) $(INCLUDE) -fPIC -c -o $@ $<
+
+$(IGEN)/native.h: $(JCLASSESDIR)/%.class
+	mkdir -p $(IGEN)
+	@echo "#include \"net_rubygrapefruit_platform_internal_jni_NativeLibraryFunctions.h\"" > $(IGEN)/native.h
+	@echo "#include \"net_rubygrapefruit_platform_internal_jni_PosixFileFunctions.h\"" >> $(IGEN)/native.h
+	@echo "#include \"net_rubygrapefruit_platform_internal_jni_PosixFileSystemFunctions.h\"" >> $(IGEN)/native.h
+	@echo "#include \"net_rubygrapefruit_platform_internal_jni_PosixProcessFunctions.h\"" >> $(IGEN)/native.h
+	@echo "#include \"net_rubygrapefruit_platform_internal_jni_PosixTerminalFunctions.h\"" >> $(IGEN)/native.h
+	@echo "#include \"net_rubygrapefruit_platform_internal_jni_TerminfoFunctions.h\"" >> $(IGEN)/native.h
+	@echo "#include \"net_rubygrapefruit_platform_internal_jni_WindowsConsoleFunctions.h\"" >> $(IGEN)/native.h
+	@echo "#include \"net_rubygrapefruit_platform_internal_jni_WindowsHandleFunctions.h\"" >> $(IGEN)/native.h
+	@echo "#include \"net_rubygrapefruit_platform_internal_jni_WindowsRegistryFunctions.h\"" >> $(IGEN)/native.h
+
+clean:
+	-rm javafiles-list
+	-rm -Rf $(BUILD)
