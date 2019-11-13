@@ -8,6 +8,7 @@ import time
 
 obsbase='https://build.opensuse.org'
 outdir='packages'
+count=0
 
 def pkgmap(p):
      first=p[0]
@@ -39,7 +40,8 @@ for line in sys.stdin:
     subprocess.call(["git", "add", pkgmap(package)], shell=False)
     process = subprocess.Popen(["git", "commit", "-F", "-"], stdin=subprocess.PIPE)
     process.communicate(info.encode('utf-8'))
-    if os.environ.get('SSH_AUTH_SOCK'):
+    count += 1
+    if os.environ.get('SSH_AUTH_SOCK') and (count%4) == 0:
         subprocess.call(["git", "push"])
     try:
         os.unlink(".pkglock")

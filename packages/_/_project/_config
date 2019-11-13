@@ -9,6 +9,8 @@ Prefer: python2-subunit python3-subunit
 # testing new cycle algorithm
 BuildFlags: genmetaalgo:1
 
+PublishFlags: ympdist:openSUSE%20Tumbleweed
+
 # Use ext4 as FS in builder workers (instead of default ext3)
 BuildFlags: vmfstype:ext4
 
@@ -546,7 +548,7 @@ Prefer: -rubygem-method_source-0_7 -rubygem-rails-2_3 -rubygem-activerecord-2_3
 Prefer: -rubygem-json_pure-1_5
 Prefer: geronimo-servlet-2_4-api
 Prefer: openmpi-config
-Prefer: -libhdf5-0-openmpi -libhdf5_hl0-openmpi -libhdf5_hl8-openmpi -libhdf5-8-openmpi -libhdf5_hl9-openmpi -libhdf5-9-openmpi -libhdf5-10-openmpi -libhdf5_hl10-openmpi -libhdf5-11-openmpi -libhdf5_hl11-openmpi -libhdf5-101-openmpi -libhdf5-101-mvapich2 -libhdf5_hl101-openmpi libhdf5_hl100 -libhdf5-103-openmpi -libhdf5-103-mvapich2 -libhdf5_hl103-openmpi -libhdf5_cpp103-openmpi -libhdf5_cpp103-openmpi1 -libhdf5_cpp103-mvapich2 -libhdf5-103-openmpi2 -libhdf5-103-openmpi3 -libhdf5_cpp103-openmpi2 -libhdf5_cpp103-openmpi3
+Prefer: -libhdf5-0-openmpi -libhdf5_hl0-openmpi -libhdf5_hl8-openmpi -libhdf5-8-openmpi -libhdf5_hl9-openmpi -libhdf5-9-openmpi -libhdf5-10-openmpi -libhdf5_hl10-openmpi -libhdf5-11-openmpi -libhdf5_hl11-openmpi -libhdf5-101-openmpi -libhdf5-101-mvapich2 -libhdf5_hl101-openmpi libhdf5_hl100 -libhdf5-103-openmpi1 -libhdf5-103-mvapich2 -libhdf5_hl103-openmpi -libhdf5_cpp103-openmpi -libhdf5_cpp103-openmpi1 -libhdf5_cpp103-mvapich2 -libhdf5-103-openmpi2 -libhdf5-103-openmpi3 -libhdf5_cpp103-openmpi2 -libhdf5_cpp103-openmpi3
 Prefer: -libvtk1-openmpi libvtk1-openmpi2
 Prefer: fftw3-devel ImageMagick-config-7-SUSE
 # prefer the small systemd for building
