@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 12 15:21:16 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 2.5.2
+
+  * [#220](https://github.com/socketry/nio4r/issues/220)
+    Update to libev-4.27 & fix assorted warnings.
+    ([@ioquatix])
+
+  * [#225](https://github.com/socketry/nio4r/issues/225)
+    Avoid need for linux headers.
+    ([@ioquatix])
+
+-------------------------------------------------------------------
 Mon Jul  8 06:53:10 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 2.4.0
