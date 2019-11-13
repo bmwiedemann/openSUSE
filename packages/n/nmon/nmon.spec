@@ -18,11 +18,10 @@
 
 
 Name:           nmon
-Version:        16j
+Version:        16m
 Release:        0
 Summary:        Performance Monitor
 License:        GPL-3.0-only
-Group:          System/Monitoring
 URL:            http://nmon.sourceforge.net/pmwiki.php
 Source0:        http://sourceforge.net/projects/nmon/files/lmon%{version}.c
 Source1:        https://www.gnu.org/licenses/gpl-3.0.txt

@@ -46,7 +46,7 @@ PRE_KERNEL_2_6_18 1 kernel levels before removed the following to the disk stats
 #define RAW(member)      (long)((long)(p->cpuN[i].member)   - (long)(q->cpuN[i].member))
 #define RAWTOTAL(member) (long)((long)(p->cpu_total.member) - (long)(q->cpu_total.member))
 
-#define VERSION "16j"
+#define VERSION "16k"
 char version[] = VERSION;
 static char *SccsId = "nmon " VERSION;
 
@@ -1216,12 +1216,12 @@ R7=0x1000000040004
     long entitled_memory_pool_size;	/* AMS whole pool size in bytes */
     long entitled_memory_loan_request;	/* AMS requesting more memory loaning */
 
+    long DedDonMode;
 #ifdef EXPERIMENTAL
 /* new data in SLES11 for POWER 2.6.27 (may be a little earlier too) */
     long DesEntCap;
     long DesProcs;
     long DesVarCapWt;
-    long DedDonMode;
     long group;
     long pool;
     long entitled_memory;
@@ -1413,11 +1413,11 @@ int proc_lparcfg()
 	GETDATA(entitled_memory_loan_request);	/* AMS requesting more memory loaning */
 
     }
+    GETDATA(DedDonMode);
 #ifdef EXPERIMENTAL
     GETDATA(DesEntCap);
     GETDATA(DesProcs);
     GETDATA(DesVarCapWt);
-    GETDATA(DedDonMode);
     GETDATA(group);
     GETDATA(pool);
     GETDATA(entitled_memory);
@@ -4357,7 +4357,7 @@ int main(int argc, char **argv)
 	    break;
 	case 'C':		/* commandlist argument */
 	    cmdlist[0] = MALLOC(strlen(optarg) + 1);	/* create buffer */
-	    strncpy(cmdlist[0], optarg, strlen(optarg) + 1);
+	    strcpy(cmdlist[0], optarg);
 	    if (cmdlist[0][0] != 0)
 		cmdfound = 1;
 	    for (i = 0, j = 1; cmdlist[0][i] != 0; i++) {
@@ -4385,7 +4385,7 @@ int main(int argc, char **argv)
 	    break;
 	case 'F':		/* background mode with user supplied filename */
 	    user_filename = MALLOC(strlen(optarg) + 1);
-	    strncpy(user_filename, optarg, strlen(optarg) + 1);
+	    strcpy(user_filename, optarg);
 	    user_filename_set++;
 	    go_background(288, 300);
 	    break;
@@ -4652,7 +4652,7 @@ int main(int argc, char **argv)
 	}
 	else if (user_filename_set && user_filename != 0) {
 	    open_filename = MALLOC(strlen(user_filename) + 1);
-	    strncpy(open_filename, user_filename, strlen(user_filename) + 1);
+	    strcpy(open_filename, user_filename);
 	}
 	else {
 	    open_filename = MALLOC(strlen(hostname) + 64);
@@ -4875,7 +4875,7 @@ int main(int argc, char **argv)
 	    jfs_load(UNLOAD);
 	}
 #ifdef POWER
-	if (proc_lparcfg() && lparcfg.shared_processor_mode != 0
+	if (proc_lparcfg() && (lparcfg.shared_processor_mode != 0 || lparcfg.DedDonMode > 0)
 	    && power_vm_type == VM_POWERVM) {
 	    fprintf(fp,
 		    "LPAR,Shared CPU LPAR Stats %s,PhysicalCPU,capped,shared_processor_mode,system_potential_processors,system_active_processors,pool_capacity,MinEntCap,partition_entitled_capacity,partition_max_entitled_capacity,MinProcs,Logical CPU,partition_active_processors,partition_potential_processors,capacity_weight,unallocated_capacity_weight,BoundThrds,MinMem,unallocated_capacity,pool_idle_time,smt_mode\n",
@@ -6136,9 +6136,9 @@ int main(int argc, char **argv)
 		DISPLAY(padlpar, 10);
 	    } else {
 		/* Only print LPAR info to spreadsheet if in shared processor mode */
-		if (ret != 0 && lparcfg.shared_processor_mode > 0
+		if (ret != 0 && (lparcfg.shared_processor_mode > 0 || lparcfg.DedDonMode > 0)
 		    && power_vm_type == VM_POWERVM)
-		    fprintf(fp, "LPAR,%s,%9.6f,%d,%d,%d,%d,%d,%.2f,%.2f,%.2f,%d,%d,%d,%d,%d,%d,%d,%d,%d,%.2f,%d\n", LOOP, (double) lparcfg.purr_diff / (double) lparcfg.timebase / elapsed, lparcfg.capped, lparcfg.shared_processor_mode, lparcfg.system_potential_processors, lparcfg.system_active_processors, lparcfg.pool_capacity, lparcfg.MinEntCap / 100.0, lparcfg.partition_entitled_capacity / 100.0, lparcfg.partition_max_entitled_capacity / 100.0, lparcfg.MinProcs, cpus,	/* report logical CPU here so analyser graph CPU% vs VPs reports correctly */
+		    fprintf(fp, "LPAR,%s,%9.6f,%d,%d,%d,%d,%d,%.2f,%.2f,%.2f,%d,%d,%d,%d,%d,%d,%d,%d,%d,%.2f,%d\n", LOOP, (double) lparcfg.purr_diff / (double) lparcfg.timebase / elapsed, lparcfg.capped, lparcfg.shared_processor_mode, lparcfg.system_potential_processors, lparcfg.system_active_processors, lparcfg.pool_capacity /100, lparcfg.MinEntCap / 100.0, lparcfg.partition_entitled_capacity / 100.0, lparcfg.partition_max_entitled_capacity / 100.0, lparcfg.MinProcs, cpus,	/* report logical CPU here so analyser graph CPU% vs VPs reports correctly */
 			    lparcfg.partition_active_processors,
 			    lparcfg.partition_potential_processors,
 			    lparcfg.capacity_weight,
@@ -6905,24 +6905,25 @@ int main(int argc, char **argv)
 		    proc_first_time = 0;
 		}
 		if (show_rrd)
-		    str_p =
+		    str_p =                    /*   LOOP    1    2    3    4    5    6    7    8    9 */
 			"rrdtool update proc.rrd %s:%.0f:%.0f:%.1f:%.1f:%.1f:%.1f:%.1f:%.1f:%.1f:%.1f\n";
 		else
-		    str_p =
+		    str_p = /*   LOOP    1    2    3    4    5    6    7    8    9 */
 			"PROC,%s,%.0f,%.0f,%.1f,%.1f,%.1f,%.1f,%.1f,%.1f,%.1f,%.1f\n";
 
 		/* These "-1"'s looks bad but it keeps the nmon for AIX format */
 		/* The stats are not available in Linux . . .  unless you know better! */
-		fprintf(fp, str_p, LOOP, (float) p->cpu_total.running,	/*runqueue */
-			(float) p->cpu_total.blocked,	/*swapin (# of processes waiting for IO completion */
-			/*pswitch */
-			(float) (p->cpu_total.ctxt - q->cpu_total.ctxt) / elapsed, -1.0,	/*syscall */
-			-1.0,	/*read */
-			-1.0,	/*write */
-			/*fork */
-			(float) (p->cpu_total.procs - q->cpu_total.procs) / elapsed, -1.0,	/*exec */
-			-1.0,	/*sem */
-			-1.0);	/*msg */
+		fprintf(fp, str_p, LOOP, 
+			(float) p->cpu_total.running,	/*1 runqueue */
+			(float) p->cpu_total.blocked,	/*2 swapin (# of processes waiting for IO completion */
+			(float) (p->cpu_total.ctxt - q->cpu_total.ctxt) / elapsed, /*3 pswitch */
+			-1.0,	/*4 syscall */
+			-1.0,	/*4 read */
+			-1.0,	/*5 write */
+			(float) (p->cpu_total.procs - q->cpu_total.procs) / elapsed, /*6 fork */
+			-1.0,	/*7 exec */
+			-1.0,	/*8 sem */
+			-1.0);	/*9 msg */
 	    }
 	}
 

@@ -99,4 +99,17 @@
     <comment></comment>
     <requestid>704056</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2304b75104107ad41f99a9ffb38a18a7</srcmd5>
+    <version>16m</version>
+    <time>1573647931</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16m:
+  * Fix only effect POWER LPARs in the rarely used (IMHO) Dedicated
+    Donating mode, which is actually more like Shared CPU than
+    Dedicated so Shared CPU LPAR stats are now switched on. This is
+    the mode choosen for most SAP HANA workloads on POWER. Does not
+    effect AMD64 or other platforms.</comment>
+    <requestid>747706</requestid>
+  </revision>
 </revisionlist>
