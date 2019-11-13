@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyAudio
 #
-# Copyright (c) 2017 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,8 +23,7 @@ Version:        0.2.11
 Release:        0
 Summary:        Python Bindings for PortAudio v19
 License:        MIT
-Group:          Development/Libraries/Python
-Url:            http://people.csail.mit.edu/hubert/pyaudio/
+URL:            https://people.csail.mit.edu/hubert/pyaudio/
 Source:         https://files.pythonhosted.org/packages/source/P/PyAudio/PyAudio-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
@@ -32,11 +31,10 @@ BuildRequires:  fdupes
 BuildRequires:  portaudio-devel
 BuildRequires:  python-rpm-macros
 %if %{with test}
-BuildRequires:  alsa
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  alsa
 %endif
-
 %python_subpackages
 
 %description
@@ -65,7 +63,6 @@ popd
 %endif
 
 %files %{python_files}
-%defattr(-,root,root)
 %doc CHANGELOG README
 %doc examples/
 %{python_sitearch}/_portaudio*.so
