@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 12 16:42:47 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.4.5
+
+  * MRI 2.7 support
+  * Fixed concurrency bugs
+
+-------------------------------------------------------------------
 Sun May  5 09:19:48 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to version 1.4.4
