@@ -1,0 +1,24 @@
+diff -Nru janino-2.7.8/commons-compiler-jdk/src/org/codehaus/commons/compiler/jdk/package-info.java janino-2.7.8.nullanalysis/commons-compiler-jdk/src/org/codehaus/commons/compiler/jdk/package-info.java
+--- janino-2.7.8/commons-compiler-jdk/src/org/codehaus/commons/compiler/jdk/package-info.java	2014-12-17 22:06:58.000000000 +0100
++++ janino-2.7.8.nullanalysis/commons-compiler-jdk/src/org/codehaus/commons/compiler/jdk/package-info.java	2015-02-11 04:39:15.055288383 +0100
+@@ -25,8 +25,5 @@
+  */
+ 
+ /** Main package of the plugin. */
+-@NotNullByDefault
+ package org.codehaus.commons.compiler.jdk;
+ 
+-import de.unkrig.commons.nullanalysis.NotNullByDefault;
+-
+diff -Nru janino-2.7.8/commons-compiler-jdk/src/org/codehaus/commons/io/package-info.java janino-2.7.8.nullanalysis/commons-compiler-jdk/src/org/codehaus/commons/io/package-info.java
+--- janino-2.7.8/commons-compiler-jdk/src/org/codehaus/commons/io/package-info.java	2014-12-17 22:07:00.000000000 +0100
++++ janino-2.7.8.nullanalysis/commons-compiler-jdk/src/org/codehaus/commons/io/package-info.java	2015-02-11 04:38:47.904850661 +0100
+@@ -25,8 +25,5 @@
+  */
+ 
+ /** I/O utilities. */
+-@NotNullByDefault
+ package org.codehaus.commons.io;
+ 
+-import de.unkrig.commons.nullanalysis.NotNullByDefault;
+-
