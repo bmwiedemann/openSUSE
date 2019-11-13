@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Tue Nov 12 13:32:40 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 6.0.1
+
+  *    Common Table Expressions are allowed on read-only connections.
+
+       *Chris Morris*
+
+  *    New record instantiation respects `unscope`.
+
+       *Ryuta Kamizono*
+
+  *    Fixed a case where `find_in_batches` could halt too early.
+
+       *Takayuki Nakata*
+
+  *    Autosaved associations always perform validations when a custom validation
+       context is used.
+
+       *Tekin Suleyman*
+
+  *    `sql.active_record` notifications now include the `:connection` in
+       their payloads.
+
+       *Eugene Kenny*
+
+  *    A rollback encountered in an `after_commit` callback does not reset
+       previously-committed record state.
+
+       *Ryuta Kamizono*
+
+  *    Fixed that join order was lost when eager-loading.
+
+       *Ryuta Kamizono*
+
+  *   `DESCRIBE` queries are allowed on read-only connections.
+
+      *Dylan Thacker-Smith*
+
+  *   Fixed that records that had been `inspect`ed could not be marshaled.
+
+      *Eugene Kenny*
+
+  *   The connection pool reaper thread is respawned in forked processes. This
+      fixes that idle connections in forked processes wouldn't be reaped.
+
+      *John Hawthorn*
+
+  *   The memoized result of `ActiveRecord::Relation#take` is properly cleared
+      when `ActiveRecord::Relation#reset` or `ActiveRecord::Relation#reload`
+      is called.
+
+      *Anmol Arora*
+
+  *   Fixed the performance regression for `primary_keys` introduced MySQL 8.0.
+
+      *Hiroyuki Ishii*
+
+  *   `insert`, `insert_all`, `upsert`, and `upsert_all` now clear the query cache.
+
+      *Eugene Kenny*
+
+  *   Call `while_preventing_writes` directly from `connected_to`.
+
+      In some cases application authors want to use the database switching middleware and make explicit calls with `connected_to`. It's possible for an app to turn off writes and not turn them back on by the time we call `connected_to(role: :writing)`.
+
+      This change allows apps to fix this by assuming if a role is writing we want to allow writes, except in the case it's explicitly turned off.
+
+      *Eileen M. Uchitelle*
+
+  *   Improve detection of ActiveRecord::StatementTimeout with mysql2 adapter in the edge case when the query is terminated during filesort.
+
+      *Kir Shatrov*
+
+-------------------------------------------------------------------
 Sat Aug 17 20:51:27 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 6.0.0
