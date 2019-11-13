@@ -25,8 +25,9 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%define         skip_python2 1
 Name:           python-dask%{psuffix}
-Version:        1.2.2
+Version:        2.7.0
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
@@ -37,6 +38,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-toolz >= 0.7.3
+Requires:       python-tornado >= 5
 Recommends:     %{name}-array = %{version}
 Recommends:     %{name}-bag = %{version}
 Recommends:     %{name}-dataframe = %{version}
@@ -62,6 +64,7 @@ BuildRequires:  %{python_module cachey}
 BuildRequires:  %{python_module chest}
 BuildRequires:  %{python_module cloudpickle >= 0.2.1}
 BuildRequires:  %{python_module distributed}
+BuildRequires:  %{python_module fsspec >= 0.5.1}
 BuildRequires:  %{python_module graphviz}
 BuildRequires:  %{python_module h5py}
 BuildRequires:  %{python_module jupyter_ipython}
@@ -80,7 +83,7 @@ BuildRequires:  %{python_module scikit-learn}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module tables}
-BuildRequires:  %{python_module tornado}
+BuildRequires:  %{python_module tornado >= 5}
 BuildRequires:  graphviz
 BuildRequires:  graphviz-gd
 BuildRequires:  graphviz-gnome
@@ -124,7 +127,7 @@ This package pulls in all the optional dask components.
 Summary:        Numpy-like array data structure for dask
 Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
-Requires:       python-numpy
+Requires:       python-numpy >= 1.13.0
 Recommends:     python-chest
 Recommends:     python-h5py
 Recommends:     python-pandas
@@ -149,7 +152,9 @@ Summary:        Data structure generic python objects in dask
 Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 Requires:       %{name}-multiprocessing = %{version}
-Recommends:     python-partd >= 0.3.7
+Requires:       python-cloudpickle >= 0.2.1
+Requires:       python-fsspec >= 0.5.1
+Requires:       python-partd >= 0.3.10
 
 %description bag
 A minimal task scheduling abstraction and parallel arrays.
@@ -172,8 +177,10 @@ Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 Requires:       %{name}-array = %{version}
 Requires:       %{name}-multiprocessing = %{version}
-Requires:       python-numpy
-Requires:       python-pandas
+Requires:       python-fsspec >= 0.5.1
+Requires:       python-numpy >= 1.13.0
+Requires:       python-pandas >= 0.21.0
+Requires:       python-partd >= 0.3.10
 Requires:       python-six
 Recommends:     %{name}-bag = %{version}
 Recommends:     python-SQLAlchemy
@@ -181,7 +188,6 @@ Recommends:     python-bcolz
 Recommends:     python-chest
 Recommends:     python-fastparquet
 Recommends:     python-pandas-datareader
-Recommends:     python-partd >= 0.3.7
 Recommends:     python-psutil
 Recommends:     python-pyarrow
 
@@ -204,8 +210,7 @@ on a single machine, or on many different machines in a cluster.
 Summary:        Interface with the distributed task scheduler in dask
 Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
-Requires:       python-distributed >= 1.16
-Requires:       python-s3fs >= 0.0.8
+Requires:       python-distributed >= 2.0
 
 %description distributed
 A minimal task scheduling abstraction and parallel arrays.
@@ -272,10 +277,12 @@ This package contains the multiprocessing interface.
 %if %{with test}
 %check
 # Tests need network:
+#   test_await
 #   test_serializable_groupby_agg
 #   test_persist
 #   test_local_get_with_distributed_active
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{python_bin_suffix} -v dask/tests -k 'not (test_serializable_groupby_agg or test_persist or test_local_get_with_distributed_active)'
+#   test_local_scheduler
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{python_bin_suffix} -v dask/tests -k 'not (test_serializable_groupby_agg or test_persist or test_local_get_with_distributed_active or test_await or test_local_scheduler)'
 %endif
 
 %if !%{with test}

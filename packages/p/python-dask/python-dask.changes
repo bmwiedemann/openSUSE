@@ -1,4 +1,371 @@
 -------------------------------------------------------------------
+Mon Nov 11 18:24:07 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 2.7.0
+  + Array
+    * Reuse code for assert_eq util method
+    * Update da.array to always return a dask array
+    * Skip transpose on trivial inputs
+    * Avoid NumPy scalar string representation in tokenize
+    * Remove unnecessary tiledb shape constraint
+    * Removes bytes from sparse array HTML repr
+  + Core
+    * Drop Python 3.5
+    * Update the use of fixtures in distributed tests
+    * Changed deprecated bokeh-port to dashboard-address
+    * Avoid updating with identical dicts in ensure_dict
+    * Test Upstream
+    * Accelerate reverse_dict
+    * Update test_imports.sh
+    * Support cgroups limits on cpu count in multiprocess and threaded schedulers
+    * Update minimum pyarrow version on CI
+    * Make cloudpickle optional
+  + DataFrame
+    * Add an example of index_col usage
+    * Explicitly use iloc for row indexing
+    * Accept dask arrays on columns assignemnt
+    * Implement unique and value_counts for SeriesGroupBy
+    * Add sizeof definition for pyarrow tables and columns
+    * Enable row-group task partitioning in pyarrow-based read_parquet
+    * Removes npartitions='auto' from dd.merge docstring
+    * Apply enforce error message shows non-overlapping columns.
+    * Optimize meta_nonempty for repetitive dtypes
+    * Remove import of dask_cudf, which is now a part of cudf
+  + Documentation
+    * Make capitalization more consistent in FAQ docs
+    * Add CONTRIBUTING.md
+    * Document optional dependencies
+    * Update helm chart docs to reflect new chart repo
+    * Add Resampler to API docs
+    * Fix typo in read_sql_table
+    * Add adaptive deployments screencast
+- Update to 2.6.0
+  + Core
+    * Call ``ensure_dict`` on graphs before entering ``toolz.merge``
+    * Consolidating hash dispatch functions
+  + DataFrame
+    * Support Python 3.5 in Parquet code
+    * Avoid identity check in ``warn_dtype_mismatch``
+    * Enable unused groupby tests
+    * Remove old parquet and bcolz dataframe optimizations
+    * Add getitem optimization for ``read_parquet``
+    * Use ``_constructor_sliced`` method to determine Series type
+    * Fix map(series) for unsorted base series index
+    * Fix ``KeyError`` with Groupby label
+  + Documentation
+    * Use Zoom meeting instead of appear.in
+    * Added curated list of resources
+    * Update SSH docs to include ``SSHCluster``
+    * Update "Why Dask?" page
+    * Fix typos in docstrings
+- Update to 2.5.2
+  + Array
+    * Correct chunk size logic for asymmetric overlaps
+    * Make da.unify_chunks public API
+  + DataFrame
+    * Fix dask.dataframe.fillna handling of Scalar object
+  + Documentation
+    * Remove boxes in Spark comparison page
+    * Add latest presentations
+    * Update cloud documentation
+- Update to 2.5.0
+  + Core
+    * Add sentinel no_default to get_dependencies task
+    * Update fsspec version
+    * Remove PY2 checks
+  + DataFrame
+    * Add option to not check meta in dd.from_delayed
+    * Fix test_timeseries_nulls_in_schema failures with pyarrow master
+    * Reduce read_metadata output size in pyarrow/parquet
+    * Test numeric edge case for repartition with npartitions.
+    * Unxfail pandas-datareader test
+    * Add DataFrame.pop implementation
+    * Enable merge/set_index for cudf-based dataframes with cupy ``values``
+    * drop_duplicates support for positional subset parameter
+  + Documentation
+    * Add screencasts to array, bag, dataframe, delayed, futures and setup
+    * Fix delimeter parsing documentation
+    * Update overview image
+- Update to 2.4.0
+  + Array
+    * Adds explicit ``h5py.File`` mode
+    * Provides method to compute unknown array chunks sizes
+    * Ignore runtime warning in Array ``compute_meta``
+    * Add ``_meta`` to ``Array.__dask_postpersist__``
+    * Fixup ``da.asarray`` and ``da.asanyarray`` for datetime64 dtype and xarray objects
+    * Add shape implementation
+    * Add chunktype to array text repr
+    * Array.random.choice: handle array-like non-arrays
+  + Core
+    * Remove deprecated code
+    * Fix ``funcname`` when vectorized func has no ``__name__``
+    * Truncate ``funcname`` to avoid long key names
+    * Add support for ``numpy.vectorize`` in ``funcname``
+    * Fixed HDFS upstream test
+    * Support numbers and None in ``parse_bytes``/``timedelta``
+    * Fix tokenizing of subindexes on memmapped numpy arrays
+    * Upstream fixups
+  + DataFrame
+    * Allow pandas to cast type of statistics
+    * Preserve index dtype after applying ``dd.pivot_table``
+    * Implement explode for Series and DataFrame
+    * ``set_index`` on categorical fails with less categories than partitions
+    * Support output to a single CSV file
+    * Add ``groupby().transform()``
+    * Adding filter kwarg to pyarrow dataset call
+    * Implement and check compression defaults for parquet
+    * Pass sqlalchemy params to delayed objects
+    * Fixing schema handling in arrow-parquet
+    * Add support for DF and Series ``groupby().idxmin/max()``
+    * Add correlation calculation and add test
+  + Documentation
+    * Numpy docstring standard has moved
+    * Reference correct NumPy array name
+    * Minor edits to Array chunk documentation
+    * Add methods to API docs
+    * Add namespacing to configuration example
+    * Add get_task_stream and profile to the diagnostics page
+    * Add best practice to load data with Dask
+    * Update ``institutional-faq.rst``
+    * Add threads and processes note to the best practices
+    * Update cuDF links
+    * Fixed small typo with parentheses placement
+    * Update link in reshape docstring
+- Update to 2.3.0
+  + Array
+    * Raise exception when ``from_array`` is given a dask array
+    * Avoid adjusting gufunc's meta dtype twice
+    * Add ``meta=`` keyword to map_blocks and add test with sparse
+    * Add rollaxis and moveaxis
+    * Always increment old chunk index
+    * Shuffle dask array
+    * Fix ordering when indexing a dask array with a bool dask array
+  + Bag
+    * Add workaround for memory leaks in bag generators
+  + Core
+    * Set strict xfail option
+    * test-upstream
+    * Fixed HDFS CI failure
+    * Error nicely if no file size inferred
+    * A few changes to ``config.set``
+    * Fixup black string normalization
+    * Pin NumPy in windows tests
+    * Ensure parquet tests are skipped if fastparquet and pyarrow not installed
+    * Add fsspec to readthedocs
+    * Bump NumPy and Pandas to 1.17 and 0.25 in CI test
+  + DataFrame
+    * Fix ``DataFrame.query`` docstring (incorrect numexpr API)
+    * Parquet metadata-handling improvements
+    * Improve messaging around sorted parquet columns for index
+    * Add ``rearrange_by_divisions`` and ``set_index`` support for cudf
+    * Fix ``groupby.std()`` with integer colum names
+    * Add ``Series.__iter__``
+    * Generalize ``hash_pandas_object`` to work for non-pandas backends
+    * Add rolling cov
+    * Add columns argument in drop function
+  + Documentation
+    * Update institutional FAQ doc
+    * Add draft of institutional FAQ
+    * Make boxes for dask-spark page
+    * Add motivation for shuffle docs
+    * Fix links and API entries for best-practices
+    * Remove "bytes" (internal data ingestion) doc page
+    * Redirect from our local distributed page to distributed.dask.org
+    * Cleanup API page
+    * Remove excess endlines from install docs
+    * Remove item list in phases of computation doc
+    * Remove custom graphs from the TOC sidebar
+    * Remove experimental status of custom collections
+    * Adds table of contents to Why Dask?
+    * Moves bag overview to top-level bag page
+    * Remove use-cases in favor of stories.dask.org
+    * Removes redundant TOC information in index.rst
+    * Elevate dashboard in distributed diagnostics documentation
+    * Updates "add" layer in HLG docs example
+    * Update GUFunc documentation
+- Update to 2.2.0
+  + Array
+    * Use da.from_array(..., asarray=False) if input follows NEP-18
+    * Add missing attributes to from_array documentation
+    * Fix meta computation for some reduction functions
+    * Raise informative error in to_zarr if unknown chunks
+    * Remove invalid pad tests
+    * Ignore NumPy warnings in compute_meta
+    * Fix kurtosis calc for single dimension input array
+    * Support Numpy 1.17 in tests
+  + Bag
+    * Supply pool to bag test to resolve intermittent failure
+  + Core
+    * Base dask on fsspec
+    * Various upstream compatibility fixes
+    * Make distributed tests optional again.
+    * Fix HDFS in dask
+    * Ignore some more invalid value warnings.
+  + DataFrame
+    * Fix pd.MultiIndex size estimate
+    * Generalizing has_known_categories
+    * Refactor Parquet engine
+    * Add divide method to series and dataframe
+    * fix flaky partd test
+    * Adjust is_dataframe_like to adjust for value_counts change
+    * Generalize rolling windows to support non-Pandas dataframes
+    * Avoid unnecessary aggregation in pivot_table
+    * Add column names to apply_and_enforce error message
+    * Add schema keyword argument to to_parquet
+    * Remove recursion error in accessors
+    * Allow fastparquet to handle gather_statistics=False for file lists
+  + Documentation
+    * Adds NumFOCUS badge to the README
+    * Update developer docs
+    * Document DataFrame.set_index computataion behavior
+    * Use pip install . instead of calling setup.py
+    * Close user survey
+    * Fix Google Calendar meeting link
+    * Add docker image customization example
+    * Update remote-data-services after fsspec
+    * Fix typo in spark.rstZ
+    * Update setup/python docs for async/await API
+    * Update Local Storage HPC documentation
+
+-------------------------------------------------------------------
+Tue Jul 23 00:23:55 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 2.1.0
+  + Array
+    * Add ``recompute=`` keyword to ``svd_compressed`` for lower-memory use
+    * Change ``__array_function__`` implementation for backwards compatibility
+    * Added ``dtype`` and ``shape`` kwargs to ``apply_along_axis``
+    * Fix reduction with empty tuple axis
+    * Drop size 0 arrays in ``stack``
+  + Core
+    * Removes index keyword from pandas ``to_parquet`` call
+    * Fixes upstream dev CI build installation
+    * Ensure scalar arrays are not rendered to SVG
+    * Environment creation overhaul
+    * s3fs, moto compatibility
+    * pytest 5.0 compat
+  + DataFrame
+    * Fix ``compute_meta`` recursion in blockwise
+    * Remove hard dependency on pandas in ``get_dummies``
+    * Check dtypes unchanged when using ``DataFrame.assign``
+    * Fix cumulative functions on tables with more than 1 partition
+    * Handle non-divisible sizes in repartition
+    * Handles timestamp and ``preserve_index`` changes in pyarrow
+    * Fix undefined ``meta`` for ``str.split(expand=False)``
+    * Removed checks used for debugging ``merge_asof``
+    * Don't use type when getting accessor in dataframes
+    * Add ``melt`` as a method of Dask DataFrame
+    * Adds path-like support to ``to_hdf``
+  + Documentation
+    * Point to latest K8s setup article in JupyterHub docs
+    * Changes vizualize to visualize
+    * Fix ``from_sequence`` typo in delayed best practices
+    * Add user survey link to docs
+    * Fixes typo in optimization docs
+    * Update community meeting information
+- Update to 2.0.0
+  + Array
+    * Support automatic chunking in da.indices
+    * Err if there are no arrays to stack
+    * Asymmetrical Array Overlap
+    * Dispatch concatenate where possible within dask array
+    * Fix tokenization of memmapped numpy arrays on different part of same file
+    * Preserve NumPy condition in da.asarray to preserve output shape
+    * Expand foo_like_safe usage
+    * Defer order/casting einsum parameters to NumPy implementation
+    * Remove numpy warning in moment calculation
+    * Fix meta_from_array to support Xarray test suite
+    * Cache chunk boundaries for integer slicing
+    * Drop size 0 arrays in concatenate
+    * Raise ValueError if concatenate is given no arrays
+    * Promote types in `concatenate` using `_meta`
+    * Add chunk type to html repr in Dask array
+    * Add Dask Array._meta attribute
+      >  Fix _meta slicing of flexible types
+      >  Minor meta construction cleanup in concatenate
+      >  Further relax Array meta checks for Xarray
+      >  Support meta= keyword in da.from_delayed
+      >  Concatenate meta along axis
+      >  Use meta in stack
+      >  Move blockwise_meta to more general compute_meta function
+    * Alias .partitions to .blocks attribute of dask arrays
+    * Drop outdated `numpy_compat` functions
+    * Allow da.eye to support arbitrary chunking sizes with chunks='auto' 
+    * Fix CI warnings in dask.array tests
+    * Make map_blocks work with drop_axis + block_info
+    * Add SVG image and table in Array._repr_html_
+    * ufunc: avoid __array_wrap__ in favor of __array_function__
+    * Ensure trivial padding returns the original array
+    * Test ``da.block`` with 0-size arrays
+  + Core
+    * **Drop Python 2.7**
+    * Quiet dependency installs in CI
+    * Raise on warnings in tests
+    * Add a diagnostics extra to setup.py (includes bokeh)
+    * Add newline delimter keyword to OpenFile
+    * Overload HighLevelGraphs values method
+    * Add __await__ method to Dask collections
+    * Also ignore AttributeErrors which may occur if snappy (not python-snappy) is installed
+    * Canonicalize key names in config.rename
+    * Bump minimum partd to 0.3.10
+    * Catch async def SyntaxError
+    * catch IOError in ensure_file
+    * Cleanup CI warnings
+    * Move distributed's parse and format functions to dask.utils
+    * Apply black formatting
+    * Package license file in wheels
+  + DataFrame
+    * Add an optional partition_size parameter to repartition
+    * merge_asof and prefix_reduction
+    * Allow dataframes to be indexed by dask arrays
+    * Avoid deprecated message parameter in pytest.raises
+    * Update test_to_records to test with lengths argument(:pr:`4515`) `asmith26`_
+    * Remove pandas pinning in Dataframe accessors
+    * Fix correlation of series with same names
+    * Map Dask Series to Dask Series
+    * Warn in dd.merge on dtype warning
+    * Add groupby Covariance/Correlation
+    * keep index name with to_datetime
+    * Add Parallel variance computation for dataframes
+    * Add divmod implementation to arrays and dataframes
+    * Add documentation for dataframe reshape methods
+    * Avoid use of pandas.compat
+    * Added accessor registration for Series, DataFrame, and Index
+    * Add read_function keyword to read_json
+    * Provide full type name in check_meta
+    * Correctly estimate bytes per row in read_sql_table
+    * Adding support of non-numeric data to describe()
+    * Scalars for extension dtypes.
+    * Call head before compute in dd.from_delayed
+    * Add support for rolling operations with larger window that partition size in DataFrames with Time-based index
+    * Update groupby-apply doc with warning
+    * Change groupby-ness tests in `_maybe_slice`
+    * Add master best practices document
+    * Add document for how Dask works with GPUs
+    * Add cli API docs
+    * Ensure concat output has coherent dtypes
+    * Fixes pandas_datareader dependencies installation
+    * Accept pathlib.Path as pattern in read_hdf
+  + Documentation
+    * Move CLI API docs to relavant pages
+    * Add to_datetime function to dataframe API docs `Matthew Rocklin`_
+    * Add documentation entry for dask.array.ma.average
+    * Add bag.read_avro to bag API docs
+    * Fix typo
+    * Docs: Drop support for Python 2.7
+    * Remove requirement to modify changelog
+    * Add documentation about meta column order
+    * Add documentation note in DataFrame.shift
+    * Docs: Fix typo
+    * Put do/don't into boxes for delayed best practice docs
+    * Doc fixups
+    * Add quansight to paid support doc section
+    * Add document for custom startup
+    * Allow `utils.derive_from` to accept functions, apply across array
+    * Add "Avoid Large Partitions" section to best practices
+    * Update URL for joblib to new website hosting their doc (:pr:`4816`) `Christian Hudon`_
+
+-------------------------------------------------------------------
 Tue May 21 11:48:23 UTC 2019 - pgajdos@suse.com
 
 - version update to 1.2.2
