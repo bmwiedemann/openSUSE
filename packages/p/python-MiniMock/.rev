@@ -151,4 +151,12 @@
 </comment>
     <requestid>659277</requestid>
   </revision>
+  <revision rev="19" vrev="11">
+    <srcmd5>6d6d7850bc0be2fa5485138196be8ad3</srcmd5>
+    <version>1.2.8</version>
+    <time>1573647273</time>
+    <user>dimstar_suse</user>
+    <comment>- Run through spec-cleaner</comment>
+    <requestid>746308</requestid>
+  </revision>
 </revisionlist>

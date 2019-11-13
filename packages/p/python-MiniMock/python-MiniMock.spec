@@ -1,7 +1,7 @@
 #
 # spec file for package python-MiniMock
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,8 +23,7 @@ Version:        1.2.8
 Release:        0
 Summary:        A mock library for Python
 License:        MIT
-Group:          Development/Languages/Python
-URL:            http://pypi.python.org/pypi/MiniMock
+URL:            https://pypi.python.org/pypi/MiniMock
 Source:         https://files.pythonhosted.org/packages/source/M/MiniMock/MiniMock-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
@@ -58,8 +57,7 @@ python3 -O -m compileall -d %{python3_sitelib} %{buildroot}%{python3_sitelib}/
 %python_expand $python -B %{buildroot}%{$python_sitelib}/minimock.py
 
 %files %{python_files}
-%defattr(-,root,root,-)
-%doc docs/license.txt
+%license docs/license.txt
 %pycache_only %{python_sitelib}/__pycache__/*
 %{python_sitelib}/minimock.py*
 %{python_sitelib}/MiniMock-%{version}-py%{python_version}.egg-info
