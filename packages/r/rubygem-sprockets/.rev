@@ -314,4 +314,12 @@
     <comment>fix changelog</comment>
     <requestid>618298</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>4ba840a06f3463e17e4dad8ab366e467</srcmd5>
+    <version>4.0.0</version>
+    <time>1573647945</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>747719</requestid>
+  </revision>
 </revisionlist>
