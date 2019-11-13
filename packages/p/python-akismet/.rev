@@ -7,4 +7,12 @@
     <comment>Needed by weblate</comment>
     <requestid>627030</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6c87a70cb85f092af65703c38bcb68f4</srcmd5>
+    <version>1.0.1</version>
+    <time>1573647283</time>
+    <user>dimstar_suse</user>
+    <comment>- Run through spec-cleaner</comment>
+    <requestid>746353</requestid>
+  </revision>
 </revisionlist>
