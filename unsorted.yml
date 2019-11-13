@@ -2648,11 +2648,15 @@ unsorted:
   - ext4magic 
   - extra-cmake-modules 
   - extra-cmake-modules-doc 
+  - extra166y 
+  - extra166y-javadoc 
   - extract-appdata-icons 
   - extreme-tuxracer 
   - extreme-tuxracer-data 
   - extundelete 
   - ez-ipupdate 
+  - ezmorph 
+  - ezmorph-javadoc 
   - ezstream 
   - f2c 
   - f2c-devel 
@@ -4282,6 +4286,8 @@ unsorted:
   - glusterfs-devel 
   - glyr-devel 
   - glyrc 
+  - gmavenplus-plugin 
+  - gmavenplus-plugin-javadoc 
   - gmic 
   - gmic-zart 
   - gmime-devel 
@@ -5563,6 +5569,10 @@ unsorted:
   - jackson-core-javadoc 
   - jackson-databind 
   - jackson-databind-javadoc 
+  - jackson-dataformat-cbor 
+  - jackson-dataformat-smile 
+  - jackson-dataformats-binary 
+  - jackson-dataformats-binary-javadoc 
   - jackson-javadoc 
   - jackson-parent 
   - jacktrip 
@@ -5589,6 +5599,8 @@ unsorted:
   - jameica-devel 
   - jameica-javadoc 
   - jamin 
+  - janino 
+  - janino-javadoc 
   - jansi 
   - jansi-javadoc 
   - jansi-native 
@@ -5596,6 +5608,8 @@ unsorted:
   - jarjar 
   - jarjar-javadoc 
   - jasper 
+  - jatl 
+  - jatl-javadoc 
   - java-11-openjdk-accessibility 
   - java-11-openjdk-demo 
   - java-11-openjdk-devel 
@@ -5664,6 +5678,8 @@ unsorted:
   - jbigkit 
   - jboss-interceptors-1.2-api 
   - jboss-interceptors-1.2-api-javadoc 
+  - jboss-modules 
+  - jboss-modules-javadoc 
   - jboss-parent 
   - jboss-websocket-1.0-api 
   - jboss-websocket-1.0-api-javadoc 
@@ -5678,6 +5694,8 @@ unsorted:
   - jcommon-javadoc 
   - jconvolver 
   - jconvolver-examples 
+  - jcsp 
+  - jcsp-javadoc 
   - jctools 
   - jctools-channels 
   - jctools-experimental 
@@ -13077,6 +13095,8 @@ unsorted:
   - minitube-lang 
   - miniupnpc 
   - minizip-devel 
+  - minlog 
+  - minlog-javadoc 
   - minuet 
   - minuet-devel 
   - minuet-lang 
@@ -13397,6 +13417,8 @@ unsorted:
   - multimon-ng 
   - multipath-tools-devel 
   - multitail 
+  - multiverse 
+  - multiverse-javadoc 
   - multus 
   - multus-k8s-yaml 
   - mumble 
@@ -13682,6 +13704,8 @@ unsorted:
   - nagios-theme-switcher 
   - nagios-www-dch 
   - nagstamon 
+  - nailgun 
+  - nailgun-javadoc 
   - namdhinggo-fonts 
   - nano-icinga2 
   - nano-plugin-conky 
@@ -13700,6 +13724,8 @@ unsorted:
   - nasc 
   - nast 
   - native-maven-plugin 
+  - native-platform 
+  - native-platform-javadoc 
   - nautilus-deja-dup 
   - nautilus-devel 
   - nautilus-eiciel 
@@ -13739,6 +13765,9 @@ unsorted:
   - neko 
   - neko-devel 
   - neko-mysql 
+  - nekohtml 
+  - nekohtml-demo 
+  - nekohtml-javadoc 
   - nemesis 
   - nemiver-devel 
   - nemo 
@@ -14228,6 +14257,7 @@ unsorted:
   - oaml-devel 
   - oath-toolkit 
   - oath-toolkit-xml: [i586] 
+  - oauth-signpost 
   - obantoo 
   - obby 
   - obby-devel 
@@ -14878,6 +14908,8 @@ unsorted:
   - os-autoinst-devel 
   - os-autoinst-distri-opensuse-deps 
   - os-autoinst-openvswitch 
+  - os-maven-plugin 
+  - os-maven-plugin-javadoc 
   - os-service-types-doc 
   - osc-plugin-collab 
   - osc-plugin-cycle: [x86_64] 
@@ -16812,6 +16844,9 @@ unsorted:
   - proftpd-radius 
   - proftpd-sqlite 
   - progress 
+  - proguard 
+  - proguard-gui 
+  - proguard-manual 
   - proj 
   - proj-devel 
   - projectM 
@@ -17945,14 +17980,6 @@ unsorted:
   - python2-daemonize 
   - python2-daiquiri 
   - python2-dash 
-  - python2-dask: [x86_64] 
-  - python2-dask-all: [x86_64] 
-  - python2-dask-array: [x86_64] 
-  - python2-dask-bag: [x86_64] 
-  - python2-dask-dataframe: [x86_64] 
-  - python2-dask-distributed: [x86_64] 
-  - python2-dask-dot: [x86_64] 
-  - python2-dask-multiprocessing: [x86_64] 
   - python2-datadiff 
   - python2-dateparser 
   - python2-datrie 
@@ -19291,7 +19318,7 @@ unsorted:
   - python2-sphinxcontrib-programoutput 
   - python2-sphinxcontrib-seqdiag 
   - python2-sphinxcontrib-websupport 
-  - python2-spidev: [i586] 
+  - python2-spidev 
   - python2-spotipy 
   - python2-sqlalchemy-migrate 
   - python2-sqlitedict 
@@ -21825,7 +21852,7 @@ unsorted:
   - python3-sphinxcontrib-svg2pdfconverter 
   - python3-sphinxcontrib-trio 
   - python3-sphinxcontrib-websupport 
-  - python3-spidev: [i586] 
+  - python3-spidev 
   - python3-splinter 
   - python3-spotipy 
   - python3-spyder-kernels 
@@ -22397,6 +22424,8 @@ unsorted:
   - redsea 
   - redshift 
   - redshift-gtk 
+  - reflectasm 
+  - reflectasm-javadoc 
   - regexp 
   - reiser4progs 
   - reiser4progs-devel 
@@ -22698,10 +22727,10 @@ unsorted:
   - ruby2.6-rubygem-cheetah-doc 
   - ruby2.6-rubygem-childprocess-doc 
   - ruby2.6-rubygem-childprocess-doc-0_6 
-  - ruby2.6-rubygem-childprocess-doc-2.0: [i586] 
+  - ruby2.6-rubygem-childprocess-doc-2.0 
   - ruby2.6-rubygem-childprocess-testsuite 
   - ruby2.6-rubygem-childprocess-testsuite-0_6 
-  - ruby2.6-rubygem-childprocess-testsuite-2.0: [i586] 
+  - ruby2.6-rubygem-childprocess-testsuite-2.0 
   - ruby2.6-rubygem-ci_reporter-doc 
   - ruby2.6-rubygem-ci_reporter-testsuite 
   - ruby2.6-rubygem-cleanroom-doc 
@@ -22729,7 +22758,6 @@ unsorted:
   - ruby2.6-rubygem-crack-doc 
   - ruby2.6-rubygem-crack-testsuite 
   - ruby2.6-rubygem-crass-doc 
-  - ruby2.6-rubygem-crass-testsuite: [x86_64] 
   - ruby2.6-rubygem-cri-doc 
   - ruby2.6-rubygem-cri-testsuite 
   - ruby2.6-rubygem-cssmin-doc 
@@ -23109,7 +23137,7 @@ unsorted:
   - ruby2.6-rubygem-rake-compiler-doc 
   - ruby2.6-rubygem-rake-compiler-testsuite 
   - ruby2.6-rubygem-rake-doc-11_3 
-  - ruby2.6-rubygem-rake-doc-12.3: [i586] 
+  - ruby2.6-rubygem-rake-doc-12.3 
   - ruby2.6-rubygem-rake-doc-12_0 
   - ruby2.6-rubygem-rb-fsevent-doc 
   - ruby2.6-rubygem-rb-inotify-doc 
@@ -23171,7 +23199,6 @@ unsorted:
   - ruby2.6-rubygem-rubyntlm-doc 
   - ruby2.6-rubygem-rubyntlm-testsuite 
   - ruby2.6-rubygem-rubyzip-doc 
-  - ruby2.6-rubygem-rubyzip-testsuite: [x86_64] 
   - ruby2.6-rubygem-safe_yaml-doc 
   - ruby2.6-rubygem-safe_yaml-testsuite 
   - ruby2.6-rubygem-sass-doc 
@@ -23211,7 +23238,7 @@ unsorted:
   - ruby2.6-rubygem-sprockets-doc 
   - ruby2.6-rubygem-sprockets-doc-2_1 
   - ruby2.6-rubygem-sprockets-doc-2_2 
-  - ruby2.6-rubygem-sprockets-doc-3.7: [i586] 
+  - ruby2.6-rubygem-sprockets-doc-3.7 
   - ruby2.6-rubygem-sprockets-helpers-doc 
   - ruby2.6-rubygem-sprockets-helpers-testsuite 
   - ruby2.6-rubygem-sprockets-rails-doc 
@@ -23244,7 +23271,6 @@ unsorted:
   - ruby2.6-rubygem-tilt-doc 
   - ruby2.6-rubygem-tilt-doc-1_1 
   - ruby2.6-rubygem-tilt-doc-1_4 
-  - ruby2.6-rubygem-tilt-testsuite: [x86_64] 
   - ruby2.6-rubygem-tilt-testsuite-1_1 
   - ruby2.6-rubygem-tilt-testsuite-1_4 
   - ruby2.6-rubygem-timers-doc 
@@ -23300,9 +23326,9 @@ unsorted:
   - ruby2.6-rubygem-websocket-extensions-doc 
   - ruby2.6-rubygem-websocket-testsuite 
   - ruby2.6-rubygem-winrm-doc-2_1 
-  - ruby2.6-rubygem-winrm-elevated: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - ruby2.6-rubygem-winrm-elevated 
   - ruby2.6-rubygem-winrm-elevated-doc 
-  - ruby2.6-rubygem-winrm-fs: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - ruby2.6-rubygem-winrm-fs 
   - ruby2.6-rubygem-winrm-fs-doc 
   - ruby2.6-rubygem-xdg-doc 
   - ruby2.6-rubygem-xml-simple-doc 
@@ -23678,6 +23704,9 @@ unsorted:
   - signond-docs 
   - signond-libs-32bit: [x86_64] 
   - signond-libs-devel 
+  - signpost-commonshttp4 
+  - signpost-core 
+  - signpost-core-javadoc 
   - sigrok-cli 
   - sigrok-firmware-fx2lafw 
   - sil-abyssinica-fonts 
@@ -24497,6 +24526,8 @@ unsorted:
   - tesseract-ocr-traineddata-welsh 
   - tesseract-ocr-traineddata-yiddish 
   - tesseract-server 
+  - test-interface 
+  - test-interface-javadoc 
   - testdisk 
   - testng 
   - testng-javadoc 

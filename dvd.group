@@ -4421,6 +4421,7 @@
     <package name="ruby2.6-rubygem-cheetah" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ruby2.6-rubygem-childprocess" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-childprocess-0_6" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.6-rubygem-childprocess-2.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-ci_reporter" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-cleanroom" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-coderay" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4673,6 +4674,7 @@
     <package name="ruby2.6-rubygem-rainbow" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-raindrops" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-rake-11_3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.6-rubygem-rake-12.3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-rake-12_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-rake-compiler" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-rb-fsevent" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4742,6 +4744,7 @@
     <package name="ruby2.6-rubygem-sprockets" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-sprockets-2_1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-sprockets-2_2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.6-rubygem-sprockets-3.7" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-sprockets-helpers" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-sprockets-rails" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-sqlite3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5638,9 +5641,6 @@
     <package name="nodejs10-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="npm10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <!-- patterns-media-rest_dvd uninstallable: nothing provides pattern() = apparmor_opt needed by patterns-media-rest_dvd-20170319-23.1.i586-->
-    <package name="ruby2.6-rubygem-childprocess-2.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-rake-12.3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-sprockets-3.7" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
   </packagelist>
 </group>
 <group name="dvd.x86_64">
@@ -5879,8 +5879,6 @@
     <package name="python3-virt-bootstrap" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="qemu-block-rbd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="qemu-ovmf-x86_64" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
-    <package name="ruby2.6-rubygem-winrm-elevated" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-winrm-fs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="samba-client-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="samba-libs-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="samba-winbind-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->

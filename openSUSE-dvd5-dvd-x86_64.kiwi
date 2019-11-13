@@ -4701,6 +4701,7 @@
       <repopackage name="ruby2.6-rubygem-cheetah"/>
       <repopackage name="ruby2.6-rubygem-childprocess"/>
       <repopackage name="ruby2.6-rubygem-childprocess-0_6"/>
+      <repopackage name="ruby2.6-rubygem-childprocess-2.0"/>
       <repopackage name="ruby2.6-rubygem-ci_reporter"/>
       <repopackage name="ruby2.6-rubygem-cleanroom"/>
       <repopackage name="ruby2.6-rubygem-coderay"/>
@@ -4953,6 +4954,7 @@
       <repopackage name="ruby2.6-rubygem-rainbow"/>
       <repopackage name="ruby2.6-rubygem-raindrops"/>
       <repopackage name="ruby2.6-rubygem-rake-11_3"/>
+      <repopackage name="ruby2.6-rubygem-rake-12.3"/>
       <repopackage name="ruby2.6-rubygem-rake-12_0"/>
       <repopackage name="ruby2.6-rubygem-rake-compiler"/>
       <repopackage name="ruby2.6-rubygem-rb-fsevent"/>
@@ -5023,6 +5025,7 @@
       <repopackage name="ruby2.6-rubygem-sprockets"/>
       <repopackage name="ruby2.6-rubygem-sprockets-2_1"/>
       <repopackage name="ruby2.6-rubygem-sprockets-2_2"/>
+      <repopackage name="ruby2.6-rubygem-sprockets-3.7"/>
       <repopackage name="ruby2.6-rubygem-sprockets-helpers"/>
       <repopackage name="ruby2.6-rubygem-sprockets-rails"/>
       <repopackage name="ruby2.6-rubygem-sqlite3"/>
@@ -5078,8 +5081,6 @@
       <repopackage name="ruby2.6-rubygem-websocket-driver-0_6"/>
       <repopackage name="ruby2.6-rubygem-websocket-extensions"/>
       <repopackage name="ruby2.6-rubygem-winrm-2_1"/>
-      <repopackage name="ruby2.6-rubygem-winrm-elevated" arch="x86_64"/>
-      <repopackage name="ruby2.6-rubygem-winrm-fs" arch="x86_64"/>
       <repopackage name="ruby2.6-rubygem-xdg"/>
       <repopackage name="ruby2.6-rubygem-xml-simple"/>
       <repopackage name="ruby2.6-rubygem-xmlhash"/>
