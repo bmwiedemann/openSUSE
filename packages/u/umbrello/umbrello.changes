@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Nov  7 23:13:43 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.3.php
+- Changes since 19.08.2:
+  * Cleanup of generated c++ code (kde#413574)
+  * cppwriter: In case of interfaces, do not write a superfluous .cpp file
+  * When creating class methods for an interface through the user interface set abstract and virtual attributes (kde#413519)
+  * Fixes missing initialisation of members m_inline and m_abstract of class UMLOperation
+  * Disable unrelated checkboxes in operation property dialog for interfaces
+  * cppwriter: Add support for writing abstract methods
+
+-------------------------------------------------------------------
 Fri Oct 11 07:43:32 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.2
