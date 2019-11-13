@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Wed Oct 30 16:14:32 UTC 2019 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version bump 0.3.2
+  * Fix issue with file permissions during package installation in
+    /usr/share/salt-formulas (0755, root, salt)
+    (boo#1142306) 
+
+-------------------------------------------------------------------
+Tue Oct 29 16:31:16 UTC 2019 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version bump 0.3.1
+  * Fix 'true' rendering in jinja to convert to json correctly  
+
+-------------------------------------------------------------------
+Fri Oct 25 07:22:15 UTC 2019 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version bump 0.3.0
+  * Add support for multi tenant hanadb_exporter
+
+-------------------------------------------------------------------
+Wed Sep  4 06:55:01 UTC 2019 - Xabier Arbulu Insausti <xarbulu@suse.com>
+
+- Update the pkg.info_available call to avoid repositories refresh as
+  it may cause errors
+
+-------------------------------------------------------------------
+Wed Aug  7 07:46:25 UTC 2019 - Simranpal Singh <simranpal.singh@suse.com>
+
+- Version bump 0.2.9
+  * Fix srHook script usage for cost optimized scenario
+  * Add scenario type options to the form.yml file
+    (boo#1137989)
+
+-------------------------------------------------------------------
+Wed Jul 31 12:26:05 UTC 2019 - Xabier Arbulu Insausti <xarbulu@suse.com>
+
+- Fix errors in the form.yml file to match with the formula names
+- Fix some styling issues
+
+-------------------------------------------------------------------
+Tue Jul 23 11:17:36 UTC 2019 - Xabier Arbulu Insausti <xarbulu@suse.com>
+
+- Version bump 0.2.8
+  * Add support for Power machines
+  * Fix issues with SAP HANA deployment template and the exporter
+
+-------------------------------------------------------------------
+Mon Jul 22 08:26:16 UTC 2019 - Xabier Arbulu Insausti <xarbulu@suse.com>
+
+- Version bump 0.2.7
+  * Fix issue with file permissions during package installation in
+    /usr/share/salt-formulas
+    (boo#1142306)
+
+-------------------------------------------------------------------
 Mon Jul  8 11:49:55 UTC 2019 - Dario Maiocchi <dmaiocchi@suse.com>
 
 - Version bump 0.2.6
@@ -8,9 +63,9 @@ Mon Jul  8 11:49:55 UTC 2019 - Dario Maiocchi <dmaiocchi@suse.com>
 -------------------------------------------------------------------
 Wed Jul  3 07:58:55 UTC 2019 - Xabier Arbulu Insausti <xarbulu@suse.com>
 
--  Version bump 0.2.5
+- Version bump 0.2.5
   * hanadb_exporter executed as a daemon
-  * hanadb_exporter installation suggested 
+  * hanadb_exporter installation suggested
 
 -------------------------------------------------------------------
 Tue Jul  2 11:14:50 UTC 2019 - Diego Vinicius Akechi <dakechi@suse.com>
