@@ -1,0 +1,25 @@
+From b11d31e037120c3ee761276574f408005a78f632 Mon Sep 17 00:00:00 2001
+From: Mikolaj Izdebski <mizdebsk@redhat.com>
+Date: Wed, 15 Jul 2015 18:39:46 +0200
+Subject: [PATCH 2/2] Don't fail on unknown arch
+
+---
+ src/main/java/kr/motd/maven/os/Detector.java | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/main/java/kr/motd/maven/os/Detector.java b/src/main/java/kr/motd/maven/os/Detector.java
+index 9dd6688..37ced72 100644
+--- a/src/main/java/kr/motd/maven/os/Detector.java
++++ b/src/main/java/kr/motd/maven/os/Detector.java
+@@ -46,7 +46,7 @@ public abstract class Detector {
+         setProperty(props, DETECTED_CLASSIFIER, detectedClassifier);
+ 
+         final String failOnUnknownOS = allProps.getProperty("failOnUnknownOS");
+-        if (failOnUnknownOS == null || !failOnUnknownOS.equalsIgnoreCase("false")) {
++        if (failOnUnknownOS != null && failOnUnknownOS.equalsIgnoreCase("true")) {
+             if (UNKNOWN.equals(detectedName)) {
+                 throw new DetectionException("unknown os.name: " + osName);
+             }
+-- 
+2.1.0
+
