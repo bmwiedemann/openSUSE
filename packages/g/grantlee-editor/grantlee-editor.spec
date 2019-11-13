@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           grantlee-editor
-Version:        19.08.2
+Version:        19.08.3
 Release:        0
 Summary:        Messageviewer header theme editor based on Grantlee
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
