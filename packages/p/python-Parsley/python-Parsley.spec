@@ -1,7 +1,7 @@
 #
 # spec file for package python-Parsley
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,8 +24,7 @@ Version:        1.3
 Release:        0
 Summary:        PEG algorithm based parser generator
 License:        MIT
-Group:          Development/Libraries/Python
-URL:            http://github.com/washort/parsley
+URL:            https://github.com/washort/parsley
 Source:         https://pypi.python.org/packages/source/P/%{oname}/%{oname}-%{version}.tar.gz
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module pytest}
@@ -74,8 +73,8 @@ done
 
 %check
 export LANG=en_US.UTF-8
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_version} ometa/test
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_version} terml/test
+%pytest ometa/test
+%pytest terml/test
 
 %files %{python_files}
 %license LICENSE
