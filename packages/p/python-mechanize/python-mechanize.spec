@@ -33,6 +33,9 @@ BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
 BuildRequires:  python
 BuildRequires:  python-rpm-macros
+Requires:       python-Twisted
+Requires:       python-html5lib
+Requires:       python-zope.interface
 BuildArch:      noarch
 %python_subpackages
 

@@ -201,4 +201,12 @@
   * py3 compat - Have the version of simple cookies be 0 rather than None</comment>
     <requestid>730131</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>3b4f30b472a84249f835e623ea92fcbe</srcmd5>
+    <version>0.4.3</version>
+    <time>1573648035</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>747816</requestid>
+  </revision>
 </revisionlist>
