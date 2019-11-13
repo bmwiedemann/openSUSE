@@ -724,4 +724,12 @@
     <comment>KDE Applications 19.08.2</comment>
     <requestid>737792</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>088edcf6df51fcd5ab25377c054485ac</srcmd5>
+    <version>19.08.3</version>
+    <time>1573647661</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.08.3</comment>
+    <requestid>746912</requestid>
+  </revision>
 </revisionlist>
