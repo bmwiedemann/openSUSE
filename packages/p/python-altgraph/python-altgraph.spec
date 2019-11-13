@@ -1,7 +1,7 @@
 #
 # spec file for package python-altgraph
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,14 +22,12 @@ Version:        0.16.1
 Release:        0
 Summary:        Python graph (network) package
 License:        MIT
-Group:          Development/Languages/Python
-Url:            https://bitbucket.org/ronaldoussoren/altgraph/
+URL:            https://bitbucket.org/ronaldoussoren/altgraph/
 Source:         https://files.pythonhosted.org/packages/source/a/altgraph/altgraph-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -39,7 +37,6 @@ graphviz output.
 
 %package     -n %{name}-doc
 Summary:        Documentation for %{name}
-Group:          Development/Languages/Python
 Provides:       %{python_module altgraph-doc = %{version}}
 
 %description -n %{name}-doc
