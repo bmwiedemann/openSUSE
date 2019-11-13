@@ -2521,7 +2521,6 @@ unsorted:
   - enlightenment-theme-dark 
   - enlightenment-theme-openSUSE 
   - enlightenment-theme-openSUSE-ice 
-  - enlightenment-theme-openSUSE-oliveleaf 
   - enlightenment-theme-upstream 
   - enlightenment-x-dark-icon-theme 
   - enscript 
@@ -14301,11 +14300,7 @@ unsorted:
   - ocaml-gen 
   - ocaml-gen-devel 
   - ocaml-gettext 
-  - ocaml-gettext-camomile 
-  - ocaml-gettext-camomile-devel 
   - ocaml-gettext-devel 
-  - ocaml-gettext-stub 
-  - ocaml-gettext-stub-devel 
   - ocaml-hivex 
   - ocaml-hivex-devel 
   - ocaml-jsonm 
@@ -17950,14 +17945,14 @@ unsorted:
   - python2-daemonize 
   - python2-daiquiri 
   - python2-dash 
-  - python2-dask 
-  - python2-dask-all 
-  - python2-dask-array 
-  - python2-dask-bag 
-  - python2-dask-dataframe 
-  - python2-dask-distributed 
-  - python2-dask-dot 
-  - python2-dask-multiprocessing 
+  - python2-dask: [x86_64] 
+  - python2-dask-all: [x86_64] 
+  - python2-dask-array: [x86_64] 
+  - python2-dask-bag: [x86_64] 
+  - python2-dask-dataframe: [x86_64] 
+  - python2-dask-distributed: [x86_64] 
+  - python2-dask-dot: [x86_64] 
+  - python2-dask-multiprocessing: [x86_64] 
   - python2-datadiff 
   - python2-dateparser 
   - python2-datrie 
@@ -19296,6 +19291,7 @@ unsorted:
   - python2-sphinxcontrib-programoutput 
   - python2-sphinxcontrib-seqdiag 
   - python2-sphinxcontrib-websupport 
+  - python2-spidev: [i586] 
   - python2-spotipy 
   - python2-sqlalchemy-migrate 
   - python2-sqlitedict 
@@ -21829,6 +21825,7 @@ unsorted:
   - python3-sphinxcontrib-svg2pdfconverter 
   - python3-sphinxcontrib-trio 
   - python3-sphinxcontrib-websupport 
+  - python3-spidev: [i586] 
   - python3-splinter 
   - python3-spotipy 
   - python3-spyder-kernels 
@@ -22701,8 +22698,10 @@ unsorted:
   - ruby2.6-rubygem-cheetah-doc 
   - ruby2.6-rubygem-childprocess-doc 
   - ruby2.6-rubygem-childprocess-doc-0_6 
+  - ruby2.6-rubygem-childprocess-doc-2.0: [i586] 
   - ruby2.6-rubygem-childprocess-testsuite 
   - ruby2.6-rubygem-childprocess-testsuite-0_6 
+  - ruby2.6-rubygem-childprocess-testsuite-2.0: [i586] 
   - ruby2.6-rubygem-ci_reporter-doc 
   - ruby2.6-rubygem-ci_reporter-testsuite 
   - ruby2.6-rubygem-cleanroom-doc 
@@ -22730,7 +22729,7 @@ unsorted:
   - ruby2.6-rubygem-crack-doc 
   - ruby2.6-rubygem-crack-testsuite 
   - ruby2.6-rubygem-crass-doc 
-  - ruby2.6-rubygem-crass-testsuite 
+  - ruby2.6-rubygem-crass-testsuite: [x86_64] 
   - ruby2.6-rubygem-cri-doc 
   - ruby2.6-rubygem-cri-testsuite 
   - ruby2.6-rubygem-cssmin-doc 
@@ -23110,6 +23109,7 @@ unsorted:
   - ruby2.6-rubygem-rake-compiler-doc 
   - ruby2.6-rubygem-rake-compiler-testsuite 
   - ruby2.6-rubygem-rake-doc-11_3 
+  - ruby2.6-rubygem-rake-doc-12.3: [i586] 
   - ruby2.6-rubygem-rake-doc-12_0 
   - ruby2.6-rubygem-rb-fsevent-doc 
   - ruby2.6-rubygem-rb-inotify-doc 
@@ -23171,7 +23171,7 @@ unsorted:
   - ruby2.6-rubygem-rubyntlm-doc 
   - ruby2.6-rubygem-rubyntlm-testsuite 
   - ruby2.6-rubygem-rubyzip-doc 
-  - ruby2.6-rubygem-rubyzip-testsuite 
+  - ruby2.6-rubygem-rubyzip-testsuite: [x86_64] 
   - ruby2.6-rubygem-safe_yaml-doc 
   - ruby2.6-rubygem-safe_yaml-testsuite 
   - ruby2.6-rubygem-sass-doc 
@@ -23211,6 +23211,7 @@ unsorted:
   - ruby2.6-rubygem-sprockets-doc 
   - ruby2.6-rubygem-sprockets-doc-2_1 
   - ruby2.6-rubygem-sprockets-doc-2_2 
+  - ruby2.6-rubygem-sprockets-doc-3.7: [i586] 
   - ruby2.6-rubygem-sprockets-helpers-doc 
   - ruby2.6-rubygem-sprockets-helpers-testsuite 
   - ruby2.6-rubygem-sprockets-rails-doc 
@@ -23243,7 +23244,7 @@ unsorted:
   - ruby2.6-rubygem-tilt-doc 
   - ruby2.6-rubygem-tilt-doc-1_1 
   - ruby2.6-rubygem-tilt-doc-1_4 
-  - ruby2.6-rubygem-tilt-testsuite 
+  - ruby2.6-rubygem-tilt-testsuite: [x86_64] 
   - ruby2.6-rubygem-tilt-testsuite-1_1 
   - ruby2.6-rubygem-tilt-testsuite-1_4 
   - ruby2.6-rubygem-timers-doc 
@@ -23299,7 +23300,9 @@ unsorted:
   - ruby2.6-rubygem-websocket-extensions-doc 
   - ruby2.6-rubygem-websocket-testsuite 
   - ruby2.6-rubygem-winrm-doc-2_1 
+  - ruby2.6-rubygem-winrm-elevated: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - ruby2.6-rubygem-winrm-elevated-doc 
+  - ruby2.6-rubygem-winrm-fs: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - ruby2.6-rubygem-winrm-fs-doc 
   - ruby2.6-rubygem-xdg-doc 
   - ruby2.6-rubygem-xml-simple-doc 
@@ -33426,7 +33429,6 @@ unsorted:
   - zsh-htmldoc 
   - zstd 
   - zsync 
-  - zsync-devel 
   - zutils 
   - zvbi 
   - zvbi-devel 
