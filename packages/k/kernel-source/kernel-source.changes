@@ -1,4 +1,266 @@
 -------------------------------------------------------------------
+Mon Nov 11 12:47:33 CET 2019 - tiwai@suse.de
+
+- usb: dwc3: pci: prevent memory leak in dwc3_pci_probe
+  (CVE-2019-18813,bsc#1156278).
+- ASoC: SOF: Fix memory leak in sof_dfsentry_write
+  (CVE-2019-18812,bsc#1156277).
+- commit 8a126f1
+
+-------------------------------------------------------------------
+Mon Nov 11 11:25:37 CET 2019 - jslaby@suse.cz
+
+- Refresh
+  patches.suse/stacktrace-don-t-skip-first-entry-on-noncurrent-task.patch.
+  Update upstream status.
+- commit baac78a
+
+-------------------------------------------------------------------
+Sun Nov 10 18:24:05 CET 2019 - jslaby@suse.cz
+
+- Linux 5.3.10 (bnc#1151927).
+- usb: gadget: udc: core: Fix segfault if udc_bind_to_driver()
+  for pending driver fails (bnc#1151927).
+- arm64: dts: ti: k3-am65-main: Fix gic-its node unit-address
+  (bnc#1151927).
+- ASoC: pcm3168a: The codec does not support S32_LE (bnc#1151927).
+- selftests/powerpc: Fix compile error on tlbie_test due to
+  newer gcc (bnc#1151927).
+- selftests/powerpc: Add test case for tlbie vs mtpidr ordering
+  issue (bnc#1151927).
+- CIFS: Fix retry mid list corruption on reconnects (bnc#1151927).
+- platform/x86: pmc_atom: Add Siemens SIMATIC IPC227E to
+  critclk_systems DMI table (bnc#1151927).
+- net/flow_dissector: switch to siphash (bnc#1151927).
+- net: bcmgenet: reset 40nm EPHY on energy detect (bnc#1151927).
+- net: phy: bcm7xxx: define soft_reset for 40nm EPHY
+  (bnc#1151927).
+- net: netem: correct the parent's backlog when corrupted packet
+  was dropped (bnc#1151927).
+- r8152: add device id for Lenovo ThinkPad USB-C Dock Gen 2
+  (bnc#1151927).
+- net: usb: lan78xx: Connect PHY before registering MAC
+  (bnc#1151927).
+- net: reorder 'struct net' fields to avoid false sharing
+  (bnc#1151927).
+- net: netem: fix error path for corrupted GSO frames
+  (bnc#1151927).
+- net: hns3: fix mis-counting IRQ vector numbers issue
+  (bnc#1151927).
+- net: ensure correct skb->tstamp in various fragmenters
+  (bnc#1151927).
+- net: dsa: fix switch tree list (bnc#1151927).
+- net: dsa: b53: Do not clear existing mirrored port mask
+  (bnc#1151927).
+- net: bcmgenet: don't set phydev->link from MAC (bnc#1151927).
+- ipv4: fix IPSKB_FRAG_PMTU handling with fragmentation
+  (bnc#1151927).
+- net/mlx5e: Fix handling of compressed CQEs in case of low NAPI
+  budget (bnc#1151927).
+- net/mlx5e: Fix ethtool self test: link speed (bnc#1151927).
+- r8169: fix wrong PHY ID issue with RTL8168dp (bnc#1151927).
+- mlxsw: core: Unpublish devlink parameters during reload
+  (bnc#1151927).
+- net/mlx5: Fix rtable reference leak (bnc#1151927).
+- net/smc: fix refcounting for non-blocking connect()
+  (bnc#1151927).
+- net/mlx5: Fix flow counter list auto bits struct (bnc#1151927).
+- net/mlx5e: Initialize on stack link modes bitmap (bnc#1151927).
+- net/mlx5e: Remove incorrect match criteria assignment line
+  (bnc#1151927).
+- net/mlx5e: Determine source port properly for vlan push action
+  (bnc#1151927).
+- rxrpc: Fix handling of last subpacket of jumbo packet
+  (bnc#1151927).
+- net: phylink: Fix phylink_dbg() macro (bnc#1151927).
+- keys: Fix memory leak in copy_net_ns (bnc#1151927).
+- net/smc: keep vlan_id for SMC-R in smc_listen_work()
+  (bnc#1151927).
+- net/smc: fix closing of fallback SMC sockets (bnc#1151927).
+- selftests: fib_tests: add more tests for metric update
+  (bnc#1151927).
+- ipv4: fix route update on metric change (bnc#1151927).
+- net: add READ_ONCE() annotation in __skb_wait_for_more_packets()
+  (bnc#1151927).
+- net: use skb_queue_empty_lockless() in busy poll contexts
+  (bnc#1151927).
+- net: use skb_queue_empty_lockless() in poll() handlers
+  (bnc#1151927).
+- udp: use skb_queue_empty_lockless() (bnc#1151927).
+- net: add skb_queue_empty_lockless() (bnc#1151927).
+- vxlan: check tun_info options_len properly (bnc#1151927).
+- udp: fix data-race in udp_set_dev_scratch() (bnc#1151927).
+- selftests: net: reuseport_dualstack: fix uninitalized parameter
+  (bnc#1151927).
+- net: Zeroing the structure ethtool_wolinfo in ethtool_get_wol()
+  (bnc#1151927).
+- net: usb: lan78xx: Disable interrupts before calling
+  generic_handle_irq() (bnc#1151927).
+- net: rtnetlink: fix a typo fbd -> fdb (bnc#1151927).
+- netns: fix GFP flags in rtnl_net_notifyid() (bnc#1151927).
+- net/mlx4_core: Dynamically set guaranteed amount of counters
+  per VF (bnc#1151927).
+- net: hisilicon: Fix ping latency when deal with high throughput
+  (bnc#1151927).
+- net: fix sk_page_frag() recursion from memory reclaim
+  (bnc#1151927).
+- net: ethernet: ftgmac100: Fix DMA coherency issue with SW
+  checksum (bnc#1151927).
+- net: dsa: bcm_sf2: Fix IMP setup for port different than 8
+  (bnc#1151927).
+- net: annotate lockless accesses to sk->sk_napi_id (bnc#1151927).
+- net: annotate accesses to sk->sk_incoming_cpu (bnc#1151927).
+- inet: stop leaking jiffies on the wire (bnc#1151927).
+- erspan: fix the tun_info options_len check for erspan
+  (bnc#1151927).
+- dccp: do not leak jiffies on the wire (bnc#1151927).
+- cxgb4: request the TX CIDX updates to status page (bnc#1151927).
+- cxgb4: fix panic when attaching to ULD fail (bnc#1151927).
+- nbd: handle racing with error'ed out commands (bnc#1151927).
+- nbd: protect cmd->status with cmd->lock (bnc#1151927).
+- irqchip/sifive-plic: Skip contexts except supervisor in
+  plic_init() (bnc#1151927).
+- cifs: Fix cifsInodeInfo lock_sem deadlock when reconnect occurs
+  (bnc#1151927).
+- i2c: stm32f7: remove warning when compiling with W=1
+  (bnc#1151927).
+- i2c: stm32f7: fix a race in slave mode with arbitration loss
+  irq (bnc#1151927).
+- i2c: stm32f7: fix first byte to send in slave mode
+  (bnc#1151927).
+- i2c: mt65xx: fix NULL ptr dereference (bnc#1151927).
+- irqchip/gic-v3-its: Use the exact ITSList for VMOVP
+  (bnc#1151927).
+- MIPS: bmips: mark exception vectors as char arrays
+  (bnc#1151927).
+- of: unittest: fix memory leak in unittest_data_add
+  (bnc#1151927).
+- ALSA: hda: Add Tigerlake/Jasperlake PCI ID (bnc#1151927).
+- selftests: kvm: fix sync_regs_test with newer gccs
+  (bnc#1151927).
+- selftests: kvm: vmx_set_nested_state_test: don't check for
+  VMX support twice (bnc#1151927).
+- ARM: 8926/1: v7m: remove register save to stack before svc
+  (bnc#1151927).
+- drm/komeda: Don't flush inactive pipes (bnc#1151927).
+- i2c: aspeed: fix master pending state handling (bnc#1151927).
+- ARM: dts: bcm2837-rpi-cm3: Avoid leds-gpio probing issue
+  (bnc#1151927).
+- tracing: Fix "gfp_t" format for synthetic events (bnc#1151927).
+- ASoC: SOF: control: return true when kcontrol values change
+  (bnc#1151927).
+- ASoC: Intel: sof-rt5682: add a check for devm_clk_get
+  (bnc#1151927).
+- scsi: hpsa: add missing hunks in reset-patch (bnc#1151927).
+- scsi: target: core: Do not overwrite CDB byte 1 (bnc#1151927).
+- drm/amdgpu: fix error handling in amdgpu_bo_list_create
+  (bnc#1151927).
+- drm/amdgpu: fix potential VM faults (bnc#1151927).
+- ARM: davinci: dm365: Fix McBSP dma_slave_map entry
+  (bnc#1151927).
+- perf kmem: Fix memory leak in compact_gfp_flags() (bnc#1151927).
+- 8250-men-mcb: fix error checking when get_num_ports returns
+  -ENODEV (bnc#1151927).
+- perf c2c: Fix memory leak in build_cl_output() (bnc#1151927).
+- perf tools: Fix resource leak of closedir() on the error paths
+  (bnc#1151927).
+- arm64: dts: imx8mm: Use correct clock for usdhc's ipg clk
+  (bnc#1151927).
+- arm64: dts: imx8mq: Use correct clock for usdhc's ipg clk
+  (bnc#1151927).
+- ARM: dts: imx7s: Correct GPT's ipg clock source (bnc#1151927).
+- ARM: dts: vf610-zii-scu4-aib: Specify 'i2c-mux-idle-disconnect'
+  (bnc#1151927).
+- ARM: dts: imx6q-logicpd: Re-Enable SNVS power key (bnc#1151927).
+- arm64: dts: lx2160a: Correct CPU core idle state name
+  (bnc#1151927).
+- arm64: dts: rockchip: Fix usb-c on Hugsun X99 TV Box
+  (bnc#1151927).
+- arm64: dts: rockchip: fix RockPro64 sdmmc settings
+  (bnc#1151927).
+- ARM: 8914/1: NOMMU: Fix exc_ret for XIP (bnc#1151927).
+- ARM: 8908/1: add __always_inline to functions called from
+  __get_user_check() (bnc#1151927).
+- scsi: fix kconfig dependency warning related to 53C700_LE_ON_BE
+  (bnc#1151927).
+- scsi: sni_53c710: fix compilation error (bnc#1151927).
+- scsi: scsi_dh_alua: handle RTPG sense code correctly during
+  state transitions (bnc#1151927).
+- scsi: qla2xxx: fix a potential NULL pointer dereference
+  (bnc#1151927).
+- ARM: mm: fix alignment handler faults under memory pressure
+  (bnc#1151927).
+- ARM: dts: Use level interrupt for omap4 & 5 wlcore
+  (bnc#1151927).
+- ASoC: simple_card_utils.h: Fix potential multiple redefinition
+  error (bnc#1151927).
+- ASoC: msm8916-wcd-digital: add missing MIX2 path for RX1/2
+  (bnc#1151927).
+- ARM: dts: am3874-iceboard: Fix 'i2c-mux-idle-disconnect' usage
+  (bnc#1151927).
+- arm64: dts: zii-ultra: fix ARM regulator states (bnc#1151927).
+- pinctrl: stmfx: fix null pointer on remove (bnc#1151927).
+- pinctrl: ns2: Fix off by one bugs in ns2_pinmux_enable()
+  (bnc#1151927).
+- arm64: dts: rockchip: fix RockPro64 sdhci settings
+  (bnc#1151927).
+- arm64: dts: rockchip: fix RockPro64 vdd-log regulator settings
+  (bnc#1151927).
+- ARM: dts: logicpd-torpedo-som: Remove twl_keypad (bnc#1151927).
+- arm64: dts: rockchip: fix Rockpro64 RK808 interrupt line
+  (bnc#1151927).
+- ASoc: rockchip: i2s: Fix RPM imbalance (bnc#1151927).
+- ASoC: wm_adsp: Don't generate kcontrols without READ flags
+  (bnc#1151927).
+- regulator: pfuze100-regulator: Variable "val" in
+  pfuze100_regulator_probe() could be uninitialized (bnc#1151927).
+- ASoC: intel: bytcr_rt5651: add null check to
+  support_button_press (bnc#1151927).
+- ASoC: intel: sof_rt5682: add remove function to disable jack
+  (bnc#1151927).
+- ASoC: rt5682: add NULL handler to set_jack function
+  (bnc#1151927).
+- ASoC: SOF: Intel: hda: Disable DMI L1 entry during capture
+  (bnc#1151927).
+- Update config files.
+  CONFIG_SND_SOC_SOF_HDA_ALWAYS_ENABLE_DMI_L1=n as per default.
+- ASoC: SOF: Intel: initialise and verify FW crash dump data
+  (bnc#1151927).
+- ASoC: SOF: Intel: hda: fix warnings during FW load
+  (bnc#1151927).
+- ASoC: SOF: topology: fix parse fail issue for byte/bool tuple
+  types (bnc#1151927).
+- ASoC: SOF: loader: fix kernel oops on firmware boot failure
+  (bnc#1151927).
+- pinctrl: intel: Allocate IRQ chip dynamic (bnc#1151927).
+- regulator: ti-abb: Fix timeout in
+  ti_abb_wait_txdone/ti_abb_clear_all_txdone (bnc#1151927).
+- arm64: dts: Fix gpio to pinmux mapping (bnc#1151927).
+- arm64: dts: allwinner: a64: sopine-baseboard: Add PHY regulator
+  delay (bnc#1151927).
+- arm64: dts: allwinner: a64: Drop PMU node (bnc#1151927).
+- arm64: dts: allwinner: a64: pine64-plus: Add PHY regulator delay
+  (bnc#1151927).
+- ASoC: topology: Fix a signedness bug in
+  soc_tplg_dapm_widget_create() (bnc#1151927).
+- regulator: da9062: fix suspend_enable/disable preparation
+  (bnc#1151927).
+- ASoC: wm8994: Do not register inapplicable controls for WM1811
+  (bnc#1151927).
+- ASoC: samsung: arndale: Add missing OF node dereferencing
+  (bnc#1151927).
+- regulator: of: fix suspend-min/max-voltage parsing
+  (bnc#1151927).
+- commit eedf3c5
+
+-------------------------------------------------------------------
+Fri Nov  8 15:28:46 CET 2019 - tiwai@suse.de
+
+- fjes: Handle workqueue allocation failure
+  (CVE-2019-16231,bsc#1150466).
+- commit 3bf0c5a
+
+-------------------------------------------------------------------
 Thu Nov  7 08:06:36 CET 2019 - jslaby@suse.cz
 
 - Linux 5.3.9 (bnc#11519).
