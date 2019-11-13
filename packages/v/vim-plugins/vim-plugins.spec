@@ -49,7 +49,7 @@
 %define     rails_version           4.4
 %define     ack_version         1.0.9
 %define     editorconfig_version        0.3.3
-%define     fugitive_version    2.2
+%define     fugitive_version    3.1
 %define     neomutt_version         20180104
 %define     salt_version        0.0.1
 
@@ -654,7 +654,7 @@ popd
 # vim-plugin-fugitive
 pushd vim-fugitive-%{fugitive_version}
 mkdir -p %buildroot/%vimplugin_dir
-cp -a plugin doc %{buildroot}/%{vimplugin_dir}
+cp -a autoload ftdetect plugin doc syntax %{buildroot}/%{vimplugin_dir}
 popd
 
 cp %{SOURCE100} %{buildroot}/%vimplugin_dir/snippets/
@@ -1128,6 +1128,10 @@ fi
 %defattr(-,root,root,0755)
 %vimplugin_dir/plugin/fugitive.vim
 %vimplugin_dir/doc/fugitive.txt
+%vimplugin_dir/autoload/fugitive.vim
+%vimplugin_dir/ftdetect/fugitive.vim
+%vimplugin_dir/syntax/fugitive.vim
+%vimplugin_dir/syntax/fugitiveblame.vim
 
 %files -n vim-plugin-neomutt
 %defattr(-,root,root,0755)
