@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Wed Nov 13 09:31:49 UTC 2019 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version 0.3.6
+  * Remove additional_repos salt state 
+
+-------------------------------------------------------------------
+Mon Nov 11 14:40:12 UTC 2019 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version 0.3.5
+  * Fix issue with file permissions during package installation in
+    /usr/share/salt-formulas (0755, root, salt)
+    (boo#1142306)
+
+-------------------------------------------------------------------
+Wed Nov  6 06:23:13 UTC 2019 - nick wang <nwang@suse.com>
+
+- Version 0.3.4
+  * Remove the duplicate default value in salt state
+  * Not to install package by default
+  * Remove salt indent and change the order of pillar
+
+-------------------------------------------------------------------
+Thu Oct 17 17:48:58 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
+Wed Aug  7 08:08:21 UTC 2019 - nick wang <nwang@suse.com>
+
+- Version 0.3.3
+  * Add prefix to ID to avoid conflicts
+  * Install xfsprogs when need to format xfs
+
+-------------------------------------------------------------------
+Thu Jul 25 02:19:59 UTC 2019 - nick wang <nwang@suse.com>
+
+- Version 0.3.2, boo#1142762
+  * Restructure the deploy and examples directories
+  * Add examples of using NFS formula
+  * Fix the issue of mkfs and mount NFS share
+  * Polish the form.yml based on SUMA4.0, change some default values.
+
+-------------------------------------------------------------------
+Mon Jul  22 13:16:33 UTC 2019 - Diego Akechi <dakechi@suse.com>
+
+ - Version 0.3.1
+   * Change the requires to salt-formulas-configuration as this is
+     the virtual "provides" shared by salt and SUMA to guarantee that
+     the formula works integrated with both (not at the same time).
+     (boo#1142306)
+
+   * Change the directory permission to avoid file conflicts with
+     SUMA.
+
+-------------------------------------------------------------------
 Mon Jul  8 05:31:33 UTC 2019 - nick wang <nwang@suse.com>
 
 - Version 0.3.0, jsc#SLE-6970

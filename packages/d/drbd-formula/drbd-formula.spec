@@ -1,7 +1,7 @@
 #
 # spec file for package drbd-formula
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +16,24 @@
 #
 
 
-# See also http://en.opensuse.org/openSUSE:Specfile_guidelines
-%define fname drbd
-%define fdir %{_datadir}/salt-formulas
+# See also https://en.opensuse.org/openSUSE:Specfile_guidelines
+
 Name:           drbd-formula
-Version:        0.3.0
+Version:        0.3.6
 Release:        0
 Summary:        DRBD deployment salt formula
 License:        Apache-2.0
-Group:          System/Packages
 URL:            https://github.com/SUSE/%{name}
 Source0:        %{name}-%{version}.tar.gz
 Requires:       drbd-utils
 Requires:       salt-shaptools
+Requires:       salt-formulas-configuration
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
-# On SLE/Leap 15-SP1 and TW requires the new salt-formula configuration location.
-%if ! (0%{?sle_version:1} && 0%{?sle_version} < 150100)
-Requires:       salt-standalone-formulas-configuration
-%endif
-
+%define fname drbd
+%define fdir %{_datadir}/salt-formulas
+%define ftemplates templates
 
 %description
 DRBD deployment salt formula
@@ -48,44 +45,27 @@ Available on SUSE manager 4.0
 %build
 
 %install
-# before SUMA 4.0/15-SP1, install on the standard Salt Location.
-%if 0%{?sle_version:1} && 0%{?sle_version} < 150100
-mkdir -p %{buildroot}/srv/salt/
-cp -R %{fname} %{buildroot}/srv/salt
-cp -R templates/* %{buildroot}/srv/salt/%{fname}/templates/
-%else
-# On SUMA 4.0/15-SP1, a single shared directory will be used.
 mkdir -p %{buildroot}%{fdir}/states/%{fname}
 mkdir -p %{buildroot}%{fdir}/metadata/%{fname}
 cp -R %{fname} %{buildroot}%{fdir}/states
-cp -R templates/* %{buildroot}%{fdir}/states/%{fname}/templates/
+cp -R examples %{buildroot}%{fdir}/states/%{fname}/%{ftemplates}/
 cp -R form.yml metadata.yml pillar.example README.md %{buildroot}%{fdir}/metadata/%{fname}
-%endif
 
-%if 0%{?sle_version:1} && 0%{?sle_version} < 150100
 %files
-# %license macro is not available on older releases
-%if 0%{?sle_version} <= 120300
+%defattr(-,root,root,-)
+%if 0%{?sle_version} < 120300
 %doc README.md LICENSE
 %else
 %doc README.md
 %license LICENSE
 %endif
-/srv/salt/%{fname}
-%dir %attr(0755, root, salt) /srv/salt
-%else
-%files
-%defattr(-,root,root,-)
-%doc README.md
-%license LICENSE
-%dir %{fdir}
-%dir %{fdir}/states
-%dir %{fdir}/metadata
-%{fdir}/states/%{fname}
-%{fdir}/metadata/%{fname}
-%dir %attr(0750, root, salt) %{fdir}
-%dir %attr(0750, root, salt) %{fdir}/states
-%dir %attr(0750, root, salt) %{fdir}/metadata
-%endif
+
+%dir %attr(0755, root, salt) %{fdir}
+%dir %attr(0755, root, salt) %{fdir}/states
+%dir %attr(0755, root, salt) %{fdir}/metadata
+
+%attr(0755, root, salt) %{fdir}/states/%{fname}
+%attr(0755, root, salt) %{fdir}/states/%{fname}/%{ftemplates}
+%attr(0755, root, salt) %{fdir}/metadata/%{fname}
 
 %changelog
