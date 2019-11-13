@@ -256,8 +256,13 @@ APIs and libraries, default configuration files, and an init script.
 
 %post
 /usr/lib/corosync/upgrade.sh
-%tmpfiles_create /usr/lib/tmpfiles.d/corosync-notifyd
-%{fillup_and_insserv -n corosync}
+%{fillup_only -n corosync}
+# Upgrade
+if [ $1 -eq 2 ] ; then
+    # restore configured /etc/sysconfig/corosync(bsc#1155792)
+    install -m 0644 %{_sysconfdir}/sysconfig/corosync /tmp/.sysconfig.corosync
+fi
+
 %service_add_post corosync.service corosync-notifyd.service
 
 rm -rf  %{_sysconfdir}/corosync/corosync.conf.example %{_sysconfdir}/corosync/corosync.conf.example.unicast
@@ -268,8 +273,13 @@ ln -s /usr/share/doc/packages/corosync/corosync.conf.example.udpu %{_sysconfdir}
 %service_del_preun corosync.service corosync-notifyd.service
 
 %postun
-if [ -f /etc/sysconfig/corosync ]; then
-    rm /etc/sysconfig/corosync
+if [ -f %{_sysconfdir}/sysconfig/corosync ]; then
+    rm %{_sysconfdir}/sysconfig/corosync
+fi
+
+%posttrans
+if [ ! -f %{_sysconfdir}/sysconfig/corosync ] ; then
+    install -m 0644 /tmp/.sysconfig.corosync %{_sysconfdir}/sysconfig/corosync
 fi
 
 %files
@@ -571,7 +581,12 @@ NSS certificates and an init script.
 %service_add_pre corosync-qdevice.service
 
 %post -n corosync-qdevice
-%{fillup_and_insserv -n corosync-qdevice}
+%{fillup_only -n corosync-qdevice}
+# Upgrade
+if [ $1 -eq 2 ] ; then
+    install -m 0644 %{_sysconfdir}/sysconfig/corosync-qdevice /tmp/.sysconfig.corosync-qdevice
+fi
+
 %if %{sles_version} > 0
 ln -s /run/corosync-qdevice /var/run/
 %endif
@@ -584,11 +599,17 @@ ln -s /run/corosync-qdevice /var/run/
 unlink /var/run/corosync-qdevice
 %endif
 
-%postun -n corosync-qdevice
-if [ -f /etc/sysconfig/corosync-qdevice ]; then
-    rm /etc/sysconfig/corosync-qdevice
-fi
 %service_del_postun corosync-qdevice.service
+
+%postun -n corosync-qdevice
+if [ -f %{_sysconfdir}/sysconfig/corosync-qdevice ]; then
+    rm %{_sysconfdir}/sysconfig/corosync-qdevice
+fi
+
+%posttrans -n corosync-qdevice
+if [ ! -f %{_sysconfdir}/sysconfig/corosync-qdevice ] ; then
+    install -m 0644 /tmp/.sysconfig.corosync-qdevice %{_sysconfdir}/sysconfig/corosync-qdevice
+fi
 
 %files -n corosync-qdevice
 %defattr(-,root,root,-)
@@ -641,7 +662,11 @@ exit 0
 %if %{sles_version} > 0
 ln -s /run/corosync-qnetd /var/run/
 %endif
-%{fillup_and_insserv -n corosync-qnetd}
+%{fillup_only -n corosync-qnetd}
+# Upgrade
+if [ $1 -eq 2 ] ; then
+    install -m 0644 %{_sysconfdir}/sysconfig/corosync-qnetd /tmp/.sysconfig.corosync-qnetd
+fi
 
 %service_add_post corosync-qnetd.service
 
@@ -652,11 +677,17 @@ ln -s /run/corosync-qnetd /var/run/
 unlink /var/run/corosync-qnetd
 %endif
 
-%postun -n corosync-qnetd
-if [ -f /etc/sysconfig/corosync-qnetd ];then
-    rm /etc/sysconfig/corosync-qnetd
-fi
 %service_del_postun corosync-qnetd.service
+
+%postun -n corosync-qnetd
+if [ -f %{_sysconfdir}/sysconfig/corosync-qnetd ]; then
+    rm %{_sysconfdir}/sysconfig/corosync-qnetd
+fi
+
+%posttrans -n corosync-qnetd
+if [ ! -f %{_sysconfdir}/sysconfig/corosync-qnetd ] ; then
+    install -m 0644 /tmp/.sysconfig.corosync-qnetd %{_sysconfdir}/sysconfig/corosync-qnetd
+fi
 
 %files -n corosync-qnetd
 %defattr(-,root,root,-)
