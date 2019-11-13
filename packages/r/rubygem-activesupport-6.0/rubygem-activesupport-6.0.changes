@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Nov 12 13:35:28 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 6.0.1
+
+  *   `ActiveSupport::SafeBuffer` supports `Enumerator` methods.
+
+      *Shugo Maeda*
+
+  *   The Redis cache store fails gracefully when the server returns a "max number
+      of clients reached" error.
+
+      *Brandon Medenwald*
+
+  *   Fixed that mutating a value returned by a memory cache store would
+      unexpectedly change the cached value.
+
+      *Jonathan Hyman*
+
+  *   The default inflectors in `zeitwerk` mode support overrides:
+
+      ```ruby
+      # config/initializers/zeitwerk.rb
+      Rails.autoloaders.each do |autoloader|
+        autoloader.inflector.inflect(
+          "html_parser" => "HTMLParser",
+          "ssl_error"   => "SSLError"
+        )
+      end
+      ```
+
+      That way, you can tweak how individual basenames are inflected without touching Active Support inflection rules, which are global. These inflectors fallback to `String#camelize`, so existing inflection rules are still taken into account for non-overridden basenames.
+
+      Please, check the [autoloading guide for `zeitwerk` mode](https://guides.rubyonrails.org/v6.0/autoloading_and_reloading_constants.html#customizing-inflections) if you prefer not to depend on `String#camelize` at all.
+
+      *Xavier Noria*
+
+  *   Improve `Range#===`, `Range#include?`, and `Range#cover?` to work with beginless (startless)
+      and endless range targets.
+
+      *Allen Hsu*, *Andrew Hodgkinson*
+
+  *   Don't use `Process#clock_gettime(CLOCK_PROCESS_CPUTIME_ID)` on Solaris
+
+      *Iain Beeston*
+
+-------------------------------------------------------------------
 Sat Aug 17 20:53:57 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 6.0.0
