@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Nov 12 16:49:14 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 6.0.1
+
+  *   The `zeitwerk:check` Rake task reports files outside the app's root
+      directory, as in engines loaded from gems.
+
+      *Xavier Noria*
+
+  *   Fixed a possible error when using the evented file update checker.
+
+      *Yuji Yaginuma*
+
+  *   The sqlite3 database files created by the parallel testing feature are
+      included in the default `.gitignore` file for newly-generated apps.
+
+      *Yasuo Honda*
+
+  *   `rails new` generates a `.keep` file in `tmp/pids`. This fixes starting
+      a server via `rackup` instead of `rails server`.
+
+      *Rafael Mendonça França*
+
+-------------------------------------------------------------------
 Sat Aug 17 20:55:17 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 6.0.0
