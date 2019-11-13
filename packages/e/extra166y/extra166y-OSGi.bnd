@@ -1,0 +1,18 @@
+Export-Package: extra166y;uses:="sun.misc";version="@VERSION@"
+Implementation-Title: Extra166y
+Implementation-Version: @VERSION@
+Built-By: ${user.name}
+Specification-Vendor: Doug Lea
+Bundle-Name: extra166y
+Created-By: ${java.version} (${java.vendor})
+Implementation-Vendor: Doug Lea
+Bundle-Vendor: Doug Lea
+Bundle-Version: @VERSION@
+Bundle-ManifestVersion: 2
+Specification-Title: Extra166y
+Bundle-Description: build
+Bundle-DocURL: http://jsr166.codehaus.org
+Bundle-SymbolicName: extra166y
+Import-Package: extra166y;resolution:=optional;version="@VERSION@",sun.misc;resolution:=optional
+Specification-Version: @VERSION@
+Extension-Name: extra166y
