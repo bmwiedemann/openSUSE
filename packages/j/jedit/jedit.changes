@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Nov 10 12:32:40 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Added patches:
+  * jedit-doclet.patch
+    + Do not use custom doclet
+  * jedit-jdk9+.patch
+    + Do not bail out on java >= 9
+- Removed patches:
+  * jedit-encoding.patch
+  * jedit-jdk10.patch
+    + Not needed anymore
+
+-------------------------------------------------------------------
+Sun Nov 10 12:20:59 UTC 2019 - admin@damienradtke.org
+
+- Upgrade to 5.5.0
+  * updates jEdit to version 5.5.0 (the latest stable version),
+    and makes some other small improvements such as support for
+	larger application icons and antialiasing settings in the
+	launch script.
+
+-------------------------------------------------------------------
 Mon Dec 10 09:30:25 UTC 2018 - Fridrich Strba <fstrba@suse.com>
 
 - Build against the generic provider xml-apis instead of

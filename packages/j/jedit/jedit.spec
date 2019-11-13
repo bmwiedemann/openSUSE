@@ -1,7 +1,7 @@
 #
 # spec file for package jedit
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,38 +18,38 @@
 
 %define section	free
 Name:           jedit
-Version:        5.1.0
+Version:        5.5.0
 Release:        0
 Summary:        Programmer's Text Editor Written in Java
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Editors
 Url:            http://www.jedit.org/
 Source0:        http://download.sourceforge.net/jedit/jedit%{version}source.tar.bz2
-Source1:        %{name}-16.png
-Source2:        %{name}-32.png
-Source3:        %{name}-48.png
-Source4:        %{name}.desktop
-Source5:        %{name}.in
-Source6:        http://prdownloads.sourceforge.net/jedit-plugins/QuickNotepad-5.0.tgz
+Source1:        icons.tar
+Source2:        %{name}.desktop
+Source3:        %{name}.in
+Source4:        http://prdownloads.sourceforge.net/jedit-plugins/QuickNotepad-5.0.tgz
 #svn co https://jedit.svn.sourceforge.net/svnroot/jedit/build-support/trunk build-support
-Source7:        build-support-r22713.tar.gz
-Patch0:         jedit-encoding.patch
-Patch1:         jedit-jdk10.patch
+Source5:        build-support-r22713.tar.gz
+Patch0:         jedit-jdk9+.patch
+Patch1:         jedit-doclet.patch
 BuildRequires:  ant >= 1.8.2
 BuildRequires:  ant-apache-bsf
 BuildRequires:  ant-contrib
 BuildRequires:  ant-junit
 BuildRequires:  apache-commons-logging
 BuildRequires:  apache-ivy
+BuildRequires:  bouncycastle
 BuildRequires:  bsh2
 BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
+BuildRequires:  hamcrest
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  java-devel >= 1.6
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  jsr-305
 BuildRequires:  junit
-BuildRequires:  xml-apis
+BuildRequires:  rhino
 BuildArch:      noarch
 
 %description
@@ -80,7 +80,7 @@ Group:          Productivity/Text/Editors
 Javadoc for %{summary}.
 
 %prep
-%setup -q -D -n jEdit -a 6 -a 7
+%setup -q -D -n jEdit -b 1 -a 4 -a 5
 %patch0 -p1
 %patch1 -p1
 
@@ -101,40 +101,36 @@ build.support=$(pwd)/build-support/
 EOF
 
 # link dependencies
+link_dependencies () {
+    mkdir -p "$2"
+    IFS=':' read -a jars <<< $(build-classpath $1)
+    for jar in "${jars[@]}"; do ln -sf "${jar}" "$2/$1-$(basename "${jar}")"; done
+}
+
+link_dependencies jsr-305 lib/compile
+link_dependencies junit lib/test
+link_dependencies hamcrest lib/test
+link_dependencies ant lib/ant-contrib
+link_dependencies bsh2-bsf lib/scripting
+
 mkdir -p lib/ivy
 ln -sf $(build-classpath ivy) lib/ivy/ivy-2.2.0.jar
-mkdir -p lib/scripting
-ln -sf $(build-classpath bsh2/bsh-classpath.jar) lib/scripting/bsh-classpath.jar
-ln -sf $(build-classpath bsh2/bsh-util.jar) lib/scripting/bsh-util.jar
-ln -sf $(build-classpath bsh2/bsh-reflect.jar) lib/scripting/bsh-reflect.jar
-ln -sf $(build-classpath bsh2/bsh-engine.jar) lib/scripting/bsh-engine.jar
-ln -sf $(build-classpath bsh2/bsh-core.jar) lib/scripting/bsh-core.jar
-ln -sf $(build-classpath bsh2/bsh-commands.jar) lib/scripting/bsh-commands.jar
-ln -sf $(build-classpath bsh2/bsh.jar) lib/scripting/bsh.jar
-mkdir -p lib/compile
-ln -sf $(build-classpath jsr-305) lib/compile/jsr305.jar
-mkdir -p lib/ant-contrib
-ln -sf $(build-classpath ant) lib/ant-contrib/ant.jar
-ln -sf $(build-classpath ant-contrib) lib/ant-contrib/ant-contrib.jar
-mkdir -p lib/test
-ln -sf $(build-classpath junit) lib/test/junit.jar
-ln -sf $(build-classpath ant-junit) lib/test/ant-junit.jar
 
 # we have to break a dependency where build target expects plugins are in place,
 # where they are built separatelly and need jEdit.jar for a build
 mkdir -p lib/default-plugins/
 touch lib/default-plugins/HACK
 
-export CLASSPATH=$(build-classpath apache-commons-logging xml-apis)
+export CLASSPATH=$(build-classpath apache-commons-logging)
 # Run the build
 # XXX: there's NPE on build-docs, but who care about html docs those times, right?
-ant -Dtarget.java.version=1.6 -Divy.done=true build docs-javadoc
+%ant -Divy.done=true build docs-javadoc
 
 # plugins-build hardcodes the jedit.jar path - so to make it happy
 ln -s build/jedit.jar
 
 pushd QuickNotepad
-ant -Dtarget.java.version=1.6
+%ant
 popd
 mv QuickNotepad.jar build/jars
 rm build/jars/HACK
@@ -162,15 +158,16 @@ cp -ar build/{doc,jars,keymaps,macros,modes,properties,startup} %{buildroot}%{_d
 install -m 0644 package-files/linux/%{name}.1 %{buildroot}%{_mandir}/man1/
 
 # Icons
-install -D -m 644 %{SOURCE1} %{buildroot}%{_datadir}/icons/hicolor/16x16/apps/%{name}.png
-install -D -m 644 %{SOURCE2} %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/%{name}.png
-install -D -m 644 %{SOURCE3} %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/%{name}.png
+for size in 16 32 48 64 128 256; do
+    dims="${size}x${size}"
+    install -D -m 644 ../icons/icon_${dims}.png %{buildroot}%{_datadir}/icons/hicolor/${dims}/apps/%{name}.png
+done
 
 # Desktop file
-desktop-file-install --dir=%{buildroot}%{_datadir}/applications %{SOURCE4}
+desktop-file-install --dir=%{buildroot}%{_datadir}/applications %{SOURCE2}
 
 # Launcher script
-cat %{SOURCE5} | sed 's|@data|%{_datadir}/%{name}|g' > %{name}
+cat %{SOURCE3} | sed 's|@data|%{_datadir}/%{name}|g' > %{name}
 install %{name} %{buildroot}%{_bindir}
 
 %fdupes -s %{buildroot}

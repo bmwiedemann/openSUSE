@@ -1,0 +1,12 @@
+diff -urEbwB jEdit/build.xml jEdit.new/build.xml
+--- jEdit/build.xml	2018-04-09 01:59:23.000000000 +0200
++++ jEdit.new/build.xml	2019-11-10 12:28:16.880014435 +0100
+@@ -862,8 +862,6 @@
+ 					 sourcepath="${basedir}"
+ 					 destdir="${classes.dir}/javadoc/api"
+ 					 packagenames="org.*"
+-					 doclet="doclet.GenerateTocXML"
+-					 docletpath="${classes.dir}/javadoc"
+ 					 version="true"
+ 					 use="true"
+ 					 author="true"

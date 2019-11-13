@@ -247,4 +247,12 @@
     <comment>Build against the generic provider xml-apis instead of xerces-j2-xml-apis</comment>
     <requestid>656913</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>5336d52b225e193ece7c1039b292ae42</srcmd5>
+    <version>5.5.0</version>
+    <time>1573647878</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmit to make staging-bot to check it again</comment>
+    <requestid>747511</requestid>
+  </revision>
 </revisionlist>

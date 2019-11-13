@@ -18,4 +18,7 @@ else
 	JAVA="$JAVA_HOME/bin/java"
 fi
 
-exec "$JAVA" -jar @data/jedit.jar -reuseview "$@"
+# Antialias menus and dockable text:
+ANTIALIAS_ALL="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
+
+exec "${JAVA}" "${ANTIALIAS_ALL}" -jar @data/jedit.jar -reuseview "$@"
