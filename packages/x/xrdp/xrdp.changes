@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 13 03:23:15 UTC 2019 - Yifan Jiang <yfjiang@suse.com>
+
+- Make mkpamrules additionally support SUSE's usage of
+  /usr/etc/pam.d (boo#1156094, gh#neutrinolabs/xrdp!1442):
+  * xrdp-mkpamrules-support-usr-etc-distconfdir.patch
+  https://lists.opensuse.org/opensuse-factory/2019-08/msg00113.html
+
+-------------------------------------------------------------------
 Mon Sep 16 03:34:10 UTC 2019 - Felix Zhang <fezhang@suse.com>
 
 - Update to version 0.9.11 (jsc#SLE-9612)

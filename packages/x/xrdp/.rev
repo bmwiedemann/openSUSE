@@ -233,4 +233,16 @@
     <comment></comment>
     <requestid>738267</requestid>
   </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>2512a1a02c7b750f3d97223cc5c5d42e</srcmd5>
+    <version>0.9.11</version>
+    <time>1573648152</time>
+    <user>dimstar_suse</user>
+    <comment>- Make mkpamrules additionally support SUSE's usage of
+  /usr/etc/pam.d (boo#1156094, gh#neutrinolabs/xrdp!1442):
+  * xrdp-mkpamrules-support-usr-etc-distconfdir.patch
+  https://lists.opensuse.org/opensuse-factory/2019-08/msg00113.html
+</comment>
+    <requestid>748048</requestid>
+  </revision>
 </revisionlist>

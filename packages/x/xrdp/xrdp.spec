@@ -54,6 +54,8 @@ Patch13:        xrdp-bsc965647-allow-admin-choose-desktop.patch
 Patch14:        xrdp-fate318398-change-expired-password.patch
 # PATCH-FEATURE-SLE xrdp-fate319683-allow-vnc-resizing.patch fate#319683 bsc#948062 - fezhang@suse.com -- allow resizing in VNC sessions.
 Patch15:        xrdp-fate319683-allow-vnc-resizing.patch
+# PATCH-FIX-UPSTREAM xrdp-mkpamrules-support-usr-etc-distconfdir.patch boo#1156094 gh#neutrinolabs/xrdp!1442 - yfjiang@suse.com -- Probe both /usr/etc/pam.d and /etc/pam.d when generating the xrdp-sesman pam rule.
+Patch16:        xrdp-mkpamrules-support-usr-etc-distconfdir.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -112,6 +114,7 @@ This package contains libraries for the JPEG2000 codec for RDP.
 %patch14 -p1
 %patch15 -p1
 %endif
+%patch16 -p1
 
 %build
 sh ./bootstrap

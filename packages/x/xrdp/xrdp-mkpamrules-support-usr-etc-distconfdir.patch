@@ -1,0 +1,24 @@
+Index: xrdp-0.9.11/instfiles/pam.d/mkpamrules
+===================================================================
+--- xrdp-0.9.11.orig/instfiles/pam.d/mkpamrules
++++ xrdp-0.9.11/instfiles/pam.d/mkpamrules
+@@ -8,6 +8,7 @@ outfile="$3"
+ 
+ service="xrdp-sesman"
+ pamdir="/etc/pam.d"
++pamdir_suse="/usr/etc/pam.d"
+ 
+ guess_rules ()
+ {
+@@ -16,6 +17,11 @@ guess_rules ()
+     return
+   fi
+ 
++  if test -s "$pamdir_suse/common-account"; then
++    rules="suse"
++    return
++  fi
++
+   if test -s "$pamdir/common-account"; then
+     if grep "^@include" "$pamdir/passwd" >/dev/null 2>&1; then
+       rules="debian"
