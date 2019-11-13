@@ -1,3 +1,20 @@
+-------------------------------------------------------------------
+Sat Nov  9 12:42:47 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
+
+- Change architecture of perl modules to 'noarch'
+
+-------------------------------------------------------------------
+Fri Nov  8 10:40:45 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
+
+- Fix extraction command for default rules (proper fix for
+  boo#911355, rather than a workaround)
+- Don't unconditionally run sa-update on spamd and spampd service
+  start as this doesn't honor the settings in /etc/sysconfig/spamd
+- After running sa-update, only restart services if they were
+  running before
+- Fix name in logging timed-sa-update (suse.cron-sa-update
+  doesn't exist anymore)
+
 ----------------------------------------------------------
 Sun Oct 27 12:36:31 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
 

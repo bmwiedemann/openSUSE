@@ -24,6 +24,7 @@
 %define ix_version 2.05
 %define spd_version 2.53
 %define sa_version 3.4.2
+%define sa_float %(echo %{sa_version} | awk -F. '{ printf "%d.%03d%03d", $1, $2, $3 }')
 %define rules_revision 1840640
 
 %define IXHASH iXhash2-%{ix_version}
@@ -145,6 +146,7 @@ Recommends:     perl(DBI)
 Recommends:     perl(Encode::Detect)
 Provides:       perl-spamassassin = %{sa_version}
 Obsoletes:      perl-spamassassin < %{sa_version}
+BuildArch:      noarch
 %{perl_requires}
 
 %description -n perl-Mail-SpamAssassin
@@ -161,6 +163,7 @@ Version:        %{ix_version}
 Release:        0
 Provides:       perl-Mail-SpamAssassin-Plugin-iXhash = %{ix_version}
 Obsoletes:      perl-Mail-SpamAssassin-Plugin-iXhash < 2
+BuildArch:      noarch
 %{perl_requires}
 
 %description -n perl-Mail-SpamAssassin-Plugin-iXhash2
@@ -175,6 +178,7 @@ Digest::MD5 installed
 
 %prep
 %setup -q -n Mail-SpamAssassin-%{sa_version} -a 2 -a 3
+tar -zxf %{S:1} -C rules
 %patch1 -p0
 %patch2 -p1
 %patch3 -p0
@@ -197,7 +201,7 @@ export CFLAGS="%{optflags}"
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}" \
  CONTACT_ADDRESS="postmaster" ENABLE_SSL="yes"
 
-make
+make %{?_smp_mflags}
 
 %check
 # fails now... FIGURE out why
@@ -232,8 +236,13 @@ test -f %{buildroot}/usr/share/spamassassin/user_prefs.template || {
 	echo "MakeMaker is broken again..."
 	exit 1
 }
-install -d %{buildroot}/usr/share/spamassassin
-pushd %{buildroot}/usr/share/spamassassin && tar -xjf %{S:1} && popd
+
+## default rules
+install -d %{buildroot}%{_datadir}/spamassassin
+install -D -m 0644 rules/[0-9]*.cf %{buildroot}%{_datadir}/spamassassin
+sed -i	-e 's|@@CONTACT_ADDRESS@@|postmaster|g' \
+	-e 's|@@LOCAL_RULES_DIR@@|/etc/mail/spamassassin|g' \
+	-e 's|@@VERSION@@|%{sa_float}|g' %{buildroot}%{_datadir}/spamassassin/*.cf
 
 ## systemd stuff
 mkdir -p %{buildroot}/%{_unitdir}
@@ -278,8 +287,9 @@ install -D -m 644 %{S:19} %{buildroot}/%{_unitdir}
 %dir /etc/mail
 %config(noreplace) /etc/mail/spamassassin
 %exclude /etc/mail/spamassassin/iXhash2.cf
-%dir /usr/share/spamassassin
-/usr/share/spamassassin/*
+%exclude %{perl_vendorarch}
+%dir %{_datadir}/spamassassin
+%{_datadir}/spamassassin/*
 
 %files -n perl-Mail-SpamAssassin-Plugin-iXhash2
 %defattr(-,root,root)

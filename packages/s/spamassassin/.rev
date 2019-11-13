@@ -590,4 +590,20 @@
     <comment></comment>
     <requestid>746497</requestid>
   </revision>
+  <revision rev="79" vrev="64">
+    <srcmd5>b190cb4c27c21a325166045d40bf7f48</srcmd5>
+    <version>unknown</version>
+    <time>1573647236</time>
+    <user>dimstar_suse</user>
+    <comment>- Change architecture of perl modules to 'noarch'
+- Fix extraction command for default rules (proper fix for
+  boo#911355, rather than a workaround)
+- Don't unconditionally run sa-update on spamd and spampd service
+  start as this doesn't honor the settings in /etc/sysconfig/spamd
+- After running sa-update, only restart services if they were
+  running before
+- Fix name in logging timed-sa-update (suse.cron-sa-update
+  doesn't exist anymore) (forwarded request 747252 from adkorte)</comment>
+    <requestid>747349</requestid>
+  </revision>
 </revisionlist>
