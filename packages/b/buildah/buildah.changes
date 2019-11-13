@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov 12 14:57:37 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v1.11.5
+  * buildah: add "manifest" command
+  * pkg/supplemented: add a package for grouping images together
+  * pkg/manifests: add a manifest list build/manipulation API
+  * Update for ErrUnauthorizedForCredentials API change in containers/image
+  * Update for manifest-lists API changes in containers/image
+  * version: also note the version of containers/image
+  * Move to containers/image v5.0.0
+  * Enable --device directory as src device
+  * Add clarification to the Tutorial for new users
+  * Silence "using cache" to ensure -q is fully quiet
+  * Move runtime flag to bud from common
+  * Commit: check for storage.ErrImageUnknown using errors.Cause()
+  * Fix crash when invalid COPY --from flag is specified.
+
+-------------------------------------------------------------------
 Tue Oct 29 09:08:07 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
 
 - Update to v1.11.4
