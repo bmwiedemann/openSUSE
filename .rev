@@ -345,4 +345,12 @@
     <comment>KDE Applications 19.08.2</comment>
     <requestid>737880</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>2a56d90bbbba0dd502e520f43ccf621b</srcmd5>
+    <version>19.08.3</version>
+    <time>1573647862</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.08.3</comment>
+    <requestid>747001</requestid>
+  </revision>
 </revisionlist>
