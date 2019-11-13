@@ -1,0 +1,111 @@
+From 03b255b50250861a630cd72cb3fae30c7f0f5987 Mon Sep 17 00:00:00 2001
+From: Michael Simacek <msimacek@redhat.com>
+Date: Tue, 14 Jul 2015 11:20:59 +0200
+Subject: [PATCH 2/3] Jar paths
+
+---
+ build.xml | 20 +++++++++++---------
+ 1 file changed, 11 insertions(+), 9 deletions(-)
+
+diff --git a/build.xml b/build.xml
+index d36f42b..1f00059 100644
+--- a/build.xml
++++ b/build.xml
+@@ -54,7 +54,7 @@
+  <property name="maven-staging-repository-url" value="https://oss.sonatype.org/service/local/staging/deploy/maven2/" />
+ 
+  <!-- DEPENDENCIES -->
+- <available property='bcel.available' file='${lib.dir}/bcel-5.2.jar' />
++ <available property='bcel.available' file='${lib.dir}/bcel.jar' />
+ 
+  <property name="xerces.version" value="2.9.1"/>
+ 
+@@ -83,7 +83,7 @@
+ 			source='${compile.source}' target='${compile.target}'
+ 			includeAntRuntime='false'>
+ 			<classpath>
+-				<fileset dir='${lib.dir}/xerces-@{xercesVersion}' includes='*.jar' />
++				<fileset dir='${lib.dir}' includes='xerces-j2.jar' />
+ 			</classpath>
+ 			<src path='${src.dir}' />
+ 			<src path='${build.src.dir}' />
+@@ -94,7 +94,7 @@
+ 			source='${compile.source}' target='${compile.target}'
+ 			includeAntRuntime='false'>
+ 			<classpath>
+-				<fileset dir='${lib.dir}/xerces-@{xercesVersion}' includes='*.jar' />
++				<fileset dir='${lib.dir}' includes='xerces-j2.jar' />
+ 			</classpath>
+ 			<src path='${src.dir}' />
+ 			<src path='${build.src.dir}' />
+@@ -108,12 +108,14 @@
+ 		unless="compile.skip">
+ 	<mkdir dir="${build.classes.dir}"/>
+ 	
++        <!--
+ 	<compileWith xercesVersion="2.0.2" bridge="2_0"/>
+ 	<compileWith xercesVersion="2.1.0" bridge="2_1"/>
+ 	<compileWith xercesVersion="2.2.1" bridge="2_2"/>
+ 	<compileWith xercesVersion="2.3.0" bridge="2_3"/>
+ 	<compileWith xercesVersion="2.8.1" bridge="2_3"/>
+ 	<compileWith xercesVersion="2.9.1" bridge="2_3"/>
++        -->
+ 	<compileWith xercesVersion="2.10.0" bridge="2_3"/>
+ 
+ 	<copy todir="${build.classes.dir}">
+@@ -236,7 +238,7 @@ public class Version {
+  	<java classname='org.apache.tools.ant.Main'>
+  		<classpath>
+  			<pathelement path='${java.class.path}' />
+- 			<pathelement location='${lib.dir}/bcel-5.2.jar' />
++ 			<pathelement location='${lib.dir}/bcel.jar' />
+  		</classpath>
+  		<arg value='x-minimal' />
+  	</java>
+@@ -277,7 +279,7 @@ public class Version {
+ 	  		 source='${compile.source}' target='${compile.target}'
+ 	  		 includeAntRuntime='true'>
+ 	  	<classpath>
+-	  		<fileset dir='${lib.dir}' includes='xml-apis.jar,xerces*.jar, junit*.jar' />
++	  		<fileset dir='${lib.dir}' includes='xml-commons-apis.jar,xerces-j2.jar, junit.jar' />
+ 		    <pathelement location='${build.classes.dir}' />
+ 	  	</classpath>
+ 	    <src path='${src.test.dir}' />
+@@ -298,8 +300,8 @@ public class Version {
+ 				<classpath>
+ 				    <pathelement path='${build.test-classes.dir}'/>
+ 				    <pathelement location='${build.classes.dir}' />
+-			  		<fileset dir='${lib.dir}' includes='junit*.jar' />
+-		  	  		<fileset dir='${lib.dir}/xerces-@{xercesVersion}' includes='*.jar' />
++			  		<fileset dir='${lib.dir}' includes='junit.jar' />
++		  	  		<fileset dir='${lib.dir}' includes='xerces-j2.jar' />
+ 				</classpath>
+ 	
+ 				<formatter type="xml"/>
+@@ -318,13 +320,13 @@ public class Version {
+ 		<mkdir dir="${build.dir}/junit"/>
+ 
+ 		<testWith xercesVersion="2.11.0"/>
++                <!--
+ 		<testWith xercesVersion="2.10.0"/>
+ 		<testWith xercesVersion="2.9.1"/>
+ 		<testWith xercesVersion="2.8.1"/>
+ 		<testWith xercesVersion="2.3.0"/>
+ 		<testWith xercesVersion="2.2.1"/>
+ 		<testWith xercesVersion="minimal"/>
+-		<!--
+ 		<testWith xercesVersion="2.1.0"/>
+ 		<testWith xercesVersion="2.0.2"/>
+ 		-->
+@@ -397,7 +399,7 @@ public class Version {
+ 	</target>
+ 
+ 	<target name="-defineMavenAntTasks">
+-		<path id="maven-ant-tasks.classpath" path="lib/maven-ant-tasks-2.1.3.jar" />
++		<path id="maven-ant-tasks.classpath" path="lib/maven-ant-tasks.jar" />
+ 		<typedef resource="org/apache/maven/artifact/ant/antlib.xml" uri="urn:maven-artifact-ant"
+ 			classpathref="maven-ant-tasks.classpath" />
+ 		<artifact:pom id="maven.project" file="pom.xml" />
+-- 
+2.1.0
+

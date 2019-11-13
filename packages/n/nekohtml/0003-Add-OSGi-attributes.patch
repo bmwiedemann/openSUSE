@@ -1,0 +1,27 @@
+From 1cbc54dc98b762c4ba3b1daffc2cf5a1116732ef Mon Sep 17 00:00:00 2001
+From: Michael Simacek <msimacek@redhat.com>
+Date: Tue, 14 Jul 2015 11:21:21 +0200
+Subject: [PATCH 3/3] Add OSGi attributes
+
+---
+ build.xml | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/build.xml b/build.xml
+index 1f00059..194b0bf 100644
+--- a/build.xml
++++ b/build.xml
+@@ -129,6 +129,10 @@
+   <jar jarfile='${jar.file}'>
+ 	<manifest>
+     	<attribute name="Built-By" value="${author}"/>
++        <attribute name="Bundle-SymbolicName" value="${package}" />
++        <attribute name="Bundle-Version" value="${version}" />
++        <attribute name="Export-Package" value="org.cyberneko.html,org.cyberneko.html.filters,org.cyberneko.html.parsers,org.cyberneko.html.xercesbridge" />
++        <attribute name="Import-Package" value="org.apache.xerces.util,org.apache.xerces.xni,org.apache.xerces.xni.parser,org.apache.xerces.impl" />
+     	<section name="org/cyberneko/html/">
+ 		  <attribute name="Specification-Title" value="Hyper-Text Markup Language (HTML)" />
+     	  <attribute name="Specification-Version" value="4.01" />
+-- 
+2.1.0
+
