@@ -19,9 +19,9 @@
 # This package has to be kept separate from the main package to avoid
 # dependency loops with most of the core jupyter packages.
 %define         oldpython python
-%define doc_ver 7.7.0
+%define doc_ver 7.9.0
 Name:           python-ipython-doc
-Version:        7.7.0
+Version:        7.9.0
 Release:        0
 Summary:        Documentation for python3-jupyter_ipython
 License:        BSD-3-Clause
@@ -34,9 +34,9 @@ Source2:        https://buildmedia.readthedocs.org/media/htmlzip/ipython/%{doc_v
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Provides:       python-ipython-doc = %{version}
-Provides:       %{python_module ipython-doc = %{version}}
 Provides:       %{oldpython}-jupyter_ipython-doc = %{version}
+Provides:       %{python_module ipython-doc = %{version}}
+Provides:       python-ipython-doc = %{version}
 Obsoletes:      %{oldpython}-jupyter_ipython-doc < %{version}
 Provides:       %{oldpython}-jupyter_ipython-doc-html = %{version}
 Obsoletes:      %{oldpython}-jupyter_ipython-doc-html < %{version}

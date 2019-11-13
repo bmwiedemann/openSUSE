@@ -20,7 +20,7 @@
 %define         skip_python2 1
 %bcond_without  iptest
 Name:           python-ipython
-Version:        7.7.0
+Version:        7.9.0
 Release:        0
 Summary:        Rich architecture for interactive computing with Python
 License:        BSD-3-Clause
