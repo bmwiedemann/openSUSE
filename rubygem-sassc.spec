@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-sassc
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 %define mod_name sassc
 %define mod_full_name %{mod_name}-%{version}
