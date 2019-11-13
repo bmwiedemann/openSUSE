@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 12 13:34:30 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 6.0.1
+
+  *   `ActiveStorage::AnalyzeJob`s are discarded on `ActiveRecord::RecordNotFound` errors.
+
+      *George Claghorn*
+
+  *   Blobs are recorded in the database before being uploaded to the service.
+      This fixes that generated blob keys could silently collide, leading to
+      data loss.
+
+      *Julik Tarkhanov*
+
+-------------------------------------------------------------------
 Sat Aug 17 20:53:34 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 6.0.0
