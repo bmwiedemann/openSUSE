@@ -1,0 +1,47 @@
+From: Frank Ch. Eigler <fche@redhat.com>
+Date: Sun Aug 11 15:00:27 2019 +0000
+Subject: add /* fallthru */ to satisfy gcc 9's -Wimplicit-fallthrough
+Git-commit: 910acbe2663d7432e38ee3563c56dfd10b05b7db
+References: none (found during testing of SLE15-SP2 v4.1 update)
+Signed-off-by: Tony Jones <tonyj@suse.de>
+
+    rhbz1737589: add /* fallthru */ to satisfy gcc 9's -Wimplicit-fallthrough
+    
+    We need annotate switch statements with deliberate case-to-case fallthroughs.
+
+diff --git a/runtime/vsprintf.c b/runtime/vsprintf.c
+index 7bae9f841..388a87110 100644
+--- a/runtime/vsprintf.c
++++ b/runtime/vsprintf.c
+@@ -639,6 +639,7 @@ _stp_vsnprintf(char *buf, size_t size, const char *fmt, va_list args)
+ 
+                     case 'X':
+                             flags |= STP_LARGE;
++			    /* fallthru */
+                     case 'x':
+                             base = 16;
+                             break;
+@@ -646,6 +647,7 @@ _stp_vsnprintf(char *buf, size_t size, const char *fmt, va_list args)
+                     case 'd':
+                     case 'i':
+                             flags |= STP_SIGN;
++			    /* fallthru */
+                     case 'u':
+                             break;
+ 
+@@ -826,6 +828,7 @@ _stp_vsnprintf(char *buf, size_t size, const char *fmt, va_list args)
+ 
+ 		case 'X':
+ 			flags |= STP_LARGE;
++			/* fallthru */
+ 		case 'x':
+ 			base = 16;
+ 			break;
+@@ -833,6 +836,7 @@ _stp_vsnprintf(char *buf, size_t size, const char *fmt, va_list args)
+ 		case 'd':
+ 		case 'i':
+ 			flags |= STP_SIGN;
++			/* fallthru */
+ 		case 'u':
+ 			break;
+ 

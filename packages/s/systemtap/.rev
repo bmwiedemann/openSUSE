@@ -783,4 +783,12 @@ Most projects for this reason don't even carry the generated configure script in
   cycle with glib2 (bsc#1145438).</comment>
     <requestid>738186</requestid>
   </revision>
+  <revision rev="107" vrev="3">
+    <srcmd5>01b92bdc05159209ad821818268583fa</srcmd5>
+    <version>4.1</version>
+    <time>1573647154</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>746400</requestid>
+  </revision>
 </revisionlist>

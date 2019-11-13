@@ -33,6 +33,8 @@ Source3:        README-BEFORE-ADDING-PATCHES
 Source4:        README-KEYRING
 Source5:        stap-server.conf
 Patch1:         systemtap-build-source-dir.patch
+Patch2:         systemtap-support-wimplicit-fallthrough-vsprintf.patch
+Patch3:         systemtap-support-wimplicit-fallthrough-gen_map.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -95,6 +97,8 @@ This package contains the support tools for static probes.
 %prep
 %setup -q
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 autoreconf -fi

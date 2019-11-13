@@ -1,0 +1,24 @@
+Author: Frank Ch. Eigler <fche@redhat.com>
+Date: Thu Nov 7 13:47:34 2019 -0500
+Subject: runtime gen-map.c: add /* fallthru */ to satisfy gcc 9's -Wimplicit-fallthrough
+Git-commit: c4034101819829b6fb6cea38474c76fd50fa9eda
+References: none (found during testing of SLE15-SP2 v4.1 update)
+Signed-off-by: Tony Jones <tonyj@suse.de>
+
+
+    runtime gen-map.c: add /* fallthru */ to satisfy gcc 9's -Wimplicit-fallthrough
+
+diff --git a/runtime/map-gen.c b/runtime/map-gen.c
+index 413e20edb..d8fc48710 100644
+--- a/runtime/map-gen.c
++++ b/runtime/map-gen.c
+@@ -112,7 +112,9 @@
+                 k1 = 0; \
+                 switch(mylen & 3) {                \
+                 case 3: k1 ^= tail[2] << 16; \
++                        /* fallthrough */ \
+                 case 2: k1 ^= tail[1] << 8; \
++                        /* fallthrough */ \
+                 case 1: k1 ^= tail[0]; \
+                         k1 *= c1; k1 = ROTL32(k1,15); k1 *= c2; h1 ^= k1; \
+                 } \

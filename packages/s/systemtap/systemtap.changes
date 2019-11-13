@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov  7 18:18:07 UTC 2019 - Tony Jones <tonyj@suse.com>
+
+- Add support for gcc -Wimplicit-fallthrough to resolve compilation errors
+    of the form "this statement may fall through" 
+  New patch: systemtap-support-wimplicit-fallthrough-vsprintf.patch
+  New patch: systemtap-support-wimplicit-fallthrough-gen_map.patch
+
+-------------------------------------------------------------------
 Mon Oct 14 07:32:43 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Do not require exact version of systemtap-dtrace as build
