@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov  7 23:12:40 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.3.php
+- Changes since 19.08.2:
+  * Add kdepim-runtime change
+  * Remove stray comment terminator
+  * Make user settings changes take effect immediately
+  * Fix layout of defer alarm dialog
+  * Update version number
+  * Fix error on redo of an active alarm deletion
+  * Archive repeat-at-login alarms if previously triggered, when deleted
+
+-------------------------------------------------------------------
 Fri Oct 11 07:42:30 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.2
