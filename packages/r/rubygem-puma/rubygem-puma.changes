@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 12 14:54:48 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 4.3.0
+
+  * Features
+    * Strip whitespace at end of HTTP headers (#2010)
+    * Optimize HTTP parser for JRuby (#2012)
+    * Add SSL support for the control app and cli (#2046, #2052)
+
+  * Bugfixes
+    * Fix Errno::EINVAL when SSL is enabled and browser rejects cert (#1564)
+    * Fix pumactl defaulting puma to development if an environment was not specified (#2035)
+    * Fix closing file stream when reading pid from pidfile (#2048)
+    * Fix a typo in configuration option `--extra_runtime_dependencies` (#2050)
+
+-------------------------------------------------------------------
 Thu Aug 15 13:33:10 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 4.1.0
