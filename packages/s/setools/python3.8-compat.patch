@@ -1,0 +1,67 @@
+--- a/setup.py
++++ b/setup.py
+@@ -12,7 +12,6 @@ import os
+ import shutil
+ from os.path import join
+ from itertools import chain
+-from contextlib import suppress
+ from Cython.Build import cythonize
+ 
+ 
+@@ -48,12 +47,16 @@ class CleanCommand(clean):
+                     dirs_to_remove.append(join(root, d))
+ 
+         for file in files_to_remove:
+-            with suppress(Exception):
++            try:
+                 os.unlink(file)
++            except Exception:
++                pass
+ 
+         for dir_ in dirs_to_remove:
+-            with suppress(Exception):
++            try:
+                 shutil.rmtree(dir_, ignore_errors=True)
++            except Exception:
++                pass
+ 
+         clean.run(self)
+ 
+@@ -81,12 +84,14 @@ class QtHelpCommand(Command):
+ lib_dirs = ['.', '/usr/lib64', '/usr/lib', '/usr/local/lib']
+ include_dirs = []
+ 
+-with suppress(KeyError):
++try:
+     userspace_src = os.environ["USERSPACE_SRC"]
+     include_dirs.insert(0, userspace_src + "/libsepol/include")
+     include_dirs.insert(1, userspace_src + "/libselinux/include")
+     lib_dirs.insert(0, userspace_src + "/libsepol/src")
+     lib_dirs.insert(1, userspace_src + "/libselinux/src")
++except KeyError:
++    pass
+ 
+ if sys.platform.startswith('darwin'):
+     macros=[('DARWIN',1)]
+@@ -100,12 +105,19 @@ if enable_coverage:
+ 
+ cython_annotate = bool(os.environ.get("SETOOLS_ANNOTATE", False))
+ 
++linked_libraries = ['selinux', 'sepol']
++py_ver = sys.version_info[:2]
++if py_ver >= (3, 8):
++    linked_libraries.append('python{:d}.{:d}{}'.format(py_ver[0],
++                                                       py_ver[1],
++                                                       sys.abiflags))
++
+ ext_py_mods = [Extension('setools.policyrep', ['setools/policyrep.pyx'],
+                          include_dirs=include_dirs,
+-                         libraries=['selinux', 'sepol'],
++                         libraries=linked_libraries,
+                          library_dirs=lib_dirs,
+                          define_macros=macros,
+-                         extra_compile_args=['-Werror', '-Wextra',
++                         extra_compile_args=['-Wextra',
+                                              '-Waggregate-return',
+                                              '-Wfloat-equal',
+                                              '-Wformat', '-Wformat=2',

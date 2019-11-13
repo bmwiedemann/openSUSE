@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,13 +22,16 @@
 %define skip_python2 1
 
 Name:           setools
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 Url:            https://github.com/SELinuxProject/setools
 Summary:        Policy analysis tools for SELinux
 License:        GPL-2.0-only
 Group:          System/Management
 Source:         https://github.com/SELinuxProject/setools/archive/%{version}.tar.gz
+# PATCH-FIX-UPSTREAM python3.8-compat.patch mcepl@suse.com
+# allow build with Python 3.8
+Patch0:         python3.8-compat.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
@@ -99,6 +102,7 @@ This package includes the following graphical tools:
 
 %prep
 %setup -q -n %{name}-%{version}
+%autopatch -p1
 
 %build
 %python_build

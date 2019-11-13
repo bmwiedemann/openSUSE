@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct 31 12:02:30 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add python3.8-compat.patch to allow build with Python 3.8
+  Still doesn't work though because of gh#SELinuxProject/setools#31
+
+-------------------------------------------------------------------
+Thu Oct 31 09:38:27 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to the upstream version 4.2.2:
+  - Remove source policy references from man pages, as loading
+    source policies is no longer supported.
+  - Fixed a performance regression in alias loading after alias
+    dereferencing fixes in 4.2.1.
+
+-------------------------------------------------------------------
 Tue Feb  5 08:01:41 UTC 2019 - jsegitz@suse.com
 
 - Update to 4.2.1
