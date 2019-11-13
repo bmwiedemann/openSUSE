@@ -12,7 +12,8 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
@@ -20,23 +21,21 @@
 Name:           python-aioftp
 Version:        0.13.0
 Release:        0
-License:        Apache-2.0
 Summary:        FTP client/server for asyncio
-Url:            https://github.com/aio-libs/aioftp
-Group:          Development/Languages/Python
+License:        Apache-2.0
+URL:            https://github.com/aio-libs/aioftp
 Source:         https://files.pythonhosted.org/packages/source/a/aioftp/aioftp-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module async_timeout}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module trustme}
 # /SECTION
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
