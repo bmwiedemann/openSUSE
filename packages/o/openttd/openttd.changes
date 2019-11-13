@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Nov  2 19:38:04 UTC 2019 - Sebastien CHAVAUX <seb95.scou@gmail.com>
+
+- Update to 1.9.3
+  * Change: Use natural sort when sorting the file list
+  * Fix: Don't close construction windows when changing client name
+- Update to 1.9.3-RC1
+  * Add: Can now click industries to make orders to their neutral
+    station (e.g. oil rig)
+  * Fix: Highscore screen UI scaling
+  * Fix: [AI] Possible crash when reloading an AI in multiplayer games
+  * Fix: RemoveAirport function now returns 'Aircraft in the way'
+    error message when occupied
+  * Fix: Spelling in running costs setting help text
+  * Fix: 'Decrease' buttons in cheat window not working properly with
+    UI scaling
+  * Fix: [GS] Could not create elements on Storybook pages with ID > 255
+  * Fix: Allow building road stops over town-owned one-way roads,
+    instead of crashing
+
+-------------------------------------------------------------------
 Mon May 27 14:46:02 UTC 2019 - Jon Brightwell <jon@moozaad.co.uk>
 
 - removed old ICU patch ( fix_issue6690_compilation_with_icu61.patch ). Bugtracker MIA (#6690) and no longer is needed

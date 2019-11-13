@@ -19,7 +19,7 @@
 
 %define about OpenTTD is a reimplementation of the Microprose game "Transport Tycoon Deluxe" with lots of new features and enhancements. To play the game, you need either the original proprietary data set from the game, or install the recommend subpackages OpenGFX, OpenSFX and OpenMSX for an alternate, free set of graphics, sounds and music, respectively.
 Name:           openttd
-Version:        1.9.1
+Version:        1.9.3
 Release:        0
 Summary:        A clone of Chris Sawyer's Transport Tycoon Deluxe
 License:        GPL-2.0-only

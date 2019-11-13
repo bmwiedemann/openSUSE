@@ -448,4 +448,28 @@ Note: OpenTTD was migrated to GitHub for 1.9, so SVN revision and FlySpray numbe
 </comment>
     <requestid>707193</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>9f334f5e4512254398866c7e8c16c518</srcmd5>
+    <version>1.9.3</version>
+    <time>1573647251</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.3
+  * Change: Use natural sort when sorting the file list
+  * Fix: Don't close construction windows when changing client name
+- Update to 1.9.3-RC1
+  * Add: Can now click industries to make orders to their neutral
+    station (e.g. oil rig)
+  * Fix: Highscore screen UI scaling
+  * Fix: [AI] Possible crash when reloading an AI in multiplayer games
+  * Fix: RemoveAirport function now returns 'Aircraft in the way'
+    error message when occupied
+  * Fix: Spelling in running costs setting help text
+  * Fix: 'Decrease' buttons in cheat window not working properly with
+    UI scaling
+  * Fix: [GS] Could not create elements on Storybook pages with ID &gt; 255
+  * Fix: Allow building road stops over town-owned one-way roads,
+    instead of crashing
+</comment>
+    <requestid>745834</requestid>
+  </revision>
 </revisionlist>
