@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
@@ -24,19 +24,19 @@
 #
 
 Name:           rubygem-ffi
-Version:        1.11.1
+Version:        1.11.2
 Release:        0
 %define mod_name ffi
 %define mod_full_name %{mod_name}-%{version}
 # MANUAL
-BuildRequires:  libffi-devel
+BuildRequires: libffi-devel
 # /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{rubydevel >= 2.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
-BuildRequires:  ruby-macros >= 5
-Url:            http://wiki.github.com/ffi/ffi
+Url:            https://github.com/ffi/ffi/wiki
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-ffi-rpmlintrc
 Source2:        gem2rpm.yml
