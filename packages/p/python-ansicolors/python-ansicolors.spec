@@ -1,7 +1,7 @@
 #
 # spec file for package python-ansicolors
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,18 +22,16 @@ Version:        1.1.8
 Release:        0
 Summary:        ANSI colors for Python
 License:        ISC
-Group:          Development/Languages/Python
-Url:            http://github.com/jonathaneunice/colors/
+URL:            https://github.com/jonathaneunice/colors/
 Source:         https://files.pythonhosted.org/packages/source/a/ansicolors/ansicolors-%{version}.zip
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
