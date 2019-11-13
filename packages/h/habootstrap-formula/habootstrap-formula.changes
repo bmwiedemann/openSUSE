@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Oct 30 16:14:32 UTC 2019 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version bump 0.2.9
+  * Fix issue with file permissions during package installation in
+    /usr/share/salt-formulas (0755, root, salt)
+    (boo#1142306)
+
+-------------------------------------------------------------------
+Wed Oct 16 01:26:50 UTC 2019 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version bump 0.2.8
+  *Add customizable timeout to the join process and rename join_timer to
+   wait_for_initialization
+
+-------------------------------------------------------------------
+Wed Sep 18 07:51:22 UTC 2019 - Dario Maiocchi <dmaiocchi@suse.com>
+
+- remove and replace hawk-apiserver with prometheus-ha_cluster_exporter pkg
+
+-------------------------------------------------------------------
+Wed Sep  4 07:04:48 UTC 2019 - Xabier Arbulu Insausti <xarbulu@suse.com>
+
+- Update the pkg.info_available call to avoid repositories refresh as
+  it may cause errors
+- Add packages and ha_exporter options to the SUMA form.yml file
+
+-------------------------------------------------------------------
+Sun Aug 25 17:58:31 UTC 2019 - Ayoub Belarbi <abelarbi@suse.de>
+
+- Version bump 0.2.6
+  * Fix typo in Pillar attribute name
+
+-------------------------------------------------------------------
+Wed Aug 21 08:19:30 UTC 2019 - Ayoub Belarbi <abelarbi@suse.de>
+
+- Version bump 0.2.5
+  * Add HA monitoring to the formula
+
+-------------------------------------------------------------------
+Mon Jul 22 08:29:00 UTC 2019 - Xabier Arbulu Insausti <xarbulu@suse.com>
+
+- Version bump 0.2.4
+  * Fix issue with file permissions during package installation in
+    /usr/share/salt-formulas
+    (boo#1142306)
+
+-------------------------------------------------------------------
 Fri Jul  5 12:24:40 UTC 2019 - Dario Maiocchi <dmaiocchi@suse.com>
 
 - Make pkg.install more resilient, allowing retries during install
@@ -76,4 +123,3 @@ Thu Sep 06 13:25:22 UTC 2018 - kgronlund@suse.com
 Thu Sep  6 12:37:13 UTC 2018 - kgronlund@suse.com
 
 - Initial version
-
