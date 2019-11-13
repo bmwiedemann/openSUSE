@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-i18n
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 %define mod_name i18n
 %define mod_full_name %{mod_name}-%{version}
@@ -32,7 +32,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.3.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-Url:            http://github.com/ruby-i18n/i18n
+Url:            https://github.com/ruby-i18n/i18n
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        New wave Internationalization support for Ruby
