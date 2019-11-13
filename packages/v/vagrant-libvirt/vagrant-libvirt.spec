@@ -1,7 +1,7 @@
 #
 # spec file for package vagrant-libvirt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,7 +57,7 @@ Requires:       %{rubygem fog-libvirt >= 0.3.}
 Requires:       %{rubygem fog-core:2 >= 2.1}
 # s.add_runtime_dependency 'nokogiri', '~> 1.6'
 # Prevent have choice for rubygem(ruby:2.6.0:nokogiri) >= 1.5.11
-BuildRequires:  %{rubygem nokogiri:1.10.4 }
+BuildRequires:  %{rubygem nokogiri:1.10 }
 
 # Prevent have choice for rubygem(ruby:2.6.0:mime-types) >= 2
 BuildRequires:  %{rubygem mime-types:3 }
@@ -68,7 +68,7 @@ BuildRequires:  %{rubygem ffi >= 1.9 }
 # Prevent have choice for rubygem(ruby:2.5.0:thor:0) >= 0.18
 BuildRequires:  %{rubygem thor:0.19}
 
-Url:            https://github.com/vagrant-libvirt/vagrant-libvirt
+URL:            https://github.com/vagrant-libvirt/vagrant-libvirt
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 
 # FIXME: drop this once 0.0.46 comes out

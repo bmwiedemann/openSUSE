@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 13 10:30:06 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- depend on nokogiri 1.10.x instead of hardcoding 1.10.4
+
+-------------------------------------------------------------------
 Fri Aug 23 11:50:05 UTC 2019 - Dan Čermák <dcermak@suse.com>
 
 - Bump nokogiri BuildRequires version
