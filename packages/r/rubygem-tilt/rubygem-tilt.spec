@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-tilt
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-tilt
-Version:        2.0.9
+Version:        2.0.10
 Release:        0
 %define mod_name tilt
 %define mod_full_name %{mod_name}-%{version}
@@ -52,7 +52,7 @@ Generic interface to multiple Ruby template engines.
 %install
 %gem_install \
   --symlink-binaries \
-  --doc-files="CHANGELOG.md COPYING README.md" \
+  --doc-files="COPYING" \
   -f
 
 %gem_packages
