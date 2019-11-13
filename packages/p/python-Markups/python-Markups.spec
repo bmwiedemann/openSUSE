@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,17 +22,16 @@ Version:        3.0.0
 Release:        0
 Summary:        A wrapper around various text markups
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/mitya57/pymarkups
 Source:         https://files.pythonhosted.org/packages/source/M/Markups/Markups-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-markdown-math
+BuildArch:      noarch
 # SECTION Required for %%check
 BuildRequires:  %{python_module markdown-math}
 # /SECTION
-Requires:       python-markdown-math
-BuildArch:      noarch
 %python_subpackages
 
 %description
