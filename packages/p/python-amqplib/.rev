@@ -15,4 +15,12 @@
     <comment>Remove superfluous devel dependency for noarch package</comment>
     <requestid>653908</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e5a3c6d875ecafdf2996d8a152fefbe4</srcmd5>
+    <version>1.0.2</version>
+    <time>1573647292</time>
+    <user>dimstar_suse</user>
+    <comment>- Run through spec-cleaner</comment>
+    <requestid>746355</requestid>
+  </revision>
 </revisionlist>

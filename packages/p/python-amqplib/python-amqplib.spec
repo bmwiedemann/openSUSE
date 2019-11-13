@@ -1,7 +1,7 @@
 #
 # spec file for package python-amqplib
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,6 @@ Version:        1.0.2
 Release:        0
 Summary:        AMQP Client Library (Advanced Message Queuing Protocol)
 License:        LGPL-2.1-or-later
-Group:          Development/Languages/Python
 URL:            https://github.com/barryp/py-amqplib
 Source:         https://files.pythonhosted.org/packages/source/a/amqplib/amqplib-%{version}.tgz
 BuildRequires:  %{python_module setuptools}
