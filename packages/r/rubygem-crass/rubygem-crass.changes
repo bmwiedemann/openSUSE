@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 12 16:31:30 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.0.5
+
+  * Removed test files from the gem. (#8 - @t-richards)
+
+-------------------------------------------------------------------
 Mon Apr  9 14:52:00 UTC 2018 - factory-auto@kulow.org
 
 - updated to version 1.0.4
