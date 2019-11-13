@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=ProGuard
+Comment=Java class file shrinker, optimizer, obfuscator and preverifier
+GenericName=Java class file shrinker, optimizer, obfuscator and preverifier
+Exec=proguard-gui
+Icon=proguard
+Terminal=false
+Type=Application
+Categories=Development;Building;Java;
+

@@ -1,0 +1,26 @@
+Using ProGuard 
+==============
+
+The documentation and examples reference the path in which ProGuard 
+can be found. This does not match with the location the packaged version
+can be found.
+
+One runs ProGuard from the command line with:
+
+	$ proguard [-options]
+
+Or the ProGuard GUI from the command line with:
+
+	$ proguard-gui
+
+Or retrace:
+
+	$ proguard-retrace
+
+There is also a menu entry available for the ProGuard GUI.
+
+To obtain the correct class path for the ProGuard JAR files (if necessary) 
+one should use:
+
+	$ build-classpath proguard
+
