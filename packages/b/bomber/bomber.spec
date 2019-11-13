@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           bomber
-Version:        19.08.2
+Version:        19.08.3
 Release:        0
 Summary:        Game involving the invasion of cities with a plane
 License:        GPL-2.0-or-later
