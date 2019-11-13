@@ -19,10 +19,11 @@
 Name:           ocaml-facile
 Version:        1.1
 Release:        0
+%{?ocaml_preserve_bytecode}
 Summary:        Ocaml Constraint Programming Library
 License:        LGPL-2.1+
 Group:          Development/Languages/OCaml
-Url:            http://www.recherche.enac.fr/log/facile/
+Url:            https://github.com/Emmanuel-PLF/facile
 Source0:        http://www.recherche.enac.fr/log/facile/distrib/facile-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE ocaml-4.patch hrvoje.senjan@gmail.com -- Fixes build with ocaml 4
 Patch0:         ocaml-4.patch
