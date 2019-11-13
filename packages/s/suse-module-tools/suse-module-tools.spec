@@ -29,7 +29,7 @@
 %endif
 
 Name:           suse-module-tools
-Version:        15.2.5
+Version:        15.2.7
 Release:        0
 Summary:        Configuration for module loading and SUSE-specific utilities for KMPs
 License:        GPL-2.0-or-later
@@ -100,10 +100,10 @@ install -d -m 755 "%{buildroot}%{_sysconfdir}/depmod.d"
 install -pm 644 "depmod-00-system.conf" \
 	"%{buildroot}%{_sysconfdir}/depmod.d/00-system.conf"
 
-# "module-init-tools" name hardcoded in KMPs, mkinitrd, etc.
-install -d -m 755 "%{buildroot}%{_libexecdir}/module-init-tools"
-install -pm 755 weak-modules{,2} "%{buildroot}%{_libexecdir}/module-init-tools/"
-install -pm 755 driver-check.sh "%{buildroot}%{_libexecdir}/module-init-tools/"
+# "/usr/lib/module-init-tools" name hardcoded in KMPs, mkinitrd, etc.
+install -d -m 755 "%{buildroot}/usr/lib/module-init-tools"
+install -pm 755 weak-modules{,2} "%{buildroot}/usr/lib/module-init-tools/"
+install -pm 755 driver-check.sh "%{buildroot}/usr/lib/module-init-tools/"
 
 %if 0%{?suse_version} < 1550
 # rpm macros and helper
@@ -112,14 +112,14 @@ install -pm 755 driver-check.sh "%{buildroot}%{_libexecdir}/module-init-tools/"
 install -d -m 755 "%{buildroot}%{_rpmmacrodir}"
 install -pm 644 "macros.initrd" "%{buildroot}%{_rpmmacrodir}"
 %endif
-install -pm 755 "regenerate-initrd-posttrans" "%{buildroot}%{_libexecdir}/module-init-tools/"
+install -pm 755 "regenerate-initrd-posttrans" "%{buildroot}/usr/lib/module-init-tools/"
 
 install -d -m 755 "%{buildroot}%{_prefix}/bin"
 install -pm 755 kmp-install "%{buildroot}%{_bindir}/"
 
 # systemd service to load /boot/sysctl.conf-`uname -r`
-install -d -m 755 "%{buildroot}%{_libexecdir}/systemd/system/systemd-sysctl.service.d"
-install -pm 644 50-kernel-uname_r.conf "%{buildroot}%{_libexecdir}/systemd/system/systemd-sysctl.service.d"
+install -d -m 755 "%{buildroot}%{_unitdir}/systemd-sysctl.service.d"
+install -pm 644 50-kernel-uname_r.conf "%{buildroot}%{_unitdir}/systemd-sysctl.service.d"
 
 # Ensure that the sg driver is loaded early (bsc#1036463)
 # Not needed in SLE11, where sg is loaded via udev rule.
@@ -257,15 +257,14 @@ done
 %{_rpmmacrodir}/macros.initrd
 %endif
 %{_bindir}/kmp-install
-%{_libexecdir}/module-init-tools
-%exclude %{_libexecdir}/module-init-tools/weak-modules
-%{_libexecdir}/systemd/system/systemd-sysctl.service.d
+/usr/lib/module-init-tools
+%exclude /usr/lib/module-init-tools/weak-modules
+%{_unitdir}/systemd-sysctl.service.d
 %dir %{modules_load_dir}
 %{modules_load_dir}/sg.conf
 
 %files legacy
 %defattr(-,root,root)
-
-%{_libexecdir}/module-init-tools/weak-modules
+/usr/lib/module-init-tools/weak-modules
 
 %changelog
