@@ -6,5 +6,5 @@ Features include customizable functions, units, arbitrary precision, plotting,
 and a graphical interface that uses a one-line fault-tolerant expression entry
 (although it supports optional traditional buttons).
 This is the commandline interface, named qalc.</description>
-  <devel project="KDE:Distro:Factory" package="qalculate"/>
+  <devel project="science" package="qalculate"/>
 </package>
