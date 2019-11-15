@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Nov 11 15:42:21 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
+
+- update to 10.3.20
+  * notable changes for 10.3.20
+    * MDEV-20987: InnoDB fails to start when FTS table has FK relation
+  * notable changes for 10.3.19
+    * MDEV-20864: Debug-only option innodb_change_buffer_dump for
+      dumping the contents of the InnoDB change buffer to the
+      server error log at startup.
+    * MariaBackup:
+      * MDEV-18438: mbstream recreates xtrabackup_info on same
+        directory as backup file
+      * MDEV-20703: mariabackup creates binlog files in serve
+        binlog directory on --prepare --export step
+    * FULLTEXT INDEX:
+      * MDEV-19647: Server hangs after dropping full text indexes
+        and restart
+      * MDEV-19529: InnoDB hang on DROP FULLTEXT INDEX
+      * MDEV-19073: FTS row mismatch after crash recovery
+      * MDEV-20621: FULLTEXT INDEX activity causes InnoDB hang
+      * MDEV-20927: Duplicate key with auto increment
+    * ALTER TABLE:
+      * MDEV-20799: DROP Virtual Column crash
+      * MDEV-20852: BtrBulk is unnecessarily holding dict_index_t::lock
+    * System-Versioned Tables:
+      * MDEV-16210: FK constraints on versioned tables use historical
+        rows, which may cause constraint violation
+      * MDEV-20812: Unexpected ER_ROW_IS_REFERENCED_2 or server
+        crash in row_ins_foreign_report_err upon DELETE from
+        versioned table with FK
+    * Galera wsrep library updated to 25.3.28
+  * Fixes for the following security vulnerabilities:
+    CVE-2019-2974, CVE-2019-2938
+  * release notes and changelog:
+    https://mariadb.com/kb/en/library/mariadb-10320-release-notes
+    https://mariadb.com/kb/en/library/mariadb-10320-changelog
+    https://mariadb.com/kb/en/library/mariadb-10319-release-notes
+    https://mariadb.com/kb/en/library/mariadb-10319-changelog
+- remove mariadb-10.3.17-fix_ppc_build.patch (applied upstream)
+- refresh
+  * mariadb-10.2.4-logrotate.patch
+  * mariadb-10.0.15-logrotate-su.patch
+
+-------------------------------------------------------------------
 Tue Sep 24 11:08:33 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
 
 - update to 10.3.18

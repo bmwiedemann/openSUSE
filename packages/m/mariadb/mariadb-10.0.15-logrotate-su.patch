@@ -13,5 +13,5 @@ Index: support-files/mysql-log-rotate.sh
          # create 600 mysql mysql
 +        su mysql mysql
          notifempty
- 	daily
+         daily
          rotate 3

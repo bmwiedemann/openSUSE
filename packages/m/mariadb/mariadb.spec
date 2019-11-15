@@ -54,7 +54,7 @@
 %define python_path /usr/bin/python2            
 %endif
 Name:           mariadb
-Version:        10.3.18
+Version:        10.3.20
 Release:        0
 Summary:        Server part of MariaDB
 License:        SUSE-GPL-2.0-with-FLOSS-exception
@@ -77,7 +77,6 @@ Patch3:         mariadb-10.1.1-mysqld_multi-features.patch
 Patch7:         mariadb-10.0.15-logrotate-su.patch
 Patch8:         mariadb-10.2.4-fortify-and-O.patch
 Patch9:         mariadb-10.2.19-link-and-enable-c++11-atomics.patch
-Patch10:        mariadb-10.3.17-fix_ppc_build.patch
 # needed for bison SQL parser and wsrep API
 BuildRequires:  bison
 BuildRequires:  cmake
@@ -334,7 +333,6 @@ find . -name "*.jar" -type f -exec rm --verbose -f {} \;
 %patch7
 %patch8
 %patch9 -p1
-%patch10 -p1
 
 cp %{_sourcedir}/suse-test-run .
 
