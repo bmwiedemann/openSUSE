@@ -858,4 +858,12 @@
     <comment></comment>
     <requestid>736501</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>05d50f2f6be69226974aa848fdd41445</srcmd5>
+    <version>0.46.4</version>
+    <time>1573853441</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 747317 from iznogood)</comment>
+    <requestid>747641</requestid>
+  </revision>
 </revisionlist>
