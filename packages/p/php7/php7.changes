@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 12 13:09:18 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not add the generic provides to the php7-test package.
+
+-------------------------------------------------------------------
 Fri Oct 25 06:53:03 UTC 2019 - pgajdos@suse.com
 
 - version update to 7.3.11: This is a security release which also

@@ -769,4 +769,12 @@
   See https://www.php.net/ChangeLog-7.php#7.3.11</comment>
     <requestid>742824</requestid>
   </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>2be8107ad8ed66868513a190d6cca105</srcmd5>
+    <version>7.3.11</version>
+    <time>1573853565</time>
+    <user>dimstar_suse</user>
+    <comment>Do not provide php* by php-test (forwarded request 747657 from dimstar)</comment>
+    <requestid>747666</requestid>
+  </revision>
 </revisionlist>

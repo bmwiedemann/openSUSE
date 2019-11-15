@@ -147,6 +147,7 @@ Suggests:       php7-gettext
 Suggests:       php7-mbstring
 Suggests:       php7-mysql
 Suggests:       php7-pear
+%if %{without test}
 ## Provides
 Provides:       php = %{version}
 Provides:       php-api = %{apiver}
@@ -169,6 +170,7 @@ Provides:       zend = %{zendver}
 Obsoletes:      php < %{version}
 Obsoletes:      php5
 Obsoletes:      php7-mcrypt
+%endif
 %if %{build_firebird}
 # firebird-devel was merged into libfbclient2-devel for firebird 3
 %if 0%{?suse_version} <= 1320
