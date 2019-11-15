@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 12 11:01:08 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.3.php
+- Changes since 5.17.2:
+  * [applets/weather] Reduce label minimum width to accommodate narrow vertical panels (kde#413592)
+  * [applets/weather] Don't show temp label in panel when it's blank (kde#413702)
+
+-------------------------------------------------------------------
 Tue Oct 29 20:45:52 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.2
