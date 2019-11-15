@@ -1639,4 +1639,12 @@
     <comment>New stable + patch</comment>
     <requestid>737582</requestid>
   </revision>
+  <revision rev="219" vrev="2">
+    <srcmd5>8b14dad0c8f8b2ddb9de18800926215f</srcmd5>
+    <version>3.34.1</version>
+    <time>1573853416</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 746520 from iznogood)</comment>
+    <requestid>747635</requestid>
+  </revision>
 </revisionlist>

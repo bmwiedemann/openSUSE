@@ -61,6 +61,8 @@ Patch8:         gdm-add-runtime-option-to-disable-starting-X-server-as-u.patch
 Patch9:         gdm-initial-setup-hardening.patch
 # PATCH-FIX-OPENSUSE gdm-s390-not-require-g-s-d_wacom.patch bsc#1129412 yfjiang@suse.com -- Remove the runtime requirement of g-s-d Wacom plugin
 Patch13:        gdm-s390-not-require-g-s-d_wacom.patch
+# PATCH-FIX-UPSTREAM gdm-switch-user-tty7.patch bsc#1155408 glgo#GNOME#gdm#532 xwang@suse.com -- Switch to tty7 when switch user
+Patch14:        gdm-switch-user-tty7.patch
 ### NOTE: Keep please SLE-only patches at bottom (starting on 1000).
 # PATCH-FIX-SLE gdm-disable-gnome-initial-setup.patch bnc#1067976 qzhao@suse.com -- Disable gnome-initial-setup runs before gdm, g-i-s will only serve for CJK people to choose the input-method after login.
 Patch1000:      gdm-disable-gnome-initial-setup.patch
@@ -216,6 +218,7 @@ cp %{SOURCE8} .
 %ifarch s390 s390x
 %patch13 -p1
 %endif
+%patch14 -p1
 
 # SLE-only patches start at 1000
 %if !0%{?is_opensuse}
