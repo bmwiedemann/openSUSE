@@ -60,4 +60,13 @@
 - Commit _servicedata for consistent generation across contributors (forwarded request 730467 from jfkw)</comment>
     <requestid>730483</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>7f51f68d9796c7071a718792dd1b0aea</srcmd5>
+    <version>1.12+git20190313.aa829657</version>
+    <time>1573853989</time>
+    <user>dimstar_suse</user>
+    <comment>- Add WORKSPACE file and use bazel-gazelle to generate BUILD files
+  for Bazel. (forwarded request 748935 from mrostecki)</comment>
+    <requestid>748939</requestid>
+  </revision>
 </revisionlist>

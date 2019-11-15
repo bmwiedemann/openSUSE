@@ -33,8 +33,10 @@ Url:            https://%{provider_prefix}
 Source0:        %{repo}-%{version}.tar.xz
 Source1:        rpmlintrc
 Source2:        godoc.service
+Source3:        WORKSPACE
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
+BuildRequires:  bazel-gazelle
 BuildRequires:  fdupes
 BuildRequires:  find
 BuildRequires:  golang-packaging
@@ -71,7 +73,9 @@ This package contains additional toolsgraphy libraries that are developed by the
 Go team but outside of the main source tree.
 
 %prep
-%setup -q -n %{repo}-%{version}
+%autosetup -n %{repo}-%{version} -p1
+cp %{SOURCE3} .
+gazelle -go_prefix %{import_path}
 
 rm -rf cover
 rm -rf cmd/cover

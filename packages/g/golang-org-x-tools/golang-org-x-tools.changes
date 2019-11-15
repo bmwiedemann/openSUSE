@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  5 11:19:46 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Add WORKSPACE file and use bazel-gazelle to generate BUILD files
+  for Bazel.
+
+-------------------------------------------------------------------
 Thu Sep 12 17:30:16 UTC 2019 - jkowalczyk@suse.com
 
 - Update to version 1.12+git20190313.aa829657:
