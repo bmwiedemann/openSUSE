@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Nov 12 08:34:36 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Update to mailutils 3.8
+  * The maidag utility is withdrawn (CVE-2019-18862, bsc#1156495)
+    The main purpose of this utility was to work as local mail delivery
+    agent (MDA), a program responsible for final delivery of email messages
+    to the recipient's mailbox.  As such it required suid privileges.
+    In parallel with its main purpose, it also was able to work in two
+    other modes: the 'url' mode, designed to deliver mails to arbitrary
+    mailbox URLs, and 'lmtp' mode, in which it acted as local mail
+    transport daemon.  Neither of these needed suid privileges.
+    The unfortunate design decision to combine the three modes in a single
+    versatile tool resulted in local privilege escalation threat in 'url'
+    mode.
+    To fix this, maidag has been replaced by three different utilities,
+    each one with a precisely defined purpose and carefully designed
+    privileges: mda, lmtpd, and putmail.
+  * mda
+  * lmtpd
+  * putmail
+  * Use of TLS in pop3d run from inetd
+  * comsatd --test
+  * mail
+    ** fix the semantics of 'hold' and 'keepsave' variables
+    ** New message type specification ":s"
+
+-------------------------------------------------------------------
 Wed Oct 30 10:27:43 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 3.7

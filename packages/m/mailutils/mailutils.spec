@@ -24,12 +24,12 @@
 %define somajor 5
 
 Name:           mailutils
-Version:        3.7
+Version:        3.8
 Release:        0
 Summary:        GNU Mailutils
 License:        LGPL-3.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Networking/Email/Clients
-Url:            https://mailutils.org/
+URL:            https://mailutils.org/
 Source:         ftp://ftp.gnu.org/gnu/mailutils/%{name}-%{version}.tar.xz
 Source1:        %{name}-3.5-guile-2.0.tar.xz
 Source2:        %{name}-rpmlintrc
@@ -242,7 +242,7 @@ export PATH CC CXX CFLAGS CXXFLAGS
     --disable-rpath		\
 %if %{without set_user_identity}
     --disable-build-dotlock	\
-    --disable-build-maidag	\
+    --disable-build-mda	\
 %endif
 %if 0
     --disable-silent-rules	\
@@ -413,7 +413,9 @@ fi
 %if %{with set_user_identity}
 %files delivery
 %defattr(-,root,root)
-%attr(04755,root,root) %verify(not mode) %{_sbindir}/maidag
+%{_sbindir}/lmtpd
+%attr(04755,root,root) %verify(not mode) %{_sbindir}/mda
+%{_bindir}/putmail
 %endif
 
 %files notify

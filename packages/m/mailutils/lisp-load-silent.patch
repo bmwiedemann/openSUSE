@@ -4,7 +4,7 @@
 
 --- mh/etc/mailutils-mh.eli
 +++ mh/etc/mailutils-mh.eli	2018-05-30 10:14:00.665396617 +0000
-@@ -19,7 +19,7 @@
+@@ -18,7 +18,7 @@
  (setq mh-progs "BINDIR")
  (setq mh-lib "MHLIBDIR")
  (setq mh-lib-progs mh-progs)

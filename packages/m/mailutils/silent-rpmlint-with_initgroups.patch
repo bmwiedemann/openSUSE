@@ -6,7 +6,7 @@
 
 --- comsat/comsat.c
 +++ comsat/comsat.c	2018-06-07 08:51:30.882263156 +0000
-@@ -516,6 +516,7 @@ change_user (const char *user)
+@@ -535,6 +535,7 @@ change_user (const char *user)
        return 1;
      }
  
@@ -16,7 +16,7 @@
    chdir (pw->pw_dir);
 --- comsat/comsat.h
 +++ comsat/comsat.h	2018-06-07 09:57:24.467620564 +0000
-@@ -36,6 +36,7 @@
+@@ -35,6 +35,7 @@
  #include <syslog.h>
  #include <string.h>
  #include <pwd.h>
@@ -26,7 +26,7 @@
  
 --- pop3d/user.c
 +++ pop3d/user.c	2018-06-07 08:56:38.448784813 +0000
-@@ -38,8 +38,10 @@ pop3d_begin_session ()
+@@ -37,8 +37,10 @@ pop3d_begin_session ()
        return ERR_LOGIN_DELAY;
      }
    
