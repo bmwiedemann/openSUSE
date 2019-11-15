@@ -47,4 +47,22 @@
     <comment></comment>
     <requestid>628139</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3113fa3f77f462b837969aaa695812b2</srcmd5>
+    <version>0.93.2</version>
+    <time>1573853895</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.93.2
+  * Lightmaps are now dynamically allocated (from QSS), and
+    BLOCK_WIDTH/HEIGHT raised from 128 to 256.
+  * Fixed several uncheked limits that would crash the Slayer's
+    Testaments mod
+  * Raised MAXALIASTRIS from 2048 to 4096, so that the Slayer's
+    Testaments mod works.
+  * Fixed 'pants' and 'shirt' types so that those textures load
+    correctly on platforms where char is unsigned by default
+  • Update the third-party libraries. Other fixes/cleanups.
+</comment>
+    <requestid>748788</requestid>
+  </revision>
 </revisionlist>

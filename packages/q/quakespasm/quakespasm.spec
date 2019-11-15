@@ -1,7 +1,7 @@
 #
 # spec file for package quakespasm
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2017 Luke Jones <luke.nukem.jones@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,12 +13,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           quakespasm
-Version:        0.93.1
+Version:        0.93.2
 Release:        0
 Summary:        A Quake Engine
 License:        GPL-2.0-or-later
