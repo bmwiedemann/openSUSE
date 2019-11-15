@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  8 12:20:14 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
+
+- Disable Link Time Optimization (LTO) (boo#1156301)
+
+-------------------------------------------------------------------
 Tue Oct  8 17:31:00 UTC 2019 - Michael Ströder <michael@stroeder.com>
 
 - update to 2.3.8 and pigeonhole to 0.5.8

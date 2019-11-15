@@ -16,6 +16,8 @@
 #
 
 
+%global _lto_cflags %{nil}
+
 Name:           dovecot23
 Version:        2.3.8
 Release:        0
