@@ -2655,4 +2655,12 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
   * chromium-old-glibc-noexcept.patch</comment>
     <requestid>745998</requestid>
   </revision>
+  <revision rev="237" vrev="1">
+    <srcmd5>efa97e4b681c891a0dba8a63d8742d9f</srcmd5>
+    <version>78.0.3904.97</version>
+    <time>1573853930</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>748909</requestid>
+  </revision>
 </revisionlist>
