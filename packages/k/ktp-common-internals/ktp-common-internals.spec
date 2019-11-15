@@ -32,6 +32,8 @@ Source:         https://download.kde.org/stable/applications/%{version}/src/%{na
 Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         Fix-build-with-telepathy-qt-0.9.8.patch
 BuildRequires:  doxygen
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
@@ -58,10 +60,12 @@ BuildRequires:  telepathy-accounts-signon
 BuildRequires:  telepathy-logger-qt5-devel
 BuildRequires:  telepathy-mission-control-devel
 BuildRequires:  telepathy-qt5-devel
+BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Qml) >= 5.2.0
 BuildRequires:  pkgconfig(Qt5Sql) >= 5.2.0
 BuildRequires:  pkgconfig(Qt5Test) >= 5.2.0
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.2.0
+BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(libotr) >= 4.0.0
 Requires:       ktp-icons
 Requires:       telepathy-accounts-signon
@@ -109,6 +113,7 @@ icons for all the KDE Telepathy packages.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
   %cmake_kf5 -d build

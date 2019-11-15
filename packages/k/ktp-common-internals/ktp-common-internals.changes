@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 14 20:35:30 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add Fix-build-with-telepathy-qt-0.9.8.patch to fix build with
+  telepathy-qt 0.9.8
+- Update build requirements
+
+-------------------------------------------------------------------
 Thu Nov  7 23:13:24 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.3
