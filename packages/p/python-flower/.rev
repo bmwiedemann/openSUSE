@@ -51,4 +51,12 @@
   * restrict release dependencies with version upper-bound</comment>
     <requestid>687612</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>4c4447069e5ca59c20f0fee1d43ffc7b</srcmd5>
+    <version>0.9.3</version>
+    <time>1573854012</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %pytest instead of python setup.py test combination.</comment>
+    <requestid>748961</requestid>
+  </revision>
 </revisionlist>
