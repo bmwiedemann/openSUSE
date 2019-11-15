@@ -1,7 +1,7 @@
 #
 # spec file for package python-queuelib
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,17 +22,17 @@ Version:        1.5.0
 Release:        0
 Summary:        Collection of Persistent (Disk-Based) Queues
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
-Url:            https://github.com/scrapy/queuelib
+URL:            https://github.com/scrapy/queuelib
 Source:         https://files.pythonhosted.org/packages/source/q/queuelib/queuelib-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
