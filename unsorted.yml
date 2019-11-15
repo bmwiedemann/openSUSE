@@ -23279,6 +23279,8 @@ unsorted:
   - ruby2.6-rubygem-rubyntlm-doc 
   - ruby2.6-rubygem-rubyntlm-testsuite 
   - ruby2.6-rubygem-rubyzip-doc 
+  - ruby2.6-rubygem-rubyzip-doc-1.3 
+  - ruby2.6-rubygem-rubyzip-testsuite-1.3 
   - ruby2.6-rubygem-safe_yaml-doc 
   - ruby2.6-rubygem-safe_yaml-testsuite 
   - ruby2.6-rubygem-sass-doc 
@@ -23406,9 +23408,7 @@ unsorted:
   - ruby2.6-rubygem-websocket-extensions-doc 
   - ruby2.6-rubygem-websocket-testsuite 
   - ruby2.6-rubygem-winrm-doc-2_1 
-  - ruby2.6-rubygem-winrm-elevated 
   - ruby2.6-rubygem-winrm-elevated-doc 
-  - ruby2.6-rubygem-winrm-fs 
   - ruby2.6-rubygem-winrm-fs-doc 
   - ruby2.6-rubygem-xdg-doc 
   - ruby2.6-rubygem-xml-simple-doc 

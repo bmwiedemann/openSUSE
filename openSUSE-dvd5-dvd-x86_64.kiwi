@@ -4999,6 +4999,7 @@
       <repopackage name="ruby2.6-rubygem-rubyforge"/>
       <repopackage name="ruby2.6-rubygem-rubyntlm"/>
       <repopackage name="ruby2.6-rubygem-rubyzip"/>
+      <repopackage name="ruby2.6-rubygem-rubyzip-1.3"/>
       <repopackage name="ruby2.6-rubygem-safe_yaml"/>
       <repopackage name="ruby2.6-rubygem-sass"/>
       <repopackage name="ruby2.6-rubygem-sass-listen"/>
@@ -5081,6 +5082,8 @@
       <repopackage name="ruby2.6-rubygem-websocket-driver-0_6"/>
       <repopackage name="ruby2.6-rubygem-websocket-extensions"/>
       <repopackage name="ruby2.6-rubygem-winrm-2_1"/>
+      <repopackage name="ruby2.6-rubygem-winrm-elevated"/>
+      <repopackage name="ruby2.6-rubygem-winrm-fs"/>
       <repopackage name="ruby2.6-rubygem-xdg"/>
       <repopackage name="ruby2.6-rubygem-xml-simple"/>
       <repopackage name="ruby2.6-rubygem-xmlhash"/>
