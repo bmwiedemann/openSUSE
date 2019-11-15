@@ -436,6 +436,7 @@ unsorted:
   - amtu 
   - analitza-devel 
   - analyzeMFT 
+  - android-udev-rules 
   - angelscript 
   - angelscript-devel 
   - anjuta-devel 
@@ -871,6 +872,77 @@ unsorted:
   - awesome-vicious 
   - aws-cli 
   - aws-efs-utils 
+  - aws-sdk-java 
+  - aws-sdk-java-acm 
+  - aws-sdk-java-api-gateway 
+  - aws-sdk-java-applicationautoscaling 
+  - aws-sdk-java-autoscaling 
+  - aws-sdk-java-bom 
+  - aws-sdk-java-cloudformation 
+  - aws-sdk-java-cloudfront 
+  - aws-sdk-java-cloudhsm 
+  - aws-sdk-java-cloudsearch 
+  - aws-sdk-java-cloudtrail 
+  - aws-sdk-java-cloudwatch 
+  - aws-sdk-java-cloudwatchmetrics 
+  - aws-sdk-java-codecommit 
+  - aws-sdk-java-codedeploy 
+  - aws-sdk-java-codepipeline 
+  - aws-sdk-java-cognitoidentity 
+  - aws-sdk-java-cognitoidp 
+  - aws-sdk-java-cognitosync 
+  - aws-sdk-java-config 
+  - aws-sdk-java-core 
+  - aws-sdk-java-datapipeline 
+  - aws-sdk-java-devicefarm 
+  - aws-sdk-java-directconnect 
+  - aws-sdk-java-directory 
+  - aws-sdk-java-discovery 
+  - aws-sdk-java-dms 
+  - aws-sdk-java-dynamodb 
+  - aws-sdk-java-ec2 
+  - aws-sdk-java-ecr 
+  - aws-sdk-java-ecs 
+  - aws-sdk-java-efs 
+  - aws-sdk-java-elasticache 
+  - aws-sdk-java-elasticbeanstalk 
+  - aws-sdk-java-elasticloadbalancing 
+  - aws-sdk-java-elasticsearch 
+  - aws-sdk-java-elastictranscoder 
+  - aws-sdk-java-emr 
+  - aws-sdk-java-events 
+  - aws-sdk-java-gamelift 
+  - aws-sdk-java-glacier 
+  - aws-sdk-java-iam 
+  - aws-sdk-java-importexport 
+  - aws-sdk-java-inspector 
+  - aws-sdk-java-iot 
+  - aws-sdk-java-javadoc 
+  - aws-sdk-java-kinesis 
+  - aws-sdk-java-kms 
+  - aws-sdk-java-lambda 
+  - aws-sdk-java-logs 
+  - aws-sdk-java-machinelearning 
+  - aws-sdk-java-marketplacecommerceanalytics 
+  - aws-sdk-java-marketplacemeteringservice 
+  - aws-sdk-java-opsworks 
+  - aws-sdk-java-pom 
+  - aws-sdk-java-rds 
+  - aws-sdk-java-redshift 
+  - aws-sdk-java-route53 
+  - aws-sdk-java-s3 
+  - aws-sdk-java-ses 
+  - aws-sdk-java-simpledb 
+  - aws-sdk-java-simpleworkflow 
+  - aws-sdk-java-sns 
+  - aws-sdk-java-sqs 
+  - aws-sdk-java-ssm 
+  - aws-sdk-java-storagegateway 
+  - aws-sdk-java-sts 
+  - aws-sdk-java-support 
+  - aws-sdk-java-test-utils 
+  - aws-sdk-java-waf 
+  - aws-sdk-java-workspaces 
   - ax25-tools 
   - axel 
   - axis 
@@ -5678,6 +5750,11 @@ unsorted:
   - jbigkit 
   - jboss-interceptors-1.2-api 
   - jboss-interceptors-1.2-api-javadoc 
+  - jboss-logmanager 
+  - jboss-logmanager-javadoc 
+  - jboss-marshalling 
+  - jboss-marshalling-javadoc 
+  - jboss-marshalling-osgi 
   - jboss-modules 
   - jboss-modules-javadoc 
   - jboss-parent 
@@ -5718,6 +5795,7 @@ unsorted:
   - jemalloc-devel 
   - jemmy 
   - jemmy-javadoc 
+  - jenkins-json-lib 
   - jeos-firstboot 
   - jeos-firstboot-rpiwifi 
   - jettison 
@@ -5853,6 +5931,8 @@ unsorted:
   - jshon 
   - jsmn-devel 
   - json-glib-devel 
+  - json-lib 
+  - json-lib-javadoc 
   - json-table 
   - jsoncpp-devel 
   - jsonp 
@@ -6448,6 +6528,8 @@ unsorted:
   - krunner-devel 
   - krunner-devel-32bit: [x86_64] 
   - krusader-doc 
+  - kryo 
+  - kryo-javadoc 
   - kscreenlocker-devel 
   - kservice-32bit: [x86_64] 
   - kservice-devel 
@@ -13884,6 +13966,8 @@ unsorted:
   - netsniff-ng 
   - netsurf-buildsystem 
   - nettle 
+  - netty 
+  - netty-javadoc 
   - network-autoconfig 
   - neverball 
   - neverball-doc 
@@ -17778,7 +17862,6 @@ unsorted:
   - python2-backports.unittest_mock 
   - python2-backports.weakref 
   - python2-backports_abc 
-  - python2-bandit 
   - python2-barbicanclient 
   - python2-baron 
   - python2-bashate 
@@ -18352,7 +18435,6 @@ unsorted:
   - python2-jedihttp 
   - python2-jenkins-job-builder 
   - python2-jenkinsapi 
-  - python2-jgraph 
   - python2-jinja2-fsloader 
   - python2-jinja2-pluralize 
   - python2-jinja2-time 
@@ -18387,10 +18469,7 @@ unsorted:
   - python2-jupyter_contrib_core 
   - python2-jupyter_core 
   - python2-jupyter_highlight_selected_word 
-  - python2-jupyter_latex_envs 
-  - python2-jupyter_nbextensions_configurator 
   - python2-jupyter_sphinx 
-  - python2-jupyterlab-pygments 
   - python2-jupytext 
   - python2-jwcrypto 
   - python2-k5test 
@@ -19022,6 +19101,7 @@ unsorted:
   - python2-pytest-tornado 
   - python2-pytest-translations 
   - python2-pytest-travis-fold 
+  - python2-pytest-twisted 
   - python2-pytest-vcr 
   - python2-pytest-verbose-parametrize 
   - python2-pytest-virtualenv 
@@ -19104,7 +19184,6 @@ unsorted:
   - python2-pyzmq 
   - python2-pyzmq-devel 
   - python2-q 
-  - python2-qgrid 
   - python2-qrcode 
   - python2-qscintilla-qt5 
   - python2-qt3d-qt5 
@@ -21538,6 +21617,7 @@ unsorted:
   - python3-pytest-translations 
   - python3-pytest-travis-fold 
   - python3-pytest-trio 
+  - python3-pytest-twisted 
   - python3-pytest-vcr 
   - python3-pytest-verbose-parametrize 
   - python3-pytest-virtualenv 
