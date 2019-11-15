@@ -1,7 +1,7 @@
 From 79bdf20d3c293293730548f20e329f3c726f5091 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Wed, 17 Jul 2019 10:59:07 +0200
-Subject: [PATCH 11/14] Bump rspec-its dependency
+Subject: [PATCH 11/15] Bump rspec-its dependency
 
 ---
  vagrant.gemspec | 2 +-
@@ -21,5 +21,5 @@ index c7a2d436c..04561f9c9 100644
    s.add_development_dependency "fake_ftp", "~> 0.1.1"
  
 -- 
-2.23.0
+2.24.0
 

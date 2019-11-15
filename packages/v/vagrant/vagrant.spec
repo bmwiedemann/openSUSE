@@ -58,12 +58,16 @@ Patch7:         0007-do-not-abuse-relative-paths-in-docker-plugin-to-make.patch
 Patch8:         0008-Don-t-abuse-relative-paths-in-plugins.patch
 Patch9:         0009-Fix-unit-tests-for-GuestLinux-Cap-Halt.patch
 Patch10:        0010-Skip-failing-tests.patch
+# FIXME: merged, drop at next release after v2.2.6
 # https://github.com/hashicorp/vagrant/pull/10991
 Patch11:        0011-Bump-rspec-its-dependency.patch
+# FIXME: merged, drop at next release after v2.2.6
 # https://github.com/hashicorp/vagrant/pull/10945
 Patch12:        0012-Do-not-list-load-dependencies-if-vagrant-spec-is-not.patch
 Patch13:        0013-Catch-NetworkNoInterfaces-error-in-docker-prepare_ne.patch
-Patch14:        0014-ARM-only-Disable-Subprocess-unit-test.patch
+# FIXME: upstream fix, drop at next release after v2.2.6
+Patch14:        0014-Bump-rubyzip-version-to-fix-CVE-2019-16892.patch
+Patch15:        0015-ARM-only-Disable-Subprocess-unit-test.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -118,8 +122,8 @@ BuildRequires:  %{rubygem rb-kqueue:0.2 }
 #  s.add_dependency "rest-client", ">= 1.6.0", "< 3.0"
 BuildRequires:  %{rubygem rest-client >= 1.6}
 BuildConflicts:  %{rubygem rest-client >= 3.0}
-#  s.add_dependency "rubyzip", "~> 1.2.2"
-BuildRequires:  %{rubygem rubyzip:1.2 >= 1.2.2}
+#  s.add_dependency "rubyzip", "~> 1.3"
+BuildRequires:  %{rubygem rubyzip:1 >= 1.3}
 # Intentionally removed, wdm only works on Windows
 # BuildRequires:  %%{rubygem wdm }
 #  s.add_dependency "winrm", "~> 2.1"
@@ -136,7 +140,7 @@ BuildRequires:  %{rubygem vagrant_cloud:2.0 >= 2.0.3 }
 BuildRequires:  %{rubygem rake:12.0 }
 #  s.add_development_dependency "rspec", "~> 3.5.0"
 BuildRequires:  %{rubygem rspec:3.5 }
-# PATCHED
+# FIXME: PATCHED
 #  s.add_development_dependency "rspec-its", "~> 1.3.0"
 BuildRequires:  %{rubygem rspec-its:1.3 }
 #  s.add_dependency "ruby_dep", "<= 1.3.1"
@@ -202,6 +206,8 @@ Requires:       %{rubygem rb-kqueue:0.2}
 #  s.add_dependency "rest-client", ">= 1.6.0", "< 3.0"
 Requires:       %{rubygem rest-client >= 1.6}
 Requires:       %{rubygem rest-client < 3.0}
+#  s.add_dependency "rubyzip", "~> 1.3"
+Requires:       %{rubygem rubyzip:1 >= 1.3}
 #   s.add_dependency "wdm", "~> 0.1.0"
 # skip wdm, Windows only
 #  s.add_dependency "winrm", "~> 2.1"
@@ -287,9 +293,10 @@ Optional dependency offering bash completion for vagrant
 %patch11 -p 1
 %patch12 -p 1
 %patch13 -p 1
+%patch14 -p 1
 # disable the subprocess test only on ARM
 %ifarch %{arm} aarch64
-%patch14 -p 1
+%patch15 -p 1
 %endif
 
 cp %{SOURCE98} .

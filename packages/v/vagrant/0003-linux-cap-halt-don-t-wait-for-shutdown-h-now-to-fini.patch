@@ -1,7 +1,7 @@
 From 5323b2746d765bee3fd9aa739bf3d0e120eb1874 Mon Sep 17 00:00:00 2001
 From: Antonio Terceiro <terceiro@softwarelivre.org>
 Date: Tue, 3 Feb 2015 10:35:17 -0200
-Subject: [PATCH 03/14] linux/cap/halt: don't wait for `shutdown -h now` to
+Subject: [PATCH 03/15] linux/cap/halt: don't wait for `shutdown -h now` to
  finish
 
 When running a Debian 8 lxc guest (with the vagrant-lxc plugin), which
@@ -27,5 +27,5 @@ index 60dc5dde4..657636eaf 100644
              # Do nothing, because it probably means the machine shut down
              # and SSH connection was lost.
 -- 
-2.23.0
+2.24.0
 

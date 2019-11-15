@@ -1,7 +1,7 @@
-From 751a501fa2952f78d60085272dafc96a97d95cc0 Mon Sep 17 00:00:00 2001
+From 75b7fca0c98396ee755c329f002c8e2afa18dae0 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Wed, 28 Aug 2019 13:39:58 +0200
-Subject: [PATCH 14/14] [ARM only] Disable Subprocess unit test
+Subject: [PATCH 15/15] [ARM only] Disable Subprocess unit test
 
 This unit test is *very* flaky on OBS' ARM workers and causes random build
 failures. These are probably caused by worker being under high load and then
@@ -33,5 +33,5 @@ index 81da0e635..a2a2270a0 100644
          sleep(0.1)
          expect(sp.stop).to be(true)
 -- 
-2.23.0
+2.24.0
 

@@ -1,7 +1,7 @@
 From bc275fb74fbb6948246427549f04f0a4323a1747 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Thu, 24 Oct 2019 12:29:43 +0200
-Subject: [PATCH 13/14] Catch NetworkNoInterfaces error in docker
+Subject: [PATCH 13/15] Catch NetworkNoInterfaces error in docker
  prepare_networks_test
 
 The test "generates a network name and configuration" calls at the end
@@ -43,5 +43,5 @@ index 524db9533..3461c3e05 100644
    end
  
 -- 
-2.23.0
+2.24.0
 
