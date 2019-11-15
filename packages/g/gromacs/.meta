@@ -9,5 +9,4 @@ dynamic libs and executables; to hack new utility programs you also
 need the headers and static libs in gromacs-dev. Linux kernel 2.4 or
 later is STRONGLY recommended on Pentium III and later processors since
 GROMACS then can use assembly loops with SSE instructions.</description>
-  <devel project="science" package="gromacs"/>
 </package>

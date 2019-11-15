@@ -16,20 +16,25 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 # Build with OpenMPI
+%if 0%{?sle_version} == 0
+%define mpiver  openmpi2
+Obsoletes: gromacs-openmpi < %{version}
+%else
 %if 0%{?sle_version} <= 120300
 %define mpiver  openmpi
 %else
+Obsoletes: gromacs-openmpi < %{version}
   %if 0%{?sle_version} <= 150000
   %define mpiver  openmpi2
   %else
   %define mpiver  openmpi3
   %endif
 %endif
+%endif
 
 Name:           gromacs
-Version:        2019.2
+Version:        2019.4
 Release:        0
 %define uversion %{version}
 %define sover   4
