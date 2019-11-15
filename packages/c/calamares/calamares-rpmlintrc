@@ -6,7 +6,10 @@ addFilter("calamares.*devel-file-in-non-devel-package.*/usr/lib.*/calamares/libc
 # calamares-libs3.i586: W: shared-lib-calls-exit /usr/lib/libcalamares.so.3.1.1 exit@GLIBC_2.0
 addFilter("calamares.*shared-lib-calls-exit /usr/lib.*/libcalamares.*exit@GLIBC.*")
 
-# xdg-utils is among requirements of Calamares.
+# Polkit pkexec is among requirements of Calamares for openSUSE Tumbleweed.
+addFilter("calamares.*desktopfile-without-binary.*calamares.desktop pkexec")
+
+# xdg-utils is among requirements of Calamares for openSUSE Leap 15.
 addFilter("calamares.*desktopfile-without-binary.*calamares.desktop xdg-su")
 
 # despide of warning, `desktop-file-validate calamares.desktop` shows no errors

@@ -1,16 +1,17 @@
-* Use xdg-su instead of pkexec.
-* Avoid rpmlint warnings about invalid calamares.desktop value "calamares;system;installer":
-  for locale string list key "Keywords" in group "Desktop Entry" does not have a semicolon (';') as trailing character
+* Use xdg-su instead of pkexec in openSUSE Leap 15 (pkexec works in Tumbleweed). 
+Because if we use pkexec, we get error in openSUSE Leap 15:
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-root'
+No protocol specified
+No protocol specified
+qt.qpa.screen: QXcbConnection: Could not connect to display :0
+Could not connect to any X display.
 
 diff --git a/calamares.desktop b/calamares.desktop
 --- a/calamares.desktop
 +++ b/calamares.desktop
-@@ -3,9 +3,9 @@
- Version=1.0
- Name=Calamares
+@@ -5,7 +5,7 @@
  GenericName=System Installer
--Keywords=calamares;system;installer
-+Keywords=calamares;system;installer;
+ Keywords=calamares;system;installer;
  TryExec=calamares
 -Exec=pkexec /usr/bin/calamares
 +Exec=xdg-su -c /usr/bin/calamares
