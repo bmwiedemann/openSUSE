@@ -21,7 +21,7 @@
 %define fontdir %{_datadir}/fonts/%{name}
 %define docdir  %{_docdir}/%{name}
 Name:           musescore
-Version:        3.3.0
+Version:        3.3.1
 Release:        0
 Summary:        A WYSIWYG music score typesetter
 # Musescore code license is GPL-2.0
@@ -30,7 +30,7 @@ Summary:        A WYSIWYG music score typesetter
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-only AND LGPL-3.0-only AND MIT
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
 URL:            https://musescore.org
-Source0:        https://github.com/musescore/MuseScore/archive/v%{version_lesser}/MuseScore-%{version_lesser}.tar.gz
+Source0:        https://github.com/musescore/MuseScore/archive/v%{version}/MuseScore-%{version}.tar.gz
 Source1:        %{rname}.desktop
 # PATCH-FIX-UPSTREAM: see https://github.com/musescore/MuseScore/releases
 Patch0:         correct-revision.patch
@@ -95,11 +95,8 @@ BuildArch:      noarch
 Additional fonts for use by the MuseScore music notation program.
 
 %prep
-%setup -q -n MuseScore-%{version_lesser}
+%setup -q -n MuseScore-%{version}
 %patch0 -p1
-
-# remove precompiled binary
-rm thirdparty/rtf2html/rtf2html
 
 # fix EOL encoding
 sed 's/\r$//' fonts/bravura/OFL-FAQ.txt > tmpfile

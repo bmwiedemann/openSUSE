@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 13 14:26:14 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 3.3.1:
+  * MuseScore crashed on startup in some cases on Windows 7
+  * Palettes were incorrectly placed when using multiple HighDPI
+    monitors and scaling
+  * Palettes disappeared on Ubuntu 18.04 in some cases
+- Update correct-revision.patch
+- Remove line from spec to remove rtf2html binary: it is no longer
+  part of the source tarball
+
+-------------------------------------------------------------------
 Tue Nov  5 08:44:37 UTC 2019 - Cor Blom <cornelis@solcon.nl>
 
 - -DCMAKE_BUILD_TYPE=RELEASE need to be set explicitly

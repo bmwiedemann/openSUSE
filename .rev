@@ -136,4 +136,19 @@
   essential but nice to have. Enabling it gives a build error</comment>
     <requestid>745467</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>033ab60cd27df00da321d830c5981e60</srcmd5>
+    <version>3.3.1</version>
+    <time>1573771932</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.1:
+  * MuseScore crashed on startup in some cases on Windows 7
+  * Palettes were incorrectly placed when using multiple HighDPI
+    monitors and scaling
+  * Palettes disappeared on Ubuntu 18.04 in some cases
+- Update correct-revision.patch
+- Remove line from spec to remove rtf2html binary: it is no longer
+  part of the source tarball</comment>
+    <requestid>748356</requestid>
+  </revision>
 </revisionlist>
