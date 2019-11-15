@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 15 06:16:30 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add Fix-tabs-not-indicating-activity.patch to fix indicating
+  activity in background tabs (kde#406828)
+
+-------------------------------------------------------------------
 Thu Nov  7 23:13:13 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.3

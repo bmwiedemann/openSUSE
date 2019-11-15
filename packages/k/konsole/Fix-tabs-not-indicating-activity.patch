@@ -1,0 +1,49 @@
+From 69a8a99d15eef1a3cc7782cc8ff5df132b997cd1 Mon Sep 17 00:00:00 2001
+From: Petr Velan <petr.velan@gmail.com>
+Date: Thu, 7 Nov 2019 09:18:30 -0500
+Subject: Fix tabs not indicating activity
+
+Summary:
+This fixes the bug with tabs not indicating terminal activity.
+When the tab is split and has multiple child terminals, activity in any
+of the child terminals will be indicated.
+
+BUG: 406828
+FIXED-IN: 19.12.0
+
+Test Plan:
+Open two tabs, run  `sleep 2` in the first one and switch to the other.
+After the sleep ends, the tab activity is indicated just as it was before
+the bug was introduced.
+
+Reviewers: #konsole, hindenburg
+
+Reviewed By: #konsole, hindenburg
+
+Subscribers: hindenburg, anthonyfieroni, nucleo, konsole-devel, #konsole
+
+Tags: #konsole
+
+Differential Revision: https://phabricator.kde.org/D25151
+---
+ src/ViewContainer.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/ViewContainer.cpp b/src/ViewContainer.cpp
+index 8115730..5002c97 100644
+--- a/src/ViewContainer.cpp
++++ b/src/ViewContainer.cpp
+@@ -543,7 +543,9 @@ void TabbedViewContainer::setTabActivity(int index, bool activity)
+ void TabbedViewContainer::updateActivity(ViewProperties *item)
+ {
+     auto controller = qobject_cast<SessionController*>(item);
+-    auto index = indexOf(controller->view());
++    auto topLevelSplitter = qobject_cast<ViewSplitter*>(controller->view()->parentWidget())->getToplevelSplitter();
++
++    const int index = indexOf(topLevelSplitter);
+     if (index != currentIndex()) {
+         setTabActivity(index, true);
+     }
+-- 
+cgit v1.1
+
