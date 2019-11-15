@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           discover
-Version:        5.17.2
+Version:        5.17.3
 Release:        0
 Summary:        Software store for the KDE Plasma desktop
 License:        GPL-2.0-only AND GPL-3.0-only AND GPL-3.0-or-later

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Nov 12 11:01:06 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.3.php
+- Changes since 5.17.2:
+  * flatpak: --verbosity
+  * ui: fix updates page
+  * flatpak: show an error message when remotes are faulty
+  * pk+suse: include a hack to allow apps to be executed (kde#412986)
+  * pk: fix fallback invocation plan
+  * ui: improve busy indicator handling (kde#412908)
+  * kns: don't read globals when loading KNS files
+  * flatpak: save quite some unnecessary QString allocations at startup
+  * app page: fix display of faulty screenshots (kde#413812)
+  * --qml warnings
+  * --warnings
+  * kns: fetching details might increase the description we have
+  * --qclp runtime warnings
+  * ui: remove LinkLabel
+  * Fix qml warnings
+  * Address qml tests
+  * dummy: fix test
+  * Help cmake find the tests
+  * flatpak: make test more resilient
+  * flatpak: downloading flathub metadata takes a while
+  * flatpak: remove duplicated code
+  * kns: fix test
+
+-------------------------------------------------------------------
 Tue Oct 29 20:45:50 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.2
