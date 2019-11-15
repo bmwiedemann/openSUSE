@@ -27,19 +27,8 @@
 %define _name webkitgtk
 # gold linker not available on old s390/s390x
 %define _gold_linker 1
-%if 0%{?suse_version} < 1320
-%ifarch s390 s390x
-%define _gold_linker 0
-%endif
-%else
 %ifarch ppc s390
 %define _gold_linker 0
-%endif
-%endif
-%if 0%{?suse_version} >= 1500
-%bcond_without python3
-%else
-%bcond_with python3
 %endif
 Name:           webkit2gtk3
 Version:        2.26.2
@@ -54,6 +43,8 @@ Source98:       baselibs.conf
 Source99:       webkit2gtk3.keyring
 # PATCH-FIX-OPENSUSE webkit2gtk3-fdo-soname.patch mgorse@suse.com -- don't call dlopen with an unversioned soname.
 Patch0:         webkit2gtk3-fdo-soname.patch
+# PATCh-FIX-UPSTREAM webkit2gtk3-icu-build-fix.patch mgorse@suse.com -- fix build with icu 65.1.
+Patch1:         webkit2gtk3-icu-build-fix.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
@@ -61,7 +52,9 @@ BuildRequires:  Mesa-libGLESv1_CM-devel
 BuildRequires:  Mesa-libGLESv2-devel
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  bison >= 2.3
+%if 0%{?suse_version} > 1510
 BuildRequires:  bubblewrap
+%endif
 BuildRequires:  cmake
 BuildRequires:  enchant-devel
 BuildRequires:  gobject-introspection-devel
@@ -73,7 +66,9 @@ BuildRequires:  ninja
 BuildRequires:  perl >= 5.10.0
 BuildRequires:  pkgconfig
 BuildRequires:  ruby >= 1.8.7
+%if 0%{?suse_version} > 1510
 BuildRequires:  xdg-dbus-proxy
+%endif
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(atspi-2) >= 2.5.3
 BuildRequires:  pkgconfig(cairo) >= 1.10.2
@@ -107,15 +102,13 @@ BuildRequires:  pkgconfig(libxml-2.0) >= 2.8.0
 BuildRequires:  pkgconfig(libxslt) >= 1.1.7
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(upower-glib)
+%if 0%{?suse_version} > 1510
 BuildRequires:  pkgconfig(wpe-1.0) >= 1.3.0
 BuildRequires:  pkgconfig(wpebackend-fdo-1.0) >= 1.3.0
+%endif
+BuildRequires:  gcc-c++ >= 4.9
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(zlib)
-%if 0%{?suse_version} == 1315
-BuildRequires:  gcc7-c++
-%else
-BuildRequires:  gcc-c++ >= 4.9
-%endif
 %if 0%{?suse_version} >= 1500
 BuildRequires:  openjpeg2
 BuildRequires:  openjpeg2-devel
@@ -123,12 +116,7 @@ BuildRequires:  openjpeg2-devel
 %if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(libwoff2dec)
 %endif
-%if %{with python3}
 BuildRequires:  python3
-%else
-BuildRequires:  python >= 2.6.0
-BuildRequires:  python2-xml
-%endif
 %if %{_gold_linker}
 BuildRequires:  binutils-gold
 %endif
@@ -146,9 +134,13 @@ more.
 Summary:        Library for rendering web content, GTK+ Port
 # Require the injected bundles. The bundles are dlopen()ed
 Group:          System/Libraries
+%if 0%{?suse_version} > 1510
 Requires:       bubblewrap
+%endif
 Requires:       webkit2gtk-4_0-injected-bundles
+%if 0%{?suse_version} > 1510
 Requires:       xdg-dbus-proxy
+%endif
 Recommends:     %{_pkgname_no_slpp}-lang
 Provides:       %{_pkgname_no_slpp} = %{version}
 Obsoletes:      webkit2gtk3-plugin-process-gtk2
@@ -297,9 +289,7 @@ if test -n "$max_link_jobs" -a "$max_link_jobs" -gt 1 ; then
     test "$max_link_jobs" -le 0 && max_link_jobs=1 && echo "Warning: Not linking in parallel at all becuse of memory limits"
 fi
 
-%if %{with python3}
 export PYTHON=%{_bindir}/python3
-%endif
 # Use linker flags to reduce memory consumption
 %if %{_gold_linker}
 %global optflags %(echo %{optflags} -Wl,--no-keep-memory | sed 's/-g /-g1 /')
@@ -315,25 +305,19 @@ export PYTHON=%{_bindir}/python3
   -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now -pthread" \
   -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now -pthread" \
   -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now -pthread" \
-%if 0%{?suse_version} == 1315
-  -DCMAKE_C_COMPILER=gcc-7 \
-  -DCMAKE_CXX_COMPILER=g++-7 \
-  -DENABLE_WEB_CRYPTO=OFF \
-  -DUSE_GSTREAMER_GL=false \
-  -DUSE_OPENJPEG=false \
-%endif
 %if 0%{?suse_version} <= 1500
   -DUSE_WOFF2=false \
   -DENABLE_MEDIA_SOURCE=OFF \
 %endif
-%if %{with python3}
-  -DPYTHON_EXECUTABLE=%{_bindir}/python3 \
+%if 0%{?suse_version} <= 1510
+  -DUSE_WPE_RENDERER=OFF \
+  -DENABLE_BUBBLEWRAP_SANDBOX=OFF \
 %endif
+  -DPYTHON_EXECUTABLE=%{_bindir}/python3 \
 %ifarch armv6hl ppc ppc64 ppc64le riscv64 s390 s390x
   -DENABLE_JIT=OFF \
 %endif
   -DUSE_SYSTEM_MALLOC=ON \
-  -DENABLE_BUBBLEWRAP_SANDBOX=ON \
 
 %ninja_build -j $max_link_jobs
 

@@ -714,4 +714,12 @@
   + Fix several crashes and rendering issues. (forwarded request 746047 from iznogood)</comment>
     <requestid>746222</requestid>
   </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>de75f3d48516a0f514550cb2092ee7f7</srcmd5>
+    <version>2.26.2</version>
+    <time>1573853453</time>
+    <user>dimstar_suse</user>
+    <comment>- Add webkit2gtk3-icu-build-fix.patch: fix build with icu 65.1. (forwarded request 747647 from mgorse)</comment>
+    <requestid>747649</requestid>
+  </revision>
 </revisionlist>

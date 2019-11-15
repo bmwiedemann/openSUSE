@@ -1,7 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov 11 22:31:54 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Add webkit2gtk3-icu-build-fix.patch: fix build with icu 65.1.
+
+-------------------------------------------------------------------
+Thu Nov  7 16:38:56 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Only use wpe and xdg-dbus-proxy/bubblewrap for TW and
+  SLE-15-SP2 / leap 15.2.
+- Don't pass -DENABLE_BUBBLEWRAP_SANDBOX=ON; it is on by default.
+- Remove conditionals for EOL versions of openSUSE.
+- Always build with python3; remove the conditional.
+
+-------------------------------------------------------------------
 Wed Nov  6 16:26:43 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
-- Update to version 2.26.2:
+- Update to version 2.26.2 (boo#1156318):
   + Improve performance of querying system fallback fonts.
   + Don't use prgname in dbus-proxy socket path.
   + Fix thread-safety issues in image decoders.
@@ -10,6 +24,7 @@ Wed Nov  6 16:26:43 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
     EGL dispaly under Wayland.
   + Fill the objects category in emoji picker.
   + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2019-8812, CVE-2019-8814.
 
 -------------------------------------------------------------------
 Thu Sep 26 10:03:59 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
@@ -33,6 +48,8 @@ Mon Sep 23 15:24:34 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
   + Fix EGL initialization with newer versions of Mesa.
   + Do not enable the sandbox inside docker.
   + Fix several crashes and rendering issues.
+ ++ Security fixes: CVE-2019-8783, CVE-2019-8811, CVE-2019-8813,
+    CVE-2019-8816, CVE-2019-8819, CVE-2019-8820, CVE-2019-8823.
 
 -------------------------------------------------------------------
 Thu Sep 19 16:44:45 UTC 2019 - Michael Gorse <mgorse@suse.com>
@@ -55,7 +72,7 @@ Thu Sep 12 21:09:23 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 -------------------------------------------------------------------
 Mon Sep  9 09:59:58 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
-- Update to version 2.26.0:
+- Update to version 2.26.0 (boo#1155321):
   + Add support for subprocess sandboxing.
   + Add support for HSTS (HTTP Strict Transport Security).
   + Use libwpe with fdo backend to implement accelerated
@@ -67,6 +84,9 @@ Mon Sep  9 09:59:58 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
   + Fix rendering artifacts in youtube volume button and github
     comment box.
   + Single process model has been deprecated for security reasons.
+  + Security fixes: CVE-2019-8625, CVE-2019-8720, CVE-2019-8769,
+    CVE-2019-8771, CVE-2019-8710, CVE-2019-8743, CVE-2019-8764,
+    CVE-2019-8766, CVE-2019-8782, CVE-2019-8808, CVE-2019-8815.
 
 -------------------------------------------------------------------
 Tue Sep  3 12:11:49 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
@@ -182,7 +202,9 @@ Wed Aug 28 12:40:21 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
     when Python 3.x was used during the build process.
   + Security fixes: CVE-2019-8644, CVE-2019-8649, CVE-2019-8658,
     CVE-2019-8669, CVE-2019-8678, CVE-2019-8680, CVE-2019-8683,
-    CVE-2019-8684, CVE-2019-8688.
+    CVE-2019-8684, CVE-2019-8688, CVE-2019-8674, CVE-2019-8707,
+    CVE-2019-8719, CVE-2019-8733, CVE-2019-8763, CVE-2019-8765,
+    CVE-2019-8821, CVE-2019-8822.
 - Drop webkit2gtk3-bwo197558-hang.patch: Fixed upstream.
 
 -------------------------------------------------------------------
@@ -212,7 +234,8 @@ Tue Jul  2 11:17:11 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
   + Fix the build with video and audio disabled.
   + Fix several crashes and rendering issues.
   + Security fixes: CVE-2019-8666, CVE-2019-8673, CVE-2019-8676,
-    CVE-2019-8681, CVE-2019-8687, CVE-2019-8689, CVE-2019-8690.
+    CVE-2019-8681, CVE-2019-8687, CVE-2019-8689, CVE-2019-8690,
+    CVE-2019-8726.
   + Updated translations.
 - Drop upstream fixed patches:
   + webkit2gtk3-bug196440-build-fix.patch.
@@ -239,7 +262,7 @@ Fri May 24 08:00:33 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
   + Fix several crashes and rendering issues.
   + Security fixes: CVE-2019-8595, CVE-2019-8607, CVE-2019-8615,
     CVE-2019-8671, CVE-2019-8672, CVE-2019-8677, CVE-2019-8679,
-    CVE-2019-8686.
+    CVE-2019-8686, CVE-2019-8735.
   + Updated translations.
 - Drop webkit2gtk3-fix-i586-build.patch: Fixed upstream.
 
@@ -302,7 +325,8 @@ Wed Mar 13 13:40:11 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
   + New API to convert URI to format for display.
   + Security fixes: CVE-2019-8375 (boo#1126768), CVE-2019-8506,
     CVE-2019-8524, CVE-2019-8535, CVE-2019-8536, CVE-2019-8544,
-    CVE-2019-8551, CVE-2019-8558, CVE-2019-8559, CVE-2019-8563.
+    CVE-2019-8551, CVE-2019-8558, CVE-2019-8559, CVE-2019-8563,
+    CVE-2019-8768.
 
 -------------------------------------------------------------------
 Wed Mar  6 16:25:48 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
