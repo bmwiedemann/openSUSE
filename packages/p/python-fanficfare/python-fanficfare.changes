@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Fri Nov 15 20:46:24 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.13.0:
+  - Add some code to handle 24 hr clocks w/o changing adapters.
+  - Don't escape # in URLs, causes problems with ficbook.net.
+  - Bypass expired SSL cert by not using SSL.
+    adapter_thehookupzonenet
+  - Bypass expired SSL cert by not using SSL.
+    adapter_spikeluvercom
+  - Remove site twilightarchives.com - Closed as per web site.
+  - Remove site lotrfanfiction.com - Closed as per web site.
+  - Remove site www.13hours.org. Moved to AO3.
+  - Add site specific chapterslashtotal and chapterstotal for
+    adapter_archiveofourownorg.
+  - Fixes for adapter_webnovelcom site changes to JSON.
+  - Add parentforums site specific metadata for base_xenforo,
+    include partial list in category.
+  - Add user/pass to adapter_fictionhuntcom, required to see
+    chapter text now.
+  - Discard cookie cache on library change--might use different
+    users/settings.
+  - At least one efiction site said Completed: Completed instead
+    of Yes.
+  - Adding some html class attrs to epub output for ease of CSS.
+  - Add --no-output CLI option. Closes #443
+  - Save cookiejar between downloads during same calibre session,
+    including BG jobs.
+  - Avoid post URLs in XenForo notification emails for QQ & AH
+    too.
+  - Avoid post URLs in XenForo notification emails better w/o
+    catching post in thread title. Probably.
+  - Fix for 404 error on XF always_login. Closes #438
+  - Fix for CLI update fail on one story causing all subsequent
+    to also skip update. Issue #438
+  - Avoid post URLs in XenForo notification emails better.
+  - Treat spacebattles /post/ URLs in emails the same as
+    sufficientvelocity to avoid extra URLs in thread
+    notifications.
+
+-------------------------------------------------------------------
+Fri Nov 15 07:53:21 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.12.0:
+  - Update Translations
+  - Add defaults.ini CSS for ficbook.net to preserve line breaks.
+  - Changes for adapter_forumsspacebattlescom to use
+    base_xenforo2forum.
+  - Correct AO3 author parsing for high-byte characters.
+  - Additional warnings about imaptags added to manually added
+    story URLs.
+  - Fix for adapter_trekfanfictionnet URL change. Closes #433.
+  - Add 'Restricted to Registered Users'(restricted) metadata to
+    AO3.
+  - Fix for unicode chars in url params, fixes 427
+  - Add feature to automatically add optional tags for stories
+    downloaded from email URLs.
+  - New Russian Site added: www.swi.org.ru - Thanks gunmetal313
+  - Fix for wordcount in adapter_fanfiktionde when max_zalgo:1
+
+-------------------------------------------------------------------
 Fri Sep 13 07:48:06 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.11.0:
