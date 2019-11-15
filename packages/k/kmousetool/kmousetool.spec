@@ -1,7 +1,7 @@
 #
 # spec file for package kmousetool
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,19 +32,22 @@ Source:         https://download.kde.org/stable/applications/%{version}/src/%{na
 Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         Fix-build-with-Qt-5_14.diff
 BuildRequires:  alsa-devel
 BuildRequires:  extra-cmake-modules
-BuildRequires:  kdelibs4support-devel
-BuildRequires:  knotifications-devel
 BuildRequires:  oxygen-icon-theme-large
-BuildRequires:  phonon4qt5-devel
 BuildRequires:  pkgconfig
 BuildRequires:  sbl
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
-BuildRequires:  pkgconfig(Qt5Core) >= 5.3.0
-BuildRequires:  pkgconfig(Qt5Gui) >= 5.3.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.3.0
+BuildRequires:  cmake(KF5KDELibs4Support)
+BuildRequires:  cmake(KF5Notifications)
+BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(Phonon4Qt5)
+BuildRequires:  cmake(Qt5Core) >= 5.3.0
+BuildRequires:  cmake(Qt5Gui) >= 5.3.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.3.0
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xt)
@@ -63,7 +66,7 @@ Clicks the mouse for you, reducing hand strain.
 %endif
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build

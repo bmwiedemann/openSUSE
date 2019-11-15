@@ -811,4 +811,13 @@
     <comment>KDE Applications 19.08.3</comment>
     <requestid>746904</requestid>
   </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>9102acc358bead309fa07233f5a7b586</srcmd5>
+    <version>19.08.3</version>
+    <time>1573853850</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Fix-build-with-Qt-5_14.diff to fix build with Qt 5.14.
+- Use cmake() style BuildRequires when possible.</comment>
+    <requestid>748600</requestid>
+  </revision>
 </revisionlist>
