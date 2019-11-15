@@ -10,7 +10,7 @@ Thus here we justion mention this option, but not enabling.
 diff --git a/settings.conf b/settings.conf
 --- a/settings.conf
 +++ b/settings.conf
-@@ -85,16 +82,18 @@
+@@ -112,16 +112,18 @@
  #  - dracutlukscfg
  #  - plymouthcfg
 -  - initcpiocfg
@@ -22,11 +22,11 @@ diff --git a/settings.conf b/settings.conf
    - displaymanager
    - networkcfg
    - hwclock
--  - services
+-  - services-systemd
 -#  - dracut
 -  - initramfs
 -#  - grubcfg
-+#  - services
++#  - services-systemd
 +  - dracut
 +#  - initramfs
 +  - grubcfg
@@ -35,12 +35,3 @@ diff --git a/settings.conf b/settings.conf
    - umount
  - show:
  #  - webview@owncloud
-@@ -116,7 +112,7 @@
- # is shown.
- # Default is false.
- # YAML: boolean.
--prompt-install: false
-+prompt-install: true
- 
- # If this is set to true, Calamares will execute all target environment commands in the
- # current environment, without chroot. This setting is considered experimental, and it

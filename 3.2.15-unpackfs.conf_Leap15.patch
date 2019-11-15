@@ -1,0 +1,28 @@
+Adjust some default settings (default shipped .conf files) for openSUSE Leap 15 
+and openSUSE Leap 15 based appliances.
+
+diff --git a/src/modules/unpackfs/unpackfs.conf b/src/modules/unpackfs/unpackfs.conf
+--- a/src/modules/unpackfs/unpackfs.conf
++++ b/src/modules/unpackfs/unpackfs.conf
+@@ -79,11 +79,14 @@
+ # for its destination name, as in the example below.
+ 
+ unpack:
+-    -   source: ../CHANGES
+-        sourcefs: file
+-        destination: "/tmp/changes.txt"
+-    -   source: src/qml/calamares/slideshow
+-        sourcefs: file
+-        destination: "/tmp/slideshow/"
+-        exclude: [ "*.qmlc", "qmldir" ]
++   # -   source: ../CHANGES
++   #     sourcefs: file
++   #     destination: "/tmp/changes.txt"
++    -   source: "/run/rootfsbase"
++        sourcefs: "ext4"
++        destination: "/"
++   # -   source: src/qml/calamares/slideshow
++   #     sourcefs: file
++   #     destination: "/tmp/slideshow/"
++   #     exclude: [ "*.qmlc", "qmldir" ]
+         # excludeFile: /etc/calamares/modules/unpackfs/exclude-list.txt

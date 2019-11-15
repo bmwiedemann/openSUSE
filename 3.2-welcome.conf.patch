@@ -5,8 +5,10 @@ Internet connection is not mandatory for installtion.
 diff -ur a/src/modules/welcome/welcome.conf b/src/modules/welcome/welcome.conf
 --- a/src/modules/welcome/welcome.conf
 +++ b/src/modules/welcome/welcome.conf
-@@ -1,7 +1,7 @@
- ---
+@@ -7,9 +7,9 @@
+ # The setting can also be a full URL which will then be used
+ # instead of the one from the branding file, or empty or not-set
+ # which will hide the button.
 -showSupportUrl:         true
 -showKnownIssuesUrl:     true
 -showReleaseNotesUrl:    true
@@ -14,13 +16,13 @@ diff -ur a/src/modules/welcome/welcome.conf b/src/modules/welcome/welcome.conf
 +showKnownIssuesUrl:     false
 +showReleaseNotesUrl:    false
  
- requirements:
-     requiredStorage:    5.5
-@@ -17,7 +17,6 @@
+ # If this Url is set to something non-empty, a "donate"
+ # button is added to the welcome page alongside the
+@@ -49,7 +49,6 @@
          - storage
          - ram
          - power
 -        - internet
          - root
          - screen
-     # List conditions that must be satisfied (from the list
+     # List conditions that **must** be satisfied (from the list

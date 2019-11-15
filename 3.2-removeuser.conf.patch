@@ -7,8 +7,10 @@ https://github.com/calamares/calamares/issues/577
 diff -ur a/src/modules/removeuser/removeuser.conf b/src/modules/removeuser/removeuser.conf
 --- a/src/modules/removeuser/removeuser.conf
 +++ b/src/modules/removeuser/removeuser.conf
-@@ -1,2 +1,2 @@
+@@ -3,4 +3,4 @@
+ # spills into the target system.
  ---
+ # Username in the target system to be removed.
 -username: live
 +username: linux
 \ No newline at end of file
