@@ -1448,4 +1448,13 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
   * gdb-only-force-interp_console-ui_out-for-breakpoint-commands-in-mi-mode.patch (forwarded request 746178 from tomdevries)</comment>
     <requestid>746186</requestid>
   </revision>
+  <revision rev="134" vrev="4">
+    <srcmd5>791ab9ab3aa7e44fc0fb5d7de627333f</srcmd5>
+    <version>8.3.1</version>
+    <time>1573853574</time>
+    <user>dimstar_suse</user>
+    <comment>- make fpc optional (boo#1156284) as fpc requires itself for
+  bootstrapping. (forwarded request 747309 from lnussel)</comment>
+    <requestid>747713</requestid>
+  </revision>
 </revisionlist>
