@@ -32,6 +32,8 @@ Source:         https://download.kde.org/stable/applications/%{version}/src/%{na
 Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:        0001-Make-it-compiles-without-deprecated-method.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kdoctools-devel
 BuildRequires:  ki18n-devel
@@ -50,14 +52,14 @@ Recommends:     %{name}-lang
 %endif
 
 %description
-A screen ruler for the K Desktop Environment
+A screen ruler for the Plasma desktop environnement.
 
 %if %{with lang}
 %lang_package
 %endif
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build

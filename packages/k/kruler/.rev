@@ -859,4 +859,12 @@
     <comment>KDE Applications 19.08.3</comment>
     <requestid>746930</requestid>
   </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>e4363d12e6b4bab114b22b56ed51b537</srcmd5>
+    <version>19.08.3</version>
+    <time>1573853845</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Make-it-compiles-without-deprecated-method.patch to fix build with Qt 5.14.</comment>
+    <requestid>748599</requestid>
+  </revision>
 </revisionlist>

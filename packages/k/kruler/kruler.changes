@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 14 10:08:31 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add 0001-Make-it-compiles-without-deprecated-method.patch to fix build with Qt 5.14.
+
+-------------------------------------------------------------------
 Thu Nov  7 23:13:18 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.3
