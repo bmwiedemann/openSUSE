@@ -183,4 +183,12 @@
     - refine clear icons; retire brush metaphor for clear-all (forwarded request 745272 from iznogood)</comment>
     <requestid>746219</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2dc760eda01027ec66d0372299de8447</srcmd5>
+    <version>3.34.3</version>
+    <time>1573853422</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 746563 from iznogood)</comment>
+    <requestid>747637</requestid>
+  </revision>
 </revisionlist>
