@@ -25,4 +25,13 @@
 </comment>
     <requestid>733326</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>c5a7eb4fce2b1ad6b1c29854abc0aafb</srcmd5>
+    <version>1.6.1</version>
+    <time>1573853436</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure 32bit enchant-1-backends have proper obsoletes/provides
+  to upgrade enchant-backends in baselibs.conf. (forwarded request 746628 from fcrozat)</comment>
+    <requestid>747638</requestid>
+  </revision>
 </revisionlist>

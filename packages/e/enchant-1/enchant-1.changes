@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  5 13:29:03 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
+
+- Ensure 32bit enchant-1-backends have proper obsoletes/provides
+  to upgrade enchant-backends in baselibs.conf.
+
+-------------------------------------------------------------------
 Tue Sep 24 10:35:52 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - Make enchant-1-backend-voikko require enchant-1-backends
