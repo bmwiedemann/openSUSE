@@ -378,4 +378,12 @@
     <comment>- Update to rdma-core v25.1 (bsc#996146)</comment>
     <requestid>736003</requestid>
   </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>d4dc699aad2631861fb01fa4be8494a1</srcmd5>
+    <version>25.1</version>
+    <time>1573853514</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>747710</requestid>
+  </revision>
 </revisionlist>

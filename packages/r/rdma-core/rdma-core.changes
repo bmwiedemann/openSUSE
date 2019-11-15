@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 12 07:33:01 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Add libefa1 to baselibs.conf
+- Fix baselibs.conf
+
+-------------------------------------------------------------------
+Wed Nov  6 23:09:09 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- BuildRequire valgrind-client-headers instead of full valgrind-devel
+  where available.
+
+-------------------------------------------------------------------
 Wed Oct  2 06:37:21 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Have rsocket conflicts with older librdmacm-tools (bsc#1137140)
