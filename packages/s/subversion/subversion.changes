@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Nov 10 08:28:48 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Apache Subversion 1.13.0:
+  * New 'svnadmin rev-size' command to report revision size
+  * Performance improvement for 'svn st' etc., in WC SQLite DB
+  * Fix 'svn patch' setting mode 0600 on patched files with props
+  * Fix "svn diff --changelist ARG" broken in subdirectories
+  * Fix misleading 'redirect cycle' error on a non-repository URL
+  * svnserve: Report some errors that were previously ignored
+  * Make server code more resilient to malformed paths and URLs
+  * Make dump stream parser more resilient to malformed dump stream
+  * mod_dav_svn: Fix missing Last-Modified header on 'external' GET requests
+  * Fix excessive memory usage in some cases reading binary data
+
+-------------------------------------------------------------------
 Thu Sep 26 08:35:08 UTC 2019 - Franz Sirl <franz.sirl-obs@lauterbach.com>
 
 - Enable build and check with swig-3:

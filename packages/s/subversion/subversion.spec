@@ -34,11 +34,10 @@
 %bcond_without	python_ctypes
 %bcond_with	all_regression_tests
 Name:           subversion
-Version:        1.12.2
+Version:        1.13.0
 Release:        0
 Summary:        Subversion version control system
 License:        Apache-2.0
-Group:          Development/Tools/Version Control
 URL:            https://subversion.apache.org
 Source0:        https://www.apache.org/dist/subversion/%{name}-%{version}.tar.bz2
 Source1:        subversion.conf
@@ -142,7 +141,6 @@ to large-scale enterprise operations.
 
 %package devel
 Summary:        Development package for Subversion developers
-Group:          Development/Libraries/C and C++
 Requires:       libapr-util1-devel
 Requires:       subversion = %{version}
 
@@ -152,7 +150,6 @@ files for developers interacting with the subversion package.
 
 %package tools
 Summary:        Tools for Subversion
-Group:          Development/Tools/Version Control
 
 %description tools
 This package contains some tools for subversion server and
@@ -160,7 +157,6 @@ repository admins.
 
 %package perl
 Summary:        Allows Perl scripts to directly use Subversion repositories
-Group:          Development/Tools/Version Control
 Requires:       perl = %{perl_version}
 Requires:       perl >= 5.8
 Requires:       subversion = %{version}
@@ -170,7 +166,6 @@ Provides Perl (SWIG) support for Subversion version control system.
 
 %package python
 Summary:        Allows Python scripts to directly use Subversion repositories
-Group:          Development/Tools/Version Control
 Requires:       subversion = %{version}
 
 %description python
@@ -179,7 +174,6 @@ Provides Python (SWIG) support for Subversion version control system.
 %if %{with python_ctypes}
 %package python-ctypes
 Summary:        High-Level Python Bindings for Subversion
-Group:          Development/Tools/Version Control
 Requires:       subversion = %{version}
 
 %description python-ctypes
@@ -188,7 +182,6 @@ Provides high-level Python support for Subversion, based on ctypes.
 
 %package ruby
 Summary:        Allows Ruby scripts to directly use Subversion repositories
-Group:          Development/Tools/Version Control
 Requires:       subversion = %{version}
 
 %description ruby
@@ -196,7 +189,6 @@ Provides Ruby (SWIG) support for Subversion version control system.
 
 %package server
 Summary:        Apache server module for Subversion server
-Group:          Development/Tools/Version Control
 Requires:       %{apache_mmn}
 Requires:       apache2
 Requires:       subversion = %{version}
@@ -208,10 +200,9 @@ to the Apache directories and configuration.
 %if %{with kde}
 %package -n libsvn_auth_kwallet-1-0
 Summary:        KWallet support for Subversion
-Group:          Development/Tools/Version Control
 Requires:       %{name} = %{version}
-Supplements:    packageand(subversion:kdebase4-workspace)
-Supplements:    packageand(subversion:plasma5-workspace)
+Supplements:    (subversion and kdebase4-workspace)
+Supplements:    (subversion and plasma5-workspace)
 
 %description -n libsvn_auth_kwallet-1-0
 Provides KWallet integration for Subversion
@@ -220,9 +211,8 @@ Provides KWallet integration for Subversion
 %if %{with gnome}
 %package -n libsvn_auth_gnome_keyring-1-0
 Summary:        GNOME keyring sypport for Subversion
-Group:          Development/Tools/Version Control
 Requires:       %{name} = %{version}
-Supplements:    packageand(subversion:gnome-session)
+Supplements:    (subversion and gnome-session)
 
 %description -n libsvn_auth_gnome_keyring-1-0
 Provides GNOME keyring support for Subversion
@@ -230,7 +220,6 @@ Provides GNOME keyring support for Subversion
 
 %package bash-completion
 Summary:        Bash Completion for %{name}
-Group:          Development/Tools/Version Control
 Requires:       %{name} = %{version}
 Requires:       bash-completion
 BuildArch:      noarch
