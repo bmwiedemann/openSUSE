@@ -29,14 +29,16 @@ enable kbdsettings.service
 enable klog.service
 enable logrotate.timer
 enable logwatch.timer
-enable lvm2-lvmetad.socket
 enable lvm2-monitor.service
 enable lvm2-lvmpolld.socket
 enable mcelog.service
 enable mlocate.timer
 enable ModemManager.service
+enable NetworkManager.service
+enable NetworkManager-dispatcher.service
 enable nscd.service
 enable nvmefc-boot-connections.service
+enable packagekit-background.timer
 enable postfix.service
 enable purge-kernels.service
 enable remote-fs.target
