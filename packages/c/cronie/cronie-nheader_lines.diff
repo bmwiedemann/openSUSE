@@ -11,7 +11,44 @@ Index: src/crontab.c
  
  #define COMMENT_COLOR  "\x1B[34m"
  #define RESET_COLOR "\033[0m"
-@@ -500,7 +500,7 @@ static void edit_cmd(void) {
+@@ -394,7 +394,7 @@ static void parse_args(int argc, char *a
+ static void list_cmd(void) {
+ 	char n[MAX_FNAME];
+ 	FILE *f;
+-	int ch;
++	int ch, x;
+ 	const int is_tty = isatty(STDOUT);
+ 	int new_line = 1;
+ 
+@@ -411,9 +411,25 @@ static void list_cmd(void) {
+ 		exit(ERROR_EXIT);
+ 	}
+ 
+-	/* file is open. copy to stdout, close.
+-	 */
+ 	Set_LineNum(1)
++
++	/* ignore the top few comments since we probably put them there.
++	*/
++	x = 0;
++	while (EOF != (ch = get_char(f))) {
++		if ('#' != ch) {
++			putchar(ch);
++			break;
++		}
++		while (EOF != (ch = get_char(f)))
++			if (ch == '\n')
++				break;
++		if (++x >= NHEADER_LINES)
++			break;
++	}
++
++	/* copy the rest of the crontab (if any) to the stdout.
++	*/
+ 	while (EOF != (ch = get_char(f))) {
+ 		if (is_tty && new_line) {
+ 			if (ch == '#') {
+@@ -500,7 +516,7 @@ static void edit_cmd(void) {
  	char n[MAX_FNAME], q[MAX_TEMPSTR];
  	const char *editor;
  	FILE *f;
@@ -20,7 +57,7 @@ Index: src/crontab.c
  	struct stat statbuf;
  	struct utimbuf utimebuf;
  	WAIT_T waiter;
-@@ -552,13 +552,25 @@ static void edit_cmd(void) {
+@@ -552,13 +568,25 @@ static void edit_cmd(void) {
  	}
  
  	Set_LineNum(1)
@@ -53,7 +90,7 @@ Index: src/crontab.c
  		while (EOF != (ch = get_char(f)))
  			putc(ch, NewCrontab);
  
-@@ -766,6 +778,7 @@ static int replace_cmd(void) {
+@@ -766,6 +794,7 @@ static int replace_cmd(void) {
  	int error = 0;
  	entry *e;
  	uid_t file_owner;
@@ -61,7 +98,7 @@ Index: src/crontab.c
  	char **envp;
  	char *safename;
  	int envs = 0, entries = 0;
-@@ -796,10 +809,10 @@ static int replace_cmd(void) {
+@@ -796,10 +825,10 @@ static int replace_cmd(void) {
  	 *
  	 * VERY IMPORTANT: make sure NHEADER_LINES agrees with this code.
  	 */
