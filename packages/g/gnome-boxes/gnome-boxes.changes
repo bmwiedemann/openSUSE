@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 11 20:40:22 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gnome-boxes-fix-build-vala.patch: Fix build with new vala.
+
+-------------------------------------------------------------------
 Mon Oct  7 16:52:56 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.1:

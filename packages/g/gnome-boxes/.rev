@@ -513,4 +513,12 @@
     <comment>Scripted push from {project}</comment>
     <requestid>736528</requestid>
   </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>1d3feceb99c3a46416f52fb364a68259</srcmd5>
+    <version>3.34.1</version>
+    <time>1573853445</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gnome-boxes-fix-build-vala.patch: Fix build with new vala. (forwarded request 747440 from iznogood)</comment>
+    <requestid>747642</requestid>
+  </revision>
 </revisionlist>

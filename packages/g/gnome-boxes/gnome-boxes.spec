@@ -29,6 +29,8 @@ License:        LGPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/Apps/Boxes
 Source0:        https://download.gnome.org/sources/gnome-boxes/3.34/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM gnome-boxes-fix-build-vala.patch -- Fix build with new vala
+Patch0:         gnome-boxes-fix-build-vala.patch
 
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.47.0
