@@ -37,6 +37,7 @@ Source4:        z90crypt
 Source5:        z90crypt.service
 Source6:        baselibs.conf
 Source7:        %{name}-rpmlintrc
+Patch1:         libica-sles15sp2-x25519-x448-fix-handling-of-non-canonical-values.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++

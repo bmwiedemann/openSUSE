@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 14 22:45:16 UTC 2019 - Mark Post <mpost@suse.com>
+
+- Added libica-sles15sp2-x25519-x448-fix-handling-of-non-canonical-values.patch
+  (bsc#1156768)
+
+-------------------------------------------------------------------
 Tue Oct 15 18:53:36 UTC 2019 - Mark Post <mpost@suse.com>
 
 - Upgraded to version 3.6.0 (jsc#SLE-7584)
