@@ -1,0 +1,27 @@
+From 8ede8942dd8919b33d60ede365ae5d7a2f3818d8 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Tue, 12 Nov 2019 13:18:26 +0100
+Subject: [PATCH] Bypass wayland interface blacklisting
+
+Currently the check isn't worth anything and it breaks some applications.
+See discussion on https://phabricator.kde.org/D22571 and https://phabricator.kde.org/T4437#207062.
+---
+ wayland_server.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/wayland_server.cpp b/wayland_server.cpp
+index d6f2f6e87..42b63ba56 100644
+--- a/wayland_server.cpp
++++ b/wayland_server.cpp
+@@ -245,6 +245,8 @@ public:
+     QSet<QByteArray> interfacesBlackList = {"org_kde_kwin_remote_access_manager", "org_kde_plasma_window_management", "org_kde_kwin_fake_input", "org_kde_kwin_keystate"};
+ 
+     bool allowInterface(KWayland::Server::ClientConnection *client, const QByteArray &interfaceName) override {
++        return true;
++
+         if (client->processId() == getpid()) {
+             return true;
+         }
+-- 
+2.23.0
+

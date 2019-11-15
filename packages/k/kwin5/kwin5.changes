@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 12 11:01:07 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.3.php
+- Changes since 5.17.2:
+  * [wayland] Fix sha check of filtered applications
+  * [effects/startupfeedback] Fallback to small icon size when no cursor size is configured (kde#413605)
+- Add patch to disarm wayland interface filter:
+  * 0001-Bypass-wayland-interface-blacklisting.patch
+
+-------------------------------------------------------------------
 Tue Oct 29 20:45:51 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.2
