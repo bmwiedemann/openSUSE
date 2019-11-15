@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 12 08:02:50 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Add correct requires for the packages so that they pull all
+  required artifacts
+- Clean up the packaging a bit
+
+-------------------------------------------------------------------
 Tue Mar 26 16:48:35 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade the jdom component to 1.1.3

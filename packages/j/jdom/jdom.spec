@@ -70,6 +70,8 @@ BuildRequires:  xalan-j2
 BuildRequires:  xerces-j2
 BuildRequires:  xpp2
 BuildRequires:  xpp3
+Requires:       mvn(jaxen:jaxen)
+Requires:       mvn(xerces:xercesImpl)
 BuildArch:      noarch
 
 %description
@@ -100,6 +102,9 @@ Release:        0
 Summary:        XOM is a new XML object model
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/Java
+Requires:       mvn(xalan:xalan)
+Requires:       mvn(xerces:xercesImpl)
+Requires:       mvn(xml-apis:xml-apis)
 
 %description -n xom
 XOM is designed to be easy to learn and easy to use. It works very
@@ -144,6 +149,11 @@ License:        Apache-2.0
 Group:          Development/Libraries/Java
 Provides:       jaxen-bootstrap = %{version}
 Obsoletes:      jaxen-bootstrap < %{version}
+Requires:       mvn(dom4j:dom4j)
+Requires:       mvn(jdom:jdom)
+Requires:       mvn(xerces:xercesImpl)
+Requires:       mvn(xml-apis:xml-apis)
+Requires:       mvn(xom:xom)
 
 %description -n jaxen
 Jaxen is a universal object model walker, capable of evaluating XPath
@@ -243,40 +253,16 @@ cp *.pom %{buildroot}/%{_mavenpomdir}/
 %add_maven_depmap saxpath-%{saxpath_version}.pom saxpath-%{saxpath_version}.jar -f saxpath
 %add_maven_depmap jaxen-%{jaxen_version}.pom jaxen-%{jaxen_version}.jar -f jaxen
 
-%files
-%{_javadir}/jdom*.jar
-%{_mavenpomdir}/jdom*.pom
-%if %{defined _maven_repository}
-%{_mavendepmapfragdir}/%{name}
-%else
-%{_datadir}/maven-metadata/%{name}.xml*
-%endif
+%files -f .mfiles
+%{_javadir}/jdom.jar
 
-%files -n xom
-%{_javadir}/xom*.jar
-%{_mavenpomdir}/xom*.pom
-%if %{defined _maven_repository}
-%{_mavendepmapfragdir}/%{name}-xom
-%else
-%{_datadir}/maven-metadata/%{name}-xom.xml*
-%endif
+%files -n xom -f .mfiles-xom
+%{_javadir}/xom.jar
 
-%files -n saxpath
-%{_javadir}/saxpath*.jar
-%{_mavenpomdir}/saxpath*.pom
-%if %{defined _maven_repository}
-%{_mavendepmapfragdir}/%{name}-saxpath
-%else
-%{_datadir}/maven-metadata/%{name}-saxpath.xml*
-%endif
+%files -n saxpath -f .mfiles-saxpath
+%{_javadir}/saxpath.jar
 
-%files -n jaxen
-%{_javadir}/jaxen*.jar
-%{_mavenpomdir}/jaxen*.pom
-%if %{defined _maven_repository}
-%{_mavendepmapfragdir}/%{name}-jaxen
-%else
-%{_datadir}/maven-metadata/%{name}-jaxen.xml*
-%endif
+%files -n jaxen -f .mfiles-jaxen
+%{_javadir}/jaxen.jar
 
 %changelog
