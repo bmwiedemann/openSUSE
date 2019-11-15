@@ -126,4 +126,41 @@
   * Add XF2 threadmarks_cover/status/desc/title options.</comment>
     <requestid>730595</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7ca2ba763d427249701ca70641307c59</srcmd5>
+    <version>3.13.0</version>
+    <time>1573854014</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.13.0:
+  - Add some code to handle 24 hr clocks w/o changing adapters.
+  - Don't escape # in URLs, causes problems with ficbook.net.
+  - Bypass expired SSL cert by not using SSL.
+    adapter_thehookupzonenet
+  - Bypass expired SSL cert by not using SSL.
+    adapter_spikeluvercom
+  - Remove site twilightarchives.com - Closed as per web site.
+  - Remove site lotrfanfiction.com - Closed as per web site.
+  - Remove site www.13hours.org. Moved to AO3.
+  - Add site specific chapterslashtotal and chapterstotal for
+    adapter_archiveofourownorg.
+  - Fixes for adapter_webnovelcom site changes to JSON.
+  - Add parentforums site specific metadata for base_xenforo,
+    include partial list in category.
+  - Add user/pass to adapter_fictionhuntcom, required to see
+    chapter text now.
+  - Discard cookie cache on library change--might use different
+    users/settings.
+  - At least one efiction site said Completed: Completed instead
+    of Yes.
+  - Adding some html class attrs to epub output for ease of CSS.
+  - Add --no-output CLI option. Closes #443
+  - Save cookiejar between downloads during same calibre session,
+    including BG jobs.
+  - Avoid post URLs in XenForo notification emails for QQ &amp; AH
+    too.
+  - Avoid post URLs in XenForo notification emails better w/o
+    catching post in thread title. Probably.
+  - Fix for 404 error on XF always_login. Closes #438</comment>
+    <requestid>748964</requestid>
+  </revision>
 </revisionlist>

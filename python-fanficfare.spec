@@ -1,7 +1,7 @@
 #
 # spec file for package python-fanficfare
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define modnamedown fanficfare
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-fanficfare
-Version:        3.11.0
+Version:        3.13.0
 Release:        0
 Summary:        Tool for making eBooks from stories on fanfiction and other web sites
 License:        GPL-3.0-only
