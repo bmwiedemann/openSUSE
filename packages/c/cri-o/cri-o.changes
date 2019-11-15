@@ -1,7 +1,55 @@
 -------------------------------------------------------------------
+Fri Nov 15 04:49:31 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Use single service macro invocation
+- Add shell completions directories to files
+
+-------------------------------------------------------------------
+Thu Nov 14 09:19:51 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Add crio and crio-status shell completions
+- Add crio-wipe and crio-shutdown services
+- Update kubelet verbosity to `-v=2`
+- Update conmon cgroup to `system.slice`
+- Update crio.conf to match latest version
+- Update to v1.16.0:
+  * Major Changes
+    * Add support for manifest lists
+    * Dual stack IPv6 support
+    * HUP reload of SystemRegistries
+    * file_locking is no longer a supported option in the
+      configuration file
+    * Hooks are no longer found implicitally.
+    * conmon now lives in a separate repository and must be
+      downloaded separately.
+  * Minor
+    * All OCI mounts are mounted as rw when a pod is privileged
+    * CRI-O can now run on a cgroupv2 system (only with the runtime
+      crun)
+    * Add environment variables to CLI flags
+    * Add crio-status client to conveniently query status of crio
+      or a container
+    * Conmon is now found in $PATH if a path isn't specified or is
+      empty
+    * Add metrics to configuration file
+    * Bandwidth burst can only be 4GB
+    * If another container manager shares CRI-O's storage (like
+      podman), CRI-O no longer attempts to restore them
+    * Increase validation for log_dir and runtime_type in
+      configuration
+    * Allow usage of short container ID in ContainerStats
+    * Make image volumes writeable by the container user
+    * Various man page fixes
+    * The crio-wipe script is now included in the crio binary (as
+      crio wipe), and only removes CRI-O containers and images.
+    * Set some previously public packages as internal (client, lib,
+      oci, pkg, tools, version)
+    * infra container now spawned as not privileged
+
+-------------------------------------------------------------------
 Mon Nov 11 15:04:57 UTC 2019 - Richard Brown <rbrown@suse.com>
 
-- Switch to `systemd` cgroup driver in kubelet config also 
+- Switch to `systemd` cgroup driver in kubelet config also
 
 -------------------------------------------------------------------
 Thu Oct 24 10:58:21 UTC 2019 - Sascha Grunert <sgrunert@suse.com>

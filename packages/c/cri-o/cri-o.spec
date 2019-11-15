@@ -23,11 +23,13 @@
 
 %define project github.com/cri-o/cri-o
 # Define macros for further referenced sources
-%define	name_source1 crio.service
-%define	name_source2 sysconfig.crio
-%define	name_source3 crio.conf
+%define name_source1 crio.service
+%define name_source2 sysconfig.crio
+%define name_source3 crio.conf
+%define name_source4 crio-wipe.service
+%define name_source5 crio-shutdown.service
 Name:           cri-o
-Version:        1.15.2
+Version:        1.16.0
 Release:        0
 Summary:        OCI-based implementation of Kubernetes Container Runtime Interface
 License:        Apache-2.0
@@ -39,6 +41,8 @@ Source2:        %{name_source2}
 Source3:        %{name_source3}
 Source4:        cri-o-rpmlintrc
 Source5:        kubelet.env
+Source6:        %{name_source4}
+Source7:        %{name_source5}
 BuildRequires:  device-mapper-devel
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel-static
@@ -61,6 +65,7 @@ Requires:       libcontainers-image
 Requires:       libcontainers-storage
 Requires:       runc >= 1.0.0~rc6
 Requires:       socat
+Requires:       conmon
 Recommends:     katacontainers
 # Provide generic cri-runtime dependency (needed by kubernetes)
 Provides:       cri-runtime
@@ -100,10 +105,10 @@ cd $HOME/go/src/%{project}
 make
 
 %pre
-%service_add_pre %{name_source1}
+%service_add_pre %{name_source1} %{name_source4} %{name_source5}
 
 %post
-%service_add_post %{name_source1}
+%service_add_post %{name_source1} %{name_source4} %{name_source5}
 # This is the additional directory where cri-o is going to look up for CNI
 # plugins installed by DaemonSets running on Kubernetes (i.e. Cilium).
 mkdir -p /opt/cni/bin
@@ -112,19 +117,26 @@ mkdir -p /opt/cni/bin
 %fillup_only -n kubelet
 
 %preun
-%service_del_preun %{name_source1}
+%service_del_preun %{name_source1} %{name_source4} %{name_source5}
 
 %postun
-%service_del_postun %{name_source1}
+%service_del_postun %{name_source1} %{name_source4} %{name_source5}
 
 %install
 cd $HOME/go/src/%{project}
 
 # Binaries
 install -D -m 0755 bin/crio    %{buildroot}/%{_bindir}/crio
+install -D -m 0755 bin/crio-status    %{buildroot}/%{_bindir}/crio-status
 install -d %{buildroot}/%{_libexecdir}/crio/bin
-install -D -m 0755 bin/conmon  %{buildroot}/%{_libexecdir}/crio/bin/conmon
 install -D -m 0755 bin/pause   %{buildroot}/%{_libexecdir}/crio/bin/pause
+# Completions
+install -D -m 0644 completions/bash/crio %{buildroot}/%{_datadir}/bash-completion/completions/crio
+install -D -m 0644 completions/zsh/_crio %{buildroot}%{_sysconfdir}/zsh_completion.d/_crio
+install -D -m 0644 completions/fish/crio.fish %{buildroot}/%{_datadir}/fish/completions/crio.fish
+install -D -m 0644 completions/bash/crio-status %{buildroot}/%{_datadir}/bash-completion/completions/crio-status
+install -D -m 0644 completions/zsh/_crio-status %{buildroot}%{_sysconfdir}/zsh_completion.d/_crio-status
+install -D -m 0644 completions/fish/crio-status.fish %{buildroot}/%{_datadir}/fish/completions/crio-status.fish
 # Manpages
 install -d %{buildroot}/%{_mandir}/man5
 install -d %{buildroot}/%{_mandir}/man8
@@ -136,6 +148,8 @@ install -D -m 0644 crio-umount.conf %{buildroot}/%{_datadir}/oci-umount/oci-umou
 install -D -m 0644 %{SOURCE2}       %{buildroot}%{_fillupdir}/%{name_source2}
 # Systemd
 install -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/%{name_source1}
+install -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/%{name_source4}
+install -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/%{name_source5}
 # place kubelet.env in fillupdir
 install -D -m 0644 %{SOURCE5} %{buildroot}%{_fillupdir}/sysconfig.kubelet
 # Symlinks to rc files
@@ -147,10 +161,20 @@ ln -sf service %{buildroot}%{_sbindir}/rccrio
 %files
 # Binaries
 %{_bindir}/crio
+%{_bindir}/crio-status
 %dir %{_libexecdir}/crio
 %dir %{_libexecdir}/crio/bin
-%{_libexecdir}/crio/bin/conmon
 %{_libexecdir}/crio/bin/pause
+# Completions
+%{_datadir}/bash-completion/completions/crio
+%{_datadir}/bash-completion/completions/crio-status
+%{_sysconfdir}/zsh_completion.d
+%{_sysconfdir}/zsh_completion.d/_crio
+%{_sysconfdir}/zsh_completion.d/_crio-status
+%{_datadir}/fish
+%{_datadir}/fish/completions
+%{_datadir}/fish/completions/crio.fish
+%{_datadir}/fish/completions/crio-status.fish
 # Manpages
 %{_mandir}/man5/crio.conf.5*
 %{_mandir}/man8/crio.8*
@@ -165,6 +189,8 @@ ln -sf service %{buildroot}%{_sbindir}/rccrio
 %{_fillupdir}/%{name_source2}
 # Systemd
 %{_unitdir}/%{name_source1}
+%{_unitdir}/%{name_source4}
+%{_unitdir}/%{name_source5}
 %{_sbindir}/rccrio
 
 %files kubeadm-criconfig
