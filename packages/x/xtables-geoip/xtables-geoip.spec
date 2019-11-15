@@ -1,7 +1,7 @@
 #
 # spec file for package xtables-geoip
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,16 @@
 
 
 Name:           xtables-geoip
-Version:        20190521
+Version:        20191112
 Release:        0
 Summary:        Geolocation database files for xt_geoip
 License:        CC-BY-SA-4.0
 Group:          Productivity/Networking/Security
 URL:            https://dev.maxmind.com/geoip/geoip2/geolite2/
-
-#DL-URL:	https://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
-Source:         GeoLite2-Country-CSV.zip
+# Source:       https://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV_%version.zip
+Source:         GeoLite2-Country-CSV_%version.zip
 Source4:        %name-rpmlintrc
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  unzip
 BuildRequires:  xtables-addons >= 3.2
 #db format changed at that time

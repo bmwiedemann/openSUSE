@@ -344,4 +344,12 @@
     <comment>- Update database files to 20190521</comment>
     <requestid>704807</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>f4241799dd54eff6bf03000e8f9f8c4c</srcmd5>
+    <version>20191112</version>
+    <time>1573854010</time>
+    <user>dimstar_suse</user>
+    <comment>- Update database files to 20191112</comment>
+    <requestid>748956</requestid>
+  </revision>
 </revisionlist>
