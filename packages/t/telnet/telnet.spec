@@ -35,11 +35,9 @@ Patch4:         telnet-bsd-1.2-hostalias.patch
 #PATCH-FIX-UPSTREAM bnc#898481 kstreitova@suse.com -- fix the infinite loop consumes an entire CPU
 Patch5:         telnet-bsd-1.2-fix-infinite-loop.patch
 BuildRequires:  ncurses-devel
-Requires:       netcfg
 Provides:       nkitb:%{_bindir}/telnet
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  systemd-rpm-macros
-%{?systemd_requires}
 
 %description
 Telnet is an old protocol for logging into remote systems.  It is
@@ -57,6 +55,7 @@ Group:          Productivity/Networking/Other
 Requires:       netcfg
 Provides:       nkitserv:%{_sbindir}/in.telnetd
 Obsoletes:      nkitserv
+%{?systemd_requires}
 
 %description server
 Telnet is a popular protocol for logging into remote systems. This
