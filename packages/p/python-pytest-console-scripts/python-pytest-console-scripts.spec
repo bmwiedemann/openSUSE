@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-console-scripts
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-console-scripts
-Version:        0.1.10
+Version:        0.2.0
 Release:        0
 Summary:        Pytest plugin for testing console scripts
 License:        MIT
@@ -61,7 +61,7 @@ much as possible.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %license LICENSE

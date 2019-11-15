@@ -24,4 +24,13 @@
     <comment>- Update the pytest requirement to &gt; 4 as per setup.py</comment>
     <requestid>733104</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a3f119eaf744a0011997c71f299c4252</srcmd5>
+    <version>0.2.0</version>
+    <time>1573853909</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.0:
+  * no upstream changelog</comment>
+    <requestid>748852</requestid>
+  </revision>
 </revisionlist>
