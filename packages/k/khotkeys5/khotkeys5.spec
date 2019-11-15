@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           khotkeys5
-Version:        5.17.2
+Version:        5.17.3
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -50,6 +50,7 @@ BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(LibKWorkspace) >= %{_plasma5_version}
 BuildRequires:  cmake(Qt5X11Extras) >= 5.4.0
 BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xtst)
 Requires:       libqt5-qdbus
 Recommends:     %{name}-lang
 

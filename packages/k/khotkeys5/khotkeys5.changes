@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Nov 12 15:34:58 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Use pkgconfig(xtst) instead
+
+-------------------------------------------------------------------
+Tue Nov 12 15:09:05 UTC 2019 - George Florea Banus <georgefb899@gmail.com>
+
+- Add libXtst-devel to build requirements, fixes boo#1153789
+
+-------------------------------------------------------------------
+Tue Nov 12 11:01:06 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.3.php
+- No code changes since 5.17.2
+
+-------------------------------------------------------------------
 Tue Oct 29 20:45:50 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.2
