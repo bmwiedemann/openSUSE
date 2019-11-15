@@ -1,0 +1,54 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -23,6 +23,7 @@
+     I18n
+     IconThemes
+     Notifications
++    WindowSystem   # fixx11.h
+     XmlGui
+ )
+ 
+diff --git a/kmousetool/CMakeLists.txt b/kmousetool/CMakeLists.txt
+--- a/kmousetool/CMakeLists.txt
++++ b/kmousetool/CMakeLists.txt
+@@ -23,7 +23,8 @@
+   KF5::I18n
+   KF5::IconThemes
+   KF5::Notifications
+-  KF5::XmlGui
++  KF5::WindowSystem
++  KF5::XmlGui  
+   ${X11_XTest_LIB}
+   ${X11_Xext_LIB}
+   ${X11_LIBRARIES})
+diff --git a/kmousetool/kmousetool.cpp b/kmousetool/kmousetool.cpp
+--- a/kmousetool/kmousetool.cpp
++++ b/kmousetool/kmousetool.cpp
+@@ -21,15 +21,13 @@
+ 
+ #include "kmousetool.h"
+ 
+-// Needs to be be before X11/Intrinsic.h because of qtextstream.h
+-#include <phonon/MediaObject>
+-
+ #include <X11/Xmd.h>
+ #include "mtstroke.h"
+ #include <X11/Intrinsic.h>     /* Intrinsics Definitions*/
+ #include <X11/StringDefs.h>    /* Standard Name-String definitions*/
+ #include <X11/extensions/xtestext1.h>    /* Standard Name-String definitions*/
+ #include <X11/extensions/XTest.h>    /* Standard Name-String definitions*/
++#include <fixx11h.h>
+ 
+ #include <QAbstractEventDispatcher>
+ #include <QApplication>
+@@ -50,6 +48,8 @@
+ #include <KSharedConfig>
+ #include <KStandardGuiItem>
+ 
++#include <phonon/MediaObject>
++
+ int currentXPosition;
+ int currentYPosition;
+ 
+
