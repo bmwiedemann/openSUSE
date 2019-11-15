@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Nov 12 00:00:00 CET 2019 - dsterba@suse.cz
+
+- Update to 5.3.1:
+  * libbtrfs: fix link breakage due to missing symbols
+- Updaet to 5.3:
+  * mkfs:
+    * new option to specify checksum algorithm (only crc32c)
+    * fix xattr enumeration
+  * dump-tree: BFS (breadth-first) traversal now default
+  * libbtrfsutil: remove stale BTRFS_DEV_REPLACE_ITEM_STATE_x defines
+  * ci: add support for gitlab
+  * other:
+    * preparatory work for more checksum algorithms
+    * docs update
+    * switch to docbook5 backend for asciidoc
+    * fix build on uClibc due to missing backtrace()
+    * lots of printf format fixups
+
+-------------------------------------------------------------------
 Tue Oct 15 14:22:21 UTC 2019 - Johannes Thumshirn <jthumshirn@suse.com>
 
 - Enable build of python-bindings for libbtrfsutil
