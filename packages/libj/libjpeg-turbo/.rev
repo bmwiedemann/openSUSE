@@ -721,4 +721,15 @@
     <comment>New upstream release (forwarded request 735401 from iznogood)</comment>
     <requestid>735600</requestid>
   </revision>
+  <revision rev="50" vrev="57">
+    <srcmd5>f8bc95c772c9b6c70055be6e8dc53d68</srcmd5>
+    <version>unknown</version>
+    <time>1573853602</time>
+    <user>dimstar_suse</user>
+    <comment>- fix upstream bug 388 [bsc#1156402]
+- added patches
+  https://github.com/libjpeg-turbo/libjpeg-turbo/issues/388
+  + libjpeg-turbo-issue-388.patch</comment>
+    <requestid>748021</requestid>
+  </revision>
 </revisionlist>

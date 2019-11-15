@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 12 14:09:12 UTC 2019 - pgajdos@suse.com
+
+- fix upstream bug 388 [bsc#1156402]
+- added patches
+  https://github.com/libjpeg-turbo/libjpeg-turbo/issues/388
+  + libjpeg-turbo-issue-388.patch
+
+-------------------------------------------------------------------
 Sat Oct  5 09:08:03 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.0.3:
