@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 12 11:01:06 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.3.php
+- Changes since 5.17.2:
+  * [GTK3] Modify scrollbar states to better resemble Breeze Qt (kde#413498)
+  * [GTK3/Firefox] Fix scrollbar click region (kde#413118)
+
+-------------------------------------------------------------------
 Tue Oct 29 20:45:50 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.2
