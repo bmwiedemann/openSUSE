@@ -537,8 +537,6 @@ fi
 		-g kopano -r kopano -s /sbin/nologin
 
 %post common
-chown -Rh kopano:kopano /var/log/kopano 2>/dev/null || :
-chown kopano:kopano /var/lib/kopano 2>/dev/null || :
 if [ -x /usr/bin/systemd-tmpfiles ]; then
 	/usr/bin/systemd-tmpfiles --create kopano-tmpfiles.conf || :
 fi
@@ -556,7 +554,6 @@ fi
 %{?_unitdir:%{?suse_version:%service_add_pre kopano-dagent.service}}
 
 %post dagent
-chown -Rh kopano:kopano /var/log/kopano 2>/dev/null || :
 %{?_unitdir:%{?suse_version:%service_add_post kopano-dagent.service}}
 %{?_unitdir:%{!?suse_version:%systemd_post kopano-dagent.service}}
 
@@ -596,7 +593,6 @@ fi
 %{?_unitdir:%{?suse_version:%service_add_pre kopano-gateway.service}}
 
 %post gateway
-chown -Rh kopano:kopano /var/log/kopano 2>/dev/null || :
 %{?_unitdir:%{?suse_version:%service_add_post kopano-gateway.service}}
 %{?_unitdir:%{!?suse_version:%systemd_post kopano-gateway.service}}
 
@@ -628,7 +624,6 @@ fi
 %{?_unitdir:%{?suse_version:%service_add_pre kopano-ical.service}}
 
 %post ical
-chown -Rh kopano:kopano /var/log/kopano 2>/dev/null || :
 %{?_unitdir:%{?suse_version:%service_add_post kopano-ical.service}}
 %{?_unitdir:%{!?suse_version:%systemd_post kopano-ical.service}}
 
@@ -660,7 +655,6 @@ fi
 %{?_unitdir:%{?suse_version:%service_add_pre kopano-monitor.service}}
 
 %post monitor
-chown -Rh kopano:kopano /var/log/kopano 2>/dev/null || :
 %{?_unitdir:%{?suse_version:%service_add_post kopano-monitor.service}}
 %{?_unitdir:%{!?suse_version:%systemd_post kopano-monitor.service}}
 
@@ -692,7 +686,6 @@ fi
 %{?_unitdir:%{?suse_version:%service_add_pre kopano-server.service}}
 
 %post server
-chown -Rh kopano:kopano /var/log/kopano 2>/dev/null || :
 %{?_unitdir:%{?suse_version:%service_add_post kopano-server.service}}
 %{?_unitdir:%{!?suse_version:%systemd_post kopano-server.service}}
 
@@ -740,7 +733,6 @@ fi
 %{?_unitdir:%{?suse_version:%service_add_pre kopano-spooler.service}}
 
 %post spooler
-chown -Rh kopano:kopano /var/log/kopano 2>/dev/null || :
 %{?_unitdir:%{?suse_version:%service_add_post kopano-spooler.service}}
 %{?_unitdir:%{!?suse_version:%systemd_post kopano-spooler.service}}
 
@@ -772,7 +764,6 @@ fi
 %{?_unitdir:%{?suse_version:%service_add_pre kopano-statsd.service}}
 
 %post statsd
-chown -Rh kopano:kopano /var/log/kopano 2>/dev/null || :
 %{?_unitdir:%{?suse_version:%service_add_post kopano-statsd.service}}
 %{?_unitdir:%{!?suse_version:%systemd_post kopano-statsd.service}}
 

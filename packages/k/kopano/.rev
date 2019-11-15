@@ -170,4 +170,12 @@
     <comment>- Update to release 8.7.85</comment>
     <requestid>746188</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>43d3a3fe75c0e54b89b4bfee7b8934dd</srcmd5>
+    <version>8.7.85</version>
+    <time>1573853994</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>748941</requestid>
+  </revision>
 </revisionlist>
