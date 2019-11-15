@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov  8 14:42:49 UTC 2019 - Michal Suchanek <msuchanek@suse.de>
+
+- ndctl/dimm: Fix init-labels success reporting (bsc#1156308 ltc#181441).
+  + ndctl-dimm-Fix-init-labels-success-reporting.patch
+- Refresh patches with upstream status:
+   ndctl-Use-the-same-align-value-as-original-namespace-on-reconfigure.patch
+   ndctl-ndctl-lib-Fix-duplicate-bus-detection.patch
+
+-------------------------------------------------------------------
 Fri Oct 18 13:14:35 UTC 2019 - Michal Suchanek <msuchanek@suse.de>
 
 - Refresh patches with upstream status:

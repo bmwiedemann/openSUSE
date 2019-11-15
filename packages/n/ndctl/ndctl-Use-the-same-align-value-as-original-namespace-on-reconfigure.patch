@@ -4,7 +4,7 @@ Date: Wed, 7 Aug 2019 10:14:16 +0530
 Subject: [PATCH] ndctl: Reuse the align value from the original namespace on
  reconfiguration
 
-Patch-mainline: expected v67
+Patch-mainline: v67
 Git-commit: e81ccd7f062beeae7498d04785fe55c55c857d4b
 
 When using reconfigure command to add a 'name' to the namespace we end

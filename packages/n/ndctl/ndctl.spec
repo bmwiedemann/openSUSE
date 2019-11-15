@@ -33,6 +33,7 @@ Patch2:         %{name}-list-Introduce-region-capability-objects.patch
 Patch3:         %{name}-Use-the-same-align-value-as-original-namespace-on-reconfigure.patch
 Patch4:         %{name}-ndctl-lib-Fix-duplicate-bus-detection.patch
 Patch5:         %{name}-namespace-Handle-create-namespace-in-label-less-mode.patch
+Patch6:         %{name}-dimm-Fix-init-labels-success-reporting.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  keyutils-devel
