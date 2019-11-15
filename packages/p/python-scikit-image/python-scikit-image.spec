@@ -19,17 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-scikit-image
-Version:        0.15.0
+Version:        0.16.2
 Release:        0
 Summary:        Collection of algorithms for image processing in Python
 License:        BSD-3-Clause
-Group:          Productivity/Scientific/Other
-URL:            http://scikit-image.org/
+URL:            https://scikit-image.org/
 Source0:        https://files.pythonhosted.org/packages/source/s/scikit-image/scikit-image-%{version}.tar.gz
-# PATCH-FEATURE-UPSTREAM fix_numpy_matrix_warning_test.patch -- gh#scikit-image/scikit-image#3869
-Patch0:         fix_numpy_matrix_warning_test.patch
-# PATCH-Fix-UPSTREAM fix_numpy_1_17.patch -- gh#scikit-image/scikit-image#3992
-Patch1:         fix_numpy_1_17.patch
 BuildRequires:  %{python_module Cython >= 0.23.4}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.11}
@@ -58,11 +53,12 @@ Recommends:     python-qt4
 # SECTION test requirements
 BuildRequires:  %{python_module Pillow >= 2.1.0}
 BuildRequires:  %{python_module PyWavelets >= 0.4.0}
+BuildRequires:  %{python_module imageio}
 BuildRequires:  %{python_module matplotlib >= 1.3.1}
 BuildRequires:  %{python_module networkx >= 1.8}
 BuildRequires:  %{python_module nose}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-localserver}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
