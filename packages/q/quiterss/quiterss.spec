@@ -1,7 +1,7 @@
 #
 # spec file for package quiterss
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           quiterss
-Version:        0.18.12
+Version:        0.19.0
 Release:        0
 Summary:        RSS/Atom aggregator
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/News/Utilities
-Url:            https://www.quiterss.org
+URL:            https://www.quiterss.org
 Source:         https://quiterss.org/files/%{version}/QuiteRSS-%{version}-src.tar.gz
 Source99:       %{name}-rpmlintrc
+BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -49,16 +50,17 @@ QuiteRSS is a RSS/Atom news feed reader.
 
 %prep
 %setup -q -c
+dos2unix AUTHORS CHANGELOG README.md
 
 %build
-%qmake5 PREFIX=%{_prefix} QMAKE_LRELEASE="lrelease-qt5"
+%qmake5 PREFIX=%{_prefix}
 %make_jobs
 
 %install
 %qmake5_install
 %find_lang %{name} --with-qt --without-mo
 %suse_update_desktop_file %{name}
-%fdupes -s %{buildroot}
+%fdupes %{buildroot}
 
 %files
 %doc AUTHORS CHANGELOG README.md
