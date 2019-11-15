@@ -17,6 +17,7 @@
     <module>junit-jupiter-engine</module>
     <module>junit-jupiter-migrationsupport</module>
     <module>junit-jupiter-params</module>
+    <module>junit-jupiter</module>
     <module>junit-vintage-engine</module>
   </modules>
   <build>

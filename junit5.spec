@@ -16,19 +16,17 @@
 #
 
 
-%global platform_version 1.4.0
+%global platform_version 1.5.2
 %global jupiter_version %{version}
 %global vintage_version %{version}
-# Build with or without the console modules
-# Disabled by default due to missing dep: info.picocli:picocli
-%bcond_with console
+%bcond_without console
 Name:           junit5
-Version:        5.4.0
+Version:        5.5.2
 Release:        0
 Summary:        Java regression testing framework
 License:        EPL-2.0
 Group:          Development/Libraries/Java
-URL:            http://junit.org/junit5/
+URL:            https://junit.org/junit5/
 Source0:        https://github.com/junit-team/junit5/archive/r%{version}/junit5-%{version}.tar.gz
 # Aggregator POM (used for packaging only)
 Source100:      aggregator.pom
@@ -46,6 +44,7 @@ Source301:      https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter-a
 Source302:      https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter-engine/%{jupiter_version}/junit-jupiter-engine-%{jupiter_version}.pom
 Source303:      https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter-migrationsupport/%{jupiter_version}/junit-jupiter-migrationsupport-%{jupiter_version}.pom
 Source304:      https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter-params/%{jupiter_version}/junit-jupiter-params-%{jupiter_version}.pom
+Source305:      https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter/%{jupiter_version}/junit-jupiter-%{jupiter_version}.pom
 # Vintage POM
 Source400:      https://repo1.maven.org/maven2/org/junit/vintage/junit-vintage-engine/%{vintage_version}/junit-vintage-engine-%{vintage_version}.pom
 BuildRequires:  asciidoc
@@ -59,8 +58,6 @@ BuildRequires:  mvn(org.opentest4j:opentest4j)
 BuildArch:      noarch
 %if %{with console}
 BuildRequires:  mvn(info.picocli:picocli)
-%endif
-%if %{with console}
 # Explicit requires for javapackages-tools since junit5 script
 # uses /usr/share/java-utils/java-functions
 Requires:       javapackages-tools
@@ -101,6 +98,7 @@ cp -p %{SOURCE301} junit-jupiter-api/pom.xml
 cp -p %{SOURCE302} junit-jupiter-engine/pom.xml
 cp -p %{SOURCE303} junit-jupiter-migrationsupport/pom.xml
 cp -p %{SOURCE304} junit-jupiter-params/pom.xml
+cp -p %{SOURCE305} junit-jupiter/pom.xml
 cp -p %{SOURCE400} junit-vintage-engine/pom.xml
 
 for pom in $(find -mindepth 2 -name pom.xml); do
@@ -114,7 +112,7 @@ for pom in $(find -mindepth 2 -name pom.xml); do
 done
 
 # Add deps which are shaded by upstream and therefore not present in POMs.
-%pom_add_dep net.sf.jopt-simple:jopt-simple:5.0.4 junit-platform-console
+%pom_add_dep info.picocli:picocli:4.0.4 junit-platform-console
 %pom_add_dep com.univocity:univocity-parsers:2.5.4 junit-jupiter-params
 
 # Incorrect scope - Junit4 is needed for compilation too, not only runtime.
@@ -133,7 +131,7 @@ done
 
 # Build docs.  Ignore exit asciidoc -- it fails for some reason, but
 # still produces readable docs.
-asciidoc documentation/src/docs/asciidoc/user-guide/index.adoc || :
+asciidoc documentation/src/docs/asciidoc/index.adoc || :
 ln -s ../../javadoc/junit5 documentation/src/docs/api
 
 %install
