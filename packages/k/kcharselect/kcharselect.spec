@@ -32,6 +32,8 @@ Source:         https://download.kde.org/stable/applications/%{version}/src/%{na
 Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Make-it-compiles-against-qt5.14.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kbookmarks-devel
 BuildRequires:  kdoctools-devel
@@ -58,7 +60,7 @@ KCharSelect is the KDE character selector tool.
 %endif
 
 %prep
-%setup -q -n kcharselect-%{version}
+%autosetup -p1 -n kcharselect-%{version}
 
 %build
   %cmake_kf5 -d build
