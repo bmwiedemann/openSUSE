@@ -22,6 +22,7 @@
 %global _without_testsuite 1
 %endif
 %bcond_without testsuite
+%bcond_without fpc
 
 Summary:        A GNU source-level debugger for C, C++, Fortran and other languages
 License:        GPL-3.0-or-later AND GPL-3.0-with-GCC-exception AND LGPL-2.1-or-later AND LGPL-3.0-or-later
@@ -378,7 +379,9 @@ BuildRequires:  gcc-go
 %endif
 %if 0%{?suse_version} >= 1500 && 0%{?is_opensuse}
 %ifarch %{ix86} x86_64 aarch64 armv7l
+%if %{with fpc}
 BuildRequires:  fpc
+%endif
 %endif
 %endif
 %if 0%{?suse_version} >= 1200
