@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 10 04:40:20 UTC 2019 - Marguerite Su <i@marguerite.su>
+
+- add deepin-terminal-xcb.vapi-missing-return-statement-at-end-of-subroutine-body.patch
+  * fix TW build errors
+- drop deepin-terminal_unbundle_vte.patch, refreshed to be
+  deepin-terminal-system-vte.patch
+
+-------------------------------------------------------------------
 Sat Jun 15 13:00:26 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 3.2.6
