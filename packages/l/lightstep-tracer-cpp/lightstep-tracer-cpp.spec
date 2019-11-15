@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -31,6 +31,7 @@ Source0:        %{name}-%{version}.tar.xz
 Source100:      %{name}-rpmlintrc
 Patch0:         lightstep-tracer-cpp-cmake-add-soversion.patch
 Patch1:         lightstep-tracer-cpp-cmake-use-gnuinstalldirs.patch
+Patch2:         0001-bazel-Update-googleapis.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -68,19 +69,18 @@ Development files for lightstep-tracer-cpp - C++ library for LightStep
 distributed tracing.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 %cmake
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
 # Install sources
+rm -rf build
 mkdir -p %{buildroot}%{src_install_dir}
-tar -xf %{SOURCE0} --strip-components=1 -C %{buildroot}%{src_install_dir}
+cp -r * %{buildroot}%{src_install_dir}
 %fdupes %{src_install_dir}
 
 %post -n %{libname} -p /sbin/ldconfig

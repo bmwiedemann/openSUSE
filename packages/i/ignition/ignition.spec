@@ -17,7 +17,7 @@
 
 
 Name:           ignition
-Version:        2.0.1+git20190925.641ec6a
+Version:        2.0.1+git20191106.809f44a
 Release:        0
 Summary:        First boot installer and configuration tool
 License:        Apache-2.0

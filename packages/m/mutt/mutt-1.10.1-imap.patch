@@ -1,14 +1,18 @@
+---
+ browser.c |    7 +++++++
+ 1 file changed, 7 insertions(+)
+
 --- browser.c
-+++ browser.c	2018-08-10 11:15:47.527515218 +0200
-@@ -893,6 +893,13 @@ void _mutt_select_file (char *f, size_t
++++ browser.c	2019-11-14 08:20:37.266842776 +0000
+@@ -963,6 +963,13 @@ void _mutt_buffer_select_file (BUFFER *f
  	{
- 	  strfcpy (f, state.entry[menu->current].name, flen);
- 	  mutt_expand_path (f, flen);
+ 	  mutt_buffer_strcpy (f, state.entry[menu->current].name);
+ 	  mutt_buffer_expand_path (f);
 +#ifdef USE_IMAP
-+	  if (mx_is_imap(f))
++	  if (mx_is_imap (mutt_b2s (f)))
 +	  {
-+	    strfcpy (LastDir, f, sizeof (LastDir));
 +	    state.imap_browse = 1;
++	    mutt_buffer_strcpy (LastDir, mutt_b2s (f));
 +	  }
 +#endif
  	}

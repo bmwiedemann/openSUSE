@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,7 +25,9 @@ Summary:        Data model artifacts for Prometheus
 License:        Apache-2.0
 Group:          Development/Libraries/Cross
 Url:            https://github.com/prometheus/client_model
-Source:         %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
+Source1:        BUILD
+Source2:        WORKSPACE
 BuildRequires:  fdupes
 
 %description
@@ -45,6 +47,8 @@ This package contains source code for prometheus-client-model.
 
 %prep
 %setup -q
+cp %{SOURCE1} .
+cp %{SOURCE2} .
 
 %build
 # TODO: If anyone will be interested in prometheus-client-model libraries for
@@ -52,7 +56,7 @@ This package contains source code for prometheus-client-model.
 
 %install
 mkdir -p %{buildroot}%{src_install_dir}
-tar -xJf %{SOURCE0} --strip-components=1 -C %{buildroot}%{src_install_dir}
+cp -r * %{buildroot}%{src_install_dir}
 
 %fdupes %{buildroot}%{src_install_dir}
 
@@ -62,4 +66,3 @@ tar -xJf %{SOURCE0} --strip-components=1 -C %{buildroot}%{src_install_dir}
 %{src_install_dir}
 
 %changelog
-

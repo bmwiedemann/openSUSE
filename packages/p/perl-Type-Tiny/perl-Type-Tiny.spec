@@ -17,10 +17,10 @@
 
 
 Name:           perl-Type-Tiny
-Version:        1.004004
+Version:        1.006000
 Release:        0
 %define cpan_name Type-Tiny
-Summary:        Tiny, yet Moo(Se)-Compatible Type Constraint
+Summary:        Tiny, yet Moo(se)-compatible type constraint
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
 Url:            https://metacpan.org/release/%{cpan_name}
@@ -30,16 +30,16 @@ BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Exporter::Tiny) >= 0.040
+BuildRequires:  perl(Exporter::Tiny) >= 1.000000
 BuildRequires:  perl(Test::More) >= 0.96
-Requires:       perl(Exporter::Tiny) >= 0.040
+Requires:       perl(Exporter::Tiny) >= 1.000000
 Recommends:     perl(Devel::LexAlias) >= 0.05
 Recommends:     perl(Devel::StackTrace)
 Recommends:     perl(Ref::Util::XS) >= 0.100
 Recommends:     perl(Regexp::Util) >= 0.003
 Recommends:     perl(Sub::Util)
 Recommends:     perl(Type::Tie)
-Recommends:     perl(Type::Tiny::XS) >= 0.011
+Recommends:     perl(Type::Tiny::XS) >= 0.016
 %{perl_requires}
 
 %description

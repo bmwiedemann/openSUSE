@@ -18,39 +18,25 @@
 
 %define distname eric6
 
-# python3-qscintilla isn't available for some Leap versions
-# build with PyQt4 instead
-%if 0%{?suse_version} <= 1315
-%bcond_with qt5
-%else
-%bcond_without qt5
-%endif
-
-%if %{with qt5}
-%define qt_ver 5
-%define qt_ext -qt%{qt_ver}
-%else
-%define qt_ver 4
-# no qt_ext
-%endif
-
-%define qt_dir %{_datadir}/qt%{qt_ver}
-
 Name:           eric
-Version:        19.9
+Version:        19.11
 Release:        0
 Summary:        Python IDE based on Qt5
 License:        GPL-3.0-or-later
 Group:          Development/Tools/IDE
 URL:            https://eric-ide.python-projects.org/
-Source:         https://sourceforge.net/projects/eric-ide/files/%{distname}/stable/19.09/%{distname}-%{version}.tar.gz
+Source:         https://sourceforge.net/projects/eric-ide/files/%{distname}/stable/%{version}/%{distname}-%{version}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  python3%{?qt_ext}
-BuildRequires:  python3-qscintilla%{?qt_ext}
+BuildRequires:  python3-qscintilla-qt5
+BuildRequires:  python3-qt5
+BuildRequires:  python3-qtcharts-qt5
+BuildRequires:  python3-qtwebengine-qt5
 BuildRequires:  python3-xml
 BuildRequires:  update-desktop-files
-Requires:       python3%{?qt_ext}
-Requires:       python3-qscintilla%{?qt_ext}
+Requires:       python3-qscintilla-qt5
+Requires:       python3-qt5
+Requires:       python3-qtcharts-qt5
+Requires:       python3-qtwebengine-qt5
 Requires:       python3-xml
 Recommends:     %{name}-api = %{version}
 Recommends:     python3-cx_Freeze
@@ -100,7 +86,7 @@ find . -name \*.py -exec sed -i -e '/^#!\/usr\/bin.*python/d' '{}' \;
 # nothing here
 
 %install
-python3 install.py -b %{_bindir} -d %{python3_sitelib} -i %{buildroot} -x --pyqt=%{qt_ver}
+python3 install.py -b %{_bindir} -d %{python3_sitelib} -i %{buildroot}
 %fdupes %{buildroot}%{python3_sitelib}
 ln -sf eric6 %{buildroot}%{_bindir}/%{name}
 
@@ -112,19 +98,18 @@ ln -sf eric6 %{buildroot}%{_bindir}/%{name}
 %{_datadir}/metainfo/%{distname}.appdata.xml
 %{_datadir}/applications/%{distname}.desktop
 %{_datadir}/applications/%{distname}_browser.desktop
-%{_datadir}/applications/%{distname}_webbrowser.desktop
 %{_datadir}/pixmaps/eric.png
 %{_datadir}/pixmaps/ericWeb.png
 %{python3_sitelib}/
 
 %files api
 %license eric/docs/LICENSE.GPL3
-%dir %{qt_dir}
-%dir %{qt_dir}/qsci/api/python
-%{qt_dir}/qsci/api/python/*
-%dir %{qt_dir}/qsci/api/ruby
-%{qt_dir}/qsci/api/ruby/*
-%dir %{qt_dir}/qsci/api/qss
-%{qt_dir}/qsci/api/qss/*
+%dir %{_datadir}/qt5
+%dir %{_datadir}/qt5/qsci/api/python
+%{_datadir}/qt5/qsci/api/python/*
+%dir %{_datadir}/qt5/qsci/api/ruby
+%{_datadir}/qt5/qsci/api/ruby/*
+%dir %{_datadir}/qt5/qsci/api/qss
+%{_datadir}/qt5/qsci/api/qss/*
 
 %changelog

@@ -71,4 +71,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>747691</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1359ccfa331a9d4a8bf6361a5c0328b7</srcmd5>
+    <version>1.9.1</version>
+    <time>1573774502</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.1 tarballs, this is just a version bump without
+  any code changes.</comment>
+    <requestid>748725</requestid>
+  </revision>
 </revisionlist>

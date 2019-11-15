@@ -17,12 +17,11 @@
 
 
 Name:           msitools
-Version:        0.99
+Version:        0.100
 Release:        0
 Summary:        Tools to inspect and build Windows Installer (.MSI) files
 License:        GPL-2.0-or-later
-Group:          Productivity/Archiving/Compression
-Url:            https://wiki.gnome.org/msitools
+URL:            https://wiki.gnome.org/msitools
 Source:         https://download.gnome.org/sources/msitools/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  bison
 BuildRequires:  intltool
@@ -48,7 +47,6 @@ cross-compiled Windows applications.
 %package -n libmsi0
 Summary:        Library to inspect and build Windows Installer (.MSI) files
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 
 %description -n libmsi0
 libmsi is a port of (and a subset of) Wine's implementation of the Windows
@@ -57,7 +55,6 @@ Installer.
 %package -n typelib-1_0-Libmsi-1_0
 Summary:        Introspection bindings for libmsi, a library to inspect and build .msi files
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 
 %description -n typelib-1_0-Libmsi-1_0
 libmsi is a port of (and a subset of) Wine's implementation of the Windows
@@ -66,7 +63,6 @@ Installer.
 %package devel
 Summary:        Development files for libmsi, a library to inspect and build .msi files
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       libmsi0 = %{version}
 Requires:       typelib-1_0-Libmsi-1_0 = %{version}
@@ -99,7 +95,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n libmsi0 -p /sbin/ldconfig
 
 %files
-%doc AUTHORS COPYING COPYING.LIB NEWS README
+%license COPYING COPYING.LIB
+%doc AUTHORS NEWS
 %{_bindir}/msibuild
 %{_bindir}/msidiff
 %{_bindir}/msidump

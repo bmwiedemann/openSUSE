@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov 13 21:03:30 UTC 2019 - okurz@suse.com
+
+- Update to version 4.6.1573666306.8fe5e5bd:
+  * Increase the read buffer for JSON RPC
+  * qemu: Fix MAKETESTSNAPSHOTS with test modules in nested dirs
+  * qemu: Fix double '//' in snapshot paths depending on distri value
+  * Improve OCR test to avoid default-initialization of needles dir
+  * Fix custom needle dir checkouts by removing check for "working directory"
+  * Forward select_console failures to test process for proper reporting (#1262)
+  * Prevent incompatible overwriting of source qcow images
+  * bmwqemu: Delete useless package prefix on variable
+  * testapi: Fix spellcheck fail on 'json'
+  * Follow VNC_TYPING_LIMIT everywhere (including send_key)
+
+-------------------------------------------------------------------
 Sun Nov 10 22:25:03 UTC 2019 - okurz@suse.com
 
 - Update to version 4.6.1573405893.c5877f02:

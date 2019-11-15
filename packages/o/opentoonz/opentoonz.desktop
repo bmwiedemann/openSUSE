@@ -1,9 +1,0 @@
-#!/usr/bin/env xdg-open
-[Desktop Entry]
-Name=OpenToonz
-GenericName=2D animation software
-Comment=2D animation software previously known as Toonz
-Exec=opentoonz %u
-Type=Application
-Icon=opentoonz
-Categories=Graphics;2DGraphics;

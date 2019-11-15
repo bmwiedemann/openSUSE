@@ -16,6 +16,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 Name:           python-jupyterlab-pygments
 Version:        0.1.0
 Release:        0

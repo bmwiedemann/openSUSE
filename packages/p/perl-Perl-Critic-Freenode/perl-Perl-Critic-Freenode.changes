@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 14 09:38:11 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 0.032
+   see /usr/share/doc/packages/perl-Perl-Critic-Freenode/Changes
+
+  0.032     2019-11-11 11:09:08 EST
+    - Add check for CORE::wantarray and CORE'wantarray to WantArray policy (simcop2387 #37)
+
+-------------------------------------------------------------------
 Thu Sep 26 08:27:43 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 0.031

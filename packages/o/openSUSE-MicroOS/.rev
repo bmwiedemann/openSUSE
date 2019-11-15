@@ -149,4 +149,20 @@
 - Now the kernel cmdline can be escaped properly as well</comment>
     <requestid>747371</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>8d714371d19ed4f39752f8ec1395faa1</srcmd5>
+    <version>16.0.0</version>
+    <time>1573774291</time>
+    <user>dimstar_suse</user>
+    <comment>- Add VirtualBox flavor
+- Make /var a separate autoexpanding partition for VMX flavors:
+  * Allows enabling qgroups on / again
+  * On OEM this would result in &gt;15GiB images, so skip those
+- Drop hardware flavor, meanwhile there's no difference anymore
+- Todo:
+  * Make /var no-COW once
+    https://github.com/OSInside/kiwi/issues/1233 is implemented
+- Use grub2-x86_64-xen instead of just grub2-xen</comment>
+    <requestid>748700</requestid>
+  </revision>
 </revisionlist>

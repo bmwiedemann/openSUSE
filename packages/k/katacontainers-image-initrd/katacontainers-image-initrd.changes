@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 14 16:15:48 UTC 2019 - Ralf Haferkamp <rhafer@suse.com>
+
+- Update to 1.9.1 tarballs, this is just a version bump without
+  any code changes.
+
+-------------------------------------------------------------------
 Tue Nov  5 13:37:18 UTC 2019 - Ralf Haferkamp <rhafer@suse.com>
 
 - Different to Tumbleweed the kvmsmall kernel flavor on Leap 

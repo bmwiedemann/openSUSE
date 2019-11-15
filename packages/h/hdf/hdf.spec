@@ -23,7 +23,6 @@
 %define _openmpi 1
 %endif
 
-%define _mpi %{?_openmpi:openmpi} %{?_mvapich2:mvapich2}
 
 Name:           hdf
 %define libname libhdf
@@ -65,6 +64,7 @@ BuildRequires:  libtirpc-devel
 BuildRequires:  zlib-devel
 %if 0%{?_openmpi}
 BuildRequires:  openmpi-devel
+BuildRequires:  openmpi-macros-devel
 %endif
 %if 0%{?_mvapich2}
 BuildRequires:  mvapich2-devel
@@ -395,6 +395,8 @@ This package provides the static libraries for the mvapich2 version of HDF4.
 %patch13 -p1
 %patch14 -p1
 
+%define _mpi %{?_openmpi:%(grep openmpi_prefix  /etc/rpm/macros.openmpi | sed -E 's|.*gcc/(openmpi.*)|\\1|')} %{?_mvapich2:mvapich2}
+
 for mpi in %_mpi;
 do
 mkdir build_$mpi
@@ -409,6 +411,7 @@ do
 # parallel static library
 pushd build_static_$mpi
 export CC="%{_libdir}/mpi/gcc/$mpi/bin/mpicc"
+export CXX="%{_libdir}/mpi/gcc/$mpi/bin/mpic++"
 export FC="%{_libdir}/mpi/gcc/$mpi/bin/mpif90"
 export F77="%{_libdir}/mpi/gcc/$mpi/bin/mpif77"
 export LD_LIBRARY_PATH="%{_libdir}/mpi/gcc/$mpi/%{_lib}"
@@ -422,7 +425,9 @@ cmake .. \
     -DHDF4_INSTALL_DATA_DIR:PATH=%{_libdir}/mpi/gcc/$mpi/share \
     -DHDF4_INSTALL_CMAKE_DIR:PATH=%{_libdir}/mpi/gcc/$mpi/share/cmake/Modules/ \
     -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_C_COMPILER:PATH=%{_libdir}/mpi/gcc/$mpi/bin/mpicc \
     -DCMAKE_C_FLAGS="${CFLAGS:-%optflags} -DNDEBUG" \
+    -DCMAKE_CXX_COMPILER:PATH=%{_libdir}/mpi/gcc/$mpi/bin/mpic++ \
     -DCMAKE_CXX_FLAGS="${CXXFLAGS:-%optflags} -DNDEBUG" \
     -DCMAKE_Fortran_FLAGS="${FFLAGS:-%optflags%{?_fmoddir: -I%_fmoddir}} -DNDEBUG" \
     -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,--no-undefined -Wl,-z,now -ltirpc" \
@@ -450,11 +455,12 @@ popd
 # parallel shared library
 pushd build_$mpi
 export CC="%{_libdir}/mpi/gcc/$mpi/bin/mpicc"
+export CXX="%{_libdir}/mpi/gcc/$mpi/bin/mpic++"
 export FC="%{_libdir}/mpi/gcc/$mpi/bin/mpif90"
 export F77="%{_libdir}/mpi/gcc/$mpi/bin/mpif77"
 export LD_LIBRARY_PATH="%{_libdir}/mpi/gcc/$mpi/%{_lib}"
 cmake .. \
-    -DCMAKE_INSTALL_PREFIX:PATH=%{_libdir}/mpi/gcc/$mpi \
+    -DCMAKE_INSTALL_PREFIX:PATH=%{openmpi_prefix} \
     -DHDF4_INSTALL_LIB_DIR:PATH=%{_libdir}/mpi/gcc/$mpi/%{_lib} \
     -DHDF4_INSTALL_BIN_DIR:PATH=%{_libdir}/mpi/gcc/$mpi/bin \
     -DHDF4_INSTALL_TOOLS_BIN_DIR:PATH=%{_libdir}/mpi/gcc/$mpi/bin \
@@ -463,7 +469,9 @@ cmake .. \
     -DHDF4_INSTALL_DATA_DIR:PATH=%{_libdir}/mpi/gcc/$mpi/share \
     -DHDF4_INSTALL_CMAKE_DIR:PATH=%{_libdir}/mpi/gcc/$mpi/share/cmake/Modules/ \
     -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_C_COMPILER:PATH=%{_libdir}/mpi/gcc/$mpi/bin/mpicc \
     -DCMAKE_C_FLAGS="${CFLAGS:-%optflags} -DNDEBUG" \
+    -DCMAKE_CXX_COMPILER:PATH=%{_libdir}/mpi/gcc/$mpi/bin/mpic++ \
     -DCMAKE_CXX_FLAGS="${CXXFLAGS:-%optflags} -DNDEBUG" \
     -DCMAKE_Fortran_FLAGS="${FFLAGS:-%optflags%{?_fmoddir: -I%_fmoddir}} -DNDEBUG" \
     -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,--no-undefined -Wl,-z,now -ltirpc" \
@@ -658,22 +666,22 @@ popd
 
 %if 0%{?_openmpi}
 %files openmpi
-%{_libdir}/mpi/gcc/openmpi/bin/*
+%{openmpi_prefix}/bin/*
 
 %files -n %{libname}%{sonum}-openmpi
 %license COPYING
 %doc MANIFEST README.txt release_notes/bugs_fixed.txt release_notes/HISTORY.txt release_notes/misc_docs.txt release_notes/RELEASE.txt
-%{_libdir}/mpi/gcc/openmpi/%{_lib}/*.so.*
+%{openmpi_prefix}/%{_lib}/*.so.*
 
 %files openmpi-devel
-%{_libdir}/mpi/gcc/openmpi/include/*
-%{_libdir}/mpi/gcc/openmpi/%{_lib}/*.so
-%dir %{_libdir}/mpi/gcc/openmpi/share/cmake/
-%dir %{_libdir}/mpi/gcc/openmpi/share/cmake/Modules/
-%{_libdir}/mpi/gcc/openmpi/share/cmake/Modules/hdf4/
+%{openmpi_prefix}/include/*
+%{openmpi_prefix}/%{_lib}/*.so
+%dir %{openmpi_prefix}/share/cmake/
+%dir %{openmpi_prefix}/share/cmake/Modules/
+%{openmpi_prefix}/share/cmake/Modules/hdf4/
 
 %files openmpi-devel-static
-%{_libdir}/mpi/gcc/openmpi/%{_lib}/*.a
+%{openmpi_prefix}/%{_lib}/*.a
 %endif
 
 %if 0%{?_mvapich2}

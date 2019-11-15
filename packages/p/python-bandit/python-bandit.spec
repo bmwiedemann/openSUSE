@@ -1,7 +1,7 @@
 #
 # spec file for package python-bandit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,15 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # Tests require python-hacking, which isn't compatible with pycodestyle
 %bcond_without  builddocs
+# dependencies are no longer py2 compatible
+%define skip_python2 1
 Name:           python-bandit
 Version:        1.6.2
 Release:        0
 Summary:        Security oriented static analyser for Python code
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/PyCQA/bandit
+URL:            https://github.com/PyCQA/bandit
 Source:         https://files.pythonhosted.org/packages/source/b/bandit/bandit-%{version}.tar.gz
 Patch0:         remove-non-test-deps.patch
 BuildRequires:  %{python_module GitPython >= 1.0.1}

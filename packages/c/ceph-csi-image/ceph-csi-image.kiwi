@@ -27,7 +27,7 @@
             <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/cephcsi/cephcsi:%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%"/>
           </suse_label_helper:add_prefix>
         </labels>
-        <history author="Denis Kondratenko &lt;denis.kondratenko@suse.com&gt;">Derive from ceph-image (SES-636)</history>
+        <history author="Denis Kondratenko &lt;denis.kondratenko@suse.com&gt;">Install ceph-csi binaries and configuration</history>
       </containerconfig>
     </type>
     <version>1.0.0</version>

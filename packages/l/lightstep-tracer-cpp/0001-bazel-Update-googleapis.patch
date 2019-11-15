@@ -1,0 +1,135 @@
+From 2a42ea794ff59e121c8c7de896cbc63625891ee1 Mon Sep 17 00:00:00 2001
+From: Michal Rostecki <mrostecki@opensuse.org>
+Date: Tue, 5 Nov 2019 11:11:57 +0100
+Subject: [PATCH] bazel: Update googleapis
+
+Update googleapis to the same version as Envoy is using.
+
+Signed-off-by: Michal Rostecki <mrostecki@opensuse.org>
+---
+ WORKSPACE                                          | 63 +++++++++++++++++-----
+ lightstep-tracer-common/BUILD                      |  2 +-
+ .../third_party/googleapis/BUILD                   | 11 ----
+ .../third_party/googleapis/WORKSPACE               |  0
+ 4 files changed, 52 insertions(+), 24 deletions(-)
+ delete mode 100644 lightstep-tracer-common/third_party/googleapis/BUILD
+ delete mode 100644 lightstep-tracer-common/third_party/googleapis/WORKSPACE
+
+diff --git a/WORKSPACE b/WORKSPACE
+index 7f9156f..9f6c9f1 100644
+--- a/WORKSPACE
++++ b/WORKSPACE
+@@ -1,26 +1,65 @@
+ workspace(name = "com_lightstep_tracer_cpp")
+ 
+-git_repository(
++load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
++
++http_archive(
+     name = "io_opentracing_cpp",
+-    remote = "https://github.com/opentracing/opentracing-cpp",
+-    commit = "ac50154a7713877f877981c33c3375003b6ebfe1",
++    sha256 = "6f4d449e6b411708140d8844aa135f97a8d055bcf4e27334ffa2c1394686451f",
++    strip_prefix = "opentracing-cpp-ac50154a7713877f877981c33c3375003b6ebfe1",
++    urls = ["https://github.com/opentracing/opentracing-cpp/archive/ac50154a7713877f877981c33c3375003b6ebfe1.tar.gz"],
+ )
+ 
+ http_archive(
+     name = "com_google_protobuf",
+-    sha256 = "5d4551193416861cb81c3bc0a428f22a6878148c57c31fb6f8f2aa4cf27ff635",
+-    strip_prefix = "protobuf-c4f59dcc5c13debc572154c8f636b8a9361aacde",
+-    urls = ["https://github.com/google/protobuf/archive/c4f59dcc5c13debc572154c8f636b8a9361aacde.tar.gz"],
++    sha256 = "6adf73fd7f90409e479d6ac86529ade2d45f50494c5c10f539226693cb8fe4f7",
++    strip_prefix = "protobuf-3.10.1",
++    urls = ["https://github.com/google/protobuf/archive/v3.10.1.tar.gz"],
+ )
+ 
+ http_archive(
+     name = "com_google_protobuf_cc",
+-    sha256 = "5d4551193416861cb81c3bc0a428f22a6878148c57c31fb6f8f2aa4cf27ff635",
+-    strip_prefix = "protobuf-c4f59dcc5c13debc572154c8f636b8a9361aacde",
+-    urls = ["https://github.com/google/protobuf/archive/c4f59dcc5c13debc572154c8f636b8a9361aacde.tar.gz"],
++    sha256 = "6adf73fd7f90409e479d6ac86529ade2d45f50494c5c10f539226693cb8fe4f7",
++    strip_prefix = "protobuf-3.10.1",
++    urls = ["https://github.com/google/protobuf/archive/v3.10.1.tar.gz"],
+ )
+ 
+-local_repository(
+-    name = "lightstep_vendored_googleapis",
+-    path = "lightstep-tracer-common/third_party/googleapis",
++load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
++
++protobuf_deps()
++
++http_archive(
++    name = "com_github_grpc_grpc",
++    sha256 = "f56ced18740895b943418fa29575a65cc2396ccfa3159fa40d318ef5f59471f9",
++    strip_prefix = "grpc-1.23.0",
++    urls = ["https://github.com/grpc/grpc/archive/v1.23.0.tar.gz"],
++)
++
++load("@com_github_grpc_grpc//bazel:grpc_deps.bzl", "grpc_deps")
++
++grpc_deps()
++
++http_archive(
++    name = "io_bazel_rules_go",
++    urls = ["https://github.com/bazelbuild/rules_go/releases/download/0.18.5/rules_go-0.18.5.tar.gz"],
++    sha256 = "a82a352bffae6bee4e95f68a8d80a70e87f42c4741e6a448bec11998fcc82329",
++)
++
++load("@io_bazel_rules_go//go:deps.bzl", "go_rules_dependencies", "go_register_toolchains")
++go_rules_dependencies()
++go_register_toolchains()
++
++http_archive(
++    name = "com_google_googleapis",
++    sha256 = "c1969e5b72eab6d9b6cfcff748e45ba57294aeea1d96fd04cd081995de0605c2",
++    strip_prefix = "googleapis-be480e391cc88a75cf2a81960ef79c80d5012068",
++    urls = ["https://github.com/google/googleapis/archive/be480e391cc88a75cf2a81960ef79c80d5012068.tar.gz"],
++)
++
++load("@com_google_googleapis//:repository_rules.bzl", "switched_rules_by_language")
++
++switched_rules_by_language(
++    name = "com_google_googleapis_imports",
++    cc = True,
++    go = True,
++    grpc = True,
+ )
+diff --git a/lightstep-tracer-common/BUILD b/lightstep-tracer-common/BUILD
+index 03418c5..a374cd2 100644
+--- a/lightstep-tracer-common/BUILD
++++ b/lightstep-tracer-common/BUILD
+@@ -2,7 +2,7 @@ proto_library(
+     name = "collector_proto",
+     srcs = ["collector.proto"],
+     deps = [
+-        "@lightstep_vendored_googleapis//:googleapis_proto",
++        "@com_google_googleapis//google/api:annotations_proto",
+         "@com_google_protobuf//:timestamp_proto",
+     ],
+     visibility = ["//visibility:public"],
+diff --git a/lightstep-tracer-common/third_party/googleapis/BUILD b/lightstep-tracer-common/third_party/googleapis/BUILD
+deleted file mode 100644
+index 2adec34..0000000
+--- a/lightstep-tracer-common/third_party/googleapis/BUILD
++++ /dev/null
+@@ -1,11 +0,0 @@
+-proto_library(
+-    name = "googleapis_proto",
+-    srcs = [
+-        "google/api/annotations.proto",
+-        "google/api/http.proto",
+-    ],
+-    deps = [
+-        "@com_google_protobuf//:descriptor_proto",
+-    ],
+-    visibility = ["//visibility:public"],
+-)
+diff --git a/lightstep-tracer-common/third_party/googleapis/WORKSPACE b/lightstep-tracer-common/third_party/googleapis/WORKSPACE
+deleted file mode 100644
+index e69de29..0000000
+-- 
+2.16.4
+

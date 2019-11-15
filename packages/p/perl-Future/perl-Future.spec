@@ -17,7 +17,7 @@
 
 
 Name:           perl-Future
-Version:        0.41
+Version:        0.42
 Release:        0
 %define cpan_name Future
 Summary:        Represent an operation awaiting completion

@@ -1,4 +1,146 @@
 -------------------------------------------------------------------
+Thu Nov 14 09:40:52 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.006000
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.006000	2019-11-12
+  
+   [ Documentation ]
+   - Links to Type::Tiny on GitHub/Travis/AppVeyor/Coveralls in Type::Tiny
+     pod.
+   - Minor correction to POD header for Type::Params
+     Jonas B Nielsen++
+     <https://github.com/tobyink/p5-type-tiny/pull/43>
+   - Types::Standard documentation fix.
+     Lucas Buchala++
+     <https://github.com/tobyink/p5-type-tiny/pull/48>
+  
+   [ Test Suite ]
+   - Improve test coverage.
+  
+   [ Packaging ]
+   - Bump minimum required version of Exporter::Tiny to 1.000000.
+   - Type::Tiny::XS 0.016 is recommended.
+  
+   [ Other ]
+   - Added: Type::Library now supports `of` and `where` options when
+     importing type constraints.
+   - Added: Type::Params multisig function now supports custom error
+     messages.
+     Benct Philip Jonsson++
+     <https://github.com/tobyink/p5-type-tiny/pull/44>
+   - Added: Type::Params named_to_list feature.
+     <https://rt.cpan.org/Ticket/Display.html?id=128337>
+   - Added: Type::Params signatures with slurpy hashrefs now allow true
+     hashrefs to be passed to them.
+   - Added: Type::Tiny::Enum now has a `unique_values` method.
+     <https://rt.cpan.org/Ticket/Display.html?id=129650>
+   - Added: Types::Standard ArrayRef parameterized type can now take a second
+     parameter, the minimum array length.
+   - Better implementation of is_subtype_of/is_supertype_of and related
+     functions.
+   - Don't use Int from Type::Tiny::XS unless version 0.016 is available.
+     <https://rt.cpan.org/Ticket/Display.html?id=130411>
+   - Eliminate memory cycles created by coderef overloading in Type::Tiny and
+     Type::Coercion.
+     Fixes RT#130823.
+     Ivanov Anton++
+     <https://rt.cpan.org/Ticket/Display.html?id=130823>
+   - Eval::TypeTiny's API is now considered to be stable.
+   - Fix Types::Standard's LazyLoad implementation.
+   - The `values` attribute of Type::Tiny::Enum now preserves order.
+     Fixes RT#129650.
+     Daniel Schröer++
+     <https://rt.cpan.org/Ticket/Display.html?id=129650>
+   - Tidy up Type::Tiny namespace a little by fully-referencing some
+     functions instead of importing them.
+   - Tweaks to Type::Tiny and Type::Coercion to avoid unnecessarily loading
+     overload.pm and overloading.pm.
+   - Types::TypeTiny::TypeTiny->has_coercion is now true.
+  
+  1.005_004	2019-11-11
+  
+   [ Documentation ]
+   - Types::Standard documentation fix.
+     Lucas Buchala++
+     <https://github.com/tobyink/p5-type-tiny/pull/48>
+  
+   [ Other ]
+   - Added: Type::Tiny::Enum now has a `unique_values` method.
+     <https://rt.cpan.org/Ticket/Display.html?id=129650>
+   - Don't use Int from Type::Tiny::XS unless version 0.016 is available.
+     <https://rt.cpan.org/Ticket/Display.html?id=130411>
+   - Eliminate memory cycles created by coderef overloading in Type::Tiny and
+     Type::Coercion.
+     Fixes RT#130823.
+     Ivanov Anton++
+     <https://rt.cpan.org/Ticket/Display.html?id=130823>
+   - The `values` attribute of Type::Tiny::Enum now preserves order.
+     Fixes RT#129650.
+     Daniel Schröer++
+     <https://rt.cpan.org/Ticket/Display.html?id=129650>
+  
+  1.005_003	2019-02-26
+  
+   [ Test Suite ]
+   - Improve test coverage.
+  
+   [ Other ]
+   - Fix Types::Standard's LazyLoad implementation.
+  
+  1.005_002	2019-01-29
+  
+   - Added: Type::Params named_to_list feature.
+     <https://rt.cpan.org/Ticket/Display.html?id=128337>
+  
+  1.005_001	2019-01-23
+  
+   - Added: Type::Library now supports `of` and `where` options when
+     importing type constraints.
+  
+  1.005_000	2019-01-20
+  
+   [ Bug Fixes ]
+   - Fix spelling in error message for Types::Common::String
+     LowerCaseSimpleStr.
+     Robert Rothenberg++
+     <https://github.com/tobyink/p5-type-tiny/pull/47>
+  
+   [ Documentation ]
+   - Fix Type::Params documentation error.
+     Nelo Onyiah++
+     <https://github.com/tobyink/p5-type-tiny/pull/45>
+   - Fix Types::Standard documentation error: incorrect third-party module
+     name.
+     Nelo Onyiah++
+     <https://github.com/tobyink/p5-type-tiny/pull/46>
+   - Minor correction to POD header for Type::Params
+     Jonas B Nielsen++
+     <https://github.com/tobyink/p5-type-tiny/pull/43>
+  
+   [ Packaging ]
+   - Bump minimum required version of Exporter::Tiny to 1.000000.
+  
+   [ Other ]
+   - Added: Type::Params multisig function now supports custom error
+     messages.
+     Benct Philip Jonsson++
+     <https://github.com/tobyink/p5-type-tiny/pull/44>
+   - Added: Types::Standard ArrayRef parameterized type can now take a second
+     parameter, the minimum array length.
+   - Better implementation of is_subtype_of/is_supertype_of and related
+     functions.
+   - Eval::TypeTiny's API is now considered to be stable.
+   - Tidy up Type::Tiny namespace a little by fully-referencing some
+     functions instead of importing them.
+   - Tweaks to Type::Tiny and Type::Coercion to avoid unnecessarily loading
+     overload.pm and overloading.pm.
+   - Type::Params signatures with slurpy hashrefs now allow true hashrefs to
+     be passed to them.
+   - Types::TypeTiny::TypeTiny->has_coercion is now true.
+
+-------------------------------------------------------------------
 Wed Jan  9 06:32:36 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 1.004004

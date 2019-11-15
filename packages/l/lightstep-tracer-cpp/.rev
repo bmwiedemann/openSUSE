@@ -23,4 +23,17 @@
     <comment></comment>
     <requestid>686690</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>69df384da11d23a984a419a1d4b25b16</srcmd5>
+    <version>0.8.1</version>
+    <time>1573772185</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch which makes lightstep-tracer-cpp compatible with
+  newer googleapis:
+  * 0001-bazel-Update-googleapis.patch
+
+- Change googleapis' name from lightstep_vendored_googleapis to
+  com_google_googleapis. (forwarded request 748470 from mrostecki)</comment>
+    <requestid>748471</requestid>
+  </revision>
 </revisionlist>

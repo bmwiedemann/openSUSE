@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 12 15:20:55 UTC 2019 - Kristoffer Gronlund <kgronlund@suse.com>
+
+- Modify history to document changes in layer (SES-922)
+
+-------------------------------------------------------------------
 Tue Nov  5 07:52:56 UTC 2019 - Kristoffer Gronlund <kgronlund@suse.com>
 
 - Add distribution/flavor tag to image (SES-636)
@@ -7,7 +12,7 @@ Tue Nov  5 07:52:56 UTC 2019 - Kristoffer Gronlund <kgronlund@suse.com>
 Sun Nov  3 15:12:50 UTC 2019 - Kristoffer Gronlund <kgronlund@suse.com>
 
 - Generate container history (SES-922)
-- Add release number to version labels
+- Add release number to version labels (SES-1034)
 
 -------------------------------------------------------------------
 Mon Aug 13 11:00:17 UTC 2019 - Denis Kondratenko <denis.kondratenko@suse.com>

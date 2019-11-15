@@ -1,0 +1,24 @@
+From a07d915d7bf9c7c54b2047f8819ba2aae6669f35 Mon Sep 17 00:00:00 2001
+From: Matthias Kuhn <matthias@opengis.ch>
+Date: Wed, 13 Nov 2019 10:27:06 +0100
+Subject: [PATCH] Add missing dep
+
+Fix #32764
+
+Acked-by: Libor Pechacek <lpechacek@gmx.com>
+---
+ src/providers/wms/CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/providers/wms/CMakeLists.txt b/src/providers/wms/CMakeLists.txt
+index 60dc3448db37..22c71d1b2eab 100644
+--- a/src/providers/wms/CMakeLists.txt
++++ b/src/providers/wms/CMakeLists.txt
+@@ -68,6 +68,7 @@ IF (WITH_GUI)
+   )
+   TARGET_COMPILE_DEFINITIONS(wmsprovider_gui_a PRIVATE "-DQT_NO_FOREACH")
+   ADD_DEPENDENCIES(wmsprovider_gui_a ui)
++  ADD_DEPENDENCIES(wmsprovider_a ui)
+ ENDIF (WITH_GUI)
+ 
+ IF (FORCE_STATIC_PROVIDERS)

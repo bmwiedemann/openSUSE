@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  6 16:39:55 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Add BUILD and WORKSPACE files to allow to build
+  prometheus-client-model with Bazel.
+
+-------------------------------------------------------------------
 Thu Jan 10 16:14:41 UTC 2019 - Michał Rostecki <mrostecki@suse.de>
 
 - Initial version 20190109

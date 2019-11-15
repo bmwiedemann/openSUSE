@@ -28,6 +28,7 @@ Url:            http://sigrok.org
 Source0:        http://sigrok.org/download/source/libsigrok/%{name}-%{version}.tar.gz
 Source1:        sigrok-mime.xml
 Patch0:         0001-Fix-link-errors-when-compiling-with-LTO-enabled.patch
+Patch1:         LTO-linking-fix.patch
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -101,7 +102,7 @@ libraries.
 
 %prep
 %setup -q
-%patch0 -p1
+%autopatch -p1
 
 %build
 %configure \

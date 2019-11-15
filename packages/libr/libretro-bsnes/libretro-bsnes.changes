@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct 14 12:49:44 UTC 2019 - i@guoyunhe.me
+
+- Update to version 0~git20191013:
+  * add input_poll to retro_run to match libretro.h specifications
+  * add iOS and tvOS back to root level GNUmakefile
+  * libretro build fixes
+  * v111.6
+  * Language detection fix attempt 1.
+  * NHL '94 (Japan) scanline override for fast PPU
+  * v111.5
+  * Added SHVC-2P3B-01
+  * v110.4
+  * v111.4
+- Remove bsnes.libretro because it is provided in core info package
+
+-------------------------------------------------------------------
 Wed Sep 13 06:29:07 UTC 2017 - aplazas@suse.com
 
 - Update to version 0~20170724.263e94f9:

@@ -61,4 +61,13 @@
     not work with earlier libpcap versions</comment>
     <requestid>742832</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d187b132a454463d5a95c130f8305cd6</srcmd5>
+    <version>1.9.7</version>
+    <time>1573773488</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9.7:
+  * Internal changes only</comment>
+    <requestid>748657</requestid>
+  </revision>
 </revisionlist>

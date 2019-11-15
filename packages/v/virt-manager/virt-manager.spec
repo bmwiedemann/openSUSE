@@ -39,8 +39,13 @@ Patch4:         53245827-urlfetcher-Force-a-flush-after-writing-to-a-file.patch
 Patch5:         3009888a-urlfetcher-Dont-override-fullurl-when-its-explicitly-set.patch
 Patch6:         9465da41-urlfetcher-Deal-with-file-in-_LocalURLFetcher.patch
 Patch7:         651e5b6d-devices-video-Simplify-model-hvm-check.patch
-Patch8:         d9736db9-addhardware-Add-bochs-display-to-the-video-list.patch
-Patch9:         8f4c53ea-video-Prefer-bochs-when-its-supported..patch
+Patch8:         1547e16d-domcapabilities-Get-video-devices.patch
+Patch9:         2e20b128-domcapabilities-Add-supports_video_bochs.patch
+Patch10:        d9736db9-addhardware-Add-bochs-display-to-the-video-list.patch
+Patch11:        8f4c53ea-video-Prefer-bochs-when-its-supported..patch
+Patch12:        ae19d6d6-fix-resizing-of-spice-clients-with-guest-resizing-enabled.patch
+Patch13:        51d84c54-connection-Avoid-repeated-default-pool-creation-attempts.patch
+Patch14:        d934d6f2-domcaps-Fix-check-for-uncached-security-features.patch
 # SUSE Only
 Patch70:        virtman-desktop.patch
 Patch71:        virtman-kvm.patch
@@ -182,6 +187,11 @@ machine).
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
+%patch13 -p1
+%patch14 -p1
 # SUSE Only
 %patch70 -p1
 %patch71 -p1

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 12 18:26:16 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.100:
+  * fix v0.99 regression on big-endian systems
+  * wixl: Support use of FileKey in CustomAction
+  * wixl: support Arguments attribute in shortcuts
+  * new wxi manifests for brotli, fribidi, libpsl, libunistring
+  * update wxi manifests fo icu, readline, nettle, adwaita-icon-theme,
+    gcc, OpenEXR, ilmbase
+  * remove gtk-vnc manifest
+  * translation updates, build-sys improvements
+
+-------------------------------------------------------------------
 Fri Feb 15 14:17:03 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.99:

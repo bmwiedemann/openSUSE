@@ -48,7 +48,7 @@
 %define svrcorelib libsvrcore0
 
 Name:           389-ds
-Version:        1.4.2.2~git0.d41ef935b
+Version:        1.4.2.3~git0.129914357
 Release:        0
 Summary:        389 Directory Server
 License:        GPL-3.0-or-later AND MPL-2.0
@@ -504,13 +504,11 @@ exit 0
 %{_includedir}/svrcore.h
 %{_libdir}/libsvrcore.so
 %{_libdir}/dirsrv/libns-dshttpd.so
-%{_libdir}/dirsrv/libnunc-stans.so
 %{_libdir}/dirsrv/libsds.so
 %{_libdir}/dirsrv/libslapd.so
 %{_libdir}/dirsrv/libldaputil.so
 %{_libdir}/pkgconfig/dirsrv.pc
 %{_libdir}/pkgconfig/libsds.pc
-%{_libdir}/pkgconfig/nunc-stans.pc
 %{_libdir}/pkgconfig/svrcore.pc
 
 %files -n %{svrcorelib}

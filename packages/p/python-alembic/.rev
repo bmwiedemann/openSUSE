@@ -1206,4 +1206,12 @@
       and these requirements are unused.</comment>
     <requestid>733336</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>a01b10a41a51a9c61331f6579dd0c4cc</srcmd5>
+    <version>1.2.1</version>
+    <time>1573773530</time>
+    <user>dimstar_suse</user>
+    <comment>- Require full python interpreter when building</comment>
+    <requestid>748659</requestid>
+  </revision>
 </revisionlist>

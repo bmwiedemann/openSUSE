@@ -1,0 +1,18 @@
+commit adae1528d6f580d56b5499c97b30acfb84af4390
+Author: manongjohn <manongjohn@users.noreply.github.com>
+Date:   Tue Jul 9 23:19:16 2019 -0400
+
+    Fix Qt 5.13 build error (#2665)
+
+diff --git a/toonz/sources/include/tfxattributes.h b/toonz/sources/include/tfxattributes.h
+index 224a9442..92245cb8 100644
+--- a/toonz/sources/include/tfxattributes.h
++++ b/toonz/sources/include/tfxattributes.h
+@@ -5,6 +5,7 @@
+ 
+ #include "tgeometry.h"
+ #include <QStack>
++#include <QList>
+ 
+ #undef DVAPI
+ #undef DVVAR

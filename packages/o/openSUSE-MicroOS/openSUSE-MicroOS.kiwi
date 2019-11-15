@@ -16,11 +16,11 @@
         <profile name="VMware" description="VMware for x86_64" arch="x86_64"/>
         <profile name="MS-HyperV" description="Hyper-V for x86_64" arch="x86_64"/>
         <profile name="OpenStack-Cloud" description="OpenStack Cloud for x86_64" arch="x86_64"/>
+        <profile name="VirtualBox" description="VirtualBox for x86_64" arch="x86_64"/>
         <profile name="Pine64" description="Pine64" arch="aarch64"/>
         <profile name="RaspberryPi" description="RaspberryPi (3+, aarch64)" arch="aarch64"/>
         <profile name="RaspberryPi2" description="RaspberryPi2 (armv7)" arch="armv7l"/>
         <profile name="Vagrant" description="Vagrant for x86_64" arch="x86_64"/>
-        <profile name="hardware" description="physical x86_64 hardware" arch="x86_64"/>
         <!-- Images (flavor + platform) -->
         <profile name="ContainerHost-kvm-and-xen" description="MicroOS with Podman for KVM and HVM Xen" arch="x86_64">
             <requires profile="kvm-and-xen"/>
@@ -48,10 +48,6 @@
         </profile>
         <profile name="ContainerHost-Vagrant" description="MicroOS with Podman for Vagrant" arch="x86_64">
             <requires profile="Vagrant"/>
-            <requires profile="ContainerHost"/>
-        </profile>
-        <profile name="ContainerHost-hardware" description="MicroOS with Podman for physical hardware" arch="x86_64">
-            <requires profile="hardware"/>
             <requires profile="ContainerHost"/>
         </profile>
         <profile name="Kubic-kubeadm-kvm-and-xen" description="kubeadm with CRI-O for KVM and HVM Xen" arch="x86_64">
@@ -82,10 +78,6 @@
             <requires profile="Vagrant"/>
             <requires profile="Kubic-kubeadm"/>
         </profile>
-        <profile name="Kubic-kubeadm-hardware" description="kubeadm with CRI-O for physical x86_64 hardware" arch="x86_64">
-            <requires profile="hardware"/>
-            <requires profile="Kubic-kubeadm"/>
-        </profile>
     </profiles>
     <preferences profiles="kvm-and-xen">
         <version>16.0.0</version>
@@ -106,7 +98,8 @@
             devicepersistency="by-uuid"
             btrfs_root_is_snapshot="true"
             btrfs_root_is_readonly_snapshot="true"
-            btrfs_quota_groups="false"
+            btrfs_quota_groups="true"
+            spare_part="5G" spare_part_mountpoint="/var" spare_part_fs="btrfs" spare_part_is_last="true"
         >
             <systemdisk>
                 <volume name="home"/>
@@ -118,9 +111,8 @@
                 <volume name="boot/grub2/x86_64-efi" mountpoint="boot/grub2/x86_64-efi"/>
                 <volume name="boot/writable"/>
                 <volume name="usr/local"/>
-                <volume name="var" copy_on_write="false"/>
             </systemdisk>
-            <size unit="G">24</size>
+            <size unit="G">20</size>
         </type>
     </preferences>
     <preferences profiles="VMware">
@@ -142,7 +134,8 @@
             devicepersistency="by-uuid"
             btrfs_root_is_snapshot="true"
             btrfs_root_is_readonly_snapshot="true"
-            btrfs_quota_groups="false"
+            btrfs_quota_groups="true"
+            spare_part="5G" spare_part_mountpoint="/var" spare_part_fs="btrfs" spare_part_is_last="true"
         >
             <systemdisk>
                 <volume name="home"/>
@@ -154,7 +147,6 @@
                 <volume name="boot/grub2/x86_64-efi" mountpoint="boot/grub2/x86_64-efi"/>
                 <volume name="boot/writable"/>
                 <volume name="usr/local"/>
-                <volume name="var" copy_on_write="false"/>
             </systemdisk>
             <size unit="G">24</size>
             <machine memory="1024" HWversion="10" guestOS="suse-64"/>
@@ -179,7 +171,8 @@
             devicepersistency="by-uuid"
             btrfs_root_is_snapshot="true"
             btrfs_root_is_readonly_snapshot="true"
-            btrfs_quota_groups="false"
+            btrfs_quota_groups="true"
+            spare_part="5G" spare_part_mountpoint="/var" spare_part_fs="btrfs" spare_part_is_last="true"
         >
             <systemdisk>
                 <volume name="home"/>
@@ -191,7 +184,6 @@
                 <volume name="boot/grub2/x86_64-efi" mountpoint="boot/grub2/x86_64-efi"/>
                 <volume name="boot/writable"/>
                 <volume name="usr/local"/>
-                <volume name="var" copy_on_write="false"/>
             </systemdisk>
             <size unit="G">24</size>
         </type>
@@ -216,7 +208,8 @@
             devicepersistency="by-uuid"
             btrfs_root_is_snapshot="true"
             btrfs_root_is_readonly_snapshot="true"
-            btrfs_quota_groups="false"
+            btrfs_quota_groups="true"
+            spare_part="5G" spare_part_mountpoint="/var" spare_part_fs="btrfs" spare_part_is_last="true"
         >
             <systemdisk>
                 <volume name="home"/>
@@ -228,10 +221,45 @@
                 <volume name="boot/grub2/x86_64-efi" mountpoint="boot/grub2/x86_64-efi"/>
                 <volume name="boot/writable"/>
                 <volume name="usr/local"/>
-                <volume name="var" copy_on_write="false"/>
             </systemdisk>
             <!-- Microsoft wants 30GB images -->
             <size unit="G">30</size>
+        </type>
+    </preferences>
+    <preferences profiles="VirtualBox">
+        <version>16.0.0</version>
+        <packagemanager>zypper</packagemanager>
+        <bootsplash-theme>openSUSE</bootsplash-theme>
+        <bootloader-theme>openSUSE</bootloader-theme>
+        <rpm-excludedocs>true</rpm-excludedocs>
+        <type
+            image="vmx"
+            filesystem="btrfs"
+            format="vdi"
+            bootloader="grub2"
+            bootloader_console="gfxterm"
+            firmware="uefi"
+            kernelcmdline="plymouth.enable=0 console=tty0 net.ifnames=0 \$ignition_firstboot ignition.platform.id=virtualbox"
+            bootpartition="false"
+            bootkernel="custom"
+            devicepersistency="by-uuid"
+            btrfs_root_is_snapshot="true"
+            btrfs_root_is_readonly_snapshot="true"
+            btrfs_quota_groups="true"
+            spare_part="5G" spare_part_mountpoint="/var" spare_part_fs="btrfs" spare_part_is_last="true"
+        >
+            <systemdisk>
+                <volume name="home"/>
+                <volume name="root"/>
+                <volume name="tmp"/>
+                <volume name="opt"/>
+                <volume name="srv"/>
+                <volume name="boot/grub2/i386-pc"/>
+                <volume name="boot/grub2/x86_64-efi" mountpoint="boot/grub2/x86_64-efi"/>
+                <volume name="boot/writable"/>
+                <volume name="usr/local"/>
+            </systemdisk>
+            <size unit="G">20</size>
         </type>
     </preferences>
     <preferences profiles="Pine64">
@@ -247,7 +275,7 @@
             fsmountoptions="noatime,compress=lzo"
             bootloader="grub2"
             firmware="efi"
-            kernelcmdline="loglevel=3 splash=silent plymouth.enable=0 console=ttyS0,115200n8 \$ignition_firstboot ignition.platform.id=metal"
+            kernelcmdline="plymouth.enable=0 swiotlb=512 cma=64M console=ttyS0,115200n8 console=tty \$ignition_firstboot ignition.platform.id=metal"
             bootpartition="false"
             devicepersistency="by-uuid"
             btrfs_root_is_snapshot="true"
@@ -318,8 +346,8 @@
             fsmountoptions="noatime,compress=lzo"
             bootloader="grub2"
             bootloader_console="gfxterm"
-            firmware="efi"
-            kernelcmdline="plymouth.enable=0 swiotlb=512 cma=64M console=ttyS0,115200n8 console=tty \$ignition_firstboot ignition.platform.id=metal"
+            firmware="uefi"
+            kernelcmdline="plymouth.enable=0 console=ttyS0,115200 console=tty0 net.ifnames=0 \$ignition_firstboot ignition.platform.id=metal"
             bootpartition="false"
             devicepersistency="by-uuid"
             btrfs_root_is_snapshot="true"
@@ -354,50 +382,14 @@
             bootloader="grub2"
             bootloader_console="gfxterm"
             firmware="uefi"
-            kernelcmdline="plymouth.enable=0 console=ttyS0,115200 console=tty0 net.ifnames=0 \$ignition_firstboot ignition.platform.id=metal"
-            bootpartition="false"
-            bootkernel="custom"
-            devicepersistency="by-uuid"
-            btrfs_root_is_snapshot="true"
-            btrfs_root_is_readonly_snapshot="true"
-            btrfs_quota_groups="false"
-        >
-            <systemdisk>
-                <volume name="home"/>
-                <volume name="root"/>
-                <volume name="tmp"/>
-                <volume name="opt"/>
-                <volume name="srv"/>
-                <volume name="boot/grub2/i386-pc"/>
-                <volume name="boot/grub2/x86_64-efi" mountpoint="boot/grub2/x86_64-efi"/>
-                <volume name="boot/writable"/>
-                <volume name="usr/local"/>
-                <volume name="var" copy_on_write="false"/>
-            </systemdisk>
-            <vagrantconfig provider="libvirt" virtualsize="24"/>
-            <size unit="G">24</size>
-        </type>
-    </preferences>
-    <preferences profiles="hardware">
-        <version>16.0.0</version>
-        <packagemanager>zypper</packagemanager>
-        <bootsplash-theme>openSUSE</bootsplash-theme>
-        <bootloader-theme>openSUSE</bootloader-theme>
-        <rpm-excludedocs>true</rpm-excludedocs>
-        <type
-            image="vmx"
-            filesystem="btrfs"
-            format="qcow2"
-            bootloader="grub2"
-            bootloader_console="gfxterm"
-            firmware="uefi"
             kernelcmdline="plymouth.enable=0 console=ttyS0,115200 console=tty0 \$ignition_firstboot ignition.platform.id=metal"
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"
             btrfs_root_is_snapshot="true"
             btrfs_root_is_readonly_snapshot="true"
-            btrfs_quota_groups="false"
+            btrfs_quota_groups="true"
+            spare_part="5G" spare_part_mountpoint="/var" spare_part_fs="btrfs" spare_part_is_last="true"
         >
             <systemdisk>
                 <volume name="home"/>
@@ -409,8 +401,8 @@
                 <volume name="boot/grub2/x86_64-efi" mountpoint="boot/grub2/x86_64-efi"/>
                 <volume name="boot/writable"/>
                 <volume name="usr/local"/>
-                <volume name="var" copy_on_write="false"/>
             </systemdisk>
+            <vagrantconfig provider="libvirt" virtualsize="24"/>
             <size unit="G">24</size>
         </type>
     </preferences>
@@ -441,6 +433,7 @@
         <namedCollection name="microos_cloud"/>
         <package name="patterns-microos-cloud"/>
         <package name="ignition-dracut"/>
+        <package name="growpart-generator"/>
     </packages>
     <packages type="image" profiles="ContainerHost">
         <namedCollection name="container_runtime"/>
@@ -461,7 +454,7 @@
     <packages type="image" profiles="kvm-and-xen">
         <!-- XEN specific packages -->
         <package name="xen-tools-domU" arch="x86_64"/>
-        <package name="grub2-xen" arch="x86_64"/>
+        <package name="grub2-x86_64-xen" arch="x86_64"/>
         <package name="xen-libs" arch="x86_64"/>
         <package name="kernel-default"/>
         <package name="qemu-guest-agent"/>
@@ -477,6 +470,10 @@
     <packages type="image" profiles="OpenStack-Cloud">
         <package name="cloud-init"/>
         <package name="kernel-default"/>
+    </packages>
+    <packages type="image" profiles="VirtualBox">
+        <package name="kernel-default"/>
+        <package name="virtualbox-guest-tools"/>
     </packages>
     <packages type="image" profiles="Pine64">
         <package name="u-boot-pine64plus" arch="aarch64"/>
@@ -512,10 +509,6 @@
         <package name="kernel-default"/>
         <!-- vagrant-libvirt uses nfs for synced folders -->
         <package name="nfs-client"/>
-    </packages>
-    <packages type="image" profiles="hardware">
-        <package name="kernel-default"/>
-        <package name="kernel-firmware"/>
     </packages>
     <packages type="bootstrap">
         <package name="udev"/>

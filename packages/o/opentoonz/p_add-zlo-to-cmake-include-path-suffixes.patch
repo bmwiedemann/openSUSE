@@ -3,22 +3,15 @@ From: boombatower <jimmy@boombatower.com>
 Date: Wed, 25 Jan 2017 19:15:53 -0600
 Subject: [PATCH] Add zlo to cmake include path suffixes.
 
----
- toonz/cmake/FindLZO.cmake | 1 +
- 1 file changed, 1 insertion(+)
-
 diff --git a/toonz/cmake/FindLZO.cmake b/toonz/cmake/FindLZO.cmake
-index c98c6621..90f71375 100644
+index fa3a8625..bd84b111 100644
 --- a/toonz/cmake/FindLZO.cmake
 +++ b/toonz/cmake/FindLZO.cmake
-@@ -7,6 +7,7 @@ find_path(
-     PATH_SUFFIXES
+@@ -13,6 +13,7 @@ else()
+     set(_header_suffixes
          lzo/2.09/include/lzo
          lzo/2.03/include/lzo
 +        lzo
- )
- 
- find_library(
--- 
-2.11.0
-
+     )
+     set(_lib_hints
+         ${THIRDPARTY_LIBS_HINTS}

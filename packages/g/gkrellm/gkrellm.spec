@@ -17,7 +17,7 @@
 
 
 Name:           gkrellm
-Version:        2.3.10
+Version:        2.3.11
 Release:        0
 Summary:        Manages Multiple Stacked Monitors
 License:        GPL-3.0-or-later
@@ -34,10 +34,8 @@ Source6:        gkrellmd.service
 %endif
 # PATCH-FIX-OPENSUSE gkrellm-lib64-plugins-dir.patch pgajdos@suse.cz -- look also into /usr/lib64/gkrellm2/plugins
 Patch1:         %{name}-lib64-plugins-dir.patch
-# PATCH-FIX-UPSTREAM gkrellm-2.3.10-d51b57616e.patch hpj@urpla.net -- apply upstream git master changes, contains a number of fixes, including gkrellm-2.3.5-fix-sdX-sort-order.patch and gkrellm-2.3.5-fix-diskio-corruption.patch
-Patch2:         %{name}-2.3.10-d51b57616e.patch
 # PATCH-FIX-OPENSUSE gkrellm-install-and-reconnect-gkrellmd.conf.patch hpj@urpla.net -- install /etc/gkrellmd.conf and make reconnect default
-Patch3:         %{name}-install-and-reconnect-gkrellmd.conf.patch
+Patch2:         %{name}-install-and-reconnect-gkrellmd.conf.patch
 
 BuildRequires:  gtk2-devel
 BuildRequires:  libsensors4-devel
@@ -111,7 +109,6 @@ Files needed to build plugins for gkrellm2
 %setup -q
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 %build
 cd src

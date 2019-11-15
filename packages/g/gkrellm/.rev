@@ -285,4 +285,14 @@
   gkrellm-2.3.5-fix-sdX-sort-order.patch (forwarded request 695185 from frispete)</comment>
     <requestid>695555</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>aa1d2012131e78556818f2ed8c979b0b</srcmd5>
+    <version>2.3.11</version>
+    <time>1573774758</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.3.11:
+  * see http://git.srcbox.net/gkrellm/log/
+- removed gkrellm-2.3.10-d51b57616e.patch (released upstream now)</comment>
+    <requestid>748752</requestid>
+  </revision>
 </revisionlist>

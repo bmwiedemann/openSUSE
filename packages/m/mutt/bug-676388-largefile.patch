@@ -5,7 +5,7 @@
 
 --- mh.c
 +++ mh.c	2019-01-02 13:20:40.204793251 +0000
-@@ -1809,9 +1809,9 @@ static int mh_rewrite_message (CONTEXT *
+@@ -1813,9 +1813,9 @@ static int mh_rewrite_message (CONTEXT *
    BUFFER *newpath = NULL;
    BUFFER *partpath = NULL;
  
@@ -20,7 +20,7 @@
      return -1;
 --- mutt.h
 +++ mutt.h	2019-01-02 13:19:38.181933079 +0000
-@@ -702,7 +702,7 @@ typedef struct body
+@@ -720,7 +720,7 @@ typedef struct body
    PARAMETER *parameter;         /* parameters of the content-type */
    char *description;            /* content-description */
    char *form_name;		/* Content-Disposition form-data name param */

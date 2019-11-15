@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Nov 13 11:59:22 UTC 2019 - Libor Pechacek <lpechacek@gmx.com>
+
+- Fix upstream issue 32764 preventing parallel build and remove the build time
+  workaround.
+- Added patches:
+  a07d915d7bf9c7c54b2047f8819ba2aae6669f35.patch
+
+-------------------------------------------------------------------
+Thu Nov  7 18:35:16 UTC 2019 - Libor Pechacek <lpechacek@gmx.com>
+
+- Update to 3.10.0, changes are documented at
+  http://changelog.qgis.org/en/qgis/version/3.10/
+- Removed patches:
+  ef8f06330f57882f740cfe7f8f3659b54b1bb1fb.patch (merged upstream)
+
+-------------------------------------------------------------------
 Wed Oct 16 06:15:34 UTC 2019 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Remove gpsbabel from build requirements: It's only recommended

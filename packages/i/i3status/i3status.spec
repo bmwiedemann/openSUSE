@@ -1,7 +1,7 @@
 #
 # spec file for package i3status
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2014 Thomas Pfeiffer <email@pfeiffer.pw>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,28 +13,32 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           i3status
-Version:        2.12
+Version:        2.13
 Release:        0
 Summary:        I3 Status Bar
 License:        BSD-3-Clause
 Group:          System/Monitoring
 URL:            https://i3wm.org/i3status/
-Source0:        https://i3wm.org/i3status/%{name}-%{version}.tar.bz2
-BuildRequires:  alsa-devel
+Source0:        %{url}/%{name}-%{version}.tar.bz2
+Source1:        %{url}/%{name}-%{version}.tar.bz2.asc
+# Michael Stapelberg's GPG key:
+# 424E14D703E7C6D43D9D6F364E7160ED4AC8EE1D
+Source2:        %{name}.keyring
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(libconfuse)
+BuildRequires:  pkgconfig(libnl-genl-3.0)
+BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(yajl)
+# man pages
 BuildRequires:  asciidoc
-BuildRequires:  libasound2
-BuildRequires:  libcap2
-BuildRequires:  libconfuse-devel
-BuildRequires:  libiw-devel
-BuildRequires:  libnl3-devel
-BuildRequires:  libpulse-devel
-BuildRequires:  libxslt-devel
-BuildRequires:  libyajl-devel
+BuildRequires:  xmlto
 
 %description
 i3status is a program for generating a status bar for i3bar, dzen2,
@@ -44,16 +48,30 @@ second so that the bar is updated even under load. It saves a bit of
 energy by being more efficient than shell commands.
 
 %prep
-%setup -q
-rm -fr yajl-fallback
-chmod -x contrib/*.*
+%autosetup
+
+for f in contrib/*py; do
+    sed -i.orig "s:^#\!%{_bindir}/env\s\+python\s\?$:#!/usr/bin/python3:" $f
+    touch -r $f.orig $f
+    rm $f.orig
+done
+for f in contrib/*pl; do
+    sed -i.orig "s:^#\!%{_bindir}/env\s\+perl\s\?$:#!/usr/bin/perl:" $f
+    touch -r $f.orig $f
+    rm $f.orig
+done
 
 %build
-make %{?_smp_mflags} \
-    OPTFLAGS="%{optflags}"
+autoreconf -fi
+# out of source builds appear mandatory
+mkdir build && pushd build
+ln -s ../configure configure
+%configure
+%make_build
+popd
 
 %install
-%make_install
+%make_install -C build
 
 %files
 %license LICENSE

@@ -1582,4 +1582,12 @@
     <comment>Fix for bsc#1155197 - Fail to boot up installed sles15sp2 PV guest and a few other upstream patches.</comment>
     <requestid>743607</requestid>
   </revision>
+  <revision rev="201" vrev="5">
+    <srcmd5>7ad8c7e80b2287886ae5fd717dae8594</srcmd5>
+    <version>2.2.1</version>
+    <time>1573772522</time>
+    <user>dimstar_suse</user>
+    <comment>Upstream fixes particularly for supporting bochs video type which is preferred for UEFI booting</comment>
+    <requestid>748497</requestid>
+  </revision>
 </revisionlist>

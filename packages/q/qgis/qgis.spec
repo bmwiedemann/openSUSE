@@ -15,26 +15,26 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %bcond_without grass
 %bcond_with    otb
 
 Name:           qgis
-Version:        3.8.3
+Version:        3.10.0
 Release:        0
 Summary:        A Geographic Information System (GIS)
 License:        GPL-2.0-only
 Group:          Productivity/Graphics/Visualization/Other
 URL:            https://qgis.org/
 Source:         https://qgis.org/downloads/%{name}-%{version}.tar.bz2
-Source1:        https://qgis.org/downloads/%{name}-%{version}.tar.bz2.md5
+Source1:        https://qgis.org/downloads/%{name}-%{version}.tar.bz2.sha256
 Source2:        %{name}.rpmlintrc
 Source3:        qgis_sample_data.zip
 # Headers in Qt5.11 were cleaned up to no longer include unneeded other headers.
 Patch0:         fix_grass_qt511.patch
-# PATCH-FIX-UPSTREAM Missing include https://github.com/qgis/QGIS/issues/30316
-Patch1:         ef8f06330f57882f740cfe7f8f3659b54b1bb1fb.patch
 # PATCH-FIX-UPSTREAM fix randomness in desktop file translations
 Patch2:         qgis-3.8.3-reproducible.patch
+Patch3:         a07d915d7bf9c7c54b2047f8819ba2aae6669f35.patch
 BuildRequires:  FastCGI-devel
 BuildRequires:  bison >= 2.4
 BuildRequires:  cmake >= 3.0.0
@@ -45,10 +45,10 @@ BuildRequires:  geos-devel >= 3.4
 %if %{with grass}
 BuildRequires:  grass-devel >= 7.2
 %endif
-BuildRequires:  libexiv2-devel
 BuildRequires:  libQt5Sql-private-headers-devel
 BuildRequires:  libQt5Sql5-mysql
 BuildRequires:  libQt5Sql5-postgresql
+BuildRequires:  libexiv2-devel
 # Add the 3 main db we should access
 # also have them in requires
 BuildRequires:  libQt5Sql5-sqlite
@@ -62,11 +62,11 @@ BuildRequires:  otb-devel
 BuildRequires:  pkgconfig
 BuildRequires:  poppler-tools
 BuildRequires:  python-qscintilla-qt5-sip
+BuildRequires:  python3-GDAL
 BuildRequires:  python3-Jinja2
 BuildRequires:  python3-OWSLib
 BuildRequires:  python3-PyYAML
 BuildRequires:  python3-future
-BuildRequires:  python3-GDAL
 BuildRequires:  python3-psycopg2
 BuildRequires:  python3-pygments
 BuildRequires:  python3-qscintilla-qt5
@@ -127,12 +127,12 @@ Requires:       libQt5Sql5-mysql
 Requires:       libQt5Sql5-postgresql
 # Force requires of those 3 main component.
 Requires:       libQt5Sql5-sqlite
+Requires:       python3-GDAL
 Requires:       python3-Jinja2
 Requires:       python3-OWSLib
 Requires:       python3-PyYAML
 Requires:       python3-Pygments
 Requires:       python3-future
-Requires:       python3-GDAL
 Requires:       python3-psycopg2
 # Those are not picked by obs
 Requires:       python3-qscintilla-qt5
@@ -187,8 +187,8 @@ QGIS sample data with raster, vector, gps files and a GRASS location from the Al
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 %patch2 -p1
+%patch3 -p1
 # Remove bad env and python version in grass plugin
 sed -i 's,^#!%{_bindir}/env python$,#!%{_bindir}/python3,g' src/plugins/grass/scripts/*.py
 sed -i 's,^#!%{_bindir}/env python3$,#!%{_bindir}/python3,g' src/plugins/grass/scripts/*.py

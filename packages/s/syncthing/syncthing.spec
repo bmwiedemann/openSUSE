@@ -17,7 +17,7 @@
 
 
 Name:           syncthing
-Version:        1.2.1
+Version:        1.3.1
 Release:        0
 Summary:        Continuous File Synchronisation
 License:        MPL-2.0
@@ -61,7 +61,7 @@ ls | sed '/^build$/d' | xargs cp -at build/src/github.com/%{name}/%{name}
 cp -a vendor build/vendor/src
 
 pushd build/src/github.com/%{name}/%{name}/
-go run build.go -no-upgrade -version v%{version} install all
+go run build.go -version v%{version} install all
 popd
 
 %install

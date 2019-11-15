@@ -1,7 +1,7 @@
 #
 # spec file for package kile
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 # Copyright (c) 2009 Johannes Engel <jcnengel@googlemail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,31 +28,32 @@ URL:            http://kile.sourceforge.net/
 Source:         https://downloads.sourceforge.net/project/kile/unstable/kile-3.0b3/kile-%{version}.tar.bz2
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  kconfig-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  kcrash-devel
-BuildRequires:  kdbusaddons-devel
-BuildRequires:  kdoctools-devel
-BuildRequires:  kguiaddons-devel
-BuildRequires:  khtml-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kiconthemes-devel
-BuildRequires:  kinit-devel
-BuildRequires:  kio-devel
-BuildRequires:  kparts-devel
-BuildRequires:  ktexteditor-devel
-BuildRequires:  kwindowsystem-devel
-BuildRequires:  kxmlgui-devel
-BuildRequires:  libpoppler-qt5-devel
 BuildRequires:  okular-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5GuiAddons)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5Init)
+BuildRequires:  cmake(KF5KHtml)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Parts)
+BuildRequires:  cmake(KF5TextEditor)
+BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Core) >= 5.7
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Script)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  pkgconfig(poppler-qt5)
 Requires:       konsole-part
+Requires:       okular
 Requires:       texlive-context
 Requires:       texlive-latex
 Requires:       texlive-xetex
@@ -123,25 +124,26 @@ The main features are:
 
 %files
 %license COPYING*
-%{_datadir}/kile/
+%doc README
 %dir %{_kf5_iconsdir}/hicolor/150x150
 %dir %{_kf5_iconsdir}/hicolor/150x150/apps
 %dir %{_kf5_iconsdir}/hicolor/310x310
 %dir %{_kf5_iconsdir}/hicolor/310x310/apps
 %dir %{_kf5_iconsdir}/hicolor/44x44
 %dir %{_kf5_iconsdir}/hicolor/44x44/apps
-%{_kf5_iconsdir}/hicolor/*/*/*
-%{_datadir}/doc/kile/
-%{_kf5_htmldir}/en/kile/
-%{_kf5_bindir}/kile
-%{_libdir}/libkdeinit5_kile.so
 %{_kf5_applicationsdir}/org.kde.kile.desktop
+%{_kf5_appstreamdir}/org.kde.kile.appdata.xml
+%{_kf5_bindir}/kile
 %{_kf5_configkcfgdir}/
 %{_kf5_dbusinterfacesdir}/net.sourceforge.kile.main.xml
-%{_datadir}/kconf_update/
-%{_datadir}/mime/packages/kile.xml
 %{_kf5_debugdir}/kile.categories
-%{_kf5_appstreamdir}/org.kde.kile.appdata.xml
+%{_kf5_htmldir}/en/kile/
+%{_kf5_iconsdir}/hicolor/*/*/*
+%{_kf5_sharedir}/doc/kile/
+%{_kf5_sharedir}/kconf_update/
+%{_kf5_sharedir}/kile/
+%{_kf5_sharedir}/mime/packages/kile.xml
+%{_libdir}/libkdeinit5_kile.so
 
 %if %{with lang}
 %files lang -f %{name}.lang

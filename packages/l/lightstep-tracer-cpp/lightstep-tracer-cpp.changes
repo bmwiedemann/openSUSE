@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov  5 10:19:18 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Add patch which makes lightstep-tracer-cpp compatible with
+  newer googleapis:
+  * 0001-bazel-Update-googleapis.patch
+
+-------------------------------------------------------------------
+Tue Nov  5 01:24:10 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Change googleapis' name from lightstep_vendored_googleapis to
+  com_google_googleapis.
+
+-------------------------------------------------------------------
 Mon Mar 18 12:05:04 UTC 2019 - Michal Rostecki <mrostecki@opensuse.org>
 
 - Add source package, which is needed to fix envoy-proxy.

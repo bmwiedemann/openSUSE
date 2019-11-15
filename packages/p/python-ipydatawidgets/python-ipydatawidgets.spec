@@ -17,9 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 %define mainver 4.0.1
 %define labver  6.2.0
-%define         skip_python2 1
 Name:           python-ipydatawidgets
 Version:        %{mainver}
 Release:        0
@@ -54,16 +54,16 @@ Obsoletes:      python-jupyter_ipydatawidgets < %{mainver}
 Recommends:     python-ipyscales >= 0.1.1
 BuildArch:      noarch
 %ifpython3
-Requires(post): python-ipywidgets >= 7.0.0
-Requires(post): python-notebook
-Requires(post): python-numpy
-Requires(post): python-six
-Requires(post): python-traittypes >= 0.2.0
-Requires(preun): python-ipywidgets >= 7.0.0
-Requires(preun): python-notebook
-Requires(preun): python-numpy
-Requires(preun): python-six
-Requires(preun): python-traittypes >= 0.2.0
+Requires(post): python3-ipywidgets >= 7.0.0
+Requires(post): python3-notebook
+Requires(post): python3-numpy
+Requires(post): python3-six
+Requires(post): python3-traittypes >= 0.2.0
+Requires(preun): python3-ipywidgets >= 7.0.0
+Requires(preun): python3-notebook
+Requires(preun): python3-numpy
+Requires(preun): python3-six
+Requires(preun): python3-traittypes >= 0.2.0
 %endif
 %python_subpackages
 

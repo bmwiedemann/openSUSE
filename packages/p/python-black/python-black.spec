@@ -1,7 +1,7 @@
 #
 # spec file for package python-black
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ URL:            https://github.com/ambv/black
 Source:         https://files.pythonhosted.org/packages/source/b/black/black-%{version}.tar.gz
 Patch0:         fix-tests.patch
 BuildRequires:  %{python_module aiohttp >= 3.3.2}
-# TODO: needed for blackf
+# TODO: needed for blackd
 #BuildRequires:  %{python_module aiohttp-cors}
 BuildRequires:  %{python_module appdirs}
 BuildRequires:  %{python_module attrs >= 18.1.0}
@@ -51,6 +51,7 @@ Requires:       python-appdirs
 Requires:       python-attrs >= 18.1.0
 Requires:       python-click >= 6.5
 Requires:       python-mypy_extensions
+Requires:       python-pathspec
 Requires:       python-regex
 Requires:       python-toml >= 0.9.4
 Requires:       python-typed-ast

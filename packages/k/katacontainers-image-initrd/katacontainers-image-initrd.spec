@@ -1,7 +1,7 @@
 #
 # spec file for package katacontainers-image-initrd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,12 +44,12 @@
 %endif
 
 Name:           katacontainers-image-initrd
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        Kata Containers image (initrd) and kernel
 License:        Apache-2.0
 Group:          System/Management
-Url:            https://github.com/kata-containers/osbuilder
+URL:            https://github.com/kata-containers/osbuilder
 Source0:        osbuilder-%{version}.tar.xz
 Source1:        agent-%{version}.tar.xz
 ExclusiveArch:  x86_64 aarch64 ppc64le s390x

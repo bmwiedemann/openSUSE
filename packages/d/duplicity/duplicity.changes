@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Nov 14 19:44:31 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.8.07: 
+  + Added b2sdk to snapcraft.yaml.
+  + Fixed bug #1850440 with suggestion from Paolo Montrasio
+    - TypeError: Can't mix strings and bytes in path components.
+  + Fixed bug #1850990 with suggestion from Jon Wilson
+    - --s3-use-glacier and --no-encryption cause slow backups.
+  + Fixed bug #1851167 with help from Aspen Barnes
+    - Had Popen() to return strings not bytes.
+  + Merged in lp:~mterry/duplicity/pydrive-cache-fix
+    - The pydrive backend had another of the ongoing bytes/string
+      issues. :)
+  + Merged in lp:~mterry/duplicity/resume-encrypt-no-pass
+    - This branch arose from a Debian patch that has been disabling
+      the encryption validation of volume1 during restarts for
+      years. Debian has been preserving the ability to back up
+      with just an encrypt key and no password (i.e. to have no
+      secrets on the backup machine).
+  + Fixed bug #1851727 - InvalidBackendURL for multi backend
+    - Encode to utf8 only on Python2, otherwise leave as unicode.
+  + Merged in translation updates.
+
+-------------------------------------------------------------------
 Wed Nov  6 20:39:48 UTC 2019 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 0.8.06: 

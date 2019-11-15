@@ -489,4 +489,12 @@ Thi should also go to 12.2 IMHO. Please tell me if you will forward this or if I
     <comment></comment>
     <requestid>741348</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>11b9b56d9c0a32c4a20360b01104ad6e</srcmd5>
+    <version>2.9.93</version>
+    <time>1573773093</time>
+    <user>dimstar_suse</user>
+    <comment>Require okular at runtime</comment>
+    <requestid>748571</requestid>
+  </revision>
 </revisionlist>

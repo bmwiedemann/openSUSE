@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 %bcond_with     test
 Name:           python-qgrid
 Version:        1.1.1
@@ -33,6 +34,7 @@ BuildRequires:  python-pandas >= 0.18.0
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-qgrid = %{version}
 Requires:       python-ipywidgets >= 7.0.0
+Requires:       python-notebook
 Requires:       python-pandas >= 0.18.0
 Provides:       python-jupyter_qgrid = %{version}
 Obsoletes:      python-jupyter_qgrid <= %{version}
@@ -51,7 +53,7 @@ This package provides the python interface.
 
 %package     -n jupyter-qgrid
 Summary:        Grid for sorting and filtering DataFrames in Jupyter notebooks
-Requires:       python-notebook >= 4.0.0
+Requires:       python3-notebook >= 4.0.0
 Requires:       python3-qgrid = %{version}
 Requires(post): jupyter-notebook >= 4.0.0
 Requires(post): jupyter-ipywidgets >= 7.0.0

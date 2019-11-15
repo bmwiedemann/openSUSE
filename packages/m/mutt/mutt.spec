@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -60,7 +60,7 @@ BuildRequires:  pkgconfig(shared-mime-info)
 BuildRequires:  update-desktop-files
 %endif
 BuildRequires:  w3m
-Url:            http://www.mutt.org
+URL:            http://www.mutt.org
 Requires(post): %install_info_prereq
 Requires(preun): %install_info_prereq
 Recommends:     hunspell
@@ -75,7 +75,7 @@ Recommends:     w3m
 Requires(post):   shared-mime-info
 Requires(postun): shared-mime-info
 %endif
-Version:        1.11.3
+Version:        1.12.2
 Release:        0
 Summary:        Mail Program
 # ftp://ftp.mutt.org/mutt/devel/
@@ -89,7 +89,7 @@ Source3:        mutt.png
 Source4:        mutt.desktop
 Source5:        skel.muttrc
 Source9:        mutt.mailcap
-Patch:          %name-1.10.0.dif
+Patch:          %name-1.12.2.dif
 # http://www.spinnaker.de/mutt/compressed/
 Patch2:         %name-1.5.9i-pgpewrap.diff
 Patch3:         %name-1.5.20-sendgroupreplyto.diff
@@ -109,6 +109,8 @@ Patch18:        mutt-1.5.21-mailcap.diff
 Patch19:        bsc907453-CVE-2014-9116-jessie.patch
 # PATCH-ENHANCE-SUSE: allow to list current imap folders
 Patch20:        mutt-1.10.1-imap.patch
+# PATCH-ENHANCE-SUSE: boo#1156477 - Mutt has an option to ask before quitting on ^C but quits immediately on ^4
+Patch21:        mutt-Fix-SIGQUIT-handling.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %global         _sysconfdir %{_sysconfdir}
 
@@ -141,7 +143,7 @@ BuildArch:      noarch
 Provides translations to the package mutt.
 
 %prep
-%setup -q -D -n mutt-%version
+%setup -q -n mutt-%version
 %patch -p0 -b .p0
 %patch2 -p0 -b .pgpewrap
 %patch3 -p0 -b .sendgroupreplyto
@@ -155,6 +157,7 @@ Provides translations to the package mutt.
 %patch18 -p0 -b .mailcap
 %patch19 -p0 -b .cvw2014.9116
 %patch20 -p0 -b .imap
+%patch21 -p0 -b .quit
 
 cp %{S:2} .
 

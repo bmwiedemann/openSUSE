@@ -32,7 +32,7 @@
             <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/ceph/ceph:%PKG_VERSION%.%RELEASE%"/>
           </suse_label_helper:add_prefix>
         </labels>
-        <history author="Denis Kondratenko &lt;denis.kondratenko@suse.com&gt;">Add nautilus tag to image (SES-636)</history>
+        <history author="Denis Kondratenko &lt;denis.kondratenko@suse.com&gt;">Install ceph binaries</history>
       </containerconfig>
     </type>
     <version>1.0.0</version>

@@ -1,6 +1,7 @@
 <multibuild>
-	<!-- Special case: The Pi2 only gets plain MicroOS -->
+	<!-- Special case: Pi2 and VBox only get plain MicroOS -->
 	<flavor>RaspberryPi2</flavor>
+	<flavor>VirtualBox</flavor>
 	<!--
 		for a in kvm-and-xen VMware MS-HyperV OpenStack-Cloud Pine64 RaspberryPi Vagrant hardware; do
 			for f in "" "ContainerHost-" "Kubic-kubeadm-"; do
@@ -29,7 +30,4 @@
 	<flavor>Vagrant</flavor>
 	<flavor>ContainerHost-Vagrant</flavor>
 	<flavor>Kubic-kubeadm-Vagrant</flavor>
-	<flavor>hardware</flavor>
-	<flavor>ContainerHost-hardware</flavor>
-	<flavor>Kubic-kubeadm-hardware</flavor>
 </multibuild>

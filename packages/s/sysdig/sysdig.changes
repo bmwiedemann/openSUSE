@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Nov 14 10:04:26 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.26.4:
+  * Prevent double-definition of ASSERT macro
+  * Added fillers for chmod syscalls (#1472)
+  * Added support for reporting cpu usage per docker cpuset (#1473)
+  * Fixed build error on older Linux kernels (#1477)
+  * Fixed driver build for RHEL 7.7/4.13+ w/CONFIG_VIRT_CPU_ACCOUNTING_GEN (#1471)
+  * Fixed cmake to look for pkg-config before building grpc (#1470)
+  * Fixed printing of strings (#1466)
+  * readv input parsing improvements (#1463)
+  * Suport Kubernetes liveness/readiness probes [#1320]
+  * Fix edge cases in handling clone() and prlimit() system calls [#1401, #1465]
+  * Stability and performance fixes
+- Drop no longer needed patches:
+  * sysdig-include.patch
+  * sysdig-linking.patch
+
+-------------------------------------------------------------------
 Fri Jun  7 10:47:41 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.26.1:

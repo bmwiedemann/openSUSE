@@ -1,0 +1,59 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Fri, 8 Nov 2019 08:44:10 +0100
+Subject: symbols: add support for XZ
+Patch-mainline: submitted as PR#42
+References: bnc#1155921
+
+We plan to ship /boot/vmlinux*.xz in openSUSE. So add a support for
+this, so that crash can handle that.
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ symbols.c | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+
+Index: b/symbols.c
+===================================================================
+--- a/symbols.c
++++ b/symbols.c
+@@ -3597,6 +3597,7 @@ is_compressed_kernel(char *file, char **
+ 
+ #define GZIP  (1)
+ #define BZIP2 (2)
++#define XZ    (3)
+ 
+ #define FNAME (1 << 3)
+ 
+@@ -3646,6 +3647,19 @@ is_compressed_kernel(char *file, char **
+ 		type = BZIP2;
+ 	}
+ 
++	if (!memcmp(header, "\xfd""7zXZ", 6)) {
++		if (!STRNEQ(basename(file), "vmlinux") &&
++		    !(st->flags & FORCE_DEBUGINFO)) {
++			error(INFO, "%s: compressed file name does not start "
++			    "with \"vmlinux\"\n", file);
++			error(CONT, 
++			    "Use \"-f %s\" on command line to override.\n\n",
++				file);
++			return FALSE;
++		}
++		type = XZ;
++	}
++
+ 	if (!type)
+ 		return FALSE;
+ 
+@@ -3681,6 +3695,12 @@ is_compressed_kernel(char *file, char **
+ 			"/bin/bunzip2" : "/usr/bin/bunzip2",
+ 			file, tempname);
+ 		break;
++	case XZ:
++		sprintf(command, "%s -c %s > %s", 
++			file_exists("/bin/unxz", NULL) ?
++			"/bin/unxz" : "/usr/bin/unxz",
++			file, tempname);
++		break;
+ 	}
+ 	if (system(command) < 0) {
+ 		please_wait_done();

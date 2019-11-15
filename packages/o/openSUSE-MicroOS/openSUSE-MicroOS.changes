@@ -6,6 +6,19 @@ Mon Nov  4 09:19:06 UTC 2019 - Fabian Vogt <fvogt@suse.com>
 - Now the kernel cmdline can be escaped properly as well
 
 -------------------------------------------------------------------
+Wed Oct  9 14:52:16 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Add VirtualBox flavor
+- Make /var a separate autoexpanding partition for VMX flavors:
+  * Allows enabling qgroups on / again
+  * On OEM this would result in >15GiB images, so skip those
+- Drop hardware flavor, meanwhile there's no difference anymore
+- Todo:
+  * Make /var no-COW once
+    https://github.com/OSInside/kiwi/issues/1233 is implemented
+- Use grub2-x86_64-xen instead of just grub2-xen
+
+-------------------------------------------------------------------
 Wed Oct  2 09:46:13 UTC 2019 - Fabian Vogt <fvogt@suse.com>
 
 - Drop "rd.neednet=0" as dracut bug fixed now

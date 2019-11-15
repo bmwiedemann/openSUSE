@@ -1,12 +1,12 @@
 ---
  init.h |    7 +++++++
  mutt.h |    1 +
- send.c |   12 ++++++++++--
- 3 files changed, 18 insertions(+), 2 deletions(-)
+ send.c |    9 ++++++---
+ 3 files changed, 14 insertions(+), 3 deletions(-)
 
 --- init.h
-+++ init.h	2019-01-02 13:03:50.043338815 +0000
-@@ -2864,6 +2864,13 @@ struct option_t MuttVars[] = {
++++ init.h	2019-11-13 13:02:27.665650218 +0000
+@@ -3010,6 +3010,13 @@ struct option_t MuttVars[] = {
    ** .pp
    ** Also see the $$force_name variable.
    */
@@ -21,8 +21,8 @@
    /*
    ** .pp
 --- mutt.h
-+++ mutt.h	2019-01-02 13:03:50.043338815 +0000
-@@ -480,6 +480,7 @@ enum
++++ mutt.h	2019-11-13 13:02:27.665650218 +0000
+@@ -493,6 +493,7 @@ enum
    OPTSAVEADDRESS,
    OPTSAVEEMPTY,
    OPTSAVENAME,
@@ -31,23 +31,20 @@
  #ifdef USE_SIDEBAR
    OPTSIDEBAR,
 --- send.c
-+++ send.c	2019-01-02 13:03:50.043338815 +0000
-@@ -559,8 +559,16 @@ int mutt_fetch_recips (ENVELOPE *out, EN
-     if ((flags & SENDGROUPREPLY) && (!in->mail_followup_to || hmfupto != MUTT_YES))
++++ send.c	2019-11-13 13:15:12.547293335 +0000
+@@ -673,9 +673,12 @@ int mutt_fetch_recips (ENVELOPE *out, EN
+         (!in->mail_followup_to || hmfupto != MUTT_YES))
      {
-       /* if(!mutt_addr_is_user(in->to)) */
--      rfc822_append (&out->cc, in->to, 1);
--      rfc822_append (&out->cc, in->cc, 1);
-+      if (option (OPTSENDGROUPREPLYTO))
-+      {
-+        rfc822_append(&out->to, in->to, 0);
-+        rfc822_append(&out->cc, in->cc, 1);
-+      }
-+      else
-+      {
-+        rfc822_append(&out->cc, in->to, 1);
-+        rfc822_append(&out->cc, in->cc, 1);
-+      }
+       /* if (!mutt_addr_is_user(in->to)) */
+-      if (flags & SENDGROUPREPLY)
+-        rfc822_append (&out->cc, in->to, 1);
+-      else
++      if (flags & SENDGROUPREPLY) {
++	if (option (OPTSENDGROUPREPLYTO))
++          rfc822_append (&out->to, in->to, 1);
++	else
++          rfc822_append (&out->cc, in->to, 1);
++      } else
+         rfc822_append (&out->to, in->to, 1);
+       rfc822_append (&out->cc, in->cc, 1);
      }
-   }
-   return 0;

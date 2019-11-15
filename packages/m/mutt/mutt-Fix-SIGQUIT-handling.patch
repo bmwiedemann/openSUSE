@@ -1,0 +1,57 @@
+From 6fa7a74c23760283282fd8b369d2b7b0fae69fec Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Tue, 12 Nov 2019 14:21:21 +0100
+Subject: [PATCH] Fix SIGQUIT handling.
+
+SIGQUIT is not masked in mutt_block_signals. This is not consistent with
+SIGTERM/SIGINT handling.
+
+When quit = ask-yes is set the SIGQUIT handler does not ask. Use the
+SIGINT handler for handling SIGQUIT as well to fix this.
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ signal.c |    5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+--- signal.c
++++ signal.c	2019-11-14 08:40:31.823464569 +0000
+@@ -92,6 +92,7 @@ static void sighandler (int sig)
+       break;
+ #endif
+ 
++    case SIGQUIT:
+     case SIGINT:
+       SigInt = 1;
+       break;
+@@ -119,7 +120,6 @@ void mutt_signal_init (void)
+   act.sa_handler = exit_handler;
+   sigaction (SIGTERM, &act, NULL);
+   sigaction (SIGHUP, &act, NULL);
+-  sigaction (SIGQUIT, &act, NULL);
+ 
+   /* we want to avoid race conditions */
+   sigaddset (&act.sa_mask, SIGTSTP);
+@@ -139,6 +139,7 @@ void mutt_signal_init (void)
+ 
+   sigaction (SIGCONT, &act, NULL);
+   sigaction (SIGTSTP, &act, NULL);
++  sigaction (SIGQUIT, &act, NULL);
+   sigaction (SIGINT, &act, NULL);
+ #if defined (USE_SLANG_CURSES) || defined (HAVE_RESIZETERM)
+   sigaction (SIGWINCH, &act, NULL);
+@@ -175,6 +176,7 @@ void mutt_block_signals (void)
+     sigaddset (&Sigset, SIGTERM);
+     sigaddset (&Sigset, SIGHUP);
+     sigaddset (&Sigset, SIGTSTP);
++    sigaddset (&Sigset, SIGQUIT);
+     sigaddset (&Sigset, SIGINT);
+ #if defined (USE_SLANG_CURSES) || defined (HAVE_RESIZETERM)
+     sigaddset (&Sigset, SIGWINCH);
+@@ -249,5 +251,6 @@ void mutt_allow_interrupt (int dispositi
+   if (disposition == 0)
+     sa.sa_flags |= SA_RESTART;
+ #endif
++  sigaction (SIGQUIT, &sa, NULL);
+   sigaction (SIGINT, &sa, NULL);
+ }

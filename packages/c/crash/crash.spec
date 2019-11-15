@@ -89,6 +89,8 @@ Patch15:        %{name}_enable_snappy_support.patch
 Patch16:        eppic-support-arm64.patch
 Patch21:        %{name}-allow-use-of-sadump-captured-KASLR-kernel.patch
 Patch22:        %{name}-allow-kmem-section-is-early.patch
+Patch23:        %{name}-symbols-add-support-for-XZ.patch
+Patch24:        %{name}-s390-autodetect-kaslr.patch
 Patch90:        %{name}-sial-ps-2.6.29.diff
 BuildRequires:  bison
 BuildRequires:  flex
@@ -285,6 +287,8 @@ Authors:
 %patch13 -p1
 %patch21 -p1
 %patch22 -p1
+%patch23 -p1
+%patch24 -p1
 %if %{have_snappy}
 %patch15 -p1
 %endif

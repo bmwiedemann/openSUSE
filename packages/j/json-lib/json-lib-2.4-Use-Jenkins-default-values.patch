@@ -1,0 +1,53 @@
+From f6bed41bf1348076729070d396467f8e7e5a4cc0 Mon Sep 17 00:00:00 2001
+From: Michal Srb <msrb@redhat.com>
+Date: Sat, 5 Apr 2014 16:11:08 +0200
+Subject: [PATCH] Use Jenkins default values
+
+---
+ src/main/java/net/sf/json/JsonConfig.java        | 4 ++--
+ src/main/java/net/sf/json/xml/XMLSerializer.java | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/main/java/net/sf/json/JsonConfig.java b/src/main/java/net/sf/json/JsonConfig.java
+index 78c4df2..5cb68a3 100644
+--- a/src/main/java/net/sf/json/JsonConfig.java
++++ b/src/main/java/net/sf/json/JsonConfig.java
+@@ -69,7 +69,7 @@ public class JsonConfig {
+     private boolean ignoreDefaultExcludes;
+     //private boolean ignoreJPATransient;
+     private boolean ignoreTransientFields;
+-    private boolean ignorePublicFields = true;  // TODO jenkisci/json-lib changed this to false
++    private boolean ignorePublicFields = false;  // TODO jenkisci/json-lib changed this to false
+     private boolean ignoreUnreadableProperty = true;
+     private boolean javascriptCompliant;
+     private JavaIdentifierTransformer javaIdentifierTransformer = DEFAULT_JAVA_IDENTIFIER_TRANSFORMER;
+@@ -1451,4 +1451,4 @@ public class JsonConfig {
+     public void unregisterPropertyNameProcessor(Class target) {
+         unregisterJavaPropertyNameProcessor(target);
+     }
+-}
+\ No newline at end of file
++}
+diff --git a/src/main/java/net/sf/json/xml/XMLSerializer.java b/src/main/java/net/sf/json/xml/XMLSerializer.java
+index 93cd3e1..268a586 100644
+--- a/src/main/java/net/sf/json/xml/XMLSerializer.java
++++ b/src/main/java/net/sf/json/xml/XMLSerializer.java
+@@ -172,7 +172,7 @@ public class XMLSerializer {
+         setKeepCData(false);
+         setEscapeLowerChars(false);
+         setKeepArrayName(false);
+-        setSortPropertyNames(false); // TODO jenkinsci/json-lib requires this to be set to true
++        setSortPropertyNames(true); // TODO jenkinsci/json-lib requires this to be set to true
+     }
+ 
+     /**
+@@ -1590,4 +1590,4 @@ public class XMLSerializer {
+             writeNamespaceDeclarations(element);
+         }
+     }
+-}
+\ No newline at end of file
++}
+-- 
+1.9.0
+

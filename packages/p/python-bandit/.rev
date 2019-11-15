@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>718178</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>3fa913dec9a88b144bc8d03b893f7ddc</srcmd5>
+    <version>1.6.2</version>
+    <time>1573774375</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip out python2 build as the dependencies are unresolvable</comment>
+    <requestid>748705</requestid>
+  </revision>
 </revisionlist>

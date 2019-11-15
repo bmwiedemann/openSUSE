@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Thu Nov 14 08:46:14 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Update to mutt 1.12.2 (2019-09-21):
+  + $fcc_before_send, when set, causes Fcc to occur before sending instead of
+    afterwards.  When set, the message is saved as-sent; please see the
+    documentation for details.
+  ! $ssl_use_tlsv1 and $ssl_use_tlsv1_1 now default to unset.
+  + $auto_subscribe, when set, automatically adds an email with the List-Post
+    header to the subscribe list.
+  ! Fcc now occurs after sending a message.  If the fcc fails, mutt will prompt
+    to try again, or to try another mailbox.
+  + Basic protected header ("memory hole") support added for the Subject header.
+    See the config vars: $crypt_protected_headers_read,
+    $crypt_protected_headers_save, $crypt_protected_headers_subject,
+    and $crypt_protected_headers_write.
+  ! Color names can be prefixed with "light" in addition to "bright".  "bright"
+    colors are bold face, while "light" are non-bold.
+  ! Color commands can now include an attribute (e.g. bold, underline).
+  ! $pgp_use_gpg_agent defaults set.
+  + <descend-directory> in the browser menu allows entering nested maildir
+    directories.
+  + <group-chat-reply> replies to all, but preserves To recipients in the reply.
+  + $include_encrypted, default unset, prevents separately encrypted contents
+    from being included in a reply.  This helps to prevent a decryption oracle
+    attack.
+  ! With gpgme >= 1.11, recipient keys with a trailing '!' now force subkey use,
+    as with classic gpg.
+  ! In send mode, %{charset} mailcap expansion uses the current charset of the
+    file.
+  + $imap_fetch_chunk_size allows fetching new headers in groups of this size.
+    This might help with timeouts during opening of huge mailboxes.
+    If you have huge mailboxes, you should also try $imap_qresync.
+  ! <toggle-write> can be invoked from the pager too.
+  + The $forward_attachments quadoption allows including attachments in
+    inline-forwards (i.e. $mime_forward unset, $forward_decode set.)
+- Add patch mutt-Fix-SIGQUIT-handling.patch for boo#1156477e
+  * Mutt has an option to ask before quitting on ^C but quits immediately on ^4
+- Port main patch, that is mutt-1.10.0.dif becomes now mutt-1.12.2.dif
+- Refresh patches
+  * aw.listreply.diff
+  * bsc907453-CVE-2014-9116-jessie.patch
+  * bug-676388-largefile.patch
+  * mutt-1.10.1-imap.patch
+  * mutt-1.5.15-wrapcolumn.diff
+  * mutt-1.5.20-sendgroupreplyto.diff
+    Note that the new <group-chat-reply> function behaves the same way without
+    hard setting the option send_group_reply_to
+  * mutt-1.5.21-mailcap.diff
+  * mutt-1.5.23-carriage-return.path
+  * mutt-1.5.9i-pgpewrap.diff
+  * mutt-1.6.1-opennfs.dif
+  * patch-1.5.24.vk.pgp_verbose_mime
+  * widechar.sidebar.dif
+
+-------------------------------------------------------------------
+Sun Nov 10 13:34:03 UTC 2019 - Michal Suchanek <msuchanek@suse.de>
+
+ Fix SIGQUIT handling (boo#1156477).
+  + mutt-Fix-SIGQUIT-handling.patch
+
+-------------------------------------------------------------------
 Sat Feb 23 17:41:10 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Update to mutt 1.11.3

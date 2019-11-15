@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 13 13:07:58 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0.2:
+  * See https://nim-lang.org/blog.html for details
+- Update dependencies (based on changes by Federico Ceratto
+
+-------------------------------------------------------------------
 Mon Jun  3 12:55:36 UTC 2019 - m.szczepaniak.000@gmail.com
 
 - Added ppc64le

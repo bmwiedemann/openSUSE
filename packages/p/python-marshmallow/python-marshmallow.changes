@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 13 15:40:31 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 3.2.2:
+ - Bug fixes:
+  - Don't load fields for which ``load_only`` and ``dump_only`` are both ``True`` (:pr:`1448`). 
+  - Fix types in ``marshmallow.validate`` (:pr:`1446`).
+ - Support:
+  - Test against Python 3.8 (pr:`1431`).
+
+-------------------------------------------------------------------
 Tue Oct  8 15:03:26 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 3.2.1 

@@ -1,7 +1,7 @@
 #
 # spec file for package libretro-bsnes
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,42 +12,42 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libretro-bsnes
-Version:        0~20170724.263e94f9
+Version:        0~git20191013
 Release:        0
-Summary:        SNES Emulator for Retro-based frontends
-License:        GPL-3.0
-Group:          Amusements/Games/Other
-Url:            https://github.com/libretro/bsnes-libretro
-Source:         bsnes-libretro-%{version}.tar.xz
-Source1:        bsnes_balanced.libretro
+Summary:        The bsnes libretro core for SNES emulation
+License:        GPL-3.0-only
+Group:          System/Emulators/Other
+URL:            http://www.retroarch.com
+Source:         %{name}-%{version}.tar.xz
+
 BuildRequires:  gcc-c++
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  make
 
 %description
-This package contains a libretro port of the BSNES emulator.
-It can be used by various frontends to load SNES ROMs.
+Fork of bsnes, a Super Nintendo (Super Famicom) emulator.
+
+This package is for RetroArch/libretro front-end.
 
 %prep
-%setup -q -n bsnes-libretro-%{version}
+%setup -q
 
 %build
-make %{?_smp_mflags} prefix=%{_prefix} core_installdir=%{_libdir}/libretro/ profile=balanced
+cd bsnes
+make -f GNUmakefile compiler=g++ target=libretro binary=library local=false platform=linux
 
 %install
-make DESTDIR=%{buildroot} install prefix=%{_prefix} core_installdir=%{_libdir}/libretro/ profile=balanced
-mkdir -p %{buildroot}%{_libdir}/libretro/
-install -m644 -p %{SOURCE1} %{buildroot}%{_libdir}/libretro/
+mkdir -p %{buildroot}%{_libdir}/libretro
+cp bsnes/out/bsnes_libretro.so %{buildroot}%{_libdir}/libretro
 
 %files
 %defattr(-,root,root)
-%doc COPYING
+%license LICENSE.txt
 %dir %{_libdir}/libretro
-%{_libdir}/libretro/bsnes_balanced.libretro
-%{_libdir}/libretro/bsnes_balanced_libretro.so
+%{_libdir}/libretro/bsnes_libretro.so
 
 %changelog

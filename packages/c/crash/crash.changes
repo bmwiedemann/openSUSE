@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov 12 19:39:11 UTC 2019 - David Mair <dmair@suse.com>
+
+- Added commit c0371f6ee2cae31ec9f506bbd231ab8fbe334c13 - Fix to
+  allow live analysis of s390x kernels that have been configured
+  with CONFIG_RANDOMIZE_BASE=y (KASLR). This allows crash to load
+  the coredump without the need for "--kaslr=<offset> on the
+  command-line.
+  Added:
+    crash-s390-autodetect-kaslr.patch
+
+  Implements jsc#SLE-9797
+
+-------------------------------------------------------------------
+Fri Nov  8 10:33:41 UTC 2019 - Jiri Slaby <jslaby@suse.com>
+
+- add crash-symbols-add-support-for-XZ.patch (bnc#1155921)
+
+-------------------------------------------------------------------
 Wed Aug 21 12:57:09 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Disable LTO for PowerPC as bypass boo#1146646

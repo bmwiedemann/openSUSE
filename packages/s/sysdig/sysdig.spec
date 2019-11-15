@@ -1,7 +1,7 @@
 #
 # spec file for package sysdig
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           sysdig
-Version:        0.26.1
+Version:        0.26.4
 Release:        0
 Summary:        System-level exploration
 License:        Apache-2.0
 Group:          System/Monitoring
 URL:            http://www.sysdig.org/
 Source0:        https://github.com/draios/%{name}/archive/%{version}/sysdig-%{version}.tar.gz
-Patch0:         sysdig-include.patch
-Patch1:         sysdig-linking.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -54,9 +52,7 @@ Think of it as strace + tcpdump + lsof + awesome sauce. With a little Lua
 cherry on top.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup
 
 %build
 export SYSDIG_CHISEL_DIR=%{_datadir}%{name}/chisels
@@ -76,7 +72,7 @@ export SYSDIG_CHISEL_DIR=%{_datadir}%{name}/chisels
   -DDIR_ETC=%{_sysconfdir} \
   -DBUILD_DRIVER=OFF \
   -Wno-dev
-%make_jobs
+%cmake_build
 
 %install
 export INSTALL_MOD_PATH=%{buildroot}
@@ -85,8 +81,8 @@ cd build
 for flavor in %{flavors_to_build} ; do
 	make KERNELDIR="%{_prefix}/src/linux-obj/%{_target_cpu}/$flavor" \
 		clean install_driver DESTDIR=%{buildroot}
-	make KERNELDIR="%{_prefix}/src/linux-obj/%{_target_cpu}/$flavor" \
-		-C ../driver clean
+#	make KERNELDIR="%{_prefix}/src/linux-obj/%{_target_cpu}/$flavor" \
+#		-C ../driver clean
 done
 rm -rf %{buildroot}%{_prefix}/src/*
 %fdupes -s %{buildroot}/%{_datadir}

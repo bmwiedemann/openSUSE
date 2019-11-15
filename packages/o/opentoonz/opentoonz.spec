@@ -1,7 +1,7 @@
 #
 # spec file for package opentoonz
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,78 +12,75 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %global __requires_exclude ^(libcolorfx|libimage|libsound|libtif).*
 %global __provides_exclude ^(libcolorfx|libimage|libsound|libtif).*
 Name:           opentoonz
-Version:        1.1.2
+Version:        1.3.0
 Release:        0
 Summary:        2D animation software
 # need to review license as site indicates: "modified BSD license"
 License:        BSD-2-Clause
 Group:          Productivity/Graphics/Other
-Url:            https://opentoonz.github.io/e/
+URL:            https://opentoonz.github.io/e/
 Source0:        %{name}-v%{version}.tar.xz
-Source1:        %{name}.desktop
-Source2:        %{name}.png
 Source3:        %{name}-rpmlintrc
 Patch1:         p_handle-no-return-in-nonvoid-function.patch
 Patch2:         p_add-zlo-to-cmake-include-path-suffixes.patch
-Patch10:        https://github.com/opentoonz/opentoonz/commit/fb7729aaaf5c36f059c389b103126c2b039280b6.patch
-Patch11:        https://github.com/opentoonz/opentoonz/commit/3ebaf33693caa2d9faf3cfad864f84c638e2cabe.patch
+Patch3:         Fix-build-with-Qt-5_13.patch
 BuildRequires:  boost-devel >= 1.55
 BuildRequires:  cmake
-BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
-BuildRequires:  glew-devel
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libQt5OpenGL-devel
-BuildRequires:  libSDL2-devel
 BuildRequires:  libjpeg-devel
-BuildRequires:  libpng16-compat-devel
-BuildRequires:  libqt5-linguist-devel
-BuildRequires:  libqt5-qtbase-devel >= 5.5
-BuildRequires:  libqt5-qtmultimedia-devel
-BuildRequires:  libqt5-qtscript-devel
-BuildRequires:  libqt5-qtsvg-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  libusb-devel
-BuildRequires:  lzo-devel
 BuildRequires:  openblas-devel
 BuildRequires:  pkgconfig
-BuildRequires:  superlu-devel
-BuildRequires:  update-desktop-files
-BuildRequires:  zlib-devel
-BuildRequires:  pkgconfig(liblz4)
-# freetype2-devel
-BuildRequires:  pkgconfig(freetype2)
 # needed to setup startup script paths
 BuildRequires:  sed
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  superlu-devel
+BuildRequires:  update-desktop-files
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  cmake(Qt5Multimedia)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5OpenGL)
+BuildRequires:  cmake(Qt5PrintSupport)
+BuildRequires:  cmake(Qt5Script)
+BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  pkgconfig(freeglut)
+BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(glew)
+BuildRequires:  pkgconfig(liblz4)
+BuildRequires:  pkgconfig(libmypaint)
+BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(lzo2)
+BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(zlib)
 ExclusiveArch:  i586 x86_64
 
 %description
 2D animation software previously known as Toonz.
 
 %prep
-%setup -q -n %{name}-v%{version}
-%patch1 -p1
-%patch2 -p1
-%patch10 -p1
-%patch11 -p1
+%autosetup -p1 -n %{name}-v%{version}
 
 # Remove all thirdparty except tiff which is patched.
-find thirdparty/* -maxdepth 0 ! -name "tiff-*" ! -name "lzo" -type d -exec rm -r "{}" \;
+find thirdparty/* -maxdepth 0 ! -name "tiff-*" ! -name "lzo" ! -name "kiss_fft*" -type d -exec rm -r "{}" \;
 # Keep thirdparty/lzo/driver, but remove library.
 rm -r thirdparty/lzo/2.*
 
 %build
 # TODO upstream planning to replace custom thirdparty libs with system versions
 cd thirdparty/tiff-*
-export CFLAGS="%optflags -fPIC"
+export CFLAGS="%{optflags} -fPIC"
 %configure
 %make_build
 cd -
@@ -104,37 +101,31 @@ cd toonz
 # fix lib dir since install puts 64bit libs in /usr/lib/
 %ifarch x86_64
 mkdir -p %{buildroot}%{_libdir}/%{name}
-mv %{buildroot}/usr/lib/%{name}/* %{buildroot}%{_libdir}/%{name}
-rm -r %{buildroot}/usr/lib/%{name}
+mv %{buildroot}%{_prefix}/lib/%{name}/* %{buildroot}%{_libdir}/%{name}
+rm -r %{buildroot}%{_prefix}/lib/%{name}
 
 # fix launch script that references lib/ instead of lib64/.
 sed -i 's|/lib/|/lib64/|' %{buildroot}%{_bindir}/%{name}
 %endif
 
-# install desktop file and icon
-install -D -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/applications/%{name}.desktop
-install -D -m 0644 %{SOURCE2} %{buildroot}%{_datadir}/pixmaps/%{name}.png
-
-%suse_update_desktop_file %{buildroot}%{_datadir}/applications/%{name}.desktop
-
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
+%suse_update_desktop_file io.github.OpenToonz 2DGraphics
 
 %files
-%defattr(-,root,root)
-%{_bindir}/%{name}
-%{_bindir}/OpenToonz_*
+%license LICENSE.txt
+%dir %{_datadir}/metainfo
+%{_bindir}/lzocompress
+%{_bindir}/lzodecompress
+%{_bindir}/OpenToonz
+%{_bindir}/opentoonz
 %{_bindir}/tcleanup
 %{_bindir}/tcomposer
 %{_bindir}/tconverter
 %{_bindir}/tfarmcontroller
 %{_bindir}/tfarmserver
-%{_datadir}/%{name}
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/pixmaps/%{name}.png
-%{_libdir}/%{name}
+%{_datadir}/applications/io.github.OpenToonz.desktop
+%{_datadir}/icons/hicolor/256x256/apps/io.github.OpenToonz.png
+%{_datadir}/metainfo/io.github.OpenToonz.appdata.xml
+%{_datadir}/opentoonz/
+%{_libdir}/opentoonz/
 
 %changelog

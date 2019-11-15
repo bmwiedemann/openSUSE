@@ -1,15 +1,15 @@
 ---
  Makefile.am |    4 -
- lib.c       |    8 ++-
  mbox.c      |    5 ++
  mh.c        |    9 +++-
  mutt.h      |    3 +
+ muttlib.c   |    6 ++
  opennfs.c   |  122 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  sendlib.c   |    4 +
- 7 files changed, 150 insertions(+), 5 deletions(-)
+ 7 files changed, 149 insertions(+), 4 deletions(-)
 
 --- Makefile.am
-+++ Makefile.am	2019-01-02 13:10:35.863891779 +0000
++++ Makefile.am	2019-11-13 13:18:22.867731105 +0000
 @@ -32,7 +32,7 @@ mutt_SOURCES = \
  	edit.c enter.c flags.c init.c filter.c from.c \
  	getdomain.c group.c \
@@ -28,42 +28,9 @@
  mutt_pgpring_LDADD = $(LIBOBJS) $(INTLLIBS)
  mutt_pgpring_DEPENDENCIES = $(LIBOBJS) $(INTLDEPS)
  
---- lib.c
-+++ lib.c	2019-01-02 13:10:35.863891779 +0000
-@@ -50,9 +50,9 @@
- #define EX_OK 0
- #endif
- 
-+#include "mutt.h"
- #include "lib.h"
- 
--
- static const struct sysexits
- {
-   int v;
-@@ -665,6 +665,10 @@ int safe_open (const char *path, int fla
-   struct stat osb, nsb;
-   int fd;
- 
-+#if defined(__linux__)
-+  if ((fd = opennfs (path, flags, 0600)) < 0)
-+    return fd;
-+#else
-   if (flags & O_EXCL) 
-   {
-     char safe_file[_POSIX_PATH_MAX];
-@@ -688,7 +692,7 @@ int safe_open (const char *path, int fla
- 
-   if ((fd = open (path, flags & ~O_EXCL, 0600)) < 0)
-     return fd;
--    
-+#endif
-   /* make sure the file is not symlink */
-   if (lstat (path, &osb) < 0 || fstat (fd, &nsb) < 0 ||
-       compare_stat(&osb, &nsb) == -1)
 --- mbox.c
-+++ mbox.c	2019-01-02 13:10:35.867891705 +0000
-@@ -889,8 +889,13 @@ static int mbox_sync_mailbox (CONTEXT *c
++++ mbox.c	2019-11-13 13:18:22.867731105 +0000
+@@ -890,8 +890,13 @@ static int mbox_sync_mailbox (CONTEXT *c
  
    /* Create a temporary file to write the new version of the mailbox in. */
    mutt_mktemp (tempfile, sizeof (tempfile));
@@ -78,20 +45,20 @@
      if (-1 != i)
      {
 --- mh.c
-+++ mh.c	2019-01-02 13:10:35.867891705 +0000
++++ mh.c	2019-11-13 13:24:16.337114049 +0000
 @@ -369,7 +369,11 @@ static int mh_mkstemp (CONTEXT * dest, F
    {
      mutt_buffer_printf (path, "%s/.mutt-%s-%d-%d",
- 	      dest->path, NONULL (Hostname), (int) getpid (), Counter++);
+                         dest->path, NONULL (Hostname), (int) getpid (), Counter++);
 +#if defined(__linux__)
-+    if ((fd = opennfs(mutt_b2s (path), O_WRONLY | O_EXCL | O_CREAT, 0666)) == -1)
++    if ((fd = opennfs (mutt_b2s (path), O_WRONLY | O_EXCL | O_CREAT, 0666)) == -1)
 +#else
      if ((fd = open (mutt_b2s (path), O_WRONLY | O_EXCL | O_CREAT, 0666)) == -1)
 +#endif
      {
        if (errno != EEXIST)
        {
-@@ -1548,8 +1552,11 @@ static int maildir_open_new_message (MES
+@@ -1552,8 +1556,11 @@ static int maildir_open_new_message (MES
  
      dprint (2, (debugfile, "maildir_open_new_message (): Trying %s.\n",
  		mutt_b2s (path)));
@@ -105,8 +72,8 @@
        if (errno != EEXIST)
        {
 --- mutt.h
-+++ mutt.h	2019-01-02 13:10:35.867891705 +0000
-@@ -1102,4 +1102,7 @@ typedef struct
++++ mutt.h	2019-11-13 13:18:22.867731105 +0000
+@@ -1124,4 +1124,7 @@ typedef struct
  #include "lib.h"
  #include "globals.h"
  
@@ -114,8 +81,30 @@
 +extern int opennfs(const char *, int, int);
 +#endif
  #endif /*MUTT_H*/
---- opennfs.c
-+++ opennfs.c	2019-01-02 13:10:35.867891705 +0000
+--- muttlib.c
++++ muttlib.c	2019-11-13 13:21:44.139963407 +0000
+@@ -2306,6 +2306,10 @@ int safe_open (const char *path, int fla
+   BUFFER *safe_file = NULL;
+   BUFFER *safe_dir = NULL;
+ 
++#if defined(__linux__)
++  if ((fd = opennfs (path, flags, 0600)) < 0)
++    return fd;
++#else
+   if (flags & O_EXCL)
+   {
+     safe_file = mutt_buffer_pool_get ();
+@@ -2334,7 +2338,7 @@ int safe_open (const char *path, int fla
+ 
+   if ((fd = open (path, flags & ~O_EXCL, 0600)) < 0)
+     goto cleanup;
+-
++#endif
+   /* make sure the file is not symlink */
+   if (lstat (path, &osb) < 0 || fstat (fd, &nsb) < 0 ||
+       compare_stat(&osb, &nsb) == -1)
+--- /dev/null
++++ opennfs.c	2019-11-13 13:18:22.867731105 +0000
 @@ -0,0 +1,122 @@
 +#include <errno.h>
 +#include <fcntl.h>
@@ -240,8 +229,8 @@
 +    return open(path, flags, mode);
 +}
 --- sendlib.c
-+++ sendlib.c	2019-01-02 13:10:35.867891705 +0000
-@@ -2256,7 +2256,11 @@ send_msg (const char *path, char **args,
++++ sendlib.c	2019-11-13 13:18:22.867731105 +0000
+@@ -2284,7 +2284,11 @@ send_msg (const char *path, char **args,
        if (SendmailWait >= 0 && tempfile && *tempfile)
        {
  	/* *tempfile will be opened as stdout */

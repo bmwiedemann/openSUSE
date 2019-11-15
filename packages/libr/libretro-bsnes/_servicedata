@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
             <param name="url">https://github.com/libretro/bsnes-libretro.git</param>
-          <param name="changesrevision">9689bb808924427c491c377c8c58c6087ad74de3</param></service></servicedata>
+          <param name="changesrevision">9689bb808924427c491c377c8c58c6087ad74de3</param></service><service name="tar_scm">
+                <param name="url">https://github.com/libretro/bsnes.git</param>
+              <param name="changesrevision">fae889f4d24793b9d0e30c026e3ae8362f3b71fd</param></service></servicedata>

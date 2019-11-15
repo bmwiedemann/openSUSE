@@ -52,4 +52,12 @@
     <comment>- Derive from ceph-image (SES-636)</comment>
     <requestid>746185</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>6f1b6d2800b0f1f66fa2b767f0d10392</srcmd5>
+    <version>1.0.0</version>
+    <time>1573773051</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>748561</requestid>
+  </revision>
 </revisionlist>

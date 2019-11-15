@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 13 16:40:01 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Drop python2 support due to python-notebook dropping python2 support
+- Fix notebook dependency
+
+-------------------------------------------------------------------
 Mon Aug  5 00:53:21 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Fix dependencies.

@@ -1,3 +1,38 @@
+-------------------------------------------------------------------
+Tue Nov 12 00:27:00 UTC 2019 - 389-ds-maintainer@suse.de
+
+- Update to version 1.4.2.3~git0.129914357:
+  * Bump version to 1.4.2.3
+  * Issue 50592 - Port Replication Tab to ReactJS
+  * Issue 50680 - Remove branding from upstream spec file
+  * Issue 50669 - Remove nunc-stans in favour of reworking current conn code (add.)
+  * Issue: 48055 -  CI test - automember_plugin(part1)
+  * Issue 50677 - Map subtree searches with NULL base to default naming context
+  * Issue 50669 - Fix RPM build
+  * Ticket 50669 - remove nunc-stans
+  *     Ticket 49850 cont -fix crash in ldbm_non_leaf
+  * Issue 50634 - Clean up CLI errors output - Fix wrong exception
+  * Issue 50660 - Build failure on Fedora 31
+  * Issue 50634 - Clean up CLI errors output
+  * Issue: 48851 - Investigate and port TET matching rules filter tests(match more test cases)
+  * Ticket 50428 - Log the actual base DN when the search fails with "invalid attribute request"
+  * Issue 49850 -  ldbm_get_nonleaf_ids() slow for databases with many non-leaf entries
+  * Issue 50655 - access log etime is not properly formatted
+  * Issue 50653 -  objectclass parsing fails to log error message text
+  * Issue 50646 - Improve task handling during shutdowns
+  * Add new test suite to test migration between RHDS versions
+  * Ticket 50627 - Support platforms without pytest_html
+  * Ticket 49476 - backend refactoring phase1, fix failing tests
+  * Ticket 49476 - refactor ldbm backend to allow replacement of BDB
+  * Ticket - 50349 - additional fix: filter schema check must handle subtypes
+  * Issue: 48851 - investigate and port TET matching rules filter tests(indexing more test cases)
+  * Issue 50638 - RecursionError: maximum recursion depth exceeded while calling a Python object
+  * Ticket 50636 - Crash during sasl bind
+  * Ticket 50632 - Add ensure attr state so that diffs are easier from 389-ds-portal
+  * Ticket 50619 - extend commands to have more modify options
+  * Issue 50499 - Fix npm audit issues
+  * bump version to 1.4.2.2
+
 
 -------------------------------------------------------------------
 Mon Sep 30 00:08:02 UTC 2019 - 389-ds-maintainer@suse.de

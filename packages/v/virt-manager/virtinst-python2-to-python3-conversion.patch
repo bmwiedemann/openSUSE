@@ -1,7 +1,7 @@
-Index: virt-manager-2.2.0/virtinst/osdict.py
+Index: virt-manager-2.2.1/virtinst/osdict.py
 ===================================================================
---- virt-manager-2.2.0.orig/virtinst/osdict.py
-+++ virt-manager-2.2.0/virtinst/osdict.py
+--- virt-manager-2.2.1.orig/virtinst/osdict.py
++++ virt-manager-2.2.1/virtinst/osdict.py
 @@ -54,7 +54,7 @@ def _sort(tosort):
      distro_mappings = {}
      retlist = []
@@ -11,10 +11,10 @@ Index: virt-manager-2.2.0/virtinst/osdict.py
          # Libosinfo has some duplicate version numbers here, so append .1
          # if there's a collision
          sortby = _sortby(osinfo)
-Index: virt-manager-2.2.0/virtinst/install/installertreemedia.py
+Index: virt-manager-2.2.1/virtinst/install/installertreemedia.py
 ===================================================================
---- virt-manager-2.2.0.orig/virtinst/install/installertreemedia.py
-+++ virt-manager-2.2.0/virtinst/install/installertreemedia.py
+--- virt-manager-2.2.1.orig/virtinst/install/installertreemedia.py
++++ virt-manager-2.2.1/virtinst/install/installertreemedia.py
 @@ -20,7 +20,7 @@ from ..osdict import OSDB
  (MEDIA_DIR,
   MEDIA_ISO,
@@ -24,10 +24,10 @@ Index: virt-manager-2.2.0/virtinst/install/installertreemedia.py
  
  
  def _is_url(url):
-Index: virt-manager-2.2.0/virtinst/xmlbuilder.py
+Index: virt-manager-2.2.1/virtinst/xmlbuilder.py
 ===================================================================
---- virt-manager-2.2.0.orig/virtinst/xmlbuilder.py
-+++ virt-manager-2.2.0/virtinst/xmlbuilder.py
+--- virt-manager-2.2.1.orig/virtinst/xmlbuilder.py
++++ virt-manager-2.2.1/virtinst/xmlbuilder.py
 @@ -661,7 +661,7 @@ class XMLBuilder(object):
          whenever child objects are added or removed
          """
@@ -37,11 +37,11 @@ Index: virt-manager-2.2.0/virtinst/xmlbuilder.py
              for obj in xmlutil.listify(getattr(self, propname)):
                  idxstr = ""
                  if not xmlprop.is_single:
-Index: virt-manager-2.2.0/virtinst/domcapabilities.py
+Index: virt-manager-2.2.1/virtinst/domcapabilities.py
 ===================================================================
---- virt-manager-2.2.0.orig/virtinst/domcapabilities.py
-+++ virt-manager-2.2.0/virtinst/domcapabilities.py
-@@ -217,7 +217,7 @@ class DomainCapabilities(XMLBuilder):
+--- virt-manager-2.2.1.orig/virtinst/domcapabilities.py
++++ virt-manager-2.2.1/virtinst/domcapabilities.py
+@@ -218,7 +218,7 @@ class DomainCapabilities(XMLBuilder):
                  return _("BIOS")
              return _("None")
  
@@ -50,10 +50,10 @@ Index: virt-manager-2.2.0/virtinst/domcapabilities.py
              for pattern in patterns:
                  if re.match(pattern, path):
                      return (_("UEFI %(arch)s: %(path)s") %
-Index: virt-manager-2.2.0/virtinst/devices/disk.py
+Index: virt-manager-2.2.1/virtinst/devices/disk.py
 ===================================================================
---- virt-manager-2.2.0.orig/virtinst/devices/disk.py
-+++ virt-manager-2.2.0/virtinst/devices/disk.py
+--- virt-manager-2.2.1.orig/virtinst/devices/disk.py
++++ virt-manager-2.2.1/virtinst/devices/disk.py
 @@ -269,7 +269,7 @@ class DeviceDisk(Device):
                  digit = 1
  
@@ -77,10 +77,10 @@ Index: virt-manager-2.2.0/virtinst/devices/disk.py
  
              for i in ran:
                  postfix = self.num_to_target(i + 1)
-Index: virt-manager-2.2.0/virtinst/pollhelpers.py
+Index: virt-manager-2.2.1/virtinst/pollhelpers.py
 ===================================================================
---- virt-manager-2.2.0.orig/virtinst/pollhelpers.py
-+++ virt-manager-2.2.0/virtinst/pollhelpers.py
+--- virt-manager-2.2.1.orig/virtinst/pollhelpers.py
++++ virt-manager-2.2.1/virtinst/pollhelpers.py
 @@ -129,7 +129,7 @@ def fetch_pools(backend, origmap, build_
          for obj in objs:
              try:

@@ -37,8 +37,8 @@ Requires:       jupyter-ipykernel >= 4.1
 Requires:       jupyter-ipython >= 6
 Requires:       jupyter-widgetsnbextension >= 1.0
 Requires:       python3-plotly
-Provides:       python-jupyter_imatlab_kernel = %{version}
-Obsoletes:      python-jupyter_imatlab_kernel < %{version}
+Provides:       python3-jupyter_imatlab_kernel = %{version}
+Obsoletes:      python3-jupyter_imatlab_kernel < %{version}
 Provides:       python3-imatlab = %{version}
 BuildArch:      noarch
 

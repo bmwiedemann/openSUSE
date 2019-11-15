@@ -25,4 +25,12 @@
     <comment></comment>
     <requestid>718529</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>28450fa8bfd7e434dd34394e01b4ad70</srcmd5>
+    <version>4.0.0</version>
+    <time>1573774417</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to pull in full python due to the dependencies</comment>
+    <requestid>748706</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 14 12:00:47 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.40.1
+  * acme.standalone.BaseRequestHandlerWithLogging and acme.standalone.simple_tls_sni_01_server 
+    have been deprecated and will be removed in a future release of the library.
+
+-------------------------------------------------------------------
 Thu Oct 17 11:20:32 UTC 2019 - Richard Brown <rbrown@suse.com>
 
 - Remove obsolete Groups tag (fate#326485)

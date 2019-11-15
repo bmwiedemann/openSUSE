@@ -95,4 +95,13 @@
   * Minor bug fixes. (forwarded request 739017 from hillwood)</comment>
     <requestid>739018</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b3fc3ee530e93c6964531f19e6f4ccbb</srcmd5>
+    <version>3.3.3</version>
+    <time>1573772925</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 3.3.3
+  * Refine the handling of suspicious connections. (forwarded request 748541 from hillwood)</comment>
+    <requestid>748545</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-diskcache
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,12 +26,13 @@ Group:          Development/Languages/Python
 URL:            http://www.grantjenks.com/docs/diskcache/
 Source:         https://github.com/grantjenks/python-diskcache/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module Django}
-BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python
 BuildArch:      noarch
 %python_subpackages
 

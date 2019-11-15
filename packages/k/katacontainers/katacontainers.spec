@@ -1,7 +1,7 @@
 #
 # spec file for package katacontainers
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,12 +42,12 @@
 %endif
 
 Name:           katacontainers
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        Kata Containers OCI container runtime
 License:        Apache-2.0
 Group:          System/Management
-Url:            https://github.com/kata-containers
+URL:            https://github.com/kata-containers
 Source0:        runtime-%{version}.tar.xz
 Source1:        proxy-%{version}.tar.xz
 Source2:        shim-%{version}.tar.xz

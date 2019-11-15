@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Nov 13 09:46:24 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Fix source path
+
+-------------------------------------------------------------------
+Tue Nov 12 14:11:58 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Clean up spec file
+
+-------------------------------------------------------------------
+Tue Nov  5 09:43:27 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 19.11
+  - bug fixes
+  - Editor
+    - extended the spell checking functionality for all text files
+    - added a context menu to select spell check language
+    - made the preview refresh timeout configurable
+      (see Editor -> File Handling config page)
+  - Error Message Dialog:
+    - added a configurable minimum severity for messages being
+      shown in a dialog (see Application config page)
+  - MicroPython
+    - added support for PyBoard
+  - Previewers
+    - enhanced the Markdown previewer by using the PyMdown
+      extensions, if they are available and have been enabled
+    - enhanced the Markdown previewer to support MathJax, if it
+      has been enabled
+    - enhanced the Markdown previewer to support Mermaid via the
+      md_mermaid extension, if it is available and has been enabled
+
+- Update to version 19.10
+  - bug fixes
+  - removed runtime support for Python2 and PyQt4
+  - changed minimum Qt/PyQt version required to 5.9.0
+  - Code Style Checker
+    - added more comprehension checks
+    - added checks for insecure use of sys.version and
+      sys.version_info
+    - added a checker class for type annotations
+  - Editor
+    - added configuration option to set the tab and indentation
+      width for each languages separately (as an override to the global
+      ones)
+    - added a typing aid for YAML
+  - QFileDialog Wizard:
+    - added support for the QFileDialog.get...Url() methods
+    - added support for E5FileDialog
+  - Third Party packages
+    - updated coverage.py to 4.5.4
+
+- Remove PyQt4 support from spec
+- Enable dependency checks
+
+-------------------------------------------------------------------
 Mon Sep  9 09:01:43 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
 
 - fix URL

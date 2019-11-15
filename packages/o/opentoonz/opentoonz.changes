@@ -1,4 +1,656 @@
 -------------------------------------------------------------------
+Sat Oct 12 10:23:55 UTC 2019 - christophe@krop.fr
+
+- Update to version v1.3.0:
+  * forbidden cursor for CURSOR_NO (#2489)
+  * Fix improperly disabled tools on secondary level frame (#2487)
+  * Fix style picker and type tools invalid status (#2483)
+  * Fix Z=0 Camera Preview crash (#2405)
+  * Call leftButtonDown on tool switches
+  * Prevent crash on deactivation on empty cell
+  * Fix left extender handle position on sound levels
+  * Fix ParticlesFx Crash When Inputting Blank Vector Level To the Texture Port (#2459)
+  * test using QPointer::data for sender argument
+  * update qt version of travis-linux
+  * fix_vector_replacement_crash
+  * v1.3.0 (#2461)
+  * Update Chinese UI translation for v1.3 (#2465)
+  * russian translation for v1.3 (#2464)
+  * Spanish 4 (#2453)
+  * Translation files update for v1.3 (#2448)
+  * fix separate colors (#2449)
+  * Improved onion skin marker targeting (#2378)
+  * Fix fx schematic display issues (#2407)
+  * Remove Version Numbers from File Names (#2410)
+  * add warning popup for duplicate command on xsheet (#2447)
+  * fix motion blur fx alias (#2446)
+  * Duplicate in timeline (#2342)
+  * Fix schematic group node display issue (#2403)
+  * Fix loading macrofx preset issue (#2425)
+  * Fix replace fx nodes (#2417)
+  * Fix Palette gizmo crash (#2413)
+  * update tool state on level switch (#2428)
+  * fix pressure lost (#2431)
+  * revert fx list (#2444)
+  * Fix eraser mode switch crash (#2396)
+  * Fix incorrect keyframe cell pasting and redo (#2398)
+  * Fix empty column property issues (#2395)
+  * Fix moving note cells crash (#2392)
+  * Fix restoring erase tool crash (#2389)
+  * Fix processing touchEvents after tablet events (#2382)
+  * Fix Current Frame on Load Level (#2375)
+  * Fix wrong line cap loading (#2374)
+  * Fix raster crash after unhiding column (#2369)
+  * Fix Hide/Lock shortcut bug (#2365)
+  * Fix raster paste crash (#2364)
+  * matte color (#2418)
+  * Fix svg stroke thickness (#2358)
+  * Bugfix in svg import. Incorrect arc parsing if arc contains only one segment. (#2345)
+  * Default and setting Interpolations (#2344)
+  * improve jpeg chroma subsampling (#2419)
+  * fix renaming psd cell (#2416)
+  * reload psd level (#2415)
+  * New Feature: Separate Colors (#2402)
+  * New Fx: Text Fx Iwa (#2393)
+  * Allow Increase Step and Decrease Step to work even in selection is lost. (#2343)
+  * Fix antialiasing (#2289)
+  * fix small memory leak (#2279)
+  * use bool instead of macro bool (#2278)
+  * use std::unique_ptr instead of tcg::unique_ptr (#2277)
+  * fix deterministic initialization (#2273)
+  * update travis qt version to 5.12.0 (#2414)
+  * Revert back to original
+  * Point to external PNG
+  * update travis qt version (#2394)
+  * remove mysettings (#2366)
+  * fix toonz raster brush crash (#2381)
+  * Fix processing MousePress and TabletPress events (#2282)
+  * Fixed spelling mistake of "Flip Viewer Horizontally" (#2379)
+  * fix playback slowness with style editor (#2367)
+  * fix antialias to toonz raster levels (#2370)
+  * Made small pump tool sizes actually do something. (#2340)
+  * Fix restoring raster tool crash (#2362)
+  * fix tapetool crash (#2352)
+  * remove duplicate include (#2271)
+  * Timeline height and keyframe area adjustments (#2268)
+  *  open fx settings from xsheet (#2337)
+  * Remove ON/OFF macro (#2247)
+  * search for special folders tree (#2312)
+  * check folder access on save level (#2334)
+  * fix mesh visibility (#2333)
+  * fix toonzraster mypaint line with mouse (#2332)
+  *  fix antialias undo (#2331)
+  * fix colormodel on high dpi monitor (#2330)
+  * fix import files with underscore (#2326)
+  * change temporary file name suffix (#2325)
+  * load jpeg dpi from exif, save to jfif (#2322)
+  * fix output preset (#2316)
+  * New Feature : Adding Clapperboard (#2314)
+  * use nullptr instead of Q_NULLPTR (#2246)
+  * simplify script (#2245)
+  * fix tfilepath (#2324)
+  * update qt version for travis ci (#2313)
+  * load palette global name on loading level (#2299)
+  * Fix font creation crash (#2227)
+  * mypaint brush for toonz raster levels (#2257)
+  * update viewer on opening (#2288)
+  * fix viewer size initialization (#2287)
+  * fix updating animated guide (#2264)
+  * schematic ui modification (#2241)
+  * shift and trace improvement (#2240)
+  * add linux desktop data (#2210)
+  * use std::unique_ptr instead of std::auto_ptr (#2197)
+  * using std::swap instead of tswap (#2195)
+  * #sound: seamless
+  * #sound: improve sound_qt
+  * continue opening new scene after save levels (#2225)
+  * fix input field crash (#2223)
+  * fix type tool crash (#2222)
+  * rename xsheet cell with following level (#2199)
+  * Enhancement of the Shift and Trace Feature (#2212)
+  * use bool instead of macro bool (#2165)
+  * Enable Windows Ink Support (#2152)
+  * ignore Thumbs.db (#2194)
+  * Show actual fonts in font dropdowns (#2080)
+  * use xcode 8.3 on travis ci (#2208)
+  * fix unc path conversion (#2173)
+  * stage schematic multiple connect feature (#2196)
+  * remove unnecessary schematic update (#2192)
+  * revert alt-dragging feature to fx schematic (#2191)
+  * fix display of motion path stroke (#2188)
+  * fix crash on merge 16bpc raster levels (#2186)
+  * fix load raster level with palette (#2184)
+  * fix crash on undo merge levels (#2183)
+  * fix crash on paste mesh node in stage schamatic (#2174)
+  * Schematic UI Update (#2034)
+  * Fix old shortcuts (#2100)
+  * add gotoblas license, remove stuff/config/contrib
+  * add and modify licenses
+  * Testing PR instructions (#2113)
+  * Fix spelling in one comment (#2162)
+  * fix frame range crash (#2151)
+  * fix vector brush display bugs (#2133)
+  * convert old level files to tlv (#2126)
+  * fix viewer update on onionskin change (#2125)
+  * fix crash with command line arguments (#2155)
+  * fix license link (#2153)
+  * fix texture management (#2123)
+  * fix link fx (#2115)
+  * force left to right layout (#2134)
+  * set system path with command line qualifiers (#2143)
+  * fix vector region style on osx (#2105)
+  * the end of fantastic voyage (#2103)
+  * fix selection tool option (#2102)
+  * Instructions to build OT with libmypaint dependency for linux (#2027)
+  * fix viewer update again (#2097)
+  * fix load tzp (#2091)
+  * Fix Paste Column Bug (#2088)
+  * qt5.11.1 on travis (#2090)
+  * Timeline UI Update (#1990)
+  * fix undo / redo of move mutiple columns (#2085)
+  * update image dpi field of convert popup (#2084)
+  * Fix Brush Artifacts on Viewer (#2071)
+  * Russian UI translation update for v.1.2.1 (#2081)
+  * Set CFBundleIdentifier in Info.plist (#2074)
+  * fix tracker tool gadget (#2077)
+  * fix pinch tool crash (#2069)
+  * fix webm output (#2065)
+  * edit_issue_template (#2068)
+  * Last Spanish updates prior to v1.2.1 (#2067)
+  * v1.2.1 (#2036)
+  * fix crash on convert to vector (#2057)
+  * Fix Viewer Update Problems (#2049)
+  * Pressure Sensitivy Loss Fix (#2051)
+  * use const value instead of dirty flag
+  * add chinese image.qm
+  * Chinese UI Translation Update for v1.2.1 - .qm files
+  * Chinese UI Translation Update for v1.2.1
+  * fix viewer key press event (#2047)
+  * more and more translatable texts (#2045)
+  * fix crash on save curve (#2044)
+  * fix plastic bone crash (#2041)
+  * additional Spanish translation in preparation for v1.2.1
+  * Make More UI Texts Translatable (#2026)
+  * Spanish translation update in preparation for v1.2.1 (#2025)
+  * Spanish translation update in preparation for v1.2.1
+  * fix tooloption state update (#2024)
+  * japanese translation update v1.2.1 (#2022)
+  * ts files update for v1.2.1 (#2018)
+  * Fix brush using wrong initial thickness value (#2005)
+  * Alternate Timecode format (#1995)
+  * Open sub-xsheet at selected sub-xsheet frame (#1980)
+  * Add script for updating/adding translation TS files (#1709)
+  * Update Styles for V121 (#1986)
+  * Improvements to Vector Snap (#1906)
+  * Add an issue template to provide some framing for new issues. (#1801)
+  * Fix sound playback on Linux by enabling fix #1302 for Linux platform (#1749)
+  * fix keyframe drag (#2000)
+  * fix sequential check (#1997)
+  * remove old stuff folder check (#1994)
+  * tfarm binaries into .app folder by damies13 #1141 (modified) (#1993)
+  * Fix Actual Pixel Size and Zoom Factor Reporting (#1645)
+  * Reduce Footprint of Style Editor (#1622)
+  * change qt version in travis ci to 5.11.0 (#2001)
+  * Issue #1131 toonz farm & open toonz on different platforms  (#1609)
+  * Fill In Empty Cells command (Former Extend Previous Cell to Selection command, #1970)
+  * #assistants: fix visual artefacts
+  * Fix Note Button Text Clipping (#1976)
+  * Fix Placement of Freeze Button in Preview Window (#1973)
+  * change default to scenefolder (#1959)
+  * fix viewer refreshing with raster brush (#1989)
+  * Allow for multilingual FX Help tooltips by jpturcotte (modified) (#1931)
+  * colormodel image (#1907)
+  * fix brush tip display (#1953)
+  * Fix symlink crashes (alternative to #1842) (#1930)
+  * Fix touch controls for touchpad and stylus issue by artisteacher (modified) (#1963)
+  * fix slot disconnection (#1971)
+  * Fix note icon drag area in timeline (#1961)
+  * Cursor preferences (#1960)
+  * Timeline column creation fix and changes (#1958)
+  * Add Stylesheet Doc (#1972)
+  * Timeline zoom control update (#1947)
+  * Update default OS X UI font (#1943)
+  * requested edits
+  * Stylesheet Fixes (#1937)
+  * Fixed redundant condition check in in initToonzEnv (#1909)
+  * fix motionblur_iwa fx (#1952)
+  * do not check seqnum for tnz files (#1955)
+  * Make Touch Zoom More Responsive (#1905)
+  * fix viewer partial redrawing (#1921)
+  * prevent unnecessary call of leftButtonDrag (#1938)
+  * Fix slow Toonz Raster brush on High DPI (#1904)
+  * fix tool option combobox (#1942)
+  * Fix scale of animate tool in all mode on high dpi monitors (#1900)
+  * Add missing templates for printing xsheet (#1894)
+  * Add audio toggle back to flip book for Mac (#1890)
+  * EnumProperty: translation and icon by podsvirov (modified) (#1863)
+  * Modifications on Studio Palette tree view (#1920)
+  * Fix number+letter filename save and detection (#1833)
+  * Remove unused vars (#1841)
+  * fix drag style undo (#1917)
+  * Fix osx menu roles
+  * try using the latest qt in travis-osx (#1910)
+  * Disable Auto-Stretch Frame (#1707)
+  * fix barrel distort fx (#1881)
+  * add libmypaint dlls to appveyor (#1888)
+  * Set role for Exit Group (#1875)
+  * brush enhancement (#1877)
+  * Function Editor Display Options (#1649)
+  * edit all (#1870)
+  * Clarify the Windows build instructions (#1856)
+  * New option for Toonz Raster Brush Tool : Draw Order - Palette Order (#1849)
+  * enable to skip version check (#1824)
+  * fix replace level popup (#1868)
+  * fix crash on batch rendering with unc path (#1866)
+  * fix 3dlut crash (#1865)
+  * enable vector selection commands (#1851)
+  * fix double slider (#1843)
+  * fix cell dragging (#1836)
+  * fix raster eraser crash (#1823)
+  * appveyor qt version (#1867)
+  * fix saving pli autoclose value (#1848)
+  * Fill Tool: Allow Fillable Gap Size Change in Vector Images (#1317)
+  * Fix png and spritesheet render (depremultiply) by turtletooth (modified) (#1844)
+  * stop using global context (#1785)
+  * Make command bar icons consistent (#1827)
+  * add merge inks option to matchline (#1826)
+  * Allow individual frames of sprites (#1742)
+  * Removed Qt::WindowStaysOnTopHint (#1732)
+  * Disable Tools for Hidden Columns (#1643)
+  * New Icons (#1630)
+  * Temp save scene file (#1608)
+  * disable 3dlut by default (#1814)
+  * Fix Interrupted Brush Stroke When Using Tablet (#1753)
+  * fix vector selection move (#1776)
+  * fix bokeh fx (#1806)
+  * Fix Warnings on Launch (#1745)
+  * fix vector eraser (#1760)
+  * fix #1639 (#1743)
+  * color calibration with 3d lut (#1793)
+  * fix jumping stroke (#1811)
+  * New Fx: Barrel Distort Iwa Fx (#1810)
+  * fix palette titlebar update (#1780)
+  * fix template room path (#1766)
+  * Fix frame range undo (#1759)
+  * update appveyor (#1754)
+  * Level Strip Drag to Timeline Fix (#1703)
+  * Fix Linux build (#1751)
+  * Shift-Drag Keyframe fix (#1687)
+  * precise pen position
+  * fix plastic black contour
+  * fix crash on launching with vector fill
+  * temporary use the previous image (#1699)
+  * enlarge plastic texture
+  * revert source for non-OSX
+  * fix plastic on subsheet
+  * update info.plist to v1.2.0 (#1673)
+  * v1.2.0 (#1631)
+  * Timeline bug fixes and tweeks (#1669)
+  * Moved xsheetChanged event and scene setDirty call outside loop (#1668)
+  * Spanish Translation for V1.2.0 (#1666)
+  * Chinese Translation for V1.2.0 (#1662)
+  * update japanese translation v120 (#1653)
+  * fix tablet behavior on osx
+  * fix raster selection
+  * fix crash on closing scene with floating selection
+  * fix animate tool
+  * update translation ts files (#1632)
+  * Note level zoom out update (#1618)
+  * Allow Mesh Icon On Demand (#1604)
+  * fix rename crash
+  * Spanish UI - update to #1610 strings (#1633)
+  * Timeline Lock On icon correction
+  * disable the touch control by default
+  * Clarify some wording (#1627)
+  * update ts files (#1610)
+  * fix replace parent folder command
+  * fix message center style
+  * organize preferences popup
+  * resolve timeline warning
+  * move option from prefereces to menu toggle
+  * touch control optional
+  * Minor edit needed to last commit
+  * CMake: fix for #1384 (libmypaint on linux)
+  * Allow down arrow to create new frame in level strip. (#1028)
+  * Soundtrack export (#744)
+  * Fx Pass Through (#1353)
+  * Change Name of Edit Tool to Animate Tool (#1351)
+  * Timeline column display order flip (#1570)
+  * hyphen in fx parameter expression
+  * fix lip sync popup
+  * skip deformed icon
+  * preview range color for light style
+  * Removed commented out invalidateIcons
+  * Minus sign crash fix
+  * Vector fill tool crash fix
+  * Fix filmstrip renumber issues
+  * fix select all on only the first click
+  * Spanish UI - update to latest Japanese .ts files (#1593)
+  * Zoom in/out of Timeline (#1573)
+  * Sync Level Strip Renumber Changes with XSheet (#1464)
+  * Add add_dependencies Command to CMake for OSX (#1587)
+  * fix crash on launch with flipbook (#1588)
+  * Introducing $scenefolder Alias (#1513)
+  * make autopaint lines optional (#1564)
+  * Fix Fill Behavior on Toonz Raster (#1540)
+  * update japanese translations (#1505)
+  * Remove duplicate Cell Drag Behavior options (#1584)
+  * Fix Crash (#1580)
+  * update qt version for appveyor (#1585)
+  * Middle Mouse Drag to Edit Values (#1362)
+  * Added Commands to Flip Viewer Horizontally and/or Vertically (#1356)
+  * bokeh ref iwa fx (#1555)
+  * Touch Screen Controls (#1437)
+  * fix loading note level
+  * New Note Level (#1322)
+  * fix crash on setting negative frame
+  * Xsheet fixes (#1550)
+  * Two New Vector Conversion Commands (#1410)
+  * Lip Sync Popup - Apply Text Data to a Level for Lip Sync (#1289)
+  * Add autosave options to startup popup (#1265)
+  * Updates for Russian translation (#1565)
+  * Mojo Brushes (#1539)
+  * Current time timeline indicator (#1522)
+  * Level Strip Overhaul (#1405)
+  * fix freehand line (#1545)
+  * Style Editor Overhaul (#1397)
+  * Replace  'zanzo' with 'Afterimage' in current.txt (#1413)
+  * Spanish UI - update up tp latest Japanesse files. (#1519)
+  * Rename "Revert To Last Saved Version" Command (#1465)
+  * Allow Shortcut to Cycle Dropdown Options (#1420)
+  * fix plastic tool in osx
+  * shortcut override for tool-specific keys
+  * fix tooloption checkbox
+  * #mingw #imp: remove console from MinGW build
+  * undo for autoapply
+  * undo for autopaint
+  * paste numbers command (#1530)
+  * fix boolean tool options
+  * cursor customize
+  * #mypaint: eraser and lock-alpha modifiers
+  * shortcut template
+  * env file template
+  * Update Chinese UI Translations (#1495)
+  * fix fullscreen
+  * fix z transform
+  * fix offset
+  * #fix: fix for htimeline
+  * qt5.9
+  * use global share context
+  * increment alphabet (#1515)
+  * add turtletooth's solution
+  * prevent windows outside the gui thread
+  * refine cell menus
+  * fix numpad label
+  * Xsheet Column Header Layout Redesign (#1347)
+  * fix releasing cell selection behavior (#1501)
+  * Camera Capture feature : Save scene in the subfolder checkbox (#1496)
+  * Customize Command Bar and XSheet Toolbar (#1448)
+  * Renumber crash fix (#1498)
+  * fix fx settings resizing
+  * Toonz raster merge crash fix (#1480)
+  * More translatable UI strings (#1486)
+  * Spanish UI - updated strings, now on par with Japanese ones. (#1484)
+  * Reframe with Empty Inbetweens command (#1485)
+  * Guided Drawing Feature (#1297)
+  * Remove view option from mesh levels in scene cast
+  * Prevent view shortcut from working on levels it shouldn't
+  * Fix for sierra scrub crash (#1302)
+  * Correct Preview and Camera toggle for Sound columns (#1472)
+  * Auto Input Cell Number command (#1479)
+  * Update
+  * New Folder Icons / Style File Browser Window
+  * Support New Pane Buttons (Light)
+  * Replace PNG with SVG for Pane Buttons
+  * Batch Update
+  * Removed commented out code
+  * Remove view option from scene cast of audio levels
+  * Fix Minus Icon
+  * Lock Border Checked-Hover Fix
+  * Tweak Again
+  * Foreign letter and Apostrophe fix (#1468)
+  * Update Simplified Chinese UI translation (#1471)
+  * Spanish UI - several improvements to the translation (#1469)
+  * Move AutoClose Value to TEnv (#1467)
+  * Improve Focus Style
+  * remove warm less
+  * fix_raster_selection_crash
+  * QDialog Focus Color
+  * Pick a Font (#1386)
+  * Fix for Broken Brush Presets (#1447)
+  * Fix for Missing Hook Display on Hook Tool. (#1466)
+  * color filter available on render and vector levels
+  * Enable shortcut command while renaming cell (#1451)
+  * Fix crash on using preference template (#1456)
+  * Unify Palette Lock Icon (#1453)
+  * fix registry setup (#1457)
+  * fix save task crash (#1441)
+  * Fix for scrubbing shortcuts (#1378)
+  * Spanish UI update (#1450)
+  * Allow All Windows Builds to be Portable  (#1381)
+  * Show Renamed Names in MacroFx (#1355)
+  * Fix & Name Change
+  * install unmet dependencies
+  * Theme Update
+  * Tweak
+  * XSheetToolbar Fixes and New Pane (#1425)
+  * Fix for Preset Crash (#1440)
+  * japanese translations update (#1431)
+  * Debug about "HLSNoiseIno assertion error". And some refactoring. (#1427)
+  * Change Matte to Alpha in the UI (#1352)
+  * Fix for maximized grayed out windows (#1288)
+  * Allow New Levels to Default to Camera Size (#1256)
+  * Allow drawing substitution on subxsheet levels (#1286)
+  * fix arrows on brush tool (#1429)
+  * Updated Contributing.md (#1409)
+  * Updated Mac Build Instructions (#1301)
+  * font position and size fix
+  * Beautification
+  * Geometry Tool Vector Snapping for All Tools (#1328)
+  * konero svg icons cont'd
+  * Fix Select keyframes hotkey crash
+  * fix crash
+  * fix messages
+  * fix placement behavior
+  * add previous level button
+  * show frame info
+  * Resolving conflict
+  * strings for style sheet and language in preferences (#1403)
+  * Remove Mac qss files (#1400)
+  * Spanish UI translation - update to 1.1.3 version strings - [100%] (#1340)
+  * obtain qt5.6 from the previous version
+  * fix camera capture for osx
+  * Snapping and Frame Range for Vector Brush (#1319)
+  * Fix frame blending into Xsheet Toolbar
+  * Timeline text clipping fix for Mac
+  * Fix cell text overwriting cell number
+  * Russian translation (first draft). Translated by Yury Grubnik (@beeheemooth). (#1332)
+  * use dpi of the first cleanupped frame (#1391)
+  * Show 0 Thick Line During Drawing and Shift Draw on Vector to Make Straight Line (#1307)
+  * fix vector initialization
+  * level adjust feature
+  * Fix for mac
+  * fix scroll xsheet
+  * Color Tweak
+  * #shaders: fix warnings about context thread
+  * #shaders: start of shaders fix
+  * Cleaner Playbar Icons
+  * Reduced height of note button in timeline
+  * Add Cut command shortcut to RenameCell exception list
+  * Fix standard shortcuts not working while renaming cell
+  * COPYING.LIB -> COPYING_LIB
+  * Changed Row to Frame in Keyframe Context Menu
+  * add libmypaint to travis-install
+  * HideAll not working fix
+  * MyPaint brushes for OpenToonz raster levels (#1124)
+  * Various TFarm fixes (#1140)
+  * preferences template
+  * modification on mac_tablet
+  * Allow Imported Images to Use Camera DPI (#1300)
+  * Fix popup locations (#1287)
+  * Fix New Level Name for Vector Level (#1261)
+  * fixed fps update
+  * removed unused codes
+  * Fix vertical padding on spritesheets (#1259)
+  * Fix for Studio Palette Path (#1253)
+  * Allow enter to end polyline (#1250)
+  * clang format all
+  * Horizontal timeline option in Xsheet (issue#503) (#1019)
+  * Linux build instructions: minor fixes
+  * fix column icon loading policy
+  * fix_camera_capture
+  * konero svg icons part 1
+  * Clang
+  * fix save custom layout file
+  * Fix for pen glitch on Mac
+  * type tool using qt
+  * #common #bug: fix toUpper/toLower functions
+  * fix for osx
+  * Use jobs for make command
+  * timecodefx iwa
+  * Fixed firing onFrameChanged multiple times
+  * Sound Scrubbing in Combo Viewer and Missing Updates in Scene Viewer
+  * V1.1.3 (#1255)
+  * fix show mov on render (#1254)
+  * Remove Old Themes (#1251)
+  * Move keyframe navigator to qss (#1244)
+  * Fix for pairfield drawing with new themes (#1246)
+  * XSheet Toolbar (#989)
+  * Fix for ffmpeg render same frames (#1234)
+  * Fix click area for inbetween (#1241)
+  * Fix crash on arrows using eraser (#1221)
+  * fix filebrowser hierarchy
+  * Fix for Raster Level Tool Switch Crash (#1228)
+  * Fix Flipbook Crash (#1224)
+  * FFmpeg timeout error fix (#1030)
+  * Don't allow throw() in destructors (#1182)
+  * Fix for movement during screen pick (#1225)
+  * fix plastictool tooloption crash
+  * Fix crash on camera scale 0 (#1219)
+  * premult by default on png (#1217)
+  * fix #1151 deleted canvas.h (#1152)
+  * Allow to cross compile for Windows with Linux/Mingw (part 3 of 3, cmake) (#1150)
+  * use preference for premultiply option
+  * remove CurrentOpenedBrowser based modality control
+  * set all the file browsers non-modal
+  * fix pasteinto undo
+  *  Allow to cross compile for Windows with Linux/Mingw (part 2 of 3, bugfixes) (#1149)
+  * Fixes on convert feature from NAA raster images to TLV (#1203)
+  * create zerary fx node at clicked pos (#1191)
+  * curve the seam of looped spectrum (#1190)
+  * fix swatches (planeviewer)
+  * fix viewer gadgets
+  * fix flipbook auto-resize
+  * fix ruler
+  * set premultiply and added level name type
+  * Fix playback stuck bug (#1025)
+  * Fixed removed scene from startup (#998)
+  * Allow to cross compile for Windows with Linux/Mingw (part 1 of 3, preprocessor) (#1148)
+  * SoapBubbleFxIwa Improvement (#1175)
+  * remove Are You Sure? when closing without unsaved content. (#733)
+  * Allow importing files to project dialog box (#1037)
+  * Fixed changing name on change level type - new level popup (#1011)
+  * set info.plist for retina display
+  * font size : replace point with pixel
+  * revert travis to qt5.5 for osx build
+  * fix other panels for high dpi monitors
+  * change closest field to 999
+  * fix #1156 which causes program to crash when expanding history
+  * add UseHighDpiPixmaps option
+  * Minimalist Theme (#1112)
+  * fix level placement
+  * updated opentoonz_1.0 to opentoonz_1.1 in the docs
+  * Fix/Workaround for #866 (#899)
+  * high-dpi monitor compatibility
+  * Fix path to textures, effects, brushes and templates (#1090)
+  * Extend ffmpeg timeout (#1029)
+  * New Theme (#1043)
+  * small fix
+  * bokeh fx iwa
+  * Resolve #1046, profile errors flooding stdout
+  * Fix error using malloc, then delete[]
+  * add null pointer check (#1106)
+  * Add alpha-channel to title-bar icons
+  * Move level palette lines to qss (#1035)
+  * Pair field style #881 (#1034)
+  * Allow border on docks- use QFrame (#1054)
+  * Remove hard-coded lines around panels (#1053)
+  * Fix crash on level strip arrow key presses (#1027)
+  * CMake: remove duplicate library linking
+  * Fixed insert fx popup replace button size (#1013)
+  * added sound playback (#995)
+  * soapbubblefx update (#1076)
+  * fix preview fx (#1073)
+  * make filesystemwatcher optional (#1060)
+  * fix convert popup
+  * fix vector fill
+  * Fix for pixels only mode conflict too easily. (#1023)
+  * allow no trim on spritesheet (#1022)
+  * fix flipconsole connection
+  * fix import scene
+  * Added new scrubbing options (#994)
+  * remove can't save warning on untitled autosave (#990)
+  * Checks data sound is valid to save. Issue #957 (#971)
+  * fixes warnings when library and fxs folders don't exist
+  * stop clang-format check in travis (#1041)
+  * CMake: correct own error in FindSuperLU
+  * TravisCI/Linux: Disable system superlu
+  * CMake: cleanup indentation
+  * CMake: install lzo binaries on Linux
+  * CMake: add WITH_SYSTEM_SUPERLU option
+  * CMake: add WITH_SYSTEM_LZO option
+  * Shortcut window confusion fix (#988)
+  * Cleaning for-nothing methods (#974)
+  * Set auto markers (#982)
+  * Fixes crash in History Panel when a level is unlinked. (#975)
+  * Made rounded join the default (#1010)
+  *  fix cell input feature
+  * Fix wing typo
+  * subfolder popup for camera capture
+  * refactor changes by konero
+  * adjust-padding
+  * Tidy QGroupBox Style
+  * update spanish ts files
+  * Render Button added to Output Settings (#875)
+  * Brush Size Shortcuts Change (#685)
+  * arrowkey to shift cell selection, input w/o dblclk
+  * added color filter feature and modified composition with colorscale
+  * fix crash on unfreeze preview
+  * fix white xsheet vertical line (#876)
+  * add AJA Fr01 to reslist (rebased)
+  * Deleting extra semicolon (#973)
+  * not append non-printable character null (#968)
+  * Fix crash by catching exceptions and skipping frames with bad names. (#966)
+  * ignoring qtcreator ide files
+  * Add aif extension
+  * fix QT_PATH (#961)
+  * fix apply shortcut
+  * Fix plastic tool crash with SuperLU 5.x
+  * CMake: fix for SuperLU
+  * changed separator spacing to 4 (#772)
+  * fix typo (#956)
+  * soap bubble fx iwa
+  * Clear project folder of non-project files (#701)
+  * modify field guide's default value
+  * Use English for 'iwa_motionblurfx' comments - modified (#932)
+  * Fix for Linux audio on i386
+  * Linux: Correct misuse of SDL_MixAudio
+  * Fix audio reproduction issue (863) in GNU/Linux
+  * Use English for 'iwa_motionblurfx' comments
+  * fix saving menubar
+  * Spanish UI - updated QM files
+  * Spanish UI - some fixes
+  * Spanish - quick fix
+  * Spanish UI - quick fix
+  * Spanish UI - update [100%]
+- Drop patches:
+  * 3ebaf33693caa2d9faf3cfad864f84c638e2cabe.patch
+  * fb7729aaaf5c36f059c389b103126c2b039280b6.patch
+- Refresh p_add-zlo-to-cmake-include-path-suffixes.patch
+- Add Fix-build-with-Qt-5_13.patch
+- Use cmake() and pkgconfig() syntax for build requirements
+
+-------------------------------------------------------------------
 Fri Jul 28 09:19:21 UTC 2017 - olaf@aepfle.de
 
 - Use pkgconfig(liblz4)

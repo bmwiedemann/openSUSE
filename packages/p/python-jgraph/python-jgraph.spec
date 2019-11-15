@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 %bcond_without test
 Name:           python-jgraph
 Version:        0.2.1

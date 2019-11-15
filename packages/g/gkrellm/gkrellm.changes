@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 11 13:40:05 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- updated to 2.3.11:
+  * see http://git.srcbox.net/gkrellm/log/
+- removed gkrellm-2.3.10-d51b57616e.patch (released upstream now)
+
+-------------------------------------------------------------------
 Wed Apr 17 10:35:50 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
 
 - apply patch gkrellm-2.3.10-d51b57616e.patch with upstream git master

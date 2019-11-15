@@ -45,4 +45,12 @@
     <comment>- Add distribution/flavor tag to image (SES-636)</comment>
     <requestid>746183</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>3cee22e9004a974fe8d4732e02263184</srcmd5>
+    <version>1.0.0</version>
+    <time>1573772967</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>748559</requestid>
+  </revision>
 </revisionlist>

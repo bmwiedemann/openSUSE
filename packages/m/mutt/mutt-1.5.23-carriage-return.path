@@ -7,19 +7,19 @@
  5 files changed, 26 insertions(+), 14 deletions(-)
 
 --- crypt-gpgme.c
-+++ crypt-gpgme.c	2019-01-02 13:24:40.244380302 +0000
-@@ -2343,7 +2343,7 @@ static void copy_clearsigned (gpgme_data
-     
++++ crypt-gpgme.c	2019-11-13 13:46:16.512388398 +0000
+@@ -2669,7 +2669,7 @@ static void copy_clearsigned (gpgme_data
+ 
      if (armor_header)
      {
--      if (buf[0] == '\n') 
-+      if (buf[0] == '\n' || (buf[0] == '\r' && buf[1] == '\n')) 
+-      if (buf[0] == '\n')
++      if (buf[0] == '\n' || (buf[0] == '\r' && buf[1] == '\n'))
  	armor_header = 0;
        continue;
      }
 --- lib.c
-+++ lib.c	2019-01-02 13:24:40.244380302 +0000
-@@ -907,6 +907,17 @@ int mutt_strcmp(const char *a, const cha
++++ lib.c	2019-11-13 13:42:00.245189313 +0000
+@@ -683,6 +683,17 @@ int mutt_strcmp(const char *a, const cha
    return strcmp(NONULL(a), NONULL(b));
  }
  
@@ -38,28 +38,28 @@
  {
    return strcasecmp(NONULL(a), NONULL(b));
 --- lib.h
-+++ lib.h	2019-01-02 13:24:40.244380302 +0000
-@@ -204,6 +204,7 @@ int mutt_copy_bytes (FILE *, FILE *, siz
- int mutt_rx_sanitize_string (char *, size_t, const char *);
++++ lib.h	2019-11-13 13:47:17.399247662 +0000
+@@ -201,6 +201,7 @@ int mutt_copy_stream (FILE *, FILE *);
+ int mutt_copy_bytes (FILE *, FILE *, size_t);
  int mutt_strcasecmp (const char *, const char *);
  int mutt_strcmp (const char *, const char *);
-+int mutt_strxcmp(const char *a, const char *b);
++int mutt_strxcmp (const char *, const char *);
  int mutt_strncasecmp (const char *, const char *, size_t);
  int mutt_strncmp (const char *, const char *, size_t);
  int mutt_strcoll (const char *, const char *);
 --- pager.c
-+++ pager.c	2019-01-02 13:24:40.244380302 +0000
-@@ -823,7 +823,7 @@ resolve_types (char *buf, char *raw, str
++++ pager.c	2019-11-13 13:48:32.257845120 +0000
+@@ -826,7 +826,7 @@ resolve_types (char *buf, char *raw, str
+     lineInfo[n].type = MT_COLOR_NORMAL;
    else if (check_attachment_marker ((char *) raw) == 0)
      lineInfo[n].type = MT_COLOR_ATTACHMENT;
- #endif
 -  else if (mutt_strcmp ("-- \n", buf) == 0 || mutt_strcmp ("-- \r\n", buf) == 0)
 +  else if (mutt_strxcmp ("-- \n", buf) == 0)
    {
      i = n + 1;
  
 --- pgp.c
-+++ pgp.c	2019-01-02 13:24:40.244380302 +0000
++++ pgp.c	2019-11-13 13:51:06.746954963 +0000
 @@ -373,7 +373,7 @@ static void pgp_copy_clearsigned (FILE *
        continue;
      }
@@ -67,7 +67,7 @@
 -    if (mutt_strcmp (buf, "-----BEGIN PGP SIGNATURE-----\n") == 0)
 +    if (mutt_strxcmp (buf, "-----BEGIN PGP SIGNATURE-----\n") == 0)
        break;
-     
+ 
      if (armor_header)
 @@ -442,14 +442,14 @@ int pgp_application_pgp_handler (BODY *m
        could_not_decrypt = 0;
@@ -88,12 +88,12 @@
          needpass = 0;
          pgp_keyblock = 1;
 @@ -482,10 +482,10 @@ int pgp_application_pgp_handler (BODY *m
- 	
+ 
  	fputs (buf, tmpfp);
  
 -	if ((needpass && mutt_strcmp ("-----END PGP MESSAGE-----\n", buf) == 0) ||
 +	if ((needpass && mutt_strxcmp ("-----END PGP MESSAGE-----\n", buf) == 0) ||
- 	    (!needpass 
+ 	    (!needpass
 -             && (mutt_strcmp ("-----END PGP SIGNATURE-----\n", buf) == 0
 -                 || mutt_strcmp ("-----END PGP PUBLIC KEY BLOCK-----\n",buf) == 0)))
 +             && (mutt_strxcmp ("-----END PGP SIGNATURE-----\n", buf) == 0
@@ -116,7 +116,7 @@
  	key = 1;
      }
    }
-@@ -1237,9 +1237,9 @@ BODY *pgp_sign_message (BODY *a)
+@@ -1261,9 +1261,9 @@ BODY *pgp_sign_message (BODY *a)
     */
    while (fgets (buffer, sizeof (buffer) - 1, pgpout) != NULL)
    {

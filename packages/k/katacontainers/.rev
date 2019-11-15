@@ -65,4 +65,15 @@
     <comment></comment>
     <requestid>742637</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>28d9067dc63022ae04ccfc39faf7a9ac</srcmd5>
+    <version>1.9.1</version>
+    <time>1573774544</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.1:
+  runtime:
+    - sandbox/cgroups: don't constrain if using SandboxCgroupsOnly
+    - ci: Fix versions_checker.sh</comment>
+    <requestid>748726</requestid>
+  </revision>
 </revisionlist>

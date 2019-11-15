@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Nov 14 09:27:25 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 0.42
+   see /usr/share/doc/packages/perl-Future/Changes
+
+  0.42    2019-11-12
+          [CHANGES]
+           * Added Future::Queue
+  
+          [BUGFIXES]
+           * Remove already-completed futures from the on_cancel chain of others
+             to avoid the list growing arbitrarily large in some situations; e.g
+             easily provoked by long loops in Future::AsyncAwait
+
+-------------------------------------------------------------------
 Fri Jun 14 05:08:11 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.41

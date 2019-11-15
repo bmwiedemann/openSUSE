@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Nov 13 15:47:06 UTC 2019 - Martin Rey <mrey@suse.com>
+
+- Update to 1.3.1:
+  - Bugfixes:
+    - #5993: Build information missing in discovery and relay
+      server binaries
+    - #5995: Usage-reported transfer stats are meaningless
+    - #6008: Changed file in receive-only folder cannot be ignored
+    - #6040: Shows authentication warning when listening on UNIX
+      socket
+    - #6049: Hostnames resolving to localhost are not considered
+      'local' in remote access warning
+  - Enhancements:
+    - #5583: White tab in black Interface ?
+    - #5627: Stalled scans need better UI representation
+  - Other issues:
+    - #6010: STUN server stun.voxgratia.org should be removed
+
+- Changes from 1.3.0:
+  - Bugfixes:
+    - #5985: Log spam and high CPU use if #include path is wrong in
+      .stignore
+  - Enhancements:
+    - #5138: Rate limit can be very bursty
+    - #5948: Improve free space checking when syncing
+    - #5966: Database performance: improve situation with huge
+      databases
+  - Other issues:
+    - #5924: Upgrade server JSON generator
+    - #5991: lib/api: TestHostCheck never finishes with Go 1.13rc2
+      under Docker
+    - #5999: Allow providing your own ldflags for building
+
+- Changes from 1.2.2:
+  - Bugfixes:
+    - #5824: Sync Protocol Listen Address in Actions behaves badly
+    - #5836: panic: chmod ...: operation not permitted
+    - #5839: Prevent leaking log info into stack traces
+    - #5866: No indication in GUI that Syncthing has been shut down
+    - #5888: Adding/updating pending folders is inefficient
+    - #5908: panic: close of closed channel in lib/syncthing when
+      shutting down
+    - #5920: Free space error message is unintelligeble
+    - #5934: Dialing regards any established connection as
+      successful / does not check device ID
+  - Enhancements:
+    - #5738: Avoid logging http: TLS handshake error ...
+      remote error: tls: unknown certificate
+    - #5940: TLS: Support x25519, reconsider elliptic curve
+      priority in handshake
+  - Other issues:
+    - #5115: Include systemd units in stdiscosrv/strelaysrv Debian
+      packages
+    - #5901: TestPullInvalidIgnoredSR flakyness + data race
+
+-------------------------------------------------------------------
 Fri Aug  9 11:23:25 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
 
 - Update to 1.2.1:

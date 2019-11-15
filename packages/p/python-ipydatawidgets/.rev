@@ -51,4 +51,12 @@
     <comment></comment>
     <requestid>724156</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>0d4c2adf36f59517db3a7286e9c985a7</srcmd5>
+    <version>unknown</version>
+    <time>1573772564</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix dependencies</comment>
+    <requestid>748503</requestid>
+  </revision>
 </revisionlist>

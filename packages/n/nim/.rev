@@ -100,4 +100,14 @@
     <comment></comment>
     <requestid>707171</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>41d140e39c64c8ef62248728f13fdba1</srcmd5>
+    <version>1.0.2</version>
+    <time>1573771889</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.2:
+  * See https://nim-lang.org/blog.html for details
+- Update dependencies (based on changes by Federico Ceratto</comment>
+    <requestid>748328</requestid>
+  </revision>
 </revisionlist>

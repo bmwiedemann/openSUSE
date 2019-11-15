@@ -1,7 +1,7 @@
 #
 # spec file for package python-kerberos
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,14 +24,15 @@ Release:        0
 Summary:        Kerberos high-level interface
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/apple/ccs-pykerberos 
+URL:            https://github.com/apple/ccs-pykerberos
 Source:         https://files.pythonhosted.org/packages/source/k/kerberos/kerberos-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/apple/ccs-pykerberos/master/LICENSE.txt
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  krb5-mini-devel
+BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
+BuildRequires:  pkgconfig(krb5)
 %python_subpackages
 
 %description
@@ -54,9 +55,8 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst
 %{python_sitearch}/*
-%license LICENSE.txt 
+%license LICENSE.txt
 
 %changelog

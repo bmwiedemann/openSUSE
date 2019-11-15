@@ -1,7 +1,7 @@
 #
 # spec file for package python-acme
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define libname acme
 Name:           python-%{libname}
-Version:        0.39.0
+Version:        0.40.1
 Release:        0
 Summary:        Python library for the ACME protocol
 License:        Apache-2.0

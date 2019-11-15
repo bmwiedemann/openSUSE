@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xsl:param name="history" select="'Derive the image'"/>
 <xsl:output method="xml" encoding="UTF-8" indent="yes"/>
 <xsl:template match="/">
 <xsl:comment> OBS-ExclusiveArch: aarch64 x86_64 </xsl:comment>
@@ -82,7 +81,7 @@
 
         </labels>
 
-        <history author="Denis Kondratenko &lt;denis.kondratenko@suse.com&gt;"><xsl:value-of select="$history"/></history>
+        <history author="Denis Kondratenko &lt;denis.kondratenko@suse.com&gt;">Install rook and configuration</history>
      </containerconfig>
     </type>
     <version>1.0.0</version>

@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 %bcond_with     test
 Name:           python-jupyter_latex_envs
 Version:        1.4.6

@@ -35,11 +35,11 @@ Requires:       jupyter-ipython >= 4.0.0
 Requires:       jupyter-jupyter_client >= 4.4.0
 Requires:       jupyter-metakernel >= 0.20.8
 Requires:       python3-wurlitzer
-Suggests:       python-backports.tempfile
-Suggests:       python-certifi
-Provides:       python-jupyter_matlab_kernel = %{version}
-Obsoletes:      python-jupyter_matlab_kernel < %{version}
-Provides:       python-matlab-kernel = %{version}
+Suggests:       python3-backports.tempfile
+Suggests:       python3-certifi
+Provides:       python3-jupyter_matlab_kernel = %{version}
+Obsoletes:      python3-jupyter_matlab_kernel < %{version}
+Provides:       python3-matlab-kernel = %{version}
 BuildArch:      noarch
 
 %description

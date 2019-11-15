@@ -409,4 +409,12 @@
     <comment></comment>
     <requestid>739154</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>91e22cd001aababf237259edea740022</srcmd5>
+    <version>0.40.1</version>
+    <time>1573773617</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>748663</requestid>
+  </revision>
 </revisionlist>

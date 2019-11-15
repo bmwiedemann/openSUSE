@@ -977,4 +977,41 @@
   * mutt-1.5.23-carriage-return.path</comment>
     <requestid>678427</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>149419f573f05302972a6662af4cb392</srcmd5>
+    <version>1.12.2</version>
+    <time>1573773136</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to mutt 1.12.2 (2019-09-21):
+  + $fcc_before_send, when set, causes Fcc to occur before sending instead of
+    afterwards.  When set, the message is saved as-sent; please see the
+    documentation for details.
+  ! $ssl_use_tlsv1 and $ssl_use_tlsv1_1 now default to unset.
+  + $auto_subscribe, when set, automatically adds an email with the List-Post
+    header to the subscribe list.
+  ! Fcc now occurs after sending a message.  If the fcc fails, mutt will prompt
+    to try again, or to try another mailbox.
+  + Basic protected header (&quot;memory hole&quot;) support added for the Subject header.
+    See the config vars: $crypt_protected_headers_read,
+    $crypt_protected_headers_save, $crypt_protected_headers_subject,
+    and $crypt_protected_headers_write.
+  ! Color names can be prefixed with &quot;light&quot; in addition to &quot;bright&quot;.  &quot;bright&quot;
+    colors are bold face, while &quot;light&quot; are non-bold.
+  ! Color commands can now include an attribute (e.g. bold, underline).
+  ! $pgp_use_gpg_agent defaults set.
+  + &lt;descend-directory&gt; in the browser menu allows entering nested maildir
+    directories.
+  + &lt;group-chat-reply&gt; replies to all, but preserves To recipients in the reply.
+  + $include_encrypted, default unset, prevents separately encrypted contents
+    from being included in a reply.  This helps to prevent a decryption oracle
+    attack.
+  ! With gpgme &gt;= 1.11, recipient keys with a trailing '!' now force subkey use,
+    as with classic gpg.
+  ! In send mode, %{charset} mailcap expansion uses the current charset of the
+    file.
+  + $imap_fetch_chunk_size allows fetching new headers in groups of this size.
+    This might help with timeouts during opening of huge mailboxes.
+    If you have huge mailboxes, you should also try $imap_qresync.</comment>
+    <requestid>748572</requestid>
+  </revision>
 </revisionlist>

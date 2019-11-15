@@ -69,4 +69,39 @@
     <comment>- Ensure neutrality of description.</comment>
     <requestid>612646</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3f9f55eb02801ec4428e0f74e3c70215</srcmd5>
+    <version>2.13</version>
+    <time>1573771636</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.13:
+ * add memory module
+ * add read_file module
+ * drop CAP_NET_ADMIN (not needed on Linux ≥ 2.6.37)
+ * switch to autotools
+ * battery: hide seconds by default
+ * wireless: add format_quality
+ * doc: clarify min_width not being supported with dzen2/xmobar
+ * battery: read multiple batteries on DragonFlyBSD
+ * make: don’t use pulseaudio on DragonFlyBSD
+ * wireless: detect interface type on DragonFlyBSD
+ * cpu usage: fix: correctly print usage for cpu 10
+ * cpu usage: fix: correctly print for invalid %cpu placeholder
+ * cpu usage: support non-consecutive CPUs
+ * time: add only_when_tz_different option
+ * ethernet: add %interface
+ * ethernet: fix speed display for 100 Gbit/s cards
+ * battery: handle POWER_SUPPLY_STATUS=Not charging
+ * volume: provide more natural volume percentage with ALSA
+ * volume: fix ALSA capture device monitoring
+ * volume: implement %devicename for PulseAudio and ALSA
+ * config: re-arrange disk after network interfaces
+ * fix: include sys/socket.h on macOS
+ * fix: strip network interface labels
+ * fix glob(3) error handling
+ * various testsuite improvements
+ * switch to clang-format-3.8
+</comment>
+    <requestid>745556</requestid>
+  </revision>
 </revisionlist>

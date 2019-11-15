@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Nov 13 21:04:12 UTC 2019 - coolo@suse.com
+
+- Update to version 4.6.1573674965.36aeff76e:
+  * Allow '@' separator to specify machine dependency
+  * Add more MIME types so test assets do not get served as text/plain
+  * Skip shellcheck on CHECKSTYLE=0 as well (#2476)
+  * Show machine in dependency graph (#2477)
+  * Fix error in nightly doc CI job (#2479)
+  * Fix a bug in the fullstack test where it would not wait for the cache service to actually finish downloading
+  * Document client's form parameter
+  * Fix empty needles dir in openqa-clone-custom-git-refspec
+  * Status updates can be a GET request now
+  * Fix test coverage stats
+  * Let the background jobs take total control of lock handling to reduce the chances of race conditions happening further
+  * Fix copyright year and use a more obvious helper name
+  * An inconsistently used retry without delay is not actually that useful for the cache service client
+  * Significantly reduce the number of HTTP requests required for cache service status and info features
+  * Use less code to do the same
+  * The session token is not really needed, so we replace it with something much easier to understand
+  * Store lock state in Minion instead of memory, removing the single process HTTP server requirement
+  * The client method enqueue should have been targeting "/enqueue" instead of "/execute_task"
+  * Remove some dead code
+  * Dependency cron 191110000608
+  * Implement an expand feature for job group YAML
+
+-------------------------------------------------------------------
 Sun Nov 10 22:25:40 UTC 2019 - coolo@suse.com
 
 - Update to version 4.6.1573412318.f4760c78f:

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 13 16:40:01 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Drop python2 support due to python-notebook dropping python2 support
+
+-------------------------------------------------------------------
 Thu Apr 25 01:59:57 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Rename to to match python package naming guidelines.

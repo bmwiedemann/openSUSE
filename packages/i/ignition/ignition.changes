@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Nov 07 17:45:13 UTC 2019 - kukuk@suse.de
+
+- Update to version 2.0.1+git20191106.809f44a:
+  * Add test cases for file system mount options
+  * Add translator for Filesystem struct
+  * Document file system mount options
+  * Implement file system mount options
+  * providers: add initial zVM hypervisor support
+  * travis: test on arm, use new ubuntu, cleanup
+  * config/v3_1_exp/types: validate http(s) proxies
+  * tests: remove unused stub for id
+  * distro: turn on SELinux by default
+  * Add filesystem mount options to schema
+  * files/passwd: don't shell out to id
+  * files/passwd: clean up repetitive code
+  * providers/aliyun: Add aliyun
+  * release-checklist: mention mantle cl branch for 0.x.y releases
+  * config/v3*: don't warn on unset mode if appending
+
+-------------------------------------------------------------------
 Fri Sep 27 11:17:00 UTC 2019 - kukuk@suse.de
 
 - Update to version 2.0.1+git20190925.641ec6a:

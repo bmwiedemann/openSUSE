@@ -1,7 +1,7 @@
 #
 # spec file for package nim
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           nim
-Version:        0.19.6
+Version:        1.0.2
 Release:        0
 Summary:        A statically typed, imperative programming language
 License:        MIT
@@ -25,6 +25,7 @@ Group:          Development/Languages/Other
 URL:            https://nim-lang.org/
 Source0:        https://nim-lang.org/download/nim-%{version}.tar.xz
 Source1:        nim-rpmlintrc
+BuildRequires:  binutils-devel
 Recommends:     git
 ExclusiveArch:  %{ix86} x86_64 armv7l armv7hl aarch64 ppc64le
 
@@ -57,6 +58,8 @@ make %{?_smp_mflags} V=1 \
 
 %install
 ./koch install %{buildroot}%{_libdir}
+
+find . -name testament -executable -type f -delete
 
 mkdir -p %{buildroot}%{_bindir}/ %{buildroot}%{_sysconfdir}/nim \
   %{buildroot}%{_docdir}/nim/
