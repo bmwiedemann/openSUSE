@@ -2,16 +2,16 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.junit.vintage</groupId>
-  <artifactId>junit-vintage-engine</artifactId>
-  <version>5.4.0</version>
-  <name>JUnit Vintage Engine</name>
-  <description>Module "junit-vintage-engine" of JUnit 5.</description>
+  <groupId>org.junit.platform</groupId>
+  <artifactId>junit-platform-console</artifactId>
+  <version>1.5.2</version>
+  <name>JUnit Platform Console</name>
+  <description>Module "junit-platform-console" of JUnit 5.</description>
   <url>https://junit.org/junit5/</url>
   <licenses>
     <license>
       <name>Eclipse Public License v2.0</name>
-      <url>http://www.eclipse.org/legal/epl-v20.html</url>
+      <url>https://www.eclipse.org/legal/epl-v20.html</url>
     </license>
   </licenses>
   <developers>
@@ -55,20 +55,14 @@
     <dependency>
       <groupId>org.apiguardian</groupId>
       <artifactId>apiguardian-api</artifactId>
-      <version>1.0.0</version>
+      <version>1.1.0</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.junit.platform</groupId>
-      <artifactId>junit-platform-engine</artifactId>
-      <version>1.4.0</version>
+      <artifactId>junit-platform-reporting</artifactId>
+      <version>1.5.2</version>
       <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.12</version>
-      <scope>runtime</scope>
     </dependency>
   </dependencies>
 </project>

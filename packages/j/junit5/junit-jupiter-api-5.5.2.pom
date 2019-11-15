@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.junit.platform</groupId>
-  <artifactId>junit-platform-commons</artifactId>
-  <version>1.4.0</version>
-  <name>JUnit Platform Commons</name>
-  <description>Module "junit-platform-commons" of JUnit 5.</description>
+  <groupId>org.junit.jupiter</groupId>
+  <artifactId>junit-jupiter-api</artifactId>
+  <version>5.5.2</version>
+  <name>JUnit Jupiter API</name>
+  <description>Module "junit-jupiter-api" of JUnit 5.</description>
   <url>https://junit.org/junit5/</url>
   <licenses>
     <license>
       <name>Eclipse Public License v2.0</name>
-      <url>http://www.eclipse.org/legal/epl-v20.html</url>
+      <url>https://www.eclipse.org/legal/epl-v20.html</url>
     </license>
   </licenses>
   <developers>
@@ -55,7 +54,19 @@
     <dependency>
       <groupId>org.apiguardian</groupId>
       <artifactId>apiguardian-api</artifactId>
-      <version>1.0.0</version>
+      <version>1.1.0</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.opentest4j</groupId>
+      <artifactId>opentest4j</artifactId>
+      <version>1.2.0</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.platform</groupId>
+      <artifactId>junit-platform-commons</artifactId>
+      <version>1.5.2</version>
       <scope>compile</scope>
     </dependency>
   </dependencies>
