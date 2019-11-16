@@ -547,6 +547,7 @@
     <package name="fcitx-table-cn-wubi" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="fcitx-table-cn-wubi-large" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="fcitx-table-cn-wubi-pinyin" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="fcitx-table-extra-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="fcitx-table-tw-boshiamy" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="fcitx-table-tw-cangjie-large" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="fcitx-table-tw-cangjie5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -3871,7 +3872,6 @@
     <package name="pfstools" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="phalanx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="phonon4qt5-backend-gstreamer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="phonon4qt5-backend-gstreamer-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="phonon4qt5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="phononsettings" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="phononsettings-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -5718,6 +5718,7 @@
     <package name="libcanberra-gtk0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libcanberra-gtk2-module-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libcanberra0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libcap2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libcom_err2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libcontainers-common" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libcrack2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -5765,6 +5766,7 @@
     <package name="libjpeg8-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libjson-c4-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libkeyutils1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="liblastfm5-1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libldap-2_4-2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libldb2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libldm-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->

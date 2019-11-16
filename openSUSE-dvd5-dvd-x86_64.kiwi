@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20191114" schemaversion="4.1">
+<image name="OBS__openSUSE___20191115" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20191114</productvar>
+      <productvar name="VERSION">20191115</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20191114,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20191115,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20191114/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20191115/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/suse-tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/suse-tumbleweed</productoption>
@@ -564,6 +564,7 @@
       <repopackage name="fcitx-table-cn-wubi"/>
       <repopackage name="fcitx-table-cn-wubi-large"/>
       <repopackage name="fcitx-table-cn-wubi-pinyin"/>
+      <repopackage name="fcitx-table-extra-lang"/>
       <repopackage name="fcitx-table-tw-boshiamy"/>
       <repopackage name="fcitx-table-tw-cangjie-large"/>
       <repopackage name="fcitx-table-tw-cangjie5"/>
@@ -1641,6 +1642,7 @@
       <repopackage name="libcanberra0-32bit" arch="x86_64"/>
       <repopackage name="libcap-ng0"/>
       <repopackage name="libcap2"/>
+      <repopackage name="libcap2-32bit" arch="x86_64"/>
       <repopackage name="libcapi20-3"/>
       <repopackage name="libcares2"/>
       <repopackage name="libccolamd2"/>
@@ -2361,6 +2363,7 @@
       <repopackage name="liblangtag1"/>
       <repopackage name="liblapack3"/>
       <repopackage name="liblasem-0_4-4"/>
+      <repopackage name="liblastfm5-1" arch="x86_64"/>
       <repopackage name="liblavfile-2_0-0"/>
       <repopackage name="liblavjpeg-2_0-0"/>
       <repopackage name="liblavplay-2_0-0"/>
@@ -4129,7 +4132,6 @@
       <repopackage name="pfstools"/>
       <repopackage name="phalanx"/>
       <repopackage name="phonon4qt5-backend-gstreamer"/>
-      <repopackage name="phonon4qt5-backend-gstreamer-lang"/>
       <repopackage name="phonon4qt5-lang"/>
       <repopackage name="phononsettings"/>
       <repopackage name="phononsettings-lang"/>
