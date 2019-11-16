@@ -2365,6 +2365,7 @@
     <package name="liblangtag1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="liblapack3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblasem-0_4-4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
+    <package name="liblastfm5-1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="liblavfile-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblavjpeg-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblavplay-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -5766,7 +5767,6 @@
     <package name="libjpeg8-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libjson-c4-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libkeyutils1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="liblastfm5-1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libldap-2_4-2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libldb2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libldm-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
