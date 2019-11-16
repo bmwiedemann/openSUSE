@@ -2807,7 +2807,6 @@ unsorted:
   - fcitx-table-cn-zhengma-large 
   - fcitx-table-cn-ziran 
   - fcitx-table-emoji 
-  - fcitx-table-extra-lang 
   - fcitx-table-hk-cantonese 
   - fcitx-table-hk-jyutping 
   - fcitx-table-hk-stroke5 
@@ -4752,7 +4751,7 @@ unsorted:
   - gromacs-bash 
   - gromacs-devel 
   - gromacs-doc 
-  - gromacs-openmpi 
+  - gromacs-openmpi2 
   - groovy18 
   - groovy18-javadoc 
   - groovy18-lib 
@@ -8011,7 +8010,6 @@ unsorted:
   - libcap-progs 
   - libcap1 
   - libcap1-32bit: [x86_64] 
-  - libcap2-32bit: [x86_64] 
   - libcapi20-2 
   - libcapi20-2-32bit: [x86_64] 
   - libcapi20-3-32bit: [x86_64] 
@@ -8486,6 +8484,7 @@ unsorted:
   - libedje1 
   - libeet1 
   - libeeze1 
+  - libefa1-32bit: [x86_64] 
   - libefl1 
   - libefreet1 
   - libefreet_mime1 
@@ -9612,7 +9611,7 @@ unsorted:
   - liblapacke3 
   - liblapacke3-32bit: [x86_64] 
   - liblastfm-qt5-devel 
-  - liblastfm5-1 
+  - liblastfm5-1: [i586] 
   - liblastfm5-1-32bit: [x86_64] 
   - liblastfm_fingerprint5-1 
   - liblastfm_fingerprint5-1-32bit: [x86_64] 
@@ -16480,6 +16479,7 @@ unsorted:
   - phobos-devel 
   - phobos-devel-static 
   - phodav-devel 
+  - phonon4qt5-backend-gstreamer-lang 
   - phonon4qt5-backend-vlc 
   - phonon4qt5-backend-vlc-lang 
   - phonon4qt5-devel 
@@ -22536,7 +22536,6 @@ unsorted:
   - retext 
   - retro-gtk-devel 
   - reuse 
-  - reuse-lang 
   - reveng 
   - rfb 
   - rfbplaymacro 
