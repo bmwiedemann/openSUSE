@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Nov 16 22:46:39 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 5.8
+  + Enable the ctrl-enter keys to submit forms on tickets and PRs
+  + Fix spelling errors on documentation
+  + Fix renewing url on invalid token error message
+  + Various fixes to the srcfpo theme
+  + disable smooth scrolling on initial highlight & scroll process
+  + Accept a with_commits parameter on the branches api to resolve the HEAD commits
+  + Various fixes to the PR view
+  + Add support for arrow >= 0.15
+  + Select full text on git|ssh url input boxes when they get focus
+  + Send notification when a branch is created
+  + Add revision along with tag/branch creation/deletion
+  + Add asciidoc syntax override
+  + Fix git blame on unborn HEAD or non-master default branch repos
+  + Fix the logic to rebase PRs
+  + Fix setting one's default email address
+  + Send oldrev as old_commit for git.receive event
+  + Add a set-default-branch action to pagure-admin
+  + Fix rendering badges on the PR list page
+  + Tweak when we show the merge and the rebase buttons
+  + Fix the logic around interacting with read-only databases in hooks
+  + Fix .diff and .patch generation for empty commits
+  + Fix url on the invalid token error message
+  + Fix typo on the pull request merge error message
+  + Allow cross-project API token to open pull-request
+  + Allow updating PRs via the API using cross-project tokens
+  + Fix the logic to make the merge button appear on pull-request
+
+-------------------------------------------------------------------
 Sun Aug 11 14:49:11 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 5.7.4
