@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Nov 16 11:18:49 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.0
+  * Makes use of session in requests
+  * Adds Api.version property to query the NetBox version
+  * Adds .choices() method to endpoint objects that utilizes DRF's
+    OPTIONS method for discovering available choices for fields
+    that use it. This method will eventually replace App.choices()
+    when NetBox retires the /_choices endpoint.
+  * Adds count() method to Endpoint object.
+  * Use requests params to form URL parameters.
+  * Creates a custom model for ChangeObjects and sets its __str__
+    to request_id.
+  * Implements __hash__ method on Record.
+  * Implements JsonField object.
+  * Adds local_context_data field to device model as dict.
+
+-------------------------------------------------------------------
 Fri Sep 27 22:21:50 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.0.8
