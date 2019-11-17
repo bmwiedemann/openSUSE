@@ -27,12 +27,11 @@
 %endif
 %define         skip_python2 1
 Name:           python-dask%{psuffix}
-Version:        2.7.0
+Version:        2.8.0
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
-URL:            http://github.com/ContinuumIO/dask/
+URL:            https://github.com/ContinuumIO/dask/
 Source:         https://files.pythonhosted.org/packages/source/d/dask/dask-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -104,7 +103,6 @@ A minimal task scheduling abstraction and parallel arrays.
 # This must have a Requires for dask and all the dask subpackages
 %package all
 Summary:        All dask components
-Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 Requires:       %{name}-array = %{version}
 Requires:       %{name}-bag = %{version}
@@ -125,7 +123,6 @@ This package pulls in all the optional dask components.
 
 %package array
 Summary:        Numpy-like array data structure for dask
-Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 Requires:       python-numpy >= 1.13.0
 Recommends:     python-chest
@@ -149,7 +146,6 @@ arrays using blocked algorithms and task scheduling.
 
 %package bag
 Summary:        Data structure generic python objects in dask
-Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 Requires:       %{name}-multiprocessing = %{version}
 Requires:       python-cloudpickle >= 0.2.1
@@ -173,7 +169,6 @@ or log files.
 
 %package dataframe
 Summary:        Pandas-like DataFrame data structure for dask
-Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 Requires:       %{name}-array = %{version}
 Requires:       %{name}-multiprocessing = %{version}
@@ -208,7 +203,6 @@ on a single machine, or on many different machines in a cluster.
 
 %package distributed
 Summary:        Interface with the distributed task scheduler in dask
-Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 Requires:       python-distributed >= 2.0
 
@@ -228,7 +222,6 @@ moderate sized clusters.
 
 %package dot
 Summary:        Display dask graphs using graphviz
-Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 Requires:       graphviz
 Requires:       graphviz-gd
@@ -247,7 +240,6 @@ This package contains the graphviz dot rendering interface.
 
 %package multiprocessing
 Summary:        Display dask graphs using graphviz
-Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 Requires:       python-cloudpickle >= 0.2.1
 Requires:       python-partd >= 0.3.7
@@ -282,7 +274,7 @@ This package contains the multiprocessing interface.
 #   test_persist
 #   test_local_get_with_distributed_active
 #   test_local_scheduler
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{python_bin_suffix} -v dask/tests -k 'not (test_serializable_groupby_agg or test_persist or test_local_get_with_distributed_active or test_await or test_local_scheduler)'
+%pytest dask/tests -k 'not (test_serializable_groupby_agg or test_persist or test_local_get_with_distributed_active or test_await or test_local_scheduler)'
 %endif
 
 %if !%{with test}

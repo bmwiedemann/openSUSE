@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Nov 16 17:53:12 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.8.0:
+  * Array
+    + Implement complete dask.array.tile function (:pr:`5574`) Bouwe
+      Andela
+    + Add median along an axis with automatic rechunking (:pr:`5575`)
+      Matthew Rocklin
+    + Allow da.asarray to chunk inputs (:pr:`5586`) Matthew Rocklin
+  * Bag
+    + Use key_split in Bag name (:pr:`5571`) Matthew Rocklin
+  * Core
+    + Switch Doctests to Py3.7 (:pr:`5573`) Ryan Nazareth
+    + Relax get_colors test to adapt to new Bokeh release (:pr:`5576`)
+      Matthew Rocklin
+    + Add dask.blockwise.fuse_roots optimization (:pr:`5451`) Matthew
+      Rocklin
+    + Add sizeof implementation for small dicts (:pr:`5578`) Matthew
+      Rocklin
+    + Update fsspec, gcsfs, s3fs (:pr:`5588`) Tom Augspurger
+  * DataFrame
+    + Add dropna argument to groupby (:pr:`5579`) Richard J Zamora
+    + Revert "Remove import of dask_cudf, which is now a part of cudf
+      (:pr:`5568`)" (:pr:`5590`) Matthew Rocklin
+  * Documentation
+    + Add best practice for dask.compute function (:pr:`5583`) Matthew
+      Rocklin
+    + Create FUNDING.yml (:pr:`5587`) Gina Helfrich
+    + Add screencast for coordination primitives (:pr:`5593`) Matthew
+      Rocklin
+    + Move funding to .github repo (:pr:`5589`) Tom Augspurger
+    + Update calendar link (:pr:`5569`) Tom Augspurger
+
+-------------------------------------------------------------------
 Mon Nov 11 18:24:07 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 2.7.0
