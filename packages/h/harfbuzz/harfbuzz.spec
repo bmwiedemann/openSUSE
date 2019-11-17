@@ -17,16 +17,18 @@
 
 
 Name:           harfbuzz
-Version:        2.6.1
+Version:        2.6.3
 Release:        0
 Summary:        An OpenType text shaping engine
 License:        MIT
-Group:          Productivity/Text/Utilities
 URL:            https://www.freedesktop.org/wiki/Software/HarfBuzz
 Source0:        https://www.freedesktop.org/software/harfbuzz/release/%{name}-%{version}.tar.xz
+Source1:        https://www.freedesktop.org/software/harfbuzz/release/%{name}-%{version}.tar.xz.sha256.asc
+# http://behdad.org
+Source2:        %{name}.keyring
 Source99:       baselibs.conf
-
 BuildRequires:  gcc-c++
+BuildRequires:  gpg2
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo) >= 1.8.0
 BuildRequires:  pkgconfig(cairo-ft)
@@ -44,14 +46,12 @@ HarfBuzz is an OpenType text shaping engine.
 
 %package -n libharfbuzz0
 Summary:        An OpenType text shaping engine
-Group:          System/Libraries
 
 %description -n libharfbuzz0
 HarfBuzz is an OpenType text shaping engine.
 
 %package -n libharfbuzz-icu0
 Summary:        ICU integration into the HarfBuzz OpenType text shaping engine
-Group:          System/Libraries
 
 %description -n libharfbuzz-icu0
 HarfBuzz is an OpenType text shaping engine.
@@ -59,7 +59,6 @@ This package contains the ICU library.
 
 %package -n libharfbuzz-gobject0
 Summary:        GObject wrapper around the HarfBuzz OpenType text shaping engine
-Group:          System/Libraries
 
 %description -n libharfbuzz-gobject0
 HarfBuzz is an OpenType text shaping engine.
@@ -67,7 +66,6 @@ This package contains the GObject library.
 
 %package -n libharfbuzz-subset0
 Summary:        An OpenType text shaping engine
-Group:          System/Libraries
 
 %description -n libharfbuzz-subset0
 HarfBuzz is an OpenType text shaping engine.
@@ -75,7 +73,6 @@ This package contains the subset library
 
 %package -n typelib-1_0-HarfBuzz-0_0
 Summary:        Introspection bindings for the HarfBuzz/GObject library
-Group:          System/Libraries
 
 %description -n typelib-1_0-HarfBuzz-0_0
 HarfBuzz is an OpenType text shaping engine.
@@ -83,7 +80,6 @@ This package provides the GObject Introspection bindings for HarfBuzz.
 
 %package tools
 Summary:        Tools from the HarfBuzz text shaping software
-Group:          Productivity/Text/Utilities
 
 %description tools
 HarfBuzz is an OpenType text shaping engine.
@@ -91,7 +87,6 @@ This package provides a set of tools for HarfBuzz.
 
 %package devel
 Summary:        Development files for the HarfBuzz OpenType text shaping engine
-Group:          Development/Libraries/C and C++
 Requires:       libharfbuzz-gobject0 = %{version}
 Requires:       libharfbuzz-icu0 = %{version}
 Requires:       libharfbuzz-subset0 = %{version}
@@ -104,6 +99,9 @@ HarfBuzz is an OpenType text shaping engine.
 This package contains the development files.
 
 %prep
+# the .tar.xz.sha256.asc non-detached signature was checked by source service
+# Now check the inside hash
+echo "`gpg --decrypt %{SOURCE1} | cut -c1-64`  %{SOURCE0}" | sha256sum -c
 %autosetup
 
 %build
@@ -124,13 +122,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n libharfbuzz0 -p /sbin/ldconfig
 %postun -n libharfbuzz0 -p /sbin/ldconfig
-
 %post -n libharfbuzz-icu0 -p /sbin/ldconfig
 %postun -n libharfbuzz-icu0 -p /sbin/ldconfig
-
 %post -n libharfbuzz-gobject0 -p /sbin/ldconfig
 %postun -n libharfbuzz-gobject0 -p /sbin/ldconfig
-
 %post -n libharfbuzz-subset0 -p /sbin/ldconfig
 %postun -n libharfbuzz-subset0 -p /sbin/ldconfig
 
