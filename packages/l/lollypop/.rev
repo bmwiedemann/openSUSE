@@ -1162,4 +1162,16 @@
   * Fix a regression in lazy loading.</comment>
     <requestid>747368</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>650987b3062c5b79eec4d0e97ed971f8</srcmd5>
+    <version>1.2.13</version>
+    <time>1574015044</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.13:
+  * Use a smaller welcome image (glgo#World/lollypop#2125).
+  * Fix lollypop not closing properly when launched with
+    lollypop-sp (glgo#World/lollypop#2120).
+  * Fix a crash (glgo#World/lollypop#2124).</comment>
+    <requestid>749130</requestid>
+  </revision>
 </revisionlist>

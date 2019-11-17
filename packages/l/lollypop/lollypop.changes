@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov 17 16:29:13 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.2.13:
+  * Use a smaller welcome image (glgo#World/lollypop#2125).
+  * Fix lollypop not closing properly when launched with
+    lollypop-sp (glgo#World/lollypop#2120).
+  * Fix a crash (glgo#World/lollypop#2124).
+
+-------------------------------------------------------------------
 Mon Nov 11 14:31:07 UTC 2019 - antoine.belvire@opensuse.org
 
 - Update to version 1.2.12:

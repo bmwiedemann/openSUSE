@@ -1,7 +1,7 @@
 #
 # spec file for package lollypop
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           lollypop
-Version:        1.2.12
+Version:        1.2.13
 Release:        0
 Summary:        GNOME music playing application
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
-Url:            https://wiki.gnome.org/Apps/Lollypop
+URL:            https://wiki.gnome.org/Apps/Lollypop
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  desktop-file-utils
 BuildRequires:  intltool
