@@ -480,4 +480,12 @@ This fixes the missing pkgconfig(Qt5WebKit*) Provides and the rpmlint error. (fo
     <comment></comment>
     <requestid>730783</requestid>
   </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>ab5a7fbc784d29491e83eddcf57d03cc</srcmd5>
+    <version>5.212~alpha3</version>
+    <time>1574014910</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>748456</requestid>
+  </revision>
 </revisionlist>

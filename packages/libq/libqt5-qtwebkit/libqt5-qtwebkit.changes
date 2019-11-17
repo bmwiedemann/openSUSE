@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 13 13:11:21 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Add icu-build-fix.patch: fix the build with libicu 65.1. 
+
+-------------------------------------------------------------------
 Fri Sep 13 07:06:21 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add patch to fix build on armv6:

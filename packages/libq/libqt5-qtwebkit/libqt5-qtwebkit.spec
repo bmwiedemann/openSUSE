@@ -48,6 +48,8 @@ Patch0:         enable_x11_target_always.patch
 Patch1:         tell-the-truth-about-private-api.patch
 # PATCH-FIX-UPSTREAM https://bugs.webkit.org/show_bug.cgi?id=141288
 Patch2:         webkit-bwo141288.patch
+# PATCH-FIX-UPSTREAM https://bugs.webkit.org/show_bug.cgi?id=202600
+Patch3:         icu-build-fix.patch
 
 %if %{with avsupport}
 BuildRequires:  pkgconfig(gstreamer-1.0)
@@ -119,6 +121,7 @@ the full screen as specified within the QML application.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %package -n %libname
 Summary:        Qt 5 WebKit Widget library
