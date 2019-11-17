@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 14 09:24:33 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.14
+   see /usr/share/doc/packages/perl-Devel-CheckLib/CHANGES
+
+  1.14    2019-11-12      Use Capture::Tiny instead of Capture::Output
+
+-------------------------------------------------------------------
 Mon Jun  4 05:18:12 UTC 2018 - coolo@suse.com
 
 - updated to 1.13
