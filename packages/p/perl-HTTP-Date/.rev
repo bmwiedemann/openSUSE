@@ -76,4 +76,12 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3765ffe9c937bacf2cb518fd9ddeb432</srcmd5>
+    <version>6.03</version>
+    <time>1574014849</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>748595</requestid>
+  </revision>
 </revisionlist>
