@@ -29,6 +29,7 @@ Source1:        selinux-ready
 Source2:        baselibs.conf
 # PATCH-FIX-UPSTREAM Include <sys/uio.h> for readv prototype
 Patch4:         readv-proto.patch
+Patch5:         Use-Python-distutils-to-install-SELinux.patch
 BuildRequires:  fdupes
 BuildRequires:  libsepol-devel >= %{libsepol_ver}
 BuildRequires:  pcre-devel
@@ -95,6 +96,7 @@ necessary to develop your own software using libselinux.
 %prep
 %setup -q
 %patch4 -p1
+%patch5 -p2
 
 %build
 %define _lto_cflags %{nil}

@@ -31,6 +31,9 @@ Source1:        selinux-ready
 Source2:        baselibs.conf
 # PATCH-FIX-UPSTREAM Include <sys/uio.h> for readv prototype
 Patch4:         readv-proto.patch
+# PATCH-FIX-UPSTREAM python3.8-compat.patch mcepl@suse.com
+# Make linking working even when default pkg-config doesn’t provide -lpython<ver>
+Patch5:         python3.8-compat.patch
 BuildRequires:  libsepol-devel-static >= %{libsepol_ver}
 BuildRequires:  pcre-devel
 BuildRequires:  python-rpm-macros
@@ -75,7 +78,7 @@ language.
 
 %prep
 %setup -q -n libselinux-%{version}
-%patch4 -p1
+%autopatch -p1
 
 %build
 %define _lto_cflags %{nil}

@@ -500,4 +500,12 @@
     <comment>- Disable LTO (boo#1133244).</comment>
     <requestid>711058</requestid>
   </revision>
+  <revision rev="58" vrev="6">
+    <srcmd5>6b331d019bb09ad9ffdc6fc08e62796b</srcmd5>
+    <version>2.9</version>
+    <time>1574014835</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>748056</requestid>
+  </revision>
 </revisionlist>

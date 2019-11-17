@@ -1,0 +1,14 @@
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -13,7 +13,11 @@ LIBDIR ?= $(PREFIX)/lib
+ SHLIBDIR ?= /lib
+ INCLUDEDIR ?= $(PREFIX)/include
+ PYINC ?= $(shell $(PKG_CONFIG) --cflags $(PYPREFIX))
++ifeq ($(shell $(PKG_CONFIG) --exists $(PYPREFIX)-embed && echo true), true)
++PYLIBS ?= $(shell $(PKG_CONFIG) --libs $(PYPREFIX)-embed)
++else
+ PYLIBS ?= $(shell $(PKG_CONFIG) --libs $(PYPREFIX))
++endif
+ PYTHONLIBDIR ?= $(shell $(PYTHON) -c "from distutils.sysconfig import *; print(get_python_lib(plat_specific=1, prefix='$(PREFIX)'))")
+ PYCEXT ?= $(shell $(PYTHON) -c 'import imp;print([s for s,m,t in imp.get_suffixes() if t == imp.C_EXTENSION][0])')
+ RUBYINC ?= $(shell $(RUBY) -e 'puts "-I" + RbConfig::CONFIG["rubyarchhdrdir"] + " -I" + RbConfig::CONFIG["rubyhdrdir"]')

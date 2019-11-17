@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 30 17:21:00 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add python3.8-compat.patch which makes build possible even with
+  Python 3.8, which doesn’t automatically adds -lpython<ver>
+
+-------------------------------------------------------------------
 Tue May 28 08:28:03 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Disable LTO (boo#1133244).
