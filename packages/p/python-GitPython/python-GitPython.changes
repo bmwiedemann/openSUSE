@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Nov 16 16:40:59 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * be more explicit in %files section
+  * updated line numbers in patches
+
+- update to version 3.0.5:
+  * Remove duplicate license parameter
+  * Fix/deepsource issues
+  * Check if submodule exists before referencing
+  * Fix cloning to path with unicode
+  * Global ConfigParser
+  * Fix 'PushInfo' object has no attribute 'name'
+  * Reading and writing global configuration parameters acknowledged
+    help wanted
+  * Added Git Gud to projects
+  * Git.AutoInterrupt.__del__() OSError: [WinError 6] The handle is
+    invalid acknowledged help wanted tag.Windows
+
+- changes from version 3.0.4:
+  * Fix repo.index.diff("HEAD", create_patch=True) always returning an
+    empty list
+  * Fix how Diff handles commits that contain submodule changes
+  * Fix pickling of tzoffset
+  * Add support for 'C'-type diffs
+  * Fixed#731
+  * Update .deepsource.toml
+  * Allow single item for index.addremovemove
+
+-------------------------------------------------------------------
 Mon Oct 07 13:33:58 UTC 2019 - tchvatal@suse.com
 
 - Update to version 3.0.3.1570041589.23b83cd:

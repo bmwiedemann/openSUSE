@@ -23,7 +23,7 @@ Index: GitPython-3.0.2.1566444429.0765792/git/test/test_remote.py
  import random
  import tempfile
  from unittest import skipIf
-@@ -403,7 +404,7 @@ class TestRemote(TestBase):
+@@ -410,7 +411,7 @@ class TestRemote(TestBase):
          TagReference.delete(rw_repo, new_tag, other_tag)
          remote.push(":%s" % other_tag.path)
  
@@ -32,7 +32,7 @@ Index: GitPython-3.0.2.1566444429.0765792/git/test/test_remote.py
      @with_rw_and_rw_remote_repo('0.1.6')
      def test_base(self, rw_repo, remote_repo):
          num_remotes = 0
-@@ -636,6 +637,7 @@ class TestRemote(TestBase):
+@@ -643,6 +644,7 @@ class TestRemote(TestBase):
          # will raise fatal: Will not delete all non-push URLs
          assert_raises(GitCommandError, remote.delete_url, test3)
  

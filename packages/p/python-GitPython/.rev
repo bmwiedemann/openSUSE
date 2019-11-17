@@ -203,4 +203,12 @@
   * Fix #889: Add DeepSource config and fix some major issues</comment>
     <requestid>735864</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7492d3481aaf56a67b69145aaf55e78d</srcmd5>
+    <version>3.0.5</version>
+    <time>1574015017</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749100</requestid>
+  </revision>
 </revisionlist>

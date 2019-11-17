@@ -19,12 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-GitPython
-Version:        3.0.3.1570041589.23b83cd
+Version:        3.0.5
 Release:        0
 Summary:        Python Git Library
 License:        BSD-3-Clause
 URL:            https://github.com/gitpython-developers/GitPython
-Source:         GitPython-%{version}.tar.xz
+Source:         GitPython-%{version}.tar.gz
 Patch0:         test-skips.patch
 Patch1:         test_blocking_lock_file-extra-time.patch
 BuildRequires:  %{python_module ddt >= 1.1.1}
@@ -85,6 +85,9 @@ git config --global user.name "Your Name"
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS CHANGES README.md doc/source/*.rst
-%{python_sitelib}/*
+%dir %{python_sitelib}/git
+%{python_sitelib}/git/*
+%dir %{python_sitelib}/GitPython-%{version}-py*.egg-info
+%{python_sitelib}/GitPython-%{version}-py*.egg-info
 
 %changelog
