@@ -23,7 +23,7 @@
 
 
 Name:               pagure
-Version:            5.7.4
+Version:            5.8
 Release:            0
 Summary:            A git-centered forge
 Group:              Development/Tools/Version Control
