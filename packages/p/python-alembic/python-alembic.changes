@@ -1,7 +1,34 @@
 -------------------------------------------------------------------
+Sat Nov 16 16:37:12 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.3.1:
+  * bug
+    + [bug] [mssql] Fixed bug in MSSQL dialect where the drop
+      constraint execution steps used to remove server default or
+      implicit foreign key constraint failed to take into account the
+      schema name of the target table.  References: #621
+
+-------------------------------------------------------------------
 Thu Nov 14 12:41:03 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Require full python interpreter when building
+
+-------------------------------------------------------------------
+Sat Nov  9 14:46:13 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.3.0:
+  * feature
+    + Added support for ALEMBIC_CONFIG environment variable, refers to
+      the location of the alembic configuration script in lieu of
+      using the -c command line option.  References: #608
+  * bug
+    + Fixed bug in new Variant autogenerate where the order of the
+      arguments to Variant were mistakenly reversed.  References: #131
+  * misc
+    + Some internal modifications have been made to how the names of
+      indexes and unique constraints work to make use of new functions
+      added in SQLAlchemy 1.4, so that SQLAlchemy has more flexibility
+      over how naming conventions may be applied to these objects.
 
 -------------------------------------------------------------------
 Wed Sep 25 03:19:44 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>

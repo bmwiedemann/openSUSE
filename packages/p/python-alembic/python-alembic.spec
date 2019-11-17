@@ -1,7 +1,7 @@
 #
 # spec file for package python-alembic
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-alembic
-Version:        1.2.1
+Version:        1.3.1
 Release:        0
 Summary:        A database migration tool for SQLAlchemy
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/sqlalchemy/alembic
 Source0:        https://files.pythonhosted.org/packages/source/a/alembic/alembic-%{version}.tar.gz
 Source1:        python-alembic-rpmlintrc
