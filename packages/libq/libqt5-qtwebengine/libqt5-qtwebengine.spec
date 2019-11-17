@@ -72,6 +72,8 @@ Patch2:         disable-gpu-when-using-nouveau-boo-1005323.diff
 Patch3:         0001-fix-build-after-y2038-changes-in-glibc.patch
 # PATCH-FIX-UPSTREAM harmony-fix.diff -- Show the patent-free LCD rendering. Without this patch, only grayscale rendering is used. (for freetype-2.8.1) boo#1061344
 Patch5:         harmony-fix.diff
+# PATCH-FIX-UPSTREAM icu-build-fix.patch: fix build with icu 65.1.
+Patch6:         icu-build-fix.patch
 # PATCH-FIX-OPENSUSE (copied from the chromium package)
 Patch9:         chromium-non-void-return.patch
 # http://www.chromium.org/blink not ported to PowerPC

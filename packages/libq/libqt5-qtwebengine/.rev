@@ -518,4 +518,12 @@
 - Enable kerberos support</comment>
     <requestid>731899</requestid>
   </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>7f60815aa69107eeec4fbeb795fd748a</srcmd5>
+    <version>5.13.1</version>
+    <time>1574014923</time>
+    <user>dimstar_suse</user>
+    <comment>- Add icu-build-fix.patch: fix build with icu 65.1.</comment>
+    <requestid>748687</requestid>
+  </revision>
 </revisionlist>

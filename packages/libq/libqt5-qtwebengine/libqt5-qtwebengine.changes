@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 13 19:05:24 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Add icu-build-fix.patch: fix build with icu 65.1. 
+
+-------------------------------------------------------------------
 Thu Sep 19 07:48:11 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add gn_args+=link_pulseaudio=true to work around incompatibility
