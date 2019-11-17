@@ -477,4 +477,28 @@
   * Add highlight-3.53-use_optflags.patch.</comment>
     <requestid>721510</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>14aa92467eaaa5169506b4dc4f0a79d1</srcmd5>
+    <version>3.54</version>
+    <time>1574014826</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.54:
+  * Fixed default colour output in BBCode
+    (gl#saalen/highlight#134).
+  * Fixed corner case in sh.lang.
+  * Fixed syntax tests with UTF-8 input (gl#saalen/highlight#123).
+  * Added support for Bash in outhtml_codefold.lua plug-in.
+  * Added ballerina.lang.
+  * Added block strings to java.lang.
+  * Added author hints in themes and language definitions.
+  * Added C++20 reserved words in c.lang.
+  * Added editorconfig file and validated all files accordingly.
+  * CLI: Fixed --list-scripts with -d or HIGHLIGHT_DATADIR env
+    variable (gl#saalen/highlight#139).
+  * GUI: Removed AsciiDoc instruction lines from the README popup
+    window.
+
+- Use lang_package macro for highlight-gui-lang declaration.</comment>
+    <requestid>747436</requestid>
+  </revision>
 </revisionlist>

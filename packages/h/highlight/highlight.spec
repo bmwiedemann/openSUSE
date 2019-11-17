@@ -18,7 +18,7 @@
 
 %bcond_without gui
 Name:           highlight
-Version:        3.53
+Version:        3.54
 Release:        0
 Summary:        Universal Source Code to Formatted Text Converter
 License:        GPL-3.0-or-later
@@ -55,16 +55,8 @@ Requires:       %{name} = %{version}
 %description gui
 This package provides graphical interface for %{name}.
 
-%package gui-lang
-Summary:        Translations for %{name}-gui
-Group:          System/Localization
-Requires:       %{name}-gui = %{version}
-Supplements:    %{name}-gui
-Provides:       %{name}-gui-lang-all = %{version}
-BuildArch:      noarch
+%lang_package -n highlight-gui
 
-%description gui-lang
-This package provides translations for %{name}-gui.
 %endif
 
 %prep

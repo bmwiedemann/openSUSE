@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Nov 11 19:43:49 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 3.54:
+  * Fixed default colour output in BBCode
+    (gl#saalen/highlight#134).
+  * Fixed corner case in sh.lang.
+  * Fixed syntax tests with UTF-8 input (gl#saalen/highlight#123).
+  * Added support for Bash in outhtml_codefold.lua plug-in.
+  * Added ballerina.lang.
+  * Added block strings to java.lang.
+  * Added author hints in themes and language definitions.
+  * Added C++20 reserved words in c.lang.
+  * Added editorconfig file and validated all files accordingly.
+  * CLI: Fixed --list-scripts with -d or HIGHLIGHT_DATADIR env
+    variable (gl#saalen/highlight#139).
+  * GUI: Removed AsciiDoc instruction lines from the README popup
+    window.
+
+-------------------------------------------------------------------
+Fri Aug 16 17:14:32 UTC 2019 - antoine.belvire@opensuse.org
+
+- Use lang_package macro for highlight-gui-lang declaration.
+
+-------------------------------------------------------------------
 Wed Aug  7 11:43:40 UTC 2019 - antoine.belvire@opensuse.org
 
 - Update to version 3.53:
