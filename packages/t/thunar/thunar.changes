@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sat Nov 16 14:20:05 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 1.8.11
+  - Thunar 1.8.10 crashing on startup in FreeBSD and Fedora, 
+    caused by nonfunctional pango version check (bxo#16136, bxo#16138)
+  - Translation Updates 
+
+-------------------------------------------------------------------
+Sun Nov 10 14:40:22 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 1.8.10
+  - Allow compilation with panel 4.15
+  - thunar-job: keep track of number of processed files (bxo#16117)
+  - No context menu on right-click when started via trash-panel-plugin
+    (bxo#16000)
+  - icon text now centered after unchecking "Text besides icons"
+  - Remove the vertical gap between icon and label (bxo#16041)
+  - Fix icon view alignment (bxo#16107)
+  - Not possible to grab scrollbar on the very right pixels when maximized
+    (bxo#16050)
+  - Wrap text of error dialog
+  - Not possible to empty the trash via the pathbar context menu
+  - Crash on refresh if remote folder has been removed (bxo#15961)
+  - Center action buttons in conflict dialog window (bxo#15973)
+  - Ensure UCAs use currently selected file path (bxo#15119)
+  - make filename label selectable in conflict dialog window
+  - Center action buttons in conflict dialog window (bxo#15973)
+  - Clear UCA shortcut when the action is deleted
+  - Prevent Gtk-CRITICAL when adding or modifying a UCA
+  - Thunar SendTo Email: Add missing archive formats (bxo#15917)
+  - sendto plugin: fix content type resolution. (bxo#15916)
+  - sendto plugin: extract function tse_file_is_archive (bxo#15916)
+  - All glory to lowercase (bxo#15394)
+  - mismatched names between thunar.appdata.xml and thunar.desktop 
+    (bxo#15498)
+  - Remove superfluous .desktop file "Thunar-folder-handler.desktop.in"
+    (bxo#15467)
+  - Prevent unnecessary fallback copy-delete in file move when
+    overwriting
+  - Fix possible memory leak
+  - Fix popup menus size (bxo#15832)
+  - Add Alt+D as accelerator for Open Location (bxo#15828)
+  - Do not insert hyphens at intra-word line breaks (bxo#15856)
+- Dropped obsolete patch thunar-1.8-appdata.patch as fixed upstream
+  (bxo#15498)
+
+-------------------------------------------------------------------
 Fri Aug 16 12:49:53 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fixed sources in spec file

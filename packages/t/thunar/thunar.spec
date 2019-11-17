@@ -19,16 +19,14 @@
 %define libname libthunarx-3-0
 %bcond_with git
 Name:           thunar
-Version:        1.8.9
+Version:        1.8.11
 Release:        0
 Summary:        File Manager for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
 URL:            https://docs.xfce.org/xfce/thunar/start
-Source:         https://archive.xfce.org/src/xfce/thunar/1.8/Thunar-%{version}.tar.bz2
+Source:         https://archive.xfce.org/src/xfce/thunar/1.8/%{name}-%{version}.tar.bz2
 Source100:      %{name}-rpmlintrc
-# fix mismatched names between thunar.desktop and thunar.appdata.xml.
-Patch0:         thunar-1.8-appdata.patch
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes
 BuildRequires:  intltool
@@ -106,8 +104,7 @@ This package provides the GObject Introspection bindings for the Thunar extensio
 %lang_package
 
 %prep
-%setup -q -n Thunar-%{version}
-%patch0 -p1
+%autosetup
 
 %build
 %if %{with git}
@@ -115,7 +112,7 @@ NOCONFIGURE=1 ./autogen.sh
 %configure \
     --enable-maintainer-mode \
     --with-helper-path-prefix=%{_libexecdir} \
-    --docdir=%{_datadir}/xfce4/Thunar \
+    --docdir=%{_datadir}/xfce4/thunar \
     --enable-dbus \
     --enable-exif \
     --enable-startup-notification \
@@ -125,7 +122,7 @@ NOCONFIGURE=1 ./autogen.sh
 %else
 %configure \
     --with-helper-path-prefix=%{_libexecdir} \
-    --docdir=%{_datadir}/xfce4/Thunar \
+    --docdir=%{_datadir}/xfce4/thunar \
     --enable-dbus \
     --enable-exif \
     --enable-startup-notification \
@@ -142,22 +139,21 @@ rm -f %{buildroot}%{_libdir}/*.la \
     %{buildroot}%{_libdir}/thunarx-3/*.la \
     %{buildroot}%{_libdir}/xfce4/panel/plugins/*.la
 
-# these files are placed under %%{_defaultdocdir}/%%{name} instead
-rm -f %{buildroot}%{_datadir}/xfce4/Thunar/README.*
-
-# do not allow to Thunar to run as root via pkexec
-rm -f %{buildroot}%{_datadir}/polkit-1/actions/org.xfce.thunar.policy
-
 # add a lowercase manpage symlink
 ( cd %{buildroot}%{_mandir}/man1/ && ln -sf Thunar.1* \
     $(printf "%%s\n" Thunar.1* | tr [:upper:] [:lower:]) )
 
-%suse_update_desktop_file -i Thunar System Utility Core GTK FileManager
-%suse_update_desktop_file -i Thunar-bulk-rename System Utility Core GTK Filesystem
-%suse_update_desktop_file thunar-settings
-%suse_update_desktop_file -i Thunar-folder-handler System Utility Core GTK FileManager
+# these files are placed under %%{_defaultdocdir}/%%{name} instead
+rm -f %{buildroot}%{_datadir}/xfce4/thunar/README.*
 
-%find_lang Thunar %{?no_lang_C}
+# do not allow to Thunar to run as root via pkexec
+rm -f %{buildroot}%{_datadir}/polkit-1/actions/org.xfce.thunar.policy
+
+%suse_update_desktop_file -i thunar System Utility Core GTK FileManager
+%suse_update_desktop_file -i thunar-bulk-rename System Utility Core GTK Filesystem
+%suse_update_desktop_file thunar-settings
+
+%find_lang thunar %{?no_lang_C}
 
 %fdupes %{buildroot}%{_datadir}
 
@@ -171,8 +167,8 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata
 %license COPYING
 %dir %{_sysconfdir}/xdg/Thunar
 %config %{_sysconfdir}/xdg/Thunar/uca.xml
-%{_bindir}/Thunar
 %{_bindir}/thunar
+%{_bindir}/Thunar
 %{_bindir}/thunar-settings
 %dir %{_libexecdir}/Thunar
 %{_libexecdir}/Thunar/ThunarBulkRename
@@ -191,9 +187,8 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata
 %{_datadir}/icons/hicolor/*/*/*/*.png
 %{_datadir}/pixmaps/Thunar
 %{_datadir}/xfce4/panel/plugins/thunar-tpa.desktop
-%{_datadir}/Thunar/sendto
-%{_mandir}/man1/Thunar.1*
 %{_mandir}/man1/thunar.1*
+%{_mandir}/man1/Thunar.1*
 
 %files -n %{libname}
 %{_libdir}/libthunarx-3.so.*
@@ -210,6 +205,6 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata
 %{_libdir}/pkgconfig/thunarx-3.pc
 %{_datadir}/gir-1.0/Thunarx-3.0.gir
 
-%files lang -f Thunar.lang
+%files lang -f thunar.lang
 
 %changelog
