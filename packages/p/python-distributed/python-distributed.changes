@@ -1,4 +1,151 @@
 -------------------------------------------------------------------
+Sat Nov 16 17:54:33 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * updated required versions according to requirement.txt
+
+- update to version 2.8.0:
+  * Add UCX config values (GH#3135) Matthew Rocklin
+  * Relax test_MultiWorker (GH#3210) Matthew Rocklin
+  * Avoid ucp.init at import time (GH#3211) Matthew Rocklin
+  * Clean up rpc to avoid intermittent test failure (GH#3215) Matthew
+    Rocklin
+  * Respect protocol if given to Scheduler (GH#3212) Matthew Rocklin
+  * Use legend_field= keyword in bokeh plots (GH#3218) Matthew Rocklin
+  * Cache psutil.Process object in Nanny (GH#3207) Matthew Rocklin
+  * Replace gen.sleep with asyncio.sleep (GH#3208) Matthew Rocklin
+  * Avoid offloading serialization for small messages (GH#3224)
+    Matthew Rocklin
+  * Add desired_workers metric (GH#3221) Gabriel Sailer
+  * Fail fast when importing distributed.comm.ucx (GH#3228) Matthew
+    Rocklin
+  * Add module name to Future repr (GH#3231) Matthew Rocklin
+  * Add name to Pub/Sub repr (GH#3235) Matthew Rocklin
+  * Import CPU_COUNT from dask.system (GH#3199) James Bourbeau
+  * Efficiently serialize zero strided NumPy arrays (GH#3180) James
+    Bourbeau
+  * Cache function deserialization in workers (GH#3234) Matthew
+    Rocklin
+  * Respect ordering of futures in futures_of (GH#3236) Matthew
+    Rocklin
+  * Bump dask dependency to 2.7.0 (GH#3237) James Bourbeau
+  * Avoid setting inf x_range (GH#3229) rockwellw
+  * Clear task stream based on recent behavior (GH#3200) Matthew
+    Rocklin
+  * Use the percentage field for profile plots (GH#3238) Matthew
+    Rocklin
+
+- changes from version 2.7.0 :
+  * Adds badges to README.rst [skip ci] (GH#3152) James Bourbeau
+  * Don’t overwrite self.address if it is present (GH#3153) Gil
+    Forsyth
+  * Remove outdated references to debug scheduler and worker bokeh
+    pages. (GH#3160) darindf
+  * Update CONTRIBUTING.md (GH#3159) Jacob Tomlinson
+  * Add Prometheus metric for a worker’s executing tasks count
+    (GH#3163) darindf
+  * Update Prometheus documentation (GH#3165) darindf
+  * Fix Numba serialization when strides is None (GH#3166) Peter
+    Andreas Entschev
+  * Await cluster in Adaptive.recommendations (GH#3168) Simon
+    Boothroyd
+  * Support automatic TLS (GH#3164) Jim Crist
+  * Avoid swamping high-memory workers with data requests (GH#3071)
+    Tom Augspurger
+  * Update UCX variables to use sockcm by default (GH#3177) Peter
+    Andreas Entschev
+  * Get protocol in Nanny/Worker from scheduler address (GH#3175)
+    Peter Andreas Entschev
+  * Add worker and tasks state for Prometheus data collection
+    (GH#3174) darindf
+  * Use async def functions for offload to/from_frames (GH#3171) Mads
+    R. B. Kristensen
+  * Subprocesses inherit the global dask config (GH#3192) Mads
+    R. B. Kristensen
+  * XFail test_open_close_many_workers (GH#3194) Matthew Rocklin
+  * Drop Python 3.5 (GH#3179) James Bourbeau
+  * UCX: avoid double init after fork (GH#3178) Mads R. B. Kristensen
+  * Silence warning when importing while offline (GH#3203) James
+    A. Bednar
+  * Adds docs to Client methods for resources, actors, and traverse
+    (GH#2851) IPetrik
+  * Add test for concurrent scatter operations (GH#2244) Matthew
+    Rocklin
+  * Expand async docs (GH#2293) Dave Hirschfeld
+  * Add PatchedDeviceArray to drop stride attribute for cupy<7.0
+    (GH#3198) Richard J Zamora
+
+- changes from version 2.6.0:
+  * Refactor dashboard module (GH#3138) Jacob Tomlinson
+  * Use setuptools.find_packages in setup.py (GH#3150) Matthew Rocklin
+  * Move death timeout logic up to Node.start (GH#3115) Matthew
+    Rocklin
+  * Only include metric in WorkerTable if it is a scalar (GH#3140)
+    Matthew Rocklin
+  * Add Nanny(config={...}) keyword (GH#3134) Matthew Rocklin
+  * Xfail test_worksapce_concurrency on Python 3.6 (GH#3132) Matthew
+    Rocklin
+  * Extend Worker plugin API with transition method (GH#2994)
+    matthieubulte
+  * Raise exception if the user passes in unused keywords to Client
+    (GH#3117) Jonathan De Troye
+  * Move new SSHCluster to top level (GH#3128) Matthew Rocklin
+  * Bump dask dependency (GH#3124) Jim Crist
+
+- changes from version 2.5.2:
+  * Make dask-worker close quietly when given sigint signal (GH#3116)
+    Matthew Rocklin
+  * Replace use of tornado.gen with asyncio in dask-worker (GH#3114)
+    Matthew Rocklin
+  * UCX: allocate CUDA arrays using RMM and Numba (GH#3109) Mads
+    R. B. Kristensen
+  * Support calling cluster.scale as async method (GH#3110) Jim Crist
+  * Identify lost workers in SpecCluster based on address not name
+    (GH#3088) James Bourbeau
+  * Add Client.shutdown method (GH#3106) Matthew Rocklin
+  * Collect worker-worker and type bandwidth information (GH#3094)
+    Matthew Rocklin
+  * Send noise over the wire to keep dask-ssh connection alive
+    (GH#3105) Gil Forsyth
+  * Retry scheduler connect multiple times (GH#3104) Jacob Tomlinson
+  * Add favicon of logo to the dashboard (GH#3095) James Bourbeau
+  * Remove utils.py functions for their dask/utils.py equivalents
+    (GH#3042) Matthew Rocklin
+  * Lower default bokeh log level (GH#3087) Philipp Rudiger
+  * Check if self.cluster.scheduler is a local scheduler (GH#3099)
+    Jacob Tomlinson
+
+- changes from version 2.5.1:
+  * Support clusters that don’t have .security or ._close methods
+    (GH#3100) Matthew Rocklin
+
+- changes from version 2.5.0:
+  * Use the new UCX Python bindings (GH#3059) Mads R. B. Kristensen
+  * Fix worker preload config (GH#3027) byjott
+  * Fix widget with spec that generates multiple workers (GH#3067)
+    Loïc Estève
+  * Make Client.get_versions async friendly (GH#3064) Jacob Tomlinson
+  * Add configuation option for longer error tracebacks (GH#3086)
+    Daniel Farrell
+  * Have Client get Security from passed Cluster (GH#3079) Matthew
+    Rocklin
+  * Respect Cluster.dashboard_link in Client._repr_html_ if it exists
+    (GH#3077) Matthew Rocklin
+  * Add monitoring with dask cluster docs (GH#3072) Arpit Solanki
+  * Protocol of cupy and numba handles serialization exclusively
+    (GH#3047) Mads R. B. Kristensen
+  * Allow specification of worker type in SSHCLuster (GH#3061) Jacob
+    Tomlinson
+  * Use Cluster.scheduler_info for workers= value in repr (GH#3058)
+    Matthew Rocklin
+  * Allow SpecCluster to scale by memory and cores (GH#3057) Matthew
+    Rocklin
+  * Allow full script in preload inputs (GH#3052) Matthew Rocklin
+  * Check multiple cgroups dirs, ceil fractional cpus (GH#3056) Jim
+    Crist
+  * Add blurb about disabling work stealing (GH#3055) Chris White
+
+-------------------------------------------------------------------
 Sat Sep 14 16:19:32 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - specfile:

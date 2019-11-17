@@ -21,11 +21,10 @@
 # Test requires network connection
 %bcond_with     test
 Name:           python-distributed
-Version:        2.4.0
+Version:        2.8.0
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://distributed.readthedocs.io/en/latest/
 Source:         https://files.pythonhosted.org/packages/source/d/distributed/distributed-%{version}.tar.gz
 Source99:       python-distributed-rpmlintrc
@@ -39,15 +38,15 @@ Requires:       python-PyYAML
 Requires:       python-certifi
 Requires:       python-click >= 6.6
 Requires:       python-cloudpickle >= 0.2.2
-Requires:       python-dask >= 0.18.0
+Requires:       python-dask >= 2.7.0
 Requires:       python-joblib >= 0.10.2
 Requires:       python-msgpack
-Requires:       python-psutil
+Requires:       python-psutil >= 5.0
 Requires:       python-scikit-learn >= 0.17.1
 Requires:       python-sortedcontainers
 Requires:       python-tblib
 Requires:       python-toolz >= 0.7.4
-Requires:       python-tornado >= 4.5.1
+Requires:       python-tornado >= 5
 Requires:       python-zict >= 0.1.3
 BuildArch:      noarch
 %if %{with test}
