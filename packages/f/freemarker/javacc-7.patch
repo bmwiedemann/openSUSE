@@ -1,0 +1,46 @@
+From c119c7d20b46c91f2c661e4f3789194041c4ba16 Mon Sep 17 00:00:00 2001
+From: Michael Simacek <msimacek@redhat.com>
+Date: Tue, 4 Apr 2017 16:56:33 +0200
+Subject: [PATCH] Fix compatibility with javacc 7
+
+---
+ build.xml                                        | 16 +++++++++++++++-
+ src/main/java/freemarker/core/TokenMgrError.java |  5 +++++
+ 2 files changed, 20 insertions(+), 1 deletion(-)
+
+diff --git a/build.xml b/build.xml
+index 6542da9..20d1d56 100644
+--- a/build.xml
++++ b/build.xml
+@@ -160,13 +160,26 @@
+ 
+     <mkdir dir="${_javaccOutputDir}" />
+     <ivy:retrieve conf="parser" pattern="build/javacc-home.tmp/[artifact].[ext]" />
++    <!-- avoid usage of word template which is now a keyword in javacc -->
++    <copy file="src/main/javacc/FTL.jj" tofile="${_javaccOutputDir}/FTL.jj"/>
++    <replace
++      file="${_javaccOutputDir}/FTL.jj"
++      token="template"
++      value="xtemplate"
++      />
+     <javacc:generate
+-      target="src/main/javacc/FTL.jj"
++      target="${_javaccOutputDir}/FTL.jj"
+       outputdirectory="${_javaccOutputDir}"
+       javacchome="build/javacc-home.tmp"
+     />
+     <delete dir="build/javacc-home.tmp" />
+-    
++    <!-- undo template keyword replacement -->
++    <replace
++      dir="${_javaccOutputDir}"
++      token="xtemplate"
++      value="template"
++    />
++
+     <replace
+       file="${_javaccOutputDir}/FMParser.java"
+       token="private final LookaheadSuccess"
+-- 
+2.9.3
+

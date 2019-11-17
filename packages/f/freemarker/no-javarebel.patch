@@ -1,0 +1,21 @@
+--- build.xml.orig	2017-12-06 18:32:24.827024991 +0000
++++ build.xml	2017-12-06 18:32:55.974897827 +0000
+@@ -264,6 +264,7 @@
+       classpathref="ivy.dep"
+       bootclasspath="${boot.classpath.j2se1.5}"
+       excludes="
++        freemarker/ext/beans/JRebelClassChangeNotifier.java
+         freemarker/core/_Java?*Impl.java,
+         freemarker/ext/jsp/**,
+         freemarker/ext/servlet/**,
+--- ivy.xml.orig	2017-12-06 18:24:27.374972063 +0000
++++ ivy.xml	2017-12-06 18:24:41.745913477 +0000
+@@ -122,8 +122,6 @@
+     <dependency org="org.slf4j" name="jcl-over-slf4j" rev="&slf4j.version;" conf="build.base->default" />
+     <dependency org="commons-logging" name="commons-logging" rev="1.1.1" conf="build.base->default" />
+     
+-    <dependency org="org.zeroturnaround" name="javarebel-sdk" rev="1.2.2" conf="build.base->default" />
+-
+     <!-- Not for build.base, as @SuppressFBWarnings causes compilation warnings in dependent Gradle projects -->
+     <dependency org="com.google.code.findbugs" name="annotations" rev="3.0.0" conf="IDE->default; test->default" />
+     

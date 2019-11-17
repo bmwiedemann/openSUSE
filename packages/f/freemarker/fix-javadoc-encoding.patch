@@ -1,0 +1,11 @@
+--- src/main/java/freemarker/template/LocalizedString.java.orig	2017-10-16 02:17:50.000000000 +0100
++++ src/main/java/freemarker/template/LocalizedString.java	2017-12-06 19:43:10.783714300 +0000
+@@ -33,7 +33,7 @@
+  *            if "fr".equals(lang)
+  *               return "oui";
+  *            else if "de".equals(lang)
+- *               return "sí";
++ *               return "s\u00ED";
+  *            else
+  *               return "yes";
+  *        }  

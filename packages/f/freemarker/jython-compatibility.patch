@@ -1,0 +1,45 @@
+diff -urEbwB freemarker-2.3.28/build.xml freemarker-2.3.28.new/build.xml
+--- freemarker-2.3.28/build.xml	2019-06-26 18:01:53.406255406 +0200
++++ freemarker-2.3.28.new/build.xml	2019-06-26 18:07:15.540248273 +0200
+@@ -318,38 +318,18 @@
+         freemarker/ext/jsp/FreeMarkerJspFactory2.java"
+     />
+     
+-    <ivy:cachepath conf="build.jython2.0" pathid="ivy.dep.jython2.0" />
++    <ivy:cachepath conf="build.jython2.2" pathid="ivy.dep.jython2.2" />
+     <javac srcdir="build/src-main-java-filtered" destdir="build/classes" deprecation="off" 
+       debug="on" optimize="off" target="1.5" source="1.5" encoding="utf-8"
+       includeantruntime="false"
+-      classpathref="ivy.dep.jython2.0"
++      classpathref="ivy.dep.jython2.2"
+       bootclasspath="${boot.classpath.j2se1.5}"
+       includes="
+         freemarker/ext/ant/**,
+         freemarker/template/utility/JythonRuntime.java,
+         freemarker/ext/jython/**"
+       excludes="
+-        freemarker/ext/jython/_Jython22VersionAdapter.java,
+-        freemarker/ext/jython/_Jython25VersionAdapter.java"
+-    />
+-    
+-    <ivy:cachepath conf="build.jython2.2" pathid="ivy.dep.jython2.2" />
+-    <javac srcdir="build/src-main-java-filtered" destdir="build/classes" deprecation="off" 
+-      debug="on" optimize="off" target="1.5" source="1.5" encoding="utf-8"
+-      includeantruntime="false"
+-      classpathref="ivy.dep.jython2.2"
+-      bootclasspath="${boot.classpath.j2se1.5}"
+-      includes="
+-        freemarker/ext/jython/_Jython22VersionAdapter.java"
+-    />
+-    
+-    <ivy:cachepath conf="build.jython2.5" pathid="ivy.dep.jython2.5" />
+-    <javac srcdir="build/src-main-java-filtered" destdir="build/classes" deprecation="off" 
+-      debug="on" optimize="off" target="1.5" source="1.5" encoding="utf-8"
+-      includeantruntime="false"
+-      classpathref="ivy.dep.jython2.5"
+-      bootclasspath="${boot.classpath.j2se1.5}"
+-      includes="
++        freemarker/ext/jython/_Jython20And21VersionAdapter.java,
+         freemarker/ext/jython/_Jython25VersionAdapter.java"
+     />
+     
