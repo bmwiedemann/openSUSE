@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 15 17:16:03 UTC 2019 - Lee Duncan <lduncan@suse.com>
+
+- Fix some builds of ppc and arm that were failing to compile
+  the dump_tape command. This adds the patch:
+  * mhvtl-fix-ppc-Makefile.patch
+
+-------------------------------------------------------------------
 Sat Nov  9 04:13:39 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
 
 - Use the correct macro for systemd generator directory

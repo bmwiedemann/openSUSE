@@ -47,8 +47,11 @@ License:        GPL-2.0-only
 Group:          System/Daemons
 Source:         %{name}-%{version}_release.tar.xz
 Source2:        %{name}.preamble
+Patch1:         %{name}-fix-ppc-Makefile.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_ordering}
+
+%{?!_systemdgeneratordir:%define _systemdgeneratordir /usr/lib/systemd/system-generators}
 
 %if 0%{buildkmp} == 1
 %suse_kernel_module_package -n %{name} -p %{S:2} kdump ec2 um
@@ -77,6 +80,7 @@ through to user-space daemons.
 
 %prep
 %setup -qn %{name}-%{version}_release
+%patch1 -p1
 
 %build
 make MHVTL_HOME_PATH=%{mhvtl_home_dir} VERSION=%{version}_release \
