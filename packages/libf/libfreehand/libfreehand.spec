@@ -1,7 +1,7 @@
 #
 # spec file for package libfreehand
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,6 +25,8 @@ License:        MPL-2.0
 Group:          Productivity/Publishing/Word
 Url:            http://www.freedesktop.org/wiki/Software/libfreehand
 Source0:        http://dev-www.libreoffice.org/src/%{name}/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM icu-build-fix.patch: fix build with icu 65.1.
+Patch0:         icu-build-fix.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -80,7 +82,7 @@ Group:          Productivity/Publishing/Word
 This package contains tools to work with Adobe/Macromedia drawings.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 export CXXFLAGS="%{optflags} -fvisibility-inlines-hidden"
