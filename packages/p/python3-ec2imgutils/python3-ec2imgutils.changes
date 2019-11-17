@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 14 21:53:26 UTC 2019 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to version 7.0.7
+  + Fix cleanup with --use-root-swap img upload.
+- Update to version 7.0.6
+  + Add requirements files to manifest.
+  + Avoid race condition with security group creation.
+  + Remove code duplication when avoiding group name
+    collision.
+
+-------------------------------------------------------------------
 Mon Aug  5 16:22:22 UTC 2019 - Robert Schweikert <rjschwei@suse.com>
 
 - Update to version 7.0.5 (bsc#1144357, 1144358)
