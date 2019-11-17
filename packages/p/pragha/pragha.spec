@@ -17,14 +17,15 @@
 
 
 Name:           pragha
-Version:        1.3.99
+Version:        1.3.99.1
 Release:        0
 Summary:        Lightweight Music Player
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://github.com/pragha-music-player/pragha
-Source0:        https://github.com/pragha-music-player/pragha/releases/download/%{version}/%{name}-%{version}.tar.bz2
+Source0:        https://github.com/pragha-music-player/pragha/releases/download/v%{version}/%{name}-%{version}.tar.bz2
 Source100:      pragha-rpmlintrc
+BuildRequires:  appstream-glib
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
@@ -42,6 +43,7 @@ BuildRequires:  pkgconfig(gupnp-1.2)
 %else
 BuildRequires:  pkgconfig(gupnp-1.0)
 %endif
+BuildRequires:  xfce4-dev-tools
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(keybinder-3.0)
 BuildRequires:  pkgconfig(libcddb)
@@ -129,9 +131,13 @@ This package contains development files needed to develop plugins for Pragha.
 %setup -q
 
 %build
+%if 0%{?suse_version} >= 01550 && 0%{?is_opensuse}
+export CPPFLAGS='-I/usr/include/gssdp-1.2/ -I/usr/include/gupnp-1.2/ -I/usr/include/libsoup-2.4/'
+%else
 export CPPFLAGS='-I/usr/include/gssdp-1.0/ -I/usr/include/gupnp-1.0/ -I/usr/include/libsoup-2.4/'
+%endif
 %configure
-%make_build %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -150,7 +156,11 @@ mv -f %{buildroot}%{_datadir}/locale/{ko_KR,ko}
 # Install Castillan locale to the right place.
 mv -f %{buildroot}%{_datadir}/locale/{ca_ES,ca}
 
+rm -f %{buildroot}%{_libdir}/pragha/libpragha.la
+
 %fdupes -s %{buildroot}%{_datadir}/icons/hicolor/
+
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
 
 %find_lang %{name}
 
@@ -161,14 +171,16 @@ mv -f %{buildroot}%{_datadir}/locale/{ca_ES,ca}
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/*/*.*
-%{_datadir}/metainfo/io.github.pragha-music-player.metainfo.xml
+%{_datadir}/metainfo/io.github.pragha_music_player.metainfo.xml
 %{_datadir}/pixmaps/%{name}/
+%{_datadir}/pragha/
 %{_mandir}/man?/*
+%dir %{_libdir}/%{name}/
+%{_libdir}/%{name}/libpragha.so
 
 %files plugins
 %license COPYING
 %doc FAQ NEWS README
-%dir %{_libdir}/%{name}/
 %dir %{_libdir}/%{name}/plugins/
 %dir %{_libdir}/%{name}/plugins/*/
 %{_libdir}/%{name}/plugins/*/*.plugin
@@ -177,7 +189,8 @@ mv -f %{buildroot}%{_datadir}/locale/{ca_ES,ca}
 %files plugins-devel
 %license COPYING
 %doc NEWS
-%{_includedir}/%{name}/
+%{_includedir}/libpragha
+%{_libdir}/pkgconfig/libpragha.pc
 
 %files lang -f %{name}.lang
 
