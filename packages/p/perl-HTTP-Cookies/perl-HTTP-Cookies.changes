@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 14 09:29:21 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 6.06
+   see /usr/share/doc/packages/perl-HTTP-Cookies/Changes
+
+  6.06      2019-11-12 14:28:31Z
+      - Make test pass in 2025 (GH#56) (Bernhard M. Wiedemann)
+
+-------------------------------------------------------------------
 Fri Oct 25 09:44:16 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 6.05
