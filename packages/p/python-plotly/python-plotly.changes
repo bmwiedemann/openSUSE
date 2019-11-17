@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Nov 16 17:52:20 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.3.0:
+  * Updated
+    + Updated Plotly.js to version 1.51.1. See the plotly.js CHANGELOG
+      for more information
+    + Improved propagation of empty templates (#1892)
+    + Update the add_annotations/add_shapes/add_images methods to no
+      longer default to adding objects in paper coordinates. This
+      allows plotly.js to determine the default reference frame based
+      on context (#1888)
+    + Use the default template's background color for displaying color
+      swatches (#1872). Special thanks to @joelostblom for this
+      contribution!
+    + Improved docstrings (#1835, #1837)
+  * Added
+    + Added image trace type (plotly.js#4289, plotly.js#4307,
+      plotly.js#4313, plotly.js#4319)
+    + Added matplotlib-style plotly.express.imshow convenience
+      function to display images and heatmaps (#1855, #1885)
+    + Added matplotlib-style simple_white template (#1864). Special
+      thanks to @joelostblom for this contribution.
+    + Added support for using an externally managed orca server for
+      image export features (#1850). Special thanks to @miriad for
+      this contribution.
+    + Added facet wrapping support to plotly express functions using
+      the new facet_col_wrap argument (#1838)
+
+-------------------------------------------------------------------
 Sat Nov  9 15:07:23 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - update to version 4.2.1:
