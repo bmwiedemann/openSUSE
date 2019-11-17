@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 13 18:26:53 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
+
+- change architecture to 'noarch'
+- cleanup spec
+
+-------------------------------------------------------------------
 Wed Feb 27 06:45:02 UTC 2013 - coolo@suse.com
 
 - update license to new format
