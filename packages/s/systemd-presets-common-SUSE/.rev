@@ -101,4 +101,11 @@ It fits better in common-SUSE. I'll remove it from branding. (forwarded request 
     <comment></comment>
     <requestid>748057</requestid>
   </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>1a7333384f9b7865ff2255068f2d3350</srcmd5>
+    <version>15</version>
+    <time>1573993045</time>
+    <user>dimstar_suse</user>
+    <comment>Revert, see https://bugzilla.opensuse.org/show_bug.cgi?id=1038403#c4</comment>
+  </revision>
 </revisionlist>

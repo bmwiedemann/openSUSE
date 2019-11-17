@@ -1,19 +1,4 @@
 -------------------------------------------------------------------
-Wed Nov 13 08:15:10 UTC 2019 - Jonathan Kang <sckang@suse.com>
-
-- Enable packagekit-background.timer by default: systemd timer is
-  used to replace cron job, which runs daily. So enable this by
-  default.
-- Enable NetworkManagerManager.service and
-  NetworkManager-dispatcher.service by default (bsc#1038403).
-
--------------------------------------------------------------------
-Thu Oct 31 09:16:01 UTC 2019 - Zhao Heming <heming.zhao@suse.com>
-
-- Currently openSUSE lvm2-2.03.05 doesn't have lvmetad codes & service.
-  remove lvm2-lvmetad.socket in default-SUSE.preset. 
-
--------------------------------------------------------------------
 Wed Jun 12 14:52:21 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
