@@ -1,7 +1,7 @@
 #
 # spec file for package subnetcalc
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           subnetcalc
-Version:        2.4.3
+Version:        2.4.14
 Release:        0
 Summary:        IPv4/IPv6 Subnet Calculator
+License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Routing
-License:        GPL-3.0+
-Url:            https://www.uni-due.de/~be0001/subnetcalc/
-Source:         https://www.uni-due.de/~be0001/subnetcalc/download/%{name}-%{version}.tar.gz
-BuildRequires:  GeoIP-devel
+URL:            https://www.uni-due.de/~be0001/subnetcalc/
+Source:         https://www.uni-due.de/~be0001/subnetcalc/download/%{name}-%{version}.tar.xz
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 SubNetCalc is an IPv4/IPv6 subnet address calculator. For a given IPv4 or IPv6
@@ -40,23 +39,18 @@ interface ID, etc.).
 %setup -q
 
 %build
-%configure
-make %{?_smp_mflags}
+%cmake
+%cmake_build
 
 %install
-%make_install
+%cmake_install
 
 %check
 %{buildroot}%{_bindir}/%name 192.168.1.0/255.255.0.0
 
 %files
-%defattr(-,root,root)
 %doc AUTHORS ChangeLog README
-%if 0%{?leap_version} >= 420200 || 0%{?suse_version} > 1320
 %license COPYING
-%else
-%doc COPYING
-%endif
 %{_bindir}/%name
 %{_mandir}/man1/%name.1*
 

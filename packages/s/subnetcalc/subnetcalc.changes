@@ -1,4 +1,152 @@
 -------------------------------------------------------------------
+Sat Nov 16 16:10:57 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- remove dependency on deprecated GeoIP-devel, fixes boo#1156201
+- update to version 2.4.14:
+ - Removed FreeBSD dependency on GeoIP, since it is not available any more.
+ - CMakeLists.txt for FreeBSD builds.
+ - Removed obsolete helper scripts.
+ - Updated CI scripts.
+ - Updated build script.
+ - Updated FreeBSD port files.
+ - Improved Travis CI configuration.
+ - Build script update.
+ - Updated distinfo.
+ - Updated LSM entry.
+- update to version 2.4.13:
+ - Fixed some inconsistencies in different packaging files.
+ - Updated build scripts.
+ - Simplified CMakeLists.txt.
+ - Some clean-ups.
+ - Build script updates.
+ - Updated build script.
+ - Updated CI scripts.
+ - Updated Debian Standards version.
+ - Updated Travis CI configuration.
+ - Build script updates.
+ - Updated FreeBSD ports files.
+ - Updated LSM entry.
+- update to version 2.4.12:
+ - Bugfix: Fixed Bug #3 (https://github.com/dreibh/subnetcalc/issues/3).
+ - Using Tar/XZ for archive.
+ - CI script update.
+ - Build script update.
+ - Updated build scripts.
+ - Improved build script.
+ - An update.
+- update to version 2.4.11:
+ - Updated ChangeLog.
+ - Updated Travis CI configuration.
+ - Updated script.
+ - A fix.
+ - Updated build script.
+ - A fix.
+ - Improved CI scripts.
+ - Improved CI scripts.
+ - Updated RPM spec file.
+ - Updated CI script.
+ - Updated packaging files.
+ - Improved CI script.
+ - Updated CI scripts.
+ - Build script updates.
+ - Updated build scripts.
+ - Updated build scripts.
+ - Improved Travis CI configuration.
+ - Build script fix.
+ - Improved Travis CI configuration.
+ - Minor update.
+ - A fix.
+ - Updated build scripts.
+ - Minor clean-up.
+ - Updated Travis CI configuration.
+ - An update.
+ - Updated Travis CI configuration.
+ - Updated build scripts.
+ - Build script updates.
+ - Updated build scripts.
+ - Build script update.
+ - Improved build script.
+ - Updated build scripts.
+ - Updated build script.
+ - Build script updates.
+ - Added script.
+ - Updated build scripts.
+ - Another build script update.
+ - Updated build scripts.
+ - A fix.
+ - Added missing file.
+ - A fix.
+ - Build script updates.
+ - Header updates.
+ - Dependency update.
+ - Require CMake 3.0.2, to avoid inconsistent CMake behaviour in old versions.
+ - Another try.
+ - Setting language in CMakeLists.txt.
+ - Updated build scripts.
+ - Improved build scripts.
+ - Merge branch 'dreibh/travis-ci'
+ - A fix.
+ - A fix.
+ - Merge branch 'master' into dreibh/travis-ci
+ - Update.
+ - Updated packaging files.
+ - Build script updates.
+ - Improved CMakeLists.txt.
+ - Updated FreeBSD packaging files.
+ - Updated ChangeLog.
+- update to version 2.4.10:
+ - Updated LSM entry.
+ - Updated FreeBSD packaging files.
+ - Added tests control file.
+ - Added metadata file.
+ - Packaging script updates.
+ - More clean-ups for CMakeLists.txt.
+ - Cleaned up CMakeLists.txt.
+ - RPM packaging fix.
+ - An update.
+ - Updated script.
+ - Added Travis CI configuration.
+ - Removed obsolete automake file.
+ - Updated LSM entry.
+ - Added configuration file.
+- update to version 2.4.9:
+ - Fixed compile options to allow building for Ubuntu Precise.
+ - Updated build scripts.
+ - Updated packaging files.
+ - Build script updates.
+ - Fedora build updates.
+ - Updated standards version.
+ - Build script updates.
+ - Minor update.
+ - Some updates.
+ - Changed build system from autoconf/automake to cmake.
+ - Improved build script.
+ - Updated build scripts.
+ - Updated FreeBSD port.
+ - Updated script.
+ - Updated FreeBSD port.
+ - Script update.
+ - Added helper script.
+ - FreeBSD port update.
+ - New release.
+- update to version 2.4.8:
+ - Removed old SVN Id tag, since it is obsolete after transition to Git.
+ - Header updates.
+ - Script update.
+ - Fixed dependency.
+- update to version 2.4.7 and 2.4.6:
+ - Fixed URL.
+ - Script update.
+- update to version 2.4.5:
+ - A fix.
+ - Updated ChangeLog.
+ - Updated packaging files.
+ - A small fix.
+ - Updated build scripts.
+- update to version 2.4.4:
+ - Updated LSM entry.
+
+-------------------------------------------------------------------
 Wed Jun 28 08:09:04 UTC 2017 - jengelh@inai.de
 
 - Whitespace/grammar fixes

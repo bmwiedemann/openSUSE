@@ -15,4 +15,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>512963</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>40f81feb1f8627328e8b503213548532</srcmd5>
+    <version>2.4.14</version>
+    <time>1574014990</time>
+    <user>dimstar_suse</user>
+    <comment>- remove dependency on deprecated GeoIP-devel, fixes boo#1156201
+- update to version 2.4.14:
+...</comment>
+    <requestid>749061</requestid>
+  </revision>
 </revisionlist>
