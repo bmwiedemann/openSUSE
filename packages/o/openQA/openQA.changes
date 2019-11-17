@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Nov 16 05:04:35 UTC 2019 - coolo@suse.com
+
+- Update to version 4.6.1573836985.cd1ad569b:
+  * Makefile: Add 'help' target listing available targets
+  * Treat all non-asset "_URL" settings as debug message only, not warning
+  * Provide style check feedback earlier with parallel execution
+  * Correctly format the age in days string
+  * Fix flaky test 'ui/15-admin-workers.t' with proper waiting for popovers
+  * Support configurable patterns for asset cleanup
+  * Update Selenium::Remote::Driver to 1.36 fixing compatibility issues
+  * Update perl-Mojo-IOLoop-ReadWriteProcess and os-autoinst
+  * Straighten out asset clean-up semantics
+
+-------------------------------------------------------------------
 Wed Nov 13 21:04:12 UTC 2019 - coolo@suse.com
 
 - Update to version 4.6.1573674965.36aeff76e:
