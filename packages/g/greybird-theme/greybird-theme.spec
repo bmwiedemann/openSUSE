@@ -19,7 +19,7 @@
 %define _name Greybird
 
 Name:           greybird-theme
-Version:        3.22.10+git15.acede86
+Version:        3.22.10+git17.4d806cd
 Release:        0
 Url:            https://github.com/shimmerproject/Greybird
 Summary:        A grey theme for GNOME, XFCE, GTK+ 2 and 3
@@ -107,8 +107,8 @@ rm -r %{buildroot}%{_datadir}/themes/%{_name}{,-dark}/plank
 %{_datadir}/themes/%{_name}{,-dark}/xfwm4
 %{_datadir}/themes/%{_name}{,-dark}/*.emerald
 %{_datadir}/themes/%{_name}{,-dark}/index.theme
-%dir %{_datadir}/themes/%{_name}-accessibility
-%{_datadir}/themes/%{_name}-accessibility/xfwm4
+%dir %{_datadir}/themes/%{_name}{,-dark}-accessibility
+%{_datadir}/themes/%{_name}{,-dark}-accessibility/xfwm4
 %dir %{_datadir}/themes/%{_name}-compact
 %{_datadir}/themes/%{_name}-compact/xfwm4
 %dir %{_datadir}/themes/%{_name}-bright
