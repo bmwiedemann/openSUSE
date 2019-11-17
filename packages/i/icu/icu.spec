@@ -16,9 +16,9 @@
 #
 
 
-%define lname	libicu-suse64_2
-%define amajor   64
-%define aversion 64_2
+%define lname	libicu-suse65_1
+%define amajor   65
+%define aversion 65_1
 %ifarch %armb hppa mips mips64 ppc ppc64 %sparc s390 s390x m68k
 %define be_platform 1
 %else
@@ -26,7 +26,7 @@
 %endif
 # icu-versioning.diff needs update for new Version too
 Name:           icu
-Version:        64.2
+Version:        65.1
 Release:        0
 Summary:        International Components for Unicode
 License:        ICU
@@ -34,10 +34,10 @@ Group:          Development/Libraries/C and C++
 URL:            http://icu-project.org/
 
 #Git-Clone:	https://github.com/unicode-org/icu.git
-Source:         http://download.icu-project.org/files/icu4c/%version/icu4c-%aversion-src.tgz
-Source2:        http://download.icu-project.org/files/icu4c/%version/icu4c-%aversion-src.tgz.asc
-Source3:        http://download.icu-project.org/files/icu4c/%version/icu4c-%aversion-docs.zip
-Source4:        http://download.icu-project.org/files/icu4c/%version/icu4c-%aversion-docs.zip.asc
+Source:         https://github.com/unicode-org/icu/releases/download/release-65-1/icu4c-65_1-src.tgz
+Source2:        https://github.com/unicode-org/icu/releases/download/release-65-1/icu4c-65_1-src.tgz.asc
+Source3:        https://github.com/unicode-org/icu/releases/download/release-65-1/icu4c-65_1-docs.zip
+Source4:        https://github.com/unicode-org/icu/releases/download/release-65-1/icu4c-65_1-docs.zip.asc
 Source5:        %name.keyring
 Source100:      baselibs.conf
 Patch2:         icu-versioning.diff
@@ -45,8 +45,6 @@ Patch3:         icu-susevers.diff
 Patch4:         icu-fix-install-mode-files.diff
 Patch6:         icu-error-reporting.diff
 Patch7:         icu-avoid-x87-excess-precision.diff
-# https://unicode-org.atlassian.net/browse/ICU-20575
-Patch100:       075cefb2e21f57f4cac1bc2868e93dd1b8c077cc.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config

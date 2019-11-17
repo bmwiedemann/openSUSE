@@ -77,8 +77,8 @@ Index: icu/source/common/unicode/uvernum.h
 @@ -61,6 +61,7 @@
   *  @stable ICU 2.4
   */
- #define U_ICU_VERSION_MAJOR_NUM 64
-+#define U_ICU_VERSION_MAJOR_STR "64"
+ #define U_ICU_VERSION_MAJOR_NUM 65
++#define U_ICU_VERSION_MAJOR_STR "65"
  
  /** The current ICU minor version as an integer.
   *  This value will change in the subsequent releases of ICU
@@ -86,7 +86,7 @@ Index: icu/source/common/unicode/uvernum.h
   *  This value will change in the subsequent releases of ICU
   *  @stable ICU 2.6
   */
--#define U_ICU_VERSION_SUFFIX _64
+-#define U_ICU_VERSION_SUFFIX _65
 +#define ___icu_version_expand(major, minor) _ ## major ## _ ## minor
 +#define ___icu_version_glue(major, minor) ___icu_version_expand(major, minor)
 +#define U_ICU_VERSION_SUFFIX ___icu_version_glue(U_ICU_VERSION_MAJOR_NUM, U_ICU_VERSION_MINOR_NUM)
@@ -97,8 +97,8 @@ Index: icu/source/common/unicode/uvernum.h
   *
   * @stable ICU 2.6
   */
--#define U_ICU_VERSION_SHORT "64"
-+#define U_ICU_VERSION_SHORT "64_2"
+-#define U_ICU_VERSION_SHORT "65"
++#define U_ICU_VERSION_SHORT "65_1"
  
  #ifndef U_HIDE_INTERNAL_API
  /** Data version in ICU4C.

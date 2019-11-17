@@ -1,8 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct  5 11:19:23 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 65.1
+  * Updated to CLDR 36 locale data with many additions and
+    corrections, and some new measurement units.
+  * The Java LocaleMatcher API is improved, and ported to C++.
+- Drop 075cefb2e21f57f4cac1bc2868e93dd1b8c077cc.patch
+  (merged)
+
+-------------------------------------------------------------------
 Wed Aug 21 08:31:23 CEST 2019 - kukuk@suse.de
 
 - Remove old obsoletes/provides for migration from very old
-  products, as they break our shared library policy
+  products, as they break our shared library policy (bsc#1146907).
 
 -------------------------------------------------------------------
 Tue May 14 13:05:59 UTC 2019 - Ismail Dönmez <idonmez@suse.com>

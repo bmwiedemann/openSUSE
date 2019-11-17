@@ -548,4 +548,12 @@ Jan added the patch name of all changed patches.</comment>
     <comment></comment>
     <requestid>724944</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>56308a95a386835457f7e80a29d7ca2c</srcmd5>
+    <version>65.1</version>
+    <time>1574014892</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 65.1</comment>
+    <requestid>736411</requestid>
+  </revision>
 </revisionlist>

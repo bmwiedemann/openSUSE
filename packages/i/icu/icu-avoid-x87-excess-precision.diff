@@ -1,3 +1,7 @@
+From: rguenther@suse.com
+References: http://bugzilla.opensuse.org/1030253
+
+Avoid FixedPrecision::initVisibleDigits failure on i586 with GCC 7.
 
 ---
  source/test/intltest/dcfmapts.cpp |    6 ++++--
