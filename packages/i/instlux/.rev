@@ -440,4 +440,16 @@
     <comment>added Leap 15.2 (but not default)</comment>
     <requestid>728139</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>11b8a02fe8c554c7581862110d487685</srcmd5>
+    <version>15.2.1</version>
+    <time>1574014947</time>
+    <user>dimstar_suse</user>
+    <comment>- upgraded to 15.2.1.
+  * fix for UEFI detection (removed boot store path)
+  * changed VirtualBox download URL parameter;
+    need to download properly
+</comment>
+    <requestid>749011</requestid>
+  </revision>
 </revisionlist>

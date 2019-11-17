@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov 16 00:12:44 UTC 2019 - Yasuhiko Kamata <belphegor@belbel.or.jp>
+
+- upgraded to 15.2.1.
+  * fix for UEFI detection (removed boot store path)
+  * changed VirtualBox download URL parameter;
+    need to download properly
+
+-------------------------------------------------------------------
 Wed Sep  4 06:01:19 UTC 2019 - Yasuhiko Kamata <belphegor@belbel.or.jp>
 
 - upgraded to 15.2.0.
