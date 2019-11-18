@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 18 10:56:30 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Also add "libjansson-devel", "libgnutls-devel" and
+  "libmicrohttpd-devel" as requirements for ulfius-devel
+
+-------------------------------------------------------------------
+Mon Nov 11 19:43:22 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Disable LTO for now since it breaks compilation on i586
+- Add "Requires: libcurl-devel" to ulfius-devel
+
+-------------------------------------------------------------------
 Sat Oct  5 20:18:07 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.6.4

@@ -17,6 +17,7 @@
 #
 
 
+%define _lto_cflags %{nil}
 %define sover 2_6
 Name:           ulfius
 Version:        2.6.4
@@ -55,6 +56,10 @@ It can be used to create web applications in C programs.
 %package devel
 Summary:        Header files for ulfius
 Group:          Development/Libraries/C and C++
+Requires:       libcurl-devel
+Requires:       libgnutls-devel
+Requires:       libjansson-devel
+Requires:       libmicrohttpd-devel
 Requires:       libulfius%{sover} = %{version}
 Requires:       orcania-devel
 Requires:       yder-devel
