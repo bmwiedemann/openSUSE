@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov 18 13:04:58 UTC 2019 - coolo@suse.com
+
+- Update to version 4.6.1574081651.5f93fbf7e:
+  * fetchneedles: Fix missing usage of 'git_update_needles' in 2aadd3e56
+  * Dependency cron 191118000556
+  * .circleci: Fix ignored test results of unstable tests within loop
+  * Reduce sleep times in 25-cache-service.t to slightly save testing time
+  * fetchneedles: Try to repair needle git repos on detached HEADs
+  * Ensure the job result is at least lower case (still allowing other than default values)
+  * Dependency cron 191116000537 (#2508)
+  * Add padding to icons on buttons
+  * Hide YAML guide by default, expose via a button
+  * Fix typos in comments
+  * travis_test: Switch to supported Leap base after 42.3 is EOL
+  * Makefile: Add YAML linter checks
+
+-------------------------------------------------------------------
 Sat Nov 16 05:04:35 UTC 2019 - coolo@suse.com
 
 - Update to version 4.6.1573836985.cd1ad569b:
