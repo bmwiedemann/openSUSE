@@ -363,4 +363,17 @@ Latest changes:
 - add xorg-nvidia-prime-render-offload.conf X snippet to /etc/prime</comment>
     <requestid>736082</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d51652e841a89070c789413d0e59305c</srcmd5>
+    <version>0.7.3</version>
+    <time>1574104332</time>
+    <user>dimstar_suse</user>
+    <comment>- this release also includes support for NVIDIA's PRIME render
+  offloading (jsc#SLE-9068)
+
+- Update to version 0.7.3
+  * Restore previous configuration if nvidia reconfiguration fails
+  * Set the right panel variables for LVDS displays (issue#26)</comment>
+    <requestid>749323</requestid>
+  </revision>
 </revisionlist>
