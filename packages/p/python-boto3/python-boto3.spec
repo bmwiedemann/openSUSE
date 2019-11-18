@@ -1,7 +1,7 @@
 #
 # spec file for package python-boto3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-boto3
-Version:        1.9.248
+Version:        1.10.17
 Release:        0
 Summary:        Amazon Web Services Library
 License:        Apache-2.0
@@ -26,8 +26,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/boto/boto3
 Source:         https://github.com/boto/boto3/archive/%{version}.tar.gz
 # Related test dependencies
-BuildRequires:  %{python_module botocore < 1.13.0}
-BuildRequires:  %{python_module botocore >= 1.12.248}
+BuildRequires:  %{python_module botocore < 1.14.0}
+BuildRequires:  %{python_module botocore >= 1.13.17}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module s3transfer < 0.3.0}
@@ -36,8 +36,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-botocore < 1.13.0
-Requires:       python-botocore >= 1.12.248
+Requires:       python-botocore < 1.14.0
+Requires:       python-botocore >= 1.13.17
 Requires:       python-jmespath < 1.0.0
 Requires:       python-jmespath >= 0.7.1
 Requires:       python-s3transfer < 0.3.0
