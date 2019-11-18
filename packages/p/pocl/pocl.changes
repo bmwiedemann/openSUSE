@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov  4 20:04:34 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.4
+  * Support for LLVM/Clang 8.0 and 9.0
+  * Support for LLVM older than 6.0 has been removed.
+  * Improved SPIR and SPIR-V support for CPU device
+  * pocl-accel: An example driver and support infrastructure for
+    OpenCL 1.2 CL_DEVICE_TYPE_CUSTOM hardware accelerators.
+- Remove upstreamed fix_resources_path_version_dependency.patch
+- Fix build with single-component libclang-cpp.so, add
+  link_against_libclang-cpp_so.patch
+
+-------------------------------------------------------------------
 Sun Jul 28 19:15:03 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use GCC (default host compiler) for compiling the library itself,

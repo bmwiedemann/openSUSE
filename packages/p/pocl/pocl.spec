@@ -17,9 +17,9 @@
 #
 
 
-%define sover  2.3.0
+%define sover  2.4.0
 Name:           pocl
-Version:        1.3
+Version:        1.4
 Release:        0
 Summary:        Portable Computing Language - an OpenCL implementation
 # The whole code is under MIT
@@ -30,14 +30,12 @@ Group:          Development/Tools/Other
 URL:            http://portablecl.org/
 Source0:        https://github.com/pocl/pocl/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       pocl-rpmlintrc
-# PATCH-FIX-UPSTREAM - The clang resources path at compile time includes the full version, determine at runtime
-Patch0:         fix_resources_path_version_dependency.patch
-BuildRequires:  clang
-BuildConflicts: clang >= 9
-BuildRequires:  clang-devel >= 4
+# PATCH-FIX-UPSTREAM -- https://github.com/pocl/pocl/pull/779
+Patch0:         link_against_libclang-cpp_so.patch
+BuildConflicts: clang-devel >= 10
+BuildRequires:  clang-devel >= 6
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  libtool-ltdl-devel
 BuildRequires:  ninja
 BuildRequires:  opencl-headers
 BuildRequires:  pkgconfig
@@ -45,10 +43,6 @@ BuildRequires:  pkgconfig(OpenCL)
 BuildRequires:  pkgconfig(hwloc)
 # Autoreq does not look into the ICD file
 Requires:       libpocl2
-%if 0%{?sle_version} == 150000 && 0%{?is_opensuse}
-# Old versions have opencl-c.h in the clang package, not libclang
-Requires:       clang5
-%endif
 # PPC has limited support/testing from upstream
 # s390(x) is also not supported, so use ExclusiveArch
 ExclusiveArch:  %{ix86} x86_64 %arm aarch64
