@@ -1,7 +1,7 @@
 #
 # spec file for package ilmbase
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,24 +19,19 @@
 %define asan_build  0
 %define debug_build 0
 %define sonum 24
-%global so_suffix -2_3-24
+%global so_suffix -2_4
 Name:           ilmbase
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Base library for ILM software (OpenEXR)
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 Url:            http://www.openexr.com
-Source0:        https://github.com/openexr/openexr/releases/download/v%{version}/ilmbase-%{version}.tar.gz
-Source1:        https://github.com/openexr/openexr/releases/download/v%{version}/ilmbase-%{version}.tar.gz.sig
-Source2:        baselibs.conf
-Source3:        https://savannah.nongnu.org/project/memberlist-gpgkeys.php?group=openexr&download=1#/ilmbase.keyring
-#PATCH-FIX-OPENSUSE: testBox.patch allow fuzzy comparison of floats, doubles
-Patch0:         testBox.patch
-#PATCH-FIX-OPENSUSE: testBoxAlgo.patch allow fuzzy match of b12 == b2
-Patch1:         testBoxAlgo.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
+Source0:        https://github.com/openexr/openexr/archive/v%{version}.tar.gz
+Source1:        baselibs.conf
+# PATCH-FIX-UPSTREAM
+Patch0:         Fix-the-symlinks-creation.patch
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -64,114 +59,64 @@ Summary:        Base library for ILM software (OpenEXR)
 # Renamed to libilmbase6 to met the Shared Library Policy
 License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Requires:       libHalf%{sonum}
-Requires:       libIex%{so_suffix}
-Requires:       libIexMath%{so_suffix}
-Requires:       libIlmThread%{so_suffix}
-Requires:       libImath%{so_suffix}
+Requires:       libHalf%{so_suffix}-%{sonum}
+Requires:       libIex%{so_suffix}-%{sonum}
+Requires:       libIexMath%{so_suffix}-%{sonum}
+Requires:       libIlmThread%{so_suffix}-%{sonum}
+Requires:       libImath%{so_suffix}-%{sonum}
 Requires:       libstdc++-devel
-Obsoletes:      IlmBase-devel <= 1.0.1
-Provides:       IlmBase-devel = %{version}
-Obsoletes:      libilmbase-devel <= 1.0.2
-Provides:       libilmbase-devel = %{version}
 
 %description devel
 Devel files for ilmbase
 Base library for Industrial Light & Magic software (OpenEXR).
 
-%files devel
-%doc AUTHORS ChangeLog NEWS README*
-%license LICENSE
-%{_includedir}/OpenEXR
-%{_libdir}/libHalf.so
-%{_libdir}/libIex.so
-%{_libdir}/libImath.so
-%{_libdir}/libIlmThread.so
-%{_libdir}/libIexMath.so
-%{_libdir}/pkgconfig/IlmBase.pc
-
-%package -n libHalf%{sonum}
+%package -n libHalf%{so_suffix}-%{sonum}
 Summary:        16-bit floating-point encapsulation class for OpenEXR
 License:        BSD-3-Clause
 Group:          System/Libraries
 
-%description -n libHalf%{sonum}
+%description -n libHalf%{so_suffix}-%{sonum}
 %{summary}.
 
-%post -n libHalf%{sonum} -p /sbin/ldconfig
-%postun -n libHalf%{sonum} -p /sbin/ldconfig
-
-%files -n libHalf%{sonum}
-%{_libdir}/libHalf.so.*
-
-%package -n libIexMath%{so_suffix}
+%package -n libIexMath%{so_suffix}-%{sonum}
 Summary:        Exception-based vector/matrix library for OpenEXR
 License:        BSD-3-Clause
 Group:          System/Libraries
 
-%description -n libIexMath%{so_suffix}
+%description -n libIexMath%{so_suffix}-%{sonum}
 %{summary}.
 
-%post -n libIexMath%{so_suffix} -p /sbin/ldconfig
-%postun -n libIexMath%{so_suffix} -p /sbin/ldconfig
-
-%files -n libIexMath%{so_suffix}
-%{_libdir}/libIexMath*.so.*
-
-%package -n libIex%{so_suffix}
+%package -n libIex%{so_suffix}-%{sonum}
 Summary:        Exception handling library for OpenEXR
 License:        BSD-3-Clause
 Group:          System/Libraries
 
-%description -n libIex%{so_suffix}
+%description -n libIex%{so_suffix}-%{sonum}
 %{summary}.
 
-%post -n libIex%{so_suffix} -p /sbin/ldconfig
-%postun -n libIex%{so_suffix} -p /sbin/ldconfig
-
-%files -n libIex%{so_suffix}
-%{_libdir}/libIex-*.so.*
-
-%package -n libIlmThread%{so_suffix}
+%package -n libIlmThread%{so_suffix}-%{sonum}
 Summary:        Thread abstraction library for OpenEXR
 License:        BSD-3-Clause
 Group:          System/Libraries
 
-%description -n libIlmThread%{so_suffix}
+%description -n libIlmThread%{so_suffix}-%{sonum}
 %{summary}.
 
-%post -n libIlmThread%{so_suffix} -p /sbin/ldconfig
-%postun -n libIlmThread%{so_suffix} -p /sbin/ldconfig
-
-%files -n libIlmThread%{so_suffix}
-%{_libdir}/libIlmThread*.so.*
-
-%package -n libImath%{so_suffix}
+%package -n libImath%{so_suffix}-%{sonum}
 Summary:        Vector/matrix library for OpenEXR
 License:        BSD-3-Clause
 Group:          System/Libraries
 
-%description -n libImath%{so_suffix}
+%description -n libImath%{so_suffix}-%{sonum}
 %{summary}.
 
-%post -n libImath%{so_suffix} -p /sbin/ldconfig
-%postun -n libImath%{so_suffix} -p /sbin/ldconfig
-
-%files -n libImath%{so_suffix}
-%{_libdir}/libImath*.so.*
-
 %prep
-%setup -q
+%setup -q -n openexr-%{version}
 %patch0 -p1
-%patch1 -p1
 
 %build
-./bootstrap
-export PTHREAD_LIBS="-lpthread"
-%if %{debug_build}
-export CXXFLAGS="%{optflags} -O0"
-%endif
-%configure --disable-static
+pushd IlmBase
+%cmake -DCMAKE_INSTALL_INCLUDE_DIR:path=%{_includedir}
 %if %{asan_build}
 vmemlimit=$(ulimit -v)
 if [ $vmemlimit != unlimited ]; then
@@ -185,12 +130,68 @@ for i in $(find -name Makefile); do
 done
 %endif
 make %{?_smp_mflags}
+popd
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+pushd IlmBase
+%cmake_install
+popd
 
 %check
-make %{?_smp_mflags} check
+# https://github.com/openexr/openexr/issues/570
+%ifnarch i586
+pushd IlmBase
+export LD_LIBRARY_PATH="$PWD/build/Imath:$PWD/build/Iex:$PWD/build/Half:$LD_LIBRARY_PATH"
+%ctest
+popd
+%endif
+
+%post -n libHalf%{so_suffix}-%{sonum} -p /sbin/ldconfig
+%postun -n libHalf%{so_suffix}-%{sonum} -p /sbin/ldconfig
+
+%post -n libIexMath%{so_suffix}-%{sonum} -p /sbin/ldconfig
+%postun -n libIexMath%{so_suffix}-%{sonum} -p /sbin/ldconfig
+
+%post -n libIex%{so_suffix}-%{sonum} -p /sbin/ldconfig
+%postun -n libIex%{so_suffix}-%{sonum} -p /sbin/ldconfig
+
+%post -n libIlmThread%{so_suffix}-%{sonum} -p /sbin/ldconfig
+%postun -n libIlmThread%{so_suffix}-%{sonum} -p /sbin/ldconfig
+
+%post -n libImath%{so_suffix}-%{sonum} -p /sbin/ldconfig
+%postun -n libImath%{so_suffix}-%{sonum} -p /sbin/ldconfig
+
+%files devel
+%doc CHANGES.md CODE_OF_CONDUCT.md CODEOWNERS CONTRIBUTING.md CONTRIBUTORS.md README.md SECURITY.md
+%license LICENSE.md
+%{_includedir}/OpenEXR
+%{_libdir}/libHalf.so
+%{_libdir}/libHalf%{so_suffix}.so
+%{_libdir}/libIex.so
+%{_libdir}/libIex%{so_suffix}.so
+%{_libdir}/libImath.so
+%{_libdir}/libImath%{so_suffix}.so
+%{_libdir}/libIlmThread.so
+%{_libdir}/libIlmThread%{so_suffix}.so
+%{_libdir}/libIexMath.so
+%{_libdir}/libIexMath%{so_suffix}.so
+%{_libdir}/pkgconfig/IlmBase.pc
+%dir %{_libdir}/cmake/IlmBase/
+%{_libdir}/cmake/IlmBase/*.cmake
+
+%files -n libHalf%{so_suffix}-%{sonum}
+%{_libdir}/libHalf%{so_suffix}.so.*
+
+%files -n libIexMath%{so_suffix}-%{sonum}
+%{_libdir}/libIexMath%{so_suffix}.so.*
+
+%files -n libIex%{so_suffix}-%{sonum}
+%{_libdir}/libIex%{so_suffix}.so.*
+
+%files -n libIlmThread%{so_suffix}-%{sonum}
+%{_libdir}/libIlmThread%{so_suffix}.so.*
+
+%files -n libImath%{so_suffix}-%{sonum}
+%{_libdir}/libImath%{so_suffix}.so.*
 
 %changelog

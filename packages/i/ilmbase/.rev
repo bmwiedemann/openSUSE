@@ -155,4 +155,12 @@
     - ilmbase-halfExport.h-license.patch (upstreamed)</comment>
     <requestid>646648</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2787a999de6786beb8284a9586661101</srcmd5>
+    <version>2.4.0</version>
+    <time>1574103921</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Fix-the-symlinks-creation.patch to fix the symlinks creation. (forwarded request 748747 from cgiboudeaux)</comment>
+    <requestid>748753</requestid>
+  </revision>
 </revisionlist>

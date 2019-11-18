@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Nov 14 18:39:07 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add Fix-the-symlinks-creation.patch to fix the symlinks creation.
+
+-------------------------------------------------------------------
+Tue Oct  8 17:01:31 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Set correct includedir in IlmBase.pc pkgconfig file
+
+-------------------------------------------------------------------
+Thu Sep 26 08:25:31 UTC 2019 - pgajdos@suse.com
+
+- version update to 2.4.0
+  * Completely re-written CMake configuration files
+  * Improved support for building on Windows, via CMake
+  * Improved support for building on macOS, via CMake
+  * All code compiles without warnings on gcc, clang, msvc
+  * Cleanup of license and copyright notices
+  * floating-point exception handling is disabled by default
+  * New Slice::Make method to reliably compute base pointer for a slice.
+  * Miscellaneous bug fixes
+  * CVE-2018-18444 Issue #351 Out of Memory
+  * CVE-2018-18443 Issue #350 heap-buffer-overflow
+- upstream does not provide gpg signature anymore
+  https://github.com/openexr/openexr/issues/565
+- modified sources
+  % baselibs.conf
+- deleted patches
+  - testBox.patch (upstreamed)
+  - testBoxAlgo.patch (upstreamed)
+- deleted sources
+  - ilmbase-2.3.0.tar.gz.sig (not needed)
+  - ilmbase.keyring (not needed)
+
+-------------------------------------------------------------------
 Tue Nov  6 09:34:42 UTC 2018 - Petr Gajdos <pgajdos@suse.com>
 
 - asan_build: build ASAN included
