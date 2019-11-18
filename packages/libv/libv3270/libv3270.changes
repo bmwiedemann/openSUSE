@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Mon Oct  7 15:20:18 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Cleanup spec file
+- Drop support for <= SLE12-SP2
+
+-------------------------------------------------------------------
+Tue Oct  1 07:37:53 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop unnecessary build requirements. Own all produced glade
+  directories instead.
+- Enable parallel build.
+- Rectify descriptions.
+
+-------------------------------------------------------------------
+Tue Sep 10 19:41:33 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use -ffat-lto-objects when building static libraries.
+
+-------------------------------------------------------------------
+Fri May 31 13:10:15 UTC 2019 - perry.werneck@gmail.com
+
+- Update to version 5.2:
+  * Fixing package gen.
+  * Updating read me.
+  * Updating build info.
+  * Windows native file dialog is hanging sometimes, replacing it.
+  * Updating package info.
+  * Adjustments in the V5.1 ft dialog.
+  * Working on the new FT dialog.
+  * Working on drag & drop for activity list.
+
+-------------------------------------------------------------------
+Tue Mar 26 12:24:57 UTC 2019 - Perry Werneck <perry.werneck@gmail.com>
+
+- Fixing osc source_validator errors.
+
+-------------------------------------------------------------------
+Thu Feb 28 15:06:15 UTC 2019 - Perry Werneck <perry.werneck@gmail.com>
+
+  * Fixing centos build.
+  * Adding drag&drop support in the activity list component.
+  * Implementing drag&drop on the file settings widget.
+  * Updating old (V5.1) transfer dialogs to follow gnome visual layout.
+  * Fixing old FT dialog.
+  * Updating transfer settings dialog.
+  * Refactoring single file transfer dialog.
+  * Refactoring simple file transfer dialog.
+  * Adding compatibility FT dialog.
+  * Fixing RHEL-7 build.
+
+-------------------------------------------------------------------
+Tue Dec  4 19:20:54 UTC 2018 - Perry Werneck <perry.werneck@gmail.com>
+
+  * Refactoring build process.
+  * Spliting gtk library from pw3270 main project.
