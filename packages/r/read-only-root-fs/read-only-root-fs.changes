@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 12 16:18:56 UTC 2019 - kukuk@suse.com
+
+- Update to version 1.0+git20191112.42add9e:
+  * Add RequiresMountsFor=/etc override for systemd-udevd.service
+
+-------------------------------------------------------------------
 Fri Jun 07 11:47:47 UTC 2019 - iforster@suse.com
 
 - Update to version 1.0+git20190607.11f8587:

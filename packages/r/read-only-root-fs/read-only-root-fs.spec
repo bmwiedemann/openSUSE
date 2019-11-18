@@ -17,12 +17,12 @@
 
 
 Name:           read-only-root-fs
-Version:        1.0+git20190607.11f8587
+Version:        1.0+git20191112.42add9e
 Release:        0
 Summary:        Files and Scripts for a RO root fileystem
 License:        GPL-2.0-or-later
 Group:          System/Fhs
-Url:            https://github.com/openSUSE/read-only-root-fs
+URL:            https://github.com/openSUSE/read-only-root-fs
 Source:         read-only-root-fs-%{version}.tar.xz
 Source1:        README.packaging.txt
 BuildRequires:  dracut
@@ -77,8 +77,8 @@ fi
 %{?update_bootloader_refresh_post}
 
 %posttrans
-if [ -f /etc/zypp/zypp.conf ]; then
-    sed -i 's/^multiversion =.*/multiversion =/g' /etc/zypp/zypp.conf
+if [ -f %{_sysconfdir}/zypp/zypp.conf ]; then
+    sed -i 's/^multiversion =.*/multiversion =/g' %{_sysconfdir}/zypp/zypp.conf
 fi
 %{?update_bootloader_posttrans}
 exit 0
@@ -89,6 +89,8 @@ exit 0
 %{_localstatedir}/lib/overlay
 %{_prefix}/lib/dracut/dracut.conf.d/10-read-only-root-fs.conf
 %{_prefix}/lib/systemd/system-preset/*
+%dir %{_prefix}/lib/systemd/system/systemd-udevd.service.d
+%{_prefix}/lib/systemd/system/systemd-udevd.service.d/etcmount.conf
 %dir %{_sysconfdir}/grub.d
 %config(noreplace) %{_sysconfdir}/grub.d/01_suse_ro_root
 
