@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 14 14:25:29 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Add log level trace
+- Separate handling of log reopen events and terminal resize events
+
+-------------------------------------------------------------------
 Tue Oct 29 09:03:03 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
 
 - Add CONN_SOCK_BUF_SIZE to config

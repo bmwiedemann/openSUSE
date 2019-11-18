@@ -1,7 +1,7 @@
 #
 # spec file for package conmon
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           conmon
-Version:        2.0.2
+Version:        2.0.3
 Release:        0
 Summary:        An OCI container runtime monitor
 License:        Apache-2.0
 Group:          System/Management
-Url:            https://github.com/containers/conmon
+URL:            https://github.com/containers/conmon
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  glib2-devel
 
