@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-testconfig
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-testconfig
-Version:        0.1.2
+Version:        0.1.3
 Release:        0
 Summary:        Test configuration plugin for pytest
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/wojole/pytest-testconfig
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-testconfig/pytest-testconfig-%{version}.tar.gz
+Source:         https://github.com/wojole/pytest-testconfig/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module pytest >= 3.5}
 BuildRequires:  %{python_module setuptools}
