@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 18 13:03:44 UTC 2019 - okurz@suse.com
+
+- Update to version 4.6.1573902023.b0a2a79e:
+  * Hide SSH password in logs
+  * Add test for SSH credentials in spvm
+  * Add ssh usage tests for baseclass
+  * Generalize Net::SSH2 usage in svirt backend
+
+-------------------------------------------------------------------
 Sat Nov 16 05:03:44 UTC 2019 - okurz@suse.com
 
 - Update to version 4.6.1573837019.f65a27bc:

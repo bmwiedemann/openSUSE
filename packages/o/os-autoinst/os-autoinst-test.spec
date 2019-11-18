@@ -1,7 +1,7 @@
 #
 # spec file for package os
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define name_ext -test
 %define         short_name os-autoinst
 Name:           %{short_name}%{?name_ext}
-Version:        4.6.1573837019.f65a27bc
+Version:        4.6.1573902023.b0a2a79e
 Release:        0
 Summary:        test package for os-autoinst
 #BuildRequires:  %{short_name} == %{version}
