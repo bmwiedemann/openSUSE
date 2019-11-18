@@ -1,0 +1,54 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Wed, 6 Nov 2019 11:35:50 +0100
+Subject: savedump: search also for vmlinux.xz
+Patch-mainline: yes
+Git-commit: f1ef93a2fd465c6590edddc6dc1fcb3978c7f26b
+References: bnc#1155921
+
+See https://bugzilla.suse.com/show_bug.cgi?id=1155921
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ kdumptool/savedump.cc | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/kdumptool/savedump.cc b/kdumptool/savedump.cc
+index 282f52e71f66..b8b6be13c3f8 100644
+--- a/kdumptool/savedump.cc
++++ b/kdumptool/savedump.cc
+@@ -596,7 +596,14 @@ string SaveDump::findKernel()
+     if (binaryroot.exists())
+         return binary;
+ 
+-    // 3: vmlinuz (check if ELF file)
++    // 3: vmlinux.xz
++    (binary = "/boot").appendPath("vmlinux-" + m_crashrelease + ".xz");
++    (binaryroot = m_rootdir).appendPath(binary);
++    Debug::debug()->dbg("Trying %s", binaryroot.c_str());
++    if (binaryroot.exists())
++        return binary;
++
++    // 4: vmlinuz (check if ELF file)
+     (binary = "/boot").appendPath("vmlinuz-" + m_crashrelease);
+     (binaryroot = m_rootdir).appendPath(binary);
+     Debug::debug()->dbg("Trying %s", binaryroot.c_str());
+@@ -605,14 +612,14 @@ string SaveDump::findKernel()
+         return binary;
+     }
+ 
+-    // 4: image
++    // 5: image
+     (binary = "/boot").appendPath("image-" + m_crashrelease);
+     (binaryroot = m_rootdir).appendPath(binary);
+     Debug::debug()->dbg("Trying %s", binaryroot.c_str());
+     if (binaryroot.exists())
+         return binary;
+ 
+-    // 5: Image
++    // 6: Image
+     (binary = "/boot").appendPath("Image-" + m_crashrelease);
+     (binaryroot = m_rootdir).appendPath(binary);
+     Debug::debug()->dbg("Trying %s", binaryroot.c_str());
+-- 
+2.24.0
+

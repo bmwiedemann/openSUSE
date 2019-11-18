@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 12 08:11:26 UTC 2019 - Jiri Slaby <jslaby@suse.com>
+
+- add kdump-savedump-search-also-for-vmlinux.xz.patch (bnc#1155921)
+
+-------------------------------------------------------------------
 Wed Jun 12 15:04:56 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to

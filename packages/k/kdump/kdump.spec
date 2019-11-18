@@ -62,6 +62,7 @@ Patch13:        %{name}-recover-from-missing-CRASHTIME.patch
 Patch14:        %{name}-fix-multipath-user_friendly_names.patch
 Patch15:        %{name}-Add-skip_balance-option-to-BTRFS-mounts.patch
 Patch16:        %{name}-kdumprd-Look-for-boot-image-and-boot-Image.patch
+Patch17:        %{name}-savedump-search-also-for-vmlinux.xz.patch
 BuildRequires:  asciidoc
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -135,6 +136,7 @@ after a crash dump has occured.
 %patch14 -p1
 %patch15 -p1
 %patch16 -p1
+%patch17 -p1
 
 %build
 export CFLAGS="%{optflags}"
