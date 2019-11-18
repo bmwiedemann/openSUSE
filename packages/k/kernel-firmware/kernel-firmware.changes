@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov 11 18:20:06 UTC 2019 - tiwai@suse.com
+
+- Update to version 20191108 (git commit f1100ddf581f):
+  * i915: Add HuC firmware v7.0.3 for TGL
+  * i915: Add GuC firmware v35.2.0 for TGL
+  * i915: Add HuC firmware v9.0.0 for EHL
+  * i915: Add GuC firmware v33.0.4 for EHL
+  * rtw88: RTL8723D: add firmware file v48
+  * qed: Add firmware 8.40.33.0
+  * amdgpu: add new navi14 wks gfx firmware for 19.30
+  * amdgpu: update navi14 firmware for 19.30
+  * amdgpu: update raven firmware for 19.30
+  * linux-firmware: Add firmware file for Intel Bluetooth AX201
+
+-------------------------------------------------------------------
 Wed Oct 23 16:33:33 CEST 2019 - tiwai@suse.de
 
 - Fix the missing ast and qla2xx firmwares due to typos in
