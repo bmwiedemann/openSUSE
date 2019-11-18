@@ -16,23 +16,25 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%define mpi_implem openmpi2
-%ifarch ppc64
-%define mpi_implem openmpi
+# Build with OpenMPI
+%if 0%{?sle_version} == 0
+%define mpiver  openmpi2
+%else
+%if 0%{?sle_version} <= 120300
+%define mpiver  openmpi
+%else
+  %if 0%{?sle_version} <= 150000
+  %define mpiver  openmpi2
+  %else
+  %define mpiver  openmpi3
+  %endif
 %endif
-%if  0%{?sle_version} == 120300 && 0%{?is_opensuse}
-%define mpi_implem openmpi
-%endif
-%if 0%{?sle_version} == 120400 && !0%{?is_opensuse}
-%define mpi_implem openmpi
 %endif
 
 %define pkgname espresso
 %define modname %{pkgname}md
-%define sonum 4
 Name:           python3-%{modname}
-Version:        4.0.2
+Version:        4.1.1
 Release:        0
 Summary:        Parallel simulation software for soft matter research
 License:        GPL-3.0-or-later
@@ -45,7 +47,7 @@ BuildRequires:  gcc-c++
 # Currently libboost_mpi-devel and hdf5 use different mpi versions
 # BuildRequires:  hdf5-devel
 BuildRequires:  gsl-devel
-BuildRequires:  %{mpi_implem}-devel
+BuildRequires:  %{mpiver}-devel
 BuildRequires:  python3-Cython
 BuildRequires:  python3-devel
 BuildRequires:  python3-numpy-devel
@@ -57,6 +59,7 @@ BuildRequires:  libboost_test-devel
 %else
 BuildRequires:  boost-devel
 %endif
+Obsoletes:      libEspresso4
 
 %description
 ESPResSo is a highly versatile software package for performing and analyzing
@@ -66,18 +69,11 @@ physics, chemistry and molecular biology. It can be used to simulate systems
 such as polymers, liquid crystals, colloids, ferrofluids and biological
 systems, for example DNA and lipid membranes.
 
-%package -n libEspresso%{sonum}
-Summary:        Shared libraries for ESPResSo
-Group:          System/Libraries
-
-%description -n libEspresso%{sonum}
-This package provides shared libraries for ESPResSo.
-
 %prep
 %setup -q -n %{pkgname}
 
 %build
-source %{_libdir}/mpi/gcc/%{mpi_implem}/bin/mpivars.sh
+source %{_libdir}/mpi/gcc/%{mpiver}/bin/mpivars.sh
 
 # overwrite .so linker flags on SUSE distros: drop --no-undefined
 # we don't install {i,}pypresso scripts as they aren't needed when installing in /usr
@@ -98,29 +94,15 @@ find %{buildroot}%{_prefix} -name "gen_pxiconfig" -exec chmod +x {} \;
 rm -f %{buildroot}%{_libdir}/lib*.so
 
 %check
-LD_LIBRARY_PATH='%{buildroot}/%{_libdir}::%{_libdir}/mpi/gcc/%{mpi_implem}/%{_lib}' make -C build check CTEST_OUTPUT_ON_FAILURE=1 %{?testargs:%{testargs}}
-
-%post -n libEspresso%{sonum} -p /sbin/ldconfig
-%postun -n libEspresso%{sonum} -p /sbin/ldconfig
+# https://github.com/espressomd/espresso/issues/3315
+%ifarch i586
+%define testargs ARGS='-E \\(MpiCallbacks_test\\|matrix_vector_product\\|collision_detection\\)'
+%endif
+LD_LIBRARY_PATH='%{buildroot}/%{python3_sitearch}/espressomd::%{_libdir}/mpi/gcc/%{mpiver}/%{_lib}' make -C build check CTEST_OUTPUT_ON_FAILURE=1 %{?testargs:%{testargs}}
 
 %files
 %license COPYING
 %doc README AUTHORS NEWS ChangeLog
 %{python3_sitearch}/espressomd
-
-%files -n libEspresso%{sonum}
-%license COPYING
-%{_libdir}/libEspressoCore.so.%{sonum}
-%{_libdir}/libActor.so.%{sonum}
-%{_libdir}/libImmersedBoundary.so.%{sonum}
-%{_libdir}/libObjectInFluid.so.%{sonum}
-%{_libdir}/libAccumulators.so.%{sonum}
-%{_libdir}/libConstraints.so.%{sonum}
-%{_libdir}/libEspressoConfig.so.%{sonum}
-%{_libdir}/libEspressoScriptInterface.so.%{sonum}
-%{_libdir}/libObservables.so.%{sonum}
-%{_libdir}/libShapes.so.%{sonum}
-%{_libdir}/libVirtualSites.so.%{sonum}
-%{_libdir}/libcluster_analysis.so.%{sonum}
 
 %changelog
