@@ -42,4 +42,13 @@
     <comment></comment>
     <requestid>692226</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>65f0523fb02826f0fd81ed6be68cd9d3</srcmd5>
+    <version>0.4.1.post0</version>
+    <time>1574104166</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.1.post0:
+  * do not use py.test but mention pytest everywhere</comment>
+    <requestid>749188</requestid>
+  </revision>
 </revisionlist>
