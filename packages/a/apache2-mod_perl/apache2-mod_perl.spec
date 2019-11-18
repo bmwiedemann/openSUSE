@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_perl
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define srcname mod_perl
 Name:           apache2-mod_perl
-Version:        2.0.10
+Version:        2.0.11
 Release:        0
 Summary:        Embedded Perl for Apache
 License:        Apache-2.0
 Group:          Productivity/Networking/Web/Servers
-Url:            http://perl.apache.org/
-Source0:        http://apache.miloslavbrada.cz/perl/%{srcname}-%{version}.tar.gz
+URL:            https://perl.apache.org/
+Source0:        https://archive.apache.org/dist/perl/%{srcname}-%{version}.tar.gz
+Source1:        https://archive.apache.org/dist/perl/%{srcname}-%{version}.tar.gz.asc
+Source2:        https://www.apache.org/dist/perl/KEYS#/%{name}.keyring
 Patch1:         avoid-broken-provides.diff
 # bsc#1091625, workaround, according to mls it should be solved in perl
 Patch2:         apache2-mod_perl-prctl-short-name.patch
@@ -51,7 +53,6 @@ Requires:       perl-libwww-perl
 Requires:       perl(Linux::Pid)
 Conflicts:      mod_perl
 Obsoletes:      mod_perl_2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The Apache/Perl integration project brings together the full power of
@@ -177,8 +178,8 @@ rm -f %{buildroot}%{perl_archlib}/perllocal.pod
 %endif
 
 %files
-%defattr(-,root,root)
-%doc Changes LICENSE README RELEASE STATUS
+%license LICENSE
+%doc Changes README RELEASE STATUS
 %doc docs
 %dir %{apache_libexecdir}
 %{apache_libexecdir}/mod_perl.so
@@ -198,7 +199,6 @@ rm -f %{buildroot}%{perl_archlib}/perllocal.pod
 %{_bindir}/mp2bug
 
 %files devel
-%defattr(-,root,root)
 %{apache_includedir}/*
 
 %changelog

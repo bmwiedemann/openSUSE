@@ -334,4 +334,12 @@
   + apache2-mod_perl-prctl-short-name.patch</comment>
     <requestid>623337</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>cdf3c695b8d7d0abf2128fb94b024695</srcmd5>
+    <version>2.0.11</version>
+    <time>1574104286</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749293</requestid>
+  </revision>
 </revisionlist>
