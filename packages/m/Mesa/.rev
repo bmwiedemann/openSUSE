@@ -3877,4 +3877,22 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   conflict</comment>
     <requestid>746609</requestid>
   </revision>
+  <revision rev="361" vrev="233">
+    <srcmd5>c6f63a602cad9f4b0c9e0b176ad3bd0b</srcmd5>
+    <version>unknown</version>
+    <time>1574103776</time>
+    <user>dimstar_suse</user>
+    <comment>- u_call-shmget-with-permission-0600-instead-of-0777.patch
+  * CVE-2019-5068 (bsc#1156015)
+
+- Update to version 19.2.4
+  * This is an emergency release, to fix a critical bug found in
+    the 19.2.3 release which causes incomplete rendering on all
+    mesa drivers. This release contains a single patch to fix
+    that bug. 
+
+- Update _contraints, Mesa-drivers needs 7GB of disk to build
+  safely.</comment>
+    <requestid>749087</requestid>
+  </revision>
 </revisionlist>
