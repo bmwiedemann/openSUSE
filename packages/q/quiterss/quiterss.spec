@@ -17,7 +17,7 @@
 
 
 Name:           quiterss
-Version:        0.19.0
+Version:        0.19.1
 Release:        0
 Summary:        RSS/Atom aggregator
 License:        GPL-3.0-or-later
