@@ -302,4 +302,12 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
     <comment>- testsuite only for x86_64 [bsc#1146648]</comment>
     <requestid>732184</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>f156225a73f637e9c04a12698fd5a78a</srcmd5>
+    <version>2.4.0</version>
+    <time>1574103933</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Fix-the-symlinks-creation.patch to fix the symlinks creation. (forwarded request 748749 from cgiboudeaux)</comment>
+    <requestid>748755</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Nov 14 17:57:37 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add Fix-the-symlinks-creation.patch to fix the symlinks creation.
+
+-------------------------------------------------------------------
+Mon Oct  7 09:56:42 UTC 2019 - pgajdos@suse.com
+
+- fix OpenEXR.pc
+
+-------------------------------------------------------------------
+Fri Oct  4 14:20:41 UTC 2019 - pgajdos@suse.com
+
+- increase timeout for IlmImf test
+
+-------------------------------------------------------------------
+Thu Sep 26 08:28:56 UTC 2019 - pgajdos@suse.com
+
+- version update to 2.4.0
+  * Completely re-written CMake configuration files
+  * Improved support for building on Windows, via CMake
+  * Improved support for building on macOS, via CMake
+  * All code compiles without warnings on gcc, clang, msvc
+  * Cleanup of license and copyright notices
+  * floating-point exception handling is disabled by default
+  * New Slice::Make method to reliably compute base pointer for a slice.
+  * Miscellaneous bug fixes
+  * CVE-2018-18444 Issue #351 Out of Memory
+  * CVE-2018-18443 Issue #350 heap-buffer-overflow
+- upstream does not provide gpg signature anymore
+  https://github.com/openexr/openexr/issues/565
+- modified sources
+  % baselibs.conf
+- deleted patches
+  - openexr-CVE-2017-14988.patch (upstreamed)
+  - openexr-CVE-2017-9111,9113,9115.patch (upstreamed)
+  - openexr-CVE-2018-18444.patch (upstreamed)
+- deleted sources
+  - openexr-2.3.0.tar.gz.sig (not needed)
+  - openexr.keyring (not needed)
+
+-------------------------------------------------------------------
 Fri Sep 20 12:41:26 UTC 2019 - pgajdos@suse.com
 
 - testsuite only for x86_64 [bsc#1146648]

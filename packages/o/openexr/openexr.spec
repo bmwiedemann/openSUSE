@@ -1,7 +1,7 @@
 #
 # spec file for package openexr
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,41 +20,33 @@
 %define asan_build  0
 %define debug_build 0
 %define sonum 24
-%global so_suffix -2_3-24
+%global so_suffix -2_4
 Name:           openexr
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Utilities for working with HDR images in OpenEXR format
 License:        BSD-3-Clause
 Group:          Productivity/Graphics/Other
 URL:            http://www.openexr.com/
-Source0:        https://github.com/openexr/openexr/releases/download/v%{version}/openexr-%{version}.tar.gz
-Source1:        https://github.com/openexr/openexr/releases/download/v%{version}/openexr-%{version}.tar.gz.sig
+Source0:        https://github.com/openexr/openexr/archive/v%{version}.tar.gz
 Source2:        baselibs.conf
-Source3:        openexr.keyring
-# https://github.com/openexr/openexr/pull/401
-Patch0:         openexr-CVE-2018-18444.patch
-# https://github.com/openexr/openexr/pull/401
-# CVE-2017-9111 [bsc#1040109], CVE-2017-9113 [bsc#1040113], CVE-2017-9115 [bsc#1040115]
-Patch1:         openexr-CVE-2017-9111,9113,9115.patch
-# CVE-2017-14988 [bsc#1061305]
-Patch2:         openexr-CVE-2017-14988.patch
-BuildRequires:  automake
+Patch0:         Fix-the-symlinks-creation.patch
+BuildRequires:  cmake
 BuildRequires:  fltk-devel
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(IlmBase) >= 2.3.0
+BuildRequires:  pkgconfig(IlmBase) >= %{version}
 BuildRequires:  pkgconfig(zlib)
 Obsoletes:      OpenEXR <= 1.6.1
 Provides:       OpenEXR = %{version}
 %if %{asan_build} || %{debug_build}
 BuildRequires:  ilmbase-debugsource
-BuildRequires:  libHalf%{sonum}-debuginfo
-BuildRequires:  libIex%{so_suffix}-debuginfo
-BuildRequires:  libIexMath%{so_suffix}-debuginfo
-BuildRequires:  libIlmThread%{so_suffix}-debuginfo
-BuildRequires:  libImath%{so_suffix}-debuginfo
+BuildRequires:  libHalf%{so_suffix}-%{sonum}-debuginfo
+BuildRequires:  libIex%{so_suffix}-%{sonum}-debuginfo
+BuildRequires:  libIexMath%{so_suffix}-%{sonum}-debuginfo
+BuildRequires:  libIlmThread%{so_suffix}-%{sonum}-debuginfo
+BuildRequires:  libImath%{so_suffix}-%{sonum}-debuginfo
 %endif
 
 %description
@@ -70,46 +62,32 @@ contains a set of utilities to work with this format.
 * exr2aces, converter to ACES format
 * exrmultiview, combine two or more images into one multi-view
 
-%package -n libIlmImf%{so_suffix}
+%package -n libIlmImf%{so_suffix}-%{sonum}
 Summary:        Library to Handle EXR Pictures in 16-Bit Floating-Point Format
 Group:          System/Libraries
 
-%description -n libIlmImf%{so_suffix}
+%description -n libIlmImf%{so_suffix}-%{sonum}
 OpenEXR is a high dynamic-range (HDR) image file format developed by
 Industrial Light & Magic for use in computer imaging applications.
 
 This package contains shared library libIlmImf
 
-%post -n libIlmImf%{so_suffix} -p /sbin/ldconfig
-%postun -n libIlmImf%{so_suffix} -p /sbin/ldconfig
-
-%files -n libIlmImf%{so_suffix}
-%license LICENSE
-%{_libdir}/libIlmImf-*.so.*
-
-%package -n libIlmImfUtil%{so_suffix}
+%package -n libIlmImfUtil%{so_suffix}-%{sonum}
 Summary:        Library to simplify development of OpenEXR utilities
 Group:          System/Libraries
 
-%description -n libIlmImfUtil%{so_suffix}
+%description -n libIlmImfUtil%{so_suffix}-%{sonum}
 OpenEXR is a high dynamic-range (HDR) image file format developed by
 Industrial Light & Magic for use in computer imaging applications.
 
 This package contains shared library libIlmImfUtil
 
-%post -n libIlmImfUtil%{so_suffix} -p /sbin/ldconfig
-%postun -n libIlmImfUtil%{so_suffix} -p /sbin/ldconfig
-
-%files -n libIlmImfUtil%{so_suffix}
-%license LICENSE
-%{_libdir}/libIlmImfUtil-*.so.*
-
 %package devel
 Summary:        Development files for the 16-bit FP EXR picture handling library
 Group:          Development/Libraries/C and C++
-Requires:       libIlmImf%{so_suffix} = %{version}
-Requires:       libIlmImfUtil%{so_suffix} = %{version}
-Requires:       libilmbase-devel >= 2.3.0
+Requires:       ilmbase-devel >= 2.3.0
+Requires:       libIlmImf%{so_suffix}-%{sonum} = %{version}
+Requires:       libIlmImfUtil%{so_suffix}-%{sonum} = %{version}
 Requires:       pkgconfig
 Requires:       pkgconfig(zlib)
 Obsoletes:      OpenEXR-devel <= 1.6.1
@@ -125,7 +103,7 @@ This package contains header files.
 
 %package doc
 Summary:        Documentatino for the 16-bit FP EXR picture handling library
-Group:          Documentation/PDF
+Group:          Documentation/Other
 Obsoletes:      OpenEXR-doc <= 1.6.1
 Provides:       OpenEXR-doc = %{version}
 
@@ -138,20 +116,16 @@ This package contains documentation.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %build
+pushd OpenEXR
 export PTHREAD_LIBS="-lpthread"
 %if %{debug_build}
 export CXXFLAGS="%{optflags} -O0"
 %endif
-%configure \
-   --docdir=%{_docdir}/%{name} \
-   --disable-static \
-   --enable-large-stack \
-   --enable-imfexamples \
-   --enable-imfhugetest
+%cmake \
+  -DCMAKE_INSTALL_DOCDIR="%{_docdir}/%{name}" \
+  -DCMAKE_INSTALL_INCLUDEDIR=%{_includedir}
 %if %{asan_build}
 vmemlimit=$(ulimit -v)
 if [ $vmemlimit != unlimited ]; then
@@ -165,19 +139,32 @@ for i in $(find -name Makefile); do
 done
 %endif
 make %{?_smp_mflags}
+popd
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+pushd OpenEXR
+%cmake_install
+popd
 
 %check
 %ifarch x86_64
-make %{?_smp_mflags} check
+pushd OpenEXR
+# tests takes LOONG, e. g. 20 min, in obs even more that
+# exceed timeout limit 25 min
+export LD_LIBRARY_PATH="$PWD/build/IlmImf:$PWD/build/IlmImfUtil:$LD_LIBRARY_PATH"
+%ctest --timeout 3000
+popd
 %endif
 
+%post -n libIlmImf%{so_suffix}-%{sonum} -p /sbin/ldconfig
+%postun -n libIlmImf%{so_suffix}-%{sonum} -p /sbin/ldconfig
+
+%post -n libIlmImfUtil%{so_suffix}-%{sonum} -p /sbin/ldconfig
+%postun -n libIlmImfUtil%{so_suffix}-%{sonum} -p /sbin/ldconfig
+
 %files
-%license LICENSE
-%doc AUTHORS ChangeLog NEWS README*
+%license LICENSE.md
+%doc CHANGES.md CODE_OF_CONDUCT.md CODEOWNERS CONTRIBUTING.md CONTRIBUTORS.md README.md SECURITY.md
 %{_bindir}/exrenvmap
 %{_bindir}/exrheader
 %{_bindir}/exrmakepreview
@@ -185,19 +172,28 @@ make %{?_smp_mflags} check
 %{_bindir}/exrstdattr
 %{_bindir}/exrmultiview
 %{_bindir}/exrmultipart
+%{_bindir}/exr2aces
 
 %files devel
 %{_includedir}/OpenEXR
 %{_libdir}/libIlmImf.so
+%{_libdir}/libIlmImf%{so_suffix}.so
 %{_libdir}/libIlmImfUtil.so
+%{_libdir}/libIlmImfUtil%{so_suffix}.so
 %{_libdir}/pkgconfig/OpenEXR.pc
-%{_datadir}/aclocal/openexr.m4
+%dir %{_libdir}/cmake/OpenEXR
+%{_libdir}/cmake/OpenEXR/*.cmake
 
 %files doc
 %{_docdir}/%{name}
-%exclude %{_docdir}/%{name}/AUTHORS
-%exclude %{_docdir}/%{name}/ChangeLog
-%exclude %{_docdir}/%{name}/NEWS
-%exclude %{_docdir}/%{name}/README*
+%exclude %{_docdir}/%{name}/{CHANGES.md,CODE_OF_CONDUCT.md,CODEOWNERS,CONTRIBUTING.md,CONTRIBUTORS.md,README.md,SECURITY.md}
+
+%files -n libIlmImf%{so_suffix}-%{sonum}
+%license LICENSE.md
+%{_libdir}/libIlmImf-*.so.*
+
+%files -n libIlmImfUtil%{so_suffix}-%{sonum}
+%license LICENSE.md
+%{_libdir}/libIlmImfUtil-*.so.*
 
 %changelog
