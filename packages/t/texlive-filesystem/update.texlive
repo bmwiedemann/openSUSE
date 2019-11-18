@@ -373,7 +373,7 @@ enablemaps ()
     for line in ${maps[@]} ; do
 	let hash++
 	emap=$(sed -rn "s/^\#\![[= =]]+((Mixed|Kanji)?Map)[[:blank:]]*(${line})/\1=\3/p" $cnf_umap)
-	updmap-sys --cnffile $cnf_umap --nohash --nomkmap --enable $emap
+	updmap-sys --cnffile $cnf_umap --nohash --enable $emap
 	let rc+=$?
     done
     ((hash > 0)) && > /var/run/texlive/run-mktexlsr
@@ -499,7 +499,7 @@ for run in /var/run/texlive/run-updmap* ; do
 	    ;;
 	esac
     done < $run
-    updmap-sys --cnffile $cnf_umap --nohash --nomkmap --syncwithtrees < /dev/null 1>&4 2>&4
+    updmap-sys --cnffile $cnf_umap --nohash --syncwithtrees < /dev/null 1>&4 2>&4
     let rc+=$?
     enablemaps $cnf_umap < /dev/null 1>&4 2>&4
     let rc+=$?
@@ -522,7 +522,7 @@ for run in /var/run/texlive/sync-updmap* ; do
     type -p updmap-sys  &> /dev/null || break
     test -e "$cnf_umap" || break
     test $VERBOSE = true && { echo -en "\r[ ]Updating TeX font mappings."; let nl++; }
-    updmap-sys --cnffile $cnf_umap --nohash --nomkmap --syncwithtrees < /dev/null 1>&4 2>&4
+    updmap-sys --cnffile $cnf_umap --nohash --syncwithtrees < /dev/null 1>&4 2>&4
     let rc+=$?
     enablemaps $cnf_umap < /dev/null 1>&4 2>&4
     let rc+=$?

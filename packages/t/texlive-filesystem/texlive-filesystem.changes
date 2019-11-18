@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 15 12:23:34 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Make cron script more failsafe (boo#1150556)
+- Refresh font map files as well on update (boo#1155381) 
+
+-------------------------------------------------------------------
 Tue Aug 20 11:23:25 CEST 2019 - kukuk@suse.de
 
 - BuildRequire cron, too, as it contains now the cron directories

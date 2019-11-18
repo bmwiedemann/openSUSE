@@ -341,4 +341,13 @@
     <comment>submit staged fixes - so we can move forward</comment>
     <requestid>727178</requestid>
   </revision>
+  <revision rev="35" vrev="38">
+    <srcmd5>b3a38d5d4578f0edafbd0433dbf27fa4</srcmd5>
+    <version>unknown</version>
+    <time>1574104003</time>
+    <user>dimstar_suse</user>
+    <comment>- Make cron script more failsafe (boo#1150556)
+- Refresh font map files as well on update (boo#1155381)</comment>
+    <requestid>748893</requestid>
+  </revision>
 </revisionlist>
