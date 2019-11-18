@@ -1,0 +1,12 @@
+--- old/project/Release.scala	2013-11-23 13:43:58.498256144 -0600
++++ new/project/Release.scala	2013-11-25 21:08:00.113468064 -0600
+@@ -39,9 +39,6 @@
+ 	def deployLauncher(launcher: TaskKey[File]) =
+ 		(launcher, launcherRemotePath, credentials, remoteBase, streams) map { (launchJar, remotePath, creds, base, s) =>
+ 			val (uname, pwd) = getCredentials(creds, s.log)
+-			val request = dispatch.classic.url(base) / remotePath <<< (launchJar, "binary/octet-stream") as (uname, pwd)
+-			val http = new dispatch.classic.Http
+-			try { http(request.as_str) } finally { http.shutdown() }
+ 			()
+ 		}
+ 	def getCredentials(cs: Seq[Credentials], log: Logger): (String, String) =

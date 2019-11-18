@@ -1,0 +1,42 @@
+--- old/project/Sbt.scala	2013-11-23 13:43:58.498256144 -0600
++++ new/project/Sbt.scala	2013-11-26 09:59:50.591828593 -0600
+@@ -15,6 +15,7 @@
+ 	def buildSettings = Seq(
+ 		organization := "org.scala-sbt",
+ 		version := "0.13.1",
++		scalaHome := Some(file("scala")),
+ 		publishArtifact in packageDoc := false,
+ 		scalaVersion := "2.10.3",
+ 		publishMavenStyle := false,
+@@ -97,9 +98,6 @@
+ 		// Compiler-side interface to compiler that is compiled against the compiler being used either in advance or on the fly.
+ 		//   Includes API and Analyzer phases that extract source API and relationships.
+ 	lazy val compileInterfaceSub = baseProject(compilePath / "interface", "Compiler Interface") dependsOn(interfaceSub, ioSub % "test->test", logSub % "test->test", launchSub % "test->test") settings( compileInterfaceSettings : _*)
+-	lazy val precompiled282 = precompiled("2.8.2")
+-	lazy val precompiled292 = precompiled("2.9.2")
+-	lazy val precompiled293 = precompiled("2.9.3")
+ 
+ 		// Implements the core functionality of detecting and propagating changes incrementally.
+ 		//   Defines the data structures for representing file fingerprints and relationships and the overall source analysis
+@@ -135,7 +133,7 @@
+ 		// Strictly for bringing implicits and aliases from subsystems into the top-level sbt namespace through a single package object
+ 		//  technically, we need a dependency on all of mainSub's dependencies, but we don't do that since this is strictly an integration project
+ 		//  with the sole purpose of providing certain identifiers without qualification (with a package object)
+-	lazy val sbtSub = baseProject(sbtPath, "sbt") dependsOn(mainSub, compileInterfaceSub, precompiled282, precompiled292, precompiled293, scriptedSbtSub % "test->test") settings(sbtSettings : _*)
++	lazy val sbtSub = baseProject(sbtPath, "sbt") dependsOn(mainSub, compileInterfaceSub, scriptedSbtSub % "test->test") settings(sbtSettings : _*)
+ 
+ 		/* Nested subproject paths */
+ 	def sbtPath = file("sbt")
+@@ -211,10 +209,10 @@
+ 		publishAll <<= inAll(nonRoots, publishLocal.task),
+ 		publishAll <<= (publishAll, publishLocal).map((x,y)=> ()) // publish all normal deps as well as the sbt-launch jar
+ 	)
+-	def fullDocSettings = Util.baseScalacOptions ++ Docs.settings ++ Sxr.settings ++ Seq(
++	def fullDocSettings = Util.baseScalacOptions ++ Sxr.settings ++ Seq(
+ 		scalacOptions += "-Ymacro-no-expand", // for both sxr and doc
+ 		sources in sxr <<= deepTasks(sources in Compile), //sxr
+-		sources in (Compile,doc) <<= sources in sxr, // doc
++		sources in (Compile) <<= sources in sxr, // doc
+ 		Sxr.sourceDirectories <<= deep(sourceDirectories in Compile).map(_.flatten), // to properly relativize the source paths
+ 		fullClasspath in sxr <<= (externalDependencyClasspath in Compile in sbtSub),
+ 		dependencyClasspath in (Compile,doc) <<= fullClasspath in sxr
