@@ -7,7 +7,7 @@
 #
 #   it can be multiline
 # ## used by gem2rpm
-# :license: MIT or Ruby
+:license: Apache-2.0
 # ## used by gem2rpm and gem_packages
 # :version_suffix: -x_y
 # ## used by gem2rpm and gem_packages
@@ -21,9 +21,11 @@
 # ## used by gem2rpm
 # :patches:
 #   foo.patch: -p1
-#   bar.patch: 
+#   bar.patch:
+# :post_patch:
+#   if you need to fiddle with the source dir before rebuilding the gem
 # ## used by gem2rpm
-:sources:
+# :sources:
 # - foo.desktop
 # - bar.desktop
 # :gem_install_args: '....'
@@ -54,7 +56,7 @@
 #   :filelist: |-
 #     /usr/bin/gem2rpm-opensuse
 # ## used by gem_packages
-# :custom:
+# :custom_pkgs:
 #   apache:
 #     :preamble: |-
 #       Requires: .....
@@ -67,4 +69,8 @@
 #       bar
 #     :post: |-
 #       /bin/echo foo
-#
+# :preamble: |-
+#     %if 0%{?suse_version} && 0%{?suse_version} < 1330
+#     %define rb_build_versions ruby24 ruby25
+#     %define rb_default_ruby_abi ruby:2.4.0 ruby:2.5.0
+#     %endif

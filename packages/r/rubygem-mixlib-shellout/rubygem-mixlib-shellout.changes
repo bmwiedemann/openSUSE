@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Nov 17 19:05:49 UTC 2019 - Johannes Kastl <kastl@b1-systems.de>
+
+- added license 'Apache-2.0' to gem2rpm.yml and recreated spec file
+
+-------------------------------------------------------------------
 Fri Jul 19 09:22:43 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to version 3.0.4
