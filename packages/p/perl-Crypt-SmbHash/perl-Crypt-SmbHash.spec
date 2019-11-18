@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Crypt-SmbHash
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,7 +20,7 @@ Name:           perl-Crypt-SmbHash
 Version:        0.12
 Release:        0
 Summary:        perl module Crypt::SmbHash
-License:        Artistic-1.0 or GPL-2.0+
+License:        Artistic-1.0 OR GPL-2.0-or-later
 Group:          Development/Libraries/Perl
 Url:            http://search.cpan.org/perldoc?Crypt::SmbHash
 Source:         http://search.cpan.org/CPAN/authors/id/B/BJ/BJKUIT/Crypt-SmbHash-%{version}.tar.gz
@@ -28,6 +28,7 @@ BuildRequires:  perl-Digest-MD4
 BuildRequires:  perl-macros
 Requires:       perl-Digest-MD4
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildArch:      noarch
 %{perl_requires}
 
 %description
@@ -45,14 +46,12 @@ make %{?_smp_mflags}
 make test
 
 %install
-make DESTDIR=%{buildroot} install_vendor
+%perl_make_install
 %perl_process_packlist
+%perl_gen_filelist
 
-%files
+%files -f %{name}.files
 %defattr(-, root, root)
 %doc Changes MANIFEST README
-%doc %{_mandir}/man?/*
-%{perl_vendorlib}/Crypt
-%{perl_vendorarch}/auto/Crypt
 
 %changelog
