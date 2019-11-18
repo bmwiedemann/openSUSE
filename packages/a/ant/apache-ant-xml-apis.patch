@@ -5,7 +5,7 @@
  # variable
  if $rpm_mode && [ -x /usr/bin/build-classpath ]; then
 -  LOCALCLASSPATH="$(/usr/bin/build-classpath ant ant-launcher jaxp_parser_impl xml-commons-apis)"
-+  LOCALCLASSPATH="$(/usr/bin/build-classpath ant ant-launcher jaxp_parser_impl xml-apis)"
++  LOCALCLASSPATH="$(/usr/bin/build-classpath ant ant-launcher)"
  
    # If no optional jars have been specified then build the default list
    if [ -z "$OPT_JAR_LIST" ]; then

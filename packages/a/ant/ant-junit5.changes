@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov  8 11:15:20 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.10.7
+- Modified patches:
+  * apache-ant-bootstrap.patch
+  * apache-ant-no-test-jar.patch
+  * apache-ant-xml-apis.patch
+  * reproducible-build-manifest.patch
+    + rediff
+- Fix ant-xz.jar to be non-empty and split it from the ant-antlr
+  package
+
+-------------------------------------------------------------------
 Tue Oct  1 08:34:33 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Build against the new compatibility packages log4j12/log4j12-mini

@@ -720,4 +720,12 @@ SPDX format (note that it should CDDL-1.1 if the (c) owner and license steward i
     <comment>build against the new log4j12/log4j12-mini packages</comment>
     <requestid>734252</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>320b6ae462a6a633eb88ce7a4be12aed</srcmd5>
+    <version>1.10.7</version>
+    <time>1574103801</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade to 1.10.7 + overhaul the packaging to have maven metadata and corresponding pom files in the same packages</comment>
+    <requestid>747068</requestid>
+  </revision>
 </revisionlist>

@@ -18,15 +18,15 @@ not relevant).
 --
 --- a/src/main/org/apache/tools/ant/taskdefs/Manifest.java
 +++ b/src/main/org/apache/tools/ant/taskdefs/Manifest.java
-@@ -816,10 +816,7 @@ public class Manifest {
-             try {
-                 insr = new InputStreamReader(in, "UTF-8");
-                 Manifest defaultManifest = new Manifest(insr);
--                String version = System.getProperty("java.runtime.version");
--                if (version == null) {
--                    version = System.getProperty("java.vm.version");
--                }
-+                String version = System.getProperty("java.version");
-                 Attribute createdBy = new Attribute("Created-By",
-                     version + " ("
-                     + System.getProperty("java.vm.vendor") + ")");
+@@ -760,10 +760,7 @@
+                     defManifest);
+             }
+             Manifest defaultManifest = new Manifest(new InputStreamReader(in, JAR_CHARSET));
+-            String version = System.getProperty("java.runtime.version");
+-            if (version == null) {
+-                version = System.getProperty("java.vm.version");
+-            }
++            String version = System.getProperty("java.version");
+             Attribute createdBy = new Attribute("Created-By", version
+                     + " (" + System.getProperty("java.vm.vendor") + ")");
+             defaultManifest.getMainSection().storeAttribute(createdBy);

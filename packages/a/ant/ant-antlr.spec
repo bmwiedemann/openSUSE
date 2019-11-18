@@ -18,14 +18,13 @@
 
 
 %global ant_home %{_datadir}/ant
-%global major_version 1.9
 ##### WARNING: please do not edit this auto generated spec file. Use the ant.spec! #####
 %bcond_with bootstrap
 %bcond_with junit
 %bcond_with junit5
 %bcond_without antlr
 Name:           ant-antlr
-Version:        1.10.5
+Version:        1.10.7
 Release:        0
 Summary:        Antlr Task for ant
 License:        Apache-2.0
@@ -65,6 +64,7 @@ BuildRequires:  junit
 %endif
 %if %{with antlr}
 BuildRequires:  xerces-j2
+BuildRequires:  xz-java
 %endif
 %if %{with junit5}
 BuildRequires:  apiguardian
@@ -89,8 +89,6 @@ Provides:       ant-trax = %{version}
 %if %{with antlr}
 Requires:       antlr
 %requires_eq    ant
-Provides:       ant-antlr = %{version}-%{release}
-Provides:       ant-xz = %{version}-%{release}
 Obsoletes:      ant-javadoc
 %endif
 %if %{with junit}
@@ -123,7 +121,6 @@ Summary:        Optional jmf tasks for ant
 License:        Apache-2.0
 Group:          Development/Tools/Building
 Requires:       ant = %{version}
-Provides:       ant-jmf = %{version}-%{release}
 
 %description -n ant-jmf
 Apache Ant is a Java-based build tool.
@@ -135,7 +132,6 @@ Summary:        Optional swing tasks for ant
 License:        Apache-2.0
 Group:          Development/Tools/Building
 Requires:       ant = %{version}
-Provides:       ant-swing = %{version}-%{release}
 
 %description -n ant-swing
 Apache Ant is a Java-based build tool.
@@ -283,6 +279,17 @@ Requires:       regexp
 %description -n ant-apache-xalan2
 Optional apache xalan2 tasks for %{name}.
 
+%package -n ant-imageio
+Summary:        Optional imageio tasks for ant
+License:        Apache-2.0
+Group:          Development/Tools/Building
+%requires_eq    ant
+
+%description -n ant-imageio
+Apache Ant is a Java-based build tool.
+
+This package contains optional imageio tasks for Apache Ant.
+
 %package -n ant-javamail
 Summary:        Optional javamail tasks for ant
 License:        CDDL-1.0
@@ -322,6 +329,18 @@ Apache Ant is a Java-based build tool.
 
 This package contains optional jsch tasks for Apache Ant.
 
+%package -n ant-xz
+Summary:        Opional xz tasks for ant
+License:        Apache-2.0
+Group:          Development/Tools/Building
+Requires:       xz-java
+%requires_eq    ant
+
+%description -n ant-xz
+Apache Ant is a Java-based build tool.
+
+This package contains optional xz tasks for Apache Ant.
+
 %package -n ant-testutil
 Summary:        Test utility classes for ant
 License:        Apache-2.0
@@ -348,6 +367,7 @@ This package contains the manual for Apache Ant.
 %setup -q -n apache-ant-%{version}
 #Fixup version
 find -name build.xml -o -name pom.xml | xargs sed -i -e s/-SNAPSHOT//
+find -name \*.jar -print -delete
 
 # When bootstrapping, we don't have junit
 %if %{with bootstrap}
@@ -380,7 +400,7 @@ build-jar-repository -s -p lib/optional junit5 opentest4j
 %endif
 %if %{with antlr}
 # we need to build junit in antlr, but we remove it later
-build-jar-repository -s -p lib/optional xerces-j2 xml-apis antlr-bootstrap bcel javamail/mailapi jdepend junit4 log4j12/log4j-12 oro regexp bsf commons-logging commons-net jsch xalan-j2 xalan-j2-serializer xml-resolver
+build-jar-repository -s -p lib/optional xerces-j2 xml-apis antlr-bootstrap bcel javamail/mailapi jdepend junit4 log4j12/log4j-12 oro regexp bsf commons-logging commons-net jsch xalan-j2 xalan-j2-serializer xml-resolver xz-java
 %endif
 
 # Fix file-not-utf8 rpmlint warning
@@ -403,7 +423,6 @@ rm -rf build/lib/ant-jai.jar build/lib/ant-netrexx.jar
 %if %{with bootstrap}
 export GC_MAXIMUM_HEAP_SIZE="134217728" #128M
 export JAVA_HOME="%{java_home}"
-export BOOTJAVAC_OPTS="-source 8 -target 8"
 sh -x ./build.sh --noconfig jars
 
 %endif
@@ -441,14 +460,14 @@ install -d -m 755 %{buildroot}%{_mavenpomdir}
 for jar in build/lib/*.jar
 do
   jarname=$(basename $jar .jar)
-  pomname="JPP.ant-${jarname}.pom"
+  pomname="${jarname}.pom"
 
   #Determine where to put it
   case $jarname in
 #These go into %%{_javadir}, pom files have different names
   ant | ant-bootstrap | ant-launcher)
 %if %{with bootstrap}
-  destdir="%{buildroot}%{_javadir}"; destname="";pomname="JPP-$jarname.pom"
+  destdir="%{buildroot}%{_javadir}/ant"; destname="ant/";pomname="$jarname.pom"
 %else
   continue
 %endif
@@ -495,8 +514,14 @@ do
     %add_maven_depmap ${pomname} ${destname}${jarname}.jar -f swing
   elif [ "$jarname" = ant ]; then
     %add_maven_depmap ${pomname} ${destname}${jarname}.jar -a org.apache.ant:ant-nodeps,apache:ant,ant:ant
-  else
+  elif [ "$jarname" = ant-antlr -o "$jarname" = ant-bootstrap ]; then
     %add_maven_depmap ${pomname} ${destname}${jarname}.jar
+  else
+%if %{with junit} || %{with junit5}
+    %add_maven_depmap ${pomname} ${destname}${jarname}.jar
+%else
+    %add_maven_depmap ${pomname} ${destname}${jarname}.jar -f ${jarname}
+%endif
   fi
 done
 
@@ -557,9 +582,11 @@ echo "log4j12/log4j-12 ant/ant-apache-log4j" > %{buildroot}%{_sysconfdir}/ant.d/
 echo "oro ant/ant-apache-oro" > %{buildroot}%{_sysconfdir}/ant.d/apache-oro
 echo "regexp ant/ant-apache-regexp" > %{buildroot}%{_sysconfdir}/ant.d/apache-regexp
 echo "xalan-j2 ant/ant-apache-xalan2" > %{buildroot}%{_sysconfdir}/ant.d/apache-xalan2
+echo "ant/ant-imageio" > %{buildroot}%{_sysconfdir}/ant.d/imageio
 echo "javamail jaf ant/ant-javamail" > %{buildroot}%{_sysconfdir}/ant.d/javamail
 echo "jdepend ant/ant-jdepend" > %{buildroot}%{_sysconfdir}/ant.d/jdepend
 echo "jsch ant/ant-jsch" > %{buildroot}%{_sysconfdir}/ant.d/jsch
+echo "xz-java ant/ant-xz" > %{buildroot}%{_sysconfdir}/ant.d/xz
 echo "testutil ant/ant-testutil" > %{buildroot}%{_sysconfdir}/ant.d/testutil
 %endif
 
@@ -579,9 +606,8 @@ rm -rf %{buildroot}%{_bindir}/ant.orig
 
 %if %{with bootstrap}
 pushd %{buildroot}%{_javadir}
-  mkdir -p ant
-  for i in ant*.jar; do
-    ln -sf ../${i} ant/${i}
+  for i in ant-bootstrap ant-launcher ant; do
+    ln -sf ant/${i}.jar ${i}.jar
   done
 popd
 
@@ -591,10 +617,9 @@ popd
 %config(noreplace) %{_sysconfdir}/%{name}.conf
 %attr(0755,root,root) %{_bindir}/ant
 %attr(0755,root,root) %{_bindir}/antRun
-%{_javadir}/%{name}/%{name}.jar
-%{_javadir}/%{name}/%{name}-launcher.jar
+%{_javadir}/%{name}.jar
+%{_javadir}/%{name}-launcher.jar
 %{_javadir}/%{name}-bootstrap.jar
-%{_javadir}/%{name}/%{name}-bootstrap.jar
 %dir %{_javadir}/%{name}
 %dir %{ant_home}
 %dir %{ant_home}%{_sysconfdir}
@@ -617,20 +642,9 @@ popd
 %endif
 
 %if %{with antlr}
-%files
-%{_javadir}/ant/ant-antlr.jar
+%files -f .mfiles
 %{ant_home}/lib/ant-antlr.jar
-%{_javadir}/ant/ant-xz.jar
-%{ant_home}/lib/ant-xz.jar
 %config(noreplace) %{_sysconfdir}/ant.d/antlr
-%{_mavenpomdir}/JPP.ant-ant-antlr.pom
-%{_mavenpomdir}/JPP.ant-ant-xz.pom
-%if %{defined _maven_repository}
-%config(noreplace) %{_mavendepmapfragdir}/ant-antlr
-%else
-%{_datadir}/maven-metadata/ant-antlr.xml
-%endif
-%dir %{_mavenpomdir}
 %endif
 
 %if %{with junit}
@@ -665,99 +679,68 @@ popd
 %endif #if bootstrap
 
 %if %{with antlr}
-%files -n ant-apache-bsf
-%{_javadir}/ant/ant-apache-bsf.jar
+%files -n ant-apache-bsf -f .mfiles-ant-apache-bsf
 %{ant_home}/lib/ant-apache-bsf.jar
 %config(noreplace) %{_sysconfdir}/ant.d/apache-bsf
-%{_mavenpomdir}/JPP.ant-ant-apache-bsf.pom
-%dir %{_mavenpomdir}
 
-%files -n ant-apache-resolver
-%{_javadir}/ant/ant-apache-resolver.jar
+%files -n ant-apache-resolver -f .mfiles-ant-apache-resolver
 %{ant_home}/lib/ant-apache-resolver.jar
 %config(noreplace) %{_sysconfdir}/ant.d/apache-resolver
-%{_mavenpomdir}/JPP.ant-ant-apache-resolver.pom
-%dir %{_mavenpomdir}
 
-%files -n ant-commons-logging
-%{_javadir}/ant/ant-commons-logging.jar
+%files -n ant-commons-logging -f .mfiles-ant-commons-logging
 %{ant_home}/lib/ant-commons-logging.jar
 %config(noreplace) %{_sysconfdir}/ant.d/commons-logging
-%{_mavenpomdir}/JPP.ant-ant-commons-logging.pom
-%dir %{_mavenpomdir}
 
-%files -n ant-commons-net
-%{_javadir}/ant/ant-commons-net.jar
+%files -n ant-commons-net -f .mfiles-ant-commons-net
 %{ant_home}/lib/ant-commons-net.jar
 %config(noreplace) %{_sysconfdir}/ant.d/commons-net
-%{_mavenpomdir}/JPP.ant-ant-commons-net.pom
-%dir %{_mavenpomdir}
 
-%files -n ant-apache-bcel
-%{_javadir}/ant/ant-apache-bcel.jar
+%files -n ant-apache-bcel -f .mfiles-ant-apache-bcel
 %{ant_home}/lib/ant-apache-bcel.jar
 %config(noreplace) %{_sysconfdir}/ant.d/apache-bcel
-%{_mavenpomdir}/JPP.ant-ant-apache-bcel.pom
-%dir %{_mavenpomdir}
 
-%files -n ant-apache-log4j
-%{_javadir}/ant/ant-apache-log4j.jar
+%files -n ant-apache-log4j -f .mfiles-ant-apache-log4j
 %{ant_home}/lib/ant-apache-log4j.jar
 %config(noreplace) %{_sysconfdir}/ant.d/apache-log4j
-%{_mavenpomdir}/JPP.ant-ant-apache-log4j.pom
-%dir %{_mavenpomdir}
 
-%files -n ant-apache-oro
-%{_javadir}/ant/ant-apache-oro.jar
+%files -n ant-apache-oro -f .mfiles-ant-apache-oro
 %{ant_home}/lib/ant-apache-oro.jar
 %{ant_home}%{_sysconfdir}/maudit-frames.xsl
 %config(noreplace) %{_sysconfdir}/ant.d/apache-oro
-%{_mavenpomdir}/JPP.ant-ant-apache-oro.pom
-%dir %{_mavenpomdir}
 
-%files -n ant-apache-regexp
-%{_javadir}/ant/ant-apache-regexp.jar
+%files -n ant-apache-regexp -f .mfiles-ant-apache-regexp
 %{ant_home}/lib/ant-apache-regexp.jar
 %config(noreplace) %{_sysconfdir}/ant.d/apache-regexp
-%{_mavenpomdir}/JPP.ant-ant-apache-regexp.pom
-%dir %{_mavenpomdir}
 
-%files -n ant-apache-xalan2
-%{_javadir}/ant/ant-apache-xalan2.jar
+%files -n ant-apache-xalan2 -f .mfiles-ant-apache-xalan2
 %{ant_home}/lib/ant-apache-xalan2.jar
 %config(noreplace) %{_sysconfdir}/ant.d/apache-xalan2
-%{_mavenpomdir}/JPP.ant-ant-apache-xalan2.pom
-%dir %{_mavenpomdir}
 
-%files -n ant-javamail
-%{_javadir}/ant/ant-javamail.jar
+%files -n ant-imageio -f .mfiles-ant-imageio
+%{ant_home}/lib/ant-imageio.jar
+%config(noreplace) %{_sysconfdir}/ant.d/imageio
+
+%files -n ant-javamail -f .mfiles-ant-javamail
 %{ant_home}/lib/ant-javamail.jar
 %config(noreplace) %{_sysconfdir}/ant.d/javamail
-%{_mavenpomdir}/JPP.ant-ant-javamail.pom
-%dir %{_mavenpomdir}
 
-%files -n ant-jdepend
-%{_javadir}/ant/ant-jdepend.jar
+%files -n ant-jdepend -f .mfiles-ant-jdepend
 %{ant_home}/lib/ant-jdepend.jar
 %config(noreplace) %{_sysconfdir}/ant.d/jdepend
 %{ant_home}%{_sysconfdir}/jdepend.xsl
 %{ant_home}%{_sysconfdir}/jdepend-frames.xsl
-%{_mavenpomdir}/JPP.ant-ant-jdepend.pom
-%dir %{_mavenpomdir}
 
-%files -n ant-jsch
-%{_javadir}/ant/ant-jsch.jar
+%files -n ant-jsch -f .mfiles-ant-jsch
 %{ant_home}/lib/ant-jsch.jar
 %config(noreplace) %{_sysconfdir}/ant.d/jsch
-%{_mavenpomdir}/JPP.ant-ant-jsch.pom
-%dir %{_mavenpomdir}
 
-%files -n ant-testutil
-%{_javadir}/ant/ant-testutil.jar
+%files -n ant-xz -f .mfiles-ant-xz
+%{ant_home}/lib/ant-xz.jar
+%config(noreplace) %{_sysconfdir}/ant.d/xz
+
+%files -n ant-testutil -f .mfiles-ant-testutil
 %{ant_home}/lib/ant-testutil.jar
 %config(noreplace) %{_sysconfdir}/ant.d/testutil
-%{_mavenpomdir}/JPP.ant-ant-testutil.pom
-%dir %{_mavenpomdir}
 
 %files -n ant-manual
 %doc manual/*
