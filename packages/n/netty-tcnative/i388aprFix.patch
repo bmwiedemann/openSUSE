@@ -1,0 +1,12 @@
+--- netty-tcnative-netty-tcnative-1.1.30.Fork2/src/main/native-package/m4/custom.m4
++++ netty-tcnative-netty-tcnative-1.1.30.Fork2/src/main/native-package/m4/custom.m4
+@@ -47,7 +47,7 @@
+   fi
+ 
+   dnl Update the compiler/linker flags to add APR and OpenSSL to the build path.
+-  CFLAGS="$CFLAGS $TCN_OPENSSL_INC $APR_INCLUDES"
++  CFLAGS="$CFLAGS $TCN_OPENSSL_INC $APR_INCLUDES -D_LARGEFILE64_SOURCE"
+   CXXFLAGS="$CXXFLAGS $TCN_OPENSSL_INC $APR_INCLUDES"
+   LDFLAGS="$LDFLAGS $TCN_OPENSSL_LIBS $APR_LIBS"
+   AC_SUBST(CFLAGS)
+

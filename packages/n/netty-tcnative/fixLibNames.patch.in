@@ -1,0 +1,40 @@
+--- netty-tcnative-netty-tcnative-1.1.30.Fork2/src/main/java/org/apache/tomcat/jni/Library (copy).java
++++ netty-tcnative-netty-tcnative-1.1.30.Fork2/src/main/java/org/apache/tomcat/jni/Library.java
+@@ -24,7 +24,7 @@
+ public final class Library {
+ 
+     /* Default library names */
+-    private static final String [] NAMES = {"tcnative-1", "libtcnative-1"};
++    private static final String [] NAMES = {"netty-tcnative", "libnetty-tcnative", "netty-tcnative-1", "libnetty-tcnative-1"};
+     /*
+      * A handle to the unique Library singleton instance.
+      */
+@@ -36,8 +36,9 @@
+         boolean loaded = false;
+         StringBuilder err = new StringBuilder();
+         for (int i = 0; i < NAMES.length; i++) {
++            String name = "@PATH@/" + NAMES[i] + ".so";
+             try {
+-                System.loadLibrary(NAMES[i]);
++                System.load(name);
+                 loaded = true;
+             }
+             catch (Throwable t) {
+@@ -47,16 +48,10 @@
+                 if (t instanceof VirtualMachineError) {
+                     throw (VirtualMachineError) t;
+                 }
+-                String name = System.mapLibraryName(NAMES[i]);
+-                String path = System.getProperty("java.library.path");
+-                String sep = System.getProperty("path.separator");
+-                String [] paths = path.split(sep);
+-                for (int j=0; j<paths.length; j++) {
+-                    java.io.File fd = new java.io.File(paths[j] , name);
++                    java.io.File fd = new java.io.File(name);
+                     if (fd.exists()) {
+                         t.printStackTrace();
+                     }
+-                }
+                 if ( i > 0)
+                     err.append(", ");
+                 err.append(t.getMessage());
