@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-doctestplus
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,15 +26,13 @@
 %endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-doctestplus%{psuffix}
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        Pytest plugin with advanced doctest features
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/astropy/pytest-doctestplus
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-doctestplus/pytest-doctestplus-%{version}.tar.gz
-# Backport of https://github.com/astropy/pytest-doctestplus/pull/37
-Patch0:         pr_37.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -42,6 +40,7 @@ Requires:       python-pytest >= 3.0
 Requires:       python-six
 BuildArch:      noarch
 %if %{with test}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 3.0}
 BuildRequires:  %{python_module pytest-doctestplus >= %{version}}
 BuildRequires:  %{python_module six}
@@ -55,7 +54,6 @@ advanced doctest support and enables the testing of reStructuredText
 
 %prep
 %setup -q -n pytest-doctestplus-%{version}
-%patch0 -p1
 # do not change the pytest behaviour for us
 rm -f setup.cfg
 

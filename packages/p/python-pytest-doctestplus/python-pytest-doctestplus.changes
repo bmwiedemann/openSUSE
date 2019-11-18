@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov 18 08:01:54 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.5.0:
+  * No longer require Numpy. [#69]
+  * Fixed a bug that caused __doctest_requires__ to not work correctly with submodules. [#73]
+  * Fixed a limitation that meant that ELLIPSIS and FLOAT_CMP could not be used at the same time. [#75]
+  * Fixed a bug that caused .. doctest-requires:: to not work correctly. [#78]
+  * Fixed a FutureWarning related to split() with regular expressions. [#78]
+  * Make it possible to specify versions in .. doctest-requires::. [#78]
+  * Allow to use doctest-glob option instead of doctest-rst and text-file-format [#80]
+  * Make comment character configurable via ini variable text_file_comment_chars [#80]
+  * Respect ignore and ignore-glob options from pytest. [#82]
+  * Add --doctest-only option. [#83]
+  * Added an IGNORE_WARNINGS option for # doctest: [#84]
+- Remove merged patch pr_37.patch
+
+-------------------------------------------------------------------
 Fri Sep 20 09:47:57 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.4.0:
