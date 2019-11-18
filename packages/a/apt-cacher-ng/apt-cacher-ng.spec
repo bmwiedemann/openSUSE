@@ -63,7 +63,7 @@ sed -i 's@lib/systemd@usr/&@' systemd/CMakeLists.txt
 
 %build
 %cmake -DDOCDIR=%{_docdir}/%{name} -DSDINSTALL:BOOL=ON -DSYSCONFDIR=%{_sysconfdir}
-%make_jobs
+%cmake_build
 
 %install
 
