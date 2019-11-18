@@ -70,7 +70,7 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 Name:           %{package_name}
-Version:        1.17.3
+Version:        1.17.4
 Release:        0
 Summary:        NumPy array processing for numbers, strings, records and objects
 License:        BSD-3-Clause

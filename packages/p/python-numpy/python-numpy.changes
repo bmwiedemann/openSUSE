@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Nov 16 17:51:25 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.17.4:
+  * #14758: BLD: declare support for python 3.8
+  * #14781: BUG: random: biased samples from integers() with 8 or 16
+     bit...
+  * #14851: BUG: Fix _ctypes class circular reference. (#13808)
+  * #14852: BLD: add 'apt update' to shippable
+  * #14855: BUG: Fix np.einsum errors on Power9 Linux and z/Linux
+  * #14857: BUG: lib: Fix histogram problem with signed integer
+     arrays.
+  * #14858: BLD: Prevent -flto from optimising long double
+     representation...
+  * #14866: MAINT: move buffer.h -> npy_buffer.h to avoid conflicts
+
+-------------------------------------------------------------------
 Tue Oct 29 09:57:08 UTC 2019 - Andreas Schwab <schwab@suse.de>
 
 - riscv.patch: Remove obsolete patch

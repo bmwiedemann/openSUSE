@@ -751,4 +751,12 @@ All packages broken by this update should be fixed now</comment>
     <comment></comment>
     <requestid>743811</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>caaae304fb5ac39892e88ed89ce9e568</srcmd5>
+    <version>1.17.4</version>
+    <time>1574104040</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749098</requestid>
+  </revision>
 </revisionlist>
