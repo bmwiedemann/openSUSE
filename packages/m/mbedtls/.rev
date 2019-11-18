@@ -241,4 +241,13 @@
 - Use ninja to for build</comment>
     <requestid>728035</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f69bb0c75a3bb7039b823c2b189f1aaa</srcmd5>
+    <version>2.16.3</version>
+    <time>1574103644</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.16.3:
+  * Security improvements and bugfixes</comment>
+    <requestid>748322</requestid>
+  </revision>
 </revisionlist>
