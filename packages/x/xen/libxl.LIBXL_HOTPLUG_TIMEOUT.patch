@@ -89,7 +89,7 @@ Index: xen-4.13.0-testing/tools/libxl/libxl_create.c
 ===================================================================
 --- xen-4.13.0-testing.orig/tools/libxl/libxl_create.c
 +++ xen-4.13.0-testing/tools/libxl/libxl_create.c
-@@ -1024,6 +1024,7 @@ static void initiate_domain_create(libxl
+@@ -1116,6 +1116,7 @@ static void initiate_domain_create(libxl
       * build info around just to know if the domain has a device model or not.
       */
      store_libxl_entry(gc, domid, &d_config->b_info);
@@ -290,7 +290,7 @@ Index: xen-4.13.0-testing/tools/libxl/libxl_internal.h
  
  #include <xenevtchn.h>
  #include <xenstore.h>
-@@ -1496,6 +1497,7 @@ struct libxl__xswait_state {
+@@ -1507,6 +1508,7 @@ struct libxl__xswait_state {
      const char *what; /* for error msgs: noun phrase, what we're waiting for */
      const char *path;
      int timeout_ms; /* as for poll(2) */
@@ -298,7 +298,7 @@ Index: xen-4.13.0-testing/tools/libxl/libxl_internal.h
      libxl__xswait_callback *callback;
      /* remaining fields are private to xswait */
      libxl__ev_time time_ev;
-@@ -2554,6 +2556,7 @@ struct libxl__async_exec_state {
+@@ -2565,6 +2567,7 @@ struct libxl__async_exec_state {
      char **args; /* execution arguments */
      char **env; /* execution environment */
  
@@ -306,7 +306,7 @@ Index: xen-4.13.0-testing/tools/libxl/libxl_internal.h
      /* private */
      libxl__ev_time time;
      libxl__ev_child child;
-@@ -4732,6 +4735,9 @@ _hidden int libxl__domain_pvcontrol(libx
+@@ -4744,6 +4747,9 @@ _hidden int libxl__domain_pvcontrol(libx
  
  #endif
  

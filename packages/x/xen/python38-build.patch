@@ -1,14 +1,19 @@
---- a/m4/python_devel.m4
-+++ b/m4/python_devel.m4
+# PATCH-FIX-UPSTREAM python38-build.patch mcepl@suse.com
+# Make package buildable with python3.8
+
+Index: xen-4.13.0-testing/m4/python_devel.m4
+===================================================================
+--- xen-4.13.0-testing.orig/m4/python_devel.m4
++++ xen-4.13.0-testing/m4/python_devel.m4
 @@ -24,7 +24,12 @@ AS_IF([test x"$pyconfig" = x"no"], [
      dnl If python-config is found use it
      CPPFLAGS="$CFLAGS `$PYTHON-config --cflags`"
      LDFLAGS="$LDFLAGS `$PYTHON-config --ldflags`"
 -    LIBS="$LIBS `$PYTHON-config --libs`"
 +    if $PYTHON-config --libs --embed >/dev/null 2>&1 ; then
-+    PYLIBS="$($PYTHON-config --libs --embed)"
++        PYLIBS="$($PYTHON-config --libs --embed)"
 +    else
-+    PYLIBS="$($PYTHON-config --libs)"
++        PYLIBS="$($PYTHON-config --libs)"
 +    fi
 +    LIBS="$LIBS $PYLIBS"
  ])

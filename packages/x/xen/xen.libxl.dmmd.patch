@@ -122,7 +122,7 @@ Index: xen-4.13.0-testing/tools/libxl/libxl_internal.h
 ===================================================================
 --- xen-4.13.0-testing.orig/tools/libxl/libxl_internal.h
 +++ xen-4.13.0-testing/tools/libxl/libxl_internal.h
-@@ -1945,6 +1945,10 @@ struct libxl__cpuid_policy {
+@@ -1956,6 +1956,10 @@ struct libxl__cpuid_policy {
      char *policy[4];
  };
  

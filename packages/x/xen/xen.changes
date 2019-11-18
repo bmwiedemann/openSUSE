@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 12 08:09:27 MST 2019 - carnold@suse.com
+
+- Update to Xen 4.13.0 RC2 release
+  xen-4.13.0-testing-src.tar.bz2
+
+-------------------------------------------------------------------
 Tue Oct 29 14:27:13 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Add python38-build.patch fixing build with Python 3.8 (add

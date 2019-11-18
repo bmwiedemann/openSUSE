@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 # needssslcertforbuild
 
@@ -24,7 +24,7 @@
 
 Name:           xen
 ExclusiveArch:  %ix86 x86_64 aarch64
-%define changeset 40015
+%define changeset 40113
 %define xen_build_dir xen-4.13.0-testing
 #
 %define with_gdbsx 0
@@ -127,7 +127,7 @@ BuildRequires:  makeinfo
 BuildRequires:  pesign-obs-integration
 %endif
 
-Version:        4.13.0_01
+Version:        4.13.0_02
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -207,8 +207,6 @@ Patch621:       xen.build-compare.doc_html.patch
 Patch623:       ipxe-no-error-logical-not-parentheses.patch
 Patch624:       ipxe-use-rpm-opt-flags.patch
 # Build patches
-# PATCH-FIX-UPSTREAM python38-build.patch mcepl@suse.com
-# Make package buildable with python3.8
 Patch99995:     python38-build.patch
 Patch99996:     xen.stubdom.newlib.patch
 Patch99998:     tmp_build.patch

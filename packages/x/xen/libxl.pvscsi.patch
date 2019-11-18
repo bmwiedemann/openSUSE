@@ -38,7 +38,7 @@ Index: xen-4.13.0-testing/docs/man/xl.cfg.5.pod.in
 ===================================================================
 --- xen-4.13.0-testing.orig/docs/man/xl.cfg.5.pod.in
 +++ xen-4.13.0-testing/docs/man/xl.cfg.5.pod.in
-@@ -750,6 +750,62 @@ frontend to backend. It can be used as a
+@@ -756,6 +756,62 @@ frontend to backend. It can be used as a
  For more information about the protocol, see
  https://xenbits.xenproject.org/docs/unstable/misc/pvcalls.html.
  
@@ -154,7 +154,7 @@ Index: xen-4.13.0-testing/tools/libxl/libxl.h
 ===================================================================
 --- xen-4.13.0-testing.orig/tools/libxl/libxl.h
 +++ xen-4.13.0-testing/tools/libxl/libxl.h
-@@ -1124,6 +1124,13 @@ void libxl_mac_copy(libxl_ctx *ctx, libx
+@@ -1125,6 +1125,13 @@ void libxl_mac_copy(libxl_ctx *ctx, libx
  #define LIBXL_HAVE_PCITOPOLOGY 1
  
  /*
@@ -168,7 +168,7 @@ Index: xen-4.13.0-testing/tools/libxl/libxl.h
   * LIBXL_HAVE_SOCKET_BITMAP
   *
   * If this is defined, then libxl_socket_bitmap_alloc and
-@@ -2119,6 +2126,41 @@ int libxl_device_channel_getinfo(libxl_c
+@@ -2141,6 +2148,41 @@ int libxl_device_channel_getinfo(libxl_c
                                   const libxl_device_channel *channel,
                                   libxl_channelinfo *channelinfo);
  
@@ -214,7 +214,7 @@ Index: xen-4.13.0-testing/tools/libxl/libxl_create.c
 ===================================================================
 --- xen-4.13.0-testing.orig/tools/libxl/libxl_create.c
 +++ xen-4.13.0-testing/tools/libxl/libxl_create.c
-@@ -1563,6 +1563,7 @@ const libxl__device_type *device_type_tb
+@@ -1655,6 +1655,7 @@ const libxl__device_type *device_type_tb
      &libxl__disk_devtype,
      &libxl__nic_devtype,
      &libxl__vtpm_devtype,
@@ -226,7 +226,7 @@ Index: xen-4.13.0-testing/tools/libxl/libxl_internal.h
 ===================================================================
 --- xen-4.13.0-testing.orig/tools/libxl/libxl_internal.h
 +++ xen-4.13.0-testing/tools/libxl/libxl_internal.h
-@@ -3838,6 +3838,7 @@ extern const libxl__device_type libxl__v
+@@ -3849,6 +3849,7 @@ extern const libxl__device_type libxl__v
  extern const libxl__device_type libxl__disk_devtype;
  extern const libxl__device_type libxl__nic_devtype;
  extern const libxl__device_type libxl__vtpm_devtype;
@@ -238,7 +238,7 @@ Index: xen-4.13.0-testing/tools/libxl/libxl_types.idl
 ===================================================================
 --- xen-4.13.0-testing.orig/tools/libxl/libxl_types.idl
 +++ xen-4.13.0-testing/tools/libxl/libxl_types.idl
-@@ -928,6 +928,43 @@ libxl_device_vsnd = Struct("device_vsnd"
+@@ -929,6 +929,43 @@ libxl_device_vsnd = Struct("device_vsnd"
      ("pcms", Array(libxl_vsnd_pcm, "num_vsnd_pcms"))
      ])
  
@@ -282,7 +282,7 @@ Index: xen-4.13.0-testing/tools/libxl/libxl_types.idl
  libxl_domain_config = Struct("domain_config", [
      ("c_info", libxl_domain_create_info),
      ("b_info", libxl_domain_build_info),
-@@ -939,6 +976,7 @@ libxl_domain_config = Struct("domain_con
+@@ -940,6 +977,7 @@ libxl_domain_config = Struct("domain_con
      ("dtdevs", Array(libxl_device_dtdev, "num_dtdevs")),
      ("vfbs", Array(libxl_device_vfb, "num_vfbs")),
      ("vkbs", Array(libxl_device_vkb, "num_vkbs")),
@@ -290,7 +290,7 @@ Index: xen-4.13.0-testing/tools/libxl/libxl_types.idl
      ("vtpms", Array(libxl_device_vtpm, "num_vtpms")),
      ("p9s", Array(libxl_device_p9, "num_p9s")),
      ("pvcallsifs", Array(libxl_device_pvcallsif, "num_pvcallsifs")),
-@@ -980,6 +1018,21 @@ libxl_nicinfo = Struct("nicinfo", [
+@@ -981,6 +1019,21 @@ libxl_nicinfo = Struct("nicinfo", [
      ("rref_rx", integer),
      ], dir=DIR_OUT)
  
@@ -2258,7 +2258,7 @@ Index: xen-4.13.0-testing/tools/xl/xl_parse.c
      XLU_ConfigList *channels, *ioports, *irqs, *iomem, *viridian, *dtdevs,
                     *mca_caps;
      int num_ioports, num_irqs, num_iomem, num_cpus, num_viridian, num_mca_caps;
-@@ -2104,6 +2105,17 @@ void parse_config_data(const char *confi
+@@ -2036,6 +2037,17 @@ void parse_config_data(const char *confi
          }
      }
  

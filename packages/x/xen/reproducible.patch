@@ -34,7 +34,7 @@ Index: xen-4.13.0-testing/xen/arch/x86/Makefile
 ===================================================================
 --- xen-4.13.0-testing.orig/xen/arch/x86/Makefile
 +++ xen-4.13.0-testing/xen/arch/x86/Makefile
-@@ -162,6 +162,7 @@ note.o: $(TARGET)-syms
+@@ -163,6 +163,7 @@ note.o: $(TARGET)-syms
  
  EFI_LDFLAGS = $(patsubst -m%,-mi386pep,$(LDFLAGS)) --subsystem=10
  EFI_LDFLAGS += --image-base=$(1) --stack=0,0 --heap=0,0 --strip-debug
