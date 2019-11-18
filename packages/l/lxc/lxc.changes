@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 11 23:26:49 UTC 2019 - Pavol Cupka <palica@liguros.net>
+
+- adding a patch to fix "Containers fail to start regression lxc 3.2"
+  - patch name: lxc-3.2.1-cgroups-init-cpuset-properly.patch
+  - upstream issue - https://github.com/lxc/lxc/issues/3108
+
+-------------------------------------------------------------------
 Thu Sep 12 14:53:16 UTC 2019 - Aleksa Sarai <asarai@suse.com>
 
 - Add backport of https://github.com/lxc/lxc/pull/3102 to fix build failures on

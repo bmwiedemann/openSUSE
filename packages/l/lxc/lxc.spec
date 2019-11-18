@@ -48,6 +48,7 @@ Source90:       openSUSE-apparmor.conf
 Source91:       missing_setuid.txt.in
 # FIX-UPSTREAM: Backport of https://github.com/lxc/lxc/pull/3102.
 Patch1:         0001-tree-wide-initialize-all-auto-cleanup-variables.patch
+Patch2:         lxc-3.2.1-cgroups-init-cpuset-properly.patch
 BuildRequires:  gcc
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -131,6 +132,7 @@ Bash command line completion support for %{name}.
 %setup
 # Fix -Werror=maybe-uninitialized build errors.
 %patch1 -p1
+%patch2 -p1
 
 %build
 ./autogen.sh
