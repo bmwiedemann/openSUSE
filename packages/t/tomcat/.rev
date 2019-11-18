@@ -585,4 +585,12 @@ can be accepted after ecj-4.2.1 version upgrade
     <comment>Add maven metadata for tomcat-util-scan + avoid duplicate metadata</comment>
     <requestid>735434</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>cb22c72aa05f8d7bafbac40c53c42e49</srcmd5>
+    <version>9.0.27</version>
+    <time>1574104269</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 9.0.27 + generate OSGi manifest using aqute-bnd</comment>
+    <requestid>749212</requestid>
+  </revision>
 </revisionlist>

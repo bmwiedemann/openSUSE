@@ -1,13 +1,55 @@
-Index: apache-tomcat-9.0.17-src/build.xml
-===================================================================
---- apache-tomcat-9.0.17-src.orig/build.xml
-+++ apache-tomcat-9.0.17-src/build.xml
-@@ -1811,10 +1811,11 @@ Apache Tomcat ${version} native binaries
-       encoding="UTF-8"
+--- apache-tomcat-9.0.27-src/build.xml	2019-10-07 12:01:06.000000000 +0200
++++ apache-tomcat-9.0.27-src/build.xml	2019-11-16 00:52:57.833495494 +0100
+@@ -1859,7 +1859,7 @@
+       source="${compile.source}"
+       maxmemory="512m"
+       failonerror="true"
+-      failonwarning="true">
++      failonwarning="false">
+       <classpath>
+         <path refid="compile.classpath"/>
+         <path location="${ant.core.lib}"/>
+@@ -1881,7 +1881,7 @@
+       source="${compile.source}"
+       maxmemory="512m"
+       failonerror="true"
+-      failonwarning="true">
++      failonwarning="false">
+       <classpath>
+         <path refid="compile.classpath"/>
+         <path location="${ant.core.lib}"/>
+@@ -1902,7 +1902,7 @@
+       source="${compile.source}"
+       maxmemory="512m"
+       failonerror="true"
+-      failonwarning="true">
++      failonwarning="false">
+       <classpath>
+         <path refid="compile.classpath"/>
+         <path location="${ant.core.lib}"/>
+@@ -1923,7 +1923,7 @@
+       source="${compile.source}"
+       maxmemory="512m"
+       failonerror="true"
+-      failonwarning="true">
++      failonwarning="false">
+       <classpath>
+         <path refid="compile.classpath"/>
+         <path location="${ant.core.lib}"/>
+@@ -1944,7 +1944,7 @@
+       source="${compile.source}"
+       maxmemory="512m"
+       failonerror="true"
+-      failonwarning="true">
++      failonwarning="false">
+       <classpath>
+         <path refid="compile.classpath"/>
+         <path location="${ant.core.lib}"/>
+@@ -1962,9 +1962,10 @@
        docencoding="UTF-8"
        charset="UTF-8"
-+      source="${compile.source}"
        additionalparam="-breakiterator -notimestamp"
++	  source="${compile.source}"
        maxmemory="512m"
        failonerror="true"
 -      failonwarning="true">
@@ -15,13 +57,8 @@ Index: apache-tomcat-9.0.17-src/build.xml
        <classpath>
          <path refid="compile.classpath"/>
          <path location="${ant.core.lib}"/>
-@@ -1830,11 +1831,12 @@ Apache Tomcat ${version} native binaries
-       bottom="Copyright &amp;#169; 2000-${year} Apache Software Foundation. All Rights Reserved."
-       encoding="UTF-8"
-       docencoding="UTF-8"
-+      source="${compile.source}"
-       charset="UTF-8"
-       additionalparam="-breakiterator -notimestamp"
+@@ -1984,7 +1985,7 @@
+       source="${compile.source}"
        maxmemory="512m"
        failonerror="true"
 -      failonwarning="true">
@@ -29,52 +66,11 @@ Index: apache-tomcat-9.0.17-src/build.xml
        <classpath>
          <path refid="compile.classpath"/>
          <path location="${ant.core.lib}"/>
-@@ -1851,10 +1853,11 @@ Apache Tomcat ${version} native binaries
-       encoding="UTF-8"
-       docencoding="UTF-8"
-       charset="UTF-8"
-+      source="${compile.source}"
-       additionalparam="-breakiterator -notimestamp"
-       maxmemory="512m"
-       failonerror="true"
--      failonwarning="true">
-+      failonwarning="false">
-       <classpath>
-         <path refid="compile.classpath"/>
-         <path location="${ant.core.lib}"/>
-@@ -1871,10 +1874,11 @@ Apache Tomcat ${version} native binaries
-       encoding="UTF-8"
-       docencoding="UTF-8"
-       charset="UTF-8"
-+      source="${compile.source}"
-       additionalparam="-breakiterator -notimestamp"
-       maxmemory="512m"
-       failonerror="true"
--      failonwarning="true">
-+      failonwarning="false">
-       <classpath>
-         <path refid="compile.classpath"/>
-         <path location="${ant.core.lib}"/>
-@@ -1890,10 +1894,11 @@ Apache Tomcat ${version} native binaries
-       encoding="UTF-8"
-       docencoding="UTF-8"
-       charset="UTF-8"
--      additionalparam="-breakiterator -notimestamp ${java9.add.modules}"
-+      source="${compile.source}"
-+      additionalparam="-breakiterator -notimestamp"
-       maxmemory="512m"
-       failonerror="true"
--      failonwarning="true">
-+      failonwarning="false">
-       <classpath>
-         <path refid="compile.classpath"/>
-         <path location="${ant.core.lib}"/>
-@@ -1902,9 +1907,6 @@ Apache Tomcat ${version} native binaries
-       <link href="../jspapi"/>
+@@ -1995,8 +1996,6 @@
        <link href="../elapi"/>
        <link href="../websocketapi"/>
--      <link href="http://docs.oracle.com/javase/8/docs/api/"/>
--      <link href="https://commons.apache.org/proper/commons-io/javadocs/api-release/"/>
+       <link href="../jaspicapi"/>
+-      <link href="https://docs.oracle.com/javase/8/docs/api/"/>
 -      <link href="https://javaee.github.io/javaee-spec/javadocs/"/>
        <packageset dir="${tomcat.dist}/src/java/">
          <include name="org/**"/>

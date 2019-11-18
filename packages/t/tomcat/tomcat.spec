@@ -1,7 +1,7 @@
 #
 # spec file for package tomcat
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@
 %define elspec 3.0
 %define major_version 9
 %define minor_version 0
-%define micro_version 20
+%define micro_version 27
 %define packdname apache-tomcat-%{version}-src
 # FHS 2.3 compliant tree structure - http://www.pathname.com/fhs/2.3/
 %global basedir /srv/%{name}
@@ -48,7 +48,7 @@ Release:        0
 Summary:        Apache Servlet/JSP/EL Engine, RI for Servlet 4.0/JSP 2.3/EL 3.0 API
 License:        Apache-2.0
 Group:          Productivity/Networking/Web/Servers
-Url:            http://tomcat.apache.org
+URL:            http://tomcat.apache.org
 Source0:        https://archive.apache.org/dist/tomcat/tomcat-%{major_version}/v%{version}/src/%{packdname}.tar.gz
 Source1:        %{name}-%{major_version}.%{minor_version}.conf
 Source2:        %{name}-%{major_version}.%{minor_version}.init
@@ -57,15 +57,8 @@ Source4:        %{name}-%{major_version}.%{minor_version}.wrapper
 Source5:        %{name}-%{major_version}.%{minor_version}.logrotate
 Source6:        %{name}-%{major_version}.%{minor_version}-digest.script
 Source7:        %{name}-%{major_version}.%{minor_version}-tool-wrapper.script
-Source8:        servlet-api-OSGi-MANIFEST.MF
-Source9:        jsp-api-OSGi-MANIFEST.MF
 Source10:       %{name}-%{major_version}.%{minor_version}-log4j.properties
 Source11:       %{name}-%{major_version}.%{minor_version}.service
-Source12:       el-api-OSGi-MANIFEST.MF
-Source13:       jasper-el-OSGi-MANIFEST.MF
-Source14:       jasper-OSGi-MANIFEST.MF
-Source15:       tomcat-api-OSGi-MANIFEST.MF
-Source16:       tomcat-juli-OSGi-MANIFEST.MF
 Source20:       %{name}-%{major_version}.%{minor_version}-jsvc.service
 Source21:       tomcat-functions
 Source30:       tomcat-preamble
@@ -95,6 +88,8 @@ BuildRequires:  apache-commons-collections
 BuildRequires:  apache-commons-daemon
 BuildRequires:  apache-commons-dbcp >= 2.0
 BuildRequires:  apache-commons-pool2
+BuildRequires:  aqute-bnd
+BuildRequires:  aqute-bndlib
 BuildRequires:  ecj >= 4.4.0
 BuildRequires:  fdupes
 BuildRequires:  findutils
@@ -260,7 +255,7 @@ find . -type f \( -name "*.bat" -o -name "*.class" -o -name Thumbs.db -o -name "
           -name "*.jar" -o -name "*.war" -o -name "*.zip" \) -print -delete
 %patch0
 %patch1
-%patch2 -p1
+#%patch2 -p1
 %patch3
 %patch4 -p1
 %patch5 -p1
@@ -284,6 +279,7 @@ mkdir -p HACKDIR
 touch HACKDIR/build.xml
 
 ant -Dbase.path="." \
+    -Dadd.osgi.jar.metadata="true" \
     -Djava.7.home="%{java_home}" \
     -Dbuild.compiler="modern" \
     -Dcommons-collections.jar="$(build-classpath commons-collections)" \
@@ -298,6 +294,11 @@ ant -Dbase.path="." \
     -Djaxrpc-lib.jar="$(build-classpath geronimo-jaxrpc-1.1-api)" \
     -Dwsdl4j-lib.jar="$(build-classpath wsdl4j)" \
     -Dsaaj-api.jar="$(build-classpath geronimo-saaj-1.1-api)" \
+    -Dbnd.jar="$(build-classpath aqute-bnd/biz.aQute.bnd)" \
+    -Dbndlib.jar="$(build-classpath aqute-bnd/biz.aQute.bndlib)" \
+    -Dbndlibg.jar="$(build-classpath aqute-bnd/aQute.libg)" \
+    -Dbndannotation.jar="$(build-classpath aqute-bnd/biz.aQute.bnd.annotation)" \
+	-Dslf4j-api.jar="$(build-classpath slf4j/slf4j-api)" \
     -Dcommons-pool.home="$(build-classpath commons-pool2)" \
     -Dcommons-dbcp.home="$(build-classpath commons-dbcp2)" \
     -Dno.build.dbcp=true \
@@ -316,15 +317,6 @@ pushd ../web
 jar cf ../../../../../../../../output/build/webapps/docs/appdev/sample/sample.war *
 popd
 popd
-
-# inject OSGi manifests
-jar ufm output/build/lib/servlet-api.jar %{SOURCE8}
-jar ufm output/build/lib/jsp-api.jar %{SOURCE9}
-jar ufm output/build/lib/el-api.jar %{SOURCE12}
-jar ufm output/build/lib/jasper-el.jar %{SOURCE13}
-jar ufm output/build/lib/jasper.jar %{SOURCE14}
-jar ufm output/build/lib/tomcat-api.jar %{SOURCE15}
-jar ufm output/build/bin/tomcat-juli.jar %{SOURCE16}
 
 pushd %{_builddir}/tomcat-serverxml-tool
 javac -source %{javac_target} -target %{javac_target} com/suse/tcserverxml/ApplyStylesheet.java
@@ -492,7 +484,7 @@ for pom in *.pom; do
 done
 
 # we won't install dbcp, juli-adapters and juli-extras pom files
-for libname in annotations-api catalina jasper-el jasper catalina-ha; do
+for libname in annotations-api catalina jasper-el jasper catalina-ha jaspic-api; do
     cp -a %{name}-$libname.pom %{buildroot}%{_mavenpomdir}/JPP.%{name}-$libname.pom
     %add_maven_depmap JPP.%{name}-$libname.pom %{name}/$libname.jar
 done
@@ -516,6 +508,9 @@ cp -a tomcat-tribes.pom %{buildroot}%{_mavenpomdir}/JPP.%{name}-catalina-tribes.
 
 cp -a tomcat-coyote.pom %{buildroot}%{_mavenpomdir}/JPP.%{name}-tomcat-coyote.pom
 %add_maven_depmap JPP.%{name}-tomcat-coyote.pom %{name}/tomcat-coyote.jar
+
+cp -a tomcat-jni.pom %{buildroot}%{_mavenpomdir}/JPP.%{name}-tomcat-jni.pom
+%add_maven_depmap JPP.%{name}-tomcat-jni.pom %{name}/tomcat-jni.jar
 
 cp -a tomcat-juli.pom %{buildroot}%{_mavenpomdir}/JPP.%{name}-tomcat-juli.pom
 %add_maven_depmap JPP.%{name}-tomcat-juli.pom %{name}/tomcat-juli.jar
