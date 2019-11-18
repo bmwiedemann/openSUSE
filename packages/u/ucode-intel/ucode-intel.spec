@@ -17,7 +17,7 @@
 
 
 Name:           ucode-intel
-Version:        20190918
+Version:        20191112
 Release:        0
 Summary:        Microcode Updates for Intel x86/x86-64 CPUs
 License:        SUSE-Firmware
