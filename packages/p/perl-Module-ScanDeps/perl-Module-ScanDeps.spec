@@ -34,6 +34,7 @@ BuildRequires:  perl(Test::Requires)
 BuildRequires:  perl(version)
 Requires:       perl(Module::Metadata)
 Requires:       perl(version)
+BuildArch:      noarch
 %{perl_requires}
 
 %description
