@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Wed Oct 23 17:28:57 CEST 2019 - ro@suse.de
+
+- fix build-requires for factory/tumbleweed
+  rsvg-convert tool is now in rsvg-convert package 
+
+-------------------------------------------------------------------
+Fri May 31 18:21:45 UTC 2019 - perry.werneck@gmail.com
+
+  * Doing a "clean exit" on SIGTERM.
+  * Updating translation.
+  * Updating translation.
+  * Fixing save message.
+  * Fixing the application name with ./configure option.
+  * Showing message on configuration update.
+  * Updating rpm packaging.
+  * Fixing icon and application name.
+  * Adding desktop file.
+  * Creating application icon in standard folder.
+  * Emitting message when the logo is not available on about window.
+  * Fixing memory allocation error on about dialog.
+  * Fixing bug in about window detected on windows version.
+  * Fixing win32 runtime.
+  * Updating read me.
+  * Updating versions in win packate.
+  * Fixing file version indication in win32 package.
+  * Fixing windows build.
+  * Removing windows native dialog.
+  * Fixing windows build.
+  * Removing unused sources.
+  * Adding compiled version of the schemas in the runtime package.
+  * Adding gtkfilechooser schema to runtime package.
+  * Comentando fontes do código que foi transferido para a libv3270.
+  * Adding script to build and install lib3270 and libv3270 on msys2
+  * Fixing msys2 build.
+  * Disabling unused code.
+  * Updating translations.
+  * Renaming application transfer file dialog to avoid conflicts.
+  * Updating package control file.
+
+-------------------------------------------------------------------
+Tue Feb 26 16:55:21 UTC 2019 - perry.werneck@gmail.com
+
+- Update to version 5.2:
+  * Updating linux packages.
+  * Removing libv3270 submodule
+  * Updating branding Makefile.
+  * Updating autogen
+  * Updating project.
+  * Fixing RHEL 7 builds.
+  * Removing unused UI files.
+  * Fixing .deb builds
+  * Fixing RHEL7 build.
+  * Updating linux package.
+
+-------------------------------------------------------------------
 Thu Sep 14 00:28:23 UTC 2017 - jengelh@inai.de
 
 - Put libpw3270 into its own package (shared library guideline).
@@ -76,34 +131,3 @@ Thu Oct 20 11:13:41 UTC 2016 - perry.werneck@gmail.com
 Wed Oct 19 17:21:01 UTC 2016 - perry.werneck@gmail.com
 
 - Fixing gtk2 builds.
-
--------------------------------------------------------------------
-Wed Oct 19 11:01:27 UTC 2016 - perry.werneck@gmail.com
-
-- Fixing mutex include on latest GCC
-- Backporting fix for bug 998842 (https://bugzilla.suse.com/show_bug.cgi?id=998842)
-- ppc64_javaarch.patch was applyed to upstream, removing
-
--------------------------------------------------------------------
-Mon Mar 21 12:20:12 UTC 2016 - dvaleev@suse.com
-
-- Fix javaarch dir for POWER platform
-  ppc64_javaarch.patch 
-
--------------------------------------------------------------------
-Thu Oct  9 20:02:30 UTC 2014 - perry.werneck@gmail.com
-
-- Updating to latest svn release
-- Fixing ooRexx plugin bugs introduced by the latest ooRexx version.
-
--------------------------------------------------------------------
-Fri Dec 14 10:02:30 UTC 2012 - perry.werneck@gmail.com
-
-- Updating to latest svn release for fixes on file transfer dialogs. 
-
--------------------------------------------------------------------
-Sun Jun 17 21:25:44 UTC 2012 - emendonca@suse.com
-
-- Fixing up warnings to comply to build service's guidelines.
-
-

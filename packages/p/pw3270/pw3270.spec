@@ -1,8 +1,8 @@
 #
 # spec file for package pw3270
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (C) <2008> <Banco do Brasil S.A.>
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) <2008> <Banco do Brasil S.A.>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,37 +13,37 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 #---[ Versions ]------------------------------------------------------------------------------------------------------
 
 %define MAJOR_VERSION 5
-%define MINOR_VERSION 1
+%define MINOR_VERSION 2
 
 %define _libvrs %{MAJOR_VERSION}_%{MINOR_VERSION}
 
 #---[ Selected modules ]----------------------------------------------------------------------------------------------
 
-%define _dbus     	1
-%define _help2man  	1
+%define _dbus           1
+%define _help2man       1
 
 #---[ Packaging ]-----------------------------------------------------------------------------------------------------
 
 Name:           pw3270
-Version:        5.1
+Version:        5.2
 Release:        0
 Summary:        IBM 3270 Terminal emulator for GTK
 License:        GPL-2.0
 Group:          System/X11/Terminals
 Url:            https://portal.softwarepublico.gov.br/social/pw3270/
 
-Source:         pw3270-%{version}.tar.bz2
-#Source1:        %{name}.rpmlintrc
+Source:         pw3270-%{version}.tar.xz
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 Requires:       shared-mime-info
+Requires:       %{name}-branding >= 5.2
 
 #--[ Setup by distribution ]------------------------------------------------------------------------------------------
 # 
@@ -52,21 +52,19 @@ Requires:       shared-mime-info
 # https://en.opensuse.org/openSUSE:Build_Service_cross_distribution_howto#Detect_a_distribution_flavor_for_special_code
 #
 
-%define _distro		linux
-
-
 #--[ Red HAT ]--------------------------------------------------------------------------------------------------------
 
 %if 0%{?rhel_version}
 
-%define _distro rhel%{rhel_version}
-%define _help2man  	0
+%define _help2man       0
 
 BuildRequires:  dbus-devel
 BuildRequires:  dbus-glib-devel
-BuildRequires:  openssl-devel
 BuildRequires:  gtk3-devel
+BuildRequires:  lib3270-devel
 BuildRequires:  librsvg2-tools
+BuildRequires:  libv3270-devel
+BuildRequires:  openssl-devel
 
 %endif
 
@@ -74,14 +72,18 @@ BuildRequires:  librsvg2-tools
 
 %if 0%{?centos_version}
 
-%define _distro centos%{centos_version}
-%define _help2man  	0
+%define _help2man       0
 
 BuildRequires:  dbus-devel
 BuildRequires:  dbus-glib-devel
-BuildRequires:  openssl-devel
 BuildRequires:  gtk3-devel
+BuildRequires:  lib3270-devel
 BuildRequires:  librsvg2-tools
+BuildRequires:  libv3270-devel
+BuildRequires:  openssl-devel
+
+# CENTOS Genmarshal doesn't depends on python!
+BuildRequires:	python
 
 %endif
 
@@ -89,13 +91,14 @@ BuildRequires:  librsvg2-tools
 
 %if 0%{?fedora}
 
-%define _distro fedora%{fedora}
-
+BuildRequires:  autoconf-archive
+BuildRequires:  pkgconfig(lib3270)
+BuildRequires:  pkgconfig(libv3270)
+BuildRequires:  librsvg2-tools
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  librsvg2-tools
+BuildRequires:  pkgconfig(openssl)
 
 %endif
 
@@ -103,38 +106,45 @@ BuildRequires:  librsvg2-tools
 
 %if 0%{?suse_version}
 
-# https://en.opensuse.org/openSUSE:Packaging_Conventions_RPM_Macros#.25sles_version
-%if 0%{?is_opensuse}
-	%define _distro opensuse%{suse_version}
-%else
-	%define _distro suse%{suse_version}
-%endif
-
-BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(lib3270)
+BuildRequires:  pkgconfig(libv3270)
+BuildRequires:  pkgconfig(openssl)
+
+# https://en.opensuse.org/openSUSE:Build_Service_cross_distribution_howto
+BuildRequires:  update-desktop-files
+%if 0%{suse_version} >= 1210
+BuildRequires:	autoconf-archive
+%endif
+%if 0%{suse_version} >= 1550
+BuildRequires:  rsvg-convert
+%else
 BuildRequires:  rsvg-view
+%endif
 
 %endif
 
 #---------------------------------------------------------------------------------------------------------------------
 
+BuildRequires:  ImageMagick
 BuildRequires:  autoconf >= 2.61
 BuildRequires:  automake
 BuildRequires:  binutils
 BuildRequires:  coreutils
 BuildRequires:  desktop-file-utils
+BuildRequires:  fdupes
 BuildRequires:  findutils
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
 BuildRequires:  m4
+BuildRequires:  optipng
 BuildRequires:  pkgconfig
 BuildRequires:  sed
-BuildRequires:	optipng
-BuildRequires:	fdupes
+
 %if 0%{?_help2man}
-BuildRequires:	help2man
+BuildRequires:  help2man
 %endif
 
 %description
@@ -142,17 +152,7 @@ GTK-based IBM 3270 terminal emulator with many advanced features. It can be used
 
 Based on the original x3270 code, pw3270 was originally created for Banco do Brasil, and is now used worldwide.
 
-#--[ lib3270 ]--------------------------------------------------------------------------------------------------------
-
-%package -n lib3270-%{_libvrs}
-Summary:        3270 Communication library for %{name}
-Group:          System/Libraries
-Provides:		lib3270 = %{version}
-
-%description -n lib3270-%{_libvrs}
-GTK-based IBM 3270 terminal emulator with many advanced features. It can be used to communicate with any IBM host that supports 3270-style connections over TELNET.
-
-This package contains the tn3270 protocol library for %{name}.
+#--[ Application library ]--------------------------------------------------------------------------------------------
 
 %package -n libpw3270-%{_libvrs}
 Summary:        3270 terminal emulation library
@@ -161,44 +161,37 @@ Group:          System/Libraries
 %description -n libpw3270-%{_libvrs}
 GTK-based IBM 3270 terminal emulator with many advanced features. It can be used to communicate with any IBM host that supports 3270-style connections over TELNET.
 
-This package contains the terminal emulator library.
+This package contains the plugin support library.
 
-#--[ Devel ]----------------------------------------------------------------------------------------------------------
+#--[ Configuration & Branding ]---------------------------------------------------------------------------------------
 
-%package -n lib3270-devel
-Summary:        Devel for 3270 Communication library for %{name}
-Group:          Development/Libraries/C and C++
-Requires:       lib3270-%{_libvrs} = %{version}
+%package branding
+Summary:        Configuration and branding for %{name}
+Group:          System/X11/Terminals
+Requires:       %{name} = %{version}
+Conflicts:      %{name}-config
+Provides:       %{name}-config = %{version}
 
-%description -n lib3270-devel
+%description branding
 GTK-based IBM 3270 terminal emulator with many advanced features. It can be used to communicate with any IBM host that supports 3270-style connections over TELNET.
 
-This package contains the development files for tn3270 protocol library for %{name}.
+This package contains the default configuration and branding for %{name}.
+
+#--[ Devel ]----------------------------------------------------------------------------------------------------------
 
 %package devel
 Summary:        Files required for development of %{name} plugins
 Group:          Development/Libraries/C and C++
-Requires:       pkgconfig(lib3270) = %{version}
-Requires:		pkgconfig(gtk+-3.0)
-Requires:       libpw3270-%{_libvrs} = %{version}
+Requires:       %{name} = %{version}
+Requires:       libpw3270-%{_libvrs}
+Requires:       pkgconfig(gtk+-3.0)
+Requires:       pkgconfig(lib3270)
+Requires:       pkgconfig(libv3270)
 
 %description -n %{name}-devel
 GTK-based IBM 3270 terminal emulator with many advanced features. It can be used to communicate with any IBM host that supports 3270-style connections over TELNET.
 
 This package contains the development files for %{name}.
-
-#--[ Plugins ]--------------------------------------------------------------------------------------------------------
-
-%if 0%{?_dbus}
-%package plugin-dbus
-Summary:        D-Bus object for %{name}
-Group:          System/X11/Terminals
-Requires:       %{name} = %{version}
-Requires:       dbus-1
-
-%description plugin-dbus
-Plugin exporting a DBUS object from every %{name} open session.
-%endif
 
 #---[ Build & Install ]-----------------------------------------------------------------------------------------------
 
@@ -206,12 +199,14 @@ Plugin exporting a DBUS object from every %{name} open session.
 
 %setup -q -n pw3270-%{version}
 
-aclocal
-autoconf
-%configure --with-release=%{release}
-
 %build
-make clean
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+NOCONFIGURE=1 ./autogen.sh
+
+%configure \
+        --with-release=%{release}
+make %{?_smp_mflags} clean
+
 # parallel build is broken
 make all -j1
 
@@ -220,38 +215,13 @@ make all -j1
 
 %find_lang pw3270 langfiles
 
-cat > pw3270.desktop << EOF
-[Desktop Entry]
-X-SuSE-translate=true
-GenericName=pw3270
-Name=3270 Terminal
-Comment=IBM 3270 Terminal emulator
-Exec=pw3270
-Icon=%{_datadir}/pw3270/pw3270.png
-Terminal=false
-Type=Application
-StartupNotify=true
-EOF
-chmod 644 pw3270.desktop
-
-desktop-file-install	--mode 644 \
-			--dir %{buildroot}/%{_datadir}/applications \
-			--add-category System \
-			--add-category TerminalEmulator \
-			pw3270.desktop
-
-# Java now lives in another package
-rm %{buildroot}/%{_datadir}/pw3270/ui/*java*.xml
-
-# ooRexx now lives in another package
-rm %{buildroot}/%{_datadir}/pw3270/ui/*rexx*.xml
 %fdupes %{buildroot}/%{_prefix}
 
 #---[ Files ]---------------------------------------------------------------------------------------------------------
 
 %files -f langfiles
-%defattr(-,root,root)
-%doc AUTHORS LICENSE README.md
+%license LICENSE
+%doc AUTHORS README.md
 %if 0%{?_help2man}
 %{_mandir}/*/*
 %endif
@@ -259,57 +229,43 @@ rm %{buildroot}/%{_datadir}/pw3270/ui/*rexx*.xml
 # Main application
 %dir %{_datadir}/pw3270
 %dir %{_datadir}/pw3270/ui
-%{_bindir}/pw3270
-%{_datadir}/applications/pw3270.desktop
+%dir %{_datadir}/pw3270/charsets
+%dir %{_libdir}/pw3270-plugins
 
+%{_bindir}/pw3270
+%{_datadir}/pw3270/charsets/bracket.xml
+
+%files -n libpw3270-%{_libvrs}
+%{_libdir}/libpw3270.so.%{MAJOR_VERSION}.%{MINOR_VERSION}
+
+%files branding
+
+%{_datadir}/applications/pw3270.desktop
 %{_datadir}/pw3270/ui/00default.xml
 %{_datadir}/pw3270/ui/10functions.xml
 %{_datadir}/pw3270/ui/10keypad.xml
 %{_datadir}/pw3270/colors.conf
 %{_datadir}/pw3270/pw3270.png
 %{_datadir}/pw3270/pw3270-logo.png
-%dir %{_libdir}/pw3270-plugins
-
-%files -n lib3270-%{_libvrs}
-%defattr(-,root,root)
-%{_libdir}/lib3270.so.%{MAJOR_VERSION}.%{MINOR_VERSION}
-%{_libdir}/lib3270.so.%{MAJOR_VERSION}
-
-%files -n libpw3270-%{_libvrs}
-%defattr(-,root,root)
-%{_libdir}/libpw3270.so.%{MAJOR_VERSION}.%{MINOR_VERSION}
-%{_libdir}/libpw3270.so.%{MAJOR_VERSION}
-
-%files -n lib3270-devel
-%defattr(-,root,root)
-%{_includedir}/lib3270
-%{_includedir}/lib3270.h
-%{_libdir}/pkgconfig/lib3270.pc
-%{_libdir}/lib3270.so
-%{_datadir}/pw3270/locale
+%{_datadir}/pixmaps/pw3270.png
 
 %files devel
-%defattr(-,root,root)
-%{_includedir}/pw3270
+
 %{_includedir}/pw3270.h
-%{_datadir}/pw3270/ui/98trace.xml
-%{_datadir}/pw3270/ui/99debug.xml
+%{_includedir}/pw3270cpp.h
+%{_includedir}/pw3270
+
 %{_libdir}/libpw3270.so
-%{_libdir}/pkgconfig/pw3270.pc
 
 %{_libdir}/libpw3270cpp.a
-%{_includedir}/pw3270cpp.h
+%{_libdir}/pkgconfig/pw3270.pc
+%{_datadir}/pw3270/locale
 
-%if 0%{?_dbus}
-%files plugin-dbus
-%defattr(-,root,root)
-%{_libdir}/pw3270-plugins/dbus3270.so
-%endif
+%{_datadir}/pw3270/ui/98trace.xml
+%{_datadir}/pw3270/ui/99debug.xml
 
 #---[ Scripts ]-------------------------------------------------------------------------------------------------------
 
-%post   -n lib3270-%{_libvrs} -p /sbin/ldconfig
-%postun -n lib3270-%{_libvrs} -p /sbin/ldconfig
 %post   -n libpw3270-%{_libvrs} -p /sbin/ldconfig
 %postun -n libpw3270-%{_libvrs} -p /sbin/ldconfig
 
