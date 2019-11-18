@@ -16,20 +16,29 @@
 #
 
 
+%if 0%{?suse_version} > 1510
+%bcond_without meson
+%else
+%bcond_with meson
+%endif
 Name:           libwacom
-Version:        0.32
+Version:        1.1
 Release:        0
 Summary:        Library to identify wacom tablets
 License:        MIT
 Group:          System/Libraries
-URL:            http://linuxwacom.sourceforge.net/
+URL:            https://linuxwacom.github.io/
 Source:         https://github.com/linuxwacom/libwacom/releases/download/%{name}-%{version}/%{name}-%{version}.tar.bz2
 Source2:        https://github.com/linuxwacom/libwacom/releases/download/%{name}-%{version}/%{name}-%{version}.tar.bz2.sig
-Source3:        http://www.who-t.net/contact/hutterer_peter.asc#/%{name}.keyring
+Source3:        %{name}.keyring
 Source99:       baselibs.conf
+%if %{with meson}
+BuildRequires:  meson >= 0.47.0
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gudev-1.0)
+BuildRequires:  pkgconfig(libxml-2.0)
 
 %description
 libwacom is a library to identify wacom tablets and their model-specific
@@ -78,14 +87,22 @@ built-in on-screen tablet", "what is the size of this model", etc.
 %setup -q
 
 %build
+%if %{with meson}
+%meson
+%meson_build
+%else
 %configure \
+        --with-udev-dir=%{_libexecdir}/udev \
         --disable-static
 make %{?_smp_mflags}
+%endif
 
 %install
+%if %{with meson}
+%meson_install
+%else
 %make_install
-mkdir -p %{buildroot}%{_udevrulesdir}
-tools/generate-udev-rules > %{buildroot}%{_udevrulesdir}/65-libwacom.rules
+%endif
 
 find %{buildroot} -type f -name "*.la" -delete -print
 
@@ -94,7 +111,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n libwacom2
 %license COPYING
-%doc NEWS README
+%doc NEWS README.md
 %{_libdir}/libwacom.so.2*
 
 %files data
