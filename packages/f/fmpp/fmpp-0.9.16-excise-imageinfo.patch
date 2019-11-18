@@ -1,0 +1,92 @@
+diff --git a/build.xml b/build.xml
+index 0704882..24caaa5 100644
+--- a/build.xml
++++ b/build.xml
+@@ -44,7 +44,6 @@
+     <jar basedir="build/classes" jarfile="lib/fmpp.jar">
+       <manifest>
+         <attribute name="Main-Class" value="fmpp.tools.CommandLine" />
+-        <attribute name="Class-Path" value="freemarker.jar bsh.jar resolver.jar imageinfo.jar" />
+         <attribute name="Extension-name" value="fmpp" />
+         <attribute name="Specification-Title" value="FMPP" />
+         <attribute name="Specification-Version" value="${version}" />
+@@ -359,7 +358,6 @@
+     <fail unless="dependency.freemarker.version">dependency.freemarker.version wasn't set; check build.properties</fail>
+     <fail unless="dependency.bsh.version">dependency.bsh.version wasn't set; check build.properties</fail>
+     <fail unless="dependency.xmlResolver.version">dependency.xmlResolver.version wasn't set; check build.properties</fail>
+-    <fail unless="dependency.imageinfo.version">dependency.imageinfo.version wasn't set; check build.properties</fail>
+ 
+     <echo file="build/pom.xml"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+ <project xmlns="http://maven.apache.org/POM/4.0.0"
+@@ -410,11 +408,6 @@
+       <artifactId>xml-resolver</artifactId>
+       <version>${dependency.xmlResolver.version}</version>
+     </dependency>
+-    <dependency>
+-      <groupId>org.devlib.schmidt</groupId>
+-      <artifactId>imageinfo</artifactId>
+-      <version>${dependency.imageinfo.version}</version>
+-    </dependency>
+   </dependencies>
+ </project>
+ ]]></echo>
+diff --git a/src/main/java/fmpp/dataloaders/HtmlUtilsDataLoader.java b/src/main/java/fmpp/dataloaders/HtmlUtilsDataLoader.java
+index 3dcb613..b531a8f 100644
+--- a/src/main/java/fmpp/dataloaders/HtmlUtilsDataLoader.java
++++ b/src/main/java/fmpp/dataloaders/HtmlUtilsDataLoader.java
+@@ -26,7 +26,7 @@ import java.util.Iterator;
+ import java.util.List;
+ import java.util.Map;
+ 
+-import org.devlib.schmidt.imageinfo.ImageInfo;
++import javax.imageio.ImageIO;
+ 
+ import fmpp.Engine;
+ import fmpp.tdd.DataLoader;
+@@ -54,7 +54,6 @@ public class HtmlUtilsDataLoader implements DataLoader {
+     private Map imageInfoCache = new HashMap();
+     private CachedImageInfo first;
+     private CachedImageInfo last;
+-    private ImageInfo imageInfo = new ImageInfo();
+     
+     public Object load(Engine e, List args) throws Exception {
+         if (args.size() != 0) {
+@@ -119,26 +118,21 @@ public class HtmlUtilsDataLoader implements DataLoader {
+                 }
+             }
+         }
+-        
+-        RandomAccessFile raf;
+-        try {
+-            raf = new RandomAccessFile(f, "r");
+-        } catch (FileNotFoundException e) {
+-            throw new TemplateModelException("Image file not found: " + f.getAbsolutePath(), e);
+-        }
++        int width = 0;
++        int height = 0;
++
+         try {
+-            imageInfo.setCollectComments(false);
+-            imageInfo.setInput(raf);
+-            if (!imageInfo.check()) {
+-                throw new TemplateModelException("Failed to analyse image file: " + cacheKey);
+-            }
+-        } finally {
+-            raf.close();
+-        }
++            java.awt.image.BufferedImage img = ImageIO.read(f);
++            width = img.getWidth();
++            height = img.getHeight();
++        } catch(Exception e) {
++            throw new TemplateModelException("Failed to analyse image file: " + cacheKey);
++        } 
++
+         inf = new CachedImageInfo();
+         inf.lmd = f.lastModified();
+-        inf.width = imageInfo.getWidth();
+-        inf.height = imageInfo.getHeight();
++        inf.width = width;
++        inf.height = height;
+         inf.path = cacheKey;
+         if (last != null) {
+             last.next = inf;

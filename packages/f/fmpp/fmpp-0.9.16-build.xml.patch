@@ -1,0 +1,84 @@
+diff --git a/build.xml b/build.xml
+index b4d0e1b..0704882 100644
+--- a/build.xml
++++ b/build.xml
+@@ -5,13 +5,6 @@
+   <property file="src/main/resources/fmpp/version.properties" />
+   <property file="build.properties" />
+ 
+-  <property name="bootclasspath.path" value="${sun.boot.class.path}" />
+-  <available classpath="${bootclasspath.path}"
+-             classname="java.lang.Object"
+-             ignoresystemclasses="true"
+-             property="bootclasspath.correct"
+-  />
+-
+   <property environment="env" />
+   <property name="ant.jar.path" value="${env.ANT_HOME}/lib/ant.jar" />
+ 
+@@ -64,26 +57,17 @@
+   </target>
+ 
+   <target name="compile" description="Compile Java files and copy resources">
+-    <fail unless="bootclasspath.correct">
+-      <!--
+-            -->The "boot.classpath" property value (${bootclasspath.path}) <!--
+-            -->seems to be an incorrect boot classpath. Please fix it in <!--
+-            -->the &lt;projectDir>/build.properties file, or wherever you <!--
+-            -->set it.<!--
+-        -->
+-    </fail>
+ 
+     <mkdir dir="build/classes" />
+-    <echo>Compling classes using boot classpath ${bootclasspath.path}</echo>
+-    <javac bootclasspath="${bootclasspath.path}"
+-           includeantruntime="false"
++    <echo>Compling classes</echo>
++    <javac includeantruntime="false"
+            srcdir="src/main/java"
+            destdir="build/classes"
+            encoding="utf-8"
+            deprecation="off"
+            debug="on"
+-           source="1.5"
+-           target="1.5"
++           source="1.6"
++           target="1.6"
+     >
+       <classpath refid="classpath.path" />
+     </javac>
+@@ -178,8 +162,6 @@
+              locale="en_US"
+              failonerror="true"
+     >
+-      <link href="http://docs.oracle.com/javase/8/docs/api/" />
+-      <link href="http://freemarker.org/docs/api/" />
+     </javadoc>
+   </target>
+ 
+@@ -315,15 +297,14 @@
+ 
+   <target name="test" depends="jar" description="Run test suite">
+     <mkdir dir="build/test/classes" />
+-    <javac bootclasspath="${bootclasspath.path}"
+-           includeantruntime="false"
++    <javac includeantruntime="false"
+            srcdir="src/test/java"
+            destdir="build/test/classes"
+            encoding="utf-8"
+            deprecation="on"
+            debug="on"
+-           source="1.5"
+-           target="1.5"
++           source="1.6"
++           target="1.6"
+     >
+       <classpath refid="testClasspath.path" />
+     </javac>
+@@ -588,4 +569,4 @@
+     <echo>*************************************************************</echo>
+   </target>
+ 
+-</project>
+\ No newline at end of file
++</project>
