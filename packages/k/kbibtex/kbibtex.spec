@@ -19,7 +19,7 @@
 %bcond_without lang
 
 Name:           kbibtex
-Version:        0.9
+Version:        0.9.1
 Release:        0
 Summary:        The BibTeX (Latex) bibliography manager by KDE
 License:        GPL-2.0-only
