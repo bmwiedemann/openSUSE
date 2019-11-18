@@ -1,7 +1,7 @@
 #
 # spec file for package c-ares
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,22 @@
 
 
 %define libname libcares2
+%define realver 1.15.0-20191108
 Name:           c-ares
-Version:        1.15.0~20191108
+Version:        1.15.0+20191108
 Release:        0
 Summary:        Library for asynchronous name resolves
 License:        MIT
 Group:          Development/Libraries/C and C++
-URL:            http://c-ares.haxx.se/
-#Source0:       https://c-ares.haxx.se/daily-snapshot/c-ares-1.15.0-20191108.tar.gz
-Source0:        c-ares-1.15.0-20191108.tar.gz
+URL:            https://c-ares.haxx.se/
+#Source0:        https://c-ares.haxx.se/daily-snapshot/c-ares-%{realver}.tar.gz
+Source0:        c-ares-%{realver}.tar.gz
 #Source0:        http://c-ares.haxx.se/download/%{name}-%{version}.tar.gz
 #Source1:        http://c-ares.haxx.se/download/%{name}-%{version}.tar.gz.asc
 Source3:        %{name}.keyring
 Source4:        baselibs.conf
 Patch0:         0001-Use-RPM-compiler-options.patch
 Patch1:         disable-live-tests.patch
-# PATCH-FIX-OPENSUSE 0010-Disable-failing-test.patch
-#Patch12:        0010-Disable-failing-test.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -68,7 +67,7 @@ asynchronously. c-ares is a fork of the library named 'ares', written
 by Greg Hudson at MIT.
 
 %prep
-%autosetup -p1 -n c-ares-1.15.0-20191108
+%autosetup -p1 -n %{name}-%{realver}
 
 # Remove bogus cflags checking
 sed -i -e '/XC_CHECK_BUILD_FLAGS/d' configure.ac

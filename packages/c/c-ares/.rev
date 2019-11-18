@@ -39,4 +39,13 @@
     <comment></comment>
     <requestid>746644</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>483cdf57d411eb21ce1469c14901d4a3</srcmd5>
+    <version>1.15.0+20191108</version>
+    <time>1574103957</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix version number of the snapshot to not be downgrade:
+  bsc#1156601</comment>
+    <requestid>748803</requestid>
+  </revision>
 </revisionlist>
