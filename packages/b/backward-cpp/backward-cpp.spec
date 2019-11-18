@@ -45,7 +45,7 @@ Development files for backward-cpp, a stack trace printer for C++.
 
 %build
 %cmake -DCMAKE_INSTALL_LIBDIR=%{_libdir}
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
