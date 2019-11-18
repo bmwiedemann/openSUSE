@@ -30,7 +30,7 @@
 %bcond_with test
 %endif
 Name:           libssh%{suffix}
-Version:        0.9.0
+Version:        0.9.2
 Release:        0
 Summary:        The SSH library
 License:        LGPL-2.1-or-later
@@ -145,6 +145,7 @@ install -m644 %{SOURCE4} %{buildroot}%{_sysconfdir}/libssh/libssh_server.config
 %{_libdir}/pkgconfig/libssh.pc
 %dir %{_libdir}/cmake/libssh
 %{_libdir}/cmake/libssh/libssh-config.cmake
+%{_libdir}/cmake/libssh/libssh-config-relwithdebinfo.cmake
 %{_libdir}/cmake/libssh/libssh-config-version.cmake
 %endif
 

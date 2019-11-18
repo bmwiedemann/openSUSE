@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Nov  7 15:47:45 UTC 2019 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.9.2
+  * Fixed libssh-config.cmake
+  * Fixed issues with rsa algorithm negotiation (T191)
+  * Fixed detection of OpenSSL ed25519 support (T197)
+
+-------------------------------------------------------------------
+Fri Oct 25 14:47:49 UTC 2019 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.9.1
+  * Added support for Ed25519 via OpenSSL
+  * Added support for X25519 via OpenSSL
+  * Added support for localuser in Match keyword
+  * Fixed Match keyword to be case sensitive
+  * Fixed compilation with LibreSSL
+  * Fixed error report of channel open (T75)
+  * Fixed sftp documentation (T137)
+  * Fixed known_hosts parsing (T156)
+  * Fixed build issue with MinGW (T157)
+  * Fixed build with gcc 9 (T164)
+  * Fixed deprecation issues (T165)
+  * Fixed known_hosts directory creation (T166)
+
+-------------------------------------------------------------------
 Wed Jul 10 08:42:34 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Split out configuration to separate package to not mess up the

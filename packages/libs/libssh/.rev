@@ -568,4 +568,29 @@ ProxyCommand parsing in ssh configuration files:
     <comment></comment>
     <requestid>714399</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>ba3e5c566ea7b3fdee3ade2b013b3760</srcmd5>
+    <version>0.9.2</version>
+    <time>1574103794</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.2
+  * Fixed libssh-config.cmake
+  * Fixed issues with rsa algorithm negotiation (T191)
+  * Fixed detection of OpenSSL ed25519 support (T197)
+- Update to version 0.9.1
+  * Added support for Ed25519 via OpenSSL
+  * Added support for X25519 via OpenSSL
+  * Added support for localuser in Match keyword
+  * Fixed Match keyword to be case sensitive
+  * Fixed compilation with LibreSSL
+  * Fixed error report of channel open (T75)
+  * Fixed sftp documentation (T137)
+  * Fixed known_hosts parsing (T156)
+  * Fixed build issue with MinGW (T157)
+  * Fixed build with gcc 9 (T164)
+  * Fixed deprecation issues (T165)
+  * Fixed known_hosts directory creation (T166)
+</comment>
+    <requestid>746336</requestid>
+  </revision>
 </revisionlist>
