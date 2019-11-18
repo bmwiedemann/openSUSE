@@ -1,7 +1,7 @@
 #
 # spec file for package openssh
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -99,6 +99,7 @@ Patch32:        openssh-7.7p1-IPv6_X_forwarding.patch
 Patch33:        openssh-7.7p1-sftp_print_diagnostic_messages.patch
 Patch34:        openssh-7.9p1-keygen-preserve-perms.patch
 Patch35:        openssh-7.9p1-revert-new-qos-defaults.patch
+Patch36:        openssh-8.1p1-seccomp-clock_nanosleep.patch
 BuildRequires:  audit-devel
 BuildRequires:  autoconf
 BuildRequires:  groff

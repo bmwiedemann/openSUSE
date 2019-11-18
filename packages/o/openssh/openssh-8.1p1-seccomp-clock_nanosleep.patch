@@ -1,0 +1,14 @@
+Index: openssh-8.1p1/sandbox-seccomp-filter.c
+===================================================================
+--- openssh-8.1p1.orig/sandbox-seccomp-filter.c
++++ openssh-8.1p1/sandbox-seccomp-filter.c
+@@ -248,6 +248,9 @@ static const struct sock_filter preauth_
+ #ifdef __NR_nanosleep
+ 	SC_ALLOW(__NR_nanosleep),
+ #endif
++#ifdef __NR_clock_nanosleep
++    SC_ALLOW(__NR_clock_nanosleep),
++#endif
+ #ifdef __NR__newselect
+ 	SC_ALLOW(__NR__newselect),
+ #endif

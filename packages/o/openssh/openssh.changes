@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  8 18:05:37 UTC 2019 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Add openssh-8.1p1-seccomp-clock_nanosleep.patch, allow clock_nanosleep
+  glibc master implements multiple functions using that syscall making
+  the privsep sandbox kill the preauth process.
+
+-------------------------------------------------------------------
 Mon Oct 14 23:58:39 UTC 2019 - Hans Petter Jansson <hpj@suse.com>
 
 - Add openssh-7.9p1-keygen-preserve-perms.patch (bsc#1150574).
