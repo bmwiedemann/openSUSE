@@ -75,4 +75,12 @@
     <comment></comment>
     <requestid>734388</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>1b8d484b2aaaf7d6df498a823ed64c12</srcmd5>
+    <version>5.0</version>
+    <time>1574103717</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't install open-iscsi by default [bsc#1156660]</comment>
+    <requestid>748393</requestid>
+  </revision>
 </revisionlist>

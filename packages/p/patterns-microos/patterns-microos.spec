@@ -87,7 +87,6 @@ Requires:       logrotate
 Requires:       microos-tools
 Requires:       nano
 Requires:       net-tools
-Requires:       open-iscsi
 Requires:       openssh
 Requires:       pam
 Requires:       parted
@@ -291,6 +290,7 @@ Requires:       cryptsetup
 Requires:       glibc-locale
 Requires:       iscsiuio
 Requires:       multipath-tools
+Requires:       open-iscsi
 %ifarch %ix86 x86_64
 Requires:       hyper-v
 Requires:       open-vm-tools
