@@ -1762,4 +1762,41 @@ Fake entry for SLE12 package variant only:</comment>
   [bsc#1152590]</comment>
     <requestid>734652</requestid>
   </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>e2ace9ca02db08d349564f44fa9602f9</srcmd5>
+    <version>2.33.1</version>
+    <time>1574103464</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to binutils 2.33.1:
+  * Adds support for the Arm Scalable Vector Extension version 2
+    (SVE2) instructions, the Arm Transactional Memory Extension (TME)
+    instructions and the Armv8.1-M Mainline and M-profile Vector
+    Extension (MVE) instructions.
+  * Adds support for the Arm Cortex-A76AE, Cortex-A77 and Cortex-M35P
+    processors and the AArch64 Cortex-A34, Cortex-A65, Cortex-A65AE,
+    Cortex-A76AE, and Cortex-A77 processors.
+  * Adds a .float16 directive for both Arm and AArch64 to allow
+    encoding of 16-bit floating point literals.
+  * For MIPS, Add -m[no-]fix-loongson3-llsc option to fix (or not)
+    Loongson3 LLSC Errata.  Add a --enable-mips-fix-loongson3-llsc=[yes|no]
+    configure time option to set the default behavior. Set the default
+    if the configure option is not used to &quot;no&quot;.
+  * The Cortex-A53 Erratum 843419 workaround now supports a choice of
+    which workaround to use.  The option --fix-cortex-a53-843419 now
+    takes an optional argument --fix-cortex-a53-843419[=full|adr|adrp]
+    which can be used to force a particular workaround to be used.
+    See --help for AArch64 for more details.
+  * Add support for GNU_PROPERTY_AARCH64_FEATURE_1_BTI and
+    GNU_PROPERTY_AARCH64_FEATURE_1_PAC  in ELF GNU program properties
+    in the AArch64 ELF linker. 
+  * Add -z force-bti for AArch64 to enable GNU_PROPERTY_AARCH64_FEATURE_1_BTI
+    on output while warning about missing GNU_PROPERTY_AARCH64_FEATURE_1_BTI 
+    on inputs and use PLTs protected with BTI.
+  * Add -z pac-plt for AArch64 to pick PAC enabled PLTs.
+  * Add --source-comment[=&lt;txt&gt;] option to objdump which if present,
+    provides a prefix to source code lines displayed in a disassembly.
+  * Add --set-section-alignment &lt;section-name&gt;=&lt;power-of-2-align&gt;
+    option to objcopy to allow the changing of section alignments.</comment>
+    <requestid>748099</requestid>
+  </revision>
 </revisionlist>

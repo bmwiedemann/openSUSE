@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Tue Oct 22 13:45:51 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Update to binutils 2.33.1:
+  * Adds support for the Arm Scalable Vector Extension version 2
+    (SVE2) instructions, the Arm Transactional Memory Extension (TME)
+    instructions and the Armv8.1-M Mainline and M-profile Vector
+    Extension (MVE) instructions.
+  * Adds support for the Arm Cortex-A76AE, Cortex-A77 and Cortex-M35P
+    processors and the AArch64 Cortex-A34, Cortex-A65, Cortex-A65AE,
+    Cortex-A76AE, and Cortex-A77 processors.
+  * Adds a .float16 directive for both Arm and AArch64 to allow
+    encoding of 16-bit floating point literals.
+  * For MIPS, Add -m[no-]fix-loongson3-llsc option to fix (or not)
+    Loongson3 LLSC Errata.  Add a --enable-mips-fix-loongson3-llsc=[yes|no]
+    configure time option to set the default behavior. Set the default
+    if the configure option is not used to "no".
+  * The Cortex-A53 Erratum 843419 workaround now supports a choice of
+    which workaround to use.  The option --fix-cortex-a53-843419 now
+    takes an optional argument --fix-cortex-a53-843419[=full|adr|adrp]
+    which can be used to force a particular workaround to be used.
+    See --help for AArch64 for more details.
+  * Add support for GNU_PROPERTY_AARCH64_FEATURE_1_BTI and
+    GNU_PROPERTY_AARCH64_FEATURE_1_PAC  in ELF GNU program properties
+    in the AArch64 ELF linker. 
+  * Add -z force-bti for AArch64 to enable GNU_PROPERTY_AARCH64_FEATURE_1_BTI
+    on output while warning about missing GNU_PROPERTY_AARCH64_FEATURE_1_BTI 
+    on inputs and use PLTs protected with BTI.
+  * Add -z pac-plt for AArch64 to pick PAC enabled PLTs.
+  * Add --source-comment[=<txt>] option to objdump which if present,
+    provides a prefix to source code lines displayed in a disassembly.
+  * Add --set-section-alignment <section-name>=<power-of-2-align>
+    option to objcopy to allow the changing of section alignments.
+  * Add --verilog-data-width option to objcopy for verilog targets to
+    control width of data elements in verilog hex format.
+  * The separate debug info file options of readelf (--debug-dump=links
+    and --debug-dump=follow) and objdump (--dwarf=links and
+    --dwarf=follow-links) will now display and/or follow multiple
+    links if more than one are present in a file.  (This usually
+    happens when gcc's -gsplit-dwarf option is used).
+    In addition objdump's --dwarf=follow-links now also affects its
+    other display options, so that for example, when combined with
+    --syms it will cause the symbol tables in any linked debug info
+    files to also be displayed.  In addition when combined with
+    --disassemble the --dwarf= follow-links option will ensure that
+    any symbol tables in the linked files are read and used when
+    disassembling code in the main file.
+  * Add support for dumping types encoded in the Compact Type Format
+    to objdump and readelf.
+- Includes fixes for these CVEs:
+  bnc#1126826 aka CVE-2019-9077 aka PR1126826
+  bnc#1126829 aka CVE-2019-9075 aka PR1126829
+  bnc#1126831 aka CVE-2019-9074 aka PR24235
+  bnc#1140126 aka CVE-2019-12972 aka PR23405
+  bnc#1143609 aka CVE-2019-14444 aka PR24829
+  bnc#1142649 aka CVE-2019-14250 aka PR90924
+- Remove patches that are now included in the release:
+  binutils-2.32-branch.diff.gz, binutils-fix-ld-segv.diff,
+  binutils-pr24486.patch, riscv-abi-check.patch,
+  rx-gas-padding-pr24464.patch.
+- Add binutils-2.33-branch.diff.gz patch.
+- Rebase binutils-revert-plt32-in-branches.diff and
+  cross-avr-size.patch patch.
+
+-------------------------------------------------------------------
+Tue Oct 15 14:05:57 UTC 2019 - matz@suse.com
+
+- Add binutils-fix-ld-segv.diff to fix a segfault in ld
+  when building some versions of pacemaker.  [bsc#1154025,
+  bsc#1154016]
+
+-------------------------------------------------------------------
 Wed Oct  2 12:20:41 UTC 2019 - matz@suse.com
 
 - Add avr, epiphany and rx to target_list so that the common

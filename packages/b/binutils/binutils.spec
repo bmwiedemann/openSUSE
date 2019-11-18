@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -33,7 +33,7 @@ BuildRequires:  zlib-devel-static
 %else
 BuildRequires:  zlib-devel
 %endif
-Version:        2.32
+Version:        2.33.1
 Release:        0
 #
 # RUN_TESTS
@@ -81,7 +81,7 @@ Source5:        binutils.keyring
 Source1:        pre_checkin.sh
 Source2:        README.First-for.SUSE.packagers
 Source3:        baselibs.conf
-Patch1:         binutils-2.32-branch.diff.gz
+Patch1:         binutils-2.33-branch.diff.gz
 Patch3:         binutils-skip-rpaths.patch
 Patch4:         s390-biarch.diff
 Patch5:         x86-64-biarch.patch
@@ -95,9 +95,6 @@ Patch22:        binutils-bfd_h.patch
 Patch34:        aarch64-common-pagesize.patch
 Patch36:        binutils-pr22868.diff
 Patch37:        binutils-revert-plt32-in-branches.diff
-Patch38:        riscv-abi-check.patch
-Patch39:        rx-gas-padding-pr24464.patch
-Patch40:        binutils-pr24486.patch
 Patch90:        cross-avr-nesc-as.patch
 Patch92:        cross-avr-omit_section_dynsym.patch
 Patch93:        cross-avr-size.patch
@@ -170,14 +167,11 @@ echo "make check will return with %{make_check_handling} in case of testsuite fa
 %if %{suse_version} < 1550
 %patch37 -p1
 %endif
-%patch38 -p1
-%patch39 -p1
-%patch40 -p1
 %if "%{TARGET}" == "avr"
 cp gas/config/tc-avr.h gas/config/tc-avr-nesc.h
 %patch90
 %patch92
-%patch93
+%patch93 -p1
 %endif
 #
 # test_vanilla

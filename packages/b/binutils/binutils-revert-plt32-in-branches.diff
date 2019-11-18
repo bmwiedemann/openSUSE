@@ -78,11 +78,11 @@ Date:   Tue Feb 13 07:34:22 2018 -0800
     	* testsuite/ld-x86-64/pr22791-2c.s: Likewise.
     	* testsuite/ld-x86-64/x86-64.exp: Run PR ld/22791 tests.
 
-Index: binutils-2.32/bfd/elf64-x86-64.c
+Index: binutils-2.33.1/bfd/elf64-x86-64.c
 ===================================================================
---- binutils-2.32.orig/bfd/elf64-x86-64.c	2019-09-09 18:29:44.000000000 +0200
-+++ binutils-2.32/bfd/elf64-x86-64.c	2019-09-09 18:31:48.000000000 +0200
-@@ -1789,6 +1789,24 @@ rewrite_modrm_rex:
+--- binutils-2.33.1.orig/bfd/elf64-x86-64.c	2019-09-09 15:19:43.000000000 +0200
++++ binutils-2.33.1/bfd/elf64-x86-64.c	2019-10-30 14:26:33.000000000 +0100
+@@ -1798,6 +1798,24 @@ rewrite_modrm_rex:
    return TRUE;
  }
  
@@ -107,62 +107,62 @@ Index: binutils-2.32/bfd/elf64-x86-64.c
  /* Look through the relocs for a section during the first phase, and
     calculate needed space in the global offset table, procedure
     linkage table, and dynamic reloc sections.  */
-@@ -2248,28 +2266,30 @@ check_pic:
- 			    && (eh == NULL
- 				|| !UNDEFINED_WEAK_RESOLVED_TO_ZERO (info,
- 								     eh)))
--			   || (bfd_link_pie (info)
--			       && !SYMBOL_DEFINED_NON_SHARED_P (h)
--			       && h->def_dynamic)
- 			   || (no_copyreloc_p
- 			       && h->def_dynamic
- 			       && !(h->root.u.def.section->flags & SEC_CODE))))
- 		      || bfd_link_dll (info)))
- 		{
- 		  bfd_boolean fail = FALSE;
-+		  bfd_boolean branch
-+		    = ((r_type == R_X86_64_PC32
-+			|| r_type == R_X86_64_PC32_BND)
-+		       && is_32bit_relative_branch (contents, rel->r_offset));
+@@ -3089,28 +3107,30 @@ use_plt:
+ 			&& (eh == NULL
+ 			    || !UNDEFINED_WEAK_RESOLVED_TO_ZERO (info,
+ 								 eh)))
+-		       || (bfd_link_pie (info)
+-			   && !SYMBOL_DEFINED_NON_SHARED_P (h)
+-			   && h->def_dynamic)
+ 		       || (no_copyreloc_p
+ 			   && h->def_dynamic
+ 			   && !(h->root.u.def.section->flags & SEC_CODE))))
+ 		  || bfd_link_dll (info)))
+ 	    {
+ 	      bfd_boolean fail = FALSE;
++	      bfd_boolean branch
++		= ((r_type == R_X86_64_PC32
++		    || r_type == R_X86_64_PC32_BND)
++		   && is_32bit_relative_branch (contents, rel->r_offset));
 +
- 		  if (SYMBOL_REFERENCES_LOCAL_P (info, h))
- 		    {
- 		      /* Symbol is referenced locally.  Make sure it is
--			 defined locally.  */
--		      fail = !SYMBOL_DEFINED_NON_SHARED_P (h);
-+			 defined locally or for a branch.  */
-+		      fail = !SYMBOL_DEFINED_NON_SHARED_P (h) && !branch;
- 		    }
- 		  else if (bfd_link_pie (info))
- 		    {
- 		      /* We can only use PC-relative relocations in PIE
--			 from non-code sections.  */
-+			 from non-code sections or branches.  */
- 		      if (h->type == STT_FUNC
- 			  && (sec->flags & SEC_CODE) != 0)
--			fail = TRUE;
-+			fail = !branch;
- 		    }
- 		  else if (no_copyreloc_p || bfd_link_dll (info))
- 		    {
-@@ -2278,9 +2298,10 @@ check_pic:
- 			 relocations against default and protected
- 			 symbols since address of protected function
- 			 and location of protected data may not be in
--			 the shared object.   */
-+			 the shared object.  We do allow branch to symbol
-+			 with non-default visibility.  */
- 		      fail = (ELF_ST_VISIBILITY (h->other) == STV_DEFAULT
--			      || ELF_ST_VISIBILITY (h->other) == STV_PROTECTED);
-+			      || !branch);
- 		    }
+ 	      if (SYMBOL_REFERENCES_LOCAL_P (info, h))
+ 		{
+ 		  /* Symbol is referenced locally.  Make sure it is
+-		     defined locally.  */
+-		  fail = !SYMBOL_DEFINED_NON_SHARED_P (h);
++		     defined locally or for a branch.  */
++		  fail = !SYMBOL_DEFINED_NON_SHARED_P (h) && !branch;
+ 		}
+ 	      else if (bfd_link_pie (info))
+ 		{
+ 		  /* We can only use PC-relative relocations in PIE
+-		     from non-code sections.  */
++		     from non-code sections or branches.  */
+ 		  if (h->type == STT_FUNC
+ 		      && (sec->flags & SEC_CODE) != 0)
+-		    fail = TRUE;
++		    fail = !branch;
+ 		}
+ 	      else if (no_copyreloc_p || bfd_link_dll (info))
+ 		{
+@@ -3119,9 +3139,10 @@ use_plt:
+ 		     relocations against default and protected
+ 		     symbols since address of protected function
+ 		     and location of protected data may not be in
+-		     the shared object.   */
++		     the shared object.  We do allow branch to symbol
++		     with non-default visibility.  */
+ 		  fail = (ELF_ST_VISIBILITY (h->other) == STV_DEFAULT
+-			  || ELF_ST_VISIBILITY (h->other) == STV_PROTECTED);
++			  || !branch);
+ 		}
  
- 		  if (fail)
-Index: binutils-2.32/gas/config/tc-i386.c
+ 	      if (fail)
+Index: binutils-2.33.1/gas/config/tc-i386.c
 ===================================================================
---- binutils-2.32.orig/gas/config/tc-i386.c	2019-01-19 17:01:33.000000000 +0100
-+++ binutils-2.32/gas/config/tc-i386.c	2019-09-09 18:29:44.000000000 +0200
-@@ -7690,46 +7690,12 @@ output_branch (void)
+--- binutils-2.33.1.orig/gas/config/tc-i386.c	2019-10-07 11:53:50.000000000 +0200
++++ binutils-2.33.1/gas/config/tc-i386.c	2019-10-30 14:26:33.000000000 +0100
+@@ -7877,52 +7877,12 @@ output_branch (void)
    frag_var (rs_machine_dependent, 5, i.reloc[0], subtype, sym, off, p);
  }
  
@@ -176,6 +176,12 @@ Index: binutils-2.32/gas/config/tc-i386.c
 -  /* PLT32 relocation is ELF only.  */
 -  if (!IS_ELF)
 -    return FALSE;
+-
+-#ifdef TE_SOLARIS
+-  /* Don't emit PLT32 relocation on Solaris: neither native linker nor
+-     krtld support it.  */
+-  return FALSE;
+-#endif
 -
 -  /* Since there is no need to prepare for PLT branch on x86-64, we
 -     can generate R_X86_64_PLT32, instead of R_X86_64_PC32, which can
@@ -209,7 +215,7 @@ Index: binutils-2.32/gas/config/tc-i386.c
  
    if (i.tm.opcode_modifier.jumpbyte)
      {
-@@ -7797,17 +7763,8 @@ output_jump (void)
+@@ -7990,17 +7950,8 @@ output_jump (void)
        abort ();
      }
  
@@ -228,7 +234,7 @@ Index: binutils-2.32/gas/config/tc-i386.c
  
    /* All jumps handled here are signed, but don't use a signed limit
       check for 32 and 16 bit jumps as we want to allow wrap around at
-@@ -10236,10 +10193,6 @@ md_estimate_size_before_relax (fragS *fr
+@@ -10430,10 +10381,6 @@ md_estimate_size_before_relax (fragS *fr
  	reloc_type = (enum bfd_reloc_code_real) fragP->fr_var;
        else if (size == 2)
  	reloc_type = BFD_RELOC_16_PCREL;
@@ -239,10 +245,10 @@ Index: binutils-2.32/gas/config/tc-i386.c
        else
  	reloc_type = BFD_RELOC_32_PCREL;
  
-Index: binutils-2.32/gas/testsuite/gas/i386/ilp32/reloc64.d
+Index: binutils-2.33.1/gas/testsuite/gas/i386/ilp32/reloc64.d
 ===================================================================
---- binutils-2.32.orig/gas/testsuite/gas/i386/ilp32/reloc64.d	2019-01-19 17:01:33.000000000 +0100
-+++ binutils-2.32/gas/testsuite/gas/i386/ilp32/reloc64.d	2019-09-09 18:29:44.000000000 +0200
+--- binutils-2.33.1.orig/gas/testsuite/gas/i386/ilp32/reloc64.d	2019-09-09 15:19:44.000000000 +0200
++++ binutils-2.33.1/gas/testsuite/gas/i386/ilp32/reloc64.d	2019-10-30 14:26:33.000000000 +0100
 @@ -17,7 +17,7 @@ Disassembly of section \.text:
  .*[ 	]+R_X86_64_PC8[ 	]+xtrn\+0x0*1
  .*[ 	]+R_X86_64_PC32[ 	]+xtrn-0x0*4
@@ -252,10 +258,10 @@ Index: binutils-2.32/gas/testsuite/gas/i386/ilp32/reloc64.d
  .*[ 	]+R_X86_64_PC8[ 	]+xtrn-0x0*1
  .*[ 	]+R_X86_64_GOT32[ 	]+xtrn
  .*[ 	]+R_X86_64_GOT32[ 	]+xtrn
-Index: binutils-2.32/gas/testsuite/gas/i386/ilp32/x86-64-branch.d
+Index: binutils-2.33.1/gas/testsuite/gas/i386/ilp32/x86-64-branch.d
 ===================================================================
---- binutils-2.32.orig/gas/testsuite/gas/i386/ilp32/x86-64-branch.d	2019-01-19 17:01:33.000000000 +0100
-+++ binutils-2.32/gas/testsuite/gas/i386/ilp32/x86-64-branch.d	2019-09-09 18:29:44.000000000 +0200
+--- binutils-2.33.1.orig/gas/testsuite/gas/i386/ilp32/x86-64-branch.d	2019-09-09 15:19:44.000000000 +0200
++++ binutils-2.33.1/gas/testsuite/gas/i386/ilp32/x86-64-branch.d	2019-10-30 14:26:33.000000000 +0100
 @@ -20,9 +20,9 @@ Disassembly of section .text:
  [ 	]*[a-f0-9]+:	66 ff 20             	data16 jmpq \*\(%rax\)
  [ 	]*[a-f0-9]+:	e8 00 00 00 00       	callq  0x1f	1b: R_X86_64_PC32	\*ABS\*\+0x10003c
@@ -269,11 +275,11 @@ Index: binutils-2.32/gas/testsuite/gas/i386/ilp32/x86-64-branch.d
  [ 	]*[a-f0-9]+:	ff d0                	callq  \*%rax
  [ 	]*[a-f0-9]+:	ff d0                	callq  \*%rax
  [ 	]*[a-f0-9]+:	66 ff d0             	data16 callq \*%rax
-Index: binutils-2.32/gas/testsuite/gas/i386/reloc64.d
+Index: binutils-2.33.1/gas/testsuite/gas/i386/reloc64.d
 ===================================================================
---- binutils-2.32.orig/gas/testsuite/gas/i386/reloc64.d	2019-01-19 17:01:33.000000000 +0100
-+++ binutils-2.32/gas/testsuite/gas/i386/reloc64.d	2019-09-09 18:29:44.000000000 +0200
-@@ -19,7 +19,7 @@ Disassembly of section \.text:
+--- binutils-2.33.1.orig/gas/testsuite/gas/i386/reloc64.d	2019-09-09 15:19:44.000000000 +0200
++++ binutils-2.33.1/gas/testsuite/gas/i386/reloc64.d	2019-10-30 14:26:33.000000000 +0100
+@@ -20,7 +20,7 @@ Disassembly of section \.text:
  .*[ 	]+R_X86_64_PC8[ 	]+xtrn\+0x0*1
  .*[ 	]+R_X86_64_PC32[ 	]+xtrn-0x0*4
  .*[ 	]+R_X86_64_PC32[ 	]+xtrn-0x0*4
@@ -282,11 +288,11 @@ Index: binutils-2.32/gas/testsuite/gas/i386/reloc64.d
  .*[ 	]+R_X86_64_PC8[ 	]+xtrn-0x0*1
  .*[ 	]+R_X86_64_GOT64[ 	]+xtrn
  .*[ 	]+R_X86_64_GOT32[ 	]+xtrn
-Index: binutils-2.32/gas/testsuite/gas/i386/x86-64-jump.d
+Index: binutils-2.33.1/gas/testsuite/gas/i386/x86-64-jump.d
 ===================================================================
---- binutils-2.32.orig/gas/testsuite/gas/i386/x86-64-jump.d	2019-01-19 17:01:33.000000000 +0100
-+++ binutils-2.32/gas/testsuite/gas/i386/x86-64-jump.d	2019-09-09 18:29:44.000000000 +0200
-@@ -8,7 +8,7 @@ Disassembly of section .text:
+--- binutils-2.33.1.orig/gas/testsuite/gas/i386/x86-64-jump.d	2019-09-09 15:19:44.000000000 +0200
++++ binutils-2.33.1/gas/testsuite/gas/i386/x86-64-jump.d	2019-10-30 14:26:33.000000000 +0100
+@@ -9,7 +9,7 @@ Disassembly of section .text:
  
  0+ <.text>:
  [ 	]*[a-f0-9]+:	eb fe                	jmp    (0x0|0 <.text>)
@@ -295,7 +301,7 @@ Index: binutils-2.32/gas/testsuite/gas/i386/x86-64-jump.d
  [ 	]*[a-f0-9]+:	ff 24 25 00 00 00 00 	jmpq   \*0x0	a: R_X86_64_32S	xxx
  [ 	]*[a-f0-9]+:	ff e7                	jmpq   \*%rdi
  [ 	]*[a-f0-9]+:	ff 27                	jmpq   \*\(%rdi\)
-@@ -17,7 +17,7 @@ Disassembly of section .text:
+@@ -18,7 +18,7 @@ Disassembly of section .text:
  [ 	]*[a-f0-9]+:	ff 2c 25 00 00 00 00 	ljmp   \*0x0	24: R_X86_64_32S	xxx
  [ 	]*[a-f0-9]+:	66 ff 2c 25 00 00 00 00 	ljmpw  \*0x0	2c: R_X86_64_32S	xxx
  [ 	]*[a-f0-9]+:	e8 cb ff ff ff       	callq  0x0
@@ -304,11 +310,11 @@ Index: binutils-2.32/gas/testsuite/gas/i386/x86-64-jump.d
  [ 	]*[a-f0-9]+:	ff 14 25 00 00 00 00 	callq  \*0x0	3d: R_X86_64_32S	xxx
  [ 	]*[a-f0-9]+:	ff d7                	callq  \*%rdi
  [ 	]*[a-f0-9]+:	ff 17                	callq  \*\(%rdi\)
-Index: binutils-2.32/gas/testsuite/gas/i386/x86-64-mpx-branch-1.d
+Index: binutils-2.33.1/gas/testsuite/gas/i386/x86-64-mpx-branch-1.d
 ===================================================================
---- binutils-2.32.orig/gas/testsuite/gas/i386/x86-64-mpx-branch-1.d	2019-01-19 17:01:33.000000000 +0100
-+++ binutils-2.32/gas/testsuite/gas/i386/x86-64-mpx-branch-1.d	2019-09-09 18:29:44.000000000 +0200
-@@ -20,9 +20,9 @@ Disassembly of section .text:
+--- binutils-2.33.1.orig/gas/testsuite/gas/i386/x86-64-mpx-branch-1.d	2019-09-09 15:19:44.000000000 +0200
++++ binutils-2.33.1/gas/testsuite/gas/i386/x86-64-mpx-branch-1.d	2019-10-30 14:26:33.000000000 +0100
+@@ -21,9 +21,9 @@ Disassembly of section .text:
  [ 	]*[a-f0-9]+:	f2 e8 00 00 00 00    	bnd callq 24 <foo2>
  
  0+24 <foo2>:
@@ -321,11 +327,11 @@ Index: binutils-2.32/gas/testsuite/gas/i386/x86-64-mpx-branch-1.d
  [ 	]*[a-f0-9]+:	f2 e9 00 00 00 00    	bnd jmpq 3d <foo2\+0x19>	39: R_X86_64_PLT32	foo-0x4
  [ 	]*[a-f0-9]+:	f2 0f 82 00 00 00 00 	bnd jb 44 <foo2\+0x20>	40: R_X86_64_PLT32	foo-0x4
  [ 	]*[a-f0-9]+:	f2 e8 00 00 00 00    	bnd callq 4a <foo2\+0x26>	46: R_X86_64_PLT32	foo-0x4
-Index: binutils-2.32/gas/testsuite/gas/i386/x86-64-mpx-branch-2.d
+Index: binutils-2.33.1/gas/testsuite/gas/i386/x86-64-mpx-branch-2.d
 ===================================================================
---- binutils-2.32.orig/gas/testsuite/gas/i386/x86-64-mpx-branch-2.d	2019-01-19 17:01:33.000000000 +0100
-+++ binutils-2.32/gas/testsuite/gas/i386/x86-64-mpx-branch-2.d	2019-09-09 18:29:44.000000000 +0200
-@@ -20,9 +20,9 @@ Disassembly of section .text:
+--- binutils-2.33.1.orig/gas/testsuite/gas/i386/x86-64-mpx-branch-2.d	2019-09-09 15:19:44.000000000 +0200
++++ binutils-2.33.1/gas/testsuite/gas/i386/x86-64-mpx-branch-2.d	2019-10-30 14:26:33.000000000 +0100
+@@ -21,9 +21,9 @@ Disassembly of section .text:
  [ 	]*[a-f0-9]+:	f2 e8 00 00 00 00    	bnd callq 24 <foo2>
  
  0+24 <foo2>:
@@ -338,44 +344,44 @@ Index: binutils-2.32/gas/testsuite/gas/i386/x86-64-mpx-branch-2.d
  [ 	]*[a-f0-9]+:	f2 e9 00 00 00 00    	bnd jmpq 3d <foo2\+0x19>	39: R_X86_64_PLT32	foo-0x4
  [ 	]*[a-f0-9]+:	f2 0f 82 00 00 00 00 	bnd jb 44 <foo2\+0x20>	40: R_X86_64_PLT32	foo-0x4
  [ 	]*[a-f0-9]+:	f2 e8 00 00 00 00    	bnd callq 4a <foo2\+0x26>	46: R_X86_64_PLT32	foo-0x4
-Index: binutils-2.32/gas/testsuite/gas/i386/x86-64-nop-3.d
+Index: binutils-2.33.1/gas/testsuite/gas/i386/x86-64-nop-3.d
 ===================================================================
---- binutils-2.32.orig/gas/testsuite/gas/i386/x86-64-nop-3.d	2019-01-19 17:01:33.000000000 +0100
-+++ binutils-2.32/gas/testsuite/gas/i386/x86-64-nop-3.d	2019-09-09 18:29:44.000000000 +0200
-@@ -17,5 +17,5 @@ Disassembly of section .text:
+--- binutils-2.33.1.orig/gas/testsuite/gas/i386/x86-64-nop-3.d	2019-09-09 15:19:44.000000000 +0200
++++ binutils-2.33.1/gas/testsuite/gas/i386/x86-64-nop-3.d	2019-10-30 14:26:33.000000000 +0100
+@@ -18,5 +18,5 @@ Disassembly of section .text:
  Disassembly of section .altinstr_replacement:
  
  0+ <.altinstr_replacement>:
 - +[a-f0-9]+:	e9 00 00 00 00       	jmpq   5 <_start\+0x5>	1: R_X86_64_PLT32	foo-0x4
 + +[a-f0-9]+:	e9 00 00 00 00       	jmpq   5 <_start\+0x5>	1: R_X86_64_PC32	foo-0x4
  #pass
-Index: binutils-2.32/gas/testsuite/gas/i386/x86-64-nop-4.d
+Index: binutils-2.33.1/gas/testsuite/gas/i386/x86-64-nop-4.d
 ===================================================================
---- binutils-2.32.orig/gas/testsuite/gas/i386/x86-64-nop-4.d	2019-01-19 17:01:33.000000000 +0100
-+++ binutils-2.32/gas/testsuite/gas/i386/x86-64-nop-4.d	2019-09-09 18:29:44.000000000 +0200
-@@ -20,5 +20,5 @@ Disassembly of section .altinstr_replace
+--- binutils-2.33.1.orig/gas/testsuite/gas/i386/x86-64-nop-4.d	2019-09-09 15:19:44.000000000 +0200
++++ binutils-2.33.1/gas/testsuite/gas/i386/x86-64-nop-4.d	2019-10-30 14:26:33.000000000 +0100
+@@ -21,5 +21,5 @@ Disassembly of section .altinstr_replace
   +[a-f0-9]+:	89 c0                	mov    %eax,%eax
   +[a-f0-9]+:	89 c0                	mov    %eax,%eax
   +[a-f0-9]+:	89 c0                	mov    %eax,%eax
 - +[a-f0-9]+:	e9 00 00 00 00       	jmpq   b <_start\+0xb>	7: R_X86_64_PLT32	foo-0x4
 + +[a-f0-9]+:	e9 00 00 00 00       	jmpq   b <_start\+0xb>	7: R_X86_64_PC32	foo-0x4
  #pass
-Index: binutils-2.32/gas/testsuite/gas/i386/x86-64-nop-5.d
+Index: binutils-2.33.1/gas/testsuite/gas/i386/x86-64-nop-5.d
 ===================================================================
---- binutils-2.32.orig/gas/testsuite/gas/i386/x86-64-nop-5.d	2019-01-19 17:01:33.000000000 +0100
-+++ binutils-2.32/gas/testsuite/gas/i386/x86-64-nop-5.d	2019-09-09 18:29:44.000000000 +0200
-@@ -23,5 +23,5 @@ Disassembly of section .altinstr_replace
+--- binutils-2.33.1.orig/gas/testsuite/gas/i386/x86-64-nop-5.d	2019-09-09 15:19:44.000000000 +0200
++++ binutils-2.33.1/gas/testsuite/gas/i386/x86-64-nop-5.d	2019-10-30 14:26:33.000000000 +0100
+@@ -24,5 +24,5 @@ Disassembly of section .altinstr_replace
   +[a-f0-9]+:	89 c0                	mov    %eax,%eax
   +[a-f0-9]+:	89 c0                	mov    %eax,%eax
   +[a-f0-9]+:	89 c0                	mov    %eax,%eax
 - +[a-f0-9]+:	e9 00 00 00 00       	jmpq   d <_start\+0xd>	9: R_X86_64_PLT32	foo-0x4
 + +[a-f0-9]+:	e9 00 00 00 00       	jmpq   d <_start\+0xd>	9: R_X86_64_PC32	foo-0x4
  #pass
-Index: binutils-2.32/gas/testsuite/gas/i386/x86-64-relax-2.d
+Index: binutils-2.33.1/gas/testsuite/gas/i386/x86-64-relax-2.d
 ===================================================================
---- binutils-2.32.orig/gas/testsuite/gas/i386/x86-64-relax-2.d	2019-01-19 17:01:33.000000000 +0100
-+++ binutils-2.32/gas/testsuite/gas/i386/x86-64-relax-2.d	2019-09-09 18:29:44.000000000 +0200
-@@ -10,12 +10,12 @@ Disassembly of section .text:
+--- binutils-2.33.1.orig/gas/testsuite/gas/i386/x86-64-relax-2.d	2019-09-09 15:19:44.000000000 +0200
++++ binutils-2.33.1/gas/testsuite/gas/i386/x86-64-relax-2.d	2019-10-30 14:26:33.000000000 +0100
+@@ -11,12 +11,12 @@ Disassembly of section .text:
  0+ <foo>:
  [ 	]*[a-f0-9]+:	eb 24                	jmp    26 <local>
  [ 	]*[a-f0-9]+:	eb 1e                	jmp    22 <hidden_def>
@@ -393,11 +399,11 @@ Index: binutils-2.32/gas/testsuite/gas/i386/x86-64-relax-2.d
  
  0+22 <hidden_def>:
  [ 	]*[a-f0-9]+:	c3                   	retq   
-Index: binutils-2.32/gas/testsuite/gas/i386/x86-64-relax-3.d
+Index: binutils-2.33.1/gas/testsuite/gas/i386/x86-64-relax-3.d
 ===================================================================
---- binutils-2.32.orig/gas/testsuite/gas/i386/x86-64-relax-3.d	2019-01-19 17:01:33.000000000 +0100
-+++ binutils-2.32/gas/testsuite/gas/i386/x86-64-relax-3.d	2019-09-09 18:29:44.000000000 +0200
-@@ -11,10 +11,10 @@ Disassembly of section .text:
+--- binutils-2.33.1.orig/gas/testsuite/gas/i386/x86-64-relax-3.d	2019-09-09 15:19:44.000000000 +0200
++++ binutils-2.33.1/gas/testsuite/gas/i386/x86-64-relax-3.d	2019-10-30 14:26:33.000000000 +0100
+@@ -12,10 +12,10 @@ Disassembly of section .text:
  [ 	]*[a-f0-9]+:	eb 1b                	jmp    1f <hidden_def>
  [ 	]*[a-f0-9]+:	eb 1b                	jmp    21 <global_def>
  [ 	]*[a-f0-9]+:	e9 00 00 00 00       	jmpq   b <foo\+0xb>	7: R_X86_64_PLT32	global_def-0x4
@@ -412,34 +418,27 @@ Index: binutils-2.32/gas/testsuite/gas/i386/x86-64-relax-3.d
  
  0+1f <hidden_def>:
  [ 	]*[a-f0-9]+:	c3                   	retq   
-Index: binutils-2.32/ld/testsuite/ld-x86-64/mpx1c.rd
+Index: binutils-2.33.1/ld/testsuite/ld-x86-64/mpx1c.rd
 ===================================================================
---- binutils-2.32.orig/ld/testsuite/ld-x86-64/mpx1c.rd	2019-01-19 17:01:34.000000000 +0100
-+++ binutils-2.32/ld/testsuite/ld-x86-64/mpx1c.rd	2019-09-09 18:29:44.000000000 +0200
+--- binutils-2.33.1.orig/ld/testsuite/ld-x86-64/mpx1c.rd	2019-09-09 15:19:45.000000000 +0200
++++ binutils-2.33.1/ld/testsuite/ld-x86-64/mpx1c.rd	2019-10-30 14:26:33.000000000 +0100
 @@ -1,3 +1,3 @@
  #...
 -[0-9a-f ]+R_X86_64_PLT32 +0+ +.*
 +[0-9a-f ]+R_X86_64_PC32 +0+ +.*
  #...
-Index: binutils-2.32/ld/testsuite/ld-x86-64/pr22791-1.err
+Index: binutils-2.33.1/ld/testsuite/ld-x86-64/pr22791-1a.c
 ===================================================================
---- binutils-2.32.orig/ld/testsuite/ld-x86-64/pr22791-1.err	2019-01-19 17:01:34.000000000 +0100
-+++ /dev/null	1970-01-01 00:00:00.000000000 +0000
-@@ -1,2 +0,0 @@
--.*relocation R_X86_64_PC32 against symbol `foo' can not be used when making a PIE object; recompile with -fPIC
--#...
-Index: binutils-2.32/ld/testsuite/ld-x86-64/pr22791-1a.c
-===================================================================
---- binutils-2.32.orig/ld/testsuite/ld-x86-64/pr22791-1a.c	2019-01-19 17:01:34.000000000 +0100
+--- binutils-2.33.1.orig/ld/testsuite/ld-x86-64/pr22791-1a.c	2019-09-09 15:19:45.000000000 +0200
 +++ /dev/null	1970-01-01 00:00:00.000000000 +0000
 @@ -1,4 +0,0 @@
 -void
 -foo (void)
 -{
 -}
-Index: binutils-2.32/ld/testsuite/ld-x86-64/pr22791-1b.s
+Index: binutils-2.33.1/ld/testsuite/ld-x86-64/pr22791-1b.s
 ===================================================================
---- binutils-2.32.orig/ld/testsuite/ld-x86-64/pr22791-1b.s	2019-01-19 17:01:34.000000000 +0100
+--- binutils-2.33.1.orig/ld/testsuite/ld-x86-64/pr22791-1b.s	2019-09-09 15:19:45.000000000 +0200
 +++ /dev/null	1970-01-01 00:00:00.000000000 +0000
 @@ -1,6 +0,0 @@
 -	.text
@@ -448,9 +447,9 @@ Index: binutils-2.32/ld/testsuite/ld-x86-64/pr22791-1b.s
 -main:
 -	movl	foo(%rip), %eax
 -	.size	main, .-main
-Index: binutils-2.32/ld/testsuite/ld-x86-64/pr22791-2.rd
+Index: binutils-2.33.1/ld/testsuite/ld-x86-64/pr22791-2.rd
 ===================================================================
---- binutils-2.32.orig/ld/testsuite/ld-x86-64/pr22791-2.rd	2019-01-19 17:01:34.000000000 +0100
+--- binutils-2.33.1.orig/ld/testsuite/ld-x86-64/pr22791-2.rd	2019-09-09 15:19:45.000000000 +0200
 +++ /dev/null	1970-01-01 00:00:00.000000000 +0000
 @@ -1,6 +0,0 @@
 -#failif
@@ -459,9 +458,9 @@ Index: binutils-2.32/ld/testsuite/ld-x86-64/pr22791-2.rd
 -#...
 -[0-9a-f ]+R_X86_64_NONE.*
 -#...
-Index: binutils-2.32/ld/testsuite/ld-x86-64/pr22791-2a.s
+Index: binutils-2.33.1/ld/testsuite/ld-x86-64/pr22791-2a.s
 ===================================================================
---- binutils-2.32.orig/ld/testsuite/ld-x86-64/pr22791-2a.s	2019-01-19 17:01:34.000000000 +0100
+--- binutils-2.33.1.orig/ld/testsuite/ld-x86-64/pr22791-2a.s	2019-09-09 15:19:45.000000000 +0200
 +++ /dev/null	1970-01-01 00:00:00.000000000 +0000
 @@ -1,8 +0,0 @@
 -	.text
@@ -472,9 +471,9 @@ Index: binutils-2.32/ld/testsuite/ld-x86-64/pr22791-2a.s
 -	jmp	bar
 -	.size	foo, .-foo
 -	.section	.note.GNU-stack,"",@progbits
-Index: binutils-2.32/ld/testsuite/ld-x86-64/pr22791-2b.c
+Index: binutils-2.33.1/ld/testsuite/ld-x86-64/pr22791-2b.c
 ===================================================================
---- binutils-2.32.orig/ld/testsuite/ld-x86-64/pr22791-2b.c	2019-01-19 17:01:34.000000000 +0100
+--- binutils-2.33.1.orig/ld/testsuite/ld-x86-64/pr22791-2b.c	2019-09-09 15:19:45.000000000 +0200
 +++ /dev/null	1970-01-01 00:00:00.000000000 +0000
 @@ -1,7 +0,0 @@
 -#include <stdio.h>
@@ -484,9 +483,9 @@ Index: binutils-2.32/ld/testsuite/ld-x86-64/pr22791-2b.c
 -{
 -  puts ("PASS");
 -}
-Index: binutils-2.32/ld/testsuite/ld-x86-64/pr22791-2c.s
+Index: binutils-2.33.1/ld/testsuite/ld-x86-64/pr22791-2c.s
 ===================================================================
---- binutils-2.32.orig/ld/testsuite/ld-x86-64/pr22791-2c.s	2019-01-19 17:01:34.000000000 +0100
+--- binutils-2.33.1.orig/ld/testsuite/ld-x86-64/pr22791-2c.s	2019-09-09 15:19:45.000000000 +0200
 +++ /dev/null	1970-01-01 00:00:00.000000000 +0000
 @@ -1,12 +0,0 @@
 -	.text
@@ -501,10 +500,10 @@ Index: binutils-2.32/ld/testsuite/ld-x86-64/pr22791-2c.s
 -	ret
 -	.size	main, .-main
 -	.section	.note.GNU-stack,"",@progbits
-Index: binutils-2.32/ld/testsuite/ld-x86-64/pr22842b.S
+Index: binutils-2.33.1/ld/testsuite/ld-x86-64/pr22842b.S
 ===================================================================
---- binutils-2.32.orig/ld/testsuite/ld-x86-64/pr22842b.S	2019-01-19 17:01:34.000000000 +0100
-+++ binutils-2.32/ld/testsuite/ld-x86-64/pr22842b.S	2019-09-09 18:29:44.000000000 +0200
+--- binutils-2.33.1.orig/ld/testsuite/ld-x86-64/pr22842b.S	2019-09-09 15:19:45.000000000 +0200
++++ binutils-2.33.1/ld/testsuite/ld-x86-64/pr22842b.S	2019-10-30 14:26:33.000000000 +0100
 @@ -7,7 +7,7 @@ main:
          leaq    bar(%rip), %rdi
  	addq	%rax, %rdi
@@ -514,11 +513,11 @@ Index: binutils-2.32/ld/testsuite/ld-x86-64/pr22842b.S
  	xorl	%eax, %eax
  	popq	%rcx
  	retq
-Index: binutils-2.32/ld/testsuite/ld-x86-64/x86-64.exp
+Index: binutils-2.33.1/ld/testsuite/ld-x86-64/x86-64.exp
 ===================================================================
---- binutils-2.32.orig/ld/testsuite/ld-x86-64/x86-64.exp	2019-09-09 18:29:44.000000000 +0200
-+++ binutils-2.32/ld/testsuite/ld-x86-64/x86-64.exp	2019-09-09 18:29:44.000000000 +0200
-@@ -1208,44 +1208,6 @@ if { [isnative] && [which $CC] != 0 } {
+--- binutils-2.33.1.orig/ld/testsuite/ld-x86-64/x86-64.exp	2019-09-09 15:19:45.000000000 +0200
++++ binutils-2.33.1/ld/testsuite/ld-x86-64/x86-64.exp	2019-10-30 14:26:33.000000000 +0100
+@@ -1244,44 +1244,6 @@ if { [isnative] && [check_compiler_avail
  	    "pr22393-3-static" \
  	] \
  	[list \
@@ -563,7 +562,7 @@ Index: binutils-2.32/ld/testsuite/ld-x86-64/x86-64.exp
  	    "Build pr22842.so" \
  	    "-shared" \
  	    "-fPIC -Wa,-mx86-used-note=yes" \
-@@ -1588,15 +1550,6 @@ if { [isnative] && [which $CC] != 0 } {
+@@ -1624,15 +1586,6 @@ if { [isnative] && [check_compiler_avail
  	    "pass.out" \
  	] \
  	[list \
@@ -579,3 +578,10 @@ Index: binutils-2.32/ld/testsuite/ld-x86-64/x86-64.exp
  	    "Run pr22842" \
  	    "-pie -Wl,--no-as-needed tmpdir/pr22842.so" \
  	    "-Wa,-mx86-used-note=yes" \
+Index: binutils-2.33.1/ld/testsuite/ld-x86-64/pr22791-1.err
+===================================================================
+--- binutils-2.33.1.orig/ld/testsuite/ld-x86-64/pr22791-1.err	2019-09-09 15:19:45.000000000 +0200
++++ /dev/null	1970-01-01 00:00:00.000000000 +0000
+@@ -1,2 +0,0 @@
+-.*relocation R_X86_64_PC32 against symbol `foo' can not be used when making a PIE object; recompile with -fPIE
+-#...
