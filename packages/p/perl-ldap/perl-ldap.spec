@@ -39,6 +39,7 @@ Provides:       perl-Net-LDAP = %{version}
 Provides:       perl_ldp
 Obsoletes:      perl-Net-LDAP < %{version}
 Obsoletes:      perl_ldp
+BuildArch:      noarch
 %{perl_requires}
 
 %description
