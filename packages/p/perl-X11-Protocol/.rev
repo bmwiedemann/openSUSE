@@ -66,4 +66,12 @@ https://rt.cpan.org/Public/Bug/Display.html?id=74997 (forwarded request 121706 f
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="10" vrev="15">
+    <srcmd5>3922432df6d3c803f72635a336c39c7e</srcmd5>
+    <version>0.56</version>
+    <time>1574103750</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>748460</requestid>
+  </revision>
 </revisionlist>

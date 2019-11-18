@@ -1,7 +1,7 @@
 #
 # spec file for package perl-X11-Protocol
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
 
 
 Name:           perl-X11-Protocol
 Version:        0.56
-Release:        1
+Release:        0
 # MANUAL
-License:        GPL-1.0+ or Artistic-1.0
 %define cpan_name X11-Protocol
 Summary:        Perl module for the X Window System Protocol, version 11
-Url:            http://search.cpan.org/dist/X11-Protocol/
+License:        GPL-1.0-or-later OR Artistic-1.0
 Group:          Development/Libraries/Perl
+Url:            http://search.cpan.org/dist/X11-Protocol/
 Source:         http://www.cpan.org/authors/id/S/SM/SMCCAM/%{cpan_name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker)
+BuildArch:      noarch
 %{perl_requires}
 Patch0:         xauthlocalhostname-localhost.diff
 
