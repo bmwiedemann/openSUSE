@@ -18,7 +18,7 @@
 
 
 Name:           rpm-config-SUSE
-Version:        0.g44
+Version:        0.g45
 Release:        0
 Summary:        SUSE specific RPM configuration files
 License:        GPL-2.0-or-later
