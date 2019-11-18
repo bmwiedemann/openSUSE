@@ -57,13 +57,13 @@ to develop applications using the belr library.
 
 %prep
 %setup -q -n %{name}-%{version}-0
-%patch0 -p1
+%autopatch -p1
 
 %build
 %cmake \
   -DENABLE_STRICT=OFF \
   -DENABLE_STATIC=OFF
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
