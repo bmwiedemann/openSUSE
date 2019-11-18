@@ -151,7 +151,7 @@ tmpflags="$tmpflags -U__ALTIVEC__"
       -DCMAKE_C_FLAGS:STRING="%{optflags} -isystem %{python3_sitearch}/numpy/core/include/" \
       -DCMAKE_CXX_FLAGS:STRING="${tmpflags} -isystem %{python3_sitearch}/numpy/core/include/" \
       -DDOCUMENTATION_INSTALL_PATH:PATH=%{_docdir}/%{name}
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
