@@ -1,0 +1,39 @@
+From c85c912d3bdd4e4a88af4d08856a46d31b83734f Mon Sep 17 00:00:00 2001
+From: Mikolaj Izdebski <mizdebsk@redhat.com>
+Date: Wed, 2 Dec 2015 06:47:06 +0100
+Subject: [PATCH] Fix file filtering
+
+---
+ src/main/scala/com/typesafe/zinc/Setup.scala | 2 +-
+ src/main/scala/com/typesafe/zinc/Util.scala  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/main/scala/com/typesafe/zinc/Setup.scala b/src/main/scala/com/typesafe/zinc/Setup.scala
+index e6c12e2..aa3ec01 100644
+--- a/src/main/scala/com/typesafe/zinc/Setup.scala
++++ b/src/main/scala/com/typesafe/zinc/Setup.scala
+@@ -221,7 +221,7 @@ object Setup {
+   def prop(name: String) = Command + "." + name
+ 
+   def allLibs(homeDir: Option[File]): Seq[File] = {
+-    homeDir map { home => (home / "lib" ** "*.jar").get } getOrElse Seq.empty
++    homeDir map { home => (home / "lib" ** new sbt.SimpleFileFilter(f => f.toString.endsWith(".jar"))).get } getOrElse Seq.empty
+   }
+ 
+   def optLib(homeDir: Option[File], jar: JarFile): Option[File] = {
+diff --git a/src/main/scala/com/typesafe/zinc/Util.scala b/src/main/scala/com/typesafe/zinc/Util.scala
+index 044789f..bddacd1 100644
+--- a/src/main/scala/com/typesafe/zinc/Util.scala
++++ b/src/main/scala/com/typesafe/zinc/Util.scala
+@@ -128,7 +128,7 @@ object Util {
+    */
+   def cleanAllClasses(dir: File): Unit = {
+     import sbt.Path._
+-    IO.delete((dir ** "*.class").get)
++    IO.delete((dir ** new sbt.SimpleFileFilter(f => f.toString.endsWith(".class"))).get)
+   }
+ 
+   /**
+-- 
+2.5.0
+
