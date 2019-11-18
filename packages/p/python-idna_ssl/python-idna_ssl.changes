@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov 17 14:03:27 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Create multibuild in order to cope with the circular dependency
+  of this package with aiohttp
+- Disable failing test
+
+-------------------------------------------------------------------
 Tue Mar 12 16:29:47 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.1.0:

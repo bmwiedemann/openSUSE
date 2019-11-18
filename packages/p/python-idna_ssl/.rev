@@ -33,4 +33,14 @@
 - Execute tests</comment>
     <requestid>684409</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>71bc72cab2003604d7aefd0078e8a664</srcmd5>
+    <version>1.1.0</version>
+    <time>1574104147</time>
+    <user>dimstar_suse</user>
+    <comment>- Create multibuild in order to cope with the circular dependency
+  of this package with aiohttp
+- Disable failing test</comment>
+    <requestid>749177</requestid>
+  </revision>
 </revisionlist>
