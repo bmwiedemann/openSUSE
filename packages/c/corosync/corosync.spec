@@ -15,7 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir /var/adm/fillup-templates
@@ -258,9 +257,9 @@ APIs and libraries, default configuration files, and an init script.
 /usr/lib/corosync/upgrade.sh
 %{fillup_only -n corosync}
 # Upgrade
-if [ $1 -eq 2 ] ; then
+if [ $1 -eq 2 ]; then
     # restore configured /etc/sysconfig/corosync(bsc#1155792)
-    install -m 0644 %{_sysconfdir}/sysconfig/corosync /tmp/.sysconfig.corosync
+    cp %{_sysconfdir}/sysconfig/corosync %{_fillupdir}/tmp.corosync_sysconfig
 fi
 
 %service_add_post corosync.service corosync-notifyd.service
@@ -278,8 +277,8 @@ if [ -f %{_sysconfdir}/sysconfig/corosync ]; then
 fi
 
 %posttrans
-if [ ! -f %{_sysconfdir}/sysconfig/corosync ] ; then
-    install -m 0644 /tmp/.sysconfig.corosync %{_sysconfdir}/sysconfig/corosync
+if [ ! -f %{_sysconfdir}/sysconfig/corosync ]; then
+    mv %{_fillupdir}/tmp.corosync_sysconfig %{_sysconfdir}/sysconfig/corosync
 fi
 
 %files
@@ -583,8 +582,8 @@ NSS certificates and an init script.
 %post -n corosync-qdevice
 %{fillup_only -n corosync-qdevice}
 # Upgrade
-if [ $1 -eq 2 ] ; then
-    install -m 0644 %{_sysconfdir}/sysconfig/corosync-qdevice /tmp/.sysconfig.corosync-qdevice
+if [ $1 -eq 2 ]; then
+    cp %{_sysconfdir}/sysconfig/corosync-qdevice %{_fillupdir}/tmp.corosync-qdevice_sysconfig
 fi
 
 %if %{sles_version} > 0
@@ -607,8 +606,8 @@ if [ -f %{_sysconfdir}/sysconfig/corosync-qdevice ]; then
 fi
 
 %posttrans -n corosync-qdevice
-if [ ! -f %{_sysconfdir}/sysconfig/corosync-qdevice ] ; then
-    install -m 0644 /tmp/.sysconfig.corosync-qdevice %{_sysconfdir}/sysconfig/corosync-qdevice
+if [ ! -f %{_sysconfdir}/sysconfig/corosync-qdevice ]; then
+    mv %{_fillupdir}/tmp.corosync-qdevice_sysconfig %{_sysconfdir}/sysconfig/corosync-qdevice
 fi
 
 %files -n corosync-qdevice
@@ -664,8 +663,8 @@ ln -s /run/corosync-qnetd /var/run/
 %endif
 %{fillup_only -n corosync-qnetd}
 # Upgrade
-if [ $1 -eq 2 ] ; then
-    install -m 0644 %{_sysconfdir}/sysconfig/corosync-qnetd /tmp/.sysconfig.corosync-qnetd
+if [ $1 -eq 2 ]; then
+    cp %{_sysconfdir}/sysconfig/corosync-qnetd %{_fillupdir}/tmp.corosync-qnetd_sysconfig
 fi
 
 %service_add_post corosync-qnetd.service
@@ -685,8 +684,8 @@ if [ -f %{_sysconfdir}/sysconfig/corosync-qnetd ]; then
 fi
 
 %posttrans -n corosync-qnetd
-if [ ! -f %{_sysconfdir}/sysconfig/corosync-qnetd ] ; then
-    install -m 0644 /tmp/.sysconfig.corosync-qnetd %{_sysconfdir}/sysconfig/corosync-qnetd
+if [ ! -f %{_sysconfdir}/sysconfig/corosync-qnetd ]; then
+    mv %{_fillupdir}/tmp.corosync-qnetd_sysconfig %{_sysconfdir}/sysconfig/corosync-qnetd
 fi
 
 %files -n corosync-qnetd
