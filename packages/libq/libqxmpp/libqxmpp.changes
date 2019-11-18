@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Nov 18 05:20:47 UTC 2019 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Update to 1.1.0. Changes since 1.0.0:
+  * Add support for SCRAM-SHA-1 and SCRAM-SHA-256;
+  * Order SASL mechanisms to prefer the most secure;
+  * Add XEP-0334, -0363, -0367, -0369 (partially), -0380, -0382;
+  * Do not accept receipts from other resources of the used account;
+  * cmake: Set minimum version before creating project() and bump to 3.3;
+  * Deprecate QXmppClient extension getters;
+  * Refactor data form media element, deprecate `QXmppDataForm::Media;
+  * Replace deprecated `qSort()` by `std::sort()`;
+  * Do not use deprecated `QSslSocket::setCaCertificates()`;
+  * Modernize code by using `nullptr`, `override`, etc.;
+  * Move attributes into private d-pointer for future ABI compatibility;
+  * Use raw literals, range based loops and `auto`;
+  * Fix potential SEGFAULT on connection error;
+  * Fix `SO_VERSION` to 1: ABI has changed since last minor release;
+  * Add CMake option for internal tests (`BUILD_INTERNAL_TESTS`).
+- Disable tests needing a network connection += qxmppuploadrequestmanager.
+- Fixed shlib-policy-name-error libqxmpp2 (sover bump up to 2).
+
+-------------------------------------------------------------------
 Tue May  7 06:26:41 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Fix SRPM group.

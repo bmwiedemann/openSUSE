@@ -1,7 +1,7 @@
 #
 # spec file for package libqxmpp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define sover 0
+%define sover 2
 Name:           libqxmpp
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Qt XMPP Library
 License:        LGPL-2.1-or-later
@@ -26,7 +26,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/qxmpp-project/qxmpp/
 Source0:        https://github.com/qxmpp-project/qxmpp/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.3
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
@@ -77,6 +77,7 @@ sed -i 's,add_simple_test(qxmppserver),#add_simple_test(qxmppserver),' tests/CMa
 sed -i 's,add_simple_test(qxmppcallmanager),#add_simple_test(qxmppcallmanager),' tests/CMakeLists.txt
 sed -i 's,add_simple_test(qxmppiceconnection),#add_simple_test(qxmppiceconnection),' tests/CMakeLists.txt
 sed -i 's,add_subdirectory(qxmpptransfermanager),#add_subdirectory(qxmpptransfermanager),' tests/CMakeLists.txt
+sed -i 's,add_subdirectory(qxmppuploadrequestmanager),#add_subdirectory(qxmppuploadrequestmanager),' tests/CMakeLists.txt
 
 %build
 %cmake \

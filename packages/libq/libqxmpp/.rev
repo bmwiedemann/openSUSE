@@ -106,4 +106,29 @@ Qt5 alternative.</comment>
     <comment></comment>
     <requestid>701209</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c2dc242c3f40a25e21f45e97b6a5f9af</srcmd5>
+    <version>1.1.0</version>
+    <time>1574104156</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0. Changes since 1.0.0:
+  * Add support for SCRAM-SHA-1 and SCRAM-SHA-256;
+  * Order SASL mechanisms to prefer the most secure;
+  * Add XEP-0334, -0363, -0367, -0369 (partially), -0380, -0382;
+  * Do not accept receipts from other resources of the used account;
+  * cmake: Set minimum version before creating project() and bump to 3.3;
+  * Deprecate QXmppClient extension getters;
+  * Refactor data form media element, deprecate `QXmppDataForm::Media;
+  * Replace deprecated `qSort()` by `std::sort()`;
+  * Do not use deprecated `QSslSocket::setCaCertificates()`;
+  * Modernize code by using `nullptr`, `override`, etc.;
+  * Move attributes into private d-pointer for future ABI compatibility;
+  * Use raw literals, range based loops and `auto`;
+  * Fix potential SEGFAULT on connection error;
+  * Fix `SO_VERSION` to 1: ABI has changed since last minor release;
+  * Add CMake option for internal tests (`BUILD_INTERNAL_TESTS`).
+- Disable tests needing a network connection += qxmppuploadrequestmanager.
+- Fixed shlib-policy-name-error libqxmpp2 (sover bump up to 2).</comment>
+    <requestid>749185</requestid>
+  </revision>
 </revisionlist>
