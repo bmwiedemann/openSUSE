@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-services
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,20 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-services
-Version:        1.3.1
+Version:        2.0.1
 Release:        0
 Summary:        Services plugin for pytest testing framework
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/pytest-services
 Source:         https://github.com/pytest-dev/pytest-services/archive/%{version}.tar.gz
 BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module mysqlclient}
 BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module pylibmc}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module pylibmc}
-BuildRequires:  %{python_module mysqlclient}
+BuildRequires:  %{python_module zc.lockfile >= 2.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python-subprocess32
@@ -39,6 +39,7 @@ Requires:       python-psutil
 Requires:       python-pytest
 Requires:       python-requests
 Requires:       python-setuptools
+Requires:       python-zc.lockfile >= 2.0
 Recommends:     python-pylibmc
 BuildArch:      noarch
 %ifpython2
@@ -62,7 +63,7 @@ processes for your tests with pytest.
 
 %check
 # test_memcached test_mysql test_xvfb - need running X/mysql/memcache servers
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -v -k 'not (test_memcached or test_mysql or test_xvfb)'
+%pytest -k 'not (test_memcached or test_mysql or test_xvfb)'
 
 %files %{python_files}
 %doc CHANGES.rst README.rst

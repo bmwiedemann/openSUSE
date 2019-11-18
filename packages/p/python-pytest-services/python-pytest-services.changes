@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov 15 10:37:18 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.0.1:
+  * #23: Rely on zc.lockfile for lockfile behavior.
+  * #28: Fixtures now supports later versions of mysql and no longer support versions of mysql prior to mysql --initialize support.
+  * #29: Fix issues with later versions of mysql where mysql_defaults_file fixture would prevent startup of mysql.
+  * Fixed issue in test suite where mysql fixture was not tested.
+  * Removed pytest_services.locks.lock_file.
+  * #20: Added workaround for issue with SysLogHandler.
+
+-------------------------------------------------------------------
 Tue Mar  5 14:24:09 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Initial commit, used by cherrypy

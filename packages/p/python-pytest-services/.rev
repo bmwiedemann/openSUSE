@@ -7,4 +7,18 @@
     <comment></comment>
     <requestid>681759</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>47707b1ddbfbcfb17b055921fdeb6efe</srcmd5>
+    <version>2.0.1</version>
+    <time>1574103974</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.1:
+  * #23: Rely on zc.lockfile for lockfile behavior.
+  * #28: Fixtures now supports later versions of mysql and no longer support versions of mysql prior to mysql --initialize support.
+  * #29: Fix issues with later versions of mysql where mysql_defaults_file fixture would prevent startup of mysql.
+  * Fixed issue in test suite where mysql fixture was not tested.
+  * Removed pytest_services.locks.lock_file.
+  * #20: Added workaround for issue with SysLogHandler.</comment>
+    <requestid>748853</requestid>
+  </revision>
 </revisionlist>
