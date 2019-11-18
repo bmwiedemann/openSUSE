@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Nov 16 15:54:53 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.12.9
+  * Explicitly depend on gio-unix-2.0 (bxo#15825)
+  * Fix alignment of multi-line filenames when text beside icons
+    (bxo#16107)
+  * Fix cursor missing in search popup widget (bxo#16068)
+  * Fix desktop item creation on symbolic link directories
+  * Fix excess clickable area of multiline filenames (bxo#16075)
+  * Fix issues with displaying icon view contents (bxo#14737)
+  * Fix prelight deactivation (bxo#11806)
+  * Hide search widget when doing a fullscreen resize (bxo#15106)
+  * Make user-created launchers executable by default
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Aug 16 12:46:37 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fixed sources in spec file

@@ -1,7 +1,7 @@
 #
 # spec file for package exo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,12 @@
 %define libname_gtk3 libexo-2-0
 %bcond_with git
 Name:           exo
-Version:        0.12.8
+Version:        0.12.9
 Release:        0
 Summary:        Application Development Library for Xfce
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://docs.xfce.org/xfce/exo/starte
+URL:            https://docs.xfce.org/xfce/exo/start
 Source0:        https://archive.xfce.org/src/xfce/exo/0.12/%{name}-%{version}.tar.bz2
 # icons taken from tango-icon-theme 0.8.90
 Source1:        %{name}-icons.tar.bz2
@@ -37,6 +37,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  xfce4-dev-tools
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.42
+BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.42
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.42
 BuildRequires:  pkgconfig(gtk+-2.0) >= 2.24
