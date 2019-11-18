@@ -77,7 +77,7 @@ antlr_jar="$PWD/antlr3.jar"
   -DANTLR3_JAR_PATH="$antlr_jar" \
   -DENABLE_STRICT=OFF            \
   -DENABLE_STATIC=OFF
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
