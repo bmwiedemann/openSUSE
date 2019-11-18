@@ -21,7 +21,7 @@
 %define fontdir %{_datadir}/fonts/%{name}
 %define docdir  %{_docdir}/%{name}
 Name:           musescore
-Version:        3.3.1
+Version:        3.3.2
 Release:        0
 Summary:        A WYSIWYG music score typesetter
 # Musescore code license is GPL-2.0
@@ -34,6 +34,10 @@ Source0:        https://github.com/musescore/MuseScore/archive/v%{version}/MuseS
 Source1:        %{rname}.desktop
 # PATCH-FIX-UPSTREAM: see https://github.com/musescore/MuseScore/releases
 Patch0:         correct-revision.patch
+# PATCH-FIX-OPENSUSE: really use qmake-qt5
+Patch1:         use-qtmake-qt5.patch
+# PATC-FIX-OPENSUSE: don't install qtwebengine files, they are not needed
+Patch2:         use-system-qtwebengine-files.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -58,9 +62,9 @@ BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5UiTools)
 # TODO: why does it fail with qtwebengine?
-#BuildRequires:  pkgconfig(Qt5WebEngine)
-#BuildRequires:  pkgconfig(Qt5WebEngineCore)
-#BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
+BuildRequires:  pkgconfig(Qt5WebEngine)
+BuildRequires:  pkgconfig(Qt5WebEngineCore)
+BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(Qt5XmlPatterns)
@@ -96,7 +100,7 @@ Additional fonts for use by the MuseScore music notation program.
 
 %prep
 %setup -q -n MuseScore-%{version}
-%patch0 -p1
+%autopatch -p1
 
 # fix EOL encoding
 sed 's/\r$//' fonts/bravura/OFL-FAQ.txt > tmpfile
@@ -119,7 +123,7 @@ chmod -x fonts/gootville/readme.txt
 %cmake \
        -DCMAKE_BUILD_TYPE=RELEASE \
        -DUSE_SYSTEM_FREETYPE="ON" \
-       -DBUILD_WEBENGINE="OFF"
+       -DBUILD_WEBENGINE="ON"
 %make_jobs lrelease all
 
 # Put the desktop file in place for the packaging

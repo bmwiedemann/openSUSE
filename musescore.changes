@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 15 11:27:34 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 3.3.2:
+  * "Save online" failed in some cases
+- Add patches to make qtwebengine work: use-qtmake-qt5.patch and
+  use-system-qtwebengine-files.patch
+
+-------------------------------------------------------------------
 Wed Nov 13 14:26:14 UTC 2019 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 3.3.1:
