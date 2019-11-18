@@ -255,7 +255,7 @@ Index: libvirt-5.9.0/src/libxl/libxl_migration.c
  {
      libxlDomainObjPrivatePtr priv = vm->privateData;
      char *hostname = NULL;
-@@ -1246,7 +1267,7 @@ libxlDomainMigrationSrcPerform(libxlDriv
+@@ -1242,7 +1263,7 @@ libxlDomainMigrationSrcPerform(libxlDriv
  
      /* suspend vm and send saved data to dst through socket fd */
      virObjectUnlock(vm);
@@ -263,7 +263,7 @@ Index: libvirt-5.9.0/src/libxl/libxl_migration.c
 +    ret = libxlDoMigrateSrcSend(driver, vm, props, sockfd);
      virObjectLock(vm);
  
-     if (ret < 0) {
+     if (ret == 0) {
 Index: libvirt-5.9.0/src/libxl/libxl_migration.h
 ===================================================================
 --- libvirt-5.9.0.orig/src/libxl/libxl_migration.h

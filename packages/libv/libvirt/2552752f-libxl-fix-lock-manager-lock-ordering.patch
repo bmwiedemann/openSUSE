@@ -1,0 +1,87 @@
+commit 2552752f0b6504a80f6306e5aae2c7063d24f1ab
+Author: Jim Fehlig <jfehlig@suse.com>
+Date:   Mon Oct 14 14:01:00 2019 -0600
+
+    libxl: Fix lock manager lock ordering
+    
+    The ordering of lock manager locks in the libxl driver has a flaw that was
+    uncovered by a migration error path. In the perform phase of migration, the
+    source host calls virDomainLockProcessPause to release the lock before
+    sending the VM to the destination host. If the send fails an attempt is made
+    to reacquire the lock with virDomainLockProcessResume, but that too can fail
+    if the destination host has not finished cleaning up the failed VM and
+    releasing the lock it acquired when starting to receive the VM.
+    
+    This change delays calling virDomainLockProcessResume in libxlDomainStart
+    until the VM is successfully created, but before it is unpaused. A similar
+    approach is used by the qemu driver, avoiding the need to release the lock
+    if VM creation fails. In the migration perform phase, releasing the lock
+    with virDomainLockProcessPause is delayed until the VM is successfully
+    sent to the destination, which avoids reacquiring the lock if the send
+    fails.
+    
+    Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+    Reviewed-by: Cole Robinson <crobinso@redhat.com>
+
+Index: libvirt-5.9.0/src/libxl/libxl_domain.c
+===================================================================
+--- libvirt-5.9.0.orig/src/libxl/libxl_domain.c
++++ libvirt-5.9.0/src/libxl/libxl_domain.c
+@@ -1347,13 +1347,6 @@ libxlDomainStart(libxlDriverPrivatePtr d
+                                   NULL) < 0)
+         goto cleanup;
+ 
+-    if (virDomainLockProcessResume(driver->lockManager,
+-                                  "xen:///system",
+-                                  vm,
+-                                  priv->lockState) < 0)
+-        goto cleanup;
+-    VIR_FREE(priv->lockState);
+-
+     if (libxlNetworkPrepareDevices(vm->def) < 0)
+         goto cleanup_dom;
+ 
+@@ -1436,6 +1429,13 @@ libxlDomainStart(libxlDriverPrivatePtr d
+ 
+     libxlLoggerOpenFile(cfg->logger, domid, vm->def->name, config_json);
+ 
++    if (virDomainLockProcessResume(driver->lockManager,
++                                  "xen:///system",
++                                  vm,
++                                  priv->lockState) < 0)
++        goto destroy_dom;
++    VIR_FREE(priv->lockState);
++
+     /* Always enable domain death events */
+     if (libxl_evenable_domain_death(cfg->ctx, vm->def->id, 0, &priv->deathW))
+         goto destroy_dom;
+Index: libvirt-5.9.0/src/libxl/libxl_migration.c
+===================================================================
+--- libvirt-5.9.0.orig/src/libxl/libxl_migration.c
++++ libvirt-5.9.0/src/libxl/libxl_migration.c
+@@ -1240,20 +1240,16 @@ libxlDomainMigrationSrcPerform(libxlDriv
+     sockfd = virNetSocketDupFD(sock, true);
+     virObjectUnref(sock);
+ 
+-    if (virDomainLockProcessPause(driver->lockManager, vm, &priv->lockState) < 0)
+-        VIR_WARN("Unable to release lease on %s", vm->def->name);
+-    VIR_DEBUG("Preserving lock state '%s'", NULLSTR(priv->lockState));
+-
+     /* suspend vm and send saved data to dst through socket fd */
+     virObjectUnlock(vm);
+     ret = libxlDoMigrateSrcSend(driver, vm, flags, sockfd);
+     virObjectLock(vm);
+ 
+-    if (ret < 0) {
+-        virDomainLockProcessResume(driver->lockManager,
+-                                   "xen:///system",
+-                                   vm,
+-                                   priv->lockState);
++    if (ret == 0) {
++        if (virDomainLockProcessPause(driver->lockManager, vm, &priv->lockState) < 0)
++            VIR_WARN("Unable to release lease on %s", vm->def->name);
++        VIR_DEBUG("Preserving lock state '%s'", NULLSTR(priv->lockState));
++    } else {
+         /*
+          * Confirm phase will not be executed if perform fails. End the
+          * job started in begin phase.

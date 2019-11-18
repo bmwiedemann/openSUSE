@@ -338,6 +338,7 @@ Source6:        libvirtd-relocation-server.xml
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
+Patch0:         2552752f-libxl-fix-lock-manager-lock-ordering.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -871,6 +872,7 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 
 %prep
 %setup -q
+%patch0 -p1
 %patch100 -p1
 %patch101 -p1
 %patch150 -p1
@@ -1003,20 +1005,25 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 
 %define arg_selinux_mount --with-selinux-mount="/selinux"
 
-# x86_64 UEFI firmwares
-# To more closely resemble actual hardware, we use the firmwares with
-# embedded Microsoft keys
-#
-# The Windows HCK test requires a bigger variable store, so 4MB firmware
-# images have been introduced. They are advertised first and will be
-# used by default for new VM installations. The 2MB images are still
-# available for existing VMs, and can be selected for new installations
-# as well.
-LOADERS="/usr/share/qemu/ovmf-x86_64-ms-4m-code.bin:/usr/share/qemu/ovmf-x86_64-ms-4m-vars.bin"
-LOADERS="$LOADERS:/usr/share/qemu/ovmf-x86_64-ms-code.bin:/usr/share/qemu/ovmf-x86_64-ms-vars.bin"
-# aarch64 UEFI firmwares
-LOADERS="$LOADERS:/usr/share/qemu/aavmf-aarch64-code.bin:/usr/share/qemu/aavmf-aarch64-vars.bin"
-%define arg_loader_nvram --with-loader-nvram="$LOADERS"
+# UEFI firmwares
+# For SLE15 SP2 (Leap 15.2) and newer, use firmware descriptor files from the
+# firmware packages, otherwise define firmwares via configure option
+%if ! (0%{?suse_version} > 1500 || 0%{?sle_version} > 150100)
+    # x86_64 UEFI firmwares
+    # To more closely resemble actual hardware, we use the firmwares with
+    # embedded Microsoft keys
+    #
+    # The Windows HCK test requires a bigger variable store, so 4MB firmware
+    # images have been introduced. They are advertised first and will be
+    # used by default for new VM installations. The 2MB images are still
+    # available for existing VMs, and can be selected for new installations
+    # as well.
+    LOADERS="/usr/share/qemu/ovmf-x86_64-ms-4m-code.bin:/usr/share/qemu/ovmf-x86_64-ms-4m-vars.bin"
+    LOADERS="$LOADERS:/usr/share/qemu/ovmf-x86_64-ms-code.bin:/usr/share/qemu/ovmf-x86_64-ms-vars.bin"
+    # aarch64 UEFI firmwares
+    LOADERS="$LOADERS:/usr/share/qemu/aavmf-aarch64-code.bin:/usr/share/qemu/aavmf-aarch64-vars.bin"
+    %define arg_loader_nvram --with-loader-nvram="$LOADERS"
+%endif
 
 autoreconf -f -i
 export CFLAGS="%{optflags}"
@@ -1252,6 +1259,14 @@ fi
 %{fillup_only -n libvirtd}
 %{fillup_only -n virtlockd}
 %{fillup_only -n virtlogd}
+# The '--listen' option is incompatible with socket activation.
+# We need to forcibly remove it from /etc/sysconfig/libvirtd.
+# Also add the --timeout option to be consistent with upstream.
+# See boo#1156161 for details
+sed -i -e '/^\s*LIBVIRTD_ARGS=/s/--listen//g' %{_sysconfdir}/sysconfig/libvirtd
+if ! grep -q -E '^\s*LIBVIRTD_ARGS=.*--timeout' %{_sysconfdir}/sysconfig/libvirtd ; then
+    sed -i 's/^\s*LIBVIRTD_ARGS="\(.*\)"/LIBVIRTD_ARGS="\1 --timeout 120"/' %{_sysconfdir}/sysconfig/libvirtd
+fi
 
 %preun daemon
 %service_del_preun libvirtd.service libvirtd.socket libvirtd-ro.socket libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket
@@ -1271,7 +1286,7 @@ fi
 # All connection drivers should be installed post transaction.
 # Time to restart libvirtd. With new socket activation we need to be a bit
 # smarter on update. Old libvirtd owns the sockets and will delete them on
-# shutdown. We can't use try-restart as libvirtd will one the sockets again
+# shutdown. We can't use try-restart as libvirtd will own the sockets again
 # after restart. So we must instead shutdown libvirtd, start the sockets,
 # then start libvirtd.
 if test "$YAST_IS_RUNNING" != "instsys" -a "$DISABLE_RESTART_ON_UPDATE" != yes ; then

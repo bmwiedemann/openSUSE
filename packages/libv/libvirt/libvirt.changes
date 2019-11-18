@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Nov 14 17:31:35 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- libxl: Fix lock manager lock ordering
+  2552752f-libxl-fix-lock-manager-lock-ordering.patch
+  bsc#1145774
+
+-------------------------------------------------------------------
+Tue Nov 12 22:51:54 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- spec: Forcibly remove '--listen' option from LIBVIRTD_ARGS in
+  /etc/sysconfig/libvirtd since it is incompatible with socket
+  activation. Also add '--timeout' option for consistency with
+  upstream.
+  boo#1156161
+
+-------------------------------------------------------------------
+Mon Nov 11 23:32:43 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- Enable automatic firmware seletction and add the new smm
+  flavor to the build-time firmware list
+  jsc#SLE-6997
+
+-------------------------------------------------------------------
 Wed Nov  6 14:55:39 UTC 2019 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 5.9.0
