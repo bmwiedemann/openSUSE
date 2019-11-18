@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 15 10:54:06 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.11.26:
+  * Fixed a crash when using a contains, contained_by, has_key,
+    has_keys, or has_any_keys lookup on JSONField, if the right
+    or left hand side of an expression is a key transform (#30826).
+
+-------------------------------------------------------------------
 Mon Oct  7 13:14:53 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.11.25:

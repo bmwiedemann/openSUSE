@@ -1205,4 +1205,15 @@
     a queryset containing JSONField or HStoreField (#30769).</comment>
     <requestid>735853</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>cd1e8d9e736c2ff65730271ef91a3c5c</srcmd5>
+    <version>1.11.26</version>
+    <time>1574103980</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.11.26:
+  * Fixed a crash when using a contains, contained_by, has_key,
+    has_keys, or has_any_keys lookup on JSONField, if the right
+    or left hand side of an expression is a key transform (#30826).</comment>
+    <requestid>748858</requestid>
+  </revision>
 </revisionlist>
