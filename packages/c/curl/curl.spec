@@ -1,7 +1,7 @@
 #
 # spec file for package curl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,6 +43,8 @@ Patch3:         ignore_runtests_failure.patch
 # PATCH-FIX-OPENSUSE bsc#1076446 protocol redirection not supported or disabled
 Patch4:         curl-disabled-redirect-protocol-message.patch
 Patch5:         curl-use_OPENSSL_config.patch
+# PATCH-FIX-UPSTREAM bsc#1156481
+Patch6:         curl-expire-clear.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 Requires:       libcurl4%{?mini} = %{version}
@@ -124,6 +126,7 @@ user interaction or any kind of interactivity.
 %endif
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 # disable new failing test 1165
 echo "1165" >> tests/data/DISABLED

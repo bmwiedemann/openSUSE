@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 14 16:55:18 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Fix segfault in zypper ref: [bsc#1156481]
+  * remove_handle: clear expire timers after multi_done()
+  * Add patch curl-expire-clear.patch
+
+-------------------------------------------------------------------
 Wed Nov  6 15:52:24 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Update spec file with spec-cleaner
