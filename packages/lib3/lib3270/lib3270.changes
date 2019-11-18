@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Mon Oct  7 15:23:25 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Cleanup spec file
+- Disable support for <= SLE12-SP2
+
+-------------------------------------------------------------------
+Tue Oct  1 07:01:49 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Enable parallel build. Remove pointless %pre scriptlet.
+- Adjust RPM groups. Remove leading empty line in descriptions.
+- Modernize some macro uses.
+
+-------------------------------------------------------------------
+Tue Sep 10 19:35:42 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use -ffat-lto-objects when building static libraries.
+
+-------------------------------------------------------------------
+Fri May 31 13:04:31 UTC 2019 - perry.werneck@gmail.com
+
+- Update to version 5.2:
+  * Updating read me
+  * Fixing windows build.
+  * Fixing build on OpenSUSE Factory & Tumbleweed.
+  * Removing warnings.
+  * Fixing error on select from keyboard.
+  * Atualizando documentação.
+  * Fixing segfault on key pressed on locked terminal.
+  * Updating doxygen comments.
+  * Fixing segfault when user press enter on a locked terminal.
+  * Updating service file.
+
+-------------------------------------------------------------------
+Tue Mar 26 12:24:21 UTC 2019 - Perry Werneck <perry.werneck@gmail.com>
+
+- Fixing osc source_validator errors.
+
+-------------------------------------------------------------------
+Thu Feb 28 15:02:43 UTC 2019 - Perry Werneck <perry.werneck@gmail.com>
+
+  * Project URL changes to github.
+  * Fixing deb builds.
+  * Updating deb package.
+  * Fixing CRL expiration test.
+  * Fixing build issues.
+  * Small adjustment in CRL validation.
+  * Fixing portability issue.
+  * Updating locale gen.
+  * Fixing CRL expiration problem.
+  * Updating pushtag scripts.
+
+-------------------------------------------------------------------
+Wed Feb 27 23:37:46 UTC 2019 - Perry Werneck <perry.werneck@gmail.com>
+
+  * Refactoring build process.
+  * Spliting protocol library from pw3270 main project
+
