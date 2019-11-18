@@ -17,7 +17,7 @@
 
 
 Name:           osinfo-db
-Version:        20190920
+Version:        20191108
 Release:        0
 Summary:        Osinfo database files
 License:        LGPL-2.1+ and GPL-2.0+
