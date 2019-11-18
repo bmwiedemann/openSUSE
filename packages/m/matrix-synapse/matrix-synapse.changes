@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 18 11:16:03 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Update to 1.5.1.
+
+  * Limit the length of data returned by url previews, to prevent DoS attacks.
+
+  The full changelog is included in
+  /usr/share/doc/packages/matrix-synapse/CHANGES.md.
+
+-------------------------------------------------------------------
 Wed Oct 30 02:20:29 UTC 2019 - Aleksa Sarai <asarai@suse.com>
 
 - Update to 1.5.0.

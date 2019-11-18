@@ -5,7 +5,7 @@
     <param name="url">https://github.com/matrix-org/synapse.git</param>
     <param name="scm">git</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="revision">v1.5.0</param>
+    <param name="revision">v1.5.1</param>
   </service>
   <service name="set_version" mode="disabled"/>
   <service name="tar" mode="buildtime"/>
