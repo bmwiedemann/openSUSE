@@ -233,8 +233,8 @@
       <repopackage name="bcm20702a1-firmware"/>
       <repopackage name="bcm43xx-firmware"/>
       <repopackage name="bea-stax-api"/>
-      <repopackage name="bijiben" arch="x86_64"/>
-      <repopackage name="bijiben-lang" arch="x86_64"/>
+      <repopackage name="bijiben"/>
+      <repopackage name="bijiben-lang"/>
       <repopackage name="bin86"/>
       <repopackage name="bind"/>
       <repopackage name="bind-chrootenv"/>
@@ -258,8 +258,8 @@
       <repopackage name="bluez-qt-imports"/>
       <repopackage name="bluez-qt-udev"/>
       <repopackage name="bluez-tools"/>
-      <repopackage name="bogofilter-common" arch="x86_64"/>
-      <repopackage name="bogofilter-db" arch="x86_64"/>
+      <repopackage name="bogofilter-common"/>
+      <repopackage name="bogofilter-db"/>
       <repopackage name="bolt"/>
       <repopackage name="boost-devel"/>
       <repopackage name="boost-jam"/>
@@ -480,7 +480,7 @@
       <repopackage name="efont-unicode-bitmap-fonts"/>
       <repopackage name="ekiga"/>
       <repopackage name="ekiga-lang"/>
-      <repopackage name="ekiga-plugins-evolution" arch="x86_64"/>
+      <repopackage name="ekiga-plugins-evolution"/>
       <repopackage name="elementary-xfce-icon-theme"/>
       <repopackage name="elfutils"/>
       <repopackage name="elfutils-lang"/>
@@ -521,18 +521,18 @@
       <repopackage name="evince-plugin-pdfdocument"/>
       <repopackage name="evince-plugin-tiffdocument"/>
       <repopackage name="evince-plugin-xpsdocument"/>
-      <repopackage name="evolution" arch="x86_64"/>
-      <repopackage name="evolution-data-server" arch="x86_64"/>
-      <repopackage name="evolution-data-server-lang" arch="x86_64"/>
-      <repopackage name="evolution-ews" arch="x86_64"/>
-      <repopackage name="evolution-ews-lang" arch="x86_64"/>
-      <repopackage name="evolution-lang" arch="x86_64"/>
-      <repopackage name="evolution-plugin-bogofilter" arch="x86_64"/>
-      <repopackage name="evolution-plugin-pst-import" arch="x86_64"/>
-      <repopackage name="evolution-plugin-rss" arch="x86_64"/>
-      <repopackage name="evolution-plugin-rss-lang" arch="x86_64"/>
-      <repopackage name="evolution-plugin-spamassassin" arch="x86_64"/>
-      <repopackage name="evolution-plugin-text-highlight" arch="x86_64"/>
+      <repopackage name="evolution"/>
+      <repopackage name="evolution-data-server"/>
+      <repopackage name="evolution-data-server-lang"/>
+      <repopackage name="evolution-ews"/>
+      <repopackage name="evolution-ews-lang"/>
+      <repopackage name="evolution-lang"/>
+      <repopackage name="evolution-plugin-bogofilter"/>
+      <repopackage name="evolution-plugin-pst-import"/>
+      <repopackage name="evolution-plugin-rss"/>
+      <repopackage name="evolution-plugin-rss-lang"/>
+      <repopackage name="evolution-plugin-spamassassin"/>
+      <repopackage name="evolution-plugin-text-highlight"/>
       <repopackage name="exif"/>
       <repopackage name="exiftool"/>
       <repopackage name="exim"/>
@@ -594,7 +594,7 @@
       <repopackage name="flatpak-builder"/>
       <repopackage name="flex"/>
       <repopackage name="flute"/>
-      <repopackage name="folks-lang" arch="x86_64"/>
+      <repopackage name="folks-lang"/>
       <repopackage name="fontconfig"/>
       <repopackage name="fontconfig-devel"/>
       <repopackage name="fontconfig-lang"/>
@@ -714,8 +714,8 @@
       <repopackage name="gitg-lang"/>
       <repopackage name="gitk"/>
       <repopackage name="gjs"/>
-      <repopackage name="glabels" arch="x86_64"/>
-      <repopackage name="glabels-lang" arch="x86_64"/>
+      <repopackage name="glabels"/>
+      <repopackage name="glabels-lang"/>
       <repopackage name="glade"/>
       <repopackage name="glade-lang"/>
       <repopackage name="glassfish-servlet-api"/>
@@ -752,8 +752,8 @@
       <repopackage name="gnome-clocks-lang"/>
       <repopackage name="gnome-color-manager"/>
       <repopackage name="gnome-color-manager-lang"/>
-      <repopackage name="gnome-contacts" arch="x86_64"/>
-      <repopackage name="gnome-contacts-lang" arch="x86_64"/>
+      <repopackage name="gnome-contacts"/>
+      <repopackage name="gnome-contacts-lang"/>
       <repopackage name="gnome-control-center"/>
       <repopackage name="gnome-control-center-color"/>
       <repopackage name="gnome-control-center-goa"/>
@@ -780,8 +780,8 @@
       <repopackage name="gnome-logs-lang"/>
       <repopackage name="gnome-mahjongg"/>
       <repopackage name="gnome-mahjongg-lang"/>
-      <repopackage name="gnome-maps" arch="x86_64"/>
-      <repopackage name="gnome-maps-lang" arch="x86_64"/>
+      <repopackage name="gnome-maps"/>
+      <repopackage name="gnome-maps-lang"/>
       <repopackage name="gnome-menus"/>
       <repopackage name="gnome-menus-branding-openSUSE"/>
       <repopackage name="gnome-menus-lang"/>
@@ -808,15 +808,15 @@
       <repopackage name="gnome-settings-daemon"/>
       <repopackage name="gnome-settings-daemon-lang"/>
       <repopackage name="gnome-shell"/>
-      <repopackage name="gnome-shell-calendar" arch="x86_64"/>
+      <repopackage name="gnome-shell-calendar"/>
       <repopackage name="gnome-shell-classic"/>
       <repopackage name="gnome-shell-classic-session"/>
       <repopackage name="gnome-shell-extension-desktop-icons"/>
       <repopackage name="gnome-shell-extensions-common"/>
       <repopackage name="gnome-shell-extensions-common-lang"/>
       <repopackage name="gnome-shell-lang"/>
-      <repopackage name="gnome-shell-search-provider-bijiben" arch="x86_64"/>
-      <repopackage name="gnome-shell-search-provider-contacts" arch="x86_64"/>
+      <repopackage name="gnome-shell-search-provider-bijiben"/>
+      <repopackage name="gnome-shell-search-provider-contacts"/>
       <repopackage name="gnome-shell-search-provider-documents"/>
       <repopackage name="gnome-shell-search-provider-epiphany"/>
       <repopackage name="gnome-shell-search-provider-gnome-calculator"/>
@@ -1012,7 +1012,7 @@
       <repopackage name="hfsutils"/>
       <repopackage name="hicolor-icon-theme"/>
       <repopackage name="hicolor-icon-theme-branding-openSUSE"/>
-      <repopackage name="highlight" arch="x86_64"/>
+      <repopackage name="highlight"/>
       <repopackage name="hostname"/>
       <repopackage name="hp2xx"/>
       <repopackage name="hplip"/>
@@ -1630,7 +1630,7 @@
       <repopackage name="libcairo2-32bit" arch="x86_64"/>
       <repopackage name="libcairomm-1_0-1"/>
       <repopackage name="libcamd2"/>
-      <repopackage name="libcamel-1_2-62" arch="x86_64"/>
+      <repopackage name="libcamel-1_2-62"/>
       <repopackage name="libcanberra-gtk-module-common"/>
       <repopackage name="libcanberra-gtk0"/>
       <repopackage name="libcanberra-gtk0-32bit" arch="x86_64"/>
@@ -1658,7 +1658,7 @@
       <repopackage name="libcetcd0"/>
       <repopackage name="libcfg6"/>
       <repopackage name="libcfitsio8"/>
-      <repopackage name="libchamplain-0_12-0" arch="x86_64"/>
+      <repopackage name="libchamplain-0_12-0"/>
       <repopackage name="libcheese-common"/>
       <repopackage name="libcheese-gtk25"/>
       <repopackage name="libcheese8"/>
@@ -1761,19 +1761,19 @@
       <repopackage name="libdvdread7"/>
       <repopackage name="libdw1"/>
       <repopackage name="libe-book-0_1-1"/>
-      <repopackage name="libebackend-1_2-10" arch="x86_64"/>
+      <repopackage name="libebackend-1_2-10"/>
       <repopackage name="libebl-plugins"/>
       <repopackage name="libebml4"/>
-      <repopackage name="libebook-1_2-20" arch="x86_64"/>
-      <repopackage name="libebook-contacts-1_2-3" arch="x86_64"/>
-      <repopackage name="libecal-2_0-1" arch="x86_64"/>
+      <repopackage name="libebook-1_2-20"/>
+      <repopackage name="libebook-contacts-1_2-3"/>
+      <repopackage name="libecal-2_0-1"/>
       <repopackage name="libeconf0"/>
       <repopackage name="libeconf0-32bit" arch="x86_64"/>
       <repopackage name="libecpg6"/>
-      <repopackage name="libedata-book-1_2-26" arch="x86_64"/>
-      <repopackage name="libedata-cal-2_0-1" arch="x86_64"/>
-      <repopackage name="libedataserver-1_2-24" arch="x86_64"/>
-      <repopackage name="libedataserverui-1_2-2" arch="x86_64"/>
+      <repopackage name="libedata-book-1_2-26"/>
+      <repopackage name="libedata-cal-2_0-1"/>
+      <repopackage name="libedataserver-1_2-24"/>
+      <repopackage name="libedataserverui-1_2-2"/>
       <repopackage name="libedc_ecc1_0"/>
       <repopackage name="libedc_ecc_dec1_0"/>
       <repopackage name="libedit0"/>
@@ -1845,9 +1845,9 @@
       <repopackage name="libfm-gtk4"/>
       <repopackage name="libfm-lang"/>
       <repopackage name="libfm4"/>
-      <repopackage name="libfolks-data" arch="x86_64"/>
-      <repopackage name="libfolks-eds25" arch="x86_64"/>
-      <repopackage name="libfolks25" arch="x86_64"/>
+      <repopackage name="libfolks-data"/>
+      <repopackage name="libfolks-eds25"/>
+      <repopackage name="libfolks25"/>
       <repopackage name="libfont-specimen0"/>
       <repopackage name="libfontconfig1"/>
       <repopackage name="libfontconfig1-32bit" arch="x86_64"/>
@@ -1949,7 +1949,7 @@
       <repopackage name="libgmp10-32bit" arch="x86_64"/>
       <repopackage name="libgmpxx4"/>
       <repopackage name="libgnome-autoar-0-0"/>
-      <repopackage name="libgnome-autoar-gtk-0-0" arch="x86_64"/>
+      <repopackage name="libgnome-autoar-gtk-0-0"/>
       <repopackage name="libgnome-bluetooth13"/>
       <repopackage name="libgnome-desktop-3-18"/>
       <repopackage name="libgnome-desktop-3_0-common"/>
@@ -2088,7 +2088,7 @@
       <repopackage name="libibus-1_0-5-32bit" arch="x86_64"/>
       <repopackage name="libibverbs"/>
       <repopackage name="libibverbs1"/>
-      <repopackage name="libical-glib3" arch="x86_64"/>
+      <repopackage name="libical-glib3"/>
       <repopackage name="libical3"/>
       <repopackage name="libICE-devel"/>
       <repopackage name="libICE6"/>
@@ -2647,7 +2647,7 @@
       <repopackage name="libproxy1-pacrunner-webkit"/>
       <repopackage name="libpskc0"/>
       <repopackage name="libpsl5"/>
-      <repopackage name="libpst4" arch="x86_64"/>
+      <repopackage name="libpst4"/>
       <repopackage name="libpt2_10_11"/>
       <repopackage name="libpulse-mainloop-glib0"/>
       <repopackage name="libpulse0"/>
@@ -5366,7 +5366,7 @@
       <repopackage name="typelib-1_0-AccountsService-1_0"/>
       <repopackage name="typelib-1_0-Atk-1_0"/>
       <repopackage name="typelib-1_0-Atspi-2_0"/>
-      <repopackage name="typelib-1_0-Champlain-0_12" arch="x86_64"/>
+      <repopackage name="typelib-1_0-Champlain-0_12"/>
       <repopackage name="typelib-1_0-Cheese-3_0"/>
       <repopackage name="typelib-1_0-Clutter-1_0"/>
       <repopackage name="typelib-1_0-Cogl-1_0"/>
@@ -5380,9 +5380,9 @@
       <repopackage name="typelib-1_0-GdkPixbuf-2_0"/>
       <repopackage name="typelib-1_0-Gdm-1_0"/>
       <repopackage name="typelib-1_0-Geoclue-2_0"/>
-      <repopackage name="typelib-1_0-GeocodeGlib-1_0" arch="x86_64"/>
+      <repopackage name="typelib-1_0-GeocodeGlib-1_0"/>
       <repopackage name="typelib-1_0-GES-1_0"/>
-      <repopackage name="typelib-1_0-GFBGraph-0_2" arch="x86_64"/>
+      <repopackage name="typelib-1_0-GFBGraph-0_2"/>
       <repopackage name="typelib-1_0-GjsPrivate-1_0"/>
       <repopackage name="typelib-1_0-GMenu-3_0"/>
       <repopackage name="typelib-1_0-GnomeBluetooth-1_0"/>
