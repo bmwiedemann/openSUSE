@@ -1,7 +1,7 @@
 #
 # spec file for package gnuhealth-thalamus
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 # Copyright (c) 2017-2019 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,12 +21,12 @@
 
 %define modname thalamus
 Name:           gnuhealth-%{modname}
-Version:        0.9.10
+Version:        0.9.11
 Release:        0
 Summary:        The GNU Health Federation Message and Authentication Server
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
-Url:            http://health.gnu.org
+URL:            http://health.gnu.org
 Source:         https://files.pythonhosted.org/packages/source/t/%{modname}/%{modname}-%{version}.tar.gz
 BuildRequires:  postgresql-server
 BuildRequires:  python-rpm-macros
