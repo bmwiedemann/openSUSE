@@ -26,7 +26,7 @@
 ##### WARNING: please do not edit this auto generated spec file. Use the systemd.spec! #####
 %define mini -mini
 %define min_kernel_version 4.5
-%define suse_version +suse.126.gb7467b7b55
+%define suse_version +suse.135.g0b715187a8
 
 %bcond_with     gnuefi
 %if 0%{?bootstrap}
@@ -1132,7 +1132,7 @@ fi
 %endif
 
 %dir %{_sysconfdir}/modules-load.d
-%{_libexecdir}/modules-load.d
+%{_prefix}/lib/modules-load.d
 
 %{_sysusersdir}/
 %dir %{_sysconfdir}/tmpfiles.d
@@ -1143,7 +1143,7 @@ fi
 %exclude %{_sysusersdir}/systemd-remote.conf
 %endif
 
-%{_libexecdir}/environment.d/
+%{_prefix}/lib/environment.d/
 
 %dir %{_binfmtdir}
 %dir %{_sysconfdir}/binfmt.d
