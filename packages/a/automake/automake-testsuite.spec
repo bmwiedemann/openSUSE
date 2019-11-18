@@ -1,7 +1,7 @@
 #
-# spec file for package automake
+# spec file for package automake-testsuite
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,9 +24,9 @@ Name:           automake-testsuite
 Version:        1.16.1
 Release:        0
 Summary:        A Program for Automatically Generating GNU-Style Makefile.in Files
+# docs ~> GFDL, sources ~> GPLv2+, mkinstalldirs ~> PD and install-sh ~> MIT
 License:        GPL-2.0-or-later AND GFDL-1.3-or-later AND SUSE-Public-Domain AND MIT
 Group:          Development/Tools/Building
-# docs ~> GFDL, sources ~> GPLv2+, mkinstalldirs ~> PD and install-sh ~> MIT
 Url:            https://www.gnu.org/software/automake
 Source0:        https://ftp.gnu.org/gnu/automake/automake-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/gnu/automake/automake-%{version}.tar.xz.sig
@@ -46,6 +46,7 @@ BuildRequires:  xz
 BuildRequires:  perl(Thread::Queue)
 BuildRequires:  perl(threads)
 Requires:       autoconf >= 2.69
+Requires:       perl
 Requires(post): info
 Requires(preun): info
 BuildArch:      noarch

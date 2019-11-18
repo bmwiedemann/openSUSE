@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 12 09:01:36 UTC 2019 - Petr Vorel <pvorel@suse.cz>
+
+- Add missing perl dependency (bsc#1156491).
+
+-------------------------------------------------------------------
 Tue Mar  5 12:40:06 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop info requires: this is not actually true: automake works
