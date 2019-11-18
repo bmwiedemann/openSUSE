@@ -1,7 +1,7 @@
 #
 # spec file for package python-Django
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %bcond_with memcached
 Name:           python-Django
 # We want support LTS versions of Django - odd numbered 2.2 -> 2.4 -> 2.6 -> 3.0 etc
-Version:        2.2.6
+Version:        2.2.7
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause
@@ -47,8 +47,10 @@ BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sqlparse}
 BuildRequires:  %{python_module tblib}
+BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python
 Requires:       python-Pillow
 Requires:       python-argon2-cffi >= 16.1.0
 Requires:       python-pytz
@@ -121,7 +123,7 @@ export LANG=en_US.UTF8
 export PYTHONDONTWRITEBYTECODE=1
 %if %{with selenium}
 export PATH=%{_libdir}/chromium:$PATH
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} xvfb-run $python tests/runtests.py -v 2 --selenium=chome
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} xvfb-run $python tests/runtests.py -v 2 --selenium=chrome
 %else
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python tests/runtests.py
 %endif

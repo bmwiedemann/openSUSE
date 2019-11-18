@@ -635,4 +635,18 @@
     JSONField or HStoreField (#30769).</comment>
     <requestid>735855</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>2f681757447b7a0275b83538b05b2934</srcmd5>
+    <version>2.2.7</version>
+    <time>1574103993</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.7:
+  * Fixed a crash when using a contains, contained_by, has_key, has_keys, or has_any_keys lookup on JSONField, if the right or left hand side of an expression is a key transform (#30826).
+  * Prevented migrate --plan from showing that RunPython operations are irreversible when reverse_code callables don’t have docstrings or when showing a forward migration plan (#30870).
+  * Fixed migrations crash on PostgreSQL when adding an Index with fields ordering and opclasses (#30903).
+  * Restored the ability to override get_FOO_display() (#30931).
+
+- Require full python interpreter on build and runtime</comment>
+    <requestid>748860</requestid>
+  </revision>
 </revisionlist>
