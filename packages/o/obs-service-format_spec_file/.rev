@@ -664,4 +664,13 @@
   * reformat url as uppercase URL (handle issue#24) (#37)</comment>
     <requestid>745988</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>fc006ce039c85581cdc50b070d5776dc</srcmd5>
+    <version>20191114</version>
+    <time>1574103882</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20191114:
+  * Use copyright line without the . at the end</comment>
+    <requestid>748701</requestid>
+  </revision>
 </revisionlist>

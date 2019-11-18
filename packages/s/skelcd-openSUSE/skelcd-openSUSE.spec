@@ -12,11 +12,11 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define version_unconverted 84.87.20190503.f962d0e
+%define version_unconverted 84.87.20190715.93dc01e
 # changed by pre_checkin
 %define is_non_oss 0
 #
@@ -28,7 +28,7 @@
 %bcond_without  java
 #
 Name:           skelcd-openSUSE
-Version:        84.87.20190503.f962d0e
+Version:        84.87.20190715.93dc01e
 Release:        0
 Summary:        Skeleton for openSUSE OSS Media Sets
 License:        MIT

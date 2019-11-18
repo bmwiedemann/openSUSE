@@ -1,7 +1,0 @@
-<package name="imap" project="openSUSE:Factory">
-  <title>IMAP4, POP2, and POP3 Mail Server</title>
-  <description>This package contains IMAP4, POP2, and POP3 mail servers.
-
-After installation, activate the servers in the file /etc/inetd.conf.</description>
-  <devel project="server:mail" package="imap"/>
-</package>

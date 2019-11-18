@@ -17,7 +17,7 @@
 
 
 Name:           perl-DateTime-Calendar-Julian
-Version:        0.101
+Version:        0.102
 Release:        0
 %define cpan_name DateTime-Calendar-Julian
 Summary:        Dates in the Julian calendar

@@ -1432,4 +1432,33 @@ Adjust cmake-gui.spec so it uses 2.8.12.1 (forwarded request 208241 from sumski)
     <comment></comment>
     <requestid>728429</requestid>
   </revision>
+  <revision rev="166" vrev="1">
+    <srcmd5>15d55eea56f4497e0e438bb751ff5bd5</srcmd5>
+    <version>3.15.5</version>
+    <time>1574103615</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch back to libcurl-mini-devel to avoid new build cycle
+
+- cmake 3.15.5:
+  * no changelog available
+
+- Drop debug patch (never in factory) and update patch numbers
+
+- Update cmake conditionals to make sure the multibuild is
+  nicely leveraged
+
+- cmake 3.15.4
+  * In CMake 3.15.0 through 3.15.3, the EXCLUDE_FROM_ALL directory 
+    property was regressed from pre-3.14 behavior and caused targets
+    within the directory to be excluded even from its own “all”. 
+    This has been fixed. The bug also existed in 3.14.0 through 
+    3.14.6 and is fixed in 3.14.7.
+- Use pkgconfig for dependencies where possible (required due to 
+  tumbleweed build changes)
+
+- Allow %cmake_build to handle parameters (bsc#1091864)
+  warning for now (bsc#1129024)
+- update to 3.12.4 (bsc#1127105):</comment>
+    <requestid>748304</requestid>
+  </revision>
 </revisionlist>

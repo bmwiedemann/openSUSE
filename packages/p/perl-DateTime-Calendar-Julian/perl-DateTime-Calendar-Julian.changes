@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Nov 10 10:04:56 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 0.102
+   see /usr/share/doc/packages/perl-DateTime-Calendar-Julian/Changes
+
+  0.102		2019-11-09	T. R. Wyant
+      - Add optional separator arg to datetime(). This tracks the same
+        change in DateTime version 1.43 dated 2017-05-29. Thanks to Jean
+        Forget for finding, isolating, and reporting this.
+  
+      - NOTE that the above change restores the 'T' separator in
+        stringification, as it was before DateTime 1.43.
+  
+      - Add tests for datetime() method.
+  
+      - Eliminate redirections in POD URL links
+
+-------------------------------------------------------------------
 Thu Aug 15 05:06:00 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.101

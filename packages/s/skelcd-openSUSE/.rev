@@ -933,4 +933,14 @@
     <comment></comment>
     <requestid>701034</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>715ecc42222eccad6b7679b66f26d98c</srcmd5>
+    <version>84.87.20190715.93dc01e</version>
+    <time>1574103875</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87.20190715.93dc01e:
+  * Bump treeinfo to 15.2
+  * Translated using Weblate (Arabic)</comment>
+    <requestid>748693</requestid>
+  </revision>
 </revisionlist>

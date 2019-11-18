@@ -1,3 +1,0 @@
-addFilter(".*W:.*files-duplicate */etc/pam.d/pop.*")
-addFilter(".*W:.*standard-dir-owned-by-package.*/etc/xinetd\.d.*")
-addFilter(".*E:.*devel-file-in-non-devel-package.*libc-client\.so.*")

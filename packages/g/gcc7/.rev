@@ -388,4 +388,17 @@
 - Remove bogus fixed include bits/statx.h from glibc 2.30.  [gcc#91085]</comment>
     <requestid>730117</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>7abc585d605e9304fb652d67323e8422</srcmd5>
+    <version>7.5.0+r278197</version>
+    <time>1574103857</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to GCC 7.5.0 release.
+- Add gcc7-pr85887.patch to fix miscompilation with thread-safe local
+  static initialization.  [gcc#85887]
+
+- Add gcc7-bsc1146475.patch to fix debug info created for array
+  definitions that complete an earlier declaration.  [bsc#1146475]</comment>
+    <requestid>748682</requestid>
+  </revision>
 </revisionlist>

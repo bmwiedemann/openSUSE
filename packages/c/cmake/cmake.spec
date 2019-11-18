@@ -1,7 +1,7 @@
 #
 # spec file for package cmake
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,17 @@
 #
 
 
-%define flavor @BUILD_FLAVOR@%{nil}
-%define shortversion 3.15
-%if "%flavor" == "gui"
-Name:           cmake-%{flavor}
-Summary:        CMake graphical user interface
-License:        BSD-3-Clause
-Group:          Development/Tools/Building
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "gui"
+%define psuffix -gui
+%bcond_without gui
 %else
-Name:           cmake
-Summary:        Cross-platform make system
-License:        BSD-3-Clause
-Group:          Development/Tools/Building
+%define psuffix %{nil}
+%bcond_with gui
 %endif
-Version:        3.15.3
+%define shortversion 3.15
+Name:           cmake%{psuffix}
+Version:        3.15.5
 Release:        0
 URL:            https://www.cmake.org/
 Source0:        https://www.cmake.org/files/v%{shortversion}/cmake-%{version}.tar.gz
@@ -40,29 +37,36 @@ Source4:        cmake.prov
 Source5:        https://www.cmake.org/files/v%{shortversion}/cmake-%{version}-SHA-256.txt
 Source6:        https://www.cmake.org/files/v%{shortversion}/cmake-%{version}-SHA-256.txt.asc
 Source7:        cmake.keyring
-Patch2:         cmake-fix-ruby-test.patch
+Patch1:         cmake-fix-ruby-test.patch
 # PATCH-FIX-UPSTREAM form.patch -- set the correct include path for the ncurses includes
-Patch4:         form.patch
+Patch2:         form.patch
 # Search for python interpreters from newest to oldest rather then picking up /usr/bin/python as first choice
-Patch7:         feature-suse-python-interp-search-order.patch
+Patch3:         feature-suse-python-interp-search-order.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  libarchive-devel >= 3.0.2
-BuildRequires:  libbz2-devel
 BuildRequires:  libcurl-mini-devel
-BuildRequires:  libexpat-devel
-BuildRequires:  libuv-devel >= 1.10
-BuildRequires:  ncurses-devel
 # this is commented as it would create dependancy cycle between jsoncpp and cmake
 #if 0 % { ? suse_version} > 1320
 #BuildRequires:  pkgconfig(jsoncpp)
 #endif
 BuildRequires:  pkgconfig
 BuildRequires:  rhash-devel
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(expat)
+BuildRequires:  pkgconfig(libarchive) >= 3.0.2
 BuildRequires:  pkgconfig(liblzma)
+BuildRequires:  pkgconfig(libuv) >= 1.10
+BuildRequires:  pkgconfig(ncurses)
+BuildRequires:  pkgconfig(zlib)
 Requires:       make
-%if "%flavor" == "gui"
+%if %{with gui}
+Summary:        CMake graphical user interface
+License:        BSD-3-Clause
+%else
+Summary:        Cross-platform make system
+License:        BSD-3-Clause
+%endif
+%if %{with gui}
 BuildRequires:  python-sphinx
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Widgets)
@@ -72,17 +76,17 @@ Recommends:     cmake-man
 # bnc#953842 - A python file is shipped so require python base so it can be run.
 Requires:       python3-base
 %endif
-%if "%flavor" == "gui"
-%description
-This is a Graphical User Interface for CMake, a cross-platform
-build system.
 
 %package -n cmake-man
 Summary:        Manual pages for cmake, a cross-platform make system
-Group:          Development/Tools/Building
 
 %description -n cmake-man
 Manual pages for cmake, a cross-platform make system.
+
+%if %{with gui}
+%description
+This is a Graphical User Interface for CMake, a cross-platform
+build system.
 %else
 %description
 CMake is a cross-platform build system.
@@ -110,20 +114,20 @@ export CXXFLAGS="%{optflags}"
     --no-system-zstd \
     --parallel=0%{jobs} \
     --verbose \
-    %if "%flavor" == "gui"
+%if %{with gui}
     --qt-gui \
     --sphinx-man \
-    %else
+%else
     --no-qt-gui \
-    %endif
-    --
+%endif
+    %{nil}
 make VERBOSE=1 %{?_smp_mflags}
 
 %install
 %make_install
 mkdir -p %{buildroot}%{_libdir}/cmake
-%if "%flavor" == "gui"
-%suse_update_desktop_file  -r %{name} CMake Development IDE Tools Qt
+%if %{with gui}
+%suse_update_desktop_file  -r cmake-gui CMake Development IDE Tools Qt
 
 # delete files that belong to the 'cmake' package
 rm -rf %{buildroot}%{_bindir}/{cpack,cmake,ctest,ccmake}
@@ -166,8 +170,8 @@ rm %{buildroot}%{_docdir}/%{name}/Copyright.txt
     -E "(TestUpload|SimpleInstall|SimpleInstall-Stage2|CPackComponentsForAll-RPM-(default|OnePackPerGroup|IgnoreGroup|AllInOne)|CPack_RPM)"
 %endif
 
-%if "%flavor" == "gui"
-%files
+%if %{with gui}
+%files -n cmake-gui
 %license Copyright.txt
 %{_bindir}/cmake-gui
 %{_datadir}/applications/%{name}.desktop
