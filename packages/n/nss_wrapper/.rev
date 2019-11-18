@@ -73,4 +73,16 @@
     <comment>Change Requires to Recommends for cmake and pkgconf</comment>
     <requestid>724988</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b8fad59388083c62a2d73d5517bb5188</srcmd5>
+    <version>1.1.7</version>
+    <time>1574103451</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.7
+  * Added NSS_WRAPPER_DISABLE_DEEPBIND env variable
+  * Improvded logging
+  * Fixed location in cmake config
+</comment>
+    <requestid>748050</requestid>
+  </revision>
 </revisionlist>
