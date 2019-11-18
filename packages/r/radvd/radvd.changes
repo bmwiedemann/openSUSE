@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 13 08:05:39 UTC 2019 - Jiri Bohac <jbohac@suse.cz>
+
+- the previous fix for (bsc#1149037) did not work correctly, fix it
+
+-------------------------------------------------------------------
 Wed Oct 23 15:21:21 UTC 2019 - Jiri Bohac <jbohac@suse.cz>
 
 - create the radvd group on upgrades (bsc#1149037)
