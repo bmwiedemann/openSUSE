@@ -94,6 +94,7 @@ Patch18:        chromium-78-pm-crash.patch
 Patch19:        chromium-78-protobuf-export.patch
 Patch20:        chromium-77-clang.patch
 Patch21:        chromium-old-glibc-noexcept.patch
+Patch22:        chromium-79-icu-65.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches
