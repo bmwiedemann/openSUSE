@@ -25,6 +25,8 @@ License:        GPL-2.0-only
 Group:          Development/Tools/Other
 URL:            http://codemonkey.org.uk/projects/trinity/
 Source0:        %{name}-%{version}.tar.xz
+Patch0:         0001-modify_ldt-include-linux-types.h-before-ASSEMBLY-1.patch
+Patch1:         0001-syscalls-remove-arch_prctl-from-x86_32.patch
 
 %description
 The basic idea is fairly simple. As 'fuzz testing' suggests, we call syscalls
@@ -33,7 +35,7 @@ done many times before on Linux, and on other operating systems.  Where
 Trinity differs is that the arguments it passes are not purely random.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags}"

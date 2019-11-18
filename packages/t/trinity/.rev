@@ -592,4 +592,12 @@
   * add new 5.3 syscalls</comment>
     <requestid>726676</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>3bdc57a7ffc8a30b39013e8c3775fe80</srcmd5>
+    <version>1.9+git.20190801</version>
+    <time>1574104277</time>
+    <user>dimstar_suse</user>
+    <comment>fix build</comment>
+    <requestid>749253</requestid>
+  </revision>
 </revisionlist>
