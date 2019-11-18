@@ -215,8 +215,10 @@ This package contains examples for GSL
 %if %{with hpc}
 %package module
 Summary:        Module files for %{name}
+# Package can not be noarch, as this will lead to the situation, so 
+# that sometimes 32bit rpm is used with %%{_lib}=lib or 64 bit, where
+# %%{_lib}=lib64
 Group:          Development/Libraries/Parallel
-BuildArch:      noarch
 
 %description module
 This package contains the environment module needed for the GSL
