@@ -1,0 +1,370 @@
+Description: creates a setup.py
+ Upstream doesn't provide a setup.py for linux systems
+Author: Tiago Bortoletto Vaz <tiago@debian.org>
+Last-Update: 2018-07-31
+
+Index: Cecilia5_5.3.5-src/Cecilia5.py
+===================================================================
+--- Cecilia5_5.3.5-src.orig/Cecilia5.py
++++ Cecilia5_5.3.5-src/Cecilia5.py
+@@ -21,11 +21,10 @@ along with Cecilia 5.  If not, see <http
+ """
+ import os, sys, random
+ import wx
+-from Resources.constants import *
+-from Resources import audio, CeciliaMainFrame
+-from Resources.splash import CeciliaSplashScreen
+-import Resources.CeciliaLib as CeciliaLib
+-
++from cecilia.Resources.constants import *
++from cecilia.Resources import audio, CeciliaMainFrame
++import cecilia.Resources.CeciliaLib as CeciliaLib
++from cecilia.Resources.splash import CeciliaSplashScreen
+ 
+ class CeciliaApp(wx.App):
+     def __init__(self, *args, **kwargs):
+Index: Cecilia5_5.3.5-src/Resources/CeciliaInterface.py
+===================================================================
+--- Cecilia5_5.3.5-src.orig/Resources/CeciliaInterface.py
++++ Cecilia5_5.3.5-src/Resources/CeciliaInterface.py
+@@ -20,9 +20,9 @@ along with Cecilia 5.  If not, see <http
+ """
+ 
+ import wx
+-import Resources.CeciliaLib as CeciliaLib
+-import Resources.Control as Control
+-import Resources.Preset as Preset
++from cecilia.Resources import CeciliaLib
++from cecilia.Resources import Control
++from cecilia.Resources import Preset
+ from .constants import *
+ from .Sliders import buildHorizontalSlidersBox
+ from .Grapher import getGrapher, buildGrapher
+@@ -171,4 +171,4 @@ class CeciliaInterface(wx.Frame):
+         self.grapher.plotter.onSelectAll()
+ 
+     def updateNchnls(self):
+-        self.controlPanel.updateNchnls()
+\ No newline at end of file
++        self.controlPanel.updateNchnls()
+Index: Cecilia5_5.3.5-src/Resources/CeciliaLib.py
+===================================================================
+--- Cecilia5_5.3.5-src.orig/Resources/CeciliaLib.py
++++ Cecilia5_5.3.5-src/Resources/CeciliaLib.py
+@@ -24,7 +24,7 @@ import unicodedata
+ from subprocess import Popen
+ from .constants import *
+ from .API_interface import *
+-import Resources.Variables as vars
++from cecilia.Resources import Variables as vars
+ import wx.lib.agw.supertooltip as STT
+ 
+ if sys.version_info[0] < 3:
+Index: Cecilia5_5.3.5-src/Resources/CeciliaMainFrame.py
+===================================================================
+--- Cecilia5_5.3.5-src.orig/Resources/CeciliaMainFrame.py
++++ Cecilia5_5.3.5-src/Resources/CeciliaMainFrame.py
+@@ -21,9 +21,9 @@ along with Cecilia 5.  If not, see <http
+ import os, time, random
+ import wx
+ from .constants import *
+-import Resources.CeciliaLib as CeciliaLib
+-import Resources.PreferencePanel as PreferencePanel
+-import Resources.CeciliaInterface as CeciliaInterface
++from cecilia.Resources import CeciliaLib
++from cecilia.Resources import PreferencePanel
++from cecilia.Resources import CeciliaInterface
+ from .menubar import InterfaceMenuBar
+ from .Widgets import *
+ from .DocFrame import ManualFrame
+Index: Cecilia5_5.3.5-src/Resources/CeciliaPlot.py
+===================================================================
+--- Cecilia5_5.3.5-src.orig/Resources/CeciliaPlot.py
++++ Cecilia5_5.3.5-src/Resources/CeciliaPlot.py
+@@ -90,7 +90,7 @@ Zooming controls with mouse (when enable
+ """
+ 
+ import wx
+-import Resources.CeciliaLib as CeciliaLib
++from cecilia.Resources import CeciliaLib
+ from .constants import *
+ 
+ try:
+Index: Cecilia5_5.3.5-src/Resources/Control.py
+===================================================================
+--- Cecilia5_5.3.5-src.orig/Resources/Control.py
++++ Cecilia5_5.3.5-src/Resources/Control.py
+@@ -20,7 +20,7 @@ along with Cecilia 5.  If not, see <http
+ 
+ import wx, os, math, copy
+ import wx.lib.scrolledpanel as scrolled
+-import Resources.CeciliaLib as CeciliaLib
++from cecilia.Resources import CeciliaLib
+ from .constants import *
+ from .Widgets import *
+ from .TogglePopup import SamplerPopup, SamplerToggle
+Index: Cecilia5_5.3.5-src/Resources/DocFrame.py
+===================================================================
+--- Cecilia5_5.3.5-src.orig/Resources/DocFrame.py
++++ Cecilia5_5.3.5-src/Resources/DocFrame.py
+@@ -1,11 +1,10 @@
+-#!/usr/bin/env python
+ # encoding: utf-8
+ import os, keyword, shutil
+ import wx
+ import wx.stc as stc
+ from .constants import *
+ from .API_interface import *
+-import Resources.CeciliaLib as CeciliaLib
++from cecilia.Resources import CeciliaLib
+ 
+ _INTRO_TEXT = """
+ "Cecilia5 API Documentation"
+@@ -1111,4 +1110,4 @@ class ManualFrame(wx.Frame):
+         if search != "":
+             self.search.SetValue("")
+         self.doc_panel.getPage("Intro")
+-        self.doc_panel.collapseAll()
+\ No newline at end of file
++        self.doc_panel.collapseAll()
+Index: Cecilia5_5.3.5-src/Resources/Grapher.py
+===================================================================
+--- Cecilia5_5.3.5-src.orig/Resources/Grapher.py
++++ Cecilia5_5.3.5-src/Resources/Grapher.py
+@@ -21,8 +21,8 @@ along with Cecilia 5.  If not, see <http
+ import wx, random, bisect, math, copy
+ from wx.lib.stattext import GenStaticText
+ from pyo import reducePoints, distanceToSegment, linToCosCurve
+-import Resources.CeciliaPlot as plot
+-import Resources.CeciliaLib as CeciliaLib
++from cecilia.Resources import CeciliaPlot as plot
++from cecilia.Resources import CeciliaLib
+ from .constants import *
+ from .Grapher_parser import *
+ from .Widgets import *
+Index: Cecilia5_5.3.5-src/Resources/Plugins.py
+===================================================================
+--- Cecilia5_5.3.5-src.orig/Resources/Plugins.py
++++ Cecilia5_5.3.5-src/Resources/Plugins.py
+@@ -19,7 +19,7 @@ along with Cecilia 5.  If not, see <http
+ """
+ 
+ import wx, math
+-import Resources.CeciliaLib as CeciliaLib
++from cecilia.Resources import CeciliaLib
+ from .constants import *
+ from .Widgets import *
+ 
+Index: Cecilia5_5.3.5-src/Resources/PreferencePanel.py
+===================================================================
+--- Cecilia5_5.3.5-src.orig/Resources/PreferencePanel.py
++++ Cecilia5_5.3.5-src/Resources/PreferencePanel.py
+@@ -19,7 +19,7 @@ along with Cecilia 5.  If not, see <http
+ """
+ 
+ import wx, os, sys
+-import Resources.CeciliaLib as CeciliaLib
++from cecilia.Resources import CeciliaLib
+ from .constants import *
+ from .Widgets import *
+ 
+Index: Cecilia5_5.3.5-src/Resources/Preset.py
+===================================================================
+--- Cecilia5_5.3.5-src.orig/Resources/Preset.py
++++ Cecilia5_5.3.5-src/Resources/Preset.py
+@@ -19,7 +19,7 @@ along with Cecilia 5.  If not, see <http
+ """
+ 
+ import wx
+-import Resources.CeciliaLib as CeciliaLib
++from cecilia.Resources import CeciliaLib
+ from .constants import *
+ from .Widgets import *
+ 
+Index: Cecilia5_5.3.5-src/Resources/Sliders.py
+===================================================================
+--- Cecilia5_5.3.5-src.orig/Resources/Sliders.py
++++ Cecilia5_5.3.5-src/Resources/Sliders.py
+@@ -19,7 +19,7 @@ along with Cecilia 5.  If not, see <http
+ """
+ 
+ import wx, math
+-import Resources.CeciliaLib as CeciliaLib
++from cecilia.Resources import CeciliaLib
+ from .constants import *
+ from .Widgets import *
+ 
+Index: Cecilia5_5.3.5-src/Resources/TogglePopup.py
+===================================================================
+--- Cecilia5_5.3.5-src.orig/Resources/TogglePopup.py
++++ Cecilia5_5.3.5-src/Resources/TogglePopup.py
+@@ -20,7 +20,7 @@ from __future__ import division
+ import wx, random
+ from .Widgets import Label, CustomMenu, Toggle, Button, ListEntry
+ from .constants import *
+-import Resources.CeciliaLib as CeciliaLib
++from cecilia.Resources import CeciliaLib
+ 
+ class CECPopup:
+     def __init__(self, parent, label, values, init, rate, name, colour, tooltip=True, output=True):
+Index: Cecilia5_5.3.5-src/Resources/Widgets.py
+===================================================================
+--- Cecilia5_5.3.5-src.orig/Resources/Widgets.py
++++ Cecilia5_5.3.5-src/Resources/Widgets.py
+@@ -24,7 +24,7 @@ from pyo import PyoGuiSpectrum, rescale
+ from pyolib._wxwidgets import ControlSlider, HRangeSlider
+ from .constants import *
+ from .Drunk import *
+-import Resources.CeciliaLib as CeciliaLib
++from cecilia.Resources import CeciliaLib
+ 
+ class MenuFrame(wx.Menu):
+     def __init__(self, parent, choice):
+Index: Cecilia5_5.3.5-src/Resources/audio.py
+===================================================================
+--- Cecilia5_5.3.5-src.orig/Resources/audio.py
++++ Cecilia5_5.3.5-src/Resources/audio.py
+@@ -20,7 +20,7 @@ along with Cecilia 5.  If not, see <http
+ 
+ import wx
+ import os, math, copy, time, traceback
+-import Resources.CeciliaLib as CeciliaLib
++from cecilia.Resources import CeciliaLib
+ from .constants import *
+ from .API_interface import *
+ 
+@@ -2023,4 +2023,4 @@ class AudioServer():
+                     print('not a file')
+         if CeciliaLib.getVar("DEBUG"):
+             print()
+-        return soundDict
+\ No newline at end of file
++        return soundDict
+Index: Cecilia5_5.3.5-src/Resources/constants.py
+===================================================================
+--- Cecilia5_5.3.5-src.orig/Resources/constants.py
++++ Cecilia5_5.3.5-src/Resources/constants.py
+@@ -17,7 +17,7 @@ GNU General Public License for more deta
+ You should have received a copy of the GNU General Public License
+ along with Cecilia 5.  If not, see <http://www.gnu.org/licenses/>.
+ """
+-import os, sys
++import os, sys, cecilia
+ from .images import *
+ 
+ BUILD_RST = False
+@@ -42,7 +42,7 @@ if '/%s.app' % APP_NAME in os.getcwd():
+     RESOURCES_PATH = os.getcwd()
+     os.environ["LANG"] = "en_CA.UTF-8"
+ else:
+-    RESOURCES_PATH = os.path.join(os.getcwd(), 'Resources')
++    RESOURCES_PATH = cecilia.Resources.__path__[0]
+ 
+ if not os.path.isdir(RESOURCES_PATH) and sys.platform == "win32":
+     RESOURCES_PATH = os.path.join(os.getenv("ProgramFiles"), "Cecilia5", "Resources")
+@@ -742,4 +742,4 @@ Choose a post-processing module.
+ Parameters appear on the left buttons. 
+ 
+ Signal routing is from top to bottom.
+-"""
+\ No newline at end of file
++"""
+Index: Cecilia5_5.3.5-src/Resources/menubar.py
+===================================================================
+--- Cecilia5_5.3.5-src.orig/Resources/menubar.py
++++ Cecilia5_5.3.5-src/Resources/menubar.py
+@@ -20,7 +20,7 @@ along with Cecilia 5.  If not, see <http
+ 
+ import wx, os
+ from .constants import *
+-import Resources.CeciliaLib as CeciliaLib
++from cecilia.Resources import CeciliaLib
+ 
+ class InterfaceMenuBar(wx.MenuBar):
+     def __init__(self, frame, mainFrame=None):
+Index: Cecilia5_5.3.5-src/Resources/splash.py
+===================================================================
+--- Cecilia5_5.3.5-src.orig/Resources/splash.py
++++ Cecilia5_5.3.5-src/Resources/splash.py
+@@ -1,8 +1,7 @@
+-#!/usr/bin/env python
+ # encoding: utf-8
+ 
+ import wx, sys, os
+-from .constants import *
++from cecilia.Resources.constants import *
+ 
+ def GetRoundBitmap(w, h, r):
+     maskColour = wx.Colour(0, 0, 0)
+@@ -76,4 +75,4 @@ class CeciliaSplashScreen(wx.Frame):
+ 
+     def OnClose(self):
+         self.callback()
+-        self.Destroy()
+\ No newline at end of file
++        self.Destroy()
+Index: Cecilia5_5.3.5-src/setup.py
+===================================================================
+--- Cecilia5_5.3.5-src.orig/setup.py
++++ Cecilia5_5.3.5-src/setup.py
+@@ -1,24 +1,20 @@
+-"""
+-This is a setup.py script generated by py2applet
++# -*- coding: utf-8 -*-
+ 
+-Usage:
+-    python3.6 setup.py py2app
+-"""
++import os
++from distutils.core import setup
+ 
+-from setuptools import setup
+-
+-APP = ['Cecilia5.py']
+-APP_NAME = 'Cecilia5'
+-DATA_FILES = ['Resources/']
+-OPTIONS = {'argv_emulation': False,
+-           #'strip': False, # only for debugging purposes.
+-           'iconfile': 'Resources/Cecilia5.icns',
+-           'includes': 'wx.adv,wx.html,wx.xml'}
+-
+-setup(
+-    name=APP_NAME,
+-    app=APP,
+-    data_files=DATA_FILES,
+-    options={'py2app': OPTIONS},
+-    setup_requires=['py2app'],
+-)
++setup(  name = "cecilia",
++        author = "Jean Piche, Olivier Belanger, Jean-Michel Dumas",
++        author_email = "belangeo@gmail.com",
++        version = "5.3.5",
++        description = "Sound synthesis and audio signal processing environment",
++        url = "https://github.com/belangeo/cecilia5",
++        license = "GPLv3",
++        package_dir = { 'cecilia': '' },
++        packages = ['cecilia.Resources'],
++        py_modules = ['cecilia.__init__'], #workaround to have Resources under cecilia dir
++        scripts = ['Cecilia5.py'],
++        package_data={
++            'cecilia.Resources': ['modules/*/*', 'Cecilia5.icns', 'Cecilia5.ico', 'CeciliaFileIcon5.icns', 'CeciliaFileIcon5.ico', 'Cecilia_splash.png'],
++        }
++    )
+Index: Cecilia5_5.3.5-src/Resources/API_interface.py
+===================================================================
+--- Cecilia5_5.3.5-src.orig/Resources/API_interface.py
++++ Cecilia5_5.3.5-src/Resources/API_interface.py
+@@ -1,4 +1,3 @@
+-#!/usr/bin/env python
+ # encoding: utf-8
+ """
+ Copyright 2011 iACT, Universite de Montreal,
+Index: Cecilia5_5.3.5-src/Resources/Grapher_parser.py
+===================================================================
+--- Cecilia5_5.3.5-src.orig/Resources/Grapher_parser.py
++++ Cecilia5_5.3.5-src/Resources/Grapher_parser.py
+@@ -1,4 +1,3 @@
+-#!/usr/bin/env python
+ # encoding: utf-8
+ """
+ Grapher's line parser.
