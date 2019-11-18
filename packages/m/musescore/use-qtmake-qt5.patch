@@ -1,0 +1,12 @@
+diff -ur a/build/FindQt5.cmake b/build/FindQt5.cmake
+--- a/build/FindQt5.cmake	2019-11-14 08:45:52.000000000 +0100
++++ b/build/FindQt5.cmake	2019-11-15 10:58:45.208000000 +0100
+@@ -37,7 +37,7 @@
+ 
+ include_directories(${QT_INCLUDES})
+ 
+-find_program(QT_QMAKE_EXECUTABLE qmake)
++find_program(QT_QMAKE_EXECUTABLE qmake-qt5)
+ set(_qmake_vars
+     QT_INSTALL_ARCHDATA
+     QT_INSTALL_BINS

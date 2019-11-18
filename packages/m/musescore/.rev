@@ -151,4 +151,15 @@
   part of the source tarball</comment>
     <requestid>748356</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e66def6bbbb14b9b80a06b87b97c7e40</srcmd5>
+    <version>3.3.2</version>
+    <time>1574104301</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.2:
+  * &quot;Save online&quot; failed in some cases
+- Add patches to make qtwebengine work: use-qtmake-qt5.patch and
+  use-system-qtwebengine-files.patch</comment>
+    <requestid>749298</requestid>
+  </revision>
 </revisionlist>
