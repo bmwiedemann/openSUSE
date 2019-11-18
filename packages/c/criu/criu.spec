@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@
 %endif
 
 Name:           criu
-Version:        3.12
+Version:        3.13
 Release:        0
 Summary:        Checkpoint/Restore In Userspace Tools
 License:        GPL-2.0-only
@@ -124,6 +124,7 @@ ln -s criu.8 %{buildroot}%{_mandir}/man8/crtools.8
 %{_sbindir}/crtools
 %{_bindir}/compel
 %{_bindir}/crit
+%{_mandir}/man1/compel.1%{?ext_man}
 %{_mandir}/man1/crit.1%{?ext_man}
 %{_mandir}/man8/criu.8%{?ext_man}
 %{_mandir}/man8/crtools.8%{?ext_man}

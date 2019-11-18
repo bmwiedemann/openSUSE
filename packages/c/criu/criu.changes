@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov 18 16:47:34 CET 2019 - tiwai@suse.de
+
+- Update to criu 3.13:
+  New features:
+  * VDSO: arm32 support
+  * Add TLS support for page server communications
+  * "Ignore" mode for --manage-cgroups
+  * Restore SO_BROADCAST option for inet sockets
+  Bugfixes:
+  * Auxiliary events were left in inotify queues
+  * Lazy-pages daemon didn't detect stack pages and surrounders
+    properly and marked them as "lazy"
+  * Memory and resource leakage were detected by coverity, cppcheck
+    and clang
+  Improvements:
+  * Use gettimeofday() directly from vdso for restore timings
+  * Reformat all .py code into pep8 style
+
+-------------------------------------------------------------------
 Wed Sep  4 19:27:24 UTC 2019 - antoine.belvire@opensuse.org
 
 - Fix build on Tumbleweed: Add -ffat-lto-objects to lto cflags.
