@@ -1,7 +1,7 @@
 #
 # spec file for package java-1_8_0-openjdk
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{!?aarch64:%global aarch64 aarch64 arm64 armv8}
 %global jit_arches %{ix86} x86_64 ppc64 ppc64le %{aarch64} %{arm}
-%global icedtea_version 3.13.0
+%global icedtea_version 3.14.0
 %global icedtea_sound_version 1.0.1
 %global buildoutputdir openjdk.build/
 # Convert an absolute path to a relative path.  Each symbolic link is
@@ -32,8 +32,8 @@
 # priority must be 6 digits in total
 %global priority        1805
 %global javaver         1.8.0
-%global updatever       222
-%global buildver        10
+%global updatever       232
+%global buildver        08
 # Standard JPackage directories and symbolic links.
 %global sdklnk          java-%{javaver}-openjdk
 %global archname        %{sdklnk}
@@ -162,9 +162,9 @@ Name:           java-1_8_0-openjdk
 Version:        %{javaver}.%{updatever}
 Release:        0
 Summary:        OpenJDK 8 Runtime Environment
-License:        Apache-1.1 AND Apache-2.0 AND GPL-1.0-or-later AND GPL-2.0-only AND GPL-2.0-with-classpath-exception AND LGPL-2.0-only AND MPL-1.0 AND MPL-1.1 AND SUSE-Public-Domain AND W3C
+License:        Apache-1.1 AND Apache-2.0 AND GPL-1.0-or-later AND GPL-2.0-only AND GPL-2.0-only WITH Classpath-exception-2.0 AND LGPL-2.0-only AND MPL-1.0 AND MPL-1.1 AND SUSE-Public-Domain AND W3C
 Group:          Development/Languages/Java
-Url:            http://openjdk.java.net/
+URL:            http://openjdk.java.net/
 Source0:        http://icedtea.wildebeest.org/download/source/icedtea-%{icedtea_version}.tar.xz
 Source1:        http://icedtea.wildebeest.org/download/source/icedtea-sound-%{icedtea_sound_version}.tar.xz
 Source2:        http://icedtea.wildebeest.org/download/drops/icedtea8/%{icedtea_version}/openjdk.tar.xz
@@ -190,8 +190,6 @@ Patch14:        zero-javadoc-verbose.patch
 #
 # Patch for PPC
 Patch103:       ppc-zero-hotspot.patch
-# Patch for aarch64
-Patch104:       hotspot-aarch64.patch
 
 Patch1001:      java-1_8_0-openjdk-suse-desktop-files.patch
 Patch1002:      icedtea-3.8.0-s390.patch
@@ -523,10 +521,6 @@ patch -p0 -i %{PATCH14}
 %ifarch ppc ppc64 ppc64le
 # PPC fixes
 patch -p0 -i %{PATCH103}
-%endif
-
-%ifarch aarch64
-patch -p0 -i %{PATCH104}
 %endif
 
 patch -p0 -i %{PATCH2001}

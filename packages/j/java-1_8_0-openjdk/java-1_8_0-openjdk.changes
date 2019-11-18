@@ -1,4 +1,262 @@
 -------------------------------------------------------------------
+Fri Nov 15 09:08:43 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version jdk8u232 (icedtea 3.14.0) (October 2019 CPU,
+  bsc#1154212)
+  * Security fixes
+    + S8167646: Better invalid FilePermission
+    + S8213429, CVE-2019-2933: Windows file handling redux
+    + S8218573, CVE-2019-2945: Better socket support
+    + S8218877: Help transform transformers
+    + S8220186: Improve use of font temporary files
+    + S8220302, CVE-2019-2949: Better Kerberos ccache handling
+    + S8221497: Optional Panes in Swing
+    + S8221858, CVE-2019-2958: Build Better Processes
+    + S8222684, CVE-2019-2964: Better support for patterns
+    + S8222690, CVE-2019-2962: Better Glyph Images
+    + S8223163: Better pattern recognition
+    + S8223505, CVE-2019-2973: Better pattern compilation
+    + S8223518, CVE-2019-2975: Unexpected exception in jjs
+    + S8223892, CVE-2019-2978: Improved handling of jar files
+    + S8224025: Fix for JDK-8220302 is not complete
+    + S8224532, CVE-2019-2981: Better Path supports
+    + S8224915, CVE-2019-2983: Better serial attributes
+    + S8225286, CVE-2019-2987: Better rendering of native glyphs
+    + S8225292, CVE-2019-2988: Better Graphics2D drawing
+    + S8225298, CVE-2019-2989: Improve TLS connection support
+    + S8225597, CVE-2019-2992: Enhance font glyph mapping
+    + S8226765, CVE-2019-2999: Commentary on Javadoc comments
+    + S8227129: Better ligature for subtables
+    + S8227601: Better collection of references
+    + S8228825, CVE-2019-2894, bsc#1152856: Enhance ECDSA operations
+  * Import of OpenJDK 8 u232 build 01
+    + S6913047: Long term memory leak when using PKCS11 and JCE
+      exceeds 32 bit process address space
+    + S6946830: javax.crypto.Cipher.doFinal behavior differs
+      depending on platform
+    + S6996807: FieldReflectorKey hash code computation can be
+      improved
+    + S8030993: Check jdk/src/share/native/common/jni_util.c for
+      JNI pending exceptions
+    + S8075136: Unnecessary sign extension for byte array access
+    + S8075544: Add tiered testing definitions to the jdk repo
+    + S8075573: Add jdk_other and jdk_svc to jdk tier 2 test
+      definition
+    + S8151486: Class.forName causes memory leak
+    + S8152856: Xcode 7.3 -Wshift-negative-value compile failure on
+      Mac OS X
+    + S8168417: Pending exceptions in
+      java.base/windows/native/libnio
+    + S8170494: JNI exception pending in PlainDatagramSocketImpl.c
+    + S8185900: hotspot build failed with gcc version Red Hat
+      4.4.7-3
+    + S8185979: PPC64: Implement SHA2 intrinsic
+    + S8197930: JNI exception pending in initializeEncoding of
+      jni_util.c
+    + S8202353: os::readdir should use readdir instead of readdir_r
+    + S8205587: Implicit function declaration in jni_util.c
+    + S8210761: libjsig is being compiled without optimization
+    + S8214002: Cannot use italic font style if the font has
+      embedded bitmap
+    + S8218721: C1's CEE optimization produces safepoint poll with
+      invalid debug information
+    + S8218854: FontMetrics.getMaxAdvance may be less than the
+      maximum FontMetrics.charWidth
+    + S8219807: C2 crash in IfNode::up_one_dom(Node*, bool)
+    + S8221304: Problem list
+      java/awt/FontMetrics/MaxAdvanceIsMax.java
+    + S8223219: Backport of JDK-8199552 to OpenJDK 8 leads to
+      duplicate -fstack-protector flags, overriding
+      --with-extra-cflags
+    + S8225636: SA can't handle prelinked libraries
+    + S8226392: Launcher should not enable legacy stdio streams on
+      GNU/Linux (glibc)
+    + S8226870: OpenJDK 8u JRE contains clhsdb and hsdb launchers
+    + S8226928: [TESTBUG]
+      test/java/net/NetworkInterface/IPv4Only.java fails
+      intermittently on AIX
+    + S8227018: CompletableFuture should not call
+      Runtime.availableProcessors on fast path
+    + S8228405: Incorrect format strings in
+      PhaseIdealLoop::rc_predicate
+  * Import of OpenJDK 8 u232 build 02
+    + S8075546: Add tiered testing definitions to the langtools repo
+    + S8202252: (aio) Closed AsynchronousSocketChannel keeps
+      completion handler alive
+    + S8216597: SIGBUS in
+      Java_sun_security_pkcs11_wrapper_PKCS11_getNativeKeyInfo after
+      JDK-6913047
+    + S8220513: Wrapper Key may get deleted when closing sessions
+      in SunPKCS11 crypto provider
+    + S8222737: [TESTBUG] Allow for tier 1 like testing in OpenJDK
+      8u
+    + S8224580: Matcher can cause oop field/array element to be
+      reloaded
+    + S8226543: Reduce GC pressure during message digest
+      calculations in password-based encryption
+  * Import of OpenJDK 8 u232 build 03
+    + S8213561: ZipFile/MultiThreadedReadTest.java timed out in
+      tier1
+    + S8217785: Padding
+      ParallelTaskTerminator::_offered_termination variable
+  * Import of OpenJDK 8 u232 build 04
+    + S8188868: PPC64: Support AES intrinsics on Big Endian
+  * Import of OpenJDK 8 u232 build 05
+    + S8080157: assert(allocates2(pc)) failed: not in CodeBuffer
+      memory
+    + S8087128: C2: Disallow definition split on MachCopySpill nodes
+    + S8139965: Hang seen when using
+      com.sun.jndi.ldap.search.replyQueueSize
+    + S8147502: Digest is incorrectly truncated for ECDSA
+      signatures when the bit length of n is less than the field
+      size
+    + S8147611: G1 - Missing memory barrier in
+      start_cset_region_for_worker
+    + S8151066: assert(0 <= i && i < length()) failed: index out of
+      bounds
+    + S8155951: VM crash in
+      nsk/jvmti/RedefineClasses/StressRedefine: assert failed:
+      Corrupted constant pool
+    + S8202948: C2: assert(init_offset >= 0) failed: positive
+      offset from object start
+    + S8203324: Use out of scope in getMacOSXLocale of
+      java_props_macosx.c:120
+    + S8206879: Currency decimal marker incorrect for Peru
+    + S8211232: GraphKit::make_runtime_call() sometimes attaches
+      wrong memory state to call
+    + S8214687: Optimize Collections.nCopies().hashCode() and
+      equals()
+    + S8214702: Wrong text position for whitespaced string in
+      printing Swing text
+    + S8215130: Fix errors in LittleCMS 2.9 reported by GCC 8
+    + S8215265: C2: range check elimination may allow illegal out
+      of bound access
+    + S8217359: C2 compiler triggers SIGSEGV after transformation
+      in ConvI2LNode::Ideal
+    + S8217731: Font rendering and glyph spacing changed from jdk-8
+      to jdk-11
+    + S8217896: Make better use of LCPUs when building on AIX
+    + S8218201: Failures when vmIntrinsics::_getClass is not inlined
+    + S8218280: LineNumberReader throws "Mark invalid" exception if
+      CRLF straddles buffer.
+    + S8218780: Update MUSCLE PCSC-Lite header files
+    + S8219517: assert(false) failed: infinite loop in
+      PhaseIterGVN::optimize
+    + S8220072: GCC 8.3 reports errors in java.base
+    + S8222980: Upgrade IANA Language Subtag Registry to Version
+      2019-04-03
+    + S8223177: Data race on JvmtiEnvBase::_tag_map in
+      double-checked locking
+    + S8223227: Rename acquire_tag_map() to tag_map_acquire() in
+      jvmtiEnvBase
+    + S8225423: GTK L&F: JSplitPane: There is no divider shown
+    + S8226798: JVM crash in
+      klassItable::initialize_itable_for_interface(int,
+      InstanceKlass*, bool, Thread*)
+    + S8226964: [Yaru] GTK L&F: There is no difference between menu
+      selected and de-selected
+    + S8228440: TestAESCiphers tests fail with "access denied"
+      trying to access ArrayUtil
+  * Import of OpenJDK 8 u232 build 06
+    + S8178870: instrumentation.retransformClasses cause coredump
+    + S8216965: crash in freetypeScaler.c CopyBW2Grey8
+    + S8217676: Upgrade libpng to 1.6.37
+    + S8222108: Reduce minRefreshTime for updating remote printer
+      list on Windows
+  * Import of OpenJDK 8 u232 build 08
+    + S8225425: java.lang.UnsatisfiedLinkError: net.dll: Can't find
+      dependent libraries
+    + S8226607: Inconsistent info between pcsclite.md and MUSCLE
+      headers
+    + S8228469: (tz) Upgrade time-zone data to tzdata2019b
+    + S8230085: (fs) FileStore::isReadOnly is always true on macOS
+      Catalina
+    + S8231098: (tz) Upgrade time-zone data to tzdata2019c
+    + S8231463: Fix runtime/RedefineTests/RedefineDoubleDelete.java
+      test in 8u
+  * Shenandoah
+    + [backport] 8230425: Shenandoah forces +UseNUMAInterleaving
+      even after explicitly disabled
+    + Missing include precompiled.hpp in
+      shenandoahSynchronizerIterator.cpp
+    + Protect lir_shenandoah_wb with INCLUDE_ALL_GCS
+    + Prune unneeded (jccb|jmpb)_if_possible
+    + Revert parts of x86_64.ad to 8u upstream state
+    + Revert Shenandoah/JDK8-only changes relating to
+      MonitorInUseLists
+    + Revert Shenandoah-specific assert after JDK-8211926 landed
+    + S8228746: Revert incorrect StubRoutines::contains change
+    + S8231366: Shenandoah: Shenandoah String Dedup thread is not
+      properly initialized
+  * AArch64 port
+    + S8151775, PR3750: aarch64: add support for 8.1 LSE atomic
+      operations
+    + S8179954, PR3762: AArch64: C1 and C2 volatile accesses are
+      not sequentially consistent
+    + S8205421, PR3762: AARCH64: StubCodeMark should be placed
+      after alignment
+    + S8206163, PR3762: AArch64: incorrect code generation for
+      StoreCM
+    + S8209420, PR3762: Track membars for volatile accesses so they
+      can be properly optimized
+    + S8211233, PR3762: MemBarNode::trailing_membar() and
+      MemBarNode::leading_membar() need to handle dying subgraphs
+      better
+    + S8213134, PR3762: AArch64: vector shift failed with
+      MaxVectorSize=8
+    + S8214857, PR3762: "bad trailing membar" assert failure at
+      memnode.cpp:3220
+    + S8216350, PR3762: AArch64: monitor unlock fast path not called
+    + S8219011, PR3762: Implement MacroAssembler::warn method on
+      AArch64
+    + S8228400, PR3762: Remove built-in AArch64 simulator
+    + S8228406, PR3762: Superfluous change in chaitin.hpp
+    + S8228593, PR3762: Revert explicit JDK 7 support additions
+    + S8228716, PR3762: Revert InstanceKlass::print_on debug
+      additions
+    + S8228718, PR3762: Revert incorrect backport of JDK-8129757 to
+      8-aarch64
+    + S8228725, PR3762: AArch64: Purge method call format support
+    + S8228747, PR3762: Revert "unused" attribute from
+      test_arraycopy_func
+    + S8228767, PR3762: Revert ResourceMark additions
+    + S8228770, PR3762: Revert development hsdis changes
+    + S8229123, PR3762: Revert build fixes for aarch64/zero
+    + S8229124, PR3762: Revert disassembler.cpp changes
+    + S8229145, PR3762: Revert TemplateTable::bytecode() visibility
+      change
+    + PR3762: profile_has_unique_klass gives wrong result
+  * AArch32 port
+    + [aarch32] Fix debug build failure introduced at feec5f4cea8b
+    + c1: misc bugfixes
+    + [c1] [Spec98] _228_jack crash
+    + CCC: align doubles on stack
+    + CritcalJNI support
+    + Fix ARMv6 target causes some asserts to fail
+    + Fix ccc: float args should go to stack after first double
+      allocated there
+    + Fix for jtreg TestArrayCopy6769124 -Xcomp
+    + Fix for single-core config crash
+    + Fix JVMTI PopFrame: should skip runtime call if next bytecode
+      is not invokestatic
+    + Fix native_wrapper faste unlock register used for temp, avoid
+      clobbering lock_obj register
+    + Fix operand value corruption in arraycopy
+    + Fix SIGSEGV in System.arraycopy
+    + Fix wrong fault_pc in safefetch stubs
+    + Follow-up the fix for 8161598
+    + JTReg test compiler/uncommontrap/TestDeoptOOM.java causes JVM
+      assert
+    + Raw long address should be converted to sizeof(ptr) one when
+      it is required
+    + S8207838: AArch32: Float registers incorrectly restored in
+      JNI call
+    + save_args/restore_args misses second part of VMRegPair
+- Removed patch:
+  * hotspot-aarch64.patch
+    + not needed any more with this version
+
+-------------------------------------------------------------------
 Mon Oct 21 06:41:23 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Apply hotspot-aarch64.patch only for aarch64, as some other 
