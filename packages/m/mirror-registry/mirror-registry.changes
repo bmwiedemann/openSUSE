@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 15 14:58:40 CET 2019 - kukuk@suse.de
+
+- Update to version 1.1
+  -  Add --newest-only option to only mirror the newest (highest) tags
+
+-------------------------------------------------------------------
 Sat Nov  2 16:05:56 UTC 2019 - kukuk@suse.de
 
 - Require skopeo in a recent enough version

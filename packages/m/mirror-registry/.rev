@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>744899</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>229bdb4fc5d78514181f005b99cb91a1</srcmd5>
+    <version>1.1</version>
+    <time>1574104227</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1
+  -  Add --newest-only option to only mirror the newest (highest) tags</comment>
+    <requestid>749201</requestid>
+  </revision>
 </revisionlist>

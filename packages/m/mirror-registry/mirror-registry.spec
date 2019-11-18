@@ -17,7 +17,7 @@
 
 
 Name:           mirror-registry
-Version:        1.0
+Version:        1.1
 Release:        0
 Summary:        Tool helping to mirror a registry to a private one
 License:        Apache-2.0
