@@ -23,6 +23,26 @@
 %bcond_with uboot_atf
 %bcond_with uboot_atf_pine64
 
+%if "%_project" == "hardware:boot" || "%_project" == "hardware:boot:staging" || "%_project" == "openSUSE:Factory:ARM" 
+
+# A complete multibuild-flavoured package is only built in above projects.
+# In order to build a defined subset in forked projects, add the
+# following to the respective project config (without the "#|"):
+
+#|Macros:
+#|%prjconf_multibuild_selection patch
+#|:Macros
+#|BuildFlags: onlybuild:u-boot:my-flavor1 onlybuild:u-boot:my-flavor2
+#|BuildFlags: onlybuild:u-boot:my-flavor3 onlybuild:u-boot:my-flavor4
+
+%else
+%if "%target" == "tools" || "%target" == ""
+# At least build the tools.
+%else
+BuildRequires:  %prjconf_multibuild_selection
+%endif
+%endif
+
 %define mvebu_spl 0
 %define x_loader 0
 %define rockchip_spl 0
@@ -76,6 +96,8 @@
 %define is_rk3399 1
 %define is_armv8 1
 %define rockchip_idb 1
+%define rockchip_spl 1
+%define rkimages $()
 %endif
 %if "%target" == "puma-rk3399" || "%target" == "rock960-rk3399"
 %define is_rk3399 1
@@ -200,6 +222,7 @@ Patch0009:      0009-libfdt-fdt_address_cells-and-fdt_si.patch
 Patch0010:      0010-libfdt-return-correct-value-if-size.patch
 Patch0011:      0011-libfdt-Allow-size-cells-of-0.patch
 Patch0012:      0012-dm-Fix-default-address-cells-return.patch
+Patch0013:      0013-arm-arm11-allow-unaligned-memory-ac.patch
 # Patches: end
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  pkgconfig(sdl)
@@ -225,7 +248,7 @@ BuildRequires:  flex
 BuildRequires:  libopenssl-devel
 BuildRequires:  python-devel
 %if %{with uboot_atf}
-%if "%{name}" == "u-boot-rock64-rk3328" || "%{name}" == "u-boot-evb-rk3399" || "%{name}" == "u-boot-firefly-rk3399" || "%{name}" == "u-boot-rock960-rk3399"
+%if "%{name}" == "u-boot-rock64-rk3328" || "%{name}" == "u-boot-evb-rk3399" || "%{name}" == "u-boot-firefly-rk3399" || "%{name}" == "u-boot-rock960-rk3399" || "${name}" == "u-boot-rock-pi-4-rk3399"
 # make_fit_atf.py
 BuildRequires:  python-pyelftools
 %endif
@@ -345,7 +368,7 @@ export BL31=/usr/share/arm-trusted-firmware-sun50ih6/bl31.bin
 %if "%{name}" == "u-boot-rock64-rk3328"
 cp /usr/share/arm-trusted-firmware-rk3328/bl31.elf .
 %endif
-%if "%{name}" == "u-boot-evb-rk3399" || "%{name}" == "u-boot-firefly-rk3399"
+%if "%{name}" == "u-boot-evb-rk3399" || "%{name}" == "u-boot-firefly-rk3399" || "%{name}" == "u-boot-rock-pi-4-rk3399"
 cp /usr/share/arm-trusted-firmware-rk3399/bl31.elf .
 %endif
 %endif
@@ -360,7 +383,7 @@ echo "Tweaking text base for TF-A."
 echo "CONFIG_SYS_TEXT_BASE=0x11000000" >> .config
 %endif
 make %{?_smp_mflags} CROSS_COMPILE= HOSTCFLAGS="$RPM_OPT_FLAGS" \
-%if ("%{name}" == "u-boot-rock64-rk3328" || "%{name}" == "u-boot-evb-rk3399" || "%{name}" == "u-boot-firefly-rk3399") && %{with uboot_atf}
+%if ("%{name}" == "u-boot-rock64-rk3328" || "%{name}" == "u-boot-evb-rk3399" || "%{name}" == "u-boot-firefly-rk3399" || "%{name}" == "u-boot-rock-pi-4-rk3399") && %{with uboot_atf}
      all u-boot.itb
 %else
      all

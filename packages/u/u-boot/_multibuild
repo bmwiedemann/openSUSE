@@ -23,7 +23,6 @@
   <flavor>evb-rk3399</flavor>
   <flavor>firefly-rk3288</flavor>
   <flavor>firefly-rk3399</flavor>
-  <flavor>rock-pi-4-rk3399</flavor>
   <flavor>geekbox</flavor>
   <flavor>highbank</flavor>
   <flavor>hikey</flavor>
@@ -65,6 +64,7 @@
   <flavor>qemu-ppce500</flavor>
   <flavor>qemu-riscv64</flavor>
   <flavor>qemu-riscv64smode</flavor>
+  <flavor>rock-pi-4-rk3399</flavor>
   <flavor>rock64-rk3328</flavor>
   <flavor>rock960-rk3399</flavor>
   <flavor>rpi</flavor>
