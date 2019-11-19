@@ -352,7 +352,6 @@
     <package name="cracklib" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="cracklib-dict-full" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="crda" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="createrepo" supportstatus="unsupported"/> <!-- reason: dvd:createrepo -->
     <package name="cron" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cronie" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cryptsetup" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -4087,19 +4086,14 @@
     <package name="python2-cffi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="python2-configparser" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="python2-cryptography" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
-    <package name="python2-cssselect" supportstatus="unsupported"/> <!-- reason: dvd:createrepo -->
     <package name="python2-dbus-python" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
-    <package name="python2-deltarpm" supportstatus="unsupported"/> <!-- reason: dvd:createrepo -->
     <package name="python2-dnspython" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python2-ecdsa" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python2-entrypoints" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="python2-gobject" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
-    <package name="python2-gpgme" supportstatus="unsupported"/> <!-- reason: dvd:createrepo -->
     <package name="python2-idna" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
-    <package name="python2-iniparse" supportstatus="unsupported"/> <!-- reason: dvd:createrepo -->
     <package name="python2-keyring" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="python2-kiwisolver" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python2-lxml" supportstatus="unsupported"/> <!-- reason: dvd:createrepo -->
     <package name="python2-matplotlib" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python2-matplotlib-tk" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python2-numpy" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4111,18 +4105,13 @@
     <package name="python2-pycparser" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="python2-pycryptodome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python2-pycups" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python2-pycurl" supportstatus="unsupported"/> <!-- reason: dvd:createrepo -->
-    <package name="python2-pyliblzma" supportstatus="unsupported"/> <!-- reason: dvd:createrepo -->
     <package name="python2-pyparsing" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="python2-python-dateutil" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python2-pytz" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python2-reportlab" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python2-rpm" supportstatus="unsupported"/> <!-- reason: dvd:createrepo -->
     <package name="python2-setuptools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="python2-six" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="python2-subprocess32" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python2-urlgrabber" supportstatus="unsupported"/> <!-- reason: dvd:createrepo -->
-    <package name="python2-yum" supportstatus="unsupported"/> <!-- reason: dvd:createrepo -->
     <package name="python3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="python3-Automat" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python3-Babel" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
@@ -5619,7 +5608,6 @@
     <package name="ypbind" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="ypserv" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="yudit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-technical_writing -->
-    <package name="yum-metadata-parser" supportstatus="unsupported"/> <!-- reason: dvd:createrepo -->
     <package name="zd1211-firmware" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="zeitgeist" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="zenity" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -5642,6 +5630,7 @@
 <group name="dvd.i586">
   <conditional name="only_i586"/>
   <packagelist relationship="recommends">
+    <!-- createrepo uninstallable: nothing provides yum-common >= 3.2.25 needed by createrepo-0.10.4-4.1.i586-->
     <package name="elinks" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="nodejs10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="nodejs10-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5663,6 +5652,7 @@
     <package name="checkpolicy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="chrome-gnome-shell" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="crash-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <!-- createrepo uninstallable: nothing provides yum-common >= 3.2.25 needed by createrepo-0.10.4-4.1.x86_64-->
     <package name="dbus-1-glib-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="dpdk-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="drbd" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
