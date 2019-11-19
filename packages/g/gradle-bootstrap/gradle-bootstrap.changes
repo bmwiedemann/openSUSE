@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Mon Nov 18 09:27:49 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of binary boostrap version of gradle 4.4.1
+- This package is only to be able to bootstrap gradle and should
+  not be used for other purposes
