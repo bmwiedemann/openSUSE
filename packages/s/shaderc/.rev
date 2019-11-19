@@ -15,4 +15,12 @@
     <comment>- Update to new upstream release 2019.0</comment>
     <requestid>707925</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>673f3d996d91ca9622dba68af80ab966</srcmd5>
+    <version>2019.0</version>
+    <time>1574164787</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Force-Glslang-to-support-HLSL-in-its-interface-784.patch</comment>
+    <requestid>749468</requestid>
+  </revision>
 </revisionlist>

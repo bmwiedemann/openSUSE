@@ -1,7 +1,7 @@
 #
 # spec file for package shaderc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,10 @@ Release:        0
 Summary:        A collection of tools, libraries and tests for shader compilation
 License:        Apache-2.0
 Group:          Development/Tools/Other
-Url:            https://github.com/google/shaderc
+URL:            https://github.com/google/shaderc
 Source:         %name-%version.tar.xz
 Patch1:         0001-Use-system-third-party-libs.patch
+Patch2:         0001-Force-Glslang-to-support-HLSL-in-its-interface-784.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  glslang-devel >= 7
