@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>693681</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b7d5bd1df74b46b718524df14fd4cfd1</srcmd5>
+    <version>5.3.0</version>
+    <time>1574167463</time>
+    <user>dimstar_suse</user>
+    <comment>Enable gradle-local subpackage</comment>
+    <requestid>749215</requestid>
+  </revision>
 </revisionlist>

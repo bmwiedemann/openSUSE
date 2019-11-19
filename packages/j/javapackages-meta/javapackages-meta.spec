@@ -1,7 +1,7 @@
 #
 # spec file for package javapackages-meta
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,6 @@ This package provides a set of meta-packages needed by local modes for
 Gradle, Ivy and Maven. These local modes allow artifact resolution
 using XMvn resolver.
 
-%if 0
 %package -n gradle-local
 Summary:        Local mode for Gradle
 Group:          Development/Languages/Java
@@ -46,7 +45,6 @@ Requires:       xmvn-resolve
 This meta-package pulls in macros, scripts and dependencies
 implementing local mode for Gradle, which allows artifact
 resolution using XMvn resolver.
-%endif
 
 %package -n ivy-local
 Summary:        Local mode for Apache Ivy
@@ -80,12 +78,12 @@ Requires:       mvn(org.apache.maven.plugins:maven-surefire-plugin)
 Requires:       mvn(junit:junit)
 Requires:       mvn(org.apache.maven.surefire:surefire-junit4)
 # testng is quite common as well
-Requires:       mvn(org.apache.maven.surefire:surefire-testng)
 Requires:       xmvn-connector-aether
 Requires:       xmvn-install
 Requires:       xmvn-minimal
 Requires:       xmvn-mojo
 Requires:       xmvn-resolve
+Requires:       mvn(org.apache.maven.surefire:surefire-testng)
 
 %description -n maven-local
 This meta-package pulls in macros, scripts and dependencies
@@ -98,12 +96,10 @@ resolution using XMvn resolver.
 
 %install
 
-%files -n maven-local
-
-%if 0
 %files -n gradle-local
-%endif
 
 %files -n ivy-local
+
+%files -n maven-local
 
 %changelog
