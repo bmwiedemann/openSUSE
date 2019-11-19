@@ -17,7 +17,7 @@
 
 
 Name:           jupyter-jupyterlab-latex
-Version:        0.4.1
+Version:        1.0.0
 Release:        0
 Summary:        Jupyter Notebook server extension which acts as an endpoint for LaTeX
 License:        BSD-3-Clause
@@ -55,7 +55,7 @@ pip%{python3_bin_suffix} install --root=%{buildroot} %{SOURCE0}
 %{fdupes %{buildroot}%{_jupyter_prefix} %{buildroot}%{python3_sitelib}}
 
 %files
-%license %{python3_sitelib}/jupyterlab_latex-*.dist-info/LICENSE.txt
+%license %{python3_sitelib}/jupyterlab_latex-*.dist-info/LICENSE
 %{python3_sitelib}/jupyterlab_latex-*.dist-info
 %{python3_sitelib}/jupyterlab_latex/
 %config %{_jupyter_servextension_confdir}/jupyterlab_latex.json
