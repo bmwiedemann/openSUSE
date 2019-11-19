@@ -1,0 +1,11 @@
+--- ./tycho-source-plugin/src/main/java/org/eclipse/tycho/source/AbstractSourceJarMojo.java.orig	2016-04-14 17:18:54.033371257 +0100
++++ ./tycho-source-plugin/src/main/java/org/eclipse/tycho/source/AbstractSourceJarMojo.java	2016-04-14 17:22:02.121228491 +0100
+@@ -259,7 +259,7 @@
+                 getLog().warn("ignoring unsupported archive forced = false parameter.");
+                 archive.setForced(true);
+             }
+-            archiver.createArchive(project, archive);
++            archiver.createArchive(null, project, archive);
+         } catch (IOException e) {
+             throw new MojoExecutionException("Error creating source archive: " + e.getMessage(), e);
+         } catch (ArchiverException e) {

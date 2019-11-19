@@ -1,0 +1,14 @@
+--- fedoraproject-p2/xmvn-p2-installer-plugin/src/main/java/org/fedoraproject/p2/xmvn/EclipseArtifactInstaller.java	2018-05-01 18:28:51.000000000 +0200
++++ fedoraproject-p2/xmvn-p2-installer-plugin/src/main/java/org/fedoraproject/p2/xmvn/EclipseArtifactInstaller.java	2019-09-23 15:33:46.373407756 +0200
+@@ -80,9 +80,9 @@
+ 				am.getVersion());
+ 		logger.info("Installing artifact {}", artifact);
+ 
+-		String commonId = basePackageName.replaceAll("^eclipse-", "");
++		String commonId = basePackageName.replaceAll("-bootstrap", "").replaceAll("^eclipse-", "");
+ 		request.setMainPackageId(commonId);
+-		String subpackageId = targetPackage.getId().replaceAll("^eclipse-", "");
++		String subpackageId = targetPackage.getId().replaceAll("-bootstrap", "").replaceAll("^eclipse-", "");
+ 		if (subpackageId.isEmpty())
+ 			subpackageId = commonId;
+ 		else if (!subpackageId.startsWith(commonId + "-"))

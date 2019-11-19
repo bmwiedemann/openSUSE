@@ -1,0 +1,648 @@
+From 33e4d975ad449411522cf13e01c92992c8516dc6 Mon Sep 17 00:00:00 2001
+From: Roland Grunberg <rgrunber@redhat.com>
+Date: Tue, 12 Jun 2012 10:38:51 -0400
+Subject: [PATCH] Implement a custom resolver for Tycho in local mode.
+
+When running in local mode, dependencies should be resolved by looking
+on the local system. Remote repositories should be ignored unless
+offline mode is disabled.
+
+Use fedoraproject-p2 to resolve bundles from their system location.
+
+Relax constraints for bundles used in Tycho's Equinox runtime.
+
+Since Fedora 17, we need an Execution Environment of at least JavaSE-1.6
+for Eclipse bundles. Eclipse Juno platform bundles depend on
+javax.annotation. In Fedora this is provided by geronimo-annotation, but
+has a dependency on javax.lang.model (since 1.6).
+
+Use the defined target environments in local mode when the property
+tycho.local.keepTarget is set.
+
+In situations where Tycho must resolve maven artifacts, upstream's
+implementation only looks in the reactor cache. In Fedora, maven
+artifacts may be located on the system using repository layouts
+understood by XMvn. Therefore, when an artifact is not found in the
+reactor cache, resolution should be attempted using the XMvn Resolver.
+
+Upstream/Fedora Tycho differ in the kind of OSGi Runtime used
+(org.eclipse.tycho:tycho-bundles-external:zip) so use separate location
+for our runtime (fedora-eclipse) to avoid collisions.
+
+Change-Id: Ia1ece07ece2412bc4a88901631f3f651ad2b634b
+---
+ .../embedder/internal/DefaultEquinoxEmbedder.java  | 11 +++++-
+ .../p2/remote/RemoteRepositoryCacheManager.java    | 14 +++++++
+ .../tycho/p2/target/TargetDefinitionResolver.java  | 17 ++++++--
+ .../p2/target/TargetPlatformBundlePublisher.java   | 15 ++------
+ .../tycho/p2/target/TargetPlatformFactoryImpl.java | 45 ++++++++++++++++++++--
+ .../tycho/p2/repository/LocalRepositoryReader.java | 44 ++++++++++++++++++++-
+ .../facade/TargetPlatformConfigurationStub.java    |  6 ++-
+ .../tycho-bundles-external.product                 |  1 +
+ .../eclipse/tycho/core/locking/FileLockerImpl.java | 26 ++++++++++---
+ .../core/maven/TychoMavenLifecycleParticipant.java | 13 +++++++
+ .../tycho/core/osgitools/AbstractTychoProject.java | 23 +++++++++++
+ .../tycho/core/osgitools/OsgiBundleProject.java    |  5 ++-
+ .../DefaultTargetPlatformConfigurationReader.java  |  6 ++-
+ .../osgi/runtime/TychoOsgiRuntimeLocator.java      | 27 ++++++++++---
+ tycho-p2/tycho-p2-facade/pom.xml                   |  5 +++
+ .../tycho/p2/resolver/P2DependencyResolver.java    |  8 ++++
+ 16 files changed, 228 insertions(+), 38 deletions(-)
+
+diff --git a/sisu-equinox/sisu-equinox-embedder/src/main/java/org/eclipse/sisu/equinox/embedder/internal/DefaultEquinoxEmbedder.java b/sisu-equinox/sisu-equinox-embedder/src/main/java/org/eclipse/sisu/equinox/embedder/internal/DefaultEquinoxEmbedder.java
+index ed01c2d..759f005 100644
+--- a/sisu-equinox/sisu-equinox-embedder/src/main/java/org/eclipse/sisu/equinox/embedder/internal/DefaultEquinoxEmbedder.java
++++ b/sisu-equinox/sisu-equinox-embedder/src/main/java/org/eclipse/sisu/equinox/embedder/internal/DefaultEquinoxEmbedder.java
+@@ -239,7 +239,14 @@ public class DefaultEquinoxEmbedder extends AbstractLogEnabled implements Equino
+                     if (verIdx > 0) {
+                         bundles.append(name.substring(0, verIdx));
+                     } else {
+-                        throw new EquinoxEmbedderException("File name doesn't match expected pattern: " + file);
++                        // In Fedora, NAME_VERSION.QUALIFIER.jar is too fragile.
++                        // Let's also accept NAME.jar
++                        verIdx = name.lastIndexOf(".jar");
++                        if (verIdx > 0) {
++                            bundles.append(name.substring(0, verIdx));
++                        } else {
++                            throw new EquinoxEmbedderException("File name doesn't match expected pattern: " + file);
++                        }
+                     }
+                 }
+             }
+@@ -247,7 +254,7 @@ public class DefaultEquinoxEmbedder extends AbstractLogEnabled implements Equino
+     }
+ 
+     protected boolean isFrameworkBundle(File file) {
+-        return file.getName().startsWith("org.eclipse.osgi_");
++        return file.getName().startsWith("org.eclipse.osgi_") || file.getName().equals("org.eclipse.osgi.jar");
+     }
+ 
+     String getReferenceUrl(File file) {
+diff --git a/tycho-bundles/org.eclipse.tycho.p2.resolver.impl/src/main/java/org/eclipse/tycho/p2/remote/RemoteRepositoryCacheManager.java b/tycho-bundles/org.eclipse.tycho.p2.resolver.impl/src/main/java/org/eclipse/tycho/p2/remote/RemoteRepositoryCacheManager.java
+index 1d3a029..2ec5c59 100644
+--- a/tycho-bundles/org.eclipse.tycho.p2.resolver.impl/src/main/java/org/eclipse/tycho/p2/remote/RemoteRepositoryCacheManager.java
++++ b/tycho-bundles/org.eclipse.tycho.p2.resolver.impl/src/main/java/org/eclipse/tycho/p2/remote/RemoteRepositoryCacheManager.java
+@@ -12,14 +12,18 @@ package org.eclipse.tycho.p2.remote;
+ 
+ import java.io.File;
+ import java.io.IOException;
++import java.net.MalformedURLException;
+ import java.net.URI;
++import java.net.URL;
+ 
+ import org.eclipse.core.runtime.IProgressMonitor;
+ import org.eclipse.core.runtime.IStatus;
+ import org.eclipse.core.runtime.Status;
+ import org.eclipse.equinox.internal.p2.repository.CacheManager;
++import org.eclipse.equinox.internal.p2.repository.Messages;
+ import org.eclipse.equinox.internal.p2.repository.Transport;
+ import org.eclipse.equinox.p2.core.ProvisionException;
++import org.eclipse.osgi.util.NLS;
+ import org.eclipse.tycho.core.shared.MavenContext;
+ import org.eclipse.tycho.core.shared.MavenLogger;
+ import org.eclipse.tycho.p2.impl.Activator;
+@@ -51,6 +55,13 @@ class RemoteRepositoryCacheManager extends CacheManager {
+     @Override
+     public File createCache(URI repositoryLocation, String prefix, IProgressMonitor monitor)
+             throws IOException, ProvisionException {
++        try {
++            new URL(repositoryLocation.toASCIIString());
++        } catch (MalformedURLException e) {
++            throw new ProvisionException(new Status(IStatus.ERROR, org.eclipse.equinox.internal.p2.repository.Activator.ID,
++                    ProvisionException.REPOSITORY_NOT_FOUND, NLS.bind(Messages.CacheManager_CannotLoadNonUrlLocation,
++                            repositoryLocation), null));
++        }
+         File cacheFile = getCache(repositoryLocation, prefix);
+         if (offline) {
+             if (cacheFile != null) {
+diff --git a/tycho-bundles/org.eclipse.tycho.p2.resolver.impl/src/main/java/org/eclipse/tycho/p2/target/TargetDefinitionResolver.java b/tycho-bundles/org.eclipse.tycho.p2.resolver.impl/src/main/java/org/eclipse/tycho/p2/target/TargetDefinitionResolver.java
+index c614e15..d6ae1af 100644
+--- a/tycho-bundles/org.eclipse.tycho.p2.resolver.impl/src/main/java/org/eclipse/tycho/p2/target/TargetDefinitionResolver.java
++++ b/tycho-bundles/org.eclipse.tycho.p2.resolver.impl/src/main/java/org/eclipse/tycho/p2/target/TargetDefinitionResolver.java
+@@ -20,6 +20,7 @@ import java.util.Set;
+ 
+ import org.eclipse.core.runtime.IProgressMonitor;
+ import org.eclipse.core.runtime.NullProgressMonitor;
++import org.eclipse.core.runtime.URIUtil;
+ import org.eclipse.equinox.p2.core.IProvisioningAgent;
+ import org.eclipse.equinox.p2.core.ProvisionException;
+ import org.eclipse.equinox.p2.metadata.IInstallableUnit;
+@@ -121,7 +122,12 @@ public final class TargetDefinitionResolver {
+                 resolverRun.addLocation((InstallableUnitLocation) locationDefinition);
+ 
+                 for (Repository repository : ((InstallableUnitLocation) locationDefinition).getRepositories()) {
+-                    artifactRepositories.add(repository.getLocation());
++                    // We cannot resolve a non-file URI in local mode
++                    if ((System.getProperty("TYCHO_MVN_LOCAL") == null && System.getProperty("TYCHO_MVN_RPMBUILD") == null)
++                            || URIUtil.isFileURI(repository.getLocation())
++                            || "fedora".equals(repository.getLocation().getScheme())) {
++                        artifactRepositories.add(repository.getLocation());
++                    }
+                 }
+             } else {
+                 logger.warn("Target location type '" + locationDefinition.getTypeDescription() + "' is not supported");
+@@ -278,8 +284,13 @@ public final class TargetDefinitionResolver {
+ 
+             loadedRepositories = new ArrayList<>();
+             for (Repository repository : locationDefinition.getRepositories()) {
+-                repositoryIdManager.addMapping(repository.getId(), repository.getLocation());
+-                loadedRepositories.add(loadRepository(repository));
++                // We cannot resolve a non-file URI in local mode
++                if ((System.getProperty("TYCHO_MVN_LOCAL") == null && System.getProperty("TYCHO_MVN_RPMBUILD") == null)
++                        || URIUtil.isFileURI(repository.getLocation())
++                        || "fedora".equals(repository.getLocation().getScheme())) {
++                    repositoryIdManager.addMapping(repository.getId(), repository.getLocation());
++                    loadedRepositories.add(loadRepository(repository));
++                }
+             }
+         }
+ 
+diff --git a/tycho-bundles/org.eclipse.tycho.p2.resolver.impl/src/main/java/org/eclipse/tycho/p2/target/TargetPlatformBundlePublisher.java b/tycho-bundles/org.eclipse.tycho.p2.resolver.impl/src/main/java/org/eclipse/tycho/p2/target/TargetPlatformBundlePublisher.java
+index 66a252f..0195871 100644
+--- a/tycho-bundles/org.eclipse.tycho.p2.resolver.impl/src/main/java/org/eclipse/tycho/p2/target/TargetPlatformBundlePublisher.java
++++ b/tycho-bundles/org.eclipse.tycho.p2.resolver.impl/src/main/java/org/eclipse/tycho/p2/target/TargetPlatformBundlePublisher.java
+@@ -28,6 +28,7 @@ import org.eclipse.tycho.core.shared.MavenLogger;
+ import org.eclipse.tycho.p2.impl.publisher.MavenPropertiesAdvice;
+ import org.eclipse.tycho.p2.impl.publisher.repo.TransientArtifactRepository;
+ import org.eclipse.tycho.p2.metadata.IArtifactFacade;
++import org.eclipse.tycho.p2.repository.LocalRepositoryReader;
+ import org.eclipse.tycho.p2.repository.MavenRepositoryCoordinates;
+ import org.eclipse.tycho.repository.local.GAVArtifactDescriptor;
+ import org.eclipse.tycho.repository.p2base.artifact.provider.IRawArtifactFileProvider;
+@@ -216,15 +217,6 @@ public class TargetPlatformBundlePublisher {
+             GAVArtifactDescriptor descriptorForRepository = new GAVArtifactDescriptor(baseDescriptor,
+                     repositoryCoordinates);
+ 
+-            File requiredArtifactLocation = new File(getBaseDir(),
+-                    descriptorForRepository.getMavenCoordinates().getLocalRepositoryPath());
+-            File actualArtifactLocation = mavenArtifact.getLocation();
+-            if (!equivalentPaths(requiredArtifactLocation, actualArtifactLocation)) {
+-                throw new AssertionFailedException(
+-                        "The Maven artifact to be added to the target platform is not stored at the required location on disk: required \""
+-                                + requiredArtifactLocation + "\" but was \"" + actualArtifactLocation + "\"");
+-            }
+-
+             internalAddInternalDescriptor(descriptorForRepository);
+         }
+ 
+@@ -257,8 +249,9 @@ public class TargetPlatformBundlePublisher {
+ 
+         @Override
+         protected File internalGetArtifactStorageLocation(IArtifactDescriptor descriptor) {
+-            String relativePath = toInternalDescriptor(descriptor).getMavenCoordinates().getLocalRepositoryPath();
+-            return new File(getBaseDir(), relativePath);
++            MavenRepositoryCoordinates coord = toInternalDescriptor(descriptor).getMavenCoordinates();
++            LocalRepositoryReader reader = new LocalRepositoryReader(getBaseDir());
++            return reader.getLocalArtifactLocation(coord.getGav(), coord.getClassifier(), coord.getExtensionOrDefault());
+         }
+ 
+         private File getBaseDir() {
+diff --git a/tycho-bundles/org.eclipse.tycho.p2.resolver.impl/src/main/java/org/eclipse/tycho/p2/target/TargetPlatformFactoryImpl.java b/tycho-bundles/org.eclipse.tycho.p2.resolver.impl/src/main/java/org/eclipse/tycho/p2/target/TargetPlatformFactoryImpl.java
+index 41fb4c6..75b25ac 100644
+--- a/tycho-bundles/org.eclipse.tycho.p2.resolver.impl/src/main/java/org/eclipse/tycho/p2/target/TargetPlatformFactoryImpl.java
++++ b/tycho-bundles/org.eclipse.tycho.p2.resolver.impl/src/main/java/org/eclipse/tycho/p2/target/TargetPlatformFactoryImpl.java
+@@ -32,6 +32,9 @@ import org.eclipse.core.runtime.URIUtil;
+ import org.eclipse.equinox.p2.core.IProvisioningAgent;
+ import org.eclipse.equinox.p2.core.ProvisionException;
+ import org.eclipse.equinox.p2.metadata.IInstallableUnit;
++import org.eclipse.equinox.p2.metadata.expression.ExpressionUtil;
++import org.eclipse.equinox.p2.metadata.expression.IExpression;
++import org.eclipse.equinox.p2.query.IQuery;
+ import org.eclipse.equinox.p2.query.IQueryResult;
+ import org.eclipse.equinox.p2.query.QueryUtil;
+ import org.eclipse.equinox.p2.repository.artifact.IArtifactRepositoryManager;
+@@ -273,9 +276,43 @@ public class TargetPlatformFactoryImpl implements TargetPlatformFactory {
+             metadataRepositories.add(localMetadataRepository);
+         }
+ 
+-        for (IMetadataRepository repository : metadataRepositories) {
+-            IQueryResult<IInstallableUnit> matches = repository.query(QueryUtil.ALL_UNITS, monitor);
+-            result.addAll(matches.toUnmodifiableSet());
++        if (System.getProperty("TYCHO_MVN_LOCAL") != null) {
++            final IExpression notmatchIU_ID = ExpressionUtil.parse("id != $0");
++            Set<IMetadataRepository> fedoraRepos = new HashSet<IMetadataRepository> ();
++
++            // Sanity check even though the repo we want should be at index 1
++            for (IMetadataRepository repository : metadataRepositories) {
++                if ("fedora".equals(repository.getLocation().getScheme())) {
++                    fedoraRepos.add(repository);
++                }
++            }
++
++            IQuery<IInstallableUnit> noLocalIUs = QueryUtil.createIUAnyQuery();
++
++            // Create a conjunction query that negates all IUs on the local system
++            for (IMetadataRepository repo : fedoraRepos) {
++                for (IInstallableUnit unit : repo.query(QueryUtil.ALL_UNITS, null).toUnmodifiableSet()) {
++                    noLocalIUs = QueryUtil.createCompoundQuery(noLocalIUs,
++                            QueryUtil.createMatchQuery(notmatchIU_ID, unit.getId()), true);
++                }
++            }
++
++            for (IMetadataRepository repository : metadataRepositories) {
++                IQueryResult<IInstallableUnit> matches;
++                if ("fedora".equals(repository.getLocation().getScheme())) {
++                    matches = repository.query(QueryUtil.ALL_UNITS, monitor);
++                } else {
++                    // Don't collect any remote IUs that can be found on the system
++                    // This will favour IUs in the system local p2 repository
++                    matches = repository.query(noLocalIUs, monitor);
++                }
++                result.addAll(matches.toUnmodifiableSet());
++            }
++        } else {
++            for (IMetadataRepository repository : metadataRepositories) {
++                IQueryResult<IInstallableUnit> matches = repository.query(QueryUtil.ALL_UNITS, monitor);
++                result.addAll(matches.toUnmodifiableSet());
++            }
+         }
+ 
+         result.addAll(pomDependenciesContent.gatherMavenInstallableUnits());
+@@ -329,7 +366,7 @@ public class TargetPlatformFactoryImpl implements TargetPlatformFactory {
+         List<URI> allRemoteArtifactRepositories = new ArrayList<>();
+ 
+         for (MavenRepositoryLocation location : completeRepositories) {
+-            if (!offline || URIUtil.isFileURI(location.getURL())) {
++            if (!offline || URIUtil.isFileURI(location.getURL()) || "fedora".equals(location.getURL().getScheme())) {
+                 allRemoteArtifactRepositories.add(location.getURL());
+             }
+         }
+diff --git a/tycho-bundles/org.eclipse.tycho.p2.resolver.shared/src/main/java/org/eclipse/tycho/p2/repository/LocalRepositoryReader.java b/tycho-bundles/org.eclipse.tycho.p2.resolver.shared/src/main/java/org/eclipse/tycho/p2/repository/LocalRepositoryReader.java
+index 8d36462..b5c8c55 100644
+--- a/tycho-bundles/org.eclipse.tycho.p2.resolver.shared/src/main/java/org/eclipse/tycho/p2/repository/LocalRepositoryReader.java
++++ b/tycho-bundles/org.eclipse.tycho.p2.resolver.shared/src/main/java/org/eclipse/tycho/p2/repository/LocalRepositoryReader.java
+@@ -11,6 +11,8 @@
+ package org.eclipse.tycho.p2.repository;
+ 
+ import java.io.File;
++import java.lang.reflect.Constructor;
++import java.lang.reflect.Method;
+ 
+ public class LocalRepositoryReader implements RepositoryReader {
+ 
+@@ -21,8 +23,46 @@
+     }
+ 
+     @Override
++    @SuppressWarnings({ "unchecked", "rawtypes" })
+     public File getLocalArtifactLocation(GAV gav, String classifier, String extension) {
+-        return new File(localMavenRepositoryRoot, RepositoryLayoutHelper.getRelativePath(gav, classifier, extension));
+-    }
++        File file = new File(localMavenRepositoryRoot, RepositoryLayoutHelper.getRelativePath(gav, classifier,
++                extension));
++        // In Fedora the artifact may be in an XMvn-defined repository location (not in reactor cache)
++        if (!file.exists()) {
++            try {
++                // Create Plexus config
++                Class pcclazz = Class.forName("org.codehaus.plexus.ContainerConfiguration");
++                Object conf = Class.forName("org.codehaus.plexus.DefaultContainerConfiguration").newInstance();
++                pcclazz.getMethod("setAutoWiring", boolean.class).invoke(conf, true);
++                pcclazz.getMethod("setClassPathScanning", String.class).invoke(conf, "index");
++
++                // Use plexus container to lookup the reader
++                Class pclazz = Class.forName("org.codehaus.plexus.DefaultPlexusContainer");
++                Object plexus = pclazz.getConstructor(pcclazz).newInstance(conf);
++
++                // Retrieve the workspace reader from the plexus container
++                Method mLookup = pclazz.getMethod("lookup", String.class, String.class);
++                Object reader = mLookup.invoke(plexus, "org.eclipse.aether.repository.WorkspaceReader", "ide");
++
++                // Create an Aether Artifact based on GAV, classifier, and extension
++                Class iartclazz = Class.forName("org.eclipse.aether.artifact.Artifact");
++                Class artclazz = Class.forName("org.eclipse.aether.artifact.DefaultArtifact");
++                Constructor cNew = artclazz.getConstructor(String.class, String.class, String.class, String.class,
++                        String.class);
++                Object artifact = cNew.newInstance(gav.getGroupId(), gav.getArtifactId(), classifier, extension,
++                        gav.getVersion());
++
++                // Invoke "findArtifact" method of the workspace reader on the artifact
++                Method mfindArtifact = reader.getClass().getMethod("findArtifact", iartclazz);
++                File newFile = (File) mfindArtifact.invoke(reader, artifact);
++                if (newFile != null) {
++                    file = newFile;
++                }
++            } catch (Exception e) {
++                e.printStackTrace();
++            }
++        }
++        return file;
+ 
++    }
+ }
+diff --git a/tycho-bundles/org.eclipse.tycho.p2.resolver.shared/src/main/java/org/eclipse/tycho/p2/target/facade/TargetPlatformConfigurationStub.java b/tycho-bundles/org.eclipse.tycho.p2.resolver.shared/src/main/java/org/eclipse/tycho/p2/target/facade/TargetPlatformConfigurationStub.java
+index 22cca24..670f013 100644
+--- a/tycho-bundles/org.eclipse.tycho.p2.resolver.shared/src/main/java/org/eclipse/tycho/p2/target/facade/TargetPlatformConfigurationStub.java
++++ b/tycho-bundles/org.eclipse.tycho.p2.resolver.shared/src/main/java/org/eclipse/tycho/p2/target/facade/TargetPlatformConfigurationStub.java
+@@ -56,7 +56,11 @@ public class TargetPlatformConfigurationStub {
+     }
+ 
+     public void addP2Repository(MavenRepositoryLocation location) {
+-        this.repositories.add(location);
++        // We cannot resolve a non-file URI in local mode while offline
++        if (System.getProperty("TYCHO_MVN_RPMBUILD") == null || "file".equalsIgnoreCase(location.getURL().getScheme())
++                || "fedora".equalsIgnoreCase(location.getURL().getScheme())) {
++            this.repositories.add(location);
++        }
+     }
+ 
+     // convenience method for tests
+diff --git a/tycho-bundles/tycho-bundles-external/tycho-bundles-external.product b/tycho-bundles/tycho-bundles-external/tycho-bundles-external.product
+index 7c99168..28ad59f 100644
+--- a/tycho-bundles/tycho-bundles-external/tycho-bundles-external.product
++++ b/tycho-bundles/tycho-bundles-external/tycho-bundles-external.product
+@@ -79,6 +79,9 @@
+       <plugin id="org.sat4j.core"/>
+       <plugin id="org.sat4j.pb"/>
+       <plugin id="org.tukaani.xz"/>
++      <plugin id="org.kxml2"/>
++      <plugin id="org.xmlpull"/>
++      <plugin id="org.fedoraproject.p2"/>
+    </plugins>
+ 
+    <configurations>
+diff --git a/tycho-core/src/main/java/org/eclipse/tycho/core/locking/FileLockerImpl.java b/tycho-core/src/main/java/org/eclipse/tycho/core/locking/FileLockerImpl.java
+index 86253bd..cef15d2 100644
+--- a/tycho-core/src/main/java/org/eclipse/tycho/core/locking/FileLockerImpl.java
++++ b/tycho-core/src/main/java/org/eclipse/tycho/core/locking/FileLockerImpl.java
+@@ -27,22 +27,36 @@ public class FileLockerImpl implements FileLocker {
+     final File lockMarkerFile;
+ 
+     public FileLockerImpl(File file, Location anyLocation) {
++        File lockFileCandidate = null;
+         try {
+             if (file.isDirectory()) {
+-                this.lockMarkerFile = new File(file, LOCKFILE_SUFFIX).getCanonicalFile();
++                lockFileCandidate = new File(file, LOCKFILE_SUFFIX).getCanonicalFile();
+             } else {
+-                this.lockMarkerFile = new File(file.getParentFile(), file.getName() + LOCKFILE_SUFFIX)
+-                        .getCanonicalFile();
++                lockFileCandidate = new File(file.getParentFile(), file.getName() + LOCKFILE_SUFFIX).getCanonicalFile();
+             }
+-            if (lockMarkerFile.isDirectory()) {
+-                throw new RuntimeException("Lock marker file " + lockMarkerFile + " already exists and is a directory");
++
++            if (lockFileCandidate.isDirectory()) {
++                throw new RuntimeException("Lock marker file " + lockFileCandidate + " already exists and is a directory");
+             }
+-            File parentDir = lockMarkerFile.getParentFile();
++            File parentDir = lockFileCandidate.getParentFile();
+             if (!parentDir.isDirectory() && !parentDir.mkdirs()) {
+                 throw new RuntimeException("Could not create parent directory " + parentDir + " of lock marker file");
+             }
++
++            String baseDir = System.getProperty("user.dir");
++            String reactorCache = baseDir + "/.m2/";
++            // In Fedora we can only assume reactor cache is safe for read/write.
++            if (!lockFileCandidate.getAbsolutePath().startsWith(reactorCache)) {
++                String lockFileDir = reactorCache + LOCKFILE_SUFFIX;
++                // If the file is located within baseDir, no need to repeat
++                String lockFileName = file.getAbsolutePath().replace(baseDir, "").replace("/", "-").replaceFirst("-", "/") + LOCKFILE_SUFFIX;
++                lockFileCandidate = new File(lockFileDir, lockFileName);
++            }
++
++            this.lockMarkerFile = lockFileCandidate;
+             this.lockFileLocation = anyLocation.createLocation(null, null, false);
+             this.lockFileLocation.set(lockMarkerFile.toURL(), false, lockMarkerFile.getAbsolutePath());
++
+         } catch (MalformedURLException e) {
+             throw new RuntimeException(e);
+         } catch (IOException e) {
+diff --git a/tycho-core/src/main/java/org/eclipse/tycho/core/maven/TychoMavenLifecycleParticipant.java b/tycho-core/src/main/java/org/eclipse/tycho/core/maven/TychoMavenLifecycleParticipant.java
+index 1160f6c..acb2a1d 100644
+--- a/tycho-core/src/main/java/org/eclipse/tycho/core/maven/TychoMavenLifecycleParticipant.java
++++ b/tycho-core/src/main/java/org/eclipse/tycho/core/maven/TychoMavenLifecycleParticipant.java
+@@ -30,6 +30,7 @@ import org.apache.maven.project.MavenProject;
+ import org.codehaus.plexus.PlexusContainer;
+ import org.codehaus.plexus.component.annotations.Component;
+ import org.codehaus.plexus.component.annotations.Requirement;
++import org.codehaus.plexus.component.repository.exception.ComponentLookupException;
+ import org.codehaus.plexus.logging.Logger;
+ import org.eclipse.tycho.ReactorProject;
+ import org.eclipse.tycho.core.osgitools.BundleReader;
+@@ -86,6 +87,18 @@ public class TychoMavenLifecycleParticipant extends AbstractMavenLifecyclePartic
+ 
+             configureComponents(session);
+ 
++            try {
++                if (plexus.lookup("org.fedoraproject.xmvn.resolver.Resolver") != null) {
++                    if (session.isOffline()) {
++                        System.setProperty("TYCHO_MVN_RPMBUILD", "");
++                    } else {
++                        System.setProperty("TYCHO_MVN_LOCAL", "");
++                    }
++                }
++            } catch (ComponentLookupException e) {
++                // No XMvn (Upstream Maven in use)
++            }
++
+             for (MavenProject project : projects) {
+                 resolver.setupProject(session, project, DefaultReactorProject.adapt(project));
+             }
+diff --git a/tycho-core/src/main/java/org/eclipse/tycho/core/osgitools/AbstractTychoProject.java b/tycho-core/src/main/java/org/eclipse/tycho/core/osgitools/AbstractTychoProject.java
+index dfd4b6f..c05fcd8 100644
+--- a/tycho-core/src/main/java/org/eclipse/tycho/core/osgitools/AbstractTychoProject.java
++++ b/tycho-core/src/main/java/org/eclipse/tycho/core/osgitools/AbstractTychoProject.java
+@@ -19,6 +19,9 @@ import org.eclipse.tycho.artifacts.DependencyArtifacts;
+ import org.eclipse.tycho.core.TargetPlatformConfiguration;
+ import org.eclipse.tycho.core.TychoConstants;
+ import org.eclipse.tycho.core.TychoProject;
++import org.eclipse.tycho.core.ee.ExecutionEnvironmentUtils;
++import org.eclipse.tycho.core.ee.UnknownEnvironmentException;
++import org.eclipse.tycho.core.ee.shared.ExecutionEnvironment;
+ import org.eclipse.tycho.core.ee.shared.ExecutionEnvironmentConfiguration;
+ import org.eclipse.tycho.core.osgitools.targetplatform.LocalDependencyResolver;
+ import org.eclipse.tycho.core.osgitools.targetplatform.MultiEnvironmentDependencyArtifacts;
+@@ -94,15 +97,35 @@ public abstract class AbstractTychoProject extends AbstractLogEnabled implements
+ 
+         String configuredForcedProfile = tpConfiguration.getExecutionEnvironment();
+         if (configuredForcedProfile != null) {
++            configuredForcedProfile = overrideToAtLeastJavaSE16(configuredForcedProfile);
+             sink.overrideProfileConfiguration(configuredForcedProfile,
+                     "target-platform-configuration <executionEnvironment>");
+         }
+ 
+         String configuredDefaultProfile = tpConfiguration.getExecutionEnvironmentDefault();
+         if (configuredDefaultProfile != null) {
++            configuredDefaultProfile = overrideToAtLeastJavaSE16(configuredDefaultProfile);
+             sink.setProfileConfiguration(configuredDefaultProfile,
+                     "target-platform-configuration <executionEnvironmentDefault>");
+         }
+     }
+ 
++    public String overrideToAtLeastJavaSE16 (String profile) {
++        try {
++            ExecutionEnvironment ee = ExecutionEnvironmentUtils.getExecutionEnvironment(profile);
++
++            if (System.getProperty("TYCHO_MVN_LOCAL") != null || System.getProperty("TYCHO_MVN_RPMBUILD") != null) {
++                // EE must be at least JavaSE-1.6
++                final ExecutionEnvironment javaSE16 = ExecutionEnvironmentUtils.getExecutionEnvironment("JavaSE-1.6");
++                if (! ee.isCompatibleCompilerTargetLevel(javaSE16.getCompilerTargetLevelDefault())) {
++                    ee = javaSE16;
++                }
++            }
++
++            return ee.getProfileName();
++        } catch (UnknownEnvironmentException e) {
++            // can't happen, ee is validated during configuration parsing
++            return null;
++        }
++    }
+ }
+diff --git a/tycho-core/src/main/java/org/eclipse/tycho/core/osgitools/OsgiBundleProject.java b/tycho-core/src/main/java/org/eclipse/tycho/core/osgitools/OsgiBundleProject.java
+index fae4eb7..3f5289c 100644
+--- a/tycho-core/src/main/java/org/eclipse/tycho/core/osgitools/OsgiBundleProject.java
++++ b/tycho-core/src/main/java/org/eclipse/tycho/core/osgitools/OsgiBundleProject.java
+@@ -502,6 +502,7 @@ public class OsgiBundleProject extends AbstractTychoProject implements BundlePro
+         String pdeProfile = getEclipsePluginProject(DefaultReactorProject.adapt(project)).getBuildProperties()
+                 .getJreCompilationProfile();
+         if (pdeProfile != null) {
++            pdeProfile = overrideToAtLeastJavaSE16(pdeProfile);
+             sink.setProfileConfiguration(pdeProfile.trim(), "build.properties");
+ 
+         } else {
+@@ -512,13 +513,13 @@ public class OsgiBundleProject extends AbstractTychoProject implements BundlePro
+ 
+                 switch (tpConfiguration.getBREEHeaderSelectionPolicy()) {
+                 case first:
+-                    sink.setProfileConfiguration(manifestBREEs[0].getProfileName(),
++                    sink.setProfileConfiguration(overrideToAtLeastJavaSE16(manifestBREEs[0].getProfileName()),
+                             "Bundle-RequiredExecutionEnvironment (first entry)");
+                     break;
+ 
+                 case minimal:
+                     ExecutionEnvironment manifestMinimalEE = Collections.min(Arrays.asList(manifestBREEs));
+-                    sink.setProfileConfiguration(manifestMinimalEE.getProfileName(),
++                    sink.setProfileConfiguration(overrideToAtLeastJavaSE16(manifestMinimalEE.getProfileName()),
+                             "Bundle-RequiredExecutionEnvironment (minimal entry)");
+                 }
+ 
+diff --git a/tycho-core/src/main/java/org/eclipse/tycho/core/resolver/DefaultTargetPlatformConfigurationReader.java b/tycho-core/src/main/java/org/eclipse/tycho/core/resolver/DefaultTargetPlatformConfigurationReader.java
+index 6fa6b8e..e6d25be 100644
+--- a/tycho-core/src/main/java/org/eclipse/tycho/core/resolver/DefaultTargetPlatformConfigurationReader.java
++++ b/tycho-core/src/main/java/org/eclipse/tycho/core/resolver/DefaultTargetPlatformConfigurationReader.java
+@@ -68,7 +68,11 @@ public class DefaultTargetPlatformConfigurationReader {
+                             + configuration.toString());
+                 }
+ 
+-                addTargetEnvironments(result, project, configuration);
++                // Use the defined environments only in local mode with tycho.local.keepTarget
++                if ((System.getProperty("TYCHO_MVN_LOCAL") == null && System.getProperty("TYCHO_MVN_RPMBUILD") == null)
++                        || System.getProperty("tycho.local.keepTarget") != null) {
++                    addTargetEnvironments(result, project, configuration);
++                }
+ 
+                 setTargetPlatformResolver(result, configuration);
+ 
+diff --git a/tycho-core/src/main/java/org/eclipse/tycho/osgi/runtime/TychoOsgiRuntimeLocator.java b/tycho-core/src/main/java/org/eclipse/tycho/osgi/runtime/TychoOsgiRuntimeLocator.java
+index c7d95df..ac5bae7 100644
+--- a/tycho-core/src/main/java/org/eclipse/tycho/osgi/runtime/TychoOsgiRuntimeLocator.java
++++ b/tycho-core/src/main/java/org/eclipse/tycho/osgi/runtime/TychoOsgiRuntimeLocator.java
+@@ -12,6 +12,8 @@ package org.eclipse.tycho.osgi.runtime;
+ 
+ import java.io.File;
+ import java.io.IOException;
++import java.nio.file.Files;
++import java.nio.file.StandardCopyOption;
+ import java.util.ArrayList;
+ import java.util.List;
+ import java.util.Map;
+@@ -163,36 +165,49 @@ public class TychoOsgiRuntimeLocator implements EquinoxRuntimeLocator {
+             File artifactFile = new File(session.getLocalRepository().getBasedir(), session.getLocalRepository()
+                     .pathOf(artifact));
+             File eclipseDir = new File(artifactFile.getParentFile(), "eclipse");
++            File eclipseSaveDir = new File(artifactFile.getParentFile(), "eclipse-save");
++            File fedoraDir = new File(artifactFile.getParentFile(), "fedora-eclipse");
+ 
+             FileLocker locker = fileLockService.getFileLocker(artifactFile);
+             locker.lock();
+             try {
+-                if (!eclipseDir.exists() || artifact.isSnapshot()) {
++                if (!fedoraDir.exists() || artifact.isSnapshot()) {
+                     logger.debug("Extracting Tycho's OSGi runtime");
+ 
+-                    if (artifact.getFile().lastModified() > eclipseDir.lastModified()) {
++                    if (artifact.getFile().lastModified() > fedoraDir.lastModified()) {
+                         logger.debug("Unpacking Tycho's OSGi runtime to " + eclipseDir);
+                         try {
+-                            FileUtils.deleteDirectory(eclipseDir);
++                            FileUtils.deleteDirectory(fedoraDir);
++                            if (eclipseDir.exists()) {
++                                FileUtils.rename(eclipseDir, eclipseSaveDir);
++                            }
+                         } catch (IOException e) {
+-                            logger.warn("Failed to delete Tycho's OSGi runtime " + eclipseDir + ": " + e.getMessage());
++                            logger.warn("Failed to delete Tycho's OSGi runtime " + fedoraDir + ": " + e.getMessage());
+                         }
+                         unArchiver.setSourceFile(artifact.getFile());
+                         unArchiver.setDestDirectory(eclipseDir.getParentFile());
+                         try {
+                             unArchiver.extract();
++                            logger.debug("Moving Tycho's OSGi runtime to " + fedoraDir);
++                            FileUtils.rename(eclipseDir, fedoraDir);
++                            if (eclipseSaveDir.exists()) {
++                                FileUtils.rename(eclipseSaveDir, eclipseDir);
++                            }
+                         } catch (ArchiverException e) {
+                             throw new MavenExecutionException("Failed to unpack Tycho's OSGi runtime: "
+                                     + e.getMessage(), e);
++                        } catch (IOException e) {
++                            throw new MavenExecutionException("Failed to move Tycho's OSGi runtime: " + e.getMessage(),
++                                    e);
+                         }
+ 
+-                        eclipseDir.setLastModified(artifact.getFile().lastModified());
++                        fedoraDir.setLastModified(artifact.getFile().lastModified());
+                     }
+                 }
+             } finally {
+                 locker.release();
+             }
+-            description.addInstallation(eclipseDir);
++            description.addInstallation(fedoraDir);
+         } else {
+             description.addBundle(artifact.getFile());
+         }
+diff --git a/tycho-p2/tycho-p2-facade/pom.xml b/tycho-p2/tycho-p2-facade/pom.xml
+index b567d50..34baa1a 100644
+--- a/tycho-p2/tycho-p2-facade/pom.xml
++++ b/tycho-p2/tycho-p2-facade/pom.xml
+@@ -57,6 +57,11 @@
+ 			<artifactId>junit</artifactId>
+ 			<scope>test</scope>
+ 		</dependency>
++		<dependency>
++			<groupId>org.fedoraproject.p2</groupId>
++			<artifactId>org.fedoraproject.p2</artifactId>
++			<version>0.0.1-SNAPSHOT</version>
++		</dependency>
+ 	</dependencies>
+ 
+ 	<build>
+diff --git a/tycho-p2/tycho-p2-facade/src/main/java/org/eclipse/tycho/p2/resolver/P2DependencyResolver.java b/tycho-p2/tycho-p2-facade/src/main/java/org/eclipse/tycho/p2/resolver/P2DependencyResolver.java
+index ae2dc38..a0c9969 100644
+--- a/tycho-p2/tycho-p2-facade/src/main/java/org/eclipse/tycho/p2/resolver/P2DependencyResolver.java
++++ b/tycho-p2/tycho-p2-facade/src/main/java/org/eclipse/tycho/p2/resolver/P2DependencyResolver.java
+@@ -88,6 +88,7 @@ import org.eclipse.tycho.p2.resolver.facade.P2ResolverFactory;
+ import org.eclipse.tycho.p2.target.facade.PomDependencyCollector;
+ import org.eclipse.tycho.p2.target.facade.TargetPlatformConfigurationStub;
+ import org.eclipse.tycho.repository.registry.facade.ReactorRepositoryManagerFacade;
++import org.fedoraproject.p2.EclipseSystemLayout;
+ 
+ @Component(role = DependencyResolver.class, hint = P2DependencyResolver.ROLE_HINT, instantiationStrategy = "per-lookup")
+ public class P2DependencyResolver extends AbstractLogEnabled implements DependencyResolver, Initializable {
+@@ -208,6 +209,13 @@ public class P2DependencyResolver extends AbstractLogEnabled implements Dependen
+             pomDependencies.setProjectLocation(project.getBasedir());
+         }
+ 
++        // Add Fedora Local P2 Repository when running in local mode
++        if (System.getProperty("TYCHO_MVN_LOCAL") != null || System.getProperty("TYCHO_MVN_RPMBUILD") != null) {
++            for (URI uri : EclipseSystemLayout.getRepositories()) {
++                tpConfiguration.addP2Repository(new MavenRepositoryLocation(uri.getPath(), uri));
++            }
++        }
++
+         for (ArtifactRepository repository : project.getRemoteArtifactRepositories()) {
+             addEntireP2RepositoryToTargetPlatform(repository, tpConfiguration);
+         }
+-- 
+2.1.0

@@ -1,0 +1,46 @@
+From 33bb1bece17d1b6f6e81b149828fa1287aa61093 Mon Sep 17 00:00:00 2001
+From: Roland Grunberg <rgrunber@redhat.com>
+Date: Tue, 12 Jun 2012 09:56:38 -0400
+Subject: [PATCH] Fix the Tycho build to work on Fedora.
+
+Minor fixes of limited scope needed to have Tycho building on Fedora.
+
+Change-Id: Ic8c0514c1fa10ee53580d2654ac6a363ccd66814
+---
+diff --git a/tycho-core/src/main/java/org/eclipse/tycho/core/maven/TychoMavenLifecycleParticipant.java b/tycho-core/src/main/java/org/eclipse/tycho/core/maven/TychoMavenLifecycleParticipant.java
+index b00c344..bc05c2d 100644
+--- a/tycho-core/src/main/java/org/eclipse/tycho/core/maven/TychoMavenLifecycleParticipant.java
++++ b/tycho-core/src/main/java/org/eclipse/tycho/core/maven/TychoMavenLifecycleParticipant.java
+@@ -102,7 +102,9 @@ public class TychoMavenLifecycleParticipant extends AbstractMavenLifecyclePartic
+     }
+ 
+     private void validate(List<MavenProject> projects) throws MavenExecutionException {
+-        validateConsistentTychoVersion(projects);
++        if (System.getProperty("tycho.enableVersionCheck") != null) {
++            validateConsistentTychoVersion(projects);
++        }
+         validateUniqueBaseDirs(projects);
+     }
+ 
+diff --git a/tycho-testing-harness/src/main/java/org/eclipse/tycho/test/AbstractTychoIntegrationTest.java b/tycho-testing-harness/src/main/java/org/eclipse/tycho/test/AbstractTychoIntegrationTest.java
+index 097bdeb..f90b10c 100644
+--- a/tycho-testing-harness/src/main/java/org/eclipse/tycho/test/AbstractTychoIntegrationTest.java
++++ b/tycho-testing-harness/src/main/java/org/eclipse/tycho/test/AbstractTychoIntegrationTest.java
+@@ -115,12 +115,11 @@ public abstract class AbstractTychoIntegrationTest {
+             verifier.getCliOptions().add(customOptions);
+         }
+ 
+-        if (System.getProperty(SYSPROP_STATELOCATION) != null) {
+-            verifier.setForkJvm(false);
+-            String m2eresolver = System.getProperty("tychodev-maven.ext.class.path"); // XXX
+-            if (m2eresolver != null) {
+-                verifier.addCliOption("-Dmaven.ext.class.path=" + m2eresolver);
+-            }
++        String m2eState = System.getProperty("m2eclipse.workspace.state");
++        String m2eResolver = System.getProperty("m2eclipse.workspace.resolver");
++
++        if (m2eState != null && m2eResolver != null) {
++            verifier.getVerifierProperties().put("m2eclipse.workspace.state", m2eState);
+         }
+ 
+         return verifier;

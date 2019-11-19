@@ -1,0 +1,26 @@
+--- org.eclipse.tycho-tycho-1.2.0/tycho-surefire/org.eclipse.tycho.surefire.junit5/pom.xml	2019-04-11 23:10:24.453419824 +0200
++++ org.eclipse.tycho-tycho-1.2.0/tycho-surefire/org.eclipse.tycho.surefire.junit5/pom.xml	2019-04-11 23:53:11.679066646 +0200
+@@ -38,9 +38,9 @@
+ 					<excludes>META-INF/**</excludes>
+ 					<artifactItems>
+ 						<artifactItem>
+-							<groupId>org.junit.platform</groupId>
+-							<artifactId>junit-platform-surefire-provider</artifactId>
+-							<version>${junit-platform-version}</version>
++							<groupId>org.apache.maven.surefire</groupId>
++							<artifactId>surefire-junit-platform</artifactId>
++							<version>${surefire-version}</version>
+ 						</artifactItem>
+ 						<artifactItem>
+ 							<groupId>org.junit.platform</groupId>
+--- org.eclipse.tycho-tycho-1.2.0/tycho-surefire/tycho-surefire-plugin/src/main/java/org/eclipse/tycho/surefire/provider/impl/JUnit5Provider.java	2019-04-11 23:10:24.449419802 +0200
++++ org.eclipse.tycho-tycho-1.2.0/tycho-surefire/tycho-surefire-plugin/src/main/java/org/eclipse/tycho/surefire/provider/impl/JUnit5Provider.java	2019-04-11 23:33:18.352699032 +0200
+@@ -37,7 +37,7 @@
+ 
+     @Override
+     public String getSurefireProviderClassName() {
+-        return "org.junit.platform.surefire.provider.JUnitPlatformProvider";
++        return "org.apache.maven.surefire.junitplatform.JUnitPlatformProvider";
+     }
+ 
+     @Override

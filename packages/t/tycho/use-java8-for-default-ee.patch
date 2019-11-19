@@ -1,0 +1,167 @@
+From d113fc877033b24305584d0157a79b7a54be4188 Mon Sep 17 00:00:00 2001
+From: Mat Booth <mat.booth@redhat.com>
+Date: Wed, 15 Aug 2018 15:58:10 +0100
+Subject: [PATCH] Bug 537963 - Make the default EE Java 1.8
+
+This allows bundles that don't otherwise specify an EE (for example
+if the bundle contains only a plugin.xml, or is a documentation only
+bundle, or otherwise does not contain any bytecode) to continue
+working in environments that are supported by the latest release
+of Eclipse.
+
+Change-Id: Ic6e41c3000c85e2e4222e8153e84b7701ab0e750
+Signed-off-by: Mat Booth <mat.booth@redhat.com>
+---
+
+diff --git a/tycho-compiler-plugin/src/test/java/org/eclipse/tycho/osgicompiler/test/OsgiCompilerTest.java b/tycho-compiler-plugin/src/test/java/org/eclipse/tycho/osgicompiler/test/OsgiCompilerTest.java
+index 7451d97..a0dae08 100644
+--- a/tycho-compiler-plugin/src/test/java/org/eclipse/tycho/osgicompiler/test/OsgiCompilerTest.java
++++ b/tycho-compiler-plugin/src/test/java/org/eclipse/tycho/osgicompiler/test/OsgiCompilerTest.java
+@@ -37,7 +37,7 @@
+ public class OsgiCompilerTest extends AbstractTychoMojoTestCase {
+ 
+     private static final int TARGET_1_4 = 48;
+-    private static final int TARGET_9 = 53;
++    private static final int TARGET_8 = 52;
+ 
+     protected File storage;
+ 
+@@ -235,10 +235,10 @@
+         List<MavenProject> projects = getSortedProjects(basedir, null);
+         MavenProject project;
+         // project with neither POM nor MANIFEST configuration => must fallback to 
+-        // source/target level == 9
++        // source/target level == 8
+         project = projects.get(1);
+         getMojo(projects, project).execute();
+-        assertBytecodeMajorLevel(TARGET_9, new File(project.getBasedir(), "target/classes/Generic.class"));
++        assertBytecodeMajorLevel(TARGET_8, new File(project.getBasedir(), "target/classes/Generic.class"));
+ 
+         // project with multiple execution envs.
+         // Minimum source and target level must be taken
+diff --git a/tycho-core/src/main/java/org/eclipse/tycho/core/ee/ExecutionEnvironmentConfigurationImpl.java b/tycho-core/src/main/java/org/eclipse/tycho/core/ee/ExecutionEnvironmentConfigurationImpl.java
+index 11f0ccf..ea67379 100644
+--- a/tycho-core/src/main/java/org/eclipse/tycho/core/ee/ExecutionEnvironmentConfigurationImpl.java
++++ b/tycho-core/src/main/java/org/eclipse/tycho/core/ee/ExecutionEnvironmentConfigurationImpl.java
+@@ -1,5 +1,5 @@
+ /*******************************************************************************
+- * Copyright (c) 2012, 2014 SAP SE and others.
++ * Copyright (c) 2012, 2018 SAP SE and others.
+  * All rights reserved. This program and the accompanying materials
+  * are made available under the terms of the Eclipse Public License v1.0
+  * which accompanies this distribution, and is available at
+@@ -19,8 +19,8 @@
+ import org.eclipse.tycho.core.shared.BuildFailureException;
+ 
+ public class ExecutionEnvironmentConfigurationImpl implements ExecutionEnvironmentConfiguration {
+-    // Most likely best to always be the latest known supported EE
+-    private static final String DEFAULT_EXECUTION_ENVIRONMENT = "JavaSE-9";
++    // Most likely best to always be the latest known supported long-term supported EE
++    private static final String DEFAULT_EXECUTION_ENVIRONMENT = "JavaSE-1.8";
+ 
+     private static final int PRIMARY = 0;
+     private static final int SECONDARY = 1;
+diff --git a/tycho-core/src/test/java/org/eclipse/tycho/core/ee/ExecutionEnvironmentConfigurationTest.java b/tycho-core/src/test/java/org/eclipse/tycho/core/ee/ExecutionEnvironmentConfigurationTest.java
+index 5391eb2..f04fa21 100644
+--- a/tycho-core/src/test/java/org/eclipse/tycho/core/ee/ExecutionEnvironmentConfigurationTest.java
++++ b/tycho-core/src/test/java/org/eclipse/tycho/core/ee/ExecutionEnvironmentConfigurationTest.java
+@@ -45,9 +45,9 @@
+ 
+     @Test
+     public void testDefaults() {
+-        assertThat(subject.getProfileName(), is("JavaSE-9"));
++        assertThat(subject.getProfileName(), is("JavaSE-1.8"));
+         assertThat(subject.isCustomProfile(), is(false));
+-        assertThat(subject.getFullSpecification().getProfileName(), is("JavaSE-9"));
++        assertThat(subject.getFullSpecification().getProfileName(), is("JavaSE-1.8"));
+     }
+ 
+     @Test
+diff --git a/tycho-core/src/test/java/org/eclipse/tycho/core/osgitools/EquinoxResolverTest.java b/tycho-core/src/test/java/org/eclipse/tycho/core/osgitools/EquinoxResolverTest.java
+index 54f1134..fa2ce8d 100644
+--- a/tycho-core/src/test/java/org/eclipse/tycho/core/osgitools/EquinoxResolverTest.java
++++ b/tycho-core/src/test/java/org/eclipse/tycho/core/osgitools/EquinoxResolverTest.java
+@@ -61,7 +61,7 @@
+         properties.put("tycho-version", TychoVersion.getTychoVersion());
+ 
+         List<MavenProject> projects = getSortedProjects(basedir, properties, null);
+-        assertEquals(6, projects.size());
++        assertEquals(7, projects.size());
+ 
+         assertEquals("executionenvironment.manifest-minimal", projects.get(2).getArtifactId());
+         ExecutionEnvironment ee = TychoProjectUtils.getExecutionEnvironmentConfiguration(projects.get(2))
+diff --git a/tycho-core/src/test/java/org/eclipse/tycho/core/test/TychoTest.java b/tycho-core/src/test/java/org/eclipse/tycho/core/test/TychoTest.java
+index e8eb7ad..a88e2e4 100644
+--- a/tycho-core/src/test/java/org/eclipse/tycho/core/test/TychoTest.java
++++ b/tycho-core/src/test/java/org/eclipse/tycho/core/test/TychoTest.java
+@@ -360,7 +360,7 @@
+         properties.put("tycho-version", TychoVersion.getTychoVersion());
+ 
+         List<MavenProject> projects = getSortedProjects(basedir, properties, null);
+-        assertEquals(6, projects.size());
++        assertEquals(7, projects.size());
+         int i = 0;
+ 
+         assertEquals("executionenvironment.manifest", projects.get(++i).getArtifactId());
+@@ -377,6 +377,9 @@
+ 
+         assertEquals("executionenvironment.pom-default", projects.get(++i).getArtifactId());
+         assertEquals("OSGi/Minimum-1.2", getActiveEEProfile(projects.get(i)));
++
++        assertEquals("executionenvironment.tycho-default", projects.get(++i).getArtifactId());
++        assertEquals("JavaSE-1.8", getActiveEEProfile(projects.get(i)));
+     }
+ 
+     public void testWithProjectReferencesItself() throws Exception {
+diff --git a/tycho-core/src/test/resources/projects/bree/pom.xml b/tycho-core/src/test/resources/projects/bree/pom.xml
+index 1ddff1d..18c5885 100644
+--- a/tycho-core/src/test/resources/projects/bree/pom.xml
++++ b/tycho-core/src/test/resources/projects/bree/pom.xml
+@@ -14,6 +14,7 @@
+ 		<module>pom-hard</module>
+ 		<module>buildproperties</module>
+ 		<module>pom-default</module>
++		<module>tycho-default</module>
+ 	</modules>
+ 
+ </project>
+diff --git a/tycho-core/src/test/resources/projects/bree/tycho-default/META-INF/MANIFEST.MF b/tycho-core/src/test/resources/projects/bree/tycho-default/META-INF/MANIFEST.MF
+new file mode 100644
+index 0000000..e6d85c6
+--- /dev/null
++++ b/tycho-core/src/test/resources/projects/bree/tycho-default/META-INF/MANIFEST.MF
+@@ -0,0 +1,5 @@
++Manifest-Version: 1.0
++Bundle-ManifestVersion: 2
++Bundle-Name: A bundle that specifies no EE at all and relies on Tycho to set one.
++Bundle-SymbolicName: executionenvironment.tycho-default
++Bundle-Version: 1.0.0
+diff --git a/tycho-core/src/test/resources/projects/bree/tycho-default/build.properties b/tycho-core/src/test/resources/projects/bree/tycho-default/build.properties
+new file mode 100644
+index 0000000..7b02ed4
+--- /dev/null
++++ b/tycho-core/src/test/resources/projects/bree/tycho-default/build.properties
+@@ -0,0 +1,2 @@
++bin.includes = META-INF/
++
+diff --git a/tycho-core/src/test/resources/projects/bree/tycho-default/pom.xml b/tycho-core/src/test/resources/projects/bree/tycho-default/pom.xml
+new file mode 100644
+index 0000000..f538f5e
+--- /dev/null
++++ b/tycho-core/src/test/resources/projects/bree/tycho-default/pom.xml
+@@ -0,0 +1,15 @@
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
++	<modelVersion>4.0.0</modelVersion>
++
++	<parent>
++		<groupId>executionenvironment</groupId>
++		<artifactId>parent</artifactId>
++		<version>1.0.0</version>
++	</parent>
++
++	<artifactId>executionenvironment.tycho-default</artifactId>
++	<version>1.0.0</version>
++	<packaging>eclipse-plugin</packaging>
++
++</project>

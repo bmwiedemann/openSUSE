@@ -1,0 +1,11 @@
+--- tycho-surefire/org.eclipse.tycho.surefire.osgibooter/src/main/java/org/eclipse/tycho/surefire/osgibooter/OsgiSurefireBooter.java.orig	2018-07-25 15:02:39.484574315 +0100
++++ tycho-surefire/org.eclipse.tycho.surefire.osgibooter/src/main/java/org/eclipse/tycho/surefire/osgibooter/OsgiSurefireBooter.java	2018-07-25 15:04:38.494188050 +0100
+@@ -101,7 +101,7 @@
+                 skipAfterFailureCount, Shutdown.DEFAULT, 0);
+         StartupReportConfiguration startupReportConfig = new StartupReportConfiguration(useFile, printSummary,
+                 StartupReportConfiguration.PLAIN_REPORT_FORMAT, redirectTestOutputToFile, disableXmlReport, reportsDir,
+-                trimStacktrace, null, new File(reportsDir, "TESTHASH"), false, rerunFailingTestsCount, null);
++                trimStacktrace, null, new File(reportsDir, "TESTHASH"), false, rerunFailingTestsCount, null, null);
+         ReporterFactory reporterFactory = new DefaultReporterFactory(startupReportConfig, new NullConsoleLogger());
+         // API indicates we should use testClassLoader below but surefire also tries 
+         // to load surefire classes using this classloader
