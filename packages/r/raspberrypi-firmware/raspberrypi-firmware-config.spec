@@ -1,7 +1,7 @@
 #
 # spec file for package raspberrypi-firmware-config
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Configuration for the Raspberry Pi firmware loader
 License:        MIT
 Group:          System/Boot
-Url:            https://github.com/raspberrypi/firmware/
+URL:            https://github.com/raspberrypi/firmware/
 Source:         config.txt
 BuildRequires:  raspberrypi-firmware
 Requires:       raspberrypi-firmware = %{version}

@@ -47,6 +47,7 @@ sdram_freq=400
 
 [pi4]
 arm_64bit=1
+dtoverlay=disable-vc4
 
 [all]
 

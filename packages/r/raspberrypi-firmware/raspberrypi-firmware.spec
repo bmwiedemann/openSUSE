@@ -1,7 +1,7 @@
 #
 # spec file for package raspberrypi-firmware
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Binary bootloader and firmware files for Raspberry Pi
 License:        SUSE-Firmware
 Group:          System/Boot
-Url:            https://github.com/raspberrypi/firmware/
+URL:            https://github.com/raspberrypi/firmware/
 Source0:        raspberrypi-firmware-%{version}.tar.bz2
 Source1:        get-from-git.sh
 Source99:       %{name}-rpmlintrc
