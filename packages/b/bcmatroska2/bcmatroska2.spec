@@ -54,7 +54,7 @@ applications which will use libbcmatroska2.
 %cmake \
   -DENABLE_STATIC=OFF \
   -DENABLE_STRICT=OFF
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
