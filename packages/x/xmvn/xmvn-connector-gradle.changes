@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Wed Mar 27 06:28:06 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of xmvn-connector-gradle 3.0.0
+- Added patch:
+  * 0001-Fix-resolution-of-aliases-registered-by-add_maven_de.patch
+    + fix resolution of aliases that are registered by the
+      %%add_maven_depmap macro

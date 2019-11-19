@@ -1,0 +1,27 @@
+From 2f1be92ecb3cc227dd4a6957165b4c6c9268400c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Sun, 6 Oct 2019 16:31:51 +0200
+Subject: [PATCH] Fix resolution of aliases registered by %add_maven_depmap
+
+---
+ .../fedoraproject/xmvn/connector/gradle/GradleResolver.java   | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/xmvn-connector-gradle/src/main/java/org/fedoraproject/xmvn/connector/gradle/GradleResolver.java b/xmvn-connector-gradle/src/main/java/org/fedoraproject/xmvn/connector/gradle/GradleResolver.java
+index 90b07eb1..7f292e00 100644
+--- a/xmvn-connector-gradle/src/main/java/org/fedoraproject/xmvn/connector/gradle/GradleResolver.java
++++ b/xmvn-connector-gradle/src/main/java/org/fedoraproject/xmvn/connector/gradle/GradleResolver.java
+@@ -175,8 +175,8 @@ public class GradleResolver
+     {
+         ModuleVersionIdentifier moduleId =
+             ( (DefaultModuleComponentArtifactMetadata) artifact ).toArtifactIdentifier().getModuleVersionIdentifier();
+-        String groupId = moduleId.getGroup();
+-        String artifactId = artifact.getName().getName();
++        String groupId = ( (DefaultModuleComponentArtifactMetadata) artifact ).getId().getComponentIdentifier().getGroup();
++        String artifactId =( (DefaultModuleComponentArtifactMetadata) artifact ).getId().getComponentIdentifier().getModule();
+         String extension = artifact.getName().getExtension();
+         String classifier = artifact.getName().getClassifier();
+         String version = moduleId.getVersion();
+-- 
+2.23.0
+

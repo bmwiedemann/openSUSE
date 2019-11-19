@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>691466</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>520178476fce00a803332388df775c30</srcmd5>
+    <version>3.0.0</version>
+    <time>1574167487</time>
+    <user>dimstar_suse</user>
+    <comment>Build the xmvn-connector-gradle package too</comment>
+    <requestid>749225</requestid>
+  </revision>
 </revisionlist>
