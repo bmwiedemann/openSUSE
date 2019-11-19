@@ -1,0 +1,204 @@
+From 9b5c1c859a60229beb20aa9bd4480f82786ff717 Mon Sep 17 00:00:00 2001
+From: Mikolaj Izdebski <mizdebsk@redhat.com>
+Date: Fri, 30 Jan 2015 13:16:40 +0100
+Subject: [PATCH 10/17] Port from Simple 4 to Jetty 9
+
+---
+ gradle/dependencies.gradle                    |  6 +-
+ subprojects/javascript/javascript.gradle      |  2 +-
+ .../simple/SimpleHttpFileServerFactory.java   | 38 ++++-----
+ .../internal/SimpleFileServerContainer.java   | 82 -------------------
+ 4 files changed, 23 insertions(+), 105 deletions(-)
+ delete mode 100644 subprojects/javascript/src/main/java/org/gradle/plugins/javascript/envjs/http/simple/internal/SimpleFileServerContainer.java
+
+diff --git a/gradle/dependencies.gradle b/gradle/dependencies.gradle
+index 54dc27d7fbe..96ff6f58fee 100755
+--- a/gradle/dependencies.gradle
++++ b/gradle/dependencies.gradle
+@@ -68,12 +68,12 @@ libraries.logback_classic = dependencies.module('ch.qos.logback:logback-classic:
+ }
+ 
+ // Jetty
+-libraries.servlet_api = "org.mortbay.jetty:servlet-api:2.5-20081211@jar"
+-libraries.jetty_util = dependencies.module("org.mortbay.jetty:jetty-util:6.1.26") {
++libraries.servlet_api = "javax.servlet:javax.servlet-api"
++libraries.jetty_util = dependencies.module("org.eclipse.jetty:jetty-util") {
+     dependency libraries.slf4j_api
+     dependency libraries.servlet_api
+ }
+-libraries.jetty = dependencies.module("org.mortbay.jetty:jetty:6.1.26") {
++libraries.jetty = dependencies.module("org.eclipse.jetty:jetty-server") {
+     dependency libraries.jetty_util
+     dependency libraries.servlet_api
+ }
+diff --git a/subprojects/javascript/javascript.gradle b/subprojects/javascript/javascript.gradle
+index 1e94bd8de68..18970197521 100644
+--- a/subprojects/javascript/javascript.gradle
++++ b/subprojects/javascript/javascript.gradle
+@@ -19,7 +19,7 @@ dependencies {
+ 
+     compile "org.mozilla:rhino:1.7R3"
+     compile libraries.gson // used by JsHint
+-    compile "org.simpleframework:simple:4.1.21" // used by http package in envjs
++    compile libraries.jetty // used by http package in envjs
+     compile project(':core'), project(":plugins"), project(':workers')
+     compile libraries.inject
+ 
+diff --git a/subprojects/javascript/src/main/java/org/gradle/plugins/javascript/envjs/http/simple/SimpleHttpFileServerFactory.java b/subprojects/javascript/src/main/java/org/gradle/plugins/javascript/envjs/http/simple/SimpleHttpFileServerFactory.java
+index 8a4f692cf4e..6983db21cb4 100644
+--- a/subprojects/javascript/src/main/java/org/gradle/plugins/javascript/envjs/http/simple/SimpleHttpFileServerFactory.java
++++ b/subprojects/javascript/src/main/java/org/gradle/plugins/javascript/envjs/http/simple/SimpleHttpFileServerFactory.java
+@@ -16,43 +16,43 @@
+ 
+ package org.gradle.plugins.javascript.envjs.http.simple;
+ 
++import org.eclipse.jetty.server.Handler;
++import org.eclipse.jetty.server.Server;
++import org.eclipse.jetty.server.handler.DefaultHandler;
++import org.eclipse.jetty.server.handler.HandlerList;
++import org.eclipse.jetty.server.handler.ResourceHandler;
+ import org.gradle.api.UncheckedIOException;
+ import org.gradle.internal.concurrent.Stoppable;
+ import org.gradle.plugins.javascript.envjs.http.HttpFileServer;
+ import org.gradle.plugins.javascript.envjs.http.HttpFileServerFactory;
+-import org.gradle.plugins.javascript.envjs.http.simple.internal.SimpleFileServerContainer;
+-import org.simpleframework.http.core.Container;
+-import org.simpleframework.http.core.ContainerServer;
+-import org.simpleframework.http.resource.FileContext;
+-import org.simpleframework.transport.Server;
+-import org.simpleframework.transport.connect.Connection;
+-import org.simpleframework.transport.connect.SocketConnection;
+ 
+ import java.io.File;
+-import java.io.IOException;
+-import java.net.InetSocketAddress;
+ 
+ public class SimpleHttpFileServerFactory implements HttpFileServerFactory {
+ 
+     public HttpFileServer start(File contentRoot, int port) {
+-        Container container = new SimpleFileServerContainer(new FileContext(contentRoot));
+-
+         try {
+-            final Server server = new ContainerServer(container);
+-            Connection connection = new SocketConnection(server);
+-            InetSocketAddress address = new InetSocketAddress(port);
+-            InetSocketAddress usedAddress = (InetSocketAddress)connection.connect(address);
++            final Server server = new Server(8080);
++
++            ResourceHandler handler = new ResourceHandler();
++            handler.setResourceBase(contentRoot.getPath());
++
++            HandlerList handlers = new HandlerList();
++            handlers.setHandlers(new Handler[] { handler, new DefaultHandler() });
++            server.setHandler(handlers);
++
++            server.start();
+ 
+-            return new SimpleHttpFileServer(contentRoot, usedAddress.getPort(), new Stoppable() {
++            return new SimpleHttpFileServer(contentRoot, port, new Stoppable() {
+                 public void stop() {
+                     try {
+-                        server.stop();
+-                    } catch (IOException e) {
++                        server.join();
++                    } catch (InterruptedException e) {
+                         throw new UncheckedIOException(e);
+                     }
+                 }
+             });
+-        } catch (IOException e) {
++        } catch (Exception e) {
+             throw new UncheckedIOException(e);
+         }
+     }
+diff --git a/subprojects/javascript/src/main/java/org/gradle/plugins/javascript/envjs/http/simple/internal/SimpleFileServerContainer.java b/subprojects/javascript/src/main/java/org/gradle/plugins/javascript/envjs/http/simple/internal/SimpleFileServerContainer.java
+deleted file mode 100644
+index 5d67baeeae1..00000000000
+--- a/subprojects/javascript/src/main/java/org/gradle/plugins/javascript/envjs/http/simple/internal/SimpleFileServerContainer.java
++++ /dev/null
+@@ -1,82 +0,0 @@
+-/*
+- * Copyright 2012 the original author or authors.
+- *
+- * Licensed under the Apache License, Version 2.0 (the "License");
+- * you may not use this file except in compliance with the License.
+- * You may obtain a copy of the License at
+- *
+- *      http://www.apache.org/licenses/LICENSE-2.0
+- *
+- * Unless required by applicable law or agreed to in writing, software
+- * distributed under the License is distributed on an "AS IS" BASIS,
+- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+- * See the License for the specific language governing permissions and
+- * limitations under the License.
+- */
+-
+-package org.gradle.plugins.javascript.envjs.http.simple.internal;
+-
+-import org.apache.commons.io.IOUtils;
+-import org.gradle.api.UncheckedIOException;
+-import org.simpleframework.http.Request;
+-import org.simpleframework.http.Response;
+-import org.simpleframework.http.core.Container;
+-import org.simpleframework.http.resource.Context;
+-import org.simpleframework.http.resource.Index;
+-
+-import java.io.File;
+-import java.io.FileInputStream;
+-import java.io.FileReader;
+-import java.io.IOException;
+-import java.io.InputStream;
+-import java.io.OutputStream;
+-import java.io.Reader;
+-import java.nio.charset.Charset;
+-
+-public class SimpleFileServerContainer implements Container {
+-
+-    private final Context context;
+-
+-    public SimpleFileServerContainer(Context context) {
+-        this.context = context;
+-    }
+-
+-    public void handle(Request req, Response resp) {
+-        Index requestIndex = context.getIndex(req.getTarget());
+-        File targetFile = requestIndex.getFile();
+-
+-        if (!targetFile.exists()) {
+-            resp.setCode(404);
+-            resp.setText("Not Found");
+-            try {
+-                resp.getPrintStream().println(String.format("File '%s' does not exist", targetFile.getAbsolutePath()));
+-                resp.commit();
+-            } catch (IOException e) {
+-                throw new UncheckedIOException(e);
+-            }
+-        }
+-
+-        String contentType = requestIndex.getContentType();
+-        resp.set("Content-Type", contentType);
+-
+-        OutputStream output = null;
+-        try {
+-            output = resp.getOutputStream();
+-
+-            if (contentType.startsWith("text/")) {
+-                resp.set("Content-Encoding", Charset.defaultCharset().name());
+-                Reader input = new FileReader(requestIndex.getFile());
+-                IOUtils.copy(input, output);
+-                IOUtils.closeQuietly(input);
+-            } else {
+-                InputStream input = new FileInputStream(requestIndex.getFile());
+-                IOUtils.copy(input, output);
+-                IOUtils.closeQuietly(input);
+-            }
+-        } catch (IOException e) {
+-            throw new UncheckedIOException(e);
+-        } finally {
+-            IOUtils.closeQuietly(output);
+-        }
+-    }
+-}
+-- 
+2.17.2
+

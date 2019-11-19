@@ -1,0 +1,39 @@
+From df35f5573411746ea2a3d01bfa3f2bcbb01648c3 Mon Sep 17 00:00:00 2001
+From: Michael Simacek <msimacek@redhat.com>
+Date: Sat, 7 Feb 2015 15:28:03 +0100
+Subject: [PATCH 04/17] Use unversioned dependency JAR names
+
+---
+ .../gradle/api/internal/classpath/DefaultModuleRegistry.java    | 2 +-
+ .../java/org/gradle/api/internal/plugins/GroovyJarFile.java     | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/subprojects/core/src/main/java/org/gradle/api/internal/classpath/DefaultModuleRegistry.java b/subprojects/core/src/main/java/org/gradle/api/internal/classpath/DefaultModuleRegistry.java
+index bcd55e367d2..0ead27197d6 100644
+--- a/subprojects/core/src/main/java/org/gradle/api/internal/classpath/DefaultModuleRegistry.java
++++ b/subprojects/core/src/main/java/org/gradle/api/internal/classpath/DefaultModuleRegistry.java
+@@ -227,7 +227,7 @@ public class DefaultModuleRegistry implements ModuleRegistry {
+     }
+ 
+     private File findJar(String name) {
+-        Pattern pattern = Pattern.compile(Pattern.quote(name) + "-\\d.+\\.jar");
++        Pattern pattern = Pattern.compile(Pattern.quote(name) + "(?:-\\d.+)?\\.jar");
+         if (gradleInstallation != null) {
+             for (File libDir : gradleInstallation.getLibDirs()) {
+                 for (File file : libDir.listFiles()) {
+diff --git a/subprojects/plugins/src/main/java/org/gradle/api/internal/plugins/GroovyJarFile.java b/subprojects/plugins/src/main/java/org/gradle/api/internal/plugins/GroovyJarFile.java
+index 5b7329999ae..c4c778e65a6 100644
+--- a/subprojects/plugins/src/main/java/org/gradle/api/internal/plugins/GroovyJarFile.java
++++ b/subprojects/plugins/src/main/java/org/gradle/api/internal/plugins/GroovyJarFile.java
+@@ -23,7 +23,7 @@ import java.util.regex.Matcher;
+ import java.util.regex.Pattern;
+ 
+ public class GroovyJarFile {
+-    private static final Pattern FILE_NAME_PATTERN = Pattern.compile("(groovy(?:-all)?)-(\\d.*?)(-indy)?.jar");
++    private static final Pattern FILE_NAME_PATTERN = Pattern.compile("(groovy(?:-all)?)(?:-(\\d.*?))?(-indy)?.jar");
+ 
+     private final File file;
+     private final Matcher matcher;
+-- 
+2.17.2
+

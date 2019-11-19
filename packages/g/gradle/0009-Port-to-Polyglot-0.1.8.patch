@@ -1,0 +1,56 @@
+From e0fd3d1d53e2a477ae55534bbc9180a40537bf65 Mon Sep 17 00:00:00 2001
+From: Mikolaj Izdebski <mizdebsk@redhat.com>
+Date: Tue, 21 Apr 2015 15:12:44 +0200
+Subject: [PATCH 09/17] Port to Polyglot 0.1.8
+
+---
+ .../maven/internal/pom/CustomModelBuilder.java  | 17 ++++++++++-------
+ 1 file changed, 10 insertions(+), 7 deletions(-)
+
+diff --git a/subprojects/maven/src/main/java/org/gradle/api/publication/maven/internal/pom/CustomModelBuilder.java b/subprojects/maven/src/main/java/org/gradle/api/publication/maven/internal/pom/CustomModelBuilder.java
+index e311d4993b6..91d5fa22d95 100644
+--- a/subprojects/maven/src/main/java/org/gradle/api/publication/maven/internal/pom/CustomModelBuilder.java
++++ b/subprojects/maven/src/main/java/org/gradle/api/publication/maven/internal/pom/CustomModelBuilder.java
+@@ -20,11 +20,15 @@ import org.apache.maven.model.Model;
+ import org.codehaus.plexus.personality.plexus.lifecycle.phase.InitializationException;
+ import org.gradle.api.publication.maven.internal.ModelFactory;
+ import org.slf4j.LoggerFactory;
++import org.sonatype.maven.polyglot.PolyglotModelManager;
+ import org.sonatype.maven.polyglot.execute.ExecuteManager;
+ import org.sonatype.maven.polyglot.execute.ExecuteManagerImpl;
++import org.sonatype.maven.polyglot.groovy.GroovyMapping;
+ import org.sonatype.maven.polyglot.groovy.builder.ModelBuilder;
++import org.sonatype.maven.polyglot.mapping.XmlMapping;
+ 
+ import java.lang.reflect.Field;
++import java.util.Arrays;
+ import java.util.Map;
+ 
+ /**
+@@ -33,17 +37,16 @@ import java.util.Map;
+ public class CustomModelBuilder extends ModelBuilder {
+ 
+     public CustomModelBuilder(Model model) {
++        PolyglotModelManager modelManager = new PolyglotModelManager();
++        setProp(modelManager.getClass(), modelManager, "log",
++                new PlexusLoggerAdapter(LoggerFactory.getLogger(PolyglotModelManager.class)));
++        setProp(modelManager.getClass(), modelManager, "mappings",
++                Arrays.asList(new XmlMapping(), new GroovyMapping()));
+         ExecuteManager executeManager = new ExecuteManagerImpl();
+         setProp(executeManager.getClass(), executeManager, "log",
+                 new PlexusLoggerAdapter(LoggerFactory.getLogger(ExecuteManagerImpl.class)));
++        setProp(executeManager.getClass(), executeManager, "manager", modelManager);
+         setProp(ModelBuilder.class, this, "executeManager", executeManager);
+-        setProp(ModelBuilder.class, this, "log",
+-                new PlexusLoggerAdapter(LoggerFactory.getLogger(ModelBuilder.class)));
+-        try {
+-            initialize();
+-        } catch (InitializationException e) {
+-            throw new RuntimeException(e);
+-        }
+         Map factories = (Map) getProp(FactoryBuilderSupport.class, this, "factories");
+         factories.remove("project");
+         ModelFactory modelFactory = new ModelFactory(model);
+-- 
+2.17.2
+

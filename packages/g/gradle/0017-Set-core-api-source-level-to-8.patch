@@ -1,0 +1,39 @@
+From 3f55c106c3ba0c138c1eaa7bb2054e4aa549302e Mon Sep 17 00:00:00 2001
+From: Michael Simacek <msimacek@redhat.com>
+Date: Mon, 26 Mar 2018 14:07:20 +0200
+Subject: [PATCH 17/17] Set core-api source level to 8
+
+---
+ subprojects/core-api/core-api.gradle | 2 +-
+ subprojects/core/core.gradle         | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/subprojects/core-api/core-api.gradle b/subprojects/core-api/core-api.gradle
+index c90a0b48eec..587729f5da2 100644
+--- a/subprojects/core-api/core-api.gradle
++++ b/subprojects/core-api/core-api.gradle
+@@ -15,7 +15,7 @@
+  */
+ apply plugin: 'java-library'
+ 
+-sourceCompatibility = javaVersion.java9Compatible ? 1.6 : 1.5
++sourceCompatibility = 8
+ 
+ dependencies {
+     api project(":baseServices")
+diff --git a/subprojects/core/core.gradle b/subprojects/core/core.gradle
+index 9ca47b639c5..691ec477805 100755
+--- a/subprojects/core/core.gradle
++++ b/subprojects/core/core.gradle
+@@ -16,7 +16,7 @@
+ apply plugin: 'java-library'
+ apply from: "$rootDir/gradle/taskProperties.gradle"
+ 
+-sourceCompatibility = javaVersion.java9Compatible ? 1.6 : 1.5
++sourceCompatibility = 8
+ 
+ configurations {
+     reports
+-- 
+2.17.2
+

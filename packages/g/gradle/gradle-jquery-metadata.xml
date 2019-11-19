@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xmlns="http://fedorahosted.org/xmvn/METADATA/2.0.0">
+  <artifacts>
+    <artifact>
+      <groupId>jquery</groupId>
+      <artifactId>jquery.min</artifactId>
+      <extension>js</extension>
+      <version>2.1.1</version>
+      <!-- Current build bundles jquery. For now point it to /dev/null to avoid bundling. -->
+      <!-- <path>/usr/share/javascript/jquery/2/jquery.min.js</path> -->
+      <path>/dev/null</path>
+    </artifact>
+  </artifacts>
+</metadata>

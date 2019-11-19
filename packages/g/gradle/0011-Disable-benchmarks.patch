@@ -1,0 +1,83 @@
+From 36ea3935a6ffef95a530b88fd30ddd579d0da39d Mon Sep 17 00:00:00 2001
+From: Michael Simacek <msimacek@redhat.com>
+Date: Fri, 29 Sep 2017 14:10:15 +0300
+Subject: [PATCH 11/17] Disable benchmarks
+
+---
+ gradle/groovyProject.gradle                    | 4 ----
+ subprojects/base-services/base-services.gradle | 6 ------
+ subprojects/build-cache/build-cache.gradle     | 6 ------
+ subprojects/native/native.gradle               | 8 --------
+ 4 files changed, 24 deletions(-)
+
+diff --git a/gradle/groovyProject.gradle b/gradle/groovyProject.gradle
+index d4479292523..df61e7f1e88 100644
+--- a/gradle/groovyProject.gradle
++++ b/gradle/groovyProject.gradle
+@@ -124,10 +124,6 @@ if (file("src/performanceTest").exists()) {
+     apply from: "$rootDir/gradle/performanceTest.gradle"
+ }
+ 
+-if (file("src/jmh").exists()) {
+-    apply from: "$rootDir/gradle/jmh.gradle"
+-}
+-
+ apply from: "$rootDir/gradle/distributionTesting.gradle"
+ apply from: "$rootDir/gradle/intTestImage.gradle"
+ 
+diff --git a/subprojects/base-services/base-services.gradle b/subprojects/base-services/base-services.gradle
+index 3f9cb27e2e6..491c0fa46eb 100644
+--- a/subprojects/base-services/base-services.gradle
++++ b/subprojects/base-services/base-services.gradle
+@@ -16,12 +16,6 @@ dependencies {
+     implementation libraries.commons_lang
+     implementation libraries.commons_io
+     implementation libraries.jcip
+-
+-    jmh libraries.bouncycastle_provider
+-}
+-
+-jmh {
+-    include = ["HashingAlgorithmsBenchmark"]
+ }
+ 
+ task buildReceiptResource(type: Copy) {
+diff --git a/subprojects/build-cache/build-cache.gradle b/subprojects/build-cache/build-cache.gradle
+index 005923c563b..01d32928320 100644
+--- a/subprojects/build-cache/build-cache.gradle
++++ b/subprojects/build-cache/build-cache.gradle
+@@ -26,12 +26,6 @@ dependencies {
+     implementation project(":logging")
+ 
+     implementation libraries.commons_io
+-
+-    jmh libraries.ant
+-    jmh libraries.commons_compress
+-    jmh "io.airlift:aircompressor:0.8"
+-    jmh "org.iq80.snappy:snappy:0.4"
+-    jmh "org.kamranzafar:jtar:2.3"
+ }
+ 
+ useTestFixtures()
+diff --git a/subprojects/native/native.gradle b/subprojects/native/native.gradle
+index dfd4db20408..0b59611dfcd 100755
+--- a/subprojects/native/native.gradle
++++ b/subprojects/native/native.gradle
+@@ -19,14 +19,6 @@ useTestFixtures()
+ useTestFixtures(project: ":logging")
+ useClassycle()
+ 
+-jmh {
+-    fork = 1
+-    threads = 2
+-    warmupIterations = 10
+-    synchronizeIterations = false
+-    resultFormat = 'CSV'
+-}
+-
+ task copyJmhReport(type: Copy) {
+     destinationDir = file("$buildDir/reports/jmh-html")
+ 
+-- 
+2.17.2
+

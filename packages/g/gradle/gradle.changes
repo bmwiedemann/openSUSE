@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Nov 17 20:04:50 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Package a full gradle instead of the open apis only
+- Upgrade to version 4.4.1
+- Added patches:
+  * 0001-Gradle-local-mode.patch
+    + Use gradle local mode by default
+  * 0002-Remove-Class-Path-from-manifest.patch
+    + Remove classpath from manifest
+  * 0003-Implement-XMvn-repository-factory-method.patch
+    + Implement factory methods for xmvn repository
+  * 0004-Use-unversioned-dependency-JAR-names.patch
+    + Use unversioned jar files for dependencies
+  * 0005-Port-to-Maven-3.3.9-and-Eclipse-Aether.patch
+    + Port to maven 3.3.9 and maven-resolver
+  * 0006-Disable-code-quality-checks.patch
+    + Disable code quality checks useless for rpm build
+  * 0007-Port-to-Kryo-3.0.patch
+    + Fix build with kryo 3.0
+  * 0008-Port-to-Ivy-2.4.0.patch
+    + Fix build with apache-ivy 2.4.0
+  * 0009-Port-to-Polyglot-0.1.8.patch
+    + Allow building with tesla-polyglot >= 0.1.8
+  * 0010-Port-from-Simple-4-to-Jetty-9.patch
+    + build using org.eclipse.jetty:jetty-server instead of
+      org.simpleframework:simple
+  * 0011-Disable-benchmarks.patch
+    + Do not run benchmarks useless during rpm build
+  * 0012-Disable-patching-of-external-modules.patch
+    + Disable patching of external modules during the build
+  * 0013-Add-missing-transitive-dependencies.patch
+    + Add transitive dependencies for aqute-bndlib, jansi and zinc
+  * 0014-Disable-ideNative-module.patch
+    + Do not build ideNative module
+  * 0015-Disable-docs-build.patch
+    + Do not build docs needing asciidoctorj that we don't have
+  * 0016-Port-to-guava-20.0.patch
+    + Fix build with guava 20.0
+  * 0017-Set-core-api-source-level-to-8.patch
+    + Build core-api submodule with source/target 8
+
+-------------------------------------------------------------------
 Tue Sep 17 11:37:40 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Add LICENSE file to the correct tag

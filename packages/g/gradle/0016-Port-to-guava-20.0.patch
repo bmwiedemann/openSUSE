@@ -1,0 +1,232 @@
+From 24a404aaa3955528385398f15a32440f68670e89 Mon Sep 17 00:00:00 2001
+From: Michael Simacek <msimacek@redhat.com>
+Date: Sun, 12 Nov 2017 19:08:40 +0200
+Subject: [PATCH 16/17] Port to guava 20.0
+
+---
+ gradle/dependencies.gradle                                   | 2 +-
+ .../org/gradle/api/internal/CompositeDomainObjectSet.java    | 5 +++--
+ .../gradle/api/internal/DefaultDomainObjectCollection.java   | 3 ++-
+ .../rules/PreviousSuccessTaskStateChanges.java               | 3 ++-
+ .../changedetection/state/DefaultFileCollectionSnapshot.java | 3 ++-
+ .../OrderInsensitiveTaskFilePropertyCompareStrategy.java     | 3 +--
+ .../state/TaskFilePropertyCompareStrategy.java               | 2 +-
+ .../api/internal/tasks/CompositeTaskOutputPropertySpec.java  | 4 ++--
+ .../org/gradle/api/internal/tasks/DefaultTaskOutputs.java    | 3 ++-
+ .../plugin/management/internal/DefaultPluginRequests.java    | 3 ++-
+ 10 files changed, 18 insertions(+), 13 deletions(-)
+
+diff --git a/gradle/dependencies.gradle b/gradle/dependencies.gradle
+index bbf10217798..a6148dfa088 100755
+--- a/gradle/dependencies.gradle
++++ b/gradle/dependencies.gradle
+@@ -94,7 +94,7 @@ libraries.commons_httpclient = dependencies.module('org.apache.httpcomponents:ht
+ libraries += [
+     jatl: 'com.googlecode.jatl:jatl:0.2.2',
+     dom4j: 'dom4j:dom4j:1.6.1@jar',
+-    guava: 'com.google.guava:guava-jdk5:17.0@jar',
++    guava: 'com.google.guava:guava:20.0@jar',
+     kryo: 'com.esotericsoftware.kryo:kryo:2.20',
+     jsr305: 'com.google.code.findbugs:jsr305:1.3.9@jar',
+     groovy: "org.codehaus.groovy:groovy-all:${versions.groovy}",
+diff --git a/subprojects/core/src/main/java/org/gradle/api/internal/CompositeDomainObjectSet.java b/subprojects/core/src/main/java/org/gradle/api/internal/CompositeDomainObjectSet.java
+index ee7c1244b51..4619c7d5cd1 100644
+--- a/subprojects/core/src/main/java/org/gradle/api/internal/CompositeDomainObjectSet.java
++++ b/subprojects/core/src/main/java/org/gradle/api/internal/CompositeDomainObjectSet.java
+@@ -24,6 +24,7 @@ import org.gradle.api.specs.Spec;
+ import org.gradle.internal.Actions;
+ 
+ import java.util.Collection;
++import java.util.Collections;
+ import java.util.Iterator;
+ import java.util.List;
+ import java.util.Set;
+@@ -109,7 +110,7 @@ public class CompositeDomainObjectSet<T> extends DelegatingDomainObjectSet<T> im
+     public Iterator<T> iterator() {
+         DomainObjectCompositeCollection store = getStore();
+         if (store.isEmpty()) {
+-            return Iterators.emptyIterator();
++            return Collections.emptyIterator();
+         }
+         return SetIterator.of(store);
+ 
+@@ -190,7 +191,7 @@ public class CompositeDomainObjectSet<T> extends DelegatingDomainObjectSet<T> im
+         @SuppressWarnings("unchecked")
+         public Iterator<T> iterator() {
+             if (store.isEmpty()) {
+-                return Iterators.emptyIterator();
++                return Collections.emptyIterator();
+             }
+             if (store.size() == 1) {
+                 return (Iterator<T>) store.get(0).iterator();
+diff --git a/subprojects/core/src/main/java/org/gradle/api/internal/DefaultDomainObjectCollection.java b/subprojects/core/src/main/java/org/gradle/api/internal/DefaultDomainObjectCollection.java
+index 90d89d50866..5bd7f0abd9f 100755
+--- a/subprojects/core/src/main/java/org/gradle/api/internal/DefaultDomainObjectCollection.java
++++ b/subprojects/core/src/main/java/org/gradle/api/internal/DefaultDomainObjectCollection.java
+@@ -32,6 +32,7 @@ import org.gradle.util.ConfigureUtil;
+ import java.util.AbstractCollection;
+ import java.util.ArrayList;
+ import java.util.Collection;
++import java.util.Collections;
+ import java.util.Iterator;
+ 
+ public class DefaultDomainObjectCollection<T> extends AbstractCollection<T> implements DomainObjectCollection<T>, WithEstimatedSize {
+@@ -107,7 +108,7 @@ public class DefaultDomainObjectCollection<T> extends AbstractCollection<T> impl
+ 
+     public Iterator<T> iterator() {
+         if (constantTimeIsEmpty()) {
+-            return Iterators.emptyIterator();
++            return Collections.emptyIterator();
+         }
+         return new IteratorImpl(getStore().iterator());
+     }
+diff --git a/subprojects/core/src/main/java/org/gradle/api/internal/changedetection/rules/PreviousSuccessTaskStateChanges.java b/subprojects/core/src/main/java/org/gradle/api/internal/changedetection/rules/PreviousSuccessTaskStateChanges.java
+index c432c33664d..82e3a878a18 100644
+--- a/subprojects/core/src/main/java/org/gradle/api/internal/changedetection/rules/PreviousSuccessTaskStateChanges.java
++++ b/subprojects/core/src/main/java/org/gradle/api/internal/changedetection/rules/PreviousSuccessTaskStateChanges.java
+@@ -21,6 +21,7 @@ import org.gradle.api.internal.TaskInternal;
+ import org.gradle.api.internal.changedetection.state.TaskExecution;
+ 
+ import javax.annotation.Nullable;
++import java.util.Collections;
+ import java.util.Iterator;
+ 
+ public class PreviousSuccessTaskStateChanges implements TaskStateChanges {
+@@ -38,7 +39,7 @@ public class PreviousSuccessTaskStateChanges implements TaskStateChanges {
+     @Override
+     public Iterator<TaskStateChange> iterator() {
+         if (previousExecution == null || previousExecution.isSuccessful()) {
+-            return Iterators.emptyIterator();
++            return Collections.emptyIterator();
+         } else {
+             return Iterators.singletonIterator(PREVIOUS_FAILURE);
+         }
+diff --git a/subprojects/core/src/main/java/org/gradle/api/internal/changedetection/state/DefaultFileCollectionSnapshot.java b/subprojects/core/src/main/java/org/gradle/api/internal/changedetection/state/DefaultFileCollectionSnapshot.java
+index e8705de8f06..a0f0af32ca3 100644
+--- a/subprojects/core/src/main/java/org/gradle/api/internal/changedetection/state/DefaultFileCollectionSnapshot.java
++++ b/subprojects/core/src/main/java/org/gradle/api/internal/changedetection/state/DefaultFileCollectionSnapshot.java
+@@ -36,6 +36,7 @@ import org.gradle.internal.serialize.HashCodeSerializer;
+ 
+ import javax.annotation.Nullable;
+ import java.io.File;
++import java.util.Collections;
+ import java.util.Iterator;
+ import java.util.List;
+ import java.util.Map;
+@@ -91,7 +92,7 @@ public class DefaultFileCollectionSnapshot implements FileCollectionSnapshot {
+     @Override
+     public Iterator<TaskStateChange> iterateContentChangesSince(FileCollectionSnapshot oldSnapshot, String fileType, boolean includeAdded) {
+         if (includeAdded && hashCode != null && getHash().equals(oldSnapshot.getHash())) {
+-            return Iterators.emptyIterator();
++            return Collections.emptyIterator();
+         }
+         return compareStrategy.iterateContentChangesSince(snapshots, oldSnapshot.getSnapshots(), fileType, pathIsAbsolute, includeAdded);
+     }
+diff --git a/subprojects/core/src/main/java/org/gradle/api/internal/changedetection/state/OrderInsensitiveTaskFilePropertyCompareStrategy.java b/subprojects/core/src/main/java/org/gradle/api/internal/changedetection/state/OrderInsensitiveTaskFilePropertyCompareStrategy.java
+index c885de8df78..3fdf6e3cf34 100644
+--- a/subprojects/core/src/main/java/org/gradle/api/internal/changedetection/state/OrderInsensitiveTaskFilePropertyCompareStrategy.java
++++ b/subprojects/core/src/main/java/org/gradle/api/internal/changedetection/state/OrderInsensitiveTaskFilePropertyCompareStrategy.java
+@@ -17,7 +17,6 @@
+ package org.gradle.api.internal.changedetection.state;
+ 
+ import com.google.common.collect.AbstractIterator;
+-import com.google.common.collect.Iterators;
+ import com.google.common.collect.ListMultimap;
+ import com.google.common.collect.Lists;
+ import com.google.common.collect.MultimapBuilder;
+@@ -143,7 +142,7 @@ class OrderInsensitiveTaskFilePropertyCompareStrategy implements TaskFilePropert
+                 // Create a single iterator to use for all of the still unaccounted files
+                 if (unaccountedForPreviousSnapshotsIterator == null) {
+                     if (unaccountedForPreviousSnapshots.isEmpty()) {
+-                        unaccountedForPreviousSnapshotsIterator = Iterators.emptyIterator();
++                        unaccountedForPreviousSnapshotsIterator = Collections.emptyIterator();
+                     } else {
+                         List<Entry<NormalizedFileSnapshot, IncrementalFileSnapshotWithAbsolutePath>> entries = Lists.newArrayList(unaccountedForPreviousSnapshots.entries());
+                         Collections.sort(entries, ENTRY_COMPARATOR);
+diff --git a/subprojects/core/src/main/java/org/gradle/api/internal/changedetection/state/TaskFilePropertyCompareStrategy.java b/subprojects/core/src/main/java/org/gradle/api/internal/changedetection/state/TaskFilePropertyCompareStrategy.java
+index fc58acae02a..3f3fda9cf3e 100644
+--- a/subprojects/core/src/main/java/org/gradle/api/internal/changedetection/state/TaskFilePropertyCompareStrategy.java
++++ b/subprojects/core/src/main/java/org/gradle/api/internal/changedetection/state/TaskFilePropertyCompareStrategy.java
+@@ -27,7 +27,7 @@ import java.util.Iterator;
+ import java.util.Map;
+ import java.util.Map.Entry;
+ 
+-import static com.google.common.collect.Iterators.emptyIterator;
++import static java.util.Collections.emptyIterator;
+ import static com.google.common.collect.Iterators.singletonIterator;
+ 
+ public enum TaskFilePropertyCompareStrategy {
+diff --git a/subprojects/core/src/main/java/org/gradle/api/internal/tasks/CompositeTaskOutputPropertySpec.java b/subprojects/core/src/main/java/org/gradle/api/internal/tasks/CompositeTaskOutputPropertySpec.java
+index 36b6a56916e..bc6a47cf7ae 100644
+--- a/subprojects/core/src/main/java/org/gradle/api/internal/tasks/CompositeTaskOutputPropertySpec.java
++++ b/subprojects/core/src/main/java/org/gradle/api/internal/tasks/CompositeTaskOutputPropertySpec.java
+@@ -17,7 +17,6 @@
+ package org.gradle.api.internal.tasks;
+ 
+ import com.google.common.collect.AbstractIterator;
+-import com.google.common.collect.Iterators;
+ import com.google.common.collect.Lists;
+ import org.gradle.api.NonNullApi;
+ import org.gradle.api.internal.file.FileCollectionInternal;
+@@ -28,6 +27,7 @@ import org.gradle.api.internal.file.collections.DirectoryFileTree;
+ import org.gradle.util.DeferredUtil;
+ 
+ import java.io.File;
++import java.util.Collections;
+ import java.util.Iterator;
+ import java.util.List;
+ import java.util.Map;
+@@ -56,7 +56,7 @@ public class CompositeTaskOutputPropertySpec extends AbstractTaskOutputPropertyS
+     public Iterator<TaskOutputFilePropertySpec> resolveToOutputProperties() {
+         Object unpackedPaths = DeferredUtil.unpack(paths);
+         if (unpackedPaths == null) {
+-            return Iterators.emptyIterator();
++            return Collections.emptyIterator();
+         } else if (unpackedPaths instanceof Map) {
+             final Iterator<? extends Map.Entry<?, ?>> iterator = ((Map<?, ?>) unpackedPaths).entrySet().iterator();
+             return new AbstractIterator<TaskOutputFilePropertySpec>() {
+diff --git a/subprojects/core/src/main/java/org/gradle/api/internal/tasks/DefaultTaskOutputs.java b/subprojects/core/src/main/java/org/gradle/api/internal/tasks/DefaultTaskOutputs.java
+index 8920be58787..fb9cfa9a363 100644
+--- a/subprojects/core/src/main/java/org/gradle/api/internal/tasks/DefaultTaskOutputs.java
++++ b/subprojects/core/src/main/java/org/gradle/api/internal/tasks/DefaultTaskOutputs.java
+@@ -41,6 +41,7 @@ import org.gradle.api.tasks.TaskOutputFilePropertyBuilder;
+ 
+ import javax.annotation.Nullable;
+ import java.io.File;
++import java.util.Collections;
+ import java.util.Iterator;
+ import java.util.LinkedList;
+ import java.util.List;
+@@ -203,7 +204,7 @@ public class DefaultTaskOutputs implements TaskOutputsInternal {
+                         if (propertySpec instanceof CacheableTaskOutputFilePropertySpec) {
+                             File outputFile = ((CacheableTaskOutputFilePropertySpec) propertySpec).getOutputFile();
+                             if (outputFile == null) {
+-                                return Iterators.emptyIterator();
++                                return Collections.emptyIterator();
+                             }
+                         }
+                         return Iterators.singletonIterator((TaskOutputFilePropertySpec) propertySpec);
+diff --git a/subprojects/core/src/main/java/org/gradle/plugin/management/internal/DefaultPluginRequests.java b/subprojects/core/src/main/java/org/gradle/plugin/management/internal/DefaultPluginRequests.java
+index 6e7cf364a0a..c43282a1e72 100644
+--- a/subprojects/core/src/main/java/org/gradle/plugin/management/internal/DefaultPluginRequests.java
++++ b/subprojects/core/src/main/java/org/gradle/plugin/management/internal/DefaultPluginRequests.java
+@@ -18,6 +18,7 @@ package org.gradle.plugin.management.internal;
+ 
+ import com.google.common.collect.Iterators;
+ 
++import java.util.Collections;
+ import java.util.Iterator;
+ import java.util.List;
+ 
+@@ -60,7 +61,7 @@ public class DefaultPluginRequests implements PluginRequests {
+ 
+         @Override
+         public Iterator<PluginRequestInternal> iterator() {
+-            return Iterators.emptyIterator();
++            return Collections.emptyIterator();
+         }
+     }
+ }
+-- 
+2.17.2
+

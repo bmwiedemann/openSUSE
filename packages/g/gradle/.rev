@@ -54,4 +54,12 @@
     <comment></comment>
     <requestid>731532</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a32249f6f753eb22ea734c10e58831ae</srcmd5>
+    <version>4.4.1</version>
+    <time>1574167494</time>
+    <user>dimstar_suse</user>
+    <comment>Build a proper gradle 4.4.1 instead of just a little api subset</comment>
+    <requestid>749228</requestid>
+  </revision>
 </revisionlist>

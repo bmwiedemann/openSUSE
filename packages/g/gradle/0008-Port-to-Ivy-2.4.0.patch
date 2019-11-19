@@ -1,0 +1,25 @@
+From 9273768537f428d78e178b328d61c85746ea800e Mon Sep 17 00:00:00 2001
+From: Mikolaj Izdebski <mizdebsk@redhat.com>
+Date: Mon, 13 Apr 2015 12:27:00 +0200
+Subject: [PATCH 08/17] Port to Ivy 2.4.0
+
+---
+ .../ivyresolve/parser/IvyXmlModuleDescriptorParser.java         | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/subprojects/dependency-management/src/main/java/org/gradle/api/internal/artifacts/ivyservice/ivyresolve/parser/IvyXmlModuleDescriptorParser.java b/subprojects/dependency-management/src/main/java/org/gradle/api/internal/artifacts/ivyservice/ivyresolve/parser/IvyXmlModuleDescriptorParser.java
+index 9a86d9cb183..c29f1952eb7 100644
+--- a/subprojects/dependency-management/src/main/java/org/gradle/api/internal/artifacts/ivyservice/ivyresolve/parser/IvyXmlModuleDescriptorParser.java
++++ b/subprojects/dependency-management/src/main/java/org/gradle/api/internal/artifacts/ivyservice/ivyresolve/parser/IvyXmlModuleDescriptorParser.java
+@@ -1207,7 +1207,7 @@ public class IvyXmlModuleDescriptorParser extends AbstractModuleDescriptorParser
+                 buffer = null;
+                 state = State.INFO;
+             } else if (state == State.EXTRA_INFO) {
+-                getMd().getExtraInfo().put(new NamespaceId(uri, localName), buffer == null ? "" : buffer.toString());
++                ((Map)getMd().getExtraInfo()).put(new NamespaceId(uri, localName), buffer == null ? "" : buffer.toString());
+                 buffer = null;
+                 state = State.INFO;
+             } else if (state == State.DESCRIPTION) {
+-- 
+2.17.2
+

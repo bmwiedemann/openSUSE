@@ -1,0 +1,54 @@
+From 930ef37f4fe3be61982d5ead5a8620cb65335108 Mon Sep 17 00:00:00 2001
+From: Michael Simacek <msimacek@redhat.com>
+Date: Mon, 2 Oct 2017 17:33:05 +0300
+Subject: [PATCH 13/17] Add missing transitive dependencies
+
+---
+ gradle/dependencies.gradle | 17 +++++++++++++----
+ 1 file changed, 13 insertions(+), 4 deletions(-)
+
+diff --git a/gradle/dependencies.gradle b/gradle/dependencies.gradle
+index 96ff6f58fee..bbf10217798 100755
+--- a/gradle/dependencies.gradle
++++ b/gradle/dependencies.gradle
+@@ -37,7 +37,10 @@ libraries.ant = dependencies.module("org.apache.ant:ant:${versions.ant}") {
+ 
+ libraries.asm =  'org.ow2.asm:asm-debug-all:6.0_ALPHA'
+ libraries.cglib = 'cglib:cglib:3.2.5'
+-libraries.bndlib = dependencies.module('biz.aQute.bnd:biz.aQute.bndlib:3.4.0')
++libraries.bndlib = dependencies.module('biz.aQute.bnd:bndlib:3.4.0') {
++    dependency 'biz.aQute.bnd:aQute.libg:3.4.0@jar'
++    dependency 'biz.aQute.bnd:biz.aQute.bnd.annotation:3.4.0@jar'
++}
+ libraries.commons_cli = 'commons-cli:commons-cli:1.2@jar'
+ libraries.commons_io = dependencies.module(versions.commons_io)
+ libraries.commons_lang = 'commons-lang:commons-lang:2.6@jar'
+@@ -102,8 +105,10 @@ libraries += [
+     equalsVerifier: 'nl.jqno.equalsverifier:equalsverifier:2.1.6',
+     xbean: 'org.apache.xbean:xbean-reflect:3.4@jar', //required by maven3 classes
+     nativePlatform: 'net.rubygrapefruit:native-platform:0.14',
+-    jansi: dependencies.module('org.fusesource.jansi:jansi:1.14'),
+-    xerces: "xerces:xercesImpl:2.11.0",
++    jansi: dependencies.module('org.fusesource.jansi:jansi:1.14') {
++        dependency "org.fusesource.jansi:jansi-native:1.14"
++    },
++    xerces: "xerces:xercesImpl:2.9.1",
+     objenesis: 'org.objenesis:objenesis:1.2@jar',
+     jsoup: 'org.jsoup:jsoup:1.6.3',
+     xmlApis: 'xml-apis:xml-apis:1.4.01',
+@@ -219,7 +224,11 @@ libraries.awsS3 = [
+ ] + libraries.commons_httpclient + libraries.joda
+ 
+ // keep in sync with ScalaLanguagePlugin code
+-libraries.zinc = 'com.typesafe.zinc:zinc:0.3.15'
++libraries.zinc = dependencies.module('com.typesafe.zinc:zinc:0.3.15') {
++    dependency "org.scala-sbt:compile"
++    dependency "org.scala-sbt:compiler-integration"
++    dependency "org.scala-sbt:incremental-compiler"
++}
+ 
+ libraries.gcs = [
+         dependencies.create('com.google.apis:google-api-services-storage:v1-rev78-1.22.0') {
+-- 
+2.17.2
+
