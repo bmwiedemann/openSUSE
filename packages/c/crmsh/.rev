@@ -1905,4 +1905,12 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>747268</requestid>
   </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>b96a3c4ab33bea328a65b2f1d7b4fe7f</srcmd5>
+    <version>4.1.0+git.1573547462.281747a7</version>
+    <time>1574164784</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>749464</requestid>
+  </revision>
 </revisionlist>
