@@ -460,6 +460,7 @@ unsorted:
   - ant-contrib-javadoc 
   - ant-contrib-manual 
   - ant-findbugs 
+  - ant-imageio 
   - ant-javamail 
   - ant-jdepend 
   - ant-jmf 
@@ -473,6 +474,7 @@ unsorted:
   - ant-scripts 
   - ant-swing 
   - ant-testutil 
+  - ant-xz 
   - anthy 
   - anthy-devel 
   - antimicro 
@@ -3020,6 +3022,8 @@ unsorted:
   - fluxbox-styles-upstream 
   - flxmlrpc-devel 
   - fly 
+  - fmpp 
+  - fmpp-javadoc 
   - fmt-devel 
   - fnotifystat 
   - focuswriter 
@@ -4292,6 +4296,7 @@ unsorted:
   - glade-catalog-gtksourceview4 
   - glade-catalog-libhandy 
   - glade-catalog-libpeas 
+  - glade-catalog-v3270 
   - glade-sharp2 
   - glassfish-annotation-api 
   - glassfish-annotation-api-javadoc 
@@ -5464,8 +5469,6 @@ unsorted:
   - imagej 
   - imagewriter 
   - imake 
-  - imap 
-  - imap-devel 
   - imapfilter 
   - imb-gnu-mpich-hpc 
   - imb-gnu-mvapich2-hpc 
@@ -5767,6 +5770,8 @@ unsorted:
   - jbigkit 
   - jboss-interceptors-1.2-api 
   - jboss-interceptors-1.2-api-javadoc 
+  - jboss-logging 
+  - jboss-logging-javadoc 
   - jboss-logmanager 
   - jboss-logmanager-javadoc 
   - jboss-marshalling 
@@ -6882,7 +6887,7 @@ unsorted:
   - leveldb-devel 
   - leveldb-devel-static 
   - lhasa-devel 
-  - lib3270-5_1 
+  - lib3270-5_2 
   - lib3270-devel 
   - lib3ds-1-3 
   - lib3ds-devel 
@@ -6970,7 +6975,7 @@ unsorted:
   - libHYPRE_2_17_0-gnu-openmpi1-hpc 
   - libHYPRE_2_17_0-gnu-openmpi2-hpc 
   - libHYPRE_2_17_0-gnu-openmpi3-hpc 
-  - libHalf24-32bit: [x86_64] 
+  - libHalf-2_4-24-32bit: [x86_64] 
   - libHepMC3-1 
   - libHepMC4 
   - libICE-devel-32bit: [x86_64] 
@@ -6980,15 +6985,15 @@ unsorted:
   - libIL1 
   - libIccXML-devel 
   - libIccXML2 
-  - libIex-2_3-24-32bit: [x86_64] 
-  - libIexMath-2_3-24 
-  - libIexMath-2_3-24-32bit: [x86_64] 
-  - libIlmImf-2_3-24-32bit: [x86_64] 
-  - libIlmImfUtil-2_3-24 
-  - libIlmImfUtil-2_3-24-32bit: [x86_64] 
-  - libIlmThread-2_3-24-32bit: [x86_64] 
-  - libImath-2_3-24 
-  - libImath-2_3-24-32bit: [x86_64] 
+  - libIex-2_4-24-32bit: [x86_64] 
+  - libIexMath-2_4-24 
+  - libIexMath-2_4-24-32bit: [x86_64] 
+  - libIlmImf-2_4-24-32bit: [x86_64] 
+  - libIlmImfUtil-2_4-24 
+  - libIlmImfUtil-2_4-24-32bit: [x86_64] 
+  - libIlmThread-2_4-24-32bit: [x86_64] 
+  - libImath-2_4-24 
+  - libImath-2_4-24-32bit: [x86_64] 
   - libIrrlicht1_8 
   - libKDb3-4 
   - libKF5Activities5-32bit: [x86_64] 
@@ -7984,7 +7989,6 @@ unsorted:
   - libbz2-devel-32bit: [x86_64] 
   - libbzrtp0 
   - libbzrtp0-32bit: [x86_64] 
-  - libc-client2007f_suse 
   - libcaca-devel 
   - libcaca-ruby 
   - libcaca0-32bit: [x86_64] 
@@ -8028,6 +8032,7 @@ unsorted:
   - libcap-progs 
   - libcap1 
   - libcap1-32bit: [x86_64] 
+  - libcap2-32bit: [x86_64] 
   - libcapi20-2 
   - libcapi20-2-32bit: [x86_64] 
   - libcapi20-3-32bit: [x86_64] 
@@ -9751,7 +9756,6 @@ unsorted:
   - liblscp6 
   - libltc-devel 
   - libltc11 
-  - liblttng-ctl0 
   - liblttng-ust-ctl4 
   - liblttng-ust-python-agent0 
   - liblttng-ust0: [i586] 
@@ -10676,7 +10680,7 @@ unsorted:
   - libpurple-plugin-gnome-keyring 
   - libpurple-plugin-pack-extras 
   - libpurple-plugin-sametime 
-  - libpw3270-5_1 
+  - libpw3270-5_2 
   - libpwquality-devel 
   - libpwquality-tools 
   - libpythia8 
@@ -10888,8 +10892,8 @@ unsorted:
   - libqxmledit0-32bit: [x86_64] 
   - libqxmpp-devel 
   - libqxmpp-doc 
-  - libqxmpp0 
-  - libqxmpp0-32bit: [x86_64] 
+  - libqxmpp2 
+  - libqxmpp2-32bit: [x86_64] 
   - libqxp-devel 
   - libqxp-doc 
   - libqxp-tools 
@@ -11715,6 +11719,8 @@ unsorted:
   - libuuid-devel-static 
   - libuv-devel 
   - libuwac0-0 
+  - libv3270-5_2 
+  - libv3270-devel 
   - libv4l-32bit: [x86_64] 
   - libv4l-devel 
   - libv4l-devel-32bit: [x86_64] 
@@ -12509,8 +12515,6 @@ unsorted:
   - lsyncd 
   - ltrace-32bit: [x86_64] 
   - lttng-modules-kmp-pae: [i586] 
-  - lttng-tools 
-  - lttng-tools-devel 
   - lttng-ust-devel 
   - lttng-ust-doc 
   - ltxml 
@@ -12690,7 +12694,6 @@ unsorted:
   - mailnag 
   - mailnag-lang 
   - mailprocessing 
-  - mailsync 
   - mailutils-devel 
   - mailutils-imap4d 
   - mailutils-mh 
@@ -13982,6 +13985,10 @@ unsorted:
   - nettle 
   - netty 
   - netty-javadoc 
+  - netty-tcnative 
+  - netty-tcnative-javadoc 
+  - netty3 
+  - netty3-javadoc 
   - network-autoconfig 
   - neverball 
   - neverball-doc 
@@ -17080,8 +17087,8 @@ unsorted:
   - putty 
   - pv 
   - pw3270 
+  - pw3270-branding 
   - pw3270-devel 
-  - pw3270-plugin-dbus 
   - py-fishcrypt 
   - pybugz-common 
   - pydf 
@@ -22365,7 +22372,6 @@ unsorted:
   - qprint 
   - qps 
   - qps-lang 
-  - qputty-qt5 
   - qqc2-desktop-style-devel 
   - qqwing 
   - qqwing-devel 
@@ -23490,7 +23496,6 @@ unsorted:
   - s3fs 
   - sablot-devel 
   - sac-javadoc 
-  - safte-monitor 
   - saidar 
   - sakura 
   - sakura-lang 
@@ -23560,6 +23565,8 @@ unsorted:
   - sbd 
   - sbd-devel 
   - sbiload 
+  - sbinary 
+  - sbinary-javadoc 
   - sbl-orca 
   - sblim-cim-client2 
   - sblim-cim-client2-javadoc 
@@ -23578,6 +23585,8 @@ unsorted:
   - sblim-testsuite 
   - sblim-tools-libra-devel 
   - sblim-wbemcli 
+  - sbt 
+  - sbt-bootstrap 
   - sc 
   - sc-controller 
   - sca-appliance-agent 
@@ -33531,6 +33540,7 @@ unsorted:
   - zim 
   - zim-lang 
   - zimg-devel 
+  - zinc 
   - zinnia-devel 
   - zipkin-cpp-opentracing-devel 
   - zipkin-cpp-opentracing-devel-static 
