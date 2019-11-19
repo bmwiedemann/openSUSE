@@ -34,4 +34,14 @@ sharing capabilities.</comment>
 </comment>
     <requestid>738819</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>50df1414da4447836b6bde6139da9e76</srcmd5>
+    <version>2.4.0</version>
+    <time>1574164749</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.0
+  * Use tmate.conf instead of tmux.conf
+</comment>
+    <requestid>749378</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package tmate
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           tmate
-Version:        2.3.1
+Version:        2.4.0
 Release:        0
 Summary:        Instant terminal sharing
 License:        MIT
 Group:          Productivity/Networking/Other
-Url:            https://www.tmate.io
+URL:            https://www.tmate.io
 Source:         https://github.com/tmate-io/tmate/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
