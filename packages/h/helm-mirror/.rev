@@ -58,4 +58,12 @@ fix bsc#1120762</comment>
     <comment></comment>
     <requestid>735896</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f00cb1ac964880b810541b2454f760d4</srcmd5>
+    <version>0.3.1</version>
+    <time>1574164758</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749418</requestid>
+  </revision>
 </revisionlist>

@@ -2,8 +2,8 @@
   <service name="tar_scm" mode="disabled">
     <param name="url">https://github.com/openSUSE/helm-mirror</param>
     <param name="scm">git</param>
-    <param name="versionformat">0.3.0</param>
-    <param name="revision">v0.3.0</param>
+    <param name="versionformat">0.3.1</param>
+    <param name="revision">v0.3.1</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">helm-mirror-*.tar</param>
@@ -11,5 +11,7 @@
   </service>
   <service name="set_version" mode="disabled">
     <param name="basename">helm-mirror</param>
+  </service>
+  <service name="go_modules" mode="disabled">
   </service>
 </services>

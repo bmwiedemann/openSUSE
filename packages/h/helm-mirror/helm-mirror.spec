@@ -20,13 +20,16 @@
 %define project github.com/openSUSE/helm-mirror
 
 Name:           helm-mirror
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        Tool to mirror Helm repositories
 License:        Apache-2.0
 Group:          System/Management
 Url:            https://github.com/openSUSE/helm-mirror
 Source:         %{name}-%{version}.tar.gz
+Source1:        vendor.tar.gz
+BuildRequires:  fdupes
+BuildRequires:  git
 BuildRequires:  go >= 1.11.3
 BuildRequires:  go-go-md2man
 BuildRequires:  golang-packaging
@@ -40,6 +43,7 @@ can extract used container images.
 
 %prep
 %setup -q
+%setup -q -T -D -a 1
 
 %build
 
@@ -50,12 +54,14 @@ mkdir -pv $HOME/go/src/%{project}
 rm -rf $HOME/go/src/%{project}/*
 cp -avr * $HOME/go/src/%{project}
 
-export VERSION=$(sed -n -e 's/version:[ "]*\([^"]*\).*/\1/p' plugin.yaml)
-if [ "$VERSION" != "%{version}" ]; then
-  VERSION="%{version}_suse"
-fi
+export VERSION=%{version}
+export COMMIT=%{commit}
+go build  \
+   -mod=vendor \
+   -buildmode=pie \
+   -ldflags "-X github.com/openSUSE/helm-mirror/cmd.version=$VERSION -X github.com/openSUSE/helm-mirror/cmd.gitCommit=$COMMIT" \
+   -o ./bin/helm-mirror ;
 
-make VERSION="$VERSION" mirror
 make doc
 
 %install
@@ -66,6 +72,8 @@ install -D -m 0755 ./bin/helm-mirror "%{buildroot}/%{_bindir}/%{name}"
 for file in doc/man/*.1; do
   install -D -m 0644 $file "%{buildroot}/%{_mandir}/man1/$(basename $file)"
 done
+
+%fdupes %{buildroot}
 
 %files
 %defattr(-,root,root)
