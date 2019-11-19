@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Mon Nov 11 12:12:22 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of eclipse-emf 2.15.0~gitd1e5fdd as _multibuild
+  package in order to allow bootstrapping

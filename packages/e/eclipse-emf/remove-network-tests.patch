@@ -1,0 +1,14 @@
+--- org.eclipse.emf/tests/org.eclipse.emf.test.core/src/org/eclipse/emf/test/core/ecore/URIConverterTest.java.orig	2018-05-10 14:41:06.000058437 +0100
++++ org.eclipse.emf/tests/org.eclipse.emf.test.core/src/org/eclipse/emf/test/core/ecore/URIConverterTest.java	2018-05-10 14:41:11.426036461 +0100
+@@ -77,11 +77,6 @@
+     assertEquals(contentsFromUncompressedFile, contents);
+     new File(URI.createURI(uri.authority().replaceAll("!", "")).toFileString()).delete();
+ 
+-    // Reads the data.zip file from our git repository using http
+-    //
+-    uri = URI.createURI("archive:http://git.eclipse.org/c/emf/org.eclipse.emf.git/plain/tests/org.eclipse.emf.test.core/data/data.zip!/%66ile.txt");
+-    contents = readFile(uriConverter.createInputStream(uri));
+-    assertEquals(contentsFromUncompressedFile, contents);
+   }
+ 
+   protected String readFile(InputStream inputStream) throws IOException

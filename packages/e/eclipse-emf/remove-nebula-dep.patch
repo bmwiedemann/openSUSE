@@ -1,0 +1,12 @@
+--- org.eclipse.emf/plugins/org.eclipse.emf.edit.ui/META-INF/MANIFEST.MF.orig	2018-05-09 19:41:37.559144126 +0100
++++ org.eclipse.emf/plugins/org.eclipse.emf.edit.ui/META-INF/MANIFEST.MF	2018-05-09 19:41:44.098112719 +0100
+@@ -22,8 +22,7 @@
+  org.eclipse.emf.common.ui;bundle-version="[2.14.0,3.0.0)";visibility:=reexport,
+  org.eclipse.core.resources;bundle-version="[3.6.0,4.0.0)";resolution:=optional,
+  org.eclipse.ui.ide;bundle-version="[3.6.0,4.0.0)";resolution:=optional,
+- org.eclipse.jface.text;bundle-version="[3.6.0,4.0.0)";resolution:=optional,
+- org.eclipse.nebula.widgets.cdatetime;bundle-version="[1.0.0,2.0.0)";resolution:=optional;x-installation:=greedy
++ org.eclipse.jface.text;bundle-version="[3.6.0,4.0.0)";resolution:=optional
+ Eclipse-LazyStart: true
+ Bundle-ActivationPolicy: lazy
+ Automatic-Module-Name: org.eclipse.emf.edit.ui

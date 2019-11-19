@@ -1,0 +1,32 @@
+--- org.eclipse.emf/plugins/org.eclipse.emf.ecore/META-INF/MANIFEST.MF.orig	2018-05-10 16:02:28.482659996 +0100
++++ org.eclipse.emf/plugins/org.eclipse.emf.ecore/META-INF/MANIFEST.MF	2018-05-10 16:13:55.087669818 +0100
+@@ -26,12 +26,7 @@
+  org.eclipse.core.resources;bundle-version="[3.6.0,4.0.0)";resolution:=optional
+ Import-Package: javax.crypto,
+  javax.crypto.spec,
+- javax.xml.datatype,
+- javax.xml.namespace,
+- javax.xml.parsers,
+- org.osgi.framework;version="[1.5.0,2.0.0)",
+- org.xml.sax,
+- org.xml.sax.helpers
++ org.osgi.framework;version="[1.5.0,2.0.0)"
+ Eclipse-BuddyPolicy: dependent
+ Eclipse-LazyStart: true
+ Bundle-ActivationPolicy: lazy
+--- org.eclipse.emf/plugins/org.eclipse.emf.ecore.xmi/META-INF/MANIFEST.MF.orig	2018-05-10 16:03:20.826431277 +0100
++++ org.eclipse.emf/plugins/org.eclipse.emf.ecore.xmi/META-INF/MANIFEST.MF	2018-05-10 16:13:18.912825246 +0100
+@@ -14,12 +14,6 @@
+ Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.6.0,4.0.0)";resolution:=optional;x-installation:=greedy,
+  org.eclipse.emf.ecore;bundle-version="[2.15.0,3.0.0)";visibility:=reexport
+ Eclipse-LazyStart: true
+-Import-Package: javax.xml.namespace,
+- javax.xml.parsers,
+- org.osgi.framework;version="[1.5.0,2.0.0)",
+- org.w3c.dom,
+- org.xml.sax,
+- org.xml.sax.ext,
+- org.xml.sax.helpers
++Import-Package: org.osgi.framework;version="[1.5.0,2.0.0)"
+ Bundle-ActivationPolicy: lazy
+ Automatic-Module-Name: org.eclipse.emf.ecore.xmi
