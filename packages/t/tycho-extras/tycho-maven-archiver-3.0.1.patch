@@ -1,0 +1,22 @@
+--- tycho-custom-bundle-plugin/src/main/java/org/eclipse/tycho/extras/custombundle/CustomBundleMojo.java.orig	2016-04-14 17:47:08.696823870 +0100
++++ tycho-custom-bundle-plugin/src/main/java/org/eclipse/tycho/extras/custombundle/CustomBundleMojo.java	2016-04-14 17:47:44.587408737 +0100
+@@ -108,7 +108,7 @@
+                 archiver.getArchiver().addFileSet(fileSet);
+             }
+ 
+-            archiver.createArchive(project, archive);
++            archiver.createArchive(null, project, archive);
+ 
+             projectHelper.attachArtifact(project, outputJarFile, classifier);
+         } catch (Exception e) {
+--- tycho-source-feature-plugin/src/main/java/org/eclipse/tycho/extras/sourcefeature/SourceFeatureMojo.java.orig	2016-04-14 17:55:04.755317466 +0100
++++ tycho-source-feature-plugin/src/main/java/org/eclipse/tycho/extras/sourcefeature/SourceFeatureMojo.java	2016-04-14 17:55:34.339975270 +0100
+@@ -221,7 +221,7 @@
+                 archiver.getArchiver()
+                         .addArchivedFileSet(licenseFeatureHelper.getLicenseFeatureFileSet(licenseFeature));
+             }
+-            archiver.createArchive(project, archive);
++            archiver.createArchive(null, project, archive);
+ 
+             projectHelper.attachArtifact(project, outputJarFile, SOURCES_FEATURE_CLASSIFIER);
+         } catch (MojoExecutionException e) {

@@ -1,0 +1,52 @@
+From 1136a52447b28da1dfa29c46b8ba025435a798be Mon Sep 17 00:00:00 2001
+From: Roland Grunberg <rgrunber@redhat.com>
+Date: Mon, 6 May 2013 14:20:58 -0400
+Subject: [PATCH] Use custom resolver for tycho-eclipserun-plugin.
+
+Add various system local OSGi bundle locations to the target platform
+used by tycho-eclipserun-plugin.
+
+Change-Id: Ifd0aae3f32c8077cd0ae33e70f40698c1129788d
+---
+ tycho-eclipserun-plugin/pom.xml                                |  5 +++++
+ .../org/eclipse/tycho/extras/eclipserun/EclipseRunMojo.java    | 10 ++++++++++
+ 2 files changed, 15 insertions(+)
+
+diff --git a/tycho-eclipserun-plugin/src/main/java/org/eclipse/tycho/extras/eclipserun/EclipseRunMojo.java b/tycho-eclipserun-plugin/src/main/java/org/eclipse/tycho/extras/eclipserun/EclipseRunMojo.java
+index 4c4baf0..18db847 100644
+--- a/tycho-eclipserun-plugin/src/main/java/org/eclipse/tycho/extras/eclipserun/EclipseRunMojo.java
++++ b/tycho-eclipserun-plugin/src/main/java/org/eclipse/tycho/extras/eclipserun/EclipseRunMojo.java
+@@ -13,6 +13,7 @@ package org.eclipse.tycho.extras.eclipserun;
+ 
+ import java.io.File;
+ import java.net.MalformedURLException;
++import java.net.URI;
+ import java.util.ArrayList;
+ import java.util.List;
+ import java.util.Map;
+@@ -52,6 +53,7 @@ import org.eclipse.tycho.p2.resolver.facade.P2Resolver;
+ import org.eclipse.tycho.p2.resolver.facade.P2ResolverFactory;
+ import org.eclipse.tycho.p2.target.facade.TargetPlatformConfigurationStub;
+ import org.eclipse.tycho.plugins.p2.extras.Repository;
++import org.fedoraproject.p2.EclipseSystemLayout;
+ 
+ /**
+  * Launch an eclipse process with arbitrary commandline arguments. The eclipse installation is
+@@ -225,6 +227,14 @@ public class EclipseRunMojo extends AbstractMojo {
+         TargetPlatformConfigurationStub tpConfiguration = new TargetPlatformConfigurationStub();
+         // we want to resolve from remote repos only
+         tpConfiguration.setForceIgnoreLocalArtifacts(true);
++
++        // Add Fedora Local P2 Repository when running in local mode
++        if (System.getProperty("TYCHO_MVN_LOCAL") != null || System.getProperty("TYCHO_MVN_RPMBUILD") != null) {
++            for (URI uri : EclipseSystemLayout.getRepositories()) {
++                tpConfiguration.addP2Repository(new MavenRepositoryLocation(uri.getPath(), uri));
++            }
++        }
++
+         for (Repository repository : repositories) {
+             tpConfiguration.addP2Repository(new MavenRepositoryLocation(repository.getId(), repository.getLocation()));
+         }
+-- 
+1.9.3
+

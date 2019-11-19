@@ -1,0 +1,109 @@
+From d33893c3e3ea8f4be7636439a8f9011bb179a8e9 Mon Sep 17 00:00:00 2001
+From: Mikolaj Izdebski <mizdebsk@redhat.com>
+Date: Mon, 13 Jun 2016 13:14:03 +0200
+Subject: [PATCH] Set location for pomless models
+
+Core Maven model reader sets location and some tools depend on these
+values.  These tools won't work with tycho-pomless unless it also sets
+the location.
+
+Signed-off-by: Mikolaj Izdebski <mizdebsk@redhat.com>
+Change-Id: I4da47c995c1333db0bb0ddb31f7309b08bf5ff39
+---
+
+diff --git a/tycho-pomless/src/main/java/org/eclipse/tycho/pomless/TychoModelReader.java b/tycho-pomless/src/main/java/org/eclipse/tycho/pomless/TychoModelReader.java
+index 349c776..e8a4f92 100644
+--- a/tycho-pomless/src/main/java/org/eclipse/tycho/pomless/TychoModelReader.java
++++ b/tycho-pomless/src/main/java/org/eclipse/tycho/pomless/TychoModelReader.java
+@@ -26,6 +26,8 @@
+ import javax.xml.parsers.DocumentBuilderFactory;
+ import javax.xml.parsers.ParserConfigurationException;
+ 
++import org.apache.maven.model.InputLocation;
++import org.apache.maven.model.InputSource;
+ import org.apache.maven.model.Build;
+ import org.apache.maven.model.Model;
+ import org.apache.maven.model.Parent;
+@@ -90,6 +92,7 @@
+         String bundleVersion = getRequiredHeaderValue("Bundle-Version", headers, manifestFile);
+         model.setVersion(getPomVersion(bundleVersion));
+         model.setPackaging(getPackagingType(bundleSymbolicName));
++        setLocation(model, manifestFile);
+         return model;
+     }
+ 
+@@ -150,6 +153,7 @@
+         }
+         model.setVersion(getPomVersion(versionNode.getValue()));
+         // groupId is inherited from parent pom
++        setLocation(model, xmlFile);
+         return model;
+     }
+ 
+@@ -247,4 +251,11 @@
+         parentReference.setVersion(version);
+         return parentReference;
+     }
++
++    private void setLocation(Model model, File modelSource) {
++        InputSource inputSource = new InputSource();
++        inputSource.setLocation(modelSource.toString());
++        inputSource.setModelId(model.getParent().getGroupId() + ":" + model.getArtifactId() + ":" + model.getVersion());
++        model.setLocation("", new InputLocation(0, 0, inputSource));
++    }
+ }
+diff --git a/tycho-pomless/src/test/java/org/eclipse/tycho/pomless/TychoModelReaderTest.java b/tycho-pomless/src/test/java/org/eclipse/tycho/pomless/TychoModelReaderTest.java
+index 05cf0c2..a40e738 100644
+--- a/tycho-pomless/src/test/java/org/eclipse/tycho/pomless/TychoModelReaderTest.java
++++ b/tycho-pomless/src/test/java/org/eclipse/tycho/pomless/TychoModelReaderTest.java
+@@ -19,6 +19,8 @@
+ import java.util.HashMap;
+ import java.util.Map;
+ 
++import org.apache.maven.model.InputLocation;
++import org.apache.maven.model.InputSource;
+ import org.apache.maven.model.Model;
+ import org.apache.maven.model.Parent;
+ import org.apache.maven.model.building.ModelProcessor;
+@@ -45,6 +47,7 @@
+         assertEquals("0.1.0-SNAPSHOT", model.getVersion());
+         assertEquals("eclipse-plugin", model.getPackaging());
+         assertParent(model.getParent());
++        assertLocation("bundle1/META-INF/MANIFEST.MF", model.getLocation(""));
+     }
+ 
+     @Test
+@@ -55,6 +58,7 @@
+         assertEquals("1.0.1", model.getVersion());
+         assertEquals("eclipse-test-plugin", model.getPackaging());
+         assertParent(model.getParent());
++        assertLocation("bundle1.tests/META-INF/MANIFEST.MF", model.getLocation(""));
+     }
+ 
+     @Test
+@@ -65,6 +69,7 @@
+         assertEquals("1.0.0-SNAPSHOT", model.getVersion());
+         assertEquals("eclipse-feature", model.getPackaging());
+         assertParent(model.getParent());
++        assertLocation("feature/feature.xml", model.getLocation(""));
+     }
+ 
+     @Test
+@@ -204,6 +209,17 @@
+         assertEquals("0.0.1-SNAPSHOT", parent.getVersion());
+     }
+ 
++    private void assertLocation(String expectedLocation, InputLocation location) {
++        assertNotNull(location);
++        assertEquals(0, location.getLineNumber());
++        assertEquals(0, location.getColumnNumber());
++        InputSource source = location.getSource();
++        assertNotNull(source);
++        assertEquals(new File(getPolyglotTestDir(), expectedLocation).toString(), source.getLocation());
++        assertNotNull(source.getModelId());
++        assertTrue(source.getModelId().matches("^testParent.groupId:.*:.*"));
++    }
++
+     private Map<String, String> createReaderOptions(File buildProperties) {
+         Map<String, String> options = new HashMap<>();
+         options.put(ModelProcessor.SOURCE, buildProperties.getAbsolutePath());

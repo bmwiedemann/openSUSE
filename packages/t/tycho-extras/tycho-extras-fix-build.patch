@@ -1,0 +1,31 @@
+diff --git a/tycho-source-feature-plugin/src/main/java/org/eclipse/tycho/extras/sourcefeature/SourceFeatureMojo.java b/tycho-source-feature-plugin/src/main/java/org/eclipse/tycho/extras/sourcefeature/SourceFeatureMojo.java
+index 05baf87..2c62fb0 100644
+--- a/tycho-source-feature-plugin/src/main/java/org/eclipse/tycho/extras/sourcefeature/SourceFeatureMojo.java
++++ b/tycho-source-feature-plugin/src/main/java/org/eclipse/tycho/extras/sourcefeature/SourceFeatureMojo.java
+@@ -549,15 +549,19 @@ public class SourceFeatureMojo extends AbstractMojo {
+     }
+ 
+     private String getAttribute(PlexusConfiguration dom, String attrName) {
+-        String attr = dom.getAttribute(attrName);
+-        if (attr == null) {
+-            return null;
+-        }
+-        attr = attr.trim();
+-        if (attr.length() == 0) {
++        try {
++            String attr = dom.getAttribute(attrName);
++            if (attr == null) {
++                return null;
++            }
++            attr = attr.trim();
++            if (attr.length() == 0) {
++                return null;
++            }
++            return attr;
++        } catch (Exception e) {
+             return null;
+         }
+-        return attr;
+     }
+ 
+ }
