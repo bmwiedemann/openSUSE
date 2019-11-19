@@ -1,7 +1,7 @@
 #
-# spec file for package tesla
+# spec file for package tesla-polyglot
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,14 +22,12 @@
 %else
 %bcond_with bootstrap
 %endif
-%if %{without bootstrap}
-ExclusiveArch: do_not_build
-%endif
 %global base_name tesla-polyglot
 Version:        0.2.1
 Release:        0
 URL:            https://github.com/takari/maven-polyglot
 Source0:        https://github.com/takari/polyglot-maven/archive/polyglot-%{version}.tar.gz
+Patch0:         polyglot-snakeyaml-1.25.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache.maven:maven-core)
@@ -120,6 +118,7 @@ This package contains javadoc for %{name}.
 
 %prep
 %setup -q -n polyglot-maven-polyglot-%{version}
+%patch0 -p1
 
 find -name "*.class" -delete
 find -name "*.jar" -delete
