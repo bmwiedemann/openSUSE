@@ -18,13 +18,13 @@
 
 
 Name:           reveng
-Version:        2.0.2
+Version:        2.0.3
 Release:        0
 Summary:        An arbitrary-precision CRC calculator and algorithm finder
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Other
 URL:            http://reveng.sourceforge.net/
-Source:         https://sourceforge.net/projects/%{name}/files/%{version}/%{name}-%{version}.tar.xz
+Source:         http://sourceforge.net/projects/%{name}/files/%{version}/%{name}-%{version}.tar.xz
 Patch0:         reveng-dont-strip.patch
 Patch1:         reveng-obey-cflags.patch
 Patch2:         reveng-presets_x86_64.patch
