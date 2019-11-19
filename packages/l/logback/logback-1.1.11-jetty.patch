@@ -1,0 +1,82 @@
+diff --git a/logback-access/pom.xml b/logback-access/pom.xml
+index ab1319b00..f16d17814 100755
+--- a/logback-access/pom.xml
++++ b/logback-access/pom.xml
+@@ -45,6 +45,12 @@
+       <scope>compile</scope>
+       <optional>true</optional>
+     </dependency>
++    <dependency>
++      <groupId>org.eclipse.jetty</groupId>
++      <artifactId>jetty-util</artifactId>
++      <scope>compile</scope>
++      <optional>true</optional>
++    </dependency>
+     <dependency>
+       <groupId>org.codehaus.janino</groupId>
+       <artifactId>janino</artifactId>
+@@ -173,4 +179,4 @@
+     </profile>
+   </profiles>
+ 
+-</project>
+\ No newline at end of file
++</project>
+diff --git a/logback-access/src/main/java/ch/qos/logback/access/jetty/RequestLogImpl.java b/logback-access/src/main/java/ch/qos/logback/access/jetty/RequestLogImpl.java
+index bb11766d9..77ca796bb 100644
+--- a/logback-access/src/main/java/ch/qos/logback/access/jetty/RequestLogImpl.java
++++ b/logback-access/src/main/java/ch/qos/logback/access/jetty/RequestLogImpl.java
+@@ -209,11 +209,6 @@ public class RequestLogImpl extends ContextBase implements RequestLog, AppenderA
+         started = false;
+     }
+ 
+-    @Override
+-    public boolean isRunning() {
+-        return started;
+-    }
+-
+     public void setFileName(String fileName) {
+         this.fileName = fileName;
+     }
+@@ -227,26 +222,6 @@ public class RequestLogImpl extends ContextBase implements RequestLog, AppenderA
+         return started;
+     }
+ 
+-    @Override
+-    public boolean isStarting() {
+-        return false;
+-    }
+-
+-    @Override
+-    public boolean isStopping() {
+-        return false;
+-    }
+-
+-    @Override
+-    public boolean isStopped() {
+-        return !started;
+-    }
+-
+-    @Override
+-    public boolean isFailed() {
+-        return false;
+-    }
+-
+     public boolean isQuiet() {
+         return quiet;
+     }
+@@ -310,13 +285,7 @@ public class RequestLogImpl extends ContextBase implements RequestLog, AppenderA
+         return fai.getFilterChainDecision(event);
+     }
+ 
+-    @Override
+-    public void addLifeCycleListener(Listener listener) {
+-        // we'll implement this when asked
+-    }
+-
+-    @Override
+-    public void removeLifeCycleListener(Listener listener) {
++    public void log(Request request, int status, long written) {
+         // we'll implement this when asked
+     }
+ 
