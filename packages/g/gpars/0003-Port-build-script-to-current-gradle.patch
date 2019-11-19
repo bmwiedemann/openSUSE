@@ -1,0 +1,33 @@
+From ec9a2856a49c648d2acfec5455aa7efc52346d20 Mon Sep 17 00:00:00 2001
+From: Michael Simacek <msimacek@redhat.com>
+Date: Mon, 30 Mar 2015 16:26:57 +0200
+Subject: [PATCH 3/3] Port build script to current gradle
+
+---
+ build.gradle | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/build.gradle b/build.gradle
+index b199036..0341009 100644
+--- a/build.gradle
++++ b/build.gradle
+@@ -267,7 +267,6 @@ groovydoc {
+     header = packageTitle
+     footer = copyrightString
+     include 'groovyx/gpars/**'
+-    overview = new File('overview.html')
+ }
+ 
+ task documentation(dependsOn: ['javadoc', 'groovydoc', 'buildGuide', 'pdfGuide'], description: 'Create the API documentation.')
+@@ -299,7 +298,7 @@ task zipJavaDemo(type: Zip) {
+ 
+ task zipDist(type: Zip) {
+     from jar.outputs.files
+-    from(runtimeClasspath) {
++    from(sourceSets.main.runtimeClasspath) {
+         include('jsr166*', 'netty*', 'multiverse*')
+     }
+     from('licenses') {
+-- 
+2.13.6
+

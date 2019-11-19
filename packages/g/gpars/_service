@@ -1,0 +1,20 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/GPars/GPars.git</param>
+		<param name="revision">release-1.2.1</param>
+		<param name="versionformat">1.2.1</param>
+		<param name="filename">gpars</param>
+		<param name="exclude">artwork</param>
+		<param name="exclude">java-demo</param>
+		<param name="exclude">grails-doc</param>
+		<param name="exclude">gradle/wrapper</param>
+		<param name="exclude">lib</param>
+		<param name="exclude">src/main/groovy/groovyx/gpars/extra166y</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

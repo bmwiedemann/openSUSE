@@ -1,0 +1,20 @@
+diff -Nru gpars-1.2.1/src/main/groovy/groovyx/gpars/remote/netty/RemoteObjectDecoder.java gpars-1.2.1.netty3/src/main/groovy/groovyx/gpars/remote/netty/RemoteObjectDecoder.java
+--- gpars-1.2.1/src/main/groovy/groovyx/gpars/remote/netty/RemoteObjectDecoder.java	2014-05-09 07:20:08.000000000 +0200
++++ gpars-1.2.1.netty3/src/main/groovy/groovyx/gpars/remote/netty/RemoteObjectDecoder.java	2016-12-27 11:55:46.293323739 +0100
+@@ -22,6 +22,7 @@
+ import org.jboss.netty.channel.Channel;
+ import org.jboss.netty.channel.ChannelHandler;
+ import org.jboss.netty.channel.ChannelHandlerContext;
++import org.jboss.netty.handler.codec.serialization.ClassResolvers;
+ import org.jboss.netty.handler.codec.serialization.ObjectDecoder;
+ 
+ @ChannelHandler.Sharable
+@@ -34,7 +35,7 @@
+      * @param connection connection handling serialization details
+      */
+     public RemoteObjectDecoder(final RemoteConnection connection) {
+-        super();
++        super(ClassResolvers.weakCachingResolver(null));
+         this.connection = connection;
+     }
+ 
