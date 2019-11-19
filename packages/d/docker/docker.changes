@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 18 04:46:31 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Docker 19.03.5-ce. See upstream changelog in the packaged
+  /usr/share/doc/packages/docker/CHANGELOG.md.
+
+-------------------------------------------------------------------
 Sat Oct 19 11:21:03 UTC 2019 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 19.03.4-ce. See upstream changelog in the packaged
@@ -17,6 +23,11 @@ Tue Oct  1 23:54:25 UTC 2019 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 19.03.2-ce. See upstream changelog in the packaged
   /usr/share/doc/packages/docker/CHANGELOG.md. bsc#1150397
+
+-------------------------------------------------------------------
+Sun Sep 22 17:41:56 UTC 2019 - Chris Coutinho <chrisbcoutinho@gmail.com>
+
+- Fix zsh-completion (docker -> _docker)
 
 -------------------------------------------------------------------
 Tue Jul 30 05:14:44 UTC 2019 - Aleksa Sarai <asarai@suse.com>

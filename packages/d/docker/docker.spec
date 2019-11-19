@@ -1,7 +1,7 @@
 #
 # spec file for package docker
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,8 +42,8 @@
 # helpfully injects into our build environment from the changelog). If you want
 # to generate a new git_commit_epoch, use this:
 #  $ date --date="$(git show --format=fuller --date=iso $COMMIT_ID | grep -oP '(?<=^CommitDate: ).*')" '+%s'
-%define git_version 9013bf583a21
-%define git_commit_epoch 1571353729
+%define git_version 633a0ea838f1
+%define git_commit_epoch 1573629549
 
 # These are the git commits required. We verify them against the source to make
 # sure we didn't miss anything important when doing upgrades.
@@ -52,12 +52,12 @@
 %define required_libnetwork 3eb39382bfa6a3c42f83674ab080ae13b0e34e5d
 
 Name:           %{realname}%{name_suffix}
-Version:        19.03.4_ce
+Version:        19.03.5_ce
 Release:        0
 Summary:        The Moby-project Linux container runtime
 License:        Apache-2.0
 Group:          System/Management
-Url:            http://www.docker.io
+URL:            http://www.docker.io
 # TODO(VR): check those SOURCE files below
 Source:         %{realname}-%{version}_%{git_version}.tar.xz
 Source1:        docker.service
@@ -359,7 +359,7 @@ install -Dd -m 0755 \
 	%{buildroot}%{_sbindir}
 
 install -D -m0644 components/cli/contrib/completion/bash/docker "%{buildroot}%{_datarootdir}/bash-completion/completions/%{realname}"
-install -D -m0644 components/cli/contrib/completion/zsh/_docker "%{buildroot}%{_sysconfdir}/zsh_completion.d/%{realname}"
+install -D -m0644 components/cli/contrib/completion/zsh/_docker "%{buildroot}%{_sysconfdir}/zsh_completion.d/_%{realname}"
 
 #
 # systemd service
@@ -476,7 +476,7 @@ grep -q '^dockremap:' /etc/sub{uid,gid} || \
 
 %files zsh-completion
 %defattr(-,root,root)
-%{_sysconfdir}/zsh_completion.d/%{realname}
+%{_sysconfdir}/zsh_completion.d/_%{realname}
 
 %files test
 %defattr(-,root,root)
