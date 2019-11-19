@@ -187,7 +187,7 @@ CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" cmake \
 	-DLUAJIT_INCLUDE_DIR=`pkg-config --variable=includedir luajit` \
 	-DLUAJIT_LIBRARY=%{_libdir}/lib`pkg-config --variable=libname luajit`.so \
 %endif
-%ifarch %arm || %ix86 || s390x
+%ifarch %arm || %ix86
 	-DENABLE_USDT=OFF \
 %endif
 	..
