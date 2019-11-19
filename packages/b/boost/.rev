@@ -1200,4 +1200,12 @@ Boost Software License 1.0 is available in SPDX format on http://www.spdx.org/li
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>744378</requestid>
   </revision>
+  <revision rev="132" vrev="4">
+    <srcmd5>48de3cc6d3dcfd8fde9ce7053e2db657</srcmd5>
+    <version>1.71.0</version>
+    <time>1574164716</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749250</requestid>
+  </revision>
 </revisionlist>

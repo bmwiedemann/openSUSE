@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  8 15:21:03 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Make sure openmpi-macros-devel is not required for base flavor --
+  consolidate build_mpi/mpi macro into just one.
+- Remove BuildArch guards, no longer relevant since SuSE 11.2
+
+-------------------------------------------------------------------
 Thu Oct  3 14:13:20 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Use new openmpi-macros-devel package

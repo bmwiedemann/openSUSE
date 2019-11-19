@@ -50,6 +50,7 @@ ExclusiveArch:  do_not_build
 %define build_base 1
 %define name_suffix -base
 %bcond_with hpc
+%bcond_with mpi
 %endif
 
 %if "@BUILD_FLAVOR@" == "extra"
@@ -57,6 +58,11 @@ ExclusiveArch:  do_not_build
 %define name_suffix -extra
 %bcond_without python3
 %bcond_without python2
+%ifarch ia64 hppa
+%bcond_with mpi
+%else
+%bcond_without mpi
+%endif
 %endif
 
 %if "@BUILD_FLAVOR@" == "gnu-hpc"
@@ -84,7 +90,7 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %if %{with ringdisabled}
 ExclusiveArch:  do-not-build
 %else
-ExcludeArch:    s390x %{ix86} ppc64 ppc64le
+ExcludeArch:    s390x %{ix86} ppc64 ppc64le ia64 hppa
 %endif
 %endif
 
@@ -101,15 +107,10 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %if %{with ringdisabled}
 ExclusiveArch:  do-not-build
 %else
-ExcludeArch:    s390x %{ix86} ppc64 ppc64le
+ExcludeArch:    s390x %{ix86} ppc64 ppc64le ia64 hppa
 %endif
 %endif
 
-%ifarch ia64 hppa
-%bcond_with  build_mpi
-%else
-%bcond_without build_mpi
-%endif
 # Python NumPy library is only available on Leap 42.1 OpenSUSE onward
 # and is not availble in SLE
 %if 0%{?suse_version} >= 1330 || 0%{?is_opensuse}
@@ -233,7 +234,7 @@ BuildRequires:  %{mpi_flavor}%{?mpi_vers}-%{compiler_family}%{?c_f_ver}-hpc-macr
 Requires:       %{mpi_flavor}%{?mpi_vers}-%{compiler_family}%{?c_f_ver}-hpc
 %endif
 %else
-%if %{with build_mpi}
+%if %{with mpi}
 BuildRequires:  openmpi-macros-devel
 %endif
 %endif
@@ -268,9 +269,7 @@ A collection of header-only libraries for Boost.
 Summary:        Boost License
 Group:          Development/Libraries/C and C++
 Provides:       boost-license = %{version}-%{release}
-%if 0%{?suse_version} >= 1120
 BuildArch:      noarch
-%endif
 
 %description -n boost-license%{library_version}
 This package contains the license boost is provided under.
@@ -311,7 +310,7 @@ Requires:       libboost_coroutine%{library_version}-devel
 %if %{with boost_fiber}
 Requires:       libboost_fiber%{library_version}-devel
 %endif
-%if %{with build_mpi}
+%if %{with mpi}
 Requires:       libboost_graph_parallel%{library_version}-devel
 Requires:       libboost_mpi%{library_version}-devel
 %endif
@@ -375,9 +374,7 @@ its use in the Boost Build System.
 %package      -n %{package_name}-doc-html
 Summary:        HTML documentation for the Boost C++ Libraries
 Group:          Development/Libraries/C and C++
-%if 0%{?suse_version} >= 1120
 BuildArch:      noarch
-%endif
 
 %description  -n %{package_name}-doc-html
 This package contains the documentation of the boost dynamic libraries
@@ -386,9 +383,7 @@ in HTML format.
 %package        doc-man
 Summary:        Man documentation for the Boost C++ Libraries
 Group:          Development/Libraries/C and C++
-%if 0%{?suse_version} >= 1120
 BuildArch:      noarch
-%endif
 
 %description    doc-man
 This package contains the documentation of the boost dynamic libraries
@@ -397,9 +392,7 @@ as man pages.
 %package      -n %{package_name}-doc-pdf
 Summary:        PDF documentation for the Boost C++ Libraries
 Group:          Development/Libraries/C and C++
-%if 0%{?suse_version} >= 1120
 BuildArch:      noarch
-%endif
 
 %description  -n %{package_name}-doc-pdf
 This package contains the documentation of the boost dynamic libraries
@@ -705,7 +698,7 @@ This package contains the Boost.MPI runtime library.
 %package     -n libboost_mpi%{library_version}-devel
 Summary:        Development headers for Boost.MPI library
 Group:          Development/Libraries/C and C++
-%if %{with build_mpi}
+%if %{with mpi}
 %{?openmpi_devel_requires}
 %endif
 Requires:       libboost_graph%{library_version}-devel
@@ -1256,7 +1249,7 @@ EOF
 # MPI builds a python module.
 cat << \EOF >.build
 export PY_LIBRARIES_FLAGS="--with-python"
-%if %{with build_mpi}
+%if %{with mpi}
 PY_LIBRARIES_FLAGS+=" --with-mpi"
 %endif
 
@@ -1264,13 +1257,13 @@ PY_LIBRARIES_FLAGS+=" --with-mpi"
 export LIBRARIES_FLAGS="--with-system"
 
 # Dummy entry replaced with real libraries, if we build something
-%if %{with build_mpi}
+%if %{with mpi}
 LIBRARIES_FLAGS=" --with-graph_parallel"
 %endif
 
 EOF
 
-%if %{with build_mpi}
+%if %{with mpi}
 # Set PATH, MANPATH and LD_LIBRARY_PATH for mpi
 %if %{with hpc}
 module load gnu %mpi_flavor
@@ -1312,7 +1305,7 @@ using python
      :
      :
      ;
-%if %{with build_mpi}
+%if %{with mpi}
 using mpi ;
 %endif
 EOF
@@ -1343,7 +1336,7 @@ using python
 	: .%{py3_soflags}
 	: %{py3_abiflags}
 	;
-%if %{with build_mpi}
+%if %{with mpi}
 using mpi ;
 %endif
 EOF
@@ -1370,7 +1363,7 @@ EOF
 %endif
 
 # needed to get graph_parallel built
-%if %{with build_mpi}
+%if %{with mpi}
 echo 'using mpi ;' >> ./user-config.jam
 %endif
 
@@ -1423,7 +1416,7 @@ cd doc
 
 %if ! %{build_base}
 
-%if %{with build_mpi}
+%if %{with mpi}
 # Set PATH, MANPATH and LD_LIBRARY_PATH for mpi
 %if %{with hpc}
 module load gnu %mpi_flavor
@@ -1652,7 +1645,7 @@ EOF
 %endif
 %endif
 
-%if %{with build_mpi}
+%if %{with mpi}
 %post -n libboost_mpi%{library_version} -p /sbin/ldconfig
 %post -n libboost_graph_parallel%{library_version} -p /sbin/ldconfig
 %if %{with python2}
@@ -1710,7 +1703,7 @@ EOF
 %endif
 %endif
 
-%if %{with build_mpi}
+%if %{with mpi}
 %postun -n libboost_mpi%{library_version} -p /sbin/ldconfig
 %postun -n libboost_graph_parallel%{library_version} -p /sbin/ldconfig
 %if %{with python2}
@@ -1916,7 +1909,7 @@ EOF
 
 %if ! %{build_base}
 
-%if %{with build_mpi}
+%if %{with mpi}
 %files -n libboost_mpi%{library_version}
 %{package_libdir}/libboost_mpi.so.%{version}
 
@@ -1975,7 +1968,7 @@ EOF
 %{package_python3_sitearch}/boost/parallel/mpi/mpi.%{py3_soflags}.so
 
 %endif # with python3
-%endif # with build_mpi
+%endif # with mpi
 
 %if %{with python2}
 %files -n libboost_python-py2_7-%{library_version}
