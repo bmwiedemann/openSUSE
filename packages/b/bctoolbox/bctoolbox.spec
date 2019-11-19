@@ -22,7 +22,6 @@ Version:        0.6.0
 Release:        0
 Summary:        Utility library for software from Belledonne Communications
 License:        GPL-2.0-or-later
-Group:          Development/Libraries/C and C++
 URL:            https://linphone.org/
 Source:         https://linphone.org/releases/sources/%{name}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
@@ -42,7 +41,6 @@ belle-sip, mediastreamer2 and linphone.
 
 %package devel
 Summary:        Development files for %{name}, a utility library for linphone/belle-sip/etc
-Group:          Development/Languages/C and C++
 Requires:       cmake
 Requires:       lib%{name}%{sover} = %{version}
 Requires:       lib%{name}-tester%{sover} = %{version}
@@ -56,7 +54,6 @@ This package contains development files.
 
 %package -n lib%{name}%{sover}
 Summary:        Utility library for software from Belledonne Communications
-Group:          System/Libraries
 
 %description -n lib%{name}%{sover}
 Utilities library used by Belledonne Communications softwares like
@@ -66,7 +63,6 @@ This package the contains shared library.
 
 %package -n lib%{name}-tester%{sover}
 Summary:        Utility library for software from Belledonne Communications
-Group:          System/Libraries
 
 %description -n lib%{name}-tester%{sover}
 Utilities library used by Belledonne Communications softwares like
@@ -85,7 +81,7 @@ This package the contains shared library for testing component.
   -DENABLE_TESTS_COMPONENT=YES \
   -DENABLE_TESTS=YES           \
   -DENABLE_STATIC=NO
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
