@@ -22,7 +22,6 @@ Version:        1.0.4
 Release:        0
 Summary:        Encoder and decoder of the ITU G.729 Annex A/B speech codec
 License:        GPL-2.0-or-later
-Group:          Development/Libraries/C and C++
 URL:            https://www.linphone.org/technical-corner/bcg729/overview
 Source:         https://linphone.org/releases/sources/%{name}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
@@ -38,7 +37,6 @@ encoding/decoding for multi call application such as conferencing.
 
 %package -n lib%{name}-%{sover}
 Summary:        Encoder and decoder of the ITU G.729 Annex A/B speech codec
-Group:          System/Libraries
 
 %description -n lib%{name}-%{sover}
 Bcg729 is an implementation of both encoder and decoder of the ITU
@@ -47,7 +45,6 @@ encoding/decoding for multi call application such as conferencing.
 
 %package devel
 Summary:        Development files for libbcg729
-Group:          Development/Libraries/C and C++
 Requires:       lib%{name}-%{sover} = %{version}
 
 %description devel
@@ -63,7 +60,7 @@ application which will use libbcg729.
   -DENABLE_TESTS=ON   \
   -DENABLE_STATIC=OFF \
   -DENABLE_STRICT=OFF
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
