@@ -1,0 +1,11 @@
+--- org.eclipse.jgit.pgm/jgit.sh.sav	2011-09-15 18:32:58.000000000 +0300
++++ org.eclipse.jgit.pgm/jgit.sh	2011-10-28 13:05:51.399038583 +0300
+@@ -60,7 +60,7 @@ esac
+ this_script=`which "$0" 2>/dev/null`
+ [ $? -gt 0 -a -f "$0" ] && this_script="$0"
+ cp=$this_script
+-
++export JGIT_CLASSPATH="$(build-classpath jgit slf4j/api slf4j/simple args4j jzlib jsch commons-compress xz-java javaewah httpcomponents/httpcore httpcomponents/httpclient commons-logging commons-codec)"
+ platform="`uname`"
+ if [ -n "$JGIT_CLASSPATH" ]
+ then
