@@ -1494,6 +1494,8 @@ unsorted:
   - catatonit: [i586] 
   - catcodec 
   - cava 
+  - cbi-plugins 
+  - cbi-plugins-javadoc 
   - cblas-devel 
   - cblas-devel-32bit: [x86_64] 
   - cblas-devel-static 
@@ -1770,6 +1772,8 @@ unsorted:
   - codec2-examples 
   - codehaus-parent 
   - codelite 
+  - codenarc 
+  - codenarc-javadoc 
   - codespell 
   - cogl-devel 
   - collectd 
@@ -1950,6 +1954,7 @@ unsorted:
   - crawl-data 
   - crawl-sdl 
   - crazydiskinfo 
+  - createrepo 
   - createrepo_c 
   - creduce 
   - cri-tools: [i586] 
@@ -2500,7 +2505,34 @@ unsorted:
   - echomixer 
   - eciadsl-usermode 
   - ecj 
+  - eclipse-contributor-tools 
+  - eclipse-contributor-tools-bootstrap 
+  - eclipse-ecf-core 
+  - eclipse-ecf-runtime 
+  - eclipse-ecf-sdk 
+  - eclipse-egit 
+  - eclipse-emf-core 
+  - eclipse-emf-core-sdk 
+  - eclipse-emf-runtime 
+  - eclipse-emf-sdk 
+  - eclipse-emf-xsd 
+  - eclipse-equinox-osgi 
+  - eclipse-equinox-osgi-bootstrap 
+  - eclipse-jdt 
+  - eclipse-jdt-bootstrap 
+  - eclipse-jgit 
+  - eclipse-license1 
+  - eclipse-license2 
+  - eclipse-p2-discovery 
+  - eclipse-p2-discovery-bootstrap 
+  - eclipse-pde 
+  - eclipse-pde-bootstrap 
+  - eclipse-platform 
+  - eclipse-platform-bootstrap 
   - eclipse-swt 
+  - eclipse-swt-bootstrap 
+  - eclipse-tests 
+  - eclipse-tests-bootstrap 
   - econnman 
   - ecryptfs-utils 
   - ecryptfs-utils-32bit: [x86_64] 
@@ -4366,6 +4398,8 @@ unsorted:
   - glyrc 
   - gmavenplus-plugin 
   - gmavenplus-plugin-javadoc 
+  - gmetrics 
+  - gmetrics-javadoc 
   - gmic 
   - gmic-zart 
   - gmime-devel 
@@ -4676,6 +4710,8 @@ unsorted:
   - gp2c 
   - gpa 
   - gpa-lang 
+  - gpars 
+  - gpars-bootstrap 
   - gparted 
   - gparted-lang 
   - gpaste 
@@ -4722,7 +4758,9 @@ unsorted:
   - grabpng 
   - gradio 
   - gradio-lang 
-  - gradle-open-api 
+  - gradle 
+  - gradle-bootstrap 
+  - gradle-local 
   - grafana 
   - grail 
   - grail-devel 
@@ -4775,6 +4813,26 @@ unsorted:
   - gromacs-devel 
   - gromacs-doc 
   - gromacs-openmpi2 
+  - groovy 
+  - groovy-ant 
+  - groovy-bootstrap 
+  - groovy-bsf 
+  - groovy-console 
+  - groovy-docgenerator 
+  - groovy-groovydoc 
+  - groovy-groovysh 
+  - groovy-jmx 
+  - groovy-json 
+  - groovy-jsr223 
+  - groovy-lib 
+  - groovy-nio 
+  - groovy-servlet 
+  - groovy-sql 
+  - groovy-swing 
+  - groovy-templates 
+  - groovy-test 
+  - groovy-testng 
+  - groovy-xml 
   - groovy18 
   - groovy18-javadoc 
   - groovy18-lib 
@@ -5285,6 +5343,8 @@ unsorted:
   - html-xml-utils 
   - htmldoc 
   - htop 
+  - http-builder 
+  - http-builder-javadoc 
   - http-parser-devel 
   - httpcomponents-client 
   - httpcomponents-client-cache 
@@ -5876,6 +5936,9 @@ unsorted:
   - jflex-doc 
   - jformatstring 
   - jformatstring-javadoc 
+  - jgit 
+  - jgit-bootstrap 
+  - jgit-javadoc 
   - jgmenu 
   - jgoodies-forms 
   - jgoodies-forms-demo 
@@ -12466,6 +12529,10 @@ unsorted:
   - log4j12-manual 
   - log4j12-mini 
   - log4net 
+  - logback 
+  - logback-access 
+  - logback-examples 
+  - logback-javadoc 
   - logdigest 
   - logstalgia 
   - logtail 
@@ -14817,27 +14884,8 @@ unsorted:
   - openldap2-ppolicy-check-password 
   - openlibm-devel 
   - openlierox 
-  - openlmi 
-  - openlmi-account 
-  - openlmi-fan 
-  - openlmi-hardware 
-  - openlmi-journald 
-  - openlmi-locale 
-  - openlmi-logicalfile 
   - openlmi-networking 
-  - openlmi-pcp 
   - openlmi-pegasus-compat 
-  - openlmi-powermanagement 
-  - openlmi-providers 
-  - openlmi-providers-devel 
-  - openlmi-providers-doc 
-  - openlmi-providers-libs 
-  - openlmi-python-base 
-  - openlmi-python-providers 
-  - openlmi-python-test 
-  - openlmi-service 
-  - openlmi-software 
-  - openlmi-sssd 
   - openmarkup 
   - openmarkup-javadoc 
   - openmarkup-manual 
@@ -18073,6 +18121,7 @@ unsorted:
   - python2-cryptography-vectors 
   - python2-css-parser 
   - python2-csscompressor 
+  - python2-cssselect 
   - python2-cssutils 
   - python2-csvkit 
   - python2-ctypesgen 
@@ -18100,6 +18149,7 @@ unsorted:
   - python2-defusedxml 
   - python2-delegator 
   - python2-delegator.py 
+  - python2-deltarpm 
   - python2-demjson 
   - python2-dennis 
   - python2-deprecation 
@@ -18341,6 +18391,7 @@ unsorted:
   - python2-googleapis-common-protos 
   - python2-googlemaps 
   - python2-gpg 
+  - python2-gpgme 
   - python2-gphoto2 
   - python2-gpod 
   - python2-gprof2dot 
@@ -18417,6 +18468,7 @@ unsorted:
   - python2-inflection 
   - python2-influxdb 
   - python2-inifile 
+  - python2-iniparse 
   - python2-inspect2 
   - python2-inspektor 
   - python2-intervals 
@@ -18581,6 +18633,7 @@ unsorted:
   - python2-logutils 
   - python2-logzero 
   - python2-lupa 
+  - python2-lxml 
   - python2-lxml-devel 
   - python2-lz4 
   - python2-lzmaffi 
@@ -18952,6 +19005,7 @@ unsorted:
   - python2-pycryptodomex 
   - python2-pycsw 
   - python2-pyct 
+  - python2-pycurl 
   - python2-pycxx 
   - python2-pycxx-devel 
   - python2-pydata-google-auth 
@@ -19001,6 +19055,7 @@ unsorted:
   - python2-pykwalify 
   - python2-pylama 
   - python2-pylev 
+  - python2-pyliblzma 
   - python2-pylibmc 
   - python2-pylint 
   - python2-pylons-sphinx-themes 
@@ -19283,6 +19338,7 @@ unsorted:
   - python2-roman 
   - python2-rope 
   - python2-rply 
+  - python2-rpm 
   - python2-rpmfile 
   - python2-rpyc 
   - python2-rq 
@@ -19566,6 +19622,7 @@ unsorted:
   - python2-untokenize 
   - python2-upm 
   - python2-uritemplate 
+  - python2-urlgrabber 
   - python2-urllib3 
   - python2-urwid 
   - python2-user-agents 
@@ -24068,18 +24125,8 @@ unsorted:
   - splinter-devel 
   - spotify-easyrpm 
   - spread-sheet-widget-devel 
-  - spyder 
-  - spyder-breakpoints 
-  - spyder-breakpoints-lang 
-  - spyder-dicom 
-  - spyder-hdf5 
-  - spyder-lang 
   - spyder-memory-profiler 
   - spyder-notebook 
-  - spyder-profiler 
-  - spyder-profiler-lang 
-  - spyder-pylint 
-  - spyder-pylint-lang 
   - spyder-terminal 
   - spyder-unittest 
   - spyder3 
@@ -24519,8 +24566,16 @@ unsorted:
   - terraform: [x86_64] 
   - terraform-provider-openstack 
   - teseq 
+  - tesla-polyglot 
+  - tesla-polyglot-atom 
   - tesla-polyglot-common 
   - tesla-polyglot-common-javadoc 
+  - tesla-polyglot-groovy 
+  - tesla-polyglot-javadoc 
+  - tesla-polyglot-maven-plugin 
+  - tesla-polyglot-translate-plugin 
+  - tesla-polyglot-xml 
+  - tesla-polyglot-yaml 
   - tesseract 
   - tesseract-data 
   - tesseract-ocr 
@@ -32148,6 +32203,11 @@ unsorted:
   - twolame 
   - txt2man 
   - txt2tags 
+  - tycho 
+  - tycho-bootstrap 
+  - tycho-extras 
+  - tycho-extras-javadoc 
+  - tycho-javadoc 
   - typelib-1_0-Accounts-1_0 
   - typelib-1_0-Amtk-5 
   - typelib-1_0-Anjuta-3_0 
@@ -33224,6 +33284,8 @@ unsorted:
   - xmvn-bisect 
   - xmvn-connector-aether 
   - xmvn-connector-aether-javadoc 
+  - xmvn-connector-gradle 
+  - xmvn-connector-gradle-javadoc 
   - xmvn-connector-ivy 
   - xmvn-connector-ivy-javadoc 
   - xmvn-core 
@@ -33475,7 +33537,6 @@ unsorted:
   - yubikey-manager-qt 
   - yubikey-personalization-gui 
   - yubioath-desktop 
-  - yum 
   - yum-aliases 
   - yum-allowdowngrade 
   - yum-basearchonly 
@@ -33483,16 +33544,15 @@ unsorted:
   - yum-downloadonly 
   - yum-fastestmirror 
   - yum-filter-data 
-  - yum-lang 
   - yum-list-data 
   - yum-merge-conf 
+  - yum-metadata-parser 
   - yum-priorities 
   - yum-protect-packages 
   - yum-protectbase 
   - yum-refresh-updatesd 
   - yum-tmprepo 
   - yum-tsflags 
-  - yum-updatesd 
   - yum-upgrade-helper 
   - yum-utils 
   - yum-verify 
