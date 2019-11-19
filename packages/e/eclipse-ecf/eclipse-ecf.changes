@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Mon Nov 11 12:15:51 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Intial packaging of eclipse-ecf 3.14.1 as _multibuild package in
+  order to allow bootstrapping
