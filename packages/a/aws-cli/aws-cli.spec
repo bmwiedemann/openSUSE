@@ -1,7 +1,7 @@
 #
 # spec file for package aws-cli
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           aws-cli
-Version:        1.16.258
+Version:        1.16.281
 Release:        0
 Summary:        Amazon Web Services Command Line Interface
 License:        Apache-2.0
 Group:          System/Management
-Url:            https://github.com/aws/aws-cli
+URL:            https://github.com/aws/aws-cli
 Source0:        %{name}-%{version}.tar.gz
 Patch0:         hide_py_pckgmgmt.patch
 Requires:       groff
@@ -31,7 +31,7 @@ BuildRequires:  fdupes
 Requires:       python3
 Requires:       python3-PyYAML     <= 6.0.0
 Requires:       python3-PyYAML     >= 3.10
-Requires:       python3-botocore  >= 1.12.248
+Requires:       python3-botocore  >= 1.13.17
 Requires:       python3-colorama  <= 0.4.2
 Requires:       python3-colorama  >= 0.2.5
 Requires:       python3-docutils  >= 0.10

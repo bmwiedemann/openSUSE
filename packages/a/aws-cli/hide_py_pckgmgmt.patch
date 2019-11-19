@@ -1,10 +1,10 @@
---- setup.py.orig	2019-10-11 20:12:23.000000000 +0200
-+++ setup.py	2019-10-14 14:42:54.622237116 +0200
+--- setup.py.orig	2019-11-13 21:03:02.000000000 +0100
++++ setup.py	2019-11-14 12:44:04.349499511 +0100
 @@ -23,30 +23,30 @@
      raise RuntimeError("Unable to find version string.")
  
  
--install_requires = ['botocore==1.12.248',
+-install_requires = ['botocore==1.13.17',
 -                    'docutils>=0.10,<0.16',
 -                    'rsa>=3.1.2,<=3.5.0',
 -                    's3transfer>=0.2.0,<0.3.0']
@@ -28,7 +28,7 @@
 -else:
 -    install_requires.append('PyYAML>=3.10,<5.2')
 -    install_requires.append('colorama>=0.2.5,<0.4.2')
-+# install_requires = ['botocore==1.12.248',
++# install_requires = ['botocore==1.13.17',
 +#                     'docutils>=0.10,<0.16',
 +#                     'rsa>=3.1.2,<=3.5.0',
 +#                     's3transfer>=0.2.0,<0.3.0']
