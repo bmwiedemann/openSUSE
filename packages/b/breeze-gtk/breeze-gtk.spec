@@ -30,6 +30,8 @@ Source:         https://download.kde.org/stable/plasma/%{version}/breeze-gtk-%{v
 Source1:        https://download.kde.org/stable/plasma/%{version}/breeze-gtk-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM (in master)
+Patch1:         0001-Revert-GTK3-Revert-checkbox-recolouring.patch
 BuildRequires:  breeze5-style
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  extra-cmake-modules
