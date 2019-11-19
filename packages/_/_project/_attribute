@@ -56,7 +56,7 @@
   boo#1148477: '20191009'
   boo#1148850: '20191008'
   boo#1150977: '20190917'
-  boo#1151291: '20191117'
+  boo#1151291: '20191118'
   boo#1151884: '20191025'
   boo#1151951: '20190923'
   boo#1152177: '20191003'
@@ -64,7 +64,7 @@
   boo#1153160: '20191118'
   boo#1153162: '20191009'
   boo#1153188: '20191014'
-  boo#1153514: '20191117'
+  boo#1153514: '20191118'
   boo#1153562: '20191116'
   boo#1153568: '20191118'
   boo#1154311: '20191018'
@@ -173,7 +173,7 @@
   poo#58733: '20191025'
   poo#59181: '20191106'
   poo#59864: '20191118'
-  poo#59867: '20191116'
+  poo#59867: '20191118'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="Config">
@@ -365,7 +365,7 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20191118'
+    <value>failed: ''
 published: '20191116'
 publishing: '20191116'
 testing: '20191118'
