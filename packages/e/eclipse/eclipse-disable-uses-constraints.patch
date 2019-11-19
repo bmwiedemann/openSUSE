@@ -1,0 +1,28 @@
+From 889543269853e12925ef00a6e76c3dd85ce5b915 Mon Sep 17 00:00:00 2001
+From: Roland Grunberg <rgrunber@redhat.com>
+Date: Tue, 25 Oct 2016 16:48:28 -0400
+Subject: [PATCH] Disable uses by default (osgi.resolver.usesMode=ignore).
+ set.
+
+---
+ .../felix/src/org/apache/felix/resolver/ResolverImpl.java             | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git rt.equinox.framework/bundles/org.eclipse.osgi/felix/src/org/apache/felix/resolver/ResolverImpl.java rt.equinox.framework/bundles/org.eclipse.osgi/felix/src/org/apache/felix/resolver/ResolverImpl.java
+index ded683f..7216865 100755
+--- rt.equinox.framework/bundles/org.eclipse.osgi/felix/src/org/apache/felix/resolver/ResolverImpl.java
++++ rt.equinox.framework/bundles/org.eclipse.osgi/felix/src/org/apache/felix/resolver/ResolverImpl.java
+@@ -1230,7 +1230,9 @@ public class ResolverImpl implements Resolver
+             {
+                 public void run()
+                 {
+-                    computeUses(session, allWireCandidates, allPackages, resource);
++                    if (! "ignore".equals(System.getProperty("osgi.resolver.usesMode"))) {
++                        computeUses(session, allWireCandidates, allPackages, resource);
++                    }
+                 }
+             });
+         }
+-- 
+2.7.4
+

@@ -1,0 +1,64 @@
+commit 4bfc5a7c6d8c2aaf954c113d805419472de2bcaf
+Author: Mat Booth <mat.booth@redhat.com>
+Date:   Thu May 3 15:58:49 2018 +0100
+
+    Bug 534326 - Awkward p2 UI when many droplets are installed
+    
+    Filter out software site locations where we know that they are p2
+    droplets in places we show the list to the user.
+    
+    Change-Id: I12364223850862783cb7cffd32fb7428fbf6b270
+    Signed-off-by: Mat Booth <mat.booth@redhat.com>
+
+diff --git a/rt.equinox.p2/bundles/org.eclipse.equinox.p2.ui/src/org/eclipse/equinox/internal/p2/ui/dialogs/RepositorySelectionGroup.java b/rt.equinox.p2/bundles/org.eclipse.equinox.p2.ui/src/org/eclipse/equinox/internal/p2/ui/dialogs/RepositorySelectionGroup.java
+index e6eef8c39..fe5970e79 100644
+--- a/rt.equinox.p2/bundles/org.eclipse.equinox.p2.ui/src/org/eclipse/equinox/internal/p2/ui/dialogs/RepositorySelectionGroup.java
++++ b/rt.equinox.p2/bundles/org.eclipse.equinox.p2.ui/src/org/eclipse/equinox/internal/p2/ui/dialogs/RepositorySelectionGroup.java
+@@ -300,6 +300,19 @@ public class RepositorySelectionGroup {
+ 	void fillRepoCombo(final String selection) {
+ 		RepositoryTracker tracker = ui.getRepositoryTracker();
+ 		URI[] sites = tracker.getKnownRepositories(ui.getSession());
++		// Filter out sites that are actually installed p2 droplets
++		String fragments = System.getProperty("p2.fragments"); //$NON-NLS-1$
++		ArrayList<URI> filteredSites = new ArrayList<>(Arrays.asList(sites));
++		if (fragments != null) {
++			for (String root : fragments.split(",")) { //$NON-NLS-1$
++				for (URI uri : sites) {
++					if (uri.getPath() != null && uri.getPath().startsWith(root)) {
++						filteredSites.remove(uri);
++					}
++				}
++			}
++		}
++		sites = filteredSites.toArray(new URI[0]);
+ 		boolean hasLocalSites = getLocalSites().length > 0;
+ 		final String[] items;
+ 		if (hasLocalSites) {
+diff --git a/rt.equinox.p2/bundles/org.eclipse.equinox.p2.ui/src/org/eclipse/equinox/p2/ui/RepositoryManipulationPage.java b/rt.equinox.p2/bundles/org.eclipse.equinox.p2.ui/src/org/eclipse/equinox/p2/ui/RepositoryManipulationPage.java
+index d796aefd0..c03924f90 100644
+--- a/rt.equinox.p2/bundles/org.eclipse.equinox.p2.ui/src/org/eclipse/equinox/p2/ui/RepositoryManipulationPage.java
++++ b/rt.equinox.p2/bundles/org.eclipse.equinox.p2.ui/src/org/eclipse/equinox/p2/ui/RepositoryManipulationPage.java
+@@ -130,9 +130,22 @@ public class RepositoryManipulationPage extends PreferencePage implements IWorkb
+ 			if (cachedElements == null) {
+ 				Object[] children = super.fetchChildren(o, monitor);
+ 				cachedElements = new Hashtable<>(children.length);
++				String fragments = System.getProperty("p2.fragments"); //$NON-NLS-1$
+ 				for (int i = 0; i < children.length; i++) {
+ 					if (children[i] instanceof MetadataRepositoryElement) {
+-						put((MetadataRepositoryElement) children[i]);
++						// Filter out locations that are actually installed p2 droplets
++						if (fragments != null) {
++							boolean isDroplet = false;
++							for (String root : fragments.split(",")) { //$NON-NLS-1$
++								URI childLoc = ((MetadataRepositoryElement) children[i]).getLocation();
++								if (childLoc.getPath() != null && childLoc.getPath().startsWith(root)) {
++									isDroplet = true;
++								}
++							}
++							if (!isDroplet) {
++								put((MetadataRepositoryElement) children[i]);
++							}
++						}
+ 					}
+ 				}
+ 			}

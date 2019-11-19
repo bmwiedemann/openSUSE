@@ -1,0 +1,88 @@
+--- rt.equinox.p2/bundles/org.eclipse.equinox.p2.engine/src/org/eclipse/equinox/internal/p2/engine/SimpleProfileRegistry.java.orig	2014-03-24 10:49:00.000000000 +0000
++++ rt.equinox.p2/bundles/org.eclipse.equinox.p2.engine/src/org/eclipse/equinox/internal/p2/engine/SimpleProfileRegistry.java	2014-03-24 15:39:32.122246214 +0000
+@@ -39,6 +39,7 @@
+ 
+ public class SimpleProfileRegistry implements IProfileRegistry, IAgentService {
+ 
++	private static final String PROP_IGNORE_USER_CONFIGURATION = "eclipse.ignoreUserConfiguration"; //$NON-NLS-1$
+ 	private static final String SIMPLE_PROFILE_REGISTRY_INTERNAL = "_simpleProfileRegistry_internal_"; //$NON-NLS-1$
+ 	private static final String PROFILE_REGISTRY = "profile registry"; //$NON-NLS-1$
+ 	private static final String PROFILE_PROPERTIES_FILE = "state.properties"; //$NON-NLS-1$
+@@ -266,6 +267,14 @@
+ 					//fragments support - remeber the property
+ 					internalSetProfileStateProperty(profile, profile.getTimestamp(), SIMPLE_PROFILE_REGISTRY_INTERNAL + getExtTimeStamp(), getExtTimeStamp());
+ 					agent.registerService(SERVICE_SHARED_INSTALL_NEW_TIMESTAMP, Long.toString(profile.getTimestamp()));
++
++					// this looks like a hack, but:
++					// (1) SimpleConfigurationImpl keeps returning master configuration as long as the property is set
++					// (2) SimpleConfigurationImpl sets the propery after it drops user configuration
++					// therefore dropins reconciliation can't load dropins plugins installed into user configuration
++					// after the user configuration has been dropped.
++					// It is necessary to unset this property.
++					//System.setProperty(PROP_IGNORE_USER_CONFIGURATION, "processed_and_unset"); //$NON-NLS-1$ //$NON-NLS-2$
+ 				} else {
+ 					//This is the first time we create the shared profile. Tag it as such and also remember the timestamp of the base
+ 					internalSetProfileStateProperty(profile, profile.getTimestamp(), IProfile.STATE_PROP_SHARED_INSTALL, IProfile.STATE_SHARED_INSTALL_VALUE_INITIAL);
+@@ -299,6 +308,13 @@
+ 		if (agent.getService(SERVICE_SHARED_INSTALL_NEW_TIMESTAMP) != null)
+ 			return false;
+ 
++		// if the property is set by OSGI, and there is no new timestamp (because of the previous condition)
++		// ignore current profile. This will happen only once, because SERVICE_SHARED_INSTALL_NEW_TIMESTAMP
++		// is set during profile reset.
++		if ("true".equals(System.getProperty(PROP_IGNORE_USER_CONFIGURATION))) { //$NON-NLS-1$ //$NON-NLS-2$
++			System.setProperty(PROP_IGNORE_USER_CONFIGURATION, "processed_and_unset"); //$NON-NLS-1$ //$NON-NLS-2$
++			return true;
++		}
+ 		String baseTimestamp = getBaseTimestamp(profile.getProfileId());
+ 		String extTimestamp = getExtTimeStamp();
+ 		if (baseTimestamp == null) {
+--- rt.equinox.p2/bundles/org.eclipse.equinox.p2.reconciler.dropins/src/org/eclipse/equinox/internal/p2/reconciler/dropins/ProfileSynchronizer.java
++++ rt.equinox.p2/bundles/org.eclipse.equinox.p2.reconciler.dropins/src/org/eclipse/equinox/internal/p2/reconciler/dropins/ProfileSynchronizer.java
+@@ -570,6 +570,7 @@
+ 
+ 		// get all IUs from all our repos 
+ 		IQueryResult<IInstallableUnit> allIUs = getAllIUsFromRepos();
++		HashSet<IInstallableUnit> removedFromAllIUs = new HashSet<IInstallableUnit>();
+ 		for (Iterator<IInstallableUnit> iter = allIUs.iterator(); iter.hasNext();) {
+ 			final IInstallableUnit iu = iter.next();
+ 			IInstallableUnit existing = profileIUs.get(iu);
+@@ -583,6 +584,7 @@
+ 				// (and more expensive) way to find this out is to do an IU profile property query.
+ 				if (two == null) {
+ 					// the IU is already installed so don't mark it as a dropin now - see bug 404619.
++					removedFromAllIUs.add(iu);
+ 					iter.remove();
+ 					continue;
+ 				}
+@@ -625,7 +627,7 @@
+ 			}
+ 			// if the IU from the profile is in the "all available" list, then it is already added
+ 			// otherwise if it isn't in the repo then we have to remove it from the profile.
+-			if (!all.contains(iu))
++			if (!all.contains(iu) && !removedFromAllIUs.contains(iu))
+ 				toRemove.add(iu);
+ 		}
+ 
+@@ -799,8 +801,8 @@
+ 			IStatus installerPlanStatus = engine.perform(plan.getInstallerPlan(), phaseSet, monitor);
+ 			if (!installerPlanStatus.isOK())
+ 				return installerPlanStatus;
+-
+-			applyConfiguration(true);
++			if (isReconciliationApplicationRunning())
++				applyConfiguration(true);
+ 		}
+ 		return engine.perform(plan, phaseSet, monitor);
+ 	}
+--- rt.equinox.p2/bundles/org.eclipse.equinox.p2.ui.sdk.scheduler/src/org/eclipse/equinox/internal/p2/ui/sdk/scheduler/migration/MigrationWizard.java.orig	2018-04-25 20:31:57.931223008 +0100
++++ rt.equinox.p2/bundles/org.eclipse.equinox.p2.ui.sdk.scheduler/src/org/eclipse/equinox/internal/p2/ui/sdk/scheduler/migration/MigrationWizard.java	2018-04-25 20:32:11.069144336 +0100
+@@ -148,7 +148,7 @@
+ 
+ 	@Override
+ 	public boolean performCancel() {
+-		String[] buttons = new String[] {IDialogConstants.YES_LABEL, ProvUIMessages.MigrationPage_LATER_BUTTON, IDialogConstants.NO_LABEL};
++		String[] buttons = new String[] {IDialogConstants.YES_LABEL, IDialogConstants.NO_LABEL};
+ 		MessageDialog dialog = new MessageDialog(getShell(), ProvUIMessages.MigrationPage_CONFIRMATION_TITLE, null, ProvUIMessages.MigrationPage_CONFIRMATION_DIALOG, MessageDialog.QUESTION, buttons, 2);
+ 
+ 		return rememberCancellationDecision(dialog.open());

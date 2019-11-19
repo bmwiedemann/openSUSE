@@ -1,0 +1,161 @@
+--- eclipse.platform/ant/org.eclipse.ant.launching/build.properties.orig	2017-01-09 10:24:16.258243377 +0000
++++ eclipse.platform/ant/org.eclipse.ant.launching/build.properties	2017-01-09 10:25:08.302620557 +0000
+@@ -20,18 +20,14 @@
+                about.html
+ 
+ jars.compile.order = .,\
+-				lib/loggers.jar
+-# antdebug.jar and remote.jar are compiled locally using 1.6, see bug 495617:
+-#				     lib/antdebug.jar,\
+-#                     lib/remote.jar
++				     lib/antdebug.jar,\
++                     lib/loggers.jar,\
++                     lib/remote.jar
+ source.lib/loggers.jar = loggers/
+ output.lib/loggers.jar = loggers_bin/
+-extra.lib/loggers.jar = lib/antdebug.jar
+-#source.lib/antdebug.jar = common/
+-#output.lib/antdebug.jar = common_bin/
+-#source.lib/remote.jar = remote/
+-#output.lib/remote.jar = remote_bin/
+-src.includes = about.html,\
+-               remote/,\
+-               common/
++source.lib/antdebug.jar = common/
++output.lib/antdebug.jar = common_bin/
++source.lib/remote.jar = remote/
++output.lib/remote.jar = remote_bin/
++src.includes = about.html
+ javacWarnings..=-unavoidableGenericProblems
+--- eclipse.platform/ant/org.eclipse.ant.ui/build.properties.orig	2017-04-03 18:40:41.033489412 +0100
++++ eclipse.platform/ant/org.eclipse.ant.ui/build.properties	2017-04-03 18:43:21.614928391 +0100
+@@ -14,8 +14,8 @@
+ source.lib/antrunner.jar = Ant Runner Support/
+ output.lib/antrunner.jar = ant_runner_support_bin/
+ # Compiled with 1.6 locally, see bug 495617:
+-#source.lib/remoteAnt.jar = Remote Ant Support/
+-#output.lib/remoteAnt.jar = remote_support_bin/
++source.lib/remoteAnt.jar = Remote Ant Support/
++output.lib/remoteAnt.jar = remote_support_bin/
+ src.includes = about.html,\
+                about_files/,\
+                Remote Ant Support/
+@@ -31,6 +31,5 @@
+                lib/antrunner.jar,\
+                lib/remoteAnt.jar,\
+                css/
+-jars.compile.order=.,lib/antrunner.jar
+-# ,lib/remoteAnt.jar
++jars.compile.order=.,lib/antrunner.jar,lib/remoteAnt.jar
+ javacWarnings..=-unavoidableGenericProblems
+--- eclipse.platform.common/bundles/org.eclipse.jdt.doc.user/build.xml.orig	2017-01-09 13:30:24.238066571 +0000
++++ eclipse.platform.common/bundles/org.eclipse.jdt.doc.user/build.xml	2017-01-09 13:31:19.228456113 +0000
+@@ -1,106 +1,8 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<project name="org.eclipse.jdt.doc.user" default="build.jars" basedir=".">
++<project name="org.eclipse.jdt.doc.user" default="build.index" basedir=".">
+ 
+-	<property name="version.suffix" value="3.3.0" />
+-	<property name="full.name" value="org.eclipse.jdt.doc.user_${version.suffix}" />
+-	<property name="bootclasspath" value="" />
+-	<property name="basews" value="${ws}" />
+-	<property name="baseos" value="${os}" />
+-	<property name="basearch" value="${arch}" />
+-	<property name="basenl" value="${nl}" />
+-	<property name="javacFailOnError" value="false" />
+-	<property name="javacDebugInfo" value="on" />
+-	<property name="javacVerbose" value="true" />
+-	<property name="javacSource" value="1.3" />
+-	<property name="javacTarget" value="1.1" />
+-
+-	<target name="init" depends="properties">
+-		<property name="temp.folder" value="${basedir}/temp.folder" />
+-		<property name="plugin.destination" value="${basedir}" />
+-		<property name="build.result.folder" value="${basedir}" />
+-		<available file="${basedir}/doc.zip" property="doc.zip.present" />
+-		<condition property="p2.publish.parts" value="true">
+-			<istrue value="${p2.gathering}" />
+-		</condition>
+-	</target>
+-
+-	<target name="properties" if="eclipse.running">
+-		<property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter" />
+-	</target>
+-
+-	<target name="build.update.jar" depends="init" description="Build the plug-in: org.eclipse.jdt.doc.user for an update site.">
+-		<delete dir="${temp.folder}" />
+-		<mkdir dir="${temp.folder}" />
+-		<antcall target="build.jars" />
+-		<antcall target="gather.bin.parts">
+-			<param name="destination.temp.folder" value="${temp.folder}/" />
+-		</antcall>
+-		<zip zipfile="${plugin.destination}/${full.name}.jar" basedir="${temp.folder}/${full.name}" filesonly="false" whenempty="skip" />
+-		<delete dir="${temp.folder}" />
+-	</target>
+-
+-	<target name="publish.bin.parts" depends="init" if="p2.publish.parts">
+-		<antcall target="gather.bin.parts">
+-			<param name="destination.temp.folder" value="${build.result.folder}" />
+-		</antcall>
+-		<eclipse.gatherBundle metadataRepository="${p2.build.repo}" artifactRepository="${p2.build.repo}" buildResultFolder="${build.result.folder}" targetFolder="${build.result.folder}/${full.name}" />
+-	</target>
+-
+-	<target name="gather.bin.parts" depends="init" if="destination.temp.folder">
+-		<antcall target="build.index" />
+-		<mkdir dir="${destination.temp.folder}/${full.name}" />
+-		<copy todir="${destination.temp.folder}/${full.name}">
+-			<fileset dir="${basedir}" includes="*.properties,*.xml,*.zip,*.html,*.htm,*.png,*.css,META-INF/**,index/**,concepts/**, gettingStarted/**, images/**, reference/**, tasks/**, tips/**, whatsNew/**" excludes="build.properties,build.xml" />
+-		</copy>
+-		<eclipse.versionReplacer path="${destination.temp.folder}/${full.name}" version="${version.suffix}" />
+-	</target>
+-
+-	<target name="build.jars" depends="init" description="Build all the jars for the plug-in: org.eclipse.jdt.doc.user.">
+-	</target>
+-
+-	<target name="build.index" depends="init" description="Builds search index for the plug-in: org.eclipse.jdt.doc.user." if="eclipse.running">
++	<target name="build.index" description="Builds search index for the plug-in: org.eclipse.jdt.doc.user." if="eclipse.running">
+ 		<help.buildHelpIndex manifest="plugin.xml" destination="." />
+ 	</target>
+ 
+-	<target name="build.sources" depends="init">
+-	</target>
+-
+-	<target name="build.zips" depends="init">
+-	</target>
+-
+-	<target name="gather.sources" depends="init" if="destination.temp.folder">
+-	</target>
+-
+-	<target name="gather.logs" depends="init" if="destination.temp.folder">
+-	</target>
+-
+-	<target name="clean" depends="init" description="Clean the plug-in: org.eclipse.jdt.doc.user of all the zips, jars and logs created.">
+-		<delete file="${plugin.destination}/${full.name}.jar" />
+-		<delete file="${plugin.destination}/${full.name}.zip" />
+-		<delete dir="${temp.folder}" />
+-	</target>
+-
+-	<target name="refresh" depends="init" if="eclipse.running" description="Refresh this folder.">
+-		<eclipse.convertPath fileSystemPath="D:/30workspace/org.eclipse.jdt.doc.user/" property="resourcePath" />
+-		<eclipse.refreshLocal resource="${resourcePath}" depth="infinite" />
+-	</target>
+-
+-	<target name="zip.plugin" depends="init" description="Create a zip containing all the elements for the plug-in: org.eclipse.jdt.doc.user." if="eclipse.running">
+-		<delete dir="${temp.folder}" />
+-		<mkdir dir="${temp.folder}" />
+-		<antcall target="build.jars" />
+-		<antcall target="build.sources" />
+-		<antcall target="gather.bin.parts">
+-			<param name="destination.temp.folder" value="${temp.folder}/" />
+-		</antcall>
+-		<antcall target="gather.sources">
+-			<param name="destination.temp.folder" value="${temp.folder}/" />
+-		</antcall>
+-		<delete>
+-			<fileset dir="${temp.folder}" includes="**/*.bin.log" />
+-		</delete>
+-		<zip zipfile="${plugin.destination}/${full.name}.zip" basedir="${temp.folder}" filesonly="true" whenempty="skip" />
+-		<delete dir="${temp.folder}" />
+-	</target>
+-
+ </project>

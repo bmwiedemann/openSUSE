@@ -1,0 +1,11 @@
+--- eclipse-platform-sources-I20180906-0745/eclipse.platform.ui/bundles/org.eclipse.jface/src/org/eclipse/jface/resource/ImageDescriptor.java	2018-08-28 14:04:21.000000000 +0200
++++ eclipse-platform-sources-I20180906-0745/eclipse.platform.ui/bundles/org.eclipse.jface/src/org/eclipse/jface/resource/ImageDescriptor.java	2019-09-27 07:39:06.495910752 +0200
+@@ -291,7 +291,7 @@
+ 		 * this fails.
+ 		 */
+ 		try {
+-			return new Image(device, this::getImageData);
++			return new Image(device, (ImageDataProvider) this::getImageData);
+ 		} catch (IllegalArgumentException | SWTException e) {
+ 			if (returnMissingImageOnError) {
+ 				try {

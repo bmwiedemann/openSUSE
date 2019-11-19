@@ -1,0 +1,114 @@
+From 72e58be8c9c5fbc6f6527318b4381a58cebfc120 Mon Sep 17 00:00:00 2001
+From: Roland Grunberg <rgrunber@redhat.com>
+Date: Thu, 7 Apr 2016 10:23:49 -0400
+Subject: [PATCH] Support reading BundleInfo from p2 Droplets enabled
+ installations.
+
+- Additionally support reading source bundles from p2 Droplets location
+---
+ ui/org.eclipse.pde.core/META-INF/MANIFEST.MF       |  3 +-
+ .../src/org/eclipse/pde/internal/core/P2Utils.java | 48 +++++++++++++++++++---
+ 2 files changed, 45 insertions(+), 6 deletions(-)
+
+diff --git eclipse.pde.ui/ui/org.eclipse.pde.core/META-INF/MANIFEST.MF eclipse.pde.ui/ui/org.eclipse.pde.core/META-INF/MANIFEST.MF
+index 7c20994..ab702e3 100644
+--- eclipse.pde.ui/ui/org.eclipse.pde.core/META-INF/MANIFEST.MF
++++ eclipse.pde.ui/ui/org.eclipse.pde.core/META-INF/MANIFEST.MF
+@@ -102,6 +102,7 @@ Require-Bundle:
+  org.eclipse.core.filesystem;bundle-version="[1.0.0,2.0.0)"
+ Eclipse-LazyStart: true
+ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+-Import-Package: com.ibm.icu.util
++Import-Package: com.ibm.icu.util,
++ org.eclipse.equinox.internal.simpleconfigurator.utils
+ Bundle-ActivationPolicy: lazy
+ Automatic-Module-Name: org.eclipse.pde.core
+diff --git eclipse.pde.ui/ui/org.eclipse.pde.core/src/org/eclipse/pde/internal/core/P2Utils.java eclipse.pde.ui/ui/org.eclipse.pde.core/src/org/eclipse/pde/internal/core/P2Utils.java
+index fbd4b81..55cd40e 100644
+--- eclipse.pde.ui/ui/org.eclipse.pde.core/src/org/eclipse/pde/internal/core/P2Utils.java
++++ eclipse.pde.ui/ui/org.eclipse.pde.core/src/org/eclipse/pde/internal/core/P2Utils.java
+@@ -15,11 +15,12 @@
+ package org.eclipse.pde.internal.core;
+ 
+ import java.io.*;
+-import java.net.MalformedURLException;
+-import java.net.URL;
++import java.net.*;
++import java.nio.file.Paths;
+ import java.util.*;
+ import org.eclipse.core.runtime.*;
+ import org.eclipse.equinox.frameworkadmin.BundleInfo;
++import org.eclipse.equinox.internal.simpleconfigurator.utils.SimpleConfiguratorUtils;
+ import org.eclipse.equinox.p2.core.IProvisioningAgent;
+ import org.eclipse.equinox.p2.core.IProvisioningAgentProvider;
+ import org.eclipse.equinox.p2.engine.*;
+@@ -32,6 +33,7 @@ import org.eclipse.osgi.service.resolver.*;
+ import org.eclipse.pde.core.plugin.*;
+ import org.eclipse.pde.internal.build.BundleHelper;
+ import org.eclipse.pde.internal.core.plugin.PluginBase;
++import org.eclipse.pde.internal.core.util.ManifestUtils;
+ import org.osgi.framework.Constants;
+ 
+ /**
+@@ -111,7 +113,16 @@ public class P2Utils {
+ 		try {
+ 			URL bundlesTxt = new URL(configurationArea.getProtocol(), configurationArea.getHost(), new File(configurationArea.getFile(), SimpleConfiguratorManipulator.BUNDLES_INFO_PATH).getAbsolutePath());
+ 			File home = basePath.toFile();
+-			BundleInfo bundles[] = getBundlesFromFile(bundlesTxt, home);
++			List<org.eclipse.equinox.internal.simpleconfigurator.utils.BundleInfo> ibundleList = SimpleConfiguratorUtils.readConfiguration(bundlesTxt, home.toURI());
++			List<BundleInfo> bundleList = new ArrayList<>();
++			for (org.eclipse.equinox.internal.simpleconfigurator.utils.BundleInfo b : ibundleList) {
++				URI location = b.getLocation();
++				if (!location.isAbsolute() && b.getBaseLocation() != null)
++					location = URIUtil.makeAbsolute(location, b.getBaseLocation());
++				BundleInfo binfo = new BundleInfo(b.getSymbolicName(), b.getVersion(), location, b.getStartLevel(), b.isMarkedAsStarted());
++				bundleList.add(binfo);
++			}
++			BundleInfo[] bundles = bundleList.toArray(new BundleInfo[0]);
+ 			if (bundles == null || bundles.length == 0) {
+ 				return null;
+ 			}
+@@ -143,11 +154,38 @@ public class P2Utils {
+ 		try {
+ 			File home = basePath.toFile();
+ 			URL srcBundlesTxt = new URL(configurationArea.getProtocol(), configurationArea.getHost(), configurationArea.getFile().concat(SimpleConfiguratorManipulator.SOURCE_INFO_PATH));
++			final List<BundleInfo> allSrcBundles = new ArrayList<>();
++			try {
++				for (File infoFile : SimpleConfiguratorUtils.getInfoFiles()) {
++					File pluginsDir = Paths.get(infoFile.getParent(), "plugins").toFile(); //$NON-NLS-1$
++					File[] sourceJars = pluginsDir.listFiles((dir, name) -> {
++						return name.matches(".*\\.source_.*\\.jar$"); //$NON-NLS-1$
++					});
++					for (File sourceJar : sourceJars) {
++						Map<String, String> manifest;
++						try {
++							manifest = ManifestUtils.loadManifest(sourceJar);
++							final String bsn = manifest.get(Constants.BUNDLE_SYMBOLICNAME);
++							final String version = manifest.get(Constants.BUNDLE_VERSION);
++							BundleInfo info = new BundleInfo(bsn, version, sourceJar.toURI(), -1, false);
++							allSrcBundles.add(info);
++						} catch (CoreException e) {
++							// continue
++						}
++					}
++				}
++			} catch (URISyntaxException e) {
++				// continue
++			}
++
+ 			BundleInfo srcBundles[] = getBundlesFromFile(srcBundlesTxt, home);
+-			if (srcBundles == null || srcBundles.length == 0) {
++			if (srcBundles != null && srcBundles.length > 0) {
++				allSrcBundles.addAll(Arrays.asList(srcBundles));
++			}
++			if (allSrcBundles.size() == 0) {
+ 				return null;
+ 			}
+-			return srcBundles;
++			return allSrcBundles.toArray(new BundleInfo[0]);
+ 		} catch (MalformedURLException e) {
+ 			PDECore.log(e);
+ 			return null;
+-- 
+2.7.4
+

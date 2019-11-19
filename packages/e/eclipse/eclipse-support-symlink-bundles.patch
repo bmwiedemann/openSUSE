@@ -1,0 +1,159 @@
+From aabcf5acff194b807c4d0bcf68425c3452c90339 Mon Sep 17 00:00:00 2001
+From: Roland Grunberg <rgrunber@redhat.com>
+Date: Fri, 12 Sep 2014 10:27:14 -0400
+Subject: [PATCH] Add support for regenerating bundle versions for symlinks.
+
+When the version field in a bundle info file corresponds to a bundle
+whose location is a symbolic link, the correct version should be
+regenerated every time, in case a change has occured.
+
+Change-Id: Ifbe8efed2218a8a1250fd1ac59f0cdd6bdd5f309
+---
+ .../META-INF/MANIFEST.MF                           |   1 +
+ .../utils/SimpleConfiguratorUtils.java             | 106 ++++++++++++++++++++-
+ 2 files changed, 106 insertions(+), 1 deletion(-)
+
+diff --git rt.equinox.p2/bundles/org.eclipse.equinox.simpleconfigurator/META-INF/MANIFEST.MF rt.equinox.p2/bundles/org.eclipse.equinox.simpleconfigurator/META-INF/MANIFEST.MF
+index d88d0a6..07fe087 100644
+--- rt.equinox.p2/bundles/org.eclipse.equinox.simpleconfigurator/META-INF/MANIFEST.MF
++++ rt.equinox.p2/bundles/org.eclipse.equinox.simpleconfigurator/META-INF/MANIFEST.MF
+@@ -9,6 +9,7 @@ Bundle-Activator: org.eclipse.equinox.internal.simpleconfigurator.Activator
+ Bundle-ActivationPolicy: lazy
+ Import-Package: org.eclipse.osgi.framework.console;version="1.0.0";resolution:=optional,
+  org.eclipse.osgi.service.datalocation;version="1.0.0";resolution:=optional,
++ org.eclipse.osgi.util;version="1.1.0",
+  org.osgi.framework;version="1.3.0",
+  org.osgi.framework.namespace;version="1.0.0",
+  org.osgi.framework.wiring;version="1.2.0",
+diff --git rt.equinox.p2/bundles/org.eclipse.equinox.simpleconfigurator/src/org/eclipse/equinox/internal/simpleconfigurator/utils/SimpleConfiguratorUtils.java rt.equinox.p2/bundles/org.eclipse.equinox.simpleconfigurator/src/org/eclipse/equinox/internal/simpleconfigurator/utils/SimpleConfiguratorUtils.java
+index ab69b88..d6bf121 100644
+--- rt.equinox.p2/bundles/org.eclipse.equinox.simpleconfigurator/src/org/eclipse/equinox/internal/simpleconfigurator/utils/SimpleConfiguratorUtils.java
++++ rt.equinox.p2/bundles/org.eclipse.equinox.simpleconfigurator/src/org/eclipse/equinox/internal/simpleconfigurator/utils/SimpleConfiguratorUtils.java
+@@ -15,8 +15,12 @@ package org.eclipse.equinox.internal.simpleconfigurator.utils;
+ import java.net.*;
+ import java.nio.file.Files;
+ import java.util.*;
++import java.util.jar.JarFile;
++import java.util.zip.ZipEntry;
++import java.util.zip.ZipFile;
+ import org.eclipse.equinox.internal.simpleconfigurator.Activator;
+-import org.osgi.framework.Version;
++import org.eclipse.osgi.util.ManifestElement;
++import org.osgi.framework.*;
+ 
+ public class SimpleConfiguratorUtils {
+ 
+@@ -277,6 +281,16 @@ public class SimpleConfiguratorUtils {
+ 		String symbolicName = tok.nextToken().trim();
+ 		String version = tok.nextToken().trim();
+ 		URI location = parseLocation(tok.nextToken().trim());
++		if (base != null) {
++			URI absLoc = URIUtil.append(base, location.toString());
++			java.nio.file.Path absPath = java.nio.file.Paths.get(absLoc);
++			// Symbolic links may change outside Eclipse so regenerate proper bundle version.
++			if (Files.isSymbolicLink(absPath) && absPath.toFile().isFile()) {
++				// We can't depend on org.eclipse.equinox.internal.frameworkadmin.utils.Utils
++				Dictionary<String, String> manifest = getOSGiManifest(absLoc);
++				version = manifest.get(Constants.BUNDLE_VERSION);
++			}
++		}
+ 		int startLevel = Integer.parseInt(tok.nextToken().trim());
+ 		boolean markedAsStarted = Boolean.parseBoolean(tok.nextToken());
+ 		BundleInfo result = new BundleInfo(symbolicName, version, location, startLevel, markedAsStarted);
+@@ -400,4 +414,93 @@ public class SimpleConfiguratorUtils {
+ 		}
+ 		return regularTimestamp;
+ 	}
++
++	private static Dictionary<String, String> getOSGiManifest(URI location) {
++		if (location == null)
++			return null;
++		// if we have a file-based URL that doesn't end in ".jar" then...
++		if (FILE_SCHEME.equals(location.getScheme()))
++			return basicLoadManifest(URIUtil.toFile(location));
++
++		try {
++			URL url = new URL("jar:" + location.toString() + "!/"); //$NON-NLS-1$//$NON-NLS-2$
++			JarURLConnection jarConnection = (JarURLConnection) url.openConnection();
++			ZipFile jar = jarConnection.getJarFile();
++
++			try {
++				ZipEntry entry = jar.getEntry(JarFile.MANIFEST_NAME);
++				if (entry == null)
++					return null;
++
++				Map<String, String> manifest = ManifestElement.parseBundleManifest(jar.getInputStream(entry), null);
++				return manifestToProperties(manifest);
++			} catch (BundleException e) {
++				return null;
++			} finally {
++				jar.close();
++			}
++		} catch (IOException e) {
++			if (System.getProperty("osgi.debug") != null) { //$NON-NLS-1$
++				System.err.println("location=" + location); //$NON-NLS-1$
++				e.printStackTrace();
++			}
++		}
++		return null;
++	}
++
++	private static Dictionary<String, String> basicLoadManifest(File bundleLocation) {
++		InputStream manifestStream = null;
++		ZipFile jarFile = null;
++		try {
++			try {
++				// Handle a JAR'd bundle
++				if (bundleLocation.isFile()) {
++					jarFile = new ZipFile(bundleLocation, ZipFile.OPEN_READ);
++					ZipEntry manifestEntry = jarFile.getEntry(JarFile.MANIFEST_NAME);
++					if (manifestEntry != null) {
++						manifestStream = jarFile.getInputStream(manifestEntry);
++					}
++				} else {
++					// we have a directory-based bundle
++					File bundleManifestFile = new File(bundleLocation, JarFile.MANIFEST_NAME);
++					if (bundleManifestFile.exists())
++						manifestStream = new BufferedInputStream(new FileInputStream(new File(bundleLocation, JarFile.MANIFEST_NAME)));
++				}
++			} catch (IOException e) {
++				//ignore
++			}
++
++			try {
++				Map<String, String> manifest = ManifestElement.parseBundleManifest(manifestStream, null);
++				return manifestToProperties(manifest);
++			} catch (IOException ioe) {
++				return null;
++			} catch (BundleException e) {
++				return null;
++			}
++		} finally {
++			try {
++				if (manifestStream != null)
++					manifestStream.close();
++			} catch (IOException e1) {
++				//Ignore
++			}
++			try {
++				if (jarFile != null)
++					jarFile.close();
++			} catch (IOException e2) {
++				//Ignore
++			}
++		}
++	}
++
++	private static Dictionary<String, String> manifestToProperties(Map<String, String> d) {
++		Iterator<String> iter = d.keySet().iterator();
++		Dictionary<String, String> result = new Hashtable<String, String>();
++		while (iter.hasNext()) {
++			String key = iter.next();
++			result.put(key, d.get(key));
++		}
++		return result;
++	}
+ }
+-- 
+2.5.0
+

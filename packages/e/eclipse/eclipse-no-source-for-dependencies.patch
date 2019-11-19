@@ -1,0 +1,125 @@
+--- rt.equinox.p2/features/org.eclipse.equinox.p2.core.feature/pom.xml.bak	2012-07-25 17:45:43.000000000 +0200
++++ rt.equinox.p2/features/org.eclipse.equinox.p2.core.feature/pom.xml	2012-07-31 07:41:13.103636303 +0200
+@@ -40,6 +40,25 @@
+               <excludes>
+                 <plugin id="org.sat4j.core"/>
+                 <plugin id="org.sat4j.pb"/>
++                <plugin id="org.apache.commons.codec" />
++		 <plugin id="org.apache.commons.httpclient" />
++		 <plugin id="org.apache.httpcomponents.httpclient" />
++		 <plugin id="org.apache.httpcomponents.httpcore" />
++		 <plugin id="org.apache.commons.logging" />
++		 <plugin id="org.eclipse.ecf"/>
++		 <plugin id="org.eclipse.ecf.filetransfer"/>
++		 <plugin id="org.eclipse.ecf.identity"/>
++		 <plugin id="org.eclipse.ecf.provider.filetransfer"/>
++		 <plugin id="org.eclipse.ecf.provider.filetransfer.httpclient"/>
++		 <plugin id="org.eclipse.ecf.provider.filetransfer.httpclient.ssl"/>
++		 <plugin id="org.eclipse.ecf.provider.filetransfer.httpclient4"/>
++		 <plugin id="org.eclipse.ecf.provider.filetransfer.httpclient4.ssl"/>
++		 <plugin id="org.eclipse.ecf.provider.filetransfer.ssl"/>
++		 <plugin id="org.eclipse.ecf.ssl"/>
++		 <plugin id="org.eclipse.equinox.security.macosx"/>
++		 <plugin id="org.eclipse.equinox.security.win32.x86"/>
++		 <plugin id="org.eclipse.equinox.security.win32.x86_64"/>
++                <plugin id="org.tukaani.xz" />
+               </excludes>
+             </configuration>
+           </execution>
+--- eclipse.platform.releng/features/org.eclipse.help-feature/pom.xml.bak	2012-07-31 07:43:57.000000000 +0200
++++ eclipse.platform.releng/features/org.eclipse.help-feature/pom.xml	2012-07-31 08:05:24.279277920 +0200
+@@ -34,6 +34,17 @@
+             <goals>
+               <goal>source-feature</goal>
+             </goals>
++            <configuration>
++              <excludes>
++                <plugin id="javax.servlet-api" /><plugin id="javax.el" /><plugin id="com.sun.el.javax.el" /><plugin id="org.apache.el" /><plugin id="org.apache.commons.logging" />
++                <plugin id="javax.servlet.jsp" /><plugin id="org.apache.lucene.analysis" /><plugin id="org.apache.lucene.core" />
++                <plugin id="org.apache.tomcat" /><plugin id="org.eclipse.jetty.continuation" /><plugin id="org.eclipse.jetty.http" />
++                <plugin id="org.apache.juli" /><plugin id="org.eclipse.jetty.io" /><plugin id="org.eclipse.jetty.security" />
++                <plugin id="org.eclipse.jetty.util" /><plugin id="org.eclipse.jetty.server" />
++                <plugin id="org.glassfish.web.javax.servlet.jsp" /><plugin id="org.eclipse.jetty.servlet" />
++                <plugin id="org.apache.commons.el" /><plugin id="org.glassfish.web.javax.servlet.jsp" />
++              </excludes>
++            </configuration>
+           </execution>
+         </executions>
+       </plugin>
+--- eclipse.pde.ui/features/org.eclipse.pde-feature/pom.xml.bak	2013-01-29 11:22:47.065953870 +0100
++++ eclipse.pde.ui/features/org.eclipse.pde-feature/pom.xml	2013-01-29 11:23:18.630196529 +0100
+@@ -38,6 +38,8 @@
+             <configuration>
+               <excludes>
+                   <plugin id="org.eclipse.pde"/>
++		  <plugin id="org.objectweb.asm"/>
++		  <plugin id="org.objectweb.asm.tree"/>
+                   <plugin id="org.eclipse.pde.doc.user"/>
+               </excludes>
+             </configuration>
+--- eclipse.jdt/org.eclipse.jdt-feature/pom.xml.orig	2013-02-20 16:32:38.000000000 +0100
++++ eclipse.jdt/org.eclipse.jdt-feature/pom.xml	2013-02-21 10:08:50.404275226 +0100
+@@ -57,6 +57,8 @@
+               <excludes>
+                 <plugin id="org.eclipse.jdt"/>
+                 <plugin id="org.eclipse.jdt.doc.user"/>
++                <plugin id="org.junit" />
++                <plugin id="org.hamcrest.core" />
+               </excludes>
+             </configuration>
+           </execution>
+--- eclipse.platform.releng/features/org.eclipse.platform-feature/pom.xml.orig  2014-11-28 15:27:07.874872769 +0000
++++ eclipse.platform.releng/features/org.eclipse.platform-feature/pom.xml       2014-11-28 15:31:02.592652099 +0000
+@@ -68,6 +68,8 @@
+                 <plugin id="org.eclipse.core.net.linux.x86_64"/>
+                 <plugin id="org.eclipse.core.net.win32.x86"/>
+                 <plugin id="org.eclipse.core.net.win32.x86_64"/>
++                <plugin id="com.jcraft.jsch"/>
++                <plugin id="org.apache.ant"/>
+               </excludes>
+             </configuration>
+           </execution>
+--- eclipse.platform.ui/features/org.eclipse.e4.rcp/pom.xml.orig	2014-05-26 18:37:25.406426611 +0300
++++ eclipse.platform.ui/features/org.eclipse.e4.rcp/pom.xml	2014-05-26 18:37:47.327449374 +0300
+@@ -44,6 +44,22 @@
+                 <plugin id="org.eclipse.equinox.launcher.gtk.linux.x86_64"/>
+                 <plugin id="org.eclipse.equinox.launcher.win32.win32.x86"/>
+                 <plugin id="org.eclipse.equinox.launcher.win32.win32.x86_64"/>
++                <plugin id="org.eclipse.equinox.launcher.gtk.linux.arm" />
++                <plugin id="org.eclipse.equinox.launcher.gtk.linux.aarch64" />
++                <plugin id="org.eclipse.equinox.launcher.gtk.linux.s390x" />
++                <plugin id="org.eclipse.e4.ui.workbench.renderers.swt.cocoa" />
++                <plugin id="org.apache.commons.jxpath" />
++                <plugin id="org.apache.felix.gogo.command" />
++                <plugin id="org.apache.batik.css" />
++                <plugin id="org.apache.batik.i18n" />
++                <plugin id="org.w3c.css.sac" />
++                <plugin id="org.apache.batik.util" />
++                <plugin id="org.apache.xmlgraphics" />
++                <plugin id="org.w3c.dom.svg" />
++                <plugin id="javax.inject" />
++                <plugin id="com.ibm.icu"/>
++                <plugin id="org.apache.felix.gogo.runtime" />
++                <plugin id="org.apache.felix.gogo.shell" />
+               </excludes>
+             </configuration>
+           </execution>
+--- eclipse.platform.releng/features/org.eclipse.sdk/feature.xml.orig	2016-04-27 09:18:50.421221722 +0100
++++ eclipse.platform.releng/features/org.eclipse.sdk/feature.xml	2016-04-27 09:19:08.454957280 +0100
+@@ -51,16 +51,6 @@
+          id="org.eclipse.help.source"
+          version="0.0.0"/>
+ 
+-   <requires>
+-      <import feature="org.eclipse.emf.common.source" version="2.7.0" match="compatible"/>
+-      <import feature="org.eclipse.emf.ecore.source" version="2.7.0" match="compatible"/>
+-      <import feature="org.eclipse.ecf.core.feature.source" version="1.4.0" match="compatible"/>
+-      <import feature="org.eclipse.ecf.core.ssl.feature.source" version="1.1.0" match="compatible"/>
+-      <import feature="org.eclipse.ecf.filetransfer.feature.source" version="3.13.7" match="compatible"/>
+-      <import feature="org.eclipse.ecf.filetransfer.httpclient4.feature.source" version="3.13.7" match="compatible"/>
+-      <import feature="org.eclipse.ecf.filetransfer.httpclient4.ssl.feature.source" version="1.1.0" match="compatible"/>
+-      <import feature="org.eclipse.ecf.filetransfer.ssl.feature.source" version="1.1.0" match="compatible"/>
+-   </requires>
+ 
+    <plugin
+          id="org.eclipse.sdk"

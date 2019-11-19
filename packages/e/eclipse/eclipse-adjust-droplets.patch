@@ -1,0 +1,52 @@
+diff --git rt.equinox.p2/bundles/org.eclipse.equinox.p2.engine/src/org/eclipse/equinox/internal/p2/engine/EngineActivator.java rt.equinox.p2/bundles/org.eclipse.equinox.p2.engine/src/org/eclipse/equinox/internal/p2/engine/EngineActivator.java
+index 5fc0e73..ed7e4fa 100644
+--- rt.equinox.p2/bundles/org.eclipse.equinox.p2.engine/src/org/eclipse/equinox/internal/p2/engine/EngineActivator.java
++++ rt.equinox.p2/bundles/org.eclipse.equinox.p2.engine/src/org/eclipse/equinox/internal/p2/engine/EngineActivator.java
+@@ -147,7 +147,20 @@ public class EngineActivator implements BundleActivator {
+ 						}
+ 						continue;
+ 					}
+-					File[] listFiles = extension.listFiles();
++
++					// Support the additional 'eclipse' directory if it exists.
++					File[] extensionFiles = extension.listFiles(new FilenameFilter() {
++						public boolean accept(File dir, String name) {
++							return name.equals("eclipse");
++						}
++					});
++
++					File[] listFiles;
++					if (extensionFiles.length == 1) {
++						listFiles = extensionFiles[0].listFiles();
++					} else {
++						listFiles = extension.listFiles();
++					}
+ 					// new magic - multiple info files, f.e.
+ 					//   egit.info (git feature)
+ 					//   cdt.link (properties file containing link=path) to other info file
+diff --git rt.equinox.p2/bundles/org.eclipse.equinox.simpleconfigurator/src/org/eclipse/equinox/internal/simpleconfigurator/utils/SimpleConfiguratorUtils.java rt.equinox.p2/bundles/org.eclipse.equinox.simpleconfigurator/src/org/eclipse/equinox/internal/simpleconfigurator/utils/SimpleConfiguratorUtils.java
+index 12e4d89..77945ef 100644
+--- rt.equinox.p2/bundles/org.eclipse.equinox.simpleconfigurator/src/org/eclipse/equinox/internal/simpleconfigurator/utils/SimpleConfiguratorUtils.java
++++ rt.equinox.p2/bundles/org.eclipse.equinox.simpleconfigurator/src/org/eclipse/equinox/internal/simpleconfigurator/utils/SimpleConfiguratorUtils.java
+@@ -155,7 +155,20 @@ public class SimpleConfiguratorUtils {
+ 						}
+ 						continue;
+ 					}
+-					File[] listFiles = extension.listFiles();
++
++					// Support the additional 'eclipse' directory if it exists.
++					File[] extensionFiles = extension.listFiles(new FilenameFilter() {
++						public boolean accept(File dir, String name) {
++							return name.equals("eclipse");
++						}
++					});
++
++					File[] listFiles;
++					if (extensionFiles.length == 1) {
++						listFiles = extensionFiles[0].listFiles();
++					} else {
++						listFiles = extension.listFiles();
++					}
+ 					// new magic - multiple info files, f.e.
+ 					//   egit.info (git feature)
+ 					//   cdt.link (properties file containing link=path) to other info file

@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Mon Nov 11 12:23:36 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of eclipse 4.9.0 as a _multibuild package in
+  order to allow bootstrapping

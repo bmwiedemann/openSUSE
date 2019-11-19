@@ -1,0 +1,197 @@
+diff --git a/eclipse.platform.ui/features/org.eclipse.e4.rcp/feature.xml b/eclipse.platform.ui/features/org.eclipse.e4.rcp/feature.xml
+index 7e1f520..734dd10 100644
+--- a/eclipse.platform.ui/features/org.eclipse.e4.rcp/feature.xml
++++ b/eclipse.platform.ui/features/org.eclipse.e4.rcp/feature.xml
+@@ -418,6 +418,36 @@
+          install-size="0"
+          version="0.0.0"
+          fragment="true"/>
++         
++   <plugin
++         id="org.eclipse.equinox.launcher.gtk.linux.arm"
++         os="linux"
++         ws="gtk"
++         arch="arm"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"/>
++
++   <plugin
++         id="org.eclipse.equinox.launcher.gtk.linux.aarch64"
++         os="linux"
++         ws="gtk"
++         arch="aarch64"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"/>
++
++   <plugin
++         id="org.eclipse.equinox.launcher.gtk.linux.s390x"
++         os="linux"
++         ws="gtk"
++         arch="s390x"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"/>
+ 
+    <plugin
+          id="org.eclipse.equinox.launcher.gtk.linux.x86"
+@@ -496,6 +526,39 @@
+          download-size="0"
+          install-size="0"
+          version="0.0.0"
++         fragment="true"
++         unpack="false"/>
++
++   <plugin
++         id="org.eclipse.swt.gtk.linux.s390x"
++         os="linux"
++         ws="gtk"
++         arch="s390x"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"
++         unpack="false"/>
++
++   <plugin
++         id="org.eclipse.swt.gtk.linux.arm"
++         os="linux"
++         ws="gtk"
++         arch="arm"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"
++         unpack="false"/>
++
++   <plugin
++         id="org.eclipse.swt.gtk.linux.aarch64"
++         os="linux"
++         ws="gtk"
++         arch="aarch64"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
+          fragment="true"
+          unpack="false"/>
+ 
+--- a/rt.equinox.framework/features/org.eclipse.equinox.executable.feature/pom.xml	2014-11-28 15:09:42.000000000 +0000
++++ b/rt.equinox.framework/features/org.eclipse.equinox.executable.feature/pom.xml	2014-11-28 16:52:00.315007846 +0000
+@@ -123,7 +123,11 @@
+                     <copy todir="bin" verbose="true" includeEmptyDirs="false" failonerror="true">
+                       <fileset dir="../../../rt.equinox.binaries/org.eclipse.equinox.executable/bin/">
+                         <include name="cocoa/macosx/x86_64/**/*"/>
++                        <include name="gtk/linux/arm/**/*"/>
++                        <include name="gtk/linux/aarch64/**/*"/>
++                        <include name="gtk/linux/ppc64/**/*"/>
+                         <include name="gtk/linux/ppc64le/**/*"/>
++                        <include name="gtk/linux/s390x/**/*"/>
+                         <include name="gtk/linux/x86/**/*"/>
+                         <include name="gtk/linux/x86_64/**/*"/>
+                         <include name="win32/win32/x86/**/*"/>
+--- a/rt.equinox.framework/features/org.eclipse.equinox.executable.feature/build.properties	2015-01-30 14:44:03.436891441 +0000
++++ b/rt.equinox.framework/features/org.eclipse.equinox.executable.feature/build.properties	2015-01-30 14:45:25.232480509 +0000
+@@ -37,3 +37,15 @@
+ 
+ root.linux.gtk.x86_64=bin/gtk/linux/x86_64,gtk_root
+ root.linux.gtk.x86_64.permissions.755=libcairo-swt.so
++
++root.linux.gtk.arm=bin/gtk/linux/arm,gtk_root
++root.linux.gtk.arm.permissions.755=launcher
++
++root.linux.gtk.aarch64=bin/gtk/linux/aarch64,gtk_root
++root.linux.gtk.aarch64.permissions.755=launcher
++
++root.linux.gtk.ppc64=bin/gtk/linux/ppc64,gtk_root
++root.linux.gtk.ppc64.permissions.755=launcher
++
++root.linux.gtk.s390x=bin/gtk/linux/s390x,gtk_root
++root.linux.gtk.s390x.permissions.755=launcher
+--- a/eclipse.platform.swt.binaries/pom.xml	2017-04-05 01:57:59.142576722 +0100
++++ b/eclipse.platform.swt.binaries/pom.xml	2017-04-05 02:00:00.153247342 +0100
+@@ -54,7 +54,11 @@
+ 
+   <modules>
+     <module>bundles/org.eclipse.swt.cocoa.macosx.x86_64</module>
++    <module>bundles/org.eclipse.swt.gtk.linux.arm</module>
++    <module>bundles/org.eclipse.swt.gtk.linux.aarch64</module>
++    <module>bundles/org.eclipse.swt.gtk.linux.ppc64</module>
+     <module>bundles/org.eclipse.swt.gtk.linux.ppc64le</module>
++    <module>bundles/org.eclipse.swt.gtk.linux.s390x</module>
+     <module>bundles/org.eclipse.swt.gtk.linux.x86</module>
+     <module>bundles/org.eclipse.swt.gtk.linux.x86_64</module>
+     <module>bundles/org.eclipse.swt.win32.win32.x86</module>
+--- a/eclipse.platform.swt/bundles/org.eclipse.swt/META-INF/p2.inf	2017-04-21 10:15:34.857977599 +0100
++++ b/eclipse.platform.swt/bundles/org.eclipse.swt/META-INF/p2.inf	2017-04-21 10:18:22.878025820 +0100
+@@ -34,3 +34,23 @@
+ requires.7.name = org.eclipse.swt.gtk.linux.ppc64le
+ requires.7.range = [$version$,$version$]
+ requires.7.filter = (&(osgi.os=linux)(osgi.ws=gtk)(osgi.arch=ppc64le)(!(org.eclipse.swt.buildtime=true)))
++
++requires.8.namespace = org.eclipse.equinox.p2.iu
++requires.8.name = org.eclipse.swt.gtk.linux.ppc64
++requires.8.range = [$version$,$version$]
++requires.8.filter = (&(osgi.os=linux)(osgi.ws=gtk)(osgi.arch=ppc64)(!(org.eclipse.swt.buildtime=true)))
++
++requires.9.namespace = org.eclipse.equinox.p2.iu
++requires.9.name = org.eclipse.swt.gtk.linux.arm
++requires.9.range = [$version$,$version$]
++requires.9.filter = (&(osgi.os=linux)(osgi.ws=gtk)(osgi.arch=arm)(!(org.eclipse.swt.buildtime=true)))
++
++requires.10.namespace = org.eclipse.equinox.p2.iu
++requires.10.name = org.eclipse.swt.gtk.linux.aarch64
++requires.10.range = [$version$,$version$]
++requires.10.filter = (&(osgi.os=linux)(osgi.ws=gtk)(osgi.arch=aarch64)(!(org.eclipse.swt.buildtime=true)))
++
++requires.11.namespace = org.eclipse.equinox.p2.iu
++requires.11.name = org.eclipse.swt.gtk.linux.s390x
++requires.11.range = [$version$,$version$]
++requires.11.filter = (&(osgi.os=linux)(osgi.ws=gtk)(osgi.arch=s390x)(!(org.eclipse.swt.buildtime=true)))
+--- a/rt.equinox.framework/features/org.eclipse.equinox.executable.feature/library/gtk/build.sh	2017-04-19 13:31:15.000000000 +0100
++++ b/rt.equinox.framework/features/org.eclipse.equinox.executable.feature/library/gtk/build.sh	2017-04-23 16:58:34.022207885 +0100
+@@ -109,7 +109,7 @@
+ 			"s390x")
+ 				defaultOSArch="s390x"
+ 				defaultJava=DEFAULT_JAVA_EXEC
+-				OUTPUT_DIR="$EXEC_DIR/contributed/$defaultWS/$defaultOS/$defaultOSArch"
++				OUTPUT_DIR="$EXEC_DIR/bin/$defaultWS/$defaultOS/$defaultOSArch"
+ 				;;
+ 			arm*)
+ 				defaultOSArch="arm"
+--- a/rt.equinox.framework/pom.xml	2017-04-26 22:19:15.548461372 +0100
++++ b/rt.equinox.framework/pom.xml	2017-04-26 22:20:41.348571492 +0100
+@@ -73,6 +73,30 @@
+ 	<module>bundles/org.eclipse.equinox.launcher.gtk.linux.aarch64</module>
+       </modules>
+     </profile>
++    <profile>
++      <id>build-native-launchers-gtk.linux.ppc64</id>
++      <activation>
++	<property>
++	  <name>native</name>
++	  <value>gtk.linux.ppc64</value>
++        </property>
++      </activation>
++      <modules>
++	<module>bundles/org.eclipse.equinox.launcher.gtk.linux.ppc64</module>
++      </modules>
++    </profile>
++    <profile>
++      <id>build-native-launchers-gtk.linux.s390x</id>
++      <activation>
++	<property>
++	  <name>native</name>
++	  <value>gtk.linux.s390x</value>
++        </property>
++      </activation>
++      <modules>
++	<module>bundles/org.eclipse.equinox.launcher.gtk.linux.s390x</module>
++      </modules>
++    </profile>
+   </profiles>
+ 
+   <modules>

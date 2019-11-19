@@ -1,0 +1,23 @@
+--- eclipse.platform.swt/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/build.sh.orig	2018-08-19 12:37:52.764590467 +0100
++++ eclipse.platform.swt/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/build.sh	2018-08-19 12:38:15.032503913 +0100
+@@ -75,7 +75,8 @@
+ 
+ MAKE_TYPE=make
+ 
+-export CFLAGS='-O -Wall -fPIC'
++export CFLAGS='-O -g -Wall -fPIC'
++export NO_STRIP=1
+ 
+ # Determine which OS we are on
+ if [ "${OS}" = "" ]; then
+--- rt.equinox.framework/features/org.eclipse.equinox.executable.feature/library/gtk/make_linux.mak.orig	2014-03-12 14:47:37.513191381 +0000
++++ rt.equinox.framework/features/org.eclipse.equinox.executable.feature/library/gtk/make_linux.mak	2014-03-12 14:47:45.672200015 +0000
+@@ -94,7 +94,7 @@
+  -DPIXBUF_LIB="\"libgdk_pixbuf-2.0.so.0\"" -DGOBJ_LIB="\"libgobject-2.0.so.0\"" \
+  -DGIO_LIB="\"libgio-2.0.so.0\"" -DGLIB_LIB="\"libglib-2.0.so.0\""
+ LFLAGS = ${M_ARCH} -shared -fpic -Wl,--export-dynamic 
+-CFLAGS = ${M_CFLAGS} ${M_ARCH} -g -s -Wall\
++CFLAGS = ${M_CFLAGS} ${M_ARCH} -g -Wall\
+ 	-fpic \
+ 	-DLINUX \
+ 	-DDEFAULT_OS="\"$(DEFAULT_OS)\"" \

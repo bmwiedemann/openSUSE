@@ -1,0 +1,22 @@
+--- rt.equinox.framework/bundles/org.eclipse.equinox.launcher/src/org/eclipse/equinox/launcher/Main.java.orig	2014-03-24 12:06:59.530918305 +0000
++++ rt.equinox.framework/bundles/org.eclipse.equinox.launcher/src/org/eclipse/equinox/launcher/Main.java	2014-03-24 12:07:42.709932098 +0000
+@@ -1383,7 +1383,7 @@
+ 				String appVersion = props.getProperty(PRODUCT_SITE_VERSION);
+ 				if (appVersion == null || appVersion.trim().length() == 0)
+ 					appVersion = ""; //$NON-NLS-1$
+-				appName += File.separator + appId + "_" + appVersion + "_" + installDirHash; //$NON-NLS-1$ //$NON-NLS-2$
++				appName += File.separator + appId + "_" + installDirHash; //$NON-NLS-1$ //$NON-NLS-2$
+ 			} catch (IOException e) {
+ 				// Do nothing if we get an exception.  We will default to a standard location 
+ 				// in the user's home dir.
+--- rt.equinox.framework/bundles/org.eclipse.osgi/container/src/org/eclipse/osgi/internal/location/EquinoxLocations.java.orig	2014-03-24 12:05:52.666896971 +0000
++++ rt.equinox.framework/bundles/org.eclipse.osgi/container/src/org/eclipse/osgi/internal/location/EquinoxLocations.java	2014-03-24 12:06:46.076914704 +0000
+@@ -308,7 +308,7 @@
+ 				String appVersion = props.getProperty(PRODUCT_SITE_VERSION);
+ 				if (appVersion == null || appVersion.trim().length() == 0)
+ 					appVersion = ""; //$NON-NLS-1$
+-				appName += File.separator + appId + "_" + appVersion + "_" + installDirHash; //$NON-NLS-1$ //$NON-NLS-2$
++				appName += File.separator + appId + "_" + installDirHash; //$NON-NLS-1$ //$NON-NLS-2$
+ 			} catch (IOException e) {
+ 				// Do nothing if we get an exception.  We will default to a standard location 
+ 				// in the user's home dir.

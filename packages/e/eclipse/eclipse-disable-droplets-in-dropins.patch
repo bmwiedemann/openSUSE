@@ -1,0 +1,47 @@
+From edd5a395dd96699f91c463c0e0409a7488814775 Mon Sep 17 00:00:00 2001
+From: Roland Grunberg <rgrunber@redhat.com>
+Date: Tue, 16 Aug 2016 17:51:46 -0400
+Subject: [PATCH] Skip loading droplets in the configuration during
+ reconciliation.
+
+The reconciler attempts to load droplets as extended locations, which
+seems to be an expensive operation. Avoid doing this for the sake of
+efficiency.
+
+Change-Id: Iaf07aacb2d7eaabf3730654e757e69d22f0bc4ab
+---
+ .../internal/p2/reconciler/dropins/PlatformXmlListener.java | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git rt.equinox.p2/bundles/org.eclipse.equinox.p2.reconciler.dropins/src/org/eclipse/equinox/internal/p2/reconciler/dropins/PlatformXmlListener.java rt.equinox.p2/bundles/org.eclipse.equinox.p2.reconciler.dropins/src/org/eclipse/equinox/internal/p2/reconciler/dropins/PlatformXmlListener.java
+index 802ee1b..74023fe 100644
+--- rt.equinox.p2/bundles/org.eclipse.equinox.p2.reconciler.dropins/src/org/eclipse/equinox/internal/p2/reconciler/dropins/PlatformXmlListener.java
++++ rt.equinox.p2/bundles/org.eclipse.equinox.p2.reconciler.dropins/src/org/eclipse/equinox/internal/p2/reconciler/dropins/PlatformXmlListener.java
+@@ -168,11 +168,24 @@ public class PlatformXmlListener extends DirectoryChangeListener {
+ 	 * Ensure that we have a repository for each site in the given configuration.
+ 	 */
+ 	protected void synchronizeConfiguration(Configuration config) {
++		String fragments = System.getProperty("p2.fragments");
+ 		List<Site> sites = config.getSites();
+ 		Set<IMetadataRepository> newRepos = new LinkedHashSet<>();
+ 		Set<Site> toBeRemoved = new HashSet<>();
+ 		for (Site site : sites) {
+ 			String siteURL = site.getUrl();
++			if (fragments != null) {
++				String[] rootPaths = fragments.split(",");
++				boolean skip = false;
++				for (String path : rootPaths) {
++					if (siteURL.startsWith("file:" + path)) {
++						skip = true;
++					}
++				}
++				if (skip) {
++					continue;
++				}
++			}
+ 			IMetadataRepository match = getMatchingRepo(Activator.getRepositories(), siteURL);
+ 			if (match == null) {
+ 				try {
+-- 
+2.7.4
+
