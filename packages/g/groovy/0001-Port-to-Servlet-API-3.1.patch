@@ -1,0 +1,37 @@
+From fa96b88004ed4873b9538fa4d6d0203654d1d2a7 Mon Sep 17 00:00:00 2001
+From: Mikolaj Izdebski <mizdebsk@redhat.com>
+Date: Fri, 31 Oct 2014 12:48:44 +0100
+Subject: [PATCH 1/6] Port to Servlet API 3.1
+
+---
+ .../src/main/java/groovy/servlet/ServletBinding.java       | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/subprojects/groovy-servlet/src/main/java/groovy/servlet/ServletBinding.java b/subprojects/groovy-servlet/src/main/java/groovy/servlet/ServletBinding.java
+index ad58122..df25990 100644
+--- a/subprojects/groovy-servlet/src/main/java/groovy/servlet/ServletBinding.java
++++ b/subprojects/groovy-servlet/src/main/java/groovy/servlet/ServletBinding.java
+@@ -152,6 +152,20 @@ public class ServletBinding extends Binding {
+                 public void write(byte[] b, int off, int len) throws IOException {
+                     getResponseStream().write(b, off, len);
+                 }
++                public boolean isReady() {
++                    try {
++                        return getResponseStream().isReady();
++                    } catch (IOException e) {
++                        throw new RuntimeException(e);
++                    }
++                }
++                public void setWriteListener(javax.servlet.WriteListener writeListener) {
++                    try {
++                        getResponseStream().setWriteListener(writeListener);
++                    } catch (IOException e) {
++                        throw new RuntimeException(e);
++                    }
++                }
+             };
+         }
+         private PrintWriter getResponseWriter() {
+-- 
+2.9.3
+

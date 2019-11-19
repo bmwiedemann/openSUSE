@@ -1,0 +1,269 @@
+From 41cf7f90856a5cd564964f734aa70a6ad5e74841 Mon Sep 17 00:00:00 2001
+From: Mikolaj Izdebski <mizdebsk@redhat.com>
+Date: Thu, 23 Oct 2014 14:44:25 +0200
+Subject: [PATCH 2/6] Gradle local mode
+
+---
+ build.gradle           |  26 +-------
+ gradle/codehaus.gradle |   1 +
+ gradle/quality.gradle  | 164 -------------------------------------------------
+ gradle/utils.gradle    |   1 +
+ 4 files changed, 5 insertions(+), 187 deletions(-)
+
+diff --git a/build.gradle b/build.gradle
+index c2e095a..c049f93 100644
+--- a/build.gradle
++++ b/build.gradle
+@@ -18,27 +18,8 @@
+  */
+ buildscript {
+     repositories {
++        xmvn()
+         jcenter()
+-        maven {
+-            name 'Bintray Asciidoctor repo'
+-            url 'http://dl.bintray.com/content/aalmiray/asciidoctor'
+-        }
+-        maven{
+-            name 'Bintray Javadoc Hotfix repo'
+-            url 'http://dl.bintray.com/melix/gradle-javadoc-hotfix-plugin'
+-        }
+-        maven {
+-            url "https://plugins.gradle.org/m2/"
+-        }
+-    }
+-
+-    dependencies {
+-        classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.2'
+-        classpath 'org.jfrog.buildinfo:build-info-extractor-gradle:3.0.3'
+-        classpath 'me.champeau.gradle:gradle-javadoc-hotfix-plugin:0.1'
+-        //classpath 'me.champeau.gradle:japicmp-gradle-plugin:0.1.1'
+-        //classpath 'nl.javadude.gradle.plugins:license-gradle-plugin:0.11.0'
+-        classpath "gradle.plugin.org.nosphere.apache:creadur-rat-gradle:0.1.3"
+     }
+ }
+ 
+@@ -64,15 +45,13 @@ allprojects {
+     group = 'org.codehaus.groovy'
+     version = groovyVersion
+     repositories {
++        xmvn()
+         jcenter()
+         maven { url 'http://dl.bintray.com/melix/thirdparty-apache' } // openbeans
+     }
+ 
+     apply plugin: 'groovy'
+     apply from: "${rootProject.projectDir}/gradle/indy.gradle"
+-    if (JavaVersion.current().java7Compatible) {
+-        apply from: "${rootProject.projectDir}/gradle/asciidoctor.gradle"
+-    }
+ }
+ 
+ // todo: use the conventional "resources" directory for classpath resources
+@@ -110,6 +89,7 @@ subprojects {
+ }
+ 
+ repositories {
++    xmvn()
+     // todo Some repos are needed only for some configs. Declare them just for the configuration once Gradle allows this.
+     maven { url 'http://repository.jboss.org/nexus/content/groups/m2-release-proxy' } // examples, tools
+ }
+diff --git a/gradle/codehaus.gradle b/gradle/codehaus.gradle
+index 6ed3616..1c647cc 100644
+--- a/gradle/codehaus.gradle
++++ b/gradle/codehaus.gradle
+@@ -22,6 +22,7 @@ import groovy.io.*
+ 
+ buildscript {
+     repositories {
++        xmvn()
+         mavenCentral()
+     }
+     dependencies {
+diff --git a/gradle/quality.gradle b/gradle/quality.gradle
+index bc8e85e..e58a764 100644
+--- a/gradle/quality.gradle
++++ b/gradle/quality.gradle
+@@ -18,167 +18,3 @@
+  */
+ import groovy.text.markup.MarkupTemplateEngine
+ import groovy.text.markup.TemplateConfiguration
+-
+-allprojects {
+-    apply plugin: "org.nosphere.apache.rat"
+-    //apply plugin: "com.github.hierynomus.license"
+-    apply plugin: 'checkstyle'
+-    apply plugin: 'codenarc'
+-    apply plugin: 'findbugs'
+-    configurations.codenarc {
+-        // because we will rely on the version we build
+-        // because version ranges are evil
+-        // and because it causes bnd to be brought transitively
+-        // I am unsure why; says it is required by groovy-ant but its pom.xml does not declare so
+-        exclude group:'org.codehaus.groovy'
+-    }
+-
+-//    license {
+-//        header rootProject.file('config/licensing/HEADER.txt')
+-//        include "**/*.groovy"
+-//        include "**/*.java"
+-//        include "**/*.properties"
+-//        include "**/*.js"
+-//        include "**/*.css"
+-//        include "**/*.html"
+-//        include "**/*.gradle"
+-//        include "**/*.xml"
+-//        exclude "org/codehaus/groovy/antlr/**"
+-//        exclude 'reloading/**' // test resources for documentation of reloading
+-//        exclude 'includes/**' // documentation resources included as snippets of code
+-//        //dryRun = true
+-//        ignoreFailures = true
+-//        //skipExistingHeaders = true
+-//        //ext.year = Calendar.instance.get(Calendar.YEAR)
+-//    }
+-
+-    // don't fail build on CodeNarc tasks
+-    tasks.withType(CodeNarc) {
+-        ignoreFailures = true
+-        configFile = file("$rootProject.projectDir/config/codenarc/codenarc.groovy")
+-        codenarcClasspath = rootProject.sourceSets.main.output +
+-                project(':groovy-templates').sourceSets.main.output +
+-                project(':groovy-xml').sourceSets.main.output +
+-                configurations.compile +
+-                files(configurations.codenarc.findAll { !(it.name =~ /groovy|junit/)})
+-    }
+-
+-    tasks.withType(Checkstyle) {
+-        showViolations = false
+-        ignoreFailures = true
+-        configFile = file("$rootProject.projectDir/config/checkstyle/checkstyle.xml")
+-        configProperties = ['rootProject.projectDir': rootProject.projectDir]
+-        def reportFile = file("${buildDir}/reports/checkstyle/${name}.xml")
+-        source = sourceSets.main.allJava.matching {
+-            // TODO why doesn't this exclusion work?
+-            exclude '**/generated-sources/**/*'
+-        }
+-        reports {
+-            include ( '**/*.java')
+-            xml {
+-                destination reportFile
+-            }
+-        }
+-        task("${name}Report") {
+-            def configDir = file("$rootProject.projectDir/config/checkstyle")
+-            def templateFile = 'checkstyle-report.groovy'
+-            def htmlReportFile = file("${buildDir}/reports/checkstyle/${name}.html")
+-            inputs.file file("$configDir/$templateFile")
+-            inputs.file reportFile
+-            outputs.file htmlReportFile
+-
+-            doLast {
+-                if (reportFile.exists()) {
+-                    def templateConfiguration = new TemplateConfiguration()
+-                    templateConfiguration.with {
+-                        autoIndent = true
+-                        autoNewLine = true
+-                    }
+-                    def engine = new MarkupTemplateEngine(this.class.classLoader, configDir, templateConfiguration)
+-                    def xml = new XmlSlurper().parse(reportFile.newReader('utf-8'))
+-                    def files = []
+-                    xml.file.each { f ->
+-                        // TODO remove generated-sources check once exclude above works
+-                        if (f.error.size() && !f.@name.toString().contains('generated-sources')) {
+-                            files << [
+-                                    name: f.@name.toString(),
+-                                    errors: f.error.collect { e ->
+-                                        def rule = e.@source.toString()
+-                                        rule = rule.substring(rule.lastIndexOf('.')+1)
+-                                        [line: e.@line.toString(),
+-                                         column: e.@column.toString(),
+-                                         message: e.@message.toString(),
+-                                         source: rule,
+-                                         severity: e.@severity.toString()]
+-                                    }]
+-                        }
+-                    }
+-                    def model = [
+-                            project: project,
+-                            files: files
+-                    ]
+-                    htmlReportFile.withWriter('utf-8') { wrt ->
+-                        engine.createTemplateByPath('checkstyle-report.groovy').make(model).writeTo(wrt)
+-                    }
+-                }
+-            }
+-        }
+-        finalizedBy "${name}Report"
+-    }
+-
+-    findbugs {
+-        // continue build despite findbug warnings
+-        ignoreFailures = true
+-        sourceSets = [sourceSets.main]
+-    }
+-    tasks.withType(FindBugs) {
+-        effort = 'max'
+-        reports {
+-            xml.enabled = false
+-            html.enabled = true
+-        }
+-    }
+-}
+-
+-subprojects { sp ->
+-    def extras = []
+-    switch(sp.name) {
+-        case 'groovy-templates':
+-            extras = [
+-                    // test files
+-                    'src/spec/test-resources/*.txt',
+-                    'src/test/resources/includes/hello-escaped.txt',
+-                    'src/test/resources/includes/hello.html'
+-            ]
+-            break;
+-        case ['groovy-groovydoc', 'groovy-docgenerator']:
+-            extras = [
+-                    '**/stylesheet.css'  // MIT license as per NOTICE/LICENSE files
+-            ]
+-            break;
+-    }
+-    rat {
+-        inputDir = sp.projectDir.absolutePath
+-        excludes = [ 'target/**', '.gradle/**', '*.iml', '.classpath', '.project', '.settings/**', 'bin/**' , *extras]
+-    }
+-}
+-
+-rat {
+-    excludes = [ 'subprojects/**', // covered above
+-                 'benchmark/**', // benchmarking files excluded from src zip
+-                 'config/**',
+-                 'src/test/org/codehaus/groovy/ast/LineColumnCheck.txt', // test file
+-                 'security/groovykeys', // excluded from src zip
+-                 '**/.gradle/**', '**/wrapper/**', 'gradlew*',  // gradle wrapper files excluded from src zip
+-                 'gradle.properties',  // artifactory release plugin removes header when bumping version
+-                 '**/target/**', 'licenses/**', 'notices/**',
+-                 'out/**', '*.ipr',  '**/*.iml', '*.iws', // Intellij files
+-                 '**/style.css', // MIT license as per NOTICE/LICENSE files
+-                 '**/jquery-2.1.1.min.js', // MIT license as per NOTICE/LICENSE files
+-                 '.classpath', '.project', '.settings/**', 'bin/**', // Eclipse files
+-    ]
+-}
+-
+-apply from: 'gradle/jacoco/jacoco.gradle'
+-// Temporarily disabled because of conflict
+-//apply from: 'gradle/binarycompatibility.gradle'
+diff --git a/gradle/utils.gradle b/gradle/utils.gradle
+index b485933..81d1311 100644
+--- a/gradle/utils.gradle
++++ b/gradle/utils.gradle
+@@ -32,6 +32,7 @@ import static org.objectweb.asm.Opcodes.V1_5
+ 
+ buildscript {
+     repositories {
++        xmvn()
+         mavenCentral()
+     }
+     dependencies {
+-- 
+2.9.3
+

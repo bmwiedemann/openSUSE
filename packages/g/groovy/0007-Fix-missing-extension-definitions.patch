@@ -1,0 +1,39 @@
+From 2db1f5baf0c1647cc971f86cf4c2ee9d40146d5c Mon Sep 17 00:00:00 2001
+From: Michael Simacek <msimacek@redhat.com>
+Date: Mon, 4 Jun 2018 16:00:28 +0200
+Subject: [PATCH 7/7] Fix missing extension definitions
+
+---
+ .../codehaus/groovy/gradle/WriteExtensionDescriptorTask.groovy  | 2 +-
+ gradle/assemble.gradle                                          | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/buildSrc/src/main/groovy/org/codehaus/groovy/gradle/WriteExtensionDescriptorTask.groovy b/buildSrc/src/main/groovy/org/codehaus/groovy/gradle/WriteExtensionDescriptorTask.groovy
+index a5e716f..679b083 100644
+--- a/buildSrc/src/main/groovy/org/codehaus/groovy/gradle/WriteExtensionDescriptorTask.groovy
++++ b/buildSrc/src/main/groovy/org/codehaus/groovy/gradle/WriteExtensionDescriptorTask.groovy
+@@ -36,7 +36,7 @@ class WriteExtensionDescriptorTask extends DefaultTask {
+ 
+ 
+     private File computeDescriptorFile() {
+-        def metaInfDir = new File("${project.buildDir}/classes/main/META-INF/services")
++        def metaInfDir = new File("${project.buildDir}/resources/main/META-INF/services")
+         return new File(metaInfDir, "org.codehaus.groovy.runtime.ExtensionModule")
+     }
+ 
+diff --git a/gradle/assemble.gradle b/gradle/assemble.gradle
+index 1b5ded9..6356238 100644
+--- a/gradle/assemble.gradle
++++ b/gradle/assemble.gradle
+@@ -278,7 +278,7 @@ def mergeModuleDescriptors() {
+     def staticExtensionClasses = []
+ 
+     modules().collect {
+-        new File("${it.buildDir}/classes/main/META-INF/services/org.codehaus.groovy.runtime.ExtensionModule")
++        new File("${it.buildDir}/resources/main/META-INF/services/org.codehaus.groovy.runtime.ExtensionModule")
+     }.findAll { it.exists() }.each {
+         def props = new Properties()
+         props.load(it.newInputStream())
+-- 
+2.17.1
+

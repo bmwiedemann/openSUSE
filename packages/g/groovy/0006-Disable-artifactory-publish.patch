@@ -1,0 +1,24 @@
+From e5d5ae151f3e9ed661ebe059f6f2e3bd896eedfb Mon Sep 17 00:00:00 2001
+From: Michael Simacek <msimacek@redhat.com>
+Date: Mon, 16 Jan 2017 10:11:58 +0100
+Subject: [PATCH 6/6] Disable artifactory publish
+
+---
+ build.gradle | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/build.gradle b/build.gradle
+index c3cf24b..5015be0 100644
+--- a/build.gradle
++++ b/build.gradle
+@@ -25,7 +25,6 @@ buildscript {
+ 
+ apply from: 'gradle/filter.gradle'
+ apply from: 'gradle/indy.gradle'
+-apply from: 'gradle/publish.gradle'
+ 
+ File javaHome = new File(System.getProperty('java.home'))
+ logger.lifecycle "Using Java from $javaHome (version ${System.getProperty('java.version')})"
+-- 
+2.9.3
+

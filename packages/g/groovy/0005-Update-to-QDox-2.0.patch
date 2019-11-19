@@ -1,0 +1,76 @@
+From dc876e8760d51f963b7195a0985ce613a90f9991 Mon Sep 17 00:00:00 2001
+From: Mikolaj Izdebski <mizdebsk@redhat.com>
+Date: Wed, 19 Nov 2014 09:30:33 +0100
+Subject: [PATCH 5/6] Update to QDox 2.0
+
+---
+ .../groovy/org/codehaus/groovy/tools/DocGenerator.groovy  | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/subprojects/groovy-docgenerator/src/main/groovy/org/codehaus/groovy/tools/DocGenerator.groovy b/subprojects/groovy-docgenerator/src/main/groovy/org/codehaus/groovy/tools/DocGenerator.groovy
+index c787aa5..f6c8070 100644
+--- a/subprojects/groovy-docgenerator/src/main/groovy/org/codehaus/groovy/tools/DocGenerator.groovy
++++ b/subprojects/groovy-docgenerator/src/main/groovy/org/codehaus/groovy/tools/DocGenerator.groovy
+@@ -18,11 +18,12 @@
+  */
+ package org.codehaus.groovy.tools
+ 
+-import com.thoughtworks.qdox.JavaDocBuilder
++import com.thoughtworks.qdox.JavaProjectBuilder
++import com.thoughtworks.qdox.model.impl.DefaultJavaType
+ import com.thoughtworks.qdox.model.JavaClass
+ import com.thoughtworks.qdox.model.JavaMethod
+ import com.thoughtworks.qdox.model.JavaParameter
+-import com.thoughtworks.qdox.model.Type
++import com.thoughtworks.qdox.model.JavaType
+ import groovy.text.SimpleTemplateEngine
+ import groovy.text.Template
+ import groovy.text.TemplateEngine
+@@ -60,7 +61,7 @@ class DocGenerator {
+      * with its methods, javadoc comments and tags.
+      */
+     private static DocSource parseSource(List<File> sourceFiles) {
+-        JavaDocBuilder builder = new JavaDocBuilder()
++        JavaProjectBuilder builder = new JavaProjectBuilder()
+         sourceFiles.each {
+             if (it.exists()) {
+                 builder.addSource(it.newReader())
+@@ -83,7 +84,7 @@ class DocGenerator {
+             }
+ 
+             def firstParam = method.parameters[0]
+-            def firstParamType = firstParam.resolvedValue.isEmpty() ? firstParam.type : new Type(firstParam.resolvedValue, 0, firstParam.parentClass)
++            def firstParamType = firstParam.resolvedValue.isEmpty() ? firstParam.type : new DefaultJavaType(firstParam.resolvedValue, 0, firstParam.parentClass)
+             docSource.add(firstParamType, method)
+         }
+         docSource.populateInheritedMethods()
+@@ -265,7 +266,7 @@ class DocGenerator {
+     private static class DocSource {
+         SortedSet<DocPackage> packages = new TreeSet<DocPackage>(SORT_KEY_COMPARATOR)
+ 
+-        void add(Type type, JavaMethod javaMethod) {
++        void add(JavaType type, JavaMethod javaMethod) {
+             DocType tempDocType = new DocType(type: type)
+ 
+             DocPackage aPackage = packages.find { it.name == tempDocType.packageName }
+@@ -288,7 +289,7 @@ class DocGenerator {
+             def allTypes = allDocTypes.collectEntries{ [it.fullyQualifiedClassName, it] }
+             allTypes.each { name, docType ->
+                 if (name.endsWith('[]') || name.startsWith('primitive-types')) return
+-                Type next = docType.javaClass.superClass
++                JavaType next = docType.javaClass.superClass
+                 while (next != null) {
+                     if (allTypes.keySet().contains(next.value)) {
+                         docType.inheritedMethods[allTypes[next.value]] = allTypes[next.value].docMethods
+@@ -328,7 +329,7 @@ class DocGenerator {
+     }
+ 
+     private static class DocType {
+-        private Type type
++        private JavaType type
+         final String shortComment = "" // empty because cannot get a comment of JDK
+         SortedSet<DocMethod> docMethods = new TreeSet<DocMethod>(SORT_KEY_COMPARATOR)
+         Map<String, List<DocMethod>> inheritedMethods = new LinkedHashMap<String, List<DocMethod>>()
+-- 
+2.9.3
+
