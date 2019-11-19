@@ -1467,12 +1467,12 @@
     <package name="libGLU1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libGeoIP1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libHX28" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="libHalf24" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libHalf-2_4-24" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libICE-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libICE6" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libIex-2_3-24" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libIlmImf-2_3-24" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libIlmThread-2_3-24" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libIex-2_4-24" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libIlmImf-2_4-24" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libIlmThread-2_4-24" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libImlib2-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
     <package name="libJudy1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKChart2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
@@ -5721,7 +5721,6 @@
     <package name="libcanberra-gtk0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libcanberra-gtk2-module-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libcanberra0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libcap2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libcom_err2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libcontainers-common" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libcrack2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
