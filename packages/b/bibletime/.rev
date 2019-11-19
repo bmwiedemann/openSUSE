@@ -116,4 +116,12 @@
     <comment>updated desktop categories to fix build</comment>
     <requestid>731084</requestid>
   </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>f869c9150e273bdfd6d2224e13a656a8</srcmd5>
+    <version>2.11.2</version>
+    <time>1574164751</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749407</requestid>
+  </revision>
 </revisionlist>

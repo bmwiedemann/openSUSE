@@ -67,7 +67,7 @@ write own notes, save, print etc.).
 %build
 %cmake \
   -Wno-dev
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
