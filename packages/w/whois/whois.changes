@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 18 18:44:57 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- whois 5.5.3:
+  * Add the new 2630:0000::/12 IPv6 assigmnent to ARIN
+  * Update the .xxx TLD server
+  * Update the list of new gTLDs
+
+-------------------------------------------------------------------
 Thu Oct 10 18:08:50 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - whois 5.5.2:
