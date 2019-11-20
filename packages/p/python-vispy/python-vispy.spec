@@ -12,27 +12,39 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without  ext_deps
 Name:           python-vispy
-Version:        0.6.1
+Version:        0.6.2
 Release:        0
 Summary:        Interactive visualization in Python
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
-Url:            https://github.com/vispy/vispy
+URL:            https://github.com/vispy/vispy
 Source:         https://files.pythonhosted.org/packages/source/v/vispy/vispy-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools_scm_git_archive}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-notebook-filesystem
 BuildRequires:  python-rpm-macros
+Requires:       fontconfig
+Requires:       python-numpy
+Requires:       python-qt5
+Recommends:     python-PySDL2
+Recommends:     python-imageio
+Recommends:     python-jupyter_ipython
+Recommends:     python-networkx
+Recommends:     python-opengl
+Recommends:     python-opengl-accelerate
+Recommends:     python-pyglet
+Recommends:     python-pypng
+Recommends:     python-scipy
 # SECTION test requirements
 BuildRequires:  %{python_module PySDL2}
 BuildRequires:  %{python_module glfw}
@@ -53,18 +65,6 @@ BuildRequires:  %{python_module pypng}
 BuildRequires:  %{python_module six}
 %endif
 # /SECTION
-Requires:       fontconfig
-Requires:       python-numpy
-Requires:       python-qt5
-Recommends:     python-PySDL2
-Recommends:     python-imageio
-Recommends:     python-jupyter_ipython
-Recommends:     python-pypng
-Recommends:     python-networkx
-Recommends:     python-opengl
-Recommends:     python-pyglet
-Recommends:     python-scipy
-Recommends:     python-opengl-accelerate
 %if %{with ext_deps}
 Requires:       python-cassowary
 Requires:       python-decorator
@@ -73,7 +73,6 @@ Requires:       python-husl
 Requires:       python-pypng
 Requires:       python-six
 %endif
-
 %python_subpackages
 
 %description
@@ -104,7 +103,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 
 %install
 %python_install
-%{jupyter_move_config}
+%jupyter_move_config
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %files %{python_files}

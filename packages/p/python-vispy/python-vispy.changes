@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 19 20:01:11 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.16.2
+  + Enhancements
+    * Switch to setuptools_scm for automatic version numbering 
+    * Improve PanZoom camera performance when non-+z direction is used 
+  + Fixed bugs
+    * Fix Python 3.8 compatibility in Canvas 'keys' update 
+    * Fix VolumeVisual modifying user provided data in-place 
+    * Fix depth buffer precision 
+    * Volume visual has unset variable texture2D\_LUT 
+    * Fix MarkersVisual.set_data crash when pos is None 
+    * Fix numpy futurewarning in dtype creation 
+
+-------------------------------------------------------------------
 Fri Aug  2 15:27:16 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.16.1
