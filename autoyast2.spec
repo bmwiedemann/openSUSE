@@ -22,7 +22,7 @@
 %endif
 
 Name:           autoyast2
-Version:        4.2.13
+Version:        4.2.21
 Release:        0
 Summary:        YaST2 - Automated Installation
 License:        GPL-2.0-only
@@ -45,14 +45,17 @@ BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
 BuildRequires:  yast2 >= 4.0.60
 # FileSystems.read_default_subvol_from_target
 BuildRequires:  yast2-country
+BuildRequires:  yast2-network >= 3.1.145
 BuildRequires:  yast2-packager
 BuildRequires:  yast2-services-manager
 BuildRequires:  yast2-slp
 BuildRequires:  yast2-transfer
 BuildRequires:  yast2-update >= 3.3.0
 BuildRequires:  yast2-xml
-# AutoinstIssues::NoProposal
-BuildRequires:  yast2-storage-ng >= 4.0.160
+# Required for test suite testing one time sync
+BuildRequires:  yast2-ntp-client >= 4.0.1
+# Y2Storage::AutoinstProposal constructor receives a ProposalSettings object
+BuildRequires:  yast2-storage-ng >= 4.2.55
 # %%{_unitdir} macro definition is in a separate package since 13.1
 %if 0%{?suse_version} >= 1310
 BuildRequires:  systemd-rpm-macros
@@ -73,9 +76,9 @@ Requires:       yast2-schema >= 4.0.6
 Requires:       yast2-security >= 4.1.1
 Requires:       yast2-transfer >= 2.21.0
 Requires:       yast2-xml
-# AutoinstIssues::NoProposal
+# Y2Storage::AutoinstProposal constructor receives a ProposalSettings object
 Requires:       yast2-ruby-bindings >= 1.0.0
-Requires:       yast2-storage-ng >= 4.0.160
+Requires:       yast2-storage-ng >= 4.2.55
 
 Conflicts:      yast2-installation < 3.1.166
 
