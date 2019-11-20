@@ -98,6 +98,7 @@ fi
 rm -f /etc/dracut.conf.d/50-nvidia-default.conf
 %{?regenerate_initrd_post}
 
+%if 0%{?is_opensuse}
 %pre bbswitch
 %service_add_pre prime-select.service
 
@@ -121,6 +122,7 @@ exit 0
 
 %posttrans bbswitch
 %{?regenerate_initrd_posttrans}
+%endif
 
 %files
 %defattr(-,root,root)
@@ -138,6 +140,7 @@ exit 0
 /usr/lib/dracut/dracut.conf.d/90-nvidia-dracut-G05.conf
 /usr/lib/udev/rules.d/90-nvidia-udev-pm-G05.rules
 
+%if 0%{?is_opensuse}
 %files bbswitch
 %doc README.md
 %{_sysconfdir}/prime
@@ -150,5 +153,10 @@ exit 0
 %{_sbindir}/rcprime-select
 %config %{_sysconfdir}/modprobe.d/09-nvidia-modprobe-bbswitch-G04.conf
 %{_unitdir}/prime-select.service
+%else
+%exclude %config %{_sysconfdir}/modprobe.d/09-nvidia-modprobe-bbswitch-G04.conf
+%exclude %{_unitdir}/prime-select.service
+%exclude %{_sbindir}/rcprime-select
+%endif
 
 %changelog

@@ -376,4 +376,13 @@ Latest changes:
   * Set the right panel variables for LVDS displays (issue#26)</comment>
     <requestid>749323</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>79d8acc2630fcc819e9603dc79bce2e7</srcmd5>
+    <version>0.7.3</version>
+    <time>1574242065</time>
+    <user>dimstar_suse</user>
+    <comment>- only package suse-prime-bbswitch on openSUSE, since bbswitch
+  kernel module package is not available on sle</comment>
+    <requestid>749522</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 19 12:49:23 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- only package suse-prime-bbswitch on openSUSE, since bbswitch
+  kernel module package is not available on sle
+
+-------------------------------------------------------------------
 Mon Nov 18 14:42:07 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - this release also includes support for NVIDIA's PRIME render
