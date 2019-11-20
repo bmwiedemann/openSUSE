@@ -1,4 +1,57 @@
 --------------------------------------------------------------------
+Wed Nov 13 13:20:32 UTC 2019 - ancor@suse.de
+
+- merge gh#openSUSE/libstorage-ng#677
+- Make default mount_options public (needed for jsc#SLE-7687)
+- Bump version
+- Rename Mountable::Impl#get_default_mount_options
+- Split MountPoint#set_default_mount_options into pieces (needed
+  for jsc#SLE-7687)
+- 4.2.27
+
+--------------------------------------------------------------------
+Sun Nov 10 07:38:14 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Estonian) (bsc#1149754)
+- 4.2.26
+
+--------------------------------------------------------------------
+Sat Nov 9 07:54:59 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Estonian) (bsc#1149754)
+- 4.2.25
+
+--------------------------------------------------------------------
+Fri Nov 8 12:25:15 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Estonian) (bsc#1149754)
+- 4.2.24
+
+--------------------------------------------------------------------
+Thu Nov 7 06:57:57 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Estonian) (bsc#1149754)
+- 4.2.23
+
+--------------------------------------------------------------------
+Wed Nov 6 12:28:50 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Estonian) (bsc#1149754)
+- 4.2.22
+
+--------------------------------------------------------------------
+Wed Nov 6 06:23:36 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Estonian) (bsc#1149754)
+- 4.2.21
+
+--------------------------------------------------------------------
+Tue Nov 5 18:37:00 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Estonian) (bsc#1149754)
+- 4.2.20
+
+--------------------------------------------------------------------
 Thu Oct 31 13:16:21 UTC 2019 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#676
