@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 19 18:40:05 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 1.50.2
+  * Bug Fixes
+    - accounting: Fix memory leak on retries operations (Nick Craig-Wood)
+  * Drive
+    - Fix listing of the root directory with drive.files scope (Nick Craig-Wood)
+    - Fix --drive-root-folder-id with team/shared drives (Nick Craig-Wood)
+
+-------------------------------------------------------------------
 Sat Nov  2 15:30:38 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 1.50.1
