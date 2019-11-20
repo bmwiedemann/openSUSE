@@ -21,7 +21,7 @@
 %define _rname  openssl
 Name:           openssl-1_1
 # Don't forget to update the version in the "openssl" package!
-Version:        1.1.1c
+Version:        1.1.1d
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
 License:        OpenSSL
@@ -43,8 +43,6 @@ Patch3:         openssl-pkgconfig.patch
 Patch4:         openssl-DEFAULT_SUSE_cipher.patch
 Patch5:         openssl-ppc64-config.patch
 Patch6:         openssl-no-date.patch
-# PATCH-FIX-UPSTREAM https://github.com/openssl/openssl/pull/8966
-Patch7:         0001-build_SYS_str_reasons-Fix-a-crash-caused-by-overlong.patch
 # PATCH-FIX-UPSTREAM jsc#SLE-6126 and jsc#SLE-6129
 Patch8:         0001-s390x-assembly-pack-perlasm-support.patch
 Patch9:         0002-crypto-chacha-asm-chacha-s390x.pl-add-vx-code-path.patch
@@ -52,6 +50,7 @@ Patch10:        0003-crypto-poly1305-asm-poly1305-s390x.pl-add-vx-code-pa.patch
 Patch11:        0004-s390x-assembly-pack-fix-formal-interface-bug-in-chac.patch
 Patch12:        0005-s390x-assembly-pack-import-chacha-from-cryptogams-re.patch
 Patch13:        0006-s390x-assembly-pack-import-poly-from-cryptogams-repo.patch
+Patch14:        openssl-jsc-SLE-8789-backport_KDF.patch
 BuildRequires:  pkgconfig
 Conflicts:      ssl
 Provides:       ssl

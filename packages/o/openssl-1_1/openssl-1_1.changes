@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Mon Oct 14 18:36:37 UTC 2019 - Jason Sikes <jsikes@suse.com>
+
+- Merged upstream changes to allow NULL salt values in EVP_PBE_scrypt().
+  * Revealed by nodejs12 during bsc#1149572.
+  * Modified openssl-jsc-SLE-8789-backport_KDF.patch
+
+-------------------------------------------------------------------
+Mon Oct 14 08:45:39 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- openssl-jsc-SLE-8789-backport_KDF.patch: retain old behaviour
+  of EVP_PBE_scrypt. When key output buffer is not provided,
+  only check if the input parameters are in valid range and
+  ignore passphrase/salt fields as they are only used in
+  the actual calculation.
+
+-------------------------------------------------------------------
+Wed Sep 11 09:32:16 UTC 2019 - Vítězslav Čížek <vcizek@suse.com>
+
+- Update to 1.1.1d (bsc#1133925, jsc#SLE-6430)
+  * Fixed a fork protection issue. OpenSSL 1.1.1 introduced a rewritten random
+    number generator (RNG). This was intended to include protection in the
+    event of a fork() system call in order to ensure that the parent and child
+    processes did not share the same RNG state. However this protection was not
+    being used in the default case.
+    (bsc#1150247, CVE-2019-1549)
+  * Compute ECC cofactors if not provided during EC_GROUP construction. Before
+    this change, EC_GROUP_set_generator would accept order and/or cofactor as
+    NULL. After this change, only the cofactor parameter can be NULL.
+    (bsc#1150003, CVE-2019-1547)
+  * Fixed a padding oracle in PKCS7_dataDecode and CMS_decrypt_set1_pkey.
+    (bsc#1150250, CVE-2019-1563)
+  * For built-in EC curves, ensure an EC_GROUP built from the curve name is
+    used even when parsing explicit parameters, when loading a serialized key
+    or calling EC_GROUP_new_from_ecpkparameters()/EC_GROUP_new_from_ecparameters().
+  * Early start up entropy quality from the DEVRANDOM seed source has been
+    improved for older Linux systems.
+  * Changed DH_check to accept parameters with order q and 2q subgroups.
+    With order 2q subgroups the bit 0 of the private key is not secret
+    but DH_generate_key works around that by clearing bit 0 of the
+    private key for those. This avoids leaking bit 0 of the private key.
+  * Significantly reduce secure memory usage by the randomness pools.
+  * Revert the DEVRANDOM_WAIT feature for Linux systems
+- drop 0001-build_SYS_str_reasons-Fix-a-crash-caused-by-overlong.patch (upstream)
+- refresh patches
+  * openssl-1.1.0-no-html.patch
+  * openssl-jsc-SLE-8789-backport_KDF.patch
+
+-------------------------------------------------------------------
+Tue Sep 10 19:26:34 UTC 2019 - Jason Sikes <jsikes@suse.com>
+
+- To avoid seperate certification of openssh server / client
+  move the SSH KDF (Key Derivation Function) into openssl.
+  * jsc#SLE-8789
+  * Sourced from commit
+    8d76481b189b7195ef932e0fb8f0e23ab0120771#diff-a9562bc75317360a2e6b8b0748956e34
+    in openssl master (introduce the SSH KDF)
+    and commit 5a285addbf39f91d567f95f04b2b41764127950d
+    in openssl master (backport EVP/KDF API framework)
+  * added openssl-jsc-SLE-8789-backport_KDF.patch
+
+-------------------------------------------------------------------
 Thu Jun  6 10:06:45 UTC 2019 - Vítězslav Čížek <vcizek@suse.com>
 
 - Use upstream patch for the locale crash (bsc#1135550)

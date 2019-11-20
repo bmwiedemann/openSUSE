@@ -62,4 +62,12 @@
     <comment>Resubmit working diff - no actual change compared to previous rev</comment>
     <requestid>709893</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>08e51cc128ea360c553428d237415296</srcmd5>
+    <version>1.1.1d</version>
+    <time>1574253749</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>738529</requestid>
+  </revision>
 </revisionlist>
