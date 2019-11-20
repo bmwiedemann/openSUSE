@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Apache-AuthCookie
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-Apache-AuthCookie
-Version:        3.27
+Version:        3.28
 Release:        0
 %define cpan_name Apache-AuthCookie
 Summary:        Perl Authentication and Authorization via cookies
@@ -205,14 +205,14 @@ client.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -name "*.sh" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -221,7 +221,7 @@ find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes README README.modperl2 scripts
+%doc Changes README README.modperl2
 %license LICENSE
 
 %changelog
