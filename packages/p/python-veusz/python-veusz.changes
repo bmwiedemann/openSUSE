@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Nov 19 19:59:45 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 3.1
+  + Improvements:
+    * Do not print or export hidden pages
+    * Allow expressions in dataset of contour widget
+    * Allow widgets to be excluded in key (thanks to Alexander Book)
+    * Make bezier line better fit data
+    * Switch linux binary from x86 -> x86-64 for better compatibility
+  + Bug fixes:
+    * Compilation fix for PyQt>=5.12 (thanks to Dimitry Shachnev)
+    * Ensure fit settings are sorted in output file
+    * Fix crash in contour labelling
+    * Fix 3D axis crash bug
+    * Fix problem with broken axis with null-sized regions
+    * Fix issue with 0-sized images in image widget
+    * Fix function widget crash with certain plotting range
+    * Fix for axis crash with large magnitude ranges
+    * Fix CSV importing issues for 2D and ND data
+    * Fix zero division error in 2D import
+    * Fix crash on importing HDF5 files with variable length text
+    * Catch issue with zero range axes
+    * Fix crash is using set in dataset expression
+    * Fix crash when moving line coordinates
+    * Remove deprecation warnings when compiling with recent Qt versions
+
+-------------------------------------------------------------------
 Mon Jul 29 18:36:00 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Drop broken python2 version.

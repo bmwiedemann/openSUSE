@@ -1,7 +1,7 @@
 #
 # spec file for package python-veusz
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
-%bcond_without  test
 Name:           python-veusz
-Version:        3.0.1
+Version:        3.1
 Release:        0
 Summary:        Scientific plotting library for Python
 # The entire source code is GPL-2.0+ except helpers/src/_nc_cntr.c which is Python-2.0
-License:        GPL-2.0+ and Python-2.0
-Group:          Productivity/Scientific/Other
-Url:            https://veusz.github.io/
-Source0:        https://pypi.io/packages/source/v/veusz/veusz-%{version}.tar.gz
+License:        GPL-2.0-or-later AND Python-2.0
+URL:            https://veusz.github.io/
+Source0:        https://files.pythonhosted.org/packages/source/v/veusz/veusz-%{version}.tar.gz
 Source3:        veusz_256.png
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module h5py}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module qt5-devel}
 BuildRequires:  %{python_module setuptools}
@@ -39,17 +38,13 @@ BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
 BuildRequires:  update-desktop-files
-%if %{with test}
-BuildRequires:  %{python_module h5py}
-%endif
 Requires:       python-numpy
 Requires:       python-qt5
 Recommends:     python-h5py
+ExcludeArch:    i586
 %ifpython3
 Recommends:     veusz
 %endif
-ExcludeArch:    i586
-
 %python_subpackages
 
 %description
@@ -60,9 +55,8 @@ widgets, allowing complex layouts to be designed. Veusz supports
 plotting functions, data with errors, keys, labels, stacked plots,
 multiple plots, contours, shapes and fitting data.
 
-%package -n veusz
+%package     -n veusz
 Summary:        GUI scientific plotting package
-Group:          Productivity/Scientific/Other
 Requires:       python3-veusz = %{version}
 Requires(post): desktop-file-utils
 Requires(post): shared-mime-info
@@ -132,12 +126,10 @@ rm Documents/manual/html/.buildinfo
 %fdupes %{buildroot}%{python_sitearch}/veusz/
 %fdupes %{buildroot}%{python3_sitearch}/veusz/
 
-%if %{with test}
 %check
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
 QT_QPA_PLATFORM=minimal $python -B tests/runselftest.py
 }
-%endif
 
 %post -n veusz
 update-mime-database %{_datadir}/mime > /dev/null 2>&1 || :
@@ -150,15 +142,15 @@ update-desktop-database %{_datadir}/applications
 %icon_theme_cache_postun
 
 %files %{python_files}
-%defattr(-,root,root)
-%doc README AUTHORS COPYING ChangeLog
+%doc README AUTHORS ChangeLog
 %doc Documents/manual/html
+%license COPYING
 %{python_sitearch}/veusz-%{version}-py*.egg-info
 %{python_sitearch}/veusz/
 
 %files -n veusz
-%defattr(-,root,root)
-%doc AUTHORS COPYING
+%doc AUTHORS
+%license COPYING
 %{_bindir}/veusz
 %{_datadir}/applications/veusz.desktop
 %{_datadir}/pixmaps/veusz/
