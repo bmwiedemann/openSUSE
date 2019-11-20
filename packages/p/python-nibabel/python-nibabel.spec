@@ -12,38 +12,35 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-nibabel
-Version:        2.4.1
+Version:        2.5.1
 Release:        0
-License:        MIT
 Summary:        Tool to access multiple neuroimaging data formats
-Url:            http://nipy.org/nibabel
-Group:          Development/Languages/Python
+License:        MIT
+URL:            https://nipy.org/nibabel
 Source:         https://files.pythonhosted.org/packages/source/n/nibabel/nibabel-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix_numpy_1_17.patch gh#/nipy/nibabel#768
-Patch1:         fix_numpy_1_17.patch
 BuildRequires:  %{python_module setuptools >= 30.3.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-numpy >= 1.8
+Requires:       python-six >= 1.3
+Recommends:     python-dicom >= 0.9.9
+BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module numpy >= 1.8}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nose >= 0.10.1}
+BuildRequires:  %{python_module numpy >= 1.8}
 BuildRequires:  %{python_module six >= 1.3}
 BuildRequires:  python-bz2file
 # /SECTION
-Requires:       python-numpy >= 1.8
-Requires:       python-six >= 1.3
 %ifpython2
 Requires:       python-bz2file
 %endif
-Recommends:     python-dicom >= 0.9.9
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -56,7 +53,6 @@ very limited support for DICOM.
 
 %prep
 %setup -q -n nibabel-%{version}
-%patch1 -p1
 
 %build
 %python_build

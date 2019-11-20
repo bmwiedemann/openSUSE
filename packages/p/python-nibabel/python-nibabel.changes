@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Nov 19 20:41:07 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 2.5.1
+  + Enhancements
+    * Ignore endianness in ``nib-diff`` if values match
+  + Bug fixes
+    * Correctly handle Philips DICOMs w/ derived volume
+    * Raise CSA tag limit to 1000, parametrize for future relaxing
+    * Coerce data types to match NIfTI intent codes when writing GIFTI data
+      arrays
+  + Maintenance
+    * Require h5py 2.10 for Windows + Python < 3.6 to resolve unexpected dtypes
+      in Minc2 data
+  + API changes and deprecations
+    * Deprecate ``nicom.dicomwrappers.Wrapper.get_affine()`` in favor of ``affine``
+      property; final removal in nibabel 4.0
+- Update to version 2.5.0
+  + Enhancements
+    * Add SerializableImage class with to/from_bytes methods
+    * Check CIFTI-2 data shape matches shape described by header
+  + Bug fixes
+    * Handle stricter numpy casting rules in tests
+    * TRK header fields flipped in files written on big-endian systems
+    * Load multiframe ECAT images with Python 3
+  + Maintenance
+    * Fix CodeCov paths on Appveyor for more accurate coverage
+    * Move to setuptools and reduce use ``nisext`` functions
+    * Better handle test setup/teardown
+  + API changes and deprecations
+    * Effect threatened warnings and set some deprecation timelines
+    * Trackvis methods now default to v2 formats
+    * ``nibabel.trackvis`` scheduled for removal in nibabel 4.0
+    * ``nibabel.minc`` and ``nibabel.MincImage`` will be removed in nibabel 3.0
+- Drop upstream-included fix_numpy_1_17.patch
+
+-------------------------------------------------------------------
 Mon Jul 29 18:56:10 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Add fix_numpy_1_17.patch to fix building with numpy 1.17.0
