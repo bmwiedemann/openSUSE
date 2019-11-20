@@ -17,7 +17,7 @@
 
 
 Name:           yast2-update
-Version:        4.2.7
+Version:        4.2.10
 Release:        0
 Summary:        YaST2 - Update
 License:        GPL-2.0-only
