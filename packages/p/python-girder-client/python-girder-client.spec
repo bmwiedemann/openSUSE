@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-girder-client
-Version:        2.4.0
+Version:        3.0.5
 Release:        0
 Summary:        Python Girder client
 License:        Apache-2.0
-Group:          Development/Languages/Python
-URL:            http://girder.readthedocs.org/en/latest/python-client.html
+URL:            https://girder.readthedocs.org/en/latest/python-client.html
 Source:         https://files.pythonhosted.org/packages/source/g/girder-client/girder-client-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

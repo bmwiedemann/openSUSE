@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 19 21:05:23 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 3.0.5
+  * Update Google OAuth provider to use new OpenID Connect API
+- Update to 3.0.4
+  * Remove python-dateutil requirement.
+- Update to 3.0.3
+  * Add indices to audit logs
+- Update to 3.0.2
+  * Harden the logic when a passwordless user needs to login with OAuth
+- Update to 3.0.1
+  * Remove some hardcoded version numbers
+- Update to 3.0.0
+  * Explicitly forbid multipart upload
+  * Remove the access.cookie decorator.
+
+-------------------------------------------------------------------
 Mon Jan 21 03:44:56 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Initial version
