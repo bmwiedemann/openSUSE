@@ -1,7 +1,7 @@
 #
 # spec file for package ignition
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ignition
-Version:        2.0.1+git20191106.809f44a
+Version:        2.0.1+git20191112.a924dd7
 Release:        0
 Summary:        First boot installer and configuration tool
 License:        Apache-2.0
@@ -43,7 +43,7 @@ applies the configuration.
 
 %build
 sed -i -e 's|go build -ldflags|go build -buildmode=pie -ldflags|g' build
-env VERSION=%{version} bash -x ./build
+env VERSION=%{version} GLDFLAGS='-X github.com/coreos/ignition/v2/internal/distro.selinuxRelabel=false ' bash -x ./build
 
 %install
 install -d %{buildroot}%{_prefix}/lib/dracut/modules.d/30ignition

@@ -75,4 +75,17 @@ Ignition is a minimal alternative to cloud-init, supposed to replace it for cert
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>748742</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1d7fe5296fd0edfe97ebe34ad2e97c9b</srcmd5>
+    <version>2.0.1+git20191112.a924dd7</version>
+    <time>1574249897</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.1+git20191112.a924dd7:
+  * tests: remove unused partitions, dead code
+  * internal,tests: abolish syscall package
+  * vendor: include golang.org/x/sys/unix
+  * providers: add ibmcloud
+- turn off SELinux by default</comment>
+    <requestid>749861</requestid>
+  </revision>
 </revisionlist>
