@@ -1,7 +1,7 @@
 #
 # spec file for package python-apptools
 #
-# Copyright (c) 2018 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,21 +20,24 @@
 %define         X_display         ":98"
 %bcond_with     test
 Name:           python-apptools
-Version:        4.4.0
+Version:        4.5.0
 Release:        0
 Summary:        Application tools in Python
-License:        BSD-3-Clause and LGPL-2.1 and LGPL-3.0
 # Source code is under BSD but images are under different licenses
 # and details are inside image_LICENSE.txt
-Group:          Development/Libraries/Python
-Url:            https://github.enthought.com/apptools
+License:        BSD-3-Clause AND LGPL-2.1-only AND LGPL-3.0-only
+URL:            https://github.com/enthought/apptools
 Source:         https://files.pythonhosted.org/packages/source/a/apptools/apptools-%{version}.tar.gz
 BuildRequires:  %{python_module configobj}
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module traits}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-configobj
+Requires:       python-traits
+Recommends:     python-pandas
+Recommends:     python-tables
+BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module nose}
@@ -43,12 +46,6 @@ BuildRequires:  %{python_module tables}
 BuildRequires:  %{python_module traitsui}
 BuildRequires:  xorg-x11-server
 %endif
-Requires:       python-configobj
-Requires:       python-traits
-Recommends:     python-pandas
-Recommends:     python-tables
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -61,7 +58,7 @@ Part of the Enthought Tool Suite (ETS).
 %prep
 %setup -q -n apptools-%{version}
 # Fix wrong-script-interpreter
-sed -i "s|#!/usr/bin/env python|#!%__python3|" examples/permissions/server/*.py
+sed -i "s|#!%{_bindir}/env python|#!%__python3|" examples/permissions/server/*.py
 %fdupes examples/
 
 %build
@@ -70,7 +67,7 @@ sed -i "s|#!/usr/bin/env python|#!%__python3|" examples/permissions/server/*.py
 %install
 %python_install
 %{python_expand chmod a+x %{buildroot}%{$python_sitelib}/apptools/lru_cache/tests/test_lru_cache.py
-sed -i "s|^#!/usr/bin/env python$|#!%__$python|" %{buildroot}%{$python_sitelib}/apptools/lru_cache/tests/test_lru_cache.py
+sed -i "s|^#!%{_bindir}/env python$|#!%__$python|" %{buildroot}%{$python_sitelib}/apptools/lru_cache/tests/test_lru_cache.py
 %fdupes %{buildroot}%{$python_sitelib}
 $python -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/apptools/
 $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/apptools/
@@ -93,7 +90,6 @@ popd
 %endif
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst TODO.txt CHANGES.txt
 %doc examples/
 %license LICENSE.txt image_LICENSE*.txt

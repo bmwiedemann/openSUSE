@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Nov 19 21:17:41 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 4.5.0
+  * Add missing `long_description_content_type` field in setup.
+  * Remove use of `2to3`.
+  * Use etstool for CI tasks. Setup travis macos and appveyor CI.
+  * Temporarily change cwd when running tests.
+  * Update broken imports.
+  * Add `six` to requirements.
+  * Remove one more use of the deprecated `set` method.
+  * Use `trait_set` instead of the now deprecated `set` method.
+  * Address one more numpy deprecation warning.
+  * Address numpy deprecation warnings.
+  * Test the package on Python 3.5, 3.6 on CI.
+  * Fix mismatched pyface and traitsui requirements.
+  * Drop support for Python 2.6.
+  * Fix `state_pickler.dump` on Python 2.
+  * Fix a few spelling mistakes in documentation.
+
+-------------------------------------------------------------------
 Wed May  9 14:08:07 UTC 2018 - toddrme2178@gmail.com
 
 - Use license tag
