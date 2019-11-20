@@ -1,7 +1,7 @@
 #
 # spec file for package u-boot
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2010 Texas Instruments Inc by Nishanth Menon
 # Copyright (c) 2007-2010 by Silvan Calarco <silvan.calarco@mambasoft.it>
 #
@@ -23,7 +23,7 @@
 %bcond_with uboot_atf
 %bcond_with uboot_atf_pine64
 
-%if "%_project" == "hardware:boot" || "%_project" == "hardware:boot:staging" || "%_project" == "openSUSE:Factory:ARM" 
+%if "%_project" == "hardware:boot" || "%_project" == "hardware:boot:staging" || "%_project" == "openSUSE:Factory" || "%_project" == "openSUSE:Factory:ARM" || "%_project" == "openSUSE:Factory:PowerPC" || "%_project" == "openSUSE:Factory:RISCV"
 
 # A complete multibuild-flavoured package is only built in above projects.
 # In order to build a defined subset in forked projects, add the
@@ -34,6 +34,18 @@
 #|:Macros
 #|BuildFlags: onlybuild:u-boot:my-flavor1 onlybuild:u-boot:my-flavor2
 #|BuildFlags: onlybuild:u-boot:my-flavor3 onlybuild:u-boot:my-flavor4
+
+# If you opt to use onlybuild: to select U-Boot flavours and also
+# have additional packages in that project, these need to be listed, too:
+
+#|BuildFlags: onlybuild:package onlybuild:otherpackage onlybuild:thirdpackage
+
+# Any packages not included in that list will neither build in that project
+# nor in subprojects!
+
+# It is still possible to enable the full multiboot set plus eventual
+# additional packages by adding the Macros: [...] :Macros section and
+# omitting the "onlybuild:"-lines.
 
 %else
 %if "%target" == "tools" || "%target" == ""
@@ -203,7 +215,7 @@ Release:        0
 Summary:        The U-Boot firmware for the %target platform
 License:        GPL-2.0-only
 Group:          System/Boot
-Url:            http://www.denx.de/wiki/U-Boot
+URL:            http://www.denx.de/wiki/U-Boot
 Source:         ftp://ftp.denx.de/pub/u-boot/u-boot-%{archive_version}.tar.bz2
 Source1:        ftp://ftp.denx.de/pub/u-boot/u-boot-%{archive_version}.tar.bz2.sig
 Source2:        arndale-bl1.img

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 19 16:23:31 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- Don't constrain multibuild in openSUSE:Factory:PowerPC and
+  openSUSE:Factory:RISCV
+
+-------------------------------------------------------------------
 Tue Nov 19 07:34:54 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2019.10
