@@ -1,4 +1,111 @@
 -------------------------------------------------------------------
+Tue Nov 19 20:55:21 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.5.3
+  * use frombuffer (fromstring is depr)
+  * fix npy source
+  * make example using storge_options usable
+  * update docs around storage_options
+  * Don't necessarily pass storage_options
+  * fix with test
+  * Add setup entrypoints for drivers and tidy CLI
+  * Don't warn twice 
+  * Add drivers CLI test
+  * update test
+  * Add a load of tests
+  * Fix msgpack imports so msgpack_numpy is not required.
+  * ian-r-rose committed on Jul 26
+  * Use master dask on pip build too
+  * Don't import msgpack_numpy unless needed
+  * prefer conda-forge for installs
+  * Add constructor for tuples during safe load
+  * Fixes on URLs
+  * one remaining dask.bytes
+  * Test basic passing on of filesystems
+  * Pass filesystem stuff through 
+  * Merge branch 'master' into fs
+  * Remove unused import.
+  * Refine temp_config_path fixutre.
+  * Improve test coverage of discovery.
+  * Fix name error exposed by testing.
+  * Fix log call missing msg arg.
+  * Fix typo.
+  * Issue PendingDeprecationWarning for do_package_scan.
+  * Document that do_package_scan will be changed and then removed.
+  * Remove __future__ imports.
+  * wget syntax
+  * much simpler travis script
+  * simple build
+  * deps
+  * simplify travis installs
+  * fix up
+  * Merge branch 'master' into fs
+  * replace dask.bytes imports
+  * Fix typo --- intended length check.
+  * Add autodiscover_all and list non-enabled plugins.
+  * Add module docstring.
+  * Look for and log entrypoint name collision.
+  * Fix typo (local var name changed).
+  * Document interaction between package scan and entrypoint.
+  * Use 'raise from'.
+  * Issue FutureWarning for any package_scan_results.
+  * Fix typos.
+  * Include module in debug log messages.
+  * Fix typo
+  * Fix shadowing.
+  * Add debug logs. Separate discovery and loading.
+  * Remove another unused import.
+  * Roll back unneeded changes.
+  * Update 'Making Drivers' docs.
+  * Finish conf integration; update CLI.
+  * Incorporate 'drivers' section in config.
+  * Make test_which more robust.
+  * Incorporate 'intake.drivers' entrypoint.
+  * Make enable/disable accessible from Python API.
+  * Remove Python 2 compat.
+  * Skip unreadable entries after logging error.
+  * Remove usage of six. Use yaml_load util func.
+  * Fix biffed rebase.
+  * Refine help string.
+  * Add drivers.d system and drivers subcommand.
+  * Minor typo fix in the "Making Drivers" docs
+  * move the {en|de}code_datetime to the compat.{pack|unpack}_kwargs
+  * Provide ndim attribute for npy accessor
+  * added test to check if datetime user_parameters work
+  * add use case for upload
+  * handle lack of tz info
+  * add tests for coerce_datetime and handle non-iterable input
+  * fix numpy warning, and future issue with elementwise comparison
+  * rm errant print()
+  * added {en|de}code_datetime to various msgpack.{packb|unpackb}
+  * Change API
+  * WIP: is this the right add source API?
+  * copy is_dataframe_like
+  * add to API docs 
+  * Add uppload function and machinery
+  * explicit reference to nested cats in conda packages
+  * Update talks
+  * Working FS
+  * Update use_cases.rst
+  * fixes
+  * Merge branch 'master' into params_editor
+  * revert line
+  * mid
+  * start
+  * fix tests
+  * Hide plot when changing source selection
+  * inatke-examples link
+  * rst not md
+  * Update links to intake-examples and include GUI blog
+  * Refactor to make one less copy.
+  * Avoid accidental mutation.
+  * Storage options applied to wrong FS in compressed cache
+  * Add GUI classes
+  * Merge branch 'master' into more_api
+  * Add classes
+  * Let GUI docs be visible; don't ever error on repr
+
+-------------------------------------------------------------------
 Mon Jun  3 17:04:50 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.5.1

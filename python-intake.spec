@@ -19,14 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-intake
-Version:        0.5.1
+Version:        0.5.3
 Release:        0
 Summary:        Data loading and cataloging system
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/ContinuumIO/intake
 Source0:        https://files.pythonhosted.org/packages/source/i/intake/intake-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -40,8 +38,8 @@ Requires:       python-dask-dataframe
 Requires:       python-holoviews
 Requires:       python-hvplot
 Requires:       python-ipywidgets >= 7.2
-Requires:       python-msgpack-numpy
 Requires:       python-msgpack
+Requires:       python-msgpack-numpy
 Requires:       python-numpy
 Requires:       python-pandas
 Requires:       python-pytest
@@ -55,10 +53,10 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module appdirs}
-BuildRequires:  %{python_module dask}
 BuildRequires:  %{python_module dask-array}
 BuildRequires:  %{python_module dask-bag >= 1.0}
 BuildRequires:  %{python_module dask-dataframe}
+BuildRequires:  %{python_module dask}
 BuildRequires:  %{python_module holoviews}
 BuildRequires:  %{python_module hvplot}
 BuildRequires:  %{python_module ipywidgets >= 7.2}
