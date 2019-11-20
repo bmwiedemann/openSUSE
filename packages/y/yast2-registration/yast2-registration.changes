@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov  7 12:18:04 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
+
+- Implement upgrade for Full medium (jsc#SLE-7101)
+- 4.2.16
+
+-------------------------------------------------------------------
+Wed Oct 30 16:31:12 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix getting product for self-update for online and full medium
+  (bsc#1155420)
+- 4.2.15
+
+-------------------------------------------------------------------
 Fri Oct 25 12:56:35 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
 
 - Upgrade support for the Online installation medium
