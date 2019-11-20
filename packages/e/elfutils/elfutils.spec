@@ -1,7 +1,7 @@
 #
 # spec file for package elfutils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ Source1:        README-BEFORE-ADDING-PATCHES
 Source2:        baselibs.conf
 Source3:        %{name}.changes
 Source5:        %{name}.keyring
-Patch1:         disable-tests-with-ptrace.patch
+Patch1:         dwelf_elf_e_machine_string.patch
 Patch2:         cfi-fix.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -131,10 +131,7 @@ applications that require libdw.
 
 %prep
 %setup -q
-%if 0%{?qemu_user_space_build}
-# qemu does not support ptrace
 %patch1 -p1
-%endif
 %patch2 -p1
 
 %build
@@ -181,6 +178,10 @@ ls -lR %{buildroot}/%{_libdir}/libelf*
 %postun -n libdw1 -p /sbin/ldconfig
 
 %check
+%if 0%{?qemu_user_space_build}
+# qemu-linux-user does not support ptrace and a few other process details
+export XFAIL_TESTS="dwfl-proc-attach run-backtrace-dwarf.sh run-backtrace-native.sh run-deleted.sh"
+%endif
 %make_build check
 
 %files

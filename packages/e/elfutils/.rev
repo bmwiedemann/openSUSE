@@ -726,4 +726,13 @@ Fixes CVE-2018-18310, CVE-2018-18520 and CVE-2018-18521.
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>727947</requestid>
   </revision>
+  <revision rev="77" vrev="3">
+    <srcmd5>ba814a2d0b76b9e63a8e787d4307fa2b</srcmd5>
+    <version>0.177</version>
+    <time>1574253812</time>
+    <user>dimstar_suse</user>
+    <comment>- disable-tests-with-ptrace.patch: Remove, set XFAIL_TESTS instead
+- dwelf_elf_e_machine_string.patch: Avoid spurious failure (forwarded request 748720 from Andreas_Schwab)</comment>
+    <requestid>748802</requestid>
+  </revision>
 </revisionlist>

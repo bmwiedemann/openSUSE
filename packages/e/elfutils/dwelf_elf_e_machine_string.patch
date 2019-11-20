@@ -1,0 +1,12 @@
+Index: elfutils-0.177/tests/dwelf_elf_e_machine_string.c
+===================================================================
+--- elfutils-0.177.orig/tests/dwelf_elf_e_machine_string.c
++++ elfutils-0.177/tests/dwelf_elf_e_machine_string.c
+@@ -40,6 +40,7 @@ main (int argc, char **argv)
+       int em;
+       const char *machine;
+ 
++      errno = 0;
+       if (strncmp ("0x", argv[i], 2) == 0)
+ 	val = strtol (&argv[i][2], NULL, 16);
+       else
