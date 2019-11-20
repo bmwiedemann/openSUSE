@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Nov 13 09:50:26 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to version 0.1.13:
+  + New Features:
+    - Export xb_silo_query_full()
+  + Bugfixes:
+    - Show the XPath that was used in the query in the error
+      message
+- Changes from version 0.1.12:
+  + New Features:
+    - Add helper functions to get the first and last child
+      XbBuilerNode
+    - Add xb_node_transmogrify to allow changing XML format
+    - Support 'tail' XML data in the stored silo
+  + Bugfixes:
+    - Do not escape a single quote with &apos;
+    - Don't invalidate the silo for a GIO temp file
+    - Fix up two memory leaks if using libxmlb from an introspected
+      binding
+
+-------------------------------------------------------------------
 Fri Sep 20 12:07:24 UTC 2019 - ecsos@opensuse.org
 
 - Update to version 0.1.11:

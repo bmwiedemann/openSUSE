@@ -36,4 +36,29 @@ Needed for future versions of fwupd</comment>
     <comment>New upstream release</comment>
     <requestid>732908</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f045ae3073f9b52f5c17a0f2a9470e57</srcmd5>
+    <version>0.1.13</version>
+    <time>1574253831</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.1.13:
+  + New Features:
+    - Export xb_silo_query_full()
+  + Bugfixes:
+    - Show the XPath that was used in the query in the error
+      message
+- Changes from version 0.1.12:
+  + New Features:
+    - Add helper functions to get the first and last child
+      XbBuilerNode
+    - Add xb_node_transmogrify to allow changing XML format
+    - Support 'tail' XML data in the stored silo
+  + Bugfixes:
+    - Do not escape a single quote with &amp;apos;
+    - Don't invalidate the silo for a GIO temp file
+    - Fix up two memory leaks if using libxmlb from an introspected
+      binding
+</comment>
+    <requestid>749155</requestid>
+  </revision>
 </revisionlist>

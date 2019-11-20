@@ -1,7 +1,7 @@
 #
 # spec file for package libxmlb
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 # Copyright (c) 2019 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define sover 1
 
 Name:           libxmlb
-Version:        0.1.11
+Version:        0.1.13
 Release:        0
 Summary:        Library for querying compressed XML metadata
 License:        LGPL-2.1-or-later
@@ -115,7 +115,7 @@ Files for development with %{name}.
 %files -n xmlb-tool
 %doc README.md NEWS
 %{_libexecdir}/xb-tool
-%{_libexecdir}/xb-self-test
+%{_libexecdir}/installed-tests/
 %{_datadir}/installed-tests/
 
 %files devel
