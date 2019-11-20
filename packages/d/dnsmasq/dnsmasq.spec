@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} < 1550
+%bcond_with tftp_user_package
+%else
+%bcond_without tftp_user_package
+%endif
+
 Name:           dnsmasq
 Summary:        DNS Forwarder and DHCP Server
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -35,6 +41,7 @@ Patch0:         dnsmasq-groups.patch
 Patch1:         0001-fix-build-after-y2038-changes-in-glibc.patch
 # PATCH-FIX-UPSTREAM -- http://thekelleys.org.uk/gitweb/?p=dnsmasq.git;a=commit;h=ab73a746a0d6fcac2e682c5548eeb87fb9c9c82e
 Patch2:         Fix-build-with-libnettle-3.5.patch
+Patch3:         dnsmasq-CVE-2019-14834.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  dbus-1-devel
 BuildRequires:  dos2unix
@@ -45,7 +52,12 @@ BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libnetfilter_conntrack)
 BuildRequires:  pkgconfig(systemd)
 Requires(pre):  group(nogroup)
+%if %{with tftp_user_package}
+Requires(pre):  user(tftp)
+%else
 Requires(pre):  /usr/sbin/useradd
+%else
+%endif
 
 %description
 Dnsmasq provides network infrastructure for small networks: DNS,
@@ -69,6 +81,7 @@ server's leases.
 %patch0
 %patch1 -p1
 %patch2 -p1
+%patch3
 
 # Remove the executable bit from python example files to
 # avoid unwanted automatic dependencies
@@ -86,7 +99,7 @@ sed -i -e 's|\(PREFIX *= *\)/usr/local|\1/usr|;
 sed -i -e 's|lua5.2|lua5.3|' Makefile
 
 # SED-FIX-UPSTREAM -- Fix man page
-sed -i -e 's|The defaults to "dip",|The default is "nogroup",|' \
+sed -i -e 's|The default is "dip",|The default is "nogroup",|' \
 	man/dnsmasq.8
 
 # SED-FIX-UPSTREAM -- Fix cachesize, group and user
@@ -95,8 +108,9 @@ sed -i -e 's|CACHESIZ 150|CACHESIZ 2000|;
 	   s|CHGRP "dip"|CHGRP "nogroup"|' \
 	src/config.h
 
-# Fix trust-anchor.conf location
+# Fix trust-anchor.conf location and include /etc/dnsmasq.d/*.conf by default
 sed -i -e '/trust-anchors.conf/c\#conf-file=/etc/dnsmasq.d/trust-anchors.conf' \
+       -e '/conf-dir=.*conf/s/^\#//' \
 	dnsmasq.conf.example
 
 %build
@@ -107,9 +121,9 @@ export LDFLAGS="-Wl,-z,relro,-z,now -pie"
 # same flags for make and make install, else everything gets recompiled
 %define _copts   "-DHAVE_DBUS -DHAVE_CONNTRACK -DHAVE_LIBIDN2 -DHAVE_DNSSEC -DHAVE_LUASCRIPT"
 make %{?_smp_mflags} AWK=gawk all-i18n CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" COPTS=%{_copts}
-make -C contrib/lease-tools %{?_smp_mflags}
 
 %pre
+%if %{without tftp_user_package}
 if ! /usr/bin/getent group tftp >/dev/null; then
     %{_sbindir}/groupadd -r tftp
 fi
@@ -117,6 +131,7 @@ if ! /usr/bin/getent passwd tftp >/dev/null; then
     %{_sbindir}/useradd -c "TFTP account" -d /srv/tftpboot -G tftp -g tftp \
     -r -s /bin/false tftp
 fi
+%endif
 if ! /usr/bin/getent passwd dnsmasq >/dev/null; then
     /usr/sbin/useradd -r -d /var/lib/empty -s /bin/false -c "dnsmasq" -g nogroup -G tftp dnsmasq
 fi
@@ -149,18 +164,23 @@ install -m 644 %SOURCE3 %{buildroot}/%{_sysconfdir}/slp.reg.d/
 install -d 755 %{buildroot}/etc/dbus-1/system.d/
 install -m 644 dbus/dnsmasq.conf %{buildroot}/etc/dbus-1/system.d/dnsmasq.conf
 install -D -m 0644 %SOURCE4 %{buildroot}%{_unitdir}/dnsmasq.service
+%if %{without tftp_user_package}
 install -d -m 0755 %{buildroot}/srv/tftpboot
+%endif
 ln -sf %{_sbindir}/service %{buildroot}/usr/sbin/rcdnsmasq
 install -d -m 755 %{buildroot}/%{_sysconfdir}/dnsmasq.d
 install -m 644 trust-anchors.conf %{buildroot}/%{_sysconfdir}/dnsmasq.d/trust-anchors.conf
 
 # utils subpackage
 mkdir -p %{buildroot}/%{_bindir} %{buildroot}/%{_mandir}/man1
+make -C contrib/lease-tools %{?_smp_mflags}
 install -m 755 contrib/lease-tools/dhcp_release %{buildroot}/%{_bindir}/dhcp_release
 install -m 644 contrib/lease-tools/dhcp_release.1 %{buildroot}/%{_mandir}/man1/dhcp_release.1
+install -m 755 contrib/lease-tools/dhcp_release6 %{buildroot}/%{_bindir}/dhcp_release6
+install -m 644 contrib/lease-tools/dhcp_release6.1 %{buildroot}/%{_mandir}/man1/dhcp_release6.1
 install -m 755 contrib/lease-tools/dhcp_lease_time %{buildroot}/%{_bindir}/dhcp_lease_time
 install -m 644 contrib/lease-tools/dhcp_lease_time.1 %{buildroot}/%{_mandir}/man1/dhcp_lease_time.1
-rm contrib/lease-tools/{dhcp_release,dhcp_lease_time}
+make -C contrib/lease-tools clean
 rm -rf contrib/Suse
 rm -rf contrib/Solaris10
 rm -rf contrib/dnsmasq_MacOSX-pre10.4
@@ -182,8 +202,9 @@ rm -rf contrib/MacOSX-launchd
 %{_unitdir}/dnsmasq.service
 %dir %{_sysconfdir}/dnsmasq.d
 %config(noreplace) %{_sysconfdir}/dnsmasq.d/trust-anchors.conf
-
+%if %{without tftp_user_package}
 %dir %attr(0755,tftp,tftp) /srv/tftpboot
+%endif
 
 %files utils
 %{_bindir}/dhcp_*

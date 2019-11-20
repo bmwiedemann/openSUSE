@@ -681,4 +681,16 @@ Most of the source code files give a choice of either GPL-2.0 or GPL-3.0 (not GP
     <comment></comment>
     <requestid>728482</requestid>
   </revision>
+  <revision rev="75" vrev="8">
+    <srcmd5>baa8eea597d5b8d8e5a5b678d543aadd</srcmd5>
+    <version>2.80</version>
+    <time>1574253767</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1154849, CVE-2019-14834, dnsmasq-CVE-2019-14834.patch:
+  memory leak in the create_helper() function in /src/helper.c
+- bsc#1143454: Require user(tftp) instead of creating it ourselves.
+- Package contrib/lease-tools/dhcp_release6.
+- bsc#1152539: include config files from /etc/dnsmasq.d/*.conf .</comment>
+    <requestid>748378</requestid>
+  </revision>
 </revisionlist>
