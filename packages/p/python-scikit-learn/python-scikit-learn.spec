@@ -19,12 +19,11 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-scikit-learn
-Version:        0.21.2
+Version:        0.21.3
 Release:        0
 Summary:        Python modules for machine learning and data mining
 License:        BSD-3-Clause
-Group:          Development/Libraries/Python
-URL:            http://scikit-learn.org/
+URL:            https://scikit-learn.org/
 Source0:        https://files.pythonhosted.org/packages/source/s/scikit-learn/scikit-learn-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
@@ -36,6 +35,11 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  openblas-devel
 BuildRequires:  python-rpm-macros
+Requires:       python-joblib
+Requires:       python-matplotlib
+Requires:       python-numpy >= 1.8.2
+Requires:       python-scipy >= 0.13.3
+Requires:       python-xml
 # SECTION test requirements
 BuildRequires:  %{python_module joblib}
 BuildRequires:  %{python_module matplotlib}
@@ -43,11 +47,6 @@ BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module xml}
 # /SECTION
-Requires:       python-joblib
-Requires:       python-matplotlib
-Requires:       python-numpy >= 1.8.2
-Requires:       python-scipy >= 0.13.3
-Requires:       python-xml
 %python_subpackages
 
 %description
@@ -69,6 +68,7 @@ rm -rf sklearn/.pytest_cache
 %ifarch %{ix86} x86_64
 %check
 export SKLEARN_SKIP_NETWORK_TESTS=1
+# export PYTHONDONTWRITEBYTECODE=1
 NO_TESTS="test_feature_importance_regression or test_minibatch_with_many_reassignments"
 NO_TESTS="$NO_TESTS or test_sparse_coder_parallel_mmap or test_explained_variances"
 export NO_TESTS
