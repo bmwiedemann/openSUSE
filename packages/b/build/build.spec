@@ -22,7 +22,7 @@ Name:           build
 Summary:        A Script to Build SUSE Linux RPMs
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Tools/Building
-Version:        20190923
+Version:        20191114
 Release:        0
 Source:         obs-build-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -61,6 +61,7 @@ Recommends:     perl(YAML)
 Recommends:     perl(YAML::LibYAML)
 Recommends:     bsdtar
 Recommends:     qemu-linux-user
+Recommends:     zstd
 Recommends:     /usr/bin/qemu-kvm
 Recommends:     /sbin/mkfs.ext3
 %endif

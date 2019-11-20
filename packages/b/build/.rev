@@ -1124,4 +1124,16 @@ Stephan Kulow (2):
 - Export SYSTEMD_OFFLINE=1 to avoid failures from systemctl</comment>
     <requestid>732735</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>2b66ce4960a269aabe65751bb8665ff5</srcmd5>
+    <version>20191114</version>
+    <time>1574253804</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Fedora module parser
+- Rpmmd parser: set up a dummy ExternEnt handler
+- Add support for modules and publish flags
+- add zstd to recommends
+- Support rpm's new expression expansion syntax</comment>
+    <requestid>748685</requestid>
+  </revision>
 </revisionlist>
