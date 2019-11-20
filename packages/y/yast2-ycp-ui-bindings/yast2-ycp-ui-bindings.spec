@@ -16,8 +16,12 @@
 #
 
 
+# YUIWidget_CustomStatusItemSelector
+%define min_yui_version	3.8.4
+%define yui_so		10
+
 Name:           yast2-ycp-ui-bindings
-Version:        4.2.3
+Version:        4.2.4
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -36,8 +40,8 @@ BuildRequires:  sgml-skel
 Requires:       yast2-core
 BuildRequires:  yast2-core-devel
 
-# YWidgetFactory::createSingleItemSelector()
-BuildRequires:  libyui-devel >= 3.8.0
+BuildRequires:  libyui-devel >= %min_yui_version
+Requires:       libyui%yui_so >= %min_yui_version
 
 # libyui ImplPtr
 BuildRequires:  boost-devel
@@ -60,7 +64,7 @@ Group:          Development/Libraries
 Requires:       boost-devel
 Requires:       glibc-devel
 Requires:       libstdc++-devel
-Requires:       libyui-devel
+Requires:       libyui-devel >= %min_yui_version
 Requires:       yast2-core-devel
 Requires:       yast2-devtools
 

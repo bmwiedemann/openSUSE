@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 12 09:27:46 UTC 2019 - Steffen Winterfeldt <snwint@suse.com>
+
+- require correct libyui version (bsc#1153103)
+- 4.2.5
+
+-------------------------------------------------------------------
+Thu Nov  7 13:26:47 UTC 2019 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Support for CustomStatusItemSelector (bsc#1084674)
+- 4.2.4
+
+-------------------------------------------------------------------
 Tue Sep 24 13:15:45 UTC 2019 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Added example for icons in ItemSelector widget (bsc#1084674)
