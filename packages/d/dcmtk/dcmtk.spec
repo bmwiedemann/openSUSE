@@ -1,7 +1,7 @@
 #
 # spec file for package dcmtk
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %define libname libdcmtk3_6
+%define abiversion 15
 Name:           dcmtk
-Version:        3.6.4
+Version:        3.6.5
 Release:        0
 Summary:        DICOM Toolkit
 License:        BSD-3-Clause AND Apache-2.0
@@ -32,15 +33,16 @@ BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libicu-devel
-BuildRequires:  libjpeg-devel
-BuildRequires:  libopenssl-devel
-BuildRequires:  libpng-devel
-BuildRequires:  libsndfile-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  pkgconfig
 BuildRequires:  tcpd-devel
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libopenjp2)
+BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(sndfile)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 DCMTK is a collection of libraries and applications implementing large
@@ -117,7 +119,7 @@ install -pm 0644 README %{buildroot}%{_docdir}/dcmtk/
 
 %files -n %{libname}
 %license COPYRIGHT
-%{_libdir}/*.so.14
-%{_libdir}/*.so.14.3.6*
+%{_libdir}/*.so.%{abiversion}
+%{_libdir}/*.so.%{abiversion}.3.6*
 
 %changelog

@@ -168,4 +168,15 @@
 </comment>
     <requestid>686421</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a352e0328407dcd6e051858204267e43</srcmd5>
+    <version>3.6.5</version>
+    <time>1574249882</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.6.5. See DOCS/CHANGES.365 for more information
+  * Updated code definitions for DICOM 2018e
+  * Fix some -Wunused-result warnings warnings
+  * Fixed CMake error if &quot;FindPkgConfig&quot; is missing</comment>
+    <requestid>749834</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 20 07:26:03 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 3.6.5. See DOCS/CHANGES.365 for more information
+  * Updated code definitions for DICOM 2018e
+  * Fix some -Wunused-result warnings warnings
+  * Fixed CMake error if "FindPkgConfig" is missing
+
+-------------------------------------------------------------------
 Tue Mar 19 11:48:41 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Fix a typo detected by Leap 15.1
