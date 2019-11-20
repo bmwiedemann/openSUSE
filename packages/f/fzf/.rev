@@ -61,4 +61,12 @@
     <comment>- Remove pointless double extraction of tarball again.</comment>
     <requestid>696454</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>11f64012bb58c0836a7135804a2c0545</srcmd5>
+    <version>0.19.0</version>
+    <time>1574242074</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749703</requestid>
+  </revision>
 </revisionlist>
