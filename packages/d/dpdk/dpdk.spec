@@ -26,7 +26,7 @@
 
 %if "%flavor" == "thunderx"
 %define name_tag -thunderx
-%define summary_tag thunderx
+%define summary_tag (thunderx)
 %define aarch64_machine2 thunderx
 %define exclusive_arch aarch64
 %endif
@@ -58,7 +58,7 @@
 %define lname libdpdk-%{maj}_%{min}
 
 Name:           dpdk%{name_tag}
-Version:        18.11.2
+Version:        18.11.3
 Release:        0
 Summary:        Set of libraries and drivers for fast packet processing
 License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.1-only
@@ -66,8 +66,9 @@ Group:          System/Libraries
 Url:            http://dpdk.org
 Source:         http://fast.dpdk.org/rel/dpdk-%{version}.tar.xz
 Source1:        preamble
-Patch:          dpdk-fix-implicit-fallthrough-warning.patch
 Patch1:         0002-fix-cpu-compatibility.patch
+Patch2:         0001-vhost-fix-possible-denial-of-service-on-SET_VRING_NU.patch
+Patch3:         0002-vhost-fix-possible-denial-of-service-by-leaking-FDs.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  libelf-devel
@@ -159,13 +160,14 @@ The DPDK Kernel NIC Interface (KNI) allows userspace applications access to the 
 %define sdkdir  %{_datadir}/dpdk
 %define docdir  %{_docdir}/dpdk
 %define incdir %{_includedir}/dpdk
-%define pmddir %{_libdir}/dpdk-pmds
+%define pmddir %{_libdir}/dpdk-pmds-%{maj}.%{min}
 
 %prep
 # can't use %{name} because of dpdk-thunderx
 %setup -q -n dpdk-stable-%{version}
-%patch -p1
 %patch1 -p1 -z .init
+%patch2 -p1 -z .init
+%patch3 -p1 -z .init
 
 # This fixes CROSS compilation (broken) in the mk file for ThunderX
 sed -i '/^CROSS /s/^/#/'  mk/machine/thunderx/rte.vars.mk
@@ -355,10 +357,8 @@ ln -s %{_sbindir}/dpdk-devbind %{buildroot}%{_sbindir}/dpdk_nic_bind
 %files -n %{lname}
 %defattr(-,root,root)
 %if %{with shared}
-%dir %{_libdir}/dpdk-pmds
-
 %{_libdir}/*.so.*
-%{pmddir}/
+%{pmddir}
 %endif
 
 %files doc
