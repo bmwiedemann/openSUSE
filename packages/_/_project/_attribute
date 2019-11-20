@@ -52,7 +52,7 @@
   boo#1144894: '20190921'
   boo#1145372: '20191023'
   boo#1145461: '20190820'
-  boo#1146736: '20191118'
+  boo#1146736: '20191119'
   boo#1148477: '20191009'
   boo#1148850: '20191008'
   boo#1150977: '20190917'
@@ -60,13 +60,13 @@
   boo#1151884: '20191025'
   boo#1151951: '20190923'
   boo#1152177: '20191003'
-  boo#1153159: '20191118'
+  boo#1153159: '20191119'
   boo#1153160: '20191118'
   boo#1153162: '20191009'
   boo#1153188: '20191014'
   boo#1153514: '20191118'
-  boo#1153562: '20191116'
-  boo#1153568: '20191118'
+  boo#1153562: '20191119'
+  boo#1153568: '20191119'
   boo#1154311: '20191018'
   boo#1154582: '20191119'
   boo#1155162: '20191104'
@@ -76,8 +76,8 @@
   boo#1155624: '20191104'
   boo#1156459: '20191110'
   boo#1156497: '20191112'
-  boo#1156745: '20191118'
-  bsc#1114673: '20191118'
+  boo#1156745: '20191119'
+  bsc#1114673: '20191119'
   bsc#1120957: '20190508'
   bsc#1126782: '20191016'
   bsc#1131301: '20190424'
@@ -163,7 +163,7 @@
   poo#57014: '20191109'
   poo#57077: '20191110'
   poo#57671: '20191002'
-  poo#57731: '20191118'
+  poo#57731: '20191119'
   poo#57737: '20191112'
   poo#57932: '20191014'
   poo#58433: '20191018'
@@ -183,7 +183,7 @@ splitter-whitelist = B C D E F G H I J
 # now just for testing
 source_projects_expand = devel:languages:haskell
 
-devel-whitelist = Virtualization:WSL server:monitoring:zabbix network:vpn:wireguard KDE:Qt:5.14 network:messaging:kafka
+devel-whitelist = Virtualization:WSL server:monitoring:zabbix network:vpn:wireguard KDE:Qt:5.14 network:messaging:kafka windows:mingw:win32 windows:mingw:win64
  
 # packagelist generator related configuration
 pkglistgen-archs = i586 x86_64
@@ -216,7 +216,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20191119</value>
+    <value>20191120</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -365,7 +365,7 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20191119'
+    <value>failed: ''
 published: '20191118'
 publishing: '20191118'
 testing: '20191119'
