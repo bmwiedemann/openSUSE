@@ -1,7 +1,7 @@
 #
 # spec file for package qpdf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define so_version 26
 Name:           qpdf
-Version:        9.0.2
+Version:        9.1.0
 Release:        0
 Summary:        Command-line tools and library for transforming PDF files
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
-Url:            http://qpdf.sourceforge.net/
+URL:            http://qpdf.sourceforge.net/
 Source:         https://github.com/qpdf/qpdf/releases/download/release-qpdf-%{version}/qpdf-%{version}.tar.gz
 Source1:        https://github.com/qpdf/qpdf/releases/download/release-qpdf-%{version}/qpdf-%{version}.tar.gz.asc
 Source2:        qpdf.keyring
@@ -31,6 +31,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libjpeg8-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(gnutls)
 
 %description
 QPDF is a program that does structural, content-preserving
@@ -76,7 +77,8 @@ package.
 
 %build
 export CXXFLAGS="%{optflags} -fvisibility-inlines-hidden"
-%configure --disable-static --disable-test-compare-images \
+%configure --disable-static \
+           --enable-crypto-gnutls \
            --docdir='${datarootdir}'/doc/packages/%{name} \
            --enable-show-failed-test-output
 make %{?_smp_mflags}

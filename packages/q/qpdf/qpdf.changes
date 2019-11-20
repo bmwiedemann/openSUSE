@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Nov 17 13:48:46 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 9.1.0
+  * Incorporate contribution from Masamichi Hosoda to properly handle
+    signature dictionaries by not including them in object streams,
+    formatting the Contents key has a hexadecimal string,
+    and excluding the /Contents key from encryption and decryption.
+  * Incorporate contribution from Masamichi Hosoda to provide new API
+    calls for getting file-level information about input and output files,
+    enabling certain operations on the files at the file level rather
+    than the object level. New methods include QPDF::getXRefTable(), 
+    QPDFObjectHandle::getParsedOffset(), 
+    QPDFWriter::getRenumberedObjGen(QPDFObjGen), 
+    and QPDFWriter::getWrittenXRefTable().
+  * Support build-time and runtime selectable crypto providers.
+    This includes the addition of new classes QPDFCryptoProvider
+    and QPDFCryptoImpl and the recognition of the QPDF_CRYPTO_PROVIDER
+    environment variable. Crypto providers are described in depth
+    in Section 2.3, “Crypto Providers”.
+  * Addition of the --show-crypto option in support of selectable
+    crypto providers, as described in Section 2.3, “Crypto Providers”.
+  * Allow :even or :odd to be appended to numeric ranges for
+    specification of the even or odd pages from among the pages
+    specified in the range.
+* Add BR on pkgconfig(gnutls) to add support for GnuTLS for encryption
+  operations.
+
+-------------------------------------------------------------------
 Mon Oct 14 11:37:37 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 9.0.2
