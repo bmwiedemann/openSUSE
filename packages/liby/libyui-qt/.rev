@@ -520,4 +520,12 @@
     <user>dimstar_suse</user>
     <comment>osc copypac from project:openSUSE:Factory package:libyui-qt revision:62, using expand</comment>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>67612228584fb87ed93839e2218de5ce</srcmd5>
+    <version>2.51.4</version>
+    <time>1574241992</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.51.4</comment>
+    <requestid>748648</requestid>
+  </revision>
 </revisionlist>
