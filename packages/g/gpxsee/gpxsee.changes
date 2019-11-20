@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 15 22:49:20 CET 2019 - tumic@cbox.cz
+
+- Update to version 7.18
+  * Added support for waypoint addresses.
+  * Improved pause detection.
+  * Improved GPI support (images, safety cameras).
+  * Added Ukrainian translation.
+
+-------------------------------------------------------------------
 Sat Nov  2 10:03:40 CET 2019 - tumic@cbox.cz
 
 - Update to version 7.17
