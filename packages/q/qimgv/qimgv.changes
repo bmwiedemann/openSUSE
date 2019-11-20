@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Nov 12 21:30:01 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.8.8
+  * Quick fix for the showDirectory feature
+
+-------------------------------------------------------------------
+Tue Nov 12 18:15:30 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.8.7
+  What's new:
+  * Added volume control actions: toggleMute, volumeUp,
+    volumeDown
+  * Added mute button
+  * Added showDirectory action & context menu entry. Opens
+    current dir in the default file manager.
+  * Configurable text color for fullscreen info bar
+  * Off-screen thumbnails are now unloaded to save memory
+  Bug fixes:
+  * Fixed file format detection issues
+  * Fixed overlays sometimes losing keyboard focus
+  * Fixed moving files (regression)
+  * Fixed notification not being shown on file copy / move
+  * Fixed some temporary files not being removed on windows
+  * Fixed crash on indexed png with transparency
+  * Fixed possible crash when renaming a file
+  Other:
+  * Images are now being saved through a temporary file in case
+    something goes wrong
+  * Fixed incorrect shortcuts for frameStep / frameStepBack
+    (they were switched around)
+
+-------------------------------------------------------------------
 Tue Oct 15 07:45:32 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.8.6
