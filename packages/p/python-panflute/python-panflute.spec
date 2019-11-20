@@ -58,6 +58,7 @@ Panflute is a Python package for writing Pandoc filters.
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+sed -i 's|shutilwhich||' %{buildroot}%{python3_sitelib}/panflute-*.egg-info/requires.txt
 
 %files %{python_files}
 %doc README.md README.rst
