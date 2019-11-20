@@ -17,23 +17,21 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without test
+%bcond_without  test
 Name:           python-palettable
-Version:        3.2.0
+Version:        3.3.0
 Release:        0
 Summary:        Color palettes for Python
 License:        MIT
-Group:          Development/Languages/Python
-Url:            https://jiffyclub.github.io/palettable/
+URL:            https://jiffyclub.github.io/palettable/
 Source:         https://files.pythonhosted.org/packages/source/p/palettable/palettable-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -53,9 +51,7 @@ colors for a web application.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-py.test-%{$python_bin_suffix}
-}
+%pytest
 
 %files %{python_files}
 %doc README.rst
