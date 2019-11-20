@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 13 08:28:43 UTC 2019 - Ansgar Esztermann <aeszter@gwdg.de>
+
+- compile with -ffat-lto-objects to prevent build failure 
+
+-------------------------------------------------------------------
 Tue Aug 20 11:54:43 CEST 2019 - kukuk@suse.de
 
 - Add /etc/cron.weekly to filelist, as this is now part of cron,
