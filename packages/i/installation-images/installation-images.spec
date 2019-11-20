@@ -274,7 +274,7 @@ BuildRequires:  aaa_base-extras
 BuildRequires:  adaptec-firmware
 BuildRequires:  alsa
 BuildRequires:  alsa-utils
-BuildRequires:  arabic-kacst-fonts
+BuildRequires:  noto-naskharabic-fonts
 BuildRequires:  arphic-uming-fonts
 BuildRequires:  audit-libs
 BuildRequires:  bcm43xx-firmware
@@ -480,6 +480,7 @@ BuildRequires:  xset
 BuildRequires:  xterm
 BuildRequires:  xz
 BuildRequires:  yast2-devtools
+BuildRequires:  yast2-schema
 BuildRequires:  yast2-trans-allpacks
 %if 0%{?with_storage_ng}
 BuildRequires:  yast2-storage-ng
@@ -605,7 +606,7 @@ ExcludeArch:    %arm
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0+
 Group:          Metapackages
-Version:        14.443
+Version:        14.447
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
