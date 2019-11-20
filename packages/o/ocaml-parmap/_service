@@ -1,10 +1,10 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="url">git://github.com/rdicosmo/parmap.git</param>
-    <param name="scm">git</param>
-    <param name="versionformat">%cd.%h</param>
-    <param name="revision">803edbb03aedda79b0c681b4f14ea9a2f10b1514</param>
     <param name="filename">ocaml-parmap</param>
+    <param name="revision">dune-wip</param>
+    <param name="scm">git</param>
+    <param name="url">https://github.com/olafhering/ocaml-parmap.git</param>
+    <param name="versionformat">%cd.%h</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>
