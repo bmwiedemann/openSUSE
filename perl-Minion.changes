@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Nov 19 08:36:52 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 10.0
+   see /usr/share/doc/packages/perl-Minion/Changes
+
+  10.0  2019-11-15
+    - Removed PostgreSQL migrations older than 2 years, that means you need to
+      have Minion version 7.01 or newer installed before you can upgrade to
+      version 10.0.
+    - Removed experimental status from result_p method in Minion.
+    - Removed experimental status from history method in Minion and
+      Minion::Backend::Pg.
+    - Removed experimental status from delayed_jobs and enqueued_jobs fields from
+      stats methods in Minion and Minion::Backend::Pg.
+    - Removed experimental status from cleanup and finish events in Minion::Job.
+    - Changed reset method in Minion and Minion::Backend::Pg to require options
+      for what to reset.
+    - Improved reset method in Minion and Minion::Backend::Pg to allow for locks
+      to be reset without resetting the whole queue.
+    - Improved performance by making the minion_workers table unlogged.
+
+-------------------------------------------------------------------
 Fri Aug 30 07:46:47 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 9.13
