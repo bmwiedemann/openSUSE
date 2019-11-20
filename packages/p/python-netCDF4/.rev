@@ -287,4 +287,12 @@
   fixed in netcdf itself</comment>
     <requestid>736040</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e00cc265079001b91ca74d406a1a5585</srcmd5>
+    <version>1.5.3</version>
+    <time>1574242107</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749755</requestid>
+  </revision>
 </revisionlist>

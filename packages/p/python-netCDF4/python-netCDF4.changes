@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 19 20:48:10 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 1.5.3:
+  * make sure arrays are masked that are not filled when auto_fill is off 
+  * python 3.8 binary wheels.
+
+-------------------------------------------------------------------
 Tue Oct  8 09:09:31 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.5.2:
