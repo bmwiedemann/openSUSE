@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 19 20:50:31 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 3.0.3
+  * Regenerate Cython wrappers to support Python 3.8.
+- Drop upstream-included fix_window_size.patch
+
+-------------------------------------------------------------------
 Sun Aug  4 14:16:57 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Add fix_window_size.patch

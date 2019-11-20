@@ -23,15 +23,12 @@
   %define mpiver  openmpi2
 %endif
 Name:           python-mpi4py
-Version:        3.0.2
+Version:        3.0.3
 Release:        0
 Summary:        MPI for Python
 License:        BSD-2-Clause
-Group:          Development/Libraries/Python
 URL:            https://bitbucket.org/mpi4py/mpi4py
 Source:         https://files.pythonhosted.org/packages/source/m/mpi4py/mpi4py-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix_window_size.patch - https://bitbucket.org/mpi4py/mpi4py/issues/137/
-Patch0:         fix_window_size.patch
 BuildRequires:  %{mpiver}
 BuildRequires:  %{mpiver}-config
 BuildRequires:  %{mpiver}-devel
@@ -77,7 +74,6 @@ This package supports:
 
 %package        devel
 Summary:        Development files for %{name}
-Group:          Development/Libraries/Python
 Requires:       %{name} = %{version}
 Requires:       %{name}-common-devel = %{version}
 Requires:       python-devel
@@ -87,7 +83,6 @@ Development libraries and headers needed to build packages using %{name}.
 
 %package     -n %{name}-common-devel
 Summary:        Shared development files for %{name}
-Group:          Development/Libraries/Python
 Requires:       %{mpiver}-devel
 Provides:       %{python_module mpi4py-common-devel = %{version}}
 
@@ -100,7 +95,6 @@ the python-specific devel package.
 
 %package     -n %{name}-doc
 Summary:        Documentation for %{name}
-Group:          Documentation/Other
 Provides:       %{python_module mpi4py-doc = %{version}}
 
 %description -n %{name}-doc
@@ -108,7 +102,6 @@ Documentation files and demos for %{name}.
 
 %prep
 %setup -q -n mpi4py-%{version}
-%patch0 -p1
 rm demo/*/runtests.bat docs/source/usrman/make.bat
 sed -i 's/\r$//' docs/usrman/objects.inv
 
