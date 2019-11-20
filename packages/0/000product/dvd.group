@@ -4949,6 +4949,7 @@
     <package name="system-user-nobody" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="system-user-root" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="system-user-srvGeoClue" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="system-user-tftp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="system-user-upsd" supportstatus="unsupported"/> <!-- reason: dvd:nut -->
     <package name="system-user-uucp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="system-user-wwwrun" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_web -->
@@ -5620,6 +5621,7 @@
     <package name="zlib-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-C-C++-devel_C_C++ -->
     <package name="zoo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="zsh" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="zstd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="zypper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="zypper-aptitude" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="zypper-lifecycle-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
