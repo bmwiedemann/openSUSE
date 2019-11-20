@@ -62,7 +62,7 @@ Summary:        Terminal control library
 #Git:           http://ncurses.scripts.mit.edu
 License:        MIT
 Group:          System/Base
-Url:            http://www.invisible-island.net/ncurses/ncurses.html
+URL:            http://www.invisible-island.net/ncurses/ncurses.html
 Source0:        ftp://ftp.invisible-island.net/ncurses/ncurses-6.1.tar.gz
 Source1:        ncurses-6.1-patches.tar.bz2
 Source2:        handle.linux

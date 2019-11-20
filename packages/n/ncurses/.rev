@@ -2660,4 +2660,28 @@
 - Correct offsets of hunks of patch ncurses-6.1.dif for misc/terminfo.src</comment>
     <requestid>744202</requestid>
   </revision>
+  <revision rev="164" vrev="24">
+    <srcmd5>2638fd5df45ae772f6da48d30af70b87</srcmd5>
+    <version>6.1</version>
+    <time>1574253818</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not add has size to linker flags of any pkg-config
+
+- Add ncurses patch 20191109
+  + add warning-check in tic for terminals with parm_dch vs parm_ich.
+  + drop ich1 from rxvt-basic, Eterm and mlterm to improve compatibility
+    with old non-curses programs -TD
+  + reviewed st 0.8.2, updated some details -TD
+  + use ansi+rep several places -TD
+  + corrected tic's check for ich1 (report by Sebastian J. Bronner,
+    cf: 20020901).
+
+- Add ncurses patch 20191102
+  + check parameter of set_escdelay, return ERR if negative.
+  + check parameter of set_tabsize, return ERR if not greater than zero
+    (report/patch by Anthony Sottile).
+  + revise CF_ADD_LIBS macro to prepend rather than append libraries.
+  + add &quot;xterm-mono&quot; to help packagers (report by Sven Joachim) -TD</comment>
+    <requestid>748916</requestid>
+  </revision>
 </revisionlist>
