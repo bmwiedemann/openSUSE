@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov 13 15:03:30 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fixed Pkg.Resolvables() to properly filter by status
+  (related to bsc#1132650)
+- 4.2.2
+
+-------------------------------------------------------------------
+Tue Oct 29 12:39:09 CET 2019 - schubi@suse.de
+
+- Returning raw packages dependencies while calling
+  <Y2Packager::Resolvable>.deps (bsc#1132650).
+- 4.2.1
+
+-------------------------------------------------------------------
 Thu May 23 07:09:08 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
 
 - Added Pkg.Resolvables() and Pkg.AnyResolvable() calls
