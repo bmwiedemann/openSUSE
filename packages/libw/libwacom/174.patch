@@ -1,0 +1,52 @@
+From b81ab0fec2273f2ff20664660fe5e9b58dc67a9c Mon Sep 17 00:00:00 2001
+From: Peter Hutterer <peter.hutterer@who-t.net>
+Date: Mon, 4 Nov 2019 14:55:24 +1000
+Subject: [PATCH] meson.build: disable the deprecated symbols test with LTO
+
+If I understand this correctly:
+- our deprecated symbols are remapped into a specific library version
+- nothing in the test calls those symbols, so they're optimized away (they end
+  up as local symbols)
+- our test uses asm to link to those functions but by then they're already
+  gone
+
+Rather than fixing this let's just disable the test, it doesn't provide us
+with anything useful in the LTO condition anyway.
+
+Fixes #152
+
+Signed-off-by: Peter Hutterer <peter.hutterer@who-t.net>
+---
+ meson.build | 19 ++++++++++++-------
+ 1 file changed, 12 insertions(+), 7 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 8283613..28d93a3 100644
+--- a/meson.build
++++ b/meson.build
+@@ -543,13 +543,18 @@ if get_option('tests')
+ 		message('valgrind not found, disabling valgrind test suite')
+ 	endif
+ 
+-	test_deprecated = executable('test-deprecated',
+-				     'test/test-deprecated.c',
+-				     dependencies: [dep_libwacom, dep_dl],
+-				     include_directories: [includes_src],
+-				     c_args: tests_cflags,
+-				     install: false)
+-	test('test-deprecated', test_deprecated, suite: ['all'])
++	# because of the tricks we use in calling the function and exposing
++	# it to begin with, LTO gets confused and this fails to link.
++	# Let's just disable it here.
++	if not get_option('b_lto')
++		test_deprecated = executable('test-deprecated',
++					     'test/test-deprecated.c',
++					     dependencies: [dep_libwacom, dep_dl],
++					     include_directories: [includes_src],
++					     c_args: tests_cflags,
++					     install: false)
++		test('test-deprecated', test_deprecated, suite: ['all'])
++	endif
+ endif
+ 
+ # This is a non-optional test
