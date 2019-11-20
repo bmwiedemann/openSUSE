@@ -17,7 +17,7 @@
 
 
 Name:           perl-Minion
-Version:        9.13
+Version:        10.0
 Release:        0
 %define cpan_name Minion
 Summary:        Job queue
@@ -51,7 +51,7 @@ everything else you can imagine that's not super fast.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -name "*.sh" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
