@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Nov 14 07:43:39 UTC 2019 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not override all storage proposal settings when importing
+  values from the profile (boo#1156539).
+- 4.2.21
+
+-------------------------------------------------------------------
+Tue Nov 12 15:49:47 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
+
+- Handle renamed add-ons during auto upgrade (part of jsc#SLE-7101)
+- 4.2.20
+
+-------------------------------------------------------------------
+Thu Nov  7 10:01:10 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
+
+- report wrong type of param-list instead of crash (bsc#1143260)
+- 4.2.19
+
+-------------------------------------------------------------------
+Wed Nov  6 16:55:50 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix autoinstallation on online medium (bsc#1156058)
+- 4.2.18
+
+-------------------------------------------------------------------
+Thu Oct 31 10:14:44 UTC 2019 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update schema to support setting the encryption method through
+  the 'crypt_method' (related to jsc#SLE-7376).
+- 4.2.17
+
+-------------------------------------------------------------------
+Thu Oct 31 09:29:00 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
+
+- AutoYaST support for the Full installation medium
+  (jsc#SLE-7101)
+- 4.2.16
+
+-------------------------------------------------------------------
+Wed Oct 30 14:45:29 UTC 2019 - Steffen Winterfeldt <snwint@suse.com>
+
+- fix auto-adding required packages for autoyast sections (bsc#1153746)
+- don't run kdump autoyast config in 2nd stage
+- 4.2.15
+
+-------------------------------------------------------------------
+Fri Oct 25 15:30:06 UTC 2019 - Peter Varkoly <varkoly@suse.com>
+
+- bnc#1154855 - During firstboot ayast_setup will not be executed.
+- 4.2.14
+
+-------------------------------------------------------------------
 Fri Oct 25 11:55:01 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
 
 - Do not crash when using the online medium without the
