@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cufflinks
-Version:        0.16
+Version:        0.17.0
 Release:        0
 Summary:        Productivity Tools for Plotly + Pandas
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/santosjorge/cufflinks
 Source:         https://files.pythonhosted.org/packages/source/c/cufflinks/cufflinks-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}

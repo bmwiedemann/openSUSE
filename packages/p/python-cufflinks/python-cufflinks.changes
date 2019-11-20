@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 19 21:21:37 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 0.17
+  * Add support for hovertext in annotations
+  * Add support for opacity in annotations
+  * Compatiblity with Plotly 4.x
+  * Fix misc. issues for plotly v4.
+  * Removed bestfit test
+  * Update requirements.txt
+  * Update tests.py
+  * fix bestfit case when index is datetimeindex
+  * fix imports and warnings with plotly v4
+  * plotly 4.0.0 had a bad bug
+  * re-enable bestfit test
+  * remove statsmodels from reqs
+  
+-------------------------------------------------------------------
 Tue Jul 23 01:14:08 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to version 0.16
