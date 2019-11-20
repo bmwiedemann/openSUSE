@@ -19,17 +19,14 @@ Tue Jun 25 07:32:29 UTC 2019 - Robert Frohl <rfrohl@suse.com>
   * Extended help
 
 -------------------------------------------------------------------
+Mon Jun  3 11:20:11 UTC 2019 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
+
+- Add more false-positive packages to Dbus database: tuned, autofs, lightdm, geoglue2, snapper and ModemManager
+
+-------------------------------------------------------------------
 Wed May 29 11:47:34 UTC 2019 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
 
-- Add these common packages to Dbus database whitelist: FirewallD, SystemD and Wicked to prevent these false-positives:
-  * Warning: Package firewalld-0.5.5-lp151.5.1.noarch installs an unknown D-BUS autostart/system service: FirewallD.conf  [ WARNING ]
-  * Warning: Package systemd-234-lp151.25.7.x86_64 installs an unknown D-BUS autostart/system service: org.freedesktop.network1.conf  [ WARNING ]
-  * Warning: Package wicked-0.6.54-lp151.1.1.x86_64 installs an unknown D-BUS autostart/system service: org.opensuse.Network.AUTO4.conf [ WARNING ]
-  * Warning: Package wicked-0.6.54-lp151.1.1.x86_64 installs an unknown D-BUS autostart/system service: org.opensuse.Network.DHCP4.conf [ WARNING ]
-  * Warning: Package wicked-0.6.54-lp151.1.1.x86_64 installs an unknown D-BUS autostart/system service: org.opensuse.Network.DHCP6.conf [ WARNING ]
-  * Warning: Package wicked-0.6.54-lp151.1.1.x86_64 installs an unknown D-BUS autostart/system service: org.opensuse.Network.Nanny.conf [ WARNING ]
-  * Warning: Package wicked-0.6.54-lp151.1.1.x86_64 installs an unknown D-BUS autostart/system service: org.opensuse.Network.conf  [ WARNING ]
-  * Warning: Package systemd-234-lp151.25.7.x86_64 installs an unknown D-BUS autostart/system service: org.freedesktop.network1.service [ WARNING ]
+- Add these common false-positive packages to Dbus database whitelist: FirewallD, SystemD and Wicked
 
 -------------------------------------------------------------------
 Tue Apr 23 07:24:21 UTC 2019 - Robert Frohl <rfrohl@suse.com>
