@@ -1,7 +1,7 @@
 #
 # spec file for package kicad-footprints
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,14 +20,14 @@
 %define compatversion 5.0.0
 
 Name:           kicad-footprints
-Version:        5.1.4
+Version:        5.1.5
 Release:        0
 Summary:        Footprint library for KiCad
 # License is CC-BY-SA-4.0 but there is an exception
 # See included LICENSE.md and kicad-pcb.org/libraries/license/
 License:        CC-BY-SA-4.0
 Group:          Productivity/Scientific/Electronics
-Url:            http://kicad-pcb.org
+URL:            http://kicad-pcb.org
 Source:         https://github.com/KiCad/kicad-footprints/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  fdupes

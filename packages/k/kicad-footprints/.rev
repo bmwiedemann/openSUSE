@@ -97,4 +97,14 @@
     <comment></comment>
     <requestid>722209</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>334cb47b5a4e6948b52c3167911265d1</srcmd5>
+    <version>5.1.5</version>
+    <time>1574242078</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.1.5
+  See http://kicad-pcb.org/blog/2019/11/KiCad-5.1.5-Release/ for details.
+</comment>
+    <requestid>749725</requestid>
+  </revision>
 </revisionlist>
