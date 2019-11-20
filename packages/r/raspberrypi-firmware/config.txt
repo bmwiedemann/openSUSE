@@ -30,7 +30,6 @@ avoid_warnings=1
 # This overlay fixes divergences between the RPi device tree and what
 # upstream provides
 dtoverlay=upstream
-dtoverlay=upstream-aux-interrupt
 
 [pi1]
 
@@ -44,6 +43,12 @@ core_freq=375
 sdram_freq=400
 
 [pi3]
+
+arm_control=0x200
+
+# These are not applied automatically? Needed to use respective upstream drivers.
+dtoverlay=vc4-kms-v3d
+dtoverlay=dwc2
 
 [pi4]
 arm_64bit=1

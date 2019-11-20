@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 15 21:17:32 UTC 2019 - Matthias Brugger <mbrugger@suse.com>
+
+- config changes for RPi3:
+  * delete upstream-aux-interrupt as not present anymore
+  * set arm_control for RPi3 only
+  * add RPi3 overlays
+
+-------------------------------------------------------------------
 Mon Nov 11 18:20:51 UTC 2019 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - disable vc4 on RPi4 using the disable-vc4.dtbo devicetree overlay (SLE-7771)
