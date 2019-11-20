@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Nov 14 16:23:39 UTC 2019 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Propagate the noauto, nofail and _netdev options from fstab
+  to crypttab (needed for jsc#SLE-7687).
+- Add the _netdev option to fstab for mount points on top of a
+  network-based device like iSCSI or FCoE (jsc#SLE-7687).
+- 4.2.56
+
+-------------------------------------------------------------------
+Tue Nov 12 11:27:38 UTC 2019 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- AutoYaST: allow to inject settings for the guided proposal
+  (related to boo#1156539).
+- 4.2.55
+
+-------------------------------------------------------------------
+Wed Nov  6 11:49:35 UTC 2019 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- AutoYaST: do not repeat filesystem related information when
+  cloning multidevice Btrfs filesystems (bsc#1148578).
+- AutoYaST: do not export the enable_snapshots element for drives
+  which do not contain the root filesystem.
+- 4.2.54
+
+-------------------------------------------------------------------
+Wed Oct 30 09:55:48 UTC 2019 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- AutoYaST: add support to set the encryption method (related to
+  jsc#SLE-7376).
+- 4.2.53
+
+-------------------------------------------------------------------
+Mon Oct 28 14:22:24 CET 2019 - aschnell@suse.com
+
+- fix creation of secure key for new partitions (bsc#1154267)
+- 4.2.52
+
+-------------------------------------------------------------------
 Wed Oct 23 11:51:58 UTC 2019 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - AutoYaST: consider CT_DMMULTIPATH an alias of CT_DISK (related
