@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Nov 15 08:58:40 UTC 2019 - Oliver Kurz <okurz@suse.com>
+
+- Use linuxrc option "reboot_timeout" to configure the timeout
+  before reboot (bsc#1122493)
+- 4.2.23
+
+-------------------------------------------------------------------
+Thu Nov 14 09:56:21 UTC 2019 - David Diaz <dgonzalez@suse.com>
+
+- Save and restore the proposal vertical scroll (related to a
+  problem reseting the scroll position reported in bsc#1143558)
+- 4.2.22
+
+-------------------------------------------------------------------
+Sun Nov 10 18:56:53 UTC 2019 - David Diaz <dgonzalez@suse.com>
+
+- Improve the role selection dialog using a new scrollable widget
+  to select a role (related to bsc#1084674, bsc#bsc#1086187).
+- 4.2.21
+-------------------------------------------------------------------
+
+Thu Nov  7 09:32:00 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
+
+- Implement upgrade for the Full medium (jsc#SLE-7101)
+- 4.2.20
+
+-------------------------------------------------------------------
 Fri Oct 25 11:44:58 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
 
 - implement upgrade for online medium (jsc#SLE-7214)
