@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 30 10:48:37 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
+
+- fix crash for empty kdump section (related to change for
+  bsc#1149208)
+- 4.2.6
+
+-------------------------------------------------------------------
 Thu Sep 26 12:25:08 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
 
 - fix installing kdump to first stage when kdump enabled in
