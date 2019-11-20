@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Oct 21 23:34:37 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to version 1.21.0
+  This is a minor / house-keeping release, mostly to get some
+  important fixes into distros while also getting support for iGPUs
+  requiring non-coherent memory into a "stable" release.
+
+  Additions:
+  * shaders.h API users can now override the GLSL version
+  * add support for vulkan platforms with non-coherent memory
+    (e.g. iGPUs)
+
+  Changes:
+  * default GLSL version is now 130 unless otherwise specified
+  * signature of pl_shader_alloc now uses a params struct
+  * PL_FIX_VER / PL_VERSION are no longer header constants
+  * the renderer will now automatically adjust deband grain scale
+    for HDR
+
+  Fixes and performance improvements:
+  * on GLSL < 130, shaders now correctly use texture2D etc.
+  * fix a bug where async transfer was never actually used, due to
+    incorrect alignment checks
+  * fixed some issues that could lead to symbol conflicts
+  * don't require large vertex buffers be host-visible
+    (usually impossible)
+  * correctly detect swapchain image feature flags
+  * turned a few 1ms busy loops into infinite waits
+  * fix compilation on some platforms that require SPIRV-Tools
+  * fix vkCreateEvent error spam on MoltenVK
+  * bump queued command limit from 64 to 1024
+
+-------------------------------------------------------------------
 Tue Feb 26 01:20:30 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
 
 - Build with (preferred) shaderc now that it’s packaged in TW
