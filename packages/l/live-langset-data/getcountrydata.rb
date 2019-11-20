@@ -30,9 +30,15 @@ module Yast
       Builtins.foreach(langs) do |lang, ll|
         suffix = ll[2] || ""
         fqlanguage = lang + suffix
-        kbd = Keyboard.GetKeyboardForLanguage(lang, "us")
-        # does not really set keyboard, only fills some data
-        Keyboard.SetKeyboard(kbd)
+        if Keyboard.methods.include? :Codes
+          kbd = Keyboard.GetKeyboardForLanguage(lang, "us")
+          keymap = Keyboard.Codes.key(kbd)
+        else
+          kbd = Keyboard.GetKeyboardForLanguage(lang, "us")
+          # does not really set keyboard, only fills some data
+          Keyboard.SetKeyboard(kbd)
+          keymap = Keyboard.keymap
+        end
         consolefont = consolefonts[fqlanguage] || consolefonts[lang]
         if consolefont.nil? && lang.size > 2
           consolefont = consolefonts[lang[0,2]]
@@ -56,7 +62,7 @@ module Yast
           "CONSOLE_SCREENMAP='#{screenMap}'\n" +
           "CONSOLE_UNICODEMAP='#{unicodeMap}'\n" +
           "CONSOLE_MAGIC='#{magic}'\n" +
-          "KEYTABLE='#{Keyboard.keymap}'\n" +
+          "KEYTABLE='#{keymap}'\n" +
           "TIMEZONE='#{timezone}'\n"
 
         contents << "RC_LC_MESSAGES='zh_TW.UTF-8'\n" if lang == "zh_HK"

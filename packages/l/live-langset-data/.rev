@@ -108,4 +108,14 @@
     <comment>- Only set RC_LANG and RC_LC_MESSAGES on SLE 12 (bsc#1119420)</comment>
     <requestid>663394</requestid>
   </revision>
+  <revision rev="13" vrev="11">
+    <srcmd5>deac3457175019d1bfda6d69c1fa1d78</srcmd5>
+    <version>2.0</version>
+    <time>1574241919</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure the changes are fully in effect before returning (bsc#1154638)
+
+- Support new keyboard API in yast2-country</comment>
+    <requestid>744197</requestid>
+  </revision>
 </revisionlist>
