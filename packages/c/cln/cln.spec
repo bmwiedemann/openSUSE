@@ -1,7 +1,7 @@
 #
 # spec file for package cln
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,21 @@
 
 
 Name:           cln
-Version:        1.3.4
+Version:        1.3.5
 Release:        0
 Summary:        Class Library for Numbers (C++)
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            http://www.ginac.de/CLN/
-Source0:        http://www.ginac.de/CLN/cln-%{version}.tar.bz2
+URL:            https://www.ginac.de/CLN/
+Source0:        https://www.ginac.de/CLN/cln-%{version}.tar.bz2
 Source1:        pi.tar.gz
-Patch0:         riscv.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  texinfo
-PreReq:         %install_info_prereq
+Requires(pre):  %{install_info_prereq}
 Provides:       libcln
 Provides:       pi
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
-PreReq:         %install_info_prereq
 
 %description
 CLN features a rich set of number classes: integer (unlimited
@@ -59,8 +55,8 @@ and exceptions.
 %package devel
 Summary:        Class Library for Numbers (C++)
 Group:          Development/Libraries/C and C++
-PreReq:         %install_info_prereq
 Requires:       %{name} = %{version}
+Requires(pre):  %{install_info_prereq}
 
 %description devel
 CLN features a rich set of number classes: integer (unlimited
@@ -83,7 +79,6 @@ and exceptions.
 
 %prep
 %setup -q -a 1
-%patch0 -p1
 
 %build
 %ifarch %{arm}
@@ -107,13 +102,11 @@ make %{?_smp_mflags} html
 %install
 mkdir -p %{buildroot}%{_docdir}/cln
 make DESTDIR=%{buildroot} MANDIR=%{_mandir} htmldir=%{_docdir}/cln install
-install -m 755 pi %{buildroot}%{_prefix}/bin
+install -m 755 pi %{buildroot}%{_bindir}
 rm -f %{buildroot}%{_libdir}/libcln.la
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
-
 %post devel
 %install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 
@@ -121,19 +114,17 @@ rm -f %{buildroot}%{_libdir}/libcln.la
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 
 %files
-%defattr(-,root,root)
 %doc ChangeLog README NEWS
 %license COPYING
 %{_bindir}/pi
 %{_libdir}/libcln.so.*
 
 %files devel
-%defattr(-,root,root)
 %doc ChangeLog README NEWS
 %license COPYING
 %{_includedir}/cln
-%{_infodir}/cln.info.gz
-%{_mandir}/man1/pi.1.gz
+%{_infodir}/cln.info%{?ext_info}
+%{_mandir}/man1/pi.1%{?ext_man}
 %{_libdir}/libcln.so
 %{_libdir}/pkgconfig/cln.pc
 

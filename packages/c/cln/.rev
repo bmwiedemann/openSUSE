@@ -159,4 +159,14 @@
 - Use %license (forwarded request 683901 from Andreas_Schwab)</comment>
     <requestid>683903</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4424c3d2d1f2678a8a4d7ae4eedab6bf</srcmd5>
+    <version>1.3.5</version>
+    <time>1574242197</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.5:
+  * Fix bug in scale_float() throwing underflow_exception.
+- Drop riscv.patch. Fixed upstream.</comment>
+    <requestid>749823</requestid>
+  </revision>
 </revisionlist>
