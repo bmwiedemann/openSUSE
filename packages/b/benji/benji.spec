@@ -17,7 +17,7 @@
 
 
 Name:           benji
-Version:        0.7.1
+Version:        0.8.0
 Release:        0
 Summary:        Deduplicating block based backup software
 License:        LGPL-3.0-only

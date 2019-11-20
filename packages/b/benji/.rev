@@ -116,4 +116,41 @@
     <comment></comment>
     <requestid>739944</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b3dd0d43055a4d3a55dbc1cbd661caff</srcmd5>
+    <version>0.8.0</version>
+    <time>1574253839</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.0:
+  * This release contains significant changes related to the naming, format and
+    structure of internal and external data representations. They derive from the
+    experience of using Benji in the last few months and from the challenges
+    uncovered by the ongoing Kubernetes integration efforts. The changes have been
+    bundled to avoid multiple metadata version changes and migrations.
+  * Old metadata backups and exports and old object metadata can still be read by
+    this version of Benji. Existing databases can be migrated to the new database
+    structure with benji database-migrate. While this process has been tested with
+    both PostgreSQL and SQLite it is strongly recommended to make a consistent
+    backup of the database before attempting the migration. The migration process
+    requires a significant amount of time and disk space when there are a lot of old
+    backups in the database. The versions and blocks tables are completely recreated
+    and the old data is moved over. Expect the disk usage to more than double during
+    the migration.
+  
+  Database and metadata changes:
+  * The version of metadata exports has changed from 1.1.0 to 2.0.0. Old
+    exports (1.0.0 and 1.1.0) can still be imported.
+  * snapshot_name in the versions table has been renamed to snapshot in the
+    database and in metadata exports. The long version of the corresponding command
+    line option has also been renamed from --snapshot-name to --snapshot.
+  * name in the versions table has been renamed to volume in the database and in metadata exports.
+  * bytes_dedup in the versions table has been renamed to bytes_deduplicated in the database and in metadata exports.
+  * id in the blocks table has been renamed to idx in the database and in metadata exports.
+  * The type of uid in the versions table has been changed from integer to
+    string. This also affects any metadata exports. This removes the inconsistency
+    where uid was represented as a string in some places and as an integer in
+    others. uids are automatically generated for new versions, but there is also
+    the option to set the uid of a version on backup via the new -u/--uid option.</comment>
+    <requestid>749872</requestid>
+  </revision>
 </revisionlist>
