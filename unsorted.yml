@@ -10598,7 +10598,7 @@ unsorted:
   - libpkcs11-helper1-32bit: [x86_64] 
   - libpkgconf-devel 
   - libplacebo-devel 
-  - libplacebo18 
+  - libplacebo21 
   - libplank1 
   - libplayerctl2 
   - libplib0 
@@ -24397,7 +24397,6 @@ unsorted:
   - sysstat 
   - sysstat-isag 
   - system-group-obsolete 
-  - system-user-tftp 
   - system-user-uuidd 
   - systemd-coredump 
   - systemd-devel 
@@ -33623,7 +33622,6 @@ unsorted:
   - zpaq 
   - zramcfg 
   - zsh-htmldoc 
-  - zstd 
   - zsync 
   - zutils 
   - zvbi 
