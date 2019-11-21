@@ -3001,4 +3001,12 @@ But as always there are semi-relevant changes from the Gecko 60.4 baseline. Many
   big endian platforms</comment>
     <requestid>744761</requestid>
   </revision>
+  <revision rev="221" vrev="1">
+    <srcmd5>1747d751e6d7bf8b32f089c98d497b03</srcmd5>
+    <version>68.2.2</version>
+    <time>1574337386</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>747029</requestid>
+  </revision>
 </revisionlist>

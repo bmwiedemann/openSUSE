@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov  9 20:13:17 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Thunderbird 68.2.2:
+  * fix age calculation in address book (bmo#1592536)
+  * fix column menu behavior in address book (bmo#1592393)
+
+-------------------------------------------------------------------
 Fri Nov  1 11:16:39 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 68.2.1

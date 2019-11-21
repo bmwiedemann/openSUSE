@@ -26,11 +26,11 @@
 # major 69
 # mainver %major.99
 %define major           68
-%define mainver         %major.2.1
-%define orig_version    68.2.1
+%define mainver         %major.2.2
+%define orig_version    68.2.2
 %define orig_suffix     %{nil}
 %define update_channel  release
-%define releasedate     20191030212137
+%define releasedate     20191105113228
 %define source_prefix   thunderbird-%{mainver}
 
 # always build with GCC as SUSE Security Team requires that
