@@ -1,0 +1,32 @@
+Index: scilab-6.0.2/modules/xcos/src/java/org/scilab/modules/xcos/palette/PaletteIndexer.java
+===================================================================
+--- scilab-6.0.2.orig/modules/xcos/src/java/org/scilab/modules/xcos/palette/PaletteIndexer.java
++++ scilab-6.0.2/modules/xcos/src/java/org/scilab/modules/xcos/palette/PaletteIndexer.java
+@@ -162,7 +162,6 @@ public final class PaletteIndexer {
+ 
+             // add the block name
+             Field refname = new TextField("refname", basename, Field.Store.YES);
+-            refname.setBoost(100f);
+             doc.add(refname);
+ 
+             // add the refpurpose
+@@ -176,7 +175,6 @@ public final class PaletteIndexer {
+                     refpurpose = new TextField("refpurpose", "", Field.Store.YES);
+                 }
+ 
+-                refpurpose.setBoost(10f);
+                 doc.add(refpurpose);
+             }
+ 
+Index: scilab-6.0.2/modules/xcos/src/java/org/scilab/modules/xcos/palette/PaletteSearcher.java
+===================================================================
+--- scilab-6.0.2.orig/modules/xcos/src/java/org/scilab/modules/xcos/palette/PaletteSearcher.java
++++ scilab-6.0.2/modules/xcos/src/java/org/scilab/modules/xcos/palette/PaletteSearcher.java
+@@ -57,7 +57,6 @@ public final class PaletteSearcher {
+ 
+             StandardQueryParser queryParserHelper = new StandardQueryParser();
+             queryParserHelper.setAllowLeadingWildcard(true);
+-            queryParserHelper.setLowercaseExpandedTerms(true);
+             queryParserHelper.setAnalyzer(mgr.getAnalyzer());
+             queryParserHelper.setMultiFields(new String[] {"refname", "refpurpose", "content"});
+ 

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov 19 20:15:57 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch scilab-fix-build-with-modern-lucene.patch in order
+  to fix build against lucene 7
+
+-------------------------------------------------------------------
+Mon Oct 21 16:03:40 UTC 2019 - olaf@aepfle.de
+
+- Newer versions of ocaml require usage of scilab-ocaml.patch
+- Use autosetup in prep section
+
+-------------------------------------------------------------------
+Fri Oct  4 06:55:37 UTC 2019 - olaf@aepfle.de
+
+- Ocaml code requires the num library, but it was not explicit
+  required at build time
+
+-------------------------------------------------------------------
 Thu Mar  7 13:55:18 UTC 2019 - Atri B <badshah400@gmail.com>
 
 - Update to version 6.0.2:

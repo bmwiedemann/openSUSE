@@ -1,7 +1,7 @@
 #
 # spec file for package scilab
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -26,13 +26,14 @@ License:        GPL-2.0-only AND BSD-3-Clause
 Group:          Productivity/Scientific/Math
 Version:        6.0.2
 Release:        0
-Url:            http://www.scilab.org
+URL:            http://www.scilab.org
 # FOR STABLE RELEASE
 Source0:        http://www.scilab.org/download/%{version}/%{name}-%{version}-src.tar.gz
 # FOR BETA RELEASE
 #Source0:        http://www.scilab.org/download/%%{beta_version}/%%{name}-%%{beta_version}-src.tar.gz
 Source1:        %{name}-rpmlintrc
 
+Patch0:         scilab-ocaml.patch
 # Bug 767102 - help() should suggest scilab-doc
 Patch1:         %{name}-0001-Use-pkcon-to-install-doc-package.patch
 # PATCH-FIX-UPSTREAM scilab-fix-64bit-portability-issue.patch badshah400@gmail.com -- Fix compiler warnings w.r.t 64bit portability
@@ -57,6 +58,8 @@ Patch25:        scilab-java9-ClassLoader.patch
 Patch26:        scilab-java_source_target.patch
 # PATCH-FIX-UPSTREAM scilab-drop-javax-annotation.patch badshah400@gmail.com -- Remove references to javax.annotation as it is unavailable with java >= 11 and the code referencing this doesn't do anything anyway
 Patch27:        scilab-drop-javax-annotation.patch
+# PATCH-FIX-OPENSUSE scilab-fix-build-with-modern-lucene.patch - Build against lucene 7
+Patch28:        scilab-fix-build-with-modern-lucene.patch
 ExcludeArch:    i586 ppc64
 
 # SECTION Dependency to rebuild configure after patching autotools files
@@ -154,6 +157,7 @@ Requires:       tk
 # Modelica
 BuildRequires:  ocaml
 BuildRequires:  ocaml(ocaml.opt)
+BuildRequires:  ocamlfind(num)
 
 # Documentation
 BuildRequires:  saxon9
@@ -297,23 +301,9 @@ This package provides test files for Scilab.
 %lang_package -n %{name}-modules-doc
 
 %prep
-%setup -q
+%autosetup -p1
 
-%patch1 -p1
-# PATCH5 and PATCH13 have to be applied before PATCH2; all affect ./configure
-%patch5 -p1
-%patch3 -p1
-
-%patch8 -p1
-%patch9 -p1
-%patch17 -p1
-%patch21 -p1
-%patch23 -p1
-%patch24 -p1
-%patch25 -p1
-%patch26 -p1
-%patch27 -p1
-
+%build
 # Remove a bad merge remnant (.orig file) to prevent trigerring rpmlint's suse-filelist-forbidden
 rm ./modules/cacsd/tests/unit_tests/dscr.tst.orig
 
@@ -322,7 +312,6 @@ sed -i '/name="Class-Path"/d' build.incl.xml
 sed -i '/name="Class-Path"/d' modules/javasci/build.xml
 sed -i '/name="Class-Path"/d' modules/scirenderer/build.xml
 
-%build
 autoreconf -fvi
 %configure \
     --disable-static-system-lib \
