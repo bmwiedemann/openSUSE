@@ -1,7 +1,7 @@
 #
 # spec file for package libwacom
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ Source2:        https://github.com/linuxwacom/libwacom/releases/download/%{name}
 Source3:        %{name}.keyring
 Source99:       baselibs.conf
 Patch0:         https://patch-diff.githubusercontent.com/raw/linuxwacom/libwacom/pull/174.patch
+Patch1:         libwacom-meson-0.51-lto.patch
 %if %{with meson}
 BuildRequires:  meson >= 0.47.0
 %endif
@@ -87,6 +88,7 @@ built-in on-screen tablet", "what is the size of this model", etc.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %if %{with meson}
