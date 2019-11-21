@@ -1,7 +1,7 @@
 #
 # spec file for package libmlt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,23 +21,24 @@
 
 %define _name mlt
 %define libname lib%{_name}
-%define lversion 6.16.0
+%define lversion 6.18.0
 %define soname 6
 %define _name_pp %{_name}++
 %define libname_pp lib%{_name_pp}
 %define soname_pp 3
 
 Name:           %{libname}
-Version:        6.16.0
+Version:        6.18.0
 Release:        0
 Summary:        Multimedia framework for television broadcasting
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://www.mltframework.org
+URL:            http://www.mltframework.org
 Source0:        https://github.com/mltframework/mlt/archive/v%{version}.tar.gz#/%{_name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE libmlt-0.8.2-vdpau.patch reddwarf@opensuse.org -- Make VDPAU support work without the devel package
 Patch1:         libmlt-0.8.2-vdpau.patch
-
+# PATCH-FIX-UPSTREAM libmlt-fixluma.patch aloisio@gmx.com -- add LD_LIBRARY_PATH so that luma can run
+Patch2:         libmlt-fixluma.patch
 BuildRequires:  fdupes
 %if 0%{?suse_version} >= 1500
 BuildRequires:  gcc-c++
@@ -48,6 +49,7 @@ BuildRequires:  gcc7-c++
 %endif
 BuildRequires:  ladspa-devel
 BuildRequires:  pkg-config
+BuildRequires:  python3-devel
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5OpenGL)
@@ -185,17 +187,16 @@ MLT is a multimedia framework for television broadcasting. It
 provides a toolkit for broadcasters, video editors, media players,
 transcoders and web streamers.
 
-%package -n python-%{_name}
+%package -n python3-%{_name}
 Summary:        Python bindings for the MLT multimedia framework
 Group:          Development/Languages/Python
-BuildRequires:  python-devel
+BuildRequires:  python3-devel
 BuildRequires:  swig
 Requires:       %{libname_pp}%{soname_pp} >= %{version}
 Requires:       %{libname}%{soname} >= %{version}
-%{py_requires}
-Provides:       python-%{_name}%{soname}
+Provides:       python3-%{_name}%{soname}
 
-%description -n python-%{_name}
+%description -n python3-%{_name}
 MLT is a multimedia framework for television broadcasting. It
 provides a toolkit for broadcasters, video editors, media players,
 transcoders and web streamers.
@@ -204,6 +205,7 @@ This package contains python bindings.
 %prep
 %setup -q -n %{_name}-%{version}
 %patch1
+%patch2 -p1
 
 # To complement libmlt-0.8.0-vdpau.patch.
 # When vdpau support is not compiled it will break the code. Doesn't matter because the code will not be used anyway.
@@ -224,6 +226,7 @@ test -x "$(type -p g++-7)" && export CXX=g++-7
 %endif
 --enable-debug \
 --enable-gpl --enable-gpl3 \
+--enable-lumas \
 %ifarch i586
 --disable-mmx \
 %endif
@@ -238,8 +241,8 @@ make %{?_smp_mflags}
 %make_install
 install -Dpm 0644 docs/melt.1 %{buildroot}%{_mandir}/man1/melt%{soname}.1
 ln -s melt%{soname}.1 %{buildroot}%{_mandir}/man1/melt.1
-install -Dpm 0644 src/swig/python/_%{_name}.so '%{buildroot}%{python_sitearch}/_%{_name}.so'
-install -Dpm 0644 src/swig/python/%{_name}.py '%{buildroot}%{python_sitearch}/%{_name}.py'
+install -Dpm 0644 src/swig/python/_%{_name}.so '%{buildroot}%{python3_sitearch}/_%{_name}.so'
+install -Dpm 0644 src/swig/python/%{_name}.py '%{buildroot}%{python3_sitearch}/%{_name}.py'
 
 # Get the modules that need data
 for MODULE in %{buildroot}%{_libdir}/mlt-%{soname}/libmlt*.so; do
@@ -316,9 +319,9 @@ rm -f %{buildroot}%{_datadir}/mlt
 %{_datadir}/%{_name}-%{soname}/presets/
 %{_datadir}/%{_name}-%{soname}/vid.stab/
 
-%files -n python-%{_name}
+%files -n python3-%{_name}
 %defattr(0644, root, root, 0755)
-%{python_sitearch}/_%{_name}.so
-%{python_sitearch}/%{_name}.py
+%{python3_sitearch}/_%{_name}.so
+%{python3_sitearch}/%{_name}.py
 
 %changelog

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Nov 12 12:02:29 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.1.0
+  * Added support for alpha channels in MLT video for input and
+    output.
+  * Added a transparent property to the MLT filter. When the
+    property is set to 1, this gives a filter a transparent white
+    canvas for drawing while the MLT video image is still
+    available through the JavaScript extension. This facilitates
+    using WebVfx to draw the alpha channel independently of the
+    MLT alpha channel.
+  * Added support for getting a MLT rectangle property
+    (mlt_rect) as a JavaScript object with properties: x, y,
+    width, height, and opacity.
+
+- Refreshed webvfx-versioned-libdir.patch and
+  webvfx-nobrowser.patch
+
+-------------------------------------------------------------------
 Thu Jan 10 13:33:27 UTC 2019 - davejplater@gmail.com
 
 - Update to release version 1.0.0

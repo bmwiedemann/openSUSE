@@ -1,7 +1,7 @@
 #
 # spec file for package webvfx
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,19 @@
 
 
 %define _name mlt
-%define mltversion 6.16.0
-%define mltsoversion 6.16.0
+%define mltversion 6.18.0
+%define mltsoversion 6.18.0
 %define sover 1
 %define mltmaj %(echo %{mltversion} |cut -d "." -f 1)
 # Find qt version used to build
 %define qt5version %(pkg-config --modversion Qt5Core)
-%define _rev    5ef18121b8765ecbc6a90094b1d51059fc7e7f66
 Name:           webvfx
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Video effects engine based on web technologies
 License:        BSD-3-Clause
 Group:          Productivity/Multimedia/Video/Editors and Convertors
-Url:            https://github.com/mltframework/webvfx
+URL:            https://github.com/mltframework/webvfx
 Source0:        %{_name}-%{mltversion}.tar.gz
 # This is needed by shotcut and will only build within the mlt sources.
 Source1:        https://github.com/mltframework/webvfx/archive/%{version}.tar.gz#/webvfx-%{version}.tar.gz

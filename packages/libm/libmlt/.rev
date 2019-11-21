@@ -494,4 +494,43 @@ Only build sdl2 module.
     <comment></comment>
     <requestid>701503</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>a2d72def7994c3012d72d7c2e67bd3f1</srcmd5>
+    <version>6.18.0</version>
+    <time>1574337584</time>
+    <user>dimstar_suse</user>
+    <comment>This update is needed by future bits of KDE Applications (kdenlive in particular)
+
+- Update to version 6.18.0
+  Framework:
+  * Fixed some data races in mlt_consumer, mlt_deque, and
+    mlt_property.
+  * Fixed the mlt_events listener incorrect owner argument.
+  * Added support for the LC_ALL environmant variable on Windows.
+  * Fixed the argument to mlt_factory_init() not working on
+    Windows.
+  * Fixed mlt_service_identify() not reliable in some use cases.
+  * Added some default and copy constructors and assignment
+    operators to mlt++
+    + Filter()
+    + Filter( const Filter &amp;filter )
+    + Filter&amp; operator=( const Filter &amp;filter )
+    + Producer( const Producer &amp;producer )
+    + Producer&amp; operator=( const Producer &amp;producer )
+    + Properties( const Properties &amp;properties )
+    + Properties&amp; operator=( const Properties &amp;properties )
+    + Service( const Service &amp;service )
+    + Service&amp; operator=( const Service &amp;service )
+    + Transition()
+    + Transition( const Transition &amp;transition )
+    + Transition&amp; operator=( const Transition &amp;transition )
+  * Added mlt_luma_map:
+    + mlt_luma_map_init
+    + mlt_luma_map_new
+    + mlt_luma_map_render
+    + mlt_luma_map_from_pgm
+    + mlt_luma_map_from_yuv422
+  * Fixed preset overrides depend on the XML attribute order.</comment>
+    <requestid>750045</requestid>
+  </revision>
 </revisionlist>
