@@ -1,4 +1,111 @@
 -------------------------------------------------------------------
+Tue Nov 19 14:16:54 UTC 2019 - mrueckert@suse.de
+
+- Update to version 2.0.9+git6.26b7b800:
+  * BUG/MINOR: ssl: fix crt-list neg filter for openssl < 1.1.1
+  * BUG/MINOR: peers: Wrong null "server_name" data field handling.
+  * MINOR: peers: Add debugging information to "show peers".
+  * MINOR: peers: Add TX/RX heartbeat counters.
+  * MINOR: peers: Alway show the table info for disconnected peers.
+
+-------------------------------------------------------------------
+Tue Nov 19 13:55:05 UTC 2019 - mrueckert@suse.de
+
+- Update to version 2.0.9+git1.caf02113:
+  * BUG/MINOR: init: fix set-dumpable when using uid/gid
+
+-------------------------------------------------------------------
+Tue Nov 19 13:54:57 UTC 2019 - mrueckert@suse.de
+
+- Update to version 2.0.9+git0.efac87ee:
+  * [RELEASE] Released version 2.0.9
+  * BUG/MINOR: mux-h1: Don't set CS_FL_EOS on a read0 when receiving data to pipe
+  * BUG/MEDIUM: filters: Don't call TCP callbacks for HTX streams
+  * BUG/MINOR: log: limit the size of the startup-logs
+  * BUILD: contrib/da: remove an "unused" warning
+  * MINOR: memory: also poison the area on freeing
+  * CLEANUP: session: slightly simplify idle connection cleanup logic
+  * BUG/MEDIUM: Make sure we leave the session list in session_free().
+  * BUG/MEDIUM: listeners: always pause a listener on out-of-resource condition
+  * BUG/MINOR: queue/threads: make the queue unlinking atomic
+  * DOC: management: fix typo on "cache_lookups" stats output
+  * DOC: management: document cache_hits and cache_lookups in the CSV format
+  * DOC: management: document reuse and connect counters in the CSV format
+  * BUG: dns: timeout resolve not applied for valid resolutions
+  * BUG/MINOR: action: do-resolve now use cached response
+  * BUG/MEDIUM: stream: Be sure to release allocated captures for TCP streams
+  * MINOR: doc: http-reuse connection pool fix
+  * BUG/MEDIUM: stream: Be sure to support splicing at the mux level to enable it
+  * BUG/MEDIUM: mux-h1: Disable splicing for chunked messages
+  * BUG/MEDIUM: mux-h2: immediately report connection errors on streams
+  * BUG/MEDIUM: mux-h2: immediately remove a failed connection from the idle list
+  * BUG/MEDIUM: mux-h2: report no available stream on a connection having errors
+  * BUG/MINOR: config: Update cookie domain warn to RFC6265
+  * BUG/MEDIUM: servers: Only set SF_SRV_REUSED if the connection if fully ready.
+  * BUG/MEDIUM: stream_interface: Only use SI_ST_RDY when the mux is ready.
+  * MINOR: mux: Add a new method to get informations about a mux.
+  * BUG/MINOR: spoe: fix off-by-one length in UUID format string
+  * BUG/MAJOR: stream-int: Don't receive data from mux until SI_ST_EST is reached
+  * BUG/MINOR: mux-h2: Don't pretend mux buffers aren't full anymore if nothing sent
+  * BUG/MINOR: cli: don't call the kw->io_release if kw->parse failed
+  * MINOR: tcp: avoid confusion in time parsing init
+  * BUG/MINOR: mux-h2: do not emit logs on backend connections
+  * MINOR: config: warn on presence of "\n" in header values/replacements
+
+-------------------------------------------------------------------
+Tue Nov 19 13:54:51 UTC 2019 - mrueckert@suse.de
+
+- Update to version 2.0.8+git0.60e6020c:
+  * [RELEASE] Released version 2.0.8
+  * BUG/MEDIUM: pattern: make the pattern LRU cache thread-local and lockless
+  * BUG/MINOR: stick-table: fix an incorrect 32 to 64 bit key conversion
+  * BUG/MINOR: ssl: fix memcpy overlap without consequences.
+  * BUG/MEDIUM: http: unbreak redirects in legacy mode
+  * BUG/MINOR: mux-h2: also make sure blocked legacy connections may expire
+  * BUG/MINOR: sample: Make the `field` converter compatible with `-m found`
+  * BUG/MINOR: cache: alloc shctx after check config
+  * BUG/MINOR: stick-table: Never exceed (MAX_SESS_STKCTR-1) when fetching a stkctr
+  * BUG/MINOR: ssl: Fix fd leak on error path when a TLS ticket keys file is parsed
+  * BUG/MINOR: mworker/cli: reload fail with inherited FD
+  * BUG/MEDIUM: ssl: 'tune.ssl.default-dh-param' value ignored with openssl > 1.1.1
+  * CLEANUP: bind: handle warning label on bind keywords parsing.
+  * CLEANUP: ssl: make ssl_sock_load_dh_params handle errcode/warn
+  * CLEANUP: ssl: make ssl_sock_put_ckch_into_ctx handle errcode/warn
+  * CLEANUP: ssl: make ssl_sock_load_cert*() return real error codes
+  * REGTEST: mcli/mcli_show_info: launch a 'show info' on the master CLI
+  * BUG/MEDIUM: mux_pt: Only call the wake emthod if nobody subscribed to receive.
+  * BUG/MEDIUM: mux_pt: Don't destroy the connection if we have a stream attached.
+  * Revert e8826ded5fea3593d89da2be5c2d81c522070995.
+  * BUG/MAJOR: idle conns: schedule the cleanup task on the correct threads
+  * BUG/MEDIUM: mux_pt: Make sure we don't have a conn_stream before freeing.
+  * BUG/MINOR: tcp: Don't alter counters returned by tcp info fetchers
+  * BUG/MINOR: mworker/ssl: close openssl FDs unconditionally
+  * BUG/MINOR: http-htx: Properly set htx flags on error files to support keep-alive
+  * MINOR: version: make the version strings variables, not constants
+  * BUG/MINOR: WURFL: fix send_log() function arguments
+  * BUG/MINOR: mux-h1: Capture ignored parsing errors
+  * BUG/MINOR: mux-h1: Mark the output buffer as full when the xfer is interrupted
+  * BUG/MINOR: chunk: Fix tests on the chunk size in functions copying data
+  * BUG/MEDIUM: htx: Catch chunk_memcat() failures when HTX data are formatted to h1
+  * BUILD: ssl: wrong #ifdef for SSL engines code
+  * BUG/MINOR: ssl: abort on sni_keytypes allocation failure
+  * BUG/MINOR: ssl: free the sni_keytype nodes
+  * BUG/MINOR: ssl: abort on sni allocation failure
+  * BUG/MEDIUM: applet: always check a fast running applet's activity before killing
+  * MINOR: stats: mention in the help message support for "json" and "typed"
+  * DOC: fix typo in Prometheus exporter doc
+  * DOC: clarify some points around http-send-name-header's behavior
+  * BUG/MEDIUM: cache: make sure not to cache requests with absolute-uri
+  * BUG/MINOR: peers: crash on reload without local peer.
+  * BUG/MEDIUM: mux-h2: do not enforce timeout on long connections
+  * BUILD: ebtree: make eb_is_empty() and eb_is_dup() take a const
+  * MINOR: mux-h2: add a per-connection list of blocked streams
+  * BUG/MINOR: action: do-resolve does not yield on requests with body
+  * BUG/MEDIUM: lua: Store stick tables into the sample's `t` field
+  * BUG/MINOR: lua: Properly initialize the buffer's fields for string samples in hlua_lua2(smp|arg)
+  * BUG/MINOR: stats: Add a missing break in a switch statement
+
+-------------------------------------------------------------------
 Mon Oct 07 08:05:46 UTC 2019 - kgronlund@suse.com
 
 - Update to version 2.0.7+git0.1909aa1e:

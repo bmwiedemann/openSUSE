@@ -736,4 +736,12 @@
     <comment></comment>
     <requestid>735634</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>55f08836aad7112d236d542534f3add6</srcmd5>
+    <version>2.0.9+git6.26b7b800</version>
+    <time>1574337463</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.9+git6.26b7b800:</comment>
+    <requestid>749635</requestid>
+  </revision>
 </revisionlist>
