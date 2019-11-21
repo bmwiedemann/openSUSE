@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 20 12:02:18 UTC 2019 - Petr Cervinka <petr@cervinka.net>
+
+- Increase required go version to 1.12
+- Update to 0.12.16
+  BUG FIXES:
+   * command/0.12upgrade: fix panic when int value is out of range ([#23394](https://github.com/hashicorp/terraform/issues/23394))
+   * core: fix cycle between dependencies with create_before_destroy ([#23399](https://github.com/hashicorp/terraform/issues/23399))
+   * backend/remote: default .terraformignore paths will now work on Windows ([#23311](https://github.com/hashicorp/terraform/issues/23311))
+
+-------------------------------------------------------------------
 Fri Nov 15 08:00:51 UTC 2019 - Petr Cervinka <petr@cervinka.net>
 
 - Update to 0.12.15

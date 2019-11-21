@@ -17,7 +17,7 @@
 
 
 Name:           terraform
-Version:        0.12.15
+Version:        0.12.16
 Release:        0
 Summary:        Tool for building infrastructure safely and efficiently
 License:        MPL-2.0
@@ -25,7 +25,7 @@ Group:          System/Management
 URL:            https://www.terraform.io/
 Source:         %{name}-%{version}.tar.xz
 Source99:       terraform-rpmlintrc
-BuildRequires:  golang(API) >= 1.11
+BuildRequires:  golang(API) >= 1.12
 BuildRequires:  golang-packaging
 BuildRequires:  xz
 # See: https://github.com/hashicorp/terraform/issues/22807
