@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 19 23:15:31 UTC 2019 - Simon Lees <sflees@suse.de>
+
+- %make_jobs is depricated replaced by %cmake_build
+
+-------------------------------------------------------------------
 Tue Jun  4 10:38:33 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.16.3:

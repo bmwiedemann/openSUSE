@@ -76,7 +76,7 @@ for %{libname}.
   -DPREFER_EXTERNAL_ZLIB=ON \
   -DPREFER_EXTERNAL_ZSTD=ON \
   -DPREFER_EXTERNAL_LZ4=ON
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install

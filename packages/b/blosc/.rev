@@ -146,4 +146,12 @@ I have fixed the issues from the previous submit requests.</comment>
   * Empty buffers can be compressed again (this was unadvertedly prevented while fixing #234). See #247. Thanks to Valentin Haenel.</comment>
     <requestid>707454</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>e38caba6443922285cd76973dc49ad30</srcmd5>
+    <version>1.16.3</version>
+    <time>1574337531</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749894</requestid>
+  </revision>
 </revisionlist>
