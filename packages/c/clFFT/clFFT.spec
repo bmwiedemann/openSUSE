@@ -123,7 +123,7 @@ cd src
   -DBUILD_RUNTIME=ON \
   -DBUILD_SHARED_LIBS=ON \
   -DBUILD_TEST=OFF
-%make_jobs
+%cmake_build
 
 %install
 cd src
