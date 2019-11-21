@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Wed Nov 20 20:08:31 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 3.2.3
+  + Other Changes and Additions
+    * Updated IERS A URLs due to USNO prolonged maintenance
+- Update to 3.2.2
+  + Bug fixes
+    * astropy.convolution
+      > Fixed a bug in ``discretize_oversample_1D/2D()`` from
+        ``astropy.convolution.utils``, which might occasionally introduce unexpected
+        oversampling grid dimensions due to a numerical precision issue.
+      > Fixed a bug where having a kernel defined using unitless astropy
+        quantity objects would result in a crash 
+    * astropy.coordinates
+      > Fix concatenation of representations for cases where the units were different.
+      > Check for NaN values in catalog and match coordinates before building and
+        querying the ``KDTree`` for coordinate matching.
+      > Fix sky coordinate matching when a dimensionless distance is provided.
+      > Raise a faster and more meaningful error message when differential data units
+        are not compatible with a containing representation's units.
+      > Changed the timescale in ICRS to CIRS from 'tdb' to 'tt' conversion and
+        vice-versa, as the erfa function that gets called in the process, pnm06a
+        accepts time in TT.
+    * astropy.io.ascii
+      > Fixed the fast reader when used in parallel and with the multiprocessing
+        'spawn' method (which is the default on MacOS X with Python 3.8 and later),
+        and enable parallel fast reader on Windows.
+    * astropy.io.fits
+      > Fixes bug where an invalid TRPOS<n> keyword was being generated for FITS
+        time column when no location was available.
+      > Fixed a wrong exception when converting a Table with a unit that is not FITS
+        compliant and not convertible to a string using ``format='fits'``.
+      > Fixed an issue with A3DTABLE extension that could not be read.
+      > Fixed the update of the header when creating GroupsHDU from data.
+    * astropy.nddata
+      > Fix to ``add_array``, which now accepts ``array_small`` having dimensions
+        equal to ``array_large``, instead of only allowing smaller sizes of
+        arrays.
+    * astropy.stats
+      > Fixed ``median_absolute_deviation`` for the case where ``ignore_nan=True``
+        and an input masked array contained both NaNs and infs.
+    * astropy.table
+      > Comparisons between ``Column`` instances and ``Quantity`` will now
+        correctly take into account the unit (as was already the case for
+        regular operations such as addition).
+    * astropy.time
+      > Allow ``Time`` to be initialized with an empty value for all formats.
+      > Fixed a troubling bug in which ``Time`` could loose precision, with deviations
+        of 300 ns.
+    * astropy.timeseries
+      > Fixed handling of ``Quantity`` input data for all methods of
+        ``LombScarge.false_alarm_probabilty``.
+    * astropy.units
+      > Allow conversion of ``Column`` with logarithmic units to a suitable
+        ``Quantity`` subclass if ``subok=True``.
+      > Ensured that we simplify powers to smaller denominators if that is
+        consistent within rounding precision.
+      > Ensured that the powers shown in a unit's repr are always correct,
+        not oversimplified.
+    * astropy.utils
+      > Fixed ``find_api_page`` access by using custom request headers and HTTPS
+        when version is specified.
+      > Make ``download_file`` (and by extension ``get_readable_fileobj`` and others)
+        check the size of downloaded files against the size claimed by the server.
+      > Fix ``find_current_module`` so that it works properly if astropy is being used
+        inside a bundle such as that produced by PyInstaller.
+      > Fix path to renamed classes, which previously included duplicate path/module
+        information under certain circumstances.
+    * astropy.visualization
+      > Silence numpy runtime warnings in ``WCSAxes`` when drawing grids.
+    * astropy.wcs
+      > Fixed equality test between ``cunit`` where the first element was equal but
+        the following elements differed.
+      > Fixed a crash while loading a WCS from headers containing duplicate SIP
+        keywords.
+      > Fixed a possible buffer overflow when using too large negative indices for
+        ``cunit`` or ``ctype``
+      > Fixed reference counting in ``WCSBase.__init__``
+      > Fix ``SlicedLowLevelWCS`` ``world_to_pixel_values`` and
+        ``pixel_to_world_values`` when inputs need broadcasting to the same shape.
+        (i.e. when one input is sliced out)
+      > Fixed a bug that caused ``WCS.array_shape``, ``WCS.pixel_shape`` and
+        ``WCS.pixel_bounds`` to be incorrect after using ``WCS.sub``.
+  + Other Changes and Additions
+    * Fixed a bug that caused files outside of the astropy module directory to be
+      included as package data, resulting in some cases in errors when doing
+      repeated builds.
+        
+-------------------------------------------------------------------
 Mon Jul 29 17:01:26 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Add conflicts with perl-Data-ShowTable

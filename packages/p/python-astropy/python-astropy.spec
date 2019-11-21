@@ -19,12 +19,11 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-astropy
-Version:        3.2.1
+Version:        3.2.3
 Release:        0
 Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
-URL:            http://astropy.org
+URL:            https://astropy.org
 Source:         https://files.pythonhosted.org/packages/source/a/astropy/astropy-%{version}.tar.gz
 # Mark wcs headers as false positives for devel-file-in-non-devel-package
 # These are used by the python files so they must be available.
@@ -61,6 +60,7 @@ Recommends:     python-matplotlib
 Recommends:     python-pandas
 Recommends:     python-scikit-image
 Recommends:     python-scipy
+Conflicts:      perl-Data-ShowTable
 # SECTION Optional requirements
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyYAML}
@@ -81,7 +81,6 @@ BuildRequires:  %{python_module pytest-doctestplus}
 BuildRequires:  %{python_module pytest-openfiles}
 BuildRequires:  %{python_module pytest-remotedata}
 # /SECTION
-Conflicts:      perl-Data-ShowTable
 %python_subpackages
 
 %description
@@ -148,7 +147,7 @@ popd
 
 %files %{python_files}
 %doc CHANGES.rst README.rst
-%doc licenses/
+%license licenses/*
 %python_alternative %{_bindir}/fitsdiff
 %python_alternative %{_bindir}/fitsheader
 %python_alternative %{_bindir}/fitscheck
