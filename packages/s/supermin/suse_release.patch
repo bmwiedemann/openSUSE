@@ -1,7 +1,5 @@
-Index: supermin-5.1.18/src/os_release.ml
-===================================================================
---- supermin-5.1.18.orig/src/os_release.ml
-+++ supermin-5.1.18/src/os_release.ml
+--- a/src/os_release.ml
++++ b/src/os_release.ml
 @@ -29,6 +29,7 @@ let split sep str =
  
  type os_release = {
@@ -40,10 +38,8 @@ Index: supermin-5.1.18/src/os_release.ml
 +  match get_data () with
 +  | None -> []
 +  | Some d -> d.id_like
-Index: supermin-5.1.18/src/os_release.mli
-===================================================================
---- supermin-5.1.18.orig/src/os_release.mli
-+++ supermin-5.1.18/src/os_release.mli
+--- a/src/os_release.mli
++++ b/src/os_release.mli
 @@ -24,3 +24,10 @@ val get_id : unit -> string
  
      An empty string is returned if the file does not exist or cannot
@@ -55,14 +51,12 @@ Index: supermin-5.1.18/src/os_release.mli
 +
 +    An empty list is returned if the file does not exist, cannot
 +    be read or the ID_LIKE field is not defined. *)
-Index: supermin-5.1.18/src/ph_rpm.ml
-===================================================================
---- supermin-5.1.18.orig/src/ph_rpm.ml
-+++ supermin-5.1.18/src/ph_rpm.ml
-@@ -41,6 +41,7 @@ let opensuse_detect () =
-   Config.rpm <> "no" && Config.rpm2cpio <> "no" && rpm_is_available () &&
+--- a/src/ph_rpm.ml
++++ b/src/ph_rpm.ml
+@@ -42,6 +42,7 @@ let opensuse_detect () =
      Config.zypper <> "no" &&
-     (List.mem (Os_release.get_id ()) [ "opensuse"; "sled"; "sles" ] ||
+     (List.mem (Os_release.get_id ()) [ "sled"; "sles" ] ||
+      string_prefix "opensuse" (Os_release.get_id ()) ||
 +     List.mem "suse" (Os_release.get_id_like ()) ||
       try (stat "/etc/SuSE-release").st_kind = S_REG with Unix_error _ -> false)
  

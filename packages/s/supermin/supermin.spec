@@ -17,9 +17,9 @@
 
 
 Name:           supermin
-Version:        5.1.18
+Version:        5.1.20
 Release:        0
-%{ocaml_preserve_bytecode}
+%{?ocaml_preserve_bytecode}
 Url:            http://libguestfs.org/
 Summary:        Bootstrapping tool for creating supermin appliances
 License:        GPL-3.0-or-later
@@ -30,7 +30,6 @@ Requires:       sysconfig-netconfig
 Requires:       tar
 Requires:       xmlstarlet
 Requires:       zypper
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        supermin-%{version}.tar.xz
 # Pending upstream review
 Patch0:         suse_release.patch
@@ -80,7 +79,6 @@ make install DESTDIR=$RPM_BUILD_ROOT
 find $RPM_BUILD_ROOT -ls
 
 %files
-%defattr (-,root,root)
 %doc README
 %doc TODO
 /usr/bin/*
