@@ -18,7 +18,7 @@
 
 
 Name:           stress-ng
-Version:        0.10.10
+Version:        0.10.11
 Release:        0
 Summary:        Tool to load and stress a computer
 License:        GPL-2.0-only
