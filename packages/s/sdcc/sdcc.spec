@@ -1,7 +1,7 @@
 #
 # spec file for package sdcc
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           sdcc
-Version:        3.6.0
+Version:        3.9.0
 Release:        0
 Summary:        Small Device C Compiler
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Development/Languages/C and C++
-Url:            http://sdcc.sourceforge.net/
+URL:            http://sdcc.sourceforge.net/
 Source:         http://downloads.sourceforge.net/%{name}/%{name}-src-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
 Patch0:         0001-Doc-Disable-fallback-to-dvipdfm-remove-non-pdftex-ta.patch
@@ -42,22 +42,21 @@ BuildRequires:  gputils
 BuildRequires:  libstdc++-devel
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
-BuildRequires:  python-devel
+BuildRequires:  python3-base
 # documentation
 BuildRequires:  inkscape
 BuildRequires:  lyx
 BuildRequires:  makeinfo
 BuildRequires:  texlive-babel-english
-%if 0%{?suse_version} > 1320
-BuildRequires:  texlive-makeindex-bin
-%endif
 BuildRequires:  texlive-fancyhdr
-%if 0%{?suse_version} > 1500
+BuildRequires:  texlive-makeindex-bin
+%if 0%{?suse_version} >= 1500
 BuildRequires:  texlive-footnotehyper
 %endif
 BuildRequires:  texlive-latex
 BuildRequires:  texlive-makeindex
 BuildRequires:  texlive-ulem
+BuildRequires:  zlib-devel
 BuildRequires:  tex(footnote.sty)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -101,23 +100,23 @@ rm support/regression/tests/bug3304184.c
 find device/non-free/ \( -iname \*.h -o -iname \*.c -o -iname \*.S \) -delete
 %patch0 -p1
 %patch2 -p1
-sed -i '1 s@.*@#!/usr/bin/python2@' support/scripts/as2gbmap.py
+sed -i '1 s@.*@#!/usr/bin/python3@' support/scripts/as2gbmap.py
 
 %build
 # Force configure to ignore missing, but unused TeX binaries
 export LATEX2HTML=/usr/bin/true
 export DVIPDFM=/usr/bin/true
+export PYTHON=/usr/bin/python3
 CFLAGS="%{optflags} -fno-strict-aliasing" \
 %configure \
     --docdir=%{_docdir}/sdcc \
     --disable-non-free \
-    %if 0%{?suse_version} >= 1320
-    --enable-doc
-    %endif
+    --disable-doc
 
 inkscape --export-area-drawing --export-pdf=doc/MCS51_named.pdf doc/MCS51_named.svg
 
 make %{?_smp_mflags}
+make %{?_smp_mflags} -C doc sdccman.pdf
 
 %install
 %make_install
@@ -142,15 +141,13 @@ rm -rf %{buildroot}%{_datadir}/%{name}/lib/src/pic1{4,6}/libsdcc/.dirstamp
 find %{buildroot}%{_datadir}/%{name}/lib/src/pic16/ -iname \*lib*.a -delete
 find %{buildroot}%{_datadir}/%{name}/lib/src/pic14/ -iname \*lib*.a -delete
 
-# remove documentation of bundled libbfd, conflicts with binutils
-rm %{buildroot}%{_infodir}/bfd.info*
-
 # remove PPC embedspu (unneeded unless you have an AVR etc with a cell engine), conflicts with binutils
 rm -f %{buildroot}%{_bindir}/embedspu
 
 # duplicates
 %fdupes -s %{buildroot}%{_datadir}/%{name}/lib/src
 %fdupes -s %{buildroot}%{_bindir}
+%fdupes -s %{buildroot}%{_datadir}/%{name}/include
 
 # move src away temporarily, as we do not want symlinks across packages
 mv %{buildroot}%{_datadir}/%{name}/lib/src %{buildroot}%{_datadir}/%{name}/src
@@ -178,8 +175,6 @@ mv %{buildroot}%{_datadir}/%{name}/src %{buildroot}%{_datadir}/%{name}/lib/src
 %dir %{_docdir}/%{name}
 %{_docdir}/%{name}/ucsim
 %{_docdir}/%{name}/sdas
-%if 0%{?suse_version} >= 1320
 %{_docdir}/%{name}/sdccman.pdf
-%endif
 
 %changelog

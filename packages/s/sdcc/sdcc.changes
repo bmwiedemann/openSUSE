@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Mon Nov 18 22:32:42 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 3.9.0
+  * Support for struct / union assignment.
+  * Optimizations in the stm8 backend relevant to soft float increase
+    Whetstone score by two thirds.
+  * Improvements in rematerialization in the stm8 backend improve code
+    generation for struct, union and arrays.
+  * New stack allocator reduces stack space usage for the stm8, z80, z180,
+    gbz80, r2k, r3ka, tlcs90 backends.
+  * New ez80_z80 backend for eZ80 in Z80 mode.
+  * Removed deprecated sdcclib utility.
+  * New pdk14 backend for Padauk µC with 14-bit wide program memory.
+  * New in-development pdk15 backend for Padauk µC with 15-bit wide program
+    memory.
+- Update to version 3.8.0
+  * Additional general utility function: bsearch().
+  * Support for rematerialization in the stm8 backend reduces register
+    pressure and stack usage.
+  * Merged upstream GNU binutils 2.30
+  * All Python code is now fully compatible with both Python 2.7 and
+    Python 3.6, so Python 3 can be used instead of Python 2.
+  * Regression testing for diagnostics.
+  * Improved handling of local bool variables in the mcs51 backend
+    substantially reduces code size.
+  * Large memory model for stm8 for 24-bit codespace allows using more
+    than 32KB of Flash for code.
+  * New optimizations for calls to some standard library function
+    (printf(), puts(), strcpy()).
+  * The type of true and false from stdbool.h change from int to bool.
+  * New C2X mode (--std-c2x, --std-sdcc2x, #pragma std_c2x) adds support
+    for one-argument static_assert variant.
+  * Intermingling of declarations and statements (ISO C99).
+  * Support headers for AX8052 devices.
+  * Adopted GCC 8.2 regression tests (execute part of the GCC C torture tests)
+- Update to version 3.7.0
+  * Changed putchar() prototype from void putchar(char) to int putchar(int)
+    to improve standard-compliance and allow error reporting.
+  * Various speed improvements in stm8 backend - Dhrystone score more than
+    doubled, resulting in SDCC achieving the highest Dhrystone scores
+    among STM8 C implementations.
+  * Various speed improvements for multiplications resulting in SDCC achieving
+    the highest Coremark scores among STM8 C implementations.
+  * Declarations in for loops (ISO C99).
+  * 64-bit integers (long long) for the mcs51 and ds390 backends (now long long
+    is fully supported in SDCC except for the pic14 and pic16 backends).
+  * Full _Bool support for mcs51 and ds390 backend (now _Bool is fully
+    supported in SDCC regardless of backend).
+  * Additional wide character library functions: mbstowcs() and wcstombs(),
+    btowc() and wctob(), wcscmp(), wcslen().
+  * Changed PRNG for rand() from LCG to xorshift to improve speed and quality.
+  * Support for Small-C calling convention on the callee side (i.e. function
+    definitions with Small-C calling convention).
+  * The obsolete macro SDCC (which used to contain the version number encoded
+    as an integer) has finally been removed (except for mcs51, where it will
+    survive a little bit longer for SiLabs IDE compability).
+  * New devices supported by simulator (TLCS-90, and the 517, F380, XC88X,
+    DS320 mcs51-variants along with dual-dptr and MDU support).
+  * Timer, UART (incl. interrupt) and I/O support in STM8 simulator.
+  * Simulator support for banked memory and bit banding.
+  * Various simulator improvements: Conditional breakpoints, breakpoints by
+    function name from SDCC debug output, OMF input, VCD output, simulator
+    interface for simulated program and new operators in expressions.
+  * Deprecated --nojtbound and the corresponding pragma.
+  * Faster register allocator reduces compilation time by about 25% (does not
+    apply to mcs51, ds390 which use a different register allocator).
+  * Execution count guessing and use of execution count guesses in stm8
+    register allocation improve optimization for code speed.
+  * Changed getchar() prototype from char getchar(void) to int getchar(void)
+    to improve standard-compliance and allow error reporting.
+  * Type qualifiers in array parameters (ISO C99).
+  * static in array parameters (ISO C99).
+  * Improved support for DWARFv2 debug info in ELF output (stm8, hc08, s08).
+  * Various improvements in z80/z180/gbz80/tlcs90/r2k/r3ka code generation,
+    in particular for mixed 16-/32-bit code.
+  * __z88dk_fastcall function pointer support for --reserve-regs-iy.
+  * tlcs90 is now a fully supported backend, no longer work in progress.
+  * --data-seg to specify the segment for non-initialized data in the z80,
+    z180, gbz80, tlcs90, r2k and r3ka backends.
+  * New methods to obtain tree-decompositions of control-flow graphs improve
+    compilation time / code-quality trade-off (when SDCC is built with
+    support for the treedec library).
+  * Additional general utility functions: qsort(), strtol(), strtoul().
+- Rebase 0001-Doc-Disable-fallback-to-dvipdfm-remove-non-pdftex-ta.patch
+- Rebase patch sdcc_enable_additional_target_libs.patch
+- Use Python 3 for building, remove unused pyton-devel BuildRequires
+
+-------------------------------------------------------------------
 Thu Dec 13 17:19:59 UTC 2018 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix Tumbleweed build.

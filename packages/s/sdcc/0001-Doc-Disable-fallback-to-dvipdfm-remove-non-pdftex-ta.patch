@@ -14,13 +14,13 @@ diff --git a/doc/Makefile.in b/doc/Makefile.in
 index e2c0743..f7d709f 100644
 --- a/doc/Makefile.in
 +++ b/doc/Makefile.in
-@@ -58,8 +58,12 @@ $(MANUAL).html/index.html: $(MANUAL).tex $(MANUAL).aux ;#$(MANUAL).ind $(MANUAL)
+@@ -57,8 +57,12 @@ $(MANUAL).html/index.html: $(MANUAL).tex $(MANUAL).aux ;#$(MANUAL).ind $(MANUAL)
  	fi
  	$(LYX) -e text $(notdir $<);
  
--%.pdf: %.tex %.dvi %.ind
+-%.pdf %.aux: %.tex %.dvi %.ind
 -	which $(PDFLATEX) > /dev/null && $(PDFLATEX) $* || $(DVIPDFM) $*
-+%.pdf: %.tex
++%.pdf %.aux: %.tex
 +	sed -i 's#\\pdfoptionpdfminor.*#\\pdfminorversion=5\n\\pdfobjcompresslevel=2#' $<
 +	$(PDFLATEX) -draftmode $*
 +	$(MAKEINDEX) -q $*
