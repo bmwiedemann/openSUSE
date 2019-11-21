@@ -1,7 +1,7 @@
 #
 # spec file for package kicad-i18n
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           kicad-i18n
-Version:        5.1.4
+Version:        5.1.5
 Release:        0
 Summary:        Localization for KiCad
 # license same as KiCad package
 License:        GPL-3.0-or-later AND AGPL-3.0-or-later
 Group:          System/Localization
-Url:            http://kicad-pcb.org
+URL:            http://kicad-pcb.org
 Source:         https://github.com/KiCad/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gettext
