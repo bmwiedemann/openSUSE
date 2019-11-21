@@ -1,7 +1,7 @@
 #
 # spec file for package kicad
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 Name:           kicad-doc%{?pkg_suffix}
-Version:        5.1.4
+Version:        5.1.5
 Release:        0
 Summary:        Documentation and tutorials for KiCad
 License:        GPL-3.0-or-later AND CC-BY-SA-3.0
@@ -47,7 +47,7 @@ Group:          Documentation/HTML
 %if "%flavor" == "pdf"
 %else
 %endif
-Url:            http://kicad-pcb.org
+URL:            http://kicad-pcb.org
 Source:         https://github.com/KiCad/%{sname}/archive/%{version}.tar.gz#/%{sname}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE kicad-doc-notimestamp.patch davejplater@gmail.com -- Remove time stamped footer from html pages.
 Patch0:         kicad-doc-notimestamp.patch
