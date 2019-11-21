@@ -18,13 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-librosa
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        Python module for audio and music processing
 License:        ISC
-Group:          Development/Languages/Python
-URL:            http://github.com/librosa/librosa
-Source0:        https://github.com/librosa/librosa/archive/%{version}.tar.gz#//librosa-%{version}.tar.gz
+URL:            https://github.com/librosa/librosa
+Source0:        https://github.com/librosa/librosa/archive/%{version}.tar.gz#/librosa-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -46,9 +45,9 @@ BuildRequires:  %{python_module decorator >= 3.0.0}
 BuildRequires:  %{python_module joblib >= 0.12}
 BuildRequires:  %{python_module numba >= 0.38.0}
 BuildRequires:  %{python_module numpy >= 1.15.0}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-mpl}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module resampy >= 0.2.0}
 BuildRequires:  %{python_module scikit-learn >= 0.14.0}
 BuildRequires:  %{python_module scipy >= 1.0.0}

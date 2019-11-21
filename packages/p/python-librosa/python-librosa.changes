@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Nov 21 04:36:07 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Use github source
+
+-------------------------------------------------------------------
+Tue Nov 19 20:52:02 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 0.7.1
+  + New Features
+    * `util.frame` now supports multidimensional data. Includes a new helper function `util.stack` for contiguous concatenation.
+    * `core.griffinlim_cqt`: Phase retrieval from constant-Q magnitude spectra.
+    * Enhanced compatibility with HTK's MFCC implementation: `effects.preemphasis` and `lifter=` parameter in MFCC.
+    * `util.shear` utility for shear-transforming 2D arrays.
+    * `core.reassigned_spectrogram`: time-frequency reassigned spectrogram.
+  + Bug fixes
+    * Added a missing parameter to `griffinlim_cqt`.
+    * Correct FFT normalization discrepancy in rms calculation.
+    * Corrected an error in automatic tuning correction for CQT.
+    * Fixed seeking behavior in `librosa.stream` when operating on file-handle inputs.
+    * Fixed a boundary condition check in full-sequence DTW.
+  + Documentation
+    * Fixed a typo in `stream` documentation.
+    * Visualization of reassigned spectrograms.
+    * Improved documentation for `core.stft`.
+    * Expanded documentation of `feature.melspectrogram`.
+  + Other changes
+    * Expose frame parameters in `onset` and `chroma_stft` functions.
+    * Removed warning filter reset, and changed the Python2 deprecation
+     warning to class `FutureWarning`.
+    * Fixed an upstream deprecation warning from `np.asscalar()`.
+    * Beat and tempo estimation now support prior distributions.
+    * `util.valid_audio` now enforces memory contiguity.
+    * Improved x-axis decoration types in `display.waveplot`.
+    * Ensure memory contiguity of audio buffers after resampling.
+    * Code-base audit for proper usage of `times_like`.
+    * Deprecated `core.ifgram` in favor of `reassigned_spectrogram`.
+    * Allow initial phase estimates for `griffinlim` methods.
+    * Accelerated `segment.lag_to_recurrence` and `segment.recurrence_to_lag`. Deprecated `util.roll_sparse`.
+    * `A440=` parameter has been deprecated across the library in favor of a standardized `tuning=` parameter.
+
+-------------------------------------------------------------------
 Thu Jul 25 20:34:49 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to version 0.7.0
