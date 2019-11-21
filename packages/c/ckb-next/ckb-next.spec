@@ -60,19 +60,14 @@ system. This project supports much of the same functionality,
 including full RGB animations.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%autosetup -p1
 
 %build
 %cmake \
        -DDISABLE_UPDATER=1 \
        -DCMAKE_INSTALL_LIBEXECDIR=%{_libexecdir} \
        -DUDEV_RULE_DIRECTORY=%{_udevrulesdir}
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
