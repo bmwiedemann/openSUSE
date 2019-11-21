@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 19 08:44:25 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.302169
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302169  2019-11-18 15:49:38-08:00 America/Los_Angeles
+  
+      - Update inline Object::HashBase
+      - Avoid 'used only once' warnings in BEGIN and END blocks (James E Keenan <jkeenan@cpan.org>)
+
+-------------------------------------------------------------------
 Sun Sep  8 19:57:20 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 1.302168
