@@ -1,7 +1,7 @@
 #
 # spec file for package nsd
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define zonesdir   %{configdir}/zones
 %define pidfile    %{_rundir}/nsd/nsd.pid
 Name:           nsd
-Version:        4.2.2
+Version:        4.2.3
 Release:        0
 #
 Summary:        An authoritative-only domain name server
@@ -103,20 +103,6 @@ getent passwd _nsd >/dev/null || \
 %post
 systemd-tmpfiles --create  %{_tmpfilesdir}/%{name}.conf || :
 %service_add_post %{name}.service
-
-# On upgrade, we migrate from old "nsd" user to new "_nsd" user for
-# config, home and default logging directories
-#
-# This is only used for special case of upgrading server:dns/nsd users
-# as 'nsd' user was never part of openSUSE:Factory
-if [ "x"$1 = "x2" ] && [ "x"`stat -c '%%G' %{home}/nsd.db` = 'xnsd' ]; then
-    echo "Changing legacy group from user/group nsd:nsd to _nsd:_nsd"
-    %{_bindir}/find %{_localstatedir}/log/nsd %{home} %{_rundir}/nsd -exec %{_bindir}/chown -v _nsd:_nsd {} \+
-    %{_bindir}/find %{configdir} -exec %{_bindir}/chgrp -v _nsd {} \+
-
-    # force restart because we need to remove users here
-    %{_bindir}/systemctl try-restart %{name}.service ||:
-fi
 
 %preun
 %service_del_preun %{name}.service
