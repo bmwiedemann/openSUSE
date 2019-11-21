@@ -1,4 +1,149 @@
 -------------------------------------------------------------------
+Tue Nov 19 14:49:40 CET 2019 - hare@suse.de
+
+- Add libhugetlbfs to the list of build requirements
+
+-------------------------------------------------------------------
+Mon Nov 18 14:00:12 UTC 2019 - hare@suse.com
+
+- Update to version 1.9+git122.c5097d5:
+  * [NVMe-CLI] Get DUI for SN-340 failing with Data Area 4 - Buffer Misalignment
+  * Minor intel-nvme print refactor
+  * Use simpler nvme ioctl api for admin
+  * Relocate functions and constants to the files that use them
+  * Move all spec defined structs to single file
+  * Update build rules for .c with no .h
+  * Update my email address
+  * Makefile: fix cleaning subdirectories
+  * remove unused "paths" controller field
+  * reign in line lengths
+  * Add print for directive receive
+  * Unify print routines
+  * regenerate documentation
+  * fix fw-download reference to committing fw
+  * argconfig: Remove unused paramters
+  * fix huawei filter to search all namespaces
+  * nvme-cli: Support for hugetlbfs
+  * Remove all 'struct nvme_command' usage
+  * nvme-cli: Update PMR Capability and PMR Status 	1. Adding Controller Memory Space Supported(CMSS) in PMRCAP 	2. Adding Persistent Memory Region Status(CBAI) in PMRSTS
+  * nvme-cli: Update Controller Capabilities Register 	1. Add Controller Memory Buffer Supported (CMBS)
+  * nvme-cli: Update NVMe Registers 	1. Add Controller Memory Buffer Memory Space Control (CMBMSC) 	2. Add Controller Memory Buffer Status (CMBSTS) 	3. Add Persistent Memory Region Memory Space Control (PMRMSC)
+  * fixup attach-ns documentation
+  * Add files via upload
+  * [NVMe-CLI] Updates and fixes to WDC plugin command vs-internal-log for the SN340 drive.
+  * Regen docs, add host-nqn man page
+  * [NVMe-ClI] Add Documentation files for clear-fw-activate-history command
+  * [NVMe-CLI] Add clear-fw-activate-history WDC plugin command
+  * fix namespace checks for legacy list
+  * Reset wdc_do_cap_dui default parameters to the proper values
+  * README.md: Mention the OpenEmbedded/Yocto recipe
+  * Intel plugin: Adding fields to id-ctrl VU region Per https://github.com/linux-nvme/nvme-cli/pull/584/commits/f33510efbf5192116e5757d13a02463d446a1dc5#r332178975 removing pack pragma on vu_id_ctrl_field struct.
+  * udev: convert the discovery event handler to the kernel support
+  * Use a systemd app-specific machine ID for hostnqn
+  * nvme-cli: Add 'transport type' error to the error log
+  * nvme-cli: Update nvme_endurance_group_log structure
+  * Adding fields to id-ctrl VU reigon for Intel DC drives
+  * Check return value of scandir
+  * nvme-cli: Add namespace-id option to self-test-log
+  * Report invalid output format for 'list' command
+  * Provide no-binary output format help text
+  * regen documentation
+  * Documentation: nvme-wdc-vs-fw-activate-history(1,html) generated
+  * nvme-cli/fabrics: Add tos param to connect cmd
+  * nvme.spec.in: fix rpm build error
+  * Correct self-test-log output
+  * nvme: Add 'Endurance Group Critical Warning Summary' to the Smart/Health information Log
+  * [NVMe-CLI] Documentation file for WDC vs-fw-activate-history command.
+  * [NVMe-CLI] Add new WDC plugin command vs-fw-activate-history.
+  * make: install-hostparams depends on install-etc
+  * MAINT: compile warning error on 32 bit system
+  * nvme-print: fix to print ctrltype when human-readable
+  * nvme: add Persistent Memory Region(PMR) Write Elasticity Status Registers
+  * [NVMe-CLI] Fix Potential Memory Leak with vs-internal-log command.
+  * regen docs
+  * fix admin-passthru documentation typo
+  * [NVMe-CLI] Fix empty file issue with vs-internal-log wdc plugin command
+  * nvme-cli: Fix namespace list output
+  * Fix builds for missing uuid
+  * Revert "remove LIBUUID things from nvme.h"
+  * Revert "nvme-cli: Fix compile on non-libuuid machines"
+  * Revert "fix uuid include typo"
+  * [NVMe-CLI] Fix offset parameter size for vs-internal-log wdc plugin command.
+  * remove LIBUUID things from nvme.h
+  * fix build error due to asprintf()
+  * id-ctrl: show Flush command behavior in VWC
+  * fix uuid include typo
+  * nvme-cli: Fix compile on non-libuuid machines
+  * [NVMe-CLI] Add updated documentation for additional parameters to specify file size   in vs-internal-log command.
+  * Regen docs
+  * nvme-cli: Code cleanup
+  * nvme-cli: Macro'ify argument defines
+  * nvme-cli: Code reorg
+  * [NVMe-CLI] Add support to specify file size in get DUI data for SN340.
+  * Regenerate documentation
+  * nvme-cli: Make 'list' more useful
+  * id-ctrl: show Persistent Event Log support in LPA
+  * id-ctrl: show Persistent Event Log Size(PELS)
+  * id-ctrl: show Endurance Group Maximum ID(ENDGIDMAX)
+  * id-ctrl: show FRU Globally Unique Identifier(FGUID)
+  * id-ctrl: show Controller Type(CNTRLTYPE)
+  * id-ctrl: update id-ctrl header for 1.4
+  * systemd: fix echo call with absolute path
+  * nvmf-autoconnect: fix absolute path for systemctl
+  * make: install udev rules in sysconfdir
+  * Add an example for attach-ns
+  * make: fix discovery.conf override
+  * fabrics: fix loop connect-all
+  * nvme: fix compilation error
+  * nvme-cli: Enhance format FNA detection
+  * nvme-cli: Warn and delay before formatting
+  * nvme-cli: prefill metadata buffers
+  * Fixed bash-nvme-completion.sh typo
+  * Tag release: v1.9
+  * Regen docs
+  * nvme: UUIDs for Vendor-Specific Information
+  * nvme: add Persistent Memory Region (PMR) registers
+  * get-lba-status: add Get LBA Status command
+  * Added openSUSE Leap to README.md
+  * id-ctrl: add 1.4 features to OAES
+  * Update packaging state in Arch Linux
+  * Fix code block style in the first section
+  * nvme-cli: nvmf auto-connect scripts
+  * nvme-cli: add --quiet option
+  * nvme-cli: Expand --device argument processing
+  * nvme-cli: Add routine to search for controller with specific attributes
+  * nvme-cli: Add routine to compare ctrl_list_item to connect args
+  * nvme-cli: extend ctrl_list_item for connect attributes
+  * nvme-cli: Refactor to create a get_nvme_ctrl_info routine
+  * nvme-cli: allow discover to address discovery controller by persistent name
+  * nvme-cli: support persistent connections to a discovery controller
+  * nvme-cli: ignore arguments that pass in "none"
+  * nvme-print: show new CMBLOC bit fields added in NVMe 1.4
+  * nvme: add support for Namespace Granularity
+  * nvme: sanitize enhancements
+  * nvme-cli: Update manpages to reflect discovery particulars
+  * nvme-cli: mask out invalid options during discovery
+  * nvme-cli: do not use 'queue_size' and 'nr_io_queues' for discovery controller
+  * nvme: Enhanced Command Retry
+  * id-ctrl: add an indicator for get lba status capability
+  * nvme: change format default namespace id
+  * lnvm: introduce alias geometry for id-ns for lnvm
+  * lnvm: introduce chunk-log command for chunk info
+  * lnvm: make data_len to sizeof() instead of magic number
+- Add patches from SLE15:
+  * 0101-nvme-add-iopolicy-rules-for-netapp.patch
+  * 0102-nvme-cli-Add-script-to-determine-host-NQN.patch
+- Drop patches merged with upstream:
+  * 0001-nvme_fc-auto-connect-scripts.patch
+  * 0002-71-nvme-iopolicy-netapp.rules-add-default-rules-for-.patch
+  * 0003-Add-nvmefc-connect.target.patch
+  * 0004-Change-service-to-type-simple.patch
+  * 0005-nvme-cli-Check-for-sysfs-interface-before-NVMe-disco.patch
+  * 0006-nvme-cli-add-default-IO-policy-rule-for-NetApp-E-Ser.patch
+  * 0007-nvme-cli-Rename-udev-rule-for-ONTAP-controller.patch
+  * 0008-nvme-cli-Add-script-to-determine-host-NQN.patch
+
+-------------------------------------------------------------------
 Fri Jul 26 20:22:17 UTC 2019 - sschricker@suse.com
 
 - Update to version 1.8.1+git135.9bab71e:

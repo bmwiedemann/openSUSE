@@ -7,6 +7,7 @@
     <param name="versionrewrite-replacement">\1</param>
     <param name="revision">master</param>
     <param name="changesgenerate">enable</param>
+    <param name="changesauthor">hare@suse.com</param>
   </service>
   <service mode="disabled" name="tar"/>
   <service mode="disabled" name="recompress">
