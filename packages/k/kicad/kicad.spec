@@ -1,7 +1,7 @@
 #
 # spec file for package kicad
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,12 @@
 # symbol libraries from version 5.0.0
 %define compatversion 5.0.0
 Name:           kicad
-Version:        5.1.4
+Version:        5.1.5
 Release:        0
 Summary:        EDA software suite for the creation of schematics and PCB
 License:        GPL-3.0-or-later AND AGPL-3.0-or-later
 Group:          Productivity/Scientific/Electronics
-Url:            http://kicad-pcb.org
+URL:            http://kicad-pcb.org
 Source:         https://launchpad.net/kicad/5.0/%{version}/+download/kicad-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE kicad-user-library.patch -- add user library path
 Patch1:         kicad-user-library.patch

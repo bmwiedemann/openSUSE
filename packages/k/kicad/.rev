@@ -290,4 +290,12 @@
     <comment>Update to 5.1.4</comment>
     <requestid>722207</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>0922157a8a92c7ca0f6722ea006a9a6a</srcmd5>
+    <version>5.1.5</version>
+    <time>1574337487</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749710</requestid>
+  </revision>
 </revisionlist>
