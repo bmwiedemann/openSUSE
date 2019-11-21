@@ -9,4 +9,13 @@ depend upon. Therefore, it is part of official blender builds
 as well.</comment>
     <requestid>725698</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>11b6e36d92d6663680a7c81995a80418</srcmd5>
+    <version>6.1.0</version>
+    <time>1574337472</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace cmake(TBB) BuildRequires with equivalent tbb-devel, the
+  latter is also available on Leap 15.x. (forwarded request 749685 from StefanBruens)</comment>
+    <requestid>749687</requestid>
+  </revision>
 </revisionlist>

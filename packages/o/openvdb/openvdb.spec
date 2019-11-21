@@ -36,7 +36,7 @@ BuildRequires:  pkgconfig(IlmBase)
 BuildRequires:  pkgconfig(OpenEXR)
 BuildRequires:  pkgconfig(blosc)
 BuildRequires:  pkgconfig(jemalloc)
-BuildRequires:  cmake(TBB)
+BuildRequires:  tbb-devel
 
 %description
 OpenVDB is a C++ library comprising a hierarchical data structure and

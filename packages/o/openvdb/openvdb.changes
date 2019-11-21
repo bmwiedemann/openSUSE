@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 19 17:17:53 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Replace cmake(TBB) BuildRequires with equivalent tbb-devel, the
+  latter is also available on Leap 15.x.
+
+-------------------------------------------------------------------
 Fri Aug 23 20:03:13 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim bias and metadata redundancies from description.
