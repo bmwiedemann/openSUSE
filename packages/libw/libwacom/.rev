@@ -203,4 +203,11 @@
     <comment></comment>
     <requestid>749855</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>3d76c12830e8a4468d6f3a34eed2b3d0</srcmd5>
+    <version>1.1</version>
+    <time>1574325658</time>
+    <user>dimstar_suse</user>
+    <comment>Fix LTO build with meson 0.51</comment>
+  </revision>
 </revisionlist>
