@@ -39,4 +39,12 @@
     <comment>- Use FAT LTO objects in order to provide proper static library. (forwarded request 720004 from marxin)</comment>
     <requestid>720019</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8df37b9c5f37c29c46cf808b570f2802</srcmd5>
+    <version>8.60</version>
+    <time>1574337449</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.60. No changelog available (boo#1157142)</comment>
+    <requestid>749529</requestid>
+  </revision>
 </revisionlist>

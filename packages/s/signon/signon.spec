@@ -1,7 +1,7 @@
 #
 # spec file for package signon
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,15 @@
 
 %define _soname 1
 %define _tarbasename signond
-%define _version VERSION_8.59-14f058c36208a551c80d0e98d76164fb87b2b8af
-
+%define _version VERSION_8.60
 Name:           signon
-Version:        8.59
+Version:        8.60
 Release:        0
 Summary:        Single Sign On Framework
 License:        LGPL-2.0-only
 Group:          System/Libraries
-Url:            https://gitlab.com/accounts-sso/signond
-Source:         https://gitlab.com/accounts-sso/%{_tarbasename}/repository/VERSION_%{version}/archive.tar.bz2#/%{_tarbasename}-%{_version}.tar.bz2
+URL:            https://gitlab.com/accounts-sso/signond
+Source:         https://gitlab.com/accounts-sso/%{_tarbasename}/-/archive/VERSION_%{version}/%{_tarbasename}-%{_version}.tar.bz2
 Source99:       baselibs.conf
 Patch0:         0001_Multilib.patch
 BuildRequires:  doxygen
@@ -45,7 +44,8 @@ BuildRequires:  pkgconfig(libproxy-1.0)
 BuildRequires:  pkgconfig(libssl)
 
 %description
-(no files installed)
+The SignOn daemon is a D-Bus service which performs user authentication on
+behalf of its clients.
 
 %package -n libsignon-qt5-%{_soname}
 Summary:        Single Sign On Framework for Qt
@@ -57,7 +57,6 @@ Framework that provides credential storage and authentication service.
 %package -n libsignon-qt5-devel
 Summary:        Development files for libsignon-qt%{_soname}
 Group:          Development/Libraries/C and C++
-
 Requires:       libsignon-qt5-%{_soname} = %{version}
 Requires:       pkgconfig(Qt5Core)
 
@@ -67,7 +66,6 @@ This package contains the development files for the signon-qt library.
 %package -n libsignon-qt5-docs
 Summary:        Documentation for libsignon-qt%{_soname}
 Group:          Documentation/HTML
-
 BuildArch:      noarch
 
 %description -n libsignon-qt5-docs
@@ -90,7 +88,6 @@ Framework that provides credential storage and authentication service.
 %package -n signond-libs-devel
 Summary:        Development files for signond-libs
 Group:          Development/Libraries/C and C++
-
 Requires:       signond = %{version}
 Requires:       signond-libs = %{version}
 Requires:       pkgconfig(Qt5Core)
@@ -101,7 +98,6 @@ This package contains the development files for signond-libs.
 %package -n signond-docs
 Summary:        Single Sign On Framework - Documentation
 Group:          Documentation/HTML
-
 BuildArch:      noarch
 
 %description -n signond-docs
@@ -110,7 +106,6 @@ This package contains the documentation for signond.
 %package -n signon-plugins
 Summary:        Plugins for the Single Sign On Framework
 Group:          System/Libraries
-
 Requires:       signond = %{version}
 
 %description -n signon-plugins
@@ -121,7 +116,6 @@ This package contains the following plugins for the Single Sign On Framework:
 %package -n signon-plugins-devel
 Summary:        Development files for the Single Sign On Framework's plugins
 Group:          Development/Libraries/C and C++
-
 Requires:       libsignon-qt5-devel = %{version}
 Requires:       signon-plugins = %{version}
 
@@ -132,7 +126,6 @@ the Single Sign On Framework.
 %package -n signon-plugins-docs
 Summary:        Documentation for the Single Sign On Framework's plugins
 Group:          Documentation/HTML
-
 BuildArch:      noarch
 
 %description -n signon-plugins-docs
@@ -180,23 +173,16 @@ find %{buildroot} -type f -name '*tests*' -delete
 %fdupes -s %{buildroot}
 
 %post -n libsignon-qt5-%{_soname} -p /sbin/ldconfig
-
 %postun -n libsignon-qt5-%{_soname} -p /sbin/ldconfig
-
 %post -n signond-libs -p /sbin/ldconfig
-
 %postun -n signond-libs -p /sbin/ldconfig
-
 %post -n signon-plugins -p /sbin/ldconfig
-
 %postun -n signon-plugins -p /sbin/ldconfig
 
 %files -n libsignon-qt5-%{_soname}
-%defattr(-,root,root)
 %{_libdir}/libsignon-qt5.so.*
 
 %files -n libsignon-qt5-devel
-%defattr(-,root,root)
 %dir %{_includedir}/signon-qt5/
 %dir %{_includedir}/signon-qt5/SignOn/
 %{_includedir}/signon-qt5/SignOn/*
@@ -206,12 +192,11 @@ find %{buildroot} -type f -name '*tests*' -delete
 %{_libdir}/cmake/SignOnQt5/
 
 %files -n libsignon-qt5-docs
-%defattr(-,root,root)
 %doc %{_docdir}/libsignon-qt/
 
 %files -n signond
-%defattr(-,root,root)
-%doc COPYING README.md
+%license COPYING
+%doc README.md
 %{_bindir}/signond
 %{_bindir}/signonpluginprocess
 %config(noreplace) %{_sysconfdir}/signond.conf
@@ -219,12 +204,10 @@ find %{buildroot} -type f -name '*tests*' -delete
 %{_datadir}/dbus-1/services/com.nokia.SingleSignOn.Backup.service
 
 %files -n signond-libs
-%defattr(-,root,root)
 %{_libdir}/libsignon-extension.so.*
 %{_libdir}/libsignon-plugins-common.so.*
 
 %files -n signond-libs-devel
-%defattr(-,root,root)
 %dir %{_includedir}/signond/
 %{_includedir}/signond/*.h
 %dir %{_includedir}/signon-extension/
@@ -234,16 +217,11 @@ find %{buildroot} -type f -name '*tests*' -delete
 %{_libdir}/libsignon-plugins-common.so
 %{_libdir}/pkgconfig/signond.pc
 %{_libdir}/pkgconfig/SignOnExtension.pc
-%{_datadir}/dbus-1/interfaces/com.google.code.AccountsSSO.SingleSignOn.AuthService.xml
-%{_datadir}/dbus-1/interfaces/com.google.code.AccountsSSO.SingleSignOn.AuthSession.xml
-%{_datadir}/dbus-1/interfaces/com.google.code.AccountsSSO.SingleSignOn.Identity.xml
 
 %files -n signond-docs
-%defattr(-,root,root)
 %doc %{_docdir}/signon/
 
 %files -n signon-plugins
-%defattr(-,root,root)
 %{_libdir}/libsignon-plugins.so.*
 %dir %{_libdir}/signon/
 %{_libdir}/signon/libexampleplugin.so
@@ -252,7 +230,6 @@ find %{buildroot} -type f -name '*tests*' -delete
 %{_libdir}/signon/libssotestplugin.so
 
 %files -n signon-plugins-devel
-%defattr(-,root,root)
 %doc %{_docdir}/signon-plugins-dev/
 %dir %{_includedir}/signon-plugins/
 %dir %{_includedir}/signon-plugins/SignOn/
@@ -263,7 +240,6 @@ find %{buildroot} -type f -name '*tests*' -delete
 %{_libdir}/pkgconfig/signon-plugins.pc
 
 %files -n signon-plugins-docs
-%defattr(-,root,root)
 %doc %{_docdir}/signon-plugins/
 
 %changelog
