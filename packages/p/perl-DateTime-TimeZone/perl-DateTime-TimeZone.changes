@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 19 08:29:48 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 2.38
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.38    2019-11-15
+  
+  - Added support for Etc/GMT and Etc/UTC style zones like "Etc/GMT-2" or
+    "Etc/UTC+12". Implemented by kclaggett. GH #38.
+
+-------------------------------------------------------------------
 Thu Sep 12 07:53:55 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 2.37

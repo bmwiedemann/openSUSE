@@ -17,7 +17,7 @@
 
 
 Name:           perl-DateTime-TimeZone
-Version:        2.37
+Version:        2.38
 Release:        0
 %define cpan_name DateTime-TimeZone
 Summary:        Time zone object base class and factory
@@ -64,7 +64,7 @@ need to directly use 'DateTime::TimeZone' methods.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -name "*.sh" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
