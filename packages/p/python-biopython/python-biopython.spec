@@ -16,17 +16,15 @@
 #
 
 
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # Tests require a network connection
 %bcond_with test
-
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-biopython
-Version:        1.74
+Version:        1.75
 Release:        0
 Summary:        Python Tools for Computational Molecular Biology
 License:        MIT AND BSD-3-Clause
-Group:          Development/Libraries/Python
-Url:            http://www.biopython.org
+URL:            http://www.biopython.org
 Source0:        https://files.pythonhosted.org/packages/source/b/biopython/biopython-%{version}.tar.gz
 Source100:      python-biopython-rpmlintrc
 BuildRequires:  %{python_module devel}
@@ -54,7 +52,7 @@ The Biopython Project is an international association of developers of freely
 available Python tools for computational molecular biology.
 
 %prep
-%setup -n biopython-%{version}
+%setup -q -n biopython-%{version}
 # remove all execute bits from documentation and fix line endings
 find -type f -exec chmod -x {} 2>/dev/null ';'
 find -type f -exec sed -i 's/\r//' {} 2>/dev/null ';'
@@ -74,7 +72,7 @@ export LANG=en_US.UTF-8
 %if %{with test}
 %check
 export LANG=en_US.UTF-8
-%python_exec setup.py test
+%pytest
 %endif
 
 %files %{python_files}
