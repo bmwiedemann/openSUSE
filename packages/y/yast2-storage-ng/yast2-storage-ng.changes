@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 21 16:10:22 UTC 2019 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Fixed a wrong check that was preventing the installation of some
+  needed packages (bsc#1151148).
+- 4.2.57
+
+-------------------------------------------------------------------
 Thu Nov 14 16:23:39 UTC 2019 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Propagate the noauto, nofail and _netdev options from fstab
