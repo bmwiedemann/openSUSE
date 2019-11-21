@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 19 08:42:34 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 0.015
+   see /usr/share/doc/packages/perl-Term-Table/Changes
+
+  0.015     2019-11-18 15:58:23-08:00 America/Los_Angeles
+  
+      - Update inlined Object::HashBase
+
+-------------------------------------------------------------------
 Wed Oct 16 10:17:01 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 0.014
