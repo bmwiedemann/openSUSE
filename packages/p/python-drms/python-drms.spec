@@ -12,32 +12,31 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-drms
-Version:        0.5.6
+Version:        0.5.7
 Release:        0
-License:        MIT
 Summary:        Tool to access HMI, AIA and MDI data with Python
-Url:            https://github.com/sunpy/drms
-Group:          Development/Languages/Python
-Source:         https://github.com/sunpy/drms/archive/v0.5.6.tar.gz#/drms-%{version}.tar.gz
+License:        MIT
+URL:            https://github.com/sunpy/drms
+Source:         https://github.com/sunpy/drms/archive/v%{version}.tar.gz#/drms-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-numpy >= 1.9.0
+Requires:       python-pandas >= 0.15.0
+Requires:       python-six >= 1.8.0
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module numpy >= 1.9.0}
 BuildRequires:  %{python_module pandas >= 0.15.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six >= 1.8.0}
 # /SECTION
-Requires:       python-numpy >= 1.9.0
-Requires:       python-pandas >= 0.15.0
-Requires:       python-six >= 1.8.0
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
