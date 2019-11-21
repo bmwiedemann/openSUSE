@@ -957,4 +957,12 @@ Enable cycles-osl in build</comment>
     <comment>Update constraints</comment>
     <requestid>747213</requestid>
   </revision>
+  <revision rev="123" vrev="7">
+    <srcmd5>845ed636643ff27aa785e34885ce6d44</srcmd5>
+    <version>2.80</version>
+    <time>1574337579</time>
+    <user>dimstar_suse</user>
+    <comment>Fix Leap:15 build and increase constraints values</comment>
+    <requestid>750044</requestid>
+  </revision>
 </revisionlist>

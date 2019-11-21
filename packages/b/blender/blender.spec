@@ -1,7 +1,7 @@
 #
 # spec file for package blender
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 # Copyright (c) 2019 LISA GMbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,6 +29,10 @@
 %bcond_without osl
 %bcond_without system_audaspace
 
+%if 0%{suse_version} < 1550
+%bcond_without python_36
+%endif
+
 # Set this to 1 for fixing bugs.
 %define debugbuild 0
 # Find the version of python3 that blender is going to build against.
@@ -44,15 +48,19 @@ Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/3D Editors
-Url:            http://www.blender.org/
+URL:            https://www.blender.org/
 # http://download.blender.org/source/
-Source0:        http://download.blender.org/source/%{name}-%{version}.tar.gz
-Source1:        http://download.blender.org/source/%{name}-%{version}.tar.gz.md5sum
+Source0:        https://download.blender.org/source/%{name}-%{version}.tar.gz
+Source1:        https://download.blender.org/source/%{name}-%{version}.tar.gz.md5sum
 Source2:        geeko.blend
 Source3:        geeko.README
 Source4:        blender-sample
 Source8:        %{name}.appdata.xml
 Patch0:         0006-add_ppc64el-s390x_support.patch
+# only rely on patch availibility, if python_36 is requested
+%if %{with python_36}
+Patch1:         make_python_3.6_compatible.diff
+%endif
 #!BuildIgnore:  libGLwM1
 BuildRequires:  OpenColorIO-devel
 BuildRequires:  OpenEXR-devel
@@ -115,7 +123,11 @@ BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libxml-2.0)
+%if %{with python_36}
+BuildRequires:  pkgconfig(python3) >= 3.6
+%else
 BuildRequires:  pkgconfig(python3) >= 3.7
+%endif
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xfixes)
@@ -144,7 +156,7 @@ BuildRequires:  OpenSubdiv-devel
 %endif
 %if %{with openvdb}
 BuildRequires:  openvdb-devel
-BuildRequires:  cmake(TBB)
+BuildRequires:  tbb-devel
 BuildRequires:  pkgconfig(blosc)
 %endif
 %if %{with osl}
@@ -204,7 +216,10 @@ md5sum -c %{SOURCE1}
 popd
 
 %setup -q
-%autopatch -p1
+%patch0 -p1
+%if %{with python_36}
+%patch1 -p1
+%endif
 
 rm -rf extern/glew
 rm -rf extern/libopenjpeg
@@ -212,8 +227,7 @@ for i in `grep -rl "/usr/bin/env python3"`;do sed -i '1s@^#!.*@#!/usr/bin/python
 
 %build
 %limit_build -m 1000
-
-echo %{optflags}
+echo "optflags: " %{optflags}
 # sse options only on supported archs
 %ifarch %{ix86} x86_64
 sseflags='-msse -msse2'
@@ -237,8 +251,8 @@ cmake ../ \
       -DWITH_MEM_VALGRIND:BOOL=ON \
       -DWITH_ASSERT_ABORT:BOOL=ON \
 %else
-      -DCMAKE_C_FLAGS:STRING="$CFLAGS %{optflags} -fPIC ${sseflags} -fopenmp" \
-      -DCMAKE_CXX_FLAGS:STRING="$CXXFLAGS %{optflags} -fPIC ${sseflags} -fopenmp" \
+      -DCMAKE_C_FLAGS:STRING="$CFLAGS %{optflags} -fPIC ${sseflags} -fopenmp " \
+      -DCMAKE_CXX_FLAGS:STRING="$CXXFLAGS %{optflags} -fPIC ${sseflags} -fopenmp " \
 %endif
       -DCMAKE_VERBOSE_MAKEFILE=ON \
       -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \
@@ -284,12 +298,10 @@ cmake ../ \
       -DWITH_IMAGE_HDR:BOOL=ON \
       -DWITH_IMAGE_OPENEXR:BOOL=ON \
       -DWITH_IMAGE_OPENJPEG:BOOL=ON \
-      -DOPENJPEG_LIBRARY:FILE=%{_libdir}/libopenjp2.so \
       -DWITH_IMAGE_TIFF:BOOL=ON \
       -DWITH_INPUT_NDOF:BOOL=ON \
       -DWITH_INTERNATIONAL:BOOL=ON \
       -DWITH_JACK:BOOL=ON \
-      -DWITH_JACK_DYNLOAD:BOOL=ON \
       -DWITH_LZMA:BOOL=ON \
       -DWITH_LZO:BOOL=ON \
       -DWITH_SYSTEM_LZO:BOOL=ON \
@@ -377,6 +389,9 @@ rm -rf %{buildroot}%{_datadir}/locale/languages
 %ifnarch x86_64
 find %{buildroot}%{_datadir}/%{name}/%{_version}/scripts/ -name "*.h" -print -delete
 %endif
+
+# distinguishable menu entry
+sed -i 's/^Name=Blender$/Name=Blender %{_version}/g' %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 # don't package thumbnailer
 rm %{buildroot}%{_bindir}/%{name}-thumbnailer.py

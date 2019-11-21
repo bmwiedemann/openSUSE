@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Nov 20 09:46:30 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- use build conditionals for python_36 selection
+- remove superflous WITH_SYSTEM_OPENJPEG build flag
+
+-------------------------------------------------------------------
+Tue Nov 19 20:11:02 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Replace two uses of _PyObject_LookupAttr (Python 3.7 C API) with
+  equivalent calls from Python 3.6, Python 3.6 is sufficient now.
+  * Add make_python_3.6_compatible.diff
+- Replace cmake(TBB) BuildRequires with equivalent tbb-devel, the
+  latter is also available on Leap 15.x.
+- Correct URL and Source, http causes a permanent redirect.
+
+-------------------------------------------------------------------
+Fri Nov  8 19:43:33 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use upstream default for JACK_DYNLOAD (i.e. off), this is a
+  feature for portable builds (see https://developer.blender.org/D878),
+  Jack is already pulled in via libav*.
+
+-------------------------------------------------------------------
 Thu Nov  7 16:41:39 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Set proper memory constraints. About 5.5G are required on 
@@ -7,6 +30,16 @@ Thu Nov  7 16:41:39 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 - Remove LTO mangling, it did not reduce the memory required for
   linking, and disabling LTO altogether dependent on available
   memory makes the build unreproducible.
+
+-------------------------------------------------------------------
+Thu Nov  7 09:12:30 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- raise memory constraints (phys: 2 -> 4 GB, total: 4 -> 8 GB)
+
+-------------------------------------------------------------------
+Mon Nov  4 11:34:14 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- distinguishable menu entry
 
 -------------------------------------------------------------------
 Tue Oct 15 12:53:43 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
