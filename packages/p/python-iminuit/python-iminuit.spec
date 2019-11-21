@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-iminuit
-Version:        1.3.7
+Version:        1.3.8
 Release:        0
 Summary:        Python bindings for MINUIT2
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/scikit-hep/iminuit
 Source:         https://files.pythonhosted.org/packages/source/i/iminuit/iminuit-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
@@ -34,9 +33,8 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.11.3
-Suggests:       python-cython
-Suggests:       python-matplotlib
-Suggests:       python-scipy
+Recommends:     python-matplotlib
+Recommends:     python-scipy
 # SECTION test requirements
 BuildRequires:  %{python_module pytest-runner}
 # /SECTION
@@ -61,7 +59,9 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%python_exec setup.py test
+mv iminuit iminuit_temp
+%pytest_arch %{buildroot}%{$python_sitearch}/iminuit
+mv iminuit_temp iminuit
 
 %files %{python_files}
 %doc README.rst
