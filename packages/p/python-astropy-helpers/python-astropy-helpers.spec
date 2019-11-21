@@ -19,17 +19,15 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-astropy-helpers
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        Utilities for building and installing Astropy
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/astropy/astropy-helpers
 Source:         https://files.pythonhosted.org/packages/source/a/astropy-helpers/astropy-helpers-%{version}.tar.gz
 Source100:      python-astropy-helpers-rpmlintrc
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Sphinx}
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpydoc}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module setuptools}

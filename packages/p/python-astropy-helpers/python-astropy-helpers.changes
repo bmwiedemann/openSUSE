@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 20 20:13:33 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 3.2.2
+  * Correctly handle main package directory inside namespace package.
+
+-------------------------------------------------------------------
 Tue Jul 23 01:25:57 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 3.2.1
