@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Nov 19 13:14:16 UTC 2019 - hare@suse.com
+
+- Update to version v1.0.1+102.4c7fcc3:
+  * l2_packet: Guard ETH_P_LLDP define
+  * lldp_mand: retrieve permanent mac address in get_mac()
+  * lldp_util: use netlink to fetch mac address
+  * lldp_util: drop get_macstr()
+  * linux/if_link.h: Update and add bonding netlink definitions
+
+-------------------------------------------------------------------
+Tue Nov 19 13:13:17 UTC 2019 - hare@suse.com
+
+- Update to version v1.0.1+95.3168e11:
+  * Test with newer GCC 8 and 9 versions
+  * RPM build is broken, so skip
+  * Place the tarball in the right place
+  * A tarball needs to be built after bootstrap.sh for use with RPM
+  * Added missing steps for building an RPM
+  * Finish off with testing building the RPM
+  * Test package installation as well
+  * Test under multiple GCC releases
+  * Drop requirement for Travis CI testing with Clang
+  * Support checking build with Travis CI
+  * vdp-netlink: account for sizes properly
+  * qbg: avoid warning for extra parens
+  * qbg: port name is always a valid pointer
+  * dcbx-nl: drop run_cmd
+  * ecp: allow for failure to create
+  * lldp_util: allow for null ifa_addr element
+  * lldpad: Do not enable port if already enabled
+  * Silent -Werror=address-of-packed-member warnings.
+  * Come up with STRNCPY_TERMINATED (#25).
+  * vdptool: fixed compile error for getline()
+  * Fix #23 by off by one strncpy value.
+  * 8021qaz: Block lldptool set operations if read only mode is on
+  * 8021qaz: Add read only option for 8021qaz module
+  * lldp: Allow lldptool to modify optional TLV's content
+  * 8021qaz: Print dscp2prio map
+  * autoconf: Add systemd support in configure.ac
+  * rpm-spec: Add vdp22 man files to lldpad.spec.in
+
+-------------------------------------------------------------------
 Tue May 14 09:28:48 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Add disable-werror.patch.

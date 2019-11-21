@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
@@ -21,7 +21,7 @@ Name:           open-lldp
 Summary:        Link Layer Discovery Protocol (LLDP) Agent
 License:        GPL-2.0-only
 Group:          System/Daemons
-Version:        1.0.1+56.cb81e95
+Version:        1.0.1+102.4c7fcc3
 Release:        0
 BuildRequires:  bison
 BuildRequires:  flex
