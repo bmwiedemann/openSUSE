@@ -14884,8 +14884,6 @@ unsorted:
   - openldap2-ppolicy-check-password 
   - openlibm-devel 
   - openlierox 
-  - openlmi-networking 
-  - openlmi-pegasus-compat 
   - openmarkup 
   - openmarkup-javadoc 
   - openmarkup-manual 
@@ -17316,7 +17314,6 @@ unsorted:
   - python-microversion_parse-doc 
   - python-mistralclient 
   - python-mistralclient-doc 
-  - python-mlt 
   - python-mongodict 
   - python-mox3-doc 
   - python-mpi4py-common-devel 
@@ -18633,6 +18630,7 @@ unsorted:
   - python2-logutils 
   - python2-logzero 
   - python2-lupa 
+  - python2-lws 
   - python2-lxml 
   - python2-lxml-devel 
   - python2-lz4 
@@ -21106,6 +21104,7 @@ unsorted:
   - python3-logzero 
   - python3-lttngust 
   - python3-lupa 
+  - python3-lws 
   - python3-lxml-devel 
   - python3-lz4 
   - python3-lzmaffi 
@@ -21149,6 +21148,7 @@ unsorted:
   - python3-minio 
   - python3-miniupnpc 
   - python3-mistune 
+  - python3-mlt 
   - python3-moban 
   - python3-mock 
   - python3-mocket 
@@ -21167,6 +21167,7 @@ unsorted:
   - python3-mox3 
   - python3-mpi4py 
   - python3-mpi4py-devel 
+  - python3-mplcursors 
   - python3-mpmath 
   - python3-mraa 
   - python3-msgpack-numpy 
