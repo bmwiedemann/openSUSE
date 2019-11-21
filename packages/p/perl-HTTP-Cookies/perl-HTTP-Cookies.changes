@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 19 08:32:40 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 6.07
+   see /usr/share/doc/packages/perl-HTTP-Cookies/Changes
+
+  6.07      2019-11-15 18:11:42Z
+      - Fix t/issue32.t on old perl versions (GH#59) (Bernhard M. Wiedemann)
+
+-------------------------------------------------------------------
 Thu Nov 14 09:29:21 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 6.06

@@ -17,7 +17,7 @@
 
 
 Name:           perl-HTTP-Cookies
-Version:        6.06
+Version:        6.07
 Release:        0
 %define cpan_name HTTP-Cookies
 Summary:        HTTP cookie jars
