@@ -1,7 +1,7 @@
 #
 # spec file for package php7-APCu
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define pkg_name apcu
 Name:           php7-APCu
-Version:        5.1.15
+Version:        5.1.18
 Release:        0
 Summary:        APCu - APC User Cache
 License:        PHP-3.01
 Group:          Productivity/Networking/Web/Servers
-Url:            http://pecl.php.net/package/APCu
+URL:            http://pecl.php.net/package/APCu
 Source:         http://pecl.php.net/get/%{pkg_name}-%{version}.tgz
 Source1:        apcu.ini
 BuildRequires:  php7-devel >= 7.0

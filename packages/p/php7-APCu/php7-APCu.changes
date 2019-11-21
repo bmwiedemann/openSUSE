@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov 20 13:03:03 UTC 2019 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Update to version 5.1.18
+- Fixed compatibility with PHP 7.4 and PHP 8.0
+- Implement apcu_inc() and apcu_dec() using atomic operations. 
+This means that these functions no longer have to acquire a write lock. 
+These functions will now wraparound on overflow, 
+instead of saturating to a floating point value.
+- Make table header in apc.php sticky.
+- Fix compile warnings related to mktemp() usage.
+- Fix compatibility with PHP 8.0.
+- Fix required number of arguments for apcu_store() returned by Reflection.
+
+-------------------------------------------------------------------
 Sat Dec 15 11:07:06 UTC 2018 - ecsos@opensuse.org
 
 - Updated to 5.1.15
