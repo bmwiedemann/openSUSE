@@ -22,13 +22,16 @@ Version:        0.7.0
 Release:        0
 Summary:        Parameterized testing
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 Url:            https://github.com/wolever/parameterized
 Source:         https://files.pythonhosted.org/packages/source/p/parameterized/parameterized-%{version}.tar.gz
 BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module nose2}
 BuildRequires:  %{python_module nose}
-BuildRequires:  %{python_module pytest < 4}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module unittest2}
+Suggests:       python-nose
+Suggests:       python-nose2
+Suggests:       python-unittest2
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -37,6 +40,8 @@ BuildArch:      noarch
 
 %description
 Parameterized testing with any Python test framework.
+
+Not working with supportest "pytest" versions
 
 %prep
 %setup -q -n parameterized-%{version}
@@ -50,7 +55,10 @@ Parameterized testing with any Python test framework.
 
 %check
 export LANG=en_US.UTF8
-%pytest parameterized/test.py
+%{python_expand nosetests-%$python_version}
+%{python_expand nose2-%$python_version}
+%{python_expand unit2-%$python_version}
+%python_exec -m unittest parameterized.test
 
 %files %{python_files}
 %doc CHANGELOG.txt README.rst

@@ -40,4 +40,12 @@
     <comment>- Use pytest 3.x series as newer use different syntax</comment>
     <requestid>725098</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>6a3a18976f0dc288dbb125d0cb9383f5</srcmd5>
+    <version>0.7.0</version>
+    <time>1574414361</time>
+    <user>dimstar_suse</user>
+    <comment>- remove pytest test, enable other test frameworks</comment>
+    <requestid>745383</requestid>
+  </revision>
 </revisionlist>
