@@ -1,7 +1,7 @@
 #
 # spec file for package python-SPARQLWrapper
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,6 @@ Version:        1.8.2
 Release:        0
 Summary:        SPARQL Endpoint interface to Python
 License:        W3C
-Group:          Development/Languages/Python
 URL:            http://sparql-wrapper.sourceforge.net/
 Source:         https://files.pythonhosted.org/packages/source/S/SPARQLWrapper/SPARQLWrapper-%{version}.tar.gz
 # Only used during installation
@@ -52,8 +51,8 @@ format.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%if %python3_version_nodots > 34
-# taken from https://github.com/RDFLib/sparqlwrapper/blob/master/run_tests_py3.sh 
+%if %{python3_version_nodots} > 34
+# taken from https://github.com/RDFLib/sparqlwrapper/blob/master/run_tests_py3.sh
 cp -r %{buildroot}%{python_sitelib}/SPARQLWrapper test/
 2to3 -wn --no-diffs test
 sed -i.bak s/urllib2._opener/urllib.request._opener/g test/wrapper_test.py
