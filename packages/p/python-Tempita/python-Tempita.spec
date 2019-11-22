@@ -1,7 +1,7 @@
 #
 # spec file for package python-Tempita
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,20 +20,17 @@
 Name:           python-Tempita
 Version:        0.5.2
 Release:        0
-Url:            http://pythonpaste.org/tempita/
 Summary:        A very small text templating language
 License:        MIT
-Group:          Development/Languages/Python
-Source:         https://pypi.io/packages/source/T/Tempita/Tempita-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            http://pythonpaste.org/tempita/
+Source:         https://files.pythonhosted.org/packages/source/T/Tempita/Tempita-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 %ifpython2
 Provides:       python-tempita = %{version}
 Obsoletes:      python-tempita < %{version}
 %endif
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -54,7 +51,6 @@ Python in strings, and it doesn't do much else.
 %python_install
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %{python_sitelib}/*
 
 %changelog
