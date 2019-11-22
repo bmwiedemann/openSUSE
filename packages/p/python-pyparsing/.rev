@@ -403,4 +403,12 @@ but keep them in examples dir
     <comment>- Do not pull in setuptools dependency at all to avoid cycles</comment>
     <requestid>743993</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>aa85d7302d3b8de40e775dd8b3deea15</srcmd5>
+    <version>2.4.5</version>
+    <time>1574414708</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749105</requestid>
+  </revision>
 </revisionlist>

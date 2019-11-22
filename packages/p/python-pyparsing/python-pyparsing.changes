@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Nov 16 16:46:50 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.4.5:
+  * Fixed encoding when setup.py reads README.rst to include the
+    project long description when uploading to PyPI. A stray unicode
+    space in README.rst prevented the source install on systems whose
+    default encoding is not 'utf-8'.
+
+- changes from version 2.4.4:
+  * Unresolved symbol reference in 2.4.3 release was masked by stdout
+    buffering in unit tests, thanks for the prompt heads-up, Ned
+    Batchelder!
+
+- changes from version 2.4.3:
+  * Fixed a bug in ParserElement.__eq__ that would for some parsers
+    create a recursion error at parser definition time. Thanks to
+    Michael Clerx for the assist. (Addresses issue #123)
+  * Fixed bug in indentedBlock where a block that ended at the end of
+    the input string could cause pyaprsing to loop forever. Raised as
+    part of discussion on StackOverflow with geckos.
+  * Backports from pyparsing 3.0.0:
+    + __diag__.enable_all_warnings()
+    + Fixed bug in PrecededBy which caused infinite recursion, issue
+      #127
+    + support for using regex-compiled RE to construct Regex
+      expressions
+
+-------------------------------------------------------------------
 Wed Oct 16 14:22:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not pull in setuptools dependency at all to avoid cycles
