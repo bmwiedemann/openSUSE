@@ -23,11 +23,10 @@
 %bcond_with     test
 %endif
 Name:           python-psutil
-Version:        5.6.3
+Version:        5.6.5
 Release:        0
 Summary:        A process utilities module for Python
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/giampaolo/psutil
 Source:         https://files.pythonhosted.org/packages/source/p/psutil/psutil-%{version}.tar.gz
 Patch0:         pr_1364.patch

@@ -463,4 +463,12 @@ It does not make sense to double the whole HISTORY of upstream source in .change
   * 1493: [Linux] cpu_freq(): handle the case where /sys/devices/system/cpu/cpufreq/ exists but is empty.</comment>
     <requestid>729891</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>141e1f4da0869f75e1c0eb6950f8d1b1</srcmd5>
+    <version>5.6.5</version>
+    <time>1574414503</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>747243</requestid>
+  </revision>
 </revisionlist>

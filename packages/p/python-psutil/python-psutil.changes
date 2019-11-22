@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sat Nov  9 14:42:18 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.6.5:
+  * Bug fixes
+    + 1615: remove pyproject.toml as it was causing installation
+      issues.
+
+- changes from version 5.6.4:
+  * Enhancements
+    + 1527: [Linux] added Process.cpu_times().iowait counter, which is
+      the time spent waiting for blocking I/O to complete.
+    + 1565: add PEP 517/8 build backend and requirements specification
+      for better pip integration. (patch by Bernát Gábor)
+  * Bug fixes
+    + 875: [Windows] Process' cmdline(), environ() or cwd() may
+      occasionally fail with ERROR_PARTIAL_COPY which now gets
+      translated to AccessDenied.
+    + 1126: [Linux] cpu_affinity() segfaults on CentOS 5 /
+      manylinux. cpu_affinity() support for CentOS 5 was removed.
+    + 1528: [AIX] compilation error on AIX 7.2 due to 32 vs 64 bit
+      differences. (patch by Arnon Yaari)
+    + 1535: 'type' and 'family' fields returned by net_connections()
+      are not always turned into enums.
+    + 1536: [NetBSD] process cmdline() erroneously raise ZombieProcess
+      error if cmdline has non encodable chars.
+    + 1546: usage percent may be rounded to 0 on Python 2.
+    + 1552: [Windows] getloadavg() math for calculating 5 and 15 mins
+      values is incorrect.
+    + 1568: [Linux] use CC compiler env var if defined.
+    + 1570: [Windows] NtWow64* syscalls fail to raise the proper error
+      code
+    + 1585: [OSX] calling close() (in C) on possible negative
+      integers. (patch by Athos Ribeiro)
+    + 1606: [SunOS] compilation fails on SunOS 5.10. (patch by vser1)
+
+-------------------------------------------------------------------
 Tue Sep 10 13:08:41 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to skip more tests that won't work in OBS:
