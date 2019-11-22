@@ -18,4 +18,14 @@
 </comment>
     <requestid>668147</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a3d8d81420d586ed5a68495a92c8b4b0</srcmd5>
+    <version>0.18.3</version>
+    <time>1574414339</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18.3:
+  - Fix timeouts for loaded machines and parallel tests
+  - Fix tests for Python 3.8</comment>
+    <requestid>741463</requestid>
+  </revision>
 </revisionlist>

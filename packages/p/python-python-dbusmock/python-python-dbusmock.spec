@@ -18,15 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-dbusmock
-Version:        0.18.1
+Version:        0.18.3
 Release:        0
 Summary:        Python library for creating mock D-Bus objects
 License:        LGPL-3.0-or-later
-Group:          Development/Languages/Python
 URL:            https://github.com/martinpitt/python-dbusmock
 Source:         https://files.pythonhosted.org/packages/source/p/python-dbusmock/python-dbusmock-%{version}.tar.gz
 BuildRequires:  %{python_module dbus-python}
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -58,7 +56,7 @@ to what one may expect in tests.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} nosetests-%{$python_bin_suffix} -v
 
 %files %{python_files}
 %license COPYING
