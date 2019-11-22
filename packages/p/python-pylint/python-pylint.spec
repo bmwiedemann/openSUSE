@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylint
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,15 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
+%define modname pylint
 Name:           python-pylint
-Version:        2.4.3
+Version:        2.4.4
 Release:        0
 Summary:        Syntax and style checker for Python code
 License:        GPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/pycqa/pylint
-Source:         https://files.pythonhosted.org/packages/source/p/pylint/pylint-%{version}.tar.gz
+Source:         https://github.com/PyCQA/%{modname}/archive/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module astroid >= 2.3.0}
 BuildRequires:  %{python_module editdistance}
 BuildRequires:  %{python_module isort >= 4.2.5}
@@ -68,7 +69,7 @@ customizable, and you can easily write a small plugin to add a personal
 feature.
 
 %prep
-%setup -q -n pylint-%{version}
+%setup -q -n pylint-pylint-%{version}
 
 %build
 %python_build
@@ -88,10 +89,9 @@ done
 %python_uninstall_alternative pylint
 
 %check
-# test_types_redefined gh#PyCQA/pylint#3171
 # test_by_module_statement_value - fails due to %%pytest macro way of execution
 export PYTHONDONTWRITEBYTECODE=1
-%pytest -k "not (test_types_redefined or test_by_module_statement_value)"
+%pytest -k "not test_by_module_statement_value"
 
 %files %{python_files}
 %license COPYING

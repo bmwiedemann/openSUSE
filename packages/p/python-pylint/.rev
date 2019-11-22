@@ -150,4 +150,12 @@
   * ``typing.overload`` functions are exempted from ``too-many-function-args``</comment>
     <requestid>743455</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>060175cbdd36af512fa4923c2699137c</srcmd5>
+    <version>2.4.4</version>
+    <time>1574414776</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>750019</requestid>
+  </revision>
 </revisionlist>
