@@ -1,0 +1,187 @@
+-------------------------------------------------------------------
+Tue Nov 12 15:54:48 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 4.6.1
+  * Tolerate execute bit in owner permissions when validating secure writes
+  * Fix project name typo in copyright
+- Update to 4.6.0
+  * Unicode characters existing in the user's home directory name are properly
+    handled
+  * ``mock`` is now only required for testing on Python 2
+  * Deprecation warnings relative to ``_runtime_dir_changed`` are no longer
+    produced
+  * The ``scripts`` directory relative to the current python environment is
+    now appended to the search directory for subcommands
+  * Some utility functions (``exists()``, ``is_hidden()``, ``secure_write()``)
+    have been moved from ``jupyter_client`` and ``jupyter_server`` to
+    ``jupyter_core``
+  * Fix error on Windows when setting private permissions
+- Rename to python-jupyter-core to match upstream name change
+
+-------------------------------------------------------------------
+Fri Aug 16 14:46:15 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Fix self-obseletion
+
+-------------------------------------------------------------------
+Mon Jun 24 20:30:24 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 4.5.0
+  * ``jupyter --version`` now tries to show the version number of various other
+    installed Jupyter packages, not just ``jupyter_core``.
+     This will hopefully make it clearer that there are various packages with
+     their own version numbers.
+  * Allow a :envvar:`JUPYTER_CONFIG_PATH` environment variable to specify a
+    search path of additional locations for config.
+  * ``jupyter subcommand`` no longer modifies the :envvar:`PATH` environment
+    variable when it runs ``jupyter-subcommand``.
+  * Jupyter's 'runtime' directory no longer uses ``XDG_RUNTIME_DIR``. While
+    it has some attractive properties, it has led to various problems.
+  * Fix ``JupyterApp`` to respect the ``raise_config_file_errors`` traitlet.
+  * Various improvements to the bash completion scripts in this repository.
+  * The ``setup.py`` script now always uses setuptools, like most other Jupyter
+    projects.
+  * The LICENSE file is included in wheels.
+
+-------------------------------------------------------------------
+Thu Apr 25 01:58:55 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Split out jupyter components into subpackage.
+- Add rpm macros.
+- Rename doc package to match jupyter package.
+
+-------------------------------------------------------------------
+Tue Feb 13 19:47:23 UTC 2018 - toddrme2178@gmail.com
+
+- Update url
+
+-------------------------------------------------------------------
+Wed Nov 22 22:48:47 UTC 2017 - arun@gmx.de
+
+- require sphinxcontrib-github-alt
+
+- update to version 4.4.0:
+  * jupyter troubleshoot gets the list of packages from the Python
+    environment it's in, by using sys.executable to call pip list
+    (:ghpull:`104`).
+  * Added utility function ensure_dir_exists, and switched to using it
+    over the one from ipython_genutils, which does permissions wrong
+    (:ghpull:`113`).
+  * Avoid creating the ~/.ipython directory when checking if it exists
+    for config migration (:ghpull:`118`).
+  * Fix mistaken description in zsh completions (:ghpull:`98`).
+  * Fix subcommand tests on Windows (:ghpull:`103`).
+  * The README now describes how to work on jupyter_core and build the
+    docs (:ghpull:`110`).
+  * Fix a broken link to a release in the docs (:ghpull:`109`).
+
+-------------------------------------------------------------------
+Wed Sep 20 17:53:24 UTC 2017 - toddrme2178@gmail.com
+
+- Set configuration and data paths to be correct for any 
+  Linux distribution. This is done by using sed to replace
+  hard-coded values with those provided by rpm.
+  * Add use_rpms_paths.patch to make the paths easier to replace.
+
+-------------------------------------------------------------------
+Wed Apr 26 16:32:25 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version.
+- Remove version_specific_dirs.patch.
+  The Python3 jupyter implementation will be used for directories.
+
+-------------------------------------------------------------------
+Fri Mar 31 13:59:14 UTC 2017 - toddrme2178@gmail.com
+
+- Add version_specific_dirs.patch
+  Uses python version-specific directories to avoid conflicts.
+- Install the directories used for system-side settings and data so
+  they are properly owned by this package.
+
+-------------------------------------------------------------------
+Thu Mar 30 19:05:42 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 4.3.0
+  * Add `JUPYTER_NO_CONFIG` environment variable for disabling all
+    Jupyter configuration.
+  * More detailed error message when failing to launch subcommands.
+- Update to 4.2.1
+  * Fix error message on Windows when subcommand not found.
+  * Correctly display PATH in ``jupyter troubleshoot`` on Windows.
+- Update to 4.2.0
+  * Make :command:`jupyter` directory top priority in search path
+    for subcommands, so that :command:`jupyter-subcommand` next to
+    :command:`jupyter` will always be picked if present.
+  * Avoid using ``shell=True`` for subcommand dispatch on Windows.
+- Update to 4.1.1
+  * Include symlink directory and real location on subcommand PATH
+    when :file:`jupyter` is a symlink.
+- Update to 4.1.0
+  * Add ``jupyter.py`` module, so that :command:`python -m jupyter`
+    always works.
+  * Add prototype ``jupyter troubleshoot`` command for displaying
+    environment info.
+  * Ensure directory containing ``jupyter`` executable is included
+    when dispatching subcommands.
+  * Unicode fixes for Legacy Python.
+
+-------------------------------------------------------------------
+Wed Feb 17 14:22:56 UTC 2016 - toddrme2178@gmail.com
+
+- Simplify the tests for whether to build pdf documentation
+
+-------------------------------------------------------------------
+Wed Feb 17 08:53:35 UTC 2016 - toddrme2178@gmail.com
+
+- Split documentation to speed up building.
+  This is a dependency of a lot of other packages, and the 
+  dependencies for the documentation are very heavy.  So build
+  the documentation separately to avoid holding up the build 
+  process.
+
+-------------------------------------------------------------------
+Thu Oct  1 11:33:33 UTC 2015 - toddrme2178@gmail.com
+
+- Build documentation
+
+-------------------------------------------------------------------
+Wed Sep 23 11:20:47 UTC 2015 - toddrme2178@gmail.com
+
+- update to version 4.0.6:
+  * fix typo preventing migration when custom.css is missing
+- update to version 4.0.5:
+  * fix subcommands on Windows (yes, again)
+  * fix migration when custom.js/css are not present
+
+-------------------------------------------------------------------
+Mon Aug 24 10:29:04 UTC 2015 - toddrme2178@gmail.com
+
+- Update to 4.0.4
+  * ensure version is printed to stdout …
+  * remove file-extension from subcommand list on Windows
+- Update requirements
+
+-------------------------------------------------------------------
+Fri Aug 14 07:48:27 UTC 2015 - toddrme2178@gmail.com
+
+- Update to 4.0.3
+  * use raw_input on Python 2
+  * Use setuptools entry points when setuptools in use
+  * Use instances of traits instead of trait classes
+- Fix package naming consistency
+
+-------------------------------------------------------------------
+Fri Aug 14 07:03:18 UTC 2015 - toddrme2178@gmail.com
+
+- Fix update-alternatives usage
+
+-------------------------------------------------------------------
+Thu Aug 13 14:06:32 UTC 2015 - toddrme2178@gmail.com
+
+- Update dependency names
+
+-------------------------------------------------------------------
+Tue Jul 21 10:49:36 UTC 2015 - jennings@neuro.bzm
+
+- Initial version
+
