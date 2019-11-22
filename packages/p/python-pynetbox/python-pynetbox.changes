@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 20 20:21:16 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.2.0
+  * Fix discrepancy in DetailEndpoint.create() and the docs where
+    calling w/o arguments resulted in an exception.
+  * Add method to return custom choices.
+
+-------------------------------------------------------------------
 Tue Nov 19 18:13:35 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.1.2
