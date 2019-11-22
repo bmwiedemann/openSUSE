@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 21 18:51:01 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2019.11.22
+  * kinja: add support for Kinja embeds
+  * twitch: add support for Clip embed URLs
+  * nexx: Add support for Multi Player JS Setup
+  * drtv: Add support for new URL schema
+
+-------------------------------------------------------------------
 Mon Nov  4 23:38:40 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2019.11.05
