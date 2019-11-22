@@ -35,4 +35,14 @@
   upstream on anything else</comment>
     <requestid>717082</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>d3821f746e0cda5b963d3ac2810761b1</srcmd5>
+    <version>2.4.0</version>
+    <time>1574414423</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch pytest4.patch to make the test suite compatible with
+  pytest4+ (yes, THIS is the only change necessary!).
+  gh#Kozea/pygal#340</comment>
+    <requestid>746026</requestid>
+  </revision>
 </revisionlist>

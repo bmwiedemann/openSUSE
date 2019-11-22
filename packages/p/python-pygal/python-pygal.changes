@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  6 15:16:36 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add patch pytest4.patch to make the test suite compatible with
+  pytest4+ (yes, THIS is the only change necessary!).
+  gh#Kozea/pygal#340
+
+-------------------------------------------------------------------
 Fri Jul 19 12:31:24 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to work with python 3.8:

@@ -27,6 +27,9 @@ URL:            http://pygal.org/
 Source:         https://files.pythonhosted.org/packages/source/p/pygal/pygal-%{version}.tar.gz
 Source10:       https://raw.githubusercontent.com/Kozea/pygal/%{version}/COPYING
 Patch0:         python38.patch
+# PATCH-FIX-UPSTREAM pytest4.patch gh#Kozea/pygal#340 mcepl@suse.com
+# yes, THIS is what makes this test suite pytest4+ compatible!
+Patch1:         pytest4.patch
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pyquery}
@@ -43,8 +46,7 @@ Recommends:     python-CairoSVG
 %endif
 # SECTION test requirements
 BuildRequires:  %{python_module pytest-runner}
-# https://github.com/Kozea/pygal/pull/340
-BuildRequires:  %{python_module pytest < 4.0}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -54,7 +56,8 @@ It supports various chart types and CSS styling.
 
 %prep
 %setup -q -n pygal-%{version}
-%patch0 -p1
+%autopatch -p1
+
 cp %{SOURCE10} .
 
 %build
