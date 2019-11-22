@@ -15,4 +15,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>740899</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>880bf46810ceba4937db66dff7b5e8b1</srcmd5>
+    <version>25.0</version>
+    <time>1574414894</time>
+    <user>dimstar_suse</user>
+    <comment>Build with ant to avoid build cycles</comment>
+    <requestid>750208</requestid>
+  </revision>
 </revisionlist>

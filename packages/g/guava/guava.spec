@@ -1,7 +1,7 @@
 #
 # spec file for package guava
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,13 +24,14 @@ License:        Apache-2.0 AND CC0-1.0
 Group:          Development/Libraries/Java
 URL:            https://github.com/google/guava
 Source0:        https://github.com/google/guava/archive/v%{version}.tar.gz
+Source1:        %{name}-build.tar.xz
 Patch0:         %{name}-%{version}-java8compat.patch
+BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  maven-local
-BuildRequires:  mvn(com.google.code.findbugs:jsr305)
-BuildRequires:  mvn(junit:junit)
-BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
-BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
+BuildRequires:  javapackages-local
+BuildRequires:  jsr-305
+BuildRequires:  junit
+Requires:       mvn(com.google.code.findbugs:jsr305)
 BuildArch:      noarch
 
 %description
@@ -51,12 +52,15 @@ API documentation for %{name}.
 %package testlib
 Summary:        The guava-testlib artifact
 Group:          Development/Libraries/Java
+Requires:       mvn(com.google.code.findbugs:jsr305)
+Requires:       mvn(com.google.guava:guava)
+Requires:       mvn(junit:junit)
 
 %description testlib
 guava-testlib provides additional functionality for conveninent unit testing
 
 %prep
-%setup -q
+%setup -q -a1
 %patch0 -p1
 
 find . -name '*.jar' -delete
@@ -67,10 +71,6 @@ find . -name '*.jar' -delete
 %pom_remove_plugin -r :animal-sniffer-maven-plugin
 # Downloads JDK source for doc generation
 %pom_remove_plugin :maven-dependency-plugin guava
-
-%pom_remove_dep :caliper guava-tests
-
-%{mvn_package} :guava-parent guava
 
 %pom_xpath_inject /pom:project/pom:build/pom:plugins/pom:plugin/pom:configuration/pom:instructions "<_nouses>true</_nouses>" guava/pom.xml
 
@@ -95,18 +95,43 @@ annotations=$(
 find -name '*.java' | xargs sed -ri \
     "s/^import .*\.($annotations);//;s/@($annotations)"'\>\s*(\((("[^"]*")|([^)]*))\))?//g'
 
+for mod in guava guava-testlib; do
+  %pom_remove_parent ${mod}
+  %pom_xpath_inject pom:project '
+    <groupId>com.google.guava</groupId>
+    <version>25.0-jre</version>' ${mod}
+done
+
 %build
-%{mvn_build} -s -f -- -Dsource=1.8
+mkdir -p lib
+build-jar-repository -s lib junit jsr-305
+%ant -Dtest.skip=true package javadoc
 
 %install
-%mvn_install
+# jars
+install -dm 0755 %{buildroot}%{_javadir}/%{name}
+install -pm 0644 %{name}/target/%{name}-%{version}*.jar %{buildroot}%{_javadir}/%{name}/%{name}.jar
+install -pm 0644 %{name}-testlib/target/%{name}-testlib-%{version}*.jar %{buildroot}%{_javadir}/%{name}/%{name}-testlib.jar
+
+# poms
+install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
+install -pm 0644 %{name}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
+%add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar -f %{name}
+install -pm 0644 %{name}-testlib/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-testlib.pom
+%add_maven_depmap %{name}/%{name}-testlib.pom %{name}/%{name}-testlib.jar -f %{name}-testlib
+
+# javadoc
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+cp -r %{name}/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/%{name}
+cp -r %{name}-testlib/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/%{name}-testlib
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles-guava
 %doc CONTRIBUTORS README*
 %license COPYING
 
-%files javadoc -f .mfiles-javadoc
+%files javadoc
+%{_javadocdir}/%{name}
 %license COPYING
 
 %files testlib -f .mfiles-guava-testlib

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 22 04:52:39 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Build the package with ant in order to prevent build cycles
+  * using a generated and customized ant build system
+
+-------------------------------------------------------------------
 Thu Oct 10 21:00:22 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
