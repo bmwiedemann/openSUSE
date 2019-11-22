@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov 18 08:14:19 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 5.2.4:
+  * #6099: Fix --trace when used with parametrized functions.
+  * #6183: Using request as a parameter name in @pytest.mark.parametrize now produces a more user-friendly error.
+  * #6194: Fix incorrect discovery of non-test __init__.py files.
+
+-------------------------------------------------------------------
+Tue Nov  5 11:01:48 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 5.2.2:
+  * #5206: Fix --nf to not forget about known nodeids with partial test selection.
+  * #5906: Fix crash with KeyboardInterrupt during --setup-show.
+  * #5946: Fixed issue when parametrizing fixtures with numpy arrays (and possibly other sequence-like types).
+  * #6044: Properly ignore FileNotFoundError exceptions when trying to remove old temporary directories, for instance when multiple processes try to remove the same directory (common with pytest-xdist for example).
+
+-------------------------------------------------------------------
 Wed Oct  9 14:13:11 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 5.2.1:

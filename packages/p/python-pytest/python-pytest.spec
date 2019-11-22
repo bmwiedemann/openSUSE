@@ -1,7 +1,7 @@
 #
 # spec file for package python
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,11 +27,10 @@
 %endif
 %define skip_python2 1
 Name:           python-pytest%{psuffix}
-Version:        5.2.1
+Version:        5.2.4
 Release:        0
 Summary:        Python testing tool with autodiscovery and detailed asserts
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/pytest
 Source:         https://files.pythonhosted.org/packages/source/p/pytest/pytest-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools >= 40.0}

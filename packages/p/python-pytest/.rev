@@ -733,4 +733,21 @@
   * #5764: New behavior of the --pastebin option: failures to connect to the pastebin server are reported, without failing the pytest run</comment>
     <requestid>736696</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>bfab4d22e36508a17ccecf6510d471a1</srcmd5>
+    <version>5.2.4</version>
+    <time>1574414738</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.4:
+  * #6099: Fix --trace when used with parametrized functions.
+  * #6183: Using request as a parameter name in @pytest.mark.parametrize now produces a more user-friendly error.
+  * #6194: Fix incorrect discovery of non-test __init__.py files.
+
+- Update to 5.2.2:
+  * #5206: Fix --nf to not forget about known nodeids with partial test selection.
+  * #5906: Fix crash with KeyboardInterrupt during --setup-show.
+  * #5946: Fixed issue when parametrizing fixtures with numpy arrays (and possibly other sequence-like types).
+  * #6044: Properly ignore FileNotFoundError exceptions when trying to remove old temporary directories, for instance when multiple processes try to remove the same directory (common with pytest-xdist for example).</comment>
+    <requestid>749196</requestid>
+  </revision>
 </revisionlist>
