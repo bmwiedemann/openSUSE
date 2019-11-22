@@ -1,7 +1,7 @@
 #
 # spec file for package libapparmor
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 # Copyright (c) 2011-2019 Christian Boltz
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Utility library for AppArmor
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://launchpad.net/apparmor
+URL:            https://launchpad.net/apparmor
 Source0:        apparmor-%{version}.tar.gz
 Source1:        apparmor-%{version}.tar.gz.asc
 BuildRequires:  bison

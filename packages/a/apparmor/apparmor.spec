@@ -1,7 +1,7 @@
 #
 # spec file for package apparmor
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 # Copyright (c) 2011-2019 Christian Boltz
 #
 # All modifications and additions to the file contributed by third parties
@@ -40,7 +40,7 @@ Release:        0
 Summary:        AppArmor userlevel parser utility
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
-Url:            https://launchpad.net/apparmor
+URL:            https://launchpad.net/apparmor
 Source0:        apparmor-%{version}.tar.gz
 Source1:        apparmor-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
@@ -86,7 +86,7 @@ BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  pcre-devel
 BuildRequires:  pkg-config
-BuildRequires:  python
+BuildRequires:  python3
 BuildRequires:  python3-pyflakes
 BuildRequires:  perl(Locale::gettext)
 

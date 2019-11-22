@@ -1807,4 +1807,12 @@ libapparmor:
 Note: the build with python 3.8 will still fail because of boo#1155839 - but at least we get a different build failure now ;-)</comment>
     <requestid>746670</requestid>
   </revision>
+  <revision rev="133" vrev="5">
+    <srcmd5>a37737628e54fb867b8ca5709563dcbd</srcmd5>
+    <version>2.13.3</version>
+    <time>1574414754</time>
+    <user>dimstar_suse</user>
+    <comment>- Properly pull in full python3 interpreter (forwarded request 749270 from scarabeus_iv)</comment>
+    <requestid>749291</requestid>
+  </revision>
 </revisionlist>
