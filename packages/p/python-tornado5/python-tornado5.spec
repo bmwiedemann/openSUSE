@@ -114,6 +114,7 @@ fi
 
 %check
 export ASYNC_TEST_TIMEOUT=30
+export TRAVIS=1
 mv tornado tornado_temp
 rm -rf build _build.*
 %{python_expand rm -rf build _build.*
