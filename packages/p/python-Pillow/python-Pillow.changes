@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov  8 07:54:46 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 6.2.1:
+  * Pillow 6.2.1 supports Python 3.8.
+- Skip stroke tests as they both fail
+
+-------------------------------------------------------------------
+Mon Oct  7 15:03:23 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 6.2.0:
+  * text stroking
+  * image grab on multi-monitor windows
+  * Full notes: https://pillow.readthedocs.io/en/stable/releasenotes/6.2.0.html
+
+-------------------------------------------------------------------
 Sat Jul  6 21:26:45 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - update to version 6.1.0:

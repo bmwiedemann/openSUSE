@@ -320,4 +320,19 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
     <comment></comment>
     <requestid>713832</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>3aaef0c1a7dd1d26f229993eebc69c26</srcmd5>
+    <version>6.2.1</version>
+    <time>1574414491</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.2.1:
+  * Pillow 6.2.1 supports Python 3.8.
+- Skip stroke tests as they both fail
+
+- Update to 6.2.0:
+  * text stroking
+  * image grab on multi-monitor windows
+  * Full notes: https://pillow.readthedocs.io/en/stable/releasenotes/6.2.0.html</comment>
+    <requestid>746499</requestid>
+  </revision>
 </revisionlist>

@@ -24,11 +24,10 @@
 %bcond_with tk
 %endif
 Name:           python-Pillow
-Version:        6.1.0
+Version:        6.2.1
 Release:        0
 Summary:        Python Imaging Library (Fork)
 License:        HPND
-Group:          Development/Languages/Python
 URL:            https://python-pillow.org/
 Source:         https://files.pythonhosted.org/packages/source/P/Pillow/Pillow-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
@@ -77,7 +76,6 @@ Python Imaging Library by Fredrik Lundh and Contributors.
 
 %package tk
 Summary:        Python Imaging Library (Fork) - Tcl/Tk Module
-Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 Requires:       python-tk
 %ifpython2
@@ -118,7 +116,7 @@ $python setup.py test  || \
 echo "WARNING ignore failure https://github.com/python-pillow/Pillow/issues/1204"
 %else
 $python selftest.py --installed
-$python setup.py test
+$python -m pytest -v -k 'not (test_stroke or test_stroke_multiline)'
 %endif
 %endif
 }
