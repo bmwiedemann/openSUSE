@@ -118,7 +118,7 @@ sed -i 's/HTML_TIMESTAMP         = YES/HTML_TIMESTAMP         = NO/' doc/Develop
 %cmake \
   -DWITH_MATIO=yes \
   -DWITH_API_DOC=yes
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install

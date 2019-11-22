@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 13 23:15:31 UTC 2019 - Simon Lees <sflees@suse.de>
+
+- %make_jobs is depricated replaced by %cmake_build
+
+-------------------------------------------------------------------
 Sat Feb  3 14:42:46 UTC 2018 - simonpuchert@alice.de
 
 - Fix build with vtk 8.1 (hack / workaround)
