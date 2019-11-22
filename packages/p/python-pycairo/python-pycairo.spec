@@ -23,9 +23,9 @@ Version:        1.18.1
 Release:        0
 Summary:        Python Bindings for Cairo
 License:        LGPL-2.1-or-later OR MPL-1.1
-Group:          Development/Libraries/Python
-Url:            http://www.cairographics.org/pycairo
+URL:            https://github.com/pygobject/pycairo
 Source:         https://github.com/pygobject/pycairo/releases/download/v%{version}/pycairo-%{version}.tar.gz
+Patch0:         python38.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  cairo-devel >= 1.13.1
@@ -36,7 +36,6 @@ Obsoletes:      python-cairo < %{version}
 Provides:       %{oldpython}-cairo = %{version}
 Obsoletes:      %{oldpython}-cairo < %{version}
 %endif
-
 %python_subpackages
 
 %description
@@ -44,10 +43,9 @@ Pycairo is a Python module providing bindings for the cairo graphics library.
 
 %package        devel
 Summary:        Development files for the Cairo Python bindings
-Group:          Development/Libraries/C and C++
+Requires:       python-devel
 Requires:       python-pycairo = %{version}
 Requires:       python-pycairo-common-devel = %{version}
-Requires:       python-devel
 Provides:       python-cairo-devel = %{version}
 Obsoletes:      python-cairo-devel < %{version}
 %ifpython2
@@ -63,13 +61,12 @@ packages that depen on Pycairo.
 
 %package     -n python-pycairo-common-devel
 Summary:        Headers for the Cairo Python bindings
-Group:          Development/Libraries/C and C++
-Provides:       %{python_module pycairo-common-devel = %{version}}
+Requires:       cairo-devel
 Provides:       %{python_module cairo-common-devel = %{version}}
+Provides:       %{python_module pycairo-common-devel = %{version}}
 Obsoletes:      %{python_module cairo-common-devel < %{version}}
 Provides:       python-cairo-common-devel = %{version}
 Obsoletes:      python-cairo-common-devel < %{version}
-Requires:       cairo-devel
 
 %description -n python-pycairo-common-devel
 Pycairo is a Python module providing bindings for the cairo graphics library.
@@ -78,7 +75,8 @@ This package provides the headers and development files needed to build
 packages that depen on Pycairo.
 
 %prep
-%setup -n pycairo-%{version}
+%setup -q -n pycairo-%{version}
+%patch0 -p1
 
 %build
 %python_build
