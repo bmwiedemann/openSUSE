@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 31 10:22:25 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.6.23
+  * Move setting prune options to right place. Fixes gh#borgbase/vorta#339
+  * Improvements to diff-feature.
+  * Enable sorting of archive table columns.
+  * Always mount with current user and read-only permissions
+
+-------------------------------------------------------------------
 Wed Oct  2 11:21:25 UTC 2019 - Frederik Möllers <frederik@die-sinlosen.de>
 
 - Update to version 0.6.22
