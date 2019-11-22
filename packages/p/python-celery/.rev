@@ -248,4 +248,12 @@
   * pytest5.patch</comment>
     <requestid>720025</requestid>
   </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>808195748d0b421ba270b4da651a5099</srcmd5>
+    <version>4.3.0</version>
+    <time>1574414764</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749510</requestid>
+  </revision>
 </revisionlist>

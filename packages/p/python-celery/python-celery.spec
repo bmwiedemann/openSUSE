@@ -1,7 +1,7 @@
 #
 # spec file for package python-celery
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -99,7 +99,7 @@ sed -i -e 's:==:>=:g' requirements/*.txt
 
 %check
 %if %{with test}
-%python_exec setup.py test
+%pytest
 %endif
 
 %if !%{with test}

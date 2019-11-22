@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 19 11:00:58 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- use %pytest macro
+
+-------------------------------------------------------------------
 Wed Jul 31 09:55:16 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch from git to fix build with new pytest:
