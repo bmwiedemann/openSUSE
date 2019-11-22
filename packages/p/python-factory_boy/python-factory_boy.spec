@@ -31,6 +31,7 @@ BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module flake8}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module setuptools >= 0.8}
+BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python2-ipaddress
