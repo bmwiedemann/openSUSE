@@ -135,4 +135,14 @@
   * Refresh package metadata.</comment>
     <requestid>707092</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8082690dfcaec453858c07167c34bcbe</srcmd5>
+    <version>5.2</version>
+    <time>1574414391</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2:
+  * the project got deprecated as 'python setup.py test' approach
+    for test execuition got deprecated</comment>
+    <requestid>745440</requestid>
+  </revision>
 </revisionlist>

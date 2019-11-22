@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-runner
-Version:        5.1
+Version:        5.2
 Release:        0
 Summary:        Testing with Python
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/pytest-runner
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-runner/pytest-runner-%{version}.tar.gz
 BuildRequires:  %{python_module pytest >= 3}
