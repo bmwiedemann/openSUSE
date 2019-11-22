@@ -142,4 +142,12 @@
     <comment></comment>
     <requestid>654398</requestid>
   </revision>
+  <revision rev="19" vrev="16">
+    <srcmd5>e67eef9cd04cbe70ee80df292d49547e</srcmd5>
+    <version>0.3.3</version>
+    <time>1574414382</time>
+    <user>dimstar_suse</user>
+    <comment>- Format with spec-cleaner</comment>
+    <requestid>745408</requestid>
+  </revision>
 </revisionlist>

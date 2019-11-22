@@ -1,7 +1,7 @@
 #
 # spec file for package python-anyjson
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,7 @@ Version:        0.3.3
 Release:        0
 Summary:        Wrapper for the best available JSON implementation available in a common interface
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
-URL:            http://bitbucket.org/runeh/anyjson
+URL:            https://bitbucket.org/runeh/anyjson
 Source:         https://files.pythonhosted.org/packages/source/a/anyjson/anyjson-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
