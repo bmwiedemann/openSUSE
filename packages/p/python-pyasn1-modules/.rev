@@ -217,4 +217,12 @@
   * variour RFC enhancements, see CHANGES.txt</comment>
     <requestid>729885</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4539cd845439d70dc2494e419b740654</srcmd5>
+    <version>0.2.7</version>
+    <time>1574414723</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749147</requestid>
+  </revision>
 </revisionlist>

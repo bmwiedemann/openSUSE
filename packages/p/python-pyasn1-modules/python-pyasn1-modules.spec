@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyasn1-modules
-Version:        0.2.6
+Version:        0.2.7
 Release:        0
 Summary:        Collection of protocols modules written in ASN.1 language
 License:        BSD-3-Clause
