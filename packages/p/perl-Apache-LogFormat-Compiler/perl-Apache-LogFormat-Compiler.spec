@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Apache-LogFormat-Compiler
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-Apache-LogFormat-Compiler
-Version:        0.35
+Version:        0.36
 Release:        0
 %define cpan_name Apache-LogFormat-Compiler
 Summary:        Compile a log format string to perl-code
-License:        Artistic-1.0 or GPL-1.0+
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Apache-LogFormat-Compiler/
+Url:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  timezone
 BuildRequires:  perl(HTTP::Request::Common)
 BuildRequires:  perl(Module::Build::Tiny) >= 0.035
 BuildRequires:  perl(POSIX::strftime::Compiler) >= 0.30
@@ -41,6 +40,9 @@ BuildRequires:  perl(Try::Tiny) >= 0.12
 BuildRequires:  perl(URI::Escape) >= 1.60
 Requires:       perl(POSIX::strftime::Compiler) >= 0.30
 %{perl_requires}
+# MANUAL BEGIN
+BuildRequires:  timezone
+# MANUAL END
 
 %description
 Compile a log format string to perl-code. For faster generation of
@@ -50,7 +52,7 @@ access_log lines.
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Build.PL --installdirs=vendor
+perl Build.PL --installdirs=vendor
 ./Build build --flags=%{?_smp_mflags}
 
 %check
