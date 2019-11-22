@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-testpath
-Version:        0.4.2
+Version:        0.4.4
 Release:        0
 Summary:        Test utilities for code working with files and commands
 License:        LGPL-2.1-or-later OR BSD-3-Clause
