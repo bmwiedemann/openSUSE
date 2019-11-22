@@ -57,4 +57,12 @@
   (Add remove-setuptools-dependency.patch patch to do this)</comment>
     <requestid>634722</requestid>
   </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>fc26fbcad96f79cd2f9e7d1cc56609fa</srcmd5>
+    <version>1.4.3</version>
+    <time>1574414352</time>
+    <user>dimstar_suse</user>
+    <comment>- Format with spec-cleaner</comment>
+    <requestid>745372</requestid>
+  </revision>
 </revisionlist>
