@@ -139,4 +139,12 @@
     <comment></comment>
     <requestid>731157</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>bf4e72672a1dce951d1878e9158fcfbf</srcmd5>
+    <version>0.2.7</version>
+    <time>1574414377</time>
+    <user>dimstar_suse</user>
+    <comment>- Update with spec-cleaner</comment>
+    <requestid>745406</requestid>
+  </revision>
 </revisionlist>

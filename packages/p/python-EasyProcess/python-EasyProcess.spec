@@ -22,7 +22,6 @@ Version:        0.2.7
 Release:        0
 Summary:        Python subprocess interface
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/ponty/easyprocess
 Source:         https://github.com/ponty/EasyProcess/archive/%{version}.tar.gz
 BuildRequires:  %{python_module nose}
@@ -67,7 +66,6 @@ sed -i "s/'python'/sys.executable/" easyprocess/examples/*.py
 # requires pyvirtualdisplay which is mostly dead package
 rm -f tests/coverage/fast/test_deadlock.py
 2to3 -w easyprocess/examples/log.py
-
 
 %build
 %python_build
