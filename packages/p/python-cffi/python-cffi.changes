@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 18 20:21:04 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 1.13.2:
+  * re-release because the Linux wheels came with an attached version of libffi that was very old and buggy
+- Update to 1.13.1:
+  * deprecate the way to declare in cdef() a global variable with only void *foo;. You should always use a storage class, like extern void *foo; or maybe static void *foo;. These are all equivalent for the purposes of cdef(), but the reason for deprecating the bare version is that (as far as I know) it would always be mistake in a real C header.
+  * fix the regression RuntimeError: found a situation in which we try to build a type recursively.
+  * fixed issue #427 where a multithreading mistake in the embedding logic initialization code would cause deadlocks on CPython 3.7.
+
+-------------------------------------------------------------------
 Tue Oct 15 10:39:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.13.0:
