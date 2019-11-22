@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 19 08:40:49 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.57
+   see /usr/share/doc/packages/perl-Prima/Changes
+
+  1.57 2017-11-17
+   - Add photoshop image operators (rop::Add, rop::Multiply, rop::SoftLight etc)
+   - Support animated PNG files
+   - Add Image.flood_fill
+
+-------------------------------------------------------------------
 Wed Aug 21 05:24:56 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 1.56
