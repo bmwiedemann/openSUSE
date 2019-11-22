@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Nov  9 14:36:01 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.38.0:
+  * support lock_args for e.g. non-blocking intermediate writes (#838
+    -> #839)
+    + use self.refresh() in more places
+    + add and update performance tests
+    + support args for TqdmDefaultWriteLock.acquire()
+  * fix colorama on win (#678, #764)
+  * framework updates
+    + CI cleanup
+        move to stages (check/test/deploy)
+        auto deploy notes
+        deploy only on parent repo
+        separate docker deploy
+    + update documentation sync/generation
+  * update examples
+  * update documentation
+  * add and update tests
+  * misc tidy and linting
+
+- changes from version 4.37.0:
+  * potential future pandas fix (#824)
+  * better unicode widechar support (#803 -> #410, #805)
+  * fix example/tqdm_wget unknown total (#826)
+  * add stacklevel=2 to warnings (#821)
+  * misc framework updates
+    + snapcraft version fix
+    + update issue/pr templates (#830)
+    + update unit tests
+  * misc documentation updates
+    + update parallel (multiprocessing, ThreadPoolExecutor) example
+      (#407)
+    + add slides, video images
+    + add CII Best Practices badge
+    + add repology badge
+    + update badge icons
+
+-------------------------------------------------------------------
 Sat Sep 21 19:13:08 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - update to version 4.36.1:

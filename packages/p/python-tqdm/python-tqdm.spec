@@ -28,11 +28,10 @@
 %bcond_with test
 %endif
 Name:           python-tqdm%{suffix}
-Version:        4.36.1
+Version:        4.38.0
 Release:        0
 Summary:        An extensible progress meter
 License:        MPL-2.0 AND MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/tqdm/tqdm
 Source:         https://files.pythonhosted.org/packages/source/t/tqdm/tqdm-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
