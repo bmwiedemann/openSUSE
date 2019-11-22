@@ -44,4 +44,14 @@
     <comment></comment>
     <requestid>742147</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>9c3fdc259933ab2b318c3d40016f283e</srcmd5>
+    <version>0.15.1</version>
+    <time>1574414844</time>
+    <user>dimstar_suse</user>
+    <comment>- When setting the environmental variable COLUMNS=80
+  test case test_help_with_metavar works again.
+  gh#bw2/ConfigArgParse#146</comment>
+    <requestid>750115</requestid>
+  </revision>
 </revisionlist>

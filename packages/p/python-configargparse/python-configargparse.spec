@@ -1,7 +1,7 @@
 #
 # spec file for package python-configargparse
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -62,7 +62,8 @@ add these features
 
 %check
 # https://github.com/bw2/ConfigArgParse/issues/146
-%pytest -k 'not (test_main or test_help_with_metavar or testGlobalInstances or testGlobalInstances_WithName or testConfigOrEnvValueErrors)'
+export COLUMNS=80
+%pytest -k 'not (test_main or testGlobalInstances or testGlobalInstances_WithName or testConfigOrEnvValueErrors)'
 
 %files %{python_files}
 %doc README.rst

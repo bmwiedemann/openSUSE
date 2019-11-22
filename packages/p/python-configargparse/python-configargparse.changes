@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 21 15:24:10 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- When setting the environmental variable COLUMNS=80
+  test case test_help_with_metavar works again.
+  gh#bw2/ConfigArgParse#146
+
+-------------------------------------------------------------------
 Wed Oct 23 13:07:43 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.15.1
