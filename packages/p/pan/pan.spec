@@ -1,7 +1,7 @@
 #
 # spec file for package pan
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           pan
-Version:        0.145
+Version:        0.146
 Release:        0
 Summary:        A Newsreader for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/News/Clients
-Url:            http://pan.rebelbase.com/
+URL:            http://pan.rebelbase.com/
 Source0:        http://pan.rebelbase.com/download/releases/%{version}/source/%{name}-%{version}.tar.bz2
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -32,7 +32,7 @@ BuildRequires:  libxml2-tools
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(enchant) >= 1.6.0
 BuildRequires:  pkgconfig(gcr-3)
-BuildRequires:  pkgconfig(gmime-2.6) >= 2.5.5
+BuildRequires:  pkgconfig(gmime-3.0)
 BuildRequires:  pkgconfig(gnutls) >= 2.12.10
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtkspell3-3.0) >= 2.0.16
@@ -58,6 +58,7 @@ handling, multiple servers, and secure connections.
 	--enable-gkr \
 	--enable-manual \
 	--enable-libnotify \
+	--with-gmime30 \
 	%{nil}
 %make_build
 

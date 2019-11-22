@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 21 14:20:16 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.146:
+  + Use an int instead of a char.
+  + Fix segfault when build with gmime-3.
+  + Fix to build Pan with options --with-gmime30 and
+    --with-gmime-crypto.
+  + Fix ypart begin for bpf ranges.
+  + Updated translations.
+- Replace pkgconfig(gmime-2.6) with pkgconfig(gmime-3.0) and pass
+  --with-gmime30 to configure.
+
+-------------------------------------------------------------------
 Thu May 31 12:01:13 UTC 2018 - badshah400@gmail.com
 
 - Update to version 0.145:
