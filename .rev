@@ -57,4 +57,12 @@
      - bugfix: Make `%T` to formatted in seconds (Thank you astj)</comment>
     <requestid>499786</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5df014d0c6a9f6f9aa6e7a424ffcea4a</srcmd5>
+    <version>0.36</version>
+    <time>1574414812</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749527</requestid>
+  </revision>
 </revisionlist>
