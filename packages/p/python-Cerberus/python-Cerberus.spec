@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Cerberus
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        Extensible schema and data validation tool for Python dictionaries
 License:        ISC
