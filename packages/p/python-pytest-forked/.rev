@@ -20,4 +20,13 @@
   * Fix support for pytest 4.1.</comment>
     <requestid>676365</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>469e3337b3b76a60b624bdaea81c9ece</srcmd5>
+    <version>1.1.3</version>
+    <time>1574414396</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.3:
+  * New marker `pytest.mark.forked` to fork before individual tests.</comment>
+    <requestid>745443</requestid>
+  </revision>
 </revisionlist>

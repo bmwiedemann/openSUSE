@@ -18,12 +18,11 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-forked
-Version:        1.0.2
+Version:        1.1.3
 Release:        0
-Summary:        Run each test in a forked subprocess 
+Summary:        Run each test in a forked subprocess
 License:        MIT
-Group:          Development/Languages/Python
-URL:            https://github.com/pytest-dev/pytest-forked 
+URL:            https://github.com/pytest-dev/pytest-forked
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-forked/pytest-forked-%{version}.tar.gz
 BuildRequires:  %{python_module pytest >= 3.1.0}
 BuildRequires:  %{python_module setuptools_scm}
@@ -48,10 +47,10 @@ Extraction of pytest-xdist --forked module used for running tests in forked subp
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -v
+%pytest
 
 %files %{python_files}
-%license LICENSE 
+%license LICENSE
 %doc README.rst CHANGELOG
 %{python_sitelib}/*
 
