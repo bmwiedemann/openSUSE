@@ -1,5 +1,0 @@
-<package name="python-repex" project="openSUSE:Factory">
-  <title></title>
-  <description>Replace strings in single/multiple files based on regular expressions</description>
-  <devel project="devel:languages:python" package="python-repex"/>
-</package>
