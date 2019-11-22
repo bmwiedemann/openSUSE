@@ -50,4 +50,13 @@
     <comment>- Add dep on coverage as it is hard requirement based on requires</comment>
     <requestid>734078</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>18d370823b10f9bd98aac36d9c34dfe6</srcmd5>
+    <version>0.9.1</version>
+    <time>1574414511</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ignore-warnings-doctests.patch to supress warnings when running
+  doctests.</comment>
+    <requestid>747272</requestid>
+  </revision>
 </revisionlist>

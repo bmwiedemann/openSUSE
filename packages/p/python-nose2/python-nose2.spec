@@ -27,6 +27,7 @@ URL:            https://github.com/nose-devs/nose2
 Source:         https://files.pythonhosted.org/packages/source/n/nose2/nose2-%{version}.tar.gz
 Patch0:         remove_unittest2.patch
 Patch1:         fix-mock-dep.patch
+Patch2:         ignore-warnings-doctests.patch
 BuildRequires:  %{python_module coverage >= 4.4.1}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module setuptools}
