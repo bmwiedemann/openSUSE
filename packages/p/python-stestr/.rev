@@ -174,4 +174,14 @@
   utf8 locale</comment>
     <requestid>744175</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>8904a5bfa2daa8a53e8c219735d5e0c6</srcmd5>
+    <version>2.5.1</version>
+    <time>1574414759</time>
+    <user>dimstar_suse</user>
+    <comment>- Create multibuild for testing in order to cope with a circular
+  dependency with python-cliff
+- Clean up spec file</comment>
+    <requestid>749499</requestid>
+  </revision>
 </revisionlist>

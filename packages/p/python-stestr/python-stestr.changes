@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov 17 17:19:01 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Create multibuild for testing in order to cope with a circular
+  dependency with python-cliff
+- Clean up spec file
+
+-------------------------------------------------------------------
 Wed Oct 30 13:17:37 UTC 2019 - Dirk Mueller <dmueller@suse.com>
 
 - fix build for anything older than Tumbleweed by explicitly setting
