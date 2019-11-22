@@ -20,11 +20,10 @@
 # Disable tests, they are so slow that OBS thinks the build died.
 %bcond_with tests
 Name:           python-pyzmq
-Version:        18.1.0
+Version:        18.1.1
 Release:        0
 Summary:        Python bindings for 0MQ
 License:        LGPL-3.0-or-later AND BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/zeromq/pyzmq
 Source:         https://files.pythonhosted.org/packages/source/p/pyzmq/pyzmq-%{version}.tar.gz
 Source1:        python-pyzmq-rpmlintrc
@@ -66,7 +65,6 @@ the ZeroMQ library (http://www.zeromq.org).
 
 %package devel
 Summary:        Development files for %{name}
-Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 Requires:       python-devel
 Requires:       zeromq-devel
