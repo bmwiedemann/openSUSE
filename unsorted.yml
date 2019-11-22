@@ -6074,20 +6074,20 @@ unsorted:
   - jupyter-ipysheet 
   - jupyter-ipyvolume 
   - jupyter-ipywebrtc 
+  - jupyter-jupyter-client 
+  - jupyter-jupyter-client-doc 
   - jupyter-jupyter-contrib-nbextensions 
+  - jupyter-jupyter-core 
+  - jupyter-jupyter-core-doc 
   - jupyter-jupyter-full-width 
   - jupyter-jupyter-require 
   - jupyter-jupyter-server 
   - jupyter-jupyter-themer 
   - jupyter-jupyter-wysiwyg 
-  - jupyter-jupyter_client 
-  - jupyter-jupyter_client-doc 
   - jupyter-jupyter_cms 
   - jupyter-jupyter_console 
   - jupyter-jupyter_console-doc 
   - jupyter-jupyter_contrib_core 
-  - jupyter-jupyter_core 
-  - jupyter-jupyter_core-doc 
   - jupyter-jupyter_core-filesystem 
   - jupyter-jupyter_dashboards 
   - jupyter-jupyter_highlight_selected_word 
@@ -17148,9 +17148,7 @@ unsorted:
   - pythia-devel 
   - pythia-doc 
   - python-32bit: [x86_64] 
-  - python-3parclient 
   - python-Babel-doc 
-  - python-Brownie 
   - python-Cheetah 
   - python-Genshi-doc 
   - python-Hamlib 
@@ -17184,7 +17182,6 @@ unsorted:
   - python-acitoolkit-doc-samples 
   - python-aiohttp-doc 
   - python-altgraph-doc 
-  - python-antlr3_runtime 
   - python-aodhclient 
   - python-aodhclient-doc 
   - python-apfel 
@@ -17394,7 +17391,6 @@ unsorted:
   - python-pyserial-doc 
   - python-pysnmp-doc 
   - python-pysqlite 
-  - python-pytest-doc 
   - python-python-openid 
   - python-qpid 
   - python-qpid_messaging 
@@ -17604,7 +17600,6 @@ unsorted:
   - python2-Pykka 
   - python2-Pympler 
   - python2-Pyphen 
-  - python2-Pyrex 
   - python2-Pyro4 
   - python2-QDarkStyle 
   - python2-Qt.py 
@@ -17637,7 +17632,6 @@ unsorted:
   - python2-WSGIProxy2 
   - python2-WSME 
   - python2-WTForms 
-  - python2-WebHelpers 
   - python2-WebOb 
   - python2-WebTest 
   - python2-Werkzeug 
@@ -18535,13 +18529,12 @@ unsorted:
   - python2-junit-xml 
   - python2-junitxml 
   - python2-junos-eznc 
+  - python2-jupyter-client 
   - python2-jupyter-contrib-nbextensions 
+  - python2-jupyter-core 
   - python2-jupyter-server 
-  - python2-jupyter_client 
   - python2-jupyter_contrib_core 
-  - python2-jupyter_core 
   - python2-jupyter_highlight_selected_word 
-  - python2-jupyter_sphinx 
   - python2-jupytext 
   - python2-jwcrypto 
   - python2-k5test 
@@ -19183,7 +19176,6 @@ unsorted:
   - python2-pytest-virtualenv 
   - python2-pytest-xdist 
   - python2-pytest-xvfb 
-  - python2-pytest3 
   - python2-pytest4 
   - python2-python-afl 
   - python2-python-aiml 
@@ -19295,7 +19287,6 @@ unsorted:
   - python2-rencode 
   - python2-renderspec 
   - python2-reno 
-  - python2-repex 
   - python2-repoze.lru 
   - python2-repoze.sphinx.autointerface 
   - python2-repoze.who 
@@ -20966,21 +20957,20 @@ unsorted:
   - python3-junit-xml 
   - python3-junitxml 
   - python3-junos-eznc 
+  - python3-jupyter-client 
   - python3-jupyter-contrib-nbextensions 
+  - python3-jupyter-core 
   - python3-jupyter-datatables 
   - python3-jupyter-nbutils 
   - python3-jupyter-protocol 
   - python3-jupyter-require 
   - python3-jupyter-server 
-  - python3-jupyter_client 
   - python3-jupyter_console 
   - python3-jupyter_contrib_core 
-  - python3-jupyter_core 
   - python3-jupyter_highlight_selected_word 
   - python3-jupyter_kernel_test 
   - python3-jupyter_latex_envs 
   - python3-jupyter_nbextensions_configurator 
-  - python3-jupyter_sphinx 
   - python3-jupyterlab-pygments 
   - python3-jupytext 
   - python3-jwcrypto 
@@ -21704,7 +21694,6 @@ unsorted:
   - python3-pytest-virtualenv 
   - python3-pytest-xdist 
   - python3-pytest-xvfb 
-  - python3-pytest3 
   - python3-pytest4 
   - python3-python-afl 
   - python3-python-aiml 
@@ -21822,7 +21811,6 @@ unsorted:
   - python3-rencode 
   - python3-renderspec 
   - python3-reno 
-  - python3-repex 
   - python3-reportlab 
   - python3-repoze.lru 
   - python3-repoze.sphinx.autointerface 
