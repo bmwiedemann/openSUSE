@@ -17,7 +17,7 @@
 
 
 Name:           perl-Image-Sane
-Version:        4
+Version:        5
 Release:        0
 %define cpan_name Image-Sane
 Summary:        Perl extension for the SANE (Scanner Access Now Easy)
@@ -52,7 +52,7 @@ Find out more about SANE at http://www.sane-project.org.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -name "*.sh" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"

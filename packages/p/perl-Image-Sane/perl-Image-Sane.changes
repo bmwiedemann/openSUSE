@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 19 08:35:15 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 5
+   see /usr/share/doc/packages/perl-Image-Sane/Changes
+
+  5     Fri, 15 Nov 2019 00:00 +0000
+          - Fix tests broken by sane-backends 1.0.28. Closes RT 130933
+            (t/81_scanimage-perl.t test fails with sane-backends-1.0.28)
+
+-------------------------------------------------------------------
 Fri Sep 13 09:03:41 UTC 2019 - Tina Mueller <tina.mueller@suse.com>
 
 - Add BuildRequires:  pkgconfig(sane-backends)
