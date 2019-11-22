@@ -1,7 +1,7 @@
 #
 # spec file for package python-PrettyTable
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2011 Christian Berendt.
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,6 @@ Version:        0.7.2
 Release:        0
 Summary:        Library for displaying tabular data in formatted fashion
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://prettytable.googlecode.com/files/prettytable-%{version}.tar.bz2
 Source:         prettytable-%{version}.tar.bz2
 BuildRequires:  %{python_module setuptools}
