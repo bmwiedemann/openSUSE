@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 14 11:24:24 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2.3.3:
+  * Update six version to 1.13.
+- Update unpin-deps.patch
+
+-------------------------------------------------------------------
 Fri Nov  1 08:34:46 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.3.2:

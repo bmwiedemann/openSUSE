@@ -204,4 +204,14 @@ python-logilab-common is in openSUSE:Factory so this builds now.</comment>
   * Pass an inference context to `metaclass()` when inferring an object type</comment>
     <requestid>744674</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>61fa877d0d655687461f5e7b755e2779</srcmd5>
+    <version>2.3.3</version>
+    <time>1574414668</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.3:
+  * Update six version to 1.13.
+- Update unpin-deps.patch</comment>
+    <requestid>748640</requestid>
+  </revision>
 </revisionlist>
