@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-bottle
-Version:        0.12.16
+Version:        0.12.17
 Release:        0
 Summary:        WSGI framework for small web applications
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://bottlepy.org/
+URL:            https://bottlepy.org/
 Source:         https://files.pythonhosted.org/packages/source/b/bottle/bottle-%{version}.tar.gz
 Source1:        http://bottlepy.org/docs/0.12/bottle-docs.pdf
 BuildRequires:  %{python_module setuptools}
