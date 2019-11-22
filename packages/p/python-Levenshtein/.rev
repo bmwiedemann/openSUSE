@@ -79,4 +79,12 @@
   * Added Python 3 support</comment>
     <requestid>627013</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>0a693443360ad8af3afc4940cbe23ae2</srcmd5>
+    <version>0.12.0</version>
+    <time>1574414441</time>
+    <user>dimstar_suse</user>
+    <comment>- Run through spec-cleaner</comment>
+    <requestid>746305</requestid>
+  </revision>
 </revisionlist>
