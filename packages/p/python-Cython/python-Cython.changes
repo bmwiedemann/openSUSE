@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Nov 16 16:44:06 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.29.14:
+  * Bugs fixed
+    + The generated code failed to initialise the tp_print slot in
+      CPython 3.8. Patches by Pablo Galindo and Orivej Desh (Github
+      issues #3171, #3201).
+    + ? for bool was missing from the supported NumPy dtypes. Patch by
+      Max Klein. (Github issue #2675)
+    + await was not allowed inside of f-strings. Patch by Dmitro
+      Getz. (Github issue #2877)
+    + Coverage analysis failed for projects where the code resides in
+      separate source sub-directories. Patch by Antonio
+      Valentino. (Github issue #1985)
+    + An incorrect compiler warning was fixed in automatic C++ string
+      conversions. Patch by Gerion Entrup. (Github issue #3108)
+    + Error reports in the Jupyter notebook showed unhelpful stack
+      traces. Patch by Matthew Edwards (Github issue #3196).
+    + Python.h is now also included explicitly from public header
+      files. (Github issue #3133).
+    + Distutils builds with --parallel did not work when using
+      Cython's deprecated build_ext command. Patch by Alphadelta14
+      (Github issue #3187).
+  * Other changes
+    + The PyMemoryView_*() C-API is available in
+      cpython.memoryview. Patch by Nathan Manville. (Github issue
+      #2541)
+
+-------------------------------------------------------------------
 Fri Jul 26 17:36:50 CEST 2019 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.29.13:
