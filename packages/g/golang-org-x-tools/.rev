@@ -69,4 +69,18 @@
   for Bazel. (forwarded request 748935 from mrostecki)</comment>
     <requestid>748939</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>9a499f0e355611a1d1dce1f5d3dcacc3</srcmd5>
+    <version>1.12+git20190313.aa829657</version>
+    <time>1574414881</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patches which make it possible to build golang-org-x-tools
+  with Bazel by other projects like i.e. envoy-proxy. Those patches
+  are developed as a part of bazel-rules-go project. For now we are
+  consuming those patches from Github, but in future we should be
+  able to generate files for Bazel ourselves.
+  * org_golang_x_tools-gazelle.patch
+  * org_golang_x_tools-extras.patch (forwarded request 750161 from mrostecki)</comment>
+    <requestid>750170</requestid>
+  </revision>
 </revisionlist>

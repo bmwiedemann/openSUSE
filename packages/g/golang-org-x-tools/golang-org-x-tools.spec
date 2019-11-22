@@ -34,6 +34,8 @@ Source0:        %{repo}-%{version}.tar.xz
 Source1:        rpmlintrc
 Source2:        godoc.service
 Source3:        WORKSPACE
+Patch0:         https://raw.githubusercontent.com/bazelbuild/rules_go/0.18.5/third_party/org_golang_x_tools-gazelle.patch
+Patch1:         https://raw.githubusercontent.com/bazelbuild/rules_go/0.18.5/third_party/org_golang_x_tools-extras.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  bazel-gazelle

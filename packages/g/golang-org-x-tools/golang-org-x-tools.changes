@@ -1,8 +1,13 @@
 -------------------------------------------------------------------
 Tue Nov  5 11:19:46 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
 
-- Add WORKSPACE file and use bazel-gazelle to generate BUILD files
-  for Bazel.
+- Add patches which make it possible to build golang-org-x-tools
+  with Bazel by other projects like i.e. envoy-proxy. Those patches
+  are developed as a part of bazel-rules-go project. For now we are
+  consuming those patches from Github, but in future we should be
+  able to generate files for Bazel ourselves.
+  * org_golang_x_tools-gazelle.patch
+  * org_golang_x_tools-extras.patch
 
 -------------------------------------------------------------------
 Thu Sep 12 17:30:16 UTC 2019 - jkowalczyk@suse.com
