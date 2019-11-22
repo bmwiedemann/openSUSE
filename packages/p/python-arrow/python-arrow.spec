@@ -19,11 +19,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-arrow
-Version:        0.15.2
+Version:        0.15.4
 Release:        0
 Summary:        Better dates and times for Python
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/crsmithdev/arrow
 Source:         https://files.pythonhosted.org/packages/source/a/arrow/arrow-%{version}.tar.gz
 BuildRequires:  %{python_module chai}
