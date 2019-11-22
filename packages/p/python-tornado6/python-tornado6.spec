@@ -27,6 +27,7 @@ URL:            http://www.tornadoweb.org
 Source:         https://files.pythonhosted.org/packages/source/t/tornado/tornado-%{version}.tar.gz
 Patch1:         tornado-testsuite_timeout.patch
 Patch2:         skip-failing-tests.patch
+Patch3:         ignore-resourcewarning-doctests.patch
 BuildRequires:  %{python_module base >= 3.5}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module devel}
@@ -41,8 +42,8 @@ Recommends:     python-Twisted
 Recommends:     python-pycares
 Recommends:     python-pycurl
 Recommends:     python-service_identity
-Provides:       python-tornado = %{version}
 Conflicts:      python-tornado-impl
+Provides:       python-tornado = %{version}
 Provides:       python-tornado-impl = %{version}
 Provides:       python-toro = %{version}
 Obsoletes:      python-toro < %{version}
@@ -68,8 +69,7 @@ thousands of clients, see The C10K problem.)
 %setup -q -n tornado-%{version}
 # Fix non-executable script rpmlint issue:
 find demos tornado -name "*.py" -exec sed -i "/#\!\/usr\/bin\/.*/d" {} \;
-%patch1 -p1
-%patch2 -p1
+%autopatch -p1
 
 %pre
 # remove egg-info _file_, being replaced by an egg-info directory
@@ -82,13 +82,14 @@ fi
 
 %install
 %python_install
-%fdupes -s demos
+%fdupes demos
 %python_expand rm -r %{buildroot}%{$python_sitearch}/tornado/test
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 export ASYNC_TEST_TIMEOUT=30
 export PYTHONDONTWRITEBYTECODE=1
+export TRAVIS=1
 %python_exec -m tornado.test.runtests
 
 %files %{python_files}
