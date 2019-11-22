@@ -19,7 +19,7 @@
 %define modname typing_extensions
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-typing_extensions
-Version:        3.7.4
+Version:        3.7.4.1
 Release:        0
 Summary:        Backported and Experimental Type Hints for Python 35+
 License:        Python-2.0
