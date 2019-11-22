@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Nov 10 16:54:21 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 3.9.2 (10 November 2019):
+  + New features
+    * Add Python 3.8 wheels for Mac.
+  + Resolved issues
+    * GH#308: Avoid allocating arrays of __m128i on the stack, to
+      cope with buggy compilers.
+    * GH#322: Remove blanket -O3 optimization for gcc and clang, to
+      cope with buggy compilers.
+    * GH#337: Fix typing stubs for signatures.
+    * GH#338: Deal with gcc installations that don't have
+      x86intrin.h.
+
+- Update to version 3.9.1 (1 November 2019):
+  + New features
+    * Add Python 3.8 wheels for Linux and Windows.
+  + Resolved issues
+    * GH#328: minor speed-up when importing RSA.
+
+- Add export LC_ALL=en_US.UTF-8 to %build, %install and %check to
+  fix the build on older distros 
+  (as done from Thomas Bechtold in python-pycryptodomex)
+
+-------------------------------------------------------------------
 Tue Sep 10 12:29:30 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.9.0:
@@ -55,6 +80,11 @@ Tue May 14 13:03:34 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 Wed Jan  9 21:55:51 UTC 2019 - Jonathan Brownell <jbrownell@suse.com>
 
 - Protect older platforms from encountering "Suggests:" keyword
+
+-------------------------------------------------------------------
+Sun Jan  6 14:30:43 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- fix tarball: use the one from PyPI...
 
 -------------------------------------------------------------------
 Thu Nov 29 16:41:53 UTC 2018 - Hans-Peter Jansen <hpj@urpla.net>

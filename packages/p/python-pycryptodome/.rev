@@ -129,4 +129,12 @@
   * Add support for importing ECC and RSA keys in the new OpenSSH format.</comment>
     <requestid>729873</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f2267135c05a588f6afb663800be8691</srcmd5>
+    <version>3.9.2</version>
+    <time>1574414515</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>747336</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-pycryptodome
-Version:        3.9.0
+Version:        3.9.2
 Release:        0
 Summary:        Cryptographic library for Python
 License:        BSD-2-Clause
@@ -83,13 +83,17 @@ Python. Only the pieces that are extremely critical to performance
 %setup -q -n pycryptodome-%{version}
 
 %build
+export LC_ALL=en_US.UTF-8
+export CFLAGS="%{optflags}"
 %python_build
 
 %install
+export LC_ALL=en_US.UTF-8
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
+export LC_ALL=en_US.UTF-8
 %python_exec setup.py test
 
 %files %{python_files}
