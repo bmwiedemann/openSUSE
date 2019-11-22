@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-ipykernel
-Version:        5.1.2
+Version:        5.1.3
 Release:        0
 Summary:        IPython Kernel for Jupyter
 License:        BSD-3-Clause
@@ -32,17 +32,18 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-ipykernel = %{version}
 Requires:       python-ipython >= 5.0.0
-Requires:       python-jupyter_client
-Requires:       python-jupyter_core
+Requires:       python-jupyter-client
+Requires:       python-jupyter-core
 Requires:       python-tornado >= 4.2
 Requires:       python-traitlets >= 4.1.0
 Provides:       python-jupyter_ipykernel = %{version}
 Obsoletes:      python-jupyter_ipykernel < %{version}
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module ipython >= 5.0.0}
-BuildRequires:  %{python_module jupyter_client}
-BuildRequires:  %{python_module jupyter_core}
+BuildRequires:  %{python_module jupyter-client}
+BuildRequires:  %{python_module jupyter-core}
 BuildRequires:  %{python_module nose_warnings_filters}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy}
@@ -72,7 +73,7 @@ This package provides the python interface.
 %package     -n jupyter-ipykernel
 Summary:        IPython Kernel for Jupyter
 Requires:       hicolor-icon-theme
-Requires:       jupyter-jupyter_client
+Requires:       jupyter-jupyter-client
 Requires:       python3-ipykernel = %{version}
 Conflicts:      python3-jupyter_ipykernel < 5.1.1
 
