@@ -15,4 +15,12 @@
     <comment>- Add _constraints to avoid OOM (forwarded request 708118 from Guillaume_G)</comment>
     <requestid>708133</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3b3c9350a4f8af3f71c127cf5132041e</srcmd5>
+    <version>1.0</version>
+    <time>1574414829</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>750081</requestid>
+  </revision>
 </revisionlist>

@@ -182,7 +182,7 @@ export CFLAGS="%{optflags} -fPIE"
        -DBUILD_python_layer=ON \
        -DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=true \
        -DCMAKE_EXE_LINKER_FLAGS="-pie"
-%make_jobs
+%cmake_build
 
 %install
 %{?with_hpc:%hpc_setup}
