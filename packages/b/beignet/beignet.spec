@@ -70,10 +70,7 @@ specification, a generic compute oriented API.
 
 %prep
 %setup -q -n Beignet-%{version}-Source
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autopatch -p1
 rm README.md
 cp docs/Beignet.mdwn README.md
 
@@ -81,7 +78,7 @@ cp docs/Beignet.mdwn README.md
 %limit_build -m 2000
 %cmake \
 	-DLLVM_INSTALL_DIR=%{_bindir}/
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
