@@ -28,8 +28,6 @@ Source0:        https://files.pythonhosted.org/packages/source/h/h2/h2-%{version
 BuildRequires:  %{python_module hpack >= 2.3}
 BuildRequires:  %{python_module hyperframe >= 5.2.0}
 BuildRequires:  %{python_module hypothesis}
-BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
 BuildRequires:  python-enum34 >= 1.1.6

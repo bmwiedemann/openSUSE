@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 14 06:57:45 UTC 2019 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop unused dependancies on pytest-cov and pytest-xdist.
+
+-------------------------------------------------------------------
 Thu Sep 12 10:04:22 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.1.1:
