@@ -1,7 +1,7 @@
 #
 # spec file for package python-s3fs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-s3fs
-Version:        0.3.5
+Version:        0.4.0
 Release:        0
 Summary:        Python filesystem interface over S3
 License:        BSD-3-Clause
@@ -27,7 +27,7 @@ URL:            https://github.com/dask/s3fs/
 Source:         https://files.pythonhosted.org/packages/source/s/s3fs/s3fs-%{version}.tar.gz
 BuildRequires:  %{python_module boto3 >= 1.9.91}
 BuildRequires:  %{python_module botocore >= 1.12.91}
-BuildRequires:  %{python_module fsspec >= 0.2.2}
+BuildRequires:  %{python_module fsspec >= 0.6.0}
 BuildRequires:  %{python_module moto >= 1.3.12}
 BuildRequires:  %{python_module pytest >= 4.2.0}
 BuildRequires:  %{python_module setuptools}
@@ -35,7 +35,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-boto3 >= 1.9.91
 Requires:       python-botocore >= 1.12.91
-Requires:       python-fsspec >= 0.2.2
+Requires:       python-fsspec >= 0.6.0
 BuildArch:      noarch
 %python_subpackages
 
