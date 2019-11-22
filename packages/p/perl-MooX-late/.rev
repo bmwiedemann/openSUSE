@@ -7,4 +7,12 @@
     <comment>needed for GnuPG::Interface</comment>
     <requestid>250010</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>34721f90c590031ab0e8f5f3ef5d9494</srcmd5>
+    <version>0.016</version>
+    <time>1574414821</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749532</requestid>
+  </revision>
 </revisionlist>
