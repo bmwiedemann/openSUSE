@@ -345,4 +345,12 @@
   * Many bugfixes all around, see CHANGES.rst</comment>
     <requestid>729878</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>55662e5b68a9d58a85a68f333a0003bf</srcmd5>
+    <version>0.4.8</version>
+    <time>1574414717</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749146</requestid>
+  </revision>
 </revisionlist>

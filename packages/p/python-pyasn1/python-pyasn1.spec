@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         oldpython python
 Name:           python-pyasn1
-Version:        0.4.7
+Version:        0.4.8
 Release:        0
 Summary:        ASN.1 types and codecs
 License:        BSD-2-Clause
