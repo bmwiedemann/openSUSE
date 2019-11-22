@@ -48,4 +48,12 @@
 </comment>
     <requestid>659357</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>89d0e706ff0142722c14b21a3492f4ee</srcmd5>
+    <version>2.3.1</version>
+    <time>1574414475</time>
+    <user>dimstar_suse</user>
+    <comment>- Run through spec-cleaner</comment>
+    <requestid>746333</requestid>
+  </revision>
 </revisionlist>

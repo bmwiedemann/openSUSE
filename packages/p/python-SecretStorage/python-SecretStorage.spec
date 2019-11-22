@@ -1,7 +1,7 @@
 #
 # spec file for package python-SecretStorage
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        2.3.1
 Release:        0
 Summary:        Python bindings to FreeDesktoporg Secret Service API
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/mitya57/secretstorage
 Source:         https://files.pythonhosted.org/packages/source/S/SecretStorage/SecretStorage-%{version}.tar.gz
 BuildRequires:  %{python_module cryptography}
