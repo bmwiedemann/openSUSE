@@ -26,29 +26,27 @@
 %bcond_with test
 %endif
 Name:           python-zope.testrunner
-Version:        5.0
+Version:        5.1
 Release:        0
 Summary:        Zope testrunner script
 License:        ZPL-2.1
-Group:          Development/Languages/Python
-URL:            https://pypi.python.org/pypi/zope.testrunner
+URL:            https://github.com/zopefoundation/zope.testrunner
 Source:         https://files.pythonhosted.org/packages/source/z/zope.testrunner/zope.testrunner-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
-# runtime requirements:
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module zope.exceptions}
 BuildRequires:  %{python_module zope.interface}
-# Test requirements:
-%if %{with test}
-BuildRequires:  %{python_module zope.testing}
-BuildRequires:  %{python_module zope.testrunner = %{version}}
-%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six
 Requires:       python-zope.exceptions
 Requires:       python-zope.interface
 BuildArch:      noarch
+%if %{with test}
+BuildRequires:  %{python_module zope.testing}
+BuildRequires:  %{python_module zope.testrunner = %{version}}
+BuildRequires:  %{pythons}
+%endif
 %python_subpackages
 
 %description
@@ -82,7 +80,7 @@ find -size 0 -delete
 %python_uninstall_alternative zope-testrunner
 
 %files %{python_files}
-%license LICENSE.rst
+%license LICENSE.md
 %doc README.rst
 %python_alternative %{_bindir}/zope-testrunner
 %{python_sitelib}/*
