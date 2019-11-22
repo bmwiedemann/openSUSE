@@ -1,7 +1,7 @@
 #
 # spec file for package qgis
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,8 +30,6 @@ Source:         https://qgis.org/downloads/%{name}-%{version}.tar.bz2
 Source1:        https://qgis.org/downloads/%{name}-%{version}.tar.bz2.sha256
 Source2:        %{name}.rpmlintrc
 Source3:        qgis_sample_data.zip
-# Headers in Qt5.11 were cleaned up to no longer include unneeded other headers.
-Patch0:         fix_grass_qt511.patch
 # PATCH-FIX-UPSTREAM fix randomness in desktop file translations
 Patch2:         qgis-3.8.3-reproducible.patch
 Patch3:         a07d915d7bf9c7c54b2047f8819ba2aae6669f35.patch
@@ -186,7 +184,6 @@ QGIS sample data with raster, vector, gps files and a GRASS location from the Al
 
 %prep
 %setup -q
-%patch0 -p1
 %patch2 -p1
 %patch3 -p1
 # Remove bad env and python version in grass plugin
