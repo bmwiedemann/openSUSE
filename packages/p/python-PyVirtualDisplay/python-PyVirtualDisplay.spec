@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyVirtualDisplay
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,6 @@ Version:        0.2.1
 Release:        0
 Summary:        Python wrapper for Xvfb, Xephyr and Xvnc
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/ponty/PyVirtualDisplay
 Source:         https://files.pythonhosted.org/packages/source/P/PyVirtualDisplay/PyVirtualDisplay-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
