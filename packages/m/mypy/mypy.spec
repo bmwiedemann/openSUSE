@@ -1,7 +1,7 @@
 #
 # spec file for package mypy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,13 +32,14 @@ BuildRequires:  python3-mypy_extensions >= 0.4.0
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-typed-ast >= 1.4.0
 BuildRequires:  python3-typing_extensions >= 3.7.4
+Requires:       python3
 Requires:       python3-mypy_extensions >= 0.4.0
 #Requires:       python3-psutil >= 5.4.0
 Requires:       python3-typed-ast >= 1.4.0
 Requires:       python3-typing_extensions >= 3.7.4
-BuildArch:      noarch
 Provides:       python3-mypy = %{version}
 Obsoletes:      python3-mypy < %{version}
+BuildArch:      noarch
 # SECTION docs
 BuildRequires:  python3-Sphinx >= 1.4.4
 BuildRequires:  python3-sphinx_rtd_theme >= 0.1.9

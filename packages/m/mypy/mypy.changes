@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 15 11:07:41 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Pull in full interpreter as we can't have this package working
+  with just base interpreter
+
+-------------------------------------------------------------------
 Mon Jul 15 19:52:39 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Update to version 0.720:
