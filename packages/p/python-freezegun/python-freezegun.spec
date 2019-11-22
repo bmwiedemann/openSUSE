@@ -1,7 +1,7 @@
 #
 # spec file for package python-freezegun
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,11 +33,13 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil > 2.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+BuildRequires:  %{pythons}
 %ifpython2
 BuildRequires:  python-mock
 %endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python
 Requires:       python-python-dateutil > 2.0
 Requires:       python-six
 BuildArch:      noarch

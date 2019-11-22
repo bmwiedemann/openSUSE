@@ -65,4 +65,13 @@
     <comment></comment>
     <requestid>713090</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>fc9afa841fe2f0d5f5d48d4463f28f98</srcmd5>
+    <version>0.3.12</version>
+    <time>1574414687</time>
+    <user>dimstar_suse</user>
+    <comment>- Add dependency on the full python (which is not pulled by
+  setuptools anymore). Use %{pythons} macro now.</comment>
+    <requestid>748891</requestid>
+  </revision>
 </revisionlist>

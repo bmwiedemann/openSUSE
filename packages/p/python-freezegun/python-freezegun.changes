@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 14 19:05:26 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add dependency on the full python (which is not pulled by
+  setuptools anymore). Use %{pythons} macro now.
+
+-------------------------------------------------------------------
 Tue Jul  2 18:11:23 CEST 2019 - Matej Cepl <mcepl@suse.com>
 
 - Upgrade to 0.3.12:
