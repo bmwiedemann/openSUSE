@@ -1,7 +1,7 @@
 #
 # spec file for package python-tox
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -121,7 +121,7 @@ done
 export PYTHONDONTWRITEBYTECODE=1
 export PATH=%{buildroot}%{_bindir}:$PATH
 # Ignores for gh#tox-dev/tox#1293
-%pytest -k 'not (network or parallel or test_provision_missing or test_provision_interrupt_child or test_workdir_gets_resolved or test_provision_cli_args_ignore or test_provision_non_canonical_dep)'
+%pytest -k 'not (network or parallel or test_provision_missing or test_provision_interrupt_child or test_workdir_gets_resolved or test_provision_cli_args_ignore or test_provision_non_canonical_dep or test_create_KeyboardInterrupt)'
 
 %post
 %python_install_alternative tox tox-quickstart

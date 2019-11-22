@@ -345,4 +345,12 @@ please add to Staging:E, should fix the tox failure</comment>
   * Replace pkg_resources with importlib_metadata for speed</comment>
     <requestid>731289</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>61e43a0ecfe9675868729f8d0e70ef87</srcmd5>
+    <version>3.14.0</version>
+    <time>1574414712</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749145</requestid>
+  </revision>
 </revisionlist>
