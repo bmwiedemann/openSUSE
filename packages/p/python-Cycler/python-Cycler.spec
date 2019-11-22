@@ -1,7 +1,7 @@
 #
 # spec file for package python-Cycler
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,16 +22,13 @@ Version:        0.10.0
 Release:        0
 Summary:        Composable style cycles
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
-Url:            http://github.com/matplotlib/cycler
-Source:         https://files.pythonhosted.org/packages/source/C/Cycler/cycler-%{version}.tar.gz
+URL:            https://github.com/matplotlib/cycler
+Source:         https://files.pythonhosted.org/packages/source/c/cycler/cycler-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  python-rpm-macros
 Requires:       python-six
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -53,9 +50,9 @@ kwarg iterator, was developed.
 %install
 %python_install
 
-%files %python_files
-%defattr(-,root,root,-)
+%files %{python_files}
 %doc README.rst
+%license LICENSE
 %{python_sitelib}/*
 
 %changelog
