@@ -26,7 +26,6 @@ Version:        20190605
 Release:        0
 Summary:        C++11 libraries which augment the C++ stdlib
 License:        Apache-2.0
-Group:          Development/Libraries/C and C++
 Url:            https://abseil.io/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
@@ -47,7 +46,6 @@ and C++17 standards.
 
 %package -n %{libname}
 Summary:        C++11 libraries which augment the C++ stdlib
-Group:          System/Libraries
 
 %description -n %{libname}
 Shared libraries for Abseil, a collection of C++11 libraries
@@ -56,7 +54,6 @@ features incorporated into C++14 and C++17 standards.
 
 %package devel
 Summary:        Development files for Abseil
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 
 %description devel
@@ -66,7 +63,6 @@ features incorporated into C++14 and C++17 standards.
 
 %package source
 Summary:        Source code of Abseil
-Group:          Development/Sources
 
 %description source
 Source code of Abseil, a collection of C++11 libraries
