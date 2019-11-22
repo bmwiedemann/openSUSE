@@ -247,4 +247,13 @@
   * python-pycurl-7.43.0-tls-backend.patch</comment>
     <requestid>717837</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>afad524deb42b9eda44663a4371c4cc2</srcmd5>
+    <version>7.43.0.3</version>
+    <time>1574414749</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip 4 tests that are tied to old bottle version so we can
+  update the python-bottle package</comment>
+    <requestid>749288</requestid>
+  </revision>
 </revisionlist>
