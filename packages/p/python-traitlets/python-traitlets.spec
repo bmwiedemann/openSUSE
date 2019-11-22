@@ -1,7 +1,7 @@
 #
 # spec file for package python-traitlets
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-traitlets
-Version:        4.3.2
+Version:        4.3.3
 Release:        0
 Summary:        Traitlets Python config system
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            http://ipython.org
+Url:            https://github.com/ipython/traitlets
 Source:         https://files.pythonhosted.org/packages/source/t/traitlets/traitlets-%{version}.tar.gz
 BuildRequires:  %{python_module decorator}
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module ipython_genutils}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
@@ -43,7 +42,6 @@ Requires:       python-six
 %ifpython2
 Requires:       python-enum34
 %endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %python_subpackages
 
@@ -67,8 +65,9 @@ py.test-%{$python_bin_suffix} ../traitlets/tests
 }
 
 %files %{python_files}
-%defattr(-,root,root,-)
+%doc README.md
 %doc examples/
+%license COPYING.md
 %{python_sitelib}/traitlets/
 %{python_sitelib}/traitlets-%{version}-py*.egg-info
 
