@@ -26,4 +26,24 @@
   just wait for the release</comment>
     <requestid>717015</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>5c2eee3fe94521face14a1c1bf33e4f7</srcmd5>
+    <version>1.9.0</version>
+    <time>1574414781</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove pytest4.patch and replace it with pytest4-02.patch,
+  which is the upstream gh#hamcrest/PyHamcrest#124 fixing
+  compatibility with pytest 4+ officially. And of course, we
+  don't have to massacre test files anymore.
+
+- Run spec-cleaner
+- Add pytest4.patch to make the testsuite actually really pass.
+
+- Because of gh#hamcrest/PyHamcrest#123 we have to remove 
+  tests/hamcrest_unit_test/core/is{_test,instanceof_test}.py to
+  make the test suite passing.
+  Patch pytest4.patch has been removed, it was a step into dead
+  end.</comment>
+    <requestid>750095</requestid>
+  </revision>
 </revisionlist>

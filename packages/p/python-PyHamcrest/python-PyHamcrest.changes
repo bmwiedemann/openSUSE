@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Nov 21 12:06:53 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Remove pytest4.patch and replace it with pytest4-02.patch,
+  which is the upstream gh#hamcrest/PyHamcrest#124 fixing
+  compatibility with pytest 4+ officially. And of course, we
+  don't have to massacre test files anymore.
+
+-------------------------------------------------------------------
+Tue Nov  5 11:20:23 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Run spec-cleaner
+- Add pytest4.patch to make the testsuite actually really pass.
+
+-------------------------------------------------------------------
+Mon Nov  4 14:35:43 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Because of gh#hamcrest/PyHamcrest#123 we have to remove 
+  tests/hamcrest_unit_test/core/is{_test,instanceof_test}.py to
+  make the test suite passing.
+  Patch pytest4.patch has been removed, it was a step into dead
+  end.
+
+-------------------------------------------------------------------
 Fri Jul 19 10:22:31 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Restrict pytest to 3.x as the newer does not work with release.
