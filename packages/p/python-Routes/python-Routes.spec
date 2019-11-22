@@ -1,7 +1,7 @@
 #
 # spec file for package python-Routes
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        2.4.1
 Release:        0
 Summary:        Routing Recognition and Generation Tools
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            http://routes.groovie.org/
 Source:         https://files.pythonhosted.org/packages/source/R/Routes/Routes-%{version}.tar.gz
 # for testing
