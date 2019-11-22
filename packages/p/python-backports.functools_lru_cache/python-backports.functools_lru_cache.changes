@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  6 12:09:51 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.6.1:
+  * refresh metadata
+  * minor fixes
+
+-------------------------------------------------------------------
 Wed Feb 27 18:50:05 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not generate docu using python2 there is online docu that

@@ -21,11 +21,10 @@
 %define skip_python3 1
 %endif
 Name:           python-backports.functools_lru_cache
-Version:        1.5
+Version:        1.6.1
 Release:        0
 Summary:        Backported functools.lru_cache
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/jaraco/backports.functools_lru_cache
 Source:         https://files.pythonhosted.org/packages/source/b/backports.functools_lru_cache/backports.functools_lru_cache-%{version}.tar.gz
 # NOTE:
@@ -53,7 +52,8 @@ ActiveState.
 
 %prep
 %setup -q -n backports.functools_lru_cache-%{version}
-rm -rf backports.functools_lru_cache.egg-info
+rm -r backports.functools_lru_cache.egg-info
+rm pytest.ini
 
 %build
 %python_build
@@ -68,7 +68,7 @@ rm -rf backports.functools_lru_cache.egg-info
 mv backports backports_temp
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
 ln -s %{$python_sitelib}/backports/__init__.py %{buildroot}%{$python_sitelib}/backports/
-py.test-%{$python_bin_suffix} tests
+py.test-%{$python_bin_suffix} -v tests
 rm -r %{buildroot}%{$python_sitelib}/backports/__init__.py*
 rm -rf %{buildroot}%{$python_sitelib}/backports/__pycache__/
 }

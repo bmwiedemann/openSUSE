@@ -44,4 +44,14 @@
 - Move jaraco.packaging to be a Python 2 only doc dependency</comment>
     <requestid>679939</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9a75a7ed3c399e4054da948c34c724f7</srcmd5>
+    <version>1.6.1</version>
+    <time>1574414416</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.1:
+  * refresh metadata
+  * minor fixes</comment>
+    <requestid>745981</requestid>
+  </revision>
 </revisionlist>
