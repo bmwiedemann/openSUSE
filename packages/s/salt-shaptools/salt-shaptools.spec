@@ -12,14 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-# See also http://en.opensuse.org/openSUSE:Specfile_guidelines
+# See also https://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           salt-shaptools
-Version:        0.2.2
+Version:        0.2.3
 Release:        0
 Summary:        Salt modules and states for SAP Applications and SLE-HA components management
 
@@ -45,8 +45,8 @@ cp -R salt/modules/hanamod.py %{buildroot}/srv/salt/_modules
 cp -R salt/states/hanamod.py %{buildroot}/srv/salt/_states
 cp -R salt/modules/crmshmod.py %{buildroot}/srv/salt/_modules
 cp -R salt/states/crmshmod.py %{buildroot}/srv/salt/_states
-cp -R salt/modules/drbd.py %{buildroot}/srv/salt/_modules
-cp -R salt/states/drbd.py %{buildroot}/srv/salt/_states
+cp -R salt/modules/drbdmod.py %{buildroot}/srv/salt/_modules
+cp -R salt/states/drbdmod.py %{buildroot}/srv/salt/_states
 cp -R salt/modules/netweavermod.py %{buildroot}/srv/salt/_modules
 cp -R salt/states/netweavermod.py %{buildroot}/srv/salt/_states
 

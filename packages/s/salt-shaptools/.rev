@@ -41,4 +41,12 @@ Mon Feb  25 10:22:24 UTC 2019 - dakechi@suse.com
     <comment></comment>
     <requestid>745541</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4f11fca040acf79ba0e73a65e29d5c8b</srcmd5>
+    <version>0.2.3</version>
+    <time>1574414862</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>750142</requestid>
+  </revision>
 </revisionlist>
