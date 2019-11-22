@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 14 14:30:21 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add patch to build with setuptools >= 41.4:
+  * setuptools-gt-41_1.patch
+
+-------------------------------------------------------------------
 Tue Sep 10 13:45:54 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to build with py 3.8:

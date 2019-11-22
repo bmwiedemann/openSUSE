@@ -24,4 +24,12 @@
   * python38.patch</comment>
     <requestid>729897</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>22b379b5903aad568bbfce4494655287</srcmd5>
+    <version>0.8</version>
+    <time>1574414840</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>750111</requestid>
+  </revision>
 </revisionlist>

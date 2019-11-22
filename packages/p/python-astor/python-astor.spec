@@ -26,6 +26,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/berkerpeksag/astor
 Source:         https://github.com/berkerpeksag/astor/archive/%{version}.tar.gz#/astor-%{version}.tar.gz
 Patch0:         python38.patch
+# PATCH-FIX-UPSTREAM setuptools-gt-41_1.patch gh#berkerpeksag/astor#163 mcepl@suse.com
+# Remove weird acrobatics in setup.py and prefer proper use of setup.cfg.
+Patch1:         setuptools-gt-41_1.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -62,7 +65,7 @@ There are some other similar libraries, but astor focuses on the following areas
 
 %prep
 %setup -q -n astor-%{version}
-%patch0 -p1
+%autopatch -p1
 # ugly fix for the use of /usr/bin/env
 sed -i 's@env @@' astor/rtrip.py
 
