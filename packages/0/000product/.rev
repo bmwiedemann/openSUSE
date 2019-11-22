@@ -12718,4 +12718,25 @@
     <user>staging-bot</user>
     <comment>Automatic update</comment>
   </revision>
+  <revision rev="1818" vrev="1818">
+    <srcmd5>4af7f037fcc80b61e40ce8a29f4f6ea9</srcmd5>
+    <version>unknown</version>
+    <time>1574414925</time>
+    <user>dimstar_suse</user>
+    <comment>Update version</comment>
+  </revision>
+  <revision rev="1819" vrev="1819">
+    <srcmd5>7db32eb768851166f37d292a4458e2ac</srcmd5>
+    <version>unknown</version>
+    <time>1574414926</time>
+    <user>dimstar_suse</user>
+    <comment>Update version</comment>
+  </revision>
+  <revision rev="1820" vrev="1820">
+    <srcmd5>8e7c0d9716f5bb5960dcc36033fb1c34</srcmd5>
+    <version>unknown</version>
+    <time>1574414929</time>
+    <user>dimstar_suse</user>
+    <comment>Update version</comment>
+  </revision>
 </revisionlist>
