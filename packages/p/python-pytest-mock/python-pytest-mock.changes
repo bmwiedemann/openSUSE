@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Nov 16 22:35:16 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Disable current failing tests
+  see: https://github.com/pytest-dev/pytest-mock/issues/167
+  boils done to an issue of pytest
+
+-------------------------------------------------------------------
+Tue Nov  5 10:50:54 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.11.2:
+  * The pytest introspection follows message is no longer shown
+    if there is no pytest introspection (#154)
+  * mocker now raises a ValueError when used as a context-manager
+
+-------------------------------------------------------------------
+Mon Oct  7 12:56:56 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.11.1:
+  * Fix mocker.spy on Python 2 when used on non-function objects
+    which implement __call__ (#157).
+
+-------------------------------------------------------------------
 Mon Sep 30 12:22:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.11.0:

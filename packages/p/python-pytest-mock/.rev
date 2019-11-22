@@ -131,4 +131,12 @@
 - Drop merged patch mock3.patch and fix_tests.patch</comment>
     <requestid>734062</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>766584d8058a25304d38b15e5e1be023</srcmd5>
+    <version>1.11.2</version>
+    <time>1574414744</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749236</requestid>
+  </revision>
 </revisionlist>
