@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Nov 20 17:23:37 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 31
+  * Bug fixes: 6 bugs that users have reported on the ngspice bug
+    tracker have been fixed. Other bugs and some memory leaks have
+    been removed as well.
+  * New features:
+    + Improved VBIC model including self-heating
+    + variable 'nostepsizelimit' to speed up certain simulations
+    + new command 'setcs'
+    + vectors lin-tstart, lin-tstop, and lin-tstep enable the
+      'linearize' command to cut out a section of a result vector. 
+- Spec file cleanup
+  * only BuildRequire X11 devel packages for non-library package
+  * only specify really required
+
+-------------------------------------------------------------------
 Sat Jan  5 23:42:33 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 30

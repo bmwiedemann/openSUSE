@@ -1,7 +1,7 @@
 #
 # spec file for package ngspice
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,12 +27,12 @@
 
 Name:           %pname%{?build_shared:-shared}
 %define so_ver 0
-Version:        30
+Version:        31
 Release:        0
 Summary:        Mixed-level, Mixed-signal Circuit Simulator Based on spice3f5
 License:        BSD-2-Clause
 Group:          Productivity/Scientific/Electronics
-Url:            http://ngspice.sourceforge.net
+URL:            http://ngspice.sourceforge.net
 Source0:        http://downloads.sourceforge.net/%{pname}/%{pname}-%{version}.tar.gz
 Source1:        http://downloads.sourceforge.net/%{pname}/%{pname}-%{version}-manual.pdf
 Patch1:         ngspice-Use-gnuplot-terminal-auto-detection.patch
@@ -40,15 +40,18 @@ BuildRequires:  bison
 BuildRequires:  fftw3-devel
 BuildRequires:  flex
 BuildRequires:  gcc-fortran
-BuildRequires:  ncurses-devel
 BuildRequires:  readline-devel
-BuildRequires:  xorg-x11-devel
+BuildRequires:  pkgconfig(tinfo)
+%if 0%{?build_shared}
+BuildRequires:  libXaw-devel
+BuildRequires:  libXext-devel
+BuildRequires:  libXmu-devel
+%endif
 Requires:       %{pname}-scripts = %{version}
 Requires:       %{pname}-xspice-cm = %{version}
 Requires:       lib%{pname}%{so_ver} = %{version}
 Recommends:     %{pname}-doc = %{version}
 Provides:       ng-spice-rework = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Ngspice is a mixed-level/mixed-signal circuit simulator. Its code
@@ -127,12 +130,12 @@ export CFLAGS="%{optflags} -fPIE"
 export LDFLAGS="-pie"
 %configure \
     --disable-debug \
-%if 0%{!?build_shared:1}
-    --with-x \
-%else
+%if 0%{?build_shared}
     --with-ngshared \
-%endif
+%else
+    --with-x \
     %{?with_oldapps:--enable-oldapps} \
+%endif
     --with-readline=yes \
     --enable-xspice \
     --enable-cider \
@@ -143,7 +146,7 @@ make V=1 %{?_smp_mflags}
 %install
 %makeinstall
 find %{buildroot} -type f -name "*.la" -delete -print
-%if 0%{!?build_shared:1}
+%if ! 0%{?build_shared}
 rm %{buildroot}%{_includedir}/%{pname}/sharedspice.h
 %else
 rm -rf %{buildroot}%{_bindir}/cmpp %{buildroot}/%{_mandir} \
@@ -157,7 +160,7 @@ rm -rf %{buildroot}%{_bindir}/cmpp %{buildroot}/%{_mandir} \
 %post -n lib%{pname}%{so_ver} -p /sbin/ldconfig
 %postun -n lib%{pname}%{so_ver} -p /sbin/ldconfig
 
-%if 0%{!?build_shared:1}
+%if ! 0%{?build_shared}
 %files
 %license COPYING
 %doc ANALYSES AUTHORS BUGS DEVICES FAQ NEWS README
