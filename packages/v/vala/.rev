@@ -866,4 +866,12 @@
     <comment>New stable release (forwarded request 747317 from iznogood)</comment>
     <requestid>747641</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>6689ae9be6ec0ef80e1a30d828023a89</srcmd5>
+    <version>0.46.5</version>
+    <time>1574551133</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749287</requestid>
+  </revision>
 </revisionlist>
