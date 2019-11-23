@@ -18,7 +18,7 @@
 
 %define tarname wxmaxima
 Name:           wxMaxima
-Version:        19.09.0
+Version:        19.10.0
 Release:        0
 Summary:        Graphical User Interface for the maxima Computer Algebra System
 License:        GPL-2.0-or-later
@@ -32,7 +32,11 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  maxima >= 5.30.0
+%if 0%{suse_version} >= 1550
+BuildRequires:  rsvg-convert
+%else
 BuildRequires:  rsvg-view
+%endif
 BuildRequires:  update-desktop-files
 BuildRequires:  wxWidgets-devel >= 3
 # gnuplot is needed for plotting
