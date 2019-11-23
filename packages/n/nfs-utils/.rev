@@ -1365,4 +1365,18 @@
  Avoid an unhelpful warning (bsc#1150807)</comment>
     <requestid>732555</requestid>
   </revision>
+  <revision rev="150" vrev="11">
+    <srcmd5>cb494f1d257e07991f9993803242a2ab</srcmd5>
+    <version>unknown</version>
+    <time>1574549181</time>
+    <user>dimstar_suse</user>
+    <comment>- nfs-utils.spec - don't chown when not needed.
+  Only chown directories in /var/lib/nfs to statd
+  if they are currently owned by root.
+  The chown is needed for some upgrades, but if the
+  dirs are already owned by statd, an vulnerability in
+  statd could be escalated to root.
+  (bsc#1157321)</comment>
+    <requestid>750032</requestid>
+  </revision>
 </revisionlist>

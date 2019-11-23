@@ -224,9 +224,17 @@ chmod 644 %{buildroot}%{_sbindir}/{mountstats,nfsiostat}
 %service_add_pre auth-rpcgss-module.service nfs-idmapd.service nfs-blkmap.service rpc-statd-notify.service rpc-gssd.service rpc-statd.service rpc-svcgssd.service
 
 %post -n nfs-client
+# lib/nfs must be root-owned. 
+# sm and sm.back and contents should be statd:nogroup,
+# but only chown if the dirs are currently root-owned.
+# This is needed for some upgraded, but chown is best avoided
+# when not necessary
 chown root:root %{_localstatedir}/lib/nfs > /dev/null 2>&1 || :
 for i in sm sm.bak; do
-	chown -R statd:nogroup %{_localstatedir}/lib/nfs/$i > /dev/null 2>&1 || :
+    p=%{_localstatedir}/lib/nfs/$i
+    if [ -d "$b" -a -n "`chown 2> /dev/null -c --from root statd:nogroup $p`" ]; then
+	chown -R statd:nogroup $p > /dev/null 2>&1 || :
+    fi
 done
 ### migrate from /var/lock/subsys
 [ -d /run/nfs ] || mkdir /run/nfs

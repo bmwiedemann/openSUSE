@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 20 23:55:31 UTC 2019 - Neil Brown <nfbrown@suse.com>
+
+- nfs-utils.spec - don't chown when not needed.
+  Only chown directories in /var/lib/nfs to statd
+  if they are currently owned by root.
+  The chown is needed for some upgrades, but if the
+  dirs are already owned by statd, an vulnerability in
+  statd could be escalated to root.
+  (bsc#1157321)
+
+-------------------------------------------------------------------
 Mon Sep 23 01:52:29 UTC 2019 - Neil Brown <nfbrown@suse.com>
 
 - Delete  0006-nfs.conf-silence-include-error.patch
