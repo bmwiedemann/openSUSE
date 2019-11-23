@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 22 20:04:46 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.9
+  * Add .as_cidr_net and .as_cidr_addr on IPv4Obj and IPv6Obj
+  * Merge Github PR #168; rename in_portchannel and is_portchannel
+
+-------------------------------------------------------------------
 Thu Sep 26 10:39:16 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.4.7:
