@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 22 21:22:42 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade all the way to 2.3.2:
+  - Use raw string literals where appropriate
+  - Fix printing version for packages not installed through pip
+  - Fix parsing IPv6 addresses
+  - Make --serverlist show IPv6 addresses
+
+-------------------------------------------------------------------
 Sat Jun 29 16:35:45 CEST 2019 - Matej Cepl <mcepl@suse.com>
 
 - Add missing requirement python-psutil.

@@ -1,7 +1,7 @@
 #
 # spec file for package python-neovim-remote
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,12 @@
 %define skip_python2 1
 %define modname neovim-remote
 Name:           python-neovim-remote
-Version:        2.1.7
+Version:        2.3.2
 Release:        0
-Summary:        nvim process control utility
+Summary:        Neovim process control utility
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/mhinz/neovim-remote
+URL:            https://github.com/mhinz/neovim-remote
 Source0:        https://files.pythonhosted.org/packages/source/n/%{modname}/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module neovim}
 BuildRequires:  %{python_module psutil}
