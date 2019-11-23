@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-annotations
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jackson-annotations
-Version:        2.9.4
+Version:        2.10.1
 Release:        0
 Summary:        Core annotations for Jackson data processor
 License:        Apache-2.0
@@ -44,7 +44,9 @@ This package contains API documentation for %{name}.
 %prep
 %setup -q -n %{name}-%{name}-%{version}
 
-cp -p src/main/resources/META-INF/LICENSE .
+%pom_remove_plugin "org.moditect:moditect-maven-plugin"
+%pom_remove_plugin "org.sonatype.plugins:nexus-staging-maven-plugin"
+
 sed -i 's/\r//' LICENSE
 
 %{mvn_file} : %{name}
