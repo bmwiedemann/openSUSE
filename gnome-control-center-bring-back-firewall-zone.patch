@@ -17,22 +17,22 @@ This reverts commit b36924567e16839fbdc8796b975970e214719d81.
  panels/network/connection-editor/vpn-page.ui       |  39 +++++++
  10 files changed, 299 insertions(+)
 
-Index: b/panels/network/connection-editor/meson.build
+Index: gnome-control-center-3.34.1/panels/network/connection-editor/meson.build
 ===================================================================
---- a/panels/network/connection-editor/meson.build
-+++ b/panels/network/connection-editor/meson.build
+--- gnome-control-center-3.34.1.orig/panels/network/connection-editor/meson.build
++++ gnome-control-center-3.34.1/panels/network/connection-editor/meson.build
 @@ -10,6 +10,7 @@ sources = files(
    'ce-page-vpn.c',
    'ce-page-wifi.c',
    'ce-page.c',
-+  'firewall-helpers.h',
++  'firewall-helpers.c',
    'net-connection-editor.c',
    'ui-helpers.c',
-   'vpn-helpers.c' 
-Index: gnome-control-center-3.26.1/panels/network/connection-editor/ce-page-ethernet.c
+   'vpn-helpers.c'
+Index: gnome-control-center-3.34.1/panels/network/connection-editor/ce-page-ethernet.c
 ===================================================================
---- gnome-control-center-3.26.1.orig/panels/network/connection-editor/ce-page-ethernet.c
-+++ gnome-control-center-3.26.1/panels/network/connection-editor/ce-page-ethernet.c
+--- gnome-control-center-3.34.1.orig/panels/network/connection-editor/ce-page-ethernet.c
++++ gnome-control-center-3.34.1/panels/network/connection-editor/ce-page-ethernet.c
 @@ -28,6 +28,7 @@
  #include <NetworkManager.h>
  
@@ -67,7 +67,7 @@ Index: gnome-control-center-3.26.1/panels/network/connection-editor/ce-page-ethe
  }
  
  static void
-@@ -108,6 +118,9 @@ ui_to_setting (CEPageEthernet *page)
+@@ -110,6 +120,9 @@ ui_to_setting (CEPageEthernet *page)
                        NM_SETTING_CONNECTION_ID, gtk_entry_get_text (page->name),
                        NULL);
  
@@ -77,10 +77,10 @@ Index: gnome-control-center-3.26.1/panels/network/connection-editor/ce-page-ethe
          g_free (cloned_mac);
          g_free (device_mac);
  }
-Index: gnome-control-center-3.26.1/panels/network/connection-editor/ce-page-security.c
+Index: gnome-control-center-3.34.1/panels/network/connection-editor/ce-page-security.c
 ===================================================================
---- gnome-control-center-3.26.1.orig/panels/network/connection-editor/ce-page-security.c
-+++ gnome-control-center-3.26.1/panels/network/connection-editor/ce-page-security.c
+--- gnome-control-center-3.34.1.orig/panels/network/connection-editor/ce-page-security.c
++++ gnome-control-center-3.34.1/panels/network/connection-editor/ce-page-security.c
 @@ -28,6 +28,7 @@
  
  #include "wireless-security.h"
@@ -137,10 +137,10 @@ Index: gnome-control-center-3.26.1/panels/network/connection-editor/ce-page-secu
          return valid;
  }
  
-Index: gnome-control-center-3.26.1/panels/network/connection-editor/ce-page-security.h
+Index: gnome-control-center-3.34.1/panels/network/connection-editor/ce-page-security.h
 ===================================================================
---- gnome-control-center-3.26.1.orig/panels/network/connection-editor/ce-page-security.h
-+++ gnome-control-center-3.26.1/panels/network/connection-editor/ce-page-security.h
+--- gnome-control-center-3.34.1.orig/panels/network/connection-editor/ce-page-security.h
++++ gnome-control-center-3.34.1/panels/network/connection-editor/ce-page-security.h
 @@ -45,6 +45,8 @@ struct _CEPageSecurity
  
          GtkComboBox *security_combo;
@@ -150,10 +150,10 @@ Index: gnome-control-center-3.26.1/panels/network/connection-editor/ce-page-secu
          GtkSizeGroup *group;
          gboolean     adhoc;
  };
-Index: gnome-control-center-3.26.1/panels/network/connection-editor/ce-page-vpn.c
+Index: gnome-control-center-3.34.1/panels/network/connection-editor/ce-page-vpn.c
 ===================================================================
---- gnome-control-center-3.26.1.orig/panels/network/connection-editor/ce-page-vpn.c
-+++ gnome-control-center-3.26.1/panels/network/connection-editor/ce-page-vpn.c
+--- gnome-control-center-3.34.1.orig/panels/network/connection-editor/ce-page-vpn.c
++++ gnome-control-center-3.34.1/panels/network/connection-editor/ce-page-vpn.c
 @@ -28,6 +28,7 @@
  
  #include "ce-page-vpn.h"
@@ -194,11 +194,11 @@ Index: gnome-control-center-3.26.1/panels/network/connection-editor/ce-page-vpn.
  
          if (!nm_setting_verify (NM_SETTING (self->setting_connection), NULL, error))
                  return FALSE;
-Index: gnome-control-center-3.26.1/panels/network/connection-editor/ethernet-page.ui
+Index: gnome-control-center-3.34.1/panels/network/connection-editor/ethernet-page.ui
 ===================================================================
---- gnome-control-center-3.26.1.orig/panels/network/connection-editor/ethernet-page.ui
-+++ gnome-control-center-3.26.1/panels/network/connection-editor/ethernet-page.ui
-@@ -226,6 +226,36 @@
+--- gnome-control-center-3.34.1.orig/panels/network/connection-editor/ethernet-page.ui
++++ gnome-control-center-3.34.1/panels/network/connection-editor/ethernet-page.ui
+@@ -219,5 +219,35 @@
      <child>
        <placeholder/>
      </child>
@@ -233,12 +233,11 @@ Index: gnome-control-center-3.26.1/panels/network/connection-editor/ethernet-pag
 +      </packing>
 +    </child>
    </object>
-   <object class="GtkSizeGroup" id="sizegroup1">
-     <widgets>
-Index: gnome-control-center-3.26.1/panels/network/connection-editor/firewall-helpers.c
+ </interface>
+Index: gnome-control-center-3.34.1/panels/network/connection-editor/firewall-helpers.c
 ===================================================================
 --- /dev/null
-+++ gnome-control-center-3.26.1/panels/network/connection-editor/firewall-helpers.c
++++ gnome-control-center-3.34.1/panels/network/connection-editor/firewall-helpers.c
 @@ -0,0 +1,125 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
@@ -365,10 +364,10 @@ Index: gnome-control-center-3.26.1/panels/network/connection-editor/firewall-hel
 +        g_object_set (setting, NM_SETTING_CONNECTION_ZONE, zone, NULL);
 +        g_free (zone);
 +}
-Index: gnome-control-center-3.26.1/panels/network/connection-editor/firewall-helpers.h
+Index: gnome-control-center-3.34.1/panels/network/connection-editor/firewall-helpers.h
 ===================================================================
 --- /dev/null
-+++ gnome-control-center-3.26.1/panels/network/connection-editor/firewall-helpers.h
++++ gnome-control-center-3.34.1/panels/network/connection-editor/firewall-helpers.h
 @@ -0,0 +1,33 @@
 +/*
 + * This program is free software; you can redistribute it and/or modify
@@ -403,10 +402,10 @@ Index: gnome-control-center-3.26.1/panels/network/connection-editor/firewall-hel
 +
 +
 +#endif  /* _FIREWALL_HELPERS_H_ */
-Index: gnome-control-center-3.26.1/panels/network/connection-editor/security-page.ui
+Index: gnome-control-center-3.34.1/panels/network/connection-editor/security-page.ui
 ===================================================================
---- gnome-control-center-3.26.1.orig/panels/network/connection-editor/security-page.ui
-+++ gnome-control-center-3.26.1/panels/network/connection-editor/security-page.ui
+--- gnome-control-center-3.34.1.orig/panels/network/connection-editor/security-page.ui
++++ gnome-control-center-3.34.1/panels/network/connection-editor/security-page.ui
 @@ -63,6 +63,38 @@
              <property name="height">1</property>
            </packing>
@@ -446,10 +445,10 @@ Index: gnome-control-center-3.26.1/panels/network/connection-editor/security-pag
        </object>
      </child>
      <child type="tab">
-Index: gnome-control-center-3.26.1/panels/network/connection-editor/vpn-page.ui
+Index: gnome-control-center-3.34.1/panels/network/connection-editor/vpn-page.ui
 ===================================================================
---- gnome-control-center-3.26.1.orig/panels/network/connection-editor/vpn-page.ui
-+++ gnome-control-center-3.26.1/panels/network/connection-editor/vpn-page.ui
+--- gnome-control-center-3.34.1.orig/panels/network/connection-editor/vpn-page.ui
++++ gnome-control-center-3.34.1/panels/network/connection-editor/vpn-page.ui
 @@ -51,6 +51,45 @@
        </packing>
      </child>

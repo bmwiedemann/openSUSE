@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 15 04:40:33 UTC 2019 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Rebase gnome-control-center-bring-back-firewall-zone.patch
+
+-------------------------------------------------------------------
+Thu Nov 14 08:15:55 UTC 2019 - Yifan Jiang <yfjiang@suse.com>
+
+- BuildRequires /usr/bin/Xvfb instead of the xorg-x11-server-Xvfb
+  package. This is for the compatibility with older X packages where
+  Xvfb is not splitted.
+
+-------------------------------------------------------------------
 Sat Oct  5 14:34:11 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.1:

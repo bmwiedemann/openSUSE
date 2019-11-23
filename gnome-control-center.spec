@@ -42,6 +42,7 @@ Patch1002:      gnome-control-center-more-power-button-actions.patch
 # PATCH-FEATURE-SLE gnome-control-center-bring-back-firewall-zone.patch fate#316719 sckang@suse.com -- network: Bring back the firewall zone combo box to select proper firewall zone for each connection.
 Patch1003:      gnome-control-center-bring-back-firewall-zone.patch
 
+BuildRequires:  /usr/bin/Xvfb
 BuildRequires:  cups-devel >= 1.4
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -52,7 +53,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-dbusmock
 BuildRequires:  python3-pytest-xvfb
 BuildRequires:  translation-update-upstream
-BuildRequires:  xorg-x11-server-Xvfb
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(accountsservice) >= 0.6.39
 BuildRequires:  pkgconfig(cairo-gobject)
