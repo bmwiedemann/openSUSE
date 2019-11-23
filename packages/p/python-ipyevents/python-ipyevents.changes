@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 18 16:24:38 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 0.7.0
+  + Add a `remove_callbacks` method to remove all callbacks more easily.
+  + Increase minimum Python version to 3.6 (3.5 has reached end-of-life)
+
+-------------------------------------------------------------------
 Fri Sep 20 18:25:18 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Fix building.

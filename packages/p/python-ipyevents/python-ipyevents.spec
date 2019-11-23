@@ -17,8 +17,8 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
-%define mainver 0.6.3
-%define labver  1.6.3
+%define mainver 0.7.0
+%define labver  1.7.0
 Name:           python-ipyevents
 Version:        %{mainver}
 Release:        0
