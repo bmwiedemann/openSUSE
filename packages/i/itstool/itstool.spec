@@ -26,8 +26,13 @@ URL:            http://itstool.org
 Source:         http://files.itstool.org/itstool/%{name}-%{version}.tar.bz2
 
 BuildRequires:  python3-base
+%if 0%{?sle_version}
+BuildRequires:  python3-libxml2-python
+Requires:       python3-libxml2-python
+%else
 BuildRequires:  python3-libxml2
 Requires:       python3-libxml2
+%endif
 BuildArch:      noarch
 
 %description

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 18 07:40:25 UTC 2019 - Yifan Jiang <yfjiang@suse.com>
+
+- BuildRequires python3-libxml2-python for SLE and Leap 15, which
+  are using older version libxml2.
+
+-------------------------------------------------------------------
 Tue Sep 17 16:53:41 UTC 2019 - suse+build@de-korte.org
 
 - Update to version 2.0.6:
