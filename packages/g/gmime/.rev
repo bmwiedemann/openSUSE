@@ -512,4 +512,12 @@ Reduced to applicable license in SPDX format (forwarded request 107670 from dims
     <comment>Scripted push from {project}</comment>
     <requestid>736524</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>001b1ad081a63ef93c16f6f8ab33ca5d</srcmd5>
+    <version>3.2.5</version>
+    <time>1574550510</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749281</requestid>
+  </revision>
 </revisionlist>
