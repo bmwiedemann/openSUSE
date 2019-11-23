@@ -744,4 +744,12 @@
     <comment>- Update to version 2.0.9+git6.26b7b800:</comment>
     <requestid>749635</requestid>
   </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>d566e9aefb5c9d9bac7e064bde6eba73</srcmd5>
+    <version>2.0.9+git6.26b7b800</version>
+    <time>1574551950</time>
+    <user>dimstar_suse</user>
+    <comment>Add missing CVE information</comment>
+    <requestid>750309</requestid>
+  </revision>
 </revisionlist>
