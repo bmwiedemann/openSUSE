@@ -40,13 +40,14 @@ BuildRequires:  intltool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
+BuildRequires:  pkgconfig(fribidi) >= 1.0.0
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
 BuildRequires:  pkgconfig(gnutls) >= 3.2.7
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.16.0
-BuildRequires:  pkgconfig(libpcre2-8)
+BuildRequires:  pkgconfig(libpcre2-8) >= 10.21
 BuildRequires:  pkgconfig(pango) >= 1.22.0
 BuildRequires:  pkgconfig(vapigen) >= 0.24
 BuildRequires:  pkgconfig(zlib)

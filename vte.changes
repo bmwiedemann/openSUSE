@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 18 14:02:41 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
+
+- Add explicit BuildRequires pkgconfig(fribidi) >= 1.0.0.
+- Add minimal version for pcre2 BuildRequires.
+
+-------------------------------------------------------------------
 Fri Oct 11 19:15:14 UTC 2019 - bjorn.lie@gmail.com
 
 - Update to version 0.58.2:
