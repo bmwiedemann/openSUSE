@@ -224,6 +224,7 @@ test -x "$(type -p %{_bindir}/g++-7)" && export CXX="%{_bindir}/g++-7"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export CFLAGS="%{optflags} -fno-strict-aliasing"
+export LDFLAGS="%{optflags} -lm"
 %configure \
 	--disable-silent-rules \
 	--disable-static\
