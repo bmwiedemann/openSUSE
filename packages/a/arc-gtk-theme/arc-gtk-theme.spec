@@ -1,7 +1,7 @@
 #
 # spec file for package arc-gtk-theme
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,13 @@
 %define _theme  Arc
 %define _name   arc
 Name:           arc-gtk-theme
-Version:        20190330
+Version:        20190917
 Release:        0
 Summary:        Arc GTK+ theme
 License:        GPL-3.0-or-later
-Group:          System/GUI/Other
-URL:            https://github.com/NicoHood/arc-theme
-Source:         https://github.com/NicoHood/%{_name}-theme/releases/download/%{version}/%{_name}-theme-%{version}.tar.xz
-Source1:        https://github.com/NicoHood/%{_name}-theme/releases/download/%{version}/%{_name}-theme-%{version}.tar.xz.asc
+URL:            https://github.com/arc-design/arc-theme/
+Source:         https://github.com/arc-design/%{_name}-theme/releases/download/%{version}/%{_name}-theme-%{version}.tar.xz
+Source1:        https://github.com/arc-design/%{_name}-theme/releases/download/%{version}/%{_name}-theme-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -45,7 +44,6 @@ It supports MATE, GNOME, Budgie, Xfce, and Cinnamon.
 
 %package -n metatheme-%{_name}-common
 Summary:        Arc Common Theme Files
-Group:          System/GUI/Other
 Recommends:     adwaita-icon-theme
 Suggests:       gtk2-metatheme-%{_name} = %{version}
 Suggests:       gtk3-metatheme-%{_name} = %{version}
@@ -59,7 +57,6 @@ Marco, Xfwm4, and Cinnamon.
 
 %package -n gtk2-metatheme-%{_name}
 Summary:        Arc GTK+2 Theme
-Group:          System/GUI/Other
 Requires:       gtk2-engine-murrine
 Requires:       metatheme-%{_name}-common = %{version}
 Supplements:    packageand(metatheme-%{_name}-common:gtk2)
@@ -72,7 +69,6 @@ This package contains the GTK+2 theme.
 
 %package -n gtk3-metatheme-%{_name}
 Summary:        Arc GTK+3 Theme
-Group:          System/GUI/Other
 Requires:       gtk3 >= 3.14
 Requires:       metatheme-%{_name}-common = %{version}
 Supplements:    packageand(metatheme-%{_name}-common:gtk3)

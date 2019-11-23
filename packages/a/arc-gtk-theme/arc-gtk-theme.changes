@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Nov 19 06:33:05 UTC 2019 - Petr Cervinka <petr@cervinka.net>
+
+- Update to version 20190917:
+  * Allow builds against gnome-shell 3.34
+  * Refactor gnome-shell 3.32 code
+    * Removes redundant selectors/styling (i.e. styling that is no longer
+      required in newer gnome shell versions), and replaces with newer selectors/styling
+      (modifying to match Arc styling where necessary)
+    * Integrates styling from the default gnome shell theme into the Arc shell theme.
+      Because the user shell theme (Arc in this case) is "overlaid" over the default shell
+      theme, this is styling that was being "pulled in" anyway.
+    * Add full shadows to panel dropdown menus
+  * InfoBar colors should respect type
+  * Remove border from stackswitcher
+  * Don't hardcode LightDM font-size
+  * XFCE 4.14 panel styling fixes
+- Update GitHub project url from NicoHood to arc-design
+- Update public keyring from  NicoHood <pgp@nicohood.de> to David Mohammed <fossfreedom@ubuntu.com>
+
+-------------------------------------------------------------------
+Thu Oct 17 13:31:51 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
 Sat May 11 08:22:44 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 20190330 (no changelog supplied)
