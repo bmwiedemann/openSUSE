@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Nov 14 21:32:57 UTC 2019 - Michal Svec <msvec@suse.com>
+
+- update to 3.7
+  * Support for simultaneous bidirectional tests with the --bidir flag
+  * Use POSIX standard clock_gettime(3) interface for timekeeping where
+    available
+  * Passwords for authentication can be provided via environment
+    variable
+  * Specifying --repeating-payload and --reverse now works
+  * Failed authentication doesn't count for --one-off
+  * Several memory leaks related to authenticated use were fixed
+  * The delay for tearing down the control connection for the default
+    timed tests has been increased, to more gracefully handle
+    high-delay paths
+  * Various improvements to the libiperf APIs
+  * Fixed build behavior when OpenSSL is absent
+  * Portability fixes
+- spec file cleanup
+
+-------------------------------------------------------------------
 Fri Jul  6 07:22:31 UTC 2018 - liedke@rz.uni-mannheim.de
 
 - update to 3.6

@@ -1,7 +1,7 @@
 #
 # spec file for package iperf
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define soname  0
 Name:           iperf
-Version:        3.6
+Version:        3.7
 Release:        0
 Summary:        A tool to measure network performance
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Diagnostic
-Url:            http://software.es.net/iperf/
+URL:            https://software.es.net/iperf/
 #Source URL:    http://downloads.es.net/pub/iperf/%{name}-%{version}.tar.gz
 Source:         http://downloads.es.net/pub/iperf/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE -- Disable profiling if %%optflags includes -fomit-frame-pointer, as option -pg conflicts with it
@@ -82,7 +82,7 @@ This package contains development files.
 
 %prep
 %setup -q
-%if 0%(case "%optflags" in (*-fomit-frame-pointer*) echo 1;; esac)
+%if 0%(case "%{optflags}" in (*-fomit-frame-pointer*) echo 1;; esac)
 %patch1 -p 1
 %endif
 
@@ -91,20 +91,19 @@ This package contains development files.
 make %{?_smp_mflags}
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 
 # cleanup empty libtool .la file
 rm %{buildroot}%{_libdir}/lib%{name}.la
 
 %post -n lib%{name}%{soname} -p /sbin/ldconfig
-
 %postun -n lib%{name}%{soname} -p /sbin/ldconfig
 
 %files
 %defattr(-, root, root)
-%doc LICENSE README.md RELEASE_NOTES
+%doc LICENSE README.md RELNOTES.md
 %{_bindir}/%{name}3
-%{_mandir}/man1/%{name}3.1%{ext_man}
+%{_mandir}/man1/%{name}3.1%{?ext_man}
 
 %files -n lib%{name}%{soname}
 %defattr(-, root, root)
@@ -116,6 +115,6 @@ rm %{buildroot}%{_libdir}/lib%{name}.la
 %doc LICENSE
 %{_includedir}/%{name}_api.h
 %{_libdir}/lib%{name}.so
-%{_mandir}/man3/lib%{name}.3%{ext_man}
+%{_mandir}/man3/lib%{name}.3%{?ext_man}
 
 %changelog
