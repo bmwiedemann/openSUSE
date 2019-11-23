@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Nov 20 20:09:53 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix two inconsistencies with _libexecdir, sysusers.d and
+  tmpfiles.d are always in %{_prefix}/lib/.
+- Drop update-desktop-files BuildRequires, once added for
+  mimetypes.prov which is no longer part of update-desktop-files,
+  and dbus-1.desktop does not even handles a single mimetype.
+
+-------------------------------------------------------------------
+Wed May 29 13:25:43 UTC 2019 - Simon Lees <sflees@suse.de>
+
+- Replace DISABLE_RESTART_ON_UPDATE with 
+  %service_del_postun_without_restart
+- Remove version specific code to block all updates on restart as
+  hopefully no tumbleweed versions still have code causing those 
+  issues (was only present for a few snapshots)
+
+-------------------------------------------------------------------
 Wed Apr 24 09:27:11 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Remove the Leap42 conditionals that cause file conflict with

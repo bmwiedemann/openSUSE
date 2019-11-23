@@ -1,7 +1,7 @@
 #
 # spec file for package dbus-1
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,7 +53,6 @@ BuildRequires:  libexpat-devel >= 2.1.0
 BuildRequires:  libtool
 BuildRequires:  permissions
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(libsystemd) >= 209
 Requires(post): %{_libname} = %{version}
@@ -226,7 +225,7 @@ fi
 %set_permissions %{_libexecdir}/dbus-1/dbus-daemon-launch-helper
 %{_sbindir}/update-alternatives --install %{_bindir}/dbus-launch dbus-launch %{_bindir}/dbus-launch.nox11 10
 %service_add_post dbus.service dbus.socket
-%tmpfiles_create %{_tmpfilesdir}/dbus.conf
+%tmpfiles_create %{_prefix}/lib/tmpfiles.d/dbus.conf
 
 %preun
 if [ "$1" = 0 ] ; then
@@ -287,12 +286,12 @@ fi
 %attr(4750,root,messagebus) %verify(not mode) %{_libexecdir}/dbus-1/dbus-daemon-launch-helper
 %ghost /run/dbus
 %ghost %{_localstatedir}/lib/dbus/machine-id
-%{_libexecdir}/sysusers.d/dbus.conf
-%{_libexecdir}/tmpfiles.d/dbus.conf
+%{_prefix}/lib/sysusers.d/dbus.conf
+%{_prefix}/lib/tmpfiles.d/dbus.conf
 %{_unitdir}/dbus.service
 %{_unitdir}/dbus.socket
-# %dir %{_unitdir}/dbus.target.wants
-# %{_unitdir}/dbus.target.wants/dbus.socket
+# %%dir %%{_unitdir}/dbus.target.wants
+# %%{_unitdir}/dbus.target.wants/dbus.socket
 %dir %{_unitdir}/multi-user.target.wants
 %{_unitdir}/multi-user.target.wants/dbus.service
 %dir %{_unitdir}/sockets.target.wants
