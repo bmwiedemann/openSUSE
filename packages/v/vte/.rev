@@ -922,4 +922,12 @@ https://gitlab.gnome.org/GNOME/vte/commit/7566ad673a12d26293b0a74dd3cb3e5f3d22ed
     <comment></comment>
     <requestid>737894</requestid>
   </revision>
+  <revision rev="119" vrev="2">
+    <srcmd5>cb7c36bf44d083ffb24765e958794865</srcmd5>
+    <version>0.58.2</version>
+    <time>1574547663</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749377</requestid>
+  </revision>
 </revisionlist>
