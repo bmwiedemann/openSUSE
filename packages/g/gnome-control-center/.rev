@@ -1556,4 +1556,12 @@ https://gitlab.gnome.org/GNOME/gnome-control-center/commit/3e82d5386033e8fbf3f5b
     <comment>Scripted push from {project}</comment>
     <requestid>736535</requestid>
   </revision>
+  <revision rev="183" vrev="2">
+    <srcmd5>5cc1fb8f4e43dfd2510fc68b214b3138</srcmd5>
+    <version>3.34.1</version>
+    <time>1574550634</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749282</requestid>
+  </revision>
 </revisionlist>
