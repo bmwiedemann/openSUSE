@@ -17,7 +17,7 @@
 
 
 Name:           elementary-icon-theme
-Version:        5.0.4
+Version:        5.1.0
 Release:        0
 Summary:        A Tango-styled icon theme
 License:        GPL-3.0-or-later
@@ -81,8 +81,9 @@ This package contains a palette file for inkscape.
 %files
 %defattr(0644,root,root,0755)
 %license COPYING
-%doc AUTHORS CONTRIBUTING.md README.md
+%doc CONTRIBUTING.md README.md
 %{_datadir}/icons/elementary/
+%{_datadir}/metainfo/io.elementary.icons.appdata.xml
 %ghost %{_datadir}/icons/elementary/icon-theme.cache
 
 %files gimp-palette
