@@ -1,7 +1,7 @@
 #
 # spec file for package brotli
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 # Copyright (c) 2017 Buschmann <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -103,7 +103,7 @@ RFC 7932.
 
 %build
 %cmake
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
