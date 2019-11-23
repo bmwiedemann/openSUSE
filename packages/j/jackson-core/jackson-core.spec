@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-core
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jackson-core
-Version:        2.9.4
+Version:        2.10.1
 Release:        0
 Summary:        Core part of Jackson
 License:        Apache-2.0
@@ -37,6 +37,7 @@ as basic shared abstractions.
 
 %package javadoc
 Summary:        Javadoc for %{name}
+Group:          Development/Libraries/Java
 
 %description javadoc
 This package contains API documentation for %{name}.
@@ -46,6 +47,8 @@ This package contains API documentation for %{name}.
 
 # Remove plugins unnecessary for RPM builds
 %pom_remove_plugin ":maven-enforcer-plugin"
+%pom_remove_plugin "org.jacoco:jacoco-maven-plugin"
+%pom_remove_plugin "org.moditect:moditect-maven-plugin"
 
 cp -p src/main/resources/META-INF/LICENSE .
 cp -p src/main/resources/META-INF/NOTICE .

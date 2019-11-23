@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Wed Nov 20 17:42:21 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Version update to 2.10.1
+  * 2.10.1 (not yet released)
+    #455: Jackson reports wrong locations for JsonEOFException
+    #567: Add 'uses' for 'ObjectCodec' in module-info
+    #578: Array index out of bounds in hex lookup
+  * 2.10.0 (26-Sep-2019)
+    #433: Add Builder pattern for creating configured Stream factories
+    #464: Add "maximum unescaped char" configuration option for 'JsonFactory' via builder
+    #467: Create 'JsonReadFeature' to move JSON-specific 'JsonParser.Feature's to
+    #479: Improve thread-safety of buffer recycling
+    #480: 'SerializableString' value can not directly render to Writer
+    #481: Create 'JsonWriteFeature' to move JSON-specific 'JsonGenerator.Feature's to
+    #484: Implement 'UTF8JsonGenerator.writeRawValue(SerializableString)' (and
+    	  'writeRaw(..)') more efficiently
+    #495: Create 'StreamReadFeature' to move non-json specific 'JsonParser.Feature's to
+    #496: Create 'StreamWriteFeature' to take over non-json-specific 'JsonGenerator.Feature's
+    #502: Make 'DefaultPrettyPrinter.createInstance()' to fail for sub-classes
+    #506: Add missing type parameter for 'TypeReference' in 'ObjectCodec'
+    #508: Add new exception type 'InputCoercionException' to be used for failed coercions
+    	  like overflow for 'int'
+    #517: Add 'JsonGenerator.writeStartObject(Object, int)' (needed by CBOR, maybe Avro)
+    #527: Add simple module-info for JDK9+, using Moditect
+    #533: UTF-8 BOM not accounted for in JsonLocation.getByteOffset()
+    #539: Reduce max size of recycled byte[]/char[] blocks by 'TextBuffer',
+    	  'ByteArrayBuilder'
+    #547: 'CharsToNameCanonicalizer': Internal error on 'SymbolTable.rehash()' with high
+    	  number of hash collisions
+    #548: ByteQuadsCanonicalizer: ArrayIndexOutOfBoundsException in addName
+    #549: Add configurability of "quote character" for JSON factory
+    #561: Misleading exception for unquoted String parsing
+    #563: Async parser does not keep track of Array context properly
+    	  - Rewrite 'JsonGenerator.copyCurrentStructure()' to remove recursion)
+	  - Add 'missingNode()', 'nullNode()' in 'TreeCodec'
+	  - Add 'JsonParserDelegate.delegate()' methods
+  * 2.9.10 (21-Sep-2019)
+    #540: UTF8StreamJsonParser: fix byte to int conversion for malformed escapes
+    #556: 'IndexOutOfBoundsException' in UTF8JsonGenerator.writeString(Reader, len)
+    	  when using a negative length
+  * 2.9.9 (16-May-2019)
+    #516: _inputPtr off-by-one in UTF8StreamJsonParser._parseNumber2()
+    #531: Non-blocking parser reports incorrect locations when fed with non-zero offset
+  * 2.9.8 (15-Dec-2018)
+    #488: Fail earlier on coercions from "too big" 'BigInteger' into
+    	  fixed-size types ('int', 'long', 'short')
+    #510: Fix ArrayIndexOutofBoundsException found by LGTM.com
+    	  - Improve exception message for missing Base64 padding (see databind#2183)
+  * 2.9.7 (19-Sep-2018)
+    #476: Problem with 'BufferRecycler' via async parser (or when sharing parser
+    	  across threads)
+    #477: Exception while decoding Base64 value with escaped '=' character
+    #488: Fail earlier on coercions from "too big" 'BigInteger' into
+    	  fixed-size types ('int', 'long', 'short')
+  * 2.9.6 (12-Jun-2018)
+    #400: Add mechanism for forcing 'BufferRecycler' released (to call on shutdown)
+    #460: Failing to link 'ObjectCodec' with 'JsonFactory' copy constructor
+    #463: Ensure that 'skipChildren()' of non-blocking 'JsonParser' will throw
+    	  exception if not enough input
+  * 2.9.5 (26-Mar-2018)
+    No changes since 2.9.4
+
+-------------------------------------------------------------------
 Tue Oct  1 13:54:36 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of jackson-core 2.9.4
