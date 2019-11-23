@@ -764,4 +764,12 @@
   * 0003-525-Consider-specificity-when-applying-CSS-selector-.patch (forwarded request 746179 from favogt)</comment>
     <requestid>746227</requestid>
   </revision>
+  <revision rev="96" vrev="3">
+    <srcmd5>848d4174292a54223949f7aeb167cece</srcmd5>
+    <version>2.46.3</version>
+    <time>1574550384</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749280</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 13 08:09:23 UTC 2019 - Yifan Jiang <yfjiang@suse.com>
+
+- Add explicit conflicts between rsvg-convert and rsvg-view <=2.45.7.
+
+-------------------------------------------------------------------
+Tue Nov 12 14:45:07 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
+
+- Fix incorrect obsoletes for rsvg-view.
+
+-------------------------------------------------------------------
 Thu Nov  7 07:51:06 UTC 2019 - Fabian Vogt <fvogt@suse.com>
 
 - Add patches to fix coloring of symbolic icons (glgo#GNOME/librsvg#525):

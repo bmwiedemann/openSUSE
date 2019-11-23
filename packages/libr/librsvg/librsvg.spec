@@ -67,7 +67,7 @@ Provides:       librsvg2 = %{version}
 Obsoletes:      librsvg2 < %{version}
 Provides:       librsvg = %{version}
 Obsoletes:      librsvg < %{version}
-Obsoletes:      rsvg-view >= %{version}
+Obsoletes:      rsvg-view <= %{version}
 
 %description -n librsvg-2-%{librsvg_sover}
 This package contains a library to render SVG (scalable vector
@@ -117,6 +117,7 @@ This package provides a librsvg-based gdk-pixbuf loader.
 Summary:        SVG Convert using the GNOME Render SVG library
 License:        LGPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
+Conflicts:      rsvg-view <= 2.45.7
 
 %description -n rsvg-convert
 This package contains a tool to convert SVG (scalable vector
