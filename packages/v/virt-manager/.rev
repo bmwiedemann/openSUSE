@@ -1590,4 +1590,12 @@
     <comment>Upstream fixes particularly for supporting bochs video type which is preferred for UEFI booting</comment>
     <requestid>748497</requestid>
   </revision>
+  <revision rev="202" vrev="6">
+    <srcmd5>75888db8593225e79e8f758fc21bf2e3</srcmd5>
+    <version>2.2.1</version>
+    <time>1574552374</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1157097 - PV guest on_reboot event be set to 'destroy' by default</comment>
+    <requestid>750393</requestid>
+  </revision>
 </revisionlist>

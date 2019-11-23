@@ -6,7 +6,7 @@ Index: virt-manager-2.2.1/virtinst/install/installer.py
 ===================================================================
 --- virt-manager-2.2.1.orig/virtinst/install/installer.py
 +++ virt-manager-2.2.1/virtinst/install/installer.py
-@@ -436,6 +436,18 @@ class Installer(object):
+@@ -436,6 +436,20 @@ class Installer(object):
          install_xml = None
          if self.has_install_phase():
              install_xml = self._get_install_xml(guest, meter)
@@ -21,7 +21,9 @@ Index: virt-manager-2.2.1/virtinst/install/installer.py
 +                guest.bootloader = None
 +                self._treemedia_bootconfig = ("/usr/lib/grub2/x86_64-xen/grub.xen", "", "")
 +                log.debug("Using grub.xen to boot guest")
++                on_reboot_value = guest.on_reboot
 +                self._alter_bootconfig(guest)
++                guest.on_reboot = on_reboot_value
          final_xml = guest.get_xml()
  
          log.debug("Generated install XML: %s",

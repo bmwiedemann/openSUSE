@@ -6,7 +6,7 @@ Index: virt-manager-2.2.1/virtManager/connection.py
 ===================================================================
 --- virt-manager-2.2.1.orig/virtManager/connection.py
 +++ virt-manager-2.2.1/virtManager/connection.py
-@@ -1002,7 +1002,7 @@ class vmmConnection(vmmGObject):
+@@ -995,7 +995,7 @@ class vmmConnection(vmmGObject):
          self._add_conn_events()
  
          try:

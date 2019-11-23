@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 22 13:50:11 MST 2019 - carnold@suse.com
+
+- bsc#1157097 - PV guest on_reboot event be set to 'destroy' by
+  default
+  virtinst-pvgrub2-bootloader.patch
+- Rebased patches
+  virtinst-change-location-for-grub_xen.patch
+  virtman-increase-setKeepAlive-count.patch
+
+-------------------------------------------------------------------
 Tue Nov 12 10:17:56 MST 2019 - carnold@suse.com
 
 - Upstream bug fixes (bsc#1027942)
