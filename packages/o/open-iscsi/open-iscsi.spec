@@ -16,15 +16,17 @@
 #
 
 
-%define iscsi_release 878-suse
+%define iscsi_minor_release 1
+%define iscsi_patch_release 0
+%define iscsi_patch_release_suse %{iscsi_patch_release}-suse
 Name:           open-iscsi
-Version:        2.0.878
+Version:        2.1.0
 Release:        0
 Summary:        Linux iSCSI Software Initiator
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 Url:            http://www.open-iscsi.com
-Source:         %{name}-2.0.%{iscsi_release}.tar.bz2
+Source:         %{name}-2.%{iscsi_minor_release}.%{iscsi_patch_release_suse}.tar.bz2
 Patch1:         %{name}-SUSE-latest.diff.bz2
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -62,9 +64,9 @@ comes with a daemon process called iscsid, and a management utility,
 iscsiadm.
 
 %package -n libopeniscsiusr0_2_0
-Version:        2.0.878
+Version:        2.%{iscsi_minor_release}.%{iscsi_patch_release}
 Release:        0
-Summary:        iSCSI User-level Library
+Summary:        The iSCSI User-level Library
 Group:          System/Libraries
 Obsoletes:      libopeniscsiusr0_1_0
 
@@ -72,7 +74,7 @@ Obsoletes:      libopeniscsiusr0_1_0
 The iSCSI user-space API from the open-iscsi project.
 
 %package -n iscsiuio
-Version:        0.7.8.4
+Version:        0.7.8.6
 Release:        0
 Summary:        Linux Broadcom NetXtremem II iscsi server
 Group:          Productivity/Networking/Other
@@ -94,9 +96,9 @@ The communication to the driver is done via user-space I/O (Kernel module name
 "uio").
 
 %package devel
-Version:        2.0.878
+Version:        2.%{iscsi_minor_release}.%{iscsi_patch_release}
 Release:        0
-Summary:        iSCSI User-level Library Development Library and Include files
+Summary:        The iSCSI User-level Library Development Library and Include files
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 
@@ -106,7 +108,7 @@ include files and documentation. These are used to compile against
 the libopeniscsiusr library.
 
 %prep
-%setup -q -n %{name}-2.0.%{iscsi_release}
+%setup -q -n %{name}-2.%{iscsi_minor_release}.%{iscsi_patch_release_suse}
 %patch1 -p1
 
 %build
@@ -179,7 +181,7 @@ fi
 %{_unitdir}/iscsid.service
 %{_unitdir}/iscsid.socket
 %{_unitdir}/iscsi.service
-%{_libexecdir}/systemd/system-generators/ibft-rule-generator
+%{_systemdgeneratordir}/ibft-rule-generator
 %{_sbindir}/rciscsi
 %{_sbindir}/rciscsid
 /sbin/iscsid
