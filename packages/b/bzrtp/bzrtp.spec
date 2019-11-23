@@ -1,7 +1,7 @@
 #
 # spec file for package bzrtp
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,6 @@ Version:        1.0.6
 Release:        0
 Summary:        ZRTP keys exchange protocol implementation
 License:        GPL-2.0-or-later
-Group:          Development/Libraries/C and C++
 URL:            https://linphone.org/
 Source:         https://linphone.org/releases/sources/%{name}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
@@ -42,7 +41,6 @@ on many platforms including x86 and ARM processors.
 
 %package -n lib%{name}%{sover}
 Summary:        ZRTP keys exchange protocol implementation
-Group:          System/Libraries
 
 %description -n lib%{name}%{sover}
 bzrtp is a FOSS implementation of ZRTP keys exchange protocol.
@@ -51,7 +49,6 @@ on many platforms including x86 and ARM processors.
 
 %package devel
 Summary:        Development files of libbzrtp
-Group:          Development/Libraries/C and C++
 Requires:       lib%{name}%{sover} = %{version}
 
 %description devel
@@ -60,14 +57,13 @@ libraries, development tools necessary for compiling and linking
 application which will use libbzrtp.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %cmake \
   -DENABLE_STATIC=OFF \
   -DENABLE_STRICT=OFF
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
