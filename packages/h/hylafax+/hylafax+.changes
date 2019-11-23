@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov 22 15:00:52 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Version 7.0.1
+* create a client timeout setting and change the default from 60 to
+  3600 seconds (26 Sep 2019)
+* extend timeout for receiving ECM frames (21 Aug 2019)
+* fix timeout in Class 1 frame reception (5 Aug 2019)
+* improve Class 1 protocol handling when MaxRecvPages exceeded (31 Jul 2019)
+* fix ModemGroup limit default (11 Jul 2019)
+* fix recovery for SSL Fax write failures (6 Jun 2019)
+
+
+-------------------------------------------------------------------
 Fri Nov 22 11:43:31 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
 
 - build fails with libtiff 4.1: pretend, that 4.1 is similar to 4.0
