@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 12 18:23:52 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.26.4:
+  + Apply same check to remote text files as local ones, which
+    should fix parsing of directories on network file systems.
+  + Add totem_pl_parser_add_ignored_glob() API, to force ignore
+    some files depending on how they are named, before we even get
+    to checking their contents.
+  + Fix a number of compilation warnings.
+
+-------------------------------------------------------------------
 Tue Mar  5 13:16:41 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.26.3:

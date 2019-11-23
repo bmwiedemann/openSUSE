@@ -17,8 +17,9 @@
 
 
 %define sover   18
+
 Name:           totem-pl-parser
-Version:        3.26.3
+Version:        3.26.4
 Release:        0
 Summary:        A GObject-based library to parse playlist formats
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later
@@ -26,6 +27,7 @@ Group:          Productivity/Multimedia/Video/Players
 URL:            http://www.gnome.org/projects/totem/
 #Source0:       http://download.gnome.org/sources/totem-pl-parser/3.26/%%{name}-%%{version}.tar.xz
 Source:         %{name}-%{version}.tar.xz
+
 BuildRequires:  gtk-doc
 BuildRequires:  intltool
 BuildRequires:  libgcrypt-devel
