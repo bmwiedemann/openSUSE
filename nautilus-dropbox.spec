@@ -19,21 +19,17 @@
 
 %global nautilus_extdir %( pkg-config libnautilus-extension --variable extensiondir )
 Name:           nautilus-dropbox
-Version:        2015.10.28
+Version:        2019.02.14
 Release:        0
 Summary:        Dropbox client integrated into Nautilus
 License:        GPL-3.0-or-later AND CC-BY-ND-3.0
 Group:          Productivity/File utilities
 URL:            https://www.dropbox.com
 Source:         https://www.dropbox.com/download?dl=packages/%{name}-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM nautilus-dropbox-fix-crash.patch boo#900515 dimstar@opensuse.org -- Fix crash on startup
-Patch0:         nautilus-dropbox-fix-crash.patch
-# PATCH-FIX-UPSTREAM https://github.com/dropbox/nautilus-dropbox/pull/31
-Patch1:         nautilus-dropbox-reproducible.patch
-BuildRequires:  desktop-file-utils
 BuildRequires:  pkgconfig
-BuildRequires:  python-docutils
-BuildRequires:  python-gtk
+BuildRequires:  gobject-introspection
+BuildRequires:  python3-docutils
+BuildRequires:  python3-gobject
 BuildRequires:  pkgconfig(libnautilus-extension) >= 2.16.0
 
 %description
@@ -43,8 +39,8 @@ and share them easily. Never email yourself a file again!
 %package -n dropbox-cli
 Summary:        Dropbox command line interface
 Group:          Productivity/File utilities
-Requires:       python-gpgme
-Requires:       python-gtk
+Requires:       python3-gpgme
+Requires:       python3-gobject-Gdk
 Provides:       dropbox = %{version}
 Obsoletes:      dropbox <= 2015.10.28
 
@@ -68,8 +64,6 @@ This package integrates dropbox seamless into nautilus.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
 %configure --disable-static
@@ -79,15 +73,7 @@ make %{?_smp_mflags}
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%if 0%{?suse_version} < 1330
-%post -n dropbox-cli
-%icon_theme_cache_post
-%desktop_database_post
-
-%postun -n dropbox-cli
-%icon_theme_cache_postun
-%desktop_database_postun
-%endif
+sed -i '1s|env python|python|' %{buildroot}%{_bindir}/dropbox
 
 %files -n dropbox-cli
 %license COPYING
