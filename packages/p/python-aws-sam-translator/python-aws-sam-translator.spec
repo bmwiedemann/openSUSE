@@ -1,7 +1,7 @@
 #
 # spec file for package python-aws-sam-translator
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,14 @@
 #
 
 
+# Disable tests on SLE-12 due to issues with Python 3.4
+# see: https://github.com/awslabs/serverless-application-model/issues/1255
+%if 0%{?suse_version} < 1500
+%bcond_with test
+%else
+%bcond_without test
+%endif
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-aws-sam-translator
 Version:        1.11.0
@@ -23,9 +31,8 @@ Release:        0
 Summary:        AWS SAM template to AWS CloudFormation template translator
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/awslabs/serverless-application-model
+URL:            https://github.com/awslabs/serverless-application-model
 Source:         https://github.com/awslabs/serverless-application-model/archive/v%{version}.tar.gz#/serverless-application-model-%{version}.tar.gz
-Patch:          ast_drop-compatible-releases-operator.patch
 %if 0%{?suse_version} < 1500
 BuildRequires:  python
 %endif
@@ -64,7 +71,6 @@ templates into AWS CloudFormation templates
 
 %prep
 %setup -q -n serverless-application-model-%{version}
-%patch -p1
 sed -i -e '1s|#!/usr/bin/env python2|#!/usr/bin/python3|' bin/sam-translate.py
 
 %build
@@ -77,9 +83,11 @@ sed -i -e '1s|#!/usr/bin/env python2|#!/usr/bin/python3|' bin/sam-translate.py
 mkdir -p %{buildroot}%{_bindir}
 install -D -m 644 bin/sam-translate.py %{buildroot}%{_bindir}/sam-translate
 
+%if %{with test}
 %check
 export LANG=en_US.UTF8
 %pytest
+%endif
 
 %files %{python_files}
 %doc README.md
