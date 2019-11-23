@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 22 11:43:31 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- build fails with libtiff 4.1: pretend, that 4.1 is similar to 4.0
+
+-------------------------------------------------------------------
 Thu Jul 18 12:45:43 UTC 2019 - Axel Braun <axel.braun@gmx.de>
 
 - Version 7.0.0
