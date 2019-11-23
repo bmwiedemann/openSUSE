@@ -43,10 +43,10 @@ BuildRequires:  python-funcsigs
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-dbm
 Requires:       python-pylibmc
-Requires:       python-python-memcached
 Requires:       python-setuptools
 Recommends:     python-SQLAlchemy
 Recommends:     python-cryptography
+Recommends:     python-python-memcached
 Recommends:     python-pycrypto
 Recommends:     python-pycryptopp >= 0.5.12
 Recommends:     python-pymongo
