@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Nov 15 11:45:39 UTC 2019 -  <timueller+perl@suse.de>
+
+- Add manual license Artistic-1.0 OR GPL-1.0-or-later to cpanspec.yml
+  https://github.com/DrHyde/perl-modules-Data-Compare/issues/15
+
+-------------------------------------------------------------------
+Wed Nov  6 10:02:56 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.27
+   see /usr/share/doc/packages/perl-Data-Compare/CHANGELOG
+
+  1.27    2019-11-05  DCANTRELL  Fix bug when options are passed as a persistent
+  				 hash from calling code and not an anonyhash
+  				 (Sam Kington)
+
+-------------------------------------------------------------------
+Thu Sep 19 07:52:32 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.26
+   see /usr/share/doc/packages/perl-Data-Compare/CHANGELOG
+
+  1.26    2019-09-18  DCANTRELL  Minor code quality improvements from Alberto
+                                   Simõe;
+                                 Reinstate check for cwd being inaccessible
+                                   (Daniel Collins)
+
+-------------------------------------------------------------------
 Thu Apr 16 21:11:04 UTC 2015 - coolo@suse.com
 
 - updated to 1.25

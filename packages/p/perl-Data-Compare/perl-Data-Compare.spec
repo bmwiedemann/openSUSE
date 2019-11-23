@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Data-Compare
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,31 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-Data-Compare
-Version:        1.25
+Version:        1.27
 Release:        0
+#Upstream: SUSE-Public-Domain
 %define cpan_name Data-Compare
-Summary:        Compare Perl Data Structures
-License:        GPL-1.0+ or Artistic-1.0
+Summary:        Compare perl data structures
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Data-Compare/
-Source0:        http://www.cpan.org/authors/id/D/DC/DCANTRELL/%{cpan_name}-%{version}.tar.gz
+Url:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/D/DC/DCANTRELL/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Clone) >= 0.43
 BuildRequires:  perl(File::Find::Rule) >= 0.1
+BuildRequires:  perl(Test::More) >= 0.88
+Requires:       perl(Clone) >= 0.43
 Requires:       perl(File::Find::Rule) >= 0.1
+Requires:       perl(Test::More) >= 0.88
 %{perl_requires}
 
 %description
@@ -42,30 +47,30 @@ A few data types are treated as special cases:
 
 * Scalar::Properties objects
 
-  This has been moved into a plugin, although functionality remains the
-  same as with the previous version. Full documentation is in the
-  Data::Compare::Plugins::Scalar::Properties manpage.
+This has been moved into a plugin, although functionality remains the same
+as with the previous version. Full documentation is in
+Data::Compare::Plugins::Scalar::Properties.
 
 * Compiled regular expressions, eg qr/foo/
 
-  These are stringified before comparison, so the following will match:
+These are stringified before comparison, so the following will match:
 
-      $r = qr/abc/i;
-      $s = qr/abc/i;
-      Compare($r, $s);
+    $r = qr/abc/i;
+    $s = qr/abc/i;
+    Compare($r, $s);
 
-  and the following won't, despite them matching *exactly* the same text:
+and the following won't, despite them matching *exactly* the same text:
 
-      $r = qr/abc/i;
-      $s = qr/[aA][bB][cC]/;
-      Compare($r, $s);
+    $r = qr/abc/i;
+    $s = qr/[aA][bB][cC]/;
+    Compare($r, $s);
 
-  Sorry, that's the best we can do.
+Sorry, that's the best we can do.
 
 * CODE and GLOB references
 
-  These are assumed not to match unless the references are identical - ie,
-  both are references to the same thing.
+These are assumed not to match unless the references are identical - ie,
+both are references to the same thing.
 
 You may also customise how we compare structures by supplying options in a
 hashref as a third parameter to the 'Compare()' function. This is not yet
@@ -75,19 +80,19 @@ lurking deep down in your data as well as at the top level, so beware!
 
 * ignore_hash_keys
 
-  an arrayref of strings. When comparing two hashes, any keys mentioned in
-  this list will be ignored.
+an arrayref of strings. When comparing two hashes, any keys mentioned in
+this list will be ignored.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -name "*.sh" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -96,6 +101,7 @@ find . -type f -print0 | xargs -0 chmod 644
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc ARTISTIC.txt CHANGELOG GPL2.txt MAINTAINERS-NOTE NOTES README TODO
+%doc CHANGELOG GPL2.txt MAINTAINERS-NOTE NOTES README
+%license ARTISTIC.txt
 
 %changelog
