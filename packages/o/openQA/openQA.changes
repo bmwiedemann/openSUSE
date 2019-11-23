@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Nov 22 20:21:55 UTC 2019 - coolo@suse.com
+
+- Update to version 4.6.1574454088.33c0b7556:
+  * Remove likely unneeded dependency xorg-x11-fonts
+  * Document the relevancy of file modifications for asset cleanup
+  * Make architecture diagram color blind friendly
+  * Fix worker cache in architecture diagram
+  * Dependency cron 191122000544
+  * Make virtio_console1.log etc. show up as result files
+  * openqa-clone-custom-git-refspec: Add syntax example for git branch
+  * Dependency cron 191121000600
+  * Hide internal folders in UI
+  * Tweak config of ObsRsyn Plugin
+  * Take directory mtime of assets into account
+  * travis_test: Fix Dockerfile based on tests in OBS
+  * Document typical issues with migration of job groups
+  * t: Hide all output from diag calls in tests
+  * Prevent boilerplate text "$VAR1 =" in dumper output
+  * Stabilize t/api/14-plugin_obs_rsync_async.t
+  * Disable old job group editor admin functionalities in favor of YAML
+  * docs: Describe YAML job templates editor as default with migration script from old
+  * Remove unused option --check in Selenium
+  * Migrate machine separator in dependency settings form ":" to "@"
+  * Remove dead code from isotovideo client
+  * travis_test: Try to fix container on OBS
+  * Tweak markup and styling for step actions within external results
+  * Detect documentation changes more reliably
+  * Add deprecation notice for old job template editor pointing to YAML
+  * Include external reporting template for parsed results too
+  * Allow extra arguments to template loaded with bug_report_actions
+  * Mark 05-scheduler-full.t as unstable due to recent instability
+  * Use CI repo instead of openqabot in build-docs
+  * Change favicon of test details page based on job state/result
+  * Add generated png variants of state/result icons
+  * Makefile: Extend icon generation to new ones with state/result
+  * Add new icons for every interesting state/result
+  * assets: Shift position of logo within frame to have more space
+  * assets: Update logo.svg using new standard dpi as suggested by inkscape
+  * Assume 25-cache-service.t to be stable since #2463
+  * Assume 15-admin-workers is "stable" since a6dd3fee5
+  * doc: Reword sentence about alias
+  * Extend range for success status codes in client
+
+-------------------------------------------------------------------
 Mon Nov 18 13:04:58 UTC 2019 - coolo@suse.com
 
 - Update to version 4.6.1574081651.5f93fbf7e:
