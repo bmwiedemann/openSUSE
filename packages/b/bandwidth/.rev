@@ -31,4 +31,22 @@
     <comment></comment>
     <requestid>563491</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4a6c6f3720307c5283f081a32c58277d</srcmd5>
+    <version>1.9.3</version>
+    <time>1574551402</time>
+    <user>dimstar_suse</user>
+    <comment>- Enforce usage of CFLAGS
+
+- Update to version 1.9.3
+  * no changes, bugfix release only
+
+- Update to version 1.9.1
+  * More object-oriented improvements.
+  * Separated object-oriented C (OOC) from bandwidth app.
+- Use HTTPS URL
+- Drop patch:
+  * bandwidth-fix-cflags.diff</comment>
+    <requestid>741835</requestid>
+  </revision>
 </revisionlist>
