@@ -17,9 +17,10 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 Name:           python-qtconsole
-Version:        4.5.2
-%define doc_ver 4.5.1
+Version:        4.6.0
+%define doc_ver 4.6.0
 Release:        0
 Summary:        Jupyter Qt console
 License:        BSD-3-Clause
@@ -28,10 +29,11 @@ URL:            https://github.com/jupyter/qtconsole
 Source0:        https://files.pythonhosted.org/packages/source/q/qtconsole/qtconsole-%{version}.tar.gz
 Source1:        https://media.readthedocs.org/pdf/qtconsole/%{doc_ver}/qtconsole.pdf
 Source2:        https://media.readthedocs.org/htmlzip/qtconsole/%{doc_ver}/qtconsole.zip
-BuildRequires:  %{python_module jupyter_core}
+BuildRequires:  %{python_module jupyter-core}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
+BuildRequires:  gdb
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
@@ -39,8 +41,8 @@ BuildRequires:  update-desktop-files
 Requires:       python-Pygments
 Requires:       python-ipykernel >= 4.1
 Requires:       python-ipython_genutils
-Requires:       python-jupyter_client >= 4.1
-Requires:       python-jupyter_core
+Requires:       python-jupyter-client >= 4.1
+Requires:       python-jupyter-core
 Requires:       python-sip
 Requires:       python-traitlets
 Provides:       python-jupyter_qtconsole = %{version}
@@ -51,10 +53,11 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module ipykernel >= 4.1}
 BuildRequires:  %{python_module ipython_genutils}
-BuildRequires:  %{python_module jupyter_client >= 4.1}
+BuildRequires:  %{python_module jupyter-client >= 4.1}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest-qt}
 BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module sip}
 BuildRequires:  %{python_module traitlets}
@@ -72,8 +75,8 @@ This package provides the python components.
 Summary:        Jupyter Qt console
 Requires:       python3-qtconsole = %{version}
 Requires:       jupyter-ipykernel >= 4.1
-Requires:       jupyter-jupyter_client >= 4.1
-Requires:       jupyter-jupyter_core
+Requires:       jupyter-jupyter-client >= 4.1
+Requires:       jupyter-jupyter-core
 Conflicts:      python3-jupyter_qtconsole < 4.4.4
 
 %description -n jupyter-qtconsole
@@ -126,8 +129,8 @@ cp -r docs/html %{buildroot}%{_docdir}/jupyter-qtconsole/
 %fdupes %{buildroot}%{_docdir}/jupyter-qtconsole/
 
 %check
-rm -rf build _build.*
-%python_expand pytest-%{$python_bin_suffix}
+export QT_QPA_PLATFORM="offscreen"
+%pytest
 
 %files %{python_files}
 %license LICENSE

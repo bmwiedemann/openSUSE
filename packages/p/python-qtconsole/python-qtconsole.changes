@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Nov 22 21:17:54 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 4.6.0
+  + Additions
+    * Add an option to configure scrollbar visibility.
+  + Changes
+    * Avoid introducing a new line when executing code.
+
+-------------------------------------------------------------------
+Tue Nov 12 16:48:16 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 4.5.5
+  * Set console to read only after input.
+  * Allow text to be added before the prompt while autocompleting.
+  * Scroll when adding text even when not executing.
+- Update to versionn 4.5.4
+  * Fix emoji highlighting.
+- Update to versionn 4.5.3
+  * Fix error when closing comms.
+  * Fix prompt automatically scrolling down on execution.
+
+-------------------------------------------------------------------
 Mon Jul 29 02:22:01 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to versionn 4.5.2
