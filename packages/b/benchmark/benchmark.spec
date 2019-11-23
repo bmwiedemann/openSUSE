@@ -63,7 +63,7 @@ sed -e 's|libdir=${prefix}/lib|libdir=${prefix}/%{_lib}|' \
   -DBENCHMARK_ENABLE_LTO=on \
   -DBENCHMARK_ENABLE_GTEST_TESTS=false \
   -DBENCHMARK_ENABLE_TESTING=true
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
