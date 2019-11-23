@@ -1,7 +1,7 @@
 #
 # spec file for package qgis
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -197,14 +197,8 @@ export CFLAGS="%{optflags}"
 export QTDIR=%{_prefix}
 export PATH=$PATH:$QTDIR/bin
 
-%ifarch x86_64 aarch64 ppc64 ppc64le
-%define lib lib64
-%else
-%define lib lib
-%endif
-
 %cmake \
-  -DQGIS_LIB_SUBDIR=%{lib} \
+  -DQGIS_LIB_SUBDIR=%{_lib} \
   -DWITH_3D=TRUE \
   -DWITH_BINDINGS=TRUE \
 %if %{with grass}
@@ -218,7 +212,7 @@ export PATH=$PATH:$QTDIR/bin
   -DWITH_POSTGRESQL=TRUE \
   -DPOSTGRES_LIBRARY=%{_libdir}/libpq.so \
   -DPOSTGRES_INCLUDE_DIR=%{_includedir}/pgsql \
-  -DQGIS_PLUGIN_SUBDIR=%{lib}/qgis \
+  -DQGIS_PLUGIN_SUBDIR=%{_lib}/qgis \
   -DQGIS_MANUAL_SUBDIR=share/man \
   -DQWT_INCLUDE_DIR=%{_includedir}/qt5/qwt6 \
   -DQCA_INCLUDE_DIR=%{_includedir}/qt5/Qca-qt5/QtCrypto \
