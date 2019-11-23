@@ -1,7 +1,7 @@
 #
 # spec file for package libdbusmenu
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,62 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%global sname libappindicator
+%if "%{flavor}" == ""
+ExclusiveArch:  do-not-build
+%endif
+
+%define sname libdbusmenu
 %define soname_glib 4
 %define soname_gtk2 4
 %define soname_gtk3 4
 %define soname_jsonloader 4
-Name:           libdbusmenu
+
+%if "%{flavor}" == "gtk2"
+%global gtkver 2
+%global soname_gtk %{soname_gtk2}
+%global libname_gtk  libdbusmenu-gtk%{soname_gtk}
+%global psuffix      -gtk%{gtkver}
+# dumper is GTK2 only
+%bcond_without testtools
+# Docs are the same for GTK2/3, dito for glib
+%bcond_without docs
+%global package_glib 1
+%endif
+
+%if "%{flavor}" == "gtk3"
+%global gtksuffix 3
+%global gtkver 3
+%global soname_gtk %{soname_gtk3}
+%global libname_gtk  libdbusmenu-gtk3-%{soname_gtk}
+%global psuffix      -gtk%{gtkver}
+%bcond_with    testtools
+%bcond_with    docs
+%endif
+
+%global libname_glib libdbusmenu-glib%{soname_glib}
+
+Name:           libdbusmenu%{?psuffix}
 Version:        16.04.0
 Release:        0
 Summary:        Small library that passes a menu structure across DBus
 License:        GPL-3.0-only AND (LGPL-2.1-only OR LGPL-3.0-only)
 Group:          System/Libraries
 URL:            https://launchpad.net/dbusmenu
-Source:         https://launchpad.net/libdbusmenu/16.04/%{version}/+download/%{name}-%{version}.tar.gz
+Source:         https://launchpad.net/libdbusmenu/16.04/%{version}/+download/%{sname}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE
+Patch0:         0001-Fix-build-with-gtk-doc-1.32-due-to-non-existing-tree.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0002-genericmenuitem-Make-accelerator-text-appear-again.patch
+# PATCH-FIX-OPENSUSE
+Patch2:         0003-Fix-HAVE_VALGRIND-AM_CONDITIONAL.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  gnome-common
+%if %{with docs}
 BuildRequires:  gtk-doc
+BuildRequires:  pkgconfig(gnome-doc-utils)
+%endif
 BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -39,13 +79,17 @@ BuildRequires:  vala
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
-BuildRequires:  pkgconfig(gnome-doc-utils)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
+%if "%flavor" == "gtk2"
 BuildRequires:  pkgconfig(gtk+-2.0)
+%else
 BuildRequires:  pkgconfig(gtk+-3.0)
+%endif
+%if %{with testtools}
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(valgrind)
 BuildRequires:  pkgconfig(x11)
+%endif
 
 %description
 A small little library that was created by pulling out some common
@@ -53,188 +97,186 @@ code out of mate-indicator-applet. It passes a menu structure
 across D-Bus so that a program can create a menu simply without
 worrying about how it is displayed on the other side of the bus.
 
-%package tools
+%package -n libdbusmenu-tools
 Summary:        Development tools for the dbusmenu libraries
 Group:          Development/Tools/Other
-Requires:       %{name}-glib%{soname_glib} = %{version}
+Requires:       %{libname_glib} = %{version}
 
-%description tools
+%description -n libdbusmenu-tools
 This packages contains the development tools for the dbusmenu libraries.
 
-%package glib%{soname_glib}
+%package -n %{libname_glib}
 Summary:        Small library that passes a menu structure across D-Bus
 Group:          System/Libraries
 
-%description glib%{soname_glib}
-This package contains the shared libraries for the dbusmenu-glib library.
+%description -n %{libname_glib}
+This package contains the shared library for the dbusmenu-glib.
 
 %package -n typelib-1_0-Dbusmenu-0_4
-Summary:        Small library that passes a menu structure across D-Bus -- Introspection bindings
+Summary:        Introspection bindings for %{libname_glib}
 Group:          System/Libraries
 
 %description -n typelib-1_0-Dbusmenu-0_4
 This package contains the GObject Introspection bindings for the dbusmenu
 library.
 
-%package glib-devel
+%package -n libdbusmenu-glib-devel
 Summary:        Development files for libdbusmenu-glib
 Group:          Development/Libraries/C and C++
-Requires:       %{name}-glib%{soname_glib} = %{version}
+Requires:       %{libname_glib} = %{version}
 Requires:       pkgconfig(dbus-glib-1)
 
-%description glib-devel
+%description -n libdbusmenu-glib-devel
 This package contains the development files for the dbusmenu-glib library.
 
-%package glib-doc
+%package -n libdbusmenu-glib-doc
 Summary:        Documentation for libdbusmenu-glib%{soname_glib}
 Group:          Documentation/HTML
 BuildArch:      noarch
 
-%description glib-doc
+%description -n libdbusmenu-glib-doc
 This package includes the documentation for the dbusmenu-glib library.
 
-%package gtk%{soname_gtk2}
-Summary:        Small library that passes a menu structure across D-Bus -- GTK+ 2 version
+%package -n %{libname_gtk}
+Summary:        GTK+ %{gtkver} version of libdbusmenu
 Group:          System/Libraries
+%if "%{flavor}" == "gtk2"
 Requires:       gtk2
+%endif
 
-%description gtk%{soname_gtk2}
-This package contains the shared libraries for the dbusmenu-gtk2 library.
+%description -n %{libname_gtk}
+This package contains GTK %{gtkver} dbusmenu shared library.
 
-%package -n typelib-1_0-DbusmenuGtk-0_4
-Summary:        Small library that passes a menu structure across D-Bus -- Introspection bindings
+%package -n typelib-1_0-DbusmenuGtk%{?gtksuffix}-0_4
+Summary:        Introspection bindings for %{libname_gtk}
 Group:          System/Libraries
 
-%description -n typelib-1_0-DbusmenuGtk-0_4
-This package contains the GObject Introspection bindings for the GTK+ 2 version
+%description -n typelib-1_0-DbusmenuGtk%{?gtksuffix}-0_4
+This package contains the GObject Introspection bindings for the GTK+ %{gtkver} version
 of the dbusmenu-gtk library.
 
-%package gtk-devel
-Summary:        Development files for libdbusmenu-gtk%{soname_gtk2}
+%package devel
+Summary:        Development files for %{libname_gtk}
 Group:          Development/Libraries/C and C++
-Requires:       %{name}-glib-devel = %{version}
-Requires:       %{name}-gtk%{soname_gtk2} = %{version}
+Requires:       %{libname_gtk} = %{version}
 Requires:       pkgconfig(dbus-glib-1)
-Requires:       pkgconfig(gtk+-2.0)
+Requires:       pkgconfig(dbusmenu-glib-0.4) = %{version}
 
-%description gtk-devel
-This package contains the development files for the dbusmenu-gtk2 library.
+%description devel
+This package contains the development files for the dbusmenu-gtk%{gtkver} library.
 
-%package gtk3-%{soname_gtk3}
-Summary:        Small library that passes a menu structure across DBus -- GTK+ 3 version
-Group:          System/Libraries
-
-%description gtk3-%{soname_gtk3}
-This package contains the shared libraries for the dbusmenu-gtk3 library.
-
-%package -n typelib-1_0-DbusmenuGtk3-0_4
-Summary:        Small library that passes a menu structure across D-Bus -- Introspection bindings
-Group:          System/Libraries
-
-%description -n typelib-1_0-DbusmenuGtk3-0_4
-This package contains the GObject Introspection bindings for the GTK+ 3 version
-of the dbusmenu-gtk library.
-
-%package gtk3-devel
-Summary:        Development files for libdbusmenu-gtk3-%{soname_gtk3}
-Group:          Development/Libraries/C and C++
-Requires:       %{name}-glib-devel = %{version}
-Requires:       %{name}-gtk3-%{soname_gtk3} = %{version}
-Requires:       pkgconfig(dbus-glib-1)
-Requires:       pkgconfig(gtk+-3.0)
-
-%description gtk3-devel
-This package contains the development files for the dbusmenu-gtk3 library.
-
-%package gtk-doc
-Summary:        Documentation for libdbusmenu-gtk%{soname_gtk2} and libdbusmenu-gtk3-%{soname_gtk3}
+%package doc
+Summary:        Documentation for libdbusmenu - GTK 2 and GTK 3
 Group:          Documentation/HTML
 BuildArch:      noarch
 
-%description gtk-doc
+%description doc
 This package contains the documentation for the dbusmenu-gtk2 and dbusmenu-gtk3
 libraries.
 
-%package jsonloader%{soname_jsonloader}
+%package -n libdbusmenu-jsonloader%{soname_jsonloader}
 Summary:        Small library that passes a menu structure across DBus -- Test library
 Group:          System/Libraries
 
-%description jsonloader%{soname_jsonloader}
+%description -n libdbusmenu-jsonloader%{soname_jsonloader}
 This package contains the shared libraries for dbusmenu-jsonloader, a library
 meant for test suites.
 
-%package jsonloader-devel
+%package -n libdbusmenu-jsonloader-devel
 Summary:        Development files for libdbusmenu-jsonloader%{soname_jsonloader}
 Group:          Development/Libraries/C and C++
-Requires:       %{name}-glib-devel = %{version}
-Requires:       %{name}-jsonloader%{soname_jsonloader} = %{version}
+Requires:       libdbusmenu-jsonloader%{soname_jsonloader} = %{version}
 Requires:       pkgconfig(dbus-glib-1)
+Requires:       pkgconfig(dbusmenu-glib-0.4) = %{version}
 Requires:       pkgconfig(json-glib-1.0)
 
-%description jsonloader-devel
+%description -n libdbusmenu-jsonloader-devel
 This package contains the development files for the dbusmenu-jsonloader library.
 
 %prep
-%setup -q
+%setup -q -n %{sname}-%{version}
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %build
 export CFLAGS="%{optflags} -Wno-error"
-%global _configure ../configure
-NOCONFIGURE=1 gnome-autogen.sh --enable-gtk-doc
-for ver in 2 3; do
-    mkdir build-gtk$ver
-    pushd build-gtk$ver
-    %configure \
-      --disable-static       \
-      --disable-scrollkeeper \
-      --enable-gtk-doc       \
-      --enable-introspection \
-      --with-gtk=$ver
-    make %{?_smp_mflags}
-    popd
-done
+autoreconf -vfi
+
+%configure \
+        --disable-static       \
+%if 0%{without testtools}
+        --disable-dumper       \
+        --disable-tests        \
+%endif
+        --enable-introspection \
+        --with-gtk=%{gtkver}
+
+make %{?_smp_mflags}
 
 %install
-for ver in 2 3; do
-    pushd build-gtk$ver
-    %make_install
-    popd
-done
+%make_install
 
 find %{buildroot} -type f -name "*.la" -delete -print
 
+%if %{with testtools}
 # Put documentation in correct directory.
-mkdir -p %{buildroot}%{_docdir}/%{name}-tools/
-mv -f %{buildroot}%{_datadir}/doc/%{name}/README.dbusmenu-bench \
-  %{buildroot}%{_docdir}/%{name}-tools/
+mkdir -p %{buildroot}%{_docdir}/%{sname}-tools/
+mv -f %{buildroot}%{_datadir}/doc/%{sname}/README.dbusmenu-bench \
+  %{buildroot}%{_docdir}/%{sname}-tools/
 
+%else
+# Cleanup unwanted files
+rm -Rf %{buildroot}%{_datadir}/doc/%{sname}/README.dbusmenu-bench \
+rm -Rf %{buildroot}%{_datadir}/%{sname}
+rm -Rf %{buildroot}%{_libexecdir}/dbusmenu-{bench,dumper,testapp}
+
+%endif
+
+# Remove glib version (only package once)
+%if 0%{?package_glib}
 # Put examples in correct documentation directory.
-mkdir -p %{buildroot}%{_docdir}/%{name}-glib-devel/examples/
-mv -f %{buildroot}%{_datadir}/doc/%{name}/examples/glib-server-nomenu.c \
-  %{buildroot}%{_docdir}/%{name}-glib-devel/examples/
+mkdir -p %{buildroot}%{_docdir}/%{sname}-glib-devel/examples/
+mv %{buildroot}%{_datadir}/doc/%{sname}/examples/glib-server-nomenu.c \
+  %{buildroot}%{_docdir}/%{sname}-glib-devel/examples/
 
-%post glib%{soname_glib} -p /sbin/ldconfig
-%postun glib%{soname_glib} -p /sbin/ldconfig
-%post gtk%{soname_gtk2} -p /sbin/ldconfig
-%postun gtk%{soname_gtk2} -p /sbin/ldconfig
-%post gtk3-%{soname_gtk3} -p /sbin/ldconfig
-%postun gtk3-%{soname_gtk3} -p /sbin/ldconfig
-%post jsonloader%{soname_jsonloader} -p /sbin/ldconfig
-%postun jsonloader%{soname_jsonloader} -p /sbin/ldconfig
+%else
+rm -Rf %{buildroot}%{_includedir}/libdbusmenu-glib-0.4/
+rm -Rf %{buildroot}%{_libdir}/libdbusmenu-glib.so*
+rm -Rf %{buildroot}%{_libdir}/pkgconfig/dbusmenu-glib-0.4.pc
+rm -Rf %{buildroot}%{_libdir}/girepository-1.0/Dbusmenu-0.4.typelib
+rm -Rf %{buildroot}%{_datadir}/gir-1.0/Dbusmenu-0.4.gir
+rm -Rf %{buildroot}%{_datadir}/vala/vapi/Dbusmenu-0.4.vapi
+%endif
 
-%files tools
+%if %{without docs}
+# (Bundled) docs are installed even with --disable-gtk-doc
+rm -Rf %{buildroot}%{_datadir}/gtk-doc
+%endif
+
+%post -n %{libname_glib} -p /sbin/ldconfig
+%postun -n %{libname_glib} -p /sbin/ldconfig
+%post -n %{libname_gtk} -p /sbin/ldconfig
+%postun -n %{libname_gtk} -p /sbin/ldconfig
+%post -n libdbusmenu-jsonloader%{soname_jsonloader} -p /sbin/ldconfig
+%postun -n libdbusmenu-jsonloader%{soname_jsonloader} -p /sbin/ldconfig
+
+%if %{with testtools}
+%files -n libdbusmenu-tools
 %license COPYING*
 %doc NEWS
 %{_libexecdir}/dbusmenu-bench
 %{_libexecdir}/dbusmenu-dumper
 %{_libexecdir}/dbusmenu-testapp
-%dir %{_datadir}/%{name}/
-%dir %{_datadir}/%{name}/json/
-%{_datadir}/%{name}/json/test-gtk-label.json
-%doc %dir %{_docdir}/%{name}-tools/
-%doc %{_docdir}/%{name}-tools/README.dbusmenu-bench
+%dir %{_datadir}/%{sname}/
+%dir %{_datadir}/%{sname}/json/
+%{_datadir}/%{sname}/json/test-gtk-label.json
+%doc %dir %{_docdir}/%{sname}-tools/
+%doc %{_docdir}/%{sname}-tools/README.dbusmenu-bench
+%endif
 
-%files glib%{soname_glib}
+%if 0%{?package_glib}
+%files -n %{libname_glib}
 %license COPYING*
 %doc NEWS
 %{_libdir}/libdbusmenu-glib.so.%{soname_glib}*
@@ -244,7 +286,7 @@ mv -f %{buildroot}%{_datadir}/doc/%{name}/examples/glib-server-nomenu.c \
 %doc NEWS
 %{_libdir}/girepository-1.0/Dbusmenu-0.4.typelib
 
-%files glib-devel
+%files -n libdbusmenu-glib-devel
 %license COPYING*
 %doc NEWS
 %dir %{_includedir}/libdbusmenu-glib-0.4/
@@ -261,78 +303,55 @@ mv -f %{buildroot}%{_datadir}/doc/%{name}/examples/glib-server-nomenu.c \
 %{_datadir}/gir-1.0/Dbusmenu-0.4.gir
 %dir %{_datadir}/vala/vapi/
 %{_datadir}/vala/vapi/Dbusmenu-0.4.vapi
-%doc %dir %{_docdir}/%{name}-glib-devel/
-%doc %dir %{_docdir}/%{name}-glib-devel/examples/
-%doc %{_docdir}/%{name}-glib-devel/examples/glib-server-nomenu.c
+%doc %dir %{_docdir}/%{sname}-glib-devel/examples/
+%doc %{_docdir}/%{sname}-glib-devel/examples/glib-server-nomenu.c
 
-%files glib-doc
+%files -n libdbusmenu-glib-doc
 %license COPYING*
 %doc NEWS
 %doc %{_datadir}/gtk-doc/html/libdbusmenu-glib/
+%endif
 
-%files gtk%{soname_gtk2}
+%files -n %{libname_gtk}
 %license COPYING*
 %doc NEWS
-%{_libdir}/libdbusmenu-gtk.so.%{soname_gtk2}*
+%{_libdir}/libdbusmenu-gtk*.so.%{soname_gtk}*
 
-%files -n typelib-1_0-DbusmenuGtk-0_4
+%files -n typelib-1_0-DbusmenuGtk%{?gtksuffix}-0_4
 %license COPYING*
 %doc NEWS
-%{_libdir}/girepository-1.0/DbusmenuGtk-0.4.typelib
+%{_libdir}/girepository-1.0/DbusmenuGtk*-0.4.typelib
 
-%files gtk-devel
+%files devel
 %license COPYING*
 %doc NEWS
-%dir %{_includedir}/libdbusmenu-gtk-0.4/
-%dir %{_includedir}/libdbusmenu-gtk-0.4/libdbusmenu-gtk/
-%{_includedir}/libdbusmenu-gtk-0.4/libdbusmenu-gtk/client.h
-%{_includedir}/libdbusmenu-gtk-0.4/libdbusmenu-gtk/dbusmenu-gtk.h
-%{_includedir}/libdbusmenu-gtk-0.4/libdbusmenu-gtk/menu.h
-%{_includedir}/libdbusmenu-gtk-0.4/libdbusmenu-gtk/menuitem.h
-%{_includedir}/libdbusmenu-gtk-0.4/libdbusmenu-gtk/parser.h
-%{_libdir}/pkgconfig/dbusmenu-gtk-0.4.pc
-%{_libdir}/libdbusmenu-gtk.so
-%{_datadir}/gir-1.0/DbusmenuGtk-0.4.gir
+%dir %{_includedir}/libdbusmenu-gtk*-0.4/
+%dir %{_includedir}/libdbusmenu-gtk*-0.4/libdbusmenu-gtk/
+%{_includedir}/libdbusmenu-gtk*-0.4/libdbusmenu-gtk/client.h
+%{_includedir}/libdbusmenu-gtk*-0.4/libdbusmenu-gtk/dbusmenu-gtk.h
+%{_includedir}/libdbusmenu-gtk*-0.4/libdbusmenu-gtk/menu.h
+%{_includedir}/libdbusmenu-gtk*-0.4/libdbusmenu-gtk/menuitem.h
+%{_includedir}/libdbusmenu-gtk*-0.4/libdbusmenu-gtk/parser.h
+%{_libdir}/pkgconfig/dbusmenu-gtk*-0.4.pc
+%{_libdir}/libdbusmenu-gtk*.so
+%{_datadir}/gir-1.0/DbusmenuGtk*-0.4.gir
 %dir %{_datadir}/vala/vapi/
-%{_datadir}/vala/vapi/DbusmenuGtk-0.4.vapi
+%{_datadir}/vala/vapi/DbusmenuGtk*-0.4.vapi
 
-%files gtk3-%{soname_gtk3}
-%license COPYING*
-%doc NEWS
-%{_libdir}/libdbusmenu-gtk3.so.%{soname_gtk3}*
-
-%files -n typelib-1_0-DbusmenuGtk3-0_4
-%license COPYING*
-%doc NEWS
-%{_libdir}/girepository-1.0/DbusmenuGtk3-0.4.typelib
-
-%files gtk3-devel
-%license COPYING*
-%doc NEWS
-%dir %{_includedir}/libdbusmenu-gtk3-0.4/
-%dir %{_includedir}/libdbusmenu-gtk3-0.4/libdbusmenu-gtk/
-%{_includedir}/libdbusmenu-gtk3-0.4/libdbusmenu-gtk/client.h
-%{_includedir}/libdbusmenu-gtk3-0.4/libdbusmenu-gtk/dbusmenu-gtk.h
-%{_includedir}/libdbusmenu-gtk3-0.4/libdbusmenu-gtk/menu.h
-%{_includedir}/libdbusmenu-gtk3-0.4/libdbusmenu-gtk/menuitem.h
-%{_includedir}/libdbusmenu-gtk3-0.4/libdbusmenu-gtk/parser.h
-%{_libdir}/pkgconfig/dbusmenu-gtk3-0.4.pc
-%{_libdir}/libdbusmenu-gtk3.so
-%{_datadir}/gir-1.0/DbusmenuGtk3-0.4.gir
-%dir %{_datadir}/vala/vapi/
-%{_datadir}/vala/vapi/DbusmenuGtk3-0.4.vapi
-
-%files gtk-doc
+%if %{with docs}
+%files doc
 %license COPYING*
 %doc NEWS
 %doc %{_datadir}/gtk-doc/html/libdbusmenu-gtk/
+%endif
 
-%files jsonloader%{soname_jsonloader}
+%if %{with testtools}
+%files -n libdbusmenu-jsonloader%{soname_jsonloader}
 %license COPYING*
 %doc NEWS
 %{_libdir}/libdbusmenu-jsonloader.so.%{soname_jsonloader}*
 
-%files jsonloader-devel
+%files -n libdbusmenu-jsonloader-devel
 %license COPYING*
 %doc NEWS
 %dir %{_includedir}/libdbusmenu-glib-0.4/
@@ -340,5 +359,6 @@ mv -f %{buildroot}%{_datadir}/doc/%{name}/examples/glib-server-nomenu.c \
 %{_includedir}/libdbusmenu-glib-0.4/libdbusmenu-jsonloader/json-loader.h
 %{_libdir}/pkgconfig/dbusmenu-jsonloader-0.4.pc
 %{_libdir}/libdbusmenu-jsonloader.so
+%endif
 
 %changelog

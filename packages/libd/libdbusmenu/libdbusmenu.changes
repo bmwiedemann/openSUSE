@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov 19 19:26:35 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Work around OBS idiosyncrasies regarding packages name.
+
+-------------------------------------------------------------------
+Mon Nov 18 18:08:15 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Drop dependency on deprecated gnome-common, just run autoreconf
+- Do not include unused tree_index.sgml, fix build with gtk-doc >= 1.32,
+  see https://gitlab.gnome.org/GNOME/gtk-doc/issues/103
+  * add 0001-Fix-build-with-gtk-doc-1.32-due-to-non-existing-tree.patch
+- Fix missing accelerators, add
+  0002-genericmenuitem-Make-accelerator-text-appear-again.patch
+- Split Gtk2 and Gtk3 build - glib, tools and doc subpackage are created
+  from the Gtk2 flavor.
+  * Fix building with disabled tests, add 0003-Fix-HAVE_VALGRIND-AM_CONDITIONAL.patch
+
+-------------------------------------------------------------------
 Wed Oct 16 08:34:16 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Inject -Wno-error into CFLAGS. It's kinda ridiculous for code
