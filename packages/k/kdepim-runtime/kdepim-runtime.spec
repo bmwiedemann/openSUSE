@@ -1,7 +1,7 @@
 #
 # spec file for package kdepim-runtime
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ Source:         https://download.kde.org/stable/applications/%{version}/src/%{na
 Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Sanity-check-collection-path-before-performing-recur.patch
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
@@ -97,7 +99,7 @@ use PIM applications.
 %lang_package
 
 %prep
-%setup -q -n kdepim-runtime-%{version}
+%autosetup -p1 -n kdepim-runtime-%{version}
 
 %build
 %cmake_kf5 -d build -- -DBUILD_TESTING=ON -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}

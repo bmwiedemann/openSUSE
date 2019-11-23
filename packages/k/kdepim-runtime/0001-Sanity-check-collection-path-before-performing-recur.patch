@@ -1,0 +1,48 @@
+From e3e0ee0ddc82bf6a34ebe93ed6c5c881f412ddc2 Mon Sep 17 00:00:00 2001
+From: Volker Krause <vkrause@kde.org>
+Date: Sat, 16 Nov 2019 22:44:13 +0100
+Subject: [PATCH] Sanity-check collection path before performing recursive
+ deletion
+
+Summary:
+There is a error paths in directoryForCollection() which might give us
+an empty string here, which is then interpreted as the current working
+directory.
+
+CCBUG: 414178
+
+Reviewers: mlaurent
+
+Reviewed By: mlaurent
+
+Subscribers: kde-pim
+
+Tags: #kde_pim
+
+Differential Revision: https://phabricator.kde.org/D25346
+---
+ resources/contacts/contactsresource.cpp | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/resources/contacts/contactsresource.cpp b/resources/contacts/contactsresource.cpp
+index e718f235b..cd8deac97 100644
+--- a/resources/contacts/contactsresource.cpp
++++ b/resources/contacts/contactsresource.cpp
+@@ -399,8 +399,12 @@ void ContactsResource::collectionRemoved(const Akonadi::Collection &collection)
+         return;
+     }
+ 
+-    QDir collectionDir = directoryForCollection(collection);
+-    if (!collectionDir.removeRecursively()) {
++    const QString collectionDir = directoryForCollection(collection);
++    if (collectionDir.isEmpty()) {
++        cancelTask(i18n("Unknown folder to delete."));
++        return;
++    }
++    if (!QDir(collectionDir).removeRecursively()) {
+         cancelTask(i18n("Unable to delete folder '%1'.", collection.name()));
+         return;
+     }
+-- 
+2.24.0
+
