@@ -1,7 +1,7 @@
 #
 # spec file for package udisks2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define libudisks lib%{name}-%{somajor}
 %define libblockdev_version 2.19
 Name:           udisks2
-Version:        2.8.3
+Version:        2.8.4
 Release:        0
 Summary:        Disk Manager
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -277,7 +277,7 @@ fi
 %doc AUTHORS NEWS
 %{_bindir}/udisksctl
 %config %{_datadir}/dbus-1/system.d/org.freedesktop.UDisks2.conf
-%{_libexecdir}/tmpfiles.d/udisks2.conf
+%{_prefix}/lib/tmpfiles.d/udisks2.conf
 %{_datadir}/bash-completion/completions/udisksctl
 %{_unitdir}/udisks2.service
 %{_unitdir}/clean-mount-point@.service
