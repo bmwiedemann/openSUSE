@@ -24,6 +24,8 @@ License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://live.gnome.org/Grilo
 Source0:        https://download.gnome.org/sources/grilo/0.3/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM grilo-fix-build-totem-pl-parser.patch -- Fix build with totem-pl-parser 3.26.4
+Patch0:         grilo-fix-build-totem-pl-parser.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gtk-doc
@@ -136,7 +138,7 @@ various sources using a single API.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %meson \

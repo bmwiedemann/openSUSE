@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 12 20:02:46 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add grilo-fix-build-totem-pl-parser.patch: Fix build with
+  totem-pl-parser 3.26.4.
+
+-------------------------------------------------------------------
 Sat Sep 14 08:13:55 UTC 2019 - bjorn.lie@gmail.com
 
 - Update to version 0.3.10:

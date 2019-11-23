@@ -326,4 +326,12 @@
     <comment>Scripted push from {project}</comment>
     <requestid>736574</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>3954b14bbd5c5a4b41e6dc7b9a3ed1b8</srcmd5>
+    <version>0.3.10</version>
+    <time>1574550134</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749276</requestid>
+  </revision>
 </revisionlist>
