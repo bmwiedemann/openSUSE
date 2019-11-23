@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov 22 13:39:02 UTC 2019 - okurz@suse.com
+
+- Update to version 4.6.1574429927.5158b63b:
+  * Allow unsetting 'fatal' test flag without snapshot support
+  * Improve waiting for data in myjsonrpc::read_json()
+  * Launch debugging tools without shell
+  * t: Prevent error in RPM build on empty line after backslash
+  * Improve example in documentation for CASEDIR
+  * t: Split tests in Makefile for easier diff handling
+  * Prevent confusing call stack-trace from send_json on shutdown
+  * qemu: Distinguish 'syswrite failed' die message from myjsonrpc one
+
+-------------------------------------------------------------------
 Mon Nov 18 13:03:44 UTC 2019 - okurz@suse.com
 
 - Update to version 4.6.1573902023.b0a2a79e:
