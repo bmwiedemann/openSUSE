@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Clone
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,19 @@
 
 
 Name:           perl-Clone
-Version:        0.41
+Version:        0.43
 Release:        0
 %define cpan_name Clone
-Summary:        Recursively Copy Perl Datatypes
+Summary:        Recursively copy Perl datatypes
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
 Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/G/GA/GARU/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(B::COW)
 %{perl_requires}
 
 %description
@@ -51,10 +52,10 @@ find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-%{__make} %{?_smp_mflags}
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -63,6 +64,6 @@ perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes
+%doc Changes README.md
 
 %changelog
