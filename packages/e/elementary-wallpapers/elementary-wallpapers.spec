@@ -17,7 +17,7 @@
 
 
 Name:           elementary-wallpapers
-Version:        5.3
+Version:        5.4
 Release:        0
 Summary:        The desktop backgrounds from Pantheon
 License:        CC-BY-NC-SA-2.0
@@ -65,6 +65,8 @@ done
 
 # NOTE: cat switchboard-plug-pantheon-shell.spec
 install -m0644 elementaryos-default %{buildroot}%{_datadir}/backgrounds/default-wallpaper
+rm -rf %{buildroot}%{_datadir}/backgrounds/elementaryos-default
+
 %fdupes -s %{buildroot}%{_datadir}
 
 %files
