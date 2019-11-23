@@ -1,0 +1,51 @@
+From 8d6733aad3e23cbb3813ee7161edb7ae7f9402df Mon Sep 17 00:00:00 2001
+From: Petri Savolainen <petri.savolainen@nokia.com>
+Date: Wed, 2 Oct 2019 10:17:24 +0300
+Subject: [PATCH] configure: suppress pointer to packed structure warnings
+
+Fix GCC-9 build by handling "pointer to packed member of
+a struct" warnings not as errors. These warnings are generated
+e.g. when taking pointers to protocol header structures, which
+are defined with packed attribute. These structures are
+naturally aligned, so these warnings can be ignored.
+
+chksum.c: In function odph_process_l4_hdr:
+chksum.c:133:43: error: taking address of packed member of
+struct <anonymous> may result in an unaligned pointer
+value [-Werror=address-of-packed-member]
+pkt_chksum_ptr    = (uint16_t *)(void *)&udp_hdr_ptr->chksum;
+
+                                        ^~~~~~~~~~~~~~~~~~~~
+
+Signed-off-by: Petri Savolainen <petri.savolainen@nokia.com>
+---
+ configure.ac | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index 857905c3..69474878 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -112,6 +112,7 @@ AC_TYPE_UINT64_T
+ ODP_CFLAGS="$ODP_CFLAGS -W -Wall -Werror"
+ ODP_CXXFLAGS="$ODP_CXXFLAGS -W -Wall -Werror"
+ 
++# Additional warnings:
+ ODP_CHECK_CFLAG([-Wstrict-prototypes])
+ ODP_CHECK_CFLAG([-Wmissing-prototypes])
+ ODP_CHECK_CFLAG([-Wmissing-declarations])
+@@ -127,6 +128,11 @@ ODP_CHECK_CFLAG([-Wwrite-strings])
+ ODP_CHECK_CFLAG([-Wformat-truncation=0])
+ ODP_CHECK_CFLAG([-Wformat-overflow=0])
+ 
++# Suppressed warnings:
++# GCC-9 warns about taking pointers to packed structure fields (e.g. protocol
++# header structures). Generate only warnings on those, not errors.
++ODP_CHECK_CFLAG([-Wno-error=address-of-packed-member])
++
+ ODP_CFLAGS="$ODP_CFLAGS -std=c99"
+ ODP_CXXFLAGS="$ODP_CXXFLAGS -std=c++11"
+ 
+-- 
+2.16.4
+

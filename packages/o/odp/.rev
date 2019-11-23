@@ -50,4 +50,17 @@
 </comment>
     <requestid>587938</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>eea613b39ebd848c0d856d7d72bbad1b</srcmd5>
+    <version>1.22.0.0</version>
+    <time>1574551443</time>
+    <user>dimstar_suse</user>
+    <comment>- Package license as %license in filelist
+
+- Updated to latest release 1.22
+- Removed 0001-increase_ODP_CPUMASK_SIZE.patch, no longer applies. 
+- Add upstream patch to fix compilation on GCC9
+  * configure-suppress-pointer-to-packed-structure-warni.patch</comment>
+    <requestid>742149</requestid>
+  </revision>
 </revisionlist>

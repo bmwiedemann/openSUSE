@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 23 13:27:09 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Package license as %license in filelist
+
+-------------------------------------------------------------------
+Fri Oct 11 09:59:55 UTC 2019 - Jaime Caamaño Ruiz <jcaamano@suse.com>
+
+- Updated to latest release 1.22
+- Removed 0001-increase_ODP_CPUMASK_SIZE.patch, no longer applies. 
+- Add upstream patch to fix compilation on GCC9
+  * configure-suppress-pointer-to-packed-structure-warni.patch
+
+-------------------------------------------------------------------
 Fri Mar 16 15:28:55 UTC 2018 - marco.varlese@suse.de
 
 - Removed 0002-fix_libopenssl.patch since fix in upstream code
