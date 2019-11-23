@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov 18 09:52:14 UTC 2019 - malte.kraus@suse.com
+
+- Update to version 20191118:
+  * whitelist ksysguard network helper (bsc#1151190)
+
+-------------------------------------------------------------------
+Tue Nov 12 12:45:12 UTC 2019 - malte.kraus@suse.com
+
+- Update to version 20191112:
+  * fix syntax of paranoid profile
+  * fix squid permissions (bsc#1093414, CVE-2019-3688)
+
+-------------------------------------------------------------------
 Thu Oct  3 12:38:09 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add || exit 0 on the scriptlet as it can actually fail in

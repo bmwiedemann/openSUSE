@@ -1,7 +1,7 @@
 #
 # spec file for package permissions
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define VERSION 20190913
+%define VERSION 20191118
 
 Name:           permissions
 Version:        %{VERSION}
@@ -25,7 +25,7 @@ Summary:        SUSE Linux Default Permissions
 # Maintained in github by the security team.
 License:        GPL-2.0-or-later
 Group:          Productivity/Security
-Url:            http://github.com/openSUSE/permissions
+URL:            http://github.com/openSUSE/permissions
 Source:         permissions-%{version}.tar.xz
 Source1:        fix_version.sh
 BuildRequires:  libcap-devel
@@ -88,7 +88,7 @@ The actual permissions configuration files, /etc/permission.*.
 %post config
 %{fillup_only -n security}
 # apply all potentially changed permissions
-%{_bindir}/chkstat --system || exit 0
+%{_bindir}/chkstat --system || :
 
 %package -n chkstat
 Summary:        SUSE Linux Default Permissions tool

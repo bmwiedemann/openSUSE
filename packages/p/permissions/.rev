@@ -1088,4 +1088,17 @@ Feel free to use or reject (forwarded request 397400 from dimstar)</comment>
     /dev/zero: chown: Operation not permitted (forwarded request 734796 from scarabeus_iv)</comment>
     <requestid>734799</requestid>
   </revision>
+  <revision rev="128" vrev="8">
+    <srcmd5>2706f2b50056e437ec11925876002d13</srcmd5>
+    <version>unknown</version>
+    <time>1574547289</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20191118:
+  * whitelist ksysguard network helper (bsc#1151190)
+
+- Update to version 20191112:
+  * fix syntax of paranoid profile
+  * fix squid permissions (bsc#1093414, CVE-2019-3688)</comment>
+    <requestid>749269</requestid>
+  </revision>
 </revisionlist>
