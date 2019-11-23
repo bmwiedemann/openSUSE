@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Nov 21 14:19:23 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 2019.02.14
+  * Add "version" command, which prints out the version of the
+    Dropbox daemon and the Dropbox command-line interface.
+  * Update gpg warning to tell users to install the Python 3 GPG
+    libraries instead of the Python 2 libraries.
+  * Fix bug where the dropbox nautilus repo wasn't being added to
+    the apt sources correctly on Ubuntu 18.04 and up.
+  * Move build dependencies to Python 3.
+  * Move to Python 3 and GTK3
+  * Fix bug where the Dropbox tray icon wouldn't display on Ubuntu
+    Unity and Ubuntu Gnome.
+  * Reverts the fix to issue #15, where the tray wouldn't display on
+    XFCE. If you're using XFCE, try the workarounds in this ticket:
+    https://bugs.launchpad.net/ubuntu/+source/nautilus-dropbox/+bug/1546176
+  * Add support for Fedora 23 - 29, Debian stretch and buster
+  * Drop support for Fedora releases older than 21, Ubuntu releases
+    older than trusty, and Debian releases older than jessie
+  * Display link url on `status`
+  * Fix canonicalize_path
+  * Make `exclude` work with unicode paths
+  * Fix bug that caused the Dropbox tray icon to not show up in XFCE & LXDE
+  * Add "update" command, which updates the Dropbox client
+  * Unlink files that are going to be replaced by the unpack
+  * Validate that Dropbox runs after downloading it
+  * Use python-gpg instead of python-gpgme if it's installed, since
+    python-gpgme is not available in Ubuntu 18.04.
+  * Update icons included in package to the redesigned icons
+
+- Drop nautilus-dropbox-fix-crash.patch and nautilus-dropbox-reproducible.patch
+  Both fixed upstream.
+- Remove BR on desktop-file-utils, python-docutils and python-gtk
+- Move to python3, add BR and Requires on python3-gobject and python3-gpgme
+
+-------------------------------------------------------------------
 Sun Mar 11 19:16:45 UTC 2018 - bwiedemann@suse.com
 
 - Add nautilus-dropbox-reproducible.patch to make man pages build
