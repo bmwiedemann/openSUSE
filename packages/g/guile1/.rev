@@ -134,4 +134,14 @@
     <comment>Fix build by disabling LTO</comment>
     <requestid>728707</requestid>
   </revision>
+  <revision rev="18" vrev="22">
+    <srcmd5>403ba2fcd38880aa6db478ab3d0bf7eb</srcmd5>
+    <version>1.8.8</version>
+    <time>1574552770</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with new texinfo, which now assumes UTF8 in the texi
+  files with guile1-fix-texinfo-default-utf8.patch.
+</comment>
+    <requestid>750430</requestid>
+  </revision>
 </revisionlist>

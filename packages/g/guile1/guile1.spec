@@ -23,9 +23,9 @@ Release:        0
 Summary:        GNU's Ubiquitous Intelligent Language for Extension
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/Scheme
-Url:            http://www.gnu.org/software/guile/
-Source0:        ftp://ftp.gnu.org/gnu/guile/guile-%{version}.tar.gz
-Source1:        ftp://ftp.gnu.org/gnu/guile/guile-%{version}.tar.gz.sig
+Url:            https://www.gnu.org/software/guile/
+Source0:        https://ftp.gnu.org/gnu/guile/guile-%{version}.tar.gz
+Source1:        https://ftp.gnu.org/gnu/guile/guile-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
 Patch1:         guile-64bit.patch
 Patch2:         guile-1.6.10-mktemp.patch
@@ -38,6 +38,7 @@ Patch8:         guile-texinfo.patch
 Patch9:         guile1-CVE-2016-8605.patch
 # PATCH-FIX-OPENSUSE (version is obsolete upstream / from 2010)
 Patch10:        reproducible.patch
+Patch11:        guile1-fix-texinfo-default-utf8.patch
 BuildRequires:  automake
 BuildRequires:  gc-devel
 BuildRequires:  gmp-devel
@@ -162,6 +163,7 @@ contains the files necessary to link against the guile libraries.
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
+%patch11
 # guile-1.8.1: The code is not so good for -Werror (unused results of write()).
 sed -i s/-Werror// configure.in configure
 
