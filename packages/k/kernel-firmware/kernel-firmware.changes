@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov 19 16:03:18 UTC 2019 - tiwai@suse.com
+
+- Update to version 20191118 (git commit e8a0f4c93147):
+  * rtl_nic: add firmware rtl8168fp-3
+  * linux-firmware: Update NXP Management Complex firmware to version 10.18.0
+
+-------------------------------------------------------------------
+Sun Nov 17 16:11:47 UTC 2019 - tiwai@suse.com
+
+- Update to version 20191113 (git commit c62c3c26a5e7):
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * linux-firmware: Update firmware file for Intel Bluetooth AX200
+  * linux-firmware: Update firmware file for Intel Bluetooth 9560
+  * linux-firmware: Update firmware file for Intel Bluetooth 9260
+  * amdgpu: update navi14 vcn firmware
+  * amdgpu: update navi10 vcn firmware
+
+-------------------------------------------------------------------
 Mon Nov 11 18:20:06 UTC 2019 - tiwai@suse.com
 
 - Update to version 20191108 (git commit f1100ddf581f):
