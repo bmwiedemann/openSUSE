@@ -17,7 +17,7 @@
 
 
 Name:           elementary-theme
-Version:        5.2.5
+Version:        5.3.0
 Release:        0
 Summary:        The Elementary GTK theme
 License:        GPL-3.0-only
@@ -112,6 +112,7 @@ ln -s \
 %doc AUTHORS CONTRIBUTORS
 %dir %{_datadir}/themes/elementary/
 %{_datadir}/themes/elementary/index.theme
+%{_datadir}/metainfo/io.elementary.stylesheet.appdata.xml
 
 %files -n gtk2-metatheme-elementary
 %{_datadir}/themes/elementary/gtk-2.0/
@@ -124,10 +125,13 @@ ln -s \
 %dir %{_datadir}/plank
 %dir %{_datadir}/plank/themes
 %dir %{_datadir}/plank/themes/elementary
+%dir %{_datadir}/plank/themes/elementary-dark
 %{_datadir}/plank/themes/elementary/dock.theme
+%{_datadir}/plank/themes/elementary-dark/dock.theme
 
 %files -n plank-metatheme-elementary
 %dir %{_datadir}/themes/elementary/plank
 %{_datadir}/themes/elementary/plank/dock.theme
+%{_datadir}/themes/elementary/plank/dock-dark.theme
 
 %changelog

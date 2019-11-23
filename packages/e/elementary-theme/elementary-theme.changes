@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov  4 14:29:49 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.3.0:
+  * Dark style: Matching Plank theme (#560)
+  * Only apply border to SSD decoration (#557)
+  * Fix scrollbar hover in webkit (#555)
+  * Fix GTK references in README (#554)
+  * Add a style for separator.wide (#551)
+  * Use new BadgeColor property to color Strawberry 300 (#546)
+  * Delete CODE_OF_CONDUCT.md
+  * Delete FUNDING.yml
+  * Remove duplicated search-bar style (#542)
+  * Remove styles for Files' DiskRenderer (#541)
+  * Remove disabled text and icon shadow (#537)
+  * Fix color for disabled flat buttons in list rows (#538)
+  * Use the same popover shadow everywhere (#539)
+  * Explicitly set color inside keycaps (#536)
+
+-------------------------------------------------------------------
 Fri Aug  9 10:38:50 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 5.2.5:
