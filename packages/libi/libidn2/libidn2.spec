@@ -18,7 +18,7 @@
 
 %define lname	libidn2-0
 Name:           libidn2
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Support for Internationalized Domain Names (IDN) based on IDNA2008
 License:        GPL-3.0-or-later

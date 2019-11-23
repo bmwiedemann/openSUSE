@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 19 20:11:59 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.3.0:
+  * Update the data tables from Unicode 6.3.0 to Unicode 11.0
+  * Turn _idn2_punycode_encode, _idn2_punycode_decode into compat
+    symbols
+
+-------------------------------------------------------------------
 Tue May 28 11:55:30 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.2.0 CVE-2019-12290 bsc#1154884:
