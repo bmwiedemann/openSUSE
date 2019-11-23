@@ -1,0 +1,33 @@
+From 9526bad11cfe6be9e542360ae2db0f51e82d66e7 Mon Sep 17 00:00:00 2001
+From: Matthias Brugger <mbrugger@suse.com>
+Date: Fri, 8 Nov 2019 14:49:46 +0100
+Subject: [PATCH] fdt: fix bcm283x dm-pre-reloc definitions
+
+In commmit
+143256b353 ("fdt: update bcm283x device tree sources to Linux 5.1-rc6 state")
+we deleted the label for the node soc from bcm283x.dtsi
+
+As we don't need to add the property dm-pre-reloc to the soc node,
+we can delete it from bcm283x-uboot.dtsi
+
+Tested-by: Tom Rini <trini@konsulko.com> [RPi 3, 32b and 64b modes]
+Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+---
+ arch/arm/dts/bcm283x-uboot.dtsi | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/arch/arm/dts/bcm283x-uboot.dtsi b/arch/arm/dts/bcm283x-uboot.dtsi
+index 6cc1aa3f93..36548dad62 100644
+--- a/arch/arm/dts/bcm283x-uboot.dtsi
++++ b/arch/arm/dts/bcm283x-uboot.dtsi
+@@ -6,10 +6,6 @@
+  * (C) Copyright 2016 Fabian Vogt <fvogt@suse.com>
+  */
+ 
+-&soc {
+-	u-boot,dm-pre-reloc;
+-};
+-
+ &uart0 {
+ 	skip-init;
+ 	u-boot,dm-pre-reloc;

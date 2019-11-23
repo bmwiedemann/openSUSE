@@ -1,0 +1,68 @@
+From 9dfd6a0669ac5e299229b90baaa27efe8cc8e927 Mon Sep 17 00:00:00 2001
+From: Matthias Brugger <mbrugger@suse.com>
+Date: Tue, 19 Nov 2019 16:01:02 +0100
+Subject: [PATCH] rpi: push fw_dtb_pointer in the .data section
+
+The fw_dtb_pointer was defined in the assembly code, which makes him
+live in section .text_rest
+Put that's not necessary, we can push the variable in the .data section.
+
+This will prevent relocation errors like:
+board/raspberrypi/rpi/rpi.c:317:(.text.board_get_usable_ram_top+0x8):
+relocation truncated to fit: R_AARCH64_LDST64_ABS_LO12_NC against symbol
+`fw_dtb_pointer' defined in .text section in board/raspberrypi/rpi/built-in.o
+
+Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+---
+ board/raspberrypi/rpi/lowlevel_init.S | 12 ++----------
+ board/raspberrypi/rpi/rpi.c           |  7 +++++--
+ 2 files changed, 7 insertions(+), 12 deletions(-)
+
+diff --git a/board/raspberrypi/rpi/lowlevel_init.S b/board/raspberrypi/rpi/lowlevel_init.S
+index 435eed521f..8c39b3e12e 100644
+--- a/board/raspberrypi/rpi/lowlevel_init.S
++++ b/board/raspberrypi/rpi/lowlevel_init.S
+@@ -6,15 +6,6 @@
+ 
+ #include <config.h>
+ 
+-.align 8
+-.global fw_dtb_pointer
+-fw_dtb_pointer:
+-#ifdef CONFIG_ARM64
+-	.dword 0x0
+-#else
+-	.word 0x0
+-#endif
+-
+ /*
+  * Routine: save_boot_params (called after reset from start.S)
+  * Description: save ATAG/FDT address provided by the firmware at boot time
+@@ -28,7 +19,8 @@ save_boot_params:
+ 	adr	x8, fw_dtb_pointer
+ 	str	x0, [x8]
+ #else
+-	str	r2, fw_dtb_pointer
++	ldr	r8, =fw_dtb_pointer
++	str	r2, [r8]
+ #endif
+ 
+ 	/* Returns */
+diff --git a/board/raspberrypi/rpi/rpi.c b/board/raspberrypi/rpi/rpi.c
+index 9e0abdda31..e84a1db14a 100644
+--- a/board/raspberrypi/rpi/rpi.c
++++ b/board/raspberrypi/rpi/rpi.c
+@@ -27,8 +27,11 @@
+ 
+ DECLARE_GLOBAL_DATA_PTR;
+ 
+-/* From lowlevel_init.S */
+-extern unsigned long fw_dtb_pointer;
++/* Assigned in lowlevel_init.S
++ * Push the variable into the .data section so that it
++ * does not get cleared later.
++ */
++unsigned long __section(".data") fw_dtb_pointer;
+ 
+ /* TODO(sjg@chromium.org): Move these to the msg.c file */
+ struct msg_get_arm_mem {

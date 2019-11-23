@@ -1,0 +1,33 @@
+From f23fa9de638a899bd26b4a7d95fd0cc4fb63ec2c Mon Sep 17 00:00:00 2001
+From: Matthias Brugger <mbrugger@suse.com>
+Date: Fri, 8 Nov 2019 14:49:47 +0100
+Subject: [PATCH] arm: dts: bcm283x: Rename U-Boot file
+
+Rename the file bcm283x-uboot.dtsi so that it get
+automatically include through the scripts/Makefile.lib
+using $(CONFIG_SYS_SOC))-u-boot.dtsi
+
+Without this uarts and pincontroller miss the property dm-pre-reloc
+and the first call to bcm283x_mu_serial_ofdata_to_platdata() fails
+as the pins are not set correctly.
+As a result the U-Boot banner isn't shown on boot.
+
+Before commmit
+143256b353 ("fdt: update bcm283x device tree sources to Linux 5.1-rc6 state")
+we included bcm283x-uboot.dtsi directly in the device-tree file.
+Which got deleted by the metioned commit.
+This is a much robuster solution.
+
+Reported-by: Tom Rini <trini@konsulko.com>
+Reported-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
+Tested-by: Tom Rini <trini@konsulko.com> [RPi 3, 32b and 64b modes]
+Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+---
+ arch/arm/dts/{bcm283x-uboot.dtsi => bcm283x-u-boot.dtsi} | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ rename arch/arm/dts/{bcm283x-uboot.dtsi => bcm283x-u-boot.dtsi} (100%)
+
+diff --git a/arch/arm/dts/bcm283x-uboot.dtsi b/arch/arm/dts/bcm283x-u-boot.dtsi
+similarity index 100%
+rename from arch/arm/dts/bcm283x-uboot.dtsi
+rename to arch/arm/dts/bcm283x-u-boot.dtsi

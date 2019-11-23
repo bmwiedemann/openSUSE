@@ -74,7 +74,7 @@ BuildRequires:  %prjconf_multibuild_selection
 %define is_riscv64 0
 %define tools_only 0
 
-%if "%target" == "rpi" || "%target" == "rpi2" || "%target" == "rpi3" || "%target" == "rpi4"
+%if "%target" == "rpi" || "%target" == "rpi2" || "%target" == "rpi3" || "%target" == "rpi4" || "%target" == "rpiarm64"
 %define is_rpi 1
 %if "%target" == "rpi"
 %define is_armv6 1
@@ -82,7 +82,7 @@ BuildRequires:  %prjconf_multibuild_selection
 %if "%target" == "rpi2"
 %define is_armv7 1
 %endif
-%if "%target" == "rpi3" || "%target" == "rpi4"
+%if "%target" == "rpi3" || "%target" == "rpi4" || "%target" == "rpiarm64"
 %define is_armv8 1
 %endif
 %endif
@@ -235,6 +235,15 @@ Patch0010:      0010-libfdt-return-correct-value-if-size.patch
 Patch0011:      0011-libfdt-Allow-size-cells-of-0.patch
 Patch0012:      0012-dm-Fix-default-address-cells-return.patch
 Patch0013:      0013-arm-arm11-allow-unaligned-memory-ac.patch
+Patch0014:      0014-fdt-fix-bcm283x-dm-pre-reloc-defini.patch
+Patch0015:      0015-arm-dts-bcm283x-Rename-U-Boot-file.patch
+Patch0016:      0016-drivers-bcm283x-Set-pre-location-fl.patch
+Patch0017:      0017-pinctrl-bcm283x-Add-compatible-for-.patch
+Patch0018:      0018-rpi-push-fw_dtb_pointer-in-the-.dat.patch
+Patch0019:      0019-ARM-bcm283x-Move-BCM283x_BASE-to-a-.patch
+Patch0020:      0020-ARM-bcm283x-Set-rpi_bcm283x_base-at.patch
+Patch0021:      0021-ARM-bcm283x-Set-memory-map-at-run-t.patch
+Patch0022:      0022-ARM-defconfig-add-unified-config-fo.patch
 # Patches: end
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  pkgconfig(sdl)
@@ -297,6 +306,13 @@ Provides:       am335x_boneblack
 # http://git.denx.de/?p=u-boot.git;a=commit;h=268ae6548779ccd8ba38ce39d43f41be7e0bc133
 Obsoletes:      Sinovoip_BPI_M2_Plus
 Provides:       Sinovoip_BPI_M2_Plus
+%endif
+%if "%{name}" == "u-boot-rpiarm64"
+# Provides one u-boot image for both RPi3 and RPi4
+Obsoletes:      u-boot-rpi3 < %{version}
+Provides:       u-boot-rpi3 = %{version}
+Obsoletes:      u-boot-rpi4 < %{version}
+Provides:       u-boot-rpi4 = %{version}
 %endif
 
 %if "%{target}" == ""
@@ -390,10 +406,6 @@ confname=$(ls configs | perl -ne '$l=lc; $l=~ s,_,,g; $l eq "%{target}defconfig\
 make %{?_smp_mflags} CROSS_COMPILE= HOSTCFLAGS="$RPM_OPT_FLAGS" $confname
 echo "Attempting to enable fdt apply command (.dtbo) support."
 echo "CONFIG_OF_LIBFDT_OVERLAY=y" >> .config
-%if "%target" == "rpi3"
-echo "Tweaking text base for TF-A."
-echo "CONFIG_SYS_TEXT_BASE=0x11000000" >> .config
-%endif
 make %{?_smp_mflags} CROSS_COMPILE= HOSTCFLAGS="$RPM_OPT_FLAGS" \
 %if ("%{name}" == "u-boot-rock64-rk3328" || "%{name}" == "u-boot-evb-rk3399" || "%{name}" == "u-boot-firefly-rk3399" || "%{name}" == "u-boot-rock-pi-4-rk3399") && %{with uboot_atf}
      all u-boot.itb
@@ -491,10 +503,6 @@ install -D -m 0644 u-boot-with-spl.sfp %{buildroot}%{uboot_dir}/u-boot-with-spl.
 %endif
 %if "%{name}" == "u-boot-zynqzturn"
 install -D -m 0644 spl/boot.bin %{buildroot}%{uboot_dir}/boot.bin
-%endif
-%if "%{name}" == "u-boot-rpi3"
-echo -e "# Boot in AArch64 mode\narm_control=0x200" > %{buildroot}%{uboot_dir}/ubootconfig.txt
-echo -e "\nkernel_address=0x11000000" >> %{buildroot}%{uboot_dir}/ubootconfig.txt
 %endif
 
 %if 0%{?is_rpi}

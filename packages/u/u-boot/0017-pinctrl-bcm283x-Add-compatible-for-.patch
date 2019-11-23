@@ -1,0 +1,26 @@
+From 54f64870ec3aa2ed8d0b5694f1f3f8df5853ee95 Mon Sep 17 00:00:00 2001
+From: Matthias Brugger <mbrugger@suse.com>
+Date: Wed, 6 Nov 2019 15:28:25 +0100
+Subject: [PATCH] pinctrl: bcm283x: Add compatible for RPi4
+
+The Raspberry Pi 4 upstream kernel device tree instroduces
+a new compatible for the pinctroller. Add this to the driver
+so that we can boot with the upstream kernel DT.
+
+Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+---
+ drivers/pinctrl/broadcom/pinctrl-bcm283x.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/pinctrl/broadcom/pinctrl-bcm283x.c b/drivers/pinctrl/broadcom/pinctrl-bcm283x.c
+index 1bb91d6eed..eb720f09f8 100644
+--- a/drivers/pinctrl/broadcom/pinctrl-bcm283x.c
++++ b/drivers/pinctrl/broadcom/pinctrl-bcm283x.c
+@@ -99,6 +99,7 @@ static int bcm283x_pinctrl_get_gpio_mux(struct udevice *dev, int banknum,
+ 
+ static const struct udevice_id bcm2835_pinctrl_id[] = {
+ 	{.compatible = "brcm,bcm2835-gpio"},
++	{.compatible = "brcm,bcm2711-gpio"},
+ 	{}
+ };
+ 

@@ -1,0 +1,60 @@
+From 0b0820f5ed04171d9b73a149ea0d3470fcea71d1 Mon Sep 17 00:00:00 2001
+From: Matthias Brugger <mbrugger@suse.com>
+Date: Fri, 8 Nov 2019 14:49:48 +0100
+Subject: [PATCH] drivers: bcm283x: Set pre-location flag for OF_BOARD
+
+U-Boot support on Raspberry Pi 4 relies on the device-tree
+provided by the firmware. The blob does not contain the
+U-Boot specific pre-loc-rel properties. The result is, that
+the U-Boot banner is not printed.
+
+We fix this by setting the DM_FLAG_PRE_RELOC flag in the driver,
+if we rely on a device-tree provided by the firmware.
+
+Reported-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
+Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+---
+ drivers/pinctrl/broadcom/pinctrl-bcm283x.c | 2 +-
+ drivers/serial/serial_bcm283x_mu.c         | 2 +-
+ drivers/serial/serial_bcm283x_pl011.c      | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/pinctrl/broadcom/pinctrl-bcm283x.c b/drivers/pinctrl/broadcom/pinctrl-bcm283x.c
+index 3be080d29e..1bb91d6eed 100644
+--- a/drivers/pinctrl/broadcom/pinctrl-bcm283x.c
++++ b/drivers/pinctrl/broadcom/pinctrl-bcm283x.c
+@@ -148,7 +148,7 @@ U_BOOT_DRIVER(pinctrl_bcm283x) = {
+ 	.priv_auto_alloc_size = sizeof(struct bcm283x_pinctrl_priv),
+ 	.ops		= &bcm283x_pinctrl_ops,
+ 	.probe		= bcm283x_pinctl_probe,
+-#if !CONFIG_IS_ENABLED(OF_CONTROL)
++#if !CONFIG_IS_ENABLED(OF_CONTROL) || CONFIG_IS_ENABLED(OF_BOARD)
+ 	.flags		= DM_FLAG_PRE_RELOC,
+ #endif
+ };
+diff --git a/drivers/serial/serial_bcm283x_mu.c b/drivers/serial/serial_bcm283x_mu.c
+index bd1d89ec83..a6ffc84b96 100644
+--- a/drivers/serial/serial_bcm283x_mu.c
++++ b/drivers/serial/serial_bcm283x_mu.c
+@@ -199,7 +199,7 @@ U_BOOT_DRIVER(serial_bcm283x_mu) = {
+ 	.platdata_auto_alloc_size = sizeof(struct bcm283x_mu_serial_platdata),
+ 	.probe = bcm283x_mu_serial_probe,
+ 	.ops = &bcm283x_mu_serial_ops,
+-#if !CONFIG_IS_ENABLED(OF_CONTROL)
++#if !CONFIG_IS_ENABLED(OF_CONTROL) || CONFIG_IS_ENABLED(OF_BOARD)
+ 	.flags = DM_FLAG_PRE_RELOC,
+ #endif
+ 	.priv_auto_alloc_size = sizeof(struct bcm283x_mu_priv),
+diff --git a/drivers/serial/serial_bcm283x_pl011.c b/drivers/serial/serial_bcm283x_pl011.c
+index 2527bb8b1c..7d8ab7b716 100644
+--- a/drivers/serial/serial_bcm283x_pl011.c
++++ b/drivers/serial/serial_bcm283x_pl011.c
+@@ -90,7 +90,7 @@ U_BOOT_DRIVER(bcm283x_pl011_uart) = {
+ 	.platdata_auto_alloc_size = sizeof(struct pl01x_serial_platdata),
+ 	.probe	= pl01x_serial_probe,
+ 	.ops	= &bcm283x_pl011_serial_ops,
+-#if !CONFIG_IS_ENABLED(OF_CONTROL)
++#if !CONFIG_IS_ENABLED(OF_CONTROL) || CONFIG_IS_ENABLED(OF_BOARD)
+ 	.flags	= DM_FLAG_PRE_RELOC,
+ #endif
+ 	.priv_auto_alloc_size = sizeof(struct pl01x_priv),

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Nov 20 14:16:24 UTC 2019 - Matthias Brugger <mbrugger@suse.com>
+
+- enable build for one U-Boot image for RPi3/4 (rpiarm64)
+  implements (jsc#59185)
+
+-------------------------------------------------------------------
+Wed Nov 20 14:16:11 UTC 2019 - Matthias Brugger <mbrugger@suse.com>
+
+Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2019.10
+* Patches added:
+  0014-fdt-fix-bcm283x-dm-pre-reloc-defini.patch
+  0015-arm-dts-bcm283x-Rename-U-Boot-file.patch
+  0016-drivers-bcm283x-Set-pre-location-fl.patch
+  0017-pinctrl-bcm283x-Add-compatible-for-.patch
+  0018-rpi-push-fw_dtb_pointer-in-the-.dat.patch
+  0019-ARM-bcm283x-Move-BCM283x_BASE-to-a-.patch
+  0020-ARM-bcm283x-Set-rpi_bcm283x_base-at.patch
+  0021-ARM-bcm283x-Set-memory-map-at-run-t.patch
+  0022-ARM-defconfig-add-unified-config-fo.patch
+
+-------------------------------------------------------------------
+Wed Nov 20 13:20:15 UTC 2019 - Matthias Brugger <mbrugger@suse.com>
+
+- RPi3 delete text base hack in spec file
+
+-------------------------------------------------------------------
 Tue Nov 19 16:23:31 UTC 2019 - Andreas Schwab <schwab@suse.de>
 
 - Don't constrain multibuild in openSUSE:Factory:PowerPC and

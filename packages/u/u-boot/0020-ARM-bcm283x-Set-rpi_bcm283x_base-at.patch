@@ -1,0 +1,71 @@
+From 068815ca7495a41e28b62e119e54e956eb7bc8d7 Mon Sep 17 00:00:00 2001
+From: Matthias Brugger <mbrugger@suse.com>
+Date: Tue, 19 Nov 2019 16:01:04 +0100
+Subject: [PATCH] ARM: bcm283x: Set rpi_bcm283x_base at run-time
+
+As part of the effort to create one binary for several bcm83x SoCs
+we read the IO base address from device-tree.
+
+Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+---
+ arch/arm/mach-bcm283x/Kconfig |  6 ------
+ arch/arm/mach-bcm283x/init.c  | 20 ++++++++++++++++++--
+ 2 files changed, 18 insertions(+), 8 deletions(-)
+
+diff --git a/arch/arm/mach-bcm283x/Kconfig b/arch/arm/mach-bcm283x/Kconfig
+index b08275f598..e8e0ff0eb4 100644
+--- a/arch/arm/mach-bcm283x/Kconfig
++++ b/arch/arm/mach-bcm283x/Kconfig
+@@ -202,10 +202,4 @@ config SYS_SOC
+ config SYS_CONFIG_NAME
+ 	default "rpi"
+ 
+-config BCM283x_BASE
+-	hex
+-	default "0x20000000" if BCM2835
+-	default "0x3f000000" if BCM2836 || BCM2837
+-	default "0xfe000000" if BCM2711
+-
+ endmenu
+diff --git a/arch/arm/mach-bcm283x/init.c b/arch/arm/mach-bcm283x/init.c
+index d36017e823..b3f3dfabea 100644
+--- a/arch/arm/mach-bcm283x/init.c
++++ b/arch/arm/mach-bcm283x/init.c
+@@ -7,8 +7,10 @@
+  */
+ 
+ #include <common.h>
++#include <dm/device.h>
++#include <fdt_support.h>
+ 
+-unsigned long rpi_bcm283x_base;
++unsigned long rpi_bcm283x_base = 0x3f000000;
+ 
+ int arch_cpu_init(void)
+ {
+@@ -19,10 +21,24 @@ int arch_cpu_init(void)
+ 
+ int mach_cpu_init(void)
+ {
+-	rpi_bcm283x_base = CONFIG_BCM283x_BASE;
++	int ret, soc_offset;
++	u64 io_base, size;
++
++	/* Get IO base from device tree */
++	soc_offset = fdt_path_offset(gd->fdt_blob, "/soc");
++	if (soc_offset < 0)
++		return soc_offset;
++
++	ret = fdt_read_range((void *)gd->fdt_blob, soc_offset, 0, NULL,
++				&io_base, &size);
++	if (ret)
++		return ret;
++
++	rpi_bcm283x_base = io_base;
+ 
+ 	return 0;
+ }
++
+ #ifdef CONFIG_ARMV7_LPAE
+ void enable_caches(void)
+ {
