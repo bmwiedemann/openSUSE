@@ -26,6 +26,8 @@ URL:            http://www.gnome.org
 Source0:        https://download.gnome.org/sources/vino/3.22/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM vino-error-on-wayland.patch boo#1122549 mgorse@suse.com -- have vino-server print an error if wayland is detected, rather than segfaulting.
 Patch0:         vino-error-on-wayland.patch
+# PATCH-FIX-UPSTREAM vino-CVE-2019-15681.patch boo#1155419 mgorse@suse.com -- fix uninitialized memory read in LibVNCServer.
+Patch1:         vino-CVE-2019-15681.patch
 
 BuildRequires:  fdupes
 BuildRequires:  intltool >= 0.50.0

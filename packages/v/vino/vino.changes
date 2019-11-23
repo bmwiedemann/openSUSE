@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 12 21:38:10 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Add vino-CVE-2019-15681.patch: fix uninitialized memory read in
+  LibVNCServer (boo#1155419 CVE-2019-15681).
+
+-------------------------------------------------------------------
 Wed Jan 23 21:16:55 UTC 2019 - mgorse@suse.com
 
 - Add vino-error-on-wayland.patch: print an error if wayland is
