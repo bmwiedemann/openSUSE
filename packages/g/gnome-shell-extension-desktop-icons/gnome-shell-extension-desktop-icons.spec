@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-shell-extension-desktop-icons
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-shell-extension-desktop-icons
-Version:        19.10.1
+Version:        19.10.2
 Release:        0
 Summary:        Desktop icon support for GNOME Shell
 License:        GPL-3.0-or-later

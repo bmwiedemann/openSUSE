@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Nov 14 19:25:20 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop superfluous tarball, we use sourceservice during build.
+
+-------------------------------------------------------------------
+Wed Nov 13 06:34:34 UTC 2019 - Xiaoguang Wang <xwang@suse.com>
+
+- Update to version 19.10.2:
+  * desktopGrid.js: fix rename button
+  * General: Fix thumbnails not centered
+  * desktopGrid: Properly inherit Placeholder from a GObject class
+  * desktopGrid: Use default upstream styling for rename popup
+  * desktopGrid: Derive the RenamePoup from PopupMenu
+  * desktopGrid: Open the rename popup only when item menu is 
+    closed
+
+-------------------------------------------------------------------
 Wed Oct  9 06:50:58 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Change License to 'GPL-3.0-or-later', matching what the source
