@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri Nov 22 10:34:08 UTC 2019 - ecsos@opensuse.org
+
+- Update to 4.4.0
+  New features
+  - Viewer: Allow customizing what actions appear on the toolbar 
+    (Preferences->Miscellaneous->Customize toolbar).
+  - Viewer: The --open-at command line argument now allows matching
+    on ToC hrefs as well as titles
+  - Book details window: Show path to book in cover tooltip.
+  - Book details popup window: Add Open with actions to context 
+    menu when right clicking the cover image.
+  - Edit book: Check book: Mark empty id attributes in the OPF as 
+    errors.
+  - Viewer: Add a shortcut (Ctrl+F11) to toggle the toolbar
+  - Bulk metadata download review dialog: When clicking cancel ask 
+    for confirmation if some books have already been reviewed
+  Bug fixes
+  - PDF Output: Fix an error when using fonts with vertical metrics.
+  - Viewer: Fix flickering when scrollbar is enabled and the 
+    header/footer is too wide for the screen.
+  - PDF Output: Improve handling of images that do not fit on a 
+    page.
+  - Viewer: In paged mode break long text without spaces at 
+    arbitrary points instead of overflowing to the next page.
+  - Viewer: Fix hang when using --open-at with single instance 
+    viewer and the specified location is already open.
+  - Viewer: Fix opening .txt files in the standalone viewer leaving
+    behind a temporary index.html file in the directory of the txt
+    file.
+  - Linux: Make some cache removal code robust against un-decodeable
+    filenames in the cache directories
+  - Viewer: Fix scrolling of panels in preferences causing 
+    artifacts.
+  - Viewer: improve appearance of controls on small screens.
+  - Move close button in viewer preferences to left to match the
+    rest of the content server UI.
+  - Viewer: Fix restoring user stylesheet to default not being 
+    applied until a viewer restart
+  - Viewer: Do not wait for loading of <link> tags that are not
+    stylesheets.
+  - Viewer: When using the system color theme only override link 
+    colors in the book if the theme is dark.
+  Improved recipes
+  - The Atlantic
+  - LifeHacker
+
+-------------------------------------------------------------------
 Fri Nov  8 06:42:02 UTC 2019 - ecsos@opensuse.org
 
 - Update to 4.3.0
