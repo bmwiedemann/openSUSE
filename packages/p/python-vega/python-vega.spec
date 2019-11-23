@@ -17,21 +17,23 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 Name:           python-vega
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        An IPython/Jupyter widget for Vega 3 and Vega-Lite 2
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            http://github.com/vega/ipyvega/
 Source:         https://files.pythonhosted.org/packages/source/v/vega/vega-%{version}.tar.gz
-BuildRequires:  %{python_module jupyter_client >= 4.2}
-BuildRequires:  %{python_module notebook}
+BuildRequires:  %{python_module jupyter-client >= 4.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  jupyter-notebook-filesystem
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-vega = %{version}
 Requires:       python-ipython
+Requires:       python-jupyter-client >= 4.2
 Provides:       python-jupyter_vega = %{version}
 Obsoletes:      python-jupyter_vega < %{version}
 BuildArch:      noarch
