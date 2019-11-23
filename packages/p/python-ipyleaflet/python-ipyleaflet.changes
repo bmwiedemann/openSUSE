@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Mon Nov 18 16:08:19 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.11.4
+  * Add substitute_layer to LayerGroup clas
+  * fix DeprecationWarning
+- Update to 0.11.3
+  * Fix documentation
+  * Fix LocalTileLayer
+  * Clean GeoData on_hover Notebook
+  * Add screencast
+  * Add Wealth Of Nations Notebook example
+  * silence traitlet deprecation warnings
+- Update to 0.11.2
+  * Add missing installation command
+  * Add keywords to allow for package to be visible in JupyterLab extension
+  * Update Numpy.ipynb to use new USGS url for data download
+  * Geodata on hover example
+  * changes Geodata Class
+  * adding feature in on hover with ex
+  * Fix issue when the view is not rendered yet
+- Update to 0.11.1
+  * Drop lab variables polyfill
+  * Load Stamen tiles over HTTPS
+- Update to 0.11.0
+  * Add Attribution control
+  * Add missing add of the ZoomControl in __init__
+  * Add ZoomControl as an ipyleaflet.Control
+  * Feat : Add redraw method for TileLayer
+  * Options are now given to the JS control
+- Update to 0.10.8
+  * Fix Layer's Popup and typo in Popup class
+- Update to 0.10.7
+  * Make geopandas an optional dependency
+- Update to 0.10.6
+  * Trigger before-attach events and fix popup display 
+  * Trigger after-attach phosphor event in WidgetControl
+- Update to 0.10.5
+  * Add Usage section in the docs
+  * Add jlab themes support
+  * Add docs for min_native_zoom and max_native_zoom for TileLayer
+  * Features : Add attributes for TileLayer
+  * Add Select GeoJSON example
+  * Add flask for examples/CustomTileServer.ipynb on binder
+  * Create CustomTileServer.ipynb
+- Update to 0.10.4
+  * Fix wrong requirement string
+- Update to 0.10.3
+  * geodata class
+  * choropleth doc improve
+  * Add no_wrap option for TileLayer
+
+-------------------------------------------------------------------
 Tue May 14 16:35:14 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.10.2
