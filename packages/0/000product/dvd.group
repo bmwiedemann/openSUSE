@@ -3070,8 +3070,6 @@
     <package name="libxmlsec1-1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libxmlsec1-nss1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libxmlsec1-openssl1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libxmmsclient-glib1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
-    <package name="libxmmsclient6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
     <package name="libxreaderdocument3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libxreaderview3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libxshmfence1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3150,8 +3148,6 @@
     <package name="lxinput-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
     <package name="lxlauncher" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="lxmenu-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
-    <package name="lxmusic" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
-    <package name="lxmusic-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
     <package name="lxpanel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
     <package name="lxpanel-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
     <package name="lxrandr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
@@ -5422,8 +5418,6 @@
     <package name="xmlgraphics-fop" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-technical_writing -->
     <package name="xmlstarlet" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-technical_writing -->
     <package name="xmlto" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-technical_writing -->
-    <package name="xmms2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
-    <package name="xmms2-plugin-base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
     <package name="xmodmap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xorg-docs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="xorg-x11-Xvnc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
