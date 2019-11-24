@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov 16 13:53:33 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- updated to 4.20 development release
+  - New version of the Mono engine with an FNA update.
+  - Code persistence in VBScript and JScript.
+  - Vulkan spec updates.
+  - Improved support for LLVM MinGW.
+  - Various bug fixes.
+- updated staging to 4.20
+
+-------------------------------------------------------------------
 Fri Nov  1 20:40:38 UTC 2019 - Marcus Meissner <meissner@suse.com>
 
 - updated to 4.19 development release

@@ -3320,4 +3320,12 @@
 - updated staging to 4.19</comment>
     <requestid>745022</requestid>
   </revision>
+  <revision rev="290" vrev="1">
+    <srcmd5>bd5f50532c6b6d3c0633b7c58ce0f902</srcmd5>
+    <version>4.20</version>
+    <time>1574636862</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>750444</requestid>
+  </revision>
 </revisionlist>
