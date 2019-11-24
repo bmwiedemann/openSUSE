@@ -18,7 +18,7 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define _ver 1_3_1
+%define _ver 1_3_2
 %define shortname scipy
 %define pname python-%{shortname}
 
@@ -91,7 +91,7 @@ ExclusiveArch:  do_not_build
 %endif
 %define         skip_python2 1
 Name:           %{package_name}
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        Scientific Tools for Python
 License:        BSD-3-Clause AND LGPL-2.0-or-later
