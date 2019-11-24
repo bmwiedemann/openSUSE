@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Tue Nov 19 15:15:43 UTC 2019 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#198
+- ensure autoyast url is passed to yast when autoyast2 option is
+  used (bsc#1157031)
+- 7.0.1
+
+--------------------------------------------------------------------
 Wed Oct 23 13:46:25 UTC 2019 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#196
