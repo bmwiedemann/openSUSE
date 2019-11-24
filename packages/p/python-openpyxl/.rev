@@ -141,4 +141,12 @@ https://build.opensuse.org/request/show/308798</comment>
   * #1330 Workbooks with comments cannot be saved multiple times</comment>
     <requestid>733341</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>63c83418f6f4a3264e827d298077e429</srcmd5>
+    <version>3.0.1</version>
+    <time>1574635577</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749748</requestid>
+  </revision>
 </revisionlist>

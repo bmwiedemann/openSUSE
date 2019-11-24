@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 19 20:37:44 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 3.0.1:
+  + Bugfixes
+    * Cannot read empty charts.
+  + Pull Requests
+    * Fix for #1250
+    * TableStyleElement is a sequence
+- Update to 3.0.0:
+  * Initial python3-only release
+
+-------------------------------------------------------------------
 Thu Sep 26 07:57:23 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.6.4:
