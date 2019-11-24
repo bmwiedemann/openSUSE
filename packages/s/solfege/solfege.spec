@@ -1,7 +1,7 @@
 #
 # spec file for package solfege
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,7 +25,7 @@
 
 Name:           solfege
 Summary:        An ear training program
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 Version:        3.22.2
 Release:        0
@@ -54,6 +54,7 @@ Source1:        lessonfile_editor.1
 Source2:        http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
 Patch0:         solfege-configure-fix.dif
 Patch1:         solfege-python-fixcompile.patch
+Patch2:         solfege-nogenreadmeetc.patch
 Requires:       python-gtk
 Requires:       timidity
 Recommends:     lilypond
@@ -71,15 +72,12 @@ sing chords, scales, dictation and remember rhythmic patterns.
 %setup -q
 %patch0
 %patch1
-# hack to avoid txt2man (which is missing in prior SUSE distro)
-%if 0%{?suse_version} > 1320 || 0%{?is_opensuse} == 1
-%else
-touch *.1
-cp %{SOURCE1} .
-%endif
+%patch2
+for i in `grep -rl "/usr/bin/env python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python2/' ${i} ;done
 
 %build
 autoreconf -fi
+
 %configure \
     --enable-docbook-stylesheet=%{_datadir}/xml/docbook/stylesheet/nwalsh/current/html/chunker.xsl
 make %{?jobs:-j%jobs} all
@@ -116,7 +114,8 @@ fi
 
 %files -f %{name}.lang
 %defattr(-, root, root)
-%doc AUTHORS COPYING FAQ README changelog
+%doc AUTHORS FAQ README changelog
+%license COPYING
 %{_bindir}/*
 %{_datadir}/solfege
 %{_libdir}/solfege
