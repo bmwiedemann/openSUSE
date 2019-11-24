@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Nov 19 20:31:02 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- version update to 3.5.32
+  * some chart efficiency changes
+  * use clock in fontFinder contributed by Matěj Cepl @ bitbucket
+  * improve recursive access and do some minor eval/exec fixes
+  * improve use of eval/exec
+- version update to 3.5.31
+  * paraparser fix contributed by ravi prakash giri <raviprakashgiri@gmail.com>
+- version update to 3.5.30
+  * better support for candlestick charts using smartGetItem
+- version update to 3.5.29
+  * Support for candlestick charts and infilled pair plots
+- version update to 3.5.28
+  * improve support for AES encryption
+- version update to 3.5.27
+  * fix to justified para splits contributed by Niharika Singh <nsingh@shoobx.com>
+  * fix BalanceColumn width calculation
+  * preliminary support for AES encryption (contributed by https://github.com/talebi1)
+- version update to 3.5.26
+  * micro changes to normalDate
+  * fix warnings about is not (detected in python 3.8b4)
+ * implement PR #59 bug fix contributed by Vytis Banaitis
+- version update to 3.5.25
+  * add recursive ttf searching
+  * sync with rlextra
+  * fix Barchart axis crossing issue reported by Martin Jones (Zeidler)
+- version update to 3.5.24
+  * prepare for python3.8, drop support for python3.4
+- rebase python38_build.patch
+
+-------------------------------------------------------------------
 Sat Oct 19 11:42:52 CEST 2019 - Matej Cepl <mcepl@suse.com>
 
 - Add python38_build.patch to work around depreceated (and now

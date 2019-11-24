@@ -19,12 +19,11 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-reportlab
-Version:        3.5.23
+Version:        3.5.32
 Release:        0
-Url:            http://www.reportlab.com/
 Summary:        The Reportlab Toolkit
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
+URL:            https://www.reportlab.com/
 Source0:        https://files.pythonhosted.org/packages/source/r/reportlab/reportlab-%{version}.tar.gz
 Source1:        encryption.gif
 Patch0:         reportlab-missing-includes.patch
