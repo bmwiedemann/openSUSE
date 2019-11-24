@@ -3055,8 +3055,6 @@
       <repopackage name="libxmlsec1-1"/>
       <repopackage name="libxmlsec1-nss1"/>
       <repopackage name="libxmlsec1-openssl1"/>
-      <repopackage name="libxmmsclient-glib1"/>
-      <repopackage name="libxmmsclient6"/>
       <repopackage name="libXmu-devel"/>
       <repopackage name="libXmu6"/>
       <repopackage name="libXmuu1"/>
@@ -3160,8 +3158,6 @@
       <repopackage name="lxinput-lang"/>
       <repopackage name="lxlauncher"/>
       <repopackage name="lxmenu-data"/>
-      <repopackage name="lxmusic"/>
-      <repopackage name="lxmusic-lang"/>
       <repopackage name="lxpanel"/>
       <repopackage name="lxpanel-lang"/>
       <repopackage name="lxrandr"/>
@@ -5479,8 +5475,6 @@
       <repopackage name="xmlgraphics-fop"/>
       <repopackage name="xmlstarlet"/>
       <repopackage name="xmlto"/>
-      <repopackage name="xmms2"/>
-      <repopackage name="xmms2-plugin-base"/>
       <repopackage name="xmodmap"/>
       <repopackage name="xorg-docs"/>
       <repopackage name="xorg-x11-driver-video"/>
