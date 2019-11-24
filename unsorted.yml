@@ -8411,8 +8411,8 @@ unsorted:
   - libdbusextended-qt5-devel 
   - libdbusmenu-glib-devel 
   - libdbusmenu-glib-doc 
-  - libdbusmenu-gtk-devel 
-  - libdbusmenu-gtk-doc 
+  - libdbusmenu-gtk2-devel 
+  - libdbusmenu-gtk2-doc 
   - libdbusmenu-gtk3-devel 
   - libdbusmenu-gtk4 
   - libdbusmenu-jsonloader-devel 
@@ -9115,7 +9115,7 @@ unsorted:
   - libgsm-utils 
   - libgsm1-32bit: [x86_64] 
   - libgsmsd8 
-  - libgsoap-2_8_94 
+  - libgsoap-2_8_95 
   - libgssdp-1_2-0-32bit: [x86_64] 
   - libgssdp-devel 
   - libgssglue1-32bit: [x86_64] 
@@ -10272,6 +10272,7 @@ unsorted:
   - libode8 
   - libodfgen-devel 
   - libodfgen-devel-doc 
+  - libodp-122_0_0: [x86_64] 
   - libodraw-devel 
   - libodraw-tools 
   - libodraw1 
@@ -14701,7 +14702,6 @@ unsorted:
   - octave-openEMS 
   - ode-devel 
   - odp-devel: [x86_64] 
-  - odp-libs: [x86_64] 
   - odt2txt 
   - officecodepro-fonts 
   - offlineimap 
@@ -19258,7 +19258,6 @@ unsorted:
   - python2-qt5 
   - python2-qt5-devel 
   - python2-qtcharts-qt5 
-  - python2-qtconsole 
   - python2-qtdatavis3d-qt5 
   - python2-qtwebengine-qt5 
   - python2-queuelib 
@@ -19622,7 +19621,6 @@ unsorted:
   - python2-vcrpy 
   - python2-vcs 
   - python2-vcversioner 
-  - python2-vega 
   - python2-vega_datasets 
   - python2-venusian 
   - python2-venusian-doc 
@@ -21332,6 +21330,7 @@ unsorted:
   - python3-pandas-datareader 
   - python3-pandocfilters 
   - python3-panflute 
+  - python3-papermill 
   - python3-parallax 
   - python3-param 
   - python3-parameterized 
