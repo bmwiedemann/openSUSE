@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-dataformats-binary
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_with extra_dataformats
 # Extra formats are disabled because of circular dependencies
 Name:           jackson-dataformats-binary
-Version:        2.9.4
+Version:        2.10.1
 Release:        0
 Summary:        Jackson standard binary data format backends
 License:        Apache-2.0 AND BSD-3-Clause
@@ -109,8 +109,9 @@ sed -i 's/\r//' LICENSE NOTICE
 %pom_disable_module protobuf
 %endif
 
-# Test dep lombok is not packaged
-%pom_remove_dep org.projectlombok:lombok avro
+# Remove plugins unnecessary for RPM builds
+%pom_remove_plugin org.moditect:moditect-maven-plugin cbor
+%pom_remove_plugin org.moditect:moditect-maven-plugin smile
 
 # Deps are not available in packages for this module
 %pom_disable_module ion

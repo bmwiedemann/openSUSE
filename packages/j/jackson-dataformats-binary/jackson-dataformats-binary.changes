@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Nov 20 21:19:33 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Remove plugins unnecessary for RPM builds org.moditect:moditect-maven-plugin
+
+-------------------------------------------------------------------
+Wed Nov 20 18:53:15 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Version update to 2.10.1
+  * 2.10.1 (09-Nov-2019)
+    #185: Internal parsing of tagged arrays can lead to stack overflow
+    #188: Unexpected `MismatchedInputException` for `byte[]` value bound to `String`
+    	  in collection/array (actual fix in `jackson-databind`)
+  * 2.10.0 (26-Sep-2019)
+    #139: (cbor) Incorrect decimal fraction representation
+    #148: (protobuf) Add `ProtobufMapper.generateSchemaFor(TypeReference<?>)` overload
+    #155: (cbor, smile) Inconsistent support for FLUSH_PASSED_TO_STREAM
+    #157: (all) Add simple module-info for JDK9+, using Moditect
+    #163: (ion) Update `ion-java` dependency
+    #168: (avro) `JsonMappingException` for union types with multiple Record types
+    #173: (avro) Improve Union type serialization performance
+    #177: (avro) Deserialization of "empty" Records as root values fails
+    #178: (cbor) Fix issue wit input offsets when parsing CBOR from `InputStream`
+    #180: (protobuf) Add `ProtobufGenerator.canWriteBinaryNatively()` to support binary writes
+    	  - asm version upgrade to 6.2.1 (from 5.1)
+	  - (cbor, smile) Rewrote handling of "output context" for better field id write support
+  * 2.9.10 (21-Sep-2019)
+    No changes since 2.9.9
+  * 2.9.9 (16-May-2019)
+    #159: (cbor) Some short UTF Strings encoded using non-canonical form
+    #161: (avro) Deserialize from newer version to older one throws NullPointerException
+  * 2.9.8 (15-Dec-2018)
+    #140: (protobuf) Stack overflow when generating Protobuf schema  on class with
+    	  cyclic type definition
+    #153: (smile) Unable to set a compression input/output decorator to a `SmileFactory`
+  * 2.9.7 (19-Sep-2018)
+    #142: (ion) `IonParser.getNumberType()` returns `null` for `IonType.FLOAT`
+    #150: Add `CBORMapper`
+    #151: Add `SmileMapper`
+  * 2.9.6 (12-Jun-2018)
+    #93: (cbor) `CBORParser` does not accept "undefined value"
+    #135: (protobuf) Infinite sequence of `END_OBJECT` tokens returned at end of streaming read
+    #136: (avro) Fix MapWriteContext not correctly resolving union values
+  * 2.9.5 (26-Feb-2018)
+    #128 (protobuf) Fix skip unknown WireType.FIXED_64BIT value bug
+    #129 (cbor) Remove "final" modifier from `CBORParser`
+
+-------------------------------------------------------------------
 Tue Nov 12 17:00:39 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of jackson-dataformats-binary 2.9.4
