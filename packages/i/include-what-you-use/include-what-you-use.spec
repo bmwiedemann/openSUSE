@@ -1,7 +1,7 @@
 #
 # spec file for package include-what-you-use
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 # Copyright (c) 2019 Aaron Puchert.
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,7 @@ Release:        0
 Summary:        A tool to analyze #includes in C and C++ source files
 License:        NCSA
 Group:          Development/Languages/C and C++
-Url:            https://include-what-you-use.org/
+URL:            https://include-what-you-use.org/
 Source0:        https://include-what-you-use.org/downloads/%{name}-%{version}.src.tar.gz
 Source1:        %{name}.1
 Patch1:         fix-shebang.patch
@@ -69,8 +69,12 @@ refactoring tool.
 %patch4 -p1
 
 %build
-# Make _lto_cflags compatible with Clang.
+# Make _lto_cflags compatible with Clang, deactivate LTO where it doesn't work.
+%ifnarch %{arm}
 %define _lto_cflags "-flto=thin"
+%else
+%define _lto_cflags %{nil}
+%endif
 
 # Remove obsolete files - this is now hardcoded into iwyu_include_picker.cc.
 rm gcc.libc.imp gcc.symbols.imp gcc.stl.headers.imp stl.c.headers.imp

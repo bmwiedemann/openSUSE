@@ -84,4 +84,12 @@
 - Drop support for SLE12.</comment>
     <requestid>744930</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>da6a7ee8194ba63dc83dfbfdd7b39003</srcmd5>
+    <version>0.13</version>
+    <time>1574636908</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>750467</requestid>
+  </revision>
 </revisionlist>
