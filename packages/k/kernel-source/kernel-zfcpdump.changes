@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Thu Nov 21 08:21:20 CET 2019 - jslaby@suse.cz
+
+- Linux 5.3.12 (bnc#1151927).
+- slcan: Fix memory leak in error path (bnc#1151927).
+- mmc: sdhci-of-at91: fix quirk2 overwrite (bnc#1151927).
+- mm/page_io.c: do not free shared swap slots (bnc#1151927).
+- mm/memory_hotplug: fix try_offline_node() (bnc#1151927).
+- mm: slub: really fix slab walking for init_on_free
+  (bnc#1151927).
+- mm: hugetlb: switch to css_tryget() in
+  hugetlb_cgroup_charge_cgroup() (bnc#1151927).
+- mm: memcg: switch to css_tryget() in get_mem_cgroup_from_mm()
+  (bnc#1151927).
+- mm: mempolicy: fix the wrong return value and potential pages
+  leak of mbind (bnc#1151927).
+- iommu/vt-d: Fix QI_DEV_IOTLB_PFSID and QI_DEV_EIOTLB_PFSID
+  macros (bnc#1151927).
+- net: ethernet: dwmac-sun8i: Use the correct function in exit
+  path (bnc#1151927).
+- ntp/y2038: Remove incorrect time_t truncation (bnc#1151927).
+- Revert "drm/i915/ehl: Update MOCS table for EHL" (bnc#1151927).
+- drm/i915: update rawclk also on resume (bnc#1151927).
+- io_uring: ensure registered buffer import returns the IO length
+  (bnc#1151927).
+- ecryptfs_lookup_interpose(): lower_dentry->d_parent is not
+  stable either (bnc#1151927).
+- ecryptfs_lookup_interpose(): lower_dentry->d_inode is not stable
+  (bnc#1151927).
+- x86/quirks: Disable HPET on Intel Coffe Lake platforms
+  (bnc#1151927).
+- i2c: acpi: Force bus speed to 400KHz if a Silead touchscreen
+  is present (bnc#1151927).
+- IB/hfi1: Use a common pad buffer for 9B and 16B packets
+  (bnc#1151927).
+- IB/hfi1: Ensure full Gen3 speed in a Gen4 system (bnc#1151927).
+- IB/hfi1: TID RDMA WRITE should not return
+  IB_WC_RNR_RETRY_EXC_ERR (bnc#1151927).
+- IB/hfi1: Calculate flow weight based on QP MTU for TID RDMA
+  (bnc#1151927).
+- IB/hfi1: Ensure r_tid_ack is valid before building TID RDMA
+  ACK packet (bnc#1151927).
+- KVM: MMU: Do not treat ZONE_DEVICE pages as being reserved
+  (bnc#1151927).
+- Input: synaptics-rmi4 - destroy F54 poller workqueue when
+  removing (bnc#1151927).
+- Input: synaptics-rmi4 - clear IRQ enables for F54 (bnc#1151927).
+- Input: synaptics-rmi4 - do not consume more data than we have
+  (F11, F12) (bnc#1151927).
+- Input: synaptics-rmi4 - disable the relative position IRQ in
+  the F12 driver (bnc#1151927).
+- Input: synaptics-rmi4 - fix video buffer size (bnc#1151927).
+- Input: ff-memless - kill timer in destroy() (bnc#1151927).
+- cgroup: freezer: call cgroup_enter_frozen() with preemption
+  disabled in ptrace_stop() (bnc#1151927).
+- Btrfs: fix log context list corruption after rename exchange
+  operation (bnc#1151927).
+- ALSA: usb-audio: Fix incorrect size check for
+  processing/extension units (bnc#1151927).
+- ALSA: usb-audio: Fix incorrect NULL check in
+  create_yamaha_midi_quirk() (bnc#1151927).
+- ALSA: usb-audio: not submit urb for stopped endpoint
+  (bnc#1151927).
+- ALSA: usb-audio: Fix missing error check at mixer resolution
+  test (bnc#1151927).
+- net/smc: fix refcount non-blocking connect() -part 2
+  (bnc#1151927).
+- devlink: Add method for time-stamp on reporter's dump
+  (bnc#1151927).
+- dpaa2-eth: free already allocated channels on probe defer
+  (bnc#1151927).
+- tcp: remove redundant new line from tcp_event_sk_skb
+  (bnc#1151927).
+- slip: Fix memory leak in slip_open error path (bnc#1151927).
+- net: usb: qmi_wwan: add support for Foxconn T77W968 LTE modules
+  (bnc#1151927).
+- net/smc: fix fastopen for non-blocking connect() (bnc#1151927).
+- net: gemini: add missed free_netdev (bnc#1151927).
+- mlxsw: core: Enable devlink reload only on probe (bnc#1151927).
+- ipmr: Fix skb headroom in ipmr_get_route() (bnc#1151927).
+- devlink: disallow reload operation during device cleanup
+  (bnc#1151927).
+- ax88172a: fix information leak on short answers (bnc#1151927).
+- scsi: core: Handle drivers which set sg_tablesize to zero
+  (bnc#1151927).
+- commit a6f6081
+
+-------------------------------------------------------------------
+Thu Nov 14 10:52:44 CET 2019 - guillaume.gardet@arm.com
+
+- arm64: Enable CONFIG_IR_GPIO_CIR (boo#1156748)
+- commit f47e51f
+
+-------------------------------------------------------------------
 Tue Nov 12 19:53:23 CET 2019 - jslaby@suse.cz
 
 - Linux 5.3.11 (bnc#1151927).

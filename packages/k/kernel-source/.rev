@@ -4892,4 +4892,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.3.11</comment>
     <requestid>748248</requestid>
   </revision>
+  <revision rev="516" vrev="1">
+    <srcmd5>b70d353ef87c80c8287f87a6c90f88cb</srcmd5>
+    <version>5.3.12</version>
+    <time>1574636360</time>
+    <user>dimstar_suse</user>
+    <comment>5.3.12 &amp; arm64 config change</comment>
+    <requestid>750079</requestid>
+  </revision>
 </revisionlist>
