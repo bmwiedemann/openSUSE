@@ -1174,4 +1174,15 @@
   * Fix a crash (glgo#World/lollypop#2124).</comment>
     <requestid>749130</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>a06592c225e426dd98ad66982ee9348b</srcmd5>
+    <version>1.2.15</version>
+    <time>1574677497</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.15:
+  * Fix crash in lyrics view (glgo#World/lollypop#2130).
+- Changes from version 1.2.14:
+  * Bug fixes.</comment>
+    <requestid>750530</requestid>
+  </revision>
 </revisionlist>
