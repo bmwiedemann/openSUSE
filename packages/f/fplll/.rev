@@ -23,4 +23,12 @@
     <comment>- Update to new upstream release 5.2.1</comment>
     <requestid>643480</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>18a6de1653fccf76d2493e97faaf1c2c</srcmd5>
+    <version>5.3.0</version>
+    <time>1574677508</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 5.3.0</comment>
+    <requestid>750567</requestid>
+  </revision>
 </revisionlist>

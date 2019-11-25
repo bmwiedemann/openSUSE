@@ -1,7 +1,7 @@
 #
 # spec file for package fplll
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,20 @@
 
 
 Name:           fplll
-%define lname   libfplll5
-Version:        5.2.1
+%define lname   libfplll6
+Version:        5.3.0
 Release:        0
 Summary:        Lenstra-Lovász Lattice Basis Reduction Algorithm Library
 License:        LGPL-2.1-or-later
 Group:          Productivity/Scientific/Math
-Url:            https://github.com/dstehle/fplll
+URL:            https://github.com/dstehle/fplll
 
 #Git-Clone:	https://github.com/fplll/fplll
 Source:         https://github.com/fplll/fplll/releases/download/%version/fplll-%version.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  mpfr-devel
-BuildRequires:  pkgconfig
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkg-config
 
 %description
 fplll contains several algorithms on lattices that rely on
