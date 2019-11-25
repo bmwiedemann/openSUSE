@@ -287,4 +287,12 @@
     <comment>update changes file about #1121448 (forwarded request 712853 from computersalat)</comment>
     <requestid>712854</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>ec503298879f25ef92ec0b07a3e27341</srcmd5>
+    <version>1.9.0</version>
+    <time>1574691805</time>
+    <user>dimstar_suse</user>
+    <comment>Update</comment>
+    <requestid>748736</requestid>
+  </revision>
 </revisionlist>

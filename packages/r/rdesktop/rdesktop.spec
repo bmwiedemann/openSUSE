@@ -1,7 +1,7 @@
 #
 # spec file for package rdesktop
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,27 +17,27 @@
 
 
 Name:           rdesktop
-Version:        1.8.6
+Version:        1.9.0
 Release:        0
 Summary:        A Remote Desktop Protocol client
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Other
-Url:            http://www.rdesktop.org/
+URL:            http://www.rdesktop.org/
 Source:         https://github.com/rdesktop/rdesktop/releases/download/v%{version}/%{name}-%{version}.tar.gz
 ## FIX-openSUSE: remove "Don't depend on pkg-config"
 Patch0:         rdesktop-fix_pkgconfig_check.patch
 # PATCH-FIX-OPENSUSE rdesktop-Fix-keymap-script.patch
 Patch3:         rdesktop-Fix-keymap-script.patch
-Patch4:         rdesktop-Fix-key-caching.patch
-# PATH-FIX-UPSTREAM rdesktop-Fix-decryption.patch
-Patch5:         rdesktop-Fix-decryption.patch
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  libgssglue-devel
+BuildRequires:  krb5-devel
+BuildRequires:  libXcursor-devel
+BuildRequires:  libgnutls-devel
+BuildRequires:  libnettle-devel
 BuildRequires:  libsamplerate-devel
+BuildRequires:  libtasn1-devel
 BuildRequires:  libtool
-BuildRequires:  openssl-devel
 BuildRequires:  pcsc-lite-devel
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(ao)
@@ -55,11 +55,7 @@ to Windows Server 2012 R2.
 %prep
 %setup -q
 %patch0
-%if 0%{?suse_version} > 1110
-%patch4 -p1
-%endif
 %patch3 -p1
-%patch5 -p1
 
 ## rpmlint
 # incorrect-fsf-address /usr/share/rdesktop/keymaps/convert-map
@@ -82,7 +78,8 @@ chmod -R a+r %{buildroot}%{_datadir}/rdesktop/keymaps
 
 %files
 %defattr(-,root,root,755)
-%doc COPYING doc README
+%doc doc README.md
+%license COPYING
 %{_bindir}/rdesktop
 %{_datadir}/rdesktop
 %{_mandir}/man1/rdesktop.1.gz

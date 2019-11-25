@@ -1,8 +1,6 @@
-Index: configure.ac
-===================================================================
---- configure.ac.orig
-+++ configure.ac
-@@ -42,14 +42,6 @@ AC_CHECK_HEADER(sysexits.h, AC_DEFINE(HA
+--- configure.ac.orig	2019-09-20 10:03:48.000000000 +0300
++++ configure.ac	2019-11-11 16:59:53.567498044 +0300
+@@ -45,15 +45,6 @@
  
  AC_CHECK_TOOL(STRIP, strip, :)
  
@@ -14,6 +12,7 @@ Index: configure.ac
 -			$4
 -		])
 -])
- 
- #
- # OpenSSL detection borrowed from stunnel
+-
+ dnl Add option to build with using address sanitizer
+ AC_ARG_ENABLE([address-sanitizer], AS_HELP_STRING([--enable-address-sanitizer], \
+               [enable AddressSanitizer support for detecting a wide variety of \
