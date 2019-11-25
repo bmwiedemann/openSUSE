@@ -27,7 +27,7 @@
 %define wx_args --gtk3 -v
 %endif
 Name:           python-wxPython
-Version:        4.0.4
+Version:        4.0.7.post1
 Release:        0
 Summary:        The "Phoenix" variant of the wxWidgets Python bindings
 License:        GPL-2.0-or-later
