@@ -48,7 +48,7 @@
 %define svrcorelib libsvrcore0
 
 Name:           389-ds
-Version:        1.4.2.3~git0.129914357
+Version:        1.4.2.4~git0.c881f6ec0
 Release:        0
 Summary:        389 Directory Server
 License:        GPL-3.0-or-later AND MPL-2.0
@@ -197,6 +197,7 @@ License:        GPL-3.0-or-later AND MPL-2.0
 Group:          Development/Languages/Python
 Requires:       %{use_python}-argcomplete
 Requires:       %{use_python}-argparse-manpage
+Requires:       %{use_python}-distro
 Requires:       %{use_python}-ldap >= 3.0
 Requires:       %{use_python}-pyasn1
 Requires:       %{use_python}-pyasn1-modules

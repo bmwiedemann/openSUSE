@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Nov 18 02:34:04 UTC 2019 - 389-ds-maintainer@suse.de
+
+- Update to version 1.4.2.4~git0.c881f6ec0:
+  * Bump version to 1.4.2.4
+  * Issue 49761 - Fix CI test suite issues
+  * Issue 50634 - Fix CLI error parsing for non-string values
+  * Ticket 50659 AddressSanitizer: SEGV ... in bdb_pre_close
+  * Issue 50716 - CVE-2019-14824 (BZ#1748199) - deref plugin displays restricted attributes
+  * Issue 50644 - fix regression with creating sample entries
+  * Issue 50699 - Add Disk Monitor to CLI and UI
+  * Issue 50716 - CVE-2019-14824 (BZ#1748199) - deref plugin displays restricted attributes
+  * Issue 50536 - After audit log file is rotated, DS version string is logged after each update
+  * Issue #50712 - Version comparison doesn't work correctly on git builds
+  * Issue 50706 - Missing lib389 dependency - packaging
+  * Issue 49761 - Fix CI test suite issues
+  * Issue #50683 - Makefile.am contains unused RPM-related targets
+  * Issue 50696 - Fix various UI bugs
+  * Update based on Marks feedback
+  * Update to mark as skipif
+  * Ticket 50641 - Update default aci to allows users to change their own password
+  * Ticket 50007, 50648 - improve x509 handling.
+  * Issue 50689 - Failed db restore task does not report an error
+  * Issue 50199 - Disable perl by default
+  * Ticket 50633 - Add cargo vendor support for offline builds
+  * Issue 50499 - Fix npm audit issues
+
+-------------------------------------------------------------------
 Tue Nov 12 00:27:00 UTC 2019 - 389-ds-maintainer@suse.de
 
 - Update to version 1.4.2.3~git0.129914357:
