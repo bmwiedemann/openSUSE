@@ -1,7 +1,7 @@
 #
 # spec file for package python-networkx
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,19 +19,21 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-networkx
-Version:        2.3
+Version:        2.4
 Release:        0
 Summary:        Python package for the study of complex networks
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://networkx.github.io/
-Source:         https://files.pythonhosted.org/packages/source/n/networkx/networkx-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/n/networkx/networkx-%{version}.tar.gz
+# UPSTREAM PATCH: gh#networkx/networkx#3724
+Patch0:         numpy-38-test.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module decorator >= 3.4.0}
 BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module nose >= 0.10.1}
 BuildRequires:  %{python_module pydot}
 BuildRequires:  %{python_module pyparsing}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -69,6 +71,7 @@ Documentation and examples for %{name}.
 
 %prep
 %setup -q -n networkx-%{version}
+%autopatch -p1
 
 %build
 %python_build
@@ -86,7 +89,8 @@ fi
 
 %{python_expand pushd %{buildroot}%{$python_sitelib}
 # Fix wrong-script-interpreter
-find networkx -name '*test*.py' -exec sed -i "s|#!%{_bindir}/env python|#!%__$python|" {} +
+find networkx -name '*test*.py' -exec sed -i "s|#!%{_bindir}/env python$|#!%__$python|" {} +
+find networkx -name '*test*.py' -exec sed -i "s|#!%{_bindir}/env python3$|#!%__$python|" {} +
 find networkx -name '*test*.py' -exec grep -q '#!%__$python' {} \; -exec chmod a+x {} +
 # Deduplicating files can generate a RPMLINT warning for pyc mtime
 find networkx -name '*test*.py' -exec $python -m compileall -d %{$python_sitelib} {} \;
@@ -98,7 +102,7 @@ popd
 
 %check
 # test excluded because it leads to crashes on i586, gh#networkx/networkx#3304
-%python_exec setup.py nosetests -v -e 'test_subgraph_centrality_big_graph'
+%pytest -k 'not test_subgraph_centrality_big_graph'
 
 %files %{python_files}
 %license LICENSE.txt

@@ -172,4 +172,24 @@
     <comment></comment>
     <requestid>717963</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>273db896d088219ed7bacc2d4110f072</srcmd5>
+    <version>2.4</version>
+    <time>1574677393</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop incorrectly calculated dependency on python33
+- Switch to using %pytest macro
+
+- Update to version 2.4
+  Highlights:
+  * Remove deprecated code from 1.x
+  * Support for Python 3.8
+  * Switched to pytest for testing
+  * Last release to support Python 3.5
+  * Fifteen new fuctions, including onion decomposition and linear prufing
+  * Three new generators, such as a directed joint degree generator
+- Add numpy-38-test.patch, to correct test failure under Python 3.8  
+- Update URL, upstream changed to tarballs from zipfiles.</comment>
+    <requestid>750202</requestid>
+  </revision>
 </revisionlist>
