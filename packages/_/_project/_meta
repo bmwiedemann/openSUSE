@@ -7,6 +7,7 @@ Staging dashboard is located at: https://build.opensuse.org/project/dashboard/op
 List of known devel projects: https://build.opensuse.org/package/view_file/openSUSE:Factory:Staging/dashboard/devel_projects
 
 Have a look at http://en.opensuse.org/Portal:Factory for more details.</description>
+  <person userid="coolo" role="maintainer"/>
   <person userid="coolo-factory" role="maintainer"/>
   <person userid="dimstar_suse" role="maintainer"/>
   <person userid="factory-auto" role="reviewer"/>

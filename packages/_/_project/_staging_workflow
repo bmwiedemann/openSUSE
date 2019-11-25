@@ -1,0 +1,18 @@
+<workflow project="openSUSE:Factory" managers="factory-staging">
+  <staging_project name="openSUSE:Factory:Staging:A"/>
+  <staging_project name="openSUSE:Factory:Staging:B"/>
+  <staging_project name="openSUSE:Factory:Staging:C"/>
+  <staging_project name="openSUSE:Factory:Staging:D"/>
+  <staging_project name="openSUSE:Factory:Staging:E"/>
+  <staging_project name="openSUSE:Factory:Staging:F"/>
+  <staging_project name="openSUSE:Factory:Staging:G"/>
+  <staging_project name="openSUSE:Factory:Staging:H"/>
+  <staging_project name="openSUSE:Factory:Staging:I"/>
+  <staging_project name="openSUSE:Factory:Staging:J"/>
+  <staging_project name="openSUSE:Factory:Staging:K"/>
+  <staging_project name="openSUSE:Factory:Staging:L"/>
+  <staging_project name="openSUSE:Factory:Staging:M"/>
+  <staging_project name="openSUSE:Factory:Staging:Gcc7"/>
+  <staging_project name="openSUSE:Factory:Staging:N"/>
+  <staging_project name="openSUSE:Factory:Staging:O"/>
+</workflow>
