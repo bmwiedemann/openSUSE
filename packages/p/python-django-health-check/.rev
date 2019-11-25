@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>743744</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d9f3ee118ef462966a1bc141e3f26170</srcmd5>
+    <version>3.11.1</version>
+    <time>1574691803</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.11.1:
+  * Resolve #232 -- Change license information to MIT</comment>
+    <requestid>745448</requestid>
+  </revision>
 </revisionlist>

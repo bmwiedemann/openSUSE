@@ -1,5 +1,5 @@
 #
-# spec file for package django-health-check
+# spec file for package python-django-health-check
 #
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-health-check
-Version:        3.11.0
+Version:        3.11.1
 Release:        0
 Summary:        Run checks on services like databases, queue servers, celery processes, etc
 License:        MIT
