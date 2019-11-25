@@ -1,0 +1,2 @@
+# I don't like to create a devel package just for one file
+addFilter("devel-file-in-non-devel-package.*/usr/share/pkgconfig/bodr.pc")
