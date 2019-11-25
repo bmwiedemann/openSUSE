@@ -406,6 +406,10 @@ confname=$(ls configs | perl -ne '$l=lc; $l=~ s,_,,g; $l eq "%{target}defconfig\
 make %{?_smp_mflags} CROSS_COMPILE= HOSTCFLAGS="$RPM_OPT_FLAGS" $confname
 echo "Attempting to enable fdt apply command (.dtbo) support."
 echo "CONFIG_OF_LIBFDT_OVERLAY=y" >> .config
+%if "%target" == "rpi3"
+echo "Tweaking text base for TF-A."
+echo "CONFIG_SYS_TEXT_BASE=0x11000000" >> .config
+%endif
 make %{?_smp_mflags} CROSS_COMPILE= HOSTCFLAGS="$RPM_OPT_FLAGS" \
 %if ("%{name}" == "u-boot-rock64-rk3328" || "%{name}" == "u-boot-evb-rk3399" || "%{name}" == "u-boot-firefly-rk3399" || "%{name}" == "u-boot-rock-pi-4-rk3399") && %{with uboot_atf}
      all u-boot.itb
@@ -503,6 +507,10 @@ install -D -m 0644 u-boot-with-spl.sfp %{buildroot}%{uboot_dir}/u-boot-with-spl.
 %endif
 %if "%{name}" == "u-boot-zynqzturn"
 install -D -m 0644 spl/boot.bin %{buildroot}%{uboot_dir}/boot.bin
+%endif
+%if "%{name}" == "u-boot-rpi3"
+echo -e "# Boot in AArch64 mode\narm_control=0x200" > %{buildroot}%{uboot_dir}/ubootconfig.txt
+echo -e "\nkernel_address=0x11000000" >> %{buildroot}%{uboot_dir}/ubootconfig.txt
 %endif
 
 %if 0%{?is_rpi}
