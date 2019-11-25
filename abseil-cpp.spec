@@ -91,7 +91,7 @@ bazel build \
 bazel shutdown
 
 %install
-for lib in $(find bazel-bin/absl -name "*.so"); do
+for lib in $(find bazel-bin/absl -name "*.so"|sort); do
     lib_basename=$(basename ${lib} | sed -e "s|^lib|libabsl_|")
     install -D -m0755 ${lib} %{buildroot}%{_libdir}/${lib_basename}.%{sover}
     patchelf --set-soname ${lib_basename}.%{sover} %{buildroot}%{_libdir}/${lib_basename}.%{sover}
