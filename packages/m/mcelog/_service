@@ -5,8 +5,8 @@
     <param name="subdir"></param>
     <param name="filename">mcelog</param>
     <param name="changesgenerate">enable</param>
-    <param name="revision">refs/tags/v164</param>
-    <param name="versionformat">1.64</param>
+    <param name="revision">refs/tags/v166</param>
+    <param name="versionformat">1.66</param>
 <!--
       <param name="versionformat">1.64+git%cd.%h</param>
 -->

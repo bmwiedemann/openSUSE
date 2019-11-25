@@ -22,7 +22,7 @@
 %endif
 
 Name:           mcelog
-Version:        1.64
+Version:        1.66
 Release:        0
 Summary:        Log Machine Check Events
 License:        GPL-2.0-only
