@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Nov 24 15:58:03 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to version 0.7.0:
+  * introduce a new Button Size percentage option and drop
+    thickness margin in order to set the buttons size
+  * introduce Hidden State in order for the user to choose how
+    buttons should behave when they should not be shown. Currently
+    two states are supported: Slide out and Preserve Empty Space
+  * introduce a new Color Scheme based on current Plasma Theme
+    used and make it also default
+  * live preview for changes in the settings window
+  * do not crash when the selected decoration does not exist in the
+    systemm, for example it was uninstalled
+  * update buttons for scheme changes
+
+-------------------------------------------------------------------
 Sun Sep  1 19:13:09 UTC 2019 - Cor Blom <cornelis@solcon.nl>
 
 - Update source URL
@@ -6,7 +22,7 @@ Sun Sep  1 19:13:09 UTC 2019 - Cor Blom <cornelis@solcon.nl>
 -------------------------------------------------------------------
 Sun Sep  1 18:39:52 UTC 2019 - Cor Blom <cornelis@solcon.nl>
 
-- Update to version 0.6.1:
+- Update to version 0.6.0:
   * new visibility mode: At least one window is shown
   * option to draw buttons in inactive state (for both c++ and
     aurorae decorations)
