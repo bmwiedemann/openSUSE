@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 21 10:04:38 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 6.42
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+
+  6.42      2019-11-20 17:40:52Z
+      - Add retry handling for a stale nonce with digest authentication (marmotil
+        and Frank Maas) (GH#40, GH#313, GH#321)
+      - Add the patch method to LWP::UserAgent. (GH#334) (Chase Whitener)
+      - Fix docs to match keep_alive => undef behavior, add some trivial tests
+        (GH#333) (Ville Skyttä)
+      - Documentation grammar fixes (GH#331) (Ville Skyttä)
+
+-------------------------------------------------------------------
 Tue Oct 29 09:47:06 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 6.41

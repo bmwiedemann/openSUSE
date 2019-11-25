@@ -17,7 +17,7 @@
 
 
 Name:           perl-libwww-perl
-Version:        6.41
+Version:        6.42
 Release:        0
 %define cpan_name libwww-perl
 Summary:        The World-Wide Web library for Perl
