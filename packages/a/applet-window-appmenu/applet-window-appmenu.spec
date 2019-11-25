@@ -20,7 +20,7 @@
 %define qt5_version 5.9
 
 Name:           applet-window-appmenu
-Version:        0.5.1
+Version:        0.6.0
 Release:        0
 Summary:        Plasma 5 applet to show the window appmenu
 License:        GPL-2.0-or-later
@@ -40,6 +40,7 @@ BuildRequires:  kxmlgui-devel >= %{kf5_version}
 BuildRequires:  libSM-devel
 BuildRequires:  plasma-framework-devel >= %{kf5_version}
 BuildRequires:  plasma5-workspace-devel >= 5.12
+BuildRequires:  cmake(KDecoration2) >= 5.12
 BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
 BuildRequires:  cmake(Qt5DBus) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Quick) >= %{qt5_version}

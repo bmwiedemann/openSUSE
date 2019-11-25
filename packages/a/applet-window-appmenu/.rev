@@ -44,4 +44,19 @@
     where buttons had 1px. difference with surrounding applets</comment>
     <requestid>721105</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a681dcf62ac955e1afccc6f9e682c2b2</srcmd5>
+    <version>0.6.0</version>
+    <time>1574677517</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.0:
+  * new option to support color schemes for menus. For Latte a new
+    option to colorize the menus based on the current window color
+    scheme is already present.
+  * release menu item hovering when not needed any more
+  * new option to maximize/restore active window when used in
+    plasma panels [@ Taras Fomin]
+- Add cmake(KDecoration2) &gt;= 5.12 to BuildRequires</comment>
+    <requestid>750569</requestid>
+  </revision>
 </revisionlist>

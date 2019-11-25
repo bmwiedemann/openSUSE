@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Nov 24 15:53:13 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to version 0.6.0:
+  * new option to support color schemes for menus. For Latte a new
+    option to colorize the menus based on the current window color
+    scheme is already present.
+  * release menu item hovering when not needed any more
+  * new option to maximize/restore active window when used in
+    plasma panels [@ Taras Fomin]
+- Add cmake(KDecoration2) >= 5.12 to BuildRequires
+
+-------------------------------------------------------------------
 Mon Aug  5 19:07:56 UTC 2019 - Cor Blom <cornelis@solcon.nl>
 
 - Update to version 0.5.1:
