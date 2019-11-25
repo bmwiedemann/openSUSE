@@ -6299,7 +6299,6 @@ unsorted:
   - kernel-coverage 
   - kernel-debug 
   - kernel-debug-devel 
-  - kernel-default-base: [i586] 
   - kernel-default-base-rebuild 
   - kernel-docs-html 
   - kernel-firmware 
@@ -18782,7 +18781,6 @@ unsorted:
   - python2-opengl 
   - python2-opengl-accelerate 
   - python2-openmesh 
-  - python2-openpyxl 
   - python2-openqa_client 
   - python2-openqa_review 
   - python2-openstack.nose_plugin 
@@ -21893,7 +21891,7 @@ unsorted:
   - python3-scikit-umfpack 
   - python3-scipy: [i586] 
   - python3-scipy-gnu-hpc: [x86_64] 
-  - python3-scipy_1_3_1-gnu-hpc: [x86_64] 
+  - python3-scipy_1_3_2-gnu-hpc: [x86_64] 
   - python3-scp 
   - python3-scripttest 
   - python3-scrypt 
