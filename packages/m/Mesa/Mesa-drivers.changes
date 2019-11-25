@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Nov 22 11:06:45 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 19.2.6
+  * fixes build on PPC
+  * couple of additional stable patches 
+
+-------------------------------------------------------------------
+Thu Nov 21 11:40:59 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 19.2.5
+  * There's a little bit over everything in here, with anv and
+    radeonsi standing out as the two biggest components getting
+    changes, but core mesa, core gallium, llvmpipe, nir, egl,
+    i965, tgsi, st/mesa, spirv, and the Intel compiler also
+    fixes in this release.
+- supersedes u_call-shmget-with-permission-0600-instead-of-0777.patch
+
+-------------------------------------------------------------------
 Thu Nov 14 14:36:08 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - u_call-shmget-with-permission-0600-instead-of-0777.patch

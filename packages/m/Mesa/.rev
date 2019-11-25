@@ -3895,4 +3895,22 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   safely.</comment>
     <requestid>749087</requestid>
   </revision>
+  <revision rev="362" vrev="234">
+    <srcmd5>fc4eefbf71fceabf635c34ad966d9569</srcmd5>
+    <version>unknown</version>
+    <time>1574677449</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 19.2.6
+  * fixes build on PPC
+  * couple of additional stable patches 
+
+- Update to version 19.2.5
+  * There's a little bit over everything in here, with anv and
+    radeonsi standing out as the two biggest components getting
+    changes, but core mesa, core gallium, llvmpipe, nir, egl,
+    i965, tgsi, st/mesa, spirv, and the Intel compiler also
+    fixes in this release.
+- supersedes u_call-shmget-with-permission-0600-instead-of-0777.patch</comment>
+    <requestid>750318</requestid>
+  </revision>
 </revisionlist>
