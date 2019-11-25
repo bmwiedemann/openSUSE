@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-django
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-django
-Version:        3.6.0
+Version:        3.7.0
 Release:        0
 Summary:        A Django plugin for py.test
 License:        BSD-3-Clause

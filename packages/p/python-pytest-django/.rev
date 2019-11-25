@@ -90,4 +90,12 @@ See request 531880 : https://build.opensuse.org/request/show/531880</comment>
   * Django unittests: restore &quot;debug&quot; function (#769, #771)</comment>
     <requestid>744143</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7daa9280168f95a52355283e5bc916ee</srcmd5>
+    <version>3.7.0</version>
+    <time>1574677425</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>750272</requestid>
+  </revision>
 </revisionlist>
