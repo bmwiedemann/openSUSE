@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 20 15:18:24 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
+
+- drop 'checkproc' line from the run-crons as the usage is bogus
+  [bsc#1155929]
+
+-------------------------------------------------------------------
 Tue Nov  5 16:07:57 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
 
 - update cronie-nheader_lines.diff so it doesn't print the first 3
