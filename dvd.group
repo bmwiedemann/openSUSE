@@ -1220,7 +1220,6 @@
     <package name="kdoctools-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kdump" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="kernel-default" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="kernel-default-base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="kernel-default-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_kernel -->
     <package name="kernel-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_kernel -->
     <package name="kernel-docs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->

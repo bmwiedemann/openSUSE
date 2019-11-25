@@ -6299,6 +6299,7 @@ unsorted:
   - kernel-coverage 
   - kernel-debug 
   - kernel-debug-devel 
+  - kernel-default-base: [i586] 
   - kernel-default-base-rebuild 
   - kernel-docs-html 
   - kernel-firmware 
