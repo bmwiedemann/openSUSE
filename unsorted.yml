@@ -3,7 +3,7 @@ unsorted:
   - 0ad-data 
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
+  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -44,6 +44,8 @@ unsorted:
   - FlightGear-data 
   - FlightGear-docs 
   - FreeCAD: [x86_64] 
+  - GeoIP 
+  - GeoIP-data 
   - GraphicsMagick 
   - GraphicsMagick-devel 
   - HSAIL-Tools 
@@ -1129,7 +1131,6 @@ unsorted:
   - bibview 
   - bind-devel 
   - bind-devel-32bit: [x86_64] 
-  - bind-lwresd 
   - bindfs 
   - bing 
   - binutils-devel-32bit: [x86_64] 
@@ -1200,6 +1201,7 @@ unsorted:
   - bmon 
   - bnd-maven-plugin 
   - bnd-maven-plugin-javadoc 
+  - bodr 
   - bogofilter-doc 
   - bogofilter-kyotocabinet 
   - bogofilter-sqlite3 
@@ -1478,7 +1480,6 @@ unsorted:
   - cardpeek 
   - cargo 
   - cargo-doc 
-  - cargo-vendor 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -7008,6 +7009,7 @@ unsorted:
   - libGeneratedSaxParser0_3 
   - libGeoIP-devel 
   - libGeoIP-devel-32bit: [x86_64] 
+  - libGeoIP1 
   - libGeoIP1-32bit: [x86_64] 
   - libGetDP2_11 
   - libGraphicsMagick++-Q16-12 
@@ -7836,7 +7838,7 @@ unsorted:
   - libbfio-devel 
   - libbfio1 
   - libbiblesync2_0 
-  - libbind9-160-32bit: [x86_64] 
+  - libbind9-1302-32bit: [x86_64] 
   - libbitcoinconsensus-devel 
   - libbitcoinconsensus0 
   - libbitmask-devel 
@@ -8473,7 +8475,7 @@ unsorted:
   - libdnet1 
   - libdnf-devel 
   - libdnf2 
-  - libdns169-32bit: [x86_64] 
+  - libdns1311-32bit: [x86_64] 
   - libdns_sd 
   - libdns_sd-32bit: [x86_64] 
   - libdouble-conversion3-32bit: [x86_64] 
@@ -8796,7 +8798,7 @@ unsorted:
   - libformula-javadoc 
   - libfparser-4_5_2 
   - libfpgad-api1: [x86_64] 
-  - libfplll5 
+  - libfplll6 
   - libfpm_pb0 
   - libfprint-devel 
   - libfprint0-32bit: [x86_64] 
@@ -9509,10 +9511,10 @@ unsorted:
   - libirman0 
   - libirrecord0 
   - libirs-devel 
-  - libirs160-32bit: [x86_64] 
-  - libisc166-32bit: [x86_64] 
-  - libisccc160-32bit: [x86_64] 
-  - libisccfg160-32bit: [x86_64] 
+  - libirs1301-32bit: [x86_64] 
+  - libisc1310-32bit: [x86_64] 
+  - libisccc1302-32bit: [x86_64] 
+  - libisccfg1302-32bit: [x86_64] 
   - libiscsi-devel 
   - libiscsi-test 
   - libiscsi-utils 
@@ -9828,7 +9830,6 @@ unsorted:
   - libluajit-5_1-2-32bit: [x86_64] 
   - liblucene++0 
   - liblur3 
-  - liblwres160-32bit: [x86_64] 
   - liblxc-devel 
   - liblxc1 
   - liblxqt-devel 
@@ -9895,6 +9896,7 @@ unsorted:
   - libmatroska-devel 
   - libmatroska6-32bit: [x86_64] 
   - libmaxminddb-devel 
+  - libmaxminddb0-32bit: [x86_64] 
   - libmbedcrypto3 
   - libmbedcrypto3-32bit: [x86_64] 
   - libmbedtls12 
@@ -20510,7 +20512,7 @@ unsorted:
   - python3-distlib 
   - python3-distorm3 
   - python3-distributed 
-  - python3-distro 
+  - python3-distro: [i586] 
   - python3-distroinfo 
   - python3-distutils-extra 
   - python3-dj-database-url 
@@ -20861,7 +20863,7 @@ unsorted:
   - python3-iminuit 
   - python3-immutables 
   - python3-importlab 
-  - python3-importlib-metadata 
+  - python3-importlib-metadata: [i586] 
   - python3-imread 
   - python3-infinity 
   - python3-inflect 
@@ -21146,7 +21148,7 @@ unsorted:
   - python3-monascaclient 
   - python3-mongoengine 
   - python3-monotonic 
-  - python3-more-itertools 
+  - python3-more-itertools: [i586] 
   - python3-moretools 
   - python3-moto 
   - python3-moviepy 
@@ -22291,7 +22293,7 @@ unsorted:
   - python3-zetup 
   - python3-zhon 
   - python3-zict 
-  - python3-zipp 
+  - python3-zipp: [i586] 
   - python3-zipstream 
   - python3-zodbpickle 
   - python3-zope.cachedescriptors 
