@@ -86,9 +86,6 @@ cp -fr console_libraries/ consoles/ %{buildroot}%{_datarootdir}/prometheus
 install -m 0755 -d %{buildroot}%{_fillupdir}
 install -m 0644 %{SOURCE3} %{buildroot}%{_fillupdir}/sysconfig.prometheus
 
-install -m 0755 -d %{buildroot}%{_libdir}/firewalld/services/
-install -m 0644 %{SOURCE4} %{buildroot}%{_libdir}/firewalld/services/prometheus.xml
-
 install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus
 install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus/data
 install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus/metrics
@@ -128,8 +125,5 @@ getent passwd %{prometheus_user} >/dev/null || %{_sbindir}/useradd -r -g %{prome
 %dir %attr(0700,%{prometheus_user},%{prometheus_group}) %{_sharedstatedir}/prometheus/metrics
 %dir %{_sysconfdir}/prometheus
 %config(noreplace) %{_sysconfdir}/prometheus/prometheus.yml
-%dir %{_libdir}/firewalld
-%dir %{_libdir}/firewalld/services
-%{_libdir}/firewalld/services/prometheus.xml
 
 %changelog

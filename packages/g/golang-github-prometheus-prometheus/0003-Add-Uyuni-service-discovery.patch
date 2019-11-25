@@ -1,43 +1,3 @@
-From 757642fdefcc3a6f08d36d5db9ff5e9b46104193 Mon Sep 17 00:00:00 2001
-From: Joao Cavalheiro <jcavalheiro@suse.de>
-Date: Wed, 22 May 2019 16:39:25 +0100
-Subject: [PATCH] Add Uyuni service discovery
-
----
- discovery/config/config.go                        |   3 +
- discovery/manager.go                              |   6 +
- discovery/uyuni/uyuni.go                          | 219 ++++++++++
- vendor/github.com/kolo/xmlrpc/LICENSE             |  19 +
- vendor/github.com/kolo/xmlrpc/README.md           |  89 ++++
- vendor/github.com/kolo/xmlrpc/client.go           | 170 ++++++++
- vendor/github.com/kolo/xmlrpc/client_test.go      | 141 +++++++
- vendor/github.com/kolo/xmlrpc/decoder.go          | 473 ++++++++++++++++++++++
- vendor/github.com/kolo/xmlrpc/decoder_test.go     | 234 +++++++++++
- vendor/github.com/kolo/xmlrpc/encoder.go          | 171 ++++++++
- vendor/github.com/kolo/xmlrpc/encoder_test.go     |  58 +++
- vendor/github.com/kolo/xmlrpc/fixtures/cp1251.xml |   6 +
- vendor/github.com/kolo/xmlrpc/request.go          |  57 +++
- vendor/github.com/kolo/xmlrpc/response.go         |  52 +++
- vendor/github.com/kolo/xmlrpc/response_test.go    |  84 ++++
- vendor/github.com/kolo/xmlrpc/test_server.rb      |  25 ++
- vendor/github.com/kolo/xmlrpc/xmlrpc.go           |  19 +
- 17 files changed, 1826 insertions(+)
- create mode 100644 discovery/uyuni/uyuni.go
- create mode 100644 vendor/github.com/kolo/xmlrpc/LICENSE
- create mode 100644 vendor/github.com/kolo/xmlrpc/README.md
- create mode 100644 vendor/github.com/kolo/xmlrpc/client.go
- create mode 100644 vendor/github.com/kolo/xmlrpc/client_test.go
- create mode 100644 vendor/github.com/kolo/xmlrpc/decoder.go
- create mode 100644 vendor/github.com/kolo/xmlrpc/decoder_test.go
- create mode 100644 vendor/github.com/kolo/xmlrpc/encoder.go
- create mode 100644 vendor/github.com/kolo/xmlrpc/encoder_test.go
- create mode 100644 vendor/github.com/kolo/xmlrpc/fixtures/cp1251.xml
- create mode 100644 vendor/github.com/kolo/xmlrpc/request.go
- create mode 100644 vendor/github.com/kolo/xmlrpc/response.go
- create mode 100644 vendor/github.com/kolo/xmlrpc/response_test.go
- create mode 100644 vendor/github.com/kolo/xmlrpc/test_server.rb
- create mode 100644 vendor/github.com/kolo/xmlrpc/xmlrpc.go
-
 diff --git a/discovery/config/config.go b/discovery/config/config.go
 index 820de1f7..27d8c0cc 100644
 --- a/discovery/config/config.go
@@ -85,11 +45,11 @@ index 1dbdecc8..ac621f3e 100644
  			return &StaticProvider{TargetGroups: cfg.StaticConfigs}, nil
 diff --git a/discovery/uyuni/uyuni.go b/discovery/uyuni/uyuni.go
 new file mode 100644
-index 00000000..60f741a5
+index 00000000..fcaaad0f
 --- /dev/null
 +++ b/discovery/uyuni/uyuni.go
-@@ -0,0 +1,219 @@
-+// Copyright 2017 The Prometheus Authors
+@@ -0,0 +1,340 @@
++// Copyright 2019 The Prometheus Authors
 +// Licensed under the Apache License, Version 2.0 (the "License");
 +// you may not use this file except in compliance with the License.
 +// You may obtain a copy of the License at
@@ -106,8 +66,13 @@ index 00000000..60f741a5
 +
 +import (
 +	"context"
++	"encoding/json"
 +	"fmt"
 +	"net/http"
++	"net/url"
++	"regexp"
++	"strings"
++	"sync"
 +	"time"
 +
 +	"github.com/go-kit/kit/log"
@@ -130,6 +95,9 @@ index 00000000..60f741a5
 +	RefreshInterval: model.Duration(1 * time.Minute),
 +}
 +
++// Regular expression to extract port from formula data
++var monFormulaRegex = regexp.MustCompile(`--(?:telemetry\.address|web\.listen-address)=\":([0-9]*)\"`)
++
 +// SDConfig is the configuration for Uyuni based service discovery.
 +type SDConfig struct {
 +	Host            string         `yaml:"host"`
@@ -140,23 +108,38 @@ index 00000000..60f741a5
 +
 +// Uyuni API Response structures
 +type clientRef struct {
-+	Id   int    `xmlrpc:"id"`
++	ID   int    `xmlrpc:"id"`
 +	Name string `xmlrpc:"name"`
 +}
 +
-+type clientDetail struct {
-+	Id           int      `xmlrpc:"id"`
++type systemDetail struct {
++	ID           int      `xmlrpc:"id"`
 +	Hostname     string   `xmlrpc:"hostname"`
 +	Entitlements []string `xmlrpc:"addon_entitlements"`
 +}
 +
-+type exporterConfig struct {
-+	Enabled bool `xmlrpc:"enabled"`
++type groupDetail struct {
++	ID              int    `xmlrpc:"id"`
++	Subscribed      int    `xmlrpc:"subscribed"`
++	SystemGroupName string `xmlrpc:"system_group_name"`
 +}
 +
-+type formulaData struct {
-+	NodeExporter     exporterConfig `xmlrpc:"node_exporter"`
-+	PostgresExporter exporterConfig `xmlrpc:"postgres_exporter"`
++type networkInfo struct {
++	IP string `xmlrpc:"ip"`
++}
++
++type exporterConfig struct {
++	Args    string `xmlrpc:"args"`
++	Enabled bool   `xmlrpc:"enabled"`
++}
++
++// Discovery periodically performs Uyuni API requests. It implements the Discoverer interface.
++type Discovery struct {
++	*refresh.Discovery
++	client   *http.Client
++	interval time.Duration
++	sdConfig *SDConfig
++	logger   log.Logger
 +}
 +
 +// UnmarshalYAML implements the yaml.Unmarshaler interface.
@@ -183,55 +166,79 @@ index 00000000..60f741a5
 +	return nil
 +}
 +
-+// Attempt to login in SUSE Manager Server and get an auth token
-+func Login(rpcclient *xmlrpc.Client, user string, pass string) (string, error) {
++// Attempt to login in Uyuni Server and get an auth token
++func login(rpcclient *xmlrpc.Client, user string, pass string) (string, error) {
 +	var result string
 +	err := rpcclient.Call("auth.login", []interface{}{user, pass}, &result)
 +	return result, err
 +}
 +
-+// Logout from SUSE Manager API
-+func Logout(rpcclient *xmlrpc.Client, token string) error {
++// Logout from Uyuni API
++func logout(rpcclient *xmlrpc.Client, token string) error {
 +	err := rpcclient.Call("auth.logout", token, nil)
 +	return err
 +}
 +
-+// Get client list
-+func ListSystems(rpcclient *xmlrpc.Client, token string) ([]clientRef, error) {
++// Get system list
++func listSystems(rpcclient *xmlrpc.Client, token string) ([]clientRef, error) {
 +	var result []clientRef
 +	err := rpcclient.Call("system.listSystems", token, &result)
 +	return result, err
 +}
 +
-+// Get client details
-+func GetSystemDetails(rpcclient *xmlrpc.Client, token string, systemId int) (clientDetail, error) {
-+	var result clientDetail
-+	err := rpcclient.Call("system.getDetails", []interface{}{token, systemId}, &result)
++// Get system details
++func getSystemDetails(rpcclient *xmlrpc.Client, token string, systemID int) (systemDetail, error) {
++	var result systemDetail
++	err := rpcclient.Call("system.getDetails", []interface{}{token, systemID}, &result)
 +	return result, err
 +}
 +
-+// List client FQDNs
-+func ListSystemFQDNs(rpcclient *xmlrpc.Client, token string, systemId int) ([]string, error) {
-+	var result []string
-+	err := rpcclient.Call("system.listFqdns", []interface{}{token, systemId}, &result)
++// Get list of groups a system belongs to
++func listSystemGroups(rpcclient *xmlrpc.Client, token string, systemID int) ([]groupDetail, error) {
++	var result []groupDetail
++	err := rpcclient.Call("system.listGroups", []interface{}{token, systemID}, &result)
++	return result, err
++}
++
++// GetSystemNetworkInfo lists client FQDNs
++func getSystemNetworkInfo(rpcclient *xmlrpc.Client, token string, systemID int) (networkInfo, error) {
++	var result networkInfo
++	err := rpcclient.Call("system.getNetwork", []interface{}{token, systemID}, &result)
 +	return result, err
 +}
 +
 +// Get formula data for a given system
-+func getSystemFormulaData(rpcclient *xmlrpc.Client, token string, systemId int, formulaName string) (formulaData, error) {
-+	var result formulaData
-+	err := rpcclient.Call("formula.getSystemFormulaData", []interface{}{token, systemId, formulaName}, &result)
++func getSystemFormulaData(rpcclient *xmlrpc.Client, token string, systemID int, formulaName string) (map[string]exporterConfig, error) {
++	var result map[string]exporterConfig
++	err := rpcclient.Call("formula.getSystemFormulaData", []interface{}{token, systemID, formulaName}, &result)
 +	return result, err
 +}
 +
-+// Discovery periodically performs Uyuni API requests. It implements
-+// the Discoverer interface.
-+type Discovery struct {
-+	*refresh.Discovery
-+	client     *http.Client
-+	interval   time.Duration
-+	sdConfig   *SDConfig
-+	logger     log.Logger
++// Get formula data for a given group
++func getGroupFormulaData(rpcclient *xmlrpc.Client, token string, groupID int, formulaName string) (map[string]exporterConfig, error) {
++	var result map[string]exporterConfig
++	err := rpcclient.Call("formula.getGroupFormulaData", []interface{}{token, groupID, formulaName}, &result)
++	return result, err
++}
++
++// Get exporter port configuration from Formula
++func extractPortFromFormulaData(args string) (string, error) {
++	tokens := monFormulaRegex.FindStringSubmatch(args)
++	if len(tokens) < 1 {
++		return "", errors.New("Unable to find port in args: " + args)
++	}
++	return tokens[1], nil
++}
++
++// Take a current formula structure and override values if the new config is set
++// Used for calculating final formula values when using groups
++func getCombinedFormula(combined map[string]exporterConfig, new map[string]exporterConfig) map[string]exporterConfig {
++	for k, v := range new {
++		if v.Enabled {
++			combined[k] = v
++		}
++	}
++	return combined
 +}
 +
 +// NewDiscovery returns a new file discovery for the given paths.
@@ -239,7 +246,7 @@ index 00000000..60f741a5
 +	d := &Discovery{
 +		interval: time.Duration(conf.RefreshInterval),
 +		sdConfig: conf,
-+		logger: logger,
++		logger:   logger,
 +	}
 +	d.Discovery = refresh.NewDiscovery(
 +		logger,
@@ -253,59 +260,133 @@ index 00000000..60f741a5
 +func (d *Discovery) refresh(ctx context.Context) ([]*targetgroup.Group, error) {
 +
 +	config := d.sdConfig
-+	apiUrl := config.Host + "/rpc/api"
++	apiURL := config.Host + "/rpc/api"
 +
-+	rpcclient, _ := xmlrpc.NewClient(apiUrl, nil)
-+
-+	token, err := Login(rpcclient, config.User, config.Pass)
++	// Check if the URL is valid and create rpc client
++	_, err := url.ParseRequestURI(apiURL)
 +	if err != nil {
-+		return nil, errors.Wrap(err, "Unable to login to SUSE Manager API")
++		return nil, errors.Wrap(err, "Uyuni Server URL is not valid")
 +	}
++	rpc, _ := xmlrpc.NewClient(apiURL, nil)
++	tg := &targetgroup.Group{Source: config.Host}
 +
-+	clientList, err := ListSystems(rpcclient, token)
++	// Login into Uyuni API and get auth token
++	token, err := login(rpc, config.User, config.Pass)
++	if err != nil {
++		return nil, errors.Wrap(err, "Unable to login to Uyuni API")
++	}
++	// Get list of managed clients from Uyuni API
++	clientList, err := listSystems(rpc, token)
 +	if err != nil {
 +		return nil, errors.Wrap(err, "Unable to get list of systems")
 +	}
 +
-+	tg := &targetgroup.Group{
-+		Source: config.Host,
-+	}
-+
++	// Iterate list of clients
 +	if len(clientList) == 0 {
 +		fmt.Printf("\tFound 0 systems.\n")
 +	} else {
-+		for _, client := range clientList {
-+			fqdns := []string{}
-+			formulas := formulaData{}
-+			details, err := GetSystemDetails(rpcclient, token, client.Id)
-+			if err != nil {
-+				level.Error(d.logger).Log("msg", "Unable to get system details","clientId", client.Id, "err", err)
-+				continue;
-+			}
-+			// Check if system is to be monitored
-+			for _, v := range details.Entitlements {
-+				if v == "monitoring_entitled" {
-+					fqdns, err = ListSystemFQDNs(rpcclient, token, client.Id)
-+					formulas, err = getSystemFormulaData(rpcclient, token, client.Id, "prometheus-exporters")
-+					if (formulas.NodeExporter.Enabled) {
-+						labels := model.LabelSet{}
-+						addr := fmt.Sprintf("%s:%d", fqdns[len(fqdns)-1], 9100)
-+						labels[model.AddressLabel] = model.LabelValue(addr)
-+						tg.Targets = append(tg.Targets, labels)
-+					}
-+					if (formulas.PostgresExporter.Enabled) {
-+						labels := model.LabelSet{}
-+						addr := fmt.Sprintf("%s:%d", fqdns[len(fqdns)-1], 9187)
-+						labels[model.AddressLabel] = model.LabelValue(addr)
-+						tg.Targets = append(tg.Targets, labels)
++		startTime := time.Now()
++		var wg sync.WaitGroup
++		wg.Add(len(clientList))
++
++		for _, cl := range clientList {
++
++			go func(client clientRef) {
++				defer wg.Done()
++				rpcclient, _ := xmlrpc.NewClient(apiURL, nil)
++				netInfo := networkInfo{}
++				formulas := map[string]exporterConfig{}
++				groups := []groupDetail{}
++
++				// Get the system details
++				details, err := getSystemDetails(rpcclient, token, client.ID)
++
++				if err != nil {
++					level.Error(d.logger).Log("msg", "Unable to get system details", "clientId", client.ID, "err", err)
++					return
++				}
++				jsonDetails, _ := json.Marshal(details)
++				level.Debug(d.logger).Log("msg", "System details", "details", jsonDetails)
++
++				// Check if system is monitoring entitled
++				for _, v := range details.Entitlements {
++					if v == "monitoring_entitled" { // golang has no native method to check if an element is part of a slice
++
++						// Get network details
++						netInfo, err = getSystemNetworkInfo(rpcclient, token, client.ID)
++						if err != nil {
++							level.Error(d.logger).Log("msg", "getSystemNetworkInfo failed", "clientId", client.ID, "err", err)
++							return
++						}
++
++						// Get list of groups this system is assigned to
++						candidateGroups, err := listSystemGroups(rpcclient, token, client.ID)
++						if err != nil {
++							level.Error(d.logger).Log("msg", "listSystemGroups failed", "clientId", client.ID, "err", err)
++							return
++						}
++						groups := []string{}
++						for _, g := range candidateGroups {
++							// get list of group formulas
++							// TODO: Put the resulting data on a map so that we do not have to repeat the call below for every system
++							if g.Subscribed == 1 {
++								groupFormulas, err := getGroupFormulaData(rpcclient, token, g.ID, "prometheus-exporters")
++								if err != nil {
++									level.Error(d.logger).Log("msg", "getGroupFormulaData failed", "groupId", client.ID, "err", err)
++									return
++								}
++								formulas = getCombinedFormula(formulas, groupFormulas)
++								// replace spaces with dashes on all group names
++								groups = append(groups, strings.ToLower(strings.ReplaceAll(g.SystemGroupName, " ", "-")))
++							}
++						}
++
++						// Get system formula list
++						systemFormulas, err := getSystemFormulaData(rpcclient, token, client.ID, "prometheus-exporters")
++						if err != nil {
++							level.Error(d.logger).Log("msg", "getSystemFormulaData failed", "clientId", client.ID, "err", err)
++							return
++						}
++						formulas = getCombinedFormula(formulas, systemFormulas)
++
++						// Iterate list of formulas and check for enabled exporters
++						for k, v := range formulas {
++							if v.Enabled {
++								port, err := extractPortFromFormulaData(v.Args)
++								if err != nil {
++									level.Error(d.logger).Log("msg", "Invalid exporter port", "clientId", client.ID, "err", err)
++									return
++								}
++								targets := model.LabelSet{}
++								addr := fmt.Sprintf("%s:%s", netInfo.IP, port)
++								targets[model.AddressLabel] = model.LabelValue(addr)
++								targets["exporter"] = model.LabelValue(k)
++								targets["hostname"] = model.LabelValue(details.Hostname)
++								targets["groups"] = model.LabelValue(strings.Join(groups, ","))
++								for _, g := range groups {
++									gname := fmt.Sprintf("grp:%s", g)
++									targets[model.LabelName(gname)] = model.LabelValue("active")
++								}
++								tg.Targets = append(tg.Targets, targets)
++							}
++						}
 +					}
 +				}
-+			}
-+
-+			level.Debug(d.logger).Log("msg", "Found system", "host", details.Hostname, "entitlements", fmt.Sprintf("%+v", details.Entitlements), "FQDN", fmt.Sprintf("%+v", fqdns), "formulas", fmt.Sprintf("%+v", formulas))
++				// Log debug information
++				if netInfo.IP != "" {
++					level.Info(d.logger).Log("msg", "Found monitored system", "Host", details.Hostname,
++						"Entitlements", fmt.Sprintf("%+v", details.Entitlements),
++						"Network", fmt.Sprintf("%+v", netInfo), "Groups",
++						fmt.Sprintf("%+v", groups), "Formulas", fmt.Sprintf("%+v", formulas))
++				}
++				rpcclient.Close()
++			}(cl)
 +		}
++		wg.Wait()
++		level.Info(d.logger).Log("msg", "Total discovery time", "time", time.Since(startTime))
 +	}
-+	Logout(rpcclient, token)
++	logout(rpc, token)
++	rpc.Close()
 +	return []*targetgroup.Group{tg}, nil
 +}
 diff --git a/vendor/github.com/kolo/xmlrpc/LICENSE b/vendor/github.com/kolo/xmlrpc/LICENSE
@@ -1991,6 +2072,3 @@ index 00000000..8766403a
 +
 +// Base64 represents value in base64 encoding
 +type Base64 string
--- 
-2.16.4
-

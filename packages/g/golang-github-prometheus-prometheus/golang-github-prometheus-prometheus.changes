@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Nov 20 22:33:20 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Remove firewalld files. They are installed in the main firewalld
+  package.
+
+-------------------------------------------------------------------
+Wed Nov 20 15:32:20 UTC 2019 - Joao Cavalheiro <jcavalheiro@suse.com>
+
+- Update Uyuni/SUSE Manager service discovery patch
+  + Modified 0003-Add-Uyuni-service-discovery.patch 
+  + Fixes crashes when systems have no FQDN 
+  + Adds Parallel calls to Uyuni API, meaningful performance increase
+  + Adds Support for system group labels
+
+-------------------------------------------------------------------
+Mon Sep 23 10:19:03 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Do not install the firewalld config file on Tumbleweed (on
+  versions newer than Leap 15.1). It's installed in the main
+  firewalld package.
+
+-------------------------------------------------------------------
 Fri Aug 16 06:46:24 UTC 2019 - Jan Fajerski <jan.fajerski@suse.com>
 
 - remove 0004-prometheus-buildmode-pie.patch
