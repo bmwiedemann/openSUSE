@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Sun Nov 24 17:36:31 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Replace incorrect usage of %_libexecdir with %_prefix/lib
+
+-------------------------------------------------------------------
+Thu Oct 10 12:40:49 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- rebased the original patch from revision 19
+- apply patch only on openSUSE < TW, and SLES.
+
+-------------------------------------------------------------------
+Fri Oct  4 09:44:37 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- Added a patch to make iptables the default again on openSUSE
+
+-------------------------------------------------------------------
+Fri Oct  4 09:10:54 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- Update to version 0.7.2:
+This is a bug fix only release.
+
+  * fix: direct: removeRules() was mistakenly removing all rules
+  * fix: guarantee zone source dispatch is sorted by zone name
+  * fix: nftables: fix zone dispatch using ipset sources in nat chains
+  * doc: add --default-config and --system-config
+  * fix: --add-masquerade should only affect ipv4
+  * fix: nftables: --forward-ports should only affect IPv4
+  * fix: direct: removeRules() not removing all rules in chain
+  * dbus: service: fix service includes individual APIs
+  * fix: allow custom helpers using standard helper modules
+  * fix: service: usage of helpers with '-' in name
+  * fix: Revert "ebtables: drop support for broute table"
+  * fix: ebtables: don't use tables that aren't available
+  * fix: fw: initialize _rfc3964_ipv4
+
+
+-------------------------------------------------------------------
+Mon Sep 09 09:59:00 UTC 2019 - mrostecki@opensuse.org
+
+- Update to version 0.7.1:
+  * Rich Rule Priorities
+  * Service Definition Includes - Service definitions can now
+    include lines like: <include service="https"/> which will
+    include all the ports, etc from the https service.
+  * RFC3964 IPv4 filtering - A new option RFC3964_IPv4 in
+    firewalld.conf is available. It does filtering based on RFC3964
+    in regards to IPv4 addresses. This functionality was
+    traditionally in network-scripts.
+  * FlushAllOnReload - A new option FlushAllOnReload in
+    firewalld.conf is available. Older release retained some
+    settings (direct rules, interface to zone assignments) during a
+    --reload. With the introduction of this configuration option
+    that is no longer the case. Old behavior can be restored by
+    setting FlushAllOnReload=no.
+  * 15 new service definitions
+  * fix: firewall-offline-cmd: service: use dict based APIs
+  * fix: client: service: use dict based dbus APIs
+  * test: dbus: coverage for new service APIs
+  * fix: dbus: new dict based APIs for services
+  * test: dbus: service API coverage
+  * test: functions: add macro DBUS_INTROSPECT
+  * test: functions: add CHOMP macro for shell output
+  * fix: tests/functions: use gdbus instead of dbus-send
+  * fix: dbus: add missing APIs for service includes
+- Remove patch for using iptables instead of nftables - we should
+  finally switch to nftables and fix its issues properly if they
+  occur again:
+  * 0001-firewall-backend-Switch-default-backend-to-iptables.patch
+- Remove patch which was released upstream:
+  * 0002-Add-FlushAllOnReload-config-option.patch
+
+-------------------------------------------------------------------
+Tue Jun 11 16:27:57 UTC 2019 - mrostecki@opensuse.org
+
+- Update to version 0.6.4:
+  * chore: update translations
+  * treewide: fix over indentation (flake8 E117)
+  * test: travis: add another test matrix for omitting ip6tables
+  * chore: travis: split test matrix by keywords
+  * chore: tests: add AT_KEYWORDS for firewall-offline-cmd
+  * improvement: tests: Use AT_KEYWORDS for backends
+  * fix: tests: guard occurrences of IPv6
+  * fix: tests/functions: ignore warnings about missing ip6tables
+  * test: add macro IF_IPV6_SUPPORTED
+
+-------------------------------------------------------------------
 Wed May  8 09:39:08 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Move RPM macros to %_rpmmacrodir.

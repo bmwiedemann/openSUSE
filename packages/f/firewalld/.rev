@@ -878,4 +878,41 @@
     <comment></comment>
     <requestid>701566</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>48ec6ac6886ef8de24e06dcd71837ead</srcmd5>
+    <version>0.7.2</version>
+    <time>1574677462</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace incorrect usage of %_libexecdir with %_prefix/lib
+
+- rebased the original patch from revision 19
+- apply patch only on openSUSE &lt; TW, and SLES.
+
+- Added a patch to make iptables the default again on openSUSE
+
+- Update to version 0.7.2:
+This is a bug fix only release.
+  * fix: direct: removeRules() was mistakenly removing all rules
+  * fix: guarantee zone source dispatch is sorted by zone name
+  * fix: nftables: fix zone dispatch using ipset sources in nat chains
+  * doc: add --default-config and --system-config
+  * fix: --add-masquerade should only affect ipv4
+  * fix: nftables: --forward-ports should only affect IPv4
+  * fix: direct: removeRules() not removing all rules in chain
+  * dbus: service: fix service includes individual APIs
+  * fix: allow custom helpers using standard helper modules
+  * fix: service: usage of helpers with '-' in name
+  * fix: Revert &quot;ebtables: drop support for broute table&quot;
+  * fix: ebtables: don't use tables that aren't available
+  * fix: fw: initialize _rfc3964_ipv4
+
+- Update to version 0.7.1:
+  * Rich Rule Priorities
+  * Service Definition Includes - Service definitions can now
+    include lines like: &lt;include service=&quot;https&quot;/&gt; which will
+    include all the ports, etc from the https service.
+  * RFC3964 IPv4 filtering - A new option RFC3964_IPv4 in
+    firewalld.conf is available. It does filtering based on RFC3964</comment>
+    <requestid>750645</requestid>
+  </revision>
 </revisionlist>

@@ -21,17 +21,15 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           firewalld
-Version:        0.6.3
+Version:        0.7.2
 Release:        0
 Summary:        A firewall daemon with D-Bus interface providing a dynamic firewall
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
 Url:            http://www.firewalld.org
-Source:         https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-SUSE: 0001-firewall-backend-Switch-default-backend-to-iptables.patch (bsc#1102761)
-Patch0:         0001-firewall-backend-Switch-default-backend-to-iptables.patch
-# PATCH-FIX-SUSE: 0002-Add-FlushAllOnReload-config-option.patch (bsc#1121277)
-Patch1:         0002-Add-FlushAllOnReload-config-option.patch
+Source:         %{name}-%{version}.tar.xz
+Patch0:		    0001-firewall-backend-Switch-default-backend-to-iptables.patch
+
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  desktop-file-utils
@@ -114,11 +112,17 @@ firewalld.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 # bsc#1078223
 rm config/services/high-availability.xml
+
+# 
+# Patch added: opensuse still uses iptables by default,
+# so let's make this the default for anything << Tumbleweed
+#
+%if 0%{?sle_version} > 0 && 0%{?suse_version} < 1550 
+%patch0 -p1 
+%endif
 
 %build
 export PYTHON="%{_bindir}/python3"
@@ -213,20 +217,22 @@ fi
 %{_bindir}/firewall-offline-cmd
 %dir %{_datadir}/bash-completion/completions
 %{_datadir}/bash-completion/completions/firewall-cmd
-%dir %{_libexecdir}/firewalld
-%dir %{_libexecdir}/firewalld/icmptypes
-%dir %{_libexecdir}/firewalld/ipsets
-%dir %{_libexecdir}/firewalld/services
-%dir %{_libexecdir}/firewalld/zones
-%dir %{_libexecdir}/firewalld/helpers
-%{_libexecdir}/firewalld/icmptypes/*.xml
-%{_libexecdir}/firewalld/ipsets/README
-%{_libexecdir}/firewalld/services/*.xml
-%{_libexecdir}/firewalld/zones/*.xml
-%{_libexecdir}/firewalld/helpers/*.xml
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_firewalld
+%dir %{_prefix}/lib/firewalld
+%dir %{_prefix}/lib/firewalld/icmptypes
+%dir %{_prefix}/lib/firewalld/ipsets
+%dir %{_prefix}/lib/firewalld/services
+%dir %{_prefix}/lib/firewalld/zones
+%dir %{_prefix}/lib/firewalld/helpers
+%{_prefix}/lib/firewalld/icmptypes/*.xml
+%{_prefix}/lib/firewalld/ipsets/README
+%{_prefix}/lib/firewalld/services/*.xml
+%{_prefix}/lib/firewalld/zones/*.xml
+%{_prefix}/lib/firewalld/helpers/*.xml
 %{_datadir}/polkit-1
-%dir %{_sysconfdir}/dbus-1
-%dir %{_sysconfdir}/dbus-1/system.d
+%dir %{_datadir}/dbus-1
+%dir %{_datadir}/dbus-1/system.d
 %dir %{_sysconfdir}/modprobe.d
 %config(noreplace) %{_sysconfdir}/modprobe.d/firewalld-sysctls.conf
 %config(noreplace) %{_sysconfdir}/firewalld/firewalld.conf
@@ -239,7 +245,7 @@ fi
 %attr(0750,root,root) %dir %{_sysconfdir}/firewalld/helpers
 %{_unitdir}/firewalld.service
 %{_fillupdir}/sysconfig.%{name}
-%config(noreplace) %{_sysconfdir}/dbus-1/system.d/FirewallD.conf
+%{_datadir}/dbus-1/system.d/FirewallD.conf
 %{_mandir}/man1/firewall*cmd*.1%{?ext_man}
 %{_mandir}/man1/firewalld*.1%{?ext_man}
 %{_mandir}/man5/firewall*.5%{?ext_man}
