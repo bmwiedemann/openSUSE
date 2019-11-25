@@ -1559,4 +1559,13 @@ for 12.3</comment>
   * kcm_sddm: incremental addition of new rules (bsc#1145182)</comment>
     <requestid>749492</requestid>
   </revision>
+  <revision rev="175" vrev="1">
+    <srcmd5>68d8db9aaf9ad29281ede6a7c06a35b4</srcmd5>
+    <version>13.2+20191122.eb9cc80</version>
+    <time>1574677438</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 13.2+20191122.eb9cc80:
+  * whitelist org.freedesktop.ModemManager1.Modem.Time (bsc#1156961)</comment>
+    <requestid>750304</requestid>
+  </revision>
 </revisionlist>

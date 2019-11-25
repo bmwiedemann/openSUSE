@@ -1,7 +1,7 @@
 #
 # spec file for package polkit-default-privs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 
 Name:           polkit-default-privs
-Version:        13.2+20191119.a36b458
+Version:        13.2+20191122.eb9cc80
 Release:        0
 Summary:        SUSE PolicyKit default permissions
 License:        GPL-2.0-or-later
@@ -39,7 +39,7 @@ Supplements:    PolicyKit
 Supplements:    libpolkit0, polkit
 BuildArch:      noarch
 # please open bugreports at bugzilla.suse.com
-Url:            http://github.com/openSUSE/polkit-default-privs.git
+URL:            http://github.com/openSUSE/polkit-default-privs.git
 PreReq:         %fillup_prereq
 
 %description
