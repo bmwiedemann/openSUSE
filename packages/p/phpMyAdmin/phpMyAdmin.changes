@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Nov 23 09:42:06 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- phpMyAdmin 4.9.2:
+  * CVE-2019-18622: SQL injection in Designer feature (boo#1157614)
+  * Fixes for "Failed to set session cookie" error 
+  * Advisor with MySQL 8.0.3 and newer
+  * Fix PHP deprecation errors
+  * Fix a situation where exporting users after a delete query could
+    remove users
+  * Fix incorrect "You do not have privileges to manipulate with the
+    users!" warning
+  * Fix copying a database's privileges and several other problems
+    moving columns with MariaDB
+  * Fix for phpMyAdmin not selecting all the values when using
+    shift-click to select during Export
+
+-------------------------------------------------------------------
 Sat Sep 21 19:16:35 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - phpMyAdmin 4.9.1:
